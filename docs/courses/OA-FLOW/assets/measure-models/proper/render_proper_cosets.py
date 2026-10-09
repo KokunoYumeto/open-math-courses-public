@@ -10,6 +10,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-measure-models-proper-20261009-v1"
 
 D = Path(__file__).resolve().parent
 blue, teal, orange = "#345d9d", "#087f7b", "#ad5b17"
@@ -141,7 +142,7 @@ fig.text(.07,.035,
     "Exact example: OA-FLOW-L71, P41–P46. General bundle topology and compact transporter bound: P23–P26.",
     color=muted,fontsize=11)
 fig.savefig(D/"proper-coset-model.png",dpi=200)
-fig.savefig(D/"proper-coset-model.svg")
+fig.savefig(D/"proper-coset-model.svg", metadata={'Date': None})
 plt.close(fig)
 
 font_license=Path(matplotlib.get_data_path())/"fonts/ttf/LICENSE_DEJAVU"

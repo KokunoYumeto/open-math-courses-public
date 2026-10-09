@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Zero-free cones turn slow decrease into reciprocal bounds</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L177.html">Previous lesson</a> · <a href="#1-the-reciprocal-criterion-on-an-angular-cone">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#5-exercises-and-full-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="zero-free-cones-turn-slow-decrease-into-reciprocal-bounds">Zero-free cones turn slow decrease into reciprocal bounds</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI GPT-6.1 Sol (OpenAI). Public domain (CC0 1.0).</em></p>
+<p>An inverse Fourier transform needs control of the reciprocal transform, not merely absence of zeros. This chapter explains how a logarithmic lower bound near each real frequency supplies that control in a zero-free cone. It also gives a smooth compact kernel whose transform has no nonreal zeros but whose reciprocal grows too fast near a logarithmic boundary.</p>
+<p>Basic references are Richard Melrose's <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Differential Analysis</a>, Gerd Grubb's <a href="https://web.math.ku.dk/~grubb/dist5.pdf">Fourier transformation of distributions</a>, and Lars Hörmander's <em>The Analysis of Linear Partial Differential Operators</em>, volumes I and II. The prerequisites are <a href="AN02-L163.html">Slow decrease and entire Fourier division</a>, Theorem 1.1; <a href="AN02-L143.html#hc1-the-precise-alternative-and-compact-comparison">Local compactness and Hartogs bounds</a>, HC1; <a href="AN02-L147.html#gd4-scalar-holomorphic-logarithms-are-proper-psh-and-locally-integrable">Entire logarithms and the approximation of plurisubharmonic functions</a>, GD4; and <a href="AN02-L122.html#2-the-compact-support-growth-criterion">Compact Fourier division and multiplicity-sensitive annihilators</a>, Theorem CF2.1. The complete proof below supplies the new estimates.</p>
+<h2 id="1-the-scale-that-connects-two-kinds-of-lower-bound">1. The scale that connects two kinds of lower bound</h2>
+<p>For a compact kernel, write <span class="math" data-index="0" data-tex="\(F(\zeta)=\langle\mu,e^{-ix\cdot\zeta}\rangle\)">\(F(\zeta)=\langle\mu,e^{-ix\cdot\zeta}\rangle\)</span> and <span class="math" data-index="1" data-tex="\(\rho=2+|\zeta|\)">\(\rho=2+|\zeta|\)</span>. Invertibility means slow decrease in the precise sense of the preceding Fourier-division lesson. It gives a polynomial lower value somewhere in a logarithmic real window. Suppose in addition that <span class="math" data-index="2" data-tex="\(F\)">\(F\)</span> has no zeros when</p>
+<span class="math math-display" id="eq-E1.1" data-index="3" data-tex="\[
+\operatorname{Im}\zeta\in\Lambda_S,\qquad
+|\operatorname{Im}\zeta|&gt;D_S\log\rho,
+\tag{E1.1}
+\]">\[
+\operatorname{Im}\zeta\in\Lambda_S,\qquad
+|\operatorname{Im}\zeta|&gt;D_S\log\rho,
+\tag{E1.1}
+\]</span>
+<p>for every compact angular set <span class="math" data-index="4" data-tex="\(S\)">\(S\)</span> inside an open imaginary-direction cone.</p>
+<p>Theorem 1.1 in the complete proof gives, after increasing the barrier,</p>
+<span class="math math-display" id="eq-E1.2" data-index="5" data-tex="\[
+|F(\zeta)^{-1}|\le e^{A_S|\operatorname{Im}\zeta|}.
+\tag{E1.2}
+\]">\[
+|F(\zeta)^{-1}|\le e^{A_S|\operatorname{Im}\zeta|}.
+\tag{E1.2}
+\]</span>
+<p>The reverse implication holds even when its starting estimate includes an additional polynomial factor. The cone may contain all directions; this particular criterion does not require convexity.</p>
+<p>Set <span class="math" data-index="6" data-tex="\(r=|\operatorname{Im}\zeta|\)">\(r=|\operatorname{Im}\zeta|\)</span>, <span class="math" data-index="7" data-tex="\(\xi=\operatorname{Re}\zeta\)">\(\xi=\operatorname{Re}\zeta\)</span>, and</p>
+<span class="math math-display" id="eq-E1.3" data-index="8" data-tex="\[
+w=(z-\xi)/r,\qquad
+u(w)=r^{-1}\log|F(\xi+rw)|.
+\tag{E1.3}
+\]">\[
+w=(z-\xi)/r,\qquad
+u(w)=r^{-1}\log|F(\xi+rw)|.
+\tag{E1.3}
+\]</span>
+<p>The target frequency becomes <span class="math" data-index="9" data-tex="\(i\theta\)">\(i\theta\)</span>, with <span class="math" data-index="10" data-tex="\(|\theta|=1\)">\(|\theta|=1\)</span>. The real logarithmic window becomes a bounded, possibly very small real ball near zero. It still contains a point where <span class="math" data-index="11" data-tex="\(u\)">\(u\)</span> has a finite lower value. Hence a sequence of these logarithms cannot collapse uniformly on compact sets.</p>
+<p>Compactness now bounds the local integral of <span class="math" data-index="12" data-tex="\(|u|\)">\(|u|\)</span> along a subsequence. A slightly enlarged angular set gives a whole zero-free ball around <span class="math" data-index="13" data-tex="\(i\theta\)">\(i\theta\)</span>. There <span class="math" data-index="14" data-tex="\(u\)">\(u\)</span> is harmonic, and its mean value bounds its negative value at the center by that local integral. Lemmas 2.1 and 3.1 and equation (3.8) give every constant and every subsequence step.</p>
+<figure><img class="course-figure" width="2242" height="892" src="reproduce/L178/figures/frequency-normalization-and-harmonic-ball.png" alt="A complex frequency and its normalized image, with the real logarithmic witness interval, the exact harmonic ball, and sampled transform zeros below the real axis." /><figcaption class="native"><a href="reproduce/L178/figures/frequency-normalization-and-harmonic-ball.png">Open full-size PNG</a> · <a href="reproduce/L178/figures/frequency-normalization-and-harmonic-ball.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 1.</em> A one-dimensional specialization of Lemmas 2.1 and 3.1. The original target is <span class="math" data-index="15" data-tex="\(40+64i\)">\(40+64i\)</span>; <span class="math" data-index="16" data-tex="\(w=(z-40)/64\)">\(w=(z-40)/64\)</span> sends it to <span class="math" data-index="17" data-tex="\(i\)">\(i\)</span>. The original ball has radius <span class="math" data-index="18" data-tex="\(16\)">\(16\)</span>, and the normalized ball has radius <span class="math" data-index="19" data-tex="\(1/4\)">\(1/4\)</span>, so <span class="math" data-index="20" data-tex="\(d=1/8\)">\(d=1/8\)</span>. The real witness interval has radius <span class="math" data-index="21" data-tex="\(\log42\)">\(\log42\)</span> and becomes radius <span class="math" data-index="22" data-tex="\(\log42/64\)">\(\log42/64\)</span>. The shaded region is the actual inequality <span class="math" data-index="23" data-tex="\(\eta&gt;\log(2+\sqrt{\xi^2+\eta^2})\)">\(\eta&gt;\log(2+\sqrt{\xi^2+\eta^2})\)</span>, with barrier constant 1. For <span class="math" data-index="24" data-tex="\(D_0=1\)">\(D_0=1\)</span>, the proof chooses <span class="math" data-index="25" data-tex="\(D=4(1+\log3/\log2)+1\)">\(D=4(1+\log3/\log2)+1\)</span>, and <span class="math" data-index="26" data-tex="\(64&gt;D\log(2+|40+64i|)\)">\(64&gt;D\log(2+|40+64i|)\)</span>. Red markers sample the exact zeros of Example 1; they are not the boundary of the general shaded region. Both circles lie inside that region. Proof locators: complete proof, (2.1)–(3.6). Background: Melrose, Grubb and Hörmander.</p>
+<h2 id="2-an-inverse-with-a-sharp-exponential-rate">2. An inverse with a sharp exponential rate</h2>
+<p><strong>Example 1.</strong> Let</p>
+<span class="math math-display" id="eq-E2.1" data-index="27" data-tex="\[
+\mu=\delta_{-3/4}-\tfrac32\delta_{-1/4},\qquad
+F(z)=e^{3iz/4}\bigl(1-\tfrac32e^{-iz/2}\bigr).
+\tag{E2.1}
+\]">\[
+\mu=\delta_{-3/4}-\tfrac32\delta_{-1/4},\qquad
+F(z)=e^{3iz/4}\bigl(1-\tfrac32e^{-iz/2}\bigr).
+\tag{E2.1}
+\]</span>
+<p>On the real axis <span class="math" data-index="28" data-tex="\(|F|\ge1/2\)">\(|F|\ge1/2\)</span>, so the complex-window slow-decrease criterion holds. Its zeros are exactly</p>
+<span class="math math-display" id="eq-E2.2" data-index="29" data-tex="\[
+z=4\pi k-2i\log(3/2),\qquad k\in\mathbb Z.
+\tag{E2.2}
+\]">\[
+z=4\pi k-2i\log(3/2),\qquad k\in\mathbb Z.
+\tag{E2.2}
+\]</span>
+<p>Thus the whole upper half-plane is zero-free. At <span class="math" data-index="30" data-tex="\(z=\xi+i\eta\)">\(z=\xi+i\eta\)</span>, <span class="math" data-index="31" data-tex="\(\eta\ge0\)">\(\eta\ge0\)</span>,</p>
+<span class="math math-display" id="eq-E2.3" data-index="32" data-tex="\[
+\frac1{3/2+e^{-\eta/2}}
+\le e^{-\eta/4}|F(z)^{-1}|
+\le\frac1{3/2-e^{-\eta/2}}.
+\tag{E2.3}
+\]">\[
+\frac1{3/2+e^{-\eta/2}}
+\le e^{-\eta/4}|F(z)^{-1}|
+\le\frac1{3/2-e^{-\eta/2}}.
+\tag{E2.3}
+\]</span>
+<p>This follows by factoring <span class="math" data-index="33" data-tex="\((3/2)e^{\eta/2}\)">\((3/2)e^{\eta/2}\)</span> out of the second factor's modulus. The upper endpoint is attained at <span class="math" data-index="34" data-tex="\(\xi=0\)">\(\xi=0\)</span>, and the lower endpoint at <span class="math" data-index="35" data-tex="\(\xi=2\pi\)">\(\xi=2\pi\)</span>. Both tend to <span class="math" data-index="36" data-tex="\(2/3\)">\(2/3\)</span>. The reciprocal therefore grows at the precise exponential rate <span class="math" data-index="37" data-tex="\(e^{\eta/4}\)">\(e^{\eta/4}\)</span>; a polynomial bound alone would fail at <span class="math" data-index="38" data-tex="\(\xi=0\)">\(\xi=0\)</span>.</p>
+<p>One can see that rate directly in the inverse:</p>
+<span class="math math-display" id="eq-E2.4" data-index="39" data-tex="\[
+E=-\sum_{k=1}^{\infty}(3/2)^{-k}\delta_{\,3/4-k/2}.
+\tag{E2.4}
+\]">\[
+E=-\sum_{k=1}^{\infty}(3/2)^{-k}\delta_{\,3/4-k/2}.
+\tag{E2.4}
+\]</span>
+<p>The point locations escape to minus infinity, so the distributional sum is locally finite. Convolution with the two point masses cancels all nonzero-location coefficients and leaves <span class="math" data-index="40" data-tex="\(\delta_0\)">\(\delta_0\)</span>. Its closed convex support hull is <span class="math" data-index="41" data-tex="\((-\infty,1/4]\)">\((-\infty,1/4]\)</span>, whose support value for positive <span class="math" data-index="42" data-tex="\(\eta\)">\(\eta\)</span> is <span class="math" data-index="43" data-tex="\(\eta/4\)">\(\eta/4\)</span>. This agrees with (E2.3).</p>
+<h2 id="3-a-direction-can-be-safe-while-a-nearby-boundary-is-not">3. A direction can be safe while a nearby boundary is not</h2>
+<p><strong>Example 2.</strong> In two dimensions let <span class="math" data-index="44" data-tex="\(\mu=\partial_{x_1}\delta_0\)">\(\mu=\partial_{x_1}\delta_0\)</span>, so <span class="math" data-index="45" data-tex="\(F(z)=iz_1\)">\(F(z)=iz_1\)</span>. At every real center <span class="math" data-index="46" data-tex="\(\xi\)">\(\xi\)</span>, moving a distance one in the first coordinate, with the sign of <span class="math" data-index="47" data-tex="\(\xi_1\)">\(\xi_1\)</span>, makes <span class="math" data-index="48" data-tex="\(|F|\ge1\)">\(|F|\ge1\)</span>. The complex-window criterion with window radius <span class="math" data-index="49" data-tex="\(2\log(2+|\xi|)\)">\(2\log(2+|\xi|)\)</span> proves invertibility.</p>
+<p>On an angular set with <span class="math" data-index="50" data-tex="\(\eta_1\ge\varepsilon|\eta|\)">\(\eta_1\ge\varepsilon|\eta|\)</span>, <span class="math" data-index="51" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>,</p>
+<span class="math math-display" id="eq-E3.1" data-index="52" data-tex="\[
+|F(\xi+i\eta)|\ge|\eta_1|\ge\varepsilon|\eta|,
+\qquad
+|F(\xi+i\eta)^{-1}|\le(\varepsilon|\eta|)^{-1}.
+\tag{E3.1}
+\]">\[
+|F(\xi+i\eta)|\ge|\eta_1|\ge\varepsilon|\eta|,
+\qquad
+|F(\xi+i\eta)^{-1}|\le(\varepsilon|\eta|)^{-1}.
+\tag{E3.1}
+\]</span>
+<p>In contrast, the points <span class="math" data-index="53" data-tex="\(z=(0,iR)\)">\(z=(0,iR)\)</span> are zeros for every <span class="math" data-index="54" data-tex="\(R&gt;0\)">\(R&gt;0\)</span>. They eventually exceed every logarithmic barrier. Hence a cone including that direction fails the zero-free hypothesis. Compact angular sets inside <span class="math" data-index="55" data-tex="\(\{\eta_1&gt;0\}\)">\(\{\eta_1&gt;0\}\)</span> keep a positive distance from this boundary, exactly as the enlargement in (3.1) requires.</p>
+<h2 id="4-a-zero-free-transform-of-a-smooth-compact-kernel">4. A zero-free transform of a smooth compact kernel</h2>
+<p><strong>Example 3.</strong> The product</p>
+<span class="math math-display" id="eq-E4.1" data-index="56" data-tex="\[
+F(z)=\prod_{j\ge1}\frac{\sin(2^{-j}z)}{2^{-j}z}
+\tag{E4.1}
+\]">\[
+F(z)=\prod_{j\ge1}\frac{\sin(2^{-j}z)}{2^{-j}z}
+\tag{E4.1}
+\]</span>
+<p>has only real zeros. Proposition 5.1 proves that its inverse transform is a nonzero smooth kernel supported in <span class="math" data-index="57" data-tex="\([-1,1]\)">\([-1,1]\)</span>, and that it fails slow decrease. The proof uses locally uniform product convergence and the exact compact-support growth theorem; it does not assume existence of an infinite random sum.</p>
+<p>At <span class="math" data-index="58" data-tex="\(z=R+id\log(R+2)\)">\(z=R+id\log(R+2)\)</span>, with <span class="math" data-index="59" data-tex="\(J=\lfloor\log_2R\rfloor\)">\(J=\lfloor\log_2R\rfloor\)</span>,</p>
+<span class="math math-display" id="eq-E4.2" data-index="60" data-tex="\[
+\log|F(z)|\le
+d\log(R+2)-\tfrac{\log2}{2}J(J-1).
+\tag{E4.2}
+\]">\[
+\log|F(z)|\le
+d\log(R+2)-\tfrac{\log2}{2}J(J-1).
+\tag{E4.2}
+\]</span>
+<p>The negative term is quadratic in <span class="math" data-index="61" data-tex="\(\log R\)">\(\log R\)</span>. A reciprocal estimate consisting of a fixed power of <span class="math" data-index="62" data-tex="\(\rho\)">\(\rho\)</span> times <span class="math" data-index="63" data-tex="\(e^{A|\operatorname{Im}z|}\)">\(e^{A|\operatorname{Im}z|}\)</span> could supply only a lower bound linear in <span class="math" data-index="64" data-tex="\(\log R\)">\(\log R\)</span> on this path. Thus it cannot hold, despite zero-freeness of the entire upper half-plane.</p>
+<figure><img class="course-figure" width="2242" height="866" src="reproduce/L178/figures/exponential-rate-and-smooth-counterexample.png" alt="Exact rescaled reciprocal bounds for the two-atom kernel and finite-product evaluations with a rigorous tail bound for the smooth compact counterexample." /><figcaption class="native"><a href="reproduce/L178/figures/exponential-rate-and-smooth-counterexample.png">Open full-size PNG</a> · <a href="reproduce/L178/figures/exponential-rate-and-smooth-counterexample.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 2.</em> Left: the two exact endpoints in (E2.3), with limit <span class="math" data-index="65" data-tex="\(2/3\)">\(2/3\)</span>; the rescaling removes <span class="math" data-index="66" data-tex="\(e^{\eta/4}\)">\(e^{\eta/4}\)</span>. Right: the natural logarithm of the product (E4.1) at <span class="math" data-index="67" data-tex="\(R=2^J\)">\(R=2^J\)</span>, <span class="math" data-index="68" data-tex="\(d=6\)">\(d=6\)</span>, <span class="math" data-index="69" data-tex="\(J=4,\ldots,48\)">\(J=4,\ldots,48\)</span>. Each value uses <span class="math" data-index="70" data-tex="\(K=J+120\)">\(K=J+120\)</span> factors. Equations (5.6)–(5.7) bound its relative omitted tail by <span class="math" data-index="71" data-tex="\(2^{-240}\)">\(2^{-240}\)</span>, so the plotted samples represent the infinite product with that stated error. The orange curve is the proved upper bound (E4.2), and the dotted comparison is <span class="math" data-index="72" data-tex="\(-10\log(R+2)\)">\(-10\log(R+2)\)</span>. The proof establishes eventual failure of every fixed polynomial lower bound, not just this displayed comparison. Proof locators: Example 1 and complete proof, Proposition 5.1. Background: Grubb and Hörmander.</p>
+<p><strong>Example 4.</strong> A single point mass works in every direction. For <span class="math" data-index="73" data-tex="\(\mu=\delta_a\)">\(\mu=\delta_a\)</span>, <span class="math" data-index="74" data-tex="\(a\in\mathbb R^n\)">\(a\in\mathbb R^n\)</span>,</p>
+<span class="math math-display" id="eq-E4.3" data-index="75" data-tex="\[
+F(\zeta)=e^{-ia\cdot\zeta},\qquad
+u(w)=a\cdot\operatorname{Im}w,\qquad
+|F(\zeta)^{-1}|=e^{-a\cdot\operatorname{Im}\zeta}.
+\tag{E4.3}
+\]">\[
+F(\zeta)=e^{-ia\cdot\zeta},\qquad
+u(w)=a\cdot\operatorname{Im}w,\qquad
+|F(\zeta)^{-1}|=e^{-a\cdot\operatorname{Im}\zeta}.
+\tag{E4.3}
+\]</span>
+<p>Its inverse is <span class="math" data-index="76" data-tex="\(\delta_{-a}\)">\(\delta_{-a}\)</span>. Its normalized logarithm is already harmonic and independent of the scale or real center. This example allows the whole direction space in Theorem 1.1.</p>
+<h2 id="5-exercises-and-full-solutions">5. Exercises and full solutions</h2>
+<p>The exercises give 100 points in total.</p>
+<h3 id="exercise-1-the-scale-and-the-real-witness-10-points">Exercise 1. The scale and the real witness (10 points)</h3>
+<p>Suppose <span class="math" data-index="77" data-tex="\(r&gt;D\log(2+|\xi+i\eta|)\)">\(r&gt;D\log(2+|\xi+i\eta|)\)</span>, <span class="math" data-index="78" data-tex="\(|\eta|=r\)">\(|\eta|=r\)</span>, and <span class="math" data-index="79" data-tex="\(|h|&lt;\log(2+|\xi|)\)">\(|h|&lt;\log(2+|\xi|)\)</span>. Prove <span class="math" data-index="80" data-tex="\(|h/r|&lt;1/D\)">\(|h/r|&lt;1/D\)</span>. If <span class="math" data-index="81" data-tex="\(|F(\xi+h)|&gt;(b+|\xi|)^{-b}\)">\(|F(\xi+h)|&gt;(b+|\xi|)^{-b}\)</span>, <span class="math" data-index="82" data-tex="\(b\ge2\)">\(b\ge2\)</span>, give a lower bound for <span class="math" data-index="83" data-tex="\(r^{-1}\log|F(\xi+h)|\)">\(r^{-1}\log|F(\xi+h)|\)</span> independent of <span class="math" data-index="84" data-tex="\(\xi,\eta\)">\(\xi,\eta\)</span>.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-index="85" data-tex="\(\rho=2+|\xi+i\eta|\)">\(\rho=2+|\xi+i\eta|\)</span>. Then <span class="math" data-index="86" data-tex="\(2+|\xi|\le\rho\)">\(2+|\xi|\le\rho\)</span>, so <span class="math" data-index="87" data-tex="\(|h|/r&lt;\log\rho/(D\log\rho)=1/D\)">\(|h|/r&lt;\log\rho/(D\log\rho)=1/D\)</span>. Also <span class="math" data-index="88" data-tex="\(b+|\xi|\le b\rho\)">\(b+|\xi|\le b\rho\)</span> and <span class="math" data-index="89" data-tex="\(r&gt;D\log\rho\ge D\log2\)">\(r&gt;D\log\rho\ge D\log2\)</span>. Hence the normalized logarithm exceeds <span class="math" data-index="90" data-tex="\(-b/D-b\log b/(D\log2)\)">\(-b/D-b\log b/(D\log2)\)</span>. This is the fixed compact witness in Lemma 2.1. Allocate 4 points to the radius and 6 to the uniform lower bound.</p>
+<h3 id="exercise-2-verify-the-harmonic-ball-10-points">Exercise 2. Verify the harmonic ball (10 points)</h3>
+<p>In Figure 1 use <span class="math" data-index="91" data-tex="\(D_0=1\)">\(D_0=1\)</span>, <span class="math" data-index="92" data-tex="\(d=1/8\)">\(d=1/8\)</span>, <span class="math" data-index="93" data-tex="\(\xi=40\)">\(\xi=40\)</span>, and <span class="math" data-index="94" data-tex="\(r=64\)">\(r=64\)</span>. Verify the proof's barrier condition. Explain why every <span class="math" data-index="95" data-tex="\(w\in B(i,1/4)\)">\(w\in B(i,1/4)\)</span> satisfies the zero-free inequality after returning to the original frequency.</p>
+<p><strong>Solution.</strong> Here <span class="math" data-index="96" data-tex="\(\beta=1+\log3/\log2&lt;2.585\)">\(\beta=1+\log3/\log2&lt;2.585\)</span>, so <span class="math" data-index="97" data-tex="\(D=4\beta+1&lt;11.34\)">\(D=4\beta+1&lt;11.34\)</span>. The modulus of <span class="math" data-index="98" data-tex="\(40+64i\)">\(40+64i\)</span> is <span class="math" data-index="99" data-tex="\(\sqrt{5696}&lt;76\)">\(\sqrt{5696}&lt;76\)</span>, giving <span class="math" data-index="100" data-tex="\(\log(2+|40+64i|)&lt;\log78&lt;4.357\)">\(\log(2+|40+64i|)&lt;\log78&lt;4.357\)</span>. Thus <span class="math" data-index="101" data-tex="\(D\log\rho&lt;49.41&lt;64\)">\(D\log\rho&lt;49.41&lt;64\)</span>. In the normalized ball, <span class="math" data-index="102" data-tex="\(\operatorname{Im}w&gt;3/4\)">\(\operatorname{Im}w&gt;3/4\)</span> and <span class="math" data-index="103" data-tex="\(|w|&lt;5/4\)">\(|w|&lt;5/4\)</span>. The new imaginary part exceeds <span class="math" data-index="104" data-tex="\(48\)">\(48\)</span>, whereas <span class="math" data-index="105" data-tex="\(\log(2+|40+64w|)\le\log(3\rho)&lt;\log234&lt;5.46\)">\(\log(2+|40+64w|)\le\log(3\rho)&lt;\log234&lt;5.46\)</span>. Hence every point of the ball lies in the upper zero-free region for <span class="math" data-index="106" data-tex="\(D_0=1\)">\(D_0=1\)</span>. Allocate 5 points to each inequality.</p>
+<h3 id="exercise-3-angular-enlargement-in-two-dimensions-10-points">Exercise 3. Angular enlargement in two dimensions (10 points)</h3>
+<p>Let <span class="math" data-index="107" data-tex="\(\Gamma=\{v:v_1&gt;0\}\)">\(\Gamma=\{v:v_1&gt;0\}\)</span>, and <span class="math" data-index="108" data-tex="\(S=\{\theta\in\mathbb S^1:\theta_1\ge\sqrt3/2\}\)">\(S=\{\theta\in\mathbb S^1:\theta_1\ge\sqrt3/2\}\)</span>. Show that <span class="math" data-index="109" data-tex="\(d=1/16\)">\(d=1/16\)</span> is valid in (3.1). Explain what fails if <span class="math" data-index="110" data-tex="\(S\)">\(S\)</span> is replaced by all directions with <span class="math" data-index="111" data-tex="\(\theta_1&gt;0\)">\(\theta_1&gt;0\)</span>.</p>
+<p><strong>Solution.</strong> For <span class="math" data-index="112" data-tex="\(\operatorname{dist}(\omega,S)\le1/4\)">\(\operatorname{dist}(\omega,S)\le1/4\)</span>, choose a closest point <span class="math" data-index="113" data-tex="\(\theta\in S\)">\(\theta\in S\)</span>, which exists by compactness. Then <span class="math" data-index="114" data-tex="\(\omega_1\ge\theta_1-|\omega-\theta|\ge\sqrt3/2-1/4&gt;0\)">\(\omega_1\ge\theta_1-|\omega-\theta|\ge\sqrt3/2-1/4&gt;0\)</span>. Thus <span class="math" data-index="115" data-tex="\(T\subset\Gamma\)">\(T\subset\Gamma\)</span>. The full set of strictly positive first-coordinate directions is not compact in the sphere; directions approach <span class="math" data-index="116" data-tex="\((0,1)\)">\((0,1)\)</span>. No positive enlargement radius keeps them inside <span class="math" data-index="117" data-tex="\(\Gamma\)">\(\Gamma\)</span>. For <span class="math" data-index="118" data-tex="\(F(z)=iz_1\)">\(F(z)=iz_1\)</span>, the limiting direction has zeros <span class="math" data-index="119" data-tex="\((0,iR)\)">\((0,iR)\)</span> at arbitrarily large imaginary size. Allocate 6 points to the estimate and 4 to the boundary obstruction.</p>
+<h3 id="exercise-4-translation-of-a-kernel-10-points">Exercise 4. Translation of a kernel (10 points)</h3>
+<p>If <span class="math" data-index="120" data-tex="\(G\)">\(G\)</span> is the transform of <span class="math" data-index="121" data-tex="\(\nu\)">\(\nu\)</span>, find the transform of <span class="math" data-index="122" data-tex="\(\tau_a\nu\)">\(\tau_a\nu\)</span> and its normalized logarithm. If <span class="math" data-index="123" data-tex="\(|G(\zeta)^{-1}|\le e^{A|\operatorname{Im}\zeta|}\)">\(|G(\zeta)^{-1}|\le e^{A|\operatorname{Im}\zeta|}\)</span>, give a pure exponential reciprocal bound after translation.</p>
+<p><strong>Solution.</strong> Translation in the exponential pairing gives <span class="math" data-index="124" data-tex="\(F(\zeta)=e^{-ia\cdot\zeta}G(\zeta)\)">\(F(\zeta)=e^{-ia\cdot\zeta}G(\zeta)\)</span>. Since the real center contributes a factor of modulus one,</p>
+<span class="math math-display" id="eq-S4.1" data-index="125" data-tex="\[
+r^{-1}\log|F(\xi+rw)|
+=a\cdot\operatorname{Im}w+r^{-1}\log|G(\xi+rw)|.
+\tag{S4.1}
+\]">\[
+r^{-1}\log|F(\xi+rw)|
+=a\cdot\operatorname{Im}w+r^{-1}\log|G(\xi+rw)|.
+\tag{S4.1}
+\]</span>
+<p>The reciprocal has the factor <span class="math" data-index="126" data-tex="\(e^{-a\cdot\operatorname{Im}\zeta}\le e^{|a||\operatorname{Im}\zeta|}\)">\(e^{-a\cdot\operatorname{Im}\zeta}\le e^{|a||\operatorname{Im}\zeta|}\)</span>. Its bound is therefore <span class="math" data-index="127" data-tex="\(e^{(A+|a|)|\operatorname{Im}\zeta|}\)">\(e^{(A+|a|)|\operatorname{Im}\zeta|}\)</span>. Allocate 4 points to the transform, 3 to the normalized logarithm, and 3 to the new bound.</p>
+<h3 id="exercise-5-integral-convergence-alone-does-not-control-a-value-15-points">Exercise 5. Integral convergence alone does not control a value (15 points)</h3>
+<p>On <span class="math" data-index="128" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, consider <span class="math" data-index="129" data-tex="\(v_j(w)=j^{-1}\log|w-i|\)">\(v_j(w)=j^{-1}\log|w-i|\)</span>. Show that these functions are locally uniformly bounded above and converge to zero in local <span class="math" data-index="130" data-tex="\(L^1\)">\(L^1\)</span>, but all have value minus infinity at <span class="math" data-index="131" data-tex="\(i\)">\(i\)</span>. Identify the additional property used in (3.8).</p>
+<p><strong>Solution.</strong> On a compact set the distance to <span class="math" data-index="132" data-tex="\(i\)">\(i\)</span> has a finite upper bound, so all <span class="math" data-index="133" data-tex="\(v_j\)">\(v_j\)</span> have a common upper bound, for example the nonnegative part of the logarithm of that distance bound. The function <span class="math" data-index="134" data-tex="\(\log|w-i|\)">\(\log|w-i|\)</span> is locally integrable: near <span class="math" data-index="135" data-tex="\(i\)">\(i\)</span>, polar coordinates give the finite integral <span class="math" data-index="136" data-tex="\(2\pi\int_0^\varepsilon r|\log r|\,dr\)">\(2\pi\int_0^\varepsilon r|\log r|\,dr\)</span>; away from <span class="math" data-index="137" data-tex="\(i\)">\(i\)</span> it is continuous. Dividing its local integral norm by <span class="math" data-index="138" data-tex="\(j\)">\(j\)</span> proves convergence to zero. Its value at <span class="math" data-index="139" data-tex="\(i\)">\(i\)</span> is nevertheless minus infinity for every <span class="math" data-index="140" data-tex="\(j\)">\(j\)</span>. A common zero-free neighborhood makes the actual normalized logarithms harmonic near the observation point. Their ball-mean identity then bounds their absolute values by the local integral norms. Allocate 4 points to the upper bound, 6 to integral convergence, and 5 to the missing harmonic-neighborhood property.</p>
+<h3 id="exercise-6-a-certified-product-tail-15-points">Exercise 6. A certified product tail (15 points)</h3>
+<p>Take <span class="math" data-index="141" data-tex="\(R=2^{20}\)">\(R=2^{20}\)</span>, <span class="math" data-index="142" data-tex="\(z=R+6i\log(R+2)\)">\(z=R+6i\log(R+2)\)</span>, and <span class="math" data-index="143" data-tex="\(K=140\)">\(K=140\)</span>. Prove that the relative tail in (5.7) is smaller than <span class="math" data-index="144" data-tex="\(2^{-240}\)">\(2^{-240}\)</span>. Give the argument that makes the same bound valid at the plotted points <span class="math" data-index="145" data-tex="\(R=2^J\)">\(R=2^J\)</span>, <span class="math" data-index="146" data-tex="\(4\le J\le48\)">\(4\le J\le48\)</span>, <span class="math" data-index="147" data-tex="\(K=J+120\)">\(K=J+120\)</span>.</p>
+<p><strong>Solution.</strong> At all these points <span class="math" data-index="148" data-tex="\(|z|&lt;2R\)">\(|z|&lt;2R\)</span>. Indeed the ratio <span class="math" data-index="149" data-tex="\(\log(R+2)/R\)">\(\log(R+2)/R\)</span> decreases for <span class="math" data-index="150" data-tex="\(R\ge16\)">\(R\ge16\)</span>, and at <span class="math" data-index="151" data-tex="\(R=16\)">\(R=16\)</span> one has <span class="math" data-index="152" data-tex="\(6\log18&lt;\sqrt3\,16\)">\(6\log18&lt;\sqrt3\,16\)</span>. This follows, for example, from <span class="math" data-index="153" data-tex="\(\log18&lt;3\)">\(\log18&lt;3\)</span> and <span class="math" data-index="154" data-tex="\(18&lt;16\sqrt3\)">\(18&lt;16\sqrt3\)</span>; differentiation verifies the decreasing ratio because <span class="math" data-index="155" data-tex="\(R/(R+2)&lt;\log(R+2)\)">\(R/(R+2)&lt;\log(R+2)\)</span>. Thus <span class="math" data-index="156" data-tex="\(|z|^2&lt;4R^2\)">\(|z|^2&lt;4R^2\)</span>. For <span class="math" data-index="157" data-tex="\(K=J+120\)">\(K=J+120\)</span>,</p>
+<span class="math math-display" id="eq-S6.1" data-index="158" data-tex="\[
+s_K&lt;\frac{e^{1/2}}{18}\,2^{-238}&lt;2^{-241}.
+\tag{S6.1}
+\]">\[
+s_K&lt;\frac{e^{1/2}}{18}\,2^{-238}&lt;2^{-241}.
+\tag{S6.1}
+\]</span>
+<p>The last inequality uses <span class="math" data-index="159" data-tex="\(e^{1/2}&lt;2\)">\(e^{1/2}&lt;2\)</span> and <span class="math" data-index="160" data-tex="\(2/18&lt;1/8\)">\(2/18&lt;1/8\)</span>. Also <span class="math" data-index="161" data-tex="\(|z|2^{-K-1}&lt;2^{-120}&lt;1/2\)">\(|z|2^{-K-1}&lt;2^{-120}&lt;1/2\)</span>, so (5.7) applies and gives <span class="math" data-index="162" data-tex="\(2s_K&lt;2^{-240}\)">\(2s_K&lt;2^{-240}\)</span>. None of these points is a zero because its imaginary part is positive. Allocate 5 points to <span class="math" data-index="163" data-tex="\(|z|&lt;2R\)">\(|z|&lt;2R\)</span>, 6 to the tail sum, and 4 to checking all hypotheses.</p>
+<h3 id="exercise-7-exact-zero-multiplicities-of-the-smooth-kernel-15-points">Exercise 7. Exact zero multiplicities of the smooth kernel (15 points)</h3>
+<p>For a nonzero integer <span class="math" data-index="164" data-tex="\(m\)">\(m\)</span>, determine the multiplicity of the zero <span class="math" data-index="165" data-tex="\(z=2\pi m\)">\(z=2\pi m\)</span> of (5.1). Prove that there are no other zeros.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-index="166" data-tex="\(|m|=2^k\ell\)">\(|m|=2^k\ell\)</span>, with <span class="math" data-index="167" data-tex="\(\ell\)">\(\ell\)</span> odd. The <span class="math" data-index="168" data-tex="\(j\)">\(j\)</span>-th factor vanishes there precisely when <span class="math" data-index="169" data-tex="\(2^{1-j}m\)">\(2^{1-j}m\)</span> is a nonzero integer, namely for <span class="math" data-index="170" data-tex="\(j=1,\ldots,k+1\)">\(j=1,\ldots,k+1\)</span>. Each of these sine zeros is simple, and its denominator is nonzero. The remaining finite factors and convergent product tail are nonzero near that point, by the nonvanishing tail argument in Proposition 5.1. The multiplicity is <span class="math" data-index="171" data-tex="\(k+1=1+v_2(|m|)\)">\(k+1=1+v_2(|m|)\)</span>. The first factor already has its zeros at all <span class="math" data-index="172" data-tex="\(2\pi m\)">\(2\pi m\)</span>, <span class="math" data-index="173" data-tex="\(m\ne0\)">\(m\ne0\)</span>, and every other factor's zeros belong to this set. Outside their union, the locally convergent nonzero tail shows that the product is nonzero. Allocate 6 points to identifying the factors, 5 to multiplicity, and 4 to completeness of the zero set.</p>
+<h3 id="exercise-8-a-second-exact-inverse-and-its-support-rate-15-points">Exercise 8. A second exact inverse and its support rate (15 points)</h3>
+<p>Find a locally finite point-mass inverse of <span class="math" data-index="174" data-tex="\(\mu=\delta_{-2/3}-(5/4)\delta_{-1/3}\)">\(\mu=\delta_{-2/3}-(5/4)\delta_{-1/3}\)</span>. Find its closed convex support hull and the precise exponential growth rate of <span class="math" data-index="175" data-tex="\(F(i\eta)^{-1}\)">\(F(i\eta)^{-1}\)</span> as <span class="math" data-index="176" data-tex="\(\eta\to+\infty\)">\(\eta\to+\infty\)</span>.</p>
+<p><strong>Solution.</strong> Set <span class="math" data-index="177" data-tex="\(a=-2/3\)">\(a=-2/3\)</span>, <span class="math" data-index="178" data-tex="\(b=1/3\)">\(b=1/3\)</span>, and <span class="math" data-index="179" data-tex="\(\lambda=5/4\)">\(\lambda=5/4\)</span>. Then</p>
+<span class="math math-display" id="eq-S8.1" data-index="180" data-tex="\[
+E=-\sum_{k\ge1}\lambda^{-k}\delta_{-a-kb}
+=-\sum_{k\ge1}(5/4)^{-k}\delta_{\,2/3-k/3}.
+\tag{S8.1}
+\]">\[
+E=-\sum_{k\ge1}\lambda^{-k}\delta_{-a-kb}
+=-\sum_{k\ge1}(5/4)^{-k}\delta_{\,2/3-k/3}.
+\tag{S8.1}
+\]</span>
+<p>The locations tend to minus infinity, making the sum locally finite. The first translated sum in <span class="math" data-index="181" data-tex="\(\mu*E\)">\(\mu*E\)</span> has coefficients <span class="math" data-index="182" data-tex="\(-\lambda^{-k}\)">\(-\lambda^{-k}\)</span> at <span class="math" data-index="183" data-tex="\(-kb\)">\(-kb\)</span>, <span class="math" data-index="184" data-tex="\(k\ge1\)">\(k\ge1\)</span>. The second has coefficient <span class="math" data-index="185" data-tex="\(1\)">\(1\)</span> at zero and <span class="math" data-index="186" data-tex="\(+\lambda^{-k}\)">\(+\lambda^{-k}\)</span> at those same other locations. Thus the convolution is <span class="math" data-index="187" data-tex="\(\delta_0\)">\(\delta_0\)</span>. The rightmost support point is <span class="math" data-index="188" data-tex="\(1/3\)">\(1/3\)</span>, so its hull is <span class="math" data-index="189" data-tex="\((-\infty,1/3]\)">\((-\infty,1/3]\)</span>. Factoring the transform gives</p>
+<span class="math math-display" id="eq-S8.2" data-index="190" data-tex="\[
+|F(i\eta)^{-1}|=
+\frac{e^{\eta/3}}{5/4-e^{-\eta/3}}
+\sim\tfrac45e^{\eta/3}.
+\tag{S8.2}
+\]">\[
+|F(i\eta)^{-1}|=
+\frac{e^{\eta/3}}{5/4-e^{-\eta/3}}
+\sim\tfrac45e^{\eta/3}.
+\tag{S8.2}
+\]</span>
+<p>The exponential rate is exactly <span class="math" data-index="191" data-tex="\(1/3\)">\(1/3\)</span>, equal to the hull's support value at the unit positive direction. Allocate 6 points to the inverse and cancellation, 4 to the hull, and 5 to the growth rate.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Richard B. Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004. <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Open course materials</a>.</li>
+<li>Gerd Grubb, <em>Fourier transformation of distributions</em>. <a href="https://web.math.ku.dk/~grubb/dist5.pdf">Author-hosted chapter</a>.</li>
+<li><a href="AN02-L163.html">Slow decrease and entire Fourier division</a>, Theorem 1.1.</li>
+<li><a href="AN02-L143.html">Local compactness and Hartogs bounds</a>, HC1.</li>
+<li><a href="AN02-L147.html">Entire logarithms and the approximation of plurisubharmonic functions</a>, GD4.</li>
+<li><a href="AN02-L122.html">Compact Fourier division and multiplicity-sensitive annihilators</a>, Theorem CF2.1.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators</em>, volumes I and II, Springer. Background; the required estimates and all example and exercise proofs are supplied here or in the preceding linked lessons.</li>
+</ul>
+<h2 id="complete-proof">Complete proof</h2>
+<p>A transform can avoid zero and still be extremely small. For a compact convolution kernel, slow decrease supplies the additional control. We prove that slow decrease and a zero-free cone give an exponential bound for the reciprocal outside a logarithmic barrier. Conversely, a polynomial times exponential reciprocal bound implies slow decrease. The proof rescales an imaginary frequency to unit length, uses compactness for its logarithm, and then uses the mean value identity where that logarithm is harmonic.</p>
+<p>Basic references are Richard Melrose's <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Differential Analysis</a>, Gerd Grubb's <a href="https://web.math.ku.dk/~grubb/dist5.pdf">Fourier transformation of distributions</a>, and Lars Hörmander's <em>The Analysis of Linear Partial Differential Operators</em>, volumes I and II. Required preceding proofs are:</p>
+<ul>
+<li><a href="AN02-L163.html">Slow decrease and entire Fourier division</a>, Theorem 1.1: the exact real-window and complex-window criteria for an invertible compact kernel.</li>
+<li><a href="AN02-L143.html#hc1-the-precise-alternative-and-compact-comparison">Local compactness and Hartogs bounds</a>, HC1: a locally upper-bounded PSH sequence either collapses uniformly on compact sets or has a proper local integral limit along a subsequence.</li>
+<li><a href="AN02-L147.html#gd4-scalar-holomorphic-logarithms-are-proper-psh-and-locally-integrable">Entire logarithms and the approximation of plurisubharmonic functions</a>, GD4: the proper PSH logarithm of a nonzero entire scalar function.</li>
+<li><a href="AN02-L122.html#2-the-compact-support-growth-criterion">Compact Fourier division and multiplicity-sensitive annihilators</a>, Theorem CF2.1: the entire growth criterion for a compact inverse Fourier transform.</li>
+</ul>
+<p>Pairings are complex-linear. Let <span class="math" data-index="192" data-tex="\(\mu\in\mathcal E&#x27;(\mathbb R^n)\)">\(\mu\in\mathcal E&#x27;(\mathbb R^n)\)</span>, <span class="math" data-index="193" data-tex="\(n\ge1\)">\(n\ge1\)</span>, and write</p>
+<span class="math math-display" id="eq-1.1" data-index="194" data-tex="\[
+F(\zeta)=\langle\mu,e^{-ix\cdot\zeta}\rangle,\qquad
+\rho(\zeta)=2+|\zeta|.
+\tag{1.1}
+\]">\[
+F(\zeta)=\langle\mu,e^{-ix\cdot\zeta}\rangle,\qquad
+\rho(\zeta)=2+|\zeta|.
+\tag{1.1}
+\]</span>
+<p>There are constants <span class="math" data-index="195" data-tex="\(C\ge1\)">\(C\ge1\)</span>, <span class="math" data-index="196" data-tex="\(m\ge0\)">\(m\ge0\)</span>, and <span class="math" data-index="197" data-tex="\(L\ge0\)">\(L\ge0\)</span> such that</p>
+<span class="math math-display" id="eq-1.2" data-index="198" data-tex="\[
+|F(\zeta)|\le C\rho(\zeta)^m e^{L|\operatorname{Im}\zeta|}.
+\tag{1.2}
+\]">\[
+|F(\zeta)|\le C\rho(\zeta)^m e^{L|\operatorname{Im}\zeta|}.
+\tag{1.2}
+\]</span>
+<p>Indeed, a finite-order bound on a compact neighborhood of the support, applied to the exponential with a fixed cutoff, gives (1.2). The growth criterion cited above supplies the converse when needed.</p>
+<p>We call <span class="math" data-index="199" data-tex="\(\mu\)">\(\mu\)</span> <strong>invertible</strong> in the sense of Theorem 1.1 of the slow-decrease lesson. In particular, invertibility gives a constant <span class="math" data-index="200" data-tex="\(b\ge2\)">\(b\ge2\)</span> such that for every real <span class="math" data-index="201" data-tex="\(\xi\)">\(\xi\)</span>,</p>
+<span class="math math-display" id="eq-1.3" data-index="202" data-tex="\[
+\sup_{\substack{h\in\mathbb R^n\\|h|&lt;\log(2+|\xi|)}}
+ |F(\xi+h)|&gt;(b+|\xi|)^{-b}.
+\tag{1.3}
+\]">\[
+\sup_{\substack{h\in\mathbb R^n\\|h|&lt;\log(2+|\xi|)}}
+ |F(\xi+h)|&gt;(b+|\xi|)^{-b}.
+\tag{1.3}
+\]</span>
+<p>It is also equivalent to one lower bound on complex windows of radius <span class="math" data-index="203" data-tex="\(B\log(2+|\xi|)\)">\(B\log(2+|\xi|)\)</span>, with lower value <span class="math" data-index="204" data-tex="\((B+|\xi|)^{-B}\)">\((B+|\xi|)^{-B}\)</span>.</p>
+<h2 id="1-the-reciprocal-criterion-on-an-angular-cone">1. The reciprocal criterion on an angular cone</h2>
+<p>Let <span class="math" data-index="205" data-tex="\(\Gamma\subset\mathbb R^n\)">\(\Gamma\subset\mathbb R^n\)</span> be nonempty, open, and invariant under positive dilations. Convexity is not required here. The set <span class="math" data-index="206" data-tex="\(\Gamma=\mathbb R^n\)">\(\Gamma=\mathbb R^n\)</span> is allowed. An <strong>angular set</strong> means a nonempty compact subset <span class="math" data-index="207" data-tex="\(S\)">\(S\)</span> of <span class="math" data-index="208" data-tex="\(\Gamma\cap\mathbb S^{n-1}\)">\(\Gamma\cap\mathbb S^{n-1}\)</span>; put</p>
+<span class="math math-display" id="eq-1.4" data-index="209" data-tex="\[
+\Lambda_S=\{r\theta:r\ge0,\ \theta\in S\}.
+\tag{1.4}
+\]">\[
+\Lambda_S=\{r\theta:r\ge0,\ \theta\in S\}.
+\tag{1.4}
+\]</span>
+<p>Every nontrivial closed cone contained in <span class="math" data-index="210" data-tex="\(\Gamma\cup\{0\}\)">\(\Gamma\cup\{0\}\)</span> has this form. A cone containing only zero gives no points beyond the positive logarithmic barrier.</p>
+<p><strong>Theorem 1.1 (zero-free and reciprocal criteria).</strong> The following are equivalent:</p>
+<ol>
+<li>The kernel is invertible, and for every angular set <span class="math" data-index="211" data-tex="\(S\)">\(S\)</span> there is <span class="math" data-index="212" data-tex="\(D_S&gt;0\)">\(D_S&gt;0\)</span> such that <span class="math" data-index="213" data-tex="\(F(\zeta)\ne0\)">\(F(\zeta)\ne0\)</span> whenever</li>
+</ol>
+<span class="math math-display" id="eq-1.5" data-index="214" data-tex="\[
+\operatorname{Im}\zeta\in\Lambda_S,\qquad
+|\operatorname{Im}\zeta|&gt;D_S\log\rho(\zeta).
+\tag{1.5}
+\]">\[
+\operatorname{Im}\zeta\in\Lambda_S,\qquad
+|\operatorname{Im}\zeta|&gt;D_S\log\rho(\zeta).
+\tag{1.5}
+\]</span>
+<ol start="2">
+<li>For every angular set <span class="math" data-index="215" data-tex="\(S\)">\(S\)</span>, there are <span class="math" data-index="216" data-tex="\(D_S&gt;0\)">\(D_S&gt;0\)</span>, <span class="math" data-index="217" data-tex="\(C_S\ge1\)">\(C_S\ge1\)</span>, <span class="math" data-index="218" data-tex="\(N_S\ge0\)">\(N_S\ge0\)</span>, and <span class="math" data-index="219" data-tex="\(A_S\ge0\)">\(A_S\ge0\)</span> such that <span class="math" data-index="220" data-tex="\(F\ne0\)">\(F\ne0\)</span> in (1.5) and</li>
+</ol>
+<span class="math math-display" id="eq-1.6" data-index="221" data-tex="\[
+|F(\zeta)^{-1}|\le
+C_S\rho(\zeta)^{N_S}e^{A_S|\operatorname{Im}\zeta|}.
+\tag{1.6}
+\]">\[
+|F(\zeta)^{-1}|\le
+C_S\rho(\zeta)^{N_S}e^{A_S|\operatorname{Im}\zeta|}.
+\tag{1.6}
+\]</span>
+<p>In condition 1, increasing <span class="math" data-index="222" data-tex="\(D_S\)">\(D_S\)</span> permits the stronger bound</p>
+<span class="math math-display" id="eq-1.7" data-index="223" data-tex="\[
+|F(\zeta)^{-1}|\le e^{A_S|\operatorname{Im}\zeta|}.
+\tag{1.7}
+\]">\[
+|F(\zeta)^{-1}|\le e^{A_S|\operatorname{Im}\zeta|}.
+\tag{1.7}
+\]</span>
+<p>All constants are uniform over <span class="math" data-index="224" data-tex="\(S\)">\(S\)</span>, but may depend on <span class="math" data-index="225" data-tex="\(S\)">\(S\)</span>.</p>
+<p>Sections 2 and 3 prove <span class="math" data-index="226" data-tex="\(1\Rightarrow2\)">\(1\Rightarrow2\)</span>, including (1.7). Section 4 proves the converse. This theorem concerns reciprocal growth; construction of a common cone-supported fundamental solution uses the separate hypotheses and proof of <a href="AN02-L117.html">Logarithmic Fourier graphs construct a cone-supported inverse</a>.</p>
+<h2 id="2-rescaling-preserves-a-finite-logarithmic-witness">2. Rescaling preserves a finite logarithmic witness</h2>
+<p><strong>Lemma 2.1 (normalized logarithms do not collapse).</strong> Assume (1.2) and invertibility. Fix <span class="math" data-index="227" data-tex="\(D&gt;0\)">\(D&gt;0\)</span>. For any sequence</p>
+<span class="math math-display" id="eq-2.1" data-index="228" data-tex="\[
+\zeta_j=\xi_j+i\eta_j,\qquad
+r_j=|\eta_j|&gt;D\log\rho_j,\qquad
+\rho_j=2+|\zeta_j|,
+\tag{2.1}
+\]">\[
+\zeta_j=\xi_j+i\eta_j,\qquad
+r_j=|\eta_j|&gt;D\log\rho_j,\qquad
+\rho_j=2+|\zeta_j|,
+\tag{2.1}
+\]</span>
+<p>the proper PSH functions</p>
+<span class="math math-display" id="eq-2.2" data-index="229" data-tex="\[
+u_j(w)=r_j^{-1}\log|F(\xi_j+r_jw)|,\qquad w\in\mathbb C^n,
+\tag{2.2}
+\]">\[
+u_j(w)=r_j^{-1}\log|F(\xi_j+r_jw)|,\qquad w\in\mathbb C^n,
+\tag{2.2}
+\]</span>
+<p>are locally uniformly bounded above and have a subsequence converging in <span class="math" data-index="230" data-tex="\(L^1_{\mathrm{loc}}\)">\(L^1_{\mathrm{loc}}\)</span> to a proper PSH function.</p>
+<p><strong>Proof.</strong> Since <span class="math" data-index="231" data-tex="\(r_j&gt;D\log2\)">\(r_j&gt;D\log2\)</span>, all scale factors are bounded away from zero. For <span class="math" data-index="232" data-tex="\(|w|\le R\)">\(|w|\le R\)</span>,</p>
+<span class="math math-display" id="eq-2.3" data-index="233" data-tex="\[
+2+|\xi_j+r_jw|\le(1+R)\rho_j.
+\tag{2.3}
+\]">\[
+2+|\xi_j+r_jw|\le(1+R)\rho_j.
+\tag{2.3}
+\]</span>
+<p>Thus (1.2) gives the locally uniform upper bound</p>
+<span class="math math-display" id="eq-2.4" data-index="234" data-tex="\[
+u_j(w)\le L|\operatorname{Im}w|+\frac mD+
+\frac{\log C+m\log(1+R)}{D\log2}.
+\tag{2.4}
+\]">\[
+u_j(w)\le L|\operatorname{Im}w|+\frac mD+
+\frac{\log C+m\log(1+R)}{D\log2}.
+\tag{2.4}
+\]</span>
+<p>The proper PSH assertion follows from GD4 of the entire-logarithm lesson, since invertibility implies <span class="math" data-index="235" data-tex="\(F\not\equiv0\)">\(F\not\equiv0\)</span>.</p>
+<p>Choose <span class="math" data-index="236" data-tex="\(h_j\)">\(h_j\)</span> from (1.3), and set <span class="math" data-index="237" data-tex="\(w_j=h_j/r_j\)">\(w_j=h_j/r_j\)</span>. These points lie in the fixed compact real ball <span class="math" data-index="238" data-tex="\(|w|\le1/D\)">\(|w|\le1/D\)</span>. With <span class="math" data-index="239" data-tex="\(b\ge2\)">\(b\ge2\)</span>,</p>
+<span class="math math-display" id="eq-2.5" data-index="240" data-tex="\[
+\begin{aligned}
+u_j(w_j)&amp;&gt;-b\,\frac{\log(b+|\xi_j|)}{r_j}\\
+&amp;\ge-\frac bD-\frac{b\log b}{D\log2}.
+\end{aligned}
+\tag{2.5}
+\]">\[
+\begin{aligned}
+u_j(w_j)&amp;&gt;-b\,\frac{\log(b+|\xi_j|)}{r_j}\\
+&amp;\ge-\frac bD-\frac{b\log b}{D\log2}.
+\end{aligned}
+\tag{2.5}
+\]</span>
+<p>Here <span class="math" data-index="241" data-tex="\(b+|\xi_j|\le b\rho_j\)">\(b+|\xi_j|\le b\rho_j\)</span>. The finite witness (2.5) rules out uniform collapse on that compact ball. Apply the exact local compactness alternative HC1 of the preceding lesson on the connected domain <span class="math" data-index="242" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>. Its other alternative is the required proper local integral limit. <span class="math" data-index="243" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The lemma uses the imaginary size as its scale. It allows that size to be much larger than the logarithmic window on the real axis.</p>
+<h2 id="3-a-zero-free-neighborhood-controls-the-negative-values">3. A zero-free neighborhood controls the negative values</h2>
+<p>Fix an angular set <span class="math" data-index="244" data-tex="\(S\)">\(S\)</span>. Openness of <span class="math" data-index="245" data-tex="\(\Gamma\)">\(\Gamma\)</span> and compactness of <span class="math" data-index="246" data-tex="\(S\)">\(S\)</span> let us choose <span class="math" data-index="247" data-tex="\(0&lt;d\le1/8\)">\(0&lt;d\le1/8\)</span> so that</p>
+<span class="math math-display" id="eq-3.1" data-index="248" data-tex="\[
+T=\{\omega\in\mathbb S^{n-1}:
+\operatorname{dist}(\omega,S)\le4d\}\subset\Gamma.
+\tag{3.1}
+\]">\[
+T=\{\omega\in\mathbb S^{n-1}:
+\operatorname{dist}(\omega,S)\le4d\}\subset\Gamma.
+\tag{3.1}
+\]</span>
+<p>This is an angular set. Let <span class="math" data-index="249" data-tex="\(D_0&gt;0\)">\(D_0&gt;0\)</span> be its zero-free constant in (1.5), and put</p>
+<span class="math math-display" id="eq-3.2" data-index="250" data-tex="\[
+\beta=1+\frac{\log3}{\log2},\qquad D=4\beta D_0+1.
+\tag{3.2}
+\]">\[
+\beta=1+\frac{\log3}{\log2},\qquad D=4\beta D_0+1.
+\tag{3.2}
+\]</span>
+<p><strong>Lemma 3.1 (a fixed harmonic ball).</strong> For <span class="math" data-index="251" data-tex="\(\xi\in\mathbb R^n\)">\(\xi\in\mathbb R^n\)</span>, <span class="math" data-index="252" data-tex="\(\eta=r\theta\)">\(\eta=r\theta\)</span>, <span class="math" data-index="253" data-tex="\(\theta\in S\)">\(\theta\in S\)</span>, and <span class="math" data-index="254" data-tex="\(r&gt;D\log(2+|\xi+i\eta|)\)">\(r&gt;D\log(2+|\xi+i\eta|)\)</span>, the function</p>
+<span class="math math-display" id="eq-3.3" data-index="255" data-tex="\[
+w\longmapsto r^{-1}\log|F(\xi+rw)|
+\tag{3.3}
+\]">\[
+w\longmapsto r^{-1}\log|F(\xi+rw)|
+\tag{3.3}
+\]</span>
+<p>is harmonic on the complex Euclidean ball <span class="math" data-index="256" data-tex="\(B(i\theta,2d)\)">\(B(i\theta,2d)\)</span>, regarded as a real <span class="math" data-index="257" data-tex="\(2n\)">\(2n\)</span>-dimensional ball.</p>
+<p><strong>Proof.</strong> On this ball let <span class="math" data-index="258" data-tex="\(v=\operatorname{Im}w\)">\(v=\operatorname{Im}w\)</span>. Then <span class="math" data-index="259" data-tex="\(|v-\theta|&lt;2d\)">\(|v-\theta|&lt;2d\)</span>, <span class="math" data-index="260" data-tex="\(|v|&gt;1-2d\ge3/4\)">\(|v|&gt;1-2d\ge3/4\)</span>, and</p>
+<span class="math math-display" id="eq-3.4" data-index="261" data-tex="\[
+\left|\frac v{|v|}-\theta\right|
+\le2|v-\theta|&lt;4d.
+\tag{3.4}
+\]">\[
+\left|\frac v{|v|}-\theta\right|
+\le2|v-\theta|&lt;4d.
+\tag{3.4}
+\]</span>
+<p>Its direction is in <span class="math" data-index="262" data-tex="\(T\)">\(T\)</span>. Also <span class="math" data-index="263" data-tex="\(|w|&lt;1+2d\)">\(|w|&lt;1+2d\)</span>, so, with <span class="math" data-index="264" data-tex="\(\rho=2+|\xi+i\eta|\)">\(\rho=2+|\xi+i\eta|\)</span>,</p>
+<span class="math math-display" id="eq-3.5" data-index="265" data-tex="\[
+2+|\xi+rw|\le3\rho,\qquad
+\log(3\rho)\le\beta\log\rho.
+\tag{3.5}
+\]">\[
+2+|\xi+rw|\le3\rho,\qquad
+\log(3\rho)\le\beta\log\rho.
+\tag{3.5}
+\]</span>
+<p>Consequently</p>
+<span class="math math-display" id="eq-3.6" data-index="266" data-tex="\[
+|\operatorname{Im}(\xi+rw)|=r|v|
+&gt;\tfrac34D\log\rho
+&gt;D_0\log(2+|\xi+rw|).
+\tag{3.6}
+\]">\[
+|\operatorname{Im}(\xi+rw)|=r|v|
+&gt;\tfrac34D\log\rho
+&gt;D_0\log(2+|\xi+rw|).
+\tag{3.6}
+\]</span>
+<p>The zero-free hypothesis on <span class="math" data-index="267" data-tex="\(T\)">\(T\)</span> applies. Near each point a nonzero holomorphic function has a holomorphic logarithm: shrink until <span class="math" data-index="268" data-tex="\(F/F(w_0)\)">\(F/F(w_0)\)</span> is within distance less than one of 1 and use the convergent power series for <span class="math" data-index="269" data-tex="\(\log(1+z)\)">\(\log(1+z)\)</span>. The real part of that logarithm is <span class="math" data-index="270" data-tex="\(\log|F|\)">\(\log|F|\)</span> and has zero real Laplacian by the Cauchy–Riemann equations. These local statements agree for the real part. Thus (3.3) is harmonic throughout the ball. <span class="math" data-index="271" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proof of <span class="math" data-index="272" data-tex="\(1\Rightarrow2\)">\(1\Rightarrow2\)</span> in Theorem 1.1.</strong> We show that (3.3), evaluated at <span class="math" data-index="273" data-tex="\(i\theta\)">\(i\theta\)</span>, has a common lower bound for all these <span class="math" data-index="274" data-tex="\(\xi,r,\theta\)">\(\xi,r,\theta\)</span>. If no such bound existed, there would be a sequence as in (2.1), with <span class="math" data-index="275" data-tex="\(\theta_j=\eta_j/r_j\in S\)">\(\theta_j=\eta_j/r_j\in S\)</span>, for which</p>
+<span class="math math-display" id="eq-3.7" data-index="276" data-tex="\[
+u_j(i\theta_j)\longrightarrow-\infty.
+\tag{3.7}
+\]">\[
+u_j(i\theta_j)\longrightarrow-\infty.
+\tag{3.7}
+\]</span>
+<p>Pass to a subsequence with <span class="math" data-index="277" data-tex="\(\theta_j\to\theta\in S\)">\(\theta_j\to\theta\in S\)</span>. Lemma 2.1 supplies a further subsequence with a proper local <span class="math" data-index="278" data-tex="\(L^1\)">\(L^1\)</span> limit. The Euclidean norm <span class="math" data-index="279" data-tex="\(|\xi_j+ir_j\theta|\)">\(|\xi_j+ir_j\theta|\)</span> equals <span class="math" data-index="280" data-tex="\(|\xi_j+ir_j\theta_j|\)">\(|\xi_j+ir_j\theta_j|\)</span>, since both directions are unit vectors and <span class="math" data-index="281" data-tex="\(\xi_j\)">\(\xi_j\)</span> is real. Lemma 3.1 therefore applies also to the fixed direction <span class="math" data-index="282" data-tex="\(\theta\)">\(\theta\)</span>, making every <span class="math" data-index="283" data-tex="\(u_j\)">\(u_j\)</span> harmonic on <span class="math" data-index="284" data-tex="\(B(i\theta,2d)\)">\(B(i\theta,2d)\)</span>; the imaginary scale is still <span class="math" data-index="285" data-tex="\(r_j\)">\(r_j\)</span>.</p>
+<p>For large <span class="math" data-index="286" data-tex="\(j\)">\(j\)</span>, <span class="math" data-index="287" data-tex="\(i\theta_j\in B(i\theta,d)\)">\(i\theta_j\in B(i\theta,d)\)</span>. The harmonic ball-mean identity therefore gives</p>
+<span class="math math-display" id="eq-3.8" data-index="288" data-tex="\[
+|u_j(i\theta_j)|
+\le |B_{d/2}|^{-1}
+\int_{B(i\theta,\,3d/2)}|u_j(w)|\,dV(w).
+\tag{3.8}
+\]">\[
+|u_j(i\theta_j)|
+\le |B_{d/2}|^{-1}
+\int_{B(i\theta,\,3d/2)}|u_j(w)|\,dV(w).
+\tag{3.8}
+\]</span>
+<p>The closed ball of radius <span class="math" data-index="289" data-tex="\(3d/2\)">\(3d/2\)</span> lies inside the harmonic ball. Local <span class="math" data-index="290" data-tex="\(L^1\)">\(L^1\)</span> convergence bounds the integral uniformly. This contradicts (3.7).</p>
+<p>There is therefore <span class="math" data-index="291" data-tex="\(A\ge0\)">\(A\ge0\)</span> with <span class="math" data-index="292" data-tex="\(u(i\theta)\ge-A\)">\(u(i\theta)\ge-A\)</span> for every point under consideration. Multiplying by <span class="math" data-index="293" data-tex="\(r\)">\(r\)</span> and exponentiating gives (1.7). In particular (1.6) holds with <span class="math" data-index="294" data-tex="\(C_S=1\)">\(C_S=1\)</span> and <span class="math" data-index="295" data-tex="\(N_S=0\)">\(N_S=0\)</span>, after this increase of the barrier. <span class="math" data-index="296" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The mean identity in (3.8) follows from the divergence theorem: the derivative of the spherical mean of a smooth harmonic function is the ball integral of its Laplacian divided by the sphere area, and hence is zero. Averaging the resulting sphere identity in the radius gives the ball identity. This also explains why zero-freeness is needed here, rather than only at the evaluation point.</p>
+<h2 id="4-a-reciprocal-bound-supplies-slow-decrease">4. A reciprocal bound supplies slow decrease</h2>
+<p><strong>Proof of <span class="math" data-index="297" data-tex="\(2\Rightarrow1\)">\(2\Rightarrow1\)</span> in Theorem 1.1.</strong> Select a unit vector <span class="math" data-index="298" data-tex="\(\theta\in\Gamma\)">\(\theta\in\Gamma\)</span>; its singleton is an angular set. Let <span class="math" data-index="299" data-tex="\(D,C,N,A\)">\(D,C,N,A\)</span> be its constants in (1.5)–(1.6). Choose <span class="math" data-index="300" data-tex="\(c&gt;D\)">\(c&gt;D\)</span>. For a real center <span class="math" data-index="301" data-tex="\(\xi\)">\(\xi\)</span>, set</p>
+<span class="math math-display" id="eq-4.1" data-index="302" data-tex="\[
+q=2+|\xi|,\qquad \zeta=\xi+ic\theta\log q.
+\tag{4.1}
+\]">\[
+q=2+|\xi|,\qquad \zeta=\xi+ic\theta\log q.
+\tag{4.1}
+\]</span>
+<p>For all sufficiently large <span class="math" data-index="303" data-tex="\(q\)">\(q\)</span>,</p>
+<span class="math math-display" id="eq-4.2" data-index="304" data-tex="\[
+|\operatorname{Im}\zeta|=c\log q
+&gt;D\log(2+|\zeta|),\qquad
+2+|\zeta|\le(1+c)q.
+\tag{4.2}
+\]">\[
+|\operatorname{Im}\zeta|=c\log q
+&gt;D\log(2+|\zeta|),\qquad
+2+|\zeta|\le(1+c)q.
+\tag{4.2}
+\]</span>
+<p>Indeed <span class="math" data-index="305" data-tex="\(\log(2+|\zeta|)\le\log q+\log(1+c)\)">\(\log(2+|\zeta|)\le\log q+\log(1+c)\)</span>, and <span class="math" data-index="306" data-tex="\(c&gt;D\)">\(c&gt;D\)</span>. The reciprocal estimate now gives</p>
+<span class="math math-display" id="eq-4.3" data-index="307" data-tex="\[
+|F(\zeta)|\ge C^{-1}(1+c)^{-N}q^{-N-Ac},
+\qquad |\zeta-\xi|=c\log q.
+\tag{4.3}
+\]">\[
+|F(\zeta)|\ge C^{-1}(1+c)^{-N}q^{-N-Ac},
+\qquad |\zeta-\xi|=c\log q.
+\tag{4.3}
+\]</span>
+<p>Increase a constant <span class="math" data-index="308" data-tex="\(B\)">\(B\)</span> above <span class="math" data-index="309" data-tex="\(c\)">\(c\)</span> and <span class="math" data-index="310" data-tex="\(N+Ac\)">\(N+Ac\)</span>, and enough further to absorb the fixed factor in (4.3). Then the strict complex-window lower criterion of Theorem 1.1 of the slow-decrease lesson holds at all sufficiently large real centers.</p>
+<p>For completeness, the bounded centers can be included with the same criterion. Fix any <span class="math" data-index="311" data-tex="\(\zeta_0\)">\(\zeta_0\)</span> with <span class="math" data-index="312" data-tex="\(F(\zeta_0)\ne0\)">\(F(\zeta_0)\ne0\)</span>; such a point already exists by (4.3). All bounded centers are within a fixed distance of <span class="math" data-index="313" data-tex="\(\zeta_0\)">\(\zeta_0\)</span>. Increasing <span class="math" data-index="314" data-tex="\(B\)">\(B\)</span> puts that point strictly inside every window <span class="math" data-index="315" data-tex="\(B\log(2+|\xi|)\)">\(B\log(2+|\xi|)\)</span> on this bounded set and makes <span class="math" data-index="316" data-tex="\((B+|\xi|)^{-B}&lt;|F(\zeta_0)|\)">\((B+|\xi|)^{-B}&lt;|F(\zeta_0)|\)</span>. For the unbounded centers, increasing <span class="math" data-index="317" data-tex="\(B\)">\(B\)</span> only enlarges the window and decreases this positive lower threshold. The complex-window criterion thus holds for every real center. Its exact preceding proof makes <span class="math" data-index="318" data-tex="\(\mu\)">\(\mu\)</span> invertible. The zero-free condition is already part of condition 2. <span class="math" data-index="319" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-why-zero-freeness-alone-is-insufficient">5. Why zero-freeness alone is insufficient</h2>
+<p><strong>Proposition 5.1 (a smooth compact counterexample).</strong> In dimension one define the removable value of <span class="math" data-index="320" data-tex="\(\operatorname{sinc}z=\sin z/z\)">\(\operatorname{sinc}z=\sin z/z\)</span> at zero to be 1, and let</p>
+<span class="math math-display" id="eq-5.1" data-index="321" data-tex="\[
+F(z)=\prod_{j=1}^{\infty}\operatorname{sinc}(2^{-j}z).
+\tag{5.1}
+\]">\[
+F(z)=\prod_{j=1}^{\infty}\operatorname{sinc}(2^{-j}z).
+\tag{5.1}
+\]</span>
+<p>This is the transform of a nonzero smooth kernel supported in <span class="math" data-index="322" data-tex="\([-1,1]\)">\([-1,1]\)</span>. All its zeros are real. It is not slowly decreasing, and no estimate of the form (1.6) holds throughout the upper half-plane beyond any logarithmic barrier.</p>
+<p><strong>Proof.</strong> On compact sets, the power series of sine gives</p>
+<span class="math math-display" id="eq-5.2" data-index="323" data-tex="\[
+|\operatorname{sinc}w-1|\le |w|^2e^{|w|}/6.
+\tag{5.2}
+\]">\[
+|\operatorname{sinc}w-1|\le |w|^2e^{|w|}/6.
+\tag{5.2}
+\]</span>
+<p>For the terms of degree at least two, this follows from <span class="math" data-index="324" data-tex="\((2k+1)!\ge6(2k-2)!\)">\((2k+1)!\ge6(2k-2)!\)</span>, <span class="math" data-index="325" data-tex="\(k\ge1\)">\(k\ge1\)</span>. Summing (5.2) with <span class="math" data-index="326" data-tex="\(w=2^{-j}z\)">\(w=2^{-j}z\)</span> proves locally uniform convergence of the product to an entire function, with <span class="math" data-index="327" data-tex="\(F(0)=1\)">\(F(0)=1\)</span>. The estimate</p>
+<span class="math math-display" id="eq-5.3" data-index="328" data-tex="\[
+|\operatorname{sinc}(az)|
+=\left|\frac12\int_{-1}^1 e^{-iat z}\,dt\right|
+\le e^{a|\operatorname{Im}z|}\quad(a&gt;0)
+\tag{5.3}
+\]">\[
+|\operatorname{sinc}(az)|
+=\left|\frac12\int_{-1}^1 e^{-iat z}\,dt\right|
+\le e^{a|\operatorname{Im}z|}\quad(a&gt;0)
+\tag{5.3}
+\]</span>
+<p>gives <span class="math" data-index="329" data-tex="\(|F(z)|\le e^{|\operatorname{Im}z|}\)">\(|F(z)|\le e^{|\operatorname{Im}z|}\)</span>. Theorem CF2.1 therefore supplies a compact distribution supported in <span class="math" data-index="330" data-tex="\([-1,1]\)">\([-1,1]\)</span> with transform <span class="math" data-index="331" data-tex="\(F\)">\(F\)</span>.</p>
+<p>Away from the zeros of the individual factors, a tail with the summable errors (5.2) is nonzero. To see this, choose the tail so that each error is below <span class="math" data-index="332" data-tex="\(1/2\)">\(1/2\)</span>; the power series of <span class="math" data-index="333" data-tex="\(\log(1+\varepsilon)\)">\(\log(1+\varepsilon)\)</span> has modulus at most <span class="math" data-index="334" data-tex="\(2|\varepsilon|\)">\(2|\varepsilon|\)</span>, so its sum converges and exponentiates to a nonzero product. Every individual zero is real. This proves the zero assertion, including absence of zeros in the whole upper half-plane.</p>
+<p>For real <span class="math" data-index="335" data-tex="\(x\)">\(x\)</span>, any fixed number <span class="math" data-index="336" data-tex="\(J\)">\(J\)</span> of factors gives</p>
+<span class="math math-display" id="eq-5.4" data-index="337" data-tex="\[
+|F(x)|\le
+\prod_{j=1}^{J}\min\{1,2^j/|x|\}
+\le2^{J(J+1)/2}|x|^{-J}\quad(|x|\ge1).
+\tag{5.4}
+\]">\[
+|F(x)|\le
+\prod_{j=1}^{J}\min\{1,2^j/|x|\}
+\le2^{J(J+1)/2}|x|^{-J}\quad(|x|\ge1).
+\tag{5.4}
+\]</span>
+<p>The remaining factors have modulus at most one on the real axis. Thus <span class="math" data-index="338" data-tex="\(F\)">\(F\)</span> decreases faster than every inverse power there. The inverse Fourier integral and all of its derivatives converge absolutely; differentiation under that integral gives a smooth function. Fourier uniqueness identifies it with the compact distribution already obtained. In a logarithmic real window centered at a large positive <span class="math" data-index="339" data-tex="\(R\)">\(R\)</span>, <span class="math" data-index="340" data-tex="\(|x|\ge R/2\)">\(|x|\ge R/2\)</span>. Applying (5.4) with <span class="math" data-index="341" data-tex="\(J&gt;b\)">\(J&gt;b\)</span> defeats any proposed lower value <span class="math" data-index="342" data-tex="\((b+R)^{-b}\)">\((b+R)^{-b}\)</span>, and the same argument applies to every fixed window radius. The real-window equivalent of invertibility proves failure of slow decrease.</p>
+<p>Finally fix <span class="math" data-index="343" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>, take <span class="math" data-index="344" data-tex="\(R\ge2\)">\(R\ge2\)</span>, and put <span class="math" data-index="345" data-tex="\(z=R+id\log(R+2)\)">\(z=R+id\log(R+2)\)</span> and <span class="math" data-index="346" data-tex="\(J=\lfloor\log_2R\rfloor\)">\(J=\lfloor\log_2R\rfloor\)</span>. The sine bound <span class="math" data-index="347" data-tex="\(|\sin w|\le e^{|\operatorname{Im}w|}\)">\(|\sin w|\le e^{|\operatorname{Im}w|}\)</span>, for the first <span class="math" data-index="348" data-tex="\(J\)">\(J\)</span> factors, and (5.3), for the tail, give</p>
+<span class="math math-display" id="eq-5.5" data-index="349" data-tex="\[
+\log|F(z)|
+\le d\log(R+2)-\tfrac{\log2}{2}J(J-1).
+\tag{5.5}
+\]">\[
+\log|F(z)|
+\le d\log(R+2)-\tfrac{\log2}{2}J(J-1).
+\tag{5.5}
+\]</span>
+<p>We used <span class="math" data-index="350" data-tex="\(|z|\ge R\ge2^J\)">\(|z|\ge R\ge2^J\)</span>. The negative quadratic term in <span class="math" data-index="351" data-tex="\(J\)">\(J\)</span> defeats every bound <span class="math" data-index="352" data-tex="\(-M\log(R+2)-K\)">\(-M\log(R+2)-K\)</span> with fixed <span class="math" data-index="353" data-tex="\(M,K\)">\(M,K\)</span>.</p>
+<p>If (1.6) held past a barrier <span class="math" data-index="354" data-tex="\(D\)">\(D\)</span>, choose <span class="math" data-index="355" data-tex="\(d&gt;D\)">\(d&gt;D\)</span>. These points eventually lie past that barrier, because <span class="math" data-index="356" data-tex="\(\log(2+|z|)/\log(R+2)\to1\)">\(\log(2+|z|)/\log(R+2)\to1\)</span>. The estimate would give a lower bound
+<span class="math" data-index="357" data-tex="\(\log|F(z)|\ge-\log C-N\log(2+|z|)-Ad\log(R+2)\)">\(\log|F(z)|\ge-\log C-N\log(2+|z|)-Ad\log(R+2)\)</span>, of just that linear logarithmic size. This contradicts (5.5). <span class="math" data-index="358" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For reproducible evaluation of (5.1), a finite product <span class="math" data-index="359" data-tex="\(P_K\)">\(P_K\)</span> has a rigorous relative tail bound. If <span class="math" data-index="360" data-tex="\(|z|2^{-K-1}\le1/2\)">\(|z|2^{-K-1}\le1/2\)</span>, set</p>
+<span class="math math-display" id="eq-5.6" data-index="361" data-tex="\[
+s_K=e^{1/2}|z|^2\,4^{-K}/18.
+\tag{5.6}
+\]">\[
+s_K=e^{1/2}|z|^2\,4^{-K}/18.
+\tag{5.6}
+\]</span>
+<p>When <span class="math" data-index="362" data-tex="\(s_K\le1/2\)">\(s_K\le1/2\)</span>, (5.2) and a telescoping product give</p>
+<span class="math math-display" id="eq-5.7" data-index="363" data-tex="\[
+|F(z)/P_K(z)-1|\le e^{s_K}-1\le2s_K
+\tag{5.7}
+\]">\[
+|F(z)/P_K(z)-1|\le e^{s_K}-1\le2s_K
+\tag{5.7}
+\]</span>
+<p>provided <span class="math" data-index="364" data-tex="\(P_K(z)\ne0\)">\(P_K(z)\ne0\)</span>. The telescoping bound follows by replacing each error with its modulus and using <span class="math" data-index="365" data-tex="\(\prod(1+\varepsilon_j)\le e^{\sum\varepsilon_j}\)">\(\prod(1+\varepsilon_j)\le e^{\sum\varepsilon_j}\)</span>.</p>
+<h2 id="references-2">References</h2>
+<ul>
+<li>Richard B. Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004. <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Open course materials</a>.</li>
+<li>Gerd Grubb, <em>Fourier transformation of distributions</em>. <a href="https://web.math.ku.dk/~grubb/dist5.pdf">Author-hosted chapter</a>.</li>
+<li><a href="AN02-L163.html">Slow decrease and entire Fourier division</a>, Theorem 1.1.</li>
+<li><a href="AN02-L143.html">Local compactness and Hartogs bounds</a>, HC1.</li>
+<li><a href="AN02-L147.html">Entire logarithms and the approximation of plurisubharmonic functions</a>, GD4.</li>
+<li><a href="AN02-L122.html">Compact Fourier division and multiplicity-sensitive annihilators</a>, Theorem CF2.1.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators</em>, volumes I and II, Springer. Background reference; all required proofs are supplied here or at the exact internal links.</li>
+</ul>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/zero-free-cones-turn-slow-decrease-into-reciprocal-bounds.md" download>Download the complete lesson source</a>. Original proofs, examples, solutions and figures use CC0 1.0. The font license retains its own terms.</p><ul><li><a href="reproduce/L178/reciprocal-cone-formal.md" download>reciprocal-cone-formal.md</a></li><li><a href="reproduce/L178/reciprocal-cone-learner.md" download>reciprocal-cone-learner.md</a></li><li><a href="reproduce/L178/make_figures249.py" download>make_figures249.py</a></li><li><span class="unlinked">check_numerics249.py</span></li><li><a href="reproduce/L178/README-reproduce.md" download>README-reproduce.md</a></li><li><a href="reproduce/L178/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L178/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li><li><a href="reproduce/L178/figures/geometry249.json" download>figures/geometry249.json</a></li><li><a href="reproduce/L178/figures/frequency-normalization-and-harmonic-ball.png" download>figures/frequency-normalization-and-harmonic-ball.png</a></li><li><a href="reproduce/L178/figures/frequency-normalization-and-harmonic-ball.svg" download>figures/frequency-normalization-and-harmonic-ball.svg</a></li><li><a href="reproduce/L178/figures/exponential-rate-and-smooth-counterexample.png" download>figures/exponential-rate-and-smooth-counterexample.png</a></li><li><a href="reproduce/L178/figures/exponential-rate-and-smooth-counterexample.svg" download>figures/exponential-rate-and-smooth-counterexample.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

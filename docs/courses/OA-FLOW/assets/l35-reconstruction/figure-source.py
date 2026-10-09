@@ -4,6 +4,7 @@ import json
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-l35-reconstruction-20261009-v1"
 import numpy as np
 
 HERE = Path(__file__).resolve().parent
@@ -56,7 +57,7 @@ fig.suptitle('h = diag(0, 2, 5)      d(x) = i[h,x]', fontsize=21, y=.98)
 fig.text(.5,.10,'Action spectrum: {0, ±2, ±3, ±5}      ‖d‖ = 5      ‖h − (5/2)1‖ = 5/2', ha='center', fontsize=14)
 fig.text(.5,.045,'Closed dots retain the endpoint value; open dots begin the next interval.\nExact proof: L35 §9, (34)–(35); free ancestry: Olesen, Theorem 2, pp.558–560.', ha='center', fontsize=11, color='#334155')
 fig.tight_layout(rect=(0,.17,1,.92))
-fig.savefig(OUT / 'matrix-frequencies.svg')
+fig.savefig(OUT / 'matrix-frequencies.svg', metadata={'Date': None})
 fig.savefig(OUT / 'matrix-frequencies.png', dpi=140)
 plt.close(fig)
 
@@ -79,7 +80,7 @@ explanation.text(.02,.95,'Exact mechanism of Lemma 7',fontsize=19,va='top')
 explanation.text(.02,.79,'α-band [a,b]  ⊆  Φ-band [a,b]\n\nDisjoint interval filters have product zero.\n\nA smooth off-diagonal joint filter is a finite\nsum of rectangle pieces; their separated\nFourier series converge in time-domain L¹.\n\nΓₜ = αₜ Φ₋ₜ has frequency λ − μ.\nEvery filter away from zero vanishes.\n\nΓ has only the zero band, so D − E = 0.',fontsize=13,va='top',linespacing=1.35)
 fig.text(.5,.035,'The shaded strip illustrates supp H ⊆ [1,2]; boxes are sample localization pieces, not the full cover.\nAxes are filter coordinates. Proof: L35 Lemma 7, (20)–(21). Free ancestry: Olesen, pp.556–559.',ha='center',fontsize=10,color='#334155')
 fig.tight_layout(rect=(0,.12,1,.95))
-fig.savefig(OUT/'commuting-localization.svg')
+fig.savefig(OUT/'commuting-localization.svg',metadata={'Date': None})
 fig.savefig(OUT/'commuting-localization.png',dpi=140)
 plt.close(fig)
 assert frequency.tolist() == [[0,-2,-5],[2,0,-3],[5,3,0]]

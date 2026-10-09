@@ -2,13 +2,13 @@
 
 Specialization commutes with Verdier duality through a boundary connecting map. Microlocalization adds a Fourier transform, so its duality comparison also reverses the normal covector and retains the relative orientation complex. For microlocal Hom, exchanging the two manifold factors explains both the order of the dual inputs and the cancellation of one antipode.
 
-The proof starts with the positive-parameter boundary map. We combine it with actual constructible biduality and the perfect inverse-image and tensor operations. The Fourier step uses the comparison with a variable test complex on the base, whose two exceptional adjunction maps we identify below. The specialization and microlocal-Hom constructibility proof supplies bounded constructible outputs.
+The proof starts with the [positive-parameter boundary map](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/specialization.md#sh02-sp-boundary--fixing-the-boundary-shift). We combine it with [actual constructible biduality](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/constructible-costalks-and-verdier-duality.md#the-evaluation-map-is-biduality) and the [perfect inverse-image and tensor operations](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/perfect-operations-and-finite-microlocal-coefficients.md#perfect-inverse-images-tensors-and-internal-hom). The Fourier step uses the [comparison with a variable test complex on the base](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/fourier-duality-normalization.md#sh02-fdn-base-duality-relative-to-a-variable-test-object), whose two exceptional adjunction maps we identify below. The [specialization and microlocal-Hom constructibility proof](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/perfect-operations-and-finite-microlocal-coefficients.md#specialization-and-microlocal-hom) supplies bounded constructible outputs.
 
 *Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources are credited below.*
 
 ## Hypotheses and the four comparisons
 
-Let \(k\) be commutative of finite global dimension. Manifolds and maps are real analytic, finite dimensional with uniform dimension bounds, Hausdorff and countable at infinity. All inputs are globally bounded and \(\mathbb R\)-constructible. Here constructibility includes perfect stalk complexes: locally each such coefficient complex has a bounded finite-projective representative. This is the perfect-coefficient convention, and does not replace perfection by finite generation over an arbitrary ring. No field, Noetherianity, compactness or global orientation is assumed.
+Let \(k\) be commutative of finite global dimension. Manifolds and maps are real analytic, finite dimensional with uniform dimension bounds, Hausdorff and countable at infinity. All inputs are globally bounded and \(\mathbb R\)-constructible. Here constructibility includes perfect stalk complexes: locally each such coefficient complex has a bounded finite-projective representative. This is the [perfect-coefficient convention](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/constructible-costalks-and-verdier-duality.md#the-two-local-measurements), and does not replace perfection by finite generation over an arbitrary ring. No field, Noetherianity, compactness or global orientation is assumed.
 
 Let \(M\) be an analytic embedded submanifold of \(X\), closed in the ambient neighborhood in use. Put \(E=T_MX\), \(E^*=T_M^*X\), and let \(\pi:E^*\to M\) be the projection. If the normal rank is \(c\), then
 
@@ -73,7 +73,7 @@ s^{-1}Rj_*r^{-1}F
 \qquad\text{(8)}
 \]
 
-Denote this composite by \(\delta_F:\nu_MF\to s^!j_!r^!F\). Its sign is the one in the boundary comparison: first use the connecting arrow of (7), then the inverse of the oriented identification \(r^!F\simeq r^{-1}F[1]\). To make the connecting convention explicit, for a cochain map \(u:U^\bullet\to V^\bullet\) use
+Denote this composite by \(\delta_F:\nu_MF\to s^!j_!r^!F\). Its sign is the one in [the boundary comparison](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/specialization.md#sh02-sp-boundary--fixing-the-boundary-shift): first use the connecting arrow of (7), then the inverse of the oriented identification \(r^!F\simeq r^{-1}F[1]\). To make the connecting convention explicit, for a cochain map \(u:U^\bullet\to V^\bullet\) use
 
 \[
 \operatorname{Cone}(u)^q=V^q\oplus U^{q+1},\qquad
@@ -82,9 +82,9 @@ d(v,u')=(d_Vv+u(u'),-d_Uu').
 
 The localization fibre is \(\operatorname{Cone}(u)[-1]\); the last arrow of its triangle sends \(v\) to \((v,0)\) in \(\operatorname{Cone}(u)\). Applied to (7) and then restricted to \(E\), the middle complex is zero, so this very inclusion is the isomorphism in the first part of (8). No extra minus sign is inserted after rotating the triangle. For the one-dimensional parameter test with constant coefficient, the boundary stalk of the open extension is zero and the positive-side ordinary section complex is \(k\). The same cone therefore has the generator \((1,0)\) in degree zero after the shift; equivalently the unshifted boundary costalk is \(k[-1]\).
 
-The remaining orientation identification is normalized by integration on an increasing interval, whose trace on \(R\Gamma_c(I;k[1])\) is \(+1\). We use that identification, with its specified tensor order, in the second part of (8). The cone convention and the positive-interval trace together specify \(\delta_F\), including its sign; an arbitrary isomorphism with the same source and target would not do so. Localization, oriented submersion comparison and their traces commute with open restriction. Thus \(\delta_F\) is natural in \(F\) and agrees on overlapping adapted charts. The left side of (8) is the definition of \(\nu_MF\).
+The remaining orientation identification is normalized by [integration on an increasing interval](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-trace--trace-orientation-of-ray-spheres-and-ordinary-descent), whose trace on \(R\Gamma_c(I;k[1])\) is \(+1\). We use that identification, with its specified tensor order, in the second part of (8). The cone convention and the positive-interval trace together specify \(\delta_F\), including its sign; an arbitrary isomorphism with the same source and target would not do so. Localization, oriented submersion comparison and their traces commute with open restriction. Thus \(\delta_F\) is natural in \(F\) and agrees on overlapping adapted charts. The left side of (8) is the definition of \(\nu_MF\).
 
-The constructibility assertion needed here concerns \(A=j_!r^!F\) on the whole deformation, including its boundary. Put \(H_0=p^{-1}F\). The map \(p(v,z,t)=(tv,z)\) is analytic also at \(t=0\), so perfect inverse image makes \(H_0\) constructible. The chamber \(\Omega=\{t>0\}\) is open subanalytic. A compatible subanalytic stratification makes \(k_\Omega\) constant with coefficient \(k\) on its included strata and zero on all other strata; both coefficients are perfect. The subanalytic cutoff argument therefore applies. Open extension and the oriented submersion comparison give the actual identification
+The constructibility assertion needed here concerns \(A=j_!r^!F\) on the whole deformation, including its boundary. Put \(H_0=p^{-1}F\). The map \(p(v,z,t)=(tv,z)\) is analytic also at \(t=0\), so [perfect inverse image](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/perfect-operations-and-finite-microlocal-coefficients.md#perfect-inverse-images-tensors-and-internal-hom) makes \(H_0\) constructible. The chamber \(\Omega=\{t>0\}\) is open subanalytic. A compatible subanalytic stratification makes \(k_\Omega\) constant with coefficient \(k\) on its included strata and zero on all other strata; both coefficients are perfect. The [subanalytic cutoff argument](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/perfect-operations-and-finite-microlocal-coefficients.md#compact-and-relatively-compact-cohomology) therefore applies. Open extension and the oriented submersion comparison give the actual identification
 
 \[
 A=j_!r^!F\simeq j_!j^{-1}H_0[1]
@@ -103,7 +103,7 @@ f^{-1}D_XB\simeq D_Y(f^!B).
 \qquad\text{(9)}
 \]
 
-Write \(\alpha_B:f^!D_XB\to D_Y(f^{-1}B)\) for the first map. It is exceptional internal Hom, EX.26, applied to \((B,\omega_X)\), followed by the composition identification \(f^!\omega_X=\omega_Y\). More explicitly, its transpose is obtained from the projection formula, the exceptional counit and evaluation:
+Write \(\alpha_B:f^!D_XB\to D_Y(f^{-1}B)\) for the first map. It is [exceptional internal Hom, EX.26](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-hom--exceptional-inverse-image-of-internal-hom), applied to \((B,\omega_X)\), followed by the composition identification \(f^!\omega_X=\omega_Y\). More explicitly, its transpose is obtained from the projection formula, the exceptional counit and evaluation:
 
 \[
 Rf_!\bigl(f^!D_XB\otimes^L f^{-1}B\bigr)
@@ -125,9 +125,9 @@ D_Y\bigl(f^!D_XD_XB\bigr)
 \end{aligned}
 \]
 
-The evaluation theorem makes \(\eta_B\) invertible. It also makes \(\eta_L\) invertible, because constructible duality and perfect ordinary inverse image make \(L\) constructible. Exceptional inverse image is constructible by the same perfect-operation theorem. Thus every arrow has its claimed range and is an isomorphism. This proves the second comparison in (9), with its map and variance fixed. Perfection is used at the two evaluations; (9) is not an inverse-image/internal-Hom assertion for arbitrary weak coefficients.
+The [evaluation theorem](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/constructible-costalks-and-verdier-duality.md#the-evaluation-map-is-biduality) makes \(\eta_B\) invertible. It also makes \(\eta_L\) invertible, because constructible duality and perfect ordinary inverse image make \(L\) constructible. Exceptional inverse image is constructible by [the same perfect-operation theorem](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/perfect-operations-and-finite-microlocal-coefficients.md#perfect-inverse-images-tensors-and-internal-hom). Thus every arrow has its claimed range and is an isomorphism. This proves the second comparison in (9), with its map and variance fixed. Perfection is used at the two evaluations; (9) is not an inverse-image/internal-Hom assertion for arbitrary weak coefficients.
 
-For bounded \(L\) on \(\Omega\), direct-image internal adjunction, EX.20–EX.22, with \(f=j\) and target \(\omega_D\), identifies
+For bounded \(L\) on \(\Omega\), [direct-image internal adjunction, EX.20–EX.22](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-internal--internal-adjunction-and-its-tensor-structure), with \(f=j\) and target \(\omega_D\), identifies
 \(D_D(j_!L)\simeq Rj_*D_\Omega L\).
 Here \(j^!\omega_D=\omega_\Omega\), since \(j\) is open. The map from right to left is adjoint to evaluation followed by the open-extension counit \(j_!j^!\omega_D\to\omega_D\). This is ordinary direct image on the dual side, with no claim that \(j\) is proper. Apply the second comparison in (9) first to \(r\) with input \(F\), and then to \(s\) with input \(A=j_!r^!F\). Together with the boundary map they give the chain
 
@@ -150,14 +150,14 @@ For a locally closed \(M\), restrict to ambient open neighborhoods where it is c
 
 For a rank-\(c\) bundle \(E\to M\), let \(O\) be its fibre orientation line on \(M\), and set \(W=O[c]\). Positive dual bases identify the fibre orientations of \(E\) and \(E^*\), with \(O\otimes O\simeq k_M\).
 
-Use \(\tau:E\to M\) and \(\pi:E^*\to M\). On \(Z=E\times_M E^*\), write \(u:Z\to E\), \(v:Z\to E^*\), and \(\rho=\tau u=\pi v\), and put \(N_- =\{\langle e,\eta\rangle\leq0\}\). The three-transform convention is
+Use \(\tau:E\to M\) and \(\pi:E^*\to M\). On \(Z=E\times_M E^*\), write \(u:Z\to E\), \(v:Z\to E^*\), and \(\rho=\tau u=\pi v\), and put \(N_- =\{\langle e,\eta\rangle\leq0\}\). The [three-transform convention](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/fourier-duality-normalization.md#sh02-fdn-setup-coordinates-domains-and-three-different-transforms) is
 
 \[
 T_EB=Rv_!(k_{N_-}\otimes^L u^{-1}B),\qquad
 I_EC=Rv_*R\mathcal Hom(k_{N_-},u^!C).
 \]
 
-Both functors go from conic complexes on \(E\) to conic complexes on \(E^*\). The second is \(S_{E^*}\) with the product factors exchanged; \(S_E\) instead has domain \(E^*\) and codomain \(E\). The distinction between tensor cutoff and sections with support is part of these definitions. With these domains, the full variable-test comparison, FDN8, reads
+Both functors go from conic complexes on \(E\) to conic complexes on \(E^*\). The second is \(S_{E^*}\) with the product factors exchanged; \(S_E\) instead has domain \(E^*\) and codomain \(E\). The distinction between tensor cutoff and sections with support is part of these definitions. With these domains, the [full variable-test comparison, FDN8](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/fourier-duality-normalization.md#sh02-fdn-base-duality-relative-to-a-variable-test-object), reads
 
 \[
 I_E R\mathcal Hom(B,\tau^!Q)
@@ -166,7 +166,7 @@ R\mathcal Hom(T_EB,\pi^!Q)
 \qquad\text{(11)}
 \]
 
-for \(B\in D^b_{\mathbb R_{>0}}(k_E)\) and \(Q\in D^+(k_M)\). Both sides lie in the conic bounded-below category on \(E^*\). To see the precise comparison, set \(V_Q=\pi^!Q\). The two exceptional internal-Hom adjunctions, FDN3–FDN4, give
+for \(B\in D^b_{\mathbb R_{>0}}(k_E)\) and \(Q\in D^+(k_M)\). Both sides lie in the conic bounded-below category on \(E^*\). To see the precise comparison, set \(V_Q=\pi^!Q\). The [two exceptional internal-Hom adjunctions, FDN3–FDN4](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/fourier-duality-normalization.md#sh02-fdn-hom-two-adjunction-calculations-with-their-maps), give
 
 \[
 \begin{aligned}
@@ -181,16 +181,16 @@ I_E R\mathcal Hom(B,\tau^!Q)
 
 The middle step uses \(u^!\tau^!Q\simeq\rho^!Q\simeq v^!\pi^!Q\), with the exceptional composition comparison, and then curries the two Hom inputs. The final arrow is the adjoint of evaluation followed by the proper-support counit for \(v\); the first arrow is the exceptional-Hom mate specified in FDN3. These operations fix (11), rather than choosing an isomorphism after computing its two objects. Derived permutations use the Koszul symmetry. The construction is contravariant in \(B\), covariant in \(Q\), and respects open restriction on \(M\).
 
-The bounds also have to match. If \(B\in D^{[a,b]}\) and \(Q\in D^{\geq q}\), the submersion formula puts \(\tau^!Q\) in \(D^{\geq q-c}\). Thus the first Hom has lower bound \(q-c-b\). The flat cutoff \(k_{N_-}\) leaves the bounds of \(u^{-1}B\) unchanged, and the rank-\(c\) proper-support projection puts \(T_EB\) in \(D^{[a,b+c]}\). The target of (11) has lower bound \(q-b-2c\). The bounded-below projection argument proves the adjunction calculations throughout this range by truncating the test complex in each fixed degree. Conic internal Hom and the transform give conicity. No upper bound for the two Hom objects is required in the general statement, and no perfection, finite generation or coefficient biduality is used there.
+The bounds also have to match. If \(B\in D^{[a,b]}\) and \(Q\in D^{\geq q}\), the submersion formula puts \(\tau^!Q\) in \(D^{\geq q-c}\). Thus the first Hom has lower bound \(q-c-b\). The flat cutoff \(k_{N_-}\) leaves the bounds of \(u^{-1}B\) unchanged, and the rank-\(c\) proper-support projection puts \(T_EB\) in \(D^{[a,b+c]}\). The target of (11) has lower bound \(q-b-2c\). The [bounded-below projection argument](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/fourier-duality-normalization.md#sh02-fdn-projection-range--why-bounded-below-tests-are-allowed) proves the adjunction calculations throughout this range by truncating the test complex in each fixed degree. Conic internal Hom and the transform give conicity. No upper bound for the two Hom objects is required in the general statement, and no perfection, finite generation or coefficient biduality is used there.
 
-The finite-dimensional manifold \(M\) has the uniform finite compact-support cohomological dimension required in absolute Fourier duality, FDN13–FDN14. The dimension condition concerns all abelian sheaves, not only the chosen coefficient complex, and requires no compact base. Take \(Q=\omega_M\), a bounded orientation complex under our dimension bounds. Exceptional composition supplies \(\tau^!\omega_M=\omega_E\) and \(\pi^!\omega_M=\omega_{E^*}\); hence (11) becomes \(I_ED_EB\simeq D_{E^*}T_EB\), with exactly its preceding evaluation-and-trace map. The signed halfspace comparison identifies
+The finite-dimensional manifold \(M\) has the uniform finite compact-support cohomological dimension required in [absolute Fourier duality, FDN13–FDN14](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/fourier-duality-normalization.md#sh02-fdn-dualities-the-ordinary-and-absolute-duals). The dimension condition concerns all abelian sheaves, not only the chosen coefficient complex, and requires no compact base. Take \(Q=\omega_M\), a bounded orientation complex under our dimension bounds. Exceptional composition supplies \(\tau^!\omega_M=\omega_E\) and \(\pi^!\omega_M=\omega_{E^*}\); hence (11) becomes \(I_ED_EB\simeq D_{E^*}T_EB\), with exactly its preceding evaluation-and-trace map. The signed halfspace comparison identifies
 
 \[
 I_EB\simeq a^{-1}T_EB\otimes\pi^{-1}O[c].
 \qquad\text{(12)}
 \]
 
-Here is the support comparison behind (12). Put \(N_+=\{\langle e,\eta\rangle\geq0\}\). Apply FS4, with its comparison maps FS5–FS6, to the exchanged bundle. It gives
+Here is the support comparison behind (12). Put \(N_+=\{\langle e,\eta\rangle\geq0\}\). Apply [FS4, with its comparison maps FS5–FS6](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/fourier-sato.md#sh02-fs-compare--why-ordinary-image-and-proper-support-image-agree-in-the-transform), to the exchanged bundle. It gives
 
 \[
 Rv_*R\Gamma_{N_-}(u^!C)
@@ -214,9 +214,9 @@ a^{-1}T_ED_EB\otimes\pi^{-1}W
 
 Pull back by \(a\). Since \(a^2=1\) and \(\pi a=\pi\), this gives \(T_ED_EB\otimes\pi^{-1}W\simeq a^{-1}D_{E^*}T_EB\). Tensor on the right by \(\pi^{-1}W^{-1}\) and use the ordered evaluation \(W\otimes W^{-1}\to k_M\). This is precisely (13); it is the inverse complex \(W^{-1}=O[-c]\) that remains. The sign local system is self-dual via its canonical pairing, but reversing its shift is still necessary. No permutation of the two shifted factors is made without its Koszul symmetry.
 
-For the normal bundle, the tangent exact sequence \(0\to TM\to TX|_M\to E\to0\) identifies its fibre orientation line \(O\) with \(\operatorname{or}_{M/X}\). The relative dualizing formula M16–M19 identifies its inverse complex \(O[-c]\) with \(\omega_{M/X}\), with the same ordered orientation evaluation. This identification retains the line's monodromy on a nonorientable normal bundle.
+For the normal bundle, the tangent exact sequence \(0\to TM\to TX|_M\to E\to0\) identifies its fibre orientation line \(O\) with \(\operatorname{or}_{M/X}\). The [relative dualizing formula M16–M19](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-relative--relative-dimensions-graph-supports-and-coordinate-changes) identifies its inverse complex \(O[-c]\) with \(\omega_{M/X}\), with the same ordered orientation evaluation. This identification retains the line's monodromy on a nonorientable normal bundle.
 
-Finally take \(B=\nu_MF\). The specialization proof makes \(B\) bounded, constructible and conic; Fourier perfection keeps its transform bounded and constructible. Constructible Verdier duality supplies the same bounds for \(D_EB\), so (12) applies to it as well. Compose \(T_E\) of (10) with (13) and use \(\mu_MF=T_E\nu_MF\). This proves (3) through the specified natural maps. In rank zero the antipode is the identity and the relative orientation complex is \(k_M\); the conclusion reduces to ordinary duality of restriction to the open submanifold \(M\), as in the preceding rank-zero specialization check.
+Finally take \(B=\nu_MF\). The [specialization proof](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/perfect-operations-and-finite-microlocal-coefficients.md#specialization-and-microlocal-hom) makes \(B\) bounded, constructible and conic; [Fourier perfection](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/perfect-operations-and-finite-microlocal-coefficients.md#fourier-perfection-by-the-zero-section) keeps its transform bounded and constructible. Constructible Verdier duality supplies the same bounds for \(D_EB\), so (12) applies to it as well. Compose \(T_E\) of (10) with (13) and use \(\mu_MF=T_E\nu_MF\). This proves (3) through the specified natural maps. In rank zero the antipode is the identity and the relative orientation complex is \(k_M\); the conclusion reduces to ordinary duality of restriction to the open submanifold \(M\), as in the preceding rank-zero specialization check.
 
 ## Factor exchange reverses the dual inputs
 
@@ -228,7 +228,7 @@ K_{F,G}=R\mathcal Hom(q_2^{-1}F,q_1^!G),
 \qquad\text{(14)}
 \]
 
-The two inputs of this kernel are constructible by perfect inverse-image and internal-Hom closure. We specify the internal reversal used below. On a manifold \(Y\), put \(D=D_Y\). For constructible \(A,B\), substitute the actual bidual evaluation \(\eta_B:B\to DDB\), then curry with the tensor symmetry:
+The two inputs of this kernel are constructible by [perfect inverse-image and internal-Hom closure](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/perfect-operations-and-finite-microlocal-coefficients.md#perfect-inverse-images-tensors-and-internal-hom). We specify the internal reversal used below. On a manifold \(Y\), put \(D=D_Y\). For constructible \(A,B\), substitute the [actual bidual evaluation](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/constructible-costalks-and-verdier-duality.md#the-evaluation-map-is-biduality) \(\eta_B:B\to DDB\), then curry with the tensor symmetry:
 
 \[
 R\mathcal Hom(A,B)
@@ -237,7 +237,7 @@ R\mathcal Hom(A,R\mathcal Hom(DB,\omega_Y))
 \simeq R\mathcal Hom(DB,R\mathcal Hom(A,\omega_Y)).
 \]
 
-This is the reversal map to \(R\mathcal Hom(DB,DA)\). Its transpose evaluates \(R\mathcal Hom(A,B)\) on \(A\), then evaluates \(DB\) on the resulting \(B\), with the Koszul symmetry placing those factors next to one another. The first arrow is invertible by constructible biduality and the second by tensor–Hom adjunction. Thus this proves an isomorphism of internal-Hom sheaves, natural in both variables, without substituting Hom of ordinary stalks. Take \(Y=X^2\), \(A=q_2^{-1}F\), \(B=q_1^!G\). Formula (9), whose exceptional comparison is the evaluated map (EX.26), now gives
+This is the reversal map to \(R\mathcal Hom(DB,DA)\). Its transpose evaluates \(R\mathcal Hom(A,B)\) on \(A\), then evaluates \(DB\) on the resulting \(B\), with the Koszul symmetry placing those factors next to one another. The first arrow is invertible by constructible biduality and the second by tensor–Hom adjunction. Thus this proves an isomorphism of internal-Hom sheaves, natural in both variables, without substituting Hom of ordinary stalks. Take \(Y=X^2\), \(A=q_2^{-1}F\), \(B=q_1^!G\). Formula (9), whose exceptional comparison is [the evaluated map (EX.26)](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-hom--exceptional-inverse-image-of-internal-hom), now gives
 
 \[
 \begin{aligned}
@@ -260,9 +260,9 @@ The action on the functor can be checked on the deformation itself. In a coordin
 \]
 
 It squares to the identity, preserves the positive chamber, and restricts at \(t=0\) to \(h(u,z)=(-u,z)\). These coordinate maps are the maps induced by the same exchange of the original pair, so they agree on overlaps. The parameter is unchanged, including its increasing orientation. Apply inverse image under this diffeomorphism to \(s^{-1}Rj_*r^{-1}K\). The cartesian central and chamber squares, and ordinary base change for a diffeomorphism, give the actual natural comparison
-\(\nu_\Delta(\sigma^{-1}K)\simeq h^{-1}\nu_\Delta K\). It is the invertible instance of the specialization inverse map, with no exceptional shift.
+\(\nu_\Delta(\sigma^{-1}K)\simeq h^{-1}\nu_\Delta K\). It is the invertible instance of [the specialization inverse map](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/specialization.md#sh02-sp-inverse--pullback-and-exceptional-pullback), with no exceptional shift.
 
-On the normal bundle, the transpose of \(h=-1\) is conormal negation \(a\). The Fourier kernel map (FF4–FF6) gives \(T_Eh^{-1}\simeq a^{-1}T_E\): here \(Rh_!=h^{-1}\) since \(h\) is an involutive homeomorphism. Equivalently, the change \((u,\xi)\mapsto(-u,-\xi)\) preserves the incidence inequality, and proper-support base change gives the same map. This includes the induced action on compact orientation classes; it does not replace that action by a chosen unsigned scalar. Composing these two comparisons proves
+On the normal bundle, the transpose of \(h=-1\) is conormal negation \(a\). The [Fourier kernel map (FF4–FF6)](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/fourier-functoriality.md#sh02-ff-linear-kernel-a-single-pairing-identity-supplies-the-main-map) gives \(T_Eh^{-1}\simeq a^{-1}T_E\): here \(Rh_!=h^{-1}\) since \(h\) is an involutive homeomorphism. Equivalently, the change \((u,\xi)\mapsto(-u,-\xi)\) preserves the incidence inequality, and proper-support base change gives the same map. This includes the induced action on compact orientation classes; it does not replace that action by a chosen unsigned scalar. Composing these two comparisons proves
 
 \[
 \mu_{\Delta_X}(\sigma^{-1}K)
@@ -300,7 +300,7 @@ R\Gamma(U\times V;K_{F,G})
 \]
 
 Restriction in \(V\) is precomposition with extension of compact supports; restriction in \(U\) acts on the second argument. At \(y\), the actual small-ball compact-section system of \(F\) is represented by the perfect costalk \(C_y=i_y^!F\). Its dual represents \((D_XF)_y\). After inserting this fixed perfect representative, a bounded finite-projective model gives \(R\operatorname{Hom}_k(C_y,-)=C_y^\vee\otimes^L-\), which commutes with the filtered passage \(U\to x\). The stalk comparison is therefore the finite-projective evaluation
-\(G_x\otimes C_y^\vee\to R\operatorname{Hom}_k(C_y,G_x)\), with the same tensor symmetry as the displayed transpose. It is invertible. Stalkwise detection proves the actual external map an isomorphism. This is the rectangle proof (25)–(26), with the factors interchanged, using the costalk dual pairing (5)–(7). Perfection is used on the represented compact-section complex before Hom is passed to a stalk; no general Hom-of-stalks rule is invoked. The argument even allows an arbitrary bounded \(G\), although both inputs here are constructible.
+\(G_x\otimes C_y^\vee\to R\operatorname{Hom}_k(C_y,G_x)\), with the same tensor symmetry as the displayed transpose. It is invertible. Stalkwise detection proves the actual external map an isomorphism. This is [the rectangle proof (25)–(26), with the factors interchanged](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/weak-constructibility-under-sheaf-operations.md#two-different-positions-for-the-perfect-factor), using [the costalk dual pairing (5)–(7)](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/constructible-costalks-and-verdier-duality.md#duality-exchanges-the-measurements-before-biduality). Perfection is used on the represented compact-section complex before Hom is passed to a stalk; no general Hom-of-stalks rule is invoked. The argument even allows an arbitrary bounded \(G\), although both inputs here are constructible.
 
 We calculate the dual kernel with the same bidual map, rather than assuming an external-dual formula. Put \(P=D_{X^2}q_1^!G\otimes q_2^{-1}F\). Insert \(\eta_{q_1^!G}\) in the target of (14), curry, and use the Koszul symmetry to put the factors in the stated order. This gives the natural isomorphism \(c:K_{F,G}\xrightarrow{\sim}D_{X^2}P\). Constructible duality, inverse-image closure and tensor closure make \(P\) constructible. Consequently the composite
 
@@ -329,7 +329,7 @@ D_{T^*X}\mu_{\Delta_X}K
 \]
 
 The trace-compatible relative complex on the diagonal is
-\(\omega_{\Delta_X/X^2}=\omega_{\Delta_X}\otimes\delta^{-1}\omega_{X^2}^{-1}\), where \(\delta:X\to X^2\) is the diagonal. To specify its identification with \(\omega_X^{-1}\), use \(q_1\delta=\operatorname{id}_X\). The ordered exceptional-composition pairing (M16)–(M19) gives
+\(\omega_{\Delta_X/X^2}=\omega_{\Delta_X}\otimes\delta^{-1}\omega_{X^2}^{-1}\), where \(\delta:X\to X^2\) is the diagonal. To specify its identification with \(\omega_X^{-1}\), use \(q_1\delta=\operatorname{id}_X\). The [ordered exceptional-composition pairing (M16)–(M19)](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-relative--relative-dimensions-graph-supports-and-coordinate-changes) gives
 
 \[
 \omega_\delta\otimes\delta^{-1}\omega_{q_1}
@@ -433,10 +433,10 @@ On the right of (5), \(R\operatorname{Hom}_{\mathbb Z}(Q,P)\) has the same gcd t
 
 Masaki Kashiwara and Pierre Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), provides the following constructions and results.
 
-- Definition 2.1.2 and Theorem 2.1.3(iii), printed pp. 39–40 (PDF pp. 42–43), fix the negative-pairing Fourier transform and its ordinary coefficient-dual comparison, including the antipode and relative compact-support factor. Section 2.1 states its results without proofs. The variable-test Fourier proof (FDN8–FDN16) supplies (11), and taking the base dualizing complex yields the absolute duality used here.
+- Definition 2.1.2 and Theorem 2.1.3(iii), printed pp. 39–40 (PDF pp. 42–43), fix the negative-pairing Fourier transform and its ordinary coefficient-dual comparison, including the antipode and relative compact-support factor. Section 2.1 states its results without proofs. The [variable-test Fourier proof (FDN8–FDN16)](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/fourier-duality-normalization.md#sh02-fdn-base-duality-relative-to-a-variable-test-object) supplies (11), and taking the base dualizing complex yields the absolute duality used here.
 - Definition 2.2.1 and Proposition 2.2.1, printed pp. 41–43 (PDF pp. 44–46), construct specialization by the positive normal deformation and state its basic conic and section properties. The connecting map (8) above is derived from open-complement localization; its oriented parameter identifies the exceptional-pullback expression needed for (10).
 - Definition 5.5.1, printed pp. 90–91 (PDF pp. 93–94), defines microlocal Hom by the diagonal Hom kernel with ordinary pullback in its first argument and exceptional pullback in its second. Its diagonal conormal convention uses the first covector, as in (14)–(16).
-- Definition 5.6.1 and Proposition 5.6.2, printed pp. 97–98 (PDF pp. 100–101), specify perfect formal neighborhood systems, evaluation biduality and constructible external-Hom exchange. These are the classical constructibility conditions behind the evaluation biduality proof and the external-Hom map in (17).
-- Remark 8.2.9 and Propositions 8.3.3–8.3.6, printed pp. 148–150 (PDF pp. 151–153), relate real constructibility to cohomological constructibility and preserve it under inverse operations, specialization, microlocalization, conic Fourier transformation, internal Hom and tensor. The perfect-operation proofs give the stated coefficient and boundedness conditions used throughout this lesson.
+- Definition 5.6.1 and Proposition 5.6.2, printed pp. 97–98 (PDF pp. 100–101), specify perfect formal neighborhood systems, biduality with the constant sheaf as dualizing coefficient, and external-Hom exchange for ordinary pullbacks. The programme supplies the Verdier [evaluation biduality proof](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/constructible-costalks-and-verdier-duality.md#the-evaluation-map-is-biduality) and the external-Hom map with an exceptional second projection in (17), using those constructibility conditions and the product dualizing complex.
+- Remark 8.2.9 and Propositions 8.3.3–8.3.6, printed pp. 148–150 (PDF pp. 151–153), relate real constructibility to cohomological constructibility and preserve it under inverse operations, specialization, microlocalization, conic Fourier transformation, internal Hom and tensor. The [perfect-operation proofs](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/perfect-operations-and-finite-microlocal-coefficients.md#perfect-inverse-images-tensors-and-internal-hom) give the stated coefficient and boundedness conditions used throughout this lesson.
 
 The four comparisons are obtained in the order of their constructions: the positive boundary connecting map, Fourier duality with its inverse relative complex, factor exchange on the diagonal deformation, and evaluation of the product dualizing complex. The ray, point, Möbius-line and torsion calculations show where the boundary, orientation and coefficient degrees enter.

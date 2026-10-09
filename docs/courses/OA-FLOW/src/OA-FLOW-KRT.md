@@ -50,9 +50,9 @@ Let \(F\) be a strict free ergodic nonsingular real flow on a standard sigma-fin
  \tag{KT4}
 \]
 On \(L^2(\mathbb R\times X,dt\,d\mu)\) its actual regular generators are
-\
- [\pi(f)\xi=f(F_{-t}x)\xi(t,x),\qquad
- \lambda_s\xi=\xi(t-s,x).
+\[
+ [\pi(f)\xi](t,x)=f(F_{-t}x)\xi(t,x),\qquad
+ [\lambda_s\xi](t,x)=\xi(t-s,x).
  \tag{KT5}
 \]
 We claim
@@ -62,7 +62,7 @@ We claim
 \]
 
 Here is a proof specialized to the real line. Source multipliers
-\(q(f)\xi=f(x)\xi(t,x)\) commute with \(B\). If \(Y\in\pi(A)'\cap B\), it therefore commutes with both source and orbit-position multiplication. The map
+\([q(f)\xi](t,x)=f(x)\xi(t,x)\) commute with \(B\). If \(Y\in\pi(A)'\cap B\), it therefore commutes with both source and orbit-position multiplication. The map
 \[
  (t,x)\longmapsto(x,F_{-t}x)
  \tag{KT7}
@@ -71,8 +71,8 @@ is Borel and injective by freeness. The [Borel-image and inverse theorem](../../
 
 For a fixed \(s\), let \(j_s=d((F_{-s})_*\mu)/d\mu\), the positive Radon–Nikodym density making
 \(v(x)\mapsto j_s(x)^{1/2}v(F_sx)\) unitary. Then
-\
- [R_s\xi=j_s(x)^{1/2}\xi(t+s,F_sx)
+\[
+ [R_s\xi](t,x)=j_s(x)^{1/2}\xi(t+s,F_sx)
  \tag{KT8}
 \]
 commutes with each \(\lambda_r\) and \(\pi(f)\): in the coefficient computation,
@@ -266,8 +266,8 @@ The normalized cocycle equations give
 \(\sigma_t^\psi=\operatorname{Ad}(c_t)\sigma_t^\varphi\) and
 \(c_{t+s}=c_t\sigma_t^\varphi(c_s)\).
 In a common faithful normal representation of \(P\), define
-\
- [W\xi=c_{-r}^*\xi(r)
+\[
+ [W\xi](r)=c_{-r}^*\xi(r)
  \quad\text{on }L^2(\mathbb R,H).
  \tag{KT27}
 \]

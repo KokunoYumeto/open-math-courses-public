@@ -413,7 +413,7 @@ For self-dual Lebesgue measure and counting measure on the lattice, the quotient
 
 **Proof.** The equality \(e^{2\pi i (Ak)\cdot\xi}=1\) for every \(k\in\mathbb Z^n\) is equivalent to each coordinate of \(A^T\xi\) being integral, using the exact kernel of the circle exponential from HA-LCA-02, Lemma 1.3. This proves (23).
 
-The half-open set \(F=A0,1)^n\) and its translates by \(\Lambda\) form a disjoint partition of \(\mathbb R^n\): apply \(A^{-1}\) and take integer and fractional parts of each coordinate. It has measure \(|\det A|\) by Lemma 6.0. The measure \(1_F\,dx\) is a finite Radon measure, by [HA-LCA-03, Lemma 4.1, and its pushforward \(\rho\) to \(\mathbb R^n/\Lambda\) is finite Radon. For \(f\in C_c(\mathbb R^n)\), countable additivity over the tiles gives, with absolute convergence justified first for \(|f|\),
+The half-open set \(F=A[0,1)^n\) and its translates by \(\Lambda\) form a disjoint partition of \(\mathbb R^n\): apply \(A^{-1}\) and take integer and fractional parts of each coordinate. It has measure \(|\det A|\) by Lemma 6.0. The measure \(1_F\,dx\) is a finite Radon measure, by HA-LCA-03, Lemma 4.1, and its pushforward \(\rho\) to \(\mathbb R^n/\Lambda\) is finite Radon. For \(f\in C_c(\mathbb R^n)\), countable additivity over the tiles gives, with absolute convergence justified first for \(|f|\),
 \[
  \int_{\mathbb R^n}f\,dx
  =\int_F\sum_{\lambda\in\Lambda}f(x+\lambda)\,dx
@@ -422,7 +422,7 @@ The half-open set \(F=A0,1)^n\) and its translates by \(\Lambda\) form a disjoin
 \]
 Counting measure is the chosen \(dh\), so the sum is \(Pf\). Comparing (25) with Theorem 4.1 and using the surjectivity of \(P\) makes \(\rho\) equal to its quotient Haar measure. Its total mass is \(\operatorname{vol}F=|\det A|\). Apply the same argument to \(A^{-T}\), then use (21) and determinant invariance under transpose. This proves (24).
 
-For \(a\mathbb Z\subseteq\mathbb R\), \(a>0\), the annihilator is \(a^{-1}\mathbb Z\), the primal quotient measure is ordinary length on \(0,a)\), and its dual is counting measure divided by \(a\), by [HA-LCA-07, Proposition 3.3. The dual of counting measure on \(a\mathbb Z\) is probability measure on its circle dual, represented by \(a\,dt\) on \([0,1/a)\). Thus the dual Weil formula reads
+For \(a\mathbb Z\subseteq\mathbb R\), \(a>0\), the annihilator is \(a^{-1}\mathbb Z\), the primal quotient measure is ordinary length on \([0,a)\), and its dual is counting measure divided by \(a\), by HA-LCA-07, Proposition 3.3. The dual of counting measure on \(a\mathbb Z\) is probability measure on its circle dual, represented by \(a\,dt\) on \([0,1/a)\). Thus the dual Weil formula reads
 \[
  \int_\mathbb R F(t)\,dt
  =\int_0^{1/a}
@@ -571,12 +571,12 @@ In dimension two, (22) gives exactly: the zero group; an infinite cyclic group \
 <a id="ha-lca-10-exercise-7-3"></a>
 **Exercise 7.3 — Reciprocal covolumes.** Verify the reciprocal-covolume formula for a full lattice, including the measure normalization.
 
-**Solution.** Write the lattice as \(A\mathbb Z^n\) with invertible \(A\). Counting measure is the chosen Haar measure on each discrete lattice, and \(dx\) is the self-dual Lebesgue measure for the pairing \(e^{2\pi i x\cdot\xi}\), as proved in HA-LCA-07, Proposition 3.2. Example 6.2 proves that the quotient measure required by Weil's formula is the pushforward of Lebesgue measure on \(A0,1)^n\), with total \(|\det A|\). Its dual lattice is \(A^{-T}\mathbb Z^n\) and has covolume \(|\det A^{-T}|=|\det A|^{-1}\). Multiplying yields one. Scaling either lattice's counting measure would rescale its quotient measure inversely; the claimed formula uses counting measure on both, as specified. \(\square\)
+**Solution.** Write the lattice as \(A\mathbb Z^n\) with invertible \(A\). Counting measure is the chosen Haar measure on each discrete lattice, and \(dx\) is the self-dual Lebesgue measure for the pairing \(e^{2\pi i x\cdot\xi}\), as proved in HA-LCA-07, Proposition 3.2. Example 6.2 proves that the quotient measure required by Weil's formula is the pushforward of Lebesgue measure on \(A[0,1)^n\), with total \(|\det A|\). Its dual lattice is \(A^{-T}\mathbb Z^n\) and has covolume \(|\det A^{-T}|=|\det A|^{-1}\). Multiplying yields one. Scaling either lattice's counting measure would rescale its quotient measure inversely; the claimed formula uses counting measure on both, as specified. \(\square\)
 
 <a id="ha-lca-10-exercise-7-4"></a>
 **Exercise 7.4 — Injectivity is insufficient.** Give a continuous injective homomorphism of LCA groups with nonclosed image and nonsurjective dual. Explain the distinction from Theorem 2.1.
 
-**Solution.** Use (26) with irrational \(a\). Example 6.3 proves injectivity, density and properness of the image, and computes its dual image as the proper subgroup \(\mathbb Z+a\mathbb Z\) of \(\mathbb R\). This map is not a homeomorphism onto its image. If it were, that image would be locally compact in the relative topology, and [HA-LCA-09, Lemma 1.2 would make it closed, a contradiction. Theorem 2.1 concerns an actual closed subgroup with its relative topology; mere injectivity supplies neither of these properties. \(\square\)
+**Solution.** Use (26) with irrational \(a\). Example 6.3 proves injectivity, density and properness of the image, and computes its dual image as the proper subgroup \(\mathbb Z+a\mathbb Z\) of \(\mathbb R\). This map is not a homeomorphism onto its image. If it were, that image would be locally compact in the relative topology, and HA-LCA-09, Lemma 1.2 would make it closed, a contradiction. Theorem 2.1 concerns an actual closed subgroup with its relative topology; mere injectivity supplies neither of these properties. \(\square\)
 
 <a id="ha-lca-10-exercise-7-5"></a>
 **Exercise 7.5 — Determine the dual quotient constant.** Give the coset-integral computation that fixes the constant in Proposition 5.1 for an arbitrary closed \(H\).

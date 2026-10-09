@@ -143,7 +143,7 @@ Later we need (2.5)–(2.7) over \(\mathbb Z\) or a coefficient discrete valuati
 \[
 i_S^*K\in D^{\le -s-1}.
 \]
-Refine the stratum so its cohomology sheaves are locally constant. Its dualizing complex is \(A2s\). The spectral sequence computing \(R\operatorname{Hom}_A(C,A)\) for a bounded complex \(C\in D^{\le -s-1}\) has terms from nonnegative Ext degrees only, so it lies in \(D^{\ge s+1}\). Dualizing on the stratum and shifting by \([2s]\) therefore yields
+Refine the stratum so its cohomology sheaves are locally constant. Its dualizing complex is \(A[2s](s)\). The spectral sequence computing \(R\operatorname{Hom}_A(C,A)\) for a bounded complex \(C\in D^{\le -s-1}\) has terms from nonnegative Ext degrees only, so it lies in \(D^{\ge s+1}\). Dualizing on the stratum and shifting by \([2s]\) therefore yields
 \[
 i_S^!K\in D^{\ge -s+1}.
 \tag{2.8}
@@ -176,7 +176,7 @@ For a proper map \(f:Y\to X\) from a smooth \(d\)-fold, put \(Z=Y\times_XY\) and
 \operatorname{End}(Rf_*\Lambda[d])
 &=\operatorname{Hom}(f^*Rf_*\Lambda[d],\Lambda[d])\\
 &=\operatorname{Hom}(Rp_{2*}\Lambda_Z[d],\Lambda_Y[d])\\
-&=\operatorname{Hom}(\Lambda_Z,\omega_Z-2d)\\
+&=\operatorname{Hom}(\Lambda_Z,\omega_Z[-2d](-d))\\
 &=H_{2d}^{\rm BM}(Z)(-d).
 \end{aligned}
 \tag{3.3}
@@ -192,7 +192,7 @@ H_{4n}^{\rm BM}(Z_0)(-2n)&=H_{Z_0}^{2D}(M_0)(D).
 \tag{3.4}
 \]
 For a smooth ambient \(h\)-fold this is the identity
-\(H_b^{\rm BM}(Z)=H_Z^{2h-b}(M)(h)\), obtained from \(\omega_Z=e^!\omega_M\). Pullback of relative cochains for the pair \((M,M\setminus Z)\) to \((M_0,M_0\setminus Z_0)\) defines a map in (3.4). In the étale formulation, pull back the supported morphism \(\Lambda_M\to e_*e^!\Lambda_M2D\) and use closed-support exchange. This decreases the Borel–Moore degree by \(2r\); it is not ordinary restriction of homology to a closed subset.
+\(H_b^{\rm BM}(Z)=H_Z^{2h-b}(M)(h)\), obtained from \(\omega_Z=e^!\omega_M\). Pullback of relative cochains for the pair \((M,M\setminus Z)\) to \((M_0,M_0\setminus Z_0)\) defines a map in (3.4). In the étale formulation, pull back the supported morphism \(\Lambda_M\to e_*e^!\Lambda_M[2D](D)\) and use closed-support exchange. This decreases the Borel–Moore degree by \(2r\); it is not ordinary restriction of homology to a closed subset.
 
 To verify that it gives (3.2), set \(P=R\pi_*\Lambda[D]\) and \(e_0:Y_0\hookrightarrow Y\). Under adjunction,
 \[
@@ -263,7 +263,7 @@ For a rank-\(D\) vector bundle \(E\to S\), define the relative arithmetic transf
 If \(v:V\hookrightarrow E\) is a rank-\(b\) subbundle, its value at a covector is the compact integral over \(V_s\), with total shift \([D+b]\). It vanishes unless the covector annihilates \(V_s\). On the annihilator the kernel is canonically constant, and the vector trace supplies \(k(-b)[D-b]\). Closed base change followed by localization therefore identifies the whole complex:
 \[
 \mathcal F_E(v_*k_V[b])
-=v^\perp_*k_{V^\perp}D-b.
+=v^\perp_*k_{V^\perp}[D-b](-b).
 \tag{4.2}
 \]
 This is stronger than an equality of stalk dimensions. A complex vanishing on the complementary open is the closed extension of its restriction, and the restriction here comes with the specified trace isomorphism. The traces agree under changes of frame.
@@ -436,7 +436,7 @@ At the zero covector the character kernel has its canonical trivialization. The 
 \[
 (\mathcal F_\psi\mathsf S_{\mathfrak g})_0
 =R\Gamma_c(Y,K)[2D]
-=R\Gamma(\mathcal B,K)2n.
+=R\Gamma(\mathcal B,K)[2n](-n-r).
 \tag{6.4}
 \]
 This is exactly the rank-\((n+r)\) trace used in the subbundle formula, by composition of compact integrations. The twist has trivial Weyl action. Hence \(\phi_K=uC_Ku^{-1}\) there. Equation (6.3), the restriction algebra (3.2), and faithfulness of \(O_K\) prove \(\phi_K(w)=\varepsilon(w)\rho_K(w)\) as sheaf maps.

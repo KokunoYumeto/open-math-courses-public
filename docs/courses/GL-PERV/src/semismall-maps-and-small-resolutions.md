@@ -306,8 +306,8 @@ Comparing with (1.2) and (1.3), Hilbert–Chow is \(\operatorname{id}_{\mathbb A
 \[
 Rh_*\Lambda[4]
 =\operatorname{IC}_{\operatorname{Sym}^2\mathbb A^2}
-\oplus i_{D*}\Lambda_D2
-=\Lambda[4]\oplus i_{D*}\Lambda_D2.
+\oplus i_{D*}\Lambda_D[2](-1)
+=\Lambda[4]\oplus i_{D*}\Lambda_D[2](-1).
 \tag{5.8}
 \]
 The last equality follows from the smooth centre factor and the finite-quotient IC proof used in (3.3). At a diagonal point, the stalk degrees are \(-4,-2\), with groups \(\Lambda,\Lambda(-1)\), agreeing with the shifted fibre cohomology. On a transverse slice over \(\mathbb C\), the intersection matrix is \((-2)\). Therefore characteristic-two sheaf coefficients prevent the full diagonal summand from splitting. This coefficient obstruction is compatible with using complex ground coordinates in (5.1)–(5.7).
@@ -411,7 +411,7 @@ The symmetric square is the centre times the sign quotient of the half-differenc
 Over distinct pairs the fibre is a point, while over a double point \(c=0\) and the projective direction is free, giving \(\mathbb P^1\). Thus the open and diagonal strata have \((s,r)=(4,0),(2,1)\) in source dimension four. Both are relevant, and the diagonal prevents smallness. The generic local system is constant of rank one. The global product description trivializes the diagonal component local system as \(\Lambda(-1)\). Formula (3.1), followed by the finite-quotient IC calculation, yields
 \[
 Rh_*\Lambda[4]=\Lambda_{\operatorname{Sym}^2\mathbb A^2}[4]
-\oplus i_{D*}\Lambda_D2.
+\oplus i_{D*}\Lambda_D[2](-1).
 \]
 The diagonal-point stalk has \(\Lambda\) in degree \(-4\) and \(\Lambda(-1)\) in degree \(-2\). Finally (5.4) gives source cohomology in degrees zero and two only, equal to \(\Lambda\) and \(\Lambda(-1)\). Contraction classically, or the exact invariant summand of the finite \(\mathbb A^4\) quotient étale, gives target \(IH^0=\Lambda\) only. The diagonal summand contributes \(H^{a-2}(D,\Lambda)(-1)\) in source degree \(a\); as \(D=\mathbb A^2\), this is the single extra degree-two class.
 

@@ -1,0 +1,9 @@
+# Analytic forcing without global analytic solutions
+
+The two Markdown chapters prove global analytic nonsurjectivity for the heat operator with two spatial variables and for the two-variable Laplacian with an additional analytic parameter. One explicit analytic forcing fails for both operators while both have smooth particular solutions. The learner gives four worked examples and eight fully solved exercises totaling 100 points. Every required argument is proved here.
+
+Run python -B make_figure260.py to regenerate the PNG, SVG and figures/geometry260.json. This needs Matplotlib and mpmath. Its temporary Matplotlib configuration is removed on exit. The left panel gives finite single-mode resolvent profiles; the right gives their exact leading exponential thresholds. The displayed finite frequencies are not the double-factorial frequencies of the infinite construction.
+
+Run python -B check_analytic260.py, python -B check_figure260.py and python -B check_learner260.py for 1485 supplementary comparisons with tolerance 1e-65. The proof and learner checkers use 90 decimal digits; the independent figure quadrature uses 140 digits to retain relative precision in very small tails. They test Green integrals, differential equations, phases, contour signs, cutoff geometry and worked examples. Numerical checks do not replace the complete infinite-series and contradiction proofs.
+
+Original text, programs and illustration are released under CC0 1.0. DejaVu font components retain the accompanying font licence. Credit for the analytic counterexamples and frequency-isolating method belongs to E. De Giorgi, Lamberto Cattabriga and L. C. Piccinini. The diagonal enumeration and all required estimates, including the localized homogeneous heat-solution estimate, are supplied explicitly here.

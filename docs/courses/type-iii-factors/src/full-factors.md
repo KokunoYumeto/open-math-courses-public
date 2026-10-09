@@ -307,7 +307,7 @@ Now the unitary group. We use the elementary identities of the next lemma throug
 
 *Proof.* (a) \(\varphi(uyu^*)=(u^*\varphi u)(y)\), where \((a\varphi b)(y)=\varphi(bya)\). The map \(\chi\mapsto u\chi\)
 is isometric on \(M_*\) and sends \(u^*\varphi u-\varphi\) to \(\varphi u-u\varphi\). (b) For \(y\in M\),
-\(x,\varphi^*=\overline{\varphi(x^*y)}-\overline{\varphi(yx^*)}=-\overline{x^*,\varphi}\), and \(y\mapsto
+\([x,\varphi^*](y^*)=\overline{\varphi(x^*y)}-\overline{\varphi(yx^*)}=-\overline{[x^*,\varphi](y)}\), and \(y\mapsto
 y^*\) preserves the unit ball. (c) By associativity of these operations (Section 1), \((xy)\varphi=x(y\varphi)\),
 \(\varphi(xy)=(\varphi x)y\) and \(x(\varphi y)=(x\varphi)y\), so \([xy,\varphi]=x(y\varphi-\varphi y)+(x\varphi-\varphi x)y\); and \(\|x\chi\|,\|\chi x\|\le
 \|x\|\|\chi\|\). (d) By the Cauchy–Schwarz inequality \(|\psi(yx)|\le\psi(yy^*)^{1/2}\psi(x^*x)^{1/2}\le\|y\|

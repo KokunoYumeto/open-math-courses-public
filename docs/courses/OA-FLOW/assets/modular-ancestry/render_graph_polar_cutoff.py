@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-modular-ancestry-20261009-v1"
 from matplotlib.ticker import FixedLocator, FixedFormatter
 
 out = Path(__file__).resolve().parent / "assets"
@@ -65,6 +66,6 @@ ax.text(.015,.10,"The plot shows exact scalar functions. Spectral integration, z
         fontsize=10.5,va="top",color="#4d596c")
 fig.suptitle("From the closed graph to polar data and a full graph core",fontsize=20,fontweight="bold")
 fig.savefig(out/"graph-polar-cutoff.png",dpi=170)
-fig.savefig(out/"graph-polar-cutoff.svg")
+fig.savefig(out/"graph-polar-cutoff.svg", metadata={'Date': None})
 plt.close(fig)
 print(out/"graph-polar-cutoff.png")

@@ -118,11 +118,11 @@ It preserves the degree-normalized trace in degree two, cup products, and finite
 The bundle, its normalization along the section and its fibre degree in these two descriptions are identical. The functorial identifications commute with pullback, and therefore identify the representing schemes and their group laws. This proves the needed Jacobian base change directly from the written all-test-scheme Picard construction.
 
 Global units on either projective connected curve are constants and have \(n\)-th roots in its algebraically closed field. The Kummer proof of Lemma 1.3 consequently gives the natural diagram
-\
+\[
  \begin{array}{ccc}
- H^1_{\mathrm{\acute et}}(X,\mu_n)&\simeq&J[n\\
+ H^1_{\mathrm{\acute et}}(X,\mu_n)&\simeq&J[n](K)\\
  \downarrow&&\downarrow\\
- H^1_{\mathrm{\acute et}}(X_{K'},\mu_n)&\simeq&J_{K'}n.
+ H^1_{\mathrm{\acute et}}(X_{K'},\mu_n)&\simeq&J_{K'}[n](K').
  \end{array}
 \]
 The scheme \(J[n]\) is finite étale by the multiplication proof used in Lemma 1.3. A finite étale algebra over an algebraically closed field is a product of copies of that field: its finite separable residue extensions are the field itself, and étaleness makes the local factors reduced. Tensoring this product with \(K'\) changes none of its component labels or group-law maps. Thus the right vertical arrow is a bijection and a group isomorphism, which proves the first assertion.
@@ -271,7 +271,7 @@ For completeness this is the symmetric modular equation, rather than a polynomia
 
 To prove integrality, expand with \(r=q^{1/p}\) and a primitive root \(\zeta_p\). Each root has Laurent coefficients in \(\mathbf Z[\zeta_p]\). The Laurent expansions of the symmetric coefficients are invariant under \(r\mapsto\zeta_pr\), so only integral powers of \(q\) occur. They are also invariant under every automorphism of \(\mathbf Q(\zeta_p)\), which permutes the \(p\) translated roots. Their coefficients are rational algebraic integers, hence integers; the latter elementary assertion is proved by the rational-root denominator argument for a monic polynomial. A polynomial in \(j\) with integral Laurent expansion has integral polynomial coefficients: subtract its leading Laurent coefficient times the matching power of \(j\), reducing its pole order, and continue to the constant. Thus \(\Phi_p\in\mathbf Z[X,Y]\). The dual-isogeny bijection makes its zero correspondence symmetric. No assumption that two distinct isogenies always have distinct pairs of invariants has been made.
 
-Reduce the product in \(\mathbf Z\zeta_p)\) modulo \(1-\zeta_p\); its residue field is \(\mathbf F_p\). The first target series becomes \(j(q^p)=j(q)^p\). The \(p\) remaining series all become \(j(r)\), and their product becomes
+Reduce the product in \(\mathbf Z[\zeta_p]((r))\) modulo \(1-\zeta_p\); its residue field is \(\mathbf F_p\). The first target series becomes \(j(q^p)=j(q)^p\). The \(p\) remaining series all become \(j(r)\), and their product becomes
 \((X-j(r))^p=X^p-j(q)\). Therefore
 \[
  \Phi_p(X,j(q))=(X-j(q)^p)(X^p-j(q))

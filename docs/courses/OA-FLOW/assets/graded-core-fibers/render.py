@@ -13,6 +13,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-graded-core-fibers-20261008-v1"
 from matplotlib import font_manager
 from matplotlib.patches import Rectangle
 
@@ -131,7 +132,7 @@ def main():
              "Exact identities: GRD.7.c–e and GRD.7.j–m.  Points and connecting segments are finite samples; they do not replace the continuity proof.",
              fontsize=13, color=MUTED)
     fig.savefig(OUT / "norm-and-product.png", dpi=160)
-    fig.savefig(OUT / "norm-and-product.svg")
+    fig.savefig(OUT / "norm-and-product.svg", metadata={"Date": None})
     plt.close(fig)
 
     data = {

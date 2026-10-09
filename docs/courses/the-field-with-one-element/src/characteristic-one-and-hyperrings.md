@@ -316,7 +316,7 @@ Then \(A/\Gamma\) is a canonical hypergroup with zero \([0]\) and \(-[x]=[-x]\).
 
 (c) The maps \(J\mapsto\pi(J)\) and \(I\mapsto\pi^{-1}(I)\) are inverse bijections between the ideals of \(R\) and the ideals of \(R/G\). Prime ideals correspond to prime ideals.
 
-*Proof.* (a) Each element of \(G\) acts on \((R,+)\) by an automorphism. So \((R/G,+)\) is a canonical hypergroup by Lemma 3.4. The product is well defined because \(xg\cdot yh=xy\cdot gh\). It is commutative and associative with unit \([1]\), and \([0][x]=[0]\). For the distributive law: \(z\) is the set of classes \([z(xg+yh)]=[zxg+zyh]\) with \(g,h\in G\), and this is \([zx]+[zy]\). Finally \([1]\ne[0]\) because \(R\neq 0\). The map \(\pi\) preserves \(0\), \(1\) and products, and \(\pi(x+y)=[x+y]\in[x]+[y]\).
+*Proof.* (a) Each element of \(G\) acts on \((R,+)\) by an automorphism. So \((R/G,+)\) is a canonical hypergroup by Lemma 3.4. The product is well defined because \(xg\cdot yh=xy\cdot gh\). It is commutative and associative with unit \([1]\), and \([0][x]=[0]\). For the distributive law: \([z]([x]+[y])\) is the set of classes \([z(xg+yh)]=[zxg+zyh]\) with \(g,h\in G\), and this is \([zx]+[zy]\). Finally \([1]\ne[0]\) because \(R\neq 0\). The map \(\pi\) preserves \(0\), \(1\) and products, and \(\pi(x+y)=[x+y]\in[x]+[y]\).
 
 (b) \([x][y]=[1]\) means \(xy\in G\). There is such a \(y\) if and only if \(x\in R^\times\).
 

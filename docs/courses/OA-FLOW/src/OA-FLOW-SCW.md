@@ -140,9 +140,9 @@ For \(e\ne0\) there is a normal isomorphism with normal inverse
 Here \(C_{\varphi_e}\) is a faithful-weight chart for the algebra \(eMe\). We prove both normality and surjectivity, not just the relations between the proposed generators.
 
 Use the \(\omega\)-chart on \(L^2(\mathbb R,H_M)\), with \(M\) faithfully normally represented on an arbitrary \(H_M\). Since \(e\in M_\omega\), its coefficient field is the constant projection \(e\). Its range is \(L^2(\mathbb R,eH_M)\). The representation of \(eMe\) on \(eH_M\) is faithful and normal: a corner element vanishing there vanishes on both summands of \(H_M\), and increasing bounded positive nets remain strongly convergent upon restriction. On this range the compressed fields are
-\
- [\pi_\omega(x)\xi=\sigma_{-r}^{\varphi_e}(x)\xi(r),\qquad
- e\lambda_\omega(t)\xi=\xi(r-t).
+\[
+ [\pi_\omega(x)\xi](r)=\sigma_{-r}^{\varphi_e}(x)\xi(r),\qquad
+ [e\lambda_\omega(t)\xi](r)=\xi(r-t).
  \tag{SCW.3.b}
 \]
 They are the actual regular realization of the domain in (SCW.3.a), by [NR4](OA-FLOW-NR.md#oa-flow.nr.4). Restriction of a corner algebra to its range is a normal faithful representation with normal inverse onto its image. This follows also by adjoining zero on the orthogonal complement; both maps preserve bounded increasing positive suprema.

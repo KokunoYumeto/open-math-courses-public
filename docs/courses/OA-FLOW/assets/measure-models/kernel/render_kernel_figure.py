@@ -6,6 +6,7 @@ import json
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-measure-models-kernel-20261009-v1"
 from matplotlib.patches import FancyBboxPatch
 
 D = Path(__file__).resolve().parent
@@ -76,6 +77,6 @@ for (i,j),cell in tbl.get_celld().items():
 ax.text(.7,.27,"Each last-row pair sums to 1; multiplying it by the base mass 1/2 recovers the first row.",
         fontsize=11,color=muted)
 fig.savefig(D/"haar-kernel-construction.png",dpi=180)
-fig.savefig(D/"haar-kernel-construction.svg")
+fig.savefig(D/"haar-kernel-construction.svg", metadata={'Date': None})
 plt.close(fig)
 print("Figure and exact rational data written.")

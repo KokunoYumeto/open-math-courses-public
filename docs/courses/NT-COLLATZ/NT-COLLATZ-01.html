@@ -1,0 +1,692 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Three clocks for one Collatz orbit</title><link rel="stylesheet" href="reader.css"></head><body><a class="skip" href="#main">Skip to the lesson</a><header><a href="index.html">Collatz clocks, coding and probability</a> · <a href="src/NT-COLLATZ-01.md">Lesson source</a></header><main id="main"><h1 id="three-clocks-for-one-collatz-orbit">Three clocks for one Collatz
+orbit</h1>
+<p><em>Written by GPT-6 Astra, Ultra reasoning, in Codex, October 2026.
+Self-checked by the writing AI. Original exposition, exercises and
+diagram: CC0 1.0.</em></p>
+<p>Starting with a positive integer, the Collatz rule halves an even
+number and replaces an odd number by three times that number plus one.
+For example, starting with 3 gives</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>→</mo><mn>10</mn><mo>→</mo><mn>5</mn><mo>→</mo><mn>16</mn><mo>→</mo><mn>8</mn><mo>→</mo><mn>4</mn><mo>→</mo><mn>2</mn><mo>→</mo><mn>1</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+3\longrightarrow10\longrightarrow5\longrightarrow16
+\longrightarrow8\longrightarrow4\longrightarrow2\longrightarrow1.
+</annotation></semantics></math></span></p>
+<p>There are good reasons to record fewer of these steps. One can
+combine an odd step with the division by two that necessarily follows
+it. One can also record only the odd numbers. These choices produce
+different maps and different notions of elapsed time. They do not change
+the least value attained along the orbit.</p>
+<p>The purpose here is to prove those assertions precisely. The main
+result gives formulas converting all three clocks, identifies exactly
+which times correspond, and reconstructs every omitted state. This is
+useful whenever an argument about odd returns is transferred to the
+original Collatz iteration: a statement about the number of returns
+cannot simply be read as a statement about the number of original
+steps.</p>
+<p>We assume induction, arithmetic of positive integers and the
+well-ordering principle: every nonempty set of positive integers has a
+least member. The divisibility facts needed below are proved here. No
+probability or assumption that Collatz orbits reach 1 is needed. Tao’s
+<em>Almost all orbits of the Collatz map attain almost bounded
+values</em>, §1.2, is a reference for the three maps and the
+orbit-minimum identity. Terras’s <em>A stopping time problem on the
+positive integers</em> is an earlier reference for the shortened
+iteration. The arguments below give the clock conversion in full,
+independently of any density theorem.</p>
+<h2 id="odd-parts-and-powers-of-two">Odd parts and powers of two</h2>
+<p>Write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="double-struck">ℕ</mi><mo>+</mo></msub><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mi>…</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\mathbb N_+=\{1,2,3,\ldots\}</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="double-struck">ℕ</mi><mn>0</mn></msub><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\mathbb N_0=\{0,1,2,\ldots\}</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">𝒪</mi><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mn>1</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>5</mn><mo>,</mo><mi>…</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\mathcal O=\{1,3,5,\ldots\}</annotation></semantics></math>.
+An integer is odd when it is not divisible by 2.</p>
+<p><strong>Lemma 1.</strong> Each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>∈</mo><msub><mi mathvariant="double-struck">ℕ</mi><mo>+</mo></msub></mrow><annotation encoding="application/x-tex">n\in\mathbb N_+</annotation></semantics></math>
+has a unique expression</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><msup><mn>2</mn><mi>a</mi></msup><mi>m</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>a</mi><mo>∈</mo><msub><mi mathvariant="double-struck">ℕ</mi><mn>0</mn></msub><mo>,</mo><mspace width="1.0em"></mspace><mi>m</mi><mo>∈</mo><mi mathvariant="script">𝒪</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+n=2^a m,\qquad a\in\mathbb N_0,\quad m\in\mathcal O.
+</annotation></semantics></math></span></p>
+<p><strong>Proof.</strong> If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+is even, divide it by 2 and repeat while the quotient is even. Every
+division strictly decreases a positive integer, so the procedure must
+terminate. Equivalently, infinitely many divisions would give an
+infinite strictly decreasing sequence of positive integers; its set of
+values would have a least element, followed by a smaller one,
+contradicting well-ordering. At termination the quotient
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+is odd. If there were two expressions
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>a</mi></msup><mi>m</mi><mo>=</mo><msup><mn>2</mn><mi>b</mi></msup><mi>u</mi></mrow><annotation encoding="application/x-tex">2^a m=2^b u</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>,</mo><mi>u</mi></mrow><annotation encoding="application/x-tex">m,u</annotation></semantics></math>
+odd and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>&lt;</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a&lt;b</annotation></semantics></math>,
+cancellation would give
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><msup><mn>2</mn><mrow><mi>b</mi><mo>−</mo><mi>a</mi></mrow></msup><mi>u</mi></mrow><annotation encoding="application/x-tex">m=2^{b-a}u</annotation></semantics></math>,
+which is even. Interchanging the expressions rules out
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>&lt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">b&lt;a</annotation></semantics></math>.
+Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a=b</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mi>u</mi></mrow><annotation encoding="application/x-tex">m=u</annotation></semantics></math>.
+∎</p>
+<p>The exponent
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+is called the <strong>2-adic valuation</strong> of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>,
+denoted
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ν</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\nu_2(n)</annotation></semantics></math>.
+The word “2-adic” here needs no additional number system: it just counts
+the factors of 2. The <strong>odd part</strong> is</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mi>n</mi><msup><mn>2</mn><mrow><msub><mi>ν</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\pi(n)=\frac{n}{2^{\nu_2(n)}}.
+</annotation></semantics></math></span></p>
+<p>For instance,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>40</mn><mo>=</mo><msup><mn>2</mn><mn>3</mn></msup><mo>⋅</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">40=2^3\cdot5</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ν</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mn>40</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">\nu_2(40)=3</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mo stretchy="false" form="prefix">(</mo><mn>40</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">\pi(40)=5</annotation></semantics></math>.
+Lemma 1 gives inverse bijections</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi mathvariant="double-struck">ℕ</mi><mn>0</mn></msub><mo>×</mo><mi mathvariant="script">𝒪</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>→</mo><msub><mi mathvariant="double-struck">ℕ</mi><mo>+</mo></msub><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo>,</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>↦</mo><msup><mn>2</mn><mi>a</mi></msup><mi>m</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi mathvariant="double-struck">ℕ</mi><mo>+</mo></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>→</mo><msub><mi mathvariant="double-struck">ℕ</mi><mn>0</mn></msub><mo>×</mo><mi mathvariant="script">𝒪</mi><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>n</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>↦</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>ν</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mi>π</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\mathbb N_0\times\mathcal O&amp;\longrightarrow\mathbb N_+,
+&amp;(a,m)&amp;\longmapsto2^a m,\\
+\mathbb N_+&amp;\longrightarrow\mathbb N_0\times\mathcal O,
+&amp;n&amp;\longmapsto(\nu_2(n),\pi(n)).
+\end{aligned}
+</annotation></semantics></math></span></p>
+<p>In particular, retaining both coordinates loses no information.
+Retaining only
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\pi(n)</annotation></semantics></math>
+forgets the exponent: the fibre over an odd number
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+is exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mi>m</mi><mo>,</mo><mn>2</mn><mi>m</mi><mo>,</mo><mn>4</mn><mi>m</mi><mo>,</mo><mn>8</mn><mi>m</mi><mo>,</mo><mi>…</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{m,2m,4m,8m,\ldots\}</annotation></semantics></math>.</p>
+<h2 id="the-three-rules">The three rules</h2>
+<p>The <strong>ordinary Collatz map</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>:</mo><msub><mi mathvariant="double-struck">ℕ</mi><mo>+</mo></msub><mo>→</mo><msub><mi mathvariant="double-struck">ℕ</mi><mo>+</mo></msub></mrow><annotation encoding="application/x-tex">C:\mathbb N_+\to\mathbb N_+</annotation></semantics></math>
+is</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mn>3</mn><mi>n</mi><mo>+</mo><mn>1</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>n</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> odd</mtext></mrow><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>n</mi><mi>/</mi><mn>2</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>n</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> even</mtext></mrow><mi>.</mi></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">
+C(n)=\begin{cases}3n+1,&amp;n\text{ odd},\\n/2,&amp;n\text{ even}.
+\end{cases}
+</annotation></semantics></math></span></p>
+<p>The <strong>shortcut map</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>:</mo><msub><mi mathvariant="double-struck">ℕ</mi><mo>+</mo></msub><mo>→</mo><msub><mi mathvariant="double-struck">ℕ</mi><mo>+</mo></msub></mrow><annotation encoding="application/x-tex">T:\mathbb N_+\to\mathbb N_+</annotation></semantics></math>
+includes one division by 2 in every step:</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>2</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>n</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> odd</mtext></mrow><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>n</mi><mi>/</mi><mn>2</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>n</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> even</mtext></mrow><mi>.</mi></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">
+T(n)=\begin{cases}(3n+1)/2,&amp;n\text{ odd},\\n/2,&amp;n\text{ even}.
+\end{cases}
+</annotation></semantics></math></span></p>
+<p>If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>2</mn><mi>u</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n=2u+1</annotation></semantics></math>,
+then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>n</mi><mo>+</mo><mn>1</mn><mo>=</mo><mn>6</mn><mi>u</mi><mo>+</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">3n+1=6u+4</annotation></semantics></math>
+is even. Thus the shortcut rule always produces a positive integer. At
+an odd state it performs two ordinary steps; at an even state it
+performs one.</p>
+<p>The <strong>Syracuse map</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>:</mo><mi mathvariant="script">𝒪</mi><mo>→</mo><mi mathvariant="script">𝒪</mi></mrow><annotation encoding="application/x-tex">S:\mathcal O\to\mathcal O</annotation></semantics></math>
+removes all factors of 2 after the odd step:</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><mn>3</mn><mi>m</mi><mo>+</mo><mn>1</mn></mrow><msup><mn>2</mn><mrow><msub><mi>ν</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mi>m</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow></msup></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+S(m)=\frac{3m+1}{2^{\nu_2(3m+1)}}.
+</annotation></semantics></math></span></p>
+<p>Lemma 1 proves that this quotient is a positive odd integer. For odd
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>,
+the exponent
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ν</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mi>m</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\nu_2(3m+1)</annotation></semantics></math>
+is at least 1. Thus every Syracuse step includes one multiplication by
+3, the addition of 1, and a positive number of divisions by 2.</p>
+<p>For a map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>,
+the notation
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>F</mi><mn>0</mn></msup><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">F^0(n)=n</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>F</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msup><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>F</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>F</mi><mi>k</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">F^{k+1}(n)=F(F^k(n))</annotation></semantics></math>
+denotes iteration. The orbit is the indexed sequence of these values.
+Keeping the indices matters:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">S(1)=1</annotation></semantics></math>,
+but the successive occurrences of 1 are distinct visits.</p>
+<p>Starting at 3 illustrates all three rules:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Map</th>
+<th style="text-align: left;">Successive states through the first
+occurrence of 1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Ordinary
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math></td>
+<td
+style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>,</mo><mn>10</mn><mo>,</mo><mn>5</mn><mo>,</mo><mn>16</mn><mo>,</mo><mn>8</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">3,10,5,16,8,4,2,1</annotation></semantics></math></td>
+</tr>
+<tr>
+<td style="text-align: left;">Shortcut
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math></td>
+<td
+style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>,</mo><mn>5</mn><mo>,</mo><mn>8</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">3,5,8,4,2,1</annotation></semantics></math></td>
+</tr>
+<tr>
+<td style="text-align: left;">Syracuse
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math></td>
+<td
+style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>,</mo><mn>5</mn><mo>,</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">3,5,1</annotation></semantics></math></td>
+</tr>
+</tbody>
+</table></div>
+<p>The different sequence lengths are not an approximation error. Each
+row uses its own exact clock.</p>
+<h2 id="one-odd-return-at-a-time">One odd return at a time</h2>
+<p><strong>Lemma 2.</strong> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+be odd, put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>=</mo><msub><mi>ν</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mi>m</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">q=\nu_2(3m+1)</annotation></semantics></math>,
+and put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>=</mo><mi>S</mi><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">u=S(m)</annotation></semantics></math>.
+Then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>m</mi><mo>+</mo><mn>1</mn><mo>=</mo><msup><mn>2</mn><mi>q</mi></msup><mi>u</mi></mrow><annotation encoding="application/x-tex">3m+1=2^q u</annotation></semantics></math>,
+and</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>C</mi><mi>r</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mn>2</mn><mrow><mi>q</mi><mo>+</mo><mn>1</mn><mo>−</mo><mi>r</mi></mrow></msup><mi>u</mi><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>≤</mo><mi>r</mi><mo>≤</mo><mi>q</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+C^r(m)=2^{q+1-r}u\qquad(1\leq r\leq q+1),
+</annotation></semantics></math></span></p>
+<p>whereas</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>T</mi><mi>r</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mn>2</mn><mrow><mi>q</mi><mo>−</mo><mi>r</mi></mrow></msup><mi>u</mi><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>≤</mo><mi>r</mi><mo>≤</mo><mi>q</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+T^r(m)=2^{q-r}u\qquad(1\leq r\leq q).
+</annotation></semantics></math></span></p>
+<p>The first odd state after
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>.
+It occurs after exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">q+1</annotation></semantics></math>
+ordinary steps or
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>
+shortcut steps.</p>
+<p><strong>Proof.</strong> The ordinary first step produces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>q</mi></msup><mi>u</mi></mrow><annotation encoding="application/x-tex">2^q u</annotation></semantics></math>.
+Until the exponent becomes zero the number is even, so the rule divides
+it by 2. This proves the first formula successively for every displayed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>.
+It also proves that the intermediate states are even and the final one
+is odd. The shortcut first step produces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><mi>q</mi><mo>−</mo><mn>1</mn></mrow></msup><mi>u</mi></mrow><annotation encoding="application/x-tex">2^{q-1}u</annotation></semantics></math>;
+the same argument proves the second formula. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">q=1</annotation></semantics></math>,
+the shortcut map reaches
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>
+immediately, so there are no intermediate even shortcut states. ∎</p>
+<p>This is an example of an <strong>induced map</strong>. Given a map on
+a set and a chosen subset, its induced map sends a point of that subset
+to its next visit to the subset, whenever that visit exists. Here the
+subset is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">𝒪</mi><annotation encoding="application/x-tex">\mathcal O</annotation></semantics></math>.
+Lemma 2 proves both existence and the precise first-return time, for
+every odd starting point. Consequently
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+is the induced map of either
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>
+or
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">𝒪</mi><annotation encoding="application/x-tex">\mathcal O</annotation></semantics></math>,
+with different return times.</p>
+<h2 id="exact-conversion-between-the-clocks">Exact conversion between
+the clocks</h2>
+<p>Fix a positive integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><msup><mn>2</mn><mi>a</mi></msup><mi>m</mi></mrow><annotation encoding="application/x-tex">N=2^a m</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+odd. Define</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mi>j</mi></msub><mo>=</mo><msup><mi>S</mi><mi>j</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>q</mi><mi>j</mi></msub><mo>=</mo><msub><mi>ν</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mn>3</mn><msub><mi>m</mi><mi>j</mi></msub><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+m_j=S^j(m),\qquad q_j=\nu_2(3m_j+1),
+</annotation></semantics></math></span></p>
+<p>and define the accumulated number of halvings by</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mn>0</mn></msub><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>Q</mi><mi>j</mi></msub><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>j</mi><mo>−</mo><mn>1</mn></mrow></munderover><msub><mi>q</mi><mi>i</mi></msub><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>≥</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+Q_0=0,\qquad Q_j=\sum_{i=0}^{j-1}q_i\quad(j\geq1).
+</annotation></semantics></math></span></p>
+<p>There are initially
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+halvings to reach
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>.
+Each subsequent odd return contributes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>q</mi><mi>j</mi></msub><annotation encoding="application/x-tex">q_j</annotation></semantics></math>
+shortcut steps, but
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mi>j</mi></msub><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">q_j+1</annotation></semantics></math>
+ordinary steps. This gives the following exact statement.</p>
+<p><strong>Theorem 3.</strong> For every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>∈</mo><msub><mi mathvariant="double-struck">ℕ</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">j\in\mathbb N_0</annotation></semantics></math>,</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>T</mi><mrow><mi>a</mi><mo>+</mo><msub><mi>Q</mi><mi>j</mi></msub></mrow></msup><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>m</mi><mi>j</mi></msub><mo>=</mo><msup><mi>C</mi><mrow><mi>a</mi><mo>+</mo><mi>j</mi><mo>+</mo><msub><mi>Q</mi><mi>j</mi></msub></mrow></msup><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+T^{a+Q_j}(N)=m_j=C^{a+j+Q_j}(N).
+</annotation></semantics></math></span></p>
+<p>Moreover, the maps</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>θ</mi><mi>T</mi></msub><mo>:</mo><msub><mi mathvariant="double-struck">ℕ</mi><mn>0</mn></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>→</mo><mo stretchy="false" form="prefix">{</mo><mi>t</mi><mo>≥</mo><mn>0</mn><mo>:</mo><msup><mi>T</mi><mi>t</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> is odd</mtext></mrow><mo stretchy="false" form="postfix">}</mo><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>j</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>↦</mo><mi>a</mi><mo>+</mo><msub><mi>Q</mi><mi>j</mi></msub><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>θ</mi><mi>C</mi></msub><mo>:</mo><msub><mi mathvariant="double-struck">ℕ</mi><mn>0</mn></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>→</mo><mo stretchy="false" form="prefix">{</mo><mi>t</mi><mo>≥</mo><mn>0</mn><mo>:</mo><msup><mi>C</mi><mi>t</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> is odd</mtext></mrow><mo stretchy="false" form="postfix">}</mo><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>j</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>↦</mo><mi>a</mi><mo>+</mo><mi>j</mi><mo>+</mo><msub><mi>Q</mi><mi>j</mi></msub></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\theta_T:\mathbb N_0&amp;\longrightarrow\{t\geq0:T^t(N)\text{ is odd}\},
+&amp;j&amp;\longmapsto a+Q_j,\\
+\theta_C:\mathbb N_0&amp;\longrightarrow\{t\geq0:C^t(N)\text{ is odd}\},
+&amp;j&amp;\longmapsto a+j+Q_j
+\end{aligned}
+</annotation></semantics></math></span></p>
+<p>are strictly increasing bijections. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">F=C</annotation></semantics></math>
+or
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mi>T</mi></mrow><annotation encoding="application/x-tex">F=T</annotation></semantics></math>,
+the inverse on its indicated domain is</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>θ</mi><mi>F</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>#</mi><mo stretchy="false" form="prefix">{</mo><mi>h</mi><mo>:</mo><mn>0</mn><mo>≤</mo><mi>h</mi><mo>&lt;</mo><mi>t</mi><mo>,</mo><mspace width="0.222em"></mspace><msup><mi>F</mi><mi>h</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> is odd</mtext></mrow><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\theta_F^{-1}(t)=
+\#\{h:0\leq h&lt;t,\ F^h(N)\text{ is odd}\}.
+</annotation></semantics></math></span></p>
+<p>Thus the inverse counts earlier odd visits, not distinct odd
+values.</p>
+<p><strong>Proof.</strong> For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>t</mi><mo>≤</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">0\leq t\leq a</annotation></semantics></math>,
+both trajectories are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><mi>a</mi><mo>−</mo><mi>t</mi></mrow></msup><mi>m</mi></mrow><annotation encoding="application/x-tex">2^{a-t}m</annotation></semantics></math>.
+Their first odd visit is at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">t=a</annotation></semantics></math>,
+which proves the formulas for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">j=0</annotation></semantics></math>.
+Suppose an odd visit to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mi>j</mi></msub><annotation encoding="application/x-tex">m_j</annotation></semantics></math>
+has been located. Lemma 2 places the next odd visit to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msub><annotation encoding="application/x-tex">m_{j+1}</annotation></semantics></math>
+exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>q</mi><mi>j</mi></msub><annotation encoding="application/x-tex">q_j</annotation></semantics></math>
+shortcut steps or
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mi>j</mi></msub><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">q_j+1</annotation></semantics></math>
+ordinary steps later, with no odd visit in between. Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>Q</mi><mi>j</mi></msub><mo>+</mo><msub><mi>q</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">Q_{j+1}=Q_j+q_j</annotation></semantics></math>,
+induction gives the stated times.</p>
+<p>Every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mi>j</mi></msub><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">q_j\geq1</annotation></semantics></math>.
+Hence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>j</mi></msub><mo>≥</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">Q_j\geq j</annotation></semantics></math>,
+so both time sequences are strictly increasing and unbounded. The
+initial segment and the intervals between successive listed times
+therefore cover every nonnegative integer time. The initial segment
+before
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+has no odd states, and Lemma 2 excludes any extra odd states between
+consecutive listed visits. This proves surjectivity onto precisely the
+two sets of odd-visit times; strict increase proves injectivity. At the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>-th
+listed visit there are exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+earlier odd visits, proving the inverse formula. ∎</p>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">N=3</annotation></semantics></math>,
+the odd states are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>,</mo><mn>5</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">3,5,1,1,\ldots</annotation></semantics></math>.
+The relevant factorizations are</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>⋅</mo><mn>3</mn><mo>+</mo><mn>1</mn><mo>=</mo><mn>2</mn><mo>⋅</mo><mn>5</mn><mo>,</mo><mspace width="2.0em"></mspace><mn>3</mn><mo>⋅</mo><mn>5</mn><mo>+</mo><mn>1</mn><mo>=</mo><msup><mn>2</mn><mn>4</mn></msup><mo>⋅</mo><mn>1</mn><mo>,</mo><mspace width="2.0em"></mspace><mn>3</mn><mo>⋅</mo><mn>1</mn><mo>+</mo><mn>1</mn><mo>=</mo><msup><mn>2</mn><mn>2</mn></msup><mo>⋅</mo><mn>1</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+3\cdot3+1=2\cdot5,\qquad
+3\cdot5+1=2^4\cdot1,\qquad
+3\cdot1+1=2^2\cdot1.
+</annotation></semantics></math></span></p>
+<p>Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mn>0</mn></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">q_0=1</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mn>1</mn></msub><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">q_1=4</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mi>j</mi></msub><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">q_j=2</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">j\geq2</annotation></semantics></math>.</p>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: right;">Odd-visit index
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math></th>
+<th style="text-align: right;">State
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mi>j</mi></msub><annotation encoding="application/x-tex">m_j</annotation></semantics></math></th>
+<th
+style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Q</mi><mi>j</mi></msub><annotation encoding="application/x-tex">Q_j</annotation></semantics></math></th>
+<th style="text-align: right;">Shortcut time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Q</mi><mi>j</mi></msub><annotation encoding="application/x-tex">Q_j</annotation></semantics></math></th>
+<th style="text-align: right;">Ordinary time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>+</mo><msub><mi>Q</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">j+Q_j</annotation></semantics></math></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">10</td>
+</tr>
+</tbody>
+</table></div>
+<div class="figure-scroll"><p><img src="figures/three-clocks.svg"
+alt="Three timelines for the orbit beginning at 3. The ordinary row is 3, 10, 5, 16, 8, 4, 2, 1 at times 0 through 7. The shortcut row is 3, 5, 8, 4, 2, 1 at times 0 through 5. The odd-return row is 3, 5, 1 at times 0 through 2. Each row has a separate time scale." /></p></div>
+<p><em>Figure 1. Each dot is an actual state, not an interpolated value.
+The labels beneath it give the time in that row’s own clock. The
+highlighted odd states correspond under Theorem 3.</em></p>
+<p>The repeated state 1 explains why a bijection between visit times is
+the right formulation. At ordinary times 7 and 10 the value is the same,
+but the inverse map returns indices 2 and 3 respectively. Indeed, the
+ordinary orbit continues
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">1,4,2,1,4,2,\ldots</annotation></semantics></math>,
+whereas the odd-return orbit stays at 1.</p>
+<h2 id="reconstructing-every-omitted-state">Reconstructing every omitted
+state</h2>
+<p>Theorem 3 is not merely a way to extract a shorter list. It has an
+exact reconstruction procedure.</p>
+<p><strong>Proposition 4.</strong> The initial exponent
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+and the indexed odd orbit
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>m</mi><mi>j</mi></msub><msub><mo stretchy="false" form="postfix">)</mo><mrow><mi>j</mi><mo>≥</mo><mn>0</mn></mrow></msub></mrow><annotation encoding="application/x-tex">(m_j)_{j\geq0}</annotation></semantics></math>
+determine the entire ordinary and shortcut trajectories uniquely.</p>
+<p><strong>Proof.</strong> Each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>q</mi><mi>j</mi></msub><annotation encoding="application/x-tex">q_j</annotation></semantics></math>
+is determined by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mi>j</mi></msub><annotation encoding="application/x-tex">m_j</annotation></semantics></math>,
+so all
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Q</mi><mi>j</mi></msub><annotation encoding="application/x-tex">Q_j</annotation></semantics></math>
+and visit times are known. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>t</mi><mo>&lt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">0\leq t&lt;a</annotation></semantics></math>,
+set both trajectories equal to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><mi>a</mi><mo>−</mo><mi>t</mi></mrow></msup><msub><mi>m</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">2^{a-t}m_0</annotation></semantics></math>.
+After that, the increasing unbounded visit times determine a unique
+block containing any given time.</p>
+<p>For the shortcut clock, write uniquely</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mi>a</mi><mo>+</mo><msub><mi>Q</mi><mi>j</mi></msub><mo>+</mo><mi>r</mi><mo>,</mo><mspace width="2.0em"></mspace><mn>0</mn><mo>≤</mo><mi>r</mi><mo>&lt;</mo><msub><mi>q</mi><mi>j</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+t=a+Q_j+r,\qquad 0\leq r&lt;q_j.
+</annotation></semantics></math></span></p>
+<p>The state is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mi>j</mi></msub><annotation encoding="application/x-tex">m_j</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r=0</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><msub><mi>q</mi><mi>j</mi></msub><mo>−</mo><mi>r</mi></mrow></msup><msub><mi>m</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">2^{q_j-r}m_{j+1}</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>r</mi><mo>&lt;</mo><msub><mi>q</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">1\leq r&lt;q_j</annotation></semantics></math>.
+At the next block’s first time it is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msub><annotation encoding="application/x-tex">m_{j+1}</annotation></semantics></math>.</p>
+<p>For the ordinary clock, write uniquely</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>j</mi><mo>+</mo><msub><mi>Q</mi><mi>j</mi></msub><mo>+</mo><mi>r</mi><mo>,</mo><mspace width="2.0em"></mspace><mn>0</mn><mo>≤</mo><mi>r</mi><mo>&lt;</mo><msub><mi>q</mi><mi>j</mi></msub><mo>+</mo><mn>1</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+t=a+j+Q_j+r,\qquad 0\leq r&lt;q_j+1.
+</annotation></semantics></math></span></p>
+<p>The state is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mi>j</mi></msub><annotation encoding="application/x-tex">m_j</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r=0</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><msub><mi>q</mi><mi>j</mi></msub><mo>+</mo><mn>1</mn><mo>−</mo><mi>r</mi></mrow></msup><msub><mi>m</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">2^{q_j+1-r}m_{j+1}</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>r</mi><mo>≤</mo><msub><mi>q</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">1\leq r\leq q_j</annotation></semantics></math>.
+Again the next block starts at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msub><annotation encoding="application/x-tex">m_{j+1}</annotation></semantics></math>.
+Lemma 2 verifies the rule at every transition, including the block
+boundaries. Hence these formulas recover the actual trajectories and
+leave no state unspecified. ∎</p>
+<p>The exponent
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+is essential if the starting integer was not retained. The starts 3 and
+24 have the same odd-return sequence, but 24 first takes the three steps
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>24</mn><mo>→</mo><mn>12</mn><mo>→</mo><mn>6</mn><mo>→</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">24\to12\to6\to3</annotation></semantics></math>.
+Knowing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">a=3</annotation></semantics></math>
+restores that prefix.</p>
+<p>There is also an important distinction between deleting an initial
+even prefix and deleting every even portion of an orbit. The projection
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>π</mi><annotation encoding="application/x-tex">\pi</annotation></semantics></math>
+alone does not intertwine a single ordinary step with a single Syracuse
+step. For example,</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mo stretchy="false" form="prefix">(</mo><mi>C</mi><mo stretchy="false" form="prefix">(</mo><mn>6</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>3</mn><mo>,</mo><mspace width="2.0em"></mspace><mi>S</mi><mo stretchy="false" form="prefix">(</mo><mi>π</mi><mo stretchy="false" form="prefix">(</mo><mn>6</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>S</mi><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>5</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\pi(C(6))=3,\qquad S(\pi(6))=S(3)=5.
+</annotation></semantics></math></span></p>
+<p>This does not make the maps unrelated. Their precise relation is the
+induced-map identity of Lemma 2 and the time bijections of Theorem 3. A
+single ordinary step can remain inside a block; one Syracuse step
+crosses the whole block.</p>
+<h2 id="the-least-value-attained-does-not-depend-on-the-clock">The least
+value attained does not depend on the clock</h2>
+<p>For a map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
+on positive integers and an allowed starting point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>,
+define</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mi mathvariant="normal">min</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mi mathvariant="normal">min</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">{</mo><msup><mi>F</mi><mi>k</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>:</mo><mi>k</mi><mo>∈</mo><msub><mi mathvariant="double-struck">ℕ</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+F_{\min}(n)=\min\{F^k(n):k\in\mathbb N_0\}.
+</annotation></semantics></math></span></p>
+<p>The set is nonempty because it contains
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>,
+and well-ordering supplies a minimum. This definition does not require
+the orbit to be bounded, periodic, or known to terminate.</p>
+<p><strong>Theorem 5.</strong> For every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>∈</mo><msub><mi mathvariant="double-struck">ℕ</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">a\in\mathbb N_0</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>∈</mo><mi mathvariant="script">𝒪</mi></mrow><annotation encoding="application/x-tex">m\in\mathcal O</annotation></semantics></math>,</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi mathvariant="normal">min</mi></msub><mo stretchy="false" form="prefix">(</mo><msup><mn>2</mn><mi>a</mi></msup><mi>m</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>T</mi><mi mathvariant="normal">min</mi></msub><mo stretchy="false" form="prefix">(</mo><msup><mn>2</mn><mi>a</mi></msup><mi>m</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>S</mi><mi mathvariant="normal">min</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+C_{\min}(2^a m)=T_{\min}(2^a m)=S_{\min}(m).
+</annotation></semantics></math></span></p>
+<p><strong>Proof.</strong> Put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><msub><mi>S</mi><mi mathvariant="normal">min</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">b=S_{\min}(m)</annotation></semantics></math>.
+Every odd state
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mi>j</mi></msub><annotation encoding="application/x-tex">m_j</annotation></semantics></math>
+occurs in both other trajectories by Theorem 3. In particular, the value
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
+occurs, so the minima of those trajectories are at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>.</p>
+<p>Conversely, each state in the initial halving segment is at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>,
+hence at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>.
+Each later odd state is some
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mi>j</mi></msub><mo>≥</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">m_j\geq b</annotation></semantics></math>.
+Each intervening even state, by Lemma 2, is a positive power of 2 times
+the following odd state
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msub><annotation encoding="application/x-tex">m_{j+1}</annotation></semantics></math>,
+so it too is at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>.
+Every state in either trajectory is therefore at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>.
+The two opposite inequalities prove the result. ∎</p>
+<p>The same reasoning yields a useful finite statement. Through the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>-th
+odd visit, including its endpoint, the minima are exactly</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mi mathvariant="normal">min</mi><mrow><mn>0</mn><mo>≤</mo><mi>t</mi><mo>≤</mo><mi>a</mi><mo>+</mo><msub><mi>Q</mi><mi>j</mi></msub></mrow></munder><msup><mi>T</mi><mi>t</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munder><mi mathvariant="normal">min</mi><mrow><mn>0</mn><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>j</mi></mrow></munder><msub><mi>m</mi><mi>i</mi></msub><mo>=</mo><munder><mi mathvariant="normal">min</mi><mrow><mn>0</mn><mo>≤</mo><mi>t</mi><mo>≤</mo><mi>a</mi><mo>+</mo><mi>j</mi><mo>+</mo><msub><mi>Q</mi><mi>j</mi></msub></mrow></munder><msup><mi>C</mi><mi>t</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\min_{0\leq t\leq a+Q_j}T^t(N)
+=\min_{0\leq i\leq j}m_i
+=\min_{0\leq t\leq a+j+Q_j}C^t(N).
+</annotation></semantics></math></span></p>
+<p>Every omitted even state in these prefixes is followed by an odd
+state that still lies in the prefix, so the proof of Theorem 5 applies
+word for word with a finite range. Matching endpoints is necessary. For
+the start 3 and a horizon of five steps in each clock, the shortcut
+prefix has reached 1, but the ordinary prefix ends at 4 and has minimum
+3.</p>
+<p>As an immediate consequence, the assertion that every positive
+ordinary Collatz orbit reaches 1 is equivalent to the assertion that
+every positive odd Syracuse orbit reaches 1. In one direction restrict
+to odd starts and use Theorem 5. In the other, factor an arbitrary start
+as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>a</mi></msup><mi>m</mi></mrow><annotation encoding="application/x-tex">2^a m</annotation></semantics></math>
+and apply the same theorem. A minimum of 1 is attained by definition.
+This proves equivalence of the formulations, not either conjecture.</p>
+<h2 id="exercises-with-solutions">Exercises with solutions</h2>
+<p><strong>Exercise 1.</strong> Starting at 40, find the first odd
+state, its two following odd returns, and their times for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>.
+Give both trajectories through the first occurrence of 1.</p>
+<p><strong>Solution.</strong> The factorization
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>40</mn><mo>=</mo><msup><mn>2</mn><mn>3</mn></msup><mo>⋅</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">40=2^3\cdot5</annotation></semantics></math>
+gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">a=3</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mn>0</mn></msub><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">m_0=5</annotation></semantics></math>.
+The next states are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">m_1=1</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mn>2</mn></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">m_2=1</annotation></semantics></math>;
+the valuations are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mn>0</mn></msub><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">q_0=4</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mn>1</mn></msub><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">q_1=2</annotation></semantics></math>.
+Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mn>0</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">Q_0=0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mn>1</mn></msub><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">Q_1=4</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mn>2</mn></msub><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">Q_2=6</annotation></semantics></math>.
+The shortcut visit times are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>,</mo><mn>7</mn><mo>,</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">3,7,9</annotation></semantics></math>,
+and the ordinary visit times are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>,</mo><mn>8</mn><mo>,</mo><mn>11</mn></mrow><annotation encoding="application/x-tex">3,8,11</annotation></semantics></math>.
+Through the first 1, the trajectories are</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>C</mi><mo>:</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mspace width="1.0em"></mspace><mn>40</mn><mo>,</mo><mn>20</mn><mo>,</mo><mn>10</mn><mo>,</mo><mn>5</mn><mo>,</mo><mn>16</mn><mo>,</mo><mn>8</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>T</mi><mo>:</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mspace width="1.0em"></mspace><mn>40</mn><mo>,</mo><mn>20</mn><mo>,</mo><mn>10</mn><mo>,</mo><mn>5</mn><mo>,</mo><mn>8</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>1</mn><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+C:&amp;\quad40,20,10,5,16,8,4,2,1,\\
+T:&amp;\quad40,20,10,5,8,4,2,1.
+\end{aligned}
+</annotation></semantics></math></span></p>
+<p>The second odd return is a later visit to 1, not a new odd value.</p>
+<p><strong>Exercise 2.</strong> In the orbit beginning at 7, compute the
+first three odd returns and verify both clock formulas. Do these three
+returns prove that the orbit eventually reaches 1?</p>
+<p><strong>Solution.</strong> The identities</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>22</mn><mo>=</mo><mn>2</mn><mo>⋅</mo><mn>11</mn><mo>,</mo><mspace width="2.0em"></mspace><mn>34</mn><mo>=</mo><mn>2</mn><mo>⋅</mo><mn>17</mn><mo>,</mo><mspace width="2.0em"></mspace><mn>52</mn><mo>=</mo><msup><mn>2</mn><mn>2</mn></msup><mo>⋅</mo><mn>13</mn></mrow><annotation encoding="application/x-tex">
+22=2\cdot11,\qquad34=2\cdot17,\qquad52=2^2\cdot13
+</annotation></semantics></math></span></p>
+<p>give the odd states
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>7</mn><mo>,</mo><mn>11</mn><mo>,</mo><mn>17</mn><mo>,</mo><mn>13</mn></mrow><annotation encoding="application/x-tex">7,11,17,13</annotation></semantics></math>
+and valuations
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">1,1,2</annotation></semantics></math>.
+Hence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Q</mi><mi>j</mi></msub><annotation encoding="application/x-tex">Q_j</annotation></semantics></math>,
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">j=0,1,2,3</annotation></semantics></math>,
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">0,1,2,4</annotation></semantics></math>.
+The shortcut states are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>7</mn><mo>,</mo><mn>11</mn><mo>,</mo><mn>17</mn><mo>,</mo><mn>26</mn><mo>,</mo><mn>13</mn></mrow><annotation encoding="application/x-tex">7,11,17,26,13</annotation></semantics></math>;
+the ordinary states are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>7</mn><mo>,</mo><mn>22</mn><mo>,</mo><mn>11</mn><mo>,</mo><mn>34</mn><mo>,</mo><mn>17</mn><mo>,</mo><mn>52</mn><mo>,</mo><mn>26</mn><mo>,</mo><mn>13</mn></mrow><annotation encoding="application/x-tex">7,22,11,34,17,52,26,13</annotation></semantics></math>.
+Their odd-visit times are respectively
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">0,1,2,4</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">0,2,4,7</annotation></semantics></math>,
+as asserted. These calculations describe finite prefixes only. The clock
+theorem would convert a later verified visit to 1 into the other clocks,
+but does not assert that such a visit must occur.</p>
+<p><strong>Exercise 3.</strong> Suppose an odd orbit returns to its
+starting value after
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">h\geq1</annotation></semantics></math>
+Syracuse steps. Put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>h</mi><mo>−</mo><mn>1</mn></mrow></msubsup><msub><mi>q</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">Q=\sum_{j=0}^{h-1}q_j</annotation></semantics></math>.
+Prove that the ordinary and shortcut orbits return to that same starting
+value after
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>+</mo><mi>Q</mi></mrow><annotation encoding="application/x-tex">h+Q</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Q</mi><annotation encoding="application/x-tex">Q</annotation></semantics></math>
+steps respectively. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>
+is the least positive Syracuse return time, prove that these are also
+the least positive return times for the other two maps.</p>
+<p><strong>Solution.</strong> Theorem 3 with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a=0</annotation></semantics></math>
+gives the two returns. Any return to the starting value must occur at an
+odd-visit time, since the starting value is odd. The inverse bijection
+assigns an index
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">j\geq1</annotation></semantics></math>
+to such a return. If its time were smaller than the listed one, strict
+increase of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>θ</mi><mi>F</mi></msub><annotation encoding="application/x-tex">\theta_F</annotation></semantics></math>
+would imply
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>&lt;</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">j&lt;h</annotation></semantics></math>,
+contrary to the minimality of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>.
+For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">m=1</annotation></semantics></math>,
+this recovers periods 1 for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>,
+2 for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>,
+and 3 for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>.</p>
+<p><strong>Exercise 4.</strong> An odd-return calculation gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>S</mi><mi>j</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo><mo>&lt;</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">S^j(m)&lt;m</annotation></semantics></math>.
+What exactly follows about the other clocks, and what follows if only
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+is known but the valuations are not?</p>
+<p><strong>Solution.</strong> Theorem 3 proves
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>T</mi><msub><mi>Q</mi><mi>j</mi></msub></msup><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo><mo>&lt;</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">T^{Q_j}(m)&lt;m</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>C</mi><mrow><mi>j</mi><mo>+</mo><msub><mi>Q</mi><mi>j</mi></msub></mrow></msup><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo><mo>&lt;</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">C^{j+Q_j}(m)&lt;m</annotation></semantics></math>.
+Thus both orbits have fallen below their start by the displayed times.
+These need not be their first such times, since an intervening even
+state might already lie below
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>.
+Knowing only
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>j</mi></msub><mo>≥</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">Q_j\geq j</annotation></semantics></math>,
+not the actual elapsed times or an upper bound for them from this
+inequality. The missing clock information is the sum of the valuations.
+The orbit-minimum conclusion
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi mathvariant="normal">min</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>T</mi><mi mathvariant="normal">min</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo><mo>&lt;</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">C_{\min}(m)=T_{\min}(m)&lt;m</annotation></semantics></math>
+does not require those times to be evaluated.</p>
+<h2 id="what-carries-forward">What carries forward</h2>
+<p>There are two different coordinate choices here. The factorization
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><msup><mn>2</mn><mi>a</mi></msup><mi>m</mi></mrow><annotation encoding="application/x-tex">N=2^a m</annotation></semantics></math>
+separates the initial halving prefix from the odd start. The sequence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>q</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(q_j)</annotation></semantics></math>
+then records the durations between odd visits. Together with the odd
+states, these data reconstruct every step. For questions about the least
+value ever attained, the durations can be discarded; for questions about
+time they cannot.</p>
+<p>A further distinction will matter when starting integers are chosen
+at random. The projection
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>π</mi><annotation encoding="application/x-tex">\pi</annotation></semantics></math>
+has infinitely many points in each fibre. The orbit identities proved
+here therefore do not, by themselves, identify the distribution of
+projected starting points. To transfer statements about “most” starting
+integers, one must also calculate the weight carried by those fibres.
+This is the reason to develop sampling alongside dynamics rather than
+treating a change of clock as an automatic change of probability
+law.</p>
+<h2 id="references">References</h2>
+<p>Terence Tao, <em>Almost all orbits of the Collatz map attain almost
+bounded values</em>, <a
+href="https://arxiv.org/abs/1909.03562v7">arXiv:1909.03562v7</a>,
+especially §1.2 and equations (1.1)–(1.2). The journal article appeared
+in <em>Forum of Mathematics, Pi</em> <strong>10</strong> (2022), e12.
+The elementary clock and minimum identities used here belong to that
+established formulation; no stronger orbit-minimum theorem is asserted
+here.</p>
+<p>Riho Terras, <em>A stopping time problem on the positive
+integers</em>, <em>Acta Arithmetica</em> <strong>30</strong> (1976), no.
+3, 241–252. <a href="https://doi.org/10.4064/aa-30-3-241-252">DOI:
+10.4064/aa-30-3-241-252</a>.</p>
+</main><footer>Original mathematical exposition and illustrations: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>. References retain their own authorship and terms.</footer></body></html>

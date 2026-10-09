@@ -427,10 +427,10 @@ Every integral is absolutely convergent on bounded ranges determined by the test
 The upper boundary vanishes by compact support and the lower one by the factor \(r^2\). This proves exactly (5.2), with no missing vertex distribution.
 
 One can also compute its next derivative directly. Applying (5.0a),
-\
+\[
 v(\Box\phi)
 =2\int_0^\infty
- \bigl[r(M_{tt}-M_{rr})-2M_r\bigr\,dr.
+ \bigl[r(M_{tt}-M_{rr})-2M_r\bigr](r,r)\,dr.
 \]
 The integrand in brackets is the derivative of
 \(J(r)=r(M_t-M_r)(r,r)-M(r,r)\).

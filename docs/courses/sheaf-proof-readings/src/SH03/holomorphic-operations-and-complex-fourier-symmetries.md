@@ -2,11 +2,11 @@
 
 Holomorphic maps preserve the complex symmetries of the cotangent estimates for sheaf operations. This proves weak complex constructibility even when coefficient modules are infinite. Perfect stalks require the separate real finiteness arguments already developed. Fourier–Sato has one additional issue: its cotangent map moves a covector into a new base vector, so complex cotangent dilation must be transported using both source actions. Microlocal Hom instead uses an analytic normal cone with its own complex normal-fibre scaling.
 
-Let \(k\) be a commutative ring of finite global dimension \(g\). All complex manifolds are Hausdorff, countable at infinity, and of uniformly bounded finite dimension. Maps are holomorphic and vector bundles have fixed finite complex rank. Every sheaf complex is globally bounded. Weak complex constructibility imposes the geometric conditions of Complex microlocal stratifications and constructibility; complex constructibility additionally imposes perfect stalks. We assume no Noetherianity, field, noncharacteristic map, or arbitrary support properness.
+Let \(k\) be a commutative ring of finite global dimension \(g\). All complex manifolds are Hausdorff, countable at infinity, and of uniformly bounded finite dimension. Maps are holomorphic and vector bundles have fixed finite complex rank. Every sheaf complex is globally bounded. Weak complex constructibility imposes the geometric conditions of [Complex microlocal stratifications and constructibility](complex-microlocal-stratifications-and-constructibility.md#four-equivalent-geometric-tests); complex constructibility additionally imposes perfect stalks. We assume no Noetherianity, field, noncharacteristic map, or arbitrary support properness.
 
 Use the real covector identification \(\rho(\xi)(v)=\operatorname{Re}\xi(v)\), with \(\alpha=\sum\xi_jdz_j\), \(\Omega=d\alpha\), and real symplectic form \(\operatorname{Re}\Omega\). For a holomorphic differential, real transpose pullback under \(\rho\) agrees with complex-linear transpose pullback. Indeed both real covectors evaluate to \(\operatorname{Re}\xi(df(v))\). We can therefore use the existing real estimates in these complex cotangent coordinates without conjugating the transpose differential.
 
-The readable comparison is Kashiwara and Schapira, *Microlocal study of sheaves*, Theorem 8.5.2 with Propositions 8.3.3–8.3.6, printed 149–152. These give complex conicity and the real operation framework. The independent argument below supplies the holomorphic invariance and the uniform boundedness needed for their combination. The exact bounded sheaf estimates, full Fourier microsupport equality, conic Euler criterion and ordered microlocal Hom normal-cone estimate are current prerequisites from the microlocal foundations. This lesson proves the complex constructibility applications.
+Kashiwara and Schapira’s *Microlocal Study of Sheaves* gives the real operation results in [Propositions 8.3.3–8.3.6, printed pp. 149–150](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf#page=152), and the complex microsupport criterion in [Theorem 8.5.2, pp. 151–152](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf#page=154). Its analytic closure input, Proposition 8.5.3, continues through p. 154. These are the classical comparisons for the real operation framework and complex conicity. The independent argument below supplies the holomorphic invariance and the uniform boundedness needed for their combination. The exact bounded sheaf estimates, full Fourier microsupport equality, conic Euler criterion and ordered microlocal Hom normal-cone estimate are current prerequisites from the microlocal foundations. This lesson proves the complex constructibility applications.
 
 *Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
@@ -24,7 +24,7 @@ H\text{ weakly complex constructible}
 
 Such an \(H\) has actual microsupport closed complex analytic, complex-conic and Lagrangian. “Complex-conic” here refers to cotangent-fibre dilation, not to a vector-bundle dilation on the base of a sheaf.
 
-The real operation theorem in Weak constructibility under sheaf operations supplies boundedness and weak real constructibility for the operations considered below. It also supplies the finite-dimensional exceptional/direct-image and specialization/Fourier amplitude contracts. For arbitrary bounded Hom inputs on a real manifold \(M\), its explicit sufficient range is
+The real operation theorem in [Weak constructibility under sheaf operations](weak-constructibility-under-sheaf-operations.md#coefficients-bounds-and-the-geometric-criterion) supplies boundedness and weak real constructibility for the operations considered below. It also supplies the finite-dimensional exceptional/direct-image and specialization/Fourier amplitude contracts. For arbitrary bounded Hom inputs on a real manifold \(M\), the [bounded-Hom proof](../SH02/manifold-duality.md#sh02-md-bounded-hom--boundedness-for-arbitrary-bounded-inputs) gives the explicit sufficient range
 
 \[
 A\in D^{[a,b]},\ B\in D^{[c,d]}
@@ -33,7 +33,7 @@ R\mathcal Hom(A,B)\in D^{[c-b,\ d-a+3\dim_{\mathbb R}M+g+1]}.
 \tag{2}
 \]
 
-For a complex \(n\)-manifold this uses \(\dim_{\mathbb R}M=2n\). We use this global bound, not a separate bound chosen independently at every stalk. The perfect real operation theorems in Perfect operations and finite microlocal coefficients and Perfect coefficients on compact fibres will supply the perfect-stalk condition.
+For a complex \(n\)-manifold this uses \(\dim_{\mathbb R}M=2n\). We use this global bound, not a separate bound chosen independently at every stalk. The perfect real operation theorems in [Perfect operations and finite microlocal coefficients](perfect-operations-and-finite-microlocal-coefficients.md#perfect-inverse-images-tensors-and-internal-hom) and [Perfect coefficients on compact fibres](perfect-coefficients-on-compact-fibres.md#proper-direct-image-with-perfect-stalks) will supply the perfect-stalk condition.
 
 ## Full characteristic inverse image for a holomorphic map
 
@@ -50,7 +50,7 @@ y_j\to y,\quad x_j\to f(y),\quad (x_j,\xi_j)\in\Lambda,\\
 
 The input covectors may be unbounded. Multiplying every \(\xi_j\) by a fixed \(\lambda\in\mathbb C^*\) preserves membership in \(\Lambda\), multiplies the final product by \(|\lambda|\), and changes the output to \(\lambda\eta\), because the transpose differential is complex-linear. Thus \(f^\sharp\Lambda\) is complex-conic.
 
-It is also closed analytic. For completeness, the exact graph-conormal model from Limiting cotangent sums and characteristic inverse images is
+It is also closed analytic. For completeness, the exact graph-conormal model from [Limiting cotangent sums and characteristic inverse images](limiting-cotangent-sums-and-characteristic-inverse-images.md#the-graph-conormal-and-characteristic-inverse-image) is
 
 \[
 P=T^*(Y\times X),\quad L=T^*_{\Gamma_f}(Y\times X),\quad
@@ -59,9 +59,9 @@ S=T_Y^*Y\times\Lambda,
 \tag{4}
 \]
 
-The first factor is the zero section. The graph is a smooth closed complex submanifold even at critical points of \(f\). The normal identification \(K\), whose inverse is induced by \(-H\), and the zero-conormal-section embedding \(e\) are holomorphic. The analytic normal-cone argument in the preceding lesson makes \(C_L(S)\) analytic in its normal bundle. Formula (4) is consequently a closed analytic inverse image. The full real graph-slice theorem proves its real isotropy. This proves every premise of (1); no rank or properness condition on \(f\) was imposed.
+The first factor is the zero section. The graph is a smooth closed complex submanifold even at critical points of \(f\). The normal identification \(K\), whose inverse is induced by \(-H\), and the zero-conormal-section embedding \(e\) are holomorphic. The [analytic normal-cone argument](analytic-normal-cones-through-complex-deformation.md#reparameterizing-an-arc-to-make-the-scale-positive-real) makes \(C_L(S)\) analytic in its normal bundle. Formula (4) is consequently a closed analytic inverse image. The full real graph-slice theorem proves its real isotropy. This proves every premise of (1); no rank or properness condition on \(f\) was imposed.
 
-For weakly complex constructible \(F\), use the actual \(\Lambda=\operatorname{SS}(F)\) and the bounded estimates
+For weakly complex constructible \(F\), use the actual \(\Lambda=\operatorname{SS}(F)\) and the [bounded characteristic estimates](../SH02/characteristic-estimates.md#sh02-che-005--ordinary-and-exceptional-inverse-image)
 
 \[
 \operatorname{SS}(f^{-1}F)\subset f^\sharp\Lambda,
@@ -84,14 +84,14 @@ C_f=Y\times_XT^*X,
 
 For \(\Lambda=\operatorname{SS}(G)\), put \(A=f_d^{-1}\Lambda\). It is closed complex analytic. Over a compact cotangent set \(K\subset T^*X\), every point of \(A\) has \(y\) in the compact set \(\operatorname{supp}(G)\cap f^{-1}(\pi K)\); even a zero transpose covector has this support condition. The preimage of \(K\) is a closed subset of the corresponding compact product with \(K\). Thus \(f_\pi|_A\) is proper. This is the full cotangent compactness check, including points at which \(df\) has a kernel.
 
-Proper holomorphic image makes
+[Remmert’s proper mapping theorem](https://people.math.harvard.edu/~demarco/Math274/Demailly_ComplexAnalyticDiffGeom.pdf#page=118) makes
 
 \[
 B=f_\pi f_d^{-1}\Lambda
 \tag{7}
 \]
 
-closed complex analytic. Both maps commute with complex cotangent dilation. The real proper cotangent-transport theorem gives real isotropy. The proper-support sheaf estimate and (1) now give
+closed complex analytic. Both maps commute with complex cotangent dilation. The [real proper cotangent-transport theorem](isotropic-cotangent-transport-and-discrete-critical-values.md#proper-direct-transport) gives real isotropy. The [proper-support sheaf estimate](small-balls-central-fibres-and-supported-cohomology.md#the-proper-image-microsupport-estimate) and (1) now give
 
 \[
 \operatorname{SS}(Rf_*G)\subset B,
@@ -103,7 +103,7 @@ Under the same support properness \(Rf_!G\simeq Rf_*G\), so the same conclusion 
 
 ## Tensor and Hom use full complex limiting sums
 
-For weakly complex constructible \(F,G\), the bounded microsupport estimates are
+For weakly complex constructible \(F,G\), the [bounded tensor and internal-Hom estimates](../SH02/characteristic-estimates.md#sh02-che-006--tensor-and-internal-hom-without-a-transversality-assumption) are
 
 \[
 \begin{aligned}
@@ -116,7 +116,7 @@ For weakly complex constructible \(F,G\), the bounded microsupport estimates are
 \tag{9}
 \]
 
-The analytic limiting-sum proof from the complex stratification lesson applies to any closed analytic isotropic inputs: its product is analytic and its diagonal normal-cone slice is holomorphic. It is not restricted to ordinary smooth conormals. Multiplying both input covectors by the same complex scalar proves target complex conicity in the full sequence criterion. The antipode is holomorphic and preserves isotropy, changing \(\alpha\) by a minus sign. Hence both right sides of (9) are closed analytic, complex-conic and real-isotropic. With the actual boundedness contracts, (1) proves weak complex constructibility of tensor and internal Hom.
+The [analytic limiting-sum proof](complex-microlocal-stratifications-and-constructibility.md#why-the-full-limiting-conormal-sum-is-analytic) from the complex stratification lesson applies to any closed analytic isotropic inputs: its product is analytic and its diagonal normal-cone slice is holomorphic. It is not restricted to ordinary smooth conormals. Multiplying both input covectors by the same complex scalar proves target complex conicity in the full sequence criterion. The antipode is holomorphic and preserves isotropy, changing \(\alpha\) by a minus sign. Hence both right sides of (9) are closed analytic, complex-conic and real-isotropic. With the actual boundedness contracts, (1) proves weak complex constructibility of tensor and internal Hom.
 
 No transversality is needed. The first Hom input carries the antipode. For infinite weak coefficients we used the actual internal-Hom estimate; we have not substituted tensor with a dual, or replaced a Hom stalk by Hom of two ordinary stalks.
 
@@ -149,7 +149,7 @@ Its actual microsupport \(\Lambda\) is closed analytic and complex-conic. In a h
 \tag{11}
 \]
 
-The real conic Euler theorem says \(\operatorname{Re}\theta=0\) on \(\Lambda\), and that \(\Lambda\) is invariant under positive bundle lifts as well as positive cotangent dilation. Complex cotangent invariance additionally puts \(i\) times every covector in \(\Lambda\). Testing its Euler equation gives \(\operatorname{Re}(i\theta)=-\operatorname{Im}\theta=0\). Hence
+The [real conic Euler theorem](../SH02/microsupport-operations.md#sh02-mo-conic-test--the-euler-equation-detects-conic-sheaves) says \(\operatorname{Re}\theta=0\) on \(\Lambda\), and that \(\Lambda\) is invariant under positive bundle lifts as well as positive cotangent dilation. Complex cotangent invariance additionally puts \(i\) times every covector in \(\Lambda\). Testing its Euler equation gives \(\operatorname{Re}(i\theta)=-\operatorname{Im}\theta=0\). Hence
 
 \[
 \theta|_\Lambda=0\quad\text{as a complex-valued function}.
@@ -204,13 +204,13 @@ k_{\{\operatorname{Re}\langle v,\eta\rangle\le0\}}\bigr),
 \tag{16}
 \]
 
-Here \(p,q\) are the two projections of \(E\times_ZE^*\). The full bounded conic Fourier theorem includes both zero loci and gives the equality. The analytic image and (15), or (1), prove weak complex constructibility of \(F^\wedge\). The real Fourier perfection theorem gives perfect stalks when \(F\) is complex constructible, proving the perfect assertion as well. Its proof uses the actual zero-section contraction maps on the negative cutoff or positive supported kernel; it does not assume \(q\) is proper on the generally unbounded support in (16).
+Here \(p,q\) are the two projections of \(E\times_ZE^*\). The [full bounded conic Fourier theorem](../SH02/microsupport-operations.md#sh02-mo-fs-ss--fourier-transformation-of-microsupport) includes both zero loci and gives the equality. The analytic image and (15), or (1), prove weak complex constructibility of \(F^\wedge\). The [real Fourier perfection theorem](perfect-operations-and-finite-microlocal-coefficients.md#fourier-perfection-by-the-zero-section) gives perfect stalks when \(F\) is complex constructible, proving the perfect assertion as well. Its proof uses the actual zero-section contraction maps on the negative cutoff or positive supported kernel; it does not assume \(q\) is proper on the generally unbounded support in (16).
 
 The fibre has real rank \(2r\). Thus, for example, the constant sheaf on an entire complex fibre transforms to the origin sheaf shifted by \(-2r\), with the canonical complex orientation. Neither the rank nor the kernel sign is to be read as the complex dimension \(r\) in a real Fourier integral.
 
 ## Ordered microlocal Hom through an analytic normal-cone bound
 
-Let \(F,G\) be weakly complex constructible on \(X\), and let \(P=T^*X\). The exact ordered estimate is
+Let \(F,G\) be weakly complex constructible on \(X\), and let \(P=T^*X\). The [exact ordered microlocal-Hom estimate](normal-scaling-and-microlocal-hom.md#a-sheaf-of-directional-morphisms-microlocal-hom-estimate) is
 
 \[
 \operatorname{SS}(\mu\operatorname{hom}(G,F))
@@ -224,7 +224,7 @@ The pair cone is first minus second with positive real scales, based at a common
 
 Both input microsupports are analytic. The analytic pair-cone theorem makes the cone in (17) closed complex analytic and complex-conic in its tangent-vector fibres. The holomorphic fibre-linear isomorphism \(\kappa\) makes its image complex-conic in the cotangent fibres of \(P\).
 
-We also need isotropy of that bound. Its exact model uses \(P_1=T^*(X\times X)\), \(L=T^*_{\Delta}(X\times X)\), and the isotropic product \(\operatorname{SS}(F)\times\operatorname{SS}(G)^a\). The Lagrangian normal-cone theorem makes \(KC_L\) of this product real-isotropic. Under \(L\simeq P\), \((x,x;\xi,-\xi)\mapsto(x;\xi)\), it is exactly the image in (17). To check the sign, use \(\delta=y-x\), \(\nu=\eta\), \(s=\xi+\eta\). With the second input antipodal, the position difference is \(-\delta\), the covector difference is \(s\), and \(K\) gives \(s\,dz-(-\delta)\,d\xi\) after the positive scaling. This is \(\kappa\) of the ordered pair difference. The antipode in the product is part of this identification, not an additional antipode to insert into (17).
+We also need isotropy of that bound. Its exact model uses \(P_1=T^*(X\times X)\), \(L=T^*_{\Delta}(X\times X)\), and the isotropic product \(\operatorname{SS}(F)\times\operatorname{SS}(G)^a\). The [Lagrangian normal-cone theorem](boundary-forms-and-lagrangian-normal-cones.md#the-full-lagrangian-normal-cone-theorem) makes \(KC_L\) of this product real-isotropic. Under \(L\simeq P\), \((x,x;\xi,-\xi)\mapsto(x;\xi)\), it is exactly the image in (17). To check the sign, use \(\delta=y-x\), \(\nu=\eta\), \(s=\xi+\eta\). With the second input antipodal, the position difference is \(-\delta\), the covector difference is \(s\), and \(K\) gives \(s\,dz-(-\delta)\,d\xi\) after the positive scaling. This is \(\kappa\) of the ordered pair difference. The antipode in the product is part of this identification, not an additional antipode to insert into (17).
 
 Boundedness and weak real constructibility of microlocal Hom are supplied by the existing full diagonal-kernel theorem, with its global Hom and finite specialization/Fourier amplitude. Its definition is
 
@@ -234,13 +234,15 @@ Boundedness and weak real constructibility of microlocal Hom are supplied by the
 \tag{18}
 \]
 
-Now (1) on the complex manifold \(P\), together with the analytic complex-conic isotropic bound (17), proves weak complex constructibility there. For perfect constructible \(F,G\), the real microlocal Hom perfection theorem gives perfect output stalks, so the output is complex constructible.
+Now (1) on the complex manifold \(P\), together with the analytic complex-conic isotropic bound (17), proves weak complex constructibility there. For perfect constructible \(F,G\), the [real microlocal Hom perfection theorem](perfect-operations-and-finite-microlocal-coefficients.md#specialization-and-microlocal-hom) gives perfect output stalks, so the output is complex constructible.
 
 The proof uses the bounded normal-cone estimate directly. The positive real deformation chamber used inside specialization is subanalytic but is not a complex analytic piece; we have not applied holomorphic-operation stability to that chamber. Likewise the exceptional projection in (18) remains present: \(q_1^!F\simeq q_1^{-1}F\otimes q_2^{-1}\omega_X\), with \(\omega_X=k_X[2n]\). This factor controls the normal Fourier degree even though all complex orientations are canonical.
 
 We have proved every weak and perfect assertion of the complex operation theorem: holomorphic ordinary and exceptional inverse image, proper-on-support direct image, tensor, internal Hom, microlocal Hom, and positive-conic Fourier–Sato on a holomorphic vector bundle. General nonproper holomorphic direct images require the further cutoff and curve-base arguments.
 
 ## Exercises with complete solutions
+
+In examples asserting a nonempty microsupport, take the coefficient ring to be nonzero.
 
 ### A holomorphic ramification keeps escaping inverse directions
 
@@ -340,4 +342,12 @@ The complex operation applications and their independent weak/perfect hypotheses
 
 A holomorphic differential commutes with complex cotangent dilation, but the Fourier cotangent map exchanges a fibre covector with a base vector. The proof therefore uses both complex scaling actions, not just conicity in the original cotangent fibre. Microlocal Hom is handled through the complex normal cone while retaining the exceptional projection’s orientation shift. The positive real deformation chamber is not incorrectly declared a complex analytic stratum. Perfect coefficients are obtained only after the weak geometric theorem by the separate real finiteness and duality providers.
 
-Checked editions: [Kashiwara–Schapira, Astérisque 128 (1985)](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf); [Schapira, sheaf lecture notes](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf); [Schapira, microlocal review (2016)](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/MuShv.pdf). The locators above identify the passages used; these links do not claim that all three works prove every statement or every prerequisite of this lesson. Original programme exposition remains CC0; the human works retain their own rights.
+**Real and complex constructibility.** Masaki Kashiwara and Pierre Schapira, [*Microlocal Study of Sheaves*, Astérisque 128 (1985)](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf#page=152), Propositions 8.3.3–8.3.6, printed pp. 149–150, treat inverse operations, specialization, Fourier transformation, tensor and internal Hom. [Theorem 8.5.2 and Proposition 8.5.3](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf#page=154), pp. 151–154, supply the complex microsupport criterion and its analytic closure argument. The linked programme proofs keep the characteristic limits, coefficient bounds and perfect-stalk hypotheses explicit.
+
+**Fourier normalization.** Pierre Schapira’s [*An Introduction to Sheaves on Grothendieck Topologies*, edition dated 01/08/2026, Definitions 5.4.4–5.4.5 and Example 5.4.7](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf#page=114), pp. 114–115, give positive-orbit conicity, the negative-cut/positive-support presentations and the real-dimensional orientation shifts. His [*A short review on microlocal sheaf theory*, 19 January 2016, Definition 4.1 and Example 4.3](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/MuShv.pdf#page=19), pp. 19–20, use these same conventions. Their stated Fourier equivalences refer to the book treatment; the actual programme proof used in (16) includes the zero-direction stabilization and inversion step.
+
+**Microlocal Hom and signs.** The same [2016 review, Definition 4.5 and Theorem 4.7](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/MuShv.pdf#page=23), pp. 23–24, gives the exceptional diagonal kernel and normal-cone estimate; equation (4.9), p. 25, gives the Fourier cotangent exchange. Its [ordered cone and Hamiltonian conventions](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/MuShv.pdf#page=5), pp. 5–6, put the source set first before applying the Hamiltonian inverse. Reversing the pair and using the negative Hamiltonian inverse gives exactly (17). The lesson’s target-first order and its displayed normal identification therefore agree with that source.
+
+**Proper analytic image.** Jean-Pierre Demailly, [*Complex Analytic and Differential Geometry*, 21 June 2012, Chapter II, Theorem 8.8](https://people.math.harvard.edu/~demarco/Math274/Demailly_ComplexAnalyticDiffGeom.pdf#page=118), pp. 118–121, proves the proper mapping theorem by simultaneous induction with the extension theorem. This is the analytic-image prerequisite in (7), applied only after the support compactness check. The theorem’s analytic local algebra and extension foundations remain separate inputs.
+
+These citations identify the human antecedents and their exact roles. Original programme exposition remains CC0; the human works retain their own rights.

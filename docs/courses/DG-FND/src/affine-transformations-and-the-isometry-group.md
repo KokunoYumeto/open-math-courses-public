@@ -648,8 +648,8 @@ At each \(p\) choose a complete affine field \(X\) with \(X(p)=0\) and \(dX_p=I\
 X(x)=Bx+b,\qquad Y(x)=Cx+d,
 \]
 with arbitrary matrices for affine fields and skew matrices for Killing fields. In coordinates the usual bracket is \(dY(X)-dX(Y)\), hence
-\
-[X,Y=(CB-BC)x+Cb-Bd.
+\[
+[X,Y](x)=(CB-BC)x+Cb-Bd.
 \tag{H.1}
 \]
 The homogeneous affine matrices representing the same generators are

@@ -30,12 +30,12 @@ A norm-bounded sequence \((x_n)\) is **central** if \([x_n,a]\to0\) strong* for 
 \]
 Here \(a\psi(y)=\psi(ya)\). To check the expansion, write the left side as
 \(\psi(a^*x^*[x,a])-\psi(x^*a^*[x,a])\). The first term has absolute value at most
-\
-|[x,a\psi|+|x,\psi|,
+\[
+|[x,a\psi](a^*x^*)|+|[x,\psi](a^*x^*a)|,
 \]
 after inserting \(\psi(xa^*x^*a)\). For the second insert \(\psi(xx^*a^*a)\), giving
-\
-|[x,a\psi|+|x,\psi|.
+\[
+|[x,a\psi](x^*a^*)|+|[x,\psi](x^*a^*a)|.
 \]
 These bounds prove (2).
 
@@ -341,7 +341,7 @@ These finite approximants are generally direct sums of matrix algebras. Their fi
 
 **Exercise 1.** Verify (7) with the convention (1), and explain why checking only one faithful state is insufficient without centrality.
 
-*Solution.* At a test variable \(t\), \(xy,\omega=\omega(txy)-\omega(ytx)\), and \([x,\omega]y(t)=\omega(ytx)-\omega(xyt)\). Their sum is \(\omega(txy)-\omega(xyt)=xy,\omega\). In \(M_2\), the normalized trace commutes with every \(x\), while the constant sequence of a nonscalar matrix fails to commute with some fixed matrix. Its commutator with the trace alone vanishes; it is not centralizing.
+*Solution.* At a test variable \(t\), \(x[y,\omega](t)=\omega(txy)-\omega(ytx)\), and \([x,\omega]y(t)=\omega(ytx)-\omega(xyt)\). Their sum is \(\omega(txy)-\omega(xyt)=[xy,\omega](t)\). In \(M_2\), the normalized trace commutes with every \(x\), while the constant sequence of a nonscalar matrix fails to commute with some fixed matrix. Its commutator with the trace alone vanishes; it is not centralizing.
 
 **Exercise 2.** Prove the norm density of \(M\varphi\) when \(\varphi\) is faithful, and identify the precise obstruction when it is not.
 

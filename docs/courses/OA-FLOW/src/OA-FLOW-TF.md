@@ -38,9 +38,9 @@ On \(F\), the action displayed here also equals
 In particular this proves the tensor-product flow theorem for arbitrary infinite factors. There is no separability, countable decomposability, faithful-state, factorial-core or type III hypothesis in (TF1)–(TF3). The stronger algebraic statement is useful because none of the proof needs factoriality. For factors, the tensor product is a factor; its flow is therefore algebraically ergodic. The zero-algebra case can separately be read as the unique zero maps.
 
 The real group has Haar measure \(dt\). A core chart for a faithful normal semifinite weight \(\varphi\) has
-\
- [\pi_\varphi(x)\xi=\sigma^\varphi_{-r}(x)\xi(r),
- \qquad \lambda_\varphi(t)\xi=\xi(r-t),\qquad
+\[
+ [\pi_\varphi(x)\xi](r)=\sigma^\varphi_{-r}(x)\xi(r),
+ \qquad [\lambda_\varphi(t)\xi](r)=\xi(r-t),\qquad
  \theta_s(\lambda_\varphi(t))=e^{-ist}\lambda_\varphi(t).
  \tag{TF4}
 \]
@@ -150,11 +150,11 @@ Work temporarily in the weight charts above. Write
 By (TF5), \(C=C_\varphi(M)\). Let \(i:M\to C\) and \(v_t\in C\) be its regular coefficients and translations; let \(u^i_t\) denote the translations in the two factor cores.
 
 Regrouping the two factor regular Hilbert spaces gives the full faithful representation of \(D_\varphi\) on \(L^2(\mathbb R^2,H)\), where \(H=H_{\varphi_1}\otimes H_{\varphi_2}\). Its generators are
-\
- [\Pi(x)\xi
+\[
+ [\Pi(x)\xi](a,b)
        =(\alpha^1_{-a}\bar\otimes\alpha^2_{-b})(x)\xi(a,b),
  \qquad
- U_{h,k}\xi=\xi(a-h,b-k).
+ [U_{h,k}\xi](a,b)=\xi(a-h,b-k).
  \tag{TF12}
 \]
 In particular \(U_{h,k}=u^1_h\otimes u^2_k\). The coefficient map for arbitrary \(x\in M\) is normal: it is the normal tensor of the two regular coefficient maps. The elementary coefficient images and the two translation groups generate exactly the tensor algebra. Hilbert tensor regrouping is an onto unitary, so this identifies whole von Neumann algebras normally.
@@ -166,8 +166,8 @@ There is an action \(\kappa:\mathbb R\curvearrowright C\) given by
  \tag{TF13}
 \]
 This is not just a formal rule. On \(H_C=L^2(\mathbb R_t,H)\), the constant unitary
-\
- [V_d\zeta
+\[
+ [V_d\zeta](t)
    =(\Delta_{\varphi_1}^{id}\otimes1)\zeta(t)
 \]
 normalizes both regular generating families with exactly (TF13). It and its adjoint are strongly continuous by tensor density; vector-series tests give point-ultraweak continuity of \(\kappa\).
@@ -178,9 +178,9 @@ The regular iterated crossing \(E=C\rtimes_\kappa\mathbb R\) acts on
 Its copy of \(v_h\) shifts \(t\), and \(k_h\) shifts \(d\).
 
 Define the shear
-\
- [W\xi=\xi(d+t,t),\qquad
- W^*\eta=\eta(a-b,b).
+\[
+ [W\xi](d,t)=\xi(d+t,t),\qquad
+ [W^*\eta](a,b)=\eta(a-b,b).
  \tag{TF14}
 \]
 Its determinant is one. A change of variables gives norm equality on compact continuous finite-vector tensors. Those tensors are dense in the full Hilbert spaces even for arbitrary \(H\); the two formulas therefore extend to inverse unitaries. Direct substitution in (TF12) gives
@@ -217,7 +217,7 @@ In the coordinates (TF12), \(\delta_s\) is implemented by multiplication by \(e^
 The entire dual fixed algebra, not only its algebraic spectral span, is
 \(E^{\widehat\kappa}=j_\kappa(C)\). This is the arbitrary-Hilbert [dual fixed-algebra theorem DA](OA-FLOW-DA.md#da-fixed). Its mechanism can be checked here directly.
 
-Let \(T_h\eta=V_h\eta(d+h)\). These operators and every constant element of \(C'\) commute with both regular generating families of \(E\). Define the unitary \(\mathcal U\eta=V_d\eta(d)\). It commutes with scalar multipliers and sends \(T_h\) to ordinary right translation. If \(Y\in E^{\widehat\kappa}\), then \(\mathcal UY\mathcal U^*\) commutes with all scalar character multipliers and translations. The full Weyl generation and matrix commutant proof in [ND](OA-FLOW-ND.md#nd-weyl-proof) put it in \(B(H_C)\otimes1\); write it \(c\otimes1\).
+Let \([T_h\eta](d)=V_h\eta(d+h)\). These operators and every constant element of \(C'\) commute with both regular generating families of \(E\). Define the unitary \([\mathcal U\eta](d)=V_d\eta(d)\). It commutes with scalar multipliers and sends \(T_h\) to ordinary right translation. If \(Y\in E^{\widehat\kappa}\), then \(\mathcal UY\mathcal U^*\) commutes with all scalar character multipliers and translations. The full Weyl generation and matrix commutant proof in [ND](OA-FLOW-ND.md#nd-weyl-proof) put it in \(B(H_C)\otimes1\); write it \(c\otimes1\).
 
 For each fixed \(b'\in C'\) and fixed \(\xi,\eta\in H_C\), commutation with the transported constant \(b'\) gives the zero multiplication form with continuous scalar coefficient
 \(\langle[c,V_db'V_d^*]\xi,\eta\rangle\).

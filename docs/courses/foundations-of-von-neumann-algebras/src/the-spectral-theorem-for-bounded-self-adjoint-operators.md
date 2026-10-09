@@ -401,7 +401,7 @@ Indeed, both sides send \(\gamma\) to \(\langle\gamma,\beta\rangle\|x\zeta\|^2\a
 \end{gathered}
 \]
   So \(x\) would be compact, a contradiction.
-- *A spectral projection of infinite rank.* For \(\varepsilon>0\) let \(E_\varepsilon=1_{\varepsilon,\infty)}(a)\). The function \(\lambda1_{[0,\varepsilon)}(\lambda)\) is at most \(\varepsilon\) on \([0,\infty)\), so \(\|a-aE_\varepsilon\|\leq\varepsilon\) by Theorem 3.1. If every \(E_\varepsilon\) had finite rank, then every \(aE_\varepsilon\) would have finite rank, and \(a\) would be compact. So some \(E=E_\varepsilon\) has infinite-dimensional range.
+- *A spectral projection of infinite rank.* For \(\varepsilon>0\) let \(E_\varepsilon=1_{[\varepsilon,\infty)}(a)\). The function \(\lambda1_{[0,\varepsilon)}(\lambda)\) is at most \(\varepsilon\) on \([0,\infty)\), so \(\|a-aE_\varepsilon\|\leq\varepsilon\) by Theorem 3.1. If every \(E_\varepsilon\) had finite rank, then every \(aE_\varepsilon\) would have finite rank, and \(a\) would be compact. So some \(E=E_\varepsilon\) has infinite-dimensional range.
 - *\(E\in J\).* Let \(g(\lambda)=\lambda^{-1}1_{[\varepsilon,\infty)}(\lambda)\), a bounded Borel function on \([0,\infty)\). Then \(g(a)a=(g\iota)(a)=E\). So \(E\in J\).
 - *The identity is in \(J\).* \(EH\) is a closed infinite-dimensional subspace of the separable space \(H\), so it is separable. So \(EH\) and \(H\) both have countably infinite orthonormal bases \((f_n)\) and \((e_n)\) (the Hilbert-space lesson, Theorem 4.1(4)). The operator \(v\) with \(ve_n=f_n\) is an isometry (Theorem 4.1(2) of that lesson). Since \(Ev=v\), we get \(1=v^*v=v^*Ev\in J\). So \(J=B(H)\). \(\square\)
 
@@ -420,7 +420,7 @@ In particular, \(E_n(\Delta)=1_\Delta(n)\) is the only projection-valued measure
 - \(S\) is a compact metric space.
 - \(f\mapsto f(n)\) is a unital \(*\)-homomorphism from \(C(S)\) to \(B(H)\) that maps real functions to self-adjoint operators. This holds for normal \(n\) by the C\*-algebra lesson, Theorem 5.1(1), (2) and (9).
 - Theorem 3.1(5) uses the C\*-algebra lesson, Theorem 5.1(6). That theorem needs commutation with \(n\) and \(n^*\).
-- The uniqueness proof uses the polynomials \(p(\lambda,\bar\lambda)\), which are dense in \(C(L')\) for compact \(L'\subseteq\mathbb C\) ([the Stone–Weierstrass lesson), and \(\int p(\iota_L,\bar\iota_L)\,dE=p(n,n^*)\).
+- The uniqueness proof uses the polynomials \(p(\lambda,\bar\lambda)\), which are dense in \(C(L')\) for compact \(L'\subseteq\mathbb C\) (the Stone–Weierstrass lesson), and \(\int p(\iota_L,\bar\iota_L)\,dE=p(n,n^*)\).
 - In Proposition 5.1(1), use \(s_k(z)=(\lfloor k\operatorname{Re}z\rfloor+i\lfloor k\operatorname{Im}z\rfloor)/k\), with \(|z-s_k(z)|<\sqrt2/k\). Taking \(k=2n\) gives the \(1/n\) estimate in Proposition 5.1(1). Assertions about a positive operator reduce to the self-adjoint case. For a general normal operator the kernel proof uses \(\int|z|^2\,d\mu_\xi=\|n\xi\|^2\) and the projection of \(\{0\}\). \(\square\)
 
 **Proposition 8.2.** Let \(n\in B(H)\) be normal.

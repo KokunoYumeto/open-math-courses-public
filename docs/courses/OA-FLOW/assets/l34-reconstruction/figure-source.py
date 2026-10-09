@@ -3,6 +3,7 @@ from pathlib import Path
 import json, matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-l34-reconstruction-20261009-v1"
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
 HERE=Path(__file__).resolve().parent
 OUT=HERE/'figures'; OUT.mkdir(exist_ok=True)
@@ -15,7 +16,7 @@ def arrow(ax,a,b,label=None,dy=.025):
  ax.add_patch(FancyArrowPatch(a,b,arrowstyle='-|>',mutation_scale=17,color='#314866',linewidth=1.5))
  if label:ax.text((a[0]+b[0])/2,(a[1]+b[1])/2+dy,label,ha='center',va='bottom',fontsize=10)
 def finish(fig,name):
- fig.savefig(OUT/(name+'.svg'),bbox_inches='tight',facecolor='white')
+ fig.savefig(OUT/(name+'.svg'),bbox_inches='tight',facecolor='white',metadata={'Date': None})
  fig.savefig(OUT/(name+'.png'),bbox_inches='tight',facecolor='white',dpi=150)
  plt.close(fig)
 fig,ax=plt.subplots(figsize=(12,6.4));ax.set_xlim(0,1);ax.set_ylim(0,1);ax.axis('off')

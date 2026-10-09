@@ -30,15 +30,15 @@ The arguments use the stated arbitrary-Hilbert-space and n.s.f.-weight hypothese
 
 Keep the notation of lesson 75. On \(L^2(G,K)\), define the unitary inversion operator
 
-$$C\xi=\Delta_G(s)^{-1/2}\xi(s^{-1}). \tag{C3}$$
+$$[C\xi](s)=\Delta_G(s)^{-1/2}\xi(s^{-1}). \tag{C3}$$
 
 The inversion formula for a left Haar measure gives \(C^2=1\) and \(\|C\xi\|_2=\|\xi\|_2\). It acts on the group coordinate only, so it commutes with every constant coefficient \(y\otimes1\). The modular factor in (C3) is needed when \(G\) is nonunimodular. Applying \(C\), then the right regular operator \(R_g\) of (I1), then \(C\) again gives
 
 $$\begin{aligned}
-CR_gC\xi
+[CR_gC\xi](s)
  &=\Delta_G(s)^{-1/2}\Delta_G(g)^{1/2}
    \Delta_G(s^{-1}g)^{-1/2}\xi(g^{-1}s)\\
- &=\xi(g^{-1}s)=\lambda_g\xi.
+ &=\xi(g^{-1}s)=[\lambda_g\xi](s).
 \end{aligned}\tag{C4}$$
 
 The second equality uses \(\Delta_G(s^{-1}g)=\Delta_G(s)^{-1}\Delta_G(g)\). In particular, inversion exchanges the right and left regular representations with the same group label \(g\); no inverse label remains. Apply \(C\) to the commutant formula (I5):
@@ -56,7 +56,7 @@ $$\alpha'_g(y)=U_g y U_g^*\qquad(y\in M'). \tag{C6}$$
 
 Strong continuity of \(U\) proves the asserted continuity by testing matrix coefficients. Let \(\pi_{\alpha'}\) be the regular coefficient representation of this action, and define a multiplication unitary on \(L^2(G,K)\) by
 
-$$W\xi=U_s\xi(s). \tag{C7}$$
+$$[W\xi](s)=U_s\xi(s). \tag{C7}$$
 
 The inverse is pointwise multiplication by \(U_s^*\). For \(y\in M'\), the regular coefficient at \(s\) is \(U_s^*yU_s\). Directly,
 
@@ -64,8 +64,8 @@ $$W\pi_{\alpha'}(y)W^*=y\otimes1. \tag{C8}$$
 
 For \(g\in G\), the group representation law gives \(U_sU_{g^{-1}s}^*=U_g\). Hence
 
-$$W\lambda_g W^*\xi=U_g\xi(g^{-1}s)
-     =(U_g\otimes\lambda_g)\xi. \tag{C9}$$
+$$[W\lambda_g W^*\xi](s)=U_g\xi(g^{-1}s)
+     =[(U_g\otimes\lambda_g)\xi](s). \tag{C9}$$
 
 Equations (C5), (C8), and (C9) now identify the standard commutant with the regular crossed product of the commutant action:
 

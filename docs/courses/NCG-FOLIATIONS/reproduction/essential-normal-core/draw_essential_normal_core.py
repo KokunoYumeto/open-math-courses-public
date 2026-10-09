@@ -1,4 +1,4 @@
-"""Original CC0 diagram and exact finite algebra for ENC.1–ENC.20."""
+"""Original CC0 diagram and exact finite algebra for ENC.1–ENC.29."""
 from pathlib import Path
 from fractions import Fraction as Q
 from PIL import Image, ImageDraw, ImageFont
@@ -12,7 +12,7 @@ opts=p.parse_args()
 opts.output_dir.mkdir(parents=True,exist_ok=True)
 font=(opts.resources/"fonts/DejaVuSans.ttf").read_bytes()
 notice=(opts.resources/"FONT-NOTICE.txt").read_text(encoding="utf-8")
-W,H=1800,1140
+W,H=1800,1510
 im=Image.new("RGB",(W,H),"#f7fafc"); d=ImageDraw.Draw(im)
 svg=[f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
  '<metadata>'+html.escape(notice)+'</metadata>',
@@ -116,7 +116,7 @@ assert at_zero["essential_operator"]==[[str(v) for v in row] for row in
     blocks(scale(sx,Q(8)),zero(2),zero(2),scale(sx,Q(108,25)))]
 
 text(42,34,"The actual essential inverse: one normal-compatible operator graph core",38)
-text(42,94,"ENC.1–ENC.23  |  nondegenerate B source  |  original class d_X  |  full arrow graph domains",25)
+text(42,94,"ENC.1–ENC.29  |  nondegenerate B source  |  original class d_X  |  full arrow graph domains",25)
 rect(40,160,548,560);rect(608,160,582,560);rect(1210,160,550,560)
 text(61,184,"1. Smooth diagonal cutoffs",28)
 text(61,230,"h*(g,n) > 0 on each coordinate",23)
@@ -171,8 +171,22 @@ text(61,863,"h*(x) = diag(2+x, 3−x, 4+x, 5−x)/32,    −1 ≤ x ≤ 1.    Ar
 text(61,909,"At x = 0:   S_0 = diag(8 σ_x, (108/25) σ_x).    The essential source identity is I_4.",24)
 text(61,954,"5 rational samples: exact phase, regulator, compression and full arrow-error formulas; 16 source products.",23)
 text(61,995,"Finite matrices illustrate the algebra; they do not prove the infinite inverse class.",21)
-text(42,1054,"Still required: a joint graph core, normal-source and mixed estimates, the physical sum and original Bott +1 pairing.",23)
-text(42,1096,"The proof keeps the original R balance, inverse coefficient, grading and final right Clifford order.",22)
+rect(40,1054,840,326,"#eaf7ed")
+rect(900,1054,860,326,"#fff3e5")
+text(61,1076,"Global compact-coordinate carrier",27)
+text(61,1123,"h_0 = diag(λ_i), constant in every normal direction",23)
+text(61,1168,"D_N w_m = 0;   [S_N,w_m] → 0",25)
+text(61,1213,"All three completed graph components converge.",22)
+text(61,1260,"Fixed w_m:  S_N w_m is bounded on the whole module.",21)
+text(61,1311,"Finite scalar coordinates form a full joint core.",23)
+text(921,1076,"Smooth seed, persistent cutoff error",27)
+text(921,1123,"h_n(t) = 2^(−2n²−2) (3/2 + sin(nt)/4)",24)
+text(921,1168,"N_m = 2^(2^m);   ξ_(N_m) = 1/N_m",25)
+text(921,1213,"At t = 0:  (D_N w_m) ξ has component 1/2.",23)
+text(921,1260,"Every normal derivative of h is compact.",22)
+text(921,1311,"This cutoff family fails; constant cutoffs succeed.",22)
+text(42,1405,"General holonomy still needs normal-source and mixed estimates, the physical sum and original Bott +1 pairing.",23)
+text(42,1450,"The full inverse normal coefficient, original R balance and final right Clifford order remain fixed.",22)
 assert not overflow,overflow
 svg.append("</svg>")
 im.save(opts.output_dir/"essential-normal-core.png",optimize=False)
@@ -183,6 +197,15 @@ checks=dict(schema="essential-normal-core-finite-calibration/v1",
     essential_source_nondegenerate=True,source_products=products,symmetrization_tests=tests,
     all_fraction_checks=True,text_canvas_overflows=overflow,
     finite_model_proves_original_inverse=False,finite_model_proves_physical_sum=False,
-    proof_scope="ENC.1–20 retain the actual B-source inverse class, source/arrow controls and a dense normal-compatible full operator graph core. A full joint graph core, normal source/operator resolvent controls and original physical sum/Bott pairing remain unproved.")
-(opts.output_dir/"ESSENTIAL-NORMAL-CORE-CHECKS.json").write_text(json.dumps(checks,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    proof_scope="ENC.1–29 retain the actual B-source inverse. A full joint core is proved for a global compact-coordinate carrier; the smooth oscillatory seed does not supply the boundary convergence. General holonomy normal-source/mixed/physical/Bott obligations remain.",
+    flat_coordinate_seed_zero_normal_derivative=True,
+    oscillatory_seed_samples=[dict(m=m,N_m=2**(2**m),
+        chi_midpoint="1/2",chi_midpoint_derivative="2",
+        weight_midpoint=str(Q(2*m+1,2)),
+        selected_vector_coefficient=str(Q(1,2**(2**m))),
+        cutoff_derivative_midpoint=str(Q(2**(2**m),2)),
+        derivative_times_vector="1/2") for m in range(1,4)],
+    finite_samples_prove_infinite_joint_core=False,
+    finite_samples_prove_physical_sum=False)
+(opts.output_dir/"ESSENTIAL-NORMAL-CORE-CHECKS.json").write_text(json.dumps(checks,ensure_ascii=False,indent=2)+"\n",encoding="utf-8",newline="\n")
 print(json.dumps(dict(exact_symmetrization_samples=len(tests),exact_source_products=len(products),essential_source_identity_rank=4,overflows=len(overflow))))

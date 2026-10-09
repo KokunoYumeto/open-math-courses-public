@@ -4,7 +4,7 @@ An Euler index is a signed count of finite cohomology groups. To connect that co
 
 *Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources are credited below.*
 
-The supported trace below is defined by its actual maps: product evaluation, exceptional restriction to the diagonal, the closed-embedding counit, graded interchange and evaluation. Its normalization is checked directly at a point by the chain-level supertrace. Use [Constructible costalks and Verdier duality](../../sheaf-proof-readings/SH03-constructible-costalks-and-verdier-duality.html) for the actual local dual pairings and perfection, [Perfect coefficients on compact fibres](../../sheaf-proof-readings/SH03-perfect-coefficients-on-compact-fibres.html) for finiteness on compact subanalytic sets, and [Perfect operations and finite microlocal coefficients](../../sheaf-proof-readings/SH03-perfect-operations-and-finite-microlocal-coefficients.html) for bounded tensor and internal Hom. The normalized maps come from the product evaluation theorem, SH02-CB-EXTERNAL-HOM, exceptional inverse image of internal Hom, SH02-EX-HOM, and exceptional composition, SH02-EX-COMPOSITION, with their stated hypotheses. The present construction uses their formal neighborhood systems, proper-support soft, fibre and composition results, and derived resolution and duality prerequisites. Proper trace transport, the global index theorem and characteristic cycles require the further arguments described below.
+The supported trace below is defined by its actual maps: product evaluation, exceptional restriction to the diagonal, the closed-embedding counit, graded interchange and evaluation. Its normalization is checked directly at a point by the chain-level supertrace. Use [Constructible costalks and Verdier duality](../../sheaf-proof-readings/src/SH03/constructible-costalks-and-verdier-duality.md#perfect-stalks-give-perfect-costalks) for the actual local dual pairings and perfection, [Perfect coefficients on compact fibres](../../sheaf-proof-readings/src/SH03/perfect-coefficients-on-compact-fibres.md#finite-descent-on-a-compact-triangulation) for finiteness on compact subanalytic sets, and [Perfect operations and finite microlocal coefficients](../../sheaf-proof-readings/src/SH03/perfect-operations-and-finite-microlocal-coefficients.md#perfect-inverse-images-tensors-and-internal-hom) for bounded tensor and internal Hom. The normalized maps come from [the product evaluation theorem, SH02-CB-EXTERNAL-HOM](../../sheaf-proof-readings/src/SH02/cohomological-biduality.md#sh02-cb-external-hom--a-constructible-factor-in-a-product), [exceptional inverse image of internal Hom, SH02-EX-HOM](../../sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-hom--exceptional-inverse-image-of-internal-hom), and [exceptional composition, SH02-EX-COMPOSITION](../../sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-composition--composition-restriction-and-change-of-base), with their stated hypotheses. The present construction uses their formal neighborhood systems, proper-support soft, fibre and composition results, and derived resolution and duality prerequisites. Proper trace transport, the global index theorem and characteristic cycles require the further arguments described below.
 
 ## Two finite local measurements
 
@@ -44,7 +44,7 @@ Both complexes in (3) are perfect by the constructible-costalk theorem. We can c
  \tag{4}
 \]
 
-The natural local dual pairing identifies
+The [local dual pairing](../../sheaf-proof-readings/src/SH03/constructible-costalks-and-verdier-duality.md#duality-exchanges-the-measurements-before-biduality) identifies
 
 \[
  (D_XF)_x\simeq R\operatorname{Hom}_k(C_x(F),k),\qquad
@@ -68,7 +68,7 @@ On an $n$-dimensional component, the manifold normalization is
  \tag{7}
 \]
 
-For the constant sheaf $k_X$, a local coordinate ball gives $A_x(k_X)=k$ and $C_x(k_X)=\operatorname{or}_{X,x}[-n]$. Hence its ordinary local index is $1$, while its costalk index is $(-1)^n$. No global orientation is needed to count the dimension of the orientation line.
+For the constant sheaf $k_X$, the [coordinate-ball support calculation](../../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-euclidean--the-compact-support-generator) gives $A_x(k_X)=k$ and $C_x(k_X)=\operatorname{or}_{X,x}[-n]$. Hence its ordinary local index is $1$, while its costalk index is $(-1)^n$. No global orientation is needed to count the dimension of the orientation line.
 
 ## Global indices require a separate finiteness check
 
@@ -128,7 +128,7 @@ Let $q_1,q_2:X\times X\to X$ be the projections, and let $\delta:X\to X\times X$
  K_F=F\boxtimes^LD_XF.
 \]
 
-The product evaluation theorem, SH02-CB-EXTERNAL-HOM, applied with the cohomologically constructible factor on the second copy of $X$, gives the canonical isomorphism
+[The product evaluation theorem, SH02-CB-EXTERNAL-HOM](../../sheaf-proof-readings/src/SH02/cohomological-biduality.md#sh02-cb-external-hom--a-constructible-factor-in-a-product), applied with the cohomologically constructible factor on the second copy of $X$, gives the canonical isomorphism
 
 \[
  K_F\xrightarrow{\sim}
@@ -138,7 +138,7 @@ The product evaluation theorem, SH02-CB-EXTERNAL-HOM, applied with the cohomolog
 
 It includes the graded permutation placing the first factor $F$ before the second factor $D_XF$. This is the evaluation map of that theorem with its actual normalization. Constructibility and the perfect local section representatives establish its invertibility; an abstract isomorphism of its source and target would not suffice for the trace construction.
 
-Apply exceptional restriction along $\delta$. The exceptional-Hom comparison, SH02-EX-HOM, is an isomorphism for a bounded first Hom input and a bounded-below second input. Here $q_2^{-1}F$ is bounded and $q_1^!F$ is bounded below; the finite manifold dimension makes the exceptional functors available. It gives
+Apply exceptional restriction along $\delta$. [The exceptional-Hom comparison, SH02-EX-HOM](../../sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-hom--exceptional-inverse-image-of-internal-hom), is an isomorphism for a bounded first Hom input and a bounded-below second input. Here $q_2^{-1}F$ is bounded and $q_1^!F$ is bounded below; the finite manifold dimension makes the exceptional functors available. It gives
 
 \[
  \begin{aligned}
@@ -150,7 +150,7 @@ Apply exceptional restriction along $\delta$. The exceptional-Hom comparison, SH
  \tag{12}
 \]
 
-The last step uses $q_2\delta=\mathrm{id}_X$ and the normalized exceptional composition, SH02-EX-COMPOSITION, for $q_1\delta=\mathrm{id}_X$. Denote the inverse of (12) by
+The last step uses $q_2\delta=\mathrm{id}_X$ and [the normalized exceptional composition, SH02-EX-COMPOSITION](../../sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-composition--composition-restriction-and-change-of-base), for $q_1\delta=\mathrm{id}_X$. Denote the inverse of (12) by
 
 \[
  \theta_F:R\mathcal Hom(F,F)\xrightarrow{\sim}\delta^!K_F.
@@ -205,7 +205,7 @@ The comparison (14) is generally not an isomorphism. For example, if $i$ include
 
 Set $Z=\operatorname{supp}(F)$, with the closed-support convention above, and abbreviate $E_F=R\mathcal Hom(F,F)$. Outside $Z$ the restriction of $F$ is zero, so $E_F$ is zero there as well. Thus $E_F$ is supported on $Z$.
 
-If $i:Z\hookrightarrow X$ is the closed embedding, support localization gives $R\Gamma_ZA=i_*i^!A$ and an isomorphism
+If $i:Z\hookrightarrow X$ is the closed embedding, [closed-support localization](../../sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-embedding--open-closed-and-locally-closed-inclusions) gives $R\Gamma_ZA=i_*i^!A$ and an isomorphism
 
 \[
  R\Gamma_ZE_F\xrightarrow{\sim}E_F.
@@ -411,7 +411,7 @@ in a sufficiently small interval $B$. For $F_{c}$, the middle term is $k$ and th
 | $\chi(F_{o})(x)$ | $1$ | $0$ | $0$ |
 | $\chi_c(F_{o})(x)$ | $-1$ | $-1$ | $0$ |
 
-For $j:(0,1)\hookrightarrow\mathbb R$, open internal-Hom adjunction gives $D_{\mathbb R}F_{o}\simeq Rj_*\omega_{(0,1)}=Rj_*k_{(0,1)}[1]$. On a small interval about either endpoint, the nonempty intersection with $(0,1)$ is a contractible interval. Its derived constant sections are $k$ and the restriction maps preserve that constant value. Thus the actual constant-section comparison gives $Rj_*k_{(0,1)}\simeq F_{c}$. This proves $D_{\mathbb R}F_{o}\simeq F_{c}[1]$ as a sheaf complex, with its maps. Constructible biduality and reversal of shifts now give $D_{\mathbb R}F_{c}\simeq F_{o}[1]$. Taking their stalk Euler indices reproduces the two costalk rows, including endpoints, and verifies (6).
+For $j:(0,1)\hookrightarrow\mathbb R$, open internal-Hom adjunction gives $D_{\mathbb R}F_{o}\simeq Rj_*\omega_{(0,1)}=Rj_*k_{(0,1)}[1]$. On a small interval about either endpoint, the nonempty intersection with $(0,1)$ is a contractible interval. Its [derived constant sections](../../sheaf-proof-readings/src/SH02/convex-acyclicity.md#sh02-ca-constant--constant-coefficients) are $k$ and the restriction maps preserve that constant value. Thus the actual constant-section comparison gives $Rj_*k_{(0,1)}\simeq F_{c}$. This proves $D_{\mathbb R}F_{o}\simeq F_{c}[1]$ as a sheaf complex, with its maps. Constructible biduality and reversal of shifts now give $D_{\mathbb R}F_{c}\simeq F_{o}[1]$. Taking their stalk Euler indices reproduces the two costalk rows, including endpoints, and verifies (6).
 
 For global sections, the closed interval is contractible and compact, giving $R\Gamma(\mathbb R;F_{c})=R\Gamma_c(\mathbb R;F_{c})=k$. Extension by zero identifies compact sections of $F_{o}$ with compact sections on the open interval, giving $R\Gamma_c(\mathbb R;F_{o})=k[-1]$. Its closed support is $[0,1]$, so (9) also gives $R\Gamma(\mathbb R;F_{o})=k[-1]$. Therefore both global indices of $F_{c}$ are $1$ and both global indices of $F_{o}$ are $-1$.
 
@@ -427,4 +427,4 @@ The identity, the normalized diagonal evaluation, the closed-embedding compariso
 
 ## Source account for the supported normalization
 
-Schapira, [*An Introduction to Sheaves on Grothendieck Topologies*](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf), §§4.6–4.8, provides the exceptional-Hom, dual-sections and external-Hom framework. Its §4.8 states a Noetherian coefficient convention and explains the perfect-complex replacement; its external-Hom proposition has a bounded second input. Both restrictions hold in this field-coefficient, bounded construction. The more general neighbourhood-system proof required by the linked provider remains that provider’s explicit argument. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), §8.3–8.4, concerns local Euler indices and characteristic cycles, not a substitute proof of the supported diagonal map. Here that map is derived from the cited operation contracts in (9)–(19), and its point sign is proved in (20)–(21). Additivity of Euler numbers is proved; additivity of the supported class, its proper transport, and the global index theorem are not asserted without their further proofs.
+Schapira, [*An Introduction to Sheaves on Grothendieck Topologies*](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf), §§4.6–4.8, pp. 94–99, provides the exceptional-Hom, dual-sections and external-Hom framework. Corollary 4.6.2 fixes exceptional composition; Propositions 4.6.5, 4.6.7 and 4.6.8 give exceptional Hom, closed support and the diagonal comparison. Proposition 4.8.3 states the local dual pairings, and Proposition 4.8.4 proves the external-Hom comparison from represented neighborhood systems. Its §4.8 states a Noetherian coefficient convention and explains the perfect-complex replacement; its external-Hom proposition has a bounded second input. Both restrictions hold in this field-coefficient, bounded construction. The more general neighbourhood-system proof required by the linked provider remains that provider’s explicit argument. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), §8.3–8.4, concerns local Euler indices and characteristic cycles, not a substitute proof of the supported diagonal map. Here that map is derived from the cited operation contracts in (9)–(19), and its point sign is proved in (20)–(21). Additivity of Euler numbers is proved; additivity of the supported class, its proper transport, and the global index theorem are not asserted without their further proofs.

@@ -88,7 +88,7 @@ $$
 
 Differentiating in $b$ at the identity shows that $(T_a)_*X_j$ is a constant linear combination of the generators. Conjugation is invertible, so it preserves their pointwise spans.
 
-Each generator's flow belongs to the group by the preceding lesson. At a fixed point, transporting $X_j$ by the negative flow of $X_i$ gives a curve of vectors in the fixed subspace $D(x)$. Its derivative at time zero is $X_i,X_j$, as follows by differentiating the pushforward or by the coefficient formula for brackets. Hence this bracket lies in $D(x)$. A regular basis minor gives analytic coefficients, proving involutivity. $\square$
+Each generator's flow belongs to the group by the preceding lesson. At a fixed point, transporting $X_j$ by the negative flow of $X_i$ gives a curve of vectors in the fixed subspace $D(x)$. Its derivative at time zero is $[X_i,X_j](x)$, as follows by differentiating the pushforward or by the coefficient formula for brackets. Hence this bracket lies in $D(x)$. A regular basis minor gives analytic coefficients, proving involutivity. $\square$
 
 **Theorem 3.2.** An analytic function $f$ is locally invariant under the group if and only if $X_jf=0$ for all generators. There are $n-\rho$ independent invariants near a regular point, and every invariant is a function of them.
 

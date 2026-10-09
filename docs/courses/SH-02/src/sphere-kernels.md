@@ -203,6 +203,55 @@ The unit and counit of $\Phi_K\dashv\Psi_K$ are isomorphisms because $\Phi_K$ is
 
 When $n=0$, both ray spaces are empty, and all their sheaf categories are the zero category. The kernels and diagonals are zero; the assertions are the unique equivalences of zero categories. This case requires no expression with a sphere of dimension minus one. For $n=1$, the ray fibres have two points, there is no halfspace case, and all traces have degree zero.
 
+<a id="SH02-SPH-BOUNDARY-ADJOINT"></a>
+
+## How the boundary determines the actual adjoint
+
+Put \(X=S\times_BS^\vee\), \(U=\{(u,\xi):\xi(u)>0\}\) in this order, and \(W=q^{-1}\omega_{S^\vee/B}\). Thus \(D=\overline U\), and transposing \(U\) gives the support \(J\) of \(L\). For every \(G\in D^+(S;k)\), write \(H=p^{-1}G\). The two canonical boundary comparisons are
+
+\[
+\begin{gathered}
+H_U\xrightarrow{\sim}R\mathcal Hom(k_D,H),\\
+H_D\xrightarrow{\sim}R\mathcal Hom(k_U,H).
+\end{gathered}
+\tag{SPH10}
+\]
+
+These comparisons concern a coefficient complex pulled back from the first sphere. They do not assert either identity for an arbitrary complex on \(X\).
+
+Here is a local proof that retains arbitrary coefficient modules and the bounded-below range. At a boundary point, \(\xi(u)=0\) with \(u,\xi\ne0\). Varying the covector in a direction that is nonzero on \(u\) makes evaluation a transverse real coordinate. Local bundle charts therefore identify the incidence boundary, relative to \(p\), with \(t=0\) in \(Y\times\mathbb R\), with the other covector coordinates included in \(Y\). The coefficient complex has the form \(r^{-1}A\), where \(r:Y\times\mathbb R\to Y\) and \(A\in D^+(Y;k)\). Only local intervals are needed, and an interval can be reparametrized by the real line. In rank one the incidence boundary is empty; in rank zero the entire ray space is empty.
+
+Write \(C=\{t\ge0\}\), \(V=\{t>0\}\), \(Z=\{t=0\}\) and \(H_0=r^{-1}A\). The normal halfline complex \((H_0)_C\) is conic for positive scaling in \(t\). The [proper-support contraction](../../sheaf-proof-readings/SH02-conic-descent.html#SH02-CON-RADIAL-SUPPORT), followed by the projection formula and the halfline case of SPH4, gives
+
+\[
+\begin{gathered}
+i_Z^!(H_0)_C\xrightarrow{\sim}Rr_!((H_0)_C)\\
+\simeq A\otimes^LR\Gamma_c([0,\infty);k)\\
+=0.
+\end{gathered}
+\tag{SPH11}
+\]
+
+Here \(i_Z:Y\to Y\times\mathbb R\) is the zero section. The contraction has no additional shift, and its proof uses the stated proper-support and continuity contracts. The tensor factor on the right vanishes before any coefficient finiteness condition could enter. Applying the open-complement localization triangle to \((H_0)_C\) consequently makes its restriction unit an isomorphism onto \(Rj_{V*}j_V^{-1}H_0=R\Gamma_VH_0\). This proves the second map in SPH10 in the local chart.
+
+For the first map use the localization triangle for \(C\) and its open complement \(\{t<0\}\). The [cylinder unit](../../sheaf-proof-readings/SH02-conic-descent.html#SH02-CON-CYLINDER) identifies sections of \(r^{-1}A\) on every product of a base neighbourhood and a negative interval with the corresponding sections of \(A\). These units are compatible with restriction of both neighbourhoods and intervals. At \(t=0\) the map from \(H_0\) to the ordinary direct image from \(t<0\) is therefore the identity on \(A\). The stalk of \(R\Gamma_CH_0\) at that boundary is zero. In the positive interior it is \(H_0\), and in the negative interior it is zero. The canonical map \((H_0)_V\to R\Gamma_CH_0\) is induced by applying \(R\Gamma_C\) to \((H_0)_V\to H_0\); its source is already supported in \(C\). It is an isomorphism on every stalk, which proves the first map. This constructs the comparison, rather than inferring it from unchosen stalk identifications. Both local proofs use natural restriction or support maps, so they glue to SPH10. The cylinder argument retains its explicit closed-exhaustion and interval hypotheses; they are not replaced by an unconditional inverse-limit rule.
+
+Now apply the actual kernel-adjunction formula already used above. Smooth relative purity gives \(p^!G\simeq p^{-1}G\otimes W\). Tensoring both internal-Hom arguments by the same invertible complex cancels that complex by its specified tensor equivalence, so
+
+\[
+\begin{gathered}
+\Psi_K(G)\\
+=Rq_*R\mathcal Hom(\\
+k_D\otimes W,p^{-1}G\otimes W)\\
+\simeq Rq_*R\mathcal Hom(k_D,p^{-1}G)\\
+\simeq Rq_*((p^{-1}G)_U)\\
+\simeq Rq_!((p^{-1}G)_U)=\Phi_L(G).
+\end{gathered}
+\tag{SPH12}
+\]
+
+The last comparison uses properness of \(q\), whose fibre is the compact vector-ray sphere; it does not require a compact base. Transposition identifies the last expression with the previously defined \(\Phi_L\). This gives a geometric natural identification of the actual right adjoint, with no coefficient dualization, antipode or remaining shift. Together with SPH5 and SPH8, it makes the unit and counit of the transported adjunction \(\Phi_K\dashv\Phi_L\) isomorphisms. It still does not identify an independently normalized natural transformation with those adjunction maps solely from invertibility.
+
 ## SH02-SPH-EXAMPLES — Boundary and orientation tests
 
 **An open-open replacement is not inverse.** Take $B$ a point and $E=\mathbb R^2$. Replace the closed condition in $D$ by a strict one. At the distinct vector rays $u=(1,0)$ and $v=(0,1)$, normalization gives $\xi=(a,1)$ with $a>0$. This is an open line interval and has compact cohomology $k[-1]$. The orientation shift in $K$ is $[1]$, so the resulting convolution stalk is $k$ in degree zero. It is nonzero away from the diagonal when $k\ne0$. The change of one boundary inequality destroys (SPH5).

@@ -14,7 +14,7 @@ Write \(\phi_s\) for the flow of \(X\), and \(J_s(z)=D_z\phi_s(z)\). The variati
 \[
  \frac{d}{ds}\big[J_s(z)^{-1}Y(\phi_s(z))\big]
  =J_s(z)^{-1}\big(DY\,X-DX\,Y\big)(\phi_s(z))
- =J_s(z)^{-1}X,Y).
+ =J_s(z)^{-1}[X,Y](\phi_s(z)).
 \]
 All statements hold on one sufficiently small common flow domain. If \([X,Y]=0\), this proves \(D\phi_s\,Y=Y\circ\phi_s\). Consequently the two curves \(t\mapsto\phi_s\psi_t(z)\) and \(t\mapsto\psi_t\phi_s(z)\) solve the same \(Y\) equation and have the same initial value. Uniqueness proves that the flows commute.
 

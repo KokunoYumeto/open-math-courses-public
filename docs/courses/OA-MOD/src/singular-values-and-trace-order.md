@@ -78,7 +78,7 @@ For a positive measurable \(T\),
 
 These are equalities in \([0,\infty]\), not assertions that either integral is finite.
 
-**Proof.** Normality makes \(\nu(B)=\tau(E_T(B))\) a countably additive measure on the Borel subsets of \(0,\infty)\). For disjoint sets, spectral projections of the finite unions increase to the projection of their union, so finite additivity followed by normality proves this assertion. The positive spectral trace formula [MT13 gives \(\tau(T)=\int s\,d\nu(s)\).
+**Proof.** Normality makes \(\nu(B)=\tau(E_T(B))\) a countably additive measure on the Borel subsets of \([0,\infty)\). For disjoint sets, spectral projections of the finite unions increase to the projection of their union, so finite additivity followed by normality proves this assertion. The positive spectral trace formula MT13 gives \(\tau(T)=\int s\,d\nu(s)\).
 
 For any measure \(\nu\) and nonnegative measurable \(g\), the layer formula is
 

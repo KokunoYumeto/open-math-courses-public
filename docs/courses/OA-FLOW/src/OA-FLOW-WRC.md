@@ -26,8 +26,8 @@ On \(L^2(G)\), put
 
 <a id="equation-r2"></a>
 
-$$L_s\xi=\xi(r-s),\qquad
-Q_\chi\xi=\overline{\chi(r)}\xi(r). \tag{R2}$$
+$$[L_s\xi](r)=\xi(r-s),\qquad
+[Q_\chi\xi](r)=\overline{\chi(r)}\xi(r). \tag{R2}$$
 
 These conventions agree with the duality lesson. There is no second-countability, metrizability, sigma-compactness or separability assumption on either the group or the Hilbert space.
 
@@ -223,7 +223,7 @@ Our inner products are linear in the first variable. For the canonical pair \((M
 
 <a id="equation-r10"></a>
 
-$$T_{\xi,\eta}f
+$$[T_{\xi,\eta}f](r)
 =\int_G\xi(r)\overline{\eta(r-t)}f(r-t)\,dt
 =\langle f,\eta\rangle\xi(r). \tag{R10}$$
 

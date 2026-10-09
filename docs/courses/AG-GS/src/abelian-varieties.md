@@ -585,7 +585,7 @@ If \(M^e\simeq\mathcal O_X\), the polynomial \(\chi(F\otimes M^a)\) is periodic 
 \chi([n]^*M)=n^{2g}\chi(M).
 \]
 
-**Proof.** Extend the field to an algebraic closure; the affine Čech base-change proof preserves Euler characteristic. Theorems 6.1–6.2 of the existing lesson make \(q=[n]\) a finite étale torsor under the constant abelian group \(G=An\), of order \(r=n^{2g}\) and exponent dividing \(n\). Indeed
+**Proof.** Extend the field to an algebraic closure; the affine Čech base-change proof preserves Euler characteristic. Theorems 6.1–6.2 of the existing lesson make \(q=[n]\) a finite étale torsor under the constant abelian group \(G=A[n](k)\), of order \(r=n^{2g}\) and exponent dividing \(n\). Indeed
 \[
 \begin{gathered}
 A\times G\longrightarrow A\times_{q,A,q}A,\\
@@ -2322,8 +2322,8 @@ Fix a separable closure \(k_s\) and its absolute Galois group \(\Gamma\).
 
 **Theorem 7.1. Torsion of invertible order.** If \(n\geq1\) is invertible in \(k\), then
 
-\
-A[n\simeq(\mathbf Z/n)^{2g}
+\[
+A[n](k_s)\simeq(\mathbf Z/n)^{2g}
 \tag{18}
 \]
 
@@ -2331,23 +2331,23 @@ as abstract abelian groups. The isomorphism is generally not canonical and does 
 
 **Proof.** The finite group scheme \(A[n]\) is étale of rank \(n^{2g}\). Over the separably closed field, a finite étale algebra is a product of copies of \(k_s\). Thus its group of points has exactly \(n^{2g}\) elements.
 
-First take \(n=\ell^r\), with \(\ell\) a prime invertible in \(k\), and \(r\geq1\). Put \(H=A\ell^r\). It is a finite abelian group killed by \(\ell^r\), so its elementary-divisor decomposition is
+First take \(n=\ell^r\), with \(\ell\) a prime invertible in \(k\), and \(r\geq1\). Put \(H=A[\ell^r](k_s)\). It is a finite abelian group killed by \(\ell^r\), so its elementary-divisor decomposition is
 
 \[
 H\simeq\bigoplus_{i=1}^a\mathbf Z/\ell^{b_i},
 \qquad 1\leq b_i\leq r.
 \]
 
-Its subgroup killed by \(\ell\) is exactly \(A\ell\), of size \(\ell^{2g}\). Every summand contributes \(\ell\), so \(a=2g\). The size of \(H\) is \(\ell^{2gr}\); hence \(\sum_i b_i=2gr\). There are \(2g\) terms, each at most \(r\), so every \(b_i=r\).
+Its subgroup killed by \(\ell\) is exactly \(A[\ell](k_s)\), of size \(\ell^{2g}\). Every summand contributes \(\ell\), so \(a=2g\). The size of \(H\) is \(\ell^{2gr}\); hence \(\sum_i b_i=2gr\). There are \(2g\) terms, each at most \(r\), so every \(b_i=r\).
 
-For general \(n=\prod_\ell\ell^{r_\ell}\), the elementary Chinese-remainder idempotents in \(\mathbf Z/n\) decompose the killed-by-\(n\) group into its \(\ell\)-primary subgroups. Those are \(A\ell^{r_\ell}\): the idempotents project onto them and their sum is one. The prime-power result and the Chinese remainder theorem prove (18). \(\square\)
+For general \(n=\prod_\ell\ell^{r_\ell}\), the elementary Chinese-remainder idempotents in \(\mathbf Z/n\) decompose the killed-by-\(n\) group into its \(\ell\)-primary subgroups. Those are \(A[\ell^{r_\ell}](k_s)\): the idempotents project onto them and their sum is one. The prime-power result and the Chinese remainder theorem prove (18). \(\square\)
 
 In particular the cardinality alone at one composite \(n\) would not have determined the group; the degree calculation for its prime divisors is the additional input.
 
 For a prime \(\ell\) invertible in \(k\), define
 
-\
-T_\ell(A)=\varprojlim_r A[\ell^r,
+\[
+T_\ell(A)=\varprojlim_r A[\ell^r](k_s),
 \tag{19}
 \]
 
@@ -2368,7 +2368,7 @@ The action of \(\Gamma\) is continuous for the inverse-limit topology and define
 \tag{21}
 \]
 
-**Proof.** The transition map \(P_{r+1}\to P_r\), where \(P_r=A\ell^r\), is surjective. Given a point in \(P_r\), its fibre under \([\ell]\) is a nonempty finite étale scheme over \(k_s\), and therefore has a \(k_s\)-point. Any such lift is killed by \(\ell^{r+1}\).
+**Proof.** The transition map \(P_{r+1}\to P_r\), where \(P_r=A[\ell^r](k_s)\), is surjective. Given a point in \(P_r\), its fibre under \([\ell]\) is a nonempty finite étale scheme over \(k_s\), and therefore has a \(k_s\)-point. Any such lift is killed by \(\ell^{r+1}\).
 
 Choose a basis \(v_{1,1},\ldots,v_{2g,1}\) of \(P_1\). Recursively lift each \(v_{i,r}\) to \(v_{i,r+1}\) with \(\ell v_{i,r+1}=v_{i,r}\). These lifts form a basis at every level. To prove it, Theorem 7.1 identifies \(P_{r+1}\) as a free \(\mathbf Z/\ell^{r+1}\)-module of rank \(2g\). Multiplication by \(\ell^r\) induces an isomorphism
 
@@ -2570,7 +2570,7 @@ The affine derivatives are \(y+x^2\) and \(x\), whose simultaneous zero \((0,0)\
 x=0,\qquad y^2=t.
 \]
 
-There is exactly one such geometric point, \((0,\sqrt t)\), and it is not defined over \(k_s\): \(\sqrt t\) has a purely inseparable degree-two minimal polynomial over \(k\), so cannot belong to a separable algebraic extension. Therefore \(E2=\{O\}\), while \(E[2](\overline k)\simeq\mathbf Z/2\). The connected-étale sequence of \(E[2]\) need not split over \(k_s\); the nonidentity section of its split étale quotient has no lift there. This is why formula (24) uses an algebraic closure.
+There is exactly one such geometric point, \((0,\sqrt t)\), and it is not defined over \(k_s\): \(\sqrt t\) has a purely inseparable degree-two minimal polynomial over \(k\), so cannot belong to a separable algebraic extension. Therefore \(E[2](k_s)=\{O\}\), while \(E[2](\overline k)\simeq\mathbf Z/2\). The connected-étale sequence of \(E[2]\) need not split over \(k_s\); the nonidentity section of its split étale quotient has no lift there. This is why formula (24) uses an algebraic closure.
 
 ### Torsion points and thick torsion schemes
 
@@ -3558,7 +3558,7 @@ An **abelian scheme** over \(S\) is a smooth proper commutative \(S\)-group sche
 
 **Exercise 4 (medium): symmetric multiplication.** Prove formula (12) from the cube and deduce (13). Construct a symmetric ample line bundle from an arbitrary ample line bundle.
 
-**Exercise 5 (hard): recover the torsion group.** Prove \(An\simeq(\mathbf Z/n)^{2g}\) for invertible \(n\), using the degrees of multiplication for the prime divisors of \(n\). Explain why the order at a single \(n\) is insufficient by itself.
+**Exercise 5 (hard): recover the torsion group.** Prove \(A[n](k_s)\simeq(\mathbf Z/n)^{2g}\) for invertible \(n\), using the degrees of multiplication for the prime divisors of \(n\). Explain why the order at a single \(n\) is insufficient by itself.
 
 **Exercise 6 (hard): compatible Tate bases.** Prove surjectivity of the transition maps in (19), construct compatible bases, and deduce that the Galois action on \(T_\ell(A)\) is continuous.
 
@@ -3615,11 +3615,11 @@ F_n=\frac{n(n+1)}2l+\frac{n(n-1)}2i.
 
 For negative integers pull back by inversion, which exchanges \(l,i\). If \(L\) is symmetric, \(i=l\), and the total coefficient is \(n^2\). Given any ample \(H\), inversion preserves ampleness and the tensor product of ample line bundles is ample. Thus \(H\otimes[-1]^*H\) is ample; inversion exchanges its two factors, making it symmetric.
 
-**Solution 5.** Finite étaleness gives \(|Ad|=d^{2g}\) for every invertible positive divisor \(d\) of \(n\). For \(n=\ell^r\), decompose the killed-by-\(\ell^r\) group as \(\bigoplus_{i=1}^a\mathbf Z/\ell^{b_i}\), \(1\leq b_i\leq r\). Its killed-by-\(\ell\) subgroup is \(A\ell\), so \(a=2g\). Its total order gives \(\sum b_i=2gr\). The upper bounds on the \(2g\) terms force \(b_i=r\) for every \(i\). Chinese-remainder primary decomposition gives the general \(n\) result.
+**Solution 5.** Finite étaleness gives \(|A[d](k_s)|=d^{2g}\) for every invertible positive divisor \(d\) of \(n\). For \(n=\ell^r\), decompose the killed-by-\(\ell^r\) group as \(\bigoplus_{i=1}^a\mathbf Z/\ell^{b_i}\), \(1\leq b_i\leq r\). Its killed-by-\(\ell\) subgroup is \(A[\ell](k_s)\), so \(a=2g\). Its total order gives \(\sum b_i=2gr\). The upper bounds on the \(2g\) terms force \(b_i=r\) for every \(i\). Chinese-remainder primary decomposition gives the general \(n\) result.
 
 For comparison, a group of order \(\ell^4\) killed by \(\ell^2\) could be \((\mathbf Z/\ell^2)^2\), \(\mathbf Z/\ell^2\oplus(\mathbf Z/\ell)^2\), or \((\mathbf Z/\ell)^4\). The total order and exponent bound alone do not distinguish them. Their killed-by-\(\ell\) subgroup sizes do, which is why the lower-order degree information is needed.
 
-**Solution 6.** Given \(x\in A\ell^r\), the fibre of \([\ell]\) over \(x\) is nonempty and finite étale. It has a \(k_s\)-point \(y\); since \(\ell y=x\), it is killed by \(\ell^{r+1}\). This proves surjectivity. Choose a basis at level one and recursively lift it through these maps.
+**Solution 6.** Given \(x\in A[\ell^r](k_s)\), the fibre of \([\ell]\) over \(x\) is nonempty and finite étale. It has a \(k_s\)-point \(y\); since \(\ell y=x\), it is killed by \(\ell^{r+1}\). This proves surjectivity. Choose a basis at level one and recursively lift it through these maps.
 
 At level \(r+1\), multiplication by \(\ell^r\) identifies \(P_{r+1}/\ell P_{r+1}\) with \(P_1\), by the already-proved free structure of \(P_{r+1}\). The compatible lifts map to the original basis there. Nakayama makes them generators over \(\mathbf Z/\ell^{r+1}\); a generating map from a free module of the same rank is bijective here because the two finite sets have equal cardinalities. The coordinates reduce under the transition maps, so the limit is \(\mathbf Z_\ell^{2g}\).
 

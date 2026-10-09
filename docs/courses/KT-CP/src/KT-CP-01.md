@@ -134,9 +134,9 @@ The two group formulas in (2.2) are continuous in \(L^1\) as functions of \(s\),
 
 To prove injectivity, use the existing regular covariant pair associated to a faithful nondegenerate \(\rho:A\to B(K)\):
 
-\
-[\widetilde\rho(a)\xi=\rho(\alpha_{r^{-1}}(a))\xi(r),
-\qquad \lambda_s\xi=\xi(s^{-1}r).
+\[
+[\widetilde\rho(a)\xi](r)=\rho(\alpha_{r^{-1}}(a))\xi(r),
+\qquad [\lambda_s\xi](r)=\xi(s^{-1}r).
 \tag{2.3}
 \]
 
@@ -289,8 +289,8 @@ Assume first that \(G\) is nondiscrete. Haar measure has \(\mu(\{e\})=0\): if it
 
 Fix \(\eta\in K\) of norm one and set \(\xi_V(r)=\mu(V)^{-1/2}1_V(r)\eta\). For \(f\in C_c(G,A)\), with compact support \(L\), (2.3) gives
 
-\
-\|[T(f)\xi_V\|
+\[
+\|[T(f)\xi_V](r)\|
 \leq\frac{\|f\|_\infty}{\sqrt{\mu(V)}}\mu(rV^{-1})
 \leq c\|f\|_\infty\sqrt{\mu(V)}.
 \]
@@ -354,9 +354,9 @@ Here the argument is only a finite-group computation. The general reduced crosse
 
 A representation is exactly a unital representation of \(C(X)\) with a unitary satisfying this relation. For instance, on the orbit of \(x\in X\), the formulas
 
-\
-[\pi_x(a)\xi=a(h^m x)\xi(m),\qquad
-U\xi=\xi(m-1)
+\[
+[\pi_x(a)\xi](m)=a(h^m x)\xi(m),\qquad
+[U\xi](m)=\xi(m-1)
 \]
 
 give covariance on \(\ell^2(\mathbb Z)\). For \(h(z)=\omega z\) on the circle and the coordinate unitary \(v(z)=z\), the relation is \(uvu^*=\overline\omega v\), equivalently \(vu=\omega uv\). This checks the sign fixed by (1.2).

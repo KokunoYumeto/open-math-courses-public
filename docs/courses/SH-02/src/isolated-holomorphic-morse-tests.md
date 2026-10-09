@@ -9,6 +9,10 @@ M_g(A)_y=(R\Gamma_{\{\operatorname{Re}g\geq0\}}A)_y.
 \tag{IHM1}
 $$
 
+<a id="SH02-IHM-FULL-ISOLATED-PROOF"></a>
+
+The independently authored [original-pair proof IH0–IH9](../isolated-holomorphic-pair-and-cluster.html#IH0) supplies the relative comparison below on the original ball and fibre for bounded weakly constructible abelian complexes and its actual arbitrary-ring coefficient comparison. The [whole-cluster proof IH10–IH22](../isolated-holomorphic-pair-and-cluster.html#IH10) supplies the controlled perturbation, actual continuation maps, reverse exit filtration, ordered orientation and every-field integer count. The [finite analytic/Samuel bridge IHA1–IHA3](../isolated-holomorphic-pair-and-cluster.html#IHA1) includes non-Cohen–Macaulay conormals. Its [exact retained floor](../isolated-holomorphic-pair-and-cluster.html#IH-PROVIDERS) keeps the broader singular-form and nonisolated alternatives distinct. The following antecedents and original formulas are retained as the original theorem route.
+
 ## SH02-IHM-IMPORTS — The exact geometric results used
 
 Massey's isolated stratified theorem, Theorem 1.1 in *A Little Microlocal Morse Theory*, version 2, pp. 3–4, supplies a small Milnor pair, a generic linear perturbation with finitely many stratified Morse points, and their counts as conormal intersection multiplicities. The discussion following that theorem separates critical values and identifies the cluster pair under perturbation. Lemmas 5.1–5.2, pp. 15–16, supply the explicit boundary exclusion needed for the radial Morse function. Every field satisfies the coefficient assumptions used here. We use the stratified-isolated case, rather than the paper's stronger theorem about isolated vanishing-cycle support. [Massey, version 2](https://arxiv.org/abs/math/0006185v2)

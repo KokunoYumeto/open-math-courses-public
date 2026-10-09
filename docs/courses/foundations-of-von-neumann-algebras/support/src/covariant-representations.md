@@ -277,9 +277,9 @@ Let \(\rho:A\to B(K)\) be nondegenerate. On \(L^2(G,K)\) put
 
 $$
 \begin{aligned}
-&\widetilde\rho(a)\xi\\
+&[\widetilde\rho(a)\xi](r)\\
 &=\rho(\alpha_{r^{-1}}(a))\xi(r),\\
-&\lambda_s\xi=\xi(s^{-1}r).
+&[\lambda_s\xi](r)=\xi(s^{-1}r).
 \end{aligned}
 \tag{C19}
 $$
@@ -290,7 +290,7 @@ Denote the integrated representation by \(T_\rho\). On compact test sections,
 
 $$
 \begin{aligned}
-&T_\rho(f)\xi\\
+&[T_\rho(f)\xi](r)\\
 &=\int\rho(\alpha_{r^{-1}}(f(s)))\\
 &\quad\xi(s^{-1}r)\,ds.
 \end{aligned}
@@ -309,7 +309,7 @@ Equation (C20) gives
 
 $$
 \begin{aligned}
-&T_\rho(f)\xi_{g,\eta}\\
+&[T_\rho(f)\xi_{g,\eta}](r)\\
 &=\rho(\alpha_{r^{-1}}((f*g)(r)))\eta.
 \end{aligned}
 \tag{C21}
@@ -353,7 +353,7 @@ $$
 
 Neither coordinate shift can be omitted or moved without changing the integrated convention. Compactly supported continuous functions on \(G\times\Omega\) map into \(C_c(G,C_0(\Omega))\). They are dense there in the L1 norm: the compact norm image of a coefficient function can be approximated uniformly by cutting off all its values outside one compact subset of \(\Omega\). Its L1 completion is therefore B, as also proved in BA Proposition 12.1, and bounded nondegenerate star representations of this compact transformation algebra extend uniquely to B and have exactly the representation correspondence proved above. Indeed, a bounded map extends to the completion, multiplication and involution persist by continuity, and approximating B elements by compact functions preserves its essential space. Conversely restriction of a contractive B-representation is bounded and has the same essential space. A claim about all algebraic representations of that uncompleted smaller algebra would require a separate boundedness hypothesis or theorem.
 
-**Three moving points.** Take \(G=\Omega=\mathbb Z/3\mathbb Z\), counting Haar measure and right addition. On \(\mathbb C^3\), let \(\rho(a)\) be diagonal multiplication and \(U_s\xi=\xi(j+s)\). For i,j modulo 3, let \(f_{ij}\) be supported at group element \(j-i\), with coefficient the indicator of point i. Direct substitution in (C27) gives
+**Three moving points.** Take \(G=\Omega=\mathbb Z/3\mathbb Z\), counting Haar measure and right addition. On \(\mathbb C^3\), let \(\rho(a)\) be diagonal multiplication and \([U_s\xi](j)=\xi(j+s)\). For i,j modulo 3, let \(f_{ij}\) be supported at group element \(j-i\), with coefficient the indicator of point i. Direct substitution in (C27) gives
 
 $$
 \begin{aligned}
@@ -366,12 +366,12 @@ $$
 
 These nine functions span B, so B is the matrix star algebra \(M_3(\mathbb C)\). The displayed integrated representation identifies B faithfully with the matrix star algebra, since it sends a basis to the nine matrix units. This checks the direction of both coordinate shifts without a completion or norm-comparison theorem. For example, the product has coefficient at point i only when its second index j equals k, and then its group support is (j-i)+(l-k)=l-i; the involution changes that support to i-j and its coefficient point from i to j. Acting on a vector gives the coordinate at i equal to its former coordinate at j, exactly E_{ij}.
 
-**A nonunital translation calculation.** For \(A=C_0(\mathbb R)\), \(G=\mathbb R\) and \(\alpha_s(a)(x)=a(x+s)\), use multiplication on \(L^2(\mathbb R)\) and \(U_s\xi=\xi(x+s)\). If \(\eta,\zeta\in C_c(\mathbb R)\), put
+**A nonunital translation calculation.** For \(A=C_0(\mathbb R)\), \(G=\mathbb R\) and \(\alpha_s(a)(x)=a(x+s)\), use multiplication on \(L^2(\mathbb R)\) and \([U_s\xi](x)=\xi(x+s)\). If \(\eta,\zeta\in C_c(\mathbb R)\), put
 \(f(s)(x)=\eta(x)\overline{\zeta(x+s)}\). This belongs to \(C_c(\mathbb R,C_0(\mathbb R))\): its group support lies in the compact difference of the two supports, and translations of \(\zeta\) are uniformly continuous. Changing \(y=x+s\) gives
 
 $$
 \begin{aligned}
-&\Pi(f)\xi\\
+&[\Pi(f)\xi](x)\\
 &=\eta(x)\int\overline{\zeta(y)}\xi(y)\,dy.
 \end{aligned}
 \tag{C30}

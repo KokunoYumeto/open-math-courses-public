@@ -1,0 +1,344 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The energy bound and the irrationality of Catalan&#x27;s constant</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents</a><a href="the-real-place-integral-formula-and-two-bounds.html">Previous lesson</a><a href="src/the-energy-bound-and-the-irrationality-of-catalans-constant.md">Editable source</a></nav><main><article><h1 id="the-energy-bound-and-the-irrationality-of-catalan-s-constant">The energy bound and the irrationality of Catalan's constant</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson finishes the proof that Catalan's constant <span class="math" data-tex="\(G\)">\(G\)</span> is irrational. The previous lesson, <a href="the-real-place-integral-formula-and-two-bounds.html">The real place: integral formula and two bounds</a>, reduced an upper bound for <span class="math" data-tex="\(\log|\Delta_N|\)">\(\log|\Delta_N|\)</span> to the supremum of an explicit function of <span class="math" data-tex="\(2n\)">\(2n\)</span> points. That function is an &quot;energy&quot;: a sum of logarithmic interactions between the points and of one-point potentials. Expanding the logarithms in Chebyshev series turns the interactions into negative sums of squares, up to the diagonal terms; completing the squares with freely chosen trial coefficients bounds the energy by a constant plus the suprema of two functions of one variable. A finite, exact certificate bounds these suprema. The result,</p>
+<span class="math math-display" data-tex="\[
+\limsup_{N\to\infty}\Bigl(\frac{\log|\Delta_N|}{n^2}-\frac12\log2\Bigr)\le-2.290939875,
+\]">\[
+\limsup_{N\to\infty}\Bigl(\frac{\log|\Delta_N|}{n^2}-\frac12\log2\Bigr)\le-2.290939875,
+\]</span>
+<p>contradicts the arithmetic lower bound <span class="math" data-tex="\(-2.29084\)">\(-2.29084\)</span> of <a href="denominators-at-the-odd-primes.html">Denominators at the odd primes</a> along the nonvanishing sequence of <a href="nonvanishing-at-prime-scales.html">Nonvanishing at prime scales</a>, if <span class="math" data-tex="\(G\)">\(G\)</span> were rational.</p>
+<p>We use the notation of the previous lesson: <span class="math" data-tex="\(\alpha=a/n=\frac{11}{48}\)">\(\alpha=a/n=\frac{11}{48}\)</span>, <span class="math" data-tex="\(\beta=b/n=\frac7{48}\)">\(\beta=b/n=\frac7{48}\)</span>, <span class="math" data-tex="\(\gamma=g/n=q/n=\frac4{48}\)">\(\gamma=g/n=q/n=\frac4{48}\)</span>, <span class="math" data-tex="\(\eta=h/n=\frac2{48}\)">\(\eta=h/n=\frac2{48}\)</span>, the majorants <span class="math" data-tex="\(\mathcal I_{\kappa,n}\)">\(\mathcal I_{\kappa,n}\)</span> and the case sets <span class="math" data-tex="\(\Omega_\kappa\)">\(\Omega_\kappa\)</span>. A basic reference is [OpenAI-Catalan]; the Chebyshev expansion of the logarithmic kernel is due to Haagerup, see [Garoufalidis–Popescu].</p>
+<h2 id="1-the-energy">1. The energy</h2>
+<p>For a function <span class="math" data-tex="\(F\)">\(F\)</span> of one variable write <span class="math" data-tex="\(\langle F(x)\rangle=\frac1n\sum_iF(x_i)\)">\(\langle F(x)\rangle=\frac1n\sum_iF(x_i)\)</span>, and similarly for the <span class="math" data-tex="\(s_j\)">\(s_j\)</span>. In a double average, <span class="math" data-tex="\(\langle K(x,x&#x27;)\rangle\)">\(\langle K(x,x&#x27;)\rangle\)</span> sums over all ordered pairs <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span> and divides by <span class="math" data-tex="\(n^2\)">\(n^2\)</span>, while <span class="math" data-tex="\(\langle K(x,x&#x27;)\rangle_{\ne}\)">\(\langle K(x,x&#x27;)\rangle_{\ne}\)</span> omits the pairs <span class="math" data-tex="\(i=j\)">\(i=j\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+W_\kappa(x)=(\alpha+2\gamma)\log|x|+2\eta\log(1-x)-\Bigl(\frac\kappa2+\alpha+\eta+\gamma\Bigr)\log(1+x^2),\qquad
+W_s(s)=\beta\log s+\gamma\log(1-s),
+\]">\[
+W_\kappa(x)=(\alpha+2\gamma)\log|x|+2\eta\log(1-x)-\Bigl(\frac\kappa2+\alpha+\eta+\gamma\Bigr)\log(1+x^2),\qquad
+W_s(s)=\beta\log s+\gamma\log(1-s),
+\]</span>
+<p>and <span class="math" data-tex="\(D(x)=2\gamma-2x^2/(1+x^2)\)">\(D(x)=2\gamma-2x^2/(1+x^2)\)</span>.</p>
+<p><strong>Lemma 1.1</strong> (the energy identity). With <span class="math" data-tex="\(t_i=2x_i/(1+x_i^2)\)">\(t_i=2x_i/(1+x_i^2)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{\log\mathcal I_{\kappa,n}}{n^2}-\frac12\log2={}&amp;c_{\kappa,n}\log2+\Bigl\langle W_\kappa(x)+\frac{\kappa+2}{2n}\log(1+x^2)\Bigr\rangle+\langle W_s(s)\rangle\\
+&amp;+\frac\kappa2\langle\log|x-x&#x27;|\rangle_{\ne}+\frac12\langle\log(1-xx&#x27;)\rangle_{\ne}+\langle\log|s-s&#x27;|\rangle_{\ne}-\langle\log(1-2xs+x^2)\rangle,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{\log\mathcal I_{\kappa,n}}{n^2}-\frac12\log2={}&amp;c_{\kappa,n}\log2+\Bigl\langle W_\kappa(x)+\frac{\kappa+2}{2n}\log(1+x^2)\Bigr\rangle+\langle W_s(s)\rangle\\
+&amp;+\frac\kappa2\langle\log|x-x&#x27;|\rangle_{\ne}+\frac12\langle\log(1-xx&#x27;)\rangle_{\ne}+\langle\log|s-s&#x27;|\rangle_{\ne}-\langle\log(1-2xs+x^2)\rangle,
+\end{aligned}
+\]</span>
+<p>where <span class="math" data-tex="\(c_{\kappa,n}=\frac Cn+\frac{\kappa-2}2-\frac{\kappa+1}{2n}\)">\(c_{\kappa,n}=\frac Cn+\frac{\kappa-2}2-\frac{\kappa+1}{2n}\)</span>.</p>
+<p><strong>Proof.</strong> Substitute</p>
+<span class="math math-display" data-tex="\[
+|t-t&#x27;|=\frac{2|x-x&#x27;|(1-xx&#x27;)}{(1+x^2)(1+x&#x27;^2)},\qquad 1-ts=\frac{1-2xs+x^2}{1+x^2},\qquad 1-t=\frac{(1-x)^2}{1+x^2},\qquad|t|=\frac{2|x|}{1+x^2}
+\]">\[
+|t-t&#x27;|=\frac{2|x-x&#x27;|(1-xx&#x27;)}{(1+x^2)(1+x&#x27;^2)},\qquad 1-ts=\frac{1-2xs+x^2}{1+x^2},\qquad 1-t=\frac{(1-x)^2}{1+x^2},\qquad|t|=\frac{2|x|}{1+x^2}
+\]</span>
+<p>into the definitions, use <span class="math" data-tex="\(\sum_{i&lt;j}=\frac12\sum_{i\ne j}\)">\(\sum_{i&lt;j}=\frac12\sum_{i\ne j}\)</span>, and <span class="math" data-tex="\(\mathcal V(1/x)=\mathcal V(x)\prod|x_i|^{-(n-1)}\)">\(\mathcal V(1/x)=\mathcal V(x)\prod|x_i|^{-(n-1)}\)</span> in case <span class="math" data-tex="\(\kappa=2\)">\(\kappa=2\)</span>. The total exponent of <span class="math" data-tex="\(|x_i|\)">\(|x_i|\)</span> is <span class="math" data-tex="\((C-1)+g-(n-1)=a+2g\)">\((C-1)+g-(n-1)=a+2g\)</span> in both cases; collecting the powers of <span class="math" data-tex="\(1+x_i^2\)">\(1+x_i^2\)</span>, of <span class="math" data-tex="\(1-x_i\)">\(1-x_i\)</span> and of <span class="math" data-tex="\(2\)">\(2\)</span> gives the stated coefficients. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The correction <span class="math" data-tex="\(\frac{\kappa+2}{2n}\log(1+x^2)\)">\(\frac{\kappa+2}{2n}\log(1+x^2)\)</span> is at most <span class="math" data-tex="\(2\log2/n\)">\(2\log2/n\)</span>.</p>
+<h2 id="2-chebyshev-expansions-of-three-kernels">2. Chebyshev expansions of three kernels</h2>
+<p><strong>Lemma 2.1.</strong> For <span class="math" data-tex="\(u=\cos\theta\)">\(u=\cos\theta\)</span>, <span class="math" data-tex="\(u&#x27;=\cos\theta&#x27;\)">\(u&#x27;=\cos\theta&#x27;\)</span> and <span class="math" data-tex="\(0\le r&lt;1\)">\(0\le r&lt;1\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+L_r(u,u&#x27;)=-\log2+\log|1-re^{i(\theta+\theta&#x27;)}|+\log|1-re^{i(\theta-\theta&#x27;)}|.
+\]">\[
+L_r(u,u&#x27;)=-\log2+\log|1-re^{i(\theta+\theta&#x27;)}|+\log|1-re^{i(\theta-\theta&#x27;)}|.
+\]</span>
+<p>Then <span class="math" data-tex="\(L_r(u,u&#x27;)=-\log2-2\sum_{k\ge1}r^kT_k(u)T_k(u&#x27;)/k\)">\(L_r(u,u&#x27;)=-\log2-2\sum_{k\ge1}r^kT_k(u)T_k(u&#x27;)/k\)</span>, and <span class="math" data-tex="\(L_r(u,u&#x27;)\to\log|u-u&#x27;|\)">\(L_r(u,u&#x27;)\to\log|u-u&#x27;|\)</span> as <span class="math" data-tex="\(r\uparrow1\)">\(r\uparrow1\)</span> when <span class="math" data-tex="\(u\ne u&#x27;\)">\(u\ne u&#x27;\)</span>. Moreover, for real <span class="math" data-tex="\(|z|,|z&#x27;|&lt;1\)">\(|z|,|z&#x27;|&lt;1\)</span> and <span class="math" data-tex="\(s\in[-1,1]\)">\(s\in[-1,1]\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\log(1-zz&#x27;)=-\sum_{k\ge1}\frac{(zz&#x27;)^k}k,\qquad-\log(1-2zs+z^2)=2\sum_{k\ge1}\frac{z^kT_k(s)}k=-\log|1-ze^{i\arccos s}|^2.
+\]">\[
+\log(1-zz&#x27;)=-\sum_{k\ge1}\frac{(zz&#x27;)^k}k,\qquad-\log(1-2zs+z^2)=2\sum_{k\ge1}\frac{z^kT_k(s)}k=-\log|1-ze^{i\arccos s}|^2.
+\]</span>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(\log|1-re^{i\phi}|=-\sum_kr^k\cos(k\phi)/k\)">\(\log|1-re^{i\phi}|=-\sum_kr^k\cos(k\phi)/k\)</span>, and <span class="math" data-tex="\(\cos k(\theta+\theta&#x27;)+\cos k(\theta-\theta&#x27;)=2\cos k\theta\cos k\theta&#x27;=2T_k(u)T_k(u&#x27;)\)">\(\cos k(\theta+\theta&#x27;)+\cos k(\theta-\theta&#x27;)=2\cos k\theta\cos k\theta&#x27;=2T_k(u)T_k(u&#x27;)\)</span>. At <span class="math" data-tex="\(r=1\)">\(r=1\)</span> the product of the two chords is <span class="math" data-tex="\(|2\sin\frac{\theta+\theta&#x27;}2|\cdot|2\sin\frac{\theta-\theta&#x27;}2|=2|u-u&#x27;|\)">\(|2\sin\frac{\theta+\theta&#x27;}2|\cdot|2\sin\frac{\theta-\theta&#x27;}2|=2|u-u&#x27;|\)</span>. The other identities are the power series of <span class="math" data-tex="\(\log(1-y)\)">\(\log(1-y)\)</span> with <span class="math" data-tex="\(y=zz&#x27;\)">\(y=zz&#x27;\)</span>, and with <span class="math" data-tex="\(y=ze^{\pm i\theta}\)">\(y=ze^{\pm i\theta}\)</span> for the last one. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-damping-squares-and-the-energy-bound">3. Damping, squares and the energy bound</h2>
+<p>The series of Lemma 2.1 cannot be used at the diagonal <span class="math" data-tex="\(x=x&#x27;\)">\(x=x&#x27;\)</span> or at the endpoints. We damp them, all appearances of the same moment by the same factor, so that the squares still complete.</p>
+<p>Fix <span class="math" data-tex="\(0&lt;\varepsilon&lt;\frac18\)">\(0&lt;\varepsilon&lt;\frac18\)</span> and put <span class="math" data-tex="\(\tau=1-\varepsilon\)">\(\tau=1-\varepsilon\)</span>, <span class="math" data-tex="\(\rho(x)=1-\varepsilon(1-x)\)">\(\rho(x)=1-\varepsilon(1-x)\)</span> and <span class="math" data-tex="\(\sigma(s)=1-\varepsilon\sqrt{1-s}\)">\(\sigma(s)=1-\varepsilon\sqrt{1-s}\)</span>, all in <span class="math" data-tex="\([1-2\varepsilon,1]\)">\([1-2\varepsilon,1]\)</span>. Replace</p>
+<ul>
+<li><span class="math" data-tex="\(\log|x-x&#x27;|\)">\(\log|x-x&#x27;|\)</span> by <span class="math" data-tex="\(L_{\tau^2}(x,x&#x27;)\)">\(L_{\tau^2}(x,x&#x27;)\)</span>, and <span class="math" data-tex="\(\log|s-s&#x27;|\)">\(\log|s-s&#x27;|\)</span> by <span class="math" data-tex="\(L_{\sigma(s)\sigma(s&#x27;)}(s,s&#x27;)\)">\(L_{\sigma(s)\sigma(s&#x27;)}(s,s&#x27;)\)</span>;</li>
+<li><span class="math" data-tex="\(\log(1-xx&#x27;)\)">\(\log(1-xx&#x27;)\)</span> by <span class="math" data-tex="\(\log\bigl(1-\rho(x)\rho(x&#x27;)xx&#x27;\bigr)\)">\(\log\bigl(1-\rho(x)\rho(x&#x27;)xx&#x27;\bigr)\)</span>;</li>
+<li><span class="math" data-tex="\(-\log|1-xe^{i\theta}|^2\)">\(-\log|1-xe^{i\theta}|^2\)</span> (with <span class="math" data-tex="\(s=\cos\theta\)">\(s=\cos\theta\)</span>) by <span class="math" data-tex="\(-\log|1-\rho(x)\sigma(s)xe^{i\theta}|^2\)">\(-\log|1-\rho(x)\sigma(s)xe^{i\theta}|^2\)</span>.</li>
+</ul>
+<p><strong>Lemma 3.1.</strong> Each original kernel is at most its replacement plus <span class="math" data-tex="\(6\varepsilon\)">\(6\varepsilon\)</span>, with an absolute bound, for every configuration.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(|\zeta|=1\)">\(|\zeta|=1\)</span> and <span class="math" data-tex="\(0&lt;r\le1\)">\(0&lt;r\le1\)</span>, <span class="math" data-tex="\(|1-r\zeta|^2-r|1-\zeta|^2=(1-r)^2\ge0\)">\(|1-r\zeta|^2-r|1-\zeta|^2=(1-r)^2\ge0\)</span>; so a cosine kernel exceeds its damped version by at most <span class="math" data-tex="\(-\log r\le-2\log(1-\varepsilon)\le3\varepsilon\)">\(-\log r\le-2\log(1-\varepsilon)\le3\varepsilon\)</span>. For the power kernel with <span class="math" data-tex="\(u=xx&#x27;\)">\(u=xx&#x27;\)</span> and <span class="math" data-tex="\(r=\rho(x)\rho(x&#x27;)\)">\(r=\rho(x)\rho(x&#x27;)\)</span>: if <span class="math" data-tex="\(u\ge0\)">\(u\ge0\)</span>, then <span class="math" data-tex="\(\log(1-u)\le\log(1-ru)\)">\(\log(1-u)\le\log(1-ru)\)</span>; if <span class="math" data-tex="\(u=-q&lt;0\)">\(u=-q&lt;0\)</span>, then <span class="math" data-tex="\(\log(1+q)-\log(1+rq)\le(1-r)q/(1+rq)\le1-r\le4\varepsilon\)">\(\log(1+q)-\log(1+rq)\le(1-r)q/(1+rq)\le1-r\le4\varepsilon\)</span>. For the cross kernel put <span class="math" data-tex="\(a=1-x\)">\(a=1-x\)</span>, <span class="math" data-tex="\(b=\sqrt{1-s}\)">\(b=\sqrt{1-s}\)</span>, <span class="math" data-tex="\(z=1-xe^{i\theta}\)">\(z=1-xe^{i\theta}\)</span> and <span class="math" data-tex="\(z_\varepsilon=1-\rho\sigma xe^{i\theta}\)">\(z_\varepsilon=1-\rho\sigma xe^{i\theta}\)</span>; then <span class="math" data-tex="\(|z_\varepsilon-z|\le|x|(1-\rho\sigma)\le\varepsilon|x|(a+b)\)">\(|z_\varepsilon-z|\le|x|(1-\rho\sigma)\le\varepsilon|x|(a+b)\)</span>. For <span class="math" data-tex="\(x\le0\)">\(x\le0\)</span>, <span class="math" data-tex="\(|z|\ge\operatorname{Re}z\ge1\)">\(|z|\ge\operatorname{Re}z\ge1\)</span> (as <span class="math" data-tex="\(\cos\theta=s&gt;0\)">\(\cos\theta=s&gt;0\)</span>) and <span class="math" data-tex="\(|x|(a+b)\le3\)">\(|x|(a+b)\le3\)</span>; for <span class="math" data-tex="\(0\le x\le\frac12\)">\(0\le x\le\frac12\)</span>, <span class="math" data-tex="\(|z|\ge\frac12\)">\(|z|\ge\frac12\)</span> and <span class="math" data-tex="\(|x|(a+b)\le1\)">\(|x|(a+b)\le1\)</span>; for <span class="math" data-tex="\(\frac12\le x&lt;1\)">\(\frac12\le x&lt;1\)</span>, <span class="math" data-tex="\(|z|^2=a^2+2xb^2\ge a^2+b^2\)">\(|z|^2=a^2+2xb^2\ge a^2+b^2\)</span> and <span class="math" data-tex="\(|x|(a+b)\le\sqrt2|z|\)">\(|x|(a+b)\le\sqrt2|z|\)</span>. In all cases <span class="math" data-tex="\(|z_\varepsilon-z|\le3\varepsilon|z|\)">\(|z_\varepsilon-z|\le3\varepsilon|z|\)</span>, so <span class="math" data-tex="\(-\log|z|^2\le-\log|z_\varepsilon|^2+2\log(1+3\varepsilon)\le-\log|z_\varepsilon|^2+6\varepsilon\)">\(-\log|z|^2\le-\log|z_\varepsilon|^2+2\log(1+3\varepsilon)\le-\log|z_\varepsilon|^2+6\varepsilon\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a real sequence <span class="math" data-tex="\(u=(u_k)_{k\ge1}\)">\(u=(u_k)_{k\ge1}\)</span> with <span class="math" data-tex="\(|u_k|\le Kr^k\)">\(|u_k|\le Kr^k\)</span> for some <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(r&lt;1\)">\(r&lt;1\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\|u\|_*^2=\sum_k\frac{u_k^2}k,\qquad T(u,x)=\sum_k\frac{u_kT_k(x)}k,\qquad S(u,x)=\sum_k\frac{u_kx^k}k,
+\]">\[
+\|u\|_*^2=\sum_k\frac{u_k^2}k,\qquad T(u,x)=\sum_k\frac{u_kT_k(x)}k,\qquad S(u,x)=\sum_k\frac{u_kx^k}k,
+\]</span>
+<p>uniformly convergent on <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>.</p>
+<p><strong>Proposition 3.2</strong> (energy reduction). Let <span class="math" data-tex="\(p,v\)">\(p,v\)</span> be two such sequences, and <span class="math" data-tex="\(\lambda=0\)">\(\lambda=0\)</span> if <span class="math" data-tex="\(\kappa=2\)">\(\kappa=2\)</span>, <span class="math" data-tex="\(\lambda\ge0\)">\(\lambda\ge0\)</span> if <span class="math" data-tex="\(\kappa=1\)">\(\kappa=1\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\limsup_{N\to\infty}\sup_{\Omega_\kappa}\Bigl(\frac{\log\mathcal I_{\kappa,n}}{n^2}-\frac12\log2\Bigr)\le{}&amp;(-1+\alpha+\gamma)\log2+\kappa\|p\|_*^2+\frac12\|v\|_*^2\\
+&amp;+\sup_{-1\le x&lt;1,\ x\ne0}\bigl\{W_\kappa(x)+\lambda D(x)-2\kappa T(p,x)-S(v,x)\bigr\}+\sup_{0&lt;s&lt;1}\bigl\{W_s(s)+2T(v,s)\bigr\}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\limsup_{N\to\infty}\sup_{\Omega_\kappa}\Bigl(\frac{\log\mathcal I_{\kappa,n}}{n^2}-\frac12\log2\Bigr)\le{}&amp;(-1+\alpha+\gamma)\log2+\kappa\|p\|_*^2+\frac12\|v\|_*^2\\
+&amp;+\sup_{-1\le x&lt;1,\ x\ne0}\bigl\{W_\kappa(x)+\lambda D(x)-2\kappa T(p,x)-S(v,x)\bigr\}+\sup_{0&lt;s&lt;1}\bigl\{W_s(s)+2T(v,s)\bigr\}.
+\end{aligned}
+\]</span>
+<p><strong>Proof.</strong> <em>Squares.</em> Put <span class="math" data-tex="\(A_k=\langle\tau^kT_k(x)\rangle\)">\(A_k=\langle\tau^kT_k(x)\rangle\)</span>, <span class="math" data-tex="\(B_k=\langle\rho(x)^kx^k\rangle\)">\(B_k=\langle\rho(x)^kx^k\rangle\)</span>, <span class="math" data-tex="\(C_k=\langle\sigma(s)^kT_k(s)\rangle\)">\(C_k=\langle\sigma(s)^kT_k(s)\rangle\)</span>. For a fixed interior configuration all damped series converge absolutely, and averaging Lemma 2.1 over all pairs, diagonals included, gives</p>
+<span class="math math-display" data-tex="\[
+\frac\kappa2\langle L_{\tau^2}(x,x&#x27;)\rangle=-\frac\kappa2\log2-\kappa\sum_k\frac{A_k^2}k,
+\]">\[
+\frac\kappa2\langle L_{\tau^2}(x,x&#x27;)\rangle=-\frac\kappa2\log2-\kappa\sum_k\frac{A_k^2}k,
+\]</span>
+<span class="math math-display" data-tex="\[
+\frac12\langle\log(1-\rho\rho&#x27;xx&#x27;)\rangle+\langle L_{\sigma\sigma&#x27;}(s,s&#x27;)\rangle-\langle\log|1-\rho\sigma xe^{i\theta}|^2\rangle=-\log2-\frac12\sum_k\frac{(B_k-2C_k)^2}k.
+\]">\[
+\frac12\langle\log(1-\rho\rho&#x27;xx&#x27;)\rangle+\langle L_{\sigma\sigma&#x27;}(s,s&#x27;)\rangle-\langle\log|1-\rho\sigma xe^{i\theta}|^2\rangle=-\log2-\frac12\sum_k\frac{(B_k-2C_k)^2}k.
+\]</span>
+<p>The same <span class="math" data-tex="\(B_k\)">\(B_k\)</span> and <span class="math" data-tex="\(C_k\)">\(C_k\)</span> appear in the pure and the cross terms, which is why the cross term completes the square.</p>
+<p><em>Diagonals.</em> The energy uses <span class="math" data-tex="\(\langle\cdot\rangle_{\ne}\)">\(\langle\cdot\rangle_{\ne}\)</span>, which differs from the full average by <span class="math" data-tex="\(-\frac1n\)">\(-\frac1n\)</span> times the average of the diagonal values. A damped cosine diagonal is at least <span class="math" data-tex="\(-\log2+2\log(1-r)\)">\(-\log2+2\log(1-r)\)</span>, a constant depending on <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. For the power diagonal, <span class="math" data-tex="\(1-\rho^2x^2\ge1-x\)">\(1-\rho^2x^2\ge1-x\)</span> for <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span> and <span class="math" data-tex="\(\ge1-(1-\varepsilon)^2\ge\varepsilon\)">\(\ge1-(1-\varepsilon)^2\ge\varepsilon\)</span> for <span class="math" data-tex="\(x\le0\)">\(x\le0\)</span>. For the <span class="math" data-tex="\(s\)">\(s\)</span> diagonal, <span class="math" data-tex="\(1-\sigma^2\ge\varepsilon\sqrt{1-s}\)">\(1-\sigma^2\ge\varepsilon\sqrt{1-s}\)</span>. Hence the omitted diagonals cost at most <span class="math" data-tex="\(O_\varepsilon(1/n)-\frac1{2n}\langle\log(1-x)\rangle-\frac1n\langle\log(1-s)\rangle\)">\(O_\varepsilon(1/n)-\frac1{2n}\langle\log(1-x)\rangle-\frac1n\langle\log(1-s)\rangle\)</span>.</p>
+<p><em>Completing squares.</em> The inequality <span class="math" data-tex="\(-a^2\le b^2-2ab\)">\(-a^2\le b^2-2ab\)</span> with <span class="math" data-tex="\(b=p_k\)">\(b=p_k\)</span>, respectively <span class="math" data-tex="\(b=v_k\)">\(b=v_k\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+-\kappa\sum_k\frac{A_k^2}k\le\kappa\|p\|_*^2-2\kappa\langle T_\varepsilon(p,x)\rangle,\qquad
+-\frac12\sum_k\frac{(B_k-2C_k)^2}k\le\frac12\|v\|_*^2-\langle S_\varepsilon(v,x)\rangle+2\langle T_\varepsilon(v,s)\rangle,
+\]">\[
+-\kappa\sum_k\frac{A_k^2}k\le\kappa\|p\|_*^2-2\kappa\langle T_\varepsilon(p,x)\rangle,\qquad
+-\frac12\sum_k\frac{(B_k-2C_k)^2}k\le\frac12\|v\|_*^2-\langle S_\varepsilon(v,x)\rangle+2\langle T_\varepsilon(v,s)\rangle,
+\]</span>
+<p>where <span class="math" data-tex="\(T_\varepsilon(p,x)\)">\(T_\varepsilon(p,x)\)</span>, <span class="math" data-tex="\(S_\varepsilon(v,x)\)">\(S_\varepsilon(v,x)\)</span> and <span class="math" data-tex="\(T_\varepsilon(v,s)\)">\(T_\varepsilon(v,s)\)</span> are the series with the extra factors <span class="math" data-tex="\(\tau^k\)">\(\tau^k\)</span>, <span class="math" data-tex="\(\rho(x)^k\)">\(\rho(x)^k\)</span> and <span class="math" data-tex="\(\sigma(s)^k\)">\(\sigma(s)^k\)</span>.</p>
+<p><em>The multiplier.</em> In case <span class="math" data-tex="\(\kappa=1\)">\(\kappa=1\)</span>, (3.1) of the previous lesson fails: <span class="math" data-tex="\(\sum_i(1-x_i^2)/(1+x_i^2)&gt;n-1-2g\)">\(\sum_i(1-x_i^2)/(1+x_i^2)&gt;n-1-2g\)</span>, that is <span class="math" data-tex="\(\langle D(x)\rangle&gt;-1/n\)">\(\langle D(x)\rangle&gt;-1/n\)</span>. So adding <span class="math" data-tex="\(\lambda\langle D(x)\rangle\)">\(\lambda\langle D(x)\rangle\)</span> with <span class="math" data-tex="\(\lambda\ge0\)">\(\lambda\ge0\)</span> costs at most <span class="math" data-tex="\(\lambda/n\)">\(\lambda/n\)</span>.</p>
+<p><em>Assembly.</em> By Lemma 1.1 and the steps above, the quantity on the left, for a configuration in <span class="math" data-tex="\(\Omega_\kappa\)">\(\Omega_\kappa\)</span>, is at most <span class="math" data-tex="\(\bigl(-1+\alpha+\gamma-\frac{\kappa+1}{2n}\bigr)\log2+\kappa\|p\|_*^2+\frac12\|v\|_*^2+\langle X_{n,\varepsilon}(x)\rangle+\langle Y_{n,\varepsilon}(s)\rangle+O(\varepsilon)+O_\varepsilon(1/n)\)">\(\bigl(-1+\alpha+\gamma-\frac{\kappa+1}{2n}\bigr)\log2+\kappa\|p\|_*^2+\frac12\|v\|_*^2+\langle X_{n,\varepsilon}(x)\rangle+\langle Y_{n,\varepsilon}(s)\rangle+O(\varepsilon)+O_\varepsilon(1/n)\)</span>, where</p>
+<span class="math math-display" data-tex="\[
+X_{n,\varepsilon}(x)=W_\kappa(x)-\frac1{2n}\log(1-x)+\lambda D(x)-2\kappa T_\varepsilon(p,x)-S_\varepsilon(v,x),\qquad
+Y_{n,\varepsilon}(s)=W_s(s)-\frac1n\log(1-s)+2T_\varepsilon(v,s);
+\]">\[
+X_{n,\varepsilon}(x)=W_\kappa(x)-\frac1{2n}\log(1-x)+\lambda D(x)-2\kappa T_\varepsilon(p,x)-S_\varepsilon(v,x),\qquad
+Y_{n,\varepsilon}(s)=W_s(s)-\frac1n\log(1-s)+2T_\varepsilon(v,s);
+\]</span>
+<p>here <span class="math" data-tex="\(C/n=1+\alpha+\gamma\)">\(C/n=1+\alpha+\gamma\)</span> was used for the constant. Averages are at most suprema. Since <span class="math" data-tex="\(1-(1-d)^k\le kd\)">\(1-(1-d)^k\le kd\)</span>, we have <span class="math" data-tex="\(|T_\varepsilon(p,x)-T(p,x)|\le\varepsilon\sum_k|p_k|\)">\(|T_\varepsilon(p,x)-T(p,x)|\le\varepsilon\sum_k|p_k|\)</span>, <span class="math" data-tex="\(|S_\varepsilon(v,x)-S(v,x)|\le2\varepsilon\sum_k|v_k|\)">\(|S_\varepsilon(v,x)-S(v,x)|\le2\varepsilon\sum_k|v_k|\)</span> and <span class="math" data-tex="\(|T_\varepsilon(v,s)-T(v,s)|\le\varepsilon\sum_k|v_k|\)">\(|T_\varepsilon(v,s)-T(v,s)|\le\varepsilon\sum_k|v_k|\)</span>, uniformly. The coefficients of <span class="math" data-tex="\(\log|x|\)">\(\log|x|\)</span>, <span class="math" data-tex="\(\log s\)">\(\log s\)</span> are fixed, and those of <span class="math" data-tex="\(\log(1-x)\)">\(\log(1-x)\)</span>, <span class="math" data-tex="\(\log(1-s)\)">\(\log(1-s)\)</span> are at least <span class="math" data-tex="\(\frac1{24}\)">\(\frac1{24}\)</span> for <span class="math" data-tex="\(n\ge24\)">\(n\ge24\)</span>; so both functions tend to <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span> at the singular endpoints uniformly in <span class="math" data-tex="\(n\ge24\)">\(n\ge24\)</span> and small <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, while their values at <span class="math" data-tex="\(x=-\frac12\)">\(x=-\frac12\)</span>, <span class="math" data-tex="\(s=\frac12\)">\(s=\frac12\)</span> are bounded below uniformly. Their suprema are therefore attained in compact sets independent of <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, on which the functions converge uniformly as <span class="math" data-tex="\(n\to\infty\)">\(n\to\infty\)</span> (with <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> fixed), and then as <span class="math" data-tex="\(\varepsilon\to0\)">\(\varepsilon\to0\)</span>. Taking the limits in this order proves the proposition. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Together with Proposition 6.1 of the previous lesson, the maximum over <span class="math" data-tex="\(\kappa\in\{1,2\}\)">\(\kappa\in\{1,2\}\)</span> of the right sides bounds <span class="math" data-tex="\(\limsup_N\bigl(\frac{\log|\Delta_N|}{n^2}-\frac12\log2\bigr)\)">\(\limsup_N\bigl(\frac{\log|\Delta_N|}{n^2}-\frac12\log2\bigr)\)</span>.</p>
+<h2 id="4-the-certificate">4. The certificate</h2>
+<p><strong>Trial sequences.</strong> Each trial sequence has the form <span class="math" data-tex="\(u_k=l_k+\sum_zr_zz^k\)">\(u_k=l_k+\sum_zr_zz^k\)</span>, with finitely many <span class="math" data-tex="\(l_k\)">\(l_k\)</span> (<span class="math" data-tex="\(l_k=0\)">\(l_k=0\)</span> for <span class="math" data-tex="\(k&gt;d\)">\(k&gt;d\)</span>) and finitely many bases <span class="math" data-tex="\(z\)">\(z\)</span> of modulus less than <span class="math" data-tex="\(1\)">\(1\)</span>. All integers below are to be multiplied by <span class="math" data-tex="\(10^{-8}\)">\(10^{-8}\)</span>.</p>
+<p>For <span class="math" data-tex="\(\kappa=2\)">\(\kappa=2\)</span>: <span class="math" data-tex="\(d=10\)">\(d=10\)</span>, <span class="math" data-tex="\(\lambda=0\)">\(\lambda=0\)</span>, and</p>
+<ul>
+<li><span class="math" data-tex="\(p\)">\(p\)</span>: <span class="math" data-tex="\(l_1,\dots,l_{10}=45559127,\ -50750856,\ -6578767,\ 13970217,\ 4786184,\ -4292433,\ -576704,\ 1311615,\ 671564,\ -346453\)">\(l_1,\dots,l_{10}=45559127,\ -50750856,\ -6578767,\ 13970217,\ 4786184,\ -4292433,\ -576704,\ 1311615,\ 671564,\ -346453\)</span>;</li>
+<li><span class="math" data-tex="\(v\)">\(v\)</span>: <span class="math" data-tex="\(l_1,\dots,l_{10}=-23910158,\ 21152432,\ -2885110,\ -11558199,\ 6485289,\ 1456821,\ -1912176,\ -2263524,\ 2742210,\ -1162454\)">\(l_1,\dots,l_{10}=-23910158,\ 21152432,\ -2885110,\ -11558199,\ 6485289,\ 1456821,\ -1912176,\ -2263524,\ 2742210,\ -1162454\)</span>.</li>
+</ul>
+<p>For <span class="math" data-tex="\(\kappa=1\)">\(\kappa=1\)</span>: <span class="math" data-tex="\(d=8\)">\(d=8\)</span>, <span class="math" data-tex="\(\lambda=2.47405979\)">\(\lambda=2.47405979\)</span>, no exponential terms, and</p>
+<ul>
+<li><span class="math" data-tex="\(p\)">\(p\)</span>: <span class="math" data-tex="\(11913521,\ -79993701,\ -21956443,\ 37903579,\ 10744022,\ -2073193,\ 570246,\ -24939103\)">\(11913521,\ -79993701,\ -21956443,\ 37903579,\ 10744022,\ -2073193,\ 570246,\ -24939103\)</span>;</li>
+<li><span class="math" data-tex="\(v\)">\(v\)</span>: <span class="math" data-tex="\(-89913025,\ 52874280,\ 45168341,\ -30708629,\ -19269841,\ 33922112,\ 9819141,\ -16992389\)">\(-89913025,\ 52874280,\ 45168341,\ -30708629,\ -19269841,\ 33922112,\ 9819141,\ -16992389\)</span>.</li>
+</ul>
+<p>The exponential terms for <span class="math" data-tex="\(\kappa=2\)">\(\kappa=2\)</span> are listed as a base <span class="math" data-tex="\(z\)">\(z\)</span> with a coefficient <span class="math" data-tex="\(a\)">\(a\)</span> (real base, term <span class="math" data-tex="\(az^k\)">\(az^k\)</span>) or a pair <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> (non-real base, term <span class="math" data-tex="\(a\operatorname{Re}z^k+b\operatorname{Im}z^k\)">\(a\operatorname{Re}z^k+b\operatorname{Im}z^k\)</span>, that is <span class="math" data-tex="\(r_z=(a-ib)/2\)">\(r_z=(a-ib)/2\)</span> together with the conjugate base):</p>
+<table>
+<thead>
+<tr>
+<th>sequence</th>
+<th>base</th>
+<th>coefficient(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(p\)">\(p\)</span></td>
+<td><span class="math" data-tex="\(0.85\)">\(0.85\)</span></td>
+<td><span class="math" data-tex="\(-9338452\)">\(-9338452\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(p\)">\(p\)</span></td>
+<td><span class="math" data-tex="\(0.94\)">\(0.94\)</span></td>
+<td><span class="math" data-tex="\(-2141509\)">\(-2141509\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(p\)">\(p\)</span></td>
+<td><span class="math" data-tex="\(0.7i\)">\(0.7i\)</span></td>
+<td><span class="math" data-tex="\(-66277922,\ -31907569\)">\(-66277922,\ -31907569\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(p\)">\(p\)</span></td>
+<td><span class="math" data-tex="\(0.85i\)">\(0.85i\)</span></td>
+<td><span class="math" data-tex="\(-1231651,\ 6002645\)">\(-1231651,\ 6002645\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(p\)">\(p\)</span></td>
+<td><span class="math" data-tex="\(0.092+0.92i\)">\(0.092+0.92i\)</span></td>
+<td><span class="math" data-tex="\(-3225918,\ 8928234\)">\(-3225918,\ 8928234\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(p\)">\(p\)</span></td>
+<td><span class="math" data-tex="\(-0.092+0.92i\)">\(-0.092+0.92i\)</span></td>
+<td><span class="math" data-tex="\(-2105536,\ -9091287\)">\(-2105536,\ -9091287\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(v\)">\(v\)</span></td>
+<td><span class="math" data-tex="\(-0.8\)">\(-0.8\)</span></td>
+<td><span class="math" data-tex="\(15199211\)">\(15199211\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(v\)">\(v\)</span></td>
+<td><span class="math" data-tex="\(-0.96\)">\(-0.96\)</span></td>
+<td><span class="math" data-tex="\(4451662\)">\(4451662\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(v\)">\(v\)</span></td>
+<td><span class="math" data-tex="\(0.88\)">\(0.88\)</span></td>
+<td><span class="math" data-tex="\(2545398\)">\(2545398\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(v\)">\(v\)</span></td>
+<td><span class="math" data-tex="\(0.95\)">\(0.95\)</span></td>
+<td><span class="math" data-tex="\(-4932634\)">\(-4932634\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(v\)">\(v\)</span></td>
+<td><span class="math" data-tex="\(0.984\)">\(0.984\)</span></td>
+<td><span class="math" data-tex="\(11618157\)">\(11618157\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(v\)">\(v\)</span></td>
+<td><span class="math" data-tex="\(0.78i\)">\(0.78i\)</span></td>
+<td><span class="math" data-tex="\(27238714,\ -38447936\)">\(27238714,\ -38447936\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(v\)">\(v\)</span></td>
+<td><span class="math" data-tex="\(0.9i\)">\(0.9i\)</span></td>
+<td><span class="math" data-tex="\(-31341084,\ -30188786\)">\(-31341084,\ -30188786\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(v\)">\(v\)</span></td>
+<td><span class="math" data-tex="\(0.955i\)">\(0.955i\)</span></td>
+<td><span class="math" data-tex="\(-6693542,\ 11912254\)">\(-6693542,\ 11912254\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(v\)">\(v\)</span></td>
+<td><span class="math" data-tex="\(0.984i\)">\(0.984i\)</span></td>
+<td><span class="math" data-tex="\(2055213,\ -21715849\)">\(2055213,\ -21715849\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Counting conjugates, <span class="math" data-tex="\(p\)">\(p\)</span> has <span class="math" data-tex="\(10\)">\(10\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span> has <span class="math" data-tex="\(13\)">\(13\)</span> bases, of moduli at most <span class="math" data-tex="\(0.94\)">\(0.94\)</span> and <span class="math" data-tex="\(0.984\)">\(0.984\)</span>; all <span class="math" data-tex="\(|l_k|\)">\(|l_k|\)</span> and <span class="math" data-tex="\(|r_z|\)">\(|r_z|\)</span> are below <span class="math" data-tex="\(1\)">\(1\)</span>. The series of Section 3 become finite formulas with principal logarithms, all real by conjugation:</p>
+<span class="math math-display" data-tex="\[
+\|u\|_*^2=\sum_{k\le d}\frac{l_k^2+2l_k\sum_zr_zz^k}k-\sum_{z,z&#x27;}r_zr_{z&#x27;}\operatorname{Log}(1-zz&#x27;),\quad
+T(u,x)=\sum_{k\le d}\frac{l_kT_k(x)}k-\frac12\sum_zr_z\operatorname{Log}(1-2xz+z^2),\quad
+S(u,x)=\sum_{k\le d}\frac{l_kx^k}k-\sum_zr_z\operatorname{Log}(1-xz).
+\]">\[
+\|u\|_*^2=\sum_{k\le d}\frac{l_k^2+2l_k\sum_zr_zz^k}k-\sum_{z,z&#x27;}r_zr_{z&#x27;}\operatorname{Log}(1-zz&#x27;),\quad
+T(u,x)=\sum_{k\le d}\frac{l_kT_k(x)}k-\frac12\sum_zr_z\operatorname{Log}(1-2xz+z^2),\quad
+S(u,x)=\sum_{k\le d}\frac{l_kx^k}k-\sum_zr_z\operatorname{Log}(1-xz).
+\]</span>
+<p>For <span class="math" data-tex="\(x=\cos\theta\)">\(x=\cos\theta\)</span>, <span class="math" data-tex="\(1-2xz+z^2=(1-ze^{i\theta})(1-ze^{-i\theta})\)">\(1-2xz+z^2=(1-ze^{i\theta})(1-ze^{-i\theta})\)</span> with both factors in the right half-plane, so the principal logarithm of the product is the sum of the logarithms.</p>
+<p><strong>The two functions.</strong> Put <span class="math" data-tex="\(X_\kappa(x)=W_\kappa(x)+\lambda D(x)-2\kappa T(p,x)-S(v,x)\)">\(X_\kappa(x)=W_\kappa(x)+\lambda D(x)-2\kappa T(p,x)-S(v,x)\)</span> on <span class="math" data-tex="\([-1,1)\setminus\{0\}\)">\([-1,1)\setminus\{0\}\)</span> and <span class="math" data-tex="\(Y_\kappa(x)=\beta\log x+\gamma\log(1-x)+2T(v,x)\)">\(Y_\kappa(x)=\beta\log x+\gamma\log(1-x)+2T(v,x)\)</span> on <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>. Their derivatives are</p>
+<span class="math math-display" data-tex="\[
+X_\kappa&#x27;=\frac{\alpha+2\gamma}x-\frac{2\eta}{1-x}-(\kappa+2\alpha+2\eta+2\gamma)\frac x{1+x^2}-\frac{4\lambda x}{(1+x^2)^2}-2\kappa\,t_p(x)-h_v(x),\qquad Y_\kappa&#x27;=\frac\beta x-\frac\gamma{1-x}+2t_v(x),
+\]">\[
+X_\kappa&#x27;=\frac{\alpha+2\gamma}x-\frac{2\eta}{1-x}-(\kappa+2\alpha+2\eta+2\gamma)\frac x{1+x^2}-\frac{4\lambda x}{(1+x^2)^2}-2\kappa\,t_p(x)-h_v(x),\qquad Y_\kappa&#x27;=\frac\beta x-\frac\gamma{1-x}+2t_v(x),
+\]</span>
+<p>with <span class="math" data-tex="\(t_u(x)=\sum_kl_kU_{k-1}(x)+\sum_zr_zz/(1-2xz+z^2)\)">\(t_u(x)=\sum_kl_kU_{k-1}(x)+\sum_zr_zz/(1-2xz+z^2)\)</span> and <span class="math" data-tex="\(h_u(x)=\sum_kl_kx^{k-1}+\sum_zr_zz/(1-xz)\)">\(h_u(x)=\sum_kl_kx^{k-1}+\sum_zr_zz/(1-xz)\)</span>. Multiplying by</p>
+<span class="math math-display" data-tex="\[
+Q_X=x(1-x)(1+x^2)^{3-\kappa}\prod_{z\in p}(1-2xz+z^2)\prod_{z\in v}(1-xz),\qquad Q_Y=x(1-x)\prod_{z\in v}(1-2xz+z^2)
+\]">\[
+Q_X=x(1-x)(1+x^2)^{3-\kappa}\prod_{z\in p}(1-2xz+z^2)\prod_{z\in v}(1-xz),\qquad Q_Y=x(1-x)\prod_{z\in v}(1-2xz+z^2)
+\]</span>
+<p>gives polynomials <span class="math" data-tex="\(A_X=Q_XX_\kappa&#x27;\)">\(A_X=Q_XX_\kappa&#x27;\)</span> and <span class="math" data-tex="\(A_Y=Q_YY_\kappa&#x27;\)">\(A_Y=Q_YY_\kappa&#x27;\)</span> with rational coefficients, of degrees <span class="math" data-tex="\(36,24\)">\(36,24\)</span> for <span class="math" data-tex="\(\kappa=2\)">\(\kappa=2\)</span> and <span class="math" data-tex="\(13,9\)">\(13,9\)</span> for <span class="math" data-tex="\(\kappa=1\)">\(\kappa=1\)</span>. The factors <span class="math" data-tex="\(1-xz\)">\(1-xz\)</span> and <span class="math" data-tex="\(1-2xz+z^2\)">\(1-2xz+z^2\)</span> do not vanish for real <span class="math" data-tex="\(|x|\le1\)">\(|x|\le1\)</span> (their moduli are at least <span class="math" data-tex="\(1-|z|\)">\(1-|z|\)</span> and <span class="math" data-tex="\((1-|z|)^2\)">\((1-|z|)^2\)</span>), conjugate factors have positive products, and so <span class="math" data-tex="\(Q_X\)">\(Q_X\)</span> has the sign of <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(Q_Y&gt;0\)">\(Q_Y&gt;0\)</span> on the domains. The stationary points of <span class="math" data-tex="\(X_\kappa\)">\(X_\kappa\)</span> and <span class="math" data-tex="\(Y_\kappa\)">\(Y_\kappa\)</span> are exactly the roots of <span class="math" data-tex="\(A_X\)">\(A_X\)</span>, <span class="math" data-tex="\(A_Y\)">\(A_Y\)</span> in the domains.</p>
+<p><strong>Lemma 4.1</strong> (Descartes' rule of signs). The number of positive roots of a nonzero real polynomial, counted with multiplicity, is at most the number of sign changes in its sequence of nonzero coefficients.</p>
+<p><strong>Proof.</strong> We may assume <span class="math" data-tex="\(p(0)\ne0\)">\(p(0)\ne0\)</span>. If <span class="math" data-tex="\(p(r)=0\)">\(p(r)=0\)</span> with <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, write <span class="math" data-tex="\(p=(t-r)q\)">\(p=(t-r)q\)</span>; rescaling <span class="math" data-tex="\(t\)">\(t\)</span> we may take <span class="math" data-tex="\(r=1\)">\(r=1\)</span>. With <span class="math" data-tex="\(q=\sum_{h=0}^dq_ht^h\)">\(q=\sum_{h=0}^dq_ht^h\)</span> and <span class="math" data-tex="\(p=\sum p_ht^h\)">\(p=\sum p_ht^h\)</span>, the partial sums satisfy <span class="math" data-tex="\(\sum_{j\le h}p_j=-q_h\)">\(\sum_{j\le h}p_j=-q_h\)</span> for <span class="math" data-tex="\(h\le d\)">\(h\le d\)</span>, and <span class="math" data-tex="\(p_{d+1}=q_d\)">\(p_{d+1}=q_d\)</span>. Starting with <span class="math" data-tex="\(p_0=-q_0\)">\(p_0=-q_0\)</span>, at each sign change of the nonzero <span class="math" data-tex="\(q_h\)">\(q_h\)</span>, between indices <span class="math" data-tex="\(h_1&lt;h_2\)">\(h_1&lt;h_2\)</span>, the partial sums move from <span class="math" data-tex="\(-q_{h_1}\)">\(-q_{h_1}\)</span> to <span class="math" data-tex="\(-q_{h_2}\)">\(-q_{h_2}\)</span>, so some <span class="math" data-tex="\(p_j\)">\(p_j\)</span> with <span class="math" data-tex="\(h_1&lt;j\le h_2\)">\(h_1&lt;j\le h_2\)</span> has the sign of <span class="math" data-tex="\(-q_{h_2}\)">\(-q_{h_2}\)</span>. These choices form a subsequence of the <span class="math" data-tex="\(p_j\)">\(p_j\)</span> with as many sign changes as <span class="math" data-tex="\(q\)">\(q\)</span>, ending with the sign of <span class="math" data-tex="\(-q_d\)">\(-q_d\)</span>; the last coefficient <span class="math" data-tex="\(p_{d+1}=q_d\)">\(p_{d+1}=q_d\)</span> adds one more. So <span class="math" data-tex="\(p\)">\(p\)</span> has more sign changes than <span class="math" data-tex="\(q\)">\(q\)</span>, and induction on the number of positive roots proves the lemma. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>To count roots of a polynomial <span class="math" data-tex="\(A\)">\(A\)</span> of degree <span class="math" data-tex="\(d_0\)">\(d_0\)</span> in an interval <span class="math" data-tex="\((b,c)\)">\((b,c)\)</span>, apply the lemma to <span class="math" data-tex="\((1+t)^{d_0}A\bigl(\frac{b+ct}{1+t}\bigr)\)">\((1+t)^{d_0}A\bigl(\frac{b+ct}{1+t}\bigr)\)</span>; the substitution maps <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> bijectively and increasingly onto <span class="math" data-tex="\((b,c)\)">\((b,c)\)</span> and preserves multiplicities.</p>
+<p><strong>Proposition 4.2</strong> (the root certificate). With the division points below, the numbers of sign changes on consecutive intervals are:</p>
+<table>
+<thead>
+<tr>
+<th>case</th>
+<th>function</th>
+<th>division points</th>
+<th>sign changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(\kappa=2\)">\(\kappa=2\)</span></td>
+<td><span class="math" data-tex="\(X\)">\(X\)</span></td>
+<td><span class="math" data-tex="\(-1,0,1\)">\(-1,0,1\)</span></td>
+<td><span class="math" data-tex="\(9,\ 9\)">\(9,\ 9\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\kappa=2\)">\(\kappa=2\)</span></td>
+<td><span class="math" data-tex="\(Y\)">\(Y\)</span></td>
+<td><span class="math" data-tex="\(0,\frac14,\frac12,\frac34,1\)">\(0,\frac14,\frac12,\frac34,1\)</span></td>
+<td><span class="math" data-tex="\(5,\ 2,\ 2,\ 6\)">\(5,\ 2,\ 2,\ 6\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\kappa=1\)">\(\kappa=1\)</span></td>
+<td><span class="math" data-tex="\(X\)">\(X\)</span></td>
+<td><span class="math" data-tex="\(-1,-\frac12,0,\frac12,1\)">\(-1,-\frac12,0,\frac12,1\)</span></td>
+<td><span class="math" data-tex="\(1,\ 1,\ 2,\ 1\)">\(1,\ 1,\ 2,\ 1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\kappa=1\)">\(\kappa=1\)</span></td>
+<td><span class="math" data-tex="\(Y\)">\(Y\)</span></td>
+<td><span class="math" data-tex="\(0,1\)">\(0,1\)</span></td>
+<td><span class="math" data-tex="\(5\)">\(5\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>For each integer <span class="math" data-tex="\(m\)">\(m\)</span> in the following lists, <span class="math" data-tex="\(A\)">\(A\)</span> changes sign between <span class="math" data-tex="\(m\cdot10^{-10}\)">\(m\cdot10^{-10}\)</span> and <span class="math" data-tex="\((m+2)\cdot10^{-10}\)">\((m+2)\cdot10^{-10}\)</span>; the brackets are disjoint, and their numbers in the intervals equal the sign changes above. Hence each bracket contains exactly one root, simple, and the open intervals contain no other roots.</p>
+<ul>
+<li><span class="math" data-tex="\(\kappa=2\)">\(\kappa=2\)</span>, <span class="math" data-tex="\(X\)">\(X\)</span>: <span class="math" data-tex="\(-9601109148\)">\(-9601109148\)</span>, <span class="math" data-tex="\(-8942317572\)">\(-8942317572\)</span>, <span class="math" data-tex="\(-7608305633\)">\(-7608305633\)</span>, <span class="math" data-tex="\(-6503394794\)">\(-6503394794\)</span>, <span class="math" data-tex="\(-5185864065\)">\(-5185864065\)</span>, <span class="math" data-tex="\(-4015634158\)">\(-4015634158\)</span>, <span class="math" data-tex="\(-3108806646\)">\(-3108806646\)</span>, <span class="math" data-tex="\(-2067921826\)">\(-2067921826\)</span>, <span class="math" data-tex="\(-1589849496\)">\(-1589849496\)</span>, <span class="math" data-tex="\(1531948062\)">\(1531948062\)</span>, <span class="math" data-tex="\(2072448179\)">\(2072448179\)</span>, <span class="math" data-tex="\(3208186484\)">\(3208186484\)</span>, <span class="math" data-tex="\(4381119427\)">\(4381119427\)</span>, <span class="math" data-tex="\(5851354199\)">\(5851354199\)</span>, <span class="math" data-tex="\(7269030693\)">\(7269030693\)</span>, <span class="math" data-tex="\(8390277402\)">\(8390277402\)</span>, <span class="math" data-tex="\(9332614564\)">\(9332614564\)</span>, <span class="math" data-tex="\(9709786219\)">\(9709786219\)</span>.</li>
+<li><span class="math" data-tex="\(\kappa=2\)">\(\kappa=2\)</span>, <span class="math" data-tex="\(Y\)">\(Y\)</span>: <span class="math" data-tex="\(176402802\)">\(176402802\)</span>, <span class="math" data-tex="\(330649406\)">\(330649406\)</span>, <span class="math" data-tex="\(764952882\)">\(764952882\)</span>, <span class="math" data-tex="\(1227250753\)">\(1227250753\)</span>, <span class="math" data-tex="\(2149465998\)">\(2149465998\)</span>, <span class="math" data-tex="\(3048189112\)">\(3048189112\)</span>, <span class="math" data-tex="\(4322699096\)">\(4322699096\)</span>, <span class="math" data-tex="\(5564757994\)">\(5564757994\)</span>, <span class="math" data-tex="\(6801929373\)">\(6801929373\)</span>, <span class="math" data-tex="\(8031988371\)">\(8031988371\)</span>, <span class="math" data-tex="\(8877037851\)">\(8877037851\)</span>, <span class="math" data-tex="\(9577761832\)">\(9577761832\)</span>, <span class="math" data-tex="\(9838463999\)">\(9838463999\)</span>, <span class="math" data-tex="\(9972727815\)">\(9972727815\)</span>, <span class="math" data-tex="\(9992037196\)">\(9992037196\)</span>.</li>
+<li><span class="math" data-tex="\(\kappa=1\)">\(\kappa=1\)</span>, <span class="math" data-tex="\(X\)">\(X\)</span>: <span class="math" data-tex="\(-9917299785\)">\(-9917299785\)</span>, <span class="math" data-tex="\(-2259572153\)">\(-2259572153\)</span>, <span class="math" data-tex="\(2543808026\)">\(2543808026\)</span>, <span class="math" data-tex="\(4437270259\)">\(4437270259\)</span>, <span class="math" data-tex="\(6348298970\)">\(6348298970\)</span>.</li>
+<li><span class="math" data-tex="\(\kappa=1\)">\(\kappa=1\)</span>, <span class="math" data-tex="\(Y\)">\(Y\)</span>: <span class="math" data-tex="\(532669786\)">\(532669786\)</span>, <span class="math" data-tex="\(2504239325\)">\(2504239325\)</span>, <span class="math" data-tex="\(5701738806\)">\(5701738806\)</span>, <span class="math" data-tex="\(7966939383\)">\(7966939383\)</span>, <span class="math" data-tex="\(9454490138\)">\(9454490138\)</span>.</li>
+</ul>
+<p>All these statements are finite computations with rational numbers.</p>
+<p><strong>Values.</strong> Logarithms and arguments of rational (complex) numbers are bounded by rational arithmetic: for <span class="math" data-tex="\(y\in[1,2]\)">\(y\in[1,2]\)</span>, <span class="math" data-tex="\(\log y=2\sum_{j\ge0}\frac{q^{2j+1}}{2j+1}\)">\(\log y=2\sum_{j\ge0}\frac{q^{2j+1}}{2j+1}\)</span> with <span class="math" data-tex="\(q=\frac{y-1}{y+1}\le\frac13\)">\(q=\frac{y-1}{y+1}\le\frac13\)</span>, truncated after <span class="math" data-tex="\(18\)">\(18\)</span> terms with remainder at most <span class="math" data-tex="\(2q^{37}/(37(1-q^2))\)">\(2q^{37}/(37(1-q^2))\)</span>; a positive rational is first scaled by a power of <span class="math" data-tex="\(2\)">\(2\)</span>. An argument is reduced by rotations through <span class="math" data-tex="\(\pi/4\)">\(\pi/4\)</span> to <span class="math" data-tex="\(\arctan t\)">\(\arctan t\)</span> with <span class="math" data-tex="\(|t|\le\frac12\)">\(|t|\le\frac12\)</span>, using <span class="math" data-tex="\(\frac\pi4=\arctan\frac12+\arctan\frac13\)">\(\frac\pi4=\arctan\frac12+\arctan\frac13\)</span>, and <span class="math" data-tex="\(\arctan t\)">\(\arctan t\)</span> is the alternating series truncated after <span class="math" data-tex="\(24\)">\(24\)</span> terms, with error at most <span class="math" data-tex="\(|t|^{49}/49\)">\(|t|^{49}/49\)</span>. Each logarithm is thereby known to within <span class="math" data-tex="\(10^{-15}\)">\(10^{-15}\)</span>, far below what is needed. The resulting upper bounds, rounded upwards to twelve decimals, are:</p>
+<p><span class="math" data-tex="\(\kappa=2\)">\(\kappa=2\)</span>, <span class="math" data-tex="\(X\)">\(X\)</span> at the left ends of its brackets, in the order listed: <span class="math" data-tex="\(-0.984034048775\)">\(-0.984034048775\)</span>, <span class="math" data-tex="\(-0.984375363807\)">\(-0.984375363807\)</span>, <span class="math" data-tex="\(-0.984034052640\)">\(-0.984034052640\)</span>, <span class="math" data-tex="\(-0.984105522615\)">\(-0.984105522615\)</span>, <span class="math" data-tex="\(-0.984034053414\)">\(-0.984034053414\)</span>, <span class="math" data-tex="\(-0.984092061375\)">\(-0.984092061375\)</span>, <span class="math" data-tex="\(-0.984034037901\)">\(-0.984034037901\)</span>, <span class="math" data-tex="\(-0.984364031075\)">\(-0.984364031075\)</span>, <span class="math" data-tex="\(-0.984034038450\)">\(-0.984034038450\)</span>, <span class="math" data-tex="\(-0.984033385315\)">\(-0.984033385315\)</span>, <span class="math" data-tex="\(-0.984776982913\)">\(-0.984776982913\)</span>, <span class="math" data-tex="\(-0.984034026898\)">\(-0.984034026898\)</span>, <span class="math" data-tex="\(-0.984264010107\)">\(-0.984264010107\)</span>, <span class="math" data-tex="\(-0.984034029391\)">\(-0.984034029391\)</span>, <span class="math" data-tex="\(-0.984245044505\)">\(-0.984245044505\)</span>, <span class="math" data-tex="\(-0.984034016294\)">\(-0.984034016294\)</span>, <span class="math" data-tex="\(-0.984567630027\)">\(-0.984567630027\)</span>, <span class="math" data-tex="\(-0.984033926884\)">\(-0.984033926884\)</span>; at <span class="math" data-tex="\(x=-1\)">\(x=-1\)</span>: <span class="math" data-tex="\(-0.986727371546\)">\(-0.986727371546\)</span>.</p>
+<p><span class="math" data-tex="\(\kappa=2\)">\(\kappa=2\)</span>, <span class="math" data-tex="\(Y\)">\(Y\)</span> at the left ends: <span class="math" data-tex="\(-1.608946411646\)">\(-1.608946411646\)</span>, <span class="math" data-tex="\(-1.609949505120\)">\(-1.609949505120\)</span>, <span class="math" data-tex="\(-1.608960295828\)">\(-1.608960295828\)</span>, <span class="math" data-tex="\(-1.609094597854\)">\(-1.609094597854\)</span>, <span class="math" data-tex="\(-1.608960426500\)">\(-1.608960426500\)</span>, <span class="math" data-tex="\(-1.608992193672\)">\(-1.608992193672\)</span>, <span class="math" data-tex="\(-1.608960428486\)">\(-1.608960428486\)</span>, <span class="math" data-tex="\(-1.608979509517\)">\(-1.608979509517\)</span>, <span class="math" data-tex="\(-1.608960430478\)">\(-1.608960430478\)</span>, <span class="math" data-tex="\(-1.608990548812\)">\(-1.608990548812\)</span>, <span class="math" data-tex="\(-1.608960429811\)">\(-1.608960429811\)</span>, <span class="math" data-tex="\(-1.609055802895\)">\(-1.609055802895\)</span>, <span class="math" data-tex="\(-1.608960412835\)">\(-1.608960412835\)</span>, <span class="math" data-tex="\(-1.609694899071\)">\(-1.609694899071\)</span>, <span class="math" data-tex="\(-1.608958123669\)">\(-1.608958123669\)</span>; at <span class="math" data-tex="\(\frac14,\frac12,\frac34\)">\(\frac14,\frac12,\frac34\)</span>: <span class="math" data-tex="\(-1.608973617030\)">\(-1.608973617030\)</span>, <span class="math" data-tex="\(-1.608971701898\)">\(-1.608971701898\)</span>, <span class="math" data-tex="\(-1.608976908052\)">\(-1.608976908052\)</span>.</p>
+<p><span class="math" data-tex="\(\kappa=1\)">\(\kappa=1\)</span>, <span class="math" data-tex="\(X\)">\(X\)</span>: <span class="math" data-tex="\(-2.778491531574\)">\(-2.778491531574\)</span>, <span class="math" data-tex="\(-1.324666731948\)">\(-1.324666731948\)</span>, <span class="math" data-tex="\(-1.324655807046\)">\(-1.324655807046\)</span>, <span class="math" data-tex="\(-1.352236629957\)">\(-1.352236629957\)</span>, <span class="math" data-tex="\(-1.324666329425\)">\(-1.324666329425\)</span>; at <span class="math" data-tex="\(-1,-\frac12,\frac12\)">\(-1,-\frac12,\frac12\)</span>: <span class="math" data-tex="\(-2.775818077526\)">\(-2.775818077526\)</span>, <span class="math" data-tex="\(-1.544057819905\)">\(-1.544057819905\)</span>, <span class="math" data-tex="\(-1.347557680876\)">\(-1.347557680876\)</span>.</p>
+<p><span class="math" data-tex="\(\kappa=1\)">\(\kappa=1\)</span>, <span class="math" data-tex="\(Y\)">\(Y\)</span>: <span class="math" data-tex="\(-1.428286151250\)">\(-1.428286151250\)</span>, <span class="math" data-tex="\(-1.515602647362\)">\(-1.515602647362\)</span>, <span class="math" data-tex="\(-1.428335732372\)">\(-1.428335732372\)</span>, <span class="math" data-tex="\(-1.465686164672\)">\(-1.465686164672\)</span>, <span class="math" data-tex="\(-1.428335358167\)">\(-1.428335358167\)</span>.</p>
+<p>The same calculation gives <span class="math" data-tex="\(\kappa\|p\|_*^2+\frac12\|v\|_*^2\le0.778415976284\)">\(\kappa\|p\|_*^2+\frac12\|v\|_*^2\le0.778415976284\)</span> for <span class="math" data-tex="\(\kappa=2\)">\(\kappa=2\)</span> and <span class="math" data-tex="\(\le0.931985203901\)">\(\le0.931985203901\)</span> for <span class="math" data-tex="\(\kappa=1\)">\(\kappa=1\)</span>, and <span class="math" data-tex="\(0.693146&lt;\log2&lt;0.693149\)">\(0.693146&lt;\log2&lt;0.693149\)</span>.</p>
+<p><strong>From brackets to suprema.</strong> Every bracket point has distance more than <span class="math" data-tex="\(0.0007\)">\(0.0007\)</span> from <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span> (the bracket nearest <span class="math" data-tex="\(1\)">\(1\)</span> ends at <span class="math" data-tex="\(0.9992037198\)">\(0.9992037198\)</span>). There, using <span class="math" data-tex="\(|U_{k-1}(x)|\le k\)">\(|U_{k-1}(x)|\le k\)</span> on <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>, the coefficient bounds, and <span class="math" data-tex="\(|1-xz|\ge1-|z|\)">\(|1-xz|\ge1-|z|\)</span>, <span class="math" data-tex="\(|1-2xz+z^2|\ge(1-|z|)^2\)">\(|1-2xz+z^2|\ge(1-|z|)^2\)</span>, one gets <span class="math" data-tex="\(|X_\kappa&#x27;|\le230+685+3+10+11924&lt;120000\)">\(|X_\kappa&#x27;|\le230+685+3+10+11924&lt;120000\)</span> and <span class="math" data-tex="\(|Y_\kappa&#x27;|\le110+328+101563&lt;120000\)">\(|Y_\kappa&#x27;|\le110+328+101563&lt;120000\)</span>. By the mean value theorem, the value at the stationary point in a bracket exceeds the value at its left end by less than <span class="math" data-tex="\(120000\cdot2\cdot10^{-10}=0.000024\)">\(120000\cdot2\cdot10^{-10}=0.000024\)</span>. The suprema of <span class="math" data-tex="\(X_\kappa\)">\(X_\kappa\)</span> and <span class="math" data-tex="\(Y_\kappa\)">\(Y_\kappa\)</span> are attained at stationary points or at the finite endpoint <span class="math" data-tex="\(x=-1\)">\(x=-1\)</span>, since the functions tend to <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span> at <span class="math" data-tex="\(x\to0\)">\(x\to0\)</span>, <span class="math" data-tex="\(x\to1\)">\(x\to1\)</span> and <span class="math" data-tex="\(s\to0\)">\(s\to0\)</span>, <span class="math" data-tex="\(s\to1\)">\(s\to1\)</span>; and every stationary point lies in a bracket or is a division point, all of which are in the lists.</p>
+<p><strong>Proposition 4.3</strong> (the real upper bound).</p>
+<span class="math math-display" data-tex="\[
+\limsup_{N\to\infty}\Bigl(\frac{\log|\Delta_N|}{n^2}-\frac12\log2\Bigr)\le-2.290939875&lt;-2.2909.
+\]">\[
+\limsup_{N\to\infty}\Bigl(\frac{\log|\Delta_N|}{n^2}-\frac12\log2\Bigr)\le-2.290939875&lt;-2.2909.
+\]</span>
+<p><strong>Proof.</strong> By Proposition 3.2 with these trial sequences, and the bounds just obtained (rounded up to <span class="math" data-tex="\(0.77844\)">\(0.77844\)</span>, <span class="math" data-tex="\(-0.98399\)">\(-0.98399\)</span>, <span class="math" data-tex="\(-1.60890\)">\(-1.60890\)</span> for <span class="math" data-tex="\(\kappa=2\)">\(\kappa=2\)</span> and <span class="math" data-tex="\(0.9321\)">\(0.9321\)</span>, <span class="math" data-tex="\(-1.3244\)">\(-1.3244\)</span>, <span class="math" data-tex="\(-1.4280\)">\(-1.4280\)</span> for <span class="math" data-tex="\(\kappa=1\)">\(\kappa=1\)</span>), with <span class="math" data-tex="\(-1+\alpha+\gamma=-\frac{11}{16}\)">\(-1+\alpha+\gamma=-\frac{11}{16}\)</span> and <span class="math" data-tex="\(\log2&gt;0.693146\)">\(\log2&gt;0.693146\)</span>, the two cases give at most</p>
+<span class="math math-display" data-tex="\[
+-\tfrac{11}{16}(0.693146)+0.77844-0.98399-1.60890+0.000048=-2.290939875,
+\]">\[
+-\tfrac{11}{16}(0.693146)+0.77844-0.98399-1.60890+0.000048=-2.290939875,
+\]</span>
+<span class="math math-display" data-tex="\[
+-\tfrac{11}{16}(0.693146)+0.9321-1.3244-1.4280+0.000048=-2.296789875.
+\]">\[
+-\tfrac{11}{16}(0.693146)+0.9321-1.3244-1.4280+0.000048=-2.296789875.
+\]</span>
+<p>The larger of the two is the claim. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-catalan-s-constant-is-irrational">5. Catalan's constant is irrational</h2>
+<p><strong>Theorem 5.1</strong> (OpenAI, 2026). Catalan's constant <span class="math" data-tex="\(G=\sum_{j\ge0}(-1)^j(2j+1)^{-2}\)">\(G=\sum_{j\ge0}(-1)^j(2j+1)^{-2}\)</span> is irrational.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(G\)">\(G\)</span> is rational. By Proposition 6.1 of <a href="chebyshev-rows-and-mixed-moments.html">Chebyshev rows and mixed moments</a>, every <span class="math" data-tex="\(\Delta_N\)">\(\Delta_N\)</span> is rational. By Proposition 1.1 of <a href="nonvanishing-at-prime-scales.html">Nonvanishing at prime scales</a>, <span class="math" data-tex="\(\Delta_p\ne0\)">\(\Delta_p\ne0\)</span> for all sufficiently large primes <span class="math" data-tex="\(p\)">\(p\)</span>. Along these primes, Proposition 6.1 of <a href="denominators-at-the-odd-primes.html">Denominators at the odd primes</a> gives</p>
+<span class="math math-display" data-tex="\[
+\liminf_{p\to\infty}\Bigl(\frac{\log|\Delta_p|}{(48p)^2}-\frac12\log2\Bigr)&gt;-2.29084,
+\]">\[
+\liminf_{p\to\infty}\Bigl(\frac{\log|\Delta_p|}{(48p)^2}-\frac12\log2\Bigr)&gt;-2.29084,
+\]</span>
+<p>while Proposition 4.3 gives an upper limit below <span class="math" data-tex="\(-2.2909\)">\(-2.2909\)</span>. Since <span class="math" data-tex="\(-2.29084&gt;-2.2909\)">\(-2.29084&gt;-2.2909\)</span>, this is a contradiction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof gives qualitative irrationality only. The margin between the two estimates is about <span class="math" data-tex="\(10^{-4}\)">\(10^{-4}\)</span>; a bound for an irrationality measure would need more control of rational approximations.</p>
+<p><strong>Where this leads.</strong> By Agol's theorem, <span class="math" data-tex="\(4G\)">\(4G\)</span> is the smallest volume of an orientable complete hyperbolic three-manifold of finite volume with exactly two cusps, attained by the complement of the Whitehead link [Agol]; this volume is therefore irrational. Volumes of arithmetic hyperbolic three-orbifolds defined over <span class="math" data-tex="\(\mathbb Q(i)\)">\(\mathbb Q(i)\)</span> are rational multiples of <span class="math" data-tex="\(G\)">\(G\)</span> by the volume formula for quaternion orders, and so are irrational as well; for example, <span class="math" data-tex="\(\operatorname{PSL}_2(\mathbb Z[i])\backslash\mathbb H^3\)">\(\operatorname{PSL}_2(\mathbb Z[i])\backslash\mathbb H^3\)</span> has volume <span class="math" data-tex="\(G/3\)">\(G/3\)</span> [Voight, Example 39.1.16]. These consequences rest on the cited theorems, which this course does not prove.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>Exercise 6.1 (easy).</strong> Check that <span class="math" data-tex="\(C/n=1+\alpha+\gamma\)">\(C/n=1+\alpha+\gamma\)</span>. Why is the coefficient of <span class="math" data-tex="\(\langle\log|x-x&#x27;|\rangle_{\ne}\)">\(\langle\log|x-x&#x27;|\rangle_{\ne}\)</span> in Lemma 1.1 equal to <span class="math" data-tex="\(\kappa/2\)">\(\kappa/2\)</span>?</p>
+<p><strong>Exercise 6.2 (easy).</strong> Verify the arithmetic <span class="math" data-tex="\(-\frac{11}{16}(0.693146)+0.77844-0.98399-1.60890+0.000048=-2.290939875\)">\(-\frac{11}{16}(0.693146)+0.77844-0.98399-1.60890+0.000048=-2.290939875\)</span>.</p>
+<p><strong>Exercise 6.3 (medium).</strong> Apply Lemma 4.1 to <span class="math" data-tex="\(p(t)=t^3-3t^2+4\)">\(p(t)=t^3-3t^2+4\)</span>, which has the roots <span class="math" data-tex="\(-1\)">\(-1\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span> (double), and compare.</p>
+<p><strong>Exercise 6.4 (medium).</strong> Prove <span class="math" data-tex="\(\sum_{k\ge1}T_k(x)z^k/k=-\frac12\log(1-2xz+z^2)\)">\(\sum_{k\ge1}T_k(x)z^k/k=-\frac12\log(1-2xz+z^2)\)</span> for real <span class="math" data-tex="\(|z|&lt;1\)">\(|z|&lt;1\)</span> and <span class="math" data-tex="\(|x|\le1\)">\(|x|\le1\)</span>, by differentiating in <span class="math" data-tex="\(z\)">\(z\)</span>.</p>
+<p><strong>Exercise 6.5 (hard).</strong> Explain why the damping factors for the power kernel and for the cross kernel must be the same function <span class="math" data-tex="\(\rho(x)\)">\(\rho(x)\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span>, and the damping factors for the <span class="math" data-tex="\(s\)">\(s\)</span> cosine kernel and the cross kernel the same function <span class="math" data-tex="\(\sigma(s)\)">\(\sigma(s)\)</span>.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> <span class="math" data-tex="\(C=n+a+g\)">\(C=n+a+g\)</span>, so <span class="math" data-tex="\(C/n=1+\alpha+\gamma\)">\(C/n=1+\alpha+\gamma\)</span>. In <span class="math" data-tex="\(\mathcal I_{\kappa,n}\)">\(\mathcal I_{\kappa,n}\)</span>, <span class="math" data-tex="\(\mathcal V(t)\)">\(\mathcal V(t)\)</span> contributes <span class="math" data-tex="\(\prod_{i&lt;j}|x_i-x_j|\)">\(\prod_{i&lt;j}|x_i-x_j|\)</span> once, and in case <span class="math" data-tex="\(\kappa=2\)">\(\kappa=2\)</span> the factor <span class="math" data-tex="\(\mathcal V(1/x)\)">\(\mathcal V(1/x)\)</span> contributes it once more. Each <span class="math" data-tex="\(\sum_{i&lt;j}\log|x_i-x_j|\)">\(\sum_{i&lt;j}\log|x_i-x_j|\)</span> equals <span class="math" data-tex="\(\frac{n^2}2\langle\log|x-x&#x27;|\rangle_{\ne}\)">\(\frac{n^2}2\langle\log|x-x&#x27;|\rangle_{\ne}\)</span>.</p>
+<p><strong>6.2.</strong> <span class="math" data-tex="\(\frac{11}{16}\cdot0.693146=0.476537875\)">\(\frac{11}{16}\cdot0.693146=0.476537875\)</span>; then <span class="math" data-tex="\(-0.476537875+0.77844=0.301902125\)">\(-0.476537875+0.77844=0.301902125\)</span>, minus <span class="math" data-tex="\(0.98399\)">\(0.98399\)</span> gives <span class="math" data-tex="\(-0.682087875\)">\(-0.682087875\)</span>, minus <span class="math" data-tex="\(1.60890\)">\(1.60890\)</span> gives <span class="math" data-tex="\(-2.290987875\)">\(-2.290987875\)</span>, plus <span class="math" data-tex="\(0.000048\)">\(0.000048\)</span> gives <span class="math" data-tex="\(-2.290939875\)">\(-2.290939875\)</span>.</p>
+<p><strong>6.3.</strong> The coefficients <span class="math" data-tex="\(1,-3,0,4\)">\(1,-3,0,4\)</span> have the nonzero signs <span class="math" data-tex="\(+,-,+\)">\(+,-,+\)</span>: two changes, and <span class="math" data-tex="\(p\)">\(p\)</span> has two positive roots counted with multiplicity (the double root <span class="math" data-tex="\(2\)">\(2\)</span>). The bound is attained.</p>
+<p><strong>6.4.</strong> Differentiating <span class="math" data-tex="\(-\frac12\log(1-2xz+z^2)\)">\(-\frac12\log(1-2xz+z^2)\)</span> in <span class="math" data-tex="\(z\)">\(z\)</span> gives <span class="math" data-tex="\((x-z)/(1-2xz+z^2)\)">\((x-z)/(1-2xz+z^2)\)</span>, while <span class="math" data-tex="\(\sum_kT_k(x)z^{k-1}\)">\(\sum_kT_k(x)z^{k-1}\)</span> is the same rational function: with <span class="math" data-tex="\(x=\cos\theta\)">\(x=\cos\theta\)</span>, <span class="math" data-tex="\(\sum_k\cos(k\theta)z^{k-1}=\operatorname{Re}\frac{e^{i\theta}}{1-ze^{i\theta}}=\frac{\cos\theta-z}{1-2z\cos\theta+z^2}\)">\(\sum_k\cos(k\theta)z^{k-1}=\operatorname{Re}\frac{e^{i\theta}}{1-ze^{i\theta}}=\frac{\cos\theta-z}{1-2z\cos\theta+z^2}\)</span>. Both sides vanish at <span class="math" data-tex="\(z=0\)">\(z=0\)</span>.</p>
+<p><strong>6.5.</strong> The squares in the proof of Proposition 3.2 combine <span class="math" data-tex="\(\langle\rho^kx^k\rangle\)">\(\langle\rho^kx^k\rangle\)</span> from the power kernel with <span class="math" data-tex="\(\langle\rho^kx^k\rangle\langle\sigma^kT_k(s)\rangle\)">\(\langle\rho^kx^k\rangle\langle\sigma^kT_k(s)\rangle\)</span> from the cross kernel, and <span class="math" data-tex="\(\langle\sigma^kT_k(s)\rangle\)">\(\langle\sigma^kT_k(s)\rangle\)</span> from the <span class="math" data-tex="\(s\)">\(s\)</span> kernel with the same factor in the cross kernel. Different damping factors would produce different moments, and the sum would no longer be a negative square, so the trial coefficients could not bound it.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-Catalan] OpenAI, Catalan's constant is irrational, preprint, 24 September 2026. https://github.com/openai/math/blob/main/preprints/Catalans-constant-is-irrational-September-24-2026/paper.pdf</li>
+<li>[Garoufalidis–Popescu] S. Garoufalidis, I. Popescu, Analyticity of the planar limit of a matrix model, Annales Henri Poincaré 14 (2013), 499–565. https://arxiv.org/abs/1010.0927</li>
+<li>[Agol] I. Agol, The minimal volume orientable hyperbolic 2-cusped 3-manifolds, Proceedings of the American Mathematical Society 138 (2010), 3723–3732. https://arxiv.org/abs/0804.0043</li>
+<li>[Voight] J. Voight, Quaternion Algebras, Graduate Texts in Mathematics 288, Springer, 2021 (open access). https://link.springer.com/book/10.1007/978-3-030-56694-4</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

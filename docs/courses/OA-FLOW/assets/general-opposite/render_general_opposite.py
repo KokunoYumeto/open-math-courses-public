@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-general-opposite-20261008-v1"
 
 d=Path(__file__).resolve().parent
 fig, axes=plt.subplots(1,3,figsize=(14.8,5.4))
@@ -53,7 +54,7 @@ ax.text(.5,-.24,r"$t_f=I,\qquad \rho(I)=1=f(p)$"
         "\n" r"$f(I)=2$ includes the other corner.",
         transform=ax.transAxes,ha="center",fontsize=12,va="top")
 fig.savefig(d/"assets"/"general-opposite-support.png",dpi=180,bbox_inches="tight")
-fig.savefig(d/"assets"/"general-opposite-support.svg",bbox_inches="tight")
+fig.savefig(d/"assets"/"general-opposite-support.svg",bbox_inches="tight",metadata={"Date": None})
 plt.close(fig)
 (d/"general-opposite-figure-numerics.json").write_text(json.dumps({
  "scope":"Exact finite-dimensional examples; first two panels are explicitly real coordinate slices of C2",

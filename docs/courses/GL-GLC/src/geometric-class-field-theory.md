@@ -813,8 +813,8 @@ is surjective on connected components, since \(H^0(A)\to A_{\mathrm{red}}\) is s
 V(S)\times\widehat V_0(S)^p
 \]
 in degree \(p\). The realization of this Čech nerve is \(V(S_{\mathrm{red}})\): over each point the nerve is that of its nonempty space of lifts, with its contractible groupoid of translation identifications. Consequently
-\
-[V/\widehat V_0\simeq V(S_{\mathrm{red}})=V_{\mathrm{dR}}(S).
+\[
+[V/\widehat V_0](S)\simeq V(S_{\mathrm{red}})=V_{\mathrm{dR}}(S).
 \]
 The homotopy-fibre formulation retains higher automorphisms on derived tests. An argument only with ordinary nilpotent coefficients does not itself state those higher identifications.
 
@@ -1409,9 +1409,9 @@ q_j^!N=B_{p,n}^{\vee,j}\otimes_{A_j}^L N,
 as an object of \(\operatorname{IndCoh}(B_{p,n})\). To prove the formula first take \(N=A_j\) and test against a bounded coherent \(B_{p,n}\)-complex: both sides represent \(\operatorname{RHom}_{A_j}(q_{j,*}F,A_j)\). For arbitrary \(N\), resolve it by free \(A_j\)-modules and use continuity of \(q_j^!\). This proves the formula for unbounded \(N\), not only for coherent \(N\).
 
 The coefficient pairing on truncated polynomials
-\
+\[
 (b,c)\longmapsto
-[\prod_{i,l}(h_i^{(l)})^{n-1}
+[\prod_{i,l}(h_i^{(l)})^{n-1}](bc)
 \]
 is a perfect \(A_j\)-pairing. Its matrix pairs each monomial with its complementary exponents. Consequently \(B_{p,n}^{\vee,j}\) is free of rank one over \(B_{p,n}\). Define its dualizing complex by
 \[

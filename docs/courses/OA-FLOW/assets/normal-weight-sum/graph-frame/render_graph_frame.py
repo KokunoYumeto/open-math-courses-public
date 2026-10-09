@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-normal-weight-sum-graph-frame-20261009-v1"
 
 d=Path(__file__).resolve().parent
 (d/"assets").mkdir(exist_ok=True)
@@ -49,7 +50,7 @@ for j,(formula,label) in enumerate(rows):
 fig.text(.5,.04,"Exact example proof: GRAPH-FRAME-FIGURE.md.  Full theorem mechanism: GRAPH_FRAME_RECONSTRUCTION.md, GF1–GF4.",
          ha="center",fontsize=10)
 fig.savefig(d/"assets"/"gaussian-graph-frame.png",dpi=180,bbox_inches="tight")
-fig.savefig(d/"assets"/"gaussian-graph-frame.svg",bbox_inches="tight")
+fig.savefig(d/"assets"/"gaussian-graph-frame.svg",bbox_inches="tight",metadata={"Date": None})
 plt.close(fig)
 (d/"graph-frame-numerics.json").write_text(json.dumps({
     "s":s.tolist(),"raw_norm":raw.tolist(),"smoothed_norm":smooth.tolist(),

@@ -434,13 +434,13 @@ Its precise action is the prefactor in (P10) times
 \(\int_E e^{-i\zeta^TQ_E^{-1}\zeta/4}\Psi(\zeta,0)d\zeta\), where \(d\zeta\) is Euclidean Lebesgue measure on the subspace. The restriction of a Schwartz test to this subspace is Schwartz, with each seminorm bounded by finitely many of the original ones after the fixed orthogonal change. Thus the integral is absolute and defines a tempered distribution. In dimension zero it is the value \(\Psi(0)\).
 
 For a direct full-space justification of the product computation, first damp by \(e^{-a|x|^2}\). Absolute Fubini factors its Gaussian transform. The damped inputs tend strongly to the bounded chirp by a uniform integrable tail bound on each bounded test family and uniform convergence on compact sets. The full strong Fourier continuity then fixes their entire transformed limit. To identify that limit directly, apply Lemma 0.1 and inversion in the \(K\) variables. For \(k=n-r\),
-\
+\[
  \begin{gathered}
  \langle\mathcal F(e^{ix_E^TQ_Ex_E}),\Psi\rangle\\
  =\int_E e^{ix_E^TQ_Ex_E}
        \left(\int_K F\Psi(x_E,x_K)\,dx_K\right)dx_E\\
  =(2\pi)^k\int_E e^{ix_E^TQ_Ex_E}
-        F_E[\Psi(\cdot,0)\,dx_E.
+        F_E[\Psi(\cdot,0)](x_E)\,dx_E.
  \end{gathered}
 \]
 The first integral is absolutely convergent because \(F\Psi\) is Schwartz and the chirp is bounded. For fixed \(x_E\), write \(F\Psi=F_K(F_E\Psi)\); inversion at zero in \(K\) gives the inner integral in the second line. The restriction \(\Psi(\cdot,0)\) and its partial Fourier transform are Schwartz by the mixed seminorm bounds, so the last integral is absolute too. The already proved product of nonzero signed Fresnel factors evaluates this last pairing and gives exactly (P10). For \(r=0\), the same calculation is full inversion at zero; for \(k=0\), omit that inversion step. This proves the distribution on every test, including both extreme ranks.

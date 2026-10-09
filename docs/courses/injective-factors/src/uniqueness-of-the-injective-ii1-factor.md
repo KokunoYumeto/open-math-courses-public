@@ -1008,7 +1008,7 @@ where \(\mathrm{tr}_m\) is the normalized trace of \(M_m\).
 *Words.* Let \(w\) have length \(L<k\), with letters \(x_1,\dots,x_L\in\{u_i^{\pm1}\}\), and let \(y_l\in\{v_i^{\pm1}\}\)
 be the corresponding letters. For \(x\in\{u_i^{\pm1}\}\), \(\|[x,e]\|_{\mathrm{HS}}\le\delta\|e\|_{\mathrm{HS}}\) (for
 \(x=u_i^*\), \([u_i^*,e]=-u_i^*[u_i,e]u_i^*\)). Using \(ex_1x_2\cdots x_Le=(ex_1e)(ex_2\cdots x_Le)+ex_1(1-e)x_2\cdots x_Le\)
-and \(\|ex_1(1-e)\|_{\mathrm{HS}}=\|ex_1,e\|_{\mathrm{HS}}\le\delta\|e\|_{\mathrm{HS}}\), induction gives
+and \(\|ex_1(1-e)\|_{\mathrm{HS}}=\|e[x_1,e](1-e)\|_{\mathrm{HS}}\le\delta\|e\|_{\mathrm{HS}}\), induction gives
 \(\|eu(w)e-(ex_1e)\cdots(ex_Le)\|_{2,Q}\le(L-1)\delta\). Telescoping with \(\|ex_le\|\le1\) and \(\|ex_le-y_l\|_{2,Q}\le\delta\)
 gives \(\|(ex_1e)\cdots(ex_Le)-v(w)\|_{2,Q}\le L\delta\). Hence
 \[

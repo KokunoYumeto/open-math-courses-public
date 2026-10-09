@@ -9,6 +9,7 @@ import json
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-measure-models-continuous-20261009-v1"
 from matplotlib.patches import FancyBboxPatch
 import numpy as np
 
@@ -80,7 +81,7 @@ fig.suptitle("From continuous generators to the full measurable action",fontsize
 fig.text(.085,.029,"Top: the actual maps in (C12)–(C18).  Bottom: the exact translation sample (EX1)–(EX3).",
          fontsize=11,color=ink)
 fig.savefig(OUT/'continuous-model.png',dpi=220,facecolor=fig.get_facecolor())
-fig.savefig(OUT/'continuous-model.svg',facecolor=fig.get_facecolor())
+fig.savefig(OUT/'continuous-model.svg',facecolor=fig.get_facecolor(),metadata={'Date': None})
 plt.close(fig)
 
 def exact_H(u):

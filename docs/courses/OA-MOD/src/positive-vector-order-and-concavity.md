@@ -122,9 +122,9 @@ Repeated application gives the finite-mixture assertion: the representative of a
 
 ## Three checks on the two orders
 
-**Scaling is not additivity.** In the scalar standard form \(M=\mathbb C\), \(H=\mathbb C\), \(J\) is complex conjugation and \(P=0,\infty)\). The functional \(z\mapsto az\), for \(a\ge0\), has representative \(\sqrt a\), by direct evaluation. The equal mixture of the functionals with coefficients \(0\) and \(4\) therefore has representative \(\sqrt2\), whereas the equal mixture of their representatives is \(1\). This verifies strict concavity in a concrete case and disproves additivity.
+**Scaling is not additivity.** In the scalar standard form \(M=\mathbb C\), \(H=\mathbb C\), \(J\) is complex conjugation and \(P=[0,\infty)\). The functional \(z\mapsto az\), for \(a\ge0\), has representative \(\sqrt a\), by direct evaluation. The equal mixture of the functionals with coefficients \(0\) and \(4\) therefore has representative \(\sqrt2\), whereas the equal mixture of their representatives is \(1\). This verifies strict concavity in a concrete case and disproves additivity.
 
-**The reverse order assertion fails.** In the standard Hilbert–Schmidt form of \(M_2(\mathbb C)\), described and proved in [SF14, let
+**The reverse order assertion fails.** In the standard Hilbert–Schmidt form of \(M_2(\mathbb C)\), described and proved in SF14, let
 
 \[
  A=\begin{pmatrix}1&0\\0&0\end{pmatrix},

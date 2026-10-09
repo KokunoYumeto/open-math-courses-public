@@ -271,7 +271,7 @@ For a degenerate \(\pi\), put \(H_0=\overline{\pi(L^1(G))H}\). This subspace is 
 
 The left translations on \(L^2(G)\) form a strongly continuous unitary representation by the translation lemma. Its integrated representation is
 
-$$\lambda(f)\xi=\int f(s)\xi(s^{-1}r)\,ds.\tag{G15}$$
+$$[\lambda(f)\xi](r)=\int f(s)\xi(s^{-1}r)\,ds.\tag{G15}$$
 
 **Theorem.** The representation \(\lambda:L^1(G)\to B(L^2(G))\) is faithful and nondegenerate.
 

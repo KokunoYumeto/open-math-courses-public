@@ -161,11 +161,52 @@ The weighted valuative statement is [Stacks, Tag 01MF](https://kokunoyumeto.gith
 
 **Theorem 5.1 (Noetherian valuative criterion).** Suppose \(S\) is locally Noetherian and \(f:X\to S\) is of finite type. Then \(f\) is proper if and only if every valuation diagram with \(R\) a DVR has exactly one extension.
 
-The additional ingredient is the Noetherian form of **Chow's lemma**: for a separated finite-type \(X\) over a Noetherian scheme \(S\), there are a proper surjection \(p:X'\to X\) and an immersion \(j:X'\to\mathbf P^N_S\), with \(p\) an isomorphism over a dense open of \(X\). Its exact full open proof is [Stacks, Tag 0200](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-chow-Noetherian). The construction is also proved in Theorem 4.1 of Projective morphisms and Chow's lemma, after the lessons on very ample and ample sheaves. It uses properness of projective space and properness permanence, already proved above; it does not depend on the DVR criterion being proved now.
+We first record how schematic closures retain information that a reduced closure would discard. For a quasi-compact immersion \(U\to T\) into a Noetherian scheme, its **scheme-theoretic closure** is defined by
 
-**Proof of Theorem 5.1.** Properness implies existence and uniqueness for all valuation rings, hence for DVRs. Assume conversely the DVR test. Properness is target-local, so restrict to an affine open of \(S\). Its inverse image is Noetherian because \(f\) is of finite type. The Noetherian separatedness criterion in the valuation lesson shows first that \(f\) is separated: every DVR diagram has at most one extension. We may therefore apply the stated form of Chow's lemma.
+\[
+\mathcal I=\ker(\mathcal O_T\to j_*\mathcal O_U).
+\tag{5A.1}
+\]
 
-We claim that the immersion \(j:X'\to\mathbf P^N_S\) is closed. Otherwise its image has a point \(y\) in its closure outside the image. The Noetherian space \(X'\) has finitely many irreducible components, so \(y\) lies in the closure of the image of one of them. Give that closure its reduced structure and call it \(Z\). It is an integral Noetherian scheme; the component's generic point has residue field \(K=K(Z)\), and \(y\) is not its generic point. The local domain \(\mathcal O_{Z,y}\) is not a field. By the discrete domination theorem used in the valuation lesson, there is a DVR \(R\subset K\), with fraction field exactly \(K\), dominating \(\mathcal O_{Z,y}\). It defines a map
+The ideal is quasi-coherent by the qcqs pushforward fact. Its closed subscheme has underlying space \(\overline{U}\), and \(U\) is open in it: inside an open where the immersion is closed, (5A.1) recovers that closed subscheme. The map from the closure's structure sheaf into \(j_*\mathcal O_U\) is injective. We call this **scheme-theoretic density** of \(U\). The construction commutes with restriction to opens, directly from (5A.1).
+
+If two \(S\)-morphisms from such a closure to a scheme \(Q\) separated over \(S\) agree on \(U\), they agree everywhere. Their equalizer is the pullback of the closed relative diagonal \(\Delta_{Q/S}\), hence a closed subscheme; its defining ideal vanishes on \(U\), so injectivity of the structure-sheaf map makes that ideal zero. This is the version of the equalizer argument appropriate to possibly nonreduced schemes.
+
+**Lemma 5.0 (Noetherian Chow construction).** Let \(S\) be Noetherian and \(X\to S\) separated and of finite type. There exist a proper surjection \(\pi:X'\to X\), a quasi-compact immersion \(X'\to\mathbf P^N_S\), and a dense open \(U\subset X\) such that \(\pi^{-1}(U)\to U\) is an isomorphism.
+
+**Proof.** All schemes in the construction are Noetherian. The finitely many irreducible components of \(X\) have generic points \(\eta_1,\ldots,\eta_r\). Every point \(x\) has an affine neighbourhood containing all these generic points. Indeed, choose an affine neighbourhood \(W\) avoiding the components that do not contain \(x\); it contains the generic points of all components through \(x\). For each remaining component choose an affine neighbourhood of its generic point avoiding every other component. These extra opens are disjoint from \(W\) and from one another. Their finite disjoint union with \(W\) is affine and has the required points. Quasi-compactness now gives a finite affine cover \(U_1,\ldots,U_m\) with every generic point in every member. Their intersection \(U\) is dense and open.
+
+Replace \(X\) temporarily by the scheme-theoretic closure \(X^*\) of \(U\) in \(X\). Its map to \(X\) is a surjective closed immersion and is an isomorphism on \(U\). The intersections \(U_i\cap X^*\) remain affine and cover it. Thus a solution for \(X^*\) gives one for \(X\), and we may assume \(U\) scheme-theoretically dense in \(X\).
+
+Each affine \(U_i=\operatorname{Spec}B\) admits a quasi-compact immersion into a finite projective space over \(S\). Choose a finite principal cover \(D(f_a)\) of \(U_i\) such that each member maps into an affine \(S_a=\operatorname{Spec}A_a\subset S\). Each \(B_{f_a}\) is a finite-type \(A_a\)-algebra by the affine-chart finite-type theorem. Write a finite generating list as \(b_{aj}/f_a^{e_{aj}}\), with \(b_{aj}\in B\). Choose \(M_a\geq1\) at least all these exponents. Use, for every \(a\), the global functions
+\[
+f_a^{M_a},\quad f_a^{M_a-1},\quad
+f_a^{M_a-e_{aj}}b_{aj}
+\]
+as one finite homogeneous coordinate tuple. They generate the unit ideal: no maximal ideal can contain all \(f_a^{M_a}\), because the \(D(f_a)\) cover. The projective-coordinate theorem in Projective space, relative Proj and maps to projective space, Theorem 1.1 therefore defines a map to \(\mathbf P^{n_i}_S\).
+
+In the target chart for the coordinate \(f_a^{M_a}\), restricted over \(S_a\), the inverse image is precisely \(D(f_a)\). Its coordinate ratios include \(f_a^{-1}\) and every \(b_{aj}/f_a^{e_{aj}}\), so the homomorphism from that target affine chart to \(B_{f_a}\) is surjective. Thus the map is a closed immersion on every one of these charts. Their union is an open target neighbourhood of its whole image, since the \(D(f_a)\) cover its source. It is a closed immersion into that union and hence an immersion into the full projective space. Quasi-compactness follows from the finite source cover. This proof works with a nonaffine \(S\), arbitrary fields and nilpotents.
+
+Let \(Z_i\subset\mathbf P^{n_i}_S\) be the scheme-theoretic closure of \(U_i\), so \(U_i\subset Z_i\) is a scheme-theoretically dense open. Each \(Z_i\) is proper over \(S\). The combined maps on \(U\) give an immersion
+
+\[
+U\longrightarrow\prod_{i=1}^m\mathbf P^{n_i}_S.
+\]
+
+It is an immersion because one component is an immersion and the remaining separated factors permit the closed-graph factorization. Let \(Z\) be its scheme-theoretic closure in this product. It is proper over \(S\), contains \(U\) as a scheme-theoretically dense open, and has projections \(p_i:Z\to Z_i\). The projections factor through \(Z_i\) because their defining ideals vanish on \(U\), hence on \(Z\) by schematic density. Each \(p_i\) is proper: it is a map from a proper \(S\)-scheme to a separated \(S\)-scheme.
+
+Set \(V_i=p_i^{-1}(U_i)\), and \(X'=\bigcup_iV_i\subset Z\). The maps \(V_i\to U_i\subset X\) are proper over \(U_i\). On \(V_i\cap V_j\) these \(S\)-morphisms agree on \(U\). Pulling back the closed diagonal \(\Delta_{X/S}\), schematic density makes their equalizer the whole overlap. They glue to \(\pi:X'\to X\).
+
+We verify that \(\pi^{-1}(U_i)=V_i\). There is an open inclusion \(V_i\subset\pi^{-1}(U_i)\) over \(U_i\). Its source is proper over \(U_i\), and its target is separated over \(U_i\): \(X'\) is separated over \(S\), so its morphism to \(X\) is separated by separatedness cancellation. Therefore the inclusion is proper and has closed image. It contains \(U\), which is dense in \(\pi^{-1}(U_i)\), so its image is the whole target. The two open subschemes are equal. Thus \(\pi\) is proper on the target cover \((U_i)\), hence proper globally. Its image on each \(U_i\) is closed and contains the dense \(U\); hence it is surjective.
+
+The same argument, replacing \(V_i\to U_i\) by the identity \(U\to U\), proves \(\pi^{-1}(U)=U\). Finally \(X'\) is open in the closed subscheme \(Z\) of the product of projective spaces. The iterated Segre embedding places that product in a single finite projective space. Its full chart proof over an arbitrary base is in the prerequisite Projective space, relative Proj and maps to projective space, Section 2. Properness of projective space and its permanence properties have already been proved in Sections 2 and 4 here. Thus \(X'\) has the required immersion; it is quasi-compact because it is Noetherian. Compose with \(X^*\to X\) if the earlier replacement was necessary. Properness, surjectivity and the isomorphism on \(U\) are preserved. \(\square\)
+
+This is [Stacks, Tag 0200](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-chow-Noetherian). The scheme-theoretic closure step is essential for nonreduced sources. Ordinary topological density alone would not make the maps on overlaps equal.
+
+
+**Proof of Theorem 5.1.** Properness implies existence and uniqueness for all valuation rings, hence for DVRs. Assume conversely the DVR test. Properness is target-local, so restrict to an affine open of \(S\). Its inverse image is Noetherian because \(f\) is of finite type. The Noetherian separatedness criterion in the valuation lesson shows first that \(f\) is separated: every DVR diagram has at most one extension. We may therefore apply Lemma 5.0.
+
+We claim that the immersion \(j:X'\to\mathbf P^N_S\) is closed. Otherwise its image has a point \(y\) in its closure outside the image. The Noetherian space \(X'\) has finitely many irreducible components, so \(y\) lies in the closure of the image of one of them. Give that closure its reduced structure and call it \(Z\). It is an integral Noetherian scheme; the component's generic point has residue field \(K=K(Z)\), and \(y\) is not its generic point. The local domain \(\mathcal O_{Z,y}\) is not a field. The full discrete-domination proof in Valuation rings and separatedness, Lemma 5.1, applies to \(\mathcal O_{Z,y}\). It gives a DVR \(R\subset K\), with fraction field exactly \(K\), dominating \(\mathcal O_{Z,y}\). It defines a map
 
 \[
 c:\operatorname{Spec}R\longrightarrow Z\longrightarrow\mathbf P^N_S
@@ -177,7 +218,7 @@ Apply the assumed DVR existence test to \(pu:\operatorname{Spec}K\to X\) and the
 
 An immersion with closed image is a closed immersion: near the image its closed-immersion descriptions give the ideal sheaf, and the open complement has empty inverse image. Thus \(j\) is closed. Theorem 4.1 and composition make \(X'\to S\) proper. Corollary 2.2 then makes \(X\to S\) universally closed. It is already separated and of finite type, hence proper. \(\square\)
 
-The theorem and the boundary-point argument are [Stacks, Tag 0208](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/limits.html#limits-lemma-Noetherian-dvr-valuative-proper). Discrete domination uses the exact algebra proof [Tag 00PH](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-exists-dvr), with its hypotheses and dependencies explained in the valuation lesson. This proof tests the boundary of a finite-type projective model; it does not assert that an arbitrary higher-rank valuation can itself be replaced by a DVR.
+The theorem and the boundary-point argument are [Stacks, Tag 0208](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/limits.html#limits-lemma-Noetherian-dvr-valuative-proper). Discrete domination uses the complete programme proof in Valuation rings and separatedness, Lemma 5.1, including the one-dimensional reduction, the full Krull–Akizuki length argument and the normal one-dimensional local-ring characterization proved there. This proof tests the boundary of a finite-type projective model; it does not assert that an arbitrary higher-rank valuation can itself be replaced by a DVR.
 
 ## 6. Missing limits, duplicated limits, and closed subspaces
 
@@ -215,6 +256,6 @@ The same failure appears in a DVR diagram. Take \(R=k[[t]]\), \(K=k((t))\), and 
 
 ## References and proof providers
 
-The Stacks project, read in the AI Integrated Stacks Project edition, supplies the exact tagged treatments of universal closedness, properness permanence, general valuative criteria, weighted Proj, and the Noetherian DVR criterion cited above. The openly licensed full Chow proof at Tag 0200 and the internal construction in Theorem 4.1 of *Projective morphisms and Chow's lemma* supply that ingredient in Theorem 5.1. Discrete domination is the open algebra proof at Tag 00PH, already explained in the valuation lesson. These linked works retain GNU FDL 1.2. No source text is reproduced here.
+The Stacks project, read in the AI Integrated Stacks Project edition, supplies the exact tagged treatments of universal closedness, properness permanence, general valuative criteria, weighted Proj, and the Noetherian DVR criterion cited above. The complete Noetherian Chow construction needed by Theorem 5.1 is proved here in Lemma 5.0; Tag 0200 identifies a free comparison source. Discrete domination uses the complete programme proof in Valuation rings and separatedness, Lemma 5.1, including the one-dimensional reduction, the full Krull–Akizuki length argument and the normal one-dimensional local-ring characterization proved there. These linked works retain GNU FDL 1.2. No source text is reproduced here.
 
-Ravi Vakil, *The Rising Sea: Foundations of Algebraic Geometry*, draft of 27 July 2024, §§11.4 and 13.7, was consulted for alternative exposition of properness and valuation diagrams. Its expression is not reproduced. All four assigned result groups and all five exercises above have their proofs or exact open proof ingredients identified; no assigned theorem is left to a paid or merely free-to-read book.
+Ravi Vakil, *The Rising Sea: Foundations of Algebraic Geometry*, draft of 27 July 2024, §§11.4 and 13.7, was consulted for alternative exposition of properness and valuation diagrams. Its expression is not reproduced. All four assigned result groups and all five exercises have their proofs here or in the precisely named prerequisite programme lessons. External references provide freely accessible comparison material.

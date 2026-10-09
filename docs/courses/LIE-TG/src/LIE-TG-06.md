@@ -108,7 +108,7 @@ E_u(a)=-[u,a].
 \tag{2.1}
 $$
 
-The minus sign is needed with our vector-field bracket. For matrix fields $X_A(a)=Aa$, the coefficient formula gives $X_A,X_B=(BA-AB)a$, so the passage from matrices to these fields reverses the commutator.
+The minus sign is needed with our vector-field bracket. For matrix fields $X_A(a)=Aa$, the coefficient formula gives $[X_A,X_B](a)=(BA-AB)a$, so the passage from matrices to these fields reverses the commutator.
 
 **Proposition 2.1.** The map $u\mapsto E_u$ preserves brackets and has kernel $Z(\mathfrak g)$. If the centre is zero, these fields give a faithful realization and generate an $r$-parameter local group.
 
@@ -213,7 +213,7 @@ $$
 If their degrees are $p,q$, alternation gives
 $[\beta,\alpha]=-(-1)^{pq}[\alpha,\beta]$, and the exterior product rule gives
 $d[\alpha,\beta]=[d\alpha,\beta]+(-1)^p[\alpha,d\beta]$.
-In particular $\omega,\omega=2[\omega(u),\omega(v)]$ for a one-form $\omega$. These conventions fix the signs in the following calculation.
+In particular $[\omega,\omega](u,v)=2[\omega(u),\omega(v)]$ for a one-form $\omega$. These conventions fix the signs in the following calculation.
 
 ### The analytic coframe
 
@@ -232,7 +232,7 @@ Choose a norm on $\mathfrak g$. Bilinearity gives $\|\operatorname{ad}_a\|\le C\
 For a $\mathfrak g$-valued one-form, our convention is
 
 $$
-\omega,\omega=2[\omega(u),\omega(v)].
+[\omega,\omega](u,v)=2[\omega(u),\omega(v)].
 $$
 
 **Theorem 3.1 (Maurer–Cartan equation).** The form (3.1) satisfies
@@ -272,7 +272,7 @@ Adding gives $\iota_RK=0$.
 For clarity, define the three-form $[\omega,K]$ by
 
 $$
-\omega,K=[\omega(u),K(v,w)]+[\omega(v),K(w,u)]+[\omega(w),K(u,v)].
+[\omega,K](u,v,w)=[\omega(u),K(v,w)]+[\omega(v),K(w,u)]+[\omega(w),K(u,v)].
 $$
 
 The exterior derivative product rule and Jacobi give the Bianchi identity

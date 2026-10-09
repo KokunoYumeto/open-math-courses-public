@@ -171,8 +171,8 @@ F|x^2-1|=-2\pi\delta''_0-2\pi\delta_0
 \tag{4.2}
 \]
 **Proof.** The decomposition is checked separately on \(|x|\le1\) and \(|x|\ge1\). To compute the compact term, let \(J(\xi)=\int_{-1}^1e^{-ix\xi}dx=2\sin\xi/\xi\). Differentiation under this finite integral twice is justified by domination by \(x^2\), and
-\
-F[(1-x^2)_+=J(\xi)+J''(\xi)
+\[
+F[(1-x^2)_+](\xi)=J(\xi)+J''(\xi)
 =4\frac{\sin\xi-\xi\cos\xi}{\xi^3}\quad(\xi\ne0).
 \]
 The derivative calculation is
@@ -316,8 +316,8 @@ Multiplication by \(i\xi\) gives \(\pi e^{-ib\xi-a|\xi|}\). Independently the ph
 (\sin x/x)^2=\frac14\int_{[-1,1]^2}e^{i(s+t)x}\,ds\,dt.
 \]
 Against a Schwartz Fourier test, the absolute integral is at most \(\|F\theta\|_1\). Fubini and (1.1) give \(\frac\pi2\int_{[-1,1]^2}\theta(s+t)dsdt\). Set \(\xi=s+t\); for fixed \(\xi\), the allowed \(s\) interval is \([-1,1]\cap[\xi-1,\xi+1]\), of length \((2-|\xi|)_+\). Thus the whole transform is
-\
-F[(\sin x/x)^2=\frac\pi2(2-|\xi|)_+.
+\[
+F[(\sin x/x)^2](\xi)=\frac\pi2(2-|\xi|)_+.
 \]
 The physical square is integrable, being bounded near zero and at most \(x^{-2}\) on the tails. Its ordinary transform is continuous and agrees with the displayed continuous triangle as a distribution, hence pointwise by the bump argument. Evaluation at zero gives \(\int(\sin x/x)^2dx=\pi\).
 

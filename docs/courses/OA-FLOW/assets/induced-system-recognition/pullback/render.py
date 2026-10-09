@@ -3,6 +3,7 @@ import json,shutil
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-induced-recognition-pullback-20261008-v1"
 from matplotlib.patches import FancyBboxPatch,FancyArrowPatch
 from matplotlib import font_manager
 P=Path(__file__).resolve().parent
@@ -26,7 +27,7 @@ ax.text(6.26,4.99,'continuous fields commute at every point',ha='center',fontsiz
 arrow((3.23,2.91),(3.23,2.5));arrow((9.5,2.91),(9.5,2.5))
 box(.45,.64,12.05,1.66,r'$T\in(N\,\bar{\otimes}\,D)^\gamma\ \Longrightarrow\ [T,\widehat{M^{\prime}}]=0$'+'\n'+r'$T=\widehat c\ (c\in P)\ \Longrightarrow\ c\in M^{\prime\prime}=M$', '#e7efdf')
 ax.text(.45,.1,'Surjectivity supplies c; faithfulness transfers commutation; the bicommutant gives equality.',fontsize=14,color='#354c61')
-fig.tight_layout(pad=1);fig.savefig(P/'pullback-commutants.png',dpi=210,facecolor=fig.get_facecolor());fig.savefig(P/'pullback-commutants.svg',facecolor=fig.get_facecolor());plt.close(fig)
+fig.tight_layout(pad=1);fig.savefig(P/'pullback-commutants.png',dpi=210,facecolor=fig.get_facecolor());fig.savefig(P/'pullback-commutants.svg',facecolor=fig.get_facecolor(),metadata={'Date': None});plt.close(fig)
 data={'diagram':'Arbitrary-LCH central-quotient reconstruction','hilbert_map':'Lambda(f tensor xi)(s)=f(s)xi(s)','normal_map':'P -> (B(K) bar-tensor L-infinity(G))^gamma, a -> hat(a)','evaluation_domain':'Only norm-action-continuous elements; not arbitrary measurable fields','proof_locators':['iw-3','iw-4','iw-5'],'conclusion':'hat(M)=(N bar-tensor L-infinity(G))^gamma'}
 (P/'data.json').write_text(json.dumps(data,indent=2)+'\n',encoding='utf-8')
 font=Path(font_manager.findfont('DejaVu Sans'));candidates=[font.parent/'LICENSE_DEJAVU',font.parent.parent/'LICENSE_DEJAVU',Path(matplotlib.get_data_path())/'fonts/ttf/LICENSE_DEJAVU']

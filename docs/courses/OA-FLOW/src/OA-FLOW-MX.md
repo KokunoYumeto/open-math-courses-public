@@ -322,8 +322,8 @@ For \(f=\mathcal Fa,g=\mathcal Fb\in A_c(H)\), the full \(L^2\) product formula 
 
 <a id="equation-mx9"></a>
 
-\
- \mathcal F\bigl[b(t)a(-t)\bigr
+\[
+ \mathcal F\bigl[b(t)a(-t)\bigr](q)
  =\int_H g(r)f(r-q)\,dr.
  \tag{MX9}
 \]

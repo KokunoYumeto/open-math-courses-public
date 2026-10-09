@@ -905,8 +905,8 @@ The second identity follows by factoring \([D\Psi:D\Omega]_t\) through \(\Omega_
 
 <a id="tw-haar-diagnostic"></a>
 **4. Kernel entries are not normalized matrix entries.** Let \(G=\mathbb Z/3\mathbb Z\) have singleton Haar mass \(c=2\). Identify \(E=L^2(G)\) with \(\mathbb C^3\) by its orthonormal basis \(\epsilon_j=c^{-1/2}1_{\{j\}}\). An \(M\)-valued kernel acts by
-\
-[T_K\xi=c\sum_{s\in G}K(r,s)\xi(s).
+\[
+[T_K\xi](r)=c\sum_{s\in G}K(r,s)\xi(s).
 \tag{TW.8.e}
 \]
 Find its normalized block matrix, its weighted GNS norm, and the kernel of the projection onto \(\mathbb C\epsilon_j\).

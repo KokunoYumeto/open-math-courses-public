@@ -268,9 +268,9 @@ The actual regular model of \(M_0\rtimes_\beta G\) acts on \(K_r\otimes K_t\). L
 
 <a id="equation-tr1"></a>
 
-\
- [i_0(f)\xi=f(r+t)\xi(r,t),\qquad
- \lambda_s\xi=\xi(r,t-s).
+\[
+ [i_0(f)\xi](r,t)=f(r+t)\xi(r,t),\qquad
+ [\lambda_s\xi](r,t)=\xi(r,t-s).
  \tag{TR1}
 \]
 These are NR3's exact coefficient and translation formulas: \(\beta_{-t}f(r)=f(r+t)\). For a merely locally determined multiplier, the field formula means the bounded operator defined on compact tensors and extended to the whole space, as in NR3. It is not an assertion about an unqualified product-Borel representative.
@@ -279,9 +279,9 @@ On compact continuous functions in the Radon-product model define
 
 <a id="equation-tr2"></a>
 
-\
- [S\xi=\xi(v,u-v),\qquad
- S^*\zeta=\zeta(r+t,r).
+\[
+ [S\xi](u,v)=\xi(v,u-v),\qquad
+ [S^*\zeta](r,t)=\zeta(r+t,r).
  \tag{TR2}
 \]
 Both coordinate maps are inverse homeomorphisms and transport compact supports to compact supports. Their squared-norm equality is an actual finite-support integral calculation:
@@ -396,7 +396,7 @@ The conclusions are the fixed-center identity, both implications of the factor c
 
 The upper panels record the proof for every nonzero von Neumann algebra and every locally compact Hausdorff abelian group in [the setting](OA-FLOW-L116.md#fc-setting). For \(z\in Z(N)^\theta\), the full dual-fixed-algebra theorem writes \(z=i(c)\). Faithfulness of \(i\) turns \(i([c,a])=0\) into \(c\in Z(M)\); covariance turns \(i(\alpha_s(c))=i(c)\) into \(\alpha_s(c)=c\). The converse checks both generating families and their strong closure. This proves exactly \(Z(N)^\theta=i(Z(M)^\alpha)\), [F5 and FC1–FC2](OA-FLOW-L116.md#fc-direct). Full Connes spectrum makes the entire center dual-fixed by the complete earlier kernel proof. Central ergodicity then gives \(Z(N)=\mathbb C1\), [F16–F17](OA-FLOW-L116.md#fc-factor). The diagram does not replace either proof or its separately bound L115 input.
 
-The lower panels specialize only the drawing to \(G=\mathbb Z/3\mathbb Z\) with counting Haar measure. Thus \(K=L^2(G)=\mathbb C^3\), the regular tensor space has dimension \(9\), and the shear \((r,t)\mapsto(u,v)=(r+t,r)\) is a permutation of all nine coordinate vectors. Its inverse is \((r,t)=(v,u-v)\), with all coordinates reduced modulo three. The color identifies the retained coordinate \(v=r\); the curved arrows and their lengths are layout choices, not a metric on the group. The actual unitary is \(S\xi=\xi(v,u-v)\), and its [full unrestricted proof](OA-FLOW-L116.md#fc-translation) first uses compact continuous Radon-product functions before extending to the whole Hilbert space.
+The lower panels specialize only the drawing to \(G=\mathbb Z/3\mathbb Z\) with counting Haar measure. Thus \(K=L^2(G)=\mathbb C^3\), the regular tensor space has dimension \(9\), and the shear \((r,t)\mapsto(u,v)=(r+t,r)\) is a permutation of all nine coordinate vectors. Its inverse is \((r,t)=(v,u-v)\), with all coordinates reduced modulo three. The color identifies the retained coordinate \(v=r\); the curved arrows and their lengths are layout choices, not a metric on the group. The actual unitary is \([S\xi](u,v)=\xi(v,u-v)\), and its [full unrestricted proof](OA-FLOW-L116.md#fc-translation) first uses compact continuous Radon-product functions before extending to the whole Hilbert space.
 
 In the active coordinate \(u\), \(Si_0(f)S^*=M_f\otimes1\) and \(S\lambda_sS^*=L_s\otimes1\), where \((L_s\xi)_r=\xi_{r-s}\). The second tensor coordinate is multiplicity, so the represented single-system crossing is \(B(K)\otimes1\), normally isomorphic to \(B(K)\) by unit-vector compression. For \(\omega=e^{2\pi i/3}\) and \(Q_k=\operatorname{diag}(1,\omega^{-k},\omega^{-2k})\), the exact character convention gives \(Q_kL_sQ_k^*=\omega^{-ks}L_s\). The renderer checks all nine pairs; the floating matrix check is an illustration check, while the scalar identity proves the sign exactly.
 

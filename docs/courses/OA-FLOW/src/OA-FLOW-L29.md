@@ -330,20 +330,20 @@ It intertwines the negative-character dual action \(\theta\) with \(\beta\):
 Consequently an action of \(H\) is conjugate to a dual action precisely when it admits the strongly continuous unitary representation with the stated eigenrelation. No generation, integrability, state, factor, or separability hypothesis is added.
 
 **Proof.** First suppose \(N\ne0\). Represent \(N\) faithfully and normally on a nonzero Hilbert space \(K\), and identify it with its represented image. The range and inverse are normal by [Concrete predual balls and faithful ultraweak representations, ST2](OA-FLOW-ST12.md#oa-flow.st.2); its bounded topology comparison also preserves the given strong continuity of \(u\) in this realization. Restriction to \(M\) is a faithful normal unital representation. The [normal regular construction, NR3](OA-FLOW-NR.md#oa-flow.nr.3), applied separately to \((M,G,\alpha)\) and \((N,H,\beta)\), therefore gives
-\
+\[
  \begin{aligned}
- [\pi_\alpha(a)\xi&=u_{-t}a u_t\xi(t),
- &\lambda_s\xi&=\xi(t-s),\\
- \Pi_\beta(b)\zeta&=\beta_{\chi^{-1}}(b)\zeta(\chi),
+ [\pi_\alpha(a)\xi](t)&=u_{-t}a u_t\xi(t),
+ &[\lambda_s\xi](t)&=\xi(t-s),\\
+ [\Pi_\beta(b)\zeta](\chi)&=\beta_{\chi^{-1}}(b)\zeta(\chi),
  \end{aligned}
  \tag{L29.5.c}
 \]
 on \(L^2(G,K)\) and \(L^2(H,K)\), respectively. In particular, \(\Pi_\beta\) is faithful and ultraweakly continuous on all of \(N\). Its range is a von Neumann algebra and its inverse on that range is normal, again by ST2.
 
 The function spaces in this construction use the completed, locally determined Haar convention and the arbitrary-Hilbert tensor identification proved in [Unitary representations and the two group C* completions, Sections 2–4](OA-FLOW-L24.md#oa-flow.grp.haarconventions). They require no sigma compactness of the whole group. Define, initially on \(C_c(G,K)\),
-\
- [D_u\xi=u_t\xi(t),\qquad
- D_u^{-1}\xi=u_t^*\xi(t).
+\[
+ [D_u\xi](t)=u_t\xi(t),\qquad
+ [D_u^{-1}\xi](t)=u_t^*\xi(t).
  \tag{L29.5.d}
 \]
 Both products are continuous and compactly supported. Indeed, at a fixed \(r\), continuity follows from
@@ -356,8 +356,8 @@ The adjoints are strongly continuous as well, since
 The compact ranges of these continuous vector functions are separable, so the vector measurability and integration conditions of [Section 4's Bochner and tensor proofs](OA-FLOW-L24.md#oa-flow.grp.vectorintegration) apply. Pointwise unitarity preserves the \(L^2\) norm. The two displayed maps are inverse isometries on the dense space \(C_c(G,K)\), hence extend to inverse unitaries on the full \(L^2(G,K)\). Thus no measurable field of operators, or common exceptional set for every vector of \(K\), is needed to construct \(D_u\).
 
 Let \(\mathcal F_+\) be the positive-character Fourier unitary for the fixed paired Haar measures. Its compact-vector formula and its full arbitrary-Hilbert extension follow from [Plancherel with an arbitrary Hilbert target](OA-FLOW-DA.md#da-vector), by replacing \(\chi\) with \(\chi^{-1}\); inversion preserves the abelian dual Haar measure. Put
-\
- [\mathcal F_+\xi=\int_G\chi(t)\xi(t)\,dt
+\[
+ [\mathcal F_+\xi](\chi)=\int_G\chi(t)\xi(t)\,dt
  \quad(\xi\in C_c(G,K)),\qquad
  W=\mathcal F_+D_u:L^2(G,K)\longrightarrow L^2(H,K).
  \tag{L29.5.e}
@@ -365,22 +365,22 @@ Let \(\mathcal F_+\) be the positive-character Fourier unitary for the fixed pai
 This is an onto unitary. Only Hilbert-vector integrals on compact supports occur in the following computations.
 
 For \(a\in M\) and \(\xi\in C_c(G,K)\), the representation law and bounded linearity of vector integration give
-\
+\[
  \begin{aligned}
- [W\pi_\alpha(a)\xi
+ [W\pi_\alpha(a)\xi](\chi)
  &=\int_G\chi(t)\,u_tu_{-t}a u_t\xi(t)\,dt\\
  &=a\int_G\chi(t)u_t\xi(t)\,dt\\
- &=\Pi_\beta(a)W\xi.
+ &=[\Pi_\beta(a)W\xi](\chi).
  \end{aligned}
  \tag{L29.5.f}
 \]
 Here \(\beta_{\chi^{-1}}(a)=a\). For a fixed \(s\in G\), Haar substitution \(t=r+s\) instead gives
-\
+\[
  \begin{aligned}
- [W\lambda_s\xi
+ [W\lambda_s\xi](\chi)
  &=\int_G\chi(t)u_t\xi(t-s)\,dt\\
  &=\chi(s)u_s\int_G\chi(r)u_r\xi(r)\,dr\\
- &=\Pi_\beta(u_s)W\xi,
+ &=[\Pi_\beta(u_s)W\xi](\chi),
  \end{aligned}
  \tag{L29.5.g}
 \]
@@ -500,18 +500,18 @@ The two recognition maps also determine the full crossed-product transport. Deno
 Indeed, applying \(\Phi_{u'}\) to the last expression gives \(w_s^*u'_s=u_s\). The inverse sends \(\lambda_s^{\alpha'}\) to \(\pi_\alpha(w_s)\lambda_s^\alpha\).
 
 For a direct regular-model verification, use the same faithful coefficient representation on \(K\) for both crossings. The construction of \(D_u\), now with the continuous unitary field \(w_{-t}\), gives an onto unitary
-\
- [V_w\xi=w_{-t}\xi(t)\qquad(\xi\in L^2(G,K)).
+\[
+ [V_w\xi](t)=w_{-t}\xi(t)\qquad(\xi\in L^2(G,K)).
  \tag{L29.6.g}
 \]
 Its inverse is multiplication by \(w_{-t}^*\). On compact vectors,
-\
+\[
  \begin{aligned}
  V_w\pi_\alpha(a)V_w^*&=\pi_{\alpha'}(a),\\
- [V_w\lambda_s^\alpha V_w^*\xi
+ [V_w\lambda_s^\alpha V_w^*\xi](t)
  &=w_{-t}w_{s-t}^*\xi(t-s)\\
  &=\alpha'_{-t}(w_s^*)\xi(t-s)\\
- &=\pi_{\alpha'}(w_s^*)\lambda_s^{\alpha'}\xi.
+ &=[\pi_{\alpha'}(w_s^*)\lambda_s^{\alpha'}\xi](t).
  \end{aligned}
  \tag{L29.6.h}
 \]
@@ -585,9 +585,9 @@ These are precisely the operators \(\Pi_\beta(\boldsymbol a)\) and \(\Pi_\beta(u
 
 <a id="l29-7-real"></a>
 **Translations on all bounded operators.** On \(K=L^2(\mathbb R)\), define
-\
- [L_q\xi=\xi(r-q),\qquad
- Q_s\xi=e^{isr}\xi(r),\qquad
+\[
+ [L_q\xi](r)=\xi(r-q),\qquad
+ [Q_s\xi](r)=e^{isr}\xi(r),\qquad
  N=B(K),\quad\beta_q=\operatorname{Ad}L_q,\quad u_s=Q_s.
  \tag{L29.7.f}
 \]
@@ -598,23 +598,23 @@ Translation is strongly continuous by [L24, Lemma 3.1](OA-FLOW-L24.md#oa-flow.gr
 Their conjugation action is point-ultraweakly continuous by the [bounded product and vector-series argument](OA-FLOW-UC.md#oa-flow.uc.0). Thus the hypotheses of recognition hold, with \(\chi_q(s)=e^{isq}\).
 
 The fixed algebra is \(M=\{L_q:q\in\mathbb R\}'\). Use the positive Fourier transform \(\mathcal F_+\), with Plancherel-compatible Haar measures. Its existence and onto property follow from [scalar Plancherel](OA-FLOW-PLANCHEREL.md#scalar-plancherel-p3); dual inversion changes the negative transform there to the positive one. Substitution in the Fourier integral first on compactly supported continuous vectors gives
-\
+\[
  \mathcal F_+L_q\mathcal F_+^*=M_{e^{ipq}},\qquad
- [\mathcal F_+Q_s\mathcal F_+^*\eta=\eta(p+s).
+ [\mathcal F_+Q_s\mathcal F_+^*\eta](p)=\eta(p+s).
  \tag{L29.7.g}
 \]
 Density extends both bounded-operator equalities to all vectors. The characters generate the full multiplication algebra by [ND's character-density proof](OA-FLOW-ND.md#nd-weyl-proof), and that algebra equals its commutant by [ND's multiplication proof](OA-FLOW-ND.md#nd-multiplication). Therefore \(\mathcal F_+M\mathcal F_+^*=\{M_f:f\in L^\infty(\mathbb R)\}\). Conjugation by the second operator in (L29.7.g) sends \(M_f\) to \(M_{f(\,·+s)}\). We obtain
-\
+\[
  B(L^2(\mathbb R))\cong L^\infty(\mathbb R)\rtimes_\alpha\mathbb R,
- \qquad [\alpha_s f=f(p+s).
+ \qquad [\alpha_s f](p)=f(p+s).
  \tag{L29.7.h}
 \]
 The coordinate \(p\) describes the recovered coefficient algebra; \(r\) is the original spatial coordinate. Keeping them separate explains both the negative eigencharacter in (L29.7.f) and the positive shift in (L29.7.h). The proof uses no trace or invariant state on \(B(K)\).
 
 <a id="l29-7-uncountable"></a>
 **An uncountable compact dual.** Let \(J\) be any uncountable set. Put \(G=\bigoplus_{j\in J}\mathbb Z/2\mathbb Z\), with the discrete topology, and \(H=\prod_{j\in J}\{1,-1\}\), with the compact product topology and normalized Haar measure. A character on \(G\) chooses its sign independently on each summand, so this is its dual. Compact sets in the discrete group are finite; the compact-open topology on its characters therefore agrees with the product topology. Pair the groups by the finite product \(\chi(s)=\prod_{j\in\operatorname{supp}s}\chi_j^{s_j}\). On \(N=L^\infty(H)\), set
-\
- [\beta_\eta f=f(\eta^{-1}\chi),\qquad
+\[
+ [\beta_\eta f](\chi)=f(\eta^{-1}\chi),\qquad
  u_s(\chi)=\chi(s).
  \tag{L29.7.i}
 \]

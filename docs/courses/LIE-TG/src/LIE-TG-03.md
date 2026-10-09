@@ -97,7 +97,7 @@ For the dilation field $x\partial_x+y\partial_y$ on the real region $x>0$, take 
 For vector fields with coefficient columns $\xi$ and $\eta$,
 
 $$
-X,Y=D\eta(x)\xi(x)-D\xi(x)\eta(x).
+[X,Y](x)=D\eta(x)\xi(x)-D\xi(x)\eta(x).
 \tag{4.1}
 $$
 
@@ -105,7 +105,7 @@ $$
 
 $$
 \Phi_Y^{-s}\circ\Phi_X^{-t}\circ\Phi_Y^s\circ\Phi_X^t(x)
-=x+stX,Y+O\bigl(|st|(|s|+|t|)\bigr).
+=x+st[X,Y](x)+O\bigl(|st|(|s|+|t|)\bigr).
 \tag{4.2}
 $$
 

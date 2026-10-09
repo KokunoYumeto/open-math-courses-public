@@ -49,11 +49,11 @@ A finite such cover splits \(h\) into finitely many continuous functions \(h_j\)
 
 For the center \(\lambda_j\) and radius \(\delta_j\), multiplicativity and the interval norm bound give
 
-\
+\[
 \begin{aligned}
 \|h_j(T)\|
 &\leq\|(T-\lambda_j)^{-1}\|^n
-       \|[(t-\lambda_j)^nh_j(t)\|\\
+       \|[(t-\lambda_j)^nh_j(t)](T)\|\\
 &\leq\bigl(\delta_j\|(T-\lambda_j)^{-1}\|\bigr)^n
        \|h_j\|_\infty .
 \end{aligned}

@@ -587,7 +587,7 @@ For locally compact nilpotent sheaves, ordinary Verdier conjugation gives
 \[
 a_0(\mathbb D M)=a_0(M)^\vee[-2d_G],
 \qquad
-a_0[d_G](\mathbb D M)=(a_0d_G)^\vee.
+a_0[d_G](\mathbb D M)=(a_0[d_G](M))^\vee.
 \]
 The second formula follows because duality reverses shifts. It records the precise coefficient-duality normalization.
 

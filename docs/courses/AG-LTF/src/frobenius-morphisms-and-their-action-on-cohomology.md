@@ -565,7 +565,7 @@ For a closed point \(x\) of degree \(d\), the embeddings \(\kappa(x)\hookrightar
 \tag{5.5}
 \]
 
-The sum is finite by Theorem 5.1. This is a correspondence between degrees and orbits, rather than a new computation of any particular variety's point count. For projective spaces, Grassmannians and flag varieties, use the existing lesson [Counting over finite fields and the limit \(q\to1\)](https://kokunoyumeto.github.io/open-math-courses-public/courses/the-field-with-one-element/counting-over-finite-fields-and-the-limit-q-1.html).
+The sum is finite by Theorem 5.1. This is a correspondence between degrees and orbits, rather than a new computation of any particular variety's point count. For projective spaces, Grassmannians and flag varieties, use the existing lesson [Counting over finite fields and the limit \(q\to1\)](https://kokunoyumeto.github.io/open-mathematics-courses/courses/the-field-with-one-element/counting-over-finite-fields-and-the-limit-q-1.html).
 
 ## 6. Examples that fix the conventions
 

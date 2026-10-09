@@ -240,8 +240,8 @@ The direction matters: with \(\pi'=u\pi\), the source of \(\theta\) is the group
 
 For \(a\in\mathbf Z_p\), the binomial series
 
-\
-[a=(1+X)^a-1=\sum_{j\geq1}\binom aj X^j
+\[
+[a](X)=(1+X)^a-1=\sum_{j\geq1}\binom aj X^j
 \tag{13}
 \]
 

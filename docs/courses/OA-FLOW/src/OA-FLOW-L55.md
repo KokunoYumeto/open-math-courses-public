@@ -121,10 +121,10 @@ The relations \(w_hw_k=w_{hk}\) and
 ## The regular corner, with the Haar factor included
 
 Choose a faithful normal representation \(N\subseteq B(K)\). Represent \(M=\prod_Y N\) diagonally on \(\mathcal K=\bigoplus_YK\). The regular representation of \(P\) acts on \(L^2(G;\mathcal K)\), with
-\
- [\pi(a)\xi
+\[
+ [\pi(a)\xi](g,y)
    =\beta_{c(g,y)^{-1}}(a_{gy})\xi(g,y),\qquad
- u_r\xi=\xi(r^{-1}g,y).
+ [u_r\xi](g,y)=\xi(r^{-1}g,y).
  \tag{OS15}
 \]
 These formulas are first checked on finite-coordinate elementary vectors; the normal regular construction extends them to the entire Hilbert space. The vector-integration and tensor identification in [Haar conventions and Hilbert-valued integration](OA-FLOW-L24.md#oa-flow.grp.vectorintegration) are valid for arbitrary \(K\) and \(G\).

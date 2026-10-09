@@ -65,6 +65,85 @@ In degree zero on a supported module the intrinsic result is
 $\det(\mathcal I/\mathcal I^2)\otimes\operatorname{ann}_{\mathcal I}M$,
 as in the preceding lesson. Thus this calculation retains the determinant line, rather than identifying the inverse globally with an untwisted kernel. Derived tensor–Hom adjunction, followed by sheaf cohomology, proves (1.4). $\square$
 
+### Signed normal Koszul maps and ordered counits
+
+Here are the coefficient, density and ordering signs in Lemma 1.2. They also fix the closed counit used in proper duality below. Order the normal coordinates $t_1,\ldots,t_c$. Let $e_J$ be the ordered Koszul wedge in degree $-|J|$, and let $f_I(e_I)=1$ be its untwisted Hom dual in degree $|I|$. Put $s(I)=\sum_{i\in I}i$. The normal Koszul differential is
+
+\[
+\begin{gathered}
+d e_J=\sum_{j\in J}(-1)^{\operatorname{pos}_J(j)-1}
+ t_j e_{J\setminus\{j\}}.
+\end{gathered}
+\tag{1.5a}
+\]
+
+The Hom differential in cochain degree $r$ is $(-1)^{r+1}$ times its transpose. The structure Koszul complex shifted by $[-c]$ has differential $(-1)^c$ times the original one. The chain identification used in (1.5) is
+
+\[
+\begin{gathered}
+T(f_I)=(-1)^{s(I)+c|I|-|I|(|I|-1)/2}\\
+ e_{I^c}\otimes\det(\mathcal I/\mathcal I^2)^{-1}.
+\end{gathered}
+\tag{1.5b}
+\]
+
+The bottom coefficient is fixed by $f_\varnothing\mapsto e_{\{1,\ldots,c\}}$ times the inverse determinant. Inserting an index into $I$ on the Hom side removes it from $I^c$ on the structure Koszul side. The position signs, the displayed exponent difference, and the target shift $(-1)^c$ then give exactly the same coefficient for each $t_j$. This verifies the chain identity in every degree. Its top coefficient is positive in every codimension, since $s(\{1,\ldots,c\})=c(c+1)/2$ and the resulting exponent is $c(c+1)$. In two directions it reads
+
+\[
+\begin{gathered}
+(f_\varnothing,f_1,f_2,f_{12})\\
+\longmapsto(e_{12},-e_2,e_1,e_\varnothing)\\
+\otimes\det(\mathcal I/\mathcal I^2)^{-1}.
+\end{gathered}
+\tag{1.5c}
+\]
+
+The backward transfer has the inverse normal top-density line. Taking Hom from it supplies the normal top-density line, which cancels the inverse determinant in (1.5b). This is the explicit density cancellation in (1.5), and leaves the intrinsic supported-module expression $\det(\mathcal I/\mathcal I^2)\otimes\operatorname{ann}_{\mathcal I}M$ already stated above. Under a change of normal coordinates the two determinant factors transform inversely, so these maps glue.
+
+For one direction, $T(f_\varnothing)=e_1$ and $T(f_1)=e_\varnothing$ are both positive, and the shifted target differential is $-t$. The positive-$t$ two-term presentation in the following example replaces the degree-zero generator $e_1$ by $-e_1$ and keeps the degree-one generator $e_\varnothing$. Its differential is then $+t$. This is a separate presentation basis conversion; it changes neither the top coefficient of $T$ nor the closed counit.
+
+The one-normal-coordinate closed counit into $\mathcal O[1]$ is the degree-one Hom cochain sending $e_1$ to $1$, with coefficient $+1$. The ordered tensor of $c$ such counits uses the actual tensor–Hom rule
+
+\[
+\begin{gathered}
+(\phi_1\otimes\cdots\otimes\phi_c)\\
+(p_1\otimes\cdots\otimes p_c)\\
+=(-1)^{\sum_{a<b}|p_a||\phi_b|}
+ \prod_a\phi_a(p_a).
+\end{gathered}
+\tag{1.5d}
+\]
+
+At the top Koszul input every $|p_a|=-1$ and $|\phi_b|=1$. Hence the ordered closed counit has coefficient
+
+\[
+\varepsilon_c=(-1)^{c(c-1)/2}
+\tag{1.5e}
+\]
+
+in the untwisted top Hom frame. The normal density is contracted in that same order. Tensor–Hom adjunction and the shift totalization of successive closed adjunctions give precisely this ordered tensor; thus it is also the composition of their actual counits. In particular the positive top coefficient of the coefficient map $T$ alone is not the value of the ordered higher-codimension counit.
+
+The corresponding closed proper-dual map is equally explicit. If $P_t$ is the normal point Koszul resolution, side change fixes $t_j$ and the dual shift $[c]$ gives
+
+\[
+\begin{gathered}
+d_{DP_t}f_I\\
+=(-1)^{c+|I|+1}\sum_j t_j f_j\wedge f_I,\\
+H_t(e_J)\\
+=(-1)^{s(J)+|J|(|J|+1)/2}f_{J^c}.
+\end{gathered}
+\tag{1.5f}
+\]
+
+Substitution in (1.5a) verifies that $H_t$ is a chain map. Both its bottom and top coefficients are positive. Transposing the counit by finite-projective evaluation sends the normal generator to $\varepsilon_c f_{\{1,\ldots,c\}}$, and the same Koszul chain identity determines all remaining coefficients. Therefore its normal proper-dual comparison is
+
+\[
+\rho_i^{\mathrm{normal}}=\varepsilon_c H_t.
+\tag{1.5g}
+\]
+
+This retains the backward-transfer density and every ordering sign, and specifies the evaluation/counit map used in (4.3), rather than choosing a point-module endpoint self-duality. Tensor these finite normal matrices with the full coefficient complex and its Hom differential to get the same identification for bounded coefficients. Coordinate changes preserve the determinant contraction, so the calculation glues and respects composed closed embeddings.
+
 For example, on the line, $i^!M$ is the two-term complex $M\xrightarrow{x}M$ in degrees $0,1$. It follows that $i^!\mathcal O_{\mathbb A^1}=k[-1]$, whereas $i^!\delta_0=k$. Support and ordinary restriction have different effects on the degree.
 
 ## 2. Base change

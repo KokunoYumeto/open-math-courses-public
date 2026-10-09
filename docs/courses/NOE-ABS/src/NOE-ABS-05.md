@@ -331,7 +331,7 @@ The arithmetic conductor-discriminant theorem says, for a finite abelian extensi
  \mathfrak d_{L/K}=\prod_{\chi\in\widehat G}\mathfrak f(\chi),
 \]
 
-where \(\mathfrak f(\chi)\) is the finite Artin conductor ideal; the trivial character contributes the unit ideal. This formula is proved in Artin \(L\)-functions, conductors and discriminants, Theorem 21.5. Its proof first computes the conductor of the permutation representation and then decomposes the regular representation; for abelian \(G\), each irreducible has dimension one, giving exactly the displayed product. The finite conductor includes no infinite-place sign factor. Free source treatments are [Artin] and [Milne CFT, Chapter V, Theorem 3.27]. Identifying determinant factors with conductor ideals requires arithmetic information beyond the polynomial factorization.
+where \(\mathfrak f(\chi)\) is the finite Artin conductor ideal; the trivial character contributes the unit ideal. This formula is proved in [Artin \(L\)-functions, conductors and discriminants](../NT-CFT/artin-l-functions-conductors-and-discriminants.html), Theorem 21.5. Its proof first computes the conductor of the permutation representation and then decomposes the regular representation; for abelian \(G\), each irreducible has dimension one, giving exactly the displayed product. The finite conductor includes no infinite-place sign factor. Free source treatments are [Artin] and [Milne CFT, Chapter V, Theorem 3.27]. Identifying determinant factors with conductor ideals requires arithmetic information beyond the polynomial factorization.
 
 Local generators at every prime need not glue to one global generator. For number fields the resulting obstruction is a locally free module class. Three landmarks delimit the question:
 

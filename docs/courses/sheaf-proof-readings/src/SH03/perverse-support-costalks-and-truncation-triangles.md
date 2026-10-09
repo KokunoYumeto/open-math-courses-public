@@ -64,8 +64,8 @@ The calculation used a ring of finite global dimension and retained all maps. It
 
 For \(p:\mathbb Z\to\mathbb Z\), put
 
-\
- p^*(s)=-p(s)-s,\qquad p[a=p(a+s).
+\[
+ p^*(s)=-p(s)-s,\qquad p[a](s)=p(a+s).
  \tag{1}
 \]
 
@@ -448,7 +448,7 @@ The first object has degree zero and the second degree one; neither has negative
 
 Test the proposed targets \(p[d]\) for \(h^{-1}F\) in the lower cut and \(p[-d]\) for \(h^!F\) in the upper cut, when \(Y\) is \(d\)-dimensional. Use \(X=\mathbb R^3\), \(Y\) a line, and a single ambient stratum. Verify the corrected targets (19) in both tests.
 
-**Solution.** First take \(p(s)=-s\) and \(F=k_X[3]\). Its exceptional restriction to the sole three-dimensional stratum has degree \(-3=p(3)\), so (10) puts it in the lower cut. On the line \(h^{-1}F=k_Y[3]\) has degree \(-3\), below the proposed lower bound \(p1=p(2)=-2\). Thus that assertion fails.
+**Solution.** First take \(p(s)=-s\) and \(F=k_X[3]\). Its exceptional restriction to the sole three-dimensional stratum has degree \(-3=p(3)\), so (10) puts it in the lower cut. On the line \(h^{-1}F=k_Y[3]\) has degree \(-3\), below the proposed lower bound \(p[1](1)=p(2)=-2\). Thus that assertion fails.
 
 Second take \(p=0\) and \(F=k_X\), in the ordinary upper cut. The relative orientation line is constant here and \(h^!F=k_Y[-2]\), with cohomology in degree two. The proposed perversity \(p[-1]\) is still zero, so the proposed upper cutoff zero fails.
 

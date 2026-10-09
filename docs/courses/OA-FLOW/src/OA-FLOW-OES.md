@@ -292,9 +292,9 @@ This is a group by composition and inverse. The two inner changes made in (OES1.
                                                                   \tag{OES3.d}
 \]
 To construct it, choose any faithful normal representation \(\rho:N\to B(H)\). Its Hilbert space can have arbitrary dimension. In the regular representation on \(L^2(\mathbb R,H)\), write
-\
- [\pi_\rho(x)\xi=\rho(\theta_{-r}(x))\xi(r),
- \qquad u_s\xi=\xi(r-s).
+\[
+ [\pi_\rho(x)\xi](r)=\rho(\theta_{-r}(x))\xi(r),
+ \qquad [u_s\xi](r)=\xi(r-s).
                                                                   \tag{OES3.e}
 \]
 The representation \(\rho\circ b\) is again faithful and normal. Exact equivariance gives
@@ -444,14 +444,14 @@ The action preserves \(Z\). Its continuity makes \(\partial z\) strongly continu
 proves the cocycle law. Centrality gives \(\partial(zw)=(\partial z)(\partial w)\), so \(B^1_\theta\) is a subgroup. This fixes the coboundary convention.
 
 For completeness, the normal realization from [RCC, Section 6](OA-FLOW-RCC.md#rcc-6) works as follows. Represent \(N\) faithfully and normally on an arbitrary Hilbert space \(K\), and use the regular model
-\
- [\pi(x)\xi=\theta_{-r}(x)\xi(r),\qquad
- u_s\xi=\xi(r-s).
+\[
+ [\pi(x)\xi](r)=\theta_{-r}(x)\xi(r),\qquad
+ [u_s\xi](r)=\xi(r-s).
 \]
 The unitary multiplication operator
-\
- [D_c\xi=c_{-r}^*\xi(r),\qquad
- D_c^*\xi=c_{-r}\xi(r)
+\[
+ [D_c\xi](r)=c_{-r}^*\xi(r),\qquad
+ [D_c^*\xi](r)=c_{-r}\xi(r)
  \tag{OES4.f}
 \]
 is defined on all of \(L^2(\mathbb R,K)\). For each fixed vector, continuity supplies measurable images on compact intervals by step approximation. Apply this to elementary sections and extend by their \(L^2\) density; the pointwise norm identity and the inverse field give inverse isometries. This construction requires no separability of \(K\).
@@ -715,10 +715,10 @@ Use primes for its crossed product \(P'\), translations \(u'_s\), dual action \(
  \tag{OES6.b}
 \]
 To justify the full extension, take a faithful normal representation \(\rho'\) of \(N'\). Its pullback \(\rho'f\) is a faithful normal representation of \(N\), and the regular coefficients satisfy
-\
- [\pi_{\rho'f,\theta}(x)\xi
+\[
+ [\pi_{\rho'f,\theta}(x)\xi](r)
  =\rho'(f(\theta_{-r}(x)))\xi(r)
- =\pi_{\rho',\theta'}(f(x))\xi.
+ =[\pi_{\rho',\theta'}(f(x))\xi](r).
 \]
 The translations are the same. [NR4's full normal representation-independence proof](OA-FLOW-NR.md#oa-flow.nr.4), using arbitrary amplification and faithful compression, therefore produces (OES6.b). Its range contains all named generators of \(P'\), and the same construction for \(f^{-1}\) provides its normal inverse. Generator uniqueness shows that these two maps compose to the respective identities.
 
@@ -848,17 +848,17 @@ The two constant isometries \(S_0e_j=e_{2j}\), \(S_1e_j=e_{2j+1}\) have orthogon
 ### The whole crossed product and its actual dual weight
 
 In the regular representation on \(L^2(\mathbb R_r\times\mathbb R_q;K)\), the specified generators act by
-\
- [\pi(x)\xi=x(q-r)\xi(r,q),\qquad
- u_s\xi=\xi(r-s,q).
+\[
+ [\pi(x)\xi](r,q)=x(q-r)\xi(r,q),\qquad
+ [u_s\xi](r,q)=\xi(r-s,q).
                                                                   \tag{OES7.4}
 \]
 Use coordinates \(y=q-r\), \(z=q\), and define
 \(W\xi(y,z)=\xi(z-y,z)\).
 The inverse is \(W^*\eta(r,q)=\eta(q-r,q)\). The absolute Jacobian is one, so scalar change of variables proves that these are inverse unitaries on the whole space. In the new coordinates,
-\
+\[
  W\pi(x)W^*=M_x\otimes I_z,\qquad
- Wu_sW^*=U_s\otimes I_z,\qquad [U_s\eta=\eta(y+s).
+ Wu_sW^*=U_s\otimes I_z,\qquad [U_s\eta](y)=\eta(y+s).
                                                                   \tag{OES7.5}
 \]
 All constant \(B(K)\)-operators, all scalar multipliers, and all translations occur. The [proved scalar Weyl-pair theorem](OA-FLOW-ND.md#nd-weyl-proof) and [tensor commutant theorem](OA-FLOW-ND.md#nd-tensor) therefore identify the entire generated algebra with

@@ -116,7 +116,7 @@ More generally, the same test computation proves
  F[g(\cdot-b)]=e^{-ib\xi}Fg,\qquad
  F[e^{icx}g(x)]=(Fg)(\xi-c).
 \]
-For the second identity use \(e^{icx}F\phi(x)=F\phi(\cdot+c)\), followed by the frequency substitution. These formulas hold for every tempered distribution by the same transposes, whose test maps are continuous.
+For the second identity use \(e^{icx}F\phi(x)=F[\phi(\cdot+c)](x)\), followed by the frequency substitution. These formulas hold for every tempered distribution by the same transposes, whose test maps are continuous.
 
 ## The critical exponent gives a logarithm
 

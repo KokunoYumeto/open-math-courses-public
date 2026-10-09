@@ -25,16 +25,16 @@ It identifies the standard D-module t-structure with the middle perverse t-struc
 \operatorname{Mod}_{\rm rh}(\mathcal D_X)
 \simeq\operatorname{Perv}_{\rm alg}(X^{\rm an},\mathbb C).        \tag{1.2}
 \]
-For every algebraic morphism $f:X\to Y$, the proof below establishes actual star direct comparison and ordinary inverse comparison, open shriek comparison, proper extraordinary comparison with its adjunction normalization, and every intermediate extension. The full four-map $f_*,f_!,f^!,f^*$, evaluation-induced holonomic/Verdier duality, external-product, tensor and internal-Hom compatibility assertions also belong to the full correspondence; their remaining proofs are identified below and are not used in the equivalence argument. Here sheaf $f^*$ means inverse image; D-module $f^*$ is the dual-defined functor fixed in [Adjunctions, base change and the projection formula](adjunctions-base-change-and-the-projection-formula.md).
+For every algebraic morphism $f:X\to Y$, the proof below establishes actual star direct comparison and ordinary inverse comparison, open shriek comparison, proper extraordinary comparison with its adjunction normalization, and every intermediate extension. Theorems 1.18–1.23 below prove the full four-map $f_*,f_!,f^!,f^*$, evaluation-induced holonomic/Verdier duality, external-product, tensor and internal-Hom compatibilities, with every normalization, unit, counit and composition map. Here sheaf $f^*$ means inverse image; D-module $f^*$ is the dual-defined functor fixed in [Adjunctions, base change and the projection formula](adjunctions-base-change-and-the-projection-formula.md).
 
 The Riemann–Hilbert correspondence is due to Kashiwara and to Mebkhout; for statements see M. Kashiwara and P. Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), §9.2, and V. Ginzburg, [*Lectures on D-modules*](https://math.berkeley.edu/~nadler/ginzburg.dmodules.pdf). Bhatt–Blickle–Lyubeznik–Singh–Zhang, §2, the covariant Riemann-Hilbert theorem, states the same normalization and specifies algebraic constructibility before the theorem. These freely accessible works are reading material. The complete proof of (1.1) and (1.2) is given below from exact earlier programme proofs.
 
-The remaining tensor compatibility uses the tensor convention already fixed:
+Tensor compatibility uses the tensor convention already fixed:
 \[
 M\otimes^!N=\Delta_X^!(M\boxtimes N)
 \simeq(M\otimes_{\mathcal O_X}^L N)[-d_X].
 \]
-On sheaves it is $\Delta_{X^{\rm an}}^!(F\boxtimes G)$. Its full compatibility will follow once external-product and arbitrary extraordinary comparison are proved; neither is assumed in the equivalence argument. The unit $\mathcal O_X[d_X]$ becomes the dualizing sheaf $\mathbb C_X[2d_X]$. Taking the dual tensor gives compatibility with the corresponding Hom operation. One should not replace these operations by an unshifted ordinary tensor without changing the normalization.
+On sheaves it is $\Delta_{X^{\rm an}}^!(F\boxtimes G)$. Theorems 1.20, 1.22 and 1.23 prove this compatibility from the actual exterior and diagonal maps. The unit $\mathcal O_X[d_X]$ becomes the dualizing sheaf $\mathbb C_X[2d_X]$. Taking the dual tensor gives compatibility with the corresponding Hom operation. One should not replace these operations by an unshifted ordinary tensor without changing the normalization.
 
 Theorem 1.17 and the intermediate-extension proof below send a minimal extension of an irreducible regular connection $E$ on a smooth $U$ to
 \[
@@ -696,11 +696,682 @@ Every singularity of \(Z\) is allowed. For irreducible \(L\) this identifies the
 
 
 
-### Remaining full compatibility proofs
+### Evaluation-induced duality and full operation compatibility
 
-Theorems 1.2–1.17 prove full derived algebraic equivalence, finite algebraic constructibility, perverse t-exactness, star direct comparison for every algebraic map, ordinary inverse comparison, open shriek comparison, proper extraordinary comparison, every locally closed intermediate extension and singular IC. All singular supports, bounded complexes and nonquasiprojective varieties are included.
+Work componentwise on smooth separated finite-type complex varieties, with no quasiprojectivity assumption. Put \(d_X=\dim X\), \(F_X=\operatorname{DR}_X\), \(D_X=\mathbb D_X\), and \(\mathbf D_X=R\mathcal Hom_{\mathbf C}(-,\omega_X^{\mathrm{top}})\), with positive complex orientation \(\omega_X^{\mathrm{top}}=\mathbf C_X[2d_X]\). Complexes have the cohomological Koszul signs.
 
-General shriek direct image and arbitrary extraordinary inverse, the evaluation-induced DR–Verdier map including its closed-normal normalization, external products, both tensor conventions and internal Hom still require their complete compatibility arguments. The adjunction-normalized proper comparison above does not by itself identify an independently defined evaluation map. Full analytic proper-image regularity is a separate theorem and is not an input to the proof here.
+Theorems 1.2–1.17 above supply full equivalence, higher morphisms, supported gluing, actual direct and ordinary inverse maps, and the proper adjunction mate. The remaining inputs are completely proved earlier: finite-projective evaluation and holonomic duality; transfer evaluation, residue trace, arbitrary proper duality and operator adjunctions, Sections 4–5; right Spencer signs, solution identity and closed normal calculation; proper coherent/quasi-coherent comparison, Lemmas 3.1a–b and Theorem 3.1c; and classical sheaf orientations, evaluation, proper-support adjunctions, finite costalks and currying, Appendices C,F,H,J,K. The relative Chow modification, Lemma 4.0 and resolution preserving a smooth dense open supply the geometric reduction below. Full analytic proper-image regularity is not an input.
+
+We must specify the actual orientation normalization of evaluation. Put
+
+\[
+q_X=(2\pi i)^{-d_X}.
+\tag{1.va}
+\]
+
+The raw holomorphic Poincare map \(\mathbf C_X\longrightarrow\Omega^\bullet_{X^{an}}\) sends \(1\) to the constant function \(1\). The orientation identification used in the *trace-normalized evaluation* below is \(q_X\) times its inverse, shifted by \(2d_X\). Thus it is an explicitly given evaluation map with an explicitly given scalar, not an isomorphism selected after an equivalence has been established. An unscaled Poincare evaluation is another natural map; it differs by \(q_X^{-1}\), and must not silently be called the residue-normalized map.
+
+#### The chain evaluation and the closed normal calculation
+
+Write \(\mathscr D_X=\mathcal D_{X^{an}}\) and \(\mathscr O_X=\mathcal O_{X^{an}}\). Locally take a bounded finite projective operator resolution \(P\) of \(M\). Such resolutions exist by the finite-projective operator proof linked above. Let
+
+\[
+\begin{gathered}
+A=\mathcal Hom_{\mathscr D_X}(P^{an},\mathscr O_X),\\
+B=\Omega^\bullet_{X^{an}}\otimes_{\mathscr O_X}P^{an}.
+\end{gathered}
+\]
+
+Finite projective evaluation gives an intrinsic map \(A\otimes B\to\Omega^\bullet\). Before shifting, its formula is
+
+\[
+\begin{gathered}
+\phi\otimes(\alpha\otimes p)\longmapsto\\
+(-1)^{|\phi||\alpha|}\alpha\,\phi(p).
+\end{gathered}
+\tag{1.vb}
+\]
+
+Here evaluation is zero unless the degrees of \(\phi\) and \(p\) sum to zero. The Hom differential is \(d\phi=d_{\mathcal O}\phi-(-1)^{|\phi|}\phi d_P\). The coefficient differential in \(B\) is the connection differential. Differentiating \(\alpha\phi(p)\) and using that \(\phi\) is operator linear proves the chain identity; the two terms involving \(d_P\) cancel with the displayed Hom sign. This also proves the identity for positive-order operator entries of a differential. The canonical shift map \(A[a]\otimes B[b]\to(A\otimes B)[a+b]\) multiplies a homogeneous unshifted \(u\) by \((-1)^{b|u|}\). Consequently the shifted evaluation \(A[d_X]\otimes B[d_X]\to\Omega^\bullet[2d_X]\) has sign \((-1)^{|\phi|(|\alpha|+d_X)}\).
+
+Compose with \(q_X\) times the shifted Poincare inverse and the positive orientation. Using the *actual* solution identity \(A[d_X]=F_XD_XM\), curry this pairing to obtain
+
+\[
+v_M:F_XD_XM\longrightarrow\mathbf D_XF_XM.
+\tag{1.vc}
+\]
+
+Changing \(P\) gives the same map: a comparison of finite projective resolutions respects ordinary evaluation, its Hom comparison and the Spencer augmentation; homotopic comparisons give the corresponding Hom homotopy. Coordinate changes respect the density side change and wedge contraction. These facts glue (1.vc) and make it natural in \(M\), with its usual contravariant complex signs. They also show compatibility with finite triangles. Finite-projective double evaluation and ordinary double currying give the bidual equation
+
+\[
+\begin{gathered}
+v_{D_XM}\,F_X(\mathrm{bid}_M)\\
+=\mathbf D_X(v_M)\,\mathrm{bid}_{F_XM}.
+\end{gathered}
+\tag{1.vd}
+\]
+
+Both sides use the same scalar \(q_X\); dualizing does not conjugate this complex scalar. This is an equation of the actual evaluation maps.
+
+For a connection \(E\) with local system \(L\), use the positive **untwisted** ordered wedge dual frame of the holonomic duality lesson Proposition 5.1: \(f_I(e_I)=1\), and the top zero-order representative \(f_{\{1,\ldots,d_X\}}\) represents the positive dual connection frame. The actual solution map is the right-Spencer augmentation followed by density cancellation and finite-projective evaluation. It is not the flat-frame identity. The chain calculation below gives
+
+\[
+\begin{gathered}
+\sigma_d=(-1)^{d(d+1)/2},\\
+\varepsilon_d=(-1)^{d(d-1)/2},\\
+v_E=\sigma_{d_X}q_X\operatorname{id}_{L^\vee[d_X]}.
+\end{gathered}
+\tag{1.ve}
+\]
+
+For a shifted connection \(E[k]\), the positive untwisted top representative in the actual complex \(\mathcal Hom(P[k],\mathcal D)[d_X]\) gives coefficient \(\sigma_{d_X}(-1)^{d_Xk}q_X\). The canonical source-shift identification with \(\mathcal Hom(P,\mathcal D)[d_X][-k]\) itself has coefficient \((-1)^{d_Xk}\) on that top representative. One must specify which frame is used. The ordered tensor–Hom frame differs from the untwisted frame by \(\varepsilon_d\). In particular the structural extraordinary-unit comparison is still \(q_X\); it includes the ordinary structural left mate and this determinant conversion, as calculated in the signed chain calculation. No additional scalar is inserted into the right-Spencer augmentation or into (1.va).
+
+We next compute its normal directions. This calculation is needed before identifying a supported duality map with a Verdier map. For the origin in a disc with coordinate \(z\), use
+
+\[
+\begin{gathered}
+P=[\mathcal D e_1\xrightarrow{\;\cdot z\;}\mathcal D e_0],\\
+\text{in degrees }[-1,0].
+\end{gathered}
+\]
+
+for the point module. Its Hom differential is \(-z\); the solution class is \(e_1^\vee\), in unshifted degree one. The normal DR class is \(dz\otimes e_0\). On the punctured disc the homotopy for its zero restriction is \(z^{-1}dz\otimes e_1\): the normal form has degree one, so its coefficient differential acquires a minus sign, and the DR shift by one reverses it again. The resulting coefficient differential is \(+dz\otimes e_0\). Pairing this homotopy with \(e_1^\vee\) by (1.vb) and the two shifts gives the sign \((-1)^{1(1+1)}=+1\). The supported pairing is thus the local cohomology class
+
+\[
+[dz/z],\qquad \int_{|z|=\epsilon}^{+}dz/z=2\pi i.
+\tag{1.vf}
+\]
+
+The same computation with a tangential coefficient gives its signed finite evaluation tensor this class. The signed chain calculation below retains the tangential shifts and the ordered dual bases. For \(c\) ordered normal variables, tensor the \(c\) displayed two-term resolutions. Write \(e_I=e_{1,1}\otimes\cdots\otimes e_{c,1}\) and \(\phi_I=e_{1,1}^{\vee}\otimes\cdots\otimes e_{c,1}^{\vee}\) for the degree \(-c\) and degree \(c\) top generators. The tensor–Hom evaluation rule is
+
+\[
+\begin{gathered}
+(\phi_1\otimes\cdots\otimes\phi_c)\\
+(p_1\otimes\cdots\otimes p_c)\\
+=(-1)^{\sum_{i<j}|p_i||\phi_j|}\\
+\prod_i\phi_i(p_i).
+\end{gathered}
+\tag{1.vf-a}
+\]
+
+Thus \(\phi_I(e_I)=(-1)^{c(c-1)/2}\). The normal top form and transfer conormal determinant are contracted in that same order. Passing from the tensor of one-variable Cech/form classes to the ordered Cech–form totalization contributes \((-1)^{c(c-1)/2}\); the displayed dual Koszul evaluation contributes the identical sign. They cancel. Equivalently each exchange of two normal directions exchanges their two degree-one factors, so its total sign is positive. In the displayed ordered tensor–Hom top basis, the raw normal supported pairing is the iterated connecting class
+
+\[
+\begin{gathered}
+\left[\frac{dz_1}{z_1}\wedge\cdots\wedge\frac{dz_c}{z_c}\right],\\
+\text{positive period }(2\pi i)^c.
+\end{gathered}
+\tag{1.vg}
+\]
+
+In the untwisted dual top basis \(f_{\{1,\ldots,c\}}\), its coefficient is instead \(\varepsilon_c\) times (1.vg). The actual ordered closed trace and closed proper-dual comparison use the tensor–Hom coefficient \(\varepsilon_c\); the signed chain calculation below gives their chain matrices. This is the distinction that makes the closed evaluation square commute. This computation retains the determinant line; changing normal coordinates multiplies the top form and inverse transfer determinant by inverse factors. The expression is consequently intrinsic. It agrees with the positive real orientation: (1.vf) is the positive circle, and products of the real degree-two orientation classes have positive interchange sign. C.4–C.5 and F.19 of the exact sheaf provider identify that class with the actual closed-support counit.
+
+For \(i:Z\hookrightarrow X\) smooth closed of codimension \(c\), \(d_X=d_Z+c\). Multiplication by \(q_X\) changes the raw factor into
+
+\[
+q_X(2\pi i)^c=q_Z.
+\tag{1.vh}
+\]
+
+Combining the explicit algebraic closed duality (4.3), the closed DR determinant contraction and F.6's actual sheaf evaluation exchange therefore gives the commuting square
+
+\[
+\begin{CD}
+F_XD_Xi_*E @>{v_{i_*E}}>> \mathbf D_X F_Xi_*E\\
+@V{\sim}VV @VV{\sim}V\\
+i_*F_ZD_ZE @>{i_*v_E}>> i_*\mathbf D_ZF_ZE.
+\end{CD}
+\tag{1.vi}
+\]
+
+This is first the displayed normal calculation with coefficient evaluation. For general bounded coherent \(E\), finite local operator resolutions of the entire complex and their actual evaluation maps make it a termwise statement. The closed Hodge/dual matrices of the signed chain calculation tensor those coefficient complexes with their full Hom differentials; the claim is not a zero-map inference from cohomology modules. It is not inferred from an equality of endpoints. Open restriction also commutes with (1.vc), since both dimension and \(q_X\) are unchanged.
+
+#### Invertibility on every singular support
+
+**Theorem 1.18 (evaluation-induced Verdier duality).** The map (1.vc) is an isomorphism for every bounded regular holonomic complex, on every smooth separated complex variety, every singular support and every bounded complex, and satisfies (1.vd).
+
+**Proof.** Theorem 1.2 gives finite generation by \(a_*E\), where \(a:S\hookrightarrow X\) is smooth affine locally closed and \(E\) is a regular connection. Algebraic duality, Lemma 1.9 and Theorem 1.10, Theorem 1.4, and the actual sheaf H.17/J.19 exchanges give, respectively, the two endpoints
+
+\[
+\begin{gathered}
+F_XD_Xa_*E=a_!L^\vee[s],\\
+\mathbf D_XF_Xa_*E=a_!L^\vee[s],\\
+s=\dim S.
+\end{gathered}
+\tag{1.vj}
+\]
+
+Factor \(a\) as closed in an ambient open, then open. Open restriction of the *map* \(v_{a_*E}\), followed by the closed calculation (1.vi), identifies its restriction to \(S\) with \(\sigma_s q_S\) times ordinary finite evaluation in the positive untwisted dual-connection frame. This scalar is nonzero. Both objects in (1.vj) are in the essential image of the fully faithful sheaf functor \(a_!\): closed pushforward and open extension by zero are fully faithful, with their actual restriction adjunctions. Hence their morphism is determined by that restriction, and \(v_{a_*E}\) is an isomorphism. Its construction commutes with triangles and shifts. Two out of three and the finite generation prove the result for every input, with all its attaching maps retained. Equation (1.vd) was already a chain evaluation identity. No analytic holonomic duality theorem has entered. ∎
+
+#### Proper duality uses the same trace-normalized evaluation
+
+**Theorem 1.19 (proper evaluation and trace).** The actual proper operator duality, de Rham direct map and trace-normalized evaluation commute. **Proof.** Let \(\rho_f:f_*D_XM\to D_Yf_*M\) denote the exact programme proper-duality comparison, formed from operator evaluation followed by its actual residue trace. There is an actual sheaf proper exchange \(Rf_*\mathbf D_XK\to\mathbf D_YRf_*K\), also evaluation followed by the proper counit, by H.16–H.17 and classical biduality. In the square put \(A_f=F_Yf_*D_XM\), \(B_f=F_YD_Yf_*M\), \(C_f=Rf_*\mathbf D_XF_XM\), and \(E_f=\mathbf D_YRf_*F_XM\). We claim that the square made from \(\rho_f\), the actual \(\eta_f\), and \(v\) commutes:
+
+\[
+\begin{CD}
+A_f @>{F_Y\rho_f}>> B_f\\
+@V{Rf_*v_M\,\eta_{f,D_XM}}VV @VV{v_{f_*M}}V\\
+C_f @>>> E_f.
+\end{CD}
+\tag{1.vk}
+\]
+
+On the lower right, include the dual of \(\eta_{f,M}\) in the displayed identification. The bottom map is the actual proper evaluation exchange, not a chosen endpoint isomorphism.
+
+Here are the trace and reduction details of this claim. For a smooth closed embedding it is (1.vi), with coefficient Hom evaluation instead of just a connection. For \(p:\mathbf P^r\times Y\to Y\), the operator trace is the ordered top Cech/form residue (4.4), equal to one on the displayed top density. Under the actual forms comparison its positive complex-oriented period is \((2\pi i)^r\). The positive sign in dimension one can be checked on the actual ordered cover \((U_0,U_\infty)\): choose a radial partition function \(\rho_\infty\) increasing from zero to one. The cocycle \([dz/z]\) represents \(d\rho_\infty\wedge dz/z\). With \(z=re^{it}\), this is \(i\rho_\infty'(r)dr\wedge dt\), and the positive complex orientation is \(r\,dr\wedge dt\); its integral is \(2\pi i\). This is the same sign fixed in Theorem 1.14. For general \(r\), represent the ordered density by its ordered local-cohomology connecting class at the coordinate origin in the standard affine chart. Formula (1.vg) computes that class without selecting an arbitrary generator of top cohomology. Its image in absolute compact cohomology has the same evaluation under the structural trace, because the actual closed counit and structural counit compose (F.19). Each positive point orientation has structural trace one by F.5. Thus its period is exactly \((2\pi i)^r\); the normal determinant/Cech signs in (1.vg) also fix the order in (4.4). Coefficients pulled back from \(Y\) do not change this normal calculation. Consequently
+
+\[
+q_{\mathbf P^r\times Y}(2\pi i)^r=q_Y
+\tag{1.vl}
+\]
+
+identifies the operator residue pairing with the sheaf evaluation followed by its positive trace.
+
+This trace calculation proves the entire evaluation square, not only its value on a cohomology generator. In the finite free models of operator proper duality, a Hom cochain evaluates a coefficient against a top Cech density; all other total degrees have trace zero. Restriction of coefficient germs, relative/horizontal Spencer totalization, and (1.vb) give exactly that same cochain followed by the analytic period trace. Integration by parts annihilates a derivative term: its only putative residue has original exponent zero, whose derivative coefficient is zero; on the sheaf side it is a compact-support coboundary. Thus the calculation respects every positive-order operator entry and all Hom differentials. The equality is termwise natural on finite free complexes, and projective summands preserve it.
+
+For completeness, passage to coherent inputs retains equality of derived maps of **entire bounded complexes**. The signed chain calculation below constructs a strict bounded coherent representative \(K_0^\bullet\) in a fixed interval \([u,w]\), and degreewise surjective induced-complex resolutions
+\(0\to K_{j+1}^\bullet\to I(F_j^\bullet)\to K_j^\bullet\to0\), with every row still in \([u,w]\). Here \(I(F)=\mathcal D_X\otimes_{\mathcal O_X}F\); its coherent coefficient complexes have finite local coefficient resolutions. Let \(P_N\) be the finite totalization of the first \(N\) induced rows, retaining their vertical operator differentials and the horizontal resolution maps. There is the actual triangle
+
+\[
+\begin{gathered}
+K_N^\bullet[N-1]\longrightarrow P_N\\
+\longrightarrow K_0^\bullet\longrightarrow K_N^\bullet[N].
+\end{gathered}
+\tag{1.vl-a}
+\]
+
+Denote the upper-left functor in (1.vk) by \(A(M)=F_Yp_*D_XM\), and its lower-right functor by \(B(M)=\mathbf D_YRp_*F_XM\), including the proper de Rham identification. They are contravariant exact functors. Let \(\delta\) be the difference of the two routes. The termwise trace/evaluation calculation gives \(\delta_{P_N}=0\), including maps between induced coefficient complexes: the explicit induction counit and transfer formula proving this are recorded below. Naturality and the Hom exact sequence for the image of (1.vl-a) under \(B\) therefore factor \(\delta_M\) through
+
+\[
+B(K_N^\bullet)[-N]\longrightarrow B(M).
+\tag{1.vl-b}
+\]
+
+There is a uniform lower bound \(a\) for \(B(K_N^\bullet)\), independent of \(N\): the fixed interval \([u,w]\), the module DR bound, proper cohomology bound, and bounded topological dualizing model give that bound. Also \(A(M)\) has some fixed upper bound \(t\). For \(a+N>t\), the target factor is in \(D^{\ge a+N}\) and \(A(M)\) is in \(D^{\le t}\), so its Hom group from \(A(M)\) is zero. Thus \(\delta_M=0\) as a derived morphism. This argument applies directly to the whole bounded input. Equality on its cohomology modules followed by truncation triangles would not justify this conclusion.
+
+Closed embeddings and projective-product projections factor every projective smooth-source/smooth-target map. Associativity of transfer evaluation and composition of the actual residue traces, already proved in the adjunctions lesson, and of the actual sheaf traces H.3/H.5 extend (1.vk) to those maps.
+
+For an arbitrary proper \(f\), first descend the **structural trace**, and then retain its coefficient evaluations. Write \(I_T^!=\mathcal O_T[d_T]\), \(\theta_T:F_TI_T^!\to\omega_T^{\mathrm{top}}\) for the flat-frame map with scalar \(q_T\), and \(\tau_f^{\mathrm{op}}:f_*I_X^!\to I_Y^!\) for the actual trace of the adjunctions lesson Lemma 4.5/Theorem 4.7. The trace statement already proved above for projective maps is
+
+\[
+\begin{gathered}
+\theta_Y F_Y(\tau_f^{\mathrm{op}})\\
+=\tau_f^{\mathrm{sh}}\,Rf_*(\theta_X)\,\eta_{f,I_X^!},
+\end{gathered}
+\tag{1.vl-c}
+\]
+
+where \(\tau_f^{\mathrm{sh}}:Rf_*\omega_X^{\mathrm{top}}\to\omega_Y^{\mathrm{top}}\) is the actual proper counit. The scalar in \(\theta_T\) is the orientation normalization (1.va). In its evaluation/adjunction expression the structural left-mate coefficient \(\varepsilon_{d_T}\) cancels the shifted connection-evaluation coefficient \(\varepsilon_{d_T}q_T\); it must not be inferred from the erroneous unshifted connection identity replaced in (1.ve).
+
+Work over an affine target open, and on one integral open-and-closed component of the smooth \(X\). Relative Chow applied to \(X\), followed by projective resolution preserving its smooth dense open, supplies \(h:W\to X\) with \(W\) smooth, \(d_W=d_X\), \(h\) projective birational, and \(fh\) projective. The ordinary inverse of the connection \(I_X^!\) is \(h^*I_X^!=I_W^!\): this follows directly from the transfer formula on the locally free coefficient \(\mathcal O_X\), the zero dimension difference, and the dual-connection computation. Let
+\(u_h:I_X^!\to h_*I_W^!\) be its actual ordinary adjunction unit. On the open where \(h\) is an isomorphism both \(u_h\) and \(\tau_h^{\mathrm{op}}\) are identity maps. Therefore
+\(\tau_h^{\mathrm{op}}u_h=\mathrm{id}_{I_X^!}\) everywhere: an endomorphism of this connection is a locally constant scalar, and restriction to a nonempty dense open is injective. On sheaves the analogous unit and positive trace compose to the identity for the same reason.
+
+Theorem 1.15 identifies \(u_h\) with that sheaf unit. More explicitly, its ordinary inverse comparison \(\gamma_h\) is between two copies of the shifted constant local system on the connected \(W\); it is the identity on the isomorphism open by its actual adjunction normalization, hence everywhere. Since \(q_W=q_X\), replacing the flat-frame identifications by \(\theta_W,\theta_X\) retains this unit equation. Actual trace transitivity now gives
+
+\[
+\tau_f^{\mathrm{op}}
+=\tau_{fh}^{\mathrm{op}}\,f_*(u_h).
+\tag{1.vl-d}
+\]
+
+Indeed \(\tau_{fh}^{\mathrm{op}}=\tau_f^{\mathrm{op}} f_*\tau_h^{\mathrm{op}}\), and the composite with \(f_*u_h\) is the identity just proved. The identical sheaf equation holds. Apply the already projective trace comparisons for \(h\) and \(fh\), the unit equation, and the actual composition to (1.vl-d). This proves (1.vl-c) for \(f\). Finite open-and-closed components and target restriction glue these identities. Thus the structural trace comparison includes every nonprojective proper map.
+
+Here is the passage from this trace identity to the whole evaluation square (1.vk), including its homotopies. The adjunctions lesson (4.22)–(4.22a) tensors \(\tau_f^{\mathrm{op}}\) with the target operator factor and applies the intrinsic transfer/Spencer change. In target coordinates its value on a transfer monomial \(\partial^a\) is
+\(P\otimes\partial^a\mapsto\sum_{b\leq a}(-1)^{|b|}\binom ab\partial^{a-b}\otimes\partial^bP\).
+The generator is sent to \(1\otimes P\); the sum formula retains both commuting target actions, the derivative terms cancel the Spencer differential, and the intrinsic generator/action rule glues. Analytic coefficient restriction and the evaluation (1.vb) preserve this same formula and every differential. Consequently equality (1.vl-c), tensored with the target factor, gives equality of the **transfer trace maps**, with any chosen trace homotopy carried through these functors.
+
+For a coherent coefficient sheaf \(G\), use the induced module \(I(G)=\mathcal D_X\otimes_{\mathcal O_X}G\). A Hom element is determined by its coefficient generator map \(g_0:G\to T_f\); its operator-linear extension is induction of \(g_0\) followed by the induction counit, exactly (4.26). Resolve \(G\) locally by finite free coefficient modules. On each term the two routes in (1.vk) pair that generator with the same density and then apply the transfer trace just compared. The zero-column coefficient is \(+1\) in (4.22a); positive-order entries retain the preceding binomial formula and its differential homotopies. The finite coefficient evaluation and its Koszul signs are (1.vb). This proves equality of the natural derived maps on \(I(G)\), including maps between induced coefficient complexes, and glues on overlaps. No constructibility or invertibility of \(v_{I(G)}\) is asserted or needed here.
+
+Finally apply the whole-complex induced approximation (1.vl-a), constructed in the signed chain calculation, to the entire bounded coherent input. Its finite totalizations retain all differentials between the induced rows and all vertical coefficient differentials. The equality just proved includes those maps, so \(\delta_{P_N}=0\). The same factorization (1.vl-b) and uniform bound for the fixed-width complexes \(K_N^\bullet\) give \(\delta_M=0\). This proves (1.vk) on the full regular subcategory, including every singular support and arbitrary bounded attaching data. It does not use a zero-map induction through truncation triangles or analytic proper-image regularity.
+
+#### All shriek direct and extraordinary inverse maps
+
+**Theorem 1.20 (all four maps with adjunctions).** For every algebraic map, de Rham identifies both shriek direct and extraordinary inverse with their actual units, counits and composition. **Proof.** Use the exact operator definitions \(f_!=D_Yf_*D_X\) and \(f^!=D_Xf^*D_Y\), with their actual bidual identifications. The equality for the second expression follows from the original definition \(f^*=D_Xf^!D_Y\). Define
+
+\[
+\begin{gathered}
+\xi_f:F_Yf_!M\\
+\xrightarrow{v}\mathbf D_YF_Yf_*D_XM\\
+\xrightarrow{\mathbf D\eta_f^{-1}}\mathbf D_YRf_*F_XD_XM\\
+\xrightarrow{\mathbf D(Rf_*v_M)^{-1}}\\
+\mathbf D_YRf_*\mathbf D_XF_XM\\
+\xrightarrow{\sim}Rf_!F_XM,
+\end{gathered}
+\tag{1.vm}
+\]
+
+where the final exchange is the actual classical H.17 reversal with J biduality. For \(N\) on \(Y\), define
+
+\[
+\begin{gathered}
+\beta_f:F_Xf^!N\\
+=F_XD_Xf^*D_YN\\
+\xrightarrow{v}\mathbf D_XF_Xf^*D_YN\\
+\xrightarrow{\mathbf D\gamma_{f,D_YN}^{-1}}\mathbf D_Xf^*F_YD_YN\\
+\xrightarrow{\mathbf D(f^*v_N)^{-1}}\\
+\mathbf D_Xf^*\mathbf D_YF_YN\\
+\xrightarrow{\sim}f^!F_YN.
+\end{gathered}
+\tag{1.vn}
+\]
+
+Here \(\gamma_f\) is Theorem 1.15's already proved actual left-adjoint comparison, and the last exchange is H.15/H.17. All the maps in (1.vm)–(1.vn) have now been proved invertible. Algebraic regular stability and exact sheaf K.8 guarantee that every object belongs to the full bounded category; neither formula deletes difficult supports.
+
+These comparisons preserve actual units and counits. Indeed the operator adjunction \(f_!\dashv f^!\) is the dual of \(f^*\dashv f_*\): its mapping-complex construction is the actual evaluation (5.3)–(5.5). The sheaf adjunction is the identical dual reversal, by H.14–H.17. Theorems 1.15 and 1.4 preserve the ordinary adjunction; (1.vd) preserves its bidual maps; inserting (1.vm)–(1.vn) into those same Hom chains proves the shriek unit and counit equations. In particular
+
+\[
+\epsilon_f^{\mathrm{sh}}\,Rf_!(\beta_{f,N})\,
+\xi_{f,f^!N}=F_Y(\epsilon_f^{\mathrm{op}}).
+\tag{1.vo}
+\]
+
+For the unit \(u_M^{\mathrm{op}}:M\to f^!f_!M\), the companion equation is
+
+\[
+\begin{gathered}
+f^!(\xi_{f,M})\,\beta_{f,f_!M}\,F_X(u_M^{\mathrm{op}})\\
+=u_{F_XM}^{\mathrm{sh}}.
+\end{gathered}
+\tag{1.vo-a}
+\]
+
+All domains and codomains are retained: (1.vo-a) is a map from \(F_XM\) to \(f^!Rf_!F_XM\). Both equations are obtained by currying the same identity map, so they include the triangle identities; a cohomology-level adjunction is not being substituted.
+
+For \(X\xrightarrow fY\xrightarrow gZ\), the composition equations, under the actual operator and sheaf composition identifications, are
+
+\[
+\begin{aligned}
+\xi_{gf,M}&=Rg_!(\xi_{f,M})\,\xi_{g,f_!M},\\
+\beta_{gf,N}&=f^!(\beta_{g,N})\,\beta_{f,g^!N}.
+\end{aligned}
+\tag{1.vo-b}
+\]
+
+To prove these, expand (1.vm)–(1.vn), cancel the neighboring \(v\) and their inverse duals using (1.vd), and apply the actual composition, the ordinary inverse composition, and the classical sheaf actual dual exchanges. This proves equality of constructed maps, including the identity map and threefold composition coherence.
+
+For proper \(f\), the algebraic identification \(f_!=f_*\) is \(\rho_f\) applied to \(D_XM\) and biduality. Equation (1.vk) says exactly that (1.vm) then equals the actual \(\eta_f\). Hence (1.vo) is (1.tr). Uniqueness of a right-adjoint mate proves that (1.vn) is *the same* proper extraordinary map as Theorem 1.14, not just an isomorphic functor. For \(p:\mathbf P^1\to\mathrm{pt}\), (1.ve), with the ordinary flat inverse-frame comparison, gives \((2\pi i)^{-1}\); (1.vo) sends its positive period \(2\pi i\) to operator residue one. Ordered products give \((2\pi i)^{-r}\). For a closed embedding of codimension \(c\), its extraordinary comparison on the oriented flat normal model has factor \((2\pi i)^c\): this is the ratio \(q_Z/q_X\), and (1.vf)–(1.vh) show that it is exactly the closed counit normalization. Thus closed and smooth proper factorizations have consistent constants.
+
+For open \(j\), duality and evaluation restrict without a dimension change. Formula (1.vm) restricts to the identity on the retained open, and has zero outside it; its actual extension-by-zero adjunction is therefore Theorem 1.10's comparison. Formula (1.vn) is ordinary restriction with that same adjunction. Closed proper comparisons then identify every locally closed map with Lemma 1.9 and Theorem 1.17. These are compatibility checks of the existing actual maps.
+
+#### Classical Kunneth and exterior duality, from the actual sheaf models
+
+**Lemma 1.21 (classical exterior maps).** Both direct images and duality commute with exterior products of bounded algebraically constructible complexes, with their actual maps. **Proof.** We spell out the needed classical result. For \(K\) on \(A\), \(L\) on \(B\), put \(K\boxtimes L=p_A^*K\otimes^Lp_B^*L\). For \(a:A\to X\), \(b:B\to Y\), factor \(a\times b\) as \(a\times\mathrm{id}_B\) followed by \(\mathrm{id}_X\times b\). H.6 proper-support base change for the product square, followed by H.10's *multiplication of sections with proper support*, gives
+
+\[
+\begin{gathered}
+R(a\times b)_!(K\boxtimes L)\\
+\simeq Ra_!K\boxtimes Rb_!L.
+\end{gathered}
+\tag{1.vp}
+\]
+
+This is the actual proper-support exterior map: on representatives it tensors the two sections and their pulled-back proper supports. H.2's c-soft fiber resolution derives that map; H.3's same-support composition makes the two factorization orders agree with the Koszul symmetry. Thus (1.vp) has its actual base-change/projection and composition maps, for all bounded inputs under consideration.
+
+Taking structural maps proves compact-support Kunneth on every product open. Products of neighborhoods are cofinal at \((x,y)\). The compact-germ duality model F.15–F.16, or its exact J.4–J.5 stable neighborhood/costalk model, consequently gives
+
+\[
+i_{(x,y)}^!(K\boxtimes L)
+\simeq i_x^!K\otimes^Li_y^!L.
+\tag{1.vq}
+\]
+
+This passage uses the actual support-extension maps: in J.14 smaller cone neighborhoods induce the identity on the finite costalk model, and oriented box factors contribute their stated shift. Tensor over a field commutes with these directed neighborhood comparisons. It is not an assertion about tensoring infinite algebraic spaces of holomorphic sections.
+
+The product orientation gives \(\omega_A^{\mathrm{top}}\boxtimes\omega_B^{\mathrm{top}}=\omega_{A\times B}^{\mathrm{top}}\). Tensor the two evaluation maps and curry them to get
+
+\[
+\begin{gathered}
+\mathbf D_AK\boxtimes\mathbf D_BL\\
+\longrightarrow\mathbf D_{A\times B}(K\boxtimes L).
+\end{gathered}
+\tag{1.vr}
+\]
+
+At a point, the exact J.5 exchange identifies this map with the dual of (1.vq). The costalk complexes are finite perfect by J.14–J.17. For finite complexes, the map \(P^\vee\otimes Q^\vee\to(P\otimes Q)^\vee\), with the evaluation Koszul sign, is an isomorphism term by term; finite truncation gives the same conclusion for the costalk models. Hence (1.vr) is an isomorphism on every stalk. This proves exterior Verdier duality with the actual evaluation map.
+
+Applying the actual H.17 exchanges to (1.vp) and (1.vr) gives
+
+\[
+\begin{gathered}
+Ra_*K\boxtimes Rb_*L\\
+\xrightarrow{\sim}R(a\times b)_*(K\boxtimes L)
+\end{gathered}
+\tag{1.vs}
+\]
+
+for bounded algebraically constructible \(K,L\). It is the ordinary canonical exterior map. To identify it, take its ordinary inverse/direct adjoint: H.17 was obtained by evaluation and the actual counit, H.10 by multiplication, and H.6 by restriction of sections. Their transpose restricts the two factors and tensors their ordinary counits. This is precisely the ordinary exterior-map adjoint. Injective Hom currying in H.6 makes this equality an equality of maps of resolutions; it also proves composition. Thus (1.vs) is not a replacement by an unspecified dual Kunneth isomorphism.
+
+#### Exterior DR on holonomic connection standards
+
+**Theorem 1.22 (exterior compatibility).** Exterior products and exterior four-map identities commute with de Rham on all bounded regular holonomic complexes. **Proof.** There is a canonical natural map
+
+\[
+\begin{gathered}
+k_{M,N}:F_XM\boxtimes F_YN\\
+\longrightarrow F_{X\times Y}(M\boxtimes N).
+\end{gathered}
+\tag{1.vt}
+\]
+
+Pull back coefficient germs, multiply holomorphic coefficients on the product and wedge forms in \(X\)-then-\(Y\) order. The forms differential is the total differential, so this is a map of complexes. Finite locally projective operator models give its derived version; the shift map has the sign specified before (1.vc). Refinements and coordinate changes preserve it. This construction only defines the map. It does **not** say that analytic sections of a product are the algebraic tensor product of the two spaces of analytic sections.
+
+For unshifted connections \(E,H\), local flat frames identify (1.vt) with \(L\boxtimes J\to L\boxtimes J\), the identity. Holomorphic Poincare in the two sets of coordinates and in their product proves that it is an isomorphism. The external connection is regular: choose smooth proper SNC models of the two affine loci. Their product boundary is SNC, and the exterior lattices have the two block residue operators. On a curve, the pulled-back boundary equation multiplies each residue by its nonnegative vanishing order, and the lattice remains logarithmic; along the unpunctured locus it is a connection. Resolution/normalization of the curve and the exact curve criterion in Theorem 5.17 of the regular-singularities lesson give regularity. General smooth connection loci descend by their finite affine covers. Holonomicity follows from the external good symbol filtration, whose characteristic support is the product of the zero sections.
+
+Let \(M=a_*E\), \(N=b_*H\) be the standards of Theorem 1.2. The exact algebraic exterior direct calculation (the adjunctions lesson (2.4), applied in the two orders) gives
+
+\[
+\begin{gathered}
+a_*E\boxtimes b_*H\\
+=(a\times b)_*(E\boxtimes H).
+\end{gathered}
+\tag{1.vu}
+\]
+
+Its graph normal basis, relative Spencer tensor and finite affine Cech totalization are the actual comparison. Separatedness gives affine intersections, and tensor over \(\mathbf C\) is exact on these *algebraic* product covers. Regularity of the exterior connection and Theorem 5.17 direct stability prove regularity of (1.vu).
+
+Write \(c_{a,b}\) for (1.vu), in the displayed direction, and \(\kappa_{a,b}^{\mathrm{sh}}\) for the actual classical map (1.vs). The required equation of maps is
+
+\[
+\begin{gathered}
+\eta_{a\times b,E\boxtimes H}\,F_{X\times Y}(c_{a,b})\\
+k_{a_*E,b_*H}\\
+=R(a\times b)_*(k_{E,H})\,\kappa_{a,b}^{\mathrm{sh}}\\
+(\eta_{a,E}\boxtimes\eta_{b,H}).
+\end{gathered}
+\tag{1.vu-a}
+\]
+
+Its domain is \(F_Xa_*E\boxtimes F_Yb_*H\); its codomain is \(R(a\times b)_*F_{S\times T}(E\boxtimes H)\), where \(b:T\hookrightarrow Y\). This can be checked before any isomorphism assertion: the graph determinant contractions use the same ordered normal basis; relative/horizontal wedge multiplication is associative; each finite Cech component restricts the same coefficient germs; and the totalization signs are exactly the tensor shift signs. The ordinary exterior map on the sheaf side was identified by that restriction and its counits in Lemma 1.21. Therefore (1.vu-a) contains the original (1.vt). Its other maps and the connection map are invertible, so \(k_{a_*E,b_*H}\) is invertible.
+
+For a fixed standard in one variable, finite generation in the other and two out of three extend both regularity and invertibility to all bounded regular inputs. Repeat in the first variable. All cohomological triangles are finite, so this proves (1.vt) for arbitrary singular supports and bounded complexes. The same chain formula proves associativity, the identity factor and the Koszul symmetry; these are equations of actual maps, retained during generation.
+
+Algebraic exterior duality \(D_{X\times Y}(M\boxtimes N)=D_XM\boxtimes D_YN\) is also actual evaluation: on affine products, exterior products of finite projective operator resolutions are resolutions, since tensor over the field is exact, and the product operator algebra, density and Hom bases split. Finite-projective evaluation proves the Hom identity termwise, with the ordered density wedge. These are algebraic calculations. With analytic coefficient extension, the equality of the pairings (1.vb) on the product is still a chain identity. Since \(q_{X\times Y}=q_Xq_Y\), it says that this algebraic exterior duality, (1.vt), (1.vr), and \(v\) commute. There is no unsupported analytic Kunneth assertion in that identity.
+
+The exterior compatibility includes the four map functors. For arbitrary \(f:X\to X'\), \(g:Y\to Y'\), the same algebraic graph/relative-Spencer/Cech calculation (2.4), in its two factorization orders, gives the actual map
+\(f_*M\boxtimes g_*N\to(f\times g)_*(M\boxtimes N)\). Equation (1.vu-a) with \(a,b,E,H\) replaced by \(f,g,M,N\) is still the termwise restriction-and-wedge identity. Thus \(\eta\) and \(k\) preserve this exterior direct map on all regular inputs. For extraordinary inverse, the exterior transfer tensor is the product of the two transfer tensors: in affine coordinates its coefficient map sends \((a\otimes P)\otimes(b\otimes Q)\) to \((a\otimes b)\otimes(P\otimes Q)\). Bounded projective resolutions derive it, analytic extension is flat, and the dimension shifts add. This proves the actual identification
+\((f\times g)^!(A\boxtimes B)=f^!A\boxtimes g^!B\).
+Evaluation, (1.vn), and \(q_{X\times Y}=q_Xq_Y\) identify its DR with the classical extraordinary exterior map, obtained by dualizing ordinary inverse and (1.vr). Dualizing these two algebraic exterior identities gives, respectively, the shriek direct and ordinary inverse identities. Their DR maps are the classical maps (1.vp) and ordinary exterior restriction, because (1.vm)–(1.vn) use those actual dual exchanges. Transposing the restriction, multiplication and transfer evaluations gives precisely their exterior units and counits, so these identifications also preserve adjunctions and composition. This proves compatibility of the maps, without deriving an algebraic transfer identity merely from RH.
+
+#### Both tensor conventions, the unshifted structure tensor, and internal Hom
+
+**Theorem 1.23 (both tensors and internal Hom).** The two tensor conventions, their units and the genuine operator internal Hom commute with de Rham, including evaluation. **Proof.** Define the extraordinary operator tensor by the programme's actual diagonal transfer,
+
+\[
+\begin{gathered}
+M\otimes^!N=\Delta_X^!(M\boxtimes N)\\
+=(M\otimes_{\mathcal O_X}^LN)[-d_X].
+\end{gathered}
+\tag{1.vv}
+\]
+
+Define its ordinary companion and the internal Hom object by
+
+\[
+\begin{gathered}
+M\otimes^*N\\
+=D_X(D_XM\otimes^!D_XN)\\
+=\Delta_X^*(M\boxtimes N),\\
+\mathcal H_X(M,N)\\
+=D_X(M\otimes^*D_XN).
+\end{gathered}
+\tag{1.vw}
+\]
+
+The second equality is algebraic exterior duality and the actual definition of ordinary diagonal inverse. These operations preserve bounded regular holonomicity by Theorem 1.22 and Theorems 5.17 and 5.7 inverse/dual stability of the regular-singularities lesson. The tensor units are \(I^!=\mathcal O_X[d_X]\) and \(I^*=\mathcal O_X[-d_X]\). For a connection pair the two tensors are respectively \((E\otimes H)[-d_X]\) and \((E\otimes H)[d_X]\). The raw structure-sheaf tensor is (1.vv) shifted by \(d_X\); it is not the ordinary monoidal tensor.
+
+On sheaves put \(K\otimes^!_{\mathrm{sh}}L=\Delta_X^!(K\boxtimes L)=\mathbf D_X(\mathbf D_XK\otimes^L\mathbf D_XL)\). Its unit is \(\omega_X^{\mathrm{top}}\). Ordinary tensor is \(\Delta_X^*(K\boxtimes L)=K\otimes^LL\), with unit \(\mathbf C_X\). Apply (1.vt) and the actual inverse comparisons (1.vn), Theorem 1.15 to the diagonal. They give
+
+\[
+\begin{gathered}
+F_X(M\otimes^!N)\\
+\simeq F_XM\otimes^!_{\mathrm{sh}}F_XN,\\
+F_X(M\otimes^*N)\\
+\simeq F_XM\otimes^LF_XN,\\
+F_X(M\otimes_{\mathcal O_X}^LN)\\
+\simeq(F_XM\otimes^!_{\mathrm{sh}}F_XN)[d_X].
+\end{gathered}
+\tag{1.vx}
+\]
+
+Their unit maps are the actual structure-map inverse comparisons. In particular the extraordinary unit map \(F_XI^!\to\omega_X^{\mathrm{top}}\) has factor \(q_X\) relative to flat frames. The ordinary unit \(F_XI^*\to\mathbf C_X\) is Theorem 1.15's actual ordinary inverse comparison. The evaluation/exterior square after (1.vu) and (1.vd) show that dualizing the first tensor comparison gives the second one, including the diagonal normal factor (1.vh) and the signed matrices of the signed chain calculation. In positive untwisted connection frames the ordinary tensor comparison has coefficient \(\sigma_{d_X}\), and the ordinary unit comparison has coefficient \(\varepsilon_{d_X}\). The actual operator ordinary unitor has coefficient \((-1)^{d_X}\) in those frames, coming from the actual connection biduality. Thus these coefficients satisfy the unit equation, since \(\sigma_d=(-1)^d\varepsilon_d\). Treating the unitor as an unspecified positive identity would make an incorrect normalization claim. Diagonal composition and product associativity then give the usual associativity, symmetry and unit diagrams, with their actual adjunction maps.
+
+For internal Hom, exact classical J.21 is the actual tensor–Hom currying map
+
+\[
+\begin{gathered}
+R\mathcal Hom(K,L)\\
+=\mathbf D_X(K\otimes^L\mathbf D_XL).
+\end{gathered}
+\]
+
+Combine this with (1.vc), (1.vx) and (1.vd) to obtain the specified comparison
+
+\[
+\begin{gathered}
+F_X\mathcal H_X(M,N)\\
+\xrightarrow{\sim}R\mathcal Hom_{\mathbf C}(F_XM,F_XN).
+\end{gathered}
+\tag{1.vy}
+\]
+
+We record why it preserves the internal Hom evaluation, rather than only its objects. The algebraic dualizing pairing is the finite-projective evaluation followed by the diagonal counit into \(I^!\). For any smooth \(T\), write \(\mathsf H_T(A,B)=R\operatorname{Hom}_{\mathcal D_T}(A,B)\). Its mapping-complex identity is
+
+\[
+\begin{gathered}
+\mathsf H_X(P\otimes^*Q,I^!)\\
+=\mathsf H_X(P,D_XQ).
+\end{gathered}
+\tag{1.vz}
+\]
+
+In the following diagonal calculation set \(P^{\prime}=D_XP\) and \(Q^{\prime}=D_XQ\). Here is the full diagonal calculation. Proper closed duality gives \(D_{X\times X}\Delta_*I^!=\Delta_*I^*\). Ordinary diagonal adjunction, biduality, exterior duality and extraordinary diagonal adjunction give, in order,
+
+\[
+\begin{gathered}
+\mathsf H_X(\Delta^*(P\boxtimes Q),I^!)\\
+=\mathsf H_{X\times X}(P\boxtimes Q,\Delta_*I^!)\\
+=\mathsf H_{X\times X}(\Delta_*I^*,P^\prime\boxtimes Q^\prime)\\
+=\mathsf H_X(I^*,P^\prime\otimes^!Q^\prime)\\
+=R\Gamma\operatorname{DR}_{\mathrm{alg},X}(P^\prime\otimes^!Q^\prime).
+\end{gathered}
+\tag{1.vz-a}
+\]
+
+For the last equality, the connection Spencer resolution of \(\mathcal O_X\) computes Hom into any operator coefficient as its unshifted algebraic forms complex; moving \([-d_X]\) from \(I^*\) shifts that complex by \([d_X]\). This is precisely the normalized *algebraic* DR on the last line. No analytic cohomology theorem is involved in (1.vz-a).
+
+The evaluation identity (5.3) computes \(R\operatorname{Hom}(P,D_XQ)\) as the derived global sections of
+\((\omega_X\otimes D_XP)\otimes^L_{\mathcal D_X}D_XQ[-d_X]\).
+In a commuting coordinate frame this right/left operator tensor is the Spencer complex of the Leibniz action on the derived structure tensor of \(D_XP,D_XQ\). To check that assertion, use finite operator-projective resolutions, which are structure-sheaf flat. If \(\xi_i,\eta_i\) are the two **left** symbol variables, side change makes the first right symbol \(\zeta_i=-\xi_i\). Balancing the right and left actions imposes \(\zeta_i-\eta_i=-(\xi_i+\eta_i)\). These form a regular sequence in the polynomial product ring: successively eliminating \(\eta_i\) leaves a polynomial ring in the remaining variables. Thus the associated graded comparison is the Koszul resolution for these balanced relations, and its augmentation is the diagonal coefficient product. Lowering finite order proves exactness and identifies the original comparison, including the determinant line. At operator level the differential is the sum action \(\partial_i\otimes1+1\otimes\partial_i\); the negative right-action sign is precisely the negative Lie derivative used in side change and in the de Rham lesson's right Spencer differential. The right Spencer normalization contributes \([d_X]\), canceled by the displayed \([-d_X]\), including its differential sign. The result is the **unshifted** forms complex on \(D_XP\otimes^L_{\mathcal O_X}D_XQ\), with the ordinary positive Leibniz differential. That is exactly \(\operatorname{DR}_{\mathrm{alg},X}(D_XP\otimes^!D_XQ)\). These intrinsic evaluations glue and identify the two last complexes. This proves (1.vz) with its actual map; it is not a Hom identity inferred from RH.
+
+Put \(N^{\prime}=D_XN\). Biduality, (1.vz), associativity and symmetry give the successive actual currying identifications
+
+\[
+\begin{gathered}
+\mathsf H_X(A\otimes^*M,N)\\
+=\mathsf H_X((A\otimes^*M)\otimes^*N^\prime,I^!)\\
+=\mathsf H_X(A\otimes^*(M\otimes^*N^\prime),I^!)\\
+=\mathsf H_X(A,D_X(M\otimes^*N^\prime)).
+\end{gathered}
+\tag{1.vaa}
+\]
+
+The first step uses (1.vz) with \(Q=D_XN\), and its bidual evaluation. Therefore \(\mathcal H_X(M,N)\) is the genuine right adjoint to \(-\otimes^*M\). Its evaluation is the image of its identity under (1.vaa). All steps of (1.vaa), under (1.vx)–(1.vy), are the sheaf currying steps of J.21: the finite evaluation is (1.vb), the trace-normalized orientation is (1.va), diagonal counits are (1.vo), and exterior evaluation is the square after (1.vu). Thus the image of the identity is exactly the sheaf internal Hom evaluation. Units and all composition pairings follow by the same identity/adjunction argument.
+
+The object in (1.vy) is a holonomic operator internal Hom. It must be distinguished from the complex of **sheaves of vector spaces** \(R\mathcal Hom_{\mathcal D_X}(M,N)\), which is not itself generally a holonomic operator module. On connections \(\mathcal H_X(E,H)=(E^\vee\otimes H)[-d_X]\); its DR is the unshifted Hom local system. The comparison (1.vy) has coefficient \(\varepsilon_{d_X}\) in the positive untwisted connection frame, with the actual ordinary tensor and bidual frame conversions just stated. These factors cancel in its evaluation square; no positive identity is substituted for the signed algebraic evaluation. Taking derived global sections of (1.vy), or restricting it to any algebraic open before taking sections, also preserves the actual higher morphism and evaluation maps.
+
+
+
+#### Signed chain identifications and the whole-complex approximation
+
+Throughout, an ordered set uses indices \(1,\ldots,d\); \(e_J\) is the ordered wedge generator, \(f_J(e_J)=1\) is the **untwisted** dual generator, and an empty wedge is one. Write \(s(J)=\sum_{j\in J}j\). All density cancellations contract the top form with its inverse in the displayed order. The Koszul differential of \(P_a\), with \(a_j=z_j\) or \(\partial_j\), is
+
+\[
+\begin{gathered}
+d e_J\\
+=\sum_{j\in J}(-1)^{\operatorname{pos}_J(j)-1}\\
+a_j e_{J\setminus\{j\}}.
+\end{gathered}
+\tag{1.vab}
+\]
+
+Here \(e_J\) has degree \(-|J|\). In \(Q=\mathcal Hom(P_a,\mathcal D)\), \(f_I\) has degree \(r=|I|\), and its differential is \((-1)^{r+1}\) times the transpose of (1.vab). Side change transposes \(z_j\) to \(z_j\) and \(\partial_j\) to \(-\partial_j\). The final shift by \([d]\) multiplies the differential by \((-1)^d\). Thus the two left dual differentials are
+
+\[
+\begin{gathered}
+d_{DP_z}f_I\\
+=(-1)^{d+r+1}\sum_j z_j f_j\wedge f_I,\\
+d_{DP_\partial}f_I\\
+=(-1)^{d+r}\sum_j\partial_j f_j\wedge f_I.
+\end{gathered}
+\tag{1.vac}
+\]
+
+This is the actual Hom, density and shift convention in the de Rham lesson (1.8). In particular it is \(-\partial\), and \(+z\), in dimension one. The actual solution chain map is the composite
+
+\[
+\begin{gathered}
+\operatorname{RSp}\otimes_{\mathcal D}\operatorname{SC}(Q[d])\\
+\longrightarrow\omega\otimes_{\mathcal D}\operatorname{SC}(Q[d])\\
+\longrightarrow Q[d]\otimes_{\mathcal D}\mathcal O\\
+\longrightarrow\mathcal Hom_{\mathcal D}(P,\mathcal O)[d].
+\end{gathered}
+\tag{1.vad}
+\]
+
+The first arrow is precisely the right-Spencer augmentation of the de Rham lesson Proposition 1.1. It kills every lower-form Spencer column and keeps the top form with coefficient \(+1\). The next arrow sends \(dx_1\wedge\cdots\wedge dx_d\otimes(q\otimes(dx_1\wedge\cdots\wedge dx_d)^{-1})\) to \(q\otimes1\), with coefficient \(+1\). The last arrow is finite-projective evaluation, with coefficient \(+1\). In particular (1.vad) has no extra dimension sign.
+
+For a flat connection, the horizontal DR lift augmenting to the positive dual connection generator \(f_{\{1,\ldots,d\}}\) is
+
+\[
+\begin{gathered}
+C_d\\
+=\sum_{I\subseteq\{1,\ldots,d\}}(-1)^{s(I)}dx_I\otimes f_{I^c}.
+\end{gathered}
+\tag{1.vae}
+\]
+
+It lies on \(p+r=d\), where \(p=|I|\) is form degree. The forms part of the normalized total differential contributes \((-1)^d\), and its coefficient part is \((-1)^{p+r}\sum_j\partial_j f_j\wedge\), after combining the coefficient and total-shift signs in (1.vac). For each missing direction the two adjacent terms of (1.vae) cancel: insertion into the form wedge and insertion into the complementary dual wedge give their usual position signs, and the ratio of the displayed coefficients is \((-1)^j\). This proves the cycle identity, including its derivative coefficients, rather than identifying only its augmentation. Its top-form component is \(\sigma_d\,dx_1\wedge\cdots\wedge dx_d\otimes f_\varnothing\), so (1.vad) sends it to \(\sigma_d f_\varnothing\). The connection DR lift for the positive original connection frame augments to \(e_\varnothing\). Evaluating against it by (1.vb) proves (1.ve). For \(d=1\) the two lifts are \(e_0+dz\,e_1\) and \(f_1-dz\,f_0\), and the latter maps to \(-f_0\). For \(d=2\), (1.vae) is \(f_{12}-dx_1 f_2+dx_2 f_1-dx_1\wedge dx_2 f_\varnothing\); it also maps to a negative generator.
+
+For \(P[k]\), the unshifted degree of the solution cochain \(f_\varnothing\) is \(k\). The coefficient differentials in its actual dual complex remain (1.vac), because the Hom sign and the source differential shift cancel. Formula (1.vb) and the DR shifts contribute \((-1)^{dk}\). This proves the shifted coefficient \(\sigma_d(-1)^{dk}q_X\) used above. The canonical source-shift map from \(\mathcal Hom(P[k],\mathcal D)\) to \(\mathcal Hom(P,\mathcal D)[-k]\) multiplies original cochain degree \(r\) by \((-1)^{kr}\); its top degree is \(r=d\). These statements identify the chain maps, not just the shifted objects.
+
+The conversion from the usual Spencer resolution of the dual connection to its actual dual resolution is
+
+\[
+\begin{gathered}
+H_\partial(e_J)\\
+=(-1)^{s(J)+|J|(|J|-1)/2}f_{J^c}.
+\end{gathered}
+\tag{1.vaf}
+\]
+
+The bottom coefficient is \(+1\); the top coefficient is \((-1)^d\). Substituting (1.vab) and (1.vac) checks the chain identity direction by direction. The finite-projective double evaluation is the actual programme biduality. Transporting it through (1.vaf) therefore gives
+
+\[
+b_E=(-1)^d\operatorname{id}_E
+\tag{1.vag}
+\]
+
+in the two positive untwisted zero-order **double-connection** frames. This is not a change of the bidual map. It is its value in those frames, and is the frame conversion needed in (1.vd), ordinary unitors, and internal Hom evaluation. Calling both positive endpoint connection identifications the identity on biduality would lose this sign.
+
+For a normal point Koszul resolution the corresponding chain conversion is instead
+
+\[
+\begin{gathered}
+H_z(e_J)\\
+=(-1)^{s(J)+|J|(|J|+1)/2}f_{J^c}.
+\end{gathered}
+\tag{1.vah}
+\]
+
+It intertwines (1.vab) for \(a_j=z_j\) with the first differential in (1.vac). Both bottom and top coefficients are \(+1\). In two normal directions its four coefficients are \(e_\varnothing\mapsto f_{12}\), \(e_1\mapsto f_2\), \(e_2\mapsto-f_1\), \(e_{12}\mapsto f_\varnothing\). This point-dual chain conversion must not be replaced by (1.vaf).
+
+The other normal chain map, needed in the adjunctions lesson Lemma 1.2, identifies the **Hom cochain** with the shifted structure Koszul inverse. Retain the conormal determinant. With \(c\) normal directions it is
+
+\[
+\begin{gathered}
+T(f_I)\\
+=(-1)^{s(I)+c|I|-|I|(|I|-1)/2}\\
+e_{I^c}\otimes\det(\mathcal I/\mathcal I^2)^{-1}.
+\end{gathered}
+\tag{1.vai}
+\]
+
+Here \(f_\varnothing\) is fixed to the positive top wedge times the inverse determinant. The source Hom differential in degree \(r\) is \((-1)^{r+1}\) times the transpose Koszul differential, and the target \(Li^*_{\mathcal O}[-c]\) differential is \((-1)^c\) times the original one. Removing or inserting an index in (1.vai) checks the equality of these differentials. Its top coefficient is \(+1\) in every codimension. For \(c=2\), it sends \((f_\varnothing,f_1,f_2,f_{12})\) to \((e_{12},-e_2,e_1,e_\varnothing)\) times the inverse determinant. In dimension one (1.vai) sends both generators with coefficient \(+1\), and the shifted target differential is \(-z\). The positive-\(z\) example in the adjunctions lesson is obtained by changing the degree-zero presentation frame of that two-term Koszul/Hom complex. That separate presentation change reconciles the example with the negative Hom differential; it does not change the two positive coefficients of (1.vai). The backward transfer carries the inverse normal top-density line; Hom from it supplies the normal top-density line, which cancels the inverse determinant in (1.vai). This spells out the density cancellation in (1.5). The coefficient map (1.vai) does not by itself specify the ordered closed counit or the proper-dual comparison.
+
+We now specify those remaining maps. In one normal coordinate the closed operator counit into \(\mathcal O[1]\) is represented by the degree-one Hom cochain sending \(e_1\) to \(1\). Its ordered tensor in \(c\) directions sends the top wedge to \(\varepsilon_c\), because its \(c\) degree-one Hom factors cross the preceding degree-minus-one source factors as in (1.vf-a). The density is contracted in the same normal order. These are the actual counits of the adjunctions lesson Lemma 1.2 and its composed closed adjunction: the one-coordinate tensor–Hom adjunction has generator coefficient one, (1.vai) retains its determinant, and the shift totalization of successive adjunctions is the ordered tensor just computed. Thus the closed transfer trace, represented in the untwisted top Hom frame, has coefficient \(\varepsilon_c\). The transfer-side proper-dual comparison is obtained by transposing that same counit under the finite evaluation in the adjunctions lesson (4.23). On the normal resolution it is exactly
+
+\[
+\rho_i^{\mathrm{normal}}=\varepsilon_c H_z.
+\tag{1.vaj}
+\]
+
+One can check this transpose directly: the generator is sent to \(\varepsilon_c f_{\{1,\ldots,c\}}\); the Koszul chain condition forces the remaining coefficients (1.vah). It is tensor–Hom evaluation followed by the counit just displayed, with the backward-transfer density retained. It is not an arbitrary endpoint self-duality of the point module. For one direction its coefficient is \(+1\), so the one-variable point calculation (1.vf) is unchanged.
+
+In the untwisted normal Hom frame, ordered Čech–form totalization contributes \(\varepsilon_c\). Consequently raw normal evaluation has coefficient \(\varepsilon_c(2\pi i)^c\). In the tensor–Hom frame of (1.vf-a) this becomes the positive factor (1.vg). Equivalently the coefficient \(\varepsilon_c\) of (1.vaj) cancels the same coefficient of raw evaluation. If the tangential dimension is \(s\), lifting its flat dual cochain while retaining the normal top form gives tangential top coefficient \(\sigma_s(-1)^{sc}\). Formula (1.vb) on the normal solution cochain of degree \(c\), the normal top form, and the ambient shift contributes another \((-1)^{sc}\). The tangential factors cancel, leaving \(\sigma_s\varepsilon_c\) times the ordered normal residue. After (1.vaj), and \(q_X(2\pi i)^c=q_Z\), this is precisely \(\sigma_s q_Z\) times tangential evaluation. This proves (1.vi) with its actual signed closed transfer comparison. Tensoring these matrices with a finite projective coefficient **complex** retains every operator differential and its Hom signs, so the equality holds for all bounded coefficients.
+
+For clarity, the flat-frame constants of the previously defined ordinary left mates are also fixed by these chains. In one smooth normal coordinate the ordinary unit coefficient is \(+1\): in the adjunctions lesson (5.5) the connection conversion (1.vaf) contributes \(-1\), and actual biduality (1.vag) contributes \(-1\); the zero-column relative Spencer augmentation is \(+1\). In one closed normal coordinate it is \(-1\): dualizing the counit just displayed sends \(f_\varnothing\) to \(f_1\) with coefficient \(+1\), while (1.vaf) sends the top original connection generator to \(-f_\varnothing\). The point conversion (1.vah) contributes \(+1\). Thus the closed ordinary unit cochain has coefficient \(-1\).
+
+Composing the units in ordered independent directions introduces the tensor–Hom determinant conversion \(\varepsilon_r\), respectively \(\varepsilon_c\); the dimension shifts and ordered transfer wedges contribute the same tangential cross signs on the two sides and cancel them. This gives, for unshifted flat connection coefficients in the positive untwisted frames,
+
+\[
+\begin{gathered}
+\gamma_{\mathrm{smooth},r}=\varepsilon_r,\\
+\gamma_{\mathrm{closed},c}=(-1)^c\varepsilon_c=\sigma_c.
+\end{gathered}
+\tag{1.vak}
+\]
+
+These are values of Theorem 1.15's **actual** left mates because the computation used their ordinary identity-adjoint unit and the adjunctions lesson (5.5); uniqueness of the left mate does not select a new scalar. They are not the raw unshifted coefficient restriction identifications. Substituting (1.ve), its shift rule, and (1.vak) in the actual dual formula (1.vn) gives the sign cancellations
+
+\[
+\begin{aligned}
+\frac{\sigma_{s+r}(-1)^{(s+r)r}}
+ {\varepsilon_r\sigma_s}&=1,\\
+\frac{\sigma_s(-1)^{sc}}
+ {\sigma_c\sigma_{s+c}}&=1.
+\end{aligned}
+\tag{1.val}
+\]
+
+Therefore the extraordinary smooth comparison still has coefficient \((2\pi i)^{-r}\), and the extraordinary closed connection comparison has coefficient \((2\pi i)^c\). In particular the structural extraordinary-unit map is \(q_X\), even though raw \(v_{\mathcal O[d]}\) in its positive untwisted frame has coefficient \(\varepsilon_dq_X\): its ordinary structural left mate has coefficient \(\varepsilon_d\). The two signs cancel. Theorem 1.14's projective-line and ordered-product proper mate constants are unchanged.
+
+The exterior pairing signs are retained as well. If the two connection dimensions are \(s,t\), then \(\sigma_{s+t}=(-1)^{st}\sigma_s\sigma_t\). The sheaf exterior evaluation exchanges the dual of the second local system, of degree \(-t\), past the first local system, of degree \(-s\), and thus contributes \((-1)^{st}\). On the operator side the Hom top-wedge splitting contributes \((-1)^{st}\), and the shift map for \([s]\) and \([t]\) contributes the same sign; those two operator determinant conversions cancel. Consequently the exterior pairing square after (1.vu) uses the original maps and commutes with (1.ve). Supported directions retain (1.vah)–(1.vaj); their exterior DR shift signs are the shift rule before (1.vc). This proves the signed exterior statement on every finite projective model, not just its flat endpoints.
+
+For the diagonal, (1.vak) gives the ordinary tensor coefficient \(\sigma_d\). The structural ordinary unit gives \(\varepsilon_d\). The actual ordinary operator unitor uses connection biduality (1.vag), so its positive-frame coefficient is \((-1)^d\), and \(\sigma_d=(-1)^d\varepsilon_d\) is its exact unit equation. In (1.vy) the shifted connection evaluation has coefficient \(\varepsilon_d q_X\); the dual ordinary tensor comparison has coefficient \(\sigma_d\), and the dual of \(v_N\) has coefficient \(\sigma_d q_X\). Their quotient is \(\varepsilon_d\). Thus the internal Hom coefficient stated in Theorem 1.23 follows from the actual three maps. Its evaluation uses the same signed ordinary tensor and actual biduality, giving the classical evaluation without a residual scalar. The extraordinary diagonal coefficient remains \((2\pi i)^d\), with extraordinary unit \(q_X\).
+
+Finally we prove the strict-complex and approximation input used in (1.vl-a)–(1.vl-b). The abelian category of quasi-coherent \(\mathcal D_X\)-modules is locally Noetherian. Indeed an underlying quasi-coherent \(\mathcal O_X\)-module is the filtered union of coherent coefficient subsheaves on a Noetherian variety; applying \(\mathcal D_X\) to each gives coherent operator submodules, since the finite local generators make it a quotient of a coherent induced module and \(\mathcal D_X\) is locally Noetherian. Their sum is the original operator module. A finite coherent quotient of a union therefore already receives one coherent subobject mapping onto it. The same observation applies to lifting a coherent subobject of an image under any module map.
+
+Take any bounded-cohomology quasi-coherent representative of \(M\), and apply the two good truncations to obtain a bounded quasi-coherent complex \(K\) in degrees \([u,w]\). Its cohomology is coherent. Lift finite coherent generators of every \(H^n(K)\) to coherent subobjects of \(Z^n(K)\). Their sum and differentials form a bounded coherent operator subcomplex mapping surjectively onto each cohomology module. Starting in the highest degree and descending, kill the coherent kernel on cohomology by adjoining coherent subobjects of \(K^{n-1}\) whose differential covers those kernel cycles. Such lifts exist by the union observation above. Include their images in degree \(n\). Adding a preimage and its differential introduces no new cohomology in degrees above \(n\); it can affect lower degrees, which are treated next. The previously obtained cohomology surjectivity is retained. At the bottom degree \(u\), the inclusion of cycles has no kernel because \(K^{u-1}=0\). This finite descending procedure therefore gives a bounded **coherent operator subcomplex** \(K_0^\bullet\subset K\) which is quasi-isomorphic to \(K\). It supplies a strict representative without assuming that a complex is determined by its cohomology modules or that global vector-bundle resolutions exist.
+
+For a bounded coherent operator complex \(K_j^\bullet\) in the same interval, choose coherent coefficient generators \(G_j^n\subset K_j^n\) as in the adjunctions lesson Lemma 3.2, and put
+
+\[
+F_j^n=G_j^n+d(G_j^{n-1}).
+\tag{1.vam}
+\]
+
+The differential is operator-linear and hence coefficient-linear; \(F_j^\bullet\) is a bounded coherent coefficient subcomplex, and it generates each term over \(\mathcal D_X\). The map \(I(F_j^\bullet)\to K_j^\bullet\), \(P\otimes x\mapsto Px\), is a **degreewise surjective chain map**. Its kernel \(K_{j+1}^\bullet\) is bounded coherent and remains in \([u,w]\). Iterate. Horizontally resolve the entire complex by these induced rows and totalize with the usual column signs. Every total degree has finitely many terms, since the vertical interval is fixed. The finite first \(N\) rows give (1.vl-a); the horizontal exactness identifies its last cone with \(K_N^\bullet[N]\).
+
+This construction never lifts a differential through a nonprojective induced surjection: the vertical differential already exists on (1.vam), and every kernel inherits its actual differential. The two routes of (1.vk) agree on each finite totalization, because the induced coefficient calculation includes maps between these rows, their positive-order operator maps and the transfer homotopies (4.22a). The fixed vertical interval gives the uniform target lower bound in (1.vl-b). Thus the same-target-factor t-structure vanishing applies to the whole bounded complex, including its original attaching maps. It supplies equality of derived morphisms, which a zero-map induction on cohomology modules would not supply.
+
+
+![Normal residues, closed support and projective trace](assets/rh-trace-calibration.png)
+
+*The left disc is a schematic in the exact coordinate \(z=\epsilon e^{i\theta}\), with \(\epsilon=1\) solely for drawing and positive \(0\leq\theta\leq2\pi\). The upper calculation is (1.vb), (1.vf)–(1.vi) and (1.vah)–(1.vaj), distinguishing the untwisted normal dual frame from the ordered tensor–Hom frame and retaining the closed trace matrix; the lower calculation is the actual ordered projective trace (1.vk)–(1.vl). The class \(\eta\) is a Cech/form cocycle, not a global differential form. The constants and orientations are proved in the text. Reproducible figure source. The figure records the proved maps and their exact constants.*
+
+![Actual functor maps and tensor conventions](assets/rh-functor-compatibility.png)
+
+*The top strip shows the two-variable holonomic-standard generation proof (1.vt)–(1.vu-a). The middle strip records the actual evaluation-induced comparisons (1.vc), (1.vm)–(1.vo-b); the bottom retains both tensor conventions and the internal Hom currying (1.vv)–(1.vaa). This is a schematic of proved maps on all smooth separated complex varieties and bounded regular holonomic complexes. In particular its first sheaf tensor is extraordinary diagonal inverse of an exterior product, and its second is ordinary derived tensor. Reproducible figure source. The figure records the proved maps and their exact constants.*
+
+![Raw signed Spencer augmentation and full bounded-complex approximation](assets/rh-signed-spencer.png)
+
+*The first row is the actual dimension-one chain calculation (1.vac)–(1.vae). The middle rows retain the general connection and determinant constants, the two-normal-coordinate matrices (1.vah)–(1.vaj), and the actual positive-frame bidual sign. The last row displays the entire-complex approximation (1.vl-a)–(1.vl-b), with the fixed-width construction (1.vam). Reproducible figure source. The figure records the proved maps and their exact constants.*
+
+
+
+Further reading: Victor Ginzburg’s freely accessible [Lectures on D-modules](https://math.berkeley.edu/~nadler/ginzburg.dmodules.pdf), Sections III.4–III.5 and IV.3, discuss functors and holonomic duality. The complete proofs and exact earlier dependencies are given above.
+
 
 ## 2. The integer block of the Weyl algebra
 
@@ -956,7 +1627,7 @@ For the intended nonresonant assertion take residue $\lambda I+N$, $\lambda\noti
 
 ## What this lesson does not prove
 
-The full derived algebraic Riemann–Hilbert equivalence and perverse t-exactness are proved, including all singular supports, arbitrary bounded degrees and nonquasiprojective smooth varieties. The actual star direct and ordinary inverse maps, open shriek map, proper extraordinary adjunction mate, every intermediate extension and singular IC are proved with exact earlier dependencies. The remaining full operation and evaluation-duality compatibilities are retained as explicit proof obligations above.
+The full derived algebraic Riemann–Hilbert equivalence and perverse t-exactness are proved, including all singular supports, arbitrary bounded degrees and nonquasiprojective smooth varieties. The actual star direct and ordinary inverse maps, open shriek map, proper extraordinary adjunction mate, every intermediate extension and singular IC are proved with exact earlier dependencies. Theorems 1.18–1.23 prove all remaining operation and evaluation-duality compatibilities, including nonprojective proper maps and both tensor conventions. Full analytic proper-image regularity is a separate theorem.
 
 The affine-line monodromic correspondence, including reconstruction, finiteness, actual boundary comparison, exponential correction and inverse diagram functor, is proved here. The independent two-stratum sheaf diagram theorem is the complete earlier proof in *Nearby and vanishing cycles*, Theorem 3.1; no heart equivalence is used as a substitute for the full derived argument. The stack regularity input, ind-completion and restricted geometric Langlands comparison in Section 6 are stated applications and are not inputs to this proof.
 

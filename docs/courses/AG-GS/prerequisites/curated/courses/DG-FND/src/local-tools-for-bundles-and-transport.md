@@ -205,8 +205,8 @@ The space of curves is complete by Lemma 0.2. Lemma 1.1 gives a fixed point, and
 For uniqueness, any two solutions with the same datum remain in such a rectangle on a sufficiently small common interval and satisfy the same integral equation. Their difference is at most \(\epsilon L\) times its supremum norm, so it vanishes. On any common connected time interval, the times where they agree form a closed set by continuity and an open set by this local argument. That set is the whole interval: if it stopped before any given time, its first stopping boundary would belong to it by closedness and extend it by openness. The backward argument is the same.
 
 We verify the smoothness hypothesis of Lemma 2.A. The first curve derivative is
-\
-D_uT(u,z)[v=\int_0^s D_xF(t_0+\tau,u(\tau),\lambda)v(\tau)\,d\tau.
+\[
+D_uT(u,z)[v](s)=\int_0^s D_xF(t_0+\tau,u(\tau),\lambda)v(\tau)\,d\tau.
 \]
 Derivatives in \(t_0\) and \(\lambda\) insert the respective derivatives of \(F\); the derivative in \(a\) is the constant curve. A derivative of any order is a finite sum of integrals of a corresponding multilinear derivative of \(F\) applied to the increments. All coefficients are bounded on a slightly larger compact rectangle. For every derivative order, the segment formula applied to that derivative, and uniform continuity of its next derivative on this rectangle, give a Taylor remainder bounded by
 \(\epsilon\omega(\|\Delta u\|_\infty+|\Delta z|)(\|\Delta u\|_\infty+|\Delta z|)\),

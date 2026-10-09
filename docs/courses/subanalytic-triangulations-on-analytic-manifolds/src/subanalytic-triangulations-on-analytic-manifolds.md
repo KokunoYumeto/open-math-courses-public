@@ -216,12 +216,12 @@ This is reciprocal, rather than arithmetic, interpolation. Indeed, if a point in
 
 Between two consecutive straight faces, define
 
-\
+\[
 T\bigl(a+t(u-a)\bigr)
 =a+\left[
 r_i(u)+\frac{t-R_i(u)}{R_{i+1}(u)-R_i(u)}
 \bigl(r_{i+1}(u)-r_i(u)\bigr)
-\right-a).
+\right](\tau(u)-a).
 \]
 
 On a straight branch use its endpoint value, and inside the inner simplex use the conical extension \(a+t(u-a)\mapsto a+t(\tau(u)-a)\), including \(a\mapsto a\). The annular map is strictly increasing on each radial interval. On every open annular cell it is analytic with an analytic inverse: \(\tau\) and the branch functions are analytic there, radial projection is analytic on each old open face, and the radial derivative is

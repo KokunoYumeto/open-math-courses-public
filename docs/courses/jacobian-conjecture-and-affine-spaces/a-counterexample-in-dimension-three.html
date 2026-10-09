@@ -1,0 +1,236 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A counterexample in dimension three</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents</a><a href="keller-maps-and-the-jacobian-conjecture.html">Previous lesson</a><a href="coordinates-and-the-abhyankar-sathaye-problem.html">Next lesson</a><a href="src/a-counterexample-in-dimension-three.md">Editable source</a></nav><main><article><h1 id="a-counterexample-in-dimension-three">A counterexample in dimension three</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves that the Jacobian conjecture is false. An explicit polynomial map of three-dimensional space, with rational coefficients, has Jacobian determinant identically <span class="math" data-tex="\(-2\)">\(-2\)</span> and takes the same value at three different points. So it is a Keller map without an inverse. Everything here is a finite computation, and we do it by hand. The key is a system of coordinates adapted to the map, in which its components become three short rational expressions. The same coordinates describe every fibre of the map through the roots of a cubic equation, and show that a general point has exactly three preimages.</p>
+<p>We use <a href="keller-maps-and-the-jacobian-conjecture.html">Keller maps and the Jacobian conjecture</a>, and Gauss's lemma on primitive polynomials from <a href="../AG-CA/integral-extensions-lying-over-going-up-and-going-down.html#2-integral-closure-survives-localization">Integral extensions: lying over, going up and going down, Proposition 2.3 and its proof</a>.</p>
+<p>Basic references are [Alpöge], [AFP] and [Tao].</p>
+<h2 id="1-the-map">1. The map</h2>
+<p>Let <span class="math" data-tex="\(k\)">\(k\)</span> be a field of characteristic zero, and write points of <span class="math" data-tex="\(k^3\)">\(k^3\)</span> as <span class="math" data-tex="\(z=(z_1,z_2,z_3)\)">\(z=(z_1,z_2,z_3)\)</span>. Define <span class="math" data-tex="\(F=(F_1,F_2,F_3):k^3\to k^3\)">\(F=(F_1,F_2,F_3):k^3\to k^3\)</span> by</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F_1&amp;=(1+z_1z_2)^3z_3+z_2^2(1+z_1z_2)(4+3z_1z_2),\\
+F_2&amp;=z_2+3z_1(1+z_1z_2)^2z_3+3z_1z_2^2(4+3z_1z_2),\\
+F_3&amp;=2z_1-3z_1^2z_2-z_1^3z_3 .
+\end{aligned}
+\tag{1.1}
+\]">\[
+\begin{aligned}
+F_1&amp;=(1+z_1z_2)^3z_3+z_2^2(1+z_1z_2)(4+3z_1z_2),\\
+F_2&amp;=z_2+3z_1(1+z_1z_2)^2z_3+3z_1z_2^2(4+3z_1z_2),\\
+F_3&amp;=2z_1-3z_1^2z_2-z_1^3z_3 .
+\end{aligned}
+\tag{1.1}
+\]</span>
+<p>The components have degrees <span class="math" data-tex="\(7\)">\(7\)</span>, <span class="math" data-tex="\(6\)">\(6\)</span> and <span class="math" data-tex="\(4\)">\(4\)</span>. Two auxiliary polynomials organize them:</p>
+<span class="math math-display" data-tex="\[
+t=1+z_1z_2,\qquad Q=t^2z_3+z_2^2(1+3t).
+\tag{1.2}
+\]">\[
+t=1+z_1z_2,\qquad Q=t^2z_3+z_2^2(1+3t).
+\tag{1.2}
+\]</span>
+<p>Since <span class="math" data-tex="\(4+3z_1z_2=1+3t\)">\(4+3z_1z_2=1+3t\)</span>, the definitions give</p>
+<span class="math math-display" data-tex="\[
+F_1=t\,Q,\qquad F_2=z_2+3z_1Q,\qquad F_3=z_1\bigl(2-3z_1z_2-z_1^2z_3\bigr).
+\tag{1.3}
+\]">\[
+F_1=t\,Q,\qquad F_2=z_2+3z_1Q,\qquad F_3=z_1\bigl(2-3z_1z_2-z_1^2z_3\bigr).
+\tag{1.3}
+\]</span>
+<p>Levent Alpöge announced this map on 19 and 20 July 2026. He credited the AI model Claude Fable 5 with the work that led to it, and Akhil Mathew with suggesting the question [Alpöge]. Its two decisive properties were formally verified in the proof assistant Isabelle/HOL within days [AFP], and Terence Tao explained the geometry behind it [Tao].</p>
+<h2 id="2-coordinates-adapted-to-the-map">2. Coordinates adapted to the map</h2>
+<p>Put</p>
+<span class="math math-display" data-tex="\[
+u=z_1,\qquad t=1+z_1z_2,\qquad P=z_1^2\,Q .
+\tag{2.1}
+\]">\[
+u=z_1,\qquad t=1+z_1z_2,\qquad P=z_1^2\,Q .
+\tag{2.1}
+\]</span>
+<p><strong>Lemma 2.1.</strong> The following identities hold in <span class="math" data-tex="\(k[z_1,z_2,z_3]\)">\(k[z_1,z_2,z_3]\)</span>:</p>
+<span class="math math-display" data-tex="\[
+z_1^2F_1=tP,\qquad z_1F_2=t-1+3P,\qquad t^2F_3=z_1\,(t+1-P).
+\tag{2.2}
+\]">\[
+z_1^2F_1=tP,\qquad z_1F_2=t-1+3P,\qquad t^2F_3=z_1\,(t+1-P).
+\tag{2.2}
+\]</span>
+<p><strong>Proof.</strong> The first is <span class="math" data-tex="\(z_1^2\,tQ=tP\)">\(z_1^2\,tQ=tP\)</span>. For the second, <span class="math" data-tex="\(z_1F_2=z_1z_2+3z_1^2Q=(t-1)+3P\)">\(z_1F_2=z_1z_2+3z_1^2Q=(t-1)+3P\)</span>. For the third, write <span class="math" data-tex="\(s=z_1^2z_3\)">\(s=z_1^2z_3\)</span>. Since <span class="math" data-tex="\(z_1^2z_2^2=(t-1)^2\)">\(z_1^2z_2^2=(t-1)^2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+P=t^2s+(t-1)^2(1+3t),\qquad F_3=z_1\bigl(2-3(t-1)-s\bigr)=z_1(5-3t-s).
+\]">\[
+P=t^2s+(t-1)^2(1+3t),\qquad F_3=z_1\bigl(2-3(t-1)-s\bigr)=z_1(5-3t-s).
+\]</span>
+<p>Hence <span class="math" data-tex="\(t^2F_3=z_1\bigl(t^2(5-3t)-t^2s\bigr)=z_1\bigl(t^2(5-3t)+(t-1)^2(1+3t)-P\bigr)\)">\(t^2F_3=z_1\bigl(t^2(5-3t)-t^2s\bigr)=z_1\bigl(t^2(5-3t)+(t-1)^2(1+3t)-P\bigr)\)</span>. Expanding, <span class="math" data-tex="\((t-1)^2(1+3t)=3t^3-5t^2+t+1\)">\((t-1)^2(1+3t)=3t^3-5t^2+t+1\)</span>, so <span class="math" data-tex="\(t^2(5-3t)+(t-1)^2(1+3t)=t+1\)">\(t^2(5-3t)+(t-1)^2(1+3t)=t+1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>On the open set <span class="math" data-tex="\(U=\{z\in k^3: z_1t\ne0\}\)">\(U=\{z\in k^3: z_1t\ne0\}\)</span>, the identities (2.2) express the map in the coordinates <span class="math" data-tex="\(u,t,P\)">\(u,t,P\)</span>:</p>
+<span class="math math-display" data-tex="\[
+F_1=\frac{tP}{u^2},\qquad F_2=\frac{t-1+3P}{u},\qquad F_3=\frac{u\,(t+1-P)}{t^2}.
+\tag{2.3}
+\]">\[
+F_1=\frac{tP}{u^2},\qquad F_2=\frac{t-1+3P}{u},\qquad F_3=\frac{u\,(t+1-P)}{t^2}.
+\tag{2.3}
+\]</span>
+<h2 id="3-the-jacobian-determinant">3. The Jacobian determinant</h2>
+<p>We work in the field <span class="math" data-tex="\(k(z_1,z_2,z_3)\)">\(k(z_1,z_2,z_3)\)</span> of rational functions. Partial derivatives extend to it by the quotient rule and still obey the chain rule.</p>
+<p><strong>Theorem 3.1.</strong> <span class="math" data-tex="\(\det JF=-2\)">\(\det JF=-2\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\Phi=(u,t,P)\)">\(\Phi=(u,t,P)\)</span> be the polynomial map (2.1), and let <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> be the rational map</p>
+<span class="math math-display" data-tex="\[
+\Psi(u,t,P)=\Bigl(\frac{tP}{u^2},\ \frac{t-1+3P}{u},\ \frac{u\,(t+1-P)}{t^2}\Bigr).
+\]">\[
+\Psi(u,t,P)=\Bigl(\frac{tP}{u^2},\ \frac{t-1+3P}{u},\ \frac{u\,(t+1-P)}{t^2}\Bigr).
+\]</span>
+<p>By (2.3), <span class="math" data-tex="\(F=\Psi\circ\Phi\)">\(F=\Psi\circ\Phi\)</span> as tuples of rational functions, so the chain rule gives</p>
+<span class="math math-display" data-tex="\[
+\det JF=(\det J\Psi\circ\Phi)\cdot\det J\Phi .
+\tag{3.1}
+\]">\[
+\det JF=(\det J\Psi\circ\Phi)\cdot\det J\Phi .
+\tag{3.1}
+\]</span>
+<p><em>The factor <span class="math" data-tex="\(\det J\Phi\)">\(\det J\Phi\)</span>.</em> The partial derivatives of <span class="math" data-tex="\(u\)">\(u\)</span> are <span class="math" data-tex="\((1,0,0)\)">\((1,0,0)\)</span>, those of <span class="math" data-tex="\(t\)">\(t\)</span> are <span class="math" data-tex="\((z_2,z_1,0)\)">\((z_2,z_1,0)\)</span>, and <span class="math" data-tex="\(\partial P/\partial z_3=z_1^2\,\partial Q/\partial z_3=z_1^2t^2\)">\(\partial P/\partial z_3=z_1^2\,\partial Q/\partial z_3=z_1^2t^2\)</span>. The matrix <span class="math" data-tex="\(J\Phi\)">\(J\Phi\)</span> is lower triangular, so</p>
+<span class="math math-display" data-tex="\[
+\det J\Phi=1\cdot z_1\cdot z_1^2t^2=u^3t^2 .
+\]">\[
+\det J\Phi=1\cdot z_1\cdot z_1^2t^2=u^3t^2 .
+\]</span>
+<p><em>The factor <span class="math" data-tex="\(\det J\Psi\)">\(\det J\Psi\)</span>.</em> With respect to <span class="math" data-tex="\((u,t,P)\)">\((u,t,P)\)</span>, the rows of <span class="math" data-tex="\(J\Psi\)">\(J\Psi\)</span> are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\bigl(-2tP\,u^{-3},\ \ P\,u^{-2},\ \ t\,u^{-2}\bigr),\\
+&amp;\bigl(-(t-1+3P)\,u^{-2},\ \ u^{-1},\ \ 3u^{-1}\bigr),\\
+&amp;\bigl((t+1-P)\,t^{-2},\ \ u\,(2P-t-2)\,t^{-3},\ \ -u\,t^{-2}\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\bigl(-2tP\,u^{-3},\ \ P\,u^{-2},\ \ t\,u^{-2}\bigr),\\
+&amp;\bigl(-(t-1+3P)\,u^{-2},\ \ u^{-1},\ \ 3u^{-1}\bigr),\\
+&amp;\bigl((t+1-P)\,t^{-2},\ \ u\,(2P-t-2)\,t^{-3},\ \ -u\,t^{-2}\bigr).
+\end{aligned}
+\]</span>
+<p>For the middle entry of the last row, <span class="math" data-tex="\(\partial_t\bigl(u(t+1-P)t^{-2}\bigr)=u\bigl(t-2(t+1-P)\bigr)t^{-3}\)">\(\partial_t\bigl(u(t+1-P)t^{-2}\bigr)=u\bigl(t-2(t+1-P)\bigr)t^{-3}\)</span>. Multiply the three rows by <span class="math" data-tex="\(u^3\)">\(u^3\)</span>, <span class="math" data-tex="\(u^2\)">\(u^2\)</span> and <span class="math" data-tex="\(t^3\)">\(t^3\)</span>, and then divide the second and third columns by <span class="math" data-tex="\(u\)">\(u\)</span>. This multiplies the determinant by <span class="math" data-tex="\(u^5t^3\cdot u^{-2}=u^3t^3\)">\(u^5t^3\cdot u^{-2}=u^3t^3\)</span>, and leaves</p>
+<span class="math math-display" data-tex="\[
+M=\begin{pmatrix}-2tP&amp;P&amp;t\\-(t-1+3P)&amp;1&amp;3\\t(t+1-P)&amp;2P-t-2&amp;-t\end{pmatrix}.
+\]">\[
+M=\begin{pmatrix}-2tP&amp;P&amp;t\\-(t-1+3P)&amp;1&amp;3\\t(t+1-P)&amp;2P-t-2&amp;-t\end{pmatrix}.
+\]</span>
+<p>Expand along the first row. The three <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> minors are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;1\cdot(-t)-3(2P-t-2)=2t-6P+6,\\
+&amp;(t-1+3P)\,t-3t(t+1-P)=t\,(6P-2t-4),\\
+&amp;-(t-1+3P)(2P-t-2)-t(t+1-P)=-6P^2+2tP+8P-2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;1\cdot(-t)-3(2P-t-2)=2t-6P+6,\\
+&amp;(t-1+3P)\,t-3t(t+1-P)=t\,(6P-2t-4),\\
+&amp;-(t-1+3P)(2P-t-2)-t(t+1-P)=-6P^2+2tP+8P-2 .
+\end{aligned}
+\]</span>
+<p>So</p>
+<span class="math math-display" data-tex="\[
+\det M=-2tP(2t-6P+6)-P\cdot t(6P-2t-4)+t(-6P^2+2tP+8P-2).
+\]">\[
+\det M=-2tP(2t-6P+6)-P\cdot t(6P-2t-4)+t(-6P^2+2tP+8P-2).
+\]</span>
+<p>Collecting terms, the coefficients of <span class="math" data-tex="\(t^2P\)">\(t^2P\)</span> are <span class="math" data-tex="\(-4+2+2=0\)">\(-4+2+2=0\)</span>, those of <span class="math" data-tex="\(tP^2\)">\(tP^2\)</span> are <span class="math" data-tex="\(12-6-6=0\)">\(12-6-6=0\)</span>, and those of <span class="math" data-tex="\(tP\)">\(tP\)</span> are <span class="math" data-tex="\(-12+4+8=0\)">\(-12+4+8=0\)</span>. Only <span class="math" data-tex="\(-2t\)">\(-2t\)</span> survives: <span class="math" data-tex="\(\det M=-2t\)">\(\det M=-2t\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\det J\Psi=\frac{-2t}{u^3t^3}=\frac{-2}{u^3t^2}.
+\]">\[
+\det J\Psi=\frac{-2t}{u^3t^3}=\frac{-2}{u^3t^2}.
+\]</span>
+<p>By (3.1), <span class="math" data-tex="\(\det JF=\dfrac{-2}{u^3t^2}\cdot u^3t^2=-2\)">\(\det JF=\dfrac{-2}{u^3t^2}\cdot u^3t^2=-2\)</span>. This is an identity of rational functions, and <span class="math" data-tex="\(\det JF\)">\(\det JF\)</span> is a polynomial, so <span class="math" data-tex="\(\det JF=-2\)">\(\det JF=-2\)</span> as a polynomial. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-three-points-with-one-image">4. Three points with one image</h2>
+<p><strong>Theorem 4.1.</strong> The three points <span class="math" data-tex="\((0,0,-\tfrac14)\)">\((0,0,-\tfrac14)\)</span>, <span class="math" data-tex="\((1,-\tfrac32,\tfrac{13}{2})\)">\((1,-\tfrac32,\tfrac{13}{2})\)</span> and <span class="math" data-tex="\((-1,\tfrac32,\tfrac{13}{2})\)">\((-1,\tfrac32,\tfrac{13}{2})\)</span> all have image <span class="math" data-tex="\((-\tfrac14,0,0)\)">\((-\tfrac14,0,0)\)</span>.</p>
+<p><strong>Proof.</strong> Use (1.2) and (1.3). At <span class="math" data-tex="\((0,0,-\tfrac14)\)">\((0,0,-\tfrac14)\)</span>: <span class="math" data-tex="\(t=1\)">\(t=1\)</span> and <span class="math" data-tex="\(Q=-\tfrac14\)">\(Q=-\tfrac14\)</span>, so <span class="math" data-tex="\(F=(-\tfrac14,0,0)\)">\(F=(-\tfrac14,0,0)\)</span>. At <span class="math" data-tex="\((1,-\tfrac32,\tfrac{13}2)\)">\((1,-\tfrac32,\tfrac{13}2)\)</span>: <span class="math" data-tex="\(t=-\tfrac12\)">\(t=-\tfrac12\)</span> and <span class="math" data-tex="\(Q=\tfrac14\cdot\tfrac{13}2+\tfrac94\bigl(1-\tfrac32\bigr)=\tfrac12\)">\(Q=\tfrac14\cdot\tfrac{13}2+\tfrac94\bigl(1-\tfrac32\bigr)=\tfrac12\)</span>. So <span class="math" data-tex="\(F_1=tQ=-\tfrac14\)">\(F_1=tQ=-\tfrac14\)</span>, <span class="math" data-tex="\(F_2=-\tfrac32+3\cdot\tfrac12=0\)">\(F_2=-\tfrac32+3\cdot\tfrac12=0\)</span> and <span class="math" data-tex="\(F_3=1\cdot\bigl(2+\tfrac92-\tfrac{13}2\bigr)=0\)">\(F_3=1\cdot\bigl(2+\tfrac92-\tfrac{13}2\bigr)=0\)</span>. At <span class="math" data-tex="\((-1,\tfrac32,\tfrac{13}2)\)">\((-1,\tfrac32,\tfrac{13}2)\)</span>: again <span class="math" data-tex="\(t=-\tfrac12\)">\(t=-\tfrac12\)</span> and <span class="math" data-tex="\(Q=\tfrac12\)">\(Q=\tfrac12\)</span>. So <span class="math" data-tex="\(F_1=-\tfrac14\)">\(F_1=-\tfrac14\)</span>, <span class="math" data-tex="\(F_2=\tfrac32-\tfrac32=0\)">\(F_2=\tfrac32-\tfrac32=0\)</span> and <span class="math" data-tex="\(F_3=-\bigl(2+\tfrac92-\tfrac{13}2\bigr)=0\)">\(F_3=-\bigl(2+\tfrac92-\tfrac{13}2\bigr)=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 4.2.</strong> The Jacobian conjecture is false in every dimension <span class="math" data-tex="\(n\geq3\)">\(n\geq3\)</span>, over every field of characteristic zero.</p>
+<p><strong>Proof.</strong> By Theorem 3.1, <span class="math" data-tex="\(F\)">\(F\)</span> is a Keller map, and by Theorem 4.1 it is not injective. So no map at all, polynomial or not, is inverse to it. For <span class="math" data-tex="\(n&gt;3\)">\(n&gt;3\)</span>, let <span class="math" data-tex="\(G=F\times\mathrm{id}\)">\(G=F\times\mathrm{id}\)</span> on <span class="math" data-tex="\(k^3\times k^{n-3}\)">\(k^3\times k^{n-3}\)</span>. Its Jacobian matrix is block diagonal, so <span class="math" data-tex="\(\det JG=-2\)">\(\det JG=-2\)</span>, and <span class="math" data-tex="\(G\)">\(G\)</span> takes the same value at the three points of Theorem 4.1 extended by zeros. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In characteristic <span class="math" data-tex="\(2\)">\(2\)</span> the determinant <span class="math" data-tex="\(-2\)">\(-2\)</span> vanishes, and in every positive characteristic the conjecture already fails by Example 1.3 of the previous lesson. The construction says nothing about dimension two.</p>
+<h2 id="5-fibres-and-the-degree">5. Fibres and the degree</h2>
+<p>From now on <span class="math" data-tex="\(k\)">\(k\)</span> is algebraically closed of characteristic zero. The coordinates of Section 2 turn the equation <span class="math" data-tex="\(F(z)=(a,b,c)\)">\(F(z)=(a,b,c)\)</span> into a cubic equation for one unknown,</p>
+<span class="math math-display" data-tex="\[
+\lambda=\frac{z_1}{1+z_1z_2}=\frac ut .
+\]">\[
+\lambda=\frac{z_1}{1+z_1z_2}=\frac ut .
+\]</span>
+<p><strong>Theorem 5.1.</strong> Let <span class="math" data-tex="\((a,b,c)\in k^3\)">\((a,b,c)\in k^3\)</span>. The points <span class="math" data-tex="\(z\in U\)">\(z\in U\)</span> with <span class="math" data-tex="\(F(z)=(a,b,c)\)">\(F(z)=(a,b,c)\)</span> correspond bijectively, by <span class="math" data-tex="\(z\mapsto u/t\)">\(z\mapsto u/t\)</span>, to the roots <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> of</p>
+<span class="math math-display" data-tex="\[
+C(\lambda)=2a\lambda^3-b\lambda^2+2\lambda-c
+\tag{5.1}
+\]">\[
+C(\lambda)=2a\lambda^3-b\lambda^2+2\lambda-c
+\tag{5.1}
+\]</span>
+<p>with <span class="math" data-tex="\(\lambda\ne0\)">\(\lambda\ne0\)</span> and <span class="math" data-tex="\(1-b\lambda+3a\lambda^2\ne0\)">\(1-b\lambda+3a\lambda^2\ne0\)</span>. The point belonging to such a root is given by</p>
+<span class="math math-display" data-tex="\[
+t=\frac1{1-b\lambda+3a\lambda^2},\quad z_1=\lambda t,\quad z_2=\frac{t-1}{z_1},\quad
+z_3=\frac{P-(t-1)^2(1+3t)}{z_1^2t^2},\quad\text{where } P=a\lambda^2t .
+\tag{5.2}
+\]">\[
+t=\frac1{1-b\lambda+3a\lambda^2},\quad z_1=\lambda t,\quad z_2=\frac{t-1}{z_1},\quad
+z_3=\frac{P-(t-1)^2(1+3t)}{z_1^2t^2},\quad\text{where } P=a\lambda^2t .
+\tag{5.2}
+\]</span>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(z\in U\)">\(z\in U\)</span> satisfy <span class="math" data-tex="\(F(z)=(a,b,c)\)">\(F(z)=(a,b,c)\)</span>, and put <span class="math" data-tex="\(\lambda=u/t\ne0\)">\(\lambda=u/t\ne0\)</span>. By (2.2), <span class="math" data-tex="\(tP=au^2\)">\(tP=au^2\)</span>, so <span class="math" data-tex="\(P=a\lambda^2t\)">\(P=a\lambda^2t\)</span>. Next, <span class="math" data-tex="\(t-1+3P=bu=b\lambda t\)">\(t-1+3P=bu=b\lambda t\)</span>, that is,</p>
+<span class="math math-display" data-tex="\[
+t\,(1-b\lambda+3a\lambda^2)=1 ,
+\tag{5.3}
+\]">\[
+t\,(1-b\lambda+3a\lambda^2)=1 ,
+\tag{5.3}
+\]</span>
+<p>so <span class="math" data-tex="\(1-b\lambda+3a\lambda^2\ne0\)">\(1-b\lambda+3a\lambda^2\ne0\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span> is as in (5.2). Finally <span class="math" data-tex="\(t^2c=u(t+1-P)\)">\(t^2c=u(t+1-P)\)</span>. Dividing by <span class="math" data-tex="\(t\)">\(t\)</span> gives <span class="math" data-tex="\(tc=\lambda(t+1-a\lambda^2t)\)">\(tc=\lambda(t+1-a\lambda^2t)\)</span>, that is,</p>
+<span class="math math-display" data-tex="\[
+t\,(c-\lambda+a\lambda^3)=\lambda .
+\tag{5.4}
+\]">\[
+t\,(c-\lambda+a\lambda^3)=\lambda .
+\tag{5.4}
+\]</span>
+<p>Multiplying (5.4) by <span class="math" data-tex="\(1-b\lambda+3a\lambda^2\)">\(1-b\lambda+3a\lambda^2\)</span> and using (5.3) gives <span class="math" data-tex="\(c-\lambda+a\lambda^3=\lambda(1-b\lambda+3a\lambda^2)\)">\(c-\lambda+a\lambda^3=\lambda(1-b\lambda+3a\lambda^2)\)</span>, which is <span class="math" data-tex="\(C(\lambda)=0\)">\(C(\lambda)=0\)</span>. The point <span class="math" data-tex="\(z\)">\(z\)</span> is recovered from <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>: <span class="math" data-tex="\(z_1=u=\lambda t\)">\(z_1=u=\lambda t\)</span>, <span class="math" data-tex="\(z_2=(t-1)/z_1\)">\(z_2=(t-1)/z_1\)</span>, and from <span class="math" data-tex="\(P=z_1^2\bigl(t^2z_3+z_2^2(1+3t)\bigr)=z_1^2t^2z_3+(t-1)^2(1+3t)\)">\(P=z_1^2\bigl(t^2z_3+z_2^2(1+3t)\bigr)=z_1^2t^2z_3+(t-1)^2(1+3t)\)</span> we get the formula for <span class="math" data-tex="\(z_3\)">\(z_3\)</span>. So distinct points give distinct <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>.</p>
+<p>Conversely, let <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> be a root of <span class="math" data-tex="\(C\)">\(C\)</span> with <span class="math" data-tex="\(\lambda\ne0\)">\(\lambda\ne0\)</span> and <span class="math" data-tex="\(1-b\lambda+3a\lambda^2\ne0\)">\(1-b\lambda+3a\lambda^2\ne0\)</span>, and define <span class="math" data-tex="\(t,z_1,z_2,z_3,P\)">\(t,z_1,z_2,z_3,P\)</span> by (5.2). Then <span class="math" data-tex="\(z_1=\lambda t\ne0\)">\(z_1=\lambda t\ne0\)</span>, <span class="math" data-tex="\(1+z_1z_2=t\ne0\)">\(1+z_1z_2=t\ne0\)</span>, and <span class="math" data-tex="\(z_1^2Q=P\)">\(z_1^2Q=P\)</span> by the formula for <span class="math" data-tex="\(z_3\)">\(z_3\)</span>. So <span class="math" data-tex="\(z\in U\)">\(z\in U\)</span>, and (2.2) holds with these values of <span class="math" data-tex="\(u,t,P\)">\(u,t,P\)</span>. From <span class="math" data-tex="\(tP=a\lambda^2t^2=az_1^2\)">\(tP=a\lambda^2t^2=az_1^2\)</span> we get <span class="math" data-tex="\(F_1(z)=a\)">\(F_1(z)=a\)</span>. From (5.3), <span class="math" data-tex="\(t-1+3P=t-1+3a\lambda^2t=b\lambda t=bz_1\)">\(t-1+3P=t-1+3a\lambda^2t=b\lambda t=bz_1\)</span>, so <span class="math" data-tex="\(F_2(z)=b\)">\(F_2(z)=b\)</span>. Reversing the last computation, <span class="math" data-tex="\(C(\lambda)=0\)">\(C(\lambda)=0\)</span> gives (5.4), which says <span class="math" data-tex="\(t^2c=z_1(t+1-P)\)">\(t^2c=z_1(t+1-P)\)</span>, so <span class="math" data-tex="\(F_3(z)=c\)">\(F_3(z)=c\)</span>. Finally <span class="math" data-tex="\(z_1/t=\lambda\)">\(z_1/t=\lambda\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 5.2 (outside <span class="math" data-tex="\(U\)">\(U\)</span>).</strong> If <span class="math" data-tex="\(z_1=0\)">\(z_1=0\)</span>, then <span class="math" data-tex="\(F(z)=(z_3+4z_2^2,\ z_2,\ 0)\)">\(F(z)=(z_3+4z_2^2,\ z_2,\ 0)\)</span>. If <span class="math" data-tex="\(1+z_1z_2=0\)">\(1+z_1z_2=0\)</span>, then <span class="math" data-tex="\(F_1(z)=0\)">\(F_1(z)=0\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(z_1=0\)">\(z_1=0\)</span>, then <span class="math" data-tex="\(t=1\)">\(t=1\)</span> and <span class="math" data-tex="\(Q=z_3+4z_2^2\)">\(Q=z_3+4z_2^2\)</span>, and (1.3) gives the formula. If <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, then <span class="math" data-tex="\(F_1=tQ=0\)">\(F_1=tQ=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 5.3.</strong> The fibre of <span class="math" data-tex="\(F\)">\(F\)</span> over <span class="math" data-tex="\((-\tfrac14,0,0)\)">\((-\tfrac14,0,0)\)</span> consists of exactly the three points of Theorem 4.1.</p>
+<p><strong>Proof.</strong> Here <span class="math" data-tex="\(a=-\tfrac14\ne0\)">\(a=-\tfrac14\ne0\)</span>, so by Proposition 5.2 no point of the fibre has <span class="math" data-tex="\(1+z_1z_2=0\)">\(1+z_1z_2=0\)</span>. Since <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, the points with <span class="math" data-tex="\(z_1=0\)">\(z_1=0\)</span> are those with <span class="math" data-tex="\(z_2=b=0\)">\(z_2=b=0\)</span> and <span class="math" data-tex="\(z_3=a-4b^2=-\tfrac14\)">\(z_3=a-4b^2=-\tfrac14\)</span>: only <span class="math" data-tex="\((0,0,-\tfrac14)\)">\((0,0,-\tfrac14)\)</span>. In <span class="math" data-tex="\(U\)">\(U\)</span>, Theorem 5.1 applies with <span class="math" data-tex="\(C(\lambda)=-\tfrac12\lambda^3+2\lambda=-\tfrac12\lambda(\lambda^2-4)\)">\(C(\lambda)=-\tfrac12\lambda^3+2\lambda=-\tfrac12\lambda(\lambda^2-4)\)</span>. The nonzero roots are <span class="math" data-tex="\(\lambda=\pm2\)">\(\lambda=\pm2\)</span>, and for both <span class="math" data-tex="\(1-b\lambda+3a\lambda^2=1-3=-2\ne0\)">\(1-b\lambda+3a\lambda^2=1-3=-2\ne0\)</span>. Formula (5.2) gives <span class="math" data-tex="\(t=-\tfrac12\)">\(t=-\tfrac12\)</span>, <span class="math" data-tex="\(P=\tfrac12\)">\(P=\tfrac12\)</span>, and <span class="math" data-tex="\(z=(-1,\tfrac32,\tfrac{13}2)\)">\(z=(-1,\tfrac32,\tfrac{13}2)\)</span> for <span class="math" data-tex="\(\lambda=2\)">\(\lambda=2\)</span>, <span class="math" data-tex="\(z=(1,-\tfrac32,\tfrac{13}2)\)">\(z=(1,-\tfrac32,\tfrac{13}2)\)</span> for <span class="math" data-tex="\(\lambda=-2\)">\(\lambda=-2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.4.</strong> The Keller map <span class="math" data-tex="\(F\)">\(F\)</span> has degree <span class="math" data-tex="\(3\)">\(3\)</span>: the field <span class="math" data-tex="\(k(z_1,z_2,z_3)\)">\(k(z_1,z_2,z_3)\)</span> has degree <span class="math" data-tex="\(3\)">\(3\)</span> over <span class="math" data-tex="\(k(F_1,F_2,F_3)\)">\(k(F_1,F_2,F_3)\)</span>. A general point of <span class="math" data-tex="\(k^3\)">\(k^3\)</span> has exactly three preimages.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(K=k(z_1,z_2,z_3)\)">\(K=k(z_1,z_2,z_3)\)</span> and <span class="math" data-tex="\(L=k(F_1,F_2,F_3)\)">\(L=k(F_1,F_2,F_3)\)</span>, and let <span class="math" data-tex="\(\lambda=z_1/(1+z_1z_2)\in K\)">\(\lambda=z_1/(1+z_1z_2)\in K\)</span>. The first half of the proof of Theorem 5.1 used only the identities (2.2) and division by the nonzero elements <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span>. Carried out in <span class="math" data-tex="\(K\)">\(K\)</span>, with <span class="math" data-tex="\(a,b,c\)">\(a,b,c\)</span> replaced by <span class="math" data-tex="\(F_1,F_2,F_3\)">\(F_1,F_2,F_3\)</span>, it shows</p>
+<span class="math math-display" data-tex="\[
+2F_1\lambda^3-F_2\lambda^2+2\lambda-F_3=0 ,
+\]">\[
+2F_1\lambda^3-F_2\lambda^2+2\lambda-F_3=0 ,
+\]</span>
+<p>and expresses <span class="math" data-tex="\(t\)">\(t\)</span>, then <span class="math" data-tex="\(z_1\)">\(z_1\)</span>, <span class="math" data-tex="\(z_2\)">\(z_2\)</span> and <span class="math" data-tex="\(z_3\)">\(z_3\)</span>, rationally in <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and <span class="math" data-tex="\(F_1,F_2,F_3\)">\(F_1,F_2,F_3\)</span>, by (5.2). Hence <span class="math" data-tex="\(K=L(\lambda)\)">\(K=L(\lambda)\)</span>, and <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is a root of</p>
+<span class="math math-display" data-tex="\[
+m(X)=2F_1X^3-F_2X^2+2X-F_3\in L[X].
+\]">\[
+m(X)=2F_1X^3-F_2X^2+2X-F_3\in L[X].
+\]</span>
+<p>It remains to show that <span class="math" data-tex="\(m\)">\(m\)</span> is irreducible over <span class="math" data-tex="\(L\)">\(L\)</span>. By Proposition 2.1 of the previous lesson, <span class="math" data-tex="\(F_1,F_2,F_3\)">\(F_1,F_2,F_3\)</span> are algebraically independent, so <span class="math" data-tex="\(R=k[F_1,F_2,F_3]\)">\(R=k[F_1,F_2,F_3]\)</span> is a polynomial ring with fraction field <span class="math" data-tex="\(L\)">\(L\)</span>. As an element of <span class="math" data-tex="\(R[X]=k[F_1,F_2,F_3,X]\)">\(R[X]=k[F_1,F_2,F_3,X]\)</span>, the polynomial <span class="math" data-tex="\(m\)">\(m\)</span> has degree one in <span class="math" data-tex="\(F_3\)">\(F_3\)</span>, with coefficient <span class="math" data-tex="\(-1\)">\(-1\)</span>. In a factorization <span class="math" data-tex="\(m=gh\)">\(m=gh\)</span>, the degrees in <span class="math" data-tex="\(F_3\)">\(F_3\)</span> add up to one, so one factor, say <span class="math" data-tex="\(h\)">\(h\)</span>, does not involve <span class="math" data-tex="\(F_3\)">\(F_3\)</span>. Comparing the coefficients of <span class="math" data-tex="\(F_3\)">\(F_3\)</span> gives <span class="math" data-tex="\(-1=g_1h\)">\(-1=g_1h\)</span>, where <span class="math" data-tex="\(g_1\)">\(g_1\)</span> is the coefficient of <span class="math" data-tex="\(F_3\)">\(F_3\)</span> in <span class="math" data-tex="\(g\)">\(g\)</span>. So <span class="math" data-tex="\(h\)">\(h\)</span> is a unit. Thus <span class="math" data-tex="\(m\)">\(m\)</span> is irreducible in <span class="math" data-tex="\(R[X]\)">\(R[X]\)</span>. Its coefficients <span class="math" data-tex="\(2F_1,-F_2,2,-F_3\)">\(2F_1,-F_2,2,-F_3\)</span> have no common factor, because <span class="math" data-tex="\(2\)">\(2\)</span> is a unit. So <span class="math" data-tex="\(m\)">\(m\)</span> is primitive, and Gauss's lemma <a href="../AG-CA/integral-extensions-lying-over-going-up-and-going-down.html#2-integral-closure-survives-localization">Integral extensions: lying over, going up and going down, proof of Proposition 2.3</a> shows that <span class="math" data-tex="\(m\)">\(m\)</span> is irreducible in <span class="math" data-tex="\(L[X]\)">\(L[X]\)</span>. Hence <span class="math" data-tex="\([K:L]=3\)">\([K:L]=3\)</span>. The last assertion is Theorem 3.3 of the previous lesson. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>So the counterexample is generically three-to-one, and its non-injectivity is not an accident of a special fibre. The size of the fibre still varies from point to point, as Exercises 7.2 and 7.4 show.</p>
+<h2 id="6-what-happened-next">6. What happened next</h2>
+<p>The day after the announcement, Gallagher gave an infinite family of counterexamples, one of each degree <span class="math" data-tex="\(d\geq3\)">\(d\geq3\)</span>, and three days later Speyer explained the geometric mechanism behind them, as recounted in [Gao]. Gao generalized that mechanism to counterexamples of arbitrarily large degree in every dimension above two [Gao]. Van den Essen gave an elementary way to find such maps [van den Essen]. All of these live in dimension three or more; the case of dimension two is not settled by them.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>Exercise 7.1 (easy).</strong> Write down two distinct points of <span class="math" data-tex="\(k^4\)">\(k^4\)</span> with the same image under <span class="math" data-tex="\(F\times\mathrm{id}_k\)">\(F\times\mathrm{id}_k\)</span>, and check that its Jacobian determinant is <span class="math" data-tex="\(-2\)">\(-2\)</span>.</p>
+<p><strong>Exercise 7.2 (medium).</strong> Show that the fibre of <span class="math" data-tex="\(F\)">\(F\)</span> over the origin consists of the origin alone.</p>
+<p><strong>Exercise 7.3 (medium).</strong> Let <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span> and <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>. Suppose the cubic (5.1) has three distinct roots, none of which is a root of <span class="math" data-tex="\(1-bX+3aX^2\)">\(1-bX+3aX^2\)</span>. Show that <span class="math" data-tex="\((a,b,c)\)">\((a,b,c)\)</span> has exactly three preimages.</p>
+<p><strong>Exercise 7.4 (hard).</strong> Show that the point <span class="math" data-tex="\((\tfrac13,2,\tfrac23)\)">\((\tfrac13,2,\tfrac23)\)</span> has no preimage. So <span class="math" data-tex="\(F\)">\(F\)</span> is not surjective.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> The points <span class="math" data-tex="\((0,0,-\tfrac14,0)\)">\((0,0,-\tfrac14,0)\)</span> and <span class="math" data-tex="\((1,-\tfrac32,\tfrac{13}2,0)\)">\((1,-\tfrac32,\tfrac{13}2,0)\)</span> both map to <span class="math" data-tex="\((-\tfrac14,0,0,0)\)">\((-\tfrac14,0,0,0)\)</span>. The Jacobian matrix of <span class="math" data-tex="\(F\times\mathrm{id}_k\)">\(F\times\mathrm{id}_k\)</span> is block diagonal with blocks <span class="math" data-tex="\(JF\)">\(JF\)</span> and <span class="math" data-tex="\((1)\)">\((1)\)</span>, so its determinant is <span class="math" data-tex="\(-2\)">\(-2\)</span>.</p>
+<p><strong>7.2.</strong> Let <span class="math" data-tex="\(F(z)=(0,0,0)\)">\(F(z)=(0,0,0)\)</span>. If <span class="math" data-tex="\(z_1=0\)">\(z_1=0\)</span>, Proposition 5.2 gives <span class="math" data-tex="\(z_2=0\)">\(z_2=0\)</span> and <span class="math" data-tex="\(z_3+4z_2^2=0\)">\(z_3+4z_2^2=0\)</span>, so <span class="math" data-tex="\(z=0\)">\(z=0\)</span>. If <span class="math" data-tex="\(t=1+z_1z_2=0\)">\(t=1+z_1z_2=0\)</span>, then <span class="math" data-tex="\(Q=z_2^2(1+3t)=z_2^2\)">\(Q=z_2^2(1+3t)=z_2^2\)</span>, and <span class="math" data-tex="\(F_2=z_2+3z_1z_2^2=z_2(1+3z_1z_2)=-2z_2\)">\(F_2=z_2+3z_1z_2^2=z_2(1+3z_1z_2)=-2z_2\)</span>. So <span class="math" data-tex="\(z_2=0\)">\(z_2=0\)</span>, and then <span class="math" data-tex="\(t=1\)">\(t=1\)</span>, a contradiction. If <span class="math" data-tex="\(z\in U\)">\(z\in U\)</span>, Theorem 5.1 applies with <span class="math" data-tex="\(C(\lambda)=2\lambda\)">\(C(\lambda)=2\lambda\)</span>, whose only root <span class="math" data-tex="\(\lambda=0\)">\(\lambda=0\)</span> is excluded. So the fibre is <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>.</p>
+<p><strong>7.3.</strong> Since <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>, Proposition 5.2 excludes points with <span class="math" data-tex="\(z_1=0\)">\(z_1=0\)</span>. Since <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, it excludes points with <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. The roots of (5.1) are nonzero because <span class="math" data-tex="\(C(0)=-c\ne0\)">\(C(0)=-c\ne0\)</span>. By hypothesis there are three of them, and each satisfies <span class="math" data-tex="\(1-b\lambda+3a\lambda^2\ne0\)">\(1-b\lambda+3a\lambda^2\ne0\)</span>. By Theorem 5.1 they give exactly three preimages, all in <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p><strong>7.4.</strong> Here <span class="math" data-tex="\(a=\tfrac13\)">\(a=\tfrac13\)</span>, <span class="math" data-tex="\(b=2\)">\(b=2\)</span>, <span class="math" data-tex="\(c=\tfrac23\)">\(c=\tfrac23\)</span>. Since <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span> and <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>, Proposition 5.2 excludes points outside <span class="math" data-tex="\(U\)">\(U\)</span>. In <span class="math" data-tex="\(U\)">\(U\)</span>, the cubic is</p>
+<span class="math math-display" data-tex="\[
+C(\lambda)=\tfrac23\lambda^3-2\lambda^2+2\lambda-\tfrac23=\tfrac23(\lambda-1)^3,
+\]">\[
+C(\lambda)=\tfrac23\lambda^3-2\lambda^2+2\lambda-\tfrac23=\tfrac23(\lambda-1)^3,
+\]</span>
+<p>with the single root <span class="math" data-tex="\(\lambda=1\)">\(\lambda=1\)</span>. But <span class="math" data-tex="\(1-b\lambda+3a\lambda^2=1-2+1=0\)">\(1-b\lambda+3a\lambda^2=1-2+1=0\)</span> at <span class="math" data-tex="\(\lambda=1\)">\(\lambda=1\)</span>. So Theorem 5.1 allows no point of <span class="math" data-tex="\(U\)">\(U\)</span> either. The same computation works for <span class="math" data-tex="\(\bigl(\tfrac1{3r^2},\tfrac2r,\tfrac{2r}3\bigr)\)">\(\bigl(\tfrac1{3r^2},\tfrac2r,\tfrac{2r}3\bigr)\)</span> with any <span class="math" data-tex="\(r\ne0\)">\(r\ne0\)</span>, where <span class="math" data-tex="\(C(\lambda)=\tfrac2{3r^2}(\lambda-r)^3\)">\(C(\lambda)=\tfrac2{3r^2}(\lambda-r)^3\)</span> and <span class="math" data-tex="\(1-b\lambda+3a\lambda^2=\tfrac1{r^2}(\lambda-r)^2\)">\(1-b\lambda+3a\lambda^2=\tfrac1{r^2}(\lambda-r)^2\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[AFP] A. Freitas Ramos, D. Barros Hulak, R. J. G. B. de Queiroz, Formal verification of an explicit counterexample to the Jacobian conjecture, Archive of Formal Proofs (Isabelle/HOL), July 2026. https://isa-afp.org/entries/Jacobian_Counterexample.html</li>
+<li>[Gao] S. Gao, Counterexamples to the Jacobian conjecture in dimensions greater than two, arXiv:2608.00222 (2026). https://arxiv.org/abs/2608.00222</li>
+<li>[Tao] T. Tao, A digestion of the Jacobian conjecture counterexample, What's new, 21 July 2026. https://terrytao.wordpress.com/2026/07/21/a-digestion-of-the-jacobian-conjecture-counterexample/</li>
+<li>[van den Essen] A. van den Essen, An elementary way to find a counterexample to the Jacobian Conjecture, arXiv:2609.17795 (2026). https://arxiv.org/abs/2609.17795</li>
+<li>[Alpöge] L. Alpöge, announcement of the counterexample, posts on X of 19 and 20 July 2026. https://x.com/<strong>alpoge</strong></li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

@@ -247,7 +247,7 @@ On these models the infinitesimal fields are $X_A(q)=Aq$, where $A$ is skew for 
 Matrix and field brackets have opposite signs:
 
 $$
-X_A,X_B=(BA-AB)q=-X_{[A,B]}(q).
+[X_A,X_B](q)=(BA-AB)q=-X_{[A,B]}(q).
 \tag{6.4}
 $$
 

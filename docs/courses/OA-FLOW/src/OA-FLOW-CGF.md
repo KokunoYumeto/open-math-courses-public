@@ -396,13 +396,13 @@ The vector integral is bounded by \(\|f\|_2\|\xi\|\), and
 Every constant operator in \(B'\) commutes with \(Y\); [ND's actual tensor-commutant theorem](OA-FLOW-ND.md#nd-tensor) puts \(Y\) in \(B\bar\otimes B(K)\). Its initial and final supports are below \(e\otimes1\). It is nonzero: choose \(\eta\) with \(x\eta\ne0\) and \(\xi(t)=\overline{f(t)}\eta\); continuity of \(r\mapsto\beta_{-r}(x)\eta\) gives a positive-norm output near zero.
 
 The intertwining calculation is pointwise on this complete bounded operator:
-\
+\[
  \begin{aligned}
- \bigl[(c_s\otimes\rho_s)\widetilde\alpha_s(Y)\xi\bigr
+ \bigl[(c_s\otimes\rho_s)\widetilde\alpha_s(Y)\xi\bigr](r)
  &=c_s\alpha_s(\beta_{-(r+s)}(x))
                     \int f(t)\xi(t)\,dt\\
  &=\beta_{-r}(x)c_s\int f(t)\xi(t)\,dt\\
- &=\biglY(c_s\otimes1)\xi\bigr.
+ &=\bigl[Y(c_s\otimes1)\xi\bigr](r).
  \end{aligned}
  \tag{CI32}
 \]

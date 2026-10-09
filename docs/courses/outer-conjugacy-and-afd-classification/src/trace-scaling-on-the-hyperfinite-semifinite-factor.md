@@ -361,7 +361,7 @@ X_n-y_n\otimes1\longrightarrow0\\
 \]
 This density argument uses only finitely many filter conditions for each prescribed error; it does not require a countable basis of \(H\).
 
-For \(a\in N\), evaluating \([X_n,\rho\otimes\omega_{e_1,e_1}]\) at \(a\otimes e_{11}\) gives \(y_n,\rho\). Therefore
+For \(a\in N\), evaluating \([X_n,\rho\otimes\omega_{e_1,e_1}]\) at \(a\otimes e_{11}\) gives \([y_n,\rho](a)\). Therefore
 \[
 \|[y_n,\rho]\|
 \leq\|[X_n,\rho\otimes\omega_{e_1,e_1}]\|

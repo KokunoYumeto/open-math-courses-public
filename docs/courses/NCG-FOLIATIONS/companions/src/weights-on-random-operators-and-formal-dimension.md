@@ -318,14 +318,14 @@ group, Theorem 3.1). Our \(\hat f(p)\) is the transform at
 \(\chi_{-p/2\pi}\), and \(p\mapsto\chi_{-p/2\pi}\) is a homeomorphism onto the dual group, so the results apply in our
 normalization. For a closed ideal \(J\) let \(h(J)\) be the set of \(p\) with \(\hat f(p)=0\) for all \(f\in J\).
 
-- (W) If \(h(J)=\emptyset\), then \(J=L^1(\mathbb R)\) (Closed ideals of \(L^1(G)\) and Wiener's theorem, Theorem
-  5.3).
+- (W) If \(h(J)=\emptyset\), then \(J=L^1(\mathbb R)\) ([Closed ideals of \(L^1(G)\) and Wiener's theorem, Theorem
+  5.3](../../HA-LCA/src/closed-ideals-of-l1-g-and-wieners-theorem.html#section-5)).
 - (S) If \(\hat f\) vanishes on a neighbourhood of \(h(J)\), then \(f\in J\); and if \(h(J)=\{0\}\), then
   \(J=\{f:\int f=0\}\), because finite sets admit spectral synthesis (Tauberian theorems and spectral synthesis,
   Corollary 3.3).
 - (U) If \(K\) is compact and \(W\supset K\) open, there is \(f\in L^1(\mathbb R)\) with \(\hat f=1\) on \(K\) and
-  \(\operatorname{supp}\hat f\) a compact subset of \(W\) (Closed ideals of \(L^1(G)\) and Wiener's theorem,
-  Proposition 2.1).
+  \(\operatorname{supp}\hat f\) a compact subset of \(W\) ([Closed ideals of \(L^1(G)\) and Wiener's theorem,
+  Proposition 2.1](../../HA-LCA/src/closed-ideals-of-l1-g-and-wieners-theorem.html#section-2)).
 
 Since \(|\langle\gamma(f)x,a\rangle|\le\|f\|_1\|x\|\|a\|\), \(\gamma(f)x\) is well defined and
 \(\|\gamma(f)x\|\le\|f\|_1\|x\|\). Weak\* continuity of each \(\gamma_s\) and Fubini's theorem give

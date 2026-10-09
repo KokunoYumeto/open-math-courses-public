@@ -6,9 +6,9 @@
 A return transformation records one discrete step of a continuous center flow. The trace records more: when the return roof has height \(r\), one step changes the coefficient trace by the central factor \(e^{-r}\). The corresponding suspension trace has density \(e^{-u}\,du\) in the height variable. We construct both traces on their entire positive cones and identify the actual regular crossed products.
 
 All algebras in the two main theorems have separable predual. A type II\(_\infty\) algebra need not be a factor: it is semifinite, has no nonzero abelian projection, and has no nonzero finite central summand. A faithful normal semifinite trace is abbreviated to a faithful n.s.f. trace. The regular convention is
-\
- [\pi_\alpha(x)\xi=\alpha_{-t}(x)\xi(t),\qquad
- \lambda_s\xi=\xi(t-s).
+\[
+ [\pi_\alpha(x)\xi](t)=\alpha_{-t}(x)\xi(t),\qquad
+ [\lambda_s\xi](t)=\xi(t-s).
  \tag{ZDC1}
 \]
 For an automorphism the analogous formulas use integer indices. All isomorphisms below are normal and have normal inverses.
@@ -69,8 +69,8 @@ Write \(\Sigma=\Sigma_1\). Two faithful n.s.f. traces on an algebra differ by on
 This follows for each bounded spectral cutoff by moving it through \(\gamma\), and then by monotone convergence of the weight values. For commuting central positive affiliated \(b,d\), iterated perturbation is \((\Sigma_b)_d=\Sigma_{bd}\): joint spectral truncation reduces it to bounded commuting products, and the rectangular truncations are cofinal on the full positive cone. No undefined product of unbounded operators is used.
 
 We also need a variable central translation. If \(a\) is a real measurable function on a standard model of \(Z(D)\), put
-\
- [V_a\xi=\xi(s+a(\omega),\omega),\qquad
+\[
+ [V_a\xi](s,\omega)=\xi(s+a(\omega),\omega),\qquad
  \Lambda_a=\operatorname{Ad}V_a|_A.
  \tag{ZDC8}
 \]

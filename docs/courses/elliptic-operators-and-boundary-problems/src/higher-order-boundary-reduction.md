@@ -896,10 +896,10 @@ Inside the collar, retain every complete tangential coefficient:
  \qquad V_{\tau,k}\in\Psi_{\mathrm{phg}}^{m-k}(Y;E^m),
  \tag{ARX10}
 \]
-\
+\[
  J_c^{-1}\widehat{\mathfrak P}_\tau
  =D_t^m+\sum_{k=0}^{m-1}
- [C_\sigma^{-1}V_{\tau,k}D_t^k.
+ [C_\sigma^{-1}V_{\tau,k}](t)D_t^k.
  \tag{ARX11}
 \]
 There is no differentiation of the left factor in this composition: each tangential product acts before the displayed normal derivative. The exact identity \(C_\sigma^{-1}C_\sigma=I\), rather than a principal-symbol approximation, makes the leading normal coefficient the multiplication map \(J_c\) on the original target. Each lower coefficient still has order at most \(m-k\), with \(m-k\ge1\).

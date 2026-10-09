@@ -2,7 +2,7 @@
 
 For a holomorphic function and a weakly complex constructible sheaf, vanishing cycles can be computed by local cohomology with support in its closed positive real halfspace. The comparison is an actual coefficient-triangle map. Its proof compares the lifted punctured neighborhood with one negative sector, using the local pushforward theorem over a complex curve.
 
-Let \(k\) be a commutative ring of finite global dimension, \(X\) a complex manifold that is Hausdorff and countable at infinity, and \(f:X\to\mathbb C\) holomorphic. Put
+Let \(k\) be a commutative ring of finite global dimension, \(X\) a complex manifold that is Hausdorff and countable at infinity, with a uniform finite dimension bound, and \(f:X\to\mathbb C\) holomorphic. Put
 
 \[
 Y=f^{-1}(0),\quad i:Y\hookrightarrow X,\qquad
@@ -20,13 +20,13 @@ i^{-1}R\Gamma_HF\simeq\phi_f(F),
 
 with the source convention \(\phi_f(F)=\operatorname{Cone}(i^{-1}F\to\psi_f(F))[-1]\). The fibre \(Y\) may be singular and \(df\) may vanish. Properness of \(f\) is not assumed.
 
-The local complex-curve pushforward theorem applies on a ball intersected with a sufficiently small inverse-image target neighborhood. Contractible-fibre descent uses the whole-complex theorem `SH02-CON-CYLINDER`. These inputs retain their analytic, conic, sheaf-operation and boundedness hypotheses.
+The [local complex-curve pushforward theorem](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/SH-03/src/local-holomorphic-pushforwards-over-a-complex-curve.md#the-neighborhood-theorem-and-its-cotangent-bound) applies on a ball intersected with a sufficiently small inverse-image target neighborhood. Contractible-fibre descent uses the [whole-complex cylinder theorem SH02-CON-CYLINDER](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/conic-descent.md#sh02-con-cylinder--descent-across-a-contractible-parameter). These inputs retain their analytic, conic, sheaf-operation and boundedness hypotheses.
 
 *Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources are credited below.*
 
 ## The normalized negative sector supplies a coefficient map
 
-Use the fixed cover from the monodromy lesson,
+Use the fixed cover and [coefficient trace from the monodromy lesson](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/nearby-cycles-monodromy-and-specialization/src/nearby-cycles-and-the-two-monodromy-triangles.md#the-coefficient-sheaf-uses-a-sum),
 
 \[
 p:\mathbb C_w\longrightarrow\mathbb C,
@@ -36,7 +36,7 @@ p:\mathbb C_w\longrightarrow\mathbb C,
 \tag{3}
 \]
 
-Its image is \(X\setminus Y\). Write \(L_f=q_!k_{\widetilde U}\). The proper-support trace \(\operatorname{tr}:L_f\to k_X\) sums the finitely supported sheet coefficients. It gives the coefficient complex
+Its image is \(X\setminus Y\). Write \(L_f=q_!k_{\widetilde U}\). The proper-support trace \(\operatorname{tr}:L_f\to k_X\) sums the finitely supported sheet coefficients. It gives the [normalized two-term coefficient complex](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/nearby-cycles-monodromy-and-specialization/src/nearby-cycles-and-the-two-monodromy-triangles.md#one-two-term-complex-gives-two-triangles)
 
 \[
 K_f=[L_f\xrightarrow{\operatorname{tr}}k_X],
@@ -91,7 +91,7 @@ The cover adjunction and the open-set Hom interpretation identify this map with 
 
 ## Local curve pushforwards give a cofinal family of balls and target discs
 
-Fix \(x\in Y\), choose a relatively compact holomorphic coordinate chart around \(x\), and translate \(x\) to zero. The centered-ball germ theorem of the complex-curve lesson supplies arbitrarily small source radii \(r\) and target neighborhoods \(D\ni0\) for which
+Fix \(x\in Y\), choose a relatively compact holomorphic coordinate chart around \(x\), and translate \(x\) to zero. The [centered-ball germ theorem of the complex-curve lesson](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/SH-03/src/local-holomorphic-pushforwards-over-a-complex-curve.md#centered-balls-in-the-source-germ) supplies arbitrarily small source radii \(r\) and target neighborhoods \(D\ni0\) for which
 
 \[
 V=B_r(x)\cap f^{-1}(D),\qquad
@@ -99,7 +99,7 @@ G_V=R(f|_V)_*(F|_V)
 \tag{10}
 \]
 
-is bounded weakly complex constructible on \(D\). This includes critical functions and arbitrary weak coefficients. The theorem's proof chooses radii below the first positive selected central critical value and a compact cutoff band; it works at arbitrarily small radii. Its repaired reciprocal exhaustion verifies every finite closed-level properness condition. We need the ordinary direct image in (10).
+is bounded weakly complex constructible on \(D\). This includes critical functions and arbitrary weak coefficients. The theorem's proof chooses radii below the first positive selected central critical value and a compact cutoff band; it works at arbitrarily small radii. Its [reciprocal exhaustion](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/SH-03/src/local-holomorphic-pushforwards-over-a-complex-curve.md#all-closed-levels-after-restricting-the-source) verifies every finite closed-level properness condition. We need the ordinary direct image in (10).
 
 On a complex curve, weak complex constructibility makes the cohomology locally constant away from a locally finite set of points. Shrink \(D\) to a small centered disc so that the only possible exceptional point of \(G_V\) in that disc is zero. Restricting the target disc also restricts \(V\); ordinary open-base restriction commutes with direct image, so (10) and its statement remain valid. We obtain nested cofinal neighborhoods
 
@@ -142,7 +142,7 @@ R\Gamma(V_a\cap A;F)
 
 The identifications carry the restriction in (9) to restriction from \(P_a\) to \(S_a\), by their open-set and base-change naturality.
 
-The coefficient \(p^{-1}(G_a|_{D_{\delta_a}^*})\) has locally constant cohomology on the simply connected \(P_a\). Choose any \(w_a\in S_a\). The cylinder descent contract, iterated on two real coordinates after product identifications of \(P_a,S_a\), gives isomorphisms from both section complexes to evaluation at \(w_a\). They commute with the actual restriction map. Consequently
+The coefficient \(p^{-1}(G_a|_{D_{\delta_a}^*})\) has locally constant cohomology on the simply connected \(P_a\). Choose any \(w_a\in S_a\). The [whole-complex cylinder descent theorem](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/conic-descent.md#sh02-con-cylinder--descent-across-a-contractible-parameter), iterated on two real coordinates after product identifications of \(P_a,S_a\), gives isomorphisms from both section complexes to evaluation at \(w_a\). They commute with the actual restriction map. Consequently
 
 \[
 R\Gamma(q^{-1}V_a;q^{-1}F)
@@ -161,7 +161,7 @@ The auxiliary coordinate balls, discs and evaluation points prove that a previou
 
 The support in (2) is the closed halfspace, with \(\operatorname{Re}f=0\) included. Its complementary sector is the strictly negative halfplane. It is local cohomology \(R\mathcal Hom(k_H,F)\), not ordinary restriction of \(F\) to \(H\) extended by zero, and not compactly supported cohomology of \(H\).
 
-If \(F\) has perfect stalks, its cycles are perfect complex constructible by the preceding section theorem. The comparison therefore also proves that the restricted support object in (2) has perfect stalks. The proof of invertibility itself retains arbitrary weak coefficients throughout. For \(f=0\), the two negative-sector and punctured-cover objects are zero, so the comparison is the identity on \(F\). No regular-fibre hypothesis was used.
+If \(F\) has perfect stalks, its cycles are perfect complex constructible by the [normal/conormal section theorem and its critical-function graph comparison](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/nearby-cycles-monodromy-and-specialization/src/complex-nearby-cycles-as-normal-and-conormal-sections.md#constructibility-and-support-for-a-critical-function). The comparison therefore also proves that the restricted support object in (2) has perfect stalks. The proof of invertibility itself retains arbitrary weak coefficients throughout. For \(f=0\), the two negative-sector and punctured-cover objects are zero, so the comparison is the identity on \(F\). No regular-fibre hypothesis was used.
 
 ## Exercises with complete solutions
 
@@ -195,7 +195,7 @@ Take \(f(z)=z^m\), \(m\geq1\), and the constant complex \(M_{\mathbb C}\) for ar
 
 Let \(M\in D^b(k)\) and \(F=M_{\mathbb C^d}\). For \(Q(z)=\sum_{j=1}^d z_j^2\), write the negative real-part region in real coordinates and compute its augmented cochains near zero. Recover the degree of the quadratic vanishing object, including \(d=0\).
 
-**Solution.** With \(z=x+iy\), the negative region is \(|x|^2<|y|^2\). In a punctured small ball, sending \(x\) to zero preserves the inequality and reduces the norm. The remaining nonzero \(y\) ball retracts onto \(S^{d-1}\); the radial retraction can be chosen on a fixed smaller radius, and its cohomology maps agree as neighborhoods shrink. The central unit is the constant-cochain map \(M\to R\Gamma(S^{d-1};M)\). Its cone is \(M[1-d]\), and the support triangle's \([-1]\) gives \(M[-d]\), agreeing with the full covered quadratic calculation. For \(d=0\) the negative set is empty, so the support object is \(M\) directly. The real ambient dimension \(2d\) does not replace the negative-direction count \(d\).
+**Solution.** With \(z=x+iy\), the negative region is \(|x|^2<|y|^2\). In a punctured small ball, sending \(x\) to zero preserves the inequality and reduces the norm. The remaining nonzero \(y\) ball retracts onto \(S^{d-1}\); the radial retraction can be chosen on a fixed smaller radius, and its cohomology maps agree as neighborhoods shrink. The [constant-coefficient homotopy comparison](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/nearby-cycles-monodromy-and-specialization/src/quadratic-cycles-and-the-holomorphic-microsupport-test.md#the-covered-quadratic-ball-retracts-to-a-sphere) identifies the central unit with the constant-cochain map \(M\to R\Gamma(S^{d-1};M)\). The [relative-ball and augmented-sphere calculation](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/nearby-cycles-monodromy-and-specialization/src/quadratic-cycles-and-the-holomorphic-microsupport-test.md#the-reduced-cochains-fix-the-degree-and-monodromy) gives its cone as \(M[1-d]\), and the support triangle's \([-1]\) gives \(M[-d]\), agreeing with the full covered quadratic calculation. For \(d=0\) the negative set is empty, so the support object is \(M\) directly. The real ambient dimension \(2d\) does not replace the negative-direction count \(d\).
 
 ### Central support and infinite normal constants
 
@@ -211,7 +211,7 @@ Check (2) for \(f=0\), for a sheaf complex supported on \(Y\), and for \(f(v,y)=
 
 Over a field, let \(F=k_{[0,\infty)}\) on \(\mathbb C\), the closed positive real ray, and let \(f(z)=z\). Compare its positive-real-support stalk at zero with its source-normalized vanishing object. Locate the hypothesis that fails in the proof.
 
-**Solution.** The support of \(F\) is contained in \(\{\operatorname{Re}z\geq0\}\), so local cohomology with that closed support is \(F\), with stalk \(k\) at zero. Its lifted punctured ray has countably many components. A small lifted punctured neighborhood has ordinary section complex \(P=\prod_{n\in\mathbb Z}k\) in degree zero. The central unit is the diagonal \(k\to P\), and the vanishing object is \((P/k\mathbf1)[-1]\), which is nonzero in degree one. It cannot be isomorphic to the support stalk \(k\) in degree zero. The sheaf is weakly real constructible but not weakly complex constructible. Its curve pushforward for the identity function still has a real ray stratum in every punctured disc, so the cohomological local constancy required in (11) fails. Correspondingly, restriction from the cover to the negative sector is \(P\to0\), not an isomorphism.
+**Solution.** The support of \(F\) is contained in \(\{\operatorname{Re}z\geq0\}\), so local cohomology with that closed support is \(F\), with stalk \(k\) at zero. Its [lifted punctured-ray calculation](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/nearby-cycles-monodromy-and-specialization/src/nearby-cycles-through-the-normal-deformation.md#a-real-angular-sheaf-produces-infinitely-many-nearby-coefficients) has countably many components. A small lifted punctured neighborhood has ordinary section complex \(P=\prod_{n\in\mathbb Z}k\) in degree zero. The central unit is the diagonal \(k\to P\), and the vanishing object is \((P/k\mathbf1)[-1]\), which is nonzero in degree one. It cannot be isomorphic to the support stalk \(k\) in degree zero. The sheaf is weakly real constructible but not weakly complex constructible. Its curve pushforward for the identity function still has a real ray stratum in every punctured disc, so the cohomological local constancy required in (11) fails. Correspondingly, restriction from the cover to the negative sector is \(P\to0\), not an isomorphism.
 
 ## Scope of the result
 
@@ -219,6 +219,6 @@ The normalized branch makes the comparison compatible with the central unit; its
 
 ## References
 
-David B. Massey, *Notes on Perverse Sheaves and Vanishing Cycles*, [arXiv:math/9908107v13, §3, the nonnegative-real-part support comparison](https://arxiv.org/abs/math/9908107v13), credits the construction to Kashiwara and Schapira and states its agreement with his shifted vanishing object. His shifted object agrees with the convention used here. This is a source for the comparison and its historical attribution; its constructible coefficient scope and brief cone description do not supply the full weak-coefficient argument.
+David B. Massey, *Notes on Perverse Sheaves and Vanishing Cycles*, [arXiv:math/9908107v13, §3, pp. 28–29, the nonnegative-real-part support comparison](https://arxiv.org/pdf/math/9908107v13#page=28), credits the construction to Kashiwara and Schapira and states its agreement with his shifted vanishing object. His shifted object agrees with the convention used here. This is a source for the comparison and its historical attribution; its constructible coefficient scope and brief cone description do not supply the full weak-coefficient argument.
 
-The proof above identifies a particular map by fixing a covering strip, follows the unit into the closed-support triangle, and establishes cofinal shrinking neighborhoods before applying complex-curve and cylinder results. These are the steps needed for the stronger formulation, including arbitrary bounded coefficients and critical functions. The complex-curve theorem, full-complex descent and sheaf-operation inputs remain named programme prerequisites. The source and proof guide records them separately from the checked source passage.
+The proof above identifies a particular map by fixing a covering strip, follows the unit into the closed-support triangle, and establishes cofinal shrinking neighborhoods before applying complex-curve and cylinder results. These are the steps needed for the stronger formulation, including arbitrary bounded coefficients and critical functions. The linked programme proofs supply the centered-ball curve theorem, full-complex descent and coefficient-triangle inputs. The [source and proof guide](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/nearby-cycles-monodromy-and-specialization/src/source-and-proof-guide.md#the-proof-obligations-behind-the-comparisons) records them separately from the checked source passage.

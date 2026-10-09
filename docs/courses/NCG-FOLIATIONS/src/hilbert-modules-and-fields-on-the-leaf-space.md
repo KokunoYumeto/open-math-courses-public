@@ -612,7 +612,7 @@ For a field with a countable total family as above, that representation is nonde
 
 ## 6. Sobolev modules and the analytic symbol class
 
-The stable boundary construction used in formulas (11)–(13) is proved in The index map and the exact sequence at \(K_0\), Theorem 2.2 and Proposition 5.1, with kernel-minus-cokernel sign. The identification of the full compact-pair symbol group with stabilized bundle triples is Topological K-theory of spaces, pairs and vector bundles, Theorem 2.1, Lemma 2.2 and Section 3. The arguments below prove the longitudinal operator and symbol comparison for those classes.
+The stable boundary construction used in formulas (11)–(13) is proved in [The index map and the exact sequence at \(K_0\)](companions/KT-OPK-07.html), Theorem 2.2 and Proposition 5.1, with kernel-minus-cokernel sign. The identification of the full compact-pair symbol group with stabilized bundle triples is Topological K-theory of spaces, pairs and vector bundles, Theorem 2.1, Lemma 2.2 and Section 3. The arguments below prove the longitudinal operator and symbol comparison for those classes.
 
 The following construction uses the compact-support longitudinal calculus proved in [the index lesson, Lemmas 6.1–6.8](the-index-theorem-for-measured-foliations.md#section-6). Its finite-chart version, Proposition 6.21, permits non-Hausdorff arrows. Compactness here always means module compactness. An inclusion of Sobolev spaces on an infinite cover can fail to be a compact Hilbert-space operator.
 

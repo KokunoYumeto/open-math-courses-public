@@ -31,11 +31,11 @@ The course uses the complete supporting readings below. Each link is bound to it
 
 ## HA LCA
 
-- [Characters and the dual group](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/HA-LCA-02.html) — CC0-1.0 AND LicenseRef-Design-Science-License.
-- [The dual group as the Gelfand spectrum of \(L^1(G)\)](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/HA-LCA-03.html) — CC0-1.0 AND LicenseRef-Design-Science-License.
-- [The Fourier inversion theorem and the dual Haar measure](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/HA-LCA-07.html) — CC0-1.0 AND LicenseRef-Design-Science-License.
-- [The Plancherel theorem](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/HA-LCA-08.html) — CC0-1.0 AND LicenseRef-Design-Science-License.
-- [The Pontryagin duality theorem](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/HA-LCA-09.html) — CC0-1.0 AND LicenseRef-Design-Science-License.
+- [Characters and the dual group](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/characters-and-the-dual-group.html#ha-lca-02-theorem-2-1) — CC0-1.0 AND LicenseRef-Design-Science-License.
+- [The dual group as the Gelfand spectrum of \(L^1(G)\)](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/the-dual-group-as-the-gelfand-spectrum-of-l1.html#ha-lca-03-lemma-1-1) — CC0-1.0 AND LicenseRef-Design-Science-License.
+- [The Fourier inversion theorem and the dual Haar measure](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/the-fourier-inversion-theorem-and-the-dual-haar-measure.html#ha-lca-07-theorem-2-1) — CC0-1.0 AND LicenseRef-Design-Science-License.
+- [The Plancherel theorem](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/the-plancherel-theorem.html#ha-lca-08-theorem-1-1) — CC0-1.0 AND LicenseRef-Design-Science-License.
+- [The Pontryagin duality theorem](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/the-pontryagin-duality-theorem.html#ha-lca-09-theorem-2-1) — CC0-1.0 AND LicenseRef-Design-Science-License.
 - [Unitary representations of abelian groups: the spectral theorem](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/HA-LCA-13.html#ha-lca-13-theorem-3-1) — CC0-1.0 AND LicenseRef-Design-Science-License.
 
 ## KT OPK

@@ -2403,12 +2403,12 @@ For the second, (VC.3) gives
 \]
 The affine bracket directly gives
 \[
-[x(s),y(z)]=x,y\delta(s,z)
+[x(s),y(z)]=[x,y](z)\delta(s,z)
 +\ell B(x,y)\partial_z\delta(s,z).
 \tag{VC.11}
 \]
 Indeed its \(s^{-m-1}\) coefficient is
-\(z^mx,y+m\ell B(x,y)z^{m-1}\). Shifting indices gives
+\(z^m[x,y](z)+m\ell B(x,y)z^{m-1}\). Shifting indices gives
 \((s-z)\delta=0\); differentiation gives
 \((s-z)\partial_z\delta=\delta\). Thus currents are local with order at most two. Differentiating a locality relation and multiplying by one additional factor \(s-z\) proves locality of a derivative; iteration covers all derivative currents.
 
@@ -5477,7 +5477,7 @@ For negative \(j\) this recovers (UC.5). For nonnegative \(j\) it identifies the
 
 **Locality and every physical integer current mode.** To pass from (UC.10) to all physical modes \(x_m\), we supply the formal-distribution step. The current bracket is
 \[
- [x(s),a(z)]=x,a\delta(s,z)
+ [x(s),a(z)]=[x,a](z)\delta(s,z)
                       +\kappa(x,a)\partial_z\delta(s,z),\qquad
  \delta(s,z)=\sum_{m\in\mathbb Z}s^{-m-1}z^m.
  \tag{UC.11}

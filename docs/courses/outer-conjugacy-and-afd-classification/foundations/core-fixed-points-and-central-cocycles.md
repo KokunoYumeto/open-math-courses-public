@@ -22,12 +22,12 @@ The proof selection below retains the original formula labels A, R and C, making
 
 Let \(G\) be a locally compact Hausdorff abelian group with Haar measure, and let \(\alpha:G\to\operatorname{Aut}(M)\) be point-ultraweakly continuous, where \(M\ne0\). No separability or countability assumption is imposed. In the standard-form regular model on \(L^2(G,H)\), write
 
-\
+\[
 \begin{gathered}
 N=M\rtimes_\alpha G,\qquad P=\pi_\alpha(M),\\
-[\pi_\alpha(a)\xi=\alpha_{-r}(a)\xi(r),\\
-\lambda_s\xi=\xi(r-s),\\
-Q_\chi\xi=\overline{\chi(r)}\xi(r).
+[\pi_\alpha(a)\xi](r)=\alpha_{-r}(a)\xi(r),\\
+[\lambda_s\xi](r)=\xi(r-s),\\
+[Q_\chi\xi](r)=\overline{\chi(r)}\xi(r).
 \end{gathered}
 \tag{A9}
 \]
@@ -44,11 +44,11 @@ The standard-form implementers satisfy \(U_s aU_s^*=\alpha_s(a)\) and \(U_{s+t}=
 
 The Weyl and bounded-tensor inputs F3–F4 give
 
-\
+\[
 \begin{gathered}
 \{L_s,Q_\chi:s\in G,\chi\in\widehat G\}''=B(L^2(G)),\\
 (1_H\otimes B(L^2(G)))'=B(H)\otimes1,\\
-[L_s\xi=\xi(r-s).
+[L_s\xi](r)=\xi(r-s).
 \end{gathered}
 \tag{A5}
 \]
@@ -57,10 +57,10 @@ The Weyl and bounded-tensor inputs F3–F4 give
 
 **Proof.** Coefficients are fixed by (A3). For the reverse inclusion define on \(\mathcal H\)
 
-\
+\[
 \begin{gathered}
-{}[V_s\xi=U_s\xi(r+s),\\
-W\xi=U_r\xi(r).
+{}[V_s\xi](r)=U_s\xi(r+s),\\
+[W\xi](r)=U_r\xi(r).
 \end{gathered}
 \tag{A11}
 \]
@@ -103,11 +103,11 @@ The proof tests one continuous scalar function at a time; it does not intersect 
 
 Let \(M\) be a nonzero von Neumann algebra, let \(\varphi\) be an n.s.f. weight, and write
 
-\
+\[
 \begin{gathered}
 C_\varphi=M\rtimes_{\sigma^\varphi}\mathbb R,\\
-[\pi_\varphi(x)\xi=\sigma^\varphi_{-s}(x)\xi(s),\\
-\lambda_t\xi=\xi(s-t).
+[\pi_\varphi(x)\xi](s)=\sigma^\varphi_{-s}(x)\xi(s),\\
+[\lambda_t\xi](s)=\xi(s-t).
 \end{gathered}
 \tag{R1}
 \]
@@ -359,9 +359,9 @@ It follows in fact that the left side of (R18) is \(Z(C)\): one inclusion has ju
 
 **Proof.** For the action \(\sigma^\omega\), the standard implementers are \(U_s=\Delta_\omega^{is}\). The conjugation formula in dual modular-conjugation input F2 and its weight identification in the same input F2 give
 
-\
+\[
 \begin{gathered}
-{}[\mathcal J\xi=\Delta_\omega^{-is}J_\omega\xi(-s),\\
+{}[\mathcal J\xi](s)=\Delta_\omega^{-is}J_\omega\xi(-s),\\
 \mathcal J C_\omega\mathcal J=C_\omega'.
 \end{gathered}
 \tag{R22}
@@ -369,9 +369,9 @@ It follows in fact that the left side of (R18) is \(Z(C)\): one inclusion has ju
 
 The modular unitaries commute with \(J_\omega\) as operators, taking its antilinearity into account. Directly on vector sections,
 
-\
+\[
 \begin{aligned}
-&[\mathcal J\pi_\omega(x)\mathcal J\xi\\
+&[\mathcal J\pi_\omega(x)\mathcal J\xi](s)\\
 &=\Delta_\omega^{-is}J_\omega\sigma_s^\omega(x)
   \Delta_\omega^{is}J_\omega\xi(s)\\
 &=\Delta_\omega^{-is}\bigl(J_\omega\sigma_s^\omega(x)J_\omega\bigr)

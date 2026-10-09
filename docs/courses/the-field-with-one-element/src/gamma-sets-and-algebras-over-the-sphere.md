@@ -273,10 +273,10 @@ Theorems 4.1, 4.3 and 4.4 describe all morphisms between the \(\mathbb S\)-algeb
 (2) The maps \(i(m\wedge x)=m\wedge B(\hat x)(1)\) and \(j(b)=1\wedge b\) are morphisms of \(\mathbb S\)-algebras \(\mathbb SM\to B[M]\) and \(B\to B[M]\), and \(m\wedge b=i(m\wedge1)\cdot j(b)\). So a morphism \(h:B[M]\to C\) is determined by \(h\circ i\) and \(h\circ j\). Conversely let \(t:M\to C(1_+)\) be a monoid morphism and \(g:B\to C\) a morphism. Put \(h(m\wedge b)=t(m)\cdot g(b)\), with the action of \(C(1_+)\) on \(C(X)\). This is a morphism of Γ-sets by Lemma 3.3(1). It respects products because \(C\) is associative and commutative: \((t(m)\cdot g(b))\cdot(t(n)\cdot g(b'))=t(mn)\cdot g(b\cdot b')\). It restricts to the morphism of Theorem 4.1 on \(\mathbb SM\) and to \(g\) on \(B\). \(\square\)
 
 **Example 4.6** (Base change to a semiring). For \(B=\mathbb S\) we get \(\mathbb S[M]=\mathbb SM\). For a semiring \(R\), the \(\mathbb S\)-algebra \((HR)[M]\) has
-\
-(HR)[M=M\wedge R^k .
+\[
+(HR)[M](k_+)=M\wedge R^k .
 \]
-Its elements are 0 and the vectors \(m\wedge(r_1,\dots,r_k)\), which carry a single element \(m\ne0\) of \(M\). Let \(R[M]\) be the monoid semiring of \(M\) over \(R\), modulo the zero of \(M\). The map \(m\wedge(r_j)\mapsto(r_jm)\) embeds \((HR)[M]\) into \(H(R[M])\), whose value at \(k_+\) is \(R[M]^k\). If \(R\ne0\) and \(M\) has two elements \(m\ne m'\) other than 0, the two are different: the elements \(m\wedge1\) and \(m'\wedge1\) of the first level have the sum \(m+m'\) in \(H(R[M])\), and the family they form has no witness in \((HR)M=M\wedge R^2\). So the coproduct of \(\mathbb SM\) and \(HR\) is not of the form \(HR'\). Nevertheless both have the same morphisms to the \(\mathbb S\)-algebras of semirings. By Theorems 4.5 and 4.3 and the universal property of \(R[M]\),
+Its elements are 0 and the vectors \(m\wedge(r_1,\dots,r_k)\), which carry a single element \(m\ne0\) of \(M\). Let \(R[M]\) be the monoid semiring of \(M\) over \(R\), modulo the zero of \(M\). The map \(m\wedge(r_j)\mapsto(r_jm)\) embeds \((HR)[M]\) into \(H(R[M])\), whose value at \(k_+\) is \(R[M]^k\). If \(R\ne0\) and \(M\) has two elements \(m\ne m'\) other than 0, the two are different: the elements \(m\wedge1\) and \(m'\wedge1\) of the first level have the sum \(m+m'\) in \(H(R[M])\), and the family they form has no witness in \((HR)[M](2_+)=M\wedge R^2\). So the coproduct of \(\mathbb SM\) and \(HR\) is not of the form \(HR'\). Nevertheless both have the same morphisms to the \(\mathbb S\)-algebras of semirings. By Theorems 4.5 and 4.3 and the universal property of \(R[M]\),
 \[
 \operatorname{Hom}((HR)[M],HR')=\operatorname{Hom}(M,R')\times\operatorname{Hom}(R,R')=\operatorname{Hom}(R[M],R')=\operatorname{Hom}(H(R[M]),HR').
 \]

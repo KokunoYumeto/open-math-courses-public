@@ -178,7 +178,7 @@ For any restricted vector functional, pullback by \(\alpha^{(n)}=\operatorname{A
 
 On \(C\overline\otimes P\), pullback of \(\eta\otimes\rho\) by \(\operatorname{id}\otimes\alpha^{(n)}\) is \(\eta\otimes(\rho\circ\alpha^{(n)})\). TF1 gives convergence in norm, first for these products and then for finite sums. The two predual operators are isometries, so the error on an arbitrary functional differs from its error on a chosen finite sum by at most twice the approximation error. TF1 proves the full \(u\)-limit on this possibly nontracial ambient algebra.
 
-The same density argument transfers centralizing sequences. Define \(x,\rho=\rho(yx-xy)\). If \(\sup_n\|x_n\|=B<\infty\) in \(P\) and \(\|[x_n,\rho]\|\to0\) for every \(\rho\in P_*\), then
+The same density argument transfers centralizing sequences. Define \([x,\rho](y)=\rho(yx-xy)\). If \(\sup_n\|x_n\|=B<\infty\) in \(P\) and \(\|[x_n,\rho]\|\to0\) for every \(\rho\in P_*\), then
 
 \[
 [1\otimes x_n,\eta\otimes\rho]

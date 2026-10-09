@@ -837,7 +837,7 @@ We identify \(\rho\). Let \(S_3\) permute the coordinates of \(V=\{v\in\mathbb C
 
 *Solution.* The sizes satisfy \(\alpha\mathbf m(k)=(2^k,2^k)^T=\mathbf m(k+1)\), so the standard maps are unital and injective (Corollary 4.10). Let \(\rho_k(x)=(x_1+x_2)/2^k\in\mathbb Z[\frac12]\). Since \(\alpha x=(x_1+x_2,x_1+x_2)^T\), we get \(\rho_{k+1}(\alpha x)=2(x_1+x_2)/2^{k+1}=\rho_k(x)\), so the \(\rho_k\) define \(\rho:K_0(A)\to\mathbb Z[\frac12]\). It is injective: if \(\rho_k(x)=0\), then \(x_1+x_2=0\), so \(\alpha x=0\) and \(\alpha_{\infty,k}(x)=\alpha_{\infty,k+1}(\alpha x)=0\). It is onto, since \(a/2^k=\rho_k(a,0)\). Nonnegative vectors go to nonnegative numbers, and \(a/2^k\geq0\) is \(\rho_k(a,0)\) with \((a,0)\geq0\). The scale of \(A_k\), the vectors with \(0\leq x_1,x_2\leq2^{k-1}\), goes onto \([0,1]\cap2^{-k}\mathbb Z\). So the scaled dimension group of \(A\) is \((\mathbb Z[\frac12],\mathbb Z[\frac12]\cap[0,\infty),\mathbb Z[\frac12]\cap[0,1])\), the same as for the CAR algebra (Example 6.4(c)). By Theorem 8.3, \(A\) is isomorphic to the CAR algebra, and by Theorem 8.3(3) their local algebras are isomorphic too.
 
-**Exercise 3** (easy; Traces of the gauge-invariant CAR algebra). For \(s\in[0,1]\) define vectors \(t^{(n)}\in\mathbb R^{n+1}_+\) by \(t^{(n)}_j=s^j(1-s)^{n-j}\). Show that they define a tracial state \(\tau_s\) of the gauge-invariant CAR algebra \(A\), that \(\tau_s\neq\tau_{s'}\) for \(s\neq s'\), and that \(\tau_s(p)=\rhop\) for every projection \(p\in A\), with \(\rho\) as in Theorem 9.5.
+**Exercise 3** (easy; Traces of the gauge-invariant CAR algebra). For \(s\in[0,1]\) define vectors \(t^{(n)}\in\mathbb R^{n+1}_+\) by \(t^{(n)}_j=s^j(1-s)^{n-j}\). Show that they define a tracial state \(\tau_s\) of the gauge-invariant CAR algebra \(A\), that \(\tau_s\neq\tau_{s'}\) for \(s\neq s'\), and that \(\tau_s(p)=\rho[p](s)\) for every projection \(p\in A\), with \(\rho\) as in Theorem 9.5.
 
 *Solution.* By Proposition 9.3, \[
 \begin{gathered}
@@ -847,12 +847,12 @@ We identify \(\rho\). Let \(S_3\) permute the coordinates of \(V=\{v\in\mathbb C
 =s^j(1-s)^{n-j}\\
 =t^{(n)}_j,
 \end{gathered}
-\] and \(\mathbf m(n)^Tt^{(n)}=\sum_j\binom njs^j(1-s)^{n-j}=1\). By Theorem 10.4(3), these vectors define a tracial state. Its value on a minimal projection of the summand \(j=1\) of \(A_1\) is \(s\), so different \(s\) give different traces. For a projection \(p\in A_n\) with rank vector \(x\), \
+\] and \(\mathbf m(n)^Tt^{(n)}=\sum_j\binom njs^j(1-s)^{n-j}=1\). By Theorem 10.4(3), these vectors define a tracial state. Its value on a minimal projection of the summand \(j=1\) of \(A_1\) is \(s\), so different \(s\) give different traces. For a projection \(p\in A_n\) with rank vector \(x\), \[
 \begin{gathered}
 \tau_s(p)\\
 =\sum_jx_js^j(1-s)^{n-j}\\
 =\rho_n(x)(s)\\
-=\rho[p.
+=\rho[p](s).
 \end{gathered}
 \] A projection \(p\in A\) is equivalent to a projection \(q\) of some \(A_n\) (Proposition 7.3(1)), say \(p=v^*v\) and \(q=vv^*\). Then \([p]=[q]\), and \(\tau_s(p)=\tau_s(v^*v)=\tau_s(vv^*)=\tau_s(q)\) because \(\tau_s\) is tracial, so the formula holds for \(p\) as well.
 

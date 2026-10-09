@@ -332,7 +332,7 @@ Indeed, both sides send \(\gamma\) to \(\langle\gamma,\beta\rangle\|x\zeta\|^2\a
 \|x(\xi_n-\xi_m)\|^2=\langle a(\xi_n-\xi_m),\xi_n-\xi_m\rangle\leq2M\|a(\xi_n-\xi_m)\|\to0 .
 \]
   So \(x\) would be compact, a contradiction.
-- *A spectral projection of infinite rank.* For \(\varepsilon>0\) let \(E_\varepsilon=1_{\varepsilon,\infty)}(a)\). The function \(\lambda1_{[0,\varepsilon)}(\lambda)\) is at most \(\varepsilon\) on \([0,\infty)\), so \(\|a-aE_\varepsilon\|\leq\varepsilon\) by Theorem 3.1. If every \(E_\varepsilon\) had finite rank, then every \(aE_\varepsilon\) would have finite rank, and \(a\) would be compact. So some \(E=E_\varepsilon\) has infinite-dimensional range.
+- *A spectral projection of infinite rank.* For \(\varepsilon>0\) let \(E_\varepsilon=1_{[\varepsilon,\infty)}(a)\). The function \(\lambda1_{[0,\varepsilon)}(\lambda)\) is at most \(\varepsilon\) on \([0,\infty)\), so \(\|a-aE_\varepsilon\|\leq\varepsilon\) by Theorem 3.1. If every \(E_\varepsilon\) had finite rank, then every \(aE_\varepsilon\) would have finite rank, and \(a\) would be compact. So some \(E=E_\varepsilon\) has infinite-dimensional range.
 - *\(E\in J\).* Let \(g(\lambda)=\lambda^{-1}1_{[\varepsilon,\infty)}(\lambda)\), a bounded Borel function on \([0,\infty)\). Then \(g(a)a=(g\iota)(a)=E\). So \(E\in J\).
 - *The identity is in \(J\).* \(EH\) is a closed infinite-dimensional subspace of the separable space \(H\), so it is separable. So \(EH\) and \(H\) both have countably infinite orthonormal bases \((f_n)\) and \((e_n)\) (the Hilbert-space lesson, Theorem 4.1(4)). The operator \(v\) with \(ve_n=f_n\) is an isometry (Theorem 4.1(2) of that lesson). Since \(Ev=v\), we get \(1=v^*v=v^*Ev\in J\). So \(J=B(H)\). \(\square\)
 
@@ -350,7 +350,7 @@ In particular, \(E_n(\Delta)=1_\Delta(n)\) is the only projection-valued measure
 - \(S\) is a compact metric space.
 - \(f\mapsto f(n)\) is a unital \(*\)-homomorphism from \(C(S)\) to \(B(H)\) that maps real functions to self-adjoint operators. This holds for normal \(n\) by the C\*-algebra lesson, Theorem 5.1(1), (2) and (9).
 - Theorem 3.1(5) uses the C\*-algebra lesson, Theorem 5.1(6). That theorem needs commutation with \(n\) and \(n^*\).
-- The uniqueness proof uses the polynomials \(p(\lambda,\bar\lambda)\), which are dense in \(C(L')\) for compact \(L'\subseteq\mathbb C\) ([the Stone–Weierstrass lesson), and \(\int p(\iota_L,\bar\iota_L)\,dE=p(n,n^*)\).
+- The uniqueness proof uses the polynomials \(p(\lambda,\bar\lambda)\), which are dense in \(C(L')\) for compact \(L'\subseteq\mathbb C\) (the Stone–Weierstrass lesson), and \(\int p(\iota_L,\bar\iota_L)\,dE=p(n,n^*)\).
 - In Proposition 5.1(1), use \(s_k(z)=(\lfloor k\operatorname{Re}z\rfloor+i\lfloor k\operatorname{Im}z\rfloor)/k\), with \(|z-s_k(z)|<\sqrt2/k\). \(\square\)
 
 **Proposition 8.2.** Let \(n\in B(H)\) be normal.
@@ -418,13 +418,13 @@ Conclude that \(f=1_{[0,1]\setminus\mathbb Q}\) has \(f(h)=0\), although the clo
 **Exercise 6** (The support of a positive operator). Let \(h\geq0\). Show that \(E_h((0,\infty))\) is the smallest projection \(p\) with \(ph=h\).
 
 *Solution.*
-- On \(S\subseteq0,\infty)\), \(\lambda1_{(0,\infty)}(\lambda)=\lambda\). So \(E_h((0,\infty))h=h\).
+- On \(S\subseteq[0,\infty)\), \(\lambda1_{(0,\infty)}(\lambda)=\lambda\). So \(E_h((0,\infty))h=h\).
 - If \(ph=h\), then \(p\) is the identity on \(hH\), hence on its closure, which is \(E_h((0,\infty))H\) by Proposition 5.1(4).
 - So \(pE_h((0,\infty))=E_h((0,\infty))\), which says \(E_h((0,\infty))\leq p\). \(\square\)
 
 ## Where this leads
 
-Every operator that commutes with \(h\) commutes with all spectral projections of \(h\). So a von Neumann algebra contains the spectral projections and the bounded Borel functions of each of its self-adjoint elements. This is how the projections enter [The double commutant theorem and the lessons after it. The spectral measures \(\mu_\xi\) and the unitary groups \(e^{ith}\) are used in Compact and trace-class operators, the predual of B(H), and the operator topologies. Calkin's theorem is used in Representations and positive functionals: the GNS construction and the Gelfand–Naimark theorem.
+Every operator that commutes with \(h\) commutes with all spectral projections of \(h\). So a von Neumann algebra contains the spectral projections and the bounded Borel functions of each of its self-adjoint elements. This is how the projections enter The double commutant theorem and the lessons after it. The spectral measures \(\mu_\xi\) and the unitary groups \(e^{ith}\) are used in Compact and trace-class operators, the predual of B(H), and the operator topologies. Calkin's theorem is used in Representations and positive functionals: the GNS construction and the Gelfand–Naimark theorem.
 
 ## References
 

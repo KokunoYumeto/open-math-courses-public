@@ -34,8 +34,8 @@ They satisfy the graded Jacobi identity as well. To verify all three formulas, e
 
 For a one-form \(\omega\),
 
-\
-\tfrac12[\omega,\omega=[\omega(X),\omega(Y)].
+\[
+\tfrac12[\omega,\omega](X,Y)=[\omega(X),\omega(Y)].
 \]
 
 The factor one-half compensates for the two terms produced by the wedge. It does not alter our evaluation convention.

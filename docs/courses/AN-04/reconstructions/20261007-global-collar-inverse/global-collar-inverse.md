@@ -166,7 +166,7 @@ Define the local errors as in GC8. Insert \(\rho_i+(1-\rho_i)=1\), use GC15, and
    ={}&\vartheta_i^2
        +\vartheta_i^2R_{E,i}\rho_i
        +\vartheta_i[T_i,\vartheta_i]P_i\rho_i\\
-     &+\vartheta_iT_i\vartheta_i,P_c,
+     &+\vartheta_iT_i[\vartheta_i,P_c](1-\rho_i),
  \end{aligned}
  \tag{GC17}
 \]
@@ -180,7 +180,7 @@ Define the local errors as in GC8. Insert \(\rho_i+(1-\rho_i)=1\), use GC15, and
  \end{aligned}
  \tag{GC18}
 \]
-To verify GC17, write \(\vartheta_iP_c(1-\rho_i)=\vartheta_i,P_c\), replace its remaining \(\rho_i\) part by GC15, and use \(T_i\vartheta_i=\vartheta_iT_i+[T_i,\vartheta_i]\). Then \(T_iP_i=I_E+R_{E,i}\) and \(\vartheta_i^2\rho_i=\vartheta_i^2\) give the displayed result. For GC18 first use \((1-\rho_i)P_c\vartheta_i=(1-\rho_i)[P_c,\vartheta_i]\), then GC15, then \(P_i\vartheta_i=\vartheta_iP_i+[P_i,\vartheta_i]\), and finally \(P_iT_i=I_F+R_{F,i}\). This verifies every factor and sign without merging the two error spaces.
+To verify GC17, write \(\vartheta_iP_c(1-\rho_i)=[\vartheta_i,P_c](1-\rho_i)\), replace its remaining \(\rho_i\) part by GC15, and use \(T_i\vartheta_i=\vartheta_iT_i+[T_i,\vartheta_i]\). Then \(T_iP_i=I_E+R_{E,i}\) and \(\vartheta_i^2\rho_i=\vartheta_i^2\) give the displayed result. For GC18 first use \((1-\rho_i)P_c\vartheta_i=(1-\rho_i)[P_c,\vartheta_i]\), then GC15, then \(P_i\vartheta_i=\vartheta_iP_i+[P_i,\vartheta_i]\), and finally \(P_iT_i=I_F+R_{F,i}\). This verifies every factor and sign without merging the two error spaces.
 
 Each nonidentity term in GC17–GC18 is in \(\mathcal L^{-1}\): its order is either \(-1\), \((-m-1)+m\), or \(-m+(m-1)\), by GC16 and PN:K1. These are paired-class statements, so they include every normal remainder and the separated kernels, not just the global mixed-symbol bound. Summing and using GC4 proves
 \[
@@ -301,7 +301,7 @@ These live on \(F_Y\) and \(E_Y\), respectively. Differentiating \(MM^{-1}=I_F\)
 
 **2. Why two cutoff terms must be retained.** Explain why \(\vartheta_iT_i\vartheta_iP_c\) need not equal \(\vartheta_i^2T_iP_i\), even if the local model is exact on the chart core.
 
-**Solution.** The input may lie outside \(\operatorname{supp}\rho_i\), where a tangential pseudodifferential coefficient can still connect it to the core at the same normal coordinate. That contribution is \(\vartheta_iT_i\vartheta_i,P_c\). On the retained input core, moving the middle cutoff across \(T_i\) gives \(\vartheta_i[T_i,\vartheta_i]P_i\rho_i\). Both terms appear in GC17; their paired degrees are \(-1\), by GC16 and PN composition. Their small order makes them correctable, but does not make either identity term vanish. A diagonal matrix cutoff and a matrix with a nonzero off-diagonal entry already give a nonzero commutator.
+**Solution.** The input may lie outside \(\operatorname{supp}\rho_i\), where a tangential pseudodifferential coefficient can still connect it to the core at the same normal coordinate. That contribution is \(\vartheta_iT_i[\vartheta_i,P_c](1-\rho_i)\). On the retained input core, moving the middle cutoff across \(T_i\) gives \(\vartheta_i[T_i,\vartheta_i]P_i\rho_i\). Both terms appear in GC17; their paired degrees are \(-1\), by GC16 and PN composition. Their small order makes them correctable, but does not make either identity term vanish. A diagonal matrix cutoff and a matrix with a nonzero off-diagonal entry already give a nonzero commutator.
 
 **3. A variable leading coefficient in the cutoff commutator.** For \(P=M(r)D_r^3+A(r)D_r+B(r)\), compute \([P,z]\).
 

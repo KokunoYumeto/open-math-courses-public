@@ -1,0 +1,248 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Coordinates and the Abhyankar–Sathaye problem</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents</a><a href="a-counterexample-in-dimension-three.html">Previous lesson</a><a href="locally-nilpotent-derivations.html">Next lesson</a><a href="src/coordinates-and-the-abhyankar-sathaye-problem.md">Editable source</a></nav><main><article><h1 id="coordinates-and-the-abhyankar-sathaye-problem">Coordinates and the Abhyankar–Sathaye problem</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A polynomial <span class="math" data-tex="\(f\)">\(f\)</span> in <span class="math" data-tex="\(n\)">\(n\)</span> variables is a coordinate if it is one component of a polynomial automorphism of affine space. Every fibre <span class="math" data-tex="\(f=c\)">\(f=c\)</span> of a coordinate is then a copy of affine <span class="math" data-tex="\((n-1)\)">\((n-1)\)</span>-space, and the gradient of <span class="math" data-tex="\(f\)">\(f\)</span> vanishes nowhere. Abhyankar and Sathaye asked for the converse: if the single hypersurface <span class="math" data-tex="\(f=0\)">\(f=0\)</span> is isomorphic to affine <span class="math" data-tex="\((n-1)\)">\((n-1)\)</span>-space, must <span class="math" data-tex="\(f\)">\(f\)</span> be a coordinate? This lesson constructs a polynomial in four variables, of degree <span class="math" data-tex="\(17\)">\(17\)</span>, whose zero set is isomorphic to affine three-space, although its gradient vanishes at a point of the fibre <span class="math" data-tex="\(f=-1\)">\(f=-1\)</span>. So the answer is no in every dimension <span class="math" data-tex="\(n\geq4\)">\(n\geq4\)</span>. The proof is elementary: one lemma about solving two compatible linear equations, a change of variables in a cusp equation, and one derivative.</p>
+<p>We use <a href="keller-maps-and-the-jacobian-conjecture.html">Keller maps and the Jacobian conjecture</a> for the chain rule and Proposition 1.1, and the embedding dimension of a local ring from <a href="../AG-CA/dimension-theory-of-noetherian-local-rings.html#4-parameters-and-embedding-dimension">Dimension theory of Noetherian local rings</a>.</p>
+<p>Basic references are [OpenAI-AS] and [Kraft].</p>
+<h2 id="1-coordinates">1. Coordinates</h2>
+<p>Let <span class="math" data-tex="\(k\)">\(k\)</span> be a field and <span class="math" data-tex="\(R=k[z_1,\ldots,z_n]\)">\(R=k[z_1,\ldots,z_n]\)</span>. Write <span class="math" data-tex="\(k^{[m]}\)">\(k^{[m]}\)</span> for a polynomial ring over <span class="math" data-tex="\(k\)">\(k\)</span> in <span class="math" data-tex="\(m\)">\(m\)</span> variables, and <span class="math" data-tex="\(\nabla f=(\partial f/\partial z_1,\ldots,\partial f/\partial z_n)\)">\(\nabla f=(\partial f/\partial z_1,\ldots,\partial f/\partial z_n)\)</span> for the gradient of <span class="math" data-tex="\(f\in R\)">\(f\in R\)</span>.</p>
+<p><strong>Definition 1.1.</strong> A polynomial <span class="math" data-tex="\(f\in R\)">\(f\in R\)</span> is a <strong>coordinate</strong> if there are <span class="math" data-tex="\(f_2,\ldots,f_n\in R\)">\(f_2,\ldots,f_n\in R\)</span> such that <span class="math" data-tex="\((f,f_2,\ldots,f_n)\)">\((f,f_2,\ldots,f_n)\)</span> is a polynomial automorphism of <span class="math" data-tex="\(k^n\)">\(k^n\)</span>.</p>
+<p>For example <span class="math" data-tex="\(z_1+z_2^2\)">\(z_1+z_2^2\)</span> is a coordinate of <span class="math" data-tex="\(k[z_1,z_2,z_3]\)">\(k[z_1,z_2,z_3]\)</span>, with complement <span class="math" data-tex="\((z_2,z_3)\)">\((z_2,z_3)\)</span>: after renumbering the variables, the map <span class="math" data-tex="\((z_1+z_2^2,z_2,z_3)\)">\((z_1+z_2^2,z_2,z_3)\)</span> is triangular, so it is an automorphism by Proposition 5.1 of the first lesson.</p>
+<p><strong>Proposition 1.2.</strong> Let <span class="math" data-tex="\(f\)">\(f\)</span> be a coordinate of <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<ol>
+<li>For every <span class="math" data-tex="\(c\in k\)">\(c\in k\)</span>, the algebra <span class="math" data-tex="\(R/(f-c)\)">\(R/(f-c)\)</span> is isomorphic to <span class="math" data-tex="\(k^{[n-1]}\)">\(k^{[n-1]}\)</span>.</li>
+<li>For every field <span class="math" data-tex="\(K\supseteq k\)">\(K\supseteq k\)</span>, the gradient <span class="math" data-tex="\(\nabla f\)">\(\nabla f\)</span> has no zero in <span class="math" data-tex="\(K^n\)">\(K^n\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\Phi=(f,f_2,\ldots,f_n)\)">\(\Phi=(f,f_2,\ldots,f_n)\)</span> be an automorphism, and let <span class="math" data-tex="\(\varphi:k[y_1,\ldots,y_n]\to R\)">\(\varphi:k[y_1,\ldots,y_n]\to R\)</span> be the homomorphism with <span class="math" data-tex="\(\varphi(y_i)=\Phi_i\)">\(\varphi(y_i)=\Phi_i\)</span>. As in the proof of Theorem 4.1 of the first lesson, <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is an isomorphism. It carries the ideal <span class="math" data-tex="\((y_1-c)\)">\((y_1-c)\)</span> onto <span class="math" data-tex="\((f-c)\)">\((f-c)\)</span>, so <span class="math" data-tex="\(R/(f-c)\cong k[y_1,\ldots,y_n]/(y_1-c)\cong k[y_2,\ldots,y_n]\)">\(R/(f-c)\cong k[y_1,\ldots,y_n]/(y_1-c)\cong k[y_2,\ldots,y_n]\)</span>. This proves the first part. For the second, <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is still an automorphism over <span class="math" data-tex="\(K\)">\(K\)</span>, so <span class="math" data-tex="\(\det J\Phi\)">\(\det J\Phi\)</span> is a nonzero constant by Proposition 1.1 of the first lesson. At every point <span class="math" data-tex="\(p\in K^n\)">\(p\in K^n\)</span> the matrix <span class="math" data-tex="\(J\Phi(p)\)">\(J\Phi(p)\)</span> is therefore invertible, and its first row <span class="math" data-tex="\(\nabla f(p)\)">\(\nabla f(p)\)</span> is not zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>The Abhyankar–Sathaye problem.</strong> Suppose <span class="math" data-tex="\(R/(f)\cong k^{[n-1]}\)">\(R/(f)\cong k^{[n-1]}\)</span> as <span class="math" data-tex="\(k\)">\(k\)</span>-algebras. Is <span class="math" data-tex="\(f\)">\(f\)</span> a coordinate? Geometrically: can every closed embedding of affine <span class="math" data-tex="\((n-1)\)">\((n-1)\)</span>-space as a hypersurface in affine <span class="math" data-tex="\(n\)">\(n\)</span>-space be moved onto a coordinate hyperplane by an automorphism of the ambient space?</p>
+<p>For <span class="math" data-tex="\(n=2\)">\(n=2\)</span> and <span class="math" data-tex="\(k\)">\(k\)</span> of characteristic zero, the answer is yes, by the theorem of Abhyankar and Moh, proved independently by Suzuki [Abhyankar–Moh], [Suzuki]. In higher dimensions the answer was known to be yes for special shapes of the equation. Sathaye proved it in three variables for polynomials linear in one variable, and Russell extended this to arbitrary fields [Sathaye], [Russell]. In four variables, Kaliman, Vénéreau and Zaidenberg treated polynomials of the form <span class="math" data-tex="\(a(x)y+b(x,z,t)\)">\(a(x)y+b(x,z,t)\)</span> [KVZ]. We do not use these results.</p>
+<p>Proposition 1.2 gives two invariants that every coordinate has and an isomorphism of the single fibre <span class="math" data-tex="\(f=0\)">\(f=0\)</span> does not provide: all the other fibres, and the zeros of the gradient on the whole space. Shpilrain and Yu used the zeros of the gradient to distinguish embeddings of isomorphic hypersurfaces, and asked whether the gradient of <span class="math" data-tex="\(f\)">\(f\)</span> must vanish nowhere when <span class="math" data-tex="\(R/(f)\cong k^{[n-1]}\)">\(R/(f)\cong k^{[n-1]}\)</span> [Shpilrain–Yu]. The example below, found in 2026 [OpenAI-AS], answers both questions negatively.</p>
+<h2 id="2-solving-two-compatible-linear-equations">2. Solving two compatible linear equations</h2>
+<p>The construction is built around the cuspidal cubic <span class="math" data-tex="\(X^2+Y^3=0\)">\(X^2+Y^3=0\)</span>, parametrized by <span class="math" data-tex="\((U^3,-U^2)\)">\((U^3,-U^2)\)</span>. Perturb the parametrization by multiples of a parameter <span class="math" data-tex="\(H\)">\(H\)</span>: put <span class="math" data-tex="\(X=U^3+HV\)">\(X=U^3+HV\)</span> and <span class="math" data-tex="\(Y=-U^2+HW\)">\(Y=-U^2+HW\)</span>. Then <span class="math" data-tex="\(X^2+Y^3\)">\(X^2+Y^3\)</span> vanishes modulo <span class="math" data-tex="\(H\)">\(H\)</span>, and it is in fact divisible by <span class="math" data-tex="\(H\)">\(H\)</span>:</p>
+<span class="math math-display" data-tex="\[
+(U^3+HV)^2+(-U^2+HW)^3=H\,S(H,U,V,W),
+\tag{2.1}
+\]">\[
+(U^3+HV)^2+(-U^2+HW)^3=H\,S(H,U,V,W),
+\tag{2.1}
+\]</span>
+<span class="math math-display" data-tex="\[
+S(H,U,V,W)=2U^3V+3U^4W+H\bigl(V^2-3U^2W^2\bigr)+H^2W^3 .
+\]">\[
+S(H,U,V,W)=2U^3V+3U^4W+H\bigl(V^2-3U^2W^2\bigr)+H^2W^3 .
+\]</span>
+<p>Indeed, the terms <span class="math" data-tex="\(U^6\)">\(U^6\)</span> cancel and every remaining term contains <span class="math" data-tex="\(H\)">\(H\)</span>. All rings below are commutative with identity.</p>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(B\)">\(B\)</span> be a ring and <span class="math" data-tex="\(h,x,y,s\in B\)">\(h,x,y,s\in B\)</span> with</p>
+<span class="math math-display" data-tex="\[
+x^2+y^3=hs\qquad\text{and}\qquad hB+yB=B .
+\tag{2.2}
+\]">\[
+x^2+y^3=hs\qquad\text{and}\qquad hB+yB=B .
+\tag{2.2}
+\]</span>
+<p>Then the <span class="math" data-tex="\(B\)">\(B\)</span>-algebra</p>
+<span class="math math-display" data-tex="\[
+C=B[U,V,W]\big/\bigl(U^3+hV-x,\ \ -U^2+hW-y,\ \ S(h,U,V,W)-s\bigr)
+\]">\[
+C=B[U,V,W]\big/\bigl(U^3+hV-x,\ \ -U^2+hW-y,\ \ S(h,U,V,W)-s\bigr)
+\]</span>
+<p>is isomorphic to the polynomial ring <span class="math" data-tex="\(B[T]\)">\(B[T]\)</span>.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(\alpha,\beta\in B\)">\(\alpha,\beta\in B\)</span> with <span class="math" data-tex="\(\alpha h+\beta y=1\)">\(\alpha h+\beta y=1\)</span>.</p>
+<p><em>Step 1: a linear change of variables.</em> Substitute <span class="math" data-tex="\(V=G-UW\)">\(V=G-UW\)</span>, an automorphism of <span class="math" data-tex="\(B[U,V,W]\)">\(B[U,V,W]\)</span> over <span class="math" data-tex="\(B[U,W]\)">\(B[U,W]\)</span> with inverse <span class="math" data-tex="\(G=V+UW\)">\(G=V+UW\)</span>. Modulo the second relation <span class="math" data-tex="\(hW=y+U^2\)">\(hW=y+U^2\)</span>, the first relation becomes</p>
+<span class="math math-display" data-tex="\[
+U^3+hG-U\cdot hW-x\equiv U^3+hG-U(y+U^2)-x=hG-yU-x ,
+\]">\[
+U^3+hG-U\cdot hW-x\equiv U^3+hG-U(y+U^2)-x=hG-yU-x ,
+\]</span>
+<p>and expanding <span class="math" data-tex="\(S(h,U,G-UW,W)\)">\(S(h,U,G-UW,W)\)</span>, then replacing <span class="math" data-tex="\(hW\)">\(hW\)</span> by <span class="math" data-tex="\(y+U^2\)">\(y+U^2\)</span> wherever it occurs, gives</p>
+<span class="math math-display" data-tex="\[
+S(h,U,G-UW,W)\equiv hG^2-2yUG+y^2W .
+\]">\[
+S(h,U,G-UW,W)\equiv hG^2-2yUG+y^2W .
+\]</span>
+<p>Hence</p>
+<span class="math math-display" data-tex="\[
+C\cong B[U,G,W]\big/\bigl(hG-yU-x,\ \ hW-(y+U^2),\ \ y^2W-(s-hG^2+2yUG)\bigr).
+\tag{2.3}
+\]">\[
+C\cong B[U,G,W]\big/\bigl(hG-yU-x,\ \ hW-(y+U^2),\ \ y^2W-(s-hG^2+2yUG)\bigr).
+\tag{2.3}
+\]</span>
+<p><em>Step 2: eliminating <span class="math" data-tex="\(W\)">\(W\)</span>.</em> Let <span class="math" data-tex="\(A=B[U,G]/(hG-yU-x)\)">\(A=B[U,G]/(hG-yU-x)\)</span>, and in <span class="math" data-tex="\(A\)">\(A\)</span> put <span class="math" data-tex="\(a=y+U^2\)">\(a=y+U^2\)</span> and <span class="math" data-tex="\(b=s-hG^2+2yUG\)">\(b=s-hG^2+2yUG\)</span>. By (2.3), <span class="math" data-tex="\(C\cong A[W]/(hW-a,\ y^2W-b)\)">\(C\cong A[W]/(hW-a,\ y^2W-b)\)</span>. The two linear equations are compatible:</p>
+<span class="math math-display" data-tex="\[
+y^2a-hb=y^2U^2+y^3-hs+h^2G^2-2hyUG=(hG-yU)^2+y^3-hs=x^2+y^3-hs=0 .
+\]">\[
+y^2a-hb=y^2U^2+y^3-hs+h^2G^2-2hyUG=(hG-yU)^2+y^3-hs=x^2+y^3-hs=0 .
+\]</span>
+<p>Put <span class="math" data-tex="\(r=\alpha(1+\beta y)\)">\(r=\alpha(1+\beta y)\)</span> and <span class="math" data-tex="\(q=\beta^2\)">\(q=\beta^2\)</span>. Then <span class="math" data-tex="\(rh+qy^2=(1-\beta y)(1+\beta y)+\beta^2y^2=1\)">\(rh+qy^2=(1-\beta y)(1+\beta y)+\beta^2y^2=1\)</span>. Let <span class="math" data-tex="\(W_0=ra+qb\in A\)">\(W_0=ra+qb\in A\)</span>. Using <span class="math" data-tex="\(hb=y^2a\)">\(hb=y^2a\)</span>,</p>
+<span class="math math-display" data-tex="\[
+hW_0=rha+qy^2a=a,\qquad y^2W_0=ry^2a+qy^2b=rhb+qy^2b=b .
+\]">\[
+hW_0=rha+qy^2a=a,\qquad y^2W_0=ry^2a+qy^2b=rhb+qy^2b=b .
+\]</span>
+<p>So <span class="math" data-tex="\(hW-a=h(W-W_0)\)">\(hW-a=h(W-W_0)\)</span> and <span class="math" data-tex="\(y^2W-b=y^2(W-W_0)\)">\(y^2W-b=y^2(W-W_0)\)</span>, while <span class="math" data-tex="\(W-W_0=r(hW-a)+q(y^2W-b)\)">\(W-W_0=r(hW-a)+q(y^2W-b)\)</span>. The ideal generated by the two equations in <span class="math" data-tex="\(A[W]\)">\(A[W]\)</span> is therefore the principal ideal <span class="math" data-tex="\((W-W_0)\)">\((W-W_0)\)</span>, and <span class="math" data-tex="\(C\cong A[W]/(W-W_0)\cong A\)">\(C\cong A[W]/(W-W_0)\cong A\)</span>.</p>
+<p><em>Step 3: <span class="math" data-tex="\(A\)">\(A\)</span> is a polynomial ring.</em> Define <span class="math" data-tex="\(B\)">\(B\)</span>-algebra homomorphisms</p>
+<span class="math math-display" data-tex="\[
+A\to B[T],\quad U\mapsto hT-\beta x,\ \ G\mapsto yT+\alpha x;\qquad
+B[T]\to A,\quad T\mapsto\alpha U+\beta G .
+\]">\[
+A\to B[T],\quad U\mapsto hT-\beta x,\ \ G\mapsto yT+\alpha x;\qquad
+B[T]\to A,\quad T\mapsto\alpha U+\beta G .
+\]</span>
+<p>The first is well defined because <span class="math" data-tex="\(h(yT+\alpha x)-y(hT-\beta x)=(\alpha h+\beta y)x=x\)">\(h(yT+\alpha x)-y(hT-\beta x)=(\alpha h+\beta y)x=x\)</span>. The composite <span class="math" data-tex="\(B[T]\to A\to B[T]\)">\(B[T]\to A\to B[T]\)</span> sends <span class="math" data-tex="\(T\)">\(T\)</span> to <span class="math" data-tex="\(\alpha(hT-\beta x)+\beta(yT+\alpha x)=T\)">\(\alpha(hT-\beta x)+\beta(yT+\alpha x)=T\)</span>. For the other composite, in <span class="math" data-tex="\(A\)">\(A\)</span> we have <span class="math" data-tex="\(hG=yU+x\)">\(hG=yU+x\)</span>, hence</p>
+<span class="math math-display" data-tex="\[
+h(\alpha U+\beta G)-\beta x=(\alpha h+\beta y)U=U,\qquad
+y(\alpha U+\beta G)+\alpha x=(\alpha h+\beta y)G=G .
+\]">\[
+h(\alpha U+\beta G)-\beta x=(\alpha h+\beta y)U=U,\qquad
+y(\alpha U+\beta G)+\alpha x=(\alpha h+\beta y)G=G .
+\]</span>
+<p>Both composites are identities, so <span class="math" data-tex="\(A\cong B[T]\)">\(A\cong B[T]\)</span>, and <span class="math" data-tex="\(C\cong B[T]\)">\(C\cong B[T]\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof never divides by <span class="math" data-tex="\(h\)">\(h\)</span> or <span class="math" data-tex="\(y\)">\(y\)</span>, and <span class="math" data-tex="\(B\)">\(B\)</span> may have zero divisors. The isomorphism is explicit: <span class="math" data-tex="\(T=\alpha U+\beta(V+UW)\)">\(T=\alpha U+\beta(V+UW)\)</span>, and conversely <span class="math" data-tex="\(U,G\)">\(U,G\)</span> come from Step 3, then <span class="math" data-tex="\(W=W_0\)">\(W=W_0\)</span> and <span class="math" data-tex="\(V=G-UW\)">\(V=G-UW\)</span>.</p>
+<h2 id="3-a-hypersurface-isomorphic-to-affine-three-space">3. A hypersurface isomorphic to affine three-space</h2>
+<p>From now on <span class="math" data-tex="\(k\)">\(k\)</span> has characteristic zero. In <span class="math" data-tex="\(R=k[h,u,v,w]\)">\(R=k[h,u,v,w]\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+x=u^3+hv,\qquad y=-u^2+hw,\qquad s=S(h,u,v,w),
+\tag{3.1}
+\]">\[
+x=u^3+hv,\qquad y=-u^2+hw,\qquad s=S(h,u,v,w),
+\tag{3.1}
+\]</span>
+<p>so that <span class="math" data-tex="\(x^2+y^3=hs\)">\(x^2+y^3=hs\)</span> by (2.1). For independent variables <span class="math" data-tex="\(x,y,s\)">\(x,y,s\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+p(x,y,s)=-2s^2x+3sy^2-3s^3y .
+\]">\[
+p(x,y,s)=-2s^2x+3sy^2-3s^3y .
+\]</span>
+<p>This polynomial measures the effect of a translation along the cuspidal cubic:</p>
+<span class="math math-display" data-tex="\[
+(x+s^3)^2+(y-s^2)^3=x^2+y^3-s\,p(x,y,s),
+\tag{3.2}
+\]">\[
+(x+s^3)^2+(y-s^2)^3=x^2+y^3-s\,p(x,y,s),
+\tag{3.2}
+\]</span>
+<p>as one checks by expanding; the terms <span class="math" data-tex="\(s^6\)">\(s^6\)</span> cancel. Define</p>
+<span class="math math-display" data-tex="\[
+F=h-1-p(x,y,s)\in R ,
+\tag{3.3}
+\]">\[
+F=h-1-p(x,y,s)\in R ,
+\tag{3.3}
+\]</span>
+<p>with <span class="math" data-tex="\(x,y,s\)">\(x,y,s\)</span> given by (3.1). It is a polynomial of degree <span class="math" data-tex="\(17\)">\(17\)</span> in <span class="math" data-tex="\(h,u,v,w\)">\(h,u,v,w\)</span>, with <span class="math" data-tex="\(69\)">\(69\)</span> terms.</p>
+<p><strong>Theorem 3.1.</strong> The algebra <span class="math" data-tex="\(R/(F)\)">\(R/(F)\)</span> is isomorphic to <span class="math" data-tex="\(k^{[3]}\)">\(k^{[3]}\)</span>.</p>
+<p><strong>Proof.</strong> Introduce an auxiliary algebra in which <span class="math" data-tex="\(x,y,s\)">\(x,y,s\)</span> are independent variables:</p>
+<span class="math math-display" data-tex="\[
+B=k[h,x,y,s]\big/\bigl(h-1-p(x,y,s),\ \ x^2+y^3-sh\bigr).
+\]">\[
+B=k[h,x,y,s]\big/\bigl(h-1-p(x,y,s),\ \ x^2+y^3-sh\bigr).
+\]</span>
+<p><em><span class="math" data-tex="\(B\)">\(B\)</span> is a polynomial ring in two variables.</em> Eliminating <span class="math" data-tex="\(h\)">\(h\)</span> with the first relation gives <span class="math" data-tex="\(B\cong k[x,y,s]/\bigl(x^2+y^3-s-s\,p(x,y,s)\bigr)\)">\(B\cong k[x,y,s]/\bigl(x^2+y^3-s-s\,p(x,y,s)\bigr)\)</span>. The substitution <span class="math" data-tex="\(X=x+s^3\)">\(X=x+s^3\)</span>, <span class="math" data-tex="\(Y=y-s^2\)">\(Y=y-s^2\)</span> is an automorphism of <span class="math" data-tex="\(k[x,y,s]\)">\(k[x,y,s]\)</span> over <span class="math" data-tex="\(k[s]\)">\(k[s]\)</span>, and by (3.2) it turns the relation into <span class="math" data-tex="\(X^2+Y^3-s\)">\(X^2+Y^3-s\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+B\cong k[X,Y,s]/(X^2+Y^3-s)\cong k[X,Y].
+\]">\[
+B\cong k[X,Y,s]/(X^2+Y^3-s)\cong k[X,Y].
+\]</span>
+<p><em>The unit ideal condition.</em> Modulo <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span>, the relation <span class="math" data-tex="\(x^2+y^3=sh\)">\(x^2+y^3=sh\)</span> gives <span class="math" data-tex="\(x^2=0\)">\(x^2=0\)</span>, and the relation <span class="math" data-tex="\(h=1+p\)">\(h=1+p\)</span> gives <span class="math" data-tex="\(0=1-2s^2x\)">\(0=1-2s^2x\)</span>. So <span class="math" data-tex="\(2s^2x=1\)">\(2s^2x=1\)</span>, and squaring, <span class="math" data-tex="\(1=4s^4x^2=0\)">\(1=4s^4x^2=0\)</span>. Thus <span class="math" data-tex="\(B/(hB+yB)=0\)">\(B/(hB+yB)=0\)</span>, that is, <span class="math" data-tex="\(hB+yB=B\)">\(hB+yB=B\)</span>.</p>
+<p><em>Applying the lemma.</em> Since <span class="math" data-tex="\(x^2+y^3=sh\)">\(x^2+y^3=sh\)</span> holds in <span class="math" data-tex="\(B\)">\(B\)</span>, Lemma 2.1 applies to <span class="math" data-tex="\(B\)">\(B\)</span> and its elements <span class="math" data-tex="\(h,x,y,s\)">\(h,x,y,s\)</span>. Write <span class="math" data-tex="\(u,v,w\)">\(u,v,w\)</span> for the three new variables. Then</p>
+<span class="math math-display" data-tex="\[
+C=k[h,x,y,s,u,v,w]\big/\bigl(h-1-p,\ x^2+y^3-sh,\ u^3+hv-x,\ -u^2+hw-y,\ S(h,u,v,w)-s\bigr)\cong B[T]\cong k^{[3]} .
+\]">\[
+C=k[h,x,y,s,u,v,w]\big/\bigl(h-1-p,\ x^2+y^3-sh,\ u^3+hv-x,\ -u^2+hw-y,\ S(h,u,v,w)-s\bigr)\cong B[T]\cong k^{[3]} .
+\]</span>
+<p>The last three relations express <span class="math" data-tex="\(x\)">\(x\)</span>, <span class="math" data-tex="\(y\)">\(y\)</span> and <span class="math" data-tex="\(s\)">\(s\)</span> as the polynomials (3.1), so dividing by them identifies <span class="math" data-tex="\(k[h,x,y,s,u,v,w]\)">\(k[h,x,y,s,u,v,w]\)</span> with <span class="math" data-tex="\(R\)">\(R\)</span>. Under this identification the relation <span class="math" data-tex="\(x^2+y^3-sh\)">\(x^2+y^3-sh\)</span> becomes zero, by (2.1), and <span class="math" data-tex="\(h-1-p\)">\(h-1-p\)</span> becomes <span class="math" data-tex="\(F\)">\(F\)</span>. So <span class="math" data-tex="\(C\cong R/(F)\)">\(C\cong R/(F)\)</span>, and <span class="math" data-tex="\(R/(F)\cong k^{[3]}\)">\(R/(F)\cong k^{[3]}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The isomorphism is defined over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> and can be written down; see Section 5.</p>
+<h2 id="4-a-critical-point">4. A critical point</h2>
+<p><strong>Theorem 4.1.</strong> The polynomial <span class="math" data-tex="\(F\)">\(F\)</span> is not a coordinate of <span class="math" data-tex="\(k[h,u,v,w]\)">\(k[h,u,v,w]\)</span>. Its gradient vanishes at the point</p>
+<span class="math math-display" data-tex="\[
+P=(h,u,v,w)=\bigl(2,\ 0,\ -\tfrac12,\ \tfrac12\bigr),
+\]">\[
+P=(h,u,v,w)=\bigl(2,\ 0,\ -\tfrac12,\ \tfrac12\bigr),
+\]</span>
+<p>which lies on the fibre <span class="math" data-tex="\(F=-1\)">\(F=-1\)</span>.</p>
+<p><strong>Proof.</strong> In <span class="math" data-tex="\(R\)">\(R\)</span>, with <span class="math" data-tex="\(x,y,s\)">\(x,y,s\)</span> as in (3.1), put <span class="math" data-tex="\(X=x+s^3\)">\(X=x+s^3\)</span> and <span class="math" data-tex="\(Y=y-s^2\)">\(Y=y-s^2\)</span>. By (3.2), <span class="math" data-tex="\(x^2+y^3=hs\)">\(x^2+y^3=hs\)</span> and (3.3),</p>
+<span class="math math-display" data-tex="\[
+X^2+Y^3=hs-s\,p=s\,(h-p)=s\,(1+F).
+\tag{4.1}
+\]">\[
+X^2+Y^3=hs-s\,p=s\,(h-p)=s\,(1+F).
+\tag{4.1}
+\]</span>
+<p>At <span class="math" data-tex="\(P\)">\(P\)</span>: <span class="math" data-tex="\(x=2\cdot(-\tfrac12)=-1\)">\(x=2\cdot(-\tfrac12)=-1\)</span>, <span class="math" data-tex="\(y=2\cdot\tfrac12=1\)">\(y=2\cdot\tfrac12=1\)</span>, and <span class="math" data-tex="\(s=2\cdot\tfrac14+4\cdot\tfrac18=1\)">\(s=2\cdot\tfrac14+4\cdot\tfrac18=1\)</span>. Hence <span class="math" data-tex="\(X=-1+1=0\)">\(X=-1+1=0\)</span>, <span class="math" data-tex="\(Y=1-1=0\)">\(Y=1-1=0\)</span>, <span class="math" data-tex="\(p=2+3-3=2\)">\(p=2+3-3=2\)</span> and <span class="math" data-tex="\(F=2-1-2=-1\)">\(F=2-1-2=-1\)</span>. Differentiate (4.1) with respect to any of the four variables:</p>
+<span class="math math-display" data-tex="\[
+2X\,\partial X+3Y^2\,\partial Y=(1+F)\,\partial s+s\,\partial F .
+\]">\[
+2X\,\partial X+3Y^2\,\partial Y=(1+F)\,\partial s+s\,\partial F .
+\]</span>
+<p>At <span class="math" data-tex="\(P\)">\(P\)</span> the left side vanishes and so does <span class="math" data-tex="\(1+F\)">\(1+F\)</span>, while <span class="math" data-tex="\(s=1\)">\(s=1\)</span>. Hence every partial derivative of <span class="math" data-tex="\(F\)">\(F\)</span> vanishes at <span class="math" data-tex="\(P\)">\(P\)</span>. By Proposition 1.2, <span class="math" data-tex="\(F\)">\(F\)</span> is not a coordinate. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> [OpenAI-AS, Theorem 1.1].</p>
+<p><strong>Corollary 4.2.</strong> For every <span class="math" data-tex="\(n\geq4\)">\(n\geq4\)</span> there is a polynomial <span class="math" data-tex="\(f\in k[z_1,\ldots,z_n]\)">\(f\in k[z_1,\ldots,z_n]\)</span> with <span class="math" data-tex="\(k[z_1,\ldots,z_n]/(f)\cong k^{[n-1]}\)">\(k[z_1,\ldots,z_n]/(f)\cong k^{[n-1]}\)</span> that is not a coordinate.</p>
+<p><strong>Proof.</strong> Take <span class="math" data-tex="\(f=F\)">\(f=F\)</span> in <span class="math" data-tex="\(R[z_5,\ldots,z_n]\)">\(R[z_5,\ldots,z_n]\)</span>. Then <span class="math" data-tex="\(R[z_5,\ldots,z_n]/(F)\cong(R/(F))[z_5,\ldots,z_n]\cong k^{[n-1]}\)">\(R[z_5,\ldots,z_n]/(F)\cong(R/(F))[z_5,\ldots,z_n]\cong k^{[n-1]}\)</span> by Theorem 3.1. The derivatives of <span class="math" data-tex="\(F\)">\(F\)</span> in the new variables are zero, and its other derivatives vanish at <span class="math" data-tex="\(P\)">\(P\)</span>, so the gradient vanishes at <span class="math" data-tex="\((P,0,\ldots,0)\)">\((P,0,\ldots,0)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The critical point also shows that the fibre through it is not an affine space, so <span class="math" data-tex="\(F\)">\(F\)</span> fails the first condition of Proposition 1.2 as well.</p>
+<p><strong>Proposition 4.3.</strong> The algebra <span class="math" data-tex="\(R/(F+1)\)">\(R/(F+1)\)</span> is not isomorphic to <span class="math" data-tex="\(k^{[3]}\)">\(k^{[3]}\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\mathfrak m=(h-2,u,v+\tfrac12,w-\tfrac12)\)">\(\mathfrak m=(h-2,u,v+\tfrac12,w-\tfrac12)\)</span>, the maximal ideal of <span class="math" data-tex="\(P\)">\(P\)</span> in <span class="math" data-tex="\(R\)">\(R\)</span>. Since <span class="math" data-tex="\(F+1\)">\(F+1\)</span> and all its first derivatives vanish at <span class="math" data-tex="\(P\)">\(P\)</span>, its Taylor expansion at <span class="math" data-tex="\(P\)">\(P\)</span> starts in degree two, so <span class="math" data-tex="\(F+1\in\mathfrak m^2\)">\(F+1\in\mathfrak m^2\)</span>. The local ring <span class="math" data-tex="\(\mathcal O=(R/(F+1))_{\mathfrak m}\)">\(\mathcal O=(R/(F+1))_{\mathfrak m}\)</span> therefore has</p>
+<span class="math math-display" data-tex="\[
+\mathfrak m\mathcal O\big/(\mathfrak m\mathcal O)^2\cong\mathfrak m/\bigl(\mathfrak m^2+(F+1)\bigr)=\mathfrak m/\mathfrak m^2\cong k^4,
+\]">\[
+\mathfrak m\mathcal O\big/(\mathfrak m\mathcal O)^2\cong\mathfrak m/\bigl(\mathfrak m^2+(F+1)\bigr)=\mathfrak m/\mathfrak m^2\cong k^4,
+\]</span>
+<p>so its embedding dimension is four. Suppose <span class="math" data-tex="\(\psi:R/(F+1)\to k[X,Y,T]\)">\(\psi:R/(F+1)\to k[X,Y,T]\)</span> were an isomorphism of <span class="math" data-tex="\(k\)">\(k\)</span>-algebras. It carries <span class="math" data-tex="\(\mathfrak m/(F+1)\)">\(\mathfrak m/(F+1)\)</span>, whose residue field is <span class="math" data-tex="\(k\)">\(k\)</span>, to a maximal ideal <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span> of <span class="math" data-tex="\(k[X,Y,T]\)">\(k[X,Y,T]\)</span> with residue field <span class="math" data-tex="\(k\)">\(k\)</span>. If <span class="math" data-tex="\(X,Y,T\)">\(X,Y,T\)</span> have images <span class="math" data-tex="\(a,b,c\in k\)">\(a,b,c\in k\)</span> in that residue field, then <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span> contains the maximal ideal <span class="math" data-tex="\((X-a,Y-b,T-c)\)">\((X-a,Y-b,T-c)\)</span>, hence equals it. So the maximal ideal of <span class="math" data-tex="\(k[X,Y,T]_{\mathfrak n}\)">\(k[X,Y,T]_{\mathfrak n}\)</span> is generated by three elements, and its embedding dimension is at most three <a href="../AG-CA/dimension-theory-of-noetherian-local-rings.html#4-parameters-and-embedding-dimension">Dimension theory of Noetherian local rings, Proposition 4.2</a>. But <span class="math" data-tex="\(\psi\)">\(\psi\)</span> induces an isomorphism of these local rings, which preserves the embedding dimension. This is a contradiction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>So the zero fibre of <span class="math" data-tex="\(F\)">\(F\)</span> is affine three-space while the fibre over <span class="math" data-tex="\(-1\)">\(-1\)</span> is singular. An isomorphism of one hypersurface with affine space says nothing about its neighbours.</p>
+<h2 id="5-explicit-coordinates-on-the-zero-fibre">5. Explicit coordinates on the zero fibre</h2>
+<p>The proofs of Lemma 2.1 and Theorem 3.1 give explicit formulas once <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and <span class="math" data-tex="\(\beta\)">\(\beta\)</span> with <span class="math" data-tex="\(\alpha h+\beta y=1\)">\(\alpha h+\beta y=1\)</span> in <span class="math" data-tex="\(B\)">\(B\)</span> are known. Put</p>
+<span class="math math-display" data-tex="\[
+\alpha=1+2s^2x+4s^5,\qquad \beta=(3s^3-3sy)(1+2s^2x)-4s^4y^2 .
+\]">\[
+\alpha=1+2s^2x+4s^5,\qquad \beta=(3s^3-3sy)(1+2s^2x)-4s^4y^2 .
+\]</span>
+<p><strong>Proposition 5.1.</strong> In <span class="math" data-tex="\(k[h,x,y,s]\)">\(k[h,x,y,s]\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\alpha h+\beta y-1=(1+2s^2x)\bigl(h-1-p(x,y,s)\bigr)-4s^4\bigl(x^2+y^3-sh\bigr).
+\tag{5.1}
+\]">\[
+\alpha h+\beta y-1=(1+2s^2x)\bigl(h-1-p(x,y,s)\bigr)-4s^4\bigl(x^2+y^3-sh\bigr).
+\tag{5.1}
+\]</span>
+<p>Consequently <span class="math" data-tex="\(\alpha h+\beta y=1\)">\(\alpha h+\beta y=1\)</span> in <span class="math" data-tex="\(B\)">\(B\)</span>, and the polynomials</p>
+<span class="math math-display" data-tex="\[
+X=x+s^3,\qquad Y=y-s^2,\qquad T=\alpha u+\beta(v+uw),
+\tag{5.2}
+\]">\[
+X=x+s^3,\qquad Y=y-s^2,\qquad T=\alpha u+\beta(v+uw),
+\tag{5.2}
+\]</span>
+<p>with <span class="math" data-tex="\(x,y,s\)">\(x,y,s\)</span> given by (3.1), define an isomorphism <span class="math" data-tex="\(k[X,Y,T]\to R/(F)\)">\(k[X,Y,T]\to R/(F)\)</span>. The inverse isomorphism sends <span class="math" data-tex="\(h,u,v,w\)">\(h,u,v,w\)</span> to the polynomials in <span class="math" data-tex="\(X,Y,T\)">\(X,Y,T\)</span> computed in this order:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;s=X^2+Y^3,\quad x=X-s^3,\quad y=Y+s^2,\quad h=1+p(x,y,s),\\
+&amp;u=hT-\beta x,\quad g=yT+\alpha x,\quad w=\alpha(1+\beta y)(y+u^2)+\beta^2\bigl(s-hg^2+2uyg\bigr),\quad v=g-uw .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;s=X^2+Y^3,\quad x=X-s^3,\quad y=Y+s^2,\quad h=1+p(x,y,s),\\
+&amp;u=hT-\beta x,\quad g=yT+\alpha x,\quad w=\alpha(1+\beta y)(y+u^2)+\beta^2\bigl(s-hg^2+2uyg\bigr),\quad v=g-uw .
+\end{aligned}
+\]</span>
+<p><strong>Proof.</strong> Identity (5.1) is checked by expanding both sides. The rest is the chain of isomorphisms in the proofs of Theorem 3.1 and Lemma 2.1, with <span class="math" data-tex="\(r=\alpha(1+\beta y)\)">\(r=\alpha(1+\beta y)\)</span>, <span class="math" data-tex="\(q=\beta^2\)">\(q=\beta^2\)</span> and <span class="math" data-tex="\(W_0=ra+qb\)">\(W_0=ra+qb\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>Exercise 6.1 (easy).</strong> Show that <span class="math" data-tex="\(z_1+z_2^2+z_3^3z_2\)">\(z_1+z_2^2+z_3^3z_2\)</span> is a coordinate of <span class="math" data-tex="\(k[z_1,z_2,z_3]\)">\(k[z_1,z_2,z_3]\)</span>.</p>
+<p><strong>Exercise 6.2 (easy).</strong> Verify the identity (2.1) and the identity (3.2).</p>
+<p><strong>Exercise 6.3 (medium).</strong> Let <span class="math" data-tex="\(D=h\,\partial_u-3u^2\,\partial_v+2u\,\partial_w\)">\(D=h\,\partial_u-3u^2\,\partial_v+2u\,\partial_w\)</span>, a derivation of <span class="math" data-tex="\(R\)">\(R\)</span>. Show that <span class="math" data-tex="\(D\)">\(D\)</span> kills <span class="math" data-tex="\(h\)">\(h\)</span>, <span class="math" data-tex="\(x\)">\(x\)</span>, <span class="math" data-tex="\(y\)">\(y\)</span> and <span class="math" data-tex="\(s\)">\(s\)</span>, and hence <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><strong>Exercise 6.4 (medium).</strong> Show that a polynomial <span class="math" data-tex="\(f\in k[z_1,\ldots,z_n]\)">\(f\in k[z_1,\ldots,z_n]\)</span> with a critical point on the fibre <span class="math" data-tex="\(f=c\)">\(f=c\)</span> cannot satisfy <span class="math" data-tex="\(k[z_1,\ldots,z_n]/(f-c)\cong k^{[n-1]}\)">\(k[z_1,\ldots,z_n]/(f-c)\cong k^{[n-1]}\)</span>. (Adapt the proof of Proposition 4.3.)</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> The map <span class="math" data-tex="\((z_1+z_2^2+z_3^3z_2,\ z_2,\ z_3)\)">\((z_1+z_2^2+z_3^3z_2,\ z_2,\ z_3)\)</span> is triangular in the order <span class="math" data-tex="\(z_3,z_2,z_1\)">\(z_3,z_2,z_1\)</span>: its inverse is <span class="math" data-tex="\((y_1-y_2^2-y_3^3y_2,\ y_2,\ y_3)\)">\((y_1-y_2^2-y_3^3y_2,\ y_2,\ y_3)\)</span>. So the given polynomial is a coordinate, with complement <span class="math" data-tex="\((z_2,z_3)\)">\((z_2,z_3)\)</span>.</p>
+<p><strong>6.2.</strong> For (2.1): <span class="math" data-tex="\((U^3+HV)^2=U^6+2HU^3V+H^2V^2\)">\((U^3+HV)^2=U^6+2HU^3V+H^2V^2\)</span> and <span class="math" data-tex="\((-U^2+HW)^3=-U^6+3HU^4W-3H^2U^2W^2+H^3W^3\)">\((-U^2+HW)^3=-U^6+3HU^4W-3H^2U^2W^2+H^3W^3\)</span>. The sum is <span class="math" data-tex="\(H\)">\(H\)</span> times <span class="math" data-tex="\(2U^3V+3U^4W+H(V^2-3U^2W^2)+H^2W^3\)">\(2U^3V+3U^4W+H(V^2-3U^2W^2)+H^2W^3\)</span>. For (3.2): <span class="math" data-tex="\((x+s^3)^2+(y-s^2)^3=x^2+y^3+2s^3x-3s^2y^2+3s^4y\)">\((x+s^3)^2+(y-s^2)^3=x^2+y^3+2s^3x-3s^2y^2+3s^4y\)</span>, and <span class="math" data-tex="\(-s\,p=2s^3x-3s^2y^2+3s^4y\)">\(-s\,p=2s^3x-3s^2y^2+3s^4y\)</span>.</p>
+<p><strong>6.3.</strong> <span class="math" data-tex="\(D(h)=0\)">\(D(h)=0\)</span>. <span class="math" data-tex="\(D(x)=h\cdot3u^2+h\cdot(-3u^2)=0\)">\(D(x)=h\cdot3u^2+h\cdot(-3u^2)=0\)</span> and <span class="math" data-tex="\(D(y)=h\cdot(-2u)+h\cdot2u=0\)">\(D(y)=h\cdot(-2u)+h\cdot2u=0\)</span>. Applying <span class="math" data-tex="\(D\)">\(D\)</span> to <span class="math" data-tex="\(hs=x^2+y^3\)">\(hs=x^2+y^3\)</span> gives <span class="math" data-tex="\(h\,D(s)=0\)">\(h\,D(s)=0\)</span>, and <span class="math" data-tex="\(h\)">\(h\)</span> is not a zero divisor in the domain <span class="math" data-tex="\(R\)">\(R\)</span>, so <span class="math" data-tex="\(D(s)=0\)">\(D(s)=0\)</span>. A derivation that kills <span class="math" data-tex="\(h,x,y,s\)">\(h,x,y,s\)</span> kills every polynomial in them, in particular <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><strong>6.4.</strong> Let <span class="math" data-tex="\(P\)">\(P\)</span> be a point of <span class="math" data-tex="\(k^n\)">\(k^n\)</span> with <span class="math" data-tex="\(f(P)=c\)">\(f(P)=c\)</span> and <span class="math" data-tex="\(\nabla f(P)=0\)">\(\nabla f(P)=0\)</span>, and <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> its maximal ideal. Then <span class="math" data-tex="\(f-c\in\mathfrak m^2\)">\(f-c\in\mathfrak m^2\)</span>, so the local ring of <span class="math" data-tex="\(k[z]/(f-c)\)">\(k[z]/(f-c)\)</span> at <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> has embedding dimension <span class="math" data-tex="\(n\)">\(n\)</span>. Every local ring of <span class="math" data-tex="\(k^{[n-1]}\)">\(k^{[n-1]}\)</span> at a maximal ideal with residue field <span class="math" data-tex="\(k\)">\(k\)</span> has embedding dimension at most <span class="math" data-tex="\(n-1\)">\(n-1\)</span>. As in Proposition 4.3, an isomorphism would carry one to the other.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-AS] OpenAI, An explicit noncoordinate polynomial with affine three-space zero fibre, preprint, 24 September 2026. https://github.com/openai/math/blob/main/preprints/An-explicit-noncoordinate-polynomial-with-affine-three-space-zero-fibre-September-24-2026/paper.pdf</li>
+<li>[Kraft] H. Kraft, Challenging problems on affine n-space, Séminaire Bourbaki, Exposé 802, Astérisque 237 (1996), 295–317. https://numdam.org/item/SB_1994-1995__37__295_0/</li>
+<li>[KVZ] S. Kaliman, S. Vénéreau, M. Zaidenberg, Simple birational extensions of the polynomial algebra C^[3], Trans. Amer. Math. Soc. 356 (2004), 509–555. https://arxiv.org/abs/math/0104204</li>
+<li>[Shpilrain–Yu] V. Shpilrain, J.-T. Yu, Embeddings of hypersurfaces in affine spaces, J. Algebra 239 (2001), 161–173. https://arxiv.org/abs/math/0010211</li>
+<li>[Russell] P. Russell, Simple birational extensions of two dimensional affine rational domains, Compositio Math. 33 (1976), 197–208. https://www.numdam.org/item/CM_1976__33_2_197_0/</li>
+<li>[Sathaye] A. Sathaye, On linear planes, Proc. Amer. Math. Soc. 56 (1976), 1–7. https://doi.org/10.1090/S0002-9939-1976-0409472-6</li>
+<li>[Suzuki] M. Suzuki, Propriétés topologiques des polynômes de deux variables complexes, et automorphismes algébriques de l'espace C², J. Math. Soc. Japan 26 (1974), 241–257. https://doi.org/10.2969/jmsj/02620241</li>
+<li>[Abhyankar–Moh] S. S. Abhyankar, T. T. Moh, Embeddings of the line in the plane, J. Reine Angew. Math. 276 (1975), 148–166. https://doi.org/10.1515/crll.1975.276.148</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

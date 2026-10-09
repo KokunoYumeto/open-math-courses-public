@@ -33,9 +33,9 @@ The integral is jointly holomorphic in these two parameters.
 For joint holomorphy, let \(0<\delta\le\operatorname{Re}p\le M\), \(\operatorname{Re}z\ge c>0\), on a compact parameter set. A mixed derivative adds \(t^j(\log t)^k\). Near zero a majorant is \(t^{\delta-1}|\log t|^k\); near infinity use \(t^{M+j-1}e^{-ct}(\log t)^k\), with harmless constants. Gamma G1 proves both integrable. The segment argument gives continuous mixed derivatives and joint continuity; the supplied polydisk proof converts coordinate holomorphy and joint continuity into convergent joint power series. This proves the last assertion. \(\square\)
 
 **Theorem 1.2.** If \(B\in\mathcal H_n\) and \(0<\operatorname{Re}a<n\), then on all Schwartz tests
-\
+\[
  \begin{gathered}
- F[(x^TBx)^{-a/2}
+ F[(x^TBx)^{-a/2}](\xi)
    =g(B)^{-1}C_{n,a}(\xi^TB^{-1}\xi)^{(a-n)/2},\\
  C_{n,a}=2^{n-a}\pi^{n/2}
                   \frac{\Gamma((n-a)/2)}{\Gamma(a/2)}.
@@ -184,8 +184,8 @@ For the shifted examples we will use
  F[e^{ic\cdot x}u]=(Fu)(\xi-c).
 \]
 These follow on tests from
-\(F\phi(x+h)=Fe^{-ih\cdot(\cdot)}\phi\) and
-\(e^{ic\cdot x}F\phi(x)=F\phi(\cdot+c)\), followed by the definition of translation of a distribution. Product and chain rules show that the test maps are continuous in all Schwartz seminorms, so the identities hold for every tempered distribution.
+\(F\phi(x+h)=F[e^{-ih\cdot(\cdot)}\phi](x)\) and
+\(e^{ic\cdot x}F\phi(x)=F[\phi(\cdot+c)](x)\), followed by the definition of translation of a distribution. Product and chain rules show that the test maps are continuous in all Schwartz seminorms, so the identities hold for every tempered distribution.
 
 ## Exercises
 
@@ -296,8 +296,8 @@ The singular frequency is \(-b\); elsewhere \(P(\xi+b)\) has positive real part 
 Polynomial multiplication of a regular locally integrable distribution is represented by the polynomial times its density. The resulting density equals one almost everywhere, hence defines precisely the constant distribution; changing its value at the single origin changes no integral. Fourier injectivity proves \(\partial_{\bar z}E=\delta_0\).
 
 **Solution 7.** Reflect by \(R=\operatorname{diag}(1,-1)\). U052's full linear substitution rule has \(|\det R|=1\), \(R^{-T}=R\), so
-\
- F[1/(x-iy)=\frac{2\pi}{i\xi+\eta}.
+\[
+ F[1/(x-iy)](\xi,\eta)=\frac{2\pi}{i\xi+\eta}.
 \]
 The translation is \(h=(1,-2)\), and the positive modulation has vector \(c=(3,-2)\). Substitute \(\zeta=(\xi-3,\eta+2)\) in both the phase and the original spectrum:
 \[

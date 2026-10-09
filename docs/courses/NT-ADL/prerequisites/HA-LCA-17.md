@@ -302,7 +302,7 @@ where \(\mathcal S(\mathbb R)\) denotes smooth functions rapidly decreasing with
 Both sums converge absolutely; the left sum converges uniformly on compact sets and the right sum uniformly everywhere.
 
 **Proof.** The restricted-product construction, its local compactness, the compact open \(K_f\), the full Haar normalization, and the rational lattice with fundamental set
-\(0,1)\times K_f\) are proved in [HA-LCA-11, Lemma 4.2. Its proof also gives the compact open neighbourhood base formed by restricting finitely many coordinates to \(p^{j_p}\mathbb Z_p\) and leaving the others integral. These clopen subgroups separate points, so \(\mathbb A_f\) is totally disconnected.
+\([0,1)\times K_f\) are proved in HA-LCA-11, Lemma 4.2. Its proof also gives the compact open neighbourhood base formed by restricting finitely many coordinates to \(p^{j_p}\mathbb Z_p\) and leaving the others integral. These clopen subgroups separate points, so \(\mathbb A_f\) is totally disconnected.
 
 The finite-place pairing and its self-duality, and the full adelic pairing
 \[

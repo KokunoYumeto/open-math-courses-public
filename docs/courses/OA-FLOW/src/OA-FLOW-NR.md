@@ -92,9 +92,9 @@ Let \(\rho:M\to B(K)\) be a faithful normal unital representation, with arbitrar
 
 <a id="equation-nr7"></a>
 
-\
- [\pi_\rho(x)\xi=\rho(\alpha_{t^{-1}}(x))\xi(t),\qquad
- \lambda_s\xi=\xi(s^{-1}t).                              \tag{NR7}
+\[
+ [\pi_\rho(x)\xi](t)=\rho(\alpha_{t^{-1}}(x))\xi(t),\qquad
+ [\lambda_s\xi](t)=\xi(s^{-1}t).                              \tag{NR7}
 \]
 For a compact scalar tensor \(h\eta\), NR-1 gives a continuous vector field \(t\mapsto\rho(\alpha_{t^{-1}}(x))\eta\). Its image on a compact set is separable, by finite metric nets, and multiplication by \(h\) is strongly measurable and square integrable. Finite compact scalar tensors are dense by L24 Section 4. The bound \(\|\pi_\rho(x)\xi\|_2\leq\|x\|\|\xi\|_2\) therefore defines an operator on all \(L^2(G,K)\); approximation identifies it with the displayed field on any strongly measurable representative. No simultaneous exceptional-set union over all Hilbert vectors is used.
 
@@ -193,8 +193,8 @@ The field
 
 <a id="equation-nr15"></a>
 
-\
- [V\xi=\rho(u_{t^{-1}})\xi(t)                              \tag{NR15}
+\[
+ [V\xi](t)=\rho(u_{t^{-1}})\xi(t)                              \tag{NR15}
 \]
 defines a unitary on all \(L^2(G,K)\). On compact tensors its vector field is continuous and has separable compact image; approximate arbitrary \(L^2\) vectors. The adjoint is multiplication by \(\rho(u_{t^{-1}}^*)\). Direct evaluation gives
 

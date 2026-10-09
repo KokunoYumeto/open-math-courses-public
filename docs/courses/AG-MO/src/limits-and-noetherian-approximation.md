@@ -142,7 +142,85 @@ Finally, if \(f\) is separated, its diagonal is a closed immersion. Both \(X_{i_
 
 The precise source locators are [Stacks, Tags 01ZN–01ZQ](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/limits.html#limits-lemma-descend-affine-finite-presentation).
 
-There are further eventual-property theorems in the same setting: if \(f\) is flat, smooth, étale, or surjective, then \(f_i\) eventually is too. We use their openly licensed proofs at [Stacks, Tag 04AI](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/limits.html#limits-lemma-descend-flat-finite-presentation), [Tag 0C0C](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/limits.html#limits-lemma-descend-smooth), [Tag 07RP](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/limits.html#limits-lemma-descend-etale), and [Tag 07RR](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/limits.html#limits-lemma-descend-surjective). The first three reduce by finite affine covers to the algebra proofs at [Tag 02JO](https://stacks.math.columbia.edu/tag/02JO), [Tag 0C0B](https://stacks.math.columbia.edu/tag/0C0B), and [Tag 07RI](https://stacks.math.columbia.edu/tag/07RI). Surjectivity uses constructibility of the image, which will be taught with Chevalley’s theorem. These are exact open proof providers, rather than an assertion that every geometric property descends. Their original GNU Free Documentation License applies to those source texts; no source text is reproduced here.
+### Eventual flatness, smoothness, étaleness and surjectivity
+
+**Theorem 4.3 (flatness, smoothness, étaleness and surjectivity).** Keep exactly the setting of Theorem 4.2: the stages \(S_i\) are qcqs with affine transitions, \(X_{i_0}\) and \(Y_{i_0}\) are of finite presentation over \(S_{i_0}\), and \(f_i,f\) are the base changes of the specified map \(f_{i_0}\). If \(f\) is flat, smooth, étale, or surjective, respectively, then \(f_i\) has that property eventually.
+
+We prove each assertion. None needs Theorem 5.2 or the later lesson on Chevalley's theorem.
+
+**The local algebra needed for flatness.** We use two proved results of Flatness criteria, dimension and the flat locus. Its Lemma 6.2 gives the following finite-model statement. For a local map \(A\to B\), with \(B\) essentially of finite presentation over \(A\), a finitely presented \(B\)-module that is flat over \(A\) becomes flat in some sufficiently large local Noetherian model. The models are obtained from finite type \(\mathbf Z\)-subrings of \(A\), fixed finite equations for \(B\) and the module, and localization at contracted primes. Its Theorem 5.2 says that the flat locus of a finite module over a finite type algebra over a Noetherian ring is open.
+
+Here is why these are substantive flatness inputs rather than a finite-equations assertion about flatness. At a fixed local Noetherian model \(A_\lambda\to B_\lambda,M_\lambda\), the module
+
+\[
+H_\lambda=\operatorname{Tor}_1^{A_\lambda}
+(A_\lambda/\mathfrak m_\lambda,M_\lambda)
+\]
+
+is finite over \(B_\lambda\): a resolution of the residue field starts with finite free modules, and the tensor homology is a subquotient of finite modules over the Noetherian ring \(B_\lambda\). Each of its finitely many generators has zero image in the kernel of \(\mathfrak m_\lambda A\otimes_A M\to M\), by flatness of the final module. The extended ideal and this tensor product commute with the model colimit, so these generator images vanish at a common stage. Lemma 6.1 of that lesson proves that killing this map of Tor obstructions, together with flatness of the old residue quotient, makes the new module flat. Its proof uses a free presentation and the written ideal local criterion, not a limit-flatness theorem. The openness proof in its Section 5 uses the written domain generic-freeness proof in Flat morphisms and the same ideal criterion. The residue-field local criterion is completely proved in Faithful flatness and the local criterion for flatness, Theorem 4.2. These precise earlier proofs close the local algebra input.
+
+**Affine flatness descent for the specified models.** Suppose \(A=\varinjlim A_i\), \(B_i=B_{i_0}\otimes_{A_{i_0}}A_i\), and \(B_{i_0}\) is finitely presented over \(A_{i_0}\). Put \(B=B_{i_0}\otimes_{A_{i_0}}A\) and suppose \(B\) is flat over \(A\). Fix \(\mathfrak q\in\operatorname{Spec}B\), contracting to \(\mathfrak p\subset A\). Choose finite type \(\mathbf Z\)-subrings \(A_\lambda\subset A\) containing the coefficients of a fixed finite presentation of \(B\), and use the same equations to define \(B_\lambda\). Thus \(B_\lambda\otimes_{A_\lambda}A=B\). Their localizations at \(\mathfrak p_\lambda,\mathfrak q_\lambda\) have colimits \(A_\mathfrak p,B_\mathfrak q\), with transitions given by localizations of base changes. Apply the finite-model statement to \(M_\lambda=(B_\lambda)_{\mathfrak q_\lambda}\). At some stage this module is flat over \((A_\lambda)_{\mathfrak p_\lambda}\), hence also over \(A_\lambda\). Noetherian openness supplies \(g_\lambda\notin\mathfrak q_\lambda\) such that every stalk of \((B_\lambda)_{g_\lambda}\) is flat over \(A_\lambda\). The algebra itself is flat over \(A_\lambda\): for an ideal of \(A_\lambda\), the kernel of its tensor multiplication map localizes to zero at every prime of \((B_\lambda)_{g_\lambda}\), hence is zero. Apply the ideal test for flatness from Tor and flat modules, Theorem 2.1.
+
+We must put this flat neighbourhood into the given system \(A_i\), rather than replacing that system by the Noetherian one. The ring \(A_\lambda\) is finitely presented over \(\mathbf Z\), by the Hilbert basis theorem. Lemma 3.1 lifts its map to \(A\) to a map \(A_\lambda\to A_j\). The finitely many coefficient equalities with the chosen presentation over \(A_{i_0}\) hold at a later stage. There \(B_j=B_\lambda\otimes_{A_\lambda}A_j\). The image \(g_j\) of \(g_\lambda\) therefore satisfies that \((B_j)_{g_j}\) is flat over \(A_j\); its limit open contains \(\mathfrak q\). This argument at every prime gives a principal-open cover of \(\operatorname{Spec}B\). Take a finite subcover \(D(g_1),\ldots,D(g_r)\). Their unit-ideal identity \(1=\sum c_\nu g_\nu\) is a finite equation, so after representing the coefficients and enlarging the stage it holds in \(B_j\). Thus the stage opens cover \(\operatorname{Spec}B_j\), and each has flat coordinate algebra. The ideal test and localization now prove that \(B_j\) is flat over \(A_j\). If \(B=0\), the equation \(1=0\) holds at a stage, and the same conclusion holds for the zero algebra. Base change proves flatness at all subsequent stages.
+
+For the scheme assertion take a finite affine cover of \(Y_{i_0}\), and a finite affine cover of \(X_{i_0}\) subordinate to its inverse images. Their pullbacks to every stage are affine, because the transition maps are affine. The induced chart algebras are finitely presented by the finiteness and cancellation results of the preceding lesson. Flatness of the limit map gives flatness of each limit chart algebra; the affine argument makes every chart flat at one common stage. Since they cover the stage source, \(f_j\) is flat. The equivalence of sheaf and affine module flatness used here is also proved in Flat morphisms, Proposition 1.1: the kernel of a tensor injection is detected by its localizations on the source.
+
+**Finite identities for smoothness and étaleness.** Let
+
+\[
+C=A[t_1,\ldots,t_n]/I,\qquad I=(F_1,\ldots,F_m),
+\quad P=A[t_1,\ldots,t_n].
+\]
+
+The conormal map is
+
+\[
+d:I/I^2\longrightarrow C^n,
+\qquad [F]\longmapsto
+\left(\frac{\partial F}{\partial t_j}\bmod I\right)_j.
+\]
+
+For finite presentations, smoothness is equivalent to this map having a left inverse, and étaleness is equivalent to it being an isomorphism. These equivalences, including their comparison with the square-zero lifting definitions, are fully proved in Formally smooth, unramified and étale ring maps, Theorem 3.1 and Section 4. They can also be seen directly as follows. A formal lift of \(\operatorname{id}_C\) across \(P/I^2\to C\) gives a section. Subtract its composite \(P\to C\to P/I^2\) from the quotient \(P\to P/I^2\). Their difference is a derivation into \(I/I^2\), and on \(I\) it is the class map. Its values on the variables define a left inverse of \(d\). Conversely a left inverse gives such a derivation \(D\); the algebra map \(p\mapsto p-D(p)\) into \(P/I^2\) kills \(I\) and gives a section. Any square-zero lifting problem is solved by first lifting the variables to obtain a map from \(P/I^2\), then composing this section. Uniqueness of square-zero lifts is equivalent to the vanishing of the module generated by the \(dt_j\) modulo the \(dF_\ell\): differences of lifts are derivations, and the two maps \(c\mapsto(c,0),(c,dc)\) into \(C\oplus\Omega_{C/A}\) detect every generator of that module. Thus in the formally smooth case uniqueness is exactly surjectivity of \(d\), and hence invertibility of its already split injection.
+
+The useful point is that all the required identities are finite even when relations among the generators of \(I/I^2\) are not known to be finite. Choose polynomials \(U_j\in I\) representing the images of the coordinate basis under a left inverse. Write each \(U_j\) as a finite combination of the \(F_\ell\). A left inverse is equivalent to the finitely many identities
+
+\[
+F_\ell-\sum_j
+\frac{\partial F_\ell}{\partial t_j}U_j\in I^2
+\qquad(1\leq\ell\leq m).
+\tag{4.1}
+\]
+
+Express each membership by a finite sum of products \(F_aF_b\) with polynomial coefficients. All these polynomials and identities descend through a filtered base colimit. At that stage the map \(C_i^n\to I_i/I_i^2\), sending the coordinate basis to \([U_{j,i}]\), is well defined, and (4.1) makes its composite with \(d_i\) the identity on the generating classes \([F_{\ell,i}]\). Thus the stage algebra is smooth. For étaleness also descend
+
+\[
+\frac{\partial U_j}{\partial t_k}-\delta_{jk}\in I
+\qquad(1\leq j,k\leq n),
+\tag{4.2}
+\]
+
+again with finite membership witnesses. These make the opposite composite the identity on \(C_i^n\), so \(d_i\) is an isomorphism and the stage algebra is étale. Empty lists and the zero algebra are allowed. For a specified original presentation the descended equations are obtained by mapping its fixed defining equations to the later stage; eventual coefficient equality keeps the resulting algebra equal to the specified base-change model.
+
+To apply this to schemes, choose finitely many smooth, or étale, affine neighbourhoods covering the limit source and mapping to affine opens pulled back from a finite affine cover of \(Y_{i_0}\). Such chart rings have the above algebraic property, by the affine definitions and their locality in the cited algebra lesson. Lemmas 2.1 and 2.3 descend these source opens as affine opens which eventually cover \(X_i\). Their eventual containment in the inverse images of the chosen target affines follows from Lemma 2.1 as well: both the source open and that inverse image are quasi-compact stage opens, and the containment holds at the limit. Thus their maps to those target affines are defined at a common stage and are finitely presented; fix their presentations at a common stage and apply (4.1), or (4.1)–(4.2). A finite number of charts and identities gives a common stage where the morphism is smooth or étale. Each property survives base change, so all later stages work as well.
+
+**The constructible-image input, proved here.** On \(\operatorname{Spec}A\), call a set constructible when it is a finite Boolean combination of principal opens. Equivalently it is a finite union of pieces
+
+\[
+D(a)\cap V(b_1,\ldots,b_s).
+\tag{4.3}
+\]
+
+First let \(A\) be a domain and \(A\hookrightarrow B\) an injective finite type map. There is a nonzero \(a\in A\) for which \(D(a)\) is in the image of \(\operatorname{Spec}B\). Indeed, over \(K=\operatorname{Frac}A\), the nonzero algebra \(B\otimes_AK\) is finite over an embedded polynomial algebra \(K[z_1,\ldots,z_d]\), by the complete Noether-normalization proof in Krull dimension and Noether normalization, Corollary 3.2. That result allows nilpotents and finite ground fields. Represent the \(z_j\) after inverting finitely many nonzero elements of \(A\). Each member of a finite algebra generating list for \(B\) satisfies a monic equation over \(K[z]\). Invert further denominators to represent all coefficients and to make all the equations true in \(B_a\). An equation that vanishes over \(K\) is killed by a nonzero denominator, so this also handles \(A\)-torsion in \(B\). Independence of the \(z_j\) gives an inclusion \(A_a[z]\hookrightarrow B_a\); the monic equations make it integral. Lying over, proved in Integral extensions, Theorem 3.2, makes its spectrum surject onto the polynomial-ring spectrum, which surjects onto \(\operatorname{Spec}A_a\) because every residue-field polynomial algebra is nonzero. This proves the assertion.
+
+If \(A\) is Noetherian and \(B\) is finite type, its image \(E\) is constructible. For every irreducible closed subset \(Z=V(\mathfrak p)\) in which \(E\cap Z\) is dense, the map \(A/\mathfrak p\to B/\mathfrak pB\) is injective: an element of its kernel vanishes on the dense image, and \(A/\mathfrak p\) is a domain. The preceding argument gives a nonempty relatively open subset of \(Z\) contained in \(E\cap Z\). This condition proves constructibility by Noetherian induction. Explicitly, if some closed \(F\) has nonconstructible intersection with \(E\), choose a minimal such \(F\) by the descending-chain condition. A Noetherian space has finite irreducible decompositions: a minimal closed set without one would be reducible and split into two proper closed sets which already have finite decompositions. Thus, if \(F\) is reducible, its finitely many proper components have constructible intersections by minimality, a contradiction. If \(F\) is irreducible and the intersection is not dense, apply minimality to its proper closure. If it is dense, remove the nonempty open just obtained and apply minimality to the proper closed complement. In every case \(E\cap F\) is a finite union of locally closed subsets, the final contradiction. On a Noetherian affine scheme all opens are quasi-compact and are finite unions of principal opens, so these sets have form (4.3).
+
+For an arbitrary finitely presented map \(A\to B\), choose a finite type \(\mathbf Z\)-subring \(A_0\subset A\) containing its finitely many coefficients, and use those equations to define \(B_0\). Both rings are Noetherian and \(B=B_0\otimes_{A_0}A\). The image at the new base is exactly the inverse image of the old image. To verify the nontrivial direction, a nonempty fibre over \(\kappa(y)\) stays nonempty after the field extension \(\kappa(y)\subset\kappa(y')\): take a nonzero affine fibre ring; tensoring its nonzero vector space with a field extension is nonzero, and a nonzero ring has a prime. Conversely a nonempty new fibre maps to the old fibre. Thus the constructible description of the Noetherian image pulls back to the desired finite description over \(A\). A quasi-compact, locally finitely presented scheme morphism has constructible image on each affine target open: its inverse image has a finite affine cover, each chart has a finitely presented algebra, and the full image is the finite union of the chart images. This proof used affine approximation only; it does not import a later Chevalley theorem or absolute approximation.
+
+**Detecting a constructible condition at a stage.** Let \(T=\varprojlim T_i\) with qcqs stages and affine transitions. Suppose \(E\subset T_{i_0}\) is constructible on each affine of a finite cover, and every point of \(T\) maps into \(E\). Then all points of \(T_j\) map into \(E\) at some stage \(j\). On an affine chart the complement of \(E\) is a finite union of pieces (4.3). For a piece, use the closed subschemes defined by \((b_1,\ldots,b_s)\) inside the inverse images of \(D(a)\) at each stage. These are affine schemes with affine transitions. Their limit is the corresponding closed subscheme in the limit chart, and is empty. Theorem 1.1 makes a stage empty. A common stage handles the finitely many pieces on the finitely many charts. This proves the detection assertion, with no separatedness assumption.
+
+Now take \(E=f_{i_0}(X_{i_0})\subset Y_{i_0}\). The constructible-image proof applies because the specified map is of finite presentation. Base-change equality of images gives \(f_i(X_i)=p_i^{-1}(E)\), where here \(p_i:Y_i\to Y_{i_0}\). The same holds at the limit. If \(f\) is surjective, every point of \(Y\) maps into \(E\). Detection makes \(p_j^{-1}(E)=Y_j\), so \(f_j\) is surjective. Surjectivity survives every base change by the fibre argument above, and therefore holds at every later stage. This finishes the proof of Theorem 4.3. \(\square\)
+
+The free primary comparisons are [Stacks, Tag 04AI](https://stacks.math.columbia.edu/tag/04AI), [Tag 0C0C](https://stacks.math.columbia.edu/tag/0C0C), [Tag 07RP](https://stacks.math.columbia.edu/tag/07RP), and [Tag 07RR](https://stacks.math.columbia.edu/tag/07RR). The proofs above and the precisely named, already written algebra and flatness lessons supply the arguments within the programme.
 
 ## 5. Noetherian approximation and its use
 
@@ -150,18 +228,96 @@ There are further eventual-property theorems in the same setting: if \(f\) is fl
 
 **Proof.** For each finite subset \(E\subset R\), take the subring generated by the image of \(\mathbf Z\) and by \(E\). Two such subrings are contained in the subring generated by the union of their finite generating sets. Every element of \(R\) belongs to one of them, and all the maps are inclusions. Thus their filtered colimit is \(R\). The affine part of Theorem 1.1 gives the scheme assertion. Each stage ring is a quotient of a polynomial ring in finitely many variables over \(\mathbf Z\), so it is Noetherian. \(\square\)
 
+### Absolute Noetherian approximation
+
 **Theorem 5.2 (absolute Noetherian approximation).** Every qcqs scheme \(S\) is an inverse limit of schemes of finite type over \(\mathbf Z\), with affine transition maps.
 
-**Open proof and how to use it.** The full proof is [Stacks, Tag 01ZA](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/limits.html#limits-proposition-approximate), using the extension-of-approximation lemma [Tag 07RN](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/limits.html#limits-lemma-approximate) with the empty open. Both proofs are available under the [GNU Free Documentation License, version 1.2](https://github.com/stacks/stacks-project/blob/master/COPYING). The linked extension lemma includes the construction, its index set, the gluing maps, and the verification of the limit. This is the proof provider for the general theorem; the affine argument alone does not prove it.
+**Proof.** We construct an approximation by adding one affine open at a time. The following three facts make the gluing precise.
 
-Here is the geometric role of that construction. Build a scheme by successively adjoining members of a finite affine cover. In a step \(S=V\cup U\) with \(U\) affine, the intersection \(W=V\cap U\) is quasi-compact. Start with an approximation of \(V\), descend \(W\) as an open, and arrange that its models are quasi-affine. Write \(U=\operatorname{Spec}B\), \(R=\Gamma(W,\mathcal O_W)\), and \(R_i=\Gamma(W_i,\mathcal O_{W_i})\). The intermediate ring
+*Principal-open criterion.* If a qcqs scheme \(T\) has global functions \(h_1,\ldots,h_r\) such that its opens \(T_{h_\nu}\) are affine and cover \(T\), the canonical map
 
 \[
-B_i=B\times_R R_i
+T\longrightarrow\operatorname{Spec}\Gamma(T,\mathcal O_T)
+\]
+
+is an open immersion with image \(\bigcup_\nu D(h_\nu)\). Indeed (2.1) identifies the coordinate algebra of each affine \(T_{h_\nu}\) with the corresponding localized global algebra. The chart isomorphisms agree on intersections and glue. This also proves the target-local test for an affine morphism used below. If a morphism is affine over the members of an open target cover, cover any affine target open by finitely many principal opens subordinate to that cover. Their inverse images are affine and cover the inverse image of the target open. Their pairwise intersections are principal inside these affine inverse images, so that source is qcqs. The pulled-back functions generate the unit ideal, since they do so on the affine target. The criterion identifies the source with its entire global spectrum, proving that this inverse image is affine. Hence the morphism is affine. In particular, a quasi-compact open in an affine scheme has such a finite cover, by principal opens of the ambient affine. If \(T=\varprojlim T_i\) is quasi-affine, choose such functions at the limit, descend them by Lemma 2.2, make them a cover by Lemma 2.1, and make each resulting open affine by Lemma 2.3. Thus \(T_i\) is quasi-affine eventually. This conclusion uses only Section 2, before absolute approximation.
+
+*Finite type affine ambient rings.* Let a scheme \(W\) of finite type over \(\mathbf Z\) be embedded as the quasi-compact open \(\bigcup_{\nu=1}^rD_R(h_\nu)\) in \(\operatorname{Spec}R\). There are arbitrarily large finitely generated \(\mathbf Z\)-subrings \(A\subset R\), containing all \(h_\nu\), such that
+
+\[
+A_{h_\nu}\xrightarrow{\sim}R_{h_\nu}\quad\text{for every }\nu.
+\tag{5.2}
+\]
+
+Each \(R_{h_\nu}\) is a finite type \(\mathbf Z\)-algebra, being the coordinate ring of the affine open \(D_R(h_\nu)\) in the Noetherian finite type scheme \(W\). Choose a finite algebra generating list and write its members as \(y/h_\nu^e\) with \(y\in R\). Adjoin all these numerators and the \(h_\nu\) to the image of \(\mathbf Z\). The resulting ring has surjective localization maps in (5.2). They are injective: an element of a subring killed in the ambient localization is already killed by the same power of \(h_\nu\) in the subring. Thus (5.2) holds. Any finitely generated enlargement inside \(R\) still has the same localized rings. The choices therefore form a directed collection, include any specified finite subset of \(R\), and exhaust \(R\). The identifications (5.2) and their further localizations embed \(W\) as \(\bigcup_\nu D_A(h_\nu)\subset\operatorname{Spec}A\).
+
+*Localizing a fibre product.* For ring maps \(B\xrightarrow{s}R\xleftarrow{t}R'\), put \(B'=B\times_RR'\). Suppose \(h=(g,f)\in B'\), so \(s(g)=t(f)\). Then
+
+\[
+(B')_h\cong B_g\times_{R_{s(g)}}R'_f.
+\tag{5.3}
+\]
+
+View \(B\oplus R'\to R\), \((b,r')\mapsto s(b)-t(r')\), as a map of \(B'\)-modules. Its kernel is \(B'\). Localization is exact, and localization by \(h\) on the three modules is respectively localization by \(g,f,s(g)\). Consequently its localized kernel is precisely the fibre product on the right of (5.3); the identification respects ring multiplication. If \(B_g\to R_{s(g)}\) is an isomorphism, (5.3) reduces to \((B')_h\cong R'_f\). This proves the algebraic compatibility we will need, without any injectivity assumption on either map to \(R\).
+
+Now suppose \(S=V\cup U\), with \(U=\operatorname{Spec}B\) affine and \(V\) quasi-compact open, and suppose we have already constructed
+
+\[
+V=\varprojlim_{i\in I}V_i
+\]
+
+with finite type \(\mathbf Z\)-schemes \(V_i\) and affine transitions. Quasi-separatedness of \(S\) makes \(W=V\cap U\) quasi-compact. Descend it to an open \(W_{i_0}\subset V_{i_0}\) by Lemma 2.1, and for \(i\geq i_0\) let \(W_i\) be its inverse image. Thus \(W_j\) is exactly the inverse image of \(W_i\) in \(V_j\), their transitions are affine, and \(W=\varprojlim W_i\). The \(W_i\) are of finite type over \(\mathbf Z\), since they are quasi-compact opens in Noetherian finite type schemes. Put
+
+\[
+R=\Gamma(W,\mathcal O_W),\qquad R_i=\Gamma(W_i,\mathcal O_{W_i}),
+\qquad B_i=B\times_R R_i.
 \tag{5.1}
 \]
 
-retains both the affine-chart functions and their compatible restrictions on the overlap. Its colimit is \(B\). The extension lemma shows that \(W_i\) embeds as an open in \(\operatorname{Spec}B_i\) eventually, and then in spectra of suitably chosen finite type \(\mathbf Z\)-subalgebras. Gluing those spectra to \(V_i\) produces the next approximations. Quasi-separatedness is used in the quasi-compactness of \(W\); it is not an assumption that the original chart intersection is affine. Formula (5.1) explains why simply approximating chart rings independently would miss the compatibility needed for affine transition maps. This description guides reading the full open proof without replacing its technical gluing argument.
+Lemma 2.2 gives \(R=\varinjlim R_i\). Projection gives \(\varinjlim B_i\cong B\): for \(b\in B\), lift its restriction in \(R\) to some \(R_i\), obtaining the pair \((b,r_i)\); a pair mapping to zero in \(B\) has second coordinate eventually zero in the \(R_i\), so is eventually zero. This also proves injectivity, even if the restriction map \(B\to R\) is not injective.
+
+Choose \(g_1,\ldots,g_r\in B\) with \(W=\bigcup_\nu D_B(g_\nu)\), every displayed principal open being contained in \(W\). Lift their restrictions \(s(g_\nu)\) to global functions \(f_{\nu,i}\in R_i\) at one common stage and pull them back at subsequent stages. At the limit the opens \(W_{s(g_\nu)}=D_B(g_\nu)\) are affine and cover \(W\). Lemmas 2.1 and 2.3 make the opens \((W_i)_{f_{\nu,i}}\) affine and a cover at a common later stage. The principal-open criterion therefore embeds \(W_i\) as
+
+\[
+\bigcup_\nu D_{R_i}(f_{\nu,i})\subset\operatorname{Spec}R_i.
+\tag{5.4}
+\]
+
+By (2.1), \(B_{g_\nu}\cong R_{s(g_\nu)}\). Apply (5.3) to \(h_{\nu,i}=(g_\nu,f_{\nu,i})\in B_i\). It gives
+
+\[
+(B_i)_{h_{\nu,i}}\cong (R_i)_{f_{\nu,i}}.
+\tag{5.5}
+\]
+
+These identifications are compatible on pairwise intersections: localizing once more by any \(h_{\mu,i}\) corresponds to localizing by \(f_{\mu,i}\) on \(R_i\). They embed \(W_i\) as the open \(\bigcup_\nu D_{B_i}(h_{\nu,i})\) in \(\operatorname{Spec}B_i\). If \(W\) is empty, first make \(W_i\) empty by Theorem 1.1; then \(R_i=0\), \(B_i=B\), and the same construction uses an empty list of opens.
+
+Apply the finite type affine ambient-ring fact to this embedding of \(W_i\). Let \(\mathcal A_i\) be the collection of finitely generated \(\mathbf Z\)-subrings \(A\subset B_i\) containing the \(h_{\nu,i}\) and satisfying
+
+\[
+A_{h_{\nu,i}}\xrightarrow{\sim}(B_i)_{h_{\nu,i}}.
+\tag{5.6}
+\]
+
+The collection is directed and contains a member containing any finite subset of \(B_i\). Glue \(V_i\) and \(U_{i,A}=\operatorname{Spec}A\) along the identified open \(W_i\). Denote the result by \(S_{i,A}\). Both pieces are of finite type over \(\mathbf Z\), and they are a finite open cover, so \(S_{i,A}\) is of finite type over \(\mathbf Z\). No separatedness is imposed by this gluing.
+
+For completeness we specify the directed index set and the transitions. Let
+
+\[
+J=\{(i,A): i\geq i_0,\ A\in\mathcal A_i\},
+\]
+
+ordered by \((i,A)\leq(j,A')\) when \(i\leq j\) and the image of \(A\) under \(B_i\to B_j\) is contained in \(A'\). It is a directed set: choose a common later \(j\) for finitely many indices, then an ambient ring containing the images of all their finite generating lists and the \(h_{\nu,j}\). The projection \(J\to I_{\geq i_0}\) is cofinal. The ring map \(A\to A'\) and the scheme map \(V_j\to V_i\) agree on \(W_j\to W_i\), by (5.5)–(5.6), so glue to a map \(S_{j,A'}\to S_{i,A}\).
+
+These maps are affine, which is the crucial extra requirement. The inverse image of \(W_i\) in \(U_{j,A'}\) is exactly \(W_j\): the image of \(h_{\nu,i}\) is \(h_{\nu,j}\), and both opens are the indicated finite unions of principal opens. The inverse image of \(W_i\) in \(V_j\) is also exactly \(W_j\), by the original descended-open construction. Hence the inverse images of the two target opens \(V_i\) and \(U_{i,A}\) are precisely \(V_j\) and \(U_{j,A'}\), respectively. On them the map is respectively the original affine transition and a map between affine schemes. Affineness is local on the target, so the glued transition is affine. The same description proves compatibility of all transition compositions. In particular, no chart intersection has been presumed affine inside \(V_i\).
+
+There are compatible maps \(S\to S_{i,A}\), induced on \(V\) by its original projections and on \(U\) by \(A\to B_i\to B\). They agree on \(W\), by (5.5). Their inverse images of \(V_i,U_{i,A}\) are exactly \(V,U\): on \(U\), the relevant principal opens are \(D_B(g_\nu)\), whose union is \(W\); on \(V\) the overlap is the inverse image of \(W_i\). The affine-chart ring colimit \(\varinjlim_J A\) is \(B\). Every element of \(B\) lifts to some \(B_i\), then belongs to an ambient subring there. An element of some \(A\) whose image in \(B\) is zero becomes zero in a later \(B_j\), and in a suitable later ambient subring its image is therefore zero. This verifies both surjectivity and injectivity of the colimit map, without pretending the maps \(B_i\to B_j\) are inclusions.
+
+Finally fix one pair in \(J\) and restrict to its cofinal upper cone. Theorem 1.1 constructs the limit on the inverse images of the covering opens \(V_i\) and \(U_{i,A}\). These limits are \(V\) and \(\operatorname{Spec}B=U\), by cofinality and the ring calculation. Their overlap limit is \(W\), with its actual given identifications into both pieces. The resulting glued limit is thus \(V\cup_WU=S\). This proves extension of an approximation across one affine open, including the affineness of every transition.
+
+A qcqs scheme has a finite affine open cover. Start with the constant empty approximation, and successively add the affines of such a cover. Each partial union is a quasi-compact open in \(S\), hence is qcqs, and each overlap needed above is quasi-compact. The extension construction applies a finite number of times. The final system proves Theorem 5.2. \(\square\)
+
+The free primary references for the theorem and the extension construction are [Stacks, Tag 01ZA](https://stacks.math.columbia.edu/tag/01ZA) and [Tag 07RN](https://stacks.math.columbia.edu/tag/07RN); the affine ambient and fibre-product comparisons are [Tags 01Z7](https://stacks.math.columbia.edu/tag/01Z7) and [01Z9](https://stacks.math.columbia.edu/tag/01Z9). All required construction and verification have been given above.
 
 To apply approximation, first put the base in a system supplied by Theorem 5.1 or 5.2. Then use Theorem 4.1 to descend the finitely presented schemes and maps under discussion. Use eventual equality to descend every finite commutative diagram, and Theorem 4.2 or an exact further property theorem to retain the hypotheses needed for a Noetherian argument. Finally bring the conclusion back by a valid base-change or limit argument. Approximation supplies models; it does not by itself prove that an arbitrary conclusion survives passage to the limit.
 
@@ -209,6 +365,8 @@ For the limitation, use a constant base field \(k\) and \(B_n=k[x_{n+1},x_{n+2},
 
 ## Sources and proof dependencies
 
-The primary source is *The Stacks project*, chapter *Limits of Schemes*, read in the AI Integrated Stacks Project edition. Exact open proof locators are supplied where each result is used. Sections 1–4, Theorem 5.1, the examples, and the exercise solutions are proved in this lesson. Absolute Noetherian approximation uses the full open proofs at Tags 01ZA and 07RN; the four additional eventual properties use the exact open proofs and algebra dependencies listed in Section 4. Those source documents retain their GNU Free Documentation License. This independently written teaching text is CC0.
+The free primary reference is *The Stacks project*, chapter *Limits of Schemes*. Tags 01YW–01YY, 01Z2–01Z4, 01Z0, 01Z6, 01ZC and 01ZM–01ZQ identify the original limit and finite-presentation results. Tags 04AI, 0C0C, 07RP and 07RR identify the four further eventual properties; their algebra comparisons are [02JO](https://stacks.math.columbia.edu/tag/02JO), [0C0B](https://stacks.math.columbia.edu/tag/0C0B) and [07RI](https://stacks.math.columbia.edu/tag/07RI). Tags 01ZA, 07RN, 01Z7 and 01Z9 identify the approximation theorem and its construction. These are mathematical references, not external substitutes for the proofs now supplied in the lesson. Stacks source expression retains its GNU Free Documentation License; this independently expressed lesson is CC0.
 
-The internal prerequisite is the preceding lesson’s affine descriptions of finite type and finite presentation, their stability under base change and composition, and its qualified cancellation theorem. Scheme gluing, quasi-coherent sheaves on affine schemes, localization, and the finite affine-cover description of quasi-separatedness are used in their usual foundational form. No result here depends on a later lesson. Chevalley’s theorem explains the imported surjectivity proof when it is taught later; that source proof already supplies its own exact openly licensed dependency.
+All original results, examples, formulas and exercise solutions have been retained. Sections 1–4, both approximation theorems, all examples and all five exercises are proved here. The flatness proof uses the already written local Noetherian-model and openness proofs of *Flatness criteria, dimension and the flat locus*, Section 6, Lemmas 6.1–6.2 and Section 5, Theorem 5.2. Only those proof scopes are used: their local criterion comes from *Faithful flatness and the local criterion for flatness*, Section 4, Theorem 4.2, and their generic-freeness input from *Flat morphisms*, Section 5, Lemma 5.1. They do not use this lesson's new eventual-property theorem or its absolute-approximation theorem. The local criterion in turn has actual complete Artin–Rees and Krull-intersection proofs in *Noetherian and Artinian rings*, Theorems 5.1 and 6.1; the Hilbert basis theorem is its Theorem 2.1. The flat module ideal test and stability are proved in *Tor and flat modules*, Theorem 2.1 and Section 3. The smooth/étale algebra input is also proved directly in the present finite-identity argument and matches *Formally smooth, unramified and étale ring maps*, Theorem 3.1 and Section 4. The constructible-image argument is proved here from the complete Noether-normalization proof in *Krull dimension and Noether normalization*, Corollary 3.2, and the complete lying-over proof in *Integral extensions*, Theorem 3.2. It uses neither a later Chevalley lesson nor absolute approximation.
+
+The preceding finiteness lesson supplies the affine finite-presentation characterizations, base-change and composition rules, and qualified cancellation theorem. Scheme and morphism gluing have complete earlier proofs in Schemes, gluing and immersions, Theorem 2.1. The affine quasi-coherent correspondence and the correspondence for maps into a spectrum are proved in Affine schemes, Theorems 3.2 and 4.1. The finite affine-cover description of quasi-separatedness is proved in the first morphisms lesson, Proposition 2.2; intersections of quasi-compact opens are then finite unions of affine-open intersections, as proved in Quasi-coherent sheaves on schemes, Section 2. The Noetherian scheme locality and finite-cover assertions have the full proof in Properties of schemes, Theorem 3.2. Localization is exact by *Localization, local properties and support*, Theorem 2.1. In the new approximation proof, every extra localization, overlap, directedness, transition and colimit step is proved explicitly. Arbitrary qcqs schemes, nonseparated overlaps, nonreduced algebras, empty opens and noninjective transition maps remain within the stated scope.

@@ -426,14 +426,14 @@ and write \(j_N:N\to D\) and \(s\mapsto\ell_s\) for its coefficient map and impl
  \tag{L30.7.b}
 \]
 In a faithful normal realization of \(M\) on an arbitrary Hilbert space \(K\), its exact generator values on \(L^2(\mathbb R,K)\) are
-\
+\[
  \begin{aligned}
- [\mathscr S_\psi(j_N(x))\xi
+ [\mathscr S_\psi(j_N(x))\xi](r)
        &=\sigma_{-r}^\psi(x)\xi(r) &&(x\in M),\\
  \mathscr S_\psi(j_N(H_\psi^{it}))&=1\otimes L_t,
-       & L_t\xi&=\xi(r-t),\\
+       & [L_t\xi](r)&=\xi(r-t),\\
  \mathscr S_\psi(\ell_s)&=1\otimes Q_s,
-       & Q_s\xi&=e^{-isr}\xi(r).
+       & [Q_s\xi](r)&=e^{-isr}\xi(r).
  \end{aligned}
  \tag{L30.7.c}
 \]
@@ -457,7 +457,7 @@ Apply the [Fourier-and-shear proof of normal double duality](OA-FLOW-ND.md#nd-co
 \]
 The [full inverse in ND](OA-FLOW-ND.md#nd-inverse) is unitary conjugation composed with the faithful normal coefficient tensor map. Its domain is the entire spatial tensor algebra. In the forward proof the orbit fields together with the Weyl pair generate exactly that tensor algebra, by [ND's commutant argument](OA-FLOW-ND.md#nd-orbits). These facts prove surjectivity and normality on arbitrary nets for (L30.7.b), rather than only its algebraic generator formulas. Generation also makes the map with (L30.7.c) unique and independent of the faithful normal realization of \(M\).
 
-Let \(R_a\xi=\xi(r+a)\). The remaining action is exactly
+Let \([R_a\xi](r)=\xi(r+a)\). The remaining action is exactly
 \[
  \mathscr S_\psi\delta_a\mathscr S_\psi^{-1}
        =\sigma_a^\psi\otimes\operatorname{Ad}R_a.
@@ -512,9 +512,9 @@ The [full-cone Fourier model of the tracial core](OA-FLOW-CORE.md#core-9) uses t
  \tag{L30.8.c}
 \]
 Consequently the precise coordinate change is
-\
+\[
  p=-r-\log(2\pi),\qquad
- [\kappa_\psi(F)=F(-r-\log(2\pi)).
+ [\kappa_\psi(F)](r)=F(-r-\log(2\pi)).
  \tag{L30.8.d}
 \]
 Both affine changes preserve Lebesgue null sets, so this is a normal isomorphism with a normal inverse. Its generator image is \(e^{it(-r-\log(2\pi))}=H_\psi^{it}\). Also
@@ -548,9 +548,9 @@ This proves trace preservation on the entire positive cone, including infinite i
  \tag{L30.9.a}
 \]
 Define
-\
+\[
  \begin{aligned}
- [\theta_s(f)
+ [\theta_s(f)](r)
  &=V(r)V(r+s)^*f(r+s)V(r+s)V(r)^*,\\
  \tau(f)&=\int_{\mathbb R}e^r\operatorname{Tr}(f(r))\,\frac{dr}{2\pi}.
  \end{aligned}

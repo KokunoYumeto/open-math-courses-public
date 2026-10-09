@@ -786,7 +786,7 @@ with the additive group law. The smooth affine algebra \(k[G]\) is formally smoo
 \]
 Induct from the geometrically connected smooth group \(G\). This is an isomorphism of schemes using the chosen section; no splitting as a group is asserted.
 
-Use the faithful closed representation proved in §1.4 and choose a \(T_G\)-weight basis, with weights \(w_1,\ldots,w_N\). For a fixed \(\lambda\), set
+Use the faithful closed representation proved in §1.3 and choose a \(T_G\)-weight basis, with weights \(w_1,\ldots,w_N\). For a fixed \(\lambda\), set
 \[
  M_\lambda=\max\left(1,
  \max_{i,j}|\langle w_i-w_j,\lambda\rangle|\right).
@@ -818,9 +818,9 @@ For a root \(\alpha\), the compatible \(SL_2\to G\) of the rank-one theorem give
 For example, in \(SL_2\), multiply the lower triangular matrix with lower-left entry \(z^{-1}\), then \(\operatorname{diag}(z,z^{-1})\), then the displayed \(w\), then the same lower triangular matrix. The product is \(\left(\begin{smallmatrix}1&z\\0&1\end{smallmatrix}\right)\). The group homomorphism carries this polynomial identity into \(G\).
 
 Put \(\ell=\langle\alpha,\lambda\rangle\), choose \(N\geq\max(1,\ell+1)\), and set \(q=N-\ell\geq1\). All coefficients of
-\
+\[
  g(s)=x_\alpha(s\,t^{-N})\,t^{-\lambda}
- \quad\text{belong to }G(k[s)).
+ \quad\text{belong to }G(k[s]((t))).
  \tag{CT.15}
 \]
 The gluing theorem gives an actual family over \(\mathbb A^1_s\), whose zero fibre is \(P_\lambda\). Over \(s\ne0\), (CT.14) and the torus conjugation law give
@@ -3347,10 +3347,10 @@ Smoothness in (FD.21) is necessary. To see the obstruction concretely, change fi
  \tag{FD.25}
 \]
 is free of rank \(p\), with basis \(1,z,\ldots,z^{p-1}\): division by its monic equation gives a unique remainder. It is therefore faithfully flat and finitely presented. The element \(z\) is a unit. It is a \(\mu_p\)-torsor: in the twofold tensor product put \(w=z_2/z_1\), so \(w^p=1\). The substitutions \(z_2=z_1w\) and \(w=z_2/z_1\) give the canonical torsor isomorphism and its inverse. Its reduction has the section \(z=1\), but that section cannot lift to a formal section, even after a nonzero coefficient extension. In characteristic \(p\),
-\
+\[
  \left(\sum_{n\geq0}a_nt^n\right)^p
    =\sum_{n\geq0}a_n^pt^{np},
- \qquad [t=1.
+ \qquad [t](1+t)=1.
  \tag{FD.26}
 \]
 The coefficient of \(t\) on the left is zero, whereas on the right it is one. The identity follows in every finite power-series quotient by the binomial identity and then in the inverse limit, including over nonreduced coefficient rings. This example is outside the characteristic-zero reductive hypotheses; it shows exactly why affineness and finite presentation alone cannot replace smoothness in the formal-frame argument. Faithfulness is also essential in descent: \(\mathbf Z\to\mathbf Z[1/2]\) sends the nonzero module \(\mathbf Z/2\) to zero, so it cannot recover objects or detect their isomorphisms.

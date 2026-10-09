@@ -165,8 +165,8 @@ M&=Rf_*F,& A&=Rf'_*F'=u^*M[d],& L&=Rh_*F_H.
 have \(F'\) and \(F_H\) perverse. If \(F_0\) has weight \(w\), then \(F_H\) has weight \(w+d-1\). Proper purity and the perverse weight criterion make \(S={}^pH^0L\) pure of that weight, hence geometrically semisimple.
 
 We need the projective-bundle calculation with its maps. For \(b:E\to Z\) a projective bundle of dimension \(e\), unit followed by powers of \(\beta=c_1(\mathcal O_E(1))\) defines
-\
-\bigoplus_{a=0}^e K[-2a\xrightarrow{\sim}Rb_*b^*K.
+\[
+\bigoplus_{a=0}^e K[-2a](-a)\xrightarrow{\sim}Rb_*b^*K.
 \tag{4.3}
 \]
 Proper base change reduces the assertion to a geometric fibre. Filter \(\mathbb P^e\) by its standard hyperplane and affine complement. Localization, and the single compact cohomology group of \(\mathbb A^e\), give one group in each even degree \(0,2,\ldots,2e\) and none in odd degree. Hyperplane Gysin identifies the successive generators with \(1,\beta,\ldots,\beta^e\). Smooth trace normalizes the class of the transverse intersection of \(e\) hyperplanes to \(+1\). This proves that the displayed map is a fibrewise isomorphism, with its stated twists, using the earlier smooth trace and purity foundations.
@@ -195,12 +195,12 @@ a_j:U({}^pH^jM)\longrightarrow{}^pH^{j+1}L,
 which are isomorphisms for \(j<-1\) and injective for \(j=-1\). In particular \(C=U({}^pH^{-1}M)\) injects into \(S\). We show it is precisely the largest image subobject just described.
 
 Put \(B=L[1]\), so (4.6) comes from \(A\to B\) and identifies their truncations in degrees at most \(-2\). Apply (4.3), using the hyperplane class of \(T\) for both bundles. It gives
-\
-Ru_*A=\bigoplus_{a=0}^d M[d-2a,\qquad
-Ru_*B=\bigoplus_{a=0}^{d-1} Md-2a.
+\[
+Ru_*A=\bigoplus_{a=0}^d M[d-2a](-a),\qquad
+Ru_*B=\bigoplus_{a=0}^{d-1} M[d-2a](-a).
 \tag{4.7}
 \]
-Restriction is the identity on the first \(d\) columns. Subtracting the possibly nonzero components of the last column identifies its fibre with \(M-d\). The bound \(M\in{}^pD^{\ge-d}\) puts this fibre in \({}^pD^{\ge0}\). Therefore the two total images agree in every degree below zero.
+Restriction is the identity on the first \(d\) columns. Subtracting the possibly nonzero components of the last column identifies its fibre with \(M[-d](-d)\). The bound \(M\in{}^pD^{\ge-d}\) puts this fibre in \({}^pD^{\ge0}\). Therefore the two total images agree in every degree below zero.
 
 Compare the two truncation triangles at degrees \(-2,-1\) after applying \(Ru_*\). Their lower terms agree; their total terms agree in degrees \(-d-1\) and \(-d\), both below zero. The five terms of the two long exact sequences around the upper-tail group in degree \(-d-1\) imply that these tail groups agree. The lower amplitude bound of \(Ru_*\) identifies them as
 \[
@@ -212,7 +212,7 @@ Thus \(R(C)\to R(S)\) is an isomorphism. Adjunction identifies \(C\to S\) with i
 In a semisimple finite-length object, the sum of the simple factors belonging to a Serre subcategory is both its largest subobject and its largest quotient in that subcategory. The composite between those two objects is an isomorphism: the other factors have no maps to or from them. Apply this to \(S\). Restriction followed by Gysin gives an isomorphism from \(U({}^pH^{-1}M)\) to \(U({}^pH^1M)(1)\).
 
 We must identify that map, including its class. The incidence is a regular Cartier divisor; on a chart where one coordinate of \(x\) is nonzero its equation solves for a hyperplane coefficient. Smooth duality for \(q\) and \(qv\), with transitivity of exceptional pullback, gives
-\(v^!F'=F_H-1\).
+\(v^!F'=F_H[-1](-1)\).
 The restriction and counit therefore supply the restriction–Gysin composite. By the divisor class construction it is cup product with
 \[
 c_1(\mathcal O_{X'}(H))=q^*\eta+f'^*\beta.

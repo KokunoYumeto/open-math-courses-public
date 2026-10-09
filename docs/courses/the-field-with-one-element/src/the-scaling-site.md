@@ -22,7 +22,7 @@ The lesson has four parts.
 
 1. **Extension of scalars (Section 2).** We compute the semiring \(\mathbb{Z}_{\max}\otimes_{\mathbb{B}}\mathbb{R}_{\max}\)
    and its largest multiplicatively cancellative quotient. The quotient is a semiring of convex piecewise affine
-   functions on the half-line \(0,\infty)\) with integral slopes. The Frobenius maps of \(\mathbb{Z}_{\max}\) become
+   functions on the half-line \([0,\infty)\) with integral slopes. The Frobenius maps of \(\mathbb{Z}_{\max}\) become
    the maps \(f(\lambda)\mapsto f(n\lambda)\).
 2. **The site and its points (Sections 3 to 5).** The scaling site is the topos \([0,\infty)\rtimes\mathbb{N}^{\times}\)
    of \(\mathbb{N}^{\times}\)-equivariant sheaves on the half-line, with the sheaf \(\mathcal{O}\) of convex piecewise
@@ -38,7 +38,7 @@ The lesson has four parts.
 
 **What the lesson assumes.** Sheaves on a topological space; the definition of a Grothendieck topology and of a point
 of a topos, to the extent recalled in Sections 3.1 and 4.1, with the lessons
-[Sites and sheaves and Topoi, morphisms and points of the course on étale cohomology; convex functions of one real variable and convex subsets
+Sites and sheaves and Topoi, morphisms and points of the course on étale cohomology; convex functions of one real variable and convex subsets
 of \(\mathbb{R}^{m}\); the finite adèles of \(\mathbb{Q}\) as used in *The arithmetic site*. Prerequisite lessons are
 *The arithmetic site* and *Characteristic one and hyperrings*. Section 7 refers to *Weil's proof for curves and what
 is missing over the integers*. Section 6.6 uses the lessons

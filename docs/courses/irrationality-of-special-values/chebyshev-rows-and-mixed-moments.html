@@ -1,0 +1,272 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Chebyshev rows and mixed moments</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents</a><a href="small-linear-forms-and-aperys-theorem.html">Previous lesson</a><a href="denominators-at-the-prime-two.html">Next lesson</a><a href="src/chebyshev-rows-and-mixed-moments.md">Editable source</a></nav><main><article><h1 id="chebyshev-rows-and-mixed-moments">Chebyshev rows and mixed moments</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson builds the determinants used in this course to prove that Catalan's constant</p>
+<span class="math math-display" data-tex="\[
+G=\sum_{j\ge0}\frac{(-1)^j}{(2j+1)^2}
+\]">\[
+G=\sum_{j\ge0}\frac{(-1)^j}{(2j+1)^2}
+\]</span>
+<p>is irrational, and proves their first property: if <span class="math" data-tex="\(G\)">\(G\)</span> were rational, every one of them would be a rational number. Each entry is a double integral against one of two kernels, and each such integral is a rational combination of <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\(G\)">\(G\)</span> and <span class="math" data-tex="\(\zeta(2)\)">\(\zeta(2)\)</span>. The rows are polynomials made from Chebyshev polynomials. They are chosen so that two power series built from each row agree up to a high order at the origin; this agreement makes the <span class="math" data-tex="\(\zeta(2)\)">\(\zeta(2)\)</span> part of every entry cancel. The later lessons estimate the size of these determinants at every prime and at the real place.</p>
+<p>We use the monomial integrals of Proposition 2.3 of <a href="small-linear-forms-and-aperys-theorem.html">Small linear forms and Apéry's theorem</a>, power series, and dominated convergence. A basic reference is [OpenAI-Catalan].</p>
+<h2 id="1-parameters">1. Parameters</h2>
+<p>Throughout, <span class="math" data-tex="\(N\)">\(N\)</span> is a positive integer, and we put</p>
+<span class="math math-display" data-tex="\[
+n=48N,\quad a=11N,\quad b=7N,\quad g=q=4N,\quad h=2N,
+\]">\[
+n=48N,\quad a=11N,\quad b=7N,\quad g=q=4N,\quad h=2N,
+\]</span>
+<span class="math math-display" data-tex="\[
+L=n+a=n+b+q=59N,\quad C=L+g=63N,\quad H=C+h=65N,\quad A=a+2g=19N.
+\]">\[
+L=n+a=n+b+q=59N,\quad C=L+g=63N,\quad H=C+h=65N,\quad A=a+2g=19N.
+\]</span>
+<p>The determinants will have size <span class="math" data-tex="\(n\)">\(n\)</span>. The numbers <span class="math" data-tex="\(b\)">\(b\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> describe the columns, <span class="math" data-tex="\(g\)">\(g\)</span>, <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(C\)">\(C\)</span> the rows, <span class="math" data-tex="\(L\)">\(L\)</span> is the order of agreement that cancels <span class="math" data-tex="\(\zeta(2)\)">\(\zeta(2)\)</span>, and all row polynomials will have their monomials in degrees <span class="math" data-tex="\(A\)">\(A\)</span> to <span class="math" data-tex="\(H-1\)">\(H-1\)</span>. Every one of these quantities is a fixed multiple of <span class="math" data-tex="\(N\)">\(N\)</span>; the arithmetic of later lessons depends on these exact ratios.</p>
+<h2 id="2-chebyshev-polynomials-and-a-half-angle-variable">2. Chebyshev polynomials and a half-angle variable</h2>
+<p>The <strong>Chebyshev polynomials</strong> <span class="math" data-tex="\(T_d\)">\(T_d\)</span> and <span class="math" data-tex="\(U_d\)">\(U_d\)</span> are defined by <span class="math" data-tex="\(T_0=1\)">\(T_0=1\)</span>, <span class="math" data-tex="\(T_1=x\)">\(T_1=x\)</span>, <span class="math" data-tex="\(U_{-1}=0\)">\(U_{-1}=0\)</span>, <span class="math" data-tex="\(U_0=1\)">\(U_0=1\)</span>, and the common recurrence</p>
+<span class="math math-display" data-tex="\[
+S_{d+1}(x)=2xS_d(x)-S_{d-1}(x).
+\]">\[
+S_{d+1}(x)=2xS_d(x)-S_{d-1}(x).
+\]</span>
+<p>They have integer coefficients; <span class="math" data-tex="\(T_d\)">\(T_d\)</span> and <span class="math" data-tex="\(U_d\)">\(U_d\)</span> have degree <span class="math" data-tex="\(d\)">\(d\)</span> for <span class="math" data-tex="\(d\ge0\)">\(d\ge0\)</span>, with leading coefficients <span class="math" data-tex="\(2^{d-1}\)">\(2^{d-1}\)</span> (for <span class="math" data-tex="\(d\ge1\)">\(d\ge1\)</span>) and <span class="math" data-tex="\(2^d\)">\(2^d\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> For every complex <span class="math" data-tex="\(w\ne0\)">\(w\ne0\)</span> and every <span class="math" data-tex="\(d\ge0\)">\(d\ge0\)</span>, with <span class="math" data-tex="\(x=(w+w^{-1})/2\)">\(x=(w+w^{-1})/2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+T_d(x)=\frac{w^d+w^{-d}}2,\qquad U_{d-1}(x)\,\frac{w-w^{-1}}2=\frac{w^d-w^{-d}}2.
+\]">\[
+T_d(x)=\frac{w^d+w^{-d}}2,\qquad U_{d-1}(x)\,\frac{w-w^{-1}}2=\frac{w^d-w^{-d}}2.
+\]</span>
+<p><strong>Proof.</strong> Both right sides satisfy the recurrence in <span class="math" data-tex="\(d\)">\(d\)</span>, because <span class="math" data-tex="\((w+w^{-1})(w^d\pm w^{-d})=(w^{d+1}\pm w^{-d-1})+(w^{d-1}\pm w^{-(d-1)})\)">\((w+w^{-1})(w^d\pm w^{-d})=(w^{d+1}\pm w^{-d-1})+(w^{d-1}\pm w^{-(d-1)})\)</span>, and they agree with the left sides for <span class="math" data-tex="\(d=0,1\)">\(d=0,1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Write <span class="math" data-tex="\(f(t)=\sqrt{1-t^2}\)">\(f(t)=\sqrt{1-t^2}\)</span>, with the positive root for <span class="math" data-tex="\(-1&lt;t&lt;1\)">\(-1&lt;t&lt;1\)</span>; near <span class="math" data-tex="\(t=0\)">\(t=0\)</span> it is the power series with <span class="math" data-tex="\(f(0)=1\)">\(f(0)=1\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+w=\frac t{1+f}.
+\]">\[
+w=\frac t{1+f}.
+\]</span>
+<p>Using <span class="math" data-tex="\(f^2+t^2=1\)">\(f^2+t^2=1\)</span> one checks <span class="math" data-tex="\(1+w^2=2/(1+f)\)">\(1+w^2=2/(1+f)\)</span>, and then</p>
+<span class="math math-display" data-tex="\[
+t=\frac{2w}{1+w^2},\qquad f=\frac{1-w^2}{1+w^2},\qquad \frac{w+w^{-1}}2=\frac1t,\qquad\frac{w^{-1}-w}2=\frac ft.
+\tag{2.1}
+\]">\[
+t=\frac{2w}{1+w^2},\qquad f=\frac{1-w^2}{1+w^2},\qquad \frac{w+w^{-1}}2=\frac1t,\qquad\frac{w^{-1}-w}2=\frac ft.
+\tag{2.1}
+\]</span>
+<p>As a power series, <span class="math" data-tex="\(w=t/2+O(t^3)\)">\(w=t/2+O(t^3)\)</span>. The substitution <span class="math" data-tex="\(w\mapsto w^{-1}\)">\(w\mapsto w^{-1}\)</span>, which we write as a star, fixes <span class="math" data-tex="\(t\)">\(t\)</span> and changes the sign of <span class="math" data-tex="\(f\)">\(f\)</span>, by (2.1).</p>
+<p>Finally recall the binomial series</p>
+<span class="math math-display" data-tex="\[
+\frac1{f(t)}=\sum_{l\ge0}c_lt^{2l},\qquad c_l=\frac1{4^l}\binom{2l}l,
+\tag{2.2}
+\]">\[
+\frac1{f(t)}=\sum_{l\ge0}c_lt^{2l},\qquad c_l=\frac1{4^l}\binom{2l}l,
+\tag{2.2}
+\]</span>
+<p>valid for <span class="math" data-tex="\(|t|&lt;1\)">\(|t|&lt;1\)</span>. We write <span class="math" data-tex="\(c_z=0\)">\(c_z=0\)</span> when <span class="math" data-tex="\(z\)">\(z\)</span> is not a nonnegative integer.</p>
+<h2 id="3-the-rows">3. The rows</h2>
+<p>For <span class="math" data-tex="\(0\le r&lt;n\)">\(0\le r&lt;n\)</span> put <span class="math" data-tex="\(d=|r-g|\)">\(d=|r-g|\)</span> and</p>
+<span class="math math-display" data-tex="\[
+R_r=(1-t)^ht^{C-1}w^{r-g},\qquad P_r=\frac{R_r+R_r^*}2,\qquad D_r=\frac{t\,(R_r^*-R_r)}{2f}.
+\tag{3.1}
+\]">\[
+R_r=(1-t)^ht^{C-1}w^{r-g},\qquad P_r=\frac{R_r+R_r^*}2,\qquad D_r=\frac{t\,(R_r^*-R_r)}{2f}.
+\tag{3.1}
+\]</span>
+<p><strong>Proposition 3.1</strong> (the rows are integer polynomials). For <span class="math" data-tex="\(0\le r&lt;n\)">\(0\le r&lt;n\)</span>,</p>
+<span class="math math-display" data-tex="\[
+P_r=(1-t)^ht^{C-1}T_d(1/t),\qquad D_r=\operatorname{sgn}(r-g)\,(1-t)^ht^{C-1}U_{d-1}(1/t).
+\]">\[
+P_r=(1-t)^ht^{C-1}T_d(1/t),\qquad D_r=\operatorname{sgn}(r-g)\,(1-t)^ht^{C-1}U_{d-1}(1/t).
+\]</span>
+<p>These are polynomials with integer coefficients, <span class="math" data-tex="\(D_g=0\)">\(D_g=0\)</span>, and their monomials lie in the degrees</p>
+<span class="math math-display" data-tex="\[
+\operatorname{supp}P_r\subseteq\{A,\dots,H-1\},\qquad\operatorname{supp}D_r\subseteq\{A+1,\dots,H-1\}.
+\]">\[
+\operatorname{supp}P_r\subseteq\{A,\dots,H-1\},\qquad\operatorname{supp}D_r\subseteq\{A+1,\dots,H-1\}.
+\]</span>
+<p><strong>Proof.</strong> By (2.1) and Lemma 2.1, <span class="math" data-tex="\((w^{r-g}+w^{g-r})/2=T_d(1/t)\)">\((w^{r-g}+w^{g-r})/2=T_d(1/t)\)</span>. For <span class="math" data-tex="\(r\ge g\)">\(r\ge g\)</span>, <span class="math" data-tex="\((w^{g-r}-w^{r-g})/2=(w^{-d}-w^d)/2=U_{d-1}(1/t)\cdot(w^{-1}-w)/2=U_{d-1}(1/t)\,f/t\)">\((w^{g-r}-w^{r-g})/2=(w^{-d}-w^d)/2=U_{d-1}(1/t)\cdot(w^{-1}-w)/2=U_{d-1}(1/t)\,f/t\)</span>; for <span class="math" data-tex="\(r&lt;g\)">\(r&lt;g\)</span> the sign is reversed. This gives both formulas. The polynomial <span class="math" data-tex="\(t^{C-1}T_d(1/t)\)">\(t^{C-1}T_d(1/t)\)</span> has monomials in degrees <span class="math" data-tex="\(C-1-d\)">\(C-1-d\)</span> to <span class="math" data-tex="\(C-1\)">\(C-1\)</span>, and <span class="math" data-tex="\(t^{C-1}U_{d-1}(1/t)\)">\(t^{C-1}U_{d-1}(1/t)\)</span> in degrees <span class="math" data-tex="\(C-d\)">\(C-d\)</span> to <span class="math" data-tex="\(C-1\)">\(C-1\)</span>. Since <span class="math" data-tex="\(0\le r\le n-1\)">\(0\le r\le n-1\)</span> and <span class="math" data-tex="\(g\le n-1-g\)">\(g\le n-1-g\)</span>, we have <span class="math" data-tex="\(d\le n-1-g\)">\(d\le n-1-g\)</span>, so <span class="math" data-tex="\(C-1-d\ge C-n+g=A\)">\(C-1-d\ge C-n+g=A\)</span>. Multiplication by <span class="math" data-tex="\((1-t)^h\)">\((1-t)^h\)</span> raises the top degree to <span class="math" data-tex="\(C-1+h=H-1\)">\(C-1+h=H-1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.2</strong> (Taylor contact). As power series in <span class="math" data-tex="\(t\)">\(t\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\frac{tP_r}f-D_r=\frac{tR_r}f=O\bigl(t^{C+r-g}\bigr)=O(t^L).
+\]">\[
+\frac{tP_r}f-D_r=\frac{tR_r}f=O\bigl(t^{C+r-g}\bigr)=O(t^L).
+\]</span>
+<p><strong>Proof.</strong> The first equality is (3.1). Since <span class="math" data-tex="\(w=\frac t2(1+O(t^2))\)">\(w=\frac t2(1+O(t^2))\)</span>, every integer power satisfies <span class="math" data-tex="\(w^{r-g}=(t/2)^{r-g}(1+O(t^2))\)">\(w^{r-g}=(t/2)^{r-g}(1+O(t^2))\)</span>, so <span class="math" data-tex="\(tR_r/f\)">\(tR_r/f\)</span> starts in degree <span class="math" data-tex="\(1+(C-1)+(r-g)\)">\(1+(C-1)+(r-g)\)</span>. As <span class="math" data-tex="\(r\ge0\)">\(r\ge0\)</span>, this is at least <span class="math" data-tex="\(C-g=L\)">\(C-g=L\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-moments-of-an-arcsine-weight">4. Moments of an arcsine weight</h2>
+<p>On <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span> consider the measure <span class="math" data-tex="\(d\mu(t)=|t|\,dt/f(t)\)">\(d\mu(t)=|t|\,dt/f(t)\)</span>, of total mass <span class="math" data-tex="\(2\)">\(2\)</span>, and its moments</p>
+<span class="math math-display" data-tex="\[
+m_i=\int_{-1}^1t^i\,d\mu(t)\qquad(i\ge0),\qquad m_{-1}=0.
+\]">\[
+m_i=\int_{-1}^1t^i\,d\mu(t)\qquad(i\ge0),\qquad m_{-1}=0.
+\]</span>
+<p><strong>Lemma 4.1.</strong> <span class="math" data-tex="\(m_i=0\)">\(m_i=0\)</span> for odd <span class="math" data-tex="\(i\)">\(i\)</span>, and <span class="math" data-tex="\(m_i=2/((i+1)c_{i/2})\)">\(m_i=2/((i+1)c_{i/2})\)</span> for even <span class="math" data-tex="\(i\)">\(i\)</span>. Equivalently <span class="math" data-tex="\(m_0=2\)">\(m_0=2\)</span> and <span class="math" data-tex="\((i+1)m_i=i\,m_{i-2}\)">\((i+1)m_i=i\,m_{i-2}\)</span> for <span class="math" data-tex="\(i\ge1\)">\(i\ge1\)</span>. In particular <span class="math" data-tex="\(m_i\to0\)">\(m_i\to0\)</span>.</p>
+<p><strong>Proof.</strong> For odd <span class="math" data-tex="\(i\)">\(i\)</span> the integrand is odd. For <span class="math" data-tex="\(i\ge1\)">\(i\ge1\)</span>, integration by parts on <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, with <span class="math" data-tex="\(t(1-t^2)^{-1/2}=-\frac d{dt}\sqrt{1-t^2}\)">\(t(1-t^2)^{-1/2}=-\frac d{dt}\sqrt{1-t^2}\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+\int_0^1\frac{t^{i+1}}{\sqrt{1-t^2}}\,dt=i\int_0^1t^{i-1}\sqrt{1-t^2}\,dt=i\int_0^1\frac{t^{i-1}}{\sqrt{1-t^2}}\,dt-i\int_0^1\frac{t^{i+1}}{\sqrt{1-t^2}}\,dt,
+\]">\[
+\int_0^1\frac{t^{i+1}}{\sqrt{1-t^2}}\,dt=i\int_0^1t^{i-1}\sqrt{1-t^2}\,dt=i\int_0^1\frac{t^{i-1}}{\sqrt{1-t^2}}\,dt-i\int_0^1\frac{t^{i+1}}{\sqrt{1-t^2}}\,dt,
+\]</span>
+<p>which is the recurrence; <span class="math" data-tex="\(m_0=2\int_0^1t(1-t^2)^{-1/2}dt=2\)">\(m_0=2\int_0^1t(1-t^2)^{-1/2}dt=2\)</span>. The closed form satisfies the same recurrence because <span class="math" data-tex="\(c_l/c_{l-1}=(2l-1)/(2l)\)">\(c_l/c_{l-1}=(2l-1)/(2l)\)</span>. Finally <span class="math" data-tex="\(c_l\ge1/(2\sqrt l)\)">\(c_l\ge1/(2\sqrt l)\)</span> for <span class="math" data-tex="\(l\ge1\)">\(l\ge1\)</span>, by induction from the same ratio, so <span class="math" data-tex="\(m_i\to0\)">\(m_i\to0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-mixed-moments">5. Mixed moments</h2>
+<p>For integers <span class="math" data-tex="\(i,j\ge0\)">\(i,j\ge0\)</span> define</p>
+<span class="math math-display" data-tex="\[
+M(i,j)=\int_{-1}^1\int_0^1\frac{t^is^j}{1-ts}\,ds\,d\mu(t),\qquad
+Z(i,j)=\int_0^1\int_0^1\frac{t^is^j}{1-ts}\,ds\,dt,
+\]">\[
+M(i,j)=\int_{-1}^1\int_0^1\frac{t^is^j}{1-ts}\,ds\,d\mu(t),\qquad
+Z(i,j)=\int_0^1\int_0^1\frac{t^is^j}{1-ts}\,ds\,dt,
+\]</span>
+<p>and extend both bilinearly to polynomial arguments: for polynomials <span class="math" data-tex="\(P(t)\)">\(P(t)\)</span> and <span class="math" data-tex="\(S(s)\)">\(S(s)\)</span>, <span class="math" data-tex="\(M(P,S)=\sum_{i,j}[t^i]P\,[s^j]S\,M(i,j)\)">\(M(P,S)=\sum_{i,j}[t^i]P\,[s^j]S\,M(i,j)\)</span>, where <span class="math" data-tex="\([t^i]P\)">\([t^i]P\)</span> is the coefficient of <span class="math" data-tex="\(t^i\)">\(t^i\)</span>.</p>
+<p><strong>Lemma 5.1</strong> (convergence and series). Both integrals converge absolutely, and</p>
+<span class="math math-display" data-tex="\[
+M(i,j)=\sum_{u\ge0}\frac{m_{i+u}}{j+u+1},\qquad M(i,j)-M(i+1,j+1)=\frac{m_i}{j+1}.
+\]">\[
+M(i,j)=\sum_{u\ge0}\frac{m_{i+u}}{j+u+1},\qquad M(i,j)-M(i+1,j+1)=\frac{m_i}{j+1}.
+\]</span>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(0&lt;v&lt;1\)">\(0&lt;v&lt;1\)</span>, <span class="math" data-tex="\(\int_0^1ds/(1-vs)=-\log(1-v)/v\)">\(\int_0^1ds/(1-vs)=-\log(1-v)/v\)</span>, and <span class="math" data-tex="\(-\log(1-v)/\sqrt{1-v^2}\)">\(-\log(1-v)/\sqrt{1-v^2}\)</span> is integrable on <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>. Hence <span class="math" data-tex="\(\iint(1-|t|s)^{-1}\,ds\,d\mu(t)&lt;\infty\)">\(\iint(1-|t|s)^{-1}\,ds\,d\mu(t)&lt;\infty\)</span>, and this dominates <span class="math" data-tex="\(|t^is^j/(1-ts)|\)">\(|t^is^j/(1-ts)|\)</span> as well as every partial sum of <span class="math" data-tex="\(\sum_u|t|^us^u\)">\(\sum_u|t|^us^u\)</span>. Expanding <span class="math" data-tex="\(1/(1-ts)=\sum_u(ts)^u\)">\(1/(1-ts)=\sum_u(ts)^u\)</span> and integrating termwise (dominated convergence) gives the series, and the second identity follows by comparing the series term by term. The assertion for <span class="math" data-tex="\(Z\)">\(Z\)</span> is Proposition 2.3 of the first lesson. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Write <span class="math" data-tex="\(K^-_d=M(d,0)\)">\(K^-_d=M(d,0)\)</span> and <span class="math" data-tex="\(K^+_d=M(0,d)\)">\(K^+_d=M(0,d)\)</span> for the moments on the two boundary lines.</p>
+<p><strong>Lemma 5.2</strong> (boundary recurrences). For <span class="math" data-tex="\(d\ge2\)">\(d\ge2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+dK^-_d=(d-1)K^-_{d-2}+m_{d-2}+m_{d-1},\qquad (d-1)K^+_d=(d-2)K^+_{d-2}+\frac2{d-1},
+\]">\[
+dK^-_d=(d-1)K^-_{d-2}+m_{d-2}+m_{d-1},\qquad (d-1)K^+_d=(d-2)K^+_{d-2}+\frac2{d-1},
+\]</span>
+<p>and <span class="math" data-tex="\(K^-_1=2\)">\(K^-_1=2\)</span>.</p>
+<p><strong>Proof.</strong> By Lemma 4.1, <span class="math" data-tex="\(m_{k}=\frac k{k+1}m_{k-2}\)">\(m_{k}=\frac k{k+1}m_{k-2}\)</span> for every <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>. For the first recurrence, the series of Lemma 5.1 gives</p>
+<span class="math math-display" data-tex="\[
+dK^-_d-(d-1)K^-_{d-2}=\sum_{u\ge0}\frac{d\,m_{d+u}-(d-1)m_{d+u-2}}{u+1}=\sum_{u\ge0}\frac{m_{d+u-2}}{d+u+1}=\sum_{u\ge0}\bigl(m_{d+u-2}-m_{d+u}\bigr),
+\]">\[
+dK^-_d-(d-1)K^-_{d-2}=\sum_{u\ge0}\frac{d\,m_{d+u}-(d-1)m_{d+u-2}}{u+1}=\sum_{u\ge0}\frac{m_{d+u-2}}{d+u+1}=\sum_{u\ge0}\bigl(m_{d+u-2}-m_{d+u}\bigr),
+\]</span>
+<p>where both steps use <span class="math" data-tex="\(m_{d+u}=\frac{d+u}{d+u+1}m_{d+u-2}\)">\(m_{d+u}=\frac{d+u}{d+u+1}m_{d+u-2}\)</span>. The last sum telescopes to <span class="math" data-tex="\(m_{d-2}+m_{d-1}\)">\(m_{d-2}+m_{d-1}\)</span>, since <span class="math" data-tex="\(m_v\to0\)">\(m_v\to0\)</span>. The same computation with <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, without the term <span class="math" data-tex="\((d-1)K^-_{d-2}\)">\((d-1)K^-_{d-2}\)</span>, gives <span class="math" data-tex="\(K^-_1=m_{-1}+m_0=2\)">\(K^-_1=m_{-1}+m_0=2\)</span>. For the second recurrence, shift the series of <span class="math" data-tex="\(K^+_d\)">\(K^+_d\)</span> by two:</p>
+<span class="math math-display" data-tex="\[
+(d-1)K^+_d-(d-2)K^+_{d-2}=\sum_{u\ge2}\frac{(d-1)m_{u-2}-(d-2)m_u}{d+u-1}-(d-2)\Bigl(\frac{m_0}{d-1}+\frac{m_1}d\Bigr).
+\]">\[
+(d-1)K^+_d-(d-2)K^+_{d-2}=\sum_{u\ge2}\frac{(d-1)m_{u-2}-(d-2)m_u}{d+u-1}-(d-2)\Bigl(\frac{m_0}{d-1}+\frac{m_1}d\Bigr).
+\]</span>
+<p>Each summand equals <span class="math" data-tex="\(m_{u-2}/(u+1)=m_{u-2}-m_u\)">\(m_{u-2}/(u+1)=m_{u-2}-m_u\)</span>, so the sum is <span class="math" data-tex="\(m_0+m_1=2\)">\(m_0+m_1=2\)</span>, and the subtracted term is <span class="math" data-tex="\(2(d-2)/(d-1)\)">\(2(d-2)/(d-1)\)</span>. The difference <span class="math" data-tex="\(2-2(d-2)/(d-1)\)">\(2-2(d-2)/(d-1)\)</span> is <span class="math" data-tex="\(2/(d-1)\)">\(2/(d-1)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 5.3</strong> (the two transcendental starting values).</p>
+<span class="math math-display" data-tex="\[
+K^-_0=K^+_0=M(0,0)=4G,\qquad K^+_1=M(0,1)=\frac{\pi^2}4=\frac32\zeta(2).
+\]">\[
+K^-_0=K^+_0=M(0,0)=4G,\qquad K^+_1=M(0,1)=\frac{\pi^2}4=\frac32\zeta(2).
+\]</span>
+<p><strong>Proof.</strong> Integrating in <span class="math" data-tex="\(s\)">\(s\)</span>, <span class="math" data-tex="\(M(0,0)=\int_{-1}^1(|t|/f)(-\log(1-t)/t)\,dt\)">\(M(0,0)=\int_{-1}^1(|t|/f)(-\log(1-t)/t)\,dt\)</span>. Splitting the interval and substituting <span class="math" data-tex="\(t\mapsto-t\)">\(t\mapsto-t\)</span> on the negative half gives <span class="math" data-tex="\(\int_0^1\log\frac{1+t}{1-t}\,\frac{dt}{\sqrt{1-t^2}}\)">\(\int_0^1\log\frac{1+t}{1-t}\,\frac{dt}{\sqrt{1-t^2}}\)</span>. With <span class="math" data-tex="\(t=\sin\theta\)">\(t=\sin\theta\)</span> and <span class="math" data-tex="\(\frac{1+\sin\theta}{1-\sin\theta}=\tan^2(\frac\pi4+\frac\theta2)\)">\(\frac{1+\sin\theta}{1-\sin\theta}=\tan^2(\frac\pi4+\frac\theta2)\)</span>, this becomes <span class="math" data-tex="\(4\int_{\pi/4}^{\pi/2}\log\tan\phi\,d\phi=-4\int_0^{\pi/4}\log\tan v\,dv\)">\(4\int_{\pi/4}^{\pi/2}\log\tan\phi\,d\phi=-4\int_0^{\pi/4}\log\tan v\,dv\)</span>. Finally, with <span class="math" data-tex="\(x=\tan v\)">\(x=\tan v\)</span> and the geometric series of <span class="math" data-tex="\(1/(1+x^2)\)">\(1/(1+x^2)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\int_0^{\pi/4}\log\tan v\,dv=\int_0^1\frac{\log x}{1+x^2}\,dx=\sum_{k\ge0}(-1)^k\int_0^1x^{2k}\log x\,dx=-\sum_{k\ge0}\frac{(-1)^k}{(2k+1)^2}=-G;
+\]">\[
+\int_0^{\pi/4}\log\tan v\,dv=\int_0^1\frac{\log x}{1+x^2}\,dx=\sum_{k\ge0}(-1)^k\int_0^1x^{2k}\log x\,dx=-\sum_{k\ge0}\frac{(-1)^k}{(2k+1)^2}=-G;
+\]</span>
+<p>termwise integration is justified because the partial sums of the alternating series are bounded by <span class="math" data-tex="\(1\)">\(1\)</span> in absolute value.</p>
+<p>For the second value, Lemma 5.1, Lemma 4.1 and <span class="math" data-tex="\((2k+1)c_k=2(k+1)c_{k+1}\)">\((2k+1)c_k=2(k+1)c_{k+1}\)</span> give <span class="math" data-tex="\(K^+_1=\sum_{k\ge0}m_{2k}/(2k+2)=\sum_{k\ge1}1/(2k^2c_k)\)">\(K^+_1=\sum_{k\ge0}m_{2k}/(2k+2)=\sum_{k\ge1}1/(2k^2c_k)\)</span>. The function <span class="math" data-tex="\(y=(\arcsin x)^2\)">\(y=(\arcsin x)^2\)</span> satisfies <span class="math" data-tex="\((1-x^2)y&#x27;&#x27;-xy&#x27;=2\)">\((1-x^2)y&#x27;&#x27;-xy&#x27;=2\)</span> with <span class="math" data-tex="\(y(0)=y&#x27;(0)=0\)">\(y(0)=y&#x27;(0)=0\)</span>. Substituting <span class="math" data-tex="\(y=\sum_ka_kx^{2k}\)">\(y=\sum_ka_kx^{2k}\)</span> gives <span class="math" data-tex="\(a_1=1\)">\(a_1=1\)</span> and <span class="math" data-tex="\((2k+2)(2k+1)a_{k+1}=4k^2a_k\)">\((2k+2)(2k+1)a_{k+1}=4k^2a_k\)</span>, whose solution is <span class="math" data-tex="\(a_k=1/(2k^2c_k)\)">\(a_k=1/(2k^2c_k)\)</span>; the series has radius of convergence <span class="math" data-tex="\(1\)">\(1\)</span> and, by uniqueness of the analytic solution of this initial value problem on <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span>, equals <span class="math" data-tex="\((\arcsin x)^2\)">\((\arcsin x)^2\)</span> there. Its coefficients are positive, so letting <span class="math" data-tex="\(x\uparrow1\)">\(x\uparrow1\)</span> gives <span class="math" data-tex="\(\sum_k a_k=(\pi/2)^2\)">\(\sum_k a_k=(\pi/2)^2\)</span> by monotone convergence.</p>
+<p>It remains to show <span class="math" data-tex="\(\zeta(2)=\pi^2/6\)">\(\zeta(2)=\pi^2/6\)</span>. For <span class="math" data-tex="\(0&lt;\rho&lt;1\)">\(0&lt;\rho&lt;1\)</span> and <span class="math" data-tex="\(0&lt;x&lt;\pi\)">\(0&lt;x&lt;\pi\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_{k\ge1}\frac{\rho^k\sin kx}k=\operatorname{Im}\bigl(-\log(1-\rho e^{ix})\bigr),
+\]">\[
+\sum_{k\ge1}\frac{\rho^k\sin kx}k=\operatorname{Im}\bigl(-\log(1-\rho e^{ix})\bigr),
+\]</span>
+<p>with the principal logarithm; the right side lies in <span class="math" data-tex="\((-\pi/2,\pi/2)\)">\((-\pi/2,\pi/2)\)</span>, and as <span class="math" data-tex="\(\rho\uparrow1\)">\(\rho\uparrow1\)</span> it tends to <span class="math" data-tex="\(-\arg(1-e^{ix})=(\pi-x)/2\)">\(-\arg(1-e^{ix})=(\pi-x)/2\)</span>, because <span class="math" data-tex="\(1-e^{ix}=-2i\sin(x/2)\,e^{ix/2}\)">\(1-e^{ix}=-2i\sin(x/2)\,e^{ix/2}\)</span>. Integrating over <span class="math" data-tex="\((0,\pi)\)">\((0,\pi)\)</span>, termwise for fixed <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, gives <span class="math" data-tex="\(\sum_k\rho^k(1-\cos k\pi)/k^2=2\sum_{k\text{ odd}}\rho^k/k^2\)">\(\sum_k\rho^k(1-\cos k\pi)/k^2=2\sum_{k\text{ odd}}\rho^k/k^2\)</span>; dominated convergence on the left and monotone convergence on the right give <span class="math" data-tex="\(2\sum_{k\text{ odd}}k^{-2}=\int_0^\pi\frac{\pi-x}2\,dx=\frac{\pi^2}4\)">\(2\sum_{k\text{ odd}}k^{-2}=\int_0^\pi\frac{\pi-x}2\,dx=\frac{\pi^2}4\)</span>. Since <span class="math" data-tex="\(\sum_{k\text{ odd}}k^{-2}=\frac34\zeta(2)\)">\(\sum_{k\text{ odd}}k^{-2}=\frac34\zeta(2)\)</span>, we get <span class="math" data-tex="\(\zeta(2)=\pi^2/6\)">\(\zeta(2)=\pi^2/6\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The other moments follow from the recurrences. Let <span class="math" data-tex="\(k^-_d\)">\(k^-_d\)</span> and <span class="math" data-tex="\(k^+_d\)">\(k^+_d\)</span> be the rational numbers defined by the recurrences of Lemma 5.2 with the starting values</p>
+<span class="math math-display" data-tex="\[
+k^-_0=k^+_0=k^+_1=0,\qquad k^-_1=2,
+\]">\[
+k^-_0=k^+_0=k^+_1=0,\qquad k^-_1=2,
+\]</span>
+<p>and define <span class="math" data-tex="\(M^0(i,j)\)">\(M^0(i,j)\)</span> by <strong>diagonal reduction</strong>:</p>
+<span class="math math-display" data-tex="\[
+M^0(i,j)=\begin{cases}
+k^-_{i-j}-\displaystyle\sum_{k=1}^j\frac{m_{i-j+k-1}}k,&amp;i\ge j,\\[8pt]
+k^+_{j-i}-\displaystyle\sum_{k=j-i+1}^j\frac{m_{k-(j-i)-1}}k,&amp;i&lt;j.
+\end{cases}
+\tag{5.1}
+\]">\[
+M^0(i,j)=\begin{cases}
+k^-_{i-j}-\displaystyle\sum_{k=1}^j\frac{m_{i-j+k-1}}k,&amp;i\ge j,\\[8pt]
+k^+_{j-i}-\displaystyle\sum_{k=j-i+1}^j\frac{m_{k-(j-i)-1}}k,&amp;i&lt;j.
+\end{cases}
+\tag{5.1}
+\]</span>
+<p>With <span class="math" data-tex="\(B^{(d)}_i=\sum_{k=1}^ik^{-d}\)">\(B^{(d)}_i=\sum_{k=1}^ik^{-d}\)</span> and <span class="math" data-tex="\(B^{(d)}_0=0\)">\(B^{(d)}_0=0\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+Z^0(i,j)=\begin{cases}-B^{(2)}_i,&amp;i=j,\\[2pt] \dfrac{B^{(1)}_i-B^{(1)}_j}{i-j},&amp;i\ne j.\end{cases}
+\]">\[
+Z^0(i,j)=\begin{cases}-B^{(2)}_i,&amp;i=j,\\[2pt] \dfrac{B^{(1)}_i-B^{(1)}_j}{i-j},&amp;i\ne j.\end{cases}
+\]</span>
+<p><strong>Proposition 5.4</strong> (decomposition of the moments). For all <span class="math" data-tex="\(i,j\ge0\)">\(i,j\ge0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+M(i,j)=M^0(i,j)+4G\,c_{(i-j)/2}+\frac32\zeta(2)\,c_{(j-i-1)/2},\qquad Z(i,j)=Z^0(i,j)+[i=j]\,\zeta(2),
+\]">\[
+M(i,j)=M^0(i,j)+4G\,c_{(i-j)/2}+\frac32\zeta(2)\,c_{(j-i-1)/2},\qquad Z(i,j)=Z^0(i,j)+[i=j]\,\zeta(2),
+\]</span>
+<p>where <span class="math" data-tex="\([i=j]\)">\([i=j]\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> if <span class="math" data-tex="\(i=j\)">\(i=j\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise.</p>
+<p><strong>Proof.</strong> Iterating the diagonal identity of Lemma 5.1 <span class="math" data-tex="\(\min(i,j)\)">\(\min(i,j)\)</span> times moves <span class="math" data-tex="\(M(i,j)\)">\(M(i,j)\)</span> to the boundary and produces exactly the sums in (5.1), with <span class="math" data-tex="\(K^-_{i-j}\)">\(K^-_{i-j}\)</span> or <span class="math" data-tex="\(K^+_{j-i}\)">\(K^+_{j-i}\)</span> in place of <span class="math" data-tex="\(k^\mp\)">\(k^\mp\)</span>. It remains to compare <span class="math" data-tex="\(K^\pm_d\)">\(K^\pm_d\)</span> with <span class="math" data-tex="\(k^\pm_d\)">\(k^\pm_d\)</span>. The differences <span class="math" data-tex="\(K^\pm_d-k^\pm_d\)">\(K^\pm_d-k^\pm_d\)</span> satisfy the homogeneous recurrences <span class="math" data-tex="\(dy_d=(d-1)y_{d-2}\)">\(dy_d=(d-1)y_{d-2}\)</span> and <span class="math" data-tex="\((d-1)y_d=(d-2)y_{d-2}\)">\((d-1)y_d=(d-2)y_{d-2}\)</span>. For the first, the solution with <span class="math" data-tex="\(y_0=1\)">\(y_0=1\)</span>, <span class="math" data-tex="\(y_1=0\)">\(y_1=0\)</span> is <span class="math" data-tex="\(y_d=c_{d/2}\)">\(y_d=c_{d/2}\)</span>, since <span class="math" data-tex="\(c_{l}/c_{l-1}=(2l-1)/(2l)\)">\(c_{l}/c_{l-1}=(2l-1)/(2l)\)</span>; and the starting differences are <span class="math" data-tex="\(K^-_0-k^-_0=4G\)">\(K^-_0-k^-_0=4G\)</span> and <span class="math" data-tex="\(K^-_1-k^-_1=0\)">\(K^-_1-k^-_1=0\)</span>. For the second, the even chain dies at once (<span class="math" data-tex="\(d=2\)">\(d=2\)</span> gives <span class="math" data-tex="\(y_2=0\)">\(y_2=0\)</span>), while the odd chain with <span class="math" data-tex="\(y_1=1\)">\(y_1=1\)</span> is <span class="math" data-tex="\(y_d=c_{(d-1)/2}\)">\(y_d=c_{(d-1)/2}\)</span>; the starting differences are <span class="math" data-tex="\(4G\)">\(4G\)</span> at <span class="math" data-tex="\(d=0\)">\(d=0\)</span> and <span class="math" data-tex="\(\frac32\zeta(2)\)">\(\frac32\zeta(2)\)</span> at <span class="math" data-tex="\(d=1\)">\(d=1\)</span>. Since diagonal reduction preserves <span class="math" data-tex="\(i-j\)">\(i-j\)</span>, this gives the formula for <span class="math" data-tex="\(M\)">\(M\)</span>; at <span class="math" data-tex="\(i=j=0\)">\(i=j=0\)</span> the two expressions for <span class="math" data-tex="\(M(0,0)\)">\(M(0,0)\)</span> agree. The formula for <span class="math" data-tex="\(Z\)">\(Z\)</span> is Proposition 2.3 of the first lesson, written with <span class="math" data-tex="\(B^{(1)}\)">\(B^{(1)}\)</span> and <span class="math" data-tex="\(B^{(2)}\)">\(B^{(2)}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For the valuation estimates of the next lessons we record the boundary arrays explicitly. Put</p>
+<span class="math math-display" data-tex="\[
+H^*_z=\begin{cases}c_{z/2},&amp;z\ge0\text{ even},\\ \dfrac1{z\,c_{(z-1)/2}},&amp;z\ge1\text{ odd},\end{cases}\qquad\text{so that}\qquad\frac{H^*_{z+2}}{H^*_z}=\frac{z+1}{z+2}.
+\]">\[
+H^*_z=\begin{cases}c_{z/2},&amp;z\ge0\text{ even},\\ \dfrac1{z\,c_{(z-1)/2}},&amp;z\ge1\text{ odd},\end{cases}\qquad\text{so that}\qquad\frac{H^*_{z+2}}{H^*_z}=\frac{z+1}{z+2}.
+\]</span>
+<p><strong>Proposition 5.5</strong> (explicit boundary arrays). For <span class="math" data-tex="\(u\ge0\)">\(u\ge0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+k^-_u=\begin{cases}H^*_u\displaystyle\sum_{\substack{2\le z\le u\\ z\text{ even}}}\frac2{z^2(H^*_z)^2},&amp;u\text{ even},\\[10pt]
+H^*_u\displaystyle\sum_{\substack{1\le z\le u\\ z\text{ odd}}}\frac2z,&amp;u\text{ odd},\end{cases}
+\qquad
+k^+_{u+1}=H^*_u\sum_{\substack{1\le z\le u\\ z\equiv u\ (2)}}\frac2{z^2H^*_z}.
+\]">\[
+k^-_u=\begin{cases}H^*_u\displaystyle\sum_{\substack{2\le z\le u\\ z\text{ even}}}\frac2{z^2(H^*_z)^2},&amp;u\text{ even},\\[10pt]
+H^*_u\displaystyle\sum_{\substack{1\le z\le u\\ z\text{ odd}}}\frac2z,&amp;u\text{ odd},\end{cases}
+\qquad
+k^+_{u+1}=H^*_u\sum_{\substack{1\le z\le u\\ z\equiv u\ (2)}}\frac2{z^2H^*_z}.
+\]</span>
+<p><strong>Proof.</strong> The ratio <span class="math" data-tex="\(H^*_{z+2}/H^*_z\)">\(H^*_{z+2}/H^*_z\)</span> follows from <span class="math" data-tex="\(c_{l+1}/c_l=(2l+1)/(2l+2)\)">\(c_{l+1}/c_l=(2l+1)/(2l+2)\)</span> in both parities. Dividing <span class="math" data-tex="\(dk^-_d=(d-1)k^-_{d-2}+m_{d-2}+m_{d-1}\)">\(dk^-_d=(d-1)k^-_{d-2}+m_{d-2}+m_{d-1}\)</span> by <span class="math" data-tex="\(dH^*_d\)">\(dH^*_d\)</span> gives <span class="math" data-tex="\(k^-_d/H^*_d=k^-_{d-2}/H^*_{d-2}+(m_{d-2}+m_{d-1})/(dH^*_d)\)">\(k^-_d/H^*_d=k^-_{d-2}/H^*_{d-2}+(m_{d-2}+m_{d-1})/(dH^*_d)\)</span>. By Lemma 4.1 the increment is <span class="math" data-tex="\(2/(d^2(H^*_d)^2)\)">\(2/(d^2(H^*_d)^2)\)</span> for even <span class="math" data-tex="\(d\)">\(d\)</span> (only <span class="math" data-tex="\(m_{d-2}\)">\(m_{d-2}\)</span> survives) and <span class="math" data-tex="\(2/d\)">\(2/d\)</span> for odd <span class="math" data-tex="\(d\)">\(d\)</span> (only <span class="math" data-tex="\(m_{d-1}\)">\(m_{d-1}\)</span> survives). Summing from <span class="math" data-tex="\(k^-_0/H^*_0=0\)">\(k^-_0/H^*_0=0\)</span>, respectively <span class="math" data-tex="\(k^-_1/H^*_1=2\)">\(k^-_1/H^*_1=2\)</span>, gives the formula for <span class="math" data-tex="\(k^-\)">\(k^-\)</span>. Similarly, with <span class="math" data-tex="\(u=d-1\)">\(u=d-1\)</span>, dividing the plus recurrence by <span class="math" data-tex="\(uH^*_u\)">\(uH^*_u\)</span> gives <span class="math" data-tex="\(k^+_{u+1}/H^*_u=k^+_{u-1}/H^*_{u-2}+2/(u^2H^*_u)\)">\(k^+_{u+1}/H^*_u=k^+_{u-1}/H^*_{u-2}+2/(u^2H^*_u)\)</span>, started from <span class="math" data-tex="\(k^+_1=0\)">\(k^+_1=0\)</span> and <span class="math" data-tex="\(k^+_2=2=2/(1^2H^*_1)\)">\(k^+_2=2=2/(1^2H^*_1)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-the-determinant-and-the-cancellation-of-zeta-2">6. The determinant and the cancellation of <span class="math" data-tex="\(\zeta(2)\)">\(\zeta(2)\)</span></h2>
+<p>For <span class="math" data-tex="\(0\le r&lt;n\)">\(0\le r&lt;n\)</span> and an integer <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span>, the <strong>raw entry</strong> is</p>
+<span class="math math-display" data-tex="\[
+F_j(r)=M(P_r,j)-\frac32\,Z(D_r,j),
+\]">\[
+F_j(r)=M(P_r,j)-\frac32\,Z(D_r,j),
+\]</span>
+<p>where <span class="math" data-tex="\(j\)">\(j\)</span> stands for the monomial <span class="math" data-tex="\(s^j\)">\(s^j\)</span>. The <strong>filtered entries</strong> use the polynomials <span class="math" data-tex="\(s^{b+k}(1-s)^q\)">\(s^{b+k}(1-s)^q\)</span>, <span class="math" data-tex="\(0\le k&lt;n\)">\(0\le k&lt;n\)</span>, and the determinant studied in this course is</p>
+<span class="math math-display" data-tex="\[
+\Delta_N=\det_{0\le r,k&lt;n}\Bigl(M\bigl(P_r,s^{b+k}(1-s)^q\bigr)-\frac32Z\bigl(D_r,s^{b+k}(1-s)^q\bigr)\Bigr).
+\tag{6.1}
+\]">\[
+\Delta_N=\det_{0\le r,k&lt;n}\Bigl(M\bigl(P_r,s^{b+k}(1-s)^q\bigr)-\frac32Z\bigl(D_r,s^{b+k}(1-s)^q\bigr)\Bigr).
+\tag{6.1}
+\]</span>
+<p>Expanding <span class="math" data-tex="\((1-s)^q\)">\((1-s)^q\)</span>, the matrix in (6.1) is <span class="math" data-tex="\(\mathcal F\mathcal T\)">\(\mathcal F\mathcal T\)</span>, where <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> is the <span class="math" data-tex="\(n\times(n+q)\)">\(n\times(n+q)\)</span> matrix of raw columns <span class="math" data-tex="\(F_j\)">\(F_j\)</span>, <span class="math" data-tex="\(b\le j&lt;L\)">\(b\le j&lt;L\)</span>, and <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> is the integer matrix</p>
+<span class="math math-display" data-tex="\[
+\mathcal T_{j,k}=(-1)^{j-b-k}\binom q{j-b-k}\qquad(b\le j&lt;L,\ 0\le k&lt;n).
+\]">\[
+\mathcal T_{j,k}=(-1)^{j-b-k}\binom q{j-b-k}\qquad(b\le j&lt;L,\ 0\le k&lt;n).
+\]</span>
+<p>Indeed the raw indices used are <span class="math" data-tex="\(j=b+k+v\)">\(j=b+k+v\)</span> with <span class="math" data-tex="\(0\le v\le q\)">\(0\le v\le q\)</span>, which range over <span class="math" data-tex="\(b\le j\le b+n-1+q=L-1\)">\(b\le j\le b+n-1+q=L-1\)</span>.</p>
+<p><strong>Proposition 6.1</strong> (rationality). For <span class="math" data-tex="\(b\le j&lt;L\)">\(b\le j&lt;L\)</span>, every raw entry <span class="math" data-tex="\(F_j(r)\)">\(F_j(r)\)</span> lies in <span class="math" data-tex="\(\mathbb Q+\mathbb QG\)">\(\mathbb Q+\mathbb QG\)</span>. More precisely,</p>
+<span class="math math-display" data-tex="\[
+F_j(r)=\sum_i[t^i]P_r\bigl(M^0(i,j)+4G\,c_{(i-j)/2}\bigr)-\frac32\sum_i[t^i]D_r\,Z^0(i,j).
+\]">\[
+F_j(r)=\sum_i[t^i]P_r\bigl(M^0(i,j)+4G\,c_{(i-j)/2}\bigr)-\frac32\sum_i[t^i]D_r\,Z^0(i,j).
+\]</span>
+<p>Consequently, if <span class="math" data-tex="\(G\)">\(G\)</span> is rational, then <span class="math" data-tex="\(\Delta_N\)">\(\Delta_N\)</span> is rational for every <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p><strong>Proof.</strong> By Proposition 5.4, the coefficient of <span class="math" data-tex="\(\zeta(2)\)">\(\zeta(2)\)</span> in <span class="math" data-tex="\(F_j(r)\)">\(F_j(r)\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\frac32\Bigl(\sum_i[t^i]P_r\,c_{(j-i-1)/2}-[t^j]D_r\Bigr)=\frac32\,[t^j]\Bigl(\frac{tP_r}f-D_r\Bigr),
+\]">\[
+\frac32\Bigl(\sum_i[t^i]P_r\,c_{(j-i-1)/2}-[t^j]D_r\Bigr)=\frac32\,[t^j]\Bigl(\frac{tP_r}f-D_r\Bigr),
+\]</span>
+<p>because <span class="math" data-tex="\(t/f=\sum_lc_lt^{2l+1}\)">\(t/f=\sum_lc_lt^{2l+1}\)</span> by (2.2), so that <span class="math" data-tex="\([t^j]{}(tP_r/f)=\sum_i[t^i]P_r\,c_{(j-1-i)/2}\)">\([t^j]{}(tP_r/f)=\sum_i[t^i]P_r\,c_{(j-1-i)/2}\)</span>. By Lemma 3.2 this coefficient vanishes for <span class="math" data-tex="\(j&lt;L\)">\(j&lt;L\)</span>. The remaining terms are the displayed ones, and <span class="math" data-tex="\(\Delta_N\)">\(\Delta_N\)</span> is a polynomial with integer coefficients in the entries of <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The point of the construction is visible here: without the contact of Lemma 3.2, each entry would also contain a multiple of <span class="math" data-tex="\(\zeta(2)=\pi^2/6\)">\(\zeta(2)=\pi^2/6\)</span>, which is irrational, and rationality of <span class="math" data-tex="\(G\)">\(G\)</span> would not make <span class="math" data-tex="\(\Delta_N\)">\(\Delta_N\)</span> rational. The next lessons show that, if <span class="math" data-tex="\(G\)">\(G\)</span> were rational, <span class="math" data-tex="\(|\Delta_N|\)">\(|\Delta_N|\)</span> would be too large to be compatible with an upper bound obtained from (6.1) as an integral.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>Exercise 7.1 (easy).</strong> Compute <span class="math" data-tex="\(T_2,T_3,U_1,U_2\)">\(T_2,T_3,U_1,U_2\)</span> and verify Lemma 2.1 for <span class="math" data-tex="\(d=2\)">\(d=2\)</span>.</p>
+<p><strong>Exercise 7.2 (easy).</strong> Compute <span class="math" data-tex="\(m_0,m_2,m_4\)">\(m_0,m_2,m_4\)</span> from Lemma 4.1, and check <span class="math" data-tex="\(m_2=\int_{-1}^1t^2|t|(1-t^2)^{-1/2}dt\)">\(m_2=\int_{-1}^1t^2|t|(1-t^2)^{-1/2}dt\)</span> directly with <span class="math" data-tex="\(t=\sin\theta\)">\(t=\sin\theta\)</span>.</p>
+<p><strong>Exercise 7.3 (medium).</strong> Compute <span class="math" data-tex="\(k^-_2,k^-_3,k^+_2,k^+_3\)">\(k^-_2,k^-_3,k^+_2,k^+_3\)</span> from the recurrences and from Proposition 5.5, and deduce <span class="math" data-tex="\(M(2,0)=1+2G\)">\(M(2,0)=1+2G\)</span> and <span class="math" data-tex="\(M(0,3)=\frac12+\frac34\zeta(2)\)">\(M(0,3)=\frac12+\frac34\zeta(2)\)</span>.</p>
+<p><strong>Exercise 7.4 (medium).</strong> Show from (3.1) that <span class="math" data-tex="\(P_r^2-\frac{f^2}{t^2}D_r^2=R_rR_r^*\)">\(P_r^2-\frac{f^2}{t^2}D_r^2=R_rR_r^*\)</span>, and compute <span class="math" data-tex="\(R_rR_r^*\)">\(R_rR_r^*\)</span>.</p>
+<p><strong>Exercise 7.5 (hard).</strong> Suppose the row exponent <span class="math" data-tex="\(C-1\)">\(C-1\)</span> in (3.1) were replaced by a smaller number <span class="math" data-tex="\(C&#x27;-1\)">\(C&#x27;-1\)</span>. Determine the largest raw index <span class="math" data-tex="\(j\)">\(j\)</span> for which the <span class="math" data-tex="\(\zeta(2)\)">\(\zeta(2)\)</span> part of <span class="math" data-tex="\(F_j(r)\)">\(F_j(r)\)</span> vanishes for every row, and explain why the parameters must satisfy <span class="math" data-tex="\(L\le C-g\)">\(L\le C-g\)</span>.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> <span class="math" data-tex="\(T_2=2x^2-1\)">\(T_2=2x^2-1\)</span>, <span class="math" data-tex="\(T_3=4x^3-3x\)">\(T_3=4x^3-3x\)</span>, <span class="math" data-tex="\(U_1=2x\)">\(U_1=2x\)</span>, <span class="math" data-tex="\(U_2=4x^2-1\)">\(U_2=4x^2-1\)</span>. With <span class="math" data-tex="\(x=(w+w^{-1})/2\)">\(x=(w+w^{-1})/2\)</span>: <span class="math" data-tex="\(2x^2-1=\frac{(w+w^{-1})^2}2-1=\frac{w^2+w^{-2}}2\)">\(2x^2-1=\frac{(w+w^{-1})^2}2-1=\frac{w^2+w^{-2}}2\)</span>.</p>
+<p><strong>7.2.</strong> <span class="math" data-tex="\(m_0=2\)">\(m_0=2\)</span>, <span class="math" data-tex="\(m_2=2/(3c_1)=4/3\)">\(m_2=2/(3c_1)=4/3\)</span>, <span class="math" data-tex="\(m_4=2/(5c_2)=16/15\)">\(m_4=2/(5c_2)=16/15\)</span>. With <span class="math" data-tex="\(t=\sin\theta\)">\(t=\sin\theta\)</span>, <span class="math" data-tex="\(m_2=2\int_0^{\pi/2}\sin^3\theta\,d\theta=2\cdot\frac23\)">\(m_2=2\int_0^{\pi/2}\sin^3\theta\,d\theta=2\cdot\frac23\)</span>.</p>
+<p><strong>7.3.</strong> From the recurrences: <span class="math" data-tex="\(2k^-_2=k^-_0+m_0+m_1=2\)">\(2k^-_2=k^-_0+m_0+m_1=2\)</span>, so <span class="math" data-tex="\(k^-_2=1\)">\(k^-_2=1\)</span>; <span class="math" data-tex="\(3k^-_3=2k^-_1+m_1+m_2=4+\frac43\)">\(3k^-_3=2k^-_1+m_1+m_2=4+\frac43\)</span>, so <span class="math" data-tex="\(k^-_3=\frac{16}9\)">\(k^-_3=\frac{16}9\)</span>; <span class="math" data-tex="\(k^+_2=2\)">\(k^+_2=2\)</span>; <span class="math" data-tex="\(2k^+_3=k^+_1+1=1\)">\(2k^+_3=k^+_1+1=1\)</span>, so <span class="math" data-tex="\(k^+_3=\frac12\)">\(k^+_3=\frac12\)</span>. Proposition 5.5 agrees: <span class="math" data-tex="\(H^*_2=c_1=\frac12\)">\(H^*_2=c_1=\frac12\)</span> gives <span class="math" data-tex="\(k^-_2=\frac12\cdot\frac2{4\cdot\frac14}=1\)">\(k^-_2=\frac12\cdot\frac2{4\cdot\frac14}=1\)</span>; <span class="math" data-tex="\(H^*_3=1/(3c_1)=\frac23\)">\(H^*_3=1/(3c_1)=\frac23\)</span> gives <span class="math" data-tex="\(k^-_3=\frac23(2+\frac23)=\frac{16}9\)">\(k^-_3=\frac23(2+\frac23)=\frac{16}9\)</span>; <span class="math" data-tex="\(k^+_3=H^*_2\cdot\frac2{4H^*_2}=\frac12\)">\(k^+_3=H^*_2\cdot\frac2{4H^*_2}=\frac12\)</span>. Then <span class="math" data-tex="\(M(2,0)=k^-_2+4Gc_1=1+2G\)">\(M(2,0)=k^-_2+4Gc_1=1+2G\)</span> and <span class="math" data-tex="\(M(0,3)=k^+_3+\frac32\zeta(2)c_1=\frac12+\frac34\zeta(2)\)">\(M(0,3)=k^+_3+\frac32\zeta(2)c_1=\frac12+\frac34\zeta(2)\)</span>.</p>
+<p><strong>7.4.</strong> <span class="math" data-tex="\(P_r\pm\frac ftD_r\)">\(P_r\pm\frac ftD_r\)</span> equals <span class="math" data-tex="\(R_r^*\)">\(R_r^*\)</span> and <span class="math" data-tex="\(R_r\)">\(R_r\)</span> respectively, by (3.1); multiply. Then <span class="math" data-tex="\(R_rR_r^*=(1-t)^{2h}t^{2C-2}\)">\(R_rR_r^*=(1-t)^{2h}t^{2C-2}\)</span>, since <span class="math" data-tex="\(w^{r-g}w^{g-r}=1\)">\(w^{r-g}w^{g-r}=1\)</span>.</p>
+<p><strong>7.5.</strong> The contact order becomes <span class="math" data-tex="\(C&#x27;-g\)">\(C&#x27;-g\)</span>, so the <span class="math" data-tex="\(\zeta(2)\)">\(\zeta(2)\)</span> part vanishes for <span class="math" data-tex="\(j&lt;C&#x27;-g\)">\(j&lt;C&#x27;-g\)</span> and in general not at <span class="math" data-tex="\(j=C&#x27;-g\)">\(j=C&#x27;-g\)</span> (row <span class="math" data-tex="\(r=0\)">\(r=0\)</span> has <span class="math" data-tex="\(tR_0/f\)">\(tR_0/f\)</span> starting exactly there, with nonzero coefficient <span class="math" data-tex="\(2^{g}\)">\(2^{g}\)</span>). The filter uses raw indices up to <span class="math" data-tex="\(L-1\)">\(L-1\)</span>, so cancellation for all of them requires <span class="math" data-tex="\(L\le C&#x27;-g\)">\(L\le C&#x27;-g\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-Catalan] OpenAI, Catalan's constant is irrational, preprint, 24 September 2026. https://github.com/openai/math/blob/main/preprints/Catalans-constant-is-irrational-September-24-2026/paper.pdf</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

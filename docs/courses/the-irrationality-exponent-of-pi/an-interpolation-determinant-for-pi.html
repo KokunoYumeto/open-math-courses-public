@@ -1,0 +1,188 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>An interpolation determinant for π</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents</a><a href="interpolation-on-logarithmic-curves.html">Previous lesson</a><a href="the-irrationality-exponent-of-pi-is-two.html">Next lesson</a><a href="src/an-interpolation-determinant-for-pi.md">Editable source</a></nav><main><article><h1 id="an-interpolation-determinant-for-π">An interpolation determinant for π</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Suppose that <span class="math" data-tex="\(\pi\)">\(\pi\)</span> has very good rational approximations <span class="math" data-tex="\(p_i/q_i\)">\(p_i/q_i\)</span>, <span class="math" data-tex="\(1\le i\le m\)">\(1\le i\le m\)</span>. This lesson builds from them a matrix of Taylor coefficients of polynomials along logarithmic curves centred at Gaussian rational points, takes a nonzero maximal minor <span class="math" data-tex="\(\Delta_H\)">\(\Delta_H\)</span> (it exists by <a href="interpolation-on-logarithmic-curves.html">Interpolation on logarithmic curves</a>), and proves two bounds. Arithmetically, clearing denominators shows that <span class="math" data-tex="\(\Delta_H\)">\(\Delta_H\)</span> cannot be too small. Analytically, moving the centres to the exact periods <span class="math" data-tex="\(2\pi\mathrm ij\)">\(2\pi\mathrm ij\)</span> of the exponential and expanding in Taylor series shows that <span class="math" data-tex="\(\Delta_H\)">\(\Delta_H\)</span> is very small, either because many rows test the same entire functions, or because the approximation errors <span class="math" data-tex="\(|\pi-p_i/q_i|\)">\(|\pi-p_i/q_i|\)</span> enter to a high power. The last proposition states when the two bounds contradict each other; <a href="the-irrationality-exponent-of-pi-is-two.html">The irrationality exponent of π is two</a> chooses parameters for which they do.</p>
+<p>We use Theorem 1.1 and Lemma 3.1 of the interpolation lesson, Lemma 3.1 (lattice counts) of <a href="the-curve-inequality.html">The curve inequality</a>, Legendre's formula for the exponent of a prime in <span class="math" data-tex="\(n!\)">\(n!\)</span>, and Cauchy's estimate for the coefficients of a power series on a disk, from the core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C50">Complex Analysis (C50)</a>. The imaginary unit is written <span class="math" data-tex="\(\mathrm i\)">\(\mathrm i\)</span>; the letter <span class="math" data-tex="\(i\)">\(i\)</span> is an index. Put <span class="math" data-tex="\(\omega=2\pi\mathrm i\)">\(\omega=2\pi\mathrm i\)</span>.</p>
+<h2 id="1-the-data-and-the-matrix">1. The data and the matrix</h2>
+<p>Fix <span class="math" data-tex="\(\nu&gt;2\)">\(\nu&gt;2\)</span>, integers <span class="math" data-tex="\(m,K\ge1\)">\(m,K\ge1\)</span>, and positive rationals <span class="math" data-tex="\(w_0,v_0,\theta\)">\(w_0,v_0,\theta\)</span> as in Theorem 1.1 of the interpolation lesson. Suppose that for <span class="math" data-tex="\(1\le i\le m\)">\(1\le i\le m\)</span> there are integers <span class="math" data-tex="\(p_i\ne0\)">\(p_i\ne0\)</span>, <span class="math" data-tex="\(q_i\ge2\)">\(q_i\ge2\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\Bigl|\pi-\frac{p_i}{q_i}\Bigr|\le q_i^{-\nu},\qquad w_i=\lceil\log q_i\rceil,\qquad r_i=\frac{2\mathrm ip_i}{q_i},
+\tag{1.1}
+\]">\[
+\Bigl|\pi-\frac{p_i}{q_i}\Bigr|\le q_i^{-\nu},\qquad w_i=\lceil\log q_i\rceil,\qquad r_i=\frac{2\mathrm ip_i}{q_i},
+\tag{1.1}
+\]</span>
+<p>such that the integers <span class="math" data-tex="\(w_1,\dots,w_m\)">\(w_1,\dots,w_m\)</span> exceed the thresholds of that theorem. Put <span class="math" data-tex="\(w_*=\min_iw_i\ge1\)">\(w_*=\min_iw_i\ge1\)</span>, <span class="math" data-tex="\(w\alpha=\sum_iw_i\alpha_i\)">\(w\alpha=\sum_iw_i\alpha_i\)</span> for <span class="math" data-tex="\(\alpha\in\mathbb N^m\)">\(\alpha\in\mathbb N^m\)</span>, and take the centres <span class="math" data-tex="\(c_{ji}=jr_i\)">\(c_{ji}=jr_i\)</span>, <span class="math" data-tex="\(0\le j&lt;K\)">\(0\le j&lt;K\)</span>; they are distinct in <span class="math" data-tex="\(j\)">\(j\)</span> because <span class="math" data-tex="\(r_i\ne0\)">\(r_i\ne0\)</span>. Fix <span class="math" data-tex="\(F_0&gt;2/\theta\)">\(F_0&gt;2/\theta\)</span> and put</p>
+<span class="math math-display" data-tex="\[
+T_i=\Bigl\lceil\frac{F_0w_i}{v_0}\Bigr\rceil,\qquad G_i(t)=\sum_{1\le k&lt;T_i}\frac{(-1)^{k+1}t^k}k .
+\]">\[
+T_i=\Bigl\lceil\frac{F_0w_i}{v_0}\Bigr\rceil,\qquad G_i(t)=\sum_{1\le k&lt;T_i}\frac{(-1)^{k+1}t^k}k .
+\]</span>
+<p>The first omitted term of <span class="math" data-tex="\(\log(1+t)\)">\(\log(1+t)\)</span> has <span class="math" data-tex="\(V\)">\(V\)</span>-weight <span class="math" data-tex="\(v_0T_i\ge F_0w_i&gt;w_i/\theta=v_i\)">\(v_0T_i\ge F_0w_i&gt;w_i/\theta=v_i\)</span>, so by Lemma 3.1 of the interpolation lesson, replacing <span class="math" data-tex="\(\log(1+t)\)">\(\log(1+t)\)</span> by <span class="math" data-tex="\(G_i(t)\)">\(G_i(t)\)</span> in (1.1) of that lesson preserves the surjectivity.</p>
+<p><strong>The matrix.</strong> Its columns are indexed by the monomials <span class="math" data-tex="\(P=Y^hX^\alpha\)">\(P=Y^hX^\alpha\)</span> with <span class="math" data-tex="\(w_0h+w\alpha\le H\)">\(w_0h+w\alpha\le H\)</span>, and its rows by the triples <span class="math" data-tex="\(\rho=(j,s,\beta)\)">\(\rho=(j,s,\beta)\)</span> with <span class="math" data-tex="\(0\le j&lt;K\)">\(0\le j&lt;K\)</span>, <span class="math" data-tex="\(s\in\mathbb N\)">\(s\in\mathbb N\)</span>, <span class="math" data-tex="\(\beta\in\mathbb N^m\)">\(\beta\in\mathbb N^m\)</span> and <span class="math" data-tex="\(v_0s+w\beta/\theta&lt;H\)">\(v_0s+w\beta/\theta&lt;H\)</span>. The entry is the coefficient of <span class="math" data-tex="\(t^su^\beta\)">\(t^su^\beta\)</span> in</p>
+<span class="math math-display" data-tex="\[
+P\bigl(1+t,\,jr_1+G_1(t)+u_1,\,\dots,\,jr_m+G_m(t)+u_m\bigr).
+\tag{1.2}
+\]">\[
+P\bigl(1+t,\,jr_1+G_1(t)+u_1,\,\dots,\,jr_m+G_m(t)+u_m\bigr).
+\tag{1.2}
+\]</span>
+<p>For <span class="math" data-tex="\(H\)">\(H\)</span> a sufficiently large multiple of the integer <span class="math" data-tex="\(R\)">\(R\)</span> of the interpolation theorem, this matrix has independent rows, so it has a nonzero square minor <span class="math" data-tex="\(\Delta_H\)">\(\Delta_H\)</span> using all the rows. Let <span class="math" data-tex="\(M=M_H\)">\(M=M_H\)</span> be the number of rows and</p>
+<span class="math math-display" data-tex="\[
+\bar b=\bar b_H=\frac1{MH}\sum_{\rho=(j,s,\beta)}w\beta .
+\]">\[
+\bar b=\bar b_H=\frac1{MH}\sum_{\rho=(j,s,\beta)}w\beta .
+\]</span>
+<p>By the lattice-count lemma, <span class="math" data-tex="\(M\sim K\theta^mH^{m+1}/\bigl((m+1)!\,v_0\prod_iw_i\bigr)\)">\(M\sim K\theta^mH^{m+1}/\bigl((m+1)!\,v_0\prod_iw_i\bigr)\)</span> as <span class="math" data-tex="\(H\to\infty\)">\(H\to\infty\)</span>, and <span class="math" data-tex="\(0\le\bar b\le\theta\)">\(0\le\bar b\le\theta\)</span> because every row has <span class="math" data-tex="\(w\beta&lt;\theta H\)">\(w\beta&lt;\theta H\)</span>. All parameters except <span class="math" data-tex="\(H\)">\(H\)</span> are fixed in this lesson.</p>
+<h2 id="2-the-arithmetic-lower-bound">2. The arithmetic lower bound</h2>
+<p><strong>Lemma 2.1.</strong> For every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, <span class="math" data-tex="\(\log\operatorname{lcm}(1,\dots,n)\le4n\log2\)">\(\log\operatorname{lcm}(1,\dots,n)\le4n\log2\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\psi(N)=\log\operatorname{lcm}(1,\dots,N)=\sum_{p^k\le N}\log p\)">\(\psi(N)=\log\operatorname{lcm}(1,\dots,N)=\sum_{p^k\le N}\log p\)</span>. For <span class="math" data-tex="\(\ell\ge1\)">\(\ell\ge1\)</span>, Legendre's formula gives <span class="math" data-tex="\(v_p\binom{2\ell}\ell=\sum_{k\ge1}\bigl(\lfloor2\ell/p^k\rfloor-2\lfloor\ell/p^k\rfloor\bigr)\)">\(v_p\binom{2\ell}\ell=\sum_{k\ge1}\bigl(\lfloor2\ell/p^k\rfloor-2\lfloor\ell/p^k\rfloor\bigr)\)</span>, a sum of terms equal to <span class="math" data-tex="\(0\)">\(0\)</span> or <span class="math" data-tex="\(1\)">\(1\)</span>, and the term is <span class="math" data-tex="\(1\)">\(1\)</span> whenever <span class="math" data-tex="\(\ell&lt;p^k\le2\ell\)">\(\ell&lt;p^k\le2\ell\)</span>. So <span class="math" data-tex="\(\psi(2\ell)-\psi(\ell)\le\log\binom{2\ell}\ell\le2\ell\log2\)">\(\psi(2\ell)-\psi(\ell)\le\log\binom{2\ell}\ell\le2\ell\log2\)</span>. Summing over <span class="math" data-tex="\(\ell=2^0,\dots,2^{r-1}\)">\(\ell=2^0,\dots,2^{r-1}\)</span> gives <span class="math" data-tex="\(\psi(2^r)\le2^{r+1}\log2\)">\(\psi(2^r)\le2^{r+1}\log2\)</span>. For <span class="math" data-tex="\(2^{r-1}&lt;n\le2^r\)">\(2^{r-1}&lt;n\le2^r\)</span>, <span class="math" data-tex="\(\psi(n)\le\psi(2^r)\le2^{r+1}\log2&lt;4n\log2\)">\(\psi(n)\le\psi(2^r)\le2^{r+1}\log2&lt;4n\log2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 2.2</strong> (arithmetic lower bound). With <span class="math" data-tex="\(\Lambda=4\log2\)">\(\Lambda=4\log2\)</span> and</p>
+<span class="math math-display" data-tex="\[
+E_{\mathrm{ar}}=\frac{\Lambda F_0m}{v_0}+\Lambda\sum_{i=1}^m\frac1{w_i}+\frac\theta{w_*},
+\]">\[
+E_{\mathrm{ar}}=\frac{\Lambda F_0m}{v_0}+\Lambda\sum_{i=1}^m\frac1{w_i}+\frac\theta{w_*},
+\]</span>
+<p>every minor <span class="math" data-tex="\(\Delta_H\)">\(\Delta_H\)</span> chosen above satisfies</p>
+<span class="math math-display" data-tex="\[
+\frac{\log|\Delta_H|}{MH}\ge-(1-\bar b)-E_{\mathrm{ar}} .
+\]">\[
+\frac{\log|\Delta_H|}{MH}\ge-(1-\bar b)-E_{\mathrm{ar}} .
+\]</span>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(L_i=\operatorname{lcm}(1,\dots,T_i-1)\)">\(L_i=\operatorname{lcm}(1,\dots,T_i-1)\)</span> (<span class="math" data-tex="\(L_i=1\)">\(L_i=1\)</span> if <span class="math" data-tex="\(T_i=1\)">\(T_i=1\)</span>) and <span class="math" data-tex="\(D_H=\prod_iL_i^{\lfloor H/w_i\rfloor}\)">\(D_H=\prod_iL_i^{\lfloor H/w_i\rfloor}\)</span>. Multiply the column of <span class="math" data-tex="\(Y^hX^\alpha\)">\(Y^hX^\alpha\)</span> by <span class="math" data-tex="\(\prod_iq_i^{\alpha_i}\)">\(\prod_iq_i^{\alpha_i}\)</span> and the row of <span class="math" data-tex="\((j,s,\beta)\)">\((j,s,\beta)\)</span> by <span class="math" data-tex="\(\prod_iq_i^{-\beta_i}\)">\(\prod_iq_i^{-\beta_i}\)</span>. Expanding (1.2), the scaled entry is <span class="math" data-tex="\(0\)">\(0\)</span> unless <span class="math" data-tex="\(\alpha\ge\beta\)">\(\alpha\ge\beta\)</span> componentwise, and then equals</p>
+<span class="math math-display" data-tex="\[
+\prod_i\binom{\alpha_i}{\beta_i}\ [t^s]\,(1+t)^h\prod_i\bigl(q_i(jr_i+G_i(t))\bigr)^{\alpha_i-\beta_i}.
+\]">\[
+\prod_i\binom{\alpha_i}{\beta_i}\ [t^s]\,(1+t)^h\prod_i\bigl(q_i(jr_i+G_i(t))\bigr)^{\alpha_i-\beta_i}.
+\]</span>
+<p>Here <span class="math" data-tex="\(q_ijr_i=2\mathrm ijp_i\in\mathbb Z[\mathrm i]\)">\(q_ijr_i=2\mathrm ijp_i\in\mathbb Z[\mathrm i]\)</span> and <span class="math" data-tex="\(q_iG_i(t)\)">\(q_iG_i(t)\)</span> has coefficients in <span class="math" data-tex="\(L_i^{-1}\mathbb Z\)">\(L_i^{-1}\mathbb Z\)</span>. So the denominator of the entry divides <span class="math" data-tex="\(\prod_iL_i^{\alpha_i}\)">\(\prod_iL_i^{\alpha_i}\)</span>, which divides <span class="math" data-tex="\(D_H\)">\(D_H\)</span> because <span class="math" data-tex="\(w_i\alpha_i\le H\)">\(w_i\alpha_i\le H\)</span>. Multiplying the scaled square submatrix by <span class="math" data-tex="\(D_H\)">\(D_H\)</span> gives a matrix over <span class="math" data-tex="\(\mathbb Z[\mathrm i]\)">\(\mathbb Z[\mathrm i]\)</span> with nonzero determinant, of absolute value at least <span class="math" data-tex="\(1\)">\(1\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\log|\Delta_H|\ge-M\log D_H-\sum_{\text{columns}}\sum_i\alpha_i\log q_i+\sum_{\text{rows}}\sum_i\beta_i\log q_i .
+\]">\[
+\log|\Delta_H|\ge-M\log D_H-\sum_{\text{columns}}\sum_i\alpha_i\log q_i+\sum_{\text{rows}}\sum_i\beta_i\log q_i .
+\]</span>
+<p>Since <span class="math" data-tex="\(\log q_i\le w_i\)">\(\log q_i\le w_i\)</span>, each column has <span class="math" data-tex="\(\sum_i\alpha_i\log q_i\le w\alpha\le H\)">\(\sum_i\alpha_i\log q_i\le w\alpha\le H\)</span>. Since <span class="math" data-tex="\(\log q_i&gt;w_i-1\)">\(\log q_i&gt;w_i-1\)</span> and <span class="math" data-tex="\(\sum_i\beta_i\le w\beta/w_*&lt;\theta H/w_*\)">\(\sum_i\beta_i\le w\beta/w_*&lt;\theta H/w_*\)</span>, the row sum is at least <span class="math" data-tex="\(MH\bar b-MH\theta/w_*\)">\(MH\bar b-MH\theta/w_*\)</span>. Finally, by Lemma 2.1 and <span class="math" data-tex="\(T_i\le F_0w_i/v_0+1\)">\(T_i\le F_0w_i/v_0+1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\frac{\log D_H}H\le\sum_i\frac{\Lambda T_i}{w_i}\le\frac{\Lambda F_0m}{v_0}+\Lambda\sum_i\frac1{w_i}.
+\]">\[
+\frac{\log D_H}H\le\sum_i\frac{\Lambda T_i}{w_i}\le\frac{\Lambda F_0m}{v_0}+\Lambda\sum_i\frac1{w_i}.
+\]</span>
+<p>Dividing by <span class="math" data-tex="\(MH\)">\(MH\)</span> gives the claim. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-translation-to-the-exact-periods">3. Translation to the exact periods</h2>
+<p>For <span class="math" data-tex="\(a\in\mathbb N^m\)">\(a\in\mathbb N^m\)</span> and a column <span class="math" data-tex="\(P\)">\(P\)</span> define the entire function</p>
+<span class="math math-display" data-tex="\[
+f_{a,P}(z)=[u^a]\,P(e^z,z+u_1,\dots,z+u_m),\qquad
+f_{a,Y^hX^\alpha}(z)=\binom\alpha a\,e^{hz}z^{|\alpha|-|a|}\ \ (a\le\alpha),\ \ 0\ \text{otherwise}.
+\]">\[
+f_{a,P}(z)=[u^a]\,P(e^z,z+u_1,\dots,z+u_m),\qquad
+f_{a,Y^hX^\alpha}(z)=\binom\alpha a\,e^{hz}z^{|\alpha|-|a|}\ \ (a\le\alpha),\ \ 0\ \text{otherwise}.
+\]</span>
+<p>Only indices with <span class="math" data-tex="\(wa\le H\)">\(wa\le H\)</span> occur.</p>
+<p><strong>Lemma 3.1</strong> (row translation). Each row <span class="math" data-tex="\(\rho=(j,s,\beta)\)">\(\rho=(j,s,\beta)\)</span> of the matrix is a linear combination, with coefficients independent of the column, of at most</p>
+<span class="math math-display" data-tex="\[
+Q_H=(\lfloor H\rfloor+1)^{2m}(\lfloor H/v_0\rfloor+1)
+\]">\[
+Q_H=(\lfloor H\rfloor+1)^{2m}(\lfloor H/v_0\rfloor+1)
+\]</span>
+<p><em>test rows</em> <span class="math" data-tex="\(\bigl([t^\ell]f_{a,P}(j\omega+\log(1+t))\bigr)_P\)">\(\bigl([t^\ell]f_{a,P}(j\omega+\log(1+t))\bigr)_P\)</span> with <span class="math" data-tex="\(a\ge\beta\)">\(a\ge\beta\)</span>, <span class="math" data-tex="\(wa\le H\)">\(wa\le H\)</span> and <span class="math" data-tex="\(0\le\ell\le s\)">\(0\le\ell\le s\)</span>. Each coefficient <span class="math" data-tex="\(\xi\)">\(\xi\)</span> attached to an index <span class="math" data-tex="\(a\)">\(a\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\log|\xi|\le-\nu\,w(a-\beta)+HE_{\mathrm{tr}},\qquad E_{\mathrm{tr}}=\frac\nu{F_0}+\frac{\log2}{v_0}+\frac{\log4+\log(2K)+\nu}{w_*}.
+\]">\[
+\log|\xi|\le-\nu\,w(a-\beta)+HE_{\mathrm{tr}},\qquad E_{\mathrm{tr}}=\frac\nu{F_0}+\frac{\log2}{v_0}+\frac{\log4+\log(2K)+\nu}{w_*}.
+\]</span>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(\epsilon_i=jr_i-j\omega=2\mathrm ij(p_i/q_i-\pi)\)">\(\epsilon_i=jr_i-j\omega=2\mathrm ij(p_i/q_i-\pi)\)</span> and <span class="math" data-tex="\(\tau_i(t)=G_i(t)-\log(1+t)\)">\(\tau_i(t)=G_i(t)-\log(1+t)\)</span>. With <span class="math" data-tex="\(z=j\omega+\log(1+t)\)">\(z=j\omega+\log(1+t)\)</span> we have <span class="math" data-tex="\(e^z=1+t\)">\(e^z=1+t\)</span> and <span class="math" data-tex="\(jr_i+G_i(t)+u_i=z+u_i+\epsilon_i+\tau_i(t)\)">\(jr_i+G_i(t)+u_i=z+u_i+\epsilon_i+\tau_i(t)\)</span>. Expanding <span class="math" data-tex="\(P(e^z,z+v)=\sum_af_{a,P}(z)v^a\)">\(P(e^z,z+v)=\sum_af_{a,P}(z)v^a\)</span> with <span class="math" data-tex="\(v=u+\epsilon+\tau(t)\)">\(v=u+\epsilon+\tau(t)\)</span>, and <span class="math" data-tex="\(v^a\)">\(v^a\)</span> by the binomial theorem, the coefficient of <span class="math" data-tex="\(t^su^\beta\)">\(t^su^\beta\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\sum_{a\ge\beta}\binom a\beta\sum_{0\le d\le a-\beta}\binom{a-\beta}d\epsilon^{a-\beta-d}\sum_{k=0}^s\Bigl([t^k]\prod_i\tau_i(t)^{d_i}\Bigr)\,[t^{s-k}]f_{a,P}\bigl(j\omega+\log(1+t)\bigr),
+\]">\[
+\sum_{a\ge\beta}\binom a\beta\sum_{0\le d\le a-\beta}\binom{a-\beta}d\epsilon^{a-\beta-d}\sum_{k=0}^s\Bigl([t^k]\prod_i\tau_i(t)^{d_i}\Bigr)\,[t^{s-k}]f_{a,P}\bigl(j\omega+\log(1+t)\bigr),
+\]</span>
+<p>with multi-index notation. The scalars do not depend on <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p>The series <span class="math" data-tex="\(\prod_i\tau_i^{d_i}\)">\(\prod_i\tau_i^{d_i}\)</span> has order at least <span class="math" data-tex="\(\sum_id_iT_i\)">\(\sum_id_iT_i\)</span>; so a nonzero term has <span class="math" data-tex="\(\sum d_iT_i\le k\le s\)">\(\sum d_iT_i\le k\le s\)</span>, and then</p>
+<span class="math math-display" data-tex="\[
+\sum_id_iw_i\le\frac{v_0}{F_0}\sum_id_iT_i\le\frac{v_0s}{F_0}&lt;\frac H{F_0}.
+\]">\[
+\sum_id_iw_i\le\frac{v_0}{F_0}\sum_id_iT_i\le\frac{v_0s}{F_0}&lt;\frac H{F_0}.
+\]</span>
+<p>On <span class="math" data-tex="\(|t|=1/2\)">\(|t|=1/2\)</span>, <span class="math" data-tex="\(|\tau_i(t)|\le\sum_{k\ge T_i}2^{-k}/k\le1\)">\(|\tau_i(t)|\le\sum_{k\ge T_i}2^{-k}/k\le1\)</span>, so Cauchy's estimate bounds the coefficient <span class="math" data-tex="\([t^k]\prod\tau_i^{d_i}\)">\([t^k]\prod\tau_i^{d_i}\)</span> by <span class="math" data-tex="\(2^k\le2^s&lt;2^{H/v_0}\)">\(2^k\le2^s&lt;2^{H/v_0}\)</span>. From (1.1), <span class="math" data-tex="\(|\epsilon_i|\le2Kq_i^{-\nu}\le2Ke^\nu e^{-\nu w_i}\)">\(|\epsilon_i|\le2Kq_i^{-\nu}\le2Ke^\nu e^{-\nu w_i}\)</span>, since <span class="math" data-tex="\(q_i&gt;e^{w_i-1}\)">\(q_i&gt;e^{w_i-1}\)</span>. So</p>
+<span class="math math-display" data-tex="\[
+|\epsilon^{a-\beta-d}|\le(2Ke^\nu)^{|a|}e^{-\nu w(a-\beta)}e^{\nu wd}\le e^{H(\log(2K)+\nu)/w_*}\,e^{-\nu w(a-\beta)}\,e^{\nu H/F_0},
+\]">\[
+|\epsilon^{a-\beta-d}|\le(2Ke^\nu)^{|a|}e^{-\nu w(a-\beta)}e^{\nu wd}\le e^{H(\log(2K)+\nu)/w_*}\,e^{-\nu w(a-\beta)}\,e^{\nu H/F_0},
+\]</span>
+<p>using <span class="math" data-tex="\(|a|\le wa/w_*\le H/w_*\)">\(|a|\le wa/w_*\le H/w_*\)</span>. Moreover <span class="math" data-tex="\(\binom a\beta\binom{a-\beta}d\le4^{|a|}\le e^{H\log4/w_*}\)">\(\binom a\beta\binom{a-\beta}d\le4^{|a|}\le e^{H\log4/w_*}\)</span>. Multiplying these bounds gives the estimate for <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. For the count: every coordinate of <span class="math" data-tex="\(a\)">\(a\)</span> and of <span class="math" data-tex="\(d\)">\(d\)</span> is at most <span class="math" data-tex="\(H\)">\(H\)</span> (as <span class="math" data-tex="\(w_i\ge1\)">\(w_i\ge1\)</span>), and <span class="math" data-tex="\(0\le k\le s&lt;H/v_0\)">\(0\le k\le s&lt;H/v_0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-repeated-taylor-degrees">4. Repeated Taylor degrees</h2>
+<p><strong>Lemma 4.1</strong> (collision estimate). Choose one test row from the expansion of each row of <span class="math" data-tex="\(\Delta_H\)">\(\Delta_H\)</span>, and let <span class="math" data-tex="\(T\)">\(T\)</span> be the resulting <span class="math" data-tex="\(M\times M\)">\(M\times M\)</span> matrix (same columns as <span class="math" data-tex="\(\Delta_H\)">\(\Delta_H\)</span>). Let <span class="math" data-tex="\(n_a\)">\(n_a\)</span> be the number of its rows with index <span class="math" data-tex="\(a\)">\(a\)</span>. With <span class="math" data-tex="\(c=(\log2)/4\)">\(c=(\log2)/4\)</span> and</p>
+<span class="math math-display" data-tex="\[
+E_{\mathrm{hol}}=\frac{100K}{w_0}+\frac{\log2}{v_0}+\frac{\log(200K)}{w_*},
+\]">\[
+E_{\mathrm{hol}}=\frac{100K}{w_0}+\frac{\log2}{v_0}+\frac{\log(200K)}{w_*},
+\]</span>
+<p>there is <span class="math" data-tex="\(\rho_H\to0\)">\(\rho_H\to0\)</span>, independent of the choices, with</p>
+<span class="math math-display" data-tex="\[
+|\det T|\le\exp\Bigl\{-c\sum_an_a^2+MH(E_{\mathrm{hol}}+\rho_H)\Bigr\}.
+\]">\[
+|\det T|\le\exp\Bigl\{-c\sum_an_a^2+MH(E_{\mathrm{hol}}+\rho_H)\Bigr\}.
+\]</span>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(R_0=100K\)">\(R_0=100K\)</span>. For a column <span class="math" data-tex="\(P=Y^hX^\alpha\)">\(P=Y^hX^\alpha\)</span> and <span class="math" data-tex="\(|z|\le R_0\)">\(|z|\le R_0\)</span>, <span class="math" data-tex="\(|f_{a,P}(z)|\le2^{|\alpha|}e^{hR_0}R_0^{|\alpha|}\le\mathcal D_H:=\exp\{H(R_0/w_0+\log(2R_0)/w_*)\}\)">\(|f_{a,P}(z)|\le2^{|\alpha|}e^{hR_0}R_0^{|\alpha|}\le\mathcal D_H:=\exp\{H(R_0/w_0+\log(2R_0)/w_*)\}\)</span>, because <span class="math" data-tex="\(h\le H/w_0\)">\(h\le H/w_0\)</span> and <span class="math" data-tex="\(|\alpha|\le H/w_*\)">\(|\alpha|\le H/w_*\)</span>. Expand <span class="math" data-tex="\(f_{a,P}(z)=\sum_{e\ge0}c_{a,e,P}(z/R_0)^e\)">\(f_{a,P}(z)=\sum_{e\ge0}c_{a,e,P}(z/R_0)^e\)</span>; Cauchy's estimate gives <span class="math" data-tex="\(|c_{a,e,P}|\le\mathcal D_H\)">\(|c_{a,e,P}|\le\mathcal D_H\)</span>. A test row with centre <span class="math" data-tex="\(j\)">\(j\)</span> and order <span class="math" data-tex="\(\ell\)">\(\ell\)</span> evaluates <span class="math" data-tex="\(P\mapsto[t^\ell]f_{a,P}(j\omega+\log(1+t))\)">\(P\mapsto[t^\ell]f_{a,P}(j\omega+\log(1+t))\)</span>. On <span class="math" data-tex="\(|t|=1/2\)">\(|t|=1/2\)</span>, <span class="math" data-tex="\(|j\omega+\log(1+t)|\le2\pi(K-1)+\log2&lt;50K=R_0/2\)">\(|j\omega+\log(1+t)|\le2\pi(K-1)+\log2&lt;50K=R_0/2\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\Bigl|[t^\ell]\Bigl(\frac{j\omega+\log(1+t)}{R_0}\Bigr)^e\Bigr|\le2^\ell2^{-e}.
+\]">\[
+\Bigl|[t^\ell]\Bigl(\frac{j\omega+\log(1+t)}{R_0}\Bigr)^e\Bigr|\le2^\ell2^{-e}.
+\]</span>
+<p>Expand <span class="math" data-tex="\(\det T\)">\(\det T\)</span> by multilinearity in the rows, writing each test row as <span class="math" data-tex="\(\sum_e\bigl([t^\ell]{}(\cdots)^e\bigr)\,(c_{a,e,P})_P\)">\(\sum_e\bigl([t^\ell]{}(\cdots)^e\bigr)\,(c_{a,e,P})_P\)</span>. The terms are indexed by a choice of a degree <span class="math" data-tex="\(e_\rho\)">\(e_\rho\)</span> for every row; each is a product of scalars times the determinant of the matrix with rows <span class="math" data-tex="\((c_{a_\rho,e_\rho,P})_P\)">\((c_{a_\rho,e_\rho,P})_P\)</span>, of modulus at most <span class="math" data-tex="\(M!\,\mathcal D_H^M\)">\(M!\,\mathcal D_H^M\)</span>. The expansion converges absolutely, by the factors <span class="math" data-tex="\(2^{-e}\)">\(2^{-e}\)</span>. If two rows have the same pair <span class="math" data-tex="\((a,e)\)">\((a,e)\)</span>, their coefficient rows coincide and the term vanishes. So in a nonzero term the degrees within each group of rows with the same <span class="math" data-tex="\(a\)">\(a\)</span> are distinct, and <span class="math" data-tex="\(\sum_\rho e_\rho\ge\sum_a\binom{n_a}2\)">\(\sum_\rho e_\rho\ge\sum_a\binom{n_a}2\)</span>. Using half of the decay for this and summing the other half freely,</p>
+<span class="math math-display" data-tex="\[
+|\det T|\le M!\,\mathcal D_H^M\,2^{\sum_\rho\ell_\rho}\,2^{-\frac12\sum_a\binom{n_a}2}\,(1-2^{-1/2})^{-M}.
+\]">\[
+|\det T|\le M!\,\mathcal D_H^M\,2^{\sum_\rho\ell_\rho}\,2^{-\frac12\sum_a\binom{n_a}2}\,(1-2^{-1/2})^{-M}.
+\]</span>
+<p>Here <span class="math" data-tex="\(\sum_\rho\ell_\rho\le\sum_\rho s_\rho\le MH/v_0\)">\(\sum_\rho\ell_\rho\le\sum_\rho s_\rho\le MH/v_0\)</span>, and <span class="math" data-tex="\(\frac12\sum_a\binom{n_a}2=\frac14\sum_an_a^2-\frac M4\)">\(\frac12\sum_a\binom{n_a}2=\frac14\sum_an_a^2-\frac M4\)</span>. Taking logarithms gives the claim with <span class="math" data-tex="\(\rho_H=\bigl(\log M+\frac14\log2-\log(1-2^{-1/2})\bigr)/H\)">\(\rho_H=\bigl(\log M+\frac14\log2-\log(1-2^{-1/2})\bigr)/H\)</span>, which tends to <span class="math" data-tex="\(0\)">\(0\)</span> because <span class="math" data-tex="\(M\)">\(M\)</span> grows polynomially in <span class="math" data-tex="\(H\)">\(H\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-two-incompatible-bounds">5. Two incompatible bounds</h2>
+<p>Put <span class="math" data-tex="\(E_{\mathrm{an}}=E_{\mathrm{tr}}+E_{\mathrm{hol}}\)">\(E_{\mathrm{an}}=E_{\mathrm{tr}}+E_{\mathrm{hol}}\)</span>.</p>
+<p><strong>Proposition 5.1</strong> (determinant comparison). Let <span class="math" data-tex="\(0&lt;A&lt;1\)">\(0&lt;A&lt;1\)</span>, <span class="math" data-tex="\(0&lt;\eta&lt;1\)">\(0&lt;\eta&lt;1\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+g=\nu\bigl(A(1-\eta)-\theta\bigr)-(1-\theta),\qquad\mathcal L=\frac{\eta^2K\theta^m}{(m+1)v_0A^m}.
+\]">\[
+g=\nu\bigl(A(1-\eta)-\theta\bigr)-(1-\theta),\qquad\mathcal L=\frac{\eta^2K\theta^m}{(m+1)v_0A^m}.
+\]</span>
+<p>If</p>
+<span class="math math-display" data-tex="\[
+g&gt;0,\qquad E_{\mathrm{ar}}+E_{\mathrm{an}}&lt;g,\qquad c\mathcal L&gt;1+E_{\mathrm{ar}}+E_{\mathrm{an}},
+\tag{5.1}
+\]">\[
+g&gt;0,\qquad E_{\mathrm{ar}}+E_{\mathrm{an}}&lt;g,\qquad c\mathcal L&gt;1+E_{\mathrm{ar}}+E_{\mathrm{an}},
+\tag{5.1}
+\]</span>
+<p>then the approximations (1.1) cannot exist together with the hypotheses of Section 1.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(D_A(H)=\#\{a\in\mathbb N^m:wa\le AH\}\)">\(D_A(H)=\#\{a\in\mathbb N^m:wa\le AH\}\)</span> and <span class="math" data-tex="\(\mathcal L_H=\eta^2M/(HD_A(H))\)">\(\mathcal L_H=\eta^2M/(HD_A(H))\)</span>. The lattice counts give <span class="math" data-tex="\(D_A(H)\sim(AH)^m/(m!\prod_iw_i)\)">\(D_A(H)\sim(AH)^m/(m!\prod_iw_i)\)</span>, and with the asymptotics of <span class="math" data-tex="\(M\)">\(M\)</span>, <span class="math" data-tex="\(\mathcal L_H\to\mathcal L\)">\(\mathcal L_H\to\mathcal L\)</span>.</p>
+<p>Expand <span class="math" data-tex="\(\Delta_H\)">\(\Delta_H\)</span> by the row translations of Lemma 3.1, using multilinearity: it becomes a sum of at most <span class="math" data-tex="\(Q_H^M\)">\(Q_H^M\)</span> terms, each a product of coefficients <span class="math" data-tex="\(\xi_\rho\)">\(\xi_\rho\)</span> times a determinant <span class="math" data-tex="\(\det T\)">\(\det T\)</span> as in Lemma 4.1. For a term with indices <span class="math" data-tex="\(a_\rho\)">\(a_\rho\)</span>, the coefficients contribute at most <span class="math" data-tex="\(\exp\{-\nu\sum_\rho w(a_\rho-\beta_\rho)+MHE_{\mathrm{tr}}\}=\exp\{-\nu\sum_\rho wa_\rho+\nu MH\bar b+MHE_{\mathrm{tr}}\}\)">\(\exp\{-\nu\sum_\rho w(a_\rho-\beta_\rho)+MHE_{\mathrm{tr}}\}=\exp\{-\nu\sum_\rho wa_\rho+\nu MH\bar b+MHE_{\mathrm{tr}}\}\)</span>.</p>
+<p><em>If at least <span class="math" data-tex="\(\eta M\)">\(\eta M\)</span> rows have <span class="math" data-tex="\(wa_\rho\le AH\)">\(wa_\rho\le AH\)</span>:</em> these rows have at most <span class="math" data-tex="\(D_A(H)\)">\(D_A(H)\)</span> distinct indices, so Cauchy–Schwarz gives <span class="math" data-tex="\(\sum_an_a^2\ge(\eta M)^2/D_A(H)=MH\mathcal L_H\)">\(\sum_an_a^2\ge(\eta M)^2/D_A(H)=MH\mathcal L_H\)</span>. The coefficient exponent <span class="math" data-tex="\(-\nu\sum w(a_\rho-\beta_\rho)\)">\(-\nu\sum w(a_\rho-\beta_\rho)\)</span> is nonpositive. So the term is at most <span class="math" data-tex="\(\exp\{MH(-c\mathcal L_H+E_{\mathrm{an}}+\rho_H)\}\)">\(\exp\{MH(-c\mathcal L_H+E_{\mathrm{an}}+\rho_H)\}\)</span>.</p>
+<p><em>Otherwise</em> more than <span class="math" data-tex="\((1-\eta)M\)">\((1-\eta)M\)</span> rows have <span class="math" data-tex="\(wa_\rho&gt;AH\)">\(wa_\rho&gt;AH\)</span>, so <span class="math" data-tex="\(\sum_\rho wa_\rho\ge(1-\eta)AMH\)">\(\sum_\rho wa_\rho\ge(1-\eta)AMH\)</span>. Discarding the nonpositive collision term, the term is at most <span class="math" data-tex="\(\exp\{MH(-\nu(A(1-\eta)-\bar b)+E_{\mathrm{an}}+\rho_H)\}\)">\(\exp\{MH(-\nu(A(1-\eta)-\bar b)+E_{\mathrm{an}}+\rho_H)\}\)</span>.</p>
+<p>Summing the absolute values of all terms,</p>
+<span class="math math-display" data-tex="\[
+\frac{\log|\Delta_H|}{MH}\le E_{\mathrm{an}}+\varepsilon_H+\max\bigl\{-c\mathcal L_H,\,-\nu(A(1-\eta)-\bar b)\bigr\},\qquad\varepsilon_H=\rho_H+\frac{\log Q_H}H\to0 .
+\]">\[
+\frac{\log|\Delta_H|}{MH}\le E_{\mathrm{an}}+\varepsilon_H+\max\bigl\{-c\mathcal L_H,\,-\nu(A(1-\eta)-\bar b)\bigr\},\qquad\varepsilon_H=\rho_H+\frac{\log Q_H}H\to0 .
+\]</span>
+<p>Compare with Proposition 2.2. In the first alternative, <span class="math" data-tex="\(c\mathcal L_H&gt;1+E_{\mathrm{ar}}+E_{\mathrm{an}}+\varepsilon_H\ge(1-\bar b)+E_{\mathrm{ar}}+E_{\mathrm{an}}+\varepsilon_H\)">\(c\mathcal L_H&gt;1+E_{\mathrm{ar}}+E_{\mathrm{an}}+\varepsilon_H\ge(1-\bar b)+E_{\mathrm{ar}}+E_{\mathrm{an}}+\varepsilon_H\)</span> for large <span class="math" data-tex="\(H\)">\(H\)</span>, by (5.1) and <span class="math" data-tex="\(\mathcal L_H\to\mathcal L\)">\(\mathcal L_H\to\mathcal L\)</span>. In the second, since <span class="math" data-tex="\(\bar b\le\theta\)">\(\bar b\le\theta\)</span> and <span class="math" data-tex="\(\nu&gt;1\)">\(\nu&gt;1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\nu\bigl(A(1-\eta)-\bar b\bigr)-(1-\bar b)=\nu A(1-\eta)-1-(\nu-1)\bar b\ge g&gt;E_{\mathrm{ar}}+E_{\mathrm{an}}+\varepsilon_H
+\]">\[
+\nu\bigl(A(1-\eta)-\bar b\bigr)-(1-\bar b)=\nu A(1-\eta)-1-(\nu-1)\bar b\ge g&gt;E_{\mathrm{ar}}+E_{\mathrm{an}}+\varepsilon_H
+\]</span>
+<p>for large <span class="math" data-tex="\(H\)">\(H\)</span>. In both cases <span class="math" data-tex="\(\log|\Delta_H|/(MH)&lt;-(1-\bar b)-E_{\mathrm{ar}}\)">\(\log|\Delta_H|/(MH)&lt;-(1-\bar b)-E_{\mathrm{ar}}\)</span>, contradicting Proposition 2.2. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The two alternatives explain the two requirements on the parameters. The collision saving <span class="math" data-tex="\(c\mathcal L\)">\(c\mathcal L\)</span> must beat the trivial arithmetic cost <span class="math" data-tex="\(1\)">\(1\)</span>, which needs many rows per transverse index: <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> compares the row count in dimension <span class="math" data-tex="\(m+1\)">\(m+1\)</span> with the index count in dimension <span class="math" data-tex="\(m\)">\(m\)</span>. The approximation gain <span class="math" data-tex="\(g\)">\(g\)</span> must beat the cost <span class="math" data-tex="\(1-\theta\)">\(1-\theta\)</span> of the rows, which needs <span class="math" data-tex="\(\nu(A-\theta)&gt;1-\theta\)">\(\nu(A-\theta)&gt;1-\theta\)</span>; this is possible only because <span class="math" data-tex="\(\nu&gt;2\)">\(\nu&gt;2\)</span> allows <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(\theta\)">\(\theta\)</span> close to <span class="math" data-tex="\(1\)">\(1\)</span> with <span class="math" data-tex="\(A^2&lt;\theta\)">\(A^2&lt;\theta\)</span>.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>Exercise 6.1.</strong> Show that <span class="math" data-tex="\(\binom{2\ell}\ell\le4^\ell\)">\(\binom{2\ell}\ell\le4^\ell\)</span> and deduce <span class="math" data-tex="\(\psi(2\ell)-\psi(\ell)\le2\ell\log2\)">\(\psi(2\ell)-\psi(\ell)\le2\ell\log2\)</span> as in Lemma 2.1.</p>
+<p><strong>Exercise 6.2.</strong> Compute <span class="math" data-tex="\(f_{a,P}\)">\(f_{a,P}\)</span> for <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, <span class="math" data-tex="\(P=YX_1^3\)">\(P=YX_1^3\)</span> and <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, and check the bound <span class="math" data-tex="\(|f_{a,P}(z)|\le\mathcal D_H\)">\(|f_{a,P}(z)|\le\mathcal D_H\)</span> on <span class="math" data-tex="\(|z|\le R_0\)">\(|z|\le R_0\)</span> for <span class="math" data-tex="\(H=w_0+3w_1\)">\(H=w_0+3w_1\)</span>.</p>
+<p><strong>Exercise 6.3.</strong> Show that if all <span class="math" data-tex="\(M\)">\(M\)</span> rows of a matrix test the same entire function <span class="math" data-tex="\(f\)">\(f\)</span> (that is, the rows are <span class="math" data-tex="\(([t^{\ell_\rho}]f_P(z_\rho+\log(1+t)))_P\)">\(([t^{\ell_\rho}]f_P(z_\rho+\log(1+t)))_P\)</span> for one index), then the collision estimate gives <span class="math" data-tex="\(|\det T|\le e^{-cM^2+O(MH)}\)">\(|\det T|\le e^{-cM^2+O(MH)}\)</span>, and explain why this is much smaller than <span class="math" data-tex="\(e^{-MH}\)">\(e^{-MH}\)</span> when <span class="math" data-tex="\(M\gg H\)">\(M\gg H\)</span>.</p>
+<p><strong>Exercise 6.4.</strong> In the proof of Proposition 5.1, where is it used that the coefficients <span class="math" data-tex="\(\xi_\rho\)">\(\xi_\rho\)</span> are independent of the column?</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> <span class="math" data-tex="\(\binom{2\ell}\ell\le\sum_k\binom{2\ell}k=4^\ell\)">\(\binom{2\ell}\ell\le\sum_k\binom{2\ell}k=4^\ell\)</span>. The prime powers <span class="math" data-tex="\(p^k\in(\ell,2\ell]\)">\(p^k\in(\ell,2\ell]\)</span> each contribute <span class="math" data-tex="\(\log p\)">\(\log p\)</span> to <span class="math" data-tex="\(\log\binom{2\ell}\ell\)">\(\log\binom{2\ell}\ell\)</span>, and the other contributions are nonnegative.</p>
+<p><strong>6.2.</strong> <span class="math" data-tex="\(P(e^z,z+u)=e^z(z+u)^3\)">\(P(e^z,z+u)=e^z(z+u)^3\)</span>, so <span class="math" data-tex="\(f_{1,P}(z)=3e^zz^2\)">\(f_{1,P}(z)=3e^zz^2\)</span>. On <span class="math" data-tex="\(|z|\le R_0\)">\(|z|\le R_0\)</span>, <span class="math" data-tex="\(|f|\le3e^{R_0}R_0^2\le2^3e^{R_0}R_0^3=\exp\{R_0+3\log(2R_0)\}\le\exp\{H(R_0/w_0+\log(2R_0)/w_1)\}\)">\(|f|\le3e^{R_0}R_0^2\le2^3e^{R_0}R_0^3=\exp\{R_0+3\log(2R_0)\}\le\exp\{H(R_0/w_0+\log(2R_0)/w_1)\}\)</span>, since <span class="math" data-tex="\(H/w_0\ge1\)">\(H/w_0\ge1\)</span> and <span class="math" data-tex="\(H/w_1\ge3\)">\(H/w_1\ge3\)</span>.</p>
+<p><strong>6.3.</strong> With one index, <span class="math" data-tex="\(n_a=M\)">\(n_a=M\)</span>, so <span class="math" data-tex="\(\sum n_a^2=M^2\)">\(\sum n_a^2=M^2\)</span>. The bound is <span class="math" data-tex="\(e^{-cM^2+MH(E_{\mathrm{hol}}+\rho_H)}\)">\(e^{-cM^2+MH(E_{\mathrm{hol}}+\rho_H)}\)</span>, and <span class="math" data-tex="\(cM^2\)">\(cM^2\)</span> dominates <span class="math" data-tex="\(MH\)">\(MH\)</span> when <span class="math" data-tex="\(M/H\to\infty\)">\(M/H\to\infty\)</span>. In the proof, <span class="math" data-tex="\(M\asymp H^{m+1}\)">\(M\asymp H^{m+1}\)</span> while the number of indices <span class="math" data-tex="\(a\)">\(a\)</span> is only <span class="math" data-tex="\(\asymp H^m\)">\(\asymp H^m\)</span>, so the rows must share indices massively.</p>
+<p><strong>6.4.</strong> Multilinearity of the determinant in its rows requires each row to be a linear combination of test rows with scalar coefficients, the same for every column. This is what allows <span class="math" data-tex="\(\Delta_H\)">\(\Delta_H\)</span> to be expanded as a sum of products of scalars and determinants of test-row matrices.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-Pi] OpenAI, The irrationality exponent of π is 2, preprint, 24 September 2026. https://github.com/openai/math/tree/main/preprints/The-irrationality-exponent-of-pi-is-2-September-24-2026</li>
+<li>[Laurent] M. Laurent, Sur quelques résultats récents de transcendance, Astérisque 198–200 (1991). https://www.numdam.org/item/AST_1991__198-199-200__209_0/</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

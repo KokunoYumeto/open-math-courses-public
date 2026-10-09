@@ -25,9 +25,9 @@ The two boundary conventions are
 For \(u\in E\), [the relative-commutant theorem RCC](OA-FLOW-RCC.md#rcc-5) puts its defect in \(A\). Consequently \(\delta_-u=(\delta_+u)^*\). A right inverse for one convention is not a right inverse for the other.
 
 Fix a faithful normal semifinite \(\varphi\). In a standard representation of \(M\) on \(H\), let \(U_t\) implement \(\sigma_t^\varphi\). The regular core acts on \(L^2(\mathbb R,H)\) by
-\
- [\pi_\varphi(x)\xi=\sigma_{-r}^\varphi(x)\xi(r),\quad
- \lambda_t\xi=\xi(r-t),\quad h_\varphi^{it}=\lambda_t.
+\[
+ [\pi_\varphi(x)\xi](r)=\sigma_{-r}^\varphi(x)\xi(r),\quad
+ [\lambda_t\xi](r)=\xi(r-t),\quad h_\varphi^{it}=\lambda_t.
  \tag{CS3}
 \]
 Define the onto Fourier unitary and its inverse, initially on \(L^1\cap L^2\), by
@@ -37,9 +37,9 @@ Define the onto Fourier unitary and its inverse, initially on \(L^1\cap L^2\), b
  \tag{CS4}
 \]
 Scalar Plancherel and finite Hilbert tensor sums extend these as inverse unitaries for arbitrary Hilbert multiplicity. These integral formulas are not assertions of pointwise improper convergence for every \(L^2\) vector. Direct substitution on the initial domain gives
-\
+\[
  F\lambda_tF^*=M_{e^{-itq}},\qquad
- F M_{e^{-isr}}F^*=R_s,\quad [R_s\eta=\eta(q+s).
+ F M_{e^{-isr}}F^*=R_s,\quad [R_s\eta](q)=\eta(q+s).
  \tag{CS5}
 \]
 Thus \(\kappa_\varphi(f)\) becomes the full multiplier \(M_f\), and the dual flow becomes \(\operatorname{Ad}R_s\).
@@ -69,8 +69,8 @@ Assume for the moment that it extends to a **normal unital star homomorphism**
 The extension, if it exists, is unique: finite tensors are ultraweakly dense. Its image is the whole \(D^\varphi\), since a normal homomorphism has a von Neumann image and the image contains both generators. Injectivity is not needed for the construction below. Section 3 proves the hypothesis for every specified continuous-decomposition weight, and for every dominant weight on a separable-predual algebra. A scalar center also satisfies it for every faithful weight. Section 5 proves why it cannot be omitted.
 
 Represent \(A\) faithfully and normally on \(K\). The field
-\
- [F_c\xi=c_{-q}\xi(q)
+\[
+ [F_c\xi](q)=c_{-q}\xi(q)
  \tag{CS9}
 \]
 defines a unitary on \(K\otimes L^2(\mathbb R)\). For a fixed vector, the field is norm-continuous on compact intervals; compact step approximation proves strong measurability. Approximation of arbitrary \(L^2\) vectors by finite compact tensors proves that multiplication and its pointwise-adjoint inverse are defined on the full space and preserve the norm.
@@ -120,11 +120,11 @@ with original Haar measure \(ds\), dual Haar measure \(dt/(2\pi)\). No countabil
 \(\sigma_t^\varphi(n)=n\) and
 \(\sigma_t^\varphi(u_s)=e^{-ist}u_s\).
 Thus its core is the actual double crossing. [ND's full duality map and inverse](OA-FLOW-ND.md#nd-construction) give
-\
+\[
  \begin{aligned}
  \Xi_\varphi:C(M)&\longrightarrow N\bar\otimes B(L^2\mathbb R),\\
- [\Xi_\varphi(n)\xi&=\alpha_{-q}(n)\xi(q),\\
- \Xi_\varphi(u_s)&=1\otimes L_s,\qquad L_s\xi=\xi(q-s),\\
+ [\Xi_\varphi(n)\xi](q)&=\alpha_{-q}(n)\xi(q),\\
+ \Xi_\varphi(u_s)&=1\otimes L_s,\qquad [L_s\xi](q)=\xi(q-s),\\
  \Xi_\varphi(h_\varphi^{it})&=1\otimes M_{e^{-itq}},\\
  \Xi_\varphi\theta_s\Xi_\varphi^{-1}
  &=\alpha_s\otimes\operatorname{Ad}R_s .

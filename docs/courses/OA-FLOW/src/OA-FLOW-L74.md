@@ -375,10 +375,10 @@ Let \((\alpha_gF)(y,s)=F(y,g^{-1}s)\) on \(\mathcal B\). Left translations imple
 On
 \(\mathscr H=L^2(S,\nu)\otimes L^2(G_s)\otimes L^2(G_t)\),
 the regular representation of \(\mathcal B\rtimes_\alpha G\) is
-\
+\[
  \begin{aligned}
- [\Pi(F)\zeta&=F(y,ts)\zeta(y;s,t),\\
- \Lambda_g\zeta&=\zeta(y;s,g^{-1}t).
+ [\Pi(F)\zeta](y;s,t)&=F(y,ts)\zeta(y;s,t),\\
+ [\Lambda_g\zeta](y;s,t)&=\zeta(y;s,g^{-1}t).
  \end{aligned}
  \tag{B3}
 \]

@@ -326,7 +326,7 @@ Cauchy–Schwarz inequality, \(|\varphi(zx)|\le\varphi(zz^*)^{1/2}\varphi(x^*x)^
 (c) Similarly \(|\varphi(xz)|\le\varphi(xx^*)^{1/2}\varphi(z^*z)^{1/2}\le\|x^*\|_\varphi\|z\|\). The bound on
 \([x,\varphi]\) follows since \(\|x\|_\varphi+\|x^*\|_\varphi\le\sqrt2\|x\|^\sharp_\varphi\). (d) Using the bimodule
 rules, \(xy\varphi-\varphi xy=x(y\varphi-\varphi y)+(x\varphi-\varphi x)y\); the power bound follows by induction.
-(e) Write \(\varphi(y^*x^*xy)=(y\varphi)(y^*x^*x)=y,\varphi+\varphi(yy^*x^*x)\). The first term is at most
+(e) Write \(\varphi(y^*x^*xy)=(y\varphi)(y^*x^*x)=[y,\varphi](y^*x^*x)+\varphi(yy^*x^*x)\). The first term is at most
 \(\|[y,\varphi]\|\|y\|\|x\|^2\). For the second, the Cauchy–Schwarz inequality gives
 \(|\varphi((yy^*x^*)x)|\le\|yy^*x^*\|\,\|x\|_\varphi\le\|y\|^2\|x\|\|x\|_\varphi\).
 (f) By (e), \(\varphi(y^*x^*xy)\le\|[y,\varphi]\|+\|x\|_\varphi\). Applying (e) to the pair \((y^*,x^*)\) in place of
@@ -586,7 +586,7 @@ by Lemma 1.1(b),(c).
 (2) follows from the same inequality applied to \(z_n=x_n-y_n\).
 
 (3) For \(X=(x_n)\), \(Y=(y_n)\) in \(A_{\varphi,\omega}\),
-\(|\varphi(x_ny_n)-\varphi(y_nx_n)|=|y_n,\varphi|\le\|x_n\|\|[y_n,\varphi]\|\to0\) along \(\omega\).
+\(|\varphi(x_ny_n)-\varphi(y_nx_n)|=|[y_n,\varphi](x_n)|\le\|x_n\|\|[y_n,\varphi]\|\to0\) along \(\omega\).
 
 (4) \(\varphi_\omega(X^*X)=\lim_\omega\|x_n\|^2_\varphi\), and by (3) this equals
 \(\varphi_\omega(XX^*)=\lim_\omega\|x_n^*\|_\varphi^2\). So \(\varphi_\omega(X^*X)=0\) iff

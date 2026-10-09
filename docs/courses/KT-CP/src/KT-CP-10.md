@@ -20,9 +20,9 @@ Write \(SA=C_0(\mathbb R,A)\), with an increasing real suspension coordinate. We
 - The natural isomorphisms \(\theta_A:K_1(A)\to K_0(SA)\) and \(\beta_A:K_0(A)\to K_1(SA)\).
 - The natural six-term exact sequence of an extension, including split exactness.
 
-The finite-matrix and compact-operator foundations are written programme proofs. For \(K_0\), *The Grothendieck group and \(K_0\) of a unital algebra*, Theorem 4.2, proves homotopy invariance; *Nonunital algebras: unitization, relative classes and half-exactness*, §1, extends it to nonunital algebras and relative scalar kernels. *Matrix stability, stability and continuity of \(K_0\)*, Theorems 1.1 and 4.1, proves matrix and compact-operator stability. For \(K_1\), *Invertibles, unitaries and \(K_1\)*, §3, Theorem 3.1 and Corollary 4.2, proves homotopy invariance and both stability statements. Each applies to every C*-algebra and to the actual rank-one corner. Thus these foundations retain the generality used in the Wiener–Hopf construction.
+The finite-matrix and compact-operator foundations are written programme proofs. For \(K_0\), [*The Grothendieck group and \(K_0\) of a unital algebra*](prerequisites/KT-OPK/KT-OPK-03.html), Theorem 4.2, proves homotopy invariance; *Nonunital algebras: unitization, relative classes and half-exactness*, §1, extends it to nonunital algebras and relative scalar kernels. [*Matrix stability, stability and continuity of \(K_0\)*](prerequisites/KT-OPK/KT-OPK-05.html), Theorems 1.1 and 4.1, proves matrix and compact-operator stability. For \(K_1\), [*Invertibles, unitaries and \(K_1\)*](prerequisites/KT-OPK/KT-OPK-06.html), §3, Theorem 3.1 and Corollary 4.2, proves homotopy invariance and both stability statements. Each applies to every C*-algebra and to the actual rank-one corner. Thus these foundations retain the generality used in the Wiener–Hopf construction.
 
-For the index, suspension, positive Bott and six-term tools we reuse the written prerequisites The index map and the exact sequence at \(K_0\), Proposition 5.1, Suspension, higher K-groups and the long exact sequence, Theorem 2.1, [Bott periodicity, Theorem 4.1], and The six-term exact sequence and the exponential map, Theorems 1.1 and 2.1. The primary reference is [Blackadar 1998]. In particular, \(\beta_A[p]\) is the positive-winding loop \(zp+1-p\). The construction of \(\theta_A[u]\) uses a path \(w\) from \(1\) to \(\operatorname{diag}(u,u^{-1})\) and the class \([w p_n w^{-1}]-[p_n]\), where \(p_n=\operatorname{diag}(1_n,0_n)\).
+For the index, suspension, positive Bott and six-term tools we reuse the written prerequisites [The index map and the exact sequence at \(K_0\), Proposition 5.1](prerequisites/KT-OPK/KT-OPK-07.html), Suspension, higher K-groups and the long exact sequence, Theorem 2.1, [Bott periodicity, Theorem 4.1], and The six-term exact sequence and the exponential map, Theorems 1.1 and 2.1. The primary reference is [Blackadar 1998]. In particular, \(\beta_A[p]\) is the positive-winding loop \(zp+1-p\). The construction of \(\theta_A[u]\) uses a path \(w\) from \(1\) to \(\operatorname{diag}(u,u^{-1})\) and the class \([w p_n w^{-1}]-[p_n]\), where \(p_n=\operatorname{diag}(1_n,0_n)\).
 
 For an extension \(0\to I\to D\to Q\to0\), denote its two boundaries by
 \[
@@ -432,7 +432,7 @@ Universal index surjectivity for arbitrary \(A,\alpha\) is the remaining step of
 
 ## References
 
-The index map and the exact sequence at \(K_0\) K-theory for operator algebras, Lesson 7, Proposition 5.1, the kernel-minus-cokernel boundary formula.
+[The index map and the exact sequence at \(K_0\)](prerequisites/KT-OPK/KT-OPK-07.html) K-theory for operator algebras, Lesson 7, Proposition 5.1, the kernel-minus-cokernel boundary formula.
 
 Suspension, higher K-groups and the long exact sequence K-theory for operator algebras, Lesson 8, Theorem 2.1, the forward doubled-path \(\theta\).
 

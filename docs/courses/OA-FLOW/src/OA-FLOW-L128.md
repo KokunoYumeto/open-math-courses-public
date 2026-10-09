@@ -6,7 +6,7 @@
 
 ## Setting and earlier results
 
-The Fourier and inner-carrier theorem concerns an arbitrary discrete group \(G\), an arbitrary complex Hilbert space \(H\), and normal automorphisms of a nonzero von Neumann algebra \(M\subseteq B(H)\). A normal automorphism \(\beta\) is **free** if \(ca=\beta(a)c\) for every \(a\in M\) forces \(c=0\). An action is free if each nonidentity automorphism is free. It is **ergodic** on an algebra if its fixed algebra consists of the scalars.
+The Fourier and inner-carrier theorem concerns an arbitrary discrete group \(G\), an arbitrary complex Hilbert space \(H\), and normal automorphisms of a nonzero von Neumann algebra \(M\subseteq B(H)\). A normal automorphism \(\beta\) is **free** if \(ca=\beta(a)c\) for every \(a\in M\) forces \(c=0\). An action is free if \(\alpha_s\) is free for every \(s\ne e\). It is **ergodic** on an algebra if its fixed algebra consists of the scalars.
 
 The trace classification adds abelian coefficients, a countably infinite group, freeness and ergodicity. The maximal abelian subalgebra (MASA) and compact-space orbit constructions state their additional hypotheses where needed. Inner products are linear in the first variable. A nonnegative indexed sum is the supremum of its finite subsums.
 
@@ -24,9 +24,9 @@ The remaining inputs are the scalar circle Fourier calculation CC0 in [A periodi
 ## FC0. A single column determines every matrix entry
 
 Let a discrete group \(G\), of arbitrary cardinality, act normally by \(\alpha\) on a nonzero concrete von Neumann algebra \(M\subset B(H)\). On \(\mathcal K=\ell^2(G,H)\) set
-\
- [\pi(a)\xi=\alpha_{r^{-1}}(a)\xi(r),\qquad
- u_s\xi=\xi(s^{-1}r),\qquad
+\[
+ [\pi(a)\xi](r)=\alpha_{r^{-1}}(a)\xi(r),\qquad
+ [u_s\xi](r)=\xi(s^{-1}r),\qquad
  N=(\pi(M)\cup\{u_s:s\in G\})''.
  \tag{FC1}
 \]
@@ -79,6 +79,35 @@ This is exactly the finite-subset-net Hilbert-seminorm conclusion. It does not a
 
 In the GNS Hilbert space of \(\varphi\circ E\), the fibers \(\pi(M)u_s\) are mutually orthogonal: for \(s\ne t\), compression of \(u_s^*\pi(b^*a)u_t\) is zero. Formula (FC5) shows that the \(s\)-component of the vector of \(x\) is the vector of \(\pi(a_s)u_s\), and (FC6) shows that the closed span of the fibers is the whole GNS space. This identifies all the Hilbert components without requiring boundedness of the Fourier partial sums. An orthogonal family has only countably many nonzero coordinates in each one vector: for each positive integer \(n\) there are finitely many squared coordinate norms at least \(1/n\), and their countable union contains every nonzero coordinate.
 
+<a id="l128-fc2a"></a>
+
+## FC2A. Arithmetic of bounded Fourier coefficients
+
+Retain FC0's normal action of an arbitrary discrete group \(G\) on a nonzero concrete \(M\subseteq B(H)\), with arbitrary complex Hilbert space \(H\). For \(x,y\in N\), put \(a_h=E(xu_h^*)\), \(b_h=E(yu_h^*)\), and write \((xy)(g)=E(xyu_g^*)\). Then
+\[
+ (xy)(g)=\sigma\text{-strong*}\lim_{F\Subset G}
+       \sum_{h\in F}a_h\alpha_h(b_{h^{-1}g}),
+ \qquad
+ x^*(g)=\alpha_g(a_{g^{-1}}^*).
+ \tag{FC2A.1}
+\]
+The first assertion concerns a uniformly bounded coefficient net in \(M\), rather than the raw Fourier sums of \(x\) or \(y\).
+
+**Proof.** The finite-coordinate projections \(P_F\) of [FC1](#l128-fc1) increase strongly to one along all finite subsets, without a countability hypothesis. Thus \(xP_Fy\to xy\) strongly and \(y^*P_Fx^*\to y^*x^*\) strongly, with norm bound \(\|x\|\|y\|\). The matrix formula of [FC0](#l128-fc0) gives
+\[
+ J_e^*xP_Fyu_g^*J_e
+ =\sum_{r\in F}x_{e,r}y_{r,g^{-1}}
+ =\sum_{r\in F}a_{r^{-1}}\alpha_{r^{-1}}(b_{rg}).
+\]
+Compression and a fixed unitary preserve the two strong convergences and the common bound. Inversion sends the directed family of finite sets onto itself; reindexing \(r=h^{-1}\) gives the first formula. The bounded strong-star limit is sigma-strong-star by the complete normal-functional tail proof [SF2](OA-FLOW-SF.md#oa-flow.shared-foundations.sf-2). For the adjoint the same matrix identity gives
+\[
+ E(x^*u_g^*)=x^*_{e,g^{-1}}
+ =x_{g^{-1},e}^*
+ =\alpha_g(a_{g^{-1}})^*
+ =\alpha_g(a_{g^{-1}}^*).
+\]
+Every identity is between bounded operators. No infinite raw Fourier expansion has been multiplied or rearranged.
+
 <a id="l128-fc3"></a>
 
 ## FC3. The intertwiner is a unitary on a central piece
@@ -125,9 +154,47 @@ Equivalently, every nonidentity time has zero largest inner central piece. In th
 
 <a id="l128-fc5"></a>
 
-## FC5. Faithfulness is required for the abelian ergodicity shortcut
+## FC5. Fixed projections, fixed points and effective actions
 
-When \(M\) is abelian, inner automorphisms are identities, so FC3 says that freeness is the absence of a nonzero absolutely invariant projection. Suppose \(G\) is also abelian and its action on \(M\) is ergodic and faithful as a group homomorphism. For \(s\ne e\), every \(\alpha_t\) commutes with \(\alpha_s\) and preserves its largest absolutely invariant projection. Ergodicity makes it zero or one, while faithfulness excludes one. The action is free. Faithfulness cannot be dropped: a nontrivial group acting trivially on \(\mathbb C\) is ergodic and has no free nonidentity times.
+Let \(M\) be abelian and let \(\beta\) be a normal automorphism. Inner automorphisms of \(M\) are identities. Thus [FC3](OA-FLOW-L128.md#l128-fc3) supplies a largest projection \(q\) such that \(\beta(q)=q\) and \(\beta(a)q=aq\) for every \(a\in M\). This is the **absolutely invariant part**. On \(M(1-q)\) the restriction of \(\beta\) is free: any nonzero absolutely invariant projection there would also be one in \(M\), contradicting maximality of \(q\). Hence
+\[
+ M=Mq\oplus M(1-q),\qquad
+ \beta|_{Mq}=\operatorname{id},\qquad
+ \beta|_{M(1-q)}\text{ is free}.
+ \tag{FA1}
+\]
+These statements include \(q=0\) and \(q=1\); the zero summand has no nonzero intertwiner. The support argument in FC3 proves that \(q=0\) is equivalent to the vanishing of every \(d\in M\) satisfying \(ad=d\beta(a)\) for all \(a\).
+
+There is also a precise topological description. By [the commutative Gelfand representation](OA-FLOW-CF.md#oa-flow.cf.6), write \(M=C(X)\) on its compact character space. The homeomorphism \(T\) is defined by \(\beta(a)(x)=a(T^{-1}x)\). The set \(F=\{x:Tx=x\}\) is closed, since the diagonal of the Hausdorff space \(X\times X\) is closed.
+
+We first justify the supply of clopen sets in \(X\). Given finitely many \(a_j\in M\), a character \(x\), and \(\varepsilon>0\), the bounded spectral calculus in [SB4–6](OA-FLOW-SF.md#oa-flow.sf.sb4) approximates the real and imaginary parts of every \(a_j\) by finite linear combinations of projections. Choose the resulting \(b_j\) with \(\|a_j-b_j\|<\varepsilon/3\). All these projections commute. Taking the nonzero products of each projection or its complement gives a finite orthogonal partition \(1=\sum_i p_i\) such that every \(b_j\) is constant on each \(p_i\). Exactly one \(p_i\) has \(p_i(x)=1\), since a character takes projection values in \(\{0,1\}\). Its clopen set \(U=\{y:p_i(y)=1\}\) contains \(x\), and for \(y\in U\),
+\[
+ |a_j(y)-a_j(x)|
+ \le |a_j(y)-b_j(y)|+|b_j(x)-a_j(x)|
+ <2\varepsilon/3.
+ \tag{FA2}
+\]
+Such finite evaluation neighborhoods define the character topology, so clopen sets form a base. The finite spectral approximations used here follow by partitioning the bounded real spectrum into intervals of small diameter: the resulting spectral step operator differs in norm from the original selfadjoint operator by at most that diameter, by the spectral norm estimate in SB4.
+
+A projection \(p\) is absolutely invariant exactly when its clopen set \(U_p\) is contained in \(F\). In one direction, \(\beta(a)p=ap\) gives \(a(T^{-1}x)=a(x)\) for every \(a\) and \(x\in U_p\); characters separate points, so \(T^{-1}x=x\). Conversely, if \(T\) fixes \(U_p\) pointwise, its bijectivity gives \(T^{-1}U_p=U_p\), hence \(\beta(p)=p\), and evaluation inside and outside \(U_p\) gives \(\beta(a)p=ap\). Every point in the interior of \(F\) has a clopen neighborhood contained in \(F\); its projection is at most \(q\). Since \(U_q\) is itself open and contained in \(F\), we obtain
+\[
+ U_q=\operatorname{int}F,\qquad
+ \beta\text{ is free}\ \Longleftrightarrow\ \operatorname{int}F=\varnothing
+ \ \Longleftrightarrow\ F\text{ is nowhere dense}.
+ \tag{FA3}
+\]
+The last equivalence uses closedness of \(F\). It concerns the compact character space; no assertion about point stabilizers in an arbitrary measure-space realization is being substituted.
+
+For any group action on \(M\), the absence of invariant projections other than \(0,1\) is equivalent to \(M^\alpha=\mathbb C1\). To prove the nontrivial direction, a nonscalar fixed element has a nonscalar selfadjoint real or imaginary part. A cutoff strictly between two of its spectral values gives a projection different from zero and one. It is fixed: the spectral projections are strong limits of bounded continuous functions of that selfadjoint element, and each normal automorphism preserves these limits. This contradicts the assumed absence of invariant projections. The converse follows immediately from the projections in \(\mathbb C1\).
+
+Now suppose \(G\) is abelian and the action is ergodic. For each \(s\), the largest absolutely invariant projection \(q_s\) of \(\alpha_s\) is preserved by every \(\alpha_t\), by the last assertion of FC3. Ergodicity gives \(q_s=0\) or \(1\). The second case holds exactly when \(\alpha_s=\operatorname{id}\); the first means that \(\alpha_s\) is free. Thus, with
+\[
+ K=\{s\in G:\alpha_s=\operatorname{id}\},
+ \qquad
+ s\notin K\ \Longrightarrow\ \alpha_s\text{ is free},
+ \tag{FA4}
+\]
+the induced action \(\overline\alpha_{sK}=\alpha_s\) of \(G/K\) is well-defined, faithful, free and ergodic. It has the same fixed algebra because its automorphisms are exactly those of the original action. This is an algebraic quotient assertion; no quotient-topology hypothesis is needed for a discrete group. In particular, a faithful ergodic action of an abelian group is free. Faithfulness cannot be dropped: a nontrivial group acting trivially on \(\mathbb C\) is ergodic and has no free nonidentity times. None of the algebraic conclusions above needs countability of \(G\), separability or a pointwise model of \(M\).
 
 <a id="l128-fc6"></a>
 
@@ -212,6 +279,40 @@ identifies \(Q\) with \(B(\ell^2(I))\otimes1\): each matrix coefficient lies in 
 
 The remaining factors with nonzero finite projections have type II, with the subscript1 when the unit is finite and infinity when it is infinite. Factors with no nonzero finite projections have type III. The TC1 construction from a rank-one corner in \(B(\ell^2(I))\) is precisely the canonical trace \(\operatorname{Tr}(x)=\sum_{i\in I}\langle x\delta_i,\delta_i\rangle\) for \(x\ge0\), with arbitrary finite-subset sums. A finite-trace projection is finite by the earlier partial-isometry argument. If its range were infinite-dimensional, its corner would admit the proper shift isometry just constructed, a contradiction. Thus such a projection has finite rank. A finite-rank projection has trace its rank, by unitary invariance and finite additivity. This supplies the complete canonical trace criterion used in TY0. Thus the classification needed below follows from these definitions, the matrix construction and TC1–TC2. In particular a finite infinite-dimensional factor is type \(\mathrm{II}_1\).
 
+<a id="l128-gc0"></a>
+
+## GC0. The group trace, conjugacy criterion and ICC families
+
+For an arbitrary discrete group \(G\), let \(L(G)\) be the scalar regular model of FC0 on \(\ell^2(G)\). There is no countability hypothesis in the trace or factor criterion. [FC1](#l128-fc1) makes
+\(\tau(x)=\langle x\delta_e,\delta_e\rangle\)
+a faithful normal state, and its two positive sums give
+\[
+ \tau(x^*x)=\sum_{g\in G}|a_g|^2=\tau(xx^*),
+ \qquad a_g=E(xu_g^*).
+ \tag{GC0.1}
+\]
+Every nonnegative sum is the supremum of finite subsums. Expand this equality at \(x+y\) and \(x+iy\); the two cross-term identities give \(\tau(x^*y)=\tau(yx^*)\). Substituting \(x=a^*,y=b\) proves \(\tau(ab)=\tau(ba)\). Thus \(\tau\) is a faithful finite normal trace. If a projection \(p\) were equivalent to a proper \(q<p\), its implementing partial isometry would give \(\tau(p)=\tau(q)\), contradicting \(\tau(p-q)>0\). In particular \(L(G)\) is finite.
+
+Conjugation by \(u_k\) changes the coefficient at \(g\) to \(a_{k^{-1}gk}\). This follows either from [FC2A](#l128-fc2a) with its finitely supported unitary factors, or by direct multiplication in the finite polynomial algebra followed by normality of the coefficient maps. Hence a central \(x\) has coefficients constant on each conjugacy class. Conversely this constancy and [FC0](#l128-fc0)'s uniqueness give \(u_kxu_k^*=x\) for every \(k\). Since these unitaries generate \(L(G)\), the operator is central.
+
+If every nonidentity conjugacy class is infinite, its common coefficient \(c\) must vanish: for every \(n\), \(n\) distinct members contribute \(n|c|^2\le\tau(x^*x)\). Thus every central element is \(a_e1\) by coefficient uniqueness. Conversely a finite nonidentity class \(C\) gives the nonscalar nonzero central element \(\sum_{h\in C}u_h\), detected by its coefficients. We have proved
+\[
+ L(G)\text{ is a factor}
+ \quad\Longleftrightarrow\quad
+ \text{every nonidentity conjugacy class in }G\text{ is infinite}.
+ \tag{GC0.2}
+\]
+For the trivial group this condition is vacuous and \(L(G)=\mathbb C\). An **ICC group** here means an infinite group satisfying the displayed class condition. Its independent unitaries make \(L(G)\) infinite dimensional, so the already proved [TC3](#l128-tc3) shows that this finite factor has type \(\mathrm{II}_1\). For countable \(G\) its regular representation is separable.
+
+Here are the four concrete ICC families, with the countability conditions stated separately.
+
+1. The finite-support permutations of a countably infinite set form a countable group: there are countably many finite subsets, and each supports only finitely many permutations. A nonidentity \(\sigma\) has finite support \(S\). Fix \(a\in S\), and exchange it with \(n\notin S\). The conjugate support is \((S\setminus\{a\})\cup\{n\}\), so infinitely many distinct choices of \(n\) give distinct conjugates.
+2. In a free group on at least two generators, let \(w\ne e\) be a reduced word. Among the four letters from two generators, choose \(c\) different from the inverse of the first letter of \(w\) and from its last letter. There is no cancellation at either boundary of \(c^nwc^{-n}\), whose reduced length is \(2n+|w|\). These conjugates are distinct. Finite or countably infinite rank gives a countable group; the ICC argument also works for arbitrary rank.
+3. A nonempty finite product of ICC groups is ICC. A nonidentity tuple has a nonidentity coordinate, and conjugating only that coordinate gives infinitely many distinct tuples. A finite product of countable groups is countable.
+4. A finite-support direct sum of ICC groups, over any nonempty index set, is ICC by exactly the same coordinate conjugation. The conjugates retain finite support. For a countable index set of countable groups, enumerate the finite index subsets and their countable sets of tuples to prove countability. The ICC assertion permits arbitrary index sets; an uncountable index set of nontrivial groups is not silently assigned the source's countably infinite or separable scope.
+
+For each countably infinite instance, the preceding trace, factor and type arguments therefore give a separably represented \(\mathrm{II}_1\) factor. No freeness or ergodicity of a nontrivial coefficient action is a premise of this scalar group theorem.
+
 <a id="l128-tc4"></a>
 
 ## TC4. Norm-one projections onto abelian algebras are bimodular
@@ -277,6 +378,92 @@ Let \((X,\mu)\) be a probability space. If a bounded operator \(T\) on \(L^2(X,\
 If \(|b|>\|T\|+\varepsilon\) on a positive-measure set, this inequality fails there. Thus \(b\in L^\infty\) with \(\|b\|_\infty\le\|T\|\). Density of bounded functions in \(L^2\), proved by truncation, now gives \(T=M_b\). This proves that the multiplication algebra is maximal abelian.
 
 For a compact metrizable \(X\) with a finite Radon measure, the same conclusion holds if \(T\) commutes only with \(C(X)\). For a Borel set \(E\), regularity gives a compact \(K\subset E\) and open \(U\supset E\) with \(\mu(U\setminus K)\) arbitrarily small. A continuous function between zero and one, equal to one on \(K\) and zero off \(U\), follows from the distance functions in a compact metric space (the empty cases are constant). It approximates \(1_E\) in \(L^2\). The corresponding uniformly bounded multipliers converge strongly: first test bounded functions, then use their \(L^2\) density. Hence \(T\) commutes with \(M_{1_E}\), and then with all bounded multipliers by simple approximation. Completed measurable sets give the same multiplication operators modulo null sets. This also proves that continuous functions are dense in \(L^2\), since indicators and simple functions are dense.
+
+<a id="l128-fc2b"></a>
+
+## FC2B. A cofinal raw Fourier net can fail strongly
+
+The qualification in [FC2](#l128-fc2) is necessary even for \(G=\mathbb Z\), \(M=\mathbb C\) and the trivial action. We prove both membership of the counterexample and failure along an actual cofinal sequence of finite subsets.
+
+Use the scalar part of [CC0](OA-FLOW-CC.md#cc-0) with period \(2\pi\), so that \(dm=dt/(2\pi)\) on \(\mathbb T=\mathbb R/(2\pi\mathbb Z)\). Its complete orthonormal family \(e^{int}\) gives a unitary
+\[
+ U:\ell^2(\mathbb Z)\longrightarrow L^2(\mathbb T,m),
+ \qquad U\delta_n(t)=e^{int}.
+\]
+Indeed finite sums preserve squared norms, their range is dense by CC0, and Hilbert completion extends the map onto \(L^2\). Direct substitution gives \(Uu_nU^*=M_{e^{int}}\). No modular hypothesis from the later sections of CC is imposed here.
+
+Let \(Q=U L(\mathbb Z)U^*\). The commutant of the multipliers \(M_{e^{int}}\) is the commutant of all continuous multipliers: commuting with the generators gives commutation with their polynomials and with uniform limits, and CC0 proves uniform density of those trigonometric polynomials in \(C(\mathbb T)\). The already proved [OR0](#l128-or0), applied to the compact metrizable circle and its Radon probability measure, identifies this commutant with \(L^\infty(\mathbb T,m)\), and proves that this multiplication algebra is its own commutant. Taking a second commutant gives \(Q=L^\infty(\mathbb T,m)\). In particular, for
+\[
+ f(t)=1_{[-\pi/2,\pi/2]}(t)
+\]
+with periodic endpoint identification, \(M_f\in Q\), and \(x=U^*M_fU\in L(\mathbb Z)\). This argument proves membership and the right-algebra identification using earlier complete bodies.
+
+The scalar compression in [FC0](#l128-fc0) now gives the actual coefficients
+\[
+ c_n=E(xu_n^*)=\langle x\delta_{-n},\delta_0\rangle
+     =\int_{\mathbb T}f(t)e^{-int}\,dm(t),\qquad
+ c_0=\tfrac12,\quad
+ c_n=\frac{\sin(n\pi/2)}{\pi n}\ (n\ne0),\quad c_{-n}=c_n.
+ \tag{FC2B.1}
+\]
+The integral is computed directly on the displayed interval; null endpoints do not change it by [SC2](OA-FLOW-SC.md#sc-02). In particular \(c_{4k+1}>0\) for \(k\ge0\), and their sum diverges: \(1/(4k+1)\ge1/(4(k+1))\), while each dyadic block of the harmonic series contributes at least \(1/2\).
+
+Construct finite sets \(F_N\) recursively. Include \(F_{N-1}\cup[-N,N]\), then add enough unused positive-coefficient indices of the form \(\pm(4k+1)\) to ensure
+\[
+ p_N(0)>2^{2N+1},\qquad p_N(t)=\sum_{n\in F_N}c_ne^{int}.
+\]
+Deleting a finite set leaves the positive sum divergent, so this is possible. These sets increase and are cofinal among all finite subsets of \(\mathbb Z\). Continuity supplies a nonempty open arc \(I_N\) about zero on which \(|p_N|\ge2^{2N}\); its measure \(m_N=m(I_N)\) is positive by CC0. Put
+\[
+ \eta_N=2^{-N}m_N^{-1/2}1_{I_N},\qquad
+ \eta=\sum_{N\ge1}\eta_N.
+\]
+The finite partial sums have \(L^2\) norm at most \(\sum_N2^{-N}=1\), by [SC6](OA-FLOW-SC.md#sc-06). Their nonnegative squares increase. Measurability of the pointwise sum follows from [SC3](OA-FLOW-SC.md#sc-03). Monotone convergence [SC4](OA-FLOW-SC.md#sc-04) therefore gives a measurable pointwise sum with \(\int\eta^2\,dm\le1\); it is finite a.e. Dominated convergence [SC5](OA-FLOW-SC.md#sc-05) applied to the squared tails identifies the partial sums' \(L^2\) limit with this function. Thus \(\eta\in L^2\) and \(\eta\ge\eta_N\) a.e. (The Hilbert space is the one proved in [SC7](OA-FLOW-SC.md#sc-07).) Consequently
+\[
+ \|p_N\eta\|_2\ge2^{2N}\|\eta1_{I_N}\|_2\ge2^N,\qquad
+ \|(p_N-f)\eta\|_2\ge2^N-\|f\|_\infty\|\eta\|_2\longrightarrow\infty.
+ \tag{FC2B.2}
+\]
+Taking the single regular Hilbert vector \(U^*\eta\) disproves strong convergence of \(S_{F_N}(x)\) to \(x\). Since this sequence is cofinal in the finite-subset net, the unrestricted raw net cannot converge strongly either. A single vector functional is normal by [CP6](OA-FLOW-CP.md#oa-flow.cp.6), so failure of strong convergence also rules out sigma-strong and sigma-strong-star convergence. The earlier displayed equality \(Q=L^\infty(\mathbb T,m)=Q^\prime\) means this same counterexample refutes the unrestricted raw right-algebra assertion as well. The valid finite-normal-functional Hilbert seminorm convergence of FC2 is unchanged.
+
+<a id="l128-fc2c"></a>
+
+## FC2C. The general implemented discrete right algebra
+
+Return to FC0's arbitrary discrete \(G\), arbitrary complex \(H\) and nonzero \(M\subseteq B(H)\). Here additionally a unitary representation \(v:G\to U(H)\) implements \(\alpha_g(a)=v_gav_g^*\). No abelian, free, ergodic or countability hypothesis is imposed. Put \(R=\{\pi(M),u_g:g\in G\}''\) and, for \(b\in M'\), define
+\[
+ \pi'(b)\xi(r)=b\xi(r),\qquad
+ \nu_g\xi(r)=v_g\xi(rg),\qquad
+ \alpha'_g(b)=v_gbv_g^*.
+ \tag{FC2C.1}
+\]
+Direct substitution shows covariance and commutation with both left generating families. The complete implemented commutant proof [CCM7](OA-FLOW-CCM.md#ccm-7), specialized to discrete counting measure with modular function one, gives the reverse inclusion:
+\[
+ R'=\{\pi'(M'),\nu_g:g\in G\}''.
+\]
+Thus the right coefficient algebra is \(M'\), even when \(M\) is abelian but not maximal abelian in its representation. This use of CCM7 assumes the given implementers on \(H\); it does not assert that every faithful representation carries them.
+
+For \(x\in R'\), commutation with \(u_g\) gives \(x_{r,t}=x_{e,r^{-1}t}\). Commutation with \(\pi(a)\) in the \((e,s)\) entry gives \(a x_{e,s}=x_{e,s}\alpha_{s^{-1}}(a)\), and hence \(b_s=x_{e,s}v_s^*\in M'\). Therefore
+\[
+ b_s=x_{e,s}v_s^*,\qquad
+ x_{r,t}=b_{r^{-1}t}v_{r^{-1}t}.
+ \tag{FC2C.2}
+\]
+Finite-coordinate vector tests determine \(x\) from these coefficients, for arbitrary cardinality of \(G\).
+
+Compression \(E'(x)=x_{e,e}\in M'\) is normal, completely positive and norm one: each amplification is the corresponding coordinate compression, and substituting the coordinate inclusions into the square-summable vector-series tests of [CP6](OA-FLOW-CP.md#oa-flow.cp.6) proves full ultraweak continuity. It is \(M'\)-bimodular, since constant coefficients compress as such. If \(x\ge0\) and \(E'(x)=0\), left-shift invariance makes every diagonal entry zero, so \(x^{1/2}J_r=0\) for all \(r\); density of finite-coordinate vectors gives \(x=0\). Thus \(E'\) is faithful. The operator-valued coefficient is exactly \(b_s=E'(x\nu_s^*)\), because \(\nu_s^*J_e=J_sv_s^*\). Identifying \(M'\) with \(\pi'(M')\), this is the full normal faithful conditional expectation.
+
+The actual coordinate inversion
+\[
+ [W\xi](r)=v_r^*\xi(r^{-1})
+\]
+is unitary: inversion preserves the square sum and each \(v_r\) is unitary. Its inverse is itself, since \(v_{r^{-1}}=v_r^*\). Direct substitution gives
+\[
+ W^2=1,\qquad
+ W\pi'(b)W^*\xi(r)=\alpha'_{r^{-1}}(b)\xi(r),\qquad
+ W\nu_gW^*\xi(r)=\xi(g^{-1}r).
+ \tag{FC2C.3}
+\]
+Hence \(W\) identifies the entire right algebra normally and faithfully with the regular crossed product of \(M'\) by \(\alpha'\); its inverse is the same unitary conjugation. Full ultraweak normality in both directions follows by substituting \(W^*\) into the vector-series tests, not just from an increasing-sequence argument. The identities of [FC0](#l128-fc0), the positive sums of [FC1](#l128-fc1), the qualified Hilbert seminorm convergence of [FC2](#l128-fc2), and the arithmetic of [FC2A](#l128-fc2a) apply to this transported regular model. The scalar cofinal example in [FC2B](#l128-fc2b) shows why this identification is not an unrestricted strong raw Fourier expansion.
 
 <a id="l128-or1"></a>
 
@@ -674,8 +861,8 @@ copy \(\mathbb C\) is not maximal abelian in
 ## MD2. Normalize the measure-class implementing unitaries
 
 Let a countable discrete group \(G\) act by measurable bijections on a probability space \((Y,\mu)\), with \(g_*\mu\) equivalent to \(\mu\). MD1 gives the positive finite density \(d_g=d(g_*\mu)/d\mu\). Define
-\
- [v_g\xi=d_g(y)^{1/2}\xi(g^{-1}y).
+\[
+ [v_g\xi](y)=d_g(y)^{1/2}\xi(g^{-1}y).
  \tag{MD5}
 \]
 The maps preserve the measure class, so the definition respects measurable equivalence classes. The pushforward formula gives
@@ -730,10 +917,10 @@ the represented algebra unless the measure has full support.
 Use the regular coefficient convention
 \(\alpha_g(f)(y)=f(g^{-1}y)\). On
 \(\mathcal H=\ell^2(G)\otimes L^2(Y,\mu)\), set
-\
+\[
 \begin{aligned}
-{}[\pi(f)\xi&=f(hy)\xi(h,y),\\
-u_g\xi&=\xi(g^{-1}h,y),\\
+{}[\pi(f)\xi](h,y)&=f(hy)\xi(h,y),\\
+[u_g\xi](h,y)&=\xi(g^{-1}h,y),\\
 \mathcal B&=C^*(\pi(C(Y)),u_g:g\in G).
 \end{aligned}
 \tag{VE10}
@@ -761,8 +948,8 @@ Fourier partial sums converge in operator topology.
 ## OS1. Every support point gives a pure orbit state
 
 For \(y\in Y\), define on finite polynomials
-\
-[\rho_y(x)\zeta
+\[
+[\rho_y(x)\zeta](h)
 =\sum_g f_g(hy)\zeta(g^{-1}h),
 \qquad
 \omega_y(x)=\langle\rho_y(x)\delta_e,\delta_e\rangle=f_e(y).
@@ -803,9 +990,9 @@ It is scalar, so every such \(\psi\) is a scalar multiple of
 ## OR3. Maximality of the orbit diagonal by countable blocks
 
 Use precisely OS0–OS1's orbit-state setting: a countable discrete group \(G\) acts freely on a compact metrizable support space \(Y\), with quasi-invariant Radon probability \(\mu\). The represented algebra \(\mathcal B\) acts on \(\mathcal H=\ell^2(G)\otimes L^2(Y,\mu)\) by
-\
- [\pi(f)\xi=f(hy)\xi(h,y),\qquad
- u_g\xi=\xi(g^{-1}h,y),\quad f\in C(Y). \tag{OR5}
+\[
+ [\pi(f)\xi](h,y)=f(hy)\xi(h,y),\qquad
+ [u_g\xi](h,y)=\xi(g^{-1}h,y),\quad f\in C(Y). \tag{OR5}
 \]
 The algebra \(\mathcal D=1\otimes L^\infty(Y,\mu)\) lies in \(\mathcal B'\). Suppose \(T\in\mathcal B'\cap\mathcal D'\). Its blocks \(T_{k,h}:L^2(Y)\to L^2(Y)\) commute with all scalar multipliers, and therefore equal \(M_{b_{k,h}}\) by OR0. Commutation with the coefficients gives
 \[
@@ -895,9 +1082,9 @@ OR0's scalar-multiplier commutant proof gives \(A'=A\) for \(A=L^\infty(Y,\mu)\)
 
 Define
 
-\
- [W\xi=v_h^*\xi(h^{-1}),\qquad
- W^{-1}\eta=v_{k^{-1}}\eta(k^{-1}).
+\[
+ [W\xi](h)=v_h^*\xi(h^{-1}),\qquad
+ [W^{-1}\eta](k)=v_{k^{-1}}\eta(k^{-1}).
  \tag{MD7}
 \]
 
@@ -1221,7 +1408,7 @@ In the free flip of \(\mathbb C^2\), put \(a_e=\operatorname{diag}(1,2)\), \(a_s
 \]
 The coefficients and both FC1 sums give these exact values independently. Keeping only \(e\) leaves the FC2 positive tail \(\alpha_s(a_s^*a_s)=\operatorname{diag}(16,9)\). For \(\varphi(d)=\tfrac12(d_1+d_2)\), the squared Hilbert error is \(25/2\), so its error is \(5/\sqrt2\). The inner action on \(M_2\) with \(W=\operatorname{diag}(1,-1)\) instead leaves the non-scalar central involution \(v=\pi(W)^*u_s\). Its two projections \((1\pm v)/2\) show explicitly why innerness gives an extra relative commutant element. This is the witness construction (S18–S22) in finite coordinates.
 
-For the second illustration take \(G=\mathbb Z/3\mathbb Z\), \(Y=\{\exp(2\pi i j/6):0\le j<6\}\), uniform probability and \(h\cdot j=j+2h\pmod6\). The action is free, has two orbits, and is not ergodic. The six pure identity-vector states have point representations on \(\mathbb C^3\). The coefficient of \(f\) at coordinate \(h\) is \(f(j+2h)\). Replacing \(j\) by \(j+2\) is intertwined by \(V_1\delta_h=\delta_{h-1}\); the coordinate order is \(0\mapsto2\), \(1\mapsto0\), \(2\mapsto1\). Points of opposite parity have disjoint orbits and representations. On each orbit, singleton coefficient projections and the group shifts give all nine matrix units, while coefficients supported on that orbit vanish on the other. Thus the generated algebra is \(M_3\oplus M_3\), consistent with FC4's invariant center. It is a finite illustration of OS1–OS2, outside the infinite-group type-classification hypotheses. Here every scalar density in MD2 is one, but the implementing unitaries still act on the six points. The exact coordinate involution is \(W\xi=\xi(-h,j+2h)\), with the first coordinate modulo \(3\) and the second modulo \(6\). Applying it twice returns \((h,j)\).
+For the second illustration take \(G=\mathbb Z/3\mathbb Z\), \(Y=\{\exp(2\pi i j/6):0\le j<6\}\), uniform probability and \(h\cdot j=j+2h\pmod6\). The action is free, has two orbits, and is not ergodic. The six pure identity-vector states have point representations on \(\mathbb C^3\). The coefficient of \(f\) at coordinate \(h\) is \(f(j+2h)\). Replacing \(j\) by \(j+2\) is intertwined by \(V_1\delta_h=\delta_{h-1}\); the coordinate order is \(0\mapsto2\), \(1\mapsto0\), \(2\mapsto1\). Points of opposite parity have disjoint orbits and representations. On each orbit, singleton coefficient projections and the group shifts give all nine matrix units, while coefficients supported on that orbit vanish on the other. Thus the generated algebra is \(M_3\oplus M_3\), consistent with FC4's invariant center. It is a finite illustration of OS1–OS2, outside the infinite-group type-classification hypotheses. Here every scalar density in MD2 is one, but the implementing unitaries still act on the six points. The exact coordinate involution is \([W\xi](h,j)=\xi(-h,j+2h)\), with the first coordinate modulo \(3\) and the second modulo \(6\). Applying it twice returns \((h,j)\).
 
 <a id="l128-figure"></a>
 

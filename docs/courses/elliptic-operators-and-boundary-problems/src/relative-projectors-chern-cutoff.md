@@ -104,11 +104,11 @@ Put \(K=\operatorname{supp}(1-\psi)\), a fixed compact set. Outside \(K\), \(\ps
 have every coefficient supported in \(K\). This does not say that the actual analytic errors are compactly supported.
 
 Use the same three triangular block matrices (RP3) with \(A=a\), \(C=B_\infty\), and every product interpreted as \(\#_\lambda\). Triangular inversion and associativity give an exact idempotent \(e_\infty=U_\infty\#p\#U_\infty^{-1}\). The calculation (RP5) remains valid in this associative algebra with \(R=\rho,S=\sigma\). Every block of \(e_\infty-e_0\) contains \(\rho\) or \(\sigma\), and every \(C_k\) is local. Therefore
-\
+\[
  e_\infty\#_\lambda e_\infty=e_\infty,\qquad
- [\lambda^m
+ [\lambda^m](e_\infty-e_0)
    \in C_c^\infty(\mathbb R^{2n};M_{2\nu}(\mathbb C)),
- \quad\operatorname{supp}\lambda^m\subseteq K
+ \quad\operatorname{supp}[\lambda^m](e_\infty-e_0)\subseteq K
  \quad(m\ge0).
  \tag{RP11}
 \]
@@ -117,8 +117,8 @@ The compact relative pair is the input for the source theorem in the next lesson
 ## 3. Comparison with the original finite trace coefficient
 
 Form the finite \(C_N\) of (RP2) in the formal \(\#_\lambda\) algebra, with \(r=I-b\#a\) and \(s=I-a\#b\). Outside \(K\), the zeroth coefficients of \(r,s\) vanish because \(b=a^{-1}\). Locality implies \(r^{\#N}=s^{\#N}=O(\lambda^N)\) there. The formal (RP2) makes \(C_N\) a two-sided inverse of \(a\) through degree \(N-1\) outside \(K\); uniqueness of (RP8) yields
-\
- [\lambda^m=0\text{ outside }K,
+\[
+ [\lambda^m](C_N-B_\infty)=0\text{ outside }K,
  \qquad 0\le m<N.
  \tag{RP12}
 \]
@@ -141,9 +141,9 @@ Differentiating \(e_u\#e_u=e_u\) gives \(e_u\#e'_u\#e_u=0\) and then the exact i
  \tag{RP14}
 \]
 At degrees at most \(n\) when \(N=n+1\), every term contains a compactly supported coefficient of \(e'_u\); (RP13) makes its integrated trace zero. Integrating in \(u\), and then taking the block diagonal of (RP5), proves for \(0\le k\le n\)
-\
- \int\operatorname{tr}_{2\nu}[\lambda^k\,dz
-  =\int\operatorname{tr}_{2\nu}\lambda^k\,dz
+\[
+ \int\operatorname{tr}_{2\nu}[\lambda^k](e_\infty-e_0)\,dz
+  =\int\operatorname{tr}_{2\nu}[\lambda^k](e_N-e_0)\,dz
   =\int\operatorname{tr}_{\nu}[\lambda^k]
        (r^{\#2N}-s^{\#2N})\,dz .
  \tag{RP15}
@@ -151,14 +151,14 @@ At degrees at most \(n\) when \(N=n+1\), every term contains a compactly support
 No matrix factor or cutoff contribution has been deleted.
 
 The scaled-degree estimates apply with exponent \(2N\ge n+1\): the same induction gives a uniform remainder in \(S(h_\varepsilon^{n+1},g_\varepsilon)\), and every coefficient through degree \(n\) has compact support because \(2N>n\). The trace-class remainder is \(O(\varepsilon^2)\) by the scaled trace estimate and finite trace-class criterion. Equation (RP6) is constant for \(\varepsilon>0\), so uniqueness of its finite expansion in powers \(\varepsilon^{2k-2n}\) forces all integrated difference coefficients below \(n\) to vanish and the degree-\(n\) coefficient to equal \(\operatorname{ind}a^w\). With (RP15), this proves
-\
- \int\operatorname{tr}_{2\nu}[\lambda^k\,dz=0
+\[
+ \int\operatorname{tr}_{2\nu}[\lambda^k](e_\infty-e_0)\,dz=0
       \quad(0\le k<n),\qquad
  \boxed{\displaystyle
  \operatorname{ind}a^w=(2\pi)^{-n}
       \int_{\mathbb R^{2n}}
        \operatorname{tr}_{2\nu}
-       \lambda^n(z)\,dz.}
+       [\lambda^n](e_\infty-e_0)(z)\,dz.}
  \tag{RP16}
 \]
 The integral retains the original \(dx_1\,d\xi_1\cdots dx_n\,d\xi_n\) orientation and CI12/CT15's \((2\pi)^{-n}\) factor. The source comparison in the following lesson keeps the exact parameter \(\hbar=\lambda/i\), the coordinate-orientation sign and the full compact projector pair. Equation (RP16) alone makes no equality with the Chern integral proved below.
@@ -534,10 +534,10 @@ The exact polynomial block formula (FB3) applies to \(e_u\). Its coefficients ar
  \tag{FC4}
 \]
 The inner commutator is in the compact ideal in this quotient, so (FC3) kills the trace of its outer commutator. For each \(m<N\), phase support lies in the fixed compact \(K\) and the coefficient is smooth in \(u\in[0,1]\). A finite coefficient integral can therefore be differentiated and integrated in \(u\), by the bounded continuous derivative on \([0,1]\times K\). This proves the strengthening of (RP15):
-\
+\[
  \begin{aligned}
- \int\operatorname{tr}_{2\nu}[\lambda^m\,dz
- &=\int\operatorname{tr}_{2\nu}\lambda^m\,dz\\
+ \int\operatorname{tr}_{2\nu}[\lambda^m](e_\infty-e_0)\,dz
+ &=\int\operatorname{tr}_{2\nu}[\lambda^m](e_N-e_0)\,dz\\
  &=\int\operatorname{tr}_{\nu}[\lambda^m]
            (r^{\#2N}-s^{\#2N})\,dz,
  \qquad 0\le m<N,\quad N\ge1.

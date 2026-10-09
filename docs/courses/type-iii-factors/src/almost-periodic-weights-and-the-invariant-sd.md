@@ -123,18 +123,18 @@ weights. Expectations: Conditional expectations from modular invariance,
 with \(h\ge0\) in \(L^1(N,\tau)\), \(\|\omega\|=\tau(h)\), \(\omega\) is faithful exactly when \(h\) is nonsingular,
 and \(\|\tau(h\,\cdot)-\tau(k\,\cdot)\|=\tau(h-k)\) when \(0\le k\le h\). The restriction of a weight to its
 centralizer is a trace. If \(C\) is countably decomposable, \(C\cong L^\infty(X,\mu)\) with \(\mu\) finite, and
-positive nonsingular operators affiliated with \(C\) are the a.e. finite measurable functions \(X\to\,]0,\infty\); an
+positive nonsingular operators affiliated with \(C\) are the a.e. finite measurable functions \(X\to\,]0,\infty[\); an
 automorphism of \(C\) acts on them. On a semifinite factor the f.s.n. trace is unique up to a scalar, finite
 projections have finite trace, and automorphisms of a type I factor are inner. Traces relative to each other:
-[Integration for a trace, Theorem 7.2 and Corollary 7.4; densities of normal functionals in
+Integration for a trace, Theorem 7.2 and Corollary 7.4; densities of normal functionals in
 \(L^1(N,\tau)\): Trace densities and noncommutative integration, §§TI-06 and TI-12; the
 centralizer: Fixed elements and changes of density, §CZ-05; finite projections:
 Integration for a trace, Proposition 8.10; automorphisms of \(B(H)\): The universal enveloping von
 Neumann algebra of a C\*-algebra, and W\*-algebras, Lemma 6.4 with Projections and types of von Neumann
 algebras, Corollary 10.4. The measure-theoretic description of \(C\) is Abelian operator algebras, Corollary 3.3,
 applied in the GNS representation of a faithful normal state of \(C\), which is cyclic; positive nonsingular operators
-affiliated with \(L^\infty(X,\mu)\) are multiplications by a.e. finite measurable functions \(X\to\,]0,\infty\), by
-[Unbounded decomposable operators and measurable spectral decomposition, Theorem
+affiliated with \(L^\infty(X,\mu)\) are multiplications by a.e. finite measurable functions \(X\to\,]0,\infty[\), by
+Unbounded decomposable operators and measurable spectral decomposition, Theorem
 5.5 with one-dimensional fibres.
 
 **(B5) The invariant \(S\).** \(S(M)\) is the intersection of the spectra \(\operatorname{Sp}\Delta_\varphi\) over all
@@ -1282,8 +1282,8 @@ Borel equivalence relation is *finite* if all its classes are finite.
 The zero algebra is excluded in (a), because \(L^\infty(X,\mu)\neq\{0\}\) for every probability measure. The group in
 (a) need not be abelian.
 
-*Proof.* *Step 1: a standard model.* By Theorem 9.4(b) of the lesson on the predual of
-\(B(H)\),
+*Proof.* *Step 1: a standard model.* By [Theorem 9.4(b) of the lesson on the predual of
+\(B(H)\)](../foundations-of-von-neumann-algebras/compact-and-trace-class-operators-the-predual-of-b-h-and-the-operator-topologies.html#OA-FND-LT-10),
 \(C=(C_*)^*\), and the weak\* topology is the \(\sigma\)-weak topology. So the closed unit ball of \(C\) is
 \(\sigma\)-weakly compact, and metrizable because \(C_*\) is separable (Weak topologies, Theorem 3.1 and Proposition
 3.2).
@@ -1492,7 +1492,7 @@ dense \(*\)-algebra \(\mathcal A\) spanned by the \(xU_\gamma\).
 \(u_n\in P_{\psi_0}\). Write \(\|z\|_{\psi_0}=\psi_0(z^*z)^{1/2}\). Then \(\|zu_n\|_{\psi_0}=\|z\|_{\psi_0}\) (B1).
 
 (iv) *Centralizing.* For \(y\in\mathcal A\) and \(\omega=y\psi_0\) (that is, \(\omega(z)=\psi_0(zy)\)): since
-\(\psi_0(u_nzy)=\psi_0(zyu_n)\), \(u_n,\omega=\psi_0(z[u_n,y])\), so \(\|[u_n,\omega]\|\le\|[u_n,y]\|_{\psi_0}\to0\).
+\(\psi_0(u_nzy)=\psi_0(zyu_n)\), \([u_n,\omega](z)=\psi_0(z[u_n,y])\), so \(\|[u_n,\omega]\|\le\|[u_n,y]\|_{\psi_0}\to0\).
 The functionals \(y\psi_0\), \(y\in P\), are norm dense in \(P_*\) (if \(x\in P\) annihilates them, \(\psi_0(xx^*)=0\)), and
 \(\|y\psi_0-y'\psi_0\|\le\|y-y'\|_{\psi_0}\), which can be made small with \(y'\in\mathcal A\). As \(\|u_n\|=1\), \((u_n)\) is
 centralizing.

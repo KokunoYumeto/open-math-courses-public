@@ -315,7 +315,7 @@ Every object \((P,\varphi)\) of \(\mathcal Q(T)\) admits local sections \(p_i\) 
 
 **Corollary 4.4.** If the action is free as an action of fppf sheaves, then \([X/G]\) is equivalent to the fppf sheaf quotient \(X/G\).
 
-**Proof.** Freeness means that \((g,x)\mapsto(x,gx)\) is a monomorphism, so an action-prestack object has no nonidentity automorphism. Every quotient-stack object is locally such an object; its automorphism sheaf is therefore trivial. All the quotient-stack fibres are setoids: two arrows with the same endpoints differ by an automorphism. Proposition 1.1 identifies this stack with the sheaf \(F(T)=\pi_0(X/G)\).
+**Proof.** Freeness means that \((g,x)\mapsto(x,gx)\) is a monomorphism, so an action-prestack object has no nonidentity automorphism. Every quotient-stack object is locally such an object; its automorphism sheaf is therefore trivial. All the quotient-stack fibres are setoids: two arrows with the same endpoints differ by an automorphism. Proposition 1.1 identifies this stack with the sheaf \(F(T)=\pi_0([X/G](T))\).
 
 Its objects are locally images of sections of \(X\); two such sections have equal classes exactly when, locally, they are related by a section of \(G\). Thus \(F\) is the sheafification of the orbit presheaf, which is the sheaf quotient \(X/G\). This proves the asserted equivalence. \(\square\)
 
@@ -326,7 +326,7 @@ The hypothesis is freeness on all scheme tests, including nilpotent tests. Freen
 The **classifying stack** \(BG=[S/G]\), for the trivial action on \(S\), is the stack of \(G\)-torsors by Theorem 4.3. For a finite abstract group, its constant group scheme is finite étale, in every characteristic. Its torsors are therefore finite étale covers of degree \(|G|\) with a simply transitive right action: this is true after trivialization and descends. Over an algebraically closed field every such torsor has a rational point and is trivial. The fibre groupoid is nevertheless not a one-element set; the automorphism group of the trivial right torsor is \(G\), acting by left multiplication.
 
 For scalar multiplication on \(\mathbb A^1\), Theorem 4.3 identifies
-\(\mathbb A^1/\mathbb G_m\) with pairs \((L,s)\), a line bundle and a global section. Indeed, the frame torsor of \(L\) is a right \(\mathbb G_m\)-torsor: multiplying a frame \(p\) by \(g\) multiplies its basis by \(g\). The coordinate of \(s\) in that frame satisfies
+\([\mathbb A^1/\mathbb G_m](T)\) with pairs \((L,s)\), a line bundle and a global section. Indeed, the frame torsor of \(L\) is a right \(\mathbb G_m\)-torsor: multiplying a frame \(p\) by \(g\) multiplies its basis by \(g\). The coordinate of \(s\) in that frame satisfies
 \(\varphi(pg)=g^{-1}\varphi(p)\).
 Conversely, trivialize a torsor and use its transition functions to glue rank-one free modules. The values of \(\varphi\) transform by the inverse transition functions, exactly as section coordinates do, so they glue a section of the resulting line bundle. These operations also identify all isomorphisms and undo one another.
 

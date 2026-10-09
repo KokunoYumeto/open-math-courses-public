@@ -333,8 +333,8 @@ Consequently
 The equality follows directly from \(u_sb(Q)^*u_s^*=\theta_s(b^*)(Q)\).
 
 These are the actual [RCC6 coefficient-fixing automorphism formulas](OA-FLOW-RCC.md#rcc-6). To recall the normality mechanism independently, in the regular crossed-product representation the unitary
-\
- [D_c\xi=c_{-r}^*\xi(r)
+\[
+ [D_c\xi](r)=c_{-r}^*\xi(r)
 \]
 is defined on the full \(L^2\) space by strongly continuous bounded fields. Its inverse uses \(c_{-r}\). Centrality makes it commute with the coefficient fields. The cocycle identity
 \(c_{-r}^*c_{s-r}=\theta_{-r}(c_s)\)

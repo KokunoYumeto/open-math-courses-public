@@ -244,8 +244,8 @@ On a coordinate open set, a nonzero covector \((x_0,\xi_0)\) is absent from \(\o
 \(|\xi-\eta|\geq c(|\xi|+|\eta|)\); rapid decay of the cutoff transform beats both the polynomial input bound and any desired output weight. Integrating these bounds proves the assertion. Spatial localization then proves that this definition is local, has a closed conic wavefront set, and gives smoothness exactly when every direction is regular: a finite angular cover of the unit sphere provides rapid Fourier decrease in all directions, followed by Fourier inversion.
 
 For a compactly localized pseudodifferential kernel, use coordinates \((x,v)=(x,x-y)\). Before localizing in \(v\), its Fourier transform in \((x,v)\) is
-\
-\mathcal F_{x,v}\big[\phi(x)K_a(x,x-v)\big
+\[
+\mathcal F_{x,v}\big[\phi(x)K_a(x,x-v)\big](\zeta,\eta)
 =\mathcal F_x(\phi a)(\zeta,\eta).
 \tag{G21}
 \]

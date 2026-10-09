@@ -961,14 +961,14 @@ Changing the prolongation conjugates this subgroup. Thus triviality of its actio
 
 **Lemma 7.1. Reduction of invertible torsion.** If \(G/R\) is a smooth separated group scheme of finite type and \(\ell\) is invertible in \(R\), then
 
-\
-G[\ell^n
+\[
+G[\ell^n](R^{\mathrm{sh}})
 \xrightarrow{\ \sim\ }
-G_\kappa\ell^n.
+G_\kappa[\ell^n](\kappa^s).
 \tag{40}
 \]
 
-For a Néron model \(\mathcal A\), the left side equals \(A_K\ell^n\).
+For a Néron model \(\mathcal A\), the left side equals \(A_K[\ell^n](K^{\mathrm{sh}})\).
 
 *Proof.* The differential of multiplication by \(\ell^n\) at the identity is multiplication by \(\ell^n\) on its tangent module, as in Lesson 1. Translations give the same invertibility at every point. The smooth-coordinate Jacobian criterion makes \([\ell^n]:G\to G\) étale. Its fibre over the identity, \(G[\ell^n]\), is therefore an étale separated \(R\)-scheme. It need not be finite over \(R\).
 
@@ -985,13 +985,13 @@ For \(\mathcal A\), base-change compatibility and the mapping property identify 
 
 with \(L\) smooth connected affine of dimension \(d\) and \(B\) an abelian variety of dimension \(a=g-d\). If \(c=\#\pi_0(G)(k)\) and \(\ell\ne\operatorname{char}k\), then
 
-\
-\#G[\ell^n\leq c\,\ell^{\,n(2a+d)}
+\[
+\#G[\ell^n](k)\leq c\,\ell^{\,n(2a+d)}
 =c\,\ell^{\,n(2g-d)}.
 \tag{42}
 \]
 
-In particular, if \(\#G\ell^n=\ell^{2gn}\) for every \(n\), then \(G^0\) is an abelian variety.
+In particular, if \(\#G[\ell^n](k)=\ell^{2gn}\) for every \(n\), then \(G^0\) is an abelian variety.
 
 *Proof.* The needed commutative structure assertion (41) is proved in the auxiliary argument below. We prove the numerical step here.
 
@@ -999,14 +999,14 @@ Lesson 1 embeds \(L\) as a closed subgroup of some \(\mathrm{GL}(V)\). Its commu
 
 The diagonal map has connected smooth scheme-theoretic image \(T\subset\mathbf G_m^{\dim V}\). Lesson 5 makes \(T\) a torus of dimension \(t\leq d\): it is of multiplicative type, smooth and connected over an algebraically closed field. A matrix in the kernel is upper unitriangular. Such a matrix has no nontrivial \(\ell\)-power torsion. In characteristic \(p>0\), a unitriangular matrix has \(p\)-power order, since \((1+N)^{p^r}=1+N^{p^r}=1\) for \(p^r\geq\dim V\). In characteristic zero, \((1+N)^m-1=N(m+\binom m2N+\cdots)\) is zero only if \(N=0\), because the second factor is invertible.
 
-Consequently diagonal projection is injective on \(L\ell^n\), and
+Consequently diagonal projection is injective on \(L[\ell^n](k)\), and
 
-\
-\#L[\ell^n\leq\#T\ell^n
+\[
+\#L[\ell^n](k)\leq\#T[\ell^n](k)
 =\ell^{nt}\leq\ell^{nd}.
 \]
 
-In (41), an \(\ell^n\)-torsion point maps into \(B\ell^n\), whose cardinality is \(\ell^{2an}\) by Lesson 6. Every nonempty fibre on these torsion points is a coset of \(L\ell^n\). This bounds the torsion in \(G^0\) by \(\ell^{n(2a+d)}\). In each of the \(c\) components of \(G\), the difference of two \(\ell^n\)-torsion points lies in \(G^0[\ell^n]\). This proves (42).
+In (41), an \(\ell^n\)-torsion point maps into \(B[\ell^n](k)\), whose cardinality is \(\ell^{2an}\) by Lesson 6. Every nonempty fibre on these torsion points is a coset of \(L[\ell^n](k)\). This bounds the torsion in \(G^0\) by \(\ell^{n(2a+d)}\). In each of the \(c\) components of \(G\), the difference of two \(\ell^n\)-torsion points lies in \(G^0[\ell^n]\). This proves (42).
 
 If the full cardinality is \(\ell^{2gn}\), then (42) gives \(\ell^{nd}\leq c\) for every \(n\). Hence \(d=0\). The smooth connected zero-dimensional \(L\) is trivial, so \(G^0=B\). \(\square\)
 
@@ -1054,7 +1054,7 @@ This proof also shows why a proper special fibre cannot be replaced by merely a 
 1. \(A_K\) has good reduction over \(R\).
 2. Its Néron model \(\mathcal A/R\) is an abelian scheme.
 3. \((\mathcal A_\kappa)^0\) is an abelian variety.
-4. Inertia \(I\) acts trivially on every \(A_K\ell^n\).
+4. Inertia \(I\) acts trivially on every \(A_K[\ell^n](K^s)\).
 5. Inertia acts trivially on \(T_\ell(A_K)\).
 
 If these hold for one such prime, they hold for every prime invertible in \(\kappa\).
@@ -1065,9 +1065,9 @@ Suppose \(2\) holds. Multiplication by \(\ell^n\) on \(\mathcal A\) is étale by
 
 Conversely, assume \(4\). By (40) and the Néron mapping property,
 
-\
-\#\mathcal A_\kappa[\ell^n
-=\#A_K\ell^n
+\[
+\#\mathcal A_\kappa[\ell^n](\kappa^s)
+=\#A_K[\ell^n](K^{\mathrm{sh}})
 =\ell^{2gn}
 \quad(n\geq1).
 \tag{46}
@@ -1076,7 +1076,7 @@ Conversely, assume \(4\). By (40) and the Néron mapping property,
 The special kernel is an étale zero-dimensional finite-type scheme over \(\kappa\), hence finite étale. Its points do not increase on passing from \(\kappa^s\) to an algebraic closure: all its residue extensions are separable. Apply Lemma 7.2 over that algebraic closure. It forces the geometric identity component to be an abelian variety. Properness descends along a field extension, and smooth geometric connectedness already holds by Lesson 3. Thus \(3\) holds over the original, possibly imperfect, \(\kappa\).
 
 Lesson 6 identifies
-\(T_\ell(A_K)/\ell^nT_\ell(A_K)\) with \(A_K\ell^n\).
+\(T_\ell(A_K)/\ell^nT_\ell(A_K)\) with \(A_K[\ell^n](K^s)\).
 Triviality on the inverse limit implies triviality on all these quotients. Conversely triviality on every level implies triviality on their inverse limit. This proves \(4\Leftrightarrow5\).
 
 The equivalence with good reduction is independent of \(\ell\), which proves the last assertion. \(\square\)
@@ -1615,7 +1615,7 @@ All ten problems have complete solutions below. Problems 1–3 and 6 are the ass
 4. **Medium.** For \(X=\operatorname{Spec}R[x,y]/(xy-\pi^2)\), compute the defect of the section \(x=y=\pi\) and describe its lift to the dilatation at the singular special point.
 5. **Medium.** Explain why \(\mathbb G_{m,R}\) is not the Néron model of \(\mathbb G_{m,K}\) under the finite-type definition in Section 1.
 6. **Medium.** Compute the component group for \(y^2=x^3+p\) over \(\mathbf Z_p\), \(p\geq5\). State precisely which geometric input identifies the smooth model, and distinguish its component group from its identity fibre.
-7. **Medium.** In Lemma 7.2, suppose \(\#G\ell^n=\ell^{2gn}\) for all \(n\). Explain why the affine kernel must vanish. Why does equality at a single level alone not give that conclusion from the estimate?
+7. **Medium.** In Lemma 7.2, suppose \(\#G[\ell^n](k)=\ell^{2gn}\) for all \(n\). Explain why the affine kernel must vanish. Why does equality at a single level alone not give that conclusion from the estimate?
 8. **Medium.** For a Tate curve with \(v_R(q)=3\), label its special cycle \(C_0,C_1,C_2\), with \(O\) on \(C_0\). Write the intersection matrix and use it to determine the component of \(P+Q\) when \(P,Q\) specialize to \(C_1,C_2\).
 9. **Hard.** In Lemma 7.3, compute the transition on \(H^1(M,\mathcal O_M)[\pi^n]\) in (44). Explain how it excludes a disconnected special fibre without assuming that \(R\) is complete.
 10. **Hard.** A smooth weak curve model has \(r\) special components isomorphic to \(\mathbf G_m\), and a generating invariant differential with simple nonzero poles at both ends of each normalized component. Show, using Lemma 8.2, why its Néron model can neither merge those components nor add their missing ends.

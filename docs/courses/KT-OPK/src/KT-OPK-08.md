@@ -1,10 +1,10 @@
 # Suspension, higher K-groups and the long exact sequence
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, at Ultra. Independently authored CC0 lesson; self-checked by the writing AI.*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, at Ultra. Independently authored CC0 lesson. Mathematical revisions by GPT-6 Astra (OpenAI), at Ultra.*
 
 An invertible matrix can be doubled with its inverse and joined to the identity. Conjugating a fixed projection along that path produces an idempotent loop. This turns an invertible component into a relative projective class over a suspension. The cone extension explains why every such class occurs and why the construction is injective.
 
-We use [The index map and the exact sequence at \(K_0\)](KT-OPK-07.md), especially its Theorem 4.1, normalized boundary construction, and Lemmas 3.1–3.2 on finite stabilization. Homotopy invariance, normalized \(K_1\), and matrix stability come from the preceding lessons. Unless explicitly stated otherwise, algebras below are arbitrary complex C*-algebras, maps are *-homomorphisms, and unitizations are external. The suspension isomorphism itself also holds for complex Banach algebras, with bounded homomorphisms.
+We use [The index map and the exact sequence at \(K_0\)](KT-OPK-07.md), especially [its Theorem 4.1](KT-OPK-07.md#4-exactness-at-the-four-interior-groups), [normalized boundary construction (Theorem 2.2)](KT-OPK-07.md#2-the-idempotent-associated-to-a-doubled-lift), and [Lemmas 3.1–3.2 on finite stabilization](KT-OPK-07.md#3-what-a-zero-k_0--difference-provides). [Homotopy invariance for nonunital algebras (Lesson 7, Section 6)](KT-OPK-07.md#6-the-fredholm-sign-and-a-cone-extension), normalized \(K_1\), and matrix stability come from [Lesson 3, Section 4](KT-OPK-03.md#4-changing-the-algebra), [Lesson 6, Proposition 1.2](KT-OPK-06.md#1-a-definition-that-keeps-the-scalar-part-fixed) and [Lesson 6, Section 3](KT-OPK-06.md#3-functoriality-and-finite-matrix-properties). Unless explicitly stated otherwise, algebras below are arbitrary complex C*-algebras, maps are *-homomorphisms, and unitizations are external. The suspension isomorphism itself also holds for complex Banach algebras, with bounded homomorphisms.
 
 ## 1. Cones, suspensions, and lifting continuous functions
 
@@ -47,7 +47,7 @@ To suspend a general extension, surjectivity on continuous functions must be pro
 
 **Lemma 1.2 (endpoint-preserving lifts).** Let \(q:E\to F\) be a surjective bounded linear map between Banach spaces. Every continuous \(F\)-valued function on \([0,1]\) has a continuous lift. If it vanishes at either or both endpoints, the lift can be chosen to vanish at those endpoints.
 
-*Proof.* The open mapping theorem gives a constant \(M\) such that every \(b\in F\) has a lift \(a\) with \(\|a\|\leq M\|b\|\); enlarge the constant if necessary to avoid an attained-infimum assertion. Begin with a residual \(r_0=f\). Choose a partition fine enough that its piecewise linear interpolant \(v_0\), formed from the values of \(r_0\) at the nodes, satisfies
+*Proof.* [The open mapping theorem](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-05) gives a constant \(M\) such that every \(b\in F\) has a lift \(a\) with \(\|a\|\leq M\|b\|\); enlarge the constant if necessary to avoid an attained-infimum assertion. Begin with a residual \(r_0=f\). Choose a partition fine enough that its piecewise linear interpolant \(v_0\), formed from the values of \(r_0\) at the nodes, satisfies
 
 \[
 \|r_0-v_0\|_\infty\leq\tfrac12\|r_0\|_\infty.
@@ -76,7 +76,7 @@ E:\quad 0\longrightarrow J\xrightarrow{\iota}A
 
 induces an extension \(0\to SJ\to SA\to SB\to0\). Thus \(SA/SJ\cong SB\), and the same assertion holds after any finite number of suspensions.
 
-*Proof.* The pointwise kernel is precisely the continuous functions taking values in \(J\) and vanishing at both endpoints. Lemma 1.2 proves surjectivity, with both endpoints fixed at zero. The induced bijective *-homomorphism from the C*-quotient is an isometric isomorphism. Repeating the argument proves the last assertion. \(\square\)
+*Proof.* The pointwise kernel is precisely the continuous functions taking values in \(J\) and vanishing at both endpoints. Lemma 1.2 proves surjectivity, with both endpoints fixed at zero. The induced bijective *-homomorphism from the C*-quotient is an isometric isomorphism by [C*-algebras, Theorem 15.1 and Corollary 15.4](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-25); [Corollary 4.6](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-12) gives the isometry of an injective *-homomorphism. Repeating the argument proves the last assertion. \(\square\)
 
 ## 2. The idempotent loop of an invertible
 
@@ -131,9 +131,9 @@ An element of \((CA)^+\) can be viewed as an \(A^+\)-valued continuous function 
 
 With the endpoint convention (1.1), it equals the index boundary of (1.2), with coefficient \(+1\).
 
-*Proof.* Formula (2.3) is literally the normalized invertible-lift formula for that boundary. Lesson 7, Theorem 2.2, proves independence of doubled lifts, invariance under stabilized homotopy, and additivity. These apply to any choice of the path in (2.1), since every such path is a doubled lift over \((CA)^+\). Thus they prove all the well-definedness assertions here.
+*Proof.* Formula (2.3) is literally the normalized invertible-lift formula for that boundary. [Lesson 7, Theorem 2.2](KT-OPK-07.md#2-the-idempotent-associated-to-a-doubled-lift), proves independence of doubled lifts, invariance under stabilized homotopy, and additivity. These apply to any choice of the path in (2.1), since every such path is a doubled lift over \((CA)^+\). Thus they prove all the well-definedness assertions here.
 
-The four-interior exact sequence of Lesson 7, Theorem 4.1, applied to (1.2), contains
+The four-interior exact sequence of [Lesson 7, Theorem 4.1](KT-OPK-07.md#4-exactness-at-the-four-interior-groups), applied to (1.2), contains
 
 \[
 \begin{gathered}
@@ -228,7 +228,7 @@ C_0(\mathbb R^2)&\mathbb Z&0.
 \tag{4.1}
 \]
 
-The first row was proved in Lessons 3 and 6. For the second, Lesson 4, Proposition 6.1, gives \(K_0=0\); Lesson 6 computes \(K_1\) by counterclockwise winding. In interval coordinates a generator is
+The first row was proved in [Lesson 3, Example 5.1](KT-OPK-03.md#5-calculations-dimensions-absorption-and-bundles) and [Lesson 6, Theorem 5.1, applied to the scalar von Neumann algebra](KT-OPK-06.md#5-components-detected-by-spectra-winding-and-index). For the second, [Lesson 4, Proposition 6.1](KT-OPK-04.md#6-compact-supports-and-the-determinant-at-the-equator), gives \(K_0=0\); [Lesson 6, Theorem 5.2](KT-OPK-06.md#winding-detects-the-circle-group) computes \(K_1\) by counterclockwise winding. In interval coordinates a generator is
 
 \[
 \omega(s)=e^{2\pi is},\qquad 0\leq s\leq1.
@@ -243,7 +243,7 @@ K_0(S^2\mathbb C)=\mathbb Z\,
 \tag{4.3}
 \]
 
-For the plane's \(K_1\), use [Invertibles, unitaries and \(K_1\)](KT-OPK-06.md), Section 5, “Sphere maps and unitary transport,” Proposition “The determinant and the second homotopy group.” It proves \(\pi_2(U(n),I_n)=0\) at every finite matrix size: based sphere contractions and the explicit compact-family unitary lift reduce a two-sphere map to a scalar map, whose continuous argument contracts it. A normalized unitary over \(C_0(\mathbb R^2)^+=C(S^2)\) is precisely a map \(S^2\to U(n)\) taking infinity to \(I_n\), so that proposition gives a homotopy with the same value at infinity. Every stage remains a normalized unitary in the function algebra. The based polar deformation treats normalized invertibles as well. Consequently every representative is zero in \(K_1\), proving the plane's \(K_1=0\). This uses no periodicity theorem.
+For the plane's \(K_1\), use [Invertibles, unitaries and \(K_1\)](KT-OPK-06.md), [Section 5, “Sphere maps and unitary transport,” Proposition “The determinant and the second homotopy group”](KT-OPK-06.md#sphere-maps-and-unitary-transport). It proves \(\pi_2(U(n),I_n)=0\) at every finite matrix size: based sphere contractions and the explicit compact-family unitary lift reduce a two-sphere map to a scalar map, whose continuous argument contracts it. A normalized unitary over \(C_0(\mathbb R^2)^+=C(S^2)\) is precisely a map \(S^2\to U(n)\) taking infinity to \(I_n\), so that proposition gives a homotopy with the same value at infinity. Every stage remains a normalized unitary in the function algebra. The based polar deformation treats normalized invertibles as well. Consequently every representative is zero in \(K_1\), proving the plane's \(K_1=0\). This uses no periodicity theorem.
 
 ### Fixing the generator's sign
 
@@ -306,7 +306,7 @@ Choose a central closed rectangle whose boundary lies in this collar. Its interi
 
 For the orientation \(dt\wedge ds\), the outer boundary travels along \(s=0\) with \(t\) increasing, then along \(t=1\) with \(s\) increasing, then back along \(s=1\) and \(t=0\). Formula (4.6) shows that only the second edge contributes: it is the positive loop \(\omega(s)\). Consequently the finite-to-infinity clutching degree of \(e\) is \(+1\).
 
-Let \(\mathfrak b\) denote the relative class in Lesson 4, Theorem 6.2:
+Let \(\mathfrak b\) denote the relative class in [Lesson 4, Theorem 6.2](KT-OPK-04.md#6-compact-supports-and-the-determinant-at-the-equator):
 
 \[
 \begin{gathered}
@@ -418,7 +418,7 @@ Naturality handles all representatives and nonunital maps. Identify the other id
 
 We prove its additional exactness assertion at \(K_0(A)\) directly. The homomorphisms \((a,f)\mapsto f(r)\), \(0\leq r\leq1\), form a point-norm homotopy from zero to \(\phi q\). Hence \(\phi_*q_*=0\).
 
-Conversely let \(x\in K_0(A)\) with \(\phi_*x=0\). Use Lesson 4's normal form \(x=[e]-[P]\), where \(e\) is an idempotent over \(A^+\), with scalar part the scalar projection \(P\). Its image has \([\phi^+(e)]=[P]\) over \(B^+\). Lesson 7, Lemma 3.1, adds common identity and zero blocks to produce padded idempotents \(e'\), \(P'\), and an invertible path \(w(r)\), starting at identity, such that
+Conversely let \(x\in K_0(A)\) with \(\phi_*x=0\). Use [Lesson 4's normal form](KT-OPK-04.md#1-recording-the-scalar-part) \(x=[e]-[P]\), where \(e\) is an idempotent over \(A^+\), with scalar part the scalar projection \(P\). Its image has \([\phi^+(e)]=[P]\) over \(B^+\). [Lesson 7, Lemma 3.1](KT-OPK-07.md#3-what-a-zero-k_0--difference-provides), adds common identity and zero blocks to produce padded idempotents \(e'\), \(P'\), and an invertible path \(w(r)\), starting at identity, such that
 
 \[
 w(1)P'w(1)^{-1}=\phi^+(e').

@@ -50,7 +50,89 @@ A=k[u^2-1,u(u^2-1)]\subset B=k[u].
 
 Remove the normalization point \(u=-1\), obtaining \(\operatorname{Spec}B_{u+1}\to\operatorname{Spec}A\). This is of finite type and has finite fibres as a restriction of the finite normalization, so is quasi-finite. It is not finite: if \(B_{u+1}\) were integral over \(A\), the element \((u+1)^{-1}\) would be integral over \(B\) as well. The normality of \(k[u]\) would put it in \(k[u]\), a contradiction. The other point over the node remains, so the map is still surjective. Quasi-finite and surjective need not imply finite.
 
-The quasi-finite locus of a locally finite type morphism is open. Its exact open proof is [Stacks, Tag 01TI](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-lemma-quasi-finite-points-open); Zariski's Main Theorem, Theorem 3.1, gives the in-course algebraic neighbourhood proof. The local definition and the stability proofs above do not assume that assertion.
+## 2A. An algebraic proof of openness
+
+The pointwise tests in Section 1 and the integral-extension proofs in the prerequisite algebra course suffice for this argument. The conductor lemmas in The theorem on formal functions, Appendix Z are a prerequisite here; their proofs use those same pointwise tests, not openness or Chevalley’s theorem.
+
+### The algebraic neighbourhood
+
+**Theorem 2A.1 (algebraic Zariski Main Theorem).** Let \(R\to B\) be finite type and let \(C\subset B\) consist of the elements integral over \(R\). If \(\mathfrak q\in\operatorname{Spec}B\) is a quasi-finite point over \(R\), there is \(g\in C\setminus\mathfrak q\) such that
+
+\[
+C_g=B_g.
+\tag{2A.1}
+\]
+
+Equality means equality through the natural localization map. In particular a neighbourhood of \(\mathfrak q\) maps isomorphically to an open of \(\operatorname{Spec}C\). We will prove this by induction, first explaining the one-variable calculation. The two conductor facts used in the finite-extension step are proved in Appendix Z of The theorem on formal functions, with the precise lemmas identified below.
+
+**Lemma 2A.2 (one algebra generator).** Theorem 2A.1 holds when \(B=R[b]\).
+
+**Proof.** Put \(\mathfrak p=\mathfrak q\cap R\). Write \(B=R[T]/I\). Some polynomial in \(I\) has a coefficient outside \(\mathfrak p\). Otherwise the fibre would be \(\kappa(\mathfrak p)[T]\), which has no isolated points: a closed point has the zero prime as a proper generalization, and the zero prime has transcendental residue field. Either contradicts the quasi-finite point test. Thus in \(B\) there is a relation
+
+\[
+a_m b^m+\cdots+a_0=0
+\tag{2A.2}
+\]
+
+with coefficients in \(C\), at least one outside \(\mathfrak q\). We may start with coefficients in the image of \(R\); allowing \(C\) will permit induction on the degree.
+
+For \(m\geq1\), the element \(a_m b\) is integral over \(C\). Multiplying (2A.2) by \(a_m^{m-1}\) gives the monic equation
+
+\[
+(a_m b)^m+a_{m-1}(a_m b)^{m-1}
++a_{m-2}a_m(a_m b)^{m-2}+\cdots+a_0a_m^{m-1}=0.
+\tag{2A.3}
+\]
+
+Transitivity of integrality therefore puts \(a_m b\) in \(C\). If \(a_m\notin\mathfrak q\), take \(g=a_m\): then \(b=(a_m b)/a_m\in C_g\), and \(B_g=C_g\). If \(a_m\in\mathfrak q\), combine the first two terms as
+\((a_m b+a_{m-1})b^{m-1}\). This is a relation of smaller degree with coefficients in \(C\). At least one coefficient still lies outside \(\mathfrak q\), because \(a_m b\in\mathfrak q\) and the new coefficient is congruent to \(a_{m-1}\). Repeat. A degree-zero relation with its sole coefficient outside \(\mathfrak q\) is impossible, so a leading coefficient outside \(\mathfrak q\) must eventually occur. Localization is injective on the inclusion \(C\subset B\), proving the desired equality. \(\square\)
+
+This is the monogenic calculation of [Stacks, Tag 00Q8](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-quasi-finite-monogenic). It uses neither domains nor reducedness.
+
+### Conductors and induction
+
+For an inclusion \(A\subset B\), its **conductor** is
+
+\[
+J=\{u\in B:uB\subset A\}.
+\tag{2A.4}
+\]
+
+It is an ideal of \(B\) contained in \(A\). At an element \(u\in J\), localization makes \(A_u=B_u\), since \(v=(uv)/u\) for every \(v\in B\). The conductor thus locates where a finite extension becomes an equality.
+
+We use the following two proved algebraic lemmas from The theorem on formal functions, Appendix Z. Suppose \(A\subset B\), \(A\) is integrally closed in \(B\), and \(B\) is finite over \(A[b]\). Let \(J\) be the conductor from \(B\) to \(A[b]\).
+
+* If \(u\sum_i a_i b^i\in\sqrt J\), with \(u\in B\) and \(a_i\in A\), then every \(ua_i\in\sqrt J\). The full proof is Lemma Z.6, with Situation Z.4 and the leading-coefficient proofs in Lemmas Z.1–Z.5.
+* If reduced rings \(A_0\subset B_0\) contain an element \(b_0\) such that \(u\sum_i a_i b_0^i=0\) always implies every \(ua_i=0\), and \(B_0\) is finite over \(A_0[b_0]\), then \(B_0/A_0\) is quasi-finite at no point. This is the strongly transcendental case; its complete proof is Lemma Z.11, with Definition Z.7 and Lemmas Z.8–Z.10. That proof passes to a minimal component and uses the integral polynomial-algebra case.
+
+These lemmas apply over arbitrary rings with precisely the stated hypotheses. Their proofs, including localization in the presence of zero divisors and the passage to a minimal component, are written in that programme appendix.
+
+**Lemma 2A.3 (finite over one generator).** Suppose \(A\subset B\), \(A\) is integrally closed in \(B\), \(B\) is finite over \(A[b]\), and \(B/A\) is quasi-finite at \(\mathfrak q\). There is \(h\in A\setminus\mathfrak q\) with \(A_h=B_h\).
+
+**Proof.** The first conductor fact says that the image of \(b\) in \(B/\sqrt J\) satisfies the second fact's condition over
+\(A/(A\cap\sqrt J)\). Both quotient rings are reduced. The finite extension descends to their quotients. Thus this quotient extension has no quasi-finite point. If \(\mathfrak q\) contained \(J\), it would give just such a point: its fibre is a closed subspace of the original fibre, so the isolated point remains isolated and its residue extension remains finite. This contradiction proves \(J\not\subset\mathfrak q\).
+
+Choose \(u\in J\setminus\mathfrak q\), giving \(A[b]_u=B_u\). The contracted point of \(\operatorname{Spec}A[b]\) is quasi-finite, because its local fibre ring agrees with the original one. The integral closure of \(A\) in \(A[b]\) is \(A\). Lemma 2A.2 therefore gives \(a\in A\setminus\mathfrak q\) with \(A_a=A[b]_a\). In this ring write \(u=c/a^N\), with \(c\in A\). Its image is outside the chosen prime, so \(c\notin\mathfrak q\). Invert \(h=ac\). Then both \(a\) and \(u\) are units and the two equalities give \(A_h=B_h\). \(\square\)
+
+**Proof of Theorem 2A.1.** Replacing \(R\) by its image in \(B\) does not change its fibres or integral closure. Choose the least \(n\) such that \(B\) is finite over \(R[b_1,\ldots,b_n]\). For \(n=0\), all of \(B\) is integral over \(R\), so \(C=B\).
+
+For \(n=1\), replace the base by \(C\). The extension remains quasi-finite at \(\mathfrak q\): its fibre is a subspace of the old fibre and \(B\) is still a finite-type \(C\)-algebra. The ring \(C\) is integrally closed in \(B\) by transitivity. Also \(B\) is finite over \(C[b_1]\). Lemma 2A.3 applies and proves (2A.1).
+
+For \(n>1\), let \(D\subset B\) be the integral closure of \(R[b_1,\ldots,b_{n-1}]\) in \(B\). The same permanence argument makes \(B/D\) quasi-finite at \(\mathfrak q\), and \(B\) is finite over \(D[b_n]\). Lemma 2A.3 supplies \(v\in D\setminus\mathfrak q\) with \(D_v=B_v\).
+
+We cannot directly apply induction to \(D\): it need not be finitely generated over \(R\). Instead, choose finitely many numerators in \(D\) for a finite \(R\)-algebra generating list of \(B_v\). Let \(E\subset D\) be generated over \(R\) by those numerators, \(v\), and \(b_1,\ldots,b_{n-1}\). Then \(E_v=B_v\), and \(E\) is finite over \(R[b_1,\ldots,b_{n-1}]\), since its added generators are integral over that ring. At the contracted prime its local ring and local fibre ring agree with those of \(B\), so it is quasi-finite over \(R\).
+
+Induction supplies the integral closure \(F\) of \(R\) in \(E\) and \(w\in F\setminus\mathfrak q\) with \(F_w=E_w\). Write \(v=c/w^M\) in this localization, with \(c\in F\setminus\mathfrak q\). Inverting \(g=wc\) makes \(v,w\) units, hence
+\(F_g=E_g=B_g\). Since \(F\subset C\subset B\), it follows that \(C_g=B_g\). \(\square\)
+
+The induction is [Stacks, Tag 00Q9](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-theorem-main-theorem). The finite intermediate algebra is indispensable; integral closure itself need not be finite type.
+
+### Openness of the quasi-finite locus
+
+**Theorem 2A.4.** The quasi-finite locus of a locally finite-type morphism is open.
+
+**Proof.** Work on an affine chart \(R\to B\). At a quasi-finite prime use Theorem 2A.1 to obtain \(C_g=B_g\). Choose finitely many integral numerators in \(C\) that, together with \(g^{-1}\), generate \(B_g\) over \(R\). Let \(D\subset C\) be the \(R\)-algebra generated by those numerators and \(g\). It is finite over \(R\), and \(D_g=B_g\). A finite map is quasi-finite, and restricting its source to an open preserves local quasi-finiteness. Thus all points of \(D(g)\subset\operatorname{Spec}B\) are quasi-finite over \(R\). These affine neighbourhoods prove openness and glue across source charts. \(\square\)
+
 
 ## 3. Constructible sets
 
@@ -143,4 +225,4 @@ Take the finite union over source charts, then work separately on each affine ta
 
 ## Sources and proof dependencies
 
-The primary reference is *The Stacks project*, read in its AI Integrated Stacks Project edition: quasi-finite point tests at 01TH and 00PJ, finite fibres at 02NG–02NH, stability at 01TL–01TN, constructible topology at 005L and 053Y–053Z, and Chevalley at 054J–054K and its algebra version 00FE. The internal algebra proof of Noether normalization is *Krull dimension and Noether normalization*, Corollary 3.2; the Jacobson and residue-field inputs are named in Section 1. All four assigned results and all five exercises are proved in this lesson. The exact open proof of openness of the quasi-finite locus is identified in Section 2, together with its in-course proof in *Zariski's Main Theorem*, Theorem 3.1. Referenced Stacks source text retains the GNU Free Documentation License; none is reproduced here. Vakil’s *The Rising Sea*, §8.4, was consulted for the geometric image and elimination viewpoints. The expression here is independent CC0 material.
+The primary reference is *The Stacks project*, read in its AI Integrated Stacks Project edition: quasi-finite point tests at 01TH and 00PJ, finite fibres at 02NG–02NH, stability at 01TL–01TN, constructible topology at 005L and 053Y–053Z, and Chevalley at 054J–054K and its algebra version 00FE. The internal algebra proof of Noether normalization is *Krull dimension and Noether normalization*, Corollary 3.2; the Jacobson and residue-field inputs are named in Section 1. All four assigned results and all five exercises are proved in this lesson. Openness of the quasi-finite locus is proved in Section 2A, from the pointwise criterion in Section 1 and the complete prerequisite conductor proofs in Appendix Z of *The theorem on formal functions*. Referenced Stacks source text retains the GNU Free Documentation License; none is reproduced here. Vakil’s *The Rising Sea*, §8.4, was consulted for the geometric image and elimination viewpoints. The expression here is independent CC0 material.

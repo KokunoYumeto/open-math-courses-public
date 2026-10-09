@@ -10,13 +10,13 @@ An automorphism changes a weight and therefore changes the coordinates used to r
 Let \((M,H,J,\mathcal P)\) be a standard form of a nonzero von Neumann algebra, and let \(\varphi\) be a faithful normal semifinite weight. Automorphisms are normal unital star automorphisms. No factoriality, separability, countable decomposability or finite-total-weight hypothesis is imposed.
 
 The complete regular representation is
-\
+\[
  \begin{aligned}
  N_\varphi&=M\rtimes_{\sigma^\varphi}\mathbb R
              \subseteq B(\mathscr H),&
  \mathscr H&=L^2(\mathbb R,dr;H),\\
- \bigl[\pi_\varphi(x)\xi\bigr&=\sigma_{-r}^\varphi(x)\xi(r),&
- \bigl\lambda(t)\xi\bigr&=\xi(r-t).
+ \bigl[\pi_\varphi(x)\xi\bigr](r)&=\sigma_{-r}^\varphi(x)\xi(r),&
+ \bigl[\lambda(t)\xi\bigr](r)&=\xi(r-t).
  \end{aligned}
  \tag{CIM0.a}
 \]
@@ -39,8 +39,8 @@ For \(\alpha\in\operatorname{Aut}(M)\), let \(U(\alpha)\) be its unique standard
  \tag{CIM0.c}
 \]
 This is the fully normalized faithful cocycle of [BC4](OA-FLOW-BC.md#oa-flow.bc.4), including its scalar normalization. We shall construct
-\
- \bigl[V_\varphi(\alpha)\xi\bigr
+\[
+ \bigl[V_\varphi(\alpha)\xi\bigr](r)
        =(c_{-r}^\alpha)^*U(\alpha)\xi(r).
  \tag{CIM0.d}
 \]
@@ -118,11 +118,11 @@ If \(\xi\) is any strongly measurable field, choose finite-valued measurable \(\
 shows that their pointwise limit is \(A_\alpha\xi\); hence that field is strongly measurable. The same argument applies to \(B_\alpha\xi\). It also shows that changing a representative on a null set changes its image only there.
 
 Consequently
-\
+\[
  \begin{aligned}
- \bigl[V_\varphi(\alpha)\xi\bigr
+ \bigl[V_\varphi(\alpha)\xi\bigr](r)
        &=(c_{-r}^\alpha)^*U(\alpha)\xi(r),\\
- \biglV_\varphi(\alpha)^*\xi\bigr
+ \bigl[V_\varphi(\alpha)^*\xi\bigr](r)
        &=U(\alpha)^*c_{-r}^\alpha\xi(r)
  \end{aligned}
  \tag{CIM1.h}
@@ -143,15 +143,15 @@ The [isomorphism covariance of modular groups and derivatives](OA-FLOW-BC.md#oa-
  \tag{CIM2.a}
 \]
 Recall the regular convention
-\
- \bigl[\pi_\varphi(x)\xi\bigr=\sigma_{-r}^\varphi(x)\xi(r),
+\[
+ \bigl[\pi_\varphi(x)\xi\bigr](r)=\sigma_{-r}^\varphi(x)\xi(r),
  \qquad
- \bigl\lambda(t)\xi\bigr=\xi(r-t).
+ \bigl[\lambda(t)\xi\bigr](r)=\xi(r-t).
 \]
 For the coefficient generators, (CIM1.h) and (CIM2.a) give
-\
+\[
  \begin{aligned}
- &\bigl[V(\alpha)\pi_\varphi(x)V(\alpha)^*\xi\bigr\\
+ &\bigl[V(\alpha)\pi_\varphi(x)V(\alpha)^*\xi\bigr](r)\\
  &\quad=(c_{-r}^\alpha)^*
        \alpha(\sigma_{-r}^\varphi(x))c_{-r}^\alpha\,\xi(r)\\
  &\quad=\sigma_{-r}^\varphi(\alpha(x))\xi(r).
@@ -159,9 +159,9 @@ For the coefficient generators, (CIM1.h) and (CIM2.a) give
  \tag{CIM2.b}
 \]
 For translations, the constant factors \(U(\alpha)\) cancel in the neighboring fibers:
-\
+\[
  \begin{aligned}
- \bigl[V(\alpha)\lambda(t)V(\alpha)^*\xi\bigr
+ \bigl[V(\alpha)\lambda(t)V(\alpha)^*\xi\bigr](r)
   &=(c_{-r}^\alpha)^*c_{t-r}^\alpha\,\xi(r-t)\\
   &=\sigma_{-r}^\varphi(c_t^\alpha)\xi(r-t).
  \end{aligned}
@@ -208,9 +208,9 @@ We next prove that the implementing unitaries themselves form a genuine represen
  \tag{CIM2.g}
 \]
 The factors have a prescribed order. In particular,
-\
+\[
  \begin{aligned}
- \bigl[V(\alpha)V(\beta)\xi\bigr
+ \bigl[V(\alpha)V(\beta)\xi\bigr](r)
    &=(c_{-r}^\alpha)^*
        U(\alpha)(c_{-r}^\beta)^*U(\beta)\xi(r)\\
    &=(c_{-r}^\alpha)^*
@@ -317,8 +317,8 @@ Here the supremum is of nonnegative scalar weight values. No monotonicity of the
 \]
 
 The dual action also commutes with \(\widetilde\alpha_\varphi\). Its character unitary on \(\mathcal K\) is
-\
- [Q_s\xi=e^{-isr}\xi(r).
+\[
+ [Q_s\xi](r)=e^{-isr}\xi(r).
 \]
 It fixes \(\pi_\varphi(M)\) by conjugation and sends \(\lambda(t)\) to \(e^{-ist}\lambda(t)\). This scalar field commutes with every \(A_\alpha(r)\), so
 \[
@@ -379,8 +379,8 @@ The coefficient generators are unchanged by \(J_{\psi,\varphi}\). On \(\lambda_\
  \tag{CIM3.m}
 \]
 Normality proves this on all of \(N_\psi\). The actual chart unitary
-\
- [W_{\psi,\varphi}\xi=d_{-r}^*\xi(r)
+\[
+ [W_{\psi,\varphi}\xi](r)=d_{-r}^*\xi(r)
 \]
 also intertwines the implementing representations exactly:
 \[

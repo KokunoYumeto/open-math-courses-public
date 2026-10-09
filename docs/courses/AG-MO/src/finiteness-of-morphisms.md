@@ -4,7 +4,7 @@
 
 An equation may involve finitely many variables without imposing finitely many relations. A scheme may admit small affine charts without admitting a finite cover by them. These are different sources of infinitude, and different properties of a morphism control them.
 
-We distinguish finite type from finite presentation, explain how both can be tested on charts, and prove a useful criterion for a quasi-compact image to be closed. The final section connects finite type with closed points over a Jacobson base. We assume localization, polynomial rings, quasi-coherent sheaves, and the diagonal results of The diagonal and separated morphisms. For the last section we use the algebraic Jacobson theorem from The Nullstellensatz and Jacobson rings. Basic references are AI Integrated Stacks Project and Vakil's *The Rising Sea*, §8.3.
+We distinguish finite type from finite presentation, explain how both can be tested on charts, and prove a useful criterion for a quasi-compact image to be closed. The final section connects finite type with closed points over a Jacobson base. The prerequisites are the complete localization and polynomial-ring proofs in the commutative algebra course, the affine sheaf correspondence in Affine schemes, Theorem 3.2, the gluing and localization proofs in Quasi-coherent sheaves on schemes, Sections 1–3, and the diagonal results of The diagonal and separated morphisms. For the last section we use the algebraic Jacobson theorem from The Nullstellensatz and Jacobson rings. Basic references are AI Integrated Stacks Project and Vakil's *The Rising Sea*, §8.3.
 
 Throughout, rings are commutative with identity and schemes need not be Noetherian or separated. The adjective “finite” will later describe module-finite affine morphisms; “finite type” here concerns algebra generators.
 
@@ -52,7 +52,66 @@ For finite presentation choose a surjection \(P=A[T_1,\ldots,T_n]\to B\) with ke
 
 The identical argument applies to a distinguished cover of the base, using elements of \(A\) in place of the \(b_i\). Localization on the base is also base change. These observations say that both ring-map properties are local on distinguished covers of source and target.
 
-We use the affine communication principle for a ring-map property: if it survives localization on source and base and can be patched over finite distinguished covers, then a morphism having it on one compatible affine cover has it on every pair of affine opens mapping into one another. This is the usual affine communication lemma applied to morphisms; its precise formulation is [Stacks, Tag 01SU](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-lemma-locally-P-characterize). The principle uses distinguished refinements of affine covers and quasi-compactness of affine schemes. Lemma 2.1 supplies its nontrivial algebraic patching input here.
+The zero algebra causes no exception in these arguments: it is the finitely presented algebra \(A/(1)\). An empty distinguished cover is possible only for that algebra.
+
+### Morphism affine communication
+
+We now prove the change-of-charts statement, including the interaction between a source refinement and a target refinement. It is useful to state the exact ring-map assumptions rather than require merely an unspecified localization property.
+
+Let \(P\) be invariant under isomorphisms of ring maps. Assume the following three rules, with no Noetherian condition on the rings.
+
+1. If \(R\to C\) has \(P\) and \(r\in R\), then \(R_r\to C_r\) has \(P\).
+2. If \(R_r\to C\) has \(P\), where \(r\in R\), then \(R\to C_c\) has \(P\) for every \(c\in C\).
+3. If \(c_1,\ldots,c_m\) generate the unit ideal of \(C\) and every \(R\to C_{c_i}\) has \(P\), then \(R\to C\) has \(P\). The empty list is allowed, so this rule includes \(R\to0\).
+
+In rule 1, the subscript on \(C\) means localization at the image of \(r\). Rule 2 deliberately includes forgetting an inversion on the base. Setting \(r=1\) in that rule also gives localization on the source alone.
+
+Both finite type and finite presentation satisfy all three rules. For rule 1, use \(C_r=R_r\otimes_R C\) and the base-change calculation above. For rule 2, the map \(R\to R_r\) has the presentation \(R[T]/(rT-1)\), and \(C\to C_c\) is obtained by adjoining one inverse. Thus composition of the finite generating sets or finite presentations gives the assertion. Rule 3 is exactly Lemma 2.1, together with the zero-algebra case. These verifications use only the ring calculations already proved here.
+
+The affine function identifications used in the refinement argument are proved in Affine schemes, Theorem 1.2 and Proposition 1.3: the sections on \(D(u)\subset\operatorname{Spec}C\) are \(C_u\), compatibly with restrictions.
+
+**Refinement fact.** Suppose \(U=\operatorname{Spec}C\) and \(U_0=\operatorname{Spec}C_0\) are affine opens of a scheme. Every \(x\in U\cap U_0\) has a neighbourhood that is a distinguished open in both affines.
+
+**Proof.** Choose \(D_{U_0}(v)\) through \(x\) inside \(U\cap U_0\). Next choose \(D_U(u)\) through \(x\) inside \(D_{U_0}(v)\). The restriction of \(u\) to \(D_{U_0}(v)\) belongs to \((C_0)_v\), so write it as \(w/v^n\). Its unit locus there is \(D_{U_0}(vw)\). On the other hand that same locus is \(D_U(u)\), since the latter was chosen inside \(D_{U_0}(v)\). Consequently
+
+\[
+D_U(u)=D_{U_0}(vw),
+\]
+
+as open subschemes, proving the assertion. No condition on the intersection itself was used. A distinguished open inside a distinguished open is again distinguished in the original affine: if \(z=a/u^n\in C_u\), then \(D_{D_U(u)}(z)=D_U(ua)\). \(\square\)
+
+**Lemma 2.2 (morphism affine communication).** Let \(P\) satisfy the three rules above, and let \(f:X\to S\) be any scheme morphism. The following conditions are equivalent.
+
+1. Every \(x\in X\) has affine neighbourhoods \(U_x\subset X\) and \(V_x\subset S\), with \(f(U_x)\subset V_x\), such that \(\Gamma(V_x,\mathcal O_S)\to\Gamma(U_x,\mathcal O_X)\) has \(P\).
+2. For every affine \(U\subset X\) and affine \(V\subset S\) with \(f(U)\subset V\), the map \(\Gamma(V,\mathcal O_S)\to\Gamma(U,\mathcal O_X)\) has \(P\).
+3. For any affine open cover \((V_j)\) of \(S\) and any affine open covers \((U_{ij})_i\) of \(f^{-1}(V_j)\), all the maps \(\Gamma(V_j,\mathcal O_S)\to\Gamma(U_{ij},\mathcal O_X)\) have \(P\).
+4. There exists an affine open cover \((V_j)\) of \(S\) and affine open covers \((U_{ij})_i\) of \(f^{-1}(V_j)\) for which all these ring maps have \(P\).
+
+The same condition can be checked on an arbitrary open cover of the target by requiring condition 1 for each restricted morphism. It passes to every restriction \(f|_U:U\to V\) with \(U,V\) open and \(f(U)\subset V\).
+
+**Proof.** We prove the substantive implication from 1 to 2. Fix compatible affine opens \(U=\operatorname{Spec}C\) and \(V=\operatorname{Spec}R\). For \(x\in U\), choose a pair \(U_0\to V_0\) supplied by condition 1. Write \(V_0=\operatorname{Spec}R_0\). The refinement fact gives an open \(E\) through \(x\), contained in \(U\cap U_0\), distinguished in both. Localizing the source ring in \(U_0\) and using rule 2 with base element 1 shows that \(R_0\to\Gamma(E,\mathcal O_X)\) has \(P\).
+
+The point \(f(x)\) lies in \(V\cap V_0\). Apply the refinement fact on the target to choose
+
+\[
+V'=D_V(r)=D_{V_0}(r_0)
+\]
+
+through \(f(x)\). Set \(E'=E\cap f^{-1}(V')\). This is a distinguished open in \(E\), obtained by inverting the image of \(r_0\), hence is distinguished in \(U\) by the last assertion of the refinement fact. It contains \(x\). Rule 1 gives \((R_0)_{r_0}\to\Gamma(E',\mathcal O_X)\) property \(P\). The two displayed descriptions of \(V'\) identify \((R_0)_{r_0}\) with \(R_r\), with their maps to \(\Gamma(E',\mathcal O_X)\) identified by the restricted morphism. Rule 2, now with source element 1, gives
+
+\[
+P\bigl(R\longrightarrow\Gamma(E',\mathcal O_X)\bigr).
+\]
+
+Thus every \(x\in U\) lies in a distinguished open \(D_U(c_x)\) whose algebra over \(R\) has \(P\). The affine \(U\) is quasi-compact: refining any open cover by distinguished opens gives a family of elements of \(C\) whose generated ideal is the unit ideal, since otherwise a maximal ideal would be a point outside the cover. An expression for 1 uses only finitely many members, which then cover. Apply this to select a finite collection of the opens just constructed. Its defining elements generate the unit ideal of \(C\): otherwise a maximal ideal containing them would give a point omitted by the cover. Rule 3 proves \(P(R\to C)\), which is condition 2. If \(U\) is empty, \(C=0\) and the empty-list part of rule 3 gives the same conclusion.
+
+Condition 2 gives condition 3 immediately, and condition 3 gives condition 4 by choosing covers; such covers exist because affine opens form a basis. Condition 4 gives condition 1 by taking, for any given source point, a member of the target cover through its image and a source member through the point. Thus all four conditions are equivalent.
+
+For open restrictions, take any compatible affine pair in \(U\to V\). It is also a compatible affine pair in \(X\to S\), so condition 2 applies. For an open target cover, each good affine pair for a restricted map is an affine pair in the original schemes; hence pointwise good pairs for the restrictions give condition 1 globally. The converse is the restriction assertion just proved. \(\square\)
+
+Consequently local finite type and local finite presentation can be tested on every compatible affine pair, starting from either pointwise good pairs or a chosen compatible affine cover. They are local on the target and remain true on open restrictions. The proof requires neither quasi-compactness nor quasi-separatedness of \(X\) or \(S\): the finite cover is taken only inside the one affine \(U\) under consideration. The global conventions remain distinct: finite type additionally requires the morphism to be quasi-compact, whereas finite presentation additionally requires it to be quasi-compact and quasi-separated. The separate permanence proofs for those requirements are unaffected.
+
+The freely accessible comparison statements are [Stacks, Tag 01ST](https://stacks.math.columbia.edu/tag/01ST) and [Tag 01SU](https://stacks.math.columbia.edu/tag/01SU). The full change-of-charts proof and all its ring-map inputs have been provided here.
 
 ## 3. Finite type on every chart
 
@@ -60,7 +119,7 @@ A morphism is **locally of finite type** if it admits compatible affine covers f
 
 **Theorem 3.1.** A morphism \(f:X\to S\) is locally of finite type if and only if \(\Gamma(U)\) is of finite type over \(\Gamma(V)\) for every affine \(V\subset S\) and affine \(U\subset f^{-1}(V)\). Locally finite type and finite type are target-local and survive base change and composition. If \(gf\) is locally of finite type, then \(f\) is locally of finite type, without a condition on \(g\).
 
-**Proof.** Lemma 2.1, localization stability and affine communication show that one compatible cover is equivalent to every affine pair. They also show target locality and invariance on restricting to open subschemes. The base-change calculation is \(B\mapsto B\otimes_A A'\), and finite algebra generators remain generators after tensoring. For composition choose compatible affine neighborhoods of the three points involved; composing finite generating sets proves the local assertion. Proposition 1.1 adds quasi-compactness for the finite-type assertions.
+**Proof.** Lemma 2.2, with the ring-map verifications and Lemma 2.1 above, shows that one compatible cover is equivalent to every affine pair. They also show target locality and invariance on restricting to open subschemes. The base-change calculation is \(B\mapsto B\otimes_A A'\), and finite algebra generators remain generators after tensoring. For composition choose compatible affine neighborhoods of the three points involved; composing finite generating sets proves the local assertion. Proposition 1.1 adds quasi-compactness for the finite-type assertions.
 
 For cancellation, choose affine \(W\subset S\), \(V\subset g^{-1}(W)\), and \(U\subset f^{-1}(V)\). Set \(A=\Gamma(W)\), \(B=\Gamma(V)\), \(C=\Gamma(U)\). The hypothesis says that \(C\) has finitely many generators over \(A\). Those same elements generate \(C\) over \(B\), since the image of \(A\) is contained in the image of \(B\). The affine characterization proves the result. \(\square\)
 
@@ -74,7 +133,7 @@ A morphism is **locally of finite presentation** if it has a compatible affine c
 
 **Theorem 4.1.** Local finite presentation is equivalent to finite presentation of the coordinate-ring map on every compatible affine pair. Both local finite presentation and finite presentation are target-local and stable under base change and composition. If \(S\) is locally Noetherian, local finite type and local finite presentation over \(S\) are equivalent; finite type and finite presentation over \(S\) are also equivalent.
 
-**Proof.** For the first assertions apply Lemma 2.1 and affine communication as in Theorem 3.1, now keeping relations as well as generators. Tensor products preserve a finite list of relations, and composing two finite presentations gives a finite presentation by substitution. Quasi-compactness is stable by Proposition 1.1, and quasi-separatedness is stable by the diagonal theorem in the preceding lesson. These give the global assertions.
+**Proof.** For the first assertions apply the fully proved Lemma 2.2 as in Theorem 3.1, now keeping relations as well as generators. Tensor products preserve a finite list of relations, and composing two finite presentations gives a finite presentation by substitution. Quasi-compactness is stable by Proposition 1.1, and quasi-separatedness is stable by the diagonal theorem in the preceding lesson. These give the global assertions.
 
 If \(A\) is Noetherian, \(A[T_1,\ldots,T_n]\) is Noetherian by the Hilbert basis theorem. Every ideal in it is finitely generated, so any finite type \(A\)-algebra is finitely presented. The converse needs no Noetherian hypothesis. Applied on affine charts this proves the local equivalence and also shows that the source is locally Noetherian. An affine open of a locally Noetherian scheme is Noetherian, so each open subset of it is quasi-compact. In particular intersections of affine opens are quasi-compact. The source is quasi-separated, and its morphism to any scheme is quasi-separated by diagonal cancellation. Thus a finite-type morphism over a locally Noetherian base has the extra quasi-separatedness needed for finite presentation. \(\square\)
 
@@ -145,7 +204,7 @@ For \(\mathbf A^1_{\mathbf Q}\), closed points correspond to monic irreducible p
 
 ## What this lesson does not prove
 
-All asserted properties of scheme morphisms in this lesson have been proved from the specified prerequisites. The algebraic Jacobson theorem, the Hilbert basis theorem, affine communication for local ring-map properties, and the elementary affine spectrum and localization constructions are imported algebraic or scheme prerequisites. For the first and third, precise reference statements are [Stacks, Tag 00GB](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-proposition-Jacobson-permanence) and [Stacks, Tag 01SU](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-lemma-locally-P-characterize). Finite presentation and its behavior on inverse limits are developed in the next lesson.
+All asserted properties of scheme morphisms in this lesson are proved here or in the specified completed prerequisite lessons. The change-of-charts argument is fully proved in Lemma 2.2, including common distinguished refinements and every ring-map input. The algebraic Jacobson theorem is the complete proof in The Nullstellensatz and Jacobson rings, Theorem 4.2; the Hilbert basis theorem is proved in Noetherian and Artinian rings, Theorem 2.1. The affine spectrum, mapping and localization constructions have the earlier programme proofs named in the introduction. Stacks Tags 00GB and 01SU are free comparison references, not proof substitutes. Finite presentation and its behavior on inverse limits are developed in the next lesson.
 
 ## References
 

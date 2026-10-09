@@ -131,7 +131,7 @@ With \(E=\sum_jx_j\partial_j\), testing and the product rule give
 \]
 For the first formula the transpose of \(E\) is \(-n-E\), and
 \(\partial^\alpha(E\phi)(0)=|\alpha|\partial^\alpha\phi(0)\).
-For the second, \(\partial^\alpha\phi(-x)=(-1)^{|\alpha|}\partial^\alpha\phi(0)\).
+For the second, \(\partial^\alpha[\phi(-x)](0)=(-1)^{|\alpha|}\partial^\alpha\phi(0)\).
 The dilation definition also gives directly
 \(D_t\partial^\alpha\delta_0=t^{-n-|\alpha|}\partial^\alpha\delta_0\).
 

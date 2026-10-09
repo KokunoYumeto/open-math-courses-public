@@ -25,7 +25,7 @@ A nonproper image can become constructible when its relevant part is confined to
 
 *Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources are credited below.*
 
-Use [Constructibility from microsupport and perfect stalks](../sheaf-proof-readings/SH03-constructibility-from-microsupport-and-perfect-stalks.html), [Perfect coefficients on compact fibres](../sheaf-proof-readings/SH03-perfect-coefficients-on-compact-fibres.html), and [Perfect operations and finite microlocal coefficients](../sheaf-proof-readings/SH03-perfect-operations-and-finite-microlocal-coefficients.html). The exact current microlocal prerequisites are the bounded relative cutoff theorem, the full limiting tensor estimate, microlocally proper projection, and the cone criterion for localized isomorphisms. Their statements are specified below; their lower and transitive proofs remain explicit dependencies. The references give the classical results of Masaki Kashiwara and Pierre Schapira and freely readable accounts with their precise scopes. We prove the forward local geometric criterion here. [Constructible models in one cotangent direction](constructible-models-in-one-cotangent-direction.html) supplies its converse and the contact-equivalence application.
+Use [Constructibility from microsupport and perfect stalks](../sheaf-proof-readings/src/SH03/constructibility-from-microsupport-and-perfect-stalks.md), [Perfect coefficients on compact fibres](../sheaf-proof-readings/src/SH03/perfect-coefficients-on-compact-fibres.md), and [Perfect operations and finite microlocal coefficients](../sheaf-proof-readings/src/SH03/perfect-operations-and-finite-microlocal-coefficients.md). The exact current microlocal prerequisites are the bounded relative cutoff theorem, the full limiting tensor estimate, microlocally proper projection, and the cone criterion for localized isomorphisms. Their precise statements and proof links are given below. The references give the classical results of Masaki Kashiwara and Pierre Schapira and freely readable accounts with their precise scopes. We prove the forward local geometric criterion here. [Constructible models in one cotangent direction](src/constructible-models-in-one-cotangent-direction.md) supplies its converse and the contact-equivalence application.
 
 ## Coefficients and closure under retracts
 
@@ -38,7 +38,7 @@ An object $A$ is a **retract** of $E$ if there are arrows $i:A\to E$ and $r:E\to
  \tag{1}
 \]
 
-The geometric constructibility criterion supplies the same closed subanalytic isotropic bound for $A$. If $E$ is R-constructible, $A$ also has perfect stalks. A split triangle gives $E_x\simeq A_x\oplus B_x$ in $D(k)$; perfection passes to either summand. We use precisely [Stacks Project, Lemma 15.76.5, Tag 066S](https://stacks.math.columbia.edu/tag/066S) for this algebraic fact. Its pseudo-coherence and Tor-amplitude dependencies remain foundation imports. No Noetherian hypothesis or replacement of perfection by finite-dimensional cohomology is needed.
+The geometric constructibility criterion supplies the same closed subanalytic isotropic bound for $A$. If $E$ is R-constructible, $A$ also has perfect stalks. A split triangle gives $E_x\simeq A_x\oplus B_x$ in $D(k)$; perfection passes to either summand. The [proof of perfect-summand closure below](#why-perfect-complexes-are-closed-under-summands) supplies this algebraic fact; the Stacks Project statement is cited there. No Noetherian hypothesis or replacement of perfection by finite-dimensional cohomology is needed.
 
 The following simple device produces a retract. If $u:A\to E$, $v:E\to B$, and $vu$ is an isomorphism, then
 
@@ -49,6 +49,63 @@ The following simple device produces a retract. If $u:A\to E$, $v:E\to B$, and $
 \]
 
 The objects $A$ and $B$ can be different representatives of one stabilized image. Neither $u$ nor $v$ has to be invertible.
+
+### Why perfect complexes are closed under summands
+
+Here is a proof over any commutative ring $R$. No Noetherian assumption is needed. The statement is [Stacks Project, Tag 066S](https://stacks.math.columbia.edu/tag/066S). We construct finite free approximations and then a finite projective truncation.
+
+Suppose $A\oplus B$ is represented by a bounded complex of finitely generated projective modules. Choose integers $a\leq b$ containing the degrees of that complex. Tensoring the splitting with any module $N$ shows that both $A\otimes_R^L N$ and $B\otimes_R^L N$ have cohomology only in $[a,b]$. We will first construct a bounded-above finite free resolution of $A$, and then stop it at degree $a$.
+
+The finite-generation step must be applied to both summands together. Suppose $A'\oplus B'$ is perfect and has no cohomology above degree $n$. It has a finite projective representative with no terms above $n$: starting with its highest nonzero term, split the surjective differential onto that projective term and remove the resulting two-term contractible summand; repeat down to degree $n+1$. Thus $H^n(A'\oplus B')$ is a quotient of a finitely generated module. Each of its two summands is finitely generated. Choose finite free modules $E_A,E_B$ and maps
+
+\[
+ E_A[-n]\longrightarrow A',\qquad
+ E_B[-n]\longrightarrow B'
+ \tag{R1}
+\]
+
+that surject onto the respective degree-$n$ cohomology groups. Such maps exist because a map from $R[-n]$ specifies a cohomology class. Let $A''$ and $B''$ be their cones. They have no cohomology above $n-1$. Their direct sum is the cone of the direct-sum map in (R1), hence remains perfect. To see the last assertion, Hom from a projective module preserves acyclicity, and a finite filtration gives the same property for a bounded projective complex. Derived morphisms out of such a complex are therefore represented by chain maps. The ordinary mapping cone of a map between finite projective complexes remains bounded and finite projective.
+
+Begin with $(A,B)$ at degree $b$ and repeat this step in descending degrees. On the $A$ side, it builds a complex $F$ of finite free modules, zero above $b$, with a quasi-isomorphism $F\to A$. To describe the assembly explicitly, suppose a finite upper part $F_{>n}\xrightarrow{f}A$ has been constructed and its cone has no cohomology above $n$. Choose cocycles for the finite generators of that cone in degree $n$. With cone differential $(u,v)\mapsto(d_Au+f(v),-d_Fv)$, a generator is a pair $(u,v)\in A^n\oplus F^{n+1}$ satisfying $d_Au+f(v)=0$ and $d_Fv=0$. Give the corresponding generator of $F^n$ image $u$ under $f$ and image $-v$ under $d_F$. These equations say precisely that $f$ is a chain map and the new differential squares to zero. Attaching these generators changes the cone to the next cone in (R1). Each degree is thereafter fixed. The resulting bounded-above complex has acyclic cone, since any fixed cohomological degree is killed at a finite stage. Carrying out the same construction on $B$ keeps the direct sum of the two residual cones perfect at every stage, which is what justifies the next finite choice.
+
+A bounded-above free complex computes derived tensor. Its brutal truncations from below are bounded flat complexes, whose tensor products preserve acyclicity by finite induction; their union is the original complex, and filtered colimits of modules are exact. Hence
+
+\[
+ H^i(F\otimes_R N)=0\quad(i<a)
+ \qquad\text{for every module }N.
+ \tag{R2}
+\]
+
+Set $M=\operatorname{coker}(F^{a-1}\to F^a)$. The two displayed free modules are finite, so $M$ is finitely presented. Since $F$ is exact below $a$, the left tail ending in $F^a\to M$ is a free resolution of $M$. Formula (R2) gives
+
+\[
+ \operatorname{Tor}_1^R(M,N)
+   =H^{a-1}(F\otimes_R N)=0
+ \quad\text{for every }N.
+ \tag{R3}
+\]
+
+Thus $M$ is flat: the long exact Tor sequence makes tensoring with $M$ preserve every injection, and tensor product is always right exact.
+
+For completeness, a finitely presented flat module is projective by the following finite matrix argument. Take a presentation $R^s\xrightarrow{D}R^r\xrightarrow{\pi}M\to0$, and write $m_i=\pi(e_i)$. The vector $(m_i)$ is in the kernel of $D^t:M^r\to M^s$. Flatness identifies this kernel with the image of $\ker(D^t:R^r\to R^s)\otimes_R M$. Consequently there are finitely many vectors $v_\ell\in\ker D^t$ and elements $n_\ell\in M$ such that
+
+\[
+ m_i=\sum_\ell (v_\ell)_i n_\ell.
+ \tag{R4}
+\]
+
+Lift $n_\ell$ to $t_\ell\in R^r$ and define $S(e_i)=\sum_\ell(v_\ell)_i t_\ell$. Then $\pi S=\pi$ and $SD=0$. The first equality says that $1-S$ maps into $\ker\pi=\operatorname{im}D$; the second says that its restriction to that kernel is the identity. The presentation therefore splits, making $M$ a direct summand of $R^r$ and hence finitely generated projective.
+
+Replace the part of $F$ in degrees at most $a$ by $M$ in degree $a$, with differential induced by $F^a\to F^{a+1}$. The quotient map is a quasi-isomorphism because $F$ is exact below $a$. The result is the finite projective complex
+
+\[
+ 0\longrightarrow M\longrightarrow F^{a+1}
+   \longrightarrow\cdots\longrightarrow F^b\longrightarrow0,
+ \tag{R5}
+\]
+
+representing $A$. The identical construction works for $B$. This proves perfect-summand closure, including the case $a=b$, and therefore proves the perfect-stalk assertion used in (1)–(2).
+
 
 ## The exact signed cutoff input
 
@@ -143,7 +200,7 @@ The first isomorphism follows from (7) and closed-support localization, or by ap
  \tag{11}
 \]
 
-Internal-Hom closure makes the coefficient in (11) R-constructible; its closed support is again inside $K$, so the same proper perfect-image theorem applies. Retract closure proves the second assertion on $B$. Real constructibility is local on the target; the globally bounded image supplied by the six-operation dimension bounds is therefore R-constructible on $X$. $\square$
+Internal-Hom closure makes the coefficient in (11) R-constructible; its closed support is again inside $K$, so the same proper perfect-image theorem applies. Retract closure proves the second assertion on $B$. Real constructibility is local on the target; the globally bounded image supplied by the [six-operation dimension bounds](../constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#why-the-operations-remain-globally-bounded-globally-bounded-operations) is therefore R-constructible on $X$. $\square$
 
 The proof factors derived objects and actual comparison maps. Merely proving that each image stalk has finite cohomology would leave the geometric constructibility assertion unproved. We imposed subanalyticity on $K$, where the operation theorem needs it, while retaining the original smooth sublevels in the stabilization theorem.
 
@@ -269,7 +326,7 @@ We claim that
  \tag{23}
 \]
 
-Inside $X\times D$, $C$ is zero. At a base point $(x_0,y_0)$ outside that open set, apply the bounded full tensor estimate [SH02-CHE-006](providers/SH02-CHE.html#SH02-CHE-006):
+Inside $X\times D$, $C$ is zero. At a base point $(x_0,y_0)$ outside that open set, apply the bounded full tensor estimate [SH02-CHE-006](../sheaf-proof-readings/src/SH02/characteristic-estimates.md#sh02-che-006--tensor-and-internal-hom-without-a-transversality-assumption):
 
 \[
  \operatorname{SS}(C)
@@ -277,7 +334,7 @@ Inside $X\times D$, $C$ is zero. At a base point $(x_0,y_0)$ outside that open s
  \tag{24}
 \]
 
-Submersion pullback says that every covector of the second set has **zero $X$ component**. If (24) had a witness with limiting $X$ covector $(x_0;\xi_0)\in W$, write the first witness as $(x_j,y_j;\xi_j,\eta_j)\in A$. Since the other summand's $X$ component is zero, $(x_j;\xi_j)\to(x_0;\xi_0)$, also when the fibre covectors diverge and cancel. All sufficiently late first covectors lie in $\overline W$; (18) then gives $y_j\in L$. Their limiting base point $y_0$ lies in the compact closed set $L\subset D$, a contradiction. The weighted base-separation condition of [SH02-AE-SUM](providers/SH02-AE.html#SH02-AE-SUM) remains part of the full limiting-sum witness. The contradiction already follows from its base-point control and does not discard escaping covectors. This proves (23), including at zero base covectors when these lie in $W$.
+Submersion pullback says that every covector of the second set has **zero $X$ component**. If (24) had a witness with limiting $X$ covector $(x_0;\xi_0)\in W$, write the first witness as $(x_j,y_j;\xi_j,\eta_j)\in A$. Since the other summand's $X$ component is zero, $(x_j;\xi_j)\to(x_0;\xi_0)$, also when the fibre covectors diverge and cancel. All sufficiently late first covectors lie in $\overline W$; (18) then gives $y_j\in L$. Their limiting base point $y_0$ lies in the compact closed set $L\subset D$, a contradiction. The weighted base-separation condition of [SH02-AE-SUM](../sheaf-proof-readings/src/SH02/asymptotic-estimates.md#sh02-ae-sum--addition-with-asymptotic-cancellation) remains part of the full limiting-sum witness. The contradiction already follows from its base-point control and does not discard escaping covectors. This proves (23), including at zero base covectors when these lie in $W$.
 
 Because $W$ is open, (23) also excludes $\overline{p(\operatorname{SS}(C))}$ over $W$. Its projection is the empty proper map. Apply (19) to $C$ over $W$ to obtain
 
@@ -437,15 +494,15 @@ Take $y_j=j$, $x_j=1/j$, $\xi_j=1$ and $\eta_j=1/j^2$. Their $X$ covectors lie i
 
 ## References and proof boundaries
 
-The proof is organized around an actual factorization through a compact subanalytic neighbourhood and a retract of a perfect object. The same results are treated in Kashiwara and Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Theorems 4.4.1–4.4.2, Remark 8.3.2, and Proposition 8.6.1. These sources were checked with their signed hypotheses. The relative smooth closed-sublevel cutoff used in this lesson has additional scope. Its exact closed-endpoint maps are supplied by [SH02-MO-RELATIVE-CUTOFF and its proof](../sheaf-proof-readings/SH02-microsupport-operations.html#SH02-MO-RELATIVE-CUTOFF), using compact-neighbourhood continuity for ordinary restriction and a supported localization argument for the opposite sign. That proof depends on the foundations named in its lesson; its theorem is not inferred from the 1985 result about nested open sets. The sandwich proof explicitly avoids treating a merely smooth sublevel as subanalytic.
+The proof is organized around an actual factorization through a compact subanalytic neighbourhood and a retract of a perfect object. The classical source comparison is Kashiwara and Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Theorems 4.4.1–4.4.2 (printed 73–76), Remark 8.3.2 (printed 149), and Proposition 8.6.1 (printed 154), with their respective signed and geometric hypotheses. The relative smooth closed-sublevel cutoff used in this lesson has additional scope. Its exact closed-endpoint maps are supplied by [SH02-MO-RELATIVE-CUTOFF and its proof](../sheaf-proof-readings/src/SH02/microsupport-operations.md#sh02-mo-relative-cutoff--replacing-a-nonproper-map-by-a-bounded-part), using compact-neighbourhood continuity for ordinary restriction and a supported localization argument for the opposite sign. That proof depends on the foundations named in its lesson; its theorem is not inferred from the 1985 result about nested open sets. The sandwich proof explicitly avoids treating a merely smooth sublevel as subanalytic.
 
-A freely readable human source is Kashiwara and Schapira, [*Microlocal study of sheaves*, Astérisque 128 (1985)](https://www.numdam.org/item/AST_1985__128__1_0/) ([author-hosted PDF](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf)). Theorem 4.4.1 gives signed stabilization for nested open exhaustions with proper closed-support truncations and a closure condition on the cotangent sum. Theorem 4.4.2 uses the closure of the projection retaining the fibre point and gives both microsupport bounds and the canonical proper-to-ordinary image comparison. Remark 8.3.2 relates the first theorem to real constructibility. Our smooth-sublevel sandwich and retract argument uses the separately stated $C^1$ cutoff input, including its closed endpoint maps. Proposition 8.6.1 concerns holomorphic maps and subanalytic exhausting opens; it does not supply the extra scope of arbitrary real $C^1$ non-subanalytic sublevels.
+A freely readable human source is Kashiwara and Schapira, [*Microlocal study of sheaves*, Astérisque 128 (1985)](https://www.numdam.org/item/AST_1985__128__1_0/) ([author-hosted PDF](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf)). Theorem 4.4.1, printed 73–75, gives signed stabilization for nested open exhaustions with proper closed-support truncations and a closure condition on the cotangent sum. Theorem 4.4.2, printed 75–76, uses the closure of the projection retaining the fibre point and gives both microsupport bounds and the canonical proper-to-ordinary image comparison. Remark 8.3.2, printed 149, relates the first theorem to real constructibility. Our smooth-sublevel sandwich and retract argument uses the separately stated $C^1$ cutoff input, including its closed endpoint maps. Proposition 8.6.1, printed 154, concerns holomorphic maps and subanalytic exhausting opens; it does not supply the extra scope of arbitrary real $C^1$ non-subanalytic sublevels.
 
 Pierre Schapira, [*Constructible sheaves and functions up to infinity*, Lemma 2.7](https://arxiv.org/html/2012.09652v5#S2.Thmtheorem7), gives related ambient-extension criteria. It assumes a relatively compact subanalytic open embedding and a Noetherian coefficient ring of finite global dimension. This supplies context for constructible extensions; it is narrower than the arbitrary-$\Omega$ pointwise representatives used here.
 
-The exact bounded full tensor estimate is [SH02-CHE-006](providers/SH02-CHE.html#SH02-CHE-006), and its limiting-sum witness convention is [SH02-AE-SUM](providers/SH02-AE.html#SH02-AE-SUM). The signed cutoff input is [SH02-MO-RELATIVE-CUTOFF](../sheaf-proof-readings/SH02-microsupport-operations.html#SH02-MO-RELATIVE-CUTOFF), including its one-sided/full-map proof; the projection input is [SH02-AE-MICROPROPER](providers/SH02-AE.html#SH02-AE-MICROPROPER), including closure and all-fibre-covector compact control; localization uses [SH02-MC-LOCAL](../sheaf-proof-readings/SH02-microlocal-categories.html#SH02-MC-LOCAL), including saturated denominators. Their lower proof dependencies remain imports. The source statements and map directions are preserved; no text from the provider lessons is reproduced here.
+The exact bounded full tensor estimate is [SH02-CHE-006](../sheaf-proof-readings/src/SH02/characteristic-estimates.md#sh02-che-006--tensor-and-internal-hom-without-a-transversality-assumption), and its limiting-sum witness convention is [SH02-AE-SUM](../sheaf-proof-readings/src/SH02/asymptotic-estimates.md#sh02-ae-sum--addition-with-asymptotic-cancellation). The signed cutoff input is [SH02-MO-RELATIVE-CUTOFF](../sheaf-proof-readings/src/SH02/microsupport-operations.md#sh02-mo-relative-cutoff--replacing-a-nonproper-map-by-a-bounded-part), including its one-sided/full-map proof; the projection input is [SH02-AE-MICROPROPER](../sheaf-proof-readings/src/SH02/asymptotic-estimates.md#sh02-ae-microproper--compact-control-of-fiber-locations), including closure and all-fibre-covector compact control; localization uses [SH02-MC-LOCAL](../sheaf-proof-readings/src/SH02/microlocal-categories.md#sh02-mc-local--a-category-that-records-specified-directions), including saturated denominators. These proof links retain the bounded coefficient hypotheses, both cutoff signs and the canonical comparison maps used above.
 
-The direct-summand argument uses [Stacks Project, Lemma 15.76.5, Tag 066S](https://stacks.math.columbia.edu/tag/066S), perfect direct-summand closure, GFDL 1.2 or later. Its pseudo-coherence and Tor-amplitude foundations are imported rather than proved here.
+Perfect-summand closure is [Stacks Project, Lemma 15.76.5, Tag 066S](https://stacks.math.columbia.edu/tag/066S). The proof in this lesson constructs simultaneous finite free approximations, then a finite projective truncation, including the finite-presentation and flatness argument. It is independently written programme exposition; the cited Stacks text retains its GNU Free Documentation License.
 
 The general-real cutoff image-equality comparison is recorded in the earlier cutoff lesson. The next lesson proves the reverse local isotropic criterion and the contact-equivalence application relative to their stated prerequisites. The seven solutions above are complete relative to the prerequisites specified here. The microlocal, six-operation, geometric constructibility, perfect-coefficient and localization foundations retain their own proof scopes.
 
@@ -459,9 +516,9 @@ Local isotropic control of microsupport produces a constructible model in the lo
 
 *Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources are credited below.*
 
-Use [Constructibility through smooth cutoffs and microlocal properness](constructibility-through-smooth-cutoffs-and-microlocal-properness.html) for the pointwise category definition, the forward criterion and perfect microlocally proper images. The geometric operations used here are proved in [Conic subanalytic images and isotropic dimension](../sheaf-proof-readings/SH03-conic-subanalytic-images-and-isotropic-dimension.html), [Isotropic cotangent transport](../sheaf-proof-readings/SH03-isotropic-cotangent-transport-and-discrete-critical-values.html), and [Limiting cotangent sums and characteristic inverse images](../sheaf-proof-readings/SH03-limiting-cotangent-sums-and-characteristic-inverse-images.html). The contact equivalence and its actual unit/counit maps are those of [When a kernel quantizes a contact transformation](../sheaf-proof-readings/SH03-when-a-kernel-quantizes-a-contact-transformation.html).
+Use [Constructibility through smooth cutoffs and microlocal properness](src/constructibility-through-smooth-cutoffs-and-microlocal-properness.md) for the pointwise category definition, the forward criterion and perfect microlocally proper images. The geometric operations used here are proved in [Conic subanalytic images and isotropic dimension](../sheaf-proof-readings/src/SH03/conic-subanalytic-images-and-isotropic-dimension.md), [Isotropic cotangent transport](../sheaf-proof-readings/src/SH03/isotropic-cotangent-transport-and-discrete-critical-values.md), and [Limiting cotangent sums and characteristic inverse images](../sheaf-proof-readings/src/SH03/limiting-cotangent-sums-and-characteristic-inverse-images.md). The contact equivalence and its actual unit/counit maps are those of [When a kernel quantizes a contact transformation](../sheaf-proof-readings/src/SH03/when-a-kernel-quantizes-a-contact-transformation.md).
 
-The exact sheaf inputs are the cone projector's polar bound and counit, its ordinary kernel realization, the full bounded tensor/Hom limiting estimates, noncharacteristic tensor and proper-on-support image estimates, and saturated localized fractions. We assume these sheaf-operation and localization results. The local-model proof below uses radial saturation, a flat cap and a final compact supported localization. The contact application additionally needs the identity on microlocal endomorphisms and both actual adjunction maps; a graph-shaped correspondence alone is insufficient.
+The exact sheaf inputs are the cone projector's polar bound and counit, its ordinary kernel realization, the full bounded tensor/Hom limiting estimates, noncharacteristic tensor and proper-on-support image estimates, and saturated localized fractions. Their exact proof links are collected below. The local-model proof below uses radial saturation, a flat cap and a final compact supported localization. The contact application additionally needs the identity on microlocal endomorphisms and both actual adjunction maps; a graph-shaped correspondence alone is insufficient.
 
 ## The local criterion and its coefficient scope
 
@@ -515,7 +572,7 @@ There is no $ds$ term, since radial change leaves the base point fixed. Analytic
 
 Conicity of the original microsupport and (1)–(3) show that $A$ contains every original covector over $\overline B_1$ whose direction lies in $C'$. We need no initial subanalyticity of that original microsupport.
 
-There is also a zero-covector version. If $p_0=(0;0)$, choose $r_0>0$ small and $\overline B_1$ so that the full radius-$r_0$ sphere over that base ball lies in $U$. Use all angular directions in (3). Then (4) contains the **entire** microsupport over $B_1$. The geometric criterion makes $F|_{B_1}$ weakly constructible. A compact supported localization inside $B_1$, described below, gives its global representative. In dimension zero every local bounded coefficient object is already weakly constructible; the same compact extension applies.
+There is also a zero-covector version. If $p_0=(0;0)$, choose $r_0>0$ small and $\overline B_1$ so that the full radius-$r_0$ sphere over that base ball lies in $U$. Use all angular directions in (3). Then (4) contains the **entire** microsupport over $B_1$. The [geometric constructibility criterion](../sheaf-proof-readings/src/SH03/constructibility-from-microsupport-and-perfect-stalks.md#three-equivalent-geometric-descriptions) makes $F|_{B_1}$ weakly constructible. A compact supported localization inside $B_1$, described below, gives its global representative. In dimension zero every local bounded coefficient object is already weakly constructible; the same compact extension applies.
 
 ## A cone capped by one affine inequality
 
@@ -673,7 +730,7 @@ Let $q_1,q_2:X\times Y\to X,Y$. Retain all hypotheses of the contact-kernel equi
  \tag{22}
 \]
 
-Assume additionally that $K$ is R-constructible. This implies the cohomological constructibility required by the original theorem, by the costalk/duality result. Its inverse equivalences are
+Assume additionally that $K$ is R-constructible. This implies the cohomological constructibility required by the original theorem, by the [perfect-costalk and represented-neighborhood-system proof](../sheaf-proof-readings/src/SH03/constructible-costalks-and-verdier-duality.md#perfect-stalks-give-perfect-costalks). Its inverse equivalences are
 
 \[
  \Phi_KG=Rq_{1!}(K\otimes^Lq_2^{-1}G),
@@ -700,7 +757,7 @@ Next take a globally R-constructible $F$. The coefficient
  \tag{25}
 \]
 
-is R-constructible by perfect exceptional inverse image and internal-Hom closure. The full Hom estimate is
+is R-constructible by [perfect exceptional inverse image and internal-Hom closure](../sheaf-proof-readings/src/SH03/perfect-operations-and-finite-microlocal-coefficients.md#perfect-inverse-images-tensors-and-internal-hom). The full Hom estimate is
 
 \[
  \operatorname{SS}(H')
@@ -840,13 +897,13 @@ Let $k$ be a nonzero field, $X=Y=\mathbb R$, $K=k_{\{0\}\times\mathbb R}$ and $G
  \tag{29}
 \]
 
-This is weakly constructible, but its nonzero point coefficient is infinite dimensional. The submanifold microlocal-Hom formula gives
+This is weakly constructible, but its nonzero point coefficient is infinite dimensional. The [submanifold microlocal-Hom formula](../sheaf-proof-readings/src/SH02/microlocal-hom.md#sh02-mh-submanifold--recovering-microlocalization-from-hom) gives
 
 \[
  \bigl(\mu\operatorname{hom}(k_{\{0\}},\Phi_KG)\bigr)_{(0;dx)}=V.
 \]
 
-If a globally R-constructible representative were isomorphic there, microlocal Hom would invert that isomorphism. Its stalk would be perfect by the perfect microlocal-Hom theorem, since both inputs would be R-constructible. Over the field this contradicts infinite dimensionality of $V$ in degree zero. Hence there is no perfect constructible representative at this covector.
+If a globally R-constructible representative were isomorphic there, microlocal Hom would invert that isomorphism. Its stalk would be perfect by the [perfect microlocal-Hom theorem](../sheaf-proof-readings/src/SH03/perfect-operations-and-finite-microlocal-coefficients.md#specialization-and-microlocal-hom), since both inputs would be R-constructible. Over the field this contradicts infinite dimensionality of $V$ in degree zero. Hence there is no perfect constructible representative at this covector.
 
 The kernel covectors over a nonzero $X$ normal have arbitrary $Y$ base point and zero $Y$ component. They cannot form the contact graph with proper homeomorphic projection required in (22). The inverse image of that one output covector contains the whole noncompact $Y$ line. Thus constructibility of $K$ and $G$ supplies the coefficient condition for (24), but the missing graph/properness condition prevents application of the perfect localized-image theorem. This is a failure of that hypothesis, not a counterexample to (28).
 
@@ -854,9 +911,9 @@ The kernel covectors over a nonzero $X$ normal have arbitrary $Y$ base point and
 
 Masaki Kashiwara and Pierre Schapira, *Microlocal study of sheaves*, Astérisque 128 (1985), §6.2, Proposition 6.2.2, p. 106, gives the local coefficient-object model when microsupport lies in a smooth conormal; [freely readable PDF](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf). Masaki Kashiwara, *Index theorem for constructible sheaves*, Astérisque 130 (1985), §3, Proposition 3.3, p. 198, gives the finite-dimensional field-coefficient version; [free article](https://www.numdam.org/item/AST_1985__130__193_0/). These conormal statements are useful antecedents; the general isotropic cutoff construction and perfect contact argument are supplied by the proof above and its named prerequisites.
 
-For the contact theorem, Kashiwara and Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Theorem 6.3.4 and its proof, imposes the graph, union-of-cotangent-regions, cohomological-constructibility and identity conditions. Its Proposition 8.4.1 treats constructible contact transport. Schapira, [*A short review on microlocal sheaf theory*](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/MuShv.pdf), §5, Theorem 5.11, is a readable statement of the contact equivalence, not a replacement for the full proof. The present proof keeps the two explicit functors, their unit and counit, and separately proves preservation of perfect coefficients by compact fibre control. The smooth-conormal models cited above alone do not prove the arbitrary isotropic local-model criterion: the complete cone-and-cap construction in this lesson is the additional argument.
+For the contact theorem, Kashiwara and Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Theorem 6.3.4 and its proof, printed 111–113, imposes the graph, union-of-cotangent-regions, cohomological-constructibility and identity conditions. Its Proposition 8.4.1, printed 150, treats constructible contact transport. Schapira, [*A short review on microlocal sheaf theory*](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/MuShv.pdf), §5.3, Theorem 5.11, p. 29, is a readable statement of the contact equivalence, not a replacement for the full proof. The present proof keeps the two explicit functors, their unit and counit, and separately proves preservation of perfect coefficients by compact fibre control. The smooth-conormal models cited above alone do not prove the arbitrary isotropic local-model criterion: the complete cone-and-cap construction in this lesson is the additional argument.
 
-The current foundation contracts are [SH02-MST-CUTOFF-FORWARD](../sheaf-proof-readings/SH02-microsupport-tests.html#SH02-MST-CUTOFF-FORWARD), [SH02-GAM-KERNEL](../sheaf-proof-readings/SH02-cone-topology.html#SH02-GAM-KERNEL), [SH02-MO-DIAGONAL](../sheaf-proof-readings/SH02-microsupport-operations.html#SH02-MO-DIAGONAL) and [SH02-MO-PROPER-PUSH](../sheaf-proof-readings/SH02-microsupport-operations.html#SH02-MO-PROPER-PUSH), [SH02-CHE-006](providers/SH02-CHE.html#SH02-CHE-006), [SH02-AE-MICROPROPER](providers/SH02-AE.html#SH02-AE-MICROPROPER) and its full sum witness criterion, and [SH02-MC-LOCAL](../sheaf-proof-readings/SH02-microlocal-categories.html#SH02-MC-LOCAL). The elementary projector statements include both its polar bound and its actual counit; the ordinary kernel realization includes its section/relative-contraction proof and has no arbitrary nonproper closed-fibre base-change assertion. We apply those results to the capped coefficient whose projection is proved proper in (12).
+The current foundation contracts are [SH02-MST-CUTOFF-FORWARD](../sheaf-proof-readings/src/SH02/microsupport-tests.md#sh02-mst-cutoff-forward--what-a-cone-projector-already-proves), [SH02-GAM-KERNEL](../sheaf-proof-readings/src/SH02/cone-topology.md#sh02-gam-kernel--the-correspondence-projector), [SH02-MO-DIAGONAL](../sheaf-proof-readings/src/SH02/microsupport-operations.md#sh02-mo-diagonal--tensor-and-hom-on-one-manifold) and [SH02-MO-PROPER-PUSH](../sheaf-proof-readings/src/SH02/microsupport-operations.md#sh02-mo-proper-push--collecting-tests-along-a-fibre), [SH02-CHE-006](../sheaf-proof-readings/src/SH02/characteristic-estimates.md#sh02-che-006--tensor-and-internal-hom-without-a-transversality-assumption), [SH02-AE-MICROPROPER](../sheaf-proof-readings/src/SH02/asymptotic-estimates.md#sh02-ae-microproper--compact-control-of-fiber-locations) and the [full weighted sum-witness criterion](../sheaf-proof-readings/src/SH02/asymptotic-estimates.md#sh02-ae-sum--addition-with-asymptotic-cancellation), and [SH02-MC-LOCAL](../sheaf-proof-readings/src/SH02/microlocal-categories.md#sh02-mc-local--a-category-that-records-specified-directions). The elementary projector statements include both its polar bound and its actual counit; the ordinary kernel realization includes its section/relative-contraction proof and has no arbitrary nonproper closed-fibre base-change assertion. We apply those results to the capped coefficient whose projection is proved proper in (12).
 
 These arguments and eight solved exercises establish the local criterion and contact-preservation statements using the named prerequisites. Isotropic control yields weak constructible models; the perfect contact conclusion also uses perfect coefficient complexes and the stated graph and projection conditions. The sheaf-operation, localization and geometric prerequisites are assumed at their stated scopes.
 
@@ -868,7 +925,7 @@ The dualizing complex of a polyhedron can be written as a sheaf complex of orien
 
 *Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources are credited below.*
 
-Use [Constructible sheaves on a triangulation](../sheaf-proof-readings/SH03-constructible-sheaves-on-a-triangulation.html) for locally finite simplices, open stars, closed-simplex sheaves and the diagram/derived comparison. The exact current sheaf-operation prerequisites used here are locally closed support as internal Hom, exceptional composition, internal duality, oriented manifold dualizing objects, and constant-complex acyclicity on locally closed convex sets. The proof uses those results with their stated hypotheses. The simplicial construction is proved directly by a finite filtration of an injective complex. The two quasi-isomorphisms are constructed, rather than deduced from purity of the associated layers alone.
+Use [Constructible sheaves on a triangulation](../sheaf-proof-readings/src/SH03/constructible-sheaves-on-a-triangulation.md) for locally finite simplices, open stars, closed-simplex sheaves and the diagram/derived comparison. The exact current sheaf-operation prerequisites used here are locally closed support as internal Hom, exceptional composition, internal duality, oriented manifold dualizing objects, and constant-complex acyclicity on locally closed convex sets. The proof uses those results with their stated hypotheses. The simplicial construction is proved directly by a finite filtration of an injective complex. The two quasi-isomorphisms are constructed, rather than deduced from purity of the associated layers alone.
 
 ## The skeleton index and the support operation
 
@@ -897,7 +954,7 @@ For a locally closed subset $L$, use
 This is a **sheaf** on $X$, not the single complex of global supported sections. A locally closed inclusion $j:L\to X$ gives
 $R\Gamma_LF\simeq Rj_*j^!F$. In particular the ordinary direct image $Rj_*$ appears after exceptional restriction; replacing it by open extension by zero changes the boundary stalks.
 
-The locally compact polyhedron has finite compact-support cohomological dimension. Indeed the finite skeleton filtration reduces compactly supported cohomology of an arbitrary sheaf to that on the disjoint open simplices; those are manifolds of dimension at most $N$. Compact support on a disjoint union gives direct sums, and local finiteness ensures each compact subset meets finitely many closed simplices. The manifold bound and the finite localization triangles give vanishing above $N$. Consequently $a_X^!k$ is defined under the existing exceptional-operation contract. Set
+The locally compact polyhedron has finite compact-support cohomological dimension. Indeed the finite skeleton filtration reduces compactly supported cohomology of an arbitrary sheaf to that on the disjoint open simplices; those are manifolds of dimension at most $N$. Compact support on a disjoint union gives direct sums, and local finiteness ensures each compact subset meets finitely many closed simplices. The [manifold compact-support bound](../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-dimension--dimension-controls-resolutions) and the [compact-support localization triangles](../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-found-support--proper-support-foundation-contract) give vanishing above $N$. Consequently $a_X^!k$ is defined under the existing exceptional-operation contract. Set
 
 \[
  \omega_X=a_X^!k,\qquad D_XA=R\mathcal Hom(A,\omega_X).
@@ -908,7 +965,7 @@ Initially the construction supplies a bounded-below object. The cellular model b
 
 ## A supported layer is pure in its indexed degree
 
-For an open $d$-simplex let $o_\sigma$ be its integral orientation line tensored with $k$. It is a constant free rank-one coefficient on that simplex, without choosing a generator. On its closed realization use the same constant line. Exceptional composition and internal duality give
+For an open $d$-simplex let $o_\sigma$ be its integral orientation line tensored with $k$. It is a constant free rank-one coefficient on that simplex, without choosing a generator. On its closed realization use the same constant line. [Exceptional composition](../sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-composition--composition-restriction-and-change-of-base) and [internal duality](../sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-internal--internal-adjunction-and-its-tensor-structure) give
 
 \[
  D_X(k_{\sigma^\circ})
@@ -1012,7 +1069,7 @@ $\tau_i=[v_0,\ldots,\widehat v_i,\ldots,v_d]$. Under (6), the differential is
 
 Each $\rho_{\sigma\tau_i}$ is the closed-face restriction tensored with the unsigned identification of the ordered orientation generators. The incidence sign is the single external factor $(-1)^i$ in (11). Components to a simplex that is not a codimension-one face are zero. For $d=0$ the target degree $1$ is zero; there is no artificial empty-simplex augmentation.
 
-To identify this with (7), localize near the interior of one codimension-one face. The open simplex is a half-collar of that face, and the connecting map is the dual of the compact-support localization boundary of this collar. In the oriented interval its generator was fixed by the difference of endpoint values $b-a$, so its dual sends the edge to terminal vertex minus initial vertex. Tensor this one-dimensional calculation with the face orientation, retaining the coordinate order. Boundary orientation is outward-normal-first; the orientation on the face opposite $v_i$ is $(-1)^i$ times its listed order. This gives exactly (11), with no additional fibre shift.
+To identify this with (7), localize near the interior of one codimension-one face. The open simplex is a half-collar of that face, and the connecting map is the dual of the compact-support localization boundary of this collar. In the oriented interval the [two-endpoint calculation](../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-euclidean--the-compact-support-generator) fixes the generator by the difference of endpoint values $b-a$, so its dual sends the edge to terminal vertex minus initial vertex. Tensor this one-dimensional calculation with the face orientation, retaining the coordinate order. Boundary orientation is outward-normal-first; the orientation on the face opposite $v_i$ is $(-1)^i$ times its listed order. This gives exactly (11), with no additional fibre shift.
 
 For completeness that sign is the ordinary determinant comparison: writing the simplex orientation with edge vectors based at $v_0$, the outward normal at the face opposite $v_i$ followed by that face's ordered tangent vectors has orientation $(-1)^i$ relative to the listed simplex orientation. Equivalently it is the sign in deleting the $i$th entry of the alternating ordered vertex generator. A neighborhood away from all faces has zero target; nonfaces have disjoint support there. These local identifications determine the sheaf component maps and prove (11) globally.
 
@@ -1139,9 +1196,9 @@ The subcomplex $G^k$ in (9) retains representatives whose differential lands in 
 
 ## References and proof boundaries
 
-Schapira, [*An Introduction to Sheaves on Grothendieck Topologies*](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf), §§4.6–4.7 and §5.1, supplies the exceptional and dualizing framework and the orientation shift. The independent finite reconstruction above uses enough injectives and the stated supported-cohomology identities. Its incidence differential is checked by the outward-normal convention and the interval boundary; the two contributions at a codimension-two face cancel. The local star-and-link calculation includes singular polyhedra and integral torsion, so it cannot be replaced by an orientation-sheaf assertion valid only on manifolds.
+Schapira, [*An Introduction to Sheaves on Grothendieck Topologies*](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf), §§4.6–4.7, pp. 94–98, supplies the exceptional and dualizing framework; §5.1, pp. 105–108, gives the dimension bound and orientation shift. In particular, Proposition 4.6.6 treats a bounded first input and bounded-below duality target, while Lemma 5.1.3 and Definition 5.1.4 identify the orientation shift. The programme proofs linked below construct the exceptional adjoint by a finite resolution and fix its interval generator. The independent finite reconstruction above uses enough injectives and the stated supported-cohomology identities. Its incidence differential is checked by the outward-normal convention and the interval boundary; the two contributions at a codimension-two face cancel. The local star-and-link calculation includes singular polyhedra and integral torsion, so it cannot be replaced by an orientation-sheaf assertion valid only on manifolds.
 
 For a freely readable antecedent, see Masaki Kashiwara, *Index theorem for constructible sheaves*, Astérisque 130 (1985), §1.3–1.5, pp. 195–196; [free article](https://www.numdam.org/item/AST_1985__130__193_0/). It constructs oriented subanalytic chain sheaves and a chain resolution of the orientation sheaf on a real analytic manifold. The arbitrary polyhedron's closed-simplex model and finite reconstruction are proved above; they are not inferred merely from that manifold statement.
 
-The operation inputs are [SH02-EX-EMBEDDING](../sheaf-proof-readings/SH02-exceptional-operations.html#SH02-EX-EMBEDDING), [SH02-EX-INTERNAL](../sheaf-proof-readings/SH02-exceptional-operations.html#SH02-EX-INTERNAL), [SH02-EX-DUALIZING](../sheaf-proof-readings/SH02-exceptional-operations.html#SH02-EX-DUALIZING)/[SH02-EX-DUAL-SECTIONS](../sheaf-proof-readings/SH02-exceptional-operations.html#SH02-EX-DUAL-SECTIONS), [SH02-MD-EUCLIDEAN](../sheaf-proof-readings/SH02-manifold-duality.html#SH02-MD-EUCLIDEAN)/[SH02-MD-ORIENTATION-LINE](../sheaf-proof-readings/SH02-manifold-duality.html#SH02-MD-ORIENTATION-LINE)/[SH02-MD-SUBMERSION](../sheaf-proof-readings/SH02-manifold-duality.html#SH02-MD-SUBMERSION), and [SH02-CA-CONSTANT](../sheaf-proof-readings/SH02-convex-acyclicity.html#SH02-CA-CONSTANT), with their stated coefficient and degree ranges. The sheaf model and seven solved exercises use these prerequisites. The argument requires neither unrestricted biduality nor nonproper fibre base change, arbitrary product-to-stalk interchange or reconstruction from an infinite filtration.
+The operation inputs are [SH02-EX-EMBEDDING](../sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-embedding--open-closed-and-locally-closed-inclusions), [SH02-EX-INTERNAL](../sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-internal--internal-adjunction-and-its-tensor-structure), [SH02-EX-DUALIZING](../sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-dualizing--dualizing-objects-and-supported-dual-sections)/[SH02-EX-DUAL-SECTIONS](../sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-dual-sections--duality-of-ordinary-and-supported-sections), [SH02-MD-EUCLIDEAN](../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-euclidean--the-compact-support-generator)/[SH02-MD-ORIENTATION-LINE](../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-orientation-line--orientation-as-a-local-system)/[SH02-MD-SUBMERSION](../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-submersion--recovering-the-exceptional-inverse-image-locally), and [SH02-CA-CONSTANT](../sheaf-proof-readings/src/SH02/convex-acyclicity.md#sh02-ca-constant--constant-coefficients), with their stated coefficient and degree ranges. The sheaf model and seven solved exercises use these prerequisites. The argument requires neither unrestricted biduality nor nonproper fibre base change, arbitrary product-to-stalk interchange or reconstruction from an infinite filtration.
 

@@ -280,9 +280,9 @@ It is zero when \(|s|\ge2R\). The Lipschitz estimate for \(\chi\) and (7) bound 
 
 First apply it to the near input \(1_{\{|x|\le4R\}}v\). Integrating its slice norm for \(s<T\) gives
 
-\
+\[
  \begin{gathered}
-\|[A,\chi_R\|
+\|[A,\chi_R](1_{\{|x|\le4R\}}v)\|
  _{L^1((-\infty,T);\mathcal H)}
  \\ \le CR^{-1/2}M(4R,T)=o(1).
 \end{gathered}

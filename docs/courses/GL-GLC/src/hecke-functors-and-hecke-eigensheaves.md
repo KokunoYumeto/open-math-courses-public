@@ -188,8 +188,8 @@ The proposition is a sufficiency statement for coherent data, not a theorem exte
 For this section let \(X/\mathbb F_q\) be smooth projective connected, choose \(\ell\ne\operatorname{char}(\mathbb F_q)\), and use constructible \(\overline{\mathbb Q}_\ell\)-complexes with Weil structure. Fix a square root of \(q\) to define half Tate factors. The raw spherical Haar normalization is \(\operatorname{vol}(G(O_x))=1\), and the function operator uses the downward convention of §1. We first take a rational point \(x\); the closed-place version is specified below.
 
 At a fixed closed point \(x\), let \(k_{V,x}\) be the function of the arithmetic Satake kernel on the local Grassmannian. We normalize its Weil structure so that its trace corresponds to \(V\) under the positive normalized classical Satake isomorphism. The IC convention is explicit: on a minuscule orbit of dimension \(d\), start with
-\
-\overline{\mathbb Q}_\ell[d.
+\[
+\overline{\mathbb Q}_\ell[d](d/2).
 \]
 Its literal alternating trace is \((-1)^d q_x^{-d/2}\). Multiply its Frobenius structure by \((-1)^d\) to obtain the positive trace \(q_x^{-d/2}\). For general \(\lambda\), use the factor
 \((-1)^{\langle2\rho,\lambda\rangle}\) on its IC kernel. This is monoidally compatible: tensor-product highest weights differ from the sum by coroots, and \(2\rho\) pairs evenly with coroots. Equivalently, choosing half Tate Frobenius \(-q_x^{-1/2}\) incorporates the same parity. We use the parity-adjusted structure with the fixed positive-symbol Satake convention.
@@ -360,7 +360,7 @@ H^0(\mathbb P^1,\overline{\mathbb Q}_\ell)
 H^2(\mathbb P^1,\overline{\mathbb Q}_\ell)
      =\overline{\mathbb Q}_\ell(-1),
 \]
-and no other cohomology. Geometric Frobenius acts by \(1\) and \(Q\), so its alternating unshifted trace is \(1+Q\). The IC kernel is \(\overline{\mathbb Q}_\ell1\). The shift changes the sign and the Tate factor multiplies by \(Q^{-1/2}\), giving
+and no other cohomology. Geometric Frobenius acts by \(1\) and \(Q\), so its alternating unshifted trace is \(1+Q\). The IC kernel is \(\overline{\mathbb Q}_\ell[1](1/2)\). The shift changes the sign and the Tate factor multiplies by \(Q^{-1/2}\), giving
 \[
 -Q^{-1/2}(1+Q)=-(Q^{1/2}+Q^{-1/2}).
 \]

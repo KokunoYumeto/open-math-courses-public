@@ -1358,9 +1358,9 @@ Let \(K\subset H^{-1}(M)\) be the kernel of distributional restriction to \(I\).
 
 Define \(Q^{-1}_M(I)=H^{-1}(M)/K\), with its Hilbert quotient norm, and \(D^{-1}(I)=(H_0^1(I))^*_{\mathrm{anti}}\). Restriction of functionals gives a well-defined map
 
-\
+\[
  R:Q^{-1}_M(I)\longrightarrow D^{-1}(I),\qquad
- R[g=F_g(Jv).
+ R[g](v)=F_g(Jv).
  \tag{QB.6}
 \]
 

@@ -149,11 +149,11 @@ Here \(T_\lambda\) is the canonical trace defined by completion from Schwartz fo
 
 Outside the finite force, the local phase has the exact value \(G_j(s,\eta)=sE_\lambda(\eta)-\psi_{\infty,j}(E_\lambda(\eta),\eta)\). For free forcing \(f_0\), the positive outgoing integral yields
 
-\
+\[
  \begin{aligned}
  &\lim_{s\to\infty}\mathcal F_z
        \bigl(e^{-isE_\lambda(D_z)}
-           [\chi(D)R_{0,+}(\lambda)f_0\bigr)\\
+           [\chi(D)R_{0,+}(\lambda)f_0](s,\cdot)\bigr)\\
  &\quad=i\sqrt{2\pi}\,
        \frac{\chi(E_\lambda(\eta),\eta)}
             {v_1(E_\lambda(\eta),\eta)}

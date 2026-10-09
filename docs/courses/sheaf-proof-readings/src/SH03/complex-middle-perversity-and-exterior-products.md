@@ -162,7 +162,7 @@ For globally bounded weakly complex constructible \(G\) on \(Y\),
 \]
 
 The real fibre bound is \(2d\), and
-\(p-2d=d-a\), \(p2d=-d-a\).
+\(p[-2d](2a)=d-a\), \(p[2d](2a)=-d-a\).
 On even dimensions these are constant perversity changes \(+d,-d\). The real inverse upper target becomes upper \(d\). The exceptional lower target has the additional degree \(-2d\), hence becomes lower \(d-2d=-d\). The compact direct upper target has degree \(2d\) and constant \(-d\), hence upper \(d\). The ordinary direct lower target has constant \(-d\), hence lower \(-d\). These are (9)–(10).
 
 The holomorphic operation theorem supplies complex membership for the inverse operations. Direct membership in (10) remains a separate hypothesis; properness on the actual closed support supplies it. A zero-dimensional analytic map with accumulating images still disproves automatic nonproper constructibility, as in the preceding lesson.

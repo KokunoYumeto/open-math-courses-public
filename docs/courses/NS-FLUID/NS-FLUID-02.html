@@ -1,0 +1,735 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pressure and the divergence-free projection — Incompressible flow</title><link rel="stylesheet" href="reader.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script>
+<script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Incompressible flow</a><a href="src/pressure-and-the-divergence-free-projection.md">Editable lesson</a><span class="unlinked">Sources and authorship</span></nav></header><main id="main"><nav aria-label="Lesson sequence"><a href="NS-FLUID-01.html">Previous lesson</a><a href="NS-FLUID-03.html">Next lesson</a></nav><article class="lesson"><h1 id="pressure-and-the-divergence-free-projection">Pressure and the divergence-free projection</h1>
+<p><em>Written by GPT-6 Astra (OpenAI) at Ultra, October 2026. Self-checked by GPT-6 Astra; no independent review of this version is claimed. Mathematical text dedicated to the public domain under CC0.</em></p>
+<p>An incompressible velocity cannot move independently in every direction: its divergence must stay zero. Pressure supplies the part of the acceleration needed to respect that constraint. We will construct the operator that removes gradient fields, prove exactly which fields it keeps, and recover the pressure after applying it.</p>
+<p>There are two settings: the whole space <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, with <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, and a periodic box with arbitrary side lengths <span class="math" data-tex="\(L_1,\ldots,L_n&gt;0\)">\(L_1,\ldots,L_n&gt;0\)</span>. We retain the volume of the box, the factors <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> in Fourier differentiation, and the viscosity <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. The spatially constant mode needs explicit treatment in the periodic case.</p>
+<p>The earlier lesson <a href="NS-FLUID-01.html">Forces, energy and vorticity in incompressible flow</a> supplies the equations and the exact similarity transformation. Here we also use the basic rules of Lebesgue integration, completeness of <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, dominated convergence and Fubini's theorem. Section 8 proves the Fourier identities used in the construction. A distribution means a continuous linear functional on smooth compactly supported test functions; its derivative is defined by integration by parts. A tempered distribution acts continuously on Schwartz functions, which are smooth functions whose derivatives decrease faster than every inverse power of distance.</p>
+<p>Tao [T, Section 1] writes the pressure projection and the symmetric Euler bilinear operator that we study in Section 5. We prove the needed operator statements here, with the external force and viscosity retained. The averaged equation treated later in that paper is a different evolution and is not a theorem about the unmodified equations.</p>
+<h2 id="1-one-frequency-at-a-time">1. One frequency at a time</h2>
+<p>Our whole-space Fourier transform is</p>
+<span class="math math-display" data-tex="\[
+\widehat v(\xi)=\int_{\mathbb R^n}e^{-2\pi i x\cdot\xi}v(x)\,dx.
+\tag{1.1}
+\]">\[
+\widehat v(\xi)=\int_{\mathbb R^n}e^{-2\pi i x\cdot\xi}v(x)\,dx.
+\tag{1.1}
+\]</span>
+<p>For square-integrable fields this is understood by the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> extension proved in Section 8. The corresponding formulas are</p>
+<span class="math math-display" data-tex="\[
+\|v\|_2^2=\int_{\mathbb R^n}|\widehat v(\xi)|^2\,d\xi,\qquad
+\widehat{\partial_jv}=2\pi i\xi_j\widehat v,\qquad
+\widehat{\Delta v}=-4\pi^2|\xi|^2\widehat v.                   \tag{1.2}
+\]">\[
+\|v\|_2^2=\int_{\mathbb R^n}|\widehat v(\xi)|^2\,d\xi,\qquad
+\widehat{\partial_jv}=2\pi i\xi_j\widehat v,\qquad
+\widehat{\Delta v}=-4\pi^2|\xi|^2\widehat v.                   \tag{1.2}
+\]</span>
+<p>At a nonzero frequency <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, define two real symmetric matrices</p>
+<span class="math math-display" data-tex="\[
+Q(\xi)=\frac{\xi\xi^T}{|\xi|^2},\qquad P(\xi)=I-Q(\xi).
+\tag{1.3}
+\]">\[
+Q(\xi)=\frac{\xi\xi^T}{|\xi|^2},\qquad P(\xi)=I-Q(\xi).
+\tag{1.3}
+\]</span>
+<p>They also act on complex vectors. Inner products on complex vectors use complex conjugation in the second factor. Because <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is real, the condition for being orthogonal to <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is still <span class="math" data-tex="\(\xi\cdot a=0\)">\(\xi\cdot a=0\)</span>.</p>
+<p>For any <span class="math" data-tex="\(a\in\mathbb C^n\)">\(a\in\mathbb C^n\)</span>,</p>
+<span class="math math-display" data-tex="\[
+Qa=\frac{\xi\cdot a}{|\xi|^2}\xi,\qquad
+\xi\cdot Pa=0,\qquad a=Pa+Qa.                                \tag{1.4}
+\]">\[
+Qa=\frac{\xi\cdot a}{|\xi|^2}\xi,\qquad
+\xi\cdot Pa=0,\qquad a=Pa+Qa.                                \tag{1.4}
+\]</span>
+<p>The two terms are orthogonal. Indeed,
+<span class="math" data-tex="\(\langle Pa,Qa\rangle=\overline{(\xi\cdot a)/|\xi|^2}\,
+\xi\cdot Pa=0\)">\(\langle Pa,Qa\rangle=\overline{(\xi\cdot a)/|\xi|^2}\,
+\xi\cdot Pa=0\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+|a|^2=|Pa|^2+|Qa|^2,\quad
+P^2=P,\quad Q^2=Q,\quad PQ=QP=0.                             \tag{1.5}
+\]">\[
+|a|^2=|Pa|^2+|Qa|^2,\quad
+P^2=P,\quad Q^2=Q,\quad PQ=QP=0.                             \tag{1.5}
+\]</span>
+<p>For instance, <span class="math" data-tex="\(Q^2a=Q(\xi)(\xi\cdot a)/|\xi|^2=Qa\)">\(Q^2a=Q(\xi)(\xi\cdot a)/|\xi|^2=Qa\)</span>, since <span class="math" data-tex="\(Q\xi=\xi\)">\(Q\xi=\xi\)</span>; the other identities follow from <span class="math" data-tex="\(P=I-Q\)">\(P=I-Q\)</span>. Both matrices are self-adjoint and have norm at most one.</p>
+<p>At <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span>, set <span class="math" data-tex="\(P(0)=I\)">\(P(0)=I\)</span> and <span class="math" data-tex="\(Q(0)=0\)">\(Q(0)=0\)</span>. Changing a matrix value at this single point changes no whole-space <span class="math" data-tex="\(L^2\)">\(L^2\)</span> function. In a Fourier series, however, the zero coefficient is an actual summand. We will keep the stated values there.</p>
+<h2 id="2-the-whole-space-decomposition">2. The whole-space decomposition</h2>
+<p>Let</p>
+<span class="math math-display" data-tex="\[
+\mathcal H=L^2(\mathbb R^n;\mathbb C^n),\qquad
+\mathcal S_\sigma
+=\{v\in\mathcal H:\operatorname{div}v=0
+\text{ as a distribution}\},
+\]">\[
+\mathcal H=L^2(\mathbb R^n;\mathbb C^n),\qquad
+\mathcal S_\sigma
+=\{v\in\mathcal H:\operatorname{div}v=0
+\text{ as a distribution}\},
+\]</span>
+<p>and let</p>
+<span class="math math-display" data-tex="\[
+\mathcal G=\overline{\{\nabla\phi:\phi\in C_c^\infty(\mathbb R^n;\mathbb C)\}}^{\,L^2}.
+\tag{2.1}
+\]">\[
+\mathcal G=\overline{\{\nabla\phi:\phi\in C_c^\infty(\mathbb R^n;\mathbb C)\}}^{\,L^2}.
+\tag{2.1}
+\]</span>
+<p>The symbol <span class="math" data-tex="\(\mathcal S_\sigma\)">\(\mathcal S_\sigma\)</span> denotes a closed subspace of <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, not the Schwartz class.</p>
+<p>Define bounded operators on <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> by</p>
+<span class="math math-display" data-tex="\[
+\widehat{\mathbb Pv}(\xi)=P(\xi)\widehat v(\xi),\qquad
+\widehat{\mathbb Qv}(\xi)=Q(\xi)\widehat v(\xi).
+\tag{2.2}
+\]">\[
+\widehat{\mathbb Pv}(\xi)=P(\xi)\widehat v(\xi),\qquad
+\widehat{\mathbb Qv}(\xi)=Q(\xi)\widehat v(\xi).
+\tag{2.2}
+\]</span>
+<p>The boundedness follows from (1.5) and (1.2). Real fields remain real: their Fourier transforms satisfy <span class="math" data-tex="\(\widehat v(-\xi)=\overline{\widehat v(\xi)}\)">\(\widehat v(-\xi)=\overline{\widehat v(\xi)}\)</span>, and the real matrices <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> are even in <span class="math" data-tex="\(\xi\)">\(\xi\)</span>.</p>
+<p><strong>Theorem 2.1.</strong> Every <span class="math" data-tex="\(v\in\mathcal H\)">\(v\in\mathcal H\)</span> has the unique orthogonal decomposition</p>
+<span class="math math-display" data-tex="\[
+v=\mathbb Pv+\mathbb Qv,\qquad
+\mathbb Pv\in\mathcal S_\sigma,\qquad \mathbb Qv\in\mathcal G,
+\]">\[
+v=\mathbb Pv+\mathbb Qv,\qquad
+\mathbb Pv\in\mathcal S_\sigma,\qquad \mathbb Qv\in\mathcal G,
+\]</span>
+<span class="math math-display" data-tex="\[
+\mathcal H=\mathcal S_\sigma\oplus\mathcal G,\qquad
+\|v\|_2^2=\|\mathbb Pv\|_2^2+\|\mathbb Qv\|_2^2.             \tag{2.3}
+\]">\[
+\mathcal H=\mathcal S_\sigma\oplus\mathcal G,\qquad
+\|v\|_2^2=\|\mathbb Pv\|_2^2+\|\mathbb Qv\|_2^2.             \tag{2.3}
+\]</span>
+<p>Both operators are self-adjoint projections. In particular,
+<span class="math" data-tex="\(\|\mathbb Pv\|_2,\|\mathbb Qv\|_2\leq\|v\|_2\)">\(\|\mathbb Pv\|_2,\|\mathbb Qv\|_2\leq\|v\|_2\)</span>.</p>
+<p><strong>Proof.</strong> The matrix identities (1.5), followed by the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> Fourier identity, prove idempotence, self-adjointness, orthogonality and the norm equality.</p>
+<p>Distributional differentiation in (1.2) shows that <span class="math" data-tex="\(\operatorname{div}v=0\)">\(\operatorname{div}v=0\)</span> is equivalent to
+<span class="math" data-tex="\(\xi\cdot\widehat v(\xi)=0\)">\(\xi\cdot\widehat v(\xi)=0\)</span> almost everywhere. To justify the last step, <span class="math" data-tex="\(\xi\cdot\widehat v\)">\(\xi\cdot\widehat v\)</span> is locally integrable by Cauchy–Schwarz on bounded sets; a locally integrable function represents the zero distribution exactly when it vanishes almost everywhere. Equation (1.4) now shows that the range of <span class="math" data-tex="\(\mathbb P\)">\(\mathbb P\)</span> is precisely <span class="math" data-tex="\(\mathcal S_\sigma\)">\(\mathcal S_\sigma\)</span>.</p>
+<p>For <span class="math" data-tex="\(\phi\in C_c^\infty\)">\(\phi\in C_c^\infty\)</span>, its gradient has transform <span class="math" data-tex="\(2\pi i\xi\widehat\phi\)">\(2\pi i\xi\widehat\phi\)</span>, so <span class="math" data-tex="\(\mathbb Q\nabla\phi=\nabla\phi\)">\(\mathbb Q\nabla\phi=\nabla\phi\)</span>. By continuity, <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> lies in the range of <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, which is closed because <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> is a bounded projection.</p>
+<p>For the reverse inclusion, approximate <span class="math" data-tex="\(\widehat v\)">\(\widehat v\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> by vector functions <span class="math" data-tex="\(a_j\)">\(a_j\)</span> smooth and compactly supported away from zero. Such approximation follows by first cutting off <span class="math" data-tex="\(|\xi|&lt;1/j\)">\(|\xi|&lt;1/j\)</span> and <span class="math" data-tex="\(|\xi|&gt;j\)">\(|\xi|&gt;j\)</span>, whose <span class="math" data-tex="\(L^2\)">\(L^2\)</span> tails tend to zero, then using smooth compactly supported approximation in the remaining open annulus. Set</p>
+<span class="math math-display" data-tex="\[
+\widehat q_j(\xi)=\frac{\xi\cdot a_j(\xi)}{2\pi i|\xi|^2}.
+\]">\[
+\widehat q_j(\xi)=\frac{\xi\cdot a_j(\xi)}{2\pi i|\xi|^2}.
+\]</span>
+<p>This is smooth and compactly supported away from zero. Its inverse transform <span class="math" data-tex="\(q_j\)">\(q_j\)</span> is Schwartz, by repeated integration by parts in (1.1). Moreover,</p>
+<span class="math math-display" data-tex="\[
+\widehat{\nabla q_j}=Q(\xi)a_j(\xi)\longrightarrow Q(\xi)\widehat v(\xi)
+\quad\text{in }L^2.
+\]">\[
+\widehat{\nabla q_j}=Q(\xi)a_j(\xi)\longrightarrow Q(\xi)\widehat v(\xi)
+\quad\text{in }L^2.
+\]</span>
+<p>Choose <span class="math" data-tex="\(\eta\in C_c^\infty\)">\(\eta\in C_c^\infty\)</span> equal to one near zero and set <span class="math" data-tex="\(\eta_R(x)=\eta(x/R)\)">\(\eta_R(x)=\eta(x/R)\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\nabla(\eta_Rq_j)-\nabla q_j
+=(\eta_R-1)\nabla q_j+R^{-1}(\nabla\eta)(x/R)q_j
+\longrightarrow0
+\quad\text{in }L^2
+\]">\[
+\nabla(\eta_Rq_j)-\nabla q_j
+=(\eta_R-1)\nabla q_j+R^{-1}(\nabla\eta)(x/R)q_j
+\longrightarrow0
+\quad\text{in }L^2
+\]</span>
+<p>for each <span class="math" data-tex="\(j\)">\(j\)</span>. Dominated convergence handles the first term, and the second has norm at most <span class="math" data-tex="\(R^{-1}\|\nabla\eta\|_\infty\|q_j\|_2\)">\(R^{-1}\|\nabla\eta\|_\infty\|q_j\|_2\)</span>. Thus each <span class="math" data-tex="\(\nabla q_j\)">\(\nabla q_j\)</span> belongs to <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span>, and so does its limit <span class="math" data-tex="\(\mathbb Qv\)">\(\mathbb Qv\)</span>. Finally the orthogonal decomposition has unique summands, since a vector in both orthogonal subspaces has zero norm. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same spaces can be described without Fourier coordinates:</p>
+<span class="math math-display" data-tex="\[
+v\in\mathcal S_\sigma
+\quad\Longleftrightarrow\quad
+\int v\cdot\overline{\nabla\phi}\,dx=0
+\quad\text{for every }\phi\in C_c^\infty.
+\tag{2.4}
+\]">\[
+v\in\mathcal S_\sigma
+\quad\Longleftrightarrow\quad
+\int v\cdot\overline{\nabla\phi}\,dx=0
+\quad\text{for every }\phi\in C_c^\infty.
+\tag{2.4}
+\]</span>
+<p>This is exactly the definition of vanishing distributional divergence, with a minus sign from integration by parts. It also proves directly that <span class="math" data-tex="\(\mathcal S_\sigma=\mathcal G^\perp\)">\(\mathcal S_\sigma=\mathcal G^\perp\)</span>.</p>
+<h3 id="recovering-an-actual-pressure-potential">Recovering an actual pressure potential</h3>
+<p>It is the gradient of pressure that enters momentum. A square-integrable gradient need not have a square-integrable potential.</p>
+<p><strong>Proposition 2.2.</strong> For each <span class="math" data-tex="\(v\in\mathcal H\)">\(v\in\mathcal H\)</span>, there is a tempered distribution <span class="math" data-tex="\(q\)">\(q\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\nabla q=\mathbb Qv,\qquad \Delta q=\operatorname{div}v.       \tag{2.5}
+\]">\[
+\nabla q=\mathbb Qv,\qquad \Delta q=\operatorname{div}v.       \tag{2.5}
+\]</span>
+<p>It is unique up to a spatial constant among distributional potentials with this gradient.</p>
+<p><strong>Proof.</strong> Away from zero, the required Fourier expression is</p>
+<span class="math math-display" data-tex="\[
+a(\xi)=\frac{\xi\cdot\widehat v(\xi)}{2\pi i|\xi|^2}.          \tag{2.6}
+\]">\[
+a(\xi)=\frac{\xi\cdot\widehat v(\xi)}{2\pi i|\xi|^2}.          \tag{2.6}
+\]</span>
+<p>To define it for every <span class="math" data-tex="\(L^2\)">\(L^2\)</span> field, including at low frequency in dimension two, choose <span class="math" data-tex="\(\chi\in C_c^\infty\)">\(\chi\in C_c^\infty\)</span> equal to one near zero. Define</p>
+<span class="math math-display" data-tex="\[
+\langle\widehat q,\varphi\rangle
+=\int_{\mathbb R^n}a(\xi)
+[\varphi(\xi)-\varphi(0)\chi(\xi)]\,d\xi,
+\qquad \varphi\text{ Schwartz}.                             \tag{2.7}
+\]">\[
+\langle\widehat q,\varphi\rangle
+=\int_{\mathbb R^n}a(\xi)
+[\varphi(\xi)-\varphi(0)\chi(\xi)]\,d\xi,
+\qquad \varphi\text{ Schwartz}.                             \tag{2.7}
+\]</span>
+<p>This is a bilinear distribution pairing, with no complex conjugation.
+Near zero the bracket is bounded by <span class="math" data-tex="\(C_\varphi|\xi|\)">\(C_\varphi|\xi|\)</span>, while
+<span class="math" data-tex="\(|a(\xi)|\leq|\widehat v(\xi)|/(2\pi|\xi|)\)">\(|a(\xi)|\leq|\widehat v(\xi)|/(2\pi|\xi|)\)</span>. Cauchy–Schwarz on a bounded ball makes the product integrable. Away from that ball, the factor <span class="math" data-tex="\(1/|\xi|\)">\(1/|\xi|\)</span> is bounded and the bracket is square-integrable and rapidly decreasing outside a compact set. Cauchy–Schwarz applies again. These same estimates bound the pairing by finitely many Schwartz seminorms of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, times <span class="math" data-tex="\(\|v\|_2\)">\(\|v\|_2\)</span>, so (2.7) is tempered.</p>
+<p>Multiplication by <span class="math" data-tex="\(2\pi i\xi_j\)">\(2\pi i\xi_j\)</span> in (2.7) removes the subtracted term because <span class="math" data-tex="\((\xi_j\varphi)(0)=0\)">\((\xi_j\varphi)(0)=0\)</span>. It gives</p>
+<span class="math math-display" data-tex="\[
+2\pi i\xi_j\widehat q
+=\frac{\xi_j\,\xi\cdot\widehat v}{|\xi|^2}
+=\widehat{(\mathbb Qv)_j}.
+\]">\[
+2\pi i\xi_j\widehat q
+=\frac{\xi_j\,\xi\cdot\widehat v}{|\xi|^2}
+=\widehat{(\mathbb Qv)_j}.
+\]</span>
+<p>Thus <span class="math" data-tex="\(\nabla q=\mathbb Qv\)">\(\nabla q=\mathbb Qv\)</span>. Taking a divergence and using <span class="math" data-tex="\(\operatorname{div}\mathbb Pv=0\)">\(\operatorname{div}\mathbb Pv=0\)</span> proves the second equation.</p>
+<p>If two potentials have the same gradient, their difference <span class="math" data-tex="\(h\)">\(h\)</span> has all distributional first derivatives zero. Convolve <span class="math" data-tex="\(h\)">\(h\)</span> with a compactly supported smooth approximate identity. Every convolution has zero ordinary gradient and is constant on connected <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>. Passing to the distributional limit shows that <span class="math" data-tex="\(h\)">\(h\)</span> annihilates every test function of integral zero. Fixing one test function of integral one then shows <span class="math" data-tex="\(\langle h,\phi\rangle=c\int\phi\)">\(\langle h,\phi\rangle=c\int\phi\)</span> for a fixed <span class="math" data-tex="\(c\)">\(c\)</span>. Hence <span class="math" data-tex="\(h\)">\(h\)</span> is a constant distribution. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For smooth fields whose gradients are in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, this is the usual pressure freedom <span class="math" data-tex="\(q(x)\mapsto q(x)+c\)">\(q(x)\mapsto q(x)+c\)</span>. In an evolution, the constant may depend on time. Formula (2.7) selects one representative; the recovered gradient is independent of the choice of <span class="math" data-tex="\(\chi\)">\(\chi\)</span>.</p>
+<h3 id="derivatives-and-sobolev-norms">Derivatives and Sobolev norms</h3>
+<p>For real <span class="math" data-tex="\(s\)">\(s\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\|v\|_{H^s}^2
+=\int_{\mathbb R^n}(1+4\pi^2|\xi|^2)^s|\widehat v(\xi)|^2\,d\xi,
+\tag{2.8}
+\]">\[
+\|v\|_{H^s}^2
+=\int_{\mathbb R^n}(1+4\pi^2|\xi|^2)^s|\widehat v(\xi)|^2\,d\xi,
+\tag{2.8}
+\]</span>
+<p>on the tempered distributions whose transforms are represented by functions with this finite integral. Pointwise orthogonality gives</p>
+<span class="math math-display" data-tex="\[
+\|v\|_{H^s}^2=\|\mathbb Pv\|_{H^s}^2+\|\mathbb Qv\|_{H^s}^2.
+\tag{2.9}
+\]">\[
+\|v\|_{H^s}^2=\|\mathbb Pv\|_{H^s}^2+\|\mathbb Qv\|_{H^s}^2.
+\tag{2.9}
+\]</span>
+<p>Multiplication by <span class="math" data-tex="\(P(\xi)\)">\(P(\xi)\)</span> or <span class="math" data-tex="\(Q(\xi)\)">\(Q(\xi)\)</span> commutes with multiplication by <span class="math" data-tex="\(2\pi i\xi_j\)">\(2\pi i\xi_j\)</span> and by <span class="math" data-tex="\(-4\pi^2|\xi|^2\)">\(-4\pi^2|\xi|^2\)</span>. Consequently <span class="math" data-tex="\(\mathbb P\)">\(\mathbb P\)</span> and <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> commute with each spatial derivative and with the Laplacian on their natural Sobolev domains. For example, <span class="math" data-tex="\(\partial_j\mathbb Pv=\mathbb P\partial_jv\)">\(\partial_j\mathbb Pv=\mathbb P\partial_jv\)</span> in <span class="math" data-tex="\(H^{s-1}\)">\(H^{s-1}\)</span> for <span class="math" data-tex="\(v\in H^s\)">\(v\in H^s\)</span>. This conclusion uses the stated domains; it does not require multiplication of an arbitrary distribution by a nonsmooth symbol at zero.</p>
+<h2 id="3-the-periodic-box-and-its-constant-mode">3. The periodic box and its constant mode</h2>
+<p>Write</p>
+<span class="math math-display" data-tex="\[
+\mathbb T_L^n=\mathbb R^n/(L_1\mathbb Z\times\cdots\times L_n\mathbb Z),
+\quad V=\prod_{j=1}^nL_j,\quad
+\kappa_k=(k_1/L_1,\ldots,k_n/L_n),\quad k\in\mathbb Z^n.
+\]">\[
+\mathbb T_L^n=\mathbb R^n/(L_1\mathbb Z\times\cdots\times L_n\mathbb Z),
+\quad V=\prod_{j=1}^nL_j,\quad
+\kappa_k=(k_1/L_1,\ldots,k_n/L_n),\quad k\in\mathbb Z^n.
+\]</span>
+<p>Integration uses ordinary <span class="math" data-tex="\(dx\)">\(dx\)</span> over the box <span class="math" data-tex="\(\prod_j[0,L_j]\)">\(\prod_j[0,L_j]\)</span>, so its total volume is <span class="math" data-tex="\(V\)">\(V\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\widehat v_k=\frac1V\int_{\mathbb T_L^n}v(x)e^{-2\pi i\kappa_k\cdot x}\,dx.
+\tag{3.1}
+\]">\[
+\widehat v_k=\frac1V\int_{\mathbb T_L^n}v(x)e^{-2\pi i\kappa_k\cdot x}\,dx.
+\tag{3.1}
+\]</span>
+<p>The Fourier-series identities proved in Section 8 are</p>
+<span class="math math-display" data-tex="\[
+v=\sum_{k\in\mathbb Z^n}\widehat v_k e^{2\pi i\kappa_k\cdot x}
+\quad\text{in }L^2,\qquad
+\|v\|_2^2=V\sum_k|\widehat v_k|^2.                           \tag{3.2}
+\]">\[
+v=\sum_{k\in\mathbb Z^n}\widehat v_k e^{2\pi i\kappa_k\cdot x}
+\quad\text{in }L^2,\qquad
+\|v\|_2^2=V\sum_k|\widehat v_k|^2.                           \tag{3.2}
+\]</span>
+<p>The zero coefficient is the spatial average <span class="math" data-tex="\(V^{-1}\int v\)">\(V^{-1}\int v\)</span>.</p>
+<p><strong>Theorem 3.1.</strong> Set</p>
+<span class="math math-display" data-tex="\[
+\widehat{(\mathbb P_Lv)}_k=
+\begin{cases}
+\left(I-\dfrac{\kappa_k\kappa_k^T}{|\kappa_k|^2}\right)\widehat v_k,&amp;k\ne0,\\
+\widehat v_0,&amp;k=0,
+\end{cases}
+\]">\[
+\widehat{(\mathbb P_Lv)}_k=
+\begin{cases}
+\left(I-\dfrac{\kappa_k\kappa_k^T}{|\kappa_k|^2}\right)\widehat v_k,&amp;k\ne0,\\
+\widehat v_0,&amp;k=0,
+\end{cases}
+\]</span>
+<span class="math math-display" data-tex="\[
+\widehat{(\mathbb Q_Lv)}_k=
+\begin{cases}
+\dfrac{\kappa_k\kappa_k^T}{|\kappa_k|^2}\widehat v_k,&amp;k\ne0,\\
+0,&amp;k=0.
+\end{cases}                                                  \tag{3.3}
+\]">\[
+\widehat{(\mathbb Q_Lv)}_k=
+\begin{cases}
+\dfrac{\kappa_k\kappa_k^T}{|\kappa_k|^2}\widehat v_k,&amp;k\ne0,\\
+0,&amp;k=0.
+\end{cases}                                                  \tag{3.3}
+\]</span>
+<p>These are orthogonal projections onto, respectively, the distributionally divergence-free fields and the gradients of periodic <span class="math" data-tex="\(H^1\)">\(H^1\)</span> functions. Every <span class="math" data-tex="\(v\in L^2(\mathbb T_L^n;\mathbb C^n)\)">\(v\in L^2(\mathbb T_L^n;\mathbb C^n)\)</span> has the unique decomposition</p>
+<span class="math math-display" data-tex="\[
+v=\mathbb P_Lv+\nabla q,\qquad \int_{\mathbb T_L^n}q\,dx=0,
+\tag{3.4}
+\]">\[
+v=\mathbb P_Lv+\nabla q,\qquad \int_{\mathbb T_L^n}q\,dx=0,
+\tag{3.4}
+\]</span>
+<p>where</p>
+<span class="math math-display" data-tex="\[
+\widehat q_0=0,\qquad
+\widehat q_k=\frac{\kappa_k\cdot\widehat v_k}{2\pi i|\kappa_k|^2}
+\quad(k\ne0).                                                \tag{3.5}
+\]">\[
+\widehat q_0=0,\qquad
+\widehat q_k=\frac{\kappa_k\cdot\widehat v_k}{2\pi i|\kappa_k|^2}
+\quad(k\ne0).                                                \tag{3.5}
+\]</span>
+<p>Writing <span class="math" data-tex="\(L_{\max}=\max_jL_j\)">\(L_{\max}=\max_jL_j\)</span>, the bounds are</p>
+<span class="math math-display" data-tex="\[
+\|\nabla q\|_2\leq\|v\|_2,\qquad
+\|q\|_2\leq\frac{L_{\max}}{2\pi}\|\nabla q\|_2.              \tag{3.6}
+\]">\[
+\|\nabla q\|_2\leq\|v\|_2,\qquad
+\|q\|_2\leq\frac{L_{\max}}{2\pi}\|\nabla q\|_2.              \tag{3.6}
+\]</span>
+<p><strong>Proof.</strong> Use the matrices of Section 1 at each <span class="math" data-tex="\(\kappa_k\ne0\)">\(\kappa_k\ne0\)</span>. At <span class="math" data-tex="\(k=0\)">\(k=0\)</span>, all first derivatives vanish, so incompressibility imposes no condition on <span class="math" data-tex="\(\widehat v_0\)">\(\widehat v_0\)</span>. A periodic gradient has zero constant coefficient. These observations give exactly (3.3), including the zero mode.</p>
+<p>Parseval proves orthogonality and boundedness. Since <span class="math" data-tex="\(|\kappa_k|\geq1/L_{\max}\)">\(|\kappa_k|\geq1/L_{\max}\)</span> for <span class="math" data-tex="\(k\ne0\)">\(k\ne0\)</span>, (3.5) and (3.2) give</p>
+<span class="math math-display" data-tex="\[
+V\sum_{k\ne0}|\widehat q_k|^2
+\leq\frac{L_{\max}^2}{4\pi^2}
+V\sum_{k\ne0}4\pi^2|\kappa_k|^2|\widehat q_k|^2.
+\]">\[
+V\sum_{k\ne0}|\widehat q_k|^2
+\leq\frac{L_{\max}^2}{4\pi^2}
+V\sum_{k\ne0}4\pi^2|\kappa_k|^2|\widehat q_k|^2.
+\]</span>
+<p>The latter sum is <span class="math" data-tex="\(\|\mathbb Q_Lv\|_2^2\leq\|v\|_2^2\)">\(\|\mathbb Q_Lv\|_2^2\leq\|v\|_2^2\)</span>. Thus <span class="math" data-tex="\(q\in H^1\)">\(q\in H^1\)</span>, and differentiating its series proves <span class="math" data-tex="\(\nabla q=\mathbb Q_Lv\)">\(\nabla q=\mathbb Q_Lv\)</span>. Conversely a periodic <span class="math" data-tex="\(H^1\)">\(H^1\)</span> gradient has transform <span class="math" data-tex="\(2\pi i\kappa_k\widehat q_k\)">\(2\pi i\kappa_k\widehat q_k\)</span>, so <span class="math" data-tex="\(\mathbb Q_L\)">\(\mathbb Q_L\)</span> keeps it. If a periodic gradient is zero, all nonzero Fourier coefficients of its potential vanish; the mean-zero condition removes the last coefficient. This proves uniqueness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Periodic Sobolev norms use</p>
+<span class="math math-display" data-tex="\[
+\|v\|_{H^s(\mathbb T_L^n)}^2
+=V\sum_k(1+4\pi^2|\kappa_k|^2)^s|\widehat v_k|^2.
+\tag{3.7}
+\]">\[
+\|v\|_{H^s(\mathbb T_L^n)}^2
+=V\sum_k(1+4\pi^2|\kappa_k|^2)^s|\widehat v_k|^2.
+\tag{3.7}
+\]</span>
+<p>The exact orthogonal norm identity and derivative commutation from (2.9) hold with these weights as well, by applying the same matrix identities to every summand.</p>
+<h2 id="4-projected-momentum-and-full-pressure-recovery">4. Projected momentum and full pressure recovery</h2>
+<p>Let <span class="math" data-tex="\(D\)">\(D\)</span> be either <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> or <span class="math" data-tex="\(\mathbb T_L^n\)">\(\mathbb T_L^n\)</span>. Denote its two projections by <span class="math" data-tex="\(\mathbb P_D,\mathbb Q_D\)">\(\mathbb P_D,\mathbb Q_D\)</span>. Suppose</p>
+<span class="math math-display" data-tex="\[
+u\in C^1([0,T];L^2(D))\cap C([0,T];H^2(D)),
+\quad N=(u\cdot\nabla)u\in C([0,T];L^2(D)),
+\quad f\in C([0,T];L^2(D)).
+\tag{4.1}
+\]">\[
+u\in C^1([0,T];L^2(D))\cap C([0,T];H^2(D)),
+\quad N=(u\cdot\nabla)u\in C([0,T];L^2(D)),
+\quad f\in C([0,T];L^2(D)).
+\tag{4.1}
+\]</span>
+<p>The notation <span class="math" data-tex="\(N\)">\(N\)</span> stands for the full vector with components
+<span class="math" data-tex="\(N_i=\sum_j u_j\partial_j u_i\)">\(N_i=\sum_j u_j\partial_j u_i\)</span>. It introduces no change to the nonlinearity.</p>
+<p><strong>Theorem 4.1.</strong> Under (4.1), with divergence-free initial velocity, the projected equation</p>
+<span class="math math-display" data-tex="\[
+\partial_tu-\nu\Delta u=\mathbb P_D(f-N)                    \tag{4.2}
+\]">\[
+\partial_tu-\nu\Delta u=\mathbb P_D(f-N)                    \tag{4.2}
+\]</span>
+<p>implies that <span class="math" data-tex="\(u(t)\)">\(u(t)\)</span> remains divergence-free. A pressure is recovered by</p>
+<span class="math math-display" data-tex="\[
+\nabla p=\mathbb Q_D(f-N),\qquad
+\Delta p=\operatorname{div}f-\operatorname{div}N.             \tag{4.3}
+\]">\[
+\nabla p=\mathbb Q_D(f-N),\qquad
+\Delta p=\operatorname{div}f-\operatorname{div}N.             \tag{4.3}
+\]</span>
+<p>With this pressure, the complete equation</p>
+<span class="math math-display" data-tex="\[
+\partial_tu+N+\nabla p-\nu\Delta u=f                         \tag{4.4}
+\]">\[
+\partial_tu+N+\nabla p-\nu\Delta u=f                         \tag{4.4}
+\]</span>
+<p>holds in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Conversely, a divergence-free solution of (4.4) satisfying (4.1), with an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> pressure gradient (and periodic pressure in the periodic case), satisfies (4.2).</p>
+<p><strong>Proof.</strong> Apply <span class="math" data-tex="\(\mathbb Q_D\)">\(\mathbb Q_D\)</span> to (4.2) and use its commutation with <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>. The field <span class="math" data-tex="\(z=\mathbb Q_Du\)">\(z=\mathbb Q_Du\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+z_t-\nu\Delta z=0,\qquad z(0)=0.
+\]">\[
+z_t-\nu\Delta z=0,\qquad z(0)=0.
+\]</span>
+<p>The <span class="math" data-tex="\(L^2\)">\(L^2\)</span> product with <span class="math" data-tex="\(z\)">\(z\)</span>, justified by (4.1), gives</p>
+<span class="math math-display" data-tex="\[
+\frac12\frac{d}{dt}\|z\|_2^2+\nu\|\nabla z\|_2^2=0.
+\]">\[
+\frac12\frac{d}{dt}\|z\|_2^2+\nu\|\nabla z\|_2^2=0.
+\]</span>
+<p>Here integration by parts can also be read directly from (1.2) or (3.2): the term <span class="math" data-tex="\(-\langle\Delta z,z\rangle\)">\(-\langle\Delta z,z\rangle\)</span> equals the integral or sum of <span class="math" data-tex="\(4\pi^2|\xi|^2|\widehat z|^2\)">\(4\pi^2|\xi|^2|\widehat z|^2\)</span>. Integrating in time proves <span class="math" data-tex="\(z=0\)">\(z=0\)</span>.</p>
+<p>Proposition 2.2 or Theorem 3.1 supplies a potential for <span class="math" data-tex="\(\mathbb Q_D(f-N)\)">\(\mathbb Q_D(f-N)\)</span>; the potential is mean zero on the torus. Add the two orthogonal components of <span class="math" data-tex="\(f-N\)">\(f-N\)</span> to obtain (4.4).</p>
+<p>For the converse, divergence-free <span class="math" data-tex="\(u\)">\(u\)</span> implies
+<span class="math" data-tex="\(\mathbb P_Du_t=u_t\)">\(\mathbb P_Du_t=u_t\)</span> and <span class="math" data-tex="\(\mathbb P_D\Delta u=\Delta u\)">\(\mathbb P_D\Delta u=\Delta u\)</span>.
+An <span class="math" data-tex="\(L^2\)">\(L^2\)</span> gradient is annihilated by <span class="math" data-tex="\(\mathbb P_D\)">\(\mathbb P_D\)</span>. On the torus this was proved in Theorem 3.1. In the whole space, if <span class="math" data-tex="\(g=\nabla p\in L^2\)">\(g=\nabla p\in L^2\)</span>, its mixed derivatives obey <span class="math" data-tex="\(\partial_i g_j=\partial_j g_i\)">\(\partial_i g_j=\partial_j g_i\)</span>. Fourier transformation gives <span class="math" data-tex="\(\xi_i\widehat g_j=\xi_j\widehat g_i\)">\(\xi_i\widehat g_j=\xi_j\widehat g_i\)</span> almost everywhere. At each nonzero <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, choose a nonzero coordinate of <span class="math" data-tex="\(\xi\)">\(\xi\)</span>; these equalities show that <span class="math" data-tex="\(\widehat g\)">\(\widehat g\)</span> is parallel to <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. Therefore <span class="math" data-tex="\(P(\xi)\widehat g=0\)">\(P(\xi)\widehat g=0\)</span>. Applying <span class="math" data-tex="\(\mathbb P_D\)">\(\mathbb P_D\)</span> to (4.4) proves (4.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For smooth incompressible <span class="math" data-tex="\(u\)">\(u\)</span>, the divergence in (4.3) is exactly</p>
+<span class="math math-display" data-tex="\[
+\operatorname{div}N
+=\sum_{i,j}(\partial_i u_j)(\partial_j u_i),
+\tag{4.5}
+\]">\[
+\operatorname{div}N
+=\sum_{i,j}(\partial_i u_j)(\partial_j u_i),
+\tag{4.5}
+\]</span>
+<p>as proved component by component in the preceding lesson. Thus pressure still records the original nonlinear acceleration and the divergence of the external force.</p>
+<p>For a periodic solution, integrating (4.4) over the cell gives</p>
+<span class="math math-display" data-tex="\[
+\frac{d}{dt}\widehat u_0(t)=\widehat f_0(t),\qquad
+\widehat u_0(t)=\widehat u_0(0)+\int_0^t\widehat f_0(s)\,ds.
+\tag{4.6}
+\]">\[
+\frac{d}{dt}\widehat u_0(t)=\widehat f_0(t),\qquad
+\widehat u_0(t)=\widehat u_0(0)+\int_0^t\widehat f_0(s)\,ds.
+\tag{4.6}
+\]</span>
+<p>Indeed each derivative integrates to zero on opposite faces, and
+<span class="math" data-tex="\(N_i=\sum_j\partial_j(u_ju_i)\)">\(N_i=\sum_j\partial_j(u_ju_i)\)</span> when <span class="math" data-tex="\(\operatorname{div}u=0\)">\(\operatorname{div}u=0\)</span>.
+The common factor <span class="math" data-tex="\(1/V\)">\(1/V\)</span> is present in every average. A nonzero mean force accelerates the mean velocity; a periodic pressure gradient cannot cancel it.</p>
+<h2 id="5-the-euler-bilinear-operator-with-viscosity-and-force-retained">5. The Euler bilinear operator, with viscosity and force retained</h2>
+<p>For real divergence-free fields on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+B(u,v)=-\frac12\mathbb P\bigl((u\cdot\nabla)v+(v\cdot\nabla)u\bigr).
+\tag{5.1}
+\]">\[
+B(u,v)=-\frac12\mathbb P\bigl((u\cdot\nabla)v+(v\cdot\nabla)u\bigr).
+\tag{5.1}
+\]</span>
+<p>The factor <span class="math" data-tex="\(1/2\)">\(1/2\)</span> makes this a symmetric bilinear operator. Substitution gives <span class="math" data-tex="\(B(u,u)=-\mathbb P((u\cdot\nabla)u)\)">\(B(u,u)=-\mathbb P((u\cdot\nabla)u)\)</span>, so the projected Navier–Stokes equation is exactly</p>
+<span class="math math-display" data-tex="\[
+u_t=\nu\Delta u+B(u,u)+\mathbb Pf.                           \tag{5.2}
+\]">\[
+u_t=\nu\Delta u+B(u,u)+\mathbb Pf.                           \tag{5.2}
+\]</span>
+<p>Here is a precise domain on which each term in (5.1) is square-integrable. Let <span class="math" data-tex="\(s&gt;n/2\)">\(s&gt;n/2\)</span> and <span class="math" data-tex="\(s\geq1\)">\(s\geq1\)</span>, and set</p>
+<span class="math math-display" data-tex="\[
+C_{n,s}=\left(\int_{\mathbb R^n}
+(1+4\pi^2|\xi|^2)^{-s}\,d\xi\right)^{1/2}&lt;\infty.
+\]">\[
+C_{n,s}=\left(\int_{\mathbb R^n}
+(1+4\pi^2|\xi|^2)^{-s}\,d\xi\right)^{1/2}&lt;\infty.
+\]</span>
+<p>The integral is finite because its radial tail is bounded by a constant times <span class="math" data-tex="\(\int_1^\infty r^{n-1-2s}dr\)">\(\int_1^\infty r^{n-1-2s}dr\)</span>. Fourier inversion and Cauchy–Schwarz give</p>
+<span class="math math-display" data-tex="\[
+\|u\|_\infty\leq\|\widehat u\|_1\leq C_{n,s}\|u\|_{H^s}.
+\tag{5.3}
+\]">\[
+\|u\|_\infty\leq\|\widehat u\|_1\leq C_{n,s}\|u\|_{H^s}.
+\tag{5.3}
+\]</span>
+<p>The inverse Fourier integral is uniformly convergent and represents <span class="math" data-tex="\(u\)">\(u\)</span>, since its <span class="math" data-tex="\(L^2\)">\(L^2\)</span> transform is <span class="math" data-tex="\(\widehat u\)">\(\widehat u\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\|B(u,v)\|_2
+\leq\frac{C_{n,s}}2
+\bigl(\|u\|_{H^s}\|\nabla v\|_2+
+\|v\|_{H^s}\|\nabla u\|_2\bigr).                       \tag{5.4}
+\]">\[
+\|B(u,v)\|_2
+\leq\frac{C_{n,s}}2
+\bigl(\|u\|_{H^s}\|\nabla v\|_2+
+\|v\|_{H^s}\|\nabla u\|_2\bigr).                       \tag{5.4}
+\]</span>
+<p>This proves a continuous bilinear map from two divergence-free <span class="math" data-tex="\(H^s\)">\(H^s\)</span> spaces to divergence-free <span class="math" data-tex="\(L^2\)">\(L^2\)</span>.</p>
+<p><strong>Proposition 5.1.</strong> For real divergence-free <span class="math" data-tex="\(u\in H^s(\mathbb R^n)\)">\(u\in H^s(\mathbb R^n)\)</span> with these <span class="math" data-tex="\(s\)">\(s\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\langle B(u,u),u\rangle_{L^2}=0.                            \tag{5.5}
+\]">\[
+\langle B(u,u),u\rangle_{L^2}=0.                            \tag{5.5}
+\]</span>
+<p><strong>Proof.</strong> First take a smooth divergence-free <span class="math" data-tex="\(u\)">\(u\)</span> with <span class="math" data-tex="\(u,\nabla u\in L^2\)">\(u,\nabla u\in L^2\)</span> and <span class="math" data-tex="\(u\)">\(u\)</span> bounded. By self-adjointness and <span class="math" data-tex="\(\mathbb Pu=u\)">\(\mathbb Pu=u\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\langle B(u,u),u\rangle=-\int ((u\cdot\nabla)u)\cdot u.
+\]">\[
+\langle B(u,u),u\rangle=-\int ((u\cdot\nabla)u)\cdot u.
+\]</span>
+<p>The integral is absolutely convergent, bounded in absolute value by
+<span class="math" data-tex="\(\|u\|_\infty\|\nabla u\|_2\|u\|_2\)">\(\|u\|_\infty\|\nabla u\|_2\|u\|_2\)</span>. With the cutoffs <span class="math" data-tex="\(\eta_R\)">\(\eta_R\)</span> used earlier,</p>
+<span class="math math-display" data-tex="\[
+\int\eta_R ((u\cdot\nabla)u)\cdot u
+=-\frac12\int |u|^2u\cdot\nabla\eta_R.
+\]">\[
+\int\eta_R ((u\cdot\nabla)u)\cdot u
+=-\frac12\int |u|^2u\cdot\nabla\eta_R.
+\]</span>
+<p>The right side has magnitude at most
+<span class="math" data-tex="\(\|\nabla\eta\|_\infty\|u\|_\infty\|u\|_2^2/(2R)\)">\(\|\nabla\eta\|_\infty\|u\|_\infty\|u\|_2^2/(2R)\)</span>, which tends to zero. Dominated convergence on the left proves the identity.</p>
+<p>For general <span class="math" data-tex="\(u\in H^s\)">\(u\in H^s\)</span>, take smooth scalar Fourier cutoffs equal to one on expanding balls and multiply <span class="math" data-tex="\(\widehat u\)">\(\widehat u\)</span> by them. They preserve <span class="math" data-tex="\(\xi\cdot\widehat u=0\)">\(\xi\cdot\widehat u=0\)</span>, produce smooth fields, and converge in <span class="math" data-tex="\(H^s\)">\(H^s\)</span> by dominated convergence. Estimate (5.4) makes the corresponding bilinear outputs converge in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, while the fields themselves converge in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Passing to the inner products proves (5.5). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Thus the nonlinear cancellation, diffusion loss and force work remain separate exact terms:</p>
+<span class="math math-display" data-tex="\[
+\frac12\frac{d}{dt}\|u\|_2^2
++\nu\|\nabla u\|_2^2
+=\langle\mathbb Pf,u\rangle=\langle f,u\rangle.              \tag{5.6}
+\]">\[
+\frac12\frac{d}{dt}\|u\|_2^2
++\nu\|\nabla u\|_2^2
+=\langle\mathbb Pf,u\rangle=\langle f,u\rangle.              \tag{5.6}
+\]</span>
+<p>The last equality uses <span class="math" data-tex="\(\mathbb Pu=u\)">\(\mathbb Pu=u\)</span>, not an assumption that <span class="math" data-tex="\(f\)">\(f\)</span> is divergence-free.</p>
+<p>For the incompressible Euler equation, the full momentum equation is instead</p>
+<span class="math math-display" data-tex="\[
+u_t+(u\cdot\nabla)u+\nabla p=f,\qquad \operatorname{div}u=0.
+\tag{5.7}
+\]">\[
+u_t+(u\cdot\nabla)u+\nabla p=f,\qquad \operatorname{div}u=0.
+\tag{5.7}
+\]</span>
+<p>This is a different equation with zero viscosity. Its projection is
+<span class="math" data-tex="\(u_t=B(u,u)+\mathbb Pf\)">\(u_t=B(u,u)+\mathbb Pf\)</span>, and its pressure gradient is still
+<span class="math" data-tex="\(\mathbb Q(f-(u\cdot\nabla)u)\)">\(\mathbb Q(f-(u\cdot\nabla)u)\)</span>. The proof is the same addition of the two
+orthogonal components; if only initial incompressibility is assumed,
+applying <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> to the projected equation gives
+<span class="math" data-tex="\((\mathbb Qu)_t=0\)">\((\mathbb Qu)_t=0\)</span>, so it persists. The energy proof above gives
+<span class="math" data-tex="\(\frac12\frac{d}{dt}\|u\|_2^2=\langle f,u\rangle\)">\(\frac12\frac{d}{dt}\|u\|_2^2=\langle f,u\rangle\)</span> in its stated
+integrability class. Taking the component curl as in the first lesson
+gives, in three dimensions,</p>
+<span class="math math-display" data-tex="\[
+\omega_t+(u\cdot\nabla)\omega-(\omega\cdot\nabla)u
+=\nabla\times f.
+\]">\[
+\omega_t+(u\cdot\nabla)\omega-(\omega\cdot\nabla)u
+=\nabla\times f.
+\]</span>
+<p>Each identity follows directly from (5.7); none asserts convergence of
+viscous solutions as <span class="math" data-tex="\(\nu\)">\(\nu\)</span> tends to zero.</p>
+<h2 id="6-the-heat-operator-and-the-integral-equation">6. The heat operator and the integral equation</h2>
+<p>For <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, define on <span class="math" data-tex="\(L^2(\mathbb R^n)\)">\(L^2(\mathbb R^n)\)</span></p>
+<span class="math math-display" data-tex="\[
+\widehat{S_\nu(t)v}(\xi)=e^{-4\pi^2\nu t|\xi|^2}\widehat v(\xi),
+\qquad t\geq0.                                               \tag{6.1}
+\]">\[
+\widehat{S_\nu(t)v}(\xi)=e^{-4\pi^2\nu t|\xi|^2}\widehat v(\xi),
+\qquad t\geq0.                                               \tag{6.1}
+\]</span>
+<p>On the torus replace <span class="math" data-tex="\(\xi\)">\(\xi\)</span> by <span class="math" data-tex="\(\kappa_k\)">\(\kappa_k\)</span> in each coefficient. In either setting <span class="math" data-tex="\(S_\nu(t)\)">\(S_\nu(t)\)</span> is a contraction, <span class="math" data-tex="\(S_\nu(t+s)=S_\nu(t)S_\nu(s)\)">\(S_\nu(t+s)=S_\nu(t)S_\nu(s)\)</span>, and <span class="math" data-tex="\(S_\nu(t)v\to v\)">\(S_\nu(t)v\to v\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> as <span class="math" data-tex="\(t\downarrow0\)">\(t\downarrow0\)</span>. These facts follow, respectively, from <span class="math" data-tex="\(0&lt;e^{-4\pi^2\nu t|\xi|^2}\leq1\)">\(0&lt;e^{-4\pi^2\nu t|\xi|^2}\leq1\)</span>, multiplication of exponentials, and dominated convergence applied to the squared Fourier difference. The operator commutes with <span class="math" data-tex="\(\mathbb P_D\)">\(\mathbb P_D\)</span>.</p>
+<p>For <span class="math" data-tex="\(v\in H^2\)">\(v\in H^2\)</span>, differentiating the multiplier gives</p>
+<span class="math math-display" data-tex="\[
+\frac{d}{dt}S_\nu(t)v=\nu\Delta S_\nu(t)v
+\quad\text{in }L^2,
+\tag{6.2}
+\]">\[
+\frac{d}{dt}S_\nu(t)v=\nu\Delta S_\nu(t)v
+\quad\text{in }L^2,
+\tag{6.2}
+\]</span>
+<p>including the right derivative at zero. The difference quotients are dominated by a constant times <span class="math" data-tex="\(|\xi|^2|\widehat v|\)">\(|\xi|^2|\widehat v|\)</span>, which is square-integrable.</p>
+<p><strong>Proposition 6.1.</strong> Under (4.1), equation (4.2) is equivalent to</p>
+<span class="math math-display" data-tex="\[
+u(t)=S_\nu(t)u_0+
+\int_0^t S_\nu(t-s)\mathbb P_D
+\bigl(f(s)-(u(s)\cdot\nabla)u(s)\bigr)\,ds.                  \tag{6.3}
+\]">\[
+u(t)=S_\nu(t)u_0+
+\int_0^t S_\nu(t-s)\mathbb P_D
+\bigl(f(s)-(u(s)\cdot\nabla)u(s)\bigr)\,ds.                  \tag{6.3}
+\]</span>
+<p>The integral is an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> integral of a continuous function. The equivalence here is restricted to (4.1); it does not assert that an arbitrary <span class="math" data-tex="\(L^2\)">\(L^2\)</span> integral solution has that regularity.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(F=\mathbb P_D(f-N)\)">\(F=\mathbb P_D(f-N)\)</span>. Cut off Fourier space to <span class="math" data-tex="\(|\xi|\leq M\)">\(|\xi|\leq M\)</span>, or Fourier series to <span class="math" data-tex="\(|\kappa_k|\leq M\)">\(|\kappa_k|\leq M\)</span>, and denote this orthogonal truncation by <span class="math" data-tex="\(E_M\)">\(E_M\)</span>. On its range the Laplacian is bounded. The equation for <span class="math" data-tex="\(E_Mu\)">\(E_Mu\)</span> is therefore an ordinary differentiable identity in a Hilbert space. Differentiating <span class="math" data-tex="\(S_\nu(t-s)E_Mu(s)\)">\(S_\nu(t-s)E_Mu(s)\)</span> in <span class="math" data-tex="\(s\)">\(s\)</span> gives <span class="math" data-tex="\(S_\nu(t-s)E_MF(s)\)">\(S_\nu(t-s)E_MF(s)\)</span>. Integration from zero to <span class="math" data-tex="\(t\)">\(t\)</span> gives (6.3) with <span class="math" data-tex="\(E_M\)">\(E_M\)</span> on every term.</p>
+<p>As <span class="math" data-tex="\(M\to\infty\)">\(M\to\infty\)</span>, the initial and solution terms converge in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. The integral difference is bounded by
+<span class="math" data-tex="\(\int_0^t\|(I-E_M)F(s)\|_2ds\)">\(\int_0^t\|(I-E_M)F(s)\|_2ds\)</span>, which tends to zero by dominated convergence, since <span class="math" data-tex="\(F\)">\(F\)</span> is continuous on a compact time interval. This proves (6.3).</p>
+<p>Conversely apply <span class="math" data-tex="\(E_M\)">\(E_M\)</span> to (6.3). Boundedness of the truncated Laplacian permits differentiation under the integral, giving
+<span class="math" data-tex="\((E_Mu)_t-\nu\Delta E_Mu=E_MF\)">\((E_Mu)_t-\nu\Delta E_Mu=E_MF\)</span>.
+Assumptions (4.1) allow all three terms to converge in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> to their untruncated versions. This proves (4.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The periodic zero mode in (6.1) has multiplier one for every time. Taking that coefficient in (6.3) reproduces (4.6). Viscosity does not damp a spatially constant velocity.</p>
+<h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<p><strong>Exercise 1. Resolve a single wave.</strong> On <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, consider the smooth periodic field
+<span class="math" data-tex="\(v(x)=a\cos(2\pi k\cdot x)\)">\(v(x)=a\cos(2\pi k\cdot x)\)</span>, with <span class="math" data-tex="\(k=(2,1)\)">\(k=(2,1)\)</span> and <span class="math" data-tex="\(a=(1,3)\)">\(a=(1,3)\)</span>. Use the periodic, rather than whole-space <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, projection. Find <span class="math" data-tex="\(\mathbb Pv\)">\(\mathbb Pv\)</span>, <span class="math" data-tex="\(\mathbb Qv\)">\(\mathbb Qv\)</span> and the mean-zero pressure potential.</p>
+<p><strong>Solution.</strong> On the unit torus, <span class="math" data-tex="\(k\cdot a=5=|k|^2\)">\(k\cdot a=5=|k|^2\)</span>. Thus <span class="math" data-tex="\(Qa=k=(2,1)\)">\(Qa=k=(2,1)\)</span>, <span class="math" data-tex="\(Pa=(-1,2)\)">\(Pa=(-1,2)\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\mathbb Pv=(-1,2)\cos(2\pi k\cdot x),\qquad
+\mathbb Qv=(2,1)\cos(2\pi k\cdot x).
+\]">\[
+\mathbb Pv=(-1,2)\cos(2\pi k\cdot x),\qquad
+\mathbb Qv=(2,1)\cos(2\pi k\cdot x).
+\]</span>
+<p>The mean-zero potential is</p>
+<span class="math math-display" data-tex="\[
+q(x)=\frac1{2\pi}\sin(2\pi k\cdot x).
+\]">\[
+q(x)=\frac1{2\pi}\sin(2\pi k\cdot x).
+\]</span>
+<p>Its gradient is exactly <span class="math" data-tex="\(\mathbb Qv\)">\(\mathbb Qv\)</span>. The two vector amplitudes have squared lengths <span class="math" data-tex="\(5\)">\(5\)</span> and <span class="math" data-tex="\(5\)">\(5\)</span>, summing to <span class="math" data-tex="\(|a|^2=10\)">\(|a|^2=10\)</span>. Since the squared cosine has integral <span class="math" data-tex="\(1/2\)">\(1/2\)</span> on the unit torus, the two projected squared <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norms are <span class="math" data-tex="\(5/2\)">\(5/2\)</span> and <span class="math" data-tex="\(5/2\)">\(5/2\)</span>, summing to <span class="math" data-tex="\(\|v\|_2^2=5\)">\(\|v\|_2^2=5\)</span>. This field is not in <span class="math" data-tex="\(L^2(\mathbb R^2)\)">\(L^2(\mathbb R^2)\)</span>; the periodic domain is essential.</p>
+<p><strong>Exercise 2. A mean force.</strong> On <span class="math" data-tex="\(\mathbb T_L^n\)">\(\mathbb T_L^n\)</span>, take spatially constant data <span class="math" data-tex="\(u_0=a\)">\(u_0=a\)</span> and <span class="math" data-tex="\(f(x,t)=b(t)\)">\(f(x,t)=b(t)\)</span>, with <span class="math" data-tex="\(b\)">\(b\)</span> smooth. Find a solution and prove that a periodic pressure cannot keep <span class="math" data-tex="\(u\)">\(u\)</span> identically equal to <span class="math" data-tex="\(a\)">\(a\)</span> when <span class="math" data-tex="\(b\)">\(b\)</span> is nonzero.</p>
+<p><strong>Solution.</strong> Set</p>
+<span class="math math-display" data-tex="\[
+u(x,t)=a+\int_0^t b(s)\,ds,\qquad p=0.
+\]">\[
+u(x,t)=a+\int_0^t b(s)\,ds,\qquad p=0.
+\]</span>
+<p>All spatial derivatives vanish, so the complete momentum equation reduces to <span class="math" data-tex="\(u_t=b\)">\(u_t=b\)</span>, and divergence is zero. If instead <span class="math" data-tex="\(u=a\)">\(u=a\)</span> for all time, momentum would require <span class="math" data-tex="\(\nabla p=b(t)\)">\(\nabla p=b(t)\)</span>. Its spatial integral is zero for periodic <span class="math" data-tex="\(p\)">\(p\)</span>, whereas the integral of <span class="math" data-tex="\(b(t)\)">\(b(t)\)</span> is <span class="math" data-tex="\(Vb(t)\)">\(Vb(t)\)</span>. Hence <span class="math" data-tex="\(b(t)=0\)">\(b(t)=0\)</span> would be necessary.</p>
+<p><strong>Exercise 3. A pressure outside <span class="math" data-tex="\(L^2\)">\(L^2\)</span>.</strong> In <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, choose a real even smooth cutoff <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, equal to one for <span class="math" data-tex="\(|\xi|\leq1\)">\(|\xi|\leq1\)</span> and zero for <span class="math" data-tex="\(|\xi|\geq2\)">\(|\xi|\geq2\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+\widehat q(\xi)=\rho(\xi)|\xi|^{-n/2},\qquad
+\widehat v(\xi)=2\pi i\xi\,\widehat q(\xi).
+\]">\[
+\widehat q(\xi)=\rho(\xi)|\xi|^{-n/2},\qquad
+\widehat v(\xi)=2\pi i\xi\,\widehat q(\xi).
+\]</span>
+<p>Prove that <span class="math" data-tex="\(v\in L^2\)">\(v\in L^2\)</span> and <span class="math" data-tex="\(v=\nabla q\)">\(v=\nabla q\)</span>, but no addition of a constant makes <span class="math" data-tex="\(q\)">\(q\)</span> an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> function.</p>
+<p><strong>Solution.</strong> Near zero, <span class="math" data-tex="\(\widehat q\)">\(\widehat q\)</span> is locally integrable because its radial absolute integral is proportional to <span class="math" data-tex="\(\int_0^1r^{n/2-1}dr&lt;\infty\)">\(\int_0^1r^{n/2-1}dr&lt;\infty\)</span>. It therefore defines a tempered distribution. The squared norm of <span class="math" data-tex="\(\widehat v\)">\(\widehat v\)</span> near zero has radial integral
+<span class="math" data-tex="\(4\pi^2|\mathbb S^{n-1}|\int_0^1r\,dr&lt;\infty\)">\(4\pi^2|\mathbb S^{n-1}|\int_0^1r\,dr&lt;\infty\)</span>.
+Outside that ball the cutoff makes it square-integrable. Plancherel supplies <span class="math" data-tex="\(v\in L^2\)">\(v\in L^2\)</span>, and Fourier differentiation gives <span class="math" data-tex="\(v=\nabla q\)">\(v=\nabla q\)</span>. Reality follows from the conjugate symmetry of these transforms.</p>
+<p>In contrast,
+<span class="math" data-tex="\(\int_{|\xi|\leq1}|\widehat q|^2d\xi
+=|\mathbb S^{n-1}|\int_0^1dr/r=\infty\)">\(\int_{|\xi|\leq1}|\widehat q|^2d\xi
+=|\mathbb S^{n-1}|\int_0^1dr/r=\infty\)</span>.
+Adding a spatial constant changes the Fourier distribution only by a multiple of <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span>. Away from zero the displayed function is unchanged; an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> transform agreeing there would still have the divergent integral over the punctured unit ball. Thus no such constant repairs <span class="math" data-tex="\(L^2\)">\(L^2\)</span> integrability.</p>
+<p><strong>Exercise 4. A divergence-free force representative.</strong> Under the hypotheses of Theorem 4.1, replace <span class="math" data-tex="\(f\)">\(f\)</span> by <span class="math" data-tex="\(\mathbb P_Df\)">\(\mathbb P_Df\)</span>. Find a pressure change that preserves the velocity equation.</p>
+<p><strong>Solution.</strong> Choose <span class="math" data-tex="\(\phi\)">\(\phi\)</span> with <span class="math" data-tex="\(\nabla\phi=\mathbb Q_Df\)">\(\nabla\phi=\mathbb Q_Df\)</span>, using Proposition 2.2 or Theorem 3.1. Write <span class="math" data-tex="\(f=\mathbb P_Df+\nabla\phi\)">\(f=\mathbb P_Df+\nabla\phi\)</span> in the full momentum equation and subtract <span class="math" data-tex="\(\nabla\phi\)">\(\nabla\phi\)</span> from both sides. The same <span class="math" data-tex="\(u\)">\(u\)</span>, with pressure <span class="math" data-tex="\(p-\phi\)">\(p-\phi\)</span>, then has force <span class="math" data-tex="\(\mathbb P_Df\)">\(\mathbb P_Df\)</span>. The projected force produces the same work against divergence-free <span class="math" data-tex="\(u\)">\(u\)</span>:
+<span class="math" data-tex="\(\langle\mathbb P_Df,u\rangle=\langle f,\mathbb P_Du\rangle=\langle f,u\rangle\)">\(\langle\mathbb P_Df,u\rangle=\langle f,\mathbb P_Du\rangle=\langle f,u\rangle\)</span>.
+This comparison does not preserve compact support of the force or pressure in general; those properties must be checked for the actual fields.</p>
+<p><strong>Exercise 5. Changing the viscosity without losing the other factors.</strong> Suppose <span class="math" data-tex="\((u,p,f)\)">\((u,p,f)\)</span> solves the equation at viscosity <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, in physical variables <span class="math" data-tex="\((x,s)\)">\((x,s)\)</span>. Define a new time <span class="math" data-tex="\(\tau=\nu s\)">\(\tau=\nu s\)</span>, with space unchanged. Find fields at viscosity one and prove the transformation, including the initial velocity and force.</p>
+<p><strong>Solution.</strong> Define</p>
+<span class="math math-display" data-tex="\[
+v(x,\tau)=\nu^{-1}u(x,\tau/\nu),\quad
+q(x,\tau)=\nu^{-2}p(x,\tau/\nu),\quad
+g(x,\tau)=\nu^{-2}f(x,\tau/\nu).                              \tag{7.1}
+\]">\[
+v(x,\tau)=\nu^{-1}u(x,\tau/\nu),\quad
+q(x,\tau)=\nu^{-2}p(x,\tau/\nu),\quad
+g(x,\tau)=\nu^{-2}f(x,\tau/\nu).                              \tag{7.1}
+\]</span>
+<p>Then</p>
+<span class="math math-display" data-tex="\[
+v_\tau=\nu^{-2}u_s,\quad
+(v\cdot\nabla)v=\nu^{-2}(u\cdot\nabla)u,\quad
+\nabla q=\nu^{-2}\nabla p,\quad
+\Delta v=\nu^{-1}\Delta u.
+\]">\[
+v_\tau=\nu^{-2}u_s,\quad
+(v\cdot\nabla)v=\nu^{-2}(u\cdot\nabla)u,\quad
+\nabla q=\nu^{-2}\nabla p,\quad
+\Delta v=\nu^{-1}\Delta u.
+\]</span>
+<p>Multiplying the original momentum equation by <span class="math" data-tex="\(\nu^{-2}\)">\(\nu^{-2}\)</span> proves
+<span class="math" data-tex="\(v_\tau+(v\cdot\nabla)v+\nabla q-\Delta v=g\)">\(v_\tau+(v\cdot\nabla)v+\nabla q-\Delta v=g\)</span>.
+Also <span class="math" data-tex="\(\operatorname{div}v=\nu^{-1}\operatorname{div}u=0\)">\(\operatorname{div}v=\nu^{-1}\operatorname{div}u=0\)</span>, and
+<span class="math" data-tex="\(v(x,0)=\nu^{-1}u_0(x)\)">\(v(x,0)=\nu^{-1}u_0(x)\)</span>. The interval <span class="math" data-tex="\([0,T]\)">\([0,T]\)</span> becomes <span class="math" data-tex="\([0,\nu T]\)">\([0,\nu T]\)</span>. The inverse is <span class="math" data-tex="\(u(x,s)=\nu v(x,\nu s)\)">\(u(x,s)=\nu v(x,\nu s)\)</span>, <span class="math" data-tex="\(p(x,s)=\nu^2q(x,\nu s)\)">\(p(x,s)=\nu^2q(x,\nu s)\)</span>, <span class="math" data-tex="\(f(x,s)=\nu^2g(x,\nu s)\)">\(f(x,s)=\nu^2g(x,\nu s)\)</span>. Spatial supports are unchanged; a force derivative with <span class="math" data-tex="\(b\)">\(b\)</span> time derivatives has the factor <span class="math" data-tex="\(\nu^{-2-b}\)">\(\nu^{-2-b}\)</span>.</p>
+<p><strong>Source comparison for Exercise 5.</strong> The author TeX of [T, v3, Section 1, paragraph immediately after the displayed Navier–Stokes system] prints</p>
+<span class="math math-display" data-tex="\[
+\widetilde u(t,x)=\nu u(\nu t,x),\qquad
+\widetilde p(t,x)=\nu p(\nu t,\nu x)
+\tag{7.2}
+\]">\[
+\widetilde u(t,x)=\nu u(\nu t,x),\qquad
+\widetilde p(t,x)=\nu p(\nu t,\nu x)
+\tag{7.2}
+\]</span>
+<p>as its change to viscosity one. With the original <span class="math" data-tex="\(u,p\)">\(u,p\)</span> solving the unforced equation at viscosity <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, the left side of the purported unit-viscosity equation instead equals</p>
+<span class="math math-display" data-tex="\[
+\nu(\nu^2-1)\Delta u(\nu t,x)
++\nu^2\bigl[\nabla p(\nu t,\nu x)-\nabla p(\nu t,x)\bigr].
+\tag{7.3}
+\]">\[
+\nu(\nu^2-1)\Delta u(\nu t,x)
++\nu^2\bigl[\nabla p(\nu t,\nu x)-\nabla p(\nu t,x)\bigr].
+\tag{7.3}
+\]</span>
+<p>Indeed its time and advection terms are <span class="math" data-tex="\(\nu^2u_s\)">\(\nu^2u_s\)</span> and <span class="math" data-tex="\(\nu^2(u\cdot\nabla)u\)">\(\nu^2(u\cdot\nabla)u\)</span>, its diffusion term is <span class="math" data-tex="\(-\nu\Delta u\)">\(-\nu\Delta u\)</span>, and its pressure gradient is <span class="math" data-tex="\(\nu^2\nabla p(\nu t,\nu x)\)">\(\nu^2\nabla p(\nu t,\nu x)\)</span>. Substitution of the original equation gives (7.3). It is not the zero equation identity required of a change of variables. As a direct test on the unit periodic box, <span class="math" data-tex="\(u(s,x)=e^{-4\pi^2\nu s}(\sin(2\pi x_2),0,0)\)">\(u(s,x)=e^{-4\pi^2\nu s}(\sin(2\pi x_2),0,0)\)</span>, <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, has zero advection and solves the equation at <span class="math" data-tex="\(\nu\)">\(\nu\)</span>; (7.3) is nonzero for <span class="math" data-tex="\(\nu\ne1\)">\(\nu\ne1\)</span>. This test is periodic, not Schwartz data on <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>.</p>
+<p>Formula (7.1) proves the required viscosity comparison on the original whole-space class as well, without using that periodic test. We have identified a displayed rescaling error and supplied its replacement identity; no conclusion about the later averaged-equation theorem follows from that error. Throughout this lesson the physical equation retains its original <span class="math" data-tex="\(\nu\)">\(\nu\)</span>.</p>
+<h2 id="8-fourier-facts-used-in-the-proofs">8. Fourier facts used in the proofs</h2>
+<p>This section supplies the transform and series identities so that the fluid decomposition does not rest on an unproved inversion step.</p>
+<h3 id="whole-space-inversion-and-the-l-2-identity">Whole-space inversion and the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> identity</h3>
+<p>For a Schwartz function <span class="math" data-tex="\(h\)">\(h\)</span>, repeated integration by parts gives
+<span class="math" data-tex="\(\widehat{\partial_jh}=2\pi i\xi_j\widehat h\)">\(\widehat{\partial_jh}=2\pi i\xi_j\widehat h\)</span> and
+<span class="math" data-tex="\(\widehat{x_jh}=-(2\pi i)^{-1}\partial_{\xi_j}\widehat h\)">\(\widehat{x_jh}=-(2\pi i)^{-1}\partial_{\xi_j}\widehat h\)</span>.
+The integrands and their derivatives are integrable, so differentiating under the integral is valid. Combining these identities shows that <span class="math" data-tex="\(\widehat h\)">\(\widehat h\)</span> is Schwartz.</p>
+<p>The Gaussian kernel</p>
+<span class="math math-display" data-tex="\[
+K_\varepsilon(x)=(4\pi\varepsilon)^{-n/2}
+e^{-|x|^2/(4\varepsilon)},\qquad \varepsilon&gt;0,
+\]">\[
+K_\varepsilon(x)=(4\pi\varepsilon)^{-n/2}
+e^{-|x|^2/(4\varepsilon)},\qquad \varepsilon&gt;0,
+\]</span>
+<p>has integral one and transform <span class="math" data-tex="\(e^{-4\pi^2\varepsilon|\xi|^2}\)">\(e^{-4\pi^2\varepsilon|\xi|^2}\)</span>.
+For completeness, the one-dimensional Gaussian integral is obtained by squaring <span class="math" data-tex="\(\int e^{-x^2}dx\)">\(\int e^{-x^2}dx\)</span>, using polar coordinates in the plane, and obtaining <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. To compute the transform <span class="math" data-tex="\(F(\xi)\)">\(F(\xi)\)</span> of <span class="math" data-tex="\(e^{-x^2/(4\varepsilon)}\)">\(e^{-x^2/(4\varepsilon)}\)</span>, differentiate under its integral. Integration by parts with <span class="math" data-tex="\(x e^{-x^2/(4\varepsilon)}=-2\varepsilon\partial_xe^{-x^2/(4\varepsilon)}\)">\(x e^{-x^2/(4\varepsilon)}=-2\varepsilon\partial_xe^{-x^2/(4\varepsilon)}\)</span> gives
+<span class="math" data-tex="\(F&#x27;(\xi)=-8\pi^2\varepsilon\xi F(\xi)\)">\(F&#x27;(\xi)=-8\pi^2\varepsilon\xi F(\xi)\)</span>.
+The value <span class="math" data-tex="\(F(0)=\sqrt{4\pi\varepsilon}\)">\(F(0)=\sqrt{4\pi\varepsilon}\)</span> determines
+<span class="math" data-tex="\(F(\xi)=\sqrt{4\pi\varepsilon}\,e^{-4\pi^2\varepsilon\xi^2}\)">\(F(\xi)=\sqrt{4\pi\varepsilon}\,e^{-4\pi^2\varepsilon\xi^2}\)</span>.
+Taking products gives the <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional formula, and the same computation with the inverse sign gives its inverse transform.</p>
+<p>Fubini now gives, for Schwartz <span class="math" data-tex="\(h\)">\(h\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\int e^{2\pi i x\cdot\xi}e^{-4\pi^2\varepsilon|\xi|^2}
+\widehat h(\xi)\,d\xi
+=\int K_\varepsilon(x-y)h(y)\,dy.                           \tag{8.1}
+\]">\[
+\int e^{2\pi i x\cdot\xi}e^{-4\pi^2\varepsilon|\xi|^2}
+\widehat h(\xi)\,d\xi
+=\int K_\varepsilon(x-y)h(y)\,dy.                           \tag{8.1}
+\]</span>
+<p>Absolute integrability follows by bounding the double integral by
+<span class="math" data-tex="\(\|h\|_1\int e^{-4\pi^2\varepsilon|\xi|^2}d\xi\)">\(\|h\|_1\int e^{-4\pi^2\varepsilon|\xi|^2}d\xi\)</span>.
+As <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>, the right side tends to <span class="math" data-tex="\(h(x)\)">\(h(x)\)</span>: near <span class="math" data-tex="\(y=x\)">\(y=x\)</span> use uniform continuity, and outside any fixed ball about <span class="math" data-tex="\(x\)">\(x\)</span> the Gaussian mass tends to zero by the substitution <span class="math" data-tex="\(z=(x-y)/\sqrt\varepsilon\)">\(z=(x-y)/\sqrt\varepsilon\)</span>. The left side tends by dominated convergence to the inverse transform of <span class="math" data-tex="\(\widehat h\)">\(\widehat h\)</span>, since <span class="math" data-tex="\(\widehat h\in L^1\)">\(\widehat h\in L^1\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+h(x)=\int e^{2\pi i x\cdot\xi}\widehat h(\xi)\,d\xi.
+\tag{8.2}
+\]">\[
+h(x)=\int e^{2\pi i x\cdot\xi}\widehat h(\xi)\,d\xi.
+\tag{8.2}
+\]</span>
+<p>For Schwartz <span class="math" data-tex="\(h,k\)">\(h,k\)</span>, substitute (8.2) into
+<span class="math" data-tex="\(\int h\overline{k}\)">\(\int h\overline{k}\)</span> and apply Fubini, justified by
+<span class="math" data-tex="\(\|\widehat h\|_1\|k\|_1&lt;\infty\)">\(\|\widehat h\|_1\|k\|_1&lt;\infty\)</span>. This gives</p>
+<span class="math math-display" data-tex="\[
+\int h(x)\overline{k(x)}\,dx
+=\int\widehat h(\xi)\overline{\widehat k(\xi)}\,d\xi.         \tag{8.3}
+\]">\[
+\int h(x)\overline{k(x)}\,dx
+=\int\widehat h(\xi)\overline{\widehat k(\xi)}\,d\xi.         \tag{8.3}
+\]</span>
+<p>Smooth compactly supported functions are dense in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. One way to see the needed approximation is to truncate a function in space and in value, approximate the resulting bounded finite-support function by finite linear combinations of indicators of boxes in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, and convolve these with a smooth compactly supported approximate identity. Translation changes the volume of the symmetric difference of a box with itself by a quantity tending to zero. Thus convolution tends to each box indicator in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, while producing smooth compactly supported functions. The approximation by box simple functions follows from regularity of Lebesgue measure, by approximating a finite-measure set in measure by finite unions of boxes.</p>
+<p>Equation (8.3) therefore extends the Fourier transform uniquely as an isometry of <span class="math" data-tex="\(L^2\)">\(L^2\)</span> into <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Its range is closed. It contains all Schwartz functions because (8.2), applied with both signs, makes the inverse transform an inverse on that class. The range is dense and closed, hence all of <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. This proves unitarity, (1.2), and the inverse transform used above.</p>
+<p>Distributional differentiation follows from the definition of a derivative and the established Schwartz identities. If the multiplier <span class="math" data-tex="\(2\pi i\xi_j\widehat v\)">\(2\pi i\xi_j\widehat v\)</span> is in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, its inverse transform is the weak derivative, by testing against Schwartz functions and using (8.3). The same argument applies to the Laplacian. These observations justify the Sobolev uses in Sections 2–6.</p>
+<h3 id="periodic-completeness-and-parseval">Periodic completeness and Parseval</h3>
+<p>Direct integration in each coordinate gives</p>
+<span class="math math-display" data-tex="\[
+\int_{\mathbb T_L^n}
+e^{2\pi i\kappa_k\cdot x}e^{-2\pi i\kappa_\ell\cdot x}\,dx
+=V\,\mathbf1_{k=\ell}.                                      \tag{8.4}
+\]">\[
+\int_{\mathbb T_L^n}
+e^{2\pi i\kappa_k\cdot x}e^{-2\pi i\kappa_\ell\cdot x}\,dx
+=V\,\mathbf1_{k=\ell}.                                      \tag{8.4}
+\]</span>
+<p>To prove completeness, first work on one circle of length one and define</p>
+<span class="math math-display" data-tex="\[
+F_N(t)=\frac1N\left|\sum_{j=0}^{N-1}e^{2\pi ijt}\right|^2
+=\sum_{|k|&lt;N}\left(1-\frac{|k|}{N}\right)e^{2\pi ikt}.
+\]">\[
+F_N(t)=\frac1N\left|\sum_{j=0}^{N-1}e^{2\pi ijt}\right|^2
+=\sum_{|k|&lt;N}\left(1-\frac{|k|}{N}\right)e^{2\pi ikt}.
+\]</span>
+<p>The second equality follows by counting the <span class="math" data-tex="\(N-|k|\)">\(N-|k|\)</span> ordered pairs with difference <span class="math" data-tex="\(k\)">\(k\)</span>. Therefore <span class="math" data-tex="\(F_N\geq0\)">\(F_N\geq0\)</span> and its integral is one. At distance at least <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> from the integers, the geometric-series formula gives</p>
+<span class="math math-display" data-tex="\[
+F_N(t)=\frac{\sin^2(\pi Nt)}{N\sin^2(\pi t)}
+\leq\frac1{N\sin^2(\pi\delta)}
+\quad(0&lt;\delta\leq1/2).
+\]">\[
+F_N(t)=\frac{\sin^2(\pi Nt)}{N\sin^2(\pi t)}
+\leq\frac1{N\sin^2(\pi\delta)}
+\quad(0&lt;\delta\leq1/2).
+\]</span>
+<p>Thus its mass away from zero tends to zero.</p>
+<p>On the actual box use the kernel</p>
+<span class="math math-display" data-tex="\[
+\mathcal F_N(x)=V^{-1}\prod_{j=1}^n F_N(x_j/L_j).
+\]">\[
+\mathcal F_N(x)=V^{-1}\prod_{j=1}^n F_N(x_j/L_j).
+\]</span>
+<p>It is nonnegative, integrates to one, and has mass tending to zero outside any fixed coordinate neighborhood of zero on the torus. Periodic convolution with this kernel is a trigonometric polynomial. For a continuous periodic function it converges uniformly to that function: use uniform continuity near zero and the vanishing exterior mass elsewhere.</p>
+<p>Continuous periodic functions are dense in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. For example, approximate indicators of boxes on the torus by continuous functions which differ only in boundary strips of arbitrarily small measure; box simple functions are dense by the same measure-regularity argument used above. Hence trigonometric polynomials are dense in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>.</p>
+<p>It follows that <span class="math" data-tex="\(V^{-1/2}e^{2\pi i\kappa_k\cdot x}\)">\(V^{-1/2}e^{2\pi i\kappa_k\cdot x}\)</span> is a complete orthonormal family. The orthogonal projections onto finite frequency sets converge in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>: first approximate by a polynomial, then use the fact that an orthogonal projection has norm at most one. The finite Pythagorean identity passes to the limit and gives (3.2), with its factor <span class="math" data-tex="\(V\)">\(V\)</span>. Integration by parts gives the derivative multipliers <span class="math" data-tex="\(2\pi i(\kappa_k)_j\)">\(2\pi i(\kappa_k)_j\)</span>; testing and <span class="math" data-tex="\(L^2\)">\(L^2\)</span> convergence extend them to weak derivatives. This completes the Fourier ingredients of both decompositions.</p>
+<h2 id="reference">Reference</h2>
+<p>[T] Terence Tao, <em>Finite time blowup for an averaged three-dimensional Navier–Stokes equation</em>, <a href="https://arxiv.org/abs/1402.0290v3">arXiv:1402.0290v3</a>, 1 April 2015. Section 1 defines the Leray projection, the symmetric Euler bilinear operator, the cancellation identity and the integral equation. The present lesson proves those preliminary operator statements and supplies its own force, viscosity, domain and zero-mode comparisons. Exercise 5 identifies the displayed rescaling issue in that exact source version. The paper's averaged-equation construction is not proved or invoked here.</p>
+</article><nav aria-label="Lesson sequence"><a href="NS-FLUID-01.html">Previous lesson</a><a href="NS-FLUID-03.html">Next lesson</a></nav></main><footer>Mathematical text: CC0 1.0. Cited works and reader software retain their respective terms.</footer></body></html>

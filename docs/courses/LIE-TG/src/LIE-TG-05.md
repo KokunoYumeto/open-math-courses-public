@@ -255,7 +255,7 @@ has identity at $a_0$ and satisfies the same fundamental equations.
 **Proof.** Define a frame $B_j$ on the parameter domain by $\sum_kB_j^k\psi_{k\ell}=\delta_{j\ell}$. Then $d_aF(B_j)=X_j\circ F$. Write $[B_i,B_j]=\sum_kc_{ij}^k(a)B_k$. Related brackets give
 
 $$
-X_i,X_j)=\sum_kc_{ij}^k(a)X_k(F(y,a)).
+[X_i,X_j](F(y,a))=\sum_kc_{ij}^k(a)X_k(F(y,a)).
 $$
 
 For each $a$ the map $F(\cdot,a)$ has an open image. Analytic continuation gives this identity between fields on the connected neighbourhood. Independence over constants forces the coefficients $c_{ij}^k(a)$ to equal their values at $a_0$. Thus $B_j$ is a constant-bracket frame. Lemma 2.1 supplies its local group, and the horizontal-graph argument of Theorem 3.1 applies directly to $F$, yielding the action law. The contracting multipliers in the first two lessons show why the original family need not contain an identity. $\square$

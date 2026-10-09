@@ -10,6 +10,7 @@ import json
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-internal-hilbert-spaces-20261009-v1"
 from matplotlib.patches import FancyBboxPatch
 
 OUT = Path(__file__).resolve().parent
@@ -57,7 +58,7 @@ text(7,1.00,r'$uu^*+vv^*=1,\qquad uu^*\ne0,1$',18)
 text(7,.50,r'$K=\mathbb{C}u+\mathbb{C}v\ \longrightarrow\ [KK]=\mathrm{span}\{u^2,uv,vu,v^2\}$',17)
 text(7,.14,'Each range is infinite dimensional. The branches indicate orthogonal decompositions.',10)
 
-fig.savefig(OUT/'binary-isometries.svg',metadata={'Creator':'Original CC0 mathematical diagram',
+fig.savefig(OUT/'binary-isometries.svg',metadata={'Date': None, 'Creator':'Original CC0 mathematical diagram',
             'Description':'Exact even/odd and residue modulo four isometry ranges; see L130 U-Binary and U-ProductBasis.'})
 fig.savefig(OUT/'binary-isometries.png',dpi=180,metadata={'Description':'Exact infinite-dimensional range decompositions for L130.'})
 plt.close(fig)

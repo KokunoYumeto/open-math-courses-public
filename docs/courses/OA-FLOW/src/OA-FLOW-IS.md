@@ -417,10 +417,10 @@ NR1 makes \(V_h\) strongly continuous. [NCF2–3](OA-FLOW-NCF.md#ncf-2), deduced
 
 <a id="equation-is34"></a>
 
-\
+\[
  D=N\rtimes_\beta H,\qquad
- [\pi_\beta(x)\eta=\beta_{h^{-1}}(x)\eta(h),\qquad
- \lambda^H_r\eta=\eta(r^{-1}h).
+ [\pi_\beta(x)\eta](h)=\beta_{h^{-1}}(x)\eta(h),\qquad
+ [\lambda^H_r\eta](h)=\eta(r^{-1}h).
  \tag{IS34}
 \]
 

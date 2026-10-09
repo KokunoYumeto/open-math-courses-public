@@ -8,13 +8,13 @@ The analytic argument begins with a Fourier shear. Exponential decay away from z
 ## Two relative commutants
 
 Let \(Q\ne0\) be a von Neumann algebra, and let \(\varphi\) be a faithful normal semifinite weight. In a faithful normal representation on \(H\), write
-\
+\[
  \begin{gathered}
  C_\varphi(Q)=Q\rtimes_{\sigma^\varphi}\mathbb R
        \subset B(L^2(\mathbb R,H)),\\
- \bigl[\pi_\varphi(x)\xi\bigr
+ \bigl[\pi_\varphi(x)\xi\bigr](r)
        =\sigma_{-r}^\varphi(x)\xi(r),\qquad
- \lambda_\varphi(t)\xi=\xi(r-t).
+ [\lambda_\varphi(t)\xi](r)=\xi(r-t).
  \end{gathered}
  \tag{RCC0.a}
 \]
@@ -319,8 +319,8 @@ The [Hilbert representation argument](OA-FLOW-SF.md#oa-flow.shared-foundations.s
 The dependence of these classes on \(\xi,\eta\) is sesquilinear. We keep them as \(L^\infty\) classes; no simultaneous representatives for all pairs of vectors are chosen.
 
 To smooth them, define on the original regular variable \(t\)
-\
- [B_r\zeta=e^{irt}\zeta(t).
+\[
+ [B_r\zeta](t)=e^{irt}\zeta(t).
 \]
 These unitaries form a strongly continuous group on the entire \(L^2(\mathbb R,H)\). One can first check this on finite tensors by scalar dominated convergence, and then use their common norm bound and tensor density. Their conjugations fix every \(\pi_\omega(x)\) and send \(\lambda(t)\) to \(e^{irt}\lambda(t)\). They therefore normalize \(C\), \(C'\), and the ambient tensor algebra.
 
@@ -438,8 +438,8 @@ We need the actual modular conjugation of the dual weight on the entire regular 
  \tag{RCC4.b}
 \]
 For \(\alpha=\sigma^\varphi\), (RCC4.a) makes \(\psi_r=\varphi\) on the whole positive cone and \(V_r=\Delta_\varphi^{-ir}\) on a dense finite ideal, hence on all of \(H_\varphi\). The relative closed involution is now the ordinary \(S_\varphi\); its antiunitary polar factor is \(J_\varphi\). The real group has modular function \(1\). Substituting these facts in [GDW5's full polar formula](OA-FLOW-GDW.md#gdw-5) gives
-\
- [\mathcal J_\varphi\xi
+\[
+ [\mathcal J_\varphi\xi](r)
        =\Delta_\varphi^{-ir}J_\varphi\xi(-r).
  \tag{RCC4.c}
 \]
@@ -459,9 +459,9 @@ The antiunitary spectral identity in [CI3](OA-FLOW-CI.md#oa-flow.ci.3) is
 \]
 The sign follows from \(J_\varphi\Delta_\varphi^zJ_\varphi
 =\Delta_\varphi^{-\overline z}\); for \(z=it\), the exponent is \(it\). Hence \(\mathcal J_\varphi^2=I\). To compute a conjugated coefficient, use (RCC4.c) twice:
-\
+\[
  \begin{aligned}
- \bigl[\mathcal J_\varphi\pi_\varphi(x)\mathcal J_\varphi\xi\bigr
+ \bigl[\mathcal J_\varphi\pi_\varphi(x)\mathcal J_\varphi\xi\bigr](r)
  &=\Delta_\varphi^{-ir}J_\varphi
         \sigma_r^\varphi(x)\Delta_\varphi^{ir}J_\varphi\xi(r)\\
  &=\Delta_\varphi^{-ir}J_\varphi
@@ -591,14 +591,14 @@ Its value at zero is \(1\), by taking \(s=t=0\) and cancelling the unitary. Poin
 The automorphisms \(\theta_s\) preserve \(Z\). Direct multiplication proves that \(\partial v\) is a cocycle and that \(\partial(vw)=(\partial v)(\partial w)\). Hence \(B^1_\theta\) is a subgroup, and the quotient is defined.
 
 **The full normal automorphism.** In the regular representation on \(L^2(\mathbb R,K)\), let
-\
- [D_c\xi=c(-r)^*\xi(r),\qquad
- D_c^*\xi=c(-r)\xi(r).
+\[
+ [D_c\xi](r)=c(-r)^*\xi(r),\qquad
+ [D_c^*\xi](r)=c(-r)\xi(r).
  \tag{RCC6.c}
 \]
 Here \(N\) acts faithfully and normally on the arbitrary Hilbert space \(K\). Each fixed-vector orbit of either unitary field is continuous. On a compact interval it is a norm-continuous Hilbert-valued map, so step approximations make it strongly measurable. Apply this first to compactly supported elementary sections, then approximate an arbitrary strongly measurable \(L^2\) section in norm. Pointwise norm preservation and the same estimate for the inverse give inverse isometries on the full space. This is also the complete construction in [NR5](OA-FLOW-NR.md#oa-flow.nr.5); no common null set over all vectors is needed.
 
-The field \(D_c\) commutes with every coefficient \(i(x)\), since \(c(-r)\) is central and \(i(x)\xi=\theta_{-r}(x)\xi(r)\). The ordered cocycle identity gives
+The field \(D_c\) commutes with every coefficient \(i(x)\), since \(c(-r)\) is central and \([i(x)\xi](r)=\theta_{-r}(x)\xi(r)\). The ordered cocycle identity gives
 \[
  c(-r)^*c(s-r)=\theta_{-r}(c(s)).
  \tag{RCC6.d}

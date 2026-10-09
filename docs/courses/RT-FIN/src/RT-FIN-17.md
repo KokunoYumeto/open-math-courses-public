@@ -486,9 +486,56 @@ The fixed space of \(D_\chi\) is \(\chi\otimes\chi\), and subtracting it from (3
 
 This is the rank-one parabolic operation underlying Alvis–Curtis and Deligne–Lusztig duality. The exchange of trivial and Steinberg representations has been proved here, including its signs on the other families. It differs from taking the contragredient: for example the contragredient exchanges \(\pi_{\theta_1}\) and \(\pi_{\theta_5}\) at \(q=3\), whereas (35) negates each virtual class. [Deligne–Lusztig 1982, §§1 and 5] constructs the broader operation from parabolic fixed spaces.
 
-For further geometry, let \(\mathbf G\) be a connected reductive algebraic group with Frobenius \(F\), and \(\mathbf T\) an \(F\)-stable maximal torus. Deligne–Lusztig induction uses compactly supported \(\ell\)-adic cohomology of varieties of flags related to their Frobenius images. The alternating sum of the \(\theta\)-isotypic cohomology defines a virtual character \(R_{\mathbf T}^{\theta}\); see [Deligne–Lusztig 1976, §1.20]. For two-dimensional general linear groups, the flag is just a line: the relevant base varieties are the rational lines and their complement in the projective line over the algebraic closure.
+For the geometric comparison, let \(\mathbf G\) be a connected reductive group over \(\overline{\mathbf F}_q\), defined over \(\mathbf F_q\) with Frobenius \(F\), and let \(\mathbf T\) be an \(F\)-stable maximal torus. Choose a Borel subgroup \(\mathbf B\supset\mathbf T\), not necessarily \(F\)-stable, and write \(\mathbf U\) for its unipotent radical. The construction uses a variety with a torus action, not just its flag-space quotient:
 
-The next geometric comparison problem is to identify these cohomological characters with the elementary virtual characters already constructed: \(I(\alpha,\beta)\) for the split torus, and \(-C_\theta\) for the elliptic torus. Its regular elliptic target is \(-\pi_\theta\), so the minus sign is forced by our complete table. The wider questions are how torus intertwining gives irreducibility, how nonsingularity controls positivity up to sign, and how an elliptic torus gives cuspidality. The precise geometric statements are [Deligne–Lusztig 1976, Proposition 5.16 and Theorems 6.8 and 8.3]. They guide these further questions; no geometric theorem is needed in the constructions or proofs above.
+\[
+\widetilde X_{\mathbf T\subset\mathbf B}
+=\{g\in\mathbf G:g^{-1}F(g)\in F(\mathbf U)\}/(\mathbf U\cap F(\mathbf U)),
+\qquad
+\widetilde X_{\mathbf T\subset\mathbf B}\longrightarrow X_{\mathbf T\subset\mathbf B}
+=\widetilde X_{\mathbf T\subset\mathbf B}/\mathbf T^F.
+\]
+
+Left multiplication by \(\mathbf G^F\) commutes with right multiplication by \(\mathbf T^F\). The displayed projection is a \(\mathbf G^F\)-equivariant \(\mathbf T^F\)-torsor. Choose a prime \(\ell\ne\operatorname{char}\mathbf F_q\) and a compatible identification of the algebraic roots of unity in \(\overline{\mathbf Q}_\ell\) with their complex counterparts, so that finite-group characters can be compared. For a character \(\theta:\mathbf T^F\to\overline{\mathbf Q}_\ell^\times\), use the torus-action convention of [Deligne–Lusztig 1976, §1.20] and set
+
+\[
+R_{\mathbf T}^{\theta}
+=\sum_i(-1)^i[H_c^i(\widetilde X_{\mathbf T\subset\mathbf B},\overline{\mathbf Q}_\ell)_\theta].
+\]
+
+Equivalently one uses the associated rank-one local system on the flag base. Ordinary cohomology of that base with constant coefficients is not, by itself, a construction of the indicated torus-isotypic part. Independence from the containing Borel is part of the geometric theory. For \(\mathrm{GL}_2\), the split and elliptic flag bases are respectively \(\mathbf P^1(\mathbf F_q)\) and \(\mathbf P^1(\overline{\mathbf F}_q)\setminus\mathbf P^1(\mathbf F_q)\).
+
+**Geometric comparison theorems (stated here without their cohomological proofs).** Write \(\sigma(\mathbf H)\) for the \(\mathbf F_q\)-split rank of a connected reductive group or torus \(\mathbf H\). A torus character is in **general position** if its stabilizer in \((N_{\mathbf G}(\mathbf T)/\mathbf T)^F\) is trivial. It is **nonsingular** if its pairing with every coroot is nonzero, as in [Deligne–Lusztig 1976, Definition 5.15]. More concretely, choose \(d\) over which \(\mathbf T\) splits and a given coroot \(\alpha^\vee:\mathbf G_m\to\mathbf T\) is defined. The character
+
+\[
+\mathbf F_{q^d}^{\times}\xrightarrow{\alpha^\vee}\mathbf T^{F^d}
+\xrightarrow{N_d}\mathbf T^F\xrightarrow{\theta}\overline{\mathbf Q}_\ell^{\times},
+\qquad N_d(t)=tF(t)\cdots F^{d-1}(t),
+\]
+
+must be nontrivial for every coroot. This condition is unchanged on enlarging a splitting field. The following are established results, not conjectural comparison problems:
+
+- If the centre of \(\mathbf G\) is connected, nonsingularity and general position are equivalent (Proposition 5.16). In general, general position implies nonsingularity (Corollary 5.18); the converse is not being asserted without the connected-centre hypothesis.
+- For two \(F\)-stable maximal tori and their characters, the inner product is the number of rational Weyl transporters matching the characters (Theorem 6.8). Explicitly, with \(\operatorname{Ad}(g):\mathbf T'\to\mathbf T\),
+
+\[
+\langle R_{\mathbf T}^{\theta},R_{\mathbf T'}^{\theta'}\rangle_{\mathbf G^F}
+=\frac{\#\{g\in\mathbf G^F:g\mathbf T'g^{-1}=\mathbf T,\ \theta\circ\operatorname{Ad}(g)=\theta'\}}{|\mathbf T^F|}.
+\]
+
+- If \(\theta\) is nonsingular, the virtual character \((-1)^{\sigma(\mathbf G)-\sigma(\mathbf T)}R_{\mathbf T}^{\theta}\) is the character of an actual representation; it is irreducible when \(\theta\) is in general position (Proposition 7.4). In the latter case the self-pairing in Theorem 6.8 is one, and the rank sign chooses the actual, rather than negative, irreducible character.
+- If in addition \(\mathbf T\) is contained in no proper \(F\)-stable parabolic subgroup of \(\mathbf G\), that actual representation is cuspidal (Theorem 8.3). Cuspidal here means that its invariants under the rational unipotent radical of every proper rational parabolic vanish. Nonsingularity is essential to the stated theorem; ellipticity alone is not the assertion.
+
+For \(\mathbf G=\mathrm{GL}_2\), these comparison results identify the split-torus character with \(I(\alpha,\beta)\) and the elliptic-torus character with \(-C_\theta\), in the parameter convention of (12). In particular the already constructed regular cuspidal representation satisfies
+
+\[
+[\pi_\theta]=-R_{\mathbf T}^{\theta},
+\qquad \mathbf T^F=\mathbf F_{q^2}^{\times},\qquad \theta\ne\theta^q.
+\]
+
+The centre of \(\mathrm{GL}_2\) is connected, so Proposition 5.16 identifies regularity with nonsingularity here. Its rational Weyl group has the two actions \(\theta\mapsto\theta\) and \(\theta\mapsto\theta^q\). The split ranks are \(\sigma(\mathrm{GL}_2)=2\) and \(\sigma(\mathbf T)=1\), giving \((-1)^{2-1}=-1\). The elliptic torus is in no proper rational parabolic, since such a parabolic stabilizes a rational line. Thus the hypotheses give an irreducible cuspidal character for every prime power \(q\), including even characteristic. For a norm character the comparison instead gives \(R_{\mathbf T}^{\chi\circ N}=D_\chi-\mathrm{St}_\chi\), by (18); it must not be called the negative of a new cuspidal irreducible.
+
+The cohomological construction, its general theorems, and its identification with the elementary character table are not proved in this lesson. Their complete geometric proofs are separate obligations; an external citation is not an internal proof provider. The elementary classification and Proposition 7.1 above do not use these assertions. The arithmetic checks below explain their hypotheses and sign, but do not replace the missing cohomological comparison proof.
 
 The torus conditions can already be understood arithmetically here. The elliptic torus has no rational invariant line, by irreducibility of its quadratic action. Frobenius acts on its characters by \(\theta\mapsto\theta^q\). Moreover
 
@@ -578,5 +625,5 @@ For \(\theta=\chi\circ N\), the elliptic summand in (41) is instead \(4(q^2-q)\)
 
 - **P. Etingof, O. Golberg, S. Hensel, T. Liu, A. Schwendner, D. Vaintrob and E. Yudovina**, *Introduction to Representation Theory*, [lecture notes](https://math.mit.edu/~etingof/replect.pdf), §4.24, particularly Theorem 4.71, §4.24.4 and Lemma 4.72. These give an odd-characteristic presentation of the principal and cuspidal character constructions. The field and induction arguments here cover every prime power.
 - **C. Gruson and V. Serganova**, *A Journey Through Representation Theory: From Finite Groups to Quivers via Algebras*, Springer, 2018, Chapter 6 §9, especially Definition 9.3 and Example 9.22. The general positive self-adjoint Hopf-algebra discussion supplies context for the four families; the rank-two proof is given here directly.
-- **P. Deligne and G. Lusztig**, *Representations of reductive groups over finite fields*, Annals of Mathematics 103 (1976), 103–161, [Institute for Advanced Study copy](https://publications.ias.edu/sites/default/files/Number27.pdf), §1.20, Proposition 5.16 and Theorems 6.8 and 8.3. These are the precise references for the geometric comparison questions in §7.
+- **P. Deligne and G. Lusztig**, *Representations of reductive groups over finite fields*, Annals of Mathematics 103 (1976), 103–161, [Institute for Advanced Study copy](https://publications.ias.edu/sites/default/files/Number27.pdf), §§1.17–1.20, Definition 5.15, Proposition 5.16, Corollary 5.18, Theorem 6.8, Proposition 7.4 and Theorem 8.3 (printed pages 114, 131–132, 138, 141 and 147). Section 7 states these geometric comparisons without importing their proofs into the elementary classification.
 - **P. Deligne and G. Lusztig**, *Duality for representations of a reductive group over a finite field*, Journal of Algebra 74 (1982), 284–291, [author's deposited article](https://publications.ias.edu/sites/default/files/Number44.pdf), §§1 and 5. Proposition 7.1 proves the rank-one parabolic character operation used in this lesson.

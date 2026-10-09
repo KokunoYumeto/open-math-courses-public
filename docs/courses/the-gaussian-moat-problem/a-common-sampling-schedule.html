@@ -1,0 +1,261 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A common sampling schedule</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents</a><a href="coverage-from-shared-continuations.html">Previous lesson</a><a href="zero-avoidance-and-the-finite-sieve.html">Next lesson</a><a href="src/a-common-sampling-schedule.md">Editable source</a></nav><main><article><h1 id="a-common-sampling-schedule">A common sampling schedule</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson builds one random procedure that samples a time on a fixed walk with bounded steps, and proves everything the final argument of the Gaussian moat course needs to know about it. The procedure applies the entropy enrichment transition of <a href="entropy-enrichment.html">Entropy enrichment</a> at a decreasing sequence of scales, arranged in bands, and ends with a uniformly random time offset. We prove four kinds of estimates, uniformly over all walks: the time shift after any stage is controlled, and small translates of the final time have almost the same law; each batch of primes acquires a joint residue entropy of order <span class="math" data-tex="\(T\)">\(T\)</span> that survives to the end; at a sequence of checkpoints the residue entropy is almost maximal; and the final residues have coverage seen from every checkpoint. The last estimate is proved by backward induction with the transfer theorem of <a href="coverage-from-shared-continuations.html">Coverage from shared continuations</a>.</p>
+<p>We use the prime counts of Section 5 of <a href="walks-through-gaussian-primes.html">Walks through Gaussian primes</a>, the displacement bounds of <a href="differences-of-a-walk-and-separating-products.html">Differences of a walk and separating products</a>, Pinsker's inequality from <a href="entropy-of-finite-random-variables.html">Entropy of finite random variables</a>, and the two preceding lessons.</p>
+<p>A basic reference is [OpenAI-moat].</p>
+<h2 id="1-constants-windows-and-batches">1. Constants, windows and batches</h2>
+<p>Fix <span class="math" data-tex="\(D\ge1\)">\(D\ge1\)</span> and an infinite <span class="math" data-tex="\(D\)">\(D\)</span>-walk <span class="math" data-tex="\(z_0,z_1,\dots\)">\(z_0,z_1,\dots\)</span>; no congruence condition is assumed in this lesson. The following absolute constants are fixed once and for all, in this order:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Value</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(\beta_0\)">\(\beta_0\)</span></td>
+<td><span class="math" data-tex="\(1/200\)">\(1/200\)</span></td>
+<td>coverage exponent at the first checkpoint</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(e_0\)">\(e_0\)</span></td>
+<td><span class="math" data-tex="\(\beta_0/50=10^{-4}\)">\(\beta_0/50=10^{-4}\)</span></td>
+<td>allowed entropy deficit of each batch</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(l_0\)">\(l_0\)</span></td>
+<td><span class="math" data-tex="\(15\)">\(15\)</span></td>
+<td>number of transitions that create batch entropy</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(g_0\)">\(g_0\)</span></td>
+<td><span class="math" data-tex="\(10^{-6}\)">\(10^{-6}\)</span></td>
+<td>transition parameter of the top bands</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(a_0\)">\(a_0\)</span></td>
+<td><span class="math" data-tex="\(1/4\)">\(1/4\)</span></td>
+<td>where the batch entropy is created</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(c_0\)">\(c_0\)</span></td>
+<td><span class="math" data-tex="\(a_0g_0^{2(l_0+1)}/2\)">\(a_0g_0^{2(l_0+1)}/2\)</span></td>
+<td>size of the batch entropy, in units of <span class="math" data-tex="\(T\)">\(T\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(B\)">\(B\)</span></td>
+<td><span class="math" data-tex="\(2+(8\log2)/(e_0c_0)\)">\(2+(8\log2)/(e_0c_0)\)</span></td>
+<td>ratio between consecutive batches</td>
+</tr>
+</tbody>
+</table>
+<p>They satisfy <span class="math" data-tex="\(2^{-l_0}+40g_0&lt;e_0\)">\(2^{-l_0}+40g_0&lt;e_0\)</span>. Let <span class="math" data-tex="\(M\)">\(M\)</span> be a positive integer, the only parameter that will tend to infinity. Put</p>
+<span class="math math-display" data-tex="\[
+X_m=100^m\quad\Bigl(\Bigl\lceil\frac M2\Bigr\rceil\le m\le M\Bigr),\qquad g_1=e^{-M^3},\qquad g_2=e^{-100M^{20}},\qquad T_+=e^{1.05X_M}.
+\]">\[
+X_m=100^m\quad\Bigl(\Bigl\lceil\frac M2\Bigr\rceil\le m\le M\Bigr),\qquad g_1=e^{-M^3},\qquad g_2=e^{-100M^{20}},\qquad T_+=e^{1.05X_M}.
+\]</span>
+<p>The interval <span class="math" data-tex="\([X_m,1.05X_m]\)">\([X_m,1.05X_m]\)</span> is the <span class="math" data-tex="\(m\)">\(m\)</span>-th <strong>window</strong>. The <strong>batches</strong> used are the sets <span class="math" data-tex="\(\mathcal B_T\)">\(\mathcal B_T\)</span> of Section 5 of the first lesson for all</p>
+<span class="math math-display" data-tex="\[
+T=B^j\ (j\in\mathbb Z)\qquad\text{with}\qquad X_m\le\log T\le1.05X_m\ \text{for some}\ \Bigl\lceil\frac M2\Bigr\rceil\le m\le M.
+\]">\[
+T=B^j\ (j\in\mathbb Z)\qquad\text{with}\qquad X_m\le\log T\le1.05X_m\ \text{for some}\ \Bigl\lceil\frac M2\Bigr\rceil\le m\le M.
+\]</span>
+<p>They are pairwise disjoint (Lemma 5.2 of the first lesson). Their union <span class="math" data-tex="\(\mathcal P_M\)">\(\mathcal P_M\)</span> is a finite set of primes congruent to <span class="math" data-tex="\(1\)">\(1\)</span> modulo <span class="math" data-tex="\(4\)">\(4\)</span>. For a batch we write <span class="math" data-tex="\(k=k_T\)">\(k=k_T\)</span> and <span class="math" data-tex="\(L_*=L^*_T\)">\(L_*=L^*_T\)</span>, and the signed coordinates and residue entropy profiles <span class="math" data-tex="\(f_Z\)">\(f_Z\)</span> of <a href="entropy-enrichment.html">Entropy enrichment</a> refer to that batch.</p>
+<p><strong>Convention.</strong> &quot;For large <span class="math" data-tex="\(M\)">\(M\)</span>&quot; means &quot;for all <span class="math" data-tex="\(M\ge M_D\)">\(M\ge M_D\)</span>&quot;, where <span class="math" data-tex="\(M_D\)">\(M_D\)</span> depends only on <span class="math" data-tex="\(D\)">\(D\)</span>. Each lemma below may enlarge <span class="math" data-tex="\(M_D\)">\(M_D\)</span>, finitely many times. Every estimate is uniform over the walk, the batches, and the starting times.</p>
+<p>For example, for large <span class="math" data-tex="\(M\)">\(M\)</span> every batch satisfies <span class="math" data-tex="\(T\ge5\)">\(T\ge5\)</span>, <span class="math" data-tex="\(k_T\ge a_0T/L_*\)">\(k_T\ge a_0T/L_*\)</span> and <span class="math" data-tex="\(k_T\ge T^{1/2}\)">\(k_T\ge T^{1/2}\)</span>, by Proposition 5.1 of the first lesson, since <span class="math" data-tex="\(\log T\ge X_{\lceil M/2\rceil}\ge10^M\)">\(\log T\ge X_{\lceil M/2\rceil}\ge10^M\)</span>.</p>
+<h2 id="2-the-schedule">2. The schedule</h2>
+<p><strong>Definition 2.1</strong> (bands). For each window <span class="math" data-tex="\(m\)">\(m\)</span> there are three <strong>bands</strong> of scales <span class="math" data-tex="\(U\)">\(U\)</span>, given by intervals for <span class="math" data-tex="\(\log U\)">\(\log U\)</span> and a transition parameter:</p>
+<table>
+<thead>
+<tr>
+<th>Band</th>
+<th><span class="math" data-tex="\(\log U\)">\(\log U\)</span> in</th>
+<th>parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>top</td>
+<td><span class="math" data-tex="\([0.8X_m,\ 1.3X_m]\)">\([0.8X_m,\ 1.3X_m]\)</span></td>
+<td><span class="math" data-tex="\(g_0\)">\(g_0\)</span></td>
+</tr>
+<tr>
+<td>middle</td>
+<td><span class="math" data-tex="\([0.20X_m,\ 0.30X_m]\)">\([0.20X_m,\ 0.30X_m]\)</span></td>
+<td><span class="math" data-tex="\(g_1=e^{-M^3}\)">\(g_1=e^{-M^3}\)</span></td>
+</tr>
+<tr>
+<td>bottom</td>
+<td><span class="math" data-tex="\([0.05X_m,\ 0.10X_m]\)">\([0.05X_m,\ 0.10X_m]\)</span></td>
+<td><span class="math" data-tex="\(g_2=e^{-100M^{20}}\)">\(g_2=e^{-100M^{20}}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>scheduled scales</strong> of a band with parameter <span class="math" data-tex="\(g\)">\(g\)</span> are the numbers <span class="math" data-tex="\(U\)">\(U\)</span> with <span class="math" data-tex="\(\log U=u_{\max}-2i\log(1/g)\)">\(\log U=u_{\max}-2i\log(1/g)\)</span>, <span class="math" data-tex="\(i=0,1,2,\dots\)">\(i=0,1,2,\dots\)</span>, that lie in the band, where <span class="math" data-tex="\(u_{\max}\)">\(u_{\max}\)</span> is its upper end. Consecutive scheduled scales in a band have ratio <span class="math" data-tex="\(g^2\)">\(g^2\)</span>.</p>
+<p>The bands are disjoint and ordered: within a window, the top band lies above the middle band, which lies above the bottom band; and the top band of window <span class="math" data-tex="\(m-1\)">\(m-1\)</span> lies below the bottom band of window <span class="math" data-tex="\(m\)">\(m\)</span>, since <span class="math" data-tex="\(1.3X_{m-1}=0.013X_m&lt;0.05X_m\)">\(1.3X_{m-1}=0.013X_m&lt;0.05X_m\)</span>.</p>
+<p><strong>Definition 2.2</strong> (the schedule). The <strong>schedule</strong> is the following finite list of operations. Go through the windows <span class="math" data-tex="\(m=M,M-1,\dots,\lceil M/2\rceil\)">\(m=M,M-1,\dots,\lceil M/2\rceil\)</span>; in each, go through the top, middle and bottom bands; in each band, go through its scheduled scales in decreasing order. For each scheduled scale <span class="math" data-tex="\(U\)">\(U\)</span>, with the parameter <span class="math" data-tex="\(g\)">\(g\)</span> of its band, the operation is the transition of Definition 2.1 of <a href="entropy-enrichment.html">Entropy enrichment</a> with parameters <span class="math" data-tex="\(U,g\)">\(U,g\)</span>. The last operation adds to the current time an independent uniformly random integer in <span class="math" data-tex="\(\{0,1,\dots,N-1\}\)">\(\{0,1,\dots,N-1\}\)</span>, where <span class="math" data-tex="\(N=\lceil T_+^{10}\rceil\)">\(N=\lceil T_+^{10}\rceil\)</span>.</p>
+<p>A <strong>checkpoint</strong> is a position in this list: the stage just before a given operation, or the final stage. Running the schedule from time <span class="math" data-tex="\(0\)">\(0\)</span>, with fresh randomness for each operation, gives a random time at each checkpoint; we use the same letter for the checkpoint and its random time. The final random time is denoted <span class="math" data-tex="\(t_*\)">\(t_*\)</span>.</p>
+<p>Every operation acts on the current time only: given the current time, its randomness is fresh. So for a checkpoint <span class="math" data-tex="\(A\)">\(A\)</span> and an integer <span class="math" data-tex="\(a\ge0\)">\(a\ge0\)</span>, we may run the remaining operations from the deterministic time <span class="math" data-tex="\(a\)">\(a\)</span>. We call this the <strong>continuation experiment from the exact start <span class="math" data-tex="\(A=a\)">\(A=a\)</span></strong>. It is defined for every <span class="math" data-tex="\(a\)">\(a\)</span>, whether or not <span class="math" data-tex="\(a\)">\(a\)</span> is a possible value of <span class="math" data-tex="\(A\)">\(A\)</span> in the run from time <span class="math" data-tex="\(0\)">\(0\)</span>; and when <span class="math" data-tex="\(\mathbb P(A=a)&gt;0\)">\(\mathbb P(A=a)&gt;0\)</span>, the conditional law of the remaining run given <span class="math" data-tex="\(A=a\)">\(A=a\)</span> is the law of this continuation experiment. Every random time in such an experiment takes finitely many values.</p>
+<h2 id="3-future-shifts-and-smoothing">3. Future shifts and smoothing</h2>
+<p><strong>Lemma 3.1</strong> (future shifts). For large <span class="math" data-tex="\(M\)">\(M\)</span> the following holds. Let <span class="math" data-tex="\(V\)">\(V\)</span> be a scheduled scale, with parameter <span class="math" data-tex="\(g\)">\(g\)</span>. There is a number <span class="math" data-tex="\(S_V\)">\(S_V\)</span>, depending only on the schedule, such that in every continuation experiment from the checkpoint before <span class="math" data-tex="\(V\)">\(V\)</span>, every later checkpoint is at most <span class="math" data-tex="\(S_V\)">\(S_V\)</span> steps later, and</p>
+<span class="math math-display" data-tex="\[
+\log(1+S_V)\le2gV.
+\]">\[
+\log(1+S_V)\le2gV.
+\]</span>
+<p>Consequently, for random times <span class="math" data-tex="\(A\le A&#x27;\)">\(A\le A&#x27;\)</span> at that checkpoint and a later one, <span class="math" data-tex="\(H(z_{A&#x27;}-z_A)\le4gV+\log(\pi D^2)\)">\(H(z_{A&#x27;}-z_A)\le4gV+\log(\pi D^2)\)</span>.</p>
+<p><strong>Proof.</strong> A transition with parameters <span class="math" data-tex="\(U,g_U\)">\(U,g_U\)</span> advances time by at most <span class="math" data-tex="\(\lfloor e^{g_UU}\rfloor\)">\(\lfloor e^{g_UU}\rfloor\)</span>, and the final offset by at most <span class="math" data-tex="\(N-1\)">\(N-1\)</span>. Let <span class="math" data-tex="\(S_V\)">\(S_V\)</span> be <span class="math" data-tex="\(N-1\)">\(N-1\)</span> plus the sum of <span class="math" data-tex="\(\lfloor e^{g_UU}\rfloor\)">\(\lfloor e^{g_UU}\rfloor\)</span> over <span class="math" data-tex="\(V\)">\(V\)</span> and all later scheduled scales <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p>The number of operations is at most the sum, over windows and bands, of <span class="math" data-tex="\(1+(\text{band length})/(2\log(1/g))\)">\(1+(\text{band length})/(2\log(1/g))\)</span>, which is at most <span class="math" data-tex="\(4X_M\)">\(4X_M\)</span> for large <span class="math" data-tex="\(M\)">\(M\)</span>. For a later scale <span class="math" data-tex="\(U\)">\(U\)</span> in the band of <span class="math" data-tex="\(V\)">\(V\)</span>, <span class="math" data-tex="\(g_UU\le gV\)">\(g_UU\le gV\)</span>. For a scale <span class="math" data-tex="\(U\)">\(U\)</span> in a later band, <span class="math" data-tex="\(\log U\le\log V-0.037X_{\lceil M/2\rceil}\)">\(\log U\le\log V-0.037X_{\lceil M/2\rceil}\)</span>, as the gaps between consecutive bands are at least <span class="math" data-tex="\(0.037X_m\)">\(0.037X_m\)</span>; and <span class="math" data-tex="\(\log(g_U/g)\le\log(1/g_2)=100M^{20}\)">\(\log(g_U/g)\le\log(1/g_2)=100M^{20}\)</span>. Since <span class="math" data-tex="\(0.037X_{\lceil M/2\rceil}\ge0.037\cdot10^M&gt;100M^{20}\)">\(0.037X_{\lceil M/2\rceil}\ge0.037\cdot10^M&gt;100M^{20}\)</span> for large <span class="math" data-tex="\(M\)">\(M\)</span>, again <span class="math" data-tex="\(g_UU\le gV\)">\(g_UU\le gV\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+1+S_V\le N+4X_Me^{gV}\le2\max\{N,4X_Me^{gV}\}.
+\]">\[
+1+S_V\le N+4X_Me^{gV}\le2\max\{N,4X_Me^{gV}\}.
+\]</span>
+<p>Now <span class="math" data-tex="\(\log N\le10.5X_M+1\)">\(\log N\le10.5X_M+1\)</span> and <span class="math" data-tex="\(\log(4X_M)\le5M\)">\(\log(4X_M)\le5M\)</span>, while <span class="math" data-tex="\(gV\ge g_2e^{0.05X_{\lceil M/2\rceil}}\ge\exp(0.05\cdot10^M-100M^{20})\)">\(gV\ge g_2e^{0.05X_{\lceil M/2\rceil}}\ge\exp(0.05\cdot10^M-100M^{20})\)</span>, which exceeds <span class="math" data-tex="\(11X_M+5M+1\)">\(11X_M+5M+1\)</span> for large <span class="math" data-tex="\(M\)">\(M\)</span>. So <span class="math" data-tex="\(\log(1+S_V)\le\log2+gV+\max\{11X_M,5M\}\le2gV\)">\(\log(1+S_V)\le\log2+gV+\max\{11X_M,5M\}\le2gV\)</span>. The entropy bound follows from Lemma 1.2 of <a href="differences-of-a-walk-and-separating-products.html">Differences of a walk and separating products</a>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.2</strong> (smoothing). In every continuation experiment, from any exact start at any checkpoint before the final offset,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{TV}\bigl(\mathcal L(t_*),\mathcal L(t_*+a)\bigr)\le T_+^{-9}\qquad(0\le a\le T_+),
+\]">\[
+\operatorname{TV}\bigl(\mathcal L(t_*),\mathcal L(t_*+a)\bigr)\le T_+^{-9}\qquad(0\le a\le T_+),
+\]</span>
+<p>where <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> denotes the law. The same bound holds for the laws of <span class="math" data-tex="\(\Phi(t_*)\)">\(\Phi(t_*)\)</span> and <span class="math" data-tex="\(\Phi(t_*+a)\)">\(\Phi(t_*+a)\)</span>, for every function <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> of the time.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(t_*=\tilde t+O\)">\(t_*=\tilde t+O\)</span>, where <span class="math" data-tex="\(O\)">\(O\)</span> is the final offset, uniform on <span class="math" data-tex="\(\{0,\dots,N-1\}\)">\(\{0,\dots,N-1\}\)</span> and independent of <span class="math" data-tex="\(\tilde t\)">\(\tilde t\)</span>. The laws of <span class="math" data-tex="\(O\)">\(O\)</span> and <span class="math" data-tex="\(O+a\)">\(O+a\)</span> differ by <span class="math" data-tex="\(a/N\)">\(a/N\)</span> in total variation. Since <span class="math" data-tex="\(\mathcal L(t_*)=\sum_t\mathbb P(\tilde t=t)\,\mathcal L(t+O)\)">\(\mathcal L(t_*)=\sum_t\mathbb P(\tilde t=t)\,\mathcal L(t+O)\)</span> and similarly for <span class="math" data-tex="\(t_*+a\)">\(t_*+a\)</span>, and translations and mixtures do not increase total variation (Section 5 of the entropy lesson), the distance is at most <span class="math" data-tex="\(a/N\le T_+/T_+^{10}\)">\(a/N\le T_+/T_+^{10}\)</span>. Images under <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> do not increase it either. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-entropy-that-survives">4. Entropy that survives</h2>
+<p><strong>Lemma 4.1</strong> (a run in one band). For large <span class="math" data-tex="\(M\)">\(M\)</span> the following holds. Let <span class="math" data-tex="\(T\)">\(T\)</span> be a batch, and let <span class="math" data-tex="\(U_0&gt;U_1&gt;\dots&gt;U_l\)">\(U_0&gt;U_1&gt;\dots&gt;U_l\)</span> be consecutive scheduled scales of one band, with parameter <span class="math" data-tex="\(g\)">\(g\)</span>, such that <span class="math" data-tex="\(\lfloor U_0/L_*\rfloor\le k_T\)">\(\lfloor U_0/L_*\rfloor\le k_T\)</span>. Run the schedule, in any experiment that starts at or before the checkpoint before <span class="math" data-tex="\(U_0\)">\(U_0\)</span>. Then at the checkpoint before <span class="math" data-tex="\(U_l\)">\(U_l\)</span>, and at every later checkpoint, the point <span class="math" data-tex="\(Z\)">\(Z\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\operatorname{def}_Z\bigl(\lfloor U_l/L_*\rfloor\bigr)\le2^{-l}+40g+\frac{2\log(\pi D^2)}{U_l}.
+\]">\[
+\operatorname{def}_Z\bigl(\lfloor U_l/L_*\rfloor\bigr)\le2^{-l}+40g+\frac{2\log(\pi D^2)}{U_l}.
+\]</span>
+<p><strong>Proof.</strong> The hypotheses of Theorem 3.1 of <a href="entropy-enrichment.html">Entropy enrichment</a> hold for each <span class="math" data-tex="\((U_j,g)\)">\((U_j,g)\)</span>, <span class="math" data-tex="\(j&lt;l\)">\(j&lt;l\)</span>: the subset sizes are at most <span class="math" data-tex="\(k_T\)">\(k_T\)</span>, and <span class="math" data-tex="\(g^5U_j\ge g^3U_l\ge g_2^3e^{0.05X_{\lceil M/2\rceil}}\)">\(g^5U_j\ge g^3U_l\ge g_2^3e^{0.05X_{\lceil M/2\rceil}}\)</span>, which exceeds <span class="math" data-tex="\(K_D\log T\le K_D\cdot1.05X_M\)">\(K_D\log T\le K_D\cdot1.05X_M\)</span> for large <span class="math" data-tex="\(M\)">\(M\)</span>. Corollary 4.1 there gives deficit at most <span class="math" data-tex="\(2^{-l}+32g\)">\(2^{-l}+32g\)</span> at the checkpoint before <span class="math" data-tex="\(U_l\)">\(U_l\)</span>, at the size <span class="math" data-tex="\(s=\lfloor U_l/L_*\rfloor\)">\(s=\lfloor U_l/L_*\rfloor\)</span>; the starting law plays no role. For a later checkpoint, Proposition 1.1(3) of that lesson and Lemma 3.1 lower the profile at <span class="math" data-tex="\(s\)">\(s\)</span> by at most <span class="math" data-tex="\(4gU_l+\log(\pi D^2)\)">\(4gU_l+\log(\pi D^2)\)</span>, while <span class="math" data-tex="\(sL_*\ge U_l-L_*\ge U_l/2\)">\(sL_*\ge U_l-L_*\ge U_l/2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a batch <span class="math" data-tex="\(T\)">\(T\)</span> in window <span class="math" data-tex="\(m\)">\(m\)</span>, let <span class="math" data-tex="\(U^{(T)}\)">\(U^{(T)}\)</span> be the first scheduled scale of the top band of window <span class="math" data-tex="\(m\)">\(m\)</span> with <span class="math" data-tex="\(U^{(T)}\le a_0T\)">\(U^{(T)}\le a_0T\)</span>. It exists and satisfies <span class="math" data-tex="\(g_0^2a_0T&lt;U^{(T)}\le a_0T\)">\(g_0^2a_0T&lt;U^{(T)}\le a_0T\)</span>, because <span class="math" data-tex="\(\log(a_0T)\)">\(\log(a_0T)\)</span> lies in <span class="math" data-tex="\([X_m-\log4,\ 1.05X_m]\)">\([X_m-\log4,\ 1.05X_m]\)</span>, well inside the band. Let <span class="math" data-tex="\(V_T=g_0^{2l_0}U^{(T)}\)">\(V_T=g_0^{2l_0}U^{(T)}\)</span>, again a scheduled top-band scale, and put</p>
+<span class="math math-display" data-tex="\[
+q_T=\Bigl\lfloor\frac{V_T}{L_*}\Bigr\rfloor.
+\]">\[
+q_T=\Bigl\lfloor\frac{V_T}{L_*}\Bigr\rfloor.
+\]</span>
+<p><strong>Proposition 4.2</strong> (batch entropy). For large <span class="math" data-tex="\(M\)">\(M\)</span>, every batch <span class="math" data-tex="\(T\)">\(T\)</span> satisfies <span class="math" data-tex="\(q_TL_*\ge c_0T\)">\(q_TL_*\ge c_0T\)</span> and <span class="math" data-tex="\(q_T\le k_T\)">\(q_T\le k_T\)</span>. In the run from time <span class="math" data-tex="\(0\)">\(0\)</span>, at the checkpoint before <span class="math" data-tex="\(V_T\)">\(V_T\)</span> and at every later checkpoint, the point <span class="math" data-tex="\(Z\)">\(Z\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+f_Z(q_T)\ge(1-e_0)\,q_TL_*.
+\]">\[
+f_Z(q_T)\ge(1-e_0)\,q_TL_*.
+\]</span>
+<p><strong>Proof.</strong> Since <span class="math" data-tex="\(\lfloor U^{(T)}/L_*\rfloor\le a_0T/L_*\le k_T\)">\(\lfloor U^{(T)}/L_*\rfloor\le a_0T/L_*\le k_T\)</span>, Lemma 4.1 applies with <span class="math" data-tex="\(l=l_0\)">\(l=l_0\)</span>, <span class="math" data-tex="\(g=g_0\)">\(g=g_0\)</span> and <span class="math" data-tex="\(U_l=V_T\)">\(U_l=V_T\)</span>. The deficit is at most <span class="math" data-tex="\(2^{-l_0}+40g_0+2\log(\pi D^2)/V_T&lt;e_0\)">\(2^{-l_0}+40g_0+2\log(\pi D^2)/V_T&lt;e_0\)</span> for large <span class="math" data-tex="\(M\)">\(M\)</span>, by the choice of <span class="math" data-tex="\(l_0\)">\(l_0\)</span> and <span class="math" data-tex="\(g_0\)">\(g_0\)</span>. Finally <span class="math" data-tex="\(q_TL_*\ge V_T-L_*\ge V_T/2&gt;a_0g_0^{2(l_0+1)}T/2=c_0T\)">\(q_TL_*\ge V_T-L_*\ge V_T/2&gt;a_0g_0^{2(l_0+1)}T/2=c_0T\)</span>, and <span class="math" data-tex="\(q_T\le U^{(T)}/L_*\le k_T\)">\(q_T\le U^{(T)}/L_*\le k_T\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 4.3</strong> (smaller batches are cheap). Every batch <span class="math" data-tex="\(T\)">\(T\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\sum_{\text{batches }T&#x27;&lt;T}k_{T&#x27;}\log(2T&#x27;)\le e_0c_0T.
+\]">\[
+\sum_{\text{batches }T&#x27;&lt;T}k_{T&#x27;}\log(2T&#x27;)\le e_0c_0T.
+\]</span>
+<p><strong>Proof.</strong> The batches are powers of <span class="math" data-tex="\(B\)">\(B\)</span>, so Lemma 5.2 of the first lesson bounds the sum by <span class="math" data-tex="\((8\log2)T/(B-1)\le e_0c_0T\)">\((8\log2)T/(B-1)\le e_0c_0T\)</span>, by the choice of <span class="math" data-tex="\(B\)">\(B\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The top bands thus give every batch near <span class="math" data-tex="\(T\)">\(T\)</span> an entropy of order <span class="math" data-tex="\(T\)">\(T\)</span>, and the geometric spacing of the batches makes all residues of the smaller batches together cost only a small fraction of it.</p>
+<h2 id="5-checkpoints-for-the-coverage-induction">5. Checkpoints for the coverage induction</h2>
+<p>Fix a batch <span class="math" data-tex="\(T\)">\(T\)</span> in window <span class="math" data-tex="\(m\)">\(m\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\beta_i=2^{-i}\beta_0,\qquad r_0=\tfrac14,\qquad r_{i+1}=r_i-2\beta_i,
+\]">\[
+\beta_i=2^{-i}\beta_0,\qquad r_0=\tfrac14,\qquad r_{i+1}=r_i-2\beta_i,
+\]</span>
+<p>so that <span class="math" data-tex="\(r_i=\frac14-4\beta_0(1-2^{-i})\in(0.23,0.25]\)">\(r_i=\frac14-4\beta_0(1-2^{-i})\in(0.23,0.25]\)</span>. Let <span class="math" data-tex="\(J=J(T)\)">\(J=J(T)\)</span> be the least index with <span class="math" data-tex="\(\beta_J\log T\le M^{20}\)">\(\beta_J\log T\le M^{20}\)</span>. For large <span class="math" data-tex="\(M\)">\(M\)</span>, <span class="math" data-tex="\(\beta_0\log T&gt;M^{20}\)">\(\beta_0\log T&gt;M^{20}\)</span>, so <span class="math" data-tex="\(J\ge1\)">\(J\ge1\)</span>, and by minimality</p>
+<span class="math math-display" data-tex="\[
+\frac{M^{20}}2&lt;\beta_J\log T\le M^{20},\qquad J\le7M.
+\tag{5.1}
+\]">\[
+\frac{M^{20}}2&lt;\beta_J\log T\le M^{20},\qquad J\le7M.
+\tag{5.1}
+\]</span>
+<p>The bound on <span class="math" data-tex="\(J\)">\(J\)</span> holds because <span class="math" data-tex="\(2^{-J}\ge M^{20}/(2\beta_0\log T)\ge1/(2\cdot1.05\cdot100^M)\)">\(2^{-J}\ge M^{20}/(2\beta_0\log T)\ge1/(2\cdot1.05\cdot100^M)\)</span> for <span class="math" data-tex="\(M\ge1\)">\(M\ge1\)</span>.</p>
+<p>Let <span class="math" data-tex="\(A_i\)">\(A_i\)</span> be the checkpoint just before the first scheduled operation with scale <span class="math" data-tex="\(U\le T^{r_i}\)">\(U\le T^{r_i}\)</span>, for <span class="math" data-tex="\(0\le i\le J\)">\(0\le i\le J\)</span>. Since <span class="math" data-tex="\(0.23X_m&lt;r_i\log T\le0.2625X_m\)">\(0.23X_m&lt;r_i\log T\le0.2625X_m\)</span>, this scale lies in the middle band of window <span class="math" data-tex="\(m\)">\(m\)</span>, and it lies in <span class="math" data-tex="\((g_1^2T^{r_i},T^{r_i}]\)">\((g_1^2T^{r_i},T^{r_i}]\)</span>. Let <span class="math" data-tex="\(S_i\)">\(S_i\)</span> be the number <span class="math" data-tex="\(S_V\)">\(S_V\)</span> of Lemma 3.1 for this scale, and</p>
+<span class="math math-display" data-tex="\[
+\mathcal D_i=\{v\in\mathbb Z[i]:\ |v|\le DS_i\}.
+\]">\[
+\mathcal D_i=\{v\in\mathbb Z[i]:\ |v|\le DS_i\}.
+\]</span>
+<p><strong>Lemma 5.1</strong> (common support of later displacements). For large <span class="math" data-tex="\(M\)">\(M\)</span>: in every continuation experiment from an exact start at <span class="math" data-tex="\(A_i\)">\(A_i\)</span>, every displacement from <span class="math" data-tex="\(A_i\)">\(A_i\)</span> to a later checkpoint lies in <span class="math" data-tex="\(\mathcal D_i\)">\(\mathcal D_i\)</span>, and <span class="math" data-tex="\(\log|\mathcal D_i|\le T^{r_i}\)">\(\log|\mathcal D_i|\le T^{r_i}\)</span>.</p>
+<p><strong>Proof.</strong> The time shift is at most <span class="math" data-tex="\(S_i\)">\(S_i\)</span>, and each step has length at most <span class="math" data-tex="\(D\)">\(D\)</span>. By Lemma 1.1 of the geometric lesson and Lemma 3.1, <span class="math" data-tex="\(\log|\mathcal D_i|\le\log\pi+2\log(DS_i+1)\le\log(\pi D^2)+4g_1T^{r_i}\le T^{r_i}\)">\(\log|\mathcal D_i|\le\log\pi+2\log(DS_i+1)\le\log(\pi D^2)+4g_1T^{r_i}\le T^{r_i}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The set <span class="math" data-tex="\(\mathcal D_i\)">\(\mathcal D_i\)</span> does not depend on the exact start. This common support bound will control the entropy of displacements from a random checkpoint, without conditioning on its value.</p>
+<p><strong>Proposition 5.2</strong> (entropy between checkpoints). For large <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(0\le i&lt;J\)">\(0\le i&lt;J\)</span>, there is a number <span class="math" data-tex="\(s_i\le k_T\)">\(s_i\le k_T\)</span>, depending only on the batch and the schedule, such that in the continuation experiment from every exact start at <span class="math" data-tex="\(A_i\)">\(A_i\)</span>, the point <span class="math" data-tex="\(Y=z_{A_{i+1}}\)">\(Y=z_{A_{i+1}}\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+f_Y(s_i)\ge\bigl(1-e^{-M^3/2}\bigr)s_iL_*,\qquad s_iL_*\ge\exp\bigl(r_i\log T-4M^6\bigr).
+\]">\[
+f_Y(s_i)\ge\bigl(1-e^{-M^3/2}\bigr)s_iL_*,\qquad s_iL_*\ge\exp\bigl(r_i\log T-4M^6\bigr).
+\]</span>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(U_0\)">\(U_0\)</span> be the scale at <span class="math" data-tex="\(A_i\)">\(A_i\)</span>, and <span class="math" data-tex="\(U_0&gt;\dots&gt;U_l\)">\(U_0&gt;\dots&gt;U_l\)</span> the next scheduled scales, with <span class="math" data-tex="\(l=\lceil M^3\rceil\)">\(l=\lceil M^3\rceil\)</span>; put <span class="math" data-tex="\(s_i=\lfloor U_l/L_*\rfloor\)">\(s_i=\lfloor U_l/L_*\rfloor\)</span>. They lie in the middle band and before <span class="math" data-tex="\(A_{i+1}\)">\(A_{i+1}\)</span>: they use at most <span class="math" data-tex="\((l+1)\cdot2M^3\le3M^6\)">\((l+1)\cdot2M^3\le3M^6\)</span> units of <span class="math" data-tex="\(\log U\)">\(\log U\)</span>, whereas <span class="math" data-tex="\((r_i-r_{i+1})\log T=2\beta_i\log T&gt;2M^{20}\)">\((r_i-r_{i+1})\log T=2\beta_i\log T&gt;2M^{20}\)</span> because <span class="math" data-tex="\(i&lt;J\)">\(i&lt;J\)</span>. Also <span class="math" data-tex="\(U_0/L_*\le T^{1/4}\le k_T\)">\(U_0/L_*\le T^{1/4}\le k_T\)</span>. Lemma 4.1 gives, at <span class="math" data-tex="\(A_{i+1}\)">\(A_{i+1}\)</span>, deficit at most <span class="math" data-tex="\(2^{-M^3}+40e^{-M^3}+2\log(\pi D^2)/U_l\le e^{-M^3/2}\)">\(2^{-M^3}+40e^{-M^3}+2\log(\pi D^2)/U_l\le e^{-M^3/2}\)</span>. Finally <span class="math" data-tex="\(U_l\ge g_1^{2l+2}T^{r_i}\ge\exp(r_i\log T-3M^6)\)">\(U_l\ge g_1^{2l+2}T^{r_i}\ge\exp(r_i\log T-3M^6)\)</span> and <span class="math" data-tex="\(s_iL_*\ge U_l/2\)">\(s_iL_*\ge U_l/2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 5.3</strong> (terminal entropy). For large <span class="math" data-tex="\(M\)">\(M\)</span>, in the continuation experiment from every exact start at <span class="math" data-tex="\(A_J\)">\(A_J\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{av}_c\bigl[\log p_c-H(z_{t_*}\bmod\pi_c)\bigr]\le e^{-90M^{20}}L_*,
+\]">\[
+\operatorname{av}_c\bigl[\log p_c-H(z_{t_*}\bmod\pi_c)\bigr]\le e^{-90M^{20}}L_*,
+\]</span>
+<p>the mean being over the <span class="math" data-tex="\(2k_T\)">\(2k_T\)</span> signed coordinates of the batch.</p>
+<p><strong>Proof.</strong> After <span class="math" data-tex="\(A_J\)">\(A_J\)</span> the schedule reaches the bottom band of window <span class="math" data-tex="\(m\)">\(m\)</span>. Let <span class="math" data-tex="\(U_0\)">\(U_0\)</span> be its first scale and <span class="math" data-tex="\(U_0&gt;\dots&gt;U_l\)">\(U_0&gt;\dots&gt;U_l\)</span> the following ones, with <span class="math" data-tex="\(l=\lceil200M^{20}\rceil\)">\(l=\lceil200M^{20}\rceil\)</span>. They use at most <span class="math" data-tex="\((l+1)\cdot200M^{20}\le5\cdot10^4M^{40}\)">\((l+1)\cdot200M^{20}\le5\cdot10^4M^{40}\)</span> units of <span class="math" data-tex="\(\log U\)">\(\log U\)</span>, less than the band length <span class="math" data-tex="\(0.05X_m\)">\(0.05X_m\)</span> for large <span class="math" data-tex="\(M\)">\(M\)</span>, and <span class="math" data-tex="\(U_0/L_*\le e^{0.1X_m}\le k_T\)">\(U_0/L_*\le e^{0.1X_m}\le k_T\)</span>. Lemma 4.1 gives, at the final checkpoint, deficit at most <span class="math" data-tex="\(2^{-200M^{20}}+40e^{-100M^{20}}+2\log(\pi D^2)/U_l\le e^{-90M^{20}}\)">\(2^{-200M^{20}}+40e^{-100M^{20}}+2\log(\pi D^2)/U_l\le e^{-90M^{20}}\)</span> at <span class="math" data-tex="\(s=\lfloor U_l/L_*\rfloor\)">\(s=\lfloor U_l/L_*\rfloor\)</span>. By concavity (Proposition 1.1(2) of <a href="entropy-enrichment.html">Entropy enrichment</a>), <span class="math" data-tex="\(f_{z_{t_*}}(1)\ge f_{z_{t_*}}(s)/s\ge(1-e^{-90M^{20}})L_*\)">\(f_{z_{t_*}}(1)\ge f_{z_{t_*}}(s)/s\ge(1-e^{-90M^{20}})L_*\)</span>. Since the first index of a random signed ordering is uniform on the signed coordinates, <span class="math" data-tex="\(f_{z_{t_*}}(1)=\operatorname{av}_cH(z_{t_*}\bmod\pi_c)\)">\(f_{z_{t_*}}(1)=\operatorname{av}_cH(z_{t_*}\bmod\pi_c)\)</span>, and <span class="math" data-tex="\(\operatorname{av}_c\log p_c=L_*\)">\(\operatorname{av}_c\log p_c=L_*\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-coverage-at-every-checkpoint">6. Coverage at every checkpoint</h2>
+<p>For a signed coordinate <span class="math" data-tex="\(c\)">\(c\)</span> of the batch, with prime <span class="math" data-tex="\(p=p_c\)">\(p=p_c\)</span>, a checkpoint <span class="math" data-tex="\(A_i\)">\(A_i\)</span> and an integer <span class="math" data-tex="\(a\ge0\)">\(a\ge0\)</span>, let <span class="math" data-tex="\(b_{i,a,c}\)">\(b_{i,a,c}\)</span> be the law of <span class="math" data-tex="\(z_{t_*}\bmod\pi_c\)">\(z_{t_*}\bmod\pi_c\)</span> in the continuation experiment from the exact start <span class="math" data-tex="\(A_i=a\)">\(A_i=a\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\tau_0=\tfrac14,\quad\delta_i=2^{-i-6},\quad\tau_{i+1}=\tau_i+4\delta_i,\qquad \eta_0=\tfrac1{100},\quad\eta_{i+1}=\frac{\eta_i\delta_i}{100}.
+\]">\[
+\tau_0=\tfrac14,\quad\delta_i=2^{-i-6},\quad\tau_{i+1}=\tau_i+4\delta_i,\qquad \eta_0=\tfrac1{100},\quad\eta_{i+1}=\frac{\eta_i\delta_i}{100}.
+\]</span>
+<p>Then <span class="math" data-tex="\(\tau_i=\frac38-2^{-i-3}&lt;\frac38\)">\(\tau_i=\frac38-2^{-i-3}&lt;\frac38\)</span> and <span class="math" data-tex="\(\eta_i=100^{-(i+1)}2^{-i(i-1)/2-6i}\)">\(\eta_i=100^{-(i+1)}2^{-i(i-1)/2-6i}\)</span>. By (5.1), <span class="math" data-tex="\(\log(1/\delta_i)\le8M\)">\(\log(1/\delta_i)\le8M\)</span>, and for an absolute constant <span class="math" data-tex="\(C\)">\(C\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\eta_i\ge e^{-CM^2},\qquad \eta_i\delta_i\beta_{i+1}\ge e^{-CM^2}\qquad(0\le i\le J).
+\tag{6.1}
+\]">\[
+\eta_i\ge e^{-CM^2},\qquad \eta_i\delta_i\beta_{i+1}\ge e^{-CM^2}\qquad(0\le i\le J).
+\tag{6.1}
+\]</span>
+<p><strong>Proposition 6.1</strong> (terminal coverage). For large <span class="math" data-tex="\(M\)">\(M\)</span>, for every batch <span class="math" data-tex="\(T\)">\(T\)</span>, every <span class="math" data-tex="\(0\le i\le J(T)\)">\(0\le i\le J(T)\)</span> and every integer <span class="math" data-tex="\(a\ge0\)">\(a\ge0\)</span>, all but at most <span class="math" data-tex="\(2k_T\eta_i\)">\(2k_T\eta_i\)</span> signed coordinates <span class="math" data-tex="\(c\)">\(c\)</span> of the batch satisfy</p>
+<span class="math math-display" data-tex="\[
+\#\Bigl\{u\in\mathbb Z[i]/(\pi_c):\ b_{i,a,c}(u)&lt;\frac{\tau_i}{p_c}\Bigr\}&lt;p_c^{1-\beta_i},
+\]">\[
+\#\Bigl\{u\in\mathbb Z[i]/(\pi_c):\ b_{i,a,c}(u)&lt;\frac{\tau_i}{p_c}\Bigr\}&lt;p_c^{1-\beta_i},
+\]</span>
+<p>that is, <span class="math" data-tex="\(b_{i,a,c}\)">\(b_{i,a,c}\)</span> has <span class="math" data-tex="\((\tau_i,\beta_i)\)">\((\tau_i,\beta_i)\)</span>-coverage.</p>
+<p><strong>Proof.</strong> We proceed by downward induction on <span class="math" data-tex="\(i\)">\(i\)</span>.</p>
+<p><em>The base <span class="math" data-tex="\(i=J\)">\(i=J\)</span>.</em> Fix an exact start at <span class="math" data-tex="\(A_J\)">\(A_J\)</span>. For each coordinate, <span class="math" data-tex="\(\log p_c-H(z_{t_*}\bmod\pi_c)\)">\(\log p_c-H(z_{t_*}\bmod\pi_c)\)</span> is the relative entropy of <span class="math" data-tex="\(b_{J,a,c}\)">\(b_{J,a,c}\)</span> from the uniform law, by (5.1) of the entropy lesson. If a coordinate fails <span class="math" data-tex="\((\tau_J,\beta_J)\)">\((\tau_J,\beta_J)\)</span>-coverage, its set <span class="math" data-tex="\(K\)">\(K\)</span> of residues of probability below <span class="math" data-tex="\(\tau_J/p\)">\(\tau_J/p\)</span> has at least <span class="math" data-tex="\(p^{1-\beta_J}\)">\(p^{1-\beta_J}\)</span> elements, and the uniform law gives <span class="math" data-tex="\(K\)">\(K\)</span> at least <span class="math" data-tex="\((1-\tau_J)|K|/p\ge\frac58p^{-\beta_J}\)">\((1-\tau_J)|K|/p\ge\frac58p^{-\beta_J}\)</span> more mass than <span class="math" data-tex="\(b_{J,a,c}\)">\(b_{J,a,c}\)</span>. Since <span class="math" data-tex="\(p\le2T\)">\(p\le2T\)</span> and <span class="math" data-tex="\(\beta_J\log T\le M^{20}\)">\(\beta_J\log T\le M^{20}\)</span>, this total variation is at least <span class="math" data-tex="\(\frac5{16}e^{-M^{20}}\)">\(\frac5{16}e^{-M^{20}}\)</span>, and Pinsker's inequality gives relative entropy at least <span class="math" data-tex="\(2(\frac5{16})^2e^{-2M^{20}}\ge\frac16e^{-2M^{20}}\)">\(2(\frac5{16})^2e^{-2M^{20}}\ge\frac16e^{-2M^{20}}\)</span>. By Proposition 5.3, the fraction of failing coordinates is at most</p>
+<span class="math math-display" data-tex="\[
+6e^{-88M^{20}}L_*\le6e^{-88M^{20}}\cdot2.1\cdot100^M&lt;e^{-CM^2}\le\eta_J
+\]">\[
+6e^{-88M^{20}}L_*\le6e^{-88M^{20}}\cdot2.1\cdot100^M&lt;e^{-CM^2}\le\eta_J
+\]</span>
+<p>for large <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p><em>The step from <span class="math" data-tex="\(i+1\)">\(i+1\)</span> to <span class="math" data-tex="\(i\)">\(i\)</span>.</em> Assume the assertion for <span class="math" data-tex="\(i+1\)">\(i+1\)</span>, and fix an exact start <span class="math" data-tex="\(A_i=a\)">\(A_i=a\)</span>. Apply Theorem 3.1 of <a href="coverage-from-shared-continuations.html">Coverage from shared continuations</a> with <span class="math" data-tex="\(\Lambda=\mathbb Z[i]\)">\(\Lambda=\mathbb Z[i]\)</span>, the signed coordinates of the batch, the mixing variable <span class="math" data-tex="\(A=A_{i+1}\)">\(A=A_{i+1}\)</span> in this experiment, <span class="math" data-tex="\(y(a&#x27;)=z_{a&#x27;}\)">\(y(a&#x27;)=z_{a&#x27;}\)</span>, and <span class="math" data-tex="\(\nu_{a&#x27;}\)">\(\nu_{a&#x27;}\)</span> the law of <span class="math" data-tex="\(z_{t_*}-z_{a&#x27;}\)">\(z_{t_*}-z_{a&#x27;}\)</span> in the continuation experiment from the exact start <span class="math" data-tex="\(A_{i+1}=a&#x27;\)">\(A_{i+1}=a&#x27;\)</span>. Given <span class="math" data-tex="\(A_{i+1}\)">\(A_{i+1}\)</span>, draw <span class="math" data-tex="\(n=n_i=\lceil T^{6\beta_i/5}\rceil\)">\(n=n_i=\lceil T^{6\beta_i/5}\rceil\)</span> independent continuations to the final time, and let <span class="math" data-tex="\(h_1,\dots,h_n\)">\(h_1,\dots,h_n\)</span> be their displacements from <span class="math" data-tex="\(Y=z_{A_{i+1}}\)">\(Y=z_{A_{i+1}}\)</span>. Then <span class="math" data-tex="\(Z=Y+h_1\)">\(Z=Y+h_1\)</span> has the law of <span class="math" data-tex="\(z_{t_*}\)">\(z_{t_*}\)</span> in the experiment from <span class="math" data-tex="\(A_i=a\)">\(A_i=a\)</span>, so the conclusion of the theorem is the assertion for <span class="math" data-tex="\(i\)">\(i\)</span> at the start <span class="math" data-tex="\(a\)">\(a\)</span>. We check its hypotheses with</p>
+<span class="math math-display" data-tex="\[
+(\tau,\delta,\tau&#x27;,\beta,\beta&#x27;,\eta,\eta&#x27;)=(\tau_i,\delta_i,\tau_{i+1},\beta_i,\beta_{i+1},\eta_i,\eta_{i+1}),\qquad s=s_i.
+\]">\[
+(\tau,\delta,\tau&#x27;,\beta,\beta&#x27;,\eta,\eta&#x27;)=(\tau_i,\delta_i,\tau_{i+1},\beta_i,\beta_{i+1},\eta_i,\eta_{i+1}),\qquad s=s_i.
+\]</span>
+<ol>
+<li><em>Coverage at the later checkpoint:</em> this is the induction hypothesis at every exact start <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> of <span class="math" data-tex="\(A_{i+1}\)">\(A_{i+1}\)</span>.</li>
+<li><em>Entropy:</em> Proposition 5.2 gives <span class="math" data-tex="\(f_Y(s_i)\ge(1-\varepsilon)s_iL_*\)">\(f_Y(s_i)\ge(1-\varepsilon)s_iL_*\)</span> with <span class="math" data-tex="\(\varepsilon=e^{-M^3/2}\)">\(\varepsilon=e^{-M^3/2}\)</span>. Every <span class="math" data-tex="\(h_l\)">\(h_l\)</span> lies in <span class="math" data-tex="\(\mathcal D_{i+1}\)">\(\mathcal D_{i+1}\)</span>, whatever the value of <span class="math" data-tex="\(A_{i+1}\)">\(A_{i+1}\)</span>, by Lemma 5.1. Hence <span class="math" data-tex="\(H(\mathcal H)\le n\log|\mathcal D_{i+1}|\le2T^{6\beta_i/5}T^{r_{i+1}}\)">\(H(\mathcal H)\le n\log|\mathcal D_{i+1}|\le2T^{6\beta_i/5}T^{r_{i+1}}\)</span>, and since <span class="math" data-tex="\(r_i-r_{i+1}=2\beta_i\)">\(r_i-r_{i+1}=2\beta_i\)</span> and <span class="math" data-tex="\(\beta_i\log T&gt;M^{20}\)">\(\beta_i\log T&gt;M^{20}\)</span>,
+<span class="math math-display" data-tex="\[
+\kappa=\frac{H(\mathcal H)}{s_iL_*}\le2\exp\Bigl(-\frac45\beta_i\log T+4M^6\Bigr)\le e^{-M^3}.
+\]">\[
+\kappa=\frac{H(\mathcal H)}{s_iL_*}\le2\exp\Bigl(-\frac45\beta_i\log T+4M^6\Bigr)\le e^{-M^3}.
+\]</span></li>
+<li><em>Budget:</em> <span class="math" data-tex="\(\eta_{i+1}=\eta_i\delta_i/100\)">\(\eta_{i+1}=\eta_i\delta_i/100\)</span>, and <span class="math" data-tex="\(\varepsilon+\kappa\le2e^{-M^3/2}\le\eta_i\delta_i\beta_{i+1}/16\)">\(\varepsilon+\kappa\le2e^{-M^3/2}\le\eta_i\delta_i\beta_{i+1}/16\)</span> by (6.1), for large <span class="math" data-tex="\(M\)">\(M\)</span>.</li>
+<li><em>Many trials:</em> for every prime <span class="math" data-tex="\(p\)">\(p\)</span> of the batch, <span class="math" data-tex="\(T\le p\le2T\)">\(T\le p\le2T\)</span> gives <span class="math" data-tex="\(np^{-\beta_i}\ge2^{-\beta_i}T^{\beta_i/5}\ge\frac12e^{M^{20}/5}\)">\(np^{-\beta_i}\ge2^{-\beta_i}T^{\beta_i/5}\ge\frac12e^{M^{20}/5}\)</span>, so <span class="math" data-tex="\(\delta_i^2np^{-\beta_i}/2\ge e^{M^{20}/5-17M}\)">\(\delta_i^2np^{-\beta_i}/2\ge e^{M^{20}/5-17M}\)</span>, which exceeds <span class="math" data-tex="\(\log p+\log(100/\delta_i)\le2.1\cdot100^M+9M\)">\(\log p+\log(100/\delta_i)\le2.1\cdot100^M+9M\)</span> for large <span class="math" data-tex="\(M\)">\(M\)</span>; this gives <span class="math" data-tex="\(p\exp(-\delta_i^2np^{-\beta_i}/2)\le\delta_i/100\)">\(p\exp(-\delta_i^2np^{-\beta_i}/2)\le\delta_i/100\)</span>. Also <span class="math" data-tex="\(\log(1/\delta_i)\le8M&lt;M^{20}/4&lt;\frac{\beta_{i+1}}2\log p\)">\(\log(1/\delta_i)\le8M&lt;M^{20}/4&lt;\frac{\beta_{i+1}}2\log p\)</span>, by (5.1).</li>
+<li><em>Size:</em> <span class="math" data-tex="\(\log(2e/\delta_i)\le8M+2&lt;M^{20}/8&lt;\frac{\beta_{i+1}}4\log T\)">\(\log(2e/\delta_i)\le8M+2&lt;M^{20}/8&lt;\frac{\beta_{i+1}}4\log T\)</span>.</li>
+</ol>
+<p>The theorem gives the assertion for <span class="math" data-tex="\(i\)">\(i\)</span> at the start <span class="math" data-tex="\(a\)">\(a\)</span>, which was arbitrary. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>At the first checkpoint, the conclusion reads: from every exact start at <span class="math" data-tex="\(A_0\)">\(A_0\)</span>, for at least <span class="math" data-tex="\(99\%\)">\(99\%\)</span> of the signed coordinates, the final residue takes every value with probability at least <span class="math" data-tex="\(1/(4p)\)">\(1/(4p)\)</span>, apart from fewer than <span class="math" data-tex="\(p^{199/200}\)">\(p^{199/200}\)</span> exceptional values.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>Exercise 7.1 (easy).</strong> Check that <span class="math" data-tex="\(2^{-15}+40\cdot10^{-6}&lt;10^{-4}\)">\(2^{-15}+40\cdot10^{-6}&lt;10^{-4}\)</span>, while <span class="math" data-tex="\(2^{-14}+40\cdot10^{-6}&gt;10^{-4}\)">\(2^{-14}+40\cdot10^{-6}&gt;10^{-4}\)</span>. Which inequality between the constants does the proof of Proposition 4.2 need?</p>
+<p><strong>Exercise 7.2 (easy).</strong> Verify the formulas <span class="math" data-tex="\(r_i=\frac14-4\beta_0(1-2^{-i})\)">\(r_i=\frac14-4\beta_0(1-2^{-i})\)</span>, <span class="math" data-tex="\(\tau_i=\frac38-2^{-i-3}\)">\(\tau_i=\frac38-2^{-i-3}\)</span> and <span class="math" data-tex="\(\eta_i=100^{-(i+1)}2^{-i(i-1)/2-6i}\)">\(\eta_i=100^{-(i+1)}2^{-i(i-1)/2-6i}\)</span> by induction.</p>
+<p><strong>Exercise 7.3 (medium).</strong> Show that the number of batches <span class="math" data-tex="\(T=B^j\)">\(T=B^j\)</span> in the window <span class="math" data-tex="\([X_m,1.05X_m]\)">\([X_m,1.05X_m]\)</span> is at least <span class="math" data-tex="\(0.05X_m/\log B-1\)">\(0.05X_m/\log B-1\)</span>.</p>
+<p><strong>Exercise 7.4 (medium).</strong> Explain why Lemma 5.1 bounds <span class="math" data-tex="\(H(\mathcal H)\)">\(H(\mathcal H)\)</span> without conditioning on <span class="math" data-tex="\(A_{i+1}\)">\(A_{i+1}\)</span>, although the displacements <span class="math" data-tex="\(h_l\)">\(h_l\)</span> are independent only given <span class="math" data-tex="\(A_{i+1}\)">\(A_{i+1}\)</span>.</p>
+<p><strong>Exercise 7.5 (medium).</strong> Show that in Lemma 3.2 the offset length <span class="math" data-tex="\(N\)">\(N\)</span> cannot be much smaller: if the final offset were uniform on <span class="math" data-tex="\(\{0,\dots,N-1\}\)">\(\{0,\dots,N-1\}\)</span>, then the total variation between the laws of <span class="math" data-tex="\(O\)">\(O\)</span> and <span class="math" data-tex="\(O+a\)">\(O+a\)</span> equals <span class="math" data-tex="\(a/N\)">\(a/N\)</span> for <span class="math" data-tex="\(0\le a\le N\)">\(0\le a\le N\)</span>.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> <span class="math" data-tex="\(2^{-15}\approx3.05\cdot10^{-5}\)">\(2^{-15}\approx3.05\cdot10^{-5}\)</span> and <span class="math" data-tex="\(2^{-14}\approx6.10\cdot10^{-5}\)">\(2^{-14}\approx6.10\cdot10^{-5}\)</span>; with <span class="math" data-tex="\(4\cdot10^{-5}\)">\(4\cdot10^{-5}\)</span> added, the sums are about <span class="math" data-tex="\(7.05\cdot10^{-5}\)">\(7.05\cdot10^{-5}\)</span> and <span class="math" data-tex="\(1.01\cdot10^{-4}\)">\(1.01\cdot10^{-4}\)</span>. The proof needs the strict inequality <span class="math" data-tex="\(2^{-l_0}+40g_0&lt;e_0\)">\(2^{-l_0}+40g_0&lt;e_0\)</span>, which leaves room for the term <span class="math" data-tex="\(2\log(\pi D^2)/V_T\)">\(2\log(\pi D^2)/V_T\)</span>; that term tends to <span class="math" data-tex="\(0\)">\(0\)</span> as <span class="math" data-tex="\(M\)">\(M\)</span> grows. So <span class="math" data-tex="\(l_0=15\)">\(l_0=15\)</span> is the least admissible value with <span class="math" data-tex="\(g_0=10^{-6}\)">\(g_0=10^{-6}\)</span>.</p>
+<p><strong>7.2.</strong> For <span class="math" data-tex="\(r_i\)">\(r_i\)</span>: <span class="math" data-tex="\(r_{i+1}=\frac14-4\beta_0(1-2^{-i})-2^{1-i}\beta_0=\frac14-4\beta_0(1-2^{-i-1})\)">\(r_{i+1}=\frac14-4\beta_0(1-2^{-i})-2^{1-i}\beta_0=\frac14-4\beta_0(1-2^{-i-1})\)</span>. For <span class="math" data-tex="\(\tau_i\)">\(\tau_i\)</span>: <span class="math" data-tex="\(\frac38-2^{-i-3}+4\cdot2^{-i-6}=\frac38-2^{-i-4}\)">\(\frac38-2^{-i-3}+4\cdot2^{-i-6}=\frac38-2^{-i-4}\)</span>. For <span class="math" data-tex="\(\eta_i\)">\(\eta_i\)</span>: multiplying by <span class="math" data-tex="\(\delta_i/100=2^{-i-6}/100\)">\(\delta_i/100=2^{-i-6}/100\)</span> raises the power of <span class="math" data-tex="\(100\)">\(100\)</span> by one and adds <span class="math" data-tex="\(i+6\)">\(i+6\)</span> to the exponent of <span class="math" data-tex="\(2\)">\(2\)</span>, and <span class="math" data-tex="\(\frac{i(i-1)}2+6i+i+6=\frac{(i+1)i}2+6(i+1)\)">\(\frac{i(i-1)}2+6i+i+6=\frac{(i+1)i}2+6(i+1)\)</span>.</p>
+<p><strong>7.3.</strong> The numbers <span class="math" data-tex="\(j\log B\)">\(j\log B\)</span> with <span class="math" data-tex="\(X_m\le j\log B\le1.05X_m\)">\(X_m\le j\log B\le1.05X_m\)</span> are the integers <span class="math" data-tex="\(j\)">\(j\)</span> in an interval of length <span class="math" data-tex="\(0.05X_m/\log B\)">\(0.05X_m/\log B\)</span>, and such an interval contains at least its length minus one integers.</p>
+<p><strong>7.4.</strong> For each value <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> of <span class="math" data-tex="\(A_{i+1}\)">\(A_{i+1}\)</span>, every <span class="math" data-tex="\(h_l\)">\(h_l\)</span> lies in <span class="math" data-tex="\(\mathcal D_{i+1}\)">\(\mathcal D_{i+1}\)</span>, a set that does not depend on <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span>. So the vector <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> takes values in <span class="math" data-tex="\(\mathcal D_{i+1}^n\)">\(\mathcal D_{i+1}^n\)</span>, and <span class="math" data-tex="\(H(\mathcal H)\le n\log|\mathcal D_{i+1}|\)">\(H(\mathcal H)\le n\log|\mathcal D_{i+1}|\)</span> by Corollary 1.3 of the entropy lesson, with no independence needed.</p>
+<p><strong>7.5.</strong> The laws of <span class="math" data-tex="\(O\)">\(O\)</span> and <span class="math" data-tex="\(O+a\)">\(O+a\)</span> are uniform on <span class="math" data-tex="\(\{0,\dots,N-1\}\)">\(\{0,\dots,N-1\}\)</span> and <span class="math" data-tex="\(\{a,\dots,a+N-1\}\)">\(\{a,\dots,a+N-1\}\)</span>; they agree on the overlap of <span class="math" data-tex="\(N-a\)">\(N-a\)</span> points and differ on <span class="math" data-tex="\(a\)">\(a\)</span> points at each end, each of mass <span class="math" data-tex="\(1/N\)">\(1/N\)</span>. So the distance is <span class="math" data-tex="\(a/N\)">\(a/N\)</span>. To make it at most <span class="math" data-tex="\(T_+^{-9}\)">\(T_+^{-9}\)</span> for shifts up to <span class="math" data-tex="\(T_+\)">\(T_+\)</span>, one needs <span class="math" data-tex="\(N\ge T_+^{10}\)">\(N\ge T_+^{10}\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-moat] OpenAI, Bounded-step walks on Gaussian primes, preprint, 26 September 2026. https://github.com/openai/math/blob/main/preprints/Bounded-Step-Walks-on-Gaussian-Primes-September-26-2026/paper.pdf</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

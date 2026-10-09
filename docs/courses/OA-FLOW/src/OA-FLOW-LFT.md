@@ -675,9 +675,9 @@ The [full normal biduality construction](OA-FLOW-ND.md#nd-construction), with it
  \tag{LFT6.n}
 \]
 whose three generator formulas are
-\
+\[
  \begin{aligned}
- [\Phi_{\rm ND}(\jmath(i(A)))\xi&=\sigma_{-r}^\varphi(A)\xi(r),\\
+ [\Phi_{\rm ND}(\jmath(i(A)))\xi](r)&=\sigma_{-r}^\varphi(A)\xi(r),\\
  \Phi_{\rm ND}(\jmath(\Lambda(t)))&=1\otimes L_t,\\
  \Phi_{\rm ND}(\ell_s)&=1\otimes M_{e^{-isr}}.
  \end{aligned}

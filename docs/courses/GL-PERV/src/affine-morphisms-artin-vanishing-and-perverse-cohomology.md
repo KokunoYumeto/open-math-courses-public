@@ -139,7 +139,7 @@ where the twist is omitted classically. The target is a point, so ordinary and p
 Thus the upper test holds. Smooth duality, with the orientation supplied by the complex or étale theory, reads
 
 \[
-D_X(f^*K[r])\simeq f^*(D_YK)r.
+D_X(f^*K[r])\simeq f^*(D_YK)[r](r).
 \tag{3.1}
 \]
 

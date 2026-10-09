@@ -51,9 +51,9 @@ The displayed six positions are a finite window of the bijection (HA16); the dot
 \]
 
 Represent \(D_i\) on \(H_i=L^2(X_i,\mu_i)\). On \(\ell^2(\mathbb Z)\otimes H_i\), define
-\
- [\pi_i(f)\xi=\beta_i^{-k}(f)\xi(k),\qquad
- u_i\xi=\xi(k-1),\qquad A_i=\{\pi_i(D_i),u_i\}''.
+\[
+ [\pi_i(f)\xi](k)=\beta_i^{-k}(f)\xi(k),\qquad
+ [u_i\xi](k)=\xi(k-1),\qquad A_i=\{\pi_i(D_i),u_i\}''.
  \tag{HA4}
 \]
 The normality and representation-independence theorem [NR3–4](OA-FLOW-NR.md#oa-flow.nr.3) applies, including its arbitrary-net proof. In the discrete case normality also follows entry by entry from the normal automorphisms \(\beta_i^{-k}\).

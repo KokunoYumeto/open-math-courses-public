@@ -31,8 +31,8 @@ This is an equality of whole regular tempered distributions. For \(n=2,a=1\), pu
  u(B\cdot)(\phi)=|\det B|^{-1}u(\phi\circ B^{-1}).
 \]
 All derivatives of a linearly substituted Schwartz test are finite linear combinations of derivatives of the original test. The bounds \(|Bx|\le C_B|x|\), \(|x|\le C_{B^{-1}}|Bx|\) follow by summing its finitely many entries. They show continuity of this test map in every weighted seminorm. The absolute Jacobian substitution in the Fourier integral gives
-\
- F\phi(B^{-1}y)=|\det B|\,F[\phi\circ B^T.
+\[
+ F\phi(B^{-1}y)=|\det B|\,F[\phi\circ B^T](y).
 \]
 Consequently, directly on distributions,
 \[
@@ -40,7 +40,7 @@ Consequently, directly on distributions,
  (F[u(B\cdot)])(\phi)
  &=u(F[\phi\circ B^T])\\
  &=(Fu)(\phi\circ B^T)
- =\bigl|\det B|^{-1}(Fu)(B^{-T}\cdot)\bigr.
+ =\bigl[|\det B|^{-1}(Fu)(B^{-T}\cdot)\bigr](\phi).
  \end{aligned}
 \]
 This proof does not require the transformed distribution to have a density.

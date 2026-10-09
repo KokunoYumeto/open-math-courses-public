@@ -1,0 +1,226 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Entropy enrichment</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents</a><a href="differences-of-a-walk-and-separating-products.html">Previous lesson</a><a href="coverage-from-shared-continuations.html">Next lesson</a><a href="src/entropy-enrichment.md">Editable source</a></nav><main><article><h1 id="entropy-enrichment">Entropy enrichment</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Sample a point of a walk with bounded steps at a random time, and reduce it modulo many prime factors at once. How uniformly are the residues spread? This lesson proves that a simple random operation spreads them further. Starting from the sampled time, look at a long stretch of the walk ahead, pick one of its distinct differences uniformly at random, and move to one of the two endpoints of that difference. The residues of the new point carry, on average over random coordinates, at least half of the maximal possible entropy plus half of the entropy fraction that the old point had, up to a small error. Iterating the operation at decreasing scales drives the entropy of the residues to almost its maximal value, whatever the starting time.</p>
+<p>The proof combines the many-differences theorem and the separation of differences by randomly signed products from <a href="differences-of-a-walk-and-separating-products.html">Differences of a walk and separating products</a> with the entropy calculus of <a href="entropy-of-finite-random-variables.html">Entropy of finite random variables</a>, and Chebyshev's inequality for sampling without replacement from <a href="concentration-and-the-discrete-cube.html">Concentration and the discrete cube</a>. The setting is that of <a href="walks-through-gaussian-primes.html">Walks through Gaussian primes</a>.</p>
+<p>A basic reference is [OpenAI-moat].</p>
+<h2 id="1-residue-entropy-profiles">1. Residue entropy profiles</h2>
+<p>Throughout, <span class="math" data-tex="\(D\ge1\)">\(D\ge1\)</span>, and <span class="math" data-tex="\(z_0,z_1,\dots\)">\(z_0,z_1,\dots\)</span> is a fixed infinite <span class="math" data-tex="\(D\)">\(D\)</span>-walk in <span class="math" data-tex="\(\mathbb Z[i]\)">\(\mathbb Z[i]\)</span>; no congruence condition is assumed. Let <span class="math" data-tex="\(T\ge5\)">\(T\ge5\)</span>, and let <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> be a set of <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span> distinct rational primes congruent to <span class="math" data-tex="\(1\)">\(1\)</span> modulo <span class="math" data-tex="\(4\)">\(4\)</span>, all in <span class="math" data-tex="\([T,2T]\)">\([T,2T]\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+L_*=\frac1k\sum_{p\in\mathcal B}\log p,\qquad \log T\le L_*\le\log(2T)\le2\log T.
+\]">\[
+L_*=\frac1k\sum_{p\in\mathcal B}\log p,\qquad \log T\le L_*\le\log(2T)\le2\log T.
+\]</span>
+<p>As in Example 7.4 of <a href="entropy-of-finite-random-variables.html">Entropy of finite random variables</a>, a <strong>signed coordinate</strong> is a pair <span class="math" data-tex="\(c=(p,\pm)\)">\(c=(p,\pm)\)</span> consisting of a prime <span class="math" data-tex="\(p\in\mathcal B\)">\(p\in\mathcal B\)</span> and one of its two conjugate factors <span class="math" data-tex="\(\pi_c\)">\(\pi_c\)</span>; there are <span class="math" data-tex="\(2k\)">\(2k\)</span> of them. Let <span class="math" data-tex="\(c_1,\dots,c_k\)">\(c_1,\dots,c_k\)</span> be a <strong>random signed ordering</strong>: <span class="math" data-tex="\(c_j=(p_j,\sigma_j)\)">\(c_j=(p_j,\sigma_j)\)</span>, where <span class="math" data-tex="\(p_1,\dots,p_k\)">\(p_1,\dots,p_k\)</span> is a uniformly random ordering of <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> and the signs <span class="math" data-tex="\(\sigma_j\)">\(\sigma_j\)</span> are independent fair coins. This sequence is exchangeable, each <span class="math" data-tex="\(c_j\)">\(c_j\)</span> is uniform on the signed coordinates, and it is independent of everything else. For a set <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> of signed coordinates and a Gaussian integer <span class="math" data-tex="\(z\)">\(z\)</span>, write</p>
+<span class="math math-display" data-tex="\[
+F_{\mathcal S}(z)=\bigl(z\bmod\pi_c\bigr)_{c\in\mathcal S}\in\prod_{c\in\mathcal S}\mathbb Z[i]/(\pi_c),
+\]">\[
+F_{\mathcal S}(z)=\bigl(z\bmod\pi_c\bigr)_{c\in\mathcal S}\in\prod_{c\in\mathcal S}\mathbb Z[i]/(\pi_c),
+\]</span>
+<p>a homomorphism of groups. For a random point <span class="math" data-tex="\(Z\)">\(Z\)</span> of <span class="math" data-tex="\(\mathbb Z[i]\)">\(\mathbb Z[i]\)</span> taking finitely many values, its <strong>residue entropy profile</strong> is</p>
+<span class="math math-display" data-tex="\[
+f_Z(s)=\mathbb E\,H\bigl(F_{\{c_1,\dots,c_s\}}(Z)\bigr)\qquad(0\le s\le k),
+\]">\[
+f_Z(s)=\mathbb E\,H\bigl(F_{\{c_1,\dots,c_s\}}(Z)\bigr)\qquad(0\le s\le k),
+\]</span>
+<p>an average of entropies computed with the ordering fixed (Convention 7.1 of the entropy lesson). For <span class="math" data-tex="\(s\ge1\)">\(s\ge1\)</span> its <strong>normalized deficit</strong> is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{def}_Z(s)=1-\frac{f_Z(s)}{sL_*}.
+\]">\[
+\operatorname{def}_Z(s)=1-\frac{f_Z(s)}{sL_*}.
+\]</span>
+<p><strong>Proposition 1.1</strong> (properties of profiles). Let <span class="math" data-tex="\(Z\)">\(Z\)</span>, <span class="math" data-tex="\(X\)">\(X\)</span>, <span class="math" data-tex="\(Y\)">\(Y\)</span> be random points taking finitely many values.</p>
+<ol>
+<li><span class="math" data-tex="\(f_Z(0)=0\)">\(f_Z(0)=0\)</span> and <span class="math" data-tex="\(0\le f_Z(s)\le sL_*\)">\(0\le f_Z(s)\le sL_*\)</span>; hence <span class="math" data-tex="\(0\le\operatorname{def}_Z(s)\le1\)">\(0\le\operatorname{def}_Z(s)\le1\)</span>.</li>
+<li><span class="math" data-tex="\(f_Z\)">\(f_Z\)</span> is concave: for <span class="math" data-tex="\(1\le s&lt;k\)">\(1\le s&lt;k\)</span>, <span class="math" data-tex="\(f_Z(s+1)-f_Z(s)\le f_Z(s)/s\)">\(f_Z(s+1)-f_Z(s)\le f_Z(s)/s\)</span>, and <span class="math" data-tex="\(f_Z(1)\ge f_Z(s)/s\)">\(f_Z(1)\ge f_Z(s)/s\)</span> for <span class="math" data-tex="\(1\le s\le k\)">\(1\le s\le k\)</span>.</li>
+<li>If <span class="math" data-tex="\(Z=z_\tau\)">\(Z=z_\tau\)</span> and <span class="math" data-tex="\(Z&#x27;=z_{\tau&#x27;}\)">\(Z&#x27;=z_{\tau&#x27;}\)</span> for random times with <span class="math" data-tex="\(|\tau&#x27;-\tau|\le n\)">\(|\tau&#x27;-\tau|\le n\)</span>, then <span class="math" data-tex="\(f_{Z&#x27;}(s)\ge f_Z(s)-2\log(n+1)-\log(\pi D^2)\)">\(f_{Z&#x27;}(s)\ge f_Z(s)-2\log(n+1)-\log(\pi D^2)\)</span>.</li>
+<li>If <span class="math" data-tex="\(V=X\)">\(V=X\)</span> or <span class="math" data-tex="\(V=Y\)">\(V=Y\)</span> according to an independent fair coin, then <span class="math" data-tex="\(f_V(s)\ge\frac12\bigl(f_X(s)+f_Y(s)\bigr)\)">\(f_V(s)\ge\frac12\bigl(f_X(s)+f_Y(s)\bigr)\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> (1) For a fixed ordering, the tuple <span class="math" data-tex="\(F_{\{c_1,\dots,c_s\}}(Z)\)">\(F_{\{c_1,\dots,c_s\}}(Z)\)</span> takes at most <span class="math" data-tex="\(\prod_{j\le s}p_j\)">\(\prod_{j\le s}p_j\)</span> values, so its entropy is at most <span class="math" data-tex="\(\sum_{j\le s}\log p_j\)">\(\sum_{j\le s}\log p_j\)</span>, whose average is <span class="math" data-tex="\(sL_*\)">\(sL_*\)</span>. (2) is Proposition 7.2 of the entropy lesson. (3) Apply Lemma 1.2 of <a href="differences-of-a-walk-and-separating-products.html">Differences of a walk and separating products</a> for each fixed ordering, with the homomorphism <span class="math" data-tex="\(F_{\{c_1,\dots,c_s\}}\)">\(F_{\{c_1,\dots,c_s\}}\)</span>, and average. (4) is Lemma 4.1 of the entropy lesson, applied for each fixed ordering. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 1.2.</strong> If <span class="math" data-tex="\(Z\)">\(Z\)</span> is a fixed point, then <span class="math" data-tex="\(f_Z=0\)">\(f_Z=0\)</span> and <span class="math" data-tex="\(\operatorname{def}_Z\equiv1\)">\(\operatorname{def}_Z\equiv1\)</span>. If <span class="math" data-tex="\(Z\)">\(Z\)</span> is uniformly distributed on a complete set of residues modulo <span class="math" data-tex="\(\prod_{p\in\mathcal B}p\)">\(\prod_{p\in\mathcal B}p\)</span>, then every tuple <span class="math" data-tex="\(F_{\mathcal S}(Z)\)">\(F_{\mathcal S}(Z)\)</span> is uniformly distributed, by the Chinese remainder theorem and Exercise 7.4 of the first lesson, so <span class="math" data-tex="\(f_Z(s)\)">\(f_Z(s)\)</span> is the average of <span class="math" data-tex="\(\sum_{j\le s}\log p_j\)">\(\sum_{j\le s}\log p_j\)</span>, namely <span class="math" data-tex="\(sL_*\)">\(sL_*\)</span>, and <span class="math" data-tex="\(\operatorname{def}_Z\equiv0\)">\(\operatorname{def}_Z\equiv0\)</span>.</p>
+<h2 id="2-the-sampling-transition">2. The sampling transition</h2>
+<p><strong>Definition 2.1</strong> (the transition). Let <span class="math" data-tex="\(\tau\)">\(\tau\)</span> be a random time and <span class="math" data-tex="\(Z=z_\tau\)">\(Z=z_\tau\)</span>. Let <span class="math" data-tex="\(U&gt;0\)">\(U&gt;0\)</span> and <span class="math" data-tex="\(0&lt;g&lt;\frac1{100}\)">\(0&lt;g&lt;\frac1{100}\)</span>, and put <span class="math" data-tex="\(n=\lfloor e^{gU}\rfloor\)">\(n=\lfloor e^{gU}\rfloor\)</span>, assumed at least <span class="math" data-tex="\(1\)">\(1\)</span>. Conditionally on <span class="math" data-tex="\(\tau=t\)">\(\tau=t\)</span>, with fresh randomness:</p>
+<ol>
+<li>let <span class="math" data-tex="\(E_t=\{z_t,z_{t+1},\dots,z_{t+n}\}\)">\(E_t=\{z_t,z_{t+1},\dots,z_{t+n}\}\)</span> be the stretch of <span class="math" data-tex="\(n\)">\(n\)</span> steps starting at <span class="math" data-tex="\(t\)">\(t\)</span>;</li>
+<li>choose <span class="math" data-tex="\(h\)">\(h\)</span> uniformly at random from the set <span class="math" data-tex="\(E_t-E_t\)">\(E_t-E_t\)</span> of its distinct differences (including <span class="math" data-tex="\(0\)">\(0\)</span>);</li>
+<li>let <span class="math" data-tex="\((X,Y)\in E_t\times E_t\)">\((X,Y)\in E_t\times E_t\)</span> be the pair with <span class="math" data-tex="\(X-Y=h\)">\(X-Y=h\)</span> chosen by a fixed rule, for instance the pair <span class="math" data-tex="\((z_{t+i},z_{t+j})\)">\((z_{t+i},z_{t+j})\)</span> with <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span> lexicographically least;</li>
+<li>toss an independent fair coin and let <span class="math" data-tex="\(V=X\)">\(V=X\)</span> or <span class="math" data-tex="\(V=Y\)">\(V=Y\)</span> accordingly.</li>
+</ol>
+<p>Each difference receives the same weight, whatever the number of pairs realizing it. Since the walk has distinct points, <span class="math" data-tex="\(X=z_{\tau_X}\)">\(X=z_{\tau_X}\)</span>, <span class="math" data-tex="\(Y=z_{\tau_Y}\)">\(Y=z_{\tau_Y}\)</span> and <span class="math" data-tex="\(V=z_{\tau&#x27;}\)">\(V=z_{\tau&#x27;}\)</span> for random times with <span class="math" data-tex="\(\tau\le\tau_X,\tau_Y,\tau&#x27;\le\tau+n\)">\(\tau\le\tau_X,\tau_Y,\tau&#x27;\le\tau+n\)</span>. Thus the transition replaces the random time <span class="math" data-tex="\(\tau\)">\(\tau\)</span> by a later random time <span class="math" data-tex="\(\tau&#x27;\)">\(\tau&#x27;\)</span>, at most <span class="math" data-tex="\(n\)">\(n\)</span> steps later. It uses no prime factors.</p>
+<h2 id="3-entropy-enrichment">3. Entropy enrichment</h2>
+<p><strong>Theorem 3.1</strong> (entropy enrichment). Put <span class="math" data-tex="\(K_D=2000+8\log(\pi D^2)\)">\(K_D=2000+8\log(\pi D^2)\)</span>. Let <span class="math" data-tex="\(T\ge5\)">\(T\ge5\)</span> and <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> be as in Section 1, let <span class="math" data-tex="\(0&lt;g&lt;\frac1{100}\)">\(0&lt;g&lt;\frac1{100}\)</span> and <span class="math" data-tex="\(U&gt;0\)">\(U&gt;0\)</span> with</p>
+<span class="math math-display" data-tex="\[
+g^5U\ge K_D\log T,
+\]">\[
+g^5U\ge K_D\log T,
+\]</span>
+<p>and put <span class="math" data-tex="\(q=\lfloor U/L_*\rfloor\)">\(q=\lfloor U/L_*\rfloor\)</span> and <span class="math" data-tex="\(b=\lfloor g^2U/L_*\rfloor\)">\(b=\lfloor g^2U/L_*\rfloor\)</span>. Assume <span class="math" data-tex="\(q\le k\)">\(q\le k\)</span>. Then <span class="math" data-tex="\(1\le b&lt;q\)">\(1\le b&lt;q\)</span>, and for every random time <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, the point <span class="math" data-tex="\(Z=z_\tau\)">\(Z=z_\tau\)</span> and the endpoint <span class="math" data-tex="\(V\)">\(V\)</span> of the transition with parameters <span class="math" data-tex="\(U,g\)">\(U,g\)</span> satisfy</p>
+<span class="math math-display" data-tex="\[
+\frac{f_V(b)}{bL_*}\ge\frac12\Bigl(1+\frac{f_Z(q)}{qL_*}\Bigr)-16g,
+\qquad\text{equivalently}\qquad
+\operatorname{def}_V(b)\le\tfrac12\operatorname{def}_Z(q)+16g.
+\]">\[
+\frac{f_V(b)}{bL_*}\ge\frac12\Bigl(1+\frac{f_Z(q)}{qL_*}\Bigr)-16g,
+\qquad\text{equivalently}\qquad
+\operatorname{def}_V(b)\le\tfrac12\operatorname{def}_Z(q)+16g.
+\]</span>
+<p>The right side keeps half of the old entropy fraction and adds half of the largest possible one. Before the proof, we record what the hypothesis gives. Put <span class="math" data-tex="\(\lambda=U/L_*\)">\(\lambda=U/L_*\)</span>. Since <span class="math" data-tex="\(L_*\le2\log T\)">\(L_*\le2\log T\)</span>,</p>
+<span class="math math-display" data-tex="\[
+g^5\lambda\ge\frac{K_D}2.
+\tag{3.1}
+\]">\[
+g^5\lambda\ge\frac{K_D}2.
+\tag{3.1}
+\]</span>
+<p>Hence <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is large, <span class="math" data-tex="\(q\ge\lambda-1\ge\lambda/2\)">\(q\ge\lambda-1\ge\lambda/2\)</span>, <span class="math" data-tex="\(1\le g^2\lambda/2\le b\le g^2\lambda\)">\(1\le g^2\lambda/2\le b\le g^2\lambda\)</span>, and <span class="math" data-tex="\(q-b\ge\lambda-1-g^2\lambda\ge\lambda/2\)">\(q-b\ge\lambda-1-g^2\lambda\ge\lambda/2\)</span>; in particular <span class="math" data-tex="\(1\le b&lt;q\)">\(1\le b&lt;q\)</span>. Moreover <span class="math" data-tex="\(gU=g\lambda L_*\ge g\lambda\log5\ge K_D/2\)">\(gU=g\lambda L_*\ge g\lambda\log5\ge K_D/2\)</span>, so <span class="math" data-tex="\(e^{gU}\ge2\)">\(e^{gU}\ge2\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+1\le\tfrac12e^{gU}\le n\le e^{gU},\qquad \log(n+1)\le gU+\log2.
+\tag{3.2}
+\]">\[
+1\le\tfrac12e^{gU}\le n\le e^{gU},\qquad \log(n+1)\le gU+\log2.
+\tag{3.2}
+\]</span>
+<p>We use the random signed ordering <span class="math" data-tex="\(c_1,c_2,\dots\)">\(c_1,c_2,\dots\)</span> of Section 1, and write</p>
+<span class="math math-display" data-tex="\[
+\mathcal S=\{c_1,\dots,c_b\},\qquad \mathcal Q=\{c_1,\dots,c_q\},\qquad B_x=F_{\mathcal S}(X),\quad B_y=F_{\mathcal S}(Y),\qquad h=X-Y.
+\]">\[
+\mathcal S=\{c_1,\dots,c_b\},\qquad \mathcal Q=\{c_1,\dots,c_q\},\qquad B_x=F_{\mathcal S}(X),\quad B_y=F_{\mathcal S}(Y),\qquad h=X-Y.
+\]</span>
+<p>For a signed coordinate <span class="math" data-tex="\(c\)">\(c\)</span>, write <span class="math" data-tex="\(h_c=h\bmod\pi_c\)">\(h_c=h\bmod\pi_c\)</span>. The proof compares two estimates for the quantity</p>
+<span class="math math-display" data-tex="\[
+\Delta=\mathbb E\,H\bigl(h_{c_{b+1}}\mid B_x,B_y\bigr),
+\]">\[
+\Delta=\mathbb E\,H\bigl(h_{c_{b+1}}\mid B_x,B_y\bigr),
+\]</span>
+<p>the average conditional entropy of one fresh coordinate of the difference, given the first <span class="math" data-tex="\(b\)">\(b\)</span> coordinates of both endpoints.</p>
+<p><strong>Lemma 3.2</strong> (a fresh coordinate of the difference). In the setting of Theorem 3.1, <span class="math" data-tex="\(\Delta\ge(1-21g)L_*\)">\(\Delta\ge(1-21g)L_*\)</span>.</p>
+<p><strong>Proof.</strong> Fix a value <span class="math" data-tex="\(t\)">\(t\)</span> of <span class="math" data-tex="\(\tau\)">\(\tau\)</span> of positive probability. Let <span class="math" data-tex="\(A_t\)">\(A_t\)</span> be the quantity <span class="math" data-tex="\(A=RW\)">\(A=RW\)</span> of Theorem 2.2 of <a href="differences-of-a-walk-and-separating-products.html">Differences of a walk and separating products</a> for the stretch <span class="math" data-tex="\(E_t\)">\(E_t\)</span>, and <span class="math" data-tex="\(a_t=\log A_t\)">\(a_t=\log A_t\)</span>. By that theorem and (3.2),</p>
+<span class="math math-display" data-tex="\[
+gU-3\le\log\frac{\pi n}{24}\le a_t\le2\log D+2gU,
+\qquad |E_t-E_t|\ge\frac{A_t}{\pi D^2}.
+\tag{3.3}
+\]">\[
+gU-3\le\log\frac{\pi n}{24}\le a_t\le2\log D+2gU,
+\qquad |E_t-E_t|\ge\frac{A_t}{\pi D^2}.
+\tag{3.3}
+\]</span>
+<p>Put <span class="math" data-tex="\(r=\lceil(1+10g)a_t/L_*\rceil\)">\(r=\lceil(1+10g)a_t/L_*\rceil\)</span>. Then <span class="math" data-tex="\(r\ge(gU-3)/L_*\ge g\lambda-3\ge g\lambda/2\)">\(r\ge(gU-3)/L_*\ge g\lambda-3\ge g\lambda/2\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+r\le1.1\,\frac{2gU+2\log D}{L_*}+1\le2.2\,g\lambda+2.2\log D+1\le3g\lambda\le q-b,
+\]">\[
+r\le1.1\,\frac{2gU+2\log D}{L_*}+1\le2.2\,g\lambda+2.2\log D+1\le3g\lambda\le q-b,
+\]</span>
+<p>using (3.1) for the third inequality. Let <span class="math" data-tex="\(\mathcal J=\{c_{b+1},\dots,c_{b+r}\}\)">\(\mathcal J=\{c_{b+1},\dots,c_{b+r}\}\)</span>. Its primes form a uniformly random subset of <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> with <span class="math" data-tex="\(r\)">\(r\)</span> elements, and given these primes the signs are independent and fair.</p>
+<p><em>The product of the primes of <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> is large.</em> The numbers <span class="math" data-tex="\(\log p\)">\(\log p\)</span>, <span class="math" data-tex="\(p\in\mathcal B\)">\(p\in\mathcal B\)</span>, lie in an interval of length <span class="math" data-tex="\(\log2\)">\(\log2\)</span>. By Proposition 1.1 of <a href="concentration-and-the-discrete-cube.html">Concentration and the discrete cube</a>, the sum <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> of <span class="math" data-tex="\(\log p\)">\(\log p\)</span> over the primes of <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> has mean <span class="math" data-tex="\(rL_*\)">\(rL_*\)</span> and variance at most <span class="math" data-tex="\(r(\log2)^2/4\le r/8\)">\(r(\log2)^2/4\le r/8\)</span>. Since <span class="math" data-tex="\(a_t\le rL_*/(1+10g)\)">\(a_t\le rL_*/(1+10g)\)</span>, the event <span class="math" data-tex="\(\Sigma&lt;(1+5g)a_t\)">\(\Sigma&lt;(1+5g)a_t\)</span> requires <span class="math" data-tex="\(\Sigma\le rL_*-\frac{5g}{1+10g}rL_*\le rL_*-4.5\,grL_*\)">\(\Sigma\le rL_*-\frac{5g}{1+10g}rL_*\le rL_*-4.5\,grL_*\)</span>. By Chebyshev's inequality its probability is at most</p>
+<span class="math math-display" data-tex="\[
+\frac{r/8}{(4.5\,grL_*)^2}\le\frac1{160\,g^2rL_*^2}\le\frac1{80\,g^3\lambda}\le\frac g2,
+\]">\[
+\frac{r/8}{(4.5\,grL_*)^2}\le\frac1{160\,g^2rL_*^2}\le\frac1{80\,g^3\lambda}\le\frac g2,
+\]</span>
+<p>using <span class="math" data-tex="\(L_*\ge1\)">\(L_*\ge1\)</span>, <span class="math" data-tex="\(r\ge g\lambda/2\)">\(r\ge g\lambda/2\)</span> and (3.1).</p>
+<p><em>Separation.</em> On the complementary event, the product <span class="math" data-tex="\(P_{\mathcal J}\)">\(P_{\mathcal J}\)</span> of the primes of <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> satisfies <span class="math" data-tex="\(P_{\mathcal J}^{1-g}\ge A_t^{(1+5g)(1-g)}\ge A_t^{1+3g}\ge16A_t\)">\(P_{\mathcal J}^{1-g}\ge A_t^{(1+5g)(1-g)}\ge A_t^{1+3g}\ge16A_t\)</span>, because <span class="math" data-tex="\(4g-5g^2\ge3g\)">\(4g-5g^2\ge3g\)</span> and <span class="math" data-tex="\(3ga_t\ge3g(gU-3)\ge\log16\)">\(3ga_t\ge3g(gU-3)\ge\log16\)</span>. Also <span class="math" data-tex="\(g^3r\ge g^4\lambda/2\ge2\)">\(g^3r\ge g^4\lambda/2\ge2\)</span> by (3.1). Corollary 3.3 of <a href="differences-of-a-walk-and-separating-products.html">Differences of a walk and separating products</a>, with <span class="math" data-tex="\(d=g\)">\(d=g\)</span>, shows that, given the primes of <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>, the reduction <span class="math" data-tex="\(F_{\mathcal J}\)">\(F_{\mathcal J}\)</span> is injective on <span class="math" data-tex="\(E_t-E_t\)">\(E_t-E_t\)</span> except with probability at most</p>
+<span class="math math-display" data-tex="\[
+\exp\Bigl(-\frac{g^3r}{640\log2}\Bigr)\le\exp\Bigl(-\frac{g^4\lambda}{1280\log2}\Bigr)\le\exp\Bigl(-\frac{1}{g}\Bigr)\le\frac g2,
+\]">\[
+\exp\Bigl(-\frac{g^3r}{640\log2}\Bigr)\le\exp\Bigl(-\frac{g^4\lambda}{1280\log2}\Bigr)\le\exp\Bigl(-\frac{1}{g}\Bigr)\le\frac g2,
+\]</span>
+<p>using <span class="math" data-tex="\(g^4\lambda\ge K_D/(2g)\ge1280\log2/g\)">\(g^4\lambda\ge K_D/(2g)\ge1280\log2/g\)</span>. Altogether, the ordering is <em>good</em>, meaning that <span class="math" data-tex="\(F_{\mathcal J}\)">\(F_{\mathcal J}\)</span> is injective on <span class="math" data-tex="\(E_t-E_t\)">\(E_t-E_t\)</span>, except with probability at most <span class="math" data-tex="\(g\)">\(g\)</span>.</p>
+<p><em>Entropy of the separated difference.</em> Given <span class="math" data-tex="\(\tau=t\)">\(\tau=t\)</span>, the difference <span class="math" data-tex="\(h\)">\(h\)</span> is uniform on <span class="math" data-tex="\(E_t-E_t\)">\(E_t-E_t\)</span>. For a good ordering, <span class="math" data-tex="\(F_{\mathcal J}(h)\)">\(F_{\mathcal J}(h)\)</span> is therefore uniform on <span class="math" data-tex="\(|E_t-E_t|\)">\(|E_t-E_t|\)</span> values, and by (3.3)</p>
+<span class="math math-display" data-tex="\[
+H\bigl(F_{\mathcal J}(h)\mid\tau=t\bigr)=\log|E_t-E_t|\ge a_t-\log(\pi D^2).
+\]">\[
+H\bigl(F_{\mathcal J}(h)\mid\tau=t\bigr)=\log|E_t-E_t|\ge a_t-\log(\pi D^2).
+\]</span>
+<p>For every ordering, <span class="math" data-tex="\(B_x\)">\(B_x\)</span> and <span class="math" data-tex="\(B_y\)">\(B_y\)</span> take at most <span class="math" data-tex="\((2T)^b\)">\((2T)^b\)</span> values each, so by Corollary 2.4(3) and subadditivity in the entropy lesson,</p>
+<span class="math math-display" data-tex="\[
+H\bigl(F_{\mathcal J}(h)\mid\tau=t\bigr)-2b\log(2T)\le H\bigl(F_{\mathcal J}(h)\mid B_x,B_y,\tau=t\bigr)\le\sum_{i=1}^rH\bigl(h_{c_{b+i}}\mid B_x,B_y,\tau=t\bigr).
+\]">\[
+H\bigl(F_{\mathcal J}(h)\mid\tau=t\bigr)-2b\log(2T)\le H\bigl(F_{\mathcal J}(h)\mid B_x,B_y,\tau=t\bigr)\le\sum_{i=1}^rH\bigl(h_{c_{b+i}}\mid B_x,B_y,\tau=t\bigr).
+\]</span>
+<p>Average over the ordering. By exchangeability, each summand on the right has the same average as the one with <span class="math" data-tex="\(i=1\)">\(i=1\)</span>. Since the left side is at least <span class="math" data-tex="\(-2b\log(2T)\)">\(-2b\log(2T)\)</span> for every ordering, and at least <span class="math" data-tex="\(a_t-\log(\pi D^2)-2b\log(2T)\)">\(a_t-\log(\pi D^2)-2b\log(2T)\)</span> for good ones,</p>
+<span class="math math-display" data-tex="\[
+\mathbb E\,H\bigl(h_{c_{b+1}}\mid B_x,B_y,\tau=t\bigr)\ge(1-g)\frac{a_t}r-\frac{\log(\pi D^2)+2b\log(2T)}r.
+\]">\[
+\mathbb E\,H\bigl(h_{c_{b+1}}\mid B_x,B_y,\tau=t\bigr)\ge(1-g)\frac{a_t}r-\frac{\log(\pi D^2)+2b\log(2T)}r.
+\]</span>
+<p>Now <span class="math" data-tex="\(r\le(1+10g)a_t/L_*+1\)">\(r\le(1+10g)a_t/L_*+1\)</span> gives <span class="math" data-tex="\(a_t/r\ge L_*/(1+10g+L_*/a_t)\ge(1-10g-L_*/a_t)L_*\)">\(a_t/r\ge L_*/(1+10g+L_*/a_t)\ge(1-10g-L_*/a_t)L_*\)</span>, and <span class="math" data-tex="\(L_*/a_t\le2L_*/(gU)=2/(g\lambda)\le g\)">\(L_*/a_t\le2L_*/(gU)=2/(g\lambda)\le g\)</span> by (3.1). Further, <span class="math" data-tex="\(2b\log(2T)/r\le2g^2\lambda\cdot2L_*/(g\lambda/2)=8gL_*\)">\(2b\log(2T)/r\le2g^2\lambda\cdot2L_*/(g\lambda/2)=8gL_*\)</span>, and <span class="math" data-tex="\(\log(\pi D^2)/r\le2\log(\pi D^2)/(g\lambda)\le gL_*\)">\(\log(\pi D^2)/r\le2\log(\pi D^2)/(g\lambda)\le gL_*\)</span> by (3.1) and the choice of <span class="math" data-tex="\(K_D\)">\(K_D\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\mathbb E\,H\bigl(h_{c_{b+1}}\mid B_x,B_y,\tau=t\bigr)\ge(1-g)(1-11g)L_*-9gL_*\ge(1-21g)L_*.
+\]">\[
+\mathbb E\,H\bigl(h_{c_{b+1}}\mid B_x,B_y,\tau=t\bigr)\ge(1-g)(1-11g)L_*-9gL_*\ge(1-21g)L_*.
+\]</span>
+<p>Finally, for each fixed ordering, <span class="math" data-tex="\(H(h_{c_{b+1}}\mid B_x,B_y)\ge H(h_{c_{b+1}}\mid B_x,B_y,\tau)\)">\(H(h_{c_{b+1}}\mid B_x,B_y)\ge H(h_{c_{b+1}}\mid B_x,B_y,\tau)\)</span>, which is the average over <span class="math" data-tex="\(t\)">\(t\)</span> of the conditional entropies given <span class="math" data-tex="\(\tau=t\)">\(\tau=t\)</span>. Averaging over the ordering proves the lemma. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.3</strong> (retaining the starting entropy). In the setting of Theorem 3.1,</p>
+<span class="math math-display" data-tex="\[
+\Delta\le\bigl[f_X(b+1)-f_X(b)\bigr]+\bigl[f_Y(b+1)-f_Y(b)\bigr]-\frac{f_Z(q)}q+11gL_*.
+\]">\[
+\Delta\le\bigl[f_X(b+1)-f_X(b)\bigr]+\bigl[f_Y(b+1)-f_Y(b)\bigr]-\frac{f_Z(q)}q+11gL_*.
+\]</span>
+<p><strong>Proof.</strong> Fix the ordering and write <span class="math" data-tex="\(c=c_{b+1}\)">\(c=c_{b+1}\)</span> and <span class="math" data-tex="\(\phi=F_{\{c\}}\)">\(\phi=F_{\{c\}}\)</span>. The pairs <span class="math" data-tex="\((\phi(X),\phi(Y))\)">\((\phi(X),\phi(Y))\)</span> and <span class="math" data-tex="\((h_c,\phi(X))\)">\((h_c,\phi(X))\)</span> determine each other, since <span class="math" data-tex="\(h_c=\phi(X)-\phi(Y)\)">\(h_c=\phi(X)-\phi(Y)\)</span>. By the chain rule, subadditivity, and Corollary 2.4(4) of the entropy lesson (the full difference <span class="math" data-tex="\(h\)">\(h\)</span> determines <span class="math" data-tex="\(h_c\)">\(h_c\)</span>),</p>
+<span class="math math-display" data-tex="\[
+H(h_c\mid B_x,B_y)=H\bigl(\phi(X),\phi(Y)\mid B_x,B_y\bigr)-H\bigl(\phi(X)\mid B_x,B_y,h_c\bigr)
+\le H(\phi(X)\mid B_x)+H(\phi(Y)\mid B_y)-H\bigl(\phi(X)\mid B_x,B_y,h\bigr).
+\]">\[
+H(h_c\mid B_x,B_y)=H\bigl(\phi(X),\phi(Y)\mid B_x,B_y\bigr)-H\bigl(\phi(X)\mid B_x,B_y,h_c\bigr)
+\le H(\phi(X)\mid B_x)+H(\phi(Y)\mid B_y)-H\bigl(\phi(X)\mid B_x,B_y,h\bigr).
+\]</span>
+<p>Average over the ordering. By Proposition 7.2 of the entropy lesson, the first two terms average to <span class="math" data-tex="\(f_X(b+1)-f_X(b)\)">\(f_X(b+1)-f_X(b)\)</span> and <span class="math" data-tex="\(f_Y(b+1)-f_Y(b)\)">\(f_Y(b+1)-f_Y(b)\)</span>.</p>
+<p>For the last term, exchangeability shows that its average equals the average of</p>
+<span class="math math-display" data-tex="\[
+\frac1{q-b}\sum_{i=1}^{q-b}H\bigl(F_{\{c_{b+i}\}}(X)\mid B_x,B_y,h\bigr)\ge\frac1{q-b}H\bigl(F_{\mathcal Q}(X)\mid B_x,B_y,h\bigr),
+\]">\[
+\frac1{q-b}\sum_{i=1}^{q-b}H\bigl(F_{\{c_{b+i}\}}(X)\mid B_x,B_y,h\bigr)\ge\frac1{q-b}H\bigl(F_{\mathcal Q}(X)\mid B_x,B_y,h\bigr),
+\]</span>
+<p>where we used subadditivity, and the fact that <span class="math" data-tex="\(F_{\mathcal Q}(X)\)">\(F_{\mathcal Q}(X)\)</span> consists of <span class="math" data-tex="\(F_{\mathcal Q\setminus\mathcal S}(X)\)">\(F_{\mathcal Q\setminus\mathcal S}(X)\)</span> and the known <span class="math" data-tex="\(B_x\)">\(B_x\)</span>. By Corollary 2.4(3) of the entropy lesson, and since <span class="math" data-tex="\(B_x,B_y\)">\(B_x,B_y\)</span> take at most <span class="math" data-tex="\((2T)^b\)">\((2T)^b\)</span> values each,</p>
+<span class="math math-display" data-tex="\[
+H\bigl(F_{\mathcal Q}(X)\mid B_x,B_y,h\bigr)\ge H\bigl(F_{\mathcal Q}(X)\bigr)-2b\log(2T)-H(h).
+\]">\[
+H\bigl(F_{\mathcal Q}(X)\mid B_x,B_y,h\bigr)\ge H\bigl(F_{\mathcal Q}(X)\bigr)-2b\log(2T)-H(h).
+\]</span>
+<p>The average of <span class="math" data-tex="\(H(F_{\mathcal Q}(X))\)">\(H(F_{\mathcal Q}(X))\)</span> is <span class="math" data-tex="\(f_X(q)\ge f_Z(q)-H(X-Z)\)">\(f_X(q)\ge f_Z(q)-H(X-Z)\)</span>, by Proposition 1.1(3) and its proof. Both <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(X-Z\)">\(X-Z\)</span> are displacements of the walk over at most <span class="math" data-tex="\(n\)">\(n\)</span> steps, so by Lemma 1.2 of <a href="differences-of-a-walk-and-separating-products.html">Differences of a walk and separating products</a> and (3.2),</p>
+<span class="math math-display" data-tex="\[
+H(h)+H(X-Z)\le4\log(n+1)+2\log(\pi D^2)\le4gU+4\log2+2\log(\pi D^2)\le5gU,
+\]">\[
+H(h)+H(X-Z)\le4\log(n+1)+2\log(\pi D^2)\le4gU+4\log2+2\log(\pi D^2)\le5gU,
+\]</span>
+<p>since <span class="math" data-tex="\(gU\ge K_D/2\)">\(gU\ge K_D/2\)</span>. Using <span class="math" data-tex="\(f_Z(q)\ge0\)">\(f_Z(q)\ge0\)</span>, <span class="math" data-tex="\(q-b\ge\lambda/2\)">\(q-b\ge\lambda/2\)</span>, <span class="math" data-tex="\(b\le g^2\lambda\)">\(b\le g^2\lambda\)</span> and <span class="math" data-tex="\(\log(2T)\le2L_*\)">\(\log(2T)\le2L_*\)</span>, the average of the subtracted term is at least</p>
+<span class="math math-display" data-tex="\[
+\frac{f_Z(q)}{q}-\frac{4g^2\lambda L_*+5g\lambda L_*}{\lambda/2}\ge\frac{f_Z(q)}q-11gL_*.
+\]">\[
+\frac{f_Z(q)}{q}-\frac{4g^2\lambda L_*+5g\lambda L_*}{\lambda/2}\ge\frac{f_Z(q)}q-11gL_*.
+\]</span>
+<p><span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proof of Theorem 3.1.</strong> Lemmas 3.2 and 3.3 give</p>
+<span class="math math-display" data-tex="\[
+\bigl[f_X(b+1)-f_X(b)\bigr]+\bigl[f_Y(b+1)-f_Y(b)\bigr]\ge L_*+\frac{f_Z(q)}q-32gL_*.
+\]">\[
+\bigl[f_X(b+1)-f_X(b)\bigr]+\bigl[f_Y(b+1)-f_Y(b)\bigr]\ge L_*+\frac{f_Z(q)}q-32gL_*.
+\]</span>
+<p>By concavity (Proposition 1.1(2)), each bracket is at most <span class="math" data-tex="\(f_X(b)/b\)">\(f_X(b)/b\)</span>, respectively <span class="math" data-tex="\(f_Y(b)/b\)">\(f_Y(b)/b\)</span>. By Proposition 1.1(4), <span class="math" data-tex="\(f_V(b)\ge\frac12(f_X(b)+f_Y(b))\)">\(f_V(b)\ge\frac12(f_X(b)+f_Y(b))\)</span>. Hence <span class="math" data-tex="\(f_V(b)/b\ge\frac12\bigl(L_*+f_Z(q)/q\bigr)-16gL_*\)">\(f_V(b)/b\ge\frac12\bigl(L_*+f_Z(q)/q\bigr)-16gL_*\)</span>. Divide by <span class="math" data-tex="\(L_*\)">\(L_*\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof explains the design of the transition. The difference of the two endpoints is spread over many values, because the stretch has many distinct differences and a random product of factors separates them; so the endpoints together carry about <span class="math" data-tex="\(L_*\)">\(L_*\)</span> units of entropy per coordinate beyond what their first <span class="math" data-tex="\(b\)">\(b\)</span> coordinates reveal. Each endpoint also inherits the residue entropy of the starting point, because it is only a short displacement away. Concavity converts the per-coordinate gain into a gain for the whole profile.</p>
+<h2 id="4-iterating-the-transition">4. Iterating the transition</h2>
+<p><strong>Corollary 4.1</strong> (iteration). Let <span class="math" data-tex="\(g\)">\(g\)</span> be fixed, and let <span class="math" data-tex="\(U_0&gt;U_1&gt;\dots&gt;U_l\)">\(U_0&gt;U_1&gt;\dots&gt;U_l\)</span> satisfy <span class="math" data-tex="\(U_{j+1}=g^2U_j\)">\(U_{j+1}=g^2U_j\)</span>. Suppose that the hypotheses of Theorem 3.1 hold for each pair <span class="math" data-tex="\((U_j,g)\)">\((U_j,g)\)</span>, <span class="math" data-tex="\(0\le j&lt;l\)">\(0\le j&lt;l\)</span>. Start from any random time <span class="math" data-tex="\(\tau_0\)">\(\tau_0\)</span>, and let <span class="math" data-tex="\(\tau_{j+1}\)">\(\tau_{j+1}\)</span> be the time produced by the transition with parameters <span class="math" data-tex="\((U_j,g)\)">\((U_j,g)\)</span> applied at <span class="math" data-tex="\(\tau_j\)">\(\tau_j\)</span>, with fresh randomness at each stage. Put <span class="math" data-tex="\(q_j=\lfloor U_j/L_*\rfloor\)">\(q_j=\lfloor U_j/L_*\rfloor\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\operatorname{def}_{z_{\tau_l}}(q_l)\le2^{-l}+32g.
+\]">\[
+\operatorname{def}_{z_{\tau_l}}(q_l)\le2^{-l}+32g.
+\]</span>
+<p><strong>Proof.</strong> The output size of stage <span class="math" data-tex="\(j\)">\(j\)</span> is <span class="math" data-tex="\(\lfloor g^2U_j/L_*\rfloor=q_{j+1}\)">\(\lfloor g^2U_j/L_*\rfloor=q_{j+1}\)</span>, the input size of stage <span class="math" data-tex="\(j+1\)">\(j+1\)</span>. Theorem 3.1 gives <span class="math" data-tex="\(\operatorname{def}_{z_{\tau_{j+1}}}(q_{j+1})\le\frac12\operatorname{def}_{z_{\tau_j}}(q_j)+16g\)">\(\operatorname{def}_{z_{\tau_{j+1}}}(q_{j+1})\le\frac12\operatorname{def}_{z_{\tau_j}}(q_j)+16g\)</span>. Since deficits are at most <span class="math" data-tex="\(1\)">\(1\)</span>, induction gives <span class="math" data-tex="\(2^{-l}+16g(1+\frac12+\dots)\le2^{-l}+32g\)">\(2^{-l}+16g(1+\frac12+\dots)\le2^{-l}+32g\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The starting law is arbitrary; in particular <span class="math" data-tex="\(\tau_0\)">\(\tau_0\)</span> may be a fixed time, with deficit <span class="math" data-tex="\(1\)">\(1\)</span>. After <span class="math" data-tex="\(l\)">\(l\)</span> transitions the deficit is below <span class="math" data-tex="\(2^{-l}+32g\)">\(2^{-l}+32g\)</span>. The last lessons combine this with Proposition 1.1(3): a later random time, at most <span class="math" data-tex="\(N\)">\(N\)</span> steps after <span class="math" data-tex="\(\tau_l\)">\(\tau_l\)</span>, changes the profile at <span class="math" data-tex="\(q_l\)">\(q_l\)</span> by at most <span class="math" data-tex="\(2\log(N+1)+\log(\pi D^2)\)">\(2\log(N+1)+\log(\pi D^2)\)</span>, which is small compared with <span class="math" data-tex="\(q_lL_*\approx U_l\)">\(q_lL_*\approx U_l\)</span> when <span class="math" data-tex="\(\log N\)">\(\log N\)</span> is small compared with <span class="math" data-tex="\(U_l\)">\(U_l\)</span>.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>Exercise 5.1 (easy).</strong> Let <span class="math" data-tex="\(\tau_0\)">\(\tau_0\)</span> be a fixed time. Show that after one transition, <span class="math" data-tex="\(f_V(b)\ge(\frac12-16g)bL_*\)">\(f_V(b)\ge(\frac12-16g)bL_*\)</span>, under the hypotheses of Theorem 3.1.</p>
+<p><strong>Exercise 5.2 (easy).</strong> Check the inequality <span class="math" data-tex="\((1+5g)(1-g)\ge1+3g\)">\((1+5g)(1-g)\ge1+3g\)</span> for <span class="math" data-tex="\(0\le g\le\frac15\)">\(0\le g\le\frac15\)</span>, and <span class="math" data-tex="\(\frac{5g}{1+10g}\ge4.5g\)">\(\frac{5g}{1+10g}\ge4.5g\)</span> for <span class="math" data-tex="\(0\le g\le\frac1{100}\)">\(0\le g\le\frac1{100}\)</span>.</p>
+<p><strong>Exercise 5.3 (medium).</strong> Consider the straight walk <span class="math" data-tex="\(z_t=t\)">\(z_t=t\)</span> on the real axis, which has <span class="math" data-tex="\(D=1\)">\(D=1\)</span>, and a fixed starting time. Describe the law of <span class="math" data-tex="\(h\)">\(h\)</span> and of <span class="math" data-tex="\(V\)">\(V\)</span> in Definition 2.1, and show that <span class="math" data-tex="\(V-z_\tau\)">\(V-z_\tau\)</span> is not uniformly distributed on <span class="math" data-tex="\(\{0,\dots,n\}\)">\(\{0,\dots,n\}\)</span>.</p>
+<p><strong>Exercise 5.4 (medium).</strong> Show that the deficit bound of Corollary 4.1 cannot drop below <span class="math" data-tex="\(32g\)">\(32g\)</span> by iteration alone: if <span class="math" data-tex="\(\operatorname{def}_{j+1}=\frac12\operatorname{def}_j+16g\)">\(\operatorname{def}_{j+1}=\frac12\operatorname{def}_j+16g\)</span> for all <span class="math" data-tex="\(j\)">\(j\)</span>, then <span class="math" data-tex="\(\operatorname{def}_j\to32g\)">\(\operatorname{def}_j\to32g\)</span>. Explain why the schedule of the next lessons uses smaller and smaller values of <span class="math" data-tex="\(g\)">\(g\)</span>.</p>
+<p><strong>Exercise 5.5 (hard).</strong> In the proof of Lemma 3.2, the number <span class="math" data-tex="\(r\)">\(r\)</span> of fresh coordinates depends on the starting time <span class="math" data-tex="\(t\)">\(t\)</span>. Explain why this does not affect the final averaged inequality, and why the proof first conditions on <span class="math" data-tex="\(\tau=t\)">\(\tau=t\)</span> and only at the end removes this condition.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> A fixed point has <span class="math" data-tex="\(f_Z\equiv0\)">\(f_Z\equiv0\)</span>, so Theorem 3.1 gives <span class="math" data-tex="\(f_V(b)/(bL_*)\ge\frac12-16g\)">\(f_V(b)/(bL_*)\ge\frac12-16g\)</span>.</p>
+<p><strong>5.2.</strong> <span class="math" data-tex="\((1+5g)(1-g)-(1+3g)=g-5g^2=g(1-5g)\ge0\)">\((1+5g)(1-g)-(1+3g)=g-5g^2=g(1-5g)\ge0\)</span> for <span class="math" data-tex="\(g\le\frac15\)">\(g\le\frac15\)</span>. And <span class="math" data-tex="\(\frac{5}{1+10g}\ge\frac5{1.1}&gt;4.5\)">\(\frac{5}{1+10g}\ge\frac5{1.1}&gt;4.5\)</span> for <span class="math" data-tex="\(g\le\frac1{100}\)">\(g\le\frac1{100}\)</span>.</p>
+<p><strong>5.3.</strong> Here <span class="math" data-tex="\(E_t=\{t,\dots,t+n\}\)">\(E_t=\{t,\dots,t+n\}\)</span> and <span class="math" data-tex="\(E_t-E_t=\{-n,\dots,n\}\)">\(E_t-E_t=\{-n,\dots,n\}\)</span>, so <span class="math" data-tex="\(h\)">\(h\)</span> is uniform on these <span class="math" data-tex="\(2n+1\)">\(2n+1\)</span> integers. For <span class="math" data-tex="\(h=m\ge0\)">\(h=m\ge0\)</span> the lexicographically least pair is <span class="math" data-tex="\((z_{t+m},z_t)\)">\((z_{t+m},z_t)\)</span>, and for <span class="math" data-tex="\(h=-m&lt;0\)">\(h=-m&lt;0\)</span> it is <span class="math" data-tex="\((z_t,z_{t+m})\)">\((z_t,z_{t+m})\)</span>. Thus <span class="math" data-tex="\(\{X,Y\}=\{t,t+|h|\}\)">\(\{X,Y\}=\{t,t+|h|\}\)</span>, and <span class="math" data-tex="\(V-t\)">\(V-t\)</span> equals <span class="math" data-tex="\(0\)">\(0\)</span> with probability <span class="math" data-tex="\(\frac12\)">\(\frac12\)</span> (the coin selects the endpoint <span class="math" data-tex="\(t\)">\(t\)</span>) and equals <span class="math" data-tex="\(|h|\)">\(|h|\)</span> otherwise. So <span class="math" data-tex="\(\mathbb P(V=t)=\frac12+\frac1{2(2n+1)}\)">\(\mathbb P(V=t)=\frac12+\frac1{2(2n+1)}\)</span>, which is far from uniform. The theorem does not claim uniformity of the displacement; it concerns residues modulo many large primes, and the entropy gain comes from the difference <span class="math" data-tex="\(h\)">\(h\)</span>.</p>
+<p><strong>5.4.</strong> The map <span class="math" data-tex="\(x\mapsto\frac12x+16g\)">\(x\mapsto\frac12x+16g\)</span> has the fixed point <span class="math" data-tex="\(32g\)">\(32g\)</span> and contracts distances by <span class="math" data-tex="\(\frac12\)">\(\frac12\)</span>, so the iterates converge to <span class="math" data-tex="\(32g\)">\(32g\)</span>. To make the deficit tend to zero, the schedule uses bands of scales with parameters <span class="math" data-tex="\(g\)">\(g\)</span> that decrease with the overall size, and accuracy <span class="math" data-tex="\(O(g)\)">\(O(g)\)</span> in each band.</p>
+<p><strong>5.5.</strong> For a fixed <span class="math" data-tex="\(t\)">\(t\)</span>, the set <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> and the number <span class="math" data-tex="\(r\)">\(r\)</span> are fixed functions of the ordering, and the inequality obtained,
+<span class="math" data-tex="\(\mathbb E\,H(h_{c_{b+1}}\mid B_x,B_y,\tau=t)\ge(1-21g)L_*\)">\(\mathbb E\,H(h_{c_{b+1}}\mid B_x,B_y,\tau=t)\ge(1-21g)L_*\)</span>, involves only the single coordinate <span class="math" data-tex="\(c_{b+1}\)">\(c_{b+1}\)</span>, whose law does not depend on <span class="math" data-tex="\(t\)">\(t\)</span>. Averaging this inequality over <span class="math" data-tex="\(t\)">\(t\)</span> with the weights <span class="math" data-tex="\(\mathbb P(\tau=t)\)">\(\mathbb P(\tau=t)\)</span> is therefore legitimate. Conditioning on <span class="math" data-tex="\(\tau=t\)">\(\tau=t\)</span> is needed because the geometry of the stretch, and with it the separation argument, depends on <span class="math" data-tex="\(t\)">\(t\)</span>; the conditional entropy given <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is at most the one without it, so the condition can be removed at the end.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-moat] OpenAI, Bounded-step walks on Gaussian primes, preprint, 26 September 2026. https://github.com/openai/math/blob/main/preprints/Bounded-Step-Walks-on-Gaussian-Primes-September-26-2026/paper.pdf</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

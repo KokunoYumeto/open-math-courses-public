@@ -462,9 +462,9 @@ Consider the one-sided extension
 \]
 The coefficient algebra is a cone: \(x\mapsto e^{-x}\) identifies it with \(C_0((0,1])\). Extend a cone function by zero at zero; \((H_sF)(y)=F(sy)\), for \(0\leq s\leq1\), contracts identity to zero, with point-norm continuity by uniform continuity on \([0,1]\). Its two K-groups therefore vanish. The PV cycle makes both K-groups of \(E_+\) vanish. Exactness of (16A.7) now says that both boundary maps are isomorphisms. Thus the unit in \(K_0(C(\mathbb T))\) maps to a generator of \(K_1(I_+)\), and the coordinate unitary in \(K_1(C(\mathbb T))\) maps to a generator of \(K_0(I_+)\). Choose those images as the generators, avoiding any implicit orientation sign. The negative half-line has the same conclusion for \(E_-\).
 
-Collapse \(U_-\) to one and restrict coefficients to \(0,\infty)\). This gives a map from (16A.5) to (16A.7), identity on \(I_+\), zero on \(I_-\), and evaluation of the second torus coordinate at one on the quotient. It is well defined because it kills both families (16A.4). There is the corresponding map to \(E_-\), evaluating the first coordinate at one. Naturality of the six-term cycle consequently determines the two components of each boundary map.
+Collapse \(U_-\) to one and restrict coefficients to \([0,\infty)\). This gives a map from (16A.5) to (16A.7), identity on \(I_+\), zero on \(I_-\), and evaluation of the second torus coordinate at one on the quotient. It is well defined because it kills both families (16A.4). There is the corresponding map to \(E_-\), evaluating the first coordinate at one. Naturality of the six-term cycle consequently determines the two components of each boundary map.
 
-Use the written circle-with-coefficients decomposition [Topological K-theory of spaces, pairs and vector bundles, Theorem 5.1 and Corollary 5.2. The quotient groups have bases
+Use the written circle-with-coefficients decomposition Topological K-theory of spaces, pairs and vector bundles, Theorem 5.1 and Corollary 5.2. The quotient groups have bases
 \[
  K_0(C(\mathbb T^2))=\mathbb Z[1]\oplus\mathbb Z\beta,
  \qquad K_1(C(\mathbb T^2))=\mathbb Z[u_+]\oplus\mathbb Z[u_-].

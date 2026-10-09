@@ -50,7 +50,7 @@ The projective Hilbert tensor completion gives the concrete predual of an arbitr
 
 - Conventions and the precise foundations
 - The projective norm is a genuine norm
-- Its dual is exactly \(B(H)\)
+- [Its dual is exactly \(B(H)\)](concrete-preduals.html#OA-MOD-CP-03)
 - Every tensor vector is a summable vector series
 - Quotients and annihilators, with the norm checks
 - The concrete predual and its intrinsic norm

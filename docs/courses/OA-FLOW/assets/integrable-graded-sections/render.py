@@ -13,6 +13,7 @@ import shutil
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-integrable-graded-sections-20261009-v1"
 from matplotlib import font_manager
 from matplotlib.patches import Polygon
 
@@ -133,7 +134,7 @@ def main():
              "Exact coordinates and proofs: SEC7.c–l. Endpoint changes have measure zero. The jump at t = 1 and the failure of operator-norm Bochner measurability are retained.",
              fontsize=13, color=MUTED)
     fig.savefig(OUT / "projections-and-convolution.png", dpi=160)
-    fig.savefig(OUT / "projections-and-convolution.svg")
+    fig.savefig(OUT / "projections-and-convolution.svg", metadata={"Date": None})
     plt.close(fig)
 
     data = {

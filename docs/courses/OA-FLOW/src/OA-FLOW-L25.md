@@ -2,13 +2,15 @@
 
 *Original exposition, proofs and illustration source are dedicated under CC0.*
 
-Let \(A\) be any C* algebra, let \(G\) be a locally compact Hausdorff group, and let \(\alpha:G\to\operatorname{Aut}(A)\) be an action such that \(s\mapsto\alpha_s(a)\) is norm continuous for each \(a\in A\). No identity, separability, countability or unimodularity is assumed. We use left Haar measure and the convention
+For the crossed-product constructions, let \(A\) be any C* algebra, let \(G\) be a locally compact Hausdorff group, and let \(\alpha:G\to\operatorname{Aut}(A)\) be an action such that \(s\mapsto\alpha_s(a)\) is norm continuous for each \(a\in A\). No identity, separability, countability or unimodularity is assumed. We use left Haar measure and the convention
 \(\int f(ts)\,dt=\Delta(s)^{-1}\int f(t)\,dt\).
 Inner products are linear in the first variable.
 
 ## Earlier programme inputs
 
-The scalar convergence and norm inputs are the earlier [SC-03–07 proofs](OA-FLOW-SC.md#sc-03). The previous lesson supplies the locally determined Haar convention, its identification with finite-exponent completed Radon spaces, Bochner integrals, the vector tensor unitary, qualified Radon-product Fubini, scalar translations and convolution, and the elementary automatic contractivity theorem. It also proves the C* quotient and closed-range facts from the earlier continuous calculus and order. We additionally use [Theorem 5.1](OA-FLOW-GNS.md#gns-theorem-5-1), [Theorem 5.2](OA-FLOW-GNS.md#gns-theorem-5-2) and [Theorem 7.3](OA-FLOW-GNS.md#gns-theorem-7-3) of the earlier lesson Positive functionals and nonunital representations: the cyclic nonunital GNS representation of a state and the faithful nondegenerate representation of any C* algebra. The Hilbert projection and bounded-form theorems, and continuous calculus, including the positive-cone theorem, are the same earlier inputs declared in the previous lesson. All other results used in this lesson are proved below. These earlier proof inputs are part of the dependency boundary, not discharged by the references at the end.
+The scalar convergence and norm inputs are the earlier [SC-03–07 proofs](OA-FLOW-SC.md#sc-03). The previous lesson supplies the locally determined Haar convention, its identification with finite-exponent completed Radon spaces, Bochner integrals, the vector tensor unitary, qualified Radon-product Fubini, scalar translations and convolution, and the elementary automatic contractivity theorem. It also proves the C* quotient and closed-range facts from the earlier continuous calculus and order. We additionally use [Theorem 5.1](OA-FLOW-GNS.md#gns-theorem-5-1), [Theorem 5.2](OA-FLOW-GNS.md#gns-theorem-5-2) and [Theorem 7.3](OA-FLOW-GNS.md#gns-theorem-7-3) of the earlier lesson Positive functionals and nonunital representations: the cyclic nonunital GNS representation of a state and the faithful nondegenerate representation of any C* algebra. The Hilbert projection and bounded-form theorems, and continuous calculus, including the positive-cone theorem, are the same earlier inputs declared in the previous lesson. Apart from the compactness and Hilbert-basis proof inputs specified next, all other results used in this lesson are proved below. These earlier proof inputs are part of the dependency boundary, not discharged by the references at the end.
+
+For the unital invariant-state compactness result below, the additional earlier programme proofs are [Tychonoff's theorem](../../foundations-of-von-neumann-algebras/weak-topologies-tychonoff-banach-alaoglu-mazur-bipolars-krein-milman-and-eberlein-smulian.html#oa-fnd-wt-02), [Banach--Alaoglu](../../foundations-of-von-neumann-algebras/weak-topologies-tychonoff-banach-alaoglu-mazur-bipolars-krein-milman-and-eberlein-smulian.html#oa-fnd-wt-03), and the [closed-face extreme-point argument](../../foundations-of-von-neumann-algebras/weak-topologies-tychonoff-banach-alaoglu-mazur-bipolars-krein-milman-and-eberlein-smulian.html#oa-fnd-wt-06). The real-line kernel calculation uses the earlier [orthonormal-basis and Parseval proof](../../foundations-of-von-neumann-algebras/hilbert-spaces-and-compact-operators.html#oa-fnd-hs-04), together with the preceding lesson's scalar \(L^2\) density and the already declared scalar monotone-convergence proof. These are specific earlier proof inputs; the applications and the needed state normalization are proved here.
 
 ## 1. The integrable coefficient algebra
 
@@ -199,8 +201,8 @@ For nondegeneracy, the vectors \(h(t)\rho(b)\eta\), with \(h\in C_c(G)\), span a
 uniformly: \(\{\alpha_t(b)\}\) there is compact. Multiplication by \(h\) proves \(P_\rho(e_i)\to I\) on that dense vector space, and the uniform contraction bound extends it to all \(L^2\) vectors. This again proves a net limit without applying sequential dominated convergence to it. \(\square\)
 
 Denote its integrated representation by \(\operatorname{Ind}\rho\). On a vector \(\xi\) its defining formula is the Bochner integral of operators applied to that vector. On a compact simple tensor it has the pointwise form
-\
- [\operatorname{Ind}\rho(F)(h\eta)
+\[
+ [\operatorname{Ind}\rho(F)(h\eta)](t)
  =\int\rho(\alpha_{t^{-1}}(F(s)))h(s^{-1}t)\eta\,ds.
  \tag{4.3}
 \]
@@ -397,7 +399,17 @@ For \(A=\mathbb C\) the theorem also proves that this factored-character conditi
 
 ## 8. Invariant states: continuity and extremality
 
-Let \(\omega\) be a state on \(A\) with \(\omega\circ\alpha_s=\omega\). Take its cyclic nondegenerate GNS representation \((\pi_\omega,K_\omega,\xi_\omega)\), with \(\|\xi_\omega\|=1\) and \(\omega(a)=\langle\pi_\omega(a)\xi_\omega,\xi_\omega\rangle\).
+For this section alone, retain the C* algebra \(A\) and locally compact Hausdorff group \(G\), but allow \(\alpha:G\to\operatorname{Aut}(A)\) to be an algebraic homomorphism without point-norm continuity. The crossed-product results elsewhere retain their stated point-norm-continuous action hypothesis. Write
+\[
+ S^\alpha=\{\omega:\omega\text{ is a state and }\omega\circ\alpha_s=\omega
+                       \text{ for every }s\in G\},
+ \qquad
+ S_\alpha=\{\omega\in S^\alpha:
+       s\mapsto\omega(b^*\alpha_s(a))\text{ is continuous for every }a,b\in A\}.
+\]
+Both sets are convex, since invariance and the mixed-coefficient continuity condition are preserved by convex combinations.
+
+Let \(\omega\in S_\alpha\). Take its cyclic nondegenerate GNS representation \((\pi_\omega,K_\omega,\xi_\omega)\), with \(\|\xi_\omega\|=1\) and \(\omega(a)=\langle\pi_\omega(a)\xi_\omega,\xi_\omega\rangle\).
 
 **Proposition 8.1.** On its dense generating vectors, the formula
 \[
@@ -408,11 +420,13 @@ gives a strongly continuous unitary covariant representation, and \(U_s\xi_\omeg
 
 **Proof.** Invariance gives equality of inner products before and after this formula, so it is well defined and isometric; the formula for \(s^{-1}\) gives its inverse. The group and covariance identities follow on generators and then everywhere. Also
 \[
- \|(U_s-U_r)\pi_\omega(a)\xi_\omega\|
- \leq\|\alpha_s(a)-\alpha_r(a)\|\to0.
+ \|U_s\pi_\omega(a)\xi_\omega-\pi_\omega(a)\xi_\omega\|^2
+ =2\omega(a^*a)-2\operatorname{Re}\omega(a^*\alpha_s(a))\to0
+ \quad(s\to e).
  \tag{8.2}
 \]
-Unitarity extends continuity to all vectors. For a positive contractive approximate identity \((e_i)\), \(\pi_\omega(e_i)\xi_\omega\to\xi_\omega\); for fixed \(s\), \((\alpha_s(e_i))\) is also such an approximate identity, so its GNS vectors have the same limit. Applying (8.1) proves \(U_s\xi_\omega=\xi_\omega\). This proves continuity for arbitrary nonunital \(A\), rather than assuming it from invariance alone. \(\square\)
+Here the equality uses invariance, and the limit is the mixed-coefficient continuity of \(\omega\). Unitarity and approximation by the dense generating vectors give continuity at \(e\) for every vector. The group law then gives continuity at every \(r\), since
+\(\|U_s\eta-U_r\eta\|=\|U_{r^{-1}s}\eta-\eta\|\). For a positive contractive approximate identity \((e_i)\), \(\pi_\omega(e_i)\xi_\omega\to\xi_\omega\); for fixed \(s\), \((\alpha_s(e_i))\) is also such an approximate identity, so its GNS vectors have the same limit. Applying (8.1) proves \(U_s\xi_\omega=\xi_\omega\). This proves continuity for arbitrary nonunital \(A\), rather than assuming it from invariance alone. \(\square\)
 
 ### Dominated functionals and invariant-state extremality
 
@@ -423,7 +437,7 @@ We next prove the dominated-functional argument needed for the extreme-state cri
  \psi(a)=\langle T\pi_\omega(a)\xi_\omega,\xi_\omega\rangle.
  \tag{8.3}
 \]
-It commutes with every \(U_s\) if and only if \(\psi\) is invariant.
+It commutes with every \(U_s\) if and only if \(\psi\) is invariant. Moreover every mixed coefficient \(s\mapsto\psi(b^*\alpha_s(a))\) is continuous; this continuity conclusion does not require \(\psi\) to be invariant.
 
 **Proof.** On GNS generating vectors define
 \[
@@ -436,14 +450,24 @@ Its bound is \(|B(v,w)|\leq C\|v\|\|w\|\), and \(0\leq B(v,v)\leq C\|v\|^2\). Th
 
 For \(c\in A\), the two forms \(B(\pi_\omega(c)v,w)\) and \(B(v,\pi_\omega(c^*)w)\) agree on generators because both are \(\psi(b^*ca)\). Hence \(T\) commutes with \(\pi_\omega(c)\). Take \(a\) in the first argument of (8.4) and \(e_i\) in the second. The right side is \(\psi(e_i a)\to\psi(a)\) by norm approximation and boundedness of \(\psi\); the second vector converges to \(\xi_\omega\). This proves (8.3) even without an identity. Conversely, (8.3) and commutation determine (8.4) on every pair of generators, so uniqueness holds.
 
-If \(\psi\) is invariant, \(B(U_sv,U_sw)=B(v,w)\) on generators, giving \(U_s^*TU_s=T\). Conversely if \(T\) commutes with \(U_s\), covariance, its fixed vector and (8.3) give \(\psi(\alpha_s(a))=\psi(a)\). \(\square\)
+If \(\psi\) is invariant, \(B(U_sv,U_sw)=B(v,w)\) on generators, giving \(U_s^*TU_s=T\). Conversely if \(T\) commutes with \(U_s\), covariance, its fixed vector and (8.3) give \(\psi(\alpha_s(a))=\psi(a)\).
 
-**Theorem 8.3.** The invariant state \(\omega\) is extreme in the convex set of invariant states exactly when
+For the continuity assertion put \(d=\alpha_s(a)-\alpha_r(a)\). The Cauchy--Schwarz inequality and domination give
+\[
+ |\psi(b^*d)|^2
+ \leq\psi(b^*b)\psi(d^*d)
+ \leq C^2\omega(b^*b)\omega(d^*d)
+ =C^2\|\pi_\omega(b)\xi_\omega\|^2
+       \|U_s\pi_\omega(a)\xi_\omega-U_r\pi_\omega(a)\xi_\omega\|^2.
+\]
+Strong continuity of \(U\) proves the assertion as \(s\to r\). \(\square\)
+
+**Theorem 8.3.** For \(\omega\in S_\alpha\), the following are equivalent: \(\omega\) is extreme in \(S_\alpha\); \(\omega\) is extreme in \(S^\alpha\); and
 \[
  \pi_\omega(A)'\cap U(G)'=\mathbb CI.
  \tag{8.5}
 \]
-Equivalently the joint covariant representation, or its integrated full crossed-product representation, is irreducible.
+Equivalently the joint star/unitary family \(\pi_\omega(A),U(G)\) is irreducible. If \(\alpha\) is additionally point-norm continuous, these conditions are also equivalent to irreducibility of the integrated full crossed-product representation.
 
 **Proof.** Suppose the joint commutant is scalar, and write \(\omega=t\omega_1+(1-t)\omega_2\) for invariant states and \(0<t<1\). Lemma 8.2 applies to \(\psi=t\omega_1\leq\omega\) and gives a joint-commutant positive contraction \(T=cI\). Its functional is \(c\omega\), so \(\psi=c\omega\). Taking norms of these positive functionals gives \(c=t\); hence \(\omega_1=\omega\), and likewise \(\omega_2=\omega\).
 
@@ -453,11 +477,38 @@ Conversely, if the joint commutant is not scalar, one of the self-adjoint real o
  \omega_2(a)=(1-t)^{-1}\langle(1-T)\pi_\omega(a)\xi_\omega,\xi_\omega\rangle .
  \tag{8.6}
 \]
-These are positive bounded invariant functionals. Their norms are one: evaluating the coefficient approximate identity gives the limits \(t/t=1\) and \((1-t)/(1-t)=1\); the upper bounds follow from the vector-state expressions with \(T^{1/2}\xi_\omega\) and \((1-T)^{1/2}\xi_\omega\). Thus they are states and \(\omega=t\omega_1+(1-t)\omega_2\). If \(\omega_1=\omega\), uniqueness in Lemma 8.2 forces \(T=tI\), a contradiction. Hence the decomposition is nontrivial.
+These are positive bounded invariant functionals. Their norms are one: evaluating the coefficient approximate identity gives the limits \(t/t=1\) and \((1-t)/(1-t)=1\); the upper bounds follow from the vector-state expressions with \(T^{1/2}\xi_\omega\) and \((1-T)^{1/2}\xi_\omega\). Thus they are states and \(\omega=t\omega_1+(1-t)\omega_2\). Each is bounded above by a finite positive multiple of \(\omega\), so Lemma 8.2 gives its mixed-coefficient continuity; hence both lie in \(S_\alpha\). If \(\omega_1=\omega\), uniqueness in Lemma 8.2 forces \(T=tI\), a contradiction. Hence the decomposition is nontrivial in \(S_\alpha\), and therefore also in \(S^\alpha\). The scalar-commutant argument above excludes every nontrivial decomposition in \(S^\alpha\), so it excludes one in \(S_\alpha\) as well.
 
-A closed invariant subspace for the joint star/unitary family is reducing, and its orthogonal projection belongs to the joint commutant. Conversely the continuous-calculus construction in the next paragraph gives a nontrivial reducing subspace from a nonscalar self-adjoint element in that commutant. Thus (8.5) is equivalent to irreducibility, using only the already declared calculus and Hilbert projection theorem. Intertwiner equivalence after Theorem 3.1 proves the last claim for the integrated representation. \(\square\)
+A closed invariant subspace for the joint star/unitary family is reducing, and its orthogonal projection belongs to the joint commutant. Conversely the continuous-calculus construction in the next paragraph gives a nontrivial reducing subspace from a nonscalar self-adjoint element in that commutant. Thus (8.5) is equivalent to irreducibility, using only the already declared calculus and Hilbert projection theorem. When \(\alpha\) is point-norm continuous, Theorem 3.1 applies and its intertwiner equivalence proves the last claim for the integrated representation. No integrated crossed product is asserted here for a discontinuous action. \(\square\)
 
 For that construction, a nonscalar self-adjoint \(h\) has at least two spectral points, since the isometric calculus would otherwise make \(h\) scalar. Choose continuous nonnegative \(f,g\) on its spectrum, supported in disjoint neighbourhoods of these two points and nonzero there. The calculus makes \(f(h)\) and \(g(h)\) nonzero with product zero. The closed range \(\overline{f(h)K_\omega}\) is invariant under the joint family and its adjoints, and is nonzero and proper because it is perpendicular to the nonzero range of \(g(h)\). Its orthogonal projection is the required nontrivial joint-commutant projection.
+
+### Unital invariant-state compactness
+
+**Proposition 8.4.** If \(A\) is unital and
+\(\|\alpha_s(a)-a\|\to0\) as \(s\to e\) for every \(a\in A\), then
+\(S_\alpha=S^\alpha\) is weak-star compact and convex. If it is nonempty, it has an extreme point, whose joint GNS family is irreducible by Theorem 8.3.
+
+**Proof.** Isometry of automorphisms gives
+\(\|\alpha_s(a)-\alpha_r(a)\|=\|\alpha_{r^{-1}s}(a)-a\|\).
+Thus every state has continuous mixed coefficients, because
+\[
+ |\omega(b^*(\alpha_s(a)-\alpha_r(a)))|
+ \leq\|b\|\|\alpha_s(a)-\alpha_r(a)\|\to0.
+\]
+This proves \(S_\alpha=S^\alpha\).
+
+If \(A=0\), these sets are empty and compact. Otherwise \(\|1\|=1\). The earlier [nonunital GNS theorem](OA-FLOW-GNS.md#gns-theorem-5-1) gives a cyclic unit vector for every state. Nondegeneracy forces \(\pi_\omega(1)=I\): it is the identity on every generating vector \(\pi_\omega(a)\eta\), and those vectors have dense span. Hence \(\omega(1)=1\). Conversely a bounded positive functional in the dual unit ball with \(\omega(1)=1\) has norm at most one and at least \(|\omega(1)|/\|1\|=1\), so it is a state. Consequently
+\[
+ S(A)=\{\omega\in(A^*)_1:
+                \omega(a^*a)\geq0\text{ for every }a\in A,\ \omega(1)=1\}.
+\]
+Every displayed condition is weak-star closed. The exact earlier [Banach--Alaoglu proof](../../foundations-of-von-neumann-algebras/weak-topologies-tychonoff-banach-alaoglu-mazur-bipolars-krein-milman-and-eberlein-smulian.html#oa-fnd-wt-03), using its preceding [Tychonoff proof](../../foundations-of-von-neumann-algebras/weak-topologies-tychonoff-banach-alaoglu-mazur-bipolars-krein-milman-and-eberlein-smulian.html#oa-fnd-wt-02), makes the dual unit ball compact. Thus \(S(A)\) is compact. Each invariance equation
+\(\omega(\alpha_s(a)-a)=0\) is also weak-star closed, so their intersection \(S^\alpha\) is compact and convex.
+
+For nonempty \(S^\alpha\), the following is the earlier [closed-face argument](../../foundations-of-von-neumann-algebras/weak-topologies-tychonoff-banach-alaoglu-mazur-bipolars-krein-milman-and-eberlein-smulian.html#oa-fnd-wt-06), specialized here. Order its nonempty closed faces by reverse inclusion. A chain has a nonempty intersection by compactness and the finite intersection property; the intersection is again a closed face. Zorn's lemma gives a minimal face \(F\). States are Hermitian by their GNS vector formula, so two distinct states in \(F\) would be separated by evaluation at a self-adjoint \(a\). The maximum of that real continuous affine evaluation is attained on compact \(F\). Its maximizers form a nonempty closed face of \(F\), hence a face of \(S^\alpha\), and exclude one of the two states. This contradicts minimality. Thus \(F\) is a singleton, an extreme point. \(\square\)
+
+Unitality is used for compactness, not for Proposition 8.1 or Theorem 8.3. For the trivial action on \(C_0(\mathbb R)\), the states \(\delta_n\) converge weak-star to zero, which is not a state. The nonempty qualification is also essential; the proposition does not assert existence of an invariant state.
 
 ## 9. Two finite orbits
 
@@ -486,8 +537,8 @@ Multiplication \(M_a\) on \(L^2(G)\) is faithful by full Haar support and nondeg
 are isometric by the modular formula, satisfy \(V_sV_r=V_{sr}\), and have inverse \(V_{s^{-1}}\). Uniform continuity on compact supports followed by density proves their strong continuity. Direct evaluation gives \(V_sM_aV_s^*=M_{\alpha_s(a)}\).
 
 The integrated operator of \(F\in C_c(G,C_0(G))\), on compactly supported vectors, has the kernel
-\
- [\Phi(F)\xi=\int K_F(x,y)\xi(y)\,dy,\qquad
+\[
+ [\Phi(F)\xi](x)=\int K_F(x,y)\xi(y)\,dy,\qquad
  K_F(x,y)=F(x^{-1}y)(x)\Delta(x^{-1}y)^{1/2}.
  \tag{10.3}
 \]
@@ -541,6 +592,50 @@ The full and reduced crossed products \(C(C_5)\rtimes C_5\) are therefore \(M_5(
 ![Exact finite coefficient array, rank-one kernel and two-orbit invariant probabilities](../assets/l25-reconstruction/L25-original-finite-models.svg)
 
 *Original CC0 illustration.* The first two panels display exact numerator arrays with common denominator \(2\sqrt7\), for the real unit vectors \(p=(1,2,0,-1,1)/\sqrt7\) and \(q=(1,0,1,1,-1)/2\). Equation (10.8) reindexes the coefficient array into the rank-one kernel \(K(x,y)=p(x)q(y)\); Theorem 10.1 proves its crossed-product interpretation. The final panel displays the state of Section 9 at \(t=7/20\), with probabilities \(7/60\) and \(13/40\). Exercises 11.2–11.3 verify the matrix units and the joint-commutant projection. The covariance conventions agree with Echterhoff, freely accessible version 4, Section 3.2; the finite numerical models and their proofs here are original. The reproducible figure source is make_l25_figure.py.
+
+### Joint compact kernels on the real line
+
+**Proposition 10.2.** For \(G=\mathbb R\) with Lebesgue Haar measure, let
+\(x\in C_c(\mathbb R\times\mathbb R)\) and \(F(s)(u)=x(u,s)\). In the multiplication/right-translation pair above,
+\[
+ \|\Phi(F)\|_{\mathrm{HS}}^2
+ :=\sum_n\|\Phi(F)e_n\|^2
+ =\iint_{\mathbb R^2}|x(u,s)|^2\,du\,ds<\infty
+\]
+for every orthonormal basis \((e_n)\) of \(L^2(\mathbb R)\). In particular \(\Phi(F)\) is compact. The integrated representation of \(L^1(\mathbb R,C_0(\mathbb R))\) on \(L^2(\mathbb R)\) is irreducible.
+
+**Proof.** Formula (10.3), with \(\Delta=1\), gives the kernel
+\(K(u,v)=x(u,v-u)\). The map \((u,s)\mapsto(u,u+s)\) is a homeomorphism, so \(K\) is continuous and jointly compactly supported, and translation in the inner integral gives
+\(\iint|K(u,v)|^2\,du\,dv=\iint|x(u,s)|^2\,du\,ds\).
+For \(\eta\in L^2(\mathbb R)\), Cauchy--Schwarz gives
+\[
+ \int\left|\int K(u,v)\eta(v)\,dv\right|^2du
+ \leq\|K\|_2^2\|\eta\|_2^2.
+\]
+The compact continuous kernel has a continuous \(L^2\)-valued slice \(u\mapsto K(u,\cdot)\), by finite-cover continuity on its common bounded support. Thus this formula defines a bounded operator and agrees with \(\Phi(F)\) first on \(C_c(\mathbb R)\), then everywhere by density.
+
+Here \(L^2(\mathbb R)\) is separable: rational-mesh step functions with rational real and imaginary values approximate \(C_c(\mathbb R)\) in \(L^2\), by uniform approximation on a common bounded interval; the preceding lesson's [scalar \(L^2\) density proof](OA-FLOW-L24.md#oa-flow.grp.haarconventions) makes these step functions dense in all of \(L^2\). The earlier [Hilbert-basis and Parseval proof](../../foundations-of-von-neumann-algebras/hilbert-spaces-and-compact-operators.html#oa-fnd-hs-04) therefore supplies a countable orthonormal basis \((e_n)\). Complex conjugation makes \((\overline{e_n})\) another such basis. With our first-variable-linear inner product,
+\[
+ [\Phi(F)e_n](u)=\langle K(u,\cdot),\overline{e_n}\rangle.
+\]
+Parseval on each slice and the already declared scalar monotone-convergence proof give
+\[
+ \begin{aligned}
+ \sum_n\|\Phi(F)e_n\|^2
+ &=\int\sum_n|\langle K(u,\cdot),\overline{e_n}\rangle|^2\,du\\
+ &=\int\|K(u,\cdot)\|_2^2\,du=\|x\|_2^2.
+ \end{aligned}
+\]
+Only a countable sum of nonnegative measurable functions is exchanged with the integral. This also shows the value is independent of the chosen basis. Compactness already follows from Theorem 10.1: this pair's integrated image lies in the compact operators.
+
+For irreducibility, (10.4) with \(\Delta=1\) produces the rank-one operators with both vectors in \(C_c(\mathbb R)\). Approximating arbitrary Hilbert vectors by such vectors, and using
+\(\|\theta_{p,q}-\theta_{p',q'}\|
+ \leq\|p-p'\|\|q\|+\|p'\|\|q-q'\|\),
+puts every rank-one operator in the norm closure of the integrated image. A closed invariant subspace is invariant under that closure. If it contains \(0\ne\eta\), it contains every \(\zeta\), since
+\(\theta_{\zeta,\eta}\eta=\|\eta\|^2\zeta\).
+Hence it is the whole space. \(\square\)
+
+The Hilbert--Schmidt identity above concerns jointly compact \(x\), not every \(F\in C_c(\mathbb R,C_0(\mathbb R))\) or every \(L^1\) coefficient. The irreducibility conclusion is for this concrete right-translation pair.
 
 ## 11. Exercises and complete solutions
 

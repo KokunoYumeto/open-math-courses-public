@@ -45,7 +45,7 @@ Basic references are [Connes–Størmer 1975] and [Connes 1994].
 ## Results used from other lessons
 
 Throughout, \(R\) denotes a von Neumann algebra with a faithful normal tracial state \(\tau\). "Subalgebra"
-always means a von Neumann subalgebra containing the unit of \(R\). For \(p\in1,\infty)\) put
+always means a von Neumann subalgebra containing the unit of \(R\). For \(p\in[1,\infty)\) put
 \(\|a\|_p=\tau(|a|^p)^{1/p}\), and write \(\|a\|\) for the operator norm.
 
 **(B1) Conditional expectations.** For every subalgebra \(N\subset R\) there is a unique map
@@ -54,7 +54,7 @@ satisfies \(\tau\circ E_N=\tau\). It is normal and completely positive. If \(N\s
 \(E_N\circ E_P=E_N\). On \(L^2(R,\tau)\) it is the orthogonal projection onto \(L^2(N,\tau)\); hence
 \(\|x-E_N(x)\|_2\le\|x-y\|_2\) for all \(y\in N\), and \(\|x\|_2^2=\|E_N(x)\|_2^2+\|x-E_N(x)\|_2^2\). Moreover
 \(\|E_N(x)\|_1\le\|x\|_1\). Existence, uniqueness, normality, faithfulness, bimodularity and the formula
-\(\tau(E_N(x)y)=\tau(xy)\) for \(y\in N\) are [Integration for a trace, Theorem 9.1; complete
+\(\tau(E_N(x)y)=\tau(xy)\) for \(y\in N\) are Integration for a trace, Theorem 9.1; complete
 positivity is Contractive retractions and the algebraic structure of expectations,
 §CE-006. The rest follows: \(E_N\circ E_P\) is a \(\tau\)-preserving normal projection
 of norm one onto \(N\), hence equal to \(E_N\) by uniqueness; the formula says that \(x-E_N(x)\) is orthogonal to \(N\) in

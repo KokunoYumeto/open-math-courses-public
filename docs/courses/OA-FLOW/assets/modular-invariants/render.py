@@ -11,6 +11,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-modular-invariants-20261009-v1"
 from matplotlib import font_manager
 from matplotlib.patches import Circle, Rectangle, FancyArrowPatch, Arc
 
@@ -134,7 +135,7 @@ txt(ax,.5,.075,"A semifinite factor: trace scaling alone does not imply type III
 fig.text(.5,.025,"Proofs: MIV6.d–f (complete Fourier basis), MIV6.h–o (all periods and eigenfrequencies), MIV6.p–x (full semifinite crossing).",
          ha="center",fontsize=12,color=MUTED)
 for ext in ("png","svg"):
-    fig.savefig(HERE/f"modular-invariants.{ext}",dpi=160,facecolor=fig.get_facecolor())
+    fig.savefig(HERE/f"modular-invariants.{ext}",dpi=160,facecolor=fig.get_facecolor(), **({'metadata': {'Date': None}} if ext == 'svg' else {}))
 plt.close(fig)
 data={
  "title":"Center flows: periods and eigenfrequencies",

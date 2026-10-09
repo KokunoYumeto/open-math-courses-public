@@ -1061,7 +1061,7 @@ z
     </g>
    </g>
    <g id="text_5">
-    <!-- $Q_s-Q_t:\ s,t)$ -->
+    <!-- $Q_s-Q_t:\ [s,t)$ -->
     <g transform="translate(97.224119 130.803612) scale(0.105 -0.105)">
      <defs>
       <path id="DejaVuSans-3a" d="M 750 794 
@@ -3707,7 +3707,7 @@ z
  </defs>
 </svg>
 
-The upper panel shows the endpoint conventions proved in S01–S02. The lower panel shows the scalar example \(R=1,m=4\) of S03: each half-open interval receives its lower endpoint coefficient, and \(\{1\}\) receives coefficient one. The shaded difference is at most \(\Delta=1/2\). These scalar diagrams explain the operator construction from [continuous positive parts and [range supports](regular-group-operator-foundations.md#h02); the displayed norm estimate is proved for every bounded selfadjoint operator.
+The upper panel shows the endpoint conventions proved in S01–S02. The lower panel shows the scalar example \(R=1,m=4\) of S03: each half-open interval receives its lower endpoint coefficient, and \(\{1\}\) receives coefficient one. The shaded difference is at most \(\Delta=1/2\). These scalar diagrams explain the operator construction from continuous positive parts and [range supports](regular-group-operator-foundations.md#h02); the displayed norm estimate is proved for every bounded selfadjoint operator.
 
 <a id="s04"></a>
 ## S04. Central cuts for a positive contraction

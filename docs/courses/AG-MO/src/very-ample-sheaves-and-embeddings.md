@@ -4,7 +4,7 @@
 
 Sections of an invertible sheaf can supply projective coordinates. To embed a scheme, those coordinates must do more than avoid vanishing simultaneously: on each coordinate chart, their ratios must recover the whole coordinate ring. The Segre and Veronese embeddings make this test explicit. Their coordinates are products of sections, and their chart ratios recover the original coordinates.
 
-Our prerequisite is the quotient description of projective bundles: a map \(T\to\mathbf P(\mathcal E)=\operatorname{Proj}_S\operatorname{Sym}\mathcal E\) over \(S\) is an invertible quotient \(g^*\mathcal E\twoheadrightarrow\mathcal L\), up to isomorphism. Relative Proj, its tautological sheaf and arbitrary base change belong to *Projective space, relative Proj and maps to projective space*, the twelfth planned lesson of *Sheaves and schemes*. The exact open proof providers are [Stacks, Tag 01NE](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/constructions.html#constructions-lemma-projective-space), [Tag 01NC](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/constructions.html#constructions-lemma-proj-functor), and [Tag 01O3](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/constructions.html#constructions-lemma-relative-proj-base-change), together with the [projective-bundle quotient construction](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/constructions.html#constructions-section-projective-bundle). We also use Separated morphisms and Proper morphisms.
+Our prerequisite is the quotient description of projective bundles: a map \(T\to\mathbf P(\mathcal E)=\operatorname{Proj}_S\operatorname{Sym}\mathcal E\) over \(S\) is an invertible quotient \(g^*\mathcal E\twoheadrightarrow\mathcal L\), up to isomorphism. Relative Proj, its tautological sheaf and arbitrary base change are proved in the prerequisite Projective space, relative Proj and maps to projective space, Theorems 2.1 and 3.2 and Lemma 3.1. Its Theorem 4.1 proves the invertible-quotient description over arbitrary bases and for arbitrary quasi-coherent modules, with the same quotient convention. Read these results before this lesson. We also use Separated morphisms and Proper morphisms.
 
 ## 1. Coordinates supplied by sections
 
@@ -111,7 +111,7 @@ For \(n=m=1\), use \(x=Z_{00},y=Z_{11},z=Z_{01},w=Z_{10}\). The image is
 
 On the real affine chart \(Z_{00}=1\), the parametrization is \((a,b)\mapsto(1,b,a,ab)\). Its two families of projective lines restrict to the two families of straight lines obtained by holding \(a\) or \(b\) constant. Over other fields, (3.1)–(3.3) remain scheme-theoretic descriptions; the real drawing is only an illustration of this one affine chart.
 
-![An affine real chart of the Segre quadric c=ab, with one family of straight lines at fixed a and a second at fixed b.](figures/segre-chart.png)
+![An affine real chart of the Segre quadric c=ab, with one family of straight lines at fixed a and a second at fixed b.](../figures/segre-chart.png)
 
 *Figure 3.1. The real chart \(Z_{00}=1\), with \(a=Z_{10}/Z_{00}\), \(b=Z_{01}/Z_{00}\), and \(c=Z_{11}/Z_{00}=ab\). The coloured straight lines are samples of the two rulings from (3.3). The plot does not include the points outside this affine chart. Its exact equations are (3.1) and (3.2), and its proof is Theorem 3.1.*
 
@@ -227,6 +227,6 @@ As an application, \(\mathcal O(a,b)\) on \(\mathbf P^n_S\times_S\mathbf P^m_S\)
 
 ## References and proof providers
 
-The Stacks project, read in the AI Integrated Stacks Project edition, provides the exact projective-coordinate and projective-bundle foundations, the Segre embedding, and the very-ample definitions and base-change statements cited above. The named twelfth lesson of *Sheaves and schemes* is their planned internal provider. Its proof content, convention and existing assignment are specified rather than assumed to be already published. The exact linked open proofs retain GNU FDL 1.2; their text is not reproduced here.
+The Stacks project, read in the AI Integrated Stacks Project edition, provides the exact projective-coordinate and projective-bundle foundations, the Segre embedding, and the very-ample definitions and base-change statements cited above. The complete prerequisite lesson Projective space, relative Proj and maps to projective space proves the projective-coordinate and projective-bundle foundations, with the exact locators in the introduction. The exact linked open proofs retain GNU FDL 1.2; their text is not reproduced here.
 
 Ravi Vakil, *The Rising Sea: Foundations of Algebraic Geometry*, draft of 27 July 2024, §§10.6, 15.2 and 16.2, was consulted for the coordinate and line-bundle viewpoints. That treatment uses a closed-embedding convention in its proper setting; our explicit immersion convention follows Stacks. All embedding criteria, Segre and Veronese assertions, tensor and base-change statements, and the five exercises have been proved above with those conventions distinguished.

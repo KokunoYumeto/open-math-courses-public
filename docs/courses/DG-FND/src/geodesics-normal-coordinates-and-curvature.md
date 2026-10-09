@@ -192,7 +192,7 @@ Fix \(x\in V\) and put \(W_x=\{v(x,y):y\in V\}\). Since \(\Psi\) preserves the b
 g(x)=I-\sum_i x^i A_i(p).
 \tag{B.8}
 \]
-It is invertible near \(p\), since \(g(p)=I\) and matrix inversion is open and smooth by Local 0.4. This holds for complex matrices as proved in Linear A.2. The changed frame \(e'=eg\) has the same value at \(p\), and Linear A.1 gives \(A'=g^{-1}Ag+g^{-1}dg\). At \(p\), \(dg=-A(p)\), so \(A'(p)=0\). On \(TM\), Linear D.1 then gives \(T(e'_i,e'_j)(p)=-e'_i,e'_j\). Thus such a frame can be noncoordinate when torsion is nonzero; the restriction in (B.2) on normal coordinate coefficients and this unrestricted frame construction are consistent. □
+It is invertible near \(p\), since \(g(p)=I\) and matrix inversion is open and smooth by Local 0.4. This holds for complex matrices as proved in Linear A.2. The changed frame \(e'=eg\) has the same value at \(p\), and Linear A.1 gives \(A'=g^{-1}Ag+g^{-1}dg\). At \(p\), \(dg=-A(p)\), so \(A'(p)=0\). On \(TM\), Linear D.1 then gives \(T(e'_i,e'_j)(p)=-[e'_i,e'_j](p)\). Thus such a frame can be noncoordinate when torsion is nonzero; the restriction in (B.2) on normal coordinate coefficients and this unrestricted frame construction are consistent. □
 
 ## C. Curvature on tensors and both Bianchi identities
 

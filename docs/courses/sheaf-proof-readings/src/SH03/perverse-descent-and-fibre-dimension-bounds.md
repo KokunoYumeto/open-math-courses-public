@@ -8,7 +8,7 @@ Use Perverse support, costalks and truncation triangles for the real perverse t-
 
 Throughout, \(k\) is commutative of finite global dimension. Manifolds and maps are real analytic, Hausdorff and countable at infinity, with uniform finite dimension bounds. Weak constructibility allows arbitrary modules; \(D^b\) always imposes a single global cohomology interval. The strong perverse heart additionally uses the Noetherian hypothesis of the preceding truncation theorem. Verdier duality between the perverse cuts below is stated over a field on the strong category.
 
-Keep \(p^*(s)=-p(s)-s\), \(pa=p(a+s)\), and
+Keep \(p^*(s)=-p(s)-s\), \(p[a](s)=p(a+s)\), and
 \({}^pD^{\le r}={}^pD^{\le0}[-r]\), with analogous lower cuts. A constant degree change satisfies
 
 \[

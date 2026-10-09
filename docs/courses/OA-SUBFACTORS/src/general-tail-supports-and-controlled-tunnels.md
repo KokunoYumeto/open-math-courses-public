@@ -6119,7 +6119,2024 @@ The identities AC.7 and AC.17 are identities of this measurable action. They alo
 
 Figure AC. The three regions partition the local field. The probability masses, likelihoods and derivative values are exact AC.3–AC.18; the boxes encode regions rather than metric lengths. Every invariant state gives zero to the unit ball, so its likelihood values are the outer row and its reciprocal cost is exactly six. [Reproducible diagram source](figures/stationary-affine-cost-v17.py).
 
-## Forty-six checks with complete solutions
+## An actual index-ten affine inclusion and its normal boundary observable
+
+This construction realizes the group, weights, ordinary Jones tunnel and Laurent observable in AC as physical finite factors. AH constructs the actual inclusion and its normal observable; AB then proves that this observable exhausts both full centers, and AO derives the physical separator and exact correction of the unrestricted joint-state assertion.
+
+### AH.1. The action and trace character
+
+Let \(L=\mathbb F_2[t,t^{-1}]\) with addition, and
+\[
+G=L\rtimes\mathbb Z,\qquad
+(b,n)(c,m)=(b+t^nc,n+m).
+\tag{AH.1}
+\]
+Use three distinct labels \(s_0=1,s_1=(1,0),s_2=(0,1)\). They generate \(G\); the first nonidentity label is a toggle of order two and the second acts on \(\mathbb F_2((t))\) by contraction \(x\mapsto tx\). All conjugate toggles commute.
+
+Take the hyperfinite II∞ factor
+\[
+\mathcal P=Q\bar\otimes B\bar\otimes T_\infty,\qquad
+Q=\bar\bigotimes_{r\ge1}(\operatorname{Mat}_3,\operatorname{tr}_3),\quad
+B=\bar\bigotimes_{g\in G}(\operatorname{Mat}_2,\operatorname{tr}_2).
+\tag{AH.2}
+\]
+The trace-scaling construction in WM.1 at the exact scalar two gives a normal automorphism \(\theta\) of \(T_\infty\) with trace multiplier two. Its construction uses the normal isomorphism of normalized hyperfinite finite corners, extended over countable matrix units. Define \(\alpha_{(b,n)}\) to fix \(Q\), act by the left Bernoulli translation of \(G\) on \(B\), and act by \(\theta^n\) on \(T_\infty\). This is an actual action and
+\[
+\chi(b,n)=2^n,\qquad \nu=(1,1,2),\qquad
+S_+=4,\quad S_-=5/2,\quad d=S_+S_-=10.
+\tag{AH.3}
+\]
+For nonzero \(n\), the automorphism cannot be inner because it scales the semifinite trace. For \(n=0,b\ne0\), a hypothetical implementer can be compressed by a finite projection of \(T_\infty\). It then contradicts the finite-coordinate Bernoulli argument of WM.1/LF.5: a trace-zero matrix at a sufficiently fresh coordinate and its translate have norm distance \(\sqrt2\), whereas a local approximation of the implementer commutes with both. Thus endpoint automorphisms have scalar intertwiners precisely when their \(G\) labels agree. This verifies the outerness input for all endpoints, not just the three generators.
+
+### AH.2. Weighted stable cups and coherent finite compression
+
+Peel the first fixed \(\operatorname{Mat}_3\) coordinate and set
+\[
+\begin{aligned}
+\phi_\epsilon(x)&=\sum_{i=0}^2E_{ii}\otimes\alpha_{s_i^\epsilon}(x),\\
+w^+&=(1/4,1/4,1/2),\qquad
+w^-=(2/5,2/5,1/5),\qquad w_i^+w_i^-=1/10,\\
+\phi_\epsilon^{-1}E_\epsilon([x_{ij}])
+&=\sum_i w_i^\epsilon\alpha_{s_i^{-\epsilon}}(x_{ii}).
+\end{aligned}
+\tag{AH.4}
+\]
+The embedding has trace multiplier \(S_\epsilon/3\). The displayed expectation is normal, unital, faithful, bimodular and trace preserving, by applying the exact trace character to each entry. Its marked cup in the first two coordinates is
+\[
+p_\epsilon=
+\left|\sum_i\sqrt{w_i^{-\epsilon}}\,ii\right\rangle
+\left\langle\sum_i\sqrt{w_i^{-\epsilon}}\,ii\right|.
+\tag{AH.5}
+\]
+Equal paired labels cancel. Hence the cup commutes with the lower factor in the triple
+\(\phi_\epsilon\phi_{-\epsilon}(\mathcal P)\subset\phi_\epsilon(\mathcal P)\subset\mathcal P\), and compression is its exact lower expectation. Its expectation in the middle is \(1/10\). The spanning calculation is
+\[
+(1\otimes E_{ab})p_\epsilon(1\otimes E_{cd})
+=\sqrt{w_b^{-\epsilon}w_c^{-\epsilon}}\,
+ E_{bc}\otimes E_{ad}.
+\tag{AH.6}
+\]
+All coefficients are nonzero, so the middle factor and cup generate the upper factor, with full cup corner. The finite right-ideal recognition in the earlier Jones-construction proof gives the actual basic construction; no index-only recognition is used.
+
+Put \(\Phi_r=\phi_+\phi_-\phi_+\cdots\) with \(r\) alternating factors and \(\mathcal L_r=\Phi_r(\mathcal P)\). Choose \(e\in\mathcal P\) of trace one and \(h_1=\phi_+(e)\), of trace \(4/3\). The physical pair is
+\[
+N=h_1\mathcal L_1h_1\subset M=h_1\mathcal P h_1,\qquad
+\tau=\operatorname{Tr}/(4/3).
+\tag{AH.7}
+\]
+For each \(r\), choose \(h_r\in\mathcal L_r\) of trace \(4/3\), and a unitary \(v_r\in\mathcal L_r\) taking \(h_r\) to \(h_{r+1}\). Comparison of the finite projections and their infinite complements supplies such a unitary. Define \(U_1=1,U_{r+1}=U_rv_r^*\), and for \(j\le r\)
+\[
+L_j=U_rh_r\mathcal L_jh_rU_r^*.
+\tag{AH.8}
+\]
+This is independent of \(r\ge j\), since \(v_r\) belongs to the smaller factor and normalizes every earlier \(\mathcal L_j\). It sends the common projection to \(h_1\). Compress each triple and cup at a stage below all three factors. Later unitaries commute with that cup, so its physical image is independent of the stage. Every compressed triple is its actual Jones triple with index ten and cup trace \(1/10\). Thus \(L_0=M,L_1=N,L_2,\ldots\) is a genuine ordinary tunnel of separable hyperfinite II₁ factors. No infinite product or projection in an unproved infinite intersection is used.
+
+The initial commutant and its two weights are
+\[
+C=N'\cap M=\bigoplus_{i=0}^2\mathbb Cp_i,\quad
+\tau(p_i)=w_i^+,\quad \rho_C(p_i)=w_i^-,\quad
+k_C=\tfrac85(p_0+p_1)+\tfrac25p_2.
+\tag{AH.9}
+\]
+Here \(p_i=h_1(E_{ii}\otimes1)\). Each corner is an identity inclusion \(Np_i=p_iMp_i\), so its right-module dimension is \(1/w_i^+\); their sum is ten. This proves the two weights and the displayed normal dual density. In particular the physical pair is nonextremal.
+
+### AH.3. Every finite relative commutant and both inherited traces
+
+For a word \(I=(i_1,\ldots,i_n)\), put
+\[
+g(I)=s_{i_1}s_{i_2}^{-1}s_{i_3}\cdots s_{i_n}^{(-1)^{n+1}},
+\quad
+D_n^+=\operatorname{span}\{E_{IJ}\otimes1:g(I)=g(J)\}.
+\tag{AH.10}
+\]
+The endpoint intertwiner calculation proves that this is the entire stable relative commutant. The compression proof WM.4 works with three coordinates: a full finite corner frame in \(\mathcal L_n\) extends each compressed commutant element by a bounded strong block sum, and compression is a normal onto *-isomorphism. The successive \(v_r\in\mathcal L_r\) commute with all earlier \(D_r^+\), so these identifications are compatible with every inclusion and cup. The minus-initial phase \(D_n^-\) is defined by reversing the first sign. Identity embeddings append the label.
+
+For a minimal word projection \(q_I\), its two inherited weights are exactly
+\[
+\tau(q_I)=\frac{2^{n(g(I))}}{\prod_{\ell=1}^nS_{(-1)^{\ell+1}}},
+\qquad
+\rho(q_I)=\frac{2^{-n(g(I))}}{\prod_{\ell=1}^nS_{(-1)^\ell}},
+\tag{AH.11}
+\]
+where \(n(g)\) is the integer coordinate. For the physical trace, sum the tail factors of a common compressed word projection: each coordinate contributes its trace character, and summing an appended label gives \(S_\epsilon\). Normalization cancels the compression mass. For the right-module trace, every compressed endpoint map has local index one, so the finite-module formula gives \(1/(10^n\tau(q_I))\), which is the second expression. Both masses sum to one by expanding the products. At even length \(2m\), these are \(2^{n(g)}/10^m\) and \(2^{-n(g)}/10^m\); their ratio is \(2^{-2n(g)}\).
+
+Every finite suffix relative commutant is the corresponding opposite-initial algebra with these exact weights. The construction preserves any prescribed finite ordinary prefix and every marked cup. Finite marked alignment transports this compatible inherited finite system to every other ordinary tunnel of this physical pair, by the exact earlier alignment proof LF.17.
+
+### AH.4. All smooth expected representations have a physical return
+
+The representation argument WM.5 depends only on the positive weights, finite diagonal labels, exact endpoint relators, hyperfinite physical coefficient factor, and amenability of the label group. All of those inputs have just been verified here. Its actual finite row for three coordinates is
+\[
+u_{ab}=(w_b^+)^{-1/2}E_{ab},\qquad
+L(X)_{(a,b),(c,d)}=\delta_{bd}\beta_b^{-1}(X_{ac}),
+\tag{AH.12}
+\]
+with cup vector \(\delta_{ab}\sqrt{w_a^+}\) and opposite weights \(w_b^-=1/(10w_b^+)\). This row reconstructs every entry, has the exact expected inner products, and iterates through every finite physical tower.
+
+For clarity, stabilize an arbitrary normal faithful nondegenerate smooth expected representation. The stabilized physical pair uses the projections \(h_1\otimes1\) and \(1\otimes1\) in the stable physical smaller factor. Both are infinite with full central support, and a physical partial isometry there identifies their corners. This common corner comparison transports the physical expected pair and every finite basic-construction stage as in WM.5; it reidentifies the embedded physical pair without assuming an extension of the isomorphism to an arbitrary ambient algebra. The original finite rank-one amplification corner is used only for the final compression after the equivariant return has been constructed. Stage-zero smoothness gives the three physical projections commuting with the represented smaller algebra. The identity physical corners and nondegeneracy identify the three represented diagonal corners with the smaller represented algebra. Since the expectation of the \(i\)-th projection is \(w_i^+1>0\), each corner map is faithful. Physical matrix units then give
+\[
+\mathcal V^\infty=\operatorname{Mat}_3(W),\qquad
+\mathcal U^\infty=\{\operatorname{diag}(\beta_i(x)):x\in W\},
+\quad E_{\rm base}(X)=\sum_iw_i^+\beta_i^{-1}(X_{ii}).
+\tag{AH.13}
+\]
+The original factor \(P\subset W\) has \(\beta_i|_P=\alpha_{s_i}\). The finite row AH.12 and smoothness force all actual \(G\) relators: an equal-endpoint physical matrix unit commutes with the represented lower algebra and equates the two represented automorphism words. Inserting identity labels writes every relator with alternating signs. Thus \(\beta\) is an actual \(G\) action on \(W\).
+
+The hyperfinite finite-corner and entrywise construction in WM.5 supplies a UCP map \(\Gamma_0:W\to P\) fixing \(P\). For the exact group here, let \(L_R\) be the span of \(t^{-R},\ldots,t^R\) and use
+\[
+\mathcal F_R=\{(b,n):b\in L_R,\ -R\le n\le R\}.
+\tag{AH.14}
+\]
+Right multiplication by \(a\) adds \(t^n\) and preserves this set; right multiplication by \(T\) has symmetric-difference ratio \(2/(2R+1)\). Inverses have the same ratios, and fixed words follow by telescoping. Averaging \(\alpha_g^{-1}\Gamma_0\beta_g\) over these actual right Følner sets and taking a point-ultraweak cluster gives an equivariant UCP map fixing \(P\). Entrywise extension in AH.13 preserves the expected diagonal row, and compression by the original physical rank-one amplification corner gives a UCP projection \(F:\mathcal V\to M\) with \(F|_M=\mathrm{id}\) and \(E_NF=FE\). Therefore \(\tau F\) is an \(M\)-central compatible hypertrace with physical marginal \(\tau\) for every smooth expected representation. This proves the full all-smooth amenability hypothesis for this actual pair.
+
+### AH.5. The actual Laurent observable and its exact normal laws
+
+The physical cylinder measures in AH.11 are the independent alternating label measures AH.4. Write a raw endpoint as \(g_k=(b_k,n_k)\). At pair boundaries the height increments are independent bounded variables with mean
+\[
+\mathbb E(n_{2m+2}-n_{2m})=\tfrac12-\tfrac15=\tfrac3{10}.
+\tag{AH.15}
+\]
+The elementary square-subsequence proof of the strong law in C13.2 gives \(n_k\to+\infty\), in either initial phase. At each raw toggle the lamp polynomial changes only at height \(n_k\); each fixed height is therefore visited finitely often. Every coefficient of \(b_k\) stabilizes, and the heights have a finite lower bound. Consequently
+\[
+X=\lim_k b_k\in K=\mathbb F_2((t))
+\tag{AH.16}
+\]
+exists almost surely in both physical normal cylinder measures.
+
+The limit laws are exactly the two AC probabilities, with the phase order fixed:
+\[
+\operatorname{law}(X\mid\text{first plus})=\mu_V,\qquad
+\operatorname{law}(X\mid\text{first minus})=\mu_U.
+\tag{AH.17}
+\]
+Here is a proof that stationarity alone is not the omitted step. For a fixed starting Laurent variable \(Y\), independent of the raw steps, \(b_{2m}+t^{n_{2m}}Y\to X\) almost surely, since \(n_{2m}\to+\infty\). Start-plus pair iteration preserves \(\mu_V\) by the two exact equations AC.7; start-minus iteration preserves \(\mu_U\). Take \(Y\) with the respective stationary law. For every bounded continuous function of \(K\), bounded convergence shows that its integral in the stationary law equals its integral in the actual limit law. Indicators of compact open balls are continuous; they form a countable generating algebra and hence determine the full probability measure by countable additivity. This proves AH.17 for the entire normal laws.
+
+For each bounded Borel \(f\) on \(K\), the conditional expectation of \(f(X)\) on a complete physical prefix is the bounded harmonic function of its endpoint and next phase. Put that value on every corresponding endpoint block in AH.10. Conditional expectation onto the preceding finite algebra is the preceding harmonic value, by the exact word weights. These uniformly bounded central martingales converge in \(L^2\) and strongly to actual core-center elements. The cylinder proof in C13.1 shows their diagonal limit is exactly \(f(X)\); approximation by cylinder events proves multiplication and spectral projections, not merely convergence of scalar expectations. Since every bounded Borel observable has this argument, it gives faithful normal unital embeddings
+\[
+j_V:L^\infty(K,\mu_V)\longrightarrow Z(R),\qquad
+j_U:L^\infty(K,\mu_U)\longrightarrow Z(S),
+\tag{AH.18}
+\]
+where \(R=(\bigcup_rL_r'\cap M)''\) and \(S=(\bigcup_rL_r'\cap N)''\). Normality follows by monotone convergence in the faithful normal trace, and faithfulness from AH.17. These are normal subalgebras of the actual cores. The full onto assertion is proved below in AB.20, AB.27 and AB.31.
+
+### AH.6. The actual joint center recovers all three branches
+
+Conditioning on the first physical label gives the exact branch relation
+\[
+j_V(f)p_i=j_U(f\circ s_i)p_i,\qquad i=0,1,2.
+\tag{AH.19}
+\]
+The same prefix conditional expectation and strong-limit argument proves it inside the actual cores. Define \(f_i\) as the joint spectral projection for the equality \(X_V=s_iX_U\). This is a well-defined bounded projection in \(Z(S)\vee Z(R)\); equality of all Laurent digits is a countable intersection of its joint finite digit tests.
+
+On the \(i\)-th branch it is one. On any other branch, it tests equality of two of \(x,x+1,tx\). Identity and toggle are never equal. The other two equalities are \(x=0\) and \(x=(1+t)^{-1}\). Both points have zero \(\mu_U\) mass because the Haar measure is nonatomic and its density is positive and finite on each compact shell. Thus faithfulness of the physical trace gives \(f_i=p_i\).
+
+The normal full-corner branch isomorphism in WM.9 gives \(C_0=S'\cap R=\bigoplus_i p_iZ(S)\). The inclusion \(Z(S)\vee Z(R)\subset C_0\) is automatic, and it contains every recovered \(p_i\) and all of \(Z(S)\). Hence
+\[
+D_0=Z(S)\vee Z(R)=\bigoplus_{i=0}^2p_iZ(S)=C_0.
+\tag{AH.20}
+\]
+This is an actual full joint-center equality, using only the embeddings established so far. AB.31 below also proves that AH.18 exhausts each individual center. The canonical joint lift recovers the original physical \(p_i\) by the full-corner faithfulness argument C13.2.
+
+The bounded normal likelihoods \(R_i\) on the full coefficient center and the exact physical return/converse are therefore the three-branch versions of C13.9–C13.19, with their complete finite basis and original canonical traces. On the Laurent spectral subalgebra, their normal conditional expectations have the exact AC.16 values, because testing AH.19 against \(f(X)\) gives AC.15. This statement does not identify the full \(R_i\) with those conditional expectations.
+
+### AH boundary and the next theorem
+
+AH.1–AH.20 proves the actual nonextremal index-ten inclusion, coherent ordinary marked tunnel, all finite relative commutants with both inherited traces, all-smooth amenability, exact Laurent normal laws and embeddings, and full three-branch joint-center recovery. The next theorem proves the full individual-center maximality and canonical-likelihood identification needed to apply the measurable calculation to arbitrary compatible physical states.
+
+Exact earlier proofs used are WM.1–WM.5, WM.9–WM.11 and C13.1–C13.4 of this lesson, the finite Jones construction, finite smooth matrix tower, full-corner relative-commutant proof and the hyperfinite finite-corner projection proof. The formulas here give their actual new group, parameters and finite rows; none of the old harmonic-positivity estimates is imported.
+
+The finite tower and return providers are [WM.1–WM.5 and C13.1–C13.4 of this lesson](general-tail-supports-and-controlled-tunnels.md), [Smooth representations and compression onto the tracial tower](smooth-representations-and-tower-compression.md), [Finite traces and Jones projections](finite-traces-and-jones-projections.md), and [Corners and piecewise commuting squares](general-corners-and-piecewise-commuting-squares.md). Their complete hypotheses and the new three-coordinate rows above are retained.
+
+![The actual index-ten affine Jones pair, both finite traces and full Laurent centers.](figures/affine-physical-realization-v18.svg)
+
+Figure AH. The stable cup and its coherent finite compression are AH.4–AH.9. Endpoint blocks and both traces are AH.10–AH.11. The physical UCP return is AH.12–AH.14. The normal maps AH.18 become onto by AB.31, and their physical separator is AO.3. Boxes encode objects, not trace areas. [Reproducible diagram source](figures/affine-physical-realization-v18.py).
+
+
+## The complete boundary of the alternating affine lamp walk
+
+Put \(L=\mathbb F_2[t,t^{-1}]\), \(K=\mathbb F_2((t))\), and
+\[
+G=L\rtimes\mathbb Z,\qquad
+(b,n)(c,m)=(b+t^nc,n+m),\qquad (b,n)x=b+t^nx.
+\tag{AB.1}
+\]
+All group products below are right random-walk products. Let
+\(s_0=1,s_1=a=(1,0),s_2=T=(0,1)\), so that \(a x=x+1\)
+and \(T x=tx\). The plus choices are \(s_i\) with probabilities
+\(w^+=(1/4,1/4,1/2)\); the minus choices are \(s_i^{-1}\) with
+probabilities \(w^-=(2/5,2/5,1/5)\). Successive choices are independent
+and alternate phase. A plus-starting path starts with a plus choice.
+
+The theorem proved here identifies the **whole endpoint tail sigma algebra**,
+as well as all bounded harmonic pairs. It therefore identifies the center of
+the weighted endpoint matrix inductive limit whenever that limit is the
+actual finite relative-commutant system. There is no replacement of the
+original, separately fixed WM.22 model by this three-label model.
+
+### AB.2. Convergence and the exact drift
+
+Write the endpoint after \(j\) raw choices as
+\(G_j=(B_j,S_j)\), starting at \((0,0)\). An \(a\) choice toggles the
+coefficient of \(t^{S_j}\), and a \(T^{\pm1}\) choice changes the height by
+\(\pm1\). At pair times, in either starting phase, the height increments
+are independent with distribution
+\[
+\mathbb P(D=1)=2/5,\qquad
+\mathbb P(D=0)=1/2,\qquad
+\mathbb P(D=-1)=1/10,\qquad v=\mathbb E D=3/10.
+\tag{AB.2}
+\]
+The raw intermediate height differs from an adjacent pair height by at most
+one. Thus \(S_{2n}/n\to v\) and \(S_j\to+\infty\) almost surely.
+
+Here is a bounded-increment proof of the convergence used. For
+\(Z=D-v\), \(|Z|\le2\), \(\mathbb E Z=0\), and \(|\theta|\le1\), Taylor's
+remainder gives
+\(\mathbb E e^{\theta Z}\le1+2e^2\theta^2\le e^{2e^2\theta^2}\).
+Independence and Markov's inequality, with a fixed sufficiently small
+\(\theta>0\), bound each probability
+\(\mathbb P(|S_{2n}-vn|>\varepsilon n)\) by \(2e^{-c_\varepsilon n}\).
+The sum is finite. The probability of any such failure after \(N\) tends to
+zero by the union bound, so almost surely only finitely many failures occur.
+Apply this to the countable choices \(\varepsilon=1/r\). This proves the
+asserted limit in both phases.
+
+Only finitely many toggles occur at any specified height; moreover the
+heights of all toggles have a finite lower bound. Consequently
+\[
+X=\lim_{j\to\infty}B_j
+ =\sum_{j:\,\text{choice }j\text{ is }a}t^{S_{j-1}}\in K
+\tag{AB.3}
+\]
+exists in the \(t\)-adic topology. Repeated summands cancel in
+characteristic two. The lower bound gives finitely many negative
+coefficients, and eventual departure from every lower half-line gives
+convergence in this topology, not merely coefficientwise convergence.
+
+If \(X^{(j)}\) is the same limit built from the unused choices, starting at
+the identity with the next phase, then
+\[
+X=B_j+t^{S_j}X^{(j)}=G_jX^{(j)}.
+\tag{AB.4}
+\]
+This is an exact identity of \(K\)-valued random variables. The suffix
+variable is independent of the complete prefix. Starting at \(g\in G\)
+changes the final series to \(gX\).
+
+### AB.3. The actual hitting laws are the two displayed stationary laws
+
+Let \(m\) be additive Haar measure with \(m(\mathcal O)=1\),
+\(\mathcal O=\mathbb F_2[[t]]\). The densities verified in AC.3–AC.7 are
+\[
+f_U(x)=\begin{cases}6/7,&|x|\le1,\\
+(6/7)8^{-k},&|x|=2^k, k\ge1,
+\end{cases}\qquad
+f_V(x)=\begin{cases}(3/2)f_U(x),&|x|\le1/2,\\
+(5/8)f_U(x),&|x|\ge1.
+\end{cases}
+\tag{AB.5}
+\]
+They define probabilities \(\mu_U=f_Um,\mu_V=f_Vm\), and satisfy
+\[
+\mu_V=\sum_iw_i^+(s_i)_*\mu_U,\qquad
+\mu_U=\sum_iw_i^-(s_i^{-1})_*\mu_V.
+\tag{AB.6}
+\]
+AC supplies direct piecewise verification of these equations; AB.6 is not
+used as a maximality criterion.
+
+For a plus-starting path let \(q_+\) be the distribution of its **pair
+endpoint** \(s_is_j^{-1}\). AB.6 gives \(q_{+*}\mu_V=\mu_V\).
+Take an independent \(K\)-valued \(Y_0\) with law \(\mu_V\). Then
+\(G_{2n}Y_0=B_{2n}+t^{S_{2n}}Y_0\to X\) almost surely. Every finite-time
+law is \(\mu_V\), by pair stationarity and independence. For every bounded
+continuous function on \(K\), dominated convergence therefore shows that
+the law of \(X\) is \(\mu_V\). Bounded continuous functions determine
+probabilities on this metrizable local field, as can also be seen using its
+clopen ball indicators. The minus-starting argument uses the pair law of
+\(s_i^{-1}s_j\) and the stationary probability \(\mu_U\). Thus
+\[
+\operatorname{Law}_+(X)=\mu_V,\qquad
+\operatorname{Law}_-(X)=\mu_U.
+\tag{AB.7}
+\]
+This contraction argument proves the hitting-law identification. In fact it
+proves uniqueness of a stationary probability for each of these pair laws:
+any independent \(K\)-valued initial variable is contracted away.
+
+For each realized path, the measures
+\((G_j)_*\mu_{\text{next phase}}\) converge weakly to \(\delta_X\).
+Indeed \(G_jy\to X\) for every fixed \(y\in K\), and bounded continuous
+tests pass through the probability integral by dominated convergence.
+Hence this is an actual measure boundary. Both measures are equivalent to
+Haar measure, and every element of \(G\) acts nonsingularly on their common
+measure class.
+
+### AB.4. A finite-marked-step entropy criterion, with its full proof
+
+The following lemma also retains information inside a pair whose two
+labels have the same endpoint as a different pair. This prevents a hidden
+marked-path or time-dependent tail remainder.
+
+**Lemma.** Let \(Q_1,Q_2,\ldots\) be independent variables with a common
+probability on a finite set \(A\). Let \(y:A\to H\) map to a countable
+group, and set \(Z_n=y(Q_1)\cdots y(Q_n)\). Suppose \(H\) acts by measurable
+bijections on a standard measurable space \(B\). Let \(\xi\) be a
+\(B\)-valued variable such that, for every \(n\),
+\[
+\xi=Z_n\xi^{(n)},
+\tag{AB.8}
+\]
+where \(\xi^{(n)}\) is the same function of the unused marked steps as
+\(\xi\) is of the full steps. In particular it has the same law and is
+independent of the prefix. Define completed sigma algebras
+\[
+\mathscr T_n=\sigma(Z_n,Q_{n+1},Q_{n+2},\ldots),\qquad
+\mathscr T=\bigcap_n\mathscr T_n.
+\tag{AB.9}
+\]
+If \(H(Z_n\mid\xi)=o(n)\), where entropy uses natural logarithms, then
+\(\mathscr T=\sigma(\xi)\) modulo null sets.
+
+**Proof.** Write \(P_k=(Q_1,\ldots,Q_k)\),
+\(c=H(Q_1)\), \(c_\xi=H(Q_1\mid\xi)\), and \(b_n=H(Z_n)\), with
+\(b_0=0\). All finite variables have finite entropy. The chain rule and
+AB.8 give
+\[
+H(P_k\mid\xi)=k c_\xi.
+\tag{AB.10}
+\]
+To verify every term, condition on the first \(j\) marks. They determine
+\(Z_j\), so observing \(\xi\) is equivalent, through a measurable
+bijection, to observing \(Z_j^{-1}\xi=\xi^{(j)}\). The pair consisting of
+\(Q_{j+1}\) and this suffix boundary has the original joint distribution,
+independently of the specified prefix. Its conditional entropy is exactly
+\(c_\xi\).
+
+Given \(Z_k\), the variable \(\xi\) is independent of \(P_k\): its
+conditional distribution is the image of the fixed suffix law by \(Z_k\).
+Since \(Z_k\) is a function of \(P_k\), the entropy chain rule now gives
+\[
+H(Z_k\mid\xi)=b_k-k(c-c_\xi).
+\tag{AB.11}
+\]
+Also \(I(Q_1;Z_n)=b_n-b_{n-1}\), since the law of \(Z_n\) conditional on
+\(Q_1\) is a left translate of the \((n-1)\)-step law. The Markov chain
+\(Q_1\longrightarrow Z_n\longrightarrow Z_{n+1}\) makes these mutual
+informations nonincreasing. For completeness, data processing here follows
+from conditional independence and the chain rule:
+\(I(Q_1;Z_n)=I(Q_1;Z_{n+1})+I(Q_1;Z_n\mid Z_{n+1})\), whose last term is
+nonnegative. Thus the nonnegative differences \(b_n-b_{n-1}\) converge to
+a number \(h\), and telescoping and Cesaro averaging give \(b_n/n\to h\).
+The assumed \(o(n)\) bound and AB.11 imply
+\[
+h=c-c_\xi.
+\tag{AB.12}
+\]
+
+For \(n\ge k\), the future marks are independent of \(P_k\) and \(Z_n\).
+Consequently conditioning \(P_k\) on \(\mathscr T_n\) is exactly
+conditioning it on \(Z_n\). The law of \(Z_n\) conditional on \(P_k\) is
+a translate of the \((n-k)\)-step law, even if \(y\) is not injective.
+Hence
+\[
+H(P_k\mid\mathscr T_n)=k c-b_n+b_{n-k}.
+\tag{AB.13}
+\]
+The conditional probabilities of the finitely many values of \(P_k\)
+converge in \(L^2\), hence in \(L^1\), as the conditioning algebras decrease
+to \(\mathscr T\). Conditional expectation is orthogonal projection in
+\(L^2\); projections onto nested decreasing closed subspaces converge to
+projection onto their intersection. Indeed the projection differences are
+orthogonal, their squared norms telescope, and a limit lies in each closed
+subspace and retains the defining orthogonality. The intersection of the
+subspaces of measurable functions is the subspace for the completed
+intersection sigma algebra. Entropy is a bounded continuous function of a
+finite probability vector, so its integrals converge as well. Taking
+\(n\to\infty\) in AB.13 yields
+\[
+H(P_k\mid\mathscr T)=k(c-h)=k c_\xi
+ =H(P_k\mid\xi).
+\tag{AB.14}
+\]
+
+AB.8 makes \(\xi\) measurable in every \(\mathscr T_n\), hence in
+\(\mathscr T\). Equality in AB.14 implies equality of the two conditional
+probability vectors. Here is the exact equality argument. If \(p_{\mathscr
+T}\) and \(p_\xi\) are those vectors, the difference of the two conditional
+entropies is
+\(\mathbb E\sum_a p_{\mathscr T}(a)\log[p_{\mathscr T}(a)/p_\xi(a)]\).
+Each sum is nonnegative by \(-\log u\ge1-u\), and is zero only when the
+vectors agree (with the usual zero-coordinate convention). Thus
+\(\mathbb E[f(P_k)\mid\mathscr T]=\mathbb E[f(P_k)\mid\xi]\) for every
+function of the finite prefix.
+
+For \(E\in\mathscr T\), multiply this equality by \(1_E\) and condition
+on \(\xi\). It gives conditional independence of \(E\) and \(P_k\) over
+\(\xi\), equivalently
+\[
+\mathbb E[1_E\mid\sigma(P_k,\xi)]
+ =\mathbb E[1_E\mid\xi].
+\tag{AB.15}
+\]
+As \(k\to\infty\), the algebras on the left increase to the whole marked
+path algebra. Their \(L^2\) projections converge to the identity: cylinder
+simple functions are dense, and the conditional expectations are
+contractions. The left side therefore converges to \(1_E\), proving
+\(E\in\sigma(\xi)\) modulo null sets. This proves the lemma. \(\square\)
+
+This proof uses finite entropy identities, finite-vector strict entropy
+concavity, and elementary Hilbert-space projection convergence. It invokes
+neither a boundary-maximality theorem nor a conditional Shannon–McMillan
+theorem as an unproved dependency.
+
+### AB.5. Conditional entropy of the actual affine endpoint
+
+Fix either starting phase, group the raw choices into marked pairs
+\(Q_n\in\{0,1,2\}^2\), and put \(Z_n=G_{2n}\). The marks are independent
+and identically distributed in that phase; their group endpoint map is
+\(y_+(i,j)=s_is_j^{-1}\) or \(y_-(i,j)=s_i^{-1}s_j\). AB.4 is AB.8 with
+\(\xi=X\).
+
+For \(0<\varepsilon<v/2\), put
+\[
+\ell_n=\lfloor(v-\varepsilon)n\rfloor,\qquad
+u_n=\lceil(v+\varepsilon)n\rceil.
+\tag{AB.16}
+\]
+Let \(E_n\) be the event that the maximum raw height before time \(2n\)
+is at most \(u_n\), the minimum raw height from time \(2n\) onward is at
+least \(\ell_n\), and \(S_{2n}\in[\ell_n,u_n]\).
+AB.2 implies \(\mathbb P(E_n)\to1\). To check the uniform statements,
+write \(S_{2k}=vk+o(k)\). The finitely many early heights are absorbed
+by the growing upper bound; all later prefix heights with \(k\le n\)
+are at most \((v+\varepsilon/2)n+1\le u_n\). For all \(k\ge n\),
+eventually \(S_{2k}\ge(v-\varepsilon/2)k\); the possible intermediate
+decrement of one is absorbed by the gap \(\varepsilon n/2\). This gives
+the future lower bound. The endpoint assertion follows directly from the
+limit.
+
+On \(E_n\), every coefficient of \(B_{2n}\) below \(\ell_n\) is precisely
+the corresponding coefficient of \(X\), because future toggles cannot
+alter it. Every coefficient above \(u_n\) is zero, because a past toggle
+could not occur there. The coefficients in
+\([\ell_n,u_n]\cap\mathbb Z\) remain binary choices. Given \(X=x\),
+there are therefore at most
+\[
+M_n=(u_n-\ell_n+1)\,2^{u_n-\ell_n+1}
+\tag{AB.17}
+\]
+possible endpoints on \(E_n\): the first factor counts their possible
+heights. This estimate needs no bound on the minimum past height: the
+known truncation \(x_{<\ell_n}\) is a Laurent polynomial for every
+\(x\in K\).
+
+There are at most \(9^n\) endpoints overall, since there are \(9^n\)
+marked prefixes. Introduce the binary event indicator into the conditional
+entropy chain rule. On \(E_n\) the conditional support bound is AB.17;
+on its complement use \(9^n\). Even though \(E_n\) involves the future,
+these are valid conditional support bounds. Thus
+\[
+H(Z_n\mid X)
+ \le\log2+\log M_n+\mathbb P(E_n^c)n\log9,\qquad
+\limsup_n\frac{H(Z_n\mid X)}n\le2\varepsilon\log2.
+\tag{AB.18}
+\]
+Send \(\varepsilon\downarrow0\). We obtain \(H(Z_n\mid X)=o(n)\).
+AB.4 proves
+\[
+\bigcap_n\sigma(G_{2n},Q_{n+1},Q_{n+2},\ldots)=\sigma(X)
+\quad\text{modulo null sets, in both phases}.
+\tag{AB.19}
+\]
+
+The left side is also the **raw endpoint tail**. From \(G_{2n}\) and
+future marked pairs one recovers every later raw endpoint; conversely
+successive raw endpoints determine each raw group increment, hence its
+label, since \(1,a,T\) and \(1,a,T^{-1}\) are distinct. Therefore
+\[
+\bigcap_j\sigma(G_j,G_{j+1},\ldots)=\sigma(X).
+\tag{AB.20}
+\]
+Using pair times is cofinal in this decreasing family. This proves the
+entire tail identification, including bounded time-dependent tail
+martingales, and rules out a residual marked-pair factor.
+
+### AB.6. All bounded harmonic pairs, with both phases and uniqueness
+
+A bounded harmonic pair is a pair \(h_+,h_-:G\to\mathbb C\) satisfying
+\[
+h_+(g)=\sum_iw_i^+h_-(gs_i),\qquad
+h_-(g)=\sum_iw_i^-h_+(gs_i^{-1}).
+\tag{AB.21}
+\]
+For every \(F\in L^\infty(K,m)\), define
+\[
+h_+^F(g)=\int_KF(gx)\,d\mu_V(x),\qquad
+h_-^F(g)=\int_KF(gx)\,d\mu_U(x).
+\tag{AB.22}
+\]
+AB.6 proves AB.21, retaining the order of the actual group products.
+These formulas are well-defined on the common Haar measure class.
+
+Conversely, along a plus-starting path \(h_{\text{next phase}}(G_j)\)
+is a bounded martingale. Its \(L^2\) limit exists: martingale differences
+are orthogonal, and the squared norms of the partial sums are uniformly
+bounded. For every \(j\), every subsequent martingale value is measurable
+in the raw endpoint tail algebra starting at \(j\); hence its limit lies
+in AB.20. Write that limit \(F(X)\), with
+\(\|F\|_\infty\le\max(\|h_+\|_\infty,\|h_-\|_\infty)\).
+
+Every \(g\in G\) is reachable with positive probability at a pair time.
+Indeed the plus pair law has \(1,a,T,T^{-1}\) in its support (use an
+identity for the other label), and these generate \(G\) as a semigroup.
+Condition on any specified marked prefix with endpoint \(g\) at time
+\(2k\). The suffix has the original plus-starting law, and AB.4 sends its
+boundary to \(gX^{(2k)}\). The \(L^2\) martingale limit under this
+conditioning is simultaneously \(F(gX^{(2k)})\) and the limit of the
+martingale starting at \(g\). Taking its expectation gives
+\(h_+(g)=h_+^F(g)\). Finally the second equation of AB.21 and AB.6 give
+\(h_-(g)=h_-^F(g)\) with the **same** \(F\).
+
+For the pair constructed from \(F\), AB.4 gives
+\[
+h_{\text{next phase}}^F(G_j)
+ =\mathbb E[F(X)\mid\text{first }j\text{ labels}].
+\tag{AB.23}
+\]
+The right side converges to \(F(X)\) in \(L^2\), by cylinder density.
+Thus \(F\) is unique modulo the common measure class, and AB.22 is an
+isometric order isomorphism between \(L^\infty(K,m)\) and the bounded
+harmonic pairs (norm the maximum of the two sup norms). The inverse is
+the martingale limit. The boundary algebra product is transported through
+that inverse; it is not asserted to be the pointwise product of harmonic
+functions on \(G\).
+
+Left translation of the starting endpoint is exactly the affine \(G\)
+action on this boundary. In the pullback convention its normal action is
+\[
+(\beta_gF)(x)=F(g^{-1}x),\qquad \beta_{gh}=\beta_g\beta_h.
+\tag{AB.24}
+\]
+Equations AB.7, AB.20 and AB.22 prove that the two advertised probabilities
+are the full two-phase Poisson boundary laws.
+
+### AB.7. Full weighted endpoint centers and their canonical likelihoods
+
+Here is the precise return to the finite matrix system. For each initial
+phase and each raw length \(j\), let \(D_j\) be the direct sum of full
+matrix blocks with matrix units \(E_{IJ}\) for label words having the
+same endpoint in \(G\). The embedding appends a label to both words.
+Give a minimal word projection its independent-label probability. This is
+a trace on each whole endpoint block: if a prefix has \(r_+\) plus choices,
+\(r_-\) minus choices, and endpoint \((b,n)\), its probability is
+\[
+4^{-r_+}(2/5)^{r_-}2^n.
+\tag{AB.25}
+\]
+This is constant among words with that endpoint. Summing over one appended
+label gives the previous trace, so these traces are compatible and faithful.
+Let \(R_+,R_-\) be the von Neumann closures of these two inductive limits
+in their finite trace representations.
+
+The diagonal word algebras identify their common closure with the product
+label probability space: word projections are its cylinder indicators.
+If \(z\in Z(R_\pm)\), its trace expectation into \(D_j\) lies in \(Z(D_j)\),
+because the expectation is \(D_j\)-bimodular. Those expectations converge
+in \(L^2\) to \(z\), since the union of the finite algebras is dense.
+Hence \(z\) belongs to the diagonal algebra.
+
+A diagonal function commutes with \(E_{IJ}\) at level \(j\) exactly when
+replacing prefix \(I\) by prefix \(J\) with the same endpoint leaves its
+value unchanged for almost every common suffix. This can be checked on
+later cylinder simple functions by matrix multiplication, and extended in
+\(L^2\) by bounded matrix-unit multiplication. Equal-endpoint prefixes have
+equal positive trace weights by AB.25, so these substitutions preserve the
+conditional measure. For the finite set of prefixes, their invariance is
+equivalent to measurability in
+\[
+\sigma(G_j,\text{labels after }j).
+\tag{AB.26}
+\]
+Indeed, for each fixed suffix the value is constant on each finite
+endpoint fibre; averaging over that fibre gives an explicit version
+depending only on its endpoint and the suffix. Conversely such a version
+is invariant under every fibre substitution. There are countably many
+finite matrix units, so the simultaneous almost-everywhere assertions
+can be imposed on one set of full measure. Commuting with all those units
+is equivalent to centrality in the von Neumann closure. We have therefore
+proved that its **full** center is the intersection of AB.26 over \(j\),
+which is the raw tail algebra in AB.20. Consequently there are normal
+onto *-isomorphisms
+\[
+Z(R_+)\cong L^\infty(K,\mu_V),\qquad
+Z(R_-)\cong L^\infty(K,\mu_U),\qquad F\longmapsto F(X).
+\tag{AB.27}
+\]
+Normality and the trace measures follow from the probability-space
+identification. Onto-ness uses AB.20; this is not a stationary quotient.
+The same argument applies after every finite prefix and with every starting
+endpoint, where the measure is the corresponding affine pushforward law.
+
+In the actual first-plus branch, write \(p_i\) for its word projection
+and \(X^-=X^{(1)}\) for the suffix boundary. Then
+\[
+Xp_i=s_iX^-p_i,\qquad
+\tau(p_i F(X^-))=w_i^+\mu_U(F).
+\tag{AB.28}
+\]
+The same statements follow first for Laurent-coordinate cylinder tests and
+then by normal limits for arbitrary bounded measurable \(F\). The three
+branch transforms can coincide only at null points: \(x=x+1\) is impossible,
+\(x=tx\) forces \(x=0\), and \(x+1=tx\) forces \(x=(1+t)^{-1}\).
+Haar measure has no atoms, so these exceptional points have zero measure.
+Countably many Laurent-coordinate tests therefore recover each actual
+\(p_i\) from the two full center coordinates, exactly as branch tests do
+in C13.2.
+
+The canonical expectation of \(p_i\) onto the full plus center is the
+conditional probability of its first label given \(X\). Thus its entire
+likelihood, under AB.27, is determined by
+\[
+\mu_V(R_iF)=w_i^+\mu_U(F\circ s_i),\qquad
+R_i=w_i^+\frac{d(s_i)_*\mu_U}{d\mu_V}.
+\tag{AB.29}
+\]
+This is equality against **every** function of the whole center, not just
+against finite-coordinate tests or a quotient subalgebra. Uniqueness of
+Radon–Nikodym derivatives gives the exact functions
+\[
+(R_0,R_1,R_2)=
+\begin{cases}
+(1/6,1/6,2/3),&|x|\le1/2,\\
+(2/5,2/5,1/5),&|x|\ge1.
+\end{cases}
+\tag{AB.30}
+\]
+The branch comparison of the two full centers is \(F\mapsto F\circ s_i\),
+which is exactly \(\beta_i^{-1}\) in AB.24. The labels generate \(G\), so
+the whole center action is the affine action in that convention.
+
+### AB.8. Application to the actual index-ten physical inclusion
+
+The physical inclusion constructed in AH.1–AH.20 has exactly the
+finite matrix system just proved: AH.10 identifies its **entire**
+relative commutants with the equal-endpoint blocks, with literal
+label-appending embeddings; AH.11 gives AB.25 as its inherited physical
+trace on every minimal word projection. The compatible full-corner maps
+in AH.3 preserve every stage and its trace. Thus their finite trace
+representations and von Neumann closures are precisely \(R_+,R_-\).
+In the physical notation \(R,S\), the normal embeddings AH.18 are onto:
+\[
+j_V:L^\infty(K,\mu_V)\overset{\cong}{\longrightarrow}Z(R),\qquad
+j_U:L^\infty(K,\mu_U)\overset{\cong}{\longrightarrow}Z(S).
+\tag{AB.31}
+\]
+The isomorphisms are the specified maps \(F\mapsto F(X)\), because they
+agree on every Laurent-cylinder test and both are normal. This proves
+their canonical identification, not merely existence of abstract center
+isomorphisms.
+
+The physical branch identity AH.19 is AB.28. Consequently AH.20 and the
+original normal coefficient-center maps C13.9–C13.10 identify the whole
+coefficient center with \(L^\infty(K,m)\), with the actual action AB.24,
+the two original normal probabilities AB.7, and the whole canonical
+likelihoods AB.30. Indeed AH.19 tested against every center function
+gives AB.29; AB.31 makes those tests exhaustive. Faithfulness of the
+normal trace and uniqueness of its Radon–Nikodym density exclude any
+extra untested part of a likelihood.
+
+Every \(G\)-invariant state of this full center, allowing singular states,
+annihilates \(\mathcal O\). For every positive integer \(N\) there are
+\(N\) disjoint translates of \(\mathcal O\) by Laurent polynomials.
+Finite additivity and translation invariance give
+\(N\omega(1_{\mathcal O})\le1\), hence
+\(\omega(1_{\mathcal O})=0\). Such invariant states exist by the right
+Følner sets AH.14 and weak-star averaging. AB.30 therefore gives, for
+**every** invariant center state,
+\[
+\begin{gathered}
+(\omega(R_0),\omega(R_1),\omega(R_2))=(2/5,2/5,1/5),\\
+\sum_i\omega(|R_i-w_i^+|)=3/5,\\
+\sum_i\omega(|R_i^{-1}-(w_i^+)^{-1}|)=6.
+\end{gathered}
+\tag{AB.32}
+\]
+All functions here are bounded functions of the full identified physical
+center; no passage of a singular state through a normal spectral limit
+is used. The physical return and converse in AH.4 and the full-branch
+version of C13.12–C13.19 transfer these exact canonical likelihood costs
+to the original compatible physical states of this inclusion. In
+particular none of those states can have all three canonical likelihoods
+equal to the physical weight vector \((1/4,1/4,1/2)\) at zero absolute
+cost.
+
+This application concerns the constructed three-label affine index-ten
+inclusion. The original WM.22 inclusion retains its separate parameters,
+likelihoods and full zero-cost endpoint obligation.
+
+![The whole affine boundary, the narrow remaining coefficient window, and the full-center return.](figures/affine-boundary-maximality-v18.svg)
+
+The figure displays the actual maps \(G_{2n}x=B_{2n}+t^{S_{2n}}x\), the
+two separate hitting laws AB.7, and the coefficient support estimate
+AB.16–AB.18. The window is schematic and has no metric scale. The lower
+arrows are the proved full endpoint-tail and center identifications
+AB.20 and AB.27. [Reproducible figure source](figures/affine-boundary-maximality-v18.py).
+
+Human source for the conditional-entropy method: Vadim A. Kaimanovich, *The Poisson formula for groups with hyperbolic properties*, Annals of Mathematics 152 (2000), 659–692, [author manuscript metadata, arXiv:math/9802132v2](https://arxiv.org/abs/math/9802132v2). AB.4 supplies the complete finite-marked-step proof used here. The exact lamp-window estimate and both-phase full-core application are proved above.
+
+
+## The exact physical affine separator and the unrestricted joint-step correction
+
+Use the actual finite-factor inclusion AH.1–AH.20. The full endpoint tail and core identifications AB.20/AB.27 identify its actual complete coefficient center with \(L^\infty(K,m)\), with the original two separate normal laws \(\mu_U,\mu_V\). The following theorem applies that proved full identification to the original physical states and projection input.
+
+### AO.1. Exact full-center likelihoods and original expectations
+
+The actual maps are the onto normal versions of AH.18. Their original branch comparison is \(f\mapsto f\circ s_i=\beta_i^{-1}f\), and their canonical likelihoods are AB.29–AB.30:
+\[
+(R_0,R_1,R_2)=
+\begin{cases}
+(1/6,1/6,2/3),&x\in t\mathcal O,\\
+(2/5,2/5,1/5),&x\notin t\mathcal O.
+\end{cases}
+\tag{AO.1}
+\]
+The equality is on the whole actual center, not on a conditional-expectation quotient. All functions are bounded and boundedly invertible. The original normal maps \(E_A,P_0\) and both canonical traces remain fixed. In particular no state-dependent expectation is introduced.
+
+AH.20 gives the full original joint algebra \(D_0=\bigoplus_i p_iU\), where \(U=Z(S)\). The same complete physical finite row and full-corner proof as C13.12–C13.13 constructs, for every invariant state \(\omega\) of the actual coefficient center, an original compatible \(M\)-central state \(\psi_\omega\) with exactly physical marginal \(\tau\). Conversely the bounded-form proof C13.13 sends every such original state to a \(G\)-invariant \(\omega\). All three positive physical branch weights, the actual Jones row, and the full group relators in AH.12–AH.14 have been verified. These arguments permit arbitrary singular states.
+
+### AO.2. The separator holds for every compatible physical state
+
+Translations by Laurent polynomials are actual elements of \(G\). Any compact ball \(t^{-N}\mathcal O\) has arbitrarily many disjoint translates by those elements. Finite additivity of every \(G\)-invariant state gives
+\[
+\omega(1_{t^{-N}\mathcal O})=0\quad(N\ge0).
+\tag{AO.2}
+\]
+The state class is nonempty by the actual right Følner averages AH.14. Its members are purely singular: the compact-ball projections increase normally to one, so any normal positive functional dominated by \(\omega\) has value zero on one. This singularity is used only where the complete physical hypotheses of SC.2–SC.3 hold. As in E14.12a, those existing proofs also annihilate the entire original norm-closed Jones ideal for these compatible physical states; no new ideal proof is required.
+
+For an arbitrary compatible physical \(\psi\), let \(\alpha=\psi\iota\) be its original joint restriction and \(\omega\) its invariant full-center state. The physical formulas C13.15–C13.19, with the three exact weights AH.4, give
+\[
+\begin{aligned}
+\|\alpha-\alpha P_0\|
+ &=\sum_i\omega(|R_i-w_i^+|),\\
+ &=3/5,\\
+\psi(\mathfrak a)
+ &=\sum_i\omega(|R_i^{-1}-(w_i^+)^{-1}|),\\
+ &=6.
+\end{aligned}
+\tag{AO.3}
+\]
+Indeed AO.2 annihilates \(t\mathcal O\), so AO.1 has the constant outer values \((2/5,2/5,1/5)\) in every such state. The two sums are respectively
+\[
+2|2/5-1/4|+|1/5-1/2|=3/5,\qquad
+2|5/2-4|+|5-2|=6.
+\tag{AO.4}
+\]
+The equalities hold for the full nonempty compatible-state class, not only normal states or a selected family. Thus
+\[
+\min_{\psi\text{ original compatible }M\text{-central}}\psi(\mathfrak a)=6,
+\qquad
+\min_\psi\|\psi\iota-\psi\iota P_0\|=3/5.
+\tag{AO.5}
+\]
+This is an actual all-smooth-amenable finite-index II₁ inclusion with a positive original canonical separator. It refutes the claim that unrestricted all-smooth amenability always supplies an original compatible joint-balanced state.
+
+The original operator itself also has a positive lower bound. In the full smaller-center coordinate, C13.18 gives
+\[
+\zeta_U(b)(x)=\sum_i\left|R_i(s_ix)^{-1}-(w_i^+)^{-1}\right|
+=\begin{cases}4,&x\in\mathcal O,\\6,&x\notin\mathcal O.\end{cases}
+\tag{AO.5a}
+\]
+On \(\mathcal O\), the identity and toggle terms are 2 and \(3/2\) in opposite order, and the contraction term is \(1/2\). Outside \(\mathcal O\), the first two terms are \(3/2\) each and the last is 3. Thus the original faithful normal lift satisfies \(\mathfrak a=\iota(b)\ge4\,1\). Invariant center states kill \(\mathcal O\), giving the exact value 6 in AO.3. This bound uses the original full likelihoods and original cost operator.
+
+### AO.3. Consequence for the actual V8 projection input
+
+For the finite coisometric Jones columns FC/V8.1 retain the exact original normalization
+\[
+h=\sum_{\ell=1}^L a_\ell e a_\ell^*,\quad
+a_\ell\in N,\quad \sum_\ell a_\ell a_\ell^*=1,\quad
+\operatorname{Tr}(h)=1,\quad
+J_h=\|C_A(h)-P_0C_A(h)\|_1.
+\tag{AO.6}
+\]
+Their states \(\sigma_h=\operatorname{Tr}(h\,\cdot)\) are exactly \(E_A\)-compatible and have physical marginal \(\tau\), by FC/V8. If a net of these actual columns has
+\(\|uhu^*-h\|_{1,\operatorname{Tr}}\to0\) for every physical unitary \(u\in M\), then
+\[
+\liminf J_h\ge3/5.
+\tag{AO.7}
+\]
+To prove this, suppose a subnet has \(J_h\le r<3/5\). Weak-star compactness gives a cluster state on the original \(B\). Exact compatibility and marginal pass to that state, and the conjugation errors make it \(M\)-central. Pairing the two original center profiles against each bounded \(t\in D_0\) gives \(\sigma_h\iota(t)-\sigma_h\iota(P_0t)\). The bound by \(r\|t\|\) passes to the cluster, so its original joint discrepancy is at most \(r\), contradicting AO.3. If the liminf were smaller than \(3/5\), such an \(r\) and subnet would exist.
+
+In particular, for every \(0<r<3/5\) there is a finite set \(\mathcal U\subset\mathcal U(M)\) and a \(\delta>0\) such that every actual coisometric column satisfies
+\[
+\max_{u\in\mathcal U}\|uhu^*-h\|_1<\delta
+\quad\Longrightarrow\quad J_h\ge r.
+\tag{AO.8}
+\]
+Otherwise direct the pairs consisting of a finite unitary set and a positive tolerance by inclusion and decreasing tolerance. Choose a column with all those errors below the tolerance and \(J_h<r\). This net contradicts AO.7. This is a finite physical obstruction, obtained from the actual positive separator rather than an abstract unverified order floor.
+
+The delivered spectral-stack construction V8.1–V8.5 remains valid. Its lower mesh estimate gives, for the actual stack \(P_{n,\theta}\), mesh loss \(\eta=\operatorname{Tr}(\operatorname{supp}h)/n<1\), and every threshold shift,
+\[
+\frac{\|C_{\widetilde A}(P_{n,\theta})-
+P_0C_{\widetilde A}(P_{n,\theta})\|_1}
+{\widetilde{\operatorname{Tr}}(P_{n,\theta})}
+\ge\frac{\max(0,J_h-2\eta)}{1+\eta}.
+\tag{AO.9}
+\]
+Consequently no application of this construction with physical errors tending to zero and mesh loss tending to zero can make the normalized joint error tend to zero; its liminf is at least \(3/5\). V8.4 retains any prescribed finite prefix and all its marked cups. The finite alignment argument AH.3 transports the full inherited core system and this separator to every ordinary tunnel of this pair. The obstruction therefore persists after a prescribed prefix; no old test, physical target or canonical trace is dropped.
+
+### Exact correction and retained scope
+
+Unrestricted amenability does not imply simultaneous arbitrarily small original \(J_h\) and physical centrality, even for this explicit separable hyperfinite II₁ pair. The successful V8 projection and prefix-retention estimates are unchanged, and the stronger joint-state input they would require is now disproved in this generality by AH/AB/AO.
+
+This does not by itself refute the original full finite whole-family partition, controlled support reselection, marked corner return under its actual hypotheses, or the generating-tunnel theorem with its stated ergodic-core strong-amenability hypotheses. A full-family route need not pass through this false universal joint-state assertion. Those separate original obligations remain substantive. The fixed WM.22 model is a different inclusion; no claim here decides its endpoint. Common-support/BF, both infinite capacities, second local form, represented/opposite, arbitrary-depth, finite-pair/cup matching and prerequisite/source obligations remain at their full original scope.
+
+## Full finite marked families in the actual weighted diagonal inclusion
+
+For every member of the actual weighted Jones family WM.1–WM.17, including the fixed nonfactor, nonextremal inclusion at WM.22, the original full finite-partition conclusion GTB.0–GTB.1 holds. It holds after every prescribed finite ordinary prefix, retains its cups exactly, and approximates the same physical targets. An arbitrary selected whole-stage near-cover can be completed after arbitrarily small physical cuts. This conclusion uses neither an original zero-cost hypertrace nor factoriality of either ordinary core. It does not prove GTB.0–GTB.1 for an arbitrary amenable finite-index inclusion.
+
+### The actual data
+
+Keep the factors, normal embeddings, marked Jones projections, and complete relative commutants constructed in WM.1–WM.17. The parameter satisfies \(1<\lambda\le2\), with
+
+\[
+ S_+=4+\lambda,\quad S_-=4+\lambda^{-1},\quad
+ d=S_+S_-=17+4(\lambda+\lambda^{-1}),
+ \qquad w_i^+=\frac{\nu_i}{S_+},\quad
+ w_i^-=\frac{\nu_i^{-1}}{S_-},
+ \tag{HG.1}
+\]
+
+where \(\nu_1=\lambda\) and the other four \(\nu_i\)'s equal one. Fix an actual ordinary prefix through \(N_k\). Finite marked alignment with the canonical prefix, and its actual common-corner suffix identification, give one canonical continuation whose smaller suffix algebra at \(N_{k+2n}\) is
+
+\[
+ C_n=N_{k+2n}'\cap N_k
+       \cong\bigoplus_g\operatorname{Mat}_{c_{n,g}}.
+ \tag{HG.2}
+\]
+
+Its word coordinates are \(n\) consecutive pairs of raw labels. The initial phase may be either sign. Write \(h(g)\in\mathbb Z\) for the signed central integer grade of their endpoint. It is a group character, so equal endpoints have equal grades. The full finite commutant calculation WM.12–WM.14 gives the two **different** minimal-projection weights
+
+\[
+ \omega_{n,g}^{\tau}=\frac{\lambda^{h(g)}}{d^n},\qquad
+ \omega_{n,g}^{\rho}=\frac{\lambda^{-h(g)}}{d^n}.
+ \tag{HG.3}
+\]
+
+All these maps are the actual compatible finite-stage maps. The upper rows remain \(A_j=N_j'\cap M\) and \(B_j=N_j'\cap N\). No auxiliary algebra below is identified with an actual Jones core.
+
+### Group only the equal numerical weights
+
+Let
+
+\[
+ c_{n,h}=\sum_{g:h(g)=h}c_{n,g}
+ =[z^h](17+4z+4z^{-1})^n.
+ \tag{HG.4}
+\]
+
+The second equality counts the actual raw-label pairs: seventeen have grade zero, four grade one, and four grade minus one. In the opposite initial phase the grade signs interchange; the counts are unchanged. Define the auxiliary finite algebra
+
+\[
+ \widehat C_n=\bigoplus_{h=-n}^n\operatorname{Mat}_{c_{n,h}}.
+ \tag{HG.5}
+\]
+
+Its matrix coordinates are exactly those same words. There is an explicit unital trace-preserving embedding \(\jmath_n:C_n\to\widehat C_n\): send each actual matrix unit \(E_{IJ}\), with equal endpoints, to the same matrix unit, now inside the block of their common grade. Its image is the direct sum of the endpoint subblocks in each grade block. It is a *-homomorphism, because multiplication of these same matrix units is unchanged. It is faithful, because it fixes every word diagonal. The inherited physical trace on the grade block has minimal weight \(\lambda^h/d^n\).
+
+Append one pair of raw labels for the embedding \(\widehat C_n\to\widehat C_{n+1}\). The grades add. Matrix units map to the sum of their identical suffix copies, exactly as for the actual embedding. These maps make all \(\jmath_n\)'s compatible. Trace restriction follows from
+
+\[
+ \frac{17+4\lambda+4\lambda^{-1}}d=1.
+ \tag{HG.6}
+\]
+
+The dual weights \(\lambda^{-h}/d^n\) also restrict correctly, by the same equality with \(\lambda\) inverted. Thus the auxiliary finite algebras preserve both finite trace systems. Their physical-trace completion is used only to prove convergence of a scalar rank-cut cost.
+
+**Lemma HG.1.** The physical-trace completion \(\widehat S=(\bigcup_n\widehat C_n)''\) is a finite factor.
+
+**Proof.** The diagonal word algebras have completion \(L^\infty(X,\mu)\), where \(X\) is the countable product of the 25 pair labels, each pair of grade \(r\) having probability \(\lambda^r/d\). This is a faithful product probability, since all 25 weights are positive and their sum is one.
+
+If \(z\in Z(\widehat S)\), then its finite expectations \(E_{\widehat C_n}(z)\) are central in \(\widehat C_n\): bimodularity gives commutation with every element of that algebra. They are therefore diagonal, constant on each grade block. The expectations converge in \(L^2\), and the diagonal completion is closed in \(L^2\), so \(z\) belongs to \(L^\infty(X,\mu)\).
+
+Every finite permutation of the pair coordinates is implemented by the permutation matrix on its finitely many word coordinates. It belongs to the appropriate \(\widehat C_n\), because it preserves total grade. Hence the function \(z\) is invariant under every such permutation. The product measure is also invariant.
+
+Here is the required zero-one argument in its bounded-function form. Let \(b\) be a bounded cylinder function, and approximate \(z\) in \(L^2\) by a bounded cylinder function \(z_m\). Choose a finite permutation moving all coordinates of \(b\) outside the coordinates of \(z_m\), and call the moved function \(b_\sigma\). Invariance of \(z\) gives \(\int zb\,d\mu=\int zb_\sigma\,d\mu\). Independence gives \(\int z_mb_\sigma\,d\mu=(\int z_m\,d\mu)(\int b\,d\mu)\). The difference from each expression with \(z\) is at most \(\|z-z_m\|_2\|b\|_2\), by Cauchy–Schwarz. Letting the approximation error tend to zero gives \(\int zb\,d\mu=(\int z\,d\mu)(\int b\,d\mu)\). Cylinder functions are \(L^2\)-dense by their increasing conditional expectations. Thus \(z=(\int z\,d\mu)1\). This proves that the center is scalar. The inherited faithful normal trace makes the completion finite. \(\square\)
+
+This proof of factoriality concerns \(\widehat S\), whose extra matrix units join different group endpoints. It does not assert factoriality of the actual ordinary core, whose matrix units join only equal group endpoints.
+
+### A scalar rank cost that tends to zero
+
+Take any finite selected family of 76.4 after the prescribed prefix. Its physical orthogonal good supports are \(r_1,\ldots,r_q\in N_k\), its residual is \(f=1-\sum_i r_i\), and each good block has its own actual finite continuation of that prefix. Choose finite aligning unitaries \(U_i\in\mathcal U(N_k)\). At one sufficiently long **even** canonical suffix level \(m\), put
+
+\[
+ g_i=U_i^*r_iU_i\in C_m.
+ \tag{HG.7}
+\]
+
+This is finite marked tunnel alignment, not a comparison inferred from the index. Extend the \(i\)-th continuation by \(U_iN_jU_i^*\) beyond its old endpoint. Its entire previous finite segment stays fixed. At a later paired suffix level \(n\ge m\), let \(h_{i,n,g}\) denote the rank of \(g_i\) in the actual endpoint block \(g\), and set
+
+\[
+ \begin{gathered}
+ H_{n,h}=\sum_i\sum_{g:h(g)=h}h_{i,n,g},\qquad
+ e_{n,h}=(H_{n,h}-c_{n,h})_+,\\
+ \Delta_n^\tau=\sum_h\frac{\lambda^h}{d^n}e_{n,h},\qquad
+ \Delta_n^\rho=\sum_h\frac{\lambda^{-h}}{d^n}e_{n,h}.
+ \end{gathered}
+ \tag{HG.8}
+\]
+
+**Lemma HG.2.** The costs \(\Delta_n^\tau\) decrease to zero.
+
+**Proof.** The images \(\jmath_m(g_i)\) are actual projections of the auxiliary increasing finite algebras. Their ranks in the grade block are precisely \(\sum_{g:h(g)=h}h_{i,n,g}\). Thus \(\Delta_n^\tau\) is exactly the finite cost 80.2 for this auxiliary family. The complete finite averaging and normal limit proofs 80.1–80.3 apply to any such increasing finite algebras. Lemma HG.1 makes their limiting center-valued trace scalar. Since the physical \(r_i\)'s are orthogonal,
+
+\[
+ \sum_i\tau(g_i)=\sum_i\tau(r_i)\le1.
+ \tag{HG.9}
+\]
+
+Consequently the limit from 80.6 is \((\sum_i\tau(g_i)-1)_+=0\), and 80.8 proves monotonicity. This argument uses factoriality only in the explicitly constructed auxiliary algebra. The physical cuts and their return to actual Jones stages are constructed next. \(\square\)
+
+Both finite losses in HG.8 have their original normalization. The proof claims convergence of the **physical** loss for every selected family. It does not claim that the dual loss tends to zero for that arbitrary family: the dual completion is a different completion, and its scalar support sum need not be at most one. The full finite-partition theorem measures target errors in the physical trace. Every retained/new cell still carries the original actual dual trace of its own continuation.
+
+### The cuts and the whole residual live in the physical inclusion
+
+**Theorem HG.3.** For any \(n\ge m\), there are actual cuts \(g_i'\le g_i\) in \(C_n\), with total physical loss \(\Delta_n^\tau\), and a single actual canonical projection \(q_0\in C_n\), such that
+
+\[
+ \begin{gathered}
+ r_i'=U_ig_i'U_i^*\le r_i,\qquad d_i=r_i-r_i',\\
+ f_*=f+\sum_i d_i=1-\sum_i r_i',\\
+ \sum_i\tau(d_i)=\Delta_n^\tau,\qquad
+ \tau(q_0)=\tau(f_*).
+ \end{gathered}
+ \tag{HG.10}
+\]
+
+The full residual \(f_*\), including all of the old \(f\), has an actual whole finite-tunnel origin after the same prescribed prefix. The removed finite dual rank mass is exactly \(\Delta_n^\rho\) in HG.8.
+
+**Proof.** For each grade \(h\), remove exactly \(e_{n,h}\) dimensions, successively from the available actual ranks \(h_{i,n,g}\) over all \(i,g\) of that grade. The number requested lies between zero and their total \(H_{n,h}\), so the operation terminates. Choose the resulting subprojection of each \(g_i\) inside every actual full endpoint block. This is an actual projection \(g_i'\in C_n\), with \(g_i'\le g_i\). Its remaining aggregate rank in grade \(h\) is
+
+\[
+ H'_{n,h}=\min(H_{n,h},c_{n,h}).
+ \tag{HG.11}
+\]
+
+Every removed dimension of this grade has physical weight \(\lambda^h/d^n\) and dual weight \(\lambda^{-h}/d^n\). This proves both stated loss identities.
+
+In the **actual** endpoint blocks of grade \(h\), distribute \(c_{n,h}-H'_{n,h}\) dimensions over their unit capacities. This is possible because their capacities sum to \(c_{n,h}\), and the requested integer lies in \([0,c_{n,h}]\). The resulting direct sum over the endpoint blocks and all grades is an actual \(q_0\in C_n\). Its physical trace is
+
+\[
+ \tau(q_0)=\sum_h\frac{\lambda^h}{d^n}
+           (c_{n,h}-H'_{n,h})
+ =1-\sum_i\tau(g_i')=\tau(f_*).
+ \tag{HG.12}
+\]
+
+No orthogonality between \(q_0\) and the canonical \(g_i'\)'s is required. It is a scalar projection certificate. In the physical factor \(N_k\), the supports \(r_i'\) are already orthogonal, and \(f_*\) is their genuine complement. Finite-factor projection comparison, including the equal-trace complements, supplies \(v\in\mathcal U(N_k)\) with \(vq_0v^*=f_*\). Conjugate the canonical continuation after the prefix by this \(v\), for the residual cell alone. Then \(f_*\in vC_nv^*\), giving its actual whole finite origin. All \(U_i\)'s and \(v\) lie in \(N_k\); they fix \(A_k=N_k'\cap M\) pointwise and fix every earlier cup. They preserve each earlier factor as an algebra. This is the actual physical placement, not an embedding of the auxiliary grade algebra into \(M\). \(\square\)
+
+### Full rows and fixed-target error
+
+Let the old selected square be \(D_0\subset Q_0\subset P_0\), where \(D_0\subset N_k\), \(Q_0\subset N\), and the old residual upper block is \(fA_k\). Put \(j=k+2n\). Define
+
+\[
+ \begin{aligned}
+ P_*&=\bigoplus_i r_i'U_iA_jU_i^*r_i'
+        \ \oplus\ f_*vA_jv^*f_*,\\
+ Q_*&=\bigoplus_i r_i'U_iB_jU_i^*r_i'
+        \ \oplus\ f_*vB_jv^*f_*,\\
+ D_*&=\bigoplus_i r_i'U_i(N_j'\cap N_k)U_i^*r_i'
+        \ \oplus\ f_*v(N_j'\cap N_k)v^*f_*.
+ \end{aligned}
+ \tag{HG.13}
+\]
+
+Omit zero terms. These are finite-dimensional algebras whose physical units sum to one. Every summand is the full supported row of one actual whole-inclusion finite continuation of the prescribed prefix.
+
+**Theorem HG.4.** The algebras HG.13 satisfy
+
+\[
+ \begin{gathered}
+ A_k\subset P_*,\quad B_k\subset Q_*,\quad D_*\subset N_k,\\
+ E_NE_{P_*}=E_{P_*}E_N=E_{Q_*},\\
+ E_{N_k}E_{P_*}=E_{P_*}E_{N_k}=E_{D_*},\\
+ E_{N_k}E_{Q_*}=E_{Q_*}E_{N_k}=E_{D_*},\\
+ \|y-E_{P_*}y\|_2
+ \le\|y-E_{P_0}y\|_2
+       +(1+\sqrt2)\|y\|\sqrt{\Delta_n^\tau}
+ \quad(y\in M).
+ \end{gathered}
+ \tag{HG.14}
+\]
+
+**Proof of the rows.** Actual finite-stage expectations map \(A_j\) onto \(B_j\), and map each of these onto \(N_j'\cap N_k\) under \(E_{N_k}\). Conjugation by \(U_i,v\in N_k\) preserves these expectations. Bimodularity over the physical support projections gives the same exact row maps on every compressed summand in HG.13. Finite direct sums give \(E_N(P_*)=Q_*\), \(E_{N_k}(P_*)=D_*\), and \(E_{N_k}(Q_*)=D_*\). The trace-preserving Hilbert-space projection pairings give the first order of each displayed identity; taking \(L^2\) adjoints gives the second. Every original \(a\in A_k\) commutes with all the support projections and is fixed by \(U_i,v\). Each finite upper stage contains \(A_k\). Summing its support compressions, whose units sum to one, therefore recovers \(a\). The same proves retention of \(B_k\). The original cup operators in the prefix belong to \(A_k\) and are also fixed directly by all these conjugations.
+
+**Proof of the error.** For \(a=E_{P_0}(y)\), put \(R=\|y\|\), \(a_i=r_iar_i\), and write the old residual as \(fc\), with \(c\in A_k\), \(\|c\|\le R\). If \(f\ne0\), the compression \(c\mapsto fc\) is an injective *-homomorphism: \(E_{N_k}(c^*c)=\tau(c^*c)1\) implies \(\tau(fc^*c)=\tau(f)\tau(c^*c)\). Thus its inverse on its image preserves norm. If \(f=0\), take \(c=0\).
+
+The old stages have been extended, so \(r_i'a_ir_i'\in r_i'U_iA_jU_i^*r_i'\). Also \(f_*c\) belongs to the new residual block. Consequently
+
+\[
+ b=\sum_i r_i'a_ir_i'+f_*c\in P_*,\qquad
+ a-b=\sum_i(a_i-r_i'a_ir_i'-d_ic).
+ \tag{HG.15}
+\]
+
+The summands have orthogonal old supports. With \(e=r_i'\), \(d=d_i\),
+
+\[
+ a_i-ea_ie=da_i+ea_id,\quad
+ \|a_i-ea_ie\|_2^2\le2R^2\tau(d),\quad
+ \|dc\|_2\le R\sqrt{\tau(d)}.
+ \tag{HG.16}
+\]
+
+The first two terms have orthogonal left supports, and each squared norm is at most \(R^2\tau(d)\). Taking the triangle inequality in the Hilbert direct sum of the old support corners gives \(\|a-b\|_2\le(1+\sqrt2)R\sqrt{\Delta_n^\tau}\). Best approximation by \(E_{P_*}\), followed by the triangle inequality with \(y-a\), proves HG.14. This estimates the original physical \(y\), which was never conjugated with any tunnel. \(\square\)
+
+**Corollary HG.5 — the full original finite family for this actual model.** For every finite \(Y\subset M\), every \(\varepsilon,\eta>0\), and every prescribed ordinary prefix, there is a family HG.13 with the original full finite support partition, all identities HG.14, target errors strictly below \(\varepsilon\), and total cut trace below \(\eta\). This holds at the exact fixed parameter WM.22.
+
+**Proof.** The full all-smooth amenability argument WM.15–WM.17 and higher heredity 76.3 supply an actual 76.4 near-cover with errors below \(\varepsilon/2\) for the original targets. Let \(R_Y=\max(1,\max_{y\in Y}\|y\|)\). By HG.2 choose finite \(n\) with \(\Delta_n^\tau<\eta\) and \((1+\sqrt2)R_Y\sqrt{\Delta_n^\tau}<\varepsilon/2\). HG.3 and HG.4 give the required full family. The proof covers an empty target set by adjoining \(1\). To retain every old good support as nonzero, also require \(\Delta_n^\tau<\min_i\tau(r_i)\). For any already selected near-cover, the same construction and HG.14 provide the stated arbitrarily small extra physical error. \(\square\)
+
+### An exact unchanged-family completion at the original rational parameter
+
+The fixed parameter WM.22 is rational: write \(\lambda=A/B\) in lowest terms, \(A>B\ge1\), and put
+
+\[
+ D=(A+4B)(4A+B).
+ \tag{HG.17}
+\]
+
+The paired word weights HG.3 are \(A^{n+h}B^{n-h}/D^n\) and \(A^{n-h}B^{n+h}/D^n\). All grades \(-n,\ldots,n\) occur, by using only labels zero and one. Thus every generator \(A^{2n-r}B^r/D^n\), \(0\le r\le2n\), is the physical trace of an actual minimal word projection.
+
+**Lemma HG.6 — a finite positive integer representation.** For coprime positive integers \(A>B\), every integer \(K\ge C_N\), where
+
+\[
+ C_N=(A-1)\sum_{r=1}^N A^{N-r}B^r,
+ \tag{HG.18}
+\]
+
+is a nonnegative integer combination of \(A^{N-r}B^r\), \(0\le r\le N\).
+
+**Proof.** Start with \(K_N=K\). For \(r=N,N-1,\ldots,1\), choose the unique \(b_r\in\{0,\ldots,A-1\}\) with \(b_rB^r\equiv K_r\pmod A\), and set \(K_{r-1}=(K_r-b_rB^r)/A\). Coprimality makes each choice possible. Expanding this recursion gives
+
+\[
+ K=K_0A^N+\sum_{r=1}^N b_rA^{N-r}B^r.
+ \tag{HG.19}
+\]
+
+The sum is at most \(C_N\). Hence \(K_0\ge0\), proving the claimed positive combination. \(\square\)
+
+**Theorem HG.7.** In the rational weighted model, the finite positive monoid of traces of actual whole finite smaller-relative-commutant projections, after every prescribed prefix, is exactly \(\mathbb Z[1/D]_{\ge0}\).
+
+**Proof.** All even word traces lie in \(\mathbb Z[1/D]\). Odd word traces also do: their denominator is either \(A+4B\) or \(4A+B\), times a power of \(D\), and each of these two integers divides \(D\). Every finite projection trace is a finite integer rank sum of these actual minimal weights. Finite marked alignment preserves them.
+
+Conversely let \(t=K/D^m>0\), \(K\in\mathbb Z_{>0}\). At paired level \(n\ge m\), its desired numerator is \(KD^{n-m}\). The geometric sum in HG.18 gives
+
+\[
+ C_{2n}\le\frac{(A-1)B}{A-B}A^{2n}\le A^2A^{2n}.
+ \tag{HG.20}
+\]
+
+Since \(D>4A^2\), there is a finite \(n\ge m\) with \(KD^{n-m}\ge C_{2n}\). One fully explicit choice is \(n=(m+1)\lceil\log_2 A\rceil+3m\): \(4^n\ge A^2D^m\) follows from \(D\le25A^2\) and \(4^3\ge25\), and \(KD^{n-m}>K4^nA^{2n}/D^m\ge A^2A^{2n}\). Apply HG.6 with \(N=2n\). Dividing its finite positive representation by \(D^n\) expresses \(t\) as a finite sum of traces of the actual word projections just identified. If \(t\le1\), every used positive summand has trace at most \(t\le1\). The empty sum handles zero. \(\square\)
+
+**Corollary HG.8.** At the exact original rational parameter WM.22, every selected 76.4 near-cover can be completed with its entire old supports and blocks unchanged, with zero additional target error.
+
+**Proof.** Each old support trace belongs to \(\mathbb Z[1/D]\), so the genuine residual has \(\tau(f)=1-\sum_i\tau(r_i)\in\mathbb Z[1/D]_{\ge0}\). HG.7 gives finitely many actual word projection certificates whose physical traces sum to \(\tau(f)\). Split the physical \(f\in N_k\) into orthogonal projections of those traces. Conjugate the canonical continuation separately by a unitary of \(N_k\) for each certificate, placing it onto the corresponding physical residual cell. These are actual whole finite continuations, fixing the prefix and its cups. Each new larger block contains its compression of \(A_k\). The full rows and expectation identities follow as in HG.13–HG.14. The new finite algebra contains the old \(P_0\), because the old good blocks are untouched and its residual \(fA_k\) is the sum of the new compressed \(A_k\)'s. Best approximation gives zero additional error. Every certificate's dual weight is the original swapped numerator from HG.17, transported through its actual tunnel; it is not replaced by its physical weight. \(\square\)
+
+### The same construction for arbitrary finite diagonal trace characters
+
+**Theorem HG.9.** Let an actual **proper** finite-index diagonal inclusion have \(a\ge2\) labels \(s_0,\ldots,s_{a-1}\) in a group \(H\), an actual outer endpoint action on a hyperfinite II∞ coefficient factor, and its trace character \(\chi:H\to\mathbb R_{>0}\). Keep the actual normal expected embeddings, weighted cups and coherent finite compression as in WM.5–WM.14 or AH.4–AH.11. Write
+
+\[
+ \nu_i=\chi(s_i),\quad S_+=\sum_i\nu_i,\quad
+ S_-=\sum_i\nu_i^{-1},\quad d=S_+S_-,\qquad
+ w_i^+=\nu_i/S_+,\quad w_i^-=\nu_i^{-1}/S_-.
+ \tag{HG.21}
+\]
+
+Assume its full all-smooth amenability has been proved, so the actual retained-prefix near-covers 76.4 are available. Then every such selected finite near-cover has a full finite whole-tunnel completion after arbitrarily small physical cuts, with all rows, prefix, cups and fixed-target estimates HG.10–HG.16. Hence its original GTB.0–GTB.1 full finite approximation holds.
+
+**Proof.** A paired word \(((i_1,j_1),\ldots,(i_n,j_n))\) has positive grade
+
+\[
+ r=\prod_{l=1}^n\nu_{i_l}\nu_{j_l}^{-1}
+ \tag{HG.22}
+\]
+
+in the plus-initial phase, and its reciprocal in the minus-initial phase. Below, \(r\) denotes the actual initial phase’s character grade, so it is that reciprocal when the first sign is minus. Its actual physical and dual minimal weights are \(r/d^n\) and \(r^{-1}/d^n\). Equal group endpoints have equal grades, because \(\chi\) is a group homomorphism. Group their actual full matrix endpoint blocks by equal grade, and let \(c_{n,r}\) be the sum of their unit ranks. There are finitely many grades at each level. Define the auxiliary algebra \(\bigoplus_r\operatorname{Mat}_{c_{n,r}}\), with physical minimal weights \(r/d^n\). The matrix-unit embedding and appended-pair embeddings are exactly the ones in HG.5–HG.6. Trace restriction follows from \(\sum_{i,j}\nu_i\nu_j^{-1}=d\), and also holds for the dual trace.
+
+The auxiliary physical diagonal probability is the independent product of the \(a^2\) pair labels, whose strictly positive probabilities are \(w_i^+w_j^-=(\nu_i/\nu_j)/d\) in the plus-initial phase and \(w_i^-w_j^+=(\nu_j/\nu_i)/d\) in the minus-initial phase. Every finite permutation of pair coordinates preserves the grade and belongs to its corresponding finite matrix algebra. The full bounded-cylinder argument of HG.1 therefore proves that this auxiliary completion is factorial; it uses no restriction on the number of independent generators or relations among the grades.
+
+Align the old physical supports into an even canonical suffix stage, and let \(H_{n,r}\) be their total actual ranks of grade \(r\). The physical cost
+
+\[
+ \Delta_n^\tau=\sum_r\frac r{d^n}(H_{n,r}-c_{n,r})_+
+ \tag{HG.23}
+\]
+
+decreases to zero by the complete averaging/limit proof 80.1–80.3 in this auxiliary factor, since the old physical supports are orthogonal. Remove exactly the excess ranks from actual endpoint blocks of that grade. Every removed dimension has the same physical weight \(r/d^n\); the exact finite dual loss is the same excess weighted by \(r^{-1}/d^n\). Distribute the unused aggregate capacity into an **actual** canonical projection \(q_0\), exactly as in HG.11–HG.12. Then its physical trace equals the whole new residual trace. Place it by a unitary of \(N_k\), obtaining its actual finite origin without putting any auxiliary matrix unit in the physical inclusion. The old cut supports use their actual continued/conjugated tunnels. HG.13–HG.16 prove all three physical expectation rows and the fixed-target error, because those proofs used only these actual origins and the computed physical cut mass. Choose a sufficiently late finite stage as in HG.5. This completes the entire finite family. \(\square\)
+
+The theorem supplies the full finite construction for this class; it does not require an additional joint-state or scalar trace-fiber certificate. Its structural scope is the actual finite diagonal expected-tower class, whose physical word coordinates and trace character were specified above. It is not a representation theorem for arbitrary finite-index inclusions.
+
+### The index-ten affine inclusion has an exact full family
+
+**Theorem HG.10.** For the actual affine inclusion AH.1–AH.14, every selected retained-prefix near-cover has a finite full completion with its old supports and blocks unchanged and with zero additional fixed-target error. Therefore this same physical index-ten inclusion satisfies the original full GTB.0–GTB.1 conclusion after every prescribed prefix, even when its original compatible states have the positive cost established separately in AO.
+
+**Proof.** Its original weights are \(w^+=(1/4,1/4,1/2)\), \(w^-=(2/5,2/5,1/5)\), and index ten. At paired suffix length \(2m\), its actual minimal word traces and dual traces, computed in AH.11, are
+
+\[
+ \tau(q_I)=\frac{2^{h(I)}}{10^m}
+          =\frac{2^{m+h(I)}}{20^m},\qquad
+ \rho(q_I)=\frac{2^{-h(I)}}{10^m}
+          =\frac{2^{m-h(I)}}{20^m},
+ \quad -m\le h(I)\le m.
+ \tag{HG.24}
+\]
+
+All finite old support origins can be extended and individually aligned into one even canonical suffix level \(2m\), so their physical traces, and hence the full residual trace, lie in \(20^{-m}\mathbb Z\). Odd levels cause no problem because they embed into the next even level with their actual traces retained. Write \(\tau(f)=K/20^m\), \(0\le K\le20^m\).
+
+In either initial phase there is an actual word of grade \(-m\): use the label of trace multiplier two in every negative slot and the identity label in every positive slot. Its word diagonal \(q\) is an actual minimal projection of the finite smaller commutant, of physical trace \(20^{-m}\), and original finite dual trace \(5^{-m}\). If \(K=0\), \(f=0\) by faithfulness and there is no residual. If \(K>0\), prescribe \(K\) physically orthogonal projections \(f_1,\ldots,f_K\le f\), each of trace \(20^{-m}\). Successive finite-factor comparison is possible because the remaining trace equals the sum of the remaining required traces; the final complement has trace zero. For each \(a\), choose \(v_a\in\mathcal U(N_k)\) sending the canonical \(q\) onto the fixed physical \(f_a\), and use its conjugated canonical finite continuation for this cell alone.
+
+These are \(K<\infty\) actual residual cells, their sum is exactly \(f\), and their whole-stage origins and original dual weights are supplied by their respective actual finite tunnels. Every \(v_a\) fixes the old \(A_k\), all earlier cups, and the prescribed prefix as algebras. The completed upper/smaller/lowest rows are the old good blocks plus these new full supported rows. Actual finite-stage expectations and their \(L^2\) adjoints give all three identities in HG.14. The old \(fA_k\) is the sum of the new \(f_aA_k\)'s, so \(P_0\subset P_*\) and \(Q_0\subset Q_*\). Thus every original target error is preserved or improved, with no physical cut.
+
+Applying the proved all-smooth amenability AH.12–AH.14 and retained-prefix near-cover 76.4 gives the unconditional finite approximation for every finite \(Y\) and tolerance. This construction concerns the full-family theorem; no cost statement from AO was used. The actual positive-cost proof AO.1–AO.9 refutes the joint-state forcing route and coexists with this exact full-family conclusion. \(\square\)
+
+Each repeated certificate carries dual weight \(5^{-m}\) in its own terminal-factor representation. The sum \(K5^{-m}\) is not claimed to be a normalized trace of one common terminal-factor relative commutant: the source theorem allows individual continuations. The physical supports, by contrast, form one actual orthogonal partition in \(N_k\), with inherited physical trace sum one.
+
+![Actual endpoint cuts, auxiliary equal-weight factor, and full physical residual return.](figures/equal-weight-full-family-v19.svg)
+
+Figure HG.1. The upper arrows are the matrix-unit embedding into the auxiliary equal-weight algebra and its finite scalar capacity calculation, HG.1–HG.2. The displayed \(\lambda^h\) is the WM integer-character case of the general positive-character construction HG.9. The lower arrows are actual endpoint-block rank cuts, actual canonical certificate allocation, finite-factor physical placement, and full supported Jones rows, HG.3–HG.4. The extra auxiliary off-endpoint matrix units are never placed in \(M\). All original prefixes, cups and physical targets are retained as stated; the physical norm error is HG.14. The bottom panel is the exact index-ten construction HG.10, with both finite traces written separately. Boxes and arrows are schematic and encode no trace mass or geometric distance. [Reproducible figure and exact checks](figures/equal-weight-full-family-v19.py). Human context: Popa's Theorem 4.4.1(1), printed p.222, cited below.
+
+### Exact boundary of the result
+
+HG.1–HG.5 prove a controlled full-family construction for the complete actual weighted diagonal family, including irrational parameters and nonfactor ordinary cores. HG.6–HG.8 improve this to exact old-family retention at the original rational WM.22 parameter. HG.9 proves the full construction for every actual finite diagonal trace-character tower with proved amenability. HG.10 supplies an exact unchanged-family completion in the physical affine index-ten inclusion. These settle the full finite-family issues at their stated actual inclusion scopes, rather than infer them from zero-cost states or leave them as supplied certificates.
+
+The unrestricted GTB.0–GTB.1 theorem for arbitrary amenable proper finite-index inclusions remains open here. The construction used actual word coordinates with trace-character grades and equal physical weights across its endpoint blocks; no such grouping has been proved for a general standard invariant. Its extra matrix units were used only to prove the finite numerical cost limit, and the cuts/residual were explicitly returned to the actual physical algebras. Neither its auxiliary factor nor its finite trace monoid proves original common-support BF, localization when both capacities are infinite, the second central local form, original zero-cost state existence, finite-pair/cup matching, represented/opposite-model identification, arbitrary-depth reconstruction or prerequisite closure. Common-stage and generating claims retain their full original strong-amenability/ergodic-core hypotheses. At WM.22, the actual ordinary cores remain nonfactor and the existing nongeneration result remains valid.
+
+The complete preceding providers are WM.1–WM.17 and WM.22 of this lesson, [Supported frames give local approximation corners](actual-supported-local-approximation.md), §57.3; [Whole relative-commutant blocks with a small residual corner](whole-relative-commutant-blocks.md), §76.4; [Exact trace certificates close the finite-depth residual](trace-certificates-and-exact-finite-partitions.md), §§78.1–78.2; and [Central capacity and small cuts of whole-tunnel supports](central-capacity-and-small-support-cuts.md), §§80.1–80.4. The new grade-factor proof, grade-wise physical return, and positive digit construction are supplied above. Human mathematical context: Sorin Popa, *Classification of amenable subfactors of type II*, Acta Mathematica **172** (1994), 163–255, [DOI](https://doi.org/10.1007/BF02392646), §1.3, §2.3, §3.1.3(b), and Theorem 4.4.1(1), printed p.222.
+
+## The full endpoint tail of the fixed weighted three-dimensional lamplighter inclusion
+
+The final lamp configuration generates the entire endpoint tail of the
+original alternating walk at WM.22. This includes the central integer
+coordinate, the actual group relations, and bounded harmonic families that
+vary with depth. Consequently the original five likelihoods are the full
+configuration-boundary likelihoods, rather than conditional likelihoods on
+a smaller observable. The proof below does not construct a zero-cost
+invariant state or a positive invariant-state floor.
+
+### FWT.1. The actual group, parameter and two probabilities
+
+Write \(C_{\mathrm{fin}}=\bigoplus_{\mathbb Z^3}\mathbb F_2\), and use the
+actual group
+\[
+ H=\{(c,v,m)\in C_{\mathrm{fin}}\times\mathbb Z^3\times\mathbb Z:
+             m\equiv\sum_xc(x)\pmod2\},
+ \qquad
+ (c,v,m)(e,w,r)=(c+\operatorname{shift}_v e,v+w,m+r).
+ \tag{FWT.1}
+\]
+Here \((\operatorname{shift}_v e)(x)=e(x-v)\). The labels are
+\[
+ s_0=1,\qquad s_1=(\delta_0,0,1)=az,\qquad
+ s_{j+1}=(0,e_j,0)=t_j\quad(1\le j\le3).
+ \tag{FWT.2}
+\]
+Thus all lamp involution, commutation, translation and central relations
+are retained. In particular \(s_1^2=z^2=(0,0,2)\); \(s_1\) itself is not
+an involution in \(H\). These labels generate \(H\): translate \(s_1\) to
+each desired lamp, then correct the remaining even central integer by
+powers of \(s_1^2\).
+
+Throughout this proof the parameter is exactly
+\[
+ L=257^2+2=66051,\quad b=\tfrac12\,25^{-L},\quad
+ J=(4096/b)^2=2^{26}25^{132102},\quad
+ \lambda=1+\frac b{16J}=1+2^{-31}25^{-198153}.
+ \tag{FWT.3}
+\]
+The ceiling in WM.22 does not change \(J\), since the displayed square is
+already an integer. Put
+\[
+ \nu=(1,\lambda,1,1,1),\quad S_+=4+\lambda,\quad
+ S_-=4+\lambda^{-1},\quad d=S_+S_-,
+ \qquad w_i^+=\frac{\nu_i}{S_+},\quad
+ w_i^-=\frac{\nu_i^{-1}}{S_-}.
+ \tag{FWT.4}
+\]
+Independent raw choices alternate: plus uses \(s_i\) with \(w_i^+\),
+minus uses \(s_i^{-1}\) with \(w_i^-\). Products are right products.
+For either initial phase write \(G_j=(C_j,V_j,M_j)\) for the full endpoint
+after \(j\) raw choices. The physical trace character remains
+\(\chi(c,v,m)=\lambda^m\).
+
+### FWT.2. Drift and the configuration boundary
+
+Pair increments are independent and identically distributed in either
+initial phase. Their means in the additive coordinates are
+\[
+ \frac{V_{2n}}n\longrightarrow
+ \delta(1,1,1),\qquad
+ \frac{M_{2n}}n\longrightarrow\kappa,\qquad
+ \delta=\frac1{S_+}-\frac1{S_-}
+       =\frac{\lambda^{-1}-\lambda}{d}<0,\qquad
+ \kappa=\frac{\lambda}{S_+}-\frac{\lambda^{-1}}{S_-}
+       =\frac{4(\lambda-\lambda^{-1})}{d}=-4\delta>0.
+ \tag{FWT.5}
+\]
+For the height \(h(v)=v_1+v_2+v_3\), put \(\gamma=3\delta<0\).
+Raw intermediate positions and central integers differ from their adjacent
+pair positions by at most one in each relevant coordinate.
+
+Here is the elementary convergence argument needed for FWT.5. For any
+centered bounded real pair increment \(Y\), the Taylor remainder gives
+\(\mathbb E e^{\theta Y}\le e^{C\theta^2}\) when \(|\theta|\le1\), with a
+finite constant \(C\) depending only on the increment bound. Independence
+and Markov's inequality imply
+\(\mathbb P(|\sum_{j\le n}Y_j|>\epsilon n)\le2e^{-c_\epsilon n}\).
+The union bound shows that the probability of any failure after time \(N\)
+tends to zero. Intersecting over positive rational \(\epsilon\) proves
+the almost sure limits for the three spatial coordinates and the central
+coordinate. This argument works for the exact positive value in FWT.3;
+no quantitative lower bound on its size is required.
+
+Negative height drift implies that the raw path visits any given upper
+halfspace only finitely often. Each lamp therefore stabilizes, and
+\[
+ \eta(x)=\lim_{j\to\infty}C_j(x)
+ \tag{FWT.6}
+\]
+exists simultaneously for all \(x\). Its restriction to
+\(\{x:h(x)\ge q\}\) is finite for every integer \(q\).
+Let \(\mathcal B\) be the set of all configurations with this last
+property, equipped with its coordinate sigma algebra. It is a Borel
+subset of the countable product \(\mathbb F_2^{\mathbb Z^3}\), since
+finiteness in any fixed halfspace is a countable union of conditions
+bounding the number of lit coordinates. Thus it is a standard measurable
+space.
+
+The actual action by measurable bijections is
+\[
+ (c,v,m)\eta=c+\operatorname{shift}_v\eta,\qquad
+ H\times\mathcal B\longrightarrow\mathcal B.
+ \tag{FWT.7}
+\]
+Finite lamps and translations preserve \(\mathcal B\); the central
+integer acts trivially on this space. For the suffix variable formed
+from the unused raw choices, with the next phase and identity starting
+point, the exact identity is
+\[
+ \eta=C_j+\operatorname{shift}_{V_j}\eta^{(j)}=G_j\eta^{(j)}.
+ \tag{FWT.8}
+\]
+The suffix is independent of the prefix and has its original phase law.
+This identity by itself is only a boundary factor. The following estimates
+prove that there is no further endpoint tail.
+
+### FWT.3. A ray retaining the full central integer
+
+Give \(H\) the symmetric word metric for
+\(s_1^{\pm1},t_1^{\pm1},t_2^{\pm1},t_3^{\pm1}\). Its radius-\(r\)
+ball has at most \(11^{\lceil r\rceil+1}\) elements. This deliberately
+loose bound follows by counting words in these eight letters, including
+all lengths from zero.
+
+Set \(\alpha_n=\lfloor\gamma n\rfloor\). Choose \(v_n\in\mathbb Z^3\)
+by rounding each coordinate of \(\delta n(1,1,1)\) to a nearest integer,
+using a fixed rule for ties. For \(\eta\in\mathcal B\), define
+\[
+\begin{aligned}
+ c_n(\eta)&=\eta\,1_{\{h\ge\alpha_n\}},\\
+ p_n(\eta)&=\sum_xc_n(\eta)(x)\pmod2,\\
+ m_n(\eta)&=\text{the nearest integer to }\kappa n\\
+          &\qquad\text{ congruent to }p_n(\eta)\pmod2,\\
+ \Pi_n(\eta)&=(c_n(\eta),v_n,m_n(\eta))\in H.
+\end{aligned}
+ \tag{FWT.9}
+\]
+Use the smaller integer in a tie for \(m_n\). The sum is finite,
+\(|m_n-\kappa n|\le1\), and this is a measurable \(H\)-valued map.
+It respects the exact parity relation, rather than projecting to the
+lamplighter quotient.
+
+Fix \(0<\epsilon<1/2\), and put
+\[
+ k=\lfloor(1-\epsilon)n\rfloor,\qquad
+ l=\lceil(1+\epsilon)n\rceil,\qquad A_n=l-k\le2\epsilon n+2.
+ \tag{FWT.10}
+\]
+Almost surely, for every sufficiently large \(n\), all raw positions
+before time \(2k\) have height at least \(\alpha_n\), and all raw
+positions after time \(2l\) have height below \(\alpha_n\). To check the
+uniform assertion, bound the height error at pair time \(r\), for all
+large \(r\), by \(a r\), where \(a=|\gamma|\epsilon/4\).
+For \(r\le k\), the lower bound \((\gamma-a)r\) is at least
+\((\gamma-a)k>\gamma n\) with a positive multiple of \(n\) to spare.
+The finitely many earlier positions also exceed \(\alpha_n\) eventually.
+For \(r\ge l\), the upper bound \((\gamma+a)r\) is at most
+\((\gamma+a)l<\gamma n\), again with a positive multiple of \(n\)
+to spare. Rounding and the raw intermediate error are bounded and
+are absorbed in these strict margins.
+
+Consequently
+\(C_{2n}+c_n(\eta)\), with addition in \(\mathbb F_2\), is exactly the
+configuration obtained from these selected toggles in the raw window
+\((2k,2l]\):
+
+* at times at most \(2n\), select the toggles below height \(\alpha_n\);
+* at times greater than \(2n\), select the toggles at or above that height.
+
+All earlier toggles are retained by both configurations and cancel; all
+later toggles are retained by neither. Repeated toggles cancel in this
+statement as well. There is no estimate based on the number of all lamps
+in the truncated halfspace.
+
+We now construct a word for \(G_{2n}^{-1}\Pi_n(\eta)\). Work in spatial
+coordinates relative to \(V_{2n}\). First follow the raw spatial path
+backwards from time \(2n\) to \(2k\), omitting toggles. Next follow the
+spatial path forward from \(2k\) to \(2l\), inserting \(s_1\) at just
+the selected toggles. Finally return from \(V_{2l}\) to \(v_n\).
+The three spatial parts and the selected toggles require at most
+\[
+ 2(n-k)+2(l-k)+2(l-n)+\|V_{2n}-v_n\|_1
+ =4A_n+o(n)
+ \tag{FWT.11}
+\]
+letters, almost surely. The last part can first reverse the displacement
+from time \(2n\) to \(2l\), then join \(V_{2n}\) to \(v_n\).
+This word produces exactly the relative lamp configuration
+\(\operatorname{shift}_{-V_{2n}}(C_{2n}+c_n(\eta))\) and relative
+spatial position \(v_n-V_{2n}\).
+
+Let \(u\) be its central integer. There are at most \(2A_n\) selected
+toggles, so \(0\le u\le2A_n\). The desired central integer is
+\(m_n(\eta)-M_{2n}=o(n)\). The difference between the desired integer
+and \(u\) is even: both triples lie in the actual group \(H\) and have
+the same lamps and spatial position. Correct it by a power of
+\(z^2=s_1^2\), or its inverse, using exactly the absolute value of this
+even difference in letters. Centrality ensures that the correction
+does not change any lamp or spatial coordinate. We obtain
+\[
+ \bigl|G_{2n}^{-1}\Pi_n(\eta)\bigr|
+ \le6A_n+o(n)\le12\epsilon n+12+o(n).
+ \tag{FWT.12}
+\]
+This controls the actual central integer, including its fluctuations and
+parity. It does not infer central maximality from a proof for the
+projected walk.
+
+### FWT.4. Conditional endpoint entropy is sublinear
+
+For either initial phase, a pair has 25 possible marked values.
+Thus \(G_{2n}\) has at most \(25^n\) possible values. For fixed
+\(\epsilon\), FWT.12 implies that the event
+\[
+ A_n^\epsilon=
+ \{|G_{2n}^{-1}\Pi_n(\eta)|\le13\epsilon n\}
+ \tag{FWT.13}
+\]
+has probability tending to one. On this event, conditional on \(\eta\),
+the endpoint belongs to
+\(\Pi_n(\eta)B_{\lceil13\epsilon n\rceil}\): inversion of the relative
+word does not change its length. On its complement the total endpoint
+alphabet remains bounded by \(25^n\).
+
+Introduce the indicator of \(A_n^\epsilon\) in the conditional entropy
+chain rule. Its entropy is at most \(\log2\). Conditional entropy of a
+variable with at most \(m\) possible values is at most \(\log m\);
+this follows from nonnegativity of relative entropy to the uniform
+distribution. Therefore, with natural logarithms,
+\[
+ H(G_{2n}\mid\eta)
+ \le\log2+(13\epsilon n+2)\log11
+        +\mathbb P((A_n^\epsilon)^c)n\log25.
+ \tag{FWT.14}
+\]
+First divide by \(n\) and take the upper limit, then let
+\(\epsilon\downarrow0\). The result is
+\[
+ H(G_{2n}\mid\eta)=o(n)
+ \tag{FWT.15}
+\]
+for the actual full \(H\)-endpoint, in both original phase laws.
+
+### FWT.5. Apply the complete marked-tail criterion
+
+The complete criterion is proved in [A finite-marked-step entropy criterion, with its full proof](#ab-4-a-finite-marked-step-entropy-criterion-with-its-full-proof), AB.4 of this lesson. It applies to independent finite marks \(Q_i\), a countable group endpoint \(Z_n\), and a standard measurable boundary variable \(\xi=Z_n\xi^{(n)}\), where the suffix has the original law and is independent of the prefix. If \(H(Z_n\mid\xi)=o(n)\), its conclusion is the entire completed marked endpoint tail
+
+\[
+ \bigcap_n\sigma(Z_n,Q_{n+1},Q_{n+2},\ldots)=\sigma(\xi).
+\]
+
+Its proof retains choices with the same group increment, uses the exact finite-prefix entropy identities, decreasing conditional projections and equality in finite entropy concavity, then increasing-prefix density. Thus it covers the complete marked tail, including bounded harmonic families that vary with depth. The original WM walk satisfies every hypothesis: its pair marks are iid and finite, \(H\) is countable, \(\mathcal B\) is standard measurable, FWT.8 gives the independent same-law suffix identity, and FWT.15 supplies the proved entropy bound. The application follows.
+
+### FWT.6. Entire endpoint tail and all bounded harmonic families
+
+Apply the lemma with one marked pair \(Q_n=(i_{2n-1},i_{2n})\),
+not just its possibly repeated endpoint increment. Both original phases
+give iid pair marks. FWT.8 supplies the required suffix identity;
+FWT.15 supplies its proved entropy hypothesis. We conclude
+\[
+ \bigcap_n\sigma(G_{2n},Q_{n+1},Q_{n+2},\ldots)
+       =\sigma(\eta)
+ \quad\text{modulo the original phase null sets.}
+ \tag{FWT.21}
+\]
+In the raw endpoint tail, each future raw label is recovered from
+\(G_{j-1}^{-1}G_j\), because the five labels in either phase are
+distinct elements of the actual \(H\). Conversely an endpoint and the
+future marks determine every subsequent endpoint. Pair times are
+cofinal. Thus
+\[
+ \bigcap_j\sigma(G_j,G_{j+1},G_{j+2},\ldots)=\sigma(\eta).
+ \tag{FWT.22}
+\]
+In particular central integer fluctuations, hidden choices inside a
+pair, and time-dependent endpoint martingales leave no extra tail field.
+
+For example any uniformly bounded space-time harmonic family, evaluated
+along this walk, is a bounded martingale. Its \(L^2\) limit lies in
+every endpoint-future sigma algebra, since every sufficiently late
+term does. FWT.22 makes that limit \(F(\eta)\), and the original
+martingale is exactly its conditional expectations on the prefixes.
+This applies to the actual accessible states at every depth and does
+not assume that the family is stationary in depth.
+
+Let \(m_V=\operatorname{Law}_+(\eta)\) and
+\(m_U=\operatorname{Law}_-(\eta)\). The original prefix conditioning
+gives
+\[
+ m_V=\sum_iw_i^+(s_i)_*m_U,\qquad
+ m_U=\sum_iw_i^-(s_i^{-1})_*m_V.
+ \tag{FWT.23}
+\]
+The identity labels show that the two measures are equivalent, with
+bounded ratios; the other labels and their inverses show that every
+\(g\in H\) acts nonsingularly on this common measure class.
+
+Every bounded stationary harmonic pair has the unique representation
+\[
+ u_+(g)=\int_{\mathcal B}F(g\eta)\,dm_V(\eta),\qquad
+ u_-(g)=\int_{\mathcal B}F(g\eta)\,dm_U(\eta).
+ \tag{FWT.24}
+\]
+To justify the common \(F\), take the martingale limit at the identity
+and use FWT.22. Every \(g\in H\) is an endpoint of a positive-probability
+even prefix: for a plus-starting pair, \((i,0)\) realizes \(s_i\)
+and \((0,i)\) realizes \(s_i^{-1}\); for a minus-starting pair these
+realizations are reversed. Conditioning on such a prefix, stationarity
+in depth identifies the limit for a walk started at \(g\) with
+\(F(g\eta)\). The positive-probability identity raw step relates the two
+initial phases. Measure equivalence makes their representatives agree.
+Conversely FWT.23 directly verifies both harmonic equations in FWT.24.
+The representation is injective because conditional prefix expectations
+converge to \(F(\eta)\). It preserves positivity and the supremum norm:
+the upper norm bound follows from integration, and the lower bound
+follows from this martingale convergence. This proves the full bounded
+harmonic identification, as well as the stronger tail statement.
+
+### FWT.7. Return to the actual two tracial AF core centers
+
+WM.12 identifies each actual finite relative commutant with
+\[
+ D_j^\sigma=\operatorname{span}\{E_{IJ}:g(I)=g(J)\},
+ \tag{FWT.25}
+\]
+and appending a raw label is its actual inclusion. No endpoint
+commutants are merged by height or central grade. WM.13 gives each
+minimal word projection its original product probability, and WM.14
+retains the opposite original finite-module trace. At length \(2n\)
+these weights are respectively \(\lambda^{M_{2n}}/d^n\) and
+\(\lambda^{-M_{2n}}/d^n\). The compatible physical compressions and
+all prescribed prefix cups are the existing WM.9–WM.15 maps.
+
+Here is the center-tail identification at the actual tracial completion.
+The word diagonal identifies with the independent raw-label probability
+space. If \(x\) is central in the completed AF algebra, its trace
+expectation \(x_j\) onto \(D_j^\sigma\) is central there, by bimodularity
+of trace expectation. Thus \(x_j\) is scalar on each full endpoint
+block. These expectations converge in \(L^2\) to \(x\), since the
+finite algebras have dense union. Their diagonal representatives
+therefore have a bounded diagonal limit \(f\).
+For any fixed \(r\) and all \(j\ge r\), an endpoint function at time
+\(j\) is measurable with respect to
+\(\sigma(G_r,\text{future labels})\). The \(L^2\) limit \(f\) is
+measurable there as well. Hence every central element lies in the
+completed endpoint tail.
+
+Conversely, if bounded \(f\) belongs to that tail, then for each \(j\)
+it is a function of \(G_j\) and the unused independent labels.
+Its conditional expectation given the complete prefix is therefore
+constant on all prefixes with the same full endpoint. Put these
+constants on the endpoint blocks in \(D_j^\sigma\). They form bounded
+compatible trace martingales and converge in \(L^2\) to an actual
+element of the completion. All sufficiently late elements commute with
+any fixed finite algebra, so the limit is central. This establishes an
+onto normal, trace-preserving identification with the entire tail,
+rather than a claim about a stationary subalgebra.
+
+Combining this fact with FWT.22 proves
+\[
+ V=Z(R)\cong L^\infty(\mathcal B,m_V),\qquad
+ U=Z(S)\cong L^\infty(\mathcal B,m_U).
+ \tag{FWT.26}
+\]
+These maps send each actual lamp unitary \(Z_x^\pm\) of C13.3 to
+\((-1)^{\eta(x)}\), so they are the canonical lamp maps already
+constructed there, now proved onto. Transport through the actual
+normal \(\zeta_U,\zeta_V\) of C13.10 identifies the whole coefficient
+center \(Z(W)\) with this common measure-class algebra.
+The action is precisely
+\(\beta_gF=F\circ g^{-1}\). This also reproves the whole-center
+identity \(\beta_{z^2}=1\), consistently with E14.5. It does not change
+the physical trace-scaling action \(\alpha_{z^2}\), whose character
+is still \(\lambda^2\).
+
+### FWT.8. All five original likelihoods on the full center
+
+The original two normal center measures are now exactly
+\(\mu_U=m_U,\mu_V=m_V\) in these coordinates. For every bounded
+measurable \(F\), conditioning on the actual first physical branch gives
+\[
+ \int R_iF\,dm_V
+       =w_i^+\int F(s_i\eta)\,dm_U(\eta),\qquad
+ R_i=w_i^+\frac{d(s_i)_*m_U}{dm_V},\qquad 0\le i\le4.
+ \tag{FWT.27}
+\]
+These are equalities against every element of the full center.
+They identify the original \(R_i=\zeta_V(E_V(p_i))\) of C13.14,
+with the existing uniform bound \(R_i\ge1/d\).
+The original normal derivative convention is accordingly
+\[
+ D_g=\frac{d g_*m_U}{dm_U},\qquad
+ D_i=\frac{R_i}{\nu_iR_0}.
+ \tag{FWT.28}
+\]
+Indeed the identity branch of FWT.27 gives
+\(dm_U/dm_V=R_0/w_0^+\). Nothing in FWT.27 replaces the full
+derivative by its conditional expectation on the height or affine
+observable.
+
+There is also an exact finite endpoint-count description. Let
+\(N_j^\sigma(g)\) count the raw words of length \(j\), beginning in
+phase \(\sigma\), whose endpoint is the full triple \(g\in H\).
+For each attainable endpoint \(g\) at plus length \(2n\),
+\[
+ r_{i,n}(g)=
+ \frac{N_{2n-1}^-(s_i^{-1}g)}{N_{2n}^+(g)}.
+ \tag{FWT.29}
+\]
+All words with this endpoint have the same physical probability
+\(\lambda^{m(g)}/d^n\); this is why the original unequal branch
+weights cancel in this counting ratio. Future marks are independent
+of the first branch and the current endpoint. Thus FWT.29 is exactly
+the conditional first-branch probability on the decreasing endpoint
+future algebra. By the decreasing \(L^2\) projection argument of AB.4,
+\[
+ r_{i,n}(G_{2n})\longrightarrow R_i(\eta)
+       \quad\text{in }L^2(\mathbb P_+).
+ \tag{FWT.30}
+\]
+Here \(\mathbb P_+\) is the original plus-starting raw-path probability;
+the finite endpoint functions need not themselves be boundary-measurable.
+Equations FWT.27 and FWT.29–FWT.30 identify the full original five
+likelihoods using actual finite endpoint multiplicities and actual
+physical trace weights. A singular state is not asserted to preserve
+the \(L^2\) limit in FWT.30.
+
+### FWT.9. What this proves about the fixed original state problem
+
+For any actual \(H\)-invariant state \(\omega\) on this full
+\(L^\infty\) algebra, including every singular state, C13's physical
+return retains the original \(\tau,E_A,P_0\), both original canonical
+traces and their five branch normalizations. The exact formulas remain
+\[
+ \|\alpha-\alpha P_0\|
+   =\sum_{i=0}^4\omega(|R_i-w_i^+|),\qquad
+ C_\omega=\psi_\omega(\mathfrak a)
+   =\sum_{i=0}^4\omega\left(\left|R_i^{-1}-(w_i^+)^{-1}\right|\right),
+ \tag{FWT.31}
+\]
+and
+\[
+ \sum_i\omega(R_i^{-1})=d,\qquad
+ \sum_i\omega\left(\frac{(R_i-w_i^+)^2}{(w_i^+)^2R_i}\right)
+  =S_+^2(1-\lambda^{-2})\bigl(w_1^+-\omega(R_1)\bigr).
+ \tag{FWT.32}
+\]
+Hence zero original cost is equivalent to an invariant state attaining
+\(\omega(R_1)=w_1^+\). A strictly positive invariant-state floor
+requires proving that the supremum over these full-center invariant
+states is strictly smaller than \(w_1^+\).
+
+The full-tail theorem does not decide this optimization. In particular
+normal \(L^2\) approximation in FWT.30 cannot be evaluated by an
+arbitrary singular state. Nor does the height-conditioned construction
+provide an invariant state: its actual likelihood means are
+\[
+ u_0=(1+4\lambda)^{-1},\qquad
+ u_i=\lambda(1+4\lambda)^{-1}\ (1\le i\le4),
+ \tag{FWT.33}
+\]
+with deviation at least
+\(6(\lambda^2-1)/[(1+4\lambda)(4+\lambda)]\).
+More decisively T15.18–T15.20 proves that every such limiting
+height-conditioned state has actual origin-lamp expectation greater
+than \(b/2>0\). Actual lamp-flip invariance forces that expectation
+to be zero. Identification with the full configuration center leaves
+this defect in force.
+
+![Full central-integer ray and complete endpoint-tail identification](figures/full-weighted-endpoint-tail-v20.svg)
+
+Figure FWT. The original full endpoint, its trace character and parity,
+and both original probabilities are retained. FWT.9–FWT.12 bounds the
+selected-toggle word and its even central correction. FWT.14–FWT.22
+proves the complete marked-tail conclusion, which returns to the actual
+core centers and all five likelihoods in FWT.25–FWT.30. Positions,
+window lengths and box areas are schematic and encode no metric or trace
+mass. [Reproducible figure source](figures/full-weighted-endpoint-tail-v20.py).
+
+Thus the completed result is the actual full endpoint tail, both actual
+core centers, all bounded harmonic families and all five original
+likelihoods. The exact original invariant-state endpoint remains a
+further obligation; neither a zero-cost state nor a positive state
+floor is claimed here.
+
+### Mathematical context and complete providers
+
+The complete finite-mark entropy criterion is [A finite-marked-step entropy criterion, with its full proof](#ab-4-a-finite-marked-step-entropy-criterion-with-its-full-proof), AB.4 of this lesson. The full central-integer ray FWT.3 and its actual WM application are proved above. The actual endpoint matrices, compatible physical compression, original expectations and two traces are WM.1–WM.15 of this lesson; the original joint-center return and cost formulas are C13.3–C13.6; the whole-center central relation and singularity are E14.1–E14.5; the height-state defect is T15.18–T15.20. FWT.25–FWT.30 now identifies the entire actual WM centers, rather than only their lamp subalgebras.
+
+Human mathematical context: Vadim A. Kaimanovich, *The Poisson formula for groups with hyperbolic properties*, Annals of Mathematics **152** (2000), 659–692, §§4–5, especially the finite-prefix entropy and ray methods; [author manuscript, arXiv:math/9802132v2](https://arxiv.org/pdf/math/9802132). The complete ray, entropy application and actual center return used here are proved above.
+
+## Equal numerical weights need not give a compatible auxiliary tower
+
+The auxiliary construction HG.1–HG.10 has an exact feature beyond equality of finite trace weights: equal-grade projections have the same multiplicities into each later grade. An arbitrary actual Jones system need not have that feature. Here an explicit proper index-four inclusion, with a generating marked tunnel and full all-smooth amenability, disproves its automatic availability. Its two inherited finite traces agree. The obstruction persists across every positive finite gap, so passing to a subsequence does not repair this particular grouping.
+
+This is a counterexample to a proposed general construction step. It is not a counterexample to the original full finite-family theorem. The example has finite depth, and 78.6 supplies its full finite family. We also prove an unconditional estimate for arbitrary proper finite-index inclusions: their largest physical minimal-projection weights decay geometrically. That estimate gives quantitative finite subprojection prescription, but it does not give an exact residual trace or compatible auxiliary embeddings.
+
+### An explicit finite action and its fixed factors
+
+Let \(G=\langle r,s:r^5=s^2=1,\ srs=r^{-1}\rangle\), the group of ten elements, and put \(\zeta=e^{2\pi i/5}\). On \(V=\mathbb C^2\), with basis \(e_+,e_-\), use
+
+\[
+ u_r=\begin{pmatrix}\zeta&0\\0&\zeta^{-1}\end{pmatrix},
+ \qquad
+ u_s=\begin{pmatrix}0&1\\1&0\end{pmatrix}.
+ \tag{GW.1}
+\]
+
+These matrices obey the displayed relators. No nonidentity \(u_g\) is scalar. Let
+
+\[
+ R=\left(\bigotimes_{j\ge1}\operatorname{End}(V)\right)'',
+ \qquad
+ \alpha_g=\bigotimes_{j\ge1}\operatorname{Ad}u_g,
+ \qquad \tau_R=\bigotimes_{j\ge1}\operatorname{tr}_2.
+ \tag{GW.2}
+\]
+
+All closures in this module are the faithful tracial von Neumann closures. Finite full-matrix expectations make \(R\) a II₁ factor: they approximate every central element by scalar elements, while the unbounded matrix sizes exclude finite type I.
+
+For each \(g\ne1\), choose a rank-one projection \(p_g\in\operatorname{End}(V)\) with \(u_gp_gu_g^*\ne p_g\). Its translate in coordinate \(j\) has a fixed strictly positive \(L^2\) displacement. If \(\alpha_g=\operatorname{Ad}v\) in \(R\), approximate \(v\) by a finite-prefix element \(a\). For later \(j\), that element commutes with \(p_g^{(j)}\), and
+
+\[
+ \|\alpha_g(p_g^{(j)})-p_g^{(j)}\|_2
+ \le 2\|v-a\|_2.
+ \tag{GW.3}
+\]
+
+This contradicts arbitrarily good approximation. Thus the action is outer. The same proof applies after adjoining any finite number of \(V\) legs, and to every infinite tail.
+
+We need irreducibility of the fixed algebra in its coefficient factor, not merely factoriality. It has a short proof for this actual action.
+
+**Lemma GW.1.** For every infinite \(V\)-tensor tail \(R_0\), and also after any finite initial \(V\)-tensor amplification, \((R_0^G)'\cap R_0=\mathbb C1\).
+
+**Proof.** First omit the finite amplification, which only shifts the indices. Write \(F_m=\operatorname{End}(V^{\otimes m})\), and \(U_g^{(m)}=u_g^{\otimes m}\). The fixed finite algebra is the commutant of \(U(G)\), so its commutant inside \(F_m\) is the algebra spanned by the \(U_g^{(m)}\). This follows by decomposing the finite unitary representation into its irreducible multiplicity spaces; it is the ordinary finite matrix mutual-commutant calculation.
+
+If \(x\in(R_0^G)'\cap R_0\), its finite expectation \(E_m(x)\) commutes with \(F_m^G\) and consequently has an expansion
+
+\[
+ E_m(x)=\sum_{g\in G}c_{m,g}U_g^{(m)}.
+ \tag{GW.4}
+\]
+
+The normalized Hilbert–Schmidt Gram matrix of these ten operators has entries \(\operatorname{tr}_2(u_g^*u_h)^m\). For \(g\ne h\), the absolute value of the underlying trace is strictly below one: equality for a two-dimensional unitary would make \(u_g^*u_h\) scalar, which GW.1 excludes. Thus the Gram matrices converge to the identity. Their least eigenvalues are at least \(1/2\) for sufficiently large \(m\), and every coefficient vector in GW.4 then has Euclidean norm at most \(\sqrt2\|x\|\).
+
+For fixed \(a<m\), restriction to \(F_a\) gives
+
+\[
+ E_a(x)=c_{m,1}1+
+ \sum_{g\ne1}c_{m,g}\operatorname{tr}_2(u_g)^{m-a}U_g^{(a)}.
+ \tag{GW.5}
+\]
+
+The nonidentity sum tends to zero. The fixed left side is therefore scalar. This holds for every \(a\), and finite expectations converge in \(L^2\); hence \(x\) is scalar. The finite-amplification proof uses the same Gram matrices at the total finite length and is identical. \(\square\)
+
+The finite-group index proof 18.4 now applies to this outer action. Each fixed algebra is a II₁ factor, and \([R:R^G]=10\). All expectations are the actual group averages and normalized partial matrix traces.
+
+### A marked ordinary Jones tunnel of index four
+
+In one infinite tensor product, give the matrix coordinates labels \(0,1,2,\ldots\). Put
+
+\[
+ M=\left(\bigotimes_{j\ge0}\operatorname{End}(V_j)\right)^G,\qquad
+ N_k=\left(1_0\otimes\cdots\otimes1_k\otimes
+             \bigotimes_{j\ge k+1}\operatorname{End}(V_j)\right)^G.
+ \tag{GW.6}
+\]
+
+Thus \(N=N_0\subsetneq M\). The diagonal action on each coefficient factor is the actual product action above. If \(F\) is the tail coefficient factor, then
+
+\[
+ [F\otimes M_2:F^G]=40,\qquad
+ [F\otimes M_2:(F\otimes M_2)^G]=10,
+ \qquad [(F\otimes M_2)^G:F^G]=4.
+ \tag{GW.7}
+\]
+
+The first equality uses the tensor index \(4\) and 18.4; the second uses the outer amplified action; the third is index multiplicativity. Every consecutive inclusion in GW.6 therefore has index four.
+
+The invariant unit vector
+
+\[
+ \Omega=\frac{e_+\otimes e_-+e_-\otimes e_+}{\sqrt2},
+ \qquad e_j=|\Omega\rangle\langle\Omega|_{V_j\otimes V_{j+1}},
+ \tag{GW.8}
+\]
+
+is fixed by \(u_g\otimes u_g\). Its normalized partial trace on either leg is \(1/4\) times the identity. Matrix multiplication gives, for \(x\) in the middle fixed factor,
+
+\[
+ e_jxe_j=E_{\mathrm{lower}}(x)e_j,\qquad
+ E_{\mathrm{middle}}(e_j)=\tfrac14 1,\qquad
+ e_je_{j+1}e_j=\tfrac14 e_j.
+ \tag{GW.9}
+\]
+
+For example, the compression is \(\operatorname{tr}_2\) on the leg adjoining the tail. For an invariant \(x\) its partial trace is in the lower fixed algebra, so this is the actual expected compression, not just a numerical cup rank.
+
+Here is the recognition argument that also verifies full generation. Suppose II₁ factors \(P\subset Q\subset L\) have both consecutive indices \(d\), and \(e\in L\) satisfies the Jones compression for \(P\subset Q\) and \(E_Q(e)=d^{-1}1\). Choose the partial orthonormal basis \(v_i\) of 3.2, with \(E_P(v_i^*v_j)=\delta_{ij}p_i\), \(v_i=v_ip_i\), and \(\sum_i v_iv_i^*=d1\). The element \(p=\sum_i v_ie v_i^*\) is a projection by these identities and has trace one. Thus \(p=1\). The finite matrix formula
+
+\[
+ [a_{ij}]\longmapsto\sum_{i,j}v_i a_{ij}e v_j^*,
+ \qquad
+ [a_{ij}]\in \operatorname{diag}(p_i)M_t(P)\operatorname{diag}(p_i),
+ \tag{GW.10}
+\]
+
+is a normal unital *-homomorphism; multiplication uses \(ea e=E_P(a)e\). Trace pairing gives exactly \(d^{-1}\) times the canonical basic-construction trace. It is faithful, and its image is the algebra generated by \(Q,e\), because the basis expansion puts every \(q\in Q\) in that image. This image is the actual basic construction of \(P\subset Q\), of index \(d\) over \(Q\). Its inclusion into \(L\) has index one by multiplicativity, so it equals \(L\).
+
+Apply this argument with \(d=4\), GW.7–GW.9. Every triple \(N_{j+1}\subset N_j\subset N_{j-1}\), with \(N_{-1}=M\), is the actual basic construction with the specified cup \(e_j\). In particular GW.6 is an ordinary marked tunnel, preserving both normalized factor traces and all cup expectations.
+
+By Lemma GW.1 and the finite coefficient expansion over the first tensor legs, its finite relative commutants are exactly
+
+\[
+ A_k=N_k'\cap M=\operatorname{End}_G(V^{\otimes(k+1)}),\qquad
+ C_k=N_k'\cap N=\operatorname{End}_G(V^{\otimes k}).
+ \tag{GW.11}
+\]
+
+For instance, commuting with the fixed infinite tail forces every tail coefficient to be scalar; invariance then imposes commutation with \(u_g^{\otimes k}\). All embeddings \(C_k\subset C_{k+1}\) are the actual \(x\mapsto x\otimes1_V\).
+
+The finite invariant prefix algebras generate their fixed infinite factors: finite expectations commute with the group average and converge in \(L^2\). Hence this tunnel is generating, with \((\bigcup A_k)''=M\) and \((\bigcup C_k)''=N\).
+
+### Full all-smooth amenability of this physical inclusion
+
+We verify the two precise hypotheses of 61.6 rather than assume an unrestricted generating-to-amenable equivalence. The upward tower is the other end of the same tensor construction:
+
+\[
+ M_j=\left(F\ \bar\otimes\
+                 \operatorname{End}(V)^{\otimes(j+1)}\right)^G
+ \quad(j\ge0),\qquad
+ \mathcal T=(F\bar\otimes K)^G,
+ \tag{GW.12}
+\]
+
+where \(F\) is the original infinite coefficient tail and \(K\) is a second infinite product of \(V\) legs. GW.7–GW.10 prove the actual upward basic constructions, with the same marked cups and normalized traces. Finite tensor expectations followed by group averaging show that their tracial closure is the displayed \(\mathcal T\).
+
+Increasing finite-dimensional invariant tensor prefixes generate each \(M_j\) and \(\mathcal T\). Compress an operator on the standard tracial space onto the standard space of a finite prefix, and average conjugation by its right unitary group. The resulting UCP map takes values in the left finite algebra and sends left \(x\) to its finite tracial expectation. A point-ultraweak cluster therefore fixes every left \(x\in\mathcal T\), since these expectations converge for every such \(x\). This constructs the UCP projection required in 61.18. This is the actual finite-dimensional argument in 61.7–61.8, with the specified prefixes, and does not require a normal projection.
+
+Split \(K=\operatorname{End}(V_0)\bar\otimes K_{\ge1}\), and let \(L=F\bar\otimes\operatorname{End}(V_0)\). Then \(M=L^G\). Lemma GW.1 gives \((L^G)'\cap L=\mathbb C\). Coefficient slices consequently give
+
+\[
+ M'\cap\mathcal T=1_L\otimes K_{\ge1}^G,\qquad
+ (M'\cap\mathcal T)'\cap\mathcal T=L^G=M.
+ \tag{GW.13}
+\]
+
+For the first equality, commuting with \(L^G\) in \(L\bar\otimes K_{\ge1}\) forces the left slices to be scalar; group invariance gives precisely \(K_{\ge1}^G\). For the second, use Lemma GW.1 on the right tail and then group invariance on \(L\). Slice maps separate tensor-product operators, so these arguments cover the complete bounded algebras.
+
+Theorem 61.6 now constructs, in every normal faithful nondegenerate smooth expected representation, a UCP conditional expectation \(F_{\mathrm{ret}}\) onto the original \(M\), with \(E_NF_{\mathrm{ret}}=F_{\mathrm{ret}}E\). Its state \(\tau F_{\mathrm{ret}}\) is the compatible physical \(M\)-central hypertrace. The normal starting-state extension and finite GNS compression are the proved 61.5–61.6 inputs. Thus the actual proper pair in GW.6 has the full all-smooth amenability required in the original assignment.
+
+### The exact finite multiplicities and both inherited traces
+
+Besides the trivial representation \(1\) and the sign representation \(\epsilon(r)=1,\epsilon(s)=-1\), define \(U=\rho_1=V\) and \(W=\rho_2\) by replacing \(\zeta\) with \(\zeta^2\) in GW.1. They are the four inequivalent irreducible representations of \(G\). The two-dimensional ones are irreducible because their distinct rotation eigenspaces are exchanged by \(s\), and inequivalent because their rotation eigenvalue sets differ. Along with \(1,\epsilon\), their squared dimensions sum to \(1+1+4+4=10\), so they exhaust the irreducibles: orthogonality of their coefficient spaces in the regular representation leaves no nonzero dimension for another irreducible. This last assertion also follows directly by diagonalizing the order-five rotation in any representation and pairing the nontrivial eigenspaces by the involution \(s\).
+
+Using the elementary tensor bases \(e_a\otimes e_b\) gives
+
+\[
+ \epsilon U=U,\qquad U^2=1+\epsilon+W,\qquad
+ UW=U+W.
+ \tag{GW.14}
+\]
+
+In \(U^2\), the two zero rotation-weight vectors \(e_+\otimes e_-\), \(e_-\otimes e_+\) have symmetric and antisymmetric \(s\)-eigenvectors, giving \(1,\epsilon\); the remaining weights are \(\pm2\), giving \(W\). In \(UW\), the rotation weights are \(\pm1,\pm3\); modulo five these give \(\pm1,\pm2\), giving \(U,W\). This derives the complete tensor-by-\(U\) rule without importing a character table.
+
+In the order \(1,\epsilon,U,W\), the actual multiplicity matrix is
+
+\[
+ T=\begin{pmatrix}
+ 0&0&1&0\\
+ 0&0&1&0\\
+ 1&1&0&1\\
+ 0&0&1&1
+ \end{pmatrix},\qquad
+ m_k=T^k(1,0,0,0)^{\mathsf T},\qquad
+ C_k=\bigoplus_\lambda\operatorname{Mat}_{m_{k,\lambda}}.
+ \tag{GW.15}
+\]
+
+Zero summands are omitted. A minimal multiplicity projection is identity on one copy of its irreducible representation. Its physical weight is therefore
+
+\[
+ \omega_{k,\lambda}=\frac{\dim\lambda}{2^k}.
+ \tag{GW.16}
+\]
+
+All four representations occur by length four and at every sufficiently late parity. GW.14 reproduces the actual Jones old-part edges, and the cup corner is the invariant copy of \(1\) in \(U^2\). No further irreducible class exists, so the actual marked invariant has finite depth. More explicitly, \(U^{\otimes4}=3\cdot1+3\cdot\epsilon+U+4W\), and every entry of a sufficiently large even power of \(T\) is positive: the graph is connected, and the loop at \(W\) allows paths of both parities. After every class has occurred on both parities, the cup corner reaches every later simple block and its central support is one. This is the full-support Jones-ideal criterion (12.7), together with Theorems 12.4–12.5 of [Reflection, commuting squares and finite depth](higher-relative-commutants.md).
+
+The finite-depth trace-preserving reflection 14.4 identifies the intrinsic normalized finite commutant trace with the inherited physical trace. Thus the second original finite trace here is
+
+\[
+ \rho_{k,\lambda}=\omega_{k,\lambda}=\frac{\dim\lambda}{2^k}.
+ \tag{GW.17}
+\]
+
+This is an actual identification justified by this inclusion's finite depth. No extremal trace identity is imposed on a general inclusion.
+
+At lengths three and four the exact data are
+
+\[
+ \begin{array}{c|rrrr|rrrr}
+ k&m_1&m_\epsilon&m_U&m_W&
+       \omega_1&\omega_\epsilon&\omega_U&\omega_W\\ \hline
+ 3&0&0&3&1&-&-&1/4&1/4\\
+ 4&3&3&1&4&1/16&1/16&1/8&1/8.
+ \end{array}
+ \tag{GW.18}
+\]
+
+The weights in the last four columns are also the original \(\rho\)-weights.
+
+### The exact compatibility rule for numerical grouping
+
+Here is the general finite matrix fact. Let an actual traced inclusion
+\(C=\bigoplus_\ell\operatorname{Mat}_{n_\ell}\subset
+D=\bigoplus_\mu\operatorname{Mat}_{n'_\mu}\)
+have multiplicity matrix \(a_{\mu\ell}\). Partition the source blocks by equality of their minimal-weight pairs \((\tau_\ell,\rho_\ell)\), and partition the target blocks similarly. If only the physical trace is required, use its single weight instead. The natural grouping embeds each original matrix block into the diagonal coordinates of
+
+\[
+ \widehat C=\bigoplus_\alpha\operatorname{Mat}_{c_\alpha},
+ \quad c_\alpha=\sum_{\ell\in\alpha}n_\ell,\qquad
+ \widehat D=\bigoplus_\beta\operatorname{Mat}_{c'_\beta}.
+ \tag{GW.19}
+\]
+
+Each grouped minimal projection carries the common weight of its group. Define
+
+\[
+ b_{\beta\ell}=\sum_{\mu\in\beta}a_{\mu\ell}.
+ \tag{GW.20}
+\]
+
+**Theorem GW.2 — numerical equality is not the extension condition.**
+An embedding \(\widehat C\to\widehat D\) extending the specified actual inclusion \(C\to D\), through these natural grouping maps, exists if and only if \(b_{\beta\ell}\) is independent of \(\ell\) within every source group \(\alpha\), for every target group \(\beta\). When it exists it preserves both indicated inherited traces.
+
+**Proof.** A minimal projection in source block \(\ell\) has rank \(b_{\beta\ell}\) in target grouped block \(\beta\). Source minimal projections from blocks in the same group become Murray–von Neumann equivalent in \(\widehat C\). Their images under an embedding must have equal ranks in every full target matrix block. This proves necessity.
+
+For sufficiency denote the common value by \(b_{\beta\alpha}\). Unitality of the actual inclusion gives
+\(c'_\beta=\sum_\alpha c_\alpha b_{\beta\alpha}\).
+Use \(b_{\beta\alpha}\) copies of the defining representation of
+\(\operatorname{Mat}_{c_\alpha}\) in target block \(\beta\). Its restriction to each source block has the exact actual multiplicity \(b_{\beta\ell}\). The two finite representations of \(C\) in that target matrix block are therefore unitarily equivalent. Conjugate the constructed representation by a target unitary to match every actual source matrix unit. The resulting grouped embedding extends the specified actual inclusion.
+
+For either inherited trace, source weight restriction is
+\(\tau_\ell=\sum_\mu a_{\mu\ell}\tau'_\mu
+=\sum_\beta b_{\beta\alpha}\tau'_\beta\), and likewise for \(\rho\). These are precisely the trace restriction equations for the constructed grouped embedding. Thus both traces are preserved. \(\square\)
+
+Grouping by physical weights alone cannot even extend a second finite trace when one proposed source group has different \(\rho\)-weights: a tracial functional on a full matrix block has one value on all its minimal projections. The example below has equal original traces, so this separate issue is absent and the embedding obstruction remains.
+
+**Theorem GW.3 — an actual all-smooth-amenable obstruction.** For GW.6, the natural equal-weight groupings of its actual \(C_k\) cannot be made into a compatible auxiliary tower along any cofinal subsequence of ordinary lengths.
+
+**Proof at the next level.** GW.18 gives
+
+\[
+ C_3=\operatorname{Mat}_3\oplus\mathbb C,\quad
+ \widehat C_3=\operatorname{Mat}_4,\qquad
+ \widehat C_4=\operatorname{Mat}_6\oplus\operatorname{Mat}_5.
+ \tag{GW.21}
+\]
+
+There is no unital embedding of \(\operatorname{Mat}_4\) into either
+\(\operatorname{Mat}_6\) or \(\operatorname{Mat}_5\): a unital finite-dimensional representation of \(\operatorname{Mat}_4\) is a direct sum of its four-dimensional defining representation, so its dimension is divisible by four. Thus no unital embedding exists even before requiring agreement with the actual inclusion.
+
+The precise actual rank failure is also explicit. A minimal projection \(p_U\) in the \(U\)-block and \(p_W\) in the \(W\)-block of \(C_3\) both have the two weights \(1/4\). They become equivalent in \(\widehat C_3\). After the actual \(x\mapsto x\otimes1_U\), their ranks in the dimension-one and dimension-two target groups are respectively
+
+\[
+ p_U:\ (2,1),\qquad p_W:\ (0,2).
+ \tag{GW.22}
+\]
+
+This is GW.14. They are not equivalent in \(\widehat C_4\), contradicting the necessary part of GW.2.
+
+**Proof for every positive gap.** Let \(f_0=0,f_1=1,f_{h+1}=f_h+f_{h-1}\). The difference between the multiplicity columns of \(U\) and \(W\) after \(h\) tensor steps is \(T^h(0,0,1,-1)^{\mathsf T}\). Direct use of GW.15 gives, for \(h\ge1\),
+
+\[
+ T^h(0,0,1,-1)^{\mathsf T}
+ =
+ \begin{pmatrix}
+ (-1)^{h-1}f_h\\
+ (-1)^{h-1}f_h\\
+ (-1)^h f_{h+1}\\
+ (-1)^{h-1}f_{h-1}
+ \end{pmatrix}.
+ \tag{GW.23}
+\]
+
+At \(h=1\) this is \((1,1,-1,0)^{\mathsf T}\); multiplication by \(T\), followed by the Fibonacci recurrence, proves the formula inductively. In the target dimension-one group the rank difference is \(2(-1)^{h-1}f_h\), which is nonzero for every \(h\ge1\). At a fixed target length the only weights are \(2^{-k}\) and \(2^{1-k}\), so these are exactly its equal numerical weight groups.
+
+Both \(U,W\) occur at length three and persist thereafter: the recurrence gives \(m'_{U}=m_1+m_\epsilon+m_W>0\) and \(m'_W=m_U+m_W>0\) whenever both are present. At every source length \(n\ge3\), a minimal projection from each of these two blocks has the same two weights \(2^{1-n}\), so the source grouping makes them equivalent. Their actual descendant ranks after any positive gap are the corresponding columns of \(T^h\), independently of the other source multiplicities. GW.23 therefore gives unequal target grouped ranks at every such source and gap. Every cofinal subsequence has two consecutive chosen lengths with the first at least three. Its required grouped embedding is impossible. This rules out all cofinal subsequences, including those omitting length three. \(\square\)
+
+The full original finite-family conclusion is valid in this example: its proved all-smooth amenability and finite depth meet 78.6. There is also a direct proof. The actual \(A_j\)'s generate \(M\), so for a given finite physical target set choose \(j\) with every \(L^2\) expectation error below the prescribed tolerance. Take \(P_*=A_j\), \(Q_*=C_j\), and the single support \(1\); its whole origin is the displayed actual tunnel. Partial trace over the initial matrix leg gives \(E_N(A_j)=C_j\). After a fixed canonical prefix through \(N_k\), take \(j\ge k\) and also \(D_*=N_j'\cap N_k\). The actual partial traces give all three expectation identities and their \(L^2\) adjoints, and \(A_k\) and every earlier cup are retained. An arbitrary prescribed marked prefix is conjugate to this finite one by 57.3; continue with that conjugate of the entire generating tunnel. Its finite union still generates the original \(M\), so the same construction approximates the original fixed physical targets. The two inherited traces are those of that actual conjugated origin. Thus GW.3 refutes only automatic auxiliary numerical grouping. It supplies no actual full-family counterexample.
+
+### An unconditional general physical mesh bound
+
+We now return to an arbitrary proper finite-index inclusion \(N\subset M\), index \(d>1\), and any prescribed ordinary prefix through \(N_k\). Fix an actual continuation, and put
+
+\[
+ C_n=N_{k+n}'\cap N_k,\qquad
+ \mu_n=\max\{\tau(q):q\text{ minimal in }C_n\},\qquad
+ \beta_d=\max(d^{-1},1-d^{-1})<1.
+ \tag{GW.24}
+\]
+
+The trace is the original normalized physical trace on \(N_k\). No amenability is required for the following statement.
+
+**Theorem GW.4 — finite physical weights become uniformly small.**
+\[
+ \mu_{n+2}\le\beta_d\mu_n,\qquad
+ \mu_n\le\beta_d^{\lfloor n/2\rfloor}.
+ \tag{GW.25}
+\]
+
+For every projection \(p\in C_m\), every \(t\in[0,\tau(p)]\), and every \(n\ge m\), there is an actual \(q\in C_n\), \(q\le p\), with
+
+\[
+ 0\le t-\tau(q)<\mu_n
+ \quad\text{unless }t=\tau(p),\text{ in which case }q=p.
+ \tag{GW.26}
+\]
+
+All factors, the prefix and its cups are unchanged. Every chosen projection is an actual finite relative-commutant projection.
+
+**Proof.** Let \(e\in N_{k+n}\) be the actual cup for
+\(N_{k+n+2}\subset N_{k+n+1}\subset N_{k+n}\).
+It belongs to \(C_{n+2}\) and commutes with \(C_n\). The exact reflected-corner calculation 12.3–12.4 gives
+\(eC_{n+2}e=C_ne\).
+Let \(z\) be its central support in \(C_{n+2}\). The simple blocks of \(zC_{n+2}\) correspond to those of \(C_n\). If \(a\) is minimal in a corresponding source block, then \(ae\) is minimal in the target old block, because its corner is \(\mathbb C ae\).
+
+The normal functional \(x\mapsto\tau(ax)\) on the factor \(N_{k+n}\) is tracial, since \(a\) commutes with that factor. It equals \(\tau(a)\tau(x)\). Since \(\tau(e)=d^{-1}\), every such old-block minimal weight is exactly \(d^{-1}\tau(a)\), hence at most \(d^{-1}\mu_n\).
+
+If a minimal projection \(q\) belongs to a new block \((1-z)C_{n+2}\), choose a minimal \(a\in C_n\) whose target representation meets that block. It exists because the inclusion is unital. A rank-one projection in that target block can be rotated by a unitary of the target block into the nonzero range of \(a\); call it \(q'\le a(1-z)\). It has the same physical trace as \(q\). The old projection \(ae\le az\) is orthogonal to \(q'\). Therefore
+
+\[
+\begin{aligned}
+ \tau(q)=\tau(q')&\le\tau(a)-\tau(ae)\\
+ &=(1-d^{-1})\tau(a)\\
+ &\le(1-d^{-1})\mu_n.
+\end{aligned}
+\]
+
+The two cases give the first inequality in GW.25. Since \(\mu_0,\mu_1\le1\), iteration gives the second.
+
+For GW.26, decompose the actual embedded \(p\) into orthogonal minimal projections of \(C_n\), each of trace at most \(\mu_n\). Order them arbitrarily, and take the largest initial partial sum whose trace is at most \(t\). If the full sum is not reached, the remaining gap is strictly less than the next weight; otherwise that next projection could be added. The next weight is at most \(\mu_n\), proving the strict deficit bound. The endpoints zero and \(\tau(p)\) use \(0,p\). \(\square\)
+
+The proof of the old-part corner is algebraic and uses actual cups; it needs no extremal trace reflection. GW.25 controls the original physical trace only. The second inherited finite trace of the chosen \(q\) remains its actual commutant-dimension trace; it is neither replaced by \(\tau(q)\) nor asserted to satisfy an unproved uniform comparison.
+
+Uniformly small physical weights do not establish an exact finite certificate for \(1-\sum_i\tau(r_i)\), a joint-weight extension satisfying GW.20, or a vanishing selected-family central capacity cost. They allow quantitatively small actual cuts inside each old finite origin. The full finite-family construction must additionally return the entire new physical residual through actual whole finite origins, with both traces and all three expectation rows. That exact step remains open for arbitrary inclusions.
+
+![Actual numerical grouping fails across every positive gap, while the physical mesh decays.](figures/weight-grouping-and-physical-mesh-v20.svg)
+
+Figure GW.1. The upper two rows are the actual \(C_3,C_4\) of GW.18 with both original minimal weights; the grouped row is GW.21. The arrows record the actual tensor multiplicities of \(p_U,p_W\), GW.22. The gap panel gives the exact nonzero rank difference GW.23. The last panel gives the proved general bound GW.25 and its physical-only scope. Box sizes and arrow positions are schematic, not trace masses or geometric distances. [Reproducible figure and exact finite checks](figures/weight-grouping-and-physical-mesh-v20.py).
+
+### Scope and proof route
+
+GW.1–GW.3 give a complete actual proper all-smooth-amenable Jones counterexample to automatic compatible numerical weight grouping. GW.2 identifies exactly the finite extension requirement. GW.4 supplies an unconditional actual physical mesh bound after every prescribed prefix, with a complete proof. No diagonal representation of an arbitrary standard invariant, full general residual theorem, common-stage generation theorem, or vanishing canonical state cost follows.
+
+The original full arbitrary-inclusion GTB.0–GTB.1 task remains assigned, including all fixed physical targets, actual whole finite origins, both inherited traces, all expectation rows and prescribed prefix/cups. Every original BF/common-support, both-capacity, second-local-form, strong-amenability/generation/bicommutant, represented/opposite, arbitrary-depth, finite-pair/cup, prerequisite and source clause is retained. The particular model's generating and bicommutant assertions were proved directly and do not weaken the hypotheses of those general obligations.
+
+Complete earlier proof inputs: [Supported frames give local approximation corners](actual-supported-local-approximation.md), 57.3: exact finite marked-prefix alignment; [Going up and down the Jones tower](towers-and-tunnels.md), 4.2–4.5: actual ordinary tunnel triples; [Measuring an inclusion through modules and corners](module-dimension-and-local-index.md), 2.1/2.9: tensor index and common compression; [Finite bases, bounded vectors and a positive-operator inequality](finite-bases-and-positive-index.md), 3.2: partial basis and scalar index sum; [Reflection, commuting squares and finite depth](higher-relative-commutants.md), 12.3–12.4: actual old Jones ideal; [Reflected traces and a uniform bound along a tunnel](reflected-traces-and-uniform-bounds.md), 14.4: finite-depth inherited trace identification; [A finite symmetry group gives two kinds of index](finite-group-indices.md), 18.1–18.4: outer fixed factors and indices; [Smooth representations and compression onto the tracial tower](smooth-representations-and-tower-compression.md), 61.5–61.8: normal state extension and the specified UCP return; [Whole relative-commutant blocks with a small residual corner](whole-relative-commutant-blocks.md), 76.4: retained-prefix near-cover; [Exact trace certificates close the finite-depth residual](trace-certificates-and-exact-finite-partitions.md), 78.6: the full finite-depth partition; [Central capacity and small cuts of whole-tunnel supports](central-capacity-and-small-support-cuts.md), 80.1–80.4: finite costs and actual cuts.
+
+Human mathematical context: Vaughan F. R. Jones, *Index for subfactors*, Inventiones Mathematicae **72** (1983), 1–25, [DOI](https://doi.org/10.1007/BF01389127); Sorin Popa, *Classification of amenable subfactors of type II*, Acta Mathematica **172** (1994), 163–255, Theorem 4.4.1(1), printed p.222, [DOI](https://doi.org/10.1007/BF02392646). The finite action, actual marked tensor construction, numerical compatibility test, Fibonacci obstruction and physical mesh proof are given above.
+
+## Fifty-six checks with complete solutions
 
 **Exercise GTB.1 — padding and physical error.** Suppose actual whole-stage cells have \(d=9\), \(\tau(p_1)=2/3\), \(\tau(p_2)=1/3-1/10000\), residual trace \(1/10000\), and old target error below \(1/20\) for targets of norm at most two. Refine both cells by GTB.3 using \(h=3\). Determine the extra discarded mass and prove a strict \(1/10\) target-error bound. Does this make the supports tail-factor projections?
 
@@ -6518,7 +8535,83 @@ The \(\mu_V\) mass is \((6/7)(3/4+5/16+5/48)=1\). AC.7 follows from the piecewis
 \]
 This is a complete counterexample to an implication from the displayed measurable identities. It does not supply the additional identification of the full physical ordinary-core center.
 
+**Exercise 47 — the physical and dual word weights.** For AH, calculate the first-branch masses, their dual density, and both masses of a minimal endpoint-word projection of length \(2m\) and height \(n\).
+
+**Solution.** The trace scales are \((1,1,2)\), so \(S_+=4\), \(S_-=5/2\), \(d=10\). The physical masses are \((1/4,1/4,1/2)\); the dual masses \(1/(10w_i^+)\) are \((2/5,2/5,1/5)\). Their relative density is \((8/5,8/5,2/5)\). At length \(2m\) the two inherited masses are \(2^n/10^m\) and \(2^{-n}/10^m\), each summing to one over all words. The physical cup trace is \(1/10\).
+
+**Exercise 48 — the actual hitting laws and full centers.** Prove the two normal limit laws, and explain the additional argument that makes them full physical-center laws.
+
+**Solution.** Independent bounded pair-height increments have mean \(3/10\), so heights tend to positive infinity and each Laurent digit is eventually fixed. For an independent \(Y\) with the respective stationary law, \(B_{2n}+t^{S_{2n}}Y\) has that law at every time by AC.7 and converges to \(X\). Bounded continuous tests, including clopen ball indicators, therefore identify the entire law: plus first gives \(\mu_V\), minus first gives \(\mu_U\). This proves AH.17, but stationarity alone is not maximality. AB.16–AB.18 show \(H(G_{2n}\mid X)=o(n)\). The fully proved finite-marked entropy lemma AB.4 identifies the whole raw endpoint tail with \(\sigma(X)\). Equal-endpoint prefix substitutions identify the whole AF center with that tail, by AB.26–AB.27. Thus the actual normal maps AH.18 are onto as AB.31 asserts. Their canonical likelihoods are AB.30 on the entire center; no singular state is passed through a conditional expectation.
+
+**Exercise 49 — the coefficient-window entropy bound.** On the event \(E_n\) of AB.16, bound the number of possible endpoints given \(X\), and deduce sublinear conditional entropy.
+
+**Solution.** All coefficients below \(\ell_n\) are the known coefficients of \(X\), and all above \(u_n\) are zero. Only \(u_n-\ell_n+1\) binary coefficients and the height in that same interval remain free. Hence there are at most
+\[
+(u_n-\ell_n+1)\,2^{u_n-\ell_n+1}
+\]
+possibilities. Overall there are at most \(9^n\) endpoints. Conditioning also on \(1_{E_n}\) costs at most \(\log2\), so
+\[
+H(G_{2n}\mid X)\le\log2+\log(u_n-\ell_n+1)
+ +(u_n-\ell_n+1)\log2+\mathbb P(E_n^c)n\log9.
+\]
+The height law gives \(\mathbb P(E_n^c)\to0\). Divide by \(n\), take the limsup, and send \(\varepsilon\downarrow0\); the result is \(o(n)\). No uniform past lower-height bound is needed: the known lower truncation of each Laurent series is finite.
+
+**Exercise 50 — an actual finite physical separator.** Deduce AO.8 from the exact state discrepancy, and state what it implies for the delivered V8 spectral stacks.
+
+**Solution.** Every invariant full-center state kills each compact ball by disjoint Laurent translations. Therefore every compatible physical central state sees \((R_0,R_1,R_2)=(2/5,2/5,1/5)\), giving original joint norm
+\[
+2|2/5-1/4|+|1/5-1/2|=3/5
+\]
+and reciprocal cost \(2|5/2-4|+|5-2|=6\). If AO.8 failed for a fixed \(r<3/5\), choose a coisometric Jones column for every finite unitary set and positive tolerance, with errors below that tolerance and \(J_h<r\). Direct these choices by inclusion and decreasing tolerance. A weak-star cluster is exactly compatible, has physical marginal \(\tau\), and is \(M\)-central; the bounded original joint pairings give discrepancy at most \(r\). This contradicts \(3/5\). For spectral stacks, V8's retained lower estimate is \(\max(0,J_h-2\eta)/(1+\eta)\). Thus centrality errors and mesh loss tending to zero force liminf normalized joint error at least \(3/5\), after any prescribed prefix. This refutes the universal joint-state route; it does not refute a separate full-family construction.
+
+**Exercise 51 — equal numerical weights and actual residual placement.** In the actual WM inclusion take \(\lambda=3/2\). After a prescribed prefix, select twenty orthogonal physical supports, each individually conjugate to the identity-pair word diagonal at paired suffix level one. Compute the old residual trace, the endpoint-wise and grade-wise canonical overbooking costs at that level, and the residual certificate of HG.3. Give the extra fixed-target error bound from HG.14.
+
+**Solution.** The actual index is \(d=(11/2)(14/3)=77/3\), and the chosen word trace is \(1/d=3/77\). Twenty physically orthogonal copies exist in the factor \(N_k\), since their total trace is \(60/77<1\); individual unitary comparison places each canonical word projection onto its support and gives its actual finite continuation. Thus \(\tau(f)=17/77\).
+
+There are five identity-endpoint pairs, namely the pairs of equal raw labels, so that actual endpoint block has unit rank five. Twenty copies of its rank-one projection have endpoint-wise excess fifteen, of physical weight \(3/77\) per rank, giving \(45/77\). The total grade-zero capacity is seventeen, so HG.8 instead has excess three and cost \(9/77\). The cut leaves seventeen of the twenty ranks and enlarges the physical residual to \(26/77\). The actual canonical certificate takes all four grade-one and all four grade-minus-one word diagonals. Its trace is \(4(\lambda+\lambda^{-1})/d=26/77\). These are genuine word projections in actual endpoint blocks, and their sum is an actual canonical projection. HG.3 places it onto the enlarged physical residual. Its dual trace is also \(26/77\) in this particular symmetric certificate, by the separate inverse-grade calculation. The extra error for the original physical \(y\) is at most \(3(1+\sqrt2)\|y\|/\sqrt{77}\). Later paired stages make the physical grade cost arbitrarily small, by HG.2; this level-one calculation does not substitute that limit. The strict decrease from \(45/77\) to \(9/77\) records the role of the scalar certificate, which need not pack the canonical old supports endpoint by endpoint.
+
+**Exercise 52 — the index-ten full residual with both traces.** In the actual AH index-ten inclusion suppose a finite selected near-cover after a prescribed prefix has residual trace \(7/400\), and every old finite origin has been aligned and extended into paired depth \(m=2\). Give an exact full-family completion, both inherited finite trace values of each new certificate, and the change in every old target error. Explain whether it supplies a common stage for the same physical old blocks.
+
+**Solution.** The grade-minus-two word diagonal has physical trace \(20^{-2}=1/400\) and normalized finite dual trace \(5^{-2}=1/25\). Split the physical residual in \(N_k\) into seven orthogonal projections of trace \(1/400\). For each, separately conjugate the canonical continuation by a unitary of \(N_k\) placing that same word certificate onto it. The seven resulting actual cells cover the entire old residual, retain every earlier cup, and carry the stated two trace values in their respective actual terminal-factor representations. The old good cells and blocks stay unchanged. Each new upper block contains its compression of \(A_k\), so the completed algebra contains the old residual \(fA_k\) and hence all of \(P_0\). Every old expectation error is therefore preserved or improved. The source's permitted individual whole tunnels suffice. This construction does not align all the same physical old blocks into one common ordinary stage, and it proves no generating tunnel or ergodic-core conclusion.
+
+**Exercise 53 — correct the actual central integer, not only the quotient.** In the full group \(H\), suppose the selected-toggle/spatial word in FWT.3 has length \(80\) and central integer \(u=11\), while the desired relative endpoint has central integer \(m_n-M_{2n}=5\). They have the same lamps and spatial coordinate. Give the exact correction and resulting word-length bound. Explain why it fixes both the lamps and the actual parity relation.
+
+**Solution.** Their central difference is \(5-11=-6\), which is even. Append \((z^2)^{-3}=(s_1^{-1})^6\), using six letters. The corrected word has the desired full endpoint and length at most \(86\). The element \(s_1=az\) is not an involution, but \(s_1^2=z^2=(0,0,2)\) is central and has no lamp or spatial component. Its inverse power therefore changes only the central integer by \(-6\); parity modulo two is unchanged. Agreement in the quotient alone would leave this genuine central error. In the general ray the selected toggles number at most \(2(l-k)\), while \(m_n-M_{2n}=o(n)\). The even correction therefore adds at most \(2(l-k)+o(n)\) letters to the \(4(l-k)+o(n)\) spatial/toggle construction, giving FWT.12.
+
+**Exercise 54 — actual endpoint counts and a singular-state limit.** In a plus-initial single pair of the original WM walk, compute the five first-branch probabilities conditional on the full identity endpoint, retaining the original parameter and physical weights. Then explain why convergence of the full count ratios in \(L^2(\mathbb P_+)\) does not determine their value under every singular state.
+
+**Solution.** The endpoint is \(s_i s_j^{-1}\). It equals the identity exactly when \(i=j\), because the five actual labels are distinct in \(H\). There are five such marked pairs. Each has original physical probability
+\[
+ w_i^+w_i^-=\frac{\nu_i}{S_+}\frac{\nu_i^{-1}}{S_-}=\frac1d,
+\]
+so the identity event has probability \(5/d\) and every conditional first-branch probability is \(1/5\). Thus FWT.29 gives \(r_{i,1}(1)=1/5\), even though the original unconditioned \(w_1^+\) differs from the other branch weights. The original dual weight of each identity word is also \(1/d\), since its full central integer is zero.
+
+An explicit bounded example explains the limitation of \(L^2\) convergence. In \(L^\infty((0,1),dx)\), put \(f_n=1_{(0,1/n)}\), so \(\|f_n\|_2=n^{-1/2}\to0\). The normal states \(\omega_N(f)=N\int_0^{1/N}f(x)\,dx\) have a weak-star convergent subnet by the complete dual compactness input used earlier. Every cluster state \(\omega\) has \(\omega(f_n)=1\) for every fixed \(n\), because this equality holds whenever \(N>n\). It cannot be normal, since normality would give continuity on the decreasing projections \(f_n\downarrow0\). Hence it does not pass through their \(L^2\) limit. This example does not construct an invariant WM state or assign WM likelihood moments; it proves precisely why the normal convergence FWT.30 leaves the original singular-state optimization unresolved.
+
+**Exercise 55 — an actual inclusion beyond abstract divisibility.** Compute the groups at length five and decide whether numerical divisibility repairs the length-three extension. Then explain why a much later level whose grouped sizes are both divisible by four still cannot repair an extension of the actual length-three inclusion.
+
+**Solution.** From GW.15,
+\(m_5=(1,1,10,5)\), so \(\widehat C_5=\operatorname{Mat}_2\oplus\operatorname{Mat}_{15}\). Neither size is divisible by four. At length nine the ranks are \(m_9=(36,36,127,93)\), so the grouped sizes \(72,220\) are divisible by four. A unital abstract representation of \(\operatorname{Mat}_4\) then exists, but extension of the actual source remains impossible: the six-step rank difference in the dimension-one group is
+\(2(-1)^5f_6=-16\), by GW.23. The two equivalent length-three minimal projections still have unequal target ranks. Abstract divisibility is necessary for an abstract representation; it does not replace the prescribed multiplicity condition.
+
+**Exercise 56 — physical mesh after a prescribed prefix.** For any actual prescribed-prefix continuation of index \(d=4\), give a finite level guaranteeing a physical subprojection of trace below a requested \(t\in[0,\tau(p)]\), with deficit less than \(10^{-3}\). Explain what this says about an original residual that must be represented exactly.
+
+**Solution.** Here \(\beta_d=3/4\). Choose
+\(n\ge m\) with \(\lfloor n/2\rfloor\ge25\), since \((3/4)^{25}<10^{-3}\); for example \(n=\max(m,50)\). GW.26 gives \(q\le p\) in the actual finite \(C_n\) with physical deficit less than \(10^{-3}\), and the endpoint \(t=\tau(p)\) is exact. Its ordinary prefix and cups are unchanged, and both finite trace evaluations are those of this actual \(q\). The mesh result does not make a particular residual scalar an exact finite projection trace or finite positive sum of such traces. Approximate density and exact residual realization are distinct assertions.
+
 ## The remaining general implication
+
+FWT.1–FWT.9 now proves the entire original WM endpoint tail, including the central integer and exact parity, both original phases and all bounded harmonic families varying with depth. The actual lamp maps onto \(U,V\) and the whole coefficient center are therefore onto, and all five original likelihoods are full-center identities. The separate original WM.22 invariant-state endpoint remains unresolved; the finite count ratios converge in the original raw-path \(L^2\), and are not passed through singular states.
+
+GW.1–GW.4 supplies an actual proper index-four all-smooth-amenable obstruction to automatic compatible numerical grouping, including every cofinal subsequence, and an unconditional general physical mesh bound after every prescribed prefix. Its actual example satisfies the full finite-family theorem. Its physical mesh estimate does not supply exact full residual realization for an arbitrary inclusion. The full original GTB.0–GTB.1, BF/common-support, both-infinite-capacity, second-local-form, represented/opposite, arbitrary-depth, finite-pair/cup, prerequisite and ergodic-core strong-amenability/generating/bicommutant obligations remain assigned at their stated scopes. The earlier construction-specific boundary paragraphs retain their historical proof scope; these new results close the full WM center-identification gap and correct the proposed general grouping route.
+
+HG.1–HG.10 completes full finite marked families for the actual proper diagonal trace-character class, with the whole residual, both original finite trace systems, all three expectation rows, fixed physical targets and every prescribed prefix/cup. The cuts have arbitrarily small physical mass and add at most \((1+\sqrt2)\|y\|\sqrt{\Delta}\) to the original target error. At the original rational WM.22 parameter and in the actual AH index-ten inclusion, the old good supports and blocks can be retained exactly, with zero additional target error. Thus AO’s positive joint-state cost and HG’s full-family approximation hold in the same actual AH inclusion.
+
+The arbitrary-inclusion GTB.0–GTB.1 theorem remains unproved here; a finite diagonal trace-character description has not been supplied for a general standard invariant. The general common-support/BF, both infinite capacities, second local form, represented/opposite, arbitrary-depth, marked finite-pair/cup, prerequisite and ergodic-core strong-amenability/generating/bicommutant obligations retain their full original scope. The separate fixed WM.22 zero-cost endpoint remains unresolved. The earlier finite-boundary paragraphs describe what each preceding construction alone proved; HG now closes the weighted diagonal class’s full-family/residual problem.
+
+AH.1–AH.20, AB.1–AB.32 and AO.1–AO.9 now prove the actual all-smooth-amenable index-ten counterexample to universal simultaneous small original joint defect and physical centrality. The complete physical compatible-state class has original discrepancy \(3/5\) and cost 6; both full centers, both canonical laws and their likelihoods are identified. V8's projection and prescribed-prefix estimates remain valid. The unrestricted joint-state forcing step is false in this generality, rather than an unproved criterion to assume.
+
+The fixed WM.22 endpoint is a separate inclusion and remains unresolved. The original general controlled support reselection, full marked-family/residual and ergodic-core strong-amenability/generating/bicommutant obligations remain at their stated scope. The earlier finite-boundary paragraphs below describe what each preceding construction alone supplied; where they called the universal joint-state assertion unresolved, the actual counterexample AO now gives its exact negative resolution.
 
 NZ.1–NZ.16 disprove normalization-plus-amenability forcing, prove its abelian restriction, and construct an actual affine observable in the fixed center with both original trace tails. AC.1–AC.18 strengthens the measurable obstruction to include two stationary laws and the reciprocal dimension identity. Neither action is substituted for the original physical core. Normal conditional expectation of its full RN derivative onto the actual observable does not justify an equality of logarithmic means for singular states. The original invariant zero-cost endpoint, simultaneous joint-defect and target-centrality construction, controlled full-family return and every original generating-tunnel obligation remain unproved at their full stated scope.
 

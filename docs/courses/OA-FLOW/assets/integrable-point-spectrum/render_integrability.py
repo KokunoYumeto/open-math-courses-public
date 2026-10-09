@@ -69,6 +69,7 @@ layout={"PNG_dimensions":[3200,2200],"title_bbox":list(title_box.bounds),"subtit
         "first_panel_title_bboxes":[list(v.bounds) for v in panel_boxes],
         "title_subtitle_gap_pixels":title_subtitle_gap,"subtitle_panel_gap_pixels":subtitle_panel_gap,
         "minimum_required_gap_pixels":16,"no_title_subtitle_or_first_panel_heading_overlap":True}
+# LAYOUT_CHECK.json is a local build diagnostic and is not distributed.
 (args.output/"LAYOUT_CHECK.json").write_text(json.dumps(layout,indent=2)+"\n",encoding="utf-8")
 fig.savefig(out/"integrable-point-spectrum.png",dpi=200,metadata={"Software":"Original local L114 renderer"})
 fig.savefig(out/"integrable-point-spectrum.svg",metadata={"Date":None,"Creator":"Original local L114 renderer"})

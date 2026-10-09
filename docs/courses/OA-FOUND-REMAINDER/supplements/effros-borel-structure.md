@@ -394,11 +394,11 @@ p_{M^*}(\psi)=\sup_{x\in M_1}|\psi(x^*)|=\sup_{x\in M_1}|\psi^\sharp(x)|=p_M(\ps
 \]
 and \(M\mapsto M^*\) is Borel by testing on generators ([Lemma 1.3(1)](#oa-fnd-ef-01)). Clearly \((M^*)^*=M\).
 
-(2) For \(a\in B(\mathcal K)\) and \(\psi\in B(\mathcal K)_*\) define \(a,\psi=\psi(xa-ax)\). It lies in \(B(\mathcal K)_*\), since \(x\mapsto xa-ax\) is \(\sigma\)-weakly continuous. Let \(\Psi\) be a countable dense subset of \(B(\mathcal K)_*\). By (P2), \(\Psi\) separates the points of \(B(\mathcal K)\), so \(\psi(xa-ax)=0\) for all \(\psi\in\Psi\) exactly when \(xa=ax\). Hence
+(2) For \(a\in B(\mathcal K)\) and \(\psi\in B(\mathcal K)_*\) define \([a,\psi](x)=\psi(xa-ax)\). It lies in \(B(\mathcal K)_*\), since \(x\mapsto xa-ax\) is \(\sigma\)-weakly continuous. Let \(\Psi\) be a countable dense subset of \(B(\mathcal K)_*\). By (P2), \(\Psi\) separates the points of \(B(\mathcal K)\), so \(\psi(xa-ax)=0\) for all \(\psi\in\Psi\) exactly when \(xa=ax\). Hence
 \[
 \{a_i(\gamma):i\}'=\{[a_i(\gamma),\psi]:\ i\geq1,\ \psi\in\Psi\}^\perp .
 \]
-By [Proposition 5.5](#oa-fnd-ef-04) on annihilators, it suffices that \(\gamma\mapsto[a_i(\gamma),\psi]\) is measurable into \(B(\mathcal K)_*\). By Lemma 8.1(1), it suffices that \(\gamma\mapstoa_i(\gamma),\psi=\psi(b_ja_i(\gamma)-a_i(\gamma)b_j)\) is measurable for each \(j\), and this holds by Lemma 8.1(2).
+By [Proposition 5.5](#oa-fnd-ef-04) on annihilators, it suffices that \(\gamma\mapsto[a_i(\gamma),\psi]\) is measurable into \(B(\mathcal K)_*\). By Lemma 8.1(1), it suffices that \(\gamma\mapsto[a_i(\gamma),\psi](b_j)=\psi(b_ja_i(\gamma)-a_i(\gamma)b_j)\) is measurable for each \(j\), and this holds by Lemma 8.1(2).
 
 (3) Let \(a_n\) be the maps of [Theorem 5.3](#oa-fnd-ef-04) for \(E=B(\mathcal K)_*\). For \(M\in\mathfrak W(B(\mathcal K))\), \(M'=\{a_n(M):n\}'\). One inclusion holds because \(a_n(M)\in M\). For the other, if \(x\) commutes with every \(a_n(M)\), it commutes with every element of \(M_1\), since \(y\mapsto xy-yx\) is \(\sigma\)-weakly continuous and the \(a_n(M)\) are \(\sigma\)-weakly dense in \(M_1\); so it commutes with \(M\). The \(a_n\) are weakly measurable by Lemma 8.1(2), so (2) applies with \(\Gamma=\mathfrak W(B(\mathcal K))\). \(\square\)
 

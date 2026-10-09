@@ -15,7 +15,7 @@ A^+=A\oplus\mathbb C,\qquad
 (a,\lambda)(b,\mu)=(ab+\lambda b+\mu a,\lambda\mu).
 \]
 
-Its identity is \((0,1)\). A compatible complete algebra norm, for example \(\|a\|+|\lambda|\), suffices in the Banach case. In the C*-case we use its C*-norm. Write \(a+\lambda1\) for \((a,\lambda)\), and let \(\epsilon_A:A^+\to\mathbb C\) be \(a+\lambda1\mapsto\lambda\). A homomorphism \(\phi:A\to B\) has the unital extension \(\phi^+(a+\lambda1)=\phi(a)+\lambda1\).
+Its identity is \((0,1)\). A compatible complete algebra norm, for example \(\|a\|+|\lambda|\), suffices in the Banach case. The complete norm constructions are [Banach algebras, Construction 3.2 and Proposition 3.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#OA-FND-BN-04), [Proposition 3.4](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#OA-FND-BN-05) and [Exercise 5 for an already unital C*-algebra](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#exercises). Write \(a+\lambda1\) for \((a,\lambda)\), and let \(\epsilon_A:A^+\to\mathbb C\) be \(a+\lambda1\mapsto\lambda\). A homomorphism \(\phi:A\to B\) has the unital extension \(\phi^+(a+\lambda1)=\phi(a)+\lambda1\).
 
 To distinguish two constructions while proving their agreement, put
 
@@ -30,7 +30,7 @@ for a unital Banach algebra \(D\). This is the preceding lesson's group, not alg
 K_0^{\mathrm{alg}}(\mathbb C)=\mathbb Z\bigr).}
 \]
 
-On a scalar idempotent the last map is its rank. Since \(\epsilon_B\phi^+=\epsilon_A\), the extension induces \(\phi_*:K_0(A)\to K_0(B)\). Identity and composition follow entrywise from their unital versions. Homotopies also extend, so the same argument proves homotopy invariance. In a C*-algebra we may use projections throughout, by the preceding projection–idempotent monoid isomorphism.
+On a scalar idempotent the last map is its rank. Since \(\epsilon_B\phi^+=\epsilon_A\), the extension induces \(\phi_*:K_0(A)\to K_0(B)\). Identity and composition follow entrywise from their unital versions. Homotopies also extend, so the same argument proves homotopy invariance. In a C*-algebra we may use projections throughout, by the [projection–idempotent correspondence (Lesson 1, Theorems 4.1–4.2)](KT-OPK-01.md#4-replacing-idempotents-by-projections).
 
 **Theorem 1.1 (normal form).** Every \(x\in K_0(A)\) has the form
 
@@ -41,7 +41,7 @@ P=\operatorname{diag}(1_n,0_{l-n}),\qquad \epsilon_A(e)=P.
 
 Here \(0\leq n\leq l\); in the C*-case \(e\) can be a projection. Thus \(e-P\in M_l(A)\). More generally, differences of idempotents with equal scalar matrices represent elements of \(K_0(A)\).
 
-*Proof.* The identity-denominator theorem of the preceding lesson writes \(x=[g]-[1_n]\) in the unital algebra \(A^+\), after allowing zero padding. Augmentation zero says that \(\epsilon_A(g)\) has rank \(n\). A scalar change of basis carries this idempotent to \(P\). Conjugate \(g\) by that same constant invertible matrix. This leaves its class unchanged and gives the required equality of scalar matrices. In the C*-case start with projections and use a scalar unitary change of basis. Conversely, equal scalar matrices have equal ranks and hence their difference is in the kernel. \(\square\)
+*Proof.* The [identity-denominator theorem (Lesson 3, Theorem 3.2)](KT-OPK-03.md#3-differences-complements-and-equality) writes \(x=[g]-[1_n]\) in the unital algebra \(A^+\), after allowing zero padding. Augmentation zero says that \(\epsilon_A(g)\) has rank \(n\). A scalar change of basis carries this idempotent to \(P\). Conjugate \(g\) by that same constant invertible matrix. This leaves its class unchanged and gives the required equality of scalar matrices. In the C*-case start with projections and use a scalar unitary change of basis. Conversely, equal scalar matrices have equal ranks and hence their difference is in the kernel. \(\square\)
 
 In particular, subtraction of \([P]\) is part of the definition even when \(P\) does not belong to \(M_l(A)\). If \(e\in M_l(A)\), its scalar matrix is zero and its class already belongs to the kernel.
 
@@ -101,7 +101,7 @@ is exact at \(K_0(A)\).
 
 *Proof.* Identify \(J^+\) with \(J+\mathbb C1\subset A^+\). Under \(\pi^+:A^+\to(A/J)^+\), a normal-form representative \(e\in M_l(J^+)\) goes to its scalar matrix \(P\). Therefore \(\pi_*\iota_*([e]-[P])=0\).
 
-Conversely let \(x=[e]-[P]\in K_0(A)\) map to zero. In the unital group of \((A/J)^+\), the two classes \([\pi^+(e)]\) and \([P]\) agree. The identity-stabilization criterion gives equivalence after adding the same identity block. The stabilized-similarity theorem then supplies an invertible \(z\) over \((A/J)^+\) and matrices
+Conversely let \(x=[e]-[P]\in K_0(A)\) map to zero. In the unital group of \((A/J)^+\), the two classes \([\pi^+(e)]\) and \([P]\) agree. The [identity-stabilization criterion (Lesson 3, Theorem 3.2)](KT-OPK-03.md#3-differences-complements-and-equality) gives equivalence after adding the same identity block. The [stabilized-similarity theorem (Lesson 1, Theorem 3.1)](KT-OPK-01.md#3-why-an-extra-block-removes-the-difference) then supplies an invertible \(z\) over \((A/J)^+\) and matrices
 
 \[
 E=\operatorname{diag}(e,1_k,0),\qquad
@@ -146,7 +146,7 @@ is split exact, with section \(s_*\).
 
 *Proof.* Functoriality gives \(\pi_*s_*=1\), hence surjectivity and a section. Half-exactness gives the middle equality. It remains to prove injectivity, which is not a consequence of half-exactness alone.
 
-Take \(x=[e]-[P]\in K_0(J)\) whose image in \(K_0(A)\) vanishes. Identity stabilization and stabilized similarity in \(A^+\) give
+Take \(x=[e]-[P]\in K_0(J)\) whose image in \(K_0(A)\) vanishes. [Identity stabilization (Lesson 3, Theorem 3.2)](KT-OPK-03.md#3-differences-complements-and-equality) and [stabilized similarity (Lesson 1, Theorem 3.1)](KT-OPK-01.md#3-why-an-extra-block-removes-the-difference) in \(A^+\) give
 
 \[
 UEU^{-1}=F,
@@ -189,7 +189,7 @@ The hypothesis is: for every finite subset \(T\subset M_\infty(A)\) and \(\delta
 \tag{5.1}
 \]
 
-This is the approximate-unit-of-projections condition, with a net allowed. It is equivalent to saying \(A\otimes\mathcal K\) has an approximate unit of projections. Indeed, (5.1) extends from finite matrices to its completion by density and \(\|r\|\leq1\). Conversely a projection in that completion can be approximated by a finite self-adjoint matrix and corrected by the spectral cutoff near 0 and 1; the correction is a finite-matrix projection and is arbitrarily close. Applying this to a projection that already approximates the given finite set yields (5.1). The correction has value zero at 0 and so lies in the finite nonunital matrix algebra. This uses the spectral correction proved in the first lesson, not K-theory continuity.
+This is the approximate-unit-of-projections condition, with a net allowed. It is equivalent to saying \(A\otimes\mathcal K\) has an approximate unit of projections. Indeed, (5.1) extends from finite matrices to its completion by density and \(\|r\|\leq1\). Conversely a projection in that completion can be approximated by a finite self-adjoint matrix and corrected by the spectral cutoff near 0 and 1; the correction is a finite-matrix projection and is arbitrarily close. Applying this to a projection that already approximates the given finite set yields (5.1). The correction has value zero at 0 and so lies in the finite nonunital matrix algebra. This uses the [spectral correction (Lesson 1, Theorem 6.1)](KT-OPK-01.md#6-repairing-an-approximate-idempotent), not K-theory continuity.
 
 **Theorem 5.1.** Under (5.1), \(\omega_A:G(V(A))\to K_0(A)\) is an isomorphism.
 
@@ -244,7 +244,7 @@ The cutoff defining \(d(t)\) is taken in the unital corner with identity \(R\); 
 
 *Injectivity.* Suppose \([p]-[q]\in G(V(A))\) maps to zero. In the unital group of \(A^+\), identity stabilization gives equivalence between \(p\oplus1_k\) and \(q\oplus1_k\). After zero padding, projection equivalence gives a continuous projection path \(h(t)\) between them. Write both endpoints as \(P+p'\) and \(P+q'\), with \(P\) scalar and \(p',q'\in M_m(A)\) orthogonal to \(P\). Their scalar images agree, but the scalar path need not be constant.
 
-The close-projection transport of the second lesson, applied to the finite-dimensional scalar path, gives a continuous scalar unitary \(u(t)\), with \(u(0)=1\), such that
+The [close-projection transport (Lesson 2, proof of Theorem 4.2)](KT-OPK-02.md#4-transport-along-a-cylinder), applied to the finite-dimensional scalar path, gives a continuous scalar unitary \(u(t)\), with \(u(0)=1\), such that
 
 \[
 \epsilon_A(h(t))=u(t)Pu(t)^*.
@@ -273,7 +273,7 @@ The path \(d(t)\) consists entirely of projections over \(A\). Its endpoints hav
 
 This is exactly a group-completion witness for \([p]-[q]=0\). It proves injectivity without assuming cancellation of \(V(A)\). \(\square\)
 
-This proof explains why the projection approximate unit matters: it moves the nonscalar part into a genuinely unital finite corner and leaves an unchanged scalar projection outside that corner. The theorem includes every unital C*-algebra and every C*-algebra with a projection approximate unit, as well as the more general stably unital case. The corresponding nonunital AF-algebra agreement was already established in *AF-algebras*, Proposition 7.7.
+This proof explains why the projection approximate unit matters: it moves the nonscalar part into a genuinely unital finite corner and leaves an unchanged scalar projection outside that corner. The theorem includes every unital C*-algebra and every C*-algebra with a projection approximate unit, as well as the more general stably unital case. The corresponding nonunital AF-algebra agreement was already established in [AF-algebras, Proposition 7.7](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/af-algebras.html#OA-FND-AF-06).
 
 **Example 5.2 (compact operators).** Let \(H\) be any nonzero Hilbert space. The net of orthogonal projections onto finite-dimensional subspaces is an approximate unit for \(\mathcal K(H)\). To see norm approximation, cover the compact image of the unit ball under a compact operator by finitely many small balls and include their centers in the subspace. This makes \(\|(1-r)T\|\) small; apply the same argument to \(T^*\) for \(\|T(1-r)\|\). Larger subspaces retain both estimates.
 
@@ -307,7 +307,7 @@ No countability assumption on \(X\) is involved.
 
 **Proposition 6.1.** \(K_0(C_0(\mathbb R))=0\).
 
-*Proof.* The one-point compactification is a circle. Every complex vector bundle on the circle is trivial, by the endpoint-gluing proof in the second lesson. Its bundle monoid is \(\mathbb N_0\), and the third lesson identifies its group completion with \(K_0(C(S^1))=\mathbb Z\). Evaluation at any point is the rank isomorphism. Its kernel is zero. \(\square\)
+*Proof.* The one-point compactification is a circle. Every complex vector bundle on the circle is trivial, by the [endpoint-gluing proof (Lesson 2, Proposition 5.1)](KT-OPK-02.md#5-gluing-around-a-circle-and-across-a-sphere). Its bundle monoid is \(\mathbb N_0\), and the third lesson identifies its group completion with \(K_0(C(S^1))=\mathbb Z\). Evaluation at any point is the rank isomorphism. Its kernel is zero. \(\square\)
 
 For the sphere use the second lesson's coordinates: a finite point \(z\) represents \([1:z]\in\mathbb{CP}^1\), the coordinate at infinity is \(w=1/z\), and the equator is parametrized counterclockwise by \(z=e^{i\theta}\). A clutching matrix \(g:S^1\to GL_r(\mathbb C)\) transfers coefficients from the finite disc to the infinity disc:
 
@@ -331,9 +331,9 @@ d:K_0(C(S^2))\longrightarrow\mathbb Z
 
 which vanishes on the class of every trivial bundle. The Bott relative class specified below has value \(+1\).
 
-*Proof.* The two disc trivializations exist by the second lesson's triviality theorem for contractible compact spaces. A change of trivialization replaces \(g\) by \(a_\infty g a_0^{-1}\), where \(a_0,a_\infty\) extend invertibly across their respective discs. The winding of each determinant is zero: its boundary loop extends to a disc, whose radial contraction supplies a null-homotopy. Both conclusions hold with the chosen equator parametrization. Product winding is additive and inversion changes the sign, so \(d(E)\) is independent of the trivializations. A bundle isomorphism has the same frame-change equation, proving invariance under isomorphism.
+*Proof.* The two disc trivializations exist by the [triviality theorem for contractible compact spaces (Lesson 2, Corollary 4.3)](KT-OPK-02.md#4-transport-along-a-cylinder). A change of trivialization replaces \(g\) by \(a_\infty g a_0^{-1}\), where \(a_0,a_\infty\) extend invertibly across their respective discs. The winding of each determinant is zero: its boundary loop extends to a disc, whose radial contraction supplies a null-homotopy. Both conclusions hold with the chosen equator parametrization. Product winding is additive and inversion changes the sign, so \(d(E)\) is independent of the trivializations. A bundle isomorphism has the same frame-change equation, proving invariance under isomorphism.
 
-For a direct sum the transition is block diagonal and its determinant is the product of the two determinants. Thus \(d\) is additive on the bundle monoid. The Serre–Swan and projection correspondence, followed by the universal property of group completion, gives the asserted homomorphism on \(K_0(C(S^2))\). A trivial bundle admits identical global frames on both discs and has transition 1, so its degree is zero.
+For a direct sum the transition is block diagonal and its determinant is the product of the two determinants. Thus \(d\) is additive on the bundle monoid. The [Serre–Swan and projection correspondence (Lesson 2, Theorems 3.1–3.2)](KT-OPK-02.md#3-recovering-bundles-and-all-their-maps), followed by the [universal property of group completion (Lesson 3, Theorem 1.1)](KT-OPK-03.md#1-additive-measurements-and-formal-subtraction), gives the asserted homomorphism on \(K_0(C(S^2))\). A trivial bundle admits identical global frames on both discs and has transition 1, so its degree is zero.
 
 The rank-one projection
 
@@ -385,7 +385,7 @@ under the map induced by \(J^+\to D\). Blackadar [1998, Theorem 5.4.2] states th
 0\to\mathcal K(H)\to B(H)\to Q(H)\to0
 \]
 
-is the compact-operator extension. Section 5 gives \(K_0(\mathcal K(H))=\mathbb Z\), while the preceding lesson proves \(K_0(B(H))=0\) for every infinite-dimensional Hilbert space. The inclusion therefore sends a rank-one generator to zero and is not injective. This is compatible with exactness at the zero middle group. It also shows this extension admits no bounded algebra-homomorphism section: Theorem 4.1 would force injectivity.
+is the compact-operator extension. Section 5 gives \(K_0(\mathcal K(H))=\mathbb Z\), while [Lesson 3, Theorem 5.3, proves](KT-OPK-03.md#5-calculations-dimensions-absorption-and-bundles) \(K_0(B(H))=0\) for every infinite-dimensional Hilbert space. The inclusion therefore sends a rank-one generator to zero and is not injective. This is compatible with exactness at the zero middle group. It also shows this extension admits no bounded algebra-homomorphism section: Theorem 4.1 would force injectivity.
 
 **Example 7.2 (failure of surjectivity).** Endpoint evaluation gives
 
@@ -457,7 +457,7 @@ the alternative ideal group would be zero. The alternative groups for the two un
 
 ## Prerequisite and later results
 
-We used the first lesson's stabilized equivalence, range projection, close-projection equivalence and spectral correction; the second lesson's bundle–projection correspondence, cylinder transport, winding lemma and triviality over contractible spaces and the circle; and the third lesson's group completion, identity stabilization, functoriality and \(K_0(B(H))=0\). Continuous functional calculus and its continuity are the verified results of *C*-algebras: continuous functional calculus, automatic continuity, positive cones, approximate identities and quotients*, Theorems 5.1 and 6.1. These supply the cutoff continuity in Section 5.
+We used the first lesson's stabilized equivalence, range projection, close-projection equivalence and spectral correction; the second lesson's bundle–projection correspondence, cylinder transport, winding lemma and triviality over contractible spaces and the circle; and the third lesson's group completion, identity stabilization, functoriality and \(K_0(B(H))=0\). Continuous functional calculus and its continuity are the verified results of *C*-algebras: continuous functional calculus, automatic continuity, positive cones, approximate identities and quotients*, Theorems 5.1 and 6.1. The exact proofs are [Theorem 5.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-07) and [Theorem 6.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-11); they supply the cutoff continuity in Section 5.
 
 The complete general relative comparison and strong excision proofs are the exact owned results in Lesson 11, §§5–6, with the Banach version in Corollary 6.2. Bott periodicity will eventually compute \(K_0(C_0(\mathbb R^2))\); the present determinant argument establishes only the explicitly proved infinite-order class.
 
@@ -466,5 +466,5 @@ The complete general relative comparison and strong excision proofs are the exac
 - Bruce Blackadar, *K-Theory for Operator Algebras*, second edition, Cambridge University Press, 1998, §§5.4–5.6, especially Propositions 5.4.1 and 5.5.5 and Theorem 5.6.1; Proposition 8.3.6 for split exactness. Strong excision is Theorem 5.4.2. [Author's corrected second edition](https://www.bruceblackadar.com/Mathematics/book6.pdf).
 - Bruce Blackadar, *Operator Algebras: Theory of C*-Algebras and von Neumann Algebras*, Springer, 2006; author's revised 2017 text, V.1.1.15–V.1.1.21, especially V.1.1.17–V.1.1.19 for unitization and stable unitality.
 - Heath Emerson, *An Introduction to C*-Algebras and Noncommutative Geometry*, Birkhäuser, 2024, §8.1.
-- *AF-algebras*, Proposition 7.7, in *Foundations of von Neumann algebras*, for the nonunital AF case.
+- [AF-algebras, Proposition 7.7](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/af-algebras.html#OA-FND-AF-06), in *Foundations of von Neumann algebras*, for the nonunital AF case.
 - *Cyclic forms that survive norm completion*, in *Cyclic cohomology, connections and transverse geometry*, for the same scalar-relative convention.

@@ -159,29 +159,29 @@ We also have
 For fixed \(s\), \(ge_s\in C_c(H)\) and \(M_{ge_s}=M_gM_{e_s}\to M_{e_s}\) strongly, with a common norm bound one, by Section 1. Bounded strong convergence is ultraweak convergence, and the normal inverse of \(m\) gives \(ge_s\to e_s\) in \(\sigma(L^\infty,L^1)\). Thus the ultraweak closure of \(C_c(H)\) contains every character, and character density proves (L31.2.h). This is linear ultraweak density; it does not select pointwise continuous approximants to all measurable functions.
 
 **Construction after recognition.** The [Normal recognition isomorphism](OA-FLOW-L29.md#l29-5) gives the unique normal isomorphism \(\Phi:C\to N\) with normal inverse and the prescribed values on \(\pi_\alpha(M)\) and \(\lambda(G)\). Use a faithful normal unital representation of \(M\) on a nonzero Hilbert space \(K\), and realize \(C\) on \(L^2(G,K)\). Recognition includes independence of this regular model. Its group operators are the actual shifts
-\
- [\lambda_s\xi=\xi(t-s).
+\[
+ [\lambda_s\xi](t)=\xi(t-s).
  \tag{L31.2.i}
 \]
 The arbitrary-Hilbert tensor identification in [Vector integrals and Hilbert tensors](OA-FLOW-L24.md#oa-flow.grp.vectorintegration) identifies \(\mathscr L\otimes K\) with \(L^2(H,K)\), and we use \(A\) on this latter space.
 
 Let
-\
+\[
  \mathcal F_+:L^2(G,K)\longrightarrow L^2(H,K),
  \qquad
- [\mathcal F_+\xi=\int_G\chi(t)\xi(t)\,dt
+ [\mathcal F_+\xi](\chi)=\int_G\chi(t)\xi(t)\,dt
  \quad(\xi\in C_c(G,K)).
  \tag{L31.2.j}
 \]
 This is the onto unitary supplied by [Plancherel with an arbitrary Hilbert target](OA-FLOW-DA.md#da-vector), followed by inversion of the dual variable to change the negative character there to the displayed positive character. Inversion preserves abelian Haar measure, so this change is unitary. The compact-vector integral has the stated value at every character, and represents the corresponding \(L^2\) vector.
 
 For \(\xi\in C_c(G,K)\), Haar substitution \(t=r+s\) gives
-\
+\[
  \begin{aligned}
- [\mathcal F_+\lambda_s\xi
+ [\mathcal F_+\lambda_s\xi](\chi)
  &=\int_G\chi(t)\xi(t-s)\,dt\\
  &=\chi(s)\int_G\chi(r)\xi(r)\,dr
- =A(e_s)\mathcal F_+\xi.
+ =[A(e_s)\mathcal F_+\xi](\chi).
  \end{aligned}
  \tag{L31.2.k}
 \]
@@ -236,15 +236,15 @@ so its multiplier extension takes \(e_s\) to \(u_s\). The uniqueness statement i
 ## 3. Translation on every Haar measurable coordinate
 
 Fix \(\eta\in H\). Translation preserves completed locally determined Haar measurable sets and their compact-local null ideal: the inverse image of a compact set is compact, and Haar invariance preserves nullity on each such restriction. These statements are proved for the full Haar convention in [Locally determined Haar measure](OA-FLOW-HR.md#hr-09) and [Haar translations](OA-FLOW-L24.md#oa-flow.grp.translations). Hence
-\
- [\tau_\eta f=f(\eta^{-1}\chi)
+\[
+ [\tau_\eta f](\chi)=f(\eta^{-1}\chi)
  \tag{L31.3.a}
 \]
 is a well-defined isometric unital star automorphism of \(L^\infty(H)\), with inverse \(\tau_{\eta^{-1}}\).
 
 It is normal on the full measurable algebra. On scalar \(L^2(H)\), the operator
-\
- [L_\eta\xi=\xi(\eta^{-1}\chi)
+\[
+ [L_\eta\xi](\chi)=\xi(\eta^{-1}\chi)
 \]
 is unitary by Haar invariance, with inverse \(L_{\eta^{-1}}\). Multiplication of representatives for this fixed \(\eta\) gives
 \[
@@ -646,8 +646,8 @@ Here \(F(X)\) repeats \(\frac14\sum_rX_r\), so it fixes every constant tuple. Th
 
 <a id="l31-8-real"></a>
 **Discontinuous bounded functions and an infinite answer.** Take \(G=\mathbb R\) with measure \(ds\), and \(H=\mathbb R\) with measure \(dp/(2\pi)\) and characters \(\chi_p(s)=e^{isp}\). On \(N=L^\infty(\mathbb R,dp/(2\pi))\), put
-\
- [\beta_qf=f(p-q),\qquad u_s(p)=e^{isp}.
+\[
+ [\beta_qf](p)=f(p-q),\qquad u_s(p)=e^{isp}.
  \tag{L31.8.g}
 \]
 Dominated convergence on each \(L^2\) vector makes \(u\) strongly continuous. The [\(L^1\) translation proof](OA-FLOW-L24.md#oa-flow.grp.translations) makes the predual translations norm continuous, hence \(\beta\) point-ultraweakly continuous. The eigenrelation is \(\beta_q(u_s)=e^{-isq}u_s\).
@@ -667,8 +667,8 @@ If the original Haar measure becomes \(5ds\) while compatibility is preserved, t
 
 <a id="l31-8-uncountable"></a>
 **A normal expectation on a nonseparable Hilbert space.** Let \(I\) be uncountable, let \(G=\bigoplus_{i\in I}\mathbb Z/2\mathbb Z\) have the discrete topology and counting Haar measure, and let \(H=\prod_{i\in I}\{1,-1\}\) have its compact product topology and probability Haar measure. Pair them by the finite product \(\chi(s)\). On \(N=L^\infty(H)\), use
-\
- [\beta_\eta f=f(\eta^{-1}\chi),\qquad u_s(\chi)=\chi(s).
+\[
+ [\beta_\eta f](\chi)=f(\eta^{-1}\chi),\qquad u_s(\chi)=\chi(s).
  \tag{L31.8.i}
 \]
 The [complete compact-dual example in L29](OA-FLOW-L29.md#l29-7-uncountable) verifies the duality, eigenrelation and continuity at this uncountable scope. In particular, discreteness of \(G\) makes \(u\) continuous; uniform continuity on \(C(H)\), its density in \(L^1(H)\), and translation isometry prove norm-continuous predual orbits.

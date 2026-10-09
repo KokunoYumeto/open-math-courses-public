@@ -24,8 +24,8 @@ d[\alpha,\beta]&=[d\alpha,\beta]+(-1)^p[\alpha,d\beta].
 \tag{A.2}
 \]
 It commutes with pullback. Its evaluation is the shuffle sum
-\
-[\alpha,\beta
+\[
+[\alpha,\beta](v_1,\ldots,v_{p+q})
 =\sum_{\sigma\in\mathrm{Sh}(p,q)}\operatorname{sgn}(\sigma)
  [\alpha(v_{\sigma(1)},\ldots,v_{\sigma(p)}),
  \beta(v_{\sigma(p+1)},\ldots,v_{\sigma(p+q)})]_{\mathfrak g}.
@@ -43,8 +43,8 @@ For the first identity of (A.2), scalar graded commutativity contributes \((-1)^
 \([X,[Y,Z]]=[[X,Y],Z]+[Y,[X,Z]]\), the Lie algebra Jacobi identity. The exterior product rule in DG-CHAR-17 D.1 gives the last identity of (A.2) coefficient by coefficient. Pullback preserves scalar wedges and their coefficients, so it preserves this bracket too.
 
 In particular, for a one-form \(\omega\),
-\
-[\omega,\omega=2[\omega(v),\omega(w)]_{\mathfrak g}.
+\[
+[\omega,\omega](v,w)=2[\omega(v),\omega(w)]_{\mathfrak g}.
 \tag{A.4}
 \]
 For later use the Jacobi identity gives
@@ -167,11 +167,11 @@ because the left and right fields commute. Evaluating at \(e\) yields
 Renaming \(X,Y\) proves (A.10).
 
 More generally a smooth group homomorphism \(f:G\to H\) relates \(L_X\) to \(L_{df_eX}\), by differentiating \(f(gb)=f(g)f(b)\). Naturality of brackets and evaluation at the identity show that \(df_e\) preserves Lie brackets. On a general linear group, \(L_B(M)=MB\), and the coordinate vector-field formula gives
-\(L_B,L_C=MBC-MCB\). Thus its bracket at the identity is \(BC-CB\), proving (A.11). For complex \(W\), the same matrix computation uses its underlying real manifold and complex-linear endomorphisms.
+\([L_B,L_C](M)=MBC-MCB\). Thus its bracket at the identity is \(BC-CB\), proving (A.11). For complex \(W\), the same matrix computation uses its underlying real manifold and complex-linear endomorphisms.
 
 For a fixed \(p\), the orbit map \(a\mapsto pa\) relates \(L_X\) to \(\zeta_X\), since the curve \(a\exp(tX)\) maps to \(pa\exp(tX)\). The same naturality proves (A.12) at all points in that orbit. Every point occurs in some orbit, so the identity holds on \(P\).
 
-Finally \(\theta(L_X)=X\) is constant. Formula (A.7) in degree one therefore gives \(d\theta(L_X,L_Y)=-\theta([L_X,L_Y])=-[X,Y]\). Formula (A.4) gives \(\frac12\theta,\theta=[X,Y]\). The left invariant fields obtained from a basis form a frame everywhere, so these evaluations prove (A.13). □
+Finally \(\theta(L_X)=X\) is constant. Formula (A.7) in degree one therefore gives \(d\theta(L_X,L_Y)=-\theta([L_X,L_Y])=-[X,Y]\). Formula (A.4) gives \(\frac12[\theta,\theta](L_X,L_Y)=[X,Y]\). The left invariant fields obtained from a basis form a frame everywhere, so these evaluations prove (A.13). □
 
 Let \(P\to M\) have principal connection \(\omega\). Write \(h=\mathrm{id}-\Phi\) for its horizontal projection, as constructed in Conn A.1–A.2.
 
@@ -1164,8 +1164,8 @@ when \(F\) has degree \(c\).
 After multiplying \(ED(\alpha\beta)\) by \((-1)^{ab}\), its corresponding coefficients are
 \((-1)^{ab+ap}\) and \((-1)^{ab+b(p+a)}\).
 They agree with the first pair, respectively, and cancel in the difference. The terms with both operators on one factor remain:
-\
-[D,E
+\[
+[D,E](\alpha\beta)
 =[D,E]\alpha\,\beta+(-1)^{(a+b)p}\alpha\,[D,E]\beta.
 \]
 This proves the derivation assertion. Swapping \(D,E\) in (E.4) proves graded antisymmetry.
@@ -1419,7 +1419,7 @@ This argument also proves the converse tests: intertwining insertion on exact on
 by the product rule, A.2 and the tangent pushforward derivative. Formula (E.17) with first degree zero gives this same expression as \([X,\alpha\otimes Y]_{\mathrm{FN}}\). To spell out that derivative on \(Y\), in coordinates
 \(D\varphi_t^{-1}(\varphi_t(x))Y(\varphi_t(x))\)
 has derivative at zero
-\(-DX(x)Y(x)+DY(x)X(x)=X,Y\);
+\(-DX(x)Y(x)+DY(x)X(x)=[X,Y](x)\);
 the local flow equation and the inverse derivative formula in Local tools 0.4 justify both terms. Thus the usual tensor Lie derivative agrees with the FN bracket in this case too. □
 
 **Theorem E.8 (Bianchi on an arbitrary smooth fibre bundle).** Let \(\pi:E\to M\) be a smooth fibre bundle with connection projection \(P:TE\to VE\) and horizontal projection \(h=I-P\). Define

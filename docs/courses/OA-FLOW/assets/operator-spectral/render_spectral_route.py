@@ -2,6 +2,7 @@ from pathlib import Path
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-operator-spectral-20261009-v1"
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
 
 ROOT = Path(__file__).resolve().parent
@@ -40,5 +41,5 @@ ax.text(.55,.91,r'$D(f(A))=\{v:\int |f|^2\,d\mu_v^A<\infty\}$',
 ax.text(.55,.35,'SB-5 retains the reducing sum; SB-6 retains spectral-null equivalence and covariance.',
         fontsize=12,color='#415569')
 fig.savefig(OUT/'spectral-route.png',bbox_inches='tight',facecolor=fig.get_facecolor())
-fig.savefig(OUT/'spectral-route.svg',bbox_inches='tight',facecolor=fig.get_facecolor())
+fig.savefig(OUT/'spectral-route.svg',bbox_inches='tight',facecolor=fig.get_facecolor(),metadata={'Date': None})
 print('Rendered spectral-route.png and spectral-route.svg')

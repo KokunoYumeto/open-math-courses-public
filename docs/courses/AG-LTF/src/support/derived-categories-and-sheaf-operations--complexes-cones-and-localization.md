@@ -177,11 +177,11 @@ d_C=\begin{pmatrix}d_A&u&v\\0&d_1&w\\0&0&d_3\end{pmatrix}.
 
 Set \(Q_2=C/A=Q_1\oplus Q_3\), with differential \(\left(\begin{smallmatrix}d_1&w\\0&d_3\end{smallmatrix}\right)\). The three boundary maps are \(u\), \((u,v)\), and \((v,w)\). The split sequence \(0\to Q_1\to Q_2\to Q_3\to0\) has boundary \(w\), so its triangle is distinguished. Its first two maps are inclusion \(a:Q_1\to Q_2\) and projection \(b:Q_2\to Q_3\). The triples \((1_A,\beta,a)\) and \((\alpha,1_C,b)\) are morphisms of the three original triangles. All their squares commute strictly except possibly the second boundary square. The difference
 
-\
-(v,w)b-\alpha[1=\begin{pmatrix}-u&0\\0&w\end{pmatrix}
+\[
+(v,w)b-\alpha[1](u,v)=\begin{pmatrix}-u&0\\0&w\end{pmatrix}
 \]
 
-is the homotopy boundary for \(H:Q_2^n\to B[1]^{n-1}=B^n\), \(H(q_1,q_3)=(0,q_1)\): substituting (3.1) into \(d_{B[1]}H+Hd_{Q_2}\) gives \((-u q_1,w q_3)\). Finally \(w=p_11\), where \(p_1:B\to Q_1\). Thus
+is the homotopy boundary for \(H:Q_2^n\to B[1]^{n-1}=B^n\), \(H(q_1,q_3)=(0,q_1)\): substituting (3.1) into \(d_{B[1]}H+Hd_{Q_2}\) gives \((-u q_1,w q_3)\). Finally \(w=p_1[1](v,w)\), where \(p_1:B\to Q_1\). Thus
 
 \[
 Q_1\xrightarrow aQ_2\xrightarrow bQ_3

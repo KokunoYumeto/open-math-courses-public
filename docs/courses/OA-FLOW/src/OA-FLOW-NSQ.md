@@ -235,10 +235,10 @@ The equality of weights is on the whole positive cone. In particular
 The trace \(\tau_\varphi\) is not the restriction of the noncompact dual weight to \(N_\varphi\); that restriction generally takes value infinity on every nonzero positive element.
 
 Normal double duality, with its complete inverse in [ND](OA-FLOW-ND.md#nd-construction), gives coordinates
-\
+\[
 \begin{aligned}
  C(M)&\cong N_\varphi\bar\otimes B(L^2(\mathbb R,dr)),\\
- [\pi(n)\xi&=\beta_{-r}(n)\xi(r),&
+ [\pi(n)\xi](r)&=\beta_{-r}(n)\xi(r),&
  u_s&=L_s,\quad (L_s\xi)(r)=\xi(r-s),\\
  \lambda_\varphi(t)&=M_{e^{-itr}},&
  \theta_q&=\beta_q\bar\otimes\operatorname{Ad}R_q,\quad

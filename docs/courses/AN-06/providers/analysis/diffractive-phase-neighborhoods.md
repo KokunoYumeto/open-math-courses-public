@@ -2837,7 +2837,7 @@ The identity
  \tag{T188}
 \]
 is justified on this common first domain. At each fixed \(\tau\), factor
-\(P_\omega+s^2=I+(P_\omega-P_{\omega_0})R_{\omega_0}\).
+\(P_\omega+s^2=[I+(P_\omega-P_{\omega_0})R_{\omega_0}](P_{\omega_0}+s^2)\).
 The first bracket is inverted by its norm-convergent geometric series for \(\omega\) sufficiently close to \(\omega_0\). The usual difference quotient of the inverse identity then gives the first line in operator norm, with values in \(D\) before multiplication by \(P_\omega'\). Repeated product differentiation gives finite sums of ordered products
 \(R_\omega P_\omega^{(\beta_1)}R_\omega\cdots P_\omega^{(\beta_\ell)}R_\omega\), where every \(|\beta_j|\geq1\), \(\sum|\beta_j|=|\alpha|\), and \(\ell\leq|\alpha|\). Each factor \(P_\omega^{(\beta_j)}R_\omega:L^2\to L^2\) is bounded by \(C\langle\tau\rangle\), by (T187). The leftmost resolvent costs \(C\langle\tau\rangle^{-1}\). This proves the last two lines, including \(\alpha=0\). The local inverse neighborhoods may depend on \(\tau\); the displayed derivative bounds are uniform on the fixed compact coefficient family and are what is needed below.
 

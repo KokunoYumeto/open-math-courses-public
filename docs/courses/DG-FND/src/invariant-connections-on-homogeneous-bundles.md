@@ -718,9 +718,9 @@ A_{(v,w)}(u,z)&=a_w(u)+\beta_w(z),\\
 \tag{F.7}
 \]
 On constant vectors \((u,z),(u',z')\), its curvature potential is
-\
+\[
 \begin{split}
-F((u,z),(u',z'))={}&(da)_w[z-(da)_wz'
+F((u,z),(u',z'))={}&(da)_w[z](u')-(da)_w[z'](u)
  +(d\beta)_w(z,z')\\
 &+[a_w(u)+\beta_w(z),\ a_w(u')+\beta_w(z')].
 \end{split}

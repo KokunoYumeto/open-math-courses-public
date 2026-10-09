@@ -4,7 +4,7 @@ A nonproper image can become constructible when its relevant part is confined to
 
 *Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources are credited below.*
 
-Use [Constructibility from microsupport and perfect stalks](../../sheaf-proof-readings/SH03-constructibility-from-microsupport-and-perfect-stalks.html), [Perfect coefficients on compact fibres](../../sheaf-proof-readings/SH03-perfect-coefficients-on-compact-fibres.html), and [Perfect operations and finite microlocal coefficients](../../sheaf-proof-readings/SH03-perfect-operations-and-finite-microlocal-coefficients.html). The exact current microlocal prerequisites are the bounded relative cutoff theorem, the full limiting tensor estimate, microlocally proper projection, and the cone criterion for localized isomorphisms. Their statements are specified below; their lower and transitive proofs remain explicit dependencies. The references give the classical results of Masaki Kashiwara and Pierre Schapira and freely readable accounts with their precise scopes. We prove the forward local geometric criterion here. Constructible models in one cotangent direction supplies its converse and the contact-equivalence application.
+Use [Constructibility from microsupport and perfect stalks](../../sheaf-proof-readings/src/SH03/constructibility-from-microsupport-and-perfect-stalks.md), [Perfect coefficients on compact fibres](../../sheaf-proof-readings/src/SH03/perfect-coefficients-on-compact-fibres.md), and [Perfect operations and finite microlocal coefficients](../../sheaf-proof-readings/src/SH03/perfect-operations-and-finite-microlocal-coefficients.md). The exact current microlocal prerequisites are the bounded relative cutoff theorem, the full limiting tensor estimate, microlocally proper projection, and the cone criterion for localized isomorphisms. Their precise statements and proof links are given below. The references give the classical results of Masaki Kashiwara and Pierre Schapira and freely readable accounts with their precise scopes. We prove the forward local geometric criterion here. [Constructible models in one cotangent direction](constructible-models-in-one-cotangent-direction.md) supplies its converse and the contact-equivalence application.
 
 ## Coefficients and closure under retracts
 
@@ -17,7 +17,7 @@ An object $A$ is a **retract** of $E$ if there are arrows $i:A\to E$ and $r:E\to
  \tag{1}
 \]
 
-The geometric constructibility criterion supplies the same closed subanalytic isotropic bound for $A$. If $E$ is R-constructible, $A$ also has perfect stalks. A split triangle gives $E_x\simeq A_x\oplus B_x$ in $D(k)$; perfection passes to either summand. We use precisely [Stacks Project, Lemma 15.76.5, Tag 066S](https://stacks.math.columbia.edu/tag/066S) for this algebraic fact. Its pseudo-coherence and Tor-amplitude dependencies remain foundation imports. No Noetherian hypothesis or replacement of perfection by finite-dimensional cohomology is needed.
+The geometric constructibility criterion supplies the same closed subanalytic isotropic bound for $A$. If $E$ is R-constructible, $A$ also has perfect stalks. A split triangle gives $E_x\simeq A_x\oplus B_x$ in $D(k)$; perfection passes to either summand. The [proof of perfect-summand closure below](#why-perfect-complexes-are-closed-under-summands) supplies this algebraic fact; the Stacks Project statement is cited there. No Noetherian hypothesis or replacement of perfection by finite-dimensional cohomology is needed.
 
 The following simple device produces a retract. If $u:A\to E$, $v:E\to B$, and $vu$ is an isomorphism, then
 
@@ -28,6 +28,63 @@ The following simple device produces a retract. If $u:A\to E$, $v:E\to B$, and $
 \]
 
 The objects $A$ and $B$ can be different representatives of one stabilized image. Neither $u$ nor $v$ has to be invertible.
+
+### Why perfect complexes are closed under summands
+
+Here is a proof over any commutative ring $R$. No Noetherian assumption is needed. The statement is [Stacks Project, Tag 066S](https://stacks.math.columbia.edu/tag/066S). We construct finite free approximations and then a finite projective truncation.
+
+Suppose $A\oplus B$ is represented by a bounded complex of finitely generated projective modules. Choose integers $a\leq b$ containing the degrees of that complex. Tensoring the splitting with any module $N$ shows that both $A\otimes_R^L N$ and $B\otimes_R^L N$ have cohomology only in $[a,b]$. We will first construct a bounded-above finite free resolution of $A$, and then stop it at degree $a$.
+
+The finite-generation step must be applied to both summands together. Suppose $A'\oplus B'$ is perfect and has no cohomology above degree $n$. It has a finite projective representative with no terms above $n$: starting with its highest nonzero term, split the surjective differential onto that projective term and remove the resulting two-term contractible summand; repeat down to degree $n+1$. Thus $H^n(A'\oplus B')$ is a quotient of a finitely generated module. Each of its two summands is finitely generated. Choose finite free modules $E_A,E_B$ and maps
+
+\[
+ E_A[-n]\longrightarrow A',\qquad
+ E_B[-n]\longrightarrow B'
+ \tag{R1}
+\]
+
+that surject onto the respective degree-$n$ cohomology groups. Such maps exist because a map from $R[-n]$ specifies a cohomology class. Let $A''$ and $B''$ be their cones. They have no cohomology above $n-1$. Their direct sum is the cone of the direct-sum map in (R1), hence remains perfect. To see the last assertion, Hom from a projective module preserves acyclicity, and a finite filtration gives the same property for a bounded projective complex. Derived morphisms out of such a complex are therefore represented by chain maps. The ordinary mapping cone of a map between finite projective complexes remains bounded and finite projective.
+
+Begin with $(A,B)$ at degree $b$ and repeat this step in descending degrees. On the $A$ side, it builds a complex $F$ of finite free modules, zero above $b$, with a quasi-isomorphism $F\to A$. To describe the assembly explicitly, suppose a finite upper part $F_{>n}\xrightarrow{f}A$ has been constructed and its cone has no cohomology above $n$. Choose cocycles for the finite generators of that cone in degree $n$. With cone differential $(u,v)\mapsto(d_Au+f(v),-d_Fv)$, a generator is a pair $(u,v)\in A^n\oplus F^{n+1}$ satisfying $d_Au+f(v)=0$ and $d_Fv=0$. Give the corresponding generator of $F^n$ image $u$ under $f$ and image $-v$ under $d_F$. These equations say precisely that $f$ is a chain map and the new differential squares to zero. Attaching these generators changes the cone to the next cone in (R1). Each degree is thereafter fixed. The resulting bounded-above complex has acyclic cone, since any fixed cohomological degree is killed at a finite stage. Carrying out the same construction on $B$ keeps the direct sum of the two residual cones perfect at every stage, which is what justifies the next finite choice.
+
+A bounded-above free complex computes derived tensor. Its brutal truncations from below are bounded flat complexes, whose tensor products preserve acyclicity by finite induction; their union is the original complex, and filtered colimits of modules are exact. Hence
+
+\[
+ H^i(F\otimes_R N)=0\quad(i<a)
+ \qquad\text{for every module }N.
+ \tag{R2}
+\]
+
+Set $M=\operatorname{coker}(F^{a-1}\to F^a)$. The two displayed free modules are finite, so $M$ is finitely presented. Since $F$ is exact below $a$, the left tail ending in $F^a\to M$ is a free resolution of $M$. Formula (R2) gives
+
+\[
+ \operatorname{Tor}_1^R(M,N)
+   =H^{a-1}(F\otimes_R N)=0
+ \quad\text{for every }N.
+ \tag{R3}
+\]
+
+Thus $M$ is flat: the long exact Tor sequence makes tensoring with $M$ preserve every injection, and tensor product is always right exact.
+
+For completeness, a finitely presented flat module is projective by the following finite matrix argument. Take a presentation $R^s\xrightarrow{D}R^r\xrightarrow{\pi}M\to0$, and write $m_i=\pi(e_i)$. The vector $(m_i)$ is in the kernel of $D^t:M^r\to M^s$. Flatness identifies this kernel with the image of $\ker(D^t:R^r\to R^s)\otimes_R M$. Consequently there are finitely many vectors $v_\ell\in\ker D^t$ and elements $n_\ell\in M$ such that
+
+\[
+ m_i=\sum_\ell (v_\ell)_i n_\ell.
+ \tag{R4}
+\]
+
+Lift $n_\ell$ to $t_\ell\in R^r$ and define $S(e_i)=\sum_\ell(v_\ell)_i t_\ell$. Then $\pi S=\pi$ and $SD=0$. The first equality says that $1-S$ maps into $\ker\pi=\operatorname{im}D$; the second says that its restriction to that kernel is the identity. The presentation therefore splits, making $M$ a direct summand of $R^r$ and hence finitely generated projective.
+
+Replace the part of $F$ in degrees at most $a$ by $M$ in degree $a$, with differential induced by $F^a\to F^{a+1}$. The quotient map is a quasi-isomorphism because $F$ is exact below $a$. The result is the finite projective complex
+
+\[
+ 0\longrightarrow M\longrightarrow F^{a+1}
+   \longrightarrow\cdots\longrightarrow F^b\longrightarrow0,
+ \tag{R5}
+\]
+
+representing $A$. The identical construction works for $B$. This proves perfect-summand closure, including the case $a=b$, and therefore proves the perfect-stalk assertion used in (1)–(2).
+
 
 ## The exact signed cutoff input
 
@@ -122,7 +179,7 @@ The first isomorphism follows from (7) and closed-support localization, or by ap
  \tag{11}
 \]
 
-Internal-Hom closure makes the coefficient in (11) R-constructible; its closed support is again inside $K$, so the same proper perfect-image theorem applies. Retract closure proves the second assertion on $B$. Real constructibility is local on the target; the globally bounded image supplied by the six-operation dimension bounds is therefore R-constructible on $X$. $\square$
+Internal-Hom closure makes the coefficient in (11) R-constructible; its closed support is again inside $K$, so the same proper perfect-image theorem applies. Retract closure proves the second assertion on $B$. Real constructibility is local on the target; the globally bounded image supplied by the [six-operation dimension bounds](../../constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#why-the-operations-remain-globally-bounded-globally-bounded-operations) is therefore R-constructible on $X$. $\square$
 
 The proof factors derived objects and actual comparison maps. Merely proving that each image stalk has finite cohomology would leave the geometric constructibility assertion unproved. We imposed subanalyticity on $K$, where the operation theorem needs it, while retaining the original smooth sublevels in the stabilization theorem.
 
@@ -248,7 +305,7 @@ We claim that
  \tag{23}
 \]
 
-Inside $X\times D$, $C$ is zero. At a base point $(x_0,y_0)$ outside that open set, apply the bounded full tensor estimate SH02-CHE-006:
+Inside $X\times D$, $C$ is zero. At a base point $(x_0,y_0)$ outside that open set, apply the bounded full tensor estimate [SH02-CHE-006](../../sheaf-proof-readings/src/SH02/characteristic-estimates.md#sh02-che-006--tensor-and-internal-hom-without-a-transversality-assumption):
 
 \[
  \operatorname{SS}(C)
@@ -256,7 +313,7 @@ Inside $X\times D$, $C$ is zero. At a base point $(x_0,y_0)$ outside that open s
  \tag{24}
 \]
 
-Submersion pullback says that every covector of the second set has **zero $X$ component**. If (24) had a witness with limiting $X$ covector $(x_0;\xi_0)\in W$, write the first witness as $(x_j,y_j;\xi_j,\eta_j)\in A$. Since the other summand's $X$ component is zero, $(x_j;\xi_j)\to(x_0;\xi_0)$, also when the fibre covectors diverge and cancel. All sufficiently late first covectors lie in $\overline W$; (18) then gives $y_j\in L$. Their limiting base point $y_0$ lies in the compact closed set $L\subset D$, a contradiction. The weighted base-separation condition of SH02-AE-SUM remains part of the full limiting-sum witness. The contradiction already follows from its base-point control and does not discard escaping covectors. This proves (23), including at zero base covectors when these lie in $W$.
+Submersion pullback says that every covector of the second set has **zero $X$ component**. If (24) had a witness with limiting $X$ covector $(x_0;\xi_0)\in W$, write the first witness as $(x_j,y_j;\xi_j,\eta_j)\in A$. Since the other summand's $X$ component is zero, $(x_j;\xi_j)\to(x_0;\xi_0)$, also when the fibre covectors diverge and cancel. All sufficiently late first covectors lie in $\overline W$; (18) then gives $y_j\in L$. Their limiting base point $y_0$ lies in the compact closed set $L\subset D$, a contradiction. The weighted base-separation condition of [SH02-AE-SUM](../../sheaf-proof-readings/src/SH02/asymptotic-estimates.md#sh02-ae-sum--addition-with-asymptotic-cancellation) remains part of the full limiting-sum witness. The contradiction already follows from its base-point control and does not discard escaping covectors. This proves (23), including at zero base covectors when these lie in $W$.
 
 Because $W$ is open, (23) also excludes $\overline{p(\operatorname{SS}(C))}$ over $W$. Its projection is the empty proper map. Apply (19) to $C$ over $W$ to obtain
 
@@ -416,15 +473,15 @@ Take $y_j=j$, $x_j=1/j$, $\xi_j=1$ and $\eta_j=1/j^2$. Their $X$ covectors lie i
 
 ## References and proof boundaries
 
-The proof is organized around an actual factorization through a compact subanalytic neighbourhood and a retract of a perfect object. The same results are treated in Kashiwara and Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Theorems 4.4.1–4.4.2, Remark 8.3.2, and Proposition 8.6.1. These sources were checked with their signed hypotheses. The relative smooth closed-sublevel cutoff used in this lesson has additional scope. Its exact closed-endpoint maps are supplied by [SH02-MO-RELATIVE-CUTOFF and its proof](../../sheaf-proof-readings/SH02-microsupport-operations.html#SH02-MO-RELATIVE-CUTOFF), using compact-neighbourhood continuity for ordinary restriction and a supported localization argument for the opposite sign. That proof depends on the foundations named in its lesson; its theorem is not inferred from the 1985 result about nested open sets. The sandwich proof explicitly avoids treating a merely smooth sublevel as subanalytic.
+The proof is organized around an actual factorization through a compact subanalytic neighbourhood and a retract of a perfect object. The classical source comparison is Kashiwara and Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Theorems 4.4.1–4.4.2 (printed 73–76), Remark 8.3.2 (printed 149), and Proposition 8.6.1 (printed 154), with their respective signed and geometric hypotheses. The relative smooth closed-sublevel cutoff used in this lesson has additional scope. Its exact closed-endpoint maps are supplied by [SH02-MO-RELATIVE-CUTOFF and its proof](../../sheaf-proof-readings/src/SH02/microsupport-operations.md#sh02-mo-relative-cutoff--replacing-a-nonproper-map-by-a-bounded-part), using compact-neighbourhood continuity for ordinary restriction and a supported localization argument for the opposite sign. That proof depends on the foundations named in its lesson; its theorem is not inferred from the 1985 result about nested open sets. The sandwich proof explicitly avoids treating a merely smooth sublevel as subanalytic.
 
-A freely readable human source is Kashiwara and Schapira, [*Microlocal study of sheaves*, Astérisque 128 (1985)](https://www.numdam.org/item/AST_1985__128__1_0/) ([author-hosted PDF](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf)). Theorem 4.4.1 gives signed stabilization for nested open exhaustions with proper closed-support truncations and a closure condition on the cotangent sum. Theorem 4.4.2 uses the closure of the projection retaining the fibre point and gives both microsupport bounds and the canonical proper-to-ordinary image comparison. Remark 8.3.2 relates the first theorem to real constructibility. Our smooth-sublevel sandwich and retract argument uses the separately stated $C^1$ cutoff input, including its closed endpoint maps. Proposition 8.6.1 concerns holomorphic maps and subanalytic exhausting opens; it does not supply the extra scope of arbitrary real $C^1$ non-subanalytic sublevels.
+A freely readable human source is Kashiwara and Schapira, [*Microlocal study of sheaves*, Astérisque 128 (1985)](https://www.numdam.org/item/AST_1985__128__1_0/) ([author-hosted PDF](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf)). Theorem 4.4.1, printed 73–75, gives signed stabilization for nested open exhaustions with proper closed-support truncations and a closure condition on the cotangent sum. Theorem 4.4.2, printed 75–76, uses the closure of the projection retaining the fibre point and gives both microsupport bounds and the canonical proper-to-ordinary image comparison. Remark 8.3.2, printed 149, relates the first theorem to real constructibility. Our smooth-sublevel sandwich and retract argument uses the separately stated $C^1$ cutoff input, including its closed endpoint maps. Proposition 8.6.1, printed 154, concerns holomorphic maps and subanalytic exhausting opens; it does not supply the extra scope of arbitrary real $C^1$ non-subanalytic sublevels.
 
 Pierre Schapira, [*Constructible sheaves and functions up to infinity*, Lemma 2.7](https://arxiv.org/html/2012.09652v5#S2.Thmtheorem7), gives related ambient-extension criteria. It assumes a relatively compact subanalytic open embedding and a Noetherian coefficient ring of finite global dimension. This supplies context for constructible extensions; it is narrower than the arbitrary-$\Omega$ pointwise representatives used here.
 
-The exact bounded full tensor estimate is SH02-CHE-006, and its limiting-sum witness convention is SH02-AE-SUM. The signed cutoff input is [SH02-MO-RELATIVE-CUTOFF](../../sheaf-proof-readings/SH02-microsupport-operations.html#SH02-MO-RELATIVE-CUTOFF), including its one-sided/full-map proof; the projection input is SH02-AE-MICROPROPER, including closure and all-fibre-covector compact control; localization uses [SH02-MC-LOCAL](../../sheaf-proof-readings/SH02-microlocal-categories.html#SH02-MC-LOCAL), including saturated denominators. Their lower proof dependencies remain imports. The source statements and map directions are preserved; no text from the provider lessons is reproduced here.
+The exact bounded full tensor estimate is [SH02-CHE-006](../../sheaf-proof-readings/src/SH02/characteristic-estimates.md#sh02-che-006--tensor-and-internal-hom-without-a-transversality-assumption), and its limiting-sum witness convention is [SH02-AE-SUM](../../sheaf-proof-readings/src/SH02/asymptotic-estimates.md#sh02-ae-sum--addition-with-asymptotic-cancellation). The signed cutoff input is [SH02-MO-RELATIVE-CUTOFF](../../sheaf-proof-readings/src/SH02/microsupport-operations.md#sh02-mo-relative-cutoff--replacing-a-nonproper-map-by-a-bounded-part), including its one-sided/full-map proof; the projection input is [SH02-AE-MICROPROPER](../../sheaf-proof-readings/src/SH02/asymptotic-estimates.md#sh02-ae-microproper--compact-control-of-fiber-locations), including closure and all-fibre-covector compact control; localization uses [SH02-MC-LOCAL](../../sheaf-proof-readings/src/SH02/microlocal-categories.md#sh02-mc-local--a-category-that-records-specified-directions), including saturated denominators. These proof links retain the bounded coefficient hypotheses, both cutoff signs and the canonical comparison maps used above.
 
-The direct-summand argument uses [Stacks Project, Lemma 15.76.5, Tag 066S](https://stacks.math.columbia.edu/tag/066S), perfect direct-summand closure, GFDL 1.2 or later. Its pseudo-coherence and Tor-amplitude foundations are imported rather than proved here.
+Perfect-summand closure is [Stacks Project, Lemma 15.76.5, Tag 066S](https://stacks.math.columbia.edu/tag/066S). The proof in this lesson constructs simultaneous finite free approximations, then a finite projective truncation, including the finite-presentation and flatness argument. It is independently written programme exposition; the cited Stacks text retains its GNU Free Documentation License.
 
 The general-real cutoff image-equality comparison is recorded in the earlier cutoff lesson. The next lesson proves the reverse local isotropic criterion and the contact-equivalence application relative to their stated prerequisites. The seven solutions above are complete relative to the prerequisites specified here. The microlocal, six-operation, geometric constructibility, perfect-coefficient and localization foundations retain their own proof scopes.
 

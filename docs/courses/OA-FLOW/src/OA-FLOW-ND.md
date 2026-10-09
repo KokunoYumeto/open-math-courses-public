@@ -34,17 +34,17 @@ For the rest of this chapter \(L^\infty(G)\) means the sectionwise completed, lo
 ### Fourier and translation conventions
 
 Write \(\widehat G\) multiplicatively: its elements are continuous characters \(\chi:G\to\mathbb T\), with \(\chi(s+t)=\chi(s)\chi(t)\). For the Fourier transform from the dual group back to the group we use
-\
- [\mathcal F_{\widehat G}f
+\[
+ [\mathcal F_{\widehat G}f](t)
  =\int_{\widehat G}\overline{\chi(t)}f(\chi)\,d\chi.
 \]
 This formula initially applies to integrable functions. The symbol also denotes its unitary \(L^2\) extension. This is a Fourier transform on \(\widehat G\), not the inverse of the same-sign Fourier transform on \(G\). Distinguishing those operations prevents a sign error later.
 
 On \(L^2(G)\), put
-\
- [L_s f=f(t-s),\qquad
- R_s f=f(t+s),\qquad
- Q_\chi f=\overline{\chi(t)}f(t).
+\[
+ [L_s f](t)=f(t-s),\qquad
+ [R_s f](t)=f(t+s),\qquad
+ [Q_\chi f](t)=\overline{\chi(t)}f(t).
 \]
 Since \(G\) is abelian it is unimodular, so these translations are unitary without a modular-function factor. In particular \(R_s=L_{-s}\). The commutation relation is
 \[
@@ -81,9 +81,9 @@ Let \(P=N\rtimes_\theta\widehat G\). Its named generators are \(j(n)\), \(n\in N
 with the following formulas in any faithful normal representation of \(M\):
 <a id="equation-d4"></a>
 
-\
+\[
  \begin{aligned}{}
- [\Phi(j(i(x)))\xi&=\alpha_{-t}(x)\xi(t),\\
+ [\Phi(j(i(x)))\xi](t)&=\alpha_{-t}(x)\xi(t),\\
  \Phi(j(\lambda_s))&=1\otimes L_s,\\
  \Phi(\ell_\chi)&=1\otimes Q_\chi.
  \end{aligned}
@@ -174,10 +174,10 @@ For each fixed \(a\), the change of variable \(u=v+a\), followed by (D7) for tha
 The commutant of the operators in (D6) is precisely the scalars. Applying the bicommutant theorem proves (D6). Every approximation above is a net, and the argument used no simultaneous pointwise version of (D7). ∎
 
 **The retained compact-kernel alternative.** Integrating \(Q_\chi\) against \(g\in L^1(\widehat G)\) gives multiplication by \(\widehat g(j(t))\). H1 identifies the uniform closure of these functions with \(C_0(G)\); integrated multipliers belong to \(\{Q_\chi\}''\) by CP5 separation and the actual L24 integrals. For \(p,q\in C_c(G)\), set \(F_s(t)=p(t)\overline{q(t-s)}\). This is a compact continuous \(C_0(G)\)-valued function of \(s\). On each vector \(M_{F_s}L_s\) is continuous and has the integrable norm bound \(\|F_s\|_\infty\|\xi\|_2\); L24's vector Bochner integral therefore defines a bounded operator of norm at most \(\int\|F_s\|_\infty\,ds\). CP5 separation puts that operator in the generated algebra, since its normal functional pairings are integrals of elements of that algebra. No norm continuity of \(s\mapsto L_s\) in \(B(L^2(G))\) is assumed. On compact continuous vectors, qualified Fubini and \(u=t-s\) give
-\
- \int_G[M_{F_s}L_s\xi\,ds
+\[
+ \int_G[M_{F_s}L_s\xi](t)\,ds
    =p(t)\int_G\overline{q(u)}\xi(u)\,du
-   =\theta_{p,q}\xi.
+   =[\theta_{p,q}\xi](t).
 \]
 The integral bound extends the identity to all \(L^2\) vectors. Compact continuous density and \(\|\theta_{p,q}\|\leq\|p\|_2\|q\|_2\) put every rank-one operator in the algebra. Finite-basis projection nets converge strongly to \(1\); their compressions of any bounded operator are finite rank and converge strongly to that operator. BD gives (D6) again. This is the concrete case of WY2 with reflected translation signs; no multiplicity theorem is needed for this alternative.
 
@@ -296,8 +296,8 @@ Part (c) explains multiplicity only after normality has been established. It doe
 ### Orbit fields and the Weyl pair
 
 **Lemma 3 (orbit fields plus the Weyl pair).** Represent \(M\subset B(H)\) faithfully and normally, and let
-\
- [A_x\xi=\alpha_{-t}(x)\xi(t).
+\[
+ [A_x\xi](t)=\alpha_{-t}(x)\xi(t).
 \]
 Then
 <a id="equation-d9"></a>
@@ -345,11 +345,11 @@ The regular double crossed product acts on
 Use \(r\in G\) and \(\chi\in\widehat G\) as its variables. The regular definition and (D1) give
 <a id="equation-d12"></a>
 
-\
+\[
  \begin{aligned}{}
- [j(i(x))\xi&=\alpha_{-r}(x)\xi(r,\chi),\\
- j(\lambda_s)\xi&=\chi(s)\xi(r-s,\chi),\\
- \ell_\eta\xi&=\xi(r,\eta^{-1}\chi).
+ [j(i(x))\xi](r,\chi)&=\alpha_{-r}(x)\xi(r,\chi),\\
+ [j(\lambda_s)\xi](r,\chi)&=\chi(s)\xi(r-s,\chi),\\
+ [\ell_\eta\xi](r,\chi)&=\xi(r,\eta^{-1}\chi).
  \end{aligned}
  \tag{D12}
 \]
@@ -358,27 +358,27 @@ The factor \(\chi(s)\) in the second line is not a typographical reversal of (D1
 Apply the partial Fourier unitary \(F=1_{L^2(G,H)}\otimes\mathcal F_{\widehat G}\). On \(L^1\cap L^2\) functions, multiplication by \(\chi(s)\) becomes translation \(t\mapsto t-s\); translation \(\chi\mapsto\eta^{-1}\chi\) becomes multiplication by \(\overline{\eta(t)}\). Checking these identities by substitution in the defining integrals and extending by unitarity gives
 <a id="equation-d13"></a>
 
-\
+\[
  \begin{aligned}{}
- [Fj(i(x))F^*\xi&=\alpha_{-r}(x)\xi(r,t),\\
- Fj(\lambda_s)F^*\xi&=\xi(r-s,t-s),\\
- F\ell_\eta F^*\xi&=\overline{\eta(t)}\xi(r,t).
+ [Fj(i(x))F^*\xi](r,t)&=\alpha_{-r}(x)\xi(r,t),\\
+ [Fj(\lambda_s)F^*\xi](r,t)&=\xi(r-s,t-s),\\
+ [F\ell_\eta F^*\xi](r,t)&=\overline{\eta(t)}\xi(r,t).
  \end{aligned}
  \tag{D13}
 \]
 
 Next separate the coordinate changed by translation from the coordinate left unchanged. Define the shear
-\
- [S\xi=\xi(q+t,t).
+\[
+ [S\xi](q,t)=\xi(q+t,t).
 \]
 It is a unitary with inverse \(S^*\zeta(r,t)=\zeta(r-t,t)\). Indeed, integration in \(q\) for fixed \(t\) is a Haar translation, and the equality of norms on compactly supported continuous functions extends by density. Formula (D13) becomes
 <a id="equation-d14"></a>
 
-\
+\[
  \begin{aligned}{}
- [SFj(i(x))F^*S^*\zeta&=\alpha_{-(q+t)}(x)\zeta(q,t),\\
- SFj(\lambda_s)F^*S^*\zeta&=\zeta(q,t-s),\\
- SF\ell_\eta F^*S^*\zeta&=\overline{\eta(t)}\zeta(q,t).
+ [SFj(i(x))F^*S^*\zeta](q,t)&=\alpha_{-(q+t)}(x)\zeta(q,t),\\
+ [SFj(\lambda_s)F^*S^*\zeta](q,t)&=\zeta(q,t-s),\\
+ [SF\ell_\eta F^*S^*\zeta](q,t)&=\overline{\eta(t)}\zeta(q,t).
  \end{aligned}
  \tag{D14}
 \]
@@ -386,8 +386,8 @@ It is a unitary with inverse \(S^*\zeta(r,t)=\zeta(r-t,t)\). Indeed, integration
 Regroup the Hilbert space as \(K\otimes L^2(G)_t\), where \(K=L^2(G_q,H)\), and define
 <a id="equation-d15"></a>
 
-\
- [\sigma(x)\eta=\alpha_{-q}(x)\eta(q).
+\[
+ [\sigma(x)\eta](q)=\alpha_{-q}(x)\eta(q).
  \tag{D15}
 \]
 NR-3 makes this a faithful normal representation of \(M\). Its image is a von Neumann algebra and its inverse is normal by the faithful normal image theorem used in NR-4. Since \(G\) is abelian,
@@ -397,8 +397,8 @@ NR-3 makes this a faithful normal representation of \(M\). Its image is a von Ne
 Thus the three families in (D14), after regrouping, are
 <a id="equation-d16"></a>
 
-\
- [B_x\zeta=\sigma(\alpha_{-t}(x))\zeta(t),
+\[
+ [B_x\zeta](t)=\sigma(\alpha_{-t}(x))\zeta(t),
  \qquad1_K\otimes L_s,
  \qquad1_K\otimes Q_\chi.
  \tag{D16}
@@ -412,8 +412,8 @@ Compose this spatial isomorphism with the faithful normal coefficient identifica
 Uniqueness follows because the three named families generate \(P\), and two normal homomorphisms agreeing on them agree on their ultraweakly dense unital \(*\)-algebra and hence everywhere. The same observation shows that the answer, specified by (D4), is independent of the faithful normal representation used in the construction.
 
 It remains to prove (D5). The map \(\beta_a=\alpha_a\otimes\operatorname{Ad}R_a\) is a normal automorphism by Lemma 2(d) and conjugation by \(1\otimes R_a\). The same normal-slice argument just used shows that \(\alpha_a\otimes\operatorname{id}\) applies \(\alpha_a\) pointwise to the orbit field. Its action on the first generator is
-\
- [\beta_a(A_x)\xi
+\[
+ [\beta_a(A_x)\xi](t)
  =\alpha_a(\alpha_{-(t+a)}(x))\xi(t)
  =\alpha_{-t}(x)\xi(t).
 \]
@@ -530,9 +530,9 @@ Applying the character sum to \(\delta_u\) gives \(1\) exactly when \(u=t\) and 
 The orange entry is an operator matrix entry, not a probability. For arbitrary \(G\), the two full local proofs of [(D6)](OA-FLOW-ND.md#equation-d6), followed by the orbit-field commutant argument, replace this finite matrix calculation.
 
 The fourth panel displays all three coefficient components \(k=0,1,2\), with columns \(t=0,1,2\):
-\
+\[
  A_x(t)_k=x_{k+t},\qquad
- [R_1A_xR_1^*_k=x_{k+t+1},\qquad
+ [R_1A_xR_1^*](t)_k=x_{k+t+1},\qquad
  [\alpha_1(A_x(t+1))]_k=x_{k+t}.
 \]
 Here the colours track the values \(2,5,9\), respectively. The right translation changes the field, and the coefficient automorphism restores it. This is why the surviving action is \(\alpha_a\bar\otimes\operatorname{Ad}R_a\). It fixes the coefficient field and \(L_s\), while sending \(Q_\chi\) to \(\overline{\chi(a)}Q_\chi\). The negative phase and the coefficient cancellation are separately checked in the [four solved exercises](OA-FLOW-ND.md#nd-exercises).

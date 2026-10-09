@@ -99,12 +99,12 @@ nets). This is the standard form of \(N\). Proved in Integration for a trace, Se
 (Lemma 2.2 and Theorem 3.1).
 
 **(B5) Joint spectral measures.** Let \(P\) and \(Q\) be projection-valued measures on the Borel sets of
-\(0,\infty)\), acting on the same Hilbert space, with \(P(A)Q(B)=Q(B)P(A)\) for all \(A,B\). There is a unique
+\([0,\infty)\), acting on the same Hilbert space, with \(P(A)Q(B)=Q(B)P(A)\) for all \(A,B\). There is a unique
 projection-valued measure \(\Pi\) on the Borel sets of \([0,\infty)^2\) with \(\Pi(A\times B)=P(A)Q(B)\), and for
 bounded functions \(f,g\) one has \(\int f(s)g(t)\,d\Pi(s,t)=\big(\int f\,dP\big)\big(\int g\,dQ\big)\). For a vector
 \(\xi\), \(\Delta\mapsto\langle\Pi(\Delta)\xi,\xi\rangle\) is a finite positive measure and
 \(\langle(\int\varphi\,d\Pi)\xi,\xi\rangle=\int\varphi\,d\langle\Pi\xi,\xi\rangle\) for bounded \(\varphi\).
-This is proved as in [Joint spectral measures and commutator estimates in standard form, Theorem in
+This is proved as in Joint spectral measures and commutator estimates in standard form, Theorem in
 §NC-20: the bounded operators \(A=\int\arctan\,dP\) and \(B=\int\arctan\,dQ\) commute, so
 \(T=A+iB\) is normal; its spectral measure (Spectral calculus with its domains retained, §SK-04),
 carried to the plane by \(z\mapsto(\tan\operatorname{Re}z,\tan\operatorname{Im}z)\), is \(\Pi\), and uniqueness holds because

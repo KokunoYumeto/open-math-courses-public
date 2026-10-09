@@ -614,7 +614,7 @@ So \(\theta_2=\operatorname{Ad}(W_3W_1)\circ\theta\) fixes every \(g_{ij}\) and 
 \(\bar u_j=u_j+1-f\in\mathcal U(N)\). By Remark 3.3(2) applied to the finite set
 \(\{\bar u_j\}\cup\{g_{ij}\}\), there is \(x\in N\) with \(\|x\|_2=1\), \(\|\theta_2(\bar u_j)x-x\bar u_j\|_2\le\kappa\)
 and \(\|[g_{ij},x]\|_2\le\kappa\), because \(\theta_2(g_{ij})=g_{ij}\). By Lemma 2.3(ii),
-\(\|g_{11}x\|_2^2\ge1/m-8\kappa\ge1/(2m)\). Now \(g_{11}x(1-g_{11})=-g_{11}x,g_{11}\) has norm at most
+\(\|g_{11}x\|_2^2\ge1/m-8\kappa\ge1/(2m)\). Now \(g_{11}x(1-g_{11})=-g_{11}[x,g_{11}](1-g_{11})\) has norm at most
 \(\kappa\). Put \(y=fxf\in N_f\). Since \(g_{11}\le f\),
 \[
 \|y\|_2\ge\|g_{11}yg_{11}\|_2=\|g_{11}xg_{11}\|_2\ge\|g_{11}x\|_2-\kappa\ge(2m)^{-1/2}-\kappa\ge(4m)^{-1/2} .
@@ -1077,7 +1077,7 @@ unit vector \(\xi\) with \(\|\theta(\xi)-\xi\|\ge c_1\) and \(\|[a,\xi]\|\le\kap
 \(\{g_{ij},\theta^{-1}(g_{ij}),e,x_j,\theta^{-1}(x_j)\}\). Put \(\zeta=\theta(\xi)-\xi\), so \(c_1\le\|\zeta\|\le2\).
 Since \([a,\theta(\xi)]=\theta([\theta^{-1}(a),\xi])\) and \(\theta^{-1}(e)=e\), we have \(\|[g_{ij},\zeta]\|\le2\kappa_0\le
 (2\kappa_0/c_1)\|\zeta\|\) and \(\|[e,\zeta]\|\le2\kappa_0\). Put \(\eta=e\xi e\). Then \(\theta(\eta)-\eta=e\zeta e\) and
-\([x_j,\eta]=e[x_j,\xi]e\), so \(\|[x_j,\eta]\|\le\kappa_0\). For any \(\chi\), \(\|e\chi e-e\chi\|=\|ee,\chi\|\le
+\([x_j,\eta]=e[x_j,\xi]e\), so \(\|[x_j,\eta]\|\le\kappa_0\). For any \(\chi\), \(\|e\chi e-e\chi\|=\|e[e,\chi](1-e)\|\le
 \|[e,\chi]\|\). Since \(P_-\le e\le P_+\), we have \(\|P_-\chi\|\le\|e\chi\|\le\|P_+\chi\|\). Using Lemma 2.3(ii),
 \(\tau(P_-)\ge\alpha-1/q\) and \(\tau(P_+)\le\alpha+1/q\), we obtain
 \[

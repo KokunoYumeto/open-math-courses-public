@@ -49,7 +49,7 @@ The last equality uses \(J\xi=\xi\), so \(\xi h=J(h\xi)\).
 
 ## From a vector commutator to a predual commutator
 
-Define \([x,\phi]\in M_*\) by \(x,\phi=\phi(yx-xy)\). Then for every \(x\in M\) and \(\phi\in M_*^+\),
+Define \([x,\phi]\in M_*\) by \([x,\phi](y)=\phi(yx-xy)\). Then for every \(x\in M\) and \(\phi\in M_*^+\),
 
 \[
  \|[x,\phi]\|\le 2\phi(1)^{1/2}\|[x,\xi_\phi]\|.
@@ -58,9 +58,9 @@ Define \([x,\phi]\in M_*\) by \(x,\phi=\phi(yx-xy)\). Then for every \(x\in M\) 
 
 **Proof.** Write \(\xi=\xi_\phi\). For \(y\in M\), insert the commuting right action:
 
-\
+\[
 \begin{aligned}
- {}[x,\phi
+ {}[x,\phi](y)
  &=\langle y(x\xi-\xi x),\xi\rangle
    +\langle y(\xi x)-xy\xi,\xi\rangle\\
  &=\langle y[x,\xi],\xi\rangle

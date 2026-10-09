@@ -259,14 +259,14 @@ There is a unique normal \(*\)-isomorphism with normal inverse
  \tag{CORE.5.c}
 \]
 Here is its actual spatial construction, including the direction of the adjoint. Realize \(M\) faithfully and normally on any Hilbert space \(H\), and use the two regular models on \(L^2(\mathbb R,H)\):
-\
- [\pi_\eta(x)\xi=\sigma_{-r}^\eta(x)\xi(r),
- \qquad \lambda_\eta(t)\xi=\xi(r-t)
+\[
+ [\pi_\eta(x)\xi](r)=\sigma_{-r}^\eta(x)\xi(r),
+ \qquad [\lambda_\eta(t)\xi](r)=\xi(r-t)
  \quad(\eta=\varphi,\psi).
 \]
 Define
-\
- [W_{\psi,\varphi}\xi=c_{\psi,\varphi}(-r)^*\xi(r).
+\[
+ [W_{\psi,\varphi}\xi](r)=c_{\psi,\varphi}(-r)^*\xi(r).
  \tag{CORE.5.d}
 \]
 [NR5](OA-FLOW-NR.md#oa-flow.nr.5) proves that this multiplication field and its adjoint define inverse unitaries on the full Hilbert space. In particular its proof uses strong continuity on compact tensors and Hilbert density, and requires no countable basis of \(H\). Directly, the coefficient calculation is
@@ -538,14 +538,14 @@ There is also a short double-crossing consequence at the same generality. Fix a 
  \tag{CORE.8.h}
 \]
 specified in a faithful normal realization of \(M\) by
-\
+\[
  \begin{aligned}
- [\mathscr S_\varphi(j_C(j_M(x)))\xi
+ [\mathscr S_\varphi(j_C(j_M(x)))\xi](r)
    &=\sigma_{-r}^\varphi(x)\xi(r),\\
  \mathscr S_\varphi(j_C(\lambda^\varphi(t)))&=1\otimes L_t,
-       & L_t\xi&=\xi(r-t),\\
+       & [L_t\xi](r)&=\xi(r-t),\\
  \mathscr S_\varphi(\ell_s)&=1\otimes Q_s,
-       & Q_s\xi&=e^{-isr}\xi(r).
+       & [Q_s\xi](r)&=e^{-isr}\xi(r).
  \end{aligned}
  \tag{CORE.8.i}
 \]
@@ -553,10 +553,10 @@ The equivariant normal chart map \(\kappa_\varphi\) first identifies the two sec
 
 The surviving bidual action \(\delta_a\) fixes \(j_C(C(M))\) and sends
 \(\ell_s\) to \(e^{-ias}\ell_s\). Its transported action is
-\
+\[
  \mathscr S_\varphi\delta_a\mathscr S_\varphi^{-1}
  =\sigma_a^\varphi\otimes\operatorname{Ad}R_a,
- \qquad [R_a\xi=\xi(r+a).
+ \qquad [R_a\xi](r)=\xi(r+a).
  \tag{CORE.8.j}
 \]
 For the coefficient field, right translation changes

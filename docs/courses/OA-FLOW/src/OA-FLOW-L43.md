@@ -241,7 +241,7 @@ Let the approximation error and $\delta$ tend to zero. By (Q14), the compact-maj
 $$ \nu(B)=\int_Y h_B(y)\,d\mu(y)
        =\int_Y\int_H1_B(sh)\,dh\,d\mu(sH). \tag{Q14c} $$
 
-No monotone-convergence assertion for an arbitrary decreasing net was used. Equivalent base measures integrate the same nonnegative Borel $h_B$ to zero, so their lifts have the same compact null sets. Inner regularity then gives the same Borel null sets. Left translation of the lift is the lift of the left-translated base measure, since $Qf(a\,\cdot\,)=Qf(ay)$. Quasi-invariance of $\mu$ consequently makes $\nu$ quasi-invariant under every left translation.
+No monotone-convergence assertion for an arbitrary decreasing net was used. Equivalent base measures integrate the same nonnegative Borel $h_B$ to zero, so their lifts have the same compact null sets. Inner regularity then gives the same Borel null sets. Left translation of the lift is the lift of the left-translated base measure, since $Q[f(a\,\cdot\,)](y)=Qf(ay)$. Quasi-invariance of $\mu$ consequently makes $\nu$ quasi-invariant under every left translation.
 
 A nonzero inner-regular Radon measure $\nu$ on $G$ with that property
 is equivalent to left Haar measure. We prove this by compact

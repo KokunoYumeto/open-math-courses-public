@@ -76,7 +76,7 @@ the dense subspace \(\{\hat x:x\in N\}\), with \(\langle\hat x,\hat y\rangle=\ta
   bounded Borel function \(g\) on \([0,\infty[\), \(g(|\xi|)\in N\) and \(\|\xi g(|\xi|)\|=\||\xi|g(|\xi|)\|\).
 - (c) For \(h\in H_+\) and \(a\ge0\) put \(E_a(h)=\chi_{]a,\infty[}(h)\in N\). The measure
   \(\nu_h(B)=\tau(\chi_B(h))\) on \([0,\infty[\) satisfies \(\tau(E_a(h))=\nu_h(]a,\infty[)\),
-  \(\|h\|^2=\int t^2\,d\nu_h(t)\) and \(\|hE_a(h)\|^2=\int_{]a,\infty}t^2\,d\nu_h(t)\). In particular
+  \(\|h\|^2=\int t^2\,d\nu_h(t)\) and \(\|hE_a(h)\|^2=\int_{]a,\infty[}t^2\,d\nu_h(t)\). In particular
   \(a^2\tau(E_a(h))\le\|hE_a(h)\|^2\le\|h\|^2\). For \(\xi\in H\) we write \(E_a(|\xi|)\) accordingly.
 - (d) For \(u\in\mathcal U(N)\) the unitary \(uJuJ\colon\xi\mapsto u\xi u^*\) maps \(H_+\) onto itself, and
   \(E_a(uhu^*)=uE_a(h)u^*\) for \(h\in H_+\).
@@ -87,7 +87,7 @@ the dense subspace \(\{\hat x:x\in N\}\), with \(\langle\hat x,\hat y\rangle=\ta
   contains \(\xi\eta\) for \(\xi,\eta\in H\). The map \(y\mapsto\tau(y\,\cdot\,)\) is an isometry of \(L^1(N,\tau)\) onto
   the predual \(N_*\): \(\|\tau(y\,\cdot\,)\|=\|y\|_1\).
 
-The Hilbert space \(L^2(N,\tau)\), its two actions, \(J\) and \(N'=JNJ\) are proved in [Integration for a trace,
+The Hilbert space \(L^2(N,\tau)\), its two actions, \(J\) and \(N'=JNJ\) are proved in Integration for a trace,
 Sections 2–3 (Theorem 3.1). The \(\tau\)-measurable operators, their adjoints, sums, products, square
 roots and polar decompositions are constructed in Operators recovered from small trace defects,
 and \(L^1(N,\tau)\), \(L^2(N,\tau)\) as spaces of such operators, with the isometry of \(L^1(N,\tau)\) onto \(N_*\) in (g), in
@@ -95,7 +95,7 @@ Trace densities and noncommutative integration, §§TI-06 and TI-15. The stateme
 The positive cone of a standard representation, §SF-10 and §SF-07 for the trace, whose
 cone is \(H_+\). Then (c)–(e) follow from the spectral theorem for the positive self-adjoint operator \(h\):
 \(\tau(\chi_B(h))=\|\chi_B(h)\hat1\|^2\) is a measure, \(\|g(h)\|^2=\int|g(t)|^2\,d\nu_h(t)\), and
-\(a^2\chi_{]a,\infty[}(t)\le t^2\chi_{]a,\infty}(t)\le t^2\); the unitary \(uJuJ\) is conjugation by \(u\), which carries
+\(a^2\chi_{]a,\infty[}(t)\le t^2\chi_{]a,\infty[}(t)\le t^2\); the unitary \(uJuJ\) is conjugation by \(u\), which carries
 positive operators to positive operators and spectral projections to spectral projections; and if \(fh=h\), then the
 range of \(h\), hence of each spectral projection \(E_a(h)\) with \(a>0\), lies in \(fH\).
 
@@ -103,7 +103,7 @@ range of \(h\), hence of each spectral projection \(E_a(h)\) with \(a>0\), lies 
 *singular* if the only normal positive functional \(\psi\) with \(\psi\le\sigma\) is \(0\). Every positive functional
 \(\varphi\) on \(M\) decomposes uniquely as \(\varphi=\varphi_n+\varphi_s\) with \(\varphi_n\) normal positive and
 \(\varphi_s\) singular positive. A positive functional \(\sigma\) is singular if and only if every nonzero
-projection \(p\in M\) majorizes a nonzero projection \(q\in M\) with \(\sigma(q)=0\). The decomposition is proved in [The
+projection \(p\in M\) majorizes a nonzero projection \(q\in M\) with \(\sigma(q)=0\). The decomposition is proved in The
 universal enveloping von Neumann algebra of a C\*-algebra, and W\*-algebras, Theorem 10.3 and Proposition 10.5, where a
 functional is called singular when it lies in \(M_*^\perp\), and the projection criterion for that notion is Theorem
 11.2 there. The two notions agree for positive \(\sigma\): if \(\sigma\) has no nonzero normal positive

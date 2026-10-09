@@ -158,8 +158,8 @@ Fix \(\eta\in\mathcal D\). The vector \(b=JF\eta=\Delta^{-1/2}\eta\) belongs to 
 
 For the last equality, write \(\eta=Du\), so \(b=Cu\), using (MF.5). The bounded scalar functions in the preceding integral give
 
-\
-\left[\frac{\sqrt v}{v-z}\rightC
+\[
+\left[\frac{\sqrt v}{v-z}\right](\Delta)C
 =R[(2I-R)-zR]^{-1}D.
 \]
 

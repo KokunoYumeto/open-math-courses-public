@@ -55,8 +55,8 @@ The integral of \(e^{iQ}\) over all of \(F\) has an infinite volume factor when 
 \tag{1.4}
 \]
 where \(H\) is the horizontal reference. Fix Lebesgue measure \(d\theta\), a scalar \(a\), and any linear projection \(T:F\to R\) that is the identity on \(R\). For \(\chi\in C_c^\infty(R)\), consider
-\
-\mathcal U_Q[\chi
+\[
+\mathcal U_Q[\chi](x)
 =a(2\pi)^{-(n+2N)/4}
 \int_F e^{iQ(x,\theta)}\chi(T\theta)\,d\theta\ |dx|^{1/2}.
 \tag{1.5}

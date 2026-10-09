@@ -4,7 +4,7 @@ A locally constant complex on the complement of a closed complex analytic set ha
 
 *Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources are credited below.*
 
-The boundary argument is reconstructed from three explicit ingredients: local constancy of the whole bounded complex, perfect duality on the open manifold, and exceptional adjunction. The order matters: biduality is applied on the open part before ordinary direct image is shown constructible. Use [Complex microlocal stratifications and constructibility](../../sheaf-proof-readings/SH03-complex-microlocal-stratifications-and-constructibility.html) for compatible analytic refinements and the geometric constructibility criterion, [Constructible costalks and Verdier duality](../../sheaf-proof-readings/SH03-constructible-costalks-and-verdier-duality.html) for perfect duality and its actual evaluation map, and [Holomorphic operations and complex Fourier symmetries](../../sheaf-proof-readings/SH03-holomorphic-operations-and-complex-fourier-symmetries.html) for bounded internal Hom and its complex geometry. The microlocal submersion theorem and internal exceptional adjunction are used with their stated coefficient, amplitude and support hypotheses.
+The boundary argument is reconstructed from three explicit ingredients: local constancy of the whole bounded complex, perfect duality on the open manifold, and exceptional adjunction. The order matters: biduality is applied on the open part before ordinary direct image is shown constructible. Use [Complex microlocal stratifications and constructibility](../../sheaf-proof-readings/src/SH03/complex-microlocal-stratifications-and-constructibility.md) for compatible analytic refinements and the geometric constructibility criterion, [Constructible costalks and Verdier duality](../../sheaf-proof-readings/src/SH03/constructible-costalks-and-verdier-duality.md) for perfect duality and its actual evaluation map, and [Holomorphic operations and complex Fourier symmetries](../../sheaf-proof-readings/src/SH03/holomorphic-operations-and-complex-fourier-symmetries.md) for bounded internal Hom and its complex geometry. The microlocal submersion theorem and internal exceptional adjunction are used with their stated coefficient, amplitude and support hypotheses.
 
 ## The input is locally constant as a complex
 
@@ -19,13 +19,13 @@ Let $k$ be a commutative ring of finite global dimension $g$. Let $X$ be a compl
 
 Here $T_U^*U$ denotes the zero section. Constructibility includes perfect stalks, with no field or Noetherian assumption. The empty complement, an analytic set containing a whole connected component, and $S=\varnothing$ are permitted.
 
-Apply the microlocal submersion criterion to the map $U\to\{\mathrm{pt}\}$. Its horizontal cotangent bundle is exactly the zero section. It says that (1) makes the **whole bounded complex** locally isomorphic to a constant complex $P_V$ on a small contractible neighborhood $V\subset U$. The local coefficient object $P$ is perfect because its stalk is a stalk of $F$. In particular, every $H^q(F)$ is locally constant on $U$.
+Apply the [microlocal submersion criterion](../../sheaf-proof-readings/src/SH02/microsupport-operations.md#sh02-mo-submersion--exact-pullback-and-local-descent) to the map $U\to\{\mathrm{pt}\}$. Its horizontal cotangent bundle is exactly the zero section. It says that (1) makes the **whole bounded complex** locally isomorphic to a constant complex $P_V$ on a small contractible neighborhood $V\subset U$. The local coefficient object $P$ is perfect because its stalk is a stalk of $F$. In particular, every $H^q(F)$ is locally constant on $U$.
 
 This local conclusion retains the differential and all extension data of $P$. It neither splits $F$ into its cohomology sheaves nor trivializes monodromy around a loop. The analytic-piece cover with the single member $U$ now makes $F$ complex constructible on $U$.
 
 ## Extension by zero uses analytic strata and exact stalks
 
-The locally finite analytic cover consisting of $X$ and $S$ has a compatible complex stratification. Compatibility makes each stratum lie entirely in $U$ or entirely in $S$. One may choose a complex μ-refinement and its closed total conormal bound, but ordinary analytic compatibility already proves the cohomology restriction condition below. Singularities and multiple dimensions of $S$ are included in the refinement theorem.
+The locally finite analytic cover consisting of $X$ and $S$ has a [compatible complex stratification](../../sheaf-proof-readings/src/SH03/complex-microlocal-stratifications-and-constructibility.md#ordinary-analytic-refinement-with-every-frontier-checked). Compatibility makes each stratum lie entirely in $U$ or entirely in $S$. One may choose a complex μ-refinement and its closed total conormal bound, but ordinary analytic compatibility already proves the cohomology restriction condition below. Singularities and multiple dimensions of $S$ are included in the refinement theorem.
 
 The functor $j_!$ is exact for an open embedding. Its ordinary stalks and cohomology are
 
@@ -72,14 +72,14 @@ Applying (2)–(3) to $D_UF$ gives a bounded complex constructible object
  \tag{6}
 \]
 
-The bounded internal-Hom theorem makes $D_XE$ weakly complex constructible. Its perfect stalks follow from real constructible Verdier duality, since $E$ is already real constructible. Therefore
+The [bounded internal-Hom theorem](../../sheaf-proof-readings/src/SH03/holomorphic-operations-and-complex-fourier-symmetries.md#tensor-and-hom-use-full-complex-limiting-sums) makes $D_XE$ weakly complex constructible. Its perfect stalks follow from real constructible Verdier duality, since $E$ is already real constructible. Therefore
 
 \[
  D_XE\in D^b_{\mathbb C\text{-c}}(k_X).
  \tag{7}
 \]
 
-Now apply internal exceptional adjunction with bounded first input $D_UF$ and second target $\omega_X\in D^+(k_X)$. The composition and open-embedding identifications give $j^!\omega_X=\omega_U$ and the natural isomorphism
+Now apply [internal exceptional adjunction](../../sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-internal--internal-adjunction-and-its-tensor-structure) with bounded first input $D_UF$ and second target $\omega_X\in D^+(k_X)$. The composition and open-embedding identifications give $j^!\omega_X=\omega_U$ and the natural isomorphism
 
 \[
  D_X(j_!D_UF)
@@ -89,7 +89,7 @@ Now apply internal exceptional adjunction with bounded first input $D_UF$ and se
  \tag{8}
 \]
 
-It is an internal sheaf-Hom formula. It is not a formula replacing a Hom stalk by Hom of two ordinary stalks. The derived operations in (8) are defined in $D^+$ before any constructibility of $Rj_*F$ is known. Because the input $F$ is perfect constructible, its actual evaluation map
+It is an internal sheaf-Hom formula. It is not a formula replacing a Hom stalk by Hom of two ordinary stalks. The derived operations in (8) are defined in $D^+$ before any constructibility of $Rj_*F$ is known. Because the input $F$ is perfect constructible, its [actual evaluation map](../../sheaf-proof-readings/src/SH03/constructible-costalks-and-verdier-duality.md#the-evaluation-map-is-biduality)
 
 \[
  \eta_F:F\xrightarrow{\sim}D_UD_UF
@@ -110,7 +110,7 @@ The right side is already known to be bounded and complex constructible by (7). 
  \tag{11}
 \]
 
-For clarity, the bounded-Hom contract on a real manifold of dimension at most $2N$ sends inputs in $[a',b']$ and $[c',d']$ to the sufficient range $[c'-b',d'-a'+6N+g+1]$. Apply it to (5)–(6) and $\omega_X\in[-2N,0]$. It gives $D_XE\in[a-g-2N,b+8N+g+1]$. Ordinary direct image is left exact, so (10) further gives the coarse uniform bound $Rj_*F\in[a,b+8N+g+1]$. Sharp local bounds are often much smaller. This numerical estimate exhibits a single global bound; stalkwise boundedness alone would not establish membership in $D^b$.
+For clarity, the [bounded-Hom contract](../../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-bounded-hom--boundedness-for-arbitrary-bounded-inputs) on a real manifold of dimension at most $2N$ sends inputs in $[a',b']$ and $[c',d']$ to the sufficient range $[c'-b',d'-a'+6N+g+1]$. Apply it to (5)–(6) and $\omega_X\in[-2N,0]$. It gives $D_XE\in[a-g-2N,b+8N+g+1]$. Ordinary direct image is left exact, so (10) further gives the coarse uniform bound $Rj_*F\in[a,b+8N+g+1]$. Sharp local bounds are often much smaller. This numerical estimate exhibits a single global bound; stalkwise boundedness alone would not establish membership in $D^b$.
 
 No biduality on $X$ was used to prove (11). The only biduality input was (9) on the already constructible object $F$ on $U$. We first verified constructibility of $E$, then of its dual, and only then identified that dual with $Rj_*F$. This order avoids assuming the desired output finiteness inside the proof.
 
@@ -150,9 +150,9 @@ Let $X=\Delta$ be a disc in $\mathbb C$, $S=\{0\}$, and $U=\Delta^*$. Choose a p
  \tag{14}
 \]
 
-One way to obtain (14) is to cut the circle into two contractible arcs. Their intersection has two contractible components. The two restriction identifications are the identity on one component and $T$ on the other. The Mayer–Vietoris differential on $P\oplus P$ consequently has entries $b-a$ and $b-Ta$, up to choices of oriented overlap generators. Eliminate the identity summand by an invertible change of variables. The remaining mapping fibre has differential $T-\mathrm{id}$, up to an invertible sign change. This works for a whole bounded complex and does not require degree-zero coefficients.
+The [two-arc circle calculation](../../sheaf-proof-readings/src/SH02/conic-descent.md#sh02-con-exercise-monodromy--transport-after-one-period) gives (14) by cutting the circle into two contractible arcs. Their intersection has two contractible components. The two restriction identifications are the identity on one component and $T$ on the other. The Mayer–Vietoris differential on $P\oplus P$ consequently has entries $b-a$ and $b-Ta$, up to choices of oriented overlap generators. Eliminate the identity summand by an invertible change of variables. The remaining mapping fibre has differential $T-\mathrm{id}$, up to an invertible sign change. This works for a whole bounded complex and does not require degree-zero coefficients.
 
-The arcs and their intersections are acyclic for a constant coefficient complex: interval contraction gives the constant-section unit, and the bounded finite complex can be totalized over these finitely many opens. Equivalently, a circle has one vertex and one oriented edge in its local-coefficient cellular model. Radial interval contraction identifies punctured-disc sections with these circle sections. These finite computations also prove that (14) is perfect: it is a shifted cone of a map between perfect complexes.
+The arcs and their intersections are acyclic for a constant coefficient complex: [interval evaluation](../../sheaf-proof-readings/src/SH02/convex-acyclicity.md#sh02-ca-local-system--locally-constant-coefficients-and-evaluation) gives the constant-section unit, and the bounded finite complex can be totalized over these finitely many opens. Equivalently, a circle has one vertex and one oriented edge in its local-coefficient cellular model. [Descent along the radial interval](../../sheaf-proof-readings/src/SH02/conic-descent.md#sh02-con-cylinder--descent-across-a-contractible-parameter) identifies punctured-disc sections with these circle sections. These finite computations also prove that (14) is perfect: it is a shifted cone of a map between perfect complexes.
 
 For a module $M$ in degree zero, (14) is the two-term complex
 
@@ -320,7 +320,7 @@ Let $X=\mathbb C$ with $z=x+iy$, take $U=\{y>0\}$ and the closed set $S=\{y\leq0
 
 The sign follows from the open half-line calculation in the normal $y$ coordinate, while the tangential $x$ coordinate has only zero covectors. It can also be read from localization against the closed lower half-plane. Nonzero negative $dy$ covectors occur for the constant nonzero coefficient. Under $\rho(\xi\,dz)=\operatorname{Re}(\xi\,dz)$, the covector $-dy$ corresponds to $i\,dz$. Multiplication by $i$ sends it to $-dz$, which corresponds to a nonzero tangential covector $-dx$. That covector is absent from the microsupport. The microsupport is therefore not complex-conic.
 
-The complex criterion consequently excludes weak complex constructibility, hence also perfect complex constructibility. All ordinary stalks are still perfect, and $j_!$ is still exact. The missing assumption is that $S$ be complex analytic; these coefficient and exactness properties cannot replace it. In (2)–(3), this example has no compatible complex analytic boundary stratification.
+The [complex-conicity criterion](../../sheaf-proof-readings/src/SH03/complex-microlocal-stratifications-and-constructibility.md#four-equivalent-geometric-tests) consequently excludes weak complex constructibility, hence also perfect complex constructibility. All ordinary stalks are still perfect, and $j_!$ is still exact. The missing assumption is that $S$ be complex analytic; these coefficient and exactness properties cannot replace it. In (2)–(3), this example has no compatible complex analytic boundary stratification.
 
 ## References
 
@@ -332,4 +332,4 @@ Both analytic-boundary extensions in (3) and (11) are proved bounded and complex
 
 ## Readable source account and proof scope
 
-Kashiwara and Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), §1.3.5, gives the internal exceptional-adjunction mechanism; §§8.2–8.3 separates weak constructibility from perfect coefficients; Theorem 8.5.2 gives the complex-conicity criterion. Those passages were checked in the freely readable 1985 edition. The proof here keeps the additional uniform amplitude estimates and the actual evaluation map, supplied by the named programme proofs. In particular, extending the open dual by zero is constructible by an analytic refinement, and dualizing that extension yields ordinary direct image by the written adjunction. Neither finite rank of individual cohomology sheaves alone nor a not-yet-proved ordinary-image theorem is used to justify this step. The punctured-disc and crossing calculations above retain the complete monodromy complexes, including torsion and their degrees.
+Kashiwara and Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), §1.3.5, gives the internal exceptional-adjunction mechanism; Definition 8.2.5, printed 145, distinguishes weak constructibility from perfect stalks; §§8.2–8.3, printed 146–150, treat the geometric criterion and operations; Theorem 8.5.2 gives the complex-conicity criterion. Those passages were checked in the freely readable 1985 edition. The proof here keeps the additional uniform amplitude estimates and the actual evaluation map, supplied by the named programme proofs. In particular, extending the open dual by zero is constructible by an analytic refinement, and dualizing that extension yields ordinary direct image by the written adjunction. Neither finite rank of individual cohomology sheaves alone nor a not-yet-proved ordinary-image theorem is used to justify this step. The punctured-disc and crossing calculations above retain the complete monodromy complexes, including torsion and their degrees.

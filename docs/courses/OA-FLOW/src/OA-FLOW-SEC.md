@@ -662,8 +662,8 @@ The superscript on the integral records its one fixed output fiber. The [canonic
  \tag{SEC6.f}
 \]
 It preserves graded products and adjoints, and its total map is a Mackey homeomorphism preserving degree. Define on sections
-\
- [\Gamma^1(f)x=F_t(f)(x(t)).
+\[
+ [\Gamma^1(f)x](t)=F_t(f)(x(t)).
  \tag{SEC6.g}
 \]
 A Lusin compact restriction for \(x\), followed by this total homeomorphism, is a Lusin compact restriction for its image. The inverse has the same property. Pointwise fiber isometry gives
@@ -674,21 +674,21 @@ A Lusin compact restriction for \(x\), followed by this total homeomorphism, is 
 The maps preserve almost-everywhere equality. Their pointwise inverse is \(F_t(f^{-1})\), so (SEC6.g) induces an onto linear isometry of the complete section spaces.
 
 For the product fix \(t\) outside the scalar norm-majorant exceptional set for \(x,y\). The same set works for their images, by (SEC6.h)'s pointwise norm equality. The output map \(F_t(f)\) is fixed while the integration variable \(s\) varies; its normality therefore gives
-\
+\[
  \begin{aligned}
- [\Gamma^1(f)(x*y)
+ [\Gamma^1(f)(x*y)](t)
  &=F_t(f)\!\left(\int^{M(t)}x(s)y(t-s)\,ds\right)\\
  &=\int^{N(t)}F_t(f)(x(s)y(t-s))\,ds\\
  &=\int^{N(t)}
        F_s(f)(x(s))F_{t-s}(f)(y(t-s))\,ds\\
- &=\Gamma^1(f)x*\Gamma^1(f)y.
+ &=[\Gamma^1(f)x*\Gamma^1(f)y](t).
  \end{aligned}
  \tag{SEC6.i}
 \]
 The third equality is the graded product identity, not a passage of a varying family of maps through an integral. Similarly, the graded adjoint identity gives
-\
+\[
  \begin{aligned}
- [\Gamma^1(f)(x^\sharp)
+ [\Gamma^1(f)(x^\sharp)](t)
  &=F_t(f)(x(-t)^*)\\
  &=(F_{-t}(f)(x(-t)))^*
    =[\Gamma^1(f)x]^\sharp(t).

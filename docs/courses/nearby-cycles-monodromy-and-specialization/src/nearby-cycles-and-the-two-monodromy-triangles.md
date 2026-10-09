@@ -2,13 +2,13 @@
 
 Following a sheaf around a punctured complex disc retains information that its stalk at the centre does not see. Nearby cycles record the limit after lifting the punctured disc to its universal cover. Vanishing cycles compare that limit with the sheaf at the centre. Two maps between these constructions measure the failure of monodromy to be the identity.
 
-We construct these maps from one explicit two-term coefficient complex. This fixes their shifts, works with arbitrary weak coefficients, and permits ramification. David B. Massey’s freely accessible [*Notes on Perverse Sheaves and Vanishing Cycles*, version 13, §3](https://arxiv.org/html/math/9908107v13#p301), explains the coefficient-complex approach of Kashiwara–Schapira and corrects its punctured trace diagram. Here the construction is developed as a calculation with finite-support sequences: the trace, its kernel, the two-term differential, and the two factorisations of one minus deck transport are checked before they are applied to sheaves. The examples then test ramification, infinite coefficients and the failure of a product–stalk interchange. This separates the elementary coefficient calculation from the sheaf-operation prerequisites used to obtain the cycle functors. The later specialization and microlocal comparisons are separate results; they are not assumed in the construction below.
+We construct these maps from one explicit two-term coefficient complex. This fixes their shifts, works with arbitrary weak coefficients, and permits ramification. David B. Massey’s freely accessible [*Notes on Perverse Sheaves and Vanishing Cycles*, version 13, §3, pp. 25–28](https://arxiv.org/pdf/math/9908107v13#page=25), explains the coefficient-complex approach of Kashiwara–Schapira and corrects its punctured trace diagram. Here the construction is developed as a calculation with finite-support sequences: the trace, its kernel, the two-term differential, and the two factorisations of one minus deck transport are checked before they are applied to sheaves. The examples then test ramification, infinite coefficients and the failure of a product–stalk interchange. This separates the elementary coefficient calculation from the sheaf-operation prerequisites used to obtain the cycle functors. The later specialization and microlocal comparisons are separate results; they are not assumed in the construction below.
 
 *Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. New original text is public domain (CC0).*
 
 ## The covering map and the nearby object
 
-Let \(k\) be the course's commutative coefficient ring of finite global dimension. Let \(X\) be a finite-dimensional complex manifold and \(f:X\to\mathbb C\) a holomorphic map. Put
+Let \(k\) be the course's commutative coefficient ring of finite global dimension. Let \(X\) be a Hausdorff complex manifold, countable at infinity and of uniformly finite dimension and \(f:X\to\mathbb C\) a holomorphic map. Put
 
 \[
 Y=f^{-1}(0),\qquad i:Y\hookrightarrow X,\qquad U=X\setminus Y.
@@ -32,7 +32,7 @@ Its image is \(\mathbb C^*\). Form the actual cartesian space and its projection
 \tag{2}
 \]
 
-The map \(q\) is a covering over \(U\), followed by the open inclusion into \(X\). It has no fibre over \(Y\). It is a local homeomorphism, so \(q^!=q^{-1}\); both functors are exact. Its proper direct image \(q_!\) is also exact. Indeed its stalk is the direct sum over the discrete fibre, and direct sums of modules preserve exact sequences. These statements do not make its ordinary direct image exact.
+The map \(q\) is a covering over \(U\), followed by the open inclusion into \(X\). It has no fibre over \(Y\). It is a local homeomorphism, so \(q^!=q^{-1}\) by the local [open-inclusion computation](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-embedding--open-closed-and-locally-closed-inclusions); both functors are exact. Its proper direct image \(q_!\) is also exact. Indeed the [proper-support fibre formula](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#the-underived-fibre-formula-proper-image-fibre) identifies its stalk with the direct sum over the discrete fibre, and direct sums of modules preserve exact sequences. These statements do not make its ordinary direct image exact.
 
 Define
 
@@ -41,9 +41,9 @@ Define
 \tag{3}
 \]
 
-The functor depends only on \(F|_U\). It is bounded: the covering space is locally a real manifold of the same finite dimension as \(X\), and the finite-dimensional sheaf cohomological-dimension bound for ordinary direct image gives a uniform upper bound on \(Rq_*\) of a bounded complex. This is the existing finite-dimensional topology contract. Neither compactness of the fibre nor finite-dimensional coefficient stalks is used.
+The functor depends only on \(F|_U\). It is bounded: the covering space is locally a real manifold of the same finite dimension as \(X\), and the [finite-dimensional sheaf cohomological-dimension bound for ordinary direct image](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#from-compact-extension-to-ordinary-cohomology-ordinary-cohomology-bound) gives a uniform upper bound on \(Rq_*\) of a bounded complex. The covering remains Hausdorff and countable at infinity, so the hypotheses of that bound apply. Neither compactness of the fibre nor finite-dimensional coefficient stalks is used.
 
-The stalk is not the stalk of \(q^{-1}F\) at a point over \(Y\), since no such point exists. It is the limit of the cohomology of the lifted punctured neighborhoods approaching \(Y\).
+The stalk is not the stalk of \(q^{-1}F\) at a point over \(Y\), since no such point exists. Its cohomology is the filtered colimit of the cohomology of lifted punctured neighborhoods approaching \(Y\).
 
 ## The coefficient sheaf uses a sum
 
@@ -70,7 +70,7 @@ The parentheses indicate finite-support sequences. On a small evenly covered ope
 
 adds those finitely many entries. It is the counit of \(p_!\dashv p^{-1}\), extended by zero at the origin. At nonzero points it is surjective; at the origin its source is zero.
 
-Proper-support base change for the square (2) gives \(f^{-1}L=q_!k_{\widetilde U}\). The already constructed internal exceptional adjunction gives
+[Proper-support base change](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#pulling-back-a-proper-support-proper-support-base-change) for the square (2) gives \(f^{-1}L=q_!k_{\widetilde U}\). The [internal exceptional adjunction (EX20)](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-internal--internal-adjunction-and-its-tensor-structure) gives
 
 \[
 \begin{split}
@@ -81,7 +81,7 @@ R\mathcal Hom_X(f^{-1}L,F)
 \tag{7}
 \]
 
-We reuse its actual trace normalization, the finite-dimensional proper-support base-change bridge, and the closed-embedding supported-Hom formula. Their bounded versions suffice: the coefficient object on the covering is a sheaf in degree zero, and \(F\) is bounded. The lower proper-support/topology contracts remain explicit prerequisites. Applying \(i^{-1}\) to (7) gives a second description of (3).
+We reuse its [actual trace normalization](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-adjoint--the-derived-adjunction-and-its-normalization), the [finite-dimensional proper-support base-change bridge](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-basechange-bridge--a-finite-dimensional-base-change-proof), and the [closed-embedding supported-Hom formula](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-embedding--open-closed-and-locally-closed-inclusions). Their bounded versions suffice: the coefficient object on the covering is a sheaf in degree zero, and \(F\) is bounded. The lower proper-support/topology contracts remain explicit prerequisites. Applying \(i^{-1}\) to (7) gives a second description of (3).
 
 Although (4) uses a sum, Hom from its nonzero stalk uses a product. The sheaf-level internal adjunction (7) computes the comparison without commuting a stalk with an infinite product. It proves no general product–stalk exchange; Exercise 7 shows why such an exchange can fail. One cannot replace (4) by a product sheaf and keep the same trace.
 
@@ -105,7 +105,7 @@ On the punctured plane there is an exact sequence
 \tag{9}
 \]
 
-Here the last sheaf is understood on \(\mathbb C^*\). This distinction is the trace-diagram correction explained by Massey in §3: its extension to the whole plane has target \((j_0)_!k_{\mathbb C^*}\), and the map from that extension to \(k_{\mathbb C}\) is a separate open-inclusion counit. To check exactness, let \(a\) have finite support. If \(d a=0\), then \(a_n=a_{n+1}\) for all \(n\); a finite-support constant sequence is zero. Every \(d a\) has sum zero. Conversely, if \(b\) has finite support and \(\sum_n b_n=0\), set
+Here the last sheaf is understood on \(\mathbb C^*\). This distinction is the trace-diagram correction explained by Massey in [§3, p. 28, “The Kashiwara–Schapira approach”](https://arxiv.org/pdf/math/9908107v13#page=28): its extension to the whole plane has target \((j_0)_!k_{\mathbb C^*}\), and the map from that extension to \(k_{\mathbb C}\) is a separate open-inclusion counit. To check exactness, let \(a\) have finite support. If \(d a=0\), then \(a_n=a_{n+1}\) for all \(n\); a finite-support constant sequence is zero. Every \(d a\) has sum zero. Conversely, if \(b\) has finite support and \(\sum_n b_n=0\), set
 
 \[
 a_n=\sum_{m\geq n}b_m.
@@ -123,7 +123,7 @@ Let \(j_0:\mathbb C^*\hookrightarrow\mathbb C\). Extending (9) by zero gives its
 \tag{11}
 \]
 
-At the origin it is simply \(0\to0\to0\to k\xrightarrow{1}k\to0\). Thus a trace surjective on the punctured plane has a nonzero cokernel on the whole plane. This cokernel is responsible for the exceptional restriction in the second triangle.
+At the origin it is simply \(0\to0\to0\to k\xrightarrow{1}k\to0\). Thus a trace surjective on the punctured plane has the displayed point-supported cokernel on the whole plane. This cokernel is responsible for the exceptional restriction in the second triangle.
 
 ## One two-term complex gives two triangles
 
@@ -180,7 +180,7 @@ Both triangles use actual maps. In particular replacing \(d\) by \(T-1\) would c
 
 ## Canonical and variation maps
 
-Pull (15) and (16) back by \(f\), apply the contravariant derived internal Hom into \(F\), and restrict to \(Y\). The constant term in (15) gives \(i^{-1}F\). The point term in (16) pulls back to \(k_Y\), and the closed-support formula gives
+Pull (15) and (16) back by \(f\), apply the contravariant derived internal Hom into \(F\), and restrict to \(Y\). The constant term in (15) gives \(i^{-1}F\). The point term in (16) pulls back to \(k_Y\), and the [closed-support formula (EX15)](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-embedding--open-closed-and-locally-closed-inclusions) gives
 
 \[
 i^{-1}R\mathcal Hom_X(k_Y,F)
@@ -229,7 +229,7 @@ After undoing the common shift the second identity is the same identity on nearb
 
 ## A disc calculation, including the action direction
 
-Let \(X\) be a small disc, \(f(z)=z\), and \(G\) a local system on its punctured disc. A lifted punctured disc is a half-plane in the covering coordinate. It is contractible. The pulled-back local system is constant there and has no higher cohomology, by the constant-sheaf contractible-manifold cohomology contract. Therefore the nearby object is its fibre \(V\), in degree zero. This remains true for infinite modules; there is no finite-dimensional assumption in the half-plane computation.
+Let \(X\) be a small disc, \(f(z)=z\), and \(G\) a local system on its punctured disc. A lifted punctured disc is a half-plane in the covering coordinate. It is contractible. The pulled-back local system is constant there and has no higher cohomology, by the [constant-coefficient homotopy-invariance proof (O1–O2)](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#homotopy-invariance-from-a-proper-interval-proper-interval-homotopy). Therefore the nearby object is its fibre \(V\), in degree zero. This remains true for infinite modules; there is no finite-dimensional assumption in the half-plane computation.
 
 For clarity, define \(H:V\to V\) to be parallel transport around the counterclockwise loop. Choose a base lift, number its translates by integers, and use the base fibre to identify \(V\). A section on the connected covering, with initial value \(v\), has value \(H^n v\) on sheet \(n\) over that base point. On finite-support sheet generators \(e_n\), (8) gives \(T e_n=e_{n-1}\). Thus precomposition acts on the initial value by
 
@@ -298,6 +298,8 @@ This also shows why a later comparison using an inverse image of \(1\) under the
 
 ## Exercises
 
+In examples asserting a nonzero coefficient object, take the coefficient ring to be nonzero.
+
 ### 1. Prove the finite-support difference sequence
 *Difficulty: Introductory.*
 
@@ -354,19 +356,24 @@ For the constant sheaf \(k\) on a punctured disc, compare \(j_*k\), \(Rj_*k\), a
 
 **Solution.** The ordinary direct image \(j_*k\) is the constant sheaf on the whole disc: a small punctured disc is connected, so its degree-zero sections are \(k\). Its central stalk maps isomorphically to \(\psi=k\); (18) therefore gives \(\phi=0\).
 
-For \(Rj_*k\), the punctured-disc cohomology has \(k\) in degrees zero and one and no other degrees. This follows from its circle deformation retract and the cellular cochain complex with zero differential for constant coefficients. Thus its central derived restriction is \(k\oplus k[-1]\), whereas its nearby object is still \(k\). Its costalk is zero: the localization triangle \(R\Gamma_{\{0\}}F\to F\to Rj_*j^{-1}F\) has an isomorphism as its second map when \(F=Rj_*k\). Triangle (19) now gives \(\phi\simeq k[-1]\), with variation an isomorphism. Monodromy is the identity, so canonical is zero by (21).
+For \(Rj_*k\), the punctured-disc cohomology has \(k\) in degrees zero and one and no other degrees. For the circle, apply the [relative-ball localization formula (O12)](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#constant-coefficients-on-relative-balls-constant-relative-balls) in real dimension two. The closed disc has only degree-zero constant cohomology, and its cohomology relative to the boundary is the coefficient module in degree two. The localization sequence gives the stated two cohomology groups of the circle. Restriction to a point splits off its constant summand, giving the derived decomposition used here. The radial deformation retraction from the punctured disc to the circle preserves constant-coefficient cohomology by (O1–O2). Thus its central derived restriction is \(k\oplus k[-1]\), whereas its nearby object is still \(k\). Its costalk is zero: the [localization triangle (B4)](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#closed-support-and-its-bound-closed-support-bound) \(R\Gamma_{\{0\}}F\to F\to Rj_*j^{-1}F\) has an isomorphism as its second map when \(F=Rj_*k\). Triangle (19) now gives \(\phi\simeq k[-1]\), with variation an isomorphism. Monodromy is the identity, so canonical is zero by (21).
 
 Finally \(j_!k\) has zero central stalk, nearby cycles \(k\), and vanishing cycles \(k[-1]\); here canonical is an isomorphism and variation is zero. Its costalk has \(k\) in degrees one and two, as in Exercise 4. The difference is the degree-one punctured-link cohomology retained by \(Rj_*\) and the central stalk retained by ordinary \(j_*\). Agreement away from the centre determines nearby cycles but does not determine vanishing cycles.
 
 ### 7. An infinite product cannot be moved through a stalk without proof
 *Difficulty: Intermediate.*
 
-For \(n\geq1\), let \(V_n\) be the vector space of finite-support rational sequences supported in \(\{n,n+1,\ldots\}\), with the restriction map \(V_n\to V_{n+1}\) deleting the entry at \(n\). Compare \(\operatorname{colim}_{n}V_n\) and \(\operatorname{colim}_{n}\prod_{r\geq1}V_n\). Use this to explain why a countable-cover boundary comparison cannot follow from exchanging products and stalk limits formally.
+For \(n\geq1\), let \(V_n\) be the vector space of finite-support rational sequences supported in \(\{n,n+1,\ldots\}\), with the restriction map \(V_n\to V_{n+1}\) deleting the entry at \(n\). Compare \(\operatorname{colim}_{n}V_n\) and \(\operatorname{colim}_{n}\prod_{r\geq1}V_n\). Use this to explain why a countable-cover boundary comparison cannot follow from exchanging products and stalk colimits formally.
 
 **Solution.** Every fixed finite-support sequence becomes zero after sufficiently many deletions. Hence \(\operatorname{colim}_{n}V_n=0\), and \(\prod_r\operatorname{colim}_{n}V_n=0\). In \(\prod_rV_1\), take its \(r\)-th component to be the sequence \(e_r\) supported at index \(r\). At stage \(n\), components with \(r<n\) are zero, but every component with \(r\geq n\) remains nonzero. No finite stage kills the product element. It thus defines a nonzero element in \(\operatorname{colim}_{n}\prod_rV_n\).
 
-The natural map from this latter limit to the product of the individual limits is therefore not injective. A stalk is a filtered limit of neighborhoods, and a covering with countably many sheets can introduce a product in ordinary direct-image cohomology. Their exchange needs additional uniform information, such as a cofinal system of neighborhoods where the whole relevant cohomology restriction has stabilized. The later constructible-specialization proof must establish that information. The formal coefficient triangles above instead rely on the proved internal adjunction (7); no unproved product–limit exchange enters their construction.
+The natural map from this latter colimit to the product of the individual colimits is therefore not injective. A stalk is a filtered colimit of sections over neighborhoods, and a covering with countably many sheets can introduce a product in ordinary direct-image cohomology. Their exchange needs additional uniform information, such as a cofinal system of neighborhoods where the whole relevant cohomology restriction has stabilized. The later constructible-specialization proof must establish that information. The formal coefficient triangles above instead rely on the proved internal adjunction (7); no unproved product–colimit exchange enters their construction.
 
 ## What remains for the specialization comparison
 
 The general nearby and vanishing objects, their monodromy, both actual coefficient triangles, both cycle triangles and the \(1-M\) identities have been proved relative to the recorded sheaf-operation and finite-dimensional topology contracts. The examples distinguish weak coefficients, ramification, ordinary versus exceptional restrictions, and ordinary versus derived extension. The later comparison with normal specialization and microlocalization, holomorphic test recovery of microsupport, quadratic vanishing cycles and proper direct-image compatibility remain separate teaching targets. The arguments require the proper-support adjunction and base-change formulas, closed-support Hom, and finite-dimensional sheaf cohomological dimension stated above; they do not prove those underlying sheaf-operation and topology theorems.
+
+
+## Source and prerequisite scope
+
+Massey’s version 13, §3, pp. 25–28, supplies the classical covering construction, monodromy and two triangles; p. 28 explains the coefficient approach of Kashiwara–Schapira and the punctured trace correction. His introductory constructible setting is narrower than the arbitrary bounded coefficients used here. The finite-support sequence calculation and the linked programme proofs of proper-support base change, internal adjunction, ordinary cohomological bounds and closed support establish the scope used in this lesson. The cone convention here is the shifted convention described on p. 28. Mathematical methods and formulas retain their source credit; the exposition and seven solutions are independently written programme text under CC0. This lesson does not prove the separate specialization comparison or certify every transitive prerequisite of its linked proofs.

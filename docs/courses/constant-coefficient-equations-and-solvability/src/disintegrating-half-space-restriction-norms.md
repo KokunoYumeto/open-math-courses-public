@@ -78,14 +78,14 @@ At \(p=\infty\), the right side is the ordinary supremum of the continuous funct
 ## Partial transforms and varying weights
 
 The partial transform is a continuous automorphism of the joint Schwartz space, with inverse factor \((2\pi)^{-d}\). The needed proof keeps the untransformed variable. For every fixed spatial monomial and derivative, integration by parts gives
-\
+\[
 \begin{gathered}
 \eta^\alpha t^r\partial_\eta^\beta\partial_t^\ell
           \mathcal F_xu(\eta,t)
    \\
 =\mathcal F_x\!\left[
        D_x^\alpha\bigl((-ix)^\beta t^r\partial_t^\ell u\bigr)
-                   \right.
+                   \right](\eta,t).
 \end{gathered}
 \tag{6}
 \]

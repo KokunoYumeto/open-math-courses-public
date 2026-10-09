@@ -1,10 +1,10 @@
 # The six-term exact sequence and the exponential map
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, at Ultra. Independently authored CC0 lesson; self-checked by the writing AI.*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, at Ultra. Independently authored CC0 lesson. Mathematical revisions by GPT-6 Astra (OpenAI), at Ultra.*
 
 A quotient projection need not lift to a projection. Lift it instead to a self-adjoint matrix and exponentiate: its quotient exponential is identity, so the resulting unitary belongs to the ideal's unitization. This construction supplies the missing arrow that closes the index sequence into a cycle. Relative triples retain the quotient comparison itself; an explicit reduction shows that their group depends only on the ideal.
 
-All algebras are complex C*-algebras, all ideals are closed, and maps are *-homomorphisms. We use external unitizations, the normalized index boundary of [Lesson 7, Theorems 2.2 and 4.1](KT-OPK-07.md), the forward doubled-path suspension \(\theta_D:K_1(D)\to K_0(SD)\) of [Lesson 8, Theorem 2.1](KT-OPK-08.md), and the positive Bott loop \(\beta_D:K_0(D)\to K_1(SD)\) of [Lesson 10, Theorem 4.1](KT-OPK-10.md). These are different typed maps. Their signs must be checked before identifying a suspended boundary with an exponential.
+All algebras are complex C*-algebras, all ideals are closed, and maps are *-homomorphisms. We use external unitizations, the normalized index boundary of [Lesson 7, Theorem 2.2](KT-OPK-07.md#2-the-idempotent-associated-to-a-doubled-lift) and [Theorem 4.1](KT-OPK-07.md#4-exactness-at-the-four-interior-groups), the forward doubled-path suspension \(\theta_D:K_1(D)\to K_0(SD)\) of [Lesson 8, Theorem 2.1](KT-OPK-08.md#2-the-idempotent-loop-of-an-invertible), and the positive Bott loop \(\beta_D:K_0(D)\to K_1(SD)\) of [Lesson 10, Theorem 4.1](KT-OPK-10.md#4-the-boundary-proves-periodicity-and-fixes-its-sign). These are different typed maps. Their signs must be checked before identifying a suspended boundary with an exponential.
 
 ## 1. The missing boundary and its sign
 
@@ -16,7 +16,7 @@ E:\quad0\longrightarrow J\xrightarrow{\iota}A
 \tag{1.1}
 \]
 
-Its suspension is exact by Lesson 8, Corollary 1.3. Write \(\delta_E:K_1(B)\to K_0(J)\) for the index boundary and \(\delta_{SE}:K_1(SB)\to K_0(SJ)\) for its suspended version. Define
+Its suspension is exact by [Lesson 8, Corollary 1.3](KT-OPK-08.md#1-cones-suspensions-and-lifting-continuous-functions). Write \(\delta_E:K_1(B)\to K_0(J)\) for the index boundary and \(\delta_{SE}:K_1(SB)\to K_0(SJ)\) for its suspended version. Define
 
 \[
 \begin{gathered}
@@ -28,7 +28,7 @@ Its suspension is exact by Lesson 8, Corollary 1.3. Write \(\delta_E:K_1(B)\to K
 
 The minus sign is part of the definition under our already fixed conventions.
 
-**Theorem 1.1 (positive exponential formula).** Represent a class of \(K_0(B)\) in the normal form
+**Theorem 1.1 (positive exponential formula).** Represent a class of \(K_0(B)\) in [the normal form of Lesson 4, Theorem 1.1](KT-OPK-04.md#1-recording-the-scalar-part)
 
 \[
 \begin{gathered}
@@ -48,7 +48,7 @@ where \(P\) is a scalar projection. Choose \(x=x^*\in M_n(A^+)\) with \(\pi^+(x)
 
 The class in (1.4) belongs to \(K_1(J)\).
 
-*Proof.* Lift the entries of \(e-P\) to \(A\), add \(P\), and take the self-adjoint part. This gives the required \(x\). Put \(u=\exp(2\pi i x)\). Functional calculus commutes with the quotient and augmentation; since \(e,P\) are projections, both images of \(u\) are identity. Thus \(u-I_n\in M_n(J)\), and \(u\) is a normalized unitary over \(J^+\).
+*Proof.* Lift the entries of \(e-P\) to \(A\), add \(P\), and take the self-adjoint part. This gives the required \(x\). Put \(u=\exp(2\pi i x)\). [Continuous functional calculus (Corollary 5.4)](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-07) commutes with the quotient and augmentation; since \(e,P\) are projections, both images of \(u\) are identity. Thus \(u-I_n\in M_n(J)\), and \(u\) is a normalized unitary over \(J^+\).
 
 Use the suspension variable \(s\in[0,1]\). The relative Bott loop and a unitary lift of it are
 
@@ -62,7 +62,7 @@ G(s)&=e^{2\pi i s x}e^{-2\pi i s P}.
 
 Here \(G(0)=I_n\), \(G(1)=u\), its scalar part is constantly identity, and \(\pi^+G=g\). Lesson 10, (1.4), identifies \([g]\) with \(\beta_B([e]-[P])\).
 
-Let \(U(s)\) be the doubled unitary path in \(M_{2n}(J^+)\), starting at identity and ending at \(\operatorname{diag}(u,u^*)\), given explicitly in Lesson 8, (2.2). Its scalar part is identity. Set
+Let \(U(s)\) be the doubled unitary path in \(M_{2n}(J^+)\), starting at identity and ending at \(\operatorname{diag}(u,u^*)\), given explicitly in [Lesson 8, (2.2)](KT-OPK-08.md#2-the-idempotent-loop-of-an-invertible). Its scalar part is identity. Set
 
 \[
 \begin{aligned}
@@ -116,7 +116,7 @@ K_0(J)&\xrightarrow{\iota_*}K_0(A)
 \tag{2.1}
 \]
 
-*Proof.* Lesson 7, Theorem 4.1, proves exactness at \(K_1(A),K_1(B),K_0(J),K_0(A)\). Its application to \(SE\) proves exactness at the two middle groups of
+*Proof.* [Lesson 7, Theorem 4.1](KT-OPK-07.md#4-exactness-at-the-four-interior-groups), proves exactness at \(K_1(A),K_1(B),K_0(J),K_0(A)\). Its application to \(SE\) proves exactness at the two middle groups of
 
 \[
 \begin{aligned}
@@ -141,7 +141,7 @@ For a commutative diagram of extensions, index naturality gives commutation with
 
 The latter statement concerns a stable K-class. It does not assert that the particular matrix projection \(e\) has an unstabilized projection lift.
 
-The positive boundary (1.4) is the one used in [*K-theory of the leaf space*, “Suspension, Bott periodicity and extension boundaries”](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-OPK/preparation.html#dependency-327fefcb6f08). Formula (1.9) specifies the sign when comparing it with our separate suspension map.
+The positive boundary (1.4) is the one used in *K-theory of the leaf space*, “Suspension, Bott periodicity and extension boundaries”. Formula (1.9) specifies the sign when comparing it with our separate suspension map.
 
 **Proposition 2.3 (Exact norm lifts and their limits).** Let \(q:A\to B\) be a surjective *-homomorphism of C*-algebras. Every \(b\in B\) has a lift \(a\in A\) with \(\|a\|=\|b\|\). If \(b\) is self-adjoint or positive, the lift can be chosen with that same property. These assertions hold at every matrix level. Projections, unitaries and normal elements can nevertheless fail to have lifts of the same kind.
 
@@ -159,7 +159,7 @@ H^2=\operatorname{diag}(bb^*,b^*b).
 \tag{2.3}
 \]
 
-Thus \(\|H\|=\|b\|\). The self-adjoint argument in \(M_2(A)\) gives a lift of \(H\) with that exact norm. Its upper-right corner lifts \(b\); corner compression bounds its norm by \(\|b\|\), and quotient contractivity gives equality. Apply these arguments to the surjection \(M_n(A)\to M_n(B)\) for every matrix size. The C*-matrix norm, contractivity and functional-calculus naturality are the continuous-functional-calculus prerequisites used throughout the course.
+Thus \(\|H\|=\|b\|\). The self-adjoint argument in \(M_2(A)\) gives a lift of \(H\) with that exact norm. Its upper-right corner lifts \(b\); corner compression bounds its norm by \(\|b\|\), and quotient contractivity gives equality. Apply these arguments to the surjection \(M_n(A)\to M_n(B)\) for every matrix size. The C*-matrix norm is the spatial matrix norm; [C*-algebras, Theorem 4.2 and Corollary 4.6](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-12) give contractivity and isometry, and [Theorem 5.1 and Corollary 5.4](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-07) give the continuous calculus and its naturality.
 
 Here are full counterexamples to the three stronger lifting assertions. Endpoint evaluation \(C([0,1])\to\mathbb C\oplus\mathbb C\) is onto, by linear interpolation. The projection \((0,1)\) has no projection lift: a continuous function into \(\{0,1\}\) on the connected interval is constant.
 
@@ -194,7 +194,7 @@ This is the universally available stabilized lift of [Richard 2015, Lemma 6.2.1]
 \tag{3.1}
 \]
 
-Homotopy invariance and the line computation in Lessons 6 and 8 give ideal groups \((0,\mathbb Z)\), middle groups \((\mathbb Z,0)\), and quotient groups \((\mathbb Z^2,0)\). Choose the ideal's generator \(\omega(t)=e^{2\pi i t}\). The sole nontrivial part of (2.1) is
+[Nonunital homotopy invariance](KT-OPK-07.md#6-the-fredholm-sign-and-a-cone-extension) and [the line computation in Lesson 8, Section 4](KT-OPK-08.md#4-the-line-and-plane-before-periodicity) give ideal groups \((0,\mathbb Z)\), middle groups \((\mathbb Z,0)\), and quotient groups \((\mathbb Z^2,0)\). Choose the ideal's generator \(\omega(t)=e^{2\pi i t}\). The sole nontrivial part of (2.1) is
 
 \[
 0\longrightarrow\mathbb Z
@@ -206,7 +206,7 @@ Homotopy invariance and the line computation in Lessons 6 and 8 give ideal group
 
 Indeed the quotient projection \((0,1)\) lifts to the self-adjoint function \(t\), whose exponential is \(\omega\). The projection \((1,0)\) lifts to \(1-t\), giving \(\omega^{-1}\). Constants give the diagonal rank map. Every remaining arrow has zero source or target. The kernel of the difference map is the diagonal subgroup, and its image is all integers.
 
-**Example 3.2 (the Toeplitz extension).** Let \(S\) be the unilateral shift and \(p_0=1-SS^*\). Lesson 9 gives
+**Example 3.2 (the Toeplitz extension).** Let \(S\) be the unilateral shift and \(p_0=1-SS^*\). [Lesson 9, Theorem 2.3](KT-OPK-09.md#2-the-symbol-survives-modulo-compact-operators) gives
 
 \[
 0\to\mathcal K\to\mathcal T
@@ -222,7 +222,7 @@ The groups in each column, listed as \((K_0,K_1)\), are \((\mathbb Z,0),(\mathbb
 \tag{3.4}
 \]
 
-under \(K_0(\mathcal K)=\mathbb Z[p_0]\). The first equality is the defect formula for the lift \(S\); the second is Lesson 9's matrix Toeplitz index theorem. This lists all six maps and verifies every kernel and image.
+under \(K_0(\mathcal K)=\mathbb Z[p_0]\). The first equality is the defect formula for the lift \(S\); the second is [Lesson 9's matrix Toeplitz index theorem (Theorem 3.1)](KT-OPK-09.md#3-the-connecting-map-is-minus-winding). This lists all six maps and verifies every kernel and image.
 
 **Example 3.3 (the disc).** Write \(\overline{\mathbb D}\) for the closed disc and \(\mathbb D\) for its interior. Restriction to the boundary gives
 
@@ -385,7 +385,20 @@ tv&(1-t^2b)^{1/2}\\
 
 is a unitary path from a scalar rotation to \(W(v)\). To check unitarity, note \(v f(a)=f(b)v\) for these functions: on the supports \(a,b\) both functions take the same value, while \(v\) vanishes off its initial support. The diagonal products are identity and the off-diagonal products cancel. The scalar rotation itself has the usual rotation path from identity.
 
-An identity-starting quotient unitary path lifts to an identity-starting unitary path in \(A\). One proof divides it into small increments with norm distance from identity less than one, takes their self-adjoint logarithms, lifts these continuously, and exponentiates. Continuous self-adjoint logarithm lifts exist by Lesson 8, Lemma 1.2, applied to the real Banach-space quotient; that lemma's successive interpolation proof works over real scalars. Multiplying successive exponential lifts gives the full path. Thus choose a lift \(U\in M_{2n}(A)\) of (5.4), connected to identity.
+An identity-starting quotient unitary path lifts to an identity-starting unitary path in \(A\). One proof divides it into small increments with norm distance from identity less than one, takes their self-adjoint logarithms, lifts these continuously, and exponentiates. Continuous self-adjoint logarithm lifts exist by [Lesson 8, Lemma 1.2](KT-OPK-08.md#1-cones-suspensions-and-lifting-continuous-functions), applied to the real Banach-space quotient; that lemma's successive interpolation proof works over real scalars. Here are the increments and endpoint conditions explicitly. For an identity-starting path \(u(t)\) in the quotient, choose a finite partition so that \(\|u(t_j)^*u(t)-1\|<1\) on its \(j\)-th interval. [The convergent logarithm](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#OA-FND-BN-14) and [continuous functional calculus](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-07) give
+
+\[
+h_j(t)=-i\log\bigl(u(t_j)^*u(t)\bigr)=h_j(t)^*,
+\qquad h_j(t_j)=0.
+\]
+
+The self-adjoint quotient is onto by symmetrizing an arbitrary lift. Apply the endpoint-preserving lifting lemma to this real Banach-space quotient to obtain a continuous self-adjoint \(H_j(t)\) with \(H_j(t_j)=0\). Starting with \(V(0)=1\), define successively
+
+\[
+V(t)=V(t_j)\exp(iH_j(t)).
+\]
+
+Each interval begins at the previous endpoint, and its quotient is \(u(t_j)\exp(ih_j(t))=u(t)\). Thus the pieces form an identity-starting unitary lift on the entire interval. This construction uses no global logarithm of \(u\). Thus choose a lift \(U\in M_{2n}(A)\) of (5.4), connected to identity.
 
 Put \(p'=\operatorname{diag}(p,0)\), \(q'=\operatorname{diag}(q,0)\). The triple with these projections and \(\operatorname{diag}(v,0)\) equals the original plus a zero triple. Since
 \(\pi(U)\pi(p')=\operatorname{diag}(v,0)\), a path from identity to \(U\) shows it is homotopic to
@@ -419,7 +432,7 @@ An equal-scalar relative class over \(J^+\) gives a triple over \(A\):
 
 Here matrices over \(J^+\) are sent by \(j+\lambda\mapsto j+\lambda1_A\). We do not assume this map embeds the external unitization when \(J\) is unital.
 
-For completeness, (6.1) respects the normal-form relations. Additions are block sums; adding a scalar projection to both terms adds a degenerate triple. If two differences agree, identity stabilization and zero padding, as proved in Lessons 1 and 3, give a projection homotopy between their numerators after the scalar denominators have been made the same projection. Its scalar projection path can be made constant: transport it by scalar unitaries starting at identity, using the close-projection transports of Lesson 1 on a finite subdivision. Conjugate the lifted path by these unitaries. At the last endpoint the transport commutes with the fixed scalar projection. Its stabilizer is \(U(k)\times U(N-k)\), which is connected by diagonalization of scalar unitaries and paths of their eigenvalue angles. A path in that stabilizer restores the required final numerator. The resulting path has the fixed scalar comparison throughout, so it is a homotopy of triples. This proves well-definedness and additivity of \(\eta\).
+For completeness, (6.1) respects the normal-form relations. Additions are block sums; adding a scalar projection to both terms adds a degenerate triple. If two differences agree, identity stabilization and zero padding, as proved in [Lesson 1, Theorem 3.1](KT-OPK-01.md#3-why-an-extra-block-removes-the-difference) and [Lesson 3, Theorem 3.2](KT-OPK-03.md#3-differences-complements-and-equality), give a projection homotopy between their numerators after the scalar denominators have been made the same projection. Its scalar projection path can be made constant: transport it by scalar unitaries starting at identity, using [the close-idempotent transports of Lesson 1, Theorem 2.3](KT-OPK-01.md#2-changing-coordinates-and-following-a-deformation) and [their unitary versions, Theorem 4.2](KT-OPK-01.md#4-replacing-idempotents-by-projections) on a finite subdivision. Conjugate the lifted path by these unitaries. At the last endpoint the transport commutes with the fixed scalar projection. Its stabilizer is \(U(k)\times U(N-k)\), which is connected by diagonalization of scalar unitaries and paths of their eigenvalue angles. A path in that stabilizer restores the required final numerator. The resulting path has the fixed scalar comparison throughout, so it is a homotopy of triples. This proves well-definedness and additivity of \(\eta\).
 
 **Theorem 6.1 (strong excision).** The map (6.1) is an isomorphism. Consequently the canonical map
 
@@ -449,7 +462,7 @@ L\operatorname{diag}(V,I_{2n})L^*,
 
 a unitary whose difference from identity lies in \(M_{4n}(J)\). Their classes in \(K_0(J^+)\) agree, proving lift independence.
 
-For a homotopy of triples, apply the same lifting argument to the quotient of \(C([0,1],A)\) by \(C([0,1],J)\). This quotient is onto by Lesson 8, Lemma 1.2, and is \(C([0,1],A/J)\). Thus the lifts \(U\) can be chosen continuously in the homotopy parameter. Formula (5.6) is continuous in \(p'\), and produces a continuous path \(h\) with fixed scalar \(P\). Hence \(\kappa\) respects homotopy.
+For a homotopy of triples, apply the same lifting argument to the quotient of \(C([0,1],A)\) by \(C([0,1],J)\). This quotient is onto by [Lesson 8, Lemma 1.2](KT-OPK-08.md#1-cones-suspensions-and-lifting-continuous-functions), and is \(C([0,1],A/J)\). Thus the lifts \(U\) can be chosen continuously in the homotopy parameter. Formula (5.6) is continuous in \(p'\), and produces a continuous path \(h\) with fixed scalar \(P\). Hence \(\kappa\) respects homotopy.
 
 If the triple is degenerate with partial-isometry lift \(w\), choose \(U=W(w)\). The same path (5.5) in \(A\) makes this an admissible lift. Then \(U^*q'U=p'\), so \(s=r\), \(h=P\), and \(\kappa(T)=0\). For block sums, choose the block sum of the lifts after rearranging coordinates. The constructions of \(r,s,L,h\) are block sums after the same scalar permutation. Thus \(\kappa\) is additive. It descends to a homomorphism \(R(A,J)\to K_0(J)\).
 

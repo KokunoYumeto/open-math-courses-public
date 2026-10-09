@@ -59,7 +59,7 @@ Put \(s=(1-w)^{-1}\), and \(z_\rho=1-1/\rho\). Each ratio becomes
 Its logarithm has \(w^n\)-coefficient \((1-z_\rho^{-n})/n\). The symmetry \(\rho\mapsto1-\rho\) replaces \(z_\rho\) by \(z_\rho^{-1}\), preserving the cutoff \(|\gamma|\leq T\). This proves (1.4). Uniform convergence follows either from the logarithmic derivative or from conjugate pairing and its \(O(|\rho|^{-2})\) remainder on a sufficiently small disk.
 
 To compare derivatives directly, expand \(L(1+t)\) and put \(t=w/(1-w)\). Since
-\(w^n)^j=\binom{n-1}{j-1}\), multiplication by \(n\) gives
+\([w^n](w/(1-w))^j=\binom{n-1}{j-1}\), multiplication by \(n\) gives
 
 \[
 \lambda_n=\sum_{j=1}^n

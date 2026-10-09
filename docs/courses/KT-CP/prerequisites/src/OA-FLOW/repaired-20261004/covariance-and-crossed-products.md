@@ -214,7 +214,7 @@ uniformly: $\{\alpha_t(b)\}$ there is compact. Multiplication by $h$ proves $P_\
 
 Denote its integrated representation by $\operatorname{Ind}\rho$. On a vector $\xi$ its defining formula is the Bochner integral of operators applied to that vector. On a compact simple tensor it has the pointwise form
 $$
- \operatorname{Ind}\rho(F)(h\eta)
+ [\operatorname{Ind}\rho(F)(h\eta)](t)
  =\int\rho(\alpha_{t^{-1}}(F(s)))h(s^{-1}t)\eta\,ds.
  \tag{4.3}
 $$
@@ -519,7 +519,7 @@ are isometric by the modular formula, satisfy $V_sV_r=V_{sr}$, and have inverse 
 
 The integrated operator of $F\in C_c(G,C_0(G))$, on compactly supported vectors, has the kernel
 $$
- \Phi(F)\xi=\int K_F(x,y)\xi(y)\,dy,\qquad
+ [\Phi(F)\xi](x)=\int K_F(x,y)\xi(y)\,dy,\qquad
  K_F(x,y)=F(x^{-1}y)(x)\Delta(x^{-1}y)^{1/2}.
  \tag{10.3}
 $$

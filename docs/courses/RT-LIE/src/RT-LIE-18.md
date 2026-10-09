@@ -1137,7 +1137,7 @@ The ordinary cohomological convention is \(H^r(K[m])=H^{r+m}(K)\). Duality satis
 \(\mathbb D f^*=f^!\mathbb D\),
 \(\mathbb D f_*=f_!\mathbb D\).
 For a proper \(f\), \(f_*=f_!\). For a smooth morphism of relative complex dimension one,
-\(f^!=f^*2\). These are hypotheses about the constructed mixed formalism, including its twist normalization.
+\(f^!=f^*[2](1)\). These are hypotheses about the constructed mixed formalism, including its twist normalization.
 
 **MP1, minimal-parabolic cell geometry.** For each simple reflection \(s\), the projection
 \(p_s:X\to Y_s=G/P_s\) is proper and smooth of relative dimension one. The Bruhat cells of \(Y_s\) are \(D_u\), indexed by the minimal representatives \(u\) of the right cosets \(W/\langle s\rangle\), equivalently \(us>u\). For each such \(u\),
@@ -1150,14 +1150,14 @@ p_s|_{C_u}:C_u\xrightarrow{\sim}D_u,
 
 where \(C_u\) is closed in \(p_s^{-1}(D_u)\), and \(C_{us}\) is its open complement. The restriction \(f_u:C_{us}\to D_u\) is a locally trivial affine-line bundle. It has the ordinary compact-support orientation comparison
 
-\
+\[
 (f_u)_!\mathbf1_{C_{us}}
-\simeq\mathbf1_{D_u}[-2.
+\simeq\mathbf1_{D_u}[-2](-1).
 \tag{8.51}
 \]
 
 Equation (8.51) is only the relative affine-line calculation. For a product \(D_u\times\mathbb A^1\), it follows from
-\(R\Gamma_c(\mathbb A^1,\mathbf1)=\mathbf1-2\), followed by product base change. A locally trivial bundle gives the same comparison by its relative trace; the transition maps preserve the complex orientation. Its validity in the selected mixed realization is included explicitly here. No parity, purity or decomposition theorem for IC is included.
+\(R\Gamma_c(\mathbb A^1,\mathbf1)=\mathbf1[-2](-1)\), followed by product base change. A locally trivial bundle gives the same comparison by its relative trace; the transition maps preserve the complex orientation. Its validity in the selected mixed realization is included explicitly here. No parity, purity or decomposition theorem for IC is included.
 
 The geometry in (8.50) is the two-cell rank-one geometry over each partial-flag cell. It can also be expressed by a trivialization with fiber \(P_s/B\simeq\mathbb P^1\): the lower cell selects one point of the fiber, and the upper cell is its affine-line complement. The proof below needs exactly (8.50) and (8.51), not a chosen global trivialization.
 
@@ -1195,8 +1195,8 @@ e_z(K)=\sum_{r,a}(-1)^r
 
 Here \(K_z\) is the coefficient complex at any point of \(C_z\), whose mixed constancy is part of MP0. Long exact cohomology sequences and exact weight-graded dimensions make this character additive on distinguished triangles. Reindexing gives
 
-\
-\operatorname{ch}(K[m)=(-1)^m v^{-2n}\operatorname{ch}(K),
+\[
+\operatorname{ch}(K[m](n))=(-1)^m v^{-2n}\operatorname{ch}(K),
 \qquad \operatorname{ch}(E_z\otimes V)=\operatorname{wtchar}(V)T_z.
 \tag{8.54}
 \]
@@ -1212,9 +1212,9 @@ Q_s=p_s^*p_{s*}.
 
 Fix \(u\) with \(us>u\), and write \(i_u:D_u\hookrightarrow Y_s\) and \(F_u=i_{u!}\mathbf1_{D_u}\). Since \(p_s\) is proper, functoriality of \(!\), (8.50) and (8.51) give actual derived comparisons
 
-\
+\[
 p_{s*}E_u=F_u,\qquad
-p_{s*}E_{us}=F_u[-2.
+p_{s*}E_{us}=F_u[-2](-1).
 \tag{8.56}
 \]
 
@@ -1225,7 +1225,7 @@ Base change for \(!\) identifies \(p_s^*F_u\) with the extension by zero of the 
 
 \[
 [Q_sE_u]=[E_u]+[E_{us}],\qquad
-[Q_sE_{us}]=E_u[-2]+E_{us}[-2].
+[Q_sE_{us}]=[E_u[-2](-1)]+[E_{us}[-2](-1)].
 \tag{8.57}
 \]
 
@@ -1257,12 +1257,12 @@ This step has not used compatibility of the character with duality; deriving tha
 
 Properness and smoothness of \(p_s\), in that order, give
 
-\
+\[
 \begin{aligned}
 \mathbb D_XQ_sK
 &\simeq p_s^!\mathbb D_{Y_s}p_{s*}K\\
 &\simeq p_s^!p_{s*}\mathbb D_XK\\
-&\simeq Q_s\mathbb D_XK[2.
+&\simeq Q_s\mathbb D_XK[2](1).
 \end{aligned}
 \tag{8.60}
 \]
@@ -1354,7 +1354,7 @@ e_x(K)=\sum_{r,a}(-1)^r
 \tag{8.68}
 \]
 
-**Lemma 8.3.** This character is additive on distinguished triangles, sends \(Km\) to
+**Lemma 8.3.** This character is additive on distinguished triangles, sends \(K[m](n)\) to
 \((-1)^m v^{-2n}\operatorname{ch}_{\mathcal H}(K)\), and sends \(E_x\otimes V\) to \(\operatorname{wtchar}(V)T_x\).
 
 **Proof.** Apply cell restriction to a distinguished triangle. Its finite long exact cohomology sequence has zero alternating weight character: split it into the short exact sequences of kernels and images, use G0's additivity, and cancel the image terms. This proves additivity. Reindexing the finite sum for \(K[m]\) gives the factor \((-1)^m\); the Tate rule gives \(v^{-2n}\). Extension by zero has stalk zero on all other cells, and on its own cell its stalk is the coefficient \(V\) in degree zero. This proves the last assertion. \(\square\)
@@ -1415,7 +1415,7 @@ By (8.45) and the shift rule for duality,
 \mathbb D J_y
 =\mathbb D(I_y[-d_y])
 \simeq I_y(d_y)[d_y]
-=J_y2d_y.
+=J_y[2d_y](d_y).
 \]
 The even shift has Grothendieck sign \(+1\). Lemmas 8.3–8.4 therefore give
 \[

@@ -69,7 +69,7 @@ T'_1=QT_{h_1}Q+(1-Q)
 \tag{1.4}
 \]
 is a compact perturbation. For example
-\(M_{k_0}D(1-P)=M_{k_0},D\) is compact, and the other off-diagonal block vanishes. Thus these are valid endpoint perturbation paths.
+\(M_{k_0}D(1-P)=[M_{k_0},D](1-P)\) is compact, and the other off-diagonal block vanishes. Thus these are valid endpoint perturbation paths.
 
 The complementary cycles in (1.4) are exactly degenerate. The corner at \(P\) has scalar representation \(e_0\) and Fredholm index one; that at \(Q\) has scalar representation \(e_1\) and the same index. A Hilbert-space Fredholm operator in a scalar represented cycle is compactly perturbable to its polar partial isometry. Its invertible complement is a degenerate cycle, and its finite kernel/cokernel cycle reduces, by cancellation of opposite parity pairs, to its index times the one-dimensional evaluation cycle. Thus the two corners represent \(e_0,e_1\).
 

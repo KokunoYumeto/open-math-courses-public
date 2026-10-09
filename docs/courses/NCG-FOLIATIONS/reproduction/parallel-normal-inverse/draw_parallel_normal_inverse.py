@@ -1,4 +1,4 @@
-"""Actual invariant inverse phase and dense normal-compatible operator core: original CC0."""
+"""Actual invariant inverse phase and full joint operator/normal graph core: original CC0."""
 from pathlib import Path
 from fractions import Fraction as Q
 import argparse, base64, html, io, json, math
@@ -12,15 +12,15 @@ options = p.parse_args()
 options.output_dir.mkdir(parents=True, exist_ok=True)
 font = (options.resources / "fonts/DejaVuSans.ttf").read_bytes()
 notice = (options.resources / "FONT-NOTICE.txt").read_text(encoding="utf-8")
-W, H = 2450, 1780
+W, H = 2450, 2150
 INK, BLUE, GREEN, RED = "#17283c", "#17638d", "#286d49", "#b64932"
 im = Image.new("RGB", (W, H), "#f8fafc")
 d = ImageDraw.Draw(im)
 fonts, overflow = {}, []
 svg = [
     f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
-    "<title>A parallel actual inverse phase and dense normal-compatible operator core</title>",
-    "<desc>PNC.1 to PNC.18. The actual normalized inverse phase is flattened by an even genuine equivariant unitary. A compact normal-smooth inverse gives a self-adjoint regular operator in the same class and a dense normal-compatible operator core. The original zero-source copy remains; source-essential compression, unbounded source and arrow controls and the physical graph comparison remain unproved.</desc>",
+    "<title>A parallel actual inverse phase and full joint operator/normal graph core</title>",
+    "<desc>PNC.1 to PNC.23. The actual normalized inverse phase is flattened by an even genuine equivariant unitary. A compact normal-smooth inverse gives a self-adjoint regular operator in the same class and a full joint operator/normal graph core. The original zero-source copy remains; source-essential compression, unbounded source and arrow controls and the physical graph comparison remain unproved.</desc>",
     "<metadata>" + html.escape("Original CC0 figure.\n" + notice) + "</metadata>",
     '<style>@font-face{font-family:LocalSans;src:url(data:font/ttf;base64,'
     + base64.b64encode(font).decode() + ')}text{font-family:LocalSans}</style>',
@@ -61,8 +61,8 @@ def circle(x, y, r, col):
 
 
 
-text(45,25,"A parallel actual inverse phase gives a dense normal-compatible operator core",37)
-text(45,90,"PNC.1–PNC.18. Actual class dX and source B; full new operator domain; the normalization's zero-source copy stays.",25)
+text(45,25,"A parallel actual inverse phase gives a full joint operator/normal graph core",37)
+text(45,90,"PNC.1–PNC.23. Actual class dX and source B; full new operator domain; the normalization's zero-source copy stays.",25)
 box(45,155,1135,565);box(1240,155,1165,565)
 text(78,185,"The ACTUAL exactly invariant normalized phase",29)
 text(78,250,"Fhat=[ Fav sqrt(1−Fav²) ; sqrt(1−Fav²) −Fav ]",26,BLUE)
@@ -98,7 +98,7 @@ for key,col in [("11",BLUE),("22",GREEN),("12",INK)]:
 text(205,1290,"−1",21);text(640,1290,"0",21);text(1020,1290,"1",21)
 text(78,1360,"Blue h11=(2+x)/32; green h22=(3−x)/32; black h12=x/128.",22)
 text(78,1420,"PNC.18: exact rational 8×8 realified inverse/derivative tests.",23)
-text(1273,815,"The ACTUAL dense normal-compatible operator core",29)
+text(1273,815,"The ACTUAL full joint operator/normal graph core",29)
 text(1273,880,"Cλ=Rλ CN ⊂ Dom T ∩ Dom ∇",29,BLUE)
 text(1273,940,"Every z∈Dom T: approximate (T+iλ)z by ξn∈CN",24)
 text(1273,1000,"Rλ ξn → z; T Rλ ξn=(1−iλRλ)ξn → Tz",25,GREEN)
@@ -106,14 +106,20 @@ text(1273,1060,"This is a full T-graph core and a dense joint domain.",25,GREEN)
 text(1273,1120,"FT=J(1+H0²)⁻¹/²; FT−J is module compact",26)
 text(1273,1180,"The full source-typed bounded cycle still has class dX.",24,GREEN)
 text(1273,1240,"Bounded arrow error = αg(FT−J)−(FT−J), compact",24)
-text(1273,1300,"A core for T is not yet a core for the joint graph.",24,RED)
+text(1273,1300,"The weighted proof below gives the full joint graph core.",24,RED)
 text(1273,1360,"The Φ-source and unbounded arrow tests remain.",25,RED)
 text(1273,1420,"The zero-source submodule has not been compressed.",24,RED)
 box(45,1510,2360,195)
 text(78,1540,"Retain both proved representatives while completing the physical comparison",30)
 text(78,1600,"The earlier essential inverse has nondegenerate B-source and full unbounded arrow domains; this one has the new normal core.",23)
 text(78,1660,"Original C0(T) balance, z⁻¹ρ(s), exterior grading and final right Clifford block remain required.",25,RED)
-text(45,1740,"Original CC0. Finite matrices check source rank, normalization and resolvent order; actual infinite class/core assertions are proved.",23)
+text(45,2110,"Original CC0. Finite matrices check source rank, normalization and resolvent order; actual infinite class/core assertions are proved.",23)
+box(45,1750,2360,300)
+text(78,1780,"PNC.19–23: compactness yields convergence in ALL THREE full graphs",31,GREEN)
+text(78,1840,"βλ=||(Bλ⁻¹⊗1)δH0|| → 0;  ||(δuλ)H0|| ≤ βλ; uλ=iλRλ.",28,BLUE)
+text(78,1900,"ξ=H0η:  ||δuλ ξ|| ≤ βλ ||Tξ||. Thus uλξ, Tuλξ and ∇uλξ converge.",27,GREEN)
+text(78,1960,"(T+iμ)uλξ=iλξ+iλi(μ−λ)Rλξ ∈ Dom ∇: approximate this in the normal core.",26)
+text(78,2010,"Fixed Rμ CN is a full joint core; essential compression and the physical product still need proofs.",25,RED)
 assert not overflow,overflow
 
 def mm(a,b):return [[sum((a[i][k]*b[k][j] for k in range(len(b))),Q()) for j in range(len(b[0]))] for i in range(len(a))]
@@ -171,7 +177,7 @@ for x in [Q(-1),Q(-1,2),Q(0),Q(1,2),Q(1)]:
         assert direct==ordered
         resolvents.append(dict(x=str(x),lambda_value=lam,exact_left_and_right_inverse=True,exact_derivative_order=True,determinant=str(det)))
 assert any(any(any(x for x in r) for r in [[Q(x) for x in r] for r in v['commutator']]) for v in noncommuting)
-checks=dict(schema="parallel-normal-inverse-checks/v1",field="Q",normalized_phase=mat(Fhat),normalization_unitary=mat(Wm),flattened_phase=mat(J),transformed_source_identity=mat(source_identity),source_identity_rank=2,total_dimension=4,zero_source_subspace_retained=True,exact_normalization_and_grading=True,source_products=products,normal_resolvent_tests=resolvents,noncommuting_h_derivative=noncommuting,all_fraction_checks=True,actual_entire_B_source_class_retained_by_proof=True,actual_invariant_phase_parallel_connection_proved=True,actual_completed_normal_resolvent_preservation_proved=True,dense_normal_compatible_full_operator_core_proved=True,joint_domain_dense_proved=True,source_nondegeneracy_restored=False,full_joint_graph_core_proved=False,full_unbounded_B_source_commutators_proved=False,full_unbounded_arrow_domain_preservation_proved=False,source_essential_normal_compression_proved=False,original_physical_graph_sum_proved=False,original_Bott_comparison_proved=False,finite_model_proves_original_inverse=False,canvas=[W,H],text_canvas_overflows=overflow)
+checks=dict(schema="parallel-normal-inverse-checks/v1",field="Q",normalized_phase=mat(Fhat),normalization_unitary=mat(Wm),flattened_phase=mat(J),transformed_source_identity=mat(source_identity),source_identity_rank=2,total_dimension=4,zero_source_subspace_retained=True,exact_normalization_and_grading=True,source_products=products,normal_resolvent_tests=resolvents,noncommuting_h_derivative=noncommuting,all_fraction_checks=True,actual_entire_B_source_class_retained_by_proof=True,actual_invariant_phase_parallel_connection_proved=True,actual_completed_normal_resolvent_preservation_proved=True,dense_normal_compatible_full_operator_core_proved=True,joint_domain_dense_proved=True,source_nondegeneracy_restored=False,full_joint_graph_core_proved=True,normalized_full_joint_graph_core_proved=True,weighted_normal_derivative_convergence_proved=True,source_essential_full_joint_graph_core_proved=False,full_unbounded_B_source_commutators_proved=False,full_unbounded_arrow_domain_preservation_proved=False,source_essential_normal_compression_proved=False,original_physical_graph_sum_proved=False,original_Bott_comparison_proved=False,finite_model_proves_original_inverse=False,canvas=[W,H],text_canvas_overflows=overflow)
 svg.append("</svg>")
 im.save(options.output_dir/"parallel-normal-inverse.png",format="PNG",optimize=False,compress_level=9)
 (options.output_dir/"parallel-normal-inverse.svg").write_text("\n".join(svg)+"\n",encoding="utf-8",newline="\n")

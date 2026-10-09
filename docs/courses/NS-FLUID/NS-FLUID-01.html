@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Forces, energy and vorticity in incompressible flow — Incompressible flow</title><link rel="stylesheet" href="reader.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script>
+<script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Incompressible flow</a><a href="src/forces-energy-and-vorticity.md">Editable lesson</a><span class="unlinked">Sources and authorship</span></nav></header><main id="main"><nav aria-label="Lesson sequence"><a href="NS-FLUID-02.html">Next lesson</a></nav><article class="lesson"><h1 id="forces-energy-and-vorticity-in-incompressible-flow">Forces, energy and vorticity in incompressible flow</h1>
+<p><em>Written by GPT-6 Astra (OpenAI) at Ultra, October 2026. Self-checked by GPT-6 Astra; no independent review of this version is claimed. Mathematical text dedicated to the public domain under CC0.</em></p>
+<p>A force can add energy to a fluid, remove energy, or change its rotation. These effects are related, but they are not identical. The energy identity measures the work done by a force. The vorticity equation measures the rotation created by its curl. A pressure gradient can redistribute momentum without contributing to either total work or curl in the setting considered here.</p>
+<p>This lesson derives those statements from the incompressible equations. It also shows exactly how velocity, pressure, viscosity and force change when space and time are rescaled. The scalar coupled to a Boussinesq fluid has its own scale factor, which must be kept when comparing the two systems.</p>
+<p>We assume multivariable differentiation, integration, the product rule, integration by parts and the Cauchy–Schwarz inequality. All fields in the proofs are smooth. We state the support assumptions needed for each spatial integral, so no theorem about weak solutions or existence of a flow is being used. Basic references for the coupled two-dimensional equations are Li [L], Chae–Miao–Xue [CMX] and Ju [J]. Every fluid calculation used in this lesson is supplied below.</p>
+<h2 id="1-the-equations-and-their-data">1. The equations and their data</h2>
+<p>Let <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, let <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, and let <span class="math" data-tex="\(0&lt;T&lt;\infty\)">\(0&lt;T&lt;\infty\)</span>. For <span class="math" data-tex="\(x\in\mathbb R^n\)">\(x\in\mathbb R^n\)</span> and <span class="math" data-tex="\(0\leq t&lt;T\)">\(0\leq t&lt;T\)</span>, the velocity is a vector</p>
+<span class="math math-display" data-tex="\[
+u(x,t)=(u_1(x,t),\ldots,u_n(x,t)).
+\]">\[
+u(x,t)=(u_1(x,t),\ldots,u_n(x,t)).
+\]</span>
+<p>The pressure <span class="math" data-tex="\(p(x,t)\)">\(p(x,t)\)</span> is a scalar. The external force <span class="math" data-tex="\(f(x,t)\)">\(f(x,t)\)</span> is a vector. We use the equations</p>
+<span class="math math-display" data-tex="\[
+\partial_tu+(u\cdot\nabla)u+\nabla p-\nu\Delta u=f,
+\qquad
+\operatorname{div}u=0.                                      \tag{1.1}
+\]">\[
+\partial_tu+(u\cdot\nabla)u+\nabla p-\nu\Delta u=f,
+\qquad
+\operatorname{div}u=0.                                      \tag{1.1}
+\]</span>
+<p>Their component form is</p>
+<span class="math math-display" data-tex="\[
+\partial_tu_i+\sum_{j=1}^n u_j\partial_ju_i+\partial_ip
+-\nu\sum_{j=1}^n\partial_j^2u_i=f_i,
+\qquad
+\sum_{i=1}^n\partial_i u_i=0.                                \tag{1.2}
+\]">\[
+\partial_tu_i+\sum_{j=1}^n u_j\partial_ju_i+\partial_ip
+-\nu\sum_{j=1}^n\partial_j^2u_i=f_i,
+\qquad
+\sum_{i=1}^n\partial_i u_i=0.                                \tag{1.2}
+\]</span>
+<p>The initial condition is <span class="math" data-tex="\(u(x,0)=u_0(x)\)">\(u(x,0)=u_0(x)\)</span>. A classical solution means that the required derivatives exist continuously and these equations hold pointwise. In this lesson all fields have as many derivatives as the calculation needs.</p>
+<p>The constant <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is the physical viscosity. It is present in every equation below. We do not change it by a choice of units without recording the change.</p>
+<p>The pressure is unchanged as a physical gradient when we replace it by</p>
+<span class="math math-display" data-tex="\[
+\widehat p(x,t)=p(x,t)+c(t),
+\]">\[
+\widehat p(x,t)=p(x,t)+c(t),
+\]</span>
+<p>where <span class="math" data-tex="\(c\)">\(c\)</span> depends only on time. This follows from <span class="math" data-tex="\(\nabla_xc(t)=0\)">\(\nabla_xc(t)=0\)</span>. A spatially varying addition behaves differently: if <span class="math" data-tex="\(\widehat p=p+\phi(x,t)\)">\(\widehat p=p+\phi(x,t)\)</span>, the same velocity solves (1.1) with force <span class="math" data-tex="\(\widehat f=f+\nabla\phi\)">\(\widehat f=f+\nabla\phi\)</span>. Thus the velocity alone does not determine a unique pair consisting of pressure and force.</p>
+<h3 id="smoothness-before-and-at-an-endpoint">Smoothness before and at an endpoint</h3>
+<p>Saying that a force is smooth for <span class="math" data-tex="\(t&lt;T\)">\(t&lt;T\)</span> says nothing by itself about its behavior as <span class="math" data-tex="\(t\)">\(t\)</span> approaches <span class="math" data-tex="\(T\)">\(T\)</span>. For example, let <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> be a nonzero smooth function of compact support and set</p>
+<span class="math math-display" data-tex="\[
+f(x,t)=\frac{\varphi(x)}{T-t}e_1.
+\]">\[
+f(x,t)=\frac{\varphi(x)}{T-t}e_1.
+\]</span>
+<p>This force is smooth at every point with <span class="math" data-tex="\(t&lt;T\)">\(t&lt;T\)</span>, but its supremum diverges as <span class="math" data-tex="\(t\uparrow T\)">\(t\uparrow T\)</span>.</p>
+<p>For a precise stronger condition, suppose <span class="math" data-tex="\(f\)">\(f\)</span> is the restriction of a smooth function on an open neighborhood of <span class="math" data-tex="\(\mathbb R^n\times[0,T]\)">\(\mathbb R^n\times[0,T]\)</span>, and suppose one compact set <span class="math" data-tex="\(K\subset\mathbb R^n\)">\(K\subset\mathbb R^n\)</span> contains its spatial support for every <span class="math" data-tex="\(t\in[0,T]\)">\(t\in[0,T]\)</span>. Each mixed derivative then has a finite bound:</p>
+<span class="math math-display" data-tex="\[
+\sup_{x\in\mathbb R^n,\ 0\leq t\leq T}
+|\partial_x^\gamma\partial_t^b f(x,t)|&lt;\infty.                \tag{1.3}
+\]">\[
+\sup_{x\in\mathbb R^n,\ 0\leq t\leq T}
+|\partial_x^\gamma\partial_t^b f(x,t)|&lt;\infty.                \tag{1.3}
+\]</span>
+<p>Indeed the derivative is zero outside <span class="math" data-tex="\(K\)">\(K\)</span>, and its absolute value is a continuous function on the compact set <span class="math" data-tex="\(K\times[0,T]\)">\(K\times[0,T]\)</span>. This applies to each particular derivative. It does not assert one bound shared by all derivative orders.</p>
+<p>For finite <span class="math" data-tex="\(p\geq1\)">\(p\geq1\)</span>, the same support gives</p>
+<span class="math math-display" data-tex="\[
+\|f(t)\|_{L^p(\mathbb R^n)}
+\leq |K|^{1/p}\|f(t)\|_{L^\infty(\mathbb R^n)}.
+\]">\[
+\|f(t)\|_{L^p(\mathbb R^n)}
+\leq |K|^{1/p}\|f(t)\|_{L^\infty(\mathbb R^n)}.
+\]</span>
+<p>This follows by bounding the integral of <span class="math" data-tex="\(|f|^p\)">\(|f|^p\)</span> over <span class="math" data-tex="\(K\)">\(K\)</span>. Endpoint regularity and a common spatial support therefore control both spatial supremum norms and finite spatial integral norms. They are substantive conditions in a forced singularity problem.</p>
+<h2 id="2-pressure-and-incompressibility">2. Pressure and incompressibility</h2>
+<p>Taking a divergence in (1.1) gives an equation for the pressure.</p>
+<p><strong>Proposition 2.1.</strong> Every smooth solution of (1.1) satisfies</p>
+<span class="math math-display" data-tex="\[
+\Delta p
+=\operatorname{div}f
+-\sum_{i,j=1}^n(\partial_i u_j)(\partial_j u_i).               \tag{2.1}
+\]">\[
+\Delta p
+=\operatorname{div}f
+-\sum_{i,j=1}^n(\partial_i u_j)(\partial_j u_i).               \tag{2.1}
+\]</span>
+<p><strong>Proof.</strong> The divergence of <span class="math" data-tex="\(\partial_tu\)">\(\partial_tu\)</span> and of <span class="math" data-tex="\(\Delta u\)">\(\Delta u\)</span> is zero because spatial differentiation commutes with time differentiation and the Laplacian. For advection,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_i\partial_i\!\left(\sum_j u_j\partial_j u_i\right)
+&amp;=\sum_{i,j}(\partial_i u_j)(\partial_j u_i)
++\sum_j u_j\partial_j\!\left(\sum_i\partial_i u_i\right)\\
+&amp;=\sum_{i,j}(\partial_i u_j)(\partial_j u_i).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_i\partial_i\!\left(\sum_j u_j\partial_j u_i\right)
+&amp;=\sum_{i,j}(\partial_i u_j)(\partial_j u_i)
++\sum_j u_j\partial_j\!\left(\sum_i\partial_i u_i\right)\\
+&amp;=\sum_{i,j}(\partial_i u_j)(\partial_j u_i).
+\end{aligned}
+\]</span>
+<p>Substituting this into the divergence of (1.1) proves (2.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Equation (2.1) is a necessary consequence of the full momentum equation. Solving it alone does not prove that all components of (1.1) hold. The momentum equation must still be checked.</p>
+<p>One can also run the calculation in the other direction without solving an existence problem. Choose a smooth divergence-free velocity <span class="math" data-tex="\(u\)">\(u\)</span> and a smooth pressure <span class="math" data-tex="\(p\)">\(p\)</span>, and define</p>
+<span class="math math-display" data-tex="\[
+f=\partial_tu+(u\cdot\nabla)u+\nabla p-\nu\Delta u.            \tag{2.2}
+\]">\[
+f=\partial_tu+(u\cdot\nabla)u+\nabla p-\nu\Delta u.            \tag{2.2}
+\]</span>
+<p>Then (1.1) holds by substitution. The mathematical work in a prescribed-force problem is to obtain the required properties of <span class="math" data-tex="\(u,p,f\)">\(u,p,f\)</span> simultaneously. Formula (2.2) does not show that the resulting force is small, compactly supported, or smooth at a missing time endpoint.</p>
+<h2 id="3-the-exact-energy-balance">3. The exact energy balance</h2>
+<p>Fix <span class="math" data-tex="\(t_*&lt;T\)">\(t_*&lt;T\)</span>. Suppose the velocity and all the derivatives used below are smooth on <span class="math" data-tex="\([0,t_*]\)">\([0,t_*]\)</span>, with velocity supported in one compact spatial set on this interval. The pressure may extend outside that set. Products containing <span class="math" data-tex="\(u\)">\(u\)</span>, including <span class="math" data-tex="\(pu\)">\(pu\)</span>, are still compactly supported, so their divergence integrals vanish.</p>
+<p>Write</p>
+<span class="math math-display" data-tex="\[
+\|u(t)\|_2^2=\int_{\mathbb R^n}|u(x,t)|^2\,dx,\qquad
+\|\nabla u(t)\|_2^2
+=\sum_{i,j=1}^n\int_{\mathbb R^n}|\partial_j u_i(x,t)|^2\,dx.
+\]">\[
+\|u(t)\|_2^2=\int_{\mathbb R^n}|u(x,t)|^2\,dx,\qquad
+\|\nabla u(t)\|_2^2
+=\sum_{i,j=1}^n\int_{\mathbb R^n}|\partial_j u_i(x,t)|^2\,dx.
+\]</span>
+<p><strong>Theorem 3.1.</strong> Under these assumptions,</p>
+<span class="math math-display" data-tex="\[
+\frac12\frac{d}{dt}\|u(t)\|_2^2
++\nu\|\nabla u(t)\|_2^2
+=\int_{\mathbb R^n}u(x,t)\cdot f(x,t)\,dx.                   \tag{3.1}
+\]">\[
+\frac12\frac{d}{dt}\|u(t)\|_2^2
++\nu\|\nabla u(t)\|_2^2
+=\int_{\mathbb R^n}u(x,t)\cdot f(x,t)\,dx.                   \tag{3.1}
+\]</span>
+<p>Consequently, for <span class="math" data-tex="\(0\leq t\leq t_*\)">\(0\leq t\leq t_*\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\frac12\|u(t)\|_2^2
++\nu\int_0^t\|\nabla u(s)\|_2^2\,ds
+=\frac12\|u_0\|_2^2+\int_0^t\!\int_{\mathbb R^n}u\cdot f\,dx\,ds.
+\tag{3.2}
+\]">\[
+\frac12\|u(t)\|_2^2
++\nu\int_0^t\|\nabla u(s)\|_2^2\,ds
+=\frac12\|u_0\|_2^2+\int_0^t\!\int_{\mathbb R^n}u\cdot f\,dx\,ds.
+\tag{3.2}
+\]</span>
+<p><strong>Proof.</strong> Multiply component <span class="math" data-tex="\(i\)">\(i\)</span> of (1.2) by <span class="math" data-tex="\(u_i\)">\(u_i\)</span>, sum over <span class="math" data-tex="\(i\)">\(i\)</span>, and integrate. The time term is <span class="math" data-tex="\(\frac12\frac{d}{dt}\|u\|_2^2\)">\(\frac12\frac{d}{dt}\|u\|_2^2\)</span>. The transport term is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{i,j}\int u_i u_j\partial_j u_i
+&amp;=\int u\cdot\nabla\left(\frac{|u|^2}{2}\right)\\
+&amp;=\int\operatorname{div}\left(\frac{|u|^2}{2}u\right)
+-\int\frac{|u|^2}{2}\operatorname{div}u=0.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{i,j}\int u_i u_j\partial_j u_i
+&amp;=\int u\cdot\nabla\left(\frac{|u|^2}{2}\right)\\
+&amp;=\int\operatorname{div}\left(\frac{|u|^2}{2}u\right)
+-\int\frac{|u|^2}{2}\operatorname{div}u=0.
+\end{aligned}
+\]</span>
+<p>The pressure term is</p>
+<span class="math math-display" data-tex="\[
+\int u\cdot\nabla p=\int\operatorname{div}(pu)-\int p\operatorname{div}u=0.
+\]">\[
+\int u\cdot\nabla p=\int\operatorname{div}(pu)-\int p\operatorname{div}u=0.
+\]</span>
+<p>For each <span class="math" data-tex="\(i,j\)">\(i,j\)</span>, integration by parts gives</p>
+<span class="math math-display" data-tex="\[
+-\nu\int u_i\partial_j^2u_i=\nu\int|\partial_j u_i|^2.
+\]">\[
+-\nu\int u_i\partial_j^2u_i=\nu\int|\partial_j u_i|^2.
+\]</span>
+<p>The force term remains <span class="math" data-tex="\(\int u\cdot f\)">\(\int u\cdot f\)</span>. This proves (3.1); integration in time proves (3.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.2.</strong> If in addition <span class="math" data-tex="\(\int_0^{t_*}\|f(s)\|_2\,ds&lt;\infty\)">\(\int_0^{t_*}\|f(s)\|_2\,ds&lt;\infty\)</span>, the same solution obeys</p>
+<span class="math math-display" data-tex="\[
+\|u(t)\|_2\leq\|u_0\|_2+\int_0^t\|f(s)\|_2\,ds.              \tag{3.3}
+\]">\[
+\|u(t)\|_2\leq\|u_0\|_2+\int_0^t\|f(s)\|_2\,ds.              \tag{3.3}
+\]</span>
+<p><strong>Proof.</strong> Cauchy–Schwarz in (3.1) yields</p>
+<span class="math math-display" data-tex="\[
+\frac12\frac{d}{dt}\|u\|_2^2
+\leq\|u\|_2\|f\|_2.
+\]">\[
+\frac12\frac{d}{dt}\|u\|_2^2
+\leq\|u\|_2\|f\|_2.
+\]</span>
+<p>To include times when <span class="math" data-tex="\(u=0\)">\(u=0\)</span>, set <span class="math" data-tex="\(E_\varepsilon=(\|u\|_2^2+\varepsilon^2)^{1/2}\)">\(E_\varepsilon=(\|u\|_2^2+\varepsilon^2)^{1/2}\)</span>. Direct differentiation gives</p>
+<span class="math math-display" data-tex="\[
+E_\varepsilon&#x27;
+\leq\frac{\|u\|_2}{(\|u\|_2^2+\varepsilon^2)^{1/2}}\|f\|_2
+\leq\|f\|_2.
+\]">\[
+E_\varepsilon&#x27;
+\leq\frac{\|u\|_2}{(\|u\|_2^2+\varepsilon^2)^{1/2}}\|f\|_2
+\leq\|f\|_2.
+\]</span>
+<p>Integrate and let <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, zero initial velocity and zero force imply <span class="math" data-tex="\(u=0\)">\(u=0\)</span> for every time in this class. Conversely, a smooth compact pulse that starts from rest must receive a nonzero force somewhere. The identity quantifies how the force does work.</p>
+<p>These calculations also hold on a rectangular periodic cell when all fields are periodic with its side lengths: every boundary contribution on one face cancels the contribution on its opposite face. The same constants remain. On a bounded physical domain the boundary terms require their own calculation.</p>
+<h2 id="4-how-force-creates-rotation">4. How force creates rotation</h2>
+<p>In three dimensions define</p>
+<span class="math math-display" data-tex="\[
+\omega=\nabla\times u
+=(\partial_2u_3-\partial_3u_2,\ 
+\partial_3u_1-\partial_1u_3,\ 
+\partial_1u_2-\partial_2u_1).
+\]">\[
+\omega=\nabla\times u
+=(\partial_2u_3-\partial_3u_2,\ 
+\partial_3u_1-\partial_1u_3,\ 
+\partial_1u_2-\partial_2u_1).
+\]</span>
+<p><strong>Theorem 4.1.</strong> The vorticity satisfies</p>
+<span class="math math-display" data-tex="\[
+\partial_t\omega+(u\cdot\nabla)\omega
+-(\omega\cdot\nabla)u-\nu\Delta\omega=\nabla\times f.          \tag{4.1}
+\]">\[
+\partial_t\omega+(u\cdot\nabla)\omega
+-(\omega\cdot\nabla)u-\nu\Delta\omega=\nabla\times f.          \tag{4.1}
+\]</span>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\epsilon_{ijk}\)">\(\epsilon_{ijk}\)</span> be the alternating symbol, equal to <span class="math" data-tex="\(1\)">\(1\)</span> on cyclic permutations of <span class="math" data-tex="\(123\)">\(123\)</span>, equal to <span class="math" data-tex="\(-1\)">\(-1\)</span> on anticyclic permutations, and zero when indices repeat. Summation in this proof is over <span class="math" data-tex="\(1,2,3\)">\(1,2,3\)</span>.</p>
+<p>The contraction identity</p>
+<span class="math math-display" data-tex="\[
+\sum_k\epsilon_{ijk}\epsilon_{kab}
+=\delta_{ia}\delta_{jb}-\delta_{ib}\delta_{ja}
+\]">\[
+\sum_k\epsilon_{ijk}\epsilon_{kab}
+=\delta_{ia}\delta_{jb}-\delta_{ib}\delta_{ja}
+\]</span>
+<p>follows by inspecting the nonzero permutations. Thus</p>
+<span class="math math-display" data-tex="\[
+(u\times\omega)_i
+=\sum_j u_j\partial_i u_j-\sum_j u_j\partial_j u_i
+=\partial_i(|u|^2/2)-((u\cdot\nabla)u)_i.
+\]">\[
+(u\times\omega)_i
+=\sum_j u_j\partial_i u_j-\sum_j u_j\partial_j u_i
+=\partial_i(|u|^2/2)-((u\cdot\nabla)u)_i.
+\]</span>
+<p>For any smooth vector fields <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, the same contraction and product rule give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(\nabla\times(a\times b))_i
+&amp;=\sum_j\partial_j(a_i b_j-a_j b_i)\\
+&amp;=((b\cdot\nabla)a)_i-((a\cdot\nabla)b)_i
++a_i\operatorname{div}b-b_i\operatorname{div}a.
+\end{aligned}
+\]">\[
+\begin{aligned}
+(\nabla\times(a\times b))_i
+&amp;=\sum_j\partial_j(a_i b_j-a_j b_i)\\
+&amp;=((b\cdot\nabla)a)_i-((a\cdot\nabla)b)_i
++a_i\operatorname{div}b-b_i\operatorname{div}a.
+\end{aligned}
+\]</span>
+<p>The divergence of a curl is zero, since every mixed derivative occurs with the opposite sign of its exchanged pair. Therefore <span class="math" data-tex="\(\operatorname{div}\omega=0\)">\(\operatorname{div}\omega=0\)</span>. Together with <span class="math" data-tex="\(\operatorname{div}u=0\)">\(\operatorname{div}u=0\)</span>, the two displayed identities imply</p>
+<span class="math math-display" data-tex="\[
+\nabla\times((u\cdot\nabla)u)
+=(u\cdot\nabla)\omega-(\omega\cdot\nabla)u.
+\]">\[
+\nabla\times((u\cdot\nabla)u)
+=(u\cdot\nabla)\omega-(\omega\cdot\nabla)u.
+\]</span>
+<p>Curl of <span class="math" data-tex="\(\nabla p\)">\(\nabla p\)</span> is zero by equality of mixed derivatives. Curl commutes with <span class="math" data-tex="\(\partial_t\)">\(\partial_t\)</span> and <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>. Taking curl of (1.1) now gives (4.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The term <span class="math" data-tex="\((\omega\cdot\nabla)u\)">\((\omega\cdot\nabla)u\)</span> is vortex stretching: it differentiates velocity in the direction of vorticity. It is a vector, not merely the size of the vorticity.</p>
+<p>For an exact two-dimensional comparison, embed <span class="math" data-tex="\(v=(v_1,v_2)\)">\(v=(v_1,v_2)\)</span> as <span class="math" data-tex="\(u=(v_1,v_2,0)\)">\(u=(v_1,v_2,0)\)</span>, independent of <span class="math" data-tex="\(x_3\)">\(x_3\)</span>. Its three-dimensional curl is <span class="math" data-tex="\((0,0,w)\)">\((0,0,w)\)</span>, where</p>
+<span class="math math-display" data-tex="\[
+w=\partial_1v_2-\partial_2v_1.
+\]">\[
+w=\partial_1v_2-\partial_2v_1.
+\]</span>
+<p>Its stretching is <span class="math" data-tex="\(w\partial_3u=0\)">\(w\partial_3u=0\)</span>. For a force <span class="math" data-tex="\(f=(g_1,g_2,0)\)">\(f=(g_1,g_2,0)\)</span> independent of <span class="math" data-tex="\(x_3\)">\(x_3\)</span>, (4.1) therefore becomes precisely</p>
+<span class="math math-display" data-tex="\[
+\partial_tw+v\cdot\nabla w-\nu\Delta w
+=\partial_1g_2-\partial_2g_1.                               \tag{4.2}
+\]">\[
+\partial_tw+v\cdot\nabla w-\nu\Delta w
+=\partial_1g_2-\partial_2g_1.                               \tag{4.2}
+\]</span>
+<p>This proves the relation between the equations on that subspace. It does not identify all three-dimensional flows with two-dimensional ones.</p>
+<h2 id="5-a-scalar-that-pushes-the-fluid">5. A scalar that pushes the fluid</h2>
+<p>The two-dimensional Boussinesq system couples a scalar <span class="math" data-tex="\(\theta\)">\(\theta\)</span> to velocity through the vertical force:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_t\theta+u\cdot\nabla\theta-\kappa\Delta\theta&amp;=f_\theta,\\
+\partial_tu+(u\cdot\nabla)u+\nabla p-\nu\Delta u&amp;=\theta e_2+f_u,\\
+\operatorname{div}u&amp;=0.
+\end{aligned}                                               \tag{5.1}
+\]">\[
+\begin{aligned}
+\partial_t\theta+u\cdot\nabla\theta-\kappa\Delta\theta&amp;=f_\theta,\\
+\partial_tu+(u\cdot\nabla)u+\nabla p-\nu\Delta u&amp;=\theta e_2+f_u,\\
+\operatorname{div}u&amp;=0.
+\end{aligned}                                               \tag{5.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(e_2=(0,1)\)">\(e_2=(0,1)\)</span>, <span class="math" data-tex="\(\kappa\geq0\)">\(\kappa\geq0\)</span>, and <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>. The scalar force <span class="math" data-tex="\(f_\theta\)">\(f_\theta\)</span> and vector force <span class="math" data-tex="\(f_u\)">\(f_u\)</span> are different data.</p>
+<p>Equation (4.2) applied to <span class="math" data-tex="\(g=\theta e_2+f_u\)">\(g=\theta e_2+f_u\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\partial_tw+u\cdot\nabla w-\nu\Delta w
+=\partial_1\theta+\partial_1(f_u)_2-\partial_2(f_u)_1.        \tag{5.2}
+\]">\[
+\partial_tw+u\cdot\nabla w-\nu\Delta w
+=\partial_1\theta+\partial_1(f_u)_2-\partial_2(f_u)_1.        \tag{5.2}
+\]</span>
+<p>The sign of <span class="math" data-tex="\(\partial_1\theta\)">\(\partial_1\theta\)</span> follows from our definition of <span class="math" data-tex="\(w\)">\(w\)</span>. Defining vorticity with the opposite orientation changes that sign as well.</p>
+<p>Suppose <span class="math" data-tex="\(\theta,u\)">\(\theta,u\)</span> are smooth with compact support on every strict time interval as in Section 3, and <span class="math" data-tex="\(f_\theta,f_u\)">\(f_\theta,f_u\)</span> have integrable spatial <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norms on each such time interval. Multiplication of the scalar equation by <span class="math" data-tex="\(\theta\)">\(\theta\)</span> and integration gives</p>
+<span class="math math-display" data-tex="\[
+\frac12\frac{d}{dt}\|\theta\|_2^2+\kappa\|\nabla\theta\|_2^2
+=\int\theta f_\theta.                                      \tag{5.3}
+\]">\[
+\frac12\frac{d}{dt}\|\theta\|_2^2+\kappa\|\nabla\theta\|_2^2
+=\int\theta f_\theta.                                      \tag{5.3}
+\]</span>
+<p>The proof is the scalar version of the energy calculation: transport is the divergence of <span class="math" data-tex="\(u\theta^2/2\)">\(u\theta^2/2\)</span>, and integration by parts changes <span class="math" data-tex="\(-\kappa\theta\Delta\theta\)">\(-\kappa\theta\Delta\theta\)</span> into <span class="math" data-tex="\(\kappa|\nabla\theta|^2\)">\(\kappa|\nabla\theta|^2\)</span>. The same square-root argument as in Corollary 3.2 shows</p>
+<span class="math math-display" data-tex="\[
+\|\theta(t)\|_2\leq\|\theta_0\|_2+\int_0^t\|f_\theta(s)\|_2\,ds.
+\tag{5.4}
+\]">\[
+\|\theta(t)\|_2\leq\|\theta_0\|_2+\int_0^t\|f_\theta(s)\|_2\,ds.
+\tag{5.4}
+\]</span>
+<p>Velocity energy, keeping the scalar contribution, is</p>
+<span class="math math-display" data-tex="\[
+\frac12\frac{d}{dt}\|u\|_2^2+\nu\|\nabla u\|_2^2
+=\int\theta u_2+\int u\cdot f_u.                            \tag{5.5}
+\]">\[
+\frac12\frac{d}{dt}\|u\|_2^2+\nu\|\nabla u\|_2^2
+=\int\theta u_2+\int u\cdot f_u.                            \tag{5.5}
+\]</span>
+<p>Applying Cauchy–Schwarz, the regularized square root, and (5.4) yields</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|u(t)\|_2\leq{}&amp;\|u_0\|_2+t\|\theta_0\|_2\\
+&amp;+\int_0^t(t-s)\|f_\theta(s)\|_2\,ds
++\int_0^t\|f_u(s)\|_2\,ds.                                 \tag{5.6}
+\end{aligned}
+\]" data-render-adaptation="whole-display-tag-outside-subenvironment-v1" data-render-tex="\[
+\begin{aligned}
+\|u(t)\|_2\leq{}&amp;\|u_0\|_2+t\|\theta_0\|_2\\
+&amp;+\int_0^t(t-s)\|f_\theta(s)\|_2\,ds
++\int_0^t\|f_u(s)\|_2\,ds.                                 \end{aligned}
+\tag{5.6}
+\]" title="Display-only adjustment: the unchanged whole-display label is outside aligned/gathered; original TeX is retained in data-tex.">\[
+\begin{aligned}
+\|u(t)\|_2\leq{}&amp;\|u_0\|_2+t\|\theta_0\|_2\\
+&amp;+\int_0^t(t-s)\|f_\theta(s)\|_2\,ds
++\int_0^t\|f_u(s)\|_2\,ds.                                 \end{aligned}
+\tag{5.6}
+\]</span>
+<p>The factor <span class="math" data-tex="\(t-s\)">\(t-s\)</span> comes from integrating <span class="math" data-tex="\(\int_0^\tau\|f_\theta(s)\|_2ds\)">\(\int_0^\tau\|f_\theta(s)\|_2ds\)</span> first over <span class="math" data-tex="\(0\leq\tau\leq t\)">\(0\leq\tau\leq t\)</span>. Reversing the integration order leaves an interval <span class="math" data-tex="\(s\leq\tau\leq t\)">\(s\leq\tau\leq t\)</span> of length <span class="math" data-tex="\(t-s\)">\(t-s\)</span>.</p>
+<p>These bounds concern energy. A bound on a spatial derivative or on the supremum of vorticity requires an additional argument. In particular, energy alone does not justify a singularity claim or exclude one.</p>
+<h2 id="6-exact-changes-of-space-and-time">6. Exact changes of space and time</h2>
+<p>Take positive numbers <span class="math" data-tex="\(r,c\)">\(r,c\)</span>, a fixed spatial center <span class="math" data-tex="\(x_*\)">\(x_*\)</span>, and a fixed starting time <span class="math" data-tex="\(t_*\)">\(t_*\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+y=\frac{x-x_*}{r},\qquad \tau=\frac{t-t_*}{c}.
+\]">\[
+y=\frac{x-x_*}{r},\qquad \tau=\frac{t-t_*}{c}.
+\]</span>
+<p>Suppose <span class="math" data-tex="\((\widetilde u,\widetilde p,\widetilde f)\)">\((\widetilde u,\widetilde p,\widetilde f)\)</span> satisfies the Navier–Stokes equations in <span class="math" data-tex="\(y,\tau\)">\(y,\tau\)</span> at viscosity <span class="math" data-tex="\(\widetilde\nu\)">\(\widetilde\nu\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+u=\frac rc\widetilde u,\qquad
+p=\frac{r^2}{c^2}\widetilde p,\qquad
+f=\frac r{c^2}\widetilde f,\qquad
+\nu=\frac{r^2}{c}\widetilde\nu,                              \tag{6.1}
+\]">\[
+u=\frac rc\widetilde u,\qquad
+p=\frac{r^2}{c^2}\widetilde p,\qquad
+f=\frac r{c^2}\widetilde f,\qquad
+\nu=\frac{r^2}{c}\widetilde\nu,                              \tag{6.1}
+\]</span>
+<p>where all fields on the right are evaluated at <span class="math" data-tex="\((y,\tau)\)">\((y,\tau)\)</span>.</p>
+<p><strong>Proposition 6.1.</strong> These fields satisfy (1.1) with the displayed physical viscosity <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. The map is invertible. Supports have their spatial radii multiplied by <span class="math" data-tex="\(r\)">\(r\)</span> and their time lengths multiplied by <span class="math" data-tex="\(c\)">\(c\)</span>.</p>
+<p><strong>Proof.</strong> Direct differentiation gives</p>
+<span class="math math-display" data-tex="\[
+\partial_tu=\frac r{c^2}\partial_\tau\widetilde u,\qquad
+(u\cdot\nabla_x)u=\frac r{c^2}
+(\widetilde u\cdot\nabla_y)\widetilde u,\qquad
+\nabla_xp=\frac r{c^2}\nabla_y\widetilde p,
+\]">\[
+\partial_tu=\frac r{c^2}\partial_\tau\widetilde u,\qquad
+(u\cdot\nabla_x)u=\frac r{c^2}
+(\widetilde u\cdot\nabla_y)\widetilde u,\qquad
+\nabla_xp=\frac r{c^2}\nabla_y\widetilde p,
+\]</span>
+<p>and</p>
+<span class="math math-display" data-tex="\[
+\nu\Delta_xu=\frac{\nu}{rc}\Delta_y\widetilde u
+=\frac r{c^2}\widetilde\nu\Delta_y\widetilde u.
+\]">\[
+\nu\Delta_xu=\frac{\nu}{rc}\Delta_y\widetilde u
+=\frac r{c^2}\widetilde\nu\Delta_y\widetilde u.
+\]</span>
+<p>Every momentum term has exactly the same factor <span class="math" data-tex="\(r/c^2\)">\(r/c^2\)</span>. Divergence transforms as
+<span class="math" data-tex="\(\operatorname{div}_xu=c^{-1}\operatorname{div}_y\widetilde u=0\)">\(\operatorname{div}_xu=c^{-1}\operatorname{div}_y\widetilde u=0\)</span>.
+All scale factors are nonzero, so solving the coordinate equations and reciprocating the field factors gives the inverse. The support assertions follow from the coordinate equations. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For (5.1), the additional exact factors are</p>
+<span class="math math-display" data-tex="\[
+\theta=\frac r{c^2}\widetilde\theta,\qquad
+f_\theta=\frac r{c^3}\widetilde f_\theta,\qquad
+\kappa=\frac{r^2}{c}\widetilde\kappa,\qquad
+f_u=\frac r{c^2}\widetilde f_u.                              \tag{6.2}
+\]">\[
+\theta=\frac r{c^2}\widetilde\theta,\qquad
+f_\theta=\frac r{c^3}\widetilde f_\theta,\qquad
+\kappa=\frac{r^2}{c}\widetilde\kappa,\qquad
+f_u=\frac r{c^2}\widetilde f_u.                              \tag{6.2}
+\]</span>
+<p>Indeed the scalar time derivative and transport have factor <span class="math" data-tex="\(r/c^3\)">\(r/c^3\)</span>, while</p>
+<span class="math math-display" data-tex="\[
+\kappa\Delta_x\theta=\frac{\kappa}{rc^2}\Delta_y\widetilde\theta
+=\frac r{c^3}\widetilde\kappa\Delta_y\widetilde\theta.
+\]">\[
+\kappa\Delta_x\theta=\frac{\kappa}{rc^2}\Delta_y\widetilde\theta
+=\frac r{c^3}\widetilde\kappa\Delta_y\widetilde\theta.
+\]</span>
+<p>The buoyancy term <span class="math" data-tex="\(\theta e_2\)">\(\theta e_2\)</span> has the momentum factor <span class="math" data-tex="\(r/c^2\)">\(r/c^2\)</span>. This proves the full coupled comparison, including both diffusivities and both forces.</p>
+<p>If the two diffusivities in the original packet are equal to <span class="math" data-tex="\(\delta_*&gt;0\)">\(\delta_*&gt;0\)</span>, prescribing the common physical diffusion <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+c=\frac{\delta_*}{d}r^2.
+\]">\[
+c=\frac{\delta_*}{d}r^2.
+\]</span>
+<p>At this clock the physical field factors are</p>
+<span class="math math-display" data-tex="\[
+u:\ \frac d{\delta_*}r^{-1},\quad
+\theta:\ \left(\frac d{\delta_*}\right)^2r^{-3},\quad
+p:\ \left(\frac d{\delta_*}\right)^2r^{-2},
+\]">\[
+u:\ \frac d{\delta_*}r^{-1},\quad
+\theta:\ \left(\frac d{\delta_*}\right)^2r^{-3},\quad
+p:\ \left(\frac d{\delta_*}\right)^2r^{-2},
+\]</span>
+<span class="math math-display" data-tex="\[
+f_u:\ \left(\frac d{\delta_*}\right)^2r^{-3},\qquad
+f_\theta:\ \left(\frac d{\delta_*}\right)^3r^{-5}.             \tag{6.3}
+\]">\[
+f_u:\ \left(\frac d{\delta_*}\right)^2r^{-3},\qquad
+f_\theta:\ \left(\frac d{\delta_*}\right)^3r^{-5}.             \tag{6.3}
+\]</span>
+<p>Thus shrinking a finite packet preserves the physical diffusion when its clock is changed accordingly. The force size is a separate calculation and can increase.</p>
+<p>More precisely, for <span class="math" data-tex="\(\gamma\in\mathbb N_0^2\)">\(\gamma\in\mathbb N_0^2\)</span> and <span class="math" data-tex="\(b\in\mathbb N_0\)">\(b\in\mathbb N_0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\partial_x^\gamma\partial_t^b f_u
+=r^{1-|\gamma|}c^{-2-b}
+(\partial_y^\gamma\partial_\tau^b\widetilde f_u)(y,\tau),
+\]">\[
+\partial_x^\gamma\partial_t^b f_u
+=r^{1-|\gamma|}c^{-2-b}
+(\partial_y^\gamma\partial_\tau^b\widetilde f_u)(y,\tau),
+\]</span>
+<span class="math math-display" data-tex="\[
+\partial_x^\gamma\partial_t^b f_\theta
+=r^{1-|\gamma|}c^{-3-b}
+(\partial_y^\gamma\partial_\tau^b\widetilde f_\theta)(y,\tau).
+\tag{6.4}
+\]">\[
+\partial_x^\gamma\partial_t^b f_\theta
+=r^{1-|\gamma|}c^{-3-b}
+(\partial_y^\gamma\partial_\tau^b\widetilde f_\theta)(y,\tau).
+\tag{6.4}
+\]</span>
+<p>Each spatial derivative contributes <span class="math" data-tex="\(r^{-1}\)">\(r^{-1}\)</span> and each time derivative contributes <span class="math" data-tex="\(c^{-1}\)">\(c^{-1}\)</span>, which proves these formulas by repeated differentiation.</p>
+<h3 id="which-integral-norms-keep-their-size">Which integral norms keep their size?</h3>
+<p>For <span class="math" data-tex="\(1\leq p&lt;\infty\)">\(1\leq p&lt;\infty\)</span>, the spatial norm of a vector field is
+<span class="math" data-tex="\(\|v\|_p=(\int|v|^p\,dx)^{1/p}\)">\(\|v\|_p=(\int|v|^p\,dx)^{1/p}\)</span>, using Euclidean length inside the integral. For <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span> it is the essential supremum of that length. For <span class="math" data-tex="\(1\leq q&lt;\infty\)">\(1\leq q&lt;\infty\)</span>, define the mixed norm on a time interval <span class="math" data-tex="\(I\)">\(I\)</span> by</p>
+<span class="math math-display" data-tex="\[
+\|v\|_{L^q(I;L^p)}
+=\left(\int_I\|v(t)\|_p^q\,dt\right)^{1/q};
+\]">\[
+\|v\|_{L^q(I;L^p)}
+=\left(\int_I\|v(t)\|_p^q\,dt\right)^{1/q};
+\]</span>
+<p>for <span class="math" data-tex="\(q=\infty\)">\(q=\infty\)</span>, take the essential supremum in time. In exponent formulas below, <span class="math" data-tex="\(1/\infty=0\)">\(1/\infty=0\)</span>.</p>
+<p>Let <span class="math" data-tex="\(I=t_*+c\widetilde I\)">\(I=t_*+c\widetilde I\)</span> be the corresponding time intervals. The exact transformation (6.1) gives</p>
+<span class="math math-display" data-tex="\[
+\|u\|_{L^q(I;L^p_x)}
+=r^{1+n/p}c^{-1+1/q}
+\|\widetilde u\|_{L^q(\widetilde I;L^p_y)},\qquad
+\|f\|_{L^q(I;L^p_x)}
+=r^{1+n/p}c^{-2+1/q}
+\|\widetilde f\|_{L^q(\widetilde I;L^p_y)}.                  \tag{6.5}
+\]">\[
+\|u\|_{L^q(I;L^p_x)}
+=r^{1+n/p}c^{-1+1/q}
+\|\widetilde u\|_{L^q(\widetilde I;L^p_y)},\qquad
+\|f\|_{L^q(I;L^p_x)}
+=r^{1+n/p}c^{-2+1/q}
+\|\widetilde f\|_{L^q(\widetilde I;L^p_y)}.                  \tag{6.5}
+\]</span>
+<p>To prove the first identity for finite <span class="math" data-tex="\(p,q\)">\(p,q\)</span>, substitute <span class="math" data-tex="\(dx=r^n\,dy\)">\(dx=r^n\,dy\)</span> in the spatial integral, take its <span class="math" data-tex="\(p\)">\(p\)</span>-th root, then substitute <span class="math" data-tex="\(dt=c\,d\tau\)">\(dt=c\,d\tau\)</span> and take the <span class="math" data-tex="\(q\)">\(q\)</span>-th root. The field factor is <span class="math" data-tex="\(r/c\)">\(r/c\)</span>. This gives exactly the first factor in (6.5). For the force the field factor is <span class="math" data-tex="\(r/c^2\)">\(r/c^2\)</span>, proving the second identity. When an exponent is infinite, a bijective change of variables preserves the essential supremum; the corresponding Jacobian factor is absent. This proves all the endpoint cases as well.</p>
+<p>If the original and physical viscosities are the same positive number, (6.1) requires <span class="math" data-tex="\(c=r^2\)">\(c=r^2\)</span>. The velocity factor in (6.5) is then</p>
+<span class="math math-display" data-tex="\[
+r^{n/p+2/q-1}.
+\]">\[
+r^{n/p+2/q-1}.
+\]</span>
+<p>A mixed velocity norm is called <em>critical for this scaling</em> when it stays unchanged for every <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>. For a nonzero field with a finite norm, this is equivalent to</p>
+<span class="math math-display" data-tex="\[
+\frac np+\frac2q=1.                                       \tag{6.6}
+\]">\[
+\frac np+\frac2q=1.                                       \tag{6.6}
+\]</span>
+<p>For example, in dimension three both <span class="math" data-tex="\(L^\infty_tL^3_x\)">\(L^\infty_tL^3_x\)</span> and <span class="math" data-tex="\(L^4_tL^6_x\)">\(L^4_tL^6_x\)</span> have that property. The force norm is unchanged instead when <span class="math" data-tex="\(n/p+2/q=3\)">\(n/p+2/q=3\)</span>, because its exponent is <span class="math" data-tex="\(n/p+2/q-3\)">\(n/p+2/q-3\)</span>.</p>
+<p>For the coupled system in dimension two, the scalar <span class="math" data-tex="\(\theta\)">\(\theta\)</span> has the same field factor as <span class="math" data-tex="\(f_u\)">\(f_u\)</span>, while <span class="math" data-tex="\(f_\theta\)">\(f_\theta\)</span> has one additional factor <span class="math" data-tex="\(c^{-1}\)">\(c^{-1}\)</span>. At the equal-viscosity clock <span class="math" data-tex="\(c=r^2\)">\(c=r^2\)</span>, their mixed norm factors are respectively <span class="math" data-tex="\(r^{2/p+2/q-3}\)">\(r^{2/p+2/q-3}\)</span> and <span class="math" data-tex="\(r^{2/p+2/q-5}\)">\(r^{2/p+2/q-5}\)</span>. These follow from the same two changes of variables, with the field factors in (6.2). Criticality names an exact invariance of a norm. Proving existence, uniqueness or a regularity criterion in that norm requires further estimates.</p>
+<h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<p><strong>Exercise 1. A gradient force.</strong> Suppose <span class="math" data-tex="\(f=\nabla\phi\)">\(f=\nabla\phi\)</span>. Show both that it has zero curl and that it does zero total work on a compact divergence-free velocity. Does this make <span class="math" data-tex="\(\phi\)">\(\phi\)</span> spatially constant?</p>
+<p><strong>Solution.</strong> Equality of mixed derivatives gives <span class="math" data-tex="\(\nabla\times\nabla\phi=0\)">\(\nabla\times\nabla\phi=0\)</span>. Integration by parts gives</p>
+<span class="math math-display" data-tex="\[
+\int u\cdot\nabla\phi
+=\int\operatorname{div}(\phi u)-\int\phi\operatorname{div}u=0.
+\]">\[
+\int u\cdot\nabla\phi
+=\int\operatorname{div}(\phi u)-\int\phi\operatorname{div}u=0.
+\]</span>
+<p>Neither statement forces <span class="math" data-tex="\(\phi\)">\(\phi\)</span> to be constant. For example <span class="math" data-tex="\(\phi(x)=|x|^2\)">\(\phi(x)=|x|^2\)</span> has nonzero gradient away from the origin. In momentum, the gradient force can be moved into the pressure: <span class="math" data-tex="\(\widehat p=p-\phi\)">\(\widehat p=p-\phi\)</span> and <span class="math" data-tex="\(\widehat f=0\)">\(\widehat f=0\)</span> give the same velocity equation.</p>
+<p><strong>Exercise 2. A compact pulse from rest.</strong> In two dimensions take <span class="math" data-tex="\(\psi\in C_c^\infty(\mathbb R^2)\)">\(\psi\in C_c^\infty(\mathbb R^2)\)</span>, a smooth scalar <span class="math" data-tex="\(a(t)\)">\(a(t)\)</span> with <span class="math" data-tex="\(a(0)=0\)">\(a(0)=0\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+v=(-\partial_2\psi,\partial_1\psi),\qquad u(x,t)=a(t)v(x),\qquad p=0.
+\]">\[
+v=(-\partial_2\psi,\partial_1\psi),\qquad u(x,t)=a(t)v(x),\qquad p=0.
+\]</span>
+<p>Find the force exactly and check divergence and the initial condition.</p>
+<p><strong>Solution.</strong> The divergence of <span class="math" data-tex="\(v\)">\(v\)</span> is <span class="math" data-tex="\(-\partial_1\partial_2\psi+\partial_2\partial_1\psi=0\)">\(-\partial_1\partial_2\psi+\partial_2\partial_1\psi=0\)</span>. Thus <span class="math" data-tex="\(\operatorname{div}u=0\)">\(\operatorname{div}u=0\)</span>, and <span class="math" data-tex="\(u(x,0)=0\)">\(u(x,0)=0\)</span>. Formula (2.2) gives</p>
+<span class="math math-display" data-tex="\[
+f=a&#x27;v+a^2(v\cdot\nabla)v-\nu a\Delta v.
+\]">\[
+f=a&#x27;v+a^2(v\cdot\nabla)v-\nu a\Delta v.
+\]</span>
+<p>Every displayed term is smooth and compactly supported in the same fixed support of the derivatives of <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. If <span class="math" data-tex="\(a\)">\(a\)</span> extends smoothly through <span class="math" data-tex="\(T\)">\(T\)</span>, so does <span class="math" data-tex="\(f\)">\(f\)</span>. If <span class="math" data-tex="\(u\)">\(u\)</span> is nonzero at some later time, Corollary 3.2 shows that this force cannot vanish throughout the preceding interval.</p>
+<p><strong>Exercise 3. Why an unchanged field has a different force at a different viscosity.</strong> Keep <span class="math" data-tex="\(u,p\)">\(u,p\)</span> fixed and replace <span class="math" data-tex="\(\nu\)">\(\nu\)</span> by <span class="math" data-tex="\(\widehat\nu&gt;0\)">\(\widehat\nu&gt;0\)</span>. Find <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span>.</p>
+<p><strong>Solution.</strong> Subtract the two complete momentum equations:</p>
+<span class="math math-display" data-tex="\[
+\widehat f-f=(\nu-\widehat\nu)\Delta u.
+\]">\[
+\widehat f-f=(\nu-\widehat\nu)\Delta u.
+\]</span>
+<p>Hence <span class="math" data-tex="\(\widehat f=f+(\nu-\widehat\nu)\Delta u\)">\(\widehat f=f+(\nu-\widehat\nu)\Delta u\)</span>. This is an exact identity, including its sign. Every mixed derivative satisfies the same identity after applying that derivative. Smoothness of <span class="math" data-tex="\(f\)">\(f\)</span> at <span class="math" data-tex="\(T\)">\(T\)</span> alone does not control the added term if derivatives of <span class="math" data-tex="\(u\)">\(u\)</span> grow there.</p>
+<p><strong>Exercise 4. A three-dimensional flow obtained from a two-dimensional one.</strong> Let <span class="math" data-tex="\(v,p,g\)">\(v,p,g\)</span> solve the two-dimensional momentum equation. Choose <span class="math" data-tex="\(\chi\in C_c^\infty(\mathbb R)\)">\(\chi\in C_c^\infty(\mathbb R)\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+U(x_1,x_2,z,t)=(\chi(z)v_1,\chi(z)v_2,0),\qquad P=\chi(z)p.
+\]">\[
+U(x_1,x_2,z,t)=(\chi(z)v_1,\chi(z)v_2,0),\qquad P=\chi(z)p.
+\]</span>
+<p>Find the full three-dimensional force and decide whether compact support of <span class="math" data-tex="\(v,g\)">\(v,g\)</span> is enough to make that force compact.</p>
+<p><strong>Solution.</strong> Divergence is <span class="math" data-tex="\(\chi\operatorname{div}v=0\)">\(\chi\operatorname{div}v=0\)</span>. The horizontal time, transport, pressure and diffusion terms are</p>
+<span class="math math-display" data-tex="\[
+\chi v_t,\quad \chi^2(v\cdot\nabla)v,\quad
+\chi\nabla p,\quad -\nu\chi\Delta v-\nu\chi&#x27;&#x27;v.
+\]">\[
+\chi v_t,\quad \chi^2(v\cdot\nabla)v,\quad
+\chi\nabla p,\quad -\nu\chi\Delta v-\nu\chi&#x27;&#x27;v.
+\]</span>
+<p>The horizontal force is therefore</p>
+<span class="math math-display" data-tex="\[
+F_h=\chi g+(\chi^2-\chi)(v\cdot\nabla)v-\nu\chi&#x27;&#x27;v.
+\]">\[
+F_h=\chi g+(\chi^2-\chi)(v\cdot\nabla)v-\nu\chi&#x27;&#x27;v.
+\]</span>
+<p>The vertical velocity is zero, but the vertical pressure derivative is <span class="math" data-tex="\(\chi&#x27;p\)">\(\chi&#x27;p\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+F_3=\chi&#x27;p.
+\]">\[
+F_3=\chi&#x27;p.
+\]</span>
+<p>Compact support of <span class="math" data-tex="\(v,g\)">\(v,g\)</span> alone does not control the support of this pressure term. For an explicit example take <span class="math" data-tex="\(v=0\)">\(v=0\)</span>, <span class="math" data-tex="\(g=0\)">\(g=0\)</span>, <span class="math" data-tex="\(p=1\)">\(p=1\)</span>, and a nonconstant <span class="math" data-tex="\(\chi\)">\(\chi\)</span>. These are valid two-dimensional data, but <span class="math" data-tex="\(F_3=\chi&#x27;(z)\)">\(F_3=\chi&#x27;(z)\)</span> is nonzero for every horizontal point at any <span class="math" data-tex="\(z\)">\(z\)</span> where <span class="math" data-tex="\(\chi&#x27;(z)\ne0\)">\(\chi&#x27;(z)\ne0\)</span>. Its support is therefore unbounded horizontally. Compact support of <span class="math" data-tex="\(p\)">\(p\)</span> as well is sufficient. If <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span> on an interval, the original flow and force are recovered there by evaluation at any <span class="math" data-tex="\(z\)">\(z\)</span> in that interval.</p>
+<p><strong>Exercise 5. Energy under the exact similarity.</strong> Determine the energy and total squared-gradient factors for the <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional map (6.1).</p>
+<p><strong>Solution.</strong> The spatial Jacobian is <span class="math" data-tex="\(dx=r^n\,dy\)">\(dx=r^n\,dy\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\|u(t)\|_{L^2_x}^2=\frac{r^{n+2}}{c^2}
+\|\widetilde u(\tau)\|_{L^2_y}^2.
+\]">\[
+\|u(t)\|_{L^2_x}^2=\frac{r^{n+2}}{c^2}
+\|\widetilde u(\tau)\|_{L^2_y}^2.
+\]</span>
+<p>Also <span class="math" data-tex="\(\nabla_xu=c^{-1}\nabla_y\widetilde u\)">\(\nabla_xu=c^{-1}\nabla_y\widetilde u\)</span> and <span class="math" data-tex="\(dt=c\,d\tau\)">\(dt=c\,d\tau\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\nu\int_{t_*}^{t_*+c\tau}\|\nabla_xu(t)\|_2^2dt
+=\nu\frac{r^n}{c}\int_0^\tau\|\nabla_y\widetilde u(s)\|_2^2ds
+=\frac{r^{n+2}}{c^2}\widetilde\nu
+\int_0^\tau\|\nabla_y\widetilde u(s)\|_2^2ds.
+\]">\[
+\nu\int_{t_*}^{t_*+c\tau}\|\nabla_xu(t)\|_2^2dt
+=\nu\frac{r^n}{c}\int_0^\tau\|\nabla_y\widetilde u(s)\|_2^2ds
+=\frac{r^{n+2}}{c^2}\widetilde\nu
+\int_0^\tau\|\nabla_y\widetilde u(s)\|_2^2ds.
+\]</span>
+<p>Finally the time-integrated work has factor
+<span class="math" data-tex="\((r/c)(r/c^2)r^n c=r^{n+2}/c^2\)">\((r/c)(r/c^2)r^n c=r^{n+2}/c^2\)</span>. Thus every term of the complete energy balance has the same factor.</p>
+<h2 id="references">References</h2>
+<p>[L] Yanguang Li, <em>Global Regularity for the Viscous Boussinesq Equations</em>, <a href="https://arxiv.org/abs/math/0302199v1">arXiv:math/0302199v1</a>, 2003. The original equations keep separate heat diffusion and viscosity coefficients. That paper uses the opposite orientation for two-dimensional vorticity.</p>
+<p>[CMX] Dongho Chae, Qianyun Miao and Liutang Xue, <em>Global regularity of non-diffusive temperature fronts for the 2D viscous Boussinesq system</em>, <a href="https://arxiv.org/abs/2110.06442v2">arXiv:2110.06442v2</a>, 2021. The equations and Proposition 3.1 concern positive viscosity with no heat diffusion and no external forces.</p>
+<p>[J] Ning Ju, <em>Global Regularity and Long-time Behavior of the Solutions to the 2D Boussinesq Equations without Diffusivity in a Bounded Domain</em>, <a href="https://arxiv.org/abs/1508.06176v1">arXiv:1508.06176v1</a>, 2015. Its boundary conditions matter when comparing its estimates with whole-space calculations.</p>
+</article><nav aria-label="Lesson sequence"><a href="NS-FLUID-02.html">Next lesson</a></nav></main><footer>Mathematical text: CC0 1.0. Cited works and reader software retain their respective terms.</footer></body></html>

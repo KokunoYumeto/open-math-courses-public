@@ -36,11 +36,11 @@ The [normal duality theorem](OA-FLOW-ND.md#nd-construction) gives a normal star 
 \tag{L33.1.b}
 \]
 In any faithful normal representation of \(M\), its values on the three generating families are
-\
+\[
 \begin{aligned}
-[\Phi(j(i(x)))\xi&=\alpha_{-r}(x)\xi(r)=:A_x\xi,\\
-\Phi(j(\lambda_s))\xi&=\xi(r-s)=:L_s\xi,\\
-\Phi(\ell_\chi)\xi&=\overline{\chi(r)}\xi(r)=:Q_\chi\xi.
+[\Phi(j(i(x)))\xi](r)&=\alpha_{-r}(x)\xi(r)=:[A_x\xi](r),\\
+[\Phi(j(\lambda_s))\xi](r)&=\xi(r-s)=:[L_s\xi](r),\\
+[\Phi(\ell_\chi)\xi](r)&=\overline{\chi(r)}\xi(r)=:[Q_\chi\xi](r).
 \end{aligned}
 \tag{L33.1.c}
 \]
@@ -72,7 +72,7 @@ for \(b\in\mathfrak n_\varphi\), \(k\in HS(L^2(G))\), with its complete finite a
 The normalized formula to be proved is
 \[
 [DW:D\Omega]_t=C_t,\qquad
-C_t\xi=c_t(r)\xi(r),\qquad
+[C_t\xi](r)=c_t(r)\xi(r),\qquad
 c_t(r)=[D(\varphi\circ\alpha_r):D\varphi]_t.
 \tag{L33.1.g}
 \]
@@ -165,7 +165,7 @@ Indeed the two weights in the middle line are the pullbacks of
 \(\varphi\circ\alpha_s\) and \(\varphi\) by \(\alpha_{r-s}\).
 On a compact vector section, conjugating \(L_s\) by \(C_t\) gives
 \(c_t(r)c_t(r-s)^*\xi(r-s)\). Equation (L33.2.e) identifies it with
-\(L_sA_{c_t(s)}\xi\). Scalar \(Q_\chi\) commutes with \(C_t\) and is fixed by \(\sigma^\Omega\). Consequently
+\([L_sA_{c_t(s)}\xi](r)\). Scalar \(Q_\chi\) commutes with \(C_t\) and is fixed by \(\sigma^\Omega\). Consequently
 \[
 \begin{aligned}
 \sigma_t^\Psi(A_x)&=A_{\sigma_t^\varphi(x)},\\
@@ -231,9 +231,9 @@ For completeness, the shear is first defined by
 For fixed \(r\), inversion and translation preserve Haar measure on the abelian group, so compact Radon-product integration proves preservation of its squared norm. The inverse substitution \(s=r-t\) has the same property. Compact-vector density therefore extends them as inverse unitaries on the entire tensor completion. Fourier transformation is likewise already onto on that completion. Together with GDW's onto GNS realization at both stages, this proves surjectivity of \(Z\).
 
 For the specific vectors in (L33.3.b), its formula and norm are
-\
+\[
 \begin{aligned}
-z_a(r,s)&:=[Z\Lambda_W(a(h_0,f))
+z_a(r,s)&:=[Z\Lambda_W(a(h_0,f))](r,s)
  =\widehat h_0(r)\Lambda_\varphi(f(r-s)),\\
 \|z_a\|^2
  &=\|h_0\|_{L^2(H)}^2
@@ -251,19 +251,19 @@ U_sxU_s^*=\alpha_s(x),\qquad U_sJ_\varphi=J_\varphi U_s.
 The column unitary \(\mathcal U\) acts by
 \((\mathcal U z)(r,s)=U_s z(r,s)\).
 It exists without a measurable field of Hilbert bases: on compact continuous vector fields this is continuous and norm preserving, with inverse given by \(U_s^*\); density extends both maps. Conjugating the usual faithful normal tensor representation, with an extra \(s\)-multiplicity, gives a faithful normal representation \(\Pi\) of \(A\) characterized by
-\
-[\Pi(x\otimes b)z
-=\alpha_s(x)\,b(z(\,\cdot\,,s)).
+\[
+[\Pi(x\otimes b)z](r,s)
+=\alpha_s(x)\,[b(z(\,\cdot\,,s))](r).
 \tag{L33.3.f}
 \]
 For general \(b\), the formula means its bounded action on each Hilbert \(r\)-coordinate and the tensor completion; it does not posit a pointwise integral kernel for \(b\). Normality follows from the normal tensor representation and unitary conjugation, with normal tensor transport supplied by [TW-1](OA-FLOW-TW.md#tw-1).
 
 Here is the check on every generator of the actual second GNS representation. In coordinates \((\chi,t)\), the second regular representation has
-\
+\[
 \begin{aligned}
-[j(i(x))\xi&=\alpha_{-t}(x)\xi(\chi,t),\\
-j(\lambda_v)\xi&=\chi(v)\xi(\chi,t-v),\\
-\ell_\eta\xi&=\xi(\eta^{-1}\chi,t).
+[j(i(x))\xi](\chi,t)&=\alpha_{-t}(x)\xi(\chi,t),\\
+[j(\lambda_v)\xi](\chi,t)&=\chi(v)\xi(\chi,t-v),\\
+[\ell_\eta\xi](\chi,t)&=\xi(\eta^{-1}\chi,t).
 \end{aligned}
 \tag{L33.3.g}
 \]
@@ -342,9 +342,9 @@ The first formula follows by composing the finite-rank row operator with \(K_a\)
 
 To justify the second formula and its finite domain, write \(f=\sum_\ell k_\ell a_\ell\) as in (L33.1.j). Applying \(\alpha_s\) to the first line leaves a finite sum of bounded coefficients multiplied on the right by the fixed \(a_\ell\). Each coefficient integral acts on the fixed vector \(\Lambda_\varphi(a_\ell)\). Bounded vector integration and the GNS module rule therefore give exactly the second line. In particular
 \(\alpha_s(K_{xa}(r,s))\in\mathfrak n_\varphi\) pointwise. Equation (L33.3.f) gives the same vector as \(\Pi(x)z_a\). Linearity and (L33.3.h) prove for every \(X\in\mathcal D\) that
-\
+\[
 \alpha_s(K_X(r,s))\in\mathfrak n_\varphi,\qquad
-z_X(r,s):=[Z\Lambda_W(X)
+z_X(r,s):=[Z\Lambda_W(X)](r,s)
  =\Lambda_\varphi(\alpha_s(K_X(r,s))),\qquad
 W(X^*X)=\|z_X\|^2.
 \tag{L33.3.n}
@@ -383,8 +383,8 @@ The first coordinate is the row of the Hilbert–Schmidt kernel. These spaces ar
  \tag{L33.4.b}
 \]
 The operators are positive and nonsingular, so their logarithms are self-adjoint with the spectral domains of [Operator foundations: spectral domains, normal topology and scalar analysis](OA-FLOW-SF.md#oa-flow.sf1.spectral-calculus). The exact relative imaginary-power identity in [Recovering a weight from a unitary modular cocycle](OA-FLOW-UR.md#equation-ur38), the defining derivative $[D\Psi:D\Omega]_t=C_t$, and the tensor formula give
-\
- [D^{it}\xi
+\[
+ [D^{it}\xi](r,s)
    =c_t(r)\Delta_\varphi^{it}\xi(r,s)
    =D_r^{it}\xi(r,s).
  \tag{L33.4.c}
@@ -413,8 +413,8 @@ with the qualified Hilbert-kernel interpretation of the integral.
  \tag{L33.4.f}
 \]
 For example, two integrations by parts in the Fourier coefficient give an integrable bound by a constant times $(1+t^2)^{-1}$. That coefficient is also bounded, so it lies in $L^1\cap L^2$; the inverse-integral theorem applies. Its inverse integral and $k$ are continuous, so their $L^2$ equality holds at every real $p$. Integrating the unitary group (L33.4.c) therefore yields
-\
- [k(P)\xi=k(P_r)\xi(r,s).
+\[
+ [k(P)\xi](r,s)=k(P_r)\xi(r,s).
  \tag{L33.4.g}
 \]
 Here is the domain-free justification of that integration. On finite compact continuous vector tensors, truncate the time integral to a compact interval and use the jointly strongly continuous unitary field. The compact and improper vector integrals in [Operator foundations: spectral domains, normal topology and scalar analysis](OA-FLOW-SF.md#oa-flow.sf3.compact-vector-integral) commute with the Hilbert tensor maps, and the tails are bounded in norm by
@@ -515,12 +515,12 @@ In particular each cutoff belongs to the full finite-star ideal of $\Omega$.
  \tag{L33.5.d}
 \]
 Moreover, at every pair $(r,s)$ in their continuous representatives,
-\
+\[
  \begin{gathered}
  K_B(r,s)^*\in\mathfrak n_\varphi,\qquad
  K_B(r,s)\in\mathfrak n_{\varphi\circ\alpha_s},\\
  \Lambda_\varphi(\alpha_s(K_B(r,s)))
-       =[\Pi(e)z_X.
+       =[\Pi(e)z_X](r,s).
  \end{gathered}
  \tag{L33.5.e}
 \]
@@ -585,8 +585,8 @@ The first-domain and adjoint-vector formulas use these conjugated coefficients. 
 The common conjugation follows from [Canonical standard-form transport and finite balanced matrices](OA-FLOW-MC.md#mc-5); the strongly continuous $U_s$, commuting with $J_\varphi$, is the canonical implementation from [A normal regular construction on arbitrary Hilbert spaces](OA-FLOW-NR.md#oa-flow.nr.1). The pullback GNS identification is the full normal-isomorphism transport and cone alignment already proved in (L33.3.i), on the exact transported finite ideal.
 
 Multiplying (L33.5.j) by $J_\varphi$ shows that the pointwise half-power image is
-\
- J_\varphi U_s^*[\Pi(e)z_X.
+\[
+ J_\varphi U_s^*[\Pi(e)z_X](r,s).
  \tag{L33.5.k}
 \]
 This is a strongly measurable square-integrable section: the vector before multiplication is continuous and compactly supported, the unitaries are strongly continuous, and the antiunitary preserves its pointwise norm. Its Hilbert norm is $\|\Pi(e)z_X\|$. The maximal-domain lemma applies to the genuine vector $\Lambda_\Omega(B^*)$ and gives its membership in $D(D^{1/2})$ with that image. Now (L33.4.n), with $y=B^*$, yields
@@ -666,7 +666,7 @@ including every infinite value. The whole-cone equality follows from (L33.5.r) a
  W=\widetilde{\widetilde\varphi}\circ\Phi^{-1},\qquad
  \Omega=\varphi\otimes\operatorname{Tr},\\
  [DW:D\Omega]_t=C_t,\qquad
- C_t\xi=[D(\varphi\circ\alpha_r):D\varphi]_t\,\xi(r)
+ [C_t\xi](r)=[D(\varphi\circ\alpha_r):D\varphi]_t\,\xi(r)
            \quad(t\in\mathbb R).
  \end{gathered}
  \tag{L33.6.a}

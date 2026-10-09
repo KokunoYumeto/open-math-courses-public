@@ -1654,8 +1654,8 @@ Let \(p:K\to B[-1]\) be the second projection and \(i:B\to K\) the first inclusi
 \gamma=i\delta[-1]p.
 \]
 Its component from the second summand to the first is \(\delta[-1]\ne0\), so \(\gamma\ne0\). The first summand has cohomology only in degree zero, and the second only in degree one. In each degree the cross-component therefore induces the zero map. Thus \(H^j(\gamma)=0\) for every \(j\). Nevertheless, since \(pi=0\),
-\
-\gamma^2=i\delta[-1\delta[-1]p=0.
+\[
+\gamma^2=i\delta[-1](pi)\delta[-1]p=0.
 \]
 This is an exact example, with no numerical approximation.
 

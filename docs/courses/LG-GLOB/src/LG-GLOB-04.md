@@ -4386,7 +4386,7 @@ The remainder is \(O(r^{2N})\) at zero, uniformly with the requisite derivative 
 \]
 if the region on which \(\rho=1\) is chosen as \([0,1]\); another such region changes only an entire term and a nonzero exponential factor in the pole term. The reciprocal \(\Gamma(w/2)^{-1}\) has a simple zero at each \(w=-2j\), so all these poles cancel.
 
-The Taylor remainder on \([0,1]\) is bounded by a finite derivative seminorm. On \(1,\infty)\), a sufficiently high Schwartz decay seminorm bounds the integral uniformly on any fixed compact parameter set. The same estimates absorb each power of \(\log r\) introduced by parameter differentiation. The canceled pole terms are bounded on compact sets as entire functions. Increasing \(N\) proves the assertion everywhere, with the required seminorm bounds. The gamma recurrence, its poles, and the entire reciprocal are actually proved in [*Tate's local theory at the infinite places*, the section “Mellin continuation without a functional equation”; no gamma nonvanishing assertion is being inferred from a functional equation.
+The Taylor remainder on \([0,1]\) is bounded by a finite derivative seminorm. On \([1,\infty)\), a sufficiently high Schwartz decay seminorm bounds the integral uniformly on any fixed compact parameter set. The same estimates absorb each power of \(\log r\) introduced by parameter differentiation. The canceled pole terms are bounded on compact sets as entire functions. Increasing \(N\) proves the assertion everywhere, with the required seminorm bounds. The gamma recurrence, its poles, and the entire reciprocal are actually proved in *Tate's local theory at the infinite places*, the section “Mellin continuation without a functional equation”; no gamma nonvanishing assertion is being inferred from a functional equation.
 
 For \(h\in\mathcal S(\mathbb R^n)\) even in every variable, this construction in each variable gives
 \[
@@ -14859,7 +14859,7 @@ Combining this with
 \(C_b(1-s)/C_b(s)=|b|^{D_n(2s-1)}\) gives
 \[
 [\omega_\pi(b)\omega_\sigma(b)]^n
-|b|^{n+2D_n},
+|b|^{[n+2D_n](s-1/2)},
 \]
 which is precisely (2.9av) because \(n+2D_n=n^2\).
 

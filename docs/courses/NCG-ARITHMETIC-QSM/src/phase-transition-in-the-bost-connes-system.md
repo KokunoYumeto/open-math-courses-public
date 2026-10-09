@@ -5478,9 +5478,9 @@ Lemma 35.1 supplies each integral and its estimate. Reversing a path changes its
 
 **Lemma 36.1 (integer winding number).** The index is an integer, is locally constant on \(\mathbb C\setminus\Gamma^*\), and is zero on the unbounded component. A positively oriented circle has index one inside and zero outside. The same is true for the positively oriented boundary of an axis-parallel square.
 
-**Proof.** First, \(e^v=1\) holds precisely when \(v=2\pi i n\), \(n\in\mathbb Z\). Indeed Lemma 35.6 gives \(|e^v|=e^{\operatorname{Re}v}\), so the real part must be zero. By the Archimedean property, subtract a multiple of \(2\pi\) from the imaginary part to put it in \(-\pi,\pi)\). Lemma 35.7 parametrizes the unit circle minus \(-1\) injectively on \((-\pi,\pi)\), with \(e^0=1\); at \(-\pi\) the value is \(-1\). The residual imaginary part is therefore zero. The converse follows from the exponential product identity.
+**Proof.** First, \(e^v=1\) holds precisely when \(v=2\pi i n\), \(n\in\mathbb Z\). Indeed Lemma 35.6 gives \(|e^v|=e^{\operatorname{Re}v}\), so the real part must be zero. By the Archimedean property, subtract a multiple of \(2\pi\) from the imaginary part to put it in \([-\pi,\pi)\). Lemma 35.7 parametrizes the unit circle minus \(-1\) injectively on \((-\pi,\pi)\), with \(e^0=1\); at \(-\pi\) the value is \(-1\). The residual imaginary part is therefore zero. The converse follows from the exponential product identity.
 
-The written proof of [Lemma 6.3 in the Banach-algebra lesson now applies with its exponential-kernel input proved above. It supplies integrality, local constancy, the unbounded-component value and the circle values. Its proof differentiates the exponential of the path primitive of \(dw/(w-z)\), uses closedness of the path, and then estimates the difference of the two resolvents. The exact continuity bound is
+The written proof of Lemma 6.3 in the Banach-algebra lesson now applies with its exponential-kernel input proved above. It supplies integrality, local constancy, the unbounded-component value and the circle values. Its proof differentiates the exponential of the path primitive of \(dw/(w-z)\), uses closedness of the path, and then estimates the difference of the two resolvents. The exact continuity bound is
 
 \[
  |\operatorname{Ind}_\Gamma(z)-\operatorname{Ind}_\Gamma(v)|

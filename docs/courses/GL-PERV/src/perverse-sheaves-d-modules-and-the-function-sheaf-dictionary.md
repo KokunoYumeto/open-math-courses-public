@@ -44,8 +44,8 @@ t_{K,n}(x)=\operatorname{str}(F_{Q,x};K_{\bar x}).
 \tag{2.1}
 \]
 The datum is the family over all \(n\ge1\). If the underlying closed point has degree \(d\mid n\), its operator is the \((n/d)\)-th power of degree-\(d\) geometric Frobenius. A Tate twist \((1)\) has eigenvalue \(Q^{-1}\). Hence
-\
-t_{K[m,n}=(-1)^mQ^{-r}t_{K,n}.
+\[
+t_{K[m](r),n}=(-1)^mQ^{-r}t_{K,n}.
 \tag{2.2}
 \]
 In particular the constant sheaf has value \(1\), while the perverse constant sheaf on a smooth \(d\)-fold has value \((-1)^d\).
@@ -241,8 +241,8 @@ The projective-bundle cohomology formula gives a second check: \(Y\) has even Be
 ## 5. Turn kernels into operators, then specialize to Fourier
 
 Let \(X\xleftarrow a Z\xrightarrow bY\) be a finite-type correspondence with \(b\) separated, and let \(M\) be a constructible kernel. Define
-\
-\mathcal H_M(A)=Rb_!(a^*A\otimes M)[s.
+\[
+\mathcal H_M(A)=Rb_!(a^*A\otimes M)[s](r).
 \]
 Equations (2.2)–(2.4) give
 \[

@@ -1,19 +1,335 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Numerical completion of the long weighted chains</title><link rel="stylesheet" href="../runtime/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="../runtime/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="../index.html">ℓ-adic cohomology and trace formulas</a></nav><article class="lesson"><h1 id="ns11a">Numerical completion of the long weighted chains</h1>
-<p>Independent AG-GS exposition, CC0 1.0. Written in the existing AG-GS author workflow (its recorded writer is GPT-6.1 Sol, Ultra); reproduced here without mathematical change. The native numerical classification and heart bound remain the human Stacks/AI Integrated Stacks GFDL components. This excerpt is NS.11a only and does not admit the unrestricted residue-field claim in the following NS.11.</p>
-<p><strong>Numerical completion NS.11a. The long weighted chains in the curve provider.</strong> The native proof of <code>models-lemma-bound-wm</code> leaves two weighted-chain cases and the long fork case to the reader. The following supplies those cases, so the required bound is not imported with an unfinished exercise.</p>
-<p>Use the native numerical-type notation: <span class="math" data-tex="\(A=(a_{ij})\)">\(A=(a_{ij})\)</span> is symmetric, <span class="math" data-tex="\(Am=0\)">\(Am=0\)</span>, <span class="math" data-tex="\(m_i,w_i&gt;0\)">\(m_i,w_i&gt;0\)</span>, <span class="math" data-tex="\(w_i\mid a_{ij}\)">\(w_i\mid a_{ij}\)</span>; at a <span class="math" data-tex="\((-2)\)">\((-2)\)</span>-vertex, <span class="math" data-tex="\(a_{ii}=-2w_i\)">\(a_{ii}=-2w_i\)</span>. A one-vertex type has <span class="math" data-tex="\(A=0\)">\(A=0\)</span> and torsion-free numerical Picard group, so assume more than one vertex. Let <span class="math" data-tex="\(J\)">\(J\)</span> be the non-<span class="math" data-tex="\((-2)\)">\((-2)\)</span>-vertices. The proved heart bound is <span class="math" data-tex="\(m_j|a_{jj}|\le6g\)">\(m_j|a_{jj}|\le6g\)</span> for <span class="math" data-tex="\(j\in J\)">\(j\in J\)</span>. The equation at <span class="math" data-tex="\(j\)">\(j\)</span> gives, for a neighbour <span class="math" data-tex="\(i\)">\(i\)</span>,
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Numerical types, weighted chains and the semistable-reduction bound</title><link rel="stylesheet" href="../runtime/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="../runtime/mathjax/tex-chtml-full.js"></script><style id="stable-family-inline-math">.lesson .math:not(.math-display){display:inline;max-width:none;overflow:visible;vertical-align:baseline;overflow-wrap:normal}</style></head><body class="no-math"><main><nav><a href="../index.html">ℓ-adic cohomology and trace formulas</a></nav><article class="lesson"><h1 id="numerical-types-weighted-chains-and-the-semistable-reduction-bound">Numerical types, weighted chains and the semistable-reduction bound</h1>
+<p>Independent teaching exposition, CC0 1.0. AI author: GPT-6.1 Sol, Ultra. Includes the AG-GS numerical completion NS.11a by GPT-6.1 Sol, Ultra, with its complete numerical inputs. Self-checked by the writing AI.</p>
+<p>The mathematical references are the Stacks project authors' results on <a href="https://stacks.math.columbia.edu/tag/0C7C">numerical types</a>, <a href="https://stacks.math.columbia.edu/tag/0C8Q">connected rational subgraphs</a>, <a href="https://stacks.math.columbia.edu/tag/0C9V">bounds on the heart</a>, <a href="https://stacks.math.columbia.edu/tag/0C9W">the constant 768</a>, and <a href="https://stacks.math.columbia.edu/tag/0C9X">numerical Picard torsion</a>. The proofs below establish the statements used in the stable-family argument, including both orientations of the weighted chains and the fork.</p>
+<span class="heading-anchor" id="n-matrix"></span>
+<h2 id="n-1-the-matrix-and-its-positive-kernel">N.1. The matrix and its positive kernel</h2>
+<p>A numerical type, as defined in <a href="https://stacks.math.columbia.edu/tag/0C6Z">Stacks 0C6Z</a>, consists of a finite connected graph on vertices <span class="math" data-tex="\(1,\ldots,n\)">\(1,\ldots,n\)</span>, positive integers <span class="math" data-tex="\(m_i,w_i\)">\(m_i,w_i\)</span>, integers <span class="math" data-tex="\(g_i\ge0\)">\(g_i\ge0\)</span>, and a symmetric integral matrix <span class="math" data-tex="\(A=(a_{ij})\)">\(A=(a_{ij})\)</span>. An edge <span class="math" data-tex="\(ij\)">\(ij\)</span> is present exactly when <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span> and <span class="math" data-tex="\(a_{ij}&gt;0\)">\(a_{ij}&gt;0\)</span>; other off-diagonal entries vanish. The requirements are
 <span class="math math-display" data-tex="\[
-m_i a_{ij}\le m_j|a_{jj}|,
-\qquad m_iw_i\le m_j|a_{jj}|.
+ Am=0,\qquad w_i\mid a_{ij}\quad\text{for every }i,j.
+\tag{N.1}
+\]">\[
+ Am=0,\qquad w_i\mid a_{ij}\quad\text{for every }i,j.
+\tag{N.1}
+\]</span>
+Define the numerical genus and the graph genus by
+<span class="math math-display" data-tex="\[
+ g=1+\sum_i m_i\left(w_i(g_i-1)-\frac{a_{ii}}2\right),
+ \qquad b=e-n+1,
+\tag{N.2}
+\]">\[
+ g=1+\sum_i m_i\left(w_i(g_i-1)-\frac{a_{ii}}2\right),
+ \qquad b=e-n+1,
+\tag{N.2}
+\]</span>
+where <span class="math" data-tex="\(e\)">\(e\)</span> counts unordered edges, without counting their weights. A spanning tree gives <span class="math" data-tex="\(b\ge0\)">\(b\ge0\)</span>.</p>
+<p>For any real vector <span class="math" data-tex="\(z\)">\(z\)</span>, the row equations in (N.1) yield the identity
+<span class="math math-display" data-tex="\[
+ -z^{\mathsf t}Az
+ =\sum_{i&lt;j}a_{ij}m_im_j
+       \left(\frac{z_i}{m_i}-\frac{z_j}{m_j}\right)^2.
+\tag{N.3}
+\]">\[
+ -z^{\mathsf t}Az
+ =\sum_{i&lt;j}a_{ij}m_im_j
+       \left(\frac{z_i}{m_i}-\frac{z_j}{m_j}\right)^2.
+\tag{N.3}
+\]</span>
+This is the negative-definiteness calculation corresponding to <a href="https://stacks.math.columbia.edu/tag/0C5X">Stacks 0C5X</a>. Expand the right side: the coefficient of <span class="math" data-tex="\(z_i^2\)">\(z_i^2\)</span> is
+<span class="math" data-tex="\(\sum_{j\ne i}a_{ij}m_j/m_i=-a_{ii}\)">\(\sum_{j\ne i}a_{ij}m_j/m_i=-a_{ii}\)</span>, and the mixed coefficient is <span class="math" data-tex="\(-2a_{ij}\)">\(-2a_{ij}\)</span>. Thus (N.3) follows directly. Connectedness implies that equality occurs exactly for <span class="math" data-tex="\(z=qm\)">\(z=qm\)</span>. Consequently <span class="math" data-tex="\(A\)">\(A\)</span> has rank <span class="math" data-tex="\(n-1\)">\(n-1\)</span>, with kernel <span class="math" data-tex="\(\mathbf Qm\)">\(\mathbf Qm\)</span> over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>, and every principal matrix on a nonempty proper vertex set is negative definite. Indeed, extend a vector on that set by zero; equality in (N.3) would make it a multiple of the everywhere positive vector <span class="math" data-tex="\(m\)">\(m\)</span>, hence zero.</p>
+<p>If <span class="math" data-tex="\(n&gt;1\)">\(n&gt;1\)</span>, each vertex has a neighbour and
+<span class="math math-display" data-tex="\[
+ -a_{ii}m_i=\sum_{j\ne i}a_{ij}m_j&gt;0.
+\tag{N.4}
+\]">\[
+ -a_{ii}m_i=\sum_{j\ne i}a_{ij}m_j&gt;0.
+\tag{N.4}
+\]</span>
+In particular, all diagonal entries are negative. The genus in (N.2) is integral: reducing <span class="math" data-tex="\(m^{\mathsf t}Am=0\)">\(m^{\mathsf t}Am=0\)</span> modulo two gives
+<span class="math" data-tex="\(\sum_i a_{ii}m_i\equiv\sum_i a_{ii}m_i^2\equiv0\pmod2\)">\(\sum_i a_{ii}m_i\equiv\sum_i a_{ii}m_i^2\equiv0\pmod2\)</span>.</p>
+<p>Call a vertex exceptional when <span class="math" data-tex="\(g_i=0\)">\(g_i=0\)</span> and <span class="math" data-tex="\(a_{ii}=-w_i\)">\(a_{ii}=-w_i\)</span>. The type is minimal when it has no exceptional vertex. For a minimal type with <span class="math" data-tex="\(n&gt;1\)">\(n&gt;1\)</span>, put
+<span class="math math-display" data-tex="\[
+ \Phi_i=m_i\left(w_i(g_i-1)-a_{ii}/2\right).
+\]">\[
+ \Phi_i=m_i\left(w_i(g_i-1)-a_{ii}/2\right).
+\]</span>
+Since <span class="math" data-tex="\(-a_{ii}/w_i\)">\(-a_{ii}/w_i\)</span> is a positive integer, <span class="math" data-tex="\(\Phi_i\ge0\)">\(\Phi_i\ge0\)</span>; it vanishes precisely when <span class="math" data-tex="\(g_i=0\)">\(g_i=0\)</span> and <span class="math" data-tex="\(a_{ii}=-2w_i\)">\(a_{ii}=-2w_i\)</span>. These will be called rational <span class="math" data-tex="\((-2)\)">\((-2)\)</span>-vertices. It follows that a minimal type with several vertices has <span class="math" data-tex="\(g\ge1\)">\(g\ge1\)</span>. If every vertex is a rational <span class="math" data-tex="\((-2)\)">\((-2)\)</span>-vertex, then every summand vanishes and <strong><span class="math" data-tex="\(g=1\)">\(g=1\)</span></strong>. This also applies when the matrix on the full graph is singular. The one-vertex case has <span class="math" data-tex="\(A=0\)">\(A=0\)</span> and <span class="math" data-tex="\(g=1+m_1w_1(g_1-1)\)">\(g=1+m_1w_1(g_1-1)\)</span>.</p>
+<span class="heading-anchor" id="n-genus"></span>
+<h2 id="n-2-why-the-graph-genus-cannot-exceed-the-numerical-genus">N.2. Why the graph genus cannot exceed the numerical genus</h2>
+<p>For a minimal type with <span class="math" data-tex="\(n&gt;1\)">\(n&gt;1\)</span>, we prove <span class="math" data-tex="\(b\le g\)">\(b\le g\)</span>, the result of <a href="https://stacks.math.columbia.edu/tag/0C7C">Stacks 0C7C</a>. Let <span class="math" data-tex="\(d_i\)">\(d_i\)</span> be the ordinary graph degree, <span class="math" data-tex="\(q_i=\sum_{j\ne i}a_{ij}/w_i\)">\(q_i=\sum_{j\ne i}a_{ij}/w_i\)</span>, and <span class="math" data-tex="\(x_i=m_iw_i\)">\(x_i=m_iw_i\)</span>. Summing (N.4) and using symmetry expresses the difference as
+<span class="math math-display" data-tex="\[
+ g-b=\sum_i\Psi_i,\qquad
+ \Psi_i=x_i(g_i-1+q_i/2)+1-d_i/2.
+\tag{N.5}
+\]">\[
+ g-b=\sum_i\Psi_i,\qquad
+ \Psi_i=x_i(g_i-1+q_i/2)+1-d_i/2.
+\tag{N.5}
+\]</span>
+Here <span class="math" data-tex="\(q_i\ge d_i\)">\(q_i\ge d_i\)</span>. The only negative terms are rational leaves with <span class="math" data-tex="\(q_i=1\)">\(q_i=1\)</span> and <span class="math" data-tex="\(x_i&gt;1\)">\(x_i&gt;1\)</span>; for such a leaf <span class="math" data-tex="\(i\)">\(i\)</span>, <span class="math" data-tex="\(\Psi_i=(1-x_i)/2\)">\(\Psi_i=(1-x_i)/2\)</span>. Indeed, if <span class="math" data-tex="\(g_i-1+q_i/2\ge0\)">\(g_i-1+q_i/2\ge0\)</span>, multiplying by <span class="math" data-tex="\(x_i\ge1\)">\(x_i\ge1\)</span> and comparing with <span class="math" data-tex="\(-1+d_i/2\)">\(-1+d_i/2\)</span> gives <span class="math" data-tex="\(\Psi_i\ge0\)">\(\Psi_i\ge0\)</span>. A negative value inside the parentheses requires <span class="math" data-tex="\(g_i=0,q_i=1\)">\(g_i=0,q_i=1\)</span>, and connectedness then gives <span class="math" data-tex="\(d_i=1\)">\(d_i=1\)</span>.</p>
+<p>If <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, the inequality follows already from <span class="math" data-tex="\(g\ge1\)">\(g\ge1\)</span>. Suppose <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>. Starting at each negative leaf, follow the unique path through rational vertices of degree two whose two incident edges both equal their vertex weight. These degree-two vertices have <span class="math" data-tex="\(\Psi=0\)">\(\Psi=0\)</span>. The path must end at a vertex <span class="math" data-tex="\(k\)">\(k\)</span> outside this class and outside the negative leaves: a path ending at another such leaf would constitute the entire connected graph and have <span class="math" data-tex="\(b=0\)">\(b=0\)</span>. Interiors of these paths are disjoint.</p>
+<p>The edge weight is constant along each of these paths, including its last edge to <span class="math" data-tex="\(k\)">\(k\)</span>; denote it by <span class="math" data-tex="\(c\)">\(c\)</span>. Minimality at the initial leaf gives <span class="math" data-tex="\(m_{\mathrm{next}}\ge2m_{\mathrm{leaf}}\)">\(m_{\mathrm{next}}\ge2m_{\mathrm{leaf}}\)</span>. At every interior vertex, its equation is
+<span class="math" data-tex="\(\kappa m_j=m_{\mathrm{prev}}+m_{\mathrm{next}}\)">\(\kappa m_j=m_{\mathrm{prev}}+m_{\mathrm{next}}\)</span> for an integer <span class="math" data-tex="\(\kappa\ge2\)">\(\kappa\ge2\)</span>. The positive initial increase in multiplicity therefore persists along the path. In particular,
+<span class="math math-display" data-tex="\[
+ m_k\ge2m_{\mathrm{leaf}}.
+\tag{N.6}
+\]">\[
+ m_k\ge2m_{\mathrm{leaf}}.
+\tag{N.6}
+\]</span></p>
+<p>Group all <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span> paths ending at a fixed <span class="math" data-tex="\(k\)">\(k\)</span>. Write <span class="math" data-tex="\(r\)">\(r\)</span> for its number of other neighbours, <span class="math" data-tex="\(\rho_s=c_s/w_k\ge1\)">\(\rho_s=c_s/w_k\ge1\)</span> for the integral weight ratio of path <span class="math" data-tex="\(s\)">\(s\)</span>, and <span class="math" data-tex="\(Q\)">\(Q\)</span> for the sum of the ratios <span class="math" data-tex="\(a_{kj}/w_k\)">\(a_{kj}/w_k\)</span> on the other edges. Since <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>, <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span>: otherwise the entire graph would be the union of the paths and their common endpoint, a tree. Adding the negative leaf terms to <span class="math" data-tex="\(\Psi_k\)">\(\Psi_k\)</span> gives exactly
+<span class="math math-display" data-tex="\[
+ E_k=x_k(g_k-1)+\frac12\sum_{s=1}^t
+           (x_k\rho_s-x_{\mathrm{leaf},s})
+       +\frac{x_kQ}{2}+1-\frac r2.
+\tag{N.7}
+\]">\[
+ E_k=x_k(g_k-1)+\frac12\sum_{s=1}^t
+           (x_k\rho_s-x_{\mathrm{leaf},s})
+       +\frac{x_kQ}{2}+1-\frac r2.
+\tag{N.7}
+\]</span>
+By (N.6), <span class="math" data-tex="\(x_{\mathrm{leaf},s}\le x_k\rho_s/2\)">\(x_{\mathrm{leaf},s}\le x_k\rho_s/2\)</span>; also <span class="math" data-tex="\(Q\ge r\)">\(Q\ge r\)</span>. If <span class="math" data-tex="\(t\ge2\)">\(t\ge2\)</span>, or if some <span class="math" data-tex="\(\rho_s\ge2\)">\(\rho_s\ge2\)</span>, these estimates give
+<span class="math math-display" data-tex="\[
+ E_k\ge x_k(r-1)/2+1-r/2\ge1/2.
+\]">\[
+ E_k\ge x_k(r-1)/2+1-r/2\ge1/2.
+\]</span>
+For the remaining possibility <span class="math" data-tex="\(t=1,\rho_1=1\)">\(t=1,\rho_1=1\)</span>, they give
+<span class="math" data-tex="\(E_k\ge x_k(g_k-3/4+Q/2)+1-r/2\)">\(E_k\ge x_k(g_k-3/4+Q/2)+1-r/2\)</span>.
+This is nonnegative if <span class="math" data-tex="\(g_k\ge1\)">\(g_k\ge1\)</span>, or <span class="math" data-tex="\(r\ge2\)">\(r\ge2\)</span>, or <span class="math" data-tex="\(Q\ge2\)">\(Q\ge2\)</span>. The only case left is <span class="math" data-tex="\(g_k=0,r=1,Q=1\)">\(g_k=0,r=1,Q=1\)</span>; it would make <span class="math" data-tex="\(k\)">\(k\)</span> another degree-two vertex of the class through which the path was continued, contrary to the stopping rule. All grouped terms are nonnegative, and every ungrouped <span class="math" data-tex="\(\Psi_i\)">\(\Psi_i\)</span> is nonnegative. This proves <span class="math" data-tex="\(g-b\ge0\)">\(g-b\ge0\)</span>.</p>
+<span class="heading-anchor" id="n-heart"></span>
+<h2 id="n-3-the-heart-and-the-first-bound-on-a-neighbour">N.3. The heart and the first bound on a neighbour</h2>
+<p>Assume the type is minimal, <span class="math" data-tex="\(g\ge2\)">\(g\ge2\)</span>, and <span class="math" data-tex="\(n&gt;1\)">\(n&gt;1\)</span>. Let <span class="math" data-tex="\(J\)">\(J\)</span> consist of the vertices that are not rational <span class="math" data-tex="\((-2)\)">\((-2)\)</span>-vertices. These are exactly the positive contributions to <span class="math" data-tex="\(g-1=\sum\Phi_i\)">\(g-1=\sum\Phi_i\)</span>; each contribution is a positive half-integer. Thus
+<span class="math math-display" data-tex="\[
+ 0&lt;|J|\le2g-2.
+\tag{N.8}
+\]">\[
+ 0&lt;|J|\le2g-2.
+\tag{N.8}
+\]</span>
+For <span class="math" data-tex="\(j\in J\)">\(j\in J\)</span>, the strict inequality <span class="math" data-tex="\(\Phi_j&gt;m_jw_j(g_j-1)\)">\(\Phi_j&gt;m_jw_j(g_j-1)\)</span> gives <span class="math" data-tex="\(g_j&lt;g\)">\(g_j&lt;g\)</span>. If <span class="math" data-tex="\(g_j\ge1\)">\(g_j\ge1\)</span>, then <span class="math" data-tex="\(\Phi_j\ge m_j|a_{jj}|/2\)">\(\Phi_j\ge m_j|a_{jj}|/2\)</span>. If <span class="math" data-tex="\(g_j=0\)">\(g_j=0\)</span>, write <span class="math" data-tex="\(-a_{jj}=kw_j\)">\(-a_{jj}=kw_j\)</span> with <span class="math" data-tex="\(k\ge3\)">\(k\ge3\)</span>; then
+<span class="math math-display" data-tex="\[
+ m_j|a_{jj}|=\frac{2k}{k-2}\Phi_j\le6\Phi_j.
+\]">\[
+ m_j|a_{jj}|=\frac{2k}{k-2}\Phi_j\le6\Phi_j.
+\]</span>
+Both cases prove
+<span class="math math-display" data-tex="\[
+ m_j|a_{jj}|\le6(g-1)\quad(j\in J).
+\tag{N.9}
+\]">\[
+ m_j|a_{jj}|\le6(g-1)\quad(j\in J).
+\tag{N.9}
+\]</span>
+Whenever <span class="math" data-tex="\(a_{ij}&gt;0\)">\(a_{ij}&gt;0\)</span>, taking one summand from (N.4) and using <span class="math" data-tex="\(a_{ij}\ge w_i\)">\(a_{ij}\ge w_i\)</span> gives
+<span class="math math-display" data-tex="\[
+ m_i a_{ij}\le m_j|a_{jj}|,\qquad
+ m_iw_i\le m_j|a_{jj}|.
+\tag{N.10}
+\]">\[
+ m_i a_{ij}\le m_j|a_{jj}|,\qquad
+ m_iw_i\le m_j|a_{jj}|.
+\tag{N.10}
+\]</span>
+These are the heart and neighbour results of <a href="https://stacks.math.columbia.edu/tag/0C9V">Stacks 0C9V</a> and <a href="https://stacks.math.columbia.edu/tag/0C9U">0C9U</a>. A rational <span class="math" data-tex="\((-2)\)">\((-2)\)</span>-vertex meeting <span class="math" data-tex="\(J\)">\(J\)</span> therefore satisfies <span class="math" data-tex="\(m_iw_i\le6(g-1)\)">\(m_iw_i\le6(g-1)\)</span>.</p>
+<span class="heading-anchor" id="n-classification"></span>
+<h2 id="n-4-enumerating-the-connected-rational-subgraphs">N.4. Enumerating the connected rational subgraphs</h2>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> be a connected proper set of rational <span class="math" data-tex="\((-2)\)">\((-2)\)</span>-vertices. Write <span class="math" data-tex="\(W=\operatorname{diag}(w_i:i\in I)\)">\(W=\operatorname{diag}(w_i:i\in I)\)</span> and
+<span class="math math-display" data-tex="\[
+ H=-W^{-1/2}A_IW^{-1/2}.
+\]">\[
+ H=-W^{-1/2}A_IW^{-1/2}.
+\]</span>
+By (N.3), <span class="math" data-tex="\(H\)">\(H\)</span> is positive definite. Its diagonal is two. At an edge its off-diagonal entry is <span class="math" data-tex="\(-\sqrt{r_{ij}}\)">\(-\sqrt{r_{ij}}\)</span>, where
+<span class="math math-display" data-tex="\[
+ r_{ij}=\frac{a_{ij}^2}{w_iw_j}
+       =\frac{a_{ij}}{w_i}\frac{a_{ij}}{w_j}
+       \in\{1,2,3\}.
+\tag{N.11}
+\]">\[
+ r_{ij}=\frac{a_{ij}^2}{w_iw_j}
+       =\frac{a_{ij}}{w_i}\frac{a_{ij}}{w_j}
+       \in\{1,2,3\}.
+\tag{N.11}
+\]</span>
+Integrality follows from the two divisibilities; the upper limit follows from the determinant of the corresponding two-vertex principal matrix. An edge with <span class="math" data-tex="\(r=1\)">\(r=1\)</span> has equal endpoint weights and edge weight equal to that common value. For <span class="math" data-tex="\(r=2\)">\(r=2\)</span> or <span class="math" data-tex="\(3\)">\(3\)</span>, the endpoint weights differ by that factor and the edge weight equals the larger endpoint weight.</p>
+<p>We give the finite enumeration needed for <a href="https://stacks.math.columbia.edu/tag/0C8Q">Stacks 0C8Q</a>. It uses only positive definiteness and the preceding three possible edge entries.</p>
+<p>The graph has no cycle: put the value one on the vertices of a cycle and zero elsewhere. The quadratic form is at most <span class="math" data-tex="\(2s-2s=0\)">\(2s-2s=0\)</span> for a cycle of length <span class="math" data-tex="\(s\)">\(s\)</span>. A vertex of degree at least four is also impossible. On that vertex and four neighbours, assign the central value two and the four neighbouring values one. For ordinary edges the quadratic form is zero; larger or additional edges only lower it. These test vectors contradict positive definiteness.</p>
+<p>There cannot be two trivalent vertices. Choose a shortest path between two of them and one vertex on each of their two branches away from the path. Give every path vertex value two and the four end leaves value one. With ordinary edges the matrix annihilates this vector, and larger edge entries again make its quadratic value nonpositive.</p>
+<p>An edge with <span class="math" data-tex="\(r&gt;1\)">\(r&gt;1\)</span> will be called heavy. There cannot be two heavy edges. Take the path between them, retaining their two outer endpoints. Replace both heavy entries by <span class="math" data-tex="\(-\sqrt2\)">\(-\sqrt2\)</span>; give the outer endpoints value <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> and every intervening vertex value two. The resulting principal matrix annihilates the vector. Increasing either heavy entry to <span class="math" data-tex="\(-\sqrt3\)">\(-\sqrt3\)</span> gives a negative quadratic value. A heavy edge and a trivalent vertex are likewise incompatible: take the path from the vertex to the heavy edge, retain two additional neighbours of the trivalent vertex, and assign values two along the path, one to those two neighbours, and <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> to the outer endpoint of the heavy edge. This gives zero for a double edge, and a nonpositive value for a triple edge.</p>
+<p>Thus a graph containing a heavy edge is a path with exactly one such edge. A triple edge cannot have an adjacent edge: the determinant of a three-vertex path with squared entries three and one is <span class="math" data-tex="\(2(4-3-1)=0\)">\(2(4-3-1)=0\)</span>. Its graph therefore has two vertices. For a double edge, let <span class="math" data-tex="\(p,q\)">\(p,q\)</span> count the vertices on its two sides, including its endpoints. The ordinary path matrix of size <span class="math" data-tex="\(p\)">\(p\)</span> has determinant <span class="math" data-tex="\(p+1\)">\(p+1\)</span> and its endpoint entry in the inverse is <span class="math" data-tex="\(p/(p+1)\)">\(p/(p+1)\)</span>. Both formulas follow from the recurrence <span class="math" data-tex="\(D_t=2D_{t-1}-D_{t-2}\)">\(D_t=2D_{t-1}-D_{t-2}\)</span>, with <span class="math" data-tex="\(D_0=1,D_1=2\)">\(D_0=1,D_1=2\)</span>, and the cofactor formula. The Schur complement across the double edge is positive exactly when
+<span class="math math-display" data-tex="\[
+ 1-\frac{2pq}{(p+1)(q+1)}&gt;0
+ \quad\Longleftrightarrow\quad (p-1)(q-1)&lt;2.
+\tag{N.12}
+\]">\[
+ 1-\frac{2pq}{(p+1)(q+1)}&gt;0
+ \quad\Longleftrightarrow\quad (p-1)(q-1)&lt;2.
+\tag{N.12}
+\]</span>
+Hence either the double edge is terminal, with arbitrary path length and either orientation of the weight ratio, or <span class="math" data-tex="\(p=q=2\)">\(p=q=2\)</span>, giving a four-vertex path with its double edge in the middle.</p>
+<p>It remains to enumerate ordinary trees. Those without a trivalent vertex are ordinary paths. A tree with one trivalent vertex has three arms of lengths <span class="math" data-tex="\(p\le q\le r\)">\(p\le q\le r\)</span>, counted beyond that vertex. Eliminating the arm matrices leaves the scalar
+<span class="math math-display" data-tex="\[
+ \sigma=2-\frac p{p+1}-\frac q{q+1}-\frac r{r+1}
+       =\frac1{p+1}+\frac1{q+1}+\frac1{r+1}-1.
+\tag{N.13}
+\]">\[
+ \sigma=2-\frac p{p+1}-\frac q{q+1}-\frac r{r+1}
+       =\frac1{p+1}+\frac1{q+1}+\frac1{r+1}-1.
+\tag{N.13}
+\]</span>
+It must be positive. If <span class="math" data-tex="\(p\ge2\)">\(p\ge2\)</span>, it is nonpositive. For <span class="math" data-tex="\(p=1\)">\(p=1\)</span>, either <span class="math" data-tex="\(q=1\)">\(q=1\)</span>, with <span class="math" data-tex="\(r\)">\(r\)</span> arbitrary, or <span class="math" data-tex="\(q=2\)">\(q=2\)</span>, with <span class="math" data-tex="\(r=2,3,4\)">\(r=2,3,4\)</span>; <span class="math" data-tex="\(q\ge3\)">\(q\ge3\)</span> is impossible. These are the long forks and the three exceptional trees with arm lengths <span class="math" data-tex="\((1,2,2),(1,2,3),(1,2,4)\)">\((1,2,2),(1,2,3),(1,2,4)\)</span>, traditionally called <span class="math" data-tex="\(E_6,E_7,E_8\)">\(E_6,E_7,E_8\)</span>.</p>
+<p>Conversely, the path recurrence and the positive Schur complements just computed show that every matrix on this list is positive definite. The vertex inequalities in each case are exactly
+<span class="math math-display" data-tex="\[
+ 2w_i m_i\ge\sum_{j\in I\setminus\{i\}}a_{ij}m_j,
+\tag{N.14}
+\]">\[
+ 2w_i m_i\ge\sum_{j\in I\setminus\{i\}}a_{ij}m_j,
+\tag{N.14}
+\]</span>
+with equality at <span class="math" data-tex="\(i\)">\(i\)</span> precisely when there is no edge from <span class="math" data-tex="\(i\)">\(i\)</span> to a vertex outside <span class="math" data-tex="\(I\)">\(I\)</span>. This specifies all multiplicity restrictions that we need.</p>
+<p>The list is exhausted: ordinary paths; terminally doubled paths in either orientation; ordinary forks with two short arms of length one; the four-vertex path with its central double edge; the two-vertex triple edge; and <span class="math" data-tex="\(E_6,E_7,E_8\)">\(E_6,E_7,E_8\)</span>. The last five possibilities have diameter at most six. This enumeration concerns proper subgraphs; a full all-<span class="math" data-tex="\((-2)\)">\((-2)\)</span> type instead has genus one by N.1.</p>
+<span class="heading-anchor" id="ns11a"></span>
+<h2 id="ns-11a-completing-the-bound-on-every-long-chain-and-fork">NS.11a. Completing the bound on every long chain and fork</h2>
+<p><strong>Theorem.</strong> If a numerical type is minimal and has genus <span class="math" data-tex="\(g\ge2\)">\(g\ge2\)</span>, then
+<span class="math math-display" data-tex="\[
+ m_i|a_{ij}|\le768g\qquad\text{for all }i,j.
 \tag{NS.11a}
 \]">\[
-m_i a_{ij}\le m_j|a_{jj}|,
-\qquad m_iw_i\le m_j|a_{jj}|.
+ m_i|a_{ij}|\le768g\qquad\text{for all }i,j.
 \tag{NS.11a}
 \]</span>
-In particular a <span class="math" data-tex="\((-2)\)">\((-2)\)</span>-vertex attached to <span class="math" data-tex="\(J\)">\(J\)</span> has <span class="math" data-tex="\(m_iw_i\le6g\)">\(m_iw_i\le6g\)</span>. Each successive <span class="math" data-tex="\((-2)\)">\((-2)\)</span>-edge can at most double the bound on <span class="math" data-tex="\(m_i|a_{ii}|\)">\(m_i|a_{ii}|\)</span>. The native proper-subgraph classification says that every remaining short component has graph distance at most seven from <span class="math" data-tex="\(J\)">\(J\)</span>; its small diagrams and the <span class="math" data-tex="\(E_6,E_7,E_8\)">\(E_6,E_7,E_8\)</span> diagrams have diameter at most six. Thus these components satisfy <span class="math" data-tex="\(m_i|a_{ii}|\le2^7(6g)=768g\)">\(m_i|a_{ii}|\le2^7(6g)=768g\)</span>. The only components with unbounded length are the following chains and fork. The classification and the heart bound are retained at their exact proved earlier native locators; we now finish their bound.</p>
-<p>In an unweighted chain, all <span class="math" data-tex="\(w_i=w\)">\(w_i=w\)</span> and consecutive <span class="math" data-tex="\(a_{i,i+1}=w\)">\(a_{i,i+1}=w\)</span>. The multiplicities obey <span class="math" data-tex="\(2m_i\ge m_{i-1}+m_{i+1}\)">\(2m_i\ge m_{i-1}+m_{i+1}\)</span> at internal vertices, with equality precisely when that vertex has no neighbour in <span class="math" data-tex="\(J\)">\(J\)</span>. A maximum plateau either has an internal boundary with a smaller neighbour, in which case the inequality is strict and that vertex attaches to <span class="math" data-tex="\(J\)">\(J\)</span>, or reaches an endpoint with no smaller internal neighbour. At such an endpoint the residual in <span class="math" data-tex="\(Am=0\)">\(Am=0\)</span> is <span class="math" data-tex="\(wm_i&gt;0\)">\(wm_i&gt;0\)</span>, so it also attaches to <span class="math" data-tex="\(J\)">\(J\)</span>. Hence the maximum multiplicity occurs at an attached vertex, giving <span class="math" data-tex="\(wm_i\le6g\)">\(wm_i\le6g\)</span> throughout the chain.</p>
-<p>In the first weighted chain, <span class="math" data-tex="\(w_1=\cdots=w_{t-1}=w\)">\(w_1=\cdots=w_{t-1}=w\)</span>, <span class="math" data-tex="\(w_t=2w\)">\(w_t=2w\)</span>, ordinary edges have weight <span class="math" data-tex="\(w\)">\(w\)</span> and the last edge has weight <span class="math" data-tex="\(2w\)">\(2w\)</span>. Put <span class="math" data-tex="\(x_i=m_i\)">\(x_i=m_i\)</span> for <span class="math" data-tex="\(i&lt;t\)">\(i&lt;t\)</span> and <span class="math" data-tex="\(x_t=2m_t\)">\(x_t=2m_t\)</span>. Then <span class="math" data-tex="\(w_i m_i=wx_i\)">\(w_i m_i=wx_i\)</span>, all internal inequalities are <span class="math" data-tex="\(2x_i\ge x_{i-1}+x_{i+1}\)">\(2x_i\ge x_{i-1}+x_{i+1}\)</span>, and the terminal equation gives <span class="math" data-tex="\(x_t\ge x_{t-1}\)">\(x_t\ge x_{t-1}\)</span>, with equality if vertex <span class="math" data-tex="\(t\)">\(t\)</span> has no neighbour in <span class="math" data-tex="\(J\)">\(J\)</span>. If <span class="math" data-tex="\(t\)">\(t\)</span> is a maximum and the inequality is strict, it is attached and <span class="math" data-tex="\(wx_t\le6g\)">\(wx_t\le6g\)</span>. Otherwise the maximum-plateau argument just given finds an attached maximum at an ordinary vertex or at the other endpoint. Thus again every <span class="math" data-tex="\(w_i m_i\le6g\)">\(w_i m_i\le6g\)</span>.</p>
-<p>In the second weighted chain, <span class="math" data-tex="\(w_1=\cdots=w_{t-1}=2w\)">\(w_1=\cdots=w_{t-1}=2w\)</span>, <span class="math" data-tex="\(w_t=w\)">\(w_t=w\)</span>, and all edges have weight <span class="math" data-tex="\(2w\)">\(2w\)</span>. The original <span class="math" data-tex="\(m_i\)">\(m_i\)</span> obey the ordinary internal concavity inequalities, and <span class="math" data-tex="\(m_t\ge m_{t-1}\)">\(m_t\ge m_{t-1}\)</span>, with equality if <span class="math" data-tex="\(t\)">\(t\)</span> is unattached. The same plateau argument finds a maximum at an attached vertex. If it is an ordinary vertex, <span class="math" data-tex="\(2w\max m_i\le6g\)">\(2w\max m_i\le6g\)</span>; if it is <span class="math" data-tex="\(t\)">\(t\)</span>, <span class="math" data-tex="\(w\max m_i\le6g\)">\(w\max m_i\le6g\)</span>. In both cases <span class="math" data-tex="\(w_i m_i\le12g\)">\(w_i m_i\le12g\)</span> throughout, and so <span class="math" data-tex="\(m_i|a_{ii}|\le24g\)">\(m_i|a_{ii}|\le24g\)</span>.</p>
-<p>For the long fork, all weights are <span class="math" data-tex="\(w\)">\(w\)</span>. Number its long path <span class="math" data-tex="\(1,\ldots,t-1\)">\(1,\ldots,t-1\)</span>, with leaves <span class="math" data-tex="\(t,t+1\)">\(t,t+1\)</span> at vertex <span class="math" data-tex="\(t-1\)">\(t-1\)</span>. Put <span class="math" data-tex="\(s=m_t+m_{t+1}\)">\(s=m_t+m_{t+1}\)</span>. The path followed by <span class="math" data-tex="\(s\)">\(s\)</span> satisfies ordinary concavity, because the fork inequality is <span class="math" data-tex="\(2m_{t-1}\ge m_{t-2}+s\)">\(2m_{t-1}\ge m_{t-2}+s\)</span>; the two leaf equations give <span class="math" data-tex="\(s\ge m_{t-1}\)">\(s\ge m_{t-1}\)</span>. A maximum plateau contained in the path has an attached maximum unless it extends to the terminal <span class="math" data-tex="\(s\)">\(s\)</span>. If <span class="math" data-tex="\(s\)">\(s\)</span> is a maximum and both leaves are unattached, their equations give <span class="math" data-tex="\(m_t=m_{t+1}=m_{t-1}/2\)">\(m_t=m_{t+1}=m_{t-1}/2\)</span>, hence <span class="math" data-tex="\(s=m_{t-1}\)">\(s=m_{t-1}\)</span>. The plateau then either has an attached path boundary or extends to the first endpoint, whose positive residual makes it attached. This gives <span class="math" data-tex="\(ws\le6g\)">\(ws\le6g\)</span>. If both leaves are attached, (NS.11a) gives <span class="math" data-tex="\(ws\le12g\)">\(ws\le12g\)</span>. If just one is attached, say <span class="math" data-tex="\(t\)">\(t\)</span>, the other has <span class="math" data-tex="\(m_{t+1}=m_{t-1}/2\)">\(m_{t+1}=m_{t-1}/2\)</span>; since <span class="math" data-tex="\(s\ge m_{t-1}\)">\(s\ge m_{t-1}\)</span>, we get <span class="math" data-tex="\(m_t\ge m_{t-1}/2\)">\(m_t\ge m_{t-1}/2\)</span> and <span class="math" data-tex="\(s\le2m_t\)">\(s\le2m_t\)</span>. Again <span class="math" data-tex="\(ws\le12g\)">\(ws\le12g\)</span>. A larger path maximum instead has an attached plateau boundary and is bounded by <span class="math" data-tex="\(6g/w\)">\(6g/w\)</span>. Thus every vertex in the fork satisfies <span class="math" data-tex="\(m_i|a_{ii}|\le24g\)">\(m_i|a_{ii}|\le24g\)</span>. This completes every long case and the bound <span class="math" data-tex="\(768g\)">\(768g\)</span>. The off-diagonal bounds follow from (NS.11a), applied with its already bounded neighbouring diagonal. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+For a type with one vertex this follows from <span class="math" data-tex="\(A=0\)">\(A=0\)</span>. For several vertices, set <span class="math" data-tex="\(B=6(g-1)\)">\(B=6(g-1)\)</span>. By (N.9) all vertices in <span class="math" data-tex="\(J\)">\(J\)</span> have <span class="math" data-tex="\(m_j|a_{jj}|\le B\)">\(m_j|a_{jj}|\le B\)</span>. Each connected component <span class="math" data-tex="\(I\)">\(I\)</span> of the complement of <span class="math" data-tex="\(J\)">\(J\)</span> has an edge to <span class="math" data-tex="\(J\)">\(J\)</span>. At an attached vertex, (N.10) gives <span class="math" data-tex="\(m_iw_i\le B\)">\(m_iw_i\le B\)</span>, hence <span class="math" data-tex="\(m_i|a_{ii}|\le2B\)">\(m_i|a_{ii}|\le2B\)</span>. Crossing another edge inside <span class="math" data-tex="\(I\)">\(I\)</span> multiplies this diagonal bound by at most two. If <span class="math" data-tex="\(I\)">\(I\)</span> is one of the bounded-size cases in N.4, every vertex is within six edges of an attached vertex. Its diagonal bound is consequently at most <span class="math" data-tex="\(2^7B\le768g\)">\(2^7B\le768g\)</span>.</p>
+<p>We now prove bounds independent of length in every remaining case. Call a vertex attached if it meets <span class="math" data-tex="\(J\)">\(J\)</span>. Its weighted multiplicity <span class="math" data-tex="\(w_im_i\)">\(w_im_i\)</span> is at most <span class="math" data-tex="\(B\)">\(B\)</span>. A component with just one vertex is attached, so is already bounded; the following path arguments use <span class="math" data-tex="\(t\ge2\)">\(t\ge2\)</span>.</p>
+<p><strong>Ordinary path.</strong> Number the vertices <span class="math" data-tex="\(1,\ldots,t\)">\(1,\ldots,t\)</span>. All vertex and edge weights equal <span class="math" data-tex="\(w\)">\(w\)</span>. At an internal vertex,
+<span class="math math-display" data-tex="\[
+ 2m_i-m_{i-1}-m_{i+1}\ge0,
+\]">\[
+ 2m_i-m_{i-1}-m_{i+1}\ge0,
+\]</span>
+and the difference is positive exactly when the vertex is attached. If a maximum occurs away from the endpoints, a boundary of its plateau has a strictly smaller neighbour unless the entire path is the plateau. Such a boundary is attached. A maximum at an endpoint has positive residual <span class="math" data-tex="\(2m_1-m_2\ge m_1\)">\(2m_1-m_2\ge m_1\)</span>, or <span class="math" data-tex="\(2m_t-m_{t-1}\ge m_t\)">\(2m_t-m_{t-1}\ge m_t\)</span>, and is attached as well. Therefore some attached vertex realizes the maximum, and <span class="math" data-tex="\(wm_i\le B\)">\(wm_i\le B\)</span> everywhere.</p>
+<p><strong>The doubled terminal weight.</strong> Here <span class="math" data-tex="\(w_1=\cdots=w_{t-1}=w\)">\(w_1=\cdots=w_{t-1}=w\)</span>, <span class="math" data-tex="\(w_t=2w\)">\(w_t=2w\)</span>, with ordinary edge weights <span class="math" data-tex="\(w\)">\(w\)</span> and final edge weight <span class="math" data-tex="\(2w\)">\(2w\)</span>. Define <span class="math" data-tex="\(x_i=m_i\)">\(x_i=m_i\)</span> for <span class="math" data-tex="\(i&lt;t\)">\(i&lt;t\)</span> and <span class="math" data-tex="\(x_t=2m_t\)">\(x_t=2m_t\)</span>. The weighted multiplicities are <span class="math" data-tex="\(wx_i\)">\(wx_i\)</span>. The internal inequalities become
+<span class="math math-display" data-tex="\[
+ 2x_i\ge x_{i-1}+x_{i+1},\qquad x_t\ge x_{t-1}.
+\tag{N.15}
+\]">\[
+ 2x_i\ge x_{i-1}+x_{i+1},\qquad x_t\ge x_{t-1}.
+\tag{N.15}
+\]</span>
+The last inequality comes from the terminal row, not an ordinary endpoint equation. Its strictness means that the terminal vertex is attached. If the terminal vertex realizes a maximum and is unattached, <span class="math" data-tex="\(x_t=x_{t-1}\)">\(x_t=x_{t-1}\)</span>. Continue through that maximum plateau: either its left boundary has a smaller neighbour, producing an attached maximum, or it reaches the first endpoint, which is attached by its positive residual. A maximum elsewhere is handled by the same plateau boundary argument. Thus <span class="math" data-tex="\(w_im_i\le B\)">\(w_im_i\le B\)</span> throughout.</p>
+<p><strong>The halved terminal weight.</strong> Now <span class="math" data-tex="\(w_1=\cdots=w_{t-1}=2w\)">\(w_1=\cdots=w_{t-1}=2w\)</span>, <span class="math" data-tex="\(w_t=w\)">\(w_t=w\)</span>, and every edge has weight <span class="math" data-tex="\(2w\)">\(2w\)</span>. The <span class="math" data-tex="\(m_i\)">\(m_i\)</span> satisfy ordinary internal concavity and the terminal row says
+<span class="math math-display" data-tex="\[
+ m_t\ge m_{t-1}.
+\tag{N.16}
+\]">\[
+ m_t\ge m_{t-1}.
+\tag{N.16}
+\]</span>
+Equality means that the terminal vertex is unattached. The argument for (N.15), applied to <span class="math" data-tex="\(m\)">\(m\)</span>, gives an attached maximum. If that maximum is at an ordinary vertex, <span class="math" data-tex="\(2w\max_i m_i\le B\)">\(2w\max_i m_i\le B\)</span>. If it is at <span class="math" data-tex="\(t\)">\(t\)</span>, <span class="math" data-tex="\(w\max_i m_i\le B\)">\(w\max_i m_i\le B\)</span>. Thus <span class="math" data-tex="\(w_im_i\le2B\)">\(w_im_i\le2B\)</span> everywhere and <span class="math" data-tex="\(m_i|a_{ii}|\le4B\)">\(m_i|a_{ii}|\le4B\)</span>.</p>
+<p><strong>The long fork.</strong> All weights equal <span class="math" data-tex="\(w\)">\(w\)</span>. Take the long path <span class="math" data-tex="\(1,\ldots,t-1\)">\(1,\ldots,t-1\)</span>, and let <span class="math" data-tex="\(t,t+1\)">\(t,t+1\)</span> be the two leaves meeting its last vertex. Set <span class="math" data-tex="\(s=m_t+m_{t+1}\)">\(s=m_t+m_{t+1}\)</span>. The path followed by <span class="math" data-tex="\(s\)">\(s\)</span> satisfies internal concavity, because
+<span class="math math-display" data-tex="\[
+ 2m_{t-1}\ge m_{t-2}+s,\qquad s\ge m_{t-1}.
+\tag{N.17}
+\]">\[
+ 2m_{t-1}\ge m_{t-2}+s,\qquad s\ge m_{t-1}.
+\tag{N.17}
+\]</span>
+The second inequality is the sum of the two leaf rows. If the path maximum is larger than <span class="math" data-tex="\(s\)">\(s\)</span>, a plateau boundary, or its first endpoint, is an attached maximum, so the path maximum is at most <span class="math" data-tex="\(B/w\)">\(B/w\)</span>. Suppose instead that <span class="math" data-tex="\(s\)">\(s\)</span> is a maximum. If both leaves are unattached, each has multiplicity <span class="math" data-tex="\(m_{t-1}/2\)">\(m_{t-1}/2\)</span>, so <span class="math" data-tex="\(s=m_{t-1}\)">\(s=m_{t-1}\)</span>. The plateau then either reaches an attached path boundary or reaches the first endpoint, which is attached. Thus <span class="math" data-tex="\(ws\le B\)">\(ws\le B\)</span>. If both leaves are attached, <span class="math" data-tex="\(ws\le2B\)">\(ws\le2B\)</span>. If only one is attached, say <span class="math" data-tex="\(t\)">\(t\)</span>, then <span class="math" data-tex="\(m_{t+1}=m_{t-1}/2\)">\(m_{t+1}=m_{t-1}/2\)</span>, and <span class="math" data-tex="\(s\ge m_{t-1}\)">\(s\ge m_{t-1}\)</span> gives <span class="math" data-tex="\(m_t\ge m_{t-1}/2\)">\(m_t\ge m_{t-1}/2\)</span>. Consequently <span class="math" data-tex="\(s\le2m_t\)">\(s\le2m_t\)</span> and again <span class="math" data-tex="\(ws\le2B\)">\(ws\le2B\)</span>. In all cases every path or leaf multiplicity has weighted value at most <span class="math" data-tex="\(2B\)">\(2B\)</span>, so its diagonal bound is at most <span class="math" data-tex="\(4B\)">\(4B\)</span>.</p>
+<p>This covers the entire list in N.4 and proves the diagonal part of (NS.11a). For an off-diagonal entry, (N.10) bounds <span class="math" data-tex="\(m_i a_{ij}\)">\(m_i a_{ij}\)</span> by the already bounded diagonal at <span class="math" data-tex="\(j\)">\(j\)</span>. The corrected five-vertex instances and exceptional determinants are calculated in <a href="AG-LTF--stable-family-numerical-source-corrections.html#g-corrections">the accompanying numerical-model reading</a>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<span class="heading-anchor" id="n-picard"></span>
+<h2 id="n-5-numerical-picard-torsion">N.5. Numerical Picard torsion</h2>
+<p>Let <span class="math" data-tex="\(D_w=\operatorname{diag}(w_i)\)">\(D_w=\operatorname{diag}(w_i)\)</span>, and define
+<span class="math math-display" data-tex="\[
+ P(T)=\operatorname{coker}(D_w^{-1}A:\mathbf Z^n\longrightarrow\mathbf Z^n).
+\]">\[
+ P(T)=\operatorname{coker}(D_w^{-1}A:\mathbf Z^n\longrightarrow\mathbf Z^n).
+\]</span>
+The matrix is integral by (N.1), and (N.3) shows that <span class="math" data-tex="\(P(T)\)">\(P(T)\)</span> has rank one. Multiplication by <span class="math" data-tex="\(D_w\)">\(D_w\)</span> gives an injection
+<span class="math math-display" data-tex="\[
+ P(T)\hookrightarrow\operatorname{coker}A.
+\tag{N.18}
+\]">\[
+ P(T)\hookrightarrow\operatorname{coker}A.
+\tag{N.18}
+\]</span>
+For if <span class="math" data-tex="\(D_wz=Ay\)">\(D_wz=Ay\)</span>, then <span class="math" data-tex="\(z=D_w^{-1}Ay\)">\(z=D_w^{-1}Ay\)</span>, a relation in <span class="math" data-tex="\(P(T)\)">\(P(T)\)</span>.</p>
+<p>We prove the matrix torsion estimate of <a href="https://stacks.math.columbia.edu/tag/0C6X">Stacks 0C6X</a> directly over a finite field. Let <span class="math" data-tex="\(\ell\)">\(\ell\)</span> be a prime dividing none of the <span class="math" data-tex="\(m_i\)">\(m_i\)</span> or positive edge entries <span class="math" data-tex="\(a_{ij}\)">\(a_{ij}\)</span>. Orient the edges arbitrarily and let <span class="math" data-tex="\(B_E\)">\(B_E\)</span> be the incidence matrix, with row <span class="math" data-tex="\(ij\)">\(ij\)</span> equal to <span class="math" data-tex="\(e_i^{\mathsf t}-e_j^{\mathsf t}\)">\(e_i^{\mathsf t}-e_j^{\mathsf t}\)</span>. Put <span class="math" data-tex="\(c_{ij}=a_{ij}m_im_j\)">\(c_{ij}=a_{ij}m_im_j\)</span>. Over <span class="math" data-tex="\(\mathbf F_\ell\)">\(\mathbf F_\ell\)</span>,
+<span class="math math-display" data-tex="\[
+ -D_mAD_m=B_E^{\mathsf t}\operatorname{diag}(c_{ij})B_E,
+ \qquad D_m=\operatorname{diag}(m_i).
+\tag{N.19}
+\]">\[
+ -D_mAD_m=B_E^{\mathsf t}\operatorname{diag}(c_{ij})B_E,
+ \qquad D_m=\operatorname{diag}(m_i).
+\tag{N.19}
+\]</span>
+This is the matrix form of (N.3). Connectedness gives <span class="math" data-tex="\(\ker B_E=\mathbf F_\ell(1,\ldots,1)\)">\(\ker B_E=\mathbf F_\ell(1,\ldots,1)\)</span> and <span class="math" data-tex="\(\dim\ker B_E^{\mathsf t}=e-n+1=b\)">\(\dim\ker B_E^{\mathsf t}=e-n+1=b\)</span>. The map
+<span class="math math-display" data-tex="\[
+ \frac{\ker(B_E^{\mathsf t}\operatorname{diag}(c)B_E)}
+      {\mathbf F_\ell(1,\ldots,1)}
+ \longrightarrow\ker B_E^{\mathsf t},\qquad
+ [z]\longmapsto\operatorname{diag}(c)B_Ez
+\]">\[
+ \frac{\ker(B_E^{\mathsf t}\operatorname{diag}(c)B_E)}
+      {\mathbf F_\ell(1,\ldots,1)}
+ \longrightarrow\ker B_E^{\mathsf t},\qquad
+ [z]\longmapsto\operatorname{diag}(c)B_Ez
+\]</span>
+is injective: its kernel is zero since every <span class="math" data-tex="\(c_{ij}\)">\(c_{ij}\)</span> is a unit. Thus the nullity of <span class="math" data-tex="\(A\)">\(A\)</span> modulo <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is at most <span class="math" data-tex="\(b+1\)">\(b+1\)</span>. Smith normal form says that this nullity is one plus the dimension of <span class="math" data-tex="\((\operatorname{coker}A)[\ell]\)">\((\operatorname{coker}A)[\ell]\)</span>, since the rational nullity is one. We have proved
+<span class="math math-display" data-tex="\[
+ \dim_{\mathbf F_\ell}P(T)[\ell]\le b.
+\tag{N.20}
+\]">\[
+ \dim_{\mathbf F_\ell}P(T)[\ell]\le b.
+\tag{N.20}
+\]</span></p>
+<p>For a minimal type of genus <span class="math" data-tex="\(g\ge2\)">\(g\ge2\)</span>, choose <span class="math" data-tex="\(\ell&gt;768g\)">\(\ell&gt;768g\)</span>. If <span class="math" data-tex="\(n&gt;1\)">\(n&gt;1\)</span>, (NS.11a) bounds each positive <span class="math" data-tex="\(a_{ij}\)">\(a_{ij}\)</span> and each <span class="math" data-tex="\(m_i\)">\(m_i\)</span> by <span class="math" data-tex="\(768g\)">\(768g\)</span>: use <span class="math" data-tex="\(|a_{ii}|\ge1\)">\(|a_{ii}|\ge1\)</span> for the latter. Hence the required divisibilities by <span class="math" data-tex="\(\ell\)">\(\ell\)</span> do not occur. For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, <span class="math" data-tex="\(P(T)=\mathbf Z\)">\(P(T)=\mathbf Z\)</span> and there is no torsion. Together with N.2 this proves
+<span class="math math-display" data-tex="\[
+ \dim_{\mathbf F_\ell}P(T)[\ell]\le b\le g.
+\tag{N.21}
+\]">\[
+ \dim_{\mathbf F_\ell}P(T)[\ell]\le b\le g.
+\tag{N.21}
+\]</span></p>
+<span class="heading-anchor" id="n-contraction"></span>
+<h2 id="n-6-contracting-exceptional-numerical-vertices">N.6. Contracting exceptional numerical vertices</h2>
+<p>The estimate <span class="math" data-tex="\(\dim P(T)[\ell]\le g\)">\(\dim P(T)[\ell]\le g\)</span> also holds for a nonminimal type of genus <span class="math" data-tex="\(g\ge2\)">\(g\ge2\)</span>, as in <a href="https://stacks.math.columbia.edu/tag/0C9X">Stacks 0C9X</a>. We prove the contraction and its effect on Picard groups, corresponding to <a href="https://stacks.math.columbia.edu/tag/0C77">0C77</a> and <a href="https://stacks.math.columbia.edu/tag/0C7J">0C7J</a>.</p>
+<p>Suppose vertex <span class="math" data-tex="\(n\)">\(n\)</span> is exceptional. For <span class="math" data-tex="\(i&lt;n\)">\(i&lt;n\)</span>, put <span class="math" data-tex="\(b_i=a_{in}/w_n\)">\(b_i=a_{in}/w_n\)</span>, <span class="math" data-tex="\(c_i=a_{in}/w_i\)">\(c_i=a_{in}/w_i\)</span>, and choose <span class="math" data-tex="\(w&#x27;_i=w_i/2\)">\(w&#x27;_i=w_i/2\)</span> if <span class="math" data-tex="\(b_i\)">\(b_i\)</span> is even and <span class="math" data-tex="\(c_i\)">\(c_i\)</span> is odd; otherwise put <span class="math" data-tex="\(w&#x27;_i=w_i\)">\(w&#x27;_i=w_i\)</span>. In the halved case <span class="math" data-tex="\(w_i\)">\(w_i\)</span> is even: the equality <span class="math" data-tex="\(w_ic_i=w_nb_i\)">\(w_ic_i=w_nb_i\)</span> proves this. Set
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ m&#x27;_i&amp;=m_i,&amp;
+ a&#x27;_{ij}&amp;=a_{ij}+\frac{a_{in}a_{jn}}{w_n},\\
+ g&#x27;_i&amp;=\frac{w_i}{w&#x27;_i}(g_i-1)+1
+       +\frac{a_{in}^2-w_na_{in}}{2w&#x27;_iw_n}.
+ \end{aligned}
+\tag{N.22}
+\]">\[
+ \begin{aligned}
+ m&#x27;_i&amp;=m_i,&amp;
+ a&#x27;_{ij}&amp;=a_{ij}+\frac{a_{in}a_{jn}}{w_n},\\
+ g&#x27;_i&amp;=\frac{w_i}{w&#x27;_i}(g_i-1)+1
+       +\frac{a_{in}^2-w_na_{in}}{2w&#x27;_iw_n}.
+ \end{aligned}
+\tag{N.22}
+\]</span>
+The new off-diagonal entries are nonnegative and symmetric; each is divisible by <span class="math" data-tex="\(w&#x27;_i\)">\(w&#x27;_i\)</span>. The equation <span class="math" data-tex="\(\sum_{i&lt;n}a_{in}m_i=w_nm_n\)">\(\sum_{i&lt;n}a_{in}m_i=w_nm_n\)</span> shows <span class="math" data-tex="\(A&#x27;m&#x27;=0\)">\(A&#x27;m&#x27;=0\)</span>. Eliminating <span class="math" data-tex="\(n\)">\(n\)</span> connects any two of its neighbours, so a disconnection in the new graph would give a disconnection in the old one.</p>
+<p>To check <span class="math" data-tex="\(g&#x27;_i\in\mathbf Z_{\ge0}\)">\(g&#x27;_i\in\mathbf Z_{\ge0}\)</span>, write <span class="math" data-tex="\(r_i=w_i/w&#x27;_i\in\{1,2\}\)">\(r_i=w_i/w&#x27;_i\in\{1,2\}\)</span>. Formula (N.22) becomes
+<span class="math math-display" data-tex="\[
+ g&#x27;_i=r_i(g_i-1)+1+r_ic_i(b_i-1)/2.
+\]">\[
+ g&#x27;_i=r_i(g_i-1)+1+r_ic_i(b_i-1)/2.
+\]</span>
+If <span class="math" data-tex="\(a_{in}=0\)">\(a_{in}=0\)</span>, this is <span class="math" data-tex="\(g_i\)">\(g_i\)</span>. If <span class="math" data-tex="\(r_i=1\)">\(r_i=1\)</span> and <span class="math" data-tex="\(a_{in}&gt;0\)">\(a_{in}&gt;0\)</span>, it is <span class="math" data-tex="\(g_i+c_i(b_i-1)/2\)">\(g_i+c_i(b_i-1)/2\)</span>, a nonnegative integer; the only odd numerator would have triggered the halved case. If <span class="math" data-tex="\(r_i=2\)">\(r_i=2\)</span>, then <span class="math" data-tex="\(b_i\ge2,c_i\ge1\)">\(b_i\ge2,c_i\ge1\)</span>, and <span class="math" data-tex="\(2g_i-1+c_i(b_i-1)\)">\(2g_i-1+c_i(b_i-1)\)</span> is nonnegative and integral.</p>
+<p>The new genus equals the old genus. The contribution at <span class="math" data-tex="\(i&lt;n\)">\(i&lt;n\)</span> changes by <span class="math" data-tex="\(-m_i a_{in}/2\)">\(-m_i a_{in}/2\)</span>, whose sum is <span class="math" data-tex="\(-m_nw_n/2\)">\(-m_nw_n/2\)</span>, exactly the old contribution at the deleted exceptional vertex.</p>
+<p>Let <span class="math" data-tex="\(q:\mathbf Z^n\to\mathbf Z^{n-1}\)">\(q:\mathbf Z^n\to\mathbf Z^{n-1}\)</span> delete the last coordinate, and define <span class="math" data-tex="\(p\)">\(p\)</span> on the target free group by
+<span class="math math-display" data-tex="\[
+ p(e_i)=r_ie&#x27;_i\ (i&lt;n),\qquad
+ p(e_n)=\sum_{i&lt;n}\frac{a_{in}}{w&#x27;_i}e&#x27;_i.
+\]">\[
+ p(e_i)=r_ie&#x27;_i\ (i&lt;n),\qquad
+ p(e_n)=\sum_{i&lt;n}\frac{a_{in}}{w&#x27;_i}e&#x27;_i.
+\]</span>
+Substitution in each column gives
+<span class="math" data-tex="\(p(D_w^{-1}A)=D_{w&#x27;}^{-1}A&#x27;q\)">\(p(D_w^{-1}A)=D_{w&#x27;}^{-1}A&#x27;q\)</span>, so <span class="math" data-tex="\(p\)">\(p\)</span> induces <span class="math" data-tex="\(P(T)\to P(T&#x27;)\)">\(P(T)\to P(T&#x27;)\)</span>. If a class represented by <span class="math" data-tex="\(z\)">\(z\)</span> maps to zero, lift its new relation through the surjective <span class="math" data-tex="\(q\)">\(q\)</span> and subtract the corresponding old relation. We may assume <span class="math" data-tex="\(p(z)=0\)">\(p(z)=0\)</span>. Its coordinates give <span class="math" data-tex="\(z_i=-z_na_{in}/w_i\)">\(z_i=-z_na_{in}/w_i\)</span> for <span class="math" data-tex="\(i&lt;n\)">\(i&lt;n\)</span>; hence <span class="math" data-tex="\(z=-z_nD_w^{-1}Ae_n\)">\(z=-z_nD_w^{-1}Ae_n\)</span>, an old relation. The induced map is injective. Its cokernel is killed by two because <span class="math" data-tex="\(r_i\)">\(r_i\)</span> is one or two.</p>
+<p>Repeated contractions decrease the vertex count, preserve <span class="math" data-tex="\(g\)">\(g\)</span>, and inject each old Picard group into the next. They end at a minimal type. Apply (N.21) there to obtain <span class="math" data-tex="\(\dim P(T)[\ell]\le g\)">\(\dim P(T)[\ell]\le g\)</span> for the original type. The sharper graph bound in (N.21) refers to the original graph when that original type is minimal. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
 </article></main></body></html>

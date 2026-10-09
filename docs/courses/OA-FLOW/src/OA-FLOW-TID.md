@@ -308,12 +308,12 @@ The integral of \(f\xi\) is a Hilbert-space integral, with norm at most \(\|f\|_
 Thus \(Y\) is bounded. It commutes with every constant \(M'\)-operator, since each coefficient \(\beta_{-r}(x)\) does; the [tensor-commutant proof](OA-FLOW-ND.md#nd-tensor) puts it in \(M\overline\otimes B(K)\). Its left and right supports lie under \(e\otimes1\). It is nonzero: take \(\xi(t)=\overline{f(t)}\eta\) with \(x\eta\ne0\), and use strong continuity of \(\beta_{-r}(x)\eta\) near \(0\).
 
 For compact simple vector tests, cocycle multiplication gives
-\
+\[
  \begin{aligned}
- \bigl[(c_s\otimes\rho_s)\widetilde\alpha_s(Y)\xi\bigr
+ \bigl[(c_s\otimes\rho_s)\widetilde\alpha_s(Y)\xi\bigr](r)
  &=c_s\alpha_s(\beta_{-(r+s)}(x))\int f(t)\xi(t)\,dt\\
  &=\beta_{-r}(x)c_s\int f(t)\xi(t)\,dt\\
- &=\biglY(c_s\otimes1)\xi\bigr.
+ &=\bigl[Y(c_s\otimes1)\xi\bigr](r).
  \end{aligned}
  \tag{TI27}
 \]

@@ -1024,25 +1024,25 @@ Indeed left multiplication by \(f\) has symbol \(fa\), whereas right multiplicat
 are in fact zero. In particular they belong to \(\mathscr M^{m-1}\), the class used in (GI27)–(GI28). Each expression is understood after the chart/frame transfer, so the two summands have exactly the same source and target. No claim is made that the global operators \(P_c,P_i\) coincide away from these localizations.
 
 For the left product, \(\vartheta_i(1-\rho_i)=0\) yields the exact decomposition
-\
+\[
 \begin{aligned}
  \vartheta_iT_i\vartheta_iP_c
  &=\vartheta_iT_i\vartheta_iP_i\rho_i
    +\vartheta_iT_i\Delta_i^L
-   +\vartheta_iT_i[\vartheta_i,P_c\\
+   +\vartheta_iT_i[\vartheta_i,P_c](1-\rho_i)\\
  &=\vartheta_i^2T_iP_i\rho_i
    +\vartheta_i[T_i,\vartheta_i]P_i\rho_i
    +\vartheta_iT_i\Delta_i^L
-   +\vartheta_iT_i\vartheta_i,P_c\\
+   +\vartheta_iT_i[\vartheta_i,P_c](1-\rho_i)\\
  &=\vartheta_i^2
    +\vartheta_i^2R_{E,i}\rho_i
    +\vartheta_i[T_i,\vartheta_i]P_i\rho_i
    +\vartheta_iT_i\Delta_i^L
-   +\vartheta_iT_i\vartheta_i,P_c.
+   +\vartheta_iT_i[\vartheta_i,P_c](1-\rho_i).
 \end{aligned}
  \tag{GI27}
 \]
-The first line uses \(\vartheta_iP_c(1-\rho_i)=\vartheta_i,P_c\), the second uses \(T_i\vartheta_i=\vartheta_iT_i+[T_i,\vartheta_i]\), and the third uses the *left* local error in (GI13). By (GI25)–(GI26) every term after \(\vartheta_i^2\) has total order at most \(-1\) and second order zero: respectively \(-1\), \((-m-1)+m=-1\), \(-m+(m-1)=-1\), and \(-m+(m-1)=-1\). Their source and target are \(E_Y\to E_Y\).
+The first line uses \(\vartheta_iP_c(1-\rho_i)=[\vartheta_i,P_c](1-\rho_i)\), the second uses \(T_i\vartheta_i=\vartheta_iT_i+[T_i,\vartheta_i]\), and the third uses the *left* local error in (GI13). By (GI25)–(GI26) every term after \(\vartheta_i^2\) has total order at most \(-1\) and second order zero: respectively \(-1\), \((-m-1)+m=-1\), \(-m+(m-1)=-1\), and \(-m+(m-1)=-1\). Their source and target are \(E_Y\to E_Y\).
 
 For the right product, \((1-\rho_i)\vartheta_i=0\) yields a different exact decomposition:
 \[
@@ -2229,9 +2229,9 @@ Each model term also lies in \(S^{a,0}\). Its direct differentiated bound is \(C
 Tangential proper support does not remove any coefficient. First localize the original operator as \(\chi A\psi\), with compact input cutoff \(\psi\). Choose a further compact input cutoff \(\psi'\), equal to one on a neighborhood of its input support. Then \((\chi A\psi)\psi'=\chi A\psi\) exactly, and every complete coefficient obeys \(H_n\psi'=H_n\). Construct the Euclidean model just described for that localized symbol and replace it by \(V_L\psi'\). The exact difference is \((A-V_L)\psi'\). The mixed composition theorem preserves its order \((a-L,L)\), while the complete normal coefficient at index \(n\) is \(H_n\psi'=H_n\). Right composition with \(\psi'\) also preserves the normal support relation. This proves compact tangential support and exact coefficient retention together; it does not treat a tangential cutoff error as a smooth full kernel.
 
 To retain proper support, multiply the model kernel by the actual compact normal-difference cutoff, equal to one near zero, and retain the resulting change in \(G_L\). This does not change (MH8). Here is the full kernel check. If \(h\geq1\) and \(\theta=r-s\), inverse Fourier transformation gives
-\
+\[
  {\mathcal F}^{-1}_\kappa
-       [(\kappa+i\lambda)^{-h}
+       [(\kappa+i\lambda)^{-h}](\theta)
  =\frac{(-i)^h}{(h-1)!}
         1_{\theta<0}(-\theta)^{h-1}e^{\lambda\theta}.
  \tag{MH9}

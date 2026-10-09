@@ -192,7 +192,7 @@ Multiplying (11) by $s(s-1)/2$ removes both poles and gives an entire function, 
 
 We now give the other proof of the functional equation from [Riemann 1859], with a specified contour and an estimate at infinity. It also provides a short route to all the integer values.
 
-Choose $0<\varepsilon<2\pi$. Let $H_\varepsilon$ run inward along the lower bank of the positive real axis from infinity to $\varepsilon$, clockwise around $|z|=\varepsilon$, and then outward along the upper bank to infinity. Use the principal $\operatorname{Log}(-z)$ on $\mathbb C\setminus0,\infty)$: its values on the lower and upper banks are $\log x+i\pi$ and $\log x-i\pi$, respectively. Define
+Choose $0<\varepsilon<2\pi$. Let $H_\varepsilon$ run inward along the lower bank of the positive real axis from infinity to $\varepsilon$, clockwise around $|z|=\varepsilon$, and then outward along the upper bank to infinity. Use the principal $\operatorname{Log}(-z)$ on $\mathbb C\setminus[0,\infty)$: its values on the lower and upper banks are $\log x+i\pi$ and $\log x-i\pi$, respectively. Define
 $$
 J(s)=\int_{H_\varepsilon}
 \frac{(-z)^{s-1}}{e^z-1}\,dz.
@@ -200,7 +200,7 @@ J(s)=\int_{H_\varepsilon}
 $$
 The rays have their limiting bank values. The small circle is clockwise; this orientation fixes the sign of every residue below.
 
-![The slit annulus for the Hankel residue argument, with clockwise inner circle, counterclockwise outer circle and poles at plus or minus two pi i and four pi i.
+![The slit annulus for the Hankel residue argument, with clockwise inner circle, counterclockwise outer circle and poles at plus or minus two pi i and four pi i.](figures/hankel_contour.png)
 
 *The contour in the proof of Theorem 4.1, with $N=2$, $R_2=5\pi$ and $\varepsilon=2\pi/5$. Coordinates are scaled by $2\pi$. The separated banks schematically show their limiting directions: upper outward, lower inward. Together with the clockwise inner and counterclockwise outer circles they bound the slit annulus positively. The four marked nonzero poles are enclosed; zero is excluded.*
 

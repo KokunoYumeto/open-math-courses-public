@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-kms-reconstruction-20261009-v1"
 
 d=Path(__file__).resolve().parent
 q=np.log(4.0); period=2*np.pi/q
@@ -55,7 +56,7 @@ ax.grid(alpha=.15)
 fig.text(.5,.025,"Exact example, not a picture of an arbitrary weight. KT-1–2 prove the full strip; KU-3 proves group uniqueness.",
          ha="center",fontsize=11)
 fig.savefig(d/"assets"/"kms-strip.png",dpi=180,bbox_inches="tight")
-fig.savefig(d/"assets"/"kms-strip.svg",bbox_inches="tight")
+fig.savefig(d/"assets"/"kms-strip.svg",bbox_inches="tight",metadata={"Date": None})
 plt.close(fig)
 (d/"kms-figure-numerics.json").write_text(json.dumps({
  "density":[.2,.8],"log_spectral_ratio":-q,"real_time_period":period,

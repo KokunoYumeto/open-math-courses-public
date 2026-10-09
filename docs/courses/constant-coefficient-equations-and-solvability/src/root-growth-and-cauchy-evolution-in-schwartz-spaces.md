@@ -1,6 +1,6 @@
 # Root growth and Cauchy evolution in Schwartz spaces
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. The full bounded lesson, all six solutions and both original figures have an independent GPT-6.1 Sol (OpenAI), Ultra review. The general compact-kernel support and reciprocal theorem remains a separate unproved task. Public domain (CC0).* 
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 The spatial growth class is part of a Cauchy problem. We will prove existence and uniqueness for the heat equation in Schwartz and tempered spatial classes, including its characteristic initial plane. The decisive question is what the spatial Fourier transform does to high frequencies. We prove that a logarithmic bound on the real parts of the evolution roots is exactly what permits arbitrary Schwartz or tempered initial data on every finite forward time interval. We also prove the forced formula, the higher time-order version, and the distinction between forward and reversible evolution.
 
@@ -302,7 +302,24 @@ From (38), taking logarithms and using (36) gives (37). From (37), use \(|(z,\xi
 
 If \(P\) has total degree \(m\), the initial plane \(t=0\) is noncharacteristic precisely when \(P_m(e_t)\ne0\). In (31) this occurs exactly when \(q=m\) and \(a_q\) is a nonzero constant. When \(q<m\), the plane is characteristic in the total-degree sense, but Theorem 6.1 still applies. No unrestricted smooth uniqueness across a characteristic plane is inferred. The required spatial growth class is retained throughout.
 
-The nonvanishing leading coefficient is essential for arbitrary trace data. For instance
+### A noncharacteristic time normal
+
+**Corollary 6.2.** Let \(P\) be a polynomial of total degree \(m\geq1\), let \(P_m\) be its principal homogeneous part, and let \(N\ne0\) be real with \(P_m(N)\ne0\). Write \(n=N/|N|\), \(t=n\cdot X\), and use orthonormal spatial coordinates on \(n^\perp\). The following are equivalent:
+
+1. Every \(m\)-tuple of initial traces in \(\mathcal S(n^\perp)\) has a homogeneous solution in \(C^m([0,T_*];\mathcal S)\), on one fixed interval \(T_*>0\).
+2. Every \(m\)-tuple of initial traces in strong \(\mathcal S'(n^\perp)\) has a homogeneous solution in \(C^m([0,T_*];\mathcal S')\), on one fixed interval \(T_*>0\).
+3. There are \(C>0\), an integer \(k\geq0\), and \(c>0\) such that
+   \[
+   1\leq C(1+|\zeta|)^k e^{c\tau}
+   \quad\text{whenever }P(\zeta)=0,\quad
+   \operatorname{Im}\zeta=\tau N,\quad \tau<0 .
+   \]
+
+Each condition gives a unique smooth homogeneous trajectory on every finite forward interval. With continuous forcing in the stated spatial class, the solution is \(C^m\), and its formula is the first component of (25) with the companion matrix (33).
+
+**Proof.** In these coordinates put \(Q(z,\eta)=P(\eta+zn)\), with \(\eta\in n^\perp\) real. Its coefficient of \(z^m\) is the nonzero constant \(P_m(n)=|N|^{-m}P_m(N)\). Indeed, a term containing \(z^m\) already has the full total degree \(m\), so it has no remaining spatial factor. Thus (31) holds with \(q=m\). Every complex covector with imaginary part \(\tau N\) is uniquely of the form \(\eta+zn\), where \(\operatorname{Im}z=|N|\tau\), and its norm is \((|\eta|^2+|z|^2)^{1/2}\). Condition 3 is therefore exactly (38), with its positive exponential constant rescaled by \(|N|^{-1}\). The equivalence of (37) and (38) and Theorem 6.1 prove the three equivalences. The same theorem, using Theorem 5.1, proves uniqueness, regularity and the forced formula. The time interval remains common to all initial data. \(\square\)
+
+The nonvanishing leading coefficient is an assumption of Theorem 6.1. Without it, the root estimate alone can fail to give arbitrary trace data. For instance
 \[
  P(z,\xi)=\xi z-1\quad(d=1)                               \tag{39}
 \]
@@ -372,6 +389,8 @@ The locally finite inverse (43) need not be a tempered distribution on all of sp
 ![Causal delay inverse support points and their exact spatial derivative orders.](../reproduce/L114/figures/delay-convolution-support-032.png)
 
 *Figure 2.* The dots are the support points \((t,x)=(k,0)\) of the first five terms of (43); labels give their spatial operators \(D_x^{2k}\). The drawing shows support and derivative order, not values of the distributions. The shaded cone is \(t\geq|x|\); all remaining support points continue on its central ray. Equation (44) cancels the delayed terms one by one, and (45) gives the logarithmic zero barrier. This example illustrates the logarithmic geometry of hyperbolic convolution equations. General open-cone reciprocal estimates and support characterizations for arbitrary compact convolution kernels are separate theorems; the example does not assert them.
+
+For general compactly supported convolution kernels, [Support cones force reciprocal bounds](support-cones-force-reciprocal-bounds.md), Theorem 1.1, proves the support-to-reciprocal implication. [Logarithmic Fourier graphs construct a cone-supported inverse](logarithmic-fourier-graphs-construct-a-cone-supported-inverse.md), Theorem 1.1, proves the converse under its stated nonempty open-cone assumptions. Those proofs retain their own cone hypotheses; the delay example needs only its explicit locally finite cancellation.
 
 ## Exercises with complete solutions
 

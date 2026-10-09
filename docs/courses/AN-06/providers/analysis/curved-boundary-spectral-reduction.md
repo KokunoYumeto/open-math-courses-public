@@ -769,10 +769,10 @@ The initial identity in (B59) is exact, because every positive-order transport c
 The sign follows by differentiating the right side; the oriented integral handles either ordering of the endpoints. In particular the forcing loses one power of \(h\), which has been retained. Differentiate this actual integral identity to obtain normal-endpoint and energy derivatives. The differentiated evolution contributes only fixed powers of \(h^{-1}\), as proved after (B55); differentiated residual phases contribute one such power per ordinary parameter derivative. Endpoint terms are the same residuals or their derivatives at an endpoint. There are finitely many terms for any prescribed derivative order, so increasing \(J\) gives arbitrary accuracy for them as well.
 
 Finally apply (B57), with an even \(s\) larger than all desired derivative orders. We have proved that, for any fixed finite collection of derivatives and any prescribed \(N\),
-\
+\[
  \begin{gathered}
- [U_\sigma(a,b)\operatorname{Op}_h(q_h)\\
-       =V_\sigma(a,b)+R_h,\\
+ [U_\sigma(a,b)\operatorname{Op}_h(q_h)](z,y)\\
+       =[V_\sigma(a,b)](z,y)+R_h,\\
  |\partial^\alpha R_h|\leq C_{N,\alpha}h^N.
  \end{gathered}
  \tag{B63}
@@ -1266,10 +1266,10 @@ The kernels in the last line of (B97) are evaluated at \((t,x;d,y)\). This is th
 ## 27. The normal contribution with a sharp upper endpoint
 
 We now apply the comparison without replacing a smooth temporal cutoff by a discontinuous one. On the diagonal \(x=(d,y)\) in \(K'\), set
-\
+\[
  \begin{gathered}
- \mathcal H_h(E;d,y)=2[A_h(d,E)Q_h(d,E)\\
-             +\sum_\sigma\widehat H_{\sigma,h}(d,d;E),\\
+ \mathcal H_h(E;d,y)=2[A_h(d,E)Q_h(d,E)](y,y)\\
+             +\sum_\sigma[\widehat H_{\sigma,h}(d,d;E)](y,y),\\
  C_{h,\Theta,Q}^N(t;x,x)
        =\frac{1}{2\pi h\,\gamma(d,y)}\\
  \quad\cdot\int_J\Theta(E)\cos(t\sqrt E/h)

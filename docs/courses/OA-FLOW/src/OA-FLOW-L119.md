@@ -159,9 +159,9 @@ Let \(0\ne f\in M^\alpha\), initially without a fullness assumption. On \(\maths
 
 <a id="equation-mf5"></a>
 
-\
- [i(a)\xi=\alpha_{-r}(a)\xi(r),\qquad
- \lambda_s\xi=\xi(r-s),\qquad
+\[
+ [i(a)\xi](r)=\alpha_{-r}(a)\xi(r),\qquad
+ [\lambda_s\xi](r)=\xi(r-s),\qquad
  N=(i(M)\cup\{\lambda_s:s\in G\})''.
  \tag{MF5}
 \]

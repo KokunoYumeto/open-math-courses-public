@@ -1521,7 +1521,7 @@ since \(H\le2q^{1/6}\). This proves (5.64) for every primitive conductor. \(\squ
 
 ### The maximal sum under GRH
 
-Assume GRH for every Dirichlet \(L\)-function. The characters needed below include products of our character with characters of a smaller modulus; GRH for just the original factor would not suffice. The explicit formula in The explicit formula for Dirichlet \(L\)-functions, Theorem 5.1, and the local zero count in Zero-free regions and the exceptional zero, Lemma 1.2, will give cancellation over primes. We then remove the integers with a large prime factor from a harmonic sum. This proof uses neither the wider zero-free region nor a general exponential-sum theorem for multiplicative coefficients.
+Assume GRH for every Dirichlet \(L\)-function. The characters needed below include products of our character with characters of a smaller modulus; GRH for just the original factor would not suffice. The explicit formula in [The explicit formula for Dirichlet \(L\)-functions](NT-DIRL-08.html), Theorem 5.1, and the local zero count in Zero-free regions and the exceptional zero, Lemma 1.2, will give cancellation over primes. We then remove the integers with a large prime factor from a harmonic sum. This proof uses neither the wider zero-free region nor a general exponential-sum theorem for multiplicative coefficients.
 
 **Lemma 5.26 (an oscillatory zero term).** Let \(X\ge2\), \(X\le Y\le2X\), and \(\beta,\gamma\in\mathbb R\). Put \(B=1+|\beta|X\). For zeros \(1/2+i\gamma\) of a Dirichlet \(L\)-function of conductor \(d\), counted with multiplicity,
 

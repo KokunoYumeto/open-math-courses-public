@@ -585,7 +585,7 @@ and \(H^2(C,\mu_n)=\Lambda\) by trace. Choosing a primitive root turns (12.1) in
 Kummer identifies
 
 \[
-H^1(C,\mu_n)=\operatorname{Pic}^0(C)[n]=Jn,
+H^1(C,\mu_n)=\operatorname{Pic}^0(C)[n]=J[n](k),
 \tag{12.2}
 \]
 
@@ -626,9 +626,9 @@ The latter generator is \(c_1^{(n)}(\mathcal O(1))\). Their pairing sends \((a,b
 
 **Example 13.2: an elliptic curve.** For \(E\) with origin, \(\operatorname{Pic}^0(E)\) is identified with \(E\) through the chosen standard polarization convention. Thus
 
-\
-H^1(E,\mu_n)=E[n,\qquad
-|En|=n^2.
+\[
+H^1(E,\mu_n)=E[n](k),\qquad
+|E[n](k)|=n^2.
 \]
 
 The theorem proves its cup-and-trace pairing is perfect. The stated comparison identifies it with the Weil pairing, with the convention-dependent inversion described in Section 12. In a symplectic basis its values have the form \(e_n(P,Q)=\zeta\), \(e_n(P,P)=e_n(Q,Q)=1\). Reversing the ordered basis inverts \(\zeta\). The origin and polarization enter the geometric identification, whereas the trace of a point remains \(+1\).

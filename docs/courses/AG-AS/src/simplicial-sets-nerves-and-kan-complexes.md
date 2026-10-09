@@ -795,8 +795,8 @@ Prove that \(\pi_1(K,x)\) is a group, including independence of composite repres
 Fill an inner two-horn for \(a,b\); if its third edge is \(p\), set \([b][a]=[p]\). For two fillers with third edges \(p,p'\), use \(d_0=s_1b,d_2=T(b,a;p'),d_3=T(b,a;p)\); the missing face \(d_1\) is \(H(p,p')\). To replace \(a\) by \(a'\), use \(d_0=s_0b,d_2=T(b,a;p),d_3=H(a,a')\); the missing \(d_1\) is \(T(b,a';p)\). To replace \(b\) by \(b'\), use \(d_0=H(b,b'),d_1=s_1p,d_3=T(b,a;p)\); the missing \(d_2\) is \(T(b',a;p)\). Their intersection triples are respectively \(b,b,a\), \(b,1_x,a\), and \(1_x,b,p\). These fillers prove independence of all choices.
 
 For associativity choose triangles \(T(b,a;p),T(c,b;q),T(c,p;r)\). Prescribe these as \(d_3,d_0,d_1\) of a three-horn. The intersections for pairs \((0,1),(0,3),(1,3)\) are \(c,b,p\). Filling the missing \(d_2\) produces \(T(q,a;r)\). Therefore
-\
-[c=[r]=([c][b])[a].
+\[
+[c]([b][a])=[r]=([c][b])[a].
 \tag{7.2}
 \]
 The class of \(s_0x\) is the unit, by \(s_0a,s_1a\). An outer two-horn with \(d_1=1_x,d_2=a\) gives a left inverse; the other outer horn with \(d_0=a,d_1=1_x\) gives a right inverse. Associativity makes them equal. We have proved every group axiom, and the group is precisely the automorphism group of \(x\) in \(\Pi_1(K)\).

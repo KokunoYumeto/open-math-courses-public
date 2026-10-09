@@ -244,10 +244,10 @@ be their constructed absorption isomorphism. Then
 are normal inverse maps on the entire algebras. This proves (CDEC.3.a).
 
 For the coefficient embedding and signs, write \(j_N\) and \(\ell_s\) for the second-crossing generators. In a faithful normal representation of \(A\), put
-\
- [a_\psi(x)\xi=\sigma_{-r}^\psi(x)\xi(r),\quad
- L_t\xi=\xi(r-t),\quad
- Q_s\xi=e^{-isr}\xi(r).
+\[
+ [a_\psi(x)\xi](r)=\sigma_{-r}^\psi(x)\xi(r),\quad
+ [L_t\xi](r)=\xi(r-t),\quad
+ [Q_s\xi](r)=e^{-isr}\xi(r).
 \]
 The actual [CORE8 generator formulas](OA-FLOW-CORE.md#core-8) give
 \[

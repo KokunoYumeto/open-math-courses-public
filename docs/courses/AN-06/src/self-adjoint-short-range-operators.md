@@ -266,9 +266,9 @@ The first term is bounded by
 \(Vu\,\overline v\,(\chi(x/R)-1)\), bounded in absolute value by a constant times the integrable function \(|Vu\,v|\); its pointwise factor tends to zero. Dominated convergence applies. A bare distributional limit does not control the first norm error or an integral against a varying, potentially noncompact endpoint wave.
 
 **Solution 5.5.** Put \(T_0=(I+C(z_0))^{-1}\). Factor
-\
+\[
  I+C(z)=
-   \left[I+(C(z)-C(z_0))T_0\right).
+   \left[I+(C(z)-C(z_0))T_0\right](I+C(z_0)).
 \]
 If \(\|(C(z)-C(z_0))T_0\|\leq q<1\), the geometric series in the bracket converges. Hence
 \[

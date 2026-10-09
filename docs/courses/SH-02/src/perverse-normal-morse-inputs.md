@@ -44,6 +44,8 @@ Here the complex manifold supplies its real orientation. Thus the point-costalk 
 
 The support-dimension formulation in the perverse-existence contract makes the perverse conditions intrinsic. The following comparison proves exactly how the degree tests behave under refinement for an object satisfying the original ordinary and exceptional stratum local-constancy conditions.
 
+<a id="SH02-PNM-REFINEMENT"></a>
+
 ## SH02-PNM-REFINEMENT — Comparing the same object on a locally finite refinement
 
 Changing a partition changes its constructible category. The comparison needed here concerns an object already constructible on the original strata, together with its stratum costalks.
@@ -268,7 +270,7 @@ The map is the actual punctured-neighborhood restriction; it cannot be replaced 
 
 The next section proves finite coefficients on the original compact Whitney link using compact smooth cores and finite cochains; a standalone compatible triangulation theorem remains a separate geometric statement. If an available triangulation theorem only covers subanalytic strata, prove that its hypotheses apply to these original strata or supply the broader Whitney theorem. Merely selecting a μ-refinement or imposing finite coefficients does not prove this geometric claim. The arbitrary-module weak realization above is independent of finite triangulation and biduality; the next section proves the last finite coefficient input and retains the actual W8 arrow.
 
-The complete internal inputs are the [c-soft extension and lifting proofs C2–C4](../../constructible-duality-and-infinite-twists/duality-maps-for-constructible-inverse-and-direct-images.html#compact-support-extension), the [finite manifold resolution D9–D10](../../constructible-duality-and-infinite-twists/duality-maps-for-constructible-inverse-and-direct-images.html#uniform-manifold-dimension), the [ordinary-section proof B1](../../constructible-duality-and-infinite-twists/duality-maps-for-constructible-inverse-and-direct-images.html#ordinary-cohomology-bound), the [Whitney compatible tubes and their controlled lifts and flows](../../sheaf-proof-readings/SH02-open-prerequisite-proofs.html#SH02-PRP-COMPATIBLE-TUBES), [NMG4–NMG5 proper products and bounded coefficient transport](../normal-morse-coefficients.html#SH02-NMC-NORMAL-FAMILY), and [GL-PERV Theorem 2.1](../../GL-PERV/gluing-t-structures.html#2-construct-a-truncation-from-the-two-pieces). The finite coefficient reduction W8 uses the [finite compact-fibre cochain calculation](../../sheaf-proof-readings/SH03-perfect-coefficients-on-compact-fibres.html), once its geometric hypotheses have been checked. This proof and diagram are independently authored and dedicated to [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+The complete internal inputs are the [c-soft extension and lifting proofs C2–C4](../../constructible-duality-and-infinite-twists/duality-maps-for-constructible-inverse-and-direct-images.html#compact-support-extension), the [finite manifold resolution D9–D10](../../constructible-duality-and-infinite-twists/duality-maps-for-constructible-inverse-and-direct-images.html#uniform-manifold-dimension), the [ordinary-section proof B1](../../constructible-duality-and-infinite-twists/duality-maps-for-constructible-inverse-and-direct-images.html#ordinary-cohomology-bound), the [Whitney compatible tubes and their controlled lifts and flows](../../sheaf-proof-readings/SH02-open-prerequisite-proofs.html#SH02-PRP-COMPATIBLE-TUBES), NMG4–NMG5 proper products and bounded coefficient transport, and [GL-PERV Theorem 2.1](../../GL-PERV/gluing-t-structures.html#2-construct-a-truncation-from-the-two-pieces). The finite coefficient reduction W8 uses the [finite compact-fibre cochain calculation](../../sheaf-proof-readings/SH03-perfect-coefficients-on-compact-fibres.html), once its geometric hypotheses have been checked. This proof and diagram are independently authored and dedicated to [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
 
 
 <a id="SH02-PNM-FINITE-WHITNEY-LINK"></a>
@@ -472,7 +474,7 @@ Over a field one may carry F14 to finite complexes explicitly. For an actual coe
 
 The arrows are proof dependencies for F5–F14. They retain every joint tube corner, the actual coefficient flow, the folding retraction, the orientation line \(o_S\), and the original localization arrows. The rounded core is a smooth manifold; no compatible triangulation of the original singular link is claimed. [Reproducible figure source](../figures/draw_finite_link.py).
 
-The full internal inputs are [DG-FND, global strong convexity Theorem B.5](../../DG-FND/riemannian-connections-and-convex-neighbourhoods.html), [exceptional duality EX.21–EX.22](../../sheaf-proof-readings/SH02-exceptional-operations.html#SH02-EX-INTERNAL), [M10–M12 and the arbitrary-module compact-support bound](../../sheaf-proof-readings/SH02-manifold-duality.html#SH02-MD-SUBMERSION), the [Whitney tube, finite-chain neighbourhood, rank, minorant and flow proofs](../../sheaf-proof-readings/SH02-open-prerequisite-proofs.html#SH02-PRP-COMPATIBLE-TUBES), and [actual bounded coefficient transport NMG5](../normal-morse-coefficients.html#SH02-NMC-NORMAL-FAMILY). All their hypotheses are checked above. This independently authored proof and diagram are dedicated to [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+The full internal inputs are [DG-FND, global strong convexity Theorem B.5](../../DG-FND/riemannian-connections-and-convex-neighbourhoods.html), [exceptional duality EX.21–EX.22](../../sheaf-proof-readings/SH02-exceptional-operations.html#SH02-EX-INTERNAL), [M10–M12 and the arbitrary-module compact-support bound](../../sheaf-proof-readings/SH02-manifold-duality.html#SH02-MD-SUBMERSION), the [Whitney tube, finite-chain neighbourhood, rank, minorant and flow proofs](../../sheaf-proof-readings/SH02-open-prerequisite-proofs.html#SH02-PRP-COMPATIBLE-TUBES), and actual bounded coefficient transport NMG5. All their hypotheses are checked above. This independently authored proof and diagram are dedicated to [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
 
 Combining F14 with W1–W8 shows that all six recollement functors preserve the original bounded finite-coefficient categories. Ordinary cuts, finite cones and the finite dimension-stage construction of GL-PERV Theorem 2.1 then stay in those categories. Thus the middle-perverse existence and pointwise characterization are proved on the original locally finite complex Whitney stratification, with the signs established above. The normal-Morse degree and detection theorems are separate geometric statements.
 
@@ -496,11 +498,11 @@ The estimates are deliberately uniform rather than optimal. They prove boundedne
 
 ## SH02-PNM-NORMAL-DEGREE-PROOF — Geometric proof of both normal-Morse degree converses
 
-The [original complex-link proof CLF1–CLF9 and complete degree induction PD1–PD6](../normal-morse-coefficients.html#SH02-NMC-COMPLEX-LINK-FILTRATION) prove PNM5, including its all-original-strata converses. The ordinary link uses exact restriction fibres with tangential index at most the induced complex dimension. The compact-support link uses the reversed function and the radial boundary as a fixed exit set, with opposite index at least that dimension. Both finite filtrations have the actual original normal-Morse objects as quotients; their HNC endpoint square returns them to the prescribed distance-ball and holomorphic-fibre objects. No refinement of the coefficient category is involved.
+The original complex-link proof CLF1–CLF9 and complete degree induction PD1–PD6 prove PNM5, including its all-original-strata converses. The ordinary link uses exact restriction fibres with tangential index at most the induced complex dimension. The compact-support link uses the reversed function and the radial boundary as a fixed exit set, with opposite index at least that dimension. Both finite filtrations have the actual original normal-Morse objects as quotients; their HNC endpoint square returns them to the prescribed distance-ball and holomorphic-fibre objects. No refinement of the coefficient category is involved.
 
-The lower induction uses the [actual CV variation triangle](../normal-morse-coefficients.html#SH02-NMC-LINK-VARIATION), whose fibre is the normal-slice point costalk. PD2 identifies that point costalk with the ambient point costalk shifted by twice the complex stratum dimension. Thus the upper threshold is minus the stratum dimension and the ambient point-costalk lower threshold is plus that dimension, exactly PNM1. The normalized normal functor is consequently t-exact in the original field categories, and PNM6–PNM8 follow from their existing functorial proofs below. The degree comparison itself also retains arbitrary bounded weak module coefficients at the linked analytic provider scope.
+The lower induction uses the actual CV variation triangle, whose fibre is the normal-slice point costalk. PD2 identifies that point costalk with the ambient point costalk shifted by twice the complex stratum dimension. Thus the upper threshold is minus the stratum dimension and the ambient point-costalk lower threshold is plus that dimension, exactly PNM1. The normalized normal functor is consequently t-exact in the original field categories, and PNM6–PNM8 follow from their existing functorial proofs below. The degree comparison itself also retains arbitrary bounded weak module coefficients at the linked analytic provider scope.
 
-The scholarly external contracts above remain antecedents. The internal proof just linked supplies this particular geometric degree input. Its analytic providers, independently authored finite completions and exact proof locators are explicit; full nongeneric detection and standalone compatible triangulation are separate statements. This explanation and the linked independently authored proof are dedicated to [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+The scholarly external contracts remain antecedents. The linked internal proof supplies this geometric degree input with its explicit analytic providers and independently authored finite completions. The full nongeneric proof NG1–NG9 now supplies full detection at its exact retained provider floor; compatible triangulation retains its separate TC1–TC5 scope. This explanation and the linked new proof are dedicated to CC0 1.0.
 
 ## SH02-PNM-NORMAL — The normal Morse object and its shift
 
@@ -567,14 +569,14 @@ $$
 
 Indeed an ordinary bounded complex is zero exactly when all its cohomology groups vanish; PNM7 applies degree by degree. No splitting of $F$ into its perverse cohomology objects is asserted, and no semisimplicity of the perverse category is needed.
 
-If one additionally imports the normal-Morse detection theorem that closed conormal components occur in microsupport exactly when their generic normal Morse objects are nonzero, PNM8 yields
+Apply the full nongeneric proof NG1–NG9 to \(F\) and every \({}^pH^jF\), at its exact retained provider floor. Original-stratum recollement preserves the same bounded weak field category, and PNM3 makes only finitely many \(j\) nonzero. For each original connected stratum use the same generic covector and original normal model. PNM8 identifies its visible label for \(F\) exactly with visibility for at least one \({}^pH^jF\). The full closed-conormal formula, including nongeneric and zero covectors, therefore gives
 
 $$
 \operatorname{SS}(F)=\bigcup_j\operatorname{SS}({}^pH^jF).
 \tag{PNM9}
 $$
 
-This last statement is conditional on that detection theorem. It is the component-by-component deduction used in FH21, and does not prove the geometric detection theorem itself.
+This proves PNM9 in the original bounded weak category over every field, of any characteristic, and in its finite-dimensional subcategory, at the exact analytic and I15 provider floor of NG1–NG9. It is the component-by-component deduction used in FH21. It introduces no arbitrary-ring perverse truncation, splitting or semisimplicity assumption, and is a consequence of the independent detection proof.
 
 ## SH02-PNM-EXAMPLES — Checking the degrees on a smooth stratum
 
@@ -586,7 +588,7 @@ On a point stratum $d=0$, all three conventions coincide: ordinary cohomological
 
 ## SH02-PNM-STATUS — What this lesson supplies
 
-PNM3 proves boundedness from ordinary bounds. PNM4–PNM7 fix the normal Morse shift and prove t-exactness and its functorial cohomology comparison relative to the exact listed inputs. PNM8 is the nonvanishing deduction needed to inspect one perverse cohomology object at a time.
+PNM3 proves boundedness from ordinary bounds. PNM4–PNM7 fix the normal Morse shift and prove t-exactness and its functorial cohomology comparison relative to the exact listed inputs. PNM8 is the nonvanishing deduction needed to inspect one perverse cohomology object at a time. PNM9 now follows from the full nongeneric proof NG1–NG9 at its exact retained provider floor, with the original connected labels, normal models and complete microsupport quantifiers.
 
 The original coefficient ring in the finite-map theorem can be more general than a field. This lesson applies only after the specified derived extension to a residue field; no perverse truncation over the original ring is introduced. The finite normal-pair and coefficient arguments must still supply the bounded finite-dimensional objects to which this lesson applies.
 

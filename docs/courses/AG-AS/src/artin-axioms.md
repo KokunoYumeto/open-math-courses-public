@@ -1,6 +1,6 @@
 # Artin's axioms
 
-*Source proofs by the Stacks Project authors, as distributed in the AI Integrated Stacks Project. Source copyright: Copyright (C) 2005 -- 2025 Johan de Jong. This modified course edition is published by the Open Math Courses project, `KokunoYumeto/open-math-courses`. Writing, adaptation and integration: GPT-6.1 Sol (OpenAI), Codex, Ultra, October 2026. Permission is granted to copy, distribute and modify this modified chapter under the GNU Free Documentation License, Version 1.2 or any later version, with no Invariant Sections, Front-Cover Texts or Back-Cover Texts. Eligible independently written additions retain their CC0 1.0 dedication. Self-checked by the writing AI. The [complete licence](../licenses/GFDL-1.2.txt) accompanies this edition.*
+*Retained source proofs by the Stacks Project authors, as distributed in the AI Integrated Stacks Project. Source copyright: Copyright (C) 2005 -- 2025 Johan de Jong. This modified course edition is published by the Open Math Courses project, `KokunoYumeto/open-math-courses`. Writing, adaptation and integration: GPT-6.1 Sol (OpenAI), Codex, Ultra, October 2026. Independent replacements and mathematical corrections: GPT-6 Astra (OpenAI), Codex, Ultra, 8 October 2026. Permission is granted to copy, distribute and modify this modified chapter under the GNU Free Documentation License, Version 1.2 or any later version, with no Invariant Sections, Front-Cover Texts or Back-Cover Texts. Eligible independently written additions retain their CC0 1.0 dedication. Self-checked by the writing AI. The [complete licence](../licenses/GFDL-1.2.txt) accompanies this edition.*
 
 An algebraic stack has smooth coordinates, whereas a moduli problem usually arrives as a rule assigning a groupoid to each scheme. Artin's criterion constructs coordinates from that rule. The construction has three stages: obtain a versal deformation over a complete local ring, approximate it by a family of finite type, and enlarge its versal locus to an open set. A second argument explains why a flat presentation, even one with inseparable fibres, can be replaced by a smooth presentation.
 
@@ -173,98 +173,28 @@ Equivalences commute with 2-fibre products. Thus (2.2), just like (RS), passes t
 
 ### 2.3. The approximation input and its use
 
-A Noetherian ring is a **G-ring** if every localization has geometrically regular formal fibres. Appendix B proves the following approximation theorem, including the desingularization and G-ring permanence inputs, with both residue-field cases retained.
+A Noetherian ring is a **G-ring** when the completion map of each of its local rings has geometrically regular fibres. The approximation results used here are proved in Appendix B, with both separable and inseparable residue-field arguments included.
 
-**Artin approximation.** A regular map of Noetherian rings is a filtered colimit of smooth algebras (Popescu's theorem). If \(B\) is a henselian Noetherian local G-ring, a finite polynomial system over \(B\) with a solution in \(\widehat B\) has, for every \(N\), a solution in \(B\) congruent to it modulo \(\mathfrak m^N\). For a local G-ring which is not henselian, the solution lies in an étale neighbourhood inducing the same residue field. These are [Stacks, Tags 07GC, 07QY and 07QZ].
+**Artin approximation.** For a regular homomorphism between Noetherian rings, Popescu's theorem expresses the target as a filtered colimit of smooth algebras over the source. Consequently, let $B$ be a henselian Noetherian local G-ring and let a finite polynomial system with coefficients in $B$ have a solution in $\widehat B$. For each $N\geq1$, there is an exact solution in $B$ with the same reduction modulo $\mathfrak m_B^N$. If $B$ is local without the henselian assumption, one obtains the solution in a pointed étale neighbourhood with unchanged residue field. See the proofs of [Popescu's theorem](#native-smoothing-theorem-popescu), [henselian approximation](#native-smoothing-theorem-approximation-property), and [pointed approximation](#native-smoothing-theorem-approximation-property-variant); the source locators are Stacks Tags 07GC, 07QY and 07QZ.
 
-The object version needed here also preserves associated graded rings.
+For families, it is useful to preserve the tangent cone together with the prescribed finite-order object.
 
-**Lemma 2.3 (approximating a family).** Let \(\mathcal X\) be limit preserving on objects. Let \(x_R\in\mathcal X(R)\), where \(R\) is as in (2.2), and let \(s\) be the image of its closed point in \(S\). If \(\mathcal O_{S,s}\) is a G-ring, then, for every \(N\), there are a finite type \(S\)-algebra \(A\), a maximal ideal \(\mathfrak n\), and \(x_A\in\mathcal X(A)\), together with
-
-\[
-A/\mathfrak n^N\simeq R/\mathfrak m^N,\qquad
-x_A|_{A/\mathfrak n^N}\simeq x_R|_{R/\mathfrak m^N},\qquad
-\operatorname{gr}_{\mathfrak n}A\simeq
-\operatorname{gr}_{\mathfrak m}R.
+**Lemma 2.3 (approximating a family).** Suppose $\mathcal X$ is limit preserving on objects. Let $x_R\in\mathcal X(R)$, where $R$ satisfies the complete local and finite-type residue-field hypotheses in (2.2), and let $s\in S$ be the image of its closed point. Assume that $\mathcal O_{S,s}$ is a G-ring. Given $N\geq1$, there are an $S$-algebra $A$ of finite type, a maximal ideal $\mathfrak n$ of $A$, and an object $x_A\in\mathcal X(A)$ with compatible identifications
+$$
+\begin{gathered}
+A/\mathfrak n^N\simeq R/\mathfrak m_R^N,\qquad
+x_A|_{A/\mathfrak n^N}\simeq x_R|_{R/\mathfrak m_R^N},\\
+\operatorname{gr}_{\mathfrak n}A\simeq\operatorname{gr}_{\mathfrak m_R}R.
+\end{gathered}
 \tag{2.3}
-\]
+$$
+The first map is an $S$-algebra isomorphism, the second is an isomorphism over that map, and the last is an isomorphism of graded algebras over the common residue field.
 
-**Proof.** Choose an affine open $\operatorname{Spec}\Lambda\subset S$ containing $s$. The map from the local scheme $\operatorname{Spec}R$ factors through it: its inverse image is an open containing the closed point of a local spectrum, hence the entire spectrum. The finite-type hypothesis on the residue field says that $k$ is a finitely generated $\Lambda$-algebra on this chart. Since $S$ is locally Noetherian, $\Lambda$ is Noetherian.
+**Proof.** Apply [Theorem 6.1 in B.6.1, including its complete proof](#reader-family-approximation), to $x=x_R$ and the specified $N$. Its hypotheses are exactly those stated here: it uses limit preservation on objects, the G-ring condition at $s$, and the finite-type residue field, without an additional requirement on characteristic or on descent of arrows.
 
-Write $R$ as the filtered colimit of its finite-type $\Lambda$-subalgebras. Limit preservation on objects gives a finite-type algebra $C$, a map $C\to R$, and an object $x_C$, with a chosen isomorphism $x_C|_R\simeq x$. No descent assertion about all arrows of $\mathcal X$ is being assumed. Choose a finite presentation
+The proof there approximates a finite presentation together with its syzygy matrix at an order $M\geq\max(N,c+1)$, where $c$ is a common Artin–Rees constant. The exact perturbed syzygies and [Lemma A.2](#appendix-a-artin-rees-perturbation-and-graded-quotients) identify the initial ideals, giving the graded **algebra** isomorphism. Its final finite-type descent preserves the residue field, every maximal-ideal quotient, and the selected marking on the object. Restriction from order $M$ to order $N$ therefore yields all three identifications in (2.3). ∎
 
-$$C=\Lambda[y_1,\ldots,y_u]/(f_1,\ldots,f_v),$$
-
-and write $\bar a_i\in R$ for the images of its generators.
-
-Choose finitely many generators of $k$ as a $\Lambda$-algebra and lift them to $R$. Add lifts of a finite generating set of $\mathfrak m_R$. These choices define a polynomial ring $T=\Lambda[z_1,\ldots,z_e]$ and a map $T\to R$ whose reduction to $k$ is surjective and whose image contains generators of $\mathfrak m_R$. Thus $\mathfrak n=\ker(T\to k)$ is maximal. Elements outside $\mathfrak n$ map to units of $R$, so the map extends to the local ring $Q=T_{\mathfrak n}$ and then continuously to
-
-$$P=\widehat Q\longrightarrow R.$$
-
-Here is a direct proof of its surjectivity. The chosen elements generate $\mathfrak m_R^j/\mathfrak m_R^{j+1}$ by their degree-$j$ monomials with coefficients in $k$. Those coefficients lift through $Q\to k$. Starting with any element of $R$, lift its residue and then its successive errors by such monomials. At the $j$th correction the added element lies in $\mathfrak m_Q^j$. The partial lifts are Cauchy in $Q$, hence define an element of $P$, and their images converge to the prescribed element of the complete ring $R$. This proves surjectivity; it also proves the usual surjective-cotangent-space criterion in this instance.
-
-The complete ring $P$ is Noetherian. Choose generators $b_1,\ldots,b_r$ of the kernel, and lifts $a_i\in P$ of the $\bar a_i$. Choose coefficients $c_{ji}$ such that
-
-$$f_j(a_1,\ldots,a_u)=\sum_{i=1}^r c_{ji}b_i.$$
-
-The syzygy module of $(b_1,\ldots,b_r)$ is finite. Choose generators $k_\ell=(k_{\ell1},\ldots,k_{\ell r})$, giving an exact presentation
-
-$$P^{\oplus t}\xrightarrow K P^{\oplus r}
- \xrightarrow{(b_1,\ldots,b_r)}P\longrightarrow R\longrightarrow0.$$
-
-The map $K$ sends the $\ell$th basis vector to $k_\ell$; in particular $\sum_i k_{\ell i}b_i=0$.
-
-Let $c$ be one Artin–Rees constant for both displayed maps relative to $\mathfrak m_P$, and choose $M\geq\max(N,c+1)$. The common constant exists by Artin–Rees for finite modules, and increasing a constant preserves its defining inclusions. The finite-complex perturbation and canonical graded-quotient statements are the written [Lesson 7, Appendix A, Lemmas A.1–A.2](artin-axioms.md#appendix-a-artin-rees-perturbation-and-graded-quotients). We use their full statements here and do not reproduce their proof.
-
-Put $\mathfrak p=\mathfrak n\cap\Lambda$. The hypothesis says that $\Lambda_{\mathfrak p}$ is a G-ring. The permanence theorem proved below makes its essentially finite-type algebra $Q$ a G-ring. Apply the pointed étale-neighbourhood approximation theorem of Section 5 simultaneously to the following finite polynomial system:
-
-$$f_j(A_1,\ldots,A_u)=\sum_i C_{ji}B_i,
- \qquad \sum_i K_{\ell i}B_i=0.$$
-
-The tuple $(a_i,b_i,c_{ji},k_{\ell i})$ is an exact formal solution in $P$. We obtain an étale $Q$-algebra $B$, a maximal ideal $\mathfrak q$ above $\mathfrak n$ with residue field exactly $k$, and a solution $(a'_i,b'_i,c'_{ji},k'_{\ell i})$ whose entries differ from the old ones by $\mathfrak m_P^M$. The induced identification $\widehat{B_{\mathfrak q}}=P$ preserves the map from $Q$, its residue field and every finite-order quotient. There is no need to inject the entire possibly disconnected algebra $B$ into $P$.
-
-Because $b_i$ lies in $\mathfrak m_P$ and $M\geq1$, each $b'_i$ lies in $\mathfrak q$. Set
-
-$$A^*=B/(b'_1,\ldots,b'_r),\qquad
- \mathfrak m^*=\mathfrak q/(b'_1,\ldots,b'_r).$$
-
-The exact polynomial relations define $C\to A^*$ by $y_i\mapsto a'_i$, so they give $x^*=x_C|_{A^*}$. Completion of a quotient of a Noetherian local ring gives
-
-$$\widehat{(A^*)_{\mathfrak m^*}}=P/(b'_1,\ldots,b'_r).$$
-
-This uses exactness of Noetherian completion for finite modules, supplied by the written completion prerequisite. As $b'_i-b_i\in\mathfrak m_P^M$, the ideals generated by the two lists become identical after adding $\mathfrak m_P^M$. Consequently
-
-$$A^*/(\mathfrak m^*)^M
- \simeq P/((b'_1,\ldots,b'_r)+\mathfrak m_P^M)
- =P/((b_1,\ldots,b_r)+\mathfrak m_P^M)
- \simeq R/\mathfrak m_R^M.$$
-
-Localization at the selected maximal ideal does not change these quotients: every element outside that ideal is already a unit modulo any of its powers. The two maps from $C$ to the displayed common quotient agree, because $a'_i-a_i\in\mathfrak m_P^M$. Restricting the chosen $x_C|_R\simeq x$ therefore gives the required marked comparison of objects at order $M$, hence at order $N$.
-
-The matrix $K'$ and row $(b'_i)$ still form a complex, since all the syzygy equations were preserved exactly. Their entries differ from those of the original exact presentation by $\mathfrak m_P^M\subset\mathfrak m_P^{c+1}$. Lesson 7, Lemma A.2 now identifies the initial ideals inside $\operatorname{gr}_{\mathfrak m_P}P$. Its canonical identity on that graded algebra yields
-
-$$\operatorname{gr}_{\mathfrak m_R}R
- \simeq\operatorname{gr}_{\mathfrak m_P}
-     \bigl(P/(b'_1,\ldots,b'_r)\bigr).$$
-
-This is an isomorphism of graded algebras. The quotient filtration is the maximal-ideal filtration, so completion identifies its right side with $\operatorname{gr}_{\mathfrak m^*}A^*$. This explains why the entire relation complex was approximated: approximating only the ideal generators would not provide the reverse initial-ideal containment.
-
-It remains to obtain a finite-type algebra over the original affine chart. The algebra $A^*$ is of finite presentation over $Q=T_{\mathfrak n}$. Its finitely many generators, relations and denominators descend to a finite-type $T$-algebra $A_0$ with
-
-$$A^*=(A_0)_{T\setminus\mathfrak n}
-      =\operatorname{colim}_{f\in T\setminus\mathfrak n}(A_0)_f.$$
-
-Products of denominators direct this system. Limit preservation on objects descends $x^*$ to an object $x_A$ at some stage $A=(A_0)_f$, with a specified isomorphism after base change to $A^*$. This algebra is finite type over $\Lambda$ and hence over $S$. Let $\mathfrak m_A$ be the inverse image of $\mathfrak m^*$. The image of $A\to k$ contains the image of $T$, which already surjects onto $k$ by the original residue-field generators. Thus $A/\mathfrak m_A=k$: the selected prime is maximal and has exactly the prescribed residue field.
-
-Since $A^*$ is a localization of $A$ away from elements outside the selected point,
-
-$$A_{\mathfrak m_A}\simeq (A^*)_{\mathfrak m^*}.$$
-
-Localization at a maximal ideal preserves every quotient by its powers and therefore its associated graded algebra. All the ring comparisons constructed above consequently descend to $A$. Restricting the specified isomorphism $x_A|_{A^*}\simeq x^*$ to their common finite-order quotient supplies the required marking on objects; no finite-stage descent of an arbitrary arrow was needed. This proves all assertions. $\square$
-
-The construction follows the Stacks Project proof of [family approximation](#native-artin-lemma-approximate), Tag 07XB. The proof above spells out the complete-local presentation and the final finite-stage point and object comparisons. Its Popescu, G-ring and étale-completion inputs are proved in this reader or bound to the exact written commutative-algebra providers. The separate finite-complex comparison is bound to the actual written Lesson 7 appendix.
-
-*Reference:* [Stacks, Tag 07XB]. Appendix A proves the finite-complex comparison as commutative algebra before applying it to algebraicity.
+The source result is Stacks Tag 07XB. The complete family construction is kept at B.6.1, and its finite-complex perturbation argument is proved in Appendix A.
 
 ## 3. From versality to a smooth chart
 
@@ -1069,7 +999,7 @@ $$A_{\mathfrak m_A}\simeq (A^*)_{\mathfrak m^*}.$$
 
 Localization at a maximal ideal preserves every quotient by its powers and therefore its associated graded algebra. All the ring comparisons constructed above consequently descend to $A$. Restricting the specified isomorphism $x_A|_{A^*}\simeq x^*$ to their common finite-order quotient supplies the required marking on objects; no finite-stage descent of an arbitrary arrow was needed. This proves all assertions. $\square$
 
-The construction follows the Stacks Project proof of [family approximation](#native-artin-lemma-approximate), Tag 07XB. The proof above spells out the complete-local presentation and the final finite-stage point and object comparisons. Its Popescu, G-ring and étale-completion inputs are proved in this reader or bound to the exact written commutative-algebra providers. The separate finite-complex comparison is bound to the actual written Lesson 7 appendix.
+The mathematical source is the Stacks Project, [Tag 07XB](https://stacks.math.columbia.edu/tag/07XB). The complete argument above uses the independently written desingularization and G-ring proofs in this appendix, the pointed approximation result in B.5, and the exact graded comparison in Appendix A. In particular, the graded-algebra conclusion and finite-type return are both part of this proof.
 
 ### B.7. Jacobian, parameter and cotangent calculations
 
@@ -1122,162 +1052,288 @@ We now give the full proof chain from the Stacks source `smoothing.tex`: singula
 
 #### Singular ideals
 
-Let $R \to A$ be a ring map. The singular ideal of $A$ over $R$ is the radical ideal in $A$ cutting out the singular locus of the morphism $\operatorname{Spec}(A) \to \operatorname{Spec}(R)$. Here is a formal definition.
+The proof will measure progress by the open subset on which a finite presentation is smooth. We need a way to express that open subset using equations that can be transported to another ring. Jacobian minors provide such equations, provided we also control the relations omitted from the chosen minor. The constructions below make both requirements explicit.
+
+The relevant mathematical references are the Stacks Project, Tags [07C5](https://stacks.math.columbia.edu/tag/07C5), [07C6](https://stacks.math.columbia.edu/tag/07C6), [07C7](https://stacks.math.columbia.edu/tag/07C7), [07ET](https://stacks.math.columbia.edu/tag/07ET), [07CA](https://stacks.math.columbia.edu/tag/07CA), [07CC](https://stacks.math.columbia.edu/tag/07CC) and [07EU](https://stacks.math.columbia.edu/tag/07EU), together with the corresponding results in the [AI Integrated Stacks Project, *Smoothing Ring Maps*](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/smoothing.tex).
 
 #### Definition. The singularity ideal
- Let $R \to A$ be a ring map. The *singular ideal of $A$ over $R$*, denoted $H_{A/R}$ is the unique radical ideal $H_{A/R} \subset A$ with $$V(H_{A/R}) = \{\mathfrak q \in \operatorname{Spec}(A) \mid R \to A
-\text{ not smooth at }\mathfrak q\}$$
 
-This makes sense because the set of primes where $R \to A$ is smooth is open, see Algebra, Definition [Smoothness at a prime ideal](#native-algebra-definition-smooth-at-prime). In order to find an explicit set of generators for the singular ideal we first prove the following lemma.
+For a homomorphism $R\to A$, let $U$ consist of the prime ideals of $A$ at which this homomorphism is smooth. Smoothness at a prime means smoothness on a principal neighbourhood of that prime, so $U$ is open; see [Smoothness at a prime ideal](#native-algebra-definition-smooth-at-prime). Define $H_{A/R}$ by
+
+$$H_{A/R}=\bigcap_{\mathfrak q\notin U}\mathfrak q.$$
+
+We use the convention that the intersection of an empty family of ideals is $A$. Since the complement of $U$ is closed, $H_{A/R}$ is its defining radical ideal. In particular,
+
+$$D(H_{A/R})=U,\qquad
+V(H_{A/R})=\{\mathfrak q:R\to A\text{ is not smooth at }\mathfrak q\}.$$
+
+This characterizes the singularity ideal uniquely. It does not assert that the ideal is finitely generated or that $U$ is quasi-compact.
 
 #### Lemma. A Jacobian presentation near a smooth point
- Let $R$ be a ring. Let $A = R[x_1, \ldots, x_n]/(f_1, \ldots, f_m)$. Let $\mathfrak q \subset A$ be a prime ideal. Assume $R \to A$ is smooth at $\mathfrak q$. Then there exists an $a \in A$, $a \not \in \mathfrak q$, an integer $c$, $0 \leq c \leq \min(n, m)$, subsets $U \subset \{1, \ldots, n\}$, $V \subset \{1, \ldots, m\}$ of cardinality $c$ such that $$a = a' \det(\partial f_j/\partial x_i)_{j \in V, i \in U}$$ for some $a' \in A$ and $$a f_\ell \in (f_j, j \in V) + (f_1, \ldots, f_m)^2$$ for all $\ell \in \{1, \ldots, m\}$.
 
-**Proof.** Set $I = (f_1, \ldots, f_m)$ so that the naive cotangent complex of $A$ over $R$ is homotopy equivalent to $I/I^2 \to \bigoplus A\text{d}x_i$, see Algebra, Lemma Kähler differentials, Theorems 3.1–3.3, Proposition 3.4 and Theorem 7.1. We will use the formation of the naive cotangent complex commutes with localization, see Algebra, Section [The naive cotangent complex](#context-algebra-section-netherlander), especially Algebra, Lemma [Localization of the naive cotangent complex](#native-algebra-lemma-localize-nl). By Algebra, Definitions [Smooth ring maps](#native-algebra-definition-smooth) and [Smoothness at a prime ideal](#native-algebra-definition-smooth-at-prime) we see that $(I/I^2)_a \to \bigoplus A_a\text{d}x_i$ is a split injection for some $a \in A$, $a \not \in \mathfrak q$. After renumbering $x_1, \ldots, x_n$ and $f_1, \ldots, f_m$ we may assume that $f_1, \ldots, f_c$ form a basis for the vector space $I/I^2 \otimes_A \kappa(\mathfrak q)$ and that $\text{d}x_{c + 1}, \ldots, \text{d}x_n$ map to a basis of $\Omega_{A/R} \otimes_A \kappa(\mathfrak q)$. Hence after replacing $a$ by $aa'$ for some $a' \in A$, $a' \not \in \mathfrak q$ we may assume $f_1, \ldots, f_c$ form a basis for $(I/I^2)_a$ and that $\text{d}x_{c + 1}, \ldots, \text{d}x_n$ map to a basis of $(\Omega_{A/R})_a$. In this situation $a^N$ for some large integer $N$ satisfies the conditions of the lemma (with $U = V = \{1, \ldots, c\}$). $\square$
+Fix a presentation $A=R[x_1,\ldots,x_n]/I$, with $I=(f_1,\ldots,f_m)$. Suppose that $R\to A$ is smooth at $\mathfrak q$. One can select $c$ equations and $c$ variables, where $0\leq c\leq\min(m,n)$, whose Jacobian minor $\Delta$ has the following property: there is an element $a\notin\mathfrak q$ divisible by $\Delta$ in $A$ such that
 
-We will use the notion of a *strictly standard* element in $A$ over $R$. Our notion is slightly weaker than the one in Swan's paper the original source citation swan. We also define an *elementary standard* element to be one of the type we found in the lemma above. We compare the different types of elements in Lemma [Comparing standard smooth presentations](#native-smoothing-lemma-compare-standard).
+$$a f_\ell\in(f_j:j\text{ is one of the selected equations})+I^2
+\quad(1\leq\ell\leq m).$$
+
+Here multiplication by an element of $A$ means multiplication on $I/I^2$; the displayed assertion is independent of a lift of $a$ to the polynomial ring. Equivalently, for the selected sets $U,V$ of column and row indices,
+
+$$a=a'\det(\partial f_j/\partial x_i)_{j\in V,\ i\in U}
+\quad\text{for some }a'\in A.$$
+
+**Proof.** Work first over $A_{\mathfrak q}$. The presentation of the [naive cotangent complex](#context-algebra-section-netherlander) is
+
+$$I/I^2\longrightarrow\bigoplus_{i=1}^n A\,\mathrm dx_i.$$
+
+By [smoothness](#native-algebra-definition-smooth), this map becomes a split injection near $\mathfrak q$, with finite projective cokernel. Its source is therefore finite projective there as well. Choose from the classes of the $f_j$ a basis of $(I/I^2)\otimes_A\kappa(\mathfrak q)$; call its size $c$. Choose $n-c$ of the coordinate differentials whose images form a basis of $\Omega_{A/R}\otimes_A\kappa(\mathfrak q)$. The remaining $c$ coordinates give the desired minor: projection onto them identifies the span of the selected relation differentials with a $c$-dimensional vector space. Thus $\Delta\notin\mathfrak q$.
+
+Finite projectivity permits both chosen bases and the splitting to be used after inverting one element $h\notin\mathfrak q$. In particular, the selected equations generate $(I/I^2)_h$. For each of the finitely many $f_\ell$, clear the denominators in an expression for its class in this generating set. There is consequently a single exponent $N$ with
+
+$$h^N I\subseteq(f_j:j\in V)+I^2.$$
+
+Take $a=h^N\Delta$. This element stays outside $\mathfrak q$, is divisible by the specified minor, and satisfies all the required containments. Localization of the presentation used above is justified by [Localization of the naive cotangent complex](#native-algebra-lemma-localize-nl). If $c=0$, the minor is the empty determinant $1$; the same argument gives $h^N I\subseteq I^2$. ∎
 
 #### Definition. Strict standard smoothness
- Let $R \to A$ be a ring map of finite presentation. We say an element $a \in A$ is *elementary standard in $A$ over $R$* if there exists a presentation $A = R[x_1, \ldots, x_n]/(f_1, \ldots, f_m)$ and $0 \leq c \leq \min(n, m)$ such that 
 
-$$a = a' \det(\partial f_j/\partial x_i)_{i, j = 1, \ldots, c}$$ for some $a' \in A$ and 
+Let $A$ be finitely presented over $R$. The following definitions concern an element $a\in A$, but allow the choice of a presentation. Write such a presentation as
 
-$$a f_{c + j} \in (f_1, \ldots, f_c) + (f_1, \ldots, f_m)^2$$ for $j = 1, \ldots, m - c$. We say $a \in A$ is *strictly standard in $A$ over $R$* if there exists a presentation $A = R[x_1, \ldots, x_n]/(f_1, \ldots, f_m)$ and $0 \leq c \leq \min(n, m)$ such that 
+$$A=R[x_1,\ldots,x_n]/(f_1,\ldots,f_m),\qquad I=(f_1,\ldots,f_m),$$
 
-$$a = \sum\nolimits_{I \subset \{1, \ldots, n\},\ |I| = c}
-a_I \det(\partial f_j/\partial x_i)_{j = 1, \ldots, c,\ i \in I}$$ for some $a_I \in A$ and 
+and choose an integer $c$ between $0$ and $\min(m,n)$. Both definitions require the first $c$ equations to control the remaining relations after multiplication by $a$:
 
-$$a f_{c + j} \in (f_1, \ldots, f_c) + (f_1, \ldots, f_m)^2$$ for $j = 1, \ldots, m - c$.
+$$a f_{c+j}\in(f_1,\ldots,f_c)+I^2
+\quad(1\leq j\leq m-c).$$
 
-The following lemma is useful to find implications of ([the displayed identity](#native-smoothing-equation-strictly-standard-one)).
+An element is **elementary standard** if these data can be chosen so that it is a multiple of the first $c$-by-$c$ Jacobian minor:
+
+$$a=a'\det(\partial f_j/\partial x_i)_{1\leq j,i\leq c},\qquad a'\in A.$$
+
+It is **strictly standard** if, with the same condition on the relations, it belongs to the ideal of all maximal minors of the $c$ selected relation differentials:
+
+$$a=\sum_{\substack{U\subseteq\{1,\ldots,n\}\\|U|=c}}
+a_U\det(\partial f_j/\partial x_i)_{1\leq j\leq c,\ i\in U},
+\qquad a_U\in A.$$
+
+We order the column indices in each determinant increasingly. Elementary standard implies strictly standard by assigning coefficient zero to the unused minors. Empty minors have determinant $1$; thus the definitions also cover $c=0$. The preceding lemma shows that every smooth prime has an elementary standard element outside it, after renumbering the selected equations and variables.
 
 #### Lemma. The Jacobian relation in a strict presentation
 
-Let $R$ be a ring. Let $A = R[x_1, \ldots, x_n]/(f_1, \ldots, f_m)$ and write $I = (f_1, \ldots, f_m)$. Let $a \in A$. Then ([the displayed identity](#native-smoothing-equation-strictly-standard-one)) implies there exists an $A$-linear map $\psi : \bigoplus\nolimits_{i = 1, \ldots, n} A \text{d}x_i \to A^{\oplus c}$ such that the composition $$A^{\oplus c} \xrightarrow{(f_1, \ldots, f_c)}
-I/I^2 \xrightarrow{f \mapsto \text{d}f}
-\bigoplus\nolimits_{i = 1, \ldots, n} A \text{d}x_i
-\xrightarrow{\psi}
-A^{\oplus c}$$ is multiplication by $a$. Conversely, if such a $\psi$ exists, then $a^c$ satisfies ([the displayed identity](#native-smoothing-equation-strictly-standard-one)).
+Keep the presentation and the integer $c$ above. Let
 
-**Proof.** This is a special case of Algebra, Lemma [A left inverse for a matrix](#native-algebra-lemma-matrix-left-inverse). $\square$
+$$u:A^c\longrightarrow I/I^2,\qquad e_j\longmapsto[f_j],
+\qquad d:I/I^2\longrightarrow A^n,\qquad[f]\longmapsto\mathrm df.$$
+
+If $a$ is an $A$-linear combination of the $c$-by-$c$ minors of $du$, there is an $A$-linear map $\psi:A^n\to A^c$ satisfying $\psi du=a\,1_{A^c}$. Conversely, the existence of such a map implies that $a^c$ belongs to the ideal of these minors.
+
+**Proof.** Put $J=du$, regarded as an $n$-by-$c$ matrix. For a set $U$ of $c$ row indices, let $P_U:A^n\to A^c$ be coordinate projection and let $J_U=P_UJ$. The adjugate identity gives
+
+$$\operatorname{adj}(J_U)P_UJ=\det(J_U)1_{A^c}.$$
+
+If $a=\sum_U a_U\det(J_U)$, use
+
+$$\psi=\sum_U a_U\operatorname{adj}(J_U)P_U.$$
+
+This has the asserted source and target, and its composite with $J$ is multiplication by $a$. For the converse, take determinants in $\psi J=a1_{A^c}$. Expanding the determinant of a product by its minors gives
+
+$$a^c=\det(\psi J)=\sum_{|U|=c}\det(\psi_{*,U})\det(J_U).$$
+
+The minor expansion follows directly from the multilinear determinant formula: terms with a repeated intermediate index cancel by alternation, and the remaining terms group according to $U$. This works over every commutative ring. For $c=0$, both the determinant of the identity on the zero module and the empty minor are $1$, so the assertion has the same interpretation. This is also the calculation underlying [A left inverse for a matrix](#native-algebra-lemma-matrix-left-inverse). ∎
 
 #### Lemma. Controlling a power of the Jacobian determinant (Elkik)
- Let $R \to A$ be a ring map of finite presentation. The singular ideal $H_{A/R}$ is the radical of the ideal generated by strictly standard elements in $A$ over $R$ and also the radical of the ideal generated by elementary standard elements in $A$ over $R$.
 
-**Proof.** Assume $a$ is strictly standard in $A$ over $R$. We claim that $A_a$ is smooth over $R$, which proves that $a \in H_{A/R}$. Namely, let $A = R[x_1, \ldots, x_n]/(f_1, \ldots, f_m)$ and $c$ be as in Definition [Strict standard smoothness](#native-smoothing-definition-strictly-standard). Write $I = (f_1, \ldots, f_m)$ so that the naive cotangent complex of $A$ over $R$ is given by $I/I^2 \to \bigoplus A\text{d}x_i$. Assumption ([the displayed identity](#native-smoothing-equation-strictly-standard-two)) implies that $(I/I^2)_a$ is generated by the classes of $f_1, \ldots, f_c$. Assumption ([the displayed identity](#native-smoothing-equation-strictly-standard-one)) implies that the differential $(I/I^2)_a \to \bigoplus A_a\text{d}x_i$ has a left inverse, see Lemma [The Jacobian relation in a strict presentation](#native-smoothing-lemma-parse-equation-strictly-standard-one). Hence $R \to A_a$ is smooth by definition and Algebra, Lemma [Localization of the naive cotangent complex](#native-algebra-lemma-localize-nl).
+For a finitely presented homomorphism $R\to A$, the elementary standard elements generate an ideal whose radical is $H_{A/R}$. The same is true if one uses all strictly standard elements.
 
-Let $H_e, H_s \subset A$ be the radical of the ideal generated by elementary, resp. strictly standard elements of $A$ over $R$. By definition and what we just proved we have $H_e \subset H_s \subset H_{A/R}$. The inclusion $H_{A/R} \subset H_e$ follows from Lemma [A Jacobian presentation near a smooth point](#native-smoothing-lemma-find-strictly-standard). $\square$
+**Proof.** We first check what happens after inverting a strictly standard element $a$. The relation condition says that the map
 
-#### Example. A singular locus that is not quasi-compact
- The set of points where a finitely presented ring map is smooth needn't be a quasi-compact open. For example, let $R = k[x, y_1, y_2, y_3, \ldots]/(xy_i)$ and $A = R/(x)$. Then the smooth locus of $R \to A$ is $\bigcup D(y_i)$ which is not quasi-compact.
+$$u_a:A_a^c\longrightarrow(I/I^2)_a$$
+
+is surjective. The preceding matrix calculation gives $\psi_a d_a u_a=a1$. As $a$ is a unit, $u_a$ is also injective. Moreover $a^{-1}u_a\psi_a$ is a left inverse for $d_a$: this can be checked after precomposition with the surjection $u_a$. Hence $d_a$ is split injective. Its cokernel is a direct summand of the finite free module $A_a^n$. The finite-presentation cotangent criterion therefore proves that $R\to A_a$ is smooth. In particular, every strictly standard element belongs to $H_{A/R}$.
+
+Let $J_e$ and $J_s$ be the ideals generated by elementary and strictly standard elements, respectively. We have
+
+$$J_e\subseteq J_s\subseteq H_{A/R}.$$
+
+At every prime in the smooth locus, the Jacobian presentation lemma supplies an elementary standard element which is not in that prime. Thus $D(J_e)$ contains the entire smooth locus. The previous inclusion gives the reverse containment. Taking complements and then defining radical ideals yields
+
+$$\sqrt{J_e}=\sqrt{J_s}=H_{A/R}.$$
+
+Neither this argument nor the preceding cotangent calculation requires a Noetherian base. ∎
+
+#### Example. A smooth locus that is not quasi-compact
+
+Let $k$ be a field and consider
+
+$$R=k[x,y_1,y_2,\ldots]/(xy_i:i\geq1),\qquad A=R/(x)=k[y_1,y_2,\ldots].$$
+
+The smooth locus of $\operatorname{Spec}A\to\operatorname{Spec}R$ is exactly $\bigcup_{i\geq1}D(y_i)$. Indeed, where $y_i$ is a unit the relation $xy_i=0$ forces $x=0$, so the morphism is an isomorphism. At the prime $(y_1,y_2,\ldots)$, its inverse image in $R$ is $(x,y_1,y_2,\ldots)$. In that local ring the ideal $(x)$ is nonzero: its annihilator is generated by all the $y_i$, so no element outside the prime kills $x$. This principal ideal is proper and cannot be idempotent, by Nakayama's lemma. The quotient by it is therefore not flat. To see the last implication directly, if $R/(x)$ were flat, tensoring $(x)\hookrightarrow R$ with the quotient would be injective; its resulting map is zero, forcing $(x)/(x)^2=0$. Smoothness consequently fails at this point.
+
+Every prime of $A$ outside that one omits some $y_i$, proving the asserted description. No finite subcollection of these principal opens covers their union: for a finite set $E$ of indices, the prime $(y_i:i\in E)$ belongs to $D(y_j)$ for every $j\notin E$, while belonging to none of the selected $D(y_i)$. Thus even a finitely presented ring homomorphism can have a smooth locus which is not quasi-compact.
 
 #### Lemma. Base change of a strict standard presentation
 
-Let $R \to A$ be a ring map of finite presentation. Let $R \to R'$ be a ring map. If $a \in A$ is elementary, resp. strictly standard in $A$ over $R$, then $a \otimes 1$ is elementary, resp. strictly standard in $A \otimes_R R'$ over $R'$.
+For a homomorphism $R\to R'$ and a finitely presented $R$-algebra $A$, write $A'=A\otimes_R R'$. If $a\in A$ is elementary standard, its image $a\otimes1$ is elementary standard over $R'$. The corresponding assertion holds for strictly standard elements.
 
-**Proof.** If $A = R[x_1, \ldots, x_n]/(f_1, \ldots, f_m)$ is a presentation of $A$ over $R$, then $A \otimes_R R' = R'[x_1, \ldots, x_n]/(f'_1, \ldots, f'_m)$ is a presentation of $A \otimes_R R'$ over $R'$. Here $f'_j$ is the image of $f_j$ in $R'[x_1, \ldots, x_n]$. Hence the result follows from the definitions. $\square$
+**Proof.** Use a presentation witnessing the property of $a$. Tensoring the presentation with $R'$ gives
+
+$$A'=R'[x_1,\ldots,x_n]/(f'_1,\ldots,f'_m).$$
+
+Formal differentiation of a polynomial commutes with mapping its coefficients from $R$ to $R'$. Consequently every relevant Jacobian minor maps to the corresponding minor of the new presentation. The equalities expressing $a$ as a multiple, or a linear combination, of these minors remain equalities after this coefficient map. So do the finitely many containments $a f_{c+j}\in(f_1,\ldots,f_c)+I^2$: map expressions witnessing those containments to the new polynomial ring. These are exactly the required conditions for $a\otimes1$. No flatness of $R'$ over $R$ is needed. ∎
 
 #### Lemma. Solving the strict-standard Jacobian relations
- Let $R \to A \to \Lambda$ be ring maps with $A$ of finite presentation over $R$. Assume that $H_{A/R} \Lambda = \Lambda$. Then there exists a factorization $A \to B \to \Lambda$ with $B$ smooth over $R$.
 
-**Proof.** Choose $f_1, \ldots, f_r \in H_{A/R}$ and $\lambda_1, \ldots, \lambda_r \in \Lambda$ such that $\sum f_i\lambda_i = 1$ in $\Lambda$. Set $B = A[x_1, \ldots, x_r]/(f_1x_1 + \ldots + f_rx_r - 1)$ and define $B \to \Lambda$ by mapping $x_i$ to $\lambda_i$. To check that $B$ is smooth over $R$ use that $A_{f_i}$ is smooth over $R$ by definition of $H_{A/R}$ and that $B_{f_i}$ is smooth over $A_{f_i}$. Indeed, $\sum f_ix_i=1$ makes the $D(f_i)$ a cover of $\operatorname{Spec}(B)$. On $D(f_i)$ one eliminates $x_i$, giving a polynomial algebra over $A_{f_i}$. Smoothness on this cover proves the claim. $\square$
+Suppose $R\to A\to\Lambda$ is given, $A$ is finitely presented over $R$, and $H_{A/R}\Lambda=\Lambda$. There is a smooth $R$-algebra $B$ through which the specified map $A\to\Lambda$ factors.
+
+**Proof.** The equality of ideals means that finitely many elements $f_i\in H_{A/R}$ and $\lambda_i\in\Lambda$ satisfy $\sum_i f_i\lambda_i=1$. Introduce variables $Z_i$ and set
+
+$$B=A[Z_1,\ldots,Z_r]/\left(\sum_{i=1}^r f_iZ_i-1\right).$$
+
+Evaluation $Z_i\mapsto\lambda_i$ defines an $A$-algebra homomorphism $B\to\Lambda$. In $B$ the elements $f_i$ generate the unit ideal, so their principal opens cover $\operatorname{Spec}B$. On the $i$th open, eliminate $Z_i$ using the displayed equation:
+
+$$B_{f_i}\simeq A_{f_i}[Z_1,\ldots,\widehat{Z_i},\ldots,Z_r].$$
+
+The definition of $H_{A/R}$ says that $A_{f_i}$ is smooth over $R$. A polynomial algebra over it is smooth as well, so these covering opens establish smoothness of $B/R$. The presentation of $B$ is finite, as required. If the target is the zero ring, the smooth zero algebra supplies the factorization directly. ∎
 
 #### Presentations of algebras
 
-Some of the results in this section are due to Elkik. Note that the algebra $C$ in the following lemma is a symmetric algebra over $A$. Moreover, if $R$ is Noetherian, then $C$ is of finite presentation over $R$.
+A presentation records more than generators of an algebra: its conormal module records which equations remain independent to first order. Adding the vector bundle associated with this module makes the conormal data free while retaining a section back to the original algebra. This gives a convenient route from arbitrary smooth or syntomic algebras to explicit equations.
+
+We use the convention that a relative global complete intersection is a quotient of a polynomial algebra by $c$ equations which is flat over the base and whose nonempty fibres have pure dimension equal to the number of variables minus $c$. The corresponding local criteria, including the conormal statements used below, are supplied by [Local criteria for a syntomic algebra](#native-algebra-lemma-syntomic), [Local criteria for complete intersections](#native-algebra-lemma-lci), and [Finite projectivity of a quasi-regular conormal module](#native-more-algebra-lemma-quasi-regular-ideal-finite-projective).
 
 #### Lemma. Improving a finite presentation
 
-Let $R$ be a ring and let $A$ be a finitely presented $R$-algebra. There exists a finite type $R$-algebra map $A \to C$ which has a retraction with the following two properties
+Let $A$ be a finitely presented algebra over a ring $R$. There is a finite-type $A$-algebra $C$ with an $A$-algebra augmentation $C\to A$ such that the following assertions hold.
 
-1.  for each $a \in A$ such that $R \to A_a$ is a local complete intersection (More on Algebra, Definition [Local complete-intersection ring maps](#native-more-algebra-definition-local-complete-intersection)) the ring $C_a$ is smooth over $A_a$ and has a presentation $C_a = R[y_1, \ldots, y_m]/J$ such that $J/J^2$ is free over $C_a$, and
+1. If $A_a/R$ is a local complete intersection, then $C_a/A_a$ is smooth and $C_a$ has a polynomial presentation over $R$ with a free conormal module.
+2. If $A_a/R$ is smooth, then $\Omega_{C_a/R}$ is free.
 
-2.  for each $a \in A$ such that $A_a$ is smooth over $R$ the module $\Omega_{C_a/R}$ is free over $C_a$.
+The composite $A\to C\to A$ is the identity. If $R$ is Noetherian, $C$ is also finitely presented over $R$.
 
-**Proof.** Choose a presentation $A = R[x_1, \ldots, x_n]/I$ and write $I = (f_1, \ldots, f_m)$. Define the $A$-module $K$ by the short exact sequence $$0 \to K \to A^{\oplus m} \to I/I^2 \to 0$$ where the $j$th basis vector $e_j$ in the middle is mapped to the class of $f_j$ on the right. Set $$C = \text{Sym}^*_A(I/I^2).$$ The retraction is just the projection onto the degree $0$ part of $C$. We have a surjection $R[x_1, \ldots, x_n, y_1, \ldots, y_m] \to C$ which maps $y_j$ to the class of $f_j$ in $I/I^2$. The kernel $J$ of this map is generated by the elements $f_1, \ldots, f_m$ and by elements $\sum h_j y_j$ with $h_j \in R[x_1, \ldots, x_n]$ such that $\sum h_j e_j$ defines an element of $K$. By Algebra, Lemma [The transitivity sequence for the naive cotangent complex](#native-algebra-lemma-exact-sequence-nl) applied to $R \to A \to C$ and the presentations above and More on Algebra, Lemma [The cotangent complex of a symmetric algebra](#native-more-algebra-lemma-cotangent-complex-symmetric-algebra) there is an exact sequence 
+**Proof.** Choose $P=R[x_1,\ldots,x_n]\twoheadrightarrow A$ with kernel $I=(f_1,\ldots,f_m)$, and put $M=I/I^2$. Define
 
-$$I/I^2 \otimes_A C \to J/J^2 \to K \otimes_A C \to 0$$ of $C$-modules. Let $h \in R[x_1, \ldots, x_n]$ be an element with image $a \in A$. We will use as presentations for the localized rings $$A_a = R[x_0, x_1, \ldots, x_n]/I'
-\quad\text{and}\quad
-C_a = R[x_0, x_1, \ldots, x_n, y_1, \ldots, y_m]/J'$$ where $I' = (hx_0 - 1, I)$ and $J' = (hx_0 - 1, J)$. Hence $I'/(I')^2 = A_a \oplus (I/I^2)_a$ as $A_a$-modules and $J'/(J')^2 = C_a \oplus (J/J^2)_a$ as $C_a$-modules. Thus we obtain 
+$$C=\operatorname{Sym}_A(M).$$
 
-$$C_a \oplus I/I^2 \otimes_A C_a \to
-C_a \oplus (J/J^2)_a \to
-K \otimes_A C_a \to 0$$ as the sequence of Algebra, Lemma [The transitivity sequence for the naive cotangent complex](#native-algebra-lemma-exact-sequence-nl) corresponding to $R \to A_a \to C_a$ and the presentations above.
+Projection to degree zero supplies the required augmentation. The images of the $m$ chosen equations generate $M$, so they give $m$ algebra generators for $C/A$. Thus $C$ has finite type over $A$ and over $R$. Over a Noetherian base its relation ideal in a finite polynomial presentation is finitely generated, giving the last assertion.
 
-Next, assume that $a \in A$ is such that $A_a$ is a local complete intersection over $R$. Then $(I/I^2)_a$ is finite projective over $A_a$, see More on Algebra, Lemma [Finite projectivity of a quasi-regular conormal module](#native-more-algebra-lemma-quasi-regular-ideal-finite-projective). Hence we see $K_a \oplus (I/I^2)_a \cong A_a^{\oplus m}$ is free. In particular $K_a$ is finite projective too. By More on Algebra, Lemma [Cotangent transitivity with a complete-intersection terminal map](#native-more-algebra-lemma-transitive-lci-at-end) the sequence ([the displayed identity](#native-smoothing-equation-sequence-localized)) is exact on the left. Hence $$J'/(J')^2 \cong
-C_a \oplus I/I^2 \otimes_A C_a \oplus K \otimes_A C_a \cong
-C_a^{\oplus m + 1}$$ This proves (1). Finally, suppose that in addition $A_a$ is smooth over $R$. Then the same presentation shows that $\Omega_{C_a/R}$ is the cokernel of the map $$J'/(J')^2 \longrightarrow
-\bigoplus\nolimits_i C_a\text{d}x_i \oplus \bigoplus\nolimits_j C_a\text{d}y_j$$ The summand $C_a$ of $J'/(J')^2$ in the decomposition above corresponds to $hx_0 - 1$ and hence maps isomorphically to the summand $C_a\text{d}x_0$. The summand $I/I^2 \otimes_A C_a$ of $J'/(J')^2$ maps injectively to $\bigoplus_{i = 1, \ldots, n} C_a\text{d}x_i$ with quotient $\Omega_{A_a/R} \otimes_{A_a} C_a$. The summand $K \otimes_A C_a$ maps injectively to $\bigoplus_{j \geq 1} C_a\text{d}y_j$ with quotient isomorphic to $I/I^2 \otimes_A C_a$. Thus the cokernel of the last displayed map is the module $I/I^2 \otimes_A C_a \oplus \Omega_{A_a/R} \otimes_{A_a} C_a$. Since $(I/I^2)_a \oplus \Omega_{A_a/R}$ is free (from the definition of smooth ring maps) we see that (2) holds. $\square$
+To check the first assertion, fix $a$ with $A_a/R$ a local complete intersection and work with
 
-The following proposition was proved for smooth ring maps over henselian pairs by Elkik in the original source citation Elkik. For smooth ring maps it can be found in the original source citation Arabia, where it is also proven that ring maps between smooth algebras can be lifted.
+$$0\longrightarrow K_a\longrightarrow A_a^m\longrightarrow M_a\longrightarrow0.$$
+
+The conormal criterion says that $M_a$ is finite projective. The sequence therefore splits, and $K_a\oplus M_a\simeq A_a^m$. In particular both summands are finite projective. Since $C_a=\operatorname{Sym}_{A_a}(M_a)$, it is a polynomial algebra on a free module locally on $\operatorname{Spec}A_a$. It follows that $C_a/A_a$ is smooth; see also [Smoothness of a symmetric algebra](#native-more-algebra-lemma-symmetric-algebra-smooth).
+
+Choose a polynomial $h\in P$ representing $a$. A polynomial presentation over $R$ for $A_a$ is obtained by adjoining $x_0$ and imposing $hx_0-1$ in addition to $I$. A presentation for $C_a$ further adjoins variables $y_1,\ldots,y_m$ representing the chosen generators of $M$. Write its relation ideal as $J'$. Cotangent transitivity for these presentations gives
+
+$$0\longrightarrow C_a\oplus(M_a\otimes_{A_a}C_a)
+\longrightarrow J'/(J')^2
+\longrightarrow K_a\otimes_{A_a}C_a\longrightarrow0.$$
+
+Here the first summand is the relation $hx_0-1$. The right-hand term comes from the linear relations among the $y_j$. To see why there is no extra term on the left, locally split $A_a^m=M_a\oplus K_a$: the quotient defining its symmetric algebra then sets precisely the coordinates of $K_a$ equal to zero, a regular sequence. The complete-intersection conormal sequence is therefore left exact. These local identifications describe the same presentation maps and hence glue. This is the instance of [Cotangent transitivity with a complete-intersection terminal map](#native-more-algebra-lemma-transitive-lci-at-end) and [The cotangent complex of a symmetric algebra](#native-more-algebra-lemma-cotangent-complex-symmetric-algebra) used here.
+
+The right-hand module is projective, so the sequence splits. Consequently
+
+$$J'/(J')^2\simeq C_a\oplus(M_a\oplus K_a)\otimes_{A_a}C_a
+\simeq C_a^{m+1}.$$
+
+This proves the first assertion, including a presentation over $R$ itself.
+
+If $A_a/R$ is smooth, the differential sequence for $R\to A_a\to C_a$ is split exact:
+
+$$0\longrightarrow\Omega_{A_a/R}\otimes_{A_a}C_a
+\longrightarrow\Omega_{C_a/R}
+\longrightarrow M_a\otimes_{A_a}C_a\longrightarrow0.$$
+
+The right-hand identification is the differential calculation for a symmetric algebra; projectivity gives a splitting. The original smooth presentation also gives $M_a\oplus\Omega_{A_a/R}\simeq A_a^n$. Thus $\Omega_{C_a/R}\simeq C_a^n$. This is an existence of a free-module identification, not a claimed canonical choice of its basis. ∎
 
 #### Proposition. Lifting a smooth algebra over a quotient
 
-Smooth and syntomic algebras lift along surjections
+Let $R\twoheadrightarrow R_0=R/I$ be any quotient. Every syntomic $R_0$-algebra $A_0$ is the reduction of a syntomic $R$-algebra: there are $A/R$ syntomic and an $R_0$-algebra isomorphism $A/IA\simeq A_0$. If $A_0/R_0$ is smooth, $A$ can be chosen smooth. There is no nilpotence assumption on $I$.
 
-Let $R \to R_0$ be a surjective ring map with kernel $I$.
+**Proof.** First suppose $A_0/R_0$ is syntomic. For a finite polynomial presentation of $A_0$, its conormal module $P_0$ is finite projective. The preceding construction gives
 
-1.  If $R_0 \to A_0$ is a syntomic ring map, then there exists a syntomic ring map $R \to A$ such that $A/IA \cong A_0$.
+$$C_0=\operatorname{Sym}_{A_0}(P_0),$$
 
-2.  If $R_0 \to A_0$ is a smooth ring map, then there exists a smooth ring map $R \to A$ such that $A/IA \cong A_0$.
+smooth over $A_0$, with a presentation over $R_0$ whose conormal module is free. The [presentation lemma for a conormal basis](#native-algebra-lemma-huber) allows the equations to be chosen as lifts of a basis. Hence
 
-**Proof.** Assume $R_0 \to A_0$ syntomic, in particular a local complete intersection (More on Algebra, Lemma [Syntomic algebras and local complete intersections](#native-more-algebra-lemma-syntomic-lci)). Choose a presentation $A_0 = R_0[x_1, \ldots, x_n]/J_0$. Set $C_0 = \text{Sym}^*_{A_0}(J_0/J_0^2)$. Note that $J_0/J_0^2$ is a finite projective $A_0$-module (Algebra, Lemma [The conormal module of a syntomic presentation](#native-algebra-lemma-syntomic-presentation-ideal-mod-squares)). By Lemma [Improving a finite presentation](#native-smoothing-lemma-improve-presentation) the ring map $A_0 \to C_0$ is smooth and we can find a presentation $C_0 = R_0[y_1, \ldots, y_m]/K_0$ with $K_0/K_0^2$ free over $C_0$. By Algebra, Lemma [A presentation realizing a basis of the conormal module](#native-algebra-lemma-huber) we can assume $C_0 = R_0[y_1, \ldots, y_m]/(\overline{f}_1, \ldots, \overline{f}_c)$ where $\overline{f}_1, \ldots, \overline{f}_c$ maps to a basis of $K_0/K_0^2$ over $C_0$. Choose $f_1, \ldots, f_c \in R[y_1, \ldots, y_m]$ lifting $\overline{f}_1, \ldots, \overline{f}_c$ and set $$C = R[y_1, \ldots, y_m]/(f_1, \ldots, f_c)$$ By construction $C_0 = C/IC$. By Algebra, Lemma [Localization of a relative complete intersection](#native-algebra-lemma-localize-relative-complete-intersection) we can after replacing $C$ by $C_g$ assume that $C$ is a relative global complete intersection over $R$. We conclude that there exists a finite projective $A_0$-module $P_0$ such that $C_0 = \text{Sym}^*_{A_0}(P_0)$ is isomorphic to $C/IC$ for some syntomic $R$-algebra $C$.
+$$C_0=R_0[y_1,\ldots,y_m]/(\bar f_1,\ldots,\bar f_c).$$
 
-Choose an integer $n$ and a direct sum decomposition $A_0^{\oplus n} = P_0 \oplus Q_0$. By More on Algebra, Lemma [Lifting a finite projective module](#native-more-algebra-lemma-lift-projective-module) we can find an étale ring map $C \to C'$ which induces an isomorphism $C/IC \to C'/IC'$ and a finite projective $C'$-module $Q$ such that $Q/IQ$ is isomorphic to $Q_0 \otimes_{A_0} C/IC$. Then $D = \text{Sym}_{C'}^*(Q)$ is a smooth $C'$-algebra (see More on Algebra, Lemma [Smoothness of a symmetric algebra](#native-more-algebra-lemma-symmetric-algebra-smooth)). Picture $$\begin{gathered}\begin{matrix}R & \phantom{X} & C & C' & D \\ R/I & A_0 & C/IC & C'/IC' & D/ID\end{matrix} \\[6pt] \begin{aligned}R & \longrightarrow R/I \\ R & \longrightarrow C \\ C & \longrightarrow C' \\ C & \longrightarrow C/IC \\ C' & \longrightarrow D \\ C' & \longrightarrow C'/IC' \\ D & \longrightarrow D/ID \\ R/I & \longrightarrow A_0 \\ A_0 & \longrightarrow C/IC \\ C/IC & \xrightarrow{\cong} C'/IC' \\ C'/IC' & \longrightarrow D/ID\end{aligned}\end{gathered}$$ Observe that our choice of $Q$ gives $$\begin{aligned}
-D/ID & =
-\text{Sym}_{C/IC}^*(Q_0 \otimes_{A_0} C/IC) \\
-& =
-\text{Sym}_{A_0}^*(Q_0) \otimes_{A_0} C/IC \\
-& =
-\text{Sym}_{A_0}^*(Q_0) \otimes_{A_0}
-\text{Sym}_{A_0}^*(P_0) \\
-& =
-\text{Sym}_{A_0}^*(Q_0 \oplus P_0) \\
-& =
-\text{Sym}_{A_0}^*(A_0^{\oplus n}) \\
-& =
-A_0[x_1, \ldots, x_n]
-\end{aligned}$$ Choose $f_1, \ldots, f_n \in D$ which map to $x_1, \ldots, x_n$ in $D/ID = A_0[x_1, \ldots, x_n]$. Set $A = D/(f_1, \ldots, f_n)$. Note that $A_0 = A/IA$. We claim that $R \to A$ is syntomic in a neighbourhood of $V(IA)$. If the claim is true, then we can find a $f \in A$ mapping to $1 \in A_0$ such that $A_f$ is syntomic over $R$ and the proof of (1) is finished.
+Lift these finitely many polynomials to $R[y_1,\ldots,y_m]$. Their quotient reduces to $C_0$. The [localization criterion for relative complete intersections](#native-algebra-lemma-localize-relative-complete-intersection) permits a localization by an element equal to $1$ modulo $I$ after which the quotient is syntomic over $R$. Denote this quotient by $C$, retaining the specified identification $C/IC=C_0$.
 
-Proof of the claim. Observe that $R \to D$ is syntomic as a composition of the syntomic ring map $R \to C$, the étale ring map $C \to C'$ and the smooth ring map $C' \to D$ (Algebra, Lemmas [Composition of syntomic ring maps](#native-algebra-lemma-composition-syntomic) and [Smooth algebras are syntomic](#native-algebra-lemma-smooth-syntomic)). The question is local on $\operatorname{Spec}(D)$, hence we may assume that $D$ is a relative global complete intersection (Algebra, Lemma [Local criteria for a syntomic algebra](#native-algebra-lemma-syntomic)). Say $D = R[y_1, \ldots, y_m]/(g_1, \ldots, g_s)$. Let $f'_1, \ldots, f'_n \in R[y_1, \ldots, y_m]$ be lifts of $f_1, \ldots, f_n$. Then we can apply Algebra, Lemma [Localization of a relative complete intersection](#native-algebra-lemma-localize-relative-complete-intersection) to get the claim.
+Choose a finite projective complement $Q_0$ with $P_0\oplus Q_0\simeq A_0^n$. The [projective-module lifting lemma](#native-more-algebra-lemma-lift-projective-module) gives an étale map $C\to C'$ whose reduction modulo $I$ is an isomorphism and a finite projective $C'$-module $Q$ lifting $Q_0\otimes_{A_0}C_0$. Put $D=\operatorname{Sym}_{C'}(Q)$. Then $D/C'$ is smooth, and composition shows that $D/R$ is syntomic. The chosen identifications give
 
-Proof of (2). Since a smooth ring map is syntomic, we can find a syntomic ring map $R \to A$ such that $A_0 = A/IA$. By assumption the fibres of $R \to A$ are smooth over primes in $V(I)$ hence $R \to A$ is smooth in an open neighbourhood of $V(IA)$ (Algebra, Lemma [Smoothness from flatness and smooth fibres](#native-algebra-lemma-flat-fibre-smooth)). Thus we can replace $A$ by a localization to obtain the result we want. $\square$
+$$\begin{aligned}
+D/ID
+&\simeq\operatorname{Sym}_{C_0}(Q_0\otimes_{A_0}C_0)\\
+&\simeq\operatorname{Sym}_{A_0}(Q_0)\otimes_{A_0}\operatorname{Sym}_{A_0}(P_0)\\
+&\simeq\operatorname{Sym}_{A_0}(Q_0\oplus P_0)
+\simeq A_0[t_1,\ldots,t_n].
+\end{aligned}$$
 
-We know that any syntomic ring map $R \to A$ is locally a relative global complete intersection, see Algebra, Lemma [Local criteria for a syntomic algebra](#native-algebra-lemma-syntomic). The next lemma says that a vector bundle over $\operatorname{Spec}(A)$ is a relative global complete intersection.
+All these maps are algebra maps over $A_0$; the last depends on the chosen complement and basis. Choose lifts $d_i\in D$ of the coordinates $t_i$, and set $A'=D/(d_1,\ldots,d_n)$. Its reduction is $A_0$, with its specified $R_0$-algebra structure.
+
+The map $A'/R$ is syntomic in an open neighbourhood of $V(IA')$. Indeed, around any such point write the syntomic algebra $D$ as a relative complete intersection. In its reduction, the additional equations are the polynomial coordinates $t_i$, a regular sequence with quotient $A_0$ flat over $R_0$. Applying the same relative complete-intersection localization criterion to the combined equations proves the assertion at that point. This argument uses the [composition criterion](#native-algebra-lemma-composition-syntomic) and [local syntomic presentations](#native-algebra-lemma-syntomic), and therefore retains flatness as well as the complete-intersection condition.
+
+Here and below a localization can preserve the entire closed fibre. If an open $U\subseteq\operatorname{Spec}A'$ contains $V(IA')$, write its closed complement as $V(J)$. The containment says $IA'+J=A'$. Choose $g\in J$ with $g\equiv1\pmod{IA'}$. Then $D(g)\subseteq U$ and $(A'_g)/I(A'_g)\simeq A'/IA'$. Apply this to the syntomic neighbourhood to obtain the desired syntomic $A$.
+
+For the smooth assertion, start with this syntomic lift. It is flat and finitely presented over $R$. At every point of $V(IA)$, its fibre is a fibre of the given smooth algebra $A_0/R_0$. By [flatness and smooth fibres](#native-algebra-lemma-flat-fibre-smooth), $A/R$ is smooth at all these points. The smooth locus is open. A further localization equal to $1$ on the closed fibre, chosen as above, therefore gives a smooth lift without changing $A/IA$. ∎
 
 #### Lemma. Complete-intersection presentations of syntomic algebras
- Let $R \to A$ be a syntomic ring map. Then there exists a smooth $R$-algebra map $A \to C$ with a retraction such that $C$ is a global relative complete intersection over $R$, i.e., $$C \cong R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$$ flat over $R$ and all fibres of dimension $n - c$.
 
-**Proof.** Apply Lemma [Improving a finite presentation](#native-smoothing-lemma-improve-presentation) to get $A \to C$. By Algebra, Lemma [A presentation realizing a basis of the conormal module](#native-algebra-lemma-huber) we can write $C = R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ with $f_i$ mapping to a basis of $J/J^2$. The ring map $R \to C$ is syntomic (hence flat) as it is a composition of a syntomic and a smooth ring map. The dimension of the fibres is $n - c$ by Algebra, Lemma [Local criteria for complete intersections](#native-algebra-lemma-lci) (the fibres are local complete intersections, so the lemma applies). $\square$
+For every syntomic $R$-algebra $A$ there is a smooth $A$-algebra $C$ with an $A$-algebra augmentation such that $C/R$ is a relative global complete intersection. In particular it has a presentation
+
+$$C=R[x_1,\ldots,x_n]/(f_1,\ldots,f_c)$$
+
+which is flat over $R$ and has fibres of pure dimension $n-c$ wherever they are nonempty.
+
+**Proof.** Apply the improving-presentation lemma with $a=1$. Syntomic implies local complete intersection, so the resulting $C/A$ is smooth and its conormal module has a finite basis. The [conormal-basis presentation lemma](#native-algebra-lemma-huber) gives a presentation in which the defining equations lift that basis. Since smooth algebras are syntomic and syntomic maps compose, $C/R$ is syntomic, in particular flat. On each fibre the equations are a local complete-intersection sequence of length $c$ in a polynomial algebra on $n$ variables. The [complete-intersection dimension criterion](#native-algebra-lemma-lci) therefore gives dimension $n-c$ at every component. The augmentation is the degree-zero map in the original symmetric-algebra construction and has not been changed by choosing the presentation. ∎
 
 #### Lemma. Standard presentations of smooth algebras
- Let $R \to A$ be a smooth ring map. Then there exists a smooth $R$-algebra map $A \to B$ with a retraction such that $B$ is standard smooth over $R$, i.e., $$B \cong R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$$ and $\det(\partial f_j/\partial x_i)_{i, j = 1, \ldots, c}$ is invertible in $B$.
 
-**Proof.** Apply Lemma [Complete-intersection presentations of syntomic algebras](#native-smoothing-lemma-syntomic-complete-intersection) to get a smooth $R$-algebra map $A \to C$ with a retraction such that $C = R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ is a relative global complete intersection over $R$. As $C$ is smooth over $R$ we have a short exact sequence $$0 \to
-\bigoplus\nolimits_{j = 1, \ldots, c} C f_j \to
-\bigoplus\nolimits_{i = 1, \ldots, n} C\text{d}x_i \to
-\Omega_{C/R} \to 0$$ Since $\Omega_{C/R}$ is a projective $C$-module this sequence is split. Choose a left inverse $t$ to the first map. Say $t(\text{d}x_i) = \sum c_{ij} f_j$ so that $\sum_i \frac{\partial f_j}{\partial x_i} c_{i\ell} = \delta_{j\ell}$ (Kronecker delta). Let $$B' = C[y_1, \ldots, y_c] =
-R[x_1, \ldots, x_n, y_1, \ldots, y_c]/(f_1, \ldots, f_c)$$ The $R$-algebra map $C \to B'$ has a retraction given by mapping $y_j$ to zero. We claim that the map $$R[z_1, \ldots, z_n] \longrightarrow B',\quad
-z_i \longmapsto x_i - \sum\nolimits_j c_{ij} y_j$$ is étale at every point in the image of $\operatorname{Spec}(C) \to \operatorname{Spec}(B')$. In $\Omega_{B'/R[z_1, \ldots, z_n]}$ we have $$0 =
-\text{d}f_j - \sum\nolimits_i \frac{\partial f_j}{\partial x_i} \text{d}z_i
-\equiv
-\sum\nolimits_{i, \ell}
-\frac{\partial f_j}{\partial x_i} c_{i\ell} \text{d}y_\ell
-\equiv
-\text{d}y_j \bmod (y_1, \ldots, y_c)\Omega_{B'/R[z_1, \ldots, z_n]}$$ Since $0 = \text{d}z_i = \text{d}x_i$ modulo $\sum B'\text{d}y_j + (y_1, \ldots, y_c)\Omega_{B'/R[z_1, \ldots, z_n]}$ we conclude that $$\Omega_{B'/R[z_1, \ldots, z_n]}/
-(y_1, \ldots, y_c)\Omega_{B'/R[z_1, \ldots, z_n]} = 0.$$ As $\Omega_{B'/R[z_1, \ldots, z_n]}$ is a finite $B'$-module by Nakayama's lemma there exists a $g \in 1 + (y_1, \ldots, y_c)$ that $(\Omega_{B'/R[z_1, \ldots, z_n]})_g = 0$. This proves that $R[z_1, \ldots, z_n] \to B'_g$ is unramified, see Algebra, Definition [Unramified ring maps](#native-algebra-definition-unramified). For any ring map $R \to k$ where $k$ is a field we obtain an unramified ring map $k[z_1, \ldots, z_n] \to (B'_g) \otimes_R k$ between smooth $k$-algebras of dimension $n$. It follows that $k[z_1, \ldots, z_n] \to (B'_g) \otimes_R k$ is flat by Algebra, Lemmas [Flatness from Cohen–Macaulayness over a regular base](#native-algebra-lemma-cm-over-regular-flat) and [Smoothness after an algebraic closure of the ground field](#native-algebra-lemma-characterize-smooth-kbar). By the critère de platitude par fibre (Algebra, Lemma [The fibrewise criterion for flatness](#native-algebra-lemma-criterion-flatness-fibre)) we conclude that $R[z_1, \ldots, z_n] \to B'_g$ is flat. Finally, Algebra, Lemma [Characterizations of étale algebras](#native-algebra-lemma-characterize-etale) implies that $R[z_1, \ldots, z_n] \to B'_g$ is étale. Set $B = B'_g$. Note that $C \to B$ is smooth and has a retraction, so also $A \to B$ is smooth and has a retraction. Moreover, $R[z_1, \ldots, z_n] \to B$ is étale. By Algebra, Lemma [Étale algebras in standard smooth form](#native-algebra-lemma-etale-standard-smooth) we can write $$B = R[z_1, \ldots, z_n, w_1, \ldots, w_m]/(g_1, \ldots, g_m)$$ with $\det(\partial g_j/\partial w_i)$ invertible in $B$. This proves the lemma. $\square$
+If $A/R$ is smooth, there is a smooth $A$-algebra $B$ with an $A$-algebra augmentation $B\to A$ such that $B/R$ is standard smooth: it admits a finite polynomial presentation with an invertible square Jacobian minor of size equal to the number of equations.
+
+**Proof.** The preceding lemma gives a smooth $A$-algebra $C$, with augmentation, and a relative complete-intersection presentation
+
+$$C=R[x_1,\ldots,x_n]/(f_1,\ldots,f_c).$$
+
+Because $C/R$ is smooth, the matrix
+
+$$J=(\partial f_j/\partial x_i)_{1\leq j\leq c,\ 1\leq i\leq n}$$
+
+has a right inverse $T=(t_{i\ell})$ over $C$, so $JT=1_c$. This is the splitting of the conormal differential sequence. Introduce $c$ variables $y_\ell$ and set $B'=C[y_1,\ldots,y_c]$. Choose polynomial lifts of the $t_{i\ell}$ and define a map
+
+$$R[z_1,\ldots,z_n]\longrightarrow B',\qquad
+z_i\longmapsto x_i-\sum_{\ell=1}^c t_{i\ell}y_\ell.$$
+
+We verify directly that this map is étale near the zero section $y=0$. Regard $B'$ as an algebra over $R[z_1,\ldots,z_n]$ with variables $y_1,\ldots,y_c,x_1,\ldots,x_n$ and equations
+
+$$f_j(x)=0\quad(1\leq j\leq c),\qquad
+x_i-\sum_\ell t_{i\ell}(x)y_\ell-z_i=0\quad(1\leq i\leq n).$$
+
+The square Jacobian matrix in those variables reduces modulo $(y_1,\ldots,y_c)$ to
+
+$$\begin{pmatrix}0&J\\-T&1_n\end{pmatrix}.$$
+
+Its determinant is $\det(JT)=1$. Let $g\in B'$ be the determinant before reduction. Then $g\equiv1\pmod{(y_1,\ldots,y_c)}$. On $B=B'_g$ the square minor is invertible, so this is a standard étale algebra over $R[z_1,\ldots,z_n]$. This follows from the [standard smooth Jacobian criterion](#native-algebra-lemma-standard-smooth): the relative dimension is zero. If one writes localization as a polynomial presentation by adjoining $v$ with $gv-1=0$, the enlarged minor is the old one times $g$, hence is still invertible. Viewing the $z_i$ as additional free variables exhibits $B$ as standard smooth over $R$.
+
+The map $C\to B$ is a polynomial extension followed by localization, hence smooth. The evaluation $y_\ell\mapsto0$ extends through that localization because $g$ evaluates to $1$. It gives a retraction $B\to C$. Composing with the original maps between $A$ and $C$ proves all the assertions about $A\to B\to A$. In particular, the localization has not removed the section needed for the return to $A$. ∎
 
 #### Lemma. Standard smooth presentations in a filtered colimit
 
-Let $R \to \Lambda$ be a ring map. If $\Lambda$ is a filtered colimit of smooth $R$-algebras, then $\Lambda$ is a filtered colimit of standard smooth $R$-algebras.
+An $R$-algebra which is a filtered colimit of smooth $R$-algebras can also be expressed as a filtered colimit of standard smooth $R$-algebras.
 
-**Proof.** Let $A \to \Lambda$ be an $R$-algebra map with $A$ of finite presentation over $R$. According to Algebra, Lemma [Recognizing a filtered colimit of finite presentations](#native-algebra-lemma-when-colimit) we have to factor this map through a standard smooth algebra, and we know we can factor it as $A \to B \to \Lambda$ with $B$ smooth over $R$. Choose an $R$-algebra map $B \to C$ with a retraction $C \to B$ such that $C$ is standard smooth over $R$, see Lemma [Standard presentations of smooth algebras](#native-smoothing-lemma-smooth-standard-smooth). Then the desired factorization is $A \to B \to C \to B \to \Lambda$. $\square$
+**Proof.** Use the [finite factorization criterion](#reader-section-2). A map $P\to\Lambda$ from a finitely presented $R$-algebra first factors through a smooth algebra $C$. Choose the standard smooth algebra $B$ with maps $C\to B\to C$ whose composite is the identity, as in the preceding lemma. The composite
+
+$$P\longrightarrow C\longrightarrow B\longrightarrow C\longrightarrow\Lambda$$
+
+has the original value on $P$. Thus every finite presentation mapping into $\Lambda$ factors through a standard smooth algebra. The same finite factorization proof applies to this class: tensor products and coequalizers need only be finitely presented before one applies the factorization property. It therefore constructs a filtered indexing category of standard smooth algebras with colimit $\Lambda$. ∎
 
 #### Lemma. Including prescribed generators in a smooth presentation
- Let $R \to A$ be a standard smooth ring map. Let $E \subset A$ be a finite subset of order $|E| = n$. Then there exists a presentation $A = R[x_1, \ldots, x_{n + m}]/(f_1, \ldots, f_c)$ with $c \geq n$, with $\det(\partial f_j/\partial x_i)_{i, j = 1, \ldots, c}$ invertible in $A$, and such that $E$ is the set of congruence classes of $x_1, \ldots, x_n$.
 
-**Proof.** Choose a presentation $A = R[y_1, \ldots, y_m]/(g_1, \ldots, g_d)$ such that the image of $\det(\partial g_j/\partial y_i)_{i, j = 1, \ldots, d}$ is invertible in $A$. Choose an enumeration $E = \{a_1, \ldots, a_n\}$ and choose $h_i \in R[y_1, \ldots, y_m]$ whose image in $A$ is $a_i$. Consider the presentation $$A = R[x_1, \ldots, x_n, y_1, \ldots, y_m]/
-(x_1 - h_1, \ldots, x_n - h_n, g_1, \ldots, g_d)$$ and set $c = n + d$. $\square$
+Let $A/R$ be standard smooth and let $E=\{a_1,\ldots,a_n\}$ be a finite subset. There is a standard smooth presentation whose first $n$ variables represent these elements and whose invertible Jacobian minor includes these $n$ variables. In particular the number $c$ of equations can be chosen at least $n$.
+
+**Proof.** Start with
+
+$$A=R[y_1,\ldots,y_m]/(g_1,\ldots,g_d),$$
+
+where the minor in $y_1,\ldots,y_d$ is a unit. Choose polynomials $h_i(y)$ representing $a_i$. Adjoin $x_1,\ldots,x_n$ and impose $x_i-h_i(y)=0$ as well as the $g_j$. Eliminating the $x_i$ identifies the new quotient with $A$, with the required specified images. Taking derivatives with respect to $x_1,\ldots,x_n,y_1,\ldots,y_d$ gives a block triangular matrix with diagonal blocks $1_n$ and the original Jacobian minor. Its determinant is a unit. Thus the new presentation is standard smooth and has $c=n+d$ equations. ∎
 
 #### Lemma. Comparing standard smooth presentations
  Let $R \to A$ be a ring map of finite presentation. Let $a \in A$. Consider the following conditions on $a$:
@@ -1325,706 +1381,829 @@ A^{\oplus c}$$ is multiplication by $a^{e_0}$ for some $e_0 \geq 1$. By Lemma [T
 Proof of (f). Choose a presentation $A_a = R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ such that $\det(\partial f_j/\partial x_i)_{i, j = 1, \ldots, c}$ is invertible in $A_a$. We may assume that for some $m < n$ the classes of the elements $x_1, \ldots, x_m$ correspond to $a_i/1$ where $a_1, \ldots, a_m \in A$ are generators of $A$ over $R$, see Lemma [Including prescribed generators in a smooth presentation](#native-smoothing-lemma-standard-smooth-include-generators). After replacing $x_i$ by $a^Nx_i$ for $m < i \leq n$ we may assume the class of $x_i$ is $a_i/1 \in A_a$ for some $a_i \in A$. Consider the ring map $$\Psi : R[x_1, \ldots, x_n] \longrightarrow A,\quad
 x_i \longmapsto a_i.$$ This is a surjective ring map. By replacing $f_j$ by $a^Nf_j$ we may assume that $f_j \in R[x_1, \ldots, x_n]$ and that $\Psi(f_j) = 0$ (since after all $f_j(a_1/1, \ldots, a_n/1) = 0$ in $A_a$). Let $J = \operatorname{Ker}(\Psi)$. Then $A = R[x_1, \ldots, x_n]/J$ is a presentation and $f_1, \ldots, f_c \in J$ are elements such that $(J/J^2)_a$ is freely generated by $f_1, \ldots, f_c$ and such that $\det(\partial f_j/\partial x_i)_{i, j = 1, \ldots, c}$ maps to an invertible element of $A_a$. It follows that ([the displayed identity](#native-smoothing-equation-elementary-standard-one)) and ([the displayed identity](#native-smoothing-equation-elementary-standard-two)) hold for $a^e$ and all large enough $e$ as desired. $\square$
 
+**The denominator step in part (6).** Scaling polynomial coordinates by powers of an element of the presented algebra can change their relative derivatives. In particular, the assertion of invertibility in the last paragraph requires an additional argument. For example, over a field of characteristic $p>0$, present $k[x,x^{-1}]$ with coordinates $Z=x$, $Y=x^{-1}$, $X=x$ and equations $Z-X$, $XY-1$. The minor in the $Z,Y$ columns is $X$, a unit. Keep the prescribed generator $Z$ and replace the other coordinates by $U=x^{N+1}$, $V=x^{N-1}$. After inverting $Z$, the equations $Z^{N+1}-U$, $UV-Z^{2N}$ give the same algebra. Their minor in the $Z,V$ columns is $(N+1)Z^NU$, which is zero when $p$ divides $N+1$. Thus the stated scaling operation does not by itself preserve the selected invertible minor. This example refutes that inference, not the existence assertion in part (6). The general assertion in part (6) remains an unresolved proof obligation in this treatment. The desingularization arguments below use the established strict-standard conclusion in part (5); the localized-base argument proves its elementary-standard case separately, using scalars from the base whose relative differentials vanish.
+
 #### The lifting problem
 
-The goal in this section is to prove (Proposition [Lifting an algebraic factorization](#native-smoothing-proposition-lift)) that the collection of algebras which are filtered colimits of smooth algebras is closed under infinitesimal flat deformations. The proof is elementary and only uses the results on presentations of smooth algebras from Section [The geometric construction](#native-smoothing-section-presentations).
+We next show that ind-smoothness survives a flat nilpotent deformation. Here **ind-smooth** means a filtered colimit of smooth algebras. Two different operations are needed. First one lifts a finite diagram, allowing an error ideal inside the nilpotent ideal. Then flatness expresses the coefficients of that error through relations over the base, making it possible to eliminate the error without losing smoothness.
 
 #### Lemma. A first lifting step
- Let $R \to \Lambda$ be a ring map. Let $I \subset R$ be an ideal. Assume that
 
-1.  $I^2 = 0$, and
+Suppose $R\to\Lambda$ is a ring map and $I\subseteq R$ satisfies $I^2=0$. Assume that $\Lambda/I\Lambda$ is ind-smooth over $R/I$. For every finitely presented $R$-algebra $A$ and every $R$-algebra map $\varphi:A\to\Lambda$, there are a smooth $R$-algebra $B$, a finitely generated ideal $J\subseteq IB$, and a factorization
 
-2.  $\Lambda/I\Lambda$ is a filtered colimit of smooth $R/I$-algebras.
+$$A\longrightarrow B/J\longrightarrow\Lambda$$
 
-Let $\varphi : A \to \Lambda$ be an $R$-algebra map with $A$ of finite presentation over $R$. Then there exists a factorization $$A \to B/J \to \Lambda$$ where $B$ is a smooth $R$-algebra and $J \subset IB$ is a finitely generated ideal.
+of $\varphi$. Flatness of $\Lambda$ is not required for this first step.
 
-**Proof.** Choose a factorization $$A/IA \to \bar B \to \Lambda/I\Lambda$$ with $\bar B$ standard smooth over $R/I$; this is possible by assumption and Lemma [Standard smooth presentations in a filtered colimit](#native-smoothing-lemma-colimit-standard-smooth). Write $$\bar B = A/IA[t_1, \ldots, t_r]/(\bar g_1, \ldots, \bar g_s)$$ and say $\bar B \to \Lambda/I\Lambda$ maps $t_i$ to the class of $\lambda_i$ modulo $I\Lambda$. Choose $g_1, \ldots, g_s \in A[t_1, \ldots, t_r]$ lifting $\bar g_1, \ldots, \bar g_s$. Write $\varphi(g_i)(\lambda_1, \ldots, \lambda_r) =
-\sum \epsilon_{ij} \mu_{ij}$ for some $\epsilon_{ij} \in I$ and $\mu_{ij} \in \Lambda$. Define $$A' = A[t_1, \ldots, t_r, \delta_{i, j}]/
-(g_i - \sum \epsilon_{ij} \delta_{ij})$$ and consider the map $$A' \longrightarrow \Lambda,\quad
-a \longmapsto \varphi(a),\quad
-t_i \longmapsto \lambda_i,\quad
-\delta_{ij} \longmapsto \mu_{ij}$$ We have $$A'/IA' = A/IA[t_1, \ldots, t_r]/(\bar g_1, \ldots, \bar g_s)[\delta_{ij}]
-\cong \bar B[\delta_{ij}]$$ This is a standard smooth algebra over $R/I$ as $\bar B$ is standard smooth. Choose a presentation $A'/IA' = R/I[x_1, \ldots, x_n]/(\bar f_1, \ldots, \bar f_c)$ with $\det(\partial \bar f_j/\partial x_i)_{i, j = 1, \ldots, c}$ invertible in $A'/IA'$. Choose lifts $f_1, \ldots, f_c \in R[x_1, \ldots, x_n]$ of $\bar f_1, \ldots, \bar f_c$. Then $$B = R[x_1, \ldots, x_n, x_{n + 1}]/
-(f_1, \ldots, f_c,
-x_{n + 1}\det(\partial f_j/\partial x_i)_{i, j = 1, \ldots, c} - 1)$$ is smooth over $R$. Since smooth ring maps are formally smooth (Algebra, Proposition [Formal smoothness of smooth algebras](#native-algebra-proposition-smooth-formally-smooth)) there exists an $R$-algebra map $B \to A'$ which is an isomorphism modulo $I$. Then $B \to A'$ is surjective by Nakayama's lemma (Algebra, Lemma [Nakayama's lemma](#native-algebra-lemma-nak)). Thus $A' = B/J$ with $J \subset IB$ finitely generated (see Algebra, Lemma [Finite presentation and finite algebras](#native-algebra-lemma-finite-presentation-independent)). $\square$
+**Proof.** The [finite factorization criterion](#reader-section-2), together with [standard smooth replacements](#native-smoothing-lemma-colimit-standard-smooth), supplies a factorization of the reduction of $\varphi$ through a standard smooth $(R/I)$-algebra $\bar B$. The map $A/IA\to\bar B$ has finite presentation: both algebras have finite presentation over $R/I$, and one obtains a relative presentation by adjoining their finitely many generators and the equations identifying the images of the generators of $A/IA$. Choose such a presentation
+
+$$\bar B=(A/IA)[t_1,\ldots,t_r]/(\bar g_1,\ldots,\bar g_s).$$
+
+Lift the image of each $t_i$ to an element $\lambda_i\in\Lambda$, and lift $\bar g_j$ to $g_j\in A[t_1,\ldots,t_r]$. Evaluating a lifted relation gives an element of $I\Lambda$. For each $j$, choose a finite expression
+
+$$g_j(\lambda)=\sum_{\ell}\epsilon_{j\ell}\mu_{j\ell},\qquad
+\epsilon_{j\ell}\in I,\quad\mu_{j\ell}\in\Lambda.$$
+
+Introduce one variable $u_{j\ell}$ for each chosen summand and define
+
+$$A'=A[t_1,\ldots,t_r,(u_{j\ell})]/
+\bigl(g_j-\sum_\ell\epsilon_{j\ell}u_{j\ell}:1\leq j\leq s\bigr).$$
+
+This is finitely presented over $R$. Evaluation at $t_i=\lambda_i$ and $u_{j\ell}=\mu_{j\ell}$ gives $A'\to\Lambda$ extending $\varphi$. Reduction modulo $I$ identifies $A'/IA'$ with the polynomial algebra $\bar B[(u_{j\ell})]$, which is standard smooth over $R/I$.
+
+Choose a standard smooth presentation of $A'/IA'$ and lift its equations to $R$. Localize the lifted quotient at the same Jacobian minor. The [Jacobian criterion](#native-algebra-lemma-standard-smooth) gives a smooth $R$-algebra $B$ and an isomorphism $B/IB\simeq A'/IA'$. Concretely, if the equations are $f_1,\ldots,f_c$ and the chosen minor is $\Delta$, one can take
+
+$$B=R[x_1,\ldots,x_n,v]/(f_1,\ldots,f_c,v\Delta-1).$$
+
+The last equation makes the enlarged Jacobian minor invertible. Its reduction gives exactly the chosen algebra because $\bar\Delta$ was already invertible there.
+
+By [formal smoothness](#native-algebra-proposition-smooth-formally-smooth), the map $B\to A'/IA'$ lifts through the square-zero quotient $A'\to A'/IA'$ to $\theta:B\to A'$. We check its surjectivity without a finite-generation assumption on its cokernel. Since the reduced map is surjective, write any $x\in A'$ as
+
+$$x=\theta(b)+\sum_k\epsilon_kx_k,\qquad \epsilon_k\in I.$$
+
+For each of the finitely many $x_k$, write $x_k=\theta(b_k)+z_k$ with $z_k\in IA'$. Then $\epsilon_kz_k=0$, so $x=\theta(b+\sum_k\epsilon_kb_k)$. Thus $\theta$ is surjective. Its kernel $J$ is contained in $IB$ because the reduction of $\theta$ is an isomorphism. Finally $J$ is finitely generated: a surjection between finitely presented $R$-algebras has a finitely generated kernel, by [independence of finite presentation from the chosen generators](#native-algebra-lemma-finite-presentation-independent). Now $A'=B/J$, and the maps already constructed give the required factorization. ∎
 
 #### Lemma. A second lifting step
- Let $R \to \Lambda$ be a ring map. Let $I \subset R$ be an ideal. Assume that
 
-1.  $I^2 = 0$,
+Retain $I^2=0$ and the ind-smoothness of $\Lambda/I\Lambda$ over $R/I$, and assume in addition that $\Lambda$ is flat over $R$. Suppose $B/R$ is smooth, $\varphi:B\to\Lambda$ is an $R$-algebra map, and $J\subseteq IB$ is a finitely generated ideal annihilated by $\varphi$. There exist a smooth $R$-algebra $B'$ and maps
 
-2.  $\Lambda/I\Lambda$ is a filtered colimit of smooth $R/I$-algebras, and
+$$B\xrightarrow{\alpha}B'\xrightarrow{\beta}\Lambda,
+\qquad \beta\alpha=\varphi,\qquad\alpha(J)=0.$$
 
-3.  $R \to \Lambda$ is flat.
+**Proof.** It suffices to eliminate one generator $h$ of $J$. Indeed, after eliminating it, the images of the remaining generators still lie in the ideal generated by $I$ and still vanish in $\Lambda$. Repetition therefore handles any finite generating set.
 
-Let $\varphi : B \to \Lambda$ be an $R$-algebra map with $B$ smooth over $R$. Let $J \subset IB$ be a finitely generated ideal such that $\varphi(J) = 0$. Then there exists $R$-algebra maps $$B \xrightarrow{\alpha} B' \xrightarrow{\beta} \Lambda$$ such that $B'$ is smooth over $R$, such that $\alpha(J) = 0$ and such that $\beta \circ \alpha = \varphi$.
+Write $h=\sum_{i=1}^q\epsilon_i b_i$ with $\epsilon_i\in I$ and $b_i\in B$. Its image is the relation $\sum_i\epsilon_i\varphi(b_i)=0$. The [equational criterion for flatness](#native-algebra-lemma-flat-eq) gives finitely many $\lambda_j\in\Lambda$ and scalars $a_{ij}\in R$ such that
 
-**Proof.** If we can prove the lemma in case $J = (h)$, then we can prove the lemma by induction on the number of generators of $J$. Namely, suppose that $J$ can be generated by $n$ elements $h_1, \ldots, h_n$ and the lemma holds for all cases where $J$ is generated by $n - 1$ elements. Then we apply the case $n = 1$ to produce $B \to B' \to \Lambda$ where the first map kills $h_n$. Then we let $J'$ be the ideal of $B'$ generated by the images of $h_1, \ldots, h_{n - 1}$ and we apply the case for $n - 1$ to produce $B' \to B'' \to \Lambda$. It is easy to verify that $B \to B'' \to \Lambda$ does the job.
+$$\varphi(b_i)=\sum_j a_{ij}\lambda_j,
+\qquad \sum_i\epsilon_i a_{ij}=0\quad\text{for every }j.$$
 
-Assume $J = (h)$ and write $h = \sum \epsilon_i b_i$ for some $\epsilon_i \in I$ and $b_i \in B$. Note that $0 = \varphi(h) = \sum \epsilon_i \varphi(b_i)$. As $\Lambda$ is flat over $R$, the equational criterion for flatness (Algebra, Lemma [The equational criterion for flatness](#native-algebra-lemma-flat-eq)) implies that we can find $\lambda_j \in \Lambda$, $j = 1, \ldots, m$ and $a_{ij} \in R$ such that $\varphi(b_i) = \sum_j a_{ij} \lambda_j$ and $\sum_i \epsilon_i a_{ij} = 0$. Set $$C = B[x_1, \ldots, x_m]/(b_i - \sum a_{ij} x_j)$$ with $C \to \Lambda$ given by $\varphi$ and $x_j \mapsto \lambda_j$. Choose a factorization $$C \to B'/J' \to \Lambda$$ as in Lemma [A first lifting step](#native-smoothing-lemma-lift-once). Since $B$ is smooth over $R$ we can lift the map $B \to C \to B'/J'$ to a map $\alpha : B \to B'$. Then $\varphi = \beta \circ \alpha$. To finish the proof we check that $\alpha(h) = 0$. Namely, the fact that $\alpha$ lifts $B \to C \to B'/J'$ implies that $$\alpha(b_i) = \sum a_{ij} \xi_j + \theta_i$$ for some $\xi_j \in B'$ and $\theta_i \in J' \subset IB'$. Hence we see that $$\alpha(h) = \alpha(\sum \epsilon_i b_i) =
-\sum \epsilon_i a_{ij} \xi_j + \sum \epsilon_i \theta_i = 0$$ because of the relations above and the fact that $I^2 = 0$. $\square$
+Thus the relation among the images of the $b_i$ is generated by relations among the coefficients in $R$. Encode these identities in the finitely presented algebra
+
+$$C=B[x_1,\ldots,x_m]/\bigl(b_i-\sum_j a_{ij}x_j:1\leq i\leq q\bigr).$$
+
+It maps to $\Lambda$ by $x_j\mapsto\lambda_j$. The first lifting step factors this map through $B'/J'$, where $B'/R$ is smooth and $J'\subseteq IB'$. In particular $(J')^2=0$. Formal smoothness of $B/R$ lifts $B\to C\to B'/J'$ to a map $\alpha:B\to B'$. Let $\beta$ be the composite $B'\to B'/J'\to\Lambda$; then $\beta\alpha=\varphi$.
+
+Choose $\xi_j\in B'$ lifting the image of $x_j$ in $B'/J'$. The defining equations of $C$ say that
+
+$$\alpha(b_i)=\sum_j a_{ij}\xi_j+\eta_i,
+\qquad\eta_i\in J'\subseteq IB'.$$
+
+Consequently
+
+$$\alpha(h)=\sum_j\left(\sum_i\epsilon_i a_{ij}\right)\xi_j
++\sum_i\epsilon_i\eta_i=0.$$
+
+The first sum vanishes by the relations over $R$, and the second vanishes by $I^2=0$. This eliminates $h$, and the finite iteration described at the start proves the lemma. ∎
 
 #### Proposition. Lifting an algebraic factorization
 
-Ind-smoothness of an algebra is stable under infinitesimal deformations
+Let $\Lambda$ be a flat $R$-algebra, and let $I\subseteq R$ be nilpotent. If $\Lambda/I\Lambda$ is ind-smooth over $R/I$, then $\Lambda$ is ind-smooth over $R$.
 
-Let $R \to \Lambda$ be a ring map. Let $I \subset R$ be an ideal. Assume that
+**Proof.** Suppose first that $I^2=0$. Apply the first lifting step to an arbitrary map $A\to\Lambda$ with $A/R$ finitely presented. We obtain $A\to B/J\to\Lambda$, with $B/R$ smooth and $J\subseteq IB$ finitely generated. Apply the second lifting step to the induced map $B\to\Lambda$. The resulting map $B\to B'$ annihilates $J$, hence descends to $B/J\to B'$. Thus
 
-1.  $I$ is nilpotent,
+$$A\longrightarrow B/J\longrightarrow B'\longrightarrow\Lambda$$
 
-2.  $\Lambda/I\Lambda$ is a filtered colimit of smooth $R/I$-algebras, and
+factors the original map through a smooth $R$-algebra. The finite factorization criterion proves the square-zero case.
 
-3.  $R \to \Lambda$ is flat.
-
-Then $\Lambda$ is a filtered colimit of smooth $R$-algebras.
-
-**Proof.** Since $I^n = 0$ for some $n$, it follows by induction on $n$ that it suffices to consider the case where $I^2 = 0$. Let $\varphi : A \to \Lambda$ be an $R$-algebra map with $A$ of finite presentation over $R$. We have to find a factorization $A \to B \to \Lambda$ with $B$ smooth over $R$, see Algebra, Lemma [Recognizing a filtered colimit of finite presentations](#native-algebra-lemma-when-colimit). By Lemma [A first lifting step](#native-smoothing-lemma-lift-once) we may assume that $A = B/J$ with $B$ smooth over $R$ and $J \subset IB$ a finitely generated ideal. By Lemma [A second lifting step](#native-smoothing-lemma-lift-twice) we can find a commutative diagram $$\begin{gathered}\begin{matrix}B & \phantom{X} & B' \\ \phantom{X} & \Lambda\end{matrix} \\[6pt] \begin{aligned}B & \xrightarrow{\alpha} B' \\ B & \xrightarrow{\varphi} \Lambda \\ B' & \xrightarrow{\beta} \Lambda\end{aligned}\end{gathered}$$ of $R$-algebras with $B'$ smooth over $R$ such that $\alpha(J) = 0$. Thus $\alpha$ factors as $B \to A \to B'$ and the proof is complete. $\square$
+For the general case choose $N$ with $I^N=0$. Starting with the assumed ind-smooth algebra $\Lambda/I\Lambda$, successively pass from the base $R/I^r$ to $R/I^{r+1}$ for $r=1,\ldots,N-1$. The kernel $I^r/I^{r+1}$ has square zero, because $2r\geq r+1$. Flatness of $\Lambda/I^{r+1}\Lambda$ over $R/I^{r+1}$ follows by base change from the flatness of $\Lambda/R$. The square-zero case therefore applies at each step. At $r+1=N$ it yields the desired conclusion for $R$ and $\Lambda$. ∎
 
 #### The lifting lemma
 
-Here is a fiendishly clever lemma.
+The next construction lifts a diagram modulo $\pi^2$ to an actual map into the target. It deliberately allows the new algebra to be singular over the singular part of the original diagram. Over its smooth part, extra variables record the divided errors in the equations, and compatibility relations make the different local presentations agree.
 
 #### Lemma. The lifting lemma
- Let $R$ be a Noetherian ring. Let $\Lambda$ be an $R$-algebra. Let $\pi \in R$ and assume that $\text{Ann}_R(\pi) = \text{Ann}_R(\pi^2)$ and $\text{Ann}_\Lambda(\pi) = \text{Ann}_\Lambda(\pi^2)$. Suppose we have $R$-algebra maps $R/\pi^2R \to \bar C \to \Lambda/\pi^2\Lambda$ with $\bar C$ of finite presentation. Then there exists an $R$-algebra homomorphism $D \to \Lambda$ and a commutative diagram $$\begin{gathered}\begin{matrix}R/\pi^2R & \bar C & \Lambda/\pi^2\Lambda \\ R/\pi R & D/\pi D & \Lambda/\pi \Lambda\end{matrix} \\[6pt] \begin{aligned}R/\pi^2R & \longrightarrow \bar C \\ R/\pi^2R & \longrightarrow R/\pi R \\ \bar C & \longrightarrow \Lambda/\pi^2\Lambda \\ \bar C & \longrightarrow D/\pi D \\ \Lambda/\pi^2\Lambda & \longrightarrow \Lambda/\pi \Lambda \\ R/\pi R & \longrightarrow D/\pi D \\ D/\pi D & \longrightarrow \Lambda/\pi \Lambda\end{aligned}\end{gathered}$$ with the following properties
 
-1.  $D$ is of finite presentation,
+Let $R$ be Noetherian, let $\Lambda$ be an $R$-algebra, and let $\pi\in R$ satisfy
 
-2.  $R \to D$ is smooth at any prime $\mathfrak q$ with $\pi \not \in \mathfrak q$,
+$$\operatorname{Ann}_R(\pi)=\operatorname{Ann}_R(\pi^2),
+\qquad
+\operatorname{Ann}_\Lambda(\pi)=\operatorname{Ann}_\Lambda(\pi^2).$$
 
-3.  $R \to D$ is smooth at any prime $\mathfrak q$ with $\pi \in \mathfrak q$ lying over a prime of $\bar C$ where $R/\pi^2 R \to \bar C$ is smooth, and
+Suppose $\bar C$ is finitely presented over $R/\pi^2R$ and is equipped with an $(R/\pi^2R)$-algebra map to $\Lambda/\pi^2\Lambda$. Then there is a finitely presented $R$-algebra $D$ and compatible maps
 
-4.  $\bar C/\pi \bar C \to D/\pi D$ is smooth at any prime lying over a prime of $\bar C$ where $R/\pi^2R \to \bar C$ is smooth.
+$$D\longrightarrow\Lambda,
+\qquad \bar C/\pi\bar C\longrightarrow D/\pi D.$$
 
-**Proof.** We choose a presentation $$\bar C = R[x_1, \ldots, x_n]/(f_1, \ldots, f_m)$$ We also denote $I = (f_1, \ldots, f_m)$ and $\bar I$ the image of $I$ in $R/\pi^2R[x_1, \ldots, x_n]$. Since $R$ is Noetherian, so is $\bar C$. Hence the smooth locus of $R/\pi^2 R \to \bar C$ is quasi-compact, see Topology, Lemma [Noetherian topological spaces (programme binding)](#uncovered-topology-lemma-noetherian). Applying Lemma [A Jacobian presentation near a smooth point](#native-smoothing-lemma-find-strictly-standard) we may choose a finite list of elements $a_1, \ldots, a_r \in R[x_1, \ldots, x_n]$ such that
+Compatibility means that the two resulting maps $\bar C\to\Lambda/\pi\Lambda$ coincide. They also commute with the structure maps from $R/\pi^2R$ and $R/\pi R$. These maps have the following properties.
 
-1.  the union of the open subspaces $\operatorname{Spec}(\bar C_{a_k}) \subset \operatorname{Spec}(\bar C)$ cover the smooth locus of $R/\pi^2 R \to \bar C$, and
+1. $D[1/\pi]$ is smooth over $R$.
+2. At every prime of $D$ containing $\pi$ whose image in $\operatorname{Spec}\bar C$ is smooth over $R/\pi^2R$, the map $R\to D$ is smooth.
+3. The map $\bar C/\pi\bar C\to D/\pi D$ is smooth at every prime above that same smooth locus.
 
-2.  for each $k = 1, \ldots, r$ there exists a finite subset $E_k \subset \{1, \ldots, m\}$ such that $(\bar I/\bar I^2)_{a_k}$ is freely generated by the classes of $f_j$, $j \in E_k$.
+**Proof.** Put $P=R[x_1,\ldots,x_n]$ and choose a surjection $P\to\bar C$. Its kernel $I=(f_1,\ldots,f_m)$ contains $\pi^2$. Write $\bar P=P/\pi^2P$ and $\bar I=I/\pi^2P$. We first choose finitely many local presentations of the smooth locus.
 
-Set $I_k = (f_j, j \in E_k) \subset I$ and denote $\bar I_k$ the image of $I_k$ in $R/\pi^2R[x_1, \ldots, x_n]$. By (2) and Nakayama's lemma we see that $(\bar I/\bar I_k)_{a_k}$ is annihilated by $1 + b'_k$ for some $b'_k \in \bar I_{a_k}$. Suppose $b'_k$ is the image of $b_k/(a_k)^N$ for some $b_k \in I$ and some integer $N$. After replacing $a_k$ by $a_k((a_k)^N + b_k)$ we get
+Since $\bar C$ is Noetherian, that open locus is quasi-compact. The [Jacobian presentation lemma](#native-smoothing-lemma-find-strictly-standard) therefore supplies finitely many elements $a_k\in P$ and subsets $E_k\subseteq\{1,\ldots,m\}$ such that the opens $D(a_k)$ cover precisely this locus and, on each of them, the classes of $f_j$ for $j\in E_k$ form a basis of $\bar I/\bar I^2$. We can also choose $|E_k|$ of the $x$-coordinates so that the corresponding Jacobian minor of these equations is invertible there. In fact the construction of that lemma chooses $a_k$ divisible by such a minor.
 
-1.  $(\bar I_k)_{a_k} = (\bar I)_{a_k}$.
+Let $I_k=(f_j:j\in E_k)$. We may arrange
 
-Thus, after possibly replacing $a_k$ by a high power, we may write
+$$\bar I_{a_k}=(\bar I_k)_{a_k}.$$
 
-1.  $a_k f_\ell = \sum\nolimits_{j \in E_k} h_{k, \ell}^jf_j + \pi^2 g_{k, \ell}$
+Here is the needed refinement. Before this equality is imposed, the finite module $(\bar I/\bar I_k)_{a_k}$ equals its product with $\bar I_{a_k}$, because the chosen classes generate the conormal module. The determinant form of [Nakayama's lemma](#native-algebra-lemma-nak) gives an element $1+b'_k$, with $b'_k\in\bar I_{a_k}$, annihilating this module. Write $b'_k=b_k/a_k^N$ after increasing $N$. Replacing $a_k$ by $a_k(a_k^N+b_k)$ imposes the desired equality. Its image in $\bar C$ is $a_k^{N+1}$, so it defines the same open subset there and retains the invertibility of the chosen minor.
 
-for any $\ell \in \{1, \ldots, m\}$ and some $h_{k, \ell}^j, g_{k, \ell} \in R[x_1, \ldots, x_n]$. If $\ell \in E_k$ we choose $h_{k, \ell}^j = a_k\delta_{\ell, j}$ (Kronecker delta) and $g_{k, \ell} = 0$. Set $$D = R[x_1, \ldots, x_n, z_1, \ldots, z_m]/
-(f_j - \pi z_j, p_{k, \ell}).$$ Here $j \in \{1, \ldots, m\}$, $k \in \{1, \ldots, r\}$, $\ell \in \{1, \ldots, m\}$, and $$p_{k, \ell} = a_k z_\ell - \sum\nolimits_{j \in E_k} h_{k, \ell}^j z_j
-- \pi g_{k, \ell}.$$ Note that for $\ell \in E_k$ we have $p_{k, \ell} = 0$ by our choices above.
+After a further power of each $a_k$, all the finitely many relations can be written in $P$ as
 
-The map $R \to D$ is the given one. Say $\bar C \to \Lambda/\pi^2\Lambda$ maps $x_i$ to the class of $\lambda_i$ modulo $\pi^2$. For an element $f \in R[x_1, \ldots, x_n]$ we denote $f(\lambda) \in \Lambda$ the result of substituting $\lambda_i$ for $x_i$. Then we know that $f_j(\lambda) = \pi^2 \mu_j$ for some $\mu_j \in \Lambda$. Define $D \to \Lambda$ by the rules $x_i \mapsto \lambda_i$ and $z_j \mapsto \pi\mu_j$. This is well defined because $$\begin{aligned}
-p_{k, \ell} & \mapsto
-a_k(\lambda) \pi \mu_\ell -
-\sum\nolimits_{j \in E_k} h_{k, \ell}^j(\lambda) \pi \mu_j
-- \pi g_{k, \ell}(\lambda) \\
-& =
-\pi\left(a_k(\lambda) \mu_\ell -
-\sum\nolimits_{j \in E_k} h_{k, \ell}^j(\lambda) \mu_j
-- g_{k, \ell}(\lambda)\right)
-\end{aligned}$$ Substituting $x_i = \lambda_i$ in (4) above we see that the expression inside the brackets is annihilated by $\pi^2$, hence it is annihilated by $\pi$ as we have assumed $\text{Ann}_\Lambda(\pi) = \text{Ann}_\Lambda(\pi^2)$. The map $\bar C \to D/\pi D$ is determined by $x_i \mapsto x_i$ (clearly well defined). Thus we are done if we can prove (b), (c), and (d).
+$$a_k f_\ell=\sum_{j\in E_k}h_{k\ell}^{j}f_j+\pi^2g_{k\ell}
+\quad(1\leq\ell\leq m).\tag{L1}$$
 
-Using (4) we obtain the following key equality $$\begin{aligned}
-\pi p_{k, \ell} & =
-\pi a_k z_\ell - \sum\nolimits_{j \in E_k} \pi h_{k, \ell}^jz_j
-- \pi^2 g_{k, \ell} \\
-& =
-- a_k (f_\ell - \pi z_\ell) + a_k f_\ell +
-\sum\nolimits_{j \in E_k} h_{k, \ell}^j (f_j - \pi z_j) -
-\sum\nolimits_{j \in E_k} h_{k, \ell}^j f_j - \pi^2 g_{k, \ell} \\
-& =
--a_k(f_\ell - \pi z_\ell) +
-\sum\nolimits_{j \in E_k} h_{k, \ell}^j(f_j - \pi z_j)
-\end{aligned}$$ The end result is an element of the ideal generated by $f_j - \pi z_j$. In particular, we see that $D[1/\pi]$ is isomorphic to $R[1/\pi][x_1, \ldots, x_n, z_1, \ldots, z_m]/(f_j - \pi z_j)$ which is isomorphic to $R[1/\pi][x_1, \ldots, x_n]$ hence smooth over $R$. This proves (b).
+For $\ell\in E_k$, choose $h_{k\ell}^{j}=a_k\delta_{\ell j}$ and $g_{k\ell}=0$. Define polynomials in $P[z_1,\ldots,z_m]$ by
 
-For fixed $k \in \{1, \ldots, r\}$ consider the ring $$D_k = R[x_1, \ldots, x_n, z_1, \ldots, z_m]/
-(f_j - \pi z_j, j \in E_k, p_{k, \ell})$$ The number of equations is $m = |E_k| + (m - |E_k|)$ as $p_{k, \ell}$ is zero if $\ell \in E_k$. Also, note that $$\begin{aligned}
-(D_k/\pi D_k)_{a_k}
-& =
-R/\pi R[x_1, \ldots, x_n, 1/a_k, z_1, \ldots, z_m]/
-(f_j, j \in E_k, p_{k, \ell}) \\
-& =
-(\bar C/\pi \bar C)_{a_k}[z_1, \ldots, z_m]/
-(a_kz_\ell - \sum\nolimits_{j \in E_k} h_{k, \ell}^j z_j) \\
-& \cong
-(\bar C/\pi \bar C)_{a_k}[z_j, j \in E_k]
-\end{aligned}$$ In particular $(D_k/\pi D_k)_{a_k}$ is smooth over $(\bar C/\pi \bar C)_{a_k}$. By our choice of $a_k$ we have that $(\bar C/\pi \bar C)_{a_k}$ is smooth over $R/\pi R$ of relative dimension $n - |E_k|$, see (2). Hence for a prime $\mathfrak q_k \subset D_k$ containing $\pi$ and lying over $\operatorname{Spec}(\bar C_{a_k})$ the fibre ring of $R \to D_k$ is smooth at $\mathfrak q_k$ of dimension $n$. Thus $R \to D_k$ is syntomic at $\mathfrak q_k$ by our count of the number of equations above, see Algebra, Lemma [Localization of a relative complete intersection](#native-algebra-lemma-localize-relative-complete-intersection). Hence $R \to D_k$ is smooth at $\mathfrak q_k$, see Algebra, Lemma [Smoothness from flatness and smooth fibres](#native-algebra-lemma-flat-fibre-smooth).
+$$q_j=f_j-\pi z_j,
+\qquad
+p_{k\ell}=a_kz_\ell-\sum_{j\in E_k}h_{k\ell}^{j}z_j-\pi g_{k\ell},$$
 
-To finish the proof, let $\mathfrak q \subset D$ be a prime containing $\pi$ lying over a prime where $R/\pi^2 R \to \bar C$ is smooth. Then $a_k \not \in \mathfrak q$ for some $k$ by (1). We will show that the surjection $D_k \to D$ induces an isomorphism on local rings at $\mathfrak q$. Since we know that the ring maps $\bar C/\pi \bar C \to D_k/\pi D_k$ and $R \to D_k$ are smooth at the corresponding prime $\mathfrak q_k$ by the preceding paragraph this will prove (c) and (d) and thus finish the proof.
+and set
 
-First, note that for any $\ell$ the equation $\pi p_{k, \ell} = -a_k(f_\ell - \pi z_\ell) +
-\sum_{j \in E_k} h_{k, \ell}^j (f_j - \pi z_j)$ proved above shows that $f_\ell - \pi z_\ell$ maps to zero in $(D_k)_{a_k}$ and in particular in $(D_k)_{\mathfrak q_k}$. The relations (4) imply that $a_k f_\ell =
-\sum_{j \in E_k} h_{k, \ell}^j f_j$ in $I/I^2$. Since $(\bar I_k/\bar I_k^2)_{a_k}$ is free on $f_j$, $j \in E_k$ we see that $$a_{k'} h_{k, \ell}^j -
-\sum\nolimits_{j' \in E_{k'}} h_{k', \ell}^{j'} h_{k, j'}^j$$ is zero in $\bar C_{a_k}$ for every $k, k', \ell$ and $j \in E_k$. Hence we can find a large integer $N$ such that $$a_k^N\left(
-a_{k'} h_{k, \ell}^j -
-\sum\nolimits_{j' \in E_{k'}} h_{k', \ell}^{j'} h_{k, j'}^j
-\right)$$ is in $I_k + \pi^2R[x_1, \ldots, x_n]$. Computing modulo $\pi$ we have $$\begin{aligned}
-&
-a_kp_{k', \ell} - a_{k'}p_{k, \ell} + \sum h_{k', \ell}^{j'} p_{k, j'}
-\\
-&
-=
-- a_k \sum h_{k', \ell}^{j'} z_{j'}
-+ a_{k'} \sum h_{k, \ell}^j z_j
-+ \sum h_{k', \ell}^{j'} a_k z_{j'}
-- \sum \sum h_{k', \ell}^{j'} h_{k, j'}^j z_j \\
-&
-=
-\sum \left(
-a_{k'} h_{k, \ell}^j
-- \sum h_{k', \ell}^{j'} h_{k, j'}^j
-\right) z_j
-\end{aligned}$$ with Einstein summation convention. Combining with the above we see $a_k^{N + 1} p_{k', \ell}$ is contained in the ideal generated by $I_k$ and $\pi$ in $R[x_1, \ldots, x_n, z_1, \ldots, z_m]$. Thus $p_{k', \ell}$ maps into $\pi (D_k)_{a_k}$. On the other hand, the equation $$\pi p_{k', \ell} =
--a_{k'} (f_\ell - \pi z_\ell) +
-\sum\nolimits_{j' \in E_{k'}} h_{k', \ell}^{j'}(f_{j'} - \pi z_{j'})$$ shows that $\pi p_{k', \ell}$ is zero in $(D_k)_{a_k}$. Since we have assumed that $\text{Ann}_R(\pi) = \text{Ann}_R(\pi^2)$ and since $(D_k)_{\mathfrak q_k}$ is smooth hence flat over $R$ we see that $\text{Ann}_{(D_k)_{\mathfrak q_k}}(\pi) =
-\text{Ann}_{(D_k)_{\mathfrak q_k}}(\pi^2)$. We conclude that $p_{k', \ell}$ maps to zero as well, hence $D_{\mathfrak q} = (D_k)_{\mathfrak q_k}$ and we win. $\square$
+$$D=P[z_1,\ldots,z_m]/(q_j,p_{k\ell}:j,k,\ell).$$
+
+All index sets are finite, so $D/R$ is finitely presented. Notice that $p_{k\ell}=0$ when $\ell\in E_k$. An identity that will control both the generic and the closed fibre is
+
+$$\pi p_{k\ell}=-a_kq_\ell+\sum_{j\in E_k}h_{k\ell}^{j}q_j.\tag{L2}$$
+
+It follows by substituting (L1) into the definitions, without dividing by $\pi$.
+
+Choose $\lambda_i\in\Lambda$ lifting the specified images of $x_i$ modulo $\pi^2$. For each $j$, choose $\mu_j$ with $f_j(\lambda)=\pi^2\mu_j$. Send $x_i$ to $\lambda_i$ and $z_j$ to $\pi\mu_j$. The polynomials $q_j$ vanish under this assignment. The image of $p_{k\ell}$ is $\pi$ times
+
+$$a_k(\lambda)\mu_\ell-\sum_{j\in E_k}h_{k\ell}^{j}(\lambda)\mu_j-g_{k\ell}(\lambda).$$
+
+Equation (L1) says that $\pi^2$ annihilates this expression. The annihilator hypothesis in $\Lambda$ says that $\pi$ annihilates it as well. Hence we obtain $D\to\Lambda$. Modulo $\pi$, the relations $q_j$ reduce to $f_j$, giving the required map $\bar C/\pi\bar C\to D/\pi D$. Its compatibility with the specified target map is immediate from the chosen lifts of the $x_i$.
+
+After inverting $\pi$, (L2) makes every $p_{k\ell}$ redundant, and the equations $q_j$ eliminate $z_j$ as $f_j/\pi$. Thus
+
+$$D[1/\pi]\simeq R[1/\pi][x_1,\ldots,x_n],$$
+
+which proves the first smoothness assertion.
+
+For the assertions near the closed fibre, fix $k$ and retain only the equations belonging to that chart:
+
+$$D_k=P[z_1,\ldots,z_m]/(q_j:j\in E_k,\ p_{k\ell}:\ell\notin E_k).$$
+
+There is a surjection $D_k\to D$. Modulo $\pi$ and after inverting $a_k$, the equations $p_{k\ell}$ eliminate the $z_\ell$ with $\ell\notin E_k$. The equality of the localized ideals chosen above therefore gives
+
+$$ (D_k/\pi D_k)_{a_k}
+\simeq(\bar C/\pi\bar C)_{a_k}[z_j:j\in E_k].\tag{L3}$$
+
+In particular this is smooth over $(\bar C/\pi\bar C)_{a_k}$.
+
+We can verify smoothness of $D_k/R$ directly at a prime containing $\pi$ but not $a_k$. Put $c=|E_k|$. Take derivatives of its $m$ equations with respect to the $c$ chosen $x$-coordinates and the $m-c$ variables $z_\ell$ with $\ell\notin E_k$. Modulo $\pi$, the resulting square matrix has block form
+
+$$\begin{pmatrix}J_k&0\\ *&a_k1_{m-c}\end{pmatrix},$$
+
+where $\det J_k$ is the chosen invertible minor. Its determinant is therefore a unit at the prime. The [Jacobian criterion](#native-algebra-lemma-standard-smooth) proves that $D_k/R$ is smooth there. This also proves flatness at that prime.
+
+It remains to show that the additional equations defining $D$ do not alter this local ring. Let $\mathfrak q\subset D$ contain $\pi$, with image in the smooth locus of $\bar C$, choose $k$ with $a_k\notin\mathfrak q$, and let $\mathfrak q_k$ be its inverse image in $D_k$. Set $T=(D_k)_{\mathfrak q_k}$. Equation (L2), together with the already imposed $p_{k\ell}$ and $q_j$ for $j\in E_k$, shows that $a_kq_\ell=0$ in $T$. Hence every $q_\ell$ is zero there.
+
+For another chart $k'$, compare the two ways of expressing the class of $a_ka_{k'}f_\ell$ in $(\bar I/\bar I^2)_{a_k}$. Since the classes indexed by $E_k$ are a basis, this comparison gives, for every $j\in E_k$,
+
+$$\delta_j:=a_{k'}h_{k\ell}^{j}
+-\sum_{j'\in E_{k'}}h_{k'\ell}^{j'}h_{kj'}^{j}=0
+\quad\text{in }\bar C_{a_k}.$$
+
+Thus $\delta_j$ belongs to $(I_k+\pi^2P)_{a_k}$, because $I_{a_k}=(I_k+\pi^2P)_{a_k}$. In $T$ the elements $f_j$ for $j\in E_k$ equal $\pi z_j$, so every $\delta_j$ lies in $\pi T$. Reducing the equations for chart $k$ modulo $\pi$ and substituting them into $p_{k'\ell}$ gives
+
+$$a_kp_{k'\ell}\equiv\sum_{j\in E_k}\delta_jz_j
+\equiv0\pmod{\pi T}.$$
+
+Since $a_k$ is a unit, $p_{k'\ell}\in\pi T$. Meanwhile (L2) for chart $k'$ shows $\pi p_{k'\ell}=0$, because all the $q_j$ have already vanished in $T$.
+
+Finally $T$ is flat over $R$. Tensoring the kernels of multiplication by $\pi$ and by $\pi^2$ with $T$ therefore transfers the annihilator equality in $R$ to $T$. If $p_{k'\ell}=\pi t$, the equality $\pi p_{k'\ell}=0$ says $\pi^2t=0$, and hence $\pi t=0$. Thus every $p_{k'\ell}$ vanishes in $T$. The surjection $D_k\to D$ induces an isomorphism $T\simeq D_{\mathfrak q}$.
+
+The Jacobian calculation for $T/R$ and the polynomial description (L3) now give the second and third assertions. Both annihilator hypotheses have been used explicitly: the one in $\Lambda$ constructs the actual target map, and the one in $R$ removes the remaining compatibility equations in the smooth local model. ∎
 
 #### The desingularization lemma
 
-The following construction enlarges the smooth locus.
+A section known to order $\pi^4$ allows a strict Jacobian presentation to be replaced by equations with an invertible minor along $\pi=0$. The construction below also tracks the precise obstruction when the annihilators of $\pi$ and $\pi^2$ in the base are unequal.
 
 #### Lemma. The desingularization lemma
 
-Let $R$ be a Noetherian ring. Let $\Lambda$ be an $R$-algebra. Let $\pi \in R$ and assume that $\text{Ann}_\Lambda(\pi) = \text{Ann}_\Lambda(\pi^2)$. Let $A \to \Lambda$ be an $R$-algebra map with $A$ of finite presentation. Assume
+Let $R$ be Noetherian, let $\Lambda$ be an $R$-algebra, and assume
 
-1.  the image of $\pi$ is strictly standard in $A$ over $R$, and
+$$\operatorname{Ann}_\Lambda(\pi)=\operatorname{Ann}_\Lambda(\pi^2)
+\quad\text{for some }\pi\in R.$$
 
-2.  there exists a section $\rho : A/\pi^4 A \to R/\pi^4 R$ which is compatible with the map to $\Lambda/\pi^4 \Lambda$.
+Suppose a finitely presented $R$-algebra $A$ maps to $\Lambda$, the image of $\pi$ is strictly standard for $A/R$, and there is an $R/\pi^4R$-algebra retraction
 
-Then we can find $R$-algebra maps $A \to B \to \Lambda$ with $B$ of finite presentation such that $\mathfrak a B \subset H_{B/R}$ where $\mathfrak a = \text{Ann}_R(\text{Ann}_R(\pi^2)/\text{Ann}_R(\pi))$.
+$$\rho:A/\pi^4A\longrightarrow R/\pi^4R$$
 
-**Proof.** Choose a presentation $$A = R[x_1, \ldots, x_n]/(f_1, \ldots, f_m)$$ and $0 \leq c \leq \min(n, m)$ such that ([the displayed identity](#native-smoothing-equation-strictly-standard-one)) holds for $\pi$ and such that 
+whose composite with $R/\pi^4R\to\Lambda/\pi^4\Lambda$ is the prescribed map from $A/\pi^4A$. Define
 
-$$\pi f_{c + j} \in (f_1, \ldots, f_c) + (f_1, \ldots, f_m)^2$$ for $j = 1, \ldots, m - c$. Say $\rho$ maps $x_i$ to the class of $r_i \in R$. Then we can replace $x_i$ by $x_i - r_i$. Hence we may assume $\rho(x_i) = 0$ in $R/\pi^4 R$. This implies that $f_j(0) \in \pi^4R$ and that $A \to \Lambda$ maps $x_i$ to $\pi^4\lambda_i$ for some $\lambda_i \in \Lambda$. Write $$f_j = f_j(0) + \sum\nolimits_{i = 1, \ldots, n} r_{ji} x_i + \text{h.o.t.}$$ This implies that the constant term of $\partial f_j/\partial x_i$ is $r_{ji}$. Apply $\rho$ to ([the displayed identity](#native-smoothing-equation-strictly-standard-one)) for $\pi$ and we see that $$\pi = \sum\nolimits_{I \subset \{1, \ldots, n\},\ |I| = c}
-r_I \det(r_{ji})_{j = 1, \ldots, c,\ i \in I} \bmod \pi^4R$$ for some $r_I \in R$. Thus we have $$u\pi = \sum\nolimits_{I \subset \{1, \ldots, n\},\ |I| = c}
-r_I \det(r_{ji})_{j = 1, \ldots, c,\ i \in I}$$ for some $u \in 1 + \pi^3R$. By Algebra, Lemma [A left inverse for a matrix](#native-algebra-lemma-matrix-left-inverse) this implies there exists a $n \times c$ matrix $(s_{ik})$ such that $$u\pi \delta_{jk} = \sum\nolimits_{i = 1, \ldots, n} r_{ji}s_{ik}\quad
-\text{for all } j, k = 1, \ldots, c$$ (Kronecker delta). We introduce auxiliary variables $v_1, \ldots, v_c, w_1, \ldots, w_n$ and we set $$h_i = x_i - \pi^2 \sum\nolimits_{j = 1, \ldots c} s_{ij} v_j - \pi^3 w_i$$ In the following we will use that $$R[x_1, \ldots, x_n, v_1, \ldots, v_c, w_1, \ldots, w_n]/
-(h_1, \ldots, h_n) = R[v_1, \ldots, v_c, w_1, \ldots, w_n]$$ without further mention. In $R[x_1, \ldots, x_n, v_1, \ldots, v_c, w_1, \ldots, w_n]/
-(h_1, \ldots, h_n)$ we have $$\begin{aligned}
-f_j & = f_j(x_1 - h_1, \ldots, x_n - h_n) \\
-& =
-\pi^2 \sum\nolimits_{k = 1}^c
-\left(\sum\nolimits_{i = 1}^n r_{ji} s_{ik}\right) v_k
-+
-\pi^3 \sum\nolimits_{i = 1}^n r_{ji}w_i \bmod \pi^4 \\
-& =
-\pi^3 v_j + \pi^3 \sum\nolimits_{i = 1}^n r_{ji}w_i \bmod \pi^4
-\end{aligned}$$ for $1 \leq j \leq c$. Hence we can choose elements $g_j \in R[v_1, \ldots, v_c, w_1, \ldots, w_n]$ such that $g_j = v_j + \sum r_{ji}w_i \bmod \pi$ and such that $f_j = \pi^3 g_j$ in the $R$-algebra $R[x_1, \ldots, x_n, v_1, \ldots, v_c, w_1, \ldots, w_n]/
-(h_1, \ldots, h_n)$. We set $$B = R[x_1, \ldots, x_n, v_1, \ldots, v_c, w_1, \ldots, w_n]/
-(f_1, \ldots, f_m, h_1, \ldots, h_n, g_1, \ldots, g_c).$$ The map $A \to B$ is clear. We define $B \to \Lambda$ by mapping $x_i \to \pi^4\lambda_i$, $v_i \mapsto 0$, and $w_i \mapsto \pi \lambda_i$. Then it is clear that the elements $f_j$ and $h_i$ are mapped to zero in $\Lambda$. Moreover, it is clear that $g_i$ is mapped to an element $t$ of $\pi\Lambda$ such that $\pi^3t = 0$ (as $f_i = \pi^3 g_i$ modulo the ideal generated by the $h$'s). Hence our assumption that $\text{Ann}_\Lambda(\pi) = \text{Ann}_\Lambda(\pi^2)$ implies that $t = 0$. Thus we are done if we can prove the statement about smoothness.
+$$\mathfrak a=\operatorname{Ann}_R\bigl(
+\operatorname{Ann}_R(\pi^2)/\operatorname{Ann}_R(\pi)\bigr).$$
 
-Note that $B_\pi \cong A_\pi[v_1, \ldots, v_c]$ because the equations $g_i = 0$ are implied by $f_i = 0$. Hence $B_\pi$ is smooth over $R$ as $A_\pi$ is smooth over $R$ by the assumption that $\pi$ is strictly standard in $A$ over $R$, see Lemma [Controlling a power of the Jacobian determinant](#native-smoothing-lemma-elkik).
+Then the map $A\to\Lambda$ factors through a finitely presented $R$-algebra $B$ such that $\mathfrak aB\subseteq H_{B/R}$.
 
-Set $B' = R[v_1, \ldots, v_c, w_1, \ldots, w_n]/(g_1, \ldots, g_c)$. As $g_i = v_i + \sum r_{ji}w_i \bmod \pi$ we see that $B'/\pi B' = R/\pi R[w_1, \ldots, w_n]$. Hence $R \to B'$ is smooth of relative dimension $n$ at every point of $V(\pi)$ by Algebra, Lemmas [Localization of a relative complete intersection](#native-algebra-lemma-localize-relative-complete-intersection) and [Smoothness from flatness and smooth fibres](#native-algebra-lemma-flat-fibre-smooth) (the first lemma shows it is syntomic at those primes, in particular flat, whereupon the second lemma shows it is smooth).
+**Proof.** Choose a strict presentation $A=R[x_1,\ldots,x_n]/(f_1,\ldots,f_m)$ and its distinguished equations $f_1,\ldots,f_c$. Translate the $x_i$ by lifts of their images under $\rho$. Thus $\rho(x_i)=0$, the constant term of every $f_j$ belongs to $\pi^4R$, and the image of each $x_i$ in $\Lambda$ has the form $\pi^4\lambda_i$.
 
-Let $\mathfrak q \subset B$ be a prime with $\pi \in \mathfrak q$ and for some $r \in \mathfrak a$, $r \not \in \mathfrak q$. Denote $\mathfrak q' = B' \cap \mathfrak q$. We claim the surjection $B' \to B$ induces an isomorphism of local rings $(B')_{\mathfrak q'} \to B_\mathfrak q$. This will conclude the proof of the lemma. Note that $B_\mathfrak q$ is the quotient of $(B')_{\mathfrak q'}$ by the ideal generated by $f_{c + j}$, $j = 1, \ldots, m - c$. We observe two things: first the image of $f_{c + j}$ in $(B')_{\mathfrak q'}$ is divisible by $\pi^2$ and second the image of $\pi f_{c + j}$ in $(B')_{\mathfrak q'}$ can be written as $\sum b_{j_1 j_2} f_{c + j_1}f_{c + j_2}$ by ([the displayed identity](#native-smoothing-equation-star)). Thus we see that the image of each $\pi f_{c + j}$ is contained in the ideal generated by the elements $\pi^2 f_{c + j'}$. Hence $\pi f_{c + j} = 0$ in $(B')_{\mathfrak q'}$ as this is a Noetherian local ring, see Algebra, Lemma [Krull's intersection theorem](#native-algebra-lemma-intersect-powers-ideal-module-zero). As $R \to (B')_{\mathfrak q'}$ is flat we see that $$\left(\text{Ann}_R(\pi^2)/\text{Ann}_R(\pi)\right)
-\otimes_R (B')_{\mathfrak q'}
-=
-\text{Ann}_{(B')_{\mathfrak q'}}(\pi^2)/\text{Ann}_{(B')_{\mathfrak q'}}(\pi)$$ Because $r \in \mathfrak a$ is invertible in $(B')_{\mathfrak q'}$ we see that this module is zero. Hence we see that the image of $f_{c + j}$ is zero in $(B')_{\mathfrak q'}$ as desired. $\square$
+Write $r_{ji}$ for the coefficient of $x_i$ in $f_j$. Apply $\rho$ to the strict Jacobian identity expressing $\pi$ as a combination of the $c$-row minors. The resulting identity over $R/\pi^4R$ lifts to an identity over $R$ expressing $u\pi$ as a combination of the minors of $(r_{ji})$, for some $u\in1+\pi^3R$. The [adjugate calculation](#native-smoothing-lemma-parse-equation-strictly-standard-one) therefore gives an $n$-by-$c$ matrix $S=(s_{ik})$ satisfying
+
+$$\sum_{i=1}^n r_{ji}s_{ik}=u\pi\delta_{jk}
+\quad(1\leq j,k\leq c).$$
+
+Introduce variables $v_1,\ldots,v_c,w_1,\ldots,w_n$ and substitute
+
+$$x_i=\pi^2\sum_{k=1}^c s_{ik}v_k+\pi^3w_i.\tag{D1}$$
+
+For $j\leq c$, the linear part of $f_j$ becomes $u\pi^3v_j+\pi^3\sum_i r_{ji}w_i$. Its constant term and every term of degree at least two are divisible by $\pi^4$. Consequently we can choose actual polynomials $g_j\in R[v,w]$ such that, after (D1),
+
+$$f_j=\pi^3g_j,
+\qquad g_j\equiv v_j+\sum_i r_{ji}w_i\pmod\pi.\tag{D2}$$
+
+This is an identity obtained by factoring the displayed coefficients, so it does not require cancellation of $\pi$. Let $h_i=x_i-\pi^2\sum_k s_{ik}v_k-\pi^3w_i$ and put
+
+$$B=R[x,v,w]/(f_1,\ldots,f_m,h_1,\ldots,h_n,g_1,\ldots,g_c).$$
+
+The map $A\to B$ is induced by the $x$-coordinates. Define its prospective map to $\Lambda$ by
+
+$$x_i\mapsto\pi^4\lambda_i,
+\qquad v_j\mapsto0,
+\qquad w_i\mapsto\pi\lambda_i.$$
+
+The $f_j$ and $h_i$ vanish. By (D2), the image $t$ of each $g_j$ belongs to $\pi\Lambda$ and satisfies $\pi^3t=0$. The assumed equality of annihilators implies
+
+$$\operatorname{Ann}_\Lambda(\pi^e)=\operatorname{Ann}_\Lambda(\pi)
+\quad(e\geq1):$$
+
+if $\pi^{e+1}z=0$, apply the equality for $\pi$ and $\pi^2$ to $\pi^{e-1}z$, then induct. Writing $t=\pi z$ now gives $\pi^4z=0$, hence $t=\pi z=0$. Thus $B\to\Lambda$ is well-defined.
+
+Away from $\pi=0$, (D1) eliminates the $w_i$, and the equations $g_j$ follow from $f_j$. Hence $B_\pi\simeq A_\pi[v_1,\ldots,v_c]$. Strictness makes $A_\pi/R$ smooth by [Elkik's singularity-ideal criterion](#native-smoothing-lemma-elkik), so $B_\pi/R$ is smooth.
+
+To work along $\pi=0$, let $B'=R[v,w]/(g_1,\ldots,g_c)$. The Jacobian matrix of these equations in the variables $v_j$ is the identity modulo $\pi$. The [Jacobian criterion](#native-algebra-lemma-standard-smooth) therefore shows that $B'/R$ is smooth at every prime containing $\pi$. The map $B'\to B$ is surjective, with kernel generated by the substituted equations $f_{c+1},\ldots,f_m$.
+
+Take a prime $\mathfrak q\subset B$ containing $\pi$ and an element $r\in\mathfrak a$ outside $\mathfrak q$. Let $T$ be the local ring of $B'$ at the inverse image of $\mathfrak q$, and let $K\subseteq T$ be the ideal generated by those remaining equations. We will prove $K=0$.
+
+Every substituted $f_j$ belongs to $\pi^2T$: its constant term lies in $\pi^4R$, and each substituted $x_i$ is divisible by $\pi^2$. The relation condition in the strict presentation says that $\pi f_{c+j}$ belongs to $(f_1,\ldots,f_c)+(f_1,\ldots,f_m)^2$. Since the first $c$ equations vanish in $T$ by (D2), we get
+
+$$K\subseteq\pi^2T,
+\qquad\pi K\subseteq K^2\subseteq\pi^2K.$$
+
+The finite $T$-module $M=\pi K$ thus satisfies $M=\pi M$. Because $\pi$ is in the maximal ideal, [Nakayama's lemma](#native-algebra-lemma-nak) gives $\pi K=0$. Equivalently, one can iterate the last containment and use [Krull intersection](#native-algebra-lemma-intersect-powers-ideal-module-zero) in the Noetherian local ring $T$.
+
+Smoothness makes $T$ flat over $R$. Hence
+
+$$\bigl(\operatorname{Ann}_R(\pi^2)/\operatorname{Ann}_R(\pi)\bigr)\otimes_RT
+\simeq\operatorname{Ann}_T(\pi^2)/\operatorname{Ann}_T(\pi).$$
+
+The left side is zero because it is annihilated by $r$, which is a unit in $T$. Thus the annihilators in $T$ are equal, and their powers stabilize as above. For $f\in K$, write $f=\pi^2z$. Since $\pi f=0$, we have $\pi^3z=0$, hence $\pi z=0$ and $f=0$. This proves $K=0$.
+
+We have shown that $B_{\mathfrak q}\simeq T$ is smooth over $R$ at every prime in $D(\mathfrak aB)$ lying over $\pi=0$, and we already proved smoothness away from $\pi=0$. Therefore $D(\mathfrak aB)$ is contained in the smooth locus, which is exactly the ideal containment $\mathfrak aB\subseteq H_{B/R}$. ∎
 
 #### Lemma. Desingularization of a strict presentation
 
-Let $R$ be a Noetherian ring. Let $\Lambda$ be an $R$-algebra. Let $\pi \in R$ and assume that $\text{Ann}_R(\pi) = \text{Ann}_R(\pi^2)$ and $\text{Ann}_\Lambda(\pi) = \text{Ann}_\Lambda(\pi^2)$. Let $A \to \Lambda$ and $D \to \Lambda$ be $R$-algebra maps with $A$ and $D$ of finite presentation. Assume
+Let $R$ be Noetherian and let $\Lambda$ be an $R$-algebra. Suppose
 
-1.  $\pi$ is strictly standard in $A$ over $R$, and
+$$\operatorname{Ann}_R(\pi)=\operatorname{Ann}_R(\pi^2),
+\qquad\operatorname{Ann}_\Lambda(\pi)=\operatorname{Ann}_\Lambda(\pi^2).$$
 
-2.  there exists an $R$-algebra map $A/\pi^4 A \to D/\pi^4 D$ compatible with the maps to $\Lambda/\pi^4 \Lambda$.
+Let $A,D$ be finitely presented $R$-algebras with maps to $\Lambda$. Assume $\pi$ is strictly standard in $A/R$ and there is a compatible $R$-algebra map $A/\pi^4A\to D/\pi^4D$. Then there are maps $A\to B$, $D\to B$, and $B\to\Lambda$, all compatible with the given target maps, such that $B/R$ is finitely presented and
 
-Then we can find an $R$-algebra map $B \to \Lambda$ with $B$ of finite presentation and $R$-algebra maps $A \to B$ and $D \to B$ compatible with the maps to $\Lambda$ such that $H_{D/R}B \subset H_{B/D}$ and $H_{D/R}B \subset H_{B/R}$.
+$$H_{D/R}B\subseteq H_{B/D},
+\qquad H_{D/R}B\subseteq H_{B/R}.$$
 
-**Proof.** We apply Lemma [The desingularization lemma](#native-smoothing-lemma-desingularize) to $$D \longrightarrow A \otimes_R D \longrightarrow \Lambda$$ and the image of $\pi$ in $D$. By Lemma [Base change of a strict standard presentation](#native-smoothing-lemma-strictly-standard-base-change) we see that $\pi$ is strictly standard in $A \otimes_R D$ over $D$. As our section $\rho : (A \otimes_R D)/\pi^4 (A \otimes_R D) \to D/\pi^4 D$ we take the map induced by the map in (2). Thus Lemma [The desingularization lemma](#native-smoothing-lemma-desingularize) applies and we obtain a factorization $A \otimes_R D \to B \to \Lambda$ with $B$ of finite presentation and $\mathfrak a B \subset H_{B/D}$ where $$\mathfrak a = \text{Ann}_D(\text{Ann}_D(\pi^2)/\text{Ann}_D(\pi)).$$ For any prime $\mathfrak q$ of $D$ such that $D_\mathfrak q$ is flat over $R$ we have $\text{Ann}_{D_\mathfrak q}(\pi^2)/\text{Ann}_{D_\mathfrak q}(\pi) = 0$ because annihilators of elements commutes with flat base change and we assumed $\text{Ann}_R(\pi) = \text{Ann}_R(\pi^2)$. Because $D$ is Noetherian we see that $\text{Ann}_D(\pi^2)/\text{Ann}_D(\pi)$ is a finite $D$-module, hence formation of its annihilator commutes with localization. Thus we see that $\mathfrak a \not \subset \mathfrak q$. Hence we see that $D \to B$ is smooth at any prime of $B$ lying over $\mathfrak q$. Since any prime of $D$ where $R \to D$ is smooth is one where $D_\mathfrak q$ is flat over $R$ we conclude that $H_{D/R}B \subset H_{B/D}$. The final inclusion $H_{D/R}B \subset H_{B/R}$ follows because compositions of smooth ring maps are smooth (Algebra, Lemma [Composition of smooth ring maps](#native-algebra-lemma-compose-smooth)). $\square$
+**Proof.** Use $D$ as the base ring and $A\otimes_RD$ as the algebra to which the preceding lemma is applied. The base $D$ is Noetherian, strictness survives [arbitrary base change](#native-smoothing-lemma-strictly-standard-base-change), and the prescribed map modulo $\pi^4$ defines a $D/\pi^4D$-algebra retraction
+
+$$ (A\otimes_RD)/\pi^4(A\otimes_RD)\longrightarrow D/\pi^4D.$$
+
+Multiplication of the two given maps into $\Lambda$ supplies the map from the tensor product. The compatibility hypothesis gives exactly the required compatibility of the retraction. The preceding lemma yields $A\otimes_RD\to B\to\Lambda$ and
+
+$$\mathfrak bB\subseteq H_{B/D},\qquad
+\mathfrak b=\operatorname{Ann}_D\bigl(
+\operatorname{Ann}_D(\pi^2)/\operatorname{Ann}_D(\pi)\bigr).$$
+
+If $D_{\mathfrak p}$ is flat over $R$, the equality of annihilators in $R$ transfers to $D_{\mathfrak p}$. The finite $D$-module inside the last annihilator is therefore zero after localization at $\mathfrak p$. Finiteness implies that some element outside $\mathfrak p$ annihilates it, so $\mathfrak b\nsubseteq\mathfrak p$. Every smooth prime of $D/R$ is such a flat prime. Thus every prime of $B$ above the smooth locus of $D/R$ belongs to the smooth locus of $B/D$. In ideal language this is the first asserted containment. Smooth maps compose, so the same primes are smooth for $B/R$, proving the second. Finite presentation over $R$ follows by composing the finite presentations over $D$ and over $R$. ∎
 
 #### Lemma. Combining lifting with desingularization
 
-Let $R$ be a Noetherian ring. Let $\Lambda$ be an $R$-algebra. Let $\pi \in R$ and assume that $\text{Ann}_R(\pi) = \text{Ann}_R(\pi^2)$ and $\text{Ann}_\Lambda(\pi) = \text{Ann}_\Lambda(\pi^2)$. Let $A \to \Lambda$ be an $R$-algebra map with $A$ of finite presentation and assume $\pi$ is strictly standard in $A$ over $R$. Let $$A/\pi^8A \to \bar C \to \Lambda/\pi^8\Lambda$$ be a factorization with $\bar C$ of finite presentation. Then we can find a factorization $A \to B \to \Lambda$ with $B$ of finite presentation such that $R_\pi \to B_\pi$ is smooth and such that $$H_{\bar C/(R/\pi^8 R)} \cdot \Lambda/\pi^8\Lambda
-\subset
-\sqrt{H_{B/R} \Lambda} \bmod \pi^8\Lambda.$$
+Let $R$ be Noetherian and let $\Lambda$ be an $R$-algebra. Assume the annihilators of $\pi$ and $\pi^2$ agree both in $R$ and in $\Lambda$. Let $A/R$ be finitely presented, with a map to $\Lambda$, and suppose $\pi$ is strictly standard for $A/R$. Given a factorization
 
-**Proof.** Apply Lemma [The lifting lemma](#native-smoothing-lemma-lifting) to get $R \to D \to \Lambda$ with a factorization $\bar C/\pi^4\bar C \to D/\pi^4 D \to \Lambda/\pi^4\Lambda$ such that $R \to D$ is smooth at any prime not containing $\pi$ and at any prime lying over a prime of $\bar C/\pi^4\bar C$ where $R/\pi^8 R \to \bar C$ is smooth. By Lemma [Desingularization of a strict presentation](#native-smoothing-lemma-desingularize-strictly-standard) we can find a finitely presented $R$-algebra $B$ and factorizations $A \to B \to \Lambda$ and $D \to B \to \Lambda$ such that $H_{D/R}B\subset H_{B/R}$. Away from $\pi$, the lifting lemma makes $D$ smooth over $R$, and the displayed inclusion makes $B$ smooth there too. Let $\eta$ be a prime of $\Lambda$ containing $\pi$ whose inverse image in $\bar C$ is in the smooth locus. The compatible map $\bar C/\pi^4\to D/\pi^4\to\Lambda/\pi^4$ and the lifting lemma show that the inverse image of $\eta$ in $D$ is smooth over $R$. Thus $H_{D/R}\Lambda\nsubseteq\eta$, and the displayed inclusion gives $H_{B/R}\Lambda\nsubseteq\eta$. On $\operatorname{Spec}(\Lambda/\pi^8)$ the smooth open of $\bar C$ is therefore contained in the open defined by $H_{B/R}$. Taking closed complements gives exactly the stated radical ideal inclusion. $\square$
+$$A/\pi^8A\longrightarrow\bar C\longrightarrow\Lambda/\pi^8\Lambda$$
+
+through a finitely presented $(R/\pi^8R)$-algebra, there exists $A\to B\to\Lambda$ with $B/R$ finitely presented, $B_\pi/R_\pi$ smooth, and
+
+$$H_{\bar C/(R/\pi^8R)}(\Lambda/\pi^8\Lambda)
+\subseteq
+\bigl(\sqrt{H_{B/R}\Lambda}+\pi^8\Lambda\bigr)/\pi^8\Lambda.$$
+
+**Proof.** The annihilator equalities for $\pi$ imply those for all its positive powers, by the induction used in the preceding proof. Apply the [lifting lemma](#native-smoothing-lemma-lifting) with $\pi^4$ in place of its parameter. It gives a finitely presented $D/R$, a map $D\to\Lambda$, and compatible maps
+
+$$\bar C/\pi^4\bar C\longrightarrow D/\pi^4D\longrightarrow\Lambda/\pi^4\Lambda.$$
+
+The algebra $D$ is smooth over $R$ away from $\pi=0$, and it is smooth along the inverse image of the smooth locus of $\bar C/(R/\pi^8R)$. Compose the given map from $A$ with this diagram. The preceding strict-desingularization lemma then gives compatible maps $A\to B\to\Lambda$ and $D\to B\to\Lambda$, with $H_{D/R}B\subseteq H_{B/R}$. It follows immediately that $B_\pi/R_\pi$ is smooth.
+
+For the remaining assertion, let $\eta\subset\Lambda$ contain $\pi$, and suppose its image in $\operatorname{Spec}\bar C$ is smooth over $R/\pi^8R$. The compatibility modulo $\pi^4$ and the lifting lemma show that its inverse image in $D$ is smooth over $R$. Therefore $H_{D/R}\Lambda\nsubseteq\eta$, and the containment just proved implies $H_{B/R}\Lambda\nsubseteq\eta$. This proves the required containment of smooth opens in $\operatorname{Spec}(\Lambda/\pi^8\Lambda)$, hence the corresponding radical containment of ideals.
+
+To identify that radical with the right side displayed in the statement, note also that smoothness of $B_\pi/R_\pi$ implies $\pi\in H_{B/R}$. Thus $\pi^8\Lambda$ already lies in $H_{B/R}\Lambda$, and passage to the quotient commutes with taking the radical of this ideal. This gives precisely the stated formula. ∎
 
 #### Reduction to the field case
 
-In this section we apply the lemmas in the previous sections to prove that it suffices to prove the main result when the base ring is a field, see Lemma [Reducing desingularization to field bases](#native-smoothing-lemma-reduce-to-field).
+We now reduce the global theorem to a regular algebra over a field. The two return steps matter: a smooth factorization over the total ring of fractions must first be expressed over the original base, and a factorization modulo a power of a nonzerodivisor must then be lifted back to that base.
 
 #### Situation. The global desingularization problem
- Here $R \to \Lambda$ is a regular ring map of Noetherian rings.
 
-Let $R \to \Lambda$ be as in Situation [The global desingularization problem](#native-smoothing-situation-global). We say *PT holds for $R \to \Lambda$* if $\Lambda$ is a filtered colimit of smooth $R$-algebras.
+In this section $R\to\Lambda$ is a regular homomorphism between Noetherian rings. We write $\operatorname{PT}(R,\Lambda)$ for the assertion that $\Lambda$ is ind-smooth over $R$. Equivalently, every map to $\Lambda$ from a finitely presented $R$-algebra factors through a smooth $R$-algebra, by the [finite factorization criterion](#reader-section-2).
 
-#### Lemma. Tensor products and direct sums
- Let $R_i \to \Lambda_i$, $i = 1, 2$ be as in Situation [The global desingularization problem](#native-smoothing-situation-global). If PT holds for $R_i \to \Lambda_i$, $i = 1, 2$, then PT holds for $R_1 \times R_2 \to \Lambda_1 \times \Lambda_2$.
+#### Lemma. Products of ind-smooth maps
 
-**Proof.** Write $\Lambda_i=\mathop{\rm colim}_\alpha B_{i,\alpha}$ with smooth $R_i$-algebras. The product of the two filtered index categories is filtered, and its colimit of $B_{1,\alpha}\times B_{2,\beta}$ is $\Lambda_1\times\Lambda_2$: elements and equality of elements are checked componentwise at common stages. Each product algebra is smooth over $R_1\times R_2$, since the idempotent components of both spectra split and the two restrictions are the given smooth maps. This proves the lemma. $\square$
+For $i=1,2$, let $R_i\to\Lambda_i$ be regular maps of Noetherian rings satisfying $\operatorname{PT}(R_i,\Lambda_i)$. Then their product map satisfies $\operatorname{PT}(R_1\times R_2,\Lambda_1\times\Lambda_2)$.
+
+**Proof.** Express $\Lambda_i$ as a filtered colimit of smooth $R_i$-algebras $B_{i,\alpha}$. Index the algebras $B_{1,\alpha}\times B_{2,\beta}$ by the product of the two indexing categories. This category is filtered: common targets and equalizers of parallel arrows can be chosen separately in its two factors. An element of the product of the two colimits comes from some pair of stages, and equality can also be checked at a pair of later stages. Thus the colimit is $\Lambda_1\times\Lambda_2$. Each stage is smooth over $R_1\times R_2$, because the two complementary idempotents split its spectrum into the two given smooth morphisms. This proves the assertion. ∎
 
 #### Lemma. Returning from a localized base
 
-Let $R \to A \to \Lambda$ be ring maps with $A$ of finite presentation over $R$. Let $S \subset R$ be a multiplicative set. Let $S^{-1}A \to B' \to S^{-1}\Lambda$ be a factorization with $B'$ smooth over $S^{-1}R$. Then we can find a factorization $A \to B \to \Lambda$ such that some $s \in S$ maps to an elementary standard element (Definition [Strict standard smoothness](#native-smoothing-definition-strictly-standard)) in $B$ over $R$.
+Let $R\to A\to\Lambda$ be ring maps, with $A/R$ finitely presented, and let $S\subseteq R$ be multiplicative. Suppose $S^{-1}A\to C\to S^{-1}\Lambda$ factors the localized map and $C/S^{-1}R$ is smooth. Then $A\to\Lambda$ factors through a finitely presented $R$-algebra $B$ in which the image of some $s\in S$ is elementary standard.
 
-**Proof.** We first apply Lemma [Standard presentations of smooth algebras](#native-smoothing-lemma-smooth-standard-smooth) to $S^{-1}R \to B'$. Thus we may assume $B'$ is standard smooth over $S^{-1}R$. Write $A = R[x_1, \ldots, x_n]/(g_1, \ldots, g_t)$ and say $x_i \mapsto \lambda_i$ in $\Lambda$. We may write $B' = S^{-1}R[x_1, \ldots, x_{n + m}]/(f_1, \ldots, f_c)$ for some $c \geq n$ where $\det(\partial f_j/\partial x_i)_{i, j = 1, \ldots, c}$ is invertible in $B'$ and such that $A \to B'$ is given by $x_i \mapsto x_i$, see Lemma [Including prescribed generators in a smooth presentation](#native-smoothing-lemma-standard-smooth-include-generators). After multiplying $x_i$, $i > n$ by an element of $S$ and correspondingly modifying the equations $f_j$ we may assume $B' \to S^{-1}\Lambda$ maps $x_i$ to $\lambda_i/1$ for some $\lambda_i \in \Lambda$ for $i > n$. Choose a relation $$1 =
-a_0 \det(\partial f_j/\partial x_i)_{i, j = 1, \ldots, c}
-+
-\sum\nolimits_{j = 1, \ldots, c} a_jf_j$$ for some $a_j \in S^{-1}R[x_1, \ldots, x_{n + m}]$. Since each element of $S$ is invertible in $B'$ we may (by clearing denominators) assume that $f_j, a_j \in R[x_1, \ldots, x_{n + m}]$ and that $$s_0 = a_0 \det(\partial f_j/\partial x_i)_{i, j = 1, \ldots, c}
-+
-\sum\nolimits_{j = 1, \ldots, c} a_jf_j$$ for some $s_0 \in S$. Since $g_j$ maps to zero in $S^{-1}R[x_1, \ldots, x_{n + m}]/(f_1, \ldots, f_c)$ we can find elements $s_j \in S$ such that $s_j g_j = 0$ in $R[x_1, \ldots, x_{n + m}]/(f_1, \ldots, f_c)$. Since $f_j$ maps to zero in $S^{-1}\Lambda$ we can find $s'_j \in S$ such that $s'_j f_j(\lambda_1, \ldots, \lambda_{n + m}) = 0$ in $\Lambda$. Consider the ring $$B = R[x_1, \ldots, x_{n + m}]/
-(s'_1f_1, \ldots, s'_cf_c, g_1, \ldots, g_t)$$ and the factorization $A \to B \to \Lambda$ with $B \to \Lambda$ given by $x_i \mapsto \lambda_i$. We claim that $s = s_0s_1 \ldots s_ts'_1 \ldots s'_c$ is elementary standard in $B$ over $R$ which finishes the proof. Namely, $s_j g_j \in (f_1, \ldots, f_c)$ and hence $sg_j \in (s'_1f_1, \ldots, s'_cf_c)$. Finally, we have $$a_0\det(\partial s'_jf_j/\partial x_i)_{i, j = 1, \ldots, c}
-+
-\sum\nolimits_{j = 1, \ldots, c}
-(s'_1 \ldots \hat{s'_j} \ldots s'_c) a_j s'_jf_j
-=
-s_0s'_1\ldots s'_c$$ which divides $s$ as desired. $\square$
+**Proof.** Replace $C$ by a standard smooth algebra with a retraction to $C$, using the [standard presentation lemma](#native-smoothing-lemma-smooth-standard-smooth). Composing with that retraction preserves the required map to $S^{-1}\Lambda$. Present $A=R[x_1,\ldots,x_n]/(g_1,\ldots,g_t)$, and let $\lambda_i\in\Lambda$ be the images of its generators. The [prescribed-generators lemma](#native-smoothing-lemma-standard-smooth-include-generators) gives
+
+$$C=(S^{-1}R)[x_1,\ldots,x_{n+m}]/(f_1,\ldots,f_c),\qquad c\geq n,$$
+
+with the prescribed first $n$ images and with the minor $\Delta=\det(\partial f_j/\partial x_i)_{1\leq j,i\leq c}$ invertible in $C$.
+
+For each additional variable, multiply it by a suitable element of $S$ so that its target image is represented by an element $\lambda_i\in\Lambda$. These changes of variables are invertible diagonal changes over $S^{-1}R$. Their scaling factors are base scalars, so their differentials relative to the base vanish; consequently the chosen Jacobian minor changes only by a unit. Clear the coefficients in the finitely many equations. Multiplying an equation by an element of $S$ again changes its Jacobian row only by a base unit. We now have $f_j\in R[x_1,\ldots,x_{n+m}]$ presenting $C$ after localization, with the indicated generator images.
+
+The inverse of $\Delta$ in the localized quotient can be represented by a polynomial. Clear its coefficients and the coefficients of the finitely many equations witnessing this inverse. Clearing also any remaining equality in the localized polynomial ring gives polynomials $b_0,b_1,\ldots,b_c$ and $s_0\in S$ with
+
+$$s_0=b_0\Delta+\sum_{j=1}^c b_jf_j.$$
+
+Since each $g_\ell$ vanishes in $C$, choose $s_\ell\in S$ with $s_\ell g_\ell\in(f_1,\ldots,f_c)$ in the polynomial ring over $R$. Since each $f_j(\lambda)$ vanishes in $S^{-1}\Lambda$, choose $u_j\in S$ with $u_jf_j(\lambda)=0$ in $\Lambda$. Set
+
+$$B=R[x_1,\ldots,x_{n+m}]/
+(u_1f_1,\ldots,u_cf_c,g_1,\ldots,g_t).$$
+
+Evaluation at the $\lambda_i$ gives a factorization $A\to B\to\Lambda$. Let
+
+$$s=s_0\left(\prod_{\ell=1}^t s_\ell\right)
+\left(\prod_{j=1}^c u_j\right)\in S.$$
+
+The first $c$ equations of $B$ have minor $(\prod_j u_j)\Delta$. Multiplying the identity for $s_0$ by $\prod_j u_j$ and reducing in $B$ shows that $s$ is a multiple of this minor. Moreover, $sg_\ell\in(u_1f_1,\ldots,u_cf_c)$ for each $\ell$: multiply its earlier expression by the factors $u_j$, which supply every needed coefficient. These are the two conditions for $s$ to be elementary standard, with an even stronger relation containment than the definition requires. ∎
 
 #### Lemma. Reducing desingularization to field bases
 
-Proving Popescu approximation reduces to algebras over a field
+If $\operatorname{PT}(k,\Lambda)$ holds for every regular homomorphism from a field to a Noetherian ring, then $\operatorname{PT}(R,\Lambda)$ holds for every regular homomorphism of Noetherian rings.
 
-If for every Situation [The global desingularization problem](#native-smoothing-situation-global) where $R$ is a field PT holds, then PT holds in general.
+**Proof.** Suppose a counterexample exists. For its fixed map $R\to\Lambda$, consider the ideals $I\subseteq R$ for which $R/I\to\Lambda/I\Lambda$ fails the assertion. Such quotient maps remain regular by [base change of regular maps](#native-more-algebra-lemma-regular-base-change). The ascending-chain condition supplies a maximal failing ideal. Replace the map by its quotient by that ideal. Now every quotient by a nonzero ideal satisfies the assertion.
 
-**Proof.** Assume PT holds for any Situation [The global desingularization problem](#native-smoothing-situation-global) where $R$ is a field. Let $R \to \Lambda$ be as in Situation [The global desingularization problem](#native-smoothing-situation-global) arbitrary. Note that $R/I \to \Lambda/I\Lambda$ is another regular ring map of Noetherian rings, see More on Algebra, Lemma [Base change of regular ring maps](#native-more-algebra-lemma-regular-base-change). Consider the set of ideals $$\mathcal{I} = \{I \subset R \mid R/I \to \Lambda/I\Lambda
-\text{ does not have PT}\}$$ We have to show that $\mathcal{I}$ is empty. If this set is nonempty, then it contains a maximal element because $R$ is Noetherian. Replacing $R$ by $R/I$ and $\Lambda$ by $\Lambda/I$ we obtain a situation where PT holds for $R/I \to \Lambda/I\Lambda$ for any nonzero ideal of $R$. In particular, we see by applying Proposition [Lifting an algebraic factorization](#native-smoothing-proposition-lift) that $R$ is a reduced ring.
+The new base $R$ is reduced. Otherwise its nonzero nilradical is nilpotent, since $R$ is Noetherian, and the quotient by that ideal satisfies $\operatorname{PT}$. Flatness of the regular map and [nilpotent lifting](#native-smoothing-proposition-lift) would imply $\operatorname{PT}(R,\Lambda)$, a contradiction.
 
-Let $A \to \Lambda$ be an $R$-algebra homomorphism with $A$ of finite presentation. We have to find a factorization $A \to B \to \Lambda$ with $B$ smooth over $R$, see Algebra, Lemma [Recognizing a filtered colimit of finite presentations](#native-algebra-lemma-when-colimit).
+Let $S$ be the nonzerodivisors of this reduced Noetherian ring. Its total ring of fractions $S^{-1}R$ is a finite product of fields: there are finitely many minimal primes, no embedded associated primes in a reduced Noetherian ring, and localization at the nonzerodivisors gives their fraction fields. The precise algebraic statements are [the total quotient ring without embedded primes](#native-algebra-lemma-total-ring-fractions-no-embedded-points) and [finiteness of the irreducible components](#native-algebra-lemma-noetherian-irreducible-components). Localization preserves regularity. The assumed field case and the product lemma therefore give $\operatorname{PT}(S^{-1}R,S^{-1}\Lambda)$.
 
-Let $S \subset R$ be the set of nonzerodivisors and consider the total ring of fractions $Q = S^{-1}R$ of $R$. We know that $Q = K_1 \times \ldots \times K_n$ is a product of fields, see Algebra, Lemmas [Total rings of fractions without embedded primes](#native-algebra-lemma-total-ring-fractions-no-embedded-points) and [Irreducible components of a Noetherian spectrum](#native-algebra-lemma-noetherian-irreducible-components). By Lemma [Tensor products and direct sums](#native-smoothing-lemma-product) and our assumption PT holds for the ring map $S^{-1}R \to S^{-1}\Lambda$. Hence we can find a factorization $S^{-1}A \to B' \to S^{-1}\Lambda$ with $B'$ smooth over $S^{-1}R$.
+Take any finitely presented $A/R$ mapping to $\Lambda$. There is a smooth factorization after localization at $S$. The preceding return lemma replaces it by an actual factorization over $R$ whose intermediate algebra has an elementary standard element $\pi\in S$. We may replace $A$ by that intermediate algebra, since a smooth factorization of the new map will also factor the original one. Thus $\pi$ is strictly standard in $A/R$ and is a nonzerodivisor of $R$. It remains a nonzerodivisor of $\Lambda$, because $\Lambda/R$ is flat.
 
-We apply Lemma [Returning from a localized base](#native-smoothing-lemma-delocalize-base) and find a factorization $A \to B \to \Lambda$ such that some $\pi \in S$ is elementary standard in $B$ over $R$. After replacing $A$ by $B$ we may assume that $\pi$ is elementary standard, hence strictly standard in $A$. We know that $R/\pi^8R \to \Lambda/\pi^8\Lambda$ satisfies PT. Hence we can find a factorization $R/\pi^8 R \to A/\pi^8A \to \bar C \to \Lambda/\pi^8\Lambda$ with $R/\pi^8 R \to \bar C$ smooth. By Lemma [The lifting lemma](#native-smoothing-lemma-lifting) we can find an $R$-algebra map $D \to \Lambda$ with $D$ smooth over $R$ and a factorization $R/\pi^4 R \to A/\pi^4A \to D/\pi^4D \to \Lambda/\pi^4\Lambda$. By Lemma [Desingularization of a strict presentation](#native-smoothing-lemma-desingularize-strictly-standard) we can find $A \to B \to \Lambda$ with $B$ smooth over $R$ which finishes the proof. $\square$
+The ideal $(\pi^8)$ is nonzero unless $R=0$, whose conclusion is immediate. Hence maximality of the failing ideal gives $\operatorname{PT}(R/\pi^8R,\Lambda/\pi^8\Lambda)$. Factor the reduced map from $A/\pi^8A$ through a smooth algebra $\bar C$ over $R/\pi^8R$. Apply the [combined lifting and desingularization lemma](#native-smoothing-lemma-desingularize-lifting-apply). It gives $A\to B\to\Lambda$, with $B/R$ finitely presented and $B_\pi/R_\pi$ smooth, and its radical-ideal conclusion reads
+
+$$\Lambda/\pi^8\Lambda
+\subseteq\sqrt{H_{B/R}\Lambda}/\pi^8\Lambda,$$
+
+because $\bar C$ is smooth everywhere. Thus $H_{B/R}\Lambda=\Lambda$. The [smooth factorization construction](#native-smoothing-lemma-final-solve) replaces $B$ by a smooth $R$-algebra still mapping to $\Lambda$. This factors every finite presentation into $\Lambda$ through a smooth algebra. The finite factorization criterion contradicts the assumed failure. ∎
 
 #### Localization and descent of resolutions
 
+The next arguments preserve two kinds of progress at once: they remove a specified prime from the nonsmooth locus, while retaining every point already known to be smooth. This second requirement explains the additional variables in the height-zero return construction.
+
 #### Situation. The local desingularization problem
 
-We are given a Noetherian ring $R$ and an $R$-algebra map $A \to \Lambda$ and a prime $\mathfrak q \subset \Lambda$. We assume $A$ is of finite presentation over $R$. In this situation we denote $\mathfrak h_A = \sqrt{H_{A/R} \Lambda}$.
+Fix a Noetherian ring $R$, a finitely presented $R$-algebra $A$, a map $A\to\Lambda$, and a prime $\mathfrak q\subset\Lambda$. No Noetherian hypothesis on $\Lambda$ is included in this setup. Put
 
-Let $R \to A \to \Lambda \supset \mathfrak q$ be as in Situation [The local desingularization problem](#native-smoothing-situation-local). We say *$R \to A \to \Lambda \supset \mathfrak q$ can be resolved* if there exists a factorization $A \to B \to \Lambda$ with $B$ of finite presentation and $\mathfrak h_A \subset \mathfrak h_B \not \subset \mathfrak q$. In this case we will call the factorization $A \to B \to \Lambda$ a *resolution of $R \to A \to \Lambda \supset \mathfrak q$*.
+$$\mathfrak h_A=\sqrt{H_{A/R}\Lambda}.$$
+
+A **resolution at $\mathfrak q$** is a factorization $A\to B\to\Lambda$ with $B/R$ finitely presented and
+
+$$\mathfrak h_A\subseteq\mathfrak h_B,
+\qquad\mathfrak h_B\nsubseteq\mathfrak q.$$
+
+Thus the smooth open in the target grows, and the new open contains $\mathfrak q$. The word resolution here refers to this factorization property, not to a proper birational resolution of a variety.
 
 #### Lemma. Lifting a local desingularization solution
 
-Let $R \to A \to \Lambda \supset \mathfrak q$ be as in Situation [The local desingularization problem](#native-smoothing-situation-local). Let $r \geq 1$ and $\pi_1, \ldots, \pi_r \in R$ map to elements of $\mathfrak q$. Assume
+In the local setup, let $r\geq1$ and choose $\pi_1,\ldots,\pi_r\in R$ mapping into $\mathfrak q$. Assume each $\pi_i$ is strictly standard for $A/R$. For each $i$, assume also that the annihilators of $\pi_i$ and $\pi_i^2$ agree both in
 
-1.  for $i = 1, \ldots, r$ we have $$\text{Ann}_{R/(\pi_1^8, \ldots, \pi_{i - 1}^8)R}(\pi_i)
-    =
-    \text{Ann}_{R/(\pi_1^8, \ldots, \pi_{i - 1}^8)R}(\pi_i^2)$$ and $$\text{Ann}_{\Lambda/(\pi_1^8, \ldots, \pi_{i - 1}^8)\Lambda}(\pi_i)
-    =
-    \text{Ann}_{\Lambda/(\pi_1^8, \ldots, \pi_{i - 1}^8)\Lambda}(\pi_i^2)$$
+$$R/(\pi_1^8,\ldots,\pi_{i-1}^8)R
+\quad\text{and in}\quad
+\Lambda/(\pi_1^8,\ldots,\pi_{i-1}^8)\Lambda.$$
 
-2.  for $i = 1, \ldots, r$ the element $\pi_i$ maps to a strictly standard element in $A$ over $R$.
+If the induced local problem modulo $(\pi_1^8,\ldots,\pi_r^8)$ admits a resolution, then the original local problem admits a resolution.
 
-Then, if $$R/(\pi_1^8, \ldots, \pi_r^8)R \to A/(\pi_1^8, \ldots, \pi_r^8)A
-\to \Lambda/(\pi_1^8, \ldots, \pi_r^8)\Lambda \supset
-\mathfrak q/(\pi_1^8, \ldots, \pi_r^8)\Lambda$$ can be resolved, so can $R \to A \to \Lambda \supset \mathfrak q$.
+**Proof.** Consider first one element $\pi$. Let $A/\pi^8A\to\bar C\to\Lambda/\pi^8\Lambda$ be a resolving factorization. The [combined lifting lemma](#native-smoothing-lemma-desingularize-lifting-apply) supplies $A\to B\to\Lambda$, with $B_\pi/R_\pi$ smooth and with the image of $H_{\bar C/(R/\pi^8R)}$ contained in the reduction of $\mathfrak h_B$. Since the reduced factorization resolves the selected prime, this containment gives $\mathfrak h_B\nsubseteq\mathfrak q$.
 
-**Proof.** We are going to prove this by induction on $r$.
+It also retains the original smooth locus. Smoothness is preserved by base change, so the reduction of $H_{A/R}$ belongs to $H_{(A/\pi^8A)/(R/\pi^8R)}$. The resolving property of $\bar C$ and the radical containment therefore place its target image inside $\mathfrak h_B$ modulo $\pi^8$. Since $B_\pi$ is smooth, $\pi\in H_{B/R}$; thus this containment lifts to $H_{A/R}\Lambda\subseteq\mathfrak h_B$. Taking radicals gives $\mathfrak h_A\subseteq\mathfrak h_B$, as required.
 
-The case $r = 1$. Here the assumption is that there exists a factorization $A/\pi_1^8 \to \bar C \to \Lambda/\pi_1^8$ which resolves the situation modulo $\pi_1^8$. Conditions (1) and (2) are the assumptions needed to apply Lemma [Combining lifting with desingularization](#native-smoothing-lemma-desingularize-lifting-apply). Thus we can "lift" the resolution $\bar C$ to a resolution of $R \to A \to \Lambda \supset \mathfrak q$.
-
-The case $r > 1$. In this case we apply the induction hypothesis for $r - 1$ to the situation $R/\pi_1^8 \to A/\pi_1^8 \to \Lambda/\pi_1^8
-\supset \mathfrak q/\pi_1^8\Lambda$. Note that property (2) is preserved by Lemma [Base change of a strict standard presentation](#native-smoothing-lemma-strictly-standard-base-change). $\square$
+For several elements, first apply induction to the last $r-1$ elements over $R/\pi_1^8R$. The stated annihilator conditions are precisely those needed for this quotient setup, and strictness survives arbitrary base change. We obtain a resolution modulo $\pi_1^8$, to which the one-element argument applies. ∎
 
 #### Lemma. Returning from a localized target
 
-*Source credit:* the original source citation swan (Lemma 12.2) or the original source citation popescu-GND (Lemma 2)
+In the local setup, set $\mathfrak p=\mathfrak q\cap R$. Suppose $\mathfrak q$ is minimal over $\mathfrak h_A$ and the localized problem
 
-Let $R \to A \to \Lambda \supset \mathfrak q$ be as in Situation [The local desingularization problem](#native-smoothing-situation-local). Let $\mathfrak p = R \cap \mathfrak q$. Assume that $\mathfrak q$ is minimal over $\mathfrak h_A$ and that $R_\mathfrak p \to A_\mathfrak p \to \Lambda_\mathfrak q
-\supset \mathfrak q\Lambda_\mathfrak q$ can be resolved. Then there exists a factorization $A \to C \to \Lambda$ with $C$ of finite presentation such that $H_{C/R} \Lambda \not \subset \mathfrak q$.
+$$R_{\mathfrak p}\longrightarrow A_{\mathfrak p}
+\longrightarrow\Lambda_{\mathfrak q}$$
 
-**Proof.** Let $A_\mathfrak p \to C \to \Lambda_\mathfrak q$ be a resolution of $R_\mathfrak p \to A_\mathfrak p \to \Lambda_\mathfrak q
-\supset \mathfrak q\Lambda_\mathfrak q$. By our assumption that $\mathfrak q$ is minimal over $\mathfrak h_A$ this means that $H_{C/R_\mathfrak p} \Lambda_\mathfrak q = \Lambda_\mathfrak q$. By Lemma [Solving the strict-standard Jacobian relations](#native-smoothing-lemma-final-solve) we may assume that $C$ is smooth over $R_\mathfrak p$. By Lemma [Standard presentations of smooth algebras](#native-smoothing-lemma-smooth-standard-smooth) we may assume that $C$ is standard smooth over $R_\mathfrak p$. Write $A = R[x_1, \ldots, x_n]/(g_1, \ldots, g_t)$ and say $A \to \Lambda$ is given by $x_i \mapsto \lambda_i$. Write $C = R_\mathfrak p[x_1, \ldots, x_{n + m}]/(f_1, \ldots, f_c)$ for some $c \geq n$ such that $A \to C$ maps $x_i$ to $x_i$ and such that $\det(\partial f_j/\partial x_i)_{i, j = 1, \ldots, c}$ is invertible in $C$, see Lemma [Including prescribed generators in a smooth presentation](#native-smoothing-lemma-standard-smooth-include-generators). After clearing denominators we may assume $f_1, \ldots, f_c$ are elements of $R[x_1, \ldots, x_{n + m}]$. Of course $\det(\partial f_j/\partial x_i)_{i, j = 1, \ldots, c}$ is not invertible in $R[x_1, \ldots, x_{n + m}]/(f_1, \ldots, f_c)$ but it becomes invertible after inverting some element $s_0 \in R$, $s_0 \not \in \mathfrak p$. As $g_j$ maps to zero under $R[x_1, \ldots, x_n] \to A \to C$ we can find $s_j \in R$, $s_j \not \in \mathfrak p$ such that $s_j g_j$ is zero in $R[x_1, \ldots, x_{n + m}]/(f_1, \ldots, f_c)$. Write $f_j = F_j(x_1, \ldots, x_{n + m}, 1)$ for some polynomial $F_j \in R[x_1, \ldots, x_n, X_{n + 1}, \ldots, X_{n + m + 1}]$ homogeneous in $X_{n + 1}, \ldots, X_{n + m + 1}$. Pick $\lambda_{n + i} \in \Lambda$, $i = 1, \ldots, m + 1$ with $\lambda_{n + m + 1} \not \in \mathfrak q$ such that $x_{n + i}$ maps to $\lambda_{n + i}/\lambda_{n + m + 1}$ in $\Lambda_\mathfrak q$. Then $$\begin{aligned}
-F_j(\lambda_1, \ldots, \lambda_{n + m + 1})
-& =
-(\lambda_{n + m + 1})^{\deg(F_j)} F_j(\lambda_1, \ldots, \lambda_n,
-\frac{\lambda_{n + 1}}{\lambda_{n + m + 1}}, \ldots,
-\frac{\lambda_{n + m}}{\lambda_{n + m + 1}}, 1) \\
-& =
-(\lambda_{n + m + 1})^{\deg(F_j)} f_j(\lambda_1, \ldots, \lambda_n,
-\frac{\lambda_{n + 1}}{\lambda_{n + m + 1}}, \ldots,
-\frac{\lambda_{n + m}}{\lambda_{n + m + 1}}) \\
-& = 0
-\end{aligned}$$ in $\Lambda_\mathfrak q$. Thus we can find $\lambda_0 \in \Lambda$, $\lambda_0 \not \in \mathfrak q$ such that $\lambda_0 F_j(\lambda_1, \ldots, \lambda_{n + m + 1}) = 0$ in $\Lambda$. Now we set $B$ equal to $$R[x_0, \ldots, x_{n + m + 1}]/
-(g_1, \ldots, g_t, x_0F_1(x_1, \ldots, x_{n + m + 1}), \ldots,
-x_0F_c(x_1, \ldots, x_{n + m + 1}))$$ which we map to $\Lambda$ by mapping $x_i$ to $\lambda_i$. Let $b$ be the image of $x_0 x_{n + m + 1} s_0 s_1 \ldots s_t$ in $B$. Then $B_b$ is isomorphic to $$R_{s_0s_1 \ldots s_t}[x_0, x_1, \ldots, x_{n + m + 1}, 1/x_0x_{n + m + 1}]/
-(f_1, \ldots, f_c)$$ which is smooth over $R$ by construction. Since $b$ does not map to an element of $\mathfrak q$, we win. $\square$
+admits a resolution at its maximal ideal. Then $A\to\Lambda$ factors through a finitely presented $R$-algebra $B$ for which $H_{B/R}\Lambda\nsubseteq\mathfrak q$. This conclusion alone does not assert $\mathfrak h_A\subseteq\mathfrak h_B$.
+
+**Proof.** In the local target, a resolving algebra has singularity ideal generating the unit ideal: an ideal avoiding the maximal ideal contains a unit. The [smooth factorization lemma](#native-smoothing-lemma-final-solve) therefore replaces it by a smooth $R_{\mathfrak p}$-algebra. The standard presentation lemma and the prescribed-generators lemma further give a factorization through
+
+$$C=R_{\mathfrak p}[x_1,\ldots,x_n,y_1,\ldots,y_m]/(f_1,\ldots,f_c),$$
+
+where $A=R[x_1,\ldots,x_n]/(g_1,\ldots,g_t)$, the first $n$ generators retain their given images, and a specified $c$-by-$c$ minor is invertible in $C$. Clearing base denominators makes the $f_j$ polynomials over $R$. Choose $s_0\notin\mathfrak p$ so that this minor is invertible in their quotient after inverting $s_0$. For each $g_\ell$, choose $s_\ell\notin\mathfrak p$ with $s_\ell g_\ell\in(f_1,\ldots,f_c)$.
+
+Write the target images of the $y_i$ with one common denominator $\delta\in\Lambda\setminus\mathfrak q$, say $y_i\mapsto\nu_i/\delta$. Homogenize each $f_j(x,y)$ in the $y$-variables, using one extra variable $w$: let $F_j(x,Y,w)$ have degree $d_j$ in $(Y,w)$ and satisfy $F_j(x,y,1)=f_j(x,y)$. If $\lambda_i$ are the given images of $x_i$, then
+
+$$F_j(\lambda,\nu,\delta)
+=\delta^{d_j}f_j(\lambda,\nu/\delta)=0
+\quad\text{in }\Lambda_{\mathfrak q}.$$
+
+There is a single $\epsilon\notin\mathfrak q$ annihilating all these finitely many values in $\Lambda$. Define
+
+$$B=R[x_1,\ldots,x_n,Y_1,\ldots,Y_m,w,u]/
+(g_1,\ldots,g_t,uF_1,\ldots,uF_c).$$
+
+It receives $A$ and maps to $\Lambda$ by $x_i\mapsto\lambda_i$, $Y_i\mapsto\nu_i$, $w\mapsto\delta$, and $u\mapsto\epsilon$. Set $s=s_0s_1\cdots s_t$ and $b=suw\in B$. Its image avoids $\mathfrak q$.
+
+After inverting $b$, all three factors $s,u,w$ are units. Use the coordinates $y_i=Y_i/w$ to remove the homogenization factors, which are powers of $w$. The equations $g_\ell$ are redundant because $s_\ell$ is invertible. We obtain the explicit isomorphism
+
+$$B_b\simeq
+\bigl(R_s[x,y]/(f_1,\ldots,f_c)\bigr)[u,u^{-1},w,w^{-1}].$$
+
+The algebra inside parentheses is standard smooth by the choice of $s_0$, and adjoining two invertible variables preserves smoothness. Hence $b\in H_{B/R}$, proving the claimed avoidance of $\mathfrak q$. ∎
 
 #### Lemma. Returning from a height-zero localization
 
-Let $R \to A \to \Lambda \supset \mathfrak q$ be as in Situation [The local desingularization problem](#native-smoothing-situation-local). Let $\mathfrak p = R \cap \mathfrak q$. Assume
+In the local setup, assume $\mathfrak q$ is minimal over $\mathfrak h_A$, the localized problem over $R_{\mathfrak p}\to\Lambda_{\mathfrak q}$ admits a resolution, and $\dim\Lambda_{\mathfrak q}=0$. Then the original problem admits a resolution.
 
-1.  $\mathfrak q$ is minimal over $\mathfrak h_A$,
+**Proof.** Since $A$ is Noetherian, choose finite generators $a_1,\ldots,a_r$ of $H_{A/R}$. Their images lie in $\mathfrak q$. A zero-dimensional local ring has only its maximal ideal as a prime, so that maximal ideal is its nilradical. Each $a_i/1$ is consequently nilpotent in $\Lambda_{\mathfrak q}$. Choose a common positive power $N$ killing these finitely many elements there, and then choose $\lambda\notin\mathfrak q$ with
 
-2.  $R_\mathfrak p \to A_\mathfrak p \to \Lambda_\mathfrak q
-    \supset \mathfrak q\Lambda_\mathfrak q$ can be resolved, and
+$$\lambda a_i^N=0\quad\text{in }\Lambda\quad(1\leq i\leq r).$$
 
-3.  $\dim(\Lambda_\mathfrak q) = 0$.
+This uses only finitely many nilpotent elements; it does not require $\Lambda_{\mathfrak q}$ to be Artinian.
 
-Then $R \to A \to \Lambda \supset \mathfrak q$ can be resolved.
+The preceding lemma gives $A\to C\to\Lambda$, with $C/R$ finitely presented, and $c\in H_{C/R}$ whose target image avoids $\mathfrak q$. Choose a finite relative presentation $C=A[x_1,\ldots,x_n]/(f_1,\ldots,f_m)$. Form
 
-**Proof.** By (3) the ring $\Lambda_\mathfrak q$ is Artinian local hence $\mathfrak q\Lambda_\mathfrak q$ is nilpotent. Thus $(\mathfrak h_A)^N \Lambda_\mathfrak q = 0$ for some $N > 0$. Thus there exists a $\lambda \in \Lambda$, $\lambda \not \in \mathfrak q$ such that $\lambda (\mathfrak h_A)^N = 0$ in $\Lambda$. Say $H_{A/R} = (a_1, \ldots, a_r)$ so that $\lambda a_i^N = 0$ in $\Lambda$. By Lemma [Returning from a localized target](#native-smoothing-lemma-delocalize-weak) we can find a factorization $A \to C \to \Lambda$ with $C$ of finite presentation such that $\mathfrak h_C \not \subset \mathfrak q$. Write $C = A[x_1, \ldots, x_n]/(f_1, \ldots, f_m)$. Set $$B = A[x_1, \ldots, x_n, y_1, \ldots, y_r, z, t_{ij}]/
-(f_j - \sum y_i t_{ij}, zy_i)$$ where $t_{ij}$ is a set of $rm$ variables. Note that there is a map $B \to C[y_i, z]/(y_iz)$ given by setting $t_{ij}$ equal to zero. The map $B \to \Lambda$ is the composition $B \to C[y_i, z]/(y_iz) \to \Lambda$ where $C[y_i, z]/(y_iz) \to \Lambda$ is the given map $C \to \Lambda$, maps $z$ to $\lambda$, and maps $y_i$ to the image of $a_i^N$ in $\Lambda$.
+$$B=A[x_1,\ldots,x_n,y_1,\ldots,y_r,z,(t_{ij})]/
+\bigl(f_j-\sum_{i=1}^r y_it_{ij},\ zy_i\bigr).$$
 
-We claim that $B$ is a solution for $R \to A \to \Lambda \supset \mathfrak q$. First note that $B_z$ is isomorphic to $C[z, z^{-1}, t_{ij}]$ as a C-algebra. Choose $c \in H_{C/R}$ whose image in $\Lambda$ is not in $\mathfrak q$. Then $B_{zc}$ is smooth over $R$. On the other hand, $B_{y_\ell} \cong A[x_i, y_i, y_\ell^{-1}, t_{ij}, i \not = \ell]$ which is smooth over $A$. Thus we see that $zc$ and $a_\ell y_\ell$ (compositions of smooth maps are smooth) are all elements of $H_{B/R}$. This proves the lemma. $\square$
+The map to $\Lambda$ sends the $x$-coordinates through $C$, sends $t_{ij}$ to zero, sends $y_i$ to the image of $a_i^N$, and sends $z$ to $\lambda$. The identities just chosen make this well-defined.
+
+Inverting $z$ forces all the $y_i$ to zero, so
+
+$$B_z\simeq C[z,z^{-1},(t_{ij})].$$
+
+Choose a polynomial in the original variables $A[x_1,\ldots,x_n]$ representing $c$, and denote its image in $B$ by $\widetilde c$. Under the displayed isomorphism it is precisely the coefficient $c\in C$, and its image in $\Lambda$ is the given image of $c$. Thus $B_{z\widetilde c}$ is smooth over $R$, and the image of $z\widetilde c$ in $\Lambda$ avoids $\mathfrak q$.
+
+On the other hand, after inverting $y_\ell$, the equation $zy_\ell=0$ gives $z=0$, and the remaining relations solve uniquely for all $t_{\ell j}$. Thus $B_{y_\ell}$ is a polynomial algebra over $A$ with $y_\ell$ inverted. After also inverting $a_\ell$, it is smooth over $R$. Hence $a_\ell y_\ell\in H_{B/R}$. Its image in $\Lambda$ is $a_\ell^{N+1}$, showing $a_\ell\in\mathfrak h_B$ for every $\ell$. Therefore $\mathfrak h_A\subseteq\mathfrak h_B$. The element $z\widetilde c$ shows $\mathfrak h_B\nsubseteq\mathfrak q$, so this factorization is a resolution. ∎
 
 #### Separable residue fields
 
-In this section we explain how to solve a local problem in the case of a separable residue field extension.
+At a regular local target with separable residue field, a system of parameters reduces the resolution problem to a nilpotent thickening of that field. Before making this reduction, we must choose representatives of the parameters whose annihilator properties hold in the original ring, not only in its localization.
 
 #### Lemma. The annihilator stabilization step (Ogoma)
 
-Let $A$ be a Noetherian ring and let $M$ be a finite $A$-module. Let $S \subset A$ be a multiplicative set. If $\pi \in A$ and $\operatorname{Ker}(\pi : S^{-1}M \to S^{-1}M) =
-\operatorname{Ker}(\pi^2 : S^{-1}M \to S^{-1}M)$ then there exists an $s \in S$ such that for any $n > 0$ we have $\operatorname{Ker}(s^n\pi : M \to M) = \operatorname{Ker}((s^n\pi)^2 : M \to M)$.
+Let $M$ be finite over a Noetherian ring $A$, let $S\subseteq A$ be multiplicative, and let $\pi\in A$. Assume multiplication by $\pi$ and by $\pi^2$ have the same kernel on $S^{-1}M$. There exists $s\in S$ such that, for every $n\geq1$, multiplication by $s^n\pi$ and by $(s^n\pi)^2$ have the same kernel on $M$.
 
-**Proof.** Let $K = \operatorname{Ker}(\pi : M \to M)$ and $K' = \{m \in M \mid \pi^2 m = 0\text{ in }S^{-1}M\}$ and $Q = K'/K$. Note that $S^{-1}Q = 0$ by assumption. Since $A$ is Noetherian we see that $Q$ is a finite $A$-module. Hence we can find an $s \in S$ such that $s$ annihilates $Q$. If $(s^n\pi)^2m=0$ then $\pi^2m$ vanishes after localization, so $m\in K'$. As $s(K'/K)=0$, we have $s\pi m=0$ and hence $s^n\pi m=0$. The reverse kernel inclusion is immediate, so this $s$ works for every $n>0$. $\square$
+**Proof.** Let $K$ be the kernel of multiplication by $\pi$ on $M$, and let $K'$ be the inverse image in $M$ of the kernel of multiplication by $\pi^2$ on $S^{-1}M$. The assumption says $(K'/K)_S=0$. This quotient is finite, since it is a quotient of submodules of the finite module $M$ over a Noetherian ring. Some $s\in S$ therefore annihilates $K'/K$.
+
+Fix $n\geq1$ and suppose $s^{2n}\pi^2m=0$. After localization, $s$ is a unit, so $m\in K'$. Our choice of $s$ gives $sm\in K$, hence $s\pi m=0$. Multiplying by $s^{n-1}$ gives $s^n\pi m=0$. The converse implication follows by multiplying once more by $s^n\pi$. Thus this single choice of $s$ works for every $n$. ∎
 
 #### Lemma. Parameters adapted to the singularity ideal
- Let $\Lambda$ be a Noetherian ring. Let $I \subset \Lambda$ be an ideal. Let $I \subset \mathfrak q$ be a prime. Let $n, e$ be positive integers. Assume that $\mathfrak q^n\Lambda_\mathfrak q \subset I\Lambda_\mathfrak q$ and that $\Lambda_\mathfrak q$ is a regular local ring of dimension $d$. Then there exist $\pi_1, \ldots, \pi_d \in \Lambda$ such that
 
-1.  $(\pi_1, \ldots, \pi_d)\Lambda_\mathfrak q =
-    \mathfrak q\Lambda_\mathfrak q$,
+Let $\Lambda$ be Noetherian, let $I\subseteq\mathfrak q\subset\Lambda$ with $\mathfrak q$ prime, and suppose $\Lambda_{\mathfrak q}$ is a regular local ring of dimension $d$. Given positive integers $n,e$ such that $\mathfrak q^n\Lambda_{\mathfrak q}\subseteq I\Lambda_{\mathfrak q}$, one can choose $\pi_1,\ldots,\pi_d\in\Lambda$ with
 
-2.  $\pi_1^n, \ldots, \pi_d^n \in I$, and
+$$\mathfrak q\Lambda_{\mathfrak q}=(\pi_1,\ldots,\pi_d)\Lambda_{\mathfrak q},
+\qquad \pi_i^n\in I,$$
 
-3.  for $i = 1, \ldots, d$ we have $$\text{Ann}_{\Lambda/(\pi_1^e, \ldots, \pi_{i - 1}^e)\Lambda}(\pi_i) =
-    \text{Ann}_{\Lambda/(\pi_1^e, \ldots, \pi_{i - 1}^e)\Lambda}(\pi_i^2).$$
+and, for each $i$, with equal annihilators of $\pi_i$ and $\pi_i^2$ in $\Lambda/(\pi_1^e,\ldots,\pi_{i-1}^e)\Lambda$.
 
-**Proof.** Set \(S = \Lambda \setminus \mathfrak q\) so that \(\Lambda_\mathfrak q = S^{-1}\Lambda\). First pick \(\pi_1, \ldots, \pi_d\) with (1) which is possible as \(\Lambda_\mathfrak q\) is regular. By assumption \(\pi_i^n \in I\Lambda_\mathfrak q\). Thus we can find \(s_1, \ldots, s_d \in S\) such that \(s_i\pi_i^n \in I\). Replacing \(\pi_i\) by \(s_i\pi_i\) we get (2). Note that (1) and (2) are preserved by further multiplying by elements of \(S\). Suppose that (3) holds for \(i = 1, \ldots, t\) for some \(t \in \{0, \ldots, d\}\). Note that \(\pi_1, \ldots, \pi_d\) is a regular sequence in \(S^{-1}\Lambda\), see Algebra, Lemma [Regular rings are Cohen–Macaulay](#native-algebra-lemma-regular-ring-cm). In particular \(\pi_1^e, \ldots, \pi_t^e, \pi_{t + 1}\) is a regular sequence in \(S^{-1}\Lambda = \Lambda_\mathfrak q\) by Algebra, Lemma [Powers of a regular sequence](#native-algebra-lemma-regular-sequence-powers). Hence we see that 
+**Proof.** Choose a regular system of parameters in $\Lambda_{\mathfrak q}$ and clear the denominators of its finitely many entries to obtain representatives in $\Lambda$. Multiplying an entry by an element outside $\mathfrak q$ does not change the parameter ideal in the localization. The hypothesis on $I$ allows such a multiplication for each entry so that its $n$th power belongs to $I$: if $s\pi_i^n\in I$, replace $\pi_i$ by $s\pi_i$ and use $s^n\pi_i^n\in I$.
 
-\[
-\text{Ann}_{S^{-1}\Lambda/(\pi_1^e, \ldots, \pi_{i - 1}^e)}(\pi_i) =
-\text{Ann}_{S^{-1}\Lambda/(\pi_1^e, \ldots, \pi_{i - 1}^e)}(\pi_i^2).
-\]
+Now adjust the entries successively. Suppose entries before $i$ have already been fixed. A regular local ring is Cohen–Macaulay, and powers of the initial terms of a regular sequence remain regular; see [regular rings](#native-algebra-lemma-regular-ring-cm) and [powers of regular sequences](#native-algebra-lemma-regular-sequence-powers). Thus $\pi_i$ is a nonzerodivisor on
 
- Thus we get (3) for \(i = t + 1\) after replacing \(\pi_{t + 1}\) by \(s\pi_{t + 1}\) for some \(s \in S\) by Lemma [The annihilator stabilization step](#native-smoothing-lemma-ogoma). By induction on \(t\) this produces a sequence satisfying (1), (2), and (3). \(\square\)
+$$\Lambda_{\mathfrak q}/(\pi_1^e,\ldots,\pi_{i-1}^e)\Lambda_{\mathfrak q}.$$
+
+Apply Ogoma's lemma to the finite module $\Lambda/(\pi_1^e,\ldots,\pi_{i-1}^e)\Lambda$, with $S=\Lambda\setminus\mathfrak q$. Multiplying $\pi_i$ by the resulting element of $S$ gives the desired annihilator equality before localization. Its $n$th-power containment persists, as does the parameter ideal. Earlier equalities are unaffected because their quotient ideals involve only earlier entries. After $d$ steps all the requirements hold. For $d=0$ the empty sequence satisfies them. ∎
 
 #### Lemma. Desingularization with separable residue fields
- Let $k \to A \to \Lambda \supset \mathfrak q$ be as in Situation [The local desingularization problem](#native-smoothing-situation-local) where
 
-1.  $k$ is a field,
+Let $k\to A\to\Lambda$ be maps with $k$ a field, $A/k$ finitely presented, and $\Lambda$ Noetherian. Suppose $\mathfrak q$ is minimal over $\sqrt{H_{A/k}\Lambda}$, the local ring $\Lambda_{\mathfrak q}$ is regular, and $\kappa(\mathfrak q)/k$ is separable. Then the local desingularization problem at $\mathfrak q$ admits a resolution.
 
-2.  $\Lambda$ is Noetherian,
+**Proof.** Set $d=\dim\Lambda_{\mathfrak q}$. If $d=0$, the localized target is the separable field extension $\kappa(\mathfrak q)/k$. Such an extension is ind-smooth over $k$, as in [the field case of the smooth-colimit criterion](#native-algebra-lemma-colimit-syntomic). A map from the finite presentation $A$ therefore factors through a smooth algebra after localization. The [height-zero return lemma](#native-smoothing-lemma-delocalize-height-zero) gives a resolution before localization.
 
-3.  $\mathfrak q$ is minimal over $\mathfrak h_A$,
+Assume $d>0$, and choose generators $a_1,\ldots,a_r$ of $H_{A/k}$. Put $I=H_{A/k}\Lambda$. Minimality of $\mathfrak q$ means that $I\Lambda_{\mathfrak q}$ has radical the maximal ideal. Since the local ring is Noetherian, choose $n\geq1$ with
 
-4.  $\Lambda_\mathfrak q$ is a regular local ring, and
+$$\mathfrak q^n\Lambda_{\mathfrak q}\subseteq I\Lambda_{\mathfrak q}.$$
 
-5.  the field extension $\kappa(\mathfrak q)/k$ is separable.
+Using the actual ideal $I$ here will ensure expressions in the generators $a_j$, rather than only membership in their radical.
 
-Then $k \to A \to \Lambda \supset \mathfrak q$ can be resolved.
+Let $R=k[x_1,\ldots,x_d]$ and define an $R$-algebra
 
-**Proof.** Set $d=\dim\Lambda_{\mathfrak q}$. If $d=0$, the localized target is a field separable over $k$, hence a filtered colimit of smooth algebras by Algebra, Lemma [Syntomic algebras in a filtered colimit](#native-algebra-lemma-colimit-syntomic). Factor the finitely presented localized source through one such algebra and apply Lemma [Returning from a height-zero localization](#native-smoothing-lemma-delocalize-height-zero); this resolves the original situation. We may therefore assume $d>0$. Set $R = k[x_1, \ldots, x_d]$. Choose $n > 0$ such that $\mathfrak q^n\Lambda_\mathfrak q \subset \mathfrak h_A\Lambda_\mathfrak q$ which is possible as $\mathfrak q$ is minimal over $\mathfrak h_A$. Choose generators $a_1, \ldots, a_r$ of $H_{A/k}$. Set $$B = A[x_1, \ldots, x_d, z_{ij}]/(x_i^n - \sum z_{ij}a_j)$$ Each $B_{a_j}$ is smooth over $R$ because it is a polynomial algebra over $A_{a_j}[x_1, \ldots, x_d]$ and $A_{a_j}$ is smooth over $k$. Hence $B_{x_i}$ is smooth over $R$. Let $B \to C$ be the $R$-algebra map constructed in Lemma [Improving a finite presentation](#native-smoothing-lemma-improve-presentation) which comes with a $R$-algebra retraction $C \to B$. In particular a map $C \to \Lambda$ fitting into the diagram below. By construction $C_{x_i}$ is a smooth $R$-algebra with $\Omega_{C_{x_i}/R}$ free. Hence we can find $c > 0$ such that $x_i^c$ is strictly standard in $C/R$, see Lemma [Comparing standard smooth presentations](#native-smoothing-lemma-compare-standard). Now choose $\pi_1, \ldots, \pi_d \in \Lambda$ as in Lemma [Parameters adapted to the singularity ideal](#native-smoothing-lemma-find-sequence) where $n = n$, $e = 8c$, $\mathfrak q = \mathfrak q$ and $I = \mathfrak h_A$. Write $\pi_i^n = \sum \lambda_{ij} a_j$ for some $\lambda_{ij} \in \Lambda$. There is a map $B \to \Lambda$ given by $x_i \mapsto \pi_i$ and $z_{ij} \mapsto \lambda_{ij}$. Set $R = k[x_1, \ldots, x_d]$. Diagram $$\begin{gathered}\begin{matrix}R & B \\ k & A & \Lambda\end{matrix} \\[6pt] \begin{aligned}R & \longrightarrow B \\ B & \longrightarrow \Lambda \\ k & \longrightarrow R \\ k & \longrightarrow A \\ A & \longrightarrow B \\ A & \longrightarrow \Lambda\end{aligned}\end{gathered}$$ Now we apply Lemma [Lifting a local desingularization solution](#native-smoothing-lemma-lift-solution) to $R \to C \to \Lambda \supset \mathfrak q$ and the sequence of elements $x_1^c, \ldots, x_d^c$ of $R$. Assumption (2) is clear. Assumption (1) holds for $R$ by inspection and for $\Lambda$ by our choice of $\pi_1, \ldots, \pi_d$. (Note that if $\text{Ann}_\Lambda(\pi) = \text{Ann}_\Lambda(\pi^2)$, then we have $\text{Ann}_\Lambda(\pi) = \text{Ann}_\Lambda(\pi^c)$ for all $c > 0$.) Thus it suffices to resolve $$R/(x_1^e, \ldots, x_d^e) \to C/(x_1^e, \ldots, x_d^e) \to
-\Lambda/(\pi_1^e, \ldots, \pi_d^e) \supset
-\mathfrak q/(\pi_1^e, \ldots, \pi_d^e)$$ for $e = 8c$. By Lemma [Returning from a height-zero localization](#native-smoothing-lemma-delocalize-height-zero) it suffices to resolve this after localizing at $\mathfrak q$. But since $x_1, \ldots, x_d$ map to a regular sequence in $\Lambda_\mathfrak q$ we see that $R_\mathfrak p \to \Lambda_\mathfrak q$ is flat, see Algebra, Lemma [Flatness over a regular local ring](#native-algebra-lemma-flat-over-regular). Hence $$R_\mathfrak p/(x_1^e, \ldots, x_d^e) \to
-\Lambda_\mathfrak q/(\pi_1^e, \ldots, \pi_d^e)$$ is a flat ring map of Artinian local rings. Moreover, this map induces a separable field extension on residue fields by assumption. Thus this map is a filtered colimit of smooth algebras by Algebra, Lemma [Syntomic algebras in a filtered colimit](#native-algebra-lemma-colimit-syntomic) and Proposition [Lifting an algebraic factorization](#native-smoothing-proposition-lift). Existence of the desired solution follows from Algebra, Lemma [Recognizing a filtered colimit of finite presentations](#native-algebra-lemma-when-colimit). $\square$
+$$B=A[x_1,\ldots,x_d,(z_{ij})]/
+\bigl(x_i^n-\sum_{j=1}^r z_{ij}a_j:1\leq i\leq d\bigr).$$
+
+On $D(a_j)$ one can eliminate $z_{ij}$ for each $i$, leaving a polynomial algebra over $A_{a_j}\otimes_kR$. It is smooth over $R$, since $A_{a_j}/k$ is smooth. The opens $D(a_j)$ cover $D(x_i)$, by the displayed relations. Hence $B_{x_i}/R$ is smooth for every $i$.
+
+Apply [improvement of presentations](#native-smoothing-lemma-improve-presentation) to obtain $B\to C\to B$ with composite the identity. Since $R$ is Noetherian, $C/R$ is finitely presented. Each $C_{x_i}/R$ is smooth with free differentials. The strict part of the [comparison lemma](#native-smoothing-lemma-compare-standard) supplies a common $c\geq1$ such that every $x_i^c$ is strictly standard for $C/R$.
+
+Apply the parameter lemma with the ideal $I$, the chosen $n$, and exponent $e=8c$. We obtain $\pi_1,\ldots,\pi_d\in\Lambda$ forming a parameter system after localization, with $\pi_i^n\in I$ and the required successive annihilator equalities. Choose coefficients $\lambda_{ij}$ with $\pi_i^n=\sum_j\lambda_{ij}a_j$ in $\Lambda$. Sending $x_i\mapsto\pi_i$ and $z_{ij}\mapsto\lambda_{ij}$ gives $B\to\Lambda$. Compose with the augmentation $C\to B$ to get the map from $C$.
+
+The [successive lifting lemma](#native-smoothing-lemma-lift-solution), applied over $R$ to the parameters $x_i^c$, reduces the problem for $C$ to its quotient by $(x_1^e,\ldots,x_d^e)$. In the polynomial base the required elements are nonzerodivisors in the successive quotients, since each new variable is independent of its predecessors. In $\Lambda$ the parameter lemma gives the equalities for $\pi_i$ modulo the preceding $e$th powers, and stabilization of annihilators gives those for $\pi_i^c$ as well.
+
+We verify that the quotient problem can be resolved. Write $\mathfrak p=(x_1,\ldots,x_d)\subset R$. Its local ring is regular, and the images of its parameters form a regular sequence in $\Lambda_{\mathfrak q}$. The [flatness criterion over a regular local ring](#native-algebra-lemma-flat-over-regular) makes $R_{\mathfrak p}\to\Lambda_{\mathfrak q}$ flat. Therefore
+
+$$R_{\mathfrak p}/(x_1^e,\ldots,x_d^e)
+\longrightarrow
+\Lambda_{\mathfrak q}/(\pi_1^e,\ldots,\pi_d^e)$$
+
+is a flat map of Artinian local rings. Reducing by the maximal ideal of its base gives precisely the separable extension $k\to\kappa(\mathfrak q)$, since the $\pi_i$ generate the localized maximal ideal. The base maximal ideal is nilpotent. The field smooth-colimit criterion followed by [nilpotent lifting](#native-smoothing-proposition-lift) therefore makes this Artinian target ind-smooth over that base. This supplies a smooth factorization of the localized quotient problem.
+
+The selected prime in the quotient target has height zero, because the localized quotient is Artinian. If it is already outside the singularity ideal of the quotient of $C$, the identity factorization resolves it. Otherwise its height-zero property makes it minimal over that ideal, and the height-zero return lemma applies to the smooth localized factorization just obtained. In either case the quotient problem is resolved. Successive lifting now yields $C\to D\to\Lambda$ resolving the problem over $R$.
+
+Finally this also resolves the original problem over $k$. Indeed $C_{a_j}/R$ is smooth: $B_{a_j}/R$ is smooth, and the improvement construction is smooth over $B$ there. Hence the images of all the $a_j$ belong to $H_{C/R}\Lambda$. The resolution over $R$ retains their radical and avoids $\mathfrak q$. As $R/k$ is a polynomial algebra, composition of smooth maps gives $H_{D/R}\subseteq H_{D/k}$. Thus
+
+$$\sqrt{H_{A/k}\Lambda}\subseteq\sqrt{H_{D/k}\Lambda},
+\qquad H_{D/k}\Lambda\nsubseteq\mathfrak q.$$
+
+Together with $A\to B\to C\to D\to\Lambda$, these are the required conclusions. ∎
 
 #### Inseparable residue fields
 
-In this section we explain how to solve a local problem in the case of an inseparable residue field extension.
+In positive characteristic, the residue field need not be separable over the ground field, even for a geometrically regular local algebra. The construction therefore first captures the required infinitesimal data in a finite-dimensional local algebra. The key finiteness hypothesis concerns the first homology of the cotangent complex of the residue extension.
 
 #### Lemma. Compatibility of the local approximation data
- Let $k$ be a field of characteristic $p > 0$. Let $(\Lambda, \mathfrak m, K)$ be an Artinian local $k$-algebra. Assume that $\dim H_1(L_{K/k}) < \infty$. Then $\Lambda$ is a filtered colimit of Artinian local $k$-algebras $A$ with each map $A \to \Lambda$ flat, with $\mathfrak m_A \Lambda = \mathfrak m$, and with $A$ essentially of finite type over $k$.
 
-**Proof.** Note that the flatness of $A \to \Lambda$ implies that $A \to \Lambda$ is injective, so the lemma really tells us that $\Lambda$ is a directed union of these types of subrings $A \subset \Lambda$. Let $n$ be the minimal integer such that $\mathfrak m^n = 0$. We will prove this lemma by induction on $n$. The case $n = 1$ is clear as a field extension is a union of finitely generated field extensions.
+Let $k$ have characteristic $p>0$, and let $(\Lambda,\mathfrak m,K)$ be an Artinian local $k$-algebra. Suppose $H_1(L_{K/k})$ is finite-dimensional over $K$. Then $\Lambda$ is a filtered colimit of local Artinian $k$-algebras $A$ essentially of finite type over $k$, with $A\to\Lambda$ flat and $\mathfrak m_A\Lambda=\mathfrak m$. The maps can be taken to be inclusions, so this is a directed union of subalgebras. In particular, any finite subset of $\Lambda$ is contained in one such $A$.
 
-Pick $\lambda_1, \ldots, \lambda_d \in \mathfrak m$ which generate $\mathfrak m$. As $K$ is formally smooth over $\mathbf{F}_p$ (see Algebra, Lemma [Elementary formally smooth extensions](#native-algebra-lemma-formally-smooth-extensions-easy)) we can find a ring map $\sigma : K \to \Lambda$ which is a section of the quotient map $\Lambda \to K$. In general $\sigma$ is **not** a $k$-algebra map. Given $\sigma$ we define $$\Psi_\sigma : K[x_1, \ldots, x_d] \longrightarrow \Lambda$$ using $\sigma$ on elements of $K$ and mapping $x_i$ to $\lambda_i$. Claim: there exists a $\sigma : K \to \Lambda$ and a subfield $k \subset F \subset K$ finitely generated over $k$ such that the image of $k$ in $\Lambda$ is contained in $\Psi_\sigma(F[x_1, \ldots, x_d])$.
+**Proof.** Choose generators $\lambda_1,\ldots,\lambda_d$ of $\mathfrak m$, and let $n$ be the least positive integer with $\mathfrak m^n=0$. Every field of characteristic $p$ is formally smooth over its prime field, by [formal smoothness over a perfect field](#native-algebra-lemma-formally-smooth-extensions-easy). Thus the residue map admits a coefficient-field section $\sigma:K\to\Lambda$. Such a section is an $\mathbf F_p$-algebra map; it need not respect the given $k$-algebra structure.
 
-We will prove the claim by induction on the least integer $n$ such that $\mathfrak m^n = 0$. It is clear for $n = 1$. If $n > 1$ set $I = \mathfrak m^{n - 1}$ and $\Lambda' = \Lambda/I$. By induction we may assume given $\sigma' : K \to \Lambda'$ and $k \subset F' \subset K$ finitely generated such that the image of $k \to \Lambda \to \Lambda'$ is contained in $A' = \Psi_{\sigma'}(F'[x_1, \ldots, x_d])$. Denote $\tau' : k \to A'$ the induced map. Choose a lift $\sigma : K \to \Lambda$ of $\sigma'$ (this is possible by the formal smoothness of $K/\mathbf{F}_p$ we mentioned above). For later reference we note that we can change $\sigma$ to $\sigma + D$ for some derivation $D : K \to I$. Set $A = F'[x_1, \ldots, x_d]/(x_1, \ldots, x_d)^n$. Then $\Psi_\sigma$ induces a ring map $\Psi_\sigma : A \to \Lambda$. The composition with the quotient map $\Lambda \to \Lambda'$ induces a surjective map $A \to A'$ with nilpotent kernel. Choose a lift $\tau : k \to A$ of $\tau'$ (possible as $k/\mathbf{F}_p$ is formally smooth). Thus we obtain two maps $k \to \Lambda$, namely $\Psi_\sigma \circ \tau : k \to \Lambda$ and the given map $i : k \to \Lambda$. These maps agree modulo $I$, whence the difference is a derivation $\theta = i - \Psi_\sigma \circ \tau : k \to I$. Note that if we change $\sigma$ into $\sigma + D$ then we change $\theta$ into $\theta - D|_k$.
+For a chosen section, evaluation gives a surjection
 
-Choose a set of elements $\{y_j\}_{j \in J}$ of $k$ whose differentials $\text{d}y_j$ form a basis of $\Omega_{k/\mathbf{F}_p}$. The Jacobi-Zariski sequence for $\mathbf{F}_p \subset k \subset K$ is $$0 \to H_1(L_{K/k}) \to \Omega_{k/\mathbf{F}_p} \otimes K \to
-\Omega_{K/\mathbf{F}_p} \to \Omega_{K/k} \to 0$$ As $\dim H_1(L_{K/k}) < \infty$ we can find a finite subset $J_0 \subset J$ such that the image of the first map is contained in $\bigoplus_{j \in J_0} K\text{d}y_j$. Hence the elements $\text{d}y_j$, $j \in J \setminus J_0$ map to $K$-linearly independent elements of $\Omega_{K/\mathbf{F}_p}$. Therefore we can choose a $D : K \to I$ such that $\theta - D|_k = \xi \circ \text{d}$ where $\xi$ is a composition $$\Omega_{k/\mathbf{F}_p} = \bigoplus\nolimits_{j \in J} k \text{d}y_j
-\longrightarrow \bigoplus\nolimits_{j \in J_0} k \text{d}y_j
-\longrightarrow I$$ Let $f_j = \xi(\text{d}y_j) \in I$ for $j \in J_0$. Change $\sigma$ into $\sigma + D$ as above. Then we see that $\theta(a) = \sum_{j \in J_0} a_j f_j$ for $a \in k$ where $\text{d}a = \sum a_j \text{d}y_j$ in $\Omega_{k/\mathbf{F}_p}$. Note that $I$ is generated by the monomials $\lambda^E = \lambda_1^{e_1} \ldots \lambda_d^{e_d}$ of total degree $|E| = \sum e_i = n - 1$ in $\lambda_1, \ldots, \lambda_d$. Write $f_j = \sum_E c_{j, E} \lambda^E$ with $c_{j, E} \in K$. Replace $F'$ by $F = F'(c_{j, E})$. Then the claim holds.
+$$\Psi_\sigma:K[x_1,\ldots,x_d]\longrightarrow\Lambda,
+\qquad x_i\longmapsto\lambda_i.$$
 
-Choose $\sigma$ and $F$ as in the claim. The kernel of $\Psi_\sigma$ is generated by finitely many polynomials $g_1, \ldots, g_t \in K[x_1, \ldots, x_d]$ and we may assume their coefficients are in $F$ after enlarging $F$ by adjoining finitely many elements. In this case it is clear that the map $A = F[x_1, \ldots, x_d]/(g_1, \ldots, g_t) \to
-K[x_1, \ldots, x_d]/(g_1, \ldots, g_t) = \Lambda$ is flat. By the claim $A$ is a $k$-subalgebra of $\Lambda$. It is clear that $\Lambda$ is the filtered colimit of these algebras, as $K$ is the filtered union of the subfields $F$. Finally, these algebras are essentially of finite type over $k$ by Algebra, Lemma [Finite generation in an Artinian local target](#native-algebra-lemma-essentially-of-finite-type-into-artinian-local). $\square$
+Surjectivity follows by successively expressing an element modulo $\mathfrak m$, then modulo $\mathfrak m^2$, and so on, using coefficients from $\sigma(K)$. Nilpotence makes this a finite procedure.
+
+We claim that one can choose $\sigma$ and a finitely generated subextension $k\subseteq F\subseteq K$ such that the image of the given map $k\to\Lambda$ is contained in $\Psi_\sigma(F[x])$. This is the step that retains the actual $k$-structure. We prove it by induction on $n$. For $n=1$, use $\Lambda=K$ and $F=k$.
+
+For $n>1$, set $J=\mathfrak m^{n-1}$ and $\Lambda'=\Lambda/J$. By induction choose a coefficient section $\sigma':K\to\Lambda'$ and a finite subextension $F'/k$ whose polynomial image contains the image of $k$. Let $A'$ denote that polynomial image, with induced map $\tau':k\to A'$. Lift $\sigma'$ to a coefficient section $\sigma:K\to\Lambda$. The truncated polynomial algebra
+
+$$T=F'[x_1,\ldots,x_d]/(x_1,\ldots,x_d)^n$$
+
+maps to $\Lambda$, and its composite onto $A'$ has nilpotent kernel: on residue fields it is the inclusion of $F'$ in $K$, so its kernel is contained in the nilpotent ideal generated by the $x_i$. Formal smoothness of $k/\mathbf F_p$ lifts $\tau'$ to a map $\tau:k\to T$.
+
+Let $i:k\to\Lambda$ be the given structure map. The two maps $i$ and $\Psi_\sigma\tau$ agree modulo $J$. Their difference
+
+$$\theta=i-\Psi_\sigma\tau:k\longrightarrow J$$
+
+is therefore a derivation, with the $k$-action on $J$ given through its residue field. Here $\mathfrak mJ=0$ and $J^2=0$.
+
+The [Jacobi–Zariski sequence for fields](#native-more-algebra-lemma-transitivity-gamma), using formal smoothness over $\mathbf F_p$, gives the exact sequence
+
+$$0\longrightarrow H_1(L_{K/k})
+\longrightarrow\Omega_{k/\mathbf F_p}\otimes_kK
+\longrightarrow\Omega_{K/\mathbf F_p}
+\longrightarrow\Omega_{K/k}\longrightarrow0.$$
+
+Choose a basis $\{\mathrm dy_j:j\in S\}$ of $\Omega_{k/\mathbf F_p}$ from its generating differentials. The finite-dimensional kernel in this sequence is contained in the span of finitely many of these basis vectors, indexed by $S_0\subset S$. The images of the remaining $\mathrm dy_j$ in $\Omega_{K/\mathbf F_p}$ are linearly independent over $K$: a relation would lie both in their span and in the span indexed by $S_0$.
+
+Extend this independent set to a basis of $\Omega_{K/\mathbf F_p}$ and choose a $K$-linear map to $J$ taking $\mathrm dy_j$ to $\theta(y_j)$ for $j\notin S_0$. It corresponds to a derivation $D:K\to J$. Since $J^2=0$, $\sigma+D$ is again a coefficient-field section. This change replaces $\theta$ by $\theta-D|_k$. Indeed, only the constant term of $\tau(a)$ contributes to the change: every positive-degree monomial maps into $\mathfrak m$, which annihilates $J$. The residue of that constant term is $a$.
+
+After making this change, $\theta$ vanishes on every $y_j$ outside $S_0$. Thus it is determined by the finitely many elements $\theta(y_j)\in J$ for $j\in S_0$. The degree-$n-1$ monomials in the $\lambda_i$ span $J$ over $K$, so write these elements as finite linear combinations of those monomials. Adjoin their finitely many coefficients to $F'$, obtaining $F$. Every value $\theta(a)$ then belongs to $\Psi_\sigma(F[x])$, as do all values of $\Psi_\sigma\tau$. This proves the claim for the actual map $i$.
+
+Fix such a section $\sigma$. The kernel of $\Psi_\sigma$ is finitely generated, since $K[x]$ is Noetherian. Choose generators $g_1,\ldots,g_t$, including all degree-$n$ monomials if needed, and enlarge $F$ to contain their coefficients. For every further finitely generated intermediate field $F\subseteq F_1\subseteq K$, set
+
+$$A_{F_1}=F_1[x_1,\ldots,x_d]/(g_1,\ldots,g_t).$$
+
+Extension of scalars identifies $K\otimes_{F_1}A_{F_1}$ with $\Lambda$. Hence $A_{F_1}\to\Lambda$ is faithfully flat and injective. All the $g_j$ have zero constant term, and the ideal $(x_1,\ldots,x_d)$ is nilpotent. Thus $A_{F_1}$ is local Artinian with residue field $F_1$, and its maximal ideal generates $\mathfrak m$ in $\Lambda$. The claim shows that its image contains the given image of $k$, making it a $k$-subalgebra.
+
+For completeness, its finite-type assertion uses this actual $k$-structure, not the possibly different embedding of $k$ in the coefficient field. Choose finitely many elements of $A_{F_1}$ lifting field generators of $F_1/k$, and adjoin the images of $x_1,\ldots,x_d$. Localize the resulting finitely generated $k$-subalgebra at the inverse image of the maximal ideal of $A_{F_1}$. Its residue map is onto $F_1$. For any element of $A_{F_1}$, subtract an element of this local subalgebra with the same residue. The difference is a combination of the $x_i$. Replace its finitely many coefficients in the same way and repeat. After $n$ repetitions the remaining error is zero. Therefore this local subalgebra surjects onto $A_{F_1}$, proving that $A_{F_1}$ is essentially of finite type over $k$. This is the finite nilpotent-expansion argument behind [the Artinian finite-type criterion](#native-algebra-lemma-essentially-of-finite-type-into-artinian-local).
+
+Finally, the finitely generated fields $F_1$ containing the fixed $F$ form a directed family: use their compositum for a common enlargement. Every element of $\Lambda$ has a polynomial expression in the $\lambda_i$ with finitely many coefficients from $K$, so it belongs to one of these subalgebras. Their union is $\Lambda$, completing the proof. ∎
 
 #### Lemma. A factorization modulo a prescribed ideal
 
-Let $k$ be a field of characteristic $p > 0$. Let $\Lambda$ be a Noetherian geometrically regular $k$-algebra. Let $\mathfrak q \subset \Lambda$ be a prime ideal. Let $n \geq 1$ be an integer and let $E \subset \Lambda_\mathfrak q/\mathfrak q^n\Lambda_\mathfrak q$ be a finite subset. Then we can find $m \geq 0$ and $\varphi : k[y_1, \ldots, y_m] \to \Lambda$ with the following properties
+Let $k$ be a field of characteristic $p>0$, let $\Lambda$ be a Noetherian geometrically regular $k$-algebra, and let $\mathfrak q\subset\Lambda$ be prime. For every $n\geq1$ and finite subset $E\subset\Lambda_{\mathfrak q}/\mathfrak q^n\Lambda_{\mathfrak q}$ there is a map
 
-1.  setting $\mathfrak p = \varphi^{-1}(\mathfrak q)$ we have $\mathfrak q\Lambda_\mathfrak q = \mathfrak p \Lambda_\mathfrak q$ and $k[y_1, \ldots, y_m]_\mathfrak p \to \Lambda_\mathfrak q$ is flat,
+$$\varphi:P=k[y_1,\ldots,y_m]\longrightarrow\Lambda$$
 
-2.  there is a factorization by homomorphisms of local Artinian rings $$k[y_1, \ldots, y_m]_\mathfrak p/\mathfrak p^n k[y_1, \ldots, y_m]_\mathfrak p
-    \to D \to
-    \Lambda_\mathfrak q/\mathfrak q^n\Lambda_\mathfrak q$$ where the first arrow is essentially smooth and the second is flat,
+for some $m\geq0$ with the following properties. If $\mathfrak p=\varphi^{-1}(\mathfrak q)$, then $P_{\mathfrak p}\to\Lambda_{\mathfrak q}$ is flat and $\mathfrak p\Lambda_{\mathfrak q}=\mathfrak q\Lambda_{\mathfrak q}$. There is a factorization of local Artinian rings
 
-3.  $E$ is contained in $D$ modulo $\mathfrak q^n\Lambda_\mathfrak q$.
+$$P_{\mathfrak p}/\mathfrak p^nP_{\mathfrak p}
+\longrightarrow D\longrightarrow
+\Lambda_{\mathfrak q}/\mathfrak q^n\Lambda_{\mathfrak q}$$
 
-**Proof.** Set $\bar \Lambda = \Lambda_\mathfrak q/\mathfrak q^n\Lambda_\mathfrak q$. Note that $\dim H_1(L_{\kappa(\mathfrak q)/k}) < \infty$ by More on Algebra, Proposition [Characterizations of geometric regularity](#native-more-algebra-proposition-characterization-geometrically-regular). Pick $A \subset \bar \Lambda$ containing $E$ such that $A$ is local Artinian, essentially of finite type over $k$, the map $A \to \bar \Lambda$ is flat, and $\mathfrak m_A$ generates the maximal ideal of $\bar \Lambda$, see Lemma [Compatibility of the local approximation data](#native-smoothing-lemma-helper). Denote $F = A/\mathfrak m_A$ the residue field so that $k \subset F \subset K$. Pick $\lambda_1, \ldots, \lambda_t \in \Lambda$ which map to elements of $A$ in $\bar \Lambda$ such that moreover the images of $\text{d}\lambda_1, \ldots, \text{d}\lambda_t$ form a basis of $\Omega_{F/k}$. Consider the map $\varphi' : k[y_1, \ldots, y_t] \to \Lambda$ sending $y_j$ to $\lambda_j$. Set $\mathfrak p' = (\varphi')^{-1}(\mathfrak q)$. By More on Algebra, Lemma [Geometric regularity over a field](#native-more-algebra-lemma-geometrically-regular-over-field) the ring map $k[y_1, \ldots, y_t]_{\mathfrak p'} \to \Lambda_\mathfrak q$ is flat and $\Lambda_\mathfrak q/\mathfrak p' \Lambda_\mathfrak q$ is regular. Thus we can choose further elements $\lambda_{t + 1}, \ldots, \lambda_m \in \Lambda$ which map into $A \subset \bar \Lambda$ and which map to a regular system of parameters of $\Lambda_\mathfrak q/\mathfrak p' \Lambda_\mathfrak q$. We obtain $\varphi : k[y_1, \ldots, y_m] \to \Lambda$ having property (1) such that $k[y_1, \ldots, y_m]_\mathfrak p/\mathfrak p^n k[y_1, \ldots, y_m]_\mathfrak p
-\to \bar\Lambda$ factors through $A$. Thus $k[y_1, \ldots, y_m]_\mathfrak p/\mathfrak p^n k[y_1, \ldots, y_m]_\mathfrak p
-\to A$ is flat by Algebra, Lemma [Descent of flatness](#native-algebra-lemma-flatness-descends-more-general). By construction the residue field extension $F/\kappa(\mathfrak p)$ is finitely generated and $\Omega_{F/\kappa(\mathfrak p)} = 0$. Hence it is finite separable by More on Algebra, Lemma [Cartier's equality for differentials](#native-more-algebra-lemma-cartier-equality). Thus $k[y_1, \ldots, y_m]_\mathfrak p/\mathfrak p^n k[y_1, \ldots, y_m]_\mathfrak p
-\to A$ is finite by Algebra, Lemma [Finite generation in an Artinian local target](#native-algebra-lemma-essentially-of-finite-type-into-artinian-local). Finally, we conclude that it is étale by Algebra, Lemma [Characterizations of étale algebras](#native-algebra-lemma-characterize-etale). Since an étale ring map is certainly essentially smooth we win. $\square$
+in which the first map is essentially smooth, the second is flat, and the image of $D$ contains $E$.
+
+**Proof.** Put $L=\Lambda_{\mathfrak q}/\mathfrak q^n\Lambda_{\mathfrak q}$ and $K=\kappa(\mathfrak q)$. We first establish a coefficient-enlargement fact, independently of the desired polynomial factorization.
+
+Suppose $A\subset L$ is local Artinian, $A\to L$ is flat, and $\mathfrak m_AL=\mathfrak m_L$. Given a unit $u\in L$, there is an essentially smooth local Artinian extension $A\to A'\subset L$ such that $A'\to L$ remains flat, $\mathfrak m_{A'}L=\mathfrak m_L$, and $u^q\in A'$ for some integer $q>0$. Write $F$ for the residue field of $A$ and $\alpha$ for the residue of $u$.
+
+If $\alpha\in F$, choose a unit $x\in A$ whose residue is $\alpha^{-1}$. Then $xu=1+v$ with $v$ nilpotent. For a power $q=p^r$ at least the nilpotence order, $(1+v)^q=1$. Hence $u^q=x^{-q}\in A$, and no extension is necessary.
+
+If $\alpha$ is transcendental over $F$, use
+
+$$A'=A[t]_{\mathfrak m_AA[t]},\qquad t\longmapsto u.$$
+
+This map to $L$ is defined because every inverted polynomial has nonzero residue at the transcendental element $\alpha$. The ring $A'$ is local Artinian with residue field $F(\alpha)$, and it is essentially smooth over $A$. The [Noetherian fibrewise flatness criterion](#native-algebra-lemma-criterion-flatness-fibre-noetherian), applied to $A\to A'\to L$ and the finite $L$-module $L$, proves $L$ flat over $A'$: it is flat over $A$ by assumption, and its closed fibre $K$ is flat over the field $F(\alpha)$. The map is local, hence faithfully flat and injective. This identifies $A'$ with a subring of $L$ containing $u$, so take $q=1$.
+
+If $\alpha$ is algebraic over $F$, its irreducible polynomial has the form $h(T^{p^r})$ with $h'\ne0$. Thus $\alpha^{p^r}$ is separable over $F$. Since Artinian local rings are henselian, lift the finite separable residue extension $F(\alpha^{p^r})/F$ to a finite étale local $A$-algebra $A'$, and lift its residue embedding into $K$ to a map $A'\to L$. These are the [henselian lifting](#native-algebra-lemma-local-dimension-zero-henselian) and [finite étale classification](#native-algebra-lemma-henselian-cat-finite-etale) statements. The same fibrewise flatness criterion shows this local map is faithfully flat. Apply the first case to $u^{p^r}$ and this enlarged coefficient ring to obtain a further power lying in $A'$. In all three cases $\mathfrak m_{A'}=\mathfrak m_AA'$, so the asserted maximal-ideal equality is preserved. This proves the enlargement fact. Successive enlargements handle any finite list of units.
+
+Geometric regularity gives an injection $H_1(L_{K/k})\to\mathfrak q\Lambda_{\mathfrak q}/\mathfrak q^2\Lambda_{\mathfrak q}$, by the [cotangent criterion](#native-more-algebra-proposition-characterization-geometrically-regular). In particular this homology is finite-dimensional. Choose representatives $\tau_1,\ldots,\tau_d\in\Lambda$ of a regular system of parameters of $\Lambda_{\mathfrak q}$, clearing denominators if necessary. Apply the [Artinian approximation lemma](#native-smoothing-lemma-helper) to a finite subset consisting of $E$ and the images of these representatives. We obtain a local Artinian $k$-subalgebra $A\subset L$, essentially of finite type, flatly embedded, with $\mathfrak m_AL=\mathfrak m_L$. Let $F$ be its residue field.
+
+We next choose the polynomial coordinates in $\Lambda$ itself. Choose elements $b_1,\ldots,b_t\in A$ whose residues have differentials forming an $F$-basis of $\Omega_{F/k}$. Express each image in $L$ as $\ell_i/s_i$ with $\ell_i,s_i\in\Lambda$ and $s_i\notin\mathfrak q$. Apply the enlargement fact to the finitely many units represented by the $s_i$. This yields $A'\subset L$ containing powers $s_i^{q_i}$ and hence containing the images of the global elements
+
+$$v_i=\ell_i s_i^{q_i-1}\in\Lambda.$$
+
+It is still essentially of finite type over $k$, since each enlargement is essentially smooth and therefore essentially of finite type, and it still contains $E$ and the parameter images. Write $F'$ for its residue field. In each transcendental enlargement the new residue-field differential is that of the adjoined global unit; in each finite separable enlargement no new relative differential is needed. It follows that $\Omega_{F'/k}$ is generated by the old $\mathrm db_i$ and the differentials of the adjoined powers of the $s_i$. Since in $F'$ we have $v_i=b_i s_i^{q_i}$, the identity
+
+$$\mathrm dv_i=s_i^{q_i}\mathrm db_i+b_i\,\mathrm d(s_i^{q_i})$$
+
+and invertibility of $s_i^{q_i}$ show that it is generated by differentials of finitely many global elements of $\Lambda$ whose images belong to $A'$. Select a subset whose differentials form a basis. Denote these global elements by $\lambda_1,\ldots,\lambda_a$.
+
+Apply [geometric regularity over a field](#native-more-algebra-lemma-geometrically-regular-over-field) to these elements and the finite subextension $F'/k$ of $K$. For
+
+$$P'=k[y_1,\ldots,y_a],\qquad y_i\mapsto\lambda_i,$$
+
+and $\mathfrak p'=(P'\to\Lambda)^{-1}(\mathfrak q)$, the map $P'_{\mathfrak p'}\to\Lambda_{\mathfrak q}$ is flat with regular closed fibre. Its proof also shows that a regular system of parameters of $P'_{\mathfrak p'}$ maps to part of one for $\Lambda_{\mathfrak q}$. Complete it by a suitable subset of the $\tau_i$: their images generate the maximal ideal, so a subset supplies a basis of the remaining cotangent space. Adjoin these selected $\tau_i$ as further polynomial coordinates. The resulting $P\to\Lambda$ has $\mathfrak p\Lambda_{\mathfrak q}=\mathfrak q\Lambda_{\mathfrak q}$, and a parameter system of the regular local ring $P_{\mathfrak p}$ maps to a parameter system of $\Lambda_{\mathfrak q}$. The [regular-local flatness criterion](#native-algebra-lemma-flat-over-regular) proves the required flatness. All its coordinate images in $L$ belong to $A'$.
+
+Consequently $Q=P_{\mathfrak p}/\mathfrak p^nP_{\mathfrak p}$ maps to $A'$: elements outside $\mathfrak p$ have nonzero residue and are units there, while $\mathfrak p^n$ vanishes in $L$ and hence in its subring $A'$. The map $Q\to L$ is flat, by the flatness just proved and the equality of the extended maximal ideals. Since $A'\to L$ is faithfully flat, [descent of flatness](#native-algebra-lemma-flatness-descends-more-general) gives $A'/Q$ flat.
+
+Moreover $\mathfrak m_QA'=\mathfrak m_{A'}$: both ideals become $\mathfrak m_L$ after the faithfully flat extension. The extension $F'/\kappa(\mathfrak p)$ is finitely generated and has zero differentials, since the selected coordinates span $\Omega_{F'/k}$ and the additional parameter coordinates have residue zero. The [field differential criterion](#native-more-algebra-lemma-cartier-equality) makes it finite separable. Lifting a finite basis of this residue extension generates $A'$ as a $Q$-module: subtract a linear combination modulo $\mathfrak m_Q$, then repeat on the coefficients; nilpotence of $\mathfrak m_Q$ terminates the process. Thus $A'/Q$ is finite flat with finite separable closed fibre. The [étale criterion](#native-algebra-lemma-characterize-etale) makes it finite étale, in particular essentially smooth. Taking $D=A'$ proves every assertion, including containment of the prescribed set $E$. ∎
 
 #### Lemma. Enlarging a factorization in positive characteristic
- Let $\varphi : k[y_1, \ldots, y_m] \to \Lambda$, $n$, $\mathfrak q$, $\mathfrak p$ and $$k[y_1, \ldots, y_m]_\mathfrak p/\mathfrak p^n \to
-D \to \Lambda_\mathfrak q/\mathfrak q^n \Lambda_\mathfrak q$$ be as in Lemma [A factorization modulo a prescribed ideal](#native-smoothing-lemma-solution-modulo). Then for any $\lambda \in \Lambda \setminus \mathfrak q$ there exists an integer $q > 0$ and a factorization $$k[y_1, \ldots, y_m]_\mathfrak p/\mathfrak p^n \to
-D \to D' \to \Lambda_\mathfrak q/\mathfrak q^n \Lambda_\mathfrak q$$ such that $D \to D'$ is an essentially smooth map of local Artinian rings, the last arrow is flat, and $\lambda^q$ is in $D'$.
 
-**Proof.** Set $\bar \Lambda = \Lambda_\mathfrak q/\mathfrak q^n\Lambda_\mathfrak q$. Let $\bar \lambda$ be the image of $\lambda$ in $\bar \Lambda$. Let $\alpha \in \kappa(\mathfrak q)$ be the image of $\lambda$ in the residue field. Let $k \subset F \subset \kappa(\mathfrak q)$ be the residue field of $D$. If $\alpha$ is in $F$ then we can find an $x \in D$ such that $x \bar\lambda = 1 \bmod \mathfrak q$. Hence $(x\bar\lambda)^q=1$ if $q=p^r$ is at least the nilpotence order of $\mathfrak q\bar\Lambda$: Frobenius gives $(1+u)^{p^r}=1+u^{p^r}=1$. Hence $\bar\lambda^q$ is in $D$. If $\alpha$ is transcendental over $F$, then we can take $D' = (D[\bar \lambda])_\mathfrak m$ equal to the subring generated by $D$ and $\bar \lambda$ localized at $\mathfrak m = D[\bar \lambda] \cap \mathfrak q \bar \Lambda$. This works because $D[\bar \lambda]$ is in fact a polynomial algebra over $D$ in this case. Finally, if $\lambda \bmod \mathfrak q$ is algebraic over $F$, then we can find a $p$-power $q$ such that $\alpha^q$ is separable algebraic over $F$, see the following elementary field argument. The irreducible polynomial of $\alpha$ has the form $h(T^{p^r})$ with $h'\ne0$, after extracting all common powers of $p$ from its exponents; thus $\alpha^{p^r}$ is separable over $F$. Note that $D$ and $\bar\Lambda$ are henselian local rings, see Algebra, Lemma [Henselianity in local dimension zero](#native-algebra-lemma-local-dimension-zero-henselian). Let $D \to D'$ be a finite étale extension whose residue field extension is $F(\alpha^q)/F$, see Algebra, Lemma [Finite étale algebras over a henselian ring](#native-algebra-lemma-henselian-cat-finite-etale). Since $\bar\Lambda$ is henselian and $F(\alpha^q)$ is contained in its residue field we can find a factorization $D' \to \bar \Lambda$. By the first part of the argument we see that $\bar\lambda^{qq'} \in D'$ for some $q' > 0$. $\square$
+Retain a factorization supplied by the preceding lemma,
+
+$$P_{\mathfrak p}/\mathfrak p^nP_{\mathfrak p}\longrightarrow D\longrightarrow L,
+\qquad L=\Lambda_{\mathfrak q}/\mathfrak q^n\Lambda_{\mathfrak q}.$$
+
+For every $\lambda\in\Lambda\setminus\mathfrak q$, there is an integer $q>0$ and a local Artinian factorization $D\to D'\to L$ such that $D'/D$ is essentially smooth, $D'\to L$ is flat, and the image of $\lambda^q$ lies in $D'$.
+
+**Proof.** The flat local map $D\to L$ is injective, so identify $D$ with its image. Since the source $P_{\mathfrak p}/\mathfrak p^n$ maps essentially smoothly to the Artinian local ring $D$, its fibre is a zero-dimensional local essentially smooth algebra, hence a field. Its maximal ideal therefore generates $\mathfrak m_D$. The equality $\mathfrak p\Lambda_{\mathfrak q}=\mathfrak q\Lambda_{\mathfrak q}$ gives $\mathfrak m_DL=\mathfrak m_L$. The image of $\lambda$ is a unit in $L$. Apply the coefficient-enlargement fact proved at the start of the preceding proof with $A=D$ and this unit. It gives exactly the asserted factorization and power, with no change to the original maps from $P_{\mathfrak p}/\mathfrak p^n$. ∎
 
 #### Lemma. Desingularization with inseparable residue fields
 
-Let $k \to A \to \Lambda \supset \mathfrak q$ be as in Situation [The local desingularization problem](#native-smoothing-situation-local) where
+Let $k$ have characteristic $p>0$, let $A/k$ be finitely presented, and let $A\to\Lambda$ be a $k$-algebra map with $\Lambda$ Noetherian and geometrically regular over $k$. If $\mathfrak q$ is minimal over $\mathfrak h_A=\sqrt{H_{A/k}\Lambda}$, then the local desingularization problem at $\mathfrak q$ admits a resolution.
 
-1.  $k$ is a field of characteristic $p > 0$,
+**Proof.** Put $d=\dim\Lambda_{\mathfrak q}$. If $d=0$, this local ring is a geometrically regular field extension of $k$, hence separable, and the preceding separable-residue-field argument applies. One may also use the finite-jet factorization at order one: its polynomial local base then has dimension zero and is a rational function field over $k$; its essentially smooth intermediate algebra supplies a smooth stage containing the finitely many source generators. The height-zero return lemma gives the desired global factorization. In particular, no positive-length parameter-lifting argument is needed in this case.
 
-2.  $\Lambda$ is Noetherian and geometrically regular over $k$,
+Assume $d>0$. We organize the construction around a strict presentation, an Artinian approximation, and the return from that approximation.
 
-3.  $\mathfrak q$ is minimal over $\mathfrak h_A$.
+**Preparing a strict presentation.** Choose $N\geq1$ with
 
-Then $k \to A \to \Lambda \supset \mathfrak q$ can be resolved.
+$$\mathfrak q^N\Lambda_{\mathfrak q}\subseteq H_{A/k}\Lambda_{\mathfrak q},$$
 
-**Proof.** If $d=\dim\Lambda_{\mathfrak q}=0$, apply Lemma [A factorization modulo a prescribed ideal](#native-smoothing-lemma-solution-modulo) at order $n=1$, with $E$ the images of algebra generators of $A$. The local target is a field and the polynomial source localizes at a height-zero prime, so its local ring is a field. The resulting $D$ is essentially smooth over that source and contains those generators. Thus $A$ localized at this base factors through a smooth stage; finite-presentation factorization followed by Lemma [Returning from a height-zero localization](#native-smoothing-lemma-delocalize-height-zero) yields the resolution. This is also the construction below with no parameters and no auxiliary $t_i$; the empty lifting step is omitted. Hence assume $d>0$ below.
+which is possible by minimality and Noetherianity. Write $H_{A/k}=(a_1,\ldots,a_s)$, set $P_0=k[x_1,\ldots,x_d]$, and form
 
-The lemma is proven by the following steps in the given order. We will justify each of these steps below.
+$$B=A[x_1,\ldots,x_d,(z_{ij})]/
+\bigl(x_i^{2N}-\sum_{j=1}^s a_jz_{ij}:1\leq i\leq d\bigr).$$
 
-1.   Pick an integer $N > 0$ such that $\mathfrak q^N\Lambda_\mathfrak q \subset H_{A/k}\Lambda_\mathfrak q$.
+Each $B_{a_j}/P_0$ is smooth, by eliminating the corresponding $z_{ij}$ and using smoothness of $A_{a_j}/k$. The equations imply that the opens $D(a_j)$ cover every $D(x_i)$, so $B_{x_i}/P_0$ is smooth. Improve this presentation to $B\to C\to B$ with composite the identity. Then $C/P_0$ is finitely presented, and $C_{x_i}/P_0$ is smooth with free differentials. The strict part of the comparison lemma gives a common integer $c\geq1$ for which every $x_i^c$ is strictly standard for $C/P_0$.
 
-2.   Pick generators $a_1, \ldots, a_t \in A$ of the ideal $H_{A/k}$.
+Set $e=8c$ and choose
 
-3.  
+$$n\geq\max\{N+dc,\ d(e-1)+1\}.$$
 
-    Set $d = \dim(\Lambda_\mathfrak q)$.
+Apply the [finite-jet factorization](#native-smoothing-lemma-solution-modulo) at this order, requiring its intermediate algebra to contain the images of generators of $A$. We obtain a polynomial algebra $P=k[y_1,\ldots,y_m]$, a map $P\to\Lambda$, a prime $\mathfrak p$ over $\mathfrak q$, and
 
-4.  
+$$P_{\mathfrak p}/\mathfrak p^nP_{\mathfrak p}
+\longrightarrow D\longrightarrow L:=\Lambda_{\mathfrak q}/\mathfrak q^n\Lambda_{\mathfrak q}.$$
 
-    Set $B = A[x_1, \ldots, x_d, z_{ij}]/(x_i^{2N} - \sum z_{ij}a_j)$.
+The first map is essentially smooth, the second is flat local, and $\mathfrak p\Lambda_{\mathfrak q}=\mathfrak q\Lambda_{\mathfrak q}$. Since the flat map $P_{\mathfrak p}\to\Lambda_{\mathfrak q}$ has a field as closed fibre, the [dimension formula](#native-algebra-lemma-dimension-base-fibre-equals-total) gives $\dim P_{\mathfrak p}=d$. Choose $\pi_1,\ldots,\pi_d\in\mathfrak p$ representing a regular system of parameters there. They also form a parameter system in $\Lambda_{\mathfrak q}$. Identify $D$ with its image in $L$, using faithful flatness. Containment of the source generators defines a map $A\to D$: all their polynomial relations already vanish in the containing ring $L$.
 
-5.   Consider $B$ as a $k[x_1, \ldots, x_d]$-algebra and let $B \to C$ be as in Lemma [Improving a finite presentation](#native-smoothing-lemma-improve-presentation). We also obtain a section $C \to B$.
+**Arranging annihilators over the polynomial base.** Put $R=P[t_1,\ldots,t_d]$ and $\gamma_i=\pi_it_i$. Let $S=P\setminus\mathfrak p$, so $S^{-1}R=P_{\mathfrak p}[t]$. The parameters $\pi_i$ are a permutable regular sequence in $P_{\mathfrak p}$. Therefore the products $\pi_it_i$, and the successive powers needed here, are regular sequences in this polynomial algebra, by [regular sequences with separate polynomial variables](#native-algebra-lemma-regular-sequence-in-polynomial-ring) and [powers of regular sequences](#native-algebra-lemma-regular-sequence-powers).
 
-6.  
+Use [Ogoma's lemma](#native-smoothing-lemma-ogoma) successively on the finite $R$-modules $R/(\gamma_1^e,\ldots,\gamma_{i-1}^e)$. Multiplying $\pi_i$ by an appropriate element of $S$ ensures
 
-    Choose $c > 0$ such that each $x_i^c$ is strictly standard in $C$ over $k[x_1, \ldots, x_d]$.
+$$\operatorname{Ann}_{R/(\gamma_1^e,\ldots,\gamma_{i-1}^e)}(\gamma_i)
+=\operatorname{Ann}_{R/(\gamma_1^e,\ldots,\gamma_{i-1}^e)}(\gamma_i^2).\tag{I1}$$
 
-7.   Set $e=8c$ and choose $n\geq\max\{N+dc,d(e-1)+1\}$.
+These successive changes leave earlier equalities intact and do not alter either localized parameter system. They also leave every $\pi_i$ in the image of $P$ in $D$.
 
-8.   Let $E \subset \Lambda_\mathfrak q/\mathfrak q^n\Lambda_\mathfrak q$ be the images of generators of $A$ as a $k$-algebra.
+**Arranging coefficients and annihilators in the target.** We construct units $\delta_i\in\Lambda\setminus\mathfrak q$ and coefficients $\lambda_{ij}\in\Lambda$, together with an essentially smooth local Artinian enlargement $D\to D'\subset L$, such that
 
-9.  
+$$ (\delta_i\pi_i)^{2N}=\sum_j a_j\lambda_{ij},\tag{I2}$$
 
-    Choose an integer $m$ and a $k$-algebra map $\varphi : k[y_1, \ldots, y_m] \to \Lambda$ and a factorization by local Artinian rings $$k[y_1, \ldots, y_m]_\mathfrak p/\mathfrak p^n k[y_1, \ldots, y_m]_\mathfrak p
-    \to D \to
-    \Lambda_\mathfrak q/\mathfrak q^n\Lambda_\mathfrak q$$ such that the first arrow is essentially smooth, the second is flat, $E$ is contained in $D$, with $\mathfrak p = \varphi^{-1}(\mathfrak q)$ the map $k[y_1, \ldots, y_m]_\mathfrak p \to \Lambda_\mathfrak q$ is flat, and $\mathfrak p \Lambda_\mathfrak q = \mathfrak q \Lambda_\mathfrak q$.
+all the images of $\delta_i,\lambda_{ij}$ belong to $D'$, and the annihilators of $\delta_i\pi_i$ and its square agree modulo the preceding $(\delta_h\pi_h)^e$. The map $D'\to L$ will remain flat throughout.
 
-10. 
+Suppose the construction has been completed for indices before $i$. The element $\pi_i^N$ belongs to $(a_1,\ldots,a_s)L$, so faithful flatness contracts this membership to the current coefficient ring: write
 
-    Choose $\pi_1, \ldots, \pi_d \in \mathfrak p$ which map to a regular system of parameters of $k[y_1, \ldots, y_m]_\mathfrak p$.
+$$\pi_i^N=\sum_j a_jd_j\quad\text{in }D'.$$
 
-11.  Let $R = k[y_1, \ldots, y_m, t_1, \ldots, t_d]$ and $\gamma_i = \pi_i t_i$.
+Lift the $d_j$ to $b_j\in\Lambda_{\mathfrak q}$. The error lies in $\mathfrak q^n\Lambda_{\mathfrak q}$, which is contained in $\mathfrak q^{n-N}(a_1,\ldots,a_s)\Lambda_{\mathfrak q}$. Hence choose $b'_j\in\mathfrak q^{n-N}\Lambda_{\mathfrak q}$ with
 
-12.  If necessary modify the choice of $\pi_i$ such that for $i = 1, \ldots, d$ we have $$\text{Ann}_{R/(\gamma_1^e, \ldots, \gamma_{i - 1}^e)R}(\gamma_i)
-    =
-    \text{Ann}_{R/(\gamma_1^e, \ldots, \gamma_{i - 1}^e)R}(\gamma_i^2)$$
+$$\pi_i^N=\sum_j a_j(b_j+b'_j).$$
 
-13. 
+After multiplying by $\pi_i^N$, put $v_j=\pi_i^N(b_j+b'_j)$. Its image in $L$ is $\pi_i^Nd_j$, since $\pi_i^Nb'_j\in\mathfrak q^n\Lambda_{\mathfrak q}$. Write all $v_j=w_j/s_0$ with $w_j\in\Lambda$ and $s_0\notin\mathfrak q$. Some $u\notin\mathfrak q$ annihilates the error in the equality $s_0\pi_i^{2N}=\sum_j a_jw_j$. Choose $s\notin\mathfrak q$ divisible by $us_0$ and set
 
-    There exist $\delta_1, \ldots, \delta_d \in \Lambda$, $\delta_i \not \in \mathfrak q$ and a factorization $D \to D' \to \Lambda_\mathfrak q/\mathfrak q^n\Lambda_\mathfrak q$ with $D'$ local Artinian, $D \to D'$ essentially smooth, the map $D' \to \Lambda_\mathfrak q/\mathfrak q^n\Lambda_\mathfrak q$ flat such that, with $\pi_i' = \delta_i \pi_i$, we have for $i = 1, \ldots, d$
+$$\mu_j=(s^{2N}/s_0)w_j.$$
 
-    1.  $(\pi_i')^{2N} = \sum a_j\lambda_{ij}$ in $\Lambda$ where $\lambda_{ij} \bmod \mathfrak q^n\Lambda_\mathfrak q$ is an element of $D'$,
+This is an element of $\Lambda$, and the chosen divisibility gives the exact equality
 
-    2.  $\text{Ann}_{\Lambda/({\pi'}_1^e, \ldots, {\pi'}_{i - 1}^e)}({\pi'}_i) =
-        \text{Ann}_{\Lambda/({\pi'}_1^e, \ldots, {\pi'}_{i - 1}^e)}({\pi'}_i^2)$,
+$$ (s\pi_i)^{2N}=\sum_j a_j\mu_j\quad\text{in }\Lambda.$$
 
-    3.  $\delta_i \bmod \mathfrak q^n\Lambda_\mathfrak q$ is an element of $D'$.
+Its coefficient images in $L$ are $s^{2N}\pi_i^Nd_j$. By the [enlargement lemma](#native-smoothing-lemma-enlarge-solution-modulo), replace $s$ by a positive power and enlarge $D'$ so its image lies in $D'$. Scale the $\mu_j$ by the corresponding $2N$th power; both the equality and the displayed coefficient formula persist. Thus the new coefficient images lie in $D'$ as well.
 
-14.  Define $B \to \Lambda$ by sending $x_i$ to $\pi'_i$ and $z_{ij}$ to $\lambda_{ij}$ found above. Define $C \to \Lambda$ by composing the map $B \to \Lambda$ with the retraction $C \to B$.
+In $\Lambda_{\mathfrak q}$, the preceding $(\delta_h\pi_h)^e$ followed by $s\pi_i$ form a regular sequence. Apply Ogoma's lemma to the finite module $\Lambda/((\delta_h\pi_h)^e:h<i)$ to find $s'\notin\mathfrak q$ such that every $(s')^q s\pi_i$, $q>0$, has equal first and second annihilators there. Enlarge $D'$ once more so that some $(s')^q$ belongs to it. Taking
 
-15.  Map $R \to \Lambda$ by $\varphi$ on $k[y_1, \ldots, y_m]$ and by sending $t_i$ to $\delta_i$. Further introduce a map $$k[x_1, \ldots, x_d]
-    \longrightarrow
-    R = k[y_1, \ldots, y_m, t_1, \ldots, t_d]$$ by sending $x_i$ to $\gamma_i = \pi_i t_i$.
+$$\delta_i=(s')^q s,
+\qquad\lambda_{ij}=(s')^{2Nq}\mu_j$$
 
-16.  It suffices to resolve $$R
-    \to
-    C \otimes_{k[x_1, \ldots, x_d]} R
-    \to
-    \Lambda \supset \mathfrak q$$
+establishes all requirements for index $i$. The finitely many successive essentially smooth enlargements compose, completing this induction.
 
-17.  Set $I = (\gamma_1^e, \ldots, \gamma_d^e) \subset R$.
+**Constructing the compatible finite-jet map.** Send $x_i\mapsto\delta_i\pi_i$ and $z_{ij}\mapsto\lambda_{ij}$ to obtain $B\to\Lambda$, then use the augmentation $C\to B$ to define $C\to\Lambda$. Give $R$ its map to $\Lambda$ by $t_i\mapsto\delta_i$, and map $P_0\to R$ by $x_i\mapsto\gamma_i$. Let $C_R=C\otimes_{P_0}R$ and $B_R=B\otimes_{P_0}R$.
 
-18.  It suffices to resolve $$R/I
-    \to
-    C \otimes_{k[x_1, \ldots, x_d]} R/I
-    \to
-    \Lambda/I\Lambda \supset \mathfrak q/I\Lambda$$
+Write $Q=P_{\mathfrak p}/\mathfrak p^nP_{\mathfrak p}$. Define a $Q[t]$-algebra map
 
-19.  We denote $\mathfrak r \subset R = k[y_1, \ldots, y_m, t_1, \ldots, t_d]$ the inverse image of $\mathfrak q$.
+$$B_R\otimes_RQ[t]\longrightarrow D'[t_1,\ldots,t_d]$$
 
-20.  It suffices to resolve $$(R/I)_\mathfrak r \to
-    C \otimes_{k[x_1, \ldots, x_d]} (R/I)_\mathfrak r \to
-    \Lambda_\mathfrak q/I\Lambda_\mathfrak q
-    \supset
-    \mathfrak q\Lambda_\mathfrak q/I\Lambda_\mathfrak q$$
+using the given map $A\to D'$ and the formulas
 
-21. 
+$$x_i\longmapsto\pi_it_i,
+\qquad z_{ij}\longmapsto\lambda_{ij}\,t_i^{2N}/\delta_i^{2N}.\tag{I3}$$
 
-    Set $J = (\pi_1^e, \ldots, \pi_d^e)$ in $k[y_1, \ldots, y_m]$.
+Each $\delta_i$ is a unit in $D'$: its image in the residue field of $L$ is nonzero and the map is local. Equation (I2), multiplied by $t_i^{2N}/\delta_i^{2N}$, verifies every relation of $B$. Evaluation $t_i\mapsto\delta_i$ gives the specified map to $L$, including the original values of $z_{ij}$. Thus both the base map and the target map commute. Compose with the retraction from $C_R$ to obtain the same factorization for $C_R\otimes_RQ[t]$.
 
-22. 
+The algebra $D'/Q$ is essentially smooth, so $D'[t]$ is a filtered colimit of smooth $Q[t]$-algebras, by writing its localization as a filtered colimit of principal localizations. Since $C_R\otimes_RQ[t]$ is finitely presented, its map factors through one smooth stage $T\to L$. This gives an actual smooth factorization over $Q[t]$.
 
-    It suffices to resolve $$(R/JR)_\mathfrak p \to
-    C \otimes_{k[x_1, \ldots, x_d]} (R/JR)_\mathfrak p \to
-    \Lambda_\mathfrak q/J\Lambda_\mathfrak q
-    \supset
-    \mathfrak q\Lambda_\mathfrak q/J\Lambda_\mathfrak q$$
+**Returning to the original rings.** Set $J=(\pi_1^e,\ldots,\pi_d^e)\subset P$ and $I=(\gamma_1^e,\ldots,\gamma_d^e)\subset R$. Because the parameters generate $\mathfrak pP_{\mathfrak p}$, every monomial of degree $d(e-1)+1$ in them contains an $e$th power. Our choice of $n$ therefore gives
 
-23.  It suffices to resolve $$(R/\mathfrak p^nR)_\mathfrak p \to
-    C \otimes_{k[x_1, \ldots, x_d]} (R/\mathfrak p^nR)_\mathfrak p \to
-    \Lambda_\mathfrak q/\mathfrak q^n\Lambda_\mathfrak q
-    \supset
-    \mathfrak q\Lambda_\mathfrak q/\mathfrak q^n\Lambda_\mathfrak q$$
+$$\mathfrak p^nP_{\mathfrak p}\subseteq JP_{\mathfrak p},
+\qquad\mathfrak q^n\Lambda_{\mathfrak q}\subseteq J\Lambda_{\mathfrak q}.$$
 
-24.  It suffices to resolve $$(R/\mathfrak p^nR)_\mathfrak p \to
-    B \otimes_{k[x_1, \ldots, x_d]} (R/\mathfrak p^nR)_\mathfrak p \to
-    \Lambda_\mathfrak q/\mathfrak q^n\Lambda_\mathfrak q
-    \supset
-    \mathfrak q\Lambda_\mathfrak q/\mathfrak q^n\Lambda_\mathfrak q$$
+Base-change the smooth stage $T$ from $Q[t]$ to $P_{\mathfrak p}[t]/J$. Its target is now $\Lambda_{\mathfrak q}/J\Lambda_{\mathfrak q}$. Let $\mathfrak r$ be the inverse image of $\mathfrak q$ in $R$. Every $t_i$ is a unit in $R_{\mathfrak r}$, because its target image is $\delta_i\notin\mathfrak q$. Thus
 
-25. 
+$$IR_{\mathfrak r}=JR_{\mathfrak r},
+\qquad I\Lambda_{\mathfrak q}=J\Lambda_{\mathfrak q}.$$
 
-    The ring $D'[t_1, \ldots, t_d]$ is given the structure of an $R_\mathfrak p/\mathfrak p^nR_\mathfrak p$-algebra by the given map $k[y_1, \ldots, y_m]_\mathfrak p/\mathfrak p^n k[y_1, \ldots, y_m]_\mathfrak p
-    \to D'$ and by sending $t_i$ to $t_i$. It suffices to find a factorization $$B \otimes_{k[x_1, \ldots, x_d]} (R/\mathfrak p^nR)_\mathfrak p
-    \to D'[t_1, \ldots, t_d] \to
-    \Lambda_\mathfrak q/\mathfrak q^n\Lambda_\mathfrak q$$ where the second arrow sends $t_i$ to $\delta_i$ and induces the given homomorphism $D' \to \Lambda_\mathfrak q/\mathfrak q^n\Lambda_\mathfrak q$.
+Localizing the smooth factorization accordingly gives one for $C_R\otimes_R(R/I)_{\mathfrak r}$ into $\Lambda_{\mathfrak q}/I\Lambda_{\mathfrak q}$. This target is Artinian, since $J$ consists of positive powers of a full parameter system. The [height-zero return lemma](#native-smoothing-lemma-delocalize-height-zero) therefore resolves the quotient problem before localization. If its selected prime is already smooth, use the identity factorization; otherwise height zero makes it minimal over the singularity ideal, as required by that lemma.
 
-26.  Such a factorization exists by our choice of $D'$ above.
+By arbitrary base change, every $\gamma_i^c$ is strictly standard for $C_R/R$. Equalities (I1) and the target equalities arranged above imply the corresponding annihilator equalities for their $c$th powers, since first-power stabilization implies stabilization of all positive powers. Apply [successive lifting](#native-smoothing-lemma-lift-solution) with these elements. Their eighth powers generate $I$, so it gives a resolution $C_R\to V\to\Lambda$ over $R$.
 
-We now give the justification for each of the steps, except that we skip justifying the steps which just introduce notation.
-
-Ad ([the indicated step](#native-smoothing-item-power)). This is possible as $\mathfrak q$ is minimal over $\mathfrak h_A = \sqrt{H_{A/k}\Lambda}$.
-
-Ad ([the indicated step](#native-smoothing-item-strictly-standard)). Note that $A_{a_j}$ is smooth over $k$. Hence $B_{a_j}$, which is isomorphic to a polynomial algebra over $A_{a_j}[x_1, \ldots, x_d]$, is smooth over $k[x_1, \ldots, x_d]$. Thus $B_{x_i}$ is smooth over $k[x_1, \ldots, x_d]$. By Lemma [Improving a finite presentation](#native-smoothing-lemma-improve-presentation) we see that $C_{x_i}$ is smooth over $k[x_1, \ldots, x_d]$ with finite free module of differentials. Hence some power of $x_i$ is strictly standard in $C$ over $k[x_1, \ldots, x_d]$ by Lemma [Comparing standard smooth presentations](#native-smoothing-lemma-compare-standard).
-
-Ad ([the indicated step](#native-smoothing-item-np)). This follows by applying Lemma [A factorization modulo a prescribed ideal](#native-smoothing-lemma-solution-modulo).
-
-Ad ([the indicated step](#native-smoothing-item-choose-pii)). Since $k[y_1, \ldots, y_m]_\mathfrak p \to \Lambda_\mathfrak q$ is flat and $\mathfrak p \Lambda_\mathfrak q = \mathfrak q \Lambda_\mathfrak q$ by construction we see that $\dim(k[y_1, \ldots, y_m]_\mathfrak p) = d$ by Algebra, Lemma [Dimension of a flat family](#native-algebra-lemma-dimension-base-fibre-equals-total). Thus we can find $\pi_1, \ldots, \pi_d \in \mathfrak p$ which map to a regular system of parameters in $k[y_1, \ldots, y_m]_\mathfrak p$.
-
-Ad ([the indicated step](#native-smoothing-item-modify-pii)). By Algebra, Lemma [Regular rings are Cohen–Macaulay](#native-algebra-lemma-regular-ring-cm) any permutation of the sequence \(\pi_1, \ldots, \pi_d\) is a regular sequence in \(k[y_1, \ldots, y_m]_\mathfrak p\). Hence \(\gamma_1 = \pi_1 t_1, \ldots, \gamma_d = \pi_d t_d\) is a regular sequence in \(R_\mathfrak p = k[y_1, \ldots, y_m]_\mathfrak p[t_1, \ldots, t_d]\), see Algebra, Lemma [Regular sequences in a polynomial ring](#native-algebra-lemma-regular-sequence-in-polynomial-ring). Let \(S = k[y_1, \ldots, y_m] \setminus \mathfrak p\) so that \(R_\mathfrak p = S^{-1}R\). Note that \(\pi_1, \ldots, \pi_d\) and \(\gamma_1, \ldots, \gamma_d\) remain regular sequences if we multiply our \(\pi_i\) by elements of \(S\). Suppose that 
-
-\[
-\text{Ann}_{R/(\gamma_1^e, \ldots, \gamma_{i - 1}^e)R}(\gamma_i)
-=
-\text{Ann}_{R/(\gamma_1^e, \ldots, \gamma_{i - 1}^e)R}(\gamma_i^2)
-\]
-
- holds for \(i = 1, \ldots, t\) for some \(t \in \{0, \ldots, d\}\). Note that \(\gamma_1^e, \ldots, \gamma_t^e, \gamma_{t + 1}\) is a regular sequence in \(S^{-1}R\) by Algebra, Lemma [Powers of a regular sequence](#native-algebra-lemma-regular-sequence-powers). Hence we see that 
-
-\[
-\text{Ann}_{S^{-1}R/(\gamma_1^e, \ldots, \gamma_{i - 1}^e)}(\gamma_i) =
-\text{Ann}_{S^{-1}R/(\gamma_1^e, \ldots, \gamma_{i - 1}^e)}(\gamma_i^2).
-\]
-
- Thus we get 
-
-\[
-\text{Ann}_{R/(\gamma_1^e, \ldots, \gamma_t^e)R}(\gamma_{t + 1})
-=
-\text{Ann}_{R/(\gamma_1^e, \ldots, \gamma_t^e)R}(\gamma_{t + 1}^2)
-\]
-
- after replacing \(\pi_{t + 1}\) by \(s\pi_{t + 1}\) for some \(s \in S\) by Lemma [The annihilator stabilization step](#native-smoothing-lemma-ogoma). By induction on \(t\) this produces the desired sequence.
-
-Ad ([the indicated step](#native-smoothing-item-choose-deltai)). Let \(S = \Lambda \setminus \mathfrak q\) so that \(\Lambda_\mathfrak q = S^{-1}\Lambda\). Set \(\bar \Lambda = \Lambda_\mathfrak q/\mathfrak q^n \Lambda_\mathfrak q\). Suppose that we have a \(t \in \{0, \ldots, d\}\) and \(\delta_1, \ldots, \delta_t \in S\) and a factorization \(D \to D' \to \bar \Lambda\) as in ([the indicated step](#native-smoothing-item-choose-deltai)) such that (a), (b), (c) hold for \(i = 1, \ldots, t\). We have \(\pi_{t + 1}^N \in H_{A/k}\Lambda_\mathfrak q\) as \(\mathfrak q^N \Lambda_\mathfrak q \subset H_{A/k}\Lambda_\mathfrak q\) by ([the indicated step](#native-smoothing-item-power)). Hence \(\pi_{t + 1}^N \in H_{A/k} \bar\Lambda\). Hence \(\pi_{t + 1}^N \in H_{A/k}D'\) as \(D' \to \bar \Lambda\) is faithfully flat, see Algebra, Lemma [Universal injectivity of a faithfully flat ring map](#native-algebra-lemma-faithfully-flat-universally-injective). Recall that \(H_{A/k} = (a_1, \ldots, a_t)\). Say \(\pi_{t + 1}^N = \sum a_j d_j\) in \(D'\) and choose \(c_j \in \Lambda_\mathfrak q\) lifting \(d_j \in D'\). Then \(\pi_{t + 1}^N = \sum c_j a_j + \epsilon\) with \(\epsilon \in \mathfrak q^n\Lambda_\mathfrak q \subset \mathfrak q^{n - N}H_{A/k}\Lambda_\mathfrak q\). Write \(\epsilon = \sum a_j c'_j\) for some \(c'_j \in \mathfrak q^{n - N}\Lambda_\mathfrak q\). Hence \(\pi_{t + 1}^{2N} = \sum (\pi_{t + 1}^N c_j + \pi_{t + 1}^N c'_j) a_j\). Note that \(\pi_{t + 1}^Nc'_j\) maps to zero in \(\bar \Lambda\); this trivial but key observation will ensure later that (a) holds. Now we choose \(s \in S\) such that there exist \(\mu_{t + 1j} \in \Lambda\) such that on the one hand \(\pi_{t + 1}^N c_j + \pi_{t + 1}^N c'_j = \mu_{t + 1j}/s^{2N}\) in \(S^{-1}\Lambda\) and on the other \((s \pi_{t + 1})^{2N} = \sum \mu_{t + 1j}a_j\) in \(\Lambda\). To verify this denominator step, write all coefficients \(v_j=\pi_{t+1}^Nc_j+\pi_{t+1}^Nc'_j\) as \(a'_j/s_0\) with a common \(s_0\in S\). The localized equality has an error killed by some \(u\in S\). Choose \(s\) divisible by \(us_0\) and set \(\mu_{t+1,j}=(s^{2N}/s_0)a'_j\). Multiplying the error by \(s^{2N}/s_0\) kills it and gives the asserted equality in \(\Lambda\). We may further replace \(s\) by a power and enlarge \(D'\) such that \(s\) maps to an element of \(D'\). With these choices \(\mu_{t+1,j}\) maps to \(s^{2N}\pi_{t+1}^Nd_j\), an element of \(D'\): both \(\pi_{t+1}\) and \(d_j\) are in \(D'\), and we arranged that the image of \(s\) is in \(D'\). Note that \(\pi_1, \ldots, \pi_d\) are a regular sequence of parameters in \(S^{-1}\Lambda\) by our choice of \(\varphi\). Hence \(\pi_1, \ldots, \pi_d\) forms a regular sequence in \(\Lambda_\mathfrak q\) by Algebra, Lemma [Regular rings are Cohen–Macaulay](#native-algebra-lemma-regular-ring-cm). It follows that \({\pi'}_1^e, \ldots, {\pi'}_t^e, s\pi_{t + 1}\) is a regular sequence in \(S^{-1}\Lambda\) by Algebra, Lemma [Powers of a regular sequence](#native-algebra-lemma-regular-sequence-powers). Thus we get 
-
-\[
-\text{Ann}_{S^{-1}\Lambda/({\pi'}_1^e, \ldots, {\pi'}_t^e)}(s\pi_{t + 1}) =
-\text{Ann}_{S^{-1}\Lambda/({\pi'}_1^e, \ldots, {\pi'}_t^e)}((s\pi_{t + 1})^2).
-\]
-
- Hence we may apply Lemma [The annihilator stabilization step](#native-smoothing-lemma-ogoma) to find an \(s' \in S\) such that 
-
-\[
-\text{Ann}_{\Lambda/({\pi'}_1^e, \ldots, {\pi'}_t^e)}((s')^qs\pi_{t + 1})
-=
-\text{Ann}_{\Lambda/({\pi'}_1^e, \ldots, {\pi'}_t^e)}(((s')^qs\pi_{t + 1})^2).
-\]
-
- for any \(q > 0\). By Lemma [Enlarging a factorization in positive characteristic](#native-smoothing-lemma-enlarge-solution-modulo) we can choose \(q\) and enlarge \(D'\) such that \((s')^q\) maps to an element of \(D'\). Setting \(\delta_{t + 1} = (s')^qs\) we conclude that (a), (b), (c) hold for \(i = 1, \ldots, t + 1\). For (a) note that \(\lambda_{t + 1j} = (s')^{2Nq}\mu_{t + 1j}\) works. By induction on \(t\) we win.
-
-Ad ([the indicated step](#native-smoothing-item-first-solve)). By construction the radical of $H_{(C \otimes_{k[x_1, \ldots, x_d]} R)/R} \Lambda$ contains $\mathfrak h_A$. Namely, the elements $a_j \in H_{A/k}$ map to elements of $H_{B/k[x_1, \ldots, x_d]}$, hence map to elements of $H_{C/k[x_1, \ldots, x_d]}$, hence $a_j \otimes 1$ map to elements of $H_{C \otimes_{k[x_1, \ldots, x_d]} R/R}$. Moreover, if we have a solution $C \otimes_{k[x_1, \ldots, x_d]} R \to T \to \Lambda$ of $$R
-\to
-C \otimes_{k[x_1, \ldots, x_d]} R
-\to
-\Lambda \supset \mathfrak q$$ then $H_{T/R} \subset H_{T/k}$ as $R$ is smooth over $k$. Hence $T$ will also be a solution for the original situation $k \to A \to \Lambda \supset \mathfrak q$.
-
-Ad ([the indicated step](#native-smoothing-item-second-resolve)). Follows on applying Lemma [Lifting a local desingularization solution](#native-smoothing-lemma-lift-solution) to $R \to C \otimes_{k[x_1, \ldots, x_d]} R
-\to \Lambda \supset \mathfrak q$ and the sequence of elements $\gamma_1^c, \ldots, \gamma_d^c$. We note that since $x_i^c$ are strictly standard in $C$ over $k[x_1, \ldots, x_d]$ the elements $\gamma_i^c$ are strictly standard in $C \otimes_{k[x_1, \ldots, x_d]} R$ over $R$ by Lemma [Base change of a strict standard presentation](#native-smoothing-lemma-strictly-standard-base-change). The other assumption of Lemma [Lifting a local desingularization solution](#native-smoothing-lemma-lift-solution) holds by steps ([the indicated step](#native-smoothing-item-modify-pii)) and ([the indicated step](#native-smoothing-item-choose-deltai)).
-
-Ad ([the indicated step](#native-smoothing-item-third-resolve)). Apply Lemma [Returning from a height-zero localization](#native-smoothing-lemma-delocalize-height-zero) to the situation in ([the indicated step](#native-smoothing-item-second-resolve)). In the rest of the arguments the target ring is local Artinian, hence we are looking for a factorization by a smooth algebra $T$ over the source ring.
-
-Ad ([the indicated step](#native-smoothing-item-fifth-resolve)). Suppose that $C \otimes_{k[x_1, \ldots, x_d]} (R/JR)_\mathfrak p \to
-T \to \Lambda_\mathfrak q/J\Lambda_\mathfrak q$ is a solution to $$(R/JR)_\mathfrak p \to
-C \otimes_{k[x_1, \ldots, x_d]} (R/JR)_\mathfrak p \to
-\Lambda_\mathfrak q/J\Lambda_\mathfrak q
-\supset
-\mathfrak q\Lambda_\mathfrak q/J\Lambda_\mathfrak q$$ Each $t_i$ is a unit at $\mathfrak r$, since its image is $\delta_i\notin\mathfrak q$. Hence $I_{\mathfrak r}=JR_{\mathfrak r}$ and $I\Lambda_{\mathfrak q}=J\Lambda_{\mathfrak q}$. Localizing the given solution along $R\setminus\mathfrak r$ therefore gives $C\otimes_{k[x_1,\ldots,x_d]}(R/I)_{\mathfrak r}\to T_{\mathfrak r}\to
-\Lambda_{\mathfrak q}/I\Lambda_{\mathfrak q}$, with $T_{\mathfrak r}$ smooth over $(R/I)_{\mathfrak r}$. This is the required solution.
-
-Ad ([the indicated step](#native-smoothing-item-sixth-resolve)). Our choice $n\geq d(e-1)+1$ is large enough so that $\mathfrak p^nk[y_1, \ldots, y_m]_\mathfrak p \subset J_\mathfrak p$ and $\mathfrak q^n \Lambda_\mathfrak q \subset J\Lambda_\mathfrak q$. Hence if we have a solution $C \otimes_{k[x_1, \ldots, x_d]} (R/\mathfrak p^nR)_\mathfrak p \to
-T \to \Lambda_\mathfrak q/\mathfrak q^n\Lambda_\mathfrak q$ of ([the indicated step](#native-smoothing-item-sixth-resolve)) then we can take $T/JT$ as the solution for ([the indicated step](#native-smoothing-item-fifth-resolve)). Indeed the regular parameters generate the localized maximal ideal, and each monomial of degree $d(e-1)+1$ has some exponent at least $e$, proving the two asserted ideal inclusions.
-
-Ad ([the indicated step](#native-smoothing-item-seventh-resolve)). This is true because we have a section $C \to B$ in the category of $R$-algebras.
-
-Ad ([the indicated step](#native-smoothing-item-eighth-resolve)). This is true because $D'$ is essentially smooth over the local Artinian ring $k[y_1, \ldots, y_m]_\mathfrak p/\mathfrak p^n k[y_1, \ldots, y_m]_\mathfrak p$ and $$R_\mathfrak p/\mathfrak p^nR_\mathfrak p =
-k[y_1, \ldots, y_m]_\mathfrak p/
-\mathfrak p^n k[y_1, \ldots, y_m]_\mathfrak p[t_1, \ldots, t_d].$$ Hence $D'[t_1, \ldots, t_d]$ is a filtered colimit of smooth $R_\mathfrak p/\mathfrak p^nR_\mathfrak p$-algebras and $B \otimes_{k[x_1, \ldots, x_d]} (R_\mathfrak p/\mathfrak p^nR_\mathfrak p)$ factors through one of these.
-
-Ad ([the indicated step](#native-smoothing-item-done)). The final twist of the proof is that we cannot just use the map $B \to D'$ which maps $x_i$ to the image of $\pi_i'$ in $D'$ and $z_{ij}$ to the image of $\lambda_{ij}$ in $D'$ because we need the diagram $$\begin{gathered}\begin{matrix}B & D'[t_1, \ldots, t_d] \\ k[x_1, \ldots, x_d] & R_\mathfrak p/\mathfrak p^nR_\mathfrak p\end{matrix} \\[6pt] \begin{aligned}B & \longrightarrow D'[t_1, \ldots, t_d] \\ k[x_1, \ldots, x_d] & \longrightarrow R_\mathfrak p/\mathfrak p^nR_\mathfrak p \\ k[x_1, \ldots, x_d] & \longrightarrow B \\ R_\mathfrak p/\mathfrak p^nR_\mathfrak p & \longrightarrow D'[t_1, \ldots, t_d]\end{aligned}\end{gathered}$$ to commute and we need the composition $B \to D'[t_1, \ldots, t_d] \to
-\Lambda_\mathfrak q/\mathfrak q^n\Lambda_\mathfrak q$ to be the map of ([the indicated step](#native-smoothing-item-map-b-lambda)). This requires us to map $x_i$ to the image of $\pi_i t_i$ in $D'[t_1, \ldots, t_d]$. Hence we map $z_{ij}$ to the image of $\lambda_{ij} t_i^{2N} / \delta_i^{2N}$ in $D'[t_1, \ldots, t_d]$ which is defined because $\delta_i\in D'$ has nonzero residue under the faithfully flat local map $D'\to\bar\Lambda$, so is a unit. The relation follows on multiplying $(\pi_i\delta_i)^{2N}=\sum_j a_j\lambda_{ij}$ by $t_i^{2N}/\delta_i^{2N}$. The image of $x_i$ is $\pi_it_i$, giving the specified base algebra map; evaluation $t_i\mapsto\delta_i$ sends $z_{ij}$ back to $\lambda_{ij}$. Thus both triangles commute. $\square$
+Finally the images of $a_j$ lie in $H_{C_R/R}$: they already make $B/P_0$ smooth, the improvement is smooth there, and base change preserves smoothness. The resolution over $R$ retains their radical and avoids $\mathfrak q$. Since $R/k$ is polynomial, $H_{V/R}\subseteq H_{V/k}$ by composition of smooth maps. The composite $A\to B\to C\to C_R\to V\to\Lambda$ therefore satisfies $\mathfrak h_A\subseteq\mathfrak h_V\nsubseteq\mathfrak q$, proving the lemma. ∎
 
 #### The main theorem
 
-In this section we wrap up the discussion.
+The local constructions now give a terminating global procedure: unless the target is already covered by the smooth locus of the current presentation, resolve a minimal prime of its remaining nonsmooth locus. Each step strictly enlarges a radical ideal in the Noetherian target.
 
 #### Theorem. General Néron desingularization (Popescu)
- Any regular homomorphism of Noetherian rings is a filtered colimit of smooth ring maps.
 
-**Proof.** By Lemma [Reducing desingularization to field bases](#native-smoothing-lemma-reduce-to-field) it suffices to prove this for $k \to \Lambda$ where $\Lambda$ is Noetherian and geometrically regular over $k$. Let $k \to A \to \Lambda$ be a factorization with $A$ a finite type $k$-algebra. It suffices to construct a factorization $A \to B \to \Lambda$ with $B$ of finite type such that $\mathfrak h_B = \Lambda$, see Lemma [Solving the strict-standard Jacobian relations](#native-smoothing-lemma-final-solve). Hence we may perform Noetherian induction on the ideal $\mathfrak h_A$. Pick a prime $\mathfrak q \supset \mathfrak h_A$ such that $\mathfrak q$ is minimal over $\mathfrak h_A$. It now suffices to resolve $k \to A \to \Lambda \supset \mathfrak q$ (as defined in the text following Situation [The local desingularization problem](#native-smoothing-situation-local)). If the characteristic of $k$ is zero, this follows from Lemma [Desingularization with separable residue fields](#native-smoothing-lemma-resolve-special). If the characteristic of $k$ is $p > 0$, this follows from Lemma [Desingularization with inseparable residue fields](#native-smoothing-lemma-resolve-general). $\square$
+For a regular homomorphism $R\to\Lambda$ between Noetherian rings, the $R$-algebra $\Lambda$ is a filtered colimit of smooth $R$-algebras.
+
+**Proof.** By the [field reduction](#native-smoothing-lemma-reduce-to-field), it is enough to take $R=k$ a field and $\Lambda/k$ Noetherian and geometrically regular. Fix a finitely presented $k$-algebra $A$ mapping to $\Lambda$, and set $\mathfrak h_A=\sqrt{H_{A/k}\Lambda}$.
+
+If this radical is proper, choose a prime minimal over it. In characteristic zero its residue extension is separable, so the [separable resolution lemma](#native-smoothing-lemma-resolve-special) applies. In positive characteristic use the [inseparable resolution lemma](#native-smoothing-lemma-resolve-general). Either gives a finitely presented algebra $B$ through which the map factors, with $\mathfrak h_A\subseteq\mathfrak h_B$ and $\mathfrak h_B$ avoiding the selected prime. This containment is strict, because the selected prime contains $\mathfrak h_A$.
+
+Repeat if the new radical is still proper. An infinite repetition would be an infinite strictly ascending chain of ideals in the Noetherian ring $\Lambda$, which is impossible. Thus a finite sequence of factorizations reaches $B$ with $\sqrt{H_{B/k}\Lambda}=\Lambda$, equivalently $H_{B/k}\Lambda=\Lambda$. The [smooth factorization lemma](#native-smoothing-lemma-final-solve) replaces it by a smooth algebra still factoring the original map $A\to\Lambda$. Every finite presentation has therefore been factored through a smooth algebra. The [finite factorization criterion](#reader-section-2) proves the theorem, including the filteredness of the resulting presentation. The zero target is covered by the smooth zero algebra. ∎
 
 #### The approximation property for G-rings
 
-Let $R$ be a Noetherian local ring. In this case $R$ is a G-ring if and only if the ring map $R \to R^\wedge$ is regular, see More on Algebra, Lemma [Testing the G-ring property at maximal ideals](#native-more-algebra-lemma-check-g-ring-maximal-ideals). In this case it is true that the henselization $R^h$ and the strict henselization $R^{sh}$ of $R$ are G-rings, see More on Algebra, Lemma [The G-ring property under henselization](#native-more-algebra-lemma-henselization-g-ring). Moreover, any algebra essentially of finite type over a field, over a complete local ring, over $\mathbf{Z}$, or over a characteristic zero Dedekind ring is a G-ring, see More on Algebra, Proposition [Examples and permanence of G-rings](#native-more-algebra-proposition-ubiquity-g-ring). This gives an ample supply of rings to which the result below applies.
+For a Noetherian local ring $(R,\mathfrak m)$, the G-ring condition can be tested on the completion map $R\to\widehat R$: it is equivalent to regularity of that map. See [the maximal-ideal test for G-rings](#native-more-algebra-lemma-check-g-ring-maximal-ideals). Henselization and strict henselization preserve this condition, by [henselian permanence](#native-more-algebra-lemma-henselization-g-ring).
 
-Let $R$ be a ring. Let $f_1, \ldots, f_m \in R[x_1, \ldots, x_n]$. Let $S$ be an $R$-algebra. In this situation we say a vector $(a_1, \ldots, a_n) \in S^n$ is a *solution in $S$* if and only if $$f_j(a_1, \ldots, a_n) = 0 \text{ in } S, \text{ for }
-j = 1, \ldots, m$$ Of course an important question in algebraic geometry is to see when systems of polynomial equations have solutions. The following theorem tells us that having solutions in the completion of a local Noetherian ring is often enough to show there exist solutions in the henselization of the ring.
+The examples used here include algebras essentially of finite type over a field, over a complete Noetherian local ring, over $\mathbf Z$, or over a characteristic-zero Dedekind ring. Their G-ring property is supplied by [examples and permanence](#native-more-algebra-proposition-ubiquity-g-ring). These examples are not an extra hypothesis on the following results: the stated G-ring condition is sufficient.
+
+For polynomials $f_1,\ldots,f_m\in R[X_1,\ldots,X_n]$, a solution in an $R$-algebra $S$ is a tuple $a\in S^n$ with $f_j(a)=0$ for every $j$. Approximation asks for exact solutions with specified finite-order agreement with a solution in the completion.
 
 #### Theorem. Artin approximation for henselian local G-rings
 
-Let $R$ be a Noetherian local ring. Let $f_1, \ldots, f_m \in R[x_1, \ldots, x_n]$. Suppose that $(a_1, \ldots, a_n) \in (R^\wedge)^n$ is a solution in $R^\wedge$. If $R$ is a henselian G-ring, then for every integer $N$ there exists a solution $(b_1, \ldots, b_n) \in R^n$ in $R$ such that $a_i - b_i \in \mathfrak m^NR^\wedge$.
+Let $(R,\mathfrak m)$ be a henselian Noetherian local G-ring. Given $f_1,\ldots,f_m\in R[X_1,\ldots,X_n]$ and a solution $a\in\widehat R^n$, for every $N\geq0$ there is a solution $b\in R^n$ satisfying
 
-**Proof.** Let $c_i \in R$ be an element such that $a_i - c_i \in \mathfrak m^N$. Choose generators $\mathfrak m^N = (d_1, \ldots, d_M)$. Write $a_i = c_i + \sum a_{i, l} d_l$. Consider the polynomial ring $R[x_{i, l}]$ and the elements $$g_j = f_j(c_1 + \sum x_{1, l} d_l , \ldots, c_n + \sum x_{n, l} d_l)
-\in R[x_{i, l}]$$ The system of equations $g_j = 0$ has the solution $(a_{i, l})$. Suppose that we can show that the system of equations $g_j = 0$ has a solution $(b_{i, l})$ in $R$. Then it follows that $b_i = c_i + \sum b_{i, l}d_l$ is a solution of $f_j = 0$ which is congruent to $a_i$ modulo $\mathfrak m^N$. Thus it suffices to show that solvability over $R^\wedge$ implies solvability over $R$.
+$$a_i-b_i\in\mathfrak m^N\widehat R\quad(1\leq i\leq n).$$
 
-Let $A \subset R^\wedge$ be the $R$-subalgebra generated by $a_1, \ldots, a_n$. Since we've assumed $R$ is a G-ring, i.e., that $R \to R^\wedge$ is regular, we see that there exists a factorization $$A \to B \to R^\wedge$$ with $B$ smooth over $R$, see Theorem [General Néron desingularization](#native-smoothing-theorem-popescu). Denote $\kappa = R/\mathfrak m$ the residue field. It is also the residue field of $R^\wedge$, so we get a commutative diagram $$\begin{gathered}\begin{matrix}B & R' \\ R & \kappa\end{matrix} \\[6pt] \begin{aligned}B & \longrightarrow \kappa \\ B & \cdots\!\!\rightarrow R' \\ R' & \cdots\!\!\rightarrow \kappa \\ R & \longrightarrow \kappa \\ R & \longrightarrow B\end{aligned}\end{gathered}$$ Since the vertical arrow is smooth, More on Algebra, Lemma [Lifting a section of a smooth morphism](#native-more-algebra-lemma-lift-section-smooth-morphism) implies that there exists an étale ring map $R \to R'$ which induces an isomorphism $R/\mathfrak m \to R'/\mathfrak mR'$ and an $R$-algebra map $B \to R'$ making the diagram above commute. Since $R$ is henselian we see that $R \to R'$ has a section, see Algebra, Lemma [Characterizations of henselian local rings](#native-algebra-lemma-characterize-henselian). Let $b_i \in R$ be the image of $a_i$ under the ring maps $A \to B \to R' \to R$. Since all of these maps are $R$-algebra maps, we see that $(b_1, \ldots, b_n)$ is a solution in $R$. $\square$
+**Proof.** First reduce finite-order approximation to existence of an exact solution. Choose $c_i\in R$ representing $a_i$ modulo $\mathfrak m^N\widehat R$, choose generators $d_1,\ldots,d_s$ of $\mathfrak m^N$, and write $a_i=c_i+\sum_\ell d_\ell u_{i\ell}$ in $\widehat R$. Substitute
 
-Given a Noetherian local ring $(R, \mathfrak m)$, an étale ring map $R \to R'$, and a maximal ideal $\mathfrak m' \subset R'$ lying over $\mathfrak m$ with $\kappa(\mathfrak m) = \kappa(\mathfrak m')$, then we have inclusions $$R \subset R_{\mathfrak m'} \subset R^h \subset R^\wedge,$$ by Algebra, Lemma [Extending a henselian lifting problem to a finite algebra](#native-algebra-lemma-henselian-functorial-prepare) and More on Algebra, Lemma [Noetherianity of a henselization](#native-more-algebra-lemma-henselization-noetherian).
+$$X_i=c_i+\sum_\ell d_\ell U_{i\ell}$$
+
+in each $f_j$. The resulting finite polynomial system has the solution $(u_{i\ell})$ in $\widehat R$. Any solution of that new system in $R$ gives an exact solution of the original system with the desired congruence. Thus it remains to prove existence in $R$ for any finite system solvable in $\widehat R$.
+
+Let $C\subseteq\widehat R$ be the $R$-subalgebra generated by its finitely many solution coordinates. It is finitely presented, because $R$ is Noetherian. The G-ring condition makes $R\to\widehat R$ regular, so Popescu's theorem and finite factorization give
+
+$$C\longrightarrow B\longrightarrow\widehat R$$
+
+with $B/R$ smooth. Composing the second map with the residue map gives a point $B\to R/\mathfrak m$. The [smooth-section lifting lemma](#native-more-algebra-lemma-lift-section-smooth-morphism) gives an étale $R$-algebra $R'$ with $R'/\mathfrak mR'\simeq R/\mathfrak m$ and a map $B\to R'$ lifting this point. The [henselian section criterion](#native-algebra-lemma-characterize-henselian) supplies an $R$-algebra map $R'\to R$. The composite $C\to B\to R'\to R$ sends the coordinates to a solution in $R$. Apply this existence assertion to the substituted system to obtain the required $b$. ∎
+
+Order zero imposes no congruence restriction. If negative orders are included with the convention $\mathfrak m^N=R$, the same existence assertion covers them as well.
+
+A pointed étale neighbourhood also has a canonical comparison with the completion. If $R\to R'$ is étale and $\mathfrak m'\subset R'$ lies over $\mathfrak m$ with unchanged residue field, then
+
+$$R\longrightarrow R'_{\mathfrak m'}\longrightarrow R^h\longrightarrow\widehat R$$
+
+are injective local maps, and the completions of the first two local rings are canonically isomorphic. These are the pointed étale and henselization comparisons in [the henselian construction](#native-algebra-lemma-henselian-functorial-prepare) and [Noetherian henselization](#native-more-algebra-lemma-henselization-noetherian). The ring being localized is $R'$, so the second term is $R'_{\mathfrak m'}$.
 
 #### Theorem. Artin approximation in an étale neighbourhood
- Let $R$ be a Noetherian local ring. Let $f_1, \ldots, f_m \in R[x_1, \ldots, x_n]$. Suppose that $(a_1, \ldots, a_n) \in (R^\wedge)^n$ is a solution. If $R$ is a G-ring, then for every integer $N$ there exist
 
-1.  an étale ring map $R \to R'$,
+Let $(R,\mathfrak m)$ be a Noetherian local G-ring, and suppose a finite polynomial system over $R$ has a solution $a\in\widehat R^n$. For every $N\geq0$ there are an étale $R$-algebra $R'$, a maximal ideal $\mathfrak m'$ over $\mathfrak m$ with $\kappa(\mathfrak m')=\kappa(\mathfrak m)$, and a solution $b\in(R')^n$ such that
 
-2.  a maximal ideal $\mathfrak m' \subset R'$ lying over $\mathfrak m$
+$$a_i-b_i\in(\mathfrak m')^N\widehat R$$
 
-3.  a solution $(b_1, \ldots, b_n) \in (R')^n$ in $R'$
+under the pointed completion comparison just described.
 
-such that $\kappa(\mathfrak m) = \kappa(\mathfrak m')$ and $a_i - b_i \in (\mathfrak m')^NR^\wedge$.
+**Proof.** Perform the same substitution $X_i=c_i+\sum_\ell d_\ell U_{i\ell}$ with $d_\ell$ generating $\mathfrak m^N$. Apply Popescu factorization and smooth-section lifting to the new system, obtaining $C\to B\to R'$ with $R'$ étale over $R$ and $R'/\mathfrak mR'\simeq R/\mathfrak m$. This gives an exact solution of the substituted system in $R'$, without needing a henselian section back to $R$.
 
-**Proof.** We could deduce this theorem from Theorem [Artin approximation for henselian local G-rings](#native-smoothing-theorem-approximation-property) using that the henselization $R^h$ is a G-ring by More on Algebra, Lemma [The G-ring property under henselization](#native-more-algebra-lemma-henselization-g-ring) and writing $R^h$ as a directed colimit of étale extension $R'$. Instead we prove this by redoing the proof of the previous theorem in this case.
-
-Let $c_i \in R$ be an element such that $a_i - c_i \in \mathfrak m^N$. Choose generators $\mathfrak m^N = (d_1, \ldots, d_M)$. Write $a_i = c_i + \sum a_{i, l} d_l$. Consider the polynomial ring $R[x_{i, l}]$ and the elements $$g_j = f_j(c_1 + \sum x_{1, l} d_l , \ldots, c_n + \sum x_{n, l} d_l)
-\in R[x_{i, l}]$$ The system of equations $g_j = 0$ has the solution $(a_{i, l})$. Suppose that we can show that the system of equations $g_j = 0$ has a solution $(b_{i, l})$ in $R'$ for some étale ring map $R \to R'$ endowed with a maximal ideal $\mathfrak m'$ such that $\kappa(\mathfrak m) = \kappa(\mathfrak m')$. Then it follows that $b_i = c_i + \sum b_{i, l}d_l$ is a solution of $f_j = 0$ which is congruent to $a_i$ modulo $(\mathfrak m')^N$. Thus it suffices to show that solvability over $R^\wedge$ implies solvability over some étale ring extension which induces a trivial residue field extension at some prime over $\mathfrak m$.
-
-Let $A \subset R^\wedge$ be the $R$-subalgebra generated by $a_1, \ldots, a_n$. Since we've assumed $R$ is a G-ring, i.e., that $R \to R^\wedge$ is regular, we see that there exists a factorization $$A \to B \to R^\wedge$$ with $B$ smooth over $R$, see Theorem [General Néron desingularization](#native-smoothing-theorem-popescu). Denote $\kappa = R/\mathfrak m$ the residue field. It is also the residue field of $R^\wedge$, so we get a commutative diagram $$\begin{gathered}\begin{matrix}B & R' \\ R & \kappa\end{matrix} \\[6pt] \begin{aligned}B & \longrightarrow \kappa \\ B & \cdots\!\!\rightarrow R' \\ R' & \cdots\!\!\rightarrow \kappa \\ R & \longrightarrow \kappa \\ R & \longrightarrow B\end{aligned}\end{gathered}$$ Since the vertical arrow is smooth, More on Algebra, Lemma [Lifting a section of a smooth morphism](#native-more-algebra-lemma-lift-section-smooth-morphism) implies that there exists an étale ring map $R \to R'$ which induces an isomorphism $R/\mathfrak m \to R'/\mathfrak mR'$ and an $R$-algebra map $B \to R'$ making the diagram above commute. Let $b_i \in R'$ be the image of $a_i$ under the ring maps $A \to B \to R'$. Since all of these maps are $R$-algebra maps, we see that $(b_1, \ldots, b_n)$ is a solution in $R'$. $\square$
-
-Here is another variant of the main theorem of this section.
+Let $\mathfrak m'$ be the kernel of its given residue map. The resulting original coordinates $b_i=c_i+\sum_\ell d_\ell v_{i\ell}$ solve all the equations. Under $R'\to R'_{\mathfrak m'}\to\widehat R$, the difference from $a_i=c_i+\sum_\ell d_\ell u_{i\ell}$ belongs to $\mathfrak m^N\widehat R=(\mathfrak m')^N\widehat R$. This proves the assertion. As an alternative, one can apply the henselian theorem to $R^h$, which is a G-ring, and descend the finitely many solution coordinates and equations to a pointed étale stage in its filtered presentation. ∎
 
 #### Lemma. Approximation after localization at a prime
- Let $R$ be a Noetherian ring. Let $\mathfrak p \subset R$ be a prime ideal. Let $f_1, \ldots, f_m \in R[x_1, \ldots, x_n]$. Suppose that $(a_1, \ldots, a_n) \in ((R_\mathfrak p)^\wedge)^n$ is a solution. If $R_\mathfrak p$ is a G-ring, then for every integer $N$ there exist
 
-1.  an étale ring map $R \to R'$,
+Let $R$ be Noetherian, let $\mathfrak p\subset R$ be prime, and assume $R_{\mathfrak p}$ is a G-ring. Suppose polynomials over $R$ have a solution $a\in\widehat{R_{\mathfrak p}}^{,n}$. For each $N\geq0$ there are an étale $R$-algebra $R'$, a prime $\mathfrak p'$ above $\mathfrak p$ with the same residue field, and a solution $b\in(R')^n$ satisfying
 
-2.  a prime ideal $\mathfrak p' \subset R'$ lying over $\mathfrak p$
+$$a_i-b_i\in(\mathfrak p')^N\widehat{R'_{\mathfrak p'}}$$
 
-3.  a solution $(b_1, \ldots, b_n) \in (R')^n$ in $R'$
+after identifying this completion with $\widehat{R_{\mathfrak p}}$.
 
-such that $\kappa(\mathfrak p) = \kappa(\mathfrak p')$ and $a_i - b_i \in (\mathfrak p')^N(R'_{\mathfrak p'})^\wedge$.
+**Proof.** Apply the preceding theorem over $R_{\mathfrak p}$. It gives a pointed étale algebra $R''/R_{\mathfrak p}$ and a solution there. The finite presentation of $R''$, its étale presentation data, and the inverse of the chosen Jacobian determinant involve only finitely many elements of $R_{\mathfrak p}$. Clear their denominators to descend the algebra to an étale algebra over $R_s$ for some $s\notin\mathfrak p$. Since $R_s/R$ is étale, this is an étale $R$-algebra $R'$; see also [finite-presentation descent of étale algebras](#native-algebra-lemma-etale).
 
-**Proof.** By Theorem [Artin approximation in an étale neighbourhood](#native-smoothing-theorem-approximation-property-variant) we can find a solution $(b'_1, \ldots, b'_n)$ in some ring $R''$ étale over $R_\mathfrak p$ which comes with a prime ideal $\mathfrak p''$ lying over $\mathfrak p$ such that $\kappa(\mathfrak p) = \kappa(\mathfrak p'')$ and $a_i - b'_i \in (\mathfrak p'')^N(R''_{\mathfrak p''})^\wedge$. We can write $R'' = R' \otimes_R R_\mathfrak p$ for some étale $R$-algebra $R'$ (see Algebra, Lemma [Étale morphisms](#native-algebra-lemma-etale)). After replacing $R'$ by a principal localization if necessary we may assume $(b'_1, \ldots, b'_n)$ come from a solution $(b_1, \ldots, b_n)$ in $R'$. Setting $\mathfrak p' = R' \cap \mathfrak p''$ we see that $R''_{\mathfrak p''} = R'_{\mathfrak p'}$ which finishes the proof. $\square$
+The finitely many solution coordinates descend after one further localization away from the chosen prime. Clear the finitely many relations asserting that they solve the equations at the same time. Such localizations preserve the selected local ring and the residue identification. If $\mathfrak p'$ is the inverse image of the chosen prime of $R''$, the local rings $R'_{\mathfrak p'}$ and the selected localization of $R''$ are identical. Their completions and the order-$N$ congruences are therefore the ones already obtained. ∎
 
 ### B.10. Predecessor constructions used in the proof
 
@@ -2032,2395 +2211,3050 @@ These are the complete selected statements and proofs from the native Stacks sou
 
 #### B.10.1. More on Algebra
 
-#### Lemma. Localizing an algebra while preserving its closed fibre
- Let $A \to B$ be a ring map and $J \subset B$ an ideal. If $A \to B$ is étale at every prime of $V(J)$, then there exists a $g \in B$ mapping to an invertible element of $B/J$ such that $A' = B_g$ is étale over $A$.
+The lifting arguments below preserve the entire quotient by the given ideal. The ideal need not be nilpotent or lie in the Jacobson radical. The permitted change of base is an étale map whose reduction is the identity on that quotient.
 
-**Proof.** The set of points of $\operatorname{Spec}(B)$ where $A \to B$ is not étale is a closed subset of $\operatorname{Spec}(B)$, see Algebra, Definition [Étale ring maps](#native-algebra-definition-etale). Write this as $V(J')$ for some ideal $J' \subset B$. Then $V(J') \cap V(J) = \emptyset$ hence $J + J' = B$ by Algebra, Lemma [The Zariski topology on an affine spectrum](#native-algebra-lemma-zariski-topology). Write $1 = f + g$ with $f \in J$ and $g \in J'$. Then $g$ works. $\square$
+#### Lemma. Localizing an algebra while preserving its closed fibre
+
+Suppose $A\to B$ is étale at all primes of $B$ containing an ideal $J$. There is an element $g\in B$, with $g\equiv1\pmod J$, for which $B_g$ is étale over $A$. In particular localization at $g$ leaves $B/J$ unchanged.
+
+**Proof.** The étale locus is open; this is part of the local characterization in [Étale ring maps](#native-algebra-definition-etale). Write its complement as $V(L)$. The hypothesis says $V(L+J)=\varnothing$, so $L+J=B$. Choose $g\in L$ with $1-g\in J$. Then $D(g)$ lies in the étale locus and contains $V(J)$. These are exactly the two required properties. ∎
 
 #### Lemma. Lifting a monic polynomial factorization
- Let $A$ be a ring, let $I \subset A$ be an ideal. Let $f \in A[x]$ be a monic polynomial. Let $\overline{f} = \overline{g} \overline{h}$ be a factorization of $f$ in $A/I[x]$ such that $\overline{g}$ and $\overline{h}$ are monic and generate the unit ideal in $A/I[x]$. Then there exists an étale ring map $A \to A'$ which induces an isomorphism $A/I \to A'/IA'$ and a factorization $f = g' h'$ in $A'[x]$ with $g'$, $h'$ monic lifting the given factorization over $A/I$.
 
-**Proof.** We will deduce this from results on the universal factorization proved earlier; however, we encourage the reader to find their own proof not using this trick. Say $\deg(\overline{g}) = n$ and $\deg(\overline{h}) = m$ so that $\deg(f) = n + m$. Write $f = x^{n + m} + \sum \alpha_i x^{n + m - i}$ for some $\alpha_1, \ldots, \alpha_{n + m} \in A$. Consider the ring map $$R = \mathbf{Z}[a_1, \ldots, a_{n + m}]
-\longrightarrow
-S = \mathbf{Z}[b_1, \ldots, b_n, c_1, \ldots, c_m]$$ of Algebra, Example [Étale algebras from polynomial factorizations](#native-algebra-example-factor-polynomials-etale). Let $R \to A$ be the ring map which sends $a_i$ to $\alpha_i$. Set $$B = A \otimes_R S$$ By construction the image $f_B$ of $f$ in $B[x]$ factors, say $f_B = g_B h_B$ with $g_B = x^n + \sum (1 \otimes b_i) x^{n - i}$ and similarly for $h_B$. Write $\overline{g} = x^n + \sum \overline{\beta}_i x^{n - i}$ and $\overline{h} = x^m + \sum \overline{\gamma}_i x^{m - i}$. The $A$-algebra map $$B \longrightarrow A/I, \quad
-1 \otimes b_i \mapsto \overline{\beta}_i, \quad
-1 \otimes c_i \mapsto \overline{\gamma}_i$$ maps $g_B$ and $h_B$ to $\overline{g}$ and $\overline{h}$ in $A/I[x]$. The displayed map is surjective; denote $J \subset B$ its kernel. From the discussion in Algebra, Example [Étale algebras from polynomial factorizations](#native-algebra-example-factor-polynomials-etale) it is clear that $A \to B$ is etale at all points of $V(J) \subset \operatorname{Spec}(B)$. Choose $g \in B$ as in Lemma [Localizing an algebra while preserving its closed fibre](#native-more-algebra-lemma-localize-upstairs) and consider the $A$-algebra $B_g$. Since $g$ maps to a unit in $B/J = A/I$ we obtain also a map $B_g/I B_g \to A/I$ of $A/I$-algebras. Since $A/I \to B_g/I B_g$ is étale, also $B_g/IB_g \to A/I$ is étale (Algebra, Lemma [Morphisms between étale algebras](#native-algebra-lemma-map-between-etale)). Hence there exists an idempotent $e \in B_g/I B_g$ such that $A/I = (B_g/I B_g)_e$ (Algebra, Lemma [Finite presentation and flatness](#native-algebra-lemma-surjective-flat-finitely-presented)). Choose a lift $h \in B_g$ of $e$. Then $A \to A' = (B_g)_h$ with factorization given by the image of the factorization $f_B = g_B h_B$ in $A'$ is a solution to the problem posed by the lemma. $\square$
+Let $I\subset A$ be any ideal, and let $f\in A[t]$ be monic. Suppose its reduction has a factorization $\overline f=\overline g\,\overline h$ into monic polynomials generating $(A/I)[t]$ as an ideal. There are an étale $A$-algebra $A'$, an isomorphism $A'/IA'\simeq A/I$ compatible with $A$, and monic factors $g',h'\in A'[t]$ of $f$ reducing to $\overline g,\overline h$.
+
+**Proof.** Put $n=\deg\overline g$ and $m=\deg\overline h$. Introduce coefficients for two monic polynomials $G,H$ of these degrees. Equating the $n+m$ remaining coefficients of $GH$ with those of $f$ defines a finitely presented $A$-algebra $B$. The specified factors define an $A$-algebra surjection $\epsilon:B\to A/I$.
+
+At these coefficients, the derivative of the multiplication map is
+$$
+(A/I)[t]_{<n}\oplus(A/I)[t]_{<m}\longrightarrow(A/I)[t]_{<n+m},
+\qquad (u,v)\longmapsto\overline h u+\overline g v.
+$$
+This map is an isomorphism. Indeed, for a polynomial $w$ on the right, invert $\overline h$ modulo the monic polynomial $\overline g$ to obtain the unique $u$ of degree less than $n$ with $\overline h u\equiv w\pmod{\overline g}$. Then $v=(w-\overline h u)/\overline g$ has degree less than $m$. This construction is linear and also proves uniqueness. It includes the degree-zero cases, with the corresponding polynomial module equal to zero.
+
+Consequently the determinant $d$ of the coefficient Jacobian maps to a unit under $\epsilon$. The standard étale criterion makes $B_d$ étale over $A$; this is also the construction in [Étale algebras from polynomial factorizations](#native-algebra-example-factor-polynomials-etale). Put $D=B_d/IB_d$. The surjection $D\to A/I$ is a map between étale $A/I$-algebras, hence is étale by [Morphisms between étale algebras](#native-algebra-lemma-map-between-etale). A surjective flat map of finite presentation selects an open and closed component: by [Finite presentation and flatness](#native-algebra-lemma-surjective-flat-finitely-presented), there is an idempotent $e\in D$ with $D_e\simeq A/I$. Lift $e$ to $v\in B_d$ and set $A'=(B_d)_v$. This remains étale over $A$, has the specified quotient, and carries the required images of $G,H$. ∎
 
 #### Lemma. Lifting a coprime factorization
 
-Let $A$ be a ring, let $I \subset A$ be an ideal. Let $f \in A[x]$ be a monic polynomial. Let $\overline{f} = \overline{g} \overline{h}$ be a factorization of $f$ in $A/I[x]$ and assume
+The same conclusion holds when the two factors of $\overline f$ are coprime and the leading coefficient of $\overline g$ is a unit, without requiring the factors themselves to be monic.
 
-1.  the leading coefficient of $\overline{g}$ is an invertible element of $A/I$, and
-
-2.  $\overline{g}$, $\overline{h}$ generate the unit ideal in $A/I[x]$.
-
-Then there exists an étale ring map $A \to A'$ which induces an isomorphism $A/I \to A'/IA'$ and a factorization $f = g' h'$ in $A'[x]$ lifting the given factorization over $A/I$.
-
-**Proof.** Applying Lemma [Lifting a unit](#native-more-algebra-lemma-lift-invertible-element) we may assume that the leading coefficient of $\overline{g}$ is the reduction of an invertible element $u \in A$. Then we may replace $\overline{g}$ by $\overline{u}^{-1}\overline{g}$ and $\overline{h}$ by $\overline{u}\overline{h}$. Thus we may assume that $\overline{g}$ is monic. Since $f$ is monic we conclude that $\overline{h}$ is monic too. In this case the result follows from Lemma [Lifting a monic polynomial factorization](#native-more-algebra-lemma-lift-factorization-monic). $\square$
+**Proof.** Lift that leading coefficient to $u\in A$. Since $u$ becomes a unit in $A/I$, the localization $A\to A_u$ is étale and induces an isomorphism on quotients by $I$. Over this localization replace the prescribed factors by $\overline u^{-1}\overline g$ and $\overline u\,\overline h$. Both are monic: the degree and leading coefficient of a product with a monic factor are determined without cancellation. Apply the preceding lemma, then multiply the lifted factors by $u$ and $u^{-1}$ respectively. Their product is still $f$ and their reductions are the original factors. ∎
 
 #### Lemma. Separating a closed image from another closed subset
 
-Let $R \to S$ be a ring map. Let $I \subset R$ be an ideal of $R$ and let $J \subset S$ be an ideal of $S$. If the closure of the image of $V(J)$ in $\operatorname{Spec}(R)$ is disjoint from $V(I)$, then there exists an element $f \in R$ which maps to $1$ in $R/I$ and to an element of $J$ in $S$.
+For a map $R\to S$ and ideals $I\subset R$, $J\subset S$, assume that the closure of the image of $V(J)$ in $\operatorname{Spec}R$ avoids $V(I)$. Then some $f\in R$ satisfies $f\equiv1\pmod I$ and has image in $J$.
 
-**Proof.** Let $I' \subset R$ be an ideal such that $V(I')$ is the closure of the image of $V(J)$. Then $V(I) \cap V(I') = \emptyset$ by assumption and hence $I + I' = R$ by Algebra, Lemma [The Zariski topology on an affine spectrum](#native-algebra-lemma-zariski-topology). Write $1 = g + f$ with $g \in I$ and $f \in I'$. We have $V(f') \supset V(J)$ where $f'$ is the image of $f$ in $S$. Hence $(f')^n \in J$ for some $n$, see Algebra, Lemma [The Zariski topology on an affine spectrum](#native-algebra-lemma-zariski-topology). Replacing $f$ by $f^n$ we win. $\square$
+**Proof.** Express that closure as $V(L)$. The disjointness gives $I+L=R$, so choose $b\in L$ congruent to $1$ modulo $I$. Every prime of $S$ containing $J$ contains the image of $b$. Thus that image lies in $\sqrt J$, and a power $f=b^r$ has image in $J$. The same power remains congruent to $1$ modulo $I$. This uses the ideal–closed-set correspondence in [the affine Zariski topology](#native-algebra-lemma-zariski-topology). ∎
 
 #### Lemma. Integral elements compatible with a lifted factorization
- Let $I$ be an ideal of a ring $A$. Let $A \to B$ be an integral ring map. Let $b \in B$ map to an idempotent in $B/IB$. Then there exists a monic $f \in A[x]$ with $f(b) = 0$ and $f \bmod I = x^d(x - 1)^d$ for some $d \geq 1$.
 
-**Proof.** Observe that $z = b^2 - b$ is an element of $IB$. By Algebra, Lemma [Integral extensions](#native-algebra-lemma-integral-integral-over-ideal) there exist a monic polynomial $g(x) = x^d + \sum a_j x^j$ of degree $d$ with $a_j \in I$ such that $g(z) = 0$ in $B$. Hence $f(x) = g(x^2 - x) \in A[x]$ is a monic polynomial such that $f(x) \equiv x^d(x - 1)^d \bmod I$ and such that $f(b) = 0$ in $B$. $\square$
+Let $B$ be integral over $A$, and suppose the image of $b\in B$ in $B/IB$ is idempotent. Then a monic polynomial $f\in A[t]$ annihilates $b$ and satisfies
+$$\overline f=t^d(t-1)^d\quad\text{for some }d\geq1.$$
+
+**Proof.** The element $z=b^2-b$ belongs to $IB$. Choose a finite expression for $z$ with coefficients in $I$ and elements of $B$. Adjoining those elements and $b$ to $A$ gives a finite $A$-algebra $B_0\subset B$, since each adjoined element is integral. Moreover $zB_0\subset IB_0$. On a finite set of module generators for $B_0$, multiplication by $z$ is therefore represented by a matrix with entries in $I$. The determinant trick produces a monic polynomial
+$$q(t)=t^d+c_{d-1}t^{d-1}+\cdots+c_0,\qquad c_i\in I,$$
+that annihilates multiplication by $z$, and hence annihilates $z$ itself. Take a nonempty generating set so that $d\geq1$. Now $f(t)=q(t^2-t)$ has all the asserted properties. This is the integral-over-an-ideal argument of [Integral extensions](#native-algebra-lemma-integral-integral-over-ideal), applied inside the finite subalgebra containing the data. ∎
 
 #### Lemma. Lifting an idempotent after localization
- Let $A$ be a ring, let $I \subset A$ be an ideal. Let $A \to B$ be an integral ring map. Let $\overline{e} \in B/IB$ be an idempotent. Then there exists an étale ring map $A \to A'$ which induces an isomorphism $A/I \to A'/IA'$ and an idempotent $e' \in B \otimes_A A'$ lifting $\overline{e}$.
 
-**Proof.** Choose an element $y \in B$ lifting $\overline{e}$. Choose $f \in A[x]$ as in Lemma [Integral elements compatible with a lifted factorization](#native-more-algebra-lemma-helper-integral) for $y$. By Lemma [Lifting a coprime factorization](#native-more-algebra-lemma-lift-factorization-easy) we can find an étale ring map $A \to A'$ which induces an isomorphism $A/I \to A'/IA'$ and such that $f = gh$ in $A[x]$ with $g(x) = x^d \bmod IA'$ and $h(x) = (x - 1)^d \bmod IA'$. After replacing $A$ by $A'$ we may assume that the factorization is defined over $A$. In that case we see that $b_1 = g(y) \in B$ is a lift of $\overline{e}^d = \overline{e}$ and $b_2 = h(y) \in B$ is a lift of $(\overline{e} - 1)^d = (-1)^d (1 - \overline{e})^d = (-1)^d(1 - \overline{e})$ and moreover $b_1b_2 = 0$. Thus $(b_1, b_2)B/IB = B/IB$ and $V(b_1, b_2) \subset \operatorname{Spec}(B)$ is disjoint from $V(IB)$. Since $\operatorname{Spec}(B) \to \operatorname{Spec}(A)$ is closed (see Algebra, Lemmas [Going up for integral ring maps](#native-algebra-lemma-integral-going-up) and [Going up and closed maps of spectra](#native-algebra-lemma-going-up-closed)) we can find an $a \in A$ which maps to an invertible element of $A/I$ whose image in $B$ lies in $(b_1, b_2)$, see Lemma [Separating a closed image from another closed subset](#native-more-algebra-lemma-separate-image-closed-from-closed). After replacing $A$ by the localization $A_a$ we get that $(b_1, b_2) = B$. Then $\operatorname{Spec}(B) = D(b_1) \amalg D(b_2)$; disjoint union because $b_1b_2 = 0$ and covers $\operatorname{Spec}(B)$ because $(b_1, b_2) = B$. Let $e \in B$ be the idempotent corresponding to the open and closed subset $D(b_1)$, see Algebra, Lemma [Product decompositions from disjoint closed subsets](#native-algebra-lemma-disjoint-decomposition). Since $b_1$ is a lift of $\overline{e}$ and $b_2$ is a lift of $\pm (1 - \overline{e})$ we conclude that $e$ is a lift of $\overline{e}$ by the uniqueness statement in Algebra, Lemma [Product decompositions from disjoint closed subsets](#native-algebra-lemma-disjoint-decomposition). $\square$
+If $B$ is an integral $A$-algebra and $\overline e\in B/IB$ is idempotent, then after an étale base change $A\to A'$ inducing $A'/IA'\simeq A/I$, the element $\overline e$ lifts to an idempotent of $B\otimes_A A'$.
+
+**Proof.** Choose $y\in B$ reducing to $\overline e$ and use the preceding lemma to obtain $f(y)=0$ with $\overline f=t^d(t-1)^d$. Lift this coprime factorization by an étale change of base preserving $A/I$. Temporarily rename the new rings $A,B$; then
+$$
+f=gh,\qquad \overline g=t^d,\qquad \overline h=(t-1)^d.
+$$
+Set $b_1=g(y)$, $b_2=h(y)$. Their product is zero, and their reductions are $\overline e$ and $(-1)^d(1-\overline e)$. Thus $V(b_1,b_2)$ avoids $V(IB)$.
+
+An integral morphism of spectra is closed, by [going up](#native-algebra-lemma-integral-going-up) and [the closed-map criterion](#native-algebra-lemma-going-up-closed). Its image here avoids $V(I)$. The preceding separation lemma supplies $a\equiv1\pmod I$ whose image lies in $(b_1,b_2)B$. Localizing $A$ at $a$ is another permitted étale change. In the resulting $B$, choose $u,v$ with $ub_1+vb_2=1$. The element $e=ub_1$ is idempotent because
+$$e(1-e)=uvb_1b_2=0.$$
+Reducing the displayed Bézout identity modulo $IB$ and multiplying it by $\overline e$ gives $\overline u\,\overline e=\overline e$. Therefore $e$ reduces to the prescribed idempotent. The composite base change is étale and still induces the identity quotient by $I$. ∎
 
 #### Lemma. Lifting a finite projective module
- Let $A$ be a ring, let $I \subset A$ be an ideal. Let $\overline{P}$ be a finite projective $A/I$-module. Then there exists an étale ring map $A \to A'$ which induces an isomorphism $A/I \to A'/IA'$ and a finite projective $A'$-module $P'$ lifting $\overline{P}$.
 
-**Proof.** We can choose an integer $n$ and a direct sum decomposition $(A/I)^{\oplus n} = \overline{P} \oplus \overline{K}$ for some $A/I$-module $\overline{K}$. Choose a lift $\varphi : A^{\oplus n} \to A^{\oplus n}$ of the projector $\overline{p}$ associated to the direct summand $\overline{P}$. Let $f \in A[x]$ be the characteristic polynomial of $\varphi$. Set $B = A[x]/(f)$. By Cayley-Hamilton (Algebra, Lemma [The characteristic polynomial](#native-algebra-lemma-charpoly)) there is a map $B \to \text{End}_A(A^{\oplus n})$ mapping $x$ to $\varphi$. For every prime $\mathfrak p \supset I$ the image of $f$ in $\kappa(\mathfrak p)$ is $(x - 1)^rx^{n - r}$ where $r$ is the dimension of $\overline{P} \otimes_{A/I} \kappa(\mathfrak p)$. Hence $(x - 1)^nx^n$ maps to zero in $B \otimes_A \kappa(\mathfrak p)$ for all $\mathfrak p \supset I$. Thus $x(1 - x)$ is contained in every prime ideal of $B/IB$. Hence $x^N(1 - x)^N$ is contained in $IB$ for some $N \geq 1$. It follows that $x^N + (1 - x)^N$ is a unit in $B/IB$ and that $$\overline{e} = \text{image of }\frac{x^N}{x^N + (1 - x)^N}\text{ in }B/IB$$ is an idempotent as both assertions hold in $\mathbf{Z}[x]/(x^N(x - 1)^N)$. The image of $\overline{e}$ in $\text{End}_{A/I}((A/I)^{\oplus n})$ is $$\frac{\overline{p}^N}{\overline{p}^N + (1 - \overline{p})^N} = \overline{p}$$ as $\overline{p}$ is an idempotent. After replacing $A$ by an étale extension $A'$ as in the lemma, we may assume there exists an idempotent $e \in B$ which maps to $\overline{e}$ in $B/IB$, see Lemma [Lifting an idempotent after localization](#native-more-algebra-lemma-lift-idempotent-upstairs). Then the image of $e$ under the map $$B = A[x]/(f) \longrightarrow \text{End}_A(A^{\oplus n}).$$ is an idempotent element $p$ which lifts $\overline{p}$. Setting $P = \operatorname{Im}(p)$ we win. $\square$
+A finite projective module $\overline P$ over $A/I$ lifts to a finite projective module over some étale $A$-algebra $A'$ satisfying $A'/IA'\simeq A/I$.
+
+**Proof.** Realize $\overline P$ as the image of an idempotent endomorphism $\overline p$ of $(A/I)^n$. If $n=0$, there is nothing to lift. Otherwise choose a matrix $\varphi\in M_n(A)$ lifting $\overline p$ and let $f(t)$ be its characteristic polynomial. The finite integral algebra $B=A[t]/(f)$ acts on $A^n$ by $t\mapsto\varphi$, by [Cayley–Hamilton](#native-algebra-lemma-charpoly).
+
+In each residue field of $A/I$, the characteristic polynomial of $\overline p$ is $t^{n-r}(t-1)^r$, where $r$ is its rank at that point. It follows that the image of $t(1-t)$ in $B/IB$ belongs to every prime: for a prime of $B/IB$, pass to the residue field at its contraction in $A/I$ and then use this factorization. Choose $N\geq1$ for which $t^N(1-t)^N=0$ in $B/IB$. The two terms $t^N$ and $(1-t)^N$ generate the unit ideal, so their sum is a unit when their product is zero. Consequently
+$$
+\overline e=\frac{t^N}{t^N+(1-t)^N}\in B/IB
+$$
+is idempotent. Under the action on $(A/I)^n$, it maps to $\overline p$, since $\overline p^N=\overline p$ and $(1-\overline p)^N=1-\overline p$.
+
+Apply the idempotent-lifting lemma to $B/A$. The lifted idempotent in $B\otimes_A A'$ acts as a projector $p'$ on $(A')^n$. Its image $P'$ is a finite projective direct summand, and the direct-sum decomposition remains split after reduction modulo $IA'$. Thus $P'/IP'\simeq\overline P$, as required. ∎
 
 #### Lemma. The cotangent complex of a symmetric algebra
 
-Let $A$ be a ring. Let $0 \to K \to A^{\oplus m} \to M \to 0$ be a sequence of $A$-modules. Consider the $A$-algebra $C = \text{Sym}^*_A(M)$ with its presentation $\alpha : A[y_1, \ldots, y_m] \to C$ coming from the surjection $A^{\oplus m} \to M$. Then $$\mathrm{NL}(\alpha) =
-(K \otimes_A C \to \bigoplus\nolimits_{j = 1, \ldots, m} C \text{d}y_j)$$ (see Algebra, Section [The naive cotangent complex](#context-algebra-section-netherlander)) in particular $\Omega_{C/A} = M \otimes_A C$.
+Write $F=A^m$, choose an exact sequence $0\to K\to F\to M\to0$, and put
+$$
+P=\operatorname{Sym}_A(F),\qquad C=\operatorname{Sym}_A(M),\qquad
+J=\ker(P\to C).
+$$
+For $k=(k_1,\ldots,k_m)\in K$, let $\ell_k=\sum_i k_i y_i\in P$. Define the $P$-module of relations among these linear equations by
+$$
+S=\ker\bigl(K\otimes_A P\longrightarrow P,\quad
+k\otimes p\longmapsto p\ell_k\bigr).
+$$
+There is a right-exact sequence
+$$
+S\otimes_P C\longrightarrow K\otimes_A C
+\longrightarrow J/J^2\longrightarrow0.
+\tag{SA1}
+$$
+Thus the naive cotangent complex of this presentation, in degrees $-1,0$, is
+$$
+\left[
+\frac{K\otimes_A C}{\operatorname{im}(S\otimes_P C)}
+\xrightarrow{\ d\ } C^m
+\right],\qquad
+d([k\otimes c])=(ck_1,\ldots,ck_m).
+\tag{SA2}
+$$
+In every case there is a canonical identification
+$$\Omega_{C/A}\simeq M\otimes_A C.$$
+If $M$ is projective, the second arrow in (SA1) is an isomorphism, so (SA2) simplifies to $[K\otimes_A C\to C^m]$.
 
-**Proof.** Let $J = \operatorname{Ker}(\alpha)$. The lemma asserts that $J/J^2 \cong K \otimes_A C$. Note that $\alpha$ is a homomorphism of graded algebras. We will prove that in degree $d$ we have $(J/J^2)_d = K \otimes_A C_{d - 1}$. Note that $$J_d = \operatorname{Ker}(\text{Sym}^d_A(A^{\oplus m}) \to \text{Sym}^d_A(M))
-= \operatorname{Im}(K \otimes_A \text{Sym}^{d - 1}_A(A^{\oplus m})
-\to \text{Sym}^d_A(A^{\oplus m})),$$ see Algebra, Lemma [Presentations of symmetric and exterior powers](#native-algebra-lemma-presentation-sym-exterior). It follows that $(J^2)_d = \sum_{a + b = d} J_a \cdot J_b$ is the image of $$K \otimes_A K \otimes_A \text{Sym}^{d - 2}_A(A^{\otimes m})
-\to \text{Sym}^d_A(A^{\oplus m}).$$ The cokernel of the map $K \otimes_A \text{Sym}^{d - 2}_A(A^{\otimes m}) \to
-\text{Sym}^{d - 1}_A(A^{\oplus m})$ is $\text{Sym}^{d - 1}_A(M)$ by the lemma referenced above. Hence it is clear that $(J/J^2)_d = J_d/(J^2)_d$ is equal to $$\begin{aligned}
-\operatorname{Coker}(
-K \otimes_A K \otimes_A \text{Sym}^{d - 2}_A(A^{\otimes m})
-\to K \otimes_A \text{Sym}^{d - 1}_A(A^{\otimes m}))
-& = K \otimes_A \text{Sym}^{d - 1}_A(M) \\
-& = K \otimes_A C_{d -1}
-\end{aligned}$$ as desired. $\square$
+**Proof.** The universal property of the symmetric algebra identifies $C$ with the quotient of $P$ by the linear forms $\ell_k$. Hence $K\otimes_A P\to J$ is surjective with kernel $S$. Tensor this presentation with $C=P/J$. Right exactness gives (SA1), because $J\otimes_P C=J/J^2$. Differentiating a relation $\sum p_i\ell_{k_i}=0$ and then reducing modulo $J$ gives $\sum \overline p_i k_i=0$ in $C^m$. Consequently the displayed differential descends to the quotient in (SA2). This is exactly the defining conormal presentation of the [naive cotangent complex](#context-algebra-section-netherlander).
+
+For any $C$-module $N$, an $A$-derivation $C\to N$ is uniquely determined by its restriction to $M\subset C$, and that restriction can be any $A$-linear map $M\to N$. The universal properties of differentials and tensor products therefore give $\Omega_{C/A}\simeq C\otimes_A M$. This argument also applies when $M$ has no finite generating set.
+
+When $M$ is projective, $F\to M$ splits. Both $M$ and $K$ are then finite projective. Locally on $\operatorname{Spec}A$, choose bases for the two summands in $F=M\oplus K$. The resulting polynomial coordinates identify $J$ with the ideal generated by the coordinates corresponding to $K$. Its conormal module is free on those coordinates, and the canonical map $K\otimes_A C\to J/J^2$ is an isomorphism. These are local checks of a single globally defined map, so they prove the assertion over $A$. ∎
+
+**Why the relation term is necessary.** The unrestricted formula $J/J^2\simeq K\otimes_A C$ in [Stacks, Tag 07EV](https://stacks.math.columbia.edu/tag/07EV) fails already over $A=\mathbb Z$. Take
+$$
+M=(\mathbb Z/2)^2,\qquad K=2\mathbb Z\oplus2\mathbb Z,
+\qquad C=\mathbb Z[x,y]/(2x,2y).
+$$
+Using $(2,0)$ and $(0,2)$ as a basis of $K$, the natural map is
+$$
+C^2\longrightarrow (2x,2y)/(2x,2y)^2,\qquad
+(u,v)\longmapsto[2ux+2vy].
+$$
+It kills $(y,-x)$. This vector is nonzero, as is seen after reducing to $\mathbb F_2[x,y]^2$. Thus the proposed canonical map is not injective. More explicitly, in graded degree two its domain has dimension four over $\mathbb F_2$, whereas its codomain has dimension three. The missing relation is $y(2x)-x(2y)=0$. Replacing the image of a map by its domain before taking a cokernel loses precisely such relations.
+
+The corrected statement retains the arbitrary-module case through (SA1)–(SA2), rather than using the projective case as a substitute for it. The [improved smooth presentation](#native-smoothing-lemma-improve-presentation) uses the projective case after localization at the specified smooth locus.
 
 #### Lemma. Smoothness of a symmetric algebra
 
-Let $A$ be a ring. Let $M$ be an $A$-module. Then $C = \text{Sym}_A^*(M)$ is smooth over $A$ if and only if $M$ is a finite projective $A$-module.
+For any $A$-module $M$, its symmetric algebra $C=\operatorname{Sym}_A(M)$ is smooth over $A$ exactly when $M$ is finite projective.
 
-**Proof.** Let $\sigma : C \to A$ be the projection onto the degree $0$ part of $C$. Then $J = \operatorname{Ker}(\sigma)$ is the part of degree $> 0$ and we see that $J/J^2 = M$ as an $A$-module. Hence if $A \to C$ is smooth then $M$ is a finite projective $A$-module by Algebra, Lemma [Sections of smooth ring maps](#native-algebra-lemma-section-smooth).
+**Proof.** Suppose first that $C/A$ is smooth. Then $\Omega_{C/A}$ is a finite projective $C$-module. Pull it back along the augmentation $C\to A$ and use the preceding differential calculation:
+$$
+\Omega_{C/A}\otimes_C A\simeq (M\otimes_A C)\otimes_C A\simeq M.
+$$
+Base change preserves finite projectivity, so $M$ has the required property. Equivalently, the augmentation ideal has conormal module $M$, and the same conclusion follows from [the conormal module of a smooth section](#native-algebra-lemma-section-smooth).
 
-Conversely, assume that $M$ is finite projective and choose a surjection $A^{\oplus n} \to M$ with kernel $K$. Of course the sequence $0 \to K \to A^{\oplus n} \to M \to 0$ is split as $M$ is projective. In particular we see that $K$ is a finite $A$-module and hence $C$ is of finite presentation over $A$ as $C$ is a quotient of $A[x_1, \ldots, x_n]$ by the ideal generated by $K \subset \bigoplus Ax_i$. The computation of Lemma [The cotangent complex of a symmetric algebra](#native-more-algebra-lemma-cotangent-complex-symmetric-algebra) shows that $\mathrm{NL}_{C/A}$ is homotopy equivalent to $(K \to A^{\oplus n}) \otimes_A C$. Hence $\mathrm{NL}_{C/A}$ is quasi-isomorphic to $C \otimes_A M$ placed in degree $0$ which means that $C$ is smooth over $A$ by Algebra, Definition [Smooth ring maps](#native-algebra-definition-smooth). $\square$
+Conversely, choose a finite free module surjecting onto the finite projective module $M$. Its kernel $K$ is a finite projective direct summand. Thus $C$ has a finite presentation, with equations given by a finite generating set of $K$. Locally on $\operatorname{Spec}A$, the module $M$ is free of finite rank and $C$ is a polynomial algebra. Smoothness is local on the base, which proves the claim. One may also use the projective case of (SA2): the inclusion $K\otimes_A C\to C^m$ splits and its cokernel is the finite projective module $M\otimes_A C$. The [cotangent criterion for smoothness](#native-algebra-definition-smooth) gives the same conclusion. ∎
 
 #### Lemma. Lifting a section of a smooth morphism
- Let $A$ be a ring, let $I \subset A$ be an ideal. Consider a commutative diagram $$\begin{gathered}\begin{matrix}B \\ A & A/I\end{matrix} \\[6pt] \begin{aligned}B & \longrightarrow A/I \\ A & \longrightarrow B \\ A & \longrightarrow A/I\end{aligned}\end{gathered}$$ where $B$ is a smooth $A$-algebra. Then there exists an étale ring map $A \to A'$ which induces an isomorphism $A/I \to A'/IA'$ and an $A$-algebra map $B \to A'$ lifting the ring map $B \to A/I$.
 
-**Proof.** Let $J \subset B$ be the kernel of $B \to A/I$ so that $B/J = A/I$. By Algebra, Lemma [Smoothness and the naive cotangent complex](#native-algebra-lemma-application-nl-smooth) the sequence $$0 \to I/I^2 \to J/J^2 \to \Omega_{B/A} \otimes_B B/J \to 0$$ is split exact. Thus $\overline{P} = J/(J^2 + IB) = \Omega_{B/A} \otimes_B B/J$ is a finite projective $A/I$-module. Choose an integer $n$ and a direct sum decomposition $A/I^{\oplus n} = \overline{P} \oplus \overline{K}$. By Lemma [Lifting a finite projective module](#native-more-algebra-lemma-lift-projective-module) we can find an étale ring map $A \to A'$ which induces an isomorphism $A/I \to A'/IA'$ and a finite projective $A$-module $K$ which lifts $\overline{K}$. We may and do replace $A$ by $A'$. Set $B' = B \otimes_A \text{Sym}_A^*(K)$. Since $A \to \text{Sym}_A^*(K)$ is smooth by Lemma [Smoothness of a symmetric algebra](#native-more-algebra-lemma-symmetric-algebra-smooth) we see that $B \to B'$ is smooth which in turn implies that $A \to B'$ is smooth (see Algebra, Lemmas [Base change of smooth ring maps](#native-algebra-lemma-base-change-smooth) and [Smooth morphisms and local algebra](#native-algebra-lemma-locally-smooth)). Moreover the section $\text{Sym}^*_A(K) \to A$ determines a section $B' \to B$ and we let $B' \to A/I$ be the composition $B' \to B \to A/I$. Let $J' \subset B'$ be the kernel of $B' \to A/I$. We have $JB' \subset J'$ and $B \otimes_A K \subset J'$. These maps combine to give an isomorphism $$(A/I)^{\oplus n} \cong J/(J^2 + IB) \oplus \overline{K}
-\longrightarrow
-J'/((J')^2 + IB')$$ Thus, after replacing $B$ by $B'$ we may assume that $J/(J^2 + IB) = \Omega_{B/A} \otimes_B B/J$ is a free $A/I$-module of rank $n$.
+Let $A\to B$ be smooth, let $I\subset A$ be an ideal, and fix an $A$-algebra map $\epsilon:B\to A/I$. There exist an étale $A$-algebra $A'$ with $A'/IA'\simeq A/I$ and an $A$-algebra map $B\to A'$ whose reduction is $\epsilon$.
 
-In this case, choose $f_1, \ldots, f_n \in J$ which map to a basis of $J/(J^2 + IB)$. Consider the finitely presented $A$-algebra $C = B/(f_1, \ldots, f_n)$. Note that we have an exact sequence $$0 \to H_1(L_{C/A}) \to (f_1, \ldots, f_n)/(f_1, \ldots, f_n)^2
-\to \Omega_{B/A} \otimes_B C \to \Omega_{C/A} \to 0$$ see Algebra, Lemma [The transitivity sequence for the naive cotangent complex](#native-algebra-lemma-exact-sequence-nl) (note that $H_1(L_{B/A}) = 0$ and that $\Omega_{B/A}$ is finite projective, in particular flat so the Tor group vanishes). For any prime $\mathfrak q \supset J$ of $B$ the module $\Omega_{B/A, \mathfrak q}$ is free of rank $n$ because $\Omega_{B/A}$ is finite projective and because $\Omega_{B/A} \otimes_B B/J$ is free of rank $n$ (see Algebra, Lemma [Characterizations of finite projective modules](#native-algebra-lemma-finite-projective)). By our choice of $f_1, \ldots, f_n$ the map $$\left((f_1, \ldots, f_n)/(f_1, \ldots, f_n)^2\right)_{\mathfrak q}
-\to
-\Omega_{B/A, \mathfrak q}$$ is surjective modulo $J$. Hence we see that this map of modules over the local ring $C_{\mathfrak q}$ has to be an isomorphism (by Algebra, Lemma [Nakayama's lemma](#native-algebra-lemma-nak) the map is surjective and for example by Algebra, Lemma [Surjective endomorphisms of finite modules](#native-algebra-lemma-fun) because $((f_1, \ldots, f_n)/(f_1, \ldots, f_n)^2)_{\mathfrak q}$ is generated by $n$ elements the map is injective). Thus $H_1(L_{C/A})_{\mathfrak q} = 0$ and $\Omega_{C/A, \mathfrak q} = 0$. By Algebra, Lemma [Smoothness at a point](#native-algebra-lemma-smooth-at-point) we see that $A \to C$ is smooth at the prime $\overline{\mathfrak q}$ of $C$ corresponding to $\mathfrak q$. Since $\Omega_{C/A, \mathfrak q} = 0$ it is actually étale at $\overline{\mathfrak q}$. Thus $A \to C$ is étale at all primes of $C$ containing $JC$. By Lemma [Localizing an algebra while preserving its closed fibre](#native-more-algebra-lemma-localize-upstairs) we can find an $f \in C$ mapping to an invertible element of $C/JC$ such that $A \to C_f$ is étale. By our choice of $f$ it is still true that $C_f/JC_f = A/I$. The map $C_f/IC_f \to A/I$ is surjective and étale by Algebra, Lemma [Morphisms between étale algebras](#native-algebra-lemma-map-between-etale). Hence $A/I$ is isomorphic to the localization of $C_f/IC_f$ at some element $g \in C$, see Algebra, Lemma [Finite presentation and flatness](#native-algebra-lemma-surjective-flat-finitely-presented). Set $A' = C_{fg}$ to conclude the proof. $\square$
+**Proof.** Put $J=\ker\epsilon$. The chosen map is surjective because it extends $A\to A/I$. The augmentation $B/IB\to A/I$ identifies
+$$
+P_0=J/(J^2+IB)\simeq\Omega_{B/A}\otimes_B A/I.
+\tag{SL1}
+$$
+For completeness, this is the conormal identity for an augmented algebra: modulo the square of its augmentation ideal, the map taking an element to that element minus its constant term is a derivation. It gives the inverse to the universal differential map on the augmentation ideal. Thus (SL1) does not require a nilpotence assumption on $I$. Smoothness makes $P_0$ finite projective.
+
+Choose a finite projective complement $K_0$ with $P_0\oplus K_0\simeq(A/I)^n$. By [Lifting a finite projective module](#native-more-algebra-lemma-lift-projective-module), an étale change $A\to A_1$ preserving $A/I$ lifts $K_0$ to a finite projective $A_1$-module $K$. Replace $B$ by
+$$
+B_1=(B\otimes_A A_1)\otimes_{A_1}\operatorname{Sym}_{A_1}(K).
+$$
+This is smooth over $A_1$, by [Smoothness of a symmetric algebra](#native-more-algebra-lemma-symmetric-algebra-smooth), [base change](#native-algebra-lemma-base-change-smooth), and [composition of smooth maps](#native-algebra-lemma-locally-smooth). The original section and the symmetric-algebra augmentation define $B_1\to A/I$. Its module (SL1) is $P_0\oplus K_0$, because relative differentials of the tensor product split as the sum of the two pulled-back differential modules. Every map from $B_1$ extending this section also gives the required map from the original $B$. We can therefore rename $A_1,B_1$ as $A,B$ and assume that $P_0$ is free of rank $n$.
+
+Choose $f_1,\ldots,f_n\in J$ whose classes form a basis of $P_0$, and let $C=B/(f_1,\ldots,f_n)$. We claim that $C/A$ is étale along the closed subset defined by $JC$. Let $\mathfrak q\supset J$ be a prime of $B$, and let $\mathfrak r$ be its image in $C$. Since $\Omega_{B/A}$ is finite projective and has rank $n$ at this section, its localization at $\mathfrak q$ is free of rank $n$. The differentials $df_i$ reduce to a basis modulo $J$, so Nakayama's lemma makes the map
+$$
+C_{\mathfrak r}^n\longrightarrow
+\Omega_{B/A}\otimes_B C_{\mathfrak r},\qquad e_i\longmapsto df_i,
+$$
+an isomorphism: it is a surjection between free modules of the same finite rank over a local ring.
+
+Write $L=(f_1,\ldots,f_n)\subset B$. The conormal map
+$$
+(L/L^2)_{\mathfrak r}\longrightarrow
+\Omega_{B/A}\otimes_B C_{\mathfrak r}
+$$
+factors the preceding isomorphism through the surjection $C_{\mathfrak r}^n\to(L/L^2)_{\mathfrak r}$. Both arrows in this factorization are consequently isomorphisms. The [cotangent transitivity sequence](#native-algebra-lemma-exact-sequence-nl), with $B/A$ smooth and $\Omega_{B/A}$ projective, now gives
+$$H_1(L_{C/A})_{\mathfrak r}=0,\qquad\Omega_{C/A,\mathfrak r}=0.$$
+The algebra $C$ is finitely presented over $A$. The [pointwise smoothness criterion](#native-algebra-lemma-smooth-at-point) therefore gives smoothness at $\mathfrak r$, and the vanishing of relative differentials gives étaleness there.
+
+By [Localizing an algebra while preserving its closed fibre](#native-more-algebra-lemma-localize-upstairs), choose a localization $C_g$ that is étale over $A$ and still maps onto $C/JC=A/I$. The quotient map $C_g/IC_g\to A/I$ is a surjection between étale $A/I$-algebras. As in [Lifting a monic polynomial factorization](#native-more-algebra-lemma-lift-factorization-monic), isolate its open and closed component by localizing at a lift of the corresponding idempotent. The result is an étale $A$-algebra $A'$ with $A'/IA'\simeq A/I$ and a map $B\to C_g\to A'$ reducing to $\epsilon$.
+
+Finally compose with the initial base change $A\to A_1$ if one was made. Étaleness and the asserted quotient identification are preserved by that composition, so this proves the claim for the original rings and section. ∎
 
 #### Lemma. The conormal sequence for a first-homology regular sequence
 
-Let $A$ be a ring. Let $I \subset J \subset A$ be ideals. Assume that $J/I \subset A/I$ is generated by an $H_1$-regular sequence. Then $I \cap J^2 = IJ$.
+Suppose $I\subset J$ are ideals of $A$, and $J/I$ is generated by a finite sequence with vanishing first Koszul homology over $A/I$. Then
+$$I\cap J^2=IJ.$$
 
-**Proof.** To prove this choose $g_1, \ldots, g_m \in J$ whose images in $A/I$ form a $H_1$-regular sequence which generates $J/I$. In particular $J = I + (g_1, \ldots, g_m)$. Suppose that $x \in I \cap J^2$. Because $x \in J^2$ can write $$x =
-\sum a_{ij} g_ig_j +
-\sum a_j g_j +
-a$$ with $a_{ij} \in A$, $a_j \in I$ and $a \in I^2$. Then $\sum a_{ij}g_ig_j \in I \cap (g_1, \ldots, g_m)$ hence by Lemma [First cotangent homology after a regular quotient](#native-more-algebra-lemma-h1-regular-in-quotient) we see that $\sum a_{ij}g_ig_j \in I(g_1, \ldots, g_m)$. Thus $x \in IJ$ as desired. $\square$
+**Proof.** Lift the sequence to $g_1,\ldots,g_m\in J$ and put $G=(g_1,\ldots,g_m)$, so $J=I+G$. First observe that $I\cap G=IG$. Indeed, the short exact sequence of Koszul complexes
+$$
+0\longrightarrow I\otimes_A K_\bullet(A;g)
+\longrightarrow K_\bullet(A;g)
+\longrightarrow K_\bullet(A/I;\overline g)\longrightarrow0
+$$
+is exact term by term because Koszul terms are free. The hypothesis on $H_1$ makes $I/IG\to A/G$ injective in its homology sequence. This gives the asserted intersection equality; see also [First cotangent homology after a regular quotient](#native-more-algebra-lemma-h1-regular-in-quotient).
+
+Now $J^2=I^2+IG+G^2$. If $x\in I\cap J^2$, subtract its terms in $I^2+IG$ to obtain an element of $I\cap G^2\subset I\cap G=IG$. Thus $x\in I^2+IG=IJ$. The reverse inclusion follows directly from $I\subset J$. ∎
 
 #### Lemma. The conormal sequence for a first-homology regular ideal
- Let $A$ be a ring. Let $I \subset J \subset A$ be ideals. Assume that $J/I \subset A/I$ is a $H_1$-regular ideal. Then $I \cap J^2 = IJ$.
 
-**Proof.** Follows immediately from Lemma [The conormal sequence for a first-homology regular sequence](#native-more-algebra-lemma-conormal-sequence-h1-regular) by localizing. $\square$
+The equality $I\cap J^2=IJ$ also holds if $J/I$ is an $H_1$-regular ideal of $A/I$.
+
+**Proof.** At a prime containing $J$, the definition supplies a neighborhood where $J/I$ has the finite sequence required in the preceding lemma. At a prime outside $V(J)$, the localized ideal $J$ is the whole ring, and both sides become $I$. Intersections, products and squares of these ideals commute with localization. The two submodules therefore agree at every prime and hence agree globally. ∎
 
 #### Lemma. Finite projectivity of a quasi-regular conormal module
- Let $I \subset R$ be a quasi-regular ideal of a ring. Then $I/I^2$ is a finite projective $R/I$-module.
 
-**Proof.** This follows from Algebra, Lemma [Characterizations of finite projective modules](#native-algebra-lemma-finite-projective) and the definitions. $\square$
+If $I$ is a quasi-regular ideal of $R$, then $I/I^2$ is finite projective over $R/I$.
+
+**Proof.** On the neighborhoods in the definition of a quasi-regular ideal, its chosen generators give a basis of $I/I^2$: this is the degree-one part of the quasi-regularity isomorphism with the associated graded algebra. Thus $I/I^2$ is locally free of finite rank on $\operatorname{Spec}(R/I)$. Quasi-compactness permits a finite such cover. The [finite-projective criterion](#native-algebra-lemma-finite-projective) then applies, without requiring that the rank be the same on different connected components. ∎
 
 #### Lemma. Syntomic algebras and local complete intersections
 
-Let $R \to S$ be a ring map. The following are equivalent
+A ring map $R\to S$ is syntomic if and only if it is flat and a local complete intersection.
 
-1.  $R \to S$ is syntomic (Algebra, Definition [Local complete intersections](#native-algebra-definition-lci)), and
+**Proof.** A syntomic map is flat by definition. Its local presentations are relative global complete intersections, by [Local criteria for a syntomic algebra](#native-algebra-lemma-syntomic). Their defining equations are Koszul-regular by [Koszul complexes of global complete intersections](#native-more-algebra-lemma-relative-global-complete-intersection-koszul). The [locality of the complete-intersection condition](#native-more-algebra-lemma-lci-local) therefore makes $R\to S$ a local complete intersection.
 
-2.  $R \to S$ is flat and a local complete intersection.
+For the converse, choose a finite polynomial presentation $S=R[x_1,\ldots,x_n]/I$. The local complete-intersection hypothesis says that $I$ is locally generated by finite Koszul-regular sequences around its zero set. Away from that set it is locally the unit ideal. A finite principal-open cover of the polynomial spectrum consequently shows that $I$ is finitely generated, so $S$ is finitely presented over $R$.
 
-**Proof.** Assume (1). Then $R \to S$ is flat by definition. By Algebra, Lemma [Local criteria for a syntomic algebra](#native-algebra-lemma-syntomic) and Lemma [Locality of the complete-intersection condition](#native-more-algebra-lemma-lci-local) we see that it suffices to show a relative global complete intersection is a local complete intersection homomorphism which is Lemma [Koszul complexes of global complete intersections](#native-more-algebra-lemma-relative-global-complete-intersection-koszul).
+It remains to check the fibres. For a field $k$ over $R$ and a prime of $S\otimes_R k$, choose a neighborhood in $R[x]$ where $I$ is generated by a Koszul-regular sequence $f_1,\ldots,f_r$. Write the localized polynomial ring as $Q$ and its quotient as $T$. The ring $Q$ is flat over $R$, and $T$ is flat over $R$ by the assumed flatness of $S$. The Koszul resolution of $T$ consists of finite free $Q$-modules. Its successive kernels are flat over $R$: start with the exact sequence ending in the flat module $T$ and proceed through the resolution, using closure of flat modules under kernels of surjections between flat modules. Tensoring the resolution with $k$ is therefore still exact in positive degrees. Hence the images of the $f_i$ are Koszul-regular in $Q\otimes_R k$.
 
-Assume (2). A local complete intersection is of finite presentation because a Koszul-regular ideal is finitely generated. Let $R \to k$ be a map to a field. It suffices to show that $S' = S \otimes_R k$ is a local complete intersection over $k$, see Algebra, Definition [Complete intersections over a field](#native-algebra-definition-lci-field). Choose a prime $\mathfrak q' \subset S'$. Write $S = R[x_1, \ldots, x_n]/I$. Then $S' = k[x_1, \ldots, x_n]/I'$ where $I' \subset k[x_1, \ldots, x_n]$ is the image of $I$. Let $\mathfrak p' \subset k[x_1, \ldots, x_n]$, $\mathfrak q \subset S$, and $\mathfrak p \subset R[x_1, \ldots, x_n]$ be the corresponding primes. By Definition [Regular ideals](#native-more-algebra-definition-regular-ideal) exists an $g \in R[x_1, \ldots, x_n]$, $g \not \in \mathfrak p$ and $f_1, \ldots, f_r \in R[x_1, \ldots, x_n]_g$ which form a Koszul-regular sequence generating $I_g$. Since $S$ and hence $S_g$ is flat over $R$ we see that the images $f'_1, \ldots, f'_r$ in $k[x_1, \ldots, x_n]_g$ form a $H_1$-regular sequence generating $I'_g$, see Lemma [Relative regular immersions in affine algebra](#native-more-algebra-lemma-relative-regular-immersion-algebra). Thus $f'_1, \ldots, f'_r$ map to a regular sequence in $k[x_1, \ldots, x_n]_{\mathfrak p'}$ generating $I'_{\mathfrak p'}$ by Lemma [Regularity conditions for finite ideals in Noetherian rings](#native-more-algebra-lemma-noetherian-finite-all-equivalent). Applying Algebra, Lemma [Local criteria for complete intersections](#native-algebra-lemma-lci) we conclude $S'_{gg'}$ for some $g' \in S$, $g' \not \in \mathfrak q'$ is a global complete intersection over $k$ as desired. $\square$
+At the chosen prime this is a sequence in the maximal ideal of a Noetherian local ring. The [Noetherian equivalence of regularity conditions](#native-more-algebra-lemma-noetherian-finite-all-equivalent) makes it a regular sequence. The [local complete-intersection criterion over a field](#native-algebra-lemma-lci) gives a complete-intersection neighborhood of this prime in the fibre. Since the prime and field were arbitrary, all fibres are local complete intersections. Together with flatness and finite presentation, this is [the syntomic criterion](#native-algebra-definition-lci).
+
+Alternatively, the same fibre step follows from [Relative regular immersions in affine algebra](#native-more-algebra-lemma-relative-regular-immersion-algebra): it preserves $H_1$-regularity under this base change because the quotient is flat. The same Noetherian local criterion then gives the regular sequence in the fibre. ∎
 
 #### Lemma. Cotangent transitivity with a complete-intersection terminal map
- Let $A \to B \to C$ be ring maps. Assume $B \to C$ is a local complete intersection homomorphism. Choose a presentation $\alpha : A[x_s, s \in S] \to B$ with kernel $I$. Choose a presentation $\beta : B[y_1, \ldots, y_m] \to C$ with kernel $J$. Let $\gamma : A[x_s, y_t] \to C$ be the induced presentation of $C$ with kernel $K$. Then we get a canonical commutative diagram $$\begin{gathered}\begin{matrix}0 & \Omega_{A[x_s]/A} \otimes C & \Omega_{A[x_s, y_t]/A} \otimes C & \Omega_{B[y_t]/B} \otimes C & 0 \\ 0 & I/I^2 \otimes C & K/K^2 & J/J^2 & 0\end{matrix} \\[6pt] \begin{aligned}0 & \longrightarrow \Omega_{A[x_s]/A} \otimes C \\ \Omega_{A[x_s]/A} \otimes C & \longrightarrow \Omega_{A[x_s, y_t]/A} \otimes C \\ \Omega_{A[x_s, y_t]/A} \otimes C & \longrightarrow \Omega_{B[y_t]/B} \otimes C \\ \Omega_{B[y_t]/B} \otimes C & \longrightarrow 0 \\ 0 & \longrightarrow I/I^2 \otimes C \\ I/I^2 \otimes C & \longrightarrow K/K^2 \\ I/I^2 \otimes C & \longrightarrow \Omega_{A[x_s]/A} \otimes C \\ K/K^2 & \longrightarrow J/J^2 \\ K/K^2 & \longrightarrow \Omega_{A[x_s, y_t]/A} \otimes C \\ J/J^2 & \longrightarrow 0 \\ J/J^2 & \longrightarrow \Omega_{B[y_t]/B} \otimes C\end{aligned}\end{gathered}$$ with exact rows. In particular, the six term exact sequence of Algebra, Lemma [The transitivity sequence for the naive cotangent complex](#native-algebra-lemma-exact-sequence-nl) can be completed with a zero on the left, i.e., the sequence $$0 \to H_1(\mathrm{NL}_{B/A} \otimes_B C) \to
-H_1(L_{C/A}) \to
-H_1(L_{C/B}) \to
-\Omega_{B/A} \otimes_B C \to
-\Omega_{C/A} \to
-\Omega_{C/B} \to 0$$ is exact.
 
-**Proof.** The only thing to prove is the injectivity of the map $I/I^2 \otimes C \to K/K^2$. By assumption the ideal $J$ is Koszul-regular. Hence we have $IA[x_s, y_j] \cap K^2 = IK$ by Lemma [The conormal sequence for a first-homology regular ideal](#native-more-algebra-lemma-conormal-sequence-h1-regular-ideal). This means that the kernel of $K/K^2 \to J/J^2$ is isomorphic to $IA[x_s, y_j]/IK$. Since $I/I^2 \otimes_B C = IA[x_s, y_j]/IK$ by right exactness of tensor product, this provides us with the desired injectivity of $I/I^2 \otimes_B C \to K/K^2$. $\square$
+Let $A\to B\to C$ be ring maps with $B\to C$ a local complete intersection. Choose presentations
+$$
+P=A[x_s\mid s\in S]\twoheadrightarrow B,\qquad
+B[y_1,\ldots,y_m]\twoheadrightarrow C,
+$$
+whose kernels are $I$ and $J$. Put $Q=P[y_1,\ldots,y_m]$ and $K=\ker(Q\to C)$. The presentation maps give the following commutative diagram with exact rows; all tensor products in the differential row are along the indicated polynomial maps to $C$:
+$$
+\begin{array}{ccccccccc}
+0&\longrightarrow&(I/I^2)\otimes_B C&\longrightarrow&K/K^2&\longrightarrow&J/J^2&\longrightarrow&0\\
+&&\downarrow d&&\downarrow d&&\downarrow d&&\\
+0&\longrightarrow&\Omega_{P/A}\otimes_P C&\longrightarrow&\Omega_{Q/A}\otimes_Q C&\longrightarrow&\Omega_{B[y]/B}\otimes_{B[y]} C&\longrightarrow&0.
+\end{array}
+\tag{CT1}
+$$
+Consequently the cotangent transitivity sequence begins with zero:
+$$
+\begin{aligned}
+0\longrightarrow H_1(\mathrm{NL}_{B/A}\otimes_B C)
+&\longrightarrow H_1(L_{C/A})\longrightarrow H_1(L_{C/B})\\
+&\longrightarrow\Omega_{B/A}\otimes_B C
+\longrightarrow\Omega_{C/A}\longrightarrow\Omega_{C/B}\longrightarrow0.
+\end{aligned}
+\tag{CT2}
+$$
+Here $\mathrm{NL}_{B/A}\otimes_B C$ means the ordinary tensor product of the two-term presentation complex; the tensor symbol in this term is not being replaced by a derived tensor product.
+
+**Proof.** Let $I_Q=IQ$. Then $Q/I_Q=B[y]$ and $K/I_Q=J$. The complete-intersection hypothesis makes $J$ Koszul-regular, and therefore $H_1$-regular. The preceding intersection lemma gives
+$$I_Q\cap K^2=I_QK.$$
+It follows that the usual conormal sequence is left exact, because its left-hand term and kernel identify as
+$$
+(I/I^2)\otimes_B C=I_Q/I_QK
+\xrightarrow{\ \sim\ }(I_Q+K^2)/K^2
+\subset K/K^2.
+$$
+Its cokernel is $J/J^2$. The differential row is split exact by separating the $dx_s$ and $dy_i$ coordinates. Applying universal derivations makes the three squares commute, so (CT1) is proved. Taking homology of this short exact sequence of two-term complexes gives (CT2), including the initial zero. This refines the general [cotangent transitivity sequence](#native-algebra-lemma-exact-sequence-nl) precisely at its left end. ∎
 
 #### Lemma. Cotangent transitivity for filtered complete intersections
 
-Let $A \to B \to C$ be ring maps. If $B \to C$ is a filtered colimit of local complete intersection homomorphisms then the conclusion of Lemma [Cotangent transitivity with a complete-intersection terminal map](#native-more-algebra-lemma-transitive-lci-at-end) remains valid.
+The conormal diagram and exact sequence just proved remain valid when $C$ is a filtered colimit of local complete-intersection $B$-algebras. Polynomial presentations may use arbitrary sets of variables when finite sets do not suffice.
 
-**Proof.** Follows from Lemma [Cotangent transitivity with a complete-intersection terminal map](#native-more-algebra-lemma-transitive-lci-at-end) and Algebra, Lemma [Filtered colimits of naive cotangent complexes](#native-algebra-lemma-colimits-nl). $\square$
+**Proof.** Write $C=\varinjlim C_\lambda$. For presentations chosen compatibly with this system, formation of the two-term cotangent complexes and their maps commutes with the filtered colimit; see [Filtered colimits of naive cotangent complexes](#native-algebra-lemma-colimits-nl). Filtered colimits of modules are exact, so the preceding result at each stage gives (CT2).
+
+One can also check directly the only potentially missing injection in (CT1), for any chosen polynomial presentation $Q\twoheadrightarrow C$. An element of $I_Q\cap K^2$ is witnessed by a finite expression as a sum of products of elements of $K$. Only finitely many polynomial variables, coefficients in $C$, and relations equal to zero in $C$ occur in this expression. Lift the coefficients to some $C_\lambda$ and move to a later stage where those finitely many relations vanish. Present that stage over $B$ with the selected elements among its polynomial generators. Apply the preceding intersection equality there. Map its additional polynomial generators back to any chosen polynomial representatives of their images in $C$, leaving the original selected variables fixed. Its relation ideal maps into $K$, and its equality expresses the original element as an element of $I_QK$. Hence $I_Q\cap K^2=I_QK$ also in the chosen presentation of $C$. The rest of (CT1) and its homology sequence follows exactly as above. ∎
 
 #### Lemma. Cartier's equality for differentials (Cartier equality)
 
-Let $K/k$ be a finitely generated field extension. Then $\Omega_{K/k}$ and $H_1(L_{K/k})$ are finite dimensional and $\text{trdeg}_k(K) = \dim_K \Omega_{K/k} - \dim_K H_1(L_{K/k})$.
+For a finitely generated extension of fields $K/k$, both $\Omega_{K/k}$ and $H_1(L_{K/k})$ have finite dimension over $K$, and
+$$
+\dim_K\Omega_{K/k}-\dim_K H_1(L_{K/k})
+=\operatorname{trdeg}_kK.
+\tag{FC1}
+$$
 
-**Proof.** We can find a global complete intersection $A = k[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ over $k$ such that $K$ is isomorphic to the fraction field of $A$, see Algebra, Lemma [Syntomic algebras in a filtered colimit](#native-algebra-lemma-colimit-syntomic) and its proof. In this case we see that $\mathrm{NL}_{K/k}$ is homotopy equivalent to the complex $$\bigoplus\nolimits_{j = 1, \ldots, c} K \longrightarrow
-\bigoplus\nolimits_{i = 1, \ldots, n} K\text{d}x_i$$ by Algebra, Lemmas Kähler differentials, Theorems 3.1–3.3, Proposition 3.4 and Theorem 7.1 and [Localization of the naive cotangent complex](#native-algebra-lemma-localize-nl). The transcendence degree of $K$ over $k$ is the dimension of $A$ (by Algebra, Lemma [Prime ideals and dimension in a polynomial ring](#native-algebra-lemma-dimension-prime-polynomial-ring)) which is $n - c$ and we win. $\square$
+**Proof.** Let $t_1,\ldots,t_d$ be a transcendence basis and write $E_0=k(t_1,\ldots,t_d)$. Choose a finite tower $E_i=E_{i-1}(\alpha_i)$ ending in $E_r=K$. No separability is assumed. At step $i$, express the coefficients of the monic minimal polynomial of $\alpha_i$ as polynomials in $\alpha_1,\ldots,\alpha_{i-1}$ with coefficients in $E_0$. This is possible because a finite algebraic field extension is generated as an algebra by these elements. Lift those coefficient expressions to obtain triangular polynomials $f_i(T_1,\ldots,T_i)$, monic in $T_i$.
+
+A single nonzero $D\in k[t_1,\ldots,t_d]$ clears all coefficients' denominators. Over $R=k[t_1,\ldots,t_d]_D$, form
+$$A=R[T_1,\ldots,T_r]/(f_1,\ldots,f_r).$$
+Each successive quotient is finite free over the preceding one because the next equation is monic. After tensoring with $E_0$ these quotients are exactly the fields $E_i$. Their freeness over the domain $R$ makes the map to this localization injective. Thus $A$ is a domain with fraction field $K$.
+
+As a finitely presented $k$-algebra, $A$ has variables $t_1,\ldots,t_d,U,T_1,\ldots,T_r$ and equations $UD-1,f_1,\ldots,f_r$. The first equation is a nonzerodivisor in the polynomial ring; after taking its quotient, each subsequent monic equation is a nonzerodivisor in the corresponding polynomial variable. This explicitly produces a global complete-intersection model with $d+r+1$ variables and $r+1$ equations.
+
+The conormal module is free on those equations by [The conormal module of a global complete intersection](#native-algebra-lemma-relative-global-complete-intersection-conormal). Localize the presentation at the fraction field, using [Localization of the naive cotangent complex](#native-algebra-lemma-localize-nl). The resulting two-term complex is
+$$K^{r+1}\longrightarrow K^{d+r+1}.$$
+Its kernel is $H_1(L_{K/k})$ and its cokernel is $\Omega_{K/k}$. Both are finite dimensional, and rank-nullity gives (FC1). Equivalently, the complete-intersection dimension calculation gives $\dim A=d$, by [dimension in a polynomial ring](#native-algebra-lemma-dimension-prime-polynomial-ring), and the same Euler characteristic equals that dimension. ∎
 
 #### Lemma. Transitivity of first cotangent homology
 
-Let $M/L/K$ be field extensions. Then the Jacobi-Zariski sequence $$0 \to H_1(L_{L/K}) \otimes_L M \to
-H_1(L_{M/K}) \to
-H_1(L_{M/L}) \to
-\Omega_{L/K} \otimes_L M \to
-\Omega_{M/K} \to
-\Omega_{M/L} \to 0$$ is exact.
+For any tower of fields $K\subset L\subset M$, the sequence
+$$
+\begin{aligned}
+0\longrightarrow H_1(L_{L/K})\otimes_L M
+&\longrightarrow H_1(L_{M/K})\longrightarrow H_1(L_{M/L})\\
+&\longrightarrow\Omega_{L/K}\otimes_L M
+\longrightarrow\Omega_{M/K}\longrightarrow\Omega_{M/L}\longrightarrow0
+\end{aligned}
+\tag{FC2}
+$$
+is exact, including its first zero. The extensions need not be finitely generated.
 
-**Proof.** Combine Lemma [Cotangent transitivity for filtered complete intersections](#native-more-algebra-lemma-transitive-colimit-lci-at-end) with Algebra, Lemma [Syntomic algebras in a filtered colimit](#native-algebra-lemma-colimit-syntomic). $\square$
+**Proof.** Every finitely generated subextension of $M/L$ is the fraction field of a complete-intersection $L$-algebra by the preceding construction. A fraction field is the filtered colimit of localizations at single nonzero elements. Each such localization is again a complete intersection: adjoin a variable $v$ and the equation $vs-1$ after the existing regular sequence. For any two of these subalgebras, choose a finitely generated subfield containing both and then localize its complete-intersection model enough to contain their finite sets of generators. This proves the required directedness under inclusion. Their union is $M$, so $M$ is a filtered colimit of local complete-intersection $L$-algebras. Apply [Cotangent transitivity for filtered complete intersections](#native-more-algebra-lemma-transitive-colimit-lci-at-end) to $K\to L\to M$. Since tensoring an $L$-vector space with $M$ is exact, the leftmost homology term there is $H_1(L_{L/K})\otimes_L M$. This gives (FC2). ∎
 
 #### Lemma. Compatibility of cotangent homology with a quotient
- Given a commutative diagram of fields $$\begin{gathered}\begin{matrix}K & K' \\ k & k'\end{matrix} \\[6pt] \begin{aligned}K & \longrightarrow K' \\ k & \longrightarrow K \\ k & \longrightarrow k' \\ k' & \longrightarrow K'\end{aligned}\end{gathered}$$ with $k'/k$ and $K'/K$ finitely generated field extensions the kernel and cokernel of the maps $$\alpha : \Omega_{K/k} \otimes_K K' \to \Omega_{K'/k'}
-\quad\text{and}\quad
-\beta : H_1(L_{K/k}) \otimes_K K' \to H_1(L_{K'/k'})$$ are finite dimensional and $$\dim \operatorname{Ker}(\alpha) - \dim \operatorname{Coker}(\alpha)
--\dim \operatorname{Ker}(\beta) + \dim \operatorname{Coker}(\beta)
-=
-\text{trdeg}_k(k') - \text{trdeg}_K(K')$$
 
-**Proof.** The Jacobi-Zariski sequences for $k \subset k' \subset K'$ and $k \subset K \subset K'$ are $$0 \to H_1(L_{k'/k}) \otimes K'  \to
-H_1(L_{K'/k}) \to
-H_1(L_{K'/k'}) \to
-\Omega_{k'/k} \otimes K' \to
-\Omega_{K'/k} \to
-\Omega_{K'/k'} \to 0$$ and $$0 \to H_1(L_{K/k}) \otimes K' \to
-H_1(L_{K'/k}) \to
-H_1(L_{K'/K}) \to
-\Omega_{K/k} \otimes K' \to
-\Omega_{K'/k} \to
-\Omega_{K'/K} \to 0$$ By Lemma [Cartier's equality for differentials](#native-more-algebra-lemma-cartier-equality) the vector spaces $\Omega_{k'/k}$, $\Omega_{K'/K}$, $H_1(L_{K'/K})$, and $H_1(L_{k'/k})$ are finite dimensional and the alternating sum of their dimensions is $\text{trdeg}_k(k') - \text{trdeg}_K(K')$. The lemma follows. $\square$
+Consider field inclusions $k\subset K\subset K'$ and $k\subset k'\subset K'$ with the same composite map $k\to K'$. Assume that $k'/k$ and $K'/K$ are finitely generated. For the natural comparison maps
+$$
+\alpha:\Omega_{K/k}\otimes_K K'\longrightarrow\Omega_{K'/k'},\qquad
+\beta:H_1(L_{K/k})\otimes_K K'\longrightarrow H_1(L_{K'/k'}),
+$$
+their four kernel and cokernel spaces are finite dimensional over $K'$, and
+$$
+\dim\ker\alpha-\dim\operatorname{coker}\alpha
+-\dim\ker\beta+\dim\operatorname{coker}\beta
+=\operatorname{trdeg}_k k'-\operatorname{trdeg}_K K'.
+\tag{FC3}
+$$
+
+**Proof.** Factor both maps through the cotangent spaces for $K'/k$:
+$$
+\begin{aligned}
+\alpha&=\alpha_2\alpha_1:
+\Omega_{K/k}\otimes_K K'\longrightarrow\Omega_{K'/k}
+\longrightarrow\Omega_{K'/k'},\\
+\beta&=\beta_2\beta_1:
+H_1(L_{K/k})\otimes_K K'\longrightarrow H_1(L_{K'/k})
+\longrightarrow H_1(L_{K'/k'}).
+\end{aligned}
+$$
+These factorizations follow from functoriality of derivations and of the presentation cotangent complex.
+
+For the tower $k\subset K\subset K'$, sequence (FC2) shows that $\beta_1$ is injective and that its cokernel embeds in $H_1(L_{K'/K})$. It also identifies $\operatorname{coker}\alpha_1$ with $\Omega_{K'/K}$ and gives
+$$
+\dim\ker\alpha_1
+=\dim H_1(L_{K'/K})-\dim\operatorname{coker}\beta_1.
+$$
+All these dimensions are finite by (FC1). If $\operatorname{ind}(u)=\dim\ker u-\dim\operatorname{coker}u$ for a map with finite kernel and cokernel, we obtain
+$$\operatorname{ind}(\alpha_1)-\operatorname{ind}(\beta_1)
+=-\operatorname{trdeg}_K K'.$$
+
+For the tower $k\subset k'\subset K'$, sequence (FC2) identifies $\ker\beta_2$ with $H_1(L_{k'/k})\otimes_{k'}K'$ and embeds $\operatorname{coker}\beta_2$ into $\Omega_{k'/k}\otimes_{k'}K'$. The map $\alpha_2$ is surjective, with
+$$
+\dim\ker\alpha_2
+=\dim_{k'}\Omega_{k'/k}-\dim\operatorname{coker}\beta_2.
+$$
+Again the spaces involved are finite dimensional, and (FC1) now gives
+$$\operatorname{ind}(\alpha_2)-\operatorname{ind}(\beta_2)
+=\operatorname{trdeg}_k k'.$$
+
+Finally, finite kernel and cokernel are preserved under composition, and the index is additive. Both assertions follow from the exact sequence
+$$
+0\to\ker u\to\ker(vu)\to\ker v\to
+\operatorname{coker}u\to\operatorname{coker}(vu)\to\operatorname{coker}v\to0.
+$$
+Apply this to the two factorizations and add the index identities to obtain (FC3). This argument never subtracts dimensions of the potentially infinite spaces $\Omega_{K/k}$ or $H_1(L_{K/k})$ themselves. ∎
 
 #### Proposition. Characterizations of geometric regularity
 
-Let $k$ be a field of characteristic $p > 0$. Let $(A, \mathfrak m, K)$ be a Noetherian local $k$-algebra. The following are equivalent
+Let $k$ have characteristic $p>0$, and let $(A,\mathfrak m,K)$ be a Noetherian local $k$-algebra. The following conditions are equivalent:
 
-1.  $A$ is geometrically regular over $k$,
+1. $A$ is geometrically regular over $k$.
+2. $A\otimes_k k'$ is regular for every finite intermediate field $k\subset k'\subset k^{1/p}$.
+3. $A$ is regular and the boundary $H_1(L_{K/k})\to\mathfrak m/\mathfrak m^2$ is injective.
+4. $A$ is regular and the natural map $\Omega_{k/\mathbb F_p}\otimes_k K\to\Omega_{A/\mathbb F_p}\otimes_A K$ is injective.
 
-2.  for all $k \subset k' \subset k^{1/p}$ finite over $k$ the ring $A \otimes_k k'$ is regular,
+**Proof.** We first prove that (3) implies (1). It suffices to test finite purely inseparable extensions $k'/k$, by [Criteria for geometric regularity](#native-algebra-lemma-geometrically-regular). For such an extension put $A'=A\otimes_k k'$. The finite faithfully flat map $A\to A'$ is a universal homeomorphism, so $A'$ is local and $\dim A'=\dim A=d$. Write its maximal ideal and residue field as $\mathfrak m'$ and $K'$. The extension $K'/K$ is finite.
 
-3.  $A$ is regular and the canonical map $H_1(L_{K/k}) \to \mathfrak m/\mathfrak m^2$ is injective, and
+For this paragraph all vector spaces are over $K'$. Set
+$$
+\begin{aligned}
+H&=H_1(L_{K/k})\otimes_K K',& H'&=H_1(L_{K'/k'}),\\
+U&=(\mathfrak m/\mathfrak m^2)\otimes_K K',& U'&=\mathfrak m'/\mathfrak m'^2,\\
+W&=\Omega_{A/k}\otimes_A K',& W'&=\Omega_{A'/k'}\otimes_{A'}K',\\
+V&=\Omega_{K/k}\otimes_K K',& V'&=\Omega_{K'/k'}.
+\end{aligned}
+$$
+The quotient cotangent sequences and base change for differentials give a commutative diagram
+$$
+\begin{array}{cccccccccc}
+0\longrightarrow&H&\longrightarrow&U&\longrightarrow&W&\longrightarrow&V&\longrightarrow&0\\
+&\downarrow\beta&&\downarrow&&\downarrow\simeq&&\downarrow\alpha&&\\
+&H'&\longrightarrow&U'&\longrightarrow&W'&\longrightarrow&V'&\longrightarrow&0.
+\end{array}
+\tag{GR1}
+$$
+Only the upper row is asserted to be left exact at $H$; that is hypothesis (3). In particular $H$ is finite dimensional. The middle isomorphism makes $\alpha$ surjective. The [field comparison formula](#native-more-algebra-lemma-gamma-commutative-diagram) gives finite kernel and cokernel for $\beta$ and gives
+$$\dim\ker\alpha=\dim\ker\beta-\dim\operatorname{coker}\beta
+=\dim H-\dim H'.$$
+Thus $H'$ is also finite dimensional. Since $W\simeq W'$ and $\alpha$ is surjective, the kernels of the maps from these middle spaces fit into
+$$0\to\ker(W\to V)\to\ker(W'\to V')\to\ker\alpha\to0.$$
+The first kernel has dimension $d-\dim H$. The lower row of (GR1) consequently bounds
+$$
+\dim U'\leq\dim H'+d-\dim H+\dim\ker\alpha=d.
+$$
+The embedding dimension of a Noetherian local ring is at least its Krull dimension. Hence $A'$ has both dimensions equal to $d$ and is regular. This proves the required purely inseparable tests. Notice that no dimension of $W$ or $V$ was assumed finite.
 
-4.  $A$ is regular and the map $\Omega_{k/\mathbf{F}_p} \otimes_k K \to \Omega_{A/\mathbf{F}_p} \otimes_A K$ is injective.
+Next compare (3) and (4). Every field over $\mathbb F_p$ is separable, so its first cotangent homology over $\mathbb F_p$ vanishes; see [Characterizations of separable field extensions](#native-algebra-proposition-characterize-separable-field-extensions). Apply cotangent transitivity to $\mathbb F_p\to A\to K$ and $\mathbb F_p\to k\to K$. It gives exact rows and their natural vertical maps:
+$$
+\begin{array}{cccccccccc}
+0\longrightarrow&H_1(L_{K/k})&\longrightarrow&\Omega_{k/\mathbb F_p}\otimes_k K&\longrightarrow&\Omega_{K/\mathbb F_p}&\longrightarrow&\Omega_{K/k}&\longrightarrow0\\
+&\downarrow&&\downarrow&&\Vert&&\downarrow&&\\
+0\longrightarrow&\mathfrak m/\mathfrak m^2&\longrightarrow&\Omega_{A/\mathbb F_p}\otimes_A K&\longrightarrow&\Omega_{K/\mathbb F_p}&\longrightarrow&0.&
+\end{array}
+\tag{GR2}
+$$
+The kernel of the middle vertical map lies in the image of the upper left injection, because the next vertical map is the identity. The lower left injection then identifies it with the kernel of the first vertical map. Thus those kernels are canonically isomorphic. With the shared regularity hypothesis on $A$, (3) and (4) are equivalent.
 
-**Proof.** Proof of (3) $\Rightarrow$ (1). Assume (3). Let $k'/k$ be a finite purely inseparable extension. Set $A' = A \otimes_k k'$. This is a local ring with maximal ideal $\mathfrak m'$. Set $K' = A'/\mathfrak m'$. We get a commutative diagram $$\begin{gathered}\begin{matrix}0 & H_1(L_{K/k}) \otimes K' & \mathfrak m/\mathfrak m^2 \otimes K' & \Omega_{A/k} \otimes_A K' & \Omega_{K/k} \otimes K' & 0 \\ \phantom{X} & H_1(L_{K'/k'}) & \mathfrak m'/(\mathfrak m')^2 & \Omega_{A'/k'} \otimes_{A'} K' & \Omega_{K'/k'} & 0\end{matrix} \\[6pt] \begin{aligned}0 & \longrightarrow H_1(L_{K/k}) \otimes K' \\ H_1(L_{K/k}) \otimes K' & \longrightarrow \mathfrak m/\mathfrak m^2 \otimes K' \\ H_1(L_{K/k}) \otimes K' & \xrightarrow{\beta} H_1(L_{K'/k'}) \\ \mathfrak m/\mathfrak m^2 \otimes K' & \longrightarrow \Omega_{A/k} \otimes_A K' \\ \mathfrak m/\mathfrak m^2 \otimes K' & \longrightarrow \mathfrak m'/(\mathfrak m')^2 \\ \Omega_{A/k} \otimes_A K' & \longrightarrow \Omega_{K/k} \otimes K' \\ \Omega_{A/k} \otimes_A K' & \xrightarrow{\cong} \Omega_{A'/k'} \otimes_{A'} K' \\ \Omega_{K/k} \otimes K' & \longrightarrow 0 \\ \Omega_{K/k} \otimes K' & \xrightarrow{\alpha} \Omega_{K'/k'} \\ H_1(L_{K'/k'}) & \longrightarrow \mathfrak m'/(\mathfrak m')^2 \\ \mathfrak m'/(\mathfrak m')^2 & \longrightarrow \Omega_{A'/k'} \otimes_{A'} K' \\ \Omega_{A'/k'} \otimes_{A'} K' & \longrightarrow \Omega_{K'/k'} \\ \Omega_{K'/k'} & \longrightarrow 0\end{aligned}\end{gathered}$$ with exact rows. The third vertical arrow is an isomorphism by base change for modules of differentials (Algebra, Lemma [Base change of Kähler differentials](#native-algebra-lemma-differentials-base-change)). Thus $\alpha$ is surjective. By Lemma [Compatibility of cotangent homology with a quotient](#native-more-algebra-lemma-gamma-commutative-diagram) we have $$\dim \operatorname{Ker}(\alpha) - \dim \operatorname{Ker}(\beta) + \dim \operatorname{Coker}(\beta) = 0$$ (and these dimensions are all finite). A diagram chase shows that $\dim \mathfrak m'/(\mathfrak m')^2 \leq \dim \mathfrak m/\mathfrak m^2$. However, since $A \to A'$ is finite flat we see that $\dim(A) = \dim(A')$, see Algebra, Lemma [Dimensions of a base, fibre and total space](#native-algebra-lemma-dimension-base-fibre-total). Hence $A'$ is regular by definition.
+We now prove (2) implies (4), by adjoining $p$th roots. Taking $k'=k$ first shows that $A$ is regular. Choose $a_1,\ldots,a_n\in k$ such that $da_1,\ldots,da_n$ are linearly independent in $\Omega_{k/\mathbb F_p}$. By [Degrees of extensions obtained by adjoining p-th roots](#native-algebra-lemma-size-extension-pth-roots),
+$$
+k'=k(a_1^{1/p},\ldots,a_n^{1/p})
+=k[x_1,\ldots,x_n]/(x_1^p-a_1,\ldots,x_n^p-a_n).
+$$
+Set $A'=A\otimes_k k'$ and use the same notation $\mathfrak m',K'$ as above. Both $A$ and $A'$ are regular of dimension $d$. The equations are a regular sequence, successively monic in distinct variables. For the conormal basis choose $g_i=a_i-x_i^p$, the negatives of the displayed equations. Their differentials relative to $A$ vanish. Hence
+$$H_1(L_{A'/A})\simeq(A')^n,\qquad\Omega_{A'/A}\simeq(A')^n.$$
+In transitivity over $\mathbb F_p$, the class of $g_i$ maps to $da_i$ in $\Omega_{A/\mathbb F_p}\otimes_A A'$. This specifies the sign of the boundary with the chosen equations. Since $\Omega_{A'/A}$ is free, the terminal short exact sequence splits and remains exact after tensoring with $K'$. Right exactness on the preceding terms gives
+$$
+(K')^n\xrightarrow{\ e_i\mapsto da_i\ }\Omega_{A/\mathbb F_p}\otimes_A K'
+\xrightarrow{v}\Omega_{A'/\mathbb F_p}\otimes_{A'}K'
+\longrightarrow(K')^n\longrightarrow0.
+\tag{GR3}
+$$
+In particular $\dim\operatorname{coker}v=n$.
 
-Equivalence of (3) and (4). Consider the Jacobi-Zariski sequences for rows of the commutative diagram $$\begin{gathered}\begin{matrix}\mathbf{F}_p & A & K \\ \mathbf{F}_p & k & K\end{matrix} \\[6pt] \begin{aligned}\mathbf{F}_p & \longrightarrow A \\ A & \longrightarrow K \\ \mathbf{F}_p & \longrightarrow k \\ \mathbf{F}_p & \longrightarrow \mathbf{F}_p \\ k & \longrightarrow K \\ k & \longrightarrow A \\ K & \longrightarrow K\end{aligned}\end{gathered}$$ to get a commutative diagram $$\begin{gathered}\begin{matrix}0 & \mathfrak m/\mathfrak m^2 & \Omega_{A/\mathbf{F}_p} \otimes_A K & \Omega_{K/\mathbf{F}_p} & 0 & \phantom{X} \\ 0 & H_1(L_{K/k}) & \Omega_{k/\mathbf{F}_p} \otimes_k K & \Omega_{K/\mathbf{F}_p} & \Omega_{K/k} & 0\end{matrix} \\[6pt] \begin{aligned}0 & \longrightarrow \mathfrak m/\mathfrak m^2 \\ \mathfrak m/\mathfrak m^2 & \longrightarrow \Omega_{A/\mathbf{F}_p} \otimes_A K \\ \Omega_{A/\mathbf{F}_p} \otimes_A K & \longrightarrow \Omega_{K/\mathbf{F}_p} \\ \Omega_{K/\mathbf{F}_p} & \longrightarrow 0 \\ 0 & \longrightarrow H_1(L_{K/k}) \\ H_1(L_{K/k}) & \longrightarrow \Omega_{k/\mathbf{F}_p} \otimes_k K \\ H_1(L_{K/k}) & \longrightarrow \mathfrak m/\mathfrak m^2 \\ \Omega_{k/\mathbf{F}_p} \otimes_k K & \longrightarrow \Omega_{K/\mathbf{F}_p} \\ \Omega_{k/\mathbf{F}_p} \otimes_k K & \longrightarrow \Omega_{A/\mathbf{F}_p} \otimes_A K \\ \Omega_{K/\mathbf{F}_p} & \longrightarrow \Omega_{K/k} \\ \Omega_{K/\mathbf{F}_p} & \longrightarrow \Omega_{K/\mathbf{F}_p} \\ \Omega_{K/k} & \longrightarrow 0 \\ \Omega_{K/k} & \longrightarrow 0\end{aligned}\end{gathered}$$ with exact rows. We have used that $H_1(L_{K/A}) = \mathfrak m/\mathfrak m^2$ and that $H_1(L_{K/\mathbf{F}_p}) = 0$ as $K/\mathbf{F}_p$ is separable, see Algebra, Proposition [Characterizations of separable field extensions](#native-algebra-proposition-characterize-separable-field-extensions). Thus it is clear that the kernels of $H_1(L_{K/k}) \to \mathfrak m/\mathfrak m^2$ and $\Omega_{k/\mathbf{F}_p} \otimes_k K \to \Omega_{A/\mathbf{F}_p} \otimes_A K$ have the same dimension.
+The quotient cotangent sequences over $\mathbb F_p$ are short exact:
+$$
+\begin{array}{ccccccccc}
+0&\longrightarrow&(\mathfrak m/\mathfrak m^2)\otimes_K K'&\longrightarrow&\Omega_{A/\mathbb F_p}\otimes_A K'&\longrightarrow&\Omega_{K/\mathbb F_p}\otimes_K K'&\longrightarrow&0\\
+&&\downarrow u&&\downarrow v&&\downarrow w&&\\
+0&\longrightarrow&\mathfrak m'/\mathfrak m'^2&\longrightarrow&\Omega_{A'/\mathbb F_p}\otimes_{A'}K'&\longrightarrow&\Omega_{K'/\mathbb F_p}&\longrightarrow&0.
+\end{array}
+\tag{GR4}
+$$
+The two spaces for $u$ have dimension $d$, so $u$ has index zero. For $w$, sequence (FC2) for $\mathbb F_p\subset K\subset K'$ and Cartier's equality for the finite extension $K'/K$ show that its kernel and cokernel are finite dimensional of equal dimension. The snake lemma applied to (GR4) therefore gives finite kernel and cokernel for $v$, with index zero. Combining this with (GR3) yields $\dim\ker v=n$. The first map in (GR3) is consequently an isomorphism onto this kernel. In particular the $da_i$ remain independent after mapping into $\Omega_{A/\mathbb F_p}\otimes_A K'$ and hence after mapping into $\Omega_{A/\mathbb F_p}\otimes_A K$.
 
-Proof of (2) $\Rightarrow$ (4) following Faltings, see the original source citation Faltings-einfacher. Let $a_1, \ldots, a_n \in k$ be elements such that $\text{d}a_1, \ldots, \text{d}a_n$ are linearly independent in $\Omega_{k/\mathbf{F}_p}$. Consider the field extension $k' = k(a_1^{1/p}, \ldots, a_n^{1/p})$. By Algebra, Lemma [Degrees of extensions obtained by adjoining p-th roots](#native-algebra-lemma-size-extension-pth-roots) we see that $k' = k[x_1, \ldots, x_n]/(x_1^p - a_1, \ldots, x_n^p - a_n)$. In particular we see that the naive cotangent complex of $k'/k$ is homotopic to the complex $\bigoplus_{j = 1, \ldots, n} k' \rightarrow \bigoplus_{i = 1, \ldots, n} k'$ with the zero differential as $\text{d}(x_j^p - a_j) = 0$ in $\Omega_{k[x_1, \ldots, x_n]/k}$. Set $A' = A \otimes_k k'$ and $K' = A'/\mathfrak m'$ as above. By Algebra, Lemma [Base change of the naive cotangent complex](#native-algebra-lemma-change-base-nl) we see that $\mathrm{NL}_{A'/A}$ is homotopy equivalent to the complex $\bigoplus_{j = 1, \ldots, n} A' \rightarrow \bigoplus_{i = 1, \ldots, n} A'$ with the zero differential, i.e., $H_1(L_{A'/A})$ and $\Omega_{A'/A}$ are free of rank $n$. The Jacobi-Zariski sequence for $\mathbf{F}_p \to A \to A'$ is $$H_1(L_{A'/A}) \to \Omega_{A/\mathbf{F}_p} \otimes_A A'
-\to \Omega_{A'/\mathbf{F}_p} \to \Omega_{A'/A} \to 0$$ Using the presentation $A[x_1, \ldots, x_n] \to A'$ with kernel $(x_j^p - a_j)$ we see, unwinding the maps in Algebra, Lemma [The transitivity sequence for the naive cotangent complex](#native-algebra-lemma-exact-sequence-nl), that the $j$th basis vector of $H_1(L_{A'/A})$ maps to $\text{d}a_j \otimes 1$ in $\Omega_{A/\mathbf{F}_p} \otimes A'$. As $\Omega_{A'/A}$ is free (hence flat) we get on tensoring with $K'$ an exact sequence $$K'^{\oplus n} \to \Omega_{A/\mathbf{F}_p} \otimes_A K'
-\xrightarrow{\beta} \Omega_{A'/\mathbf{F}_p} \otimes_{A'} K' \to
-K'^{\oplus n} \to 0$$ We conclude that the elements $\text{d}a_j \otimes 1$ generate $\operatorname{Ker}(\beta)$ and we have to show that are linearly independent, i.e., we have to show $\dim(\operatorname{Ker}(\beta)) = n$. Consider the following big diagram $$\begin{gathered}\begin{matrix}0 & \mathfrak m'/(\mathfrak m')^2 & \Omega_{A'/\mathbf{F}_p} \otimes K' & \Omega_{K'/\mathbf{F}_p} & 0 \\ 0 & \mathfrak m/\mathfrak m^2 \otimes K' & \Omega_{A/\mathbf{F}_p} \otimes K' & \Omega_{K/\mathbf{F}_p} \otimes K' & 0\end{matrix} \\[6pt] \begin{aligned}0 & \longrightarrow \mathfrak m'/(\mathfrak m')^2 \\ \mathfrak m'/(\mathfrak m')^2 & \longrightarrow \Omega_{A'/\mathbf{F}_p} \otimes K' \\ \Omega_{A'/\mathbf{F}_p} \otimes K' & \longrightarrow \Omega_{K'/\mathbf{F}_p} \\ \Omega_{K'/\mathbf{F}_p} & \longrightarrow 0 \\ 0 & \longrightarrow \mathfrak m/\mathfrak m^2 \otimes K' \\ \mathfrak m/\mathfrak m^2 \otimes K' & \longrightarrow \Omega_{A/\mathbf{F}_p} \otimes K' \\ \mathfrak m/\mathfrak m^2 \otimes K' & \xrightarrow{\alpha} \mathfrak m'/(\mathfrak m')^2 \\ \Omega_{A/\mathbf{F}_p} \otimes K' & \longrightarrow \Omega_{K/\mathbf{F}_p} \otimes K' \\ \Omega_{A/\mathbf{F}_p} \otimes K' & \xrightarrow{\beta} \Omega_{A'/\mathbf{F}_p} \otimes K' \\ \Omega_{K/\mathbf{F}_p} \otimes K' & \longrightarrow 0 \\ \Omega_{K/\mathbf{F}_p} \otimes K' & \xrightarrow{\gamma} \Omega_{K'/\mathbf{F}_p}\end{aligned}\end{gathered}$$ By Lemma [Cartier's equality for differentials](#native-more-algebra-lemma-cartier-equality) and the Jacobi-Zariski sequence for $\mathbf{F}_p \to K \to K'$ we see that the kernel and cokernel of $\gamma$ have the same finite dimension. By assumption $A'$ is regular (and of the same dimension as $A$, see above) hence the kernel and cokernel of $\alpha$ have the same dimension. It follows that the kernel and cokernel of $\beta$ have the same dimension which is what we wanted to show.
-
-The implication (1) $\Rightarrow$ (2) is trivial. This finishes the proof of the proposition. $\square$
+The differentials $da$, $a\in k$, span $\Omega_{k/\mathbb F_p}$. Every finite-dimensional subspace generated by them has a basis chosen from them. The independence just proved therefore establishes the full injection in (4). Finally (1) immediately implies (2). All four conditions are now equivalent. ∎
 
 #### Lemma. Geometric regularity over a field
 
-Let $k$ be a field of characteristic $p > 0$. Let $(A, \mathfrak m, K)$ be a Noetherian local $k$-algebra. Assume $A$ is geometrically regular over $k$. Let $K/F/k$ be a finitely generated subextension. Let $\varphi : k[y_1, \ldots, y_m] \to A$ be a $k$-algebra map such that $y_i$ maps to an element of $F$ in $K$ and such that $\text{d}y_1, \ldots, \text{d}y_m$ map to a basis of $\Omega_{F/k}$. Set $\mathfrak p = \varphi^{-1}(\mathfrak m)$. Then $$k[y_1, \ldots, y_m]_\mathfrak p \to A$$ is flat and $A/\mathfrak pA$ is regular.
+Let $(A,\mathfrak m,K)$ be a Noetherian local algebra geometrically regular over a field $k$ of characteristic $p>0$. Let $k\subset F\subset K$ with $F/k$ finitely generated. Suppose a $k$-algebra map $\varphi:k[y_1,\ldots,y_m]\to A$ has residues $\overline y_i\in F$ whose differentials form an $F$-basis of $\Omega_{F/k}$. If $\mathfrak p=\varphi^{-1}(\mathfrak m)$, then
+$$k[y_1,\ldots,y_m]_{\mathfrak p}\longrightarrow A$$
+is flat, and $A/\mathfrak pA$ is regular.
 
-**Proof.** Set $A_0 = k[y_1, \ldots, y_m]_\mathfrak p$ with maximal ideal $\mathfrak m_0$ and residue field $K_0$. Note that $\Omega_{A_0/k}$ is free of rank $m$ and $\Omega_{A_0/k} \otimes K_0 \to \Omega_{K_0/k}$ is an isomorphism. It is clear that $A_0$ is geometrically regular over $k$. Hence $H_1(L_{K_0/k}) \to \mathfrak m_0/\mathfrak m_0^2$ is an isomorphism, see Proposition [Characterizations of geometric regularity](#native-more-algebra-proposition-characterization-geometrically-regular). Now consider $$\begin{gathered}\begin{matrix}H_1(L_{K_0/k}) \otimes K & \mathfrak m_0/\mathfrak m_0^2 \otimes K \\ H_1(L_{K/k}) & \mathfrak m/\mathfrak m^2\end{matrix} \\[6pt] \begin{aligned}H_1(L_{K_0/k}) \otimes K & \longrightarrow H_1(L_{K/k}) \\ H_1(L_{K_0/k}) \otimes K & \longrightarrow \mathfrak m_0/\mathfrak m_0^2 \otimes K \\ \mathfrak m_0/\mathfrak m_0^2 \otimes K & \longrightarrow \mathfrak m/\mathfrak m^2 \\ H_1(L_{K/k}) & \longrightarrow \mathfrak m/\mathfrak m^2\end{aligned}\end{gathered}$$ Since the left vertical arrow is injective by Lemma [Transitivity of first cotangent homology](#native-more-algebra-lemma-transitivity-gamma) and the lower horizontal by Proposition [Characterizations of geometric regularity](#native-more-algebra-proposition-characterization-geometrically-regular) we conclude that the right vertical one is too. Hence a regular system of parameters in $A_0$ maps to part of a regular system of parameters in $A$. We win by Algebra, Lemmas [Flatness over a regular local ring](#native-algebra-lemma-flat-over-regular) and [Regular rings are Cohen–Macaulay](#native-algebra-lemma-regular-ring-cm). $\square$
+**Proof.** Write $A_0=k[y]_{\mathfrak p}$, with maximal ideal $\mathfrak m_0$ and residue field $K_0=k(\overline y_1,\ldots,\overline y_m)\subset F$. The natural surjection
+$$K_0^m=\Omega_{A_0/k}\otimes_{A_0}K_0\longrightarrow\Omega_{K_0/k}$$
+is an isomorphism. Indeed, after extending scalars to $F$ and mapping to $\Omega_{F/k}$, its coordinate vectors become the given basis, so its kernel is zero. The regular local ring $A_0$ is geometrically regular over $k$. The proposition and the quotient cotangent sequence therefore identify
+$$H_1(L_{K_0/k})\simeq\mathfrak m_0/\mathfrak m_0^2.$$
+In the natural square
+$$
+\begin{array}{ccc}
+H_1(L_{K_0/k})\otimes_{K_0}K&\xrightarrow{\ \sim\ }&(\mathfrak m_0/\mathfrak m_0^2)\otimes_{K_0}K\\
+\downarrow&&\downarrow\\
+H_1(L_{K/k})&\longrightarrow&\mathfrak m/\mathfrak m^2,
+\end{array}
+$$
+the left arrow is injective by [field cotangent transitivity](#native-more-algebra-lemma-transitivity-gamma), and the bottom arrow is injective by geometric regularity of $A$. Thus the right arrow is injective.
+
+A regular system of parameters of $A_0$ consequently maps to linearly independent cotangent vectors in the regular local ring $A$. Extend those vectors to a basis of $\mathfrak m/\mathfrak m^2$; any lifts form a regular system of parameters of $A$. The chosen images are therefore an $A$-regular sequence, and their quotient is regular. The [flatness criterion over a regular local ring](#native-algebra-lemma-flat-over-regular), together with [regular rings being Cohen–Macaulay](#native-algebra-lemma-regular-ring-cm), proves flatness of $A_0\to A$. Its parameter ideal is $\mathfrak pA$, so the quotient just considered is precisely $A/\mathfrak pA$. ∎
 
 #### Lemma. Base change of regular ring maps (Regular maps and base change)
- Let $R \to \Lambda$ be a regular ring map. For any finite type ring map $R \to R'$ the base change $R' \to \Lambda \otimes_R R'$ is regular too.
 
-**Proof.** Flatness is preserved under any base change, see Algebra, Lemma [Base change of flat modules](#native-algebra-lemma-flat-base-change). Consider a prime $\mathfrak p' \subset R'$ lying over $\mathfrak p \subset R$. The residue field extension $\kappa(\mathfrak p')/\kappa(\mathfrak p)$ is finitely generated as $R'$ is of finite type over $R$. Hence the fibre ring $$(\Lambda \otimes_R R') \otimes_{R'} \kappa(\mathfrak p') =
-\Lambda \otimes_R \kappa(\mathfrak p) \otimes_{\kappa(\mathfrak p)} 
-\kappa(\mathfrak p')$$ is Noetherian by Algebra, Lemma [Noetherianity under extension of the ground field](#native-algebra-lemma-noetherian-field-extension) and the assumption on the fibre rings of $R \to \Lambda$. Geometric regularity of the fibres is preserved by Algebra, Lemma [Criteria for geometric regularity](#native-algebra-lemma-geometrically-regular). $\square$
+If $R\to\Lambda$ is regular and $R'$ is a finite type $R$-algebra, then $R'\to\Lambda\otimes_R R'$ is regular.
+
+**Proof.** Flatness survives the base change. For $\mathfrak p'\in\operatorname{Spec}R'$ over $\mathfrak p\in\operatorname{Spec}R$, its fibre is
+$$
+(\Lambda\otimes_R\kappa(\mathfrak p))
+\otimes_{\kappa(\mathfrak p)}\kappa(\mathfrak p').
+$$
+The first factor is Noetherian and geometrically regular by hypothesis. The residue extension is finitely generated, since $R'/R$ is finite type. The fibre is consequently Noetherian by [Noetherianity under extension of the ground field](#native-algebra-lemma-noetherian-field-extension). Every further finitely generated field extension of $\kappa(\mathfrak p')$ is still finitely generated over $\kappa(\mathfrak p)$, so the same fibre is geometrically regular by the field criterion. This checks every fibre and proves regularity of the base-changed map. ∎
 
 #### Lemma. Composition of regular ring maps (Composition of regular maps)
- Let $A \to B$ and $B \to C$ be regular ring maps. If the fibre rings of $A \to C$ are Noetherian, then $A \to C$ is regular.
 
-**Proof.** Let $\mathfrak p \subset A$ be a prime. Let $\kappa(\mathfrak p) \subset k$ be a finite purely inseparable extension. We have to show that $C \otimes_A k$ is regular. By Lemma [Base change of regular ring maps](#native-more-algebra-lemma-regular-base-change) we may assume that $A = k$ and we reduce to proving that $C$ is regular. The assumption is that $B$ is regular and that $B \to C$ is flat with regular fibres. Then $C$ is regular by Algebra, Lemma [Regularity over a regular base with regular fibre](#native-algebra-lemma-flat-over-regular-with-regular-fibre). Here are the details of the reduction. First localize at the source prime, then quotient by it and make a finite purely inseparable extension $k$ of its residue field. Base change preserves flatness and the regular-fibre condition. The intermediate ring $B\otimes_A k$ is Noetherian and regular, by the regular-map fibre hypothesis and finite field extension. The target $C\otimes_A k$ is Noetherian by the assumed Noetherian composite fibres, and $B\otimes_A k\to C\otimes_A k$ has regular fibres. The flat regular-source regular-fibre criterion proves that this target is regular. These are all geometric fibres of the composite. The composite is flat because both maps are flat. $\square$
+For regular maps $A\to B\to C$, the composite is regular provided all its fibre rings are Noetherian.
+
+**Proof.** The composite is flat. Fix $\mathfrak p\in\operatorname{Spec}A$ and a finite purely inseparable extension $k/\kappa(\mathfrak p)$. Put
+$$B'=B\otimes_A k,\qquad C'=C\otimes_A k.$$
+The ring $B'$ is Noetherian and regular by the geometric regularity of the fibre of $B/A$. The ring $C'$ is Noetherian by the assumed Noetherianity of the composite fibre and the finite field extension. The map $B'\to C'$ is flat.
+
+Its fibres are regular as well. In fact, for a prime $\mathfrak q'$ of $B'$ contracting to $\mathfrak q$ of $B$, the residue extension $\kappa(\mathfrak q')/\kappa(\mathfrak q)$ is finite. To see this, obtain $B'$ by first passing to $B\otimes_A\kappa(\mathfrak p)$, a localization of $B/\mathfrak pB$, and then making the finite extension $k/\kappa(\mathfrak p)$. The first operation preserves the residue field at the corresponding prime; the second gives a finite ring extension. Thus
+$$C'\otimes_{B'}\kappa(\mathfrak q')
+=(C\otimes_B\kappa(\mathfrak q))\otimes_{\kappa(\mathfrak q)}\kappa(\mathfrak q')$$
+is regular by the regular-map hypothesis on $B\to C$.
+
+The [flat regular-base and regular-fibre criterion](#native-algebra-lemma-flat-over-regular-with-regular-fibre) now makes $C'$ regular. Since these tests cover every finite purely inseparable extension of every composite residue field, the composite fibres are geometrically regular. Together with flatness and their stated Noetherianity, this proves the claim. The argument does not assume that $A\to\kappa(\mathfrak p)$ is of finite type. ∎
 
 #### Lemma. Permanence of regular ring maps
 
-Let $A \to B \to C$ be ring maps. If $A \to C$ is regular and $B \to C$ is flat and surjective on spectra, then $A \to B$ is regular.
+Suppose $A\to C$ is regular and $B\to C$ is faithfully flat, where $A\to B\to C$ is a factorization. Then $A\to B$ is regular. Equivalently, it is enough that $B\to C$ be flat and surjective on spectra.
 
-**Proof.** By Algebra, Lemma [Permanence of flat ring maps](#native-algebra-lemma-flat-permanence) we see that $A \to B$ is flat. Let $\mathfrak p \subset A$ be a prime. The ring map $B \otimes_A \kappa(\mathfrak p) \to C \otimes_A \kappa(\mathfrak p)$ is flat and surjective on spectra. Hence $B \otimes_A \kappa(\mathfrak p)$ is geometrically regular by Algebra, Lemma [Descent of geometric regularity](#native-algebra-lemma-geometrically-regular-descent). $\square$
+**Proof.** Flatness of $A\to B$ follows by faithfully flat descent from flatness of $A\to C$; see [Permanence of flat ring maps](#native-algebra-lemma-flat-permanence). At each $\mathfrak p\in\operatorname{Spec}A$ the fibre map
+$$B\otimes_A\kappa(\mathfrak p)\longrightarrow C\otimes_A\kappa(\mathfrak p)$$
+is faithfully flat. Its target is Noetherian, so its source is Noetherian by [descent of Noetherianity](#native-algebra-lemma-descent-noetherian). After any finite purely inseparable extension of $\kappa(\mathfrak p)$, the fibre map remains faithfully flat and its target is regular. [Descent of regularity](#native-algebra-lemma-descent-regular) gives regularity of the corresponding source. The field criterion proves that the original source fibre is geometrically regular. This is also the fibrewise [descent of geometric regularity](#native-algebra-lemma-geometrically-regular-descent). ∎
 
 #### B.10.2. Commutative Algebra
 
+These algebraic facts supply the matrix, flatness and finite-generation steps used above. All ring maps preserve the identity, and a regular sequence is required to generate a proper ideal.
+
 #### Lemma. A left inverse for a matrix
- Let $R$ be a ring. Let $n \geq m$. Let $A$ be an $n \times m$ matrix with coefficients in $R$. Let $J \subset R$ be the ideal generated by the $m \times m$ minors of $A$.
 
-1.  For any $f \in J$ there exists a $m \times n$ matrix $B$ such that $BA = f 1_{m \times m}$.
+Let $A$ be an $n\times m$ matrix over a ring $R$, with $n\geq m$, and let $J$ be the ideal of its maximal minors. Then:
 
-2.  If $f \in R$ and $BA = f 1_{m \times m}$ for some $m \times n$ matrix $B$, then $f^m \in J$.
+1. Every $f\in J$ admits an $m\times n$ matrix $B$ with $BA=fI_m$.
+2. Conversely, such an identity implies $f^m\in J$.
 
-**Proof.** For $I \subset \{1, \ldots, n\}$ with $|I| = m$, we denote by $E_I$ the $m \times n$ matrix of the projection $$R^{\oplus n} = \bigoplus\nolimits_{i \in \{1, \ldots, n\}} R
-\longrightarrow \bigoplus\nolimits_{i \in I} R$$ and set $A_I = E_I A$, i.e., $A_I$ is the $m \times m$ matrix whose rows are the rows of $A$ with indices in $I$. Let $B_I$ be the adjugate (transpose of cofactor) matrix to $A_I$, i.e., such that $A_I B_I = B_I A_I = \det(A_I) 1_{m \times m}$. The $m \times m$ minors of $A$ are the determinants $\det A_I$ for all the $I \subset \{1, \ldots, n\}$ with $|I| = m$. If $f \in J$ then we can write $f = \sum c_I \det(A_I)$ for some $c_I \in R$. Set $B = \sum c_I B_I E_I$ to see that (1) holds.
+**Proof.** For each set $E$ of $m$ row indices, let $p_E:R^n\to R^m$ be the coordinate projection in increasing index order. Put $A_E=p_EA$. The adjugate identity gives
+$$\operatorname{adj}(A_E)p_EA=(\det A_E)I_m.$$
+Write $f=\sum_E c_E\det A_E$. Then $B=\sum_E c_E\operatorname{adj}(A_E)p_E$ has the property in (1).
 
-If $f 1_{m \times m} = BA$ then by the Cauchy-Binet formula ([Commutative algebra](#context-algebra-item-cauchy-binet)) we have $f^m = \sum b_I \det(A_I)$ where $b_I$ is the determinant of the $m \times m$ matrix whose columns are the columns of $B$ with indices in $I$. $\square$
+For (2), take determinants in $BA=fI_m$ and use [Cauchy–Binet](#context-algebra-item-cauchy-binet):
+$$f^m=\det(BA)=\sum_E\det(B^E)\det(A_E),$$
+where $B^E$ selects the columns with indices in $E$. This lies in $J$. If $m=0$, the empty minor is $1$, so $J=R$; the empty matrices and the convention $f^0=1$ make both assertions valid. ∎
 
 #### Lemma. Flatness over a regular local ring
- Let $R \to S$ be a homomorphism of Noetherian local rings. Assume that $R$ is a regular local ring and that a regular system of parameters maps to a regular sequence in $S$. Then $R \to S$ is flat.
 
-**Proof.** Suppose that $x_1, \ldots, x_d$ are a system of parameters of $R$ which map to a regular sequence in $S$. Note that $S/(x_1, \ldots, x_d)S$ is flat over $R/(x_1, \ldots, x_d)$ as the latter is a field. Then $x_d$ is a nonzerodivisor in $S/(x_1, \ldots, x_{d - 1})S$ hence $S/(x_1, \ldots, x_{d - 1})S$ is flat over $R/(x_1, \ldots, x_{d - 1})$ by the local criterion of flatness (see Lemma [A variant of the local criterion for flatness](#native-algebra-lemma-variant-local-criterion-flatness) and remarks following). Then $x_{d - 1}$ is a nonzerodivisor in $S/(x_1, \ldots, x_{d - 2})S$ hence $S/(x_1, \ldots, x_{d - 2})S$ is flat over $R/(x_1, \ldots, x_{d - 2})$ by the local criterion of flatness (see Lemma [A variant of the local criterion for flatness](#native-algebra-lemma-variant-local-criterion-flatness) and remarks following). Continue till one reaches the conclusion that $S$ is flat over $R$. $\square$
+Let $R\to S$ be a homomorphism of Noetherian local rings. Suppose $R$ is regular and a regular system of parameters $x_1,\ldots,x_d$ of $R$ maps to an $S$-regular sequence. Then $S$ is flat over $R$.
+
+**Proof.** The last quotient $S/(x_1,\ldots,x_d)S$ is flat over the field $R/(x_1,\ldots,x_d)$. Now lift flatness one parameter at a time. At step $i$, multiplication by $x_i$ is injective on both $R/(x_1,\ldots,x_{i-1})$ and $S/(x_1,\ldots,x_{i-1})S$, and the quotient of the latter by $x_i$ is already flat over the corresponding quotient of the former. The [local criterion for flatness](#native-algebra-lemma-variant-local-criterion-flatness) therefore gives flatness before that last quotient. Apply this for $i=d,d-1,\ldots,1$.
+
+All these quotient rings are Noetherian local, and the parameters lie in their maximal ideals: properness of the regular-sequence ideal in the local ring $S$ ensures this on the target. Thus the local criterion applies at every step. For $d=0$, the initial field argument is already the conclusion. ∎
 
 #### Lemma. Regular sequences in a polynomial ring
- Let $R$ be a ring. Let $f_1, \ldots, f_r \in R$ which do not generate the unit ideal. The following are equivalent:
 
-1.  any permutation of $f_1, \ldots, f_r$ is a regular sequence,
+Let $f_1,\ldots,f_r\in R$ generate a proper ideal. The following conditions are equivalent:
 
-2.  any subsequence of $f_1, \ldots, f_r$ (in the given order) is a regular sequence, and
+1. Every permutation of the sequence is regular.
+2. Every subsequence, in its original order, is regular.
+3. The sequence $f_1x_1,\ldots,f_rx_r$ is regular in $R[x_1,\ldots,x_r]$.
 
-3.  $f_1x_1, \ldots, f_rx_r$ is a regular sequence in the polynomial ring $R[x_1, \ldots, x_r]$.
+**Proof.** Under (1), place any chosen subsequence first in a permutation and take that initial segment. This proves (2).
 
-**Proof.** It is clear that (1) implies (2). We prove (2) implies (1) by induction on $r$. The case $r = 1$ is trivial. The case $r = 2$ says that if $a, b \in R$ are a regular sequence and $b$ is a nonzerodivisor, then $b, a$ is a regular sequence. This is clear because the kernel of $a : R/(b) \to R/(b)$ is isomorphic to the kernel of $b : R/(a) \to R/(a)$ if both $a$ and $b$ are nonzerodivisors. The case $r > 2$. Assume (2) holds and say we want to prove $f_{\sigma(1)}, \ldots, f_{\sigma(r)}$ is a regular sequence for some permutation $\sigma$. We already know that $f_{\sigma(1)}, \ldots, f_{\sigma(r - 1)}$ is a regular sequence by induction. Hence it suffices to show that $f_s$ where $s = \sigma(r)$ is a nonzerodivisor modulo $f_1, \ldots, \hat f_s, \ldots, f_r$. If $s = r$ we are done. If $s < r$, then note that $f_s$ and $f_r$ are both nonzerodivisors in the ring $R/(f_1, \ldots, \hat f_s, \ldots, f_{r - 1})$ (by induction hypothesis again). Since we know $f_s, f_r$ is a regular sequence in that ring we conclude by the case of sequence of length $2$ that $f_r, f_s$ is too.
+To recover (1) from (2), first note a two-element interchange rule. If $a,b$ are nonzerodivisors and $a,b$ is regular, then $b,a$ is regular. Indeed, if $au=bv$, reduction modulo $a$ gives $v=aw$ because $b$ is a nonzerodivisor modulo $a$. Cancelling $a$ in $a(u-bw)=0$ gives $u=bw$. Thus $a$ is a nonzerodivisor modulo $b$.
 
-Note that $R[x_1, \ldots, x_r]/(f_1x_1, \ldots, f_ix_i)$ as an $R$-module is a direct sum of the modules $$R/I_E \cdot x_1^{e_1} \ldots x_r^{e_r}$$ indexed by multi-indices $E = (e_1, \ldots, e_r)$ where $I_E$ is the ideal generated by $f_j$ for $1 \leq j \leq i$ with $e_j > 0$. Hence $f_{i + 1}x_{i + 1}$ is a nonzerodivisor on this if and only if $f_{i + 1}$ is a nonzerodivisor on $R/I_E$ for all $E$. Taking $E$ with all positive entries, we see that $f_{i + 1}$ is a nonzerodivisor on $R/(f_1, \ldots, f_i)$. Thus (3) implies (2). Conversely, if (2) holds, then any subsequence of $f_1, \ldots, f_i, f_{i + 1}$ is a regular sequence in particular $f_{i + 1}$ is a nonzerodivisor on all $R/I_E$. In this way we see that (2) implies (3). $\square$
+Proceed by induction on $r$. All proper subsequences may be permuted by induction. To put $f_s$ last, only its injectivity modulo the other terms remains to be checked. If $s=r$, this is already known. Otherwise quotient by the terms with indices outside $\{s,r\}$. Induction shows that both remaining terms are nonzerodivisors there, and that they occur as the regular pair $f_s,f_r$: permute the first $r-1$ terms to put $f_s$ last among them, without changing their generated ideal. The interchange rule makes $f_r,f_s$ regular in that quotient. This proves injectivity of the desired final term. Any order of its predecessors is regular by induction, proving (1).
+
+For the polynomial assertion, after quotienting by the first $i$ elements $f_jx_j$, the underlying $R$-module splits by monomials:
+$$
+R[x]/(f_1x_1,\ldots,f_ix_i)
+\simeq\bigoplus_{e\in\mathbb N^r}
+\left(R/(f_j\mid j\leq i,\ e_j>0)\right)x^e.
+$$
+Multiplication by $f_{i+1}x_{i+1}$ sends the summand for $e$ to that for $e+(0,\ldots,1,\ldots,0)$, by multiplication by $f_{i+1}$ on its coefficient module. The coefficient ideal depends only on the first $i$ exponents and hence is unchanged. Distinct source monomials have distinct targets. The multiplication is therefore injective exactly when $f_{i+1}$ is a nonzerodivisor modulo every ideal generated by a subset of $f_1,\ldots,f_i$. These are precisely the successive injectivity conditions for all ordered subsequences in (2). Every such subset occurs by taking its exponents positive and the others zero. This proves (2) iff (3). The relevant quotient ideals are proper, by the hypothesis in $R$ and by evaluation at $x_1=\cdots=x_r=0$ in the polynomial ring. ∎
 
 #### Lemma. Finite generation in an Artinian local target
- Let $R \to S$ be a ring map. Assume $S$ is an Artinian local ring with maximal ideal $\mathfrak m$. Then
 
-1.  $R \to S$ is finite if and only if $R \to S/\mathfrak m$ is finite,
+Let $R\to S$ be a ring map, with $S$ Artinian local and residue field $K=S/\mathfrak m$. The map to $S$ is finite, finite type, or essentially finite type, respectively, if and only if the composite map to $K$ has that property.
 
-2.  $R \to S$ is of finite type if and only if $R \to S/\mathfrak m$ is of finite type.
+**Proof.** Each of the three properties passes to a quotient, so consider the converse directions.
 
-3.  $R \to S$ is essentially of finite type if and only if the composition $R \to S/\mathfrak m$ is essentially of finite type.
+If $K$ is a finite $R$-module, take a composition series of $S$ as an $S$-module. Such a finite series exists by [Finite length over an Artinian ring](#native-algebra-lemma-artinian-finite-length), and every factor is $K$. Viewed as a series of $R$-modules, it shows that $S$ is finite over $R$: extensions of finite modules are finite.
 
-**Proof.** If $R \to S$ is finite, then $R \to S/\mathfrak m$ is finite by Lemma [Transitivity of finite ring extensions](#native-algebra-lemma-finite-transitive). Conversely, assume $R \to S/\mathfrak m$ is finite. As $S$ has finite length over itself (Lemma [Finite length over an Artinian ring](#native-algebra-lemma-artinian-finite-length)) we can choose a filtration $$0 \subset I_1 \subset \ldots \subset I_n = S$$ by ideals such that $I_i/I_{i - 1} \cong S/\mathfrak m$ as $S$-modules. Thus $S$ has a filtration by $R$-submodules $I_i$ such that each successive quotient is a finite $R$-module. Thus $S$ is a finite $R$-module by Lemma [Commutative algebra](#native-algebra-lemma-extension).
+If $K$ is a finite type $R$-algebra, lift a finite set of algebra generators to $s_1,\ldots,s_n\in S$. The map $R[X_1,\ldots,X_n]\to K$ defined by their residues is surjective. The finite-module case applied to $R[X]\to S$ makes $S$ finite over this polynomial ring, and hence finite type over $R$.
 
-If $R \to S$ is of finite type, then $R \to S/\mathfrak m$ is of finite type by Lemma [Composition of finite-type ring maps](#native-algebra-lemma-compose-finite-type). Conversely, assume that $R \to S/\mathfrak m$ is of finite type. Choose $f_1, \ldots, f_n \in S$ which map to generators of $S/\mathfrak m$. Then $A = R[x_1, \ldots, x_n] \to S$, $x_i \mapsto f_i$ is a ring map such that $A \to S/\mathfrak m$ is surjective (in particular finite). Hence $A \to S$ is finite by part (1) and we see that $R \to S$ is of finite type by Lemma [Composition of finite-type ring maps](#native-algebra-lemma-compose-finite-type).
-
-If $R \to S$ is essentially of finite type, then $R \to S/\mathfrak m$ is essentially of finite type by Lemma [Composition of essentially finite-type ring maps](#native-algebra-lemma-composition-essentially-of-finite-type). Conversely, assume that $R \to S/\mathfrak m$ is essentially of finite type. Suppose $S/\mathfrak m$ is the localization of $R[x_1, \ldots, x_n]/I$. Choose $f_1, \ldots, f_n \in S$ whose congruence classes modulo $\mathfrak m$ correspond to the congruence classes of $x_1, \ldots, x_n$ modulo $I$. Consider the map $R[x_1, \ldots, x_n] \to S$, $x_i \mapsto f_i$ with kernel $J$. Set $A = R[x_1, \ldots, x_n]/J \subset S$ and $\mathfrak p = A \cap \mathfrak m$. Note that $A/\mathfrak p \subset S/\mathfrak m$ is equal to the image of $R[x_1, \ldots, x_n]/I$ in $S/\mathfrak m$. Hence $\kappa(\mathfrak p) = S/\mathfrak m$. Thus $A_\mathfrak p \to S$ is finite by part (1). We conclude that $S$ is essentially of finite type by Lemma [Composition of essentially finite-type ring maps](#native-algebra-lemma-composition-essentially-of-finite-type). $\square$
+Finally, suppose $K$ is a localization of a finite type $R$-algebra. Choose lifts to $S$ of a finite generating set for the image of that algebra in $K$, and let $A\subset S$ be the $R$-subalgebra they generate. Put $\mathfrak p=A\cap\mathfrak m$. Then $A/\mathfrak p$ is that same image, and its fraction field is $K$: the given localization is already a field. Elements of $A\setminus\mathfrak p$ map to units of $S$, so the inclusion extends to $A_{\mathfrak p}\to S$. Its map to $K$ is surjective, and the first case makes $S$ finite over $A_{\mathfrak p}$. Since $A$ is finite type over $R$, [composition of essentially finite-type maps](#native-algebra-lemma-composition-essentially-of-finite-type) now shows that $S/R$ is essentially finite type. No finite-generation assumption on the ring $R$ is used. ∎
 
 #### Lemma. Syntomic algebras in a filtered colimit
 
-Let $K/k$ be a field extension. Then $K$ is a filtered colimit of global complete intersection algebras over $k$. If $K/k$ is separable, then $K$ is a filtered colimit of smooth algebras over $k$.
+Any field extension $K/k$ is a filtered colimit of global complete-intersection $k$-algebras. If the extension is separable, smooth $k$-algebras suffice.
 
-**Proof.** Suppose that $E \subset K$ is a finite subset. It suffices to show that there exists a $k$ subalgebra $A \subset K$ which contains $E$ and which is a global complete intersection (resp. smooth) over $k$. The separable/smooth case follows from Lemma [Smooth localizations of separable extensions](#native-algebra-lemma-localization-smooth-separable). In general let $L \subset K$ be the subfield generated by $E$. Pick a transcendence basis $x_1, \ldots, x_d \in L$ over $k$. The extension $L/k(x_1, \ldots, x_d)$ is finite. Say $L = k(x_1, \ldots, x_d)[y_1, \ldots, y_r]$. Pick inductively polynomials $P_i \in k(x_1, \ldots, x_d)[Y_1, \ldots, Y_r]$ such that $P_i = P_i(Y_1, \ldots, Y_i)$ is monic in $Y_i$ over $k(x_1, \ldots, x_d)[Y_1, \ldots, Y_{i - 1}]$ and maps to the minimal polynomial of $y_i$ in $k(x_1, \ldots, x_d)[y_1, \ldots, y_{i - 1}][Y_i]$. Then it is clear that $P_1, \ldots, P_r$ are a regular sequence in $k(x_1, \ldots, x_d)[Y_1, \ldots, Y_r]$ and that $L = k(x_1, \ldots, x_d)[Y_1, \ldots, Y_r]/(P_1, \ldots, P_r)$. If $h \in k[x_1, \ldots, x_d]$ is a polynomial such that $P_i \in k[x_1, \ldots, x_d, 1/h, Y_1, \ldots, Y_r]$, then we see that $P_1, \ldots, P_r$ is a regular sequence in $k[x_1, \ldots, x_d, 1/h, Y_1, \ldots, Y_r]$ and $A = k[x_1, \ldots, x_d, 1/h, Y_1, \ldots, Y_r]/(P_1, \ldots, P_r)$ is a global complete intersection. After adjusting our choice of $h$ we may assume $E \subset A$ and we win. $\square$
+**Proof.** We construct such subalgebras containing any given finite subset $E\subset K$. Let $L=k(E)$. The triangular monic construction in the proof of [Cartier's equality](#native-more-algebra-lemma-cartier-equality) gives a domain $A\subset L$ that is a global complete intersection over $k$ and has fraction field $L$. Express each element of $E$ as a fraction in $A$, and invert the product of its finitely many nonzero denominators. The resulting algebra contains $E$. It remains a global complete intersection: for a localization at $s$, adjoin a variable $v$ and append the equation $vs-1$ to the regular sequence presenting $A$.
+
+In the separable case, the finitely generated extension $L/k$ has a separating transcendence basis $t_1,\ldots,t_d$, and $L/k(t)$ is finite separable. Choose a primitive element $\alpha$ with monic minimal polynomial $f(T)\in k(t)[T]$. Clear its coefficients' denominators by a nonzero $D\in k[t]$. The ring $A=k[t]_D[T]/(f)$ embeds in $L$ and has fraction field $L$. Since $f'(\alpha)\ne0$, localizing $A$ at $f'(\alpha)$ makes it étale over the smooth algebra $k[t]_D$ and therefore smooth over $k$. Further localization at the finitely many denominators of the elements of $E$ preserves smoothness and puts $E$ in the algebra. This is the explicit construction behind [Smooth localizations of separable extensions](#native-algebra-lemma-localization-smooth-separable).
+
+The family is directed under inclusion: for two constructed finite type subalgebras, apply the appropriate construction to the union of their finite generating sets. Its union contains every element of $K$ and is contained in $K$, so its filtered colimit is exactly $K$. ∎
 
 ### B.11. The additional G-ring permanence argument
 
-The definition, local criterion, complete-local and henselization results, and full essentially-finite-type permanence proof are retained here. This explicitly supplies the theorem used on the local polynomial algebra in Lesson 7. Its exact unintegrated lower supports remain visible in §12.
+Artin approximation over the local polynomial algebra requires permanence of the G-ring condition under essentially finite-type extensions. We prove that permanence through formal-fibre calculations, beginning with the reductions used to test those fibres.
 
 #### G-rings
 
-Let $A$ be a Noetherian local ring. In Section [Completion and formal smoothness](#context-more-algebra-section-permanence-completion) we have seen that some but not all properties of $A$ are reflected in the completion $A^\wedge$ of $A$. To study this further we introduce some terminology. For a prime $\mathfrak q$ of $A$ the fibre ring $$A^\wedge \otimes_A \kappa(\mathfrak q) =
-(A^\wedge)_\mathfrak q/\mathfrak q(A^\wedge)_\mathfrak q =
-(A/\mathfrak q)^\wedge \otimes_{A/\mathfrak q} \kappa(\mathfrak q)$$ is called a *formal fibre* of $A$. We think of the formal fibre as an algebra over $\kappa(\mathfrak q)$. Thus $A \to A^\wedge$ is a regular ring homomorphism if and only if all the formal fibres are geometrically regular algebras.
+For a Noetherian local ring $A$ and a prime $\mathfrak q\subset A$, the **formal fibre at $\mathfrak q$** is the $\kappa(\mathfrak q)$-algebra
+$$
+\widehat A\otimes_A\kappa(\mathfrak q)
+=\left((A\setminus\mathfrak q)^{-1}\widehat A\right)\big/\mathfrak q
+\left((A\setminus\mathfrak q)^{-1}\widehat A\right).
+$$
+Here completion uses the maximal ideal of $A$. Completion of a Noetherian ring commutes with quotient by a finitely generated ideal, so this is also
+$$\widehat{A/\mathfrak q}\otimes_{A/\mathfrak q}\operatorname{Frac}(A/\mathfrak q).$$
+The completion map is flat and its fibres are Noetherian. It is therefore regular exactly when these formal fibres are geometrically regular over their indicated residue fields. In particular, a formal fibre is generally a localization of a **quotient** of $\widehat A$; the quotient cannot be omitted when $\mathfrak q\ne0$.
 
 #### Definition. G-rings
- A ring $R$ is called a *G-ring* if $R$ is Noetherian and for every prime $\mathfrak p$ of $R$ the ring map $R_\mathfrak p \to (R_\mathfrak p)^\wedge$ is regular.
 
-By the discussion above we see that $R$ is a G-ring if and only if every local ring $R_\mathfrak p$ has geometrically regular formal fibres. Note that if $\mathbf{Q} \subset R$, then it suffices to check the formal fibres are regular. Another way to express the G-ring condition is described in the following lemma.
+A **G-ring** is a Noetherian ring $R$ such that, for every prime $\mathfrak p$, the local completion map
+$$R_{\mathfrak p}\longrightarrow\widehat{R_{\mathfrak p}}$$
+is regular. Equivalently, every local ring of $R$ has geometrically regular formal fibres. If $R$ contains $\mathbb Q$, geometric regularity in this test is equivalent to regularity, since all the residue fields have characteristic zero; apply [the field criterion](#native-algebra-lemma-geometrically-regular) and regularity under separable field extension.
 
 #### Lemma. Recognizing a G-ring from a completion
- Let $R$ be a Noetherian ring. Then $R$ is a G-ring if and only if for every pair of primes $\mathfrak q \subset \mathfrak p \subset R$ the algebra $$(R/\mathfrak q)_\mathfrak p^\wedge \otimes_{R/\mathfrak q} \kappa(\mathfrak q)$$ is geometrically regular over $\kappa(\mathfrak q)$.
 
-**Proof.** This follows from the fact that $$R_\mathfrak p^\wedge \otimes_R \kappa(\mathfrak q) =
-(R/\mathfrak q)_\mathfrak p^\wedge \otimes_{R/\mathfrak q} \kappa(\mathfrak q)$$ as algebras over $\kappa(\mathfrak q)$. $\square$
+A Noetherian ring $R$ is a G-ring if and only if, for every chain $\mathfrak q\subset\mathfrak p$ of primes, the ring
+$$
+\widehat{(R/\mathfrak q)_{\mathfrak p}}\otimes_{R/\mathfrak q}\kappa(\mathfrak q)
+$$
+is geometrically regular over $\kappa(\mathfrak q)$. The completion on the left is at the maximal ideal of $(R/\mathfrak q)_{\mathfrak p}$.
+
+**Proof.** Quotient compatibility of Noetherian completion gives
+$$
+\widehat{R_{\mathfrak p}}/\mathfrak q\widehat{R_{\mathfrak p}}
+\simeq\widehat{(R/\mathfrak q)_{\mathfrak p}}.
+$$
+Localizing away from $\mathfrak q$ identifies the stated ring with $\widehat{R_{\mathfrak p}}\otimes_R\kappa(\mathfrak q)$. As $\mathfrak q$ runs through the primes contained in $\mathfrak p$, these are exactly the fibres of the completion map of $R_{\mathfrak p}$. The definition now gives both implications. ∎
 
 #### Lemma. G-rings under quasi-finite extensions
- Let $R \to R'$ be a finite type map of Noetherian rings and let $$\begin{gathered}\begin{matrix}\mathfrak q' & \mathfrak p' & R' \\ \mathfrak q & \mathfrak p & R\end{matrix} \\[6pt] \begin{aligned}\mathfrak q' & \longrightarrow \mathfrak p' \\ \mathfrak p' & \longrightarrow R' \\ \mathfrak q & \longrightarrow \mathfrak p \\ \mathfrak q & \mathrel{-} \mathfrak q' \\ \mathfrak p & \longrightarrow R \\ \mathfrak p & \mathrel{-} \mathfrak p' \\ R & \longrightarrow R'\end{aligned}\end{gathered}$$ be primes. Assume $R \to R'$ is quasi-finite at $\mathfrak p'$.
 
-1.  If the formal fibre $R_\mathfrak p^\wedge \otimes_R \kappa(\mathfrak q)$ is geometrically regular over $\kappa(\mathfrak q)$, then the formal fibre $(R'_{\mathfrak p'})^\wedge \otimes_{R'} \kappa(\mathfrak q')$ is geometrically regular over $\kappa(\mathfrak q')$.
+Suppose $R\to R'$ is a finite type map of Noetherian rings. Let $\mathfrak q'\subset\mathfrak p'$ be primes of $R'$ contracting to $\mathfrak q\subset\mathfrak p$ in $R$, and assume the map is quasi-finite at $\mathfrak p'$. Then:
 
-2.  If the formal fibres of $R_\mathfrak p$ are geometrically regular, then the formal fibres of $R'_{\mathfrak p'}$ are geometrically regular.
+1. Geometric regularity of $\widehat{R_{\mathfrak p}}\otimes_R\kappa(\mathfrak q)$ over $\kappa(\mathfrak q)$ implies geometric regularity of $\widehat{R'_{\mathfrak p'}}\otimes_{R'}\kappa(\mathfrak q')$ over $\kappa(\mathfrak q')$.
+2. If every formal fibre of $R_{\mathfrak p}$ is geometrically regular, the same holds for $R'_{\mathfrak p'}$.
+3. If $R\to R'$ is quasi-finite everywhere and $R$ is a G-ring, then $R'$ is a G-ring.
 
-3.  If $R \to R'$ is quasi-finite and $R$ is a G-ring, then $R'$ is a G-ring.
-
-**Proof.** It is clear that (1) \(\Rightarrow\) (2) \(\Rightarrow\) (3). Assume \(R_\mathfrak p^\wedge \otimes_R \kappa(\mathfrak q)\) is geometrically regular over \(\kappa(\mathfrak q)\). By Algebra, Lemma [Completion at a quasi-finite prime](#native-algebra-lemma-completion-at-quasi-finite-prime) we see that 
-
-\[
-R_\mathfrak p^\wedge \otimes_R R'
-=
-(R'_{\mathfrak p'})^\wedge \times B
-\]
-
- for some \(R_\mathfrak p^\wedge\)-algebra \(B\). Hence \(R'_{\mathfrak p'} \to (R'_{\mathfrak p'})^\wedge\) is a factor of a base change of the map \(R_\mathfrak p \to R_\mathfrak p^\wedge\). It follows that \((R'_{\mathfrak p'})^\wedge \otimes_{R'} \kappa(\mathfrak q')\) is a factor of 
-
-\[
-R_\mathfrak p^\wedge \otimes_R R' \otimes_{R'} \kappa(\mathfrak q') =
-R_\mathfrak p^\wedge \otimes_R \kappa(\mathfrak q)
-\otimes_{\kappa(\mathfrak q)} \kappa(\mathfrak q').
-\]
-
- Thus the result follows as extension of base field preserves geometric regularity, see Algebra, Lemma [Criteria for geometric regularity](#native-algebra-lemma-geometrically-regular). \(\square\)
+**Proof.** By [Completion at a quasi-finite prime](#native-algebra-lemma-completion-at-quasi-finite-prime), the completed local ring at $\mathfrak p'$ is a direct factor of the indicated base change:
+$$\widehat{R_{\mathfrak p}}\otimes_R R'
+\simeq\widehat{R'_{\mathfrak p'}}\times D.$$
+Tensor this decomposition, as one of $R'$-algebras, with $\kappa(\mathfrak q')$. Its left-hand side becomes
+$$
+\bigl(\widehat{R_{\mathfrak p}}\otimes_R\kappa(\mathfrak q)\bigr)
+\otimes_{\kappa(\mathfrak q)}\kappa(\mathfrak q').
+$$
+The residue extension is finitely generated, so this is Noetherian and geometrically regular under the hypothesis of (1), by [Noetherianity under field extension](#native-algebra-lemma-noetherian-field-extension) and [the geometric-regularity criterion](#native-algebra-lemma-geometrically-regular). A direct factor has the same property, since it is localization at an idempotent, before and after every finite field extension. This proves (1). Applying it to every prime $\mathfrak q'\subset\mathfrak p'$ proves (2), and then applying (2) at every $\mathfrak p'$ proves (3). ∎
 
 #### Lemma. Testing geometric regularity of formal fibres
- Let $R$ be a Noetherian ring. Then $R$ is a G-ring if and only if for every finite free ring map $R \to S$ the formal fibres of $S$ are regular rings.
 
-**Proof.** Assume that for any finite free ring map \(R \to S\) the ring \(S\) has regular formal fibres. Let \(\mathfrak q \subset \mathfrak p \subset R\) be primes and let \(\kappa(\mathfrak q) \subset L\) be a finite purely inseparable extension. To show that \(R\) is a G-ring it suffices to show that 
+For a Noetherian ring $R$, the G-ring condition is equivalent to the following test: every finite free $R$-algebra $S$ has regular formal fibres at all its local rings.
 
-\[
-R_\mathfrak p^\wedge \otimes_R \kappa(\mathfrak q)
-\otimes_{\kappa(\mathfrak q)} L
-\]
+**Proof.** If $R$ is a G-ring, a finite free algebra is a finite, hence quasi-finite, algebra over $R$. The preceding lemma makes $S$ a G-ring, so its formal fibres are geometrically regular and in particular regular.
 
- is a regular ring. Choose a finite free extension \(R \to R'\) such that \(\mathfrak q' = \mathfrak qR'\) is a prime and such that \(\kappa(\mathfrak q')\) is isomorphic to \(L\) over \(\kappa(\mathfrak q)\), see Algebra, Lemma [Finite free algebras with a prescribed residue extension](#native-algebra-lemma-finite-free-given-residue-field-extension). By Algebra, Lemma [Completion of a finite ring extension](#native-algebra-lemma-completion-finite-extension) we have 
+Conversely, assume the test. Fix primes $\mathfrak q\subset\mathfrak p$ of $R$ and a finite purely inseparable extension $L/\kappa(\mathfrak q)$. By [Finite free algebras with a prescribed residue extension](#native-algebra-lemma-finite-free-given-residue-field-extension), choose a finite free $R$-algebra $R'$ for which $\mathfrak q'=\mathfrak qR'$ is prime and $\kappa(\mathfrak q')\simeq L$ over $\kappa(\mathfrak q)$.
 
-\[
-R_\mathfrak p^\wedge \otimes_R R' = \prod (R'_{\mathfrak p_i'})^\wedge
-\]
-
- where \(\mathfrak p_i'\) are the primes of \(R'\) lying over \(\mathfrak p\). Thus we have 
-
-\[
-R_\mathfrak p^\wedge \otimes_R \kappa(\mathfrak q)
-\otimes_{\kappa(\mathfrak q)} L =
-R_\mathfrak p^\wedge \otimes_R R'
-\otimes_{R'} \kappa(\mathfrak q')
-=
-\prod (R'_{\mathfrak p_i'})^\wedge
-\otimes_{R'_{\mathfrak p'_i}} \kappa(\mathfrak q')
-\]
-
- Our assumption is that the rings on the right are regular, hence the ring on the left is regular too. Thus \(R\) is a G-ring. The converse follows from Lemma [G-rings under quasi-finite extensions](#native-more-algebra-lemma-g-ring-goes-up-quasi-finite). \(\square\)
+The finite-extension completion decomposition gives
+$$
+\widehat{R_{\mathfrak p}}\otimes_R R'
+\simeq\prod_{\mathfrak p_i'\mid\mathfrak p}\widehat{R'_{\mathfrak p_i'}},
+$$
+with a finite index set; see [Completion of a finite ring extension](#native-algebra-lemma-completion-finite-extension). After tensoring over $R'$ with $\kappa(\mathfrak q')=L$, its left side is
+$$\bigl(\widehat{R_{\mathfrak p}}\otimes_R\kappa(\mathfrak q)\bigr)
+\otimes_{\kappa(\mathfrak q)}L.$$
+On the right, a factor is zero unless $\mathfrak q'\subset\mathfrak p_i'$: otherwise some element of $\mathfrak q'$ is already invertible in $R'_{\mathfrak p_i'}$ and is killed by the tensor product. Each remaining factor is the formal fibre of $R'_{\mathfrak p_i'}$ at $\mathfrak q'R'_{\mathfrak p_i'}$, hence regular by the test. The finite product is therefore regular. Every finite purely inseparable extension $L$ has now been checked, so the field criterion makes the original formal fibre geometrically regular. Apply the preceding characterization for all $\mathfrak q\subset\mathfrak p$ to conclude that $R$ is a G-ring. ∎
 
 #### Lemma. Geometric regularity of generic formal fibres in positive characteristic
- Let $k$ be a field of characteristic $p$. Let $A = k[[x_1, \ldots, x_n]][y_1, \ldots, y_m]$ and denote $K$ the fraction field of $A$. Let $\mathfrak p \subset A$ be a prime. Then $A_\mathfrak p^\wedge \otimes_A K$ is geometrically regular over $K$.
 
-**Proof.** Let $L/K$ be a finite purely inseparable field extension. We will show by induction on $[L : K]$ that $A_\mathfrak p^\wedge \otimes L$ is regular. The base case is $L = K$: as $A$ is regular, $A_\mathfrak p^\wedge$ is regular (Lemma [Regularity and completion](#native-more-algebra-lemma-completion-regular)), hence the localization $A_\mathfrak p^\wedge \otimes K$ is regular. Let $K \subset M \subset L$ be a subfield such that $L$ is a degree $p$ extension of $M$ obtained by adjoining a $p$th root of an element $f \in M$. Let $B$ be a finite $A$-subalgebra of $M$ with fraction field $M$. Clearing denominators, we may and do assume $f \in B$. Set $C = B[z]/(z^p -f)$ and note that $B \subset C$ is finite and that the fraction field of $C$ is $L$. Since $A \subset B \subset C$ are finite and $L/M/K$ are purely inseparable we see that for every element of $B$ or $C$ some power of it lies in $A$. Hence there is a unique prime $\mathfrak r \subset B$, resp. $\mathfrak q \subset C$ lying over $\mathfrak p$. Note that $$A_\mathfrak p^\wedge \otimes_A M = B_\mathfrak r^\wedge \otimes_B M$$ see Algebra, Lemma [Completion of a finite ring extension](#native-algebra-lemma-completion-finite-extension). By induction we know that this ring is regular. In the same manner we have $$A_\mathfrak p^\wedge \otimes_A L =
-C_\mathfrak q^\wedge \otimes_C L =
-B_\mathfrak r^\wedge \otimes_B M[z]/(z^p - f)$$ the last equality because the completion of $C = B[z]/(z^p - f)$ equals $B_\mathfrak r^\wedge[z]/(z^p -f)$. By Lemma [Derivations of formal power series in positive characteristic](#native-more-algebra-lemma-find-d) we know there exists a derivation $D : B \to B$ such that $D(f) \not = 0$. In other words, $g = D(f)$ is a unit in $M$! By Lemma [Extending a derivation](#native-more-algebra-lemma-derivation-extends) $D$ extends to a derivation of $B_\mathfrak r$, $B_\mathfrak r^\wedge$ and $B_\mathfrak r^\wedge \otimes_B M$ (successively extending through a localization, a completion, and a localization). Since it is an extension we end up with a derivation of $B_\mathfrak r^\wedge \otimes_B M$ which maps $f$ to $g$ and $g$ is a unit of the ring $B_\mathfrak r^\wedge \otimes_B M$. Hence $A_\mathfrak p^\wedge \otimes_A L$ is regular by Lemma [Regularity after an extension of degree p](#native-more-algebra-lemma-degree-p-extension-regular) and we win. $\square$
+For a field $k$ of characteristic $p>0$, put $A=k[[x_1,\ldots,x_n]][y_1,\ldots,y_m]$ and $K=\operatorname{Frac}A$. For every prime $\mathfrak p$ of $A$, the generic formal fibre $\widehat{A_{\mathfrak p}}\otimes_A K$ is geometrically regular over $K$.
+
+**Proof.** For a finite purely inseparable extension $L/K$, we prove regularity of $\widehat{A_{\mathfrak p}}\otimes_A L$ by induction on its degree. At degree one, $A$ is regular, its local ring and completion are regular, and the ring in question is a localization of that completion. Use [Regularity and completion](#native-more-algebra-lemma-completion-regular).
+
+For the induction step choose $K\subset M\subset L$ with $[L:M]=p$, and write $L=M(z)$ with $z^p=f\in M\setminus M^p$. Choose a finite domain $B\subset M$ over $A$, with fraction field $M$, such that a $p$-power of every element of $B$ belongs to $A$. Here is a construction: take finitely many generators $\alpha_i$ of $M/K$, choose powers $\alpha_i^{p^{e_i}}=a_i/b_i$ in $K$, and put $B=A[b_i\alpha_i\mid i]$. Each displayed generator has a $p$-power in $A$, so it is integral; a common Frobenius power works for every polynomial in them. The resulting finite algebra has fraction field $M$.
+
+Write $f=b/c$ with $b,c\in B$, $c\ne0$. Replacing $z$ by $cz$ replaces $f$ by $c^pf=c^{p-1}b\in B$ and gives the same extension $L/M$. The new $f$ is still not a $p$th power in $M$. Thus we may assume $f\in B$. Put $C=B[z]/(z^p-f)\subset L$. It is a finite domain over $B$, and every element of $C$ also has a $p$-power in $A$. These integral radicial extensions have unique primes $\mathfrak r\subset B$ and $\mathfrak q\subset C$ above $\mathfrak p$.
+
+The [finite-extension completion formula](#native-algebra-lemma-completion-finite-extension) and uniqueness of these primes identify
+$$
+T:=\widehat{A_{\mathfrak p}}\otimes_A M
+\simeq\widehat{B_{\mathfrak r}}\otimes_B M,
+\qquad
+\widehat{A_{\mathfrak p}}\otimes_A L\simeq T[z]/(z^p-f).
+$$
+The induction hypothesis says that $T$ is regular. The domain $B$ is finite type over the complete local ring $k[[x_1,\ldots,x_n]]$. The [derivation lemma in positive characteristic](#native-more-algebra-lemma-find-d) supplies a derivation $D:B\to B$ with $D(f)\ne0$. By [Extending a derivation](#native-more-algebra-lemma-derivation-extends), it extends first to $B_{\mathfrak r}$, then to its completion, and finally to $T$. In the last ring, the nonzero element $D(f)\in B$ is invertible because we have tensored with the fraction field $M$.
+
+Extend $D$ to $T[z]$ by $D(z)=0$. It sends $z^p-f$ to the unit $-D(f)$. The [regular-quotient criterion by a derivation](#native-more-algebra-lemma-degree-p-extension-regular) therefore makes $T[z]/(z^p-f)$ regular. This completes the induction. The purely inseparable field criterion proves geometric regularity of the original generic formal fibre. ∎
 
 #### Proposition. Complete Noetherian rings are G-rings
- A Noetherian complete local ring is a G-ring.
 
-**Proof.** Let $A$ be a Noetherian complete local ring. By Lemma [Recognizing a G-ring from a completion](#native-more-algebra-lemma-check-g-ring-easy) it suffices to check that $B = A/\mathfrak q$ has geometrically regular formal fibres over the minimal prime $(0)$ of $B$. Thus we may assume that $A$ is a domain and it suffices to check the condition for the formal fibres over the minimal prime $(0)$ of $A$. Let $K$ be the fraction field of $A$.
+Every Noetherian complete local ring is a G-ring.
 
-We can choose a subring $A_0 \subset A$ which is a regular complete local ring such that $A$ is finite over $A_0$, see Algebra, Lemma [A complete local domain finite over a regular ring](#native-algebra-lemma-complete-local-noetherian-domain-finite-over-regular). Moreover, we may assume that $A_0$ is a power series ring over a field or a Cohen ring. By Lemma [G-rings under quasi-finite extensions](#native-more-algebra-lemma-g-ring-goes-up-quasi-finite) we see that it suffices to prove the result for $A_0$.
+**Proof.** Let $A$ be such a ring and fix $\mathfrak q\subset\mathfrak p$ in $\operatorname{Spec}A$. By quotient compatibility of completion, the formal fibre to be tested is the generic formal fibre of the complete local domain $B=A/\mathfrak q$ at $\mathfrak p/\mathfrak q$. Thus it suffices to establish geometric regularity of all generic formal fibres of every complete local domain.
 
-Assume that $A$ is a power series ring over a field or a Cohen ring. Since $A$ is regular the localizations $A_\mathfrak p$ are regular (see Algebra, Definition [Regular Noetherian rings](#native-algebra-definition-regular) and the discussion preceding it). Hence the completions $A_\mathfrak p^\wedge$ are regular, see Lemma [Regularity and completion](#native-more-algebra-lemma-completion-regular). Hence the fibre $A_{\mathfrak p}^\wedge \otimes_A K$ is, as a localization of $A_\mathfrak p^\wedge$, also regular. Thus we are done if the characteristic of $K$ is $0$. The positive characteristic case is the case $A = k[[x_1, \ldots, x_d]]$ which is a special case of Lemma [Geometric regularity of generic formal fibres in positive characteristic](#native-more-algebra-lemma-helper-g-ring). $\square$
+For such a domain $B$, [the complete-domain structure theorem](#native-algebra-lemma-complete-local-noetherian-domain-finite-over-regular) gives a regular complete local subring $B_0\subset B$, finite in $B$, where $B_0$ is a power-series ring over a field or over a Cohen ring. The generic prime of $B$ contracts to the generic prime of $B_0$. Part (1) of [G-rings under quasi-finite extensions](#native-more-algebra-lemma-g-ring-goes-up-quasi-finite), applied at each chosen upper prime, therefore transfers geometric regularity of the generic formal fibres of $B_0$ to those of $B$. This use requires only the indicated generic fibres of $B_0$, not the whole G-ring assertion for $B_0$.
+
+Let $K_0=\operatorname{Frac}B_0$. The ring $\widehat{(B_0)_{\mathfrak p_0}}\otimes_{B_0}K_0$ is regular: it is a localization of the completion of a regular local ring. If $K_0$ has characteristic zero, this is already geometric regularity. If its characteristic is positive, $B_0$ is a power-series ring over a field, and the preceding lemma, with no polynomial variables, proves geometric regularity. Every required generic fibre is now covered. Returning through $B=A/\mathfrak q$ proves the G-ring condition for all pairs $\mathfrak q\subset\mathfrak p$ of the original $A$. ∎
 
 #### Lemma. Testing the G-ring property at maximal ideals
- Let $R$ be a Noetherian ring. Then $R$ is a G-ring if and only if $R_\mathfrak m$ has geometrically regular formal fibres for every maximal ideal $\mathfrak m$ of $R$.
 
-**Proof.** Assume $R_\mathfrak m \to R_\mathfrak m^\wedge$ is regular for every maximal ideal $\mathfrak m$ of $R$. Let $\mathfrak p$ be a prime of $R$ and choose a maximal ideal $\mathfrak p \subset \mathfrak m$. Since $R_\mathfrak m \to R_\mathfrak m^\wedge$ is faithfully flat we can choose a prime $\mathfrak p'$ in $R_\mathfrak m^\wedge$ lying over $\mathfrak pR_\mathfrak m$. Consider the commutative diagram $$\begin{gathered}\begin{matrix}R_\mathfrak m^\wedge & (R_\mathfrak m^\wedge)_{\mathfrak p'} & (R_\mathfrak m^\wedge)_{\mathfrak p'}^\wedge \\ R_\mathfrak m & R_\mathfrak p & R_\mathfrak p^\wedge\end{matrix} \\[6pt] \begin{aligned}R_\mathfrak m^\wedge & \longrightarrow (R_\mathfrak m^\wedge)_{\mathfrak p'} \\ (R_\mathfrak m^\wedge)_{\mathfrak p'} & \longrightarrow (R_\mathfrak m^\wedge)_{\mathfrak p'}^\wedge \\ R_\mathfrak m & \longrightarrow R_\mathfrak m^\wedge \\ R_\mathfrak m & \longrightarrow R_\mathfrak p \\ R_\mathfrak p & \longrightarrow (R_\mathfrak m^\wedge)_{\mathfrak p'} \\ R_\mathfrak p & \longrightarrow R_\mathfrak p^\wedge \\ R_\mathfrak p^\wedge & \longrightarrow (R_\mathfrak m^\wedge)_{\mathfrak p'}^\wedge\end{aligned}\end{gathered}$$ By assumption the ring map $R_\mathfrak m \to R_\mathfrak m^\wedge$ is regular. By Proposition [Complete Noetherian rings are G-rings](#native-more-algebra-proposition-noetherian-complete-g-ring) $(R_\mathfrak m^\wedge)_{\mathfrak p'} \to
-(R_\mathfrak m^\wedge)_{\mathfrak p'}^\wedge$ is regular. The localization $R_\mathfrak m^\wedge \to (R_\mathfrak m^\wedge)_{\mathfrak p'}$ is regular. Hence $R_\mathfrak m \to (R_\mathfrak m^\wedge)_{\mathfrak p'}^\wedge$ is regular by Lemma [Composition of regular ring maps](#native-more-algebra-lemma-regular-composition). Since it factors through the localization $R_\mathfrak p$, also the ring map $R_\mathfrak p \to (R_\mathfrak m^\wedge)_{\mathfrak p'}^\wedge$ is regular. Thus we may apply Lemma [Permanence of regular ring maps](#native-more-algebra-lemma-regular-permanence) to see that $R_\mathfrak p \to R_\mathfrak p^\wedge$ is regular. $\square$
+A Noetherian ring $R$ is a G-ring if and only if every maximal localization $R_{\mathfrak m}$ has geometrically regular formal fibres.
+
+**Proof.** The forward implication is part of the definition. For the converse fix $\mathfrak p\subset\mathfrak m$, with $\mathfrak m$ maximal, and write $S=\widehat{R_{\mathfrak m}}$. Faithful flatness of completion supplies a prime $\mathfrak p'\subset S$ over $\mathfrak pR_{\mathfrak m}$. Put $T=S_{\mathfrak p'}$ and $D=\widehat T$.
+
+By hypothesis $R_{\mathfrak m}\to S$ is regular. The localization $S\to T$ is regular, and $T\to D$ is regular because the preceding proposition makes the complete local ring $S$ a G-ring. Composition gives a regular map $R_{\mathfrak m}\to D$; its fibres are Noetherian since $D$ is Noetherian. The map factors through $R_{\mathfrak p}$, and its fibres and flatness at primes of that localization are unchanged. Hence $R_{\mathfrak p}\to D$ is regular.
+
+There is a compatible local map $\widehat{R_{\mathfrak p}}\to D$. We verify that it is faithfully flat before applying descent. More generally, if $U\to V$ is a flat local map of Noetherian local rings and $W=\widehat V$, then the induced map $\widehat U\to W$ is flat. Indeed $W$ is flat over $U$. A free resolution of the residue field $\kappa_U$ over $U$, tensored with the flat ring $\widehat U$, is a free resolution of the same residue field over $\widehat U$. Consequently
+$$\operatorname{Tor}_1^{\widehat U}(W,\kappa_U)
+=\operatorname{Tor}_1^U(W,\kappa_U)=0.$$
+Apply [the local flatness criterion](#native-algebra-lemma-variant-local-criterion-flatness) to the finite $W$-module $W$, the local map $\widehat U\to W$, and the maximal ideal of $\widehat U$. The residue quotient is a vector space over $\kappa_U$ and hence flat, so $W$ is flat over $\widehat U$. As a local flat map of nonzero local rings, the map is faithfully flat.
+
+Use this observation with $U=R_{\mathfrak p}$ and $V=T$. The original map $U\to T$ is flat and local, as follows from the completion and localization construction. Thus $\widehat{R_{\mathfrak p}}\to D$ is faithfully flat. [Permanence of regular ring maps](#native-more-algebra-lemma-regular-permanence) applied to
+$$R_{\mathfrak p}\longrightarrow\widehat{R_{\mathfrak p}}\longrightarrow D$$
+now proves regularity of the first map. Since $\mathfrak p$ was arbitrary, $R$ is a G-ring. ∎
 
 #### Lemma. The G-ring property under henselization
 
-Let $R$ be a Noetherian local ring which is a G-ring. Then the henselization $R^h$ and the strict henselization $R^{sh}$ are G-rings.
+If $R$ is a Noetherian local G-ring, both its henselization $R^h$ and its strict henselization $R^{sh}$ are G-rings.
 
-**Proof.** We will use the criterion of Lemma [Testing the G-ring property at maximal ideals](#native-more-algebra-lemma-check-g-ring-maximal-ideals). Let $\mathfrak q \subset R^h$ be a prime and set $\mathfrak p = R \cap \mathfrak q$. Set $\mathfrak q_1 = \mathfrak q$ and let $\mathfrak q_2, \ldots, \mathfrak q_t$ be the other primes of $R^h$ lying over $\mathfrak p$, so that $R^h \otimes_R \kappa(\mathfrak p) =
-\prod\nolimits_{i = 1, \ldots, t} \kappa(\mathfrak q_i)$, see Lemma [Fibres of henselization maps](#native-more-algebra-lemma-fibres-henselization). Using that $(R^h)^\wedge = R^\wedge$ (Lemma [Noetherianity of a henselization](#native-more-algebra-lemma-henselization-noetherian)) we see $$\prod\nolimits_{i = 1, \ldots, t}
-(R^h)^\wedge \otimes_{R^h} \kappa(\mathfrak q_i) =
-(R^h)^\wedge \otimes_{R^h} (R^h \otimes_R \kappa(\mathfrak p)) =
-R^\wedge \otimes_R \kappa(\mathfrak p)$$ Hence $(R^h)^\wedge \otimes_{R^h} \kappa(\mathfrak q_i)$ is geometrically regular over $\kappa(\mathfrak p)$ by assumption. Since $\kappa(\mathfrak q_i)$ is separable algebraic over $\kappa(\mathfrak p)$ it follows from Algebra, Lemma [Geometric regularity under separable algebraic extensions](#native-algebra-lemma-geometrically-regular-over-separable-algebraic) that $(R^h)^\wedge \otimes_{R^h} \kappa(\mathfrak q_i)$ is geometrically regular over $\kappa(\mathfrak q_i)$.
+**Proof.** Let $H$ be either henselization and put $D=\widehat H$. The [Noetherian henselization theorem](#native-more-algebra-lemma-henselization-noetherian) says that $H$ is Noetherian local. In the ordinary case it identifies $D$ with $\widehat R$. In the strict case it gives a formally smooth local map $\widehat R\to D$, for the maximal-ideal topology on $D$. By [Formal smoothness and regularity](#native-more-algebra-proposition-fs-regular), this map is regular. Since $R\to\widehat R$ is regular, composition shows in both cases that $R\to D$ is regular; the required Noetherian fibre condition holds because $D$ is Noetherian.
 
-Let $\mathfrak r \subset R^{sh}$ be a prime and set $\mathfrak p = R \cap \mathfrak r$. Set $\mathfrak r_1 = \mathfrak r$ and let $\mathfrak r_2, \ldots, \mathfrak r_s$ be the other primes of $R^{sh}$ lying over $\mathfrak p$, so that $R^{sh} \otimes_R \kappa(\mathfrak p) =
-\prod\nolimits_{i = 1, \ldots, s} \kappa(\mathfrak r_i)$, see Lemma [Fibres of henselization maps](#native-more-algebra-lemma-fibres-henselization). Then we see that $$\prod\nolimits_{i = 1, \ldots, s}
-(R^{sh})^\wedge \otimes_{R^{sh}} \kappa(\mathfrak r_i) =
-(R^{sh})^\wedge \otimes_{R^{sh}} (R^{sh} \otimes_R \kappa(\mathfrak p)) =
-(R^{sh})^\wedge \otimes_R \kappa(\mathfrak p)$$ Note that $R^\wedge \to (R^{sh})^\wedge$ is formally smooth in the $\mathfrak m_{(R^{sh})^\wedge}$-adic topology, see Lemma [Noetherianity of a henselization](#native-more-algebra-lemma-henselization-noetherian). Hence $R^\wedge \to (R^{sh})^\wedge$ is regular by Proposition [Formal smoothness and regularity](#native-more-algebra-proposition-fs-regular). We conclude that $(R^{sh})^\wedge \otimes_{R^{sh}} \kappa(\mathfrak r_i)$ is regular over $\kappa(\mathfrak p)$ by Lemma [Composition of regular ring maps](#native-more-algebra-lemma-regular-composition) as $R^\wedge \otimes_R \kappa(\mathfrak p)$ is regular over $\kappa(\mathfrak p)$ by assumption. Since $\kappa(\mathfrak r_i)$ is separable algebraic over $\kappa(\mathfrak p)$ it follows from Algebra, Lemma [Geometric regularity under separable algebraic extensions](#native-algebra-lemma-geometrically-regular-over-separable-algebraic) that $(R^{sh})^\wedge \otimes_{R^{sh}} \kappa(\mathfrak r_i)$ is geometrically regular over $\kappa(\mathfrak r_i)$. $\square$
+Fix $\mathfrak p\in\operatorname{Spec}R$. The [henselization fibre description](#native-more-algebra-lemma-fibres-henselization) gives a finite product
+$$H\otimes_R\kappa(\mathfrak p)
+\simeq\prod_{i=1}^s\kappa(\mathfrak q_i),$$
+where the $\mathfrak q_i$ are the primes of $H$ over $\mathfrak p$ and each residue extension is separable algebraic. Tensoring this equality over $H$ with $D$ yields
+$$D\otimes_R\kappa(\mathfrak p)
+\simeq\prod_{i=1}^s\left(D\otimes_H\kappa(\mathfrak q_i)\right).$$
+The left-hand side is geometrically regular over $\kappa(\mathfrak p)$, since $R\to D$ is regular. Each factor has that same property. The coefficient-field change from $\kappa(\mathfrak p)$ to the separable algebraic field $\kappa(\mathfrak q_i)$ preserves geometric regularity in this situation, by [Geometric regularity under separable algebraic extensions](#native-algebra-lemma-geometrically-regular-over-separable-algebraic). Thus every formal fibre of the local ring $H$ is geometrically regular over its own residue field. The maximal-ideal test proves that $H$ is a G-ring, in both cases. ∎
 
 #### Lemma. Geometric regularity of polynomial formal fibres in positive characteristic
 
-Let $p$ be a prime number. Let $A$ be a Noetherian complete local domain with fraction field $K$ of characteristic $p$. Let $\mathfrak q \subset A[x]$ be a maximal ideal lying over the maximal ideal of $A$ and let $(0) \not = \mathfrak r \subset \mathfrak q$ be a prime lying over $(0) \subset A$. Then $A[x]_\mathfrak q^\wedge \otimes_{A[x]} \kappa(\mathfrak r)$ is geometrically regular over $\kappa(\mathfrak r)$.
+Let $A$ be a Noetherian complete local domain whose fraction field $K$ has characteristic $p>0$. Let $\mathfrak q\subset A[x]$ be maximal, with contraction the maximal ideal of $A$. If $0\ne\mathfrak r\subset\mathfrak q$ and $\mathfrak r\cap A=0$, then
+$$F=\widehat{A[x]_{\mathfrak q}}\otimes_{A[x]}\kappa(\mathfrak r)$$
+is geometrically regular over $\kappa(\mathfrak r)$.
 
-**Proof.** Note that $K \subset \kappa(\mathfrak r)$ is finite. Hence, given a finite purely inseparable extension $L/\kappa(\mathfrak r)$ there exists a finite extension of Noetherian complete local domains $A \subset B$ such that $\kappa(\mathfrak r) \otimes_A B$ surjects onto $L$. Namely, you take $B \subset L$ a finite $A$-subalgebra whose field of fractions is $L$. Denote $\mathfrak r' \subset B[x]$ the kernel of the map $B[x] = A[x] \otimes_A B \to \kappa(\mathfrak r) \otimes_A B \to L$ so that $\kappa(\mathfrak r') = L$. Then $$A[x]_\mathfrak q^\wedge \otimes_{A[x]} L =
-A[x]_\mathfrak q^\wedge \otimes_{A[x]} B[x]
-\otimes_{B[x]} \kappa(\mathfrak r') =
-\prod B[x]_{\mathfrak q_i}^\wedge \otimes_{B[x]} \kappa(\mathfrak r')$$ where $\mathfrak q_1, \ldots, \mathfrak q_t$ are the primes of $B[x]$ lying over $\mathfrak q$, see Algebra, Lemma [Completion of a finite ring extension](#native-algebra-lemma-completion-finite-extension). Thus we see that it suffices to prove the rings $B[x]_{\mathfrak q_i}^\wedge \otimes_{B[x]} \kappa(\mathfrak r')$ are regular. This reduces us to showing that $A[x]_\mathfrak q^\wedge \otimes_{A[x]} \kappa(\mathfrak r)$ is regular in the special case that $K = \kappa(\mathfrak r)$.
+**Proof.** Localizing by the nonzero elements of $A$ sends $\mathfrak r$ to a nonzero prime of the principal ideal domain $K[x]$. Thus $\kappa(\mathfrak r)$ is finite over $K$. Fix a finite purely inseparable extension $L/\kappa(\mathfrak r)$; we will show that $F\otimes_{\kappa(\mathfrak r)}L$ is regular.
 
-Assume \(K = \kappa(\mathfrak r)\). In this case we see that \(\mathfrak r K[x]\) is generated by \(x - f\) for some \(f \in K\) and 
+First choose a domain $B$, finite over $A$, contained in $L$, with fraction field $L$. To construct it, take finitely many algebraic generators of $L/K$ and multiply each by a nonzero element of $A$ that clears the denominators of its monic equation. The scaled generators are integral over $A$ and still generate $L$ as a field. Their $A$-algebra is the required $B$. A finite algebra over a complete Noetherian local ring is a product of complete local rings; because $B$ is a domain, it has just one factor. Hence $B$ is itself complete local.
 
-\[
-A[x]_\mathfrak q^\wedge \otimes_{A[x]} \kappa(\mathfrak r)
-=
-(A[x]_\mathfrak q^\wedge \otimes_A K)/(x - f)
-\]
+Map $B[x]$ to $L$ by sending $x$ to its image in $\kappa(\mathfrak r)\subset L$, and denote the kernel by $\mathfrak r'$. The fraction field of the image is $L$, so $\kappa(\mathfrak r')=L$. Moreover $\mathfrak r'\cap B=0$ and $\mathfrak r'\ne0$: over $\operatorname{Frac}B=L$ its ideal is generated by a linear polynomial. Write $\mathfrak q_i$ for the finitely many primes of $B[x]$ above $\mathfrak q$. By [Completion of a finite ring extension](#native-algebra-lemma-completion-finite-extension),
+$$
+\begin{aligned}
+F\otimes_{\kappa(\mathfrak r)}L
+&=\widehat{A[x]_{\mathfrak q}}\otimes_{A[x]}L\\
+&\simeq\prod_i\left(\widehat{B[x]_{\mathfrak q_i}}
+\otimes_{B[x]}\kappa(\mathfrak r')\right).
+\end{aligned}
+$$
+Terms with $\mathfrak r'\not\subset\mathfrak q_i$ vanish, since some element killed in $\kappa(\mathfrak r')$ is already invertible in that factor. Every remaining $\mathfrak q_i$ is maximal and lies over the maximal ideal of $B$. Thus it suffices to prove ordinary regularity in the special case $K=\kappa(\mathfrak r)$: the replacement $(B,\mathfrak q_i,\mathfrak r')$ has precisely that property.
 
- The derivation \(D = \text{d}/\text{d}x\) of \(A[x]\) extends to \(K[x]\) and maps \(x - f\) to a unit of \(K[x]\). Moreover \(D\) extends to \(A[x]_\mathfrak q^\wedge \otimes_A K\) by Lemma [Extending a derivation](#native-more-algebra-lemma-derivation-extends). As \(A \to A[x]_\mathfrak q^\wedge\) is formally smooth (see Lemmas [Formal smoothness and smooth morphisms](#native-more-algebra-lemma-formally-smooth) and [Formal smoothness and completion](#native-more-algebra-lemma-formally-smooth-completion)) the ring \(A[x]_\mathfrak q^\wedge \otimes_A K\) is regular by Proposition [Formal smoothness and regularity](#native-more-algebra-proposition-fs-regular) (the arguments of the proof of that proposition simplify significantly in this particular case). We conclude by Lemma [Regularity of a quotient](#native-more-algebra-lemma-quotient-regular). \(\square\)
+In this special case $\mathfrak rK[x]=(x-f)$ for some $f\in K$. Set
+$$T=\widehat{A[x]_{\mathfrak q}}\otimes_A K.$$
+The map $A\to A[x]_{\mathfrak q}$ is formally smooth: polynomial algebras have the lifting property, and localization preserves it because a lift of a unit modulo a nilpotent ideal is a unit. Its composite with completion is formally smooth for the maximal-ideal topology, by [Formal smoothness and completion](#native-more-algebra-lemma-formally-smooth-completion). [Formal smoothness and regularity](#native-more-algebra-proposition-fs-regular) makes this composite regular; hence its generic fibre $T$ is regular.
+
+The $A$-derivation $\partial/\partial x$ extends through localization and completion and then to $T$, by [Extending a derivation](#native-more-algebra-lemma-derivation-extends). It kills $K$ and sends $x-f$ to $1$. Therefore [Regularity of a quotient](#native-more-algebra-lemma-quotient-regular) shows that
+$$F=T/(x-f)$$
+is regular. Applying this argument to all the surviving factors above proves regularity after every finite purely inseparable extension $L$. The field criterion now gives the asserted geometric regularity. ∎
 
 #### Proposition. The G-ring property for finite-type algebras
 
-Let $R$ be a G-ring. If $R \to S$ is essentially of finite type then $S$ is a G-ring.
+If $R$ is a G-ring and $S$ is an essentially finite-type $R$-algebra, then $S$ is a G-ring.
 
-**Proof.** Since being a G-ring is a property of the local rings it is clear that a localization of a G-ring is a G-ring. Conversely, if every localization at a prime is a G-ring, then the ring is a G-ring. Thus it suffices to show that $S_\mathfrak q$ is a G-ring for every finite type $R$-algebra $S$ and every prime $\mathfrak q$ of $S$. Writing $S$ as a quotient of $R[x_1, \ldots, x_n]$ we see from Lemma [G-rings under quasi-finite extensions](#native-more-algebra-lemma-g-ring-goes-up-quasi-finite) that it suffices to prove that $R[x_1, \ldots, x_n]$ is a G-ring. By induction on $n$ it suffices to prove that $R[x]$ is a G-ring. Let $\mathfrak q \subset R[x]$ be a maximal ideal. By Lemma [Testing the G-ring property at maximal ideals](#native-more-algebra-lemma-check-g-ring-maximal-ideals) it suffices to show that $$R[x]_\mathfrak q \longrightarrow R[x]_\mathfrak q^\wedge$$ is regular. If $\mathfrak q$ lies over $\mathfrak p \subset R$, then we may replace $R$ by $R_\mathfrak p$. Hence we may assume that $R$ is a Noetherian local G-ring with maximal ideal $\mathfrak m$ and that $\mathfrak q \subset R[x]$ lies over $\mathfrak m$. Note that there is a unique prime $\mathfrak q' \subset R^\wedge[x]$ lying over $\mathfrak q$. Consider the diagram $$\begin{gathered}\begin{matrix}R[x]_\mathfrak q^\wedge & (R^\wedge[x]_{\mathfrak q'})^\wedge \\ R[x]_\mathfrak q & R^\wedge[x]_{\mathfrak q'}\end{matrix} \\[6pt] \begin{aligned}R[x]_\mathfrak q^\wedge & \longrightarrow (R^\wedge[x]_{\mathfrak q'})^\wedge \\ R[x]_\mathfrak q & \longrightarrow R^\wedge[x]_{\mathfrak q'} \\ R[x]_\mathfrak q & \longrightarrow R[x]_\mathfrak q^\wedge \\ R^\wedge[x]_{\mathfrak q'} & \longrightarrow (R^\wedge[x]_{\mathfrak q'})^\wedge\end{aligned}\end{gathered}$$ Since $R$ is a G-ring the lower horizontal arrow is regular (as a localization of a base change of the regular ring map $R \to R^\wedge$). Suppose we can prove the right vertical arrow is regular. Then it follows that the composition $R[x]_\mathfrak q \to (R^\wedge[x]_{\mathfrak q'})^\wedge$ is regular, and hence the left vertical arrow is regular by Lemma [Permanence of regular ring maps](#native-more-algebra-lemma-regular-permanence). Hence we see that we may assume $R$ is a Noetherian complete local ring and $\mathfrak q$ a prime lying over the maximal ideal of $R$.
+**Proof.** A localization of a G-ring satisfies the definition, since its local rings are local rings of the original ring. Quotients preserve the G-ring property by [G-rings under quasi-finite extensions](#native-more-algebra-lemma-g-ring-goes-up-quasi-finite). Presenting a finite-type algebra as a quotient of a polynomial algebra, and then adding its variables one at a time, reduces the assertion to $S=R[x]$.
 
-Let $R$ be a Noetherian complete local ring and let $\mathfrak q \subset R[x]$ be a maximal ideal lying over the maximal ideal of $R$. Let $\mathfrak r \subset \mathfrak q$ be a prime ideal. We want to show that $R[x]_\mathfrak q^\wedge \otimes_{R[x]} \kappa(\mathfrak r)$ is a geometrically regular algebra over $\kappa(\mathfrak r)$. Set $\mathfrak p = R \cap \mathfrak r$. Then we can replace $R$ by $R/\mathfrak p$ and $\mathfrak q$ and $\mathfrak r$ by their images in $R/\mathfrak p[x]$, see Lemma [Recognizing a G-ring from a completion](#native-more-algebra-lemma-check-g-ring-easy). Hence we may assume that $R$ is a domain and that $\mathfrak r \cap R = (0)$.
+By [Testing the G-ring property at maximal ideals](#native-more-algebra-lemma-check-g-ring-maximal-ideals), fix a maximal $\mathfrak q\subset R[x]$ and prove regularity of the completion map of $T=R[x]_{\mathfrak q}$. Put $\mathfrak p=\mathfrak q\cap R$. Replacing $R$ by $R_{\mathfrak p}$ does not change $T$; thus $R$ is now local, with maximal ideal $\mathfrak m=\mathfrak pR_{\mathfrak p}$, and $\mathfrak q$ lies over $\mathfrak m$. In $\widehat R[x]$ there is a unique prime $\mathfrak q'$ over $\mathfrak q$: modulo $\mathfrak m$ the extension is the identity on $(R/\mathfrak m)[x]$. This prime is maximal. Put $T'=\widehat R[x]_{\mathfrak q'}$.
 
-By Algebra, Lemma [A complete local domain finite over a regular ring](#native-algebra-lemma-complete-local-noetherian-domain-finite-over-regular) we can find $R_0 \subset R$ which is regular and such that $R$ is finite over $R_0$. Applying Lemma [G-rings under quasi-finite extensions](#native-more-algebra-lemma-g-ring-goes-up-quasi-finite) we see that it suffices to prove $R[x]_\mathfrak q^\wedge \otimes_{R[x]} \kappa(\mathfrak r)$ is geometrically regular over $\kappa(\mathfrak r)$ when, in addition to the above, $R$ is a regular complete local ring.
+The map $T\to T'$ is regular, since it is obtained from the regular map $R\to\widehat R$ by polynomial base change and localization. It is also local. The induced map $\widehat T\to\widehat{T'}$ is faithfully flat, by the completion argument proved in the maximal-ideal test. Consequently, if $T'\to\widehat{T'}$ is regular, composition and faithfully flat descent of regularity give regularity of $T\to\widehat T$. We have reduced the problem to a complete Noetherian local base $R$.
 
-Now $R$ is a regular complete local ring, we have $\mathfrak r \subset \mathfrak q \subset R[x]$, we have $(0) = R \cap \mathfrak r$ and $\mathfrak q$ is a maximal ideal lying over the maximal ideal of $R$. Since $R$ is regular the ring $R[x]$ is regular (Algebra, Lemma [Regularity ascends along a regular ring map](#native-algebra-lemma-regular-goes-up)). Hence the localization $R[x]_\mathfrak q$ is regular. Hence the completions $R[x]_\mathfrak q^\wedge$ are regular, see Lemma [Regularity and completion](#native-more-algebra-lemma-completion-regular). Hence the fibre $R[x]_{\mathfrak q}^\wedge \otimes_{R[x]} \kappa(\mathfrak r)$ is, as a localization of $R[x]_\mathfrak q^\wedge$, also regular. Thus we are done if the characteristic of the fraction field of $R$ is $0$.
+Fix a prime $\mathfrak r\subset\mathfrak q$. We must prove geometric regularity of
+$$\widehat{R[x]_{\mathfrak q}}\otimes_{R[x]}\kappa(\mathfrak r).$$
+Let $\mathfrak p=\mathfrak r\cap R$. Quotient compatibility of completion identifies this ring with the corresponding formal fibre for $(R/\mathfrak p)[x]$, at the images of $\mathfrak r$ and $\mathfrak q$; its residue field is unchanged. We may therefore assume that $R$ is a complete local domain and $\mathfrak r\cap R=0$.
 
-If the characteristic of $R$ is positive, then $R = k[[x_1, \ldots, x_n]]$. In this case we split the argument in two subcases:
+Choose a regular complete local subring $R_0\subset R$, finite in $R$, using [A complete local domain finite over a regular ring](#native-algebra-lemma-complete-local-noetherian-domain-finite-over-regular). Contraction sends our chain to $\mathfrak r_0\subset\mathfrak q_0\subset R_0[x]$, with $\mathfrak r_0\cap R_0=0$ and $\mathfrak q_0$ maximal over the maximal ideal of $R_0$. Part (1) of the quasi-finite extension lemma transfers geometric regularity of this particular formal fibre of $R_0[x]$ to the desired fibre of $R[x]$. Thus we need only treat a regular complete local base. This reduction uses the stated fibre-transfer result, without assuming the G-ring property for the polynomial algebra being proved.
 
-1.  The case $\mathfrak r = (0)$. The result is a direct consequence of Lemma [Geometric regularity of generic formal fibres in positive characteristic](#native-more-algebra-lemma-helper-g-ring).
+For such a base, put $K=\operatorname{Frac}R$ and $C=\widehat{R[x]_{\mathfrak q}}$. The ring $R[x]$ is regular, as are its local ring at $\mathfrak q$ and the completion $C$; use [Regularity ascends along a regular ring map](#native-algebra-lemma-regular-goes-up) and [Regularity and completion](#native-more-algebra-lemma-completion-regular). There are the following cases.
 
-2.  The case $\mathfrak r \not = (0)$. This is Lemma [Geometric regularity of polynomial formal fibres in positive characteristic](#native-more-algebra-lemma-another-helper-g-ring).
+If $\operatorname{char}K=0$ and $\mathfrak r=0$, the formal fibre is a localization of $C$, hence regular and geometrically regular over the characteristic-zero field $K(x)$.
 
-$\square$
+If $\operatorname{char}K=0$ and $\mathfrak r\ne0$, write $\mathfrak rK[x]=(f)$ for a monic irreducible polynomial $f\in K[x]$. Then $\kappa(\mathfrak r)=K[x]/(f)$, and the formal fibre is
+$$\left(C\otimes_R K\right)/(f).$$
+The ambient ring $C\otimes_R K$ is regular. Extend $\partial/\partial x$ from $R[x]$ to it by localization and completion. Since $f$ is separable, its derivative has nonzero image in the field $K[x]/(f)$, so this derivative becomes a unit in the displayed quotient. The regular-quotient criterion proves regularity of the fibre. Its coefficient field has characteristic zero, which gives geometric regularity. This quotient argument is essential: for nonzero $\mathfrak r$ the formal fibre is not merely a localization of $C$.
+
+Finally suppose $\operatorname{char}K=p>0$. The regular complete local ring has the form $R=k[[x_1,\ldots,x_n]]$. If $\mathfrak r=0$, apply [Geometric regularity of generic formal fibres in positive characteristic](#native-more-algebra-lemma-helper-g-ring), with the one polynomial variable $x$. If $\mathfrak r\ne0$, apply the preceding lemma on polynomial formal fibres. Thus all the formal fibres of $T$ are geometrically regular. The completion map is flat, so it is regular. Returning through the reductions proves the proposition. ∎
 
 #### Remark. Failure of the G-ring property under completion
 
-Let $R$ be a G-ring and let $I \subset R$ be an ideal. In general it is not the case that the $I$-adic completion $R^\wedge$ is a G-ring. An example was given by Nishimura in the original source citation Nishimura. A generalization and, in some sense, clarification of this example can be found in the last section of the original source citation Dumitrescu.
+The G-ring property does not persist under completion with respect to an arbitrary ideal. In particular, there are a G-ring $R$ and an ideal $I$ for which the $I$-adic completion is not a G-ring. A construction is given by Jun-ichi Nishimura, [*On ideal-adic completion of Noetherian rings*](https://stacks.math.columbia.edu/bibliography/Nishimura), *J. Math. Kyoto Univ.* **21** (1981), no. 1, 153–169. The final section of Tiberiu Dumitrescu, [*On some examples of atomic domains and of $G$-rings*](https://stacks.math.columbia.edu/bibliography/Dumitrescu), *Comm. Algebra* **28** (2000), no. 3, 1115–1123, develops this example further. These are references for the counterexamples; no counterexample construction is supplied in this remark.
 
 #### Proposition. Examples and permanence of G-rings
- The following types of rings are G-rings:
 
-1.  fields,
+Each of the following is a G-ring:
 
-2.  Noetherian complete local rings,
+1. a field;
+2. a Noetherian complete local ring;
+3. $\mathbb Z$;
+4. a Dedekind domain whose fraction field has characteristic zero;
+5. a finite-type algebra over any ring in the preceding classes.
 
-3.  $\mathbf{Z}$,
+**Proof.** A field is a complete Noetherian local ring. The second assertion was proved in [Complete Noetherian rings are G-rings](#native-more-algebra-proposition-noetherian-complete-g-ring).
 
-4.  Dedekind domains with fraction field of characteristic zero,
-
-5.  finite type ring extensions of any of the above.
-
-**Proof.** For fields, $\mathbf{Z}$ and Dedekind domains of characteristic zero this follows immediately from the definition and the fact that the completion of a discrete valuation ring is a discrete valuation ring. A Noetherian complete local ring is a G-ring by Proposition [Complete Noetherian rings are G-rings](#native-more-algebra-proposition-noetherian-complete-g-ring). The statement on finite type overrings is Proposition [The G-ring property for finite-type algebras](#native-more-algebra-proposition-finite-type-over-g-ring). $\square$
+For a Dedekind domain $R$ as in (4), localization at the zero prime is a field. At a nonzero prime it is a discrete valuation ring $V$, and $\widehat V$ is again a discrete valuation ring. The closed formal fibre is the residue field of $V$, over itself. The generic formal fibre is $\operatorname{Frac}(\widehat V)$ over $\operatorname{Frac}V$; it is geometrically regular because the latter field has characteristic zero. Both formal fibres are therefore geometrically regular, proving (4). The case $\mathbb Z$ follows since it is such a Dedekind domain. The finite-type assertion is the preceding proposition. ∎
 
 ### Additional proofs of the supporting constructions
 
-These statements and full proofs supply local support for the preceding arguments. They reuse the same Stacks Project edition. A remaining genuine prerequisite is marked explicitly rather than treated as proved.
+The following results give the supporting arguments for the approximation theorem. Where a complete proof already appears earlier in this lesson, the reference identifies that result and explains the match of hypotheses and conclusions. The remaining supporting units retain their individual source references.
 
 #### Versality and algebraicity criteria
 
 #### Lemma. Approximation of a marked family with its associated graded algebra
- Let $S$ be a locally Noetherian scheme. Let $p : \mathcal{X} \to (\mathrm{Sch}/S)_{fppf}$ be a category fibred in groupoids. Let $x$ be an object of $\mathcal{X}$ lying over $\operatorname{Spec}(R)$ where $R$ is a Noetherian complete local ring with residue field $k$ of finite type over $S$. Let $s \in S$ be the image of $\operatorname{Spec}(k) \to S$. Assume that (a) $\mathcal{O}_{S, s}$ is a G-ring and (b) $p$ is limit preserving on objects. Then for every integer $N \geq 1$ there exist
 
-1.  a finite type $S$-algebra $A$,
+Let $S$ be locally Noetherian and let $\mathcal X\to(\mathrm{Sch}/S)_{fppf}$ be a category fibred in groupoids. Suppose $x\in\mathcal X(R)$, where $(R,\mathfrak m_R)$ is a complete Noetherian local ring and its residue field $k$ defines a finite-type morphism $\operatorname{Spec}k\to S$. Denote the image point by $s$. Assume that $\mathcal O_{S,s}$ is a G-ring and that $\mathcal X$ is limit preserving on objects.
 
-2.  a maximal ideal $\mathfrak m_A \subset A$,
+For every $N\geq1$ there are an $S$-algebra $A$ of finite type, a maximal ideal $\mathfrak m_A$, an object $x_A\in\mathcal X(A)$, and an $S$-algebra isomorphism
+$$R/\mathfrak m_R^N\simeq A/\mathfrak m_A^N$$
+under which the restricted objects $x$ and $x_A$ are isomorphic. One can require, in addition, an isomorphism of graded $k$-algebras
+$$\operatorname{gr}_{\mathfrak m_R}R\simeq\operatorname{gr}_{\mathfrak m_A}A,$$
+using the residue-field identification induced by the first map.
 
-3.  an object $x_A$ of $\mathcal{X}$ over $\operatorname{Spec}(A)$,
+**Proof.** This is [Theorem 6.1 in B.6.1](#reader-family-approximation), whose full proof applies to precisely this category, base, object and integer $N$. To identify every step of the construction: it first descends $x$ to a finite-type algebra $C$ on an affine chart $\operatorname{Spec}\Lambda\subset S$. Residue-field generators and generators of $\mathfrak m_R$ then give a surjection
+$$P=\widehat{\Lambda[z_1,\ldots,z_e]_{\mathfrak n}}\longrightarrow R.$$
+The successive-order lifting argument in that proof establishes this surjection directly. Finite generators of its kernel and of their relation module turn the presentation and the map from $C$ into one finite polynomial system.
 
-4.  an $S$-isomorphism $R/\mathfrak m_R^N \cong A/\mathfrak m_A^N$,
-
-5.  an isomorphism $x|_{\operatorname{Spec}(R/\mathfrak m_R^N)} \cong x_A|_{\operatorname{Spec}(A/\mathfrak m_A^N)}$ compatible with (4), and
-
-6.  an isomorphism $\text{Gr}_{\mathfrak m_R}(R) \cong \text{Gr}_{\mathfrak m_A}(A)$ of graded $k$-algebras.
-
-**Proof.** Choose an affine open $\operatorname{Spec}(\Lambda) \subset S$ such that $k$ is a finite $\Lambda$-algebra, see Morphisms, Lemma [Points of finite type (uncovered prerequisite)](#uncovered-morphisms-lemma-point-finite-type). We may and do replace $S$ by $\operatorname{Spec}(\Lambda)$.
-
-We may write $R$ as a directed colimit $R = \mathop{\operatorname{colim}} C_j$ where each $C_j$ is a finite type $\Lambda$-algebra (see Algebra, Lemma [Filtered limits and finite presentation](#native-algebra-lemma-ring-colimit-fp)). By assumption (b) the object $x$ is isomorphic to the restriction of an object over one of the $C_j$. Hence we may choose a finite type $\Lambda$-algebra $C$, a $\Lambda$-algebra map $C \to R$, and an object $x_C$ of $\mathcal{X}$ over $\operatorname{Spec}(C)$ such that $x = x_C|_{\operatorname{Spec}(R)}$. The choice of $C$ is a bookkeeping device and could be avoided. For later use, let us write $C = \Lambda[y_1, \ldots, y_u]/(f_1, \ldots, f_v)$ and we denote $\overline{a}_i \in R$ the image of $y_i$ under the map $C \to R$. Set $\mathfrak m_C = C \cap \mathfrak m_R$.
-
-Choose a $\Lambda$-algebra surjection $\Lambda[x_1, \ldots, x_s] \to k$ and denote by $\mathfrak m'$ the kernel. By the universal property of polynomial rings we may lift this to a $\Lambda$-algebra map $\Lambda[x_1, \ldots, x_s] \to R$. We add some variables (i.e., we increase $s$ a bit) mapping to generators of $\mathfrak m_R$. Having done this we see that $\Lambda[x_1, \ldots, x_s] \to R/\mathfrak m_R^2$ is surjective. Then we see that 
-
-$$P = \Lambda[x_1, \ldots, x_s]_{\mathfrak m'}^\wedge \longrightarrow R$$ is a surjective map of Noetherian complete local rings, see for example Formal Deformation Theory, Lemma [Surjectivity on cotangent spaces](#native-formal-defos-lemma-surjective-cotangent-space).
-
-Choose lifts $a_i \in P$ of $\overline{a}_i$ we found above. Choose generators $b_1, \ldots, b_r \in P$ for the kernel of ([the displayed identity](#native-artin-equation-surjection)). Choose $c_{ji} \in P$ such that $$f_j(a_1, \ldots, a_u) = \sum c_{ji} b_i$$ in $P$ which is possible by the choices made so far. Choose generators $$k_1, \ldots, k_t \in
-\operatorname{Ker}(P^{\oplus r} \xrightarrow{(b_1, \ldots, b_r)} P)$$ and write $k_i = (k_{i1}, \ldots, k_{ir})$ and $K = (k_{ij})$ so that $$P^{\oplus t} \xrightarrow{K}
-P^{\oplus r} \xrightarrow{(b_1, \ldots, b_r)}
-P \to R \to 0$$ is an exact sequence of $P$-modules. In particular we have $\sum k_{ij} b_j = 0$. After possibly increasing $N$ we may assume $N - 1$ works in the Artin-Rees lemma for the first two maps of this exact sequence (see More on Algebra, Section [Artin–Rees constants for finite module maps](#context-more-algebra-section-artin-rees) for terminology).
-
-By assumption $\mathcal{O}_{S, s} = \Lambda_{\Lambda \cap \mathfrak m'}$ is a G-ring. Hence by More on Algebra, Proposition [The G-ring property for finite-type algebras](#native-more-algebra-proposition-finite-type-over-g-ring) the ring $\Lambda[x_1, \ldots, x_s]_{\mathfrak m'}$ is a $G$-ring. Hence by Smoothing Ring Maps, Theorem [Artin approximation in an étale neighbourhood](#native-smoothing-theorem-approximation-property-variant) there exist an étale ring map $$\Lambda[x_1, \ldots, x_s]_{\mathfrak m'} \to B,$$ a maximal ideal $\mathfrak m_B$ of $B$ lying over $\mathfrak m'$, and elements $a'_i, b'_i, c'_{ij}, k'_{ij} \in B$ such that
-
-1.  $\kappa(\mathfrak m') = \kappa(\mathfrak m_B)$ which implies that $\Lambda[x_1, \ldots, x_s]_{\mathfrak m'} \subset B_{\mathfrak m_B}
-    \subset P$ and $P$ is identified with the completion of $B$ at $\mathfrak m_B$, see remark preceding Smoothing Ring Maps, Theorem [Artin approximation in an étale neighbourhood](#native-smoothing-theorem-approximation-property-variant),
-
-2.  $a_i - a'_i, b_i - b'_i, c_{ij} - c'_{ij}, k_{ij} - k'_{ij} \in
-    (\mathfrak m')^N P$, and
-
-3.  $f_j(a'_1, \ldots, a'_u) = \sum c'_{ji} b'_i$ and $\sum k'_{ij}b'_j = 0$.
-
-Set $A = B/(b'_1, \ldots, b'_r)$ and denote by $\mathfrak m_A$ the image of $\mathfrak m_B$ in $A$. (Note that $A$ is essentially of finite type over $\Lambda$; at the end of the proof we will show how to obtain an $A$ which is of finite type over $\Lambda$.) There is a ring map $C \to A$ sending $y_i \mapsto a'_i$ because the $a'_i$ satisfy the desired equations modulo $(b'_1, \ldots, b'_r)$. Note that $A/\mathfrak m_A^N = R/\mathfrak m_R^N$ as quotients of $P = B^\wedge$ by property (2) above. Set $x_A = x_C|_{\operatorname{Spec}(A)}$. Since the maps $$C \to A \to A/\mathfrak m_A^N \cong R/\mathfrak m_R^N
-\quad\text{and}\quad
-C \to R \to R/\mathfrak m_R^N$$ are equal we see that $x_A$ and $x$ agree modulo $\mathfrak m_R^N$ via the isomorphism $A/\mathfrak m_A^N = R/\mathfrak m_R^N$. At this point we have shown properties (1) -- (5) of the statement of the lemma. To see (6) note that $$P^{\oplus t} \xrightarrow{K}
-P^{\oplus r} \xrightarrow{(b_1, \ldots, b_r)}
-P
-\quad\text{and}\quad
-P^{\oplus t} \xrightarrow{K'}
-P^{\oplus r} \xrightarrow{(b'_1, \ldots, b'_r)}
-P$$ are two complexes of $P$-modules which are congruent modulo $(\mathfrak m')^N$ with the first one being exact. By our choice of $N$ above we see from More on Algebra, Lemma [Lesson 7, Appendix A, Lemma A.2](artin-axioms.md#appendix-a-artin-rees-perturbation-and-graded-quotients) that $R = P/(b_1, \ldots, b_r)$ and $P/(b'_1, \ldots, b'_r) = B^\wedge/(b'_1, \ldots, b'_r) = A^\wedge$ have isomorphic associated graded algebras, which is what we wanted to show.
-
-This last paragraph of the proof serves to clean up the issue that $A$ is essentially of finite type over $S$ and not yet of finite type. The construction above gives $A = B/(b'_1, \ldots, b'_r)$ and $\mathfrak m_A \subset A$ with $B$ étale over $\Lambda[x_1, \ldots, x_s]_{\mathfrak m'}$. Hence $A$ is of finite type over the Noetherian ring $\Lambda[x_1, \ldots, x_s]_{\mathfrak m'}$. Thus we can write $A = (A_0)_{\mathfrak m'}$ for some finite type $\Lambda[x_1, \ldots, x_s]$ algebra $A_0$. Then $A = \mathop{\operatorname{colim}} (A_0)_f$ where $f \in \Lambda[x_1, \ldots, x_s] \setminus \mathfrak m'$, see Algebra, Lemma [Localization as a filtered colimit](#native-algebra-lemma-localization-colimit). Because $p : \mathcal{X} \to (\mathrm{Sch}/S)_{fppf}$ is limit preserving on objects, we see that $x_A$ comes from some object $x_{(A_0)_f}$ over $\operatorname{Spec}((A_0)_f)$ for an $f$ as above. After replacing $A$ by $(A_0)_f$ and $x_A$ by $x_{(A_0)_f}$ and $\mathfrak m_A$ by $(A_0)_f \cap \mathfrak m_A$ the proof is finished. $\square$
+The G-ring theorem and pointed approximation solve this system in an étale neighbourhood, retaining its exact relations and matching the formal coefficients to any chosen sufficiently high order. [Appendix A, Lemmas A.1–A.2](#appendix-a-artin-rees-perturbation-and-graded-quotients) then give the associated graded algebra comparison. Finally the last two paragraphs of B.6.1 descend the algebra and object to a finite-type $\Lambda$-algebra, prove that the selected point is maximal with residue field exactly $k$, and carry back both the finite-order marking and the graded isomorphism. Thus none of the six requested data is lost in the passage from the essentially finite-type intermediate ring to $A$. ∎
 
 #### Commutative algebra and regularity
 
 #### Definition. Smoothness at a prime ideal
- Let $R \to S$ be a ring map. Let $\mathfrak q$ be a prime of $S$. We say $R \to S$ is *smooth at $\mathfrak q$* if there exists a $g \in S$, $g \not \in \mathfrak q$ such that $R \to S_g$ is smooth.
+
+For a homomorphism $R\to S$ and $\mathfrak q\in\operatorname{Spec}S$, smoothness **at $\mathfrak q$** means that $R\to S_g$ is smooth for some $g\in S\setminus\mathfrak q$. Thus the definition requires a smooth principal neighbourhood of the point.
 
 #### Lemma. Localization of the naive cotangent complex
- Let $A \to B$ be a ring map. Let $S \subset B$ be a multiplicative subset. The canonical map $\mathrm{NL}_{B/A} \otimes_B S^{-1}B \to \mathrm{NL}_{S^{-1}B/A}$ is a quasi-isomorphism.
 
-**Proof.** We have $S^{-1}B = \mathop{\operatorname{colim}}_{g \in S} B_g$ where we think of $S$ as a directed set (ordering by divisibility), see Lemma [Localization as a filtered colimit](#native-algebra-lemma-localization-colimit). By Lemma [The cotangent complex of a principal localization](#native-algebra-lemma-principal-localization-nl) each of the maps $\mathrm{NL}_{B/A} \otimes_B B_g \to \mathrm{NL}_{B_g/A}$ is a quasi-isomorphism. The lemma follows from Lemma [Filtered colimits of naive cotangent complexes](#native-algebra-lemma-colimits-nl). $\square$
+For $A\to B$ and a multiplicative subset $U\subset B$, localization gives a quasi-isomorphism
+$$\mathrm{NL}_{B/A}\otimes_B U^{-1}B\longrightarrow\mathrm{NL}_{U^{-1}B/A}.$$
+
+**Proof.** The principal localizations $B_u$, indexed by $u\in U$ with common later terms obtained by taking products, have colimit $U^{-1}B$. For each $u$, [The cotangent complex of a principal localization](#native-algebra-lemma-principal-localization-nl) gives the required comparison over $B_u$. Take their filtered colimit. Tensor product commutes with this colimit on the left; [Filtered colimits of naive cotangent complexes](#native-algebra-lemma-colimits-nl) identifies the right-hand side. Filtered colimits of modules are exact, so they preserve the homology isomorphisms of these two-term complexes. This proves the assertion for any multiplicative set, without a finiteness hypothesis on it. ∎
 
 #### Definition. Smooth ring maps
- A ring map $R \to S$ is *smooth* if it is of finite presentation and the naive cotangent complex $\mathrm{NL}_{S/R}$ is quasi-isomorphic to a finite projective $S$-module placed in degree $0$: this means that $H_1(\mathrm{NL}_{S/R}) = 0$ and that $\Omega_{S/R}$ is a finite projective $S$-module.
+
+A homomorphism $R\to S$ is **smooth** if it is finitely presented and its naive cotangent complex has zero first homology and finite projective degree-zero homology. Equivalently,
+$$H_1(\mathrm{NL}_{S/R})=0,\qquad \Omega_{S/R}\text{ is finite projective over }S,$$
+and $S$ is finitely presented over $R$. This says that the complex is quasi-isomorphic to a finite projective module concentrated in degree zero.
 
 #### Lemma. The transitivity sequence for the naive cotangent complex (Jacobi-Zariski sequence)
- Let $A \to B \to C$ be ring maps. Choose a presentation $\alpha : A[x_s, s \in S] \to B$ with kernel $I$. Choose a presentation $\beta : B[y_t, t \in T] \to C$ with kernel $J$. Let $\gamma : A[x_s, y_t] \to C$ be the induced presentation of $C$ with kernel $K$. Then we get a canonical commutative diagram $$\begin{gathered}\begin{matrix}0 & \Omega_{A[x_s]/A} \otimes C & \Omega_{A[x_s, y_t]/A} \otimes C & \Omega_{B[y_t]/B} \otimes C & 0 \\ \phantom{X} & I/I^2 \otimes C & K/K^2 & J/J^2 & 0\end{matrix} \\[6pt] \begin{aligned}0 & \longrightarrow \Omega_{A[x_s]/A} \otimes C \\ \Omega_{A[x_s]/A} \otimes C & \longrightarrow \Omega_{A[x_s, y_t]/A} \otimes C \\ \Omega_{A[x_s, y_t]/A} \otimes C & \longrightarrow \Omega_{B[y_t]/B} \otimes C \\ \Omega_{B[y_t]/B} \otimes C & \longrightarrow 0 \\ I/I^2 \otimes C & \longrightarrow K/K^2 \\ I/I^2 \otimes C & \longrightarrow \Omega_{A[x_s]/A} \otimes C \\ K/K^2 & \longrightarrow J/J^2 \\ K/K^2 & \longrightarrow \Omega_{A[x_s, y_t]/A} \otimes C \\ J/J^2 & \longrightarrow 0 \\ J/J^2 & \longrightarrow \Omega_{B[y_t]/B} \otimes C\end{aligned}\end{gathered},$$ with exact rows. We get the following exact sequence of homology groups $$H_1(\mathrm{NL}_{B/A} \otimes_B C) \to
-H_1(L_{C/A}) \to
-H_1(L_{C/B}) \to
-C \otimes_B \Omega_{B/A} \to
-\Omega_{C/A} \to
-\Omega_{C/B} \to 0$$ of $C$-modules extending the sequence of Lemma Kähler differentials, Theorems 3.1–3.3, Proposition 3.4 and Theorem 7.1. If $\text{Tor}_1^B(\Omega_{B/A}, C) = 0$ and $\text{Tor}_2^B(\Omega_{B/A}, C) = 0$, then $H_1(\mathrm{NL}_{B/A} \otimes_B C) = H_1(L_{B/A}) \otimes_B C$.
 
-**Proof.** The precise definition of the maps is omitted. The exactness of the top row follows as the $\text{d}x_s$, $\text{d}y_t$ form a basis for the middle module. The map $\gamma$ factors $$A[x_s, y_t] \to B[y_t] \to C$$ with surjective first arrow and second arrow equal to $\beta$. Thus we see that $K \to J$ is surjective. Moreover, the kernel of the first displayed arrow is $IA[x_s, y_t]$. Hence $I/I^2 \otimes C$ surjects onto the kernel of $K/K^2 \to J/J^2$. Finally, we can use Lemma Kähler differentials, Theorems 3.1–3.3, Proposition 3.4 and Theorem 7.1 to identify the terms as homology groups of the naive cotangent complexes.
+Let $A\to B\to C$ be homomorphisms. Choose polynomial presentations
+$$P=A[x_s\mid s\in S]\twoheadrightarrow B,\qquad B[y_t\mid t\in T]\twoheadrightarrow C$$
+with kernels $I$ and $J$. The variable sets may be infinite. Put $Q=P[y_t\mid t\in T]$ and $K=\ker(Q\to C)$. There is a canonical commutative diagram with exact rows
+$$
+\begin{array}{ccccccccc}
+&&(I/I^2)\otimes_B C&\longrightarrow&K/K^2&\longrightarrow&J/J^2&\longrightarrow&0\\
+&&\downarrow d&&\downarrow d&&\downarrow d&&\\
+0&\longrightarrow&\Omega_{P/A}\otimes_P C&\longrightarrow&\Omega_{Q/A}\otimes_Q C&\longrightarrow&\Omega_{B[y]/B}\otimes_{B[y]} C&\longrightarrow&0.
+\end{array}
+$$
+It gives the exact sequence
+$$
+\begin{aligned}
+H_1(\mathrm{NL}_{B/A}\otimes_B C)&\longrightarrow H_1(L_{C/A})
+\longrightarrow H_1(L_{C/B})\\
+&\longrightarrow\Omega_{B/A}\otimes_B C
+\longrightarrow\Omega_{C/A}\longrightarrow\Omega_{C/B}\longrightarrow0.
+\end{aligned}
+$$
+The first tensor product is the ordinary tensor product of a two-term presentation complex. If
+$$\operatorname{Tor}_1^B(\Omega_{B/A},C)=\operatorname{Tor}_2^B(\Omega_{B/A},C)=0,$$
+its first homology identifies with $H_1(L_{B/A})\otimes_B C$.
 
-The final assertion is a statement in homological algebra. Recall that $\mathrm{NL}_{B/A} = (N^{-1} \to N^0)$ is a two term complex of $B$-modules with $N^0$ free and cohomology modules $H^0 = \Omega_{B/A}$ and $H^{-1} = H_1(L_{B/A})$. Write $M \subset N^0$ for the image of the differential. If $\text{Tor}_1^B(H^0, C) = 0$, then we have an exact sequence $$0 \to M \otimes_B C \to N^0 \otimes_B C \to H^0 \otimes_B C \to 0$$ Since $N^0$ is free, we also see that $\text{Tor}_2^B(H^0, C) =
-\text{Tor}_1^B(M, C)$. Hence if $\text{Tor}_2^B(H^0, C) = 0$ then we also have an exact sequence $$0 \to H^{-1} \otimes_B C \to N^{-1} \otimes_B C \to M \otimes_B C \to 0$$ Putting everything together we see that if $\text{Tor}_1^B(H^0, C) = 0$ and $\text{Tor}_2^B(H^0, C) = 0$, then $H^{-1} \otimes_B C$ is the kernel of $N^{-1} \otimes_B C \to N^0 \otimes_B C$ as desired. $\square$
+**Proof.** The differential row separates the free basis $\{dx_s,dy_t\}$ into its two groups. Its first map includes the $dx_s$ summands, and its last map kills those summands and carries each $dy_t$ to the corresponding relative differential.
+
+For the conormal row, put $I_Q=IQ$. The surjection $Q\to B[y]$ has kernel $I_Q$, so $K/I_Q=J$. The map $K/K^2\to J/J^2$ is onto and has kernel $(I_Q+K^2)/K^2$. The left-hand module is canonically
+$$E=(I/I^2)\otimes_B C=I_Q/I_QK,$$
+and inclusion of $I_Q$ into $K$ induces its surjection onto that kernel. These are the asserted maps. Universal derivations commute with the polynomial maps and with passage to $C$, proving commutativity.
+
+To obtain the homology sequence without assuming that $E\to K/K^2$ is injective, let $D$ be its image. Its kernel consists of elements represented in $I_Q\cap K^2$, whose differential is zero after tensoring with $C$. Therefore the left vertical differential factors through $D$. Replacing $E$ by $D$ gives a short exact sequence of two-term complexes, with the middle and right complexes representing $\mathrm{NL}_{C/A}$ and $\mathrm{NL}_{C/B}$. The homology sequence of that short exact sequence has the claimed form with $H_1(D\to\Omega_{P/A}\otimes_P C)$ at the left.
+
+Every degree-one cycle of this last complex lifts to a degree-one cycle of $E\to\Omega_{P/A}\otimes_P C$, because the map in degree zero is the identity. Their first homologies thus map surjectively. Their degree-zero homologies agree, and are $\Omega_{B/A}\otimes_B C$. Substitution gives the displayed exact sequence with its stated first term. The comparison of polynomial presentations identifies all these homology modules with the indicated cotangent homology groups.
+
+For the last assertion, write a presentation complex for $B/A$ as $N^{-1}\to N^0$, with $N^0$ free, and denote its image by $M$. The exact sequence
+$$0\longrightarrow M\longrightarrow N^0\longrightarrow\Omega_{B/A}\longrightarrow0$$
+remains left exact after tensoring with $C$ when $\operatorname{Tor}_1^B(\Omega_{B/A},C)=0$. Since $N^0$ is free, its Tor sequence also gives
+$$\operatorname{Tor}_1^B(M,C)\simeq\operatorname{Tor}_2^B(\Omega_{B/A},C)=0.$$
+Tensoring $0\to H_1(L_{B/A})\to N^{-1}\to M\to0$ consequently remains exact on the left as well. Combining the two sequences identifies the kernel of $N^{-1}\otimes_B C\to N^0\otimes_B C$ with $H_1(L_{B/A})\otimes_B C$, as required. ∎
 
 #### Lemma. The conormal module of a syntomic presentation
- Let $R$ be a ring. Let $S = R[x_1, \ldots, x_n]/I$ for some finitely generated ideal $I$. If $g \in S$ is such that $S_g$ is syntomic over $R$, then $(I/I^2)_g$ is a finite projective $S_g$-module.
 
-**Proof.** By Lemma [Local criteria for a syntomic algebra](#native-algebra-lemma-syntomic) there exist finitely many elements $g_1, \ldots, g_m \in S$ which generate the unit ideal in $S_g$ such that each $S_{gg_j}$ is a relative global complete intersection over $R$. Since it suffices to prove that $(I/I^2)_{gg_j}$ is finite projective, see Lemma [Characterizations of finite projective modules](#native-algebra-lemma-finite-projective), we may assume that $S_g$ is a relative global complete intersection. In this case the result follows from Lemmas [Localization of a conormal module](#native-algebra-lemma-conormal-module-localize) and [The conormal module of a global complete intersection](#native-algebra-lemma-relative-global-complete-intersection-conormal). $\square$
+Suppose $S=R[x_1,\ldots,x_n]/I$ with $I$ finitely generated, and let $g\in S$. If $S_g$ is syntomic over $R$, then $(I/I^2)_g$ is finite projective as an $S_g$-module.
+
+**Proof.** The [local syntomic criterion](#native-algebra-lemma-syntomic) covers $\operatorname{Spec}S_g$ by principal opens on which the algebra is a relative global complete intersection. On each such open, compare its complete-intersection presentation with the given presentation. [Localization of a conormal module](#native-algebra-lemma-conormal-module-localize) gives the comparison after adding finite free summands, and [The conormal module of a global complete intersection](#native-algebra-lemma-relative-global-complete-intersection-conormal) makes the complete-intersection conormal finite free. Hence the conormal for the given presentation is finite projective on each open. Take a finite subcover and apply the local [finite-projective criterion](#native-algebra-lemma-finite-projective). This proves the claim over the whole ring $S_g$. ∎
 
 #### Lemma. A presentation realizing a basis of the conormal module
- Let $S$ be a finitely presented $R$-algebra which has a presentation $S = R[x_1, \ldots, x_n]/I$ such that $I/I^2$ is free over $S$. Then $S$ has a presentation $S = R[y_1, \ldots, y_m]/(f_1, \ldots, f_c)$ such that $(f_1, \ldots, f_c)/(f_1, \ldots, f_c)^2$ is free with basis given by the classes of $f_1, \ldots, f_c$.
 
-**Proof.** Note that $I$ is a finitely generated ideal by Lemma [Finite presentation and finite algebras](#native-algebra-lemma-finite-presentation-independent). Let $f_1, \ldots, f_c \in I$ be elements which map to a basis of $I/I^2$. By Nakayama's lemma (Lemma [Nakayama's lemma](#native-algebra-lemma-nak)) there exists a $g \in 1 + I$ such that $$g \cdot I \subset (f_1, \ldots, f_c)$$ and $I_g \cong (f_1, \ldots, f_c)_g$. Hence we see that $$S \cong R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)[1/g]
-\cong R[x_1, \ldots, x_n, x_{n + 1}]/(f_1, \ldots, f_c, gx_{n + 1} - 1)$$ as desired. It follows that $f_1, \ldots, f_c,gx_{n + 1} - 1$ form a basis for $(f_1, \ldots, f_c, gx_{n + 1} - 1)/(f_1, \ldots, f_c, gx_{n + 1} - 1)^2$ for example by applying Lemma [The cotangent complex of a principal localization](#native-algebra-lemma-principal-localization-nl). $\square$
+Let $S$ be a finitely presented $R$-algebra. If it has a presentation $S=R[x_1,\ldots,x_n]/I$ with $I/I^2$ free over $S$, then it has a finite presentation whose defining equations themselves give a basis of its conormal module.
+
+**Proof.** Put $P=R[x_1,\ldots,x_n]$. Finite presentation of $S$ makes $I$ finitely generated, by [Independence of finite presentation](#native-algebra-lemma-finite-presentation-independent). Choose $f_1,\ldots,f_c\in I$ whose classes are a basis of the finite free module $I/I^2$, and set $F=(f_1,\ldots,f_c)$. Then $I=F+I^2$, so the finite $P$-module $I/F$ satisfies $I(I/F)=I/F$. The determinant form of [Nakayama's lemma](#native-algebra-lemma-nak) gives $g\in1+I$ with $gI\subset F$. Thus $I_g=F_g$, while $g$ has image $1$ in $S$.
+
+It follows that
+$$S\simeq P_g/F_g\simeq P[t]/(f_1,\ldots,f_c,gt-1).$$
+Write $J=(f_1,\ldots,f_c,gt-1)\subset P[t]$. To verify the promised basis explicitly, consider
+$$J/J^2\longrightarrow (I/I^2)\oplus S,\qquad
+[h]\longmapsto\left([h(1)],\left[\frac{\partial h}{\partial t}(1)\right]\right).$$
+For $h\in J$, evaluation at $1$ lies in $I$. Evaluation of a product of two elements of $J$ lies in $I^2$, and its derivative evaluates into $I$, so the map is well-defined. It is $S$-linear by the product rule. The images of the defining equations are $([f_i],0)$ and $([g-1],1)$. These form a basis of $(I/I^2)\oplus S$. Since their classes also generate $J/J^2$, the map is an isomorphism and their classes are a basis there. The new presentation has $c+1$ equations and $n+1$ variables, proving the assertion. ∎
 
 #### Lemma. Localization of a relative complete intersection
- Let $R$ be a ring. Let $S = R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$. We will find $h \in R[x_1, \ldots, x_n]$ which maps to $g \in S$ such that $$S_g = R[x_1, \ldots, x_n, x_{n + 1}]/(f_1, \ldots, f_c, hx_{n + 1} - 1)$$ is a relative global complete intersection with a presentation as in Definition [Relative global complete intersections](#native-algebra-definition-relative-global-complete-intersection) in each of the following cases:
 
-1.  Let $I \subset R$ be an ideal. If the fibres of $\operatorname{Spec}(S/IS) \to \operatorname{Spec}(R/I)$ have dimension $n - c$, then we can find $(h, g)$ as above such that $g$ maps to $1 \in S/IS$.
+Write $S=R[x_1,\ldots,x_n]/(f_1,\ldots,f_c)$. In each situation below, there is a polynomial $h$ with image $g\in S$ such that
+$$S_g\simeq R[x_1,\ldots,x_n,z]/(f_1,\ldots,f_c,hz-1)$$
+is a relative global complete intersection, with the stated control on $g$:
 
-2.  Let $\mathfrak p \subset R$ be a prime. If $\dim(S \otimes_R \kappa(\mathfrak p)) = n - c$, then we can find $(h, g)$ as above such that $g$ maps to a unit of $S \otimes_R \kappa(\mathfrak p)$.
+1. If $I\subset R$ and every nonempty fibre of $S/IS$ over $R/I$ has dimension $n-c$, one can arrange $g\equiv1\pmod{IS}$.
+2. If $\mathfrak p\subset R$ and $\dim(S\otimes_R\kappa(\mathfrak p))=n-c$, one can arrange that $g$ is a unit on this entire fibre.
+3. If $\mathfrak q\subset S$ lies over $\mathfrak p$ and $\dim_{\mathfrak q}(S/R)=n-c$, one can arrange $g\notin\mathfrak q$.
 
-3.  Let $\mathfrak q \subset S$ be a prime lying over $\mathfrak p \subset R$. If $\dim_{\mathfrak q}(S/R) = n - c$, then we can find $(h, g)$ as above such that $g \not \in \mathfrak q$.
+**Proof.** By [The open fibre-dimension bound](#native-algebra-lemma-dimension-fibres-bounded-open-upstairs), the points where the fibre dimension is at most $n-c$ form an open set $W\subset\operatorname{Spec}S$. Write its complement as $V(J)$.
 
-**Proof.** Ad (1). By Lemma [An open neighbourhood with bounded fibre dimension](#native-algebra-lemma-dimension-fibres-bounded-open-upstairs) there exists an open subset $W \subset \operatorname{Spec}(S)$ containing $V(IS)$ such that all fibres of $W \to \operatorname{Spec}(R)$ have dimension $\leq n - c$. Say $W = \operatorname{Spec}(S) \setminus V(J)$. Then $V(J) \cap V(IS) = \emptyset$ hence we can find a $g \in J$ which maps to $1 \in S/IS$. Let $h \in R[x_1, \ldots, x_n]$ be any preimage of $g$.
+In (1), $W$ contains $V(IS)$, so $J+IS=S$. Choose $g\in J$ with $g\equiv1$ modulo $IS$. In (2), the extension of $J$ to $S\otimes_R\kappa(\mathfrak p)$ is the unit ideal. Express $1$ as a finite combination of images of elements of $J$, and clear the denominators from $R\setminus\mathfrak p$. This gives $g\in J$ whose image in the fibre is the image of an element of $R\setminus\mathfrak p$, hence a unit. In (3), choose $g\in J\setminus\mathfrak q$, since $\mathfrak q\in W$.
 
-Ad (2). By Lemma [An open neighbourhood with bounded fibre dimension](#native-algebra-lemma-dimension-fibres-bounded-open-upstairs) there exists an open subset $W \subset \operatorname{Spec}(S)$ containing $\operatorname{Spec}(S \otimes_R \kappa(\mathfrak p))$ such that all fibres of $W \to \operatorname{Spec}(R)$ have dimension $\leq n - c$. Say $W = \operatorname{Spec}(S) \setminus V(J)$. Then $V(J \cdot S \otimes_R \kappa(\mathfrak p)) = \emptyset$. Hence we can find a $g \in J$ which maps to a unit in $S \otimes_R \kappa(\mathfrak p)$ (details omitted). Let $h \in R[x_1, \ldots, x_n]$ be any preimage of $g$.
-
-Ad (3). By Lemma [An open neighbourhood with bounded fibre dimension](#native-algebra-lemma-dimension-fibres-bounded-open-upstairs) there exists a $g \in S$, $g \not \in \mathfrak q$ such that all nonempty fibres of $R \to S_g$ have dimension $\leq n - c$. Let $h \in R[x_1, \ldots, x_n]$ be any element that maps to $g$. $\square$
+In every case $D(g)\subset W$. Lift $g$ to $h\in R[x]$. The displayed presentation has $n+1$ variables and $c+1$ equations, and every nonempty fibre has dimension at most $n-c$ by its construction. Conversely a nonzero quotient of a polynomial ring in $n+1$ variables over a field by $c+1$ equations has dimension at least $n-c$, by the height bound for a finitely generated ideal. Thus each such fibre has dimension exactly $n-c$. This is the required relative global complete-intersection presentation, with all the claimed conditions on $g$. ∎
 
 #### Lemma. Composition of syntomic ring maps
 
-Let $R \to S$, $S \to S'$ be ring maps.
+For homomorphisms $R\to S\to T$:
 
-1.  If $R \to S$ and $S \to S'$ are syntomic, then $R \to S'$ is syntomic.
+1. If both maps are syntomic, so is $R\to T$.
+2. If both maps are relative global complete intersections, so is $R\to T$.
 
-2.  If $R \to S$ and $S \to S'$ are relative global complete intersections, then $R \to S'$ is a relative global complete intersection.
+**Proof.** First suppose
+$$S=R[x_1,\ldots,x_n]/(f_1,\ldots,f_c),\qquad
+T=S[y_1,\ldots,y_m]/(h_1,\ldots,h_d)$$
+are presentations of the kind in (2). Lifting the coefficients of the $h_j$ to $R[x]$ gives
+$$T=R[x_1,\ldots,x_n,y_1,\ldots,y_m]/(f_1,\ldots,f_c,\widetilde h_1,\ldots,\widetilde h_d).$$
+For a residue field $k$ of $R$, the nonempty base fibre has dimension $n-c$, and the nonempty fibres above it of the second map have dimension $m-d$. [The base–fibre dimension bound](#native-algebra-lemma-dimension-base-fibre-total) therefore gives dimension at most $(n-c)+(m-d)$ for $T\otimes_R k$. When this algebra is nonzero, its displayed presentation gives the reverse inequality by the height bound. Hence each nonempty fibre has exactly that dimension, proving (2).
 
-**Proof.** Proof of (2). Say $R \to S$ and $S \to S'$ are relative global complete intersections and we have presentations $S =  R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ and $S' = S[y_1, \ldots, y_m]/(h_1, \ldots, h_d)$ as in Definition [Relative global complete intersections](#native-algebra-definition-relative-global-complete-intersection). Then $$S' \cong
-R[x_1, \ldots, x_n, y_1, \ldots, y_m]/(f_1, \ldots, f_c, h'_1, \ldots, h'_d)$$ for some lifts $h_j' \in R[x_1, \ldots, x_n, y_1, \ldots, y_m]$ of the $h_j$. Hence it suffices to bound the dimensions of the fibre rings. Thus we may assume $R = k$ is a field. In this case we see that we have a ring, namely $S$, which is of finite type over $k$ and equidimensional of dimension $n - c$, and a finite type ring map $S \to S'$ all of whose nonempty fibre rings are equidimensional of dimension $m - d$. Then, by Lemma [Dimensions of a base, fibre and total space](#native-algebra-lemma-dimension-base-fibre-total) for example applied to localizations at maximal ideals of $S'$, we see that $\dim(S') \leq n - c + m - d$ as desired.
-
-We will reduce part (1) to part (2). Assume $R \to S$ and $S \to S'$ are syntomic. Let $\mathfrak q' \subset S'$ be a prime ideal lying over $\mathfrak q \subset S$. By Lemma [Local criteria for a syntomic algebra](#native-algebra-lemma-syntomic) there exists a $g' \in S'$, $g' \not \in \mathfrak q'$ such that $S \to S'_{g'}$ is a relative global complete intersection. Similarly, we find $g \in S$, $g \not \in \mathfrak q$ such that $R \to S_g$ is a relative global complete intersection. By Lemma [Base change of a global complete intersection](#native-algebra-lemma-base-change-relative-global-complete-intersection) the ring map $S_g \to S'_{gg'}$ is a relative global complete intersection. By part (2) we see that $R \to S'_{gg'}$ is a relative global complete intersection and $gg' \not \in \mathfrak q'$. Since $\mathfrak q'$ was arbitrary combining Lemmas [Local criteria for a syntomic algebra](#native-algebra-lemma-syntomic) and [Locality of syntomic ring maps](#native-algebra-lemma-local-syntomic) we see that $R \to S'$ is syntomic (this also uses that the spectrum of $S'$ is quasi-compact, see Lemma [Quasi-compactness of an affine spectrum](#native-algebra-lemma-quasi-compact)). $\square$
+Now assume the maps are syntomic and choose $\mathfrak q'\in\operatorname{Spec}T$, with image $\mathfrak q$ in $S$. The [local syntomic criterion](#native-algebra-lemma-syntomic) supplies $g'\in T\setminus\mathfrak q'$ and $g\in S\setminus\mathfrak q$ for which $S\to T_{g'}$ and $R\to S_g$ are relative global complete intersections. [Base change](#native-algebra-lemma-base-change-relative-global-complete-intersection) makes $S_g\to T_{gg'}$ one as well. By (2), $R\to T_{gg'}$ is a relative global complete intersection, hence syntomic. These neighbourhoods cover $\operatorname{Spec}T$; choose a finite subcover and apply [Locality of syntomic ring maps](#native-algebra-lemma-local-syntomic). This proves (1). ∎
 
 #### Lemma. Smooth algebras are syntomic
- Let $R \to S$ be a smooth ring map. There exists an open covering of $\operatorname{Spec}(S)$ by standard opens $D(g)$ such that each $S_g$ is standard smooth over $R$. In particular $R \to S$ is syntomic.
 
-**Proof.** Choose a presentation $\alpha : R[x_1, \ldots, x_n] \to S$ with kernel $I = (f_1, \ldots, f_m)$. For every subset $E \subset \{1, \ldots, m\}$ consider the open subset $U_E$ where the classes $f_e, e\in E$ freely generate the finite projective $S$-module $I/I^2$, see Lemma [Flatness of a cokernel](#native-algebra-lemma-cokernel-flat). We may cover $\operatorname{Spec}(S)$ by standard opens $D(g)$ each completely contained in one of the opens $U_E$. For such a $g$ we look at the presentation $$\beta : R[x_1, \ldots, x_n, x_{n + 1}] \longrightarrow S_g$$ mapping $x_{n + 1}$ to $1/g$. Setting $J = \operatorname{Ker}(\beta)$ we use Lemma [The cotangent complex of a principal localization](#native-algebra-lemma-principal-localization-nl) to see that $J/J^2 \cong (I/I^2)_g \oplus S_g$ is free. We may and do replace $S$ by $S_g$. Then using Lemma [A presentation realizing a basis of the conormal module](#native-algebra-lemma-huber) we may assume we have a presentation $\alpha : R[x_1, \ldots, x_n] \to S$ with kernel $I = (f_1, \ldots, f_c)$ such that $I/I^2$ is free on the classes of $f_1, \ldots, f_c$.
+If $R\to S$ is smooth, then $\operatorname{Spec}S$ admits a cover by principal opens $D(g)$ for which $S_g$ is standard smooth over $R$. In particular, every smooth ring map is syntomic.
 
-Using the presentation $\alpha$ obtained at the end of the previous paragraph, we more or less repeat this argument with the basis elements $\text{d}x_1, \ldots, \text{d}x_n$ of $\Omega_{R[x_1, \ldots, x_n]/R}$. Namely, for any subset $E \subset \{1, \ldots, n\}$ of cardinality $c$ we may consider the open subset $U_E$ of $\operatorname{Spec}(S)$ where the differential of $\mathrm{NL}(\alpha)$ composed with the projection $$S^{\oplus c} \cong I/I^2
-\longrightarrow
-\Omega_{R[x_1, \ldots, x_n]/R} \otimes_{R[x_1, \ldots, x_n]} S
-\longrightarrow
-\bigoplus\nolimits_{i \in E} S\text{d}x_i$$ is an isomorphism. Again we may find a covering of $\operatorname{Spec}(S)$ by (finitely many) standard opens $D(g)$ such that each $D(g)$ is completely contained in one of the opens $U_E$. By renumbering, we may assume $E = \{1, \ldots, c\}$. For a $g$ with $D(g) \subset U_E$ we look at the presentation $$\beta : R[x_1, \ldots, x_n, x_{n + 1}] \to S_g$$ mapping $x_{n + 1}$ to $1/g$. Setting $J = \operatorname{Ker}(\beta)$ we conclude from Lemma [The cotangent complex of a principal localization](#native-algebra-lemma-principal-localization-nl) that $J = (f_1, \ldots, f_c, fx_{n + 1} - 1)$ where $\alpha(f) = g$ and that the composition $$J/J^2 \longrightarrow
-\Omega_{R[x_1, \ldots, x_{n + 1}]/R} \otimes_{R[x_1, \ldots, x_{n + 1}]} S_g
-\longrightarrow
-\bigoplus\nolimits_{i = 1}^c S_g\text{d}x_i \oplus S_g \text{d}x_{n + 1}$$ is an isomorphism. Reordering the coordinates as $x_1, \ldots, x_c, x_{n + 1}, x_{c + 1}, \ldots, x_n$ we conclude that $S_g$ is standard smooth over $R$ as desired.
+**Proof.** The full local-standard-form argument is *Formally smooth, unramified and étale ring maps*, Theorem 5.1. It applies to an arbitrary base ring. Section 4 of that lesson proves that its definition of smoothness agrees with the naive-cotangent definition used here. The theorem's proof starts with the finite projective conormal module, chooses a basis at the given prime, uses Nakayama in the localized polynomial ring to generate the actual ideal, clears finitely many denominators, and adjoins an inverse variable to give a standard smooth presentation. Thus it supplies the asserted principal neighbourhood at every prime, including rank zero.
 
-This finishes the proof as standard smooth algebras are syntomic (Lemmas [Standard smooth algebras](#native-algebra-lemma-standard-smooth) and [Criteria for global complete intersections](#native-algebra-lemma-relative-global-complete-intersection)) and being syntomic over $R$ is local on $S$ (Lemma [Locality of syntomic ring maps](#native-algebra-lemma-local-syntomic)). $\square$
+By [Standard smooth algebras](#native-algebra-lemma-standard-smooth), each resulting chart is a relative global complete intersection. [The complete-intersection criterion](#native-algebra-lemma-relative-global-complete-intersection) makes every chart syntomic. A finite subcover and [locality](#native-algebra-lemma-local-syntomic) then make $R\to S$ syntomic. For the zero algebra the spectrum is empty and the same local assertion is vacuous. ∎
 
 #### Lemma. Local criteria for a syntomic algebra
 
-Let $R \to S$ be a ring map. Let $\mathfrak q \subset S$ be a prime lying over the prime $\mathfrak p$ of $R$. The following are equivalent:
+Let $R\to S$, and let $\mathfrak q\subset S$ contract to $\mathfrak p\subset R$. The following conditions are equivalent:
 
-1.  There exists an element $g \in S$, $g \not \in \mathfrak q$ such that $R \to S_g$ is syntomic.
+1. Some $g\in S\setminus\mathfrak q$ makes $R\to S_g$ syntomic.
+2. Some $g\in S\setminus\mathfrak q$ makes $S_g$ a relative global complete intersection over $R$.
+3. There is a finitely presented neighbourhood $R\to S_g$ with $g\notin\mathfrak q$, the map $R_{\mathfrak p}\to S_{\mathfrak q}$ is flat, and the fibre local ring $S_{\mathfrak q}/\mathfrak pS_{\mathfrak q}$ is a complete intersection over $\kappa(\mathfrak p)$.
 
-2.  There exists an element $g \in S$, $g \not \in \mathfrak q$ such that $S_g$ is a relative global complete intersection over $R$.
+**Proof.** Condition (1) gives (3) by [Complete intersections at a prime](#native-algebra-lemma-lci-at-prime). The implication (2) to (1) is the [relative global complete-intersection criterion](#native-algebra-lemma-relative-global-complete-intersection). It remains to start with (3) and construct the presentation in (2).
 
-3.  There exists an element $g \in S$, $g \not \in \mathfrak q$, such that $R \to S_g$ is of finite presentation, the local ring map $R_{\mathfrak p} \to S_{\mathfrak q}$ is flat, and the local ring $S_{\mathfrak q}/\mathfrak pS_{\mathfrak q}$ is a complete intersection ring over $\kappa(\mathfrak p)$ (see Definition [Complete-intersection local rings](#native-algebra-definition-lci-local-ring)).
+First replace $S$ by its finitely presented neighbourhood, and write $S=P/I$, where $P=R[x_1,\ldots,x_n]$ and $I$ is finitely generated. Let $\mathfrak q'$ be the inverse image of $\mathfrak q$ in $P$, and put $k=\kappa(\mathfrak p)$. The fibre presentation has ideal $\overline I\subset k[x]$, and let $\overline{\mathfrak q}'$ be its indicated prime. By [The field complete-intersection criterion](#native-algebra-lemma-lci), choose $f_1,\ldots,f_c\in I$ whose images form a minimal generating set of $\overline I_{\overline{\mathfrak q}'}$. They generate that ideal and are a regular sequence there. Such lifts can be chosen in $I$ because the images of $I$ span its minimal-generator vector space.
 
-**Proof.** The implication (1) $\Rightarrow$ (3) is Lemma [Complete intersections at a prime ideal](#native-algebra-lemma-lci-at-prime). The implication (2) $\Rightarrow$ (1) is Lemma [Criteria for global complete intersections](#native-algebra-lemma-relative-global-complete-intersection). It remains to show that (3) implies (2).
+Set $S'=P/(f_1,\ldots,f_c)$ and $J=\ker(S'\to S)$. This kernel is finitely generated. Localize the exact sequence $0\to J\to S'\to S\to0$ at $\mathfrak q'$. Its last term is $S_{\mathfrak q}$, which is flat over $R$ by (3) and localization of the base. Tensoring with $k$ is therefore still injective at its first term. By the chosen generators, the map between the two fibre local rings is an isomorphism. Hence
+$$J_{\mathfrak q'}\otimes_R k=J_{\mathfrak q'}/\mathfrak pJ_{\mathfrak q'}=0.$$
+Nakayama applies to this finite module over the local ring $S'_{\mathfrak q'}$, since $\mathfrak p$ is contained in its maximal ideal. It gives $J_{\mathfrak q'}=0$. A product of annihilating denominators for a finite generating set of $J$ now gives $h\in P\setminus\mathfrak q'$ with $J_h=0$, so $S'_h\simeq S_h$.
 
-Assume (3). After replacing $S$ by $S_g$ for some $g \in S$, $g\not\in \mathfrak q$, we may assume $S$ is finitely presented over $R$. Choose a presentation $S = R[x_1, \ldots, x_n]/I$. Let $\mathfrak q' \subset R[x_1, \ldots, x_n]$ be the prime corresponding to $\mathfrak q$. Write $\kappa(\mathfrak p) = k$. Note that $S \otimes_R k = k[x_1, \ldots, x_n]/\overline{I}$ where $\overline{I} \subset k[x_1, \ldots, x_n]$ is the ideal generated by the image of $I$. Let $\overline{\mathfrak q}' \subset k[x_1, \ldots, x_n]$ be the prime ideal generated by the image of $\mathfrak q'$. By Lemma [Complete intersections at a prime ideal](#native-algebra-lemma-lci-at-prime) the equivalent conditions of Lemma [Local criteria for complete intersections](#native-algebra-lemma-lci) hold for $\overline{I}$ and $\overline{\mathfrak q}'$. Say the dimension of $\overline{I}_{\overline{\mathfrak q}'}/
-\overline{\mathfrak q}'\overline{I}_{\overline{\mathfrak q}'}$ over $\kappa(\overline{\mathfrak q}')$ is $c$. Pick $f_1, \ldots, f_c \in I$ mapping to a basis of this vector space. The images $\overline{f}_j \in \overline{I}$ generate $\overline{I}_{\overline{\mathfrak q}'}$ (by Lemma [Local criteria for complete intersections](#native-algebra-lemma-lci)). Set $S' = R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$. Let $J$ be the kernel of the surjection $S' \to S$. Since $S$ is of finite presentation $J$ is a finitely generated ideal (Lemma [Composition of finite-type ring maps](#native-algebra-lemma-compose-finite-type)). Consider the short exact sequence $$0 \to J \to S' \to S \to 0.$$ As $S_\mathfrak q$ is flat over $R$ we see that $J_{\mathfrak q'} \otimes_R k \to S'_{\mathfrak q'} \otimes_R k$ is injective (Lemma [Tor vanishing for a flat module](#native-algebra-lemma-flat-tor-zero)). However, by construction $S'_{\mathfrak q'} \otimes_R k$ maps isomorphically to $S_\mathfrak q \otimes_R k$. Hence we conclude that $J_{\mathfrak q'} \otimes_R k =
-J_{\mathfrak q'}/\mathfrak pJ_{\mathfrak q'} = 0$. By Nakayama's lemma (Lemma [Nakayama's lemma](#native-algebra-lemma-nak)) we conclude that there exists a $g \in R[x_1, \ldots, x_n]$, $g \not \in \mathfrak q'$ such that $J_g = 0$. In other words $S'_g \cong S_g$. After further localizing we see that $S'$ (and hence $S$) becomes a relative global complete intersection by Lemma [Localization of a relative complete intersection](#native-algebra-lemma-localize-relative-complete-intersection) as desired. $\square$
+The regular sequence in the fibre polynomial local ring gives fibre dimension $n-c$ at the chosen point. Apply the preceding localization lemma to $S'$ and that point, and combine its denominator with $h$. The resulting neighbourhood is a relative global complete intersection and still contains $\mathfrak q$. This proves (2). ∎
 
 #### Lemma. Smoothness from flatness and smooth fibres
- Let $R \to S$ be a ring map. Let $\mathfrak q \subset S$ be a prime lying over the prime $\mathfrak p$ of $R$. Assume
 
-1.  there exists a $g \in S$, $g \not\in \mathfrak q$ such that $R \to S_g$ is of finite presentation,
+For $R\to S$ and $\mathfrak q\subset S$ over $\mathfrak p\subset R$, suppose that $S$ is finitely presented over $R$ on a neighbourhood of $\mathfrak q$, that $R_{\mathfrak p}\to S_{\mathfrak q}$ is flat, and that $S\otimes_R\kappa(\mathfrak p)$ is smooth at the fibre point defined by $\mathfrak q$. Then $R\to S$ is smooth at $\mathfrak q$.
 
-2.  the local ring homomorphism $R_{\mathfrak p} \to S_{\mathfrak q}$ is flat,
+**Proof.** A smooth algebra over a field has complete-intersection local rings, by the field Jacobian criterion. The preceding syntomic criterion therefore replaces $S$, near $\mathfrak q$, by a relative global complete-intersection presentation
+$$S=R[x_1,\ldots,x_n]/(f_1,\ldots,f_c).$$
+For each set $E$ of $c$ variable indices, let $\Delta_E$ be the corresponding Jacobian minor. On passing to the residue field $\kappa(\mathfrak p)$, the same coefficient map sends $\Delta_E$ to the Jacobian minor of the images of the $f_i$: differentiation and determinants commute with coefficient change.
 
-3.  the fibre $S \otimes_R \kappa(\mathfrak p)$ is smooth over $\kappa(\mathfrak p)$ at the prime corresponding to $\mathfrak q$.
-
-Then $R \to S$ is smooth at $\mathfrak q$.
-
-**Proof.** By Lemmas [Local criteria for a syntomic algebra](#native-algebra-lemma-syntomic) and Smooth algebras over a field and the Jacobian criterion, Theorems 5.1–6.1 and Sections 1–3 we see that there exists a $g \in S$, $g \not \in \mathfrak q$, such that $S_g$ is a relative global complete intersection. Replacing $S$ by $S_g$ we may assume $S = R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ is a relative global complete intersection. For any subset $I \subset \{1, \ldots, n\}$ of cardinality $c$ consider the polynomial $g_I = \det (\partial f_j/\partial x_i)_{j = 1, \ldots, c, i \in I}$ of Lemma [Smoothness of a global complete intersection](#native-algebra-lemma-relative-global-complete-intersection-smooth). Note that the image $\overline{g}_I$ of $g_I$ in the polynomial ring $\kappa(\mathfrak p)[x_1, \ldots, x_n]$ is the determinant of the partial derivatives of the images $\overline{f}_j$ of the $f_j$ in the ring $\kappa(\mathfrak p)[x_1, \ldots, x_n]$. Thus the lemma follows by applying Lemma [Smoothness of a global complete intersection](#native-algebra-lemma-relative-global-complete-intersection-smooth) both to $R \to S$ and to $\kappa(\mathfrak p) \to S \otimes_R \kappa(\mathfrak p)$. $\square$
+Apply [Smoothness of a global complete intersection](#native-algebra-lemma-relative-global-complete-intersection-smooth) first to the fibre. Its smoothness at the selected point gives an $E$ for which $\Delta_E\notin\mathfrak q$. Apply the same result to the displayed presentation over $R$. It says that this principal neighbourhood is smooth. Thus the original map is smooth at $\mathfrak q$. ∎
 
 #### Lemma. Local criteria for complete intersections
- Let $k$ be a field. Let $S$ be a finite type $k$-algebra. Let $\mathfrak q$ be a prime of $S$. Choose any presentation $S = k[x_1, \ldots, x_n]/I$. Let $\mathfrak q'$ be the prime of $k[x_1, \ldots, x_n]$ corresponding to $\mathfrak q$. Set $c = \text{height}(\mathfrak q') - \text{height}(\mathfrak q)$, in other words $\dim_{\mathfrak q}(S) = n - c$ (see Lemma [Dimension and codimension](#native-algebra-lemma-codimension)). The following are equivalent
 
-1.  There exists a $g \in S$, $g \not \in \mathfrak q$ such that $S_g$ is a global complete intersection over $k$.
+Let $S$ be a finite-type algebra over a field $k$, fix $\mathfrak q\in\operatorname{Spec}S$, and choose any polynomial presentation $S=P/I$ with $P=k[x_1,\ldots,x_n]$. Denote the inverse image of $\mathfrak q$ by $\mathfrak q'$. Put
+$$c=\operatorname{ht}(\mathfrak q')-\operatorname{ht}(\mathfrak q)
+=n-\dim_{\mathfrak q}\operatorname{Spec}S.$$
+Here dimension at a point means the minimum dimension of its open neighbourhoods; the equality is the finite-type field dimension formula. The following are equivalent:
 
-2.  The ideal $I_{\mathfrak q'} \subset k[x_1, \ldots, x_n]_{\mathfrak q'}$ can be generated by $c$ elements.
+1. There is $g\in S\setminus\mathfrak q$ such that $S_g$ is a global complete intersection over $k$.
+2. The ideal $I_{\mathfrak q'}$ in $P_{\mathfrak q'}$ admits a generating list of $c$ elements.
+3. The conormal module $(I/I^2)_{\mathfrak q}$ admits a generating list of $c$ elements over $S_{\mathfrak q}$.
+4. The module $(I/I^2)_{\mathfrak q}$ is free of rank $c$.
+5. The ideal $I_{\mathfrak q'}$ is generated by a regular sequence in $P_{\mathfrak q'}$.
 
-3.  The conormal module $(I/I^2)_{\mathfrak q}$ can be generated by $c$ elements over $S_{\mathfrak q}$.
+When these conditions hold, any $c$ elements of $I_{\mathfrak q'}$ that generate $I_{\mathfrak q'}/\mathfrak q'I_{\mathfrak q'}$ form a regular sequence.
 
-4.  The conormal module $(I/I^2)_{\mathfrak q}$ is a free $S_{\mathfrak q}$-module of rank $c$.
+**Proof.** Write $Q=P_{\mathfrak q'}$ and $H=I_{\mathfrak q'}$. The ring $Q$ is regular local, hence Cohen–Macaulay, and
+$$\dim(Q/H)=\dim Q-c.$$
+If $c$ elements generate $H/H^2$, Nakayama applied to their quotient in the finite $Q$-module $H$ shows that they generate $H$: the remaining module equals its product with $H\subset\mathfrak q'Q$. Thus (3) implies (2); the converse follows by taking the quotient by $H^2$.
 
-5.  The ideal $I_{\mathfrak q'}$ can be generated by a regular sequence in the regular local ring $k[x_1, \ldots, x_n]_{\mathfrak q'}$.
+In a Cohen–Macaulay local ring, $c$ generators of an ideal whose quotient has dimension $\dim Q-c$ form a regular sequence, by [The Cohen–Macaulay parameter criterion](#native-algebra-proposition-cm-module). Consequently (2) implies (5). A regular sequence has a free conormal module on its classes, by [Regular sequences are quasi-regular](#native-algebra-lemma-regular-quasi-regular). If its length is $e$, successive regular quotients have dimension $\dim Q-e$, so the displayed equality forces $e=c$. This proves (5) implies (4), which immediately implies (3). The same Nakayama and parameter argument proves the final assertion for every generating list of the specified residue vector space.
 
-In this case any $c$ elements of $I_{\mathfrak q'}$ which generate $I_{\mathfrak q'}/\mathfrak q'I_{\mathfrak q'}$ form a regular sequence in the local ring $k[x_1, \ldots, x_n]_{\mathfrak q'}$.
+To obtain (1) from (2), clear the denominators of the local generators and choose $f_1,\ldots,f_c\in I$ that still generate $H$. Since $I$ is finitely generated, there is $h\in P\setminus\mathfrak q'$ with $I_h=(f_1,\ldots,f_c)_h$. The rings $P/(f_1,\ldots,f_c)$ and $S$ therefore agree near the chosen point, where their dimension at the point is $n-c$. [Localization of a relative complete intersection](#native-algebra-lemma-localize-relative-complete-intersection), case (3), supplies a further principal neighbourhood that is a global complete intersection over $k$. Combining its denominator with $h$ gives (1).
 
-**Proof.** Set $R = k[x_1, \ldots, x_n]_{\mathfrak q'}$. This is a Cohen-Macaulay local ring of dimension $\text{height}(\mathfrak q')$, see for example Lemma [Complete intersections are Cohen–Macaulay](#native-algebra-lemma-lci-cm). Moreover, $\overline{R} = R/IR = R/I_{\mathfrak q'} = S_{\mathfrak q}$ is a quotient of dimension $\text{height}(\mathfrak q)$. Let $f_1, \ldots, f_c \in I_{\mathfrak q'}$ be elements which generate $(I/I^2)_{\mathfrak q}$. By Lemma [Nakayama's lemma](#native-algebra-lemma-nak) we see that $f_1, \ldots, f_c$ generate $I_{\mathfrak q'}$. Since the dimensions work out, we conclude by Proposition [Characterizations of Cohen–Macaulay modules](#native-algebra-proposition-cm-module) that $f_1, \ldots, f_c$ is a regular sequence in $R$. By Lemma [Regular sequences are quasi-regular](#native-algebra-lemma-regular-quasi-regular) we see that $(I/I^2)_{\mathfrak q}$ is free. These arguments show that (2), (3), (4) are equivalent and that they imply the last statement of the lemma, and therefore they imply (5).
-
-If (5) holds, say $I_{\mathfrak q'}$ is generated by a regular sequence of length $e$, then $\text{height}(\mathfrak q) = \dim(S_{\mathfrak q}) =
-\dim(k[x_1, \ldots, x_n]_{\mathfrak q'}) - e =
-\text{height}(\mathfrak q') - e$ by dimension theory, see Section [Dimension and codimension](#context-algebra-section-dimension). We conclude that $e = c$. Thus (5) implies (2).
-
-We continue with the notation introduced in the first paragraph. For each $f_i$ we may find $d_i \in k[x_1, \ldots, x_n]$, $d_i \not \in \mathfrak q'$ such that $f_i' = d_i f_i \in k[x_1, \ldots, x_n]$. Then it is still true that $I_{\mathfrak q'} = (f_1', \ldots, f_c')R$. Hence there exists a $g' \in k[x_1, \ldots, x_n]$, $g' \not \in \mathfrak q'$ such that $I_{g'} = (f_1', \ldots, f_c')$. Moreover, pick $g'' \in k[x_1, \ldots, x_n]$, $g'' \not \in \mathfrak q'$ such that $\dim(S_{g''}) = \dim_{\mathfrak q} \operatorname{Spec}(S)$. By Lemma [Dimension and codimension](#native-algebra-lemma-codimension) this dimension is equal to $n - c$. Finally, set $g$ equal to the image of $g'g''$ in $S$. Then we see that $$S_g \cong k[x_1, \ldots, x_n, x_{n + 1}]
-/
-(f_1', \ldots, f_c', x_{n + 1}g'g'' - 1)$$ and by our choice of $g''$ this ring has dimension $n - c$. Therefore it is a global complete intersection. Thus each of (2), (3), and (4) implies (1).
-
-Assume (1). Let $S_g \cong k[y_1, \ldots, y_m]/(f_1, \ldots, f_t)$ be a presentation of $S_g$ as a global complete intersection. Write $J = (f_1, \ldots, f_t)$. Let $\mathfrak q'' \subset k[y_1, \ldots, y_m]$ be the prime corresponding to $\mathfrak qS_g$. Note that $t = m - \dim(S_g) =
-\text{height}(\mathfrak q'') - \text{height}(\mathfrak q)$, see Lemma [Dimension and codimension](#native-algebra-lemma-codimension) for the last equality. As seen in the proof of Lemma [Complete intersections are Cohen–Macaulay](#native-algebra-lemma-lci-cm) (and also above) the elements $f_1, \ldots, f_t$ form a regular sequence in the local ring $k[y_1, \ldots, y_m]_{\mathfrak q''}$. By Lemma [Regular sequences are quasi-regular](#native-algebra-lemma-regular-quasi-regular) we see that $(J/J^2)_{\mathfrak q}$ is free of rank $t$. By Lemma [Localization of a conormal module](#native-algebra-lemma-conormal-module-localize) we have $$J/J^2 \oplus S_g^n \cong (I/I^2)_g \oplus S_g^m$$ Thus $(I/I^2)_{\mathfrak q}$ is free of rank $t + n - m = m - \dim(S_g) + n - m = n - \dim(S_g) =
-\text{height}(\mathfrak q') - \text{height}(\mathfrak q) = c$. Thus we obtain (4). $\square$
+Conversely, suppose (1) and present
+$$S_g=k[y_1,\ldots,y_m]/(h_1,\ldots,h_t)$$
+as a global complete intersection. Its conormal module $J/J^2$ is free of rank $t$, where $J=(h_1,\ldots,h_t)$, and every component has dimension $m-t$. At the specified point this gives $m-t=\dim_{\mathfrak q}\operatorname{Spec}S$. The [comparison of conormal modules for two presentations](#native-algebra-lemma-conormal-module-localize) gives
+$$ (I/I^2)_g\oplus S_g^{\oplus m}
+\simeq (J/J^2)\oplus S_g^{\oplus n}.$$
+Localizing at $\mathfrak q$ makes $(I/I^2)_{\mathfrak q}$ finite projective over a local ring, hence free, of rank
+$$t+n-m=n-\dim_{\mathfrak q}\operatorname{Spec}S=c.$$
+Thus (1) implies (4), completing the equivalences. ∎
 
 #### Definition. Unramified ring maps
- Let $R \to S$ be a ring map.
 
-1.  We say $R \to S$ is *unramified* if $R \to S$ is of finite type and $\Omega_{S/R} = 0$.
+For a homomorphism $R\to S$:
 
-2.  We say $R \to S$ is *G-unramified* if $R \to S$ is of finite presentation and $\Omega_{S/R} = 0$.
+1. **Unramified** means finite type with $\Omega_{S/R}=0$.
+2. **G-unramified** means finite presentation with $\Omega_{S/R}=0$.
+3. It is **unramified at $\mathfrak q$**, for a prime $\mathfrak q$ of $S$, if some $g\notin\mathfrak q$ makes $R\to S_g$ unramified.
+4. It is **G-unramified at $\mathfrak q$** if some such principal neighbourhood is G-unramified.
 
-3.  Given a prime $\mathfrak q$ of $S$ we say that $S$ is *unramified at $\mathfrak q$* if there exists a $g \in S$, $g \not \in \mathfrak q$ such that $R \to S_g$ is unramified.
-
-4.  Given a prime $\mathfrak q$ of $S$ we say that $S$ is *G-unramified at $\mathfrak q$* if there exists a $g \in S$, $g \not \in \mathfrak q$ such that $R \to S_g$ is G-unramified.
+The two finiteness requirements are kept distinct over a non-Noetherian base.
 
 #### Lemma. Flatness from Cohen--Macaulayness over a regular base
 
-Miracle flatness
+Let $(R,\mathfrak m_R)\to(S,\mathfrak m_S)$ be a local homomorphism of Noetherian local rings. If $R$ is regular, $S$ is Cohen–Macaulay, and
+$$\dim S=\dim R+\dim(S/\mathfrak m_RS),$$
+then $S$ is flat over $R$.
 
-Let $R \to S$ be a local homomorphism of Noetherian local rings. Assume
+**Proof.** Induct on $d=\dim R$. At $d=0$, the regular local ring $R$ is a field, so flatness is automatic. Suppose $d>0$. For every minimal prime $\mathfrak q_i$ of $S$, Cohen–Macaulayness gives $\dim(S/\mathfrak q_i)=\dim S$, by [The Cohen–Macaulay chain theorem](#native-algebra-lemma-maximal-chain-cm). Thus $\mathfrak m_RS$ cannot be contained in $\mathfrak q_i$: otherwise the quotient $S/\mathfrak q_i$ would have dimension at most $\dim(S/\mathfrak m_RS)$, contrary to the displayed equality and $d>0$.
 
-1.  $R$ is regular,
+Each contraction $\mathfrak p_i=R\cap\mathfrak q_i$ is therefore a proper subprime of $\mathfrak m_R$. [Prime avoidance with the square of the maximal ideal](#native-algebra-lemma-silly) provides
+$$x\in\mathfrak m_R\setminus\left(\mathfrak m_R^2\cup\bigcup_i\mathfrak p_i\right).$$
+Since $R$ is regular, $x$ is part of a regular system of parameters. Hence $R/xR$ is regular of dimension $d-1$. The associated primes of the Cohen–Macaulay local ring $S$ are its minimal primes, and $x$ avoids all of them. Thus $x$ is also a nonzerodivisor on $S$, and $S/xS$ is Cohen–Macaulay of dimension $\dim S-1$.
 
-2.  $S$ is Cohen-Macaulay,
-
-3.  $\dim(S) = \dim(R) + \dim(S/\mathfrak m_R S)$.
-
-Then $R \to S$ is flat.
-
-**Proof.** By induction on $\dim(R)$. The case $\dim(R) = 0$ is trivial, because then $R$ is a field. Assume $\dim(R) > 0$. By (3) this implies that $\dim(S) > 0$. Let $\mathfrak q_1, \ldots, \mathfrak q_r$ be the minimal primes of $S$. Note that $\mathfrak q_i \not \supset \mathfrak m_R S$ since $$\dim(S/\mathfrak q_i) = \dim(S) > \dim(S/\mathfrak m_R S),$$ the first equality by Lemma [Maximal prime chains in a Cohen–Macaulay ring](#native-algebra-lemma-maximal-chain-cm) and the inequality by (3). Thus $\mathfrak p_i = R \cap \mathfrak q_i$ is not equal to $\mathfrak m_R$. Pick $x \in \mathfrak m_R$, $x \not \in \mathfrak m_R^2$, and $x \not \in \mathfrak p_i$, see Lemma [An elementary algebraic comparison](#native-algebra-lemma-silly). Hence we see that $x$ is not contained in any of the minimal primes of $S$. Hence $x$ is a nonzerodivisor on $S$ by (2), see Lemma [Equivalent Cohen–Macaulay conditions](#native-algebra-lemma-reformulate-cm) and $S/xS$ is Cohen-Macaulay with $\dim(S/xS) = \dim(S) - 1$. By (1) and Lemma [Regular rings are Cohen–Macaulay](#native-algebra-lemma-regular-ring-cm) the ring $R/xR$ is regular with $\dim(R/xR) = \dim(R) - 1$. By induction we see that $R/xR \to S/xS$ is flat. Hence we conclude by Lemma [A variant of the local criterion for flatness](#native-algebra-lemma-variant-local-criterion-flatness) and the remark following it. $\square$
+The closed fibre of $R/xR\to S/xS$ is still $S/\mathfrak m_RS$. Subtracting one from both ring dimensions preserves the required dimension equality, so induction makes $S/xS$ flat over $R/xR$. The free resolution $0\to R\xrightarrow{x}R\to R/xR\to0$ shows
+$$\operatorname{Tor}_1^R(S,R/xR)=\ker(x:S\to S)=0.$$
+Apply [The local flatness criterion for an ideal](#native-algebra-lemma-variant-local-criterion-flatness) with the ideal $(x)$ and the finite $S$-module $S$. Its two hypotheses are exactly this Tor vanishing and the established flatness of $S/xS$ over $R/xR$. It follows that $S$ is flat over $R$. ∎
 
 #### Lemma. Smoothness after an algebraic closure of the ground field
- Let $k$ be an algebraically closed field. Let $S$ be a finite type $k$-algebra. Let $\mathfrak m \subset S$ be a maximal ideal. The following are equivalent:
 
-1.  The ring $S_{\mathfrak m}$ is a regular local ring.
+Let $k$ be algebraically closed, $S$ a finite-type $k$-algebra, and $\mathfrak m$ a maximal ideal of $S$. The following are equivalent:
 
-2.  We have $\dim_{\kappa(\mathfrak m)} \Omega_{S/k} \otimes_S \kappa(\mathfrak m)
-    \leq \dim(S_{\mathfrak m})$.
+1. $S_{\mathfrak m}$ is regular local.
+2. $\dim_{\kappa(\mathfrak m)}(\Omega_{S/k}\otimes_S\kappa(\mathfrak m))\leq\dim S_{\mathfrak m}$.
+3. The two dimensions in (2) are equal.
+4. Some $g\in S\setminus\mathfrak m$ makes $S_g$ smooth over $k$.
 
-3.  We have $\dim_{\kappa(\mathfrak m)} \Omega_{S/k} \otimes_S \kappa(\mathfrak m)
-    = \dim(S_{\mathfrak m})$.
-
-4.  There exists a $g \in S$, $g \not \in \mathfrak m$ such that $S_g$ is smooth over $k$. In other words $S/k$ is smooth at $\mathfrak m$.
-
-**Proof.** Note that (1), (2) and (3) are equivalent by Lemma [The rank of Kähler differentials](#native-algebra-lemma-rank-omega) and Definition [Regular Noetherian rings](#native-algebra-definition-regular).
-
-Assume that $S$ is smooth at $\mathfrak m$. By Lemma [Smooth algebras are syntomic](#native-algebra-lemma-smooth-syntomic) we see that $S_g$ is standard smooth over $k$ for a suitable $g \in S$, $g \not \in \mathfrak m$. Hence by Lemma [Standard smooth algebras](#native-algebra-lemma-standard-smooth) we see that $\Omega_{S_g/k}$ is free of rank $\dim(S_g)$. Hence by Lemma [The rank of Kähler differentials](#native-algebra-lemma-rank-omega) we see that $\dim(S_{\mathfrak m}) = \dim (\mathfrak m/\mathfrak m^2)$ in other words $S_\mathfrak m$ is regular.
-
-Conversely, suppose that $S_{\mathfrak m}$ is regular. Let $d = \dim(S_{\mathfrak m}) = \dim \mathfrak m/\mathfrak m^2$. Choose a presentation $S = k[x_1, \ldots, x_n]/I$ such that $x_i$ maps to an element of $\mathfrak m$ for all $i$. In other words, $\mathfrak m'' = (x_1, \ldots, x_n)$ is the corresponding maximal ideal of $k[x_1, \ldots, x_n]$. Note that we have a short exact sequence $$I/\mathfrak m''I \to \mathfrak m''/(\mathfrak m'')^2
-\to \mathfrak m/(\mathfrak m)^2 \to 0$$ Pick $c = n - d$ elements $f_1, \ldots, f_c \in I$ such that their images in $\mathfrak m''/(\mathfrak m'')^2$ span the kernel of the map to $\mathfrak m/\mathfrak m^2$. This is clearly possible. Let $J = (f_1, \ldots, f_c)$. So $J \subset I$. Let $S' = k[x_1, \ldots, x_n]/J$ so there is a surjection $S' \to S$. Let $\mathfrak m' = \mathfrak m''S'$ be the corresponding maximal ideal of $S'$. Hence we have $$\begin{gathered}\begin{matrix}k[x_1, \ldots, x_n] & S' & S \\ \mathfrak m'' & \mathfrak m' & \mathfrak m\end{matrix} \\[6pt] \begin{aligned}k[x_1, \ldots, x_n] & \longrightarrow S' \\ S' & \longrightarrow S \\ \mathfrak m'' & \longrightarrow k[x_1, \ldots, x_n] \\ \mathfrak m'' & \longrightarrow \mathfrak m' \\ \mathfrak m' & \longrightarrow \mathfrak m \\ \mathfrak m' & \longrightarrow S' \\ \mathfrak m & \longrightarrow S\end{aligned}\end{gathered}$$ By our choice of $J$ the exact sequence $$J/\mathfrak m''J \to \mathfrak m''/(\mathfrak m'')^2
-\to \mathfrak m'/(\mathfrak m')^2 \to 0$$ shows that $\dim( \mathfrak m'/(\mathfrak m')^2 ) = d$. Since $S'_{\mathfrak m'}$ surjects onto $S_{\mathfrak m}$ we see that $\dim(S'_{\mathfrak m'}) \geq d$. Hence by the discussion preceding Definition [Regular local rings](#native-algebra-definition-regular-local) we conclude that $S'_{\mathfrak m'}$ is regular of dimension $d$ as well. Because $S'$ was cut out by $c = n - d$ equations we conclude that there exists a $g' \in S'$, $g' \not \in \mathfrak m'$ such that $S'_{g'}$ is a global complete intersection over $k$, see Lemma [Local criteria for complete intersections](#native-algebra-lemma-lci). Also the map $S'_{\mathfrak m'} \to S_{\mathfrak m}$ is a surjection of Noetherian local domains of the same dimension and hence an isomorphism. Hence $S' \to S$ is surjective with finitely generated kernel and becomes an isomorphism after localizing at $\mathfrak m'$. Thus we can find $g' \in S'$, $g' \not \in \mathfrak m'$ such that $S'_{g'} \to S_{g'}$ is an isomorphism. All in all we conclude that after replacing $S$ by a principal localization we may assume that $S$ is a global complete intersection.
-
-At this point we may write $S = k[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ with $\dim S = n - c$. Recall that the naive cotangent complex of this algebra is given by $$\bigoplus S \cdot f_j
-\to
-\bigoplus S \cdot \text{d}x_i$$ see Lemma [The conormal module of a global complete intersection](#native-algebra-lemma-relative-global-complete-intersection-conormal). By Lemma [Smoothness of a global complete intersection](#native-algebra-lemma-relative-global-complete-intersection-smooth) in order to show that $S$ is smooth at $\mathfrak m$ we have to show that one of the $c \times c$ minors $g_I$ of the matrix "$A$" giving the map above does not vanish at $\mathfrak m$. By Lemma [The rank of Kähler differentials](#native-algebra-lemma-rank-omega) the matrix $A \bmod \mathfrak m$ has rank $c$. Thus we win. $\square$
+**Proof.** The Nullstellensatz gives $\kappa(\mathfrak m)=k$. The exact cotangent calculation and the closed-point smoothness criterion are proved in *Smooth algebras over a field and the Jacobian criterion*, Proposition 3.1, using the full field criterion of its Theorem 2.1. In the present notation the calculation identifies
+$$\Omega_{S/k}\otimes_S k\simeq\mathfrak m/\mathfrak m^2.$$
+Its dimension is the embedding dimension of $S_{\mathfrak m}$, which is at least its Krull dimension. Therefore (2) is equivalent to (3), and (3) is precisely regularity, proving equivalence with (1). Proposition 3.1 identifies that regularity with smoothness at this closed point, meaning the principal neighbourhood in (4). Its hypotheses are exactly a finite-type algebra, an algebraically closed field and a closed point; thus all four assertions follow at their stated scope. ∎
 
 #### Lemma. The fibrewise criterion for flatness (Critère de platitude par fibres)
- Let $R$, $S$, $S'$ be local rings and let $R \to S \to S'$ be local ring homomorphisms. Let $M$ be an $S'$-module. Let $\mathfrak m \subset R$ be the maximal ideal. Assume
 
-1.  The ring maps $R \to S$ and $R \to S'$ are essentially of finite presentation.
+Let $R\to S\to S'$ be local homomorphisms of local rings, and let $\mathfrak m$ be the maximal ideal of $R$. Suppose that both $S$ and $S'$ are essentially finitely presented over $R$, and that $M\ne0$ is a finitely presented $S'$-module. If $M$ is flat over $R$ and $M/\mathfrak mM$ is flat over $S/\mathfrak mS$, then $S$ is flat over $R$ and $M$ is flat over $S$.
 
-2.  The module $M$ is of finite presentation over $S'$.
+**Proof.** We reduce the data, including both flatness conditions, to Noetherian local models. Express $R$ as a filtered colimit of local rings $R_\lambda$ essentially of finite type over $\mathbb Z$, with local transition maps and local maps to $R$. Denote their maximal ideals by $\mathfrak m_\lambda$. One construction takes finite-type subrings of $R$ and localizes at the inverse images of $\mathfrak m$. The [essential finite-presentation model lemma](#native-algebra-lemma-limit-essentially-finite-presentation) permits a common later index at which both ring maps and their composite have compatible finite presentations.
 
-3.  The module $M$ is not zero.
+More explicitly, after fixing finite lists of coefficients we obtain local rings
+$$
+\begin{aligned}
+S_\lambda&=\bigl(R_\lambda[x_1,\ldots,x_n]/(f_{1,\lambda},\ldots,f_{u,\lambda})\bigr)_{\mathfrak q_\lambda},\\
+S'_\lambda&=\bigl(S_\lambda[y_1,\ldots,y_m]/(\overline g_{1,\lambda},\ldots,\overline g_{v,\lambda})\bigr)_{\mathfrak q'_\lambda},
+\end{aligned}
+$$
+with colimits $S$ and $S'$. The indicated primes are the inverse images of the final maximal ideals. Lift a finite presentation matrix for $M$ at a further index and set $M_\lambda$ to be its cokernel over $S'_\lambda$. Then
+$$M_\mu=M_\lambda\otimes_{S'_\lambda}S'_\mu,\qquad
+M=M_\lambda\otimes_{S'_\lambda}S'$$
+for all sufficiently late indices. Every $M_\lambda$ is nonzero, since a zero one would make its base change $M$ zero.
 
-4.  The module $M/\mathfrak mM$ is a flat $S/\mathfrak mS$-module.
+For $\mu\geq\lambda$, the maps
+$$S_\lambda\otimes_{R_\lambda}R_\mu\longrightarrow S_\mu,
+\qquad S'_\lambda\otimes_{S_\lambda}S_\mu\longrightarrow S'_\mu$$
+are localizations. The same is true of $S'_\lambda\otimes_{R_\lambda}R_\mu\to S'_\mu$. Apply [Eventual flatness in a filtered colimit](#native-algebra-lemma-colimit-eventually-flat) to the models $R_\lambda\to S'_\lambda,M_\lambda$. The flatness of $M$ over $R$ gives flatness of $M_\lambda$ over $R_\lambda$ at all sufficiently late indices.
 
-5.  The module $M$ is a flat $R$-module.
+The maximal ideals have colimit $\mathfrak m$, so quotienting gives
+$$S/\mathfrak mS=\varinjlim S_\lambda/\mathfrak m_\lambda S_\lambda,\qquad
+M/\mathfrak mM=\varinjlim M_\lambda/\mathfrak m_\lambda M_\lambda,$$
+and likewise for $S'$. These quotient models still have the required localization and module base-change properties. Indeed, quotienting the preceding localized tensor products by $\mathfrak m_\mu$ identifies their source with
+$$
+\bigl(S'_\lambda/\mathfrak m_\lambda S'_\lambda\bigr)
+\otimes_{S_\lambda/\mathfrak m_\lambda S_\lambda}
+\bigl(S_\mu/\mathfrak m_\mu S_\mu\bigr),
+$$
+and its map to $S'_\mu/\mathfrak m_\mu S'_\mu$ is a localization. The presentation matrix gives the analogous base-change isomorphism for the quotient modules. Thus these are [essentially finitely presented module models](#native-algebra-lemma-limit-module-essentially-finite-presentation). Applying eventual flatness a second time, now to the assumed flatness of $M/\mathfrak mM$, makes
+$$M_\lambda/\mathfrak m_\lambda M_\lambda
+\quad\text{flat over}\quad S_\lambda/\mathfrak m_\lambda S_\lambda$$
+at all sufficiently late indices.
 
-Then $S$ is flat over $R$ and $M$ is a flat $S$-module.
-
-**Proof.** As in the proof of Lemma [Essentially finite presentations in a filtered limit](#native-algebra-lemma-limit-essentially-finite-presentation) we may first write $R = \mathop{\operatorname{colim}} R_\lambda$ as a directed colimit of local $\mathbf{Z}$-algebras which are essentially of finite type. Denote by $\mathfrak p_\lambda$ the maximal ideal of $R_\lambda$. Next, we may assume that for some $\lambda_1 \in \Lambda$ there exist $f_{j, \lambda_1} \in R_{\lambda_1}[x_1, \ldots, x_n]$ such that $$S =
-\mathop{\operatorname{colim}}_{\lambda \geq \lambda_1} S_\lambda, \text{ with }
-S_\lambda =
-(R_\lambda[x_1, \ldots, x_n]/
-(f_{1, \lambda}, \ldots, f_{u, \lambda}))_{\mathfrak q_\lambda}$$ For some $\lambda_2 \in \Lambda$, $\lambda_2 \geq \lambda_1$ there exist $g_{j, \lambda_2} \in R_{\lambda_2}[x_1, \ldots, x_n, y_1, \ldots, y_m]$ with images $\overline{g}_{j, \lambda_2} \in S_{\lambda_2}[y_1, \ldots, y_m]$ such that $$S' =
-\mathop{\operatorname{colim}}_{\lambda \geq \lambda_2} S'_\lambda, \text{ with }
-S'_\lambda =
-(S_\lambda[y_1, \ldots, y_m]/
-(\overline{g}_{1, \lambda}, \ldots,
-\overline{g}_{v, \lambda}))_{\overline{\mathfrak q}'_\lambda}$$ Note that this also implies that $$S'_\lambda =
-(R_\lambda[x_1, \ldots, x_n, y_1, \ldots, y_m]/
-(f_{1, \lambda}, \ldots, f_{u, \lambda},
-g_{1, \lambda}, \ldots, g_{v, \lambda}))_{\mathfrak q'_\lambda}$$ Choose a presentation $$(S')^{\oplus s} \to (S')^{\oplus t} \to M \to 0$$ of $M$ over $S'$. Let $A \in \text{Mat}(t \times s, S')$ be the matrix of the presentation. For some $\lambda_3 \in \Lambda$, $\lambda_3 \geq \lambda_2$ we can find a matrix $A_{\lambda_3} \in \text{Mat}(t \times s, S'_{\lambda_3})$ which maps to $A$. For all $\lambda \geq \lambda_3$ we let $M_\lambda = \operatorname{Coker}((S'_\lambda)^{\oplus s} \xrightarrow{A_\lambda}
-(S'_\lambda)^{\oplus t})$.
-
-With these choices, we have for each $\lambda_3 \leq \lambda \leq \mu$ that $S_\lambda \otimes_{R_{\lambda}} R_\mu \to S_\mu$ is a localization, $S'_\lambda \otimes_{S_{\lambda}} S_\mu \to S'_\mu$ is a localization, and the map $M_\lambda \otimes_{S'_\lambda} S'_\mu \to M_\mu$ is an isomorphism. This also implies that $S'_\lambda \otimes_{R_{\lambda}} R_\mu \to S'_\mu$ is a localization. Thus, since $M$ is flat over $R$ we see by Lemma [Eventual flatness in a filtered colimit](#native-algebra-lemma-colimit-eventually-flat) that for all $\lambda$ big enough the module $M_\lambda$ is flat over $R_\lambda$. Moreover, note that $\mathfrak m = \mathop{\operatorname{colim}} \mathfrak p_\lambda$, $S/\mathfrak mS = \mathop{\operatorname{colim}} S_\lambda/\mathfrak p_\lambda S_\lambda$, $S'/\mathfrak mS' = \mathop{\operatorname{colim}} S'_\lambda/\mathfrak p_\lambda S'_\lambda$, and $M/\mathfrak mM = \mathop{\operatorname{colim}} M_\lambda/\mathfrak p_\lambda M_\lambda$. Also, for each $\lambda_3 \leq \lambda \leq \mu$ we see (from the properties listed above) that $$S'_\lambda/\mathfrak p_\lambda S'_\lambda
-\otimes_{S_{\lambda}/\mathfrak p_\lambda S_\lambda}
-S_\mu/\mathfrak p_\mu S_\mu
-\longrightarrow
-S'_\mu/\mathfrak p_\mu S'_\mu$$ is a localization, and the map $$M_\lambda / \mathfrak p_\lambda M_\lambda
-\otimes_{S'_\lambda/\mathfrak p_\lambda S'_\lambda}
-S'_\mu /\mathfrak p_\mu S'_\mu
-\longrightarrow
-M_\mu/\mathfrak p_\mu M_\mu$$ is an isomorphism. Hence the system $(S_\lambda/\mathfrak p_\lambda S_\lambda \to
-S'_\lambda/\mathfrak p_\lambda S'_\lambda,
-M_\lambda/\mathfrak p_\lambda M_\lambda)$ is a system as in Lemma [Essentially finitely presented module models](#native-algebra-lemma-limit-module-essentially-finite-presentation) as well. We may apply Lemma [Eventual flatness in a filtered colimit](#native-algebra-lemma-colimit-eventually-flat) again because $M/\mathfrak m M$ is assumed flat over $S/\mathfrak mS$ and we see that $M_\lambda/\mathfrak p_\lambda M_\lambda$ is flat over $S_\lambda/\mathfrak p_\lambda S_\lambda$ for all $\lambda$ big enough. Thus for $\lambda$ big enough the data $R_\lambda \to S_\lambda \to S'_\lambda, M_\lambda$ satisfies the hypotheses of Lemma [The Noetherian fibrewise criterion for flatness](#native-algebra-lemma-criterion-flatness-fibre-noetherian). Pick such a $\lambda$. Then $S$ is a localization of $S_\lambda \otimes_{R_\lambda} R$, hence is flat over $R$. Also $M$ is a localization of $M_\lambda \otimes_{S_\lambda} S$, hence is flat over $S$ (base change and localization preserve flatness). $\square$
+Choose one index at which both conclusions hold. The rings $R_\lambda,S_\lambda,S'_\lambda$ are Noetherian local, and $M_\lambda$ is finite and nonzero. The [Noetherian fibrewise criterion](#native-algebra-lemma-criterion-flatness-fibre-noetherian) gives flatness of $S_\lambda$ over $R_\lambda$ and of $M_\lambda$ over $S_\lambda$. Finally $S$ is a localization of $S_\lambda\otimes_{R_\lambda}R$, and $M$ is obtained from $M_\lambda\otimes_{S_\lambda}S$ by the corresponding further localization. Flatness survives both base change and localization, yielding the two required conclusions over the original, possibly non-Noetherian rings. ∎
 
 #### Lemma. Characterizations of étale algebras
 
-Let $R \to S$ be a ring map. Let $\mathfrak q$ be a prime of $S$ lying over a prime $\mathfrak p$ of $R$. If
+Let $R\to S$ be finitely presented, and let $\mathfrak q\subset S$ lie over $\mathfrak p\subset R$. Suppose $R_{\mathfrak p}\to S_{\mathfrak q}$ is flat, $\mathfrak pS_{\mathfrak q}$ is the maximal ideal of $S_{\mathfrak q}$, and $\kappa(\mathfrak q)/\kappa(\mathfrak p)$ is finite separable. Then $R\to S$ is étale at $\mathfrak q$.
 
-1.  $R \to S$ is of finite presentation,
+**Proof.** The fibre local ring is the field $\kappa(\mathfrak q)$. By [An isolated point of a fibre](#native-algebra-lemma-isolated-point-fibre), a principal neighbourhood of $\mathfrak q$ has no other point in that fibre. Replace $S$ by this neighbourhood. Its fibre algebra is local and equals its localization at that one point, hence equals $\kappa(\mathfrak q)$. The finite separable field extension is étale, so this fibre is smooth.
 
-2.  $R_{\mathfrak p} \to S_{\mathfrak q}$ is flat
-
-3.  $\mathfrak p S_{\mathfrak q}$ is the maximal ideal of the local ring $S_{\mathfrak q}$, and
-
-4.  the field extension $\kappa(\mathfrak q)/\kappa(\mathfrak p)$ is finite separable,
-
-then $R \to S$ is étale at $\mathfrak q$.
-
-**Proof.** Apply Lemma [An isolated point of a fibre](#native-algebra-lemma-isolated-point-fibre) to find a $g \in S$, $g \not \in \mathfrak q$ such that $\mathfrak q$ is the only prime of $S_g$ lying over $\mathfrak p$. We may and do replace $S$ by $S_g$. Then $S \otimes_R \kappa(\mathfrak p)$ has a unique prime, hence is a local ring, hence is equal to $S_{\mathfrak q}/\mathfrak pS_{\mathfrak q}
-\cong \kappa(\mathfrak q)$. By Lemma [Smoothness from flatness and smooth fibres](#native-algebra-lemma-flat-fibre-smooth) there exists a $g \in S$, $g \not \in \mathfrak q$ such that $R \to S_g$ is smooth. Replacing $S$ by $S_g$ again, we may assume that $R \to S$ is smooth. By Lemma [Smooth algebras are syntomic](#native-algebra-lemma-smooth-syntomic) we may even assume that $R \to S$ is standard smooth, say $S = R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$. Since $S \otimes_R \kappa(\mathfrak p) = \kappa(\mathfrak q)$ has dimension $0$ we conclude that $n = c$, i.e., $R \to S$ is étale. $\square$
+[Smoothness from flatness and smooth fibres](#native-algebra-lemma-flat-fibre-smooth) now gives a smooth principal neighbourhood. Refine it by [the standard smooth neighbourhood theorem](#native-algebra-lemma-smooth-syntomic) to a presentation
+$$S_g=R[x_1,\ldots,x_n]/(f_1,\ldots,f_c)$$
+with an invertible $c$-column Jacobian minor. Its fibre at the retained point is still the same field. A nonempty fibre of this standard presentation has dimension $n-c$, by [Standard smooth algebras](#native-algebra-lemma-standard-smooth), so $n=c$. The presentation therefore has invertible full square Jacobian and zero differentials. It is smooth and unramified, hence étale, proving the assertion at $\mathfrak q$. ∎
 
 #### Lemma. Étale algebras in standard smooth form
- Any étale ring map is standard smooth. More precisely, if $R \to S$ is étale, then there exists a presentation $S = R[x_1, \ldots, x_n]/(f_1, \ldots, f_n)$ such that the image of $\det(\partial f_j/\partial x_i)$ is invertible in $S$.
 
-**Proof.** Let $R \to S$ be étale. Choose a presentation $S = R[x_1, \ldots, x_n]/I$. As $R \to S$ is étale we know that $$\text{d} :
-I/I^2
-\longrightarrow
-\bigoplus\nolimits_{i = 1, \ldots, n} S\text{d}x_i$$ is an isomorphism, in particular $I/I^2$ is a free $S$-module. Thus by Lemma [A presentation realizing a basis of the conormal module](#native-algebra-lemma-huber) we may assume (after possibly changing the presentation), that $I = (f_1, \ldots, f_c)$ such that the classes $f_i \bmod I^2$ form a basis of $I/I^2$. It follows immediately from the fact that the displayed map above is an isomorphism that $c = n$ and that $\det(\partial f_j/\partial x_i)$ is invertible in $S$. $\square$
+Every étale $R$-algebra $S$ admits a presentation
+$$S=R[x_1,\ldots,x_n]/(f_1,\ldots,f_n)$$
+whose full Jacobian determinant is invertible in $S$. In particular, the algebra is standard smooth globally.
+
+**Proof.** Choose any finite polynomial presentation $S=P/I$. Étaleness says that its conormal differential
+$$I/I^2\longrightarrow\Omega_{P/R}\otimes_P S=S^{\oplus n}$$
+is an isomorphism. In particular, the conormal module is free. Apply [A presentation realizing a conormal basis](#native-algebra-lemma-huber) to obtain a presentation whose defining equations are a basis of that module. In this new presentation the conormal differential is still an isomorphism. For $S\ne0$, equality of the ranks of finite free modules gives as many equations as variables, and the matrix of the differential is the full Jacobian. Its determinant is a unit, as asserted. The zero algebra has the presentation $R[t]/(1)$; its Jacobian image is the identity element of the zero ring and hence is a unit there. This also covers that case. ∎
 
 #### Lemma. Recognizing a filtered colimit of finite presentations
 
-Let $R \to \Lambda$ be a ring map. Let $\mathcal{E}$ be a set of $R$-algebras such that each $A \in \mathcal{E}$ is of finite presentation over $R$. Then the following two statements are equivalent
+Let $R\to\Lambda$ be a homomorphism and let $\mathcal E$ be a set of finitely presented $R$-algebras. Then $\Lambda$ is a filtered colimit of algebras in $\mathcal E$ if and only if every homomorphism $A\to\Lambda$ from a finitely presented $R$-algebra factors as $A\to B\to\Lambda$ with $B\in\mathcal E$.
 
-1.  $\Lambda$ is a filtered colimit of elements of $\mathcal{E}$, and
+**Proof.** In the forward direction, a map from a finitely presented algebra into a filtered colimit factors through a stage, by [The finite-presentation criterion](#native-algebra-lemma-characterize-finite-presentation).
 
-2.  for any $R$-algebra map $A \to \Lambda$ with $A$ of finite presentation over $R$ we can find a factorization $A \to B \to \Lambda$ with $B \in \mathcal{E}$.
+Conversely, form the category of pairs $(B,\phi)$ with $B\in\mathcal E$ and $\phi:B\to\Lambda$; arrows are $R$-algebra maps compatible with these structure maps. This category is small. Applying the factorization hypothesis to $R\to\Lambda$ makes it nonempty. Two objects have a common target: their maps give $B_1\otimes_R B_2\to\Lambda$, and this finitely presented algebra factors through an object of the category.
 
-**Proof.** Suppose that $\mathcal{I} \to \mathcal{E}$, $i \mapsto A_i$ is a filtered diagram such that $\Lambda = \mathop{\operatorname{colim}}_i A_i$. Let $A \to \Lambda$ be an $R$-algebra map with $A$ of finite presentation over $R$. Then we get a factorization $A \to A_i \to \Lambda$ by applying Lemma [Characterizations of finite presentation](#native-algebra-lemma-characterize-finite-presentation). Thus (1) implies (2).
+To equalize two parallel arrows $u,v:B_1\to B_2$, choose a finite list of algebra generators $b_i$ of $B_1$. The quotient
+$$B_2/(u(b_i)-v(b_i)\mid i)$$
+is still finitely presented over $R$, and its map to $\Lambda$ factors through an object of $\mathcal E$. The resulting arrow out of $B_2$ equalizes $u$ and $v$ on the generators, hence on all of $B_1$. The category is therefore filtered.
 
-Consider the category $\mathcal{I}$ of Lemma [The filtered category of finite ring presentations](#native-algebra-lemma-ring-colimit-fp-category). By Categories, Lemma [Cofinal subcategories of filtered categories (uncovered prerequisite)](#uncovered-categories-lemma-cofinal-in-filtered) the full subcategory $\mathcal{J}$ consisting of those $A \to \Lambda$ with $A \in \mathcal{E}$ is cofinal in $\mathcal{I}$ and is a filtered category. Then $\Lambda$ is also the colimit over $\mathcal{J}$ by Categories, Lemma [Cofinality and colimits (uncovered prerequisite)](#uncovered-categories-lemma-cofinal). $\square$
+Its colimit maps to $\Lambda$. This map is surjective: for any $\lambda\in\Lambda$, apply the hypothesis to $R[t]\to\Lambda$, $t\mapsto\lambda$. It is injective as well. If an element $b$ represented at a stage $B$ maps to zero, the finitely presented quotient $B/(b)$ maps to $\Lambda$ and factors through another stage; that transition kills $b$. Filteredness first puts any two representatives at a common stage, so this kernel calculation proves injectivity in general. Thus the colimit is $\Lambda$, with exactly the required kind of stages. ∎
 
 #### Lemma. Standard smooth algebras
- Let $S = R[x_1, \ldots, x_n]/(f_1, \ldots, f_c) = R[x_1, \ldots, x_n]/I$ be a standard smooth algebra. Then
 
-1.  the ring map $R \to S$ is smooth,
+Suppose $S=R[x_1,\ldots,x_n]/(f_1,\ldots,f_c)=P/I$ is standard smooth, with its invertible Jacobian minor in the first $c$ variable columns. Then:
 
-2.  the $S$-module $\Omega_{S/R}$ is free on $\text{d}x_{c + 1}, \ldots, \text{d}x_n$,
+1. $R\to S$ is smooth.
+2. $\Omega_{S/R}$ is free with basis $dx_{c+1},\ldots,dx_n$.
+3. $I/I^2$ is free with basis the classes of $f_1,\ldots,f_c$.
+4. Every principal localization $S_g$ is standard smooth over $R$.
+5. Every base change $R'\to R'\otimes_R S$ is standard smooth.
+6. If $f\in R$ is invertible in $S$, the induced map $R_f\to S$ is standard smooth.
+7. $S$ is a relative global complete intersection over $R$.
 
-3.  the $S$-module $I/I^2$ is free on the classes of $f_1, \ldots, f_c$,
+**Proof.** Parts (1)–(5) are proved, with these exact bases and the polynomial-quotient convention, in *Formally smooth, unramified and étale ring maps*, Theorem 4.1. Its square-zero correction solves the equations by the invertible Jacobian block. Projection onto that block proves independence of the conormal generators, and eliminating those differential coordinates gives the stated basis of $\Omega$. Its localization proof adjoins a variable $z$ with equation $hz-1$, where $h$ lifts $g$, and uses the block determinant $h\Delta$. Its base-change proof applies the coefficient map to the equations and to $\Delta$. Thus the full proof includes both preservation assertions, not just smoothness itself.
 
-4.  for any $g \in S$ the ring map $R \to S_g$ is standard smooth,
+For (6), apply (5) with $R'=R_f$. Since $f$ already has an inverse in $S$, the canonical map $R_f\otimes_R S\to S$ is an isomorphism. This gives the asserted standard smooth presentation over $R_f$.
 
-5.  for any ring map $R \to R'$ the base change $R' \to R'\otimes_R S$ is standard smooth,
-
-6.  if $f \in R$ maps to an invertible element in $S$, then $R_f \to S$ is standard smooth, and
-
-7.  the ring $S$ is a relative global complete intersection over $R$.
-
-**Proof.** Consider the naive cotangent complex of the given presentation $$(f_1, \ldots, f_c)/(f_1, \ldots, f_c)^2
-\longrightarrow
-\bigoplus\nolimits_{i = 1}^n S \text{d}x_i.$$ Let us compose this map with the projection onto the first $c$ direct summands of the direct sum. According to the definition of a standard smooth algebra the classes $f_i \bmod (f_1, \ldots, f_c)^2$ map to a basis of $\bigoplus_{i = 1}^c S\text{d}x_i$. We conclude that $(f_1, \ldots, f_c)/(f_1, \ldots, f_c)^2$ is free of rank $c$ with a basis given by the elements $f_i \bmod (f_1, \ldots, f_c)^2$, and that the homology in degree $0$, i.e., $\Omega_{S/R}$, of the naive cotangent complex is a free $S$-module with basis the images of $\text{d}x_{c + j}$, $j = 1, \ldots, n - c$. In particular, this proves $R \to S$ is smooth.
-
-The proofs of (4) and (6) are omitted. But see the example below and the proof of Lemma [Base change of a global complete intersection](#native-algebra-lemma-base-change-relative-global-complete-intersection).
-
-Let $\varphi : R \to R'$ be any ring map. Set $S' = R'[x_1, \ldots, x_n]/(f_1^\varphi, \ldots, f_c^\varphi)$ where $f^\varphi$ is the polynomial obtained from $f \in R[x_1, \ldots, x_n]$ by applying $\varphi$ to all the coefficients. Then $S' \cong R' \otimes_R S$. Moreover, the determinant of Definition [Standard smooth presentations](#native-algebra-definition-standard-smooth) for $S'/R'$ is equal to $g^\varphi$. Its image in $S'$ is therefore the image of $g$ via $R[x_1, \ldots, x_n] \to S \to S'$ and hence invertible. This proves (5).
-
-To prove (7) it suffices to show that every nonzero fibre $S \otimes_R \kappa(\mathfrak p)$ has dimension $n - c$ for every prime $\mathfrak p \subset R$. By (5) it suffices to prove that any standard smooth algebra $k[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ over a field $k$, if nonzero, has dimension $n - c$. We already know that $k[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ is a local complete intersection by Lemma Smooth algebras over a field and the Jacobian criterion, Theorems 5.1–6.1 and Sections 1–3. Hence, since $I/I^2$ is free of rank $c$ we see that $k[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ has dimension $n - c$, by Lemma [Local criteria for complete intersections](#native-algebra-lemma-lci) for example. $\square$
+For (7), take a residue field $k$ of $R$. Part (5) gives the same standard smooth presentation for $S\otimes_R k$, and part (2) gives differential rank $n-c$ at every point of a nonempty fibre. The full field criterion in *Smooth algebras over a field and the Jacobian criterion*, Theorem 2.1 identifies that rank with dimension at the point. Hence the fibre has dimension $n-c$. Every nonempty fibre has now been checked, which is exactly the relative global complete-intersection condition for the given presentation. ∎
 
 #### Proposition. Formal smoothness of smooth algebras
 
-Let $R \to S$ be a ring map. The following are equivalent
+For any ring homomorphism $R\to S$, the following are equivalent:
 
-1.  $R \to S$ is of finite presentation and formally smooth,
+1. The algebra $S$ is finitely presented over $R$ and is formally smooth over $R$.
+2. The map $R\to S$ is smooth.
 
-2.  $R \to S$ is smooth.
+**Proof.** Choose a finite polynomial presentation $S=P/I$. Its conormal sequence is
+$$I/I^2\xrightarrow d\Omega_{P/R}\otimes_P S\longrightarrow\Omega_{S/R}\longrightarrow0.$$
+The complete equivalence between formal smoothness and this sequence being split exact with an initial zero is *Formally smooth, unramified and étale ring maps*, Theorem 3.1. Its proof constructs the lift from a section of $P/I^2\to S$ and constructs that section from the splitting by subtracting the induced derivation.
 
-**Proof.** Follows from Proposition [Characterizations of formal smoothness](#native-algebra-proposition-characterize-formally-smooth) and Definition [Smooth ring maps](#native-algebra-definition-smooth). (Note that $\Omega_{S/R}$ is a finitely presented $S$-module if $R \to S$ is of finite presentation, see Lemma Kähler differentials, Theorems 3.1–3.3, Proposition 3.4 and Theorem 7.1.) $\square$
+If (1) holds, the sequence is split exact. The middle term is finite free, so its quotient $\Omega_{S/R}$ is finite projective, and injectivity on the left says $H_1(\mathrm{NL}_{S/R})=0$. These are the smoothness conditions. Conversely, smoothness makes that conormal map injective and its cokernel finite projective. The sequence therefore splits, so Theorem 3.1 gives formal smoothness. Finite presentation is already included in smoothness. This proves both implications. ∎
 
 #### Lemma. Nakayama's lemma
 
-*Source credit:* the original source citation MatCA (1.M Lemma (NAK) page 11)
+The lemma is associated with Nakayama, Azumaya and Krull; see the historical attribution accompanying [Stacks, Tag 00DV](https://stacks.math.columbia.edu/tag/00DV).
 
-We quote from the original source citation MatCA: "This simple but important lemma is due to T. Nakayama, G. Azumaya and W. Krull. Priority is obscure, and although it is usually called the Lemma of Nakayama, late Prof. Nakayama did not like the name."
+Fix a commutative ring $R$, an ideal $I$, and an $R$-module $M$. Write $J(R)$ for the Jacobson radical. The following forms will be used:
 
-Let $R$ be a ring with Jacobson radical $\text{rad}(R)$. Let $M$ be an $R$-module. Let $I \subset R$ be an ideal.
+1. A finite module satisfying $M=IM$ is annihilated by some $f\in1+I$.
+2. In (1), the additional containment $I\subseteq J(R)$ forces $M=0$.
+3. Suppose $N,N'\subseteq M$, the module $N'$ is finite, and $M=N+IN'$. Some $f\in1+I$ then satisfies $fM\subseteq N$; in particular, $N_f=M_f$.
+4. Under the hypotheses of (3), if $I\subseteq J(R)$, then $N=M$.
+5. Let $u:N\to M$ be linear, with $M$ finite. Surjectivity of $N/IN\to M/IM$ implies surjectivity of $u_f:N_f\to M_f$ for some $f\in1+I$.
+6. Under the hypotheses of (5), $u$ itself is surjective when $I\subseteq J(R)$.
+7. If $M$ is finite and the images of $x_1,\ldots,x_n\in M$ span $M/IM$, these elements span $M_f$ over $R_f$ for a suitable $f\in1+I$.
+8. With the hypotheses of (7) and $I\subseteq J(R)$, the elements already span $M$ over $R$.
+9. For nilpotent $I$, the equality $M=IM$ implies $M=0$, without a finiteness condition on $M$.
+10. For nilpotent $I$, any equality $M=N+IN'$ with submodules $N,N'\subseteq M$ implies $M=N$; neither submodule needs to be finite.
+11. For nilpotent $I$, a linear map $u:N\to M$ is surjective whenever its reduction $N/IN\to M/IM$ is surjective.
+12. For nilpotent $I$, an arbitrary family $(x_\alpha)_{\alpha\in A}$ spanning $M/IM$ spans $M$ itself.
 
-1.   If $IM = M$ and $M$ is finite, then there exists an $f \in 1 + I$ such that $fM = 0$.
+**Proof.** The determinant argument for a finite module is proved in *Localization, local properties and support*, Lemma 4.1 and Theorem 4.2. Apply that lemma to the identity endomorphism of $M$, whose image lies in $IM$. Evaluation of its monic annihilating polynomial at $1$ gives an annihilator in $1+I$, proving (1). When $I\subseteq J(R)$, such an element is a unit: it belongs to no maximal ideal. This proves (2).
 
-2.  If $IM = M$, $M$ is finite, and $I \subset \text{rad}(R)$, then $M = 0$.
+Here are the quotient arguments that give the remaining forms. Under (3), put $Q=M/N$. The map $N'\to Q$ is surjective, since $M=N+IN'\subseteq N+N'$, so $Q$ is finite. Also $Q=IQ$. Part (1) supplies $fQ=0$, which is exactly $fM\subseteq N$. Localizing makes $Q_f=0$, hence $M_f=N_f$. Part (2) instead gives $Q=0$ under (4).
 
-3.  If $N, N' \subset M$, $M = N + IN'$, and $N'$ is finite, then there exists an $f \in 1 + I$ such that $fM \subset N$ and $M_f = N_f$.
+For (5) and (6), use $Q=\operatorname{coker}(u)$. It is finite as a quotient of $M$, and the surjectivity modulo $I$ says $Q/IQ=0$. Thus (1) and (2) give the respective conclusions. Apply these conclusions to the map $R^n\to M$ taking its standard basis to the $x_i$ to obtain (7) and (8).
 
-4.  If $N, N' \subset M$, $M = N + IN'$, $N'$ is finite, and $I \subset \text{rad}(R)$, then $M = N$.
-
-5.  If $N \to M$ is a module map, $N/IN \to M/IM$ is surjective, and $M$ is finite, then there exists an $f \in 1 + I$ such that $N_f \to M_f$ is surjective.
-
-6.  If $N \to M$ is a module map, $N/IN \to M/IM$ is surjective, $M$ is finite, and $I \subset \text{rad}(R)$, then $N \to M$ is surjective.
-
-7.  If $x_1, \ldots, x_n \in M$ generate $M/IM$ and $M$ is finite, then there exists an $f \in 1 + I$ such that $x_1, \ldots, x_n$ generate $M_f$ over $R_f$.
-
-8.  If $x_1, \ldots, x_n \in M$ generate $M/IM$, $M$ is finite, and $I \subset \text{rad}(R)$, then $M$ is generated by $x_1, \ldots, x_n$.
-
-9.  If $IM = M$, $I$ is nilpotent, then $M = 0$.
-
-10. If $N, N' \subset M$, $M = N + IN'$, and $I$ is nilpotent then $M = N$.
-
-11. If $N \to M$ is a module map, $I$ is nilpotent, and $N/IN \to M/IM$ is surjective, then $N \to M$ is surjective.
-
-12. If $\{x_\alpha\}_{\alpha \in A}$ is a set of elements of $M$ which generate $M/IM$ and $I$ is nilpotent, then $M$ is generated by the $x_\alpha$.
-
-**Proof.** Proof of ([the indicated step](#native-algebra-item-nakayama)). Choose generators $y_1, \ldots, y_m$ of $M$ over $R$. For each $i$ we can write $y_i = \sum z_{ij} y_j$ with $z_{ij} \in I$ (since $M = IM$). In other words $\sum_j (\delta_{ij} - z_{ij})y_j = 0$. Let $f$ be the determinant of the $m \times m$ matrix $A = (\delta_{ij} - z_{ij})$. Note that $f \in 1 + I$ (since the matrix $A$ is entrywise congruent to the $m \times m$ identity matrix modulo $I$). By Lemma [A left inverse for a matrix](#native-algebra-lemma-matrix-left-inverse) (1), there exists an $m \times m$ matrix $B$ such that $BA = f 1_{m \times m}$. Writing out we see that $\sum_{i} b_{hi} a_{ij} = f \delta_{hj}$ for all $h$ and $j$; hence, $\sum_{i, j} b_{hi} a_{ij} y_j
-= \sum_{j} f \delta_{hj} y_j = f y_h$ for every $h$. In other words, $0 = f y_h$ for every $h$ (since each $i$ satisfies $\sum_j a_{ij} y_j = 0$). This implies that $f$ annihilates $M$.
-
-By Lemma [Containment in the Jacobson radical](#native-algebra-lemma-contained-in-radical) an element of $1 + \text{rad}(R)$ is an invertible element of $R$. Hence we see that ([the indicated step](#native-algebra-item-nakayama)) implies (2). We obtain (3) by applying (1) to $M/N$ which is finite as $N'$ is finite. We obtain (4) by applying (2) to $M/N$ which is finite as $N'$ is finite. We obtain (5) by applying (3) to $M$ and the submodules $\operatorname{Im}(N \to M)$ and $M$. We obtain (6) by applying (4) to $M$ and the submodules $\operatorname{Im}(N \to M)$ and $M$. We obtain (7) by applying (5) to the map $R^{\oplus n} \to M$, $(a_1, \ldots, a_n) \mapsto a_1x_1 + \ldots + a_nx_n$. We obtain (8) by applying (6) to the map $R^{\oplus n} \to M$, $(a_1, \ldots, a_n) \mapsto a_1x_1 + \ldots + a_nx_n$.
-
-Part (9) holds because if $M = IM$ then $M = I^nM$ for all $n \geq 0$ and $I$ being nilpotent means $I^n = 0$ for some $n \gg 0$. Parts (10), (11), and (12) follow from (9) by the arguments used above. $\square$
+If $I^a=0$ and $Q=IQ$, iteration gives $Q=I^aQ=0$ for every module $Q$. This proves (9). Apply it to $M/N$, to $\operatorname{coker}(u)$, and to the cokernel of $R^{(A)}\to M$, respectively. Their reductions modulo $I$ vanish under (10), (11), and (12). The direct sum $R^{(A)}$ permits any indexing set, so no finite-generation assumption has entered these last four assertions. ∎
 
 #### Lemma. Finite presentation and finite algebras
- Let $R \to S$ be a ring map of finite presentation. For any surjection $\alpha : R[x_1, \ldots, x_n] \to S$ the kernel of $\alpha$ is a finitely generated ideal in $R[x_1, \ldots, x_n]$.
 
-**Proof.** Write $S = R[y_1, \ldots, y_m]/(f_1, \ldots, f_k)$. Choose $g_i \in R[y_1, \ldots, y_m]$ which are lifts of $\alpha(x_i)$. Then we see that $S = R[x_i, y_j]/(f_l, x_i - g_i)$. Choose $h_j \in R[x_1, \ldots, x_n]$ such that $\alpha(h_j)$ corresponds to $y_j \bmod (f_1, \ldots, f_k)$. Consider the map $\psi : R[x_i, y_j] \to R[x_i]$, $x_i \mapsto x_i$, $y_j \mapsto h_j$. Then the kernel of $\alpha$ is the image of $(f_l, x_i - g_i)$ under $\psi$ and we win. $\square$
+If $S$ is a finitely presented $R$-algebra, the kernel of every surjection $\alpha:R[x_1,\ldots,x_n]\to S$ is finitely generated as an ideal.
+
+**Proof.** Take one finite presentation $S=R[y_1,\ldots,y_m]/(f_1,\ldots,f_s)$. Choose polynomials $g_i(y)$ representing $\alpha(x_i)$, and choose polynomials $h_j(x)$ whose images under $\alpha$ are the classes of $y_j$. In $R[x]$, form the finite ideal
+$$L=\bigl(f_\ell(h(x)),\ x_i-g_i(h(x))\ :\ 1\leq\ell\leq s,\ 1\leq i\leq n\bigr).$$
+Each displayed generator maps to zero in $S$, so $\alpha$ descends to $\bar\alpha:R[x]/L\to S$. In the other direction, the substitution $y_j\mapsto h_j(x)\bmod L$ kills every $f_\ell$ and defines $\beta:S\to R[x]/L$.
+
+On the generators $y_j$ of $S$, the composite $\bar\alpha\beta$ is the identity by the choice of $h_j$. On the generators $x_i$ of $R[x]/L$, the composite $\beta\bar\alpha$ takes $x_i$ to $g_i(h(x))=x_i\bmod L$. Thus these maps are inverse $R$-algebra isomorphisms. It follows that $\ker\alpha=L$, giving the required finite generators over an arbitrary base ring. ∎
 
 #### Lemma. The equational criterion for flatness (Equational criterion of flatness)
 
-A module $M$ over $R$ is flat if and only if every relation in $M$ is trivial.
+For any ring $R$ and any $R$-module $M$, flatness is equivalent to the following condition. Whenever a finite list satisfies $\sum_{i=1}^n a_i x_i=0$ in $M$, there are a finite list $y_1,\ldots,y_s\in M$ and a matrix $(b_{ij})$ over $R$ such that
+$$x_i=\sum_{j=1}^s b_{ij}y_j\quad(1\leq i\leq n),\qquad
+\sum_{i=1}^n a_i b_{ij}=0\quad(1\leq j\leq s).$$
+A relation admitting this factorization is called *trivial*.
 
-**Proof.** Assume $M$ is flat and let $\sum f_i x_i = 0$ be a relation in $M$. Let $I = (f_1, \ldots, f_n)$, and let $K = \operatorname{Ker}(R^n \to I, (a_1, \ldots, a_n) \mapsto \sum_i a_i f_i)$. So we have the short exact sequence $0 \to K \to R^n \to I \to 0$. Then $\sum f_i \otimes x_i$ is an element of $I \otimes_R M$ which maps to zero in $R \otimes_R M = M$. By flatness $\sum f_i \otimes x_i$ is zero in $I \otimes_R M$. Thus there exists an element of $K \otimes_R M$ mapping to $\sum e_i \otimes x_i \in R^n \otimes_R M$ where $e_i$ is the $i$th basis element of $R^n$. Write this element as $\sum k_j \otimes y_j$ and then write the image of $k_j$ in $R^n$ as $\sum a_{ij} e_i$ to get the result.
-
-Assume every relation is trivial, let $I$ be a finitely generated ideal, and let $x = \sum f_i \otimes x_i$ be an element of $I \otimes_R M$ mapping to zero in $R \otimes_R M = M$. This just means exactly that $\sum f_i x_i$ is a relation in $M$. And the fact that it is trivial implies easily that $x$ is zero, because $$x
-=
-\sum f_i \otimes x_i
-=
-\sum f_i \otimes \left(\sum a_{ij}y_j\right)
-=
-\sum \left(\sum f_i a_{ij}\right) \otimes y_j
-=
-0$$ $\square$
+**Proof.** This is the full generality of *Tor and flat modules*, Theorem 5.1. Its forward argument lifts the relation through $\ker(R^n\to(a_1,\ldots,a_n))\otimes_R M$, producing exactly the matrix above. In the reverse direction that factorization kills every kernel tensor for $I\otimes_R M\to M$. Theorem 2.1 in the same lesson, Section 2, supplies the complete ideal criterion: it passes from finitely generated ideals to all ideals, then to submodules of finite free modules, arbitrary free modules, and finally arbitrary inclusions. These proofs impose no finite-presentation condition on the ideal or module and no Noetherian condition on $R$. ∎
 
 #### Lemma. Krull's intersection theorem
- Let $R$ be a Noetherian local ring. Let $I \subset R$ be a proper ideal. Let $M$ be a finite $R$-module. Then $\bigcap_{n \geq 0} I^nM = 0$.
 
-**Proof.** Let $N = \bigcap_{n \geq 0} I^nM$. Then $N = I^nM \cap N$ for all $n \geq 0$. By the Artin-Rees Lemma [The Artin–Rees lemma](#native-algebra-lemma-artin-rees) we see that $N = I^nM \cap N \subset IN$ for some suitably large $n$. By Nakayama's Lemma [Nakayama's lemma](#native-algebra-lemma-nak) we see that $N = 0$. $\square$
+If $(R,\mathfrak m)$ is Noetherian local, $M$ is a finite $R$-module, and $I\subsetneq R$ is an ideal, then
+$$\bigcap_{n\geq0}I^nM=0.$$
+
+**Proof.** The more general *Noetherian and Artinian rings*, Theorem 6.1, proves that this intersection $K$ satisfies $IK=K$ and is annihilated by one element of $1+I$. Its preceding Section 5 proves the Artin–Rees identity used to obtain $IK=K$; thus the theorem includes the proof of the intersection assertion. Here $I\subseteq\mathfrak m=J(R)$, so its annihilator is a unit. Consequently $K=0$. ∎
 
 #### Lemma. Composition of smooth ring maps
 
-A composition of smooth ring maps is smooth.
+Given smooth maps $R\to S$ and $S\to T$, the composite $R\to T$ is smooth.
 
-**Proof.** You can prove this in many different ways. One way is to use the snake lemma (Lemma [The snake lemma](#native-algebra-lemma-snake)), the Jacobi-Zariski sequence (Lemma [The transitivity sequence for the naive cotangent complex](#native-algebra-lemma-exact-sequence-nl)), combined with the characterization of projective modules as being direct summands of free modules (Lemma [Characterizations of projective modules](#native-algebra-lemma-characterize-projective)). Another proof can be obtained by combining Lemmas [Smooth algebras are syntomic](#native-algebra-lemma-smooth-syntomic), [Composition of standard smooth presentations](#native-algebra-lemma-compose-standard-smooth) and [Smooth morphisms and local algebra](#native-algebra-lemma-locally-smooth). $\square$
+**Proof by the cotangent sequence.** First, $T$ is finitely presented over $R$: combine a finite presentation of $S$ over $R$ with a finite presentation of $T$ over $S$, lifting the coefficients of the latter equations to the former polynomial ring. The module $\Omega_{S/R}$ is projective, so its first and second Tor groups with $T$ vanish. The [transitivity sequence](#native-algebra-lemma-exact-sequence-nl), including its comparison of the first homology after tensoring, therefore gives
+$$H_1(\mathrm{NL}_{S/R})\otimes_S T\longrightarrow
+H_1(\mathrm{NL}_{T/R})\longrightarrow H_1(\mathrm{NL}_{T/S})\longrightarrow
+\Omega_{S/R}\otimes_S T\longrightarrow\Omega_{T/R}\longrightarrow\Omega_{T/S}\longrightarrow0.$$
+Smoothness of the two given maps makes both outside $H_1$ terms zero. Hence $H_1(\mathrm{NL}_{T/R})=0$, and the differential terms form a short exact sequence with initial term $\Omega_{S/R}\otimes_S T$. That term is finite projective by scalar extension, and the last term $\Omega_{T/S}$ is finite projective. Projectivity of the last term splits the sequence, so the middle term is finite projective as well. These are precisely the smoothness conditions for $R\to T$.
+
+**Proof using standard presentations.** This also makes the local geometric mechanism explicit. Let $\mathfrak q\in\operatorname{Spec}(T)$ and $\mathfrak p$ its inverse image in $S$. The [standard-neighborhood theorem for a smooth algebra](#native-algebra-lemma-smooth-syntomic) gives a principal neighborhood $S_f$ of $\mathfrak p$ standard smooth over $R$. The map $S_f\to T_f$ is smooth by localization, and a further principal neighborhood $(T_f)_g$ of $\mathfrak q$ is standard smooth over $S_f$. The [composition calculation for standard smooth presentations](#native-algebra-lemma-compose-standard-smooth) makes $(T_f)_g$ standard smooth over $R$: its Jacobian has the two invertible diagonal blocks. If $g=t/f^a$, this is a principal neighborhood $T_{ft}$ of $\mathfrak q$. Such neighborhoods cover $\operatorname{Spec}(T)$, so [locality of smoothness](#native-algebra-lemma-locally-smooth) proves the assertion. This route uses the previously proved standard-neighborhood and locality statements, with their finite-presentation hypotheses retained. ∎
 
 #### Lemma. Total rings of fractions without embedded primes
- Let $R$ be a ring. Assume that $R$ has finitely many minimal primes $\mathfrak q_1, \ldots, \mathfrak q_t$, and that $\mathfrak q_1 \cup \ldots \cup \mathfrak q_t$ is the set of zerodivisors of $R$. Then the total ring of fractions $Q(R)$ is equal to $R_{\mathfrak q_1} \times \ldots \times R_{\mathfrak q_t}$.
 
-**Proof.** There are natural maps $Q(R) \to R_{\mathfrak q_i}$ since any nonzerodivisor lies in $R \setminus \mathfrak q_i$. Hence a natural map $Q(R) \to R_{\mathfrak q_1} \times \ldots \times R_{\mathfrak q_t}$. For any nonminimal prime $\mathfrak p \subset R$ we see that $\mathfrak p \not \subset \mathfrak q_1 \cup \ldots \cup \mathfrak q_t$ by Lemma [An elementary algebraic comparison](#native-algebra-lemma-silly). Hence $\operatorname{Spec}(Q(R)) = \{\mathfrak q_1, \ldots, \mathfrak q_t\}$ (as subsets of $\operatorname{Spec}(R)$, see Lemma [The spectrum of a localization](#native-algebra-lemma-spec-localization)). Therefore $\operatorname{Spec}(Q(R))$ is a finite discrete set and it follows that $Q(R) = A_1 \times \ldots \times A_t$ with $\operatorname{Spec}(A_i) = \{\mathfrak{q}_i\}$, see Lemma [A disjoint spectrum and a product of rings](#native-algebra-lemma-disjoint-implies-product). Moreover $A_i$ is a local ring, which is a localization of $R$. Hence $A_i \cong R_{\mathfrak q_i}$. $\square$
+Suppose that a ring $R$ has a finite set of minimal primes $\{\mathfrak q_1,\ldots,\mathfrak q_t\}$ and that its zero divisors are exactly $\bigcup_i\mathfrak q_i$. Then the localization maps induce an isomorphism
+$$Q(R)\xrightarrow{\ \sim\ }\prod_{i=1}^t R_{\mathfrak q_i}.$$
+No Noetherian assumption is required.
+
+**Proof.** Write $U$ for the multiplicative set of nonzerodivisors. Every $u\in U$ lies outside each $\mathfrak q_i$, giving the indicated maps from $U^{-1}R=Q(R)$. By [the prime correspondence for localization](#native-algebra-lemma-spec-localization), a prime of $Q(R)$ comes from a prime $\mathfrak p$ of $R$ disjoint from $U$. Such a $\mathfrak p$ is contained in $\bigcup_i\mathfrak q_i$, and [finite prime avoidance](#native-algebra-lemma-silly) puts it inside one $\mathfrak q_i$. Minimality then gives $\mathfrak p=\mathfrak q_i$. Conversely, each $\mathfrak q_i$ is disjoint from $U$.
+
+Thus all primes of $Q(R)$ are the finitely many points corresponding to the $\mathfrak q_i$, and each is maximal. Each singleton is closed; its finite complement is also closed, so the spectrum is discrete. The [idempotent decomposition for a disjoint spectrum](#native-algebra-lemma-disjoint-implies-product) expresses $Q(R)$ as a product with one local factor at each of these points. Localizing that product at its $i$th prime keeps exactly its $i$th factor. Transitivity of localization identifies it with $R_{\mathfrak q_i}$. These identifications intertwine the factor projections with the original localization maps, proving the stated canonical isomorphism. If $R=0$, the spectrum is empty and the assertion is the empty product, namely the zero ring. ∎
 
 #### Lemma. Irreducible components of a Noetherian spectrum
 
-A Noetherian affine scheme has finitely many generic points.
+A Noetherian ring has only finitely many minimal prime ideals. Equivalently, its spectrum has finitely many irreducible components and therefore finitely many component generic points.
 
-If $R$ is a Noetherian ring then $\operatorname{Spec}(R)$ has finitely many irreducible components. In other words $R$ has finitely many minimal primes.
+**Proof.** For $X=\operatorname{Spec}(R)$, a descending sequence of closed sets gives an ascending sequence of their radical ideals. The Noetherian condition makes that sequence stabilize. Thus $X$ satisfies the descending chain condition on closed sets.
 
-**Proof.** By Lemma [The topology of a Noetherian spectrum](#native-algebra-lemma-noetherian-topology) and Topology, Lemma [Noetherian topological spaces (programme binding)](#uncovered-topology-lemma-noetherian) we see there are finitely many irreducible components. By Lemma [Irreducibility of an affine spectrum](#native-algebra-lemma-irreducible) these correspond to minimal primes of $R$. $\square$
+Every closed subset of such a space is a finite union of irreducible closed subsets. Indeed, otherwise choose a minimal closed counterexample $Z$ by the descending chain condition. It is nonempty and cannot itself be irreducible. Write $Z=Z_1\cup Z_2$ with both $Z_i$ proper closed subsets of $Z$. Minimality gives finite irreducible decompositions of both $Z_i$, which together give one of $Z$, a contradiction. Apply this to $X$ and discard members contained in others. The remaining sets are exactly its irreducible components: any irreducible subset of a finite union of closed sets lies in one member.
+
+For the [affine irreducibility criterion](#native-algebra-lemma-irreducible), an irreducible closed set is $V(\mathfrak p)$ for a prime $\mathfrak p$, with generic point $\mathfrak p$. A component corresponds to a prime minimal under inclusion. Hence the finite component decomposition gives the asserted finite set of minimal primes. The zero ring gives the empty decomposition. ∎
 
 #### Lemma. Regular rings are Cohen--Macaulay
- Let $R$ be a regular local ring and let $x_1, \ldots, x_d$ be a minimal set of generators for the maximal ideal $\mathfrak m$. Then $x_1, \ldots, x_d$ is a regular sequence, and each $R/(x_1, \ldots, x_c)$ is a regular local ring of dimension $d - c$. In particular $R$ is Cohen-Macaulay.
 
-**Proof.** Note that $R/x_1R$ is a Noetherian local ring of dimension $\geq d - 1$ by Lemma [A single polynomial equation](#native-algebra-lemma-one-equation) with $x_2, \ldots, x_d$ generating the maximal ideal. Hence it is a regular local ring by definition. Since $R$ is a domain by Lemma Regular local rings, Theorem 1.1 $x_1$ is a nonzerodivisor. $\square$
+Let $(R,\mathfrak m)$ be regular local of dimension $d$, and choose any minimal generating list $x_1,\ldots,x_d$ for $\mathfrak m$. This list is $R$-regular. For each $0\leq c\leq d$, the local ring $R/(x_1,\ldots,x_c)$ is regular of dimension $d-c$. In particular, $R$ is Cohen–Macaulay.
+
+**Proof.** Use the complete proof of *Regular sequences, depth and Cohen–Macaulay modules*, Theorem 6.1 and Corollary 6.2. The theorem begins with any minimal generating list. It proves that $\operatorname{gr}_{\mathfrak m}R$ is the polynomial ring on the initial forms of that list, then uses Krull separation to obtain injectivity successively in the quotients. It therefore proves regularity of the given list, not merely the existence of some regular list, and proves that $R$ is Cohen–Macaulay.
+
+For completeness, the quotient conclusion follows within that same proof route as follows. Corollary 6.2 gives dimension $d-c$ after a prefix of length $c$. The remaining $d-c$ elements generate its maximal ideal, so its embedding dimension is at most $d-c$. Embedding dimension is at least Krull dimension for a Noetherian local ring. Equality follows, which is exactly regularity. At $c=d$ the quotient is the residue field, and $d=0$ is already the field case of Theorem 6.1. ∎
 
 #### Lemma. Powers of a regular sequence
- Let $R$ be a ring. Let $M$ be an $R$-module. Let $f_1, \ldots, f_r \in R$ and $e_1, \ldots, e_r > 0$ integers. Then $f_1, \ldots, f_r$ is an $M$-regular sequence if and only if $f_1^{e_1}, \ldots, f_r^{e_r}$ is an $M$-regular sequence.
 
-**Proof.** We will prove this by induction on $r$. If $r = 1$ this follows from the following two easy facts: (a) a power of a nonzerodivisor on $M$ is a nonzerodivisor on $M$ and (b) a divisor of a nonzerodivisor on $M$ is a nonzerodivisor on $M$. If $r > 1$, then by induction applied to $M/f_1M$ we have that $f_1, f_2, \ldots, f_r$ is an $M$-regular sequence if and only if $f_1, f_2^{e_2}, \ldots, f_r^{e_r}$ is an $M$-regular sequence. Thus it suffices to show, given $e > 0$, that $f_1^e, f_2, \ldots, f_r$ is an $M$-regular sequence if and only if $f_1, \ldots, f_r$ is an $M$-regular sequence. We will prove this by induction on $e$. The case $e = 1$ is trivial. Since $f_1$ is a nonzerodivisor under both assumptions (by the case $r = 1$) we have a short exact sequence $$0 \to M/f_1M \xrightarrow{f_1^{e - 1}} M/f_1^eM \to M/f_1^{e - 1}M \to 0$$ Suppose that $f_1, f_2, \ldots, f_r$ is an $M$-regular sequence. Then by induction the elements $f_2, \ldots, f_r$ are $M/f_1M$ and $M/f_1^{e - 1}M$-regular sequences. By Lemma Regular sequences, depth and Cohen–Macaulay modules, Propositions 1.1–1.3 and Theorem 6.1 $f_2, \ldots, f_r$ is $M/f_1^eM$-regular. Hence $f_1^e, f_2, \ldots, f_r$ is $M$-regular. Conversely, suppose that $f_1^e, f_2, \ldots, f_r$ is an $M$-regular sequence. Then $f_2 : M/f_1^eM \to M/f_1^eM$ is injective, hence $f_2 : M/f_1M \to M/f_1M$ is injective, hence by induction(!) $f_2 : M/f_1^{e - 1}M \to M/f_1^{e - 1}M$ is injective, hence $$0 \to
-M/(f_1, f_2)M \xrightarrow{f_1^{e - 1}}
-M/(f_1^e, f_2)M \to
-M/(f_1^{e - 1}, f_2)M \to 0$$ is a short exact sequence by Lemma [The snake lemma](#native-algebra-lemma-snake). This proves the converse for $r = 2$. If $r > 2$, then we have $f_3 : M/(f_1^e, f_2)M \to M/(f_1^e, f_2)M$ is injective, hence $f_3 : M/(f_1, f_2)M \to M/(f_1, f_2)M$ is injective, and so on. Some details omitted. $\square$
+For an arbitrary ring $R$, an arbitrary $R$-module $M$, and positive integers $e_1,\ldots,e_r$, one has
+$$f_1,\ldots,f_r\text{ is }M\text{-regular}
+\quad\Longleftrightarrow\quad
+f_1^{e_1},\ldots,f_r^{e_r}\text{ is }M\text{-regular}.$$
+Regularity includes nonvanishing of the final quotient.
+
+**Proof.** This is *Regular sequences, depth and Cohen–Macaulay modules*, Proposition 1.3, with exactly the arbitrary-ring and arbitrary-module hypotheses above. Its proof treats both directions by the finite filtration of $M/f_1^{e_1}M$ whose factors are $M/f_1M$. After each later equation, it proves exactness of the quotient filtration; in the reverse direction the embedded first factor detects the next injectivity condition. The final filtration also proves equivalence of nonvanishing of the last quotient. Induction then changes the other exponents. The proof includes the empty list and does not use permutation of a regular sequence, which would require additional hypotheses. ∎
 
 #### Lemma. Elementary formally smooth extensions
- Let $K/k$ be an extension of fields.
 
-1.  If $K$ is purely transcendental over $k$, then $K$ is formally smooth over $k$.
+For a field extension $K/k$, each of the following hypotheses implies formal smoothness of $k\to K$:
 
-2.  If $K$ is separable algebraic over $k$, then $K$ is formally smooth over $k$.
+1. $K$ is purely transcendental over $k$, with any cardinality of transcendence basis.
+2. $K/k$ is separable algebraic, without a finite-degree assumption.
+3. $K/k$ is separable, in the sense that every finitely generated intermediate extension is separably generated.
 
-3.  If $K$ is separable over $k$, then $K$ is formally smooth over $k$.
+**Proof.** For (1), write $K=k(t_j\mid j\in J)$. Polynomial algebras on an arbitrary set of variables are formally smooth, and localization preserves formal smoothness, by the complete proof of *Formally smooth, unramified and étale ring maps*, Theorem 1.2. Its localization step applies here because every nonzero polynomial has a unit image under any test map from the field; units lift across a square-zero ideal. Thus it treats arbitrary $J$ and every required denominator.
 
-**Proof.** For (1) write $K = k(x_j; j \in J)$. Suppose that $A$ is a $k$-algebra, and $I \subset A$ is an ideal of square zero. Let $\varphi : K \to A/I$ be a $k$-algebra map. Let $a_j \in A$ be an element such that $a_j \mod I = \varphi(x_j)$. Then it is easy to see that there is a unique $k$-algebra map $K \to A$ which maps $x_j$ to $a_j$ and which reduces to $\varphi$ mod $I$. Hence $k \subset K$ is formally smooth.
+For (2), every finite intermediate field $E/k$ is formally étale by the same lesson, Proposition 6.3, whose proof lifts a separable generating tower by unique root corrections. The fields $E$ form a directed system with union $K$. Given a square-zero lifting problem for $K$, lift its restriction to each $E$. Uniqueness makes these lifts agree under every inclusion, so they define a lift on the union. Restriction to each $E$ also proves uniqueness. Hence $K/k$ is in fact formally étale.
 
-In case (2) we see that $k \subset K$ is a colimit of étale ring extensions. An étale ring map is formally étale (Lemma Formally smooth, unramified and étale ring maps, Theorem 3.1 and Sections 4–7). Hence this case follows from Lemma [Formal étaleness in a filtered colimit](#native-algebra-lemma-colimit-formally-etale) and the trivial observation that a formally étale ring map is formally smooth.
+For (3), let $E$ range over all intermediate fields finitely generated over $k$. Separability supplies a transcendence basis $\mathbf t$ of $E/k$ with $E/k(\mathbf t)$ separable algebraic. Parts (1) and (2), followed by the composition assertion of Theorem 1.2, give formal smoothness of each $E/k$.
 
-In case (3), write $K = \mathop{\operatorname{colim}} K_i$ as the filtered colimit of its finitely generated $k$-subextensions. By Definition [Separable field extensions](#native-algebra-definition-separable-field-extension) each $K_i$ is separable algebraic over a purely transcendental extension of $k$. Hence $K_i/k$ is formally smooth by cases (1) and (2) and Lemma [Composition of formally smooth maps](#native-algebra-lemma-compose-formally-smooth). Thus $H_1(L_{K_i/k}) = 0$ by Lemma [Formal smoothness of field extensions](#native-algebra-lemma-characterize-formally-smooth-field-extension). Hence $H_1(L_{K/k}) = 0$ by Lemma [Filtered colimits of naive cotangent complexes](#native-algebra-lemma-colimits-nl). Hence $K/k$ is formally smooth by Lemma [Formal smoothness of field extensions](#native-algebra-lemma-characterize-formally-smooth-field-extension) again. $\square$
+To pass to their union, use [the cotangent criterion for a field extension](#native-algebra-lemma-characterize-formally-smooth-field-extension): it gives $H_1(L_{E/k})=0$. The [filtered-colimit comparison](#native-algebra-lemma-colimits-nl) for naive cotangent complexes then gives $H_1(L_{K/k})=0$. More explicitly, tensor each presentation complex with the field $K$; this is exact on $E$-modules, and the resulting filtered colimit is the presentation complex for $K/k$. Exactness of filtered colimits therefore gives the stated homology vanishing. Apply the field criterion again to conclude formal smoothness. This argument does not require arbitrary choices of smooth lifts at different stages to be compatible. ∎
 
 #### Lemma. Descent of flatness
 
-Let $R$ be a ring. Let $S \to S'$ be a flat map of $R$-algebras. Let $M$ be a module over $S$, and set $M' = S' \otimes_S M$.
+Let $R$ be a ring, let $S\to S'$ be a flat homomorphism of $R$-algebras, and let $M$ be an $S$-module. Set $M'=M\otimes_S S'$.
 
-1.  If $M$ is flat over $R$, then $M'$ is flat over $R$.
+1. If $M$ is flat as an $R$-module, then so is $M'$.
+2. If $S\to S'$ is faithfully flat, then $M$ is flat over $R$ exactly when $M'$ is flat over $R$.
 
-2.  If $S \to S'$ is faithfully flat, then $M$ is flat over $R$ if and only if $M'$ is flat over $R$.
-
-**Proof.** Let \(N \to N'\) be an injection of \(R\)-modules. By the flatness of \(S \to S'\) we have 
-
-\[
-\operatorname{Ker}(N \otimes_R M \to N' \otimes_R M) \otimes_S S'
-=
-\operatorname{Ker}(N \otimes_R M' \to N' \otimes_R M')
-\]
-
- If \(M\) is flat over \(R\), then the left hand side is zero and we find that \(M'\) is flat over \(R\) by the second characterization of flatness in Lemma [Flatness](#native-algebra-lemma-flat). If \(M'\) is flat over \(R\) then we have the vanishing of the right hand side and if in addition \(S \to S'\) is faithfully flat, this implies that \(\operatorname{Ker}(N \otimes_R M \to N' \otimes_R M)\) is zero which in turn shows that \(M\) is flat over \(R\). \(\square\)
+**Proof.** For any inclusion $U\hookrightarrow V$ of $R$-modules, let
+$$K=\ker(U\otimes_R M\longrightarrow V\otimes_R M).$$
+This is an $S$-module. Exactness of $-\otimes_S S'$ and the associative tensor identifications give
+$$K\otimes_S S'\cong\ker(U\otimes_R M'\longrightarrow V\otimes_R M').$$
+If $M$ is $R$-flat, then $K=0$ for every inclusion, so the right-hand kernels vanish; this proves (1). Conversely, if $M'$ is $R$-flat, the right-hand kernel always vanishes. Under faithful flatness this implies $K=0$. Tensoring with $M$ therefore preserves every inclusion of $R$-modules, which proves (2). No finiteness hypothesis on any of these rings or modules is used. ∎
 
 #### Lemma. Henselianity in local dimension zero
 
-Local rings of dimension zero are henselian.
+Every local ring $(R,\mathfrak m)$ of dimension zero is henselian, including rings that are not Noetherian.
 
-Let $(R, \mathfrak m)$ be a local ring of dimension $0$. Then $R$ is henselian.
+**Proof by root correction.** The only prime of $R$ is $\mathfrak m$, so $\mathfrak m$ is its nilradical. Take a monic polynomial $f\in R[T]$ with a simple root $\bar a\in R/\mathfrak m$, and choose a lift $a_0\in R$. The element $e=f(a_0)$ is nilpotent, while $f'(a_0)$ is a unit. Define
+$$a_{n+1}=a_n-f'(a_n)^{-1}f(a_n).$$
+All $a_n$ have residue $\bar a$, so all displayed inverses exist. Polynomial expansion shows
+$$f(a_{n+1})\in f(a_n)^2R\subseteq e^{2^{n+1}}R.$$
+For sufficiently large $n$ this error is zero. The resulting $a_n$ is a root lifting $\bar a$, as required. Only the single element $e$ has been assumed nilpotent; a common nilpotence exponent for $\mathfrak m$ is unnecessary.
 
-**Proof.** Let $R \to S$ be a finite ring map. By Lemma [Characterizations of henselian local rings](#native-algebra-lemma-characterize-henselian) it suffices to show that $S$ is a product of local rings. By Lemma [Fibres of a finite ring map](#native-algebra-lemma-finite-finite-fibres) $S$ has finitely many primes $\mathfrak m_1, \ldots, \mathfrak m_r$ which all lie over $\mathfrak m$. There are no inclusions among these primes, see Lemma [Incomparability for an integral ring map](#native-algebra-lemma-integral-no-inclusion), hence they are all maximal. Every element of $\mathfrak m_1 \cap \ldots \cap \mathfrak m_r$ is nilpotent by Lemma [The Zariski topology on an affine spectrum](#native-algebra-lemma-zariski-topology). It follows $S$ is the product of the localizations of $S$ at the primes $\mathfrak m_i$ by Lemma [Local factors of a product ring](#native-algebra-lemma-product-local). $\square$
+**Proof by finite algebras.** If $S$ is finite over $R$, each of its primes contracts to $\mathfrak m$. The fibre $S/\mathfrak mS$ is finite-dimensional over $R/\mathfrak m$, so there are finitely many such primes. Incomparability for an integral extension makes them all maximal. Its finite spectrum is therefore discrete, and the [idempotent decomposition](#native-algebra-lemma-disjoint-implies-product) writes $S$ as a finite product of local rings. The complete finite-algebra criterion in *Henselian local rings and henselization*, Theorem 2.2, now also gives henselianity of $R$. ∎
 
 #### Lemma. Finite étale algebras over a henselian ring
- Let $(R, \mathfrak m, \kappa)$ be a henselian local ring. The category of finite étale ring extensions $R \to S$ is equivalent to the category of finite étale algebras $\kappa \to \overline{S}$ via the functor $S \mapsto S/\mathfrak mS$.
 
-**Proof.** Denote $\mathcal{C} \to \mathcal{D}$ the functor of categories of the statement. Suppose that $R \to S$ is finite étale. Then we may write $$S = A_1 \times \ldots \times A_n$$ with $A_i$ local and finite étale over $S$, use either Lemma [Completing the étale-local reduction](#native-algebra-lemma-mop-up) or Lemma [Characterizations of henselian local rings](#native-algebra-lemma-characterize-henselian) part (10). In particular $A_i/\mathfrak mA_i$ is a finite separable field extension of $\kappa$, see Lemma [Étaleness at a prime ideal](#native-algebra-lemma-etale-at-prime). Thus we see that every object of $\mathcal{C}$ and $\mathcal{D}$ decomposes canonically into irreducible pieces which correspond via the given functor. Next, suppose that $S_1$, $S_2$ are finite étale over $R$ such that $\kappa_1 = S_1/\mathfrak mS_1$ and $\kappa_2 = S_2/\mathfrak mS_2$ are fields (finite separable over $\kappa$). Then $S_1 \otimes_R S_2$ is finite étale over $R$ and we may write $$S_1 \otimes_R S_2 = A_1 \times \ldots \times A_n$$ as before. Then we see that $\operatorname{Hom}_R(S_1, S_2)$ is identified with the set of indices $i \in \{1, \ldots, n\}$ such that $S_2 \to A_i$ is an isomorphism. To see this use that given any $R$-algebra map $\varphi : S_1 \to S_2$ the map $\varphi \times 1 : S_1 \otimes_R S_2 \to S_2$ is surjective, and hence is equal to projection onto one of the factors $A_i$. But in exactly the same way we see that $\operatorname{Hom}_\kappa(\kappa_1, \kappa_2)$ is identified with the set of indices $i \in \{1, \ldots, n\}$ such that $\kappa_2 \to A_i/\mathfrak mA_i$ is an isomorphism. By the discussion above these sets of indices match, and we conclude that our functor is fully faithful. Finally, let $\kappa'/\kappa$ be a finite separable field extension. By Lemma [An étale map with a prescribed residue extension](#native-algebra-lemma-make-etale-map-prescribed-residue-field) there exists an étale ring map $R \to S$ and a prime $\mathfrak q$ of $S$ lying over $\mathfrak m$ such that $\kappa \subset \kappa(\mathfrak q)$ is isomorphic to the given extension. By Lemma [Completing the étale-local reduction](#native-algebra-lemma-mop-up) we may write $S = A_1 \times \ldots \times A_n \times B$. Since $R \to S$ is quasi-finite we see that there exists no prime of $B$ over $\mathfrak m$. Hence $S_{\mathfrak q}$ is equal to $A_i$ for some $i$. Hence $R \to A_i$ is finite étale and produces the given residue field extension. Thus the functor is essentially surjective and we win. $\square$
+For a henselian local ring $(R,\mathfrak m,\kappa)$, the functor
+$$S\longmapsto S/\mathfrak mS$$
+from finite étale $R$-algebras to finite étale $\kappa$-algebras is an equivalence of categories. Its action on morphisms is reduction modulo $\mathfrak m$.
+
+**Proof.** Apply *Étale neighbourhoods, henselization and quasi-finite morphisms*, Theorem 5.2. Its complete proof has exactly this arbitrary-local-ring scope. For essential surjectivity it lifts a separable monic polynomial for each residue-field factor and proves that its derivative is a unit throughout the finite lift. For full faithfulness it decomposes the target into henselian local factors, then lifts each specified residue map by the unique section through the corresponding rational fibre point. Combining those lifts recovers every morphism and proves its uniqueness. The theorem even proves this morphism assertion when the target is any finite $R$-algebra.
+
+The algebraic inputs to that argument are the complete finite-algebra criterion and permanence for finite local algebras. Thus the local factors used in the proof are finite over $R$ and henselian; in the finite étale case they remain étale over $R$. The equivalence retains residue-field automorphisms, rather than identifying all lifts by an unspecified unique isomorphism. ∎
 
 #### Lemma. Dimension of a flat family
- Let $R \to S$ be a homomorphism of Noetherian rings. Let $\mathfrak q \subset S$ be a prime lying over the prime $\mathfrak p$. Assume the going down property holds for $R \to S$ (for example if $R \to S$ is flat, see Lemma [Going down for flat ring maps](#native-algebra-lemma-flat-going-down)). Then $$\dim(S_{\mathfrak q})
-=
-\dim(R_{\mathfrak p})
-+
-\dim(S_{\mathfrak q}/\mathfrak pS_{\mathfrak q}).$$
 
-**Proof.** By Lemma [Dimensions of a base, fibre and total space](#native-algebra-lemma-dimension-base-fibre-total) we have an inequality $\dim(S_{\mathfrak q}) \leq
-\dim(R_{\mathfrak p}) + \dim(S_{\mathfrak q}/\mathfrak pS_{\mathfrak q})$. To get equality, choose a chain of primes $\mathfrak pS \subset \mathfrak q_0 \subset \mathfrak q_1 \subset \ldots
-\subset \mathfrak q_d = \mathfrak q$ with $d = \dim(S_{\mathfrak q}/\mathfrak pS_{\mathfrak q})$. On the other hand, choose a chain of primes $\mathfrak p_0 \subset \mathfrak p_1 \subset \ldots \subset \mathfrak p_e
-= \mathfrak p$ with $e = \dim(R_{\mathfrak p})$. By the going down theorem we may choose $\mathfrak q_{-1} \subset \mathfrak q_0$ lying over $\mathfrak p_{e-1}$. And then we may choose $\mathfrak q_{-2} \subset \mathfrak q_{-1}$ lying over $\mathfrak p_{e-2}$. Inductively we keep going until we get a chain $\mathfrak q_{-e} \subset \ldots \subset \mathfrak q_d$ of length $e + d$. $\square$
+Suppose $R\to S$ is a homomorphism of Noetherian rings with going down. Let $\mathfrak q\subset S$ contract to $\mathfrak p\subset R$. Then
+$$\dim S_{\mathfrak q}=\dim R_{\mathfrak p}+\dim(S_{\mathfrak q}/\mathfrak pS_{\mathfrak q}).$$
+In particular this holds for a flat map, by [going down for flat ring maps](#native-algebra-lemma-flat-going-down).
+
+**Proof.** Put $A=R_{\mathfrak p}$, $B=S_{\mathfrak q}$, with maximal ideals $\mathfrak m,\mathfrak n$, and let $d=\dim A$, $e=\dim(B/\mathfrak mB)$. These dimensions are finite. Choose $d$ parameters in $A$ and lift a system of $e$ parameters of $B/\mathfrak mB$ to $B$. The ideal they together generate in $B$ has radical $\mathfrak n$. Indeed, a power of $\mathfrak m$ is contained in the ideal of the first parameters, and the second parameters cut the fibre down to its closed point. The height bound for an ideal generated by $d+e$ elements therefore gives $\dim B\leq d+e$. This is the parameter proof of [the base–fibre dimension bound](#native-algebra-lemma-dimension-base-fibre-total).
+
+For the reverse inequality, take a chain of length $e$ in $\operatorname{Spec}(B/\mathfrak mB)$ ending at its maximal ideal. Its inverse images are
+$$\mathfrak q_0\subsetneq\mathfrak q_1\subsetneq\cdots\subsetneq\mathfrak q_e=\mathfrak n,$$
+all contracting to $\mathfrak m$ in $A$. Choose a chain of length $d$ in $A$ ending at $\mathfrak m$. Going down, which persists under these localizations, successively extends the chain below $\mathfrak q_0$ by one prime over each earlier member of the chosen base chain. Those $d$ new inclusions are strict because their contractions are distinct. The resulting chain in $B$ has length $d+e$. Hence $\dim B\geq d+e$, proving equality, including $d=0$ or $e=0$. ∎
 
 #### Lemma. Universal injectivity of a faithfully flat ring map
 
-Let $R \to S$ be a faithfully flat ring map. Then $R \to S$ is universally injective as a map of $R$-modules. In particular $R \cap IS = I$ for any ideal $I \subset R$.
+For a faithfully flat homomorphism $R\to S$, the map $R\to S$ remains injective after tensoring with any $R$-module. In particular it identifies $R$ with a subring of $S$, and for every ideal $I\subset R$ one has $R\cap IS=I$.
 
-**Proof.** Let $N$ be an $R$-module. We have to show that $N \to N \otimes_R S$ is injective. As $S$ is faithfully flat as an $R$-module, it suffices to prove this after tensoring with $S$. Hence it suffices to show that $N \otimes_R S \to N \otimes_R S \otimes_R S$, $n \otimes s \mapsto n \otimes 1 \otimes s$ is injective. This is true because there is a retraction, namely, $n \otimes s \otimes s' \mapsto n \otimes ss'$. $\square$
+**Proof.** These are precisely the conclusions of *Faithful flatness and the local criterion for flatness*, Theorem 2.2. Its proof tensors $N\to N\otimes_R S$ once more with $S$, exhibits multiplication on the two $S$-factors as a retraction, and reflects injectivity by faithful flatness. Taking $N=R/I$ gives the asserted contraction, for every ideal without a finite-generation condition. ∎
 
 #### Lemma. Characterizations of henselian local rings
 
-Characterizations of henselian local rings
+Let $(R,\mathfrak m,\kappa)$ be a local ring. Bars denote reduction to $\kappa$. The following thirteen conditions are equivalent:
 
-Let $(R, \mathfrak m, \kappa)$ be a local ring. The following are equivalent
+1. $R$ is henselian: every simple residue root of a monic polynomial over $R$ lifts to a root in $R$.
+2. For every $f\in R[T]$, with no monicity requirement, each $a_0\in\kappa$ satisfying $\bar f(a_0)=0$ and $\overline{f'}(a_0)\ne0$ lifts to a root of $f$.
+3. For monic $f\in R[T]$, every factorization $\bar f=g_0h_0$ with $g_0,h_0\in\kappa[T]$ coprime lifts to $f=gh$ with $\bar g=g_0$, $\bar h=h_0$.
+4. The factors in (3) can always be chosen with $\deg g=\deg g_0$.
+5. The factorization assertion of (3) holds for every $f\in R[T]$, not necessarily monic.
+6. The factors in (5) can always be chosen with $\deg g=\deg g_0$ whenever $g_0\ne0$.
+7. Whenever an étale $R$-algebra $S$ has a prime $\mathfrak q$ above $\mathfrak m$ with canonical residue extension $\kappa\to\kappa(\mathfrak q)$ an isomorphism, $R\to S$ has an $R$-algebra retraction $S\to R$.
+8. For each $(S,\mathfrak q)$ in (7), there is exactly one such retraction $\tau$ with $\tau^{-1}(\mathfrak m)=\mathfrak q$.
+9. Every finite $R$-algebra is a product of local rings.
+10. Every finite $R$-algebra is a finite product of local rings.
+11. Each finite type $R$-algebra $S$ has a decomposition $S=A\times B$, with $A$ finite over $R$, such that $R\to B$ is not quasi-finite at any point above $\mathfrak m$.
+12. Each finite type $R$-algebra $S$ has a decomposition $S=A\times B$, with $A$ finite over $R$, such that every irreducible component of $\operatorname{Spec}(B\otimes_R\kappa)$ has dimension at least one.
+13. Each quasi-finite $R$-algebra $S$ has a decomposition $S=A\times B$, with $A$ finite over $R$ and $B\otimes_R\kappa=0$.
 
-1.  $R$ is henselian,
+Empty products are allowed for the zero algebra. No Noetherian condition is imposed on $R$.
 
-2.  for every $f \in R[T]$ and every root $a_0 \in \kappa$ of $\overline{f}$ such that $\overline{f'}(a_0) \not = 0$ there exists an $a \in R$ such that $f(a) = 0$ and $a_0 = \overline{a}$,
+**Proof.** We first connect the root, section and finite-algebra conditions, then treat arbitrary polynomial factorizations.
 
-3.  for any monic $f \in R[T]$ and any factorization $\overline{f} = g_0 h_0$ with $\gcd(g_0, h_0) = 1$ there exists a factorization $f = gh$ in $R[T]$ such that $g_0 = \overline{g}$ and $h_0 = \overline{h}$,
+The equivalence of (1) and (8), including uniqueness through the specified point, is the complete section criterion in *Henselian local rings and henselization*, Theorem 1.2. Its proof uses a standard étale neighborhood to turn the section problem into the specified simple-root problem. Lemma 1.1 there proves uniqueness by applying Nakayama to the finite ideal of differences of two evaluations. The equivalence of (1) and (10) is the complete Theorem 2.2 of that lesson: coprime factorization lifts idempotents in every finite algebra, and a lifted rank-one factor recovers a simple root.
 
-4.  for any monic $f \in R[T]$ and any factorization $\overline{f} = g_0 h_0$ with $\gcd(g_0, h_0) = 1$ there exists a factorization $f = gh$ in $R[T]$ such that $g_0 = \overline{g}$ and $h_0 = \overline{h}$ and moreover $\deg_T(g) = \deg_T(g_0)$,
+Certainly (8) implies (7). Conversely, suppose (7) and fix its point $\mathfrak q$. The closed fibre of $S$ is a finite product of finite separable fields. Choose an element of $S$ whose image is one in the factor belonging to $\mathfrak q$ and zero in all other factors. Inverting it gives an étale algebra with exactly one point above $\mathfrak m$, still with residue field $\kappa$. Apply (7) to that algebra. Any resulting retraction has inverse image of $\mathfrak m$ equal to its sole closed-fibre point. Restrict to $S$ to get the required retraction through $\mathfrak q$. Uniqueness is Lemma 1.1 just cited. Thus (7) implies (8).
 
-5.  for any $f \in R[T]$ and any factorization $\overline{f} = g_0 h_0$ with $\gcd(g_0, h_0) = 1$ there exists a factorization $f = gh$ in $R[T]$ such that $g_0 = \overline{g}$ and $h_0 = \overline{h}$,
+Conditions (9) and (10) are equivalent. A finite algebra over a local ring has only finitely many maximal ideals: all contract to $\mathfrak m$ by integrality and correspond to maximal ideals in its finite-dimensional residue algebra. A product of nonzero local rings has at least as many distinct maximal ideals as factors, using the coordinate projections. Therefore any product decomposition as in (9) already has finitely many factors. The reverse implication is immediate.
 
-6.  for any $f \in R[T]$ and any factorization $\overline{f} = g_0 h_0$ with $\gcd(g_0, h_0) = 1$ there exists a factorization $f = gh$ in $R[T]$ such that $g_0 = \overline{g}$ and $h_0 = \overline{h}$ and moreover $\deg_T(g) = \deg_T(g_0)$ if $g_0 \ne 0$,
+Under (8), let $f$ and $a_0$ be as in (2). The algebra $R[T]_{f'}/(f)$ is étale, by its invertible one-by-one Jacobian; evaluation at $a_0$ defines a closed-fibre point of residue field $\kappa$. The retraction supplied by (8) sends $T$ to the desired root. Hence (8) implies (2), and (2) plainly implies (1).
 
-7.  for any étale ring map $R \to S$ and prime $\mathfrak q$ of $S$ lying over $\mathfrak m$ with $\kappa = \kappa(\mathfrak q)$ there exists a retraction $\tau : S \to R$ of $R \to S$,
+We next connect the finite-type conditions. The full finite-branch decomposition, *Étale neighbourhoods, henselization and quasi-finite morphisms*, Lemma 4.1, proves (1) implies (11). Its argument isolates each quasi-finite point by algebraic Zariski's Main Theorem, chooses a finite algebra of integral numerators, and uses its henselian local factors to obtain the actual idempotent decomposition of $S$. It applies to finite type algebras without assuming finite presentation. A finite type scheme over a field has a zero-dimensional irreducible component exactly at an isolated point, and its quasi-finite points are exactly those isolated points. Thus the conditions on $B$ in (11) and (12) agree. When $S$ is quasi-finite everywhere, (11) forces its residual closed fibre to be empty, giving (13).
 
-8.  for any étale ring map $R \to S$ and prime $\mathfrak q$ of $S$ lying over $\mathfrak m$ with $\kappa = \kappa(\mathfrak q)$ there exists a unique retraction $\tau : S \to R$ of $R \to S$ such that $\mathfrak q = \tau^{-1}(\mathfrak m)$,
+The étale-neighborhood route to (11) and (10) is also useful. Under (8), apply [Making a quasi-finite algebra finite étale locally](#native-algebra-lemma-etale-makes-quasi-finite-finite) to $S$ and $\mathfrak m$. It gives an étale $R\to R'$ with a point $\mathfrak m'$ of residue field $\kappa$ and
+$$S\otimes_R R'=A'_1\times\cdots\times A'_n\times B',$$
+where each $A'_i$ is finite with one point over $\mathfrak m'$, while $B'$ has no quasi-finite point there. The retraction $\tau:R'\to R$ through $\mathfrak m'$ gives
+$$S\cong(S\otimes_R R')\otimes_{R',\tau}R
+\cong\prod_i(A'_i\otimes_{R',\tau}R)\times(B'\otimes_{R',\tau}R).$$
+The residue map of $\tau$ is the prescribed identity on $\kappa$. Consequently the closed fibres of these factors identify with their old fibres at $\mathfrak m'$. Finiteness is preserved by this base change, so their product is the required $A$ and the last factor is the required $B$. If $S$ was finite, the last factor is finite with empty closed fibre and hence zero by Nakayama. Each remaining finite factor has one maximal ideal, giving (10) by this second route as well.
 
-9.  any finite $R$-algebra is a product of local rings,
+To prove (13) implies (1), start with monic $f$ and a simple root $a_0$ of $\bar f$. Choose a polynomial $u\in R[T]$ reducing to $\bar f/(T-a_0)$, and put
+$$S=(R[T]/(f))_u.$$
+This algebra is quasi-finite, being a principal localization of a finite algebra, and its closed fibre is $\kappa$: the polynomial $u$ removes all factors except the simple root $a_0$. It is flat over $R$, since $R[T]/(f)$ is finite free and localization is flat. Under (13), write $S=A\times B$ with $A$ finite and $B/\mathfrak mB=0$. Then $A/\mathfrak mA=\kappa$. The factor $A$ is flat over $R$, hence finite free by [the finite-flat local theorem](#native-algebra-lemma-finite-flat-local), and its rank is one. Its unit is a basis: it spans the reduction, so Nakayama makes it a generator, and a generator of a rank-one free module is a basis. The map $R\to A$ is therefore an algebra isomorphism. The image of $T$ in $A=R$ is the requested root. This completes the equivalence of (1), (2), (7)–(13).
 
-10. any finite $R$-algebra is a finite product of local rings,
+It remains to include the four factorization conditions. There are immediate implications
+$$ (6)\Longrightarrow(5)\Longrightarrow(3),\qquad
+(6)\Longrightarrow(4)\Longrightarrow(3).$$
+We will prove (3) implies (1) and (1) implies (6).
 
-11. any finite type $R$-algebra $S$ can be written as $A \times B$ with $R \to A$ finite and $R \to B$ not quasi-finite at any prime lying over $\mathfrak m$,
+Assume (3), and write $\bar f=(T-a_0)h_0$ for a monic simple-root problem. Lift this factorization to $f=gh$, without imposing degree or monicity on the lifted factors. In the finite free algebra $D=R[T]/(f)$, the images of $g$ and $h$ generate the unit ideal: the quotient by both is finite and has zero reduction, so Nakayama applies. Since their product is zero, their generated ideals have zero intersection. Chinese remainders give
+$$D=D/(g)\times D/(h).$$
+The first factor is finite projective over $R$, hence free because $R$ is local. Its reduction is $\kappa[T]/(T-a_0)=\kappa$, so it has rank one. The unit-basis argument of the preceding paragraph identifies it with $R$ and gives a root of $f$ lifting $a_0$. Thus (3) implies (1).
 
-12. any finite type $R$-algebra $S$ can be written as $A \times B$ with $R \to A$ finite such that each irreducible component of $\operatorname{Spec}(B \otimes_R \kappa)$ has dimension $\geq 1$, and
+Finally assume (1) and take $\bar f=g_0h_0$ with coprime factors, allowing $f$ to be nonmonic. If either residue factor vanishes, coprimality makes the other a nonzero scalar. Choose a unit of $R$ representing that scalar and use it as the corresponding factor of $f$; division of $f$ by this unit supplies the remaining factor. Their residues are the prescribed pair. In the case $g_0\ne0$ this construction makes $g$ a unit constant, so its degree is the required zero. This proves (6) for all vanishing-factor cases.
 
-13. any quasi-finite $R$-algebra $S$ can be written as $S = A \times B$ with $R \to A$ finite such that $B \otimes_R \kappa = 0$.
+Now both residue factors are nonzero. If the leading coefficient of $g_0$ is $\lambda\in\kappa^\times$, choose a unit $v\in R$ lifting $\lambda$ and replace the prescribed pair by $(\lambda^{-1}g_0,\lambda h_0)$. Once this normalized pair is lifted, multiplication of its first lift by $v$ and its second by $v^{-1}$ restores the original residues and degrees. We may thus construct the lift with $g_0$ monic.
 
-**Proof.** Here is a list of the easier implications:
+Some coefficient of $f$ is a unit of $R$, because $\bar f\ne0$. Hence the image of $f$ in $\kappa(\mathfrak p)[T]$ is nonzero for every $\mathfrak p\subset R$. It follows that $S=R[T]/(f)$ has finite fibres and is quasi-finite. It is also flat over $R$: at each prime of $R[T]$ containing $f$, apply [the fibrewise nonzerodivisor criterion](#native-algebra-lemma-grothendieck-general) to the essentially finitely presented flat local map from the corresponding localization of $R$. Its fibre is a localization of a polynomial ring over a field, where this nonzero polynomial is a nonzerodivisor. The criterion gives flatness of the quotient at every prime, and locality of flatness gives the assertion for $S$.
 
-1.  2$\Rightarrow$``{=html}1 because in (2) we consider all polynomials and in (1) only monic ones,
+By (13) and (10), decompose $S$ into finite local factors and a factor with empty closed fibre. The coprime factorization gives
+$$S/\mathfrak mS\cong\kappa[T]/(g_0)\times\kappa[T]/(h_0).$$
+The finite local factors of $S$ reduce to exactly the local factors of this Artinian algebra. Let $A$ be the product of those belonging to $\kappa[T]/(g_0)$. It is finite flat over $R$, hence free, of rank $r=\deg g_0$. Let $g$ be the characteristic polynomial of multiplication by the image of $T$ on $A$. It is monic of degree $r$ and reduces to $g_0$, since multiplication by $T$ on $\kappa[T]/(g_0)$ has characteristic polynomial $g_0$.
 
-2.  5$\Rightarrow$``{=html}3 because in (5) we consider all polynomials and in (3) only monic ones,
-
-3.  6$\Rightarrow$``{=html}4 because in (6) we consider all polynomials and in (4) only monic ones,
-
-4.  4$\Rightarrow$``{=html}3 is obvious,
-
-5.  6$\Rightarrow$``{=html}5 is obvious,
-
-6.  8$\Rightarrow$``{=html}7 is obvious,
-
-7.  10$\Rightarrow$``{=html}9 is obvious,
-
-8.  11$\Leftrightarrow$``{=html}12 by definition of being quasi-finite at a prime,
-
-9.  11$\Rightarrow$``{=html}13 by definition of being quasi-finite,
-
-Proof of 1$\Rightarrow$``{=html}8. Assume (1). Let $R \to S$ be étale, and let $\mathfrak q \subset S$ be a prime ideal such that $\kappa(\mathfrak q) \cong \kappa$. By Proposition Formally smooth, unramified and étale ring maps, Theorem 3.1 and Sections 4–7 we can find a $g \in S$, $g \not \in \mathfrak q$ such that $R \to S_g$ is standard étale. After replacing $S$ by $S_g$ we may assume that $S = R[t]_g/(f)$ is standard étale (details omitted). Since the prime $\mathfrak q$ has residue field $\kappa$ it corresponds to a root $a_0$ of $\overline{f}$ which is not a root of $\overline{g}$. By definition of a standard étale algebra this also means that $\overline{f'}(a_0) \not = 0$. Since also $f$ is monic by definition of a standard étale algebra again we may use that $R$ is henselian to conclude that there exists an $a \in R$ with $a_0 = \overline{a}$ such that $f(a) = 0$. This implies that $g(a)$ is a unit of $R$ and we obtain the desired map $\tau : S = R[t]_g/(f) \to R$ by the rule $t \mapsto a$. By construction $\tau^{-1}(\mathfrak m) = \mathfrak q$. By Lemma [Uniqueness of an étale lifting](#native-algebra-lemma-uniqueness) the map $\tau$ is unique. This proves (8) holds.
-
-Proof of 7$\Rightarrow$``{=html}8. (This is really unimportant and should be skipped.) Assume (7) holds and assume $R \to S$ is étale. Let $\mathfrak q_1, \ldots, \mathfrak q_r$ be the other primes of $S$ lying over $\mathfrak m$. Then we can find a $g \in S$, $g \not \in \mathfrak q$ and $g \in \mathfrak q_i$ for $i = 1, \ldots, r$. Namely, we can argue that $\bigcap_{i=1}^{r} \mathfrak{q}_{i} \not\subset \mathfrak{q}$ since otherwise $\mathfrak{q}_{i} \subset \mathfrak{q}$ for some $i$, but this cannot happen as the fiber of an étale morphism is discrete (use Lemma Formally smooth, unramified and étale ring maps, Theorem 3.1 and Sections 4–7 for example). Apply (7) to the étale ring map $R \to S_g$ and the prime $\mathfrak qS_g$. This gives a retraction $\tau_g : S_g \to R$ such that the composition $\tau : S \to S_g \to R$ has the property $\tau^{-1}(\mathfrak m) = \mathfrak q$. Details omitted.
-
-Proof of 8$\Rightarrow$``{=html}11. Assume (8) and let $R \to S$ be a finite type ring map. Apply Lemma [Making a quasi-finite algebra finite étale locally](#native-algebra-lemma-etale-makes-quasi-finite-finite). We find an étale ring map $R \to R'$ and a prime $\mathfrak m' \subset R'$ lying over $\mathfrak m$ with $\kappa = \kappa(\mathfrak m')$ such that $R' \otimes_R S = A' \times B'$ with $A'$ finite over $R'$ and $B'$ not quasi-finite over $R'$ at any prime lying over $\mathfrak m'$. Apply (8) to get a retraction $\tau : R' \to R$ with $\mathfrak m' = \tau^{-1}(\mathfrak m)$. Then use that $$S = (S \otimes_R R') \otimes_{R', \tau} R
-= (A' \times B') \otimes_{R', \tau} R
-= (A' \otimes_{R', \tau} R)  \times  (B' \otimes_{R', \tau} R)$$ which gives a decomposition as in (11).
-
-Proof of 8$\Rightarrow$``{=html}10. Assume (8) and let $R \to S$ be a finite ring map. Apply Lemma [Making a quasi-finite algebra finite étale locally](#native-algebra-lemma-etale-makes-quasi-finite-finite). We find an étale ring map $R \to R'$ and a prime $\mathfrak m' \subset R'$ lying over $\mathfrak m$ with $\kappa = \kappa(\mathfrak m')$ such that $R' \otimes_R S = A'_1 \times \ldots \times A'_n \times B'$ with $A'_i$ finite over $R'$ having exactly one prime over $\mathfrak m'$ and $B'$ not quasi-finite over $R'$ at any prime lying over $\mathfrak m'$. Apply (8) to get a retraction $\tau : R' \to R$ with $\mathfrak m' = \tau^{-1}(\mathfrak m)$. Then we obtain $$\begin{aligned}
-S & = (S \otimes_R R') \otimes_{R', \tau} R \\
-& = (A'_1 \times \ldots \times A'_n \times B') \otimes_{R', \tau} R \\
-& = (A'_1 \otimes_{R', \tau} R)  \times
-\ldots \times (A'_n \otimes_{R', \tau} R) \times
-(B' \otimes_{R', \tau} R) \\
-& = A_1 \times \ldots \times A_n \times B
-\end{aligned}$$ The factor $B$ is finite over $R$ but $R \to B$ is not quasi-finite at any prime lying over $\mathfrak m$. Hence $B = 0$. The factors $A_i$ are finite $R$-algebras having exactly one prime lying over $\mathfrak m$, hence they are local rings. This proves that $S$ is a finite product of local rings.
-
-Proof of 9$\Rightarrow$``{=html}10. This holds because if $S$ is finite over the local ring $R$, then it has at most finitely many maximal ideals. Namely, by going up for $R \to S$ the maximal ideals of $S$ all lie over $\mathfrak m$, and $S/\mathfrak mS$ is Artinian hence has finitely many primes.
-
-Proof of 10$\Rightarrow$``{=html}1. Assume (10). Let $f \in R[T]$ be a monic polynomial and $a_0 \in \kappa$ a simple root of $\overline{f}$. Then $S = R[T]/(f)$ is a finite $R$-algebra. Applying (10) we get $S = A_1 \times \ldots \times A_r$ is a finite product of local $R$-algebras. In particular we see that $S/\mathfrak mS = \prod A_i/\mathfrak mA_i$ is the decomposition of $\kappa[T]/(\overline{f})$ as a product of local rings. This means that one of the factors, say $A_1/\mathfrak mA_1$ is the quotient $\kappa[T]/(\overline{f}) \to \kappa[T]/(T - a_0)$. Since $A_1$ is a summand of the finite free $R$-module $S$ it is a finite free $R$-module itself. As $A_1/\mathfrak mA_1$ is a $\kappa$-vector space of dimension 1 we see that $A_1 \cong R$ as an $R$-module. Clearly this means that $R \to A_1$ is an isomorphism. Let $a \in R$ be the image of $T$ under the map $R[T] \to S \to A_1 \to R$. Then $f(a) = 0$ and $\overline{a} = a_0$ as desired.
-
-Proof of 13$\Rightarrow$``{=html}1. Assume (13). Let $f \in R[T]$ be a monic polynomial and $a_0 \in \kappa$ a simple root of $\overline{f}$. Then $S_1 = R[T]/(f)$ is a finite $R$-algebra. Let $g \in R[T]$ be any element such that $\overline{g} = \overline{f}/(T - a_0)$. Then $S = (S_1)_g$ is a quasi-finite $R$-algebra such that $S \otimes_R \kappa \cong \kappa[T]_{\overline{g}}/(\overline{f})
-\cong \kappa[T]/(T - a_0) \cong \kappa$. Applying (13) to $S$ we get $S = A \times B$ with $A$ finite over $R$ and $B \otimes_R \kappa = 0$. In particular we see that $\kappa \cong S/\mathfrak mS = A/\mathfrak mA$. Since $A$ is a summand of the flat $R$-algebra $S$ we see that it is finite flat, hence free over $R$. As $A/\mathfrak mA$ is a $\kappa$-vector space of dimension 1 we see that $A \cong R$ as an $R$-module. Clearly this means that $R \to A$ is an isomorphism. Let $a \in R$ be the image of $T$ under the map $R[T] \to S \to A \to R$. Then $f(a) = 0$ and $\overline{a} = a_0$ as desired.
-
-Proof of 8$\Rightarrow$``{=html}2. Assume (8). Let $f \in R[T]$ be any polynomial and let $a_0 \in \kappa$ be a simple root of $\overline{f}$. Then the algebra $S = R[T]_{f'}/(f)$ is étale over $R$. Let $\mathfrak q \subset S$ be the prime generated by $\mathfrak m$ and $T - b$ where $b \in R$ is any element such that $\overline{b} = a_0$. Apply (8) to $S$ and $\mathfrak q$ to get $\tau : S \to R$. Then the image $\tau(T) = a \in R$ works in (2).
-
-At this point we see that (1), (2), (7), (8), (9), (10), (11), (12), (13) are all equivalent. The weakest assertion of (3), (4), (5) and (6) is (3) and the strongest is (6). Hence we still have to prove that (3) implies (1) and (1) implies (6).
-
-Proof of 3$\Rightarrow$``{=html}1. Assume (3). Let $f \in R[T]$ be monic and let $a_0 \in \kappa$ be a simple root of $\overline{f}$. This gives a factorization $\overline{f} = (T - a_0)h_0$ with $h_0(a_0) \not = 0$, so $\gcd(T - a_0, h_0) = 1$. Apply (3) to get a factorization $f = gh$ with $\overline{g} = T - a_0$ and $\overline{h} = h_0$. Set $S = R[T]/(f)$ which is a finite free $R$-algebra. We will write $g$, $h$ also for the images of $g$ and $h$ in $S$. Then $gS + hS = S$ by Nakayama's Lemma [Nakayama's lemma](#native-algebra-lemma-nak) as the equality holds modulo $\mathfrak m$. Since $gh = f = 0$ in $S$ this also implies that $gS \cap hS = 0$. Hence by the Chinese Remainder theorem we obtain $S = S/(g) \times S/(h)$. This implies that $A = S/(g)$ is a summand of a finite free $R$-module, hence finite free. Moreover, the rank of $A$ is $1$ as $A/\mathfrak mA = \kappa[T]/(T - a_0)$. Thus the map $R \to A$ is an isomorphism. Setting $a \in R$ equal to the image of $T$ under the maps $R[T] \to S \to A \to R$ gives an element of $R$ with $f(a) = 0$ and $\overline{a} = a_0$.
-
-Proof of 1$\Rightarrow$``{=html}6. Assume (1) or equivalently all of (1), (2), (7), (8), (9), (10), (11), (12), (13). Let $f \in R[T]$ be a polynomial. Suppose that $\overline{f} = g_0h_0$ is a factorization with $\gcd(g_0, h_0) = 1$. If $g_0 = 0$, then $h_0$ is a nonzero constant; lift it to a unit $h \in R$ and set $g = h^{-1}f$. If $h_0 = 0$, lift the nonzero constant $g_0$ to a unit $g \in R$ and set $h = g^{-1}f$. Thus we may assume that both residue factors are nonzero. We may and do assume that $g_0$ is monic. Consider $S = R[T]/(f)$. Because we have the factorization we see that the coefficients of $f$ generate the unit ideal in $R$. This implies that $S$ has finite fibres over $R$, hence is quasi-finite over $R$. It also implies that $S$ is flat over $R$ by Lemma [Grothendieck's fibrewise nonzerodivisor criterion](#native-algebra-lemma-grothendieck-general). Combining (13) and (10) we may write $S = A_1 \times \ldots \times A_n \times B$ where each $A_i$ is local and finite over $R$, and $B \otimes_R \kappa = 0$. After reordering the factors $A_1, \ldots, A_n$ we may assume that $$\kappa[T]/(g_0) =
-A_1/\mathfrak m A_1 \times \ldots \times A_r/\mathfrak mA_r,
-\ \kappa[T]/(h_0) =
-A_{r + 1}/\mathfrak mA_{r + 1} \times \ldots \times A_n/\mathfrak mA_n$$ as quotients of $\kappa[T]$. The finite flat $R$-algebra $A = A_1 \times \ldots \times A_r$ is free as an $R$-module, see Lemma [Finite flat modules over a local ring](#native-algebra-lemma-finite-flat-local). Its rank is $\deg_T(g_0)$. Let $g \in R[T]$ be the characteristic polynomial of the $R$-linear operator $T : A \to A$. Then $g$ is a monic polynomial of degree $\deg_T(g) = \deg_T(g_0)$ and moreover $\overline{g} = g_0$. By Cayley-Hamilton (Lemma [The characteristic polynomial](#native-algebra-lemma-charpoly)) we see that $g(T_A) = 0$ where $T_A$ indicates the image of $T$ in $A$. Hence we obtain a well defined surjective map $R[T]/(g) \to A$ which is an isomorphism by Nakayama's Lemma [Nakayama's lemma](#native-algebra-lemma-nak). The map $R[T] \to A$ factors through $R[T]/(f)$ by construction hence we may write $f = gh$ for some $h$. This finishes the proof. $\square$
+Cayley–Hamilton gives a surjection $R[T]/(g)\to A$. Both modules are free of rank $r$, and reduction makes this map an isomorphism. Its matrix has unit determinant, so it is an isomorphism over $R$; the rank-zero case is the isomorphism of zero modules. Since $f$ vanishes in $A$, we obtain $f=gh$ in $R[T]$. Reducing and cancelling the nonzero polynomial $g_0$ in $\kappa[T]$ gives $\bar h=h_0$. The normalization step then restores any original leading coefficient. This proves (6) and finishes all thirteen equivalences. ∎
 
 #### Lemma. Extending a henselian lifting problem to a finite algebra
 
-Let $R \to S$ be a local map of local rings. Let $S \to S^h$ be the henselization. Let $R \to A$ be an étale ring map and let $\mathfrak q$ be a prime of $A$ lying over $\mathfrak m_R$ such that $R/\mathfrak m_R \cong \kappa(\mathfrak q)$. Then there exists a unique morphism of rings $f : A \to S^h$ fitting into the commutative diagram $$\begin{gathered}\begin{matrix}A & S^h \\ R & S\end{matrix} \\[6pt] \begin{aligned}A & \xrightarrow{f} S^h \\ R & \longrightarrow A \\ R & \longrightarrow S \\ S & \longrightarrow S^h\end{aligned}\end{gathered}$$ such that $f^{-1}(\mathfrak m_{S^h}) = \mathfrak q$.
+Let $R\to S$ be a local homomorphism of local rings, and write $S\to S^h$ for the henselization. Suppose $R\to A$ is étale and $\mathfrak q\subset A$ lies above $\mathfrak m_R$ with canonical isomorphism $R/\mathfrak m_R\cong\kappa(\mathfrak q)$. There is exactly one $R$-algebra map $f:A\to S^h$ with
+$$f^{-1}(\mathfrak m_{S^h})=\mathfrak q.$$
+In particular $R\to A\xrightarrow f S^h$ agrees with $R\to S\to S^h$.
 
-**Proof.** This is a special case of Lemma [Maps into a henselian local ring](#native-algebra-lemma-map-into-henselian). $\square$
+**Proof.** The residue field of $S^h$ is canonically that of $S$. Locality of $R\to S$ and the given residue isomorphism specify the evaluation
+$$A\longrightarrow\kappa(\mathfrak q)\cong R/\mathfrak m_R
+\longrightarrow S/\mathfrak m_S=\kappa(S^h).$$
+Apply the general evaluation assertion in *Henselian local rings and henselization*, Theorem 1.2, to the henselian target $S^h$. It gives the unique $R$-algebra lift of this evaluation. Its residue kernel is $\mathfrak q$, proving the asserted inverse-image condition. Conversely, every $R$-algebra map with that inverse image induces this same evaluation, because $\kappa(\mathfrak q)=\kappa(R)$ and its action on $R$ is fixed. The theorem's uniqueness therefore proves uniqueness in the exact scope stated here. ∎
 
 #### Lemma. Étale morphisms
 
-Results on étale ring maps.
+The following properties hold for étale ring maps.
 
-1.  The ring map $R \to R_f$ is étale for any ring $R$ and any $f \in R$.
+1. Every principal localization $R\to R_f$ is étale, including $f=0$.
+2. The composite of two étale maps is étale.
+3. Any base change of an étale map is étale.
+4. Suppose $g_1,\ldots,g_m\in S$ generate the unit ideal. If every $R\to S_{g_i}$ is étale, then $R\to S$ is étale.
+5. If $R\to S$ is finitely presented and $R\to R'$ is flat, put $S'=R'\otimes_R S$. The étale locus of $S'/R'$ is exactly the inverse image of the étale locus of $S/R$.
+6. Every étale map is syntomic and hence flat.
+7. For a finite type algebra $S$ over a field $k$, étaleness is equivalent to $\Omega_{S/k}=0$.
+8. Every étale $R$-algebra $S$ is obtained by base change from an étale $R_0$-algebra $S_0$, where $R_0\subseteq R$ is a finite type $\mathbf Z$-algebra.
+9. If $A=\operatorname{colim}_i A_i$ is a filtered colimit of rings and $B$ is étale over $A$, some stage has an étale algebra $B_i/A_i$ with $A\otimes_{A_i}B_i\cong B$.
+10. If $U\subset A$ is multiplicative and $B'$ is étale over $U^{-1}A$, there is an étale $A$-algebra $B$ such that $U^{-1}B\cong B'$.
+11. For $B=B'\times B''$ as $A$-algebras, $B/A$ is étale if and only if both factors are étale over $A$.
 
-2.  Compositions of étale ring maps are étale.
+**Proof of (1)–(4) and (6).** An étale algebra is a smooth algebra with zero differentials. The presentation $R_f=R[z]/(fz-1)$ is smooth and has zero differential module, since $f$ is invertible there. It also covers $f=0$, when the quotient is the zero ring.
 
-3.  A base change of an étale ring map is étale.
+Smoothness is preserved by [composition](#native-algebra-lemma-compose-smooth) and [base change](#native-algebra-lemma-base-change-smooth). The differential transitivity sequence makes $\Omega_{T/R}=0$ for étale $R\to S\to T$, since both neighboring differential modules vanish. The base-change isomorphism
+$$\Omega_{(R'\otimes_R S)/R'}\cong R'\otimes_R\Omega_{S/R}$$
+proves the same vanishing after any base change. These give (2) and (3).
 
-4.  The property of being étale is local: Given a ring map $R \to S$ and elements $g_1, \ldots, g_m \in S$ which generate the unit ideal such that $R \to S_{g_j}$ is étale for $j = 1, \ldots, m$ then $R \to S$ is étale.
+For (4), the principal opens $D(g_i)$ cover $\operatorname{Spec}(S)$. Locality of smoothness, including its finite-presentation assertion, makes $S$ smooth over $R$. Localization of differentials gives $(\Omega_{S/R})_{g_i}=0$ on that cover, so local detection makes $\Omega_{S/R}=0$. Finally [smooth algebras are syntomic](#native-algebra-lemma-smooth-syntomic), and the syntomic criterion includes flatness. This proves (6).
 
-5.  Given $R \to S$ of finite presentation, and a flat ring map $R \to R'$, set $S' = R' \otimes_R S$. The set of primes where $R' \to S'$ is étale is the inverse image via $\operatorname{Spec}(S') \to \operatorname{Spec}(S)$ of the set of primes where $R \to S$ is étale.
+**Proof of (5).** Base change gives one inclusion of loci. For the reverse inclusion, fix $\mathfrak q'\in\operatorname{Spec}(S')$ over $\mathfrak q\in\operatorname{Spec}(S)$ and suppose $S'/R'$ is étale there. The [smooth-locus comparison under flat base change](#native-algebra-lemma-flat-base-change-locus-smooth) makes $S/R$ smooth at $\mathfrak q$. Moreover, $S_{\mathfrak q}\to S'_{\mathfrak q'}$ is a flat local map, hence faithfully flat. The differential base-change formula and faithful detection give
+$$0=(\Omega_{S'/R'})_{\mathfrak q'}
+\cong(\Omega_{S/R})_{\mathfrak q}\otimes_{S_{\mathfrak q}}S'_{\mathfrak q'}
+\quad\Longrightarrow\quad(\Omega_{S/R})_{\mathfrak q}=0.$$
+The module $\Omega_{S/R}$ is finite because $S/R$ is finitely presented. A product of denominators annihilating a finite generating list therefore makes it zero on a principal neighborhood of $\mathfrak q$. Intersect with a smooth neighborhood. There the algebra is smooth with zero differentials, hence étale, proving the locus equality. Faithfulness was needed only for the localized map at the given pair of points; the base map need not be faithfully flat globally.
 
-6.  An étale ring map is syntomic, in particular flat.
+**Proof of (7).** The forward implication follows from the definition. Conversely, a finite type $k$-algebra is finitely presented by the Hilbert basis theorem and is flat over the field $k$. Together with $\Omega_{S/k}=0$, these are the hypotheses of *Smooth algebras over a field and the Jacobian criterion*, Theorem 6.2 (flat and unramified). Its complete proof produces square Jacobian neighborhoods by killing the finite kernel after the fibre comparison, then glues the unique lifts. Thus it proves the asserted étaleness, including the zero algebra.
 
-7.  If $S$ is finite type over a field $k$, then $S$ is étale over $k$ if and only if $\Omega_{S/k} = 0$.
+**Proof of (8) and (9).** Use the [global square presentation](#native-algebra-lemma-etale-standard-smooth)
+$$S=R[x_1,\ldots,x_n]/(f_1,\ldots,f_n),\qquad
+\Delta=\det\left(\frac{\partial f_i}{\partial x_j}\right).$$
+Since $\Delta$ is a unit in the quotient, there are polynomials $w,a_1,\ldots,a_n$ satisfying the polynomial identity
+$$w\Delta-1=\sum_{i=1}^n a_i f_i.$$
+Let $R_0$ be the subring generated over $\mathbf Z$ by all coefficients of these finitely many polynomials. The determinant also has coefficients in $R_0$, and the identity holds in $R_0[x]$. Hence $S_0=R_0[x]/(f_1,\ldots,f_n)$ has invertible square Jacobian and is étale over $R_0$. Base change recovers $S$, proving (8).
 
-8.  Any étale ring map $R \to S$ is the base change of an étale ring map $R_0 \to S_0$ with $R_0$ of finite type over $\mathbf{Z}$.
+The smooth-descent route gives the same conclusion: descend $S/R$ to a smooth algebra over a finite type $\mathbf Z$-subring by [the formal-section construction](#native-algebra-lemma-finite-presentation-fs-noetherian). Its finite projective differential module has locally constant finite rank. The rank-zero locus is a clopen factor, by [the relative-dimension decomposition](#native-algebra-lemma-relative-dimension-cm). Keep that factor. After base change to $R$, all positive-rank factors have empty spectrum because the resulting differential module is zero; thus the retained factor still recovers all of $S$ and is étale.
 
-9.  Let $A = \mathop{\operatorname{colim}} A_i$ be a filtered colimit of rings. Let $A \to B$ be an étale ring map. Then there exists an étale ring map $A_i \to B_i$ for some $i$ such that $B \cong A \otimes_{A_i} B_i$.
+For (9), choose the same square presentation for $B/A$, together with the polynomials giving the determinant identity. Represent their finitely many coefficients at a common stage $A_i$. The finitely many coefficient equalities in that identity hold after passing to a further stage, by filteredness. The corresponding square presentation there is étale and base changes to $B$. This argument works for a filtered indexing category: its finite diagrams have a common receiving object, and parallel arrows can be equalized.
 
-10. Let $A$ be a ring. Let $S$ be a multiplicative subset of $A$. Let $S^{-1}A \to B'$ be étale. Then there exists an étale ring map $A \to B$ such that $B' \cong S^{-1}B$.
+**Proof of (10) and (11).** The localization $U^{-1}A$ is the filtered colimit of the principal localizations $A_u$ for $u\in U$. Part (9) descends $B'$ to an étale algebra over one $A_u$. Regard that algebra as $B$ over $A$; parts (1) and (2) show it is étale, and localizing it along $U$ gives $B'$. If $0\in U$, the only algebra over $U^{-1}A=0$ is zero, and $B=0$ also gives the assertion.
 
-11. Let $A$ be a ring. Let $B = B' \times B''$ be a product of $A$-algebras. Then $B$ is étale over $A$ if and only if both $B'$ and $B''$ are étale over $A$.
-
-**Proof.** In each case we use the corresponding result for smooth ring maps with a small argument added to show that $\Omega_{S/R}$ is zero.
-
-Proof of (1). The ring map $R \to R_f$ is smooth and $\Omega_{R_f/R} = 0$.
-
-Proof of (2). The composition $A \to C$ of smooth maps $A \to B$ and $B \to C$ is smooth, see Lemma [Composition of smooth ring maps](#native-algebra-lemma-compose-smooth). By Lemma Kähler differentials, Theorems 3.1–3.3, Proposition 3.4 and Theorem 7.1 we see that $\Omega_{C/A}$ is zero as both $\Omega_{C/B}$ and $\Omega_{B/A}$ are zero.
-
-Proof of (3). Let $R \to S$ be étale and $R \to R'$ be arbitrary. Then $R' \to S' = R' \otimes_R S$ is smooth, see Lemma [Base change of smooth ring maps](#native-algebra-lemma-base-change-smooth). Since $\Omega_{S'/R'} = S' \otimes_S \Omega_{S/R}$ by Lemma [Base change of Kähler differentials](#native-algebra-lemma-differentials-base-change) we conclude that $\Omega_{S'/R'} = 0$. Hence $R' \to S'$ is étale.
-
-Proof of (4). Assume the hypotheses of (4). By Lemma [Smooth morphisms and local algebra](#native-algebra-lemma-locally-smooth) we see that $R \to S$ is smooth. We are also given that $\Omega_{S_{g_i}/R} = (\Omega_{S/R})_{g_i} = 0$ for all $i$. Then $\Omega_{S/R} = 0$, see Lemma [A finite cover by affine localizations](#native-algebra-lemma-cover).
-
-Proof of (5). The result for smooth maps is Lemma [The smooth locus under flat base change](#native-algebra-lemma-flat-base-change-locus-smooth). In the proof of that lemma we used that $\mathrm{NL}_{S/R} \otimes_S S'$ is homotopy equivalent to $\mathrm{NL}_{S'/R'}$. This reduces us to showing that if $M$ is a finitely presented $S$-module the set of primes $\mathfrak q'$ of $S'$ such that $(M \otimes_S S')_{\mathfrak q'} = 0$ is the inverse image of the set of primes $\mathfrak q$ of $S$ such that $M_{\mathfrak q} = 0$. This follows from Lemma [Support under base change](#native-algebra-lemma-support-base-change).
-
-Proof of (6). Follows directly from the corresponding result for smooth ring maps (Lemma [Smooth algebras are syntomic](#native-algebra-lemma-smooth-syntomic)).
-
-Proof of (7). Follows from Lemma Smooth algebras over a field and the Jacobian criterion, Theorems 5.1–6.1 and Sections 1–3 and the definitions.
-
-Proof of (8). Lemma [Finite presentation and formal smoothness over a Noetherian ring](#native-algebra-lemma-finite-presentation-fs-noetherian) gives the result for smooth ring maps. The resulting smooth ring map $R_0 \to S_0$ satisfies the hypotheses of Lemma [Relative dimension in a Cohen–Macaulay family](#native-algebra-lemma-relative-dimension-cm), and hence we may replace $S_0$ by the factor of relative dimension $0$ over $R_0$.
-
-Proof of (9). Follows from (8) since $R_0 \to A$ will factor through $A_i$ for some $i$ by Lemma [Characterizations of finite presentation](#native-algebra-lemma-characterize-finite-presentation).
-
-Proof of (10). Follows from (9), (1), and (2) since $S^{-1}A$ is a filtered colimit of principal localizations of $A$.
-
-Proof of (11). Use Lemma [Products of smooth algebras](#native-algebra-lemma-product-smooth) to see the result for smoothness and then use that $\Omega_{B/A}$ is zero if and only if both $\Omega_{B'/A}$ and $\Omega_{B''/A}$ are zero. $\square$
+For (11), the two factors are principal localizations of $B$ at its complementary idempotents $(1,0)$ and $(0,1)$. If $B/A$ is étale, their étaleness follows by (1) and (2). Conversely these two idempotents give a principal cover of $\operatorname{Spec}(B)$, so (4) applies. Equivalently, the product criterion for smoothness and the two components of $\Omega_{B/A}$ give the same conclusion. ∎
 
 #### Definition. Étale ring maps
- Let $R \to S$ be a ring map. We say $R \to S$ is *étale* if it is of finite presentation and the naive cotangent complex $\mathrm{NL}_{S/R}$ is quasi-isomorphic to zero: this means that $H_1(\mathrm{NL}_{S/R}) = 0$ and $\Omega_{S/R} = 0$. Given a prime $\mathfrak q$ of $S$ we say that $R \to S$ is *étale at $\mathfrak q$* if there exists a $g \in S$, $g \not \in \mathfrak q$ such that $R \to S_g$ is étale.
+
+A homomorphism $R\to S$ is **étale** when $S$ is finitely presented over $R$ and its naive cotangent complex is acyclic:
+$$H_1(\mathrm{NL}_{S/R})=0,\qquad\Omega_{S/R}=0.$$
+It is **étale at** $\mathfrak q\in\operatorname{Spec}(S)$ if there is a $g\in S\setminus\mathfrak q$ for which $R\to S_g$ is étale. Thus the pointwise condition requires an étale principal neighborhood.
 
 #### Lemma. The Zariski topology on an affine spectrum
- Let $R$ be a ring.
 
-1.  The spectrum of a ring $R$ is empty if and only if $R$ is the zero ring.
+Let $R$ be any ring. For a subset $T\subseteq R$, write $V(T)$ for its common vanishing locus in $\operatorname{Spec}(R)$ and $D(f)$ for the complement of $V(f)$.
 
-2.  Every nonzero ring has a maximal ideal.
+1. The spectrum is empty precisely for the zero ring.
+2. A nonzero ring has a maximal ideal.
+3. A nonzero ring has a minimal prime.
+4. Given an ideal $I\subseteq\mathfrak p$ with $\mathfrak p$ prime, there is a prime $\mathfrak q$ minimal over $I$ with $\mathfrak q\subseteq\mathfrak p$.
+5. For any subset $T$, one has $V(T)=V((T))$, where $(T)$ is its generated ideal.
+6. Taking a radical does not change a vanishing locus: $V(I)=V(\sqrt I)$.
+7. The radical has the description $\sqrt I=\bigcap_{\mathfrak p\supseteq I}\mathfrak p$, with the empty intersection interpreted as $R$.
+8. The equality $V(I)=\varnothing$ is equivalent to $I=R$.
+9. For ideals $I,J$, one has $V(I)\cup V(J)=V(I\cap J)$.
+10. For any family $(I_a)_{a\in A}$, one has $\bigcap_aV(I_a)=V(\bigcup_a I_a)$.
+11. The sets $D(f)$ and $V(f)$ form a disjoint partition of $\operatorname{Spec}(R)$.
+12. The open set $D(f)$ is empty precisely when $f$ is nilpotent.
+13. Multiplication by a unit does not change a principal open: $D(uf)=D(f)$ for $u\in R^\times$.
+14. If $\mathfrak p\notin V(I)$, some $f\in R$ satisfies $\mathfrak p\in D(f)$ and $D(f)\cap V(I)=\varnothing$.
+15. Principal opens satisfy $D(fg)=D(f)\cap D(g)$.
+16. For any family $(f_i)_{i\in J}$, its union $\bigcup_iD(f_i)$ is the complement of $V(\{f_i:i\in J\})$.
+17. If $D(f)=\operatorname{Spec}(R)$, then $f$ is invertible.
 
-3.  Every nonzero ring has a minimal prime ideal.
+**Proof.** The three underlying prime-ideal arguments are written in full in *Spectra of rings*: Lemma 1.1 and Theorem 1.2 prove maximal-ideal existence and the radical intersection formula, while Lemma 4.2 proves the minimal-prime assertion inside a prescribed prime. The first argument applies Zorn's lemma to ideals avoiding a multiplicative set. The second applies it with reversed inclusion to primes between $I$ and $\mathfrak p$, proving that a descending-chain intersection is still prime. These results hold for arbitrary rings. They give (2), (4), and (7) directly. A maximal ideal is prime, so (2) followed by (4) gives (3). Since primes are proper, the zero ring has none; (2) gives the converse in (1).
 
-4.  Given an ideal $I \subset R$ and a prime ideal $I \subset \mathfrak p$ there exists a prime $I \subset \mathfrak q \subset \mathfrak p$ such that $\mathfrak q$ is minimal over $I$.
+We record all the topological deductions to specify exactly how these algebraic results are used. Containment of $T$ in a prime is equivalent to containment of $(T)$, which proves (5). A prime containing $I$ contains every element whose power belongs to $I$; hence it contains $\sqrt I$, proving (6). For (8), a proper $I$ is contained in a maximal ideal, by applying (2) to $R/I$, whereas no prime contains the unit ideal.
 
-5.  If $T \subset R$, and if $(T)$ is the ideal generated by $T$ in $R$, then $V((T)) = V(T)$.
+If a prime contains $I$ or $J$, it contains $I\cap J$. Conversely, if it contains $I\cap J$, it contains $IJ$. If some $a\in I$ lies outside that prime, the products $ab$ for all $b\in J$ force all of $J$ into the prime. This proves (9). A prime contains every $I_a$ exactly when it contains their union, proving (10), also for an empty family.
 
-6.  If $I$ is an ideal and $\sqrt{I}$ is its radical, see basic notion ([Commutative algebra](#context-algebra-item-radical-ideal)), then $V(I) = V(\sqrt{I})$.
+Part (11) is the definition of $D(f)$. For (12), emptiness means that $f$ lies in every prime, which by (7) for $I=0$ is equivalent to nilpotence. A prime contains $uf$ exactly when it contains $f$ if $u$ is a unit, giving (13). To prove (14), choose $f\in I\setminus\mathfrak p$. It avoids $\mathfrak p$, while every point of $V(I)$ contains it. This gives the claimed neighborhood and disjointness.
 
-7.  Given an ideal $I$ of $R$ we have $\sqrt{I} =
-    \bigcap_{I \subset \mathfrak p} \mathfrak p$.
-
-8.  If $I$ is an ideal then $V(I) = \emptyset$ if and only if $I$ is the unit ideal.
-
-9.  If $I$, $J$ are ideals of $R$ then $V(I) \cup V(J) =
-    V(I \cap J)$.
-
-10. If $(I_a)_{a\in A}$ is a set of ideals of $R$ then $\bigcap_{a\in A} V(I_a) = V(\bigcup_{a\in A} I_a)$.
-
-11. If $f \in R$, then $D(f) \amalg V(f) = \operatorname{Spec}(R)$.
-
-12. If $f \in R$ then $D(f) = \emptyset$ if and only if $f$ is nilpotent.
-
-13. If $f = u f'$ for some unit $u \in R$, then $D(f) = D(f')$.
-
-14. If $I \subset R$ is an ideal, and $\mathfrak p$ is a prime of $R$ with $\mathfrak p \not\in V(I)$, then there exists an $f \in R$ such that $\mathfrak p \in D(f)$, and $D(f) \cap V(I) = \emptyset$.
-
-15. If $f, g \in R$, then $D(fg) = D(f) \cap D(g)$.
-
-16. If $f_i \in R$ for $i \in I$, then $\bigcup_{i\in I} D(f_i)$ is the complement of $V(\{f_i \}_{i\in I})$ in $\operatorname{Spec}(R)$.
-
-17. If $f \in R$ and $D(f) = \operatorname{Spec}(R)$, then $f$ is a unit.
-
-**Proof.** We address each part in the corresponding item below.
-
-1.  This is a direct consequence of (2) or (3).
-
-2.  Let $\mathfrak{A}$ be the set of all proper ideals of $R$. This set is ordered by inclusion and is non-empty, since $(0) \in \mathfrak{A}$ is a proper ideal. Let $A$ be a totally ordered subset of $\mathfrak A$. Then $\bigcup_{I \in A} I$ is in fact an ideal. Since $1 \notin I$ for all $I \in A$, the union does not contain $1$ and thus is proper. Hence $\bigcup_{I \in A} I$ is in $\mathfrak{A}$ and is an upper bound for the set $A$. Thus by Zorn's lemma $\mathfrak{A}$ has a maximal element, which is the sought-after maximal ideal.
-
-3.  Since $R$ is nonzero, it contains a maximal ideal which is a prime ideal. Thus the set $\mathfrak{A}$ of all prime ideals of $R$ is nonempty. $\mathfrak{A}$ is ordered by reverse-inclusion. Let $A$ be a totally ordered subset of $\mathfrak{A}$. It's pretty clear that $J = \bigcap_{I \in A} I$ is in fact an ideal. Not so clear, however, is that it is prime. Let $xy \in J$. Then $xy \in I$ for all $I \in A$. Now let $B = \{I \in A | y \in I\}$. Let $K
-    = \bigcap_{I \in B} I$. Since $A$ is totally ordered, either $K = J$ (and we're done, since then $y \in J$) or $K \supset J$ and for all $I \in A$ such that $I$ is properly contained in $K$, we have $y \notin I$. But that means that for all those $I, x \in I$, since they are prime. Hence $x \in J$. In either case, $J$ is prime as desired. Hence by Zorn's lemma we get a maximal element which in this case is a minimal prime ideal.
-
-4.  This is the same exact argument as (3) except you only consider prime ideals contained in $\mathfrak{p}$ and containing $I$.
-
-5.  $(T)$ is the smallest ideal containing $T$. Hence if $T \subset I$, some ideal, then $(T) \subset I$ as well. Hence if $I \in V(T)$, then $I \in V((T))$ as well. The other inclusion is obvious.
-
-6.  Since $I \subset \sqrt{I}, V(\sqrt{I}) \subset V(I)$. Now let $\mathfrak{p} \in V(I)$. Let $x \in \sqrt{I}$. Then $x^n \in I$ for some $n$. Hence $x^n \in \mathfrak{p}$. But since $\mathfrak{p}$ is prime, a boring induction argument gets you that $x \in \mathfrak{p}$. Hence $\sqrt{I} \subset
-    \mathfrak{p}$ and $\mathfrak{p} \in V(\sqrt{I})$.
-
-7.  Let $f \in R \setminus \sqrt{I}$. Then $f^n \notin I$ for all $n$. Hence $S = \{1, f, f^2, \ldots\}$ is a multiplicative subset, not containing $0$. Take a prime ideal $\bar{\mathfrak{p}} \subset S^{-1}R$ containing $S^{-1}I$. Then the pull-back $\mathfrak{p}$ in $R$ of $\bar{\mathfrak{p}}$ is a prime ideal containing $I$ that does not intersect $S$. This shows that $\bigcap_{I \subset
-    \mathfrak p} \mathfrak p \subset \sqrt{I}$. Now if $a \in \sqrt{I}$, then $a^n
-    \in I$ for some $n$. Hence if $I \subset \mathfrak{p}$, then $a^n \in
-    \mathfrak{p}$. But since $\mathfrak{p}$ is prime, we have $a \in \mathfrak{p}$. Thus the equality is shown.
-
-8.  $I$ is not the unit ideal if and only if $I$ is contained in some maximal ideal (to see this, apply (2) to the ring $R/I$) which is therefore prime.
-
-9.  If $\mathfrak{p} \in V(I) \cup V(J)$, then $I \subset \mathfrak{p}$ or $J
-    \subset \mathfrak{p}$ which means that $I \cap J \subset \mathfrak{p}$. Now if $I \cap J \subset \mathfrak{p}$, then $IJ \subset \mathfrak{p}$ and hence either $I \subset \mathfrak{p}$ or $J \subset \mathfrak{p}$, since $\mathfrak{p}$ is prime.
-
-10. $\mathfrak{p} \in \bigcap_{a \in A} V(I_a) \Leftrightarrow
-    I_a \subset \mathfrak{p}, \forall a \in A \Leftrightarrow
-    \mathfrak{p} \in V(\bigcup_{a\in A} I_a)$
-
-11. If $\mathfrak{p}$ is a prime ideal and $f \in R$, then either $f \in
-    \mathfrak{p}$ or $f \notin \mathfrak{p}$ (strictly) which is what the disjoint union says.
-
-12. If $a \in R$ is nilpotent, then $a^n = 0$ for some $n$. Hence $a^n \in
-    \mathfrak{p}$ for any prime ideal. Thus $a \in \mathfrak{p}$ as can be shown by induction and $D(a) = \emptyset$. Now, as shown in (7), if $a \in R$ is not nilpotent, then there is a prime ideal that does not contain it.
-
-13. $f \in \mathfrak{p} \Leftrightarrow uf \in \mathfrak{p}$, since $u$ is invertible.
-
-14. If $\mathfrak{p} \notin V(I)$, then $\exists f \in I \setminus
-    \mathfrak{p}$. Then $f \notin \mathfrak{p}$ so $\mathfrak{p} \in D(f)$. Also if $\mathfrak{q} \in D(f)$, then $f \notin \mathfrak{q}$ and thus $I$ is not contained in $\mathfrak{q}$. Thus $D(f) \cap V(I) = \emptyset$.
-
-15. If $fg \in \mathfrak{p}$, then $f \in \mathfrak{p}$ or $g \in
-    \mathfrak{p}$. Hence if $f \notin \mathfrak{p}$ and $g \notin \mathfrak{p}$, then $fg \notin \mathfrak{p}$. Since $\mathfrak{p}$ is an ideal, if $fg \notin
-    \mathfrak{p}$, then $f \notin \mathfrak{p}$ and $g \notin \mathfrak{p}$.
-
-16. $\mathfrak{p} \in \bigcup_{i \in I} D(f_i) \Leftrightarrow \exists i \in
-    I, f_i \notin \mathfrak{p} \Leftrightarrow \mathfrak{p} \in \operatorname{Spec}(R)
-    \setminus V(\{f_i\}_{i \in I})$
-
-17. If $D(f) = \operatorname{Spec}(R)$, then $V(f) = \emptyset$ and hence $fR = R$, so $f$ is a unit.
-
-$\square$
+A prime avoids $fg$ exactly when it avoids both factors; this proves (15). It lies outside $\bigcup_iD(f_i)$ exactly when it contains every $f_i$, proving (16). Finally, (17) says $V((f))$ is empty. Part (8) then gives $(f)=R$, so $f$ is a unit. These identities agree with the full topology proof in *Spectra of rings*, Proposition 2.1. ∎
 
 #### Example. Étale algebras from polynomial factorizations
- Let $n , m \geq 1$ be integers. Consider the ring map $$\begin{eqnarray*}
-R = \mathbf{Z}[a_1, \ldots, a_{n + m}]
-& \longrightarrow &
-S = \mathbf{Z}[b_1, \ldots, b_n, c_1, \ldots, c_m] \\
-a_1 & \longmapsto & b_1 + c_1 \\
-a_2 & \longmapsto & b_2 + b_1 c_1 + c_2 \\
-\ldots & \ldots & \ldots \\
-a_{n + m} & \longmapsto & b_n c_m
-\end{eqnarray*}$$ of Example [Factorization of polynomials](#native-algebra-example-factor-polynomials). Write symbolically $$S = R[b_1, \ldots, c_m]/(\{a_k(b_i, c_j) - a_k\}_{k = 1, \ldots, n + m})$$ where for example $a_1(b_i, c_j) = b_1 + c_1$. The matrix of partial derivatives is $$\left(
-\begin{matrix}
-1 & c_1 & \ldots & c_m & 0 & \ldots & \ldots & 0 \\
-0 & 1 & c_1 & \ldots & c_m & 0 & \ldots & 0 \\
-\ldots & \ldots & \ldots & \ldots & \ldots & \ldots & \ldots & \ldots \\
-0 & \ldots & 0 & 1 & c_1 & c_2 & \ldots & c_m \\
-1 & b_1 & \ldots & b_{n - 1} & b_n & 0 & \ldots & 0 \\
-0 & 1 & b_1 & \ldots & b_{n - 1} & b_n & \ldots & 0 \\
-\ldots & \ldots & \ldots & \ldots & \ldots & \ldots & \ldots & \ldots \\
-0 & \ldots & \ldots & 0 & 1 & b_1 & \ldots & b_n
-\end{matrix}
-\right)$$ The determinant $\Delta$ of this matrix is better known as the *resultant* of the polynomials $g = x^n + b_1 x^{n - 1} + \ldots + b_n$ and $h = x^m + c_1 x^{m - 1} + \ldots + c_m$, and the matrix above is known as the *Sylvester matrix* associated to $g, h$. In a formula $\Delta = \text{Res}_x(g, h)$. The Sylvester matrix is the transpose of the matrix of the linear map $$\begin{eqnarray*}
-S[x]_{< m} \oplus S[x]_{< n} & \longrightarrow & S[x]_{< n + m} \\
-a \oplus b & \longmapsto & ag + bh
-\end{eqnarray*}$$ Let $\mathfrak q \subset S$ be any prime. By the above the following are equivalent:
 
-1.  $R \to S$ is étale at $\mathfrak q$,
+Fix $n,m\geq1$. Put
+$$R=\mathbf Z[a_1,\ldots,a_{n+m}],\qquad
+S=\mathbf Z[b_1,\ldots,b_n,c_1,\ldots,c_m],$$
+and introduce the monic polynomials
+$$g(x)=x^n+b_1x^{n-1}+\cdots+b_n,\qquad
+h(x)=x^m+c_1x^{m-1}+\cdots+c_m.$$
+Write $A_k(b,c)$ for the coefficient of $x^{n+m-k}$ in $gh$. The coefficient map $R\to S$ sends $a_k$ to $A_k(b,c)$; thus $a_1\mapsto b_1+c_1$, $a_2\mapsto b_2+b_1c_1+c_2$ when those coefficients occur, and $a_{n+m}\mapsto b_nc_m$. Missing coefficients are interpreted as zero. Equivalently,
+$$S=R[b_1,\ldots,b_n,c_1,\ldots,c_m]/(A_k(b,c)-a_k)_{1\leq k\leq n+m}.$$
 
-2.  $\Delta = \text{Res}_x(g, h) \not \in \mathfrak q$,
+Use the input order $(b_1,\ldots,b_n,c_1,\ldots,c_m)$ and output order $(A_1,\ldots,A_{n+m})$. Let $J$ be this coefficient Jacobian and let $\Delta=\det J$. A variation of the coefficients of $g$ is a polynomial $u\in S[x]_{<n}$, and one of $h$ is $v\in S[x]_{<m}$. Differentiating the product identifies $J$ with the matrix of
+$$\Phi:S[x]_{<n}\oplus S[x]_{<m}\longrightarrow S[x]_{<n+m},
+\qquad (u,v)\longmapsto uh+gv,$$
+using decreasing-degree monomial bases in both source summands and the target. Thus $J^{\mathsf t}$ has the coefficient rows of
+$$x^{n-1}h,\ldots,h,\quad x^{m-1}g,\ldots,g.$$
+This specifies every entry and its order without an ambiguous ellipsis pattern.
 
-3.  the images $\overline{g}, \overline{h} \in \kappa(\mathfrak q)[x]$ of the polynomials $g, h$ are relatively prime in $\kappa(\mathfrak q)[x]$.
+To fix the resultant convention, define $\operatorname{Res}(g,h)$ by the Sylvester determinant with the $m$ shifted rows of $g$ first and the $n$ shifted rows of $h$ second, again in decreasing degrees. Swapping these two blocks gives the exact comparison
+$$\boxed{\Delta=(-1)^{nm}\operatorname{Res}(g,h).}$$
+For example, when $n=m=1$,
+$$J=\begin{pmatrix}1&1\\c_1&b_1\end{pmatrix},\qquad
+\Delta=b_1-c_1,\qquad\operatorname{Res}(x+b_1,x+c_1)=c_1-b_1.$$
+The ordered matrix in [Stacks, Tag 00UA](https://stacks.math.columbia.edu/tag/00UA) places the $h$ block first. Its determinant has the comparison above under the stated resultant convention. The map $(a,b)\mapsto ag+bh$ on $S[x]_{<m}\oplus S[x]_{<n}$ uses the opposite block order. Keeping this permutation explicit resolves the sign while preserving all invertibility conclusions.
 
-The equivalence of (2) and (3) holds because the image of the Sylvester matrix in $\text{Mat}(n + m, \kappa(\mathfrak q))$ has a kernel if and only if the polynomials $\overline{g}, \overline{h}$ have a factor in common. We conclude that the ring map $$R \longrightarrow S[\frac{1}{\Delta}] = S[\frac{1}{\text{Res}_x(g, h)}]$$ is étale.
+For a prime $\mathfrak q\subset S$, the following conditions are equivalent:
+
+1. The coefficient map $R\to S$ is étale at $\mathfrak q$.
+2. $\Delta\notin\mathfrak q$, equivalently $\operatorname{Res}(g,h)\notin\mathfrak q$.
+3. The polynomials $\bar g,\bar h\in\kappa(\mathfrak q)[x]$ are coprime.
+
+Indeed, if $\Delta$ is invertible near the point, the displayed square presentation is standard smooth with zero differential rank and hence étale. Conversely, étaleness makes its differential module vanish at $\mathfrak q$. That module has the square presentation given by $J^{\mathsf t}$. After tensoring with $\kappa(\mathfrak q)$ the square matrix is surjective and therefore invertible, giving (2).
+
+To compare (2) and (3), reduce $\Phi$ to the field $\kappa(\mathfrak q)$. If $\bar g$ and $\bar h$ are coprime and $u\bar h+\bar g v=0$, divisibility by $\bar g$ implies $\bar g\mid u$. Since $\deg u<n$, one has $u=0$, then $v=0$. Thus $\Phi$ is injective and, between vector spaces of the same dimension $n+m$, invertible. If they have a common factor $d$ of positive degree, the nonzero pair
+$$u=\bar g/d,\qquad v=-\bar h/d$$
+belongs to the two degree-bounded summands and lies in the kernel. This proves the equivalence. Consequently
+$$R\longrightarrow S[1/\Delta]=S[1/\operatorname{Res}(g,h)]$$
+is étale. Inverting either determinant gives the identical localization because they differ by the unit $(-1)^{nm}$.
 
 #### Lemma. Morphisms between étale algebras
- Let $R \to S$ and $R \to S'$ be étale. Then any $R$-algebra map $S' \to S$ is étale.
 
-**Proof.** First of all we note that $S' \to S$ is of finite presentation by Lemma [Composition of finite-type ring maps](#native-algebra-lemma-compose-finite-type). Let $\mathfrak q \subset S$ be a prime ideal lying over the primes $\mathfrak q' \subset S'$ and $\mathfrak p \subset R$. By Lemma [Étaleness at a prime ideal](#native-algebra-lemma-etale-at-prime) the ring map $S'_{\mathfrak q'}/\mathfrak p S'_{\mathfrak q'} \to
-S_{\mathfrak q}/\mathfrak p S_{\mathfrak q}$ is a map of finite separable extensions of $\kappa(\mathfrak p)$. In particular it is flat. Hence by Lemma [The fibrewise criterion for flatness](#native-algebra-lemma-criterion-flatness-fibre) we see that $S'_{\mathfrak q'} \to S_{\mathfrak q}$ is flat. Thus $S' \to S$ is flat. Moreover, the above also shows that $\mathfrak q'S_{\mathfrak q}$ is the maximal ideal of $S_{\mathfrak q}$ and that the residue field extension of $S'_{\mathfrak q'} \to S_{\mathfrak q}$ is finite separable. Hence from Lemma [Characterizations of étale algebras](#native-algebra-lemma-characterize-etale) we conclude that $S' \to S$ is étale at $\mathfrak q$. Since being étale is local (see Lemma [Étale morphisms](#native-algebra-lemma-etale)) we win. $\square$
+If $S$ and $S'$ are étale $R$-algebras, every $R$-algebra map $S'\to S$ is étale.
+
+**Proof by infinitesimal lifting.** The complete proof is *Formally smooth, unramified and étale ring maps*, Proposition 7.4. It first gives a finite presentation of $S$ over $S'$ by adjoining the finite generators of $S$ and equations for the images of generators of $S'$. In a square-zero lifting problem it lifts $S$ as an $R$-algebra, then uses formal unramifiedness of $S'/R$ to prove that the lift respects the specified $S'$-structure. Existence and uniqueness of the required $S'$-algebra lift, together with that presentation, prove étaleness.
+
+**Proof by fibres and flatness.** Keep the finite presentation just described. Given $\mathfrak q\subset S$, let $\mathfrak q'\subset S'$ and $\mathfrak p\subset R$ be its contractions. The local fibre rings
+$$S'_{\mathfrak q'}/\mathfrak pS'_{\mathfrak q'},\qquad
+S_{\mathfrak q}/\mathfrak pS_{\mathfrak q}$$
+are finite separable extensions of $\kappa(\mathfrak p)$ by the field classification of étale algebras. Their induced homomorphism is a field embedding, hence flat, and the upper field is finite separable over the lower one. Since $R_{\mathfrak p}\to S_{\mathfrak q}$ is flat, the [fibrewise flatness criterion](#native-algebra-lemma-criterion-flatness-fibre), applied with the nonzero module $S_{\mathfrak q}$ over itself, makes $S'_{\mathfrak q'}\to S_{\mathfrak q}$ flat. Both essential finite-presentation conditions hold because the original algebras are étale over $R$.
+
+Also $\mathfrak q'S'_{\mathfrak q'}=\mathfrak pS'_{\mathfrak q'}$ and $\mathfrak qS_{\mathfrak q}=\mathfrak pS_{\mathfrak q}$, so $\mathfrak q'S_{\mathfrak q}=\mathfrak qS_{\mathfrak q}$. The flat local map therefore has the maximal-ideal equality and finite separable residue extension required by [the étale criterion](#native-algebra-lemma-characterize-etale). It is étale at every $\mathfrak q$, and locality proves the result globally. ∎
 
 #### Lemma. Finite presentation and flatness
- Let $\varphi : R \to S$ be a ring map. If $R \to S$ is surjective, flat and finitely presented then there exists an idempotent $e \in R$ such that $S = R_e$.
 
-**First proof.** Let $I$ be the kernel of $\varphi$. We have that $I$ is finitely generated by Lemma [Finite presentation and finite algebras](#native-algebra-lemma-finite-presentation-independent) since $\varphi$ is of finite presentation. Moreover, since $S$ is flat over $R$, tensoring the exact sequence $0 \to I \to R \to S \to 0$ over $R$ with $S$ gives $I/I^2 = 0$. Now we conclude by Lemma [Idempotent ideals and connected components](#native-algebra-lemma-ideal-is-squared-union-connected). $\square$
+For a surjective, flat, finitely presented homomorphism $R\to S$, some idempotent $e\in R$ gives an $R$-algebra identification $S\cong R_e$.
 
-**Second proof.** Since $\operatorname{Spec}(S) \to \operatorname{Spec}(R)$ is a homeomorphism onto a closed subset (see Lemma [Closed subsets of an affine spectrum](#native-algebra-lemma-spec-closed)) and is open (see Proposition [Openness of flat finitely presented maps](#native-algebra-proposition-fppf-open)) we see that the image is $D(e)$ for some idempotent $e \in R$ (see Lemma [Product decompositions from disjoint closed subsets](#native-algebra-lemma-disjoint-decomposition)). Thus $R_e \to S$ induces a bijection on spectra. Now this map induces an isomorphism on all local rings for example by Lemmas [Finite flat modules over a local ring](#native-algebra-lemma-finite-flat-local) and [Nakayama's lemma](#native-algebra-lemma-nak). Then it follows that $R_e \to S$ is also injective, for example see Lemma [Detecting a zero module by localization](#native-algebra-lemma-characterize-zero-local). $\square$
+**Proof by the defining ideal.** The full algebraic proof is *Formally smooth, unramified and étale ring maps*, Lemma 7.5. With $I=\ker(R\to S)$, finite presentation makes $I$ finite. Flatness gives $I/I^2=0$, and the determinant argument produces an idempotent $a\in I$ generating $I$. Thus $S=R/(a)=R_{1-a}$; take $e=1-a$. This also fixes which of the two complementary idempotents is inverted.
+
+**Proof from the image of the spectrum.** Surjectivity identifies $\operatorname{Spec}(S)$ with a closed subset of $\operatorname{Spec}(R)$. [A flat finitely presented map is open](#native-algebra-proposition-fppf-open), so that subset is clopen and is $D(e)$ for an idempotent $e$. The image of $e$ in $S$ belongs to no maximal ideal and is therefore a unit. Hence the quotient map factors as a surjection $R_e\to S$ whose spectrum is bijective onto $\operatorname{Spec}(R_e)$.
+
+At any prime $\mathfrak p$ of $R_e$, the corresponding localized quotient is nonzero, finite and flat over $(R_e)_{\mathfrak p}$. The finite-flat local theorem makes it free. It is generated by its unit and its residue vector space has dimension one, so it is free of rank one and the quotient homomorphism is an isomorphism. Every localization of the kernel of $R_e\to S$ is consequently zero. Local detection makes that kernel zero, proving the claimed algebra isomorphism. ∎
 
 #### Lemma. Integral extensions
 
-Suppose $\varphi : R \to S$ is integral. Suppose $I \subset R$ is an ideal. Then every element of $IS$ is integral over $I$.
+Let $R\to S$ be integral, and let $I$ be an ideal of $R$. Each $z\in IS$ satisfies an equation
 
-**Proof.** Immediate from Lemma [Elements integral over an ideal form a submodule](#native-algebra-lemma-integral-over-ideal-is-submodule). $\square$
+$$z^n+a_1z^{n-1}+\cdots+a_n=0,\qquad a_j\in I^j,$$
+
+for some $n\geq1$. Thus $z$ is integral over the ideal $I$.
+
+**Proof.** This is *Integral extensions: lying over, going up and going down*, Lemma 4.2, whose determinant proof applies to arbitrary ring maps. In that proof one writes $z$ as a finite sum of elements of $I$ times integral elements, puts those elements in a finite $R$-subalgebra containing $1$, and represents multiplication by $z$ using a matrix with entries in $I$. Its characteristic coefficients have the required powers of $I$. The adjugate identity annihilates the finite subalgebra, including its identity element, so the resulting equation holds in $S$. Neither injectivity of $R\to S$ nor finite generation of $I$ is needed. ∎
 
 #### Lemma. Going up for integral ring maps
- Let $R \to S$ be a ring map such that $S$ is integral over $R$. Let $\mathfrak p \subset \mathfrak p' \subset R$ be primes. Let $\mathfrak q$ be a prime of $S$ mapping to $\mathfrak p$. Then there exists a prime $\mathfrak q'$ with $\mathfrak q \subset \mathfrak q'$ mapping to $\mathfrak p'$.
 
-**Proof.** We may replace $R$ by $R/\mathfrak p$ and $S$ by $S/\mathfrak q$. This reduces us to the situation of having an integral extension of domains $R \subset S$ and a prime $\mathfrak p' \subset R$. By Lemma [Surjectivity on spectra of an integral overring](#native-algebra-lemma-integral-overring-surjective) we win. $\square$
+Suppose $R\to S$ is integral. Given primes $\mathfrak p\subset\mathfrak p'$ of $R$ and $\mathfrak q\in\operatorname{Spec}(S)$ above $\mathfrak p$, there is a prime $\mathfrak q'\supset\mathfrak q$ above $\mathfrak p'$.
+
+**Proof.** The full lying-over and going-up argument is *Integral extensions: lying over, going up and going down*, Theorem 3.2. Apply its lying-over assertion to the injective integral map $R/\mathfrak p\to S/\mathfrak q$ and the prime $\mathfrak p'/\mathfrak p$. Pulling the resulting prime back to $S$ gives $\mathfrak q'$. The original map need not be injective; the quotient map used here is injective precisely because $\mathfrak q$ contracts to $\mathfrak p$. ∎
 
 #### Lemma. Going up and closed maps of spectra
 
-Let $R \to S$ be a ring map. The following are equivalent:
+For any ring homomorphism $\varphi:R\to S$, going up holds exactly when the induced continuous map
 
-1.  Going up holds for $R \to S$, and
+$$f:\operatorname{Spec}(S)\longrightarrow\operatorname{Spec}(R)$$
 
-2.  the map $\operatorname{Spec}(S) \to \operatorname{Spec}(R)$ is closed.
+is closed.
 
-**Proof.** It is a general fact that specializations lift along a closed map of topological spaces, see Topology, Lemma [The geometric construction (programme binding)](#uncovered-topology-lemma-closed-open-map-specialization). Hence the second condition implies the first.
+**Proof.** First suppose $f$ is closed. If $\mathfrak q$ contracts to $\mathfrak p$, the closed set $f(V_S(\mathfrak q))$ contains $\mathfrak p$, and therefore contains every $\mathfrak p'\supset\mathfrak p$. Membership in that image supplies a prime $\mathfrak q'\supset\mathfrak q$ contracting to $\mathfrak p'$. This is going up.
 
-Assume that going up holds for $R \to S$. Let $V(I) \subset \operatorname{Spec}(S)$ be a closed set. We want to show that the image of $V(I)$ in $\operatorname{Spec}(R)$ is closed. The ring map $S \to S/I$ obviously satisfies going up. Hence $R \to S \to S/I$ satisfies going up, by Lemma [Composition of going-up and going-down maps](#native-algebra-lemma-going-up-down-composition). Replacing $S$ by $S/I$ it suffices to show the image $T$ of $\operatorname{Spec}(S)$ in $\operatorname{Spec}(R)$ is closed. By Topology, Lemmas [The geometric construction (programme binding)](#uncovered-topology-lemma-open-closed-specialization) and [Lifting the geometric construction (uncovered prerequisite)](#uncovered-topology-lemma-lift-specializations-images) this image is stable under specialization. Thus the result follows from Lemma [Closed images stable under specialization](#native-algebra-lemma-image-stable-specialization-closed). $\square$
+Conversely, assume going up, and fix an ideal $J\subset S$. Put $K=\varphi^{-1}(J)$. We prove the exact image formula
+
+$$f(V_S(J))=V_R(K).$$
+
+Only the inclusion from right to left needs proof. Take $\mathfrak p\supset K$ and set $U=R\setminus\mathfrak p$. The ring $U^{-1}(S/J)$ is nonzero: otherwise some $u\in U$ would have image zero in $S/J$, contradicting $K\subset\mathfrak p$. Choose a prime of this localization. Its inverse image is a prime $\mathfrak q_0$ of $S$ containing $J$, whose contraction $\mathfrak p_0$ is contained in $\mathfrak p$. Going up produces $\mathfrak q\supset\mathfrak q_0$ over $\mathfrak p$. It still contains $J$, as required. Existence of a prime in a nonzero ring and the localization correspondence apply without finiteness hypotheses. If $V_R(K)$ is empty, the same equality is immediate. Thus every closed subset has closed image. ∎
 
 #### Lemma. Product decompositions from disjoint closed subsets
- Let $R$ be a ring. For each $U \subset \operatorname{Spec}(R)$ which is open and closed there exists a unique idempotent $e \in R$ such that $U = D(e)$. This induces a 1-1 correspondence between open and closed subsets $U \subset \operatorname{Spec}(R)$ and idempotents $e \in R$.
 
-**Proof.** Let $U \subset \operatorname{Spec}(R)$ be open and closed. Since $U$ is closed it is quasi-compact by Lemma [Quasi-compactness of an affine spectrum](#native-algebra-lemma-quasi-compact), and similarly for its complement. Write $U = \bigcup_{i = 1}^n D(f_i)$ as a finite union of standard opens. Similarly, write $\operatorname{Spec}(R) \setminus U = \bigcup_{j = 1}^m D(g_j)$ as a finite union of standard opens. Since $\emptyset =
-D(f_i) \cap D(g_j) = D(f_i g_j)$ we see that $f_i g_j$ is nilpotent by Lemma [The Zariski topology on an affine spectrum](#native-algebra-lemma-zariski-topology). Let $I = (f_1, \ldots, f_n) \subset R$ and let $J = (g_1, \ldots, g_m) \subset R$. Note that $V(J)$ equals $U$, that $V(I)$ equals the complement of $U$, so $\operatorname{Spec}(R) = V(I) \amalg V(J)$. By the remark on nilpotency above, we see that $(IJ)^N = (0)$ for some sufficiently large integer $N$. Since $\bigcup D(f_i) \cup \bigcup D(g_j) = \operatorname{Spec}(R)$ we see that $I + J = R$, see Lemma [The Zariski topology on an affine spectrum](#native-algebra-lemma-zariski-topology). By raising this equation to the $2N$th power we conclude that $I^N + J^N = R$. Write $1 = x + y$ with $x \in I^N$ and $y \in J^N$. Then $0 = xy = x(1 - x)$ as $I^N J^N = (0)$. Thus $x = x^2$ is idempotent and contained in $I^N \subset I$. The idempotent $y = 1 - x$ is contained in $J^N \subset J$. This shows that the idempotent $x$ maps to $1$ in every residue field $\kappa(\mathfrak p)$ for $\mathfrak p \in V(J)$ and that $x$ maps to $0$ in $\kappa(\mathfrak p)$ for every $\mathfrak p \in V(I)$.
+For every ring $R$, the assignment $e\mapsto D(e)$ bijects its idempotents with the clopen subsets of $\operatorname{Spec}(R)$. In particular, each such subset is represented by one and only one idempotent.
 
-To see uniqueness suppose that $e_1, e_2$ are distinct idempotents in $R$. We have to show there exists a prime $\mathfrak p$ such that $e_1 \in \mathfrak p$ and $e_2 \not \in \mathfrak p$, or conversely. Write $e_i' = 1 - e_i$. If $e_1 \not = e_2$, then $0 \not = e_1 - e_2  = e_1(e_2 + e_2') - (e_1 + e_1')e_2
-= e_1 e_2' - e_1' e_2$. Hence either the idempotent $e_1 e_2' \not = 0$ or $e_1' e_2 \not = 0$. A nonzero idempotent is not nilpotent, and hence we find a prime $\mathfrak p$ such that either $e_1e_2' \not \in \mathfrak p$ or $e_1'e_2 \not \in \mathfrak p$, by Lemma [The Zariski topology on an affine spectrum](#native-algebra-lemma-zariski-topology). It is easy to see this gives the desired prime. $\square$
+**Proof using nilpotent correction.** *Spectra of rings*, Lemma 5.1 and Theorem 5.2 prove this at the stated scope. They construct an element with residue value $1$ on the chosen subset and $0$ on its complement, then correct its nilpotent idempotency error. Only that error must be nilpotent; no nilpotence assumption on the whole nilradical is made.
+
+**Proof using finite principal-open covers.** A clopen subset $U$ and its complement are quasi-compact. Choose finite lists with
+
+$$U=\bigcup_iD(f_i),\qquad U^c=\bigcup_jD(g_j),$$
+
+and write $I=(f_i)$ and $J=(g_j)$. These opens cover the spectrum, so $I+J=R$. Each $f_ig_j$ lies in every prime, hence is nilpotent. There are only finitely many such generators of $IJ$, so $(IJ)^N=0$ for some $N\geq1$: if their individual nilpotence exponents are $r_1,\ldots,r_t$, any product of more than $\sum(r_i-1)$ generators vanishes. The binomial expansion of $(I+J)^{2N-1}$ gives $I^N+J^N=R$.
+
+Choose $e\in I^N$ and $h\in J^N$ with $e+h=1$. Since $eh=0$, the element $e$ is idempotent. On $U=V(J)$ its residue is $1$, and on $U^c=V(I)$ its residue is $0$. Hence $D(e)=U$.
+
+Finally, every idempotent has residue value either $0$ or $1$ at each prime, so $D(e)$ and $D(1-e)$ are complementary opens. If $D(e)=D(e')$, both $e(1-e')$ and $e'(1-e)$ have zero image at every prime. They are nilpotent idempotents, hence zero, and therefore $e=ee'=e'$. The empty covers and the zero ring cause no exceptions. ∎
 
 #### Lemma. The characteristic polynomial
- Let $R$ be a ring. Let $A = (a_{ij})$ be an $n \times n$ matrix with coefficients in $R$. Let $P(x) \in R[x]$ be the characteristic polynomial of $A$ (defined as $\det(x\text{id}_{n \times n} - A)$). Then $P(A) = 0$ in $\text{Mat}(n \times n, R)$.
 
-**Proof.** We reduce the question to the well-known Cayley-Hamilton theorem from linear algebra in several steps:
+For a matrix $A\in\operatorname{Mat}_n(R)$ over any commutative ring, let $P(T)=\det(TI_n-A)$. Then $P(A)=0$.
 
-1.  If $\phi :S \rightarrow R$ is a ring morphism and $b_{ij}$ are inverse images of the $a_{ij}$ under this map, then it suffices to show the statement for $S$ and $(b_{ij})$ since $\phi$ is a ring morphism.
+**Proof by the adjugate identity.** For $n\geq1$, write
 
-2.  If $\psi :R \hookrightarrow S$ is an injective ring morphism, it clearly suffices to show the result for $S$ and the $a_{ij}$ considered as elements of $S$.
+$$P(T)=T^n+\sum_{j=0}^{n-1}p_jT^j,\qquad
+\operatorname{adj}(TI_n-A)=\sum_{j=0}^{n-1}B_jT^j.$$
 
-3.  Thus we may first reduce to the case $R = \mathbf{Z}[X_{ij}]$, $a_{ij} = X_{ij}$ of a polynomial ring and then further to the case $R = \mathbf{Q}(X_{ij})$ where we may finally apply Cayley-Hamilton.
+Comparing coefficients in $(TI_n-A)\operatorname{adj}(TI_n-A)=P(T)I_n$ gives
 
-$\square$
+$$B_{n-1}=I_n,\qquad B_{j-1}-AB_j=p_jI_n\quad(0\leq j<n),$$
+
+where $B_{-1}=0$. Multiply the identity indexed by $j$ on the left by $A^j$ and add. All intermediate terms cancel, leaving
+
+$$\sum_{j=0}^{n-1}p_jA^j=-A^nB_{n-1}=-A^n.$$
+
+This is the desired equation. The computation avoids substituting a matrix into a polynomial with arbitrary matrix coefficients. For $n=0$, the unique endomorphism of the zero module is zero, so the assertion also holds.
+
+**Universal-matrix route.** The original specialization argument is available as well. Form the matrix $X=(X_{ij})$ over $\mathbb Z[X_{ij}]$ and embed that domain in $\mathbb Q(X_{ij})$. Cayley–Hamilton over this field follows from the adjugate computation just given. Its entries are polynomial identities over $\mathbb Z[X_{ij}]$, so injectivity brings the identities back to that ring. Evaluating $X_{ij}$ at $a_{ij}\in R$ proves the assertion over $R$. Determinants, characteristic coefficients and matrix products all commute with this evaluation. ∎
 
 #### Lemma. Presentations of symmetric and exterior powers
- Let $R$ be a ring. Let $M_2 \to M_1 \to M \to 0$ be an exact sequence of $R$-modules. There are exact sequences $$M_2 \otimes_R \text{Sym}^{n - 1}(M_1)
-\to
-\text{Sym}^n(M_1)
-\to
-\text{Sym}^n(M)
-\to
-0$$ and similarly $$M_2 \otimes_R \wedge^{n - 1}(M_1)
-\to
-\wedge^n(M_1)
-\to
-\wedge^n(M)
-\to
-0$$
 
-**Proof.** Omitted. $\square$
+Let $M_2\xrightarrow{u}M_1\to M\to0$ be exact over $R$. For each integer $n\geq1$ there are exact sequences
+
+$$M_2\otimes_R\operatorname{Sym}^{n-1}(M_1)
+\longrightarrow\operatorname{Sym}^n(M_1)
+\longrightarrow\operatorname{Sym}^n(M)\longrightarrow0$$
+
+and
+
+$$M_2\otimes_R\bigwedge^{n-1}M_1
+\longrightarrow\bigwedge^nM_1
+\longrightarrow\bigwedge^nM\longrightarrow0.$$
+
+The first arrows send $a\otimes v$ respectively to $u(a)v$ and $u(a)\wedge v$. There is no flatness or finiteness assumption on these modules.
+
+**Proof.** Put $N=\operatorname{im}(u)$, so $M=M_1/N$. The universal property of the symmetric algebra identifies $\operatorname{Sym}_R(M)$ with the quotient of $\operatorname{Sym}_R(M_1)$ by the homogeneous ideal generated by $N$ in degree one: a linear map on $M_1$ factors through $M$ exactly when it kills $N$. Its degree-$n$ part is generated by products of an element of $N$ and an element of degree $n-1$. This is precisely the image of the first displayed arrow. Taking degree $n$ proves the first sequence.
+
+For exterior powers, use the tensor-algebra presentation with the relations $v\otimes v=0$ for every $v\in M_1$. Passing from $M_1$ to $M_1/N$ adds exactly the degree-one relations $N=0$. In the exterior algebra, the identity $v\wedge w=-w\wedge v$ follows by expanding $(v+w)\wedge(v+w)=0$, including in characteristic two. Thus a product containing a factor from $N$ can move that factor to the first position, with the appropriate sign. The degree-$n$ part of the added ideal is consequently the image of $M_2\otimes_R\bigwedge^{n-1}M_1$. This proves the second sequence. In degree zero both quotient maps are the identity of $R$. ∎
 
 #### Lemma. Sections of smooth ring maps
 
-If $R$ is a summand of $S$ and $S$ is smooth over $R$, then the $I$-adic completion of $S$ is often a power series ring over $R$ where $I$ is the kernel of the projection map from $S$ to $R$.
+Suppose $\varphi:R\to S$ is smooth and $\sigma:S\to R$ is an $R$-algebra retraction. For $I=\ker(\sigma)$, the $R$-module $I/I^2$ is finite locally free. If it is free of rank $d$, then
 
-Let $\varphi : R \to S$ be a smooth ring map. Let $\sigma : S \to R$ be a left inverse to $\varphi$. Set $I = \operatorname{Ker}(\sigma)$. Then
+$$\widehat S_I\cong R[[t_1,\ldots,t_d]]$$
 
-1.  $I/I^2$ is a finite locally free $R$-module, and
+as $R$-algebras, compatibly with their adic topologies.
 
-2.  if $I/I^2$ is free, then $S^\wedge \cong R[[t_1, \ldots, t_d]]$ as $R$-algebras, where $S^\wedge$ is the $I$-adic completion of $S$.
+**Proof.** The augmentation gives a canonical isomorphism
 
-**Proof.** By Lemma Kähler differentials, Theorems 3.1–3.3, Proposition 3.4 and Theorem 7.1 applied to $R \to S \to R$ we see that $I/I^2 = \Omega_{S/R} \otimes_{S, \sigma} R$. Since by definition of a smooth morphism the module $\Omega_{S/R}$ is finite locally free over $S$ we deduce that (1) holds. If $I/I^2$ is free, then choose $f_1, \ldots, f_d \in I$ whose images in $I/I^2$ form an $R$-basis. Consider the $R$-algebra map defined by $$\Psi : R[[x_1, \ldots, x_d]] \longrightarrow S^\wedge, \quad
-x_i \longmapsto f_i.$$ Let $P = R[[x_1, \ldots, x_d]]$ and $J = (x_1, \ldots, x_d) \subset P$. We write $\Psi_n : P/J^n \to S/I^n$ for the induced map of quotient rings. Note that $S/I^2 = \varphi(R) \oplus I/I^2$. Thus $\Psi_2$ is an isomorphism. Denote by $\sigma_2 : S/I^2 \to P/J^2$ the inverse of $\Psi_2$. We will prove by induction on $n$ that for all $n > 2$ there exists an inverse $\sigma_n : S/I^n \to P/J^n$ of $\Psi_n$. Namely, as $S$ is formally smooth over $R$ (by Proposition [Formal smoothness of smooth algebras](#native-algebra-proposition-smooth-formally-smooth)) we see that in the solid diagram $$\begin{gathered}\begin{matrix}S & P/J^n \\ \phantom{X} & P/J^{n - 1}\end{matrix} \\[6pt] \begin{aligned}S & \cdots\!\!\rightarrow P/J^n \\ S & \xrightarrow{\sigma_{n - 1}} P/J^{n - 1} \\ P/J^n & \longrightarrow P/J^{n - 1}\end{aligned}\end{gathered}$$ of $R$-algebras we can fill in the dotted arrow by some $R$-algebra map $\tau : S \to P/J^n$ making the diagram commute. This induces an $R$-algebra map $\overline{\tau} : S/I^n \to P/J^n$ which is equal to $\sigma_{n - 1}$ modulo $J^{n - 1}$. By construction the map $\Psi_n$ is surjective and now $\overline{\tau} \circ \Psi_n$ is an $R$-algebra endomorphism of $P/J^n$ which maps $x_i$ to $x_i + \delta_{i, n}$ with $\delta_{i, n} \in J^{n - 1}/J^n$. It follows that $\Psi_n$ is an isomorphism and hence it has an inverse $\sigma_n$. This proves the lemma. $\square$
+$$I/I^2\xrightarrow{\ \sim\ }\Omega_{S/R}\otimes_{S,\sigma}R,\qquad [f]\longmapsto df.$$
+
+Indeed, $s\mapsto s-\varphi\sigma(s)\pmod{I^2}$ is an $R$-derivation into $I/I^2$, where $S$ acts through $\sigma$. The product rule follows because the product of two augmentation errors lies in $I^2$. Its map from differentials is inverse to the displayed map. Smoothness makes $\Omega_{S/R}$ finite projective, and hence makes $I/I^2$ finite locally free over $R$.
+
+If $I/I^2$ is free, choose representatives $f_1,\ldots,f_d\in I$ of a basis. Put $P=R[[t_1,\ldots,t_d]]$ and $J=(t_1,\ldots,t_d)$. Substitution $t_i\mapsto f_i$ defines compatible maps
+
+$$\Psi_n:P/J^n\longrightarrow S/I^n\qquad(n\geq1).$$
+
+Every $\Psi_n$ is surjective. To see this, the classes of products $f_{i_1}\cdots f_{i_k}$ generate $I^k/I^{k+1}$ over $R$: expand each factor modulo $I^2$, and reduce the coefficients modulo $I$. Starting with $S/I=R$, successive subtraction in these graded pieces represents every class modulo $I^n$ by a polynomial of degree below $n$.
+
+The map $\Psi_2$ is an isomorphism because both sides are the split square-zero extension of $R$ by the free module with basis $t_i$ or $[f_i]$. Suppose inductively that $n\geq3$ and $\Psi_{n-1}$ is an isomorphism, with inverse $\sigma_{n-1}$. The kernel of $P/J^n\to P/J^{n-1}$ is square-zero. [Formal smoothness of $S/R$](#native-algebra-proposition-smooth-formally-smooth) lifts the composite $S\to S/I^{n-1}\xrightarrow{\sigma_{n-1}}P/J^{n-1}$ to an $R$-algebra map $\tau:S\to P/J^n$.
+
+Reduction modulo $J$ is $\sigma$, so $\tau(I)\subset J/J^n$ and $\tau(I^n)=0$. Hence $\tau$ induces $\bar\tau:S/I^n\to P/J^n$. The endomorphism $\bar\tau\Psi_n$ sends
+
+$$t_i\longmapsto t_i+\delta_i,\qquad \delta_i\in J^{n-1}/J^n.$$
+
+It is an automorphism: the substitution $t_i\mapsto t_i-\delta_i$ is its inverse. Substituting such corrections in a monomial of degree $n-1$ changes it only in degree at least $2n-3\geq n$, so both composites are the identity modulo $J^n$. Therefore $\Psi_n$ is injective, and its already proved surjectivity makes it an isomorphism.
+
+These isomorphisms commute with the quotient maps by their construction; their inverses consequently do as well. Taking inverse limits yields the asserted topological isomorphism. It depends on the chosen basis and its lifts. The same argument includes $d=0$. ∎
 
 #### Lemma. Smoothness and the naive cotangent complex
- Let $A \to B \to C$ be ring maps. Assume $A \to C$ is surjective (so also $B \to C$ is) and $A \to B$ smooth. Let $I = \operatorname{Ker}(A \to C)$ and $J = \operatorname{Ker}(B \to C)$. Then the sequence $$0 \to I/I^2 \to J/J^2 \to \Omega_{B/A} \otimes_B B/J \to 0$$ of Lemma [Cotangent complexes and differentials](#native-algebra-lemma-application-nl) is exact.
 
-**Proof.** This follows from the more general Lemma [Cotangent complexes, differentials and formal smoothness](#native-algebra-lemma-application-nl-formally-smooth) because a smooth ring map is formally smooth, see Proposition [Formal smoothness of smooth algebras](#native-algebra-proposition-smooth-formally-smooth). $\square$
+Let $A\to B\to C$ have surjective composite, and assume $B$ is smooth over $A$. With $I=\ker(A\to C)$ and $J=\ker(B\to C)$, the canonical conormal sequence is short exact:
+
+$$0\longrightarrow I/I^2\longrightarrow J/J^2
+\xrightarrow{d}\Omega_{B/A}\otimes_B C\longrightarrow0.$$
+
+**Proof.** The surjection $A\to C$ also makes $B\to C$ surjective. The general [conormal transitivity sequence](#native-algebra-lemma-application-nl) is right exact at the last two terms. To establish injectivity at the first term, apply formal smoothness of $B/A$ to the square-zero extension $A/I^2\to A/I=C$. It gives an $A$-algebra map $\tau:B\to A/I^2$ lifting the given map to $C$. For $b\in J$, its image lies in $I/I^2$; products of two such images vanish. Thus $\tau$ induces $J/J^2\to I/I^2$, and its composite with the canonical map from $I/I^2$ is the identity because $\tau$ is an $A$-algebra map. This proves injectivity. The lifting property used here follows from [smoothness and formal smoothness](#native-algebra-proposition-smooth-formally-smooth). ∎
 
 #### Lemma. Base change of smooth ring maps
 
-Smoothness is preserved under base change
+If $S$ is smooth over $R$ and $R\to R'$ is any homomorphism, then $S'=S\otimes_RR'$ is smooth over $R'$.
 
-Let $R \to S$ be a smooth ring map. Let $R \to R'$ be any ring map. Then the base change $R' \to S' = R' \otimes_R S$ is smooth.
+**Proof.** Choose a finite presentation $S=Q/I$, with $Q=R[x_1,\ldots,x_m]$, and put $Q'=R'[x_1,\ldots,x_m]$ and $I'=\ker(Q'\to S')$. Tensoring the presentation shows that $R'\otimes_RI\to I'$ is surjective. Consequently there is a natural surjection
 
-**Proof.** Let $\alpha : R[x_1, \ldots, x_n] \to S$ be a presentation with kernel $I$. Let $\alpha' : R'[x_1, \ldots, x_n] \to R' \otimes_R S$ be the induced presentation. Let $I' = \operatorname{Ker}(\alpha')$. Since $0 \to I \to R[x_1, \ldots, x_n] \to S \to 0$ is exact, the sequence $R' \otimes_R I \to R'[x_1, \ldots, x_n] \to R' \otimes_R S \to 0$ is exact. Thus $R' \otimes_R I \to I'$ is surjective. By Definition [Smooth ring maps](#native-algebra-definition-smooth) there is a short exact sequence $$0 \to I/I^2 \to
-\Omega_{R[x_1, \ldots, x_n]/R} \otimes_{R[x_1, \ldots, x_n]} S \to
-\Omega_{S/R} \to
-0$$ and the $S$-module $\Omega_{S/R}$ is finite projective. In particular $I/I^2$ is a direct summand of $\Omega_{R[x_1, \ldots, x_n]/R} \otimes_{R[x_1, \ldots, x_n]} S$. Consider the commutative diagram $$\begin{gathered}\begin{matrix}R' \otimes_R (I/I^2) & R' \otimes_R (\Omega_{R[x_1, \ldots, x_n]/R} \otimes_{R[x_1, \ldots, x_n]} S) \\ I'/(I')^2 & \Omega_{R'[x_1, \ldots, x_n]/R'}
-\otimes_{R'[x_1, \ldots, x_n]} (R' \otimes_R S)\end{matrix} \\[6pt] \begin{aligned}R' \otimes_R (I/I^2) & \longrightarrow R' \otimes_R (\Omega_{R[x_1, \ldots, x_n]/R} \otimes_{R[x_1, \ldots, x_n]} S) \\ R' \otimes_R (I/I^2) & \longrightarrow I'/(I')^2 \\ R' \otimes_R (\Omega_{R[x_1, \ldots, x_n]/R} \otimes_{R[x_1, \ldots, x_n]} S) & \longrightarrow \Omega_{R'[x_1, \ldots, x_n]/R'}
-\otimes_{R'[x_1, \ldots, x_n]} (R' \otimes_R S) \\ I'/(I')^2 & \longrightarrow \Omega_{R'[x_1, \ldots, x_n]/R'}
-\otimes_{R'[x_1, \ldots, x_n]} (R' \otimes_R S)\end{aligned}\end{gathered}$$ Since the right vertical map is an isomorphism we see that the left vertical map is injective and surjective by what was said above. Thus we conclude that $\mathrm{NL}(\alpha')$ is quasi-isomorphic to $\Omega_{S'/R'} \cong S' \otimes_S \Omega_{S/R}$ placed in degree $0$. This module is finite projective since it is the base change of a finite projective module. $\square$
+$$E=(I/I^2)\otimes_SS'\longrightarrow E'=I'/(I')^2.$$
+
+Smoothness gives a split exact conormal sequence for $S/R$,
+
+$$0\longrightarrow I/I^2\xrightarrow{d}
+\Omega_{Q/R}\otimes_QS\longrightarrow\Omega_{S/R}\longrightarrow0,$$
+
+with finite projective last term. After tensoring with $S'$, it remains split exact. In particular its first map embeds $E$ as a direct summand of $F=(S')^m$. Under the natural identification $F=\Omega_{Q'/R'}\otimes_{Q'}S'$, that map factors as
+
+$$E\twoheadrightarrow E'\xrightarrow{d}F.$$
+
+Since the composite is injective, the first arrow is also injective and hence an isomorphism. It follows that the conormal map for $S'/R'$ is split injective and that its cokernel is $\Omega_{S/R}\otimes_SS'$, a finite projective module. The base-changed algebra is finitely presented, so the naive-cotangent criterion proves smoothness. Split exactness justifies tensoring here even when $R'$ is not flat over $R$. ∎
 
 #### Lemma. Smooth morphisms and local algebra
 
-A ring map is smooth if and only if it is smooth at all primes of the target
+Smoothness of $R\to S$ is equivalent to smoothness at each point $\mathfrak q\in\operatorname{Spec}(S)$.
 
-Let $R \to S$ be a ring map. Then $R \to S$ is smooth if and only if $R \to S$ is smooth at every prime $\mathfrak q$ of $S$.
+**Proof.** A smooth algebra stays smooth after inverting a single element, so the forward direction follows. For the converse, smoothness at each prime supplies principal-open neighborhoods $D(g)$ on which the localized algebra is smooth. Quasi-compactness gives finitely many of them, say $D(g_1),\ldots,D(g_r)$, covering $\operatorname{Spec}(S)$.
 
-**Proof.** The direct implication is trivial. Suppose that $R \to S$ is smooth at every prime $\mathfrak q$ of $S$. Since $\operatorname{Spec}(S)$ is quasi-compact, see Lemma [Quasi-compactness of an affine spectrum](#native-algebra-lemma-quasi-compact), there exists a finite covering $\operatorname{Spec}(S) = \bigcup D(g_i)$ such that each $S_{g_i}$ is smooth. By Lemma [A cover of the target spectrum](#native-algebra-lemma-cover-upstairs) this implies that $S$ is of finite presentation over $R$. According to Lemma [Localization of the naive cotangent complex](#native-algebra-lemma-localize-nl) we see that $\mathrm{NL}_{S/R} \otimes_S S_{g_i}$ is quasi-isomorphic to a finite projective $S_{g_i}$-module placed in degree $0$. By Lemma [Characterizations of finite projective modules](#native-algebra-lemma-finite-projective) this implies that $\mathrm{NL}_{S/R}$ is quasi-isomorphic to a finite projective $S$-module placed in degree $0$. $\square$
+The [finite-presentation criterion on a cover of the target](#native-algebra-lemma-cover-upstairs) makes $S$ finitely presented over $R$. By [localization of the naive cotangent complex](#native-algebra-lemma-localize-nl), its degree-one homology vanishes after localization at every $g_i$, hence vanishes globally. Also $\Omega_{S/R}$ localizes to the finite projective modules $\Omega_{S_{g_i}/R}$. The [local criterion for finite projectivity](#native-algebra-lemma-finite-projective) therefore makes $\Omega_{S/R}$ finite projective. These are precisely the finite-presentation and cotangent conditions for smoothness. If $S=0$, the same conclusion holds directly: it is finitely presented and its cotangent complex is zero. ∎
 
 #### Lemma. Characterizations of finite projective modules
 
-*Source credit:* the original source citation FAC (Chapter II, §4, no. 50, Proposition 4 and final paragraph, pp. 242--243)
+*Historical source:* FAC, Chapter II, §4, no. 50, Proposition 4 and its final paragraph, pp. 242–243. There the setting is a finite module on a classical affine variety, and freeness is tested at classical closed points. The arbitrary-ring statement below includes the finite-presentation hypotheses needed to pass from stalks to neighborhoods. The local-to-global formula in that source concerns projective dimension, a homological invariant, rather than module rank. Its closing question about freeness of finite projective modules over a polynomial algebra over a field is the question answered by the Quillen–Suslin theorem; that theorem is outside the present argument.
 
-For a finite module over the coordinate ring of a classical affine variety, the cited proposition tests projectivity by freeness of the stalks at classical closed points. The equivalences below work over an arbitrary ring and test all prime ideals or all maximal ideals, with finite presentation made explicit. The source proof writes a local-to-global formula for projective dimension; this is homological dimension, not rank. Its final paragraph asks whether every finite projective module over a polynomial ring over a field is free. This question was later answered affirmatively by the Quillen--Suslin theorem, which is not developed in this chapter.
+For an arbitrary $R$-module $M$, the following eight conditions are equivalent:
 
-Let $R$ be a ring and let $M$ be an $R$-module. The following are equivalent
+1. $M$ is flat and finitely presented over $R$.
+2. $M$ is finitely generated and projective.
+3. There is a module $N$ and a finite integer $n$ with $M\oplus N\cong R^n$.
+4. $M$ has a finite presentation, and $M_{\mathfrak p}$ is free for every prime $\mathfrak p$.
+5. $M$ has a finite presentation, and $M_{\mathfrak m}$ is free for every maximal ideal $\mathfrak m$.
+6. $M$ is finitely generated and locally free.
+7. A principal-open cover of $\operatorname{Spec}(R)$ makes $M$ free of finite rank on each member; in other words, $M$ is finite locally free.
+8. $M$ is finitely generated, all its prime localizations are free, and the function
 
-1.  $M$ is finitely presented and $R$-flat,
+   $$\rho_M(\mathfrak p)=\dim_{\kappa(\mathfrak p)}\bigl(M\otimes_R\kappa(\mathfrak p)\bigr)$$
 
-2.  $M$ is finite projective,
+   is locally constant on $\operatorname{Spec}(R)$.
 
-3.  $M$ is a direct summand of a finite free $R$-module,
+**Proof.** A finite generating map $R^n\twoheadrightarrow M$ splits when $M$ is projective. Conversely, a summand of a free module is projective, since a map out of it can be extended to the free module and lifted across any surjection. This proves (2)$\Leftrightarrow$(3). In a decomposition as in (3), the complementary summand $N$ is finite: project the standard basis of $R^n$ onto it. Hence the quotient presentation of $M$ has finitely many relations. Direct summands of free modules are flat, so (3)$\Rightarrow$(1).
 
-4.  $M$ is finitely presented and for all $\mathfrak p \in \operatorname{Spec}(R)$ the localization $M_{\mathfrak p}$ is free,
+The complete equational proof of (1)$\Rightarrow$(2), including the construction of a splitting that kills every defining relation, is *Tor and flat modules*, Theorem 5.3. That theorem also proves (1)$\Rightarrow$(7). Here is the local Nakayama route to the latter implication. Choose elements of $M$ whose residues form a basis at $\mathfrak p$. They generate on a principal neighborhood, giving a surjection $R_f^r\to M_f$ with finite kernel $K$, because $M$ is finitely presented. Flatness makes
 
-5.  $M$ is finitely presented and for all maximal ideals $\mathfrak m \subset R$ the localization $M_{\mathfrak m}$ is free,
+$$0\longrightarrow K\otimes_{R_f}\kappa(\mathfrak p)
+\longrightarrow\kappa(\mathfrak p)^r
+\longrightarrow M\otimes_R\kappa(\mathfrak p)\longrightarrow0$$
 
-6.  $M$ is finite and locally free,
+exact. The last arrow is the chosen basis isomorphism. Nakayama gives $K_{\mathfrak p}=0$, and finite generation of $K$ kills it after one further localization away from $\mathfrak p$. The selected elements therefore form a basis on an actual neighborhood.
 
-7.  $M$ is finite locally free, and
+Quasi-compactness turns a cover as in (7) into a finite one. Finite generation and finite presentation then glue, by the full argument in *Localization, local properties and support*, §5. This proves (7)$\Rightarrow$(6) and (7)$\Rightarrow$(4). Condition (6) implies (7), since finite generation forces each local free rank to be finite. The implication (4)$\Rightarrow$(5) is immediate, and (5)$\Rightarrow$(1) follows from the maximal-local test for flatness in *Tor and flat modules*, Theorem 3.3. A local free basis also makes its rank constant on that neighborhood, giving (7)$\Rightarrow$(8).
 
-8.  $M$ is finite, for every prime $\mathfrak p$ the module $M_{\mathfrak p}$ is free, and the function $$\rho_M : \operatorname{Spec}(R) \to \mathbf{Z}, \quad
-    \mathfrak p
-    \longmapsto
-    \dim_{\kappa(\mathfrak p)} M \otimes_R \kappa(\mathfrak p)$$ is locally constant in the Zariski topology.
+One can also obtain projectivity from these local bases through the Hom functor. Once finite presentation has been established, localization of Hom identifies the localization of $\operatorname{Hom}_R(M,-)$ with $\operatorname{Hom}_{R_f}(M_f,-_f)$. Applied to any short exact sequence, the latter functor is exact where $M_f$ is free. Local detection of the resulting kernel and cokernel proves exactness globally. Thus $M$ is projective. This retains the local-to-global proof independently of the equational splitting route.
 
-**Proof.** First suppose $M$ is finite projective, i.e., (2) holds. Take a surjection $R^n \to M$ and let $K$ be the kernel. Since $M$ is projective, $0 \to K \to R^n \to M \to 0$ splits. Hence (2) $\Rightarrow$ (3). The implication (3) $\Rightarrow$ (2) follows from the fact that a direct summand of a projective is projective, see Lemma [Characterizations of projective modules](#native-algebra-lemma-characterize-projective).
-
-Assume (3), so we can write $K \oplus M \cong R^{\oplus n}$. So $K$ is a direct summand of $R^n$ and thus finitely generated. This shows $M = R^{\oplus n}/K$ is finitely presented. In other words, (3) $\Rightarrow$ (1).
-
-Assume $M$ is finitely presented and flat, i.e., (1) holds. We will prove that (7) holds. Pick any prime $\mathfrak p$ and $x_1, \ldots, x_r \in M$ which map to a basis of $M \otimes_R \kappa(\mathfrak p)$. By Nakayama's lemma (in the form of Lemma [Nakayama's lemma after localization](#native-algebra-lemma-nak-localization)) these elements generate $M_g$ for some $g \in R$, $g \not \in \mathfrak p$. The corresponding surjection $\varphi : R_g^{\oplus r} \to M_g$ has the following two properties: (a) $\operatorname{Ker}(\varphi)$ is a finite $R_g$-module (see Lemma [Commutative algebra](#native-algebra-lemma-extension)) and (b) $\operatorname{Ker}(\varphi) \otimes \kappa(\mathfrak p) = 0$ by flatness of $M_g$ over $R_g$ (see Lemma [Tor vanishing for a flat module](#native-algebra-lemma-flat-tor-zero)). Hence by Nakayama's lemma again there exists $g'=h/g^a\in R_g\setminus\mathfrak pR_g$, with $a\geq0$ and $h\in R\setminus\mathfrak p$, such that $\operatorname{Ker}(\varphi)_{g'}=0$. Thus $(M_g)_{g'}\cong M_{gh}$ is free on the neighbourhood $D(gh)$.
-
-A finite locally free module is a finite module, see Lemma [A finite cover by affine localizations](#native-algebra-lemma-cover), hence (7) $\Rightarrow$ (6). It is clear that (6) $\Rightarrow$ (7) and that (7) $\Rightarrow$ (8).
-
-A finite locally free module is a finitely presented module, see Lemma [A finite cover by affine localizations](#native-algebra-lemma-cover), hence (7) $\Rightarrow$ (4). Of course (4) implies (5). Since we may check flatness locally (see Lemma [Localization of a flat module](#native-algebra-lemma-flat-localization)) we conclude that (5) implies (1). At this point we have $$\begin{gathered}\begin{matrix}(2) & (3) & (1) & (7) & (6) \\ \phantom{X} & \phantom{X} & (5) & (4) & (8)\end{matrix} \\[6pt] \begin{aligned}(2) & \Longleftrightarrow (3) \\ (3) & \Longrightarrow (1) \\ (1) & \Longrightarrow (7) \\ (7) & \Longleftrightarrow (6) \\ (7) & \Longrightarrow (8) \\ (7) & \Longrightarrow (4) \\ (5) & \Longrightarrow (1) \\ (4) & \Longrightarrow (5)\end{aligned}\end{gathered}$$
-
-Suppose that $M$ satisfies (1), (4), (5), (6), and (7). We will prove that (3) holds. It suffices to show that $M$ is projective. We have to show that $\operatorname{Hom}_R(M, -)$ is exact. Let $0 \to N'' \to N \to N'\to 0$ be a short exact sequence of $R$-modules. We have to show that $0 \to \operatorname{Hom}_R(M, N'') \to \operatorname{Hom}_R(M, N) \to
-\operatorname{Hom}_R(M, N') \to 0$ is exact. As $M$ is finite locally free there exists a covering $\operatorname{Spec}(R) = \bigcup D(f_i)$ such that $M_{f_i}$ is finite free. By Lemma [Hom from a finitely presented module](#native-algebra-lemma-hom-from-finitely-presented) we see that $$0 \to \operatorname{Hom}_R(M, N'')_{f_i} \to \operatorname{Hom}_R(M, N)_{f_i} \to
-\operatorname{Hom}_R(M, N')_{f_i} \to 0$$ is equal to $0 \to \operatorname{Hom}_{R_{f_i}}(M_{f_i}, N''_{f_i}) \to
-\operatorname{Hom}_{R_{f_i}}(M_{f_i}, N_{f_i}) \to
-\operatorname{Hom}_{R_{f_i}}(M_{f_i}, N'_{f_i}) \to 0$ which is exact as $M_{f_i}$ is free and as the localization $0 \to N''_{f_i} \to N_{f_i} \to N'_{f_i} \to 0$ is exact (as localization is exact). Whence we see that $0 \to \operatorname{Hom}_R(M, N'') \to \operatorname{Hom}_R(M, N) \to
-\operatorname{Hom}_R(M, N') \to 0$ is exact by Lemma [A finite cover by affine localizations](#native-algebra-lemma-cover).
-
-Finally, assume that (8) holds. Pick a maximal ideal $\mathfrak m \subset R$. Pick $x_1, \ldots, x_r \in M$ which map to a $\kappa(\mathfrak m)$-basis of $M \otimes_R \kappa(\mathfrak m) = M/\mathfrak mM$. In particular $\rho_M(\mathfrak m) = r$. By Nakayama's Lemma [Nakayama's lemma](#native-algebra-lemma-nak) there exists an $f \in R$, $f \not \in \mathfrak m$ such that $x_1, \ldots, x_r$ generate $M_f$ over $R_f$. By the assumption that $\rho_M$ is locally constant there exists a $g \in R$, $g \not \in \mathfrak m$ such that $\rho_M$ is constant equal to $r$ on $D(g)$. We claim that $$\Psi : R_{fg}^{\oplus r} \longrightarrow M_{fg}, \quad
-(a_1, \ldots, a_r) \longmapsto \sum a_i x_i$$ is an isomorphism. This claim will show that $M$ is finite locally free, i.e., that (7) holds. To see the claim it suffices to show that the induced map on localizations $\Psi_{\mathfrak p} : R_{\mathfrak p}^{\oplus r} \to M_{\mathfrak p}$ is an isomorphism for all $\mathfrak p \in D(fg)$, see Lemma [Detecting a zero module by localization](#native-algebra-lemma-characterize-zero-local). By our choice of $f$ the map $\Psi_{\mathfrak p}$ is surjective. By assumption (8) we have $M_{\mathfrak p} \cong R_{\mathfrak p}^{\oplus \rho_M(\mathfrak p)}$ and by our choice of $g$ we have $\rho_M(\mathfrak p) = r$. Hence $\Psi_{\mathfrak p}$ determines a surjection $R_{\mathfrak p}^{\oplus r} \to
-M_{\mathfrak p} \cong R_{\mathfrak p}^{\oplus r}$ whence it is an isomorphism by Lemma [Surjective endomorphisms of finite modules](#native-algebra-lemma-fun). (Of course this last fact follows from a simple matrix argument also.) $\square$
+It remains to prove (8)$\Rightarrow$(7). At a prime $\mathfrak p$, choose $r=\rho_M(\mathfrak p)$ elements lifting a residue basis. Finite generation and Nakayama make them generators on some $D(f)$ containing $\mathfrak p$. Shrink further so that $\rho_M=r$ throughout that open. The resulting surjection $R_f^r\to M_f$ localizes at every prime of $R_f$ to a surjection between free modules of the same rank $r$. Its matrix has determinant outside the local maximal ideal, so is invertible by the adjugate formula. Its kernel and cokernel vanish at all these primes, hence globally. This gives the desired local basis without assuming a finite presentation in (8). All arguments include rank zero and the zero ring. ∎
 
 #### Lemma. Surjective endomorphisms of finite modules
 
-Let $R$ be a ring. Let $M$ be a finite $R$-module. Let $\varphi : M \to M$ be a surjective $R$-module map. Then $\varphi$ is an isomorphism.
+Every surjective endomorphism $\varphi:M\to M$ of a finitely generated module over a commutative ring is invertible.
 
-**First proof.** Write $R' = R[x]$ and think of $M$ as a finite $R'$-module with $x$ acting via $\varphi$. Set $I = (x) \subset R'$. By our assumption that $\varphi$ is surjective we have $IM = M$. Hence we may apply Lemma [A characteristic polynomial with coefficients in an ideal](#native-algebra-lemma-charpoly-module-ideal) to $M$ as an $R'$-module, the ideal $I$ and the endomorphism $\text{id}_M$. We conclude that $(1 + a_1 + \ldots + a_n)\text{id}_M = 0$ with $a_j \in I$. Write $a_j = b_j(x)x$ for some $b_j(x) \in R[x]$. Translating back into $\varphi$ we see that $\text{id}_M = -(\sum_{j = 1}^{n} b_j(\varphi)) \varphi$, and hence $\varphi$ is invertible. $\square$
+**Proof by a polynomial annihilator.** Give $M$ an $R[t]$-module structure by letting $t$ act as $\varphi$. It is finite over $R[t]$, and surjectivity says $(t)M=M$. The determinant form of Nakayama supplies an annihilator $1+tq(t)$, with $q(t)\in R[t]$. Thus
 
-**Second proof.** We perform induction on the number of generators of $M$ over $R$. If $M$ is generated by one element, then $M \cong R/I$ for some ideal $I \subset R$. In this case we may replace $R$ by $R/I$ so that $M = R$. In this case $\varphi : R \to R$ is given by multiplication on $M$ by an element $r \in R$. The surjectivity of $\varphi$ forces $r$ invertible, since $\varphi$ must hit $1$, which implies that $\varphi$ is invertible.
+$$\operatorname{id}_M+\varphi q(\varphi)=0.$$
 
-Now assume that we have proven the lemma in the case of modules generated by $n - 1$ elements, and are examining a module $M$ generated by $n$ elements. Let $A$ mean the ring $R[t]$, and regard the module $M$ as an $A$-module by letting $t$ act via $\varphi$; since $M$ is finite over $R$, it is finite over $R[t]$ as well, and since we're trying to prove $\varphi$ injective, a set-theoretic property, we might as well prove the endomorphism $t : M \to M$ over $A$ injective. We have reduced our problem to the case our endomorphism is multiplication by an element of the ground ring. Let $M' \subset M$ denote the sub-$A$-module generated by the first $n - 1$ of the generators of $M$, and consider the diagram $$\begin{gathered}\begin{matrix}0 & M' & M & M/M' & 0 \\ 0 & M' & M & M/M' & 0,\end{matrix} \\[6pt] \begin{aligned}0 & \longrightarrow M' \\ M' & \longrightarrow M \\ M' & \xrightarrow{\varphi\mid_{M'}} M' \\ M & \xrightarrow{\varphi} M \\ M & \longrightarrow M/M' \\ M/M' & \xrightarrow{\varphi \bmod M'} M/M' \\ M/M' & \longrightarrow 0 \\ 0 & \longrightarrow M' \\ M' & \longrightarrow M \\ M & \longrightarrow M/M' \\ M/M' & \longrightarrow 0,\end{aligned}\end{gathered}$$ where the restriction of $\varphi$ to $M'$ and the map induced by $\varphi$ on the quotient $M/M'$ are well-defined since $\varphi$ is multiplication by an element in the base, and $M'$ and $M/M'$ are $A$-modules in their own right. By the case $n = 1$ the map $M/M' \to M/M'$ is an isomorphism. A diagram chase implies that $\varphi|_{M'}$ is surjective hence by induction $\varphi|_{M'}$ is an isomorphism. This forces the middle column to be an isomorphism by the snake lemma. $\square$
+Since $q(\varphi)$ commutes with $\varphi$, the endomorphism $-q(\varphi)$ is a two-sided inverse. The zero module is included.
+
+**Proof by induction on a generating list.** For a cyclic module $M\cong R/I$, an endomorphism is multiplication by an element of $R/I$. Surjectivity makes that element a unit. Assume the claim for modules generated by fewer than $n$ elements, over every commutative ring, and let $M$ have $n$ generators. Again view it over $A=R[t]$, with $t$ acting as $\varphi$. Let $M'$ be the $A$-submodule generated by the first $n-1$ generators. The quotient $M/M'$ is cyclic, so its surjective multiplication-by-$t$ map is injective as well.
+
+For $y\in M'$, choose $x\in M$ with $tx=y$. The class of $x$ in $M/M'$ is killed by $t$, hence is zero. This proves $tM'=M'$, so the induction hypothesis over $A$ makes multiplication by $t$ injective on $M'$. If $tx=0$ in $M$, injectivity on the quotient first puts $x$ in $M'$, and injectivity there gives $x=0$. Thus $\varphi$ is injective and therefore an isomorphism. Starting with the zero module covers an empty generating list. ∎
 
 #### Lemma. Smoothness at a point
- Let $R \to S$ be of finite presentation. Let $\mathfrak q$ be a prime of $S$. The following are equivalent
 
-1.  $R \to S$ is smooth at $\mathfrak q$,
+Let $S$ be a finitely presented $R$-algebra and let $\mathfrak q\in\operatorname{Spec}(S)$. These four conditions are equivalent:
 
-2.  $H_1(L_{S/R})_\mathfrak q = 0$ and $\Omega_{S/R, \mathfrak q}$ is a finite free $S_\mathfrak q$-module,
+1. The map $R\to S$ is smooth at $\mathfrak q$.
+2. $H_1(L_{S/R})_{\mathfrak q}=0$ and $\Omega_{S/R,\mathfrak q}$ is finite free over $S_{\mathfrak q}$.
+3. $H_1(L_{S/R})_{\mathfrak q}=0$ and $\Omega_{S/R,\mathfrak q}$ is projective over $S_{\mathfrak q}$.
+4. $H_1(L_{S/R})_{\mathfrak q}=0$ and $\Omega_{S/R,\mathfrak q}$ is flat over $S_{\mathfrak q}$.
 
-3.  $H_1(L_{S/R})_\mathfrak q = 0$ and $\Omega_{S/R, \mathfrak q}$ is a projective $S_\mathfrak q$-module, and
+Here degree-one cotangent homology is computed by the naive cotangent complex.
 
-4.  $H_1(L_{S/R})_\mathfrak q = 0$ and $\Omega_{S/R, \mathfrak q}$ is a flat $S_\mathfrak q$-module.
+**Proof.** A finite algebra presentation makes $\Omega_{S/R}$ finitely presented. Over the local ring $S_{\mathfrak q}$, its flatness, projectivity and finite freeness are equivalent: use *Tor and flat modules*, Theorems 5.2–5.3, or the preceding finite-projectivity criterion together with the local finite-flat theorem. This proves the equivalence of (2), (3) and (4). Smoothness on a neighborhood implies these conditions by localization of the naive cotangent complex.
 
-**Proof.** We will use without further mention that formation of the naive cotangent complex commutes with localization, see Section [The naive cotangent complex](#context-algebra-section-netherlander), especially Lemma [Localization of the naive cotangent complex](#native-algebra-lemma-localize-nl). Note that $\Omega_{S/R}$ is a finitely presented $S$-module, see Lemma Kähler differentials, Theorems 3.1–3.3, Proposition 3.4 and Theorem 7.1. Hence (2), (3), and (4) are equivalent by Lemma [Characterizations of finite projective modules](#native-algebra-lemma-finite-projective). It is clear that (1) implies the equivalent conditions (2), (3), and (4). Assume (2) holds. Writing $S_\mathfrak q$ as the colimit of principal localizations we see from Lemma [Finite module presentations in a filtered colimit](#native-algebra-lemma-colimit-category-fp-modules) that we can find a $g \in S$, $g \not \in \mathfrak q$ such that $(\Omega_{S/R})_g$ is finite free. Choose a presentation $\alpha : R[x_1, \ldots, x_n] \to S$ with kernel $I$. We may work with $\mathrm{NL}(\alpha)$ instead of $\mathrm{NL}_{S/R}$, see Lemma Kähler differentials, Theorems 3.1–3.3, Proposition 3.4 and Theorem 7.1. The surjection $$\Omega_{R[x_1, \ldots, x_n]/R} \otimes_{R[x_1, \ldots, x_n]} S
-\to \Omega_{S/R} \to 0$$ has a right inverse after inverting $g$ because $(\Omega_{S/R})_g$ is projective. Hence the image of $\text{d} : (I/I^2)_g \to
-\Omega_{R[x_1, \ldots, x_n]/R} \otimes_{R[x_1, \ldots, x_n]} S_g$ is a direct summand, so the surjection onto this image has a right inverse. We conclude that $H_1(L_{S/R})_g$ is a quotient of $(I/I^2)_g$. In particular $H_1(L_{S/R})_g$ is a finite $S_g$-module. Thus the vanishing of $H_1(L_{S/R})_{\mathfrak q}$ implies the vanishing of $H_1(L_{S/R})_{gg'}$ for some $g' \in S$, $g' \not \in \mathfrak q$. Then $R \to S_{gg'}$ is smooth by definition. $\square$
+Assume (2). Finite presentation of $\Omega_{S/R}$ spreads its chosen free stalk basis to some $S_g$, with $g\notin\mathfrak q$: first kill the finite cokernel of the map defined by basis representatives, then kill its finite kernel. Choose $S=R[x_1,\ldots,x_n]/I$, with $I$ finitely generated. Over $S_g$, the surjection
+
+$$S_g^n\longrightarrow(\Omega_{S/R})_g$$
+
+splits because its target is free. Its kernel $E$ is a finite projective summand of $S_g^n$. The conormal differential maps $(I/I^2)_g$ onto $E$, and this surjection also splits. Therefore its kernel, $H_1(L_{S/R})_g$, is a direct summand of the finite module $(I/I^2)_g$, and is finite.
+
+That kernel vanishes at $\mathfrak q$ by hypothesis. A further localization away from $\mathfrak q$ kills a finite list of generators of it. On the resulting principal neighborhood, the naive cotangent complex has zero degree-one homology and finite free degree-zero homology. The localized algebra remains finitely presented, so it is smooth. This proves (1). The finiteness of the cotangent kernel was established after splitting the differential sequence; no Noetherian hypothesis on $S$ was used. ∎
 
 #### Definition. Local complete intersections
 
-A ring map $R \to S$ is called *syntomic*, or we say $S$ is a *flat local complete intersection over $R$* if it is flat, of finite presentation, and if all of its fibre rings $S \otimes_R \kappa(\mathfrak p)$ are local complete intersections, see Definition [Complete intersections over a field](#native-algebra-definition-lci-field).
+A homomorphism $R\to S$ is **syntomic**, also called a **flat local complete intersection over $R$**, when it has all three properties: it is flat, it is finitely presented, and for every prime $\mathfrak p$ of $R$ the fibre algebra $S\otimes_R\kappa(\mathfrak p)$ is a local complete intersection over $\kappa(\mathfrak p)$ in the following sense.
 
 #### Definition. Complete intersections over a field
- Let $k$ be a field. Let $S$ be a finite type $k$-algebra.
 
-1.  We say that $S$ is a *global complete intersection over $k$* if there exists a presentation $S = k[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ such that $\dim(S) = n - c$.
+For a finite type algebra $S$ over a field $k$, a **global complete intersection over $k$** means that one can choose a presentation
 
-2.  We say that $S$ is a *local complete intersection over $k$* if there exists a covering $\operatorname{Spec}(S) = \bigcup D(g_i)$ such that each of the rings $S_{g_i}$ is a global complete intersection over $k$.
+$$S\cong k[x_1,\ldots,x_n]/(f_1,\ldots,f_c)$$
 
-We will also use the convention that the zero ring is a global complete intersection over $k$.
+with $\dim S=n-c$. We also include the zero algebra as a global complete intersection by convention. A finite type $k$-algebra $S$ is a **local complete intersection over $k$** when it admits a principal-open cover $\operatorname{Spec}(S)=\bigcup_iD(g_i)$ for which each $S_{g_i}$ is a global complete intersection. The existence of a suitable presentation or cover is part of these definitions; no particular presentation is prescribed.
 
 #### Lemma. Filtered colimits of naive cotangent complexes
 
-Let $R_\lambda \to S_\lambda$ be a system of ring maps over the directed set $\Lambda$. Set $R = \mathop{\operatorname{colim}} R_\lambda$ and $S = \mathop{\operatorname{colim}} S_\lambda$. Then $\mathrm{NL}_{S/R} = \mathop{\operatorname{colim}} \mathrm{NL}_{S_\lambda/R_\lambda}$.
+Let $(R_\lambda\to S_\lambda)_{\lambda\in\Lambda}$ be a compatible directed system of ring homomorphisms, and put $R=\varinjlim_\lambda R_\lambda$ and $S=\varinjlim_\lambda S_\lambda$. The functorial canonical presentations give an identification of complexes
 
-**Proof.** Recall that $\mathrm{NL}_{S/R}$ is the complex $I/I^2 \to \bigoplus_{s \in S} S\text{d}[s]$ where $I \subset R[S]$ is the kernel of the canonical presentation $R[S] \to S$. Now it is clear that $R[S] = \mathop{\operatorname{colim}} R_\lambda[S_\lambda]$ and similarly that $I = \mathop{\operatorname{colim}} I_\lambda$ where $I_\lambda = \operatorname{Ker}(R_\lambda[S_\lambda] \to S_\lambda)$. Hence the lemma is clear. $\square$
+$$\mathrm{NL}_{S/R}\cong\varinjlim_\lambda\mathrm{NL}_{S_\lambda/R_\lambda}.$$
+
+**Proof.** Write $P_\lambda=R_\lambda[S_\lambda]$ for the polynomial algebra with one variable $[s]$ for each element $s\in S_\lambda$, and $I_\lambda=\ker(P_\lambda\to S_\lambda)$. Let $P=R[S]$ and $I=\ker(P\to S)$.
+
+A polynomial uses only finitely many coefficients and variables. They can all be represented at one stage of the system, and any equality between finitely many such representatives holds at a later common stage. Hence $P=\varinjlim P_\lambda$. An element represented in $P_\lambda$ lies in $I$ precisely when its image in $S$ is zero, which means its image in some later $S_\mu$ is zero. This gives $I=\varinjlim I_\lambda$. The same finite-witness argument applied to finite sums of products gives $I^2=\varinjlim I_\lambda^2$, and consequently
+
+$$I/I^2\cong\varinjlim_\lambda(I_\lambda/I_\lambda^2).$$
+
+Likewise, finite support in the free modules of differentials gives
+
+$$\bigoplus_{s\in S}S\,d[s]
+\cong\varinjlim_\lambda\left(\bigoplus_{s\in S_\lambda}S_\lambda\,d[s]\right).$$
+
+Polynomial differentiation commutes with every transition map. The two identifications therefore respect the conormal differentials and identify the complexes term by term. The module colimits carry the natural $S$-action induced by the compatible $S_\lambda$-actions; neither flat transition maps nor finite presentations are required. ∎
 
 #### Lemma. Prime ideals and dimension in a polynomial ring
 
-Let $k$ be a field. Let $S$ be a finite type $k$-algebra which is an integral domain. Let $K$ be the field of fractions of $S$. Let $r = \text{trdeg}(K/k)$ be the transcendence degree of $K$ over $k$. Then $\dim(S) = r$. Moreover, the local ring of $S$ at every maximal ideal has dimension $r$.
+Let $S$ be a finite type domain over a field $k$, and write $K=\operatorname{Frac}(S)$ and $r=\operatorname{trdeg}_kK$. Then
 
-**Proof.** We may write $S = k[x_1, \ldots, x_n]/\mathfrak p$. By Lemma [Height and dimension in a polynomial ring](#native-algebra-lemma-dimension-height-polynomial-ring) all local rings of $S$ at maximal ideals have the same dimension. Apply Lemma [Noether normalization](#native-algebra-lemma-noether-normalization). We get a finite injective ring map $$k[y_1, \ldots, y_d] \to S$$ with $d = \dim(S)$. Clearly, $k(y_1, \ldots, y_d) \subset K$ is a finite extension and we win. $\square$
+$$\dim S=r,\qquad\dim S_{\mathfrak m}=r\quad\text{for every maximal ideal }\mathfrak m\subset S.$$
+
+**Proof.** Both assertions, including the arbitrary ground field, are proved in *Krull dimension and Noether normalization*, Theorem 4.2 and Corollary 4.4. The normalization used there is constructed in §§2–3, with a coordinate argument that works over finite fields as well.
+
+To identify the parameters in that proof, a finite inclusion $k[y_1,\ldots,y_d]\subset S$ gives $\dim S=d$ by integral-extension dimension theory. Localizing at the nonzero polynomials gives a finite-dimensional domain over $k(y_1,\ldots,y_d)$, hence a field. It contains $S$ and is contained in $K$, so equals $K$. Consequently $r=d$. For the assertion at a specified maximal ideal, the complete height-formula proof in Theorem 4.3 uses normalization adapted to that ideal and going down over the normal polynomial base. It gives
+
+$$\operatorname{ht}(\mathfrak m)+\dim(S/\mathfrak m)=\dim S.$$
+
+The quotient is a field and has dimension zero. Since $\operatorname{ht}(\mathfrak m)=\dim S_{\mathfrak m}$, the second assertion follows. Thus the statement concerns every maximal localization, not just the supremum of their dimensions. ∎
 
 #### Lemma. Base change of Kähler differentials
- Suppose that we have ring maps $R \to R'$ and $R \to S$. Set $S' = S \otimes_R R'$, so that we obtain a diagram ([Commutative algebra](#context-algebra-equation-functorial-omega)). Then the canonical map defined above induces an isomorphism $\Omega_{S/R} \otimes_R R' = \Omega_{S'/R'}$.
 
-**Proof.** Let $\text{d}' : S' = S \otimes_R R' \to \Omega_{S/R} \otimes_R R'$ denote the map $\text{d}'( \sum a_i \otimes x_i ) = \sum \text{d}(a_i) \otimes x_i$. It exists because the map $S \times R' \to \Omega_{S/R} \otimes_R R'$, $(a, x)\mapsto \text{d}a \otimes_R x$ is $R$-bilinear. This is an $R'$-derivation, as can be verified by a simple computation. We will show that $(\Omega_{S/R} \otimes_R R', \text{d}')$ satisfies the universal property. Let $D : S' \to M'$ be an $R'$-derivation into an $S'$-module. The composition $S \to S' \to M'$ is an $R$-derivation, hence we get an $S$-linear map $\varphi_D : \Omega_{S/R} \to M'$. We may tensor this with $R'$ and get the map $\varphi'_D :
-\Omega_{S/R} \otimes_R R' \to M'$, $\varphi'_D(\eta \otimes x) =
-x\varphi_D(\eta)$. It is clear that $D = \varphi'_D \circ \text{d}'$. $\square$
+For homomorphisms $R\to S$ and $R\to R'$, put $S'=S\otimes_RR'$. The canonical $S'$-linear map
+
+$$\Omega_{S/R}\otimes_RR'\longrightarrow\Omega_{S'/R'},
+\qquad ds\otimes r'\longmapsto r'\,d(s\otimes1)$$
+
+is an isomorphism.
+
+**Proof.** The full universal-property proof is *Kähler differentials*, Theorem 2.1. For clarity, the derivation represented on the left sends $s\otimes r'$ to $ds\otimes r'$. Balancing follows from $d(rs)=r\,ds$ for $r\in R$, and the product rule follows on pure tensors and then on their sums. Restricting an $R'$-derivation of $S'$ to $S$ and extending an $R$-derivation by $s\otimes r'\mapsto r'D(s)$ are inverse operations. They identify the universal derivation modules by exactly the displayed map. No flatness or finite-presentation assumption enters this identification. ∎
 
 #### Lemma. Dimensions of a base, fibre and total space
 
-Let $R \to S$ be a homomorphism of Noetherian rings. Let $\mathfrak q \subset S$ be a prime lying over the prime $\mathfrak p$. Then $$\dim(S_{\mathfrak q})
-\leq
-\dim(R_{\mathfrak p})
-+
-\dim(S_{\mathfrak q}/\mathfrak pS_{\mathfrak q}).$$
+For a homomorphism $R\to S$ of Noetherian rings and a prime $\mathfrak q$ of $S$ contracting to $\mathfrak p$ of $R$,
 
-**Proof.** We use the characterization of dimension of Proposition [Dimension and codimension](#native-algebra-proposition-dimension). Let $x_1, \ldots, x_d$ be elements of $\mathfrak p$ generating an ideal of definition of $R_{\mathfrak p}$ with $d = \dim(R_{\mathfrak p})$. Let $y_1, \ldots, y_e$ be elements of $\mathfrak q$ generating an ideal of definition of $S_{\mathfrak q}/\mathfrak pS_{\mathfrak q}$ with $e = \dim(S_{\mathfrak q}/\mathfrak pS_{\mathfrak q})$. It is clear that $S_{\mathfrak q}/(x_1, \ldots, x_d, y_1, \ldots, y_e)$ has a nilpotent maximal ideal. Hence $x_1, \ldots, x_d, y_1, \ldots, y_e$ generate an ideal of definition of $S_{\mathfrak q}$. $\square$
+$$\dim S_{\mathfrak q}\leq\dim R_{\mathfrak p}
++\dim\bigl(S_{\mathfrak q}/\mathfrak pS_{\mathfrak q}\bigr).$$
+
+**Proof.** This is the upper-bound part of *Dimension theory of Noetherian local rings*, Theorem 5.1. Its proof requires only the stated Noetherian hypotheses. Let $A=R_{\mathfrak p}$, $B=S_{\mathfrak q}$, and denote their maximal ideals by $\mathfrak m$ and $\mathfrak n$. Choose $d=\dim A$ parameters in $A$, and choose $e=\dim(B/\mathfrak mB)$ parameters in the local fibre, with lifts $y_1,\ldots,y_e\in B$. These choices are justified by the local dimension theorem in §2 of the same lesson.
+
+The images of the $d$ base parameters together with the $e$ lifts generate an ideal $J$ whose radical is $\mathfrak n$. Indeed, a prime containing $J$ contains $\mathfrak mB$ because a power of $\mathfrak m$ is contained in the base parameter ideal. Its image in the fibre contains the fibre parameter ideal, and must therefore be the fibre's maximal ideal. Pulling back gives $\mathfrak n$. The parameter characterization of local dimension now bounds $\dim B$ by $d+e$, as claimed. There is no finite-type assumption on the homomorphism. ∎
 
 #### Proposition. Characterizations of separable field extensions
- Let $K/k$ be a field extension. If the characteristic of $k$ is zero then
 
-1.  $K$ is separable over $k$,
+Let $K/k$ be an extension of fields. In characteristic zero all five assertions below hold:
 
-2.  $K$ is geometrically reduced over $k$,
+1. $K/k$ is separable.
+2. $K$ is geometrically reduced over $k$.
+3. The homomorphism $k\to K$ is formally smooth.
+4. $H_1(L_{K/k})=0$.
+5. The canonical map $K\otimes_k\Omega_{k/\mathbb Z}\to\Omega_{K/\mathbb Z}$ is injective.
 
-3.  $K$ is formally smooth over $k$,
+If $\operatorname{char}(k)=p>0$, the following six assertions are equivalent:
 
-4.  $H_1(L_{K/k}) = 0$, and
+1. $K/k$ is separable.
+2. $K\otimes_k k^{1/p}$ is reduced.
+3. $K$ is geometrically reduced over $k$.
+4. The canonical map $K\otimes_k\Omega_{k/\mathbb F_p}\to\Omega_{K/\mathbb F_p}$ is injective.
+5. $H_1(L_{K/k})=0$.
+6. The homomorphism $k\to K$ is formally smooth.
 
-5.  the map $K \otimes_k \Omega_{k/\mathbf{Z}} \to \Omega_{K/\mathbf{Z}}$ is injective.
+These statements allow arbitrary field extensions, without finite generation.
 
-If the characteristic of $k$ is $p > 0$, then the following are equivalent:
+**Proof.** In positive characteristic, [the reducedness criterion](#native-algebra-lemma-characterize-separable-field-extensions) proves (1)$\Leftrightarrow$(2)$\Leftrightarrow$(3), and [the differential criterion for separability](#native-algebra-lemma-separable-differentials) proves (1)$\Leftrightarrow$(4). Both criteria treat the general extension through its finitely generated subextensions. The [field-lifting argument](#native-algebra-lemma-formally-smooth-extensions-easy) gives (1)$\Rightarrow$(6), including the passage through arbitrary directed unions using degree-one cotangent homology.
 
-1.  $K$ is separable over $k$,
+For completeness, formal smoothness also explains directly why (6) implies (4). Given a derivation of $k$ over $\mathbb F_p$ into a $K$-vector space $V$, equip $K\oplus V$ with its square-zero multiplication and the $k$-algebra structure $a\mapsto(a,Da)$. Formal smoothness lifts the identity of $K$ through $K\oplus V\to K$. The second component of the lift extends $D$ to $K$. Applying this to the universal derivation into $K\otimes_k\Omega_{k/\mathbb F_p}$ gives a left inverse of the map in (4). Finally [the cotangent criterion for a field extension](#native-algebra-lemma-characterize-formally-smooth-field-extension) identifies (5) and (6), since every $K$-vector space, in particular $\Omega_{K/k}$, is projective.
 
-2.  the ring $K \otimes_k k^{1/p}$ is reduced,
-
-3.  $K$ is geometrically reduced over $k$,
-
-4.  the map $K \otimes_k \Omega_{k/\mathbf{F}_p} \to \Omega_{K/\mathbf{F}_p}$ is injective,
-
-5.  $H_1(L_{K/k}) = 0$, and
-
-6.  $K$ is formally smooth over $k$.
-
-**Proof.** This is a combination of Lemmas [Criteria for a separable field extension](#native-algebra-lemma-characterize-separable-field-extensions), [Formal smoothness over a prime field](#native-algebra-lemma-fields-are-formally-smooth), [Formal smoothness of field extensions](#native-algebra-lemma-characterize-formally-smooth-field-extension), [A formally smooth field extension is separable](#native-algebra-lemma-formally-smooth-implies-separable), and [Differentials of a separable field extension](#native-algebra-lemma-separable-differentials). $\square$
+In characteristic zero, each finitely generated subextension is separably generated, giving separability of the whole extension. The same field-lifting argument gives formal smoothness and then the vanishing of $H_1$. Replacing $\mathbb F_p$ by $\mathbb Z$ in the square-zero derivation argument proves the final injection. Geometric reducedness follows from [preservation of reducedness under separable field extension](#native-algebra-lemma-separable-extension-preserves-reducedness), applied to each extension field of $k$ as a reduced $k$-algebra. ∎
 
 #### Lemma. Degrees of extensions obtained by adjoining p-th roots
- Let $k$ be a field of characteristic $p > 0$. Let $a_1, \ldots, a_n \in k$ be elements such that $\text{d}a_1, \ldots, \text{d}a_n$ are linearly independent in $\Omega_{k/\mathbf{F}_p}$. Then the field extension $k(a_1^{1/p}, \ldots, a_n^{1/p})$ has degree $p^n$ over $k$.
 
-**Proof.** By induction on $n$. If $n = 1$ the result is Lemma [Polynomials with zero derivative in characteristic p](#native-algebra-lemma-derivative-zero-pth-power). For the induction step, suppose that $k(a_1^{1/p}, \ldots, a_{n - 1}^{1/p})$ has degree $p^{n - 1}$ over $k$. We have to show that $a_n$ does not map to a $p$th power in $k(a_1^{1/p}, \ldots, a_{n - 1}^{1/p})$. If it does then we can write $$\begin{aligned}
-a_n & =
-\left(\sum\nolimits_{I = (i_1, \ldots, i_{n - 1}),\ 0 \leq i_j \leq p - 1}
-\lambda_I a_1^{i_1/p} \ldots a_{n - 1}^{i_{n - 1}/p}\right)^p \\
-& = \sum\nolimits_{I = (i_1, \ldots, i_{n - 1}),\ 0 \leq i_j \leq p - 1}
-\lambda_I^p a_1^{i_1} \ldots a_{n - 1}^{i_{n - 1}}
-\end{aligned}$$ Applying $\text{d}$ we see that $\text{d}a_n$ is linearly dependent on $\text{d}a_i$, $i < n$. This is a contradiction. $\square$
+Suppose $\operatorname{char}(k)=p>0$ and the differentials $da_1,\ldots,da_n$ are linearly independent in $\Omega_{k/\mathbb F_p}$. Then
+
+$$[k(a_1^{1/p},\ldots,a_n^{1/p}):k]=p^n.$$
+
+**Proof.** For $n=0$ the assertion is the identity extension. Inductively let $L=k(a_1^{1/p},\ldots,a_{n-1}^{1/p})$ have degree $p^{n-1}$. Its monomials
+
+$$\prod_{j<n}a_j^{i_j/p},\qquad 0\leq i_j<p,$$
+
+form a $k$-basis: they span by reducing $p$-th powers, and their number equals the known degree. If $a_n=b^p$ for $b\in L$, express $b$ in this basis, with coefficients $\lambda_I\in k$. Frobenius then gives
+
+$$a_n=\sum_I\lambda_I^p\prod_{j<n}a_j^{i_j}.$$
+
+Differentiating over $\mathbb F_p$ puts $da_n$ in the span of $da_1,\ldots,da_{n-1}$, contrary to the hypothesis. Therefore $a_n$ has no $p$-th root in $L$.
+
+The polynomial $T^p-a_n$ is consequently irreducible over $L$. Indeed, in an algebraic closure it is $(T-b)^p$. If the minimal polynomial of $b$ had degree $d<p$, it would be $(T-b)^d$; its next-to-leading coefficient $-db\in L$ would force $b\in L$, because $1\leq d<p$. Thus adjoining the root has degree $p$, and the tower formula finishes the induction. This argument also supplies the initial one-element case. ∎
 
 #### Lemma. Base change of the naive cotangent complex (Flat base change)
- Let $R \to S$ be a ring map. Let $\alpha : P \to S$ be a presentation. Let $R \to R'$ be a flat ring map. Let $\alpha' : P \otimes_R R' \to S' = S \otimes_R R'$ be the induced presentation. Then $\mathrm{NL}(\alpha) \otimes_R R' = \mathrm{NL}(\alpha) \otimes_S S' = \mathrm{NL}(\alpha')$. In particular, the canonical map $$\mathrm{NL}_{S/R} \otimes_S S' \longrightarrow \mathrm{NL}_{S \otimes_R R'/R'}$$ is a homotopy equivalence if $R \to R'$ is flat.
 
-**Proof.** This is true because $\operatorname{Ker}(\alpha') = R' \otimes_R \operatorname{Ker}(\alpha)$ since $R \to R'$ is flat. $\square$
+Let $P\twoheadrightarrow S$ be a polynomial presentation over $R$, with kernel $I$, and let $R\to R'$ be flat. Write $P'=P\otimes_RR'$, $S'=S\otimes_RR'$, and let $\alpha'$ be the induced presentation. Then
+
+$$\mathrm{NL}(P\to S)\otimes_RR'
+\cong\mathrm{NL}(P\to S)\otimes_SS'
+\cong\mathrm{NL}(\alpha').$$
+
+In particular, the canonical comparison $\mathrm{NL}_{S/R}\otimes_SS'\to\mathrm{NL}_{S'/R'}$ is a homotopy equivalence.
+
+**Proof.** Flatness preserves the exact sequence defining $I$, so $I'=\ker(P'\to S')$ is $I\otimes_RR'$. Its square is the image of $I^2\otimes_RR'$: products of tensors generate the ideal on both sides. Right exactness therefore identifies
+
+$$I'/(I')^2\cong(I/I^2)\otimes_RR'.$$
+
+The degree-zero terms agree by base change of polynomial differentials. These identifications send the conormal differential of $i$ to the differential of its image, so they identify the complexes, not only their homology. To pass to canonical presentations, use the full comparison-of-presentations proof: its polynomial lifts give homotopy equivalences, and tensoring preserves their homotopy identities. This also identifies the resulting map with the canonical comparison. Arbitrarily many polynomial variables are allowed. ∎
 
 #### Lemma. Base change of flat modules
 
-Suppose that $M$ is (faithfully) flat over $R$, and that $R \to R'$ is a ring map. Then $M \otimes_R R'$ is (faithfully) flat over $R'$.
+Extension of scalars along any $R\to R'$ carries flat $R$-modules to flat $R'$-modules and preserves faithful flatness as well. Thus $M'=R'\otimes_RM$ has the corresponding property over $R'$ whenever $M$ has it over $R$.
 
-**Proof.** For any $R'$-module $N$ we have a canonical isomorphism $N \otimes_{R'} (R'\otimes_R M)
-= N \otimes_R M$. Hence the desired exactness properties of the functor $-\otimes_{R'}(R'\otimes_R M)$ follow from the corresponding exactness properties of the functor $-\otimes_R M$. $\square$
+**Proof.** For each $R'$-module $N$, associativity gives a natural isomorphism
+
+$$N\otimes_{R'}M'\cong N\otimes_RM.$$
+
+An injection of $R'$-modules is an injection of their underlying $R$-modules, so flatness on the right proves flatness on the left. If $M$ is faithfully flat and $N\ne0$, the underlying $R$-module is nonzero and $N\otimes_RM\ne0$. Thus tensoring with $M'$ also detects nonzero modules, which proves faithful flatness. ∎
 
 #### Lemma. Noetherianity under extension of the ground field
 
-Let $k$ be a field and let $R$ be a Noetherian $k$-algebra. If $K/k$ is a finitely generated field extension then $K \otimes_k R$ is Noetherian.
+If $A$ is a Noetherian $k$-algebra and $K/k$ is a finitely generated field extension, then $K\otimes_kA$ is Noetherian.
 
-**Proof.** Since $K/k$ is a finitely generated field extension, there exists a finitely generated $k$-algebra $B \subset K$ such that $K$ is the fraction field of $B$. In other words, $K = S^{-1}B$ with $S = B \setminus \{0\}$. Then $K \otimes_k R = S^{-1}(B \otimes_k R)$. Then $B \otimes_k R$ is Noetherian by Lemma [Noetherianity under finite-type base change](#native-algebra-lemma-noetherian-base-change-finite-type). Finally, $K \otimes_k R = S^{-1}(B \otimes_k R)$ is Noetherian by Lemma [Permanence of Noetherian rings](#native-algebra-lemma-noetherian-permanence). $\square$
+**Proof.** Choose finitely many field generators $u_1,\ldots,u_r$ for $K/k$ and set $B=k[u_1,\ldots,u_r]\subset K$. Its fraction field is $K$. With $U=B\setminus\{0\}$,
+
+$$K\otimes_kA\cong U^{-1}(B\otimes_kA).$$
+
+The algebra $B\otimes_kA$ has finitely many generators over $A$, hence is Noetherian by the Hilbert basis theorem and passage to a quotient. Its localization is Noetherian as well. The images of elements of $U$ may be zero divisors in the tensor algebra; localization preserves Noetherianity in that case too. ∎
 
 #### Lemma. Criteria for geometric regularity
- Let $k$ be a field. Let $A$ be a $k$-algebra. Assume $A$ is Noetherian. The following properties of $A$ are equivalent:
 
-1.  $k' \otimes_k A$ is regular for every finitely generated field extension $k'/k$, and
+Let $A$ be a Noetherian algebra over a field $k$. The following tests are equivalent:
 
-2.  $k' \otimes_k A$ is regular for every finite purely inseparable extension $k'/k$.
+1. $A\otimes_kK$ is regular for every finitely generated field extension $K/k$.
+2. $A\otimes_kk'$ is regular for every finite purely inseparable extension $k'/k$.
 
-Here regular ring is as in Definition [Regular Noetherian rings](#native-algebra-definition-regular).
+Regularity here is regularity of a Noetherian ring. The preceding Noetherianity lemma ensures that all rings appearing in these tests are Noetherian.
 
-**Proof.** The lemma makes sense by the remarks preceding the lemma. It is clear that (1) $\Rightarrow$ (2).
+**Proof.** Every finite purely inseparable extension is finitely generated, so the first test implies the second. Conversely, assume the second and fix $K/k$ finitely generated. The [purely inseparable adjustment lemma](#native-algebra-lemma-make-separable) gives a commutative square of field inclusions
 
-Assume (2) and let $K/k$ be a finitely generated field extension. By Lemma [Obtaining a separable extension](#native-algebra-lemma-make-separable) we can find a diagram $$\begin{gathered}\begin{matrix}K & K' \\ k & k'\end{matrix} \\[6pt] \begin{aligned}K & \longrightarrow K' \\ k & \longrightarrow K \\ k & \longrightarrow k' \\ k' & \longrightarrow K'\end{aligned}\end{gathered}$$ where $k'/k$, $K'/K$ are finite purely inseparable field extensions such that $K'/k'$ is separable. By Lemma [Smooth localizations of separable extensions](#native-algebra-lemma-localization-smooth-separable) there exists a smooth $k'$-algebra $B$ such that $K'$ is the fraction field of $B$. Now we can argue as follows: Step 1: $k' \otimes_k A$ is a regular ring because we assumed (2). Step 2: $B \otimes_{k'} k' \otimes_k A$ is a regular ring as $k' \otimes_k A \to B \otimes_{k'} k' \otimes_k A$ is smooth (Lemma [Base change of smooth ring maps](#native-algebra-lemma-base-change-smooth)) and ascent of regularity along smooth maps (Lemma [Regularity ascends along a regular ring map](#native-algebra-lemma-regular-goes-up)). Step 3. $K' \otimes_{k'} k' \otimes_k A = K' \otimes_k A$ is a regular ring as it is a localization of a regular ring (immediate from the definition). Step 4. Finally $K \otimes_k A$ is a regular ring by descent of regularity along the faithfully flat ring map $K \otimes_k A \to K' \otimes_k A$ (Lemma [Descent of regularity](#native-algebra-lemma-descent-regular)). This proves the lemma. $\square$
+$$\begin{matrix}k&\longrightarrow&K\\
+\big\downarrow&&\big\downarrow\\
+k'&\longrightarrow&K',\end{matrix}$$
+
+where both vertical extensions are finite purely inseparable and $K'/k'$ is separable. The extension $K'/k'$ is still finitely generated. Choose a smooth $k'$-domain $B$ with fraction field $K'$, as in [the smooth-model lemma for separable extensions](#native-algebra-lemma-localization-smooth-separable).
+
+Put $F=A\otimes_kk'$. The second test makes $F$ regular. The algebra $F\otimes_{k'}B$ is smooth over $F$, by base change, so it is regular by [ascent along a regular ring map](#native-algebra-lemma-regular-goes-up). Localizing at the nonzero elements of $B$ gives the regular ring
+
+$$F\otimes_{k'}K'\cong A\otimes_kK'.$$
+
+Finally, $A\otimes_kK\to A\otimes_kK'$ is faithfully flat, being obtained from the field extension $K\to K'$ by base change. [Descent of regularity](#native-algebra-lemma-descent-regular) makes $A\otimes_kK$ regular. Since $K$ was arbitrary, the first test holds. In characteristic zero the purely inseparable extensions in the construction are trivial. ∎
 
 #### Lemma. Regularity over a regular base with regular fibre
 
-Let $R \to S$ be a local homomorphism of local Noetherian rings. Assume
+Suppose $(R,\mathfrak m)\to(S,\mathfrak n)$ is a flat local map of Noetherian local rings. If $R$ and $S/\mathfrak mS$ are regular, then $S$ is regular.
 
-1.  $R$ is regular,
+**Proof.** Write $d=\dim R$ and $e=\dim(S/\mathfrak mS)$. Regularity supplies generators $x_1,\ldots,x_d$ of $\mathfrak m$ and generators $\bar y_1,\ldots,\bar y_e$ of the maximal ideal in the fibre. Lift the latter to $y_j\in\mathfrak n$. Every element of $\mathfrak n$ is a linear combination of these lifts modulo $\mathfrak mS$, and $\mathfrak mS$ is generated by the images of the $x_i$. Thus the combined list generates $\mathfrak n$.
 
-2.  $S/\mathfrak m_RS$ is regular, and
-
-3.  $R \to S$ is flat.
-
-Then $S$ is regular.
-
-**Proof.** By Lemma [Dimension of a flat family](#native-algebra-lemma-dimension-base-fibre-equals-total) we have $\dim(S) = \dim(R) + \dim(S/\mathfrak m_RS)$. Pick generators $x_1, \ldots, x_d \in \mathfrak m_R$ with $d = \dim(R)$, and pick $y_1, \ldots, y_e \in \mathfrak m_S$ which generate the maximal ideal of $S/\mathfrak m_RS$ with $e = \dim(S/\mathfrak m_RS)$. Then we see that $x_1, \ldots, x_d, y_1, \ldots, y_e$ are elements which generate the maximal ideal of $S$ and $e + d = \dim(S)$. $\square$
+The flat local dimension formula gives $\dim S=d+e$. The embedding dimension of a Noetherian local ring is at least its dimension, while the displayed list bounds it above by $d+e$. Equality follows, which is the defining criterion for regularity of $S$. Empty parameter lists cause no exception. ∎
 
 #### Lemma. Permanence of flat ring maps
 
-Let $R \to S$ be a ring map. Let $M$ be an $S$-module. If $M$ is flat as an $R$-module and faithfully flat as an $S$-module, then $R \to S$ is flat.
+Let $R\to S$ be a homomorphism, and let $M$ be an $S$-module which is flat over $R$ and faithfully flat over $S$. Then $S$ is flat over $R$.
 
-**Proof.** Let $N_1 \to N_2 \to N_3$ be an exact sequence of $R$-modules. By assumption $N_1 \otimes_R M \to N_2 \otimes_R M \to N_3 \otimes_R M$ is exact. We may write this as $$N_1 \otimes_R S \otimes_S M
-\to
-N_2 \otimes_R S \otimes_S M
-\to
-N_3 \otimes_R S \otimes_S M.$$ By faithful flatness of $M$ over $S$ we conclude that $N_1 \otimes_R S \to N_2 \otimes_R S \to N_3 \otimes_R S$ is exact. Hence $R \to S$ is flat. $\square$
+**Proof.** For an injection $N_1\hookrightarrow N_2$ of $R$-modules, consider its tensor with $S$. Tensoring that map further over $S$ with $M$ identifies it with
+
+$$N_1\otimes_RM\longrightarrow N_2\otimes_RM,$$
+
+which is injective by $R$-flatness. Exactness of tensoring with the flat $S$-module $M$ identifies its kernel with the tensor of the original kernel. Faithfulness detects a zero module, so the original kernel is zero. Every injection is therefore preserved by tensoring with $S$, proving $R$-flatness. No finiteness or local hypothesis is needed. ∎
 
 #### Lemma. Descent of geometric regularity
 
-Geometric regularity descends through faithfully flat maps of algebras
+If $A\to B$ is faithfully flat over a field $k$ and $B$ is geometrically regular over $k$, then $A$ is geometrically regular over $k$.
 
-Let $k$ be a field. Let $A \to B$ be a faithfully flat $k$-algebra map. If $B$ is geometrically regular over $k$, so is $A$.
+**Proof.** First $B$ is Noetherian, and faithful flatness descends this property to $A$. Explicitly, for any ideal $J\subset A$, finitely many elements of $J$ already generate $JB$ because $B$ is Noetherian. Let $J_0\subset J$ be the ideal they generate. Flatness identifies $(J/J_0)\otimes_AB$ with $JB/J_0B=0$, and faithfulness gives $J=J_0$. Thus every ideal of $A$ is finitely generated.
 
-**Proof.** Assume $B$ is geometrically regular over $k$. Let $k'/k$ be a finite, purely inseparable extension. Then $A \otimes_k k' \to B \otimes_k k'$ is faithfully flat as a base change of $A \to B$ (by Lemmas [Radical ideals under a surjection of spectra](#native-algebra-lemma-surjective-spec-radical-ideal) and [Base change of flat modules](#native-algebra-lemma-flat-base-change)) and $B \otimes_k k'$ is regular by our assumption on $B$ over $k$. Then $A \otimes_k k'$ is regular by Lemma [Descent of regularity](#native-algebra-lemma-descent-regular). $\square$
+Now let $k'/k$ be finite purely inseparable. Base change preserves faithful flatness, giving
+
+$$A\otimes_kk'\longrightarrow B\otimes_kk'.$$
+
+Its target is regular by the hypothesis on $B$. [Faithfully flat descent of regularity](#native-algebra-lemma-descent-regular) makes its source regular. The preceding criterion for geometric regularity, now applicable because $A$ is Noetherian, proves the result. ∎
 
 #### Lemma. A variant of the local criterion for flatness
- Let $R \to S$ be a local homomorphism of Noetherian local rings. Let $I \not = R$ be an ideal in $R$. Let $M$ be a finite $S$-module. If $\text{Tor}_1^R(M, R/I) = 0$ and $M/IM$ is flat over $R/I$, then $M$ is flat over $R$.
 
-**Proof.** First proof: By Lemma [A reformulation of the local algebraic condition](#native-algebra-lemma-what-does-it-mean) we see that $\text{Tor}_1^R(\kappa, M)$ is zero where $\kappa$ is the residue field of $R$. Hence we see that $M$ is flat over $R$ by Lemma Faithful flatness and the local criterion for flatness, Theorems 2.1–3.1, 4.2, 5.2 and 5.4.
+Let $R\to S$ be a local map of Noetherian local rings, let $I\subsetneq R$, and let $M$ be a finite $S$-module. If
 
-Second proof: Let $\mathfrak m$ be the maximal ideal of $R$. We will show that $\mathfrak m \otimes_R M \to M$ is injective, and then apply Lemma Faithful flatness and the local criterion for flatness, Theorems 2.1–3.1, 4.2, 5.2 and 5.4. Suppose that $\sum f_i \otimes x_i \in \mathfrak m \otimes_R M$ and that $\sum f_i x_i = 0$ in $M$. By the equational criterion for flatness Lemma [The equational criterion for flatness](#native-algebra-lemma-flat-eq) applied to $M/IM$ over $R/I$ we see there exist $\overline{a}_{ij} \in R/I$ and $\overline{y}_j \in M/IM$ such that $x_i \bmod IM = \sum_j \overline{a}_{ij} \overline{y}_j$ and $0 = \sum_i (f_i \bmod I) \overline{a}_{ij}$. Let $a_{ij} \in R$ be a lift of $\overline{a}_{ij}$ and similarly let $y_j \in M$ be a lift of $\overline{y}_j$. Then we see that $$\begin{eqnarray*}
-\sum f_i \otimes x_i
-& = &
-\sum f_i \otimes x_i +
-\sum f_ia_{ij} \otimes y_j -
-\sum f_i \otimes a_{ij} y_j
-\\
-& = &
-\sum f_i \otimes (x_i - \sum a_{ij} y_j) +
-\sum (\sum f_i a_{ij}) \otimes y_j
-\end{eqnarray*}$$ Since $x_i - \sum a_{ij} y_j \in IM$ and $\sum f_i a_{ij} \in I$ we see that there exists an element in $I \otimes_R M$ which maps to our given element $\sum f_i \otimes x_i$ in $\mathfrak m \otimes_R M$. But $I \otimes_R M \to M$ is injective by assumption (see Remark [Tor for a quotient by an ideal](#native-algebra-remark-tor-ring-mod-ideal)) and we win. $\square$
+$$\operatorname{Tor}_1^R(M,R/I)=0\qquad\text{and}\qquad
+M/IM\text{ is flat over }R/I,$$
+
+then $M$ is flat over $R$.
+
+**Proof through the residue field.** The complete quotient argument and local criterion are *Faithful flatness and the local criterion for flatness*, Lemma 4.3, Corollary 4.4 and Theorem 4.2. With $\mathfrak m$ the maximal ideal of $R$, the proper ideal $I$ is contained in $\mathfrak m$. Hence it annihilates $\kappa=R/\mathfrak m$. Lemma 4.3 gives $\operatorname{Tor}_1^R(\kappa,M)=0$, and Theorem 4.2 gives flatness. Symmetry of Tor over a commutative ring identifies the hypothesis here with the order of its arguments in that lemma. Finiteness is required over $S$, as stated, rather than over $R$.
+
+**Proof using a tensor relation.** The same local criterion reduces the problem to injectivity of $\mathfrak m\otimes_RM\to M$. Suppose
+
+$$z=\sum_i f_i\otimes x_i,\qquad f_i\in\mathfrak m,\qquad\sum_i f_ix_i=0.$$
+
+Apply the equational flatness criterion to this relation in $M/IM$ over $R/I$. Lift its finite factorization to elements $a_{ij}\in R$ and $y_j\in M$. Then
+
+$$x_i-\sum_j a_{ij}y_j\in IM,\qquad
+c_j=\sum_i f_ia_{ij}\in I.$$
+
+In $\mathfrak m\otimes_RM$ the original tensor can therefore be written as
+
+$$z=\sum_i f_i\otimes\left(x_i-\sum_j a_{ij}y_j\right)
++\sum_j c_j\otimes y_j.$$
+
+Each term comes from $I\otimes_RM$. For the first sum, express its parenthesized element as a finite sum $\sum_\ell b_{i\ell}v_{i\ell}$ with $b_{i\ell}\in I$ and move the coefficients across the tensor sign; then $f_ib_{i\ell}\in I$. The second sum already has coefficients in $I$. Thus $z$ is the image of some $w\in I\otimes_RM$.
+
+Multiplication sends $w$ to the same zero element of $M$ as $z$. The Tor hypothesis makes $I\otimes_RM\to M$ injective, by the exact sequence of $0\to I\to R\to R/I\to0$. Hence $w=0$ and $z=0$. The maximal-ideal tensor map is injective, so the Noetherian local criterion proves flatness. ∎
 
 #### Lemma. Transitivity of finite ring extensions
- Suppose that $R \to S$ and $S \to T$ are finite ring maps. Then $R \to T$ is finite.
 
-**Proof.** If $t_i$ generate $T$ as an $S$-module and $s_j$ generate $S$ as an $R$-module, then $t_i s_j$ generate $T$ as an $R$-module. (Also follows from Lemma [Finite modules over a finite ring extension](#native-algebra-lemma-finite-module-over-finite-extension).) $\square$
+For ring homomorphisms $R\to S\to T$, finiteness of both successive maps implies finiteness of their composite.
+
+**Proof.** Choose finite module generators $s_1,\ldots,s_a$ of $S$ over $R$ and $t_1,\ldots,t_b$ of $T$ over $S$. Expanding an element of $T$ first in the $t_i$ and then expanding its coefficients in the $s_j$ expresses it as an $R$-linear combination of the $ab$ products $s_jt_i$. This is also the special case $M=T$ of [finite modules over a finite extension](#native-algebra-lemma-finite-module-over-finite-extension). ∎
 
 #### Lemma. Finite length over an Artinian ring
- A ring $R$ is Artinian if and only if it has finite length as a module over itself. Any such ring $R$ is both Artinian and Noetherian, any prime ideal of $R$ is a maximal ideal, and $R$ is equal to the (finite) product of its localizations at its maximal ideals.
 
-**Proof.** If $R$ has finite length over itself then it satisfies both the ascending chain condition and the descending chain condition for ideals. Hence it is both Noetherian and Artinian. Any Artinian ring is equal to the product of its localizations at its maximal ideals by Lemmas [Finitely many maximal ideals in an Artinian ring](#native-algebra-lemma-artinian-finite-nr-max), [Nilpotence of the radical of an Artinian ring](#native-algebra-lemma-artinian-radical-nilpotent), and [Local factors of a product ring](#native-algebra-lemma-product-local).
+A commutative ring is Artinian exactly when its underlying module has finite length. It is then Noetherian, every prime is maximal, and the canonical homomorphism
 
-Suppose that $R$ is Artinian. We will show $R$ has finite length over itself. It suffices to exhibit a chain of submodules whose successive quotients have finite length. By what we said above we may assume that $R$ is local, with maximal ideal $\mathfrak m$. By Lemma [Nilpotence of the radical of an Artinian ring](#native-algebra-lemma-artinian-radical-nilpotent) we have $\mathfrak m^n =0$ for some $n$. Consider the sequence $0 = \mathfrak m^n \subset \mathfrak m^{n-1} \subset
-\ldots \subset \mathfrak m \subset R$. By Lemma [Vector-space dimension and module length](#native-algebra-lemma-dimension-is-length) the length of each subquotient $\mathfrak m^j/\mathfrak m^{j + 1}$ is the dimension of this as a vector space over $\kappa(\mathfrak m)$. This has to be finite since otherwise we would have an infinite descending chain of vector subspaces which would correspond to an infinite descending chain of ideals in $R$. $\square$
+$$R\longrightarrow\prod_{\mathfrak m\in\operatorname{Max}(R)}R_{\mathfrak m}$$
 
-#### Lemma. Commutative algebra
- Let $R$ be a ring. Let $$0 \to M_1 \to M_2 \to M_3 \to 0$$ be a short exact sequence of $R$-modules.
+is an isomorphism with finitely many factors. The empty product gives the zero ring.
 
-1.  If $M_1$ and $M_3$ are finite $R$-modules, then $M_2$ is a finite $R$-module.
+**Proof.** The full argument is *Noetherian and Artinian rings*, Lemma 4.1 and Theorem 4.2. In particular, its radical-nilpotence proof uses the descending chain condition directly; it does not assume finite generation before proving that an Artinian ring is Noetherian.
 
-2.  If $M_1$ and $M_3$ are finitely presented $R$-modules, then $M_2$ is a finitely presented $R$-module.
+Here is how the length calculation and the local factors enter. For an Artinian ring the cited lemma proves that all primes are maximal, there are finitely many of them, and their intersection $J$ satisfies $J^N=0$. The Chinese remainder theorem decomposes $R/J$ into its residue fields. Each layer $J^i/J^{i+1}$ is Artinian over this product and thus splits into finitely many Artinian vector spaces. Each vector space has finite dimension: an infinite basis would produce a strictly descending sequence of subspaces by deleting one basis vector at each step. These layers therefore have finite length, and their finite filtration gives finite length to $R$.
 
-3.  If $M_2$ is a finite $R$-module, then $M_3$ is a finite $R$-module.
+For the product assertion, the powers $\mathfrak m^N$ of the distinct maximal ideals are pairwise comaximal, and their product is $J^N=0$. Chinese remainders give $R\cong\prod R/\mathfrak m^N$. Each factor is local; localizing the product at the corresponding maximal ideal keeps that factor and kills the others. Hence the displayed isomorphism is the natural localization map. Finally, finite length implies both chain conditions, so it implies both the Artinian and Noetherian properties. ∎
 
-4.  If $M_2$ is a finitely presented $R$-module and $M_1$ is a finite $R$-module, then $M_3$ is a finitely presented $R$-module.
+#### Lemma. Finiteness in short exact sequences
 
-5.  If $M_3$ is a finitely presented $R$-module and $M_2$ is a finite $R$-module, then $M_1$ is a finite $R$-module.
+Consider an exact sequence of modules over an arbitrary ring $R$:
 
-**Proof.** Proof of (1). If $x_1, \ldots, x_n$ are generators of $M_1$ and $y_1, \ldots, y_m \in M_2$ are elements whose images in $M_3$ are generators of $M_3$, then $x_1, \ldots, x_n, y_1, \ldots, y_m$ generate $M_2$.
+$$0\longrightarrow M_1\longrightarrow M_2\longrightarrow M_3\longrightarrow0.$$
 
-Part (3) is immediate from the definition.
+The following implications hold:
 
-Proof of (5). Assume $M_3$ is finitely presented and $M_2$ finite. Choose a presentation $$R^{\oplus m} \to R^{\oplus n} \to M_3 \to 0$$ By Lemma [Extending a morphism after finite denominators are cleared](#native-algebra-lemma-lift-map) there exists a map $R^{\oplus n} \to M_2$ such that the solid diagram $$\begin{gathered}\begin{matrix}\phantom{X} & R^{\oplus m} & R^{\oplus n} & M_3 & 0 \\ 0 & M_1 & M_2 & M_3 & 0\end{matrix} \\[6pt] \begin{aligned}R^{\oplus m} & \longrightarrow R^{\oplus n} \\ R^{\oplus m} & \cdots\!\!\rightarrow M_1 \\ R^{\oplus n} & \longrightarrow M_3 \\ R^{\oplus n} & \longrightarrow M_2 \\ M_3 & \longrightarrow 0 \\ M_3 & \xrightarrow{\text{id}} M_3 \\ 0 & \longrightarrow M_1 \\ M_1 & \longrightarrow M_2 \\ M_2 & \longrightarrow M_3 \\ M_3 & \longrightarrow 0\end{aligned}\end{gathered}$$ commutes. This produces the dotted arrow. By the snake lemma (Lemma [The snake lemma](#native-algebra-lemma-snake)) we see that we get an isomorphism $$\operatorname{Coker}(R^{\oplus m} \to M_1)
-\cong
-\operatorname{Coker}(R^{\oplus n} \to M_2)$$ In particular we conclude that $\operatorname{Coker}(R^{\oplus m} \to M_1)$ is a finite $R$-module. Since $\operatorname{Im}(R^{\oplus m} \to M_1)$ is finite by (3), we see that $M_1$ is finite by part (1).
+1. Finite generation of $M_1$ and $M_3$ implies finite generation of $M_2$.
+2. Finite presentation of $M_1$ and $M_3$ implies finite presentation of $M_2$.
+3. A finitely generated $M_2$ has finitely generated quotient $M_3$.
+4. If $M_2$ is finitely presented and $M_1$ is finitely generated, then $M_3$ is finitely presented.
+5. If $M_3$ is finitely presented and $M_2$ is finitely generated, then $M_1$ is finitely generated.
 
-Proof of (4). Assume $M_2$ is finitely presented and $M_1$ is finite. Choose a presentation $R^{\oplus m} \to R^{\oplus n} \to M_2 \to 0$. Choose a surjection $R^{\oplus k} \to M_1$. By Lemma [Extending a morphism after finite denominators are cleared](#native-algebra-lemma-lift-map) there exists a factorization $R^{\oplus k} \to R^{\oplus n} \to M_2$ of the composition $R^{\oplus k} \to M_1 \to M_2$. Then $R^{\oplus k + m} \to R^{\oplus n} \to M_3 \to 0$ is a presentation.
+**Proof.** For (1), use generators of $M_1$ together with lifts of generators of $M_3$. Their span contains the kernel and maps onto the quotient, so it is all of $M_2$. For (3), take the images of a generating set.
 
-Proof of (2). Assume that $M_1$ and $M_3$ are finitely presented. The argument in the proof of part (1) produces a commutative diagram $$\begin{gathered}\begin{matrix}0 & R^{\oplus n} & R^{\oplus n + m} & R^{\oplus m} & 0 \\ 0 & M_1 & M_2 & M_3 & 0\end{matrix} \\[6pt] \begin{aligned}0 & \longrightarrow R^{\oplus n} \\ R^{\oplus n} & \longrightarrow M_1 \\ R^{\oplus n} & \longrightarrow R^{\oplus n + m} \\ R^{\oplus n + m} & \longrightarrow M_2 \\ R^{\oplus n + m} & \longrightarrow R^{\oplus m} \\ R^{\oplus m} & \longrightarrow M_3 \\ R^{\oplus m} & \longrightarrow 0 \\ 0 & \longrightarrow M_1 \\ M_1 & \longrightarrow M_2 \\ M_2 & \longrightarrow M_3 \\ M_3 & \longrightarrow 0\end{aligned}\end{gathered}$$ with surjective vertical arrows. By the snake lemma we obtain a short exact sequence $$0 \to \operatorname{Ker}(R^{\oplus n} \to M_1) \to
-\operatorname{Ker}(R^{\oplus n + m} \to M_2) \to
-\operatorname{Ker}(R^{\oplus m} \to M_3) \to 0$$ By part (5) we see that the outer two modules are finite. Hence the middle one is finite too. By (4) we see that $M_2$ is of finite presentation. $\square$
+To prove (5), take a finite presentation $R^a\xrightarrow{d}R^b\to M_3\to0$ and lift the basis of $R^b$ to $M_2$. Write $v:R^b\to M_2$ for the resulting map. The image of $vd$ lies in $M_1$, giving $w:R^a\to M_1$. There is a canonical isomorphism
+
+$$M_1/\operatorname{im}(w)\ \cong\ M_2/\operatorname{im}(v).$$
+
+Indeed, every element of $M_2$ differs from an element of $\operatorname{im}(v)$ by one of $M_1$, since $R^b\to M_3$ is onto. If $v(x)$ belongs to $M_1$, then $x\in\operatorname{im}(d)$, so the intersection $M_1\cap\operatorname{im}(v)$ equals $\operatorname{im}(w)$. The right-hand quotient is finite by (3), and $\operatorname{im}(w)$ is finite because $R^a$ is. Applying (1) proves (5). This is the explicit kernel-and-cokernel calculation underlying the snake-lemma argument.
+
+For (4), start with $R^a\to R^b\to M_2\to0$. Lift a finite generating list of $M_1$ to $R^b$. The original $a$ relation vectors together with these finitely many lifts generate the kernel of $R^b\to M_3$, and therefore give a finite presentation of $M_3$.
+
+For (2), choose finite free modules $F_1,F_3$ surjecting onto $M_1,M_3$, and lift the basis of $F_3$ to $M_2$. This gives a surjection $F_1\oplus F_3\to M_2$. If $K_1,K_2,K_3$ are the kernels of these three surjections, projection onto $F_3$ gives
+
+$$0\longrightarrow K_1\longrightarrow K_2\longrightarrow K_3\longrightarrow0.$$
+
+Surjectivity on the right follows by correcting a lift of an element of $K_3$ with an element of $F_1$. Part (5) makes $K_1$ and $K_3$ finite, since the corresponding quotients are finitely presented. Part (1) then makes $K_2$ finite, which is precisely a finite set of relations for the chosen finite free cover of $M_2$. ∎
 
 #### Lemma. Composition of finite-type ring maps
 
-The notions finite type and finite presentation have the following permanence properties.
+Finite type and finite presentation satisfy these four rules:
 
-1.  A composition of ring maps of finite type is of finite type.
+1. Two successive finite type homomorphisms have finite type composite.
+2. Two successive finitely presented homomorphisms have finitely presented composite.
+3. In $R\to S'\to S$, finite type of $S$ over $R$ implies finite type over $S'$.
+4. In the same diagram, if $S$ is finitely presented over $R$ and $S'$ is of finite type over $R$, then $S$ is finitely presented over $S'$.
 
-2.  A composition of ring maps of finite presentation is of finite presentation.
+**Proof.** For (1), join a finite list of algebra generators for the first map to a list for the second. For (3), the original $R$-algebra generators also generate over $S'$.
 
-3.  Given $R \to S' \to S$ with $R \to S$ of finite type, then $S' \to S$ is of finite type.
+For (2), write $S=R[x_1,\ldots,x_a]/(f_1,\ldots,f_b)$ and $T=S[y_1,\ldots,y_c]/(g_1,\ldots,g_d)$. Lift each coefficient of each $g_j$ to a polynomial in the $x_i$, producing $\widetilde g_j\in R[x,y]$. Then
 
-4.  Given $R \to S' \to S$, with $R \to S$ of finite presentation, and $R \to S'$ of finite type, then $S' \to S$ is of finite presentation.
+$$T\cong R[x,y]/(f_1,\ldots,f_b,\widetilde g_1,\ldots,\widetilde g_d),$$
 
-**Proof.** We only prove the last assertion. Write $S = R[x_1, \ldots, x_n]/(f_1, \ldots, f_m)$ and $S' = R[y_1, \ldots, y_a]/I$. Say that the class $\bar y_i$ of $y_i$ maps to $h_i \bmod (f_1, \ldots, f_m)$ in $S$. Then it is clear that $S = S'[x_1, \ldots, x_n]/(f_1, \ldots, f_m,
-h_1 - \bar y_1, \ldots, h_a - \bar y_a)$. $\square$
+which is a finite presentation over $R$.
+
+For (4), choose $S=R[x]/(f_1,\ldots,f_b)$ and $S'=R[y_1,\ldots,y_c]/I$, with finite lists $x,y$. Represent the image of $\bar y_j$ in $S$ by $h_j(x)\in R[x]$. The given homomorphism induces
+
+$$S\cong S'[x]/(f_1,\ldots,f_b,\ h_1(x)-\bar y_1,\ldots,h_c(x)-\bar y_c).$$
+
+To verify this presentation, the displayed relations force every coefficient from $S'$ to have its prescribed expression in the $x_i$. Relations from $I$ already vanish in $S$, so impose no additional relations beyond $(f_1,\ldots,f_b)$ after that substitution. The resulting maps in both directions fix $R$, all $x_i$, and all $\bar y_j$. They are inverse, proving the assertion without a finite-generation assumption on $I$. ∎
 
 #### Lemma. Composition of essentially finite-type ring maps
 
-The class of ring maps which are essentially of finite type is preserved under composition. Similarly for essentially of finite presentation.
+Composites of essentially finite type homomorphisms are essentially of finite type. The same assertion holds with “finite presentation” in place of “finite type.” Localization may be at an arbitrary multiplicative set.
 
-**Proof.** Omitted. $\square$
+**Proof.** Write the first algebra as $S=U^{-1}A$, where $A$ is of finite type over $R$, and the second as $T=V^{-1}C$, where $C$ is of finite type over $S$. Choose $C=S[x_1,\ldots,x_n]/J$. Let $J_0$ be the contraction of $J$ to $A[x]$, and set $B=A[x]/J_0$. The correspondence for ideals in a localization gives $C=U^{-1}B$. Thus $T$ is a localization of the finite type $R$-algebra $B$, proving the first assertion.
+
+For the second assertion choose $A$ finitely presented over $R$ and $C=S[x]/(f_1,\ldots,f_m)$. Only finitely many coefficients occur in these polynomials. There is consequently $u\in U$ such that they all lift to $A_u$. Choose lifted polynomials $\widetilde f_i\in A_u[x]$ and put
+
+$$B=A_u[x]/(\widetilde f_1,\ldots,\widetilde f_m).$$
+
+The algebra $A_u$ has a finite presentation obtained by adjoining $z$ with $uz-1=0$, so the preceding composition lemma makes $B$ finitely presented over $R$. Again $C=U^{-1}B$, and $T$ is a further localization. More explicitly, if $v\in V$ is represented by $b/u'$ in $U^{-1}B$, then after inverting $U$ it suffices to invert the numerator $b$. Inverting all these numerators along with $U$ exhibits $T$ as one localization of $B$. No finiteness of either multiplicative set is required. ∎
 
 #### Lemma. Smooth localizations of separable extensions
- Let $K/k$ be a finitely generated field extension. Then $K$ is separable over $k$ if and only if $K$ is the localization of a smooth $k$-algebra.
 
-**Proof.** Choose a finite type $k$-algebra $R$ which is a domain whose fraction field is $K$. Lemma [Smoothness at a generic point](#native-algebra-lemma-smooth-at-generic-point) says that $k \to R$ is smooth at $(0)$ if and only if $K/k$ is separable. This proves the lemma. $\square$
+For a finitely generated extension of fields $K/k$, separability is equivalent to the existence of a smooth $k$-algebra $B$ whose localization is $K$.
+
+**Proof.** Suppose first that $K/k$ is separable. Choose a separating transcendence basis $t_1,\ldots,t_r$. The finite separable extension of $F=k(t_1,\ldots,t_r)$ is simple, say $K=F(\alpha)$; this is the [finite-generation and primitive-element description](#native-algebra-lemma-generating-finitely-generated-separable-field-extensions). Let $f\in F[X]$ be the monic minimal polynomial of $\alpha$. Choose a nonzero $h\in k[t_1,\ldots,t_r]$ so that every coefficient of $f$ belongs to $A=k[t_1,\ldots,t_r]_h$. Then
+
+$$B=\bigl(A[X]/(f)\bigr)_{f'}$$
+
+is standard smooth over $A$ because its one equation has invertible derivative. The algebra $A$ is smooth over $k$, so composition gives smoothness of $B$ over $k$. Monicity makes $A[X]/(f)$ free over $A$ and embeds it into its scalar extension $F[X]/(f)=K$. Since $f'(\alpha)\ne0$, the localization defining $B$ is a subring of $K$ with fraction field $K$. Thus inverting its nonzero elements gives the desired localization. When $K=F$, one may take $\alpha=0$ and $f=X$.
+
+Conversely, a localization of a smooth algebra is formally smooth. Indeed, lift a map from the smooth algebra across a nilpotent ideal; every element inverted in the target remains invertible in the lift, because invertibility lifts across nilpotent ideals. The lift therefore extends to the localization. The [formal-smoothness criterion for fields](#native-algebra-lemma-fields-are-formally-smooth) now gives separability of $K/k$.
+
+The generic-point proof gives another description of the same result. Choose a finite type $k$-domain $A_0$ with fraction field $K$. The [generic smoothness criterion](#native-algebra-lemma-smooth-at-generic-point) says that its generic point is smooth precisely when $K/k$ is separable. A smooth principal neighborhood of that point has fraction field $K$, so its further localization is $K$. This retains the generic-point route as well as the explicit standard-smooth model. ∎
 
 #### Lemma. Completion at a quasi-finite prime
- Let $R \to S$ be a ring map, $\mathfrak q$ a prime of $S$ lying over $\mathfrak p$ in $R$. If
 
-1.  $R$ is Noetherian,
+Let $R$ be Noetherian, let $S$ be an $R$-algebra of finite type, and let $\mathfrak q\subset S$ contract to $\mathfrak p\subset R$. Assume the homomorphism is quasi-finite at $\mathfrak q$. There is an $\widehat{R_{\mathfrak p}}$-algebra $B$ and a decomposition
 
-2.  $R \to S$ is of finite type, and
+$$\widehat{R_{\mathfrak p}}\otimes_RS
+\ \cong\ \widehat{S_{\mathfrak q}}\times B$$
 
-3.  $R \to S$ is quasi-finite at $\mathfrak q$,
+whose first projection is the natural homomorphism to the completed local ring. Both local completions use their maximal ideals.
 
-then $R_\mathfrak p^\wedge \otimes_R S = S_\mathfrak q^\wedge \times B$ for some $R_\mathfrak p^\wedge$-algebra $B$.
+**Proof.** First obtain a finite algebra model near the specified prime. The pointwise [affine Zariski main theorem](#native-algebra-theorem-main-theorem) gives an element $g$ of the integral closure $\overline R\subset S$, outside $\mathfrak q$, with $\overline R_g=S_g$. Take finite $R$-algebra generators $s_i$ of $S$ and write each $s_i=a_i/g^{n_i}$ in $S_g$, with $a_i\in\overline R$. Set $C=R[g,a_1,\ldots,a_l]\subset S$. All these generators are integral over $R$, so $C$ is finite over $R$. The inclusion induces $C_g\cong S_g$: surjectivity follows from the chosen expressions, and injectivity follows by localizing the inclusion. For $\mathfrak r=\mathfrak q\cap C$, this gives $C_{\mathfrak r}\cong S_{\mathfrak q}$. If the original map is quasi-finite everywhere, the [quasi-finite open in the integral closure](#native-algebra-lemma-quasi-finite-open-integral-closure) gives the same finite model directly. The pointwise theorem supplies exactly the weaker hypothesis used here.
 
-**Proof.** There exists a finite $R$-algebra $S' \subset S$ and an element $g \in S'$, $g \not \in \mathfrak q' = S' \cap \mathfrak q$ such that $S'_g = S_g$ and in particular $S'_{\mathfrak q'} = S_\mathfrak q$, see Lemma [The quasi-finite open in an integral closure](#native-algebra-lemma-quasi-finite-open-integral-closure). We have $$R_\mathfrak p^\wedge \otimes_R S' = (S'_{\mathfrak q'})^\wedge \times B'$$ by Lemma [Completion of a finite ring extension](#native-algebra-lemma-completion-finite-extension). Observe that under this product decomposition $g$ maps to a pair $(u, b')$ with $u \in (S'_{\mathfrak q'})^\wedge$ a unit because $g \not \in \mathfrak q'$. The product decomposition for $R_\mathfrak p^\wedge \otimes_R S'$ induces a product decomposition $$R_\mathfrak p^\wedge \otimes_R S = A \times B.$$ Since $S'_g = S_g$ we also have $(R_\mathfrak p^\wedge \otimes_R S')_g = (R_\mathfrak p^\wedge \otimes_R S)_g$ and since $g \mapsto (u, b')$ where $u$ is a unit we see that $(S'_{\mathfrak q'})^\wedge = A$. Since the isomorphism $S'_{\mathfrak q'} = S_\mathfrak q$ determines an isomorphism on completions this also tells us that $A = S_\mathfrak q^\wedge$. This finishes the proof, except that we should perform the sanity check that the induced map $\phi : R_\mathfrak p^\wedge \otimes_R S \to A = S_\mathfrak q^\wedge$ is the natural one. For elements of the form $x \otimes 1$ with $x \in R_\mathfrak p^\wedge$ this is clear as the natural map $R_\mathfrak p^\wedge \to S_\mathfrak q^\wedge$ factors through $(S'_{\mathfrak q'})^\wedge$. For elements of the form $1 \otimes y$ with $y \in S$ we can argue that for some $n \geq 1$ the element $g^ny$ is the image of some $y' \in S'$. Thus $\phi(1 \otimes g^ny)$ is the image of $y'$ under the composition $S' \to (S'_{\mathfrak q'})^\wedge \to S_\mathfrak q^\wedge$ which is equal to the image of $g^ny$ by the map $S \to S_\mathfrak q^\wedge$. Since $g$ maps to a unit this also implies that $\phi(1 \otimes y)$ has the correct value, i.e., the image of $y$ by $S \to S_\mathfrak q^\wedge$. $\square$
+Put $\widehat R=\widehat{R_{\mathfrak p}}$ and $D=\widehat{C_{\mathfrak r}}$. The finite-extension completion lemma below gives
+
+$$E=\widehat R\otimes_RC\cong D\times E'.$$
+
+The $D$-component of $g$ is a unit. Tensoring this decomposition over $C$ with $S$ gives
+
+$$\widehat R\otimes_RS\cong A\times B,
+\qquad A=D\otimes_CS.$$
+
+The image of $g$ is already invertible in $A$, since it is invertible in $D$. As $C_g\cong S_g$,
+
+$$A\cong A_g
+\cong D\otimes_{C_g}S_g
+\cong D
+\cong\widehat{S_{\mathfrak q}}.$$
+
+It remains to identify the first projection. On the factor $\widehat R$ it is the map induced by $R_{\mathfrak p}\to C_{\mathfrak r}\cong S_{\mathfrak q}$. For $s\in S$, equality after localizing at $g$ means that some power $g^Ns$ equals an element of $C$ in $S$; if necessary, increase the exponent to kill the localization error. The two candidate maps agree on this element and on $g$. Its image is a unit in $\widehat{S_{\mathfrak q}}$, so cancellation shows that the maps agree on $s$. They agree on both tensor factors and hence are identical. ∎
 
 #### Lemma. Finite free algebras with a prescribed residue extension
- Let $R$ be a ring. Let $\mathfrak p \subset R$ be a prime and let $L/\kappa(\mathfrak p)$ be a finite extension of fields. Then there exists a finite free ring map $R \to S$ such that $\mathfrak q = \mathfrak pS$ is prime and $\kappa(\mathfrak q)/\kappa(\mathfrak p)$ is isomorphic to the given extension $L/\kappa(\mathfrak p)$.
 
-**Proof.** By induction on the degree of $\kappa(\mathfrak p) \subset L$. If the degree is $1$, then we take $R = S$. In general, if there exists a sub extension $\kappa(\mathfrak p) \subset L' \subset L$ with both inclusions strict, then we win by induction on the degree (by first constructing $R \subset S'$ corresponding to $L'/\kappa(\mathfrak p)$ and then constructing $S' \subset S$ corresponding to $L/L'$). Thus we may assume that $L \supset \kappa(\mathfrak p)$ is generated by a single element $\alpha \in L$. Let $X^d + \sum_{i < d} a_iX^i$ be the minimal polynomial of $\alpha$ over $\kappa(\mathfrak p)$, so $a_i \in \kappa(\mathfrak p)$. We may write $a_i$ as the image of $f_i/g$ for some $f_i, g \in R$ and $g \not \in \mathfrak p$. After replacing $\alpha$ by $g\alpha$ (and correspondingly replacing $a_i$ by $g^{d - i}a_i$) we may assume that $a_i$ is the image of some $f_i \in R$. Then we simply take $S = R[x]/(x^d + \sum f_ix^i)$. $\square$
+Let $\mathfrak p$ be a prime of an arbitrary ring $R$, and let $L/\kappa(\mathfrak p)$ be finite. One can find an $R$-algebra $S$, finite free as an $R$-module, such that $\mathfrak q=\mathfrak pS$ is prime and the induced extension $\kappa(\mathfrak q)/\kappa(\mathfrak p)$ is the given extension.
+
+**Proof.** Begin with a simple extension $L=\kappa(\mathfrak p)(\alpha)$ of degree $d$. Write its monic minimal polynomial as
+
+$$X^d+\sum_{i<d}a_iX^i.$$
+
+Choose one common denominator $g\in R\setminus\mathfrak p$ for the finitely many coefficients, writing $a_i$ as the residue of $f_i/g$. Replacing $\alpha$ by $\beta=g\alpha$ preserves the generated field and changes the coefficient of $X^i$ to $g^{d-i}a_i$, which is the residue of $g^{d-i-1}f_i\in R$. Choose these lifts $b_i$ and set
+
+$$S=R[X]/\left(X^d+\sum_{i<d}b_iX^i\right).$$
+
+Monic division gives the free $R$-basis $1,X,\ldots,X^{d-1}$. Moreover, $S/\mathfrak pS$ is free over the domain $R/\mathfrak p$, so it injects into its localization at the nonzero elements of $R/\mathfrak p$. That localization is $L$, by the minimal polynomial of $\beta$. Consequently $S/\mathfrak pS$ is a domain with fraction field $L$. This proves both primeness and the required identification of residue fields, even when $\mathfrak p$ is not maximal.
+
+For a general finite extension, induct on its degree. Degree one uses $S=R$. If a proper nontrivial intermediate field $L'$ exists, construct a finite free $R$-algebra $S'$ for $L'/\kappa(\mathfrak p)$ and then a finite free $S'$-algebra $S$ for $L/L'$. Products of the two free bases give a finite free $R$-basis. The final prime is $(\mathfrak pS')S=\mathfrak pS$, and the residue identifications compose. If no such intermediate field exists, any element of $L\setminus\kappa(\mathfrak p)$ generates $L$, reducing to the simple case. No separability assumption is needed. ∎
 
 #### Lemma. Completion of a finite ring extension
- Let $R$ be a Noetherian ring. Let $R \to S$ be a finite ring map. Let $\mathfrak p \subset R$ be a prime and let $\mathfrak q_1, \ldots, \mathfrak q_m$ be the primes of $S$ lying over $\mathfrak p$ (Lemma [Fibres of a finite ring map](#native-algebra-lemma-finite-finite-fibres)). Then $$R_\mathfrak p^\wedge \otimes_R S =
-(S_\mathfrak p)^\wedge =
-S_{\mathfrak q_1}^\wedge \times \ldots \times S_{\mathfrak q_m}^\wedge$$ where the $(S_\mathfrak p)^\wedge$ is the completion with respect to $\mathfrak p$ and the local rings $R_\mathfrak p$ and $S_{\mathfrak q_i}$ are completed with respect to their maximal ideals.
 
-**Proof.** We may replace $R$ by the localization $R_\mathfrak p$ and $S$ by $S_\mathfrak p = S \otimes_R R_\mathfrak p$. Hence we may assume that $R$ is a local Noetherian ring and that $\mathfrak p = \mathfrak m$ is its maximal ideal. The $\mathfrak q_iS_{\mathfrak q_i}$-adic completion $S_{\mathfrak q_i}^\wedge$ is equal to the $\mathfrak m$-adic completion by Lemma [Finiteness after completion](#native-algebra-lemma-finite-after-completion). For every $n \geq 1$ prime ideals of $S/\mathfrak m^nS$ are in 1-to-1 correspondence with the maximal ideals $\mathfrak q_1, \ldots, \mathfrak q_m$ of $S$ (by going up for $S$ over $R$, see Lemma [Going up for integral ring maps](#native-algebra-lemma-integral-going-up)). Hence $S/\mathfrak m^nS = \prod S_{\mathfrak q_i}/\mathfrak m^nS_{\mathfrak q_i}$ by Lemma [Finite length over an Artinian ring](#native-algebra-lemma-artinian-finite-length) (using for example Proposition [Rings of dimension zero](#native-algebra-proposition-dimension-zero-ring) to see that $S/\mathfrak m^nS$ is Artinian). Hence the $\mathfrak m$-adic completion $S^\wedge$ of $S$ is equal to $\prod S_{\mathfrak q_i}^\wedge$. Finally, we have $R^\wedge \otimes_R S = S^\wedge$ by Lemma Completion, Theorems 3.1–3.3, 4.1 and 5.1. $\square$
+Suppose $R$ is Noetherian and $S$ is finite over $R$. For a prime $\mathfrak p\subset R$, let $\mathfrak q_1,\ldots,\mathfrak q_m$ be the finitely many primes of $S$ above it. Then the canonical maps give
+
+$$\widehat{R_{\mathfrak p}}\otimes_RS
+\ \cong\ \widehat{S\otimes_RR_{\mathfrak p}}
+\ \cong\ \prod_{i=1}^m\widehat{S_{\mathfrak q_i}}.$$
+
+The middle completion is for the extended ideal $\mathfrak pR_{\mathfrak p}$; those on the right are for the respective maximal ideals.
+
+**Proof.** Replace $R$ by $R_{\mathfrak p}$ and $S$ by $S\otimes_RR_{\mathfrak p}$, and denote the maximal ideal of the new base by $\mathfrak m$. The finite algebra $S/\mathfrak mS$ is finite-dimensional over $R/\mathfrak m$. It is Artinian, and its finitely many primes give exactly the primes $\mathfrak q_i$ above $\mathfrak m$. Integrality of $S$ over the local ring $R$ implies that these are all the maximal ideals of $S$.
+
+For each $n\geq1$, the ring $R/\mathfrak m^n$ has finite length: the layers of its maximal-ideal filtration are finite-dimensional residue-field spaces, since $R$ is Noetherian. Thus the finite module $S/\mathfrak m^nS$ also has finite length over $R/\mathfrak m^n$, and its ideals satisfy the descending chain condition. The Artinian decomposition proved above gives, naturally at every order,
+
+$$S/\mathfrak m^nS
+\ \cong\ \prod_{i=1}^m S_{\mathfrak q_i}/\mathfrak m^nS_{\mathfrak q_i}.$$
+
+These maps are the localization maps, so commute with reduction in $n$. Taking inverse limits commutes with this finite product. In each Noetherian local ring $S_{\mathfrak q_i}$, the radical of $\mathfrak mS_{\mathfrak q_i}$ is its maximal ideal $\mathfrak q_iS_{\mathfrak q_i}$: the quotient is the corresponding local factor of the zero-dimensional fibre. Some power of the maximal ideal is therefore contained in $\mathfrak mS_{\mathfrak q_i}$. The two adic filtrations are cofinal, and their completions agree. This proves the second isomorphism.
+
+Finally, *Completion*, Theorem 3.1 proves the natural tensor-completion isomorphism for every finite module over a Noetherian ring. Applied to $S$, it supplies the first isomorphism. Its proof uses Artin–Rees and a finite free presentation, so it applies to the present finite algebra without any flatness assumption on $S$. If the fibre is empty, Nakayama gives $S=0$ after the initial localization, and the empty product agrees with the zero ring. ∎
 
 #### Lemma. A complete local domain finite over a regular ring
 
-Let $(R, \mathfrak m)$ be a Noetherian complete local domain. Then there exists a subring $R_0 \subset R$ with the following properties
+Every complete Noetherian local domain $(R,\mathfrak m,k)$ contains a complete regular local subring $R_0$ such that $R$ is finite over $R_0$ and their residue fields agree. The subring can be chosen in one of the forms
 
-1.  $R_0$ is a regular complete local ring,
+$$k[[X_1,\ldots,X_d]]\qquad\text{or}\qquad C[[X_1,\ldots,X_d]],$$
 
-2.  $R_0 \subset R$ is finite and induces an isomorphism on residue fields,
+where $C$ is a Cohen ring. The number of variables is $\dim R$ in the first case and $\dim R-1$ in the second.
 
-3.  $R_0$ is either isomorphic to $k[[X_1, \ldots, X_d]]$ where $k$ is a field or $\Lambda[[X_1, \ldots, X_d]]$ where $\Lambda$ is a Cohen ring.
+**Proof.** Use the complete coefficient-ring construction in *Coefficient rings and the Cohen structure theorem*, Theorem 5.1, whose preceding §§1–4 supply its lifting arguments. Its image in a domain is either a coefficient field or an embedded Cohen DVR. Indeed, in residue characteristic $p>0$ the coefficient map has kernel either zero or $(p^e)$ in a DVR. A domain cannot contain the nonzero nilpotents of a quotient with $e>1$. Thus either $e=1$, giving a field, or the kernel is zero. In residue characteristic zero it gives a field directly.
 
-**Proof.** Let $\Lambda$ be a coefficient ring of $R$. Since $R$ is a domain we see that either $\Lambda$ is a field or $\Lambda$ is a Cohen ring.
+First suppose the coefficient subring is the field $k$. Put $d=\dim R$ and choose a system of parameters $x_1,\ldots,x_d\in\mathfrak m$, so $I=(x_1,\ldots,x_d)$ has radical $\mathfrak m$. The complete parameter theorem is *Dimension theory of Noetherian local rings*, §2. Powers of $I$ and $\mathfrak m$ are cofinal, so $R$ is complete and separated for $I$ as well. Substitution of the $x_i$ gives a homomorphism
 
-Case I: $\Lambda = k$ is a field. Let $d = \dim(R)$. Choose $x_1, \ldots, x_d \in \mathfrak m$ which generate an ideal of definition $I \subset R$. (See Section [Dimension and codimension](#context-algebra-section-dimension).) By Lemma [Changing the ideal of completion](#native-algebra-lemma-change-ideal-completion) we see that $R$ is $I$-adically complete as well. Consider the map $R_0 = k[[X_1, \ldots, X_d]] \to R$ which maps $X_i$ to $x_i$. Note that $R_0$ is complete with respect to the ideal $I_0 = (X_1, \ldots, X_d)$, and that $R/I_0R \cong R/IR$ is finite over $k = R_0/I_0$ (because $\dim(R/I) = 0$, see Section [Dimension and codimension](#context-algebra-section-dimension).) Hence we conclude that $R_0 \to R$ is finite by Lemma [Finite algebras over a complete ring](#native-algebra-lemma-finite-over-complete-ring). Since $\dim(R) = \dim(R_0)$ this implies that $R_0 \to R$ is injective (see Lemma [Dimension under an integral extension](#native-algebra-lemma-integral-dim-up)). This proves Case I.
+$$\phi:k[[X_1,\ldots,X_d]]\longrightarrow R.$$
 
-Case II: $\Lambda$ is a Cohen ring. Let $d + 1 = \dim(R)$. Let $p > 0$ be the characteristic of the residue field $k$. As $R$ is a domain we see that $p$ is a nonzerodivisor in $R$. Hence $\dim(R/pR) = d$, see Lemma [A single polynomial equation](#native-algebra-lemma-one-equation). Choose $x_1, \ldots, x_d \in R$ which generate an ideal of definition in $R/pR$. Then $I = (p, x_1, \ldots, x_d)$ is an ideal of definition of $R$. By Lemma [Changing the ideal of completion](#native-algebra-lemma-change-ideal-completion) we see that $R$ is $I$-adically complete as well. Consider the map $R_0 = \Lambda[[X_1, \ldots, X_d]] \to R$ which maps $X_i$ to $x_i$. Note that $R_0$ is complete with respect to the ideal $I_0 = (p, X_1, \ldots, X_d)$, and that $R/I_0R \cong R/IR$ is finite over $k = R_0/I_0$ (because $\dim(R/I) = 0$, see Section [Dimension and codimension](#context-algebra-section-dimension).) Hence we conclude that $R_0 \to R$ is finite by Lemma [Finite algebras over a complete ring](#native-algebra-lemma-finite-over-complete-ring). Since $\dim(R) = \dim(R_0)$ this implies that $R_0 \to R$ is injective (see Lemma [Dimension under an integral extension](#native-algebra-lemma-integral-dim-up)), and the lemma is proved. $\square$
+The quotient $R/I$ has finite length and residue field $k$, so is finite-dimensional over the coefficient field. Apply the [complete-base finiteness lemma](#native-algebra-lemma-finite-over-complete-ring) to $R$ as a module over the power-series ring, with ideal $(X_1,\ldots,X_d)$. Completeness of the base, separatedness of $R$, and the just-proved finiteness modulo that ideal give finiteness of $\phi$.
+
+Now suppose the coefficient subring is a Cohen ring $C$ with uniformizer $p$. The nonzero element $p\in R$ is a nonzerodivisor. The [one-equation dimension lemma](#native-algebra-lemma-one-equation) gives $\dim(R/pR)=\dim R-1=d$. Choose lifts $x_1,\ldots,x_d\in\mathfrak m$ of parameters of $R/pR$. Then $I=(p,x_1,\ldots,x_d)$ has radical $\mathfrak m$. Substitution defines
+
+$$\phi:C[[X_1,\ldots,X_d]]\longrightarrow R.$$
+
+The source is complete for $(p,X_1,\ldots,X_d)$, and $R$ is separated for its image ideal $I$. The quotient $R/I$ has finite length over its residue field $k=C/pC$. The same complete-base finiteness lemma again proves that $\phi$ is finite.
+
+In both cases the source $A$ is a complete regular local domain, of the stated dimension. For a field its maximal ideal is generated by the variables; for a Cohen DVR it is generated by $p$ and the variables. The formal power-series Noetherian theorem and these generating lists give the upper dimension bound, while the chains obtained by adjoining the variables successively, preceded by $(p)$ in the DVR case, give the matching lower bound. The coefficient construction's §6 records the formal power-series Noetherian input. Completeness follows by comparing coefficients modulo the powers of the displayed maximal ideal.
+
+Finally $\phi$ is injective. Let $K=\ker\phi$. Finiteness makes $R$ integral over $A/K$, so dimension for integral extensions gives $\dim(A/K)=\dim R=\dim A$. If $K\ne0$, any chain of primes containing $K$ can be extended downward by the zero prime of the domain $A$. This would give $\dim(A/K)\leq\dim A-1$, a contradiction. Identify $R_0=A$ with its image. Its maximal ideal maps into $\mathfrak m$, and the coefficient map induces the prescribed residue-field isomorphism. ∎
 
 #### Definition. Regular Noetherian rings
 
-A Noetherian ring $R$ is said to be *regular* if all the localizations $R_{\mathfrak p}$ at primes are regular local rings.
+A Noetherian ring $R$ is **regular** when $R_{\mathfrak p}$ is a regular local ring for every prime $\mathfrak p\subset R$.
 
 #### Lemma. Geometric regularity under separable algebraic extensions
 
-Let $k'/k$ be a separable algebraic field extension. Let $A$ be an algebra over $k'$. Then $A$ is geometrically regular over $k$ if and only if it is geometrically regular over $k'$.
+Let $k'/k$ be algebraic and separable, with no finiteness assumption, and let $A$ be a $k'$-algebra. Then geometric regularity of $A$ over $k$ is equivalent to geometric regularity over $k'$.
 
-**Proof.** Let $L/k$ be a finite purely inseparable field extension. Then $L' = k' \otimes_k L$ is a field (see material in Fields, Section [The geometric construction](#context-fields-section-algebraic)) and $A \otimes_k L = A \otimes_{k'} L'$. Hence if $A$ is geometrically regular over $k'$, then $A$ is geometrically regular over $k$.
+**Proof.** Suppose $A$ is geometrically regular over $k'$, and take a finite purely inseparable extension $L/k$. Separability and pure inseparability are linearly disjoint, so $L'=k'\otimes_kL$ is a field, finite purely inseparable over $k'$. Thus
 
-Assume $A$ is geometrically regular over $k$. Since $k'$ is the filtered colimit of finite extensions of $k$ we may assume by Lemma [Geometric regularity over a subfield](#native-algebra-lemma-geometrically-regular-over-subfields) that $k'/k$ is finite separable. Consider the ring maps $$k' \to A \otimes_k k' \to A.$$ Note that $A \otimes_k k'$ is geometrically regular over $k'$ as a base change of $A$ to $k'$. Note that $A \otimes_k k' \to A$ is the base change of $k' \otimes_k k' \to k'$ by the map $k' \to A$. Since $k'/k$ is an étale extension of rings, we see that $k' \otimes_k k' \to k'$ is étale (Lemma [Étale morphisms](#native-algebra-lemma-etale)). Hence $A$ is geometrically regular over $k'$ by Lemma [Ascent of geometric regularity](#native-algebra-lemma-geometrically-regular-goes-up). $\square$
+$$A\otimes_kL\cong A\otimes_{k'}L'$$
+
+is regular. The purely inseparable test proves geometric regularity over $k$.
+
+Conversely, suppose $A$ is geometrically regular over $k$. First take a finite intermediate extension $E/k$ in $k'/k$, and regard $A$ as an $E$-algebra. Base extension makes $A\otimes_kE$ geometrically regular over $E$. Multiplication gives
+
+$$A\otimes_kE\longrightarrow A,\qquad a\otimes e\longmapsto ae.$$
+
+This is the base change, along $E\to A$, of $E\otimes_kE\to E$. Since $E/k$ is finite separable, both $E\otimes_kE$ and $E$ are étale over $E$ (using the first factor on the source). The [permanence theorem for étale maps](#native-algebra-lemma-etale) makes this multiplication homomorphism étale. Its base change is therefore étale, and [ascent of geometric regularity](#native-algebra-lemma-geometrically-regular-goes-up) shows that $A$ is geometrically regular over $E$.
+
+The finite intermediate extensions form a directed union equal to $k'$. Apply [geometric regularity over a directed union of subfields](#native-algebra-lemma-geometrically-regular-over-subfields). The finite purely inseparable tests there descend to one finite intermediate field, so geometric regularity over every such $E$ gives geometric regularity over $k'$. This treats an infinite separable algebraic extension without taking an unqualified limit of regular rings. ∎
 
 #### Lemma. Regularity ascends along a regular ring map
 
-Regularity ascends along smooth maps of rings.
+If $R$ is a regular Noetherian ring and $R\to S$ is smooth, then $S$ is regular.
 
-Let $\varphi : R \to S$ be a ring map. Assume
+**Proof.** Finite presentation makes $S$ Noetherian. Fix $\mathfrak q\subset S$ and let $\mathfrak p$ be its contraction. Smoothness gives a flat local map $R_{\mathfrak p}\to S_{\mathfrak q}$. Its base is regular by assumption. Its closed fibre is a localization of the smooth $\kappa(\mathfrak p)$-algebra $S\otimes_R\kappa(\mathfrak p)$, and is regular by the smoothness criterion over a field. The already proved [regular-base and regular-fibre lemma](#native-algebra-lemma-flat-over-regular-with-regular-fibre) now makes $S_{\mathfrak q}$ regular. The prime was arbitrary, so $S$ is regular.
 
-1.  $\varphi$ is smooth,
-
-2.  $R$ is a regular ring.
-
-Then $S$ is regular.
-
-**Proof.** This follows by applying Lemma [Commutative algebra](#native-algebra-lemma-rk-goes-up) for every $k \geq 0$ using Lemma Smooth algebras over a field and the Jacobian criterion, Theorems 5.1–6.1 and Sections 1–3 to see that the hypotheses are satisfied. $\square$
+Equivalently, the [ascent criterion for $(R_k)$](#native-algebra-lemma-rk-goes-up) applies for every $k\geq0$: a smooth map is flat, and all its fibre local rings are regular. This is the same ascent argument expressed through the height-bounded regularity conditions. ∎
 
 #### Lemma. Filtered limits and finite presentation
 
-Let $R \to A$ be a ring map. There exists a directed system $A_\lambda$ of $R$-algebras of finite presentation such that $A = \mathop{\operatorname{colim}}_\lambda A_\lambda$. If $A$ is of finite type over $R$ we may arrange it so that all the transition maps in the system of $A_\lambda$ are surjective.
+Every $R$-algebra $A$ is a directed colimit of finitely presented $R$-algebras. If $A$ is of finite type, the system can be chosen with all transition homomorphisms surjective.
 
-**Proof.** The first proof is that this follows from Lemma [The filtered category of finite ring presentations](#native-algebra-lemma-ring-colimit-fp-category) and Categories, Lemma [The geometric construction (programme binding)](#uncovered-categories-lemma-directed-category-system).
+**Proof by finite data.** For each finite subset $F\subset A$, form $R[X_a:a\in F]$ with its evaluation map to $A$. Choose any finite set $E$ of elements of its kernel, and put
 
-Second proof. Compare with the proof of Lemma [Filtered limits and finite presentation and modules](#native-algebra-lemma-module-colimit-fp). Consider any finite subset $S \subset A$, and any finite collection of polynomial relations $E$ among the elements of $S$. So each $s \in S$ corresponds to $x_s \in A$ and each $e \in E$ consists of a polynomial $f_e \in R[X_s; s\in S]$ such that $f_e(x_s) = 0$. Let $A_{S, E} = R[X_s; s\in S]/(f_e; e\in E)$ which is a finitely presented $R$-algebra. There are canonical maps $A_{S, E} \to A$. If $S \subset S'$ and if the elements of $E$ correspond, via the map $R[X_s; s \in S] \to R[X_s; s\in S']$, to a subset of $E'$, then there is an obvious map $A_{S, E} \to A_{S', E'}$ commuting with the maps to $A$. Thus, setting $\Lambda$ equal to the set of pairs $(S, E)$ with ordering by inclusion as above, we get a directed partially ordered set. It is clear that the colimit of this directed system is $A$.
+$$A_{F,E}=R[X_a:a\in F]/(E).$$
 
-For the last statement, suppose $A = R[x_1, \ldots, x_n]/I$. In this case, consider the subset $\Lambda' \subset \Lambda$ consisting of those systems $(S, E)$ above with $S = \{x_1, \ldots, x_n\}$. It is easy to see that still $A = \mathop{\operatorname{colim}}_{\lambda' \in \Lambda'} A_{\lambda'}$. Moreover, the transition maps are clearly surjective. $\square$
+Order the pairs by adjoining elements to $F$ and adjoining relations to $E$, viewing the old polynomial ring inside the new one. Any two pairs have an upper bound given by the unions of their variables and relations. Thus this is a directed partially ordered set of finitely presented algebras, with compatible maps to $A$.
+
+The induced map from their colimit to $A$ is onto: an element $a\in A$ is represented by its variable at a stage containing $a$. It is injective because a polynomial representing zero in $A$ can itself be added as one further relation. If two representatives have the same image, first put them at a common stage and apply this argument to their difference. Hence the colimit is $A$.
+
+If $A$ is generated by a fixed finite list, keep that list of variables and let $E$ run through the finite subsets of the kernel ideal of the resulting polynomial presentation. The same argument identifies the colimit, and every transition is a quotient map, hence surjective.
+
+**Categorical proof.** The [category of finite presentations mapping to $A$](#native-algebra-lemma-ring-colimit-fp-category) is filtered and has colimit $A$. Replacing it by a cofinal directed system, as in the [directed-system replacement theorem](#uncovered-categories-lemma-directed-category-system), yields the first assertion. The finite-data construction above gives that directed system explicitly and also supplies the surjective-transition refinement. ∎
 
 #### Lemma. Localization as a filtered colimit
- Let $R$ be a ring. Let $S \subset R$ be a multiplicative subset. Let $M$ be an $R$-module. Then $$S^{-1}M = \mathop{\operatorname{colim}}_{f \in S} M_f$$ where the preorder on $S$ is given by $f \geq f' \Leftrightarrow f = f'f''$ for some $f'' \in R$ in which case the map $M_{f'} \to M_f$ is given by $m/(f')^e \mapsto m(f'')^e/f^e$.
 
-**Proof.** Omitted. Hint: Use the universal property of Lemma [Proper morphisms and modules](#native-algebra-lemma-universal-property-localization-module). $\square$
+For a multiplicative subset $U\subset R$ and an $R$-module $M$,
+
+$$U^{-1}M\cong\mathop{\operatorname{colim}}_{f\in U}M_f.$$
+
+Use the divisibility preorder: $f'\preceq f$ when $f=f'h$ for some $h\in R$. The transition homomorphism is
+
+$$M_{f'}\longrightarrow M_f,\qquad
+\frac{m}{(f')^e}\longmapsto\frac{h^em}{f^e}.$$
+
+**Proof.** In $R_f$, the element $f'$ is a unit, with inverse $h/f$. Thus the universal property of localization defines the displayed map. It is independent of the chosen $h$ and respects compositions, because in each case it is the unique extension of $M\to M_f$ for which $f'$ becomes invertible. The product of two elements of $U$ is an upper bound, so the preorder is directed.
+
+Every fraction $m/u\in U^{-1}M$ comes from $M_u$. If $m/f^e$ maps to zero, some $u\in U$ kills $m$. At the later stage $M_{fu}$, the element $u$ is invertible, so the representative is zero there. These two facts prove surjectivity and injectivity of the colimit map. They also cover $0\in U$, when the localization is zero. ∎
 
 #### Lemma. The cotangent complex of a principal localization
 
-The formation of the naive cotangent complex commutes with localization at an element.
+Let $A\to B$ be a ring homomorphism and $P\twoheadrightarrow B$ a polynomial presentation with kernel $I$. Choose $f\in P$ mapping to $g\in B$. Extending the presentation by $x\mapsto g^{-1}$ gives
 
-Let $A \to B$ be a ring map. Let $g \in B$. Suppose $\alpha : P \to B$ is a presentation with kernel $I$. Then a presentation of $B_g$ over $A$ is the map $$\beta : P[x] \longrightarrow B_g$$ extending $\alpha$ and sending $x$ to $1/g$. The kernel $J$ of $\beta$ is generated by $I$ and the element $f x - 1$ where $f \in P$ is an element mapped to $g \in B$ by $\alpha$. In this situation we have
+$$\beta:P[x]\twoheadrightarrow B_g,\qquad J=\ker\beta=(I,fx-1).$$
 
-1.  $J/J^2 = (I/I^2)_g \oplus B_g (f x - 1)$,
+There are decompositions
 
-2.  $\Omega_{P[x]/A} \otimes_{P[x]} B_g =
-    \Omega_{P/A} \otimes_P B_g \oplus B_g \text{d}x$,
+$$J/J^2\cong (I/I^2)_g\oplus B_g[fx-1],$$
 
-3.  $\mathrm{NL}(\beta) \cong
-    \mathrm{NL}(\alpha) \otimes_B B_g \oplus (B_g \xrightarrow{g} B_g).$
+$$\Omega_{P[x]/A}\otimes_{P[x]}B_g
+\cong (\Omega_{P/A}\otimes_PB_g)\oplus B_g\,dx,$$
 
-Hence the canonical map $\mathrm{NL}_{B/A} \otimes_B B_g \to \mathrm{NL}_{B_g/A}$ is a homotopy equivalence.
+and, after a change of basis in the second summand,
 
-**Proof.** Since $P[x]/(I, fx - 1) = B[x]/(gx - 1) = B_g$ we get the statement about $I$ and $fx - 1$ generating $J$. Consider the commutative diagram $$\begin{gathered}\begin{matrix}0 & \Omega_{P/A} \otimes_P B_g & \Omega_{P[x]/A} \otimes_{P[x]} B_g & \Omega_{B[x]/B} \otimes_{B[x]} B_g & 0 \\ \phantom{X} & (I/I^2)_g & J/J^2 & (gx - 1)/(gx - 1)^2 & 0\end{matrix} \\[6pt] \begin{aligned}0 & \longrightarrow \Omega_{P/A} \otimes_P B_g \\ \Omega_{P/A} \otimes_P B_g & \longrightarrow \Omega_{P[x]/A} \otimes_{P[x]} B_g \\ \Omega_{P[x]/A} \otimes_{P[x]} B_g & \longrightarrow \Omega_{B[x]/B} \otimes_{B[x]} B_g \\ \Omega_{B[x]/B} \otimes_{B[x]} B_g & \longrightarrow 0 \\ (I/I^2)_g & \longrightarrow J/J^2 \\ (I/I^2)_g & \longrightarrow \Omega_{P/A} \otimes_P B_g \\ J/J^2 & \longrightarrow (gx - 1)/(gx - 1)^2 \\ J/J^2 & \longrightarrow \Omega_{P[x]/A} \otimes_{P[x]} B_g \\ (gx - 1)/(gx - 1)^2 & \longrightarrow 0 \\ (gx - 1)/(gx - 1)^2 & \longrightarrow \Omega_{B[x]/B} \otimes_{B[x]} B_g\end{aligned}\end{gathered}$$ with exact rows of Lemma [The transitivity sequence for the naive cotangent complex](#native-algebra-lemma-exact-sequence-nl). The $B_g$-module $\Omega_{B[x]/B} \otimes_{B[x]} B_g$ is free of rank $1$ on $\text{d}x$. The element $\text{d}x$ in the $B_g$-module $\Omega_{P[x]/A} \otimes_{P[x]} B_g$ provides a splitting for the top row. The element $gx - 1 \in (gx - 1)/(gx - 1)^2$ is mapped to $g\text{d}x$ in $\Omega_{B[x]/B} \otimes_{B[x]} B_g$ and hence $(gx - 1)/(gx - 1)^2$ is free of rank $1$ over $B_g$. (This can also be seen by arguing that $gx - 1$ is a nonzerodivisor in $B[x]$ because it is a polynomial with invertible constant term and any nonzerodivisor gives a quasi-regular sequence of length $1$ by Lemma [Regular sequences are quasi-regular](#native-algebra-lemma-regular-quasi-regular).)
+$$\mathrm{NL}(\beta)\cong
+\bigl(\mathrm{NL}(P\to B)\otimes_BB_g\bigr)
+\oplus\bigl(B_g\xrightarrow{\,g\,}B_g\bigr).$$
 
-Let us prove $(I/I^2)_g \to J/J^2$ is injective. Consider the $P$-algebra map $$\pi : P[x] \to (P/I^2)_f = P_f/I_f^2$$ sending $x$ to $1/f$. Since $J$ is generated by $I$ and $fx - 1$ we see that $\pi(J) \subset (I/I^2)_f = (I/I^2)_g$. Since this is an ideal of square zero we see that $\pi(J^2) = 0$. If $a \in I$ maps to an element of $J^2$ in $J$, then $\pi(a) = 0$, which implies that $a$ maps to zero in $I_f/I_f^2$. This proves the desired injectivity.
+Consequently the canonical comparison $\mathrm{NL}_{B/A}\otimes_BB_g\to\mathrm{NL}_{B_g/A}$ is a homotopy equivalence.
 
-Thus we have a short exact sequence of two term complexes $$0 \to \mathrm{NL}(\alpha) \otimes_B B_g \to \mathrm{NL}(\beta)
-\to (B_g \xrightarrow{g} B_g) \to 0$$ Such a short exact sequence can always be split in the category of complexes. In our particular case we can take as splittings $$J/J^2 = (I/I^2)_g \oplus B_g (fx - 1)\quad\text{and}\quad
-\Omega_{P[x]/A} \otimes B_g = \Omega_{P/A} \otimes B_g \oplus
-B_g (g^{-2}\text{d}f + \text{d}x).$$ This works because $\text{d}(fx - 1) = x\text{d}f + f \text{d}x =
-g(g^{-2}\text{d}f + \text{d}x)$ in $\Omega_{P[x]/A} \otimes B_g$. $\square$
+**Proof.** The presentation of the localization as $B[x]/(gx-1)$ gives the formula for $J$. The conormal sequence for $P[x]\to B[x]\to B_g$ gives a right exact sequence
+
+$$ (I/I^2)_g\longrightarrow J/J^2
+\longrightarrow (gx-1)/(gx-1)^2\longrightarrow0.$$
+
+The last module is free of rank one over $B_g$, with the displayed generator. To see this directly, $gx-1$ is a nonzerodivisor in $B[x]$: in an equality $(gx-1)\sum_{i=0}^n b_ix^i=0$, the constant coefficient gives $b_0=0$ and the successive coefficients give every $b_i=0$. Multiplication by $gx-1$ therefore identifies its ideal modulo its square with $B[x]/(gx-1)=B_g$.
+
+The first arrow is injective. Map $P[x]$ to $(P/I^2)_f$ by $x\mapsto f^{-1}$. The ideal $J$ maps into the square-zero ideal $(I/I^2)_g$, and $J^2$ maps to zero. The resulting map $J/J^2\to(I/I^2)_g$ is a retraction of the first arrow. Lifting the generator on the right by $fx-1$ splits the sequence and gives the first decomposition. Polynomial differentials give the second decomposition directly.
+
+To split the differential as well, retain the first differential summand and replace the other basis vector $dx$ by
+
+$$e=dx+g^{-2}df.$$
+
+In the tensor product with $B_g$, one has $x=g^{-1}$ and $f=g$, and hence
+
+$$d(fx-1)=g^{-1}df+g\,dx=g e.$$
+
+This proves the decomposition of complexes. The added complex is contractible, with contracting homotopy multiplication by $g^{-1}$. Finally, the complete comparison of polynomial presentations identifies this presentation map with the canonical comparison up to homotopy, proving the final assertion. The argument allows an arbitrary variable set in $P$. ∎
 
 #### Lemma. Localization of a conormal module
- Let $R \to S$ be a ring map of finite type. Let $g \in S$. For any presentations $\alpha : R[x_1, \ldots, x_n] \to S$ and $\beta : R[y_1, \ldots, y_m] \to S_g$ we have $$(I/I^2)_g \oplus S^{\oplus m}_g \cong J/J^2 \oplus S_g^{\oplus n}$$ as $S_g$-modules, where $I = \operatorname{Ker}(\alpha)$ and $J = \operatorname{Ker}(\beta)$.
 
-**Proof.** Let $\beta' : R[x_1, \ldots, x_n, x] \to S_g$ be the presentation of Lemma [The cotangent complex of a principal localization](#native-algebra-lemma-principal-localization-nl) constructed starting with $\alpha$. Then we know that $\mathrm{NL}(\alpha) \otimes_S S_g$ is homotopy equivalent to $\mathrm{NL}(\beta')$. We know that $\mathrm{NL}(\beta)$ and $\mathrm{NL}(\beta')$ are homotopy equivalent by Lemma Kähler differentials, Theorems 3.1–3.3, Proposition 3.4 and Theorem 7.1. We conclude that $\mathrm{NL}(\alpha) \otimes_S S_g$ is homotopy equivalent to $\mathrm{NL}(\beta)$. Finally, we apply Lemma [Tensor products and direct sums](#native-algebra-lemma-sum-two-terms). $\square$
+Let $S$ be a finite type $R$-algebra and let $g\in S$. For presentations
+
+$$\alpha:R[x_1,\ldots,x_n]\twoheadrightarrow S,\qquad
+\beta:R[y_1,\ldots,y_m]\twoheadrightarrow S_g$$
+
+with kernels $I$ and $J$, respectively, there is an isomorphism of $S_g$-modules
+
+$$ (I/I^2)_g\oplus S_g^m\cong J/J^2\oplus S_g^n.$$
+
+**Proof.** Adjoin an inverse variable to $\alpha$. The preceding lemma compares its localized cotangent complex by a homotopy equivalence to the complex of this enlarged presentation of $S_g$. The complete presentation-comparison theorem compares the latter to the complex of $\beta$. Thus the two complexes
+
+$$[(I/I^2)_g\longrightarrow S_g^n],\qquad
+[J/J^2\longrightarrow S_g^m]$$
+
+are homotopy equivalent. The [two-term direct-sum lemma](#native-algebra-lemma-sum-two-terms) then identifies the first degree-one term plus the second degree-zero term with the second degree-one term plus the first degree-zero term. This is exactly the asserted isomorphism, and requires no projectivity assumption on either conormal module. ∎
 
 #### Lemma. The conormal module of a global complete intersection
- Let $R$ be a ring. Let $S = R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ be a relative global complete intersection (Definition [Relative global complete intersections](#native-algebra-definition-relative-global-complete-intersection)). For every prime $\mathfrak q$ of $S$, let $\mathfrak q'$ denote the corresponding prime of $R[x_1, \ldots, x_n]$. Then
 
-1.  $f_1, \ldots, f_c$ is a regular sequence in the local ring $R[x_1, \ldots, x_n]_{\mathfrak q'}$,
+Let
 
-2.  each of the rings $R[x_1, \ldots, x_n]_{\mathfrak q'}/(f_1, \ldots, f_i)$ is flat over $R$, and
+$$S=R[x_1,\ldots,x_n]/(f_1,\ldots,f_c)$$
 
-3.  the $S$-module $(f_1, \ldots, f_c)/(f_1, \ldots, f_c)^2$ is free with basis given by the elements $f_i \bmod (f_1, \ldots, f_c)^2$.
+be a relative global complete intersection over an arbitrary ring $R$. Write $P=R[x_1,\ldots,x_n]$ and $I=(f_1,\ldots,f_c)$. For $\mathfrak q\in\operatorname{Spec}S$, let $\mathfrak q'$ be its inverse image in $P$. Then:
 
-**Proof.** Assume $R$ is Noetherian. Let $\mathfrak p = R \cap \mathfrak q'$. By Lemma [Local criteria for complete intersections](#native-algebra-lemma-lci) for example we see that $f_1, \ldots, f_c$ form a regular sequence in the local ring $R[x_1, \ldots, x_n]_{\mathfrak q'} \otimes_R \kappa(\mathfrak p)$. Moreover, the local ring $R[x_1, \ldots, x_n]_{\mathfrak q'}$ is flat over $R_{\mathfrak p}$. Since $R$, and hence $R[x_1, \ldots, x_n]_{\mathfrak q'}$ is Noetherian we see from Lemma [Koszul complexes, regular sequences and regular rings](#native-algebra-lemma-grothendieck-regular-sequence) that (1) and (2) hold.
+1. The displayed list $f_1,\ldots,f_c$ is a regular sequence in $P_{\mathfrak q'}$.
+2. For every $0\leq i\leq c$, the ring $P_{\mathfrak q'}/(f_1,\ldots,f_i)$ is flat over $R$.
+3. The classes of the $f_i$ give an $S$-basis of $I/I^2$.
 
-Let \(R\) be general. Write \(R = \mathop{\operatorname{colim}}_{\lambda \in \Lambda} R_\lambda\) as the filtered colimit of finite type \(\mathbf{Z}\)-subalgebras (compare with Section [Filtered limits and flatness](#context-algebra-section-colimits-flat)). We may assume that \(f_1, \ldots, f_c \in R_\lambda[x_1, \ldots, x_n]\) for all \(\lambda\). Let \(R_0 \subset R\) be as in Lemma [Complete rings, formal power series and Noetherian rings](#native-algebra-lemma-relative-global-complete-intersection-noetherian). Then we may assume \(R_0 \subset R_\lambda\) for all \(\lambda\). It follows that \(S_\lambda = R_\lambda[x_1, \ldots, x_n]/(f_1, \ldots, f_c)\) is a relative global complete intersection (as base change of \(S_0\) via \(R_0 \to R_\lambda\), see Lemma [Base change of a global complete intersection](#native-algebra-lemma-base-change-relative-global-complete-intersection)). Denote by \(\mathfrak p_\lambda\), \(\mathfrak q_\lambda\), \(\mathfrak q'_\lambda\) the primes of \(R_\lambda\), \(S_\lambda\), \(R_\lambda[x_1, \ldots, x_n]\) induced by \(\mathfrak p\), \(\mathfrak q\), \(\mathfrak q'\). With this notation, we have (1) and (2) for each \(\lambda\). Since 
+**Proof over a Noetherian base.** Let $\mathfrak p=\mathfrak q'\cap R$. The fibre presentation has $n$ variables and $c$ equations and has dimension $n-c$. The height bound on its minimal primes makes every irreducible component have dimension at least $n-c$; the dimension of the whole fibre gives the reverse bound. Hence the dimension at every fibre point is $n-c$. Apply implication (2)$\Rightarrow$(5) of the [field complete-intersection criterion](#native-algebra-lemma-lci), together with its assertion for every generating list: the $c$ displayed equations form a regular sequence in the fibre local polynomial ring. This implication uses the Cohen–Macaulay parameter criterion and does not use the conormal conclusion being proved here.
 
-\[
-R[x_1, \ldots, x_n]_{\mathfrak q'}/(f_1, \ldots, f_i)
-=
-\mathop{\operatorname{colim}} R_\lambda[x_1, \ldots, x_n]_{\mathfrak q_\lambda'}/(f_1, \ldots, f_i)
-\]
+The local polynomial ring $P_{\mathfrak q'}$ is flat over $R_{\mathfrak p}$. The complete successive slicing argument in *Faithful flatness and the local criterion for flatness*, §5 lifts the fibre regular sequence and proves flatness of each successive quotient over $R_{\mathfrak p}$. Localization of the base is flat, so these quotients are flat over $R$ as well. All local rings involved are Noetherian in this step, as required by that argument.
 
- we deduce flatness in (2) over \(R\) from Lemma [Flatness in a filtered ring colimit](#native-algebra-lemma-colimit-rings-flat). Since we have 
+**Passage to an arbitrary base.** The [finite Noetherian-model lemma](#native-algebra-lemma-relative-global-complete-intersection-noetherian) gives a finite type $\mathbb Z$-subalgebra $R_0\subset R$ containing the equation coefficients for which the same presentation is already a relative global complete intersection. Consider the directed family of finite type $\mathbb Z$-subalgebras $R_\lambda\subset R$ containing $R_0$. Their union is $R$. Base change preserves the fibre-dimension condition, so the corresponding $S_\lambda$ are relative global complete intersections. Contract $\mathfrak q'$ to $\mathfrak q'_\lambda\subset R_\lambda[x]$ and put
 
-\[
-\begin{aligned}
-R[x_1, \ldots, x_n]_{\mathfrak q'}/(f_1, \ldots, f_i)
-\xrightarrow{f_{i + 1}}
-R[x_1, \ldots, x_n]_{\mathfrak q'}/(f_1, \ldots, f_i) \\
-=
-\mathop{\operatorname{colim}}
-\left(
-R_\lambda[x_1, \ldots, x_n]_{\mathfrak q_\lambda'}/(f_1, \ldots, f_i)
-\xrightarrow{f_{i + 1}}
-R_\lambda[x_1, \ldots, x_n]_{\mathfrak q_\lambda'}/(f_1, \ldots, f_i)
-\right)
-\end{aligned}
-\]
+$$T_{\lambda,i}=R_\lambda[x]_{\mathfrak q'_\lambda}/(f_1,\ldots,f_i).$$
 
- and since filtered colimits are exact (Lemma [Filtered limits and commutative algebra](#native-algebra-lemma-directed-colimit-exact)) we conclude that we have (1).
+At each stage, the Noetherian case proves $R_\lambda$-flatness of $T_{\lambda,i}$ and injectivity of multiplication by $f_{i+1}$ on it. There are natural identifications
 
-Proof of (3). Denote by $N$ the $S$-module $(f_1, \ldots, f_c)/(f_1, \ldots, f_c)^2$ and $e_i \in N$ the image of $f_i$. By Lemma [Regular sequences are quasi-regular](#native-algebra-lemma-regular-quasi-regular) and (1) we know that $e_1, \ldots, e_c$ is a basis of $N_\mathfrak q$ for all primes $\mathfrak q$ of $S$. By Lemma [Detecting a zero module by localization](#native-algebra-lemma-characterize-zero-local) we conclude that (3) is true. $\square$
+$$\mathop{\operatorname{colim}}_\lambda T_{\lambda,i}
+\cong P_{\mathfrak q'}/(f_1,\ldots,f_i).$$
+
+Indeed, each polynomial coefficient and each inverted denominator occurs at a finite stage; a denominator outside $\mathfrak q'$ remains outside its contracted prime. Relations in these localized quotients also involve only finitely many coefficients and witnesses, so equality is detected at a later stage.
+
+The [flatness theorem for a directed system of rings and modules](#native-algebra-lemma-colimit-rings-flat) makes each displayed colimit flat over $R$. Exactness of directed colimits preserves the injective multiplication maps. Since all the $f_i$ lie in $\mathfrak q'$, their successive ideals in the local ring are proper. This proves the regular-sequence assertion as well as (2), without imposing a Noetherian hypothesis on $R$.
+
+**The conormal basis.** At a fixed $\mathfrak q$, the regular sequence just obtained gives a free conormal module with the indicated basis. One can check this without a flatness assumption on the conormal module. Relations among a regular sequence are generated by the Koszul relations: in $\sum a_if_i=0$, reduction modulo $(f_1,\ldots,f_{c-1})$ puts $a_c$ in that ideal; subtract the corresponding relations $f_ie_c-f_ce_i$ and apply induction to the first $c-1$ terms. Thus every coefficient of a relation belongs to $I$.
+
+If $\sum a_if_i\in I^2$, subtract coefficients in $I$ to turn it into an exact relation. The preceding observation then gives every $a_i\in I$. It follows that $S_{\mathfrak q}^c\to(I/I^2)_{\mathfrak q}$ is injective as well as surjective. The global map $S^c\to I/I^2$ therefore has zero kernel and cokernel after localization at every prime; [local detection of zero modules](#native-algebra-lemma-characterize-zero-local) makes it an isomorphism. The empty regular sequence and the zero algebra are included. ∎
 
 #### Definition. Relative global complete intersections
 
-Let $R \to S$ be a ring map. We say that $R \to S$ is a *relative global complete intersection* if there exists a presentation $S = R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ and every nonempty fibre of $\operatorname{Spec}(S) \to \operatorname{Spec}(R)$ has dimension $n - c$. We will say "let $S = R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ be a relative global complete intersection" to indicate this situation.
+A homomorphism $R\to S$ is a **relative global complete intersection** if it has a finite presentation
+
+$$S=R[x_1,\ldots,x_n]/(f_1,\ldots,f_c)$$
+
+for which every nonempty fibre has dimension $n-c$. Referring to a displayed presentation as a relative global complete intersection means that this dimension condition holds for that presentation. Empty fibres impose no condition.
 
 #### Lemma. An open neighbourhood with bounded fibre dimension
 
-Let $R \to S$ be a finite type ring map. Let $\mathfrak q \subset S$ be a prime. Suppose that $\dim_{\mathfrak q}(S/R) = n$. There exists an open neighbourhood $V$ of $\mathfrak q$ in $\operatorname{Spec}(S)$ such that $\dim_{\mathfrak q'}(S/R) \leq n$ for all $\mathfrak q' \in V$.
+Let $R\to S$ be of finite type and let $\mathfrak q\in\operatorname{Spec}S$ have fibre dimension $n$ at that point. There is an open neighborhood $V$ of $\mathfrak q$ such that every $\mathfrak q'\in V$ has fibre dimension at most $n$.
 
-**Proof.** By Lemma [Finite algebras](#native-algebra-lemma-quasi-finite-over-polynomial-algebra) we see that we may assume that $S$ is quasi-finite over a polynomial algebra $R[t_1, \ldots, t_n]$. Considering the fibres, we reduce to Lemma [Dimension, codimension and finite algebras](#native-algebra-lemma-dimension-quasi-finite-over-polynomial-algebra). $\square$
+**Proof.** The [polynomial-model lemma](#native-algebra-lemma-quasi-finite-over-polynomial-algebra) provides $g\notin\mathfrak q$ and a quasi-finite map $R[t_1,\ldots,t_n]\to S_g$. Set $V=D(g)$. After taking the fibre over any prime of $R$, this remains quasi-finite over a polynomial ring in $n$ variables over a field. The [dimension bound for a quasi-finite algebra over affine space](#native-algebra-lemma-dimension-quasi-finite-over-polynomial-algebra) bounds the whole nonempty fibre by $n$. Its dimension at each of its points is consequently at most $n$, which proves the assertion. ∎
 
 #### Lemma. Base change of a global complete intersection
- Let $S = R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ be a relative global complete intersection (Definition [Relative global complete intersections](#native-algebra-definition-relative-global-complete-intersection))
 
-1.  For any $R \to R'$ the base change $R' \otimes_R S = R'[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ is a relative global complete intersection.
+Suppose $S=R[x_1,\ldots,x_n]/(f_1,\ldots,f_c)$ is a relative global complete intersection.
 
-2.  For any $g \in S$ which is the image of $h \in R[x_1, \ldots, x_n]$ the ring $S_g = R[x_1, \ldots, x_n, x_{n + 1}]/(f_1, \ldots, f_c, hx_{n + 1} - 1)$ is a relative global complete intersection.
+1. For any $R\to R'$, the displayed base-change presentation of $S\otimes_RR'$ over $R'$ is a relative global complete intersection.
+2. If $g\in S$ is represented by $h\in R[x]$, the presentation
+   $$S_g\cong R[x_1,\ldots,x_n,z]/(f_1,\ldots,f_c,hz-1)$$
+   is a relative global complete intersection over $R$.
+3. If the structure map factors through $R_a$ for an element $a\in R$, then the same equations present a relative global complete intersection over $R_a$.
 
-3.  If $R \to S$ factors as $R \to R_f \to S$ for some $f \in R$, then the ring $S = R_f[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ is a relative global complete intersection over $R_f$.
+**Proof.** A fibre of the base-changed algebra is the extension of an original fibre by a field extension. The [field-extension dimension theorem](#native-algebra-lemma-dimension-preserved-field-extension) preserves its dimension, and a nonzero vector space stays nonzero on extending the ground field. This proves (1).
 
-**Proof.** By Lemma [Dimension, codimension and field extensions](#native-algebra-lemma-dimension-preserved-field-extension) the fibres of a base change have the same dimension as the fibres of the original map. Moreover $R' \otimes_R R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)
-= R'[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$. Thus (1) follows. The proof of (2) is that the localization at one element can be described as $S_g \cong S[x_{n + 1}]/(gx_{n + 1} - 1)$. Assertion (3) follows from (1) since under the assumptions of (3) we have $R_f \otimes_R S \cong S$. $\square$
+For (2), the displayed presentation is the usual presentation of a localization. Each of its fibres is a principal localization of an original fibre, so its dimension is at most $n-c$. If it is nonzero, the height bound for an ideal generated by $c+1$ elements in a polynomial ring in $n+1$ variables gives the reverse inequality
+
+$$\dim\bigl(S_g\otimes_R\kappa(\mathfrak p)\bigr)
+\geq (n+1)-(c+1)=n-c.$$
+
+Thus every nonempty localized fibre has exactly the required dimension. Finally, the factorization in (3) makes $a$ invertible in $S$, giving $R_a\otimes_RS\cong S$. Apply (1) to this base change. ∎
 
 #### Lemma. Locality of syntomic ring maps
- Let $R \to S$ be a ring map. Suppose we have $g_1, \ldots, g_m \in S$ which generate the unit ideal such that each $R \to S_{g_i}$ is syntomic. Then $R \to S$ is syntomic.
 
-**Proof.** This is true for being flat and for being of finite presentation by Lemmas [Localization of a flat module](#native-algebra-lemma-flat-localization) and [A cover of the target spectrum](#native-algebra-lemma-cover-upstairs). The property of having fibre rings which are local complete intersections is local on $S$ by its very definition, see Definition [Complete intersections over a field](#native-algebra-definition-lci-field). $\square$
+Suppose $g_1,\ldots,g_m\in S$ generate the unit ideal and every $R\to S_{g_i}$ is syntomic. Then $R\to S$ is syntomic.
+
+**Proof.** The opens $D(g_i)$ cover the target spectrum. Flatness is local on that spectrum, so the localized flatness assertions imply that $S$ is flat over $R$. Finite presentation glues across this finite principal cover by the [finite-presentation gluing lemma](#native-algebra-lemma-cover-upstairs). In every fibre, the same opens cover, and being a local complete intersection means precisely that each fibre local ring has that property. Each such local ring occurs in one of the syntomic charts. The three defining conditions—flatness, finite presentation and local complete-intersection fibres—therefore hold for $R\to S$. ∎
 
 #### Lemma. Quasi-compactness of an affine spectrum
 
-The spectrum of a ring is quasi-compact
+For every ring $R$, the space $\operatorname{Spec}R$ is quasi-compact.
 
-Let $R$ be a ring. The space $\operatorname{Spec}(R)$ is quasi-compact.
+**Proof.** Refine an open cover by basic opens $D(f_i)$. Their union is the spectrum exactly when no prime contains all the $f_i$. By [prime separation and the affine topology](#native-algebra-lemma-zariski-topology), this says that their generated ideal is $R$. An expression for $1$ in that ideal is a finite sum
 
-**Proof.** It suffices to prove that any covering of $\operatorname{Spec}(R)$ by standard opens can be refined by a finite covering. Thus suppose that $\operatorname{Spec}(R) = \cup D(f_i)$ for a set of elements $\{f_i\}_{i\in I}$ of $R$. This means that $\cap V(f_i) = \emptyset$. According to Lemma [The Zariski topology on an affine spectrum](#native-algebra-lemma-zariski-topology) this means that $V(\{f_i \}) = \emptyset$. According to the same lemma this means that the ideal generated by the $f_i$ is the unit ideal of $R$. This means that we can write $1$ as a *finite* sum: $1 = \sum_{i \in J} r_i f_i$ with $J \subset I$ finite. And then it follows that $\operatorname{Spec}(R)
-= \cup_{i \in J} D(f_i)$. $\square$
+$$1=\sum_{i\in F}r_if_i.$$
+
+No prime can contain all the $f_i$ for $i\in F$, so these finitely many basic opens cover the spectrum. Selecting their containing members gives a finite subcover of the original cover. The empty spectrum of the zero ring satisfies the assertion as well. ∎
 
 #### Lemma. Flatness of a cokernel
 
-Let $R$ be a ring. Let $\varphi : P_1 \to P_2$ be a map of finite projective modules. Then
+Let $\varphi:P_1\to P_2$ be a homomorphism of finite projective modules over $R$. Define subsets of $\operatorname{Spec}R$ by
 
-1.  The set $U$ of primes $\mathfrak p \in \operatorname{Spec}(R)$ such that $\varphi \otimes \kappa(\mathfrak p)$ is injective is open and for any $f\in R$ such that $D(f) \subset U$ we have
+$$U=\{\mathfrak p:\varphi\otimes_R\kappa(\mathfrak p)\text{ is injective}\},$$
+$$W=\{\mathfrak p:\varphi\otimes_R\kappa(\mathfrak p)\text{ is surjective}\},
+\qquad V=U\cap W.$$
 
-    1.  $P_{1, f} \to P_{2, f}$ is injective, and
+All three are open. For any principal open $D(f)$ contained in $U$, the localized map $P_{1,f}\to P_{2,f}$ is injective with finite projective cokernel. For $D(f)\subset W$, it is surjective with finite projective kernel. For $D(f)\subset V$, it is an isomorphism.
 
-    2.  the module $\operatorname{Coker}(\varphi)_f$ is finite projective over $R_f$.
+**Proof.** Work on an open neighborhood where $P_1$ and $P_2$ are free of ranks $a$ and $b$, using the [finite-projectivity criteria](#native-algebra-lemma-finite-projective). If $a\leq b$, fibrewise injectivity means that some $a\times a$ minor of the matrix is nonzero in the residue field. The corresponding principal opens are precisely $U$ in this chart; if $a>b$, that locus is empty. Where one such minor is a unit, invertible row operations put the map in the form
 
-2.  The set $W$ of primes $\mathfrak p \in \operatorname{Spec}(R)$ such that $\varphi \otimes \kappa(\mathfrak p)$ is surjective is open and for any $f\in R$ such that $D(f) \subset W$ we have
+$$R^a\longrightarrow R^a\oplus R^{b-a},\qquad v\longmapsto(v,0).$$
 
-    1.  $P_{1, f} \to P_{2, f}$ is surjective, and
+It is therefore injective and its cokernel is free there. This proves openness of $U$ and the local splitting assertion. If $D(f)\subset U$, local detection makes the kernel of $\varphi_f$ zero. The cokernel is finitely presented and locally free by these charts, hence finite projective by the same projectivity criteria. This proves the entire assertion over $R_f$.
 
-    2.  the module $\operatorname{Ker}(\varphi)_f$ is finite projective over $R_f$.
+For surjectivity interchange the role of the two ranks in the maximal-minor test: when $a\geq b$, the nonvanishing $b\times b$ minors define $W$. Where such a minor is invertible, the matrix is a split surjection. Thus $W$ is open, and if $D(f)\subset W$, the cokernel of $\varphi_f$ vanishes at every prime of $R_f$, hence vanishes. Projectivity of $P_{2,f}$ supplies a global section over $R_f$. The kernel is then a direct summand of the finite projective module $P_{1,f}$, so is finite projective. This also gives the surjectivity proof through the vanishing locus of the finite cokernel.
 
-3.  The set $V$ of primes $\mathfrak p \in \operatorname{Spec}(R)$ such that $\varphi \otimes \kappa(\mathfrak p)$ is an isomorphism is open and for any $f\in R$ such that $D(f) \subset V$ the map $\varphi : P_{1, f} \to P_{2, f}$ is an isomorphism of modules over $R_f$.
-
-**Proof.** To prove the set $U$ is open we may work locally on $\operatorname{Spec}(R)$. Thus we may replace $R$ by a suitable localization and assume that $P_1 = R^{n_1}$ and $P_2 = R^{n_2}$, see Lemma [Characterizations of finite projective modules](#native-algebra-lemma-finite-projective). In this case injectivity of $\varphi \otimes \kappa(\mathfrak p)$ is equivalent to $n_1 \leq n_2$ and some $n_1 \times n_1$ minor $f$ of the matrix of $\varphi$ being invertible in $\kappa(\mathfrak p)$. Thus $D(f) \subset U$. This argument also shows that $P_{1, \mathfrak p} \to P_{2, \mathfrak p}$ is injective for $\mathfrak p \in U$.
-
-Now suppose $D(f) \subset U$. By the remark in the previous paragraph and Lemma [Detecting a zero module by localization](#native-algebra-lemma-characterize-zero-local) we see that $P_{1, f} \to P_{2, f}$ is injective, i.e., (1)(a) holds. By Lemma [Characterizations of finite projective modules](#native-algebra-lemma-finite-projective) to prove (1)(b) it suffices to prove that $\operatorname{Coker}(\varphi)$ is finite projective locally on $D(f)$. Thus, as we saw above, we may assume that $P_1 = R^{n_1}$ and $P_2 = R^{n_2}$ and that some minor of the matrix of $\varphi$ is invertible in $R$. If the minor in question corresponds to the first $n_1$ basis vectors of $R^{n_2}$, then using the last $n_2 - n_1$ basis vectors we get a map $R^{n_2 - n_1} \to R^{n_2} \to \operatorname{Coker}(\varphi)$ which is easily seen to be an isomorphism.
-
-Openness of $W$ and (2)(a) for $D(f) \subset W$ follow from Lemma [Finite algebras](#native-algebra-lemma-map-between-finite). Since $P_{2, f}$ is projective over $R_f$ we see that $\varphi_f : P_{1, f} \to P_{2, f}$ has a section and it follows that $\operatorname{Ker}(\varphi)_f$ is a direct summand of $P_{1, f}$. Therefore $\operatorname{Ker}(\varphi)_f$ is finite projective. Thus (2)(b) holds as well.
-
-It is clear that $V = U \cap W$ is open and the other statement in (3) follows from (1)(a) and (2)(a). $\square$
+The isomorphism locus is $V=U\cap W$. On a principal open contained in it, the two conclusions give injectivity and surjectivity. The rank-zero cases use the determinant of the empty matrix, which is $1$, and fit all the same assertions. ∎
 
 #### Lemma. Criteria for global complete intersections
- A relative global complete intersection is syntomic, i.e., flat.
 
-**Proof.** Let $R \to S$ be a relative global complete intersection. The fibres are global complete intersections, and $S$ is of finite presentation over $R$. Thus the only thing to prove is that $R \to S$ is flat. This is true by (2) of Lemma [The conormal module of a global complete intersection](#native-algebra-lemma-relative-global-complete-intersection-conormal). $\square$
+Every relative global complete-intersection homomorphism is syntomic; in particular, it is flat.
+
+**Proof.** Its presentation is finite, and each nonempty fibre is a global complete intersection over the residue field, hence has complete-intersection local rings. The [conormal and successive-flatness lemma](#native-algebra-lemma-relative-global-complete-intersection-conormal), with $i=c$, makes $S_{\mathfrak q}$ flat over $R$ for every prime $\mathfrak q$ of $S$. Flatness can be checked at these localizations, so $S$ is flat over $R$. These are exactly the three syntomic conditions. The zero algebra is also flat and finitely presented, with no fibre local rings to check. ∎
 
 #### Definition. Complete-intersection local rings
- Let $k$ be a field. Let $S$ be a local $k$-algebra essentially of finite type over $k$. We say $S$ is a *complete intersection (over $k$)* if there exists a local $k$-algebra $R$ and elements $f_1, \ldots, f_c \in \mathfrak m_R$ such that
 
-1.  $R$ is essentially of finite type over $k$,
+Let $k$ be a field and let $S$ be a local $k$-algebra essentially of finite type. It is a **complete intersection over $k$** if it admits a presentation
 
-2.  $R$ is a regular local ring,
+$$S\cong T/(f_1,\ldots,f_c)$$
 
-3.  $f_1, \ldots, f_c$ form a regular sequence in $R$, and
-
-4.  $S \cong R/(f_1, \ldots, f_c)$ as $k$-algebras.
+as a $k$-algebra, where $T$ is a regular local $k$-algebra essentially of finite type, and $f_1,\ldots,f_c$ is a regular sequence contained in the maximal ideal of $T$. The empty sequence is allowed, in which case the presenting ring itself is $S$.
 
 #### Lemma. Complete intersections at a prime ideal
- Let $k$ be a field. Let $S$ be a finite type $k$-algebra. Let $\mathfrak q$ be a prime of $S$. The following are equivalent:
 
-1.  The local ring $S_{\mathfrak q}$ is a complete intersection ring (Definition [Complete-intersection local rings](#native-algebra-definition-lci-local-ring)).
+Let $S$ be a finite type algebra over a field $k$, and let $\mathfrak q\subset S$ be prime. The following four conditions are equivalent:
 
-2.  There exists a $g \in S$, $g \not \in \mathfrak q$ such that $S_g$ is a local complete intersection over $k$.
+1. The local $k$-algebra $S_{\mathfrak q}$ is a complete intersection.
+2. Some $g\in S\setminus\mathfrak q$ makes $S_g$ a local complete intersection over $k$.
+3. Some $g\in S\setminus\mathfrak q$ makes $S_g$ a global complete intersection over $k$.
+4. For every polynomial presentation $S=k[x_1,\ldots,x_n]/I$, with inverse-image prime $\mathfrak q'$, the five equivalent tests in the [local complete-intersection criterion](#native-algebra-lemma-lci) hold at $\mathfrak q$.
 
-3.  There exists a $g \in S$, $g \not \in \mathfrak q$ such that $S_g$ is a global complete intersection over $k$.
+**Proof.** Start with (1). The intrinsic [locality and presentation-independence theorem](#native-algebra-lemma-lci-local), condition (2), says that the kernel of any surjection from a regular local $k$-algebra essentially of finite presentation to $S_{\mathfrak q}$ is generated by a regular sequence. Apply this to $k[x]_{\mathfrak q'}\to S_{\mathfrak q}$ for any chosen polynomial presentation. This gives condition (5) of the five-test criterion, hence all its conditions. Thus (1) implies (4).
 
-4.  For any presentation $S = k[x_1, \ldots, x_n]/I$ with $\mathfrak q' \subset k[x_1, \ldots, x_n]$ corresponding to $\mathfrak q$ any one of the equivalent conditions (1) -- (5) of Lemma [Local criteria for complete intersections](#native-algebra-lemma-lci) holds.
-
-**Proof.** This is a combination of Lemmas [Local criteria for complete intersections](#native-algebra-lemma-lci) and [Locality of the complete-intersection condition](#native-algebra-lemma-lci-local) and the definitions. $\square$
+Condition (4), applied to one presentation, gives a global complete-intersection principal neighborhood by condition (1) of that same criterion. Hence (4) implies (3). Every global complete intersection is locally a complete intersection, so (3) implies (2). Finally, localizing the neighborhood in (2) at its point $\mathfrak q$ gives the complete-intersection local ring in (1). The final step also follows directly from conditions (5) and (1) of the intrinsic locality theorem. ∎
 
 #### Lemma. Tor vanishing for a flat module
- Suppose that $R$ is a ring, that $0\to M''\to M'\to M\to0$ is a short exact sequence, and that $N$ is an $R$-module. If $M$ is flat then $N \otimes_R M'' \to N \otimes_R M'$ is injective, i.e., the sequence $$0 \to N \otimes_R M'' \to N \otimes_R M' \to N \otimes_R M \to 0$$ is a short exact sequence.
 
-**Proof.** Let $R^{(I)} \to N$ be a surjection from a free module onto $N$ with kernel $K$. The result follows from the snake lemma applied to the following diagram $$\begin{matrix}
- & & 0 & & 0 & & 0 & & \\
- & & \uparrow & & \uparrow & & \uparrow & & \\
- & & M''\otimes_R N & \to & M' \otimes_R N & \to & M \otimes_R N & \to & 0 \\
- & & \uparrow & & \uparrow & & \uparrow & & \\
-0 & \to & (M'')^{(I)} & \to & (M')^{(I)} & \to & M^{(I)} & \to & 0 \\
- & & \uparrow & & \uparrow & & \uparrow & & \\
- & & M''\otimes_R K & \to & M' \otimes_R K & \to & M \otimes_R K & \to & 0 \\
- & & & & & & \uparrow & & \\
- & & & & & & 0 & &
-\end{matrix}$$ with exact rows and columns. The middle row is exact because tensoring with the free module $R^{(I)}$ is exact. $\square$
+Let $0\to M''\xrightarrow{i}M'\xrightarrow{p}M\to0$ be exact over a ring $R$, and assume $M$ is flat. For every $R$-module $N$, tensoring gives an exact sequence
+
+$$0\longrightarrow N\otimes_RM''\longrightarrow N\otimes_RM'
+\longrightarrow N\otimes_RM\longrightarrow0.$$
+
+No finiteness hypothesis is imposed on any of the modules.
+
+**Proof.** Tensor products are right exact, so only the first injection needs proof. Choose a free module $F$ surjecting onto $N$, with kernel $K$. Given $z\in M''\otimes_RN$ mapping to zero, lift it to $\widetilde z\in M''\otimes_RF$. Its image in $M'\otimes_RF$ comes from an element $y\in M'\otimes_RK$, because it becomes zero after passing to $N$.
+
+The image of $y$ in $M\otimes_RK$ maps to zero in $M\otimes_RF$: it agrees there with the image of $\widetilde z$, which is zero after applying $p$. Flatness of $M$ makes $M\otimes_RK\to M\otimes_RF$ injective. Therefore $y$ has zero image in $M\otimes_RK$. By right exactness there is $w\in M''\otimes_RK$ mapping to $y$.
+
+In $M''\otimes_RF$, the difference between $\widetilde z$ and the image of $w$ becomes zero in $M'\otimes_RF$. Tensoring with the free module $F$ preserves the injection $i$, so that difference is zero. Passing to $M''\otimes_RN$ kills the image of $w$, and gives $z=0$. This is the free-presentation diagram chase; it remains valid for an infinite free basis. ∎
 
 #### Lemma. Smoothness of a global complete intersection
- Let $R$ be a ring. Let $S = R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ be a relative global complete intersection. Let $\mathfrak q \subset S$ be a prime. Then $R \to S$ is smooth at $\mathfrak q$ if and only if there exists a subset $I \subset \{1, \ldots, n\}$ of cardinality $c$ such that the polynomial $$g_I = \det (\partial f_j/\partial x_i)_{j = 1, \ldots, c, \ i \in I}$$ does not map to an element of $\mathfrak q$.
 
-**Proof.** By Lemma [The conormal module of a global complete intersection](#native-algebra-lemma-relative-global-complete-intersection-conormal) we see that the naive cotangent complex associated to the given presentation of $S$ is the complex $$\bigoplus\nolimits_{j = 1}^c S \cdot f_j
-\longrightarrow
-\bigoplus\nolimits_{i = 1}^n S \cdot \text{d}x_i, \quad
-f_j \longmapsto \sum \frac{\partial f_j}{\partial x_i} \text{d}x_i.$$ The maximal minors of the matrix giving the map are exactly the polynomials $g_I$.
+Suppose $S=R[x_1,\ldots,x_n]/(f_1,\ldots,f_c)$ is a relative global complete intersection and $\mathfrak q$ is a prime of $S$. Then $R\to S$ is smooth at $\mathfrak q$ exactly when one of the $c\times c$ Jacobian minors
 
-Assume $g_I$ maps to $g \in S$, with $g \not \in \mathfrak q$. Then the algebra $S_g$ is smooth over $R$. Namely, its naive cotangent complex is quasi-isomorphic to the complex above localized at $g$, see Lemma [Localization of the naive cotangent complex](#native-algebra-lemma-localize-nl). And by construction it is quasi-isomorphic to a free rank $n - c$ module in degree $0$.
+$$\Delta_E=\det\left(\frac{\partial f_j}{\partial x_i}\right)_{
+1\leq j\leq c,\ i\in E},\qquad E\subset\{1,\ldots,n\},\quad |E|=c,$$
 
-Conversely, suppose that all $g_I$ end up in $\mathfrak q$. In this case the complex above tensored with $\kappa(\mathfrak q)$ does not have maximal rank, and hence there is no localization by an element $g \in S$, $g \not \in \mathfrak q$ where this map becomes a split injection. By Lemma [Localization of the naive cotangent complex](#native-algebra-lemma-localize-nl) again there is no such localization which is smooth over $R$. $\square$
+has image outside $\mathfrak q$. Order $E$ increasingly to fix the displayed determinant.
+
+**Proof.** The [conormal-basis lemma](#native-algebra-lemma-relative-global-complete-intersection-conormal) identifies the presentation complex with
+
+$$S^c\longrightarrow S^n,\qquad
+e_j\longmapsto\sum_{i=1}^n\frac{\partial f_j}{\partial x_i}\,dx_i.$$
+
+If the image of $\Delta_E$ is $g\notin\mathfrak q$, elementary row operations over $S_g$ split this map as the inclusion of a free rank-$c$ summand. Its kernel is zero and its cokernel is free of rank $n-c$. The [principal-localization comparison](#native-algebra-lemma-principal-localization-nl) identifies this localized complex, up to homotopy, with the cotangent complex of the finite presentation of $S_g$ obtained by adjoining an inverse variable. The cotangent criterion for smoothness therefore makes $S_g$ smooth over $R$.
+
+Conversely, smoothness on a neighborhood of $\mathfrak q$ makes the presentation's conormal map a split injection there. This follows from the smooth cotangent sequence: its kernel vanishes and its differential cokernel is projective. Tensor the splitting with $\kappa(\mathfrak q)$. The resulting matrix has rank $c$, so at least one of the displayed minors is nonzero in that field. Its image in $S$ is consequently outside $\mathfrak q$. When $c=0$, the empty minor is $1$ and the polynomial presentation is smooth. ∎
 
 #### Lemma. Dimension and codimension
 
-Let $k$ be a field. Let $S' \to S$ be a surjection of finite type $k$-algebras. Let $\mathfrak p \subset S$ be a prime ideal, and let $\mathfrak p'$ be the corresponding prime ideal of $S'$. Let $X = \operatorname{Spec}(S)$, resp. $X' = \operatorname{Spec}(S')$, and let $x \in X$, resp. $x'\in X'$ be the point corresponding to $\mathfrak p$, resp. $\mathfrak p'$. Then $$\dim_{x'} X' - \dim_x X =
-\text{height}(\mathfrak p') - \text{height}(\mathfrak p).$$
+For a surjection $S'\twoheadrightarrow S$ of finite type algebras over a field $k$, let $\mathfrak p'\subset S'$ correspond to $\mathfrak p\subset S$. Write $x',x$ for the associated points of $X'=\operatorname{Spec}S'$ and $X=\operatorname{Spec}S$. Then
 
-**Proof.** Immediate from Lemma [Dimension, codimension and field extensions](#native-algebra-lemma-dimension-at-a-point-finite-type-field). $\square$
+$$\dim_{x'}X'-\dim_xX
+=\operatorname{ht}(\mathfrak p')-\operatorname{ht}(\mathfrak p).$$
 
-#### Lemma. Complete intersections are Cohen--Macaulay
- Let $k$ be a field. Let $S$ be a finite type $k$-algebra. If $S$ is a local complete intersection, then $S$ is a Cohen-Macaulay ring.
+**Proof.** The surjection identifies $\kappa(\mathfrak p')$ with $\kappa(\mathfrak p)$. The [dimension formula at a point of a finite type algebra over a field](#native-algebra-lemma-dimension-at-a-point-finite-type-field) gives
 
-**Proof.** Choose a maximal prime $\mathfrak m$ of $S$. We have to show that $S_\mathfrak m$ is Cohen-Macaulay. By assumption we may assume $S = k[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ with $\dim(S) = n - c$. Let $\mathfrak m' \subset k[x_1, \ldots, x_n]$ be the maximal ideal corresponding to $\mathfrak m$. According to Proposition [Dimension, codimension and finite algebras](#native-algebra-proposition-finite-gl-dim-polynomial-ring) the local ring $k[x_1, \ldots, x_n]_{\mathfrak m'}$ is regular local of dimension $n$. In particular it is Cohen-Macaulay by Lemma [Regular rings are Cohen–Macaulay](#native-algebra-lemma-regular-ring-cm). By Lemma [A single polynomial equation](#native-algebra-lemma-one-equation) applied $c$ times the local ring $S_{\mathfrak m} = k[x_1, \ldots, x_n]_{\mathfrak m'}/(f_1, \ldots, f_c)$ has dimension $\geq n - c$. By assumption $\dim(S_{\mathfrak m}) \leq n - c$. Thus we get equality. This implies that $f_1, \ldots, f_c$ is a regular sequence in $k[x_1, \ldots, x_n]_{\mathfrak m'}$ and that $S_{\mathfrak m}$ is Cohen-Macaulay, see Proposition [Characterizations of Cohen–Macaulay modules](#native-algebra-proposition-cm-module). $\square$
+$$\dim_{x'}X'=\operatorname{ht}(\mathfrak p')+
+\operatorname{trdeg}_k\kappa(\mathfrak p'),\qquad
+\dim_xX=\operatorname{ht}(\mathfrak p)+\operatorname{trdeg}_k\kappa(\mathfrak p).$$
 
-#### Proposition. Characterizations of Cohen--Macaulay modules
- Let $R$ be a Noetherian local ring, with maximal ideal $\mathfrak m$. Let $M$ be a nonzero Cohen-Macaulay module over $R$ whose support has dimension $d$. Suppose that $g_1, \ldots, g_c$ are elements of $\mathfrak m$ such that $\dim(\text{Supp}(M/(g_1, \ldots, g_c)M))
-= d - c$. Then $g_1, \ldots, g_c$ is an $M$-regular sequence, and can be extended to a maximal $M$-regular sequence.
+Subtract these finite integers. The residue-field terms cancel, yielding the assertion. Here dimension at a point is the minimum dimension of its open neighborhoods, as in that formula. ∎
 
-**Proof.** Let $Z = \text{Supp}(M) \subset \operatorname{Spec}(R)$. By Lemma [A single polynomial equation](#native-algebra-lemma-one-equation) in the chain $Z \supset Z \cap V(g_1) \supset \ldots \supset Z \cap V(g_1, \ldots, g_c)$ each step decreases the dimension at most by $1$. Hence by assumption each step decreases the dimension by exactly $1$ each time. Thus we may successively apply Lemma [Commutative algebra](#native-algebra-lemma-cm-one-g) to the modules $M/(g_1, \ldots, g_i)M$ and the element $g_{i + 1}$.
+#### Lemma. Complete intersections are Cohen–Macaulay
 
-To extend $g_1, \ldots, g_c$ by one element if $c < d$ we simply choose an element $g_{c + 1} \in \mathfrak m$ which is not in any of the finitely many minimal primes of $Z \cap V(g_1, \ldots, g_c)$, using Lemma [An elementary algebraic comparison](#native-algebra-lemma-silly). $\square$
+A finite type $k$-algebra which is a local complete intersection is a Cohen–Macaulay ring.
+
+**Proof.** At any prime, choose a complete-intersection chart. The local ring is a quotient of a regular local polynomial ring by a regular sequence, by the [global conormal and regular-sequence lemma](#native-algebra-lemma-relative-global-complete-intersection-conormal). A regular local ring is Cohen–Macaulay, and a quotient by a regular sequence remains Cohen–Macaulay. Complete proofs of both assertions are *Regular sequences, depth and Cohen–Macaulay modules*, Theorem 6.1 and Corollary 6.2. Thus every prime localization is Cohen–Macaulay, as required.
+
+The dimension calculation at maximal ideals gives the original alternative route. On a chart $S=k[x_1,\ldots,x_n]/(f_1,\ldots,f_c)$ of dimension $n-c$, let $\mathfrak m'$ be the inverse image of a maximal ideal $\mathfrak m$. The regular local ring $k[x]_{\mathfrak m'}$ has dimension $n$. Quotienting by the $c$ equations lowers dimension by at most $c$, whereas $\dim S=n-c$ bounds $\dim S_{\mathfrak m}$ above. Hence $\dim S_{\mathfrak m}=n-c$. The expected-dimension criterion of §4 of the cited lesson makes the equations regular and the quotient Cohen–Macaulay. Localization of Cohen–Macaulay local rings, proved in its §5, gives the result at all primes. ∎
+
+#### Proposition. Characterizations of Cohen–Macaulay modules
+
+Let $(R,\mathfrak m)$ be Noetherian local and let $M$ be a nonzero finite Cohen–Macaulay $R$-module with support dimension $d$. If $g_1,\ldots,g_c\in\mathfrak m$ satisfy
+
+$$\dim\operatorname{Supp}\bigl(M/(g_1,\ldots,g_c)M\bigr)=d-c,$$
+
+then the displayed list is $M$-regular and extends to a maximal $M$-regular sequence.
+
+**Proof.** The full module argument is *Regular sequences, depth and Cohen–Macaulay modules*, Theorem 4.2 and Corollary 4.3. Its support and depth inputs are proved in §§2–3. Each successive quotient here is nonzero by Nakayama. One equation lowers support dimension by at most one, so the total drop of $c$ forces a drop of exactly one at each step.
+
+For a Cohen–Macaulay module, every associated component has the full support dimension. An element causing a one-dimensional drop cannot lie in an associated prime: otherwise that entire component would remain in the quotient support. It is therefore a nonzerodivisor. Both depth and support dimension drop by one, leaving a Cohen–Macaulay quotient. Repeating this argument proves regularity of the whole list.
+
+The final quotient is Cohen–Macaulay of dimension $d-c$. Choose a system of parameters for its support and lift it to $\mathfrak m$. Corollary 4.3 proves that these parameters are regular on the quotient, so appending them gives a regular sequence on $M$ of length $d$. No longer regular sequence is possible because depth is bounded by support dimension. This proves the stated extension to a maximal sequence, including the case $c=d$ when nothing is appended. ∎
 
 #### Lemma. Regular sequences are quasi-regular
- Let $R$ be a ring.
 
-1.  A regular sequence $f_1, \ldots, f_c$ of $R$ is a quasi-regular sequence.
+Let $R$ be any ring.
 
-2.  Suppose that $M$ is an $R$-module and that $f_1, \ldots, f_c$ is an $M$-regular sequence. Then $f_1, \ldots, f_c$ is an $M$-quasi-regular sequence.
+1. Every regular sequence in $R$ is quasi-regular.
+2. More generally, an $M$-regular sequence is $M$-quasi-regular for any $R$-module $M$.
 
-**Proof.** Set $J = (f_1, \ldots, f_c)$. We prove the first assertion by induction on $c$. We have to show that given any relation $\sum_{|I| = n} a_I f^I \in J^{n + 1}$ with $a_I \in R$ we actually have $a_I \in J$ for all multi-indices $I$. Since any element of $J^{n + 1}$ is of the form $\sum_{|I| = n} b_I f^I$ with $b_I \in J$ we may assume, after replacing $a_I$ by $a_I - b_I$, the relation reads $\sum_{|I| = n} a_I f^I = 0$. We can rewrite this as $$\sum\nolimits_{e = 0}^n
-\left(
-\sum\nolimits_{|I'| = n - e}
-a_{I', e} f^{I'}
-\right)
-f_c^e
-=
-0$$ Here and below the "primed" multi-indices $I'$ are required to be of the form $I' = (i_1, \ldots, i_{c - 1}, 0)$. We will show by induction on $l \in \{0, \ldots, n\}$ that if we have a relation $$\sum\nolimits_{e = 0}^l
-\left(
-\sum\nolimits_{|I'| = n - e}
-a_{I', e} f^{I'}
-\right)
-f_c^e
-=
-0$$ then $a_{I', e} \in J$ for all $I', e$. Set $J' = (f_1, \ldots, f_{c-1})$. For $l = 0$, the induction hypothesis on $c$ gives $a_{I',0} \in J' \subset J$, which proves the assertion. Assume now $l \geq 1$; the sum from $0$ to $l-2$ below is empty when $l=1$. Observe that $\sum\nolimits_{|I'| = n - l} a_{I', l} f^{I'}$ is mapped into $(J')^{n - l + 1}$ by $f_c^{l}$. By induction hypothesis (for the induction on $c$) we see that $f_c^l a_{I', l} \in J'$. Because $f_c$ is not a zerodivisor on $R/J'$ (as $f_1, \ldots, f_c$ is a regular sequence) we conclude that $a_{I', l} \in J'$. This allows us to rewrite the term $(\sum\nolimits_{|I'| = n - l} a_{I', l} f^{I'})f_c^l$ in the form $(\sum\nolimits_{|I'| = n - l + 1} f_c b_{I', l - 1}
-f^{I'})f_c^{l-1}$. This gives a new relation of the form $$\left(\sum\nolimits_{|I'| = n - l + 1}
-(a_{I', l-1} + f_c b_{I', l - 1}) f^{I'}\right)f_c^{l-1}
-+
-\sum\nolimits_{e = 0}^{l - 2}
-\left(
-\sum\nolimits_{|I'| = n - e}
-a_{I', e} f^{I'}
-\right)
-f_c^e
-=
-0$$ Now by the induction hypothesis (on $l$ this time) we see that all $a_{I', l-1} + f_c b_{I', l - 1} \in J$ and all $a_{I', e} \in J$ for $e \leq l - 2$. This, combined with $a_{I', l} \in J' \subset J$ seen above, finishes the proof of the induction step.
+Explicitly, if the list is $f_1,\ldots,f_c$ and $J=(f_1,\ldots,f_c)$, the canonical graded map
 
-The second assertion means that given any formal expression $F = \sum_{|I| = n} m_I X^I$, $m_I \in M$ with $\sum m_I f^I
-\in J^{n + 1}M$, then all the coefficients $m_I$ are in $JM$. This is proved in exactly the same way as we prove the corresponding result for the first assertion above. $\square$
+$$ (M/JM)[T_1,\ldots,T_c]\longrightarrow
+\bigoplus_{n\geq0}J^nM/J^{n+1}M,\qquad
+[m]T^I\longmapsto[mf^I]$$
 
-#### Lemma. Maximal prime chains in a Cohen--Macaulay ring
+is an isomorphism. No Noetherian or finite-generation hypothesis is needed.
 
-Let $R$ be a Noetherian local ring. Suppose $R$ is Cohen-Macaulay of dimension $d$. Any maximal chain of prime ideals $\mathfrak p_0 \subset
-\mathfrak p_1 \subset \ldots \subset \mathfrak p_n$ has length $n = d$.
+**Proof.** Prove the module statement; taking $M=R$ then gives (1). The graded map is surjective by the definition of an ideal power. In degree $n$, injectivity means that
 
-**Proof.** Special case of Lemma [Commutative algebra](#native-algebra-lemma-maximal-chain-maximal-cm). $\square$
+$$\sum_{|I|=n}m_If^I\in J^{n+1}M
+\quad\Longrightarrow\quad m_I\in JM\text{ for every }I.$$
+
+Every element of $J^{n+1}M$ can be expressed in the same degree-$n$ monomials with coefficients in $JM$. Subtracting such coefficients reduces the problem to a relation whose sum is exactly zero.
+
+Induct on the length $c$. For $c=0$, the map is the identity in degree zero and both sides vanish in positive degrees. Suppose the assertion is known for the first $c-1$ elements, and put $J'=(f_1,\ldots,f_{c-1})$. For a fixed degree $n$, write a relation as
+
+$$\sum_{e=0}^{l}\left(\sum_{|I'|=n-e}m_{I',e}f^{I'}\right)f_c^e=0,$$
+
+where $I'$ ranges over the first $c-1$ variables and initially $l=n$. We show by a second induction on $l$ that all its coefficients belong to $JM$. For $l=0$, this is the induction hypothesis for $J'$.
+
+For $l>0$, all terms with $e<l$ belong to $(J')^{n-l+1}M$. Consequently
+
+$$\sum_{|I'|=n-l}(f_c^lm_{I',l})f^{I'}
+\in(J')^{n-l+1}M.$$
+
+The first induction gives $f_c^lm_{I',l}\in J'M$ for each top coefficient. Multiplication by $f_c$ is injective on $M/J'M$, because the given list is regular. Hence $m_{I',l}\in J'M$. Write these coefficients as sums $\sum_{j<c}f_jb_{j,I'}$. Substitution absorbs the entire term with exponent $l$ into the terms with exponent $l-1$: their degree in the first variables increases by one and their coefficients acquire a factor $f_c$.
+
+We now have a relation of the same total degree with largest exponent at most $l-1$. By the second induction its coefficients lie in $JM$. Those coefficients differ from the old ones only by multiples of $f_c$, which also lie in $JM$. Thus every old coefficient with $e<l$ lies in $JM$, and the top ones already lie in $J'M\subset JM$. This completes both inductions and proves the graded isomorphism. The argument applies verbatim to arbitrary module coefficients and includes degree zero. ∎
+
+#### Lemma. Maximal prime chains in a Cohen–Macaulay ring
+
+If $R$ is a Noetherian Cohen–Macaulay local ring of dimension $d$, every maximal chain of prime ideals has length $d$.
+
+**Proof.** The complete localization and dimension argument is *Regular sequences, depth and Cohen–Macaulay modules*, §5, especially Lemma 5.4. Write a maximal chain as
+
+$$\mathfrak p_0\subsetneq\mathfrak p_1\subsetneq\cdots
+\subsetneq\mathfrak p_r.$$
+
+It starts at a minimal prime and ends at the maximal ideal, since otherwise it could be extended. Each adjacent pair is saturated. The local ring $R_{\mathfrak p_{i+1}}$ is Cohen–Macaulay, and its quotient by $\mathfrak p_iR_{\mathfrak p_{i+1}}$ has dimension one: saturation leaves just the two endpoints in that prime interval. Lemma 5.4 applied in this local ring yields
+
+$$\dim R_{\mathfrak p_{i+1}}-\dim R_{\mathfrak p_i}=1.$$
+
+The dimensions telescope from $\dim R_{\mathfrak p_0}=0$ to $\dim R_{\mathfrak p_r}=d$, giving $r=d$. All chains are finite, since their lengths are bounded by the finite dimension of the Noetherian local ring. This supplies the stated consequence of the more general [maximal-chain theorem for Cohen–Macaulay modules](#native-algebra-lemma-maximal-chain-maximal-cm). ∎
 
 #### Lemma. An elementary algebraic comparison (Prime avoidance)
 
-1\. In an affine scheme if a finite number of points are contained in an open subset then they are contained in a smaller principal open subset. 2. Affine opens are cofinal among the neighborhoods of a given finite set of an affine scheme
+Let $J,I_1,\ldots,I_r$ be ideals of a ring $R$. Suppose $J$ is contained in none of the $I_i$, and at most two of the $I_i$ fail to be prime. Then some $x\in J$ belongs to none of the $I_i$.
 
-Let $R$ be a ring. Let $I_i \subset R$, $i = 1, \ldots, r$, and $J \subset R$ be ideals. Assume
+Consequently, if an open subset of an affine scheme contains finitely many specified points, a principal open contains those points and is contained in that open subset. In particular, affine open neighborhoods are cofinal among neighborhoods of a finite set in an affine scheme.
 
-1.  $J \not\subset I_i$ for $i = 1, \ldots, r$, and
+**Proof.** For no ideals there is nothing to avoid. For one ideal use the assumption. For two ideals choose $a\in J\setminus I_1$ and $b\in J\setminus I_2$. Unless one of these already avoids both, one has $a\in I_2$ and $b\in I_1$; then $a+b$ avoids both, by subtracting the summand already in the ideal.
 
-2.  all but two of $I_i$ are prime ideals.
+Proceed by induction on $r$. Delete any ideal contained in another ideal on the list: avoiding the larger ideal automatically avoids the smaller one. If this shortens the list, induction applies. Otherwise the ideals are pairwise incomparable. When $r\geq3$, at least one is prime; number such an ideal last, as $I_r$. Induction supplies $a\in J$ avoiding $I_1,\ldots,I_{r-1}$. If $a\notin I_r$, it is the required element.
 
-Then there exists an $x \in J$, $x\not\in I_i$ for all $i$.
+If $a\in I_r$, choose $b_0\in J\setminus I_r$ and $b_i\in I_i\setminus I_r$ for $1\leq i<r$, using incomparability. Primality makes $b=b_0b_1\cdots b_{r-1}$ lie outside $I_r$. It lies in $J$ and in every earlier $I_i$. Thus $a+b$ avoids the earlier ideals because $a$ does, and avoids $I_r$ because $b$ does. This proves the assertion with the two possible nonprime exceptions intact.
 
-**Proof.** The result is true for $r = 1$. If $r = 2$, then let $x, y \in J$ with $x \not \in I_1$ and $y \not \in I_2$. We are done unless $x \in I_2$ and $y \in I_1$. Then the element $x + y$ cannot be in $I_1$ (since that would mean $x + y - y \in I_1$) and it also cannot be in $I_2$.
+For the geometric consequence, write the complement of the given open $U\subset\operatorname{Spec}R$ as $V(J)$. If the specified primes are $\mathfrak p_1,\ldots,\mathfrak p_s$, containment in $U$ means $J\not\subset\mathfrak p_i$ for each $i$. Apply the assertion to choose $f\in J$ outside every $\mathfrak p_i$. Then
 
-For $r \geq 3$, assume the result holds for $r - 1$. After renumbering we may assume that $I_r$ is prime. We may also assume there are no inclusions among the $I_i$. Pick $x \in J$, $x \not \in I_i$ for all $i = 1, \ldots, r - 1$. If $x \not\in I_r$ we are done. So assume $x \in I_r$. If $J I_1 \ldots I_{r - 1} \subset I_r$ then $J \subset I_r$ (by Lemma [Prime spectra, associated points and tensor products and direct sums](#native-algebra-lemma-product-ideals-in-prime)) a contradiction. Pick $y \in J I_1 \ldots I_{r - 1}$, $y \not \in I_r$. Then $x + y$ works. $\square$
+$$\{\mathfrak p_1,\ldots,\mathfrak p_s\}\subset D(f)\subset U.$$
 
-#### Lemma. Equivalent Cohen--Macaulay conditions
+The open $D(f)$ is affine, giving the second formulation. For an empty specified set one may use the empty principal open $D(0)$. ∎
 
-Regular sequences in Cohen-Macaulay local rings are characterized by cutting out something of the correct dimension.
+#### Lemma. Equivalent Cohen–Macaulay conditions
 
-Let $R$ be a Noetherian local Cohen-Macaulay ring with maximal ideal $\mathfrak m$. Let $x_1, \ldots, x_c \in \mathfrak m$ be elements. Then $$x_1, \ldots, x_c
-\text{ is a regular sequence }
-\Leftrightarrow
-\dim(R/(x_1, \ldots, x_c)) = \dim(R) - c$$ If so $x_1, \ldots, x_c$ can be extended to a regular sequence of length $\dim(R)$ and each quotient $R/(x_1, \ldots, x_i)$ is a Cohen-Macaulay ring of dimension $\dim(R) - i$.
+Let $(R,\mathfrak m)$ be a Noetherian Cohen–Macaulay local ring of dimension $d$. For $x_1,\ldots,x_c\in\mathfrak m$,
 
-**Proof.** Special case of Proposition [Characterizations of Cohen–Macaulay modules](#native-algebra-proposition-cm-module). $\square$
+$$x_1,\ldots,x_c\text{ is regular}
+\quad\Longleftrightarrow\quad
+\dim R/(x_1,\ldots,x_c)=d-c.$$
+
+Under these conditions the list extends to a regular sequence of length $d$, and every intermediate quotient $R/(x_1,\ldots,x_i)$ is Cohen–Macaulay of dimension $d-i$.
+
+**Proof.** Apply the preceding [module support-dimension criterion](#native-algebra-proposition-cm-module) to $M=R$. It proves the reverse implication and the extension to length $d$. In the forward direction, each nonzerodivisor in the maximal ideal lowers both dimension and depth by exactly one; its quotient is therefore again Cohen–Macaulay. Iteration gives all the stated intermediate dimensions and the final equality. These depth and dimension assertions are proved in the full CM-module argument cited in that proposition. ∎
 
 #### Lemma. The rank of Kähler differentials
 
-Let $k$ be an algebraically closed field. Let $S$ be a finite type $k$-algebra. Let $\mathfrak m \subset S$ be a maximal ideal. Then $$\dim_{\kappa(\mathfrak m)} \Omega_{S/k} \otimes_S \kappa(\mathfrak m)
-=
-\dim_{\kappa(\mathfrak m)} \mathfrak m/\mathfrak m^2.$$
+Let $S$ be of finite type over an algebraically closed field $k$, and let $\mathfrak m\subset S$ be maximal. Then
 
-**Proof.** Consider the exact sequence $$\mathfrak m/\mathfrak m^2 \to
-\Omega_{S/k} \otimes_S \kappa(\mathfrak m) \to
-\Omega_{\kappa(\mathfrak m)/k} \to 0$$ of Lemma [Cotangent complexes and differentials](#native-algebra-lemma-differential-seq). We would like to show that the first map is an isomorphism. Since $k$ is algebraically closed the composition $k \to \kappa(\mathfrak m)$ is an isomorphism by Theorem [The Nullstellensatz](#native-algebra-theorem-nullstellensatz). So the surjection $S \to \kappa(\mathfrak m)$ splits as a map of $k$-algebras, and Lemma Kähler differentials, Theorems 3.1–3.3, Proposition 3.4 and Theorem 7.1 shows that the sequence above is exact on the left. Since $\Omega_{\kappa(\mathfrak m)/k} = 0$, we win. $\square$
+$$\dim_{\kappa(\mathfrak m)}\bigl(\Omega_{S/k}\otimes_S\kappa(\mathfrak m)\bigr)
+=\dim_{\kappa(\mathfrak m)}\mathfrak m/\mathfrak m^2.$$
+
+**Proof.** The Nullstellensatz identifies the residue field with $k$, so the residue map $\epsilon:S\to k$ is a $k$-algebra retraction of the structure map. The exact cotangent calculation is *Smooth algebras over a field and the Jacobian criterion*, Proposition 3.1.
+
+Explicitly, the usual conormal map sends $a\bmod\mathfrak m^2$ to $da\otimes1$. An inverse is induced by the $k$-derivation
+
+$$D:S\longrightarrow\mathfrak m/\mathfrak m^2,
+\qquad D(s)=s-\epsilon(s)\pmod{\mathfrak m^2}.$$
+
+The target has $S$-action through $\epsilon$. The product rule follows on expanding $st$ and discarding the product of $s-\epsilon(s)$ and $t-\epsilon(t)$, which lies in $\mathfrak m^2$. This derivation factors through $\Omega_{S/k}\otimes_Sk$. The two maps are inverse because $D(a)=a$ for $a\in\mathfrak m$, while $d(s-\epsilon(s))=ds$. Thus the vector spaces themselves are canonically isomorphic, proving the equality. This also exhibits the left exactness supplied by the split residue map in the conormal sequence. ∎
 
 #### Definition. Regular local rings
- Let $(R, \mathfrak m)$ be a Noetherian local ring of dimension $d$.
 
-1.  A *system of parameters of $R$* is a sequence of elements $x_1, \ldots, x_d \in \mathfrak m$ which generates an ideal of definition of $R$,
-
-2.  if there exist $x_1, \ldots, x_d \in \mathfrak m$ such that $\mathfrak m = (x_1, \ldots, x_d)$ then we call $R$ a *regular local ring* and $x_1, \ldots, x_d$ a *regular system of parameters*.
+Let $(R,\mathfrak m)$ be Noetherian local of dimension $d$. A **system of parameters** is a list $x_1,\ldots,x_d\in\mathfrak m$ whose ideal has radical $\mathfrak m$, equivalently an ideal of definition. The ring is **regular local** if its maximal ideal can be generated by $d$ elements. Any such generating list is called a **regular system of parameters**. The empty list is permitted when $d=0$.
 
 #### Lemma. Essentially finite presentations in a filtered limit
- Suppose $R \to S$ is a local homomorphism of local rings. Assume that $S$ is essentially of finite presentation over $R$. Then there exists a directed set $(\Lambda, \leq)$, and a system of local homomorphisms $R_\lambda \to S_\lambda$ of local rings such that
 
-1.  The colimit of the system $R_\lambda \to S_\lambda$ is equal to $R \to S$.
+Let $R\to S$ be a local homomorphism of local rings, essentially of finite presentation. There is a directed system of local homomorphisms $R_\lambda\to S_\lambda$ with the following properties:
 
-2.  Each $R_\lambda$ is essentially of finite type over $\mathbf{Z}$.
+1. Its colimit is the given map $R\to S$.
+2. The source homomorphism $\mathbb Z\to R_\lambda$ is essentially of finite type.
+3. The target $S_\lambda$ is a localization of a finite type $R_\lambda$-algebra.
+4. For $\lambda\leq\mu$, the map
+   $$S_\lambda\otimes_{R_\lambda}R_\mu\longrightarrow S_\mu$$
+   identifies $S_\mu$ with localization at a prime of its source.
 
-3.  Each $S_\lambda$ is essentially of finite type over $R_\lambda$.
+**Proof.** Write $S=B_{\mathfrak q}$ with
 
-4.  For each $\lambda \leq \mu$ the map $S_\lambda \otimes_{R_\lambda} R_\mu \to S_\mu$ presents $S_\mu$ as the localization of $S_\lambda \otimes_{R_\lambda} R_\mu$ at a prime ideal.
+$$B=R[x_1,\ldots,x_n]/(f_1,\ldots,f_m).$$
 
-**Proof.** By assumption we may choose an isomorphism $\Phi : (R[x_1, \ldots, x_n]/I)_{\mathfrak q} \to S$ where $I \subset R[x_1, \ldots, x_n]$ is a finitely generated ideal, and $\mathfrak q \subset R[x_1, \ldots, x_n]/I$ is a prime. (Note that $R \cap \mathfrak q$ is equal to the maximal ideal $\mathfrak m$ of $R$.) We also choose generators $f_1, \ldots, f_m \in I$ for the ideal $I$. Write $R$ in any way as a colimit $R = \mathop{\operatorname{colim}} R_\lambda$ over a directed set $(\Lambda, \leq )$, with each $R_\lambda$ local and essentially of finite type over $\mathbf{Z}$, and with local transition maps. There exists some $\lambda_0 \in \Lambda$ such that $f_j$ is the image of some $f_{j, \lambda_0} \in R_{\lambda_0}[x_1, \ldots, x_n]$. For all $\lambda \geq \lambda_0$ denote by $f_{j, \lambda} \in R_{\lambda}[x_1, \ldots, x_n]$ the image of $f_{j, \lambda_0}$. Thus we obtain a system of ring maps $$R_\lambda[x_1, \ldots, x_n]/(f_{1, \lambda}, \ldots, f_{m, \lambda})
-\to
-R[x_1, \ldots, x_n]/(f_1, \ldots, f_m) \to S$$ Set $\mathfrak q_\lambda$ to be the inverse image of $\mathfrak q$. Set $S_\lambda = (R_\lambda[x_1, \ldots, x_n]/
-(f_{1, \lambda}, \ldots, f_{m, \lambda}))_{\mathfrak q_\lambda}$. We leave it to the reader to see that this works. $\square$
+Such a prime localization can be used because $S$ is local: any local localization of a ring equals localization at the inverse image of its maximal ideal. Locality of $R\to S$ makes $\mathfrak q$ contract to the maximal ideal $\mathfrak m$ of $R$.
+
+For every finite type $\mathbb Z$-subalgebra $A_\lambda\subset R$, put
+
+$$R_\lambda=(A_\lambda)_{A_\lambda\cap\mathfrak m}.$$
+
+These are local subrings of $R$, since all denominators are units in $R$. They form a directed system under inclusion, have local transition maps, and have union $R$. Restrict to the cofinal family containing the finitely many coefficients of all the $f_j$. Define $B_\lambda$ by the same polynomial presentation over $R_\lambda$, let $\mathfrak q_\lambda$ be the inverse image of the maximal ideal of $S$ under $B_\lambda\to S$, and set
+
+$$S_\lambda=(B_\lambda)_{\mathfrak q_\lambda}.$$
+
+The contraction of $\mathfrak q_\lambda$ to $R_\lambda$ is its maximal ideal, so $R_\lambda\to S_\lambda$ is local. Contractions of the fixed maximal ideal of $S$ also make all transition maps local.
+
+The colimit is $S$: every coefficient and every denominator of an element of $B_{\mathfrak q}$ occurs at a finite stage, and any equality between two fractions has a polynomial relation and a denominator witness at a later stage. For $\lambda\leq\mu$, one has $B_\lambda\otimes_{R_\lambda}R_\mu=B_\mu$. Tensoring $S_\lambda$ first inverts the images of $B_\lambda\setminus\mathfrak q_\lambda$. These images avoid $\mathfrak q_\mu$. Localizing the resulting ring at the prime induced by $\mathfrak q_\mu$ inverts all of $B_\mu\setminus\mathfrak q_\mu$ and gives exactly $S_\mu$. This proves (4). The displayed finite presentations and localizations prove (2) and (3). ∎
 
 #### Lemma. Eventual flatness in a filtered colimit
 
-Let $R \to S$, $M$, $\Lambda$, $R_\lambda \to S_\lambda$, $M_\lambda$ be as in Lemma [Essentially finitely presented module models](#native-algebra-lemma-limit-module-essentially-finite-presentation). Assume that $M$ is flat over $R$. Then for some $\lambda \in \Lambda$ the module $M_\lambda$ is flat over $R_\lambda$.
+Use a system $R_\lambda\to S_\lambda$, $M_\lambda$ with the six properties of the module-model lemma below, with colimit $R\to S$, $M$. If $M$ is flat over $R$, then $M_\mu$ is flat over $R_\mu$ at some stage $\mu$.
 
-**Proof.** Pick some \(\lambda \in \Lambda\) and consider 
+**Proof.** Fix a stage $\lambda$ and let $\mathfrak m_\lambda$ be the maximal ideal of $R_\lambda$. Both rings at this stage are Noetherian. The module
 
-\[
-\text{Tor}_1^{R_\lambda}(M_\lambda, R_\lambda/\mathfrak m_\lambda)
-=
-\operatorname{Ker}(\mathfrak m_\lambda \otimes_{R_\lambda} M_\lambda
-\to M_\lambda).
-\]
+$$T_\lambda=\operatorname{Tor}_1^{R_\lambda}
+(M_\lambda,R_\lambda/\mathfrak m_\lambda)
+=\ker(\mathfrak m_\lambda\otimes_{R_\lambda}M_\lambda\to M_\lambda)$$
 
- See Remark [Tor for a quotient by an ideal](#native-algebra-remark-tor-ring-mod-ideal). The right hand side shows that this is a finitely generated \(S_\lambda\)-module (because \(S_\lambda\) is Noetherian and the modules in question are finite). Let \(\xi_1, \ldots, \xi_n\) be generators. Because \(M\) is flat over \(R\) we have that \(0 = \operatorname{Ker}(\mathfrak m_\lambda R \otimes_R M \to M)\). Since \(\otimes\) commutes with colimits we see there exists a \(\lambda' \geq \lambda\) such that each \(\xi_i\) maps to zero in \(\mathfrak m_{\lambda}R_{\lambda'} \otimes_{R_{\lambda'}} M_{\lambda'}\). Hence we see that 
+is finite over $S_\lambda$: the ideal $\mathfrak m_\lambda$ is finite, $M_\lambda$ is finite over $S_\lambda$, and a submodule of a finite module over the Noetherian ring $S_\lambda$ is finite. Choose generators $\xi_1,\ldots,\xi_a$.
 
-\[
-\text{Tor}_1^{R_\lambda}(M_\lambda, R_\lambda/\mathfrak m_\lambda)
-\longrightarrow
-\text{Tor}_1^{R_{\lambda'}}(M_{\lambda'},
-R_{\lambda'}/\mathfrak m_{\lambda}R_{\lambda'})
-\]
+Flatness of $M$ gives injectivity of
 
- is zero. Note that \(M_\lambda \otimes_{R_\lambda} R_\lambda/\mathfrak m_\lambda\) is flat over \(R_\lambda/\mathfrak m_\lambda\) because this last ring is a field. Hence we may apply Lemma [Flatness and local algebra](#native-algebra-lemma-another-variant-local-criterion-flatness) to get that \(M_{\lambda'}\) is flat over \(R_{\lambda'}\). \(\square\)
+$$\mathfrak m_\lambda R\otimes_RM\longrightarrow M.$$
+
+For $\mu\geq\lambda$, the ideals $\mathfrak m_\lambda R_\mu$ and modules $M_\mu$ form directed systems whose tensor products have this source as their colimit. Each $\xi_i$ therefore becomes zero in $\mathfrak m_\lambda R_\mu\otimes_{R_\mu}M_\mu$ at some later stage. Choose one common stage $\mu$ for the finite list. The natural map
+
+$$T_\lambda\longrightarrow
+\operatorname{Tor}_1^{R_\mu}(M_\mu,R_\mu/\mathfrak m_\lambda R_\mu)$$
+
+is then zero.
+
+The [change-of-base local flatness lemma](#native-algebra-lemma-another-variant-local-criterion-flatness) now applies. Its ideal is $\mathfrak m_\lambda$, its base change is $R_\lambda\to R_\mu$, and its localized tensor-product algebra is $S_\mu$. Its quotient-flatness hypothesis holds because $M_\lambda/\mathfrak m_\lambda M_\lambda$ is a vector space over the field $R_\lambda/\mathfrak m_\lambda$. Its Tor-map hypothesis is the vanishing just arranged. All maps are local, so the extended ideal is proper. The conclusion is flatness of $M_\mu$ over $R_\mu$.
+
+For completeness, the Tor-surjectivity step in that criterion can be seen with free presentations. Write $0\to K\to F\to N\to0$, with $F$ free over a base ring $A$, and suppose $N/JN$ is flat over $A/J$. Modulo $J$, put $L=\operatorname{im}(K/JK\to F/JF)$ and $T=\operatorname{Tor}_1^A(N,A/J)$. The quotient in $0\to L\to F/JF\to N/JN\to0$ is flat, so this sequence remains injective on the left after tensoring with any $A/J$-module $Q$. Right exactness of tensoring $T\to K/JK\to L\to0$ consequently gives a surjection
+
+$$T\otimes_{A/J}Q\twoheadrightarrow\operatorname{Tor}_1^A(N,Q).$$
+
+For a ring map $A\to A'$ and an $A'$-module $Q$, the kernel of $F\otimes_AA'\to N\otimes_AA'$ is the image of $K\otimes_AA'$. Tensoring that surjection with $Q$ shows that every element of $\operatorname{Tor}_1^{A'}(N\otimes_AA',Q)$ lifts to the kernel of $K\otimes_AQ\to F\otimes_AQ$. Thus there is also a surjection
+
+$$\operatorname{Tor}_1^A(N,Q)\twoheadrightarrow
+\operatorname{Tor}_1^{A'}(N\otimes_AA',Q).$$
+
+Take $Q=A'/JA'$ and then localize in the tensor-product algebra. These surjections show that a zero map from the old Tor module forces the new Tor module to vanish. Quotient flatness survives this base change and localization, so the [ideal form of the local flatness criterion](#native-algebra-lemma-variant-local-criterion-flatness) completes the argument. This supplies the transport step without assuming that $A\to A'$ is flat. ∎
 
 #### Lemma. Essentially finitely presented module models
- Suppose $R \to S$ is a local homomorphism of local rings. Assume that $S$ is essentially of finite presentation over $R$. Let $M$ be a finitely presented $S$-module. Then there exists a directed set $(\Lambda, \leq)$, and a system of local homomorphisms $R_\lambda \to S_\lambda$ of local rings together with $S_\lambda$-modules $M_\lambda$, such that
 
-1.  The colimit of the system $R_\lambda \to S_\lambda$ is equal to $R \to S$. The colimit of the system $M_\lambda$ is $M$.
+Let $R\to S$ be a local homomorphism of local rings, with $S$ essentially of finite presentation over $R$, and let $M$ be finitely presented over $S$. There is a directed system $R_\lambda\to S_\lambda$, $M_\lambda$ such that:
 
-2.  Each $R_\lambda$ is essentially of finite type over $\mathbf{Z}$.
+1. The ring-map colimit is $R\to S$ and the module colimit is $M$.
+2. Each local ring $R_\lambda$ is essentially of finite type over $\mathbb Z$.
+3. Each local ring $S_\lambda$ is essentially of finite type over $R_\lambda$.
+4. The module $M_\lambda$ is finite over $S_\lambda$.
+5. Each $S_\lambda\otimes_{R_\lambda}R_\mu\to S_\mu$ is localization at a prime.
+6. The canonical map $M_\lambda\otimes_{S_\lambda}S_\mu\to M_\mu$ is an isomorphism whenever $\lambda\leq\mu$.
 
-3.  Each $S_\lambda$ is essentially of finite type over $R_\lambda$.
+**Proof.** Use the ring system constructed in the preceding finite-presentation lemma. Choose a finite matrix presentation
 
-4.  Each $M_\lambda$ is finite over $S_\lambda$.
+$$S^a\xrightarrow{H}S^b\longrightarrow M\longrightarrow0.$$
 
-5.  For each $\lambda \leq \mu$ the map $S_\lambda \otimes_{R_\lambda} R_\mu \to S_\mu$ presents $S_\mu$ as the localization of $S_\lambda \otimes_{R_\lambda} R_\mu$ at a prime ideal.
+Its finitely many entries lift to a common $S_{\lambda_0}$. Restrict to stages $\lambda\geq\lambda_0$, let $H_\lambda$ be the image of that lifted matrix, and define
 
-6.  For each $\lambda \leq \mu$ the map $M_\lambda \otimes_{S_\lambda} S_\mu \to M_\mu$ is an isomorphism.
+$$M_\lambda=\operatorname{coker}(S_\lambda^a\xrightarrow{H_\lambda}S_\lambda^b).$$
 
-**Proof.** As in the proof of Lemma [Essentially finite presentations in a filtered limit](#native-algebra-lemma-limit-essentially-finite-presentation) we may first write $R = \mathop{\operatorname{colim}} R_\lambda$ as a directed colimit of local $\mathbf{Z}$-algebras which are essentially of finite type. Next, we may assume that for some $\lambda_1 \in \Lambda$ there exist $f_{j, \lambda_1} \in R_{\lambda_1}[x_1, \ldots, x_n]$ such that $$S =
-\mathop{\operatorname{colim}}_{\lambda \geq \lambda_1} S_\lambda, \text{ with }
-S_\lambda =
-(R_\lambda[x_1, \ldots, x_n]/
-(f_{1, \lambda}, \ldots, f_{m, \lambda}))_{\mathfrak q_\lambda}$$ Choose a presentation $$S^{\oplus s} \to S^{\oplus t} \to M \to 0$$ of $M$ over $S$. Let $A \in \text{Mat}(t \times s, S)$ be the matrix of the presentation. For some $\lambda_2 \in \Lambda$, $\lambda_2 \geq \lambda_1$ we can find a matrix $A_{\lambda_2} \in \text{Mat}(t \times s, S_{\lambda_2})$ which maps to $A$. For all $\lambda \geq \lambda_2$ we let $M_\lambda = \operatorname{Coker}(S_\lambda^{\oplus s} \xrightarrow{A_\lambda}
-S_\lambda^{\oplus t})$. We leave it to the reader to see that this works. $\square$
+The ring conclusions were proved in that lemma and survive passage to this cofinal tail. These module presentations are finite, proving (4). Right exactness of tensor products identifies their base changes with the cokernels of the same matrices over $S_\mu$, proving (6), without requiring flat transition maps. Directed colimits commute with the finite free modules and their cokernels, so their module colimit is the cokernel of $H$, namely $M$. This proves (1) and all six assertions. ∎
 
 #### Lemma. The Noetherian fibrewise criterion for flatness (Critère de platitude par fibres; Noetherian case)
 
-Let $R$, $S$, $S'$ be Noetherian local rings and let $R \to S \to S'$ be local ring homomorphisms. Let $\mathfrak m \subset R$ be the maximal ideal. Let $M$ be an $S'$-module. Assume
+Let $R\to S\to S'$ be local homomorphisms of Noetherian local rings. Denote the maximal ideal of $R$ by $\mathfrak m$. Suppose $M$ is a nonzero finite $S'$-module, is flat over $R$, and has $M/\mathfrak mM$ flat over $S/\mathfrak mS$. Then $M$ is flat over $S$, and $S$ is flat over $R$.
 
-1.  The module $M$ is finite over $S'$.
+**Proof.** This is the forward implication of the complete *Faithful flatness and the local criterion for flatness*, Theorem 5.4. Its finiteness hypothesis is over $S'$, exactly as here.
 
-2.  The module $M$ is not zero.
+To track the two flatness conclusions, put $I=\mathfrak mS$. The canonical map $\mathfrak m\otimes_RM\to I\otimes_SM$ is surjective. Its composite with multiplication into $M$ is injective by $R$-flatness. Thus the first map is an isomorphism and $I\otimes_SM\to M$ is injective. Equivalently, $\operatorname{Tor}_1^S(M,S/I)=0$. The assumed flatness modulo $I$ and the local ideal criterion give $S$-flatness of $M$.
 
-3.  The module $M/\mathfrak m M$ is a flat $S/\mathfrak m S$-module.
+This flat module is faithful over the local ring $S$. If $\mathfrak n'$ is the maximal ideal of $S'$, Nakayama gives $M/\mathfrak n'M\ne0$. It is a quotient of $M/\mathfrak nM$, where $\mathfrak n$ is the maximal ideal of $S$. Hence the latter quotient is nonzero, which is the local faithful-flatness criterion.
 
-4.  The module $M$ is a flat $R$-module.
+A Tor argument now proves flatness of $S$ over $R$. Tensor the exact sequence
 
-Then $S$ is flat over $R$ and $M$ is a flat $S$-module.
+$$0\longrightarrow\operatorname{Tor}_1^R(R/\mathfrak m,S)
+\longrightarrow\mathfrak m\otimes_RS\longrightarrow I\longrightarrow0$$
 
-**Proof.** Set $I = \mathfrak mS \subset S$. Then we see that $M/IM$ is a flat $S/I$-module because of (3). Since $\mathfrak m \otimes_R S' \to I \otimes_S S'$ is surjective we see that also $\mathfrak m \otimes_R M \to I \otimes_S M$ is surjective. Consider $$\mathfrak m \otimes_R M \to I \otimes_S M \to M.$$ As $M$ is flat over $R$ the composition is injective and so both arrows are injective. In particular $\text{Tor}_1^S(S/I, M) = 0$ see Remark [Tor for a quotient by an ideal](#native-algebra-remark-tor-ring-mod-ideal). By Lemma [A variant of the local criterion for flatness](#native-algebra-lemma-variant-local-criterion-flatness) we conclude that $M$ is flat over $S$. Note that since $M/\mathfrak m_{S'}M$ is not zero by Nakayama's Lemma [Nakayama's lemma](#native-algebra-lemma-nak) we see that actually $M$ is faithfully flat over $S$ by Lemma [Faithfully flat modules](#native-algebra-lemma-ff) (since it forces $M/\mathfrak m_SM \not = 0$).
+over $S$ with the flat module $M$. The resulting map $\mathfrak m\otimes_RM\to I\otimes_SM$ is the isomorphism already proved, so
 
-Consider the exact sequence $0 \to \mathfrak m \to R \to \kappa \to 0$. This gives an exact sequence $0 \to \text{Tor}_1^R(\kappa, S) \to \mathfrak m \otimes_R S \to I \to 0$. Since $M$ is flat over $S$ this gives an exact sequence $0 \to \text{Tor}_1^R(\kappa, S)\otimes_S M \to
-\mathfrak m \otimes_R M \to I \otimes_S M \to 0$. By the above this implies that $\text{Tor}_1^R(\kappa, S)\otimes_S M = 0$. Since $M$ is faithfully flat over $S$ this implies that $\text{Tor}_1^R(\kappa, S) = 0$ and we conclude that $S$ is flat over $R$ by Lemma Faithful flatness and the local criterion for flatness, Theorems 2.1–3.1, 4.2, 5.2 and 5.4. $\square$
+$$\operatorname{Tor}_1^R(R/\mathfrak m,S)\otimes_SM=0.$$
+
+Faithfulness gives zero for this Tor module itself. The Noetherian local flatness criterion applied to $R\to S$ and the finite $S$-module $S$ makes $S$ flat over $R$.
+
+Equivalently, the proof of Theorem 5.4 descends preservation of injections: tensor any injection of $R$-modules first with $S$, then with $M$. The second tensor is injective by $R$-flatness of $M$, and faithful $S$-flatness reflects that injection. Both routes give the same base-flatness conclusion. ∎
 
 #### Lemma. An isolated point of a fibre
 
-Equivalent conditions for isolated points in fibres
+Let $R\to S$ be of finite type and let $\mathfrak q\subset S$ lie above $\mathfrak p\subset R$. Put $B=S\otimes_R\kappa(\mathfrak p)$, write $F=\operatorname{Spec}B$, and let $\bar{\mathfrak q}$ be its point corresponding to $\mathfrak q$. These six conditions are equivalent:
 
-Let $R \to S$ be a ring map of finite type. Let $\mathfrak q \subset S$ be a prime lying over $\mathfrak p \subset R$. Let $F = \operatorname{Spec}(S \otimes_R \kappa(\mathfrak p))$ be the fibre of $\operatorname{Spec}(S) \to \operatorname{Spec}(R)$, see Remark [Commutative algebra](#native-algebra-remark-fundamental-diagram). Denote by $\overline{\mathfrak q} \in F$ the point corresponding to $\mathfrak q$. The following are equivalent:
+1. The singleton $\{\bar{\mathfrak q}\}$ is open in $F$.
+2. The algebra $S_{\mathfrak q}/\mathfrak pS_{\mathfrak q}$ is finite-dimensional over $\kappa(\mathfrak p)$.
+3. There exists $g\in S\setminus\mathfrak q$ such that $\mathfrak q$ is the only prime in $D(g)$ lying above $\mathfrak p$.
+4. The dimension of $F$ at $\bar{\mathfrak q}$ is zero.
+5. The point $\bar{\mathfrak q}$ is closed in $F$ and $\dim(S_{\mathfrak q}/\mathfrak pS_{\mathfrak q})=0$.
+6. The residue extension $\kappa(\mathfrak q)/\kappa(\mathfrak p)$ is finite and $\dim(S_{\mathfrak q}/\mathfrak pS_{\mathfrak q})=0$.
 
-1.  $\overline{\mathfrak q}$ is an isolated point of $F$,
+**Proof.** There is a canonical identification
 
-2.  $S_{\mathfrak q}/\mathfrak pS_{\mathfrak q}$ is finite over $\kappa(\mathfrak p)$,
+$$S_{\mathfrak q}/\mathfrak pS_{\mathfrak q}=B_{\bar{\mathfrak q}},$$
 
-3.  there exists a $g \in S$, $g \not \in \mathfrak q$ such that the only prime of $D(g)$ mapping to $\mathfrak p$ is $\mathfrak q$,
+and $B$ is a finite type algebra over the field $\kappa(\mathfrak p)$. Thus these are the six tests of the [isolated-point lemma for affine spectra](#native-algebra-lemma-isolated-point). The following details also verify the principal-open statement in the original algebra $S$.
 
-4.  $\dim_{\overline{\mathfrak q}}(F) = 0$,
+A basic open of the fibre can be defined by an element represented as $s/r$, with $s\in S$ and $r\in R\setminus\mathfrak p$. Since $r$ is a unit on the fibre, this basic open is the intersection of $F$ with $D(s)$. Basic opens are a basis, so (1) and (3) are equivalent. Either gives an open neighborhood with just one point, proving (4).
 
-5.  $\overline{\mathfrak q}$ is a closed point of $F$ and $\dim(S_{\mathfrak q}/\mathfrak pS_{\mathfrak q}) = 0$, and
+Conversely, (4) gives a basic neighborhood of dimension zero. Its coordinate ring is Noetherian and zero-dimensional, hence Artinian by *Noetherian and Artinian rings*, Theorem 4.2. Its spectrum is finite and discrete, so the specified point is isolated. This proves (4)$\Rightarrow$(1).
 
-6.  the field extension $\kappa(\mathfrak q)/\kappa(\mathfrak p)$ is finite and $\dim(S_{\mathfrak q}/\mathfrak pS_{\mathfrak q}) = 0$.
+Under (3), the localized fibre ring has one prime and is Artinian local. It equals $B_{\bar{\mathfrak q}}$ and has finite length. Its residue field is finite over $\kappa(\mathfrak p)$ by the Nullstellensatz, since this principal localization is still of finite type. A composition series therefore makes it finite-dimensional over the ground field. Thus (3) implies (2), and (2) immediately implies (6).
 
-**Proof.** Note that $S_{\mathfrak q}/\mathfrak pS_{\mathfrak q} =
-(S \otimes_R \kappa(\mathfrak p))_{\overline{\mathfrak q}}$. Moreover $S \otimes_R \kappa(\mathfrak p)$ is of finite type over $\kappa(\mathfrak p)$. The conditions correspond exactly to the conditions of Lemma [An isolated point of an affine spectrum](#native-algebra-lemma-isolated-point) for the $\kappa(\mathfrak p)$-algebra $S \otimes_R \kappa(\mathfrak p)$ and the prime $\overline{\mathfrak q}$, hence they are equivalent. $\square$
+The Nullstellensatz identifies closed points of $\operatorname{Spec}B$ with primes having finite residue field over the ground field, so (5) and (6) are equivalent. Under (5), the prime $\bar{\mathfrak q}$ is also minimal, because its local ring has dimension zero. The Noetherian ring $B$ has finitely many minimal primes. For each other minimal prime choose an element in it but outside $\bar{\mathfrak q}$, and multiply the choices. The resulting element avoids $\bar{\mathfrak q}$ and its basic open misses all other irreducible components. The remaining component is $V(\bar{\mathfrak q})$, a singleton since this prime is maximal. Thus (5) implies (1). All six assertions follow. ∎
 
 #### Lemma. Characterizations of finite presentation
 
-Let $\varphi : R \to S$ be a ring map. The following are equivalent
+For an $R$-algebra $S$, the following conditions are equivalent:
 
-1.  $\varphi$ is of finite presentation,
+1. $S$ is finitely presented over $R$.
+2. For every directed system of $R$-algebras $(A_\lambda)$, the canonical map
+   $$\mathop{\operatorname{colim}}_\lambda\operatorname{Hom}_R(S,A_\lambda)
+   \longrightarrow\operatorname{Hom}_R(S,\mathop{\operatorname{colim}}_\lambda A_\lambda)$$
+   is bijective.
+3. The same canonical map is surjective for every such system.
 
-2.  for every directed system $A_\lambda$ of $R$-algebras the map $$\mathop{\operatorname{colim}}_\lambda \operatorname{Hom}_R(S, A_\lambda) \longrightarrow
-    \operatorname{Hom}_R(S, \mathop{\operatorname{colim}}_\lambda A_\lambda)$$ is bijective, and
+**Proof.** Suppose $S=R[x_1,\ldots,x_n]/(f_1,\ldots,f_m)$. A map from $S$ into a colimit is given by the images of the finite variable list. Choose representatives at one common stage. Each of the finitely many equations vanishes at some later stage, so a common upper bound gives a map from $S$ at that stage. This proves surjectivity. If two maps have the same colimit image, their values on the finitely many generators agree at a common later stage. The maps themselves then agree there. This proves injectivity and hence (1)$\Rightarrow$(2). The implication (2)$\Rightarrow$(3) is immediate.
 
-3.  for every directed system $A_\lambda$ of $R$-algebras the map $$\mathop{\operatorname{colim}}_\lambda \operatorname{Hom}_R(S, A_\lambda) \longrightarrow
-    \operatorname{Hom}_R(S, \mathop{\operatorname{colim}}_\lambda A_\lambda)$$ is surjective.
+Assume (3). Write $S=\operatorname{colim}S_\lambda$ with $S_\lambda$ finitely presented, using the [finite-data construction](#native-algebra-lemma-ring-colimit-fp). The identity of $S$ factors through one stage:
 
-**Proof.** Assume (1) and write $S = R[x_1, \ldots, x_n] / (f_1, \ldots, f_m)$. Let $A = \mathop{\operatorname{colim}} A_\lambda$. Observe that an $R$-algebra homomorphism $S \to A$ or $S \to A_\lambda$ is determined by the images of $x_1, \ldots, x_n$. Hence it is clear that $\mathop{\operatorname{colim}}_\lambda \operatorname{Hom}_R(S, A_\lambda) \to \operatorname{Hom}_R(S, A)$ is injective. To see that it is surjective, let $\chi : S \to A$ be an $R$-algebra homomorphism. Then each $x_i$ maps to some element in the image of some $A_{\lambda_i}$. We may pick $\mu \geq \lambda_i$, $i = 1, \ldots, n$ and assume $\chi(x_i)$ is the image of $y_i \in A_\mu$ for $i = 1, \ldots, n$. Consider $z_j = f_j(y_1, \ldots, y_n) \in A_\mu$. Since $\chi$ is a homomorphism the image of $z_j$ in $A = \mathop{\operatorname{colim}}_\lambda A_\lambda$ is zero. Hence there exists a $\mu_j \geq \mu$ such that $z_j$ maps to zero in $A_{\mu_j}$. Pick $\nu \geq \mu_j$, $j = 1, \ldots, m$. Then the images of $z_1, \ldots, z_m$ are zero in $A_\nu$. This exactly means that the $y_i$ map to elements $y'_i \in A_\nu$ which satisfy the relations $f_j(y'_1, \ldots, y'_n) = 0$. Thus we obtain a ring map $S \to A_\nu$. This shows that (1) implies (2).
+$$S\xrightarrow{\sigma}S_\lambda\xrightarrow{\rho}S,
+\qquad\rho\sigma=1_S.$$
 
-It is clear that (2) implies (3). Assume (3). By Lemma [Filtered limits and finite presentation](#native-algebra-lemma-ring-colimit-fp) we may write $S = \mathop{\operatorname{colim}}_\lambda S_\lambda$ with $S_\lambda$ of finite presentation over $R$. Then the identity map factors as $$S \to S_\lambda \to S$$ for some $\lambda$. This implies that $S$ is finitely presented over $S_\lambda$ by Lemma [Composition of finite-type ring maps](#native-algebra-lemma-compose-finite-type) part (4) applied to $S \to S_\lambda \to S$. Applying part (2) of the same lemma to $R \to S_\lambda \to S$ we conclude that $S$ is of finite presentation over $R$. $\square$
+Here is an explicit finite presentation of this retract. Choose algebra generators $a_1,\ldots,a_n$ of $S_\lambda$ over $R$ and put $e=\sigma\rho$. The kernel of $\rho$ is the ideal generated by $a_i-e(a_i)$. Indeed, modulo that ideal the two endomorphisms $1$ and $e$ agree on every generator, hence on every element; if $\rho(a)=0$, then $e(a)=0$, so $a$ belongs to the ideal. The reverse inclusion follows from $\rho e=\rho$. Thus $S$ is a quotient of the finitely presented algebra $S_\lambda$ by finitely many relations, and is finitely presented over $R$.
+
+The finite-type permanence argument gives the same conclusion: $S_\lambda$ is of finite type over $S$ through $\sigma$, and the composite $S\to S_\lambda\to S$ is the finitely presented identity. Part (4) of [finite-presentation permanence](#native-algebra-lemma-compose-finite-type) makes $S$ finitely presented over $S_\lambda$; composition with $R\to S_\lambda$ then proves (1). ∎
 
 #### Lemma. The filtered category of finite ring presentations
- Let $R \to A$ be a ring map. Consider the category $\mathcal{I}$ of all diagrams of $R$-algebra maps $A' \to A$ with $A'$ finitely presented over $R$. Then $\mathcal{I}$ is filtered, and the colimit of the $A'$ over $\mathcal{I}$ is isomorphic to $A$.
 
-**Proof.** The category[^1] $\mathcal{I}$ is nonempty as $R \to A$ is an object of it. Consider a pair of objects $A' \to A$, $A'' \to A$ of $\mathcal{I}$. Then $A' \otimes_R A'' \to A$ is in $\mathcal{I}$ (use Lemmas [Composition of finite-type ring maps](#native-algebra-lemma-compose-finite-type) and [Base change for finite algebras](#native-algebra-lemma-base-change-finiteness)). The ring maps $A' \to A' \otimes_R A''$ and $A'' \to A' \otimes_R A''$ define arrows in $\mathcal{I}$ thereby proving the second defining property of a filtered category, see Categories, Definition [The geometric construction](#context-categories-definition-directed). Finally, suppose that we have two morphisms $\sigma, \tau : A' \to A''$ in $\mathcal{I}$. If $x_1, \ldots, x_r \in A'$ are generators of $A'$ as an $R$-algebra, then we can consider $A''' = A''/(\sigma(x_i) - \tau(x_i))$. This is a finitely presented $R$-algebra and the given $R$-algebra map $A'' \to A$ factors through the surjection $\nu : A'' \to A'''$. Thus $\nu$ is a morphism in $\mathcal{I}$ equalizing $\sigma$ and $\tau$ as desired.
+For an $R$-algebra $A$, consider the category of finitely presented $R$-algebras $A'$ equipped with a map $A'\to A$; arrows commute with those maps. With the size convention below,[^1] this category is filtered and its algebra colimit is canonically $A$.
 
-The fact that our index category is filtered means that we may compute the value of $B = \mathop{\operatorname{colim}}_{A' \to A} A'$ in the category of sets (some details omitted; compare with the discussion in Categories, Section [The geometric construction](#context-categories-section-directed-colimits)). To see that $B \to A$ is surjective, for every $a \in A$ we can use $R[x] \to A$, $x \mapsto a$ to see that $a$ is in the image of $B \to A$. Conversely, if $b \in B$ is mapped to zero in $A$, then we can find $A' \to A$ in $\mathcal{I}$ and $a' \in A'$ which maps to $b$. Then $A'/(a') \to A$ is in $\mathcal{I}$ as well and the map $A' \to B$ factors as $A' \to A'/(a') \to B$ which shows that $b = 0$ as desired. $\square$
+**Proof.** The object $R\to A$ makes it nonempty. Two objects have a common target, their tensor product over $R$ with the map to $A$ induced by multiplication. Tensor products of two finitely presented algebras have finite presentations, obtained by joining their variables and relations.
+
+For parallel arrows $u,v:A'\to A''$, choose finite algebra generators $a_1,\ldots,a_n$ of $A'$. The quotient
+
+$$A'''=A''/(u(a_i)-v(a_i):1\leq i\leq n)$$
+
+is finitely presented over $R$, still maps to $A$, and the quotient arrow equalizes $u$ and $v$. They agree after quotienting on generators and hence everywhere. This verifies all filteredness conditions.
+
+One may compute a filtered algebra colimit using representatives from its objects. Sums and products of two representatives are formed in a common later object, and equality is witnessed in a further object; filteredness makes these operations well-defined. The resulting ring has the required universal property. Its canonical map to $A$ is onto because $a\in A$ is represented by the object $R[T]\to A$ with $T\mapsto a$. If a representative $a'\in A'$ maps to zero in $A$, the object $A'/(a')\to A$ kills it and is still finitely presented. Thus the colimit map is injective as well, proving the assertion. ∎
 
 #### Definition. Standard smooth presentations
 
-Let $R$ be a ring. Given integers $n \geq c \geq 0$ and $f_1, \ldots, f_c \in R[x_1, \ldots, x_n]$, we say $$R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$$ is a *standard smooth algebra over $R$* if the polynomial $$g =
-\det
-\left(
-\begin{matrix}
-\partial f_1/\partial x_1 &
-\partial f_2/\partial x_1 &
-\ldots &
-\partial f_c/\partial x_1 \\
-\partial f_1/\partial x_2 &
-\partial f_2/\partial x_2 &
-\ldots &
-\partial f_c/\partial x_2 \\
-\ldots & \ldots & \ldots & \ldots \\
-\partial f_1/\partial x_c &
-\partial f_2/\partial x_c &
-\ldots &
-\partial f_c/\partial x_c
-\end{matrix}
-\right)$$ maps to an invertible element in $R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$. We say an $R$-algebra $S$ is *standard smooth* or that the ring map $R \to S$ is *standard smooth* if there exist $n \geq c \geq 0$ and $f_1, \ldots, f_c \in R[x_1, \ldots, x_n]$ such that $R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ is a standard smooth algebra over $R$ and $S$ is isomorphic to $R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ as an $R$-algebra.
+Choose $n\geq c\geq0$ and polynomials $f_1,\ldots,f_c\in R[x_1,\ldots,x_n]$. The presentation
+
+$$S=R[x_1,\ldots,x_n]/(f_1,\ldots,f_c)$$
+
+is **standard smooth** if the image in $S$ of
+
+$$\Delta=\det\left(\frac{\partial f_j}{\partial x_i}\right)_{1\leq i,j\leq c}$$
+
+is a unit. Thus the determinant uses the first $c$ variables; ordering other chosen variables first gives the corresponding presentation. For $c=0$ the determinant is $1$. An $R$-algebra, or its structure homomorphism, is called standard smooth if it admits an $R$-algebra isomorphism with such a presentation.
 
 #### Proposition. Characterizations of formal smoothness
- Let $R \to S$ be a ring map. Consider a formally smooth $R$-algebra $P$ and a surjection $P \to S$ with kernel $J$. The following are equivalent
 
-1.  $S$ is formally smooth over $R$,
+Let $R\to S$ be any ring map. In the conditions below, $P\twoheadrightarrow S$ ranges over surjections of $R$-algebras for which $P$ is formally smooth over $R$, and $J$ denotes the kernel. The following are equivalent:
 
-2.  for some $P \to S$ as above there exists a section to $P/J^2 \to S$,
+1. $S$ is formally smooth over $R$.
+2. For at least one such surjection, $P/J^2\to S$ has an $R$-algebra section.
+3. Every such surjection has that section.
+4. For at least one such surjection, the sequence
+   $$0\longrightarrow J/J^2\longrightarrow\Omega_{P/R}\otimes_PS
+   \longrightarrow\Omega_{S/R}\longrightarrow0$$
+   is split exact.
+5. This sequence is split exact for every such surjection.
+6. The naive cotangent complex $\mathrm{NL}_{S/R}$ is quasi-isomorphic to a projective $S$-module in degree zero; equivalently,
+   $$H_1(\mathrm{NL}_{S/R})=0\quad\text{and}\quad\Omega_{S/R}\text{ is projective}.$$
 
-3.  for all $P \to S$ as above there exists a section to $P/J^2 \to S$,
+Polynomial algebras on arbitrary sets of variables provide examples of the allowed $P$, so the existence conditions always range over a nonempty class.
 
-4.  for some $P \to S$ as above the sequence $0 \to J/J^2 \to \Omega_{P/R} \otimes S \to \Omega_{S/R} \to 0$ is split exact,
+**Proof.** The complete polynomial-presentation criterion is *Formally smooth, unramified and étale ring maps*, Theorem 3.1 and §4. Its proof permits infinitely many variables. It identifies (1) and (6): for a polynomial presentation the degree-zero term is free, and vanishing of degree-one homology together with projectivity of the cokernel is exactly a split conormal sequence. The presentation-comparison theorem identifies this with the canonical naive complex.
 
-5.  for all $P \to S$ as above the sequence $0 \to J/J^2 \to \Omega_{P/R} \otimes S \to \Omega_{S/R} \to 0$ is split exact, and
+We verify the assertions for a general formally smooth $P$. Condition (1) lifts $1_S$ across the square-zero kernel of $P/J^2\to S$, giving (3), and (3) implies (2). Conversely, given the section in (2), test a map $S\to A/I$ with $I^2=0$. Formal smoothness of $P$ lifts its composite with $P\to S$ to $P\to A$. This lift kills $J^2$ because it sends $J$ into $I$. Composing the induced map $P/J^2\to A$ with the section lifts $S\to A/I$. Thus (2) implies (1).
 
-6.  the naive cotangent complex $\mathrm{NL}_{S/R}$ is quasi-isomorphic to a projective $S$-module placed in degree $0$: this means that $H_1(\mathrm{NL}_{S/R}) = 0$ and that $\Omega_{S/R}$ is a projective $S$-module.
+A section $\sigma:S\to P/J^2$ gives the derivation
 
-**Proof.** It is clear that (1) implies (3) implies (2), see first part of the proof of Lemma [Criteria for formal smoothness and smooth morphisms](#native-algebra-lemma-characterize-formally-smooth). It is also true that (3) implies (5) implies (4) and that (2) implies (4), see first part of the proof of Lemma [Criteria for formal smoothness and smooth morphisms](#native-algebra-lemma-characterize-formally-smooth-again). Finally, Lemma [Criteria for formal smoothness and smooth morphisms](#native-algebra-lemma-characterize-formally-smooth-again) applied to the canonical surjection $R[S] \to S$ ([Commutative algebra](#context-algebra-equation-canonical-presentation)) shows that (1) implies (6).
+$$D:P\longrightarrow J/J^2,\qquad
+D(p)=p\bmod J^2-\sigma(\bar p),$$
 
-Assume (4) and let's prove (6). Consider the sequence of Lemma [The transitivity sequence for the naive cotangent complex](#native-algebra-lemma-exact-sequence-nl) associated to the ring maps $R \to P \to S$. By the implication (1) $\Rightarrow$ (6) proved above we see that $\mathrm{NL}_{P/R} \otimes_P S$ is quasi-isomorphic to $\Omega_{P/R} \otimes_P S$ placed in degree $0$. Hence $H_1(\mathrm{NL}_{P/R} \otimes_P S) = 0$. Since $P \to S$ is surjective we see that $\mathrm{NL}_{S/P}$ is homotopy equivalent to $J/J^2$ placed in degree $1$ (Lemma [Cotangent complexes and differentials](#native-algebra-lemma-nl-surjection)). Thus we obtain the exact sequence $0 \to H_1(L_{S/R}) \to J/J^2 \to \Omega_{P/R} \otimes_P S \to
-\Omega_{S/R} \to 0$. By assumption we see that $H_1(L_{S/R}) = 0$ and that $\Omega_{S/R}$ is a projective $S$-module. Thus (6) follows.
+where the target is an $S$-module. Its restriction to $J$ is the quotient map to $J/J^2$. The induced map on $\Omega_{P/R}\otimes_PS$ is therefore a left inverse of the conormal map. The right exact conormal sequence is consequently split exact. Applied to all sections from (3), this proves (5), and (5) implies (4).
 
-Finally, let's prove that (6) implies (1). The assumption means that the complex $J/J^2 \to \Omega_{P/R} \otimes S$ where $P = R[S]$ and $P \to S$ is the canonical surjection ([Commutative algebra](#context-algebra-equation-canonical-presentation)) is quasi-isomorphic to a projective $S$-module placed in degree $0$. Hence Lemma [Criteria for formal smoothness and smooth morphisms](#native-algebra-lemma-characterize-formally-smooth-again) shows that $S$ is formally smooth over $R$. $\square$
+For the converse, a splitting in (4) has an $S$-linear retraction $r:\Omega_{P/R}\otimes_PS\to J/J^2$. The derivation $D=r\circ d$ satisfies $D(j)=j\bmod J^2$ for $j\in J$. In the ring $P/J^2$, define
+
+$$\theta(p)=p\bmod J^2-D(p).$$
+
+The product rule and the square-zero product of two values of $D$ make $\theta$ an $R$-algebra map. It kills $J$, so descends to a section $S\to P/J^2$. This proves (4)$\Rightarrow$(2) and completes the equivalences.
+
+For another proof of (4)$\Rightarrow$(6), use transitivity. Formal smoothness of $P$ gives a split polynomial cotangent complex with projective degree-zero homology $\Omega_{P/R}$. Tensoring its split decomposition with $S$ leaves no degree-one homology. Since $P\to S$ is surjective, its relative naive complex is $J/J^2$ in degree one. Cotangent transitivity yields
+
+$$0\longrightarrow H_1(\mathrm{NL}_{S/R})\longrightarrow J/J^2
+\longrightarrow\Omega_{P/R}\otimes_PS
+\longrightarrow\Omega_{S/R}\longrightarrow0.$$
+
+The splitting in (4) makes the first homology zero. The middle differential module is projective, since $\Omega_{P/R}$ is projective and projectivity survives base change. Its direct summand $\Omega_{S/R}$ is projective, giving (6). The split decomposition just used justifies tensoring here without any flatness assumption on $S$ over $P$. ∎
 
 #### Lemma. Containment in the Jacobson radical
- Let $R$ be a ring with Jacobson radical $\text{rad}(R)$. Let $I \subset R$ be an ideal. The following are equivalent
 
-1.  $I \subset \text{rad}(R)$, and
+For an ideal $I\subset R$, the following conditions are equivalent:
 
-2.  every element of $1 + I$ is a unit in $R$.
+1. $I\subset\operatorname{Jac}(R)$.
+2. Every element of $1+I$ is invertible in $R$.
 
-In this case every element of $R$ which maps to a unit of $R/I$ is a unit.
+When these hold, an element which is invertible modulo $I$ is already invertible in $R$.
 
-**Proof.** If $f \in \text{rad}(R)$, then $f \in \mathfrak m$ for all maximal ideals $\mathfrak m$ of $R$. Hence $1 + f \not \in \mathfrak m$ for all maximal ideals $\mathfrak m$ of $R$. Thus the closed subset $V(1 + f)$ of $\operatorname{Spec}(R)$ is empty. This implies that $1 + f$ is a unit, see Lemma [The Zariski topology on an affine spectrum](#native-algebra-lemma-zariski-topology).
+**Proof.** If $a$ belongs to every maximal ideal, $1+a$ belongs to none: otherwise subtraction would put $1$ in that maximal ideal. An element in no maximal ideal generates the unit ideal and is a unit. This proves (1)$\Rightarrow$(2).
 
-Conversely, assume that $1 + f$ is a unit for all $f \in I$. If $\mathfrak m$ is a maximal ideal and $I \not \subset \mathfrak m$, then $I + \mathfrak m = R$. Hence $1 = f + g$ for some $g \in \mathfrak m$ and $f \in I$. Then $g = 1 + (-f)$ is not a unit, contradiction.
+If (1) fails, choose a maximal ideal $\mathfrak m$ with $I\not\subset\mathfrak m$. Then $I+\mathfrak m=R$, so some $a\in I$ satisfies $1-a\in\mathfrak m$. The element $1-a\in1+I$ is not a unit, contradicting (2). Finally, if $f$ is a unit modulo $I$, choose $g$ with $fg=1+a$, $a\in I$. The latter is a unit by (2), and $g(fg)^{-1}$ is an inverse of $f$. ∎
 
-For the final statement let $f \in R$ map to a unit in $R/I$. Then we can find $g \in R$ mapping to the multiplicative inverse of $f \bmod I$. Then $fg = 1 \bmod I$. Hence $fg$ is a unit of $R$ by (2) which implies that $f$ is a unit. $\square$
+#### Lemma. The Artin–Rees lemma (Artin-Rees)
 
-#### Lemma. The Artin--Rees lemma (Artin-Rees)
- Suppose that $R$ is Noetherian. Let $I \subset R$ be an ideal. Let $N \subset M$ be finite $R$-modules. There exists a constant $c > 0$ such that $I^n M \cap N  =  I^{n-c}(I^cM \cap N)$ for all $n \geq c$.
+Let $R$ be Noetherian, $I\subset R$ an ideal, and $N\subset M$ finite $R$-modules. Some integer $c>0$ satisfies
 
-**Proof.** Consider the ring $S = R \oplus I \oplus I^2 \oplus \ldots
-= \bigoplus_{n \geq 0} I^n$. Convention: $I^0 = R$. Multiplication maps $I^n \times I^m$ into $I^{n + m}$ by multiplication in $R$. Note that if $I = (f_1, \ldots, f_t)$ then $S$ is a quotient of the Noetherian ring $R[X_1, \ldots, X_t]$. The map just sends the monomial $X_1^{e_1}\ldots X_t^{e_t}$ to $f_1^{e_1}\ldots f_t^{e_t}$. Thus $S$ is Noetherian. Similarly, consider the module $M \oplus IM \oplus I^2M \oplus \ldots
-= \bigoplus_{n \geq 0} I^nM$. This is a finitely generated $S$-module. Namely, if $x_1, \ldots, x_r$ generate $M$ over $R$, then they also generate $\bigoplus_{n \geq 0} I^nM$ over $S$. Next, consider the submodule $\bigoplus_{n \geq 0} I^nM \cap N$. This is an $S$-submodule, as is easily verified. By Lemma [Noetherian rings](#native-algebra-lemma-noetherian-basic) it is finitely generated as an $S$-module, say by $\xi_j \in \bigoplus_{n \geq 0} I^nM \cap N$, $j = 1, \ldots, s$. We may assume by decomposing each $\xi_j$ into its homogeneous pieces that each $\xi_j \in I^{d_j}M \cap N$ for some $d_j$. Set $c = \max\{d_j\}$. Then for all $n \geq c$ every element in $I^nM \cap N$ is of the form $\sum h_j \xi_j$ with $h_j \in I^{n - d_j}$. The lemma now follows from this and the trivial observation that $I^{n-d_j}(I^{d_j}M \cap N) \subset I^{n-c}(I^cM \cap N)$. $\square$
+$$I^nM\cap N=I^{n-c}(I^cM\cap N)\qquad(n\geq c).$$
+
+**Proof.** The full graded argument is *Noetherian and Artinian rings*, Theorem 5.1. Introduce the Rees algebra and its module
+
+$$\mathcal R=\bigoplus_{n\geq0}I^nt^n,\qquad
+\mathcal M=\bigoplus_{n\geq0}I^nM\,t^n.$$
+
+Generators of the finite ideal $I$ make $\mathcal R$ a finite type $R$-algebra, hence Noetherian. Generators of $M$ in degree zero make $\mathcal M$ finite over it. Its graded submodule
+
+$$\mathcal N=\bigoplus_{n\geq0}(I^nM\cap N)t^n$$
+
+therefore has a finite homogeneous generating list. Choose $c\geq1$ at least as large as every generator degree. If a generator has degree $d\leq c$, its contribution in degree $n\geq c$ lies in
+
+$$I^{n-d}(I^dM\cap N)
+\subset I^{n-c}(I^cM\cap N).$$
+
+This gives one inclusion in the assertion. The reverse inclusion follows because multiplication by $I^{n-c}$ sends $I^cM\cap N$ into both $I^nM$ and $N$. If the graded submodule is zero, take $c=1$. Thus the strictly positive choice in the statement is always available. ∎
 
 #### Lemma. The snake lemma
 
-*Source credit:* the original source citation Cartan-Eilenberg (III, Lemma 3.3)
+*Historical source citation:* Cartan–Eilenberg, III, Lemma 3.3.
 
-Given a commutative diagram $$\begin{gathered}\begin{matrix}\phantom{X} & X & Y & Z & 0 \\ 0 & U & V & W\end{matrix} \\[6pt] \begin{aligned}X & \longrightarrow Y \\ X & \xrightarrow{\alpha} U \\ Y & \longrightarrow Z \\ Y & \xrightarrow{\beta} V \\ Z & \longrightarrow 0 \\ Z & \xrightarrow{\gamma} W \\ 0 & \longrightarrow U \\ U & \longrightarrow V \\ V & \longrightarrow W\end{aligned}\end{gathered}$$ of abelian groups with exact rows, there is a canonical exact sequence $$\operatorname{Ker}(\alpha) \to \operatorname{Ker}(\beta) \to \operatorname{Ker}(\gamma)
-\to
-\operatorname{Coker}(\alpha) \to \operatorname{Coker}(\beta) \to \operatorname{Coker}(\gamma)$$ Moreover: if $X \to Y$ is injective, then the first map is injective; if $V \to W$ is surjective, then the last map is surjective.
+Take exact rows of abelian groups
 
-**Proof.** The map $\partial : \operatorname{Ker}(\gamma) \to \operatorname{Coker}(\alpha)$ is defined as follows. Take $z \in \operatorname{Ker}(\gamma)$. Choose $y \in Y$ mapping to $z$. Then $\beta(y) \in V$ maps to zero in $W$. Hence $\beta(y)$ is the image of some $u \in U$. Set $\partial z = \overline{u}$, the class of $u$ in the cokernel of $\alpha$. Proof of exactness is omitted. $\square$
+$$X\xrightarrow{u}Y\xrightarrow{v}Z\longrightarrow0,
+\qquad 0\longrightarrow U\xrightarrow{a}V\xrightarrow{b}W,$$
+
+and homomorphisms $\alpha:X\to U$, $\beta:Y\to V$, $\gamma:Z\to W$ with
+
+$$\beta u=a\alpha,\qquad \gamma v=b\beta.$$
+
+There is a canonical exact sequence
+
+$$\ker\alpha\longrightarrow\ker\beta\longrightarrow\ker\gamma
+\xrightarrow{\partial}\operatorname{coker}\alpha
+\longrightarrow\operatorname{coker}\beta
+\longrightarrow\operatorname{coker}\gamma.$$
+
+If $u$ is injective, its first arrow is injective. If $b$ is surjective, the final arrow is surjective.
+
+**Construction of the connecting map.** For $z\in\ker\gamma$, choose $y\in Y$ with $v(y)=z$. Then $b\beta(y)=\gamma(z)=0$, so exactness of the lower row gives a unique $w\in U$ with $a(w)=\beta(y)$. Set $\partial(z)=[w]$ modulo $\alpha(X)$. Changing the lift to $y+u(x)$ changes $w$ to $w+\alpha(x)$, so the class is independent of the lift. Choosing lifts for two elements and adding them proves additivity. The remaining maps are induced by $u,v,a,b$.
+
+**Exactness.** At $\ker\beta$, suppose $y$ satisfies $\beta(y)=0$ and $v(y)=0$. Write $y=u(x)$. Then $a\alpha(x)=0$, and injectivity of $a$ gives $\alpha(x)=0$. Conversely $u$ carries $\ker\alpha$ into $\ker\beta$ and $vu=0$.
+
+At $\ker\gamma$, an element coming from $\ker\beta$ has zero connecting class. If $\partial(z)=0$, choose $y,w$ as above and write $w=\alpha(x)$. Replacing $y$ by $y-u(x)$ gives an element of $\ker\beta$ still mapping to $z$. This proves exactness there.
+
+At $\operatorname{coker}\alpha$, a class $[w]$ maps to zero precisely when $a(w)=\beta(y)$ for some $y\in Y$. Then $z=v(y)$ belongs to $\ker\gamma$, because $\gamma v(y)=b\beta(y)=ba(w)=0$, and its connecting class is $[w]$. Conversely the construction of $\partial$ makes every connecting class map to zero in $\operatorname{coker}\beta$.
+
+At $\operatorname{coker}\beta$, let $[t]$, $t\in V$, map to zero in $\operatorname{coker}\gamma$. Write $b(t)=\gamma(z)$ and lift $z$ to $y\in Y$. Then $b(t-\beta(y))=0$, so $t-\beta(y)=a(w)$ for some $w\in U$. Thus $[t]$ is the image of $[w]$. The reverse inclusion follows from $ba=0$.
+
+If $u$ is injective, its restriction to $\ker\alpha$ is injective. If $b$ is surjective, every class in $W/\gamma(Z)$ has a representative lifted from $V$, giving surjectivity at the other endpoint. Finally, any homomorphism between two such diagrams carries the chosen lifts into compatible lifts. It therefore preserves $\partial$, proving naturality and the claimed canonical character. ∎
 
 #### Lemma. Characterizations of projective modules
 
-Let $R$ be a ring. Let $P$ be an $R$-module. The following are equivalent
+For an arbitrary $R$-module $P$, these conditions are equivalent:
 
-1.  $P$ is projective,
+1. $P$ is projective.
+2. There is an $R$-module $Q$ such that $P\oplus Q$ is free.
+3. $\operatorname{Ext}^1_R(P,M)=0$ for every $R$-module $M$.
 
-2.  $P$ is a direct summand of a free $R$-module, and
+**Proof.** Take a free surjection $\pi:F\to P$. If $P$ is projective, its identity lifts to $i:P\to F$, with $\pi i=1_P$. Every $f\in F$ has the unique decomposition
 
-3.  $\operatorname{Ext}^1_R(P, M) = 0$ for every $R$-module $M$.
+$$f=i\pi(f)+(f-i\pi(f)),\qquad f-i\pi(f)\in\ker\pi.$$
 
-**Proof.** Assume $P$ is projective. Choose a surjection $\pi : F \to P$ where $F$ is a free $R$-module. As $P$ is projective there exists a $i \in \operatorname{Hom}_R(P, F)$ such that $\pi \circ i = \text{id}_P$. In other words $F \cong \operatorname{Ker}(\pi) \oplus i(P)$ and we see that $P$ is a direct summand of $F$.
+Thus $F=i(P)\oplus\ker\pi$, proving (1)$\Rightarrow$(2). Conversely, maps from a free module lift across every surjection: lift the images of a basis independently. If $F=P\oplus Q$, extend a map from $P$ to $F$ by zero on $Q$, lift it from $F$, and restrict the lift to $P$. This proves projectivity of $P$. Equivalently, $\operatorname{Hom}_R(F,-)$ is a product of copies of the identity functor, hence exact, and $\operatorname{Hom}_R(P,-)$ is a direct summand of that functor.
 
-Conversely, assume that $P \oplus Q = F$ is a free $R$-module. Note that the free module $F = \bigoplus_{i \in I} R$ is projective as $\operatorname{Hom}_R(F, M) = \prod_{i \in I} M$ and the functor $M \mapsto \prod_{i \in I} M$ is exact. Then $\operatorname{Hom}_R(F, -) = \operatorname{Hom}_R(P, -) \times \operatorname{Hom}_R(Q, -)$ as functors, hence both $P$ and $Q$ are projective.
+For (2)$\Rightarrow$(3), one can compute Ext by an explicit free resolution. On $F=P\oplus Q$, let $e_P$ and $e_Q$ be the complementary projections, viewed as endomorphisms of $F$. The sequence
 
-Assume $P \oplus Q = F$ is a free $R$-module. Then we have a free resolution $F_\bullet$ of the form $$\ldots \to F \xrightarrow{a} F \xrightarrow{b} F \to P \to 0$$ where the maps $a, b$ alternate and are equal to the projectors onto $P$ and $Q$, respectively. Hence the complex $\operatorname{Hom}_R(F_\bullet, M)$ is split exact in degrees $\geq 1$, whence we see the vanishing in (3).
+$$\cdots\longrightarrow F\xrightarrow{e_P}F
+\xrightarrow{e_Q}F\xrightarrow{\pi}P\longrightarrow0$$
 
-Assume $\operatorname{Ext}^1_R(P, M) = 0$ for every $R$-module $M$. Pick a free resolution $F_\bullet \to P$. Set $M = \operatorname{Im}(F_1 \to F_0) = \operatorname{Ker}(F_0 \to P)$. Consider the element $\xi \in \operatorname{Ext}^1_R(P, M)$ given by the class of the quotient map $\pi : F_1 \to M$. Since $\xi$ is zero there exists a map $s : F_0 \to M$ such that $\pi = s \circ (F_1 \to F_0)$. Clearly, this means that $$F_0 = \operatorname{Ker}(s) \oplus \operatorname{Ker}(F_0 \to P) =
-P \oplus \operatorname{Ker}(F_0 \to P)$$ and we win. $\square$
+continues with alternating $e_Q,e_P$. It is exact because each projector has image equal to the kernel of the other, and $\ker\pi=Q$. Applying $\operatorname{Hom}_R(-,M)$ gives complementary projections again. The complex is split exact in positive degrees, so its first cohomology, $\operatorname{Ext}^1_R(P,M)$, vanishes.
+
+Assume (3), and choose any free resolution with differentials $d_j:F_j\to F_{j-1}$ and augmentation $F_0\to P$. Set $K=\ker(F_0\to P)$, and write $d_1=iq$, where $i:K\hookrightarrow F_0$ and $q\colon F_1\twoheadrightarrow K$. Since $q d_2=0$, the map $q$ is a degree-one cocycle in $\operatorname{Hom}_R(F_\bullet,K)$. Its class vanishes by (3), so there is $s:F_0\to K$ with $q=s d_1=s i q$. Surjectivity of $q$ implies $si=1_K$. Hence
+
+$$F_0=\ker s\oplus i(K),\qquad \ker s\simeq P.$$
+
+This is (2). No finite-generation hypothesis was used. ∎
 
 #### Lemma. Composition of standard smooth presentations
- A composition of standard smooth ring maps is standard smooth.
 
-**Proof.** Suppose that $R \to S$ and $S \to S'$ are standard smooth. We choose presentations $S =  R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ and $S' = S[y_1, \ldots, y_m]/(g_1, \ldots, g_d)$. Choose elements $g_j' \in R[x_1, \ldots, x_n, y_1, \ldots, y_m]$ mapping to the $g_j$. In this way we see $S' = R[x_1, \ldots, x_n, y_1, \ldots, y_m]/
-(f_1, \ldots, f_c, g'_1, \ldots, g'_d)$. To show that $S'$ is standard smooth it suffices to verify that the determinant $$\det
-\left(
-\begin{matrix}
-\partial f_1/\partial x_1 &
-\ldots &
-\partial f_c/\partial x_1 &
-\partial g'_1/\partial x_1 &
-\ldots &
-\partial g'_d/\partial x_1 \\
-\ldots &
-\ldots &
-\ldots &
-\ldots &
-\ldots &
-\ldots  \\
-\partial f_1/\partial x_c &
-\ldots &
-\partial f_c/\partial x_c &
-\partial g'_1/\partial x_c &
-\ldots &
-\partial g'_d/\partial x_c \\
-0 &
-\ldots &
-0 &
-\partial g_1/\partial y_1 &
-\ldots &
-\partial g_d/\partial y_1 \\
-\ldots &
-\ldots &
-\ldots &
-\ldots &
-\ldots &
-\ldots  \\
-0 &
-\ldots &
-0 &
-\partial g_1/\partial y_d &
-\ldots &
-\partial g_d/\partial y_d
-\end{matrix}
-\right)$$ is invertible in $S'$. This is clear since it is the product of the two determinants which were assumed to be invertible by hypothesis. $\square$
+If $R\to S$ and $S\to T$ are standard smooth, their composite $R\to T$ is standard smooth.
+
+**Proof.** Choose presentations
+
+$$S=R[x_1,\ldots,x_n]/(f_1,\ldots,f_c),\qquad
+T=S[y_1,\ldots,y_m]/(g_1,\ldots,g_d),$$
+
+with the invertible minors given by the first $c$ of the $x$ variables and the first $d$ of the $y$ variables. Lift each coefficient of $g_j$ to $R[x_1,\ldots,x_n]$, giving a polynomial $\widetilde g_j$. Then
+
+$$T=R[x_1,\ldots,x_n,y_1,\ldots,y_m]/
+(f_1,\ldots,f_c,\widetilde g_1,\ldots,\widetilde g_d).$$
+
+Order the selected variables first: $x_1,\ldots,x_c,y_1,\ldots,y_d$. For these rows and the displayed equation columns, the Jacobian block is
+
+$$\begin{pmatrix}A&C\\0&D\end{pmatrix},\qquad
+A=\left(\frac{\partial f_j}{\partial x_i}\right)_{i,j\leq c},
+\quad D=\left(\frac{\partial\widetilde g_j}{\partial y_i}\right)_{i,j\leq d}.$$
+
+The zero block occurs because the $f_j$ use no $y$ variables. In $T$, the block $D$ is the Jacobian block of the $g_j$ over $S$. Thus the determinant is the product of the two prescribed units. The combined presentation is standard smooth. The same argument includes $c=0$ or $d=0$, with empty determinant equal to one. ∎
 
 #### Lemma. The spectrum of a localization
- Let $R$ be a ring. Let $S \subset R$ be a multiplicative subset. The map $R \to S^{-1}R$ induces via the functoriality of $\operatorname{Spec}$ a homeomorphism $$\operatorname{Spec}(S^{-1}R)
-\longrightarrow
-\{\mathfrak p \in \operatorname{Spec}(R) \mid S \cap \mathfrak p = \emptyset \}$$ where the topology on the right hand side is that induced from the Zariski topology on $\operatorname{Spec}(R)$. The inverse map is given by $\mathfrak p \mapsto S^{-1}\mathfrak p = \mathfrak p(S^{-1}R)$.
 
-**Proof.** Denote the right hand side of the arrow of the lemma by $D$. Choose a prime $\mathfrak p' \subset S^{-1}R$ and let $\mathfrak p$ be the inverse image of $\mathfrak p'$ in $R$. Since $\mathfrak p'$ does not contain $1$ we see that $\mathfrak p$ does not contain any element of $S$. Hence $\mathfrak p \in D$ and we see that the image is contained in $D$. Let $\mathfrak p \in D$. By assumption the image $\overline{S}$ does not contain $0$. By basic notion ([Localization of local algebra](#context-algebra-item-localization-zero)) $\overline{S}^{-1}(R/\mathfrak p)$ is not the zero ring. By basic notion ([Localization of local algebra](#context-algebra-item-localize-ideal)) we see $S^{-1}R / S^{-1}\mathfrak p = \overline{S}^{-1}(R/\mathfrak p)$ is a domain, and hence $S^{-1}\mathfrak p$ is a prime. The equality of rings also shows that the inverse image of $S^{-1}\mathfrak p$ in $R$ is equal to $\mathfrak p$, because $R/\mathfrak p \to \overline{S}^{-1}(R/\mathfrak p)$ is injective by basic notion ([Localization of local algebra](#context-algebra-item-localize-nonzerodivisors)). This proves that the map $\operatorname{Spec}(S^{-1}R) \to \operatorname{Spec}(R)$ is bijective onto $D$ with inverse as given. Every element of $S^{-1}R$ is a unit times the image of an element of $R$. Hence the map is a homeomorphism onto its image by Lemma [Prime spectra and associated points](#native-algebra-lemma-spec-homeomorphism-onto-image-units). $\square$
+For a multiplicative subset $S$ of a ring $R$, contraction gives a homeomorphism
+
+$$\operatorname{Spec}(S^{-1}R)\ \xrightarrow{\sim}
+D_S:=\{\mathfrak p\in\operatorname{Spec}R: \mathfrak p\cap S=\varnothing\},$$
+
+where $D_S$ has the subspace topology. Its inverse sends $\mathfrak p$ to $S^{-1}\mathfrak p$.
+
+**Proof.** A prime of the localized ring contracts to a prime avoiding $S$, because the images of elements of $S$ are units. Conversely, if $\mathfrak p$ avoids $S$, the quotient
+
+$$S^{-1}R/S^{-1}\mathfrak p\simeq \bar S^{-1}(R/\mathfrak p)$$
+
+is a nonzero domain. Thus $S^{-1}\mathfrak p$ is prime. The domain $R/\mathfrak p$ injects into this localization, so contraction returns $\mathfrak p$. Extension also returns any prime $\mathfrak q$ of $S^{-1}R$: membership of $a/s$ in $\mathfrak q$ is equivalent to membership of $a/1$, as $s/1$ is a unit. These observations prove the bijection.
+
+Finally, a basic open $D(a/s)$ corresponds exactly to $D(a)\cap D_S$. Such opens form bases on both sides, which proves the homeomorphism. If $0\in S$, both spaces are empty and the assertion still applies. ∎
 
 #### Lemma. A disjoint spectrum and a product of rings
- Let $R$ be a ring. If $\operatorname{Spec}(R) = U \amalg V$ with both $U$ and $V$ open then $R \cong R_1 \times R_2$ with $U \cong \operatorname{Spec}(R_1)$ and $V \cong \operatorname{Spec}(R_2)$ via the maps in Lemma [The spectrum of a product of rings](#native-algebra-lemma-spec-product). Moreover, both $R_1$ and $R_2$ are localizations as well as quotients of the ring $R$.
 
-**Proof.** By Lemma [Product decompositions from disjoint closed subsets](#native-algebra-lemma-disjoint-decomposition) we have $U = D(e)$ and $V = D(1-e)$ for some idempotent $e$. By Lemma [Standard affine covers of a spectrum](#native-algebra-lemma-standard-covering) we see that $R \cong R_e \times R_{1 - e}$ (since clearly $R_{e(1-e)} = 0$ so the glueing condition is trivial; of course it is trivial to prove the product decomposition directly in this case). The lemma follows. $\square$
+Suppose $\operatorname{Spec}R=U\amalg V$ and both subsets are open. There are rings $R_1,R_2$ and an isomorphism $R\simeq R_1\times R_2$ whose two spectral components are $U$ and $V$. Each factor is both a quotient and a localization of $R$.
+
+**Proof.** The [clopen-idempotent correspondence](#native-algebra-lemma-disjoint-decomposition) supplies $e^2=e$ with $U=D(e)$ and $V=D(1-e)$. Multiplication gives mutually inverse maps
+
+$$R\longrightarrow eR\times(1-e)R,\quad r\longmapsto(er,(1-e)r),
+\qquad (a,b)\longmapsto a+b.$$
+
+The identities in the two factor rings are $e$ and $1-e$; their cross products vanish. Moreover,
+
+$$eR\simeq R/(1-e)R\simeq R_e,\qquad
+(1-e)R\simeq R/eR\simeq R_{1-e}.$$
+
+Indeed, an invertible idempotent is one, so inverting $e$ imposes exactly $1-e=0$, and likewise for the other factor. The localization lemma identifies their spectra with $U,V$.
+
+One may also obtain the same isomorphism by the [affine gluing sequence](#native-algebra-lemma-standard-covering) for $D(e),D(1-e)$. Its compatibility condition is empty because the intersection has coordinate ring $R_{e(1-e)}=0$. Both descriptions include an empty component, represented by the zero ring. ∎
 
 #### Lemma. The topology of a Noetherian spectrum
- If $R$ is a Noetherian ring then $\operatorname{Spec}(R)$ is a Noetherian topological space, see Topology, Definition [Noetherian algebraic spaces](#context-topology-definition-noetherian).
 
-**Proof.** This is because any closed subset of $\operatorname{Spec}(R)$ is uniquely of the form $V(I)$ with $I$ a radical ideal, see Lemma [The Zariski topology on an affine spectrum](#native-algebra-lemma-zariski-topology). And this correspondence is inclusion reversing. Thus the result follows from the definitions. $\square$
+If $R$ is Noetherian, its prime spectrum is a Noetherian topological space: every descending sequence of closed subsets eventually stabilizes.
+
+**Proof.** Write a descending sequence as $V(I_0)\supseteq V(I_1)\supseteq\cdots$, choosing each $I_j$ radical. The correspondence between radical ideals and closed sets reverses inclusion, so $I_0\subseteq I_1\subseteq\cdots$. The ascending chain condition on ideals makes this sequence, and hence the original closed sequence, stationary. ∎
 
 #### Lemma. Irreducibility of an affine spectrum
 
-Let $R$ be a ring.
+For every ring $R$:
 
-1.  For a prime $\mathfrak p \subset R$ the closure of $\{\mathfrak p\}$ in the Zariski topology is $V(\mathfrak p)$. In a formula $\overline{\{\mathfrak p\}} = V(\mathfrak p)$.
+1. The closure of a point $\mathfrak p$ is $V(\mathfrak p)$.
+2. The irreducible closed subsets are precisely $V(\mathfrak p)$ for prime ideals $\mathfrak p$.
+3. The irreducible components are precisely $V(\mathfrak p)$ for minimal prime ideals $\mathfrak p$.
 
-2.  The irreducible closed subsets of $\operatorname{Spec}(R)$ are exactly the subsets $V(\mathfrak p)$, with $\mathfrak p \subset R$ a prime.
+**Proof.** A closed set $V(I)$ contains $\mathfrak p$ exactly when $I\subseteq\mathfrak p$. It then contains $V(\mathfrak p)$, which itself contains the point. This proves (1). A singleton is irreducible, and so is its closure, proving that all sets in (2) are irreducible.
 
-3.  The irreducible components (see Topology, Definition [The geometric construction](#context-topology-definition-irreducible-components)) of $\operatorname{Spec}(R)$ are exactly the subsets $V(\mathfrak p)$, with $\mathfrak p \subset R$ a minimal prime.
+Conversely, take a nonempty irreducible $V(I)$ and replace $I$ by its radical. If $I$ were not prime, there would be $a,b\notin I$ with $ab\in I$. Every prime containing $I$ contains $a$ or $b$, whence
 
-**Proof.** Note that if $\mathfrak p \in V(I)$, then $I \subset \mathfrak p$. Hence, clearly $\overline{\{\mathfrak p\}} = V(\mathfrak p)$. In particular $V(\mathfrak p)$ is the closure of a singleton and hence irreducible. The second assertion implies the third. To show the second, let $V(I) \subset \operatorname{Spec}(R)$ with $I$ a radical ideal. If $I$ is not prime, then choose $a, b\in R$, $a, b\not \in I$ with $ab\in I$. In this case $V(I, a) \cup V(I, b) = V(I)$, but neither $V(I, b) = V(I)$ nor $V(I, a) = V(I)$, by Lemma [The Zariski topology on an affine spectrum](#native-algebra-lemma-zariski-topology). Hence $V(I)$ is not irreducible. $\square$
+$$V(I)=V(I+(a))\cup V(I+(b)).$$
+
+Both pieces are proper: equality with either would put $a$ or $b$ in $\sqrt I=I$, by the radical-ideal correspondence. This contradicts irreducibility, so $I$ is prime. Finally, among these closed irreducible sets, maximality under inclusion is exactly minimality of the prime ideal, proving (3). ∎
 
 #### Lemma. A single polynomial equation
 
-Suppose that $R$ is a Noetherian local ring and $x\in \mathfrak m$ an element of its maximal ideal. Then $\dim R \leq \dim R/xR + 1$. If $x$ is not contained in any of the minimal primes of $R$ then equality holds. (For example if $x$ is a nonzerodivisor.)
+Let $(R,\mathfrak m)$ be Noetherian local and let $x\in\mathfrak m$. Then
 
-**Proof.** If $x_1, \ldots, x_{\dim R/xR} \in R$ map to elements of $R/xR$ which generate an ideal of definition for $R/xR$, then $x, x_1, \ldots,
-x_{\dim R/xR}$ generate an ideal of definition for $R$. Hence the inequality by Proposition [Dimension and codimension](#native-algebra-proposition-dimension). On the other hand, if $x$ is not contained in any minimal prime of $R$, then the chains of primes in $R/xR$ all give rise to chains in $R$ which are at least one step away from being maximal. $\square$
+$$\dim R\leq\dim(R/xR)+1.$$
+
+Equality holds if $x$ lies in no minimal prime of $R$; in particular, it holds when $x$ is a nonzerodivisor.
+
+**Proof.** Put $d=\dim(R/xR)$. The complete parameter theorem is *Dimension theory of Noetherian local rings*, Theorem 2.1, with its growth bound in §1. Choose $d$ elements of the quotient generating an ideal with maximal radical, and lift them to $a_1,\ldots,a_d\in R$. The ideal $(x,a_1,\ldots,a_d)$ has radical $\mathfrak m$. The same theorem bounds $\dim R$ by its $d+1$ generators.
+
+Now assume $x$ avoids every minimal prime. A prime chain in $R/xR$ lifts to a chain in $R$ whose bottom prime contains $x$. Choose a minimal prime below that bottom prime. It does not contain $x$, so prepending it extends the chain strictly by one. Thus $\dim R\geq d+1$, proving equality.
+
+For the final example, a nonzerodivisor stays a nonzerodivisor after localization. If it lay in a minimal prime $\mathfrak p$, its image in the zero-dimensional local ring $R_{\mathfrak p}$ would be nilpotent. A nilpotent element cannot act injectively on this nonzero ring. Hence a nonzerodivisor avoids all minimal primes. ∎
 
 #### Lemma. Formal étaleness in a filtered colimit
- Let $R$ be a ring. Let $I$ be a directed set. Let $(S_i, \varphi_{ii'})$ be a system of $R$-algebras over $I$. If each $R \to S_i$ is formally étale, then $S = \mathop{\operatorname{colim}}_{i \in I} S_i$ is formally étale over $R$.
 
-**Proof.** Consider a diagram as in Definition [Formally étale ring maps](#native-algebra-definition-formally-etale). By assumption we get unique $R$-algebra maps $S_i \to A$ lifting the compositions $S_i \to S \to A/I$. Hence these are compatible with the transition maps $\varphi_{ii'}$ and define a lift $S \to A$. This proves existence. The uniqueness is clear by restricting to each $S_i$. $\square$
+Let $(S_\lambda)$ be a directed system of formally étale $R$-algebras. Then $S=\operatorname{colim}_\lambda S_\lambda$ is formally étale over $R$.
+
+**Proof.** Given an $R$-algebra $A$, a square-zero ideal $I\subset A$ and a map $S\to A/I$, its restriction to each $S_\lambda$ has a unique lift $h_\lambda:S_\lambda\to A$. If $\lambda\leq\mu$, the composite of $h_\mu$ with the transition map is another lift of the same restriction. Uniqueness forces it to equal $h_\lambda$. The lifts are therefore compatible and define $h:S\to A$. A second lift would agree on every $S_\lambda$ and hence everywhere. This proves existence and uniqueness. The equivalent formulation with a nilpotent ideal follows by successive square-zero quotients. ∎
 
 #### Definition. Separable field extensions
- Let $K/k$ be a field extension.
 
-1.  We say $K$ is *separably generated over $k$* if there exists a transcendence basis $\{x_i; i \in I\}$ of $K/k$ such that the extension $K/k(x_i; i \in I)$ is a separable algebraic extension.
+For a field extension $K/k$:
 
-2.  We say $K$ is *separable over $k$* if for every subextension $k \subset K' \subset K$ with $K'$ finitely generated over $k$, the extension $K'/k$ is separably generated.
+1. It is **separably generated** when some transcendence basis $(x_i)_{i\in I}$ makes $K/k(x_i:i\in I)$ algebraic and separable.
+2. It is **separable** when every intermediate field finitely generated over $k$ is separably generated over $k$.
+
+The first definition permits an arbitrary set of transcendence-basis elements, and the second tests all finite lists of field generators.
 
 #### Lemma. Composition of formally smooth maps
- A composition of formally smooth ring maps is formally smooth.
 
-**Proof.** Omitted. (Hint: This is completely formal, and follows from considering a suitable diagram.) $\square$
+Formal smoothness is preserved by composition of ring maps.
+
+**Proof.** Let $R\to S\to T$ be formally smooth, and consider an $R$-algebra map $T\to A/I$ with $I^2=0$. First lift its restriction on $S$ to an $R$-algebra map $S\to A$. Use this lift to regard $A$ as an $S$-algebra. The given map $T\to A/I$ is now a map of $S$-algebras, so formal smoothness of $S\to T$ lifts it to $T\to A$. This is also an $R$-algebra lift, proving the claim. ∎
 
 #### Lemma. Formal smoothness of field extensions
- Let $K/k$ be an extension of fields. Then $K$ is formally smooth over $k$ if and only if $H_1(L_{K/k}) = 0$.
 
-**Proof.** This follows from Proposition [Characterizations of formal smoothness](#native-algebra-proposition-characterize-formally-smooth) and the fact that a vector space is free (hence projective). $\square$
+A field extension $K/k$ is formally smooth exactly when $H_1(L_{K/k})=0$.
+
+**Proof.** The degree-one homology here is the same as that of the naive cotangent complex. The [formal-smoothness criterion](#native-algebra-proposition-characterize-formally-smooth) requires this vanishing and projectivity of $\Omega_{K/k}$ over $K$. The latter always holds: a vector space has a basis and is free, whether or not its dimension is finite. ∎
 
 #### Lemma. Flatness
- Let $M$ be an $R$-module. The following are equivalent:
 
-1.  
+For any $R$-module $M$, the following conditions are equivalent:
 
-    $M$ is flat over $R$.
+1. $M$ is flat over $R$.
+2. Every injection $N\hookrightarrow N'$ stays injective after tensoring with $M$.
+3. For every ideal $I\subset R$, the multiplication map $I\otimes_R M\to M$ is injective.
+4. The map in (3) is injective whenever $I$ is finitely generated.
 
-2.   for every injection of $R$-modules $N \subset N'$ the map $N \otimes_R M \to N'\otimes_R M$ is injective.
+**Proof.** The complete ideal criterion, with no finiteness assumption on $M$ or Noetherian assumption on $R$, is *Tor and flat modules*, Theorem 2.1. We give its tensor argument, including the reduction to finite modules.
 
-3.  
+The implications (1)$\Rightarrow$(2)$\Rightarrow$(3)$\Rightarrow$(4) follow by applying the definitions to the indicated inclusions. Tensor is right exact, so preservation of injections also implies flatness. More explicitly, for an exact sequence $N_1\to N_2\to N_3$, set $K=\ker(N_2\to N_3)$ and $Q=\operatorname{im}(N_2\to N_3)$. The surjection $N_1\to K$ remains surjective, and
 
-    for every ideal $I \subset R$ the map $I \otimes_R M \to R \otimes_R M = M$ is injective.
+$$K\otimes_RM\longrightarrow N_2\otimes_RM
+\longrightarrow Q\otimes_RM\longrightarrow0$$
 
-4.  
+is right exact. If injections are preserved, the inclusions $K\hookrightarrow N_2$ and $Q\hookrightarrow N_3$ identify the first image with exactly the kernel needed for exactness at $N_2\otimes_RM$.[^2]
 
-    for every finitely generated ideal $I \subset R$ the map $I \otimes_R M \to R \otimes_R M = M$ is injective.
+It remains to derive preservation of injections from (4). First extend (4) to every ideal. An ideal is the directed union of its finitely generated subideals, and tensor commutes with that colimit. Concretely, a tensor in $I\otimes_RM$ uses a finite list of elements of $I$, so is represented in $J\otimes_RM$ for their finitely generated ideal $J$. If its image in $M$ is zero, (4) makes that representative zero. This proves (3).
 
-**Proof.** The implications ([the indicated step](#native-algebra-item-flat)) implies ([the indicated step](#native-algebra-item-injective)) implies ([the indicated step](#native-algebra-item-f-ideal)) implies ([the indicated step](#native-algebra-item-ffg-ideal)) are all trivial. Thus we prove ([the indicated step](#native-algebra-item-ffg-ideal)) implies ([the indicated step](#native-algebra-item-flat)). Suppose that $N_1 \to N_2 \to N_3$ is exact. Let $K = \operatorname{Ker}(N_2 \to N_3)$ and $Q = \operatorname{Im}(N_2 \to N_3)$. Then we get maps $$N_1 \otimes_R M \to
-K \otimes_R M \to
-N_2 \otimes_R M \to
-Q \otimes_R M \to
-N_3 \otimes_R M$$ Observe that the first and third arrows are surjective. Thus if we show that the second and fourth arrows are injective, then we are done[^2]. Hence it suffices to show that $- \otimes_R M$ transforms injective $R$-module maps into injective $R$-module maps.
+Next, for any submodule $G\subset R^n$, prove by induction on $n$ that $G\otimes_RM\to M^n$ is injective. For $n=0$ this is immediate, and for $n=1$ it is the all-ideal assertion. For $n>1$, let
 
-Assume $K \to N$ is an injective $R$-module map and let $x \in \operatorname{Ker}(K \otimes_R M \to N \otimes_R M)$. We have to show that $x$ is zero. The $R$-module $K$ is the union of its finite $R$-submodules; hence, $K \otimes_R M$ is the colimit of $R$-modules of the form $K_i \otimes_R M$ where $K_i$ runs over all finite $R$-submodules of $K$ (because tensor product commutes with colimits). Thus, for some $i$ our $x$ comes from an element $x_i \in K_i \otimes_R M$. Thus we may assume that $K$ is a finite $R$-module. Assume this. We regard the injection $K \to N$ as an inclusion, so that $K \subset N$.
+$$G'=G\cap(R\oplus0^{n-1}),\qquad
+G''=\operatorname{im}(G\to R^{n-1}).$$
 
-The $R$-module $N$ is the union of its finite $R$-submodules that contain $K$. Hence, $N \otimes_R M$ is the colimit of $R$-modules of the form $N_i \otimes_R M$ where $N_i$ runs over all finite $R$-submodules of $N$ that contain $K$ (again since tensor product commutes with colimits). Notice that this is a colimit over a directed system (since the sum of two finite submodules of $N$ is again finite). Hence, (by Lemma [Commutative algebra](#native-algebra-lemma-zero-directed-limit)) the element $x \in K \otimes_R M$ maps to zero in at least one of these $R$-modules $N_i \otimes_R M$ (since $x$ maps to zero in $N \otimes_R M$). Thus we may assume $N$ is a finite $R$-module.
+Here $G'$ is an ideal in the first copy of $R$, and $G''\subset R^{n-1}$. Tensoring $G'\to G\to G''\to0$ is right exact. If $z\in G\otimes_RM$ maps to zero in $M^n$, its image in $G''\otimes_RM$ is zero by induction. Thus it comes from $z'\in G'\otimes_RM$. The image of $z'$ in the first copy of $M$ is zero, since the inclusion of that copy in $M^n$ is injective. The all-ideal assertion makes $z'=0$, and hence $z=0$.
 
-Assume $N$ is a finite $R$-module. Write $N = R^{\oplus n}/L$ and $K = L'/L$ for some $L \subset L' \subset R^{\oplus n}$. For any $R$-submodule $G \subset R^{\oplus n}$, we have a canonical map $G \otimes_R M \to M^{\oplus n}$ obtained by composing $G \otimes_R M \to R^n \otimes_R M = M^{\oplus n}$. It suffices to prove that $L \otimes_R M \to M^{\oplus n}$ and $L' \otimes_R M \to M^{\oplus n}$ are injective. Namely, if so, then we see that $K \otimes_R M = L' \otimes_R M/L \otimes_R M \to M^{\oplus n}/L \otimes_R M$ is injective too[^3].
+Finally consider $K\subset N$ and a tensor $z\in K\otimes_RM$ killed in $N\otimes_RM$. A finite submodule $K_0\subset K$ contains all elements used in a representative $z_0$ of $z$. The module $N$ is the directed union of finite submodules containing $K_0$. Because $z_0$ becomes zero in the colimit of their tensors, it is already zero in $N_0\otimes_RM$ for one such finite $N_0$. It suffices to handle the inclusion $K_0\subset N_0$.
 
-Thus it suffices to show that $L \otimes_R M \to M^{\oplus n}$ is injective when $L \subset R^{\oplus n}$ is an $R$-submodule. We do this by induction on $n$. The base case $n = 1$ we handle below. For the induction step assume $n > 1$ and set $L' = L \cap R \oplus 0^{\oplus n - 1}$. Then $L'' = L/L'$ is a submodule of $R^{\oplus n - 1}$. We obtain a diagram $$\begin{gathered}\begin{matrix}\phantom{X} & L' \otimes_R M & L \otimes_R M & L'' \otimes_R M & 0 \\ 0 & M & M^{\oplus n} & M^{\oplus n - 1} & 0\end{matrix} \\[6pt] \begin{aligned}L' \otimes_R M & \longrightarrow L \otimes_R M \\ L' \otimes_R M & \longrightarrow M \\ L \otimes_R M & \longrightarrow L'' \otimes_R M \\ L \otimes_R M & \longrightarrow M^{\oplus n} \\ L'' \otimes_R M & \longrightarrow 0 \\ L'' \otimes_R M & \longrightarrow M^{\oplus n - 1} \\ 0 & \longrightarrow M \\ M & \longrightarrow M^{\oplus n} \\ M^{\oplus n} & \longrightarrow M^{\oplus n - 1} \\ M^{\oplus n - 1} & \longrightarrow 0\end{aligned}\end{gathered}$$ By induction hypothesis and the base case the left and right vertical arrows are injective. The rows are exact. It follows that the middle vertical arrow is injective too.
+Choose a finite free surjection $R^n\to N_0$, let $L$ be its kernel and let $L'$ be the inverse image of $K_0$. The preceding induction embeds both $L\otimes_RM$ and $L'\otimes_RM$ in $M^n$. These embeddings are compatible with $L\subset L'$. Right exactness then identifies the map for $K_0\subset N_0$ with
 
-The base case of the induction above is when $L \subset R$ is an ideal. In other words, we have to show that $I \otimes_R M \to M$ is injective for any ideal $I$ of $R$. We know this is true when $I$ is finitely generated. However, $I = \bigcup I_\alpha$ is the union of the finitely generated ideals $I_\alpha$ contained in it. In other words, $I = \mathop{\operatorname{colim}} I_\alpha$. Since $\otimes$ commutes with colimits we see that $I \otimes_R M = \mathop{\operatorname{colim}} I_\alpha \otimes_R M$ and since all the morphisms $I_\alpha \otimes_R M \to M$ are injective by assumption, the same is true for $I \otimes_R M \to M$. $\square$
+$$\frac{L'\otimes_RM}{L\otimes_RM}\ \longrightarrow
+\frac{M^n}{L\otimes_RM},$$
+
+which is injective.[^3] Therefore $z_0=0$, so $z=0$. This proves (2), and finishes all four equivalences. ∎
 
 #### Lemma. Fibres of a finite ring map
 
@@ -8357,3 +9191,5 @@ The [complete GNU Free Documentation License 1.2](../licenses/GFDL-1.2.txt) acco
 **Source edition.** *The Stacks Project*, by the Stacks Project authors, with its human-source copyright notice above; distributed in the *AI Integrated Stacks Project*, 2026 edition at revision `565b10e987aba5969b21145a0833f42d69f96790` (30 September 2026). The source publisher is the Stacks Project; the fork distribution and its separately credited AI changes are identified by the pinned repository and its [retained source provenance](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/PROVENANCE.md). The [source application notice](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/introduction.tex) supplies the licence grant, and [the pinned transparent source](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/tree/565b10e987aba5969b21145a0833f42d69f96790) preserves the incorporated source files and their prior network locations.
 
 **Modified course edition.** *Algebraic spaces and stacks — Artin's axioms*, October 2026, published by the Open Math Courses project, `KokunoYumeto/open-math-courses`. Adapted and integrated by GPT-6.1 Sol (OpenAI), Codex, Ultra, 5–6 October 2026. The course integrates the full general Néron desingularization, G-ring permanence and marked-family approximation treatments; independently expressed Artin–Rees perturbation supplies the exact graded comparison. The reader conversion repairs display delimiters and equivalent text controls while preserving formulas and proofs. Source authorship is retained; no AI copyright holder or human endorsement is asserted. The detailed source loci, exact edition and concrete corrections remain in this chapter. Original eligible expression is additionally dedicated to CC0; the complete inseparable modified chapter retains GFDL 1.2-or-later for component export.
+
+**Independent sections and mathematical corrections, 8 October 2026.** The component record delimits the independently written singularity-ideal, presentation, lifting, desingularization, approximation and supporting algebra passages, with their writing credits and CC0 1.0 dedication. The new replacements and corrections are by GPT-6 Astra (OpenAI), Codex, Ultra; the retained full family-approximation proof keeps its earlier writing credit. The symmetric-algebra section proves the correct general relation-module formula and exhibits a counterexample to the unrestricted conormal identification; its projective specialization retains the smooth-presentation applications. The denominator inference in part (6) of the comparison lemma is explicitly identified as unproved. Other incorporated source expression and its notices remain under GFDL 1.2-or-later.

@@ -349,7 +349,7 @@ and zero on \(\eta>0\). The full Gaussian \(\xi\)-integral is \(2\sqrt{\pi\alpha
 F(B^*T)=|\det B|^{-1}(FT)\circ B^{-T}.
 \]
 To verify it on arbitrary tempered distributions, set \(\xi=B^T\zeta\) in the defining Fourier integral. The resulting test identity is
-\(F\phi(B^{-1}u)=|\det B|F\phi(B^T\cdot)\).
+\(F\phi(B^{-1}u)=|\det B|F[\phi(B^T\cdot)](u)\).
 Pairing this identity with \(T\) proves the formula with the distributional pullback definition. This also proves its continuity.
 
 Here \(B=\begin{pmatrix}1&0\\c&1\end{pmatrix}\), so \(\det B=1\) and \(B^{-T}(\xi,\eta)=(\xi-c\eta,\eta)\). Therefore
@@ -489,10 +489,10 @@ FU_{-2}=(2\pi)^2
 \tag{P13}
 \]
 For the independent continuation check, choose \(M>2\) in (P6). Since \(G'(-2)=2\), the \(j=2\) term has removable value \(L^2\phi(0,0)\); every other term vanishes. Thus
-\
+\[
 FU_{-2}(\phi)=(2\pi)^2
 [\partial_\xi^4\phi-2\partial_\xi^2\partial_\eta\phi
-+\partial_\eta^2\phi.
++\partial_\eta^2\phi](0,0).
 \tag{P14}
 \]
 The minus sign on the mixed test derivative agrees with its total order three in (P13). On \(e^{-a\xi^2-b\eta^2}\) this equals

@@ -226,7 +226,7 @@ At \(t=0\), the ideal is
 \]
 The reduced curve lies in \(W=0\) and has equation \(F=X^3+Y^3-XYZ\). This cubic is integral: in \(k[X,Y][Z]\) it is primitive and linear in \(Z\), with relatively prime coefficients \(-XY\) and \(X^3+Y^3\), and hence is irreducible. At \(P=[0:0:1:0]\), its affine equation is \(x^3+y^3-xy\), with two distinct tangent lines \(x=0\) and \(y=0\). Its derivatives show there is no other singular point, in every characteristic. It is therefore a nodal plane cubic.
 
-Let \(B_0\) be the special homogeneous ring. Killing \(W\) gives the curve ring \(k[X,Y,Z]/(F)\). The kernel \((W)\) has basis \(WZ^j\), \(j\geq0\), and as a graded module is \(kZ\), annihilated by \(X,Y,W\). After sheafification it is a length-one skyscraper at \(P\), giving
+Let \(B_0\) be the special homogeneous ring. Killing \(W\) gives the curve ring \(k[X,Y,Z]/(F)\). The kernel \((W)\) has basis \(WZ^j\), \(j\geq0\), and as a graded module is \(k[Z](-1)\), annihilated by \(X,Y,W\). After sheafification it is a length-one skyscraper at \(P\), giving
 \[
 0\to k(P)\to\mathcal O_{\operatorname{Proj}B_0}\to\mathcal O_C\to0.
 \]

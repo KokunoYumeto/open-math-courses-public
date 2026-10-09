@@ -3,6 +3,7 @@ import json,shutil
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-induced-recognition-two-fibers-20261008-v1"
 from matplotlib.patches import FancyArrowPatch, FancyBboxPatch
 from matplotlib import font_manager
 P=Path(__file__).resolve().parent
@@ -32,7 +33,7 @@ ax.text(3.12,.28,"Identity fiber of q′",fontsize=18,weight='bold',color='#a84b
 ax.text(3.12,-.11,'b swaps; a fixes both points',fontsize=15,color='#26394f')
 ax.text(3.12,-.46,r'kernel $\langle a\rangle$',fontsize=17,color='#a84b0b')
 ax.text(-.4,-.69,'q′ exchanges the two cosets of G/H. The inducing H-actions have different kernels.',fontsize=13,color='#374b63')
-fig.tight_layout(pad=1);fig.savefig(P/'two-fibers.png',dpi=220,facecolor=fig.get_facecolor());fig.savefig(P/'two-fibers.svg',facecolor=fig.get_facecolor());plt.close(fig)
+fig.tight_layout(pad=1);fig.savefig(P/'two-fibers.png',dpi=220,facecolor=fig.get_facecolor());fig.savefig(P/'two-fibers.svg',facecolor=fig.get_facecolor(),metadata={'Date': None});plt.close(fig)
 font=Path(font_manager.findfont('DejaVu Sans'));candidates=[font.parent/'LICENSE_DEJAVU',font.parent.parent/'LICENSE_DEJAVU',Path(matplotlib.get_data_path())/'fonts/ttf/LICENSE_DEJAVU']
 for f in candidates:
  if f.exists():shutil.copyfile(f,P/'FONT-LICENSE.txt');break

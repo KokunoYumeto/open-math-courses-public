@@ -181,8 +181,8 @@ is a homomorphism with kernel \(Z(\mathfrak g)\). Its image, the **inner derivat
 
 **Proof.** Linear combinations preserve the product rule. Expanding \(DE(ab)-ED(ab)\), the terms \(E(a)D(b)\) and \(D(a)E(b)\) cancel, leaving
 
-\
-[D,E=D,Eb+aD,E.
+\[
+[D,E](ab)=[D,E](a)b+a[D,E](b).
 \]
 
 Jacobi is inherited from \(\mathfrak{gl}(A)\). Equation (1.1) says that every \(\operatorname{ad}(x)\) is a derivation. On \(z\), Jacobi gives
@@ -194,8 +194,8 @@ Jacobi is inherited from \(\mathfrak{gl}(A)\). Equation (1.1) says that every \(
 
 The kernel assertion is exactly the definition of the centre. For any derivation \(D\), its product rule gives
 
-\
-[D,\operatorname{ad}(x)=D[x,y]-[x,Dy]=[Dx,y],
+\[
+[D,\operatorname{ad}(x)](y)=D[x,y]-[x,Dy]=[Dx,y],
 \]
 
 which proves the ideal assertion. \(\square\)

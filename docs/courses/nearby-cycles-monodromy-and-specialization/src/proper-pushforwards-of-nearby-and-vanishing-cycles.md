@@ -2,13 +2,13 @@
 
 A map need not be proper on its entire source for its pushforward to commute with nearby and vanishing cycles. Properness on the sheaf's support suffices. The proof must keep this support after passing to the covering or to coefficient Hom; otherwise a later base-change step can silently lose its hypothesis.
 
-We prove the two comparisons with their actual natural maps, monodromy, and both canonical/variation triangles. We then apply them to the graph of an arbitrary holomorphic function. The proper-map comparison is stated in David B. Massey’s freely accessible [*Notes on Perverse Sheaves and Vanishing Cycles*, version 13, §3](https://arxiv.org/html/math/9908107v13#p370). Massey states the comparison for proper maps with his constructible coefficients. The stronger proper-on-closed-support assertion below is established relative to the stated ordinary adjunction and proper-support base-change theorems. Its proof follows the support carrier through each operation, identifies the comparison map, and checks its compatibility with the two coefficient triangles. Those additional steps and the broader coefficient scope are not supplied by the cited statement.
+We prove the two comparisons with their actual natural maps, monodromy, and both canonical/variation triangles. We then apply them to the graph of an arbitrary holomorphic function. The proper-map comparison is stated in David B. Massey’s freely accessible [*Notes on Perverse Sheaves and Vanishing Cycles*, version 13, §3, pp. 34–35](https://arxiv.org/pdf/math/9908107v13#page=34). Massey states the comparison for proper maps with his constructible coefficients. The stronger proper-on-closed-support assertion below is established relative to the stated ordinary adjunction and proper-support base-change theorems. Its proof follows the support carrier through each operation, identifies the comparison map, and checks its compatibility with the two coefficient triangles. Those additional steps and the broader coefficient scope are not supplied by the cited statement.
 
 *Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. New original text is public domain (CC0).*
 
 ## Maps and zero fibres
 
-Let \(g:Z\to X\) be holomorphic between finite-dimensional complex manifolds, and let \(h:X\to\mathbb C\) be holomorphic. Set
+Let \(g:Z\to X\) be holomorphic between Hausdorff complex manifolds, countable at infinity and of uniformly finite dimension, and let \(h:X\to\mathbb C\) be holomorphic. Set
 
 \[
 Y_X=h^{-1}(0),\quad Y_Z=(h\circ g)^{-1}(0),
@@ -30,11 +30,11 @@ Neither zero fibre is required to be smooth. All inverse images and direct image
 
 Let \(F\in D^b(k_Z)\), with the same finite-global-dimension commutative ring as before. Assume \(g\) is proper on a closed support carrier \(S\) of \(F\). Thus \(F|_{Z\setminus S}=0\), and \(g|_S:S\to X\) is proper. This is the hypothesis used at every base-change step below; it permits arbitrary behaviour of \(g\) away from the support. The formal comparisons below require no constructibility of \(F\). In particular they apply to its stated weakly complex-constructible inputs, including infinite coefficient modules.
 
-Use the coefficient sheaf \(L\), complex \(K\), deck action \(T\), and maps \(\beta,\gamma\) constructed in Nearby cycles and the two monodromy triangles. On \(X\) the coefficients are \(h^{-1}L,h^{-1}K\), and on \(Z\) they are \((h\circ g)^{-1}L,(h\circ g)^{-1}K\). Their inverse-image identification is exact.
+Use the coefficient sheaf \(L\), complex \(K\), deck action \(T\), and maps \(\beta,\gamma\) constructed in [Nearby cycles and the two monodromy triangles](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/nearby-cycles-monodromy-and-specialization/src/nearby-cycles-and-the-two-monodromy-triangles.md#the-coefficient-sheaf-uses-a-sum). On \(X\) the coefficients are \(h^{-1}L,h^{-1}K\), and on \(Z\) they are \((h\circ g)^{-1}L,(h\circ g)^{-1}K\). Their inverse-image identification is exact.
 
 ## Internal Hom preserves the support carrier
 
-For an ambient coefficient complex \(A\), put
+For a bounded ambient coefficient complex \(A\), put
 
 \[
 H_A(F)=R\mathcal Hom_Z(g^{-1}A,F).
@@ -64,9 +64,9 @@ Here is its application proof, using the existing derived ordinary adjunction. T
 \tag{4}
 \]
 
-Exact inverse image for constant coefficients commutes with derived tensor: its stalks pull back the same flat resolutions. Yoneda gives (3). The isomorphism is natural in \(A,F\); applying the same argument on open subsets gives the internal-Hom and restriction compatibilities. For the bounded objects used here, ordinary derived adjunction has the following direct construction. The inverse-image presheaf and sheafification give the usual sheaf adjunction. Inverse image is exact because its stalk at a source point is the original stalk at its image. Its right adjoint therefore preserves injective sheaves: applying the Hom test for injectivity reduces to this exact inverse image. Resolve the second argument by a bounded-below complex of injectives and apply the sheaf adjunction degree by degree. The resulting isomorphism of Hom complexes computes the derived morphisms, since a bounded-below injective complex is homotopically injective. It is compatible with restriction and with the unit and counit inherited from sheaves. This is the ordinary part (A8) of Duality maps for constructible inverse and direct images. The existence of injective resolutions, their computation of derived morphisms, and the tensor–Hom adjunction used in (4) remain explicit algebraic prerequisites; the finite-dimensional bound below puts the resulting objects in the bounded category.
+Exact inverse image for constant coefficients commutes with derived tensor: its stalks pull back the same flat resolutions. Yoneda gives (3). The isomorphism is natural in \(A,F\); applying the same argument on open subsets gives the internal-Hom and restriction compatibilities. For the bounded objects used here, ordinary derived adjunction has the following direct construction. The inverse-image presheaf and sheafification give the usual sheaf adjunction. Inverse image is exact because its stalk at a source point is the original stalk at its image. Its right adjoint therefore preserves injective sheaves: applying the Hom test for injectivity reduces to this exact inverse image. Resolve the second argument by a bounded-below complex of injectives and apply the sheaf adjunction degree by degree. The resulting isomorphism of Hom complexes computes the derived morphisms, since a bounded-below injective complex is homotopically injective. It is compatible with restriction and with the unit and counit inherited from sheaves. This is the ordinary part (A8) of [Duality maps for constructible inverse and direct images](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#the-complex-and-the-adjunction-exceptional-adjoint-complex). The [injective-resolution construction and homotopy proof](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#constructing-enough-injectives-explicit-injective-models) and the [derived tensor–Hom adjunction](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#currying-on-complexes-and-passage-to-the-derived-category-derived-currying-proof) supply the algebraic prerequisites of (4); the finite-dimensional bound below puts the resulting objects in the bounded category.
 
-For the particular \(A=h^{-1}L\), formula (7) of the preceding lesson identifies \(H_A(F)\) with the ordinary direct image from the pulled-back covering. Its boundedness follows from finite manifold cohomological dimension. For \(A=h^{-1}K\), its coefficient triangle then gives boundedness from this covering object and \(F\). The constant and zero-fibre coefficient terms are bounded for the same reason. Thus every proper-support operation used below is on a bounded input. No unfinished unbounded proper-direct-image extension is used.
+For the particular \(A=h^{-1}L\), formula (7) of the preceding lesson identifies \(H_A(F)\) with the ordinary direct image from the pulled-back covering. Its boundedness follows from the [uniform ordinary direct-image bound](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#from-compact-extension-to-ordinary-cohomology-ordinary-cohomology-bound) on the covering manifold. For \(A=h^{-1}K\), its coefficient triangle then gives boundedness from this covering object and \(F\). The constant and zero-fibre coefficient terms are bounded for the same reason. Thus every proper-support operation used below is on a bounded input. No unfinished unbounded proper-direct-image extension is used.
 
 ## Ordinary base change is invertible on these supports
 
@@ -77,9 +77,9 @@ Rg_!B\xrightarrow{\sim}Rg_*B.
 \tag{5}
 \]
 
-Indeed the closed-embedding factorization \(B\simeq (a_S)_*(B|_S)\) reduces the map to proper direct image along \(g|_S\). The finite-dimensional proper-support and proper-map comparisons supply this assertion. After the base change (1), \(g_0\) is proper on \(S_0=S\cap Y_Z\), so the same assertion applies to \(i_Z^{-1}B\).
+Indeed the closed-embedding factorization \(B\simeq (a_S)_*(B|_S)\) reduces the map to proper direct image along \(g|_S\). The [proper-support construction](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#constructing-the-proper-support-subsheaf-proper-support-construction) identifies ordinary and proper direct image for the proper restricted map. Applying that equality to an injective resolution on the closed carrier gives (5), compatibly with forgetting support. After the base change (1), \(g_0\) is proper on \(S_0=S\cap Y_Z\), so the same assertion applies to \(i_Z^{-1}B\).
 
-Combine (5) with the existing arbitrary proper-support base-change bridge:
+Combine (5) with the [derived proper-support base-change proof (D4)](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#composing-proper-images-and-preserving-c-softness-proper-image-composition):
 
 \[
 \begin{split}
@@ -91,7 +91,7 @@ i_X^{-1}Rg_*B
 \tag{6}
 \]
 
-The natural transformation is the ordinary base-change map. The support-forgetting compatibility for proper-support base change states that pulling back a properly supported section and forgetting its support agrees with first forgetting support and then applying ordinary base change. Consequently (6) establishes invertibility of the actual ordinary comparison, not merely the existence of an isomorphism with its target. The underlying soft, fibre, composition and topology primitives remain open imported proofs.
+The natural transformation is the ordinary base-change map. The support-forgetting compatibility for proper-support base change states that pulling back a properly supported section and forgetting its support agrees with first forgetting support and then applying ordinary base change. Consequently (6) establishes invertibility of the actual ordinary comparison, not merely the existence of an isomorphism with its target. That proof constructs the comparison from pullback of properly supported sections; its fibre and c-soft resolution arguments therefore retain the support-forgetting compatibility used here.
 
 Formula (2) showed why the same properness applies after coefficient Hom. Applying (6) to \(H_A(F)\) and then (3) gives
 
@@ -123,7 +123,7 @@ i_X^{-1}Rg_*F\simeq R(g_0)_*i_Z^{-1}F.
 \tag{9}
 \]
 
-For \(A=k_{Y_X}\), its inverse image is \(k_{Y_Z}\); the supported-Hom formula gives
+For \(A=k_{Y_X}\), its inverse image is \(k_{Y_Z}\); the [closed-embedding supported-Hom formula (EX15)](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-embedding--open-closed-and-locally-closed-inclusions) gives
 
 \[
 i_X^!Rg_*F\simeq R(g_0)_*i_Z^!F.
@@ -132,7 +132,7 @@ i_X^!Rg_*F\simeq R(g_0)_*i_Z^!F.
 
 This proves the exceptional comparison directly from the same supported coefficient argument. It does not identify exceptional and ordinary restrictions.
 
-The two coefficient triangles involve precisely \(k_X,h^{-1}K,h^{-1}L[1]\) and \(h^{-1}L[1],h^{-1}K,k_{Y_X}\). Since (7) is natural for every map among these coefficients, it commutes with their actual \(\beta,\gamma\) and quotient maps. Thus applying \(R(g_0)_*\) to either source monodromy triangle gives the corresponding target triangle under (8)–(10), including its canonical and variation maps. Naturality for \(T\) identifies the two monodromies. Both \(1-M\) composition identities are preserved. We did not choose an arbitrary isomorphism between two cone objects to conclude this compatibility.
+The [two coefficient triangles and their induced canonical and variation maps](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/nearby-cycles-monodromy-and-specialization/src/nearby-cycles-and-the-two-monodromy-triangles.md#canonical-and-variation-maps) involve precisely \(k_X,h^{-1}K,h^{-1}L[1]\) and \(h^{-1}L[1],h^{-1}K,k_{Y_X}\). Since (7) is natural for every map among these coefficients, it commutes with their actual \(\beta,\gamma\) and quotient maps. Thus applying \(R(g_0)_*\) to either source monodromy triangle gives the corresponding target triangle under (8)–(10), including its canonical and variation maps. Naturality for \(T\) identifies the two monodromies. Both \(1-M\) composition identities are preserved. We did not choose an arbitrary isomorphism between two cone objects to conclude this compatibility.
 
 ## The covering proof has the same support condition
 
@@ -190,7 +190,7 @@ Let \(g:\mathbb C^2\to\mathbb C\) be \(g(x,y)=x\), let \(S=\{y=0\}\), and let \(
 
 **Solution.** The whole projection is not proper, since its fibres are complex lines. Its restriction to the closed section \(S\) is an isomorphism, hence proper. The closed-supported constant sheaf therefore has \(Rg_*F=k_{\mathbb C}\) with no higher cohomology. On the source support the function is also \(x^2\). Its pulled-back punctured section has two contractible lifted components, giving nearby cycles \(k^2\), supported at the single source point \((0,0)\). Its vanishing object is \((k^2/k(1,1))[-1]\).
 
-The map \(g_0\) sends the whole source zero fibre \(\{x=0\}\) to a point, but it is proper on the support of either cycle object, the one point \((0,0)\). Its pushforward leaves the displayed modules unchanged. The target constant sheaf with \(h=x^2\) has exactly those nearby and vanishing objects by the ramification calculation. This checks (8) for a genuinely nonproper whole-source map while retaining properness at every relevant supported stage.
+The map \(g_0\) sends the whole source zero fibre \(\{x=0\}\) to a point, but it is proper on the support of either cycle object, the one point \((0,0)\). Its pushforward leaves the displayed modules unchanged. The target constant sheaf with \(h=x^2\) has exactly those nearby and vanishing objects by the [ramification calculation](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/nearby-cycles-monodromy-and-specialization/src/nearby-cycles-and-the-two-monodromy-triangles.md#ramification-separates-vanishing-from-monodromy). This checks (8) for a genuinely nonproper whole-source map while retaining properness at every relevant supported stage.
 
 ### 2. A finite ramified pushforward
 *Difficulty: Intermediate.*
@@ -206,7 +206,7 @@ Its nearby object for \(h\) is \(k^m\) and its vanishing object is \((k^m/k(1,\l
 
 Let \(g:\mathbb C^*\hookrightarrow\mathbb C\) be the open inclusion, \(h(x)=x\), and \(F=k_{\mathbb C^*}\). Calculate both sides of each comparison in (8). Does weak complex constructibility rescue the comparisons?
 
-**Solution.** The source function \(h\circ g\) has empty zero fibre. Both source cycle objects are therefore zero, and the right sides of (8) are zero. On the target, \(Rg_*F=Rj_*k\). Its restriction to the punctured disc is constant, so its nearby cycles are \(k\), in degree zero. Its costalk at zero is zero by localization, while its central derived restriction has \(k\) in degrees zero and one. The second monodromy triangle therefore gives vanishing cycles \(k[-1]\). Both left sides are nonzero for a nonzero coefficient ring.
+**Solution.** The source function \(h\circ g\) has empty zero fibre. Both source cycle objects are therefore zero, and the right sides of (8) are zero. On the target, \(Rg_*F=Rj_*k\). Its restriction to the punctured disc is constant, so its nearby cycles are \(k\), in degree zero. Its costalk at zero is zero by the [closed-support localization triangle (B4)](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#closed-support-and-its-bound-closed-support-bound), while its central derived restriction has \(k\) in degrees zero and one. The second monodromy triangle therefore gives vanishing cycles \(k[-1]\). Both left sides are nonzero for a nonzero coefficient ring.
 
 The sheaf on the source is perfect complex constructible, and the target direct image has finite complex-constructible cohomology on the punctured-disc/centre partition. Thus even this stronger coefficient property does not rescue either comparison. The inclusion is not proper on the support: sequences approaching zero escape the source over a compact neighborhood of zero. This is exactly the hypothesis missing from the theorem.
 
@@ -224,7 +224,7 @@ The derivative of \(t\) in the ambient first coordinate is nonzero everywhere. T
 
 For the finite map in Exercise 2, prove that the costalk of \(Rg_*k_{\mathbb C}\) at zero is \(k[-2]\). Check this directly from its variation triangle, without dividing by \(m\).
 
-**Solution.** Formula (10) gives the pushforward of the source constant-sheaf point costalk. On the complex line the real orientation is canonical and the point has real codimension two, so that costalk is \(k[-2]\). The zero-fibre map is the identity, giving the asserted object.
+**Solution.** Formula (10) gives the pushforward of the source constant-sheaf point costalk. On the complex line the real orientation is canonical and the point has real codimension two, so the [constant point-costalk calculation (O11)](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#constant-coefficients-on-relative-balls-constant-relative-balls) gives \(k[-2]\). The zero-fibre map is the identity, giving the asserted object.
 
 For the direct check, put \(V=k^m\), \(D=k(1,\ldots,1)\) and \(Q=V/D\). Variation is \(r:Q\to V\), \(r(\overline v)=(1-M)v\), in degree one. The kernel of \(1-M\) on \(V\) is exactly \(D\), by equality of every cyclic coordinate. Thus \(r\) is injective. Its image is the kernel of the summation \(V\to k\): one inclusion follows by telescoping, and the reverse inclusion is solved by successive cyclic differences, whose consistency is exactly the zero-sum condition. Summation is surjective by one coordinate, so its cokernel is \(k\). The fibre of \(Q[-1]\xrightarrow{r}V[-1]\) has only degree-two cohomology \(k\), namely \(k[-2]\), as required. This proof includes characteristic dividing \(m\); in characteristic two at \(m=2\), the variation image is the diagonal but remains an injective image of \(Q\).
 
@@ -239,4 +239,9 @@ The sheaf is weakly complex constructible and is not perfect, because its stalks
 
 ## What has been established
 
-Both proper-on-support cycle comparisons, both monodromy-triangle comparisons, and the typed graph construction are proved for bounded inputs, with singular zero fibres and arbitrary weak coefficients allowed. The finite-dimensional proper-support, ordinary adjunction and topology primitives remain the exact imported foundations. Normal-specialization/microlocal comparisons, cycle constructibility in full generality, the holomorphic microsupport test criterion and the quadratic model remain separate results. This lesson uses the sheaf-operation and topology prerequisites specified above; it does not prove their full foundational theory.
+Both proper-on-support cycle comparisons, both monodromy-triangle comparisons, and the typed graph construction are proved for bounded inputs, with singular zero fibres and arbitrary weak coefficients allowed. The linked programme proofs supply proper-support base change, ordinary adjunction, tensor–Hom adjunction and finite-dimensional cohomological bounds. Normal-specialization/microlocal comparisons, cycle constructibility in full generality, the holomorphic microsupport test criterion and the quadratic model remain separate results. The support-carrier argument applies those sheaf-operation results to the actual comparison maps.
+
+
+## Source and coefficient conventions
+
+David B. Massey, [*Notes on Perverse Sheaves and Vanishing Cycles*, arXiv:math/9908107v13, §3, pp. 34–35](https://arxiv.org/pdf/math/9908107v13#page=34), states the two natural proper-map comparisons for constructible inputs; the diagram begins on p. 34 and the formulas are on p. 35. His [p. 28 discussion of the Kashiwara–Schapira construction](https://arxiv.org/pdf/math/9908107v13#page=28) explains the shifted vanishing-cycle convention used here. The closed-support carrier, arbitrary bounded coefficient scope and compatibility of both triangles follow above from the linked programme proofs. The mathematical constructions retain their named source credit; the independently written exposition and six solutions are CC0.

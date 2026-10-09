@@ -132,7 +132,7 @@ This proof gives the diagonal directly, rather than assuming that arbitrary desc
 
 *Proof.* The quotient is a stack by its construction, and Lemma 3.1 proves the diagonal condition. Lemma 1.3 therefore makes \(U\to[U/R]\) representable.
 
-For a scheme \(T\) and \(a\inU/R\), let \(P=T\times_{[U/R]}U\). It is an algebraic space. On an fppf cover where \(a\) is the image of \(u:T_i\to U\), describe a point of \(P_{T_i}\) as a map \(v\) to \(U\) and an arrow \(u\to v\). Formula (3.2), with \(v\) allowed to vary, gives
+For a scheme \(T\) and \(a\in[U/R](T)\), let \(P=T\times_{[U/R]}U\). It is an algebraic space. On an fppf cover where \(a\) is the image of \(u:T_i\to U\), describe a point of \(P_{T_i}\) as a map \(v\) to \(U\) and an arrow \(u\to v\). Formula (3.2), with \(v\) allowed to vary, gives
 \[
 P\times_TT_i\cong T_i\times_{u,U,s}R.
 \tag{3.3}

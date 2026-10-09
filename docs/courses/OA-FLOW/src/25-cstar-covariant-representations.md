@@ -199,8 +199,8 @@ For nondegeneracy, the vectors \(h(t)\rho(b)\eta\), with \(h\in C_c(G)\), span a
 uniformly: \(\{\alpha_t(b)\}\) there is compact. Multiplication by \(h\) proves \(P_\rho(e_i)\to I\) on that dense vector space, and the uniform contraction bound extends it to all \(L^2\) vectors. This again proves a net limit without applying sequential dominated convergence to it. \(\square\)
 
 Denote its integrated representation by \(\operatorname{Ind}\rho\). On a vector \(\xi\) its defining formula is the Bochner integral of operators applied to that vector. On a compact simple tensor it has the pointwise form
-\
- [\operatorname{Ind}\rho(F)(h\eta)
+\[
+ [\operatorname{Ind}\rho(F)(h\eta)](t)
  =\int\rho(\alpha_{t^{-1}}(F(s)))h(s^{-1}t)\eta\,ds.
  \tag{4.3}
 \]
@@ -486,8 +486,8 @@ Multiplication \(M_a\) on \(L^2(G)\) is faithful by full Haar support and nondeg
 are isometric by the modular formula, satisfy \(V_sV_r=V_{sr}\), and have inverse \(V_{s^{-1}}\). Uniform continuity on compact supports followed by density proves their strong continuity. Direct evaluation gives \(V_sM_aV_s^*=M_{\alpha_s(a)}\).
 
 The integrated operator of \(F\in C_c(G,C_0(G))\), on compactly supported vectors, has the kernel
-\
- [\Phi(F)\xi=\int K_F(x,y)\xi(y)\,dy,\qquad
+\[
+ [\Phi(F)\xi](x)=\int K_F(x,y)\xi(y)\,dy,\qquad
  K_F(x,y)=F(x^{-1}y)(x)\Delta(x^{-1}y)^{1/2}.
  \tag{10.3}
 \]

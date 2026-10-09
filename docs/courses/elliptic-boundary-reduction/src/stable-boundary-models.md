@@ -568,9 +568,9 @@ The preceding construction begins with a monic polynomial because its Cauchy coo
 p(z)=p_m z^m+\sum_{j=0}^{m-1}p_jz^j,\qquad p_m\in\operatorname{GL}(E),
 \]
 retain \(p\) and every leading-coefficient factor. Set \(r(z)=p_m^{-1}p(z)\) only to calculate the monic comparison, and let \(P_\tau[r]\) and \(C_\tau[r]\) denote (S20)–(S23) formed from \(r\). The expression \(p_m^{-1}p\) is used only for this comparison; multiplication is on the left. The family attached to the original equation is
-\
+\[
 \mathcal P_\tau(z)
-=\operatorname{diag}(p_m,I,\ldots,I)P_\tau[r.
+=\operatorname{diag}(p_m,I,\ldots,I)P_\tau[r](z).
 \]
 Its first row has the original left factor \(p_m\); the other rows are unchanged. In particular,
 \[
@@ -587,7 +587,7 @@ The determinant identity follows without cancellation: \(\det r(z)=(\det p_m)^{-
 \mathcal C_\tau^{-1}
 =C_\tau[r]^{-1}\operatorname{diag}(p_m^{-1},I,\ldots,I).
 \]
-These orders follow from matrix multiplication; no commutation of \(p_m\) with the other coefficients is used. Since the diagonal left factor is invertible, \(\mathcal P_\tau(D)U=0\) if and only if \(P_\taurU=0\), and \(p(D)u=0\) if and only if \(r(D)u=0\). Thus the first-coordinate stable isomorphism and every transported boundary measurement remain exact for the original equation. The monic comparison satisfies \(\mathcal C_\tau^{-1}\mathcal P_\tau=C_\tau[r]^{-1}P_\tau[r]\); it does not erase \(\det p_m\) from the original family. For singular \(p_m\), this comparison is unavailable and the full \(mN\)-dimensional Cauchy space can fail, as Problem 6 shows.
+These orders follow from matrix multiplication; no commutation of \(p_m\) with the other coefficients is used. Since the diagonal left factor is invertible, \(\mathcal P_\tau(D)U=0\) if and only if \(P_\tau[r](D)U=0\), and \(p(D)u=0\) if and only if \(r(D)u=0\). Thus the first-coordinate stable isomorphism and every transported boundary measurement remain exact for the original equation. The monic comparison satisfies \(\mathcal C_\tau^{-1}\mathcal P_\tau=C_\tau[r]^{-1}P_\tau[r]\); it does not erase \(\det p_m\) from the original family. For singular \(p_m\), this comparison is unavailable and the full \(mN\)-dimensional Cauchy space can fail, as Problem 6 shows.
 
 ## 13. Example: cubic time factors in a four-dimensional stable space
 
@@ -1067,9 +1067,9 @@ There is no restriction on the real roots of \(\det p\). Fix
  \tag{SB2}
 \]
 Use \(r(z)=p_m^{-1}p(z)\) only for the coefficient calculation (S15)--(S17), retaining the original polynomial. Those identities use \(\lambda\ne0\), scalar polynomial algebra and the actual ordered coefficients; their proofs hold for complex \(\lambda\) without a positivity assumption. Form \(P_\tau[r]\) by exactly (S20)--(S21), with every displayed power of \(\tau\), including the empty middle sum when \(m=2\). The original family and leading coefficient are
-\
+\[
  \begin{split}
- \mathcal P_\tau(z)&=\operatorname{diag}(p_m,I,\ldots,I)P_\tau[r,\\
+ \mathcal P_\tau(z)&=\operatorname{diag}(p_m,I,\ldots,I)P_\tau[r](z),\\
  \mathcal C_\tau&=\operatorname{diag}(p_m,I,\ldots,I)C_\tau[r],\\
  \mathcal C_\tau^{-1}&=C_\tau[r]^{-1}
                          \operatorname{diag}(p_m^{-1},I,\ldots,I),\\

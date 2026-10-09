@@ -4,6 +4,7 @@ import json
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-induction-alternatives-20261009-v1"
 from matplotlib.patches import Circle, FancyArrowPatch, FancyBboxPatch
 
 out=Path(__file__).parent
@@ -44,7 +45,7 @@ ax.text(.5,.94,r'$\ell^\infty(\mathbb{Z}/3\mathbb{Z})\rtimes\mathbb{Z}\ \cong\ M
 ax.text(.5,.37,'Rows are destination cosets; columns are starting cosets. Every displayed entry is exact.',
         fontsize=12,color=ink)
 fig.subplots_adjust(0,0,1,1)
-fig.savefig(out/'discrete-coset-matrix.svg',facecolor='white')
+fig.savefig(out/'discrete-coset-matrix.svg',facecolor='white',metadata={'Date': None})
 fig.savefig(out/'discrete-coset-matrix.png',dpi=220,facecolor='white')
 plt.close(fig)
 # The exponents refer to powers of v_3. Exact monomial-matrix multiplication.

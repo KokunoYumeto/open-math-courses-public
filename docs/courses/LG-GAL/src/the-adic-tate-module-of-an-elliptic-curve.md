@@ -270,8 +270,8 @@ e_i=\prod_{j\ne i}\frac{b-a_j}{a_i-a_j}
 give orthogonal idempotents with sum one. Consequently \(B=\prod_i e_iB\). Each summand is a finite projective module of residue dimension one, hence free of rank one by Nakayama. Its unit generates it, so its algebra is the base ring itself. We obtain \(B\simeq(R^{\mathrm{nr}})^{m^2}\). This proves the section decomposition and the point bijection, rather than importing them from an external reference. The argument is the special case of the freely accessible Stacks lemma [Tag 04GK](https://stacks.math.columbia.edu/tag/04GK) needed here. \(\square\)
 
 **Theorem 3.1 (unramified torsion).** Reduction identifies the prime-to-\(p\) torsion groups equivariantly:
-\
- E[\ell^a\simeq
+\[
+ E[\ell^a](\overline{K_v})\simeq
  \widetilde E[\ell^a](\overline{\mathbb F}_q).
 \]
 Inertia acts trivially on \(T_\ell E\), and arithmetic Frobenius acts through the endomorphism \(\varphi:(x,y)\mapsto(x^q,y^q)\) of \(\widetilde E\).

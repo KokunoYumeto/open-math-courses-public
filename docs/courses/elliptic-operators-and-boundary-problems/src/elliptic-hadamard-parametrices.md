@@ -741,11 +741,11 @@ Here \(Z(1,tv,y)=S(tv,y)^{-1}\), so this is exactly (HM5), with its original fac
 For a bounded solution the lower endpoint is zero because \(\nu>0\); integration gives (MC9). This proves both existence and uniqueness, and retains the actual center value \(u(0,y)=f(0,y)/(2\nu)\).
 
 For any velocity multi-index \(\alpha\) and center multi-index \(\beta\), its integral factor has the exact derivative
-\
+\[
  \partial_v^\alpha\partial_y^\beta
  \int_0^1 t^{\nu-1}\frac{S(tv,y)^{-1}f(tv,y)}2\,dt
  =\frac12\int_0^1 t^{\nu-1+|\alpha|}
-       [\partial_v^\alpha\partial_y^\beta(S^{-1}f)\,dt.
+       [\partial_v^\alpha\partial_y^\beta(S^{-1}f)](tv,y)\,dt.
  \tag{MC10}
 \]
 The ordered product rule expands the derivative of \(S^{-1}f\) with each factor in its displayed position. Its compact bound is integrable, with integral

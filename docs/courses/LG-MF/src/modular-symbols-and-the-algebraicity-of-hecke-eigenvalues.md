@@ -16,7 +16,7 @@ A coboundary is \((\rho(\gamma)-1)b\). For \(\delta=\begin{pmatrix}a&b\\c&d\end{
 (f|_k\delta)(z)=\det(\delta)^{k-1}(cz+d)^{-k}f(\delta z).
 \tag{0.2}
 \]
-This is the normalization of Hecke operators for \(\Gamma_0\) and \(\Gamma_1\). All \(T_n\), including \(U_p=T_p\) for \(p\mid N\), are included below.
+This is the normalization of [Hecke operators for \(\Gamma_0\) and \(\Gamma_1\)](LG-MF-09.html). All \(T_n\), including \(U_p=T_p\) for \(p\mid N\), are included below.
 
 ## 1. Double cosets on cocycles
 
@@ -946,7 +946,7 @@ Earlier course dependencies, with the unresolved prerequisites identified above,
 - The bottom-row coset parametrization and integral reduction-surjectivity argument: Congruence subgroups, cusps and elliptic points, Lemma 1.1 and Proposition 1.2. The cusp counts and elliptic counts used in the examples are in its Sections 2–3.
 - The genus formula: Modular curves and their genus, Theorem 3.3.
 - The weight-two dimension, regular odd-weight bundle argument and arithmetic coefficient bound: Dimension formulas for congruence subgroups, Theorem 4.1, Solution 4 and Theorem 6.2 in Section 6.1. The arithmetic theorem states its principal-level field structure and bounded-denominator input with exact Deligne–Rapoport locators. Its Appendix A writes the analytic Riemann–Roch, duality and genus proofs, with the remaining elementary analytic framework stated explicitly.
-- The prime representatives, Fourier formula, commutativity and all-index product relation: Hecke operators for \(\Gamma_0\) and \(\Gamma_1\), Lemma 2.1, Theorem 2.3 and Theorem 3.1. Its Section 6 and Solution 1 prove the level-eleven eta product and coefficients.
+- The prime representatives, Fourier formula, commutativity and all-index product relation: [Hecke operators for \(\Gamma_0\) and \(\Gamma_1\)](LG-MF-09.html), Lemma 2.1, Theorem 2.3 and Theorem 3.1. Its Section 6 and Solution 1 prove the level-eleven eta product and coefficients.
 - The primitive decomposition and separation across levels: Oldforms, newforms and the theory of Atkin–Lehner and Li, Theorem 4.5, with the main-lemma and character-recovery inputs explicitly stated in its Sections 3 and 4.1.
 - The coefficient pairing, free-product presentation, convergent periods, cohomological dimension and cup injectivity: Group cohomology and the Eichler–Shimura isomorphism, Section 1, equations (1.5)–(1.7), Lemma 2.1, Theorem 3.1, Proposition 4.1, Lemma 5.1 and Proposition 5.2. Section 2 above extends its isomorphism to the odd-weight cases needed here.
 

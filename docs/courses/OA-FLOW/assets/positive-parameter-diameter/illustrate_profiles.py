@@ -3,6 +3,7 @@ from pathlib import Path
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-positive-parameter-state-profiles-20261009-v1"
 import numpy as np
 
 ROOT = Path(__file__).resolve().parent
@@ -56,6 +57,6 @@ fig.text(.5,.035,
          ha="center",fontsize=13)
 fig.subplots_adjust(bottom=.19,top=.84,wspace=.25)
 fig.savefig(OUT/"positive-lambda-state-profiles.png",dpi=180,facecolor="white")
-fig.savefig(OUT/"positive-lambda-state-profiles.svg",facecolor="white")
+fig.savefig(OUT/"positive-lambda-state-profiles.svg",facecolor="white",metadata={"Date": None})
 print({"png":str(OUT/"positive-lambda-state-profiles.png"),
        "svg":str(OUT/"positive-lambda-state-profiles.svg")})

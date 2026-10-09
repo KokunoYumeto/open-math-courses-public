@@ -138,7 +138,7 @@ A nonzero degree-two map is already visible in these models. Take \(G=\mathbb G_
 The stack formalism exhibits the same phenomenon through the universal line bundle. Its first Chern class restricts along the classifying map for \(\mathcal O(1)\) on \(\mathbb P^1\) to that bundle's nonzero degree-one class. Consequently
 \[
 \operatorname{Hom}_{D_c(B\mathbb G_m)}
-(\Lambda[-1],\Lambda[-1]2)\ne0.                         \tag{4.1}
+(\Lambda[-1],\Lambda[-1][2](1))\ne0.                         \tag{4.1}
 \]
 The Tate symbol is omitted for Betti sheaves. This class becomes zero on the atlas point. The perverse heart consists of vector spaces shifted by \([-1]\), and is semisimple, so usual realization cannot identify its bounded derived category with \(D_c^b(B\mathbb G_m)\). The universal line bundle and its functorial Chern class are inputs to this stack version; the finite-model calculation above establishes its separate category-theoretic example directly.
 

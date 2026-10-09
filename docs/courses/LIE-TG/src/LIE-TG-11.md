@@ -90,7 +90,7 @@ with kernel $\mathfrak g_1$.
 Transitivity makes evaluation surjective, with kernel $\mathfrak g_0$. For $X(p)=0$,
 
 $$
-X,Y=-DX_p\,Y(p).
+[X,Y](p)=-DX_p\,Y(p).
 $$
 
 This proves (2.2). Jacobi implies that $\rho$ is a representation; equivalently, direct differentiation shows $D[X,Y]_p=DY_pDX_p-DX_pDY_p$ for $X,Y$ vanishing at $p$. Its kernel is the fields with zero constant and linear terms, namely $\mathfrak g_1$. $\square$

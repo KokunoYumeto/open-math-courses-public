@@ -1,0 +1,173 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A fourfold whose cylinder is affine space</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents</a><a href="additive-actions-on-line-bundles.html">Previous lesson</a><a href="cancellation-fails-in-dimension-four.html">Next lesson</a><a href="src/a-fourfold-whose-cylinder-is-affine-space.md">Editable source</a></nav><main><article><h1 id="a-fourfold-whose-cylinder-is-affine-space">A fourfold whose cylinder is affine space</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Zariski's cancellation problem asks whether an affine variety <span class="math" data-tex="\(X\)">\(X\)</span> with <span class="math" data-tex="\(X\times\mathbb A^1\cong\mathbb A^{n+1}\)">\(X\times\mathbb A^1\cong\mathbb A^{n+1}\)</span> must itself be <span class="math" data-tex="\(\mathbb A^n\)">\(\mathbb A^n\)</span>. In algebraic terms: if adjoining one variable to a finitely generated algebra <span class="math" data-tex="\(A\)">\(A\)</span> gives a polynomial ring in <span class="math" data-tex="\(n+1\)">\(n+1\)</span> variables, is <span class="math" data-tex="\(A\)">\(A\)</span> a polynomial ring in <span class="math" data-tex="\(n\)">\(n\)</span> variables? This lesson and the next answer the question negatively in dimension four, in characteristic zero. This lesson constructs the fourfold, a hypersurface in affine five-space given by one explicit equation, and writes down an isomorphism of its cylinder with affine five-space. The next lesson, <a href="cancellation-fails-in-dimension-four.html">Cancellation fails in dimension four</a>, proves that the fourfold itself is not affine four-space.</p>
+<p>We use <a href="locally-nilpotent-derivations.html">Locally nilpotent derivations</a> for exponentials of derivations, and unique factorization in polynomial rings from <a href="../AG-CA/integral-extensions-lying-over-going-up-and-going-down.html#2-integral-closure-survives-localization">Integral extensions: lying over, going up and going down</a>. Dimension is computed with <a href="../AG-CA/krull-dimension-and-noether-normalization.html#4-parameters-measure-dimension-and-height">Krull dimension and Noether normalization, Theorem 4.2</a>.</p>
+<p>Basic references are [OpenAI-cancellation] and [Gupta-survey].</p>
+<h2 id="1-the-cancellation-problem">1. The cancellation problem</h2>
+<p>Let <span class="math" data-tex="\(k\)">\(k\)</span> be a field and write <span class="math" data-tex="\(k^{[n]}\)">\(k^{[n]}\)</span> for a polynomial ring in <span class="math" data-tex="\(n\)">\(n\)</span> variables over <span class="math" data-tex="\(k\)">\(k\)</span>. The <strong>cancellation problem</strong> asks: if <span class="math" data-tex="\(A\)">\(A\)</span> is a finitely generated <span class="math" data-tex="\(k\)">\(k\)</span>-algebra and <span class="math" data-tex="\(A[w]\cong k^{[n+1]}\)">\(A[w]\cong k^{[n+1]}\)</span> for a variable <span class="math" data-tex="\(w\)">\(w\)</span>, must <span class="math" data-tex="\(A\cong k^{[n]}\)">\(A\cong k^{[n]}\)</span>? An isomorphism of the cylinder need not respect the projection to the line <span class="math" data-tex="\(w\)">\(w\)</span>, so it gives no direct way to find coordinates on <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> the answer is yes, by Abhyankar, Eakin and Heinzer [AEH]. For <span class="math" data-tex="\(n=2\)">\(n=2\)</span> and <span class="math" data-tex="\(k\)">\(k\)</span> of characteristic zero it is yes by the work of Fujita, Miyanishi and Sugie [Fujita], [Miyanishi–Sugie]. In positive characteristic, Gupta proved that the answer is no in every dimension <span class="math" data-tex="\(n\ge3\)">\(n\ge3\)</span> [Gupta]. The example of this lesson, found in 2026 [OpenAI-cancellation], answers the question negatively in characteristic zero for <span class="math" data-tex="\(n=4\)">\(n=4\)</span>. We do not use any of these earlier results.</p>
+<p>From now on <span class="math" data-tex="\(k\)">\(k\)</span> is a field of characteristic zero.</p>
+<h2 id="2-the-fourfold">2. The fourfold</h2>
+<p>Let <span class="math" data-tex="\(P=k[p,s,u,F,J]\)">\(P=k[p,s,u,F,J]\)</span> be a polynomial ring in five variables, and define</p>
+<span class="math math-display" data-tex="\[
+x=s^2+u^3+p^2F,\qquad y=s+x(x-u^3),\qquad z=sx+p^2J,
+\tag{2.1}
+\]">\[
+x=s^2+u^3+p^2F,\qquad y=s+x(x-u^3),\qquad z=sx+p^2J,
+\tag{2.1}
+\]</span>
+<span class="math math-display" data-tex="\[
+H=x^2F-(1+2sx)J-p^2J^2-pu,\qquad A=P/(H).
+\tag{2.2}
+\]">\[
+H=x^2F-(1+2sx)J-p^2J^2-pu,\qquad A=P/(H).
+\tag{2.2}
+\]</span>
+<p>So <span class="math" data-tex="\(H\)">\(H\)</span> is one explicit polynomial in the five variables <span class="math" data-tex="\(p,s,u,F,J\)">\(p,s,u,F,J\)</span>, and <span class="math" data-tex="\(A\)">\(A\)</span> is the coordinate ring of the hypersurface <span class="math" data-tex="\(H=0\)">\(H=0\)</span>. We use the same letters for elements of <span class="math" data-tex="\(P\)">\(P\)</span> and their images in <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> In <span class="math" data-tex="\(P\)">\(P\)</span>,</p>
+<span class="math math-display" data-tex="\[
+xy-z(z+1)=p^2\,(H+pu).
+\tag{2.3}
+\]">\[
+xy-z(z+1)=p^2\,(H+pu).
+\tag{2.3}
+\]</span>
+<p><strong>Proof.</strong> Since <span class="math" data-tex="\(xy=sx+x^2(x-u^3)\)">\(xy=sx+x^2(x-u^3)\)</span> and <span class="math" data-tex="\(z(z+1)=s^2x^2+2sxp^2J+p^4J^2+sx+p^2J\)">\(z(z+1)=s^2x^2+2sxp^2J+p^4J^2+sx+p^2J\)</span>, the terms <span class="math" data-tex="\(sx\)">\(sx\)</span> cancel and</p>
+<span class="math math-display" data-tex="\[
+xy-z(z+1)=x^2(x-u^3-s^2)-p^2(1+2sx)J-p^4J^2 .
+\]">\[
+xy-z(z+1)=x^2(x-u^3-s^2)-p^2(1+2sx)J-p^4J^2 .
+\]</span>
+<p>Now <span class="math" data-tex="\(x-u^3-s^2=p^2F\)">\(x-u^3-s^2=p^2F\)</span>, so the right side is <span class="math" data-tex="\(p^2\bigl(x^2F-(1+2sx)J-p^2J^2\bigr)=p^2(H+pu)\)">\(p^2\bigl(x^2F-(1+2sx)J-p^2J^2\bigr)=p^2(H+pu)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Over the Laurent polynomial ring <span class="math" data-tex="\(k[p,p^{-1}]\)">\(k[p,p^{-1}]\)</span>, the elements <span class="math" data-tex="\(x,y,z,u\)">\(x,y,z,u\)</span> are coordinates on <span class="math" data-tex="\(P[p^{-1}]\)">\(P[p^{-1}]\)</span>. Indeed (2.1) can be solved:</p>
+<span class="math math-display" data-tex="\[
+s=y-x(x-u^3),\qquad F=p^{-2}\bigl(x-s^2-u^3\bigr),\qquad J=p^{-2}\bigl(z-sx\bigr),
+\tag{2.4}
+\]">\[
+s=y-x(x-u^3),\qquad F=p^{-2}\bigl(x-s^2-u^3\bigr),\qquad J=p^{-2}\bigl(z-sx\bigr),
+\tag{2.4}
+\]</span>
+<p>so <span class="math" data-tex="\(P[p^{-1}]=k[p,p^{-1}][x,y,z,u]\)">\(P[p^{-1}]=k[p,p^{-1}][x,y,z,u]\)</span>, with <span class="math" data-tex="\(x,y,z,u\)">\(x,y,z,u\)</span> algebraically independent over <span class="math" data-tex="\(k[p,p^{-1}]\)">\(k[p,p^{-1}]\)</span>. In these coordinates (2.3) reads</p>
+<span class="math math-display" data-tex="\[
+H=p^{-2}\bigl(xy-z(z+1)\bigr)-pu .
+\tag{2.5}
+\]">\[
+H=p^{-2}\bigl(xy-z(z+1)\bigr)-pu .
+\tag{2.5}
+\]</span>
+<p><strong>Proposition 2.2.</strong> The ring <span class="math" data-tex="\(A\)">\(A\)</span> is a domain of dimension four, the image of <span class="math" data-tex="\(p\)">\(p\)</span> in <span class="math" data-tex="\(A\)">\(A\)</span> is nonzero, and</p>
+<span class="math math-display" data-tex="\[
+A[p^{-1}]=k[p,p^{-1},x,y,z]
+\]">\[
+A[p^{-1}]=k[p,p^{-1},x,y,z]
+\]</span>
+<p>is a Laurent polynomial ring over a polynomial ring in <span class="math" data-tex="\(x,y,z\)">\(x,y,z\)</span>.</p>
+<p><strong>Proof.</strong> In (2.5) the coefficient of <span class="math" data-tex="\(u\)">\(u\)</span> is the unit <span class="math" data-tex="\(-p\)">\(-p\)</span>, so replacing <span class="math" data-tex="\(u\)">\(u\)</span> by <span class="math" data-tex="\(H\)">\(H\)</span> is another change of coordinates of <span class="math" data-tex="\(P[p^{-1}]\)">\(P[p^{-1}]\)</span> over <span class="math" data-tex="\(k[p,p^{-1}]\)">\(k[p,p^{-1}]\)</span>. Hence <span class="math" data-tex="\(H\)">\(H\)</span> generates a prime ideal of <span class="math" data-tex="\(P[p^{-1}]\)">\(P[p^{-1}]\)</span>, and <span class="math" data-tex="\(P[p^{-1}]/(H)=k[p,p^{-1},x,y,z]\)">\(P[p^{-1}]/(H)=k[p,p^{-1},x,y,z]\)</span>.</p>
+<p>Reducing <span class="math" data-tex="\(H\)">\(H\)</span> modulo <span class="math" data-tex="\(p\)">\(p\)</span> gives <span class="math" data-tex="\(x_0^2F-(1+2sx_0)J\)">\(x_0^2F-(1+2sx_0)J\)</span> with <span class="math" data-tex="\(x_0=s^2+u^3\)">\(x_0=s^2+u^3\)</span>, which is not zero. So <span class="math" data-tex="\(p\)">\(p\)</span> does not divide <span class="math" data-tex="\(H\)">\(H\)</span> in <span class="math" data-tex="\(P\)">\(P\)</span>. Factor <span class="math" data-tex="\(H\)">\(H\)</span> into irreducibles in the factorial ring <span class="math" data-tex="\(P\)">\(P\)</span>. In <span class="math" data-tex="\(P[p^{-1}]\)">\(P[p^{-1}]\)</span> it becomes irreducible, so all but one of its irreducible factors become units there, that is, divide a power of <span class="math" data-tex="\(p\)">\(p\)</span>; such a factor is associated to <span class="math" data-tex="\(p\)">\(p\)</span>, which does not divide <span class="math" data-tex="\(H\)">\(H\)</span>. So <span class="math" data-tex="\(H\)">\(H\)</span> is irreducible, hence prime, and <span class="math" data-tex="\(A\)">\(A\)</span> is a domain. Since <span class="math" data-tex="\(A[p^{-1}]\ne0\)">\(A[p^{-1}]\ne0\)</span>, the element <span class="math" data-tex="\(p\)">\(p\)</span> is not zero in <span class="math" data-tex="\(A\)">\(A\)</span>. The fraction field of <span class="math" data-tex="\(A\)">\(A\)</span> is <span class="math" data-tex="\(k(p,x,y,z)\)">\(k(p,x,y,z)\)</span>, of transcendence degree four, so <span class="math" data-tex="\(\dim A=4\)">\(\dim A=4\)</span> by <a href="../AG-CA/krull-dimension-and-noether-normalization.html#4-parameters-measure-dimension-and-height">Krull dimension and Noether normalization, Theorem 4.2</a>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-an-exponential-that-changes-the-equation">3. An exponential that changes the equation</h2>
+<p>On <span class="math" data-tex="\(P[p^{-1}]=k[p,p^{-1}][x,y,z,u]\)">\(P[p^{-1}]=k[p,p^{-1}][x,y,z,u]\)</span>, let <span class="math" data-tex="\(\Delta=-p^2\,\partial/\partial u\)">\(\Delta=-p^2\,\partial/\partial u\)</span>, the derivation that kills <span class="math" data-tex="\(p,x,y,z\)">\(p,x,y,z\)</span> and sends <span class="math" data-tex="\(u\)">\(u\)</span> to <span class="math" data-tex="\(-p^2\)">\(-p^2\)</span>. It is locally nilpotent, by Lemma 1.2 of <a href="locally-nilpotent-derivations.html">Locally nilpotent derivations</a>.</p>
+<p><strong>Lemma 3.1.</strong> The derivation <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> maps <span class="math" data-tex="\(P\)">\(P\)</span> into itself, with</p>
+<span class="math math-display" data-tex="\[
+\Delta(p)=0,\quad \Delta(u)=-p^2,\quad \Delta(s)=-3p^2xu^2,\quad \Delta(F)=(6sx+3)u^2,\quad \Delta(J)=3x^2u^2 .
+\tag{3.1}
+\]">\[
+\Delta(p)=0,\quad \Delta(u)=-p^2,\quad \Delta(s)=-3p^2xu^2,\quad \Delta(F)=(6sx+3)u^2,\quad \Delta(J)=3x^2u^2 .
+\tag{3.1}
+\]</span>
+<p>Moreover <span class="math" data-tex="\(\Delta(H)=p^3\)">\(\Delta(H)=p^3\)</span> and <span class="math" data-tex="\(\Delta^2(H)=0\)">\(\Delta^2(H)=0\)</span>.</p>
+<p><strong>Proof.</strong> Apply <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> to (2.4), using <span class="math" data-tex="\(\Delta(x)=\Delta(y)=\Delta(z)=0\)">\(\Delta(x)=\Delta(y)=\Delta(z)=0\)</span>. From <span class="math" data-tex="\(s=y-x(x-u^3)\)">\(s=y-x(x-u^3)\)</span>, <span class="math" data-tex="\(\Delta(s)=3xu^2\Delta(u)=-3p^2xu^2\)">\(\Delta(s)=3xu^2\Delta(u)=-3p^2xu^2\)</span>. From <span class="math" data-tex="\(p^2F=x-s^2-u^3\)">\(p^2F=x-s^2-u^3\)</span>, <span class="math" data-tex="\(p^2\Delta(F)=-2s\Delta(s)-3u^2\Delta(u)=6p^2sxu^2+3p^2u^2\)">\(p^2\Delta(F)=-2s\Delta(s)-3u^2\Delta(u)=6p^2sxu^2+3p^2u^2\)</span>. From <span class="math" data-tex="\(p^2J=z-sx\)">\(p^2J=z-sx\)</span>, <span class="math" data-tex="\(p^2\Delta(J)=-x\Delta(s)=3p^2x^2u^2\)">\(p^2\Delta(J)=-x\Delta(s)=3p^2x^2u^2\)</span>. These values lie in <span class="math" data-tex="\(P\)">\(P\)</span>, and <span class="math" data-tex="\(P\)">\(P\)</span> is generated by <span class="math" data-tex="\(p,s,u,F,J\)">\(p,s,u,F,J\)</span>, so <span class="math" data-tex="\(\Delta(P)\subset P\)">\(\Delta(P)\subset P\)</span>. By (2.5), <span class="math" data-tex="\(\Delta(H)=-p\,\Delta(u)=p^3\)">\(\Delta(H)=-p\,\Delta(u)=p^3\)</span>, which <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> kills. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Extend <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> to <span class="math" data-tex="\(P[w]\)">\(P[w]\)</span> by <span class="math" data-tex="\(\Delta(w)=0\)">\(\Delta(w)=0\)</span>. By Proposition 2.1 of <a href="locally-nilpotent-derivations.html">Locally nilpotent derivations</a>, <span class="math" data-tex="\(\Phi=\exp(w\Delta)\)">\(\Phi=\exp(w\Delta)\)</span> is an automorphism of <span class="math" data-tex="\(P[w]\)">\(P[w]\)</span>, and by Lemma 3.1</p>
+<span class="math math-display" data-tex="\[
+\Phi(H)=H+w\,\Delta(H)=H+p^3w .
+\]">\[
+\Phi(H)=H+w\,\Delta(H)=H+p^3w .
+\]</span>
+<p>Hence <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> induces an isomorphism</p>
+<span class="math math-display" data-tex="\[
+A[w]=P[w]/(H)\ \xrightarrow{\ \sim\ }\ T:=P[w]/(H+p^3w).
+\tag{3.2}
+\]">\[
+A[w]=P[w]/(H)\ \xrightarrow{\ \sim\ }\ T:=P[w]/(H+p^3w).
+\tag{3.2}
+\]</span>
+<p>So it suffices to show that <span class="math" data-tex="\(T\)">\(T\)</span> is a polynomial ring in five variables. Since <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> fixes <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(A\)">\(A\)</span> is a domain, <span class="math" data-tex="\(T\)">\(T\)</span> is a domain in which <span class="math" data-tex="\(p\ne0\)">\(p\ne0\)</span>.</p>
+<h2 id="4-the-cylinder-is-affine-five-space">4. The cylinder is affine five-space</h2>
+<p><em>Linear coordinates adapted to <span class="math" data-tex="\(p=0\)">\(p=0\)</span>.</em> Put <span class="math" data-tex="\(x_0=s^2+u^3\)">\(x_0=s^2+u^3\)</span> and</p>
+<span class="math math-display" data-tex="\[
+L=x_0^2F-(1+2sx_0)J,\qquad M=(1-2sx_0)F+4s^2J .
+\tag{4.1}
+\]">\[
+L=x_0^2F-(1+2sx_0)J,\qquad M=(1-2sx_0)F+4s^2J .
+\tag{4.1}
+\]</span>
+<p>This is a linear change of the variables <span class="math" data-tex="\(F,J\)">\(F,J\)</span> over <span class="math" data-tex="\(k[p,s,u]\)">\(k[p,s,u]\)</span>, with determinant <span class="math" data-tex="\(4s^2x_0^2+(1+2sx_0)(1-2sx_0)=1\)">\(4s^2x_0^2+(1+2sx_0)(1-2sx_0)=1\)</span>. Its inverse is</p>
+<span class="math math-display" data-tex="\[
+F=4s^2L+(1+2sx_0)M,\qquad J=-(1-2sx_0)L+x_0^2M .
+\tag{4.2}
+\]">\[
+F=4s^2L+(1+2sx_0)M,\qquad J=-(1-2sx_0)L+x_0^2M .
+\tag{4.2}
+\]</span>
+<p>So <span class="math" data-tex="\(P=B[L]\)">\(P=B[L]\)</span> with <span class="math" data-tex="\(B=k[p,s,u,M]\)">\(B=k[p,s,u,M]\)</span>, a polynomial ring in four variables. From now on we regard <span class="math" data-tex="\(F\)">\(F\)</span>, <span class="math" data-tex="\(J\)">\(J\)</span> and <span class="math" data-tex="\(H\)">\(H\)</span> as polynomials in <span class="math" data-tex="\(L\)">\(L\)</span> over <span class="math" data-tex="\(B\)">\(B\)</span> through (4.2). Expanding <span class="math" data-tex="\(x=x_0+p^2F\)">\(x=x_0+p^2F\)</span> in powers of <span class="math" data-tex="\(p\)">\(p\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+H=L-pu+p^2Q+p^4F^3,\qquad Q=2x_0F^2-2sFJ-J^2 .
+\tag{4.3}
+\]">\[
+H=L-pu+p^2Q+p^4F^3,\qquad Q=2x_0F^2-2sFJ-J^2 .
+\tag{4.3}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(x^2F=x_0^2F+2p^2x_0F^2+p^4F^3\)">\(x^2F=x_0^2F+2p^2x_0F^2+p^4F^3\)</span> and <span class="math" data-tex="\((1+2sx)J=(1+2sx_0)J+2p^2sFJ\)">\((1+2sx)J=(1+2sx_0)J+2p^2sFJ\)</span>, and <span class="math" data-tex="\(x_0^2F-(1+2sx_0)J=L\)">\(x_0^2F-(1+2sx_0)J=L\)</span>.</p>
+<p><em>A root modulo <span class="math" data-tex="\(p^3\)">\(p^3\)</span>.</em> Write <span class="math" data-tex="\(C=Q|_{L=0}\in B\)">\(C=Q|_{L=0}\in B\)</span> and <span class="math" data-tex="\(Q=C+L\,Q_1\)">\(Q=C+L\,Q_1\)</span> with <span class="math" data-tex="\(Q_1\in B[L]\)">\(Q_1\in B[L]\)</span>. Explicitly <span class="math" data-tex="\(C=M^2\bigl(2x_0+6sx_0^2+4s^2x_0^3-x_0^4\bigr)\)">\(C=M^2\bigl(2x_0+6sx_0^2+4s^2x_0^3-x_0^4\bigr)\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+L_*=pu-p^2C\in B .
+\]">\[
+L_*=pu-p^2C\in B .
+\]</span>
+<p>Then (4.3) gives <span class="math" data-tex="\(H(L_*)=L_*-pu+p^2\bigl(C+L_*Q_1(L_*)\bigr)+p^4F(L_*)^3=p^3\bigl((u-pC)Q_1(L_*)+pF(L_*)^3\bigr)\)">\(H(L_*)=L_*-pu+p^2\bigl(C+L_*Q_1(L_*)\bigr)+p^4F(L_*)^3=p^3\bigl((u-pC)Q_1(L_*)+pF(L_*)^3\bigr)\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+H(L_*)\in p^3B .
+\tag{4.4}
+\]">\[
+H(L_*)\in p^3B .
+\tag{4.4}
+\]</span>
+<p><em>The fifth coordinate.</em> In <span class="math" data-tex="\(B[L,w]\)">\(B[L,w]\)</span> put</p>
+<span class="math math-display" data-tex="\[
+h=u-pQ-p^3F^3-p^2w,\qquad e_0=-w-pF^3-Q_1h .
+\]">\[
+h=u-pQ-p^3F^3-p^2w,\qquad e_0=-w-pF^3-Q_1h .
+\]</span>
+<p>Then <span class="math" data-tex="\(H+p^3w=L-ph\)">\(H+p^3w=L-ph\)</span> by (4.3), and a direct expansion, using <span class="math" data-tex="\(Q=C+LQ_1\)">\(Q=C+LQ_1\)</span>, gives the identity</p>
+<span class="math math-display" data-tex="\[
+p^3e_0-(L-L_*)=\bigl(p^2Q_1-1\bigr)\bigl(H+p^3w\bigr).
+\tag{4.5}
+\]">\[
+p^3e_0-(L-L_*)=\bigl(p^2Q_1-1\bigr)\bigl(H+p^3w\bigr).
+\tag{4.5}
+\]</span>
+<p>So the image <span class="math" data-tex="\(e\)">\(e\)</span> of <span class="math" data-tex="\(e_0\)">\(e_0\)</span> in <span class="math" data-tex="\(T\)">\(T\)</span> satisfies <span class="math" data-tex="\(p^3e=L-L_*\)">\(p^3e=L-L_*\)</span>.</p>
+<p><strong>Theorem 4.1.</strong> <span class="math" data-tex="\(T=B[e]=k[p,s,u,M,e]\)">\(T=B[e]=k[p,s,u,M,e]\)</span> is a polynomial ring in five variables. Consequently <span class="math" data-tex="\(A[w]\cong k^{[5]}\)">\(A[w]\cong k^{[5]}\)</span>.</p>
+<p><strong>Proof.</strong> <em><span class="math" data-tex="\(B\)">\(B\)</span> embeds in <span class="math" data-tex="\(T\)">\(T\)</span>, and <span class="math" data-tex="\(e\)">\(e\)</span> is transcendental over it.</em> Inverting <span class="math" data-tex="\(p\)">\(p\)</span> in <span class="math" data-tex="\(T=B[L,w]/(H+p^3w)\)">\(T=B[L,w]/(H+p^3w)\)</span> lets us solve for <span class="math" data-tex="\(w=-p^{-3}H\)">\(w=-p^{-3}H\)</span>, so <span class="math" data-tex="\(T[p^{-1}]\cong B[p^{-1}][L]\)">\(T[p^{-1}]\cong B[p^{-1}][L]\)</span>, the identity on <span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(L\)">\(L\)</span>. So <span class="math" data-tex="\(B\to T\)">\(B\to T\)</span> is injective, and in <span class="math" data-tex="\(T[p^{-1}]\)">\(T[p^{-1}]\)</span> the element <span class="math" data-tex="\(e=p^{-3}(L-L_*)\)">\(e=p^{-3}(L-L_*)\)</span> is a linear polynomial in the variable <span class="math" data-tex="\(L\)">\(L\)</span> with unit leading coefficient. Hence <span class="math" data-tex="\(e\)">\(e\)</span> is transcendental over <span class="math" data-tex="\(B[p^{-1}]\)">\(B[p^{-1}]\)</span>, and so over <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p><em><span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(e\)">\(e\)</span> generate <span class="math" data-tex="\(T\)">\(T\)</span>.</em> We have <span class="math" data-tex="\(L=L_*+p^3e\in B[e]\)">\(L=L_*+p^3e\in B[e]\)</span>. In <span class="math" data-tex="\(B[Z]\)">\(B[Z]\)</span>, the difference <span class="math" data-tex="\(H(L_*+p^3Z)-H(L_*)\)">\(H(L_*+p^3Z)-H(L_*)\)</span> is divisible by <span class="math" data-tex="\(p^3\)">\(p^3\)</span>, and <span class="math" data-tex="\(H(L_*)\)">\(H(L_*)\)</span> is divisible by <span class="math" data-tex="\(p^3\)">\(p^3\)</span> by (4.4). So <span class="math" data-tex="\(W(Z)=-p^{-3}H(L_*+p^3Z)\)">\(W(Z)=-p^{-3}H(L_*+p^3Z)\)</span> lies in <span class="math" data-tex="\(B[Z]\)">\(B[Z]\)</span>. The relation <span class="math" data-tex="\(H+p^3w=0\)">\(H+p^3w=0\)</span> in <span class="math" data-tex="\(T\)">\(T\)</span> gives <span class="math" data-tex="\(p^3\bigl(w-W(e)\bigr)=0\)">\(p^3\bigl(w-W(e)\bigr)=0\)</span>, and <span class="math" data-tex="\(p\)">\(p\)</span> is a nonzero element of the domain <span class="math" data-tex="\(T\)">\(T\)</span>, so <span class="math" data-tex="\(w=W(e)\in B[e]\)">\(w=W(e)\in B[e]\)</span>. Thus <span class="math" data-tex="\(T=B[L,w]=B[e]\)">\(T=B[L,w]=B[e]\)</span>.</p>
+<p>Finally <span class="math" data-tex="\(A[w]\cong T\)">\(A[w]\cong T\)</span> by (3.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The five coordinates of <span class="math" data-tex="\(A[w]\)">\(A[w]\)</span> itself are the images of <span class="math" data-tex="\(\Phi^{-1}(p)=p\)">\(\Phi^{-1}(p)=p\)</span>, <span class="math" data-tex="\(\Phi^{-1}(s)\)">\(\Phi^{-1}(s)\)</span>, <span class="math" data-tex="\(\Phi^{-1}(u)\)">\(\Phi^{-1}(u)\)</span>, <span class="math" data-tex="\(\Phi^{-1}(M)\)">\(\Phi^{-1}(M)\)</span> and <span class="math" data-tex="\(\Phi^{-1}(e_0)\)">\(\Phi^{-1}(e_0)\)</span>, where <span class="math" data-tex="\(\Phi^{-1}=\exp(-w\Delta)\)">\(\Phi^{-1}=\exp(-w\Delta)\)</span>; each is an explicit polynomial, because the exponential is a finite sum.</p>
+<h2 id="5-what-remains">5. What remains</h2>
+<p>Theorem 4.1 shows that the hypersurface <span class="math" data-tex="\(H=0\)">\(H=0\)</span> in <span class="math" data-tex="\(\mathbb A^5\)">\(\mathbb A^5\)</span> becomes affine five-space after multiplying by a line. The equation was chosen so that the hypersurface looks like affine four-space in two other ways as well: after inverting <span class="math" data-tex="\(p\)">\(p\)</span>, Proposition 2.2 identifies it with <span class="math" data-tex="\(\mathbb A^3\times(\mathbb A^1\setminus0)\)">\(\mathbb A^3\times(\mathbb A^1\setminus0)\)</span>, and modulo <span class="math" data-tex="\(p\)">\(p\)</span> the change of coordinates (4.1) makes <span class="math" data-tex="\(H\equiv L\)">\(H\equiv L\)</span> a coordinate. The next lesson proves that nevertheless <span class="math" data-tex="\(A\)">\(A\)</span> is not a polynomial ring.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>Exercise 6.1 (easy).</strong> Verify that the linear change (4.1) has determinant one, and that (4.2) inverts it.</p>
+<p><strong>Exercise 6.2 (medium).</strong> Show that <span class="math" data-tex="\(\Delta(H)=p^3\)">\(\Delta(H)=p^3\)</span> directly from (3.1), without passing to the coordinates <span class="math" data-tex="\(x,y,z,u\)">\(x,y,z,u\)</span>.</p>
+<p><strong>Exercise 6.3 (medium).</strong> Show that the fibre <span class="math" data-tex="\(p=0\)">\(p=0\)</span> of <span class="math" data-tex="\(\operatorname{Spec}A\)">\(\operatorname{Spec}A\)</span> is affine three-space: <span class="math" data-tex="\(A/pA\cong k^{[3]}\)">\(A/pA\cong k^{[3]}\)</span>.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> The coefficient matrix of <span class="math" data-tex="\((F,J)\mapsto(L,M)\)">\((F,J)\mapsto(L,M)\)</span> is <span class="math" data-tex="\(\begin{pmatrix}x_0^2&amp;-(1+2sx_0)\\1-2sx_0&amp;4s^2\end{pmatrix}\)">\(\begin{pmatrix}x_0^2&amp;-(1+2sx_0)\\1-2sx_0&amp;4s^2\end{pmatrix}\)</span>, with determinant <span class="math" data-tex="\(4s^2x_0^2+(1+2sx_0)(1-2sx_0)=4s^2x_0^2+1-4s^2x_0^2=1\)">\(4s^2x_0^2+(1+2sx_0)(1-2sx_0)=4s^2x_0^2+1-4s^2x_0^2=1\)</span>. Its inverse is <span class="math" data-tex="\(\begin{pmatrix}4s^2&amp;1+2sx_0\\-(1-2sx_0)&amp;x_0^2\end{pmatrix}\)">\(\begin{pmatrix}4s^2&amp;1+2sx_0\\-(1-2sx_0)&amp;x_0^2\end{pmatrix}\)</span>, which is (4.2).</p>
+<p><strong>6.2.</strong> Write <span class="math" data-tex="\(H=x^2F-(1+2sx)J-p^2J^2-pu\)">\(H=x^2F-(1+2sx)J-p^2J^2-pu\)</span> with <span class="math" data-tex="\(x=s^2+u^3+p^2F\)">\(x=s^2+u^3+p^2F\)</span>. Then <span class="math" data-tex="\(\Delta(x)=2s\Delta(s)+3u^2\Delta(u)+p^2\Delta(F)=-6p^2sxu^2-3p^2u^2+p^2(6sx+3)u^2=0\)">\(\Delta(x)=2s\Delta(s)+3u^2\Delta(u)+p^2\Delta(F)=-6p^2sxu^2-3p^2u^2+p^2(6sx+3)u^2=0\)</span>. So <span class="math" data-tex="\(\Delta(H)=x^2\Delta(F)-2x\Delta(s)J-(1+2sx)\Delta(J)-2p^2J\Delta(J)-p\Delta(u)\)">\(\Delta(H)=x^2\Delta(F)-2x\Delta(s)J-(1+2sx)\Delta(J)-2p^2J\Delta(J)-p\Delta(u)\)</span>. Substituting (3.1), the first four terms are <span class="math" data-tex="\(x^2(6sx+3)u^2+6p^2x^2u^2J-3(1+2sx)x^2u^2-6p^2x^2u^2J=0\)">\(x^2(6sx+3)u^2+6p^2x^2u^2J-3(1+2sx)x^2u^2-6p^2x^2u^2J=0\)</span>, and the last is <span class="math" data-tex="\(p^3\)">\(p^3\)</span>.</p>
+<p><strong>6.3.</strong> Modulo <span class="math" data-tex="\(p\)">\(p\)</span>, (4.3) gives <span class="math" data-tex="\(H\equiv L\)">\(H\equiv L\)</span>, and <span class="math" data-tex="\(P/pP=k[s,u,M,L]\)">\(P/pP=k[s,u,M,L]\)</span> by (4.1) and (4.2). So <span class="math" data-tex="\(A/pA=P/(p,H)=k[s,u,M,L]/(L)\cong k[s,u,M]\)">\(A/pA=P/(p,H)=k[s,u,M,L]/(L)\cong k[s,u,M]\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-cancellation] OpenAI, An explicit failure of complex affine-space cancellation, preprint, 23 September 2026. https://github.com/openai/math/blob/main/preprints/An-explicit-failure-of-complex-affine-space-cancellation-September-23-2026/paper.pdf</li>
+<li>[Gupta-survey] N. Gupta, The Zariski cancellation problem and related problems in affine algebraic geometry, Proceedings of the International Congress of Mathematicians 2022, vol. 3, EMS Press, 2023, 1578–1598. https://doi.org/10.4171/ICM2022/151</li>
+<li>[Gupta] N. Gupta, On Zariski's cancellation problem in positive characteristic, Adv. Math. 264 (2014), 296–307. https://arxiv.org/abs/1309.1368</li>
+<li>[AEH] S. S. Abhyankar, P. Eakin, W. Heinzer, On the uniqueness of the coefficient ring in a polynomial ring, J. Algebra 23 (1972), 310–342. https://doi.org/10.1016/0021-8693(72)90134-2</li>
+<li>[Fujita] T. Fujita, On Zariski problem, Proc. Japan Acad. Ser. A Math. Sci. 55 (1979), 106–110. https://doi.org/10.3792/pjaa.55.106</li>
+<li>[Miyanishi–Sugie] M. Miyanishi, T. Sugie, Affine surfaces containing cylinderlike open sets, J. Math. Kyoto Univ. 20 (1980), 11–42. https://doi.org/10.1215/kjm/1250522319</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

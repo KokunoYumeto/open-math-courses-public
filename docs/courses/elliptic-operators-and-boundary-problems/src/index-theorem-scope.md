@@ -1436,7 +1436,7 @@ Expansion proves every sign and order; hence this commutator is compact. The com
 Both are compact, so the original two-sided Fredholm proof applies. For invertible \(U\) the first terms vanish with \(S=U^{-1}\), giving exactly (IST1)–(IST2), and for unitary \(U\) exactly (ISN26). No original case has been replaced.
 
 The complementary compression \(T_-=(I-\Pi)U(I-\Pi)\) is Fredholm by the same proof. The original off-diagonal blocks are
-\(\Pi U(I-\Pi)=\Pi,U\) and
+\(\Pi U(I-\Pi)=[\Pi,U](I-\Pi)\) and
 \((I-\Pi)U\Pi=-(I-\Pi)[\Pi,U]\Pi\).
 They are compact. The exact decomposition \(H=\Pi H\oplus(I-\Pi)H\), compact perturbation invariance, and addition of the two finite defect spaces therefore prove
 \[

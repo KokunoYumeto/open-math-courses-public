@@ -290,8 +290,8 @@ This uses the trace formula as a prerequisite. The identification of the actual 
 
 **Proposition 5.1.** For integers \(s,m\),
 
-\
-t_{\mathcal K[s}(y)=(-1)^s q^{-m}t_{\mathcal K}(y)
+\[
+t_{\mathcal K[s](m)}(y)=(-1)^s q^{-m}t_{\mathcal K}(y)
 \quad(y\in Y(\mathbb F_q)).
 \]
 
@@ -301,7 +301,7 @@ At a degree \(e\) point, replace \(q\) by \(q^e\).
 
 *Reference:* [Frenkel, §3.8] attributes a power of \(q_x\) to a cohomological shift. The shift supplies only the sign above; a Tate twist supplies the power.
 
-If a normalization uses a half Tate twist, choose the square root of \(q\) and its Weil structure explicitly. For \(d_i=i(n-i)\), the kernel normalization \(d_i\) changes the raw trace operator to
+If a normalization uses a half Tate twist, choose the square root of \(q\) and its Weil structure explicitly. For \(d_i=i(n-i)\), the kernel normalization \([d_i](d_i/2)\) changes the raw trace operator to
 
 \[
 (-1)^{d_i}q_x^{-d_i/2}T_{i,x}.
@@ -350,7 +350,7 @@ It is an equivalence for the unramified characteristic-zero setting. The half tw
 
 **Exercise 7.3 (medium).** Prescribe an arbitrary lattice \(L_x\subset F_x^3\) at one point and the standard lattice elsewhere. Give an algebraic kernel construction of its bundle and prove that no choice of a matrix whose coefficients are rational functions is needed. Show that changing the generic frame induces the left quotient in Weil's dictionary.
 
-**Exercise 7.4 (medium).** On \(\operatorname{Pic}(\mathbb P^1)=\mathbb Z\), solve the equation \(T_yf=af\) at a rational point for \(a\ne0\). Determine the eigenvalue at a degree-three point. Compute the trace effect of replacing the corresponding Weil sheaf by its shift \(1\).
+**Exercise 7.4 (medium).** On \(\operatorname{Pic}(\mathbb P^1)=\mathbb Z\), solve the equation \(T_yf=af\) at a rational point for \(a\ne0\). Determine the eigenvalue at a degree-three point. Compute the trace effect of replacing the corresponding Weil sheaf by its shift \([1](2)\).
 
 **Exercise 7.5 (hard).** Fix a finite extension of \(\mathbb Q_\ell\) containing \(\alpha\ne0\). Compare the eigenfunction \(d\mapsto\alpha^{-d}\), the multiplicative Weil sheaf on the Picard points, and a continuous rank-one étale local system on \(\mathbb P^1_{\mathbb F_q}\). Prove exactly when the last object exists. Treat \(\alpha=\ell\) and a root of unity of order prime to \(\ell\).
 
@@ -375,7 +375,7 @@ Every inclusion contributes the value one to the sum, hence \(T_{1,x}\mathbf1=q^
 
 Its stalk at \(x\) is \(M_x\); all other stalks are standard. Completion yields \(L_x\), and the kernel is locally free by the discrete valuation ring argument. The quotient only uses finitely many residue coefficients of the lattice, so no rational matrix representing the whole formal lattice is required. A generic frame change is a single element \(b\in GL_3(F)\) acting on every lattice at once. The isomorphism identifies the prescribed bundle with that of \(bL_x\) and the transformed other lattices. This is exactly the left action; local frame changes are the right integral action. Applying the same construction to every bundle and the isomorphism argument of Theorem 2.2 proves both directions of the general dictionary.
 
-**Solution 7.4.** At a rational point, \(T_yf(d)=f(d-1)\). Hence \(f(d-1)=af(d)\) and iteration in both directions gives \(f(d)=c a^{-d}\), for an arbitrary scalar \(c\). A degree-three point gives \(f(d-3)=a^3f(d)\). Taking the Weil sheaf whose Frobenius on component \(d\) is \(a^{-d}\) realizes the normalized character \(c=1\). Its shift \(1\) has trace \(-q^{-2}a^{-d}\) on an \(\mathbb F_q\)-point of Picard degree \(d\). At points defined over \(\mathbb F_{q^e}\) the multiplier is \(-q^{-2e}\). The shift changes the sign and the twist changes the power; their effects are independent.
+**Solution 7.4.** At a rational point, \(T_yf(d)=f(d-1)\). Hence \(f(d-1)=af(d)\) and iteration in both directions gives \(f(d)=c a^{-d}\), for an arbitrary scalar \(c\). A degree-three point gives \(f(d-3)=a^3f(d)\). Taking the Weil sheaf whose Frobenius on component \(d\) is \(a^{-d}\) realizes the normalized character \(c=1\). Its shift \([1](2)\) has trace \(-q^{-2}a^{-d}\) on an \(\mathbb F_q\)-point of Picard degree \(d\). At points defined over \(\mathbb F_{q^e}\) the multiplier is \(-q^{-2e}\). The shift changes the sign and the twist changes the power; their effects are independent.
 
 **Solution 7.5.** The eigenfunction exists for every \(\alpha\ne0\), and the Weil sheaf exists because an invertible Frobenius operator defines a rank-one Weil object on each Picard point. Their tensor compatibility follows from \(\alpha^{-(d+d')}=\alpha^{-d}\alpha^{-d'}\). A rank-one étale local system on the projective line has trivial geometric monodromy by the étale-cover argument in section 4. It is therefore the same as a continuous character of \(\operatorname{Gal}(\overline{\mathbb F}_q/\mathbb F_q)=\widehat{\mathbb Z}\) with geometric Frobenius value \(\alpha\). The compactness argument and profinite-unit construction in section 4 prove that this exists precisely when \(\alpha\) is a unit. For \(\alpha=\ell\) it does not exist, although the function and Weil sheaf still exist. A root of unity gives a character of a finite cyclic quotient, so it exists and has finite-order determinant. Its trace at a degree \(e\) point is \(\alpha^e\), which equals the eigenvalue of the character at that point's modification. This checks the rank-one arithmetic correspondence on \(\mathbb P^1\), including continuity and Frobenius direction.
 

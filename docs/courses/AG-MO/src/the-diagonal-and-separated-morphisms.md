@@ -4,7 +4,7 @@
 
 A family may have two distinct points that cannot be distinguished by approaching them through the same open set. The line with two origins is the smallest example: away from the origins it is one line, yet the missing point has been filled in twice. Separatedness rules out this phenomenon through a condition on a morphism, rather than through a condition on the source alone.
 
-This lesson develops a test that turns this geometric question into a calculation with rings. It then explains why agreement between maps is a closed condition when the target is separated, and why projective schemes pass the test. We assume the construction of fibre products, gluing along open subschemes, closed immersions and the affine charts of Proj. Basic references are AI Integrated Stacks Project, especially the separation section, and Ravi Vakil's *The Rising Sea*, §§11.1–11.3. The arguments below are independent exposition.
+This lesson develops a test that turns this geometric question into a calculation with rings. It then explains why agreement between maps is a closed condition when the target is separated, and why projective schemes pass the test. The prerequisite constructions have full programme proofs: Fibre products and base change, Theorem 1.1, Schemes, gluing and immersions, Theorems 2.1 and 3.1, and Proj of a graded ring, Sections 1–3. Read these before using fibre products, scheme gluing, closed immersions or Proj charts here. Basic references are AI Integrated Stacks Project, especially the separation section, and Ravi Vakil's *The Rising Sea*, §§11.1–11.3. The arguments below are independent exposition.
 
 Our schemes are not assumed separated. An immersion means a closed immersion into an open subscheme of the target. A variety means an integral separated scheme of finite type over a field. We write \(\Gamma(U)\) for \(\Gamma(U,\mathcal O_U)\).
 
@@ -187,7 +187,7 @@ is surjective. Let \(d=\deg f\) and \(e=\deg g\). A homogeneous degree-zero frac
 \[
 \frac{h}{f^{a'e}g^{b'd}}
 =\left(\frac{h}{f^{e(a'+b')}}\right)
- \left(\frac{f^{eb'}}{g^{db'}}\right)
+\left(\frac{f^{eb'}}{g^{db'}}\right)
 \]
 
 expresses it as a product of a degree-zero fraction in \(B_f\) and one in \(B_g\). These fractions generate the target additively, proving surjectivity. Theorem 2.1 over \(\mathbf Z\) proves separation. This argument makes no assumption that \(B\) is generated in degree one or that it is Noetherian.

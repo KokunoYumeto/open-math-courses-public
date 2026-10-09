@@ -332,7 +332,7 @@ Set \(F^{\mathrm{diag}}=\bigoplus P_nF P_n\). This is a self-adjoint contraction
 (F-F^{\mathrm{diag}})\rho(a)
 &=(1-P_n)[F,\rho(a)],\\
 \rho(a)(F-F^{\mathrm{diag}})
-&=\rho(a),F.
+&=[\rho(a),F](1-P_n).
 \end{aligned}
 \tag{5.2}
 \]

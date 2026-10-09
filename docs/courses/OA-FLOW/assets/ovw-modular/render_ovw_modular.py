@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-ovw-modular-20261009-v1"
 
 d=Path(__file__).resolve().parent
 phi=np.diag([1.,4.])/5
@@ -86,7 +87,7 @@ ax.text(.5,-.45,"AS1: finite Blaschke products, with center z = i/2.",
 fig.text(.5,.022,"Full example proofs: OVW-MODULAR-FIGURE.md, equations OF1–OF6.  General proof: OT1–OT5 and AS1–AS4.",
          ha="center",fontsize=10)
 fig.savefig(d/"assets"/"ovw-modular.png",dpi=180,bbox_inches="tight")
-fig.savefig(d/"assets"/"ovw-modular.svg",bbox_inches="tight")
+fig.savefig(d/"assets"/"ovw-modular.svg",bbox_inches="tight",metadata={"Date": None})
 plt.close(fig)
 
 def serial(a):return [[[float(z.real),float(z.imag)] for z in row] for row in a]

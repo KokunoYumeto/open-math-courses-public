@@ -10,6 +10,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-lifted-orbit-flow-20261009-v1"
 from matplotlib import font_manager
 from matplotlib.patches import Rectangle, Circle, Wedge, FancyArrowPatch
 
@@ -136,7 +137,7 @@ txt(ax,.5,.04,r"$\tau_{\rm core}(\theta_{\log2}P)=\frac{3}{4\pi}$",
 fig.text(.5,.022,"Exact finite coordinates and trace constants. Circle points are finitely many samples; the complete analytic proofs are retained in Sections 7–8.",
          ha="center",fontsize=13,color=MUTED)
 for ext in ("png","svg"):
-    fig.savefig(HERE/f"lifted-orbit-flow.{ext}",dpi=160,facecolor=fig.get_facecolor())
+    fig.savefig(HERE/f"lifted-orbit-flow.{ext}",dpi=160,facecolor=fig.get_facecolor(), **({'metadata': {'Date': None}} if ext == 'svg' else {}))
 plt.close(fig)
 
 data={

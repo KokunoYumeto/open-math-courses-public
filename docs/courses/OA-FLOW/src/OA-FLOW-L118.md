@@ -157,7 +157,7 @@ Begin with a cyclic representation and a unit cyclic vector. Its vector function
 $$
 K=L^2(Y,\nu),
 \qquad
-\pi(b)\xi=b(y)\xi(y). \tag{E5}
+[\pi(b)\xi](y)=b(y)\xi(y). \tag{E5}
 $$
 
 Inner regularity gives compact sets carrying all but arbitrarily small measure. Choose increasing compact $K_n$ with $\nu(Y\setminus K_n)\to0$, replacing a chosen sequence by its finite unions. Put $K_0=\varnothing$ and $E_n=K_n\setminus K_{n-1}$. They are disjoint measurable pieces covering modulo a null set. The restrictions $\nu|_{E_n}$ are finite Radon measures by HR3's restriction/regularity proof and have support in $K_n$. Discard the pieces of zero mass and write $p_n=\nu(E_n)$, $\nu_n=p_n^{-1}\nu|_{E_n}$. Multiplication by $\sqrt{p_n}$ identifies $L^2(E_n,\nu|_{E_n})$ with $L^2(K_n,\nu_n)$. This is a countable decomposition of one finite measure, not a sigma-compactness assertion about $Y$.

@@ -8,6 +8,7 @@ import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-internal-compact-representations-20261009-v1"
 
 OUT=Path(__file__).resolve().parent
 plt.rcParams.update({'font.family':'DejaVu Sans','mathtext.fontset':'dejavusans','font.size':12,'svg.fonttype':'path'})
@@ -34,6 +35,6 @@ for ax,(k,l) in zip(axes.flat,[(0,0),(1,0),(2,0),(0,1),(1,1),(2,1)]):
     records.append({'g':g,'U_g_inverse':T.tolist()})
 fig.suptitle(r'The multiplier over each fibre of $S_3$'+'\n'+r'Columns of $U(g^{-1})$ in the fixed internal basis $(v_1,v_2)$',fontsize=18)
 fig.savefig(OUT/'s3-multiplier.png',dpi=160,facecolor='white')
-fig.savefig(OUT/'s3-multiplier.svg',facecolor='white')
+fig.savefig(OUT/'s3-multiplier.svg',facecolor='white',metadata={'Date': None})
 (OUT/'data.json').write_text(json.dumps({'R':[['-1/2','-sqrt(3)/2'],['sqrt(3)/2','-1/2']],'S':[[1,0],[0,-1]],'g_order':'r^k s^l','plotted_matrix':'transpose(R^k S^l) = U(g^{-1})','samples':records},indent=2),encoding='utf-8')
 plt.close(fig)

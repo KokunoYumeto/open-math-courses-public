@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-general-weight-20261008-v1"
 from matplotlib.colors import ListedColormap
 
 D = Path(__file__).resolve().parent
@@ -56,7 +57,7 @@ ax.text(.05, .35, r"$\Omega_j=\sqrt{3}\,2^{-j}$"+"\n"+
         bbox={"facecolor":"white","edgecolor":"#d9dfe5","alpha":.95})
 ax.grid(alpha=.25)
 fig.savefig(D / "assets" / "normality-mechanism.png", dpi=180)
-fig.savefig(D / "assets" / "normality-mechanism.svg")
+fig.savefig(D / "assets" / "normality-mechanism.svg", metadata={"Date": None})
 (D / "normality-figure-numerics.json").write_text(json.dumps({
     "scope": "Exact finite samples of the infinite diagonal example, not a general proof",
     "cutoff_m": fixed_m,

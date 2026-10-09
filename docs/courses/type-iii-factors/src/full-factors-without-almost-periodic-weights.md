@@ -34,7 +34,7 @@ continuous decomposition, with the group \(\mathbb{R}\), always works.
 
 **Prerequisites.** Tomita–Takesaki theory for weights, including the Connes cocycle derivative and crossed products.
 "Results used from other lessons" lists the facts we use and where each is proved. From this course we
-use the lessons Full factors and Almost periodic weights and the invariant \(Sd\). Section 1 restates
+use the lessons Full factors and [Almost periodic weights and the invariant \(Sd\)](almost-periodic-weights-and-the-invariant-sd.html). Section 1 restates
 exactly what we take from them.
 
 A basic reference is [Connes 1974].
@@ -228,8 +228,8 @@ A weight \(\varphi\) is **almost periodic** if \(\Delta_\varphi\) is diagonaliza
 \lambda E_\lambda\) for pairwise orthogonal projections \(E_\lambda\) with sum \(1\). It is **strictly semifinite**
 if its restriction to the centralizer \(M_\varphi\) is semifinite. For a subgroup \(\Lambda \subset \mathbb{R}_+^*\)
 let \(G_\Lambda\) be the compact dual group of \(\Lambda\) with the discrete topology, and let
-\(\hat\beta : \mathbb{R}\to G_\Lambda\), \(\hat\beta(t)(\lambda) = \lambda^{it}\). From the lesson Almost periodic
-weights and the invariant \(Sd\) we use the following two results: the implication (c)⇒(a) of Theorem 3.3 there,
+\(\hat\beta : \mathbb{R}\to G_\Lambda\), \(\hat\beta(t)(\lambda) = \lambda^{it}\). From the lesson [Almost periodic
+weights and the invariant \(Sd\)](almost-periodic-weights-and-the-invariant-sd.html) we use the following two results: the implication (c)⇒(a) of Theorem 3.3 there,
 and Lemma 7.3 there.
 
 **Theorem 1.4.** Let \(\varphi\) be a strictly semifinite fns weight on \(M\), and \(\Lambda \subset \mathbb{R}_+^*\)
@@ -780,7 +780,7 @@ almost periodic weight on \(M_\infty\), contradicting Corollary 7.2. \(\square\)
 Every factor of type III\(_\lambda\) with \(0\le\lambda<1\) and separable predual is a crossed product of a
 semifinite algebra by \(\mathbb{Z}\) [Connes 1973, Theorems 4.4.1 and 5.3.1]. A factor with separable predual and an almost periodic weight is,
 after tensoring with \(B(\ell^2)\), a crossed product of a semifinite algebra by a countable discrete abelian group
-(Almost periodic weights and the invariant \(Sd\), Lemma 7.2). The factor \(M_\infty\) has no such
+([Almost periodic weights and the invariant \(Sd\), Lemma 7.2](almost-periodic-weights-and-the-invariant-sd.html#section-7.2)). The factor \(M_\infty\) has no such
 decomposition.
 
 **Theorem 10.1.** Let \(M\) be a factor whose predual is separable. Suppose \(M\cong N\rtimes_\alpha D\) with \(N\)

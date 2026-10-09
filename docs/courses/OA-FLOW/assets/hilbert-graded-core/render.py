@@ -10,6 +10,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-hilbert-graded-core-20261008-v1"
 from matplotlib import font_manager
 from matplotlib.patches import FancyArrowPatch, Rectangle, Ellipse
 
@@ -129,7 +130,7 @@ txt(ax,.5,.045,r"$U^2=I,\qquad(iU)^2=-I$",ha="center",fontsize=16)
 fig.text(.5,.017,"All signs, degrees, matrices, and trace factors are exact. See the accompanying proofs and data.",
          ha="center",fontsize=12,color=MUTED)
 for ext in ("png","svg"):
-    fig.savefig(HERE/f"hilbert-graded-core.{ext}",dpi=160,facecolor=fig.get_facecolor())
+    fig.savefig(HERE/f"hilbert-graded-core.{ext}",dpi=160,facecolor=fig.get_facecolor(), **({"metadata": {"Date": None}} if ext == "svg" else {}))
 plt.close(fig)
 
 data={

@@ -1,0 +1,306 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Entropy of finite random variables</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents</a><a href="walks-through-gaussian-primes.html">Previous lesson</a><a href="concentration-and-the-discrete-cube.html">Next lesson</a><a href="src/entropy-of-finite-random-variables.md">Editable source</a></nav><main><article><h1 id="entropy-of-finite-random-variables">Entropy of finite random variables</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The proof of the uniform component bound for Gaussian primes measures how widely the residues of a randomly sampled walk position are spread, and how much a short word of later steps reveals about them. The measure is Shannon entropy. This lesson develops the finite theory that the course uses: entropy, conditional entropy and mutual information with their chain rules; relative entropy, Pinsker's inequality and a continuity bound; an entropy bound for short lists of candidates, in the spirit of Fano's inequality; and averages of entropies over random sets of coordinates, which are concave in the number of coordinates.</p>
+<p>All random variables in this lesson take finitely many values. We assume finite probability, as in the core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-B90">Probability (B90)</a>, and Jensen's inequality for concave functions of one real variable. The problem that motivates the lesson is described in <a href="walks-through-gaussian-primes.html">Walks through Gaussian primes</a>.</p>
+<p>Basic references are [Polyanskiy–Wu] and [MacKay].</p>
+<h2 id="1-entropy">1. Entropy</h2>
+<p>Throughout, random variables are defined on a probability space <span class="math" data-tex="\((\Omega,\mathbb P)\)">\((\Omega,\mathbb P)\)</span>, and each takes finitely many values. The <strong>law</strong> of <span class="math" data-tex="\(X\)">\(X\)</span> is the function <span class="math" data-tex="\(p(x)=\mathbb P(X=x)\)">\(p(x)=\mathbb P(X=x)\)</span> on its set of values. Logarithms are natural, and <span class="math" data-tex="\(0\log0=0\)">\(0\log0=0\)</span>.</p>
+<p><strong>Definition 1.1.</strong> The <strong>entropy</strong> of <span class="math" data-tex="\(X\)">\(X\)</span>, with law <span class="math" data-tex="\(p\)">\(p\)</span>, is</p>
+<span class="math math-display" data-tex="\[
+H(X)=-\sum_xp(x)\log p(x).
+\]">\[
+H(X)=-\sum_xp(x)\log p(x).
+\]</span>
+<p>It depends only on the law, so we also write <span class="math" data-tex="\(H(p)\)">\(H(p)\)</span>. Each term is nonnegative, so <span class="math" data-tex="\(H(X)\ge0\)">\(H(X)\ge0\)</span>, with equality exactly when <span class="math" data-tex="\(X\)">\(X\)</span> is almost surely constant. If <span class="math" data-tex="\(f\)">\(f\)</span> is injective on the values of <span class="math" data-tex="\(X\)">\(X\)</span>, then <span class="math" data-tex="\(H(f(X))=H(X)\)">\(H(f(X))=H(X)\)</span>.</p>
+<p><strong>Lemma 1.2</strong> (Gibbs' inequality). Let <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> be probability laws on a finite set with <span class="math" data-tex="\(q(x)&gt;0\)">\(q(x)&gt;0\)</span> wherever <span class="math" data-tex="\(p(x)&gt;0\)">\(p(x)&gt;0\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\sum_xp(x)\log\frac{p(x)}{q(x)}\ge0,
+\]">\[
+\sum_xp(x)\log\frac{p(x)}{q(x)}\ge0,
+\]</span>
+<p>with equality exactly when <span class="math" data-tex="\(p=q\)">\(p=q\)</span>.</p>
+<p><strong>Proof.</strong> Use <span class="math" data-tex="\(\log t\le t-1\)">\(\log t\le t-1\)</span>, with equality only at <span class="math" data-tex="\(t=1\)">\(t=1\)</span>. Summing over <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(p(x)&gt;0\)">\(p(x)&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_xp(x)\log\frac{q(x)}{p(x)}\le\sum_{p(x)&gt;0}\bigl(q(x)-p(x)\bigr)\le1-1=0.
+\]">\[
+\sum_xp(x)\log\frac{q(x)}{p(x)}\le\sum_{p(x)&gt;0}\bigl(q(x)-p(x)\bigr)\le1-1=0.
+\]</span>
+<p>Equality forces <span class="math" data-tex="\(q(x)=p(x)\)">\(q(x)=p(x)\)</span> wherever <span class="math" data-tex="\(p(x)&gt;0\)">\(p(x)&gt;0\)</span>; since both laws have total mass one, <span class="math" data-tex="\(q\)">\(q\)</span> then vanishes elsewhere. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 1.3.</strong> If <span class="math" data-tex="\(X\)">\(X\)</span> takes at most <span class="math" data-tex="\(a\)">\(a\)</span> values, then <span class="math" data-tex="\(H(X)\le\log a\)">\(H(X)\le\log a\)</span>, with equality exactly when <span class="math" data-tex="\(X\)">\(X\)</span> is uniformly distributed on <span class="math" data-tex="\(a\)">\(a\)</span> values.</p>
+<p><strong>Proof.</strong> Apply Lemma 1.2 with <span class="math" data-tex="\(q\)">\(q\)</span> uniform on a set of <span class="math" data-tex="\(a\)">\(a\)</span> values containing those of <span class="math" data-tex="\(X\)">\(X\)</span>: the sum equals <span class="math" data-tex="\(\log a-H(X)\)">\(\log a-H(X)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-conditional-entropy">2. Conditional entropy</h2>
+<p>For finite random variables <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span>, the pair <span class="math" data-tex="\((X,Y)\)">\((X,Y)\)</span> is again a finite random variable, with entropy <span class="math" data-tex="\(H(X,Y)\)">\(H(X,Y)\)</span>. For a value <span class="math" data-tex="\(y\)">\(y\)</span> with <span class="math" data-tex="\(\mathbb P(Y=y)&gt;0\)">\(\mathbb P(Y=y)&gt;0\)</span>, write <span class="math" data-tex="\(H(X\mid Y=y)\)">\(H(X\mid Y=y)\)</span> for the entropy of the conditional law <span class="math" data-tex="\(x\mapsto\mathbb P(X=x\mid Y=y)\)">\(x\mapsto\mathbb P(X=x\mid Y=y)\)</span>.</p>
+<p><strong>Definition 2.1.</strong> The <strong>conditional entropy</strong> of <span class="math" data-tex="\(X\)">\(X\)</span> given <span class="math" data-tex="\(Y\)">\(Y\)</span> is</p>
+<span class="math math-display" data-tex="\[
+H(X\mid Y)=\sum_y\mathbb P(Y=y)\,H(X\mid Y=y),
+\]">\[
+H(X\mid Y)=\sum_y\mathbb P(Y=y)\,H(X\mid Y=y),
+\]</span>
+<p>summed over the values of positive probability. Conditioning on several variables means conditioning on the tuple they form.</p>
+<p><strong>Proposition 2.2</strong> (chain rule). <span class="math" data-tex="\(H(X,Y)=H(Y)+H(X\mid Y)\)">\(H(X,Y)=H(Y)+H(X\mid Y)\)</span>. More generally,</p>
+<span class="math math-display" data-tex="\[
+H(X_1,\dots,X_n\mid Z)=\sum_{j=1}^nH(X_j\mid X_1,\dots,X_{j-1},Z).
+\]">\[
+H(X_1,\dots,X_n\mid Z)=\sum_{j=1}^nH(X_j\mid X_1,\dots,X_{j-1},Z).
+\]</span>
+<p><strong>Proof.</strong> With <span class="math" data-tex="\(p(x,y)=\mathbb P(X=x,Y=y)\)">\(p(x,y)=\mathbb P(X=x,Y=y)\)</span> and <span class="math" data-tex="\(p(y)=\mathbb P(Y=y)\)">\(p(y)=\mathbb P(Y=y)\)</span>, we have <span class="math" data-tex="\(\log p(x,y)=\log p(y)+\log\bigl(p(x,y)/p(y)\bigr)\)">\(\log p(x,y)=\log p(y)+\log\bigl(p(x,y)/p(y)\bigr)\)</span>; multiply by <span class="math" data-tex="\(-p(x,y)\)">\(-p(x,y)\)</span> and sum. The general form follows by applying the first one conditionally on each value of <span class="math" data-tex="\(Z\)">\(Z\)</span> and inducting on <span class="math" data-tex="\(n\)">\(n\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 2.3</strong> (conditioning does not increase entropy). <span class="math" data-tex="\(H(X\mid Y,Z)\le H(X\mid Z)\)">\(H(X\mid Y,Z)\le H(X\mid Z)\)</span>. In particular <span class="math" data-tex="\(H(X\mid Y)\le H(X)\)">\(H(X\mid Y)\le H(X)\)</span>, with equality exactly when <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span> are independent.</p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(Z=z\)">\(Z=z\)</span> and work in the conditional probability space; it suffices to treat the case without <span class="math" data-tex="\(Z\)">\(Z\)</span>. With <span class="math" data-tex="\(p(x)\)">\(p(x)\)</span> the law of <span class="math" data-tex="\(X\)">\(X\)</span>,</p>
+<span class="math math-display" data-tex="\[
+H(X)-H(X\mid Y)=\sum_{x,y}p(x,y)\log\frac{p(x,y)}{p(x)p(y)},
+\]">\[
+H(X)-H(X\mid Y)=\sum_{x,y}p(x,y)\log\frac{p(x,y)}{p(x)p(y)},
+\]</span>
+<p>which is nonnegative by Lemma 1.2, applied to the joint law and the product law <span class="math" data-tex="\(p(x)p(y)\)">\(p(x)p(y)\)</span>. Equality holds exactly when these laws agree. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 2.4.</strong> The following hold for finite random variables.</p>
+<ol>
+<li>(Subadditivity) <span class="math" data-tex="\(H(X_1,\dots,X_n\mid Z)\le\sum_jH(X_j\mid Z)\)">\(H(X_1,\dots,X_n\mid Z)\le\sum_jH(X_j\mid Z)\)</span>.</li>
+<li>(Determined variables) If <span class="math" data-tex="\(X=f(Y)\)">\(X=f(Y)\)</span> almost surely, then <span class="math" data-tex="\(H(X\mid Y)=0\)">\(H(X\mid Y)=0\)</span> and <span class="math" data-tex="\(H(X\mid W)\le H(Y\mid W)\)">\(H(X\mid W)\le H(Y\mid W)\)</span> for every <span class="math" data-tex="\(W\)">\(W\)</span>. If <span class="math" data-tex="\(X\)">\(X\)</span> is determined by <span class="math" data-tex="\((Y,Z)\)">\((Y,Z)\)</span>, then <span class="math" data-tex="\(H(X)\le H(Y)+H(Z)\)">\(H(X)\le H(Y)+H(Z)\)</span>.</li>
+<li>(Cost of conditioning) <span class="math" data-tex="\(H(X\mid Y)\ge H(X)-H(Y)\)">\(H(X\mid Y)\ge H(X)-H(Y)\)</span>, and more generally <span class="math" data-tex="\(H(X\mid Y,Z)\ge H(X\mid Z)-H(Y\mid Z)\)">\(H(X\mid Y,Z)\ge H(X\mid Z)-H(Y\mid Z)\)</span>.</li>
+<li>(Equivalent conditions) If <span class="math" data-tex="\(Y\)">\(Y\)</span> and <span class="math" data-tex="\(Y&#x27;\)">\(Y&#x27;\)</span> determine each other, then <span class="math" data-tex="\(H(X\mid Y)=H(X\mid Y&#x27;)\)">\(H(X\mid Y)=H(X\mid Y&#x27;)\)</span>. If <span class="math" data-tex="\(Y&#x27;\)">\(Y&#x27;\)</span> is determined by <span class="math" data-tex="\(Y\)">\(Y\)</span>, then <span class="math" data-tex="\(H(X\mid Y)\le H(X\mid Y&#x27;)\)">\(H(X\mid Y)\le H(X\mid Y&#x27;)\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> (1) Combine the chain rule with Proposition 2.3. (2) Given <span class="math" data-tex="\(Y=y\)">\(Y=y\)</span>, the variable <span class="math" data-tex="\(X\)">\(X\)</span> is constant. By the chain rule <span class="math" data-tex="\(H(X\mid W)\le H(X,Y\mid W)=H(Y\mid W)+H(X\mid Y,W)=H(Y\mid W)\)">\(H(X\mid W)\le H(X,Y\mid W)=H(Y\mid W)+H(X\mid Y,W)=H(Y\mid W)\)</span>. If <span class="math" data-tex="\(X\)">\(X\)</span> is determined by <span class="math" data-tex="\((Y,Z)\)">\((Y,Z)\)</span>, then <span class="math" data-tex="\(H(X)\le H(Y,Z)\le H(Y)+H(Z)\)">\(H(X)\le H(Y,Z)\le H(Y)+H(Z)\)</span>. (3) <span class="math" data-tex="\(H(X\mid Z)\le H(X,Y\mid Z)=H(Y\mid Z)+H(X\mid Y,Z)\)">\(H(X\mid Z)\le H(X,Y\mid Z)=H(Y\mid Z)+H(X\mid Y,Z)\)</span>. (4) The events <span class="math" data-tex="\(\{Y=y\}\)">\(\{Y=y\}\)</span> and <span class="math" data-tex="\(\{Y&#x27;=y&#x27;\}\)">\(\{Y&#x27;=y&#x27;\}\)</span> coincide for corresponding values, so the conditional laws agree. If <span class="math" data-tex="\(Y&#x27;=g(Y)\)">\(Y&#x27;=g(Y)\)</span>, then <span class="math" data-tex="\(H(X\mid Y)=H(X\mid Y,Y&#x27;)\le H(X\mid Y&#x27;)\)">\(H(X\mid Y)=H(X\mid Y,Y&#x27;)\le H(X\mid Y&#x27;)\)</span> by the first part and Proposition 2.3. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 2.5</strong> (independent blocks). If <span class="math" data-tex="\(X_1,\dots,X_n\)">\(X_1,\dots,X_n\)</span> are conditionally independent given <span class="math" data-tex="\(Z\)">\(Z\)</span>, then <span class="math" data-tex="\(H(X_1,\dots,X_n\mid Z)=\sum_jH(X_j\mid Z)\)">\(H(X_1,\dots,X_n\mid Z)=\sum_jH(X_j\mid Z)\)</span>.</p>
+<p><strong>Proof.</strong> Given <span class="math" data-tex="\(Z=z\)">\(Z=z\)</span>, the joint law is the product of the marginal laws, and the logarithm of a product is the sum of the logarithms. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-mutual-information">3. Mutual information</h2>
+<p><strong>Definition 3.1.</strong> The <strong>mutual information</strong> of <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span> given <span class="math" data-tex="\(Z\)">\(Z\)</span> is</p>
+<span class="math math-display" data-tex="\[
+I(X;Y\mid Z)=H(X\mid Z)-H(X\mid Y,Z).
+\]">\[
+I(X;Y\mid Z)=H(X\mid Z)-H(X\mid Y,Z).
+\]</span>
+<p>Without <span class="math" data-tex="\(Z\)">\(Z\)</span> we write <span class="math" data-tex="\(I(X;Y)=H(X)-H(X\mid Y)\)">\(I(X;Y)=H(X)-H(X\mid Y)\)</span>.</p>
+<p>By Proposition 2.3 it is nonnegative. The chain rule gives the symmetric form <span class="math" data-tex="\(I(X;Y\mid Z)=H(X\mid Z)+H(Y\mid Z)-H(X,Y\mid Z)\)">\(I(X;Y\mid Z)=H(X\mid Z)+H(Y\mid Z)-H(X,Y\mid Z)\)</span>, so <span class="math" data-tex="\(I(X;Y\mid Z)=I(Y;X\mid Z)\le\min\{H(X\mid Z),H(Y\mid Z)\}\)">\(I(X;Y\mid Z)=I(Y;X\mid Z)\le\min\{H(X\mid Z),H(Y\mid Z)\}\)</span>.</p>
+<p><strong>Proposition 3.2</strong> (chain rule for information). <span class="math" data-tex="\(I(X;Y,W\mid Z)=I(X;Y\mid Z)+I(X;W\mid Y,Z)\)">\(I(X;Y,W\mid Z)=I(X;Y\mid Z)+I(X;W\mid Y,Z)\)</span>.</p>
+<p><strong>Proof.</strong> Both sides equal <span class="math" data-tex="\(H(X\mid Z)-H(X\mid Y,W,Z)\)">\(H(X\mid Z)-H(X\mid Y,W,Z)\)</span>: add and subtract <span class="math" data-tex="\(H(X\mid Y,Z)\)">\(H(X\mid Y,Z)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.3</strong> (removing a condition). For finite random variables <span class="math" data-tex="\(A,B,C,S\)">\(A,B,C,S\)</span>,</p>
+<span class="math math-display" data-tex="\[
+I(A;B\mid C,S)\le I(A;B\mid C)+H(S).
+\]">\[
+I(A;B\mid C,S)\le I(A;B\mid C)+H(S).
+\]</span>
+<p><strong>Proof.</strong> Expand <span class="math" data-tex="\(I(A;B,S\mid C)\)">\(I(A;B,S\mid C)\)</span> by Proposition 3.2 in the two possible orders:</p>
+<span class="math math-display" data-tex="\[
+I(A;S\mid C)+I(A;B\mid C,S)=I(A;B\mid C)+I(A;S\mid B,C).
+\]">\[
+I(A;S\mid C)+I(A;B\mid C,S)=I(A;B\mid C)+I(A;S\mid B,C).
+\]</span>
+<p>Hence <span class="math" data-tex="\(I(A;B\mid C,S)\le I(A;B\mid C)+I(A;S\mid B,C)\)">\(I(A;B\mid C,S)\le I(A;B\mid C)+I(A;S\mid B,C)\)</span>, and <span class="math" data-tex="\(I(A;S\mid B,C)\le H(S\mid B,C)\le H(S)\)">\(I(A;S\mid B,C)\le H(S\mid B,C)\le H(S)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.4</strong> (repeated observations). Let <span class="math" data-tex="\(X,O,P\)">\(X,O,P\)</span> be finite random variables, and let <span class="math" data-tex="\(P_1,\dots,P_m\)">\(P_1,\dots,P_m\)</span> be random variables that are conditionally independent given <span class="math" data-tex="\((X,O)\)">\((X,O)\)</span>, such that each triple <span class="math" data-tex="\((X,O,P_a)\)">\((X,O,P_a)\)</span> has the same law as <span class="math" data-tex="\((X,O,P)\)">\((X,O,P)\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+I(X;P_1,\dots,P_m\mid O)\le m\,I(X;P\mid O).
+\]">\[
+I(X;P_1,\dots,P_m\mid O)\le m\,I(X;P\mid O).
+\]</span>
+<p><strong>Proof.</strong> By Definition 3.1 in its symmetric form, Proposition 2.5 and subadditivity,</p>
+<span class="math math-display" data-tex="\[
+I(X;P_1,\dots,P_m\mid O)=H(P_1,\dots,P_m\mid O)-\sum_{a=1}^mH(P_a\mid X,O)
+\le\sum_{a=1}^m\bigl(H(P_a\mid O)-H(P_a\mid X,O)\bigr).
+\]">\[
+I(X;P_1,\dots,P_m\mid O)=H(P_1,\dots,P_m\mid O)-\sum_{a=1}^mH(P_a\mid X,O)
+\le\sum_{a=1}^m\bigl(H(P_a\mid O)-H(P_a\mid X,O)\bigr).
+\]</span>
+<p>Each summand equals <span class="math" data-tex="\(I(X;P\mid O)\)">\(I(X;P\mid O)\)</span>, because it depends only on the law of <span class="math" data-tex="\((X,O,P_a)\)">\((X,O,P_a)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-mixtures-and-the-binary-entropy">4. Mixtures and the binary entropy</h2>
+<p>The <strong>binary entropy</strong> is</p>
+<span class="math math-display" data-tex="\[
+h(u)=-u\log u-(1-u)\log(1-u)\qquad(0\le u\le1),
+\]">\[
+h(u)=-u\log u-(1-u)\log(1-u)\qquad(0\le u\le1),
+\]</span>
+<p>the entropy of a variable taking two values with probabilities <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(1-u\)">\(1-u\)</span>. It is continuous, symmetric about <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span>, and concave, since <span class="math" data-tex="\(h&#x27;&#x27;(u)=-1/(u(1-u))&lt;0\)">\(h&#x27;&#x27;(u)=-1/(u(1-u))&lt;0\)</span> on <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>. It increases on <span class="math" data-tex="\([0,\tfrac12]\)">\([0,\tfrac12]\)</span>, where <span class="math" data-tex="\(h&#x27;(u)=\log((1-u)/u)\ge0\)">\(h&#x27;(u)=\log((1-u)/u)\ge0\)</span>. Moreover</p>
+<span class="math math-display" data-tex="\[
+h(u)\le u\log\frac eu,
+\tag{4.1}
+\]">\[
+h(u)\le u\log\frac eu,
+\tag{4.1}
+\]</span>
+<p>because <span class="math" data-tex="\(-(1-u)\log(1-u)\le u\)">\(-(1-u)\log(1-u)\le u\)</span>: indeed <span class="math" data-tex="\(-\log(1-u)\le u/(1-u)\)">\(-\log(1-u)\le u/(1-u)\)</span>, by the inequality <span class="math" data-tex="\(\log t\le t-1\)">\(\log t\le t-1\)</span> applied to <span class="math" data-tex="\(t=1/(1-u)\)">\(t=1/(1-u)\)</span>.</p>
+<p><strong>Lemma 4.1</strong> (mixtures). Let <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span> be finite random variables with values in the same set, and let <span class="math" data-tex="\(\xi\)">\(\xi\)</span> be an independent fair coin. Let <span class="math" data-tex="\(V=X\)">\(V=X\)</span> if <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span> and <span class="math" data-tex="\(V=Y\)">\(V=Y\)</span> if <span class="math" data-tex="\(\xi=1\)">\(\xi=1\)</span>. Then for every function <span class="math" data-tex="\(F\)">\(F\)</span>,</p>
+<span class="math math-display" data-tex="\[
+H(F(V))\ge\tfrac12H(F(X))+\tfrac12H(F(Y)).
+\]">\[
+H(F(V))\ge\tfrac12H(F(X))+\tfrac12H(F(Y)).
+\]</span>
+<p><strong>Proof.</strong> By Proposition 2.3, <span class="math" data-tex="\(H(F(V))\ge H(F(V)\mid\xi)\)">\(H(F(V))\ge H(F(V)\mid\xi)\)</span>. Given <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span>, the variable <span class="math" data-tex="\(F(V)\)">\(F(V)\)</span> is <span class="math" data-tex="\(F(X)\)">\(F(X)\)</span>, whose conditional law equals its law because <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is independent of <span class="math" data-tex="\((X,Y)\)">\((X,Y)\)</span>; likewise for <span class="math" data-tex="\(\xi=1\)">\(\xi=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-relative-entropy-total-variation-and-continuity">5. Relative entropy, total variation and continuity</h2>
+<p><strong>Definition 5.1.</strong> For probability laws <span class="math" data-tex="\(p,q\)">\(p,q\)</span> on a finite set, the <strong>relative entropy</strong> is</p>
+<span class="math math-display" data-tex="\[
+D(p\Vert q)=\sum_xp(x)\log\frac{p(x)}{q(x)},
+\]">\[
+D(p\Vert q)=\sum_xp(x)\log\frac{p(x)}{q(x)},
+\]</span>
+<p>with the value <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span> if <span class="math" data-tex="\(q(x)=0&lt;p(x)\)">\(q(x)=0&lt;p(x)\)</span> for some <span class="math" data-tex="\(x\)">\(x\)</span>. The <strong>total variation distance</strong> is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{TV}(p,q)=\frac12\sum_x|p(x)-q(x)|=\max_A\bigl(p(A)-q(A)\bigr),
+\]">\[
+\operatorname{TV}(p,q)=\frac12\sum_x|p(x)-q(x)|=\max_A\bigl(p(A)-q(A)\bigr),
+\]</span>
+<p>the maximum being attained at <span class="math" data-tex="\(A=\{x:p(x)&gt;q(x)\}\)">\(A=\{x:p(x)&gt;q(x)\}\)</span>.</p>
+<p>By Lemma 1.2, <span class="math" data-tex="\(D(p\Vert q)\ge0\)">\(D(p\Vert q)\ge0\)</span>. If <span class="math" data-tex="\(u\)">\(u\)</span> is the uniform law on a set of <span class="math" data-tex="\(a\)">\(a\)</span> elements containing the support of <span class="math" data-tex="\(p\)">\(p\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+D(p\Vert u)=\log a-H(p).
+\tag{5.1}
+\]">\[
+D(p\Vert u)=\log a-H(p).
+\tag{5.1}
+\]</span>
+<p>If <span class="math" data-tex="\(f\)">\(f\)</span> is a map, the image laws satisfy <span class="math" data-tex="\(\operatorname{TV}(f_*p,f_*q)\le\operatorname{TV}(p,q)\)">\(\operatorname{TV}(f_*p,f_*q)\le\operatorname{TV}(p,q)\)</span>, because <span class="math" data-tex="\(f_*p(A)-f_*q(A)=p(f^{-1}A)-q(f^{-1}A)\)">\(f_*p(A)-f_*q(A)=p(f^{-1}A)-q(f^{-1}A)\)</span>. For mixtures with the same weights, the triangle inequality gives <span class="math" data-tex="\(\operatorname{TV}\bigl(\sum_j\lambda_jp_j,\sum_j\lambda_jq_j\bigr)\le\sum_j\lambda_j\operatorname{TV}(p_j,q_j)\)">\(\operatorname{TV}\bigl(\sum_j\lambda_jp_j,\sum_j\lambda_jq_j\bigr)\le\sum_j\lambda_j\operatorname{TV}(p_j,q_j)\)</span>.</p>
+<p><strong>Lemma 5.2</strong> (log-sum inequality). For nonnegative numbers <span class="math" data-tex="\(a_1,\dots,a_n\)">\(a_1,\dots,a_n\)</span> and <span class="math" data-tex="\(b_1,\dots,b_n\)">\(b_1,\dots,b_n\)</span> with <span class="math" data-tex="\(b_j&gt;0\)">\(b_j&gt;0\)</span> wherever <span class="math" data-tex="\(a_j&gt;0\)">\(a_j&gt;0\)</span>, and <span class="math" data-tex="\(a=\sum a_j\)">\(a=\sum a_j\)</span>, <span class="math" data-tex="\(b=\sum b_j&gt;0\)">\(b=\sum b_j&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_ja_j\log\frac{a_j}{b_j}\ge a\log\frac ab.
+\]">\[
+\sum_ja_j\log\frac{a_j}{b_j}\ge a\log\frac ab.
+\]</span>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(a=0\)">\(a=0\)</span> both sides vanish. Otherwise apply Lemma 1.2 to the laws <span class="math" data-tex="\(a_j/a\)">\(a_j/a\)</span> and <span class="math" data-tex="\(b_j/b\)">\(b_j/b\)</span>: <span class="math" data-tex="\(\sum_j(a_j/a)\log\bigl((a_j/a)(b/b_j)\bigr)\ge0\)">\(\sum_j(a_j/a)\log\bigl((a_j/a)(b/b_j)\bigr)\ge0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.3</strong> (Pinsker's inequality). For probability laws <span class="math" data-tex="\(p,q\)">\(p,q\)</span> on a finite set,</p>
+<span class="math math-display" data-tex="\[
+D(p\Vert q)\ge2\operatorname{TV}(p,q)^2.
+\]">\[
+D(p\Vert q)\ge2\operatorname{TV}(p,q)^2.
+\]</span>
+<p><strong>Proof.</strong> We may assume <span class="math" data-tex="\(D(p\Vert q)&lt;\infty\)">\(D(p\Vert q)&lt;\infty\)</span>. Let <span class="math" data-tex="\(A=\{x:p(x)&gt;q(x)\}\)">\(A=\{x:p(x)&gt;q(x)\}\)</span>, <span class="math" data-tex="\(u=p(A)\)">\(u=p(A)\)</span> and <span class="math" data-tex="\(v=q(A)\)">\(v=q(A)\)</span>, so that <span class="math" data-tex="\(\operatorname{TV}(p,q)=u-v\)">\(\operatorname{TV}(p,q)=u-v\)</span>. Lemma 5.2, applied separately to the terms with <span class="math" data-tex="\(x\in A\)">\(x\in A\)</span> and with <span class="math" data-tex="\(x\notin A\)">\(x\notin A\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+D(p\Vert q)\ge u\log\frac uv+(1-u)\log\frac{1-u}{1-v}=:d(u,v).
+\]">\[
+D(p\Vert q)\ge u\log\frac uv+(1-u)\log\frac{1-u}{1-v}=:d(u,v).
+\]</span>
+<p>If <span class="math" data-tex="\(v\in\{0,1\}\)">\(v\in\{0,1\}\)</span>, finiteness forces <span class="math" data-tex="\(u=v\)">\(u=v\)</span> and there is nothing to prove. For fixed <span class="math" data-tex="\(v\in(0,1)\)">\(v\in(0,1)\)</span>, put <span class="math" data-tex="\(\varphi(u)=d(u,v)-2(u-v)^2\)">\(\varphi(u)=d(u,v)-2(u-v)^2\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. Then <span class="math" data-tex="\(\varphi(v)=0\)">\(\varphi(v)=0\)</span>, <span class="math" data-tex="\(\varphi&#x27;(u)=\log\frac uv-\log\frac{1-u}{1-v}-4(u-v)\)">\(\varphi&#x27;(u)=\log\frac uv-\log\frac{1-u}{1-v}-4(u-v)\)</span> vanishes at <span class="math" data-tex="\(u=v\)">\(u=v\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\varphi&#x27;&#x27;(u)=\frac1{u(1-u)}-4\ge0\qquad(0&lt;u&lt;1).
+\]">\[
+\varphi&#x27;&#x27;(u)=\frac1{u(1-u)}-4\ge0\qquad(0&lt;u&lt;1).
+\]</span>
+<p>So <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is convex on <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> with a critical point at <span class="math" data-tex="\(v\)">\(v\)</span>, hence <span class="math" data-tex="\(\varphi\ge0\)">\(\varphi\ge0\)</span> there, and by continuity on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> [Polyanskiy–Wu, Theorem 7.10].</p>
+<p><strong>Lemma 5.4</strong> (maximal coupling). Let <span class="math" data-tex="\(p,q\)">\(p,q\)</span> be probability laws on a finite set <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span> with <span class="math" data-tex="\(\operatorname{TV}(p,q)=\varepsilon\)">\(\operatorname{TV}(p,q)=\varepsilon\)</span>. There is a pair <span class="math" data-tex="\((U,\widetilde U)\)">\((U,\widetilde U)\)</span> of random variables with laws <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> such that <span class="math" data-tex="\(\mathbb P(U\ne\widetilde U)=\varepsilon\)">\(\mathbb P(U\ne\widetilde U)=\varepsilon\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(\varepsilon=0\)">\(\varepsilon=0\)</span>, take <span class="math" data-tex="\(U=\widetilde U\)">\(U=\widetilde U\)</span>. Otherwise put <span class="math" data-tex="\(m=\min(p,q)\)">\(m=\min(p,q)\)</span>, <span class="math" data-tex="\(r=(p-q)_+\)">\(r=(p-q)_+\)</span> and <span class="math" data-tex="\(r&#x27;=(q-p)_+\)">\(r&#x27;=(q-p)_+\)</span>, pointwise. Then <span class="math" data-tex="\(m+r=p\)">\(m+r=p\)</span>, <span class="math" data-tex="\(m+r&#x27;=q\)">\(m+r&#x27;=q\)</span>, <span class="math" data-tex="\(\sum r=\sum r&#x27;=\varepsilon\)">\(\sum r=\sum r&#x27;=\varepsilon\)</span>, and <span class="math" data-tex="\(\sum m=1-\varepsilon\)">\(\sum m=1-\varepsilon\)</span>; also <span class="math" data-tex="\(r\)">\(r\)</span> and <span class="math" data-tex="\(r&#x27;\)">\(r&#x27;\)</span> have disjoint supports. With probability <span class="math" data-tex="\(1-\varepsilon\)">\(1-\varepsilon\)</span> draw one point from the law <span class="math" data-tex="\(m/(1-\varepsilon)\)">\(m/(1-\varepsilon)\)</span> and let <span class="math" data-tex="\(U=\widetilde U\)">\(U=\widetilde U\)</span> be that point (if <span class="math" data-tex="\(\varepsilon=1\)">\(\varepsilon=1\)</span>, this case does not occur). With probability <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> draw <span class="math" data-tex="\(U\)">\(U\)</span> from <span class="math" data-tex="\(r/\varepsilon\)">\(r/\varepsilon\)</span> and, independently, <span class="math" data-tex="\(\widetilde U\)">\(\widetilde U\)</span> from <span class="math" data-tex="\(r&#x27;/\varepsilon\)">\(r&#x27;/\varepsilon\)</span>; then <span class="math" data-tex="\(U\ne\widetilde U\)">\(U\ne\widetilde U\)</span>. The laws are <span class="math" data-tex="\(m+r=p\)">\(m+r=p\)</span> and <span class="math" data-tex="\(m+r&#x27;=q\)">\(m+r&#x27;=q\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 5.5</strong> (continuity of entropy). Let <span class="math" data-tex="\(p,q\)">\(p,q\)</span> be laws on a set of at most <span class="math" data-tex="\(a\)">\(a\)</span> elements with <span class="math" data-tex="\(\operatorname{TV}(p,q)\le\varepsilon\le\frac12\)">\(\operatorname{TV}(p,q)\le\varepsilon\le\frac12\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+|H(p)-H(q)|\le h(\varepsilon)+\varepsilon\log a.
+\]">\[
+|H(p)-H(q)|\le h(\varepsilon)+\varepsilon\log a.
+\]</span>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\varepsilon&#x27;=\operatorname{TV}(p,q)\)">\(\varepsilon&#x27;=\operatorname{TV}(p,q)\)</span>, take the coupling of Lemma 5.4, and let <span class="math" data-tex="\(\beta\)">\(\beta\)</span> indicate the event <span class="math" data-tex="\(U\ne\widetilde U\)">\(U\ne\widetilde U\)</span>. By the chain rule,</p>
+<span class="math math-display" data-tex="\[
+H(U)\le H(U,\widetilde U)=H(\widetilde U)+H(U\mid\widetilde U)\le H(\widetilde U)+H(\beta)+H(U\mid\widetilde U,\beta).
+\]">\[
+H(U)\le H(U,\widetilde U)=H(\widetilde U)+H(U\mid\widetilde U)\le H(\widetilde U)+H(\beta)+H(U\mid\widetilde U,\beta).
+\]</span>
+<p>Given <span class="math" data-tex="\(\beta=0\)">\(\beta=0\)</span>, <span class="math" data-tex="\(U\)">\(U\)</span> is determined by <span class="math" data-tex="\(\widetilde U\)">\(\widetilde U\)</span>; given <span class="math" data-tex="\(\beta=1\)">\(\beta=1\)</span>, its conditional entropy is at most <span class="math" data-tex="\(\log a\)">\(\log a\)</span>. So <span class="math" data-tex="\(H(U\mid\widetilde U,\beta)\le\varepsilon&#x27;\log a\)">\(H(U\mid\widetilde U,\beta)\le\varepsilon&#x27;\log a\)</span>, and <span class="math" data-tex="\(H(\beta)=h(\varepsilon&#x27;)\le h(\varepsilon)\)">\(H(\beta)=h(\varepsilon&#x27;)\le h(\varepsilon)\)</span>, since <span class="math" data-tex="\(h\)">\(h\)</span> increases on <span class="math" data-tex="\([0,\frac12]\)">\([0,\frac12]\)</span>. Exchange the roles of <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 5.6</strong> (continuity of conditional entropy). Let <span class="math" data-tex="\((X,Y)\)">\((X,Y)\)</span> and <span class="math" data-tex="\((\widetilde X,\widetilde Y)\)">\((\widetilde X,\widetilde Y)\)</span> be pairs whose joint laws, on a product set with at most <span class="math" data-tex="\(a\)">\(a\)</span> elements, have total variation at most <span class="math" data-tex="\(\varepsilon\le\frac12\)">\(\varepsilon\le\frac12\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+|H(X\mid Y)-H(\widetilde X\mid\widetilde Y)|\le2h(\varepsilon)+2\varepsilon\log a.
+\]">\[
+|H(X\mid Y)-H(\widetilde X\mid\widetilde Y)|\le2h(\varepsilon)+2\varepsilon\log a.
+\]</span>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(H(X\mid Y)=H(X,Y)-H(Y)\)">\(H(X\mid Y)=H(X,Y)-H(Y)\)</span>. The laws of <span class="math" data-tex="\(Y\)">\(Y\)</span> and <span class="math" data-tex="\(\widetilde Y\)">\(\widetilde Y\)</span> are images of the joint laws, so their total variation is at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>; they live on a set with at most <span class="math" data-tex="\(a\)">\(a\)</span> elements. Apply Lemma 5.5 twice. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-short-lists-of-candidates">6. Short lists of candidates</h2>
+<p>When a variable <span class="math" data-tex="\(Y\)">\(Y\)</span> narrows the possible values of <span class="math" data-tex="\(X\)">\(X\)</span> to a short list, the conditional entropy of <span class="math" data-tex="\(X\)">\(X\)</span> drops. The following bound quantifies this even when the list is short only some of the time, and when it contains <span class="math" data-tex="\(X\)">\(X\)</span> only some of the time.</p>
+<p><strong>Lemma 6.1</strong> (short lists). Let <span class="math" data-tex="\(X\)">\(X\)</span> take at most <span class="math" data-tex="\(a\)">\(a\)</span> values, let <span class="math" data-tex="\(Y\)">\(Y\)</span> be a finite random variable, and for each value <span class="math" data-tex="\(y\)">\(y\)</span> let <span class="math" data-tex="\(\mathcal L(y)\)">\(\mathcal L(y)\)</span> be a set of possible values of <span class="math" data-tex="\(X\)">\(X\)</span>. Let <span class="math" data-tex="\(1\le b\le a\)">\(1\le b\le a\)</span> be real, and</p>
+<span class="math math-display" data-tex="\[
+\rho=\mathbb P\bigl(X\in\mathcal L(Y)\text{ and }|\mathcal L(Y)|\le b\bigr).
+\]">\[
+\rho=\mathbb P\bigl(X\in\mathcal L(Y)\text{ and }|\mathcal L(Y)|\le b\bigr).
+\]</span>
+<p>Then</p>
+<span class="math math-display" data-tex="\[
+\log a-H(X\mid Y)\ge\rho\log\frac ab-h(\rho).
+\]">\[
+\log a-H(X\mid Y)\ge\rho\log\frac ab-h(\rho).
+\]</span>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\beta\)">\(\beta\)</span> indicate the event in the definition of <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. It is a function of <span class="math" data-tex="\((X,Y)\)">\((X,Y)\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+H(X\mid Y)\le H(X,\beta\mid Y)=H(\beta\mid Y)+H(X\mid\beta,Y)\le h(\rho)+\rho\log b+(1-\rho)\log a.
+\]">\[
+H(X\mid Y)\le H(X,\beta\mid Y)=H(\beta\mid Y)+H(X\mid\beta,Y)\le h(\rho)+\rho\log b+(1-\rho)\log a.
+\]</span>
+<p>Indeed <span class="math" data-tex="\(H(\beta\mid Y)\le H(\beta)=h(\rho)\)">\(H(\beta\mid Y)\le H(\beta)=h(\rho)\)</span>. On the event <span class="math" data-tex="\(\beta=1\)">\(\beta=1\)</span>, with <span class="math" data-tex="\(Y\)">\(Y\)</span> known, <span class="math" data-tex="\(X\)">\(X\)</span> lies in the set <span class="math" data-tex="\(\mathcal L(Y)\)">\(\mathcal L(Y)\)</span> with at most <span class="math" data-tex="\(b\)">\(b\)</span> elements, so the part of <span class="math" data-tex="\(H(X\mid\beta,Y)\)">\(H(X\mid\beta,Y)\)</span> coming from <span class="math" data-tex="\(\beta=1\)">\(\beta=1\)</span> is at most <span class="math" data-tex="\(\rho\log b\)">\(\rho\log b\)</span>; the part from <span class="math" data-tex="\(\beta=0\)">\(\beta=0\)</span> is at most <span class="math" data-tex="\((1-\rho)\log a\)">\((1-\rho)\log a\)</span>. Rearrange. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>With <span class="math" data-tex="\(b=1\)">\(b=1\)</span> and a single guess <span class="math" data-tex="\(\mathcal L(y)=\{g(y)\}\)">\(\mathcal L(y)=\{g(y)\}\)</span>, this is Fano's inequality in the form <span class="math" data-tex="\(H(X\mid Y)\le h(\varepsilon)+\varepsilon\log a\)">\(H(X\mid Y)\le h(\varepsilon)+\varepsilon\log a\)</span>, where <span class="math" data-tex="\(\varepsilon=\mathbb P(X\ne g(Y))\)">\(\varepsilon=\mathbb P(X\ne g(Y))\)</span> (Exercise 8.5); compare [Polyanskiy–Wu, Theorem 3.12].</p>
+<h2 id="7-averages-over-random-coordinates">7. Averages over random coordinates</h2>
+<p>In the course, a random point <span class="math" data-tex="\(Z\)">\(Z\)</span> of <span class="math" data-tex="\(\mathbb Z[i]\)">\(\mathbb Z[i]\)</span> is reduced modulo many prime factors at once, and the factors used are themselves chosen at random. Such auxiliary choices are never part of the measured data. We fix the choices, compute entropies in the experiment that samples <span class="math" data-tex="\(Z\)">\(Z\)</span>, and only then average over the choices.</p>
+<p><strong>Convention 7.1</strong> (averaged entropies). Let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> be an auxiliary random variable, with finitely many values, independent of the variables whose entropy is measured. For an entropy expression <span class="math" data-tex="\(\Phi(\mathcal C)\)">\(\Phi(\mathcal C)\)</span> that depends on the value of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, such as <span class="math" data-tex="\(H(\psi_{\mathcal C}(Z))\)">\(H(\psi_{\mathcal C}(Z))\)</span> for a family of functions <span class="math" data-tex="\(\psi_c\)">\(\psi_c\)</span>, we write</p>
+<span class="math math-display" data-tex="\[
+\mathbb E_{\mathcal C}\,\Phi(\mathcal C)=\sum_c\mathbb P(\mathcal C=c)\,\Phi(c),
+\]">\[
+\mathbb E_{\mathcal C}\,\Phi(\mathcal C)=\sum_c\mathbb P(\mathcal C=c)\,\Phi(c),
+\]</span>
+<p>where each <span class="math" data-tex="\(\Phi(c)\)">\(\Phi(c)\)</span> is computed in the original experiment. This is an average of entropies; it is not the entropy of a mixture.</p>
+<p>Let <span class="math" data-tex="\(Y\)">\(Y\)</span> be a finite random variable, let <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span> be a finite index set, and for each <span class="math" data-tex="\(c\in\mathcal I\)">\(c\in\mathcal I\)</span> let <span class="math" data-tex="\(\psi_c\)">\(\psi_c\)</span> be a function on the values of <span class="math" data-tex="\(Y\)">\(Y\)</span>, with values in a set <span class="math" data-tex="\(G_c\)">\(G_c\)</span> of <span class="math" data-tex="\(a_c\)">\(a_c\)</span> elements. Let <span class="math" data-tex="\(c_1,\dots,c_N\)">\(c_1,\dots,c_N\)</span> be auxiliary random indices in <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span>, independent of <span class="math" data-tex="\(Y\)">\(Y\)</span>, and put</p>
+<span class="math math-display" data-tex="\[
+f(s)=\mathbb E\,H\bigl(\psi_{c_1}(Y),\dots,\psi_{c_s}(Y)\bigr)\qquad(0\le s\le N),
+\]">\[
+f(s)=\mathbb E\,H\bigl(\psi_{c_1}(Y),\dots,\psi_{c_s}(Y)\bigr)\qquad(0\le s\le N),
+\]</span>
+<p>in the sense of Convention 7.1, with <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span>. The sequence of indices is <strong>exchangeable</strong> if the law of <span class="math" data-tex="\((c_{\sigma(1)},\dots,c_{\sigma(N)})\)">\((c_{\sigma(1)},\dots,c_{\sigma(N)})\)</span> is the same for every permutation <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> of <span class="math" data-tex="\(\{1,\dots,N\}\)">\(\{1,\dots,N\}\)</span>.</p>
+<p><strong>Proposition 7.2</strong> (concavity in the number of coordinates). If the index sequence is exchangeable, then</p>
+<span class="math math-display" data-tex="\[
+f(s+1)-f(s)=\mathbb E\,H\bigl(\psi_{c_{s+1}}(Y)\mid\psi_{c_1}(Y),\dots,\psi_{c_s}(Y)\bigr),
+\]">\[
+f(s+1)-f(s)=\mathbb E\,H\bigl(\psi_{c_{s+1}}(Y)\mid\psi_{c_1}(Y),\dots,\psi_{c_s}(Y)\bigr),
+\]</span>
+<p>and these increments do not increase with <span class="math" data-tex="\(s\)">\(s\)</span>. Consequently, for <span class="math" data-tex="\(1\le s\le N\)">\(1\le s\le N\)</span>,</p>
+<span class="math math-display" data-tex="\[
+f(s+1)-f(s)\le\frac{f(s)}s\quad(s&lt;N),\qquad f(1)\ge\frac{f(s)}s.
+\]">\[
+f(s+1)-f(s)\le\frac{f(s)}s\quad(s&lt;N),\qquad f(1)\ge\frac{f(s)}s.
+\]</span>
+<p><strong>Proof.</strong> The formula for the increment is the chain rule, applied for fixed indices and then averaged. Write <span class="math" data-tex="\(\Psi_s\)">\(\Psi_s\)</span> for the tuple <span class="math" data-tex="\((\psi_{c_1}(Y),\dots,\psi_{c_s}(Y))\)">\((\psi_{c_1}(Y),\dots,\psi_{c_s}(Y))\)</span>. For fixed indices, Proposition 2.3 gives</p>
+<span class="math math-display" data-tex="\[
+H\bigl(\psi_{c_{s+2}}(Y)\mid\Psi_{s+1}\bigr)\le H\bigl(\psi_{c_{s+2}}(Y)\mid\Psi_s\bigr).
+\]">\[
+H\bigl(\psi_{c_{s+2}}(Y)\mid\Psi_{s+1}\bigr)\le H\bigl(\psi_{c_{s+2}}(Y)\mid\Psi_s\bigr).
+\]</span>
+<p>By exchangeability, <span class="math" data-tex="\((c_1,\dots,c_s,c_{s+2})\)">\((c_1,\dots,c_s,c_{s+2})\)</span> has the same law as <span class="math" data-tex="\((c_1,\dots,c_s,c_{s+1})\)">\((c_1,\dots,c_s,c_{s+1})\)</span>, so the average of the right side is <span class="math" data-tex="\(f(s+1)-f(s)\)">\(f(s+1)-f(s)\)</span>; the average of the left side is <span class="math" data-tex="\(f(s+2)-f(s+1)\)">\(f(s+2)-f(s+1)\)</span>. For the consequences, <span class="math" data-tex="\(f(s)\)">\(f(s)\)</span> is the sum of the first <span class="math" data-tex="\(s\)">\(s\)</span> increments, each at least <span class="math" data-tex="\(f(s+1)-f(s)\)">\(f(s+1)-f(s)\)</span> and at most <span class="math" data-tex="\(f(1)\)">\(f(1)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For uniformly chosen subsets of coordinates this is a form of Han's inequality; see [Polyanskiy–Wu, Theorem 1.7].</p>
+<p><strong>Proposition 7.3</strong> (one shared conditioning cost). Suppose that each index <span class="math" data-tex="\(c_j\)">\(c_j\)</span> is uniformly distributed on <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span>, and put <span class="math" data-tex="\(\overline L=\frac1{|\mathcal I|}\sum_{c\in\mathcal I}\log a_c\)">\(\overline L=\frac1{|\mathcal I|}\sum_{c\in\mathcal I}\log a_c\)</span>. Let <span class="math" data-tex="\(1\le s\le N\)">\(1\le s\le N\)</span>, and let <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> be a finite random variable, defined on the same space as <span class="math" data-tex="\(Y\)">\(Y\)</span> and independent of the indices. If</p>
+<span class="math math-display" data-tex="\[
+f(s)\ge(1-\varepsilon)\,s\,\overline L\qquad\text{and}\qquad H(\mathcal H)\le\kappa\,s\,\overline L,
+\]">\[
+f(s)\ge(1-\varepsilon)\,s\,\overline L\qquad\text{and}\qquad H(\mathcal H)\le\kappa\,s\,\overline L,
+\]</span>
+<p>then</p>
+<span class="math math-display" data-tex="\[
+\frac1{|\mathcal I|}\sum_{c\in\mathcal I}\bigl[\log a_c-H(\psi_c(Y)\mid\mathcal H)\bigr]\le(\varepsilon+\kappa)\,\overline L.
+\]">\[
+\frac1{|\mathcal I|}\sum_{c\in\mathcal I}\bigl[\log a_c-H(\psi_c(Y)\mid\mathcal H)\bigr]\le(\varepsilon+\kappa)\,\overline L.
+\]</span>
+<p>No independence between <span class="math" data-tex="\(Y\)">\(Y\)</span> and <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> is assumed.</p>
+<p><strong>Proof.</strong> For fixed indices, Corollary 2.4(3) and subadditivity give</p>
+<span class="math math-display" data-tex="\[
+H(\Psi_s)-H(\mathcal H)\le H(\Psi_s\mid\mathcal H)\le\sum_{j=1}^sH\bigl(\psi_{c_j}(Y)\mid\mathcal H\bigr).
+\]">\[
+H(\Psi_s)-H(\mathcal H)\le H(\Psi_s\mid\mathcal H)\le\sum_{j=1}^sH\bigl(\psi_{c_j}(Y)\mid\mathcal H\bigr).
+\]</span>
+<p>Average over the indices. Since each <span class="math" data-tex="\(c_j\)">\(c_j\)</span> is uniform on <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span>, the right side averages to <span class="math" data-tex="\(s\)">\(s\)</span> times the mean of <span class="math" data-tex="\(H(\psi_c(Y)\mid\mathcal H)\)">\(H(\psi_c(Y)\mid\mathcal H)\)</span> over <span class="math" data-tex="\(c\in\mathcal I\)">\(c\in\mathcal I\)</span>. The left side averages to at least <span class="math" data-tex="\((1-\varepsilon-\kappa)s\overline L\)">\((1-\varepsilon-\kappa)s\overline L\)</span>. Divide by <span class="math" data-tex="\(s\)">\(s\)</span> and subtract from <span class="math" data-tex="\(\overline L\)">\(\overline L\)</span>, the mean of <span class="math" data-tex="\(\log a_c\)">\(\log a_c\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The point of Proposition 7.3 is the single payment <span class="math" data-tex="\(H(\mathcal H)\)">\(H(\mathcal H)\)</span>. If separate data were used for each coordinate, their cost would be paid once per coordinate; a single shared vector is paid for once, in the joint entropy, and then distributed over all coordinates.</p>
+<p><strong>Example 7.4</strong> (signed coordinates). The course uses the following index sequence. Let <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> be a finite set of rational primes congruent to <span class="math" data-tex="\(1\)">\(1\)</span> modulo <span class="math" data-tex="\(4\)">\(4\)</span>, with <span class="math" data-tex="\(k\)">\(k\)</span> elements, and for each <span class="math" data-tex="\(p\in\mathcal B\)">\(p\in\mathcal B\)</span> fix its two conjugate factors <span class="math" data-tex="\(\pi_{p,+}\)">\(\pi_{p,+}\)</span> and <span class="math" data-tex="\(\pi_{p,-}\)">\(\pi_{p,-}\)</span> (Proposition 2.3 of <a href="walks-through-gaussian-primes.html">Walks through Gaussian primes</a>). The index set <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span> consists of the <span class="math" data-tex="\(2k\)">\(2k\)</span> <strong>signed coordinates</strong> <span class="math" data-tex="\((p,\pm)\)">\((p,\pm)\)</span>. Let <span class="math" data-tex="\(p_1,\dots,p_k\)">\(p_1,\dots,p_k\)</span> be a uniformly random ordering of <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, let <span class="math" data-tex="\(\sigma_1,\dots,\sigma_k\)">\(\sigma_1,\dots,\sigma_k\)</span> be independent fair signs, independent of the ordering, and put <span class="math" data-tex="\(c_j=(p_j,\sigma_j)\)">\(c_j=(p_j,\sigma_j)\)</span>. This sequence is exchangeable, and each <span class="math" data-tex="\(c_j\)">\(c_j\)</span> is uniform on <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span>. Its first <span class="math" data-tex="\(s\)">\(s\)</span> terms form a <strong>uniform signed subset of size <span class="math" data-tex="\(s\)">\(s\)</span></strong>: <span class="math" data-tex="\(s\)">\(s\)</span> distinct primes, chosen uniformly, each with one of its two factors chosen by a fair coin. With <span class="math" data-tex="\(\psi_c(z)=z\bmod\pi_c\)">\(\psi_c(z)=z\bmod\pi_c\)</span>, each <span class="math" data-tex="\(G_c\)">\(G_c\)</span> has <span class="math" data-tex="\(a_c=p\)">\(a_c=p\)</span> elements, and <span class="math" data-tex="\(\overline L\)">\(\overline L\)</span> is the mean of <span class="math" data-tex="\(\log p\)">\(\log p\)</span> over <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>.</p>
+<h2 id="8-exercises">8. Exercises</h2>
+<p><strong>Exercise 8.1 (easy).</strong> Compute <span class="math" data-tex="\(h(\frac14)\)">\(h(\frac14)\)</span> and <span class="math" data-tex="\(H(X)\)">\(H(X)\)</span> for <span class="math" data-tex="\(X\)">\(X\)</span> uniform on <span class="math" data-tex="\(a\)">\(a\)</span> values. Show that <span class="math" data-tex="\(h(u)\ge2u\log2\)">\(h(u)\ge2u\log2\)</span> for <span class="math" data-tex="\(0\le u\le\frac12\)">\(0\le u\le\frac12\)</span>.</p>
+<p><strong>Exercise 8.2 (easy).</strong> Show that <span class="math" data-tex="\(H(X\mid Y)=0\)">\(H(X\mid Y)=0\)</span> if and only if <span class="math" data-tex="\(X\)">\(X\)</span> is almost surely a function of <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<p><strong>Exercise 8.3 (easy).</strong> Show that <span class="math" data-tex="\(I(X;Y)=D(p_{XY}\Vert p_X\otimes p_Y)\)">\(I(X;Y)=D(p_{XY}\Vert p_X\otimes p_Y)\)</span>, where <span class="math" data-tex="\(p_X\otimes p_Y\)">\(p_X\otimes p_Y\)</span> is the product of the marginal laws.</p>
+<p><strong>Exercise 8.4 (medium).</strong> Give an example of finite random variables with <span class="math" data-tex="\(H(X\mid Y=y)&gt;H(X)\)">\(H(X\mid Y=y)&gt;H(X)\)</span> for some value <span class="math" data-tex="\(y\)">\(y\)</span>. Why does this not contradict Proposition 2.3?</p>
+<p><strong>Exercise 8.5 (medium).</strong> Deduce Fano's inequality from Lemma 6.1: if <span class="math" data-tex="\(X\)">\(X\)</span> takes at most <span class="math" data-tex="\(a\)">\(a\)</span> values and <span class="math" data-tex="\(\varepsilon=\mathbb P(X\ne g(Y))\)">\(\varepsilon=\mathbb P(X\ne g(Y))\)</span> for some function <span class="math" data-tex="\(g\)">\(g\)</span>, then <span class="math" data-tex="\(H(X\mid Y)\le h(\varepsilon)+\varepsilon\log a\)">\(H(X\mid Y)\le h(\varepsilon)+\varepsilon\log a\)</span>.</p>
+<p><strong>Exercise 8.6 (medium).</strong> Let <span class="math" data-tex="\(Y\)">\(Y\)</span> be uniform on <span class="math" data-tex="\(\mathbf F_p^2\)">\(\mathbf F_p^2\)</span> and let the three coordinates be <span class="math" data-tex="\(\psi_1(y)=y_1\)">\(\psi_1(y)=y_1\)</span>, <span class="math" data-tex="\(\psi_2(y)=y_2\)">\(\psi_2(y)=y_2\)</span> and <span class="math" data-tex="\(\psi_3(y)=y_1+y_2\)">\(\psi_3(y)=y_1+y_2\)</span>. For a uniformly random ordering <span class="math" data-tex="\(c_1,c_2,c_3\)">\(c_1,c_2,c_3\)</span> of the indices, compute <span class="math" data-tex="\(f(0),\dots,f(3)\)">\(f(0),\dots,f(3)\)</span> and check Proposition 7.2.</p>
+<p><strong>Exercise 8.7 (hard).</strong> Show that the constant <span class="math" data-tex="\(2\)">\(2\)</span> in Pinsker's inequality cannot be improved: compute <span class="math" data-tex="\(D(\mathrm{Ber}(\frac12+t)\Vert\mathrm{Ber}(\frac12))\)">\(D(\mathrm{Ber}(\frac12+t)\Vert\mathrm{Ber}(\frac12))\)</span> to second order in <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<h2 id="9-solutions">9. Solutions</h2>
+<p><strong>8.1.</strong> <span class="math" data-tex="\(h(\frac14)=\frac14\log4+\frac34\log\frac43=\log4-\frac34\log3\approx0.562\)">\(h(\frac14)=\frac14\log4+\frac34\log\frac43=\log4-\frac34\log3\approx0.562\)</span>. The uniform law on <span class="math" data-tex="\(a\)">\(a\)</span> values has entropy <span class="math" data-tex="\(\log a\)">\(\log a\)</span>. The function <span class="math" data-tex="\(h\)">\(h\)</span> is concave with <span class="math" data-tex="\(h(0)=0\)">\(h(0)=0\)</span> and <span class="math" data-tex="\(h(\frac12)=\log2\)">\(h(\frac12)=\log2\)</span>, so on <span class="math" data-tex="\([0,\frac12]\)">\([0,\frac12]\)</span> it lies above the chord <span class="math" data-tex="\(u\mapsto2u\log2\)">\(u\mapsto2u\log2\)</span>.</p>
+<p><strong>8.2.</strong> <span class="math" data-tex="\(H(X\mid Y)=0\)">\(H(X\mid Y)=0\)</span> exactly when each conditional law <span class="math" data-tex="\(\mathbb P(X=\cdot\mid Y=y)\)">\(\mathbb P(X=\cdot\mid Y=y)\)</span> of positive weight is a point mass, that is, when <span class="math" data-tex="\(X=g(Y)\)">\(X=g(Y)\)</span> almost surely for the function <span class="math" data-tex="\(g\)">\(g\)</span> assigning to <span class="math" data-tex="\(y\)">\(y\)</span> that point.</p>
+<p><strong>8.3.</strong> Both sides equal <span class="math" data-tex="\(\sum_{x,y}p(x,y)\log\bigl(p(x,y)/(p(x)p(y))\bigr)\)">\(\sum_{x,y}p(x,y)\log\bigl(p(x,y)/(p(x)p(y))\bigr)\)</span>, as in the proof of Proposition 2.3.</p>
+<p><strong>8.4.</strong> Let <span class="math" data-tex="\(Y\)">\(Y\)</span> be a fair coin, and let <span class="math" data-tex="\(X=0\)">\(X=0\)</span> if <span class="math" data-tex="\(Y=0\)">\(Y=0\)</span>, while <span class="math" data-tex="\(X\)">\(X\)</span> is a fair coin if <span class="math" data-tex="\(Y=1\)">\(Y=1\)</span>. Then <span class="math" data-tex="\(\mathbb P(X=0)=\frac34\)">\(\mathbb P(X=0)=\frac34\)</span>, so <span class="math" data-tex="\(H(X)=h(\frac14)\approx0.562&lt;\log2=H(X\mid Y=1)\)">\(H(X)=h(\frac14)\approx0.562&lt;\log2=H(X\mid Y=1)\)</span>. Proposition 2.3 concerns the average <span class="math" data-tex="\(H(X\mid Y)=\frac12\log2\approx0.347\)">\(H(X\mid Y)=\frac12\log2\approx0.347\)</span>, which is smaller than <span class="math" data-tex="\(H(X)\)">\(H(X)\)</span>.</p>
+<p><strong>8.5.</strong> Take <span class="math" data-tex="\(\mathcal L(y)=\{g(y)\}\)">\(\mathcal L(y)=\{g(y)\}\)</span> and <span class="math" data-tex="\(b=1\)">\(b=1\)</span>. Then <span class="math" data-tex="\(\rho=1-\varepsilon\)">\(\rho=1-\varepsilon\)</span>, and Lemma 6.1 gives <span class="math" data-tex="\(H(X\mid Y)\le\log a-(1-\varepsilon)\log a+h(1-\varepsilon)=\varepsilon\log a+h(\varepsilon)\)">\(H(X\mid Y)\le\log a-(1-\varepsilon)\log a+h(1-\varepsilon)=\varepsilon\log a+h(\varepsilon)\)</span>.</p>
+<p><strong>8.6.</strong> Any one coordinate is uniform on <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>, and any two determine <span class="math" data-tex="\(y\)">\(y\)</span> and are jointly uniform on <span class="math" data-tex="\(\mathbf F_p^2\)">\(\mathbf F_p^2\)</span>; all three together still determine only <span class="math" data-tex="\(y\)">\(y\)</span>. So <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span>, <span class="math" data-tex="\(f(1)=\log p\)">\(f(1)=\log p\)</span>, <span class="math" data-tex="\(f(2)=f(3)=2\log p\)">\(f(2)=f(3)=2\log p\)</span>. The increments <span class="math" data-tex="\(\log p,\log p,0\)">\(\log p,\log p,0\)</span> do not increase.</p>
+<p><strong>8.7.</strong> With <span class="math" data-tex="\(u=\frac12+t\)">\(u=\frac12+t\)</span>,</p>
+<span class="math math-display" data-tex="\[
+d(u,\tfrac12)=\log2-h(u)=u\log(2u)+(1-u)\log(2(1-u))=\tfrac12\bigl[(1+2t)\log(1+2t)+(1-2t)\log(1-2t)\bigr].
+\]">\[
+d(u,\tfrac12)=\log2-h(u)=u\log(2u)+(1-u)\log(2(1-u))=\tfrac12\bigl[(1+2t)\log(1+2t)+(1-2t)\log(1-2t)\bigr].
+\]</span>
+<p>Since <span class="math" data-tex="\((1+x)\log(1+x)+(1-x)\log(1-x)=x^2+O(x^4)\)">\((1+x)\log(1+x)+(1-x)\log(1-x)=x^2+O(x^4)\)</span>, this is <span class="math" data-tex="\(2t^2+O(t^4)\)">\(2t^2+O(t^4)\)</span>, while <span class="math" data-tex="\(\operatorname{TV}=t\)">\(\operatorname{TV}=t\)</span>. So no constant larger than <span class="math" data-tex="\(2\)">\(2\)</span> works for small <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Polyanskiy–Wu] Y. Polyanskiy, Y. Wu, Information Theory: From Coding to Learning, prepublication version, 2024. https://people.lids.mit.edu/yp/homepage/data/itbook-export.pdf</li>
+<li>[MacKay] D. J. C. MacKay, Information Theory, Inference, and Learning Algorithms, Cambridge University Press, 2003; free online edition. https://www.inference.org.uk/itprnn/book.pdf</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

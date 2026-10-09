@@ -77,19 +77,19 @@ The full [normal double-duality construction](OA-FLOW-ND.md#nd-construction), ap
  \tag{MIV1.b}
 \]
 In an arbitrary faithful normal representation \(N\subseteq B(H)\), its exact values are
-\
+\[
  \begin{aligned}
- \bigl[\Xi(j(i(x)))\xi\bigr&=\theta_{-r}(x)\xi(r),\\
+ \bigl[\Xi(j(i(x)))\xi\bigr](r)&=\theta_{-r}(x)\xi(r),\\
  \Xi(j(u(s)))&=1\otimes L_s,
-       & L_s\xi&=\xi(r-s),\\
+       & [L_s\xi](r)&=\xi(r-s),\\
  \Xi(v(t))&=1\otimes Q_t,
-       & Q_t\xi&=e^{-itr}\xi(r).
+       & [Q_t\xi](r)&=e^{-itr}\xi(r).
  \end{aligned}
  \tag{MIV1.c}
 \]
 These formulas describe the full map. For its existence and onto image, ND first uses the partial Fourier unitary on the second real variable, then the shear \((q,r)\mapsto(q+r,r)\), and finally tensor regrouping. If \(\mathscr W\) is their composite and
-\
- [\rho(x)\eta=\theta_{-q}(x)\eta(q),
+\[
+ [\rho(x)\eta](q)=\theta_{-q}(x)\eta(q),
 \]
 then its [whole-domain inverse formulas](OA-FLOW-ND.md#nd-inverse) are
 \[

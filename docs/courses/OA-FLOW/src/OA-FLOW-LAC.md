@@ -18,9 +18,9 @@ The isomorphism and its inverse are normal. It carries the dual of the trace \(\
 Two complementary statements are proved below. For any nonzero semifinite \(N\), a specified faithful normal semifinite trace satisfying \(\tau\theta\le\lambda\tau\), \(0<\lambda<1\), gives a lacunary dual weight on its integer crossed product; this implication needs neither separable predual nor proper infiniteness. Also, on **every** type \(\mathrm{III}_0\) factor, the center of the centralizer of **every** faithful normal semifinite weight is nonatomic. This last assertion has no lacunarity, multiplicity or separability assumption.
 
 Our regular integer representation is
-\
- [\pi_\theta(x)\xi=\theta^{-k}(x)\xi(k),\qquad
- u\xi=\xi(k-1),\qquad uxu^*=\theta(x).
+\[
+ [\pi_\theta(x)\xi](k)=\theta^{-k}(x)\xi(k),\qquad
+ [u\xi](k)=\xi(k-1),\qquad uxu^*=\theta(x).
  \tag{LACB}
 \]
 A modular frequency \(s\) has phase \(e^{-its}\). Thus the coordinate of a modular eigenvalue \(a>0\) is \(-\log a\). Spectral products add these coordinates, and adjoints reverse them. Every spectral window in this lesson uses this convention.

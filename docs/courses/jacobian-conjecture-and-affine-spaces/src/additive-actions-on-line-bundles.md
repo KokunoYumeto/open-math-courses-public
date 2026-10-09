@@ -1,0 +1,112 @@
+# Additive actions on line bundles
+
+*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+
+Let \(X\) be a smooth affine variety with an action of the additive group, and let \(L\) be a line bundle on \(X\). This lesson proves that the action lifts in exactly one way to an action on \(L\) that is linear on the fibres. In algebraic terms: if \(T\) is the coordinate ring of \(L\) with its zero section removed, graded by the weight of fibre scaling, then every locally nilpotent derivation of the coordinate ring of \(X\) extends uniquely to a locally nilpotent derivation of \(T\) that preserves the weights. The next lessons use this to move a hypothetical additive action from a variety to a line bundle over it, where an ideal with two generators becomes principal. The proof rests on two facts: adjoining a variable does not change the Picard group of a regular ring, and a polynomial ring over a domain has no new units.
+
+We use [Locally nilpotent derivations](locally-nilpotent-derivations.md), the comparison of line bundles and Weil divisors and the algebraic Hartogs property from [Weil divisors and the class group](course:AG-MO/weil-divisors-and-the-class-group), and the facts that a polynomial ring over a regular ring is regular and that regular local rings are factorial, from [Regular local rings](course:AG-CA/regular-local-rings). Throughout, \(k\) is a field of characteristic zero.
+
+Basic references are [Brion] and [OpenAI-cancellation].
+
+## 1. Invertible modules and Laurent bundle algebras
+
+Let \(S\) be a domain. An \(S\)-module \(N\) is **invertible** if it is finitely generated and \(N_{\mathfrak p}\cong S_{\mathfrak p}\) for every prime \(\mathfrak p\). For a ring homomorphism \(\sigma:S\to S'\), write \(\sigma^*N=N\otimes_{S,\sigma}S'\); it is invertible over \(S'\) when \(N\) is invertible over \(S\). Isomorphism classes of invertible \(S\)-modules form the Picard group \(\operatorname{Pic}(S)\) under tensor product.
+
+**Lemma 1.1.** Let \(N\) be an invertible module over a Noetherian domain \(S\). The map \(S\to\operatorname{End}_S(N)\), \(c\mapsto(\text{multiplication by }c)\), is an isomorphism. Hence every automorphism of \(N\) is multiplication by a unit of \(S\).
+
+**Proof.** Formation of \(\operatorname{End}_S(N)\) commutes with localization, because \(N\) is finitely generated over a Noetherian ring, hence finitely presented. After localizing at any prime, the map becomes \(S_{\mathfrak p}\to\operatorname{End}(S_{\mathfrak p})\), an isomorphism. A map of modules that is an isomorphism at every prime is an isomorphism. \(\square\)
+
+**Lemma 1.2.** If \(S\) is a domain, then \(S[t]^*=S^*\) and \(S[s,t]^*=S^*\).
+
+**Proof.** The total degree of a product of nonzero polynomials over a domain is the sum of the degrees. So a unit has degree zero. \(\square\)
+
+**Definition 1.3.** A **Laurent bundle algebra** over a ring \(S\) is a \(\mathbb Z\)-graded \(S\)-algebra \(U=\bigoplus_{n\in\mathbb Z}U_n\) with \(U_0=S\), together with elements \(f_1,\ldots,f_r\in S\) generating the unit ideal and elements \(\xi_i\in(U_{f_i})_1\) such that \(U_{f_i}=S_{f_i}[\xi_i,\xi_i^{-1}]\) is a Laurent polynomial ring in \(\xi_i\).
+
+Geometrically, \(\operatorname{Spec}U\) is the complement of the zero section in a line bundle over \(\operatorname{Spec}S\). The \(\xi_i\) are fibre coordinates over the open sets \(D(f_i)\), and the grading is the weight of the scaling action on the fibres. The base change \(\sigma^*U=U\otimes_{S,\sigma}S'\) along any homomorphism \(\sigma:S\to S'\) is again a Laurent bundle algebra, with the elements \(\sigma(f_i)\).
+
+**Lemma 1.4.** Let \(U\) be a Laurent bundle algebra over a domain \(S\).
+
+1. Every \(U_n\) is an invertible \(S\)-module, and multiplication \(U_m\otimes_SU_n\to U_{m+n}\) is an isomorphism. In particular \(U_1\otimes U_{-1}\to S\) is an isomorphism, and \(U\) is a domain.
+2. \(U\) is generated as an \(S\)-algebra by \(U_1\) and \(U_{-1}\).
+3. If \(U'\) is another Laurent bundle algebra over \(S\), every \(S\)-linear isomorphism \(\theta:U_1\to U'_1\) is the restriction of exactly one graded \(S\)-algebra isomorphism \(U\to U'\). A graded \(S\)-algebra homomorphism \(U\to U'\) is determined by its restriction to \(U_1\).
+
+**Proof.** (1) After inverting \(f_i\), \((U_n)_{f_i}=S_{f_i}\xi_i^n\) is free of rank one and multiplication is the isomorphism \(S_{f_i}\xi_i^m\otimes S_{f_i}\xi_i^n\to S_{f_i}\xi_i^{m+n}\). Finitely many elements of \(U_n\) generate each \((U_n)_{f_i}\); the submodule \(N\) they generate has \((U_n/N)_{f_i}=0\) for all \(i\), and an element killed by a power of every \(f_i\) is zero because the \(f_i\) generate the unit ideal. So \(U_n\) is finitely generated, and locally free of rank one. A map that is an isomorphism after inverting each \(f_i\) is an isomorphism. Finally \(U\) is a direct sum of torsion-free modules, so it embeds in \(U_{f_1}\), a domain.
+
+(2) The subalgebra generated by \(U_1\) and \(U_{-1}\) contains the images of \(U_1^{\otimes n}\) and \(U_{-1}^{\otimes n}\), which are \(U_n\) and \(U_{-n}\) by (1).
+
+(3) Uniqueness: by (2) a graded homomorphism is determined by its values on \(U_1\) and \(U_{-1}\). Its value \(\Theta(y)\) on \(y\in U_{-1}\) is forced, because \(\Theta(y)\theta(x)=xy\) for all \(x\in U_1\), and \(U'_{-1}\to\operatorname{Hom}_S(U'_1,S)\), \(y'\mapsto(x'\mapsto x'y')\), is an isomorphism by (1). Existence: define \(\Theta\) on \(U_n\cong U_1^{\otimes n}\) by \(\theta^{\otimes n}\) for \(n\ge0\), and on \(U_{-n}\cong U_{-1}^{\otimes n}\) by the \(n\)th tensor power of the transpose inverse of \(\theta\). Over \(D(f_i)\), where \(U_1=S_{f_i}\xi_i\) and \(U'_1=S_{f_i}\xi'_i\) after shrinking to a common refinement, \(\theta(\xi_i)=e\xi'_i\) for a unit \(e\), and \(\Theta\) becomes \(\xi_i^n\mapsto e^n\xi_i'^n\) for all \(n\in\mathbb Z\), a ring isomorphism. Multiplicativity of \(\Theta\) and bijectivity can be checked after inverting each \(f_i\), so \(\Theta\) is a graded isomorphism. \(\square\)
+
+## 2. The Picard group of a polynomial ring
+
+**Proposition 2.1.** Let \(C\) be a regular Noetherian domain. Then \(N\mapsto N[t]=N\otimes_CC[t]\) is an isomorphism \(\operatorname{Pic}(C)\to\operatorname{Pic}(C[t])\), with inverse \(M\mapsto M/tM\). In particular, an invertible \(C[t]\)-module \(M\) satisfies \(M\cong(M/tM)[t]\).
+
+**Proof.** Reduction modulo \(t\) is a left inverse, so the map is injective. For surjectivity, \(C[t]\) is a regular Noetherian domain [Regular local rings, Proposition 3.3](course:AG-CA/regular-local-rings#3-regularity-at-more-general-points), so for both \(C\) and \(C[t]\) the first Chern class \(c_1\) identifies the Picard group with the class group [Weil divisors and the class group, Theorem 2.1](course:AG-MO/weil-divisors-and-the-class-group#2-the-divisor-of-a-line-bundle-section). Let \(K=\operatorname{Frac}C\).
+
+*Height-one primes of \(C[t]\).* Let \(\mathfrak P\subset C[t]\) be a prime of height one. If \(\mathfrak P\cap C=0\), call \(\mathfrak P\) horizontal; its local ring \(C[t]_{\mathfrak P}\) is a localization of the principal ideal domain \(K[t]\). Otherwise choose \(0\ne c\in\mathfrak P\cap C\) and a prime \(\mathfrak q\subset\mathfrak P\cap C\) minimal over \(cC\). By Krull's principal ideal theorem [Dimension theory of Noetherian local rings, Theorem 3.1](course:AG-CA/dimension-theory-of-noetherian-local-rings#3-how-much-can-one-equation-cut), \(\mathfrak q\) has height one. The ideal \(\mathfrak qC[t]\) is prime, since \(C[t]/\mathfrak qC[t]=(C/\mathfrak q)[t]\) is a domain, and it is nonzero and contained in \(\mathfrak P\). As \(\mathfrak P\) has height one, \(\mathfrak P=\mathfrak qC[t]\). A uniformizer \(\pi\) of the discrete valuation ring \(C_{\mathfrak q}\) generates the maximal ideal of \(C[t]_{\mathfrak qC[t]}\), so the valuation of \(C[t]\) at \(\mathfrak qC[t]\) restricts to the valuation of \(C\) at \(\mathfrak q\) on \(K^*\).
+
+*Every class is pulled back.* Let \(D\) be a Weil divisor on \(\operatorname{Spec}C[t]\). Its horizontal components correspond to finitely many height-one primes of \(K[t]\); each is principal, generated by some \(g\in K[t]\), so there is \(r\in K(t)^*\), a product of powers of these generators, with \(D-\operatorname{div}(r)\) free of horizontal components. The remaining components have the form \([\operatorname{Spec}(C[t]/\mathfrak qC[t])]\), the pullbacks of prime divisors of \(\operatorname{Spec}C\). So the pullback \(\operatorname{Cl}(C)\to\operatorname{Cl}(C[t])\) is surjective.
+
+*Compatibility.* For an invertible \(C\)-module \(N\) with a nonzero meromorphic section \(\varsigma\), the coefficients of \(\varsigma\) in local frames lie in \(K^*\). By the two previous paragraphs, their valuations at horizontal primes are zero and at \(\mathfrak qC[t]\) equal their valuations at \(\mathfrak q\). So \(c_1(N[t])\) is the pullback of \(c_1(N)\), and the surjectivity on class groups gives surjectivity on Picard groups. \(\square\)
+
+## 3. Lifting additive actions
+
+Let \(C\) be a regular Noetherian domain containing \(k\), and \(T\) a Laurent bundle algebra over \(C\). Let \(\rho:C\to C[t]\) be an action of the additive group on \(\operatorname{Spec}C\), as in Definition 2.2 of the previous lesson, so \(\rho=\exp(tD)\) for a locally nilpotent derivation \(D\) of \(C\). A **linear lift** of \(\rho\) is an action \(\widetilde\rho:T\to T[t]\) of the additive group on \(\operatorname{Spec}T\) that restricts to \(\rho\) on \(C\) and is graded: \(\widetilde\rho(T_n)\subset T_n[t]\) for every \(n\).
+
+A graded ring homomorphism \(\widetilde\rho:T\to T[t]\) extending \(\rho\) is the same as a graded \(C[t]\)-algebra homomorphism \(\rho^*T\to T[t]\), by \(x\otimes g\mapsto\widetilde\rho(x)g\). Both are Laurent bundle algebras over \(C[t]\). Their degree-one parts are the invertible \(C[t]\)-modules
+
+\[
+N_\rho=T_1\otimes_{C,\rho}C[t],\qquad N_0=T_1[t],
+\]
+
+and both reduce modulo \(t\) to \(T_1\), because \(\rho\equiv\mathrm{id}\pmod t\). Call a \(C[t]\)-linear map \(N_\rho\to N_0\) **normalized** if it reduces to the identity of \(T_1\) modulo \(t\).
+
+**Lemma 3.1.** There is exactly one normalized isomorphism \(\psi:N_\rho\to N_0\). It satisfies the cocycle identity: the two \(C[s,t]\)-linear maps from \(T_1\otimes_{C,\rho_{s+t}}C[s,t]\) to \(T_1[s,t]\) given by \(x\mapsto\psi_s(\psi_t(x))\), with \(\psi_s\) applied to the coefficients of \(\psi_t(x)\in T_1[t]\), and by \(x\mapsto\psi_{s+t}(x)\), coincide.
+
+**Proof.** By Proposition 2.1, \(N_\rho\cong(N_\rho/tN_\rho)[t]=T_1[t]=N_0\). Choose an isomorphism; modulo \(t\) it is an automorphism of \(T_1\), multiplication by a unit \(e\in C^*\) by Lemma 1.1. Dividing by \(e\) gives a normalized isomorphism. Two normalized isomorphisms differ by an automorphism of \(N_0\), which is a unit of \(C[t]\) by Lemma 1.1, hence an element of \(C^*\) by Lemma 1.2, and it is \(1\) modulo \(t\). So they are equal.
+
+Both maps in the cocycle identity are isomorphisms between the same two invertible \(C[s,t]\)-modules, being composites of base changes of \(\psi\). They differ by a unit of \(C[s,t]\), which is an element of \(C^*\) by Lemma 1.2. Setting \(s=0\) turns \(\psi_s\) into the identity, so both maps become \(\psi_t\) and the unit is \(1\). \(\square\)
+
+**Theorem 3.2.** Let \(C\) be a regular Noetherian domain containing \(k\) and \(T\) a Laurent bundle algebra over \(C\). Every action of the additive group on \(\operatorname{Spec}C\) has exactly one linear lift to \(\operatorname{Spec}T\). Equivalently, every locally nilpotent derivation \(D\) of \(C\) extends to exactly one locally nilpotent derivation \(\widetilde D\) of \(T\) with \(\widetilde D(T_n)\subset T_n\) for all \(n\).
+
+**Proof.** *Existence.* By Lemma 1.4(3), applied over \(C[t]\), the normalized isomorphism \(\psi\) is the degree-one part of a unique graded isomorphism \(\rho^*T\to T[t]\). Composing with \(T\to\rho^*T\), \(x\mapsto x\otimes1\), gives a graded ring homomorphism \(\widetilde\rho:T\to T[t]\) extending \(\rho\), equal to the identity modulo \(t\). The action law \(\widetilde\rho_s\circ\widetilde\rho_t=\widetilde\rho_{s+t}\) holds on \(C\) because \(\rho\) is an action, and on \(T_1\) by the cocycle identity of Lemma 3.1. Both sides are ring homomorphisms \(T\to T[s,t]\), and by Lemma 1.4(2) and the uniqueness in Lemma 1.4(3) they also agree on \(T_{-1}\). So they agree on \(T\), and \(\widetilde\rho\) is an action. By Proposition 2.3 of the previous lesson, \(\widetilde\rho=\exp(t\widetilde D)\) for a locally nilpotent derivation \(\widetilde D\) of \(T\). It extends \(D\), and it preserves each \(T_n\) because \(\widetilde\rho\) does.
+
+*Uniqueness.* Let \(\widetilde D'\) be another weight-preserving locally nilpotent derivation extending \(D\), and \(\widetilde\rho'=\exp(t\widetilde D')\). Its degree-one part is a normalized \(C[t]\)-linear map \(\theta:N_\rho\to N_0\). The module \(\operatorname{Hom}_{C[t]}(N_\rho,N_0)\) is invertible and contains the isomorphism \(\psi\), so it is free on \(\psi\) by Lemma 1.1, and \(\theta=g\psi\) with \(g\in C[t]\) and \(g(0)=1\). Write \(g=\sum_mg_mt^m\). The action law for \(\widetilde\rho'\), evaluated on \(x\in T_1\) and combined with the cocycle identity for \(\psi\), gives
+
+\[
+g(s)\Bigl(\sum_m\rho_s(g_m)\,t^m\Bigr)=g(s+t)\quad\text{in }C[s,t],
+\]
+
+after cancelling the nonzero factor \(\psi_{s+t}(x)\) for some \(x\ne0\) in the torsion-free module \(T_1[s,t]\). Let \(d\) be the degree of \(g\) and \(\gamma\ne0\) its leading coefficient. The coefficient of \(t^d\) on the right is \(\gamma\); on the left it is \(g(s)\rho_s(\gamma)\), a product of polynomials in \(s\) with constant terms \(1\) and \(\gamma\). If \(d\ge1\), the left side has degree at least \(d\) in \(s\), since degrees add over a domain, while the right side has degree zero. So \(d=0\), \(g=1\) and \(\theta=\psi\). By Lemma 1.4(3), \(\widetilde\rho'=\widetilde\rho\), and the derivations, which are the coefficients of \(t\), agree. \(\square\)
+
+**Corollary 3.3 (equivariance).** In Theorem 3.2, let \(\sigma\) be a graded automorphism of \(T\) with \(\sigma(C)=C\), and suppose \(\sigma D\sigma^{-1}=\mu D\) on \(C\) for some \(\mu\in k\). Then \(\sigma\widetilde D\sigma^{-1}=\mu\widetilde D\).
+
+**Proof.** Both sides are weight-preserving locally nilpotent derivations of \(T\) extending \(\mu D\). By uniqueness they are equal. \(\square\)
+
+**Corollary 3.4.** In Theorem 3.2, \(\ker\widetilde D\cap C=\ker D\), and \(\widetilde D\ne0\) when \(D\ne0\).
+
+**Proof.** \(\widetilde D\) extends \(D\). \(\square\)
+
+## 4. A worked example
+
+Let \(C=k[x]\), \(D=d/dx\), and let \(T=k[x][\xi,\xi^{-1}]\) be the trivial Laurent bundle algebra, with \(\xi\) of weight one. A weight-preserving derivation extending \(D\) has \(\widetilde D(\xi)=\theta\,\xi\) for some \(\theta\in k[x]\). For \(\theta=0\) it is locally nilpotent. For \(\theta=1\) it is not: \(\widetilde D(\xi)=\xi\), so every power of \(\widetilde D\) sends \(\xi\) to \(\xi\). Theorem 3.2 says that exactly one choice of \(\theta\) gives a locally nilpotent derivation; here it is \(\theta=0\), as Proposition 3.2(3) of the previous lesson also shows: \(\xi\) is a unit of \(T\), so every locally nilpotent derivation kills it.
+
+## 5. Exercises
+
+**Exercise 5.1 (easy).** Let \(U=S[\xi,\xi^{-1}]\) with \(\xi\) of weight one. Show that every graded \(S\)-algebra automorphism of \(U\) is \(\xi\mapsto e\xi\) for a unit \(e\in S^*\).
+
+**Exercise 5.2 (medium).** Let \(C\) be a domain and \(D\) a locally nilpotent derivation of \(C\). Show that the weight-preserving derivations of \(C[\xi,\xi^{-1}]\) extending \(D\) are \(\widetilde D_\theta\), with \(\widetilde D_\theta(\xi)=\theta\xi\) for \(\theta\in C\), and that \(\widetilde D_\theta\) is locally nilpotent exactly when \(\theta=0\).
+
+**Exercise 5.3 (medium).** Let \(T=k[a,b,c,d]/(ad-bc-1)\), graded by \(\operatorname{wt}(a)=\operatorname{wt}(b)=1\) and \(\operatorname{wt}(c)=\operatorname{wt}(d)=-1\). Show that \(T_0=k[ac,ad,bc,bd]\) and that \(T\) is a Laurent bundle algebra over \(T_0\), using \(f_1=ad\) and \(f_2=-bc\).
+
+## 6. Solutions
+
+**5.1.** A graded automorphism maps \(U_1=S\xi\) onto itself, so \(\xi\mapsto e\xi\) with \(e\in S\); applying the same to the inverse automorphism shows \(e\) is a unit. By Lemma 1.4(3) the automorphism is determined by \(e\).
+
+**5.2.** A weight-preserving derivation maps \(\xi\) into \(U_1=C\xi\), so \(\widetilde D(\xi)=\theta\xi\), and it is determined by \(D\) and \(\theta\); conversely every \(\theta\) defines one, with \(\widetilde D(\xi^{-1})=-\theta\xi^{-1}\). The element \(\xi\) is a unit, so a locally nilpotent \(\widetilde D_\theta\) kills it by Proposition 3.2(3) of the previous lesson, and \(\theta=0\). Conversely \(\widetilde D_0\) is locally nilpotent by Lemma 1.2 of that lesson, since it kills \(\xi\) and \(\xi^{-1}\) and is locally nilpotent on \(C\).
+
+**5.3.** A monomial has weight zero exactly when it has as many factors from \(\{a,b\}\) as from \(\{c,d\}\), so it is a product of the four elements \(ac,ad,bc,bd\); hence \(T_0=k[ac,ad,bc,bd]\). The elements \(f_1=ad\) and \(f_2=-bc\) lie in \(T_0\) and \(f_1+f_2=1\). After inverting \(f_1\), the element \(a\) is a unit, with inverse \(d/f_1\), and \(b=(bd)\,a/f_1\), \(c=(ac)\,a^{-1}\), \(d=f_1a^{-1}\). So \(T_{f_1}\) is generated over \((T_0)_{f_1}\) by \(a^{\pm1}\). Every element of weight \(n\) in \(T_{f_1}\) is \(a^n\) times an element of weight zero, so \(T_{f_1}=\bigoplus_n(T_0)_{f_1}a^n\) is the Laurent polynomial ring \((T_0)_{f_1}[a,a^{-1}]\). After inverting \(f_2\), the element \(b\) is a unit, with inverse \(-c/f_2\), and the same argument gives \(T_{f_2}=(T_0)_{f_2}[b,b^{-1}]\).
+
+## References
+
+- [Brion] M. Brion, On linearization of line bundles, J. Math. Sci. Univ. Tokyo 22 (2015), 113–147. https://www.ms.u-tokyo.ac.jp/journal/pdf/jms220104.pdf
+- [OpenAI-cancellation] OpenAI, An explicit failure of complex affine-space cancellation, preprint, 23 September 2026. https://github.com/openai/math/blob/main/preprints/An-explicit-failure-of-complex-affine-space-cancellation-September-23-2026/paper.pdf

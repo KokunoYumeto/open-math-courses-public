@@ -488,26 +488,26 @@ The weight is normal: its restrictions to \([-n,n]\) have \(L^1\) densities and 
 The preadjoint of \(\theta_s\) is \(g(q)\mapsto g(q-s)\) on \(L^1(\mathbb R)\). [The proved \(L^1\) translation continuity](OA-FLOW-FF.md#oa-flow.ff.2) therefore makes the action point-ultraweakly continuous. Thus this example meets all the action and trace hypotheses.
 
 The identity map \(L^\infty(\mathbb R)\to Z(N)\) is already a unital central translation copy. We can determine the crossed product more precisely by solving its regular coordinates. Represent \(N\) by multiplication on \(L^2(\mathbb R_r)\). The [faithful normal regular representation](OA-FLOW-NR.md#oa-flow.nr.3) acts on \(L^2(\mathbb R_s\times\mathbb R_r)\) by
-\
- [\pi(f)\xi=f(r-s)\xi(s,r),\qquad
- u_t\xi=\xi(s-t,r).
+\[
+ [\pi(f)\xi](s,r)=f(r-s)\xi(s,r),\qquad
+ [u_t\xi](s,r)=\xi(s-t,r).
  \tag{L18.9.c}
 \]
 Make the change of variables
-\
+\[
  x=r-s,\qquad y=r,\qquad
  s=y-x,\quad r=y,\qquad
- [J\xi=\xi(y-x,y).
+ [J\xi](x,y)=\xi(y-x,y).
  \tag{L18.9.d}
 \]
 This defines an onto unitary. Indeed, [nonnegative scalar interchange](OA-FLOW-FF.md#oa-flow.ff.1) and the one-variable substitution \(x=r-s\), with \(r\) fixed, give
 \(\int|\xi(y-x,y)|^2\,dx\,dy=\int|\xi(s,r)|^2\,ds\,dr\).
-The inverse is \(J^*\eta=\eta(r-s,r)\). Thus no unverified coordinate Jacobian or merely formal change of generators is needed.
+The inverse is \([J^*\eta](s,r)=\eta(r-s,r)\). Thus no unverified coordinate Jacobian or merely formal change of generators is needed.
 
 Calculating on these full Hilbert spaces gives
-\
+\[
  J\pi(f)J^*=M_f\otimes1,\qquad
- [Ju_tJ^*\eta=\eta(x+t,y).
+ [Ju_tJ^*\eta](x,y)=\eta(x+t,y).
  \tag{L18.9.e}
 \]
 For the second formula, the input point \((s-t,r)\) has new coordinates
@@ -690,8 +690,8 @@ Thus \(\sigma_t^{\widetilde\tau}=\widehat\beta_{ct}\). Since
 The group \(t\mapsto h^{-it/c}\) is strongly continuous for either sign of \(c\). It gives the same Weyl contradiction as Diagnostic B.
 
 There is also a direct normal comparison proving proper infiniteness without a type reduction. On the full regular spaces \(L^2(\mathbb R,\mathcal H)\) define
-\
- [S_c\xi=|c|^{-1/2}\xi(r/c).
+\[
+ [S_c\xi](r)=|c|^{-1/2}\xi(r/c).
  \tag{L18.10.j}
 \]
 The one-variable substitution proves that \(S_c\) is unitary, including when \(c<0\). For the two regular representations,

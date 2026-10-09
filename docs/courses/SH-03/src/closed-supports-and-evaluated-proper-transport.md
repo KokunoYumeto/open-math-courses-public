@@ -44,7 +44,7 @@ For a closed embedding $i$, $L_i=S_i=i_*$ and $i^{-1}i_*\simeq\mathrm{id}$. Its 
  \qquad\text{(2)}
 \]
 
-Indeed $\beta_{i,A}=i^{-1}t_{i,A}$ under $i^{-1}i_*i^!A\simeq i^!A$. Applying $i_*$ and using naturality of the ordinary unit gives (2). Conversely, applying $i^{-1}$ to (2) recovers this formula, because the unit restricts to the identity on the closed image. The closed-support identity $i_*i^!A=R\Gamma_ZA$ identifies $t_{i,A}$ with forgetting that closed support. Since $i_*$ is exact and fully faithful, including on the bounded-below derived category, it detects equality of these maps.
+Indeed $\beta_{i,A}=i^{-1}t_{i,A}$ under $i^{-1}i_*i^!A\simeq i^!A$. Applying $i_*$ and using naturality of the ordinary unit gives (2). Conversely, applying $i^{-1}$ to (2) recovers this formula, because the unit restricts to the identity on the closed image. The [closed-support identity $i_*i^!A=R\Gamma_ZA$](../sheaf-proof-readings/SH02-exceptional-operations.html#SH02-EX-EMBEDDING) identifies $t_{i,A}$ with forgetting that closed support. Since $i_*$ is exact and fully faithful, including on the bounded-below derived category, it detects equality of these maps.
 
 ## A composite closed embedding keeps the ordinary counit
 

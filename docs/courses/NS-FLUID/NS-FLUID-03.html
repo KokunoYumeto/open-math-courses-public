@@ -1,0 +1,940 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Weak solutions on a periodic box — Incompressible flow</title><link rel="stylesheet" href="reader.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script>
+<script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Incompressible flow</a><a href="src/weak-solutions-on-a-periodic-box.md">Editable lesson</a><span class="unlinked">Sources and authorship</span></nav></header><main id="main"><nav aria-label="Lesson sequence"><a href="NS-FLUID-02.html">Previous lesson</a></nav><article class="lesson"><h1 id="weak-solutions-on-a-periodic-box">Weak solutions on a periodic box</h1>
+<p>The energy identity controls a velocity and its first spatial derivatives even when higher derivatives become large. We will use that control to construct a solution which exists for every finite time. The equation will hold after integration against smooth test fields. This is the meaning of a <strong>weak solution</strong> used here.</p>
+<p>There are three things to prove. Finite approximations must exist without a time limit. A subsequence must converge strongly enough for the quadratic term to survive. Finally, the limiting velocity must retain the equation, the initial value and the energy inequality. We prove all three on a periodic box. We then recover its pressure and show that it agrees with a sufficiently regular solution whenever the two have the same data.</p>
+<p>Read <a href="NS-FLUID-01.html">the equations and energy lesson</a> and <a href="NS-FLUID-02.html">the pressure and projection lesson</a> first. We use their Fourier convention, Parseval identity and periodic projection. We assume completeness of <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, elementary Lebesgue integration, Fubini's theorem and dominated convergence. The compactness and finite-dimensional existence arguments needed below are included.</p>
+<h2 id="1-the-domain-force-and-meaning-of-solution">1. The domain, force and meaning of solution</h2>
+<p>Fix an integer <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, lengths <span class="math" data-tex="\(L_1,\ldots,L_n&gt;0\)">\(L_1,\ldots,L_n&gt;0\)</span>, and viscosity <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>. Keep all of them fixed. Write</p>
+<span class="math math-display" data-tex="\[
+D=\prod_{j=1}^n(\mathbb R/L_j\mathbb Z),\qquad
+V=\prod_{j=1}^nL_j,\qquad
+\kappa_k=(k_1/L_1,\ldots,k_n/L_n),\qquad
+\lambda_k=4\pi^2|\kappa_k|^2.
+\tag{1.1}
+\]">\[
+D=\prod_{j=1}^n(\mathbb R/L_j\mathbb Z),\qquad
+V=\prod_{j=1}^nL_j,\qquad
+\kappa_k=(k_1/L_1,\ldots,k_n/L_n),\qquad
+\lambda_k=4\pi^2|\kappa_k|^2.
+\tag{1.1}
+\]</span>
+<p>For a periodic vector field its Fourier coefficient is</p>
+<span class="math math-display" data-tex="\[
+\widehat u_k=\frac1V\int_Du(x)e^{-2\pi i\kappa_k\cdot x}\,dx.
+\tag{1.2}
+\]">\[
+\widehat u_k=\frac1V\int_Du(x)e^{-2\pi i\kappa_k\cdot x}\,dx.
+\tag{1.2}
+\]</span>
+<p>All velocities and forces in the lesson are real. Thus their coefficients have conjugate symmetry. Complex coefficients are a convenient way to write real identities; scalar products below are real scalar products, or the real part of their Fourier expressions.</p>
+<p>For every real <span class="math" data-tex="\(s\)">\(s\)</span>, define <span class="math" data-tex="\(H^s(D)\)">\(H^s(D)\)</span> by the norm</p>
+<span class="math math-display" data-tex="\[
+\|u\|_{H^s}^2=V\sum_{k\in\mathbb Z^n}(1+\lambda_k)^s|\widehat u_k|^2.
+\tag{1.3}
+\]">\[
+\|u\|_{H^s}^2=V\sum_{k\in\mathbb Z^n}(1+\lambda_k)^s|\widehat u_k|^2.
+\tag{1.3}
+\]</span>
+<p>For <span class="math" data-tex="\(s&lt;0\)">\(s&lt;0\)</span>, the coefficient sequence defines a distribution: its pairing with a smooth function converges by Cauchy–Schwarz because that function's coefficients decay faster than every power. For <span class="math" data-tex="\(s=1\)">\(s=1\)</span>, Parseval gives the exact identity</p>
+<span class="math math-display" data-tex="\[
+\|u\|_{H^1}^2=\|u\|_2^2+\|\nabla u\|_2^2.
+\tag{1.4}
+\]">\[
+\|u\|_{H^1}^2=\|u\|_2^2+\|\nabla u\|_2^2.
+\tag{1.4}
+\]</span>
+<p>Here and below the norm of a matrix is its Euclidean, or Frobenius, norm. Let <span class="math" data-tex="\(H^s_\sigma\)">\(H^s_\sigma\)</span> denote the closed subspace with</p>
+<span class="math math-display" data-tex="\[
+\kappa_k\cdot\widehat u_k=0\quad(k\ne0).
+\tag{1.5}
+\]">\[
+\kappa_k\cdot\widehat u_k=0\quad(k\ne0).
+\tag{1.5}
+\]</span>
+<p>This is precisely the condition <span class="math" data-tex="\(\operatorname{div}u=0\)">\(\operatorname{div}u=0\)</span> in distributions. It imposes no restriction on <span class="math" data-tex="\(\widehat u_0\)">\(\widehat u_0\)</span>, the spatial mean.</p>
+<p>The data are</p>
+<span class="math math-display" data-tex="\[
+u_0\in L^2_\sigma(D),\qquad
+f\in L^2(0,T;H^{-1}(D))\quad\hbox{for every finite }T&gt;0.
+\tag{1.6}
+\]">\[
+u_0\in L^2_\sigma(D),\qquad
+f\in L^2(0,T;H^{-1}(D))\quad\hbox{for every finite }T&gt;0.
+\tag{1.6}
+\]</span>
+<p>The time-dependent functions in these spaces are strongly measurable; changing them on a set of times of measure zero does not change the data. The force need not be divergence free and need not have zero mean. The duality between <span class="math" data-tex="\(H^{-1}\)">\(H^{-1}\)</span> and <span class="math" data-tex="\(H^1\)">\(H^1\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\langle f,v\rangle
+=V\operatorname{Re}\sum_k\widehat f_k\cdot\overline{\widehat v_k},
+\qquad
+|\langle f,v\rangle|\leq\|f\|_{H^{-1}}\|v\|_{H^1}.
+\tag{1.7}
+\]">\[
+\langle f,v\rangle
+=V\operatorname{Re}\sum_k\widehat f_k\cdot\overline{\widehat v_k},
+\qquad
+|\langle f,v\rangle|\leq\|f\|_{H^{-1}}\|v\|_{H^1}.
+\tag{1.7}
+\]</span>
+<p>The bound follows by inserting the factors <span class="math" data-tex="\((1+\lambda_k)^{-1/2}\)">\((1+\lambda_k)^{-1/2}\)</span> and <span class="math" data-tex="\((1+\lambda_k)^{1/2}\)">\((1+\lambda_k)^{1/2}\)</span> and applying Cauchy–Schwarz. It also shows that the integral of the force's work is defined for every velocity in <span class="math" data-tex="\(L^2_tH^1_x\)">\(L^2_tH^1_x\)</span>.</p>
+<p><strong>Definition.</strong> A periodic Leray–Hopf solution for these data is a velocity satisfying, for every finite <span class="math" data-tex="\(T\)">\(T\)</span>,</p>
+<span class="math math-display" data-tex="\[
+u\in L^\infty(0,T;L^2_\sigma)\cap L^2(0,T;H^1_\sigma),
+\qquad u\in C_{\rm w}([0,\infty);L^2_\sigma),\qquad u(0)=u_0.
+\tag{1.8}
+\]">\[
+u\in L^\infty(0,T;L^2_\sigma)\cap L^2(0,T;H^1_\sigma),
+\qquad u\in C_{\rm w}([0,\infty);L^2_\sigma),\qquad u(0)=u_0.
+\tag{1.8}
+\]</span>
+<p>Weak continuity, denoted by <span class="math" data-tex="\(C_{\rm w}\)">\(C_{\rm w}\)</span>, means that <span class="math" data-tex="\(t\mapsto(u(t),h)_{L^2}\)">\(t\mapsto(u(t),h)_{L^2}\)</span> is continuous for every fixed <span class="math" data-tex="\(h\in L^2\)">\(h\in L^2\)</span>. We require the identity</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;-\int_0^\infty(u,\partial_t\phi)\,dt
++\nu\int_0^\infty\int_D\nabla u : \nabla\phi\,dx\,dt\\
+&amp;\quad-\int_0^\infty\int_D\sum_{i,j=1}^n u_i u_j\partial_j\phi_i\,dx\,dt\\
+&amp;\qquad= (u_0,\phi(0))+\int_0^\infty\langle f,\phi\rangle\,dt.
+\end{aligned}
+\tag{1.9}
+\]">\[
+\begin{aligned}
+&amp;-\int_0^\infty(u,\partial_t\phi)\,dt
++\nu\int_0^\infty\int_D\nabla u : \nabla\phi\,dx\,dt\\
+&amp;\quad-\int_0^\infty\int_D\sum_{i,j=1}^n u_i u_j\partial_j\phi_i\,dx\,dt\\
+&amp;\qquad= (u_0,\phi(0))+\int_0^\infty\langle f,\phi\rangle\,dt.
+\end{aligned}
+\tag{1.9}
+\]</span>
+<p>for every smooth periodic divergence-free vector field <span class="math" data-tex="\(\phi\)">\(\phi\)</span> with compact support in <span class="math" data-tex="\(t\in[0,\infty)\)">\(t\in[0,\infty)\)</span>. The double contraction in the second term is <span class="math" data-tex="\(\sum_{i,j}\partial_j u_i\partial_j\phi_i\)">\(\sum_{i,j}\partial_j u_i\partial_j\phi_i\)</span>. Since <span class="math" data-tex="\(u\in L^2\)">\(u\in L^2\)</span> on each finite space-time cylinder, <span class="math" data-tex="\(u_i u_j\)">\(u_i u_j\)</span> is integrable there. Thus each term is defined.</p>
+<p>Finally, there must be a set <span class="math" data-tex="\(G\subset(0,\infty)\)">\(G\subset(0,\infty)\)</span> whose complement has measure zero such that, for <span class="math" data-tex="\(s=0\)">\(s=0\)</span> and for every <span class="math" data-tex="\(s\in G\)">\(s\in G\)</span>, the inequality</p>
+<span class="math math-display" data-tex="\[
+\frac12\|u(t)\|_2^2
++\nu\int_s^t\|\nabla u(r)\|_2^2\,dr
+\leq\frac12\|u(s)\|_2^2
++\int_s^t\langle f(r),u(r)\rangle\,dr
+\quad\hbox{holds for every }t\geq s.
+\tag{1.10}
+\]">\[
+\frac12\|u(t)\|_2^2
++\nu\int_s^t\|\nabla u(r)\|_2^2\,dr
+\leq\frac12\|u(s)\|_2^2
++\int_s^t\langle f(r),u(r)\rangle\,dr
+\quad\hbox{holds for every }t\geq s.
+\tag{1.10}
+\]</span>
+<p>The set of permitted starting times is part of the statement. We will prove that the same set works for all ending times. We do not insert an unproved energy inequality at an exceptional starting time.</p>
+<p><strong>Existence theorem.</strong> For all the data in (1.1) and (1.6), a solution with properties (1.8)–(1.10) exists on <span class="math" data-tex="\(0\leq t&lt;\infty\)">\(0\leq t&lt;\infty\)</span>. Its mean satisfies</p>
+<span class="math math-display" data-tex="\[
+\widehat u_0(t)=\widehat{u_0}_0+\int_0^t\widehat f_0(r)\,dr.
+\tag{1.11}
+\]">\[
+\widehat u_0(t)=\widehat{u_0}_0+\int_0^t\widehat f_0(r)\,dr.
+\tag{1.11}
+\]</span>
+<p>It is strongly continuous from the right in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> at <span class="math" data-tex="\(0\)">\(0\)</span> and at every <span class="math" data-tex="\(s\in G\)">\(s\in G\)</span>. There is a mean-zero pressure distribution <span class="math" data-tex="\(p\)">\(p\)</span> for which</p>
+<span class="math math-display" data-tex="\[
+\partial_tu+\operatorname{div}(u\otimes u)+\nabla p
+=\nu\Delta u+f,\qquad\operatorname{div}u=0.
+\tag{1.12}
+\]">\[
+\partial_tu+\operatorname{div}(u\otimes u)+\nabla p
+=\nu\Delta u+f,\qquad\operatorname{div}u=0.
+\tag{1.12}
+\]</span>
+<p>The tensor convention is <span class="math" data-tex="\((u\otimes u)_{ij}=u_i u_j\)">\((u\otimes u)_{ij}=u_i u_j\)</span>, so its divergence has component <span class="math" data-tex="\(\sum_j\partial_j(u_i u_j)\)">\(\sum_j\partial_j(u_i u_j)\)</span>. Sections 2–6 prove the theorem, including a precise space for <span class="math" data-tex="\(p\)">\(p\)</span>. Section 7 proves weak–strong uniqueness with its regularity assumptions stated explicitly.</p>
+<h2 id="2-finite-equations-which-preserve-the-energy-calculation">2. Finite equations which preserve the energy calculation</h2>
+<p>Let <span class="math" data-tex="\(E_N\)">\(E_N\)</span> retain exactly the Fourier coefficients with <span class="math" data-tex="\(|\kappa_k|\leq N\)">\(|\kappa_k|\leq N\)</span>. These sets are finite, symmetric under <span class="math" data-tex="\(k\mapsto-k\)">\(k\mapsto-k\)</span>, increasing, and contain <span class="math" data-tex="\(k=0\)">\(k=0\)</span>. Let <span class="math" data-tex="\(P\)">\(P\)</span> be the projection from the preceding lesson:</p>
+<span class="math math-display" data-tex="\[
+P_k=I-\frac{\kappa_k\otimes\kappa_k}{|\kappa_k|^2}\quad(k\ne0),
+\qquad P_0=I.
+\tag{2.1}
+\]">\[
+P_k=I-\frac{\kappa_k\otimes\kappa_k}{|\kappa_k|^2}\quad(k\ne0),
+\qquad P_0=I.
+\tag{2.1}
+\]</span>
+<p>The maps <span class="math" data-tex="\(E_N\)">\(E_N\)</span> and <span class="math" data-tex="\(P\)">\(P\)</span> commute, are self-adjoint, preserve real fields and have norm at most one on every <span class="math" data-tex="\(H^s\)">\(H^s\)</span>. They commute with spatial derivatives. These assertions follow coefficient by coefficient from the orthogonal matrix projection in (2.1) and the scalar cutoff defining <span class="math" data-tex="\(E_N\)">\(E_N\)</span>.</p>
+<p>Seek <span class="math" data-tex="\(u_N(t)\in E_NL^2_\sigma\)">\(u_N(t)\in E_NL^2_\sigma\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+\partial_tu_N=\nu\Delta u_N-E_NP\operatorname{div}(u_N\otimes u_N)+E_NPf,
+\qquad u_N(0)=E_Nu_0.
+\tag{2.2}
+\]">\[
+\partial_tu_N=\nu\Delta u_N-E_NP\operatorname{div}(u_N\otimes u_N)+E_NPf,
+\qquad u_N(0)=E_Nu_0.
+\tag{2.2}
+\]</span>
+<p>Choose any real orthonormal basis of this finite-dimensional space. Equation (2.2) becomes</p>
+<span class="math math-display" data-tex="\[
+a&#x27;(t)=B(a(t))+b(t),
+\tag{2.3}
+\]">\[
+a&#x27;(t)=B(a(t))+b(t),
+\tag{2.3}
+\]</span>
+<p>where <span class="math" data-tex="\(B\)">\(B\)</span> is a polynomial of degree at most two and the finitely many components of <span class="math" data-tex="\(b\)">\(b\)</span> are in <span class="math" data-tex="\(L^2(0,T)\)">\(L^2(0,T)\)</span>. To see the last claim, (1.3) gives</p>
+<span class="math math-display" data-tex="\[
+|\widehat f_k(t)|\leq V^{-1/2}(1+\lambda_k)^{1/2}\|f(t)\|_{H^{-1}}.
+\tag{2.4}
+\]">\[
+|\widehat f_k(t)|\leq V^{-1/2}(1+\lambda_k)^{1/2}\|f(t)\|_{H^{-1}}.
+\tag{2.4}
+\]</span>
+<p>Here is the local existence argument for (2.3). Fix a starting value <span class="math" data-tex="\(a_*\)">\(a_*\)</span> and a closed ball of radius <span class="math" data-tex="\(R&gt;0\)">\(R&gt;0\)</span> about it. On that ball <span class="math" data-tex="\(B\)">\(B\)</span> is bounded by some <span class="math" data-tex="\(M&lt;\infty\)">\(M&lt;\infty\)</span> and is Lipschitz with some constant <span class="math" data-tex="\(K&lt;\infty\)">\(K&lt;\infty\)</span>: each polynomial difference factors as a sum of a coordinate difference times bounded coordinates. On a short interval <span class="math" data-tex="\([t_*,t_*+\delta]\)">\([t_*,t_*+\delta]\)</span>, choose</p>
+<span class="math math-display" data-tex="\[
+M\delta+\int_{t_*}^{t_*+\delta}|b(r)|\,dr\leq R,
+\qquad K\delta&lt;1.
+\tag{2.5}
+\]">\[
+M\delta+\int_{t_*}^{t_*+\delta}|b(r)|\,dr\leq R,
+\qquad K\delta&lt;1.
+\tag{2.5}
+\]</span>
+<p>Such an interval exists because an integrable function has an absolutely continuous integral. The map</p>
+<span class="math math-display" data-tex="\[
+(\mathcal Ta)(t)=a_*+\int_{t_*}^t[B(a(r))+b(r)]\,dr
+\tag{2.6}
+\]">\[
+(\mathcal Ta)(t)=a_*+\int_{t_*}^t[B(a(r))+b(r)]\,dr
+\tag{2.6}
+\]</span>
+<p>maps the closed ball of continuous paths into itself. In the uniform norm its Lipschitz constant is at most <span class="math" data-tex="\(K\delta\)">\(K\delta\)</span>. Starting from the constant path, successive differences are bounded by a geometric series. The iterates therefore converge uniformly to a continuous fixed point. Passing under the integral is justified by uniform convergence and the Lipschitz bound. The fixed point is absolutely continuous, solves (2.3) almost everywhere and is unique on this interval. Repeating the argument gives a maximal solution.</p>
+<p>We next prove it cannot end at a finite time. Take the scalar product of (2.2) with <span class="math" data-tex="\(u_N\)">\(u_N\)</span>. Self-adjointness removes <span class="math" data-tex="\(E_NP\)">\(E_NP\)</span> from this scalar product because <span class="math" data-tex="\(E_NPu_N=u_N\)">\(E_NPu_N=u_N\)</span>. Periodic integration by parts gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_D\sum_{i,j}u_{N,i}u_{N,j}\partial_j u_{N,i}\,dx
+&amp;=\frac12\int_D\sum_j u_{N,j}\partial_j|u_N|^2\,dx\\
+&amp;=-\frac12\int_D(\operatorname{div}u_N)|u_N|^2\,dx=0.
+\end{aligned}
+\tag{2.7}
+\]">\[
+\begin{aligned}
+\int_D\sum_{i,j}u_{N,i}u_{N,j}\partial_j u_{N,i}\,dx
+&amp;=\frac12\int_D\sum_j u_{N,j}\partial_j|u_N|^2\,dx\\
+&amp;=-\frac12\int_D(\operatorname{div}u_N)|u_N|^2\,dx=0.
+\end{aligned}
+\tag{2.7}
+\]</span>
+<p>Set</p>
+<span class="math math-display" data-tex="\[
+E_N(t)=\|u_N(t)\|_2^2,\qquad
+D_N(t)=\|\nabla u_N(t)\|_2^2,\qquad F(t)=\|f(t)\|_{H^{-1}}.
+\tag{2.8}
+\]">\[
+E_N(t)=\|u_N(t)\|_2^2,\qquad
+D_N(t)=\|\nabla u_N(t)\|_2^2,\qquad F(t)=\|f(t)\|_{H^{-1}}.
+\tag{2.8}
+\]</span>
+<p>The finite system obeys the exact energy identity</p>
+<span class="math math-display" data-tex="\[
+\frac12 E_N&#x27;(t)+\nu D_N(t)=\langle f(t),u_N(t)\rangle
+\quad\hbox{for almost every }t.
+\tag{2.9}
+\]">\[
+\frac12 E_N&#x27;(t)+\nu D_N(t)=\langle f(t),u_N(t)\rangle
+\quad\hbox{for almost every }t.
+\tag{2.9}
+\]</span>
+<p>Cauchy–Schwarz in (1.7) and the nonnegative square</p>
+<span class="math math-display" data-tex="\[
+\left(\sqrt\nu\sqrt{E_N+D_N}-\frac{F}{\sqrt\nu}\right)^2\geq0
+\tag{2.10}
+\]">\[
+\left(\sqrt\nu\sqrt{E_N+D_N}-\frac{F}{\sqrt\nu}\right)^2\geq0
+\tag{2.10}
+\]</span>
+<p>give <span class="math" data-tex="\(2F\sqrt{E_N+D_N}\leq\nu(E_N+D_N)+\nu^{-1}F^2\)">\(2F\sqrt{E_N+D_N}\leq\nu(E_N+D_N)+\nu^{-1}F^2\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+E_N&#x27;+\nu D_N\leq\nu E_N+\nu^{-1}F^2.
+\tag{2.11}
+\]">\[
+E_N&#x27;+\nu D_N\leq\nu E_N+\nu^{-1}F^2.
+\tag{2.11}
+\]</span>
+<p>Multiplication by <span class="math" data-tex="\(e^{-\nu t}\)">\(e^{-\nu t}\)</span> and integration give</p>
+<span class="math math-display" data-tex="\[
+e^{-\nu t}E_N(t)+\nu\int_0^t e^{-\nu r}D_N(r)\,dr
+\leq\|u_0\|_2^2+\nu^{-1}\int_0^t e^{-\nu r}F(r)^2\,dr.
+\tag{2.12}
+\]">\[
+e^{-\nu t}E_N(t)+\nu\int_0^t e^{-\nu r}D_N(r)\,dr
+\leq\|u_0\|_2^2+\nu^{-1}\int_0^t e^{-\nu r}F(r)^2\,dr.
+\tag{2.12}
+\]</span>
+<p>For each finite <span class="math" data-tex="\(T\)">\(T\)</span>, define the explicit bound</p>
+<span class="math math-display" data-tex="\[
+A_T=e^{\nu T}\left(\|u_0\|_2^2+\nu^{-1}\int_0^T F(r)^2\,dr\right).
+\tag{2.13}
+\]">\[
+A_T=e^{\nu T}\left(\|u_0\|_2^2+\nu^{-1}\int_0^T F(r)^2\,dr\right).
+\tag{2.13}
+\]</span>
+<p>Multiplying (2.12) by <span class="math" data-tex="\(e^{\nu t}\)">\(e^{\nu t}\)</span>, and using <span class="math" data-tex="\(e^{\nu(t-r)}\geq1\)">\(e^{\nu(t-r)}\geq1\)</span> for <span class="math" data-tex="\(0\leq r\leq t\)">\(0\leq r\leq t\)</span>, proves</p>
+<span class="math math-display" data-tex="\[
+E_N(t)+\nu\int_0^tD_N(r)\,dr\leq A_T\quad(0\leq t\leq T),
+\qquad
+\int_0^T\|u_N(r)\|_{H^1}^2\,dr\leq T A_T+\frac{A_T}{\nu}.
+\tag{2.14}
+\]">\[
+E_N(t)+\nu\int_0^tD_N(r)\,dr\leq A_T\quad(0\leq t\leq T),
+\qquad
+\int_0^T\|u_N(r)\|_{H^1}^2\,dr\leq T A_T+\frac{A_T}{\nu}.
+\tag{2.14}
+\]</span>
+<p>These bounds are independent of <span class="math" data-tex="\(N\)">\(N\)</span>. In particular the finite coordinate vector stays in a bounded ball on every finite interval. On such a ball <span class="math" data-tex="\(B(a)\)">\(B(a)\)</span> is bounded and <span class="math" data-tex="\(b\in L^1\)">\(b\in L^1\)</span>, so the integral of <span class="math" data-tex="\(|a&#x27;|\)">\(|a&#x27;|\)</span> is finite. If its maximal interval had a finite endpoint, <span class="math" data-tex="\(a(t)\)">\(a(t)\)</span> would be Cauchy there and have a finite limit. The local construction starting at that limit would extend it. This contradicts maximality. Thus every <span class="math" data-tex="\(u_N\)">\(u_N\)</span> exists for all finite times.</p>
+<p>No Poincaré estimate was used on the constant mode. In fact the coefficient <span class="math" data-tex="\(k=0\)">\(k=0\)</span> in (2.2) is exactly</p>
+<span class="math math-display" data-tex="\[
+\frac{d}{dt}\widehat u_{N,0}=\widehat f_0.
+\tag{2.15}
+\]">\[
+\frac{d}{dt}\widehat u_{N,0}=\widehat f_0.
+\tag{2.15}
+\]</span>
+<p>The Laplacian and the divergence of the quadratic term have zero mean; viscosity does not damp a constant velocity.</p>
+<h2 id="3-compactness-in-space-and-time">3. Compactness in space and time</h2>
+<p>Fix <span class="math" data-tex="\(T&lt;\infty\)">\(T&lt;\infty\)</span>. A bounded sequence in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> need not converge strongly. Even a bound on spatial derivatives alone does not rule out increasingly fast time oscillations; Exercise 2 gives an exact example. We use the equations to control each fixed Fourier coefficient in time.</p>
+<p>For <span class="math" data-tex="\(N\geq|\kappa_k|\)">\(N\geq|\kappa_k|\)</span>, (2.2) says</p>
+<span class="math math-display" data-tex="\[
+\frac{d}{dt}\widehat u_{N,k}
+=-\nu\lambda_k\widehat u_{N,k}
+-2\pi iP_k\sum_{j=1}^n(\kappa_k)_j\widehat{u_{N,j}u_N}_k
++P_k\widehat f_k.
+\tag{3.1}
+\]">\[
+\frac{d}{dt}\widehat u_{N,k}
+=-\nu\lambda_k\widehat u_{N,k}
+-2\pi iP_k\sum_{j=1}^n(\kappa_k)_j\widehat{u_{N,j}u_N}_k
++P_k\widehat f_k.
+\tag{3.1}
+\]</span>
+<p>The vector in the middle has magnitude at most <span class="math" data-tex="\(2\pi|\kappa_k|E_N/V\)">\(2\pi|\kappa_k|E_N/V\)</span>. Indeed its unprojected coefficient is</p>
+<span class="math math-display" data-tex="\[
+\frac{2\pi i}{V}\int_D(\kappa_k\cdot u_N)u_Ne^{-2\pi i\kappa_k\cdot x}\,dx,
+\tag{3.2}
+\]">\[
+\frac{2\pi i}{V}\int_D(\kappa_k\cdot u_N)u_Ne^{-2\pi i\kappa_k\cdot x}\,dx,
+\tag{3.2}
+\]</span>
+<p>whose magnitude is bounded by <span class="math" data-tex="\(2\pi|\kappa_k|\|u_N\|_2^2/V\)">\(2\pi|\kappa_k|\|u_N\|_2^2/V\)</span>, and <span class="math" data-tex="\(\|P_k\|\leq1\)">\(\|P_k\|\leq1\)</span>. Parseval also gives <span class="math" data-tex="\(|\widehat u_{N,k}|\leq V^{-1/2}\sqrt{A_T}\)">\(|\widehat u_{N,k}|\leq V^{-1/2}\sqrt{A_T}\)</span>. Integrating (3.1) and using (2.4) yields, for <span class="math" data-tex="\(0\leq s\leq t\leq T\)">\(0\leq s\leq t\leq T\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|\widehat u_{N,k}(t)-\widehat u_{N,k}(s)|
+&amp;\leq\left(\nu\lambda_k V^{-1/2}\sqrt{A_T}
++\frac{2\pi|\kappa_k|}{V}A_T\right)(t-s)\\
+&amp;\quad+V^{-1/2}(1+\lambda_k)^{1/2}
+\|F\|_{L^2(0,T)}(t-s)^{1/2}.
+\end{aligned}
+\tag{3.3}
+\]">\[
+\begin{aligned}
+|\widehat u_{N,k}(t)-\widehat u_{N,k}(s)|
+&amp;\leq\left(\nu\lambda_k V^{-1/2}\sqrt{A_T}
++\frac{2\pi|\kappa_k|}{V}A_T\right)(t-s)\\
+&amp;\quad+V^{-1/2}(1+\lambda_k)^{1/2}
+\|F\|_{L^2(0,T)}(t-s)^{1/2}.
+\end{aligned}
+\tag{3.3}
+\]</span>
+<p>For each fixed <span class="math" data-tex="\(k\)">\(k\)</span>, these coefficients are uniformly bounded and have a common modulus of continuity. We spell out why this gives a uniformly convergent subsequence. At each rational time in <span class="math" data-tex="\([0,T]\)">\([0,T]\)</span>, a bounded sequence in a finite-dimensional space has a convergent subsequence: repeatedly bisect a containing cube and keep an infinite occupied subcube to obtain a Cauchy subsequence. Choose subsequences successively for a countable dense set of times, and take the diagonal sequence. Given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, the common modulus of continuity permits a finite set of these times within distance <span class="math" data-tex="\(\delta\)">\(\delta\)</span> of every point, with each continuity error below <span class="math" data-tex="\(\varepsilon/3\)">\(\varepsilon/3\)</span>. On this finite set the diagonal sequence is Cauchy. Comparing two paths through the nearest chosen time makes their uniform difference less than <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Completeness then gives a continuous uniform limit.</p>
+<p>Enumerate the countably many pairs consisting of a Fourier mode <span class="math" data-tex="\(k\)">\(k\)</span> and an integer time endpoint <span class="math" data-tex="\(T=1,2,\ldots\)">\(T=1,2,\ldots\)</span>. Apply the preceding subsequence argument successively and take a diagonal sequence. Along the resulting sequence, still denoted by <span class="math" data-tex="\(u_N\)">\(u_N\)</span>, every fixed coefficient converges uniformly on every finite time interval to a continuous function <span class="math" data-tex="\(a_k(t)\)">\(a_k(t)\)</span>.</p>
+<p>This is control of finitely many modes at a time. The gradient bound controls all remaining modes together. For any <span class="math" data-tex="\(R&gt;0\)">\(R&gt;0\)</span>, Parseval gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_0^T\|(I-E_R)u_N(r)\|_2^2\,dr
+&amp;=V\int_0^T\sum_{|\kappa_k|&gt;R}|\widehat u_{N,k}(r)|^2\,dr\\
+&amp;\leq\frac1{4\pi^2R^2}\int_0^TD_N(r)\,dr
+\leq\frac{A_T}{4\pi^2\nu R^2}.
+\end{aligned}
+\tag{3.4}
+\]">\[
+\begin{aligned}
+\int_0^T\|(I-E_R)u_N(r)\|_2^2\,dr
+&amp;=V\int_0^T\sum_{|\kappa_k|&gt;R}|\widehat u_{N,k}(r)|^2\,dr\\
+&amp;\leq\frac1{4\pi^2R^2}\int_0^TD_N(r)\,dr
+\leq\frac{A_T}{4\pi^2\nu R^2}.
+\end{aligned}
+\tag{3.4}
+\]</span>
+<p>Given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, first choose <span class="math" data-tex="\(R\)">\(R\)</span> so that the square root of the last bound is less than <span class="math" data-tex="\(\varepsilon/3\)">\(\varepsilon/3\)</span>. The finitely many retained coefficients converge uniformly, so <span class="math" data-tex="\(E_Ru_N\)">\(E_Ru_N\)</span> is Cauchy in <span class="math" data-tex="\(L^2(0,T;L^2)\)">\(L^2(0,T;L^2)\)</span>. The triangle inequality, with the two omitted tails, makes <span class="math" data-tex="\(u_N\)">\(u_N\)</span> Cauchy in this space. Its completeness produces a limit <span class="math" data-tex="\(u\)">\(u\)</span> and</p>
+<span class="math math-display" data-tex="\[
+u_N\longrightarrow u\quad\hbox{strongly in }L^2(0,T;L^2(D))
+\quad\hbox{for every finite }T.
+\tag{3.5}
+\]">\[
+u_N\longrightarrow u\quad\hbox{strongly in }L^2(0,T;L^2(D))
+\quad\hbox{for every finite }T.
+\tag{3.5}
+\]</span>
+<h3 id="the-gradient-and-the-value-at-each-time">The gradient and the value at each time</h3>
+<p>We also need weak convergence in <span class="math" data-tex="\(L^2(0,T;H^1)\)">\(L^2(0,T;H^1)\)</span>. Here is the Hilbert-space argument behind it. In a separable Hilbert space with orthonormal basis <span class="math" data-tex="\(e_1,e_2,\ldots\)">\(e_1,e_2,\ldots\)</span>, a bounded sequence has a subsequence for which every coordinate converges. If its norms are at most <span class="math" data-tex="\(M\)">\(M\)</span>, every finite sum of squared limiting coordinates is at most <span class="math" data-tex="\(M^2\)">\(M^2\)</span>. Their series therefore defines a vector <span class="math" data-tex="\(z\)">\(z\)</span> with norm at most <span class="math" data-tex="\(M\)">\(M\)</span>. For a finite linear combination of basis vectors, scalar products converge. For an arbitrary vector <span class="math" data-tex="\(h\)">\(h\)</span>, approximate it by such combinations; the remaining scalar products are bounded by <span class="math" data-tex="\(2M\)">\(2M\)</span> times the approximation error. Thus the subsequence converges weakly to <span class="math" data-tex="\(z\)">\(z\)</span>.</p>
+<p>The space <span class="math" data-tex="\(L^2(0,T;H^1(D))\)">\(L^2(0,T;H^1(D))\)</span> is separable: finite Fourier sums with time coefficients that are step functions on rational intervals and have rational real and imaginary parts form a countable dense set. Density follows by first truncating Fourier series and then approximating the finitely many scalar <span class="math" data-tex="\(L^2\)">\(L^2\)</span> time functions by step functions. Applying the Hilbert argument to (2.14), then taking subsequences for integer <span class="math" data-tex="\(T\)">\(T\)</span>, gives weak convergence in this space. Its limit is the same <span class="math" data-tex="\(u\)">\(u\)</span> as in (3.5), because the inclusion into <span class="math" data-tex="\(L^2(0,T;L^2)\)">\(L^2(0,T;L^2)\)</span> is continuous and that space already has a strong limit. In particular</p>
+<span class="math math-display" data-tex="\[
+\nabla u_N\rightharpoonup\nabla u\quad\hbox{in }L^2((0,T)\times D).
+\tag{3.6}
+\]">\[
+\nabla u_N\rightharpoonup\nabla u\quad\hbox{in }L^2((0,T)\times D).
+\tag{3.6}
+\]</span>
+<p>The identification also follows by testing spatial derivatives and integrating by parts. The Hilbert argument proves lower semicontinuity of the norm: every finite sum of squared limiting coordinates is bounded by the lower limit of the full squared norms, and taking the supremum over finite sums gives the assertion. The same argument applies on any time subinterval by restriction.</p>
+<p>For a fixed time <span class="math" data-tex="\(t\in[0,T]\)">\(t\in[0,T]\)</span> and any finite set of modes, the limit of the corresponding part of <span class="math" data-tex="\(E_N(t)\)">\(E_N(t)\)</span> is at most <span class="math" data-tex="\(A_T\)">\(A_T\)</span>. Increasing that finite set gives</p>
+<span class="math math-display" data-tex="\[
+V\sum_k|a_k(t)|^2\leq A_T.
+\tag{3.7}
+\]">\[
+V\sum_k|a_k(t)|^2\leq A_T.
+\tag{3.7}
+\]</span>
+<p>Thus the coefficients <span class="math" data-tex="\(a_k(t)\)">\(a_k(t)\)</span> define an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> vector at every time. It agrees almost everywhere in time with the strong space-time limit, since each of their Fourier coefficients agrees in <span class="math" data-tex="\(L^2(0,T)\)">\(L^2(0,T)\)</span>. We use this representative of <span class="math" data-tex="\(u\)">\(u\)</span> from now on. Conjugate symmetry and (1.5) pass to each coefficient.</p>
+<p>To prove weak continuity, let <span class="math" data-tex="\(h\in L^2\)">\(h\in L^2\)</span>. The finite sum <span class="math" data-tex="\((u(t),E_Rh)\)">\((u(t),E_Rh)\)</span> is continuous in <span class="math" data-tex="\(t\)">\(t\)</span>. Its omitted part satisfies</p>
+<span class="math math-display" data-tex="\[
+|(u(t),(I-E_R)h)|\leq\sqrt{A_T}\|(I-E_R)h\|_2,
+\tag{3.8}
+\]">\[
+|(u(t),(I-E_R)h)|\leq\sqrt{A_T}\|(I-E_R)h\|_2,
+\tag{3.8}
+\]</span>
+<p>uniformly on <span class="math" data-tex="\([0,T]\)">\([0,T]\)</span>, and the right side tends to zero. Hence <span class="math" data-tex="\((u(t),h)\)">\((u(t),h)\)</span> is a uniform limit of continuous functions and is continuous. The same estimate, applied also to <span class="math" data-tex="\(u_N\)">\(u_N\)</span>, proves</p>
+<span class="math math-display" data-tex="\[
+u_N(t)\rightharpoonup u(t)\quad\hbox{in }L^2(D)
+\quad\hbox{at every }t\geq0.
+\tag{3.9}
+\]">\[
+u_N(t)\rightharpoonup u(t)\quad\hbox{in }L^2(D)
+\quad\hbox{at every }t\geq0.
+\tag{3.9}
+\]</span>
+<p>At time zero the limiting coefficients are those of <span class="math" data-tex="\(u_0\)">\(u_0\)</span>, so <span class="math" data-tex="\(u(0)=u_0\)">\(u(0)=u_0\)</span>. Equation (2.15) passes to the constant coefficient and proves (1.11).</p>
+<h2 id="4-passing-the-quadratic-equation-to-the-limit">4. Passing the quadratic equation to the limit</h2>
+<p>The strong convergence in (3.5) has a precise use. For vectors <span class="math" data-tex="\(a,b\)">\(a,b\)</span>,</p>
+<span class="math math-display" data-tex="\[
+a\otimes a-b\otimes b=(a-b)\otimes a+b\otimes(a-b),
+\qquad |c\otimes d|=|c|\,|d|.
+\tag{4.1}
+\]">\[
+a\otimes a-b\otimes b=(a-b)\otimes a+b\otimes(a-b),
+\qquad |c\otimes d|=|c|\,|d|.
+\tag{4.1}
+\]</span>
+<p>Cauchy–Schwarz on the finite space-time cylinder therefore gives</p>
+<span class="math math-display" data-tex="\[
+\|u_N\otimes u_N-u\otimes u\|_{L^1_{t,x}}
+\leq(\|u_N\|_{L^2_{t,x}}+\|u\|_{L^2_{t,x}})
+\|u_N-u\|_{L^2_{t,x}}\longrightarrow0.
+\tag{4.2}
+\]">\[
+\|u_N\otimes u_N-u\otimes u\|_{L^1_{t,x}}
+\leq(\|u_N\|_{L^2_{t,x}}+\|u\|_{L^2_{t,x}})
+\|u_N-u\|_{L^2_{t,x}}\longrightarrow0.
+\tag{4.2}
+\]</span>
+<p>Fix a test field <span class="math" data-tex="\(\phi\)">\(\phi\)</span> from (1.9), supported before a finite time <span class="math" data-tex="\(T\)">\(T\)</span>. Pair (2.2) with <span class="math" data-tex="\(E_N\phi\)">\(E_N\phi\)</span> and integrate in time. Since <span class="math" data-tex="\(P\phi=\phi\)">\(P\phi=\phi\)</span>, the resulting identity is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;-\int_0^T(u_N,\partial_tE_N\phi)\,dt
++\nu\int_0^T\int_D\nabla u_N : \nabla E_N\phi\,dx\,dt\\
+&amp;\quad-\int_0^T\int_D\sum_{i,j}u_{N,i}u_{N,j}\partial_jE_N\phi_i\,dx\,dt\\
+&amp;\qquad= (E_Nu_0,E_N\phi(0))+\int_0^T\langle f,E_N\phi\rangle\,dt.
+\end{aligned}
+\tag{4.3}
+\]">\[
+\begin{aligned}
+&amp;-\int_0^T(u_N,\partial_tE_N\phi)\,dt
++\nu\int_0^T\int_D\nabla u_N : \nabla E_N\phi\,dx\,dt\\
+&amp;\quad-\int_0^T\int_D\sum_{i,j}u_{N,i}u_{N,j}\partial_jE_N\phi_i\,dx\,dt\\
+&amp;\qquad= (E_Nu_0,E_N\phi(0))+\int_0^T\langle f,E_N\phi\rangle\,dt.
+\end{aligned}
+\tag{4.3}
+\]</span>
+<p>Every spatial derivative of <span class="math" data-tex="\(E_N\phi\)">\(E_N\phi\)</span> converges uniformly to the corresponding derivative of <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, uniformly in time. To verify this, apply <span class="math" data-tex="\((1-\Delta)^q\)">\((1-\Delta)^q\)</span> to <span class="math" data-tex="\(\phi\)">\(\phi\)</span> and integrate by parts in (1.2). Its coefficient bounds are uniform in time and yield</p>
+<span class="math math-display" data-tex="\[
+|\widehat\phi_k(t)|\leq
+\frac{\sup_{0\leq r\leq T}\|(1-\Delta)^q\phi(r)\|_{L^1(D)}}
+{V(1+\lambda_k)^q}.
+\tag{4.4}
+\]">\[
+|\widehat\phi_k(t)|\leq
+\frac{\sup_{0\leq r\leq T}\|(1-\Delta)^q\phi(r)\|_{L^1(D)}}
+{V(1+\lambda_k)^q}.
+\tag{4.4}
+\]</span>
+<p>Choose <span class="math" data-tex="\(q\)">\(q\)</span> large enough that this series still converges after multiplication by the needed derivative factors. For completeness, the number of lattice points with <span class="math" data-tex="\(|\kappa_k|\leq R\)">\(|\kappa_k|\leq R\)</span> is at most <span class="math" data-tex="\(\prod_j(2L_jR+1)\)">\(\prod_j(2L_jR+1)\)</span>. Splitting into the shells <span class="math" data-tex="\(2^a\leq|\kappa_k|&lt;2^{a+1}\)">\(2^a\leq|\kappa_k|&lt;2^{a+1}\)</span> proves that <span class="math" data-tex="\(\sum_k(1+|\kappa_k|)^{-b}&lt;\infty\)">\(\sum_k(1+|\kappa_k|)^{-b}&lt;\infty\)</span> whenever <span class="math" data-tex="\(b&gt;n\)">\(b&gt;n\)</span>. This proves the required summability. The same reasoning applies to time derivatives of <span class="math" data-tex="\(\phi\)">\(\phi\)</span>.</p>
+<p>The first term of (4.3) now converges by strong <span class="math" data-tex="\(L^2\)">\(L^2\)</span> convergence. The second converges by (3.6) and strong convergence of the test gradients. For the third, use (4.2) and the uniform bound on the test gradient; the additional difference between <span class="math" data-tex="\(\nabla E_N\phi\)">\(\nabla E_N\phi\)</span> and <span class="math" data-tex="\(\nabla\phi\)">\(\nabla\phi\)</span> is bounded by its uniform norm times <span class="math" data-tex="\(\|u\|_{L^2_{t,x}}^2\)">\(\|u\|_{L^2_{t,x}}^2\)</span>. The initial term converges because <span class="math" data-tex="\(E_Nu_0\to u_0\)">\(E_Nu_0\to u_0\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. The last term converges by</p>
+<span class="math math-display" data-tex="\[
+\left|\int_0^T\langle f,E_N\phi-\phi\rangle\,dt\right|
+\leq\|f\|_{L^2_tH^{-1}_x}\|E_N\phi-\phi\|_{L^2_tH^1_x}\longrightarrow0.
+\tag{4.5}
+\]">\[
+\left|\int_0^T\langle f,E_N\phi-\phi\rangle\,dt\right|
+\leq\|f\|_{L^2_tH^{-1}_x}\|E_N\phi-\phi\|_{L^2_tH^1_x}\longrightarrow0.
+\tag{4.5}
+\]</span>
+<p>Taking the limit gives precisely (1.9), including all signs, the initial term and the unprojected force pairing.</p>
+<h2 id="5-energy-permitted-starting-times-and-the-initial-value">5. Energy, permitted starting times and the initial value</h2>
+<p>Integrating the exact finite identity (2.9) from any <span class="math" data-tex="\(s\)">\(s\)</span> to any <span class="math" data-tex="\(t\geq s\)">\(t\geq s\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\frac12\|u_N(t)\|_2^2+\nu\int_s^t\|\nabla u_N(r)\|_2^2\,dr
+=\frac12\|u_N(s)\|_2^2+\int_s^t\langle f(r),u_N(r)\rangle\,dr.
+\tag{5.1}
+\]">\[
+\frac12\|u_N(t)\|_2^2+\nu\int_s^t\|\nabla u_N(r)\|_2^2\,dr
+=\frac12\|u_N(s)\|_2^2+\int_s^t\langle f(r),u_N(r)\rangle\,dr.
+\tag{5.1}
+\]</span>
+<p>The force term converges for every fixed interval <span class="math" data-tex="\([s,t]\)">\([s,t]\)</span>. Indeed <span class="math" data-tex="\(1_{(s,t)}f\in L^2_tH^{-1}_x\)">\(1_{(s,t)}f\in L^2_tH^{-1}_x\)</span> defines a continuous linear functional on <span class="math" data-tex="\(L^2_tH^1_x\)">\(L^2_tH^1_x\)</span>, and we have weak convergence in that space. The two nonnegative terms on the left are lower semicontinuous by (3.6), (3.9) and the Hilbert argument above. At <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, the right-hand norm converges because <span class="math" data-tex="\(E_Nu_0\to u_0\)">\(E_Nu_0\to u_0\)</span> strongly. We obtain (1.10) with <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, for every <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>.</p>
+<p>For other starting times the right-hand norm needs strong convergence. Choose a further subsequence, written <span class="math" data-tex="\(u_{N_j}\)">\(u_{N_j}\)</span>, so that</p>
+<span class="math math-display" data-tex="\[
+\int_0^j\|u_{N_j}(r)-u(r)\|_2^2\,dr\leq2^{-j}.
+\tag{5.2}
+\]">\[
+\int_0^j\|u_{N_j}(r)-u(r)\|_2^2\,dr\leq2^{-j}.
+\tag{5.2}
+\]</span>
+<p>This is possible by (3.5), choosing successive indices. For each integer <span class="math" data-tex="\(J\)">\(J\)</span>, Tonelli's theorem applied to the nonnegative sum gives</p>
+<span class="math math-display" data-tex="\[
+\int_0^J\sum_{j\geq J}\|u_{N_j}(r)-u(r)\|_2^2\,dr
+\leq\sum_{j\geq J}2^{-j}&lt;\infty.
+\tag{5.3}
+\]">\[
+\int_0^J\sum_{j\geq J}\|u_{N_j}(r)-u(r)\|_2^2\,dr
+\leq\sum_{j\geq J}2^{-j}&lt;\infty.
+\tag{5.3}
+\]</span>
+<p>Thus the summands tend to zero for almost every <span class="math" data-tex="\(r\in(0,J)\)">\(r\in(0,J)\)</span>. Taking the intersection of these full-measure sets over all <span class="math" data-tex="\(J\)">\(J\)</span> gives one set <span class="math" data-tex="\(G\subset(0,\infty)\)">\(G\subset(0,\infty)\)</span> such that <span class="math" data-tex="\(u_{N_j}(s)\to u(s)\)">\(u_{N_j}(s)\to u(s)\)</span> strongly in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> for every <span class="math" data-tex="\(s\in G\)">\(s\in G\)</span>. Discard, if necessary, the null set where the <span class="math" data-tex="\(H^1\)">\(H^1\)</span> representative is undefined.</p>
+<p>Fix any one <span class="math" data-tex="\(s\in G\)">\(s\in G\)</span>. In (5.1) its initial norm now converges, the force work converges, and the left side is lower semicontinuous at every fixed <span class="math" data-tex="\(t\geq s\)">\(t\geq s\)</span>. All the convergences used hold along the same subsequence at all ending times. Taking the lower limit proves (1.10) for this <span class="math" data-tex="\(s\)">\(s\)</span> and every <span class="math" data-tex="\(t\geq s\)">\(t\geq s\)</span>. This establishes the stated quantifiers without an exceptional set of ending times depending on <span class="math" data-tex="\(s\)">\(s\)</span>.</p>
+<p>There is also strong right continuity at every permitted starting time. From (1.10), dropping its nonnegative dissipation term gives</p>
+<span class="math math-display" data-tex="\[
+\limsup_{t\downarrow s}\|u(t)\|_2^2\leq\|u(s)\|_2^2,
+\tag{5.4}
+\]">\[
+\limsup_{t\downarrow s}\|u(t)\|_2^2\leq\|u(s)\|_2^2,
+\tag{5.4}
+\]</span>
+<p>because</p>
+<span class="math math-display" data-tex="\[
+\left|\int_s^t\langle f,u\rangle\,dr\right|
+\leq\left(\int_s^t\|f\|_{H^{-1}}^2\,dr\right)^{1/2}
+\left(\int_s^t\|u\|_{H^1}^2\,dr\right)^{1/2}\longrightarrow0.
+\tag{5.5}
+\]">\[
+\left|\int_s^t\langle f,u\rangle\,dr\right|
+\leq\left(\int_s^t\|f\|_{H^{-1}}^2\,dr\right)^{1/2}
+\left(\int_s^t\|u\|_{H^1}^2\,dr\right)^{1/2}\longrightarrow0.
+\tag{5.5}
+\]</span>
+<p>Weak continuity implies <span class="math" data-tex="\((u(t),u(s))\to\|u(s)\|_2^2\)">\((u(t),u(s))\to\|u(s)\|_2^2\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\|u(t)-u(s)\|_2^2
+=\|u(t)\|_2^2+\|u(s)\|_2^2-2(u(t),u(s))\longrightarrow0
+\quad(t\downarrow s).
+\tag{5.6}
+\]">\[
+\|u(t)-u(s)\|_2^2
+=\|u(t)\|_2^2+\|u(s)\|_2^2-2(u(t),u(s))\longrightarrow0
+\quad(t\downarrow s).
+\tag{5.6}
+\]</span>
+<p>This proof applies also at <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, giving the strong attainment of the original initial velocity.</p>
+<h2 id="6-recovering-pressure-for-a-rough-velocity-and-force">6. Recovering pressure for a rough velocity and force</h2>
+<p>We have so far tested only divergence-free fields. We now construct the pressure which gives the full equation, with the original force <span class="math" data-tex="\(f\)">\(f\)</span>. Choose any integer <span class="math" data-tex="\(m&gt;n/2+1\)">\(m&gt;n/2+1\)</span> and set <span class="math" data-tex="\(L_{\max}=\max_jL_j\)">\(L_{\max}=\max_jL_j\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+C_{D,m}=\left[\frac1V\sum_k
+4\pi^2|\kappa_k|^2(1+4\pi^2|\kappa_k|^2)^{-m}\right]^{1/2}.
+\tag{6.1}
+\]">\[
+C_{D,m}=\left[\frac1V\sum_k
+4\pi^2|\kappa_k|^2(1+4\pi^2|\kappa_k|^2)^{-m}\right]^{1/2}.
+\tag{6.1}
+\]</span>
+<p>The lattice count in Section 4 proves this is finite: a dyadic shell has at most a constant times <span class="math" data-tex="\(2^{an}\)">\(2^{an}\)</span> points, and each summand there is bounded by a constant times <span class="math" data-tex="\(2^{a(2-2m)}\)">\(2^{a(2-2m)}\)</span>. The resulting geometric series converges because <span class="math" data-tex="\(n+2-2m&lt;0\)">\(n+2-2m&lt;0\)</span>.</p>
+<p>The Fourier series of the gradient and Cauchy–Schwarz give, first for finite sums and then by uniform convergence,</p>
+<span class="math math-display" data-tex="\[
+\|\nabla\phi\|_{L^\infty(D)}
+\leq\sum_k2\pi|\kappa_k|\,|\widehat\phi_k|
+\leq C_{D,m}\|\phi\|_{H^m}.
+\tag{6.2}
+\]">\[
+\|\nabla\phi\|_{L^\infty(D)}
+\leq\sum_k2\pi|\kappa_k|\,|\widehat\phi_k|
+\leq C_{D,m}\|\phi\|_{H^m}.
+\tag{6.2}
+\]</span>
+<p>Since <span class="math" data-tex="\(|u\otimes u|=|u|^2\)">\(|u\otimes u|=|u|^2\)</span>, its distributional divergence satisfies</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\big|\langle\operatorname{div}(u\otimes u),\phi\rangle\big|
+&amp;=\left|\int_D\sum_{i,j}u_i u_j\partial_j\phi_i\,dx\right|\\
+&amp;\leq C_{D,m}\|u\|_2^2\|\phi\|_{H^m}.
+\end{aligned}
+\tag{6.3}
+\]">\[
+\begin{aligned}
+\big|\langle\operatorname{div}(u\otimes u),\phi\rangle\big|
+&amp;=\left|\int_D\sum_{i,j}u_i u_j\partial_j\phi_i\,dx\right|\\
+&amp;\leq C_{D,m}\|u\|_2^2\|\phi\|_{H^m}.
+\end{aligned}
+\tag{6.3}
+\]</span>
+<p>Thus this divergence belongs to <span class="math" data-tex="\(H^{-m}\)">\(H^{-m}\)</span>, with norm at most <span class="math" data-tex="\(C_{D,m}\|u\|_2^2\)">\(C_{D,m}\|u\|_2^2\)</span>. The identification of a bounded functional on <span class="math" data-tex="\(H^m\)">\(H^m\)</span> with such a coefficient sequence follows directly by applying the functional to its weighted orthonormal Fourier basis and using the Hilbert-space coordinate argument from Section 3. In time, the map is strongly measurable: the estimate obtained by replacing <span class="math" data-tex="\(u\otimes u\)">\(u\otimes u\)</span> with <span class="math" data-tex="\(u\otimes u-v\otimes v\)">\(u\otimes u-v\otimes v\)</span> is at most <span class="math" data-tex="\(C_{D,m}(\|u\|_2+\|v\|_2)\|u-v\|_2\)">\(C_{D,m}(\|u\|_2+\|v\|_2)\|u-v\|_2\)</span>, so it is a continuous map from <span class="math" data-tex="\(L^2\)">\(L^2\)</span> into <span class="math" data-tex="\(H^{-m}\)">\(H^{-m}\)</span>.</p>
+<p>Put</p>
+<span class="math math-display" data-tex="\[
+w=f-\operatorname{div}(u\otimes u).
+\tag{6.4}
+\]">\[
+w=f-\operatorname{div}(u\otimes u).
+\tag{6.4}
+\]</span>
+<p>For every finite <span class="math" data-tex="\(T\)">\(T\)</span>, <span class="math" data-tex="\(w\in L^1(0,T;H^{-m})\)">\(w\in L^1(0,T;H^{-m})\)</span>: <span class="math" data-tex="\(f\in L^2_tH^{-1}_x\subset L^1_tH^{-m}_x\)">\(f\in L^2_tH^{-1}_x\subset L^1_tH^{-m}_x\)</span>, and the nonlinear term is bounded in <span class="math" data-tex="\(H^{-m}\)">\(H^{-m}\)</span> by the energy bound. Define the mean-zero scalar distribution <span class="math" data-tex="\(p\)">\(p\)</span> by</p>
+<span class="math math-display" data-tex="\[
+\widehat p_0=0,\qquad
+\widehat p_k=\frac{\kappa_k\cdot\widehat w_k}{2\pi i|\kappa_k|^2}
+\quad(k\ne0).
+\tag{6.5}
+\]">\[
+\widehat p_0=0,\qquad
+\widehat p_k=\frac{\kappa_k\cdot\widehat w_k}{2\pi i|\kappa_k|^2}
+\quad(k\ne0).
+\tag{6.5}
+\]</span>
+<p>It is a real distribution by conjugate symmetry. Every nonzero frequency obeys <span class="math" data-tex="\(|\kappa_k|\geq L_{\max}^{-1}\)">\(|\kappa_k|\geq L_{\max}^{-1}\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|p\|_{H^{1-m}}^2
+&amp;\leq V\sum_{k\ne0}\frac{(1+\lambda_k)^{1-m}}{\lambda_k}|\widehat w_k|^2\\
+&amp;\leq\left(1+\frac{L_{\max}^2}{4\pi^2}\right)
+\|w\|_{H^{-m}}^2.
+\end{aligned}
+\tag{6.6}
+\]">\[
+\begin{aligned}
+\|p\|_{H^{1-m}}^2
+&amp;\leq V\sum_{k\ne0}\frac{(1+\lambda_k)^{1-m}}{\lambda_k}|\widehat w_k|^2\\
+&amp;\leq\left(1+\frac{L_{\max}^2}{4\pi^2}\right)
+\|w\|_{H^{-m}}^2.
+\end{aligned}
+\tag{6.6}
+\]</span>
+<p>The constant in (6.6) is the exact squared norm of this pressure operator from <span class="math" data-tex="\(H^{-m}\)">\(H^{-m}\)</span> to <span class="math" data-tex="\(H^{1-m}\)">\(H^{1-m}\)</span>. To see that it cannot be decreased, choose <span class="math" data-tex="\(j\)">\(j\)</span> with <span class="math" data-tex="\(L_j=L_{\max}\)">\(L_j=L_{\max}\)</span>, set <span class="math" data-tex="\(k=e_j\)">\(k=e_j\)</span>, and take a real vector field whose only nonzero coefficients are <span class="math" data-tex="\(\widehat w_k=\widehat w_{-k}=e_j\)">\(\widehat w_k=\widehat w_{-k}=e_j\)</span>. They are parallel to the corresponding frequencies, so the coefficient Cauchy–Schwarz inequality in (6.6) is an equality. Both frequencies have <span class="math" data-tex="\(\lambda_k=4\pi^2/L_{\max}^2\)">\(\lambda_k=4\pi^2/L_{\max}^2\)</span>. Dividing the two squared norms gives exactly <span class="math" data-tex="\((1+\lambda_k)/\lambda_k=1+L_{\max}^2/(4\pi^2)\)">\((1+\lambda_k)/\lambda_k=1+L_{\max}^2/(4\pi^2)\)</span>. This sharpness assertion concerns the linear operator (6.5) on its stated spaces.</p>
+<p>Consequently <span class="math" data-tex="\(p\in L^1(0,T;H^{1-m})\)">\(p\in L^1(0,T;H^{1-m})\)</span>. Multiplying (6.5) by <span class="math" data-tex="\(2\pi i\kappa_k\)">\(2\pi i\kappa_k\)</span> proves</p>
+<span class="math math-display" data-tex="\[
+\nabla p=(I-P)w,\qquad
+\Delta p=\operatorname{div}f-\sum_{i,j}\partial_i\partial_j(u_i u_j).
+\tag{6.7}
+\]">\[
+\nabla p=(I-P)w,\qquad
+\Delta p=\operatorname{div}f-\sum_{i,j}\partial_i\partial_j(u_i u_j).
+\tag{6.7}
+\]</span>
+<p>These identities include the zero frequency: both gradients and divergences have zero constant coefficient.</p>
+<p>To recover the equation, let <span class="math" data-tex="\(\psi\)">\(\psi\)</span> be any smooth test vector field. The map <span class="math" data-tex="\(P\)">\(P\)</span> preserves smooth periodic fields, as is seen from its bounded coefficients and rapid Fourier decay. Thus (1.9) can be tested with <span class="math" data-tex="\(P\psi\)">\(P\psi\)</span>, giving</p>
+<span class="math math-display" data-tex="\[
+\partial_tu=\nu\Delta u+Pw
+\quad\hbox{as a distribution}.
+\tag{6.8}
+\]">\[
+\partial_tu=\nu\Delta u+Pw
+\quad\hbox{as a distribution}.
+\tag{6.8}
+\]</span>
+<p>Here <span class="math" data-tex="\(Pu=u\)">\(Pu=u\)</span>, so applying <span class="math" data-tex="\(P\)">\(P\)</span> to its time or spatial derivatives has no further effect. Adding (6.7) to (6.8) gives (1.12). If two pressures have the same gradient, every nonzero Fourier coefficient of their difference is zero. Their difference is therefore a spatial constant, possibly a distribution in time; the mean-zero condition selects the pressure (6.5).</p>
+<p>This completes the existence theorem. Its pressure class is stated in (6.6). No local energy inequality, pointwise differentiability of <span class="math" data-tex="\(u\)">\(u\)</span>, or <span class="math" data-tex="\(L^2\)">\(L^2\)</span> pressure has been inferred from the energy estimate.</p>
+<h2 id="7-agreement-with-a-regular-solution">7. Agreement with a regular solution</h2>
+<p>The existence theorem alone does not assert uniqueness among all weak solutions. It does give a precise comparison with a regular solution. Retain the same domain and viscosity. On a finite interval <span class="math" data-tex="\([0,T]\)">\([0,T]\)</span>, suppose a divergence-free velocity <span class="math" data-tex="\(v\)">\(v\)</span> satisfies the same projected equation with force <span class="math" data-tex="\(f\)">\(f\)</span> and</p>
+<span class="math math-display" data-tex="\[
+v\in C^1([0,T];L^2_\sigma(D))\cap C([0,T];H^m_\sigma(D)),
+\qquad m\in\mathbb N,\quad m&gt;n/2+1.
+\tag{7.1}
+\]">\[
+v\in C^1([0,T];L^2_\sigma(D))\cap C([0,T];H^m_\sigma(D)),
+\qquad m\in\mathbb N,\quad m&gt;n/2+1.
+\tag{7.1}
+\]</span>
+<p>The force is still allowed to have a gradient component in <span class="math" data-tex="\(H^{-1}\)">\(H^{-1}\)</span>. The projected equation is an equality in distributions. Under (7.1) it implies</p>
+<span class="math math-display" data-tex="\[
+Pf=\partial_tv-\nu\Delta v+P\operatorname{div}(v\otimes v)\in C([0,T];L^2).
+\tag{7.2}
+\]">\[
+Pf=\partial_tv-\nu\Delta v+P\operatorname{div}(v\otimes v)\in C([0,T];L^2).
+\tag{7.2}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(m\geq2\)">\(m\geq2\)</span> gives <span class="math" data-tex="\(\Delta v\in CL^2\)">\(\Delta v\in CL^2\)</span>, while (6.2) and <span class="math" data-tex="\(v\in CL^2\)">\(v\in CL^2\)</span> give <span class="math" data-tex="\((v\cdot\nabla)v\in CL^2\)">\((v\cdot\nabla)v\in CL^2\)</span>. Pairing (7.2) with any divergence-free <span class="math" data-tex="\(H^1\)">\(H^1\)</span> field agrees with its original force pairing, since <span class="math" data-tex="\(P\)">\(P\)</span> is self-adjoint also under <span class="math" data-tex="\(H^{-1},H^1\)">\(H^{-1},H^1\)</span> duality.</p>
+<p>Let</p>
+<span class="math math-display" data-tex="\[
+L(t)=\|\nabla v(t)\|_{L^\infty(D)}.
+\tag{7.3}
+\]">\[
+L(t)=\|\nabla v(t)\|_{L^\infty(D)}.
+\tag{7.3}
+\]</span>
+<p>This is a bounded continuous function by (6.2). For every <span class="math" data-tex="\(s=0\)">\(s=0\)</span> or <span class="math" data-tex="\(s\in G\)">\(s\in G\)</span> and <span class="math" data-tex="\(s\leq t\leq T\)">\(s\leq t\leq T\)</span>, we will prove</p>
+<span class="math math-display" data-tex="\[
+\|u(t)-v(t)\|_2^2
+\leq\|u(s)-v(s)\|_2^2
+\exp\left(2\int_s^t L(r)\,dr\right).
+\tag{7.4}
+\]">\[
+\|u(t)-v(t)\|_2^2
+\leq\|u(s)-v(s)\|_2^2
+\exp\left(2\int_s^t L(r)\,dr\right).
+\tag{7.4}
+\]</span>
+<p>In particular, equal initial data imply <span class="math" data-tex="\(u(t)=v(t)\)">\(u(t)=v(t)\)</span> at every time in this interval.</p>
+<h3 id="the-cross-identity-is-an-admissible-use-of-the-weak-equation">The cross identity is an admissible use of the weak equation</h3>
+<p>We must justify testing against <span class="math" data-tex="\(v\)">\(v\)</span>, which depends on time and is not declared smooth in all variables. First take <span class="math" data-tex="\(E_Rv\)">\(E_Rv\)</span>. It is a finite spatial Fourier sum with <span class="math" data-tex="\(C^1\)">\(C^1\)</span> time coefficients. Multiplying it by a smooth scalar time test function is allowed in (1.9), by approximating its finitely many coefficients and their first derivatives uniformly with smooth functions in time. Such approximations are obtained by extending a <span class="math" data-tex="\(C^1\)">\(C^1\)</span> coefficient past the interval using its endpoint value and derivative and convolving with a smooth compactly supported kernel; continuity of the coefficient and its derivative gives uniform convergence on the interval.</p>
+<p>The weak identity then proves, distributionally in time,</p>
+<span class="math math-display" data-tex="\[
+\frac{d}{dt}(u,E_Rv)
+=(u,\partial_tE_Rv)
++\int_D\sum_{i,j}u_i u_j\partial_jE_Rv_i\,dx
+-\nu\int_D\nabla u : \nabla E_Rv\,dx
++\langle f,E_Rv\rangle.
+\tag{7.5}
+\]">\[
+\frac{d}{dt}(u,E_Rv)
+=(u,\partial_tE_Rv)
++\int_D\sum_{i,j}u_i u_j\partial_jE_Rv_i\,dx
+-\nu\int_D\nabla u : \nabla E_Rv\,dx
++\langle f,E_Rv\rangle.
+\tag{7.5}
+\]</span>
+<p>Its right side is integrable. A locally integrable scalar function whose distributional derivative equals <span class="math" data-tex="\(g\in L^1\)">\(g\in L^1\)</span> differs by a constant from <span class="math" data-tex="\(\int g\)">\(\int g\)</span>: subtract the integral and test the resulting zero derivative against functions of integral zero, each of which is the derivative of a compactly supported smooth function. This proves the assertion. Since the left-hand pairing is continuous by weak continuity of <span class="math" data-tex="\(u\)">\(u\)</span>, (7.5) integrates to an identity at every pair of endpoints.</p>
+<p>Now send <span class="math" data-tex="\(R\to\infty\)">\(R\to\infty\)</span>. The convergences <span class="math" data-tex="\(E_Rv\to v\)">\(E_Rv\to v\)</span> in <span class="math" data-tex="\(CH^m\)">\(CH^m\)</span> and <span class="math" data-tex="\(\partial_tE_Rv\to\partial_tv\)">\(\partial_tE_Rv\to\partial_tv\)</span> in <span class="math" data-tex="\(CL^2\)">\(CL^2\)</span> are uniform in time. To verify uniformity, cover the compact image of a continuous function on <span class="math" data-tex="\([0,T]\)">\([0,T]\)</span> by finitely many small balls in the relevant Hilbert space. Strong convergence of the contractions <span class="math" data-tex="\(E_R\)">\(E_R\)</span> at their finitely many centers, plus the contraction bound on each ball, gives uniform convergence. Equation (6.2) gives uniform convergence of the gradients in <span class="math" data-tex="\(L^\infty_x\)">\(L^\infty_x\)</span>. These facts, <span class="math" data-tex="\(u\in L^\infty_tL^2_x\cap L^2_tH^1_x\)">\(u\in L^\infty_tL^2_x\cap L^2_tH^1_x\)</span>, and <span class="math" data-tex="\(f\in L^2_tH^{-1}_x\)">\(f\in L^2_tH^{-1}_x\)</span>, justify passing every term of the integrated identity to the limit. We obtain</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(u(t),v(t))-(u(s),v(s))\\
+&amp;\quad=\int_s^t\bigg[(u,\partial_rv)
++\int_D\sum_{i,j}u_i u_j\partial_jv_i\,dx\\
+&amp;\hspace{6em}-\nu\int_D\nabla u : \nabla v\,dx
++\langle f,v\rangle\bigg]dr.
+\end{aligned}
+\tag{7.6}
+\]">\[
+\begin{aligned}
+&amp;(u(t),v(t))-(u(s),v(s))\\
+&amp;\quad=\int_s^t\bigg[(u,\partial_rv)
++\int_D\sum_{i,j}u_i u_j\partial_jv_i\,dx\\
+&amp;\hspace{6em}-\nu\int_D\nabla u : \nabla v\,dx
++\langle f,v\rangle\bigg]dr.
+\end{aligned}
+\tag{7.6}
+\]</span>
+<p>This identity holds for all <span class="math" data-tex="\(0\leq s\leq t\leq T\)">\(0\leq s\leq t\leq T\)</span>, before using any energy inequality.</p>
+<h3 id="the-relative-energy-calculation">The relative energy calculation</h3>
+<p>The regular solution obeys an energy equality. The time derivative of its squared <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm is <span class="math" data-tex="\(2(v,\partial_tv)\)">\(2(v,\partial_tv)\)</span>; (7.2), periodic integration by parts and divergence freedom give</p>
+<span class="math math-display" data-tex="\[
+\frac12\|v(t)\|_2^2+\nu\int_s^t\|\nabla v\|_2^2\,dr
+=\frac12\|v(s)\|_2^2+\int_s^t\langle f,v\rangle\,dr.
+\tag{7.7}
+\]">\[
+\frac12\|v(t)\|_2^2+\nu\int_s^t\|\nabla v\|_2^2\,dr
+=\frac12\|v(s)\|_2^2+\int_s^t\langle f,v\rangle\,dr.
+\tag{7.7}
+\]</span>
+<p>The nonlinear cancellation is exactly (2.7) with <span class="math" data-tex="\(v\)">\(v\)</span> in place of <span class="math" data-tex="\(u_N\)">\(u_N\)</span>. It follows at the stated regularity either by the product rule for the continuously differentiable spatial representative supplied by (6.2), or by Fourier approximation in <span class="math" data-tex="\(H^m\)">\(H^m\)</span>.</p>
+<p>Write <span class="math" data-tex="\(z=u-v\)">\(z=u-v\)</span>. Pairing (7.2) with <span class="math" data-tex="\(u\)">\(u\)</span>, which is in <span class="math" data-tex="\(H^1_\sigma\)">\(H^1_\sigma\)</span> almost everywhere, gives</p>
+<span class="math math-display" data-tex="\[
+(u,\partial_tv)
+=-\nu\int_D\nabla u : \nabla v\,dx
+-\int_D\sum_{i,j}u_i v_j\partial_jv_i\,dx
++\langle f,u\rangle.
+\tag{7.8}
+\]">\[
+(u,\partial_tv)
+=-\nu\int_D\nabla u : \nabla v\,dx
+-\int_D\sum_{i,j}u_i v_j\partial_jv_i\,dx
++\langle f,u\rangle.
+\tag{7.8}
+\]</span>
+<p>The sum of its quadratic term and the quadratic term in (7.6) is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_D\sum_{i,j}u_i(u_j-v_j)\partial_jv_i\,dx
+&amp;=\int_D\sum_{i,j}z_i z_j\partial_jv_i\,dx
++\frac12\int_D z\cdot\nabla|v|^2\,dx\\
+&amp;=\int_D\sum_{i,j}z_i z_j\partial_jv_i\,dx.
+\end{aligned}
+\tag{7.9}
+\]">\[
+\begin{aligned}
+\int_D\sum_{i,j}u_i(u_j-v_j)\partial_jv_i\,dx
+&amp;=\int_D\sum_{i,j}z_i z_j\partial_jv_i\,dx
++\frac12\int_D z\cdot\nabla|v|^2\,dx\\
+&amp;=\int_D\sum_{i,j}z_i z_j\partial_jv_i\,dx.
+\end{aligned}
+\tag{7.9}
+\]</span>
+<p>For the last equality, <span class="math" data-tex="\(z\)">\(z\)</span> is divergence free and <span class="math" data-tex="\(|v|^2\in H^1\)">\(|v|^2\in H^1\)</span>. The distributional divergence identity extends from smooth scalar tests to <span class="math" data-tex="\(H^1\)">\(H^1\)</span> by Fourier density and the bound <span class="math" data-tex="\(|\int z\cdot\nabla h|\leq\|z\|_2\|\nabla h\|_2\)">\(|\int z\cdot\nabla h|\leq\|z\|_2\|\nabla h\|_2\)</span>.</p>
+<p>Add the weak energy inequality (1.10) and (7.7), then subtract (7.6), using (7.8) and (7.9). The two force pairings cancel exactly. The two gradient norms and their cross term combine to the full squared gradient of <span class="math" data-tex="\(z\)">\(z\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\frac12\|z(t)\|_2^2+\nu\int_s^t\|\nabla z(r)\|_2^2\,dr
+\leq\frac12\|z(s)\|_2^2
+-\int_s^t\int_D\sum_{i,j}z_i z_j\partial_jv_i\,dx\,dr.
+\tag{7.10}
+\]">\[
+\frac12\|z(t)\|_2^2+\nu\int_s^t\|\nabla z(r)\|_2^2\,dr
+\leq\frac12\|z(s)\|_2^2
+-\int_s^t\int_D\sum_{i,j}z_i z_j\partial_jv_i\,dx\,dr.
+\tag{7.10}
+\]</span>
+<p>This holds at exactly the permitted starting times of <span class="math" data-tex="\(u\)">\(u\)</span>. The matrix Cauchy–Schwarz inequality bounds the absolute value of the spatial integral by <span class="math" data-tex="\(L(r)\|z(r)\|_2^2\)">\(L(r)\|z(r)\|_2^2\)</span>. With <span class="math" data-tex="\(Y(t)=\|z(t)\|_2^2\)">\(Y(t)=\|z(t)\|_2^2\)</span>, dropping the dissipation gives</p>
+<span class="math math-display" data-tex="\[
+Y(t)\leq Y(s)+2\int_s^tL(r)Y(r)\,dr.
+\tag{7.11}
+\]">\[
+Y(t)\leq Y(s)+2\int_s^tL(r)Y(r)\,dr.
+\tag{7.11}
+\]</span>
+<p>To finish without leaving a differential inequality implicit, put <span class="math" data-tex="\(H(t)=Y(s)+2\int_s^tL(r)Y(r)\,dr\)">\(H(t)=Y(s)+2\int_s^tL(r)Y(r)\,dr\)</span>. It is absolutely continuous, <span class="math" data-tex="\(Y\leq H\)">\(Y\leq H\)</span>, and <span class="math" data-tex="\(H&#x27;=2LY\leq2LH\)">\(H&#x27;=2LY\leq2LH\)</span> almost everywhere. Hence</p>
+<span class="math math-display" data-tex="\[
+\frac{d}{dt}\left[e^{-2\int_s^tL(r)dr}H(t)\right]\leq0
+\quad\hbox{almost everywhere}.
+\tag{7.12}
+\]">\[
+\frac{d}{dt}\left[e^{-2\int_s^tL(r)dr}H(t)\right]\leq0
+\quad\hbox{almost everywhere}.
+\tag{7.12}
+\]</span>
+<p>Integrating and using <span class="math" data-tex="\(Y\leq H\)">\(Y\leq H\)</span> proves (7.4). This proof also covers <span class="math" data-tex="\(Y(s)=0\)">\(Y(s)=0\)</span> directly; no division by the initial difference was used.</p>
+<h2 id="8-five-exercises-with-complete-solutions">8. Five exercises with complete solutions</h2>
+<h3 id="exercise-1-a-force-which-changes-only-the-mean">Exercise 1. A force which changes only the mean</h3>
+<p>Let <span class="math" data-tex="\(a,b\in\mathbb R^n\)">\(a,b\in\mathbb R^n\)</span> be constant vectors, <span class="math" data-tex="\(u_0(x)=a\)">\(u_0(x)=a\)</span> and <span class="math" data-tex="\(f(t,x)=b\)">\(f(t,x)=b\)</span>. Find a solution and check its complete energy equality. Explain why a gradient bound alone cannot control this velocity.</p>
+<p><strong>Solution.</strong> Take <span class="math" data-tex="\(u(t,x)=a+tb\)">\(u(t,x)=a+tb\)</span> and <span class="math" data-tex="\(p=0\)">\(p=0\)</span>. Every spatial derivative vanishes, so (1.12) becomes <span class="math" data-tex="\(b=b\)">\(b=b\)</span>, and the field is divergence free. Its energy and dissipation are</p>
+<span class="math math-display" data-tex="\[
+\|u(t)\|_2^2=V|a+tb|^2,\qquad\|\nabla u(t)\|_2^2=0.
+\tag{8.1}
+\]">\[
+\|u(t)\|_2^2=V|a+tb|^2,\qquad\|\nabla u(t)\|_2^2=0.
+\tag{8.1}
+\]</span>
+<p>The work between any <span class="math" data-tex="\(s\leq t\)">\(s\leq t\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\int_s^t\langle f,u\rangle\,dr
+=V\int_s^tb\cdot(a+rb)\,dr
+=V(t-s)a\cdot b+\frac V2(t^2-s^2)|b|^2
+=\frac V2\bigl(|a+tb|^2-|a+sb|^2\bigr).
+\tag{8.2}
+\]">\[
+\int_s^t\langle f,u\rangle\,dr
+=V\int_s^tb\cdot(a+rb)\,dr
+=V(t-s)a\cdot b+\frac V2(t^2-s^2)|b|^2
+=\frac V2\bigl(|a+tb|^2-|a+sb|^2\bigr).
+\tag{8.2}
+\]</span>
+<p>This is the exact energy equality. The gradient remains zero while the energy can be positive and grow. Thus an inequality bounding the full <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm by a constant times the gradient norm is false on this space. The undamped coefficient is exactly the mean in (1.11).</p>
+<h3 id="exercise-2-why-time-control-is-necessary">Exercise 2. Why time control is necessary</h3>
+<p>Fix a nonzero smooth divergence-free periodic field <span class="math" data-tex="\(e\)">\(e\)</span>. On <span class="math" data-tex="\(0\leq t\leq2\pi\)">\(0\leq t\leq2\pi\)</span>, set <span class="math" data-tex="\(w_N(t,x)=e(x)\sin(Nt)\)">\(w_N(t,x)=e(x)\sin(Nt)\)</span>, for positive integers <span class="math" data-tex="\(N\)">\(N\)</span>. Show that the spatial energy bounds alone do not yield a strongly convergent subsequence in <span class="math" data-tex="\(L^2_{t,x}\)">\(L^2_{t,x}\)</span>.</p>
+<p><strong>Solution.</strong> We have</p>
+<span class="math math-display" data-tex="\[
+\sup_t\|w_N(t)\|_2^2\leq\|e\|_2^2,\qquad
+\int_0^{2\pi}\|\nabla w_N\|_2^2\,dt=\pi\|\nabla e\|_2^2.
+\tag{8.3}
+\]">\[
+\sup_t\|w_N(t)\|_2^2\leq\|e\|_2^2,\qquad
+\int_0^{2\pi}\|\nabla w_N\|_2^2\,dt=\pi\|\nabla e\|_2^2.
+\tag{8.3}
+\]</span>
+<p>For distinct positive integers <span class="math" data-tex="\(N,M\)">\(N,M\)</span>, use the identity</p>
+<span class="math math-display" data-tex="\[
+2\sin(Nt)\sin(Mt)=\cos((N-M)t)-\cos((N+M)t).
+\]">\[
+2\sin(Nt)\sin(Mt)=\cos((N-M)t)-\cos((N+M)t).
+\]</span>
+<p>Its integral over this interval is zero. Each squared sine has integral <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\|w_N-w_M\|_{L^2_{t,x}}^2=2\pi\|e\|_2^2&gt;0.
+\tag{8.4}
+\]">\[
+\|w_N-w_M\|_{L^2_{t,x}}^2=2\pi\|e\|_2^2&gt;0.
+\tag{8.4}
+\]</span>
+<p>No subsequence is Cauchy. For any mode with <span class="math" data-tex="\(\widehat e_k\ne0\)">\(\widehat e_k\ne0\)</span>, the coefficient changes from zero at <span class="math" data-tex="\(t=0\)">\(t=0\)</span> to <span class="math" data-tex="\(\widehat e_k\)">\(\widehat e_k\)</span> at <span class="math" data-tex="\(t=\pi/(2N)\)">\(t=\pi/(2N)\)</span>. These times tend to zero, so there is no common modulus of continuity. Estimate (3.3), which comes from the equation as well as energy, rules out this behavior for the Galerkin solutions with fixed data and force.</p>
+<h3 id="exercise-3-the-quadratic-limit-and-its-exact-coefficient">Exercise 3. The quadratic limit and its exact coefficient</h3>
+<p>Prove (4.2) for any two vector fields <span class="math" data-tex="\(a,b\in L^2(X;\mathbb R^n)\)">\(a,b\in L^2(X;\mathbb R^n)\)</span> on a measure space <span class="math" data-tex="\(X\)">\(X\)</span>. Does the proof require a bound on their derivatives?</p>
+<p><strong>Solution.</strong> At each point use the exact tensor identity (4.1), the triangle inequality and <span class="math" data-tex="\(|c\otimes d|=|c||d|\)">\(|c\otimes d|=|c||d|\)</span>. After integration,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|a\otimes a-b\otimes b\|_{L^1(X)}
+&amp;\leq\int_X|a-b|\,|a|+|b|\,|a-b|\\
+&amp;\leq\|a-b\|_2\|a\|_2+\|b\|_2\|a-b\|_2.
+\end{aligned}
+\tag{8.5}
+\]">\[
+\begin{aligned}
+\|a\otimes a-b\otimes b\|_{L^1(X)}
+&amp;\leq\int_X|a-b|\,|a|+|b|\,|a-b|\\
+&amp;\leq\|a-b\|_2\|a\|_2+\|b\|_2\|a-b\|_2.
+\end{aligned}
+\tag{8.5}
+\]</span>
+<p>Both applications are precisely Cauchy–Schwarz, so the coefficient is one. No derivative is used in this estimate. Derivative and time estimates were used earlier to obtain the strong <span class="math" data-tex="\(L^2\)">\(L^2\)</span> convergence to which it applies.</p>
+<h3 id="exercise-4-strong-convergence-at-a-permitted-starting-time">Exercise 4. Strong convergence at a permitted starting time</h3>
+<p>Assume weak continuity of <span class="math" data-tex="\(u\)">\(u\)</span>, the energy inequality beginning at one time <span class="math" data-tex="\(s\)">\(s\)</span>, and <span class="math" data-tex="\(f\in L^2(s,s+\delta;H^{-1})\)">\(f\in L^2(s,s+\delta;H^{-1})\)</span>, <span class="math" data-tex="\(u\in L^2(s,s+\delta;H^1)\)">\(u\in L^2(s,s+\delta;H^1)\)</span>. Prove <span class="math" data-tex="\(u(t)\to u(s)\)">\(u(t)\to u(s)\)</span> strongly in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> as <span class="math" data-tex="\(t\downarrow s\)">\(t\downarrow s\)</span>. State the exact role of the starting-time hypothesis.</p>
+<p><strong>Solution.</strong> Cauchy–Schwarz gives (5.5), whose right side tends to zero by absolute continuity of the two integrals. The energy inequality, with its dissipation term nonnegative, gives (5.4). Weak continuity gives the limit of <span class="math" data-tex="\((u(t),u(s))\)">\((u(t),u(s))\)</span>. Inserting these facts into the Hilbert identity (5.6) shows that the lower limit of the squared difference is nonnegative and its upper limit is at most zero. Hence the difference tends to zero. The initial norm on the right side of the energy inequality is essential in this argument. An inequality beginning at a different time does not give (5.4) at the chosen <span class="math" data-tex="\(s\)">\(s\)</span>. The theorem therefore asserts this conclusion at <span class="math" data-tex="\(0\)">\(0\)</span> and the set <span class="math" data-tex="\(G\)">\(G\)</span> which it actually constructs.</p>
+<h3 id="exercise-5-stability-when-the-forces-differ">Exercise 5. Stability when the forces differ</h3>
+<p>Let <span class="math" data-tex="\(u\)">\(u\)</span> be a weak solution with force <span class="math" data-tex="\(f\)">\(f\)</span>, and let <span class="math" data-tex="\(v\)">\(v\)</span> satisfy (7.1) and the projected equation with force <span class="math" data-tex="\(g\in L^2(0,T;H^{-1})\)">\(g\in L^2(0,T;H^{-1})\)</span>. With <span class="math" data-tex="\(Y(t)=\|u(t)-v(t)\|_2^2\)">\(Y(t)=\|u(t)-v(t)\|_2^2\)</span> and <span class="math" data-tex="\(L(t)\)">\(L(t)\)</span> as in (7.3), prove, at every permitted starting time <span class="math" data-tex="\(s\)">\(s\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Y(t)\leq
+\exp\left(\int_s^t[2L(r)+\nu]dr\right)
+\left[Y(s)+\nu^{-1}\int_s^t
+\exp\left(-\int_s^r[2L(q)+\nu]dq\right)
+\|f(r)-g(r)\|_{H^{-1}}^2\,dr\right].
+\end{aligned}
+\tag{8.6}
+\]">\[
+\begin{aligned}
+Y(t)\leq
+\exp\left(\int_s^t[2L(r)+\nu]dr\right)
+\left[Y(s)+\nu^{-1}\int_s^t
+\exp\left(-\int_s^r[2L(q)+\nu]dq\right)
+\|f(r)-g(r)\|_{H^{-1}}^2\,dr\right].
+\end{aligned}
+\tag{8.6}
+\]</span>
+<p><strong>Solution.</strong> The cross identity (7.6) still uses <span class="math" data-tex="\(f\)">\(f\)</span>, because it is the weak equation for <span class="math" data-tex="\(u\)">\(u\)</span>. In (7.8) the force is now <span class="math" data-tex="\(g\)">\(g\)</span>, and the energy equality for <span class="math" data-tex="\(v\)">\(v\)</span> also uses <span class="math" data-tex="\(g\)">\(g\)</span>. Subtracting the cross identity from the two energy statements leaves</p>
+<span class="math math-display" data-tex="\[
+\frac12Y(t)+\nu\int_s^t\|\nabla z\|_2^2\,dr
+\leq\frac12Y(s)-\int_s^t\int_D\sum_{i,j}z_i z_j\partial_jv_i\,dx\,dr
++\int_s^t\langle f-g,z\rangle\,dr,
+\quad z=u-v.
+\tag{8.7}
+\]">\[
+\frac12Y(t)+\nu\int_s^t\|\nabla z\|_2^2\,dr
+\leq\frac12Y(s)-\int_s^t\int_D\sum_{i,j}z_i z_j\partial_jv_i\,dx\,dr
++\int_s^t\langle f-g,z\rangle\,dr,
+\quad z=u-v.
+\tag{8.7}
+\]</span>
+<p>There is exactly one difference-force pairing: <span class="math" data-tex="\(\langle f,u\rangle+\langle g,v\rangle-\langle g,u\rangle-\langle f,v\rangle=\langle f-g,u-v\rangle\)">\(\langle f,u\rangle+\langle g,v\rangle-\langle g,u\rangle-\langle f,v\rangle=\langle f-g,u-v\rangle\)</span>. Let <span class="math" data-tex="\(B(r)=\|f(r)-g(r)\|_{H^{-1}}\)">\(B(r)=\|f(r)-g(r)\|_{H^{-1}}\)</span>. As in (2.10),</p>
+<span class="math math-display" data-tex="\[
+2|\langle f-g,z\rangle|
+\leq2B\sqrt{Y+\|\nabla z\|_2^2}
+\leq\nu Y+\nu\|\nabla z\|_2^2+\nu^{-1}B^2.
+\tag{8.8}
+\]">\[
+2|\langle f-g,z\rangle|
+\leq2B\sqrt{Y+\|\nabla z\|_2^2}
+\leq\nu Y+\nu\|\nabla z\|_2^2+\nu^{-1}B^2.
+\tag{8.8}
+\]</span>
+<p>Multiplying (8.7) by two, using the nonlinear bound and moving the indicated dissipation term to the left gives</p>
+<span class="math math-display" data-tex="\[
+Y(t)+\nu\int_s^t\|\nabla z\|_2^2\,dr
+\leq Y(s)+\int_s^t(2L+\nu)Y\,dr+\nu^{-1}\int_s^tB^2\,dr.
+\tag{8.9}
+\]">\[
+Y(t)+\nu\int_s^t\|\nabla z\|_2^2\,dr
+\leq Y(s)+\int_s^t(2L+\nu)Y\,dr+\nu^{-1}\int_s^tB^2\,dr.
+\tag{8.9}
+\]</span>
+<p>Put <span class="math" data-tex="\(a=2L+\nu\)">\(a=2L+\nu\)</span> and <span class="math" data-tex="\(H(t)=Y(s)+\int_s^t[a(r)Y(r)+\nu^{-1}B(r)^2]dr\)">\(H(t)=Y(s)+\int_s^t[a(r)Y(r)+\nu^{-1}B(r)^2]dr\)</span>. Then <span class="math" data-tex="\(Y\leq H\)">\(Y\leq H\)</span> and <span class="math" data-tex="\(H&#x27;\leq aH+\nu^{-1}B^2\)">\(H&#x27;\leq aH+\nu^{-1}B^2\)</span> almost everywhere. Multiplying by <span class="math" data-tex="\(\exp(-\int_s^t a)\)">\(\exp(-\int_s^t a)\)</span> and integrating proves (8.6). All terms arising from the full <span class="math" data-tex="\(H^1\)">\(H^1\)</span> norm, including its constant mode, remain in (8.8)–(8.9).</p>
+<h2 id="9-what-this-chapter-supplies-to-the-series">9. What this chapter supplies to the series</h2>
+<p>The proof constructs a velocity for every finite time on the original periodic box, with the original positive viscosity and the original force. It proves the full energy inequality at its stated times and gives an actual pressure distribution. Its weak–strong comparison shows that this weak solution must follow a regular solution with the same data throughout the regular solution's interval of existence.</p>
+<p>The compactness step used a finite number of low spatial frequencies and the explicit tail estimate (3.4). On the whole space low frequencies form a continuum, so the argument there requires additional control. The whole-space construction is the next part of the weak-solution foundations. Higher regularity, broader uniqueness criteria, and the singularity constructions in the later lessons require their own proofs. This chapter makes no assertion that the energy estimate alone controls all derivatives.</p>
+<p><strong>Sources and precise scope of use.</strong> The exposition and all proofs above are independently written. The original author TeX sources of the following freely accessible editions were read for the stated comparisons; they are not reproduced in the course.</p>
+<ul>
+<li>Dallas Albritton, Elia Brué and Maria Colombo, <a href="https://arxiv.org/abs/2112.03116v1"><em>Non-uniqueness of Leray solutions of the forced Navier–Stokes equations</em>, arXiv:2112.03116v1</a>, introduction, definition with labels <code>eq:minimumregularity</code> and <code>eq:energyinequality</code> (author file <code>main.tex</code>, lines 342–369). Their definition there concerns <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>, viscosity one and <span class="math" data-tex="\(L^1_tL^2_x\)">\(L^1_tL^2_x\)</span> forces. Our periodic <span class="math" data-tex="\(L^2_tH^{-1}_x\)">\(L^2_tH^{-1}_x\)</span> existence statement, positive viscosity and permitted starting-time assertion are proved above. Their nonuniqueness construction is not invoked here.</li>
+<li>Terence Tao, <a href="https://arxiv.org/abs/1108.1165v4"><em>Localisation and compactness properties of the Navier–Stokes global regularity problem</em>, arXiv:1108.1165v4</a>, discussion preceding Proposition <code>partial</code> and equation <code>tim</code> (author file <code>local_ns.tex</code>, lines 1787–1807). That passage concerns whole-space solutions and a further spatial regularity construction. Neither that additional regularity conclusion nor its construction is used in this periodic proof.</li>
+</ul>
+<p><strong>Authorship and review.</strong> GPT-6 Astra (OpenAI), Ultra; 8 October 2026. Author self-check only; no independent review is claimed. The independently authored mathematical text, proofs, exercises and solutions are dedicated under CC0 1.0. The cited works retain their own rights.</p>
+</article><nav aria-label="Lesson sequence"><a href="NS-FLUID-02.html">Previous lesson</a></nav></main><footer>Mathematical text: CC0 1.0. Cited works and reader software retain their respective terms.</footer></body></html>

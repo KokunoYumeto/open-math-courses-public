@@ -260,8 +260,8 @@ So \(A_N(n)\) is the set of \(\lambda\in\mathbb Z[1/N]^n\) with \(\sum_i|\lambda
 *Reference:* [Durov 2007, 2.14.13], where this module is denoted \(\mathbb F_\infty\).
 
 **Proposition 3.4** (Monoids). Let \(H\) be a monoid. Put
-\
-\mathbb F_1[H=\{0\}\sqcup\bigl((H\smallsetminus\{0\})\times[n]\bigr),
+\[
+\mathbb F_1[H](n)=\{0\}\sqcup\bigl((H\smallsetminus\{0\})\times[n]\bigr),
 \]
 and write \(a\,e^n_i\) for the pair \((a,i)\) and \(0\,e^n_i=0\). Define \(0(t_1,\dots,t_k)=0\) and \((a\,e^k_i)(t_1,\dots,t_k)=a\cdot t_i\), where \(a\cdot0=0\) and \(a\cdot(b\,e^n_j)=(ab)\,e^n_j\).
 
@@ -271,7 +271,7 @@ and write \(a\,e^n_i\) for the pair \((a,i)\) and \(0\,e^n_i=0\). Define \(0(t_1
 
 (c) For every generalized ring \(A\) with zero, \(\rho\mapsto\rho_1\) is a bijection from the homomorphisms \(\mathbb F_1[H]\to A\) to the monoid homomorphisms \(H\to|A|\) (preserving \(1\) and \(0\)).
 
-**Proof.** (a) Let \(\mathbb Z[H]\) be the monoid ring of \(H\) modulo its zero: the free abelian group on \(H\smallsetminus\{0\}\) with the product of \(H\). Then \(\mathbb F_1H\) is the set of vectors in \(\mathbb Z[H]^n\) with at most one non-zero coordinate, that coordinate lying in \(H\smallsetminus\{0\}\). These sets contain the basis vectors, and \((a\,e_i)(t_1,\dots,t_k)=a\,t_i\) in \(T_{\mathbb Z[H]}\). So \(\mathbb F_1[H]\) is a subclone of the commutative clone \(T_{\mathbb Z[H]}\). The direct check is also short: for \(a\,e^n_i\), \(b\,e^m_j\) and a matrix \((x_{kl})\), both sides of (2.1) are \(ab\,x_{ij}\); if one operation is \(0\), both sides are \(0\).
+**Proof.** (a) Let \(\mathbb Z[H]\) be the monoid ring of \(H\) modulo its zero: the free abelian group on \(H\smallsetminus\{0\}\) with the product of \(H\). Then \(\mathbb F_1[H](n)\) is the set of vectors in \(\mathbb Z[H]^n\) with at most one non-zero coordinate, that coordinate lying in \(H\smallsetminus\{0\}\). These sets contain the basis vectors, and \((a\,e_i)(t_1,\dots,t_k)=a\,t_i\) in \(T_{\mathbb Z[H]}\). So \(\mathbb F_1[H]\) is a subclone of the commutative clone \(T_{\mathbb Z[H]}\). The direct check is also short: for \(a\,e^n_i\), \(b\,e^m_j\) and a matrix \((x_{kl})\), both sides of (2.1) are \(ab\,x_{ij}\); if one operation is \(0\), both sides are \(0\).
 
 (b) The constant gives \(0_X\), and \(a\in H\) acts by \([a\,e^1_1]_X\). (M2) gives the four rules and \([a\,e^n_i]_X(x)=ax_i\). Conversely these formulas define a module.
 

@@ -244,7 +244,7 @@ For a linear map \(f:V\to W\), the map \(f^{\otimes n}\) commutes with permutati
 
 The algebra action of \(\mathbb C[S_n]\) is faithful exactly when \(m\geq n\): all its simple blocks occur then, whereas the sign block \((1^n)\) vanishes when \(m<n\). This is a statement about the group algebra, not just its group elements. For \(m\geq2\), the group action itself is faithful even if \(m<n\): a nonidentity permutation moves some position, and a basis tensor with one \(v_2\) in that position and \(v_1\)'s elsewhere is changed by it.
 
-*Comparison:* [Gruson–Serganova, Chapter 6, Theorem 2.4, Lemma 2.9, Corollary 2.10 and Definition 2.11]. The finite-dimensional characteristic-zero hypotheses and row count agree. Formula (1) fixes a left action using \(\sigma^{-1}\), and (14) defines the multiplicity space intrinsically. The coefficient test in the proof verifies nonvanishing for every allowed shape, including \(m<n\); faithfulness of the symmetric-group action is claimed only for \(m\geq n\).
+*Comparison:* [Gruson–Serganova, Chapter 6, Theorem 2.4, Lemma 2.9, Corollary 2.10 and Definition 2.11]. The finite-dimensional characteristic-zero hypotheses and row count agree. Formula (1) fixes a left action using \(\sigma^{-1}\), and (14) defines the multiplicity space intrinsically. The coefficient test in the proof verifies nonvanishing for every allowed shape, including \(m<n\); faithfulness of the symmetric-group algebra action is claimed only for \(m\geq n\).
 
 ## 4. A cycle trace determines the character
 

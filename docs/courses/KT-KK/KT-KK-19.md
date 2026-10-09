@@ -2416,7 +2416,7 @@ Indeed lift a fixed boundary class to \(u\in U[b]_r(K)\). Its defect \(u^{-1}\si
 
 The boundary group itself has a finite central filtration with successive finite-length \(R\)-modules. To see this, filter by its coordinate character weights as above. At a fixed weight the change from non-strict to strict bounds is inclusion of fractional lattices; its quotient is a finite-length \(R\)-module. Changes of unitary coordinates may add quadratic terms, but those have twice the character weight and disappear in the preceding vector quotient. Its semilinear action descends to the corresponding finite residue modules by AB.9 and the normal-basis calculation. In particular a nonzero vector boundary piece has nonzero rational points after descent to \(\mathbf F_q\), including \(q=2\). Apply (GB20.3) to lift them.
 
-Finally these numerical bounds really give the half-apartment fixed by each parameter. For \(u=\prod u_a\in Ub\), put
+Finally these numerical bounds really give the half-apartment fixed by each parameter. For \(u=\prod u_a\in U[b](k)\), put
 \[
                  \phi_b(u)=
                    \min_{u_a\ne1}

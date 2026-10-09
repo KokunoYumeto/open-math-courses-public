@@ -1,0 +1,829 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Causal inverses and stability at a cone&#x27;s vertex</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L176.html">Previous lesson</a> · <a href="#2-an-error-with-a-delay-has-a-locally-finite-inverse">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#5-exercises-and-full-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="worked-causal-inverses-examples-and-exercises">Worked causal inverses, examples and exercises</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI GPT-6.1 Sol (OpenAI). Public domain (CC0 1.0).</em></p>
+<p>The preceding chapter separates two ways an inverse series can exist. A positive delay makes it locally finite. A continuous error at the vertex instead requires a convergent local construction. The examples below show the distinction, including a compact differential-and-delay kernel, a noncompact kernel with a finite differentiability threshold, and an inverse that grows exponentially.</p>
+<p>Basic references are Richard Melrose's <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Differential Analysis</a>, Gerd Grubb's <a href="https://web.math.ku.dk/~grubb/dist5.pdf">distribution Fourier chapter</a>, and Lars Hörmander's <em>The Analysis of Linear Partial Differential Operators</em>, volumes I and II. The actual proof prerequisites are the preceding chapter, <a href="prerequisites/convolution-as-addition-of-supports.html">Convolution as addition of supports</a>, Theorems 1.1, 2.1, 3.1 and 3.2, and its Proposition 3.3. The support-frequency comparison uses <a href="AN02-L115.html">Support cones force reciprocal bounds</a>, Theorem 1.1, and the explicit cone convention of <a href="AN02-L117.html">Logarithmic Fourier graphs construct a cone-supported inverse</a>, Theorem 1.1.</p>
+<h2 id="1-a-line-has-no-positive-clock">1. A line has no positive clock</h2>
+<p><strong>Example 1.</strong> In one dimension let</p>
+<span class="math math-display" id="eq-E1.1" data-index="0" data-tex="\[
+C=\mathbb R,\qquad R=\delta_1+\delta_{-1}.
+\tag{E1.1}
+\]">\[
+C=\mathbb R,\qquad R=\delta_1+\delta_{-1}.
+\tag{E1.1}
+\]</span>
+<p>The support of <span class="math" data-index="1" data-tex="\(R\)">\(R\)</span> misses zero. Nevertheless</p>
+<span class="math math-display" id="eq-E1.2" data-index="2" data-tex="\[
+R^{*2j}
+=\sum_{k=0}^{2j}\binom{2j}{k}\delta_{2k-2j}
+\tag{E1.2}
+\]">\[
+R^{*2j}
+=\sum_{k=0}^{2j}\binom{2j}{k}\delta_{2k-2j}
+\tag{E1.2}
+\]</span>
+<p>has a mass <span class="math" data-index="3" data-tex="\(\binom{2j}{j}\delta_0\)">\(\binom{2j}{j}\delta_0\)</span> for every <span class="math" data-index="4" data-tex="\(j\)">\(j\)</span>. This follows by expanding the finite convolution product: choose <span class="math" data-index="5" data-tex="\(k\)">\(k\)</span> copies of <span class="math" data-index="6" data-tex="\(\delta_1\)">\(\delta_1\)</span> and <span class="math" data-index="7" data-tex="\(2j-k\)">\(2j-k\)</span> copies of <span class="math" data-index="8" data-tex="\(\delta_{-1}\)">\(\delta_{-1}\)</span>, and add their locations.</p>
+<p>Choose a nonnegative compact smooth test supported in <span class="math" data-index="9" data-tex="\((-1/2,1/2)\)">\((-1/2,1/2)\)</span>, with value one at zero. Its pairing with every even power is <span class="math" data-index="10" data-tex="\(\binom{2j}{j}\ge1\)">\(\binom{2j}{j}\ge1\)</span>, and its pairing with every odd power is zero. Thus the proposed sum of powers diverges on this one test. It is neither locally finite nor a distributional sum.</p>
+<p>Every finite convolution here exists, because all factors are compact. The failure is the infinite sum. Pointedness is what prevents repeated contributions from returning to one bounded region. By contrast, for <span class="math" data-index="11" data-tex="\(C=\{0\}\)">\(C=\{0\}\)</span>, a distribution in <span class="math" data-index="12" data-tex="\(\mathcal A_C\)">\(\mathcal A_C\)</span> that vanishes near zero is zero, and its delayed inverse series is just <span class="math" data-index="13" data-tex="\(\delta_0\)">\(\delta_0\)</span>.</p>
+<h2 id="2-a-differential-kernel-with-two-transverse-delays">2. A differential kernel with two transverse delays</h2>
+<p><strong>Example 2.</strong> Use coordinates <span class="math" data-index="14" data-tex="\((t,x)\)">\((t,x)\)</span>, and put</p>
+<span class="math math-display" id="eq-E2.1" data-index="15" data-tex="\[
+\begin{gathered}
+C=\{(t,x):t\ge|x|\},\qquad
+a=(3/5,-3/10),\\
+p=(1,1),\quad q=(1,-1),\quad
+b=1/5,\quad c=3/10,\\
+\mu=\tau_a(\delta_0+\partial_t\delta_0),\qquad
+v=\mu-b\delta_{a+p}-c\delta_{a+q}.
+\end{gathered}
+\tag{E2.1}
+\]">\[
+\begin{gathered}
+C=\{(t,x):t\ge|x|\},\qquad
+a=(3/5,-3/10),\\
+p=(1,1),\quad q=(1,-1),\quad
+b=1/5,\quad c=3/10,\\
+\mu=\tau_a(\delta_0+\partial_t\delta_0),\qquad
+v=\mu-b\delta_{a+p}-c\delta_{a+q}.
+\end{gathered}
+\tag{E2.1}
+\]</span>
+<p>This is a compact kernel. Its inverse without the delays is</p>
+<span class="math math-display" id="eq-E2.2" data-index="16" data-tex="\[
+E=\tau_{-a}E_0,\qquad
+E_0(t,x)=H(t)e^{-t}\otimes\delta_0(x),
+\tag{E2.2}
+\]">\[
+E=\tau_{-a}E_0,\qquad
+E_0(t,x)=H(t)e^{-t}\otimes\delta_0(x),
+\tag{E2.2}
+\]</span>
+<p>where <span class="math" data-index="17" data-tex="\(H\)">\(H\)</span> is the indicator of the nonnegative half-line. Integration by parts gives <span class="math" data-index="18" data-tex="\((1+\partial_t)(H(t)e^{-t})=\delta_0\)">\((1+\partial_t)(H(t)e^{-t})=\delta_0\)</span>, so <span class="math" data-index="19" data-tex="\(\mu*E=\delta_0\)">\(\mu*E=\delta_0\)</span>. Both the kernel and the inverse have the translated cone supports required by Theorem 2.2.</p>
+<p>Let <span class="math" data-index="20" data-tex="\(d=b\delta_p+c\delta_q\)">\(d=b\delta_p+c\delta_q\)</span>. The error is <span class="math" data-index="21" data-tex="\(R=d*E_0\)">\(R=d*E_0\)</span>. Its clock <span class="math" data-index="22" data-tex="\(t\)">\(t\)</span> is at least one. Every compact time interval therefore receives only finitely many powers. The inverse is</p>
+<span class="math math-display" id="eq-E2.3" data-index="23" data-tex="\[
+F=\tau_{-a}F_0,\qquad
+F_0=\sum_{j=0}^\infty d^{*j}*E_0^{*(j+1)}.
+\tag{E2.3}
+\]">\[
+F=\tau_{-a}F_0,\qquad
+F_0=\sum_{j=0}^\infty d^{*j}*E_0^{*(j+1)}.
+\tag{E2.3}
+\]</span>
+<p>This formula has a complete explicit form. For <span class="math" data-index="24" data-tex="\(\ell\ge1\)">\(\ell\ge1\)</span>, define</p>
+<span class="math math-display" id="eq-E2.4" data-index="25" data-tex="\[
+g_\ell(s)=H(s)e^{-s}\frac{s^{\ell-1}}{(\ell-1)!}.
+\tag{E2.4}
+\]">\[
+g_\ell(s)=H(s)e^{-s}\frac{s^{\ell-1}}{(\ell-1)!}.
+\tag{E2.4}
+\]</span>
+<p>Then</p>
+<span class="math math-display" id="eq-E2.5" data-index="26" data-tex="\[
+E_0^{*\ell}=g_\ell(t)\otimes\delta_0(x),
+\qquad
+F_0(t,x)=
+\sum_{j=0}^\infty\sum_{k=0}^j
+\binom jk b^kc^{j-k}
+g_{j+1}(t-j)\otimes\delta_{2k-j}(x).
+\tag{E2.5}
+\]">\[
+E_0^{*\ell}=g_\ell(t)\otimes\delta_0(x),
+\qquad
+F_0(t,x)=
+\sum_{j=0}^\infty\sum_{k=0}^j
+\binom jk b^kc^{j-k}
+g_{j+1}(t-j)\otimes\delta_{2k-j}(x).
+\tag{E2.5}
+\]</span>
+<p>To verify the first identity, the convolution of <span class="math" data-index="27" data-tex="\(g_r\)">\(g_r\)</span> and <span class="math" data-index="28" data-tex="\(g_s\)">\(g_s\)</span> is zero at negative time and, at <span class="math" data-index="29" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, equals</p>
+<span class="math math-display" id="eq-E2.6" data-index="30" data-tex="\[
+\frac{e^{-t}}{(r-1)!(s-1)!}
+\int_0^t u^{r-1}(t-u)^{s-1}\,du
+=e^{-t}\frac{t^{r+s-1}}{(r+s-1)!}.
+\tag{E2.6}
+\]">\[
+\frac{e^{-t}}{(r-1)!(s-1)!}
+\int_0^t u^{r-1}(t-u)^{s-1}\,du
+=e^{-t}\frac{t^{r+s-1}}{(r+s-1)!}.
+\tag{E2.6}
+\]</span>
+<p>The integral formula follows by substituting <span class="math" data-index="31" data-tex="\(u=tz\)">\(u=tz\)</span> and integrating by parts <span class="math" data-index="32" data-tex="\(s-1\)">\(s-1\)</span> times; its last integral is <span class="math" data-index="33" data-tex="\(\int_0^1 z^{r+s-2}\,dz=1/(r+s-1)\)">\(\int_0^1 z^{r+s-2}\,dz=1/(r+s-1)\)</span>. The boundary terms vanish at each earlier step, and the resulting factorials give the displayed value. The second identity in (E2.5) now follows by the finite binomial expansion of <span class="math" data-index="34" data-tex="\(d^{*j}\)">\(d^{*j}\)</span>.</p>
+<p>For a direct check of the equation,</p>
+<span class="math math-display" id="eq-E2.7" data-index="35" data-tex="\[
+(1+\partial_t)g_1=\delta_0,\qquad
+(1+\partial_t)g_{\ell+1}=g_\ell\quad(\ell\ge1).
+\tag{E2.7}
+\]">\[
+(1+\partial_t)g_1=\delta_0,\qquad
+(1+\partial_t)g_{\ell+1}=g_\ell\quad(\ell\ge1).
+\tag{E2.7}
+\]</span>
+<p>The first formula includes the jump at zero. The other <span class="math" data-index="36" data-tex="\(g_{\ell+1}\)">\(g_{\ell+1}\)</span> vanish there, so their distributional derivative has no delta term. Applying <span class="math" data-index="37" data-tex="\(1+\partial_t-d*\)">\(1+\partial_t-d*\)</span> to (E2.3) cancels successive terms, with only <span class="math" data-index="38" data-tex="\(\delta_0\)">\(\delta_0\)</span> left. This is a valid locally finite cancellation on each compact test support, not a formal multiplication of unrestricted series.</p>
+<p>All coefficients in (E2.5) are positive. Its exact support is</p>
+<span class="math math-display" id="eq-E2.8" data-index="39" data-tex="\[
+\operatorname{supp}F_0
+=\{(t,x):x\in\mathbb Z,\ t\ge|x|\}.
+\tag{E2.8}
+\]">\[
+\operatorname{supp}F_0
+=\{(t,x):x\in\mathbb Z,\ t\ge|x|\}.
+\tag{E2.8}
+\]</span>
+<p>Indeed, the term of level <span class="math" data-index="40" data-tex="\(j\)">\(j\)</span> lies at <span class="math" data-index="41" data-tex="\(x=2k-j\)">\(x=2k-j\)</span>, with <span class="math" data-index="42" data-tex="\(t\ge j\)">\(t\ge j\)</span>. These locations satisfy <span class="math" data-index="43" data-tex="\(j\ge|x|\)">\(j\ge|x|\)</span>. Conversely, for any integer <span class="math" data-index="44" data-tex="\(x\)">\(x\)</span>, take <span class="math" data-index="45" data-tex="\(j=|x|\)">\(j=|x|\)</span> and the corresponding endpoint <span class="math" data-index="46" data-tex="\(k\)">\(k\)</span>. Its density is positive for <span class="math" data-index="47" data-tex="\(t&gt;j\)">\(t&gt;j\)</span>, and its closure contains the initial point. The union of these rays is closed, and positivity prevents cancellation.</p>
+<p>The closed convex hull of this support is the whole cone <span class="math" data-index="48" data-tex="\(C\)">\(C\)</span>: the initial points at all nonnegative integers fill both boundary rays by convex combinations, and convexity fills the wedge between them. Translation gives the hull <span class="math" data-index="49" data-tex="\(C-a\)">\(C-a\)</span> for <span class="math" data-index="50" data-tex="\(F\)">\(F\)</span>.</p>
+<figure><img class="course-figure" width="1488" height="1296" src="reproduce/L177/figures/delayed-powers-and-clock-cutoff.png" alt="Delayed contribution families and a compact clock cutoff in a pointed wedge" /><figcaption class="native"><a href="reproduce/L177/figures/delayed-powers-and-clock-cutoff.png">Open full-size PNG</a> · <a href="reproduce/L177/figures/delayed-powers-and-clock-cutoff.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 1. Coordinates are <span class="math" data-index="51" data-tex="\(\sigma=t+3/5\)">\(\sigma=t+3/5\)</span> and <span class="math" data-index="52" data-tex="\(\chi=x-3/10\)">\(\chi=x-3/10\)</span>, so the inverse's vertex is the origin in this plot. The first four contribution families in (E2.5) start at <span class="math" data-index="53" data-tex="\((\sigma,\chi)=(j,2k-j)\)">\((\sigma,\chi)=(j,2k-j)\)</span> and continue upward. Later rays can overlap earlier ones. The dashed line <span class="math" data-index="54" data-tex="\(\sigma=12/5\)">\(\sigma=12/5\)</span> receives only levels <span class="math" data-index="55" data-tex="\(j=0,1,2\)">\(j=0,1,2\)</span>. The ray arrows and the wedge indicate unbounded support; only a finite part is drawn. Formula (E2.5), support identity (E2.8), and Theorem 2.1 give the exact argument.</em></p>
+<h2 id="3-one-derivative-at-the-vertex-suffices">3. One derivative at the vertex suffices</h2>
+<p><strong>Example 3.</strong> On the nonnegative half-line take the noncompact kernel and its point-supported inverse</p>
+<span class="math math-display" id="eq-E3.1" data-index="56" data-tex="\[
+\mu(t)=H(t)e^{-t},\qquad E=\delta&#x27;_0+\delta_0.
+\tag{E3.1}
+\]">\[
+\mu(t)=H(t)e^{-t},\qquad E=\delta&#x27;_0+\delta_0.
+\tag{E3.1}
+\]</span>
+<p>The calculation in (E2.7) gives <span class="math" data-index="57" data-tex="\(\mu*E=\delta_0\)">\(\mu*E=\delta_0\)</span>. The local order of <span class="math" data-index="58" data-tex="\(E\)">\(E\)</span> is at most one. Change the kernel by</p>
+<span class="math math-display" id="eq-E3.2" data-index="59" data-tex="\[
+w(t)=t_+^2e^{-2t},\qquad v=\mu+w.
+\tag{E3.2}
+\]">\[
+w(t)=t_+^2e^{-2t},\qquad v=\mu+w.
+\tag{E3.2}
+\]</span>
+<p>This <span class="math" data-index="60" data-tex="\(w\)">\(w\)</span> is <span class="math" data-index="61" data-tex="\(C^1\)">\(C^1\)</span> on the whole line, although its second derivative jumps at zero. Theorem 3.2 applies with <span class="math" data-index="62" data-tex="\(m=1\)">\(m=1\)</span>.</p>
+<p>The error can be written without an unknown distributional pairing:</p>
+<span class="math math-display" id="eq-E3.3" data-index="63" data-tex="\[
+R=-w*E=-(w&#x27;+w)
+=H(t)e^{-2t}(t^2-2t).
+\tag{E3.3}
+\]">\[
+R=-w*E=-(w&#x27;+w)
+=H(t)e^{-2t}(t^2-2t).
+\tag{E3.3}
+\]</span>
+<p>There is no delta term in <span class="math" data-index="64" data-tex="\(w&#x27;\)">\(w&#x27;\)</span>, because <span class="math" data-index="65" data-tex="\(w\)">\(w\)</span> is continuous and zero at zero. The resulting <span class="math" data-index="66" data-tex="\(R\)">\(R\)</span> is continuous.</p>
+<p>Choose <span class="math" data-index="67" data-tex="\(0\le\chi\le1\)">\(0\le\chi\le1\)</span>, smooth, equal to one for <span class="math" data-index="68" data-tex="\(|t|\le1/8\)">\(|t|\le1/8\)</span>, and supported in <span class="math" data-index="69" data-tex="\(|t|&lt;1/4\)">\(|t|&lt;1/4\)</span>. Such a cutoff is made from the flat function <span class="math" data-index="70" data-tex="\(e^{-1/s}\)">\(e^{-1/s}\)</span> for <span class="math" data-index="71" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, extended by zero for <span class="math" data-index="72" data-tex="\(s\le0\)">\(s\le0\)</span>. Put <span class="math" data-index="73" data-tex="\(r_0=\chi R\)">\(r_0=\chi R\)</span>, <span class="math" data-index="74" data-tex="\(R_1=R-r_0\)">\(R_1=R-r_0\)</span>. Since <span class="math" data-index="75" data-tex="\(|R(t)|\le2t\)">\(|R(t)|\le2t\)</span> for <span class="math" data-index="76" data-tex="\(0\le t\le1/4\)">\(0\le t\le1/4\)</span>,</p>
+<span class="math math-display" id="eq-E3.4" data-index="77" data-tex="\[
+\|r_0\|_1\le\int_0^{1/4}2t\,dt=1/16.
+\tag{E3.4}
+\]">\[
+\|r_0\|_1\le\int_0^{1/4}2t\,dt=1/16.
+\tag{E3.4}
+\]</span>
+<p>Thus <span class="math" data-index="78" data-tex="\(T=\delta_0+\sum_{j\ge1}r_0^{*j}\)">\(T=\delta_0+\sum_{j\ge1}r_0^{*j}\)</span> converges in <span class="math" data-index="79" data-tex="\(L^1\)">\(L^1\)</span> after its delta term. The support of <span class="math" data-index="80" data-tex="\(R_1\)">\(R_1\)</span> lies in <span class="math" data-index="81" data-tex="\([1/8,\infty)\)">\([1/8,\infty)\)</span>, so the same is true of <span class="math" data-index="82" data-tex="\(Q=T*R_1\)">\(Q=T*R_1\)</span>. Consequently</p>
+<span class="math math-display" id="eq-E3.5" data-index="83" data-tex="\[
+S_1=\sum_{j=0}^\infty Q^{*j},\qquad
+F=(\delta&#x27;_0+\delta_0)*T*S_1
+\tag{E3.5}
+\]">\[
+S_1=\sum_{j=0}^\infty Q^{*j},\qquad
+F=(\delta&#x27;_0+\delta_0)*T*S_1
+\tag{E3.5}
+\]</span>
+<p>is a complete construction of the inverse of <span class="math" data-index="84" data-tex="\(v\)">\(v\)</span>. On time intervals ending at <span class="math" data-index="85" data-tex="\(U\)">\(U\)</span>, only powers with <span class="math" data-index="86" data-tex="\(j/8\le U\)">\(j/8\le U\)</span> can contribute to <span class="math" data-index="87" data-tex="\(S_1\)">\(S_1\)</span>. The factorization (3.5) proves <span class="math" data-index="88" data-tex="\(v*F=\delta_0\)">\(v*F=\delta_0\)</span>, and every factor has nonnegative support.</p>
+<p>The construction works despite noncompactness of both <span class="math" data-index="89" data-tex="\(\mu\)">\(\mu\)</span> and <span class="math" data-index="90" data-tex="\(v\)">\(v\)</span>, and it uses only the one derivative dictated by the local order of <span class="math" data-index="91" data-tex="\(E\)">\(E\)</span>. Different admissible cutoffs produce the same <span class="math" data-index="92" data-tex="\(F\)">\(F\)</span>, by uniqueness in the cone algebra.</p>
+<h2 id="4-a-continuous-feedback-with-an-exponentially-growing-inverse">4. A continuous feedback with an exponentially growing inverse</h2>
+<p><strong>Example 4.</strong> Let</p>
+<span class="math math-display" id="eq-E4.1" data-index="93" data-tex="\[
+r(t)=4tH(t)e^{-t},\qquad v=\delta_0-r.
+\tag{E4.1}
+\]">\[
+r(t)=4tH(t)e^{-t},\qquad v=\delta_0-r.
+\tag{E4.1}
+\]</span>
+<p>Here <span class="math" data-index="94" data-tex="\(r\)">\(r\)</span> is continuous at zero. It does not vanish on any right neighborhood of zero, and every nonzero convolution power has support <span class="math" data-index="95" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>. The powers are not locally finite. Nevertheless their local convergence can be computed exactly:</p>
+<span class="math math-display" id="eq-E4.2" data-index="96" data-tex="\[
+r^{*j}(t)=
+H(t)e^{-t}\frac{4^j t^{2j-1}}{(2j-1)!}
+\quad(j\ge1),
+\tag{E4.2}
+\]">\[
+r^{*j}(t)=
+H(t)e^{-t}\frac{4^j t^{2j-1}}{(2j-1)!}
+\quad(j\ge1),
+\tag{E4.2}
+\]</span>
+<p>by the same elementary integral as (E2.6). On each bounded time interval the factorials make the sum uniformly convergent, and</p>
+<span class="math math-display" id="eq-E4.3" data-index="97" data-tex="\[
+F=\delta_0+H(t)e^{-t}\,2\sinh(2t)
+=\delta_0+H(t)(e^t-e^{-3t}).
+\tag{E4.3}
+\]">\[
+F=\delta_0+H(t)e^{-t}\,2\sinh(2t)
+=\delta_0+H(t)(e^t-e^{-3t}).
+\tag{E4.3}
+\]</span>
+<p>One can check the equation independently of the series. With <span class="math" data-index="98" data-tex="\(f(t)=H(t)(e^t-e^{-3t})\)">\(f(t)=H(t)(e^t-e^{-3t})\)</span>, ordinary integration at <span class="math" data-index="99" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> gives</p>
+<span class="math math-display" id="eq-E4.4" data-index="100" data-tex="\[
+\begin{aligned}
+(r*f)(t)
+&amp;=4e^t\int_0^t s e^{-2s}\,ds
+-4e^{-3t}\int_0^t s e^{2s}\,ds\\
+&amp;=e^t-4te^{-t}-e^{-3t}=f(t)-r(t).
+\end{aligned}
+\tag{E4.4}
+\]">\[
+\begin{aligned}
+(r*f)(t)
+&amp;=4e^t\int_0^t s e^{-2s}\,ds
+-4e^{-3t}\int_0^t s e^{2s}\,ds\\
+&amp;=e^t-4te^{-t}-e^{-3t}=f(t)-r(t).
+\end{aligned}
+\tag{E4.4}
+\]</span>
+<p>At negative time all terms vanish. They are continuous at zero, so this is also an identity of distributions. It proves</p>
+<span class="math math-display" id="eq-E4.5" data-index="101" data-tex="\[
+(\delta_0-r)*(\delta_0+f)=\delta_0.
+\tag{E4.5}
+\]">\[
+(\delta_0-r)*(\delta_0+f)=\delta_0.
+\tag{E4.5}
+\]</span>
+<p>The inverse is not tempered. Let <span class="math" data-index="102" data-tex="\(\psi\ge0\)">\(\psi\ge0\)</span> be a nonzero compact smooth function supported in <span class="math" data-index="103" data-tex="\((0,1)\)">\((0,1)\)</span>. Pairing <span class="math" data-index="104" data-tex="\(f\)">\(f\)</span> with <span class="math" data-index="105" data-tex="\(\psi(t-N)\)">\(\psi(t-N)\)</span> gives</p>
+<span class="math math-display" id="eq-E4.6" data-index="106" data-tex="\[
+e^N\int_0^1 e^s\psi(s)\,ds
+-e^{-3N}\int_0^1 e^{-3s}\psi(s)\,ds.
+\tag{E4.6}
+\]">\[
+e^N\int_0^1 e^s\psi(s)\,ds
+-e^{-3N}\int_0^1 e^{-3s}\psi(s)\,ds.
+\tag{E4.6}
+\]</span>
+<p>This grows exponentially in <span class="math" data-index="107" data-tex="\(N\)">\(N\)</span>. Every fixed finite collection of Schwartz seminorms of those translates grows at most polynomially, by the product rule and the bound <span class="math" data-index="108" data-tex="\(|t|\le N+1\)">\(|t|\le N+1\)</span> on their support. A tempered distribution has a bound by some such finite collection, contradicting (E4.6).</p>
+<p>The inverse is therefore a well-defined causal distribution with no ordinary tempered Fourier transform. The whole construction uses compact tests and proper-support convolution.</p>
+<figure><img class="course-figure" width="1536" height="992" src="reproduce/L177/figures/continuous-feedback-and-local-convergence.png" alt="Locally convergent continuous feedback powers compared with their exact inverse density" /><figcaption class="native"><a href="reproduce/L177/figures/continuous-feedback-and-local-convergence.png">Open full-size PNG</a> · <a href="reproduce/L177/figures/continuous-feedback-and-local-convergence.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 2. The solid curve is the regular part <span class="math" data-index="109" data-tex="\(e^t-e^{-3t}\)">\(e^t-e^{-3t}\)</span> of (E4.3); the delta mass at zero is specified in the formula and is not drawn as a function value. The other curves are the first one, two and three terms of (E4.2), on <span class="math" data-index="110" data-tex="\(0\le t\le3/2\)">\(0\le t\le3/2\)</span>. Every power begins at time zero, so convergence here is factorial convergence on compact intervals, rather than the finite level cutoff of Figure 1. The shaded difference is the positive tail after three terms. Equations (E4.2)–(E4.5) supply the proof.</em></p>
+<h2 id="5-exercises-and-full-solutions">5. Exercises and full solutions</h2>
+<p>Each exercise is worth 10 points, for 100 points in total.</p>
+<h3 id="exercise-1-a-sharp-clock-in-a-wedge">Exercise 1. A sharp clock in a wedge</h3>
+<p>For <span class="math" data-index="111" data-tex="\(C=\{(t,x):t\ge|x|\}\)">\(C=\{(t,x):t\ge|x|\}\)</span>, show that <span class="math" data-index="112" data-tex="\(\tau=(1,0)\)">\(\tau=(1,0)\)</span> and <span class="math" data-index="113" data-tex="\(\kappa=1/\sqrt2\)">\(\kappa=1/\sqrt2\)</span> work in (1.2), and that this value of <span class="math" data-index="114" data-tex="\(\kappa\)">\(\kappa\)</span> cannot be increased. Bound all coordinates in a contributing <span class="math" data-index="115" data-tex="\(r\)">\(r\)</span>-fold sum with total clock at most <span class="math" data-index="116" data-tex="\(U\)">\(U\)</span>.</p>
+<p><strong>Solution.</strong> For <span class="math" data-index="117" data-tex="\((t,x)\in C\)">\((t,x)\in C\)</span>, <span class="math" data-index="118" data-tex="\(t\ge0\)">\(t\ge0\)</span> and <span class="math" data-index="119" data-tex="\(t^2+x^2\le2t^2\)">\(t^2+x^2\le2t^2\)</span>. Therefore <span class="math" data-index="120" data-tex="\(t\ge|(t,x)|/\sqrt2\)">\(t\ge|(t,x)|/\sqrt2\)</span>. At the nonzero boundary point <span class="math" data-index="121" data-tex="\((1,1)\)">\((1,1)\)</span>, equality holds, proving sharpness for this unit clock. For <span class="math" data-index="122" data-tex="\(z_j=(t_j,x_j)\in C\)">\(z_j=(t_j,x_j)\in C\)</span> with <span class="math" data-index="123" data-tex="\(\sum_jt_j\le U\)">\(\sum_jt_j\le U\)</span>, one has <span class="math" data-index="124" data-tex="\(\sum_j|z_j|\le\sqrt2U\)">\(\sum_j|z_j|\le\sqrt2U\)</span>, so each <span class="math" data-index="125" data-tex="\(|z_j|\le\sqrt2U\)">\(|z_j|\le\sqrt2U\)</span>. If <span class="math" data-index="126" data-tex="\(U&lt;0\)">\(U&lt;0\)</span>, there are no such coordinates. The bound does not depend on the number of factors. Award 4 points for the inequality, 2 for sharpness and 4 for the sum estimate.</p>
+<h3 id="exercise-2-a-curved-set-still-has-a-translated-cone-bound">Exercise 2. A curved set still has a translated cone bound</h3>
+<p>Let <span class="math" data-index="127" data-tex="\(K=\{(x,y):y\le-x^2\}\)">\(K=\{(x,y):y\le-x^2\}\)</span> and <span class="math" data-index="128" data-tex="\(\theta=(0,1)\)">\(\theta=(0,1)\)</span>. Compute its support function where finite, describe every high slice, and verify (4.2) with <span class="math" data-index="129" data-tex="\(x_0=(0,1)\)">\(x_0=(0,1)\)</span>, <span class="math" data-index="130" data-tex="\(A=\sqrt2\)">\(A=\sqrt2\)</span>.</p>
+<p><strong>Solution.</strong> If <span class="math" data-index="131" data-tex="\(\eta_y&gt;0\)">\(\eta_y&gt;0\)</span>, maximizing first in <span class="math" data-index="132" data-tex="\(y\)">\(y\)</span> gives</p>
+<span class="math math-display" data-index="133" data-tex="\[
+H_K(\eta_x,\eta_y)
+=\sup_x(\eta_xx-\eta_yx^2)=\frac{\eta_x^2}{4\eta_y}.
+\]">\[
+H_K(\eta_x,\eta_y)
+=\sup_x(\eta_xx-\eta_yx^2)=\frac{\eta_x^2}{4\eta_y}.
+\]</span>
+<p>The maximum occurs at <span class="math" data-index="134" data-tex="\(x=\eta_x/(2\eta_y)\)">\(x=\eta_x/(2\eta_y)\)</span>. At <span class="math" data-index="135" data-tex="\(\eta=0\)">\(\eta=0\)</span> the support value is zero. If <span class="math" data-index="136" data-tex="\(\eta_y&lt;0\)">\(\eta_y&lt;0\)</span>, letting <span class="math" data-index="137" data-tex="\(y\to-\infty\)">\(y\to-\infty\)</span> gives <span class="math" data-index="138" data-tex="\(+\infty\)">\(+\infty\)</span>; if <span class="math" data-index="139" data-tex="\(\eta_y=0\)">\(\eta_y=0\)</span>, <span class="math" data-index="140" data-tex="\(\eta_x\ne0\)">\(\eta_x\ne0\)</span>, letting <span class="math" data-index="141" data-tex="\(x\)">\(x\)</span> tend with its sign gives <span class="math" data-index="142" data-tex="\(+\infty\)">\(+\infty\)</span>. For <span class="math" data-index="143" data-tex="\(c\le0\)">\(c\le0\)</span>, the high slice is <span class="math" data-index="144" data-tex="\(c\le y\le-x^2\)">\(c\le y\le-x^2\)</span>, so <span class="math" data-index="145" data-tex="\(|x|\le\sqrt{-c}\)">\(|x|\le\sqrt{-c}\)</span>; it is closed and bounded. For <span class="math" data-index="146" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> it is empty. Finally <span class="math" data-index="147" data-tex="\(x^2\le-y\)">\(x^2\le-y\)</span> and <span class="math" data-index="148" data-tex="\(1-y\ge1\)">\(1-y\ge1\)</span>, whence</p>
+<span class="math math-display" data-index="149" data-tex="\[
+x^2+(1-y)^2\le (1-y)+(1-y)^2\le2(1-y)^2.
+\]">\[
+x^2+(1-y)^2\le (1-y)+(1-y)^2\le2(1-y)^2.
+\]</span>
+<p>Taking square roots gives (4.2). Award 4 points for the support function, 3 for the slices and 3 for the cone inequality.</p>
+<h3 id="exercise-3-the-exact-finite-contribution-budget">Exercise 3. The exact finite contribution budget</h3>
+<p>Suppose <span class="math" data-index="150" data-tex="\(\operatorname{supp}R\subset C\cap\{\tau\cdot x\ge b\}\)">\(\operatorname{supp}R\subset C\cap\{\tau\cdot x\ge b\}\)</span>, <span class="math" data-index="151" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>. Determine how many powers can pair nontrivially with a test supported in <span class="math" data-index="152" data-tex="\(L\)">\(L\)</span>, where <span class="math" data-index="153" data-tex="\(M=\max_L\tau\cdot x\)">\(M=\max_L\tau\cdot x\)</span>, and justify the telescoping inverse on that test.</p>
+<p><strong>Solution.</strong> For <span class="math" data-index="154" data-tex="\(j\ge1\)">\(j\ge1\)</span>, support inclusion gives clock at least <span class="math" data-index="155" data-tex="\(jb\)">\(jb\)</span>. Thus <span class="math" data-index="156" data-tex="\(j&gt;M/b\)">\(j&gt;M/b\)</span> contributes zero. If <span class="math" data-index="157" data-tex="\(M\ge0\)">\(M\ge0\)</span>, only <span class="math" data-index="158" data-tex="\(j=0,\ldots,\lfloor M/b\rfloor\)">\(j=0,\ldots,\lfloor M/b\rfloor\)</span> need be retained; some of these can also vanish. If <span class="math" data-index="159" data-tex="\(M&lt;0\)">\(M&lt;0\)</span>, all terms vanish, including <span class="math" data-index="160" data-tex="\(\delta_0\)">\(\delta_0\)</span>. The equality case <span class="math" data-index="161" data-tex="\(jb=M\)">\(jb=M\)</span> cannot be discarded without further information about the test and support, so the strict inequality is necessary for this support argument. For finite partial sums, (2.3) is an exact identity. Choose <span class="math" data-index="162" data-tex="\(N\)">\(N\)</span> with <span class="math" data-index="163" data-tex="\((N+1)b&gt;M\)">\((N+1)b&gt;M\)</span>; its remainder vanishes on the test. Fixed proper-support continuity transfers the partial-sum identity to <span class="math" data-index="164" data-tex="\(S\)">\(S\)</span>. Award 5 points for the budget and endpoint, and 5 for the limit justification.</p>
+<h3 id="exercise-4-one-line-of-the-delayed-inverse">Exercise 4. One line of the delayed inverse</h3>
+<p>In Example 2, find the coefficient density of the atom at <span class="math" data-index="165" data-tex="\(\chi=0\)">\(\chi=0\)</span>, for <span class="math" data-index="166" data-tex="\(2\le\sigma&lt;3\)">\(2\le\sigma&lt;3\)</span>, and evaluate it at <span class="math" data-index="167" data-tex="\(\sigma=12/5\)">\(\sigma=12/5\)</span>. Here <span class="math" data-index="168" data-tex="\((\sigma,\chi)=(t+3/5,x-3/10)\)">\((\sigma,\chi)=(t+3/5,x-3/10)\)</span>.</p>
+<p><strong>Solution.</strong> Only <span class="math" data-index="169" data-tex="\(j=0,1,2\)">\(j=0,1,2\)</span> can contribute before time three. A zero transverse coordinate requires <span class="math" data-index="170" data-tex="\(2k-j=0\)">\(2k-j=0\)</span>, which occurs at <span class="math" data-index="171" data-tex="\(j=0,k=0\)">\(j=0,k=0\)</span> and <span class="math" data-index="172" data-tex="\(j=2,k=1\)">\(j=2,k=1\)</span>. The density is</p>
+<span class="math math-display" data-index="173" data-tex="\[
+g_1(\sigma)+2bc\,g_3(\sigma-2)
+=e^{-\sigma}+\frac3{25}g_3(\sigma-2).
+\]">\[
+g_1(\sigma)+2bc\,g_3(\sigma-2)
+=e^{-\sigma}+\frac3{25}g_3(\sigma-2).
+\]</span>
+<p>At <span class="math" data-index="174" data-tex="\(\sigma=12/5\)">\(\sigma=12/5\)</span>, <span class="math" data-index="175" data-tex="\(g_3(2/5)=2e^{-2/5}/25\)">\(g_3(2/5)=2e^{-2/5}/25\)</span>, so the value is</p>
+<span class="math math-display" data-index="176" data-tex="\[
+e^{-12/5}+\frac6{625}e^{-2/5}.
+\]">\[
+e^{-12/5}+\frac6{625}e^{-2/5}.
+\]</span>
+<p>This is the scalar density multiplying the point mass in <span class="math" data-index="177" data-tex="\(\chi\)">\(\chi\)</span>, not a two-dimensional function value of <span class="math" data-index="178" data-tex="\(F\)">\(F\)</span>. Award 4 points for the contributing indices, 4 for the value and 2 for its interpretation.</p>
+<h3 id="exercise-5-the-boundary-term-in-a-causal-derivative">Exercise 5. The boundary term in a causal derivative</h3>
+<p>Prove (E2.7) by testing against a compact smooth function. Explain why the case <span class="math" data-index="179" data-tex="\(g_1\)">\(g_1\)</span> differs from the others.</p>
+<p><strong>Solution.</strong> For a test <span class="math" data-index="180" data-tex="\(\phi\)">\(\phi\)</span>,</p>
+<span class="math math-display" data-index="181" data-tex="\[
+\langle(1+\partial_t)g_1,\phi\rangle
+=\int_0^\infty e^{-t}(\phi(t)-\phi&#x27;(t))\,dt=\phi(0),
+\]">\[
+\langle(1+\partial_t)g_1,\phi\rangle
+=\int_0^\infty e^{-t}(\phi(t)-\phi&#x27;(t))\,dt=\phi(0),
+\]</span>
+<p>by integrating the derivative of <span class="math" data-index="182" data-tex="\(e^{-t}\phi(t)\)">\(e^{-t}\phi(t)\)</span>. For <span class="math" data-index="183" data-tex="\(\ell\ge1\)">\(\ell\ge1\)</span>, <span class="math" data-index="184" data-tex="\(g_{\ell+1}(0+)=0\)">\(g_{\ell+1}(0+)=0\)</span>. Integration by parts has no endpoint term, and ordinary differentiation on <span class="math" data-index="185" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> yields</p>
+<span class="math math-display" data-index="186" data-tex="\[
+g&#x27;_{\ell+1}=e^{-t}\frac{t^{\ell-1}}{(\ell-1)!}
+-e^{-t}\frac{t^\ell}{\ell!}=g_\ell-g_{\ell+1}.
+\]">\[
+g&#x27;_{\ell+1}=e^{-t}\frac{t^{\ell-1}}{(\ell-1)!}
+-e^{-t}\frac{t^\ell}{\ell!}=g_\ell-g_{\ell+1}.
+\]</span>
+<p>All functions vanish for negative time. Thus the displayed distributional formulas follow. Award 5 points for the delta term and 5 for the higher powers.</p>
+<h3 id="exercise-6-a-finite-regularity-perturbation-with-one-extra-derivative">Exercise 6. A finite-regularity perturbation with one extra derivative</h3>
+<p>Keep <span class="math" data-index="187" data-tex="\(\mu,E\)">\(\mu,E\)</span> of Example 3, but take <span class="math" data-index="188" data-tex="\(w(t)=t_+^3e^{-2t}\)">\(w(t)=t_+^3e^{-2t}\)</span>. Compute <span class="math" data-index="189" data-tex="\(R=-w*E\)">\(R=-w*E\)</span>, determine the regularity of <span class="math" data-index="190" data-tex="\(w\)">\(w\)</span> at zero, and give a small <span class="math" data-index="191" data-tex="\(L^1\)">\(L^1\)</span> bound for the cutoff error on <span class="math" data-index="192" data-tex="\(0\le t\le1/4\)">\(0\le t\le1/4\)</span>.</p>
+<p><strong>Solution.</strong> The function <span class="math" data-index="193" data-tex="\(w\)">\(w\)</span> is <span class="math" data-index="194" data-tex="\(C^2\)">\(C^2\)</span>, while its third derivative jumps from zero to six at zero. Since <span class="math" data-index="195" data-tex="\(w\)">\(w\)</span> is continuous and zero at zero, differentiation introduces no delta term, and</p>
+<span class="math math-display" data-index="196" data-tex="\[
+R=-(w&#x27;+w)=H(t)e^{-2t}(t^3-3t^2).
+\]">\[
+R=-(w&#x27;+w)=H(t)e^{-2t}(t^3-3t^2).
+\]</span>
+<p>It is continuous near zero. For <span class="math" data-index="197" data-tex="\(0\le t\le1/4\)">\(0\le t\le1/4\)</span>, <span class="math" data-index="198" data-tex="\(|R(t)|\le3t^2\)">\(|R(t)|\le3t^2\)</span>. Any cutoff <span class="math" data-index="199" data-tex="\(0\le\chi\le1\)">\(0\le\chi\le1\)</span> supported in that positive interval after multiplication by <span class="math" data-index="200" data-tex="\(R\)">\(R\)</span> gives</p>
+<span class="math math-display" data-index="201" data-tex="\[
+\|\chi R\|_1\le\int_0^{1/4}3t^2\,dt=1/64&lt;1.
+\]">\[
+\|\chi R\|_1\le\int_0^{1/4}3t^2\,dt=1/64&lt;1.
+\]</span>
+<p>Choose the cutoff equal to one near zero. The remaining error has a positive delay. The order-one threshold in Theorem 3.2 is already met, and Theorem 3.1 then gives the inverse. Award 4 points for the derivative calculation, 3 for regularity and 3 for the quantitative bound.</p>
+<h3 id="exercise-7-a-uniform-bound-on-the-continuous-series-tail">Exercise 7. A uniform bound on the continuous-series tail</h3>
+<p>Let <span class="math" data-index="202" data-tex="\(P_J=\sum_{j=1}^J r^{*j}\)">\(P_J=\sum_{j=1}^J r^{*j}\)</span> in Example 4. Show, for <span class="math" data-index="203" data-tex="\(0\le t\le T\)">\(0\le t\le T\)</span> and <span class="math" data-index="204" data-tex="\(J\ge0\)">\(J\ge0\)</span>, that</p>
+<span class="math math-display" id="eq-E5.1" data-index="205" data-tex="\[
+0\le f(t)-P_J(t)
+\le 2e^{2T}\frac{(2T)^{2J+1}}{(2J+1)!}.
+\tag{E5.1}
+\]">\[
+0\le f(t)-P_J(t)
+\le 2e^{2T}\frac{(2T)^{2J+1}}{(2J+1)!}.
+\tag{E5.1}
+\]</span>
+<p><strong>Solution.</strong> Formula (E4.2) gives</p>
+<span class="math math-display" data-index="206" data-tex="\[
+f-P_J
+=2e^{-t}\sum_{j=J+1}^\infty
+\frac{(2t)^{2j-1}}{(2j-1)!}.
+\]">\[
+f-P_J
+=2e^{-t}\sum_{j=J+1}^\infty
+\frac{(2t)^{2j-1}}{(2j-1)!}.
+\]</span>
+<p>Its terms are nonnegative. Enlarge the odd-power sum to all powers <span class="math" data-index="207" data-tex="\(k\ge m=2J+1\)">\(k\ge m=2J+1\)</span>, and use <span class="math" data-index="208" data-tex="\((m+\ell)!\ge m!\ell!\)">\((m+\ell)!\ge m!\ell!\)</span>. The resulting upper bound is</p>
+<span class="math math-display" data-index="209" data-tex="\[
+2\frac{(2T)^m}{m!}\sum_{\ell=0}^\infty
+\frac{(2T)^\ell}{\ell!}
+=2e^{2T}\frac{(2T)^m}{m!}.
+\]">\[
+2\frac{(2T)^m}{m!}\sum_{\ell=0}^\infty
+\frac{(2T)^\ell}{\ell!}
+=2e^{2T}\frac{(2T)^m}{m!}.
+\]</span>
+<p>We used <span class="math" data-index="210" data-tex="\(e^{-t}\le1\)">\(e^{-t}\le1\)</span>. For <span class="math" data-index="211" data-tex="\(T=0\)">\(T=0\)</span> both sides are zero. This proves uniform convergence on every fixed compact positive interval. Award 4 points for the exact tail and 6 for the factorial estimate.</p>
+<h3 id="exercise-8-why-exponential-growth-defeats-temperedness">Exercise 8. Why exponential growth defeats temperedness</h3>
+<p>Complete the translated-test contradiction after (E4.6), using the standard finite-seminorm bound for a tempered distribution.</p>
+<p><strong>Solution.</strong> Continuity on Schwartz space gives some integers <span class="math" data-index="212" data-tex="\(M,K\)">\(M,K\)</span> and a constant <span class="math" data-index="213" data-tex="\(B\)">\(B\)</span> such that</p>
+<span class="math math-display" data-index="214" data-tex="\[
+|\langle T,\phi\rangle|
+\le B\max_{j\le K}\sup_t(1+|t|)^M|\phi^{(j)}(t)|.
+\]">\[
+|\langle T,\phi\rangle|
+\le B\max_{j\le K}\sup_t(1+|t|)^M|\phi^{(j)}(t)|.
+\]</span>
+<p>For <span class="math" data-index="215" data-tex="\(\phi_N(t)=\psi(t-N)\)">\(\phi_N(t)=\psi(t-N)\)</span>, all derivatives have fixed sup norms and support in <span class="math" data-index="216" data-tex="\((N,N+1)\)">\((N,N+1)\)</span>. The right side is at most a fixed constant times <span class="math" data-index="217" data-tex="\((N+2)^M\)">\((N+2)^M\)</span>. The first integral in (E4.6) is strictly positive, and the second decays exponentially. Hence the left side grows like a positive constant times <span class="math" data-index="218" data-tex="\(e^N\)">\(e^N\)</span>, contradicting that bound. For large <span class="math" data-index="219" data-tex="\(N\)">\(N\)</span>, the delta part of <span class="math" data-index="220" data-tex="\(F\)">\(F\)</span> pairs to zero with <span class="math" data-index="221" data-tex="\(\phi_N\)">\(\phi_N\)</span>, so <span class="math" data-index="222" data-tex="\(F\)">\(F\)</span> is also not tempered. Award 5 points for the seminorm estimate and 5 for the contradiction.</p>
+<h3 id="exercise-9-a-dimension-matters-in-a-reciprocal-diagnostic">Exercise 9. A dimension matters in a reciprocal diagnostic</h3>
+<p>Explain why the all-direction derivative counterexample in Example 5.3 of the preceding chapter uses one dimension. For <span class="math" data-index="223" data-tex="\(\mu=\partial_t\delta_0\)">\(\mu=\partial_t\delta_0\)</span> on <span class="math" data-index="224" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, test the zero-free premise on <span class="math" data-index="225" data-tex="\(\Gamma=\mathbb R^2\)">\(\Gamma=\mathbb R^2\)</span>.</p>
+<p><strong>Solution.</strong> The transform is <span class="math" data-index="226" data-tex="\(i\zeta_t\)">\(i\zeta_t\)</span>. At <span class="math" data-index="227" data-tex="\(\zeta=(0,iR)\)">\(\zeta=(0,iR)\)</span>, <span class="math" data-index="228" data-tex="\(R\ge2\)">\(R\ge2\)</span>, it is zero, while the imaginary norm is <span class="math" data-index="229" data-tex="\(R\)">\(R\)</span> and the total complex norm is <span class="math" data-index="230" data-tex="\(R\)">\(R\)</span>. For any fixed logarithmic barrier constant <span class="math" data-index="231" data-tex="\(D\)">\(D\)</span>, arbitrarily large <span class="math" data-index="232" data-tex="\(R\)">\(R\)</span> satisfy <span class="math" data-index="233" data-tex="\(R&gt;D\log(R+2)\)">\(R&gt;D\log(R+2)\)</span>. Thus the all-direction zero-free premise fails in two dimensions. In one dimension the only zero of <span class="math" data-index="234" data-tex="\(i\zeta\)">\(i\zeta\)</span> is zero itself, which lies below every positive logarithmic barrier; the reciprocal premise can hold there. Award 5 points for the exact zero family and 5 for the quantifier comparison.</p>
+<h3 id="exercise-10-an-unrestricted-vertex-change-can-destroy-the-inverse">Exercise 10. An unrestricted vertex change can destroy the inverse</h3>
+<p>Take <span class="math" data-index="235" data-tex="\(\mu=\delta_0\)">\(\mu=\delta_0\)</span>, <span class="math" data-index="236" data-tex="\(E=\delta_0\)">\(E=\delta_0\)</span>, <span class="math" data-index="237" data-tex="\(a=0\)">\(a=0\)</span>, and any pointed cone <span class="math" data-index="238" data-tex="\(C\)">\(C\)</span>. Set <span class="math" data-index="239" data-tex="\(v=0\)">\(v=0\)</span>. Identify which perturbation hypotheses fail and whether <span class="math" data-index="240" data-tex="\(v\)">\(v\)</span> can have an inverse.</p>
+<p><strong>Solution.</strong> All support inclusions are satisfied, since the empty support of <span class="math" data-index="241" data-tex="\(v\)">\(v\)</span> lies in <span class="math" data-index="242" data-tex="\(C\)">\(C\)</span>. But <span class="math" data-index="243" data-tex="\(v-\mu=-\delta_0\)">\(v-\mu=-\delta_0\)</span> neither vanishes near zero nor is a function near zero, so it satisfies neither Theorem 2.2 nor Theorem 3.2. The error <span class="math" data-index="244" data-tex="\(R=(\mu-v)*E\)">\(R=(\mu-v)*E\)</span> is <span class="math" data-index="245" data-tex="\(\delta_0\)">\(\delta_0\)</span>; its clock delay is zero, and every power is <span class="math" data-index="246" data-tex="\(\delta_0\)">\(\delta_0\)</span>. Finally <span class="math" data-index="247" data-tex="\(v*F=0\)">\(v*F=0\)</span> for every allowed <span class="math" data-index="248" data-tex="\(F\)">\(F\)</span>, so it cannot equal <span class="math" data-index="249" data-tex="\(\delta_0\)">\(\delta_0\)</span>. The support condition alone cannot preserve an inverse under arbitrary changes at the vertex. Award 4 points for the failed hypotheses, 3 for the error and 3 for the impossibility.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Richard B. Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004. <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Open course materials</a>.</li>
+<li>Gerd Grubb, <em>Fourier transformation of distributions</em>. <a href="https://web.math.ku.dk/~grubb/dist5.pdf">Author-hosted chapter</a>.</li>
+<li><a href="prerequisites/convolution-as-addition-of-supports.html">Convolution as addition of supports</a>, especially its proper-support convolution, finite-regularity and cone-algebra statements.</li>
+<li><a href="AN02-L115.html">Support cones force reciprocal bounds</a>, Theorem 1.1.</li>
+<li><a href="AN02-L117.html">Logarithmic Fourier graphs construct a cone-supported inverse</a>, Theorem 1.1, with its stated cone convention.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators</em>, volumes I and II, Springer. Background reference.</li>
+</ul>
+<h2 id="complete-proof">Complete proof</h2>
+<p>A causal inverse can grow rapidly and still act on every compactly supported test. Its support, rather than a growth estimate, makes convolution possible. We prove that changing a kernel away from the first point of its support preserves such an inverse. A second argument allows a change that is only sufficiently differentiable near that point. We then connect the support geometry to directional hyperbolicity and to the existing Fourier criteria.</p>
+<p>Basic references are Richard Melrose's <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Differential Analysis</a>, Gerd Grubb's <a href="https://web.math.ku.dk/~grubb/dist5.pdf">Fourier transformation of distributions</a>, and Lars Hörmander's <em>The Analysis of Linear Partial Differential Operators</em>, volumes I and II. The proofs used in this chapter are given here or in the following preceding lessons:</p>
+<ul>
+<li><a href="prerequisites/convolution-as-addition-of-supports.html">Convolution as addition of supports</a>, Theorems 1.1, 2.1, 3.1 and 3.2, and Proposition 3.3: proper-support convolution, finite-regularity smoothing, associativity, continuity with fixed supports, and the algebra of distributions in a cone containing no line.</li>
+<li><a href="AN02-L115.html">Support cones force reciprocal bounds</a>, Theorem 1.1: the exact translated support cone and its reciprocal estimate.</li>
+<li><a href="AN02-L117.html">Logarithmic Fourier graphs construct a cone-supported inverse</a>, Theorem 1.1: one common inverse from the stated estimates on a nonempty open convex cone that excludes zero.</li>
+</ul>
+<p>All distributions and pairings are complex-linear. We work in real dimension <span class="math" data-index="250" data-tex="\(n\ge1\)">\(n\ge1\)</span>. A closed convex cone <span class="math" data-index="251" data-tex="\(C\)">\(C\)</span> is nonempty, closed, convex, and invariant under multiplication by nonnegative scalars. In this chapter it is <strong>pointed</strong> when</p>
+<span class="math math-display" id="eq-1.1" data-index="252" data-tex="\[
+C\cap(-C)=\{0\}.
+\tag{1.1}
+\]">\[
+C\cap(-C)=\{0\}.
+\tag{1.1}
+\]</span>
+<p>The cone <span class="math" data-index="253" data-tex="\(\{0\}\)">\(\{0\}\)</span> is allowed. We impose no growth or temperedness hypothesis on a cone-supported distribution.</p>
+<h2 id="1-a-positive-clock-on-a-pointed-cone">1. A positive clock on a pointed cone</h2>
+<p><strong>Lemma 1.1 (a quantitative clock).</strong> If <span class="math" data-index="254" data-tex="\(C\ne\{0\}\)">\(C\ne\{0\}\)</span> satisfies (1.1), there are a unit vector <span class="math" data-index="255" data-tex="\(\tau\)">\(\tau\)</span> and <span class="math" data-index="256" data-tex="\(\kappa&gt;0\)">\(\kappa&gt;0\)</span> such that</p>
+<span class="math math-display" id="eq-1.2" data-index="257" data-tex="\[
+\tau\cdot x\ge\kappa|x|\quad(x\in C).
+\tag{1.2}
+\]">\[
+\tau\cdot x\ge\kappa|x|\quad(x\in C).
+\tag{1.2}
+\]</span>
+<p>For <span class="math" data-index="258" data-tex="\(C=\{0\}\)">\(C=\{0\}\)</span>, any unit vector and <span class="math" data-index="259" data-tex="\(\kappa=1\)">\(\kappa=1\)</span> give the same inequality.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-index="260" data-tex="\(A=C\cap\{|x|=1\}\)">\(A=C\cap\{|x|=1\}\)</span>. This set is compact. Its convex hull is compact: every finite convex combination can be reduced to at most <span class="math" data-index="261" data-tex="\(n+1\)">\(n+1\)</span> points. Indeed, if there are more points, their augmented vectors <span class="math" data-index="262" data-tex="\((x_j,1)\)">\((x_j,1)\)</span> are linearly dependent. Change the weights along a nonzero dependence, choosing its sign and increasing its magnitude until one positive weight becomes zero. The sum of the weights and the represented point stay fixed. Repeating gives at most <span class="math" data-index="263" data-tex="\(n+1\)">\(n+1\)</span> points. The convex hull is therefore the continuous image of the compact product of <span class="math" data-index="264" data-tex="\(A^{n+1}\)">\(A^{n+1}\)</span> and the closed simplex of weights.</p>
+<p>Zero is not in this convex hull. If <span class="math" data-index="265" data-tex="\(\sum_j\alpha_jx_j=0\)">\(\sum_j\alpha_jx_j=0\)</span> with positive weights and unit vectors <span class="math" data-index="266" data-tex="\(x_j\in C\)">\(x_j\in C\)</span>, then for any index <span class="math" data-index="267" data-tex="\(j\)">\(j\)</span> with positive weight,</p>
+<span class="math math-display" data-index="268" data-tex="\[
+-x_j=\sum_{\ell\ne j}(\alpha_\ell/\alpha_j)x_\ell\in C.
+\]">\[
+-x_j=\sum_{\ell\ne j}(\alpha_\ell/\alpha_j)x_\ell\in C.
+\]</span>
+<p>This contradicts (1.1). Choose a point <span class="math" data-index="269" data-tex="\(q\)">\(q\)</span> of least norm in the compact convex hull. Its norm is positive. For every <span class="math" data-index="270" data-tex="\(x\)">\(x\)</span> in that hull, differentiating <span class="math" data-index="271" data-tex="\(|q+s(x-q)|^2\)">\(|q+s(x-q)|^2\)</span> at <span class="math" data-index="272" data-tex="\(s=0+\)">\(s=0+\)</span> gives</p>
+<span class="math math-display" data-index="273" data-tex="\[
+q\cdot x\ge |q|^2.
+\]">\[
+q\cdot x\ge |q|^2.
+\]</span>
+<p>Set <span class="math" data-index="274" data-tex="\(\tau=q/|q|\)">\(\tau=q/|q|\)</span> and <span class="math" data-index="275" data-tex="\(\kappa=|q|\)">\(\kappa=|q|\)</span>, and apply this inequality to <span class="math" data-index="276" data-tex="\(x/|x|\)">\(x/|x|\)</span> for every nonzero <span class="math" data-index="277" data-tex="\(x\in C\)">\(x\in C\)</span>. The zero case is immediate. <span class="math" data-index="278" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The clock makes the locality of addition explicit. If <span class="math" data-index="279" data-tex="\(u_j\in C\)">\(u_j\in C\)</span>, <span class="math" data-index="280" data-tex="\(1\le j\le r\)">\(1\le j\le r\)</span>, and <span class="math" data-index="281" data-tex="\(z=b+\sum_j u_j\)">\(z=b+\sum_j u_j\)</span>, then</p>
+<span class="math math-display" id="eq-1.3" data-index="282" data-tex="\[
+\kappa\sum_j|u_j|
+\le\sum_j\tau\cdot u_j=\tau\cdot(z-b).
+\tag{1.3}
+\]">\[
+\kappa\sum_j|u_j|
+\le\sum_j\tau\cdot u_j=\tau\cdot(z-b).
+\tag{1.3}
+\]</span>
+<p>For outputs in a fixed compact set, all the contributing coordinates are bounded. They form a closed set and hence a compact set. This proves the properness needed for any fixed number of factors supported in translates of <span class="math" data-index="283" data-tex="\(C\)">\(C\)</span>. The convolution, commutativity, support inclusion, associativity and fixed-support continuity now follow from the exact preceding foundation theorems. We will use those theorems at these proper support sets, including for noncompact factors.</p>
+<p>Write</p>
+<span class="math math-display" id="eq-1.4" data-index="284" data-tex="\[
+\mathcal A_C=\{T\in\mathcal D&#x27;(\mathbb R^n):
+\operatorname{supp}T\subset C\}.
+\tag{1.4}
+\]">\[
+\mathcal A_C=\{T\in\mathcal D&#x27;(\mathbb R^n):
+\operatorname{supp}T\subset C\}.
+\tag{1.4}
+\]</span>
+<p>This is the commutative algebra of Proposition 3.3 of the preceding convolution lesson. Its identity is <span class="math" data-index="285" data-tex="\(\delta_0\)">\(\delta_0\)</span>.</p>
+<p>If <span class="math" data-index="286" data-tex="\(T\in\mathcal A_C\)">\(T\in\mathcal A_C\)</span> vanishes near zero, its closed support misses some ball of radius <span class="math" data-index="287" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>. Thus (1.2) gives</p>
+<span class="math math-display" id="eq-1.5" data-index="288" data-tex="\[
+\operatorname{supp}T\subset\{x\in C:\tau\cdot x\ge b\},
+\qquad b=\kappa r&gt;0.
+\tag{1.5}
+\]">\[
+\operatorname{supp}T\subset\{x\in C:\tau\cdot x\ge b\},
+\qquad b=\kappa r&gt;0.
+\tag{1.5}
+\]</span>
+<p>If its support is empty, <span class="math" data-index="289" data-tex="\(T=0\)">\(T=0\)</span>, and any <span class="math" data-index="290" data-tex="\(b&gt;0\)">\(b&gt;0\)</span> works.</p>
+<h2 id="2-an-error-with-a-delay-has-a-locally-finite-inverse">2. An error with a delay has a locally finite inverse</h2>
+<p><strong>Theorem 2.1 (delayed Neumann series).</strong> Let <span class="math" data-index="291" data-tex="\(R\in\mathcal A_C\)">\(R\in\mathcal A_C\)</span> vanish on a neighborhood of zero. Put <span class="math" data-index="292" data-tex="\(R^{*0}=\delta_0\)">\(R^{*0}=\delta_0\)</span>. Then</p>
+<span class="math math-display" id="eq-2.1" data-index="293" data-tex="\[
+S=\sum_{j=0}^{\infty}R^{*j}
+\quad\text{is a distribution in }\mathcal A_C,
+\qquad
+(\delta_0-R)*S=\delta_0.
+\tag{2.1}
+\]">\[
+S=\sum_{j=0}^{\infty}R^{*j}
+\quad\text{is a distribution in }\mathcal A_C,
+\qquad
+(\delta_0-R)*S=\delta_0.
+\tag{2.1}
+\]</span>
+<p>The series is locally finite on every compact set. It defines the unique inverse of <span class="math" data-index="294" data-tex="\(\delta_0-R\)">\(\delta_0-R\)</span> in <span class="math" data-index="295" data-tex="\(\mathcal A_C\)">\(\mathcal A_C\)</span>.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-index="296" data-tex="\(b\)">\(b\)</span> in (1.5). The support inclusion for proper convolution gives</p>
+<span class="math math-display" id="eq-2.2" data-index="297" data-tex="\[
+\operatorname{supp}R^{*j}\subset
+\{x\in C:\tau\cdot x\ge jb\}\quad(j\ge1).
+\tag{2.2}
+\]">\[
+\operatorname{supp}R^{*j}\subset
+\{x\in C:\tau\cdot x\ge jb\}\quad(j\ge1).
+\tag{2.2}
+\]</span>
+<p>The inclusion follows by induction, since the clock adds. For a compact test support <span class="math" data-index="298" data-tex="\(L\)">\(L\)</span>, let <span class="math" data-index="299" data-tex="\(M_L=\max_{x\in L}\tau\cdot x\)">\(M_L=\max_{x\in L}\tau\cdot x\)</span>. Every term with <span class="math" data-index="300" data-tex="\(jb&gt;M_L\)">\(jb&gt;M_L\)</span> vanishes on tests supported in <span class="math" data-index="301" data-tex="\(L\)">\(L\)</span>. The sum is therefore finite on that support space, with a finite distributional order and bound. These finite definitions agree when the test support is enlarged. They define a distribution supported in the closed set <span class="math" data-index="302" data-tex="\(C\)">\(C\)</span>.</p>
+<p>For <span class="math" data-index="303" data-tex="\(S_N=\sum_{j=0}^N R^{*j}\)">\(S_N=\sum_{j=0}^N R^{*j}\)</span>, associativity gives</p>
+<span class="math math-display" id="eq-2.3" data-index="304" data-tex="\[
+(\delta_0-R)*S_N=\delta_0-R^{*(N+1)}.
+\tag{2.3}
+\]">\[
+(\delta_0-R)*S_N=\delta_0-R^{*(N+1)}.
+\tag{2.3}
+\]</span>
+<p>One can take the limit on each fixed test. Convolution is continuous for the fixed proper support pair <span class="math" data-index="305" data-tex="\(C,C\)">\(C,C\)</span>, by Theorem 3.2 of the foundation lesson; <span class="math" data-index="306" data-tex="\(S_N\to S\)">\(S_N\to S\)</span> distributionally, and the remainder vanishes eventually on that test by (2.2). This proves (2.1). Since the algebra is commutative, it is also a right inverse. If <span class="math" data-index="307" data-tex="\(S&#x27;\)">\(S&#x27;\)</span> is another inverse in this algebra, then</p>
+<span class="math math-display" data-index="308" data-tex="\[
+S&#x27;=S&#x27;*(\delta_0-R)*S=S.
+\]">\[
+S&#x27;=S&#x27;*(\delta_0-R)*S=S.
+\]</span>
+<p>Every convolution in this identity is permitted by (1.3). <span class="math" data-index="309" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.2 (stability away from the first support point).</strong> Let <span class="math" data-index="310" data-tex="\(a\in\mathbb R^n\)">\(a\in\mathbb R^n\)</span>. Suppose that</p>
+<span class="math math-display" id="eq-2.4" data-index="311" data-tex="\[
+\begin{gathered}
+\mu,v\in\mathcal D&#x27;(\mathbb R^n),\qquad
+\operatorname{supp}\mu,\operatorname{supp}v\subset a+C,\\
+\operatorname{supp}E\subset C-a,\qquad
+\mu*E=\delta_0,
+\end{gathered}
+\tag{2.4}
+\]">\[
+\begin{gathered}
+\mu,v\in\mathcal D&#x27;(\mathbb R^n),\qquad
+\operatorname{supp}\mu,\operatorname{supp}v\subset a+C,\\
+\operatorname{supp}E\subset C-a,\qquad
+\mu*E=\delta_0,
+\end{gathered}
+\tag{2.4}
+\]</span>
+<p>and <span class="math" data-index="312" data-tex="\(v-\mu\)">\(v-\mu\)</span> vanishes near <span class="math" data-index="313" data-tex="\(a\)">\(a\)</span>. There is a unique <span class="math" data-index="314" data-tex="\(F\)">\(F\)</span>, supported in <span class="math" data-index="315" data-tex="\(C-a\)">\(C-a\)</span>, satisfying</p>
+<span class="math math-display" id="eq-2.5" data-index="316" data-tex="\[
+v*F=\delta_0.
+\tag{2.5}
+\]">\[
+v*F=\delta_0.
+\tag{2.5}
+\]</span>
+<p>In particular, <span class="math" data-index="317" data-tex="\(\mu\)">\(\mu\)</span> need not be compactly supported.</p>
+<p><strong>Proof.</strong> Translate the kernel to the vertex and the inverse in the opposite direction:</p>
+<span class="math math-display" id="eq-2.6" data-index="318" data-tex="\[
+\mu_0=\tau_{-a}\mu,\quad v_0=\tau_{-a}v,\quad
+E_0=\tau_a E.
+\tag{2.6}
+\]">\[
+\mu_0=\tau_{-a}\mu,\quad v_0=\tau_{-a}v,\quad
+E_0=\tau_a E.
+\tag{2.6}
+\]</span>
+<p>All three supports lie in <span class="math" data-index="319" data-tex="\(C\)">\(C\)</span>, and <span class="math" data-index="320" data-tex="\(\mu_0*E_0=\delta_0\)">\(\mu_0*E_0=\delta_0\)</span>. Translation follows directly from the addition pairing in the foundation lesson. The distribution <span class="math" data-index="321" data-tex="\(w_0=v_0-\mu_0\)">\(w_0=v_0-\mu_0\)</span> vanishes near zero. Set</p>
+<span class="math math-display" id="eq-2.7" data-index="322" data-tex="\[
+R=(\mu_0-v_0)*E_0=-w_0*E_0.
+\tag{2.7}
+\]">\[
+R=(\mu_0-v_0)*E_0=-w_0*E_0.
+\tag{2.7}
+\]</span>
+<p>Its support is in <span class="math" data-index="323" data-tex="\(C\)">\(C\)</span>. Moreover, <span class="math" data-index="324" data-tex="\(\operatorname{supp}w_0\)">\(\operatorname{supp}w_0\)</span> satisfies a positive clock bound (1.5), and <span class="math" data-index="325" data-tex="\(\tau\cdot x\ge0\)">\(\tau\cdot x\ge0\)</span> on <span class="math" data-index="326" data-tex="\(\operatorname{supp}E_0\)">\(\operatorname{supp}E_0\)</span>. Their sum satisfies the same positive bound. Hence <span class="math" data-index="327" data-tex="\(R\)">\(R\)</span> vanishes near zero.</p>
+<p>Theorem 2.1 provides <span class="math" data-index="328" data-tex="\(S\)">\(S\)</span> with <span class="math" data-index="329" data-tex="\((\delta_0-R)*S=\delta_0\)">\((\delta_0-R)*S=\delta_0\)</span>. Since</p>
+<span class="math math-display" id="eq-2.8" data-index="330" data-tex="\[
+v_0*E_0=\delta_0-R,
+\qquad
+F_0=E_0*S,
+\tag{2.8}
+\]">\[
+v_0*E_0=\delta_0-R,
+\qquad
+F_0=E_0*S,
+\tag{2.8}
+\]</span>
+<p>we have <span class="math" data-index="331" data-tex="\(v_0*F_0=\delta_0\)">\(v_0*F_0=\delta_0\)</span> and <span class="math" data-index="332" data-tex="\(\operatorname{supp}F_0\subset C\)">\(\operatorname{supp}F_0\subset C\)</span>. Set <span class="math" data-index="333" data-tex="\(F=\tau_{-a}F_0\)">\(F=\tau_{-a}F_0\)</span>. This gives (2.5) and the required support. For uniqueness, translate any other such inverse into <span class="math" data-index="334" data-tex="\(\mathcal A_C\)">\(\mathcal A_C\)</span> and use the uniqueness of an inverse in a commutative algebra. <span class="math" data-index="335" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The series in this theorem needs no convergence estimate at infinity. Its terms simply stop contributing on each bounded output region. Lower dimensional pointed cones are included.</p>
+<h2 id="3-a-continuous-error-at-the-vertex-also-has-an-inverse">3. A continuous error at the vertex also has an inverse</h2>
+<p><strong>Theorem 3.1 (locally continuous causal errors).</strong> Suppose <span class="math" data-index="336" data-tex="\(R\in\mathcal A_C\)">\(R\in\mathcal A_C\)</span> is represented by a continuous function on some neighborhood of zero. Then <span class="math" data-index="337" data-tex="\(\delta_0-R\)">\(\delta_0-R\)</span> has an inverse in <span class="math" data-index="338" data-tex="\(\mathcal A_C\)">\(\mathcal A_C\)</span>.</p>
+<p><strong>Proof.</strong> Choose a compact smooth cutoff <span class="math" data-index="339" data-tex="\(\chi\)">\(\chi\)</span> supported inside that neighborhood, equal to one near zero, and with <span class="math" data-index="340" data-tex="\(0\le\chi\le1\)">\(0\le\chi\le1\)</span>. Shrink its support until</p>
+<span class="math math-display" id="eq-3.1" data-index="341" data-tex="\[
+r_0=\chi R\in C_c^0,\qquad
+\operatorname{supp}r_0\subset C,\qquad
+\|r_0\|_{L^1}=q&lt;1.
+\tag{3.1}
+\]">\[
+r_0=\chi R\in C_c^0,\qquad
+\operatorname{supp}r_0\subset C,\qquad
+\|r_0\|_{L^1}=q&lt;1.
+\tag{3.1}
+\]</span>
+<p>This is possible because the continuous representative is bounded on a fixed small closed ball, while the volume of a shrinking ball tends to zero. Multiplication by the cutoff gives a globally continuous compact function. The support inclusion follows because its distribution is <span class="math" data-index="342" data-tex="\(\chi R\)">\(\chi R\)</span>.</p>
+<p>Ordinary integration and Fubini give <span class="math" data-index="343" data-tex="\(\|f*g\|_1\le\|f\|_1\|g\|_1\)">\(\|f*g\|_1\le\|f\|_1\|g\|_1\)</span> for integrable functions. Consequently</p>
+<span class="math math-display" id="eq-3.2" data-index="344" data-tex="\[
+T=\delta_0+\sum_{j=1}^{\infty}r_0^{*j}
+\tag{3.2}
+\]">\[
+T=\delta_0+\sum_{j=1}^{\infty}r_0^{*j}
+\tag{3.2}
+\]</span>
+<p>converges in <span class="math" data-index="345" data-tex="\(L^1\)">\(L^1\)</span> after the delta term. Its support is in <span class="math" data-index="346" data-tex="\(C\)">\(C\)</span>, since every partial sum has that support. The function terms are continuous: convolution with a compact continuous function is continuous by uniform continuity and dominated integration. Also</p>
+<span class="math math-display" id="eq-3.3" data-index="347" data-tex="\[
+\|r_0^{*j}\|_\infty
+\le\|r_0\|_\infty q^{j-1}.
+\tag{3.3}
+\]">\[
+\|r_0^{*j}\|_\infty
+\le\|r_0\|_\infty q^{j-1}.
+\tag{3.3}
+\]</span>
+<p>Thus their sum converges uniformly to a bounded continuous function. Telescoping the finite sums and using the <span class="math" data-index="348" data-tex="\(L^1\)">\(L^1\)</span> remainder bound <span class="math" data-index="349" data-tex="\(q^{N+1}\)">\(q^{N+1}\)</span> proves</p>
+<span class="math math-display" id="eq-3.4" data-index="350" data-tex="\[
+(\delta_0-r_0)*T=\delta_0.
+\tag{3.4}
+\]">\[
+(\delta_0-r_0)*T=\delta_0.
+\tag{3.4}
+\]</span>
+<p>This identity is also an identity in the cone algebra: its convolution agrees with ordinary integration for the function terms, by the foundation addition pairing, and convergence can be passed through the fixed proper supports.</p>
+<p>Put <span class="math" data-index="351" data-tex="\(R_1=R-r_0\)">\(R_1=R-r_0\)</span>. It vanishes near zero and is supported in <span class="math" data-index="352" data-tex="\(C\)">\(C\)</span>. Define <span class="math" data-index="353" data-tex="\(Q=T*R_1\)">\(Q=T*R_1\)</span>. All factors lie in <span class="math" data-index="354" data-tex="\(\mathcal A_C\)">\(\mathcal A_C\)</span>, so this convolution exists even if <span class="math" data-index="355" data-tex="\(R_1\)">\(R_1\)</span> is not compact. Its support satisfies a positive clock bound, inherited from <span class="math" data-index="356" data-tex="\(R_1\)">\(R_1\)</span> because <span class="math" data-index="357" data-tex="\(T\)">\(T\)</span> has nonnegative clock. Therefore <span class="math" data-index="358" data-tex="\(Q\)">\(Q\)</span> vanishes near zero. Theorem 2.1 gives <span class="math" data-index="359" data-tex="\(S_1=(\delta_0-Q)^{-1}\)">\(S_1=(\delta_0-Q)^{-1}\)</span> in the cone algebra.</p>
+<p>The factorization is exact:</p>
+<span class="math math-display" id="eq-3.5" data-index="360" data-tex="\[
+\begin{aligned}
+(\delta_0-r_0)*(\delta_0-Q)
+&amp;=\delta_0-r_0-(\delta_0-r_0)*T*R_1\\
+&amp;=\delta_0-r_0-R_1=\delta_0-R.
+\end{aligned}
+\tag{3.5}
+\]">\[
+\begin{aligned}
+(\delta_0-r_0)*(\delta_0-Q)
+&amp;=\delta_0-r_0-(\delta_0-r_0)*T*R_1\\
+&amp;=\delta_0-r_0-R_1=\delta_0-R.
+\end{aligned}
+\tag{3.5}
+\]</span>
+<p>Its inverse is <span class="math" data-index="361" data-tex="\(S=T*S_1\)">\(S=T*S_1\)</span>. Proper-support associativity justifies every product. This proves the theorem. <span class="math" data-index="362" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.2 (a finite differentiability threshold).</strong> Fix <span class="math" data-index="363" data-tex="\(\mu,E,a,C\)">\(\mu,E,a,C\)</span> as in (2.4). There is an integer <span class="math" data-index="364" data-tex="\(m\ge0\)">\(m\ge0\)</span>, depending on <span class="math" data-index="365" data-tex="\(E\)">\(E\)</span> near <span class="math" data-index="366" data-tex="\(-a\)">\(-a\)</span>, with the following property. If <span class="math" data-index="367" data-tex="\(v\)">\(v\)</span> has support in <span class="math" data-index="368" data-tex="\(a+C\)">\(a+C\)</span> and <span class="math" data-index="369" data-tex="\(v-\mu\)">\(v-\mu\)</span> is represented by a <span class="math" data-index="370" data-tex="\(C^m\)">\(C^m\)</span> function on a neighborhood of <span class="math" data-index="371" data-tex="\(a\)">\(a\)</span>, then <span class="math" data-index="372" data-tex="\(v\)">\(v\)</span> has a unique inverse supported in <span class="math" data-index="373" data-tex="\(C-a\)">\(C-a\)</span>.</p>
+<p><strong>Proof.</strong> Use (2.6), and choose <span class="math" data-index="374" data-tex="\(m\)">\(m\)</span> to be a finite local order of <span class="math" data-index="375" data-tex="\(E_0\)">\(E_0\)</span> on the closed unit ball about zero, with a slightly larger compact neighborhood for its controlling test bound. The local finite-order property of a distribution supplies such an <span class="math" data-index="376" data-tex="\(m\)">\(m\)</span>.</p>
+<p>Let <span class="math" data-index="377" data-tex="\(w_0=v_0-\mu_0\)">\(w_0=v_0-\mu_0\)</span>. It is <span class="math" data-index="378" data-tex="\(C^m\)">\(C^m\)</span> near zero. Choose a ball of radius <span class="math" data-index="379" data-tex="\(r&lt;1\)">\(r&lt;1\)</span> inside that neighborhood. Formula (1.3), for two cone coordinates with sum <span class="math" data-index="380" data-tex="\(z\)">\(z\)</span>, implies</p>
+<span class="math math-display" id="eq-3.6" data-index="381" data-tex="\[
+|x|+|y|\le |z|/\kappa
+\quad(x,y\in C,\ x+y=z).
+\tag{3.6}
+\]">\[
+|x|+|y|\le |z|/\kappa
+\quad(x,y\in C,\ x+y=z).
+\tag{3.6}
+\]</span>
+<p>For <span class="math" data-index="382" data-tex="\(z\)">\(z\)</span> sufficiently near zero, all contributing coordinates therefore lie well inside that ball. Choose compact smooth cutoffs <span class="math" data-index="383" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span>, supported in the ball and equal to one on a smaller ball containing all these coordinates. On a neighborhood of zero,</p>
+<span class="math math-display" id="eq-3.7" data-index="384" data-tex="\[
+w_0*E_0=(\alpha w_0)*(\beta E_0).
+\tag{3.7}
+\]">\[
+w_0*E_0=(\alpha w_0)*(\beta E_0).
+\tag{3.7}
+\]</span>
+<p>To verify the localization, take a test with sufficiently small support. On every contributing pair in the support of <span class="math" data-index="385" data-tex="\(w_0\otimes E_0\)">\(w_0\otimes E_0\)</span>, both cutoffs are one by (3.6). The difference of the two addition pairings is zero.</p>
+<p>The first factor on the right is compactly supported and <span class="math" data-index="386" data-tex="\(C^m\)">\(C^m\)</span>. The second is a compact distribution of order at most <span class="math" data-index="387" data-tex="\(m\)">\(m\)</span>: multiplication by a fixed smooth cutoff preserves that order. The finite-regularity part of Theorem 2.1 of the foundation convolution lesson, with <span class="math" data-index="388" data-tex="\(j=m\)">\(j=m\)</span> and <span class="math" data-index="389" data-tex="\(k=0\)">\(k=0\)</span>, makes (3.7) a continuous function. Thus <span class="math" data-index="390" data-tex="\(R=-w_0*E_0\)">\(R=-w_0*E_0\)</span> is continuous near zero and belongs to <span class="math" data-index="391" data-tex="\(\mathcal A_C\)">\(\mathcal A_C\)</span>.</p>
+<p>Theorem 3.1 provides <span class="math" data-index="392" data-tex="\(S=(\delta_0-R)^{-1}\)">\(S=(\delta_0-R)^{-1}\)</span>. Now <span class="math" data-index="393" data-tex="\(F_0=E_0*S\)">\(F_0=E_0*S\)</span> is a cone-supported inverse of <span class="math" data-index="394" data-tex="\(v_0\)">\(v_0\)</span>, as in (2.8). Translate back. Uniqueness is the same cone-algebra argument as before. For <span class="math" data-index="395" data-tex="\(C=\{0\}\)">\(C=\{0\}\)</span>, a function distribution supported in <span class="math" data-index="396" data-tex="\(C\)">\(C\)</span> is zero; the proof still applies, and the perturbation in this case is zero. <span class="math" data-index="397" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The differentiability requirement is a sufficient condition with an actual finite integer. It is not a claim that every less regular perturbation fails. No global derivative bound is imposed on the perturbation, and no compactness is imposed on <span class="math" data-index="398" data-tex="\(v\)">\(v\)</span> or on the inverse.</p>
+<h2 id="4-three-equivalent-ways-to-see-directional-support">4. Three equivalent ways to see directional support</h2>
+<p>For a closed convex set <span class="math" data-index="399" data-tex="\(K\subset\mathbb R^n\)">\(K\subset\mathbb R^n\)</span>, let</p>
+<span class="math math-display" id="eq-4.1" data-index="400" data-tex="\[
+H_K(\eta)=\sup_{x\in K}x\cdot\eta.
+\tag{4.1}
+\]">\[
+H_K(\eta)=\sup_{x\in K}x\cdot\eta.
+\tag{4.1}
+\]</span>
+<p>The empty set has support value <span class="math" data-index="401" data-tex="\(-\infty\)">\(-\infty\)</span>. We allow <span class="math" data-index="402" data-tex="\(+\infty\)">\(+\infty\)</span> for nonempty sets.</p>
+<p><strong>Lemma 4.1 (support values, compact slices, and a translated cone).</strong> Let <span class="math" data-index="403" data-tex="\(\theta\ne0\)">\(\theta\ne0\)</span>. The following conditions are equivalent:</p>
+<ol>
+<li><span class="math" data-index="404" data-tex="\(H_K(\eta)&lt;+\infty\)">\(H_K(\eta)&lt;+\infty\)</span> for every <span class="math" data-index="405" data-tex="\(\eta\)">\(\eta\)</span> in some neighborhood of <span class="math" data-index="406" data-tex="\(\theta\)">\(\theta\)</span>.</li>
+<li>For every real <span class="math" data-index="407" data-tex="\(c\)">\(c\)</span>, <span class="math" data-index="408" data-tex="\(K\cap\{x:x\cdot\theta\ge c\}\)">\(K\cap\{x:x\cdot\theta\ge c\}\)</span> is compact, possibly empty.</li>
+<li>There are <span class="math" data-index="409" data-tex="\(x_0\in\mathbb R^n\)">\(x_0\in\mathbb R^n\)</span> and <span class="math" data-index="410" data-tex="\(A&gt;0\)">\(A&gt;0\)</span> such that</li>
+</ol>
+<span class="math math-display" id="eq-4.2" data-index="411" data-tex="\[
+|x-x_0|\le A(x_0-x)\cdot\theta
+\quad(x\in K).
+\tag{4.2}
+\]">\[
+|x-x_0|\le A(x_0-x)\cdot\theta
+\quad(x\in K).
+\tag{4.2}
+\]</span>
+<p><strong>Proof.</strong> The empty set satisfies all three conditions. Suppose <span class="math" data-index="412" data-tex="\(K\)">\(K\)</span> is nonempty.</p>
+<p>For <span class="math" data-index="413" data-tex="\(1\Rightarrow2\)">\(1\Rightarrow2\)</span>, choose <span class="math" data-index="414" data-tex="\(h&gt;0\)">\(h&gt;0\)</span> for which every <span class="math" data-index="415" data-tex="\(\theta\pm h e_\ell\)">\(\theta\pm h e_\ell\)</span> has finite support value. For a point of the slice,</p>
+<span class="math math-display" id="eq-4.3" data-index="416" data-tex="\[
+\pm h x_\ell
+\le H_K(\theta\pm h e_\ell)-c.
+\tag{4.3}
+\]">\[
+\pm h x_\ell
+\le H_K(\theta\pm h e_\ell)-c.
+\tag{4.3}
+\]</span>
+<p>These finitely many bounds control every coordinate. The slice is closed and bounded and therefore compact. This is also the exact argument of Lemma 2.1 of the preceding support-cone lesson.</p>
+<p>For <span class="math" data-index="417" data-tex="\(2\Rightarrow3\)">\(2\Rightarrow3\)</span>, translate a point <span class="math" data-index="418" data-tex="\(p\in K\)">\(p\in K\)</span> to zero, writing <span class="math" data-index="419" data-tex="\(L=K-p\)">\(L=K-p\)</span>. Let</p>
+<span class="math math-display" id="eq-4.4" data-index="420" data-tex="\[
+L_{-1}=L\cap\{y:y\cdot\theta\ge-1\},\qquad
+B=\max\{1,\max_{y\in L_{-1}}|y|\},\qquad
+M=\max_{y\in L_{-1}}y\cdot\theta.
+\tag{4.4}
+\]">\[
+L_{-1}=L\cap\{y:y\cdot\theta\ge-1\},\qquad
+B=\max\{1,\max_{y\in L_{-1}}|y|\},\qquad
+M=\max_{y\in L_{-1}}y\cdot\theta.
+\tag{4.4}
+\]</span>
+<p>The set is compact and contains zero, so <span class="math" data-index="421" data-tex="\(M\ge0\)">\(M\ge0\)</span>. If <span class="math" data-index="422" data-tex="\(y\in L\)">\(y\in L\)</span> has <span class="math" data-index="423" data-tex="\(y\cdot\theta&lt;-1\)">\(y\cdot\theta&lt;-1\)</span>, then <span class="math" data-index="424" data-tex="\(s=-1/(y\cdot\theta)\)">\(s=-1/(y\cdot\theta)\)</span> belongs to <span class="math" data-index="425" data-tex="\((0,1)\)">\((0,1)\)</span>. Convexity and <span class="math" data-index="426" data-tex="\(0\in L\)">\(0\in L\)</span> give <span class="math" data-index="427" data-tex="\(sy\in L\)">\(sy\in L\)</span>, and <span class="math" data-index="428" data-tex="\(sy\cdot\theta=-1\)">\(sy\cdot\theta=-1\)</span>. Hence</p>
+<span class="math math-display" id="eq-4.5" data-index="429" data-tex="\[
+|y|\le B(-y\cdot\theta).
+\tag{4.5}
+\]">\[
+|y|\le B(-y\cdot\theta).
+\tag{4.5}
+\]</span>
+<p>Put <span class="math" data-index="430" data-tex="\(d=M+1\)">\(d=M+1\)</span>, <span class="math" data-index="431" data-tex="\(x_0=p+d\theta/|\theta|^2\)">\(x_0=p+d\theta/|\theta|^2\)</span>, and choose</p>
+<span class="math math-display" id="eq-4.6" data-index="432" data-tex="\[
+A=\max\{B,\ 1/|\theta|,\ B+d/|\theta|\}.
+\tag{4.6}
+\]">\[
+A=\max\{B,\ 1/|\theta|,\ B+d/|\theta|\}.
+\tag{4.6}
+\]</span>
+<p>For <span class="math" data-index="433" data-tex="\(y\in L_{-1}\)">\(y\in L_{-1}\)</span>, the right side of (4.2) is <span class="math" data-index="434" data-tex="\(A(d-y\cdot\theta)\ge A\)">\(A(d-y\cdot\theta)\ge A\)</span>, while the left side is at most <span class="math" data-index="435" data-tex="\(B+d/|\theta|\le A\)">\(B+d/|\theta|\le A\)</span>. For the remaining <span class="math" data-index="436" data-tex="\(y\)">\(y\)</span>, (4.5) gives</p>
+<span class="math math-display" data-index="437" data-tex="\[
+\left|y-\frac{d\theta}{|\theta|^2}\right|
+\le B(-y\cdot\theta)+d/|\theta|
+\le A(d-y\cdot\theta).
+\]">\[
+\left|y-\frac{d\theta}{|\theta|^2}\right|
+\le B(-y\cdot\theta)+d/|\theta|
+\le A(d-y\cdot\theta).
+\]</span>
+<p>Thus (4.2) holds in both cases.</p>
+<p>For <span class="math" data-index="438" data-tex="\(3\Rightarrow1\)">\(3\Rightarrow1\)</span>, let <span class="math" data-index="439" data-tex="\(z=x-x_0\)">\(z=x-x_0\)</span>. Then <span class="math" data-index="440" data-tex="\(z\cdot\theta\le-|z|/A\)">\(z\cdot\theta\le-|z|/A\)</span>. If <span class="math" data-index="441" data-tex="\(|\eta-\theta|&lt;1/(2A)\)">\(|\eta-\theta|&lt;1/(2A)\)</span>, it follows that</p>
+<span class="math math-display" id="eq-4.7" data-index="442" data-tex="\[
+z\cdot\eta
+\le-|z|/A+|z||\eta-\theta|\le0.
+\tag{4.7}
+\]">\[
+z\cdot\eta
+\le-|z|/A+|z||\eta-\theta|\le0.
+\tag{4.7}
+\]</span>
+<p>Therefore <span class="math" data-index="443" data-tex="\(H_K(\eta)\le x_0\cdot\eta&lt;\infty\)">\(H_K(\eta)\le x_0\cdot\eta&lt;\infty\)</span> on that neighborhood. <span class="math" data-index="444" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The minus sign in (4.2) says the unbounded part of <span class="math" data-index="445" data-tex="\(K\)">\(K\)</span> goes in directions with negative <span class="math" data-index="446" data-tex="\(\theta\)">\(\theta\)</span>-pairing.</p>
+<p><strong>Definition 4.2 (directional hyperbolicity).</strong> A compact kernel <span class="math" data-index="447" data-tex="\(\mu\)">\(\mu\)</span> is hyperbolic in a nonzero direction <span class="math" data-index="448" data-tex="\(\theta\)">\(\theta\)</span> if it has a distributional inverse <span class="math" data-index="449" data-tex="\(E\)">\(E\)</span> supported in a convex set whose support function is finite near <span class="math" data-index="450" data-tex="\(-\theta\)">\(-\theta\)</span>. The inverse belongs to <span class="math" data-index="451" data-tex="\(\mathcal D&#x27;\)">\(\mathcal D&#x27;\)</span>; it need not be tempered.</p>
+<p>Taking the closed convex hull of its support preserves the condition. Indeed the support function is unchanged by taking that hull, since linear functions preserve convex combinations and are continuous under limits. With <span class="math" data-index="452" data-tex="\(-\theta\)">\(-\theta\)</span> in Lemma 4.1, every low-time set</p>
+<span class="math math-display" id="eq-4.8" data-index="453" data-tex="\[
+K\cap\{x:x\cdot\theta\le T\}
+\tag{4.8}
+\]">\[
+K\cap\{x:x\cdot\theta\le T\}
+\tag{4.8}
+\]</span>
+<p>is compact. Also <span class="math" data-index="454" data-tex="\(K\)">\(K\)</span> lies in a translated pointed cone facing the positive <span class="math" data-index="455" data-tex="\(\theta\)">\(\theta\)</span> direction. The cone defined by <span class="math" data-index="456" data-tex="\(|z|\le A z\cdot\theta\)">\(|z|\le A z\cdot\theta\)</span> is closed and convex, since it is the sublevel set of the convex function <span class="math" data-index="457" data-tex="\(|z|-A z\cdot\theta\)">\(|z|-A z\cdot\theta\)</span>; it contains no nonzero line.</p>
+<p>The same directional support condition can be applied to the noncompact kernels of Theorems 2.2 and 3.2 whenever their convolution is defined by these proper cone supports.</p>
+<h2 id="5-connecting-the-support-picture-to-complex-frequency">5. Connecting the support picture to complex frequency</h2>
+<p>The analytic criteria already have complete preceding proofs. Here are their exact roles.</p>
+<p><strong>Theorem 5.1 (the forward criterion).</strong> Suppose <span class="math" data-index="458" data-tex="\(\mu\in\mathcal E&#x27;\)">\(\mu\in\mathcal E&#x27;\)</span>, <span class="math" data-index="459" data-tex="\(E\in\mathcal D&#x27;\)">\(E\in\mathcal D&#x27;\)</span>, and <span class="math" data-index="460" data-tex="\(\mu*E=\delta_0\)">\(\mu*E=\delta_0\)</span>. Let <span class="math" data-index="461" data-tex="\(K\)">\(K\)</span> be the closed convex hull of <span class="math" data-index="462" data-tex="\(\operatorname{supp}E\)">\(\operatorname{supp}E\)</span>, and suppose</p>
+<span class="math math-display" id="eq-5.1" data-index="463" data-tex="\[
+\Gamma=\operatorname{int}\{\eta:H_K(\eta)&lt;\infty\}\ne\varnothing.
+\tag{5.1}
+\]">\[
+\Gamma=\operatorname{int}\{\eta:H_K(\eta)&lt;\infty\}\ne\varnothing.
+\tag{5.1}
+\]</span>
+<p>There is a unique real vector <span class="math" data-index="464" data-tex="\(a\)">\(a\)</span> such that</p>
+<span class="math math-display" id="eq-5.2" data-index="465" data-tex="\[
+H_\mu(\eta)=-H_K(\eta)=a\cdot\eta\quad(\eta\in\Gamma).
+\tag{5.2}
+\]">\[
+H_\mu(\eta)=-H_K(\eta)=a\cdot\eta\quad(\eta\in\Gamma).
+\tag{5.2}
+\]</span>
+<p>With the negative polar</p>
+<span class="math math-display" id="eq-5.3" data-index="466" data-tex="\[
+C=\{x:x\cdot\eta\le0\text{ for all }\eta\in\Gamma\},
+\tag{5.3}
+\]">\[
+C=\{x:x\cdot\eta\le0\text{ for all }\eta\in\Gamma\},
+\tag{5.3}
+\]</span>
+<p>one has <span class="math" data-index="467" data-tex="\(K=C-a\)">\(K=C-a\)</span> and <span class="math" data-index="468" data-tex="\(\operatorname{supp}\mu\subset C+a\)">\(\operatorname{supp}\mu\subset C+a\)</span>. For every closed cone <span class="math" data-index="469" data-tex="\(\Gamma_1\subset\Gamma\cup\{0\}\)">\(\Gamma_1\subset\Gamma\cup\{0\}\)</span>, there are constants <span class="math" data-index="470" data-tex="\(D&gt;0\)">\(D&gt;0\)</span> and an integer <span class="math" data-index="471" data-tex="\(N\ge0\)">\(N\ge0\)</span> such that</p>
+<span class="math math-display" id="eq-5.4" data-index="472" data-tex="\[
+\left|\widehat\mu(\zeta)^{-1}\right|
+\le D(1+|\zeta|)^N e^{-a\cdot\operatorname{Im}\zeta}
+\tag{5.4}
+\]">\[
+\left|\widehat\mu(\zeta)^{-1}\right|
+\le D(1+|\zeta|)^N e^{-a\cdot\operatorname{Im}\zeta}
+\tag{5.4}
+\]</span>
+<p>whenever <span class="math" data-index="473" data-tex="\(\operatorname{Im}\zeta\in\Gamma_1\)">\(\operatorname{Im}\zeta\in\Gamma_1\)</span> and</p>
+<span class="math math-display" id="eq-5.5" data-index="474" data-tex="\[
+|\operatorname{Im}\zeta|&gt;D\log(|\zeta|+2).
+\tag{5.5}
+\]">\[
+|\operatorname{Im}\zeta|&gt;D\log(|\zeta|+2).
+\tag{5.5}
+\]</span>
+<p>The transform is nonzero in this region. The cone <span class="math" data-index="475" data-tex="\(\Gamma=\mathbb R^n\)">\(\Gamma=\mathbb R^n\)</span> is allowed in this forward assertion.</p>
+<p><strong>Proof.</strong> This is Theorem 1.1 of <a href="AN02-L115.html">Support cones force reciprocal bounds</a>, with the same compact kernel, arbitrary distributional inverse, closed convex support hull, negative polar, translation, closed angular cones and logarithmic barrier. Rename its constants <span class="math" data-index="476" data-tex="\(C_1,M\)">\(C_1,M\)</span> as <span class="math" data-index="477" data-tex="\(D,N\)">\(D,N\)</span>. No hypothesis on the growth or Fourier transform of <span class="math" data-index="478" data-tex="\(E\)">\(E\)</span> is added. <span class="math" data-index="479" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.2 (the converse at an explicit cone convention).</strong> Let <span class="math" data-index="480" data-tex="\(\Gamma\)">\(\Gamma\)</span> be nonempty, open in <span class="math" data-index="481" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, ordinarily convex, invariant under positive dilations, and exclude zero. Let <span class="math" data-index="482" data-tex="\(\mu\in\mathcal E&#x27;\)">\(\mu\in\mathcal E&#x27;\)</span>. Suppose that on each closed cone <span class="math" data-index="483" data-tex="\(\Gamma_1\subset\Gamma\cup\{0\}\)">\(\Gamma_1\subset\Gamma\cup\{0\}\)</span>, its transform is nonzero beyond a logarithmic barrier and satisfies</p>
+<span class="math math-display" id="eq-5.6" data-index="484" data-tex="\[
+\left|\widehat\mu(\zeta)^{-1}\right|
+\le D(1+|\zeta|)^N e^{A|\operatorname{Im}\zeta|}
+\tag{5.6}
+\]">\[
+\left|\widehat\mu(\zeta)^{-1}\right|
+\le D(1+|\zeta|)^N e^{A|\operatorname{Im}\zeta|}
+\tag{5.6}
+\]</span>
+<p>there, with constants <span class="math" data-index="485" data-tex="\(D\ge1\)">\(D\ge1\)</span>, <span class="math" data-index="486" data-tex="\(A\ge0\)">\(A\ge0\)</span>, <span class="math" data-index="487" data-tex="\(N\ge0\)">\(N\ge0\)</span> that can depend on <span class="math" data-index="488" data-tex="\(\Gamma_1\)">\(\Gamma_1\)</span>. Then one common <span class="math" data-index="489" data-tex="\(E\in\mathcal D&#x27;\)">\(E\in\mathcal D&#x27;\)</span> satisfies <span class="math" data-index="490" data-tex="\(\mu*E=\delta_0\)">\(\mu*E=\delta_0\)</span> and <span class="math" data-index="491" data-tex="\(H_K(\eta)&lt;\infty\)">\(H_K(\eta)&lt;\infty\)</span> for every <span class="math" data-index="492" data-tex="\(\eta\in\Gamma\)">\(\eta\in\Gamma\)</span>.</p>
+<p><strong>Proof.</strong> These are exactly the hypotheses and conclusion of Theorem 1.1 of <a href="AN02-L117.html">Logarithmic Fourier graphs construct a cone-supported inverse</a>. Its construction uses one distribution for all directions. Its support bound <span class="math" data-index="493" data-tex="\(H_K(\eta)\le A|\eta|\)">\(H_K(\eta)\le A|\eta|\)</span> for each corresponding angular cone gives the assertion here. The closure of <span class="math" data-index="494" data-tex="\(\Gamma\)">\(\Gamma\)</span> is not required to be pointed. <span class="math" data-index="495" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These two criteria use different zero-containing cases. The following direct calculation explains why the distinction is mathematical.</p>
+<p><strong>Example 5.3 (all directions cannot be inserted in the converse).</strong> On <span class="math" data-index="496" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, let <span class="math" data-index="497" data-tex="\(\mu=\delta&#x27;_0\)">\(\mu=\delta&#x27;_0\)</span>. Then <span class="math" data-index="498" data-tex="\(\widehat\mu(\zeta)=i\zeta\)">\(\widehat\mu(\zeta)=i\zeta\)</span>. On the whole imaginary-direction space <span class="math" data-index="499" data-tex="\(\Gamma=\mathbb R\)">\(\Gamma=\mathbb R\)</span>, the reciprocal bound with <span class="math" data-index="500" data-tex="\(D=1\)">\(D=1\)</span>, <span class="math" data-index="501" data-tex="\(N=0\)">\(N=0\)</span>, <span class="math" data-index="502" data-tex="\(A=0\)">\(A=0\)</span> holds whenever</p>
+<span class="math math-display" id="eq-5.7" data-index="503" data-tex="\[
+|\operatorname{Im}\zeta|&gt;\log(|\zeta|+2).
+\tag{5.7}
+\]">\[
+|\operatorname{Im}\zeta|&gt;\log(|\zeta|+2).
+\tag{5.7}
+\]</span>
+<p>In fact this inequality forces <span class="math" data-index="504" data-tex="\(|\zeta|&gt;1\)">\(|\zeta|&gt;1\)</span>: for <span class="math" data-index="505" data-tex="\(0\le r\le1\)">\(0\le r\le1\)</span>, <span class="math" data-index="506" data-tex="\(\log(r+2)-r\)">\(\log(r+2)-r\)</span> decreases and has positive value <span class="math" data-index="507" data-tex="\(\log3-1\)">\(\log3-1\)</span> at one. Thus <span class="math" data-index="508" data-tex="\(|\zeta|^{-1}&lt;1\)">\(|\zeta|^{-1}&lt;1\)</span>. The transform has no zero in (5.7).</p>
+<p>There is nevertheless no inverse whose support function is finite in both directions. If its support hull <span class="math" data-index="509" data-tex="\(K\)">\(K\)</span> had finite values at <span class="math" data-index="510" data-tex="\(1\)">\(1\)</span> and <span class="math" data-index="511" data-tex="\(-1\)">\(-1\)</span>, it would be bounded, making the inverse compact. A compact solution of <span class="math" data-index="512" data-tex="\(E&#x27;=\delta_0\)">\(E&#x27;=\delta_0\)</span> is impossible: choose a compact smooth test equal to one on a neighborhood of <span class="math" data-index="513" data-tex="\(\operatorname{supp}E\cup\{0\}\)">\(\operatorname{supp}E\cup\{0\}\)</span>. Then <span class="math" data-index="514" data-tex="\(\langle E&#x27;,\phi\rangle=-\langle E,\phi&#x27;\rangle=0\)">\(\langle E&#x27;,\phi\rangle=-\langle E,\phi&#x27;\rangle=0\)</span>, while <span class="math" data-index="515" data-tex="\(\langle\delta_0,\phi\rangle=1\)">\(\langle\delta_0,\phi\rangle=1\)</span>.</p>
+<p>An empty direction set also cannot give a converse: its estimates are vacuous, even for the zero kernel. These examples establish necessary qualifications. They make no attribution about an unspecified convention in another work.</p>
+<h2 id="references-2">References</h2>
+<ul>
+<li>Richard B. Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004. <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Open course materials</a>.</li>
+<li>Gerd Grubb, <em>Fourier transformation of distributions</em>. <a href="https://web.math.ku.dk/~grubb/dist5.pdf">Author-hosted chapter</a>.</li>
+<li><a href="prerequisites/convolution-as-addition-of-supports.html">Convolution as addition of supports</a>, Theorems 1.1, 2.1, 3.1 and 3.2, and Proposition 3.3.</li>
+<li><a href="AN02-L115.html">Support cones force reciprocal bounds</a>, Theorem 1.1 and Lemma 2.1.</li>
+<li><a href="AN02-L117.html">Logarithmic Fourier graphs construct a cone-supported inverse</a>, Theorem 1.1.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators</em>, volumes I and II, Springer. Background reference; the required proofs are the explicit internal ones cited above and those given in this chapter.</li>
+</ul>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/causal-inverses-and-stability-at-a-cones-vertex.md" download>Download the complete lesson source</a>. Original proofs, examples, solutions and figures use CC0 1.0. The font license retains its own terms.</p><ul><li><a href="reproduce/L177/causal-vertex-formal.md" download>causal-vertex-formal.md</a></li><li><a href="reproduce/L177/causal-vertex-learner.md" download>causal-vertex-learner.md</a></li><li><a href="reproduce/L177/make_figures246.py" download>make_figures246.py</a></li><li><a href="reproduce/L177/check_numerics246.py" download>check_numerics246.py</a></li><li><a href="reproduce/L177/README-reproduce.md" download>README-reproduce.md</a></li><li><a href="reproduce/L177/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L177/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li><li><a href="reproduce/L177/figures/geometry246.json" download>figures/geometry246.json</a></li><li><a href="reproduce/L177/figures/delayed-powers-and-clock-cutoff.png" download>figures/delayed-powers-and-clock-cutoff.png</a></li><li><a href="reproduce/L177/figures/delayed-powers-and-clock-cutoff.svg" download>figures/delayed-powers-and-clock-cutoff.svg</a></li><li><a href="reproduce/L177/figures/continuous-feedback-and-local-convergence.png" download>figures/continuous-feedback-and-local-convergence.png</a></li><li><a href="reproduce/L177/figures/continuous-feedback-and-local-convergence.svg" download>figures/continuous-feedback-and-local-convergence.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

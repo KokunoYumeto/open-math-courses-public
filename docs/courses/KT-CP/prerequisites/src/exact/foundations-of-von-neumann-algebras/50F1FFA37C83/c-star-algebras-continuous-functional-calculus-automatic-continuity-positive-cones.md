@@ -106,7 +106,7 @@ For \(A=\{0\}\) the statement reads \(\{0\}\cong C_0(\varnothing)\).
 2. Two LCH spaces \(\Omega\) and \(\Omega'\) are homeomorphic if and only if \(C_0(\Omega)\) and \(C_0(\Omega')\) are isomorphic as algebras; a \(*\)-isomorphism is not needed.
 3. Every abelian C\*-algebra \(A\) is \(*\)-isomorphic to \(C_0(\Omega)\) for an LCH space \(\Omega\), unique up to homeomorphism; one choice is \(\Omega=\operatorname{Ch}(A)\).
 
-**Proof.** (1) This is proved in the characters of \(C_0(\Omega)\), by a compactness argument that uses no measure theory. Remark 2.3 gives a second proof.
+**Proof.** (1) This is proved in [the characters of \(C_0(\Omega)\)](banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.md#oa-fnd-bn-19), by a compactness argument that uses no measure theory. Remark 2.3 gives a second proof.
 (2) If \(\Phi:C_0(\Omega)\to C_0(\Omega')\) is an algebra isomorphism, then \(\chi\mapsto\chi\circ\Phi\) is a bijection of \(\operatorname{Ch}(C_0(\Omega'))\) onto \(\operatorname{Ch}(C_0(\Omega))\). It and its inverse \(\chi'\mapsto\chi'\circ\Phi^{-1}\) are weak\* continuous, because they are continuous in each evaluation. Composing with the homeomorphisms of (1) gives a homeomorphism \(\Omega'\to\Omega\). The converse is clear: a homeomorphism \(\tau\) gives \(f\mapsto f\circ\tau\).
 (3) Existence is Theorem 2.1; uniqueness is (2). \(\square\)
 
@@ -133,7 +133,7 @@ The full argument above proves positivity, total mass and the extension from com
 
 **Exercise 2.5** (medium; Separability). Let \(A\) be an abelian C\*-algebra with character space \(\Omega\). Show that \(A\) has a countable dense subset exactly when \(\Omega\) has a countable base.
 
-*Solution.* By Theorem 2.1, \(A=C_0(\Omega)\). If \(\Omega\) has a countable base, its one-point compactification \(\Omega_\infty\) is compact metrizable (the metrizability theorem in Urysohn's lemma, complete regularity and metrizability). So \(C(\Omega_\infty)\) is separable (density results), and so is its subspace \(C_0(\Omega)\), the functions on \(\Omega_\infty\) that vanish at \(\infty\) (\(C_0(X)\) and the one-point compactification). Conversely, let \((x_n)\) be dense in \(C_0(\Omega)\), and put \(V_n=\{|x_n|>\frac23\}\), an open set. Let \(p\in U\) with \(U\) open. Urysohn's lemma gives \(f\in C_c(\Omega)\) with \(0\leq f\leq1\), \(f(p)=1\) and support in \(U\). Take \(n\) with \(\|x_n-f\|<\frac13\). Then \(p\in V_n\), and on \(V_n\), \(|f|>\frac13\), so \(V_n\subseteq U\). So \((V_n)\) is a countable base.
+*Solution.* By Theorem 2.1, \(A=C_0(\Omega)\). If \(\Omega\) has a countable base, its one-point compactification \(\Omega_\infty\) is compact metrizable (the metrizability theorem in Urysohn's lemma, complete regularity and metrizability). So \(C(\Omega_\infty)\) is separable (density results), and so is its subspace \(C_0(\Omega)\), the functions on \(\Omega_\infty\) that vanish at \(\infty\) ([\(C_0(X)\) and the one-point compactification](stone-weierstrass-c0.md#oa-fnd-sw-03)). Conversely, let \((x_n)\) be dense in \(C_0(\Omega)\), and put \(V_n=\{|x_n|>\frac23\}\), an open set. Let \(p\in U\) with \(U\) open. Urysohn's lemma gives \(f\in C_c(\Omega)\) with \(0\leq f\leq1\), \(f(p)=1\) and support in \(U\). Take \(n\) with \(\|x_n-f\|<\frac13\). Then \(p\in V_n\), and on \(V_n\), \(|f|>\frac13\), so \(V_n\subseteq U\). So \((V_n)\) is a countable base.
 
 ### 3. C\*-subalgebras and spectral permanence
 
@@ -380,11 +380,11 @@ The compact set \(K\) cannot be dropped from (1): for \(f(t)=t^2\) and self-adjo
 **Definition 7.1.** For \(h\in A_h\) put \(|h|=(h^2)^{1/2}\), \(h_+=\frac12(|h|+h)\) and \(h_-=\frac12(|h|-h)\). By the composition rule (Theorem 5.1(5)), these are the calculi of \(t\mapsto|t|\), \(t\mapsto\max(t,0)\) and \(t\mapsto\max(-t,0)\) at \(h\). They vanish at \(0\), so they lie in \(C^*(h)\subseteq A\) (Theorem 5.3). They are the *absolute value*, the *positive part* and the *negative part* of \(h\), and \(h=h_+-h_-\) is its *Jordan decomposition*.
 
 **Proposition 7.2.** Let \(h\in A_h\).
-1. \(h=h_+-h_-\), \(|h|=h_++h_-\), \(h_+h_-=h_-h_+=0\), and the quasi-spectra of \(h_+\), \(h_-\) and \(|h|\) lie in \(0,\infty)\). Also \(\|h_\pm\|\leq\|h\|=\||h|\|=\max(\|h_+\|,\|h_-\|)\).
+1. \(h=h_+-h_-\), \(|h|=h_++h_-\), \(h_+h_-=h_-h_+=0\), and the quasi-spectra of \(h_+\), \(h_-\) and \(|h|\) lie in \([0,\infty)\). Also \(\|h_\pm\|\leq\|h\|=\||h|\|=\max(\|h_+\|,\|h_-\|)\).
 2. (*Uniqueness.*) If \(h=a-b\) with \(a,b\in A_h\), \(\sigma'(a)\cup\sigma'(b)\subseteq[0,\infty)\) and \(ab=0\), then \(a=h_+\) and \(b=h_-\).
 
 **Proof.** (1) These are identities between continuous functions on \(\sigma'(h)\subseteq\mathbb R\) (Proposition 1.5): \(t=t_+-t_-\), \(|t|=t_++t_-\), \(t_+t_-=0\), \(t_\pm\geq0\), \(t_\pm\leq|t|\), and \(\max|t|=\max(\max t_+,\max t_-)\). Apply Theorem 5.1(2)–(4) in \(\widetilde A\).
-(2) From \(ab=0\) we get \(ba=(ab)^*=0\), so \(a\) and \(b\) commute, and \(D=C^*(a,b)\) is commutative. By Theorem 2.1, identify \(D\) with \(C_0(\Omega)\). The functions \(\hat a,\hat b\) are real, and their values lie in \(\sigma'_D(a)=\sigma'_A(a)\) and \(\sigma'_A(b)\): the values of a Gelfand transform lie in the quasi-spectrum ([the Gelfand representation), and quasi-spectra do not depend on the C\*-subalgebra (Theorem 3.2(2)). So \(\hat a,\hat b\geq0\), and \(\hat a\hat b=0\). Hence \(\max(\hat h,0)=\hat a\) at every point. By Theorem 5.3(4), \(\widehat{h_+}=\max(\hat h,0)\). Since \(\mathcal G\) is injective, \(h_+=a\), and then \(h_-=h_+-h=b\). \(\square\)
+(2) From \(ab=0\) we get \(ba=(ab)^*=0\), so \(a\) and \(b\) commute, and \(D=C^*(a,b)\) is commutative. By Theorem 2.1, identify \(D\) with \(C_0(\Omega)\). The functions \(\hat a,\hat b\) are real, and their values lie in \(\sigma'_D(a)=\sigma'_A(a)\) and \(\sigma'_A(b)\): the values of a Gelfand transform lie in the quasi-spectrum (the Gelfand representation), and quasi-spectra do not depend on the C\*-subalgebra (Theorem 3.2(2)). So \(\hat a,\hat b\geq0\), and \(\hat a\hat b=0\). Hence \(\max(\hat h,0)=\hat a\) at every point. By Theorem 5.3(4), \(\widehat{h_+}=\max(\hat h,0)\). Since \(\mathcal G\) is injective, \(h_+=a\), and then \(h_-=h_+-h=b\). \(\square\)
 
 Part (1) says in particular that every self-adjoint element is a difference of two elements with nonnegative quasi-spectrum, each of norm at most \(\|h\|\).
 
@@ -403,7 +403,7 @@ Part (1) says in particular that every self-adjoint element is a difference of t
 
 **Exercise 7.5** (medium; Not every unitary is an exponential). In \(C(\mathbb T)\), the unitary \(u(\lambda)=\lambda\) is not \(\exp(ih)\) for any \(h\in C(\mathbb T)\), self-adjoint or not.
 
-*Solution.* In \(C(\mathbb T)\), \(\exp(ih)\) is the function \(e^{ih}\), because evaluation at a point is a character and passes through the power series. So \(u=\exp(ih)\) would give \(\lambda=e^{ih(\lambda)}\) with \(h\) continuous. This is the case \(g=ih\) of the example on the index group of \(C(\mathbb T)\), which shows that the identity function is not \(e^g\) for any \(g\in C(\mathbb T)\): the continuous function \(t\mapsto g(e^{it})-it\) on \([0,2\pi]\) takes values in \(2\pi i\mathbb Z\), so it is constant, but its values at \(0\) and \(2\pi\) differ by \(2\pi i\). So Exercise 7.4 cannot be extended to all unitaries.
+*Solution.* In \(C(\mathbb T)\), \(\exp(ih)\) is the function \(e^{ih}\), because evaluation at a point is a character and passes through the power series. So \(u=\exp(ih)\) would give \(\lambda=e^{ih(\lambda)}\) with \(h\) continuous. This is the case \(g=ih\) of the [example on the index group of \(C(\mathbb T)\)](banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.md#oa-fnd-bn-14), which shows that the identity function is not \(e^g\) for any \(g\in C(\mathbb T)\): the continuous function \(t\mapsto g(e^{it})-it\) on \([0,2\pi]\) takes values in \(2\pi i\mathbb Z\), so it is constant, but its values at \(0\) and \(2\pi\) differ by \(2\pi i\). So Exercise 7.4 cannot be extended to all unitaries.
 
 **Exercise 7.6** (medium; Self-adjointness through the norm). In a nontrivial C\*-algebra \(A\) with identity, prove that \(x\in A\) is self-adjoint exactly when \(\lim_{t\to0}\frac1t(\|1+itx\|-1)=0\). (In the zero algebra \(\|1+itx\|=0\), so the quotient is \(-1/t\) and the statement fails.)
 
@@ -477,7 +477,7 @@ The next proposition collects the rules for working with the order; they are use
 (4) \(a\leq b\leq\|b\|\) gives \(\sigma'(a)\subseteq[0,\|b\|]\), so \(\|a\|=r(a)\leq\|b\|\). The second claim is (1) with \(t=1\).
 (5) \(\|a^{1/2}c\|^2=\|c^*ac\|=0\), and \(ac=a^{1/2}(a^{1/2}c)\).
 (6) By (3), \(0\leq b^*vb\leq b^*ab=0\), so \(b^*vb=0\), because \(A_+\cap(-A_+)=\{0\}\) (Theorem 8.2). Then (5) gives \(vb=0\).
-(7) \(\sigma(a)\subseteq\varepsilon,\infty)\) by (1), so \(a\) is invertible, and likewise \(b\). Put \(c=a^{-1/2}ba^{-1/2}\). By (3), \(c\geq a^{-1/2}aa^{-1/2}=1\), so \(\sigma(c)\subseteq[1,\infty)\). The spectrum of an inverse consists of the inverses of the points of the spectrum ([spectrum and quasi-spectrum), so \(\sigma(c^{-1})\subseteq(0,1]\). So \(c^{-1}=a^{1/2}b^{-1}a^{1/2}\leq1\), and conjugating by \(a^{-1/2}\) gives \(b^{-1}\leq a^{-1}\).
+(7) \(\sigma(a)\subseteq[\varepsilon,\infty)\) by (1), so \(a\) is invertible, and likewise \(b\). Put \(c=a^{-1/2}ba^{-1/2}\). By (3), \(c\geq a^{-1/2}aa^{-1/2}=1\), so \(\sigma(c)\subseteq[1,\infty)\). The spectrum of an inverse consists of the inverses of the points of the spectrum (spectrum and quasi-spectrum), so \(\sigma(c^{-1})\subseteq(0,1]\). So \(c^{-1}=a^{1/2}b^{-1}a^{1/2}\leq1\), and conjugating by \(a^{-1/2}\) gives \(b^{-1}\leq a^{-1}\).
 (8) This is Proposition 7.2(1) together with the Cartesian decomposition (Proposition 1.2(1)).
 (9) \(C^*(a,b)\) is commutative. By Theorem 2.1 its elements are functions, and positivity there is pointwise nonnegativity; positivity in it agrees with positivity in \(A\) (Remark 8.4). The product of two nonnegative functions is nonnegative.
 (10) Existence is Theorem 8.2, (i) ⇒ (iii). Uniqueness: let \(b\geq0\) with \(b^2=a\). Then \(b\) commutes with \(a\), and \(D=C^*(b)\) is commutative and contains \(a\) and \(a^{1/2}\in C^*(a)\). In \(D\cong C_0(\Omega)\), \(\hat b\geq0\) and \(\hat b^2=\hat a\), so \(\hat b=\sqrt{\hat a}=\widehat{a^{1/2}}\) by Theorem 5.3(4). Hence \(b=a^{1/2}\). The commutation claim is Theorem 5.1(6), since \(a=a^*\).
@@ -1045,7 +1045,7 @@ The last question is an order decomposition. If a positive element is dominated 
 
 ### 13. Strictly positive elements and countable approximate identities
 
-A C\*-algebra has a sequential approximate identity exactly when it has a strictly positive element (Proposition 13.3). We first collect the facts about positive linear functionals that are needed. A linear functional \(\varphi\) on a C\*-algebra \(A\) is *positive* if \(\varphi(A_+)\subseteq0,\infty)\), and a *state* is a positive linear functional of norm one.
+A C\*-algebra has a sequential approximate identity exactly when it has a strictly positive element (Proposition 13.3). We first collect the facts about positive linear functionals that are needed. A linear functional \(\varphi\) on a C\*-algebra \(A\) is *positive* if \(\varphi(A_+)\subseteq[0,\infty)\), and a *state* is a positive linear functional of norm one.
 
 **Lemma 13.1** (Positive linear functionals). Let \(A\) be a C\*-algebra and \(\varphi\) a positive linear functional on \(A\).
 1. \(\varphi\) is bounded.
@@ -1057,7 +1057,7 @@ A C\*-algebra has a sequential approximate identity exactly when it has a strict
 7. (*States.*) If \(A\neq0\) and \(a\in A_+\), some state \(\omega\) has \(\omega(a)=\|a\|\).
 
 **Proof.** (1) If not, since every element is a combination of four positive elements of no larger norm (Proposition 8.5(8)), there are \(a_n\in A_+\) with \(\|a_n\|\leq1\) and \(\varphi(a_n)\geq4^n\). The series \(a=\sum2^{-n}a_n\) converges, \(a\geq2^{-n}a_n\) because the rest of the series is positive, and so \(\varphi(a)\geq2^n\) for every \(n\), which is absurd.
-(2) For \(h\in A_h\), \(\varphi(h)=\varphi(h_+)-\varphi(h_-)\) is real (Proposition 8.5(8)), so \(\varphi\) is hermitian. The form \((x,y)\mapsto\varphi(y^*x)\) is sesquilinear and positive semidefinite, so the inequality is the Cauchy–Schwarz inequality, Proposition 1.1(3) of [Hilbert spaces and compact operators.
+(2) For \(h\in A_h\), \(\varphi(h)=\varphi(h_+)-\varphi(h_-)\) is real (Proposition 8.5(8)), so \(\varphi\) is hermitian. The form \((x,y)\mapsto\varphi(y^*x)\) is sesquilinear and positive semidefinite, so the inequality is the Cauchy–Schwarz inequality, Proposition 1.1(3) of Hilbert spaces and compact operators.
 (3) For \(u\) in the approximate identity of Theorem 11.4, \(|\varphi(ux)|^2\leq\varphi(u^2)\varphi(x^*x)\leq\|\varphi\|\varphi(x^*x)\), and \(\varphi(ux)\to\varphi(x)\).
 (4) \(Q\) lies in the closed unit ball of the dual of \(A\), which is weak\* compact by the Banach–Alaoglu theorem (Theorem 3.1 of Weak topologies: Tychonoff, Banach–Alaoglu, Mazur, bipolars, Krein–Milman and Eberlein–Šmulian), and positivity is a weak\*-closed condition.
 (5) Let \(\|x\|\leq1\). By (2) with \(y=1\), \(|\varphi(x)|^2\leq\varphi(x^*x)\varphi(1)\). Since \(x^*x\leq\|x\|^2\leq1\) (Proposition 8.5(2)), \(\varphi(x^*x)\leq\varphi(1)\). So \(|\varphi(x)|\leq\varphi(1)\), and \(\|\varphi\|\leq\varphi(1)\leq\|\varphi\|\,\|1\|=\|\varphi\|\).

@@ -603,8 +603,8 @@ The constant \(K_g\) here may depend on the original continuity modulus and lowe
 
 The identity plus this bounded operator has an inverse given by its norm-convergent geometric series. On \(H^m\),
 
-\
- P+it=[I+W(A_0+it)^{-1}.
+\[
+ P+it=[I+W(A_0+it)^{-1}](A_0+it).
  \tag{40}
 \]
 

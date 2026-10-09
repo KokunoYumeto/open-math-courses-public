@@ -95,9 +95,9 @@ On the scalar space write
  (Qf)(q)=qf(q),\qquad V_t=e^{itQ}.
 \]
 Set \(V=M_{r\mapsto c_r}\). Formula (DWC1.b) and the translation formula give
-\
+\[
  \begin{aligned}
- \bigl[V(\alpha_t\bar\otimes\operatorname{Ad}\lambda_t)(V^*)\bigr
+ \bigl[V(\alpha_t\bar\otimes\operatorname{Ad}\lambda_t)(V^*)\bigr](r)
  &=c_r\alpha_t(c_{r-t}^*)\\
  &=c_t.
  \end{aligned}
@@ -524,8 +524,8 @@ Neither \(h\) nor \(k\) commutes with the other. Write
 Then \(h^{it_0}=Z\), \(2^{it_0}=i\), \(c_{t_0}=Y\), and \(c_{2t_0}=-1\). Thus \(c_{t_0}^2=1\ne c_{2t_0}\); the twisted product is \(Y(ZYZ)=-1\), as (DWC5.k) requires. Omitting \(2^{it}\) in (DWC5.j) would replace the actual numerator weight by the one with density \(RhR^*\). Indeed \(\varphi_k(1)=10\), whereas that other weight and \(\varphi_h\) both have value \(5\) on \(1\).
 
 The regular absorption is an identity on the entire tensor algebra. On \(L^2(\mathbb R_r,\mathbb C^2)\), let \(\lambda_t\xi(r)=\xi(r-t)\) and \(V\xi(r)=c_r\xi(r)\). The continuous matrix field is unitary, and the field \(c_r^*\) is its inverse. Both define isometries on all \(L^2\), not just on compactly supported vectors. Its four scalar multiplication entries put \(V\) in \(M_2\overline\otimes B(L^2(\mathbb R))\). The cocycle law with \(r=t+(r-t)\) gives
-\
- \bigl[V(a_t\otimes\operatorname{Ad}\lambda_t)(V^*)\bigr
+\[
+ \bigl[V(a_t\otimes\operatorname{Ad}\lambda_t)(V^*)\bigr](r)
       =c_r a_t(c_{r-t}^*)=c_t.
  \tag{DWC5.m}
 \]

@@ -195,7 +195,7 @@ A diffeomorphism \(T\) preserves this bracket under pushforward. Indeed the chai
 applying it twice gives
 \(( [T_*X,T_*Y]f)\circ T=[X,Y](f\circ T)\).
 Again coordinate functions determine the fields. For \(v\in T_eG\), let \(X_v(b)=d(L_b)_e v\). It is smooth because multiplication is smooth. Differentiating \(L_aL_b=L_{ab}\) proves left invariance. Every left invariant field has this form, by evaluating its invariance at \(e\); consequently the bracket of two such fields is left invariant, by the pushforward identity for \(L_a\). Define
-\([v,w]=X_v,X_w\). The bijection \(v\mapsto X_v\) transports bilinearity, antisymmetry and Jacobi to this bracket.
+\([v,w]=[X_v,X_w](e)\). The bijection \(v\mapsto X_v\) transports bilinearity, antisymmetry and Jacobi to this bracket.
 
 The identities \(c_{ab}=c_a c_b\) and \(c_{a^{-1}}=c_a^{-1}\) imply that (C.2) is a representation into invertible linear maps. It is smooth: in coordinate charts near each \((a,e)\), its matrix entries are the partial derivatives in the second variable of the jointly smooth conjugation map. These matrices transform by fixed tangent-coordinate changes at \(e\). Differentiating \(c_a L_b=L_{c_a(b)}c_a\) gives \((c_a)_*X_v=X_{\operatorname{Ad}(a)v}\). Bracket preservation by the diffeomorphism \(c_a\) therefore yields
 \[

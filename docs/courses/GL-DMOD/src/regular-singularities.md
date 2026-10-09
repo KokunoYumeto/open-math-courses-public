@@ -3932,6 +3932,6180 @@ By Theorem 5.17, both factors are regular, and their tensor is regular by the cu
 
 For instance, $\mathcal O_{\mathbb A^1}$ and $\mathcal O.e^x$ both have zero-section characteristic variety. The first is regular algebraically and the second is not. Characteristic variety records the cotangent directions of propagation, not the exponential rate at infinity.
 
+### Actual analytic descent from a supplied Euler-stable lattice
+
+The next eight sections prove an actual convergence and descent result on the dummy cotangent chart. Let \(M\) be a coherent analytic left \(\mathcal D_X\)-module and \(j_0(x)=(0,x;1,0)\). The conclusion applies to a **supplied** coherent order-zero lattice \(L\subset\Phi(M)\) which generates \(\Phi(M)\) under finite-order operators and satisfies \(tL\subset hL\), where \(h=D_t^{-1}\). It produces one ordinary neighbourhood on which every actual intersection \(j_0^{-1}h^{-k}L\cap M\) is coherent and the resulting filtration is locally good. No canonical lattice is being assumed to have been constructed for every regular holonomic module.
+
+The argument proceeds through actual common-domain factorial symbols, Banach division, finite-stalk exact completion, fixed neighbourhood kernel sections, bounded actual ambient modules, and formal Euler projection followed by faithful recovery of actual sections. Completion is used at the dummy zero-section stalks \(j_0(y)\); at other points of the chart the ideal \((h,t,z)\) can be the whole ring. Coherence of the operator sheaf, proved in §5.24, holds throughout the fixed chart.
+
+The coefficient inputs are the complete earlier Cauchy and Taylor proofs, Theorems 1.2, 2.1 and 2.3, bounded Weierstrass preparation/division and analytic Noetherianity, Theorems 1, 2 and 6, Oka coherence and finite coherent kernels, Theorems 2.1 and 3.1, and commutative completion, Theorems 3.1–3.3. Ordinary polynomial Noetherianity and relative coefficient flatness are proved in GL06, the analytic local-algebra calculation and Lemmas 3.0c.1–3.0c.2; Lemmas 3.0c.3–3.0c.4 and their finite-presentation proof give the uniform polynomial kernels and ordinary local good filtrations. The graded Rees argument, with both generator shifts retained, is also proved in [§5.12, graded analytic Rees coherence](#graded-analytic-rees-coherence-with-a-finite-termination-argument). These are earlier full proofs with the displayed hypotheses. The operator-ring division, nearby kernels and completion below are proved separately.
+
+### 5.19. Actual factorial-growth symbols and ordered jets
+
+#### 5.19.1. The chart and the convergence class
+
+Use base coordinates \(u=(t,x_1,\ldots,x_d)\), cotangent coordinates \((\tau,\xi_1,\ldots,\xi_d)\), and the chart \(\tau\ne0\). Put \(z_i=\xi_i/\tau\), \(h=\tau^{-1}\), and work near \((t,x,z)=(0,x_0,0)\). The coefficient symbols of order zero are sequences
+\[
+ P=\sum_{n\geq0}\tau^{-n}p_n(u,z).
+ \tag{5.19a}
+\]
+All \(p_n\) are holomorphic on one common neighbourhood in \((u,z)\). For every compact subset \(K\) of that neighbourhood there exist \(A,C>0\) such that
+\[
+\begin{gathered}
+\sup_K|p_n|\leq AC^n n!,\\ n\geq0.
+\end{gathered}
+\tag{5.19b}
+\]
+The series is a symbol expansion; it is not a convergent power series at a numerical nonzero value of \(h\). A germ means an equivalence class of these sequences under restriction to a common neighbourhood. In particular it cannot be defined by unrelated holomorphic germs with shrinking coefficient domains.
+
+This is the order-zero factorial-growth class in the free primary source Schapira, [*Une introduction à l'étude des systèmes d'équations microdifférentielles*](https://www.numdam.org/item/AST_1981__89-90__45_0/), §2.1, printed pp. 67–69. It supplies human context for the class. Its multiplication, division and Noetherian assertions are proved here by the displayed estimates and later sections.
+
+Denote the sheaf defined by (5.19a)–(5.19b) in this fixed chart by \(\mathcal A_{\rm gv}\). Restriction is coefficientwise. The sheaf gluing assertion is elementary: coefficient functions glue holomorphically; a compact set is covered by finitely many neighbourhoods on which bounds (5.19b) hold, and taking the maximum of their finitely many \(A,C\) gives a bound on the compact set. This proves the actual sheaf condition for this convergence class.
+
+#### 5.19.2. Multiplication, with all cotangent derivatives retained
+
+For \(\alpha=(a,\beta)\in\mathbf N\times\mathbf N^d\), write \(|\alpha|=a+|\beta|\), \(\alpha!=a!\beta!\), and \(\partial_\rho^\alpha=\partial_\tau^a\partial_\xi^\beta\), \(\partial_u^\alpha=\partial_t^a\partial_x^\beta\). The product coefficients are defined below.
+
+For the next formulas write \(F_n(u,\rho)=\tau^{-n}p_n(u,\xi/\tau)\) and \(\operatorname{ev}_0f=f(u,1,z)\). The evaluation takes place after the indicated original cotangent derivatives. The expressions \(F\) in (5.20m) and \(F_{n,b,\gamma}\) in (5.21f) below are the displayed homogeneous symbols, with their cotangent dependence retained.
+
+\[
+\begin{aligned}
+c_N(u,z)&=\sum_{\substack{n,m\geq0,\ \alpha\geq0\\n+m+|\alpha|=N}}\\ &\quad\frac{\operatorname{ev}_0(\partial_\rho^\alpha F_n)}{\alpha!}\\ &\quad\cdot\partial_u^\alpha q_m(u,z).
+\end{aligned}
+\tag{5.19c}
+\]
+Every sum for a fixed \(N\) is finite. Cotangent homogeneity gives a term of degree \(-n-|\alpha|\) in the first derivative, so the product is \(\sum_{N\geq0}\tau^{-N}c_N\). The ordinary microdifferential Leibniz product is therefore fully specified in these coordinates.
+
+For clarity, no \(t\)-dependent term has been removed. If \(E_z=\sum_i z_i\partial_{z_i}\), the first derivative in (5.19c) is
+\[
+\begin{gathered}
+\left[\prod_{\ell=0}^{a-1}(-n-|\beta|-\ell-E_z)\right]\\ \cdot\partial_z^\beta p_n(u,z).
+\end{gathered}
+\tag{5.19d}
+\]
+Indeed \(\partial_\xi^\beta\) first gives
+\(\tau^{-n-|\beta|}\partial_z^\beta p_n\); each subsequent \(\tau\)-derivative decreases homogeneity by one and applies the indicated Euler factor. This proves (5.19d), including its signs and all integer factors.
+
+#### 5.19.3. A bounded product estimate on explicit nested domains
+
+Translate \(x_0\) to zero. Let \(0<r<R\), and suppose all coefficient functions extend holomorphically beyond the closed polydisc
+\[
+ K_R=\{|u_i|\leq R,\ |z_i|\leq R\},
+\]
+with bounds \(A_P C_P^n n!\), \(A_Q C_Q^m m!\) there. Put
+\[
+\begin{gathered}
+\varepsilon=\frac{R-r}{2},\\ \delta=\min\left(\frac14,\frac{R-r}{4(1+R)}\right),\\ D=d+1,\\ K_*=\frac{C_P}{1-\delta}+C_Q+\frac D{\delta\varepsilon}.
+\end{gathered}
+\tag{5.19e}
+\]
+All constants are strictly positive and finite.
+
+**Theorem 5.19.1.** The product (5.19c) is defined on \(K_r\) and satisfies
+\[
+ \sup_{K_r}|c_N|\leq A_PA_Q\,K_*^N N!.
+ \tag{5.19f}
+\]
+
+**Proof.** Fix \((u,z)\in K_r\). On the cotangent polydisc
+\(|\tau-1|\leq\delta,\ |\xi_i-z_i|\leq\delta\), one has
+\[
+\begin{gathered}
+|\tau|\geq1-\delta,\\ \left|\frac{\xi_i}{\tau}\right|\leq\frac{r+\delta}{1-\delta}\\ =r+\frac{(1+r)\delta}{1-\delta}\\ \leq r+\frac{R-r}{3}<R.
+\end{gathered}
+\tag{5.19g}
+\]
+Thus the coefficient function in the first derivative of (5.19c) is holomorphic beyond this closed cotangent polydisc and is bounded there by
+\(A_P(C_P/(1-\delta))^n n!\). Iterated Cauchy estimates give
+\[
+\begin{aligned}
+|\operatorname{ev}_0(\partial_\rho^\alpha F_n)|\\ {}\leq\alpha!\delta^{-|\alpha|}A_P\\ {}\cdot(C_P/(1-\delta))^n n!.
+\end{aligned}
+\tag{5.19h}
+\]
+The base polydisc with coordinate radius \(\varepsilon\) around \(u\) lies strictly inside the radius-\(R\) polydisc. The same Cauchy estimate gives
+\[
+\begin{aligned}
+|\partial_u^\alpha q_m(u,z)|\\ {}\leq\alpha!\varepsilon^{-|\alpha|}A_QC_Q^m m!.
+\end{aligned}
+\tag{5.19i}
+\]
+These are the earlier proved several-variable Cauchy estimates, obtained by differentiating the iterated Cauchy integral. No estimate for an operator of infinite order is used.
+
+Set \(s=|\alpha|\) and \(N=n+m+s\). Dividing the product of (5.19h)–(5.19i) by \(\alpha!\) leaves \(\alpha!n!m!\), which is at most \(s!n!m!\leq N!\). The number of multiindices \(\alpha\) of length \(D\) and sum \(s\) is at most \(D^s\): each such multiindex is the count vector of at least one word of length \(s\) in \(D\) letters, and there are \(D^s\) words. Consequently
+\[
+\begin{aligned}
+|c_N|&\leq A_PA_QN!\sum_{n+m+s=N}\\ &\quad\left(\frac{C_P}{1-\delta}\right)^nC_Q^m\\ &\quad\cdot\left(\frac D{\delta\varepsilon}\right)^s.
+\end{aligned}
+\]
+The sum is bounded by \(K_*^N\). Expand the \(N\)-fold product defining that power; it contains the displayed monomials with positive integer multinomial coefficients, all at least one. This proves (5.19f). \(\square\)
+
+For any compact set strictly inside the common coefficient domain, use finitely many such nested polydiscs and take maxima of the constants. Hence (5.19c) preserves the actual class (5.19b).
+
+#### 5.19.4. Associativity and the dummy Ore relations
+
+**Proposition 5.19.2.** The product (5.19c) is associative, has unit one, and makes \(\mathcal A_{\rm gv}\) a sheaf of complex algebras. In this algebra the elements \(h=\tau^{-1}\), \(\theta_i=z_i\), \(t\), and holomorphic functions of \(x\) satisfy
+\[
+\begin{gathered}
+{}[\theta_i,b(x)]=h\partial_i b,\\ {}[\theta_i,\theta_j]=0,\\ {}[h,\theta_i]=[h,b]=0,\\ {}[t,h]=h^2,\\ {}[t,\theta_i]=h\theta_i,\quad[t,b]=0.
+\end{gathered}
+\tag{5.19j}
+\]
+
+**Proof.** On three factors in original \((u,\rho)\) variables put
+\(A_{ij}=\sum_{\ell=0}^d\partial_{\rho_\ell}^{(i)}
+                                  \partial_{u_\ell}^{(j)}\).
+These ordinary partial-derivative operators commute. The Leibniz rule identifies both parenthesizations of a triple product with
+\[
+\begin{gathered}
+\mu_3\exp(A_{12}+A_{13}+A_{23})\\ \cdot(P\otimes Q\otimes S).
+\end{gathered}
+\tag{5.19k}
+\]
+This is a formal homogeneous-order identity: for any fixed output order, there are only finitely many coefficient indices and derivative orders. Thus the exponential notation expresses finite coefficient identities, and does not require convergence of an infinite-order operator. For the first parenthesization the inner derivatives are \(A_{12}\), and differentiation of its two factors in the outer product gives \(A_{13}+A_{23}\). The other parenthesization gives \(A_{23}\) and \(A_{12}+A_{13}\). Their expansions agree since the operators commute. Theorem 5.19.1 puts both products in the convergence class. The constant one has no nonzero derivatives, so it is a unit.
+
+To verify (5.19j), apply (5.19c) to the displayed coordinate symbols. For example \(h\circ t=ht-h^2\), whereas \(t\circ h=th\). Likewise \(\theta_i\circ t=z_it-hz_i\), \(t\circ\theta_i=tz_i\), and \(\theta_i\circ b=z_ib+h\partial_i b\). All other displayed commutators have no correction terms. This proves the signs, including the genuine \(t\)-action. \(\square\)
+
+The polynomial subring generated by these elements is exactly the graded Ore ring \(A=R[t;h\delta]\) of formal Lemma 5.23.4. To see the injectivity as well as the relations, polynomial normal symbols have finite total degree and ordered polynomial normal form; the reordering from \(t\)-left to \(t\)-right is triangular in its \(t\)-degree with unchanged leading coefficient. Thus no nonzero ordered polynomial is the zero symbol. The two presentations are inverse using their normal forms.
+
+#### 5.19.5. The positive-degree formal map
+
+Let \(H=\mathcal O_{X,x_0}\), and let \(I_{\rm alg}=(h,t,\theta_1,\ldots,\theta_d)\) in the polynomial Ore ring \(A\). The degree product
+\(\widehat A=\prod_{k\geq0}A_k\) is its positive-degree completion, by the already proved degree-one generation of \(A\).
+
+Expand each \(p_n(x,t,z)\) at \(t=z=0\). A term
+\[
+\begin{gathered}
+f_{n,\beta,b}(x)h^nz^\beta t^b\\ \text{has total degree}\\ n+|\beta|+b.
+\end{gathered}
+\tag{5.19l}
+\]
+At a fixed total degree there are finitely many such indices. Their coefficient germs belong to \(H\). Reorder each finite homogeneous polynomial using (5.19j) into \(t\)-right Ore normal form. This defines
+\[
+ T:\mathcal A_{{\rm gv},\,j_0(x_0)}\longrightarrow\widehat A.
+ \tag{5.19m}
+\]
+
+**Lemma 5.19.3.** The map \(T\) is an injective ring map, and multiplication preserves the lowest total degree.
+
+**Proof.** On monomials of (5.19l), (5.19c) preserves the sum of their total degrees. A \(\xi\)-derivative lowers \(z\)-degree by one and raises negative \(\tau\)-order by one. A \(\tau\)-derivative raises that order by one while preserving \(z\)-degree; its paired \(t\)-derivative lowers the \(t\)-degree of the other factor by one. Derivatives in \(x\) change only the degree-zero holomorphic coefficient. Thus every nonzero contribution has precisely the sum of the input total degrees. In particular it cannot decrease their sum.
+
+Every fixed total-degree coefficient of the product therefore depends on finite homogeneous Taylor polynomials of the two input symbols. On these finite polynomials (5.19j) is exactly the Ore product, by Proposition 5.19.2. This proves multiplicativity of (5.19m).
+
+If \(T(P)=0\), the triangular finite reordering in every total degree gives zero for every original coefficient in (5.19l). For each \(n\), the Taylor series in \((t,z)\) of \(p_n\) is zero, with holomorphic coefficient germs in \(x\). On a smaller common product neighbourhood the function \(p_n\) is therefore zero by its Taylor expansion. This conclusion concerns the germ of each coefficient; to obtain zero as a common-domain symbol, use the identity theorem on the connected coefficient domain: a function with zero germ is identically zero there. The original common connected neighbourhood then works for every \(n\). Hence \(P\) is the zero symbol germ. \(\square\)
+
+For \(r\geq1\), let \(J_r=\{P:T(P)\text{ has no degree below }r\}\). The lemma gives \(J_rJ_s\subset J_{r+s}\); in particular \(J_1\) is a two-sided ideal.
+
+#### 5.19.6. Actual ordered-jet division, without a formal convergence substitution
+
+**Theorem 5.19.4.** In the actual convergent stalk, let \(I=(h,t,\theta_1,\ldots,\theta_d)\) be the two-sided ideal generated by these elements. Then
+\[
+\begin{gathered}
+I^r=J_r,\quad r\geq1,\\ \mathcal A_{{\rm gv},j_0(x_0)}/I^r\\ {}\simeq A/I_{\rm alg}^r.
+\end{gathered}
+\tag{5.19n}
+\]
+Consequently the completion of this actual convergent ring at \(I\) is canonically \(\widehat A\).
+
+**Proof.** The generators have degree one, and Lemma 5.19.3 gives \(I^r\subset J_r\). For the converse let \(P\in J_r\). The inverse triangular reordering in each degree shows that all Taylor terms of \(p_n\), \(n<r\), of degree less than \(r-n\) in \((t,z)\) are zero. There are only finitely many such coefficients; their germ vanishings hold on one smaller common neighbourhood.
+
+For these finitely many \(n\), write the actual holomorphic Taylor factorization
+\[
+\begin{gathered}
+p_n(x,t,z)=\sum_{b+|\beta|=r-n}\\ t^bz^\beta a_{n,b,\beta}(x,t,z).
+\end{gathered}
+\tag{5.19o}
+\]
+All \(a_{n,b,\beta}\) are holomorphic on one smaller common product neighbourhood. Here is an explicit construction, rather than an ideal-membership assertion. Order the finitely many monomials of total degree \(r-n\). Assign each monomial of the Taylor series of degree at least \(r-n\) to the first such monomial dividing it, and remove that factor. Each resulting coefficient series converges normally on any smaller polydisc: Cauchy bounds for the original coefficients, multiplied by a fixed inverse radius power for the removed degree, bound the assigned subseries. There are finitely many groups and finitely many \(n<r\), so one common smaller domain suffices.
+
+Each term of \(\tau^{-n}p_n\) in (5.19o) equals the actual symbol product
+\[
+ t^b\circ a_{n,b,\beta}\circ(\theta^\beta h^n).
+ \tag{5.19p}
+\]
+The leftmost factor has no cotangent derivatives; the rightmost has no base derivatives. Thus (5.19c) gives precisely their ordinary symbol product, with no omitted correction. It belongs to \(I^{b+|\beta|+n}=I^r\), since \(I\) is two-sided and the middle coefficient is an actual order-zero symbol.
+
+The remaining tail is also an actual element of \(I^r\). Put
+\[
+ Q=\sum_{k\geq0}\tau^{-k}p_{k+r}(u,z).
+ \tag{5.19q}
+\]
+Its coefficients have factorial growth on every compact set. In fact
+\[
+ (k+r)!\leq 2^{k+r}k!r!
+\]
+because \(\binom{k+r}{r}\leq2^{k+r}\), so (5.19b) for \(P\) gives
+\[
+\begin{aligned}
+\sup_K|p_{k+r}|\\ {}\leq(AC^r2^rr!)(2C)^kk!.
+\end{aligned}
+\tag{5.19r}
+\]
+Hence \(Q\in\mathcal A_{\rm gv}\) on the original coefficient domain. The right factor \(h^r\) has no base derivatives, so \(Q\circ h^r\) is exactly the tail \(\sum_{n\geq r}\tau^{-n}p_n\). This puts the tail in \(I^r\), proving \(J_r\subset I^r\). The case \(r=1\) also verifies directly that the candidate ideal is the full kernel of the degree-zero map.
+
+The map \(T\) followed by truncation is surjective onto \(A/I_{\rm alg}^r\): every finite ordered polynomial with coefficient germs in \(H\) is represented by an actual finite symbol after shrinking for its finite list of coefficients. Its kernel is \(J_r=I^r\). This proves (5.19n). The quotient maps are compatible as \(r\) varies, so their inverse limits give exactly \(\widehat A\). This is completion of actual stalk modules at an actual two-sided ideal; no sheaf-stalk/inverse-limit interchange is used. \(\square\)
+
+### 5.20. One-norm multiplication, units and dummy division
+
+In this section \(\circ\) denotes the actual Leibniz product. Juxtaposition of homogeneous normal symbols, Taylor coefficients or the weight variables in a norm calculation denotes ordinary coefficient multiplication. These operations agree only when the derivative corrections shown below vanish.
+
+#### 5.20.1. The actual homogeneous-symbol norm
+
+Use the actual convergence class in §5.19. Put \(D=d+1\), \(u=(t,x)\), \(\rho=(\tau,\xi)\), \(z=\xi/\tau\), and
+\[
+\begin{gathered}
+F_n(u,\rho)=\tau^{-n}p_n(u,\xi/\tau),\\ P=\sum_{n\geq0}F_n.
+\end{gathered}
+\tag{5.20a}
+\]
+Every \(F_n\) is homogeneous of cotangent degree \(-n\). Work on one common open subset of \(\tau\ne0\); a compact \(K\) below is contained in that subset. For \(\mu,\nu\in\mathbf N^D\), use total lengths \(|\mu|,|\nu|\), but retain the multiindices in the derivatives. Let \(\lambda=2D\). Define the nonnegative majorant
+\[
+\begin{gathered}
+\mathsf N(P,K,\epsilon)=2\sum_{n,\mu,\nu}\\ \frac{\lambda^{-n}n!}{(n+|\mu|)!(n+|\nu|)!}\\ \cdot\sup_K|\partial_u^\mu\partial_\rho^\nu F_n|\\ \cdot\epsilon^{2n+|\mu|+|\nu|}.
+\end{gathered}
+\tag{5.20b}
+\]
+The numerical value may initially be infinite. Formal comparison of these majorants always means coefficientwise comparison of their nonnegative coefficients. For a fixed exponent there are finitely many indices. In particular \(\mathsf N(1,K,\epsilon)=2\).
+
+**Lemma 5.20.1 (norm detects exactly the factorial class).** For an actual symbol, \(\mathsf N(P,K,\epsilon)\) is finite for some \(\epsilon>0\), for every compact \(K\) strictly inside its common coefficient domain. Conversely, finiteness gives on \(K\)
+\[
+\begin{aligned}
+\sup_K|F_n|\\ {}\leq\tfrac12\mathsf N(P,K,\epsilon)\\ {}\cdot(\lambda/\epsilon^2)^n n!.
+\end{aligned}
+\tag{5.20c}
+\]
+
+**Proof.** For the converse retain the term \(\mu=\nu=0\) of (5.20b). For the forward implication, thicken \(K\) by a sufficiently small common polydisc radius \(\eta>0\). This thickening stays in the cotangent chart and the common open domain. The normalized factorial bounds on its compact image under \((u,\rho)\mapsto(u,\xi/\tau)\), and the positive lower bound for \(|\tau|\), give constants \(A,C>0\) such that \(\sup|F_n|\le AC^n n!\) on the thickening. Iterated Cauchy integrals give
+\[
+ \sup_K|\partial_u^\mu\partial_\rho^\nu F_n|
+ \le AC^n n!\,\mu!\nu!\,\eta^{-|\mu|-|\nu|}.
+\]
+Put \(p=|\mu|,q=|\nu|\). Since \(\mu!\le p!\), \(\nu!\le q!\), and \((n!)^2p!q!\le(n+p)!(n+q)!\), each weighted term is at most
+\(2A(C\epsilon^2/\lambda)^n(\epsilon/\eta)^{p+q}\).
+There are at most \(D^p\) multiindices of total length \(p\): assign to each multiindex a word having those coordinate counts. The same holds for \(q\). Thus, if both ratios in the following expression are less than one,
+\[
+\begin{gathered}
+\mathsf N(P,K,\epsilon)\\ {}\leq\frac{2A}{1-C\epsilon^2/\lambda}\\ {}\cdot\frac1{(1-D\epsilon/\eta)^2}.
+\end{gathered}
+\tag{5.20d}
+\]
+Choosing a sufficiently small \(\epsilon\) proves finiteness. Restriction to the normalized slice \(\tau=1\) in (5.20c) gives the original factorial bound for \(p_n\). \(\square\)
+
+#### 5.20.2. A combinatorial estimate with the actual cotangent derivatives
+
+The actual symbol multiplication is
+\[
+\begin{aligned}
+(P\circ Q)_k&=\sum_{n+m+|\alpha|=k}\\ &\quad\frac{\partial_\rho^\alpha F_n\,\partial_u^\alpha G_m}{\alpha!}.
+\end{aligned}
+\tag{5.20e}
+\]
+Each output is homogeneous of degree \(-k\). The preceding actual symbol proof establishes this product and associativity; (5.20e) retains the \(\tau\)-derivatives paired with \(t\)-derivatives.
+
+**Theorem 5.20.2 (one-norm product inequality).** Coefficientwise as majorants, and numerically whenever the right side is finite,
+\[
+\begin{gathered}
+\mathsf N(P\circ Q,K,\epsilon)\\ {}\preccurlyeq\mathsf N(P,K,\epsilon)\mathsf N(Q,K,\epsilon).
+\end{gathered}
+\tag{5.20f}
+\]
+
+**Proof.** Differentiate one summand of (5.20e). Allocate its external \(u\)-derivatives and \(\rho\)-derivatives between the two factors. Fix the resulting derivative indices of \(F_n\) to be \((\mu,\nu)\), and those of \(G_m\) to be \((\mu',\nu')\). An internal derivative index \(\alpha\) satisfies \(\alpha\le\nu,\mu'\). The external indices are
+\[
+\begin{gathered}
+a=\mu+\mu'-\alpha,\\ b=\nu+\nu'-\alpha,\\ k=n+m+|\alpha|.
+\end{gathered}
+\]
+The Leibniz coefficient is exactly
+\(\binom a\mu\binom b{\nu'}/\alpha!\).
+Put \(p=|\mu|,q=|\nu|,r=|\mu'|,v=|\nu'|,s=|\alpha|\), and \(A=p+r-s,B=q+v-s\). Compare the weight of this term, including its Leibniz coefficient, to the product of the two weights of the fixed derivative pair in (5.20b), with the initial factors 2 removed. Multiindex binomial coefficients are at most their total-length binomial coefficients: choosing fixed coordinate counts is a subset of choosing the specified number among all entries. The ratio is therefore at most
+\[
+ \lambda^{-s}\frac{s!}{\alpha!}\,
+ \frac{\dfrac{k!}{n!m!s!}\binom A p\binom B v}
+ {\binom{k+A}{n+p}\binom{k+B}{m+v}}.
+ \tag{5.20g}
+\]
+This follows by cancellation of the four input factorials and the two output factorials; \(k+A=n+m+p+r\), \(k+B=n+m+q+v\).
+
+The fraction on the second line is at most one. Indeed, choosing \(p\) entries from a block of size \(A\) and \(n\) from a block of size \(k\) is one contribution to choosing \(n+p\) from their union. Thus
+\[
+\begin{gathered}
+\binom{k+A}{n+p}\geq\binom Ap\binom kn,\\ \binom{k+B}{m+v}\geq\binom Bv\binom km.
+\end{gathered}
+\]
+Finally
+\(\binom k n\binom k m\ge
+\binom k n\binom{k-n}m=k!/(n!m!s!)\), since \(k=n+m+s\). This proves the asserted bound in (5.20g).
+
+For the fixed derivative pair, sum (5.20g) over all permitted \(\alpha\). Enlarging to all multiindices and expanding \((1+\cdots+1)^s\) gives
+\[
+\begin{gathered}
+\sum_\alpha\lambda^{-|\alpha|}\frac{|\alpha|!}{\alpha!}\\ {}\leq\sum_{s\geq0}(D/\lambda)^s=2.
+\end{gathered}
+\tag{5.20h}
+\]
+Also the power of \(\epsilon\) is exactly preserved:
+\[
+\begin{gathered}
+2k+|a|+|b|\\ {}=2n+|\mu|+|\nu|\\ {}+2m+|\mu'|+|\nu'|.
+\end{gathered}
+\]
+Hence the unscaled sums of weights for the product are at most twice the product of the unscaled sums for the inputs. Multiplying by the initial factor 2 in (5.20b) gives exactly the two initial factors 2 on the right of (5.20f). All summands are nonnegative, so these reindexings are valid first for finite truncations and then by increasing limits. They prove both the coefficientwise and the numerical statement. \(\square\)
+
+The use of \(\lambda=2D\) precisely controls the possible internal derivative allocations. No repeated loss of the coefficient domain or repeated enlargement of a factorial-growth constant is used in this inequality.
+
+#### 5.20.3. Actual elliptic inverses and the stalk radical
+
+**Theorem 5.20.3 (elliptic inversion in the actual class).** If \(p_0\) has no zero on a common chart neighbourhood, \(P\) has an actual two-sided inverse there. In particular a germ is invertible if and only if its leading coefficient is nonzero at the point.
+
+**Proof.** Let \(B\) be the actual symbol whose only homogeneous coefficient is \(p_0^{-1}\). Put \(R=1-P\circ B\). Its degree-zero homogeneous coefficient is zero. Its higher coefficients are holomorphic on the common neighbourhood by the actual product theorem. Fix any compact \(K\) therein and choose \(\epsilon_0>0\) for which its norm is finite, by Lemma 5.20.1. Since every term of \(\mathsf N(R,K,\epsilon)\) has exponent at least two,
+\[
+\begin{gathered}
+\mathsf N(R,K,\epsilon)\\ {}\leq(\epsilon/\epsilon_0)^2\mathsf N(R,K,\epsilon_0),\\ 0<\epsilon\leq\epsilon_0.
+\end{gathered}
+\tag{5.20i}
+\]
+Choose \(\epsilon\) so the right side is \(q<1\). The formal Neumann symbol \(S=\sum_{j\ge0}R^{\circ j}\) has well-defined holomorphic coefficients on the original common domain: the coefficient of homogeneous order \(-n\) receives terms only from \(j\le n\). Theorem 5.20.2 and triangle inequalities give
+\[
+ \mathsf N(S,K,\epsilon)
+ \le 2+\sum_{j\ge1}q^j=2+q/(1-q).
+\]
+This inequality is justified first on finite sums, then coefficientwise by increasing nonnegative bounds. Lemma 5.20.1 proves the actual factorial growth of \(S\) on every compact of the common domain. Thus \(Q=B\circ S\) is actual and \(P\circ Q=1\) by finite homogeneous coefficient identities. Multiplication by \(P\) is injective on formal symbols: the first nonzero homogeneous coefficient of \(W\) would give the nonzero product \(p_0w_n\). Consequently \(P\circ(Q\circ P-1)=0\) implies \(Q\circ P=1\). No numerical convergence at \(h\ne0\) was asserted. For a germ with nonzero leading value, shrink so that \(p_0\) has no zero. Conversely the degree-zero product of a germ and its inverse has value one, so its leading value cannot be zero. \(\square\)
+
+At the actual stalk \(\mathcal A=\mathcal A_{{\rm gv},j_0(x_0)}\), evaluation of the leading coefficient is a surjective algebra map to \(\mathbf C\). Its kernel \(\mathfrak m\) consists exactly of the nonunits, by Theorem 5.20.3. Every proper left or right ideal is contained in \(\mathfrak m\), because an element outside it is a unit. Since the quotient by \(\mathfrak m\) is a field, \(\mathfrak m\) is the unique maximal left and right ideal, and the Jacobson radical. In particular the actual two-sided ideal
+\[
+\begin{gathered}
+I=(h,t,\theta_1,\ldots,\theta_d),\\ I\subset\mathfrak m.
+\end{gathered}
+\tag{5.20j}
+\]
+
+**Corollary 5.20.3.1 (finite-module zero detection).** For a finite left \(\mathcal A\)-module \(V\),
+\[
+\begin{gathered}
+\varprojlim_r V/I^rV=0\\ {}\Longrightarrow V=0.
+\end{gathered}
+\tag{5.20k}
+\]
+This conclusion needs neither Noetherianity nor exactness of completion.
+
+**Proof.** The transition maps are surjective. Starting with any element of \(V/IV\), successively choose lifts along them; this gives a compatible family. The projection of the inverse limit onto \(V/IV\) is therefore surjective. A zero inverse limit implies \(V=IV\). Take a finite generating list \(v_1,\ldots,v_r\). If \(r>0\), write \(v_r=\sum_i a_iv_i\) with \(a_i\in I\): use \(V=IV\) and the fact that \(I\) is two-sided. Since \(1-a_r\) is a unit, this expresses \(v_r\) in the preceding generators. Repeating removes every generator and proves \(V=0\). This is the noncommutative Nakayama argument in full. \(\square\)
+
+The corollary detects zero objects. It does not assert that completion is exact or injective on arbitrary finite-module morphisms. For the two coherent quotients in Proposition 5.26.1, it supplies the zero-detection step once their vanishing completions have been genuinely proved by exactness and a valid coefficient model.
+
+#### 5.20.4. Bounded actual division by \(t-ah\)
+
+Let \(a\in\mathbf Z\) be a fixed shift. The proof below also works for any fixed complex \(a\), using a branch of \(\tau^{-a}\) on a small disc about 1; only integer shifts are used for the ordinary lattice applications. Define on symbols independent of \(t\)
+\[
+ \mathscr L_a=-\partial_\tau+a\tau^{-1}.
+ \tag{5.20l}
+\]
+It raises negative homogeneous order by one. It is the differential operator \(\tau^a(-\partial_\tau)\tau^{-a}\), as the product rule directly verifies. In the normalized chart,
+\[
+\begin{gathered}
+F=\tau^{-n}f(x,\xi/\tau),\\ \operatorname{ev}_0(\mathscr L_a^bF)\\ {}=\prod_{j=0}^{b-1}(n+a+j+E_z)\\ {}\cdot f(x,z),\\ E_z=\sum_i z_i\partial_{z_i}.
+\end{gathered}
+\tag{5.20m}
+\]
+For \(b=0\) the product is the identity. One \(-\partial_\tau\) gives \(\tau^{-n-1}(n+E_z)f\); the extra \(a\tau^{-1}\) gives the stated first factor, and induction proves every factor and sign.
+
+Assume the coefficients \(p_n(t,x,z)\) are holomorphic beyond a closed product domain with \(|t|\le T\), and satisfy \(|p_n|\le AC^n n!\) there. Fix \(0<s<T\), smaller compact \(x,z\) ranges, and \(0<\delta<1\) such that the cotangent disc \(|\tau-1|\le\delta\), at fixed \(\xi=z\) in those smaller ranges, remains in the common normalized coefficient domain. This is always possible; the explicit choice and ratio estimate of 5.19e–5.19g may be used. Put
+\[
+\begin{gathered}
+H_a=\max_{|\tau-1|\leq\delta}|\tau^{-a}|,\\ C_*=C/(1-\delta),\\ K_*=C_*+(\delta T)^{-1}.
+\end{gathered}
+\tag{5.20n}
+\]
+The branch has value one at \(\tau=1\), and \(H_a\ge1\).
+
+**Theorem 5.20.4 (actual bounded dummy division).** There are unique actual symbols \(Q\) and \(R\), with \(R\) independent of \(t\), such that
+\[
+ P=Q\circ(t-ah)+R.
+ \tag{5.20o}
+\]
+On the specified smaller compact product with \(|t|\le s\), their normalized coefficients satisfy
+\[
+\begin{gathered}
+|q_N|\leq\frac{AH_a}{T-s}K_*^NN!,\\ |r_N|\leq AH_aK_*^NN!.
+\end{gathered}
+\tag{5.20p}
+\]
+In particular one common smaller holomorphic neighbourhood serves for all coefficients.
+
+**Proof.** Taylor-expand in the actual base variable:
+\[
+\begin{gathered}
+p_n(t,x,z)=\sum_{b\geq0}t^bp_{n,b}(x,z),\\ |p_{n,b}|\leq AC^nn!T^{-b}.
+\end{gathered}
+\tag{5.20q}
+\]
+This is an ordinary convergent Taylor expansion on the common domain. Write \(F_{n,b}(x,\rho)=\tau^{-n}p_{n,b}(x,\xi/\tau)\). For a fixed pair \((n,b)\), the normal-symbol identity
+\[
+\begin{gathered}
+t^bF_{n,b}=\\ \left(\sum_{j=0}^{b-1}t^{b-j-1}\mathscr L_a^jF_{n,b}\right)\\ \circ(t-ah)\\ {}+\mathscr L_a^bF_{n,b}.
+\end{gathered}
+\tag{5.20r}
+\]
+holds, with the sum empty for \(b=0\). Indeed, for every symbol \(W\),
+\[
+\begin{gathered}
+W\circ(t-ah)\\ {}=tW+\partial_\tau W-ahW\\ {}=tW-\mathscr L_aW.
+\end{gathered}
+\]
+The first equality is the actual Leibniz product: \(t\) has only one nonzero base derivative, and the right factor \(h\) has no base derivatives. The two finite sums telescope in (5.20r); \(\mathscr L_a\) does not differentiate \(t\).
+
+Define the homogeneous coefficients of the remainder by the finite sums
+\[
+\begin{aligned}
+R_N(x,\rho)&=\sum_{n+b=N}\\ &\quad\mathscr L_a^bF_{n,b}(x,\rho),
+\end{aligned}
+\tag{5.20s}
+\]
+and those of the quotient by
+\[
+\begin{gathered}
+Q_N(t,x,\rho)=\sum_{n+j=N}\sum_{b\geq j+1}\\ t^{b-j-1}\mathscr L_a^jF_{n,b}(x,\rho).
+\end{gathered}
+\tag{5.20t}
+\]
+Every inner sum here is an actual holomorphic series in \(t\). To verify its convergence and the factorial bounds, apply the Cauchy derivative estimate in \(\tau\) to \(\tau^{-a}F_{n,b}\). Equations (5.20l) and (5.20q) give, on the normalized slice,
+\[
+\begin{gathered}
+|\mathscr L_a^jF_{n,b}|\\ {}\leq AH_aC_*^nn!T^{-b}j!\delta^{-j}.
+\end{gathered}
+\tag{5.20u}
+\]
+The factor \(\tau^a\) in (5.20l) equals one at that slice. The \(\tau\)-disc remains in the normalized coefficient domain by the explicit hypothesis preceding (5.20n). Thus the bound includes the actual Euler/cotangent derivative factors, rather than replacing them with formal Ore coefficients.
+
+For \(|t|\le s\),
+\[
+ \sum_{b\ge j+1}T^{-b}s^{b-j-1}
+ =T^{-j}/(T-s).
+\]
+The inner series of (5.20t) therefore converges normally on the smaller product and is bounded by
+\(AH_a C_*^n n!j!(\delta T)^{-j}/(T-s)\).
+Sum over \(n+j=N\), use \(n!j!\le N!\), and bound the sum of monomials by \((C_*+(\delta T)^{-1})^N\). This proves the quotient bound in (5.20p). The same argument on the finite sum \(n+b=N\) gives the remainder bound. All coefficients are holomorphic on the same smaller open product; the estimates on its compact subsets prove that both are actual symbols.
+
+Identity (5.20r), summed by homogeneous degree and ordinary \(t\)-Taylor degree, proves (5.20o). At a fixed total degree there are only finitely many input Taylor terms; alternatively normal convergence in (5.20t) allows coefficientwise holomorphic differentiation on smaller compact products, and the sums telescope. Neither interpretation interchanges unrelated germs with infinite sums.
+
+For uniqueness, suppose \(Q\circ(t-ah)+R=0\), with \(R\) independent of \(t\). At homogeneous degree zero, the equation is \(tq_0+r_0=0\). Evaluate at \(t=0\) to obtain \(r_0=0\), hence \(q_0=0\). If all previous coefficients are zero, the degree-\(-N\) equation is again \(tq_N+r_N=0\), since \(\mathscr L_a\) raises negative homogeneous order by one. The same argument proves their vanishing. Induction gives uniqueness. \(\square\)
+
+The theorem proves division by these actual degree-one dummy operators. It does not prove division by a general operator regular in an arbitrary cotangent or base direction.
+
+#### 5.20.5. The convergent free dummy module and its completion
+
+Let \(\mathcal R_{\rm gv}\subset\mathcal A\) be the actual symbols independent of \(t\). It is a subring, because every term with a \(t\)-derivative of the right factor vanishes in (5.20e). Its variable \(h\) is central, and \([\theta_i,b(x)]=h\partial_i b\). The bounded division proves an actual left-module identification
+\[
+\begin{gathered}
+\mathcal A/\mathcal A(t-ah)\simeq\mathcal R_{\rm gv}u_a,\\ t(Su_a)=h(a+\delta)Su_a,\\ \delta\left(\sum_n h^ns_n(x,z)\right)\\ {}=\sum_n h^n(n+E_z)s_n(x,z).
+\end{gathered}
+\tag{5.20v}
+\]
+The right side means a free rank-one left \(\mathcal R_{\rm gv}\)-module endowed with the displayed actual \(t\)-action. It is not a statement that \(\mathcal A\) is commutative or that this quotient is a ring.
+
+**Proof of (5.20v).** Theorem 5.20.4 gives one and only one \(t\)-independent representative of every coset. Left multiplication by a \(t\)-independent symbol preserves \(t\)-independence, and preserves the left ideal generated by \(t-ah\). Thus the representative map is \(\mathcal R_{\rm gv}\)-linear. For a representative \(S\), the relation \([t,S]=-\partial_\tau S\), proved directly from the product, and \(tu_a=ah u_a\) give
+\(tS u_a=(ahS-\partial_\tau S)u_a=h(a+\delta)S u_a\).
+These are actual symbols: the derivatives preserve factorial growth on smaller compact products by Cauchy estimates, and multiplying the \(n\)-th coefficient by \(n\) preserves such growth after increasing its exponential constant. The same conclusion follows from the actual remainder of \(tS\) in Theorem 5.20.4. \(\square\)
+
+Put \(J=(h,\theta_1,\ldots,\theta_d)\) in \(\mathcal R_{\rm gv}\). The positive-degree Taylor map of Lemma 5.19.3 restricts injectively to
+\[
+ \mathcal R_{{\rm gv},x_0}
+      \longrightarrow\widehat R,
+ \qquad R=\bigoplus_{k\ge0}\mathcal D_{\le k,x_0}h^k.
+\]
+Its degree-\(k\) coefficient is the finite Taylor polynomial with \(n+|\beta|=k\). The common-domain identity argument of Lemma 5.19.3 applies unchanged. The actual ideal identity
+\[
+\begin{gathered}
+J^r=\\ \left\{S:\begin{gathered}\text{all Taylor terms}\\ \text{of total degree}\\ \text{below }r\text{ vanish}\end{gathered}\right\}.
+\end{gathered}
+\tag{5.20w}
+\]
+has the following full local proof. The forward inclusion follows from degree additivity of the actual product. For the reverse inclusion, for the finitely many coefficients \(n<r\), factor their convergent \(z\)-Taylor series as finite sums of monomials \(z^\beta\) of degree \(r-n\) times holomorphic functions on a common smaller polydisc. This is obtained by assigning each Taylor monomial to the first monomial of degree \(r-n\) dividing it; each assigned subseries converges normally on smaller polydiscs by Cauchy bounds. The resulting symbols are products \(b(x,z)\circ z^\beta h^n\), with no corrections because the right factor has no base derivatives. They lie in \(J^r\). The tail factors on the right by \(h^r\); its shifted coefficients are actual because
+\((k+r)!\le2^{k+r}k!r!\), by the binomial theorem. This proves (5.20w).
+
+Consequently finite truncation gives
+\[
+\begin{gathered}
+\mathcal R_{{\rm gv},x_0}/J^r\simeq R/R_{\geq r},\\ \varprojlim_r\mathcal R_{{\rm gv},x_0}/J^r\simeq\widehat R.
+\end{gathered}
+\tag{5.20x}
+\]
+Surjectivity of each finite truncation follows by representing its finitely many holomorphic coefficient germs by one finite actual symbol on their common neighbourhood. The kernel is exactly (5.20w). This is an inverse limit of actual stalk quotients, with no stalk/sheaf-limit interchange.
+
+The \(I\)-adic filtration of the cyclic \(\mathcal A\)-module in (5.20v) equals this \(J\)-adic filtration of its representative module. For the forward containment, lift an element of \(I^r\) to its actual positive-degree Taylor model, supplied by Theorem 5.19.4. Each generator of \(I\) raises total degree by one in the module: \(h\) and \(\theta_i\) do so directly, and \(t=h(a+\delta)\) does so by (5.20v). The action of every actual symbol has nonnegative degree, and the leading-degree preservation of Lemma 5.19.3 extends to the module relation, which is homogeneous. Thus the representative has no terms below \(r\); by (5.20w) it belongs to \(J^r\). For the reverse containment, the finite factorizations in the proof of (5.20w), and the tail factor by \(h^r\), express it as the action on \(u_a\) of actual elements of the two-sided ideal \(I^r\). Hence
+\[
+\begin{gathered}
+\widehat{\mathcal A/\mathcal A(t-ah)}^{\,I}\\ {}\simeq\widehat R\,u_a,\\ tu_a=ah u_a,\\ t(Su_a)=h(a+\delta)Su_a.
+\end{gathered}
+\tag{5.20y}
+\]
+One may also see the forward containment explicitly from (5.20s)–(5.20t): Taylor terms have degrees \(n+b+|\beta|\); the remainder replaces each \(t^b\) by \(b\) applications of \(\mathscr L_a\), preserving that total degree.
+
+For integral \(a\), identify \(u_a\) with \(h^a u_0\) inside the finite-order localization of the free dummy transfer. The actual Weyl relation gives \(t h^a u_0=ah^{a+1}u_0\), also for negative \(a\). Thus (5.20y) is exactly the shifted formal free ordinary Rees model \(h^a\widehat R\) in Lemma 5.23.4. The construction respects any finite direct sum of such shifts: finite truncations and the inverse limit act coordinatewise. This proves the actual free coefficient model and its bounded presentation, the free case of the general actual ambient presentation proved in §5.25.
+
+### 5.21. Actual simultaneous division and finite stalk relations
+
+#### 5.21.1. An absolute Taylor version of the product norm
+
+Translate the ordinary base point to zero. Put \(w=(u,z)=(t,x,z)\); there are \(q=2d+1\) variables. Choose positive polyradii \(R=(R_1,\ldots,R_q)\). For a holomorphic Taylor series \(f=\sum_\gamma c_\gamma w^\gamma\), define
+\[
+ |f|_R=\sum_\gamma |c_\gamma|R^\gamma.
+ \tag{5.21a}
+\]
+This norm is finite on a smaller closed polydisc than any polydisc of holomorphy. Indeed Cauchy bounds on a larger polyradius \(S\) give \(|c_\gamma|\le A S^{-\gamma}\), and the geometric product \(A\prod_j(1-R_j/S_j)^{-1}\) bounds (5.21a). It is submultiplicative by coefficient convolution and the triangle inequality.
+
+For the actual homogeneous coefficients \(F_n=\tau^{-n}p_n(u,\xi/\tau)\), replace the compact supremum in (5.20b) by the norm (5.21a) after evaluation at \(\tau=1\), \(\xi=z\):
+\[
+\begin{gathered}
+\|P\|_{R,\epsilon}=2\sum_{n,\mu,\nu}\\ \frac{\lambda^{-n}n!\epsilon^{2n+|\mu|+|\nu|}}{(n+|\mu|)!(n+|\nu|)!}\\ \cdot|\operatorname{ev}_0(\partial_u^\mu\partial_\rho^\nu F_n)|_R,\\ \lambda=2(d+1).
+\end{gathered}
+\tag{5.21b}
+\]
+Every actual germ has a representative for which this norm is finite, with sufficiently small \(R,\epsilon\). To prove this, use Cauchy estimates for the original homogeneous functions on a fixed thickening of the normalized slice at polyradius \(S>R\), and then the geometric bound preceding (5.21b). The same calculation as (5.20d) bounds the derivative sum, with a further constant \(\prod_j(1-R_j/S_j)^{-1}\). Conversely, the zero-derivative terms imply
+\[
+ |p_n|_R\le\tfrac12\|P\|_{R,\epsilon}
+                     (\lambda/\epsilon^2)^n n!.
+ \tag{5.21c}
+\]
+Thus a finite norm supplies a common polydisc of holomorphic coefficients and actual factorial growth on it.
+
+The proof of Theorem 5.20.2 used only a submultiplicative coefficient norm, the Leibniz rule and the exact allocation inequality. Consequently it applies without change to (5.21b):
+\[
+ \|P\circ Q\|_{R,\epsilon}
+       \le\|P\|_{R,\epsilon}\|Q\|_{R,\epsilon}.
+ \tag{5.21d}
+\]
+For ordinary multiplication of homogeneous normal symbols, retain only the allocation \(\alpha=0\) in that proof. There is no internal-allocation factor 2. Hence
+\[
+ \|PQ\|_{R,\epsilon}
+       \le\tfrac12\|P\|_{R,\epsilon}\|Q\|_{R,\epsilon}.
+ \tag{5.21e}
+\]
+These assertions include the actual \(\tau\)-derivatives and the mixed base/cotangent derivatives.
+
+For clarity about completeness and support projections, write a coefficient monomial as \(c\,h^n u^b z^\gamma\). If \(\nu=(a,\beta)\), its normalized cotangent derivative is
+\[
+\begin{gathered}
+F_{n,b,\gamma}=\tau^{-n}u^b(\xi/\tau)^\gamma,\\ \operatorname{ev}_0(\partial_\tau^a\partial_\xi^\beta F_{n,b,\gamma})\\ {}=(-1)^a(n+|\gamma|)^{\overline a}\\ {}\cdot\gamma^{\underline\beta}u^bz^{\gamma-\beta}.
+\end{gathered}
+\tag{5.21f}
+\]
+The expression is zero if \(\beta\nleq\gamma\); the rising factorial with initial value zero is zero for \(a>0\). Equation (5.21f) follows directly from 5.19d, since the Euler degree after the \(\xi\)-derivatives is \(|\gamma|-|\beta|\). Base derivatives add the falling factorial \(b^{\underline\mu}\).
+
+For fixed derivative indices, distinct original monomials remain distinct after the derivatives. Therefore (5.21b) is exactly a weighted \(\ell^1\)-norm on the original coefficients, with positive weights. Each monomial has finite weight for sufficiently small \(\epsilon<1\): the base and \(\xi\) derivative sums are finite on a monomial, and the remaining \(\tau\) derivative sum is a geometric series times a fixed polynomial in its derivative order, by the factorials in (5.21b). The resulting coefficient space is Banach. A coefficientwise support restriction is a closed subspace and has norm at most one.
+
+Ordinary division of monomials by a fixed \(w^\eta\), restricted to terms divisible by it, has norm at most \(R^{-\eta}\). In fact it decreases each base falling factorial in (5.21f), each cotangent falling factorial and the nonnegative initial value \(n+|\gamma|\) of each rising factorial. Its radius factor changes by exactly \(R^{-\eta}\). This proves the bound term by term in the weighted \(\ell^1\)-norm, including both \(u\)- and \(z\)-variables. No formal division convergence is presumed.
+
+Finally, let \(\partial_{\rho_j}\) act on the homogeneous series, moving its coefficient of index \(n\) to index \(n+1\). In (5.21b), compare its term to the input term with one extra \(\rho_j\)-derivative. The ratio of weights is
+\[
+ \frac\epsilon\lambda\frac{n+1}{n+|\mu|+1}
+ \le\frac\epsilon\lambda.
+\]
+Consequently
+\[
+ \|\partial_\rho^\alpha P\|_{R,\epsilon}
+          \le (\epsilon/\lambda)^{|\alpha|}
+                      \|P\|_{R,\epsilon}.
+ \tag{5.21g}
+\]
+
+#### 5.21.2. Initial exponents and the finite diagram
+
+Let \(\mathcal A\) be the actual stalk and \(L\subset\mathcal A^s\) a left submodule, with \(s\) finite. A nonzero vector has a first nonzero homogeneous coefficient \(h^n\). Among that coefficient's nonzero \(w\)-Taylor monomials, choose the least total degree, then the least lexicographic exponent, and finally the least component index. Denote the resulting leading exponent by \((n,\gamma,j)\). This order is well ordered and compatible with addition of exponents; component comparison is used only at an identical exponent.
+
+The set \(\Delta(L)_j\subset\mathbf N^{q+1}\) of leading exponents in component \(j\) is upward closed. Indeed multiplication on the left by \(h^m w^\beta\) adds \((m,\beta)\) to the leading exponent. Every nonzero internal derivative correction in the actual product has strictly larger homogeneous index \(n\), and the degree-zero ordinary Taylor product has the usual multiplicative leading monomial. Thus the leading exponent is exactly translated as stated.
+
+Each upward closed subset of \(\mathbf N^k\) has finitely many minimal elements. Here is the combinatorial proof. Every infinite sequence in \(\mathbf N^k\) has a pair of terms in their sequence order with the first componentwise at most the second. Induct on \(k\). For the first coordinate, either some value occurs infinitely often, giving a constant subsequence, or its values are unbounded, giving a strictly increasing subsequence. Apply induction to the remaining coordinates of that subsequence. An infinite collection of incomparable minimal elements is therefore impossible. Every exponent in an upward closed set dominates a minimal one, by choosing a minimal element in the finite coordinate box below it. This proves finite generation of the upward closed set.
+
+Choose vectors \(P_1,\ldots,P_\ell\in L\) representing all the finitely many minimal exponents \((n_i,\gamma_i,j_i)\). Scale each by its nonzero complex leading coefficient so that the leading coefficient is one. Their exponent orthants cover \(\Delta(L)\). The argument below proves they generate the actual submodule.
+
+Remove the finite initial homogeneous shift on the left:
+\[
+ B_i=h^{-n_i}\circ P_i.
+ \tag{5.21h}
+\]
+This is an actual order-zero vector even though the intervening symbol \(h^{-n_i}=\tau^{n_i}\) has positive order. Its product has only finitely many internal derivatives, since \(\tau^{n_i}\) is a polynomial. Explicitly, if \(r=n_i\) and \(p_n=0\) for \(n<r\), its normalized coefficient of index \(N\) is
+\[
+\begin{aligned}
+(B_i)_N&=\sum_{a=0}^{\min(r,N)}\\ &\quad\binom ra\partial_t^a p_{N+r-a}.
+\end{aligned}
+\tag{5.21i}
+\]
+There are finitely many derivative orders \(a\le r\). Cauchy estimates on one smaller common domain and
+\((N+r)!\le2^{N+r}N!r!\) prove the required factorial bounds for every coefficient. Its principal vector is exactly \(p_r\), so its principal leading Taylor monomial remains \(w^{\gamma_i}e_{j_i}\).
+
+#### 5.21.3. One domain and radii for all the divisors
+
+Choose positive rational weights \(v_1,\ldots,v_q\), as close to one as necessary, so that \(\gamma_i\) is the unique minimal weighted exponent among all the different Taylor monomials in the principal vector of every \(B_i\). Terms at that identical exponent may remain only in later components.
+
+To justify this simultaneous choice, let \(K\) be the largest of the finitely many degrees \(|\gamma_i|\). Among exponents of degree at most \(K\), use a sufficiently small hierarchical perturbation \(v_j=1+\delta^j\) to make lexicographic comparison agree with weighted comparison. The finitely many relevant differences are preserved by sufficiently small positive rational \(\delta\). The least-degree/lexicographic definition of the heads then gives the desired strict inequalities at degree at most \(K\). Take the perturbation still smaller so that \((K+1)\min v_j>K\max v_j\); every larger-degree monomial has larger weight than every head. This also controls all infinitely many higher Taylor terms.
+
+Give component \(j\) the positive norm factor \(c_j=\kappa^j\). Choose \(\kappa>0\) sufficiently small that, for every \(i\), the finitely many coefficients at the identical head exponent in later components have total weighted norm less than \(c_{j_i}/64\). There are no earlier-component terms at that exponent. Fix these factors. Set \(R_j=r^{v_j}\) for sufficiently small \(r>0\), inside the common coefficient domains. The other monomials in the principal vectors then have total weighted Taylor norm divided by \(c_{j_i}R^{\gamma_i}\) tending to zero. For completeness, this follows by domination by their convergent absolute Taylor series at one fixed larger polyradius: every exponent has a strictly positive weight gap, and removing the head radius power leaves a summable majorant for small \(r\). Thus one \(r\) works for the finite list.
+
+Define the vector norm \(\|F\|_c=\sum_j c_j\|F_j\|_{R,\epsilon}\). Put
+\[
+ A_i=B_i-w^{\gamma_i}e_{j_i}.
+ \tag{5.21j}
+\]
+The remaining positive-homogeneous-index coefficients of \(A_i\) have norms tending to zero as \(\epsilon\to0\); this follows by domination by their finite norm at an earlier \(\epsilon_0\), since their powers of \(\epsilon\) are at least two. The derivative terms of the principal coefficient similarly tend to zero, and the zero-derivative principal term has norm exactly twice its absolute Taylor norm. It follows that, after the above choices of \(c,R\), one can choose a sufficiently small common \(\epsilon\) making
+\[
+\begin{gathered}
+\frac{\|A_i\|_c}{c_{j_i}R^{\gamma_i}}\\ \text{arbitrarily small up to}\\ \text{the already fixed}\\ \text{head-component tolerance.}
+\end{gathered}
+\tag{5.21k}
+\]
+In particular the ratio can be made less than \(1/8\) for every \(i\). All these choices concern a finite list of actual coefficient domains and divisors.
+
+#### 5.21.4. Bounded simultaneous division
+
+Order the finite orthants of the heads. Partition their union by assigning each exponent \((n,\beta,j)\) to the first head with \(j=j_i\), \(n\ge n_i\), \(\beta\ge\gamma_i\). Denote its assigned set by \(\Delta_i\), and their complement by \(\Delta_0\). For any coefficient vector \(F\), let \(D_iF\) be the terms in \(\Delta_i\), taken from component \(j_i\) and divided ordinarily by \(w^{\gamma_i}\). No \(h\)-shift is removed; all its homogeneous indices are at least \(n_i\). Let \(V_i\) be the closed coefficient-support subspace occupied by these divided monomials. Give \(V=\bigoplus_i V_i\) the norm
+\[
+ \|Q'\|_V=\sum_i c_{j_i}R^{\gamma_i}
+                              \|Q'_i\|_{R,\epsilon}.
+ \tag{5.21l}
+\]
+§5.21.1 proves that these are Banach spaces. Support restrictions and monomial division give
+\[
+\begin{gathered}
+\|DF\|_V\leq\|F\|_c,\\ D=(D_1,\ldots,D_\ell).
+\end{gathered}
+\tag{5.21m}
+\]
+The estimate is for the sum, because the assigned supports are disjoint before division. Let
+\(T_0Q'=\sum_i Q'_iw^{\gamma_i}e_{j_i}\), using ordinary multiplication. By the support assignment, \(DT_0\) is the identity of \(V\), and the kernel of \(D\) is exactly the coefficient vectors supported in \(\Delta_0\).
+
+Actual multiplication differs from \(T_0\) by a small bounded operator. Define
+\[
+\begin{gathered}
+TQ'=\sum_iQ'_i\circ B_i,\\ E=T-T_0.
+\end{gathered}
+\tag{5.21n}
+\]
+For the term \(Q'_i\circ A_i\), (5.21d) gives norm at most \(\|Q'_i\|\|A_i\|_c\). For the difference between actual and ordinary multiplication by the monomial \(w^{\gamma_i}=u^b z^\eta\), only finitely many internal derivatives of the right factor can occur, namely \(0<\alpha\le b\). Equations (5.21e) and (5.21g) give the bound
+\[
+\begin{gathered}
+\|Q'_i\circ w^{\gamma_i}-Q'_iw^{\gamma_i}\|\\ {}\leq C_i(\epsilon,R)\|Q'_i\|,\\ C_i=\tfrac12\sum_{0<\alpha\leq b}\binom b\alpha\\ {}\cdot(\epsilon/\lambda)^{|\alpha|}\\ {}\cdot\|u^{b-\alpha}z^\eta\|_{R,\epsilon}.
+\end{gathered}
+\tag{5.21o}
+\]
+For fixed \(R\), this constant tends to zero as \(\epsilon\to0\); each monomial norm has a finite limit. Its component norm is multiplied by \(c_{j_i}\). Decrease the common \(\epsilon\) once more so that
+\[
+\begin{gathered}
+\vartheta=\max_i\\ \frac{\|A_i\|_c+c_{j_i}C_i(\epsilon,R)}{c_{j_i}R^{\gamma_i}},\\ \vartheta<\tfrac12.
+\end{gathered}
+\tag{5.21p}
+\]
+This is possible by the explicit choices in §5.21.3. Then (5.21m)–(5.21p) show \(\|DE\|\le\vartheta\) on \(V\).
+
+For any \(F\) with finite actual norm, solve
+\[
+\begin{gathered}
+Q'=(1+DE)^{-1}DF\\ {}=\sum_{k\geq0}(-DE)^kDF.
+\end{gathered}
+\tag{5.21q}
+\]
+The sum converges in the specified Banach space, with norm at most \((1-\vartheta)^{-1}\|F\|_c\). Its coefficients are actual symbols on one common smaller polydisc by (5.21c) and completeness. Define
+\(S=F-TQ'\). Equations (5.21n) and (5.21q) give \(DS=0\), so every coefficient of \(S\) is supported in \(\Delta_0\). This gives an actual finite division expression
+\[
+ F=\sum_i Q'_i\circ B_i+S.
+ \tag{5.21r}
+\]
+No closure of the original submodule was required to construct the coefficients.
+
+An arbitrary actual germ \(F\) need not be defined on the initially selected divisor domain. Repeat the finite domain/radius choices on the intersection with its own common coefficient domain. The same fixed heads and principal Taylor coefficients are used; the radii and norm parameter may be smaller. This gives actual division for every such germ, without requiring unrelated coefficient domains or a uniform domain for every germ of the stalk.
+
+#### 5.21.5. Noetherianity of the actual stalk
+
+**Theorem 5.21.1.** Every left submodule of \(\mathcal A^s\), for finite \(s\), is generated by finitely many actual germs. In particular the actual order-zero factorial-growth dummy stalk is left Noetherian.
+
+**Proof.** Use the finite head vectors \(P_i\in L\) and the actual division (5.21r) for \(F\in L\). Every \(Q'_i\) has homogeneous indices at least \(n_i\). Put
+\(Q_i=Q'_i\circ h^{-n_i}\); the right factor has no base derivatives, so this simply shifts its coefficient sequence down by \(n_i\). The resulting symbol is actual: the fixed shift preserves factorial growth by \((k+n_i)!\le2^{k+n_i}k!n_i!\), on the same common coefficient domain. Associativity of the finite homogeneous Leibniz identities gives
+\[
+ Q_i\circ P_i=Q'_i\circ(h^{-n_i}\circ P_i)
+              =Q'_i\circ B_i.
+\]
+The temporarily positive-order polynomial \(h^{-n_i}\) has finite derivative order; all displayed endpoints are order-zero actual symbols. Thus (5.21r) becomes \(F=\sum_iQ_i\circ P_i+S\). The finite sum belongs to \(L\), so \(S\in L\). If \(S\ne0\), its leading exponent must belong to \(\Delta(L)\), by the definition of that set. But every coefficient of \(S\) lies outside its covering orthants, by \(DS=0\). This contradiction gives \(S=0\), and the \(P_i\) generate \(L\). Taking \(s=1\) proves left Noetherianity. \(\square\)
+
+For every finite left stalk module, its submodules are finite: pull back a submodule along a finite free surjection and apply Theorem 5.21.1, then take its finite image. Every finite module also has a finite presentation because the kernel of its finite free surjection is finite. Thus the finite stalk-module category has finite kernels, images and cokernels. These are actual convergent algebra statements.
+
+### 5.22. Exact faithful positive-degree completion at the dummy zero section
+
+#### 5.22.1. The actual normal element
+
+Write \(\mathcal A\) for the actual order-zero stalk, \(h=\tau^{-1}\), and \(I=(h,t,z)\). Let \(T=\mathcal O_{x,t,z,0}\), \(H=\mathcal O_{x,0}\). Right multiplication by \(h^r\) is ordinary normal-symbol multiplication, so \(\mathcal Ah^r\) consists exactly of the symbols whose first \(r\) homogeneous coefficients vanish. The reverse inclusion uses the fixed coefficient shift and \((n+r)!\le2^{n+r}n!r!\), preserving the actual common domain and factorial class.
+
+The element \(h\) is normal. Direct actual multiplication gives
+\[
+\begin{gathered}
+h^{-1}\circ P\circ h=P+h\partial_tP,\\ h\circ P\circ h^{-1}\\ {}=\sum_{j\geq0}(-1)^jh^j\partial_t^jP.
+\end{gathered}
+\tag{5.22a}
+\]
+The first product has only the zero and first derivatives of \(h^{-1}=\tau\). The second identity has finite sums at each homogeneous index. It is actual: on any smaller compact coefficient domain, Cauchy estimates bound its index-\(N\) coefficient by
+\(A\sum_{n+j=N}C^n n!\,j!\eta^{-j}\le A(C+\eta^{-1})^NN!\).
+The two operators in (5.22a) are inverse, by cancellation of their coefficientwise geometric series. Associativity of the homogeneous product makes them inverse algebra automorphisms. Denote \(P\mapsto h\circ P\circ h^{-1}\) by \(\sigma\). Thus
+\[
+\begin{gathered}
+hP=\sigma(P)h,\\ (h)=\mathcal Ah=h\mathcal A,\\ \sigma(P)\equiv P\pmod h.
+\end{gathered}
+\tag{5.22b}
+\]
+Consequently the \(h\)-adic graded ring is the genuinely commutative ring \(T[h]\). Finite truncation of actual coefficients also gives
+\[
+ B:=\varprojlim_r\mathcal A/(h^r)
+       =\prod_{n\ge0}Th^n
+ \tag{5.22c}
+\]
+as coefficient sequences, with the actual homogeneous Leibniz product. This is completion of actual stalk quotients, not an interchange of a sheaf stalk and an inverse limit. The same automorphism, defined coefficientwise, makes \(h\) normal in \(B\).
+
+#### 5.22.2. Normal-element Artin–Rees and exact completion
+
+**Lemma 5.22.1.** Let \(R\) be left Noetherian and let \(h\) be a normal element with \(ha=\sigma(a)h\) for an algebra automorphism \(\sigma\). If \(N\subset M\) are finite left modules, there is \(c\) such that
+\[
+\begin{gathered}
+N\cap h^rM\\ {}=h^{r-c}(N\cap h^cM),\\ r\geq c.
+\end{gathered}
+\tag{5.22d}
+\]
+
+**Proof.** Put \(N_r=\{m\in M:h^rm\in N\}\). These are left submodules because \(h^r(am)=\sigma^r(a)h^rm\), and they form an ascending sequence. The finite module \(M\) is Noetherian, so they stabilize at \(c\). Now \(N\cap h^rM=h^rN_r\), directly by writing an element in the image of multiplication by \(h^r\). For \(r\ge c\), this is \(h^rN_c=h^{r-c}(N\cap h^cM)\). No assumption about \(h\)-torsion of \(M\) is used. \(\square\)
+
+**Lemma 5.22.2.** In the setting of Lemma 5.22.1, \(h\)-adic completion is exact on finite left modules, and is naturally \(\widehat R^{\,h}\otimes_R M\).
+
+**Proof.** In a short exact sequence \(0\to N\to M\to P\to0\), use the exact finite quotients
+\(0\to N/(N\cap h^rM)\to M/h^rM\to P/h^rP\to0\).
+The transitions of the left terms are surjective. Their inverse limit is exact: injectivity and the middle kernel are coefficientwise; to lift a compatible element of the right limit, choose a lift at the first stage, then at each successive stage choose any lift and correct its discrepancy by a lift from the preceding left kernel. Surjectivity of the left transitions supplies that correction. The induced filtration on \(N\) is cofinal with its intrinsic \(h\)-filtration by (5.22d), so the left limit is \(\widehat N^{\,h}\). This proves exactness. A finite presentation of \(M\) exists by left Noetherianity. Its completed cokernel and its tensor cokernel are the same map of finite free \(\widehat R^{\,h}\)-modules, proving the natural tensor identity. \(\square\)
+
+Apply these lemmas first to the actual \(\mathcal A\), using actual Noetherianity and (5.22b). Thus \(B\otimes_\mathcal A-\) is exact on finite left \(\mathcal A\)-modules. It detects zero objects, since \((h)\) lies in the actual Jacobson radical by Theorem 5.20.3, and the successive-lift/Nakayama proof of Corollary 5.20.3.1 applies unchanged.
+
+The formal coefficient ring \(B\) is left Noetherian, and its finite modules are \(h\)-adically complete. Here is a proof without importing a completion theorem for operators. Its graded ring \(T[h]\) is Noetherian. For a submodule of a finite free \(B\)-module, choose finitely many lifts of homogeneous generators of its graded initial module. Successively cancel its first \(h\)-coefficient by those lifts. The coefficient series converge in the complete product (5.22c), and a finite sum of the resulting products equals the given element. The same iteration for an element of the closure proves the submodule closed. This is exactly the full coefficientwise argument of formal Lemma 5.23.1, now at the \(h\)-filtration. It proves left Noetherianity. Lemma 5.22.2 applied to \(B\) then says that every finite \(B\)-module is its own \(h\)-completion, since \(\widehat B^{\,h}=B\).
+
+#### 5.22.3. The two formal rings and the coefficient comparison
+
+Let
+\[
+ S=H[[t,z]],\qquad
+ C=\widehat{\mathcal A}^{\ I}.
+ \tag{5.22e}
+\]
+The actual ring-jet theorem 5.19.4 identifies \(C\) with the formal positive-degree Ore ring, and regrouping its degree coefficients gives
+\[
+ C=\prod_{n\ge0}S h^n
+ \tag{5.22f}
+\]
+with the same homogeneous Leibniz product. In these coefficient-sequence identities, a written factor \(h^j\partial_t^jP\) means ordinary normal-symbol multiplication by \(h^j\); it does not mean the Leibniz product \(h^j\circ\partial_t^jP\). The maps in (5.22a) are defined by the displayed \(\circ\)-products, then expanded coefficientwise. Each formal coefficient in \(S\) has actual holomorphic \(x\)-germs, as required by the earlier degree completion; there is no additional completion in \(x\). Finite Taylor quotients show that \(S\) is exactly the \((t,z)\)-adic completion of \(T\). Thus commutative completion, Theorem 3.2, gives the faithfully flat coefficient map \(T\to S\).
+
+The ring \(S\) is Noetherian by commutative completion, Theorem 3.3. The element \(h\) is normal in \(C\), by the same coefficient identities (5.22a). The ring is \(h\)-adically complete, with commutative graded ring \(S[h]\). The first-coefficient reduction and closed-submodule argument of §5.22.2 proves that \(C\) is left Noetherian. Lemma 5.22.2 therefore proves that every finite \(C\)-module is \(h\)-adically complete and separated. The coefficient map defines a compatible ring map \(B\to C\).
+
+#### 5.22.4. Flatness at every finite normal-element quotient
+
+**Lemma 5.22.3 (finite filtered flatness).** Let \(R\to D\) be a filtered ring map with exhaustive, separated, bounded decreasing multiplicative filtrations, and suppose \(\operatorname{gr}R\) is left Noetherian and \(\operatorname{gr}D\) is flat as a right \(\operatorname{gr}R\)-module. Then tensoring with \(D\) is exact on finite left \(R\)-modules.
+
+**Proof.** Give a finite module its quotient filtration from a finite free module. Lift a finite homogeneous generating list of its graded module to a shifted filtered finite free module. Successive leading-filtration cancellation proves the resulting surjection is strict: the filtration has finitely many levels, so each reduction ends after finitely many steps. Its kernel has the induced bounded filtration, and its graded module is finite over the Noetherian graded ring. Repeat to construct a filtered free resolution with finite shifted free terms and strict differentials onto successive kernels. Its graded complex is a free resolution of the graded module.
+
+Tensor this resolution with \(D\), giving each tensor free term the induced shifted filtration. Its graded term is precisely the tensor with \(\operatorname{gr}D\) of the corresponding graded free term; this is immediate on each free generator and its shift. Its graded complex is exact in positive degrees by graded flatness. The tensor complex itself is exact in positive degrees: for a cycle, solve its leading graded equation, lift that boundary and subtract, then solve the higher leading degree. At any fixed homological degree, the finite free terms have bounded filtrations, so this reduction terminates. In particular its first homology is zero. The degree-zero tensor cokernel is the ordinary tensor product by the tensor universal property. This proves vanishing of the first derived tensor obstruction for every finite module. Equivalently, apply the resolution argument to a finite module quotient in a short exact sequence to obtain the required tensor injection; right exactness always holds. Thus tensoring is exact on finite modules. \(\square\)
+
+For each \(r\ge1\), apply the lemma to
+\(R=B/(h^r)\), \(D=C/(h^r)\), filtered by their nilpotent powers of \(h\). Their graded rings are
+\[
+ T[h]/h^r,
+ \qquad S[h]/h^r.
+\]
+The second is a flat right module over the first: its tensor functor is the coefficient-base extension \(S\otimes_T-\), with the same truncated \(h\)-action, and this is exact by coefficient flatness. Both filtrations have exactly \(r\) nonzero levels. Therefore \(C/(h^r)\otimes_{B/(h^r)}-\) is exact on finite modules. This conclusion is proved for the actual noncommutative quotients, not just their commutative graded rings.
+
+#### 5.22.5. Lifting exactness from the quotients
+
+**Proposition 5.22.4.** The functor \(C\otimes_B-\) is exact on finite left \(B\)-modules and detects zero objects.
+
+**Proof.** Let \(N\subset M\) be finite \(B\)-modules, and set \(N_C=C\otimes_BN\), \(M_C=C\otimes_BM\). They are finite \(C\)-modules and hence \(h\)-adically complete and separated. Choose the constant \(c\) in (5.22d) for \(N\subset M\). For \(r\ge c\), the kernel of
+\(N/h^rN\to M/h^rM\)
+is \((N\cap h^rM)/h^rN\), and (5.22d) puts it inside \(h^{r-c}N/h^rN\).
+
+If \(v\in N_C\) maps to zero in \(M_C\), its reduction modulo \(h^r\) belongs, by finite-quotient exactness of §5.22.4, to the tensor image of that kernel. This image is contained in \(h^{r-c}N_C/h^rN_C\). To verify the last containment with the normal element, rewrite \(d\otimes h^{r-c}n\) as \(dh^{r-c}\otimes n=h^{r-c}\sigma^{-(r-c)}(d)\otimes n\), using the compatible automorphism on \(C\). Thus \(v\in h^{r-c}N_C\) for every \(r\ge c\), and separatedness gives \(v=0\). Right exactness of tensoring now proves exactness on finite modules.
+
+If \(C\otimes_BM=0\), reduction modulo \(h\) gives \(S\otimes_T(M/hM)=0\). Coefficient faithful flatness implies \(M/hM=0\). The ideal \((h)\) is in the Jacobson radical of the \(h\)-complete ring \(B\): for every \(a\), the geometric series for \(1-ah\) exists in its \(h\)-adic topology. The finite-generator elimination argument of Corollary 5.20.3.1 gives \(M=0\). This proves zero-object detection. \(\square\)
+
+Combining §5.22.2 and Proposition 5.22.4 shows that \(C\otimes_\mathcal A-\) is exact and detects zero objects on finite actual stalk modules. This proves the noncommutative lifting; ordinary coefficient completion was only its base layer.
+
+#### 5.22.6. Identification with actual positive-degree module completion
+
+The degree formal ring \(C\) has \(C/I^rC\simeq\mathcal A/I^r\), by Theorem 5.19.4. Its degree-at-least-\(r\) part is exactly \(I^rC\): in each ordered monomial, put the \(x\)-coefficient on the left and split off an ordered right factor of degree \(r\). There are finitely many degree-\(r\) monomials in \(h,t,z\), and collecting the remaining coefficients gives formal elements of \(C\). The reverse inclusion follows from degree additivity. Thus this is the actual ideal-power quotient, not merely a notation for a formal filtration.
+
+Every finite \(C\)-module is \(I\)-adically complete. For a finite free presentation \(C^s\to V\), formal Lemma 5.23.1, applied to the graded Ore ring of Lemma 5.23.4, proves that its kernel is closed in the degree topology. The quotient is separated. It is complete: choose successive lifts of a compatible sequence of quotient classes to the finite free module, correcting discrepancies by the surjective transitions of the kernel's induced finite quotients, as in Lemma 5.22.2. The free module is complete, so the resulting compatible lifts have a limit. The quotient filtration is precisely \(I^rV\). This proves the assertion without an assumed \(I\)-Artin–Rees theorem.
+
+For finite actual \(M\), put \(M_C=C\otimes_\mathcal A M\). It is finite over \(C\), and
+\[
+ M_C/I^rM_C
+ \simeq(C/I^rC)\otimes_\mathcal A M
+ \simeq M/I^rM.
+\]
+Taking the compatible inverse limits and using its just-proved completeness yields
+\[
+ \widehat M^{\ I}\simeq C\otimes_\mathcal A M.
+ \tag{5.22g}
+\]
+Consequently actual positive-degree completion is exact and detects zero objects on finite left actual stalk modules. An exact additive functor with this zero-detection property is faithful: if its image of a morphism is zero, its exactness identifies the image of the morphism with a zero completed object, so that image was zero. This supplies exact and faithful completion on finite actual stalk modules at the dummy zero section.
+
+### 5.23. Formal Euler projection and homogeneous ordinary generators
+
+#### 5.23.1. The positively graded ordinary operator ring
+
+Let \(H=\mathcal O_{X,x}\), let \(D=\mathcal D_{X,x}\), and work with left modules. Right modules are obtained by the already proved density equivalence; no change of signs is needed inside the following left-module calculation. Write
+\[
+\begin{gathered}
+R=\bigoplus_{a\geq0}D_{\leq a}h^a,\\ R_0=H,\quad\theta_i=h\partial_{x_i}.
+\end{gathered}
+\tag{5.23a}
+\]
+Here \(h\) is central, \([\theta_i,b]=h\partial_i b\), and \(h,\theta_i\) have internal degree one. Thus \(R_a\) is finite free over \(H\), with basis \(h^{a-|\alpha|}\theta^\alpha\), \(|\alpha|\leq a\). The graded ring is generated in degrees zero and one.
+
+The ring \(R\) is left Noetherian. Here is the ungraded stalk argument, so that graded coherence is not incorrectly substituted for this assertion. Filter by the number of factors \(\theta_i\), giving \(h\) auxiliary order zero. PBW and the displayed commutator give the commutative auxiliary symbol ring \(H[h,\xi_1,\ldots,\xi_d]\). It is Noetherian by the earlier GL06 proof of polynomial Noetherianity, the complete leading-coefficient argument in GL06, over the Noetherian analytic local ring \(H\). For a left submodule of a finite free \(R\)-module, take its auxiliary leading-symbol module and choose finitely many homogeneous generators. Lift them to actual elements of the submodule. Match the leading symbol of any element by these lifts and subtract; the auxiliary order strictly decreases, so the process terminates after finitely many steps. The lifted elements generate the original submodule. Applying this to left ideals proves the asserted Noetherianity, and applying it to finite free modules proves the version used below. This argument uses polynomials in \(h\), not a microlocal completion.
+
+The uniform graded analytic Rees coherence used here is proved in [§5.12](#graded-analytic-rees-coherence-with-a-finite-termination-argument). Its auxiliary \(h\)-adic symbol argument terminates at each fixed internal degree and retains both shifts \(a_i,v_i\) on every lifted free generator. The larger actual ring requires the independent arguments in §§5.19–5.22 and 5.24.
+
+For a finitely generated graded \(R\)-module
+\[
+\begin{gathered}
+Q=\bigoplus_{a\geq0}Q_a,\\ \widehat Q=\prod_{a\geq0}Q_a,\\ \widehat R=\prod_{a\geq0}R_a.
+\end{gathered}
+\tag{5.23b}
+\]
+products mean formal products. Each product coefficient is a finite sum, since all degrees are nonnegative. Put \(V^r\widehat Q=\prod_{a\geq r}Q_a\). An infinite sum is used only when its summands have degrees tending to infinity. It then converges in this formal topology. In particular, nothing in (5.23b) asserts analytic or microdifferential convergence.
+
+The Euler operators are
+\[
+\begin{gathered}
+\delta\left(\sum_a r_a\right)=\sum_a ar_a,\\ \delta_Q\left(\sum_a q_a\right)=\sum_a aq_a.
+\end{gathered}
+\tag{5.23c}
+\]
+The first is a continuous derivation and the second satisfies
+\(\delta_Q(rq)=\delta(r)q+r\delta_Q(q)\). These identities follow coefficient by coefficient from addition of the internal degrees.
+
+#### 5.23.2. Finite generation and closedness in the formal product
+
+**Lemma 5.23.1.** Every \(\widehat R\)-submodule \(L\subset\widehat Q\) is generated by finitely many elements and is closed for the topology \(V^\bullet\widehat Q\).
+
+**Proof.** For nonzero \(q\in\widehat Q\), let \(v(q)\) be its smallest nonzero degree. Define
+\[
+\begin{gathered}
+\operatorname{in}(L)_a\\ {}=\{q_a:q\in L\cap V^a\widehat Q\}\\ {}\subset Q_a.
+\end{gathered}
+\tag{5.23d}
+\]
+The direct sum of these submodules is a graded \(R\)-submodule of \(Q\). To verify stability, multiply a representative of degree at least \(a\) by a homogeneous element of \(R_b\); its degree \(a+b\) coefficient is exactly the product of the two indicated coefficients. Since \(R\) is Noetherian and \(Q\) is finite, choose finitely many homogeneous generators of \(\operatorname{in}(L)\), say \(s_i\in Q_{a_i}\). Each is, by definition, the first coefficient of an element \(\ell_i\in L\cap V^{a_i}\widehat Q\).
+
+Given \(q\in L\) with first degree \(a\), express its first coefficient as
+\(q_a=\sum_i r_{i,a-a_i}s_i\), where \(r_{i,a-a_i}\in R_{a-a_i}\), and negative-degree terms are zero. Subtract \(\sum_i r_{i,a-a_i}\ell_i\). The result is zero or has strictly larger first degree and remains in \(L\). Repeat. At every fixed degree there are only finitely many corrections. Consequently the sums \(r_i=\sum_{b\geq0}r_{i,b}\) belong to \(\widehat R\), and completeness of the ambient product gives
+\[
+ q=\sum_i r_i\ell_i.
+ \tag{5.23e}
+\]
+This is a finite sum of products; it belongs to \(L\) by the submodule property. It proves finite generation without requiring \(L\) to have been known closed.
+
+If instead \(q\) lies in the closure of \(L\), any nonzero first coefficient of \(q\) belongs to \(\operatorname{in}(L)\): choose an element of \(L\) with the same finite truncation through that degree. After a correction by the chosen \(\ell_i\), the remainder still lies in the closure. The identical iteration proves (5.23e) for \(q\), so \(q\in L\). This proves closedness. The zero case is immediate. \(\square\)
+
+This proof also proves that \(\widehat R\) is left Noetherian, by taking \(Q=R\). It does not invoke an Artin–Rees theorem for a noncommutative completion. Notice that no norm estimate or bound on the coefficients \(r_{i,b}\) was used; that distinction is resolved by the actual comparison and recovery in §§5.25–5.26.
+
+#### 5.23.3. Euler stability gives actual homogeneous generators formally
+
+**Lemma 5.23.2.** Suppose \(L\subset\widehat Q\) is a \(\widehat R\)-submodule and \(\delta_Q(L)\subset L\). Then
+\[
+\begin{gathered}
+L=\prod_{a\geq0}L_a,\\ L_a=L\cap Q_a.
+\end{gathered}
+\tag{5.23f}
+\]
+and \(L\) is generated over \(\widehat R\) by finitely many homogeneous elements of the direct sum \(\bigoplus_aL_a\). Moreover that direct sum is a finitely generated graded \(R\)-submodule of \(Q\).
+
+**Proof.** Fix \(q=\sum_aq_a\in L\), a degree \(j\geq0\), and \(r\geq j\). The scalar polynomial
+\[
+ P_{r,j}(z)=\prod_{\substack{0\leq k\leq r\\k\ne j}}
+                      \frac{z-k}{j-k}
+ \tag{5.23g}
+\]
+has value one at \(j\) and zero at every other integer from zero to \(r\). Its denominators are nonzero integers. Stability under \(\delta_Q\) implies \(P_{r,j}(\delta_Q)q\in L\). Its coefficient through degree \(r\) is exactly \(q_j\). Hence these elements converge formally to \(q_j\), and Lemma 5.23.1 gives \(q_j\in L\). Conversely, if each \(q_a\in L_a\), the finite partial sums belong to \(L\) and converge to \(\sum_aq_a\); closedness gives (5.23f).
+
+Now \(\bigoplus_aL_a\subset Q\) is a graded \(R\)-submodule and is finitely generated because \(R\) is Noetherian. Choose homogeneous generators \(g_i\in L_{a_i}\). For every \(a\), generation in the graded module gives
+\[
+ L_a=\sum_i R_{a-a_i}g_i.
+ \tag{5.23h}
+\]
+Applying these finite expressions separately in each degree, and collecting their coefficients into formal series, proves that the same \(g_i\) generate the product in (5.23f) over \(\widehat R\). Conversely every such product has its coefficients in the right side of (5.23h). \(\square\)
+
+Thus the formal homogeneous projection is not asserted to be an element of the ring: it is obtained as a limit of ordinary scalar polynomials in the Euler action, inside a separately proved closed submodule. This removes a possible circular use of a convergent exponential \(e^{z\delta_Q}\) or an unproved circle average.
+
+#### 5.23.4. The precise ordinary filtration obtained at a stalk
+
+Choose an actual local good filtration \(F_aM\) of a coherent analytic \(D\)-module \(M\), bounded below, and shift it so that \(F_aM=0\) for \(a<0\). Its existence and coherent order pieces are the earlier ordinary analytic operator-presentation theorem; this is a local filtration and is not the global generator sought. Let
+\[
+ Q=\bigoplus_{a\geq0}h^aF_aM.
+ \tag{5.23i}
+\]
+The formal product embeds coefficientwise into \(M[[h]]\); this notation uses only the underlying complex vector space of \(M\). For a bounded shift of \(\widehat Q\), an element has finitely many possible negative degrees. Extend the Euler action by \(\delta_Q(h^a m)=a h^a m\).
+
+**Theorem 5.23.3 (formal ordinary descent).** Let \(L\subset h^{-B}\widehat Q\) be a \(\widehat R\)-submodule, where \(B\geq0\), stable under \(\delta_Q\), and assume
+\[
+\begin{gathered}
+L[h^{-1}]=\widehat Q[h^{-1}]\\ \text{inside }M((h)).
+\end{gathered}
+\tag{5.23j}
+\]
+Here \(M((h))\) permits finitely many negative powers and arbitrary nonnegative formal coefficients; the displayed equality concerns these two particular submodules. Put
+\[
+ G_a=\{m\in M:h^a m\in L\}.
+ \tag{5.23k}
+\]
+Then \((G_a)\) is a bounded-below exhaustive good \(D\)-filtration at the stalk, and \(L=\prod_a h^aG_a\). In particular every \(G_a\) is a finite \(H\)-module. There exist finitely many \(m_i\in G_{a_i}\) such that
+\[
+\begin{gathered}
+G_a=\sum_iD_{\leq a-a_i}m_i,\\ D_{\leq b}=0\quad(b<0).
+\end{gathered}
+\tag{5.23l}
+\]
+
+**Proof.** Multiply by \(h^B\). This identifies the ambient shifted module with \(\widehat Q\), and changes the Euler action by the constant \(B\). Stability is therefore preserved. Lemma 5.23.2 applies, and translating its conclusion back gives finitely many homogeneous generators \(h^{a_i}m_i\) of \(L\). Each homogeneous coefficient lies in \(F_{a+B}M\), so \(G_a\subset F_{a+B}M\) and is zero for \(a<-B\). It is an \(H\)-submodule of a finite \(H\)-module and is finite, since the analytic local ring \(H\) is Noetherian. The homogeneous action formula in (5.23a) says precisely that (5.23h) is (5.23l): powers of \(h\) fill the difference between the differential order of an operator and its internal degree. This also proves \(G_a\subset G_{a+1}\) and \(D_{\leq b}G_a\subset G_{a+b}\).
+
+For \(m\in M\), choose \(a\geq0\) with \(m\in F_aM\). Then \(h^am\in\widehat Q\). Equality (5.23j), in the localization by the central non-zero-divisor \(h\), gives an integer \(b\geq0\) with \(h^{a+b}m\in L\). Thus \(m\in G_{a+b}\), proving exhaustion. Finally (5.23l) is a finite graded generating presentation of the ordinary Rees module. It proves goodness, and the product assertion is (5.23f) with the same shift. \(\square\)
+
+The statement is deliberately a stalk statement. Finite generation of every stalk of an arbitrary subsheaf is insufficient to deduce analytic sheaf coherence. In particular, Theorem 5.23.3 by itself does not prove that the proposed global \(F_kM=j_0^{-1}N_{<0}(k)\cap M\) is coherent on any neighbourhood. It first constructs finite ordinary generators of the completed lattice at each point.
+
+#### 5.23.5. Dummy-variable signs and the algebraic half of descent
+
+On the actual dummy transfer \(\mathcal B=\mathcal E_{\mathbf C_t\times X}/\mathcal E_{\mathbf C_t\times X}t\), write \(u_0\) for the image of one and \(h=D_t^{-1}\). The following calculations require only \([D_t,t]=1\) and the existence of \(D_t^{-1}\) on \(\tau\ne0\). For every integer \(a\),
+\[
+\begin{gathered}
+th^au_0=ah^{a+1}u_0,\\ (tD_t+1)h^au_0=ah^au_0.
+\end{gathered}
+\tag{5.23m}
+\]
+For \(a\geq0\), the first follows by induction from \([t,D_t^{-1}]=D_t^{-2}\); for negative \(a\), use \([t,D_t^b]=-bD_t^{b-1}\). The second follows by applying the first with \(a-1\). Coefficients and ordinary \(D_X\)-operators commute with \(t,D_t\). Consequently the action of \(tD_t+1\) on the formal dummy expansion is exactly the Euler action (5.23c), including on negative degrees.
+
+For any supplied lattice \(L\) with \(tL\subset hL\), the operator \(h^{-1}t=D_tt=tD_t+1\) preserves \(L\), since \(h^{-1}(hL)=L\). This obtains the Euler stability required by Theorem 5.23.3. The order-shift convention is \(L(-1)=hL\). This calculation supplies stability of an existing lattice and does not construct a canonical cutoff.
+
+Theorem 5.23.3 supplies finite ordinary homogeneous generators of the completed lattice once the actual bounded ambient comparison and localized equality in §5.25 are used. Recovering equality of the actual convergent sheaves is the additional exact-faithful two-quotient argument in §5.26.
+
+Here is also the formal elimination of the \(t\)-dependent coefficients; it is not delegated to an unproved normal form.
+
+**Lemma 5.23.4 (formal dummy Ore presentation).** Let \(\Delta=h\delta\) on \(R\), and define the graded ring
+\[
+\begin{gathered}
+A=R[t;\Delta],\\ tr=rt+\Delta(r),\quad\deg t=1.
+\end{gathered}
+\tag{5.23n}
+\]
+Its underlying left \(R\)-module is \(\bigoplus_{j\geq0}Rt^j\). It is Noetherian on the left. The module \(Q\) in (5.23i), with action \(tq=h\delta_Q(q)\), has a finite graded \(A\)-presentation. Its degree completion is exactly \(\widehat Q\), with the stated action of \(t\). If \(q_i=h^{a_i}m_i\) are finite homogeneous \(R\)-generators, its \(A\)-presentation is given by their finite \(R\)-relations and
+\[
+\begin{gathered}
+(t-a_ih)q_i=0,\\ t^jq_i=\\ a_i(a_i+1)\cdots(a_i+j-1)\\ \cdot h^jq_i.
+\end{gathered}
+\tag{5.23o}
+\]
+The empty product for \(j=0\) is one.
+
+**Proof.** The derivation identity for \(\delta\), centrality of \(h\) in \(R\), and (5.23c) show that \(\Delta\) is a derivation of \(R\), raising degree by one. The identity
+\[
+ t^jr=\sum_{k=0}^j\binom jk\Delta^k(r)t^{j-k}
+ \tag{5.23p}
+\]
+defines multiplication in the displayed free \(R\)-module. Iterated Leibniz and the binomial coefficient identity verify associativity: in a triple product, apply
+\(\Delta^n(rs)=\sum_{k=0}^n\binom nk\Delta^k(r)\Delta^{n-k}(s)\) and collect each power of \(t\); the coefficients agree. The case \(j=1\) gives the required relation.
+
+Filter \(A\) by the number of factors \(t\). Its symbol ring is the central polynomial ring \(R[T]\). This is left Noetherian: the leading coefficients of a left ideal form a left ideal of \(R\); choose finite generators represented by polynomials, cancel all sufficiently high leading degrees, and use finite generation of the remaining bounded-degree coefficient submodule of a finite free left \(R\)-module. This is exactly the finite leading-coefficient proof, which needs only left Noetherianity, not commutativity of \(R\). Leading-order reduction now proves that \(A\) is left Noetherian, just as in §5.23.1.
+
+The proposed \(t\)-action satisfies the Ore relation since
+\[
+ h\delta_Q(rq)=\Delta(r)q+r\,h\delta_Q(q).
+\]
+Choose finite homogeneous generators of \(Q\) over \(R\). Their \(R\)-relations are generated by finitely many homogeneous relations by Noetherianity. Add the first relation in (5.23o). It reduces every \(A\)-linear expression in the generators to an \(R\)-linear expression: induction using \([t,h]=h^2\) proves the second formula in (5.23o). The quotient by these relations therefore maps onto \(Q\); the ordinary \(R\)-presentation maps back to it. The maps are inverse on generators, and the same formula verifies the \(t\)-action. This proves the finite \(A\)-presentation.
+
+Complete by total degree. All reductions in (5.23o) preserve that degree, and only finitely many monomials \(h,\theta,t\) contribute to any one coefficient. Their infinite sums are formal degree sums. Coefficientwise reduction gives exactly \(\widehat Q\). Equivalently, the kernels in this finite graded presentation are finite graded modules; collecting their homogeneous expressions shows that their formal products are the actual images of the completed finite presentation. Thus no completion flatness for a larger analytic ring is assumed. \(\square\)
+
+The factorial coefficient in (5.23o) explains why this formal calculation cannot assert convergent coefficient estimates without proof. The actual ambient comparison in §5.25 identifies the completion of a bounded dummy lattice with this formal model. Its image is automatically a \(\widehat R\)-submodule. Lemma 5.23.1 supplies its finiteness and closedness; an independent assertion of finiteness over the convergent \(t\)-independent subalgebra is unnecessary.
+
+### 5.24. Fixed kernel sections on one actual neighbourhood
+
+The full coefficient-kernel input is GL06, Lemma 3.0c.3. Its proof represents finitely many homogeneous relations, uses the relative commutative coefficient-flatness calculation at the analytic zero section, kills their coherent analytic cokernel on one product neighbourhood by Oka coherence, and then descends its vanishing at every nearby zero-section stalk by faithful flatness and graded zero detection. In the present case there is one polynomial variable \(h\) and the holomorphic base variables \(w=(t,x,z)\); shifted free bases are retained. No operator completion is substituted for that coefficient calculation.
+
+#### 5.24.1. The filtration used here
+
+Write \(\mathscr A\) for the actual factorial-growth order-zero sheaf on the chart \(\tau\ne0\), \(h=\tau^{-1}\), and \(w=(t,x,z)\). Its decreasing filtration for this argument is the homogeneous-index filtration
+\[
+\begin{gathered}
+H^r\mathscr A=\mathscr Ah^r\quad(r\geq0),\\ \operatorname{gr}_H\mathscr A=\mathcal O_w[h].
+\end{gathered}
+\tag{5.24a}
+\]
+Right multiplication by \(h^r\) just shifts coefficients. The reverse description in (5.24a) follows from the fixed-shift factorial estimate in Theorem 5.19.4. Every nonzero Leibniz correction raises homogeneous index, so the associated graded multiplication is ordinary multiplication of holomorphic coefficients. This filtration is not the positive-degree ideal filtration in \(h,t,z\).
+
+The bounded division at a stalk works at every point of this chart. To reduce a point with normalized covector \(z_0\ne0\) to the coordinates used in its proof, make the linear base change
+\[
+ t'=t+\sum_i(z_0)_i x_i,\qquad x'_i=x_i.
+\]
+The cotangent coordinates are then \(\tau'=\tau\), \(\xi'_i=\xi_i-(z_0)_i\tau\), so \(z'=z-z_0\) and \(h'=h\). Translate the base coordinates to their values at the point. The chain rule preserves the bilinear contraction \(\sum\partial_{\rho_i}\otimes\partial_{u_i}\), hence each finite homogeneous coefficient of the Leibniz product. The coefficient functions retain a common neighbourhood and the factorial bound after this fixed linear change. Thus 5.21a–5.21r apply locally in these coordinates, with the same homogeneous-index filtration. This is a local coordinate change inside the chart, not an assertion about the global dummy hypersurface.
+
+#### 5.24.2. An additional consequence of the actual division
+
+**Lemma 5.24.1 (strict image generators at one stalk).** For a left submodule \(J\subset\mathscr A_p^b\), the standard generators \(P_i\) selected in Theorem 5.21.1 can be chosen with homogeneous orders \(n_i\ge0\) so that every \(F\in J\cap H^r\mathscr A_p^b\) has an actual expression
+\[
+\begin{gathered}
+F=\sum_iQ_i\circ P_i,\\ Q_i\in H^{\max(0,r-n_i)}\mathscr A_p.
+\end{gathered}
+\tag{5.24b}
+\]
+Consequently their principal vectors generate \(\operatorname{gr}_H J\) over \(\mathcal O_{w,p}[h]\), retaining the shifts \(n_i\).
+
+**Proof.** Use precisely the division operator of 5.21l–5.21r. Its support projections and ordinary monomial divisions do not change homogeneous index. Its operator \(DE\) does not lower that index: every normalized divisor \(B_i=h^{-n_i}\circ P_i\) is order zero, ordinary multiplication preserves index, and actual derivative corrections raise it. Thus the closed subspace of quotient vectors whose coefficients below index \(r\) vanish is invariant under \(DE\). The Neumann series in 5.21q stays in it whenever its input does. Its assigned supports also require the \(i\)-th quotient to have no index below \(n_i\). Therefore \(Q'_i\) there has no index below \(\max(r,n_i)\). Its right shift \(Q_i=Q'_i\circ h^{-n_i}\), exactly as in the proof of Theorem 5.21.1, is an actual symbol of order at least \(\max(0,r-n_i)\). The remainder is zero by that proof. This proves (5.24b). Taking its first homogeneous coefficient proves the assertion about the graded image. Conversely the principal vectors of the \(P_i\) belong to that graded image by definition. \(\square\)
+
+All convergence in this lemma is the actual Banach convergence from 5.21q, on one common domain for each division problem. An arbitrary infinite homogeneous cancellation was not used.
+
+#### 5.24.3. Lift finitely many principal relations
+
+Let \(\phi:\mathscr A^a\to\mathscr A^b\) be any finite matrix of actual sections near a point \(p\). A left-module matrix acts as \(\phi(q)=\sum_i q_i\circ C_i\), where \(C_i\) are its columns. At \(p\), apply Lemma 5.24.1 to its image and obtain \(P_1,\ldots,P_s\), with orders \(n_i\).
+
+Each \(P_i\) is a finite actual combination of the original columns, and each original column is a finite combination of the \(P_i\). Extend this finite list and its finite identities to one neighbourhood. If \(\psi:\mathscr A^s\to\mathscr A^b\) has columns \(P_i\), there are matrices \(u,v\) there with
+\[
+ \psi u=\phi,
+ \qquad \phi v=\psi.
+ \tag{5.24c}
+\]
+They show that the represented columns generate the image at every nearby stalk.
+
+Give the source of \(\psi\) the filtration shift \(n_i\) on its \(i\)-th generator. Its principal matrix is a graded map
+\[
+\begin{gathered}
+g:\bigoplus_i\mathcal O_w[h]e_i\longrightarrow\mathcal O_w[h]^b,\\ \deg e_i=n_i,\\ g(e_i)=h^{n_i}p_i(w).
+\end{gathered}
+\tag{5.24d}
+\]
+where \(p_i\) is the principal holomorphic vector of \(P_i\). The coefficient polynomial-kernel theorem gives finitely many homogeneous generators \(\nu_1,\ldots,\nu_m\) of \(\ker g_p\). They can be represented so that the same sections generate \(\ker g_q\) for every point \(q\) of one smaller neighbourhood.
+
+Each \(\nu_l\), of degree \(r_l\), has an actual kernel lift \(K_l\) of source order \(r_l\). Indeed replace its coefficient of \(e_i\) by the actual finite symbol \(a_{li}(w)h^{r_l-n_i}\), omitting a component when \(r_l<n_i\). Its image under \(\psi_p\) has homogeneous order at least \(r_l+1\). Lemma 5.24.1 gives an actual expression for that image with coefficient orders at least \(\max(0,r_l+1-n_i)\). Subtract that coefficient vector from the proposed lift. The difference is an actual relation and has exactly principal vector \(\nu_l\). These finitely many exact equations extend to one smaller neighbourhood.
+
+This uses strictness only at the original stalk. The following argument proves both relation generation and strictness nearby; it does not presume either one.
+
+#### 5.24.4. Why the lifted relations generate at all nearby points
+
+The shifts can be handled inside an ordinary finite free module, without applying the division norm to negative coefficient indices. Define
+\[
+\begin{gathered}
+\mathscr J=\bigoplus_i\mathscr Ah^{n_i}f_i\subset\mathscr A^s,\\ \iota(q)_i=q_i\circ h^{n_i}.
+\end{gathered}
+\tag{5.24e}
+\]
+The map \(\iota\) is a left-module isomorphism onto \(\mathscr J\), since it multiplies on the right. Its inverse on this image is the actual finite coefficient shift; no negative indices remain. The source's shifted order becomes ordinary homogeneous order in \(\mathscr J\).
+
+Put \(B_i=h^{-n_i}\circ P_i\). These are actual order-zero vectors by 5.21h–5.21i. The matrix
+\[
+\begin{gathered}
+\bar\psi:\mathscr A^s\to\mathscr A^b,\\ \bar\psi(F)=\sum_iF_i\circ B_i.
+\end{gathered}
+\tag{5.24f}
+\]
+satisfies \(\bar\psi\iota=\psi\). Its principal matrix on \(\operatorname{gr}_H\mathscr J\) is precisely (5.24d), under the embedding \(e_i\mapsto h^{n_i}f_i\). The represented \(\iota(K_l)\) are actual relations in \(\mathscr J\); their principal vectors generate that principal kernel at every nearby point.
+
+Fix such a point \(q\). Let \(\mu_q\) denote this graded principal kernel inside \(\bigoplus_i h^{n_i}\mathcal O_{w,q}[h]f_i\). Its homogeneous vectors have leading exponents obtained by first comparing the power of \(h\), then the total degree and lexicographic exponent of the holomorphic Taylor monomial, then the component. Their diagram is upward closed and has finitely many minimal exponents, by the Dickson argument proved in the division leaf. Choose homogeneous vectors of \(\mu_q\) realizing these minimal exponents. Since the represented principal relations generate \(\mu_q\), each chosen vector is a finite homogeneous polynomial combination of them. Lift those combinations to actual finite-symbol combinations of \(\iota(K_l)\), obtaining \(T_1,\ldots,T_k\in\mathscr J_q\cap\ker\bar\psi_q\). Their leading exponents are the chosen ones; their higher homogeneous coefficients may be arbitrary actual coefficients.
+
+Apply the bounded actual division 5.21l–5.21r to these finite divisors in the unshifted module \(\mathscr A_q^s\). For \(F\in\mathscr J_q\cap\ker\bar\psi_q\), it gives
+\[
+ F=\sum_j A_j\circ T_j+S,
+ \tag{5.24g}
+\]
+where the actual remainder's coefficient support avoids their leading orthants. Since \(\mathscr J_q\) is a left submodule and all \(T_j\) are actual relations, \(S\) still belongs to \(\mathscr J_q\cap\ker\bar\psi_q\). If it were nonzero, its first homogeneous coefficient would belong to \(\mu_q\). Its leading exponent would consequently lie in one of the chosen orthants, contradicting the remainder condition. Hence \(S=0\).
+
+Each \(T_j\) was a finite combination of the represented \(\iota(K_l)\). Applying \(\iota^{-1}\) proves that the same finitely many \(K_l\) generate \(\ker\psi_q\) for every nearby \(q\). The division domain and norms may depend on the input germ at \(q\); the generating sections and the neighbourhood do not. This distinction is what the stalk-only proof had not supplied.
+
+The same argument also proves nearby strictness. For any \(F\in\mathscr J_q\) whose image has homogeneous order at least \(r\), perform (5.24g). If the nonzero remainder had first homogeneous degree less than \(r\), its principal vector would lie in \(\mu_q\), again contradicting its support. Thus the remainder lies in \(H^r\mathscr J_q\), while having the same image as \(F\). Its inverse under \(\iota\) has source orders at least \(\max(0,r-n_i)\). This proves strictness onto the image nearby as well.
+
+#### 5.24.5. Coherence of the actual sheaf
+
+**Theorem 5.24.2 (actual neighbourhood coherence).** By the actual bounded division proved in §5.21, the sheaf \(\mathscr A\) is left coherent. Kernels of finite actual matrices are generated by finitely many actual sections on one neighbourhood. Finite presented left modules form an abelian coherent category; finite-type submodules of coherent modules are coherent.
+
+**Proof.** §5.24.4 gives a finite neighbourhood kernel list for \(\psi\). From (5.24c), for every \(z\in\ker\phi\),
+\[
+ z=v\,u(z)+(1-vu)z.
+\]
+The first term is generated by the finite sections \(v(K_l)\), because \(u(z)\in\ker\psi\). The columns of \(1-vu\) lie in \(\ker\phi\), since \(\phi(1-vu)=\phi-\psi u=0\); they generate the second term. Thus the finite list \(v(K_l)\) and these columns generates \(\ker\phi\) on the common neighbourhood. This proves ring-sheaf coherence.
+
+For completeness, the extension to presented modules uses finite block matrices. The kernel of a map between two finite presentations is the quotient of the finite-type kernel of the matrix imposing its target relation, with the source relation added. Coherence of the finite-free matrix kernels makes that quotient finite presented. Cokernels are directly given by adjoining the two finite relation lists; images are the quotient of the source by its coherent kernel. A finite-type submodule is the image of a finite free module into a coherent module and is therefore coherent. These constructions give the asserted abelian category on the same local neighbourhoods. They use no commutativity of \(\mathscr A\). \(\square\)
+
+No stalk/inverse-limit interchange, formal convergence substitution, ordinary operator-completion theorem, generic smoothness of a characteristic set, or infinite sequence of neighbourhood shrinkings enters this argument. Singular principal-symbol loci are included: the only coefficient kernel theorem is Oka's theorem for an arbitrary finite holomorphic matrix.
+
+### 5.25. General bounded Rees ambient modules and actual lattice bounds
+
+#### 5.25.1. The finite actual presentation
+
+Let \(M\) be a coherent analytic left \(\mathcal D_X\)-module. Choose a local ordinary good filtration, shift it to have \(F_aM=0\) for \(a<0\), and write at the ordinary point \(x\)
+\[
+\begin{gathered}
+R=\bigoplus_{a\geq0}h^aD_{\leq a},\\ Q=\bigoplus_{a\geq0}h^aF_aM,\\ A=R[t;h\delta].
+\end{gathered}
+\tag{5.25a}
+\]
+Use the same objects as sheaves over one ordinary coordinate neighbourhood. Uniform graded Rees coherence gives a finite homogeneous \(R\)-presentation of \(Q\) there. Choose its generators \(q_i=h^{a_i}m_i\), with \(a_i\ge0\). Formal Lemma 5.23.4 gives the finite homogeneous \(A\)-presentation consisting of those ordinary Rees relations and
+\[
+ (t-a_i h)q_i=0.
+ \tag{5.25b}
+\]
+
+Map \(A\) into the actual order-zero chart ring \(\mathscr A\) by the actual symbols \(h,\theta_i=z_i,t\) and coefficient functions. Their Ore relations and injective finite normal form are Proposition 5.19.2. Define the actual module by that finite presentation, equivalently
+\[
+ V=\mathscr A\otimes_A Q.
+ \tag{5.25c}
+\]
+Here the algebraic presentation coefficients are represented by finite actual symbols on one common neighbourhood. Theorem 5.24.2 makes \(V\) a coherent actual module there. No operator flatness of \(A\to\mathscr A\) is being presumed in this definition.
+
+**Lemma 5.25.1.** At \(j_0(x)=(0,x;1,0)\), its actual positive-degree completion has the natural coefficientwise model
+\[
+\begin{gathered}
+\widehat V^{\,I}\simeq\prod_{a\geq0}h^aF_aM=\widehat Q,\\ I=(h,t,\theta_1,\ldots,\theta_d).
+\end{gathered}
+\tag{5.25d}
+\]
+The distinguished generator \(q_i\) maps to \(h^{a_i}m_i\), and the completed action is the Ore action of Lemma 5.23.4.
+
+**Proof.** Write \(C=\widehat{\mathscr A_{j_0(x)}}^{\ I}=\widehat A\), as proved by the actual ring-jet theorem 5.19.4. The finite-module completion theorem gives
+\[
+ \widehat V^{\ I}=C\otimes_{\mathscr A}V
+                  =C\otimes_A Q.
+\]
+This is the cokernel of the completed finite homogeneous presentation (5.25b). The coefficientwise finite-degree reduction in Lemma 5.23.4 identifies that cokernel exactly with the product \(\widehat Q\). Every finite-degree coefficient is an actual holomorphic germ; the product has no additional completion in \(x\). Its map into the vector-space coefficient product \(M[[h]]\) is injective since each \(F_aM\) is an actual submodule of \(M\). Thus (5.25d) is an actual completed-presentation calculation, including arbitrary ordinary relations, rather than only the free-module model. \(\square\)
+
+#### 5.25.2. Unit maps and the actual finite-order localization
+
+**Lemma 5.25.2.** If an extension functor \(C\otimes_S-\) is exact and detects zero objects on finite left modules over a left Noetherian ring \(S\), the unit map \(T\to C\otimes_ST\) is injective for every finite \(T\).
+
+**Proof.** Its kernel \(K\) is finite. Exactness makes \(C\otimes_SK\to C\otimes_ST\) injective. Its image is zero: it is generated as a left \(C\)-module by \(1\otimes k\) for \(k\in K\), and each such tensor is zero by the definition of \(K\). Zero-object detection gives \(K=0\). \(\square\)
+
+Apply this to (5.25d). Multiplication by \(h\) is injective in the coefficient product \(\widehat Q\), so it is injective on \(V_{j_0(x)}\). The actual element \(h\) is normal, with the actual coefficient automorphism \(\sigma(P)=h\circ P\circ h^{-1}\), established in 5.22a–5.22b of the proved completion proof. Hence the kernel of multiplication by \(h\) is an \(\mathscr A\)-submodule. Regard this semilinear multiplication as a linear map into the module with action twisted by \(\sigma\); twisting by a sheaf algebra automorphism preserves a finite presentation. Neighbourhood coherence therefore makes its kernel coherent. Its zero stalk at \(j_0(x)\) makes it zero on one neighbourhood: finitely many local generators have zero germs and all vanish on their common smaller neighbourhood. Thus \(V\) is actually \(h\)-torsion-free there.
+
+Let
+\[
+ \mathscr E=\mathscr A[h^{-1}].
+ \tag{5.25e}
+\]
+This is the actual finite-order factorial-growth ring on the fixed chart. Indeed an actual finite-order symbol has finitely many possible positive orders; right multiplication by a sufficiently large \(h^B\) shifts all of them to order zero and preserves the common coefficient domain and factorial bounds. Conversely finite multiplication by \(h^{-B}=\tau^B\) preserves finite order and the actual factorial class by its finite derivative formula and the fixed-shift estimate. The normal-element relation moves all denominators to either side, so (5.25e) describes the actual ring, including its products.
+
+Its localization of a module can be constructed by equivalence classes of fractions with finite denominators. A fraction from \(V\) is zero exactly when a power of \(h\) kills its numerator; this follows directly by moving denominators with \(\sigma\) and taking a common finite power. Therefore \(h\)-torsion-freeness gives an actual injection \(V\hookrightarrow\mathscr E\otimes_{\mathscr A}V\). The same fraction construction proves exactness of this localization: lift a numerator for surjectivity; if an image fraction is zero, clear one further denominator and its numerator belongs to the preceding kernel. No analytic infinite-order extension is involved.
+
+#### 5.25.3. Identification with the actual dummy module
+
+Put
+\[
+\begin{gathered}
+\Phi(M)=(\mathscr E/\mathscr Et)\otimes_D M,\\ u_0=1\bmod\mathscr Et.
+\end{gathered}
+\tag{5.25f}
+\]
+The right \(D\)-action exists since \(t\) commutes with ordinary \(D_X\). In (5.25c), send \(q_i\) to \(h^{a_i}u_0\otimes m_i\). The ordinary relations hold, and the actual Weyl identity
+\[
+ t h^a u_0=a h^{a+1}u_0
+ \tag{5.25g}
+\]
+makes (5.25b) hold, including for every integral \(a\).
+
+**Lemma 5.25.3.** This map gives a natural isomorphism
+\[
+ V[h^{-1}]\simeq\Phi(M).
+ \tag{5.25h}
+\]
+
+**Proof.** Algebraically \(R[h^{-1}]=D[h,h^{-1}]\), by \(\partial_i=h^{-1}\theta_i\), and \(Q[h^{-1}]=M[h,h^{-1}]\): exhaustion puts every \(m\) in one \(F_aM\); injectivity follows from the coefficient embedding of the Rees module into \(M[h,h^{-1}]\). These are algebraic Laurent modules, with finite sums.
+
+Write \(A_*=A[h^{-1}]\). The actual finite Ore normal form gives an algebraic bimodule identification
+\[
+ Q[h^{-1}]
+   \simeq (A_*/A_*t)\otimes_D M.
+ \tag{5.25i}
+\]
+To verify it, reduce all powers of \(t\) on the right of the cyclic generator. The remaining vector space is \(D[h,h^{-1}]\otimes_D M=M[h,h^{-1}]\). Its \(t\)-action is \(h\delta\), because \(t h^a=h^at+a h^{a+1}\) and \(t\) commutes with \(D\); this is the action on the left. The two maps are inverse on every finite monomial. This proves (5.25i) without a flatness assumption.
+
+Tensor (5.25i) with \(\mathscr E\) over \(A_*\). Extension of a presentation is right exact by the tensor universal property, so \(\mathscr E\otimes_{A_*}(A_*/A_*t)=\mathscr E/\mathscr E t\). Tensor associativity now gives exactly (5.25h), with the displayed generator map. \(\square\)
+
+Combining Lemma 5.25.1, Lemma 5.25.2 and Lemma 5.25.3 gives an actual coherent ambient lattice
+\[
+\begin{gathered}
+V\subset\Phi(M),\\ \mathscr EV=\Phi(M),\\ \widehat V=\widehat Q\subset M[[h]].
+\end{gathered}
+\tag{5.25j}
+\]
+on one micro-neighbourhood of \(j_0(x)\). The ordinary embedding is also genuine. If \(u_0\otimes m=0\), choose \(a\) with \(m\in F_aM\). Then the image of \(h^am\in V\) is zero in its localization. Its injection and (5.25d) give \(h^am=0\) in \(M[[h]]\), hence \(m=0\). Apply the same presentation at each ordinary point to obtain the sheaf embedding \(M\hookrightarrow j_0^{-1}\Phi(M)\).
+
+#### 5.25.4. Shifted ambient modules and common finite bounds
+
+For any integer \(b\), the actual submodule \(h^bV\subset\Phi(M)\) is coherent. Multiplication by \(h^b\) is a semilinear isomorphism onto its image; the normal-element automorphism makes it a finite-presentation-preserving twist. Its finite presentation is the shifted version of (5.25b): its generators are \(h^{a_i+b}u_0\otimes m_i\), its ordinary homogeneous relations are shifted by \(b\), and its dummy relation is
+\[
+ (t-(a_i+b)h)h^bq_i=0.
+ \tag{5.25k}
+\]
+The same finite-degree presentation proof, with lower degree \(b\) allowed, yields
+\[
+ \widehat{h^bV}^{\ I}
+       \simeq h^b\widehat Q\subset M((h)).
+ \tag{5.25l}
+\]
+The ideal-power topology is cofinal with degree truncation: every degree-one generator raises degree, and a module with finitely many homogeneous generators has a finite largest generating degree. Factoring sufficiently long monomials gives the opposite cofinal bound. Thus finitely many negative degrees cause no change to the completion calculation. These identifications commute with the actual inclusions of shifted lattices, by checking the finite distinguished generators and then their finite-degree coefficients.
+
+**Lemma 5.25.4 (two actual bounds).** Let \(L\subset\Phi(M)\) be a coherent \(\mathscr A\)-submodule that generates \(\Phi(M)\) over \(\mathscr E\). Then, after one local shrinking, there are \(B,C\ge0\) with
+\[
+ h^C V\subset L\subset h^{-B}V.
+ \tag{5.25m}
+\]
+Every specified finite collection of shifted dummy ordinary sections can be put in the same coherent ambient \(h^{-B}V\), increasing \(B\) if necessary.
+
+**Proof.** Choose finite local generators of \(L\). By (5.25h), each is a fraction from \(V\) with a finite denominator. Move denominators to the left using normality and take their maximum exponent. These finitely many stalk identities extend on one common neighbourhood and give the upper bound.
+
+Conversely each of the finite distinguished generators of \(V\) is a finite \(\mathscr E\)-linear combination of lattice generators, since \(\mathscr E L=\Phi(M)\). Choose \(C\) so that every coefficient in those finitely many expressions becomes order zero after multiplication on the left by \(h^C\). Then \(h^Cq_i\in L\). For any coefficient \(a\in\mathscr A\), normality gives \(h^C(aq_i)=\sigma^C(a)h^Cq_i\in L\), proving the lower bound. All equations used are finite actual equations on a common neighbourhood. A finite list of other sections is bounded by precisely the same fraction argument. \(\square\)
+
+#### 5.25.5. The formal localized equality is a consequence of those actual bounds
+
+**Theorem 5.25.5 (actual ambient model and bounds).** Every coherent lattice \(L\) as in Lemma 5.25.4 has a finite completed image \(\Lambda\) inside \(h^{-B}\widehat Q\), and
+\[
+\begin{gathered}
+h^C\widehat Q\subset\Lambda\subset h^{-B}\widehat Q,\\ \Lambda[h^{-1}]=\widehat Q[h^{-1}]\\ \text{inside }M((h)).
+\end{gathered}
+\tag{5.25n}
+\]
+The common actual coherent ambient contains \(L\) and any fixed finite list of shifted ordinary dummy sections. Completion is exact and faithful on its coherent submodules and quotients. Its model carries the ordinary sections and the completed operator action to the coefficientwise Ore model.
+
+**Proof.** Use the coherent ambient \(h^{-B}V\) and complete the two inclusions (5.25m) at its actual stalk. The exact completion of §5.22 identifies the completed inclusions with actual injections. The compatible shifted-presentation identifications (5.25l) identify their two extremes exactly with the two extremes in (5.25n). This proves the bounds. Localizing these two bounds by the central \(h\) of the formal ordinary Rees ring makes both extremes equal to \(\widehat Q[h^{-1}]\); the middle must then equal it. This is an equality of these submodules of the coefficient space \(M((h))\), and follows from finite uniform actual denominator bounds. It is not a purported interchange of analytic localization and an arbitrary inverse limit.
+
+Coherence of the ambient and Theorem 5.24.2 give coherence of its finite submodules, sums and quotients. The proved completion theorem applies to all their finite actual stalk modules. Lemma 5.25.1 and formula (5.25l) give the stated coefficient identification and generator actions. \(\square\)
+
+If additionally \(tL\subset hL\), the actual operator \(h^{-1}t=D_tt=tD_t+1\) preserves \(L\). Its commutator with an actual symbol is the actual coefficient derivation
+\[
+\begin{gathered}
+\sum_{n\geq0}h^np_n(t,x,z)\\ {}\longmapsto\\ \sum_{n\geq0}h^n(t\partial_t+E_z+n)p_n.
+\end{gathered}
+\tag{5.25o}
+\]
+This follows directly from the two first-derivative corrections for the symbol \(t\tau\). Derivatives of order at least two separately in the base variables, and separately in the cotangent variables, vanish; the mixed derivative \(\partial_t\partial_\tau(t\tau)=1\) does not enter either of these two-factor Leibniz products. Cauchy estimates on a smaller common domain and \(n\le2^n\) keep (5.25o) in the actual factorial class. Each Taylor monomial in \(h,t,z\) is multiplied by its total degree, so this derivation preserves every positive-degree ideal power. Consequently the preserving operator on \(L\) is continuous for that filtration and extends to its completion. By (5.25g) it acts in the coefficient model as \(h^am\mapsto a h^am\), exactly the Euler action required by Theorem 5.23.3. There is no analytic diagonalization assertion.
+
+### 5.26. Actual coherent ordinary intersections for a supplied lattice
+
+**Proposition 5.26.1.** Let \(M\) be coherent over \(\mathcal D_X\), and let \(L\subset\Phi(M)\) be a supplied coherent \(\mathcal A_{\rm gv}\)-lattice which generates \(\Phi(M)\) over the finite-order localization and satisfies \(tL\subset hL\). Then the actual ordinary intersections
+\[
+ B_kM=j_0^{-1}L(k)\cap M
+ \tag{5.26a}
+\]
+are holomorphically coherent on a neighbourhood of each ordinary point. They form an exhaustive locally good filtration. These statements concern the actual intersections, not merely modules isomorphic to their completions.
+
+**Proof.** Fix \(x\). The relation \(tD_t=D_tt-1\) shows that \(tD_t+1\) preserves \(L\); its completed action is the Euler operator. Theorem 5.23.3 in §5.23 therefore supplies finitely many homogeneous formal generators \(h^{a_i}m_i\) of the completed lattice, where \(m_i\) are actual germs of \(M\). Extend their finite list to sections on a common ordinary neighbourhood, and write
+\[
+\begin{gathered}
+\ell_i=h^{a_i}(u_0\otimes m_i),\\ L'=\sum_i\mathcal A\ell_i.
+\end{gathered}
+\tag{5.26b}
+\]
+§5.25 supplies a coherent ambient \(V\) containing both \(L\) and these finitely many sections. The submodule \(L'\) is a finite type submodule of the coherent module \(V\), hence coherent by §5.24. The sum \(L+L'\) and both quotients by \(L,L'\) are coherent.
+
+The completions of \(L\) and \(L'\) have equal images in the completed \(V_x\). Indeed Theorem 5.23.3 says that the homogeneous \(\ell_i\) generate the completed \(L\) over \(\widehat R\). The completed \(\mathcal A\)-action on them adds nothing: Lemma 5.23.4 gives
+\[
+\begin{gathered}
+t^j\ell_i=\\ a_i(a_i+1)\cdots(a_i+j-1)\\ \cdot h^j\ell_i,
+\end{gathered}
+\tag{5.26c}
+\]
+and its coefficientwise reduction proves that the \(\widehat A\)-span is the \(\widehat R\)-span, including infinite formal degree sums. Exactness in §5.22 identifies the completion of the sum with this common image, and the completions of both coherent quotients are therefore zero. Faithfulness gives
+\[
+\begin{gathered}
+((L+L')/L)_{j_0(x)}=0,\\ ((L+L')/L')_{j_0(x)}=0.
+\end{gathered}
+\tag{5.26d}
+\]
+A coherent sheaf with zero stalk is zero on a neighbourhood: use finitely many local generators, whose zero germs vanish on the intersection of finitely many neighbourhoods. Consequently \(L=L'\) as actual convergent coherent sheaves near \(j_0(x)\). Shrink the ordinary neighbourhood so its image under \(j_0\) lies in this common micro-neighbourhood. This is the step that cannot be replaced by formal equality alone.
+
+For every \(y\) in the smaller ordinary neighbourhood define the actual finite-order submodule
+\[
+\begin{gathered}
+G_k=\sum_i\mathcal D_{\leq k-a_i}m_i,\\ \mathcal D_{\leq b}=0\quad(b<0).
+\end{gathered}
+\tag{5.26e}
+\]
+It is holomorphically coherent. To check this, put the finitely many \(m_i\) in finitely many pieces of the chosen local good filtration of \(M\). For fixed \(k\), all images in (5.26e) lie in one coherent local order piece. The source is a finite sum of coherent finite-order operator sheaves. Oka's coherent kernel/image theorem therefore makes (5.26e) coherent, on the same ordinary neighbourhood. This argument applies to every \(k\); it does not require one uniform bound on \(k\).
+
+We prove \(B_kM=G_k\) as subsheaves there. If \(m\in(B_kM)_y\), then \(h^k(u_0\otimes m)\in L_{j_0(y)}\). In the injective coefficientwise model of §5.25 its image is the homogeneous element \(h^km\) in the completion of \(L'\). The degree-\(k\) part of the latter is the finite sum
+\(\sum_i R_{k-a_i}h^{a_i}m_i\). Formula (5.23a) identifies this sum exactly with \(h^k(G_k)_y\). Thus \(m\in(G_k)_y\).
+
+Conversely, for \(m=\sum_iP_im_i\) with \(\operatorname{ord}P_i\leq k-a_i\), the section
+\[
+ u_0\otimes m=\sum_i(P_ih^{-a_i})\ell_i
+ \tag{5.26f}
+\]
+belongs to \(L(k)\): \(P_i\) commutes with \(h\), and \(P_ih^{-a_i}\) has microlocal order at most \((k-a_i)+a_i=k\). Hence \(m\in(B_kM)_y\). Equality at every stalk proves equality of the actual subsheaves. In particular all intersections in (5.26a) are coherent on this common neighbourhood.
+
+The finite shifted generating expression (5.26e) proves local goodness and the ordinary filtration compatibility. Exhaustion follows either from Theorem 5.23.3 with faithfulness, or directly from the actual lattice property: a germ \(u_0\otimes m\) is a finite sum of finite-order microlocal operators applied to lattice germs, so lies in \(L(k)\) for one common finite bound \(k\). This is exactly membership in (5.26a). Boundedness below and finite graded generation are also immediate from (5.26e). \(\square\)
+
+The proof above gives the actual identity \(L=\sum_i\mathcal A_{\rm gv}h^{a_i}(u_0\otimes m_i)\) on one neighbourhood and every actual ordinary piece \(B_kM=\sum_i\mathcal D_{\le k-a_i}m_i\) there. Thus the former completion and descent obligations have been proved for a supplied coherent generating Euler-stable lattice. The intrinsic strict real-order cutoff through every singular characteristic stratum, often denoted \(N_{<0}\), remains a separate construction. We have not produced such a lattice for every analytic regular holonomic module, an initial coherent global generator, a half-order theorem, or the full arbitrary proper/support-proper analytic regularity theorem. The algebraic four-map theorem above retains its full stated scope.
+
+![Actual bounded division, exact completion and faithful recovery of a supplied Euler-stable lattice](assets/actual-convergent-lattice-descent.png)
+
+*Figure. The actual norm and finite-head division in §§5.20–5.21 give convergent coefficients and finite actual relations. §§5.22 and 5.24 supply exact faithful stalk completion and fixed neighbourhood kernels. The two actual bounds in §5.25 identify the formal localized lattice. The finite-node Euler projections in §5.23 are applied after the common grading shift makes the degrees nonnegative; they give homogeneous generators. The two vanishing coherent quotients in §5.26 recover actual sheaf equality and every ordinary order piece. The canonical cutoff remains a separate requirement. All arrows are proved in the displayed sections. Human context: Schapira, the freely accessible article cited in §5.19, and Kashiwara–Kawai, [Holonomic systems III](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), Appendix A.8, printed pp. 966–968; no external descent assertion is used as a proof. The reproducible original drawing source supplies the CC0 illustration.*
+
+### 5.27. An actual coherent strict coefficient lattice on a singular divisor
+
+#### 5.27.1. Hypotheses, conventions and earlier analytic proofs
+
+Let $X$ be a complex manifold, $Y\subset X$ a reduced analytic hypersurface, and $\mathscr E$ a coherent $\mathcal O_X(*Y)$-module with an integrable connection. Here coherence over $\mathcal O_X(*Y)$ means locally a finite presentation by actual meromorphic matrices with a finite pole order on one neighbourhood. All sections, matrices, derivatives and coordinate changes in this leaf are convergent analytic or meromorphic. No completion of a sheaf stalk is used.
+
+Assume that, on a nonempty relatively open part of the smooth locus of **each local irreducible component** of $Y$, the connection is regular on a nonempty open family of transverse analytic discs. The assumption is local at every $p\in X$, with the local components through $p$. It is an analytic divisorial hypothesis, not a test on algebraic curves. The zero-rank module is allowed.
+
+Put $\Sigma=\{\lambda\in\mathbf C:0\leq\operatorname{Re}\lambda<1\}$. Our residue convention is $\nabla=d+B\,dq/q+\cdots$; horizontal monodromy is $\exp(-2\pi iB)$. For a horizontal *dual* section paired with a coefficient section, the scalar powers have exponent $+\lambda$. This explains the sign in the strict Nilsson statement below.
+
+The full local proofs of [Fuchs's criterion, Theorem 3.3](#3-1-fuchs-s-criterion-in-every-order), and [the normalized local analytic theorem, Theorem 5.0](#normalization-and-the-local-theorem), give the following inputs. The parameter finite-pole proof is [Lemmas 5.0.1–5.0.3](#finite-poles-from-growth-and-transverse-families); the [meromorphic uniqueness proof](#meromorphic-maps-and-normalized-uniqueness) and [analytic disc criterion](#the-local-analytic-disc-criterion) include all nilpotent blocks. We use precisely these proved local analytic portions:
+
+1. For a convergent scalar cyclic equation of rank $r$, regularity is equivalent to $q^j a_j$ holomorphic, $1\leq j\leq r$. Its proof supplies the monic falling-factorial relation, with coefficients on the left.
+2. On a smooth divisor chart, a nonempty open family of regular transverse analytic discs supplies an **actual** free meromorphic frame and a free normalized logarithmic lattice. The finite-pole step is the proved parameter Laurent/Baire argument, not a formal-to-sheaf assertion.
+3. A normalized logarithmic bundle is uniquely identified with the constant residue model. All nilpotent blocks are retained. Uniqueness follows from the invertibility of the leading-pole Sylvester operator, because differences of real parts in $\Sigma$ belong to $(-1,1)$.
+
+The analytic local-ring proof, Theorem 3.1 and Lemmas 2.3, 2.4, 3.3, proves that $H=\mathcal O_{X,p}$ is a factorial Noetherian domain. Its convergent preparation and division inputs are actual analytic proofs. Theorem 3.4 in the same local-ring lesson proves persistence of coprimality on an actual neighbourhood. The full Oka proof, Lemma 2.2 and Theorem 2.1, gives actual neighbourhood finite generation of the kernel of a finite row of holomorphic coefficients. The finite-module consequences can be obtained without importing the general proposition cited there: induct on the number of rows of a finite matrix. A finite generating family for the kernel of the first rows turns the last row into a finite row on those generators, whose kernel is finite; its image generates the full matrix kernel. For a map between two finitely presented modules, lift its finite generator matrix to the two free presentations. The kernel of the finite block matrix consisting of that lift and the negative target relation matrix is finite by the preceding result; its projection to the source module generates the desired kernel. Finite cokernels and images then have finite presentations. This proves precisely the neighbourhood kernels, images and duals used below. A finite presentation also suffices for the localization and dual calculations in §5.27.8.
+
+For completeness, the polynomial-factorial step used in the earlier convergent factoriality proof has the following elementary argument. Let $A$ be a factorial domain and $K_A$ its fraction field. The content of a nonzero polynomial is the product of the minimum prime valuations of its coefficients. Contents multiply: after dividing out contents, reduction modulo any prime of $A$ gives two nonzero polynomials over the domain $A/(\pi)$, whose product is nonzero. Thus the product of primitive polynomials is primitive. The ring $K_A[T]$ has division with remainder; division decreases degree, so every ideal is principal and Bézout proves that irreducibles are prime. Factoring there and clearing the denominators of each factor gives primitive polynomials in $A[T]$. If two primitive polynomials differ by a scalar in $K_A$, the minimum valuation of their coefficients is zero at every prime, so that scalar has valuation zero at every prime and is a unit of $A$. It follows that a primitive polynomial in $A[T]$ factors into primitive lifts of the irreducible factors over $K_A$, up to a unit. Each such lift is prime in $A[T]$: divisibility of a product over $K_A$ selects a factor, and the primitive denominator-clearing argument in the earlier Gauss Lemma 3.3 puts its quotient back in $A[T]$. A prime of $A$ remains prime in $A[T]$ since the quotient is $(A/(\pi))[T]$, a domain. Factoring the content and primitive part therefore proves that $A[T]$ is factorial. Starting with $A=\mathbf C$ and using the earlier convergent Weierstrass Lemmas 2.3–2.4 proves the factoriality step of its Theorem 3.1 without using the external polynomial-ring citation as a proof.
+
+We also record the height-one and DVR facts used below, without invoking a principal ideal theorem. In a factorial domain $H$, an irreducible $q$ generates a prime ideal. If a nonzero prime $\mathfrak r$ is contained in $(q)$, factor a nonzero element of $\mathfrak r$; primality puts one irreducible factor $a$ in $\mathfrak r$. Since $a\in(q)$, irreducibility makes $a$ associate to $q$, whence $\mathfrak r=(q)$. There is therefore no prime strictly between $0$ and $(q)$, so $(q)$ has height one. Conversely a height-one prime $\mathfrak p$ contains an irreducible factor $q$ of any of its nonzero elements. The inclusions $0\subsetneq(q)\subset\mathfrak p$ force $\mathfrak p=(q)$. In $H_{(q)}$ every nonzero fraction is $q^m$ times a unit, by unique factorization; the minimum valuation of a nonzero ideal generates that ideal. Thus it is a DVR. Finally a reduced fraction with a nonunit denominator fails membership at a denominator-prime localization, whereas a fraction in $H$ belongs to all of them. This proves $H=\bigcap_{\operatorname{ht}\mathfrak p=1}H_\mathfrak p$ inside its fraction field, including the precise prime indexing.
+
+**Elementary polynomial, field and radical details.** The following arguments make explicit the algebra used in the divisorial identity argument and in the earlier analytic Nullstellensatz.
+
+Let \(K\) be a field of characteristic zero. A nonconstant irreducible polynomial \(P\in K[T]\) is separable: its derivative is nonzero and has smaller degree, so a common divisor of \(P,P'\) would have to be \(P\), an impossibility. Euclidean division therefore gives \(\gcd(P,P')=1\). In an algebraic closure a repeated root is precisely a common root with the derivative, so all roots are distinct. For a finite extension obtained by adjoining finitely many algebraic generators, every embedding of the preceding field extends in as many ways as the degree of the next minimal polynomial, by sending that generator to each of its distinct roots. Induction and the tower-degree formula give exactly \([L:K]\) embeddings of a finite characteristic-zero extension \(L/K\).
+
+For the primitive-element step, take generators \(b_1,\ldots,b_s\) of \(L/K\). The finitely many embeddings differ on at least one generator. A complex linear combination \(u=\sum c_i b_i\), when \(K\) contains \(\mathbf C\), has pairwise distinct conjugates after excluding finitely many proper complex linear subspaces of the \(c_i\). Its minimal polynomial then has at least \([L:K]\) roots and degree at most \([L:K]\), so \(K(u)=L\). Equivalently the generators can be recovered by Euclidean gcds. For two generators \(a,b\), choose a nonzero scalar \(c\) so that \(a+cb\) differs from every other sum \(a_i+cb_j\) of roots of their minimal polynomials. Only finitely many scalars are excluded. In \(K(a+cb)[T]\), the minimal polynomial of \(b\) and the polynomial obtained from that of \(a\) by substituting \(a+cb-cT\) have exactly the one common root \(b\). They are separable, so their monic gcd is \(T-b\). Its coefficients put \(b\), and then \(a\), in \(K(a+cb)\); induction handles any finite list.
+
+For nonzero polynomials \(P,G\in K[T]\) of degrees \(m,n\), respectively, the Sylvester resultant is the determinant, up to a fixed sign, of the linear map
+\[
+\begin{gathered}
+\{A:\deg A<n\}\oplus\{B:\deg B<m\}\\ \longrightarrow\{C:\deg C<m+n\},\\ (A,B)\longmapsto AP+BG .
+\end{gathered}
+\]
+The spaces have the same finite dimension. A common factor \(D\) of positive degree gives the nonzero kernel pair \((G/D,-P/D)\). Conversely, if \(AP+BG=0\) with the displayed degree bounds and \(\gcd(P,G)=1\), Bézout's identity makes \(P\mid B\), whence \(B=0\), and then \(A=0\). Thus the determinant vanishes exactly when the polynomials have a common factor. A nonzero constant \(G\) gives the same nonvanishing conclusion directly; the zero polynomial is treated separately. The matrix entries are polynomial expressions in the coefficients, so for holomorphic coefficient families the resultant is holomorphic. Apply this with \(G=P'\) to obtain the nonzero discriminant in the separability case. Apply it with a Weierstrass remainder to justify the divisorial identity argument below, including the case of a constant remainder.
+
+A factorial domain is integrally closed by the same prime valuations: if a reduced fraction \(a/b\) satisfies a monic equation of degree \(m\), multiplication by \(b^m\) shows that any prime dividing \(b\) divides \(a^m\). That contradicts coprimality. Hence \(b\) is a unit. This supplies the normality used for the coefficient algebra in the earlier finite parametrization proof.
+
+Finally, for any commutative ring \(A\) and ideal \(J\),
+\[
+\sqrt J=\bigcap_{\mathfrak p\supset J,\ \mathfrak p\ {\rm prime}}\mathfrak p.
+\]
+Every prime containing \(J\) contains its radical. For the converse take \(a\notin\sqrt J\); the powers \(1,a,a^2,\ldots\) are disjoint from \(J\). The union of a chain of ideals containing \(J\) and disjoint from these powers still has that property. The maximality principle therefore gives a maximal such ideal \(\mathfrak p\). If \(u,v\notin\mathfrak p\) but \(uv\in\mathfrak p\), maximality gives \(a^r=p_1+bu\) and \(a^s=p_2+cv\), with \(p_1,p_2\in\mathfrak p\). Multiplying puts \(a^{r+s}\) in \(\mathfrak p\), a contradiction. Thus \(\mathfrak p\) is prime and excludes \(a\). This proves the formula, including the unit-ideal case with an empty intersection. With the earlier full prime-ideal vanishing proof, it gives the analytic Nullstellensatz used below.
+
+Finite linear avoidance is also elementary here. If an ideal is not contained in any of finitely many divisor primes, choose one element outside each prime and take their finite complex linear span. Each prime cuts out a proper linear subspace of that span. Finitely many proper linear subspaces cannot cover a finite-dimensional complex vector space: choose a nonzero linear functional vanishing on each, and their product is a nonzero polynomial, which cannot vanish at every point over an infinite field, by induction on the number of variables. Hence one linear combination avoids every divisor prime.
+
+One analytic consequence needed repeatedly can also be proved directly from those inputs. If $q\in H$ is irreducible and $g\in H$ vanishes on a nonempty smooth open part of the local hypersurface $q=0$, then $q\mid g$. After a linear coordinate change, replace $q$ by its irreducible Weierstrass polynomial $P(z',z_n)$, and divide $g$ by $P$ to obtain a polynomial remainder $G$ of degree less than $\deg P$. The discriminant of $P$ is nonzero: over $\operatorname{Frac}\mathbf C\{z'\}$, an irreducible characteristic-zero polynomial is separable. Choose an unramified point in the given open part. On its projected open set, one root of $P$ is also a root of $G$, so the resultant $\operatorname{Res}(P,G)$ is zero there. The holomorphic identity theorem makes the resultant identically zero. Gauss's lemma makes $P$ irreducible over the fraction field, hence $P\mid G$, which forces $G=0$. This proves the assertion. In particular a finite list of nonzero meromorphic functions has its claimed $q$-valuations on a nonempty smooth open part of $q=0$, avoiding the zeros of the finitely many residual numerators and denominators.
+
+This coefficient construction uses actual analytic finite presentations and sheaf duals. The bounded ambient comparison in §5.25 does not identify an arbitrary microlocal module with the meromorphic connection here; that realization remains a separate obligation in §5.27.12.
+
+#### 5.27.2. Statement
+
+**Theorem 5.27.** Under all the hypotheses of §5.27.1, there is a unique coherent reflexive $\mathcal O_X$-submodule
+\[
+\mathscr L_\Sigma\subset\mathscr E,\qquad
+\mathscr L_\Sigma(*Y)=\mathscr E,                              \tag{5.27a}
+\]
+whose restriction on every smooth divisor chart is the normalized logarithmic lattice. This restriction exists at **every** smooth point of $Y$, including points outside the regular open sets in the hypothesis. At a singular point, $\mathscr L_\Sigma$ is allowed to be reflexive rather than locally free.
+
+For a local meromorphic section $s\in\mathscr E$, membership in $\mathscr L_\Sigma$ is detected by strict Nilsson membership on the smooth divisor locus. Namely, pair with a basis of horizontal dual sections and use the local constant-residue model; the resulting multivalued scalar expressions are finite sums
+\[
+\sum_{\lambda\in\Sigma}\sum_{j=0}^{r-1}
+q^\lambda(\log q)^j a_{\lambda,j}(q,w),                      \tag{5.27b}
+\]
+with holomorphic coefficient functions. The intrinsic condition is membership in the normalized lattice; (5.27b) is its expression in that model. No choice of a single-valued branch on all of a punctured neighbourhood is asserted.
+
+The following statements hold at every point of $Y$, including all singular strata:
+
+* **Saturation.** If $g$ is holomorphic and nonzero on every local irreducible component of $Y$, $s\in\mathscr E$, and $g^m s\in\mathscr L_\Sigma$, then $s\in\mathscr L_\Sigma$.
+* **Logarithmic stability.** If $\eta$ is a holomorphic vector field satisfying $\eta(I_Y)\subset I_Y$, then $\nabla_\eta\mathscr L_\Sigma\subset\mathscr L_\Sigma$. The algebra generated by holomorphic functions and these logarithmic covariant derivatives also preserves it.
+
+This is a coefficient theorem on a singular hypersurface, with no projectivity hypothesis on $X$ or $Y$.
+
+#### 5.27.3. A finite actual initial lattice and projectivity off the divisor
+
+Fix $p\in X$, $H=\mathcal O_{X,p}$, a reduced equation $f$, $R=H[f^{-1}]$, and $K=\operatorname{Frac}H$. A finite $R$-presentation of $E=\mathscr E_p$, after clearing finitely many denominators, is the localization of a finite $H$-presentation $C$. Thus $C[f^{-1}]=E$. The kernel of $C\to E$ is precisely the union of the kernels of multiplication by $f^k$. That ascending chain stabilizes, since $C$ is Noetherian. Take $N$ for which it stabilizes and set $F=C/\ker(f^N:C\to C)$. Then $F\subset E$ and $F[f^{-1}]=E$.
+
+This is a neighbourhood construction. Represent the finite presentation and $f^N$ near $p$, take its coherent kernel, and form the coherent quotient. Multiplication by $f$ on the quotient has coherent kernel and zero stalk at $p$. A coherent sheaf with zero stalk has zero on a neighbourhood: write finitely many local generators, each zero on some neighbourhood, then intersect those finitely many neighbourhoods. Shrink once. The quotient is now $f$-torsion-free throughout that neighbourhood and embeds into its localization $\mathscr E$. Thus we have an actual coherent initial lattice $\mathscr F\subset\mathscr E$, not merely finite stalk generators.
+
+We shall need $E$ to be projective over $R$. Here is a proof. The ring $R$ is Noetherian and its only ideals stable under every coordinate derivation $\partial_i$ are $0,R$. For a nonzero such ideal, multiply a nonzero meromorphic member by a power of $f$, obtaining $0\ne u\in H$ in the ideal. A derivative corresponding to a nonzero Taylor coefficient of least total degree has nonzero value at $p$, so it is a unit of $H$. That derivative is in the ideal by stability.
+
+Take a finite presentation $R^a\xrightarrow{\phi}R^b\to E\to0$. For a coordinate derivative $\partial$, lift the connection on the $b$ chosen generators to a matrix $B\in M_b(R)$, so $\partial+B$ on $R^b$ induces the connection on $E$. It preserves the relation module. For the $a$ chosen relation generators, choose preimages of their derivatives in $R^a$; their columns form $A\in M_a(R)$, and
+\[
+\partial\phi+B\phi=\phi A.                                  \tag{5.27c}
+\]
+By the determinant multilinearity formula, the derivative of each minor of $\phi$ is a sum of minors of the same size multiplied by entries of $A,B$. Consequently all Fitting ideals of $E$ are differential ideals. Put $r=\dim_K(E\otimes_RK)$. At the generic point, $\operatorname{Fitt}_{r-1}E=0$ and $\operatorname{Fitt}_r E=K$. The first ideal is zero already in the domain $R$; the second is nonzero and hence $R$.
+
+For completeness these conditions imply projectivity of rank $r$. If $r=0$, $\operatorname{Fitt}_0E=R$ makes the presentation surjective at every maximal ideal and hence $E=0$; every subsequent lattice is zero and all claims follow. Otherwise, at a maximal ideal of $R$, one $(b-r)$-minor is a unit. Elementary invertible row and column operations split that block off as an identity and reduce the presentation to $\psi:R^{a-b+r}\to R^r$. All $(b-r+1)$-minors vanish by $\operatorname{Fitt}_{r-1}=0$, so all entries of $\psi$ vanish. The cokernel is free of rank $r$ there. The unit minor works on an open neighbourhood in $\operatorname{Spec}R$, and these neighbourhoods cover; a finite locally free module is projective. This last assertion can be seen by taking a finite cover by principal opens and using a partition of $1$ by sufficiently high powers of their defining functions to patch local lifts of a map from the module through a surjection. Thus $E$ is projective and embeds in $E_K=E\otimes_RK$. In particular the initial $F$ is torsion-free over $H$.
+
+#### 5.27.4. Actual stable lattices at the finitely many divisor primes
+
+Factor $f=u\prod_{i=1}^s q_i$ into distinct irreducibles. Put $H_i=H_{(q_i)}$. Factoriality makes $H_i$ a discrete valuation ring, with uniformizer $q_i$, fraction field $K$, and residue field $\kappa_i=\operatorname{Frac}(H/(q_i))$. These are localizations of actual analytic germs, not formal coefficient rings.
+
+Choose a coordinate derivative $\partial_j$ for which $d_i=\partial_jq_i\notin(q_i)$, and put $v_i=d_i^{-1}\partial_j$. Such a derivative exists since a characteristic-zero reduced Weierstrass polynomial is generically smooth. Then $v_i(q_i)=1$, and $v_i$ preserves $H_i$: both $d_i$ and any denominator outside $(q_i)$ are units there. Write $D=\nabla_{v_i}$, $q=q_i$, and $\Theta=qD$.
+
+We first prove cyclicity without importing a formal cyclic-vector theorem. For a $K$-basis $e_0,\ldots,e_{r-1}$ of $E_K$, set
+\[
+\begin{gathered}
+b_i=\sum_{k=0}^i(-1)^k\binom ik D^ke_{i-k},\\ c(a)=\sum_{i=0}^{r-1}\frac{(q-a)^i}{i!}b_i,
+\end{gathered}
+\tag{5.27d}
+\]
+where $a$ is a constant indeterminate under $D$. Apply $D^j$, then substitute $a=q$. The result is
+\[
+\begin{gathered}
+\sum_{i=0}^j\binom jiD^{j-i}b_i=e_j\\ (0\leq j<r).
+\end{gathered}
+\tag{5.27e}
+\]
+Indeed the coefficient of $D^{j-\ell}e_\ell$ is $\binom j\ell\sum_{k=0}^{j-\ell}(-1)^k\binom{j-\ell}k$, zero unless $\ell=j$. Hence the determinant of $c(a),Dc(a),\ldots,D^{r-1}c(a)$, a polynomial in $a$ over $K$, is not zero. It has only finitely many roots; choose $a\in\mathbf C$ avoiding them. This gives an actual cyclic vector $c\in E_K$ and a unique scalar relation
+\[
+\begin{gathered}
+D^rc+\sum_{j=1}^r a_jD^{r-j}c=0,\\ a_j\in K.
+\end{gathered}
+\tag{5.27f}
+\]
+
+On a nonempty smooth open part of $q=0$, avoid the finitely many residual numerator/denominator zeros of the basis, the cyclic determinant and the coefficients. This avoidance is justified by the divisorial identity proof in §5.27.1. There $q$ is an actual transverse coordinate, $v_i=\partial_q$ in coordinates $(q,x_1,\ldots,\widehat{x_j},\ldots,x_n)$, and (5.27f) is a convergent meromorphic cyclic equation on each transverse disc. Pairing $c$ with horizontal dual solutions gives its full scalar solution space; multiplication by actual meromorphic coefficients preserves regular growth. The assumed analytic regularity and the earlier Fuchs criterion therefore imply that every $q^ja_j$ has no pole on this open part. Detection of the $q$-valuation there gives
+\[
+\begin{gathered}
+\nu_{q_i}(a_j)\geq-j,\\ q^ja_j\in H_i.
+\end{gathered}
+\tag{5.27g}
+\]
+This argument uses actual discs to prove finite valuation bounds on actual germs. It does not replace the analytic sheaf by its formal completion.
+
+Let $F_m(T)=T(T-1)\cdots(T-m+1)$. The identity $q^mD^m=F_m(\Theta)$, proved by the Leibniz rule, changes (5.27f) to the monic relation
+\[
+\left(\begin{gathered}F_r(\Theta)+\\\sum_{j=1}^r q^ja_jF_{r-j}(\Theta)\end{gathered}\right)c=0.
+\tag{5.27h}
+\]
+All coefficients are on the left. The $H_i$-span of $c,\Theta c,\ldots,\Theta^{r-1}c$ is finite free and stable under $\Theta$, by (5.27g)–(5.27h) and $qv_i(H_i)\subset H_i$. Call it $M_i$.
+
+#### 5.27.5. Constant residue spectra, normalization, and nilpotent blocks
+
+Since $qv_i(H_i)\subset qH_i$, the residue $B_0$ of $\Theta$ on $M_i/qM_i$ is $\kappa_i$-linear. We show that its characteristic polynomial has constant complex roots; this fact must not be assumed for a matrix over $\kappa_i$.
+
+Work on one of the smooth regular open charts chosen in §5.27.4. The earlier local analytic proof of Theorem 5.0 gives a normalized logarithmic lattice $L^{\rm can}$ and a constant-residue model $A\in M_r(\mathbf C)$. The meromorphic basis of $M_i$ gives an actual stable lattice on a smaller such chart. It is bounded above and below by two powers of $qL^{\rm can}$, uniformly on that chart, after avoiding its determinant zeros. Filter $M_i/qM_i$ by
+\[
+\begin{gathered}
+F^k={}\\ (M_i\cap q^kL^{\rm can}+qM_i)/qM_i.
+\end{gathered}
+\tag{5.27i}
+\]
+There are finitely many nonzero associated quotients. Each is a subquotient of $q^kL^{\rm can}/q^{k+1}L^{\rm can}$, on which the residue is $A+kI$. To check the subquotient claim, first quotient $M_i\cap q^kL^{\rm can}$ by $M_i\cap q^{k+1}L^{\rm can}$, which embeds in the latter canonical quotient, and then quotient by the image of $qM_i\cap q^kL^{\rm can}$. All intersections are stable under $\Theta$.
+
+Thus all residue eigenvalues belong to a **finite** set of constants $\lambda+k$, $\lambda\in\operatorname{Spec}A\subset\Sigma$, with integers $k$ bounded by the two lattice bounds. The characteristic-polynomial coefficients are holomorphic on the connected chart, and take values in the finite set of elementary symmetric functions of those finite possible multisets. Continuity makes them constant there. The divisorial identity proof in §5.27.1 then makes those coefficients constant in $\kappa_i$. In particular $B_0$ splits into generalized eigenspaces over $\kappa_i$, with complex eigenvalues.
+
+Normalize $M_i$ by finite elementary modifications. The generalized-eigenspace projectors are polynomials in $B_0$ with constant coefficients, using the Euclidean algorithm on its distinct factors $(T-\lambda)^{m_\lambda}$. Lift a basis of each projector image to an $H_i$-basis of $M_i$; the lifted determinant is a unit. The residue matrix is block diagonal and all off-block entries of the full matrix are divisible by $q$.
+
+If a block has eigenvalue with real part below $0$, replace its basis vectors by $q$ times them. Its residue eigenvalue changes by $+1$. If its real part is at least $1$, replace those vectors by $q^{-1}$ times them; its eigenvalue changes by $-1$. Stability persists: conjugating an off-block entry divides or multiplies it by $q$, and the entry that is divided was already divisible by $q$. The new residue matrix is block triangular, its diagonal blocks are the designated shift and the unshifted blocks, and its eigenvalue multiset is exactly the described one. Recompute generalized blocks if shifted eigenvalues meet other eigenvalues. All vectors with any given eigenvalue have the same membership in the strip, so this recomputation does not force a normalized eigenvalue to be shifted as an outlier.
+
+The sum, counted with multiplicity, of the nonnegative integer distances required to move the real parts into $[0,1)$ decreases at every modification. After finitely many steps we obtain a finite free $H_i$-lattice $L_i\subset E_K$, stable under $\Theta$, whose residue has spectrum in $\Sigma$. Generalized blocks and their nilpotents are never discarded. This is a finite construction over actual analytic localizations.
+
+On a nonempty regular smooth chart, the resulting meromorphic frame is normalized and agrees with $L^{\rm can}$. One may apply the earlier normalized uniqueness to the identity map, or repeat its leading-pole proof over the DVR: if the identity from one normalized stable lattice to another had a pole of order $m>0$, its leading matrix would be killed by $-mI+B_0(\cdot)-(\cdot)A_0$, whose eigenvalues have nonzero real part. On generalized Hom blocks the nilpotent remainder is nilpotent, so a finite geometric series supplies the inverse. Repeat for the reverse identity. This proves equality and also independence of all choices at the divisor prime.
+
+#### 5.27.6. Tangential stability at a divisor prime
+
+Write $q=q_i$, $v=v_i$ and use the coordinate vector fields
+\[
+w_k=\partial_{x_k}-(\partial_{x_k}q)v\quad(k\ne j).
+\]
+They satisfy $w_k(q)=0$ and $[v,w_k]=0$: they are the coordinate partial derivatives in the actual coordinates $(q,x_1,\ldots,\widehat{x_j},\ldots,x_n)$ on the smooth chart, and equality of the corresponding rational germs follows from equality there. They preserve $H_i$.
+
+In a basis of the normalized $L_i$, write
+$\nabla_{qv}=qv+B$ and $\nabla_w=w+C$, where $B\in M_r(H_i)$, $C\in M_r(K)$. Flatness and $[qv,w]=0$ give
+\[
+qv(C)-w(B)+[B,C]=0.                                         \tag{5.27j}
+\]
+If $C$ had a pole of order $m>0$, write its nonzero leading coefficient as $C_{-m}=q^mC\bmod q\in M_r(\kappa_i)$. Since $v(H_i)\subset H_i$, reducing $q^m$ times (5.27j) modulo $q$ gives
+\[
+(-mI+\operatorname{ad}B_0)C_{-m}=0.                         \tag{5.27k}
+\]
+The eigenvalues of this operator are $-m+\beta-\alpha$, with $\alpha,\beta\in\Sigma$, and none is zero. On a generalized Hom block the remaining operator is a sum of commuting nilpotents and is nilpotent; its finite geometric inverse proves invertibility, including all Jordan blocks. This contradicts $C_{-m}\ne0$. Thus $C\in M_r(H_i)$ and $\nabla_wL_i\subset L_i$.
+
+Every holomorphic vector field $\eta$ logarithmic for $Y$ satisfies $\eta(q_i)\in q_iH_i$, because all other factors of $f$ are units in $H_i$. In the above basis of vector fields it is an $H_i$-linear combination of $q_iv_i$ and the $w_k$. Therefore $L_i$ is stable under every such $\nabla_\eta$.
+
+#### 5.27.7. One finite coherent lattice with all the divisorial germs
+
+We now build an actual finite $H$-module $F_0\subset E$ such that
+\[
+\begin{gathered}
+(F_0)_{(q_i)}=L_i\\ (1\leq i\leq s),\\ F_0[f^{-1}]=E.
+\end{gathered}
+\tag{5.27l}
+\]
+For each of the finitely many basis vectors of $L_i\subset E_K$, choose a nonzero denominator outside $(q_i)$ that makes that vector lie in $E$. This is possible by writing it in the original finite $R$-generators and separating all denominator factors into powers of $q_i$ and factors not divisible by $q_i$; powers of $q_i$ are already invertible in $R$. Multiplication by that denominator is a unit of $H_i$, so the resulting vectors still generate $L_i$ there. Multiply each such vector by sufficiently high nonnegative powers of every $q_j$, $j\ne i$, to make it belong to every $L_j$. These multipliers are units of $H_i$ and hence do not destroy generation at $i$. All chosen vectors now lie in $E$ and in every $L_j$.
+
+The finitely generated initial $F$ of §5.27.3 has finitely many generators. Choose $B\geq0$ for which $f^BF\subset L_i$ for every $i$, using the finite DVR valuations of those finitely many generators in the finitely many bases. Let $F_0$ be generated over $H$ by the chosen divisor vectors and $f^BF$. It is a finite torsion-free $H$-module contained in $E$. Each of its divisor localizations contains a generating basis of $L_i$, and all its generators belong to $L_i$, proving the first assertion of (5.27l). The second follows from $f^BF[f^{-1}]=E$.
+
+Choose representatives of the finitely many meromorphic vectors and finite relations on one neighbourhood. The earlier $\mathcal O$-coherence theorem makes their image a coherent subsheaf $\mathscr F_0\subset\mathscr E$. Its localization is $\mathscr E$, after shrinking once. All comparisons at the divisor primes involve finitely many fractions with denominators coprime to the respective $q_i$; coprimality persists by the earlier analytic Theorem 3.4. Thus the same comparisons hold on dense smooth open subsets of every nearby branch of the divisor representatives. We shall obtain the statement at the other points from the coherent sheaf double dual, not by treating the intersection of infinite families of stalk modules as a sheaf.
+
+#### 5.27.8. The reflexive intersection formula, proved inside the actual fraction module
+
+For a finite torsion-free $H$-module $G\subset E_K$ spanning $E_K$, define $G^*=\operatorname{Hom}_H(G,H)$. A finite presentation proves that $G^*$ is finite and that duals commute with localization: dualize the presentation to a kernel between finite free modules, and localize that finite kernel, which is exact. Its $K$-span is $E_K^*$. The double dual $G^{**}$ is thus naturally a submodule of $E_K$, with
+\[
+G^{**}=\{s\in E_K:\ell(s)\in H\text{ for every }\ell\in G^*\}.
+\]
+Factoriality gives $H=\bigcap_{\operatorname{ht}\mathfrak p=1}H_\mathfrak p$ inside $K$: in a reduced fraction, a denominator prime of positive multiplicity is detected in precisely its height-one localization. The height-one classification and DVR assertion were proved directly from factoriality in §5.27.1. At such a prime $G_\mathfrak p$ is finite torsion-free over a DVR and is free. An elementary proof of this last fact chooses a nonzero element of least valuation in one coordinate, clears that coordinate using its unit coefficient, and inducts on the rank. Hence $G_\mathfrak p=(G_\mathfrak p)^{**}$. Applying the displayed dual description and the intersection formula for $H$ proves
+\[
+\begin{gathered}
+G^{**}=\bigcap_{\operatorname{ht}\mathfrak p=1}G_\mathfrak p\\ \text{inside }E_K.
+\end{gathered}
+\tag{5.27m}
+\]
+This proves reflexivity of $G^{**}$ as well: its height-one localizations agree with those of $G$, and applying (5.27m) again gives the same module.
+
+Set $L=F_0^{**}$. It is finite. At primes dividing $f$, $L_\mathfrak p=L_i$. At primes not dividing $f$, $(F_0)_\mathfrak p=E_\mathfrak p$, by (5.27l). Since $E$ is projective over $R$, it is reflexive over $R$. Applying the same proof of (5.27m) to the factorial localization $R$ shows that the intersection of the latter prime-localizations is $E$. Consequently
+\[
+\begin{gathered}
+F_0\subset L\subset E,\\ L[f^{-1}]=E.
+\end{gathered}
+\tag{5.27n}
+\]
+
+On the chosen neighbourhood define
+$\mathscr L=\mathscr F_0^{**}$, using **sheaf** duals over $\mathcal O_X$. They are coherent finite kernels. At each point sheaf duals have the ordinary finite-module stalk duals, by a finite presentation. Thus (5.27m) holds independently at every nearby actual stalk. The embedding $\mathscr L\to\mathscr E$ is obtained by localizing the finite dual construction and using (5.27n); its finite kernel is zero at every stalk. This is the actual neighbourhood lattice required here.
+
+#### 5.27.9. Stability everywhere, and regularity at all smooth divisor points
+
+Let $\eta$ be a local holomorphic logarithmic vector field and $s\in\mathscr L$. Then $\nabla_\eta s\in\mathscr E$. At every height-one prime not in $Y$, the lattice equals $E$ and the connection preserves $E$. At a divisor prime the lattice is $L_i$, and §5.27.6 proves preservation. Formula (5.27m) therefore gives $\nabla_\eta s\in L$ at $p$.
+
+This also holds at every nearby point. Here is a finite-stalk comparison which makes that assertion precise. At a nearby point $p'$, carry out §5.27.3–§5.27.8 using the local components through $p'$ and obtain $L'$. Such a construction is available by the stated local hypothesis at every point. The finite comparisons and persistence of coprimality in §5.27.7 make the original sheaf $\mathscr F_0$ agree, at each divisor prime of $\mathcal O_{X,p'}$, with the normalized prime lattice of the original finite meromorphic frames. Those frames are normalized on a dense smooth open of that local branch: their finitely many denominators are coprime to it, and the residue characteristic-polynomial identity in §5.27.5 extends there. DVR normalized uniqueness in §5.27.5 identifies that prime lattice with the one used for $L'$. At every other height-one prime both sheaves equal $E$. Sheaf duals commute with stalks by their finite presentations, so both $\mathscr L_{p'}$ and $L'$ have the intersection formula (5.27m), with exactly the same height-one modules. They are equal. The first paragraph of §5.27.9, applied to the construction at $p'$, proves logarithmic preservation there. This uses finite presentation comparisons followed by the proved reflexive formula, without a uniform infinite cancellation argument.
+
+We next prove local freeness at a smooth point of $Y$, including an initially exceptional point. Use coordinates $(q,w)$ with $Y=(q=0)$. The finite module $T=L/qL$ has a flat connection in all the $w$-directions: the logarithmic vector fields $\partial_w$ preserve $L$, commute and preserve $qL$. Their induced connection has holomorphic coefficients in finite presentations. The Fitting-ideal proof of §5.27.3, now over $H/(q)=\mathbf C\{w\}$, shows that $T$ is free. Its rank is $r$, since at the divisor generic point it is $L_i/qL_i$ of dimension $r$.
+
+Lift a free basis of $T$ to $L$. Nakayama gives a surjection $H^r\to L$, with finite kernel $K_0$. Multiplication by $q$ is injective on $L\subset E_K$, so the tensor exact sequence modulo $q$ has zero $\operatorname{Tor}_1^H(H/(q),L)$, as is seen directly from the two-term resolution $H\xrightarrow qH\to H/(q)$. The lifted map is an isomorphism modulo $q$, hence $K_0/qK_0=0$. Nakayama makes $K_0=0$. Thus $L$ is free. Nakayama here follows from the elementary determinant trick: if a finite module $M=qM$, a generator matrix $I-qA$ annihilates its generator column and has unit determinant.
+
+Its logarithmic normal residue has spectrum in $\Sigma$. The characteristic polynomial is the constant normalized polynomial on a dense smooth open set; its holomorphic coefficients are therefore those constants at the initially exceptional point too, by §5.27.1. We have obtained a normalized free logarithmic lattice at every smooth point. The earlier normalized uniqueness now identifies it with the local constant-residue model there. In particular regularity has extended to all smooth points; it was not added to the hypothesis.
+
+The same argument applied to a second construction shows uniqueness. They agree at every height-one prime dividing $f$, by normalized DVR uniqueness in §5.27.5, and at every other height-one prime, because both localize to $E$. Their reflexive intersection formula makes them equal. On overlapping neighbourhoods the same argument applies to every point. Hence the local coherent lattices glue uniquely to $\mathscr L_\Sigma$ in (5.27a), and the construction is independent of the initial presentation, cyclic vectors, coordinates and divisorial bases.
+
+#### 5.27.10. Strict Nilsson membership, including singular points
+
+In a smooth normalized constant-residue chart, write $A=\lambda I+N$ on each generalized eigenspace, $N$ nilpotent. A horizontal dual frame contributes
+\[
+q^A=q^\lambda\sum_{j=0}^{r-1}\frac{N^j(\log q)^j}{j!}.       \tag{5.27o}
+\]
+Pairing with a coefficient section whose vector is holomorphic gives (5.27b). Conversely this generalized-power criterion implies that the meromorphic coefficient vector in the normalized frame is holomorphic. Here is the needed independence argument. Continuation $T$ around $q=0$ fixes every single-valued meromorphic coefficient, multiplies $q^\lambda$ by $e^{2\pi i\lambda}$, and replaces $\log q$ by $\log q+2\pi i$. Distinct classes in $\Sigma$ have distinct multipliers. Polynomial projectors in $T$, using the relatively prime powers of $T-e^{2\pi i\lambda}$, isolate each exponent class. On one class repeated finite differences lower the log degree and extract the nonzero constant multiple of its top coefficient. Descending induction proves independence of all log powers over single-valued meromorphic coefficients. In (5.27o), the log-degree-zero coefficient of each generalized block is the original meromorphic coefficient vector. If the same scalar pairing has an expansion with holomorphic coefficients, independence makes this vector holomorphic. This proves the converse. Changes of horizontal dual basis are constant invertible matrices and preserve the criterion. The finite nilpotent logarithm matrices retain every Jordan block. This proves the smooth strict Nilsson coefficient criterion with all nilpotent blocks. It asserts no microlocal order formula.
+
+**Strict growth equivalence on the actual meromorphic object.** In this smooth chart the preceding coefficient criterion is also equivalent to a bound by a power of \(1+\log(1/|q|)\), for all scalar pairings with a horizontal dual basis on bounded-angle sectors and compact parameter sets. If the coefficient vector is holomorphic, it is bounded on a smaller closed product domain. For \(0\leq\operatorname{Re}\lambda<1\), the modulus of \(q^\lambda\) is bounded on a sector of bounded argument as \(q\to0\). The nilpotent exponential is a finite logarithmic polynomial. Thus every pairing has the stated bound, uniformly on smaller compact parameter sets.
+
+Conversely suppose the meromorphic coefficient vector has a pole. Project to a generalized block with a pole of order \(k\geq1\), using the constant residue projectors, and fix a parameter value where its leading vector \(v\) is nonzero. In that block the leading term after multiplication by \(q^A\) is
+\[
+q^{\lambda-k}
+\sum_{j=0}^{r-1}\frac{N^jv}{j!}(\log q)^j .
+\]
+This vector polynomial is nonzero, since its constant coefficient is \(v\). A constant dual row has a nonzero leading logarithmic coefficient. On a fixed radial direction, that row grows as a nonzero constant times
+\[
+|q|^{\operatorname{Re}\lambda-k}
+(\log(1/|q|))^j
+\]
+for some \(j\geq0\). Higher Taylor terms are smaller by a positive power of \(|q|\), times a bounded-degree logarithmic polynomial, and cannot cancel this leading term. Since \(\operatorname{Re}\lambda-k<0\), the leading expression exceeds every fixed logarithmic power. This contradicts the assumed bound. Constant changes of the horizontal dual basis preserve a common bound and allow the block and row to be isolated. A nonzero leading coefficient germ is nonzero on an open parameter set, so this argument excludes every pole germ. It proves the strict logarithmic-growth meaning of the coefficient criterion and gives no microlocal order or half-order formula.
+
+Let $s\in\mathscr E_p$ be meromorphic on an actual neighbourhood and satisfy this strict condition on its smooth divisor locus. Then $s\in L_i$ at each divisor prime: on a nonempty smooth open part the condition says precisely membership in the normalized lattice, and a negative $q_i$-valuation would be detected on such a part. At other height-one primes $s\in E=(F_0)_\mathfrak p$. Formula (5.27m) gives $s\in L$. Conversely a section of $L$ belongs to the normalized logarithmic lattice at every smooth point by §5.27.9, and therefore satisfies (5.27b). This proves strict membership at every singular point by actual finite coefficient dual inequalities, without assuming a coherent $j_*$ extension.
+
+In particular the intrinsic sheaf
+\[
+\{s\in\mathscr E:\ \begin{gathered}s\text{ is strict on the}\\\text{smooth divisor locus}\end{gathered}\}
+\]
+is the coherent sheaf $\mathscr L_\Sigma$. The left hand side is not defined as arbitrary functions on the complement: its sections are already actual finite-pole meromorphic sections of $\mathscr E$. This distinction prevents an unwarranted meromorphic-extension assertion.
+
+#### 5.27.11. Local saturation and singular-stratum stability
+
+Take $g\in H$ nonzero on every local component of $Y$, $s\in E$, and $g^ms\in L$. At each divisor prime $q_i$, $g$ is a unit, by §5.27.1 and $q_i\nmid g$. Hence $s\in L_i$. At every other height-one prime, $s\in E=(F_0)_\mathfrak p$ already. Formula (5.27m) gives $s\in L$. This proves the saturation assertion for all actual meromorphic sections of $E$, a stronger coefficient statement than an adjacent-lattice version restricted to $h^{-1}L/L$.
+
+Let $Q\subset E/L$ be a coherent $\mathcal O$-**submodule** whose support lies in a closed analytic subset $W\subset Y$ containing no local component of $Y$. Choose $g\in I_W$ avoiding the finitely many divisor primes by finite linear avoidance. For a local class $u\in Q$, its cyclic submodule $\mathcal O u$ is coherent. Its support is the zero set of its coherent annihilator ideal, by the finite-presentation support proof, Theorem 3.1. Since that support is contained in $W$, the analytic Nullstellensatz, Theorem 5.1, whose finite parametrization and prime-vanishing proofs are in §§3–4, makes some power $g^m$ belong to its annihilator. Represent $u$ by an actual section $s\in E$. Then $g^ms\in L$, and the proved saturation makes $s\in L$. Thus $u=0$. Applying this to the finite generators gives $Q=0$.
+
+The same conclusion holds for an actual class $s\bmod L$ supported in $W$. Its cyclic $\mathcal O$-module is coherent, as can be checked without assuming $E/L$ coherent. Projectivity of $E$ over $R$ in §5.27.3 gives a split embedding into a finite free $R$-module; its finitely many matrices and identities extend on a neighbourhood. Represent the finitely many generators of $L$ and the single $s$ in that embedding and clear one common finite pole denominator. The resulting holomorphic matrix into a finite free $\mathcal O$-module has coherent kernel by the earlier actual Oka proof. Hence $L+\mathcal O s$ is coherent, and $(L+\mathcal O s)/L$ is the coherent cyclic module of the class. The preceding annihilator argument applies.
+
+This assertion is restricted to submodules and actual supported classes. Arbitrary coherent **subquotients** of $E/L$ can have support in $W$. For example, with $H=\mathbf C\{x,y\}$, $Y=(y)$, $E=H[y^{-1}]$ and $L=H$, the coherent first-pole submodule $y^{-1}H/H\simeq H/(y)$ has the nonzero quotient $H/(x,y)$ supported at $W=\{(0,0)\}$. Saturation of $L$ under $x$ does not make this quotient vanish. The corrected submodule/class assertion is a coefficient support-vanishing consequence of the constructed lattice, rather than a hypothesis used to construct it.
+
+§5.27.9 has already proved stability at **each singular point**, with no smoothness or generic-stratum qualification. Thus every finite composition of holomorphic multiplication and logarithmic covariant derivatives preserves $\mathscr L_\Sigma$. This assertion concerns the actual logarithmic differential-operator algebra for the divisor. Identifying it with the relevant generators of a microlocal $\mathscr E_\Lambda$-algebra is an additional step, not a change of notation.
+
+#### 5.27.12. The remaining characteristic cutoff and proper-image obligations
+
+Theorem 5.27 constructs the coefficient lattice under the analytic divisorial hypotheses of §5.27.1, at every point of a reduced analytic hypersurface. Its initial finite coefficient lattice in §5.27.3 is an actual local $\mathcal O_X$-lattice in a supplied finite meromorphic connection. An initial global analytic generator for an arbitrary regular holonomic module remains unconstructed here.
+
+To obtain the characteristic cutoff across singular characteristic strata, the following proofs remain necessary:
+
+1. Construct a local generic-position/contact realization, with a convergent quantized contact transformation where needed, and a faithful finite D-type realization over a hypersurface. A realization only on generic characteristic strata does not supply the module at all points.
+2. Construct actual finite-pole meromorphic coefficient sections satisfying §5.27.1, and prove their analytic divisorial regularity from the given regular holonomic hypothesis.
+3. Prove the exact microlocal order-membership correspondence, including the half-order shift and every sign, that identifies the strict characteristic cutoff with this coefficient lattice. No half-order cutoff formula is proved in this lesson.
+4. Transfer the coefficient saturation to the adjacent characteristic quotient $h^{-1}L_0/L_0$ and prove preservation by every generator of the actual characteristic microdifferential-operator algebra. Logarithmic coefficient stability in §5.27.11 does not furnish this identification.
+
+The construction of that cutoff (C1), full analytic regularity under arbitrary proper or support-proper direct image, and the nonprojective cases remain open obligations of the programme. The supplied-lattice descent proved in §§5.19–5.26 and the coefficient theorem above supply their stated inputs without asserting those remaining conclusions.
+
+The figure shows the exact real slice $Y:\ y(y^2-x^3)=0$ in $\mathbf C^2$. Its residue shift, finite double dual, height-one membership, saturation and logarithmic stability have their full proofs in §§5.27.4–5.27.11. The curve picture illustrates singularities and component intersections; the theorem applies in arbitrary complex dimension. The final panel records the remaining realization and order obligations.
+
+![Finite normalized divisorial lattices and their coherent strict coefficient lattice](assets/singular-divisor-strict-coefficient-lattice.png)
+
+The reproducible drawing source retains the exact coordinates, shift signs and hypotheses. Human context is Kashiwara–Kawai, *Holonomic Systems III* (1981), §§1–2 and Theorem 5.1.6, [freely available](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf). The complete coefficient proof above and the earlier linked analytic proofs establish the statements here; the human reference does not replace the outstanding realization, order or proper-image arguments.
+
+
+### 5.28. Convergent contact quantization and whole-germ generic position
+
+This leaf proves an actual finite-order, factorial-growth symbol quantization of a particular homogeneous contact transformation. It also proves the geometric generic-position reduction, under an explicit tangent-cone condition which is verified below for a reduced analytic Legendrian germ. The proof includes the whole germ and all its branches. It does not establish the faithful finite D-type embedding of an arbitrary regular holonomic microlocal module. Section Q.8 records the exact analytic obligations still preventing that conclusion.
+
+The actual symbol, product and finite-order shift proofs are [§5.19](#5-19-actual-factorial-growth-symbols-and-ordered-jets) and [§5.22](#5-22-exact-faithful-positive-degree-completion-at-the-dummy-zero-section). The elementary separability, primitive-element, Gauss, normality and radical arguments needed by the analytic parametrization below are proved in [§5.27.1](#5-27-1-hypotheses-conventions-and-earlier-analytic-proofs). The remaining local analytic inputs are finite irreducible decomposition, Proposition1.2, adapted projection and cone bound, Corollary2.3, holomorphic minimal-polynomial coefficients, Lemma3.2, finite parametrization, Theorem4.1, and Nullstellensatz/dimension, Theorems5.1/5.4 and Proposition5.5. Their full proofs, rather than external contact or curve-selection theorems, are used here.
+
+#### Q.1. Coordinates and the contact transformation
+
+Let the base dimension be $d+1$, with coordinates $u=(t,x_1,\ldots,x_d)$, covectors $\rho=(\tau,\xi_1,\ldots,\xi_d)$, and $\tau\ne0$. Set $z=\xi/\tau$ and $h=\tau^{-1}$. The distinguished point is $p_0=(u,z,\tau)=(0,0,1)$. A linear cotangent coordinate change and a translation put any nonzero covector in this form. Their symbol maps follow from the chain rule in S.3; their factorial bounds are preserved on smaller fixed polydiscs.
+
+For a symmetric complex $d\times d$ matrix $C$, put
+
+\[
+\begin{gathered}
+a_C(\rho)=\frac{\xi^{\mathsf T}C\xi}{2\tau},\\ b_C(\rho)=\partial_\rho a_C(\rho)\\ =\left(-\frac{\xi^{\mathsf T}C\xi}{2\tau^2},\frac{C\xi}{\tau}\right).
+\end{gathered}
+\tag{Q.1}
+\]
+
+Define $\kappa_C(u,\rho)=(u+b_C(\rho),\rho)$. Thus
+
+\[
+\begin{gathered}
+t'=t-\tfrac12 z^{\mathsf T}Cz,\\ x'=x+Cz,\\ z'=z,\qquad\tau'=\tau .
+\end{gathered}
+\tag{Q.2}
+\]
+
+This is a holomorphic germ with inverse $\kappa_{-C}$, fixes $p_0$, and commutes with covector dilation. If $\lambda=\tau\,dt+\xi^{\mathsf T}dx$, direct differentiation gives
+
+\[
+\begin{gathered}
+dt'=dt-z^{\mathsf T}C\,dz,\\ dx'=dx+C\,dz,\\ \kappa_C^*\lambda=\lambda.
+\end{gathered}
+\tag{Q.3}
+\]
+
+Consequently it is a homogeneous canonical transformation, preserving the contact form $\alpha=dt+z^{\mathsf T}dx$ on the section $\tau=1$. There is no sign or scale factor in (Q.3).
+
+#### Q.2. A linear incidence lemma
+
+Let $K\subset\mathbf C_x^d\oplus\mathbf C_z^d$ be a closed complex cone whose projectivization is a closed complex analytic set of dimension at most $d-1$. Then one can choose $C=C^{\mathsf T}$, as small as desired, with
+
+\[
+\begin{gathered}
+K\cap\{(x,z):x+Cz=0\}\\ =\{0\}.
+\end{gathered}
+\tag{Q.4}
+\]
+
+Here no smoothness or isotropy of $K$ is required. Let $s=d(d+1)/2$. Consider the pairs $([x:z],C)$ with $[x:z]\in\mathbf P(K)$ and $x+Cz=0$. If $z=0$, there are no such pairs. If $z\ne0$, the linear map on symmetric matrices $C\mapsto Cz$ is surjective. Indeed choose $j$ with $z_j\ne0$. For a desired vector $v$, set $C_{ij}=C_{ji}=v_i/z_j$ for $i\ne j$, set the entries outside row and column $j$ to zero, and set
+
+\[
+ C_{jj}=\frac{v_j-\sum_{i\ne j}(v_i/z_j)z_i}{z_j}.
+ \tag{Q.5}
+\]
+
+The bad matrices have real $2s$-dimensional measure zero. The following proves this without a projected-incidence algebraicity or elimination assertion.
+
+Cover $\mathbf P(K)$ by countably many smooth complex manifold pieces of dimension at most $d-1$. Here is the actual construction using the earlier analytic-germs proof. In a sufficiently small coordinate neighbourhood, decompose its reduced germ into finitely many irreducible components, by Proposition 1.2. For each component the complete finite-parametrization Theorem 4.1 supplies a nonzero discriminant whose complement is a smooth manifold of the component's dimension. The leftover is a proper analytic subset, and Proposition 5.5 proves its strictly smaller dimension. Apply the same construction to each of its finitely many components. Dimension drops strictly, so at most $d$ levels suffice. Use a countable coordinate cover at each level, since projective space and all its subsets are second countable. This produces countably many smooth pieces covering the set; disjointness is unnecessary. These are the actual discriminant and proper-subset dimension proofs at the stated earlier locators, rather than an imported stratification theorem.
+
+On a piece of complex dimension $k\le d-1$, restrict to the finitely many charts $z_j\ne0$. Formula (Q.5) solves the $d$ equations $Cz=-x$; the remaining $s-d$ entries are free. The incidence is locally the product of that piece with $\mathbf C^{s-d}$. Its real coordinate dimension is $r=2k+2(s-d)\le2s-2$. The matrix projection is smooth and thus Lipschitz on each compact coordinate cube. Countably many such cubes cover this incidence: exhaust each coordinate domain by closed cubes contained in it, and exhaust the free affine coordinates by bounded cubes.
+
+A Lipschitz image of an $r$-dimensional real cube in $\mathbf R^{2s}$, for $r<2s$, has $2s$-dimensional outer measure zero. Subdivide a cube of fixed side into at most $A\varepsilon^{-r}$ cubes of side at most $\varepsilon$. For Lipschitz constant $L_0$, each image lies in a $2s$-cube of side at most $2L_0\sqrt r\,\varepsilon$. The sum of covering volumes is at most $A(2L_0\sqrt r)^{2s}\varepsilon^{2s-r}$, which tends to zero. A constant image when $r=0$ has measure zero directly. Countable subadditivity here follows directly: for the $n$th null set choose a cover of total volume less than $\eta/2^n$, and combine the covers to get total volume less than $\eta$. Thus the entire bad matrix set has measure zero. Every nonempty matrix ball has positive volume, and hence contains a good $C$. This proves the arbitrarily small choice. If $d=0$, the projective direction set is empty and $K=\{0\}$, so no choice is required.
+
+#### Q.3. The entire analytic germ, including singular points
+
+Let $A\subset(T^*X\setminus0,p_0)$ be a reduced homogeneous analytic Lagrangian germ. On $\tau=1$, let $L\subset(\mathbf C^{2d+1}_{t,x,z},0)$ be its reduced Legendrian germ. Its components have dimension $d$, and $\alpha|_{L_{\rm reg}}=0$.
+
+Here is the slicing calculation. The covector Euler field $\mathcal E=\tau\partial_\tau+\sum_i\xi_i\partial_{\xi_i}$ is tangent to the regular locus of the conic germ, by differentiating dilation. Direct contraction gives $\iota_{\mathcal E}(d\lambda)=\lambda$. Lagrangian isotropy says that $d\lambda$ vanishes on the tangent space; since $\mathcal E$ is in that space, $\lambda$ vanishes there too. On $\tau\ne0$, the coordinates $(u,z,\tau)$ and conicity identify $A$ with the product of its $\tau=1$ slice and a nonzero $\tau$ disc. Thus its pure dimension $d+1$ gives pure dimension $d$ for $L$, and the product identifies regular loci. The pullback of $\lambda/\tau$ to the slice is $\alpha=dt+z^{\mathsf T}dx$, so $\alpha$ vanishes on $L_{\rm reg}$. Its projective tangent directions form a closed analytic set of dimension at most $d-1$, and their cone lies in $\{t=0\}$. We prove exactly these analytic facts below; tangent-cone algebraicity is unnecessary.
+
+For an analytic germ $Z\subset(\mathbf C^N,0)$ of dimension at most $d$, construct its projective graph closure by finite equations. On the chart with projective coordinate $j$ equal to one, put $q_j=\ell$, $q_i=\ell v_i$. Substitute into finite equations of $Z$, radicalize their ideal, and saturate that radical ideal $J$ by $\ell$. The exact analytic Nullstellensatz, Theorem 5.1, and finite irreducible decomposition, Proposition 1.2, identify $J$ with the finite intersection of the component prime ideals. Saturation commutes with this finite intersection. For a component prime $\mathfrak p$, its saturation is $\mathfrak p$ if $\ell\notin\mathfrak p$, and the whole ring if $\ell\in\mathfrak p$. Thus its saturated zero set is exactly the union of the components not contained in $\ell=0$. No primary-decomposition theorem is used. The ascending saturation chain stabilizes by the earlier holomorphic Noetherian proof, so these are finite analytic equations near each specified chart point.
+
+The nonzero-$\ell$ part is the graph of $q\mapsto[q]$. It is open and dense in each retained component: its complement is a proper analytic subset, which has smaller dimension and empty interior by the complete earlier Proposition 5.5. That open part is isomorphic to an open part of $Z$, and hence the retained component has dimension at most $d$, by Theorem 5.4, which identifies local finite-projection dimension with the dimension of each regular piece. Proposition 5.5 again bounds its intersection with $\ell=0$ by $d-1$. These constructions agree on chart overlaps because each describes the closure of the same graph, so they define a closed analytic set in the projective fibre. Every rescaled limit direction is in that set: the finite saturated equations vanish on the nonzero graph and persist under limits. The converse follows from the curve construction below. Compactness of projective space then gives a finite coordinate cover around the closed direction set.
+
+Fix an exceptional point $(0,v_0)$ on a retained reduced irreducible component $B$. Apply the earlier finite-parametrization Theorem 4.1 to this component at that exact point, translated to zero. Its adapted projection $\pi_B$ to a polydisc has central fibre equal to the chosen point: the cone bound in Corollary 2.3 says that all complementary coordinates are bounded by a constant times the base coordinates. The projection is proper, and off its nonzero discriminant it is a finite holomorphic covering.
+
+The nonzero function $\ell$ in the component domain has a monic minimal polynomial over the fraction field of the projection base, with holomorphic coefficients by Lemma 3.2. Its constant coefficient is nonzero, since a nonzero element of a field cannot have an irreducible minimal polynomial divisible by $T$. Denote that coefficient by $g_\ell$. At every point with $\ell=0$, $g_\ell$ vanishes on the base. We can exclude any additional proper analytic subset in the same way: choose a holomorphic function nonzero on $B$ that vanishes on that subset, and use the nonzero constant coefficient of its minimal polynomial. For the regular-locus condition, the nonzero graph in $B$ is an open part of one irreducible component of $Z$. Pull back its finite-parametrization discriminant, and also exclude its intersections with the finitely many other components. Each intersection is proper, since the distinct component prime ideals are incomparable. For each intersection choose an equation of the other component which is nonzero on the chosen component, and pull it back to $B$. The resulting finite product is nonzero on the graph and hence on $B$. Outside its zero set the original point belongs to exactly one component and is regular there, so it belongs to $Z_{\rm reg}$.
+
+Choose a complex line through the projection base origin which avoids the initial homogeneous zero set of the product of these finitely many nonzero holomorphic functions and the projection discriminant. Such a direction exists since a nonzero polynomial has a nonempty complement. On a sufficiently small punctured disc of this line, all those functions are nonzero. The finite covering over that punctured disc has a finite sheet permutation as its monodromy. Replace the disc parameter by $s^m$, with $m$ a multiple of the permutation orders; each sheet is then a single-valued holomorphic map.
+
+The covering argument is elementary. Continue a local inverse along a path by a finite subdivision into evenly covered discs; uniqueness on overlaps gives a unique lift. Subdividing a homotopy into small rectangles shows that its endpoint depends only on the path class. A punctured disc retracts radially to a circle. Local continuous arguments lift a circle path to a real angle; its endpoint change is $2\pi$ times an integer, and linear interpolation of angles shows that this integer determines the homotopy class. Monodromy is therefore generated by one finite permutation. The substitution $r=s^m$ changes this generator to its $m$th power, which is the identity for the chosen $m$. Continuation of each sheet is single valued, and local holomorphic inverses make the sheet holomorphic. Properness and the cone bound keep its complementary coordinates bounded and force their limit to the chosen central point. The bounded one-variable removable-singularity argument from the Cauchy integral extends it across zero.
+
+For completeness, if $F$ is a bounded holomorphic coordinate on a punctured disc, put $H(s)=s^2F(s)$ there and $H(0)=0$. Then $H$ is continuous and complex differentiable at zero, with derivative zero, since $H(s)/s=sF(s)\to0$. It is holomorphic on the disc. Its Taylor expansion has zero constant and linear coefficients, so $H=s^2G$ for a holomorphic $G$, which equals $F$ off zero. This proves the required extension for every coordinate. The analytic equations persist under the extension by the holomorphic identity theorem. Thus it gives a holomorphic curve through the specified $(0,v_0)$, with $\ell(s)\ne0$ for $s\ne0$, and with original image in $Z_{\rm reg}$ off zero. There is no assumption that a curve chosen elsewhere passes through the assigned exceptional point.
+
+Apply this to $Z=L$. Since $\ell(s)$ is nonzero off zero, it has a finite positive vanishing order $k$, and its image curve in $L$ has the expansion
+
+\[
+\begin{gathered}
+(t(s),x(s),z(s))\\ =s^k(t_k,x_k,z_k)+O(s^{k+1}),\\ k\ge1.
+\end{gathered}
+\tag{Q.6}
+\]
+
+It lies in the regular Legendrian locus off zero. Hence $t'(s)+z(s)^{\mathsf T}x'(s)=0$. The second term has order at least $2k-1$, whereas a nonzero $t_k$ gives order $k-1$ in the first term. Thus $t_k=0$. Every exceptional direction has just been realized by such a curve, proving that the whole tangent-direction cone lies in $\{t=0\}$. Conversely that curve, divided by its leading scalar, realizes its exceptional direction as a rescaled limit, completing the identification with the tangent directions.
+
+Identify these directions with a projective analytic set in $\mathbf P(\mathbf C_x^d\oplus\mathbf C_z^d)$ and apply Q.2 to its cone $K$. Then $\kappa_C(L)\cap\{t'=0,x'=0\}$ has the origin as an isolated point. Otherwise a sequence of nonzero points in this intersection tends to zero. Normalize their preimages by Euclidean length and take a convergent subsequence on the unit sphere. Its nonzero limit $v$ is a tangent direction. Differentiating (Q.2) at zero gives $t(v)=0$ and $x(v)+Cz(v)=0$, contradicting (Q.4). Shrink one neighbourhood to remove all other fibre points. In the conic cotangent space this is
+
+\[
+\begin{gathered}
+\kappa_C(A)\cap\pi^{-1}(0)=\mathbf C^*p_0\\ \text{near }p_0 .
+\end{gathered}
+\tag{Q.7}
+\]
+
+The whole characteristic germ is in the generic position of HolIII Definition 1.6.3. Every component and branch is included. This is not a restriction to a smooth generic stratum. A finite union of additional smooth Legendrian germs can be included in the direction set, and the same choice works for all of them.
+
+#### Q.4. The resummed symbol formula
+
+Let $\mathscr E(0)$ be the actual ring of symbols
+
+\[
+\begin{gathered}
+P(u,\rho)=\sum_{n\ge0}\tau^{-n}p_n(u,z),\\ \sup_K|p_n|\le B_P C_P^n n!,
+\end{gathered}
+\tag{Q.8}
+\]
+
+with all coefficients holomorphic on one common neighbourhood and with the bounds on every compact set, as in S.1–S.3. Denote its proved Leibniz product by $\circ$. Finite-order symbols are $\mathscr E=\bigcup_m\tau^m\mathscr E(0)$ as normal symbols; this is the localization by the invertible normal element $h$, whose normality and actual inverse-conjugation estimates are proved in C.1–C.2 of §5.22. One can instead check each finite shift directly by $(n+m)!\le2^{n+m}n!m!$. We use no infinite-order symbol ring here.
+
+Write $a=a_C$, $b=b_C$, $D=d+1$, and set
+
+\[
+\begin{gathered}
+a_\gamma(z)=\left.\frac{\partial_\rho^\gamma a(\rho)}{\gamma!}\right|_{\tau=1,\xi=z}\\ (|\gamma|\ge2),\\ R_a=\sum_{|\gamma|\ge2}h^{|\gamma|-1}a_\gamma(z)\partial_u^\gamma.
+\end{gathered}
+\tag{Q.9}
+\]
+
+Define $T_C P$ by
+
+\[
+\begin{gathered}
+T_C P=\sum_{n\ge0}h^n\\ \exp(R_a)\,p_n(u+b(1,z),z).
+\end{gathered}
+\tag{Q.10}
+\]
+
+The exponential in (Q.10) is a notation for finite sums at each homogeneous index. Each occurrence of a multiindex $\gamma$ raises that index by $|\gamma|-1\ge1$. The index-$N$ coefficient therefore has $n\le N$, at most $N-n$ factors, and total base differentiation at most $2(N-n)$. All coefficient functions are defined on a common smaller neighbourhood on which $u+b(1,z)$ stays inside the original domain. Since $b(1,0)=0$, such a neighbourhood exists for every fixed $C$.
+
+#### Q.5. An explicit factorial estimate
+
+Choose compact nested coefficient polydiscs so that, at every shifted point $u+b(1,z)$ in the smaller one, the base-coordinate polydisc of radius $\epsilon>0$ remains in the coefficient domain. Choose $\delta>0$ so that the cotangent polydisc of radius $\delta$ around $(1,z)$ avoids $\tau=0$ and remains in one bounded set for all $z$ in the smaller compact. Let $A_a\ge0$ bound $|a|$ there. Iterated Cauchy estimates give
+
+\[
+\begin{gathered}
+|a_\gamma(z)|\le A_a\delta^{-|\gamma|},\\ |\partial_u^\beta p_n(u+b,z)|\\ \le B_P C_P^n n!\,\beta!\epsilon^{-|\beta|}.
+\end{gathered}
+\tag{Q.11}
+\]
+
+Put
+
+\[
+\begin{gathered}
+L=32D^2\max(1,A_a)\\ \max\bigl(1,(\delta\epsilon)^{-1}\bigr)^2.
+\end{gathered}
+\tag{Q.12}
+\]
+
+**Theorem Q.1.** The index-$N$ coefficient $q_N$ of $T_C P$ satisfies
+
+\[
+ \sup|q_N|\le B_P(C_P+L)^N N! .
+ \tag{Q.13}
+\]
+
+**Proof.** In a term with $l\ge1$ ordered factors, write $k_i=|\gamma_i|\ge2$, $k=\sum k_i$, and $r=\sum(k_i-1)=k-l\ge1$. It contributes to $N=n+r$. The product of coefficient bounds and the derivative bound in (Q.11), including $1/l!$ from the exponential, is at most
+
+\[
+ B_P C_P^n n!\,
+ \frac{k!}{l!}\,A_a^l(\delta\epsilon)^{-k}.
+ \tag{Q.14}
+\]
+
+Indeed $\beta!\le k!$ for $\beta=\sum\gamma_i$. Since $l\le r$ and $k=r+l\le2r$,
+
+\[
+ \frac{k!}{l!}=\binom{k}{l}r!\le 2^k r!\le4^r r! .
+ \tag{Q.15}
+\]
+
+For fixed $r,l$, the number of ordered length lists $k_i\ge2$ with $\sum(k_i-1)=r$ is $\binom{r-1}{l-1}\le2^r$. For each such list, the number of multiindex lists is at most $D^k\le D^{2r}$, by the word-count argument in S.1. Summing over $1\le l\le r$ gives at most $r2^rD^{2r}\le(4D^2)^r$ lists. This slightly sharper count would give $16D^2$ in (Q.12); the stated $32D^2$ is a valid uniform upper bound. The remaining factors in (Q.14) are at most $\max(1,A_a)^r\max(1,(\delta\epsilon)^{-1})^{2r}$. Thus all terms of total loss $r$ are bounded by $B_PC_P^n n!L^r r!$. For $r=0$, the sole term is $p_N(u+b,z)$ and has bound $B_PC_P^N N!$. Sum over $n+r=N$, use $n!r!\le N!$, and use the nonnegative expansion of $(C_P+L)^N$, whose monomial coefficients are at least one. This proves (Q.13). The finitely shifted case $\tau^mP$ has the same base-derivative estimate with its fixed normal prefactor and is treated identically. $\square$
+
+Hence (Q.10) maps the actual symbol class to itself, with a common domain and a verified factorial estimate. It is not an argument that a formal series converges for a numerical value of $h$, and it does not assert that $\exp(a_C(\partial))$ belongs to $\mathscr E$.
+
+#### Q.6. Multiplication and the inverse
+
+**Theorem Q.2.** $T_C$ is a sheaf algebra isomorphism on the corresponding germs of the finite-order symbol ring. It preserves order, has inverse $T_{-C}$, fixes $h$ and $\tau$, and its principal-symbol map is pullback by $\kappa_C$.
+
+**Proof.** We first verify multiplication using the analytic generating functions $e^{v\cdot u}f(\rho)$, where $v$ is an auxiliary parameter and $f$ is a holomorphic homogeneous symbol independent of $u$. For these, the Leibniz formula S.3 and (Q.9)–(Q.10) give the coefficientwise identities
+
+\[
+\begin{gathered}
+(e^{v\cdot u}f)\circ(e^{w\cdot u}g)\\ =e^{(v+w)\cdot u}f(\rho+w)g(\rho),\\ T_C(e^{v\cdot u}f)\\ =e^{v\cdot u}e^{a(\rho+v)-a(\rho)}f(\rho).
+\end{gathered}
+\tag{Q.16}
+\]
+
+Translations in the covector are expanded in homogeneous order. The second exponential has leading term $e^{b(\rho)\cdot v}$; its remaining exponent has strictly negative homogeneous order, so each negative-order coefficient is finite. Its formula is exactly (Q.10), not a product of unbounded positive-order operator series. Using (Q.16) twice, the scalar factors in the transformed product telescope:
+
+\[
+\begin{gathered}
+e^{a(\rho+w+v)-a(\rho+w)}\\ e^{a(\rho+w)-a(\rho)}\\ =e^{a(\rho+v+w)-a(\rho)}.
+\end{gathered}
+\tag{Q.17}
+\]
+
+Thus $T_C(P\circ Q)=T_C(P)\circ T_C(Q)$ for these generating functions, coefficient by coefficient. Differentiating in $v,w$ at zero gives the identity for polynomial coefficient functions in $u$, with arbitrary holomorphic covector coefficients and arbitrary finite order shifts. For general holomorphic coefficients, take their Taylor polynomials on a larger base polydisc. They and each fixed finite number of their derivatives converge uniformly on a smaller compact polydisc by the iterated Cauchy formula. At any fixed homogeneous index the product and transformation formulas use finitely many coefficient indices and finitely many derivatives, evaluated at points in a fixed shifted compact polydisc. The polynomial identity therefore passes to the uniform limit. This proves multiplication for every actual symbol. The estimates S.1 and Q.1 put both sides in the actual ring, so equality of their coefficients is equality of germs.
+
+For the inverse, $b$ and every coefficient in $R_a$ are independent of $u$. The base translation and all base-derivative operators in (Q.9) commute with one another. Replacing $C$ by $-C$ changes $b,R_a$ to $-b,-R_a$. Thus $T_{-C}T_C=T_CT_{-C}=1$, by cancellation of their finite homogeneous coefficients and the opposite base translations. Each composition uses a common smaller domain and the estimate Q.1, so this is an actual germ identity. The leading coefficient of (Q.10) is $p_0(u+b,z)$, proving the asserted principal-symbol pullback. Symbols independent of $u$, including $h$ and $\tau$, are fixed. Order preservation follows from the leading coefficient and the actual inverse. Restriction commutes with every construction, giving the sheaf germ isomorphism. $\square$
+
+Its values on coordinate operators are
+
+\[
+\begin{gathered}
+T_C(x_i)=x_i+\\ \sum_j C_{ij}\partial_{x_j}\partial_t^{-1},\\ T_C(t)=t-\tfrac12\sum_{i,j}C_{ij}\\ \partial_{x_i}\partial_{x_j}\partial_t^{-2},\\ T_C(\partial_{x_i})=\partial_{x_i},\\ T_C(\partial_t)=\partial_t .
+\end{gathered}
+\tag{Q.18}
+\]
+
+These values also follow from the exact commutators with the constant-coefficient order-one expression $a_C(\partial)$; the higher commutators vanish on the coordinate generators. That finite check by itself would not have established the convergent sheaf isomorphism. Q.1 and Q.2 supply the missing analytic argument.
+
+#### Q.7. Transport of actual finite microlocal modules
+
+Use the convention that $T_C$ pulls symbols back by $\kappa_C$. To transport a left $\mathscr E$-module $M$ to the image germ $\kappa_C(A)$, give its underlying germ the action
+
+\[
+ P\cdot_{\rm new}m=T_C(P)\cdot_{\rm old}m.
+ \tag{Q.19}
+\]
+
+A finite presentation is transported by applying $T_{-C}$ to each old relation; its inverse is (Q.19) with $-C$. Indeed the new annihilator is $T_C^{-1}(\operatorname{Ann}_{\rm old}M)$, whose symbols vanish on $\kappa_C(A)$. Kernels and exact sequences are preserved since this is restriction along a ring isomorphism. A finite order-zero lattice and its principal relation ideal are transported in the same way; their symbol support becomes $\kappa_C(A)$. No flatness theorem is needed for this step.
+
+Definition 1.1.11(i) of HolIII uses, on an involutive characteristic germ $V$, the subalgebra generated by order-one operators whose first symbol vanishes on $V$, and a finite order-zero lattice stable under that subalgebra. Since $T_{-C}$ preserves the order filtration and sends the vanishing ideal of $V$ to that of $\kappa_C(V)$, it transports precisely these operators, their subalgebra, and each finite invariant lattice. Thus regularity *along $V$* is preserved wherever its actual defining lattice is given. Definition 1.1.16 of a regular holonomic module only requires that this property hold outside a nowhere dense set in its characteristic Lagrangian. The biholomorphism $\kappa_C$ preserves that condition as well. We do not strengthen that definition to an invariant lattice at every singular point: HolIII reserves that strengthening for V.1.7. This is a transport statement; it neither constructs the canonical cutoff nor supplies a previously absent invariant lattice on a singular stratum.
+
+The geometric reduction Q.3 together with Q.2–Q.7 therefore removes the need to import an unspecified quantized contact transformation for this generic-position reduction. It does not require a global contact transform, and it makes no assertion about infinite-order rings, infinite-order flatness, or a finite-pole embedding after the reduction.
+
+#### Q.8. Exact remaining realization obligations
+
+HolIII Theorem 4.1.1, printed p. 906 (PDF page 94), starts with a holonomic finite-order $\mathscr E$-module in generic position and constructs a $\mathscr D^\infty$-linear map
+
+\[
+\begin{gathered}
+\phi:M_{p_0}^{\infty}\longrightarrow N_{q_0}^{\infty},\\ N=L/\mathcal O_X^r,\\ M_{p_0}^{\infty}\longrightarrow\\ \mathscr E_{p_0}^{\infty}\otimes_{\mathscr D_{q_0}^{\infty}}N_{q_0}^{\infty}\\ \simeq\mathscr E_{p_0}^{\infty}\otimes_{\mathscr D_{q_0}}N_{q_0},\\ s\longmapsto1\otimes\phi(s),
+\end{gathered}
+\tag{Q.20}
+\]
+
+with the latter map injective and $\mathscr E^\infty$-linear; $L$ is a finite D-type system. This statement alone is neither a map from the actual finite module into a finite-pole coefficient space nor a proof of its faithfulness. The further regularity argument in V.1.1–V.1.4 is essential. The finite and infinite operator rings in this target map are distinct.
+
+The following inputs remain unproved in this leaf. Their source locators identify material to prove, and do not license using their assertions.
+
+1. **Finite generic-position ordinary realization.** Under the supplied actual finite order-zero lattice and finite principal fibre of G.1, [§5.29, G.1–G.5](#5-29-actual-finite-generation-over-the-coordinate-commuting-ring) proves finite generation over the ring commuting with the $x_i$; [§5.30, F.1–F.7](#5-30-actual-polynomial-flatness-and-reconstruction-after-finite-realization) proves actual polynomial flatness, whole-stalk reconstruction and polynomial-submodule stability; and [§5.31, L.1–L.6](#5-31-a-bounded-actual-generic-position-complex-with-polynomial-operator-matrices) proves a bounded free resolution over the actual finite-order microlocal rings with polynomial matrices on one base neighbourhood. The actual bounded complex is not claimed exact over its polynomial coefficient ring. The equality of a characteristic support defined through an infinite-order extension with the actual principal support remains a separate prerequisite if that convention is used. The infinite-order base change remains open. The commuting ring is distinct from the full order-zero ring bearing the same letter in earlier dummy leaves. No ordinary $h=1$ specialization supplies those remaining inputs. For every coherent actual holonomic germ, §5.32, J.1–J.3 constructs that actual lattice and proves the finite principal fibre after the contact reduction; the actual finite-order support convention is explicit. Section 5.33, K.1–K.3 supplies a convergent ordinary negative-order Volterra kernel complex, with the endpoint relation stated in K.2.
+
+2. **Sectorial complex-analytic operator action and relative vanishing.** HolIII IV.4.4.1 imports Kashiwara–Schapira, *Micro-hyperbolic systems*, Theorem 4.5.1. That theorem is freely available, but its proof reduces to its own Theorem 4.1.1 and Corollary 3.2.5, which require the convergent complex-domain kernel action and division estimates. HolIII weakens its condition (c3) to exactness on $\Omega_1\setminus\Omega_0$. The exact weakened statement, the cone conditions, and every cohomological shift still require a complete proof. A smooth real-symbol propagation or Egorov argument cannot replace the complex factorial-growth action.
+
+3. **Continuation on the entire hypersurface complement.** HolIII IV.4.5.2 refers to an earlier continuation argument and leaves the proof to the reader. It must be supplied for representatives of every sectorial solution, including all branches of the singular characteristic support, with one actual multivalued germ of finite determination. IV.4.5.3's second-fibration and Hartogs argument also requires the convergence and sheaf action proved in III.4. It is not a meromorphic coefficient calculation.
+
+4. **Separation of sections at singular support.** IV.4.6.1 and IV.4.6.2 assert finite dimensionality and injectivity of evaluation against sectorial solutions on $M^\infty$. The argument uses generic-position realization and a support/purity assertion for actual infinite-order sections. Testing smooth characteristic strata alone does not prove the assertion at the assigned singular point. Positive-degree completion's zero-object detection is a different functor and does not establish this separation.
+
+5. **Infinite-order linearity and faithful tensor maps.** IV.4.7.1 explicitly treats $\mathscr E^\infty$-linearity as a substantive step. It uses III.4.9 to enlarge a finite-codimensional monodromy ideal under the full $\mathscr A^\infty$-action, and III.5.5 for the $\mathscr E^\infty\otimes_{\mathscr A^\infty}$ comparison. The finite-order isomorphism in Q.6–Q.7 and the actual positive-degree completion prove neither this kernel action nor infinite-order flatness. They cannot justify the tensor-submodule inclusion at the end of IV.4.7 by analogy.
+
+6. **Passage to faithful finite poles for a regular module.** HolIII V.1.1 uses the embedding above and the regular-singular-to-Nilsson implication at generic divisors, then extension to the whole finite D-type system. V.1.2–V.1.4 recover a finite $\mathscr D$-module and an actual finite-pole injection. Its generic regularity test, finite generation at the base point, and extension on a common neighbourhood must all be proved with the exact ordinary/microlocal comparison. The coefficient lattice of §5.27 starts after this passage; using it to assume the passage would be circular.
+
+The intrinsic microlocal order comparison and characteristic-operator stability in §5.27.12 remain subsequent obligations even after these six inputs are closed. C.1 and the arbitrary proper/support-proper analytic theorem remain open. The present substantive conclusion is Q.2–Q.7, not Q.20 or the finite D-type embedding.
+
+#### Q.9. Illustration and reproducibility
+
+The figure below shows a stated real coordinate slice of the exact singular Legendrian germ
+
+\[
+\begin{gathered}
+x=s^3,\qquad z=s^2,\\ t=-\tfrac35s^5,\qquad C=1,\\ x'=s^3+s^2,\\ t'=-\tfrac35s^5-\tfrac12s^4.
+\end{gathered}
+\tag{Q.21}
+\]
+
+The contact equation is $dt+z\,dx=0$. Its tangent-cone line is the $z$-axis; $x+z=0$ misses that line except at zero. The plotted interval is explicitly $|s|\le0.4$; the other root of the projected equation $x'=0$ at $s=-1$ lies outside the chosen local interval, so the plot asserts only the local germ result. The figure separately displays the symbol-class bound (Q.13), exact inverse, and the unproved finite D-type arrow. It is an illustration of the original contact/quantization argument, not evidence of full realization. The displayed projection and interval illustrate the local mechanism; the proof includes every complex branch.
+
+Free human source context: M. Kashiwara and T. Kawai, *On the holonomic systems of microdifferential equations. III. Systems with regular singularities*, [author-hosted full PDF](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), I.6 and IV.1–IV.7, V.1.1–V.1.4; M. Kashiwara and P. Schapira, *Micro-hyperbolic systems*, [author-hosted full PDF](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/Microhyp.pdf), III–IV. The exact remaining targets are in Q.8. Their citations do not replace any required proof.
+
+![Whole-germ generic position and actual factorial-growth contact quantization](assets/quadratic-contact-shear.png)
+
+*The plotted real slice is the projection of (Q.21), for $|s|\le0.4$ and $C=1$. The entire complex-germ reduction is proved in Q.2–Q.3, and the actual convergent symbol isomorphism in Q.4–Q.7. The dashed finite D-type arrow remains open as specified in Q.8. Free human source: [Kashiwara–Kawai, author-hosted HolIII](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), I.6 and IV.1–IV.7.*
+
+
+### 5.29. Actual finite generation over the coordinate-commuting ring
+
+This leaf proves a convergent generic-position finite-generation statement. Its precise premise is an actual finite order-zero lattice with finite principal fibre, as in (G.1). Its conclusion includes the entire actual stalk and its singular-support sections. It does not prove the infinite-order extension or faithful finite D-type embedding.
+
+The exact earlier proofs are [§5.19, S.1–S.4](#5-19-actual-factorial-growth-symbols-and-ordered-jets) for the actual symbol class and product; [§5.20, B.1–B.2](#5-20-one-norm-multiplication-units-and-dummy-division) for the complete derivative norm and product estimate; [§5.21, N.1–N.18](#5-21-actual-simultaneous-division-and-finite-stalk-relations) for absolute Taylor weights, completeness, support projection, Dickson heads, monomial division and convergent simultaneous division; and [§5.22, C.1–C.2](#5-22-exact-faithful-positive-degree-completion-at-the-dummy-zero-section) for actual normality and finite order shifts. The analytic Nullstellensatz used in G.1 is Theorem5.1, with its elementary algebra proved in [§5.27.1](#5-27-1-hypotheses-conventions-and-earlier-analytic-proofs). The relative remainder supports and contraction needed here are proved below.
+
+#### G.1. The exact premise and smaller ring
+
+At $p_0=(u,z,\tau)=(0,0,1)$, put $u=(t,x_1,\ldots,x_d)$, $z=\xi/\tau$, $h=\tau^{-1}$. Let $E_0$ be the actual order-zero factorial-growth stalk and $E$ its finite-order localization. Let $M$ be a left $E$-module and let $M_0\subset M$ be generated by finitely many $m_1,\ldots,m_b$ over $E_0$, with $EM_0=M$. Suppose
+
+\[
+\begin{gathered}
+V=(M_0/hM_0)\otimes_{\mathbf C\{u,z\}}\mathbf C\{z\}\\ \text{is finite dimensional over }\mathbf C,\\ u\longmapsto0 .
+\end{gathered}
+\tag{G.1}
+\]
+
+The image $hM_0$ is a left submodule because $h$ is normal. Its quotient is finite over the commutative symbol ring $E_0/(h)=\mathbf C\{u,z\}$. If the actual principal-symbol support of this lattice meets the base fibre only at $z=0$, (G.1) follows: its fibre is finite over $\mathbf C\{z\}$, the analytic Nullstellensatz puts a power of $(z)$ in its annihilator, and the finite generating list is then spanned by finitely many $z$-monomials over $\mathbf C$. Nilpotents and nonreduced principal modules are included.
+
+Define $A_0\subset E_0$ by requiring every homogeneous coefficient to be independent of $z$. All $\xi$-derivatives in the Leibniz product vanish, so this is a subring; its only internal contractions use $\tau,t$. Put $A=A_0[h^{-1}]$. It is exactly the subring of $E$ commuting with all $x_i$, because
+
+\[
+ [P,x_i]=\partial_{\xi_i}P.
+ \tag{G.2}
+\]
+
+Indeed the right factor $x_i$ has only its zero and first base derivative, while the left factor $x_i$ has no cotangent derivative. Equation (G.2) says that each coefficient has zero $z_i$-derivative. The normal-element formulas of §5.22, C.1–C.2, remain actual in this subring. Here $A$ denotes precisely the coordinate-commuting ring; the full actual order-zero ring is $E_0$.
+
+#### G.2. Finite pure-covector heads
+
+Let $I\subset E_0^b$ be the kernel of $e_j\mapsto m_j$. Let $\bar I\subset\mathbf C\{u,z\}^b$ be its principal image modulo $h$, and let $J\subset\mathbf C\{z\}^b$ be the image of $\bar I$ under $u=0$. Then
+
+\[
+ \mathbf C\{z\}^b/J\simeq V.
+ \tag{G.3}
+\]
+
+The principal-kernel lifting in this assertion is important. If a vector has image $hm$ in $M_0$, lift $m$ to $w\in E_0^b$ and subtract $hw$. The difference lies in $I$ and has the same principal vector. Thus the principal kernel is exactly the principal image of $I$. Tensoring the resulting cokernel presentation with $\mathbf C\{z\}$ is right exact and proves (G.3).
+
+Use the least total $z$-degree, then the least lexicographic exponent, then the least component as the head of a nonzero vector in $J$. Its exponent diagram is upward closed under multiplication by $z$-monomials. The complete Dickson argument of §5.21, N.2 gives finitely many minimal heads $(\gamma_i,j_i)$. Select $v_i\in J$ having those heads, normalized to head coefficient one. Since (G.3) has finite complex dimension $m$, every $z_i$ acts nilpotently: $z_i-\lambda$ is an invertible analytic germ for every nonzero scalar $\lambda$, so its matrix $Z$ has characteristic polynomial $T^m$. The cofactor identity $(TI-Z)\operatorname{adj}(TI-Z)=\det(TI-Z)I$ is a polynomial identity; the adjugate coefficients commute with $Z$, so evaluation at $T=Z$ gives $Z^m=0$. Thus $z_i^mV=0$. The commuting actions then make $(z)^{dm+1}V=0$. This is also immediate when $V=0$. Thus $(z)^k$ annihilates it for some $k$, and every exponent of total degree at least $k$ lies in that head diagram. Consequently
+
+\[
+\begin{gathered}
+B=\{(\beta,j):\beta\notin\\ \bigcup_{i:j_i=j}(\gamma_i+\mathbf N^d)\}\\ \text{is finite.}
+\end{gathered}
+\tag{G.4}
+\]
+
+Each $v_i$ is the specialization of the principal vector of an actual relation $P_i\in I$: express it as a finite $\mathbf C\{z\}$-combination of the specialized principal images that define $J$, lift those scalar coefficients as symbols depending only on $z$, and take the finite actual left combination. Therefore
+
+\[
+ P_i=z^{\gamma_i}e_{j_i}+A_i,
+ \tag{G.5}
+\]
+
+where the principal specialization of $A_i$ at $u=0$ has only terms after the selected head. We do not assume that this pure-$z$ head is first under the original total-degree ordering in all $(u,z)$ variables.
+
+#### G.3. One actual norm makes the errors small
+
+Use the full absolute Taylor Banach norm N.1–N.7 in variables $(u,z)$, including all $\tau$-derivatives. For a vector use $\|F\|_c=\sum_jc_j\|F_j\|$, with positive component factors. There are fixed positive $u,z$ polyradii, fixed $c_j$, and one derivative parameter $\epsilon>0$ such that
+
+\[
+ \|A_i\|_c<\tfrac18c_{j_i}R_z^{\gamma_i}
+ \quad\text{for every }i .
+ \tag{G.6}
+\]
+
+The order of choices proves this precisely. First restrict the principal vectors to $u=0$. The finite weighted-head construction in N.3, now only in $z$, chooses hierarchical rational weights preserving their least-degree/lexicographic heads and making each other exponent have strictly larger weight. Decreasing positive component factors make terms at the same exponent in later components small. With $R_{z,j}=r^{w_j}$, their remaining Taylor-tail norms divided by head radii tend to zero as $r\to0$, by domination by one fixed convergent Taylor series. Fix a sufficiently small $r$.
+
+Next shrink the $u$-radii while holding these $z$-radii fixed. Every additional principal term has positive $u$-degree, since it vanishes at $u=0$. Its absolute Taylor norm tends to zero on shrinking $u$-polydiscs by domination by its common convergent series. The head radii and component factors are now fixed positive numbers. Thus all these ratios become as small as required. This also controls terms linear in $u$ having smaller ordinary total degree than the pure-$z$ head.
+
+Finally shrink $\epsilon$. Positive homogeneous indices in N.2 have positive powers $\epsilon^{2n}$, and each nonzero derivative of a principal coefficient has a positive derivative power. Their total norms tend to zero by domination by the previously finite norm at an earlier $\epsilon_0$. The zero-derivative principal term is twice its absolute Taylor norm, already made sufficiently small. One common $\epsilon$ works for the finite list. This proves (G.6).
+
+The exact norm estimates used in the next step are
+
+\[
+\begin{gathered}
+\|Q\circ A_i\|_c\le\|Q\|\|A_i\|_c,\\ \|\text{division by }z^{\gamma_i}\|\\ \le R_z^{-\gamma_i}.
+\end{gathered}
+\tag{G.7}
+\]
+
+They are N.4 and the termwise falling/rising factorial estimate N.6. Coefficient support restrictions have norm at most one. No $t$-term or cotangent derivative is removed.
+
+#### G.4. Actual relative division
+
+Partition the union of the head orthants in (G.4) into disjoint assigned supports. Require $Q_i z^{\gamma_i}e_{j_i}$ to occupy its assigned support, and a remainder $S$ to occupy its complement $B$ in the $z$-exponent and component only. All $u$-Taylor exponents and homogeneous indices remain allowed. The ordinary head map is
+
+\[
+\begin{gathered}
+L_0(Q,S)=\sum_iQ_i z^{\gamma_i}e_{j_i}+S,\\ D=L_0^{-1}.
+\end{gathered}
+\tag{G.8}
+\]
+
+Use the quotient/remainder norm
+
+\[
+\begin{gathered}
+\|(Q,S)\|_*=\\ \sum_i c_{j_i}R_z^{\gamma_i}\|Q_i\|+\|S\|_c.
+\end{gathered}
+\tag{G.9}
+\]
+
+These are Banach spaces: their support subspaces are closed in the weighted coefficient $\ell^1$ spaces proved complete in N.1. The assigned supports are disjoint. Before division their absolute weighted coefficient contributions add. Dividing by a pure-$z$ monomial only decreases the base falling factors, cotangent falling factors, and nonnegative initial values of the cotangent rising factors in N.6. Therefore
+
+\[
+ \|DF\|_*\le\|F\|_c .
+ \tag{G.10}
+\]
+
+No factor equal to the number of heads occurs.
+
+Set $L(Q,S)=\sum_iQ_i\circ P_i+S$. Since each right head is independent of every base variable, $Q_i\circ z^{\gamma_i}=Q_i z^{\gamma_i}$ exactly. Hence $L=L_0+E$, with $E(Q,S)=\sum_iQ_i\circ A_i$, and
+
+\[
+\begin{gathered}
+\|E(Q,S)\|_c\le\tfrac18\|(Q,S)\|_*,\\ \|DE\|\le\tfrac18 .
+\end{gathered}
+\tag{G.11}
+\]
+
+Consequently
+
+\[
+\begin{gathered}
+(Q,S)=(1+DE)^{-1}DF\\ =\sum_{\ell\ge0}(-DE)^\ell DF
+\end{gathered}
+\tag{G.12}
+\]
+
+converges in the specified Banach space and solves $F=\sum_iQ_i\circ P_i+S$. The zero-derivative estimate N.3 gives a common coefficient domain and actual factorial bounds for the resulting symbols. This is convergent division, not formal cancellation.
+
+For an arbitrary input germ, intersect its representative domain with the finite divisor domains and repeat the finite radius choices of G.3 there. Thus every germ has an actual division. The finite divisors, complement $B$, and eventual generators do not depend on the input. Its particular norm and division radii may depend on it, as a stalk argument permits.
+
+#### G.5. Finite generation of the entire actual stalk
+
+Every remainder has the finite form
+
+\[
+\begin{gathered}
+S=\sum_{(\beta,j)\in B}r_{\beta,j}(u,h)z^\beta e_j,\\ r_{\beta,j}\in A_0.
+\end{gathered}
+\tag{G.13}
+\]
+
+Indeed extracting each of the finitely many $z$-Taylor coefficients on a fixed smaller polydisc is bounded by a fixed Cauchy factor $R_z^{-\beta}$. Its common $u$-domain and homogeneous factorial bound remain. Also $r_{\beta,j}\circ z^\beta=r_{\beta,j}z^\beta$, since the right factor has no base derivative.
+
+The $P_i$ are actual relations in $I$. Dividing a representative of an arbitrary $m\in M_0$ therefore proves
+
+\[
+ M_0=\sum_{(\beta,j)\in B}A_0\,z^\beta m_j .
+ \tag{G.14}
+\]
+
+Finally every finite-order symbol is a left shift $h^{-k}$ of an order-zero symbol, for a finite $k$, by the actual normal-element shift formulas. Since $EM_0=M$, every element of $M$ is a finite sum of $h^{-k}m$ with $m\in M_0$. These shifts belong to $A$, yielding
+
+\[
+ M=\sum_{(\beta,j)\in B}A\,z^\beta m_j .
+ \tag{G.15}
+\]
+
+**Theorem G.1.** Under the actual-lattice premise and finite principal fibre (G.1), $M_0$ is finite over $A_0$, and the entire actual stalk $M$ is finite over $A$, with the explicit finite lists (G.14)–(G.15). Forgetting to the smaller ring keeps the underlying module and every section, so this stalk realization is faithful. Singular-support sections are included.
+
+No regularity assumption was used. This theorem cannot convert arbitrary infinite-growth solutions into finite-pole solutions.
+
+#### G.6. Exact interface and unproved boundaries
+
+For every coherent actual holonomic microlocal germ, [§5.32, J.1–J.3](#5-32-coherent-actual-lattices-and-principal-support-for-the-whole-germ) constructs a finite order-zero lattice, proves equality of its reduced principal support with the actual module support, and proves the finite principal fibre after generic-position reduction. The generic-position geometry and actual convergent lattice transport are [§5.28, Q.3 and Q.6–Q.7](#5-28-convergent-contact-quantization-and-whole-germ-generic-position). Thus (G.1) holds for the entire coherent actual holonomic germ, and Theorem G.1 supplies its finite coordinate-commuting-ring realization. If the starting convention defines characteristic support instead by an infinite-order or microfunction extension, equality with the support of $M_0/hM_0$ remains the separate extension-faithfulness prerequisite stated in J.2. It is not inferred from infinite-order flatness.
+
+G.1 alone does not give a bounded finite free resolution over $A$ or its polynomial differential extension $R$. The finite-order comparison is now proved in [§5.30, F.1–F.7](#5-30-actual-polynomial-flatness-and-reconstruction-after-finite-realization), and [§5.31, L.1–L.6](#5-31-a-bounded-actual-generic-position-complex-with-polynomial-operator-matrices) constructs a bounded free resolution over the actual microlocal rings, with polynomial matrices and one base neighbourhood, under the same supplied-lattice and finite-principal-fibre premise. Infinite-order base change, a convergent sectorial operator action, relative solution vanishing, continuation and separation at singular support, faithful finite D-type injection, ordinary finite-pole recovery and microlocal order comparison remain the obligations in Q.8. Earlier positive-degree completion is a different functor.
+
+C.1 and arbitrary proper/support-proper analytic regularity remain open. Free human context: Kashiwara–Kawai, [HolIII](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), III.5.5. Its statement is not used as the proof of G.1. The full argument above proves the stated finite-stalk theorem.
+
+#### G.7. Exact illustration and a noncommutative division check
+
+The figure below uses the two selected heads $z_1^2,z_2^3$ in one component. The first orthant is assigned to the first head; the portion of the second orthant outside the first is assigned to the second. The complement is the six-element list $1,z_1,z_2,z_1z_2,z_2^2,z_1z_2^2$. They are candidate module generators, not a claim of linear independence or free rank. The figure displays the actual norm bound $1/8$, the Banach inverse (G.12), the entire-stalk conclusion, and the still unproved finite D-type arrow. Its axes show the two pure-covector exponents; every base exponent and homogeneous index remains allowed.
+
+Here is an exact one-$z$ example retaining the $\tau,t$ contractions. For the divisor $P=z^2+ht$ and input $F=z^4$, put
+
+\[
+\begin{gathered}
+Q=z^2-ht+2h^2,\\ S=h^2t^2-3h^3t+4h^4.\\ \text{Then }Q\circ P+S=F .
+\end{gathered}
+\tag{G.16}
+\]
+
+Here the only nonzero internal contraction in $Q\circ(ht)$ is the first $\tau,t$ contraction, because $ht$ has base degree one. Specifically $\partial_\tau z^2=-2hz^2$, $\partial_\tau(-ht)=h^2t$, and $\partial_\tau(2h^2)=-4h^3$, and multiplication by $\partial_t(ht)=h$ gives $-2h^2z^2+h^3t-4h^4$. Adding the ordinary product leaves $z^4-h^2t^2+3h^3t-4h^4$, which (G.16) corrects by $S$. This is an exact identity with no truncation tail. This check illustrates the retained contractions and signs, while the general proof remains G.1–G.5.
+
+![Finite covector remainder supports and actual whole-stalk generation](assets/finite-commuting-realization.png)
+
+*The ordered heads $z_1^2,z_2^3$ have the exact six-monomial complement (G.4). The convergent division is G.3–G.4 and the entire-stalk generation theorem is G.5. The input is the actual finite-lattice/finite-principal-fibre premise (G.1), including nonreduced principal modules. The infinite-order and finite D-type arrows remain open as stated in G.6. Free human source: [Kashiwara–Kawai, author-hosted HolIII](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), III.5.5.*
+
+
+### 5.30. Actual polynomial flatness and reconstruction after finite realization
+
+This argument proves the finite-order polynomial-extension comparison needed after Theorem G.1. It retains the entire actual stalk. It proves neither an infinite-order extension nor a bounded terminal free resolution. All rings and tensor products in F.1–F.7 below are finite-order or expressly $h$-adic formal rings.
+
+The actual symbol and product are [§5.19, S.1–S.4](#5-19-actual-factorial-growth-symbols-and-ordered-jets); the complete derivative norm and actual units are [§5.20, B.1–B.3.1](#5-20-one-norm-multiplication-units-and-dummy-division); the convergent simultaneous-division and finite-head proofs are [§5.21, N.1–N.18](#5-21-actual-simultaneous-division-and-finite-stalk-relations). We use the full [§5.22.1–§5.22.5, Lemmas 5.22.1–5.22.3 and Proposition 5.22.4](#5-22-2-normal-element-artin-rees-and-exact-completion), including exact normal-element Artin–Rees, finite completion, bounded filtered flatness and the separated kernel lift. The commutative input is Completion, §§1–3 and Theorems 3.1–3.3, with the Rees Artin–Rees and Krull-intersection proofs, §§5–6. The coefficient comparison is proved in full in F.3. The actual finite realization used below is [§5.29, Theorem G.1 and G.1–G.5](#5-29-actual-finite-generation-over-the-coordinate-commuting-ring), with its supplied actual lattice and finite principal fibre explicit. The actual analytic quotient in F.5 uses bounded Weierstrass division, preparation and uniqueness.
+
+#### F.1. The polynomial rings and all commutation formulas
+
+Retain $u=(t,x)$, $z=\xi/\tau$, $h=\tau^{-1}$, $E_0,E,A_0,A$ from G.1. Let
+
+\[
+\begin{gathered}
+R_0=\bigoplus_{\beta\in\mathbf N^d}A_0z^\beta\ \subset E_0,\\ R=R_0[h^{-1}]=\bigoplus_\beta A\,\partial_x^\beta .
+\end{gathered}
+\tag{F.1}
+\]
+
+The direct sums mean finite polynomial degree, uniformly across the coefficient sequence; the actual coefficients in each $A_0$ still have a common holomorphic domain and factorial growth. Right multiplication by $z^\beta$ is ordinary normal multiplication. Consequently the displayed bases are independent, and every finite polynomial represents an actual symbol. The second basis follows from $\partial_{x_i}=z_i h^{-1}$ and the fact that the cotangent symbols $z_i,h$ commute.
+
+Put $\sigma(a)=h\circ a\circ h^{-1}$ and $\delta_i(a)=h\circ\partial_{x_i}a$. Direct multiplication, or $\xi_i\circ b=b\circ\xi_i+\partial_{x_i}b$, gives
+
+\[
+\begin{gathered}
+z_i\circ a=\sigma(a)\circ z_i+\delta_i(a),\\ z_i\circ z_j=z_j\circ z_i,\\ \sigma(z_j)=z_j,\quad\delta_i(z_j)=0 .
+\end{gathered}
+\tag{F.2}
+\]
+
+In fact $z_i=\xi_i\circ h$, so
+
+
+\[
+\begin{gathered}
+z_i\circ a=\xi_i\circ\sigma(a)\circ h\\ =\sigma(a)\circ z_i\\ {}+(\partial_{x_i}\sigma(a))\circ h
+\end{gathered}
+\]
+
+The last term equals $h\circ\partial_{x_i}a$. The normal conjugation formulas C.1 show that $\sigma$ and $\sigma^{-1}$ preserve $A_0$. Base differentiation preserves the actual class on a smaller common domain. Thus $\delta_i$ preserves $A_0$. Associativity gives its $\sigma$-derivation rule
+$\delta_i(ab)=\sigma(a)\delta_i(b)+\delta_i(a)b$.
+The same formulas show $\delta_i\sigma=\sigma\delta_i$ and $\delta_i\delta_j=\delta_j\delta_i$. Alternatively these identities follow by expanding the commuting $z_i,z_j$ in the independent polynomial basis.
+
+Adjoining the $z_i$ successively is therefore a skew polynomial extension with an invertible coefficient automorphism. At every stage $\sigma$ fixes the previously adjoined $z_j$, and $\delta_i$ annihilates them. No completion or unproved PBW assertion is used: the actual symbol embedding proves the independence and consistency of every finite normal polynomial.
+
+The normal element $h$ stays normal in $R_0$. Finite homogeneous truncation gives
+
+\[
+\begin{gathered}
+R_0/(h)=H[z],\quad E_0/(h)=T,\\ H=\mathbf C\{u\},\quad T=\mathbf C\{u,z\}.
+\end{gathered}
+\tag{F.3}
+\]
+
+The same truncation at $h^r$ is exact: coefficients of $h$-index below $r$ can be chosen arbitrarily, with the finitely many polynomial and holomorphic domains intersected. The kernel is $h^rR_0$ by the actual fixed-shift formulas. There is no assertion that $h$ belongs to the Jacobson radical of $R_0$.
+
+#### F.2. Noetherianity of the smaller rings
+
+The complete actual division argument N.1–N.18 also proves that $A_0$ is left Noetherian. Here are the adjustments that make that invocation exact. For a submodule $I\subset A_0^b$, select heads in $(h,u)$ alone. Multiplication by $h^nu^\alpha$ raises its head by that exponent; every internal contraction has higher $h$-index. Dickson's finite-head argument therefore applies. Use the same absolute Taylor norm N.2 inside $E_0$, with support restricted to zero $z$-degree. This is a closed coefficient subspace. Division by a head in $u$ and every product of elements independent of $z$ preserve that subspace. The norm, support projection, monomial-division and Neumann estimates are exactly N.1–N.18, including all $\tau$-derivatives. The quotients consequently belong to $A_0$. For an input in $I$, its remainder belongs to $I$; a nonzero remainder would have a head in its diagram outside all selected head orthants, a contradiction. Thus the finitely selected elements generate $I$ over $A_0$. This proves finite generation of every submodule of $A_0^b$. Elliptic inversion B.3 also preserves this closed subring; in particular $(h)$ is in its Jacobson radical.
+
+For completeness, the skew polynomial Noetherian argument can be proved directly. Let $B$ be left Noetherian, let $\sigma$ be an automorphism, and let $B[y;\sigma,\delta]$ have the independent left coefficient basis $y^n$. For a left ideal $I$, define
+
+\[
+\begin{gathered}
+J_n=\{\sigma^{-n}(\operatorname{coeff}_{y^n}P):\\ P\in I,\ \deg P\le n\}\subset B .
+\end{gathered}
+\tag{F.4}
+\]
+
+These are left ideals: multiplying by $a\in B$ changes the normalized coefficient by $\sigma^{-n}(a)$. Moreover $J_n\subset J_{n+1}$, by multiplying $P$ on the left by $y$. They stabilize at some $N$. Select finitely many coefficient generators and polynomial lifts for every $J_n$, $0\le n\le N$. For $P$ of degree $m>N$, express its normalized leading coefficient in $J_N$. If a selected lift has degree $N$, its left multiple $y^{m-N}$ has the same normalized leading coefficient. To multiply that normalized coefficient by $a$, multiply the polynomial on the left by $\sigma^m(a)$. Subtract those finite multiples; the degree decreases. At a degree at most $N$, use the corresponding selected list and again decrease degree. The process terminates. These finitely many lifts generate $I$. Finite-free submodules are finite by induction on the number of components: project to the first component, lift a finite generating list of its ideal image, and add generators for the kernel in the remaining components. Thus every successive skew polynomial extension is left Noetherian.
+
+Applying this proof to (F.2) proves that $R_0$ is left Noetherian. Normal localization proves the same for $A,R$: for an ideal in a localization, contract it to the original ring. Every localized element becomes an element of this contraction after multiplying on the left by a large enough power of $h$. A finite generating list of the contraction therefore generates the localized ideal.
+
+#### F.3. The exact commutative coefficient comparison
+
+The map $H[z]\to T$ is flat. Put
+$B=H[z]_{(\mathfrak m_H,z)}$.
+The maximal-ideal completions of $B$ and $T$ are the same ring $\mathbf C[[u,z]]$. This equality is verified at every finite order: Taylor polynomials supply the same quotient, and any denominator outside the maximal ideal has a finite geometric inverse there. The earlier commutative Artin–Rees proof makes the induced intersection filtrations cofinal. Surjective quotient transitions then give exact completion on finite modules by successive compatible lifting, and a finite presentation identifies it with tensoring by the completed ring. Here is the flatness and faithfulness consequence explicitly. Every injection of finite modules remains injective after that tensor functor. For an injection $U\hookrightarrow V$ of arbitrary modules over a Noetherian ring, write $V$ as the filtered union of its finite submodules $V_j$. Each intersection $U\cap V_j$ is finite; its injection into $V_j$ remains injective after tensoring. Tensor commutes with this filtered union: every tensor and every witness to equality uses finitely many elements and therefore occurs at a finite stage. The resulting injection remains injective, proving flatness on arbitrary modules. For a Noetherian local ring, the completion has the same nonzero residue field. If $M\ne0$, a nonzero element generates a cyclic injection $D/J\hookrightarrow M$, where $D$ denotes that local ring and $J$ is a proper ideal. Flatness preserves this injection, and the tensor of $D/J$ is nonzero because its quotient modulo the maximal ideal is the residue field: $J$ lies in that ideal. Completion is therefore faithful. Apply these arguments to the genuinely commutative local rings $B$ and $T$.
+
+To prove flatness of $T$ over $B$, tensor an injection of $B$-modules with $T$. Any resulting kernel survives tensoring with the faithfully flat completion of $T$ if it was nonzero; but the completed tensor is tensoring with the flat completion of $B$, and has zero kernel. This contradiction proves flatness. Localization makes $B$ flat over $H[z]$, so $T$ is flat over $H[z]$. The local map is faithful as well: a nonzero $B$-module remains nonzero after its faithfully flat completion, which is the completion of $T$; it therefore could not have become zero after tensoring with $T$. Faithfulness is used only after localization. The unlocalized polynomial map is asserted flat.
+
+#### F.4. Normal formal comparison and actual finite flatness
+
+Let
+
+\[
+\begin{gathered}
+\widehat R_0^{\,h}=\prod_{n\ge0}H[z]h^n,\\ \widehat E_0^{\,h}=\prod_{n\ge0}Th^n .
+\end{gathered}
+\tag{F.5}
+\]
+
+These are $h$-adic completions of the actual rings, by F.1 and the earlier exact coefficient-quotient calculation C.3. Individual formal coefficients are holomorphic germs; an infinite formal sequence is not claimed to have a common coefficient domain or factorial bounds. The formal multiplication has finite sums at each index and is the same normalized Leibniz product.
+
+Both formal rings are left Noetherian. Their $h$-graded rings are $H[z,h]$ and $T[h]$, which are Noetherian by the polynomial proof in F.2 with $\sigma=1,\delta=0$. For a submodule of a finite free formal module, choose finitely many lifts of its graded initial generators. Successive leading-$h$ cancellation expresses each element by those lifts: each coefficient multiplier is a convergent series in the complete $h$ topology, and equality follows from separatedness. This is the complete coefficientwise proof in Section 2 of the earlier normal-completion leaf, applied to these exact graded rings. It proves Noetherianity without assuming a submodule closed in advance.
+
+The normal-element Artin–Rees proof C.1 and exact completion proof C.2 apply to $R_0$ and to both formal rings. They imply exact completion and its tensor identity on finite modules. Every finite module over either formal ring is complete and separated, since that ring equals its $h$-completion. At each truncated level, (F.3) and F.3 above give
+
+\[
+\begin{gathered}
+\operatorname{gr}_h(\widehat E_0^{\,h}/h^r)=T[h]/h^r\\ \text{flat over}\\ \operatorname{gr}_h(\widehat R_0^{\,h}/h^r)=H[z,h]/h^r .
+\end{gathered}
+\tag{F.6}
+\]
+
+The coefficient functor is $T\otimes_{H[z]}-$, so graded flatness here follows directly from F.3. The bounded-filtration lifting Lemma C.3 is within its exact hypotheses: there are only $r$ nonzero levels, all terms have finite shifted free resolutions, and solving a leading equation raises order and terminates. It proves flatness on finite modules at each truncated level.
+
+The full lift is exactly Proposition C.4's kernel argument. For $N\subset M$ finite over $\widehat R_0^{\,h}$, its normal Artin–Rees constant $c$ puts the kernel of $N/h^rN\to M/h^rM$ in $h^{r-c}N/h^rN$. By (F.6), any vector in the kernel of the completed tensor map belongs to $h^{r-c}(\widehat E_0^{\,h}\otimes N)$ for every $r$. That finite module is separated, so the vector is zero. Moving $h^{r-c}$ across a tensor factor uses the compatible normal automorphism $\sigma$, exactly as in C.4. Thus $\widehat E_0^{\,h}\otimes_{\widehat R_0^{\,h}}-$ is exact on finite modules. Composing with exact normal completion over $R_0$ proves exactness of $\widehat E_0^{\,h}\otimes_{R_0}-$ on finite $R_0$-modules.
+
+Finally, for a finite $R_0$-module $V$, construct a free resolution with finite free terms, using F.2 at every kernel. Tensor it with $E_0$. Its homology modules are finite over the left Noetherian $E_0$. Exact $h$-completion on finite $E_0$-modules commutes with the cycles, boundaries and these homology modules. The completed complex is $\widehat E_0^{\,h}\otimes_{R_0}$ of the original resolution, hence is exact in positive degrees by the preceding paragraph. Exact $h$-completion over $E_0$ detects zero: a zero completed finite module has zero quotient modulo $h$, and finite-generator Nakayama applies since $(h)\subset\operatorname{Jac}(E_0)$ by B.3. Consequently the actual tensor complex has zero positive homology. In particular
+
+\[
+\begin{gathered}
+E_0\otimes_{R_0}-\\ \text{is exact on finite left }R_0\\ \text{-modules}.
+\end{gathered}
+\tag{F.7}
+\]
+
+This proves actual flatness in the finite scope required here. It does not identify an infinite-order extension with either formal ring in (F.5). Normal localization of the target is exact: it is a filtered union of right copies of $E_0$, with the normal automorphism used for the coefficient actions. Tensoring with the union preserves exactness because every relation and preimage uses finitely many elements. Thus
+
+\[
+\begin{gathered}
+E\otimes_R-\\ \text{is exact on finite left }R\\ \text{-modules}.
+\end{gathered}
+\tag{F.8}
+\]
+
+Equivalently apply (F.7) to the underlying localized modules, by filtered unions of their finite $R_0$-submodules. The tensor identity $E\otimes_{R_0}V=E\otimes_RV$ for an $R$-module follows from its universal balanced-map property: $h$ is already invertible on both tensor factors.
+
+#### F.5. The principal finite-module identity
+
+Let $W$ be a finite $H[z]$-module, finite over $H$, such that every $z_i$ acts nilpotently on $W/\mathfrak m_HW$. Then
+
+\[
+ T\otimes_{H[z]}W\simeq W .
+ \tag{F.9}
+\]
+
+Here the right side has an actual analytic $T$-action, which we now construct, rather than assume. Take minimal $H$-generators $w_1,\ldots,w_b$; their residues form a basis modulo $\mathfrak m_H$. Write $z_iw=A_i(u)w$ with holomorphic matrices $A_i$. The matrices $A_i(0)$ are the given nilpotent actions. Cayley–Hamilton therefore gives distinguished monic polynomials
+
+\[
+\begin{gathered}
+p_i(u,Z)\\ =\det(Z-A_i(u)),\\ p_i(0,Z)=Z^b,\\ p_i(u,z_i)W=0 .
+\end{gathered}
+\tag{F.10}
+\]
+
+The last equality follows by applying each matrix power to the vector of generators, so it does not require the matrices to commute before passing to $W$. Each $p_i$ involves only $u,z_i$. Successive proved Weierstrass divisions in the individual $z_i$ show that $T/(p_1,\ldots,p_d)$ is free over $H$ in the monomials with $0\le\beta_i<b$: each division has a holomorphic remainder and commutes with the other variables, and uniqueness gives uniqueness of the final remainder. Ordinary monic polynomial division gives the identical coefficient basis and relations for $H[z]/(p_1,\ldots,p_d)$. Thus the natural map between these two quotient rings is an isomorphism. Tensoring with $W$, which is annihilated by those polynomials, proves (F.9) and defines its analytic action. The case $W=0$ is immediate. Every division has an actual common neighbourhood because this is a finite list of convergent Weierstrass polynomials.
+
+#### F.6. Reconstruction of the actual generic-position module
+
+Use the exact premise of G.1 and its conclusion that $M_0$ is finite over $A_0$. The finite module $\bar M_0=M_0/hM_0$ is therefore finite over $H=A_0/(h)$, and is also a finite $H[z]$-module. Its fibre at $u=0$ is the finite local $\mathbf C\{z\}$-module (G.1). Every $z_i$ has only the eigenvalue zero there, by G.2. Hence F.5 applies. The canonical multiplication map
+
+\[
+\begin{gathered}
+\mu_0:E_0\otimes_{R_0}M_0\longrightarrow M_0,\\ P\otimes m\longmapsto Pm
+\end{gathered}
+\tag{F.11}
+\]
+
+is surjective and reduces modulo $h$ to the isomorphism (F.9). Its source is finite over $E_0$, since $M_0$ is finite over $R_0$, so its kernel $K$ is finite. Moreover $h$ acts injectively on $M_0$, since $M_0$ is a submodule of the $E$-module $M$, on which $h$ is invertible.
+
+If $k\in K\cap h(E_0\otimes_{R_0}M_0)$, write $k=hp$. Then $0=\mu_0(k)=h\mu_0(p)$ forces $\mu_0(p)=0$, so $p\in K$. Thus this intersection is exactly $hK$. The principal isomorphism in (F.11) now says $K/hK=0$, and actual finite Nakayama gives $K=0$. Localizing by $h$ yields
+
+\[
+\begin{gathered}
+E_0\otimes_{R_0}M_0\simeq M_0,\\ E\otimes_RM\simeq M .
+\end{gathered}
+\tag{F.12}
+\]
+
+Every map is the stated multiplication map and includes the whole actual stalk. The localization of $M_0$ is $M$: finite-order left shifts give $M=\bigcup_kh^{-k}M_0$, as in G.5. No equality on generic-stratum cohomology modules is substituted for these module maps.
+
+#### F.7. Every polynomial submodule is an actual microlocal submodule
+
+Let $N\subset M$ be an $R$-submodule. It is finite over $A$, since $M$ is finite over the left Noetherian $A$. Put $N_0=N\cap M_0$. It is finite over $A_0$, by F.2 and the finite $A_0$-module $M_0$, and is stable under $R_0$. It is $h$-saturated in $M_0$: if $hm\in N$ then $m=h^{-1}(hm)\in N$. Hence $N_0\cap hM_0=hN_0$, and $\bar N_0$ injects into $\bar M_0$.
+
+Set $P_N=E_0\otimes_{R_0}N_0$. Actual flatness (F.7) embeds it into $E_0\otimes_{R_0}M_0=M_0$. Tensoring the $h$-injective quotient $Q_0=M_0/N_0$ and its normal-action twist also shows that this image $P_N$ is $h$-saturated in $M_0$. More precisely, multiplication by $h$ is an injective $R_0$-linear map $\sigma^{-1}Q_0\to Q_0$, where the source action is $a\cdot q=\sigma^{-1}(a)q$. After tensoring, $E_0\otimes_{R_0}\sigma^{-1}Q_0$ identifies with $\sigma^{-1}(E_0\otimes_{R_0}Q_0)$ by $e\otimes q\mapsto\sigma^{-1}(e)\otimes q$. The tensor map is then multiplication by $h$, because $h\sigma^{-1}(e)=eh$. Flatness makes this map injective. Hence $M_0/P_N$ has no $h$-torsion, which is exactly the claimed saturation. Thus
+$P_N/hP_N=T\otimes_{H[z]}\bar N_0$ injects into $\bar M_0$.
+The annihilating distinguished polynomials (F.10) for $\bar M_0$ also annihilate its submodule $\bar N_0$, which is finite over $H$. The proof of (F.9), using those same quotient rings, gives $P_N/hP_N\simeq\bar N_0$.
+
+The actual finite $E_0$-module $P_N\subset M_0$ has finite principal fibre, by this equality; after localizing by $h$ it supplies an actual lattice in an $E$-module. Theorem G.1 therefore makes $P_N$ finite over $A_0$. The natural image of $N_0$ in $P_N$ has the same principal quotient, so
+$P_N=N_0+hP_N$.
+The quotient $P_N/N_0$ is a finite $A_0$-module equal to its $h$-multiple. Since $(h)\subset\operatorname{Jac}(A_0)$, finite Nakayama gives $P_N=N_0$. In particular $N_0$ is stable under all of $E_0$, without having presumed this during the tensor construction. Localizing gives
+
+\[
+ E\otimes_RN\simeq N,\qquad EN=N .
+ \tag{F.13}
+\]
+
+Here $N=\bigcup_kh^{-k}N_0$, because every element of $N\subset M$ can be shifted into $M_0$ and the shifts belong to $R$. This proves the actual finite-order polynomial-submodule assertion on the entire stalk.
+
+#### F.8. The exact remaining scope
+
+F.2 supplies finite free resolution segments of any requested finite length over $R_0,R$; F.7–F.8 make their extension to $E_0,E$ exact, and F.12 identifies the augmentation for the modules in G.1. The last kernel remains in such a segment. [§5.31, L.1–L.6](#5-31-a-bounded-actual-generic-position-complex-with-polynomial-operator-matrices) proves a bounded free resolution over the actual finite-order microlocal rings with polynomial matrices and one base neighbourhood. Its explicit syzygy stabilization concerns the principal polynomial complex; it does not claim that the actual bounded complex is a free resolution over the polynomial ring itself.
+
+No ring in this argument is $\mathscr E^\infty$ or $\mathscr A^\infty$. The identities (F.12)–(F.13) therefore do not prove HolIII (3.5.8), the sectorial kernel action, continuation, singular-support separation, faithful finite D-type embedding, regular finite-pole recovery, intrinsic microlocal order correspondence, C.1, or arbitrary proper analytic regularity. They supply actual finite-order prerequisites to those still binding obligations. The supplied actual lattice and finite-principal-fibre premise in G.1 remains explicit throughout.
+
+The figure below displays the exact rings in (F.3) and (F.5), the finite-module flatness lift, the principal distinguished-polynomial quotient, the saturated kernel $K/hK=0$, and the open infinite-order arrow. Free human reading: Kashiwara–Kawai, [author-hosted HolIII](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), III.5.1–III.5.8.
+
+![Actual polynomial flatness and whole-stalk reconstruction](assets/actual-polynomial-reconstruction.png)
+
+*The polynomial and actual coefficient rings are (F.3); the explicitly formal rings and finite exact-completion comparison are (F.5)–(F.8). The finite distinguished quotient retains nilpotent multiplicities in (F.9)–(F.10). The saturated-kernel argument proves the whole-stalk multiplication identities (F.11)–(F.13). G.1 supplies the actual lattice and finite principal fibre; the infinite-order arrow remains open as stated in F.8. Free human source: [Kashiwara–Kawai, HolIII](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), III.5.1–III.5.8.*
+
+For every coherent actual holonomic germ whose holonomicity uses its reduced actual finite-order support, [§5.32, J.1–J.3](#5-32-coherent-actual-lattices-and-principal-support-for-the-whole-germ) constructs the actual lattice and proves the finite principal fibre after the contact reduction. The separate infinite-order support convention retains the interface stated there.
+
+### 5.31. A bounded actual generic-position complex with polynomial operator matrices
+
+This argument continues the exact finite-lattice and finite-principal-fibre premise of G.1. It proves a bounded free resolution over the actual finite-order microlocal ring whose matrices lie in the actual polynomial operator ring $R_0$. It also gives one base neighbourhood for that complex and its entire finite-support realization. It does not claim a bounded free resolution over $R_0$ itself, or an infinite-order comparison.
+
+The actual finite realization is [§5.29, Theorem G.1 and G.1–G.5](#5-29-actual-finite-generation-over-the-coordinate-commuting-ring). Actual polynomial Noetherianity, coefficient flatness, finite-order reconstruction and exact normal-completion detection are [§5.30, F.1–F.7](#5-30-actual-polynomial-flatness-and-reconstruction-after-finite-realization). All coefficient identities below concern actual convergent representatives or expressly designated positive h-adic formal modules.
+
+The full uniform homogeneous kernel proof is GL06, Lemma 3.0c.3, with the coefficient comparison proved locally in F.3. Its scalar analytic relation input is Oka Theorem 2.1 and Lemma 2.2, using the local monic division and nearby Weierstrass splitting, Lemmas 2.3 and 3.2. L.5 supplies the scalar-row and finite block-matrix consequences explicitly. Actual neighbourhood coherence and translated-chart coordinates are [§5.24, Lemma 5.24.1 and Theorem 5.24.2](#5-24-fixed-kernel-sections-on-one-actual-neighbourhood), proved by the bounded division of §5.21.
+
+#### L.1. A finite free resolution over the holomorphic coefficient ring
+
+Put $n=d+1$, $q=n+d=2d+1$, $H=\mathbf C\{u_1,\ldots,u_n\}$ and $S=H[z_1,\ldots,z_d]$. By G.1, $\bar M_0=M_0/hM_0$ is finite over $H$. We first prove that every finite $H$-module has a finite free resolution of length at most $n$.
+
+The coordinate sequence $u_1,\ldots,u_n$ is regular: each successive quotient is the convergent power-series ring in the remaining coordinates, and multiplication by the next coordinate is injective there by its Taylor coefficients. The two-term-complex cone induction therefore proves that its Koszul complex is a free resolution of the residue field $\mathbf C$, of length $n$. Its differential on an ordered wedge is
+
+\[
+\begin{gathered}
+d(e_{i_1}\wedge\cdots\wedge e_{i_k})\\ =\sum_{a=1}^k(-1)^{a-1}u_{i_a}\\ e_{i_1}\wedge\cdots\widehat e_{i_a}\cdots\wedge e_{i_k}.
+\end{gathered}
+\tag{L.1}
+\]
+
+Indeed for one coordinate the complex is injective multiplication followed by the quotient. Adjoining the next coordinate tensors with that two-term complex; on the previously resolved quotient its kernel is zero and its cokernel is the next quotient. This proves the induction, including the displayed signs.
+
+Construct a minimal free resolution of a finite $H$-module $W$ by selecting at each stage generators whose residues are a basis of the finite kernel modulo the maximal ideal. Kernels are finite since $H$ is Noetherian. The kernel of each such minimal cover lies inside the maximal ideal times its free source. Hence every differential in this resolution has all entries in the maximal ideal, and tensoring it with $\mathbf C$ makes all differentials zero.
+
+The homology of this tensor complex is also computed by the Koszul resolution (L.1) tensored with $W$. Here is the required balanced-resolution argument. Tensor the two free resolutions to form a first-quadrant double complex, with the Koszul term in one degree and the minimal-resolution term in the other, and use total differential $d_K\otimes1+(-1)^a1\otimes d_F$ on Koszul degree $a$. Resolving first in either direction gives respectively those two tensor complexes, because a free tensor factor preserves each augmentation's exactness. At any fixed total degree there are finitely many terms. Successive row or column reduction of a cycle and of a boundary consequently proves that both augmentations induce the same total homology; there is no infinite totalization or limit exchange. The Koszul side has no terms above degree $n$. Thus the minimal resolution has zero free term modulo the maximal ideal above degree $n$, and its ranks there are zero. Its finite next kernel is zero by finite Nakayama. The minimal free resolution terminates at degree $n$.
+
+#### L.2. Adjoining each commuting covector variable gives a finite polynomial resolution
+
+Suppose $B$ is a commutative ring, $V$ is a $B[y]$-module, and $V$ has a finite free $B$-resolution of length $a$. Write $Y$ for the $B$-linear action of $y$ on $V$. There is an exact sequence
+
+\[
+\begin{gathered}
+0\longrightarrow B[y]\otimes_B V\\ \xrightarrow{D}B[y]\otimes_BV\\ \xrightarrow{\mu}V\longrightarrow0,\\ D(y^j\otimes v)=y^{j+1}\otimes v\\ {}-y^j\otimes Yv,\\ \mu(y^j\otimes v)=Y^jv.
+\end{gathered}
+\tag{L.2}
+\]
+
+The tensor module is the direct sum of copies of $V$ indexed by powers of $y$. A highest nonzero coefficient proves injectivity of $D$. For $f=\sum_{j=0}^b y^j\otimes v_j$, define
+$g=\sum_{j=1}^b\sum_{k=0}^{j-1}y^{j-1-k}\otimes Y^kv_j$.
+The terms telescope to $Dg=f-1\otimes\mu(f)$. This proves exactness at the middle, and $\mu$ is surjective.
+
+Lift $Y$ to a chain endomorphism $\widetilde Y$ of the finite free $B$-resolution. At degree zero lift the image of each free basis element through its augmentation. At degree $j$, the already lifted image of its boundary is a cycle, hence has a preimage in degree $j$; choose that preimage for each of its finitely many basis elements. These finite choices give a chain map. Induction reaches the last degree because exactness there includes the required cycle image. Every coefficient is in $B$.
+
+Tensor the resolution with the free coefficient ring $B[y]$, and take the cone of the chain map $y-\widetilde Y$. In homological degree $j$ its term is $L'_j\oplus L'_{j-1}$ and its differential is
+
+\[
+\begin{gathered}
+d(a,b)=(d_{L'}a+(y-\widetilde Y)b,\\ {}-d_{L'}b).
+\end{gathered}
+\tag{L.3}
+\]
+
+The chain-map identity gives $d^2=0$ with these exact signs. The induced map on degree-zero homology is $D$ in (L.2); both induced resolutions have zero higher homology. The cone's homology is therefore $V$ in degree zero and zero elsewhere. One can verify this directly by solving a cone cycle first in the source resolution and then the target resolution, or by the short exact cone sequence. It is a finite free $B[y]$-resolution of length at most $a+1$.
+
+Start with the finite free $H$-resolution of $\bar M_0$ in L.1. Apply this construction successively to $z_1,\ldots,z_d$. At each stage the next variable acts linearly over the preceding polynomial ring, because their actions commute on $\bar M_0$. Chain lifts need not commute before passing to homology; only the single next chain map is used at that stage. We obtain a finite free $S$-resolution
+
+\[
+\begin{gathered}
+0\longrightarrow L_q\longrightarrow L_{q-1}\\ \longrightarrow\cdots\longrightarrow L_0\\ \longrightarrow\bar M_0\longrightarrow0,\\ q=2d+1.
+\end{gathered}
+\tag{L.4}
+\]
+
+If it has shorter length, use zero free terms to fill the declared bound. All matrices have finite polynomial degree and holomorphic coefficient germs. No general projective-module or stable-free theorem has been imported.
+
+#### L.3. Comparing the actual polynomial syzygy with that finite resolution
+
+By F.2, $R_0$ is left Noetherian, and $M_0$ is finite over $R_0$. Choose an actual finite free $R_0$-resolution segment with successive surjections onto its kernels through degree $q-1$:
+
+\[
+\begin{gathered}
+0\longrightarrow K_q\longrightarrow F_{q-1}\\ \longrightarrow\cdots\longrightarrow F_0\\ \longrightarrow M_0\longrightarrow0.
+\end{gathered}
+\tag{L.5}
+\]
+
+Its matrices are in $R_0$; its kernels are finite. Every module in the segment has injective multiplication by $h$: this holds for $M_0\subset M$ and for each kernel inside a finite free module. In an exact pair $0\to K\to F\to V\to0$ with $h$ injective on $V$, one has $K\cap hF=hK$, by writing $k=hf$ and cancelling $h$ in its image. Reduction modulo $h$ is therefore exact on that pair. Repeating gives a free $S$-resolution segment of $\bar M_0$ with last kernel $\bar K_q=K_q/hK_q$.
+
+Its last kernel is stably free, and an elementary comparison proves this exact conclusion. If $0\to A\to F\to W\to0$ and $0\to B\to G\to W\to0$ have finite free middle terms, their fibre product over $W$ has split sequences with kernels $A,B$ and quotients $G,F$. Thus $A\oplus G\simeq B\oplus F$. Apply this successively to the reduced segment (L.5) and the finite free resolution (L.4). More explicitly, if their $j$-th kernels satisfy $A_j\oplus U_j\simeq B_j\oplus V_j$ with $U_j,V_j$ finite free, compare the free covers $F_j\oplus U_j$ and $L_j\oplus V_j$ of that same module. The fibre-product argument gives
+$A_{j+1}\oplus(L_j\oplus V_j)\simeq B_{j+1}\oplus(F_j\oplus U_j)$.
+Begin at $A_0=B_0=\bar M_0$, and iterate $q$ times. Since $B_q\simeq L_q$ is free, this constructs finite integers $s,r$ and an actual $S$-linear isomorphism
+
+\[
+ \bar K_q\oplus S^s\simeq S^r.
+ \tag{L.6}
+\]
+
+Add $R_0^s$ to $F_{q-1}$ with zero outgoing differential, so its kernel becomes $K_q\oplus R_0^s$. Lift each basis vector of the free principal kernel (L.6) to this actual kernel. The resulting map
+$P_q:R_0^r\to F_{q-1}\oplus R_0^s$
+is an actual relation map with principal image equal to the entire principal kernel and with injective principal map. All preceding differentials remain unchanged apart from the declared zero columns. We have constructed a bounded actual polynomial-matrix complex whose principal complex is the exact resolution (L.4)'s syzygy comparison.
+
+This does not assert that $P_q$ is an isomorphism onto the last kernel over $R_0$. In particular $(h)$ was not declared a Jacobson ideal of $R_0$, and no such Nakayama argument is valid there.
+
+#### L.4. Exactness over the actual microlocal ring
+
+Tensor the bounded free complex with $E_0$ and use its multiplication augmentation to $M_0$. Its principal complex is the tensor of the exact $S$-complex with $T=\mathbf C\{u,z\}$, which is exact by F.3. Its $h$-adic formal complex is exact: for a cycle solve its first nonzero homogeneous equation in that principal exact complex, lift a boundary, subtract, and repeat at each higher $h$-order. In a finite free formal term, the sum of these lifts exists and equality follows from separatedness. The augmentation module is finite and $h$-complete after completion by the exact normal-completion argument, so the same successive lifting applies there. At the last term, an element in the kernel has a first nonzero principal coefficient, which would contradict principal injectivity; its kernel is zero.
+
+All homology modules of the actual $E_0$ complex are finite, because $E_0$ is left Noetherian. Its exact finite $h$-completion commutes with homology, by the normal-element Artin–Rees proof in F.4. Their completed modules are zero by the previous paragraph. The exact completion detects zero on finite $E_0$-modules, using $(h)\subset\operatorname{Jac}(E_0)$. Hence the actual complex is exact, including its last term. Localizing by $h$ preserves exactness and identifies its target with $M$. Consequently
+
+\[
+\begin{gathered}
+0\longrightarrow E^{r_q}\xrightarrow{P_q}E^{r_{q-1}}\\ \longrightarrow\cdots\xrightarrow{P_1}E^{r_0}\\ \longrightarrow M\longrightarrow0,\\ P_j\text{ has entries in }R_0,\\ q=2d+1 .
+\end{gathered}
+\tag{L.7}
+\]
+
+This is the finite-order conclusion. Its proof made no assertion that an arbitrary formal lift has factorial growth: every actual matrix came from finite actual $R_0$-relations; formal completion was used only as an exact detecting functor on the finite actual homology modules.
+
+#### L.5. A common base neighbourhood for the polynomial principal complex
+
+The earlier uniform homogeneous kernel proof yields the following nonhomogeneous polynomial assertion: for a finite polynomial matrix over $H[z]$, its kernel is generated by finitely many polynomial sections on one base neighbourhood. To prove the reduction, choose source shifts $a_j$ at least as large as every entry degree in its $j$-th column, and give the target shift zero. Introduce a variable $v$ and homogenize each entry to degree $a_j$. If a polynomial vector $c_j(z)$ is a relation, choose $b\ge\max_j(a_j+\deg c_j)$ and homogenize it as $v^{b-a_j}c_j(z/v)$. The homogeneous matrix times this vector is $v^b$ times the original zero relation. Conversely evaluation at $v=1$ sends any homogeneous relation to a relation. The finitely many uniform homogeneous generators therefore dehomogenize to generators of every nearby polynomial kernel. Their coefficients remain actual holomorphic functions on the same base neighbourhood.
+
+Here the full homogeneous proof uses the coherent analytic kernel on the zero-section product, the faithfully flat polynomial-to-analytic coefficient map of F.3, and finite graded zero-section detection. The matrix-kernel consequence of the scalar Oka relation theorem follows by induction on the number of target rows. For one row it is exactly that theorem. For $r>1$ rows, let the finite columns of a matrix $G$ generate the first-row kernel on one neighbourhood. Apply the induction hypothesis to the remaining $r-1$ rows composed with $G$, obtaining finitely many kernel columns $c_j$. Their images $Gc_j$ generate the full original kernel: every original relation is $Gc$ by its first row, and the remaining rows say precisely that $c$ is in the composed kernel. The relation sheaf of the resulting finite generator matrix is again a finite free matrix kernel, so this kernel has a finite presentation.
+
+Here are the required presented-module consequences. Write two finite presentations with relation matrices $A$ and $B$, and represent a morphism by a finite free matrix $D$. The finite block matrix $(D,-B)$ imposes the equation $Dx=By$ on pairs $(x,y)$. Its kernel is generated by the preceding finite-row argument. The first coordinates of those generators, together with the source relation columns of $A$, describe the kernel of the presented morphism. Its relation matrix is again a finite free matrix kernel, so the presented kernel is coherent. The cokernel is presented by adjoining the finite columns of $D$ to $B$. The image is the source presentation modulo that coherent kernel. In particular the quotient of a coherent kernel by a finite generator list is coherent, using those same finite block presentations. If a finite-type quotient has zero stalk at a point, choose its finite generators on a neighbourhood. Each generator has zero germ, hence vanishes on some smaller neighbourhood; intersect this finite list of neighbourhoods. The quotient vanishes there. These finite scalar-row and block-matrix constructions give every analytic kernel, quotient and zero-stalk consequence used in this paragraph.
+
+The graded zero-section detection is also elementary: a finite graded module bounded below whose localization at the zero-section maximal ideal is zero has zero quotient modulo the polynomial variables, since that quotient is finite over the local coefficient ring. Equality with its polynomial-variable multiple then kills its first possible degree and, inductively, every degree. Thus the earlier proof's zero-section descent has exactly the needed hypotheses and includes arbitrary shifted free matrices.
+
+Apply this uniform polynomial kernel result to the finitely many principal maps in L.3. At the base origin they form an exact complex. Each represented kernel generator there is a finite polynomial combination of columns of the preceding map. Represent those finitely many identities on one smaller base neighbourhood. The same sections generate every nearby kernel, and hence prove exactness there in every polynomial degree. At the injective last map the initial kernel list is empty, so its nearby kernel is zero. Thus one base neighbourhood $U$ makes the entire principal polynomial complex exact over $\mathcal O_{U,u}[z]$ for every $u\in U$. There is no sequence of shrinking neighbourhoods indexed by a relation degree.
+
+#### L.6. The actual complex on the whole conic chart over that base neighbourhood
+
+The finitely many actual $R_0$ matrix entries have coefficients in $A_0$, all represented on one smaller $U$ with common coefficient domains and factorial bounds. Their finite polynomial $z$-dependence defines them on all of
+
+\[
+\begin{gathered}
+\mathcal E_U=\{(u;\tau,\xi):u\in U,\ \tau\ne0\},\\ z=\xi/\tau\in\mathbf C^d.
+\end{gathered}
+\tag{L.8}
+\]
+
+On a compact $z$-set a fixed polynomial degree contributes a fixed factor to each homogeneous coefficient; finite shifts and derivatives have the actual factorial estimates already proved. Thus these are actual sheaf sections everywhere on (L.8). Their finitely many differential-product identities also hold there on one common smaller base neighbourhood: equality of actual germs is simultaneous equality of their coefficient sequences on a common domain, as in S.1. Each coefficient identity is polynomial in the covector variables, so equality on a covector neighbourhood implies equality for every covector value. The actual product preserves finite polynomial degree for these finitely many expressions. The represented matrices therefore form one complex on the entire chart.
+
+Fix any $(u_*,z_*)$. The coefficient map
+$\mathcal O_{U,u_*}[z]\to\mathcal O_{(u_*,z_*),U\times\mathbf C^d}$
+is flat by precisely F.3's local completion proof, now localizing the polynomial ring at $(\mathfrak m_{u_*},z-z_*)$. The principal complex is therefore exact at this point. Actual stalk Noetherianity, elliptic inversion, and exact finite $h$-completion hold there: the earlier U.1 coordinate change translates a normalized covector to zero while preserving $h$ and the actual product, and the normal-element completion proof applies to its holomorphic coefficient ring. Repeating L.4 proves exactness at every such point in positive degrees, including terminal injectivity. No uniform norm over all unbounded $z$ is required: the finite matrices and $U$ are fixed; their compact coefficient bounds may depend on the compact set.
+
+Let $M'_0$ be the cokernel of this actual order-zero complex and $M'=M'_0[h^{-1}]$. It is a coherent actual module on (L.8) by the earlier U.2 matrix-kernel proof. Localization preserves that coherent category: the finitely many entries of any finite-order matrix can be shifted into order zero using finite powers of $h$ on its free bases; its order-zero kernel is generated on one neighbourhood by U.2, and every finite-order relation can itself be shifted into that kernel. Localizing those fixed generators therefore generates every finite-order kernel on the same neighbourhood. The finite block-matrix proof of U.2 then gives coherence of the localized cokernels as well. At the distinguished stalk the augmentation gives $M'_0\simeq M_0$ and $M'\simeq M$. Moreover $h$ acts injectively on $M'_0$ at every point. Indeed multiplication by $h$ is the normal-action twisted injection of the free complex into itself; its quotient is the principal complex. The long exact homology sequence and the vanishing of its degree-one principal homology make multiplication by $h$ injective on the degree-zero cokernel. Its principal module is exactly the polynomial principal cokernel analytically extended, not an assumed equality with an infinite-order support.
+
+For completeness this realization has bounded $z$-support on one smaller $U$. The distinguished polynomials $p_i(u,z_i)$ constructed in F.10 annihilate the principal module at the base germ. That finite annihilation is witnessed by finitely many polynomial column identities for the principal presentation; extend them to one smaller $U$. If
+$p_i(u,Z)=Z^b+\sum_{k<b}a_{ik}(u)Z^k$,
+choose $\delta>0$ and shrink $U$ so that
+
+\[
+\begin{gathered}
+\sum_{k<b}|a_{ik}(u)|\,\delta^{k-b}<\tfrac12\\ \text{for all }u\in U\text{ and every }i.
+\end{gathered}
+\tag{L.9}
+\]
+
+This is possible since $a_{ik}(0)=0$. For $|Z|\ge\delta$, the left sum with $|Z|$ in place of $\delta$ is no larger, so $|p_i(u,Z)|>|Z|^b/2$. Thus every root has $|Z|<\delta$. At any point outside that $z$-polydisc, at least one annihilating principal polynomial is a unit and the principal module is zero. Finite actual Nakayama then makes $M'_0$ and $M'$ zero there. When $d=0$ the support statement has no covector coordinate to bound.
+
+If the starting object is an actual coherent sheaf germ, the distinguished-stalk isomorphism to $M'$ extends on a product neighbourhood of that point. This uses only finite presentations: represent its finitely many generator images, relations, inverse generator images and inverse identities on one smaller neighbourhood; the two maps then are inverses there. Choose $\delta$ in (L.9) inside that product's covector radius and shrink the base accordingly. The support bound then places the whole realized support inside the comparison product. Hence $M'$ is a representative of the whole original germ on the conic chart over one base neighbourhood, with no discarded branch or supported section. The bounded resolution (L.7), with its fixed polynomial matrices, is exact throughout that chart.
+
+#### L.7. What this closes and what remains
+
+Under G.1's actual premise, L.1–L.6 prove the actual finite-order bounded generic-position realization and polynomial-matrix resolution, with the exact bound $q=2d+1$ and one base neighbourhood. The finite-ring submodule comparison is F.13. These supply the finite-order clauses corresponding to HolIII III.5's ordinary realization. Equality of a characteristic support defined through an infinite-order extension with the given principal support remains the explicit G.6 interface, if that convention is used.
+
+The proof contains no $\mathscr E^\infty$ or $\mathscr A^\infty$ tensor identity. The sectorial kernel action, Micro-hyperbolic relative vanishing, continuation, singular-support separation, infinite-order linearity, faithful finite D-type embedding, regular finite-pole recovery, intrinsic microlocal order correspondence, C.1 and arbitrary proper analytic regularity remain open. A finite free actual resolution is a prerequisite for those arguments, not their proof.
+
+The figure below records the base bound, the polynomial bound, the cone signs (L.3), the explicit syzygy stabilization (L.6), actual exact-completion detection, and the root bound (L.9) on the entire conic chart. Free human reading: Kashiwara–Kawai, [author-hosted HolIII](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), III.5.3–III.5.8.
+
+![Bounded polynomial-matrix resolution over the actual microlocal ring](assets/bounded-polynomial-complex.png)
+
+*L.1–L.2 prove the lengths and signed cones. L.3 constructs the stable principal syzygy and actual relation lifts; L.4 detects exactness over the actual finite-order ring. L.5–L.6 give one base neighbourhood and the full-chart root bound, including every supported section. The nonreduced example and its actual correction term are (L.10)–(L.11). G.1 supplies the actual lattice and finite fibre. The diagram makes no claim of a free resolution over the actual polynomial ring. Free human source: [Kashiwara–Kawai, HolIII](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), III.5.3–III.5.8.*
+
+#### L.8. An exact nonreduced principal example with the actual correction term
+
+For $d=1$, let $H=\mathbf C\{t,x\}$, and set
+
+\[
+\begin{gathered}
+J=\begin{pmatrix}0&1\\0&0\end{pmatrix},\\ A=\begin{pmatrix}0&0\\0&1\end{pmatrix},\\ T_*=tI-hA,\quad Z_*=zI-J .
+\end{gathered}
+\tag{L.10}
+\]
+
+Their actual products include the $\tau,t$ contraction $[z,t]=-hz$, and $[J,A]=J$. Therefore
+
+\[
+\begin{gathered}
+Z_*\circ T_*-T_*\circ Z_*=-hZ_*,\\ Z_*\circ T_*-(T_*-hI)\circ Z_*=0 .
+\end{gathered}
+\tag{L.11}
+\]
+
+Use row vectors for free left modules, and let a row of operator coefficients act on the right by these matrices. The maps
+$d_1(v,w)=v\circ T_*+w\circ Z_*$
+and $d_2(u)=(u\circ Z_*,-u\circ(T_*-hI))$
+satisfy $d_1d_2=0$ by (L.11). Their principal complex is the cone resolution in L.2 for the $H$-module $(H/(t))^2$ with nilpotent $z$-action $J$: its first differential is $(v,w)\mapsto vt+ w(zI-J)$ and its second is $u\mapsto(u(zI-J),-ut)$. This is exact in positive degrees, by the explicit cone proof; its cokernel has both principal equations $t=0$ and $z^2=0$ and retains its nonreduced nilpotent part. L.4–L.6 consequently prove that the displayed actual length-two free complex resolves its actual cokernel and that this cokernel has no $h$-torsion. The generic bound for this dimension is $q=3$, so length two fits it.
+
+The term $T_*-hI$ in $d_2$ is essential: replacing it by $T_*$ gives $d_1d_2=-hZ_*$, not zero. The right factor has base degree at most one, so every higher Leibniz contraction vanishes identically. Thus (L.11) is an exact actual identity. The example retains the principal nilpotent support and the actual differential correction separately.
+
+[§5.32, J.1–J.3](#5-32-coherent-actual-lattices-and-principal-support-for-the-whole-germ) supplies G.1 for every coherent actual holonomic germ, and [§5.33, K.1–K.3](#5-33-a-convergent-negative-order-polynomial-kernel-complex) constructs the ordinary negative-order Volterra kernel complex. Its ordinary analytic action has the explicit endpoint relation stated there and is not a full localized-ring action.
+
+### 5.32. Coherent actual lattices and principal support for the whole germ
+
+Work with the actual finite-order factorial symbol sheaf $\mathscr E$ of §5.28 and its order-zero sheaf $\mathscr E(0)$; write them as $E$ and $E_0$. The actual Noetherianity, matrix-kernel coherence, normal localization and finite Nakayama arguments are proved in §§5.20–5.24 and §5.31, L.6. The following construction supplies the finite-lattice and finite-principal-fibre hypotheses of §5.29 for every coherent actual holonomic germ, including all singular branches and nonreduced fibres.
+
+#### J.0. The coefficient normality used by the analytic Nullstellensatz
+
+The finite-fibre argument below uses analytic parametrization and the Nullstellensatz, Theorem 5.1. Its prime-case proof uses normality of the coefficient ring of holomorphic germs. Here is a direct analytic proof of that step. Suppose a fraction $g=a/b$ of holomorphic germs, with $b\ne0$, satisfies
+
+\[
+\begin{gathered}
+g^r+c_1g^{r-1}+\cdots+c_r=0,\\ c_j\in\mathbf C\{u\}.
+\end{gathered}
+\tag{J.0}
+\]
+
+Choose one small polydisc on which all coefficients are bounded, and put $R=\max(1,2\max_j\sup|c_j|^{1/j})$. At a point where $b\ne0$, the inequality $|g|>R$ would give $1\le\sum_j|c_jg^{-j}|<\sum_j2^{-j}<1$. Thus $g$ is bounded by $R$ off the denominator's zero set. The Riemann extension theorem, Theorem 4.2 extends it holomorphically. The identity $bg=a$ then holds everywhere by density, so the fraction belongs to the holomorphic germ ring. This proves its normality, including the zero-dimensional coefficient case. In the cited prime-case argument, coefficients of the minimal polynomial are integral symmetric functions of the conjugates and lie in the coefficient fraction field; this proof puts them in the holomorphic ring. Finite integrality, closure under sums and products, and the determinant argument are proved in integral extensions, Section 1; separability and primitive elements are proved in §5.27.1 above.
+
+For clarity, the radical step needs no decomposition theorem. If $f$ has no power in an ideal $I$, an ideal maximal among those containing $I$ and disjoint from $\{1,f,f^2,\ldots\}$ exists by unions of chains. It is prime: if $a,b$ are outside it but $ab$ is inside, each enlarged ideal contains a power of $f$, and multiplying those two expressions puts a power of $f$ in the original ideal, a contradiction. Therefore the radical is the intersection of the primes above $I$. The cited generic-sheet parametrization proves the prime vanishing-ideal equality, and these two arguments prove the exact Nullstellensatz used below.
+
+#### J.1. A finite actual order-zero lattice exists on a neighbourhood
+
+Let $M$ be an actual coherent left $E$-module germ at $p_0$, with $h=\tau^{-1}$. Choose finitely many actual sections $m_1,\ldots,m_b$ whose germs generate $M_{p_0}$ over $E_{p_0}$, and define the stalk submodule
+
+\[
+ M_{0,p_0}=\sum_{j=1}^bE_{0,p_0}m_j\subset M_{p_0}.
+ \tag{J.1}
+\]
+
+It spans $M_{p_0}$ over $E_{p_0}$ and has injective multiplication by $h$, since $h$ is invertible on $M_{p_0}$. Its presentation kernel in $E_{0,p_0}^b$ is finite by the actual left Noetherianity proved in Theorem 5.21.1. Choose a finite generating list of that kernel and represent its entries and its identities on one neighbourhood of $p_0$. Define the coherent $E_0$-module $P_0$ by that finite presentation there. The actual matrix-kernel arguments in Theorem 5.24.2 and §5.31, L.5 prove its coherence. The chosen sections give a map $P_0\to M$, and at $p_0$ identify $P_{0,p_0}$ with (J.1).
+
+Localize that map:
+$E\otimes_{E_0}P_0\to M$.
+At $p_0$ it is an isomorphism. Surjectivity is the chosen $E$-generation, and injectivity follows from the injective $h$ action on (J.1): the normal localization is the union of finite left shifts $h^{-k}M_{0,p_0}$, and an element maps to zero precisely when a finite shift of its numerator is zero. A numerator in (J.1) cannot acquire such $h$-torsion.
+
+Both modules in this localized map are coherent over $E$. The localized coherence statement is proved by finite matrix shifts and the kernel list of Theorem 5.24.2 and §5.31, L.5, as detailed in §5.31, L.6. Its inverse at the distinguished stalk extends to one smaller neighbourhood: lift its finitely many free presentation generators, extend their finitely many relation identities, and extend the finitely many identities saying that its two compositions are the identity. Thus the localized map is an isomorphism on that neighbourhood.
+
+There is also one neighbourhood on which $h$ is injective on $P_0$. Regard it as the $E_0$-linear map $\sigma^{-1}P_0\to P_0$, where $\sigma(a)=hah^{-1}$ and the source action is $a\cdot s=\sigma^{-1}(a)s$. Its kernel is coherent by Theorem 5.24.2 and the finite block-matrix argument in §5.31, L.5. That kernel has zero distinguished stalk, by (J.1). A finite-type sheaf with zero stalk vanishes near that point: each of its finitely many local generators vanishes on some neighbourhood, and their finite intersection works. Shrink accordingly.
+
+Now $P_0$ embeds in its normal localization at every nearby stalk, because no finite power of $h$ kills a nonzero element. Via the just-constructed localized isomorphism, $P_0$ is an actual coherent $E_0$-submodule $M_0\subset M$ on one neighbourhood, with
+
+\[
+\begin{gathered}
+EM_0=M,\quad h:M_0\longrightarrow M_0\\ \text{injective as a }\\ \text{normal-action twisted map}.
+\end{gathered}
+\tag{J.2}
+\]
+
+Every construction used finitely many generators, relations, inverse identities and neighbourhood shrinkings. No arbitrary stalk submodule was assumed to extend coherently without this presentation and torsion check.
+
+#### J.2. The principal support is exactly the actual module support
+
+At every point of this neighbourhood, $\bar M_0=M_0/hM_0$ is finite over the commutative coefficient ring $T=E_0/(h)$. Its actual presentation modulo $h$ makes it a coherent analytic module. The underlying reduced support is analytic: a finite local presentation $T^a\to T^b\to\bar M_0$ has zero cokernel at a point exactly when its constant coefficient matrix is surjective; finite commutative Nakayama proves that equivalence, and the $b\times b$ minors give its analytic complement.
+
+At a stalk,
+
+\[
+\begin{gathered}
+\bar M_{0,p}=0\\ \Longleftrightarrow M_{0,p}=0\\ \Longleftrightarrow M_p=0 .
+\end{gathered}
+\tag{J.3}
+\]
+
+The first forward implication is the actual finite noncommutative Nakayama argument in Corollary 5.20.3.1, since $M_{0,p}$ is finite and $(h)\subset\operatorname{Jac}(E_{0,p})$ by actual elliptic inversion. Its reverse is immediate. For the second equivalence, $M_0$ spans $M$, and the injective localization map in J.1 prevents a nonzero $M_{0,p}$ from becoming zero. Therefore
+
+\[
+ \operatorname{Supp}M
+       =\operatorname{Supp}(M_0/hM_0).
+ \tag{J.4}
+\]
+
+It is equality of reduced sets, not a claim that the two modules or their nonreduced structures coincide. In particular all nilpotent principal relations and all actual supported sections remain in the module; none was discarded to prove this equality. A different finite actual order-zero lattice gives the same reduced support by the same proof.
+
+This is the support of an actual finite-order $E$-module. For an ordinary $\mathscr D$-module, the characteristic support defined as the support of its finite-order $E\otimes_{\mathscr D}-$ realization falls under the same statement after that realization is supplied. If some other convention first forms an infinite-order or microfunction extension, equality with (J.4) is a separate extension-faithfulness assertion; this argument does not prove it.
+
+#### J.3. An arbitrary actual holonomic germ meets the finite principal-fibre premise
+
+Suppose now that the given coherent $E$-module is holonomic, meaning that its reduced actual support $A$ is a homogeneous analytic Lagrangian germ. Regular holonomicity is allowed, but no regularity is needed for this paragraph. Apply Q.1–Q.7 to this whole reduced germ and to its actual module: the explicitly proved contact shear and actual symbol isomorphism put $A$ in generic position, and transport the actual lattice (J.2). By (J.4), its principal support is the transformed $A$.
+
+On $\tau=1$, the fibre $\{u=0\}$ meets that principal support only at $z=0$ in a sufficiently small neighbourhood. The finite analytic module
+
+\[
+\begin{gathered}
+V=(M_0/hM_0)\\ {}\otimes_{\mathbf C\{u,z\}}\mathbf C\{z\}
+\end{gathered}
+\tag{J.5}
+\]
+
+therefore has support contained in that one point. This follows directly by tensoring the finite presentation: at any other fibre point the original module is zero, so its tensor fibre is zero. If $V=0$ the conclusion is immediate. Otherwise take a finite presentation with $b$ target generators. Its maximal-minor ideal has zero set equal to that support by the rank/Nakayama argument in J.2. Each such minor annihilates $V$: the adjugate of its selected square relation matrix puts its determinant times every target basis vector in the relation image. The analytic Nullstellensatz in J.0 consequently puts a power of the maximal ideal $(z)$ in this minor ideal and hence in $\operatorname{Ann}V$. To justify the power step explicitly, each $z_i$ has some power in that ideal; a monomial of degree greater than the sum of those exponents minus $d$ must contain one of them. Every convergent series of that degree or higher is a finite sum of the degree-bound monomials times convergent series: group each Taylor monomial by a chosen degree-bound divisor; absolute convergence is retained by taking a subseries and a fixed monomial shift. Hence the stated power of $(z)$ annihilates $V$. Its finite generating list multiplied by the monomials below that degree spans it over $\mathbf C$, by finite Taylor remainder. If $d=0$, the coefficient ring is $\mathbf C$ already and finite generation gives the conclusion directly. Thus $V$ is finite dimensional. Nonreduced fibres are included.
+
+The precise actual premise of §5.29, G.1 has now been established for this arbitrary coherent holonomic germ, after the proved contact reduction. Consequently §5.29, G.1 gives its faithful finite coordinate-commuting-ring realization, §5.30, F.1–F.7 give the actual finite-order tensor reconstruction and polynomial-submodule stability, and §5.31, L.1–L.6 give its bounded polynomial-matrix resolution of length $2d+1$ on one whole conic chart over a common base neighbourhood. These are actual finite-order conclusions for the entire assigned germ, rather than a supplied-lattice special case.
+
+#### J.4. Scope retained
+
+J.1 constructs a finite order-zero lattice. It does not make that lattice stable under the characteristic-vanishing order-one subalgebra, and it makes no assertion about the canonical order cutoff. Q.7 transports a regular invariant lattice wherever the actual definition supplies one; this is separate from the general lattice existence above.
+
+For an arbitrary actual regular holonomic module, the remaining C1 input is still substantial: the infinite-order comparison, convergent sectorial kernel action and relative vanishing, continuation and separation at singular support, infinite-order linearity, faithful finite D-type embedding, regular finite-pole recovery and intrinsic microlocal order correspondence remain unproved. The coefficient-lattice theorem in §5.27 starts after that faithful finite-pole realization and cannot be used to assume it.
+
+![The finite lattice construction and exact reduced-support comparison](assets/actual-lattice-support-interface.png)
+
+*The two finite neighbourhood checks construct an actual coherent lattice inside the module. The support equality is an equality of reduced sets; the entire module and its nilpotent principal structure remain. Proof: §5.32, J.1–J.3 and equations (J.2)–(J.5). Free reading: Kashiwara–Kawai, [HolIII](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), I.1.13 and III.5.5.*
+
+
+### 5.33. A convergent negative-order polynomial kernel complex
+
+The bounded actual polynomial-matrix resolution of §5.31 gives a common-domain ordinary analytic Volterra kernel complex. We prove its signs, radii and multiplicativity explicitly. [§§5.34–5.37](#5-34-full-current-resolutions-and-controlled-proper-image-comparison) supply the canonical finite polynomial line-cone ring and its action on the unrestricted degree-one directional quotient, with complete current, cup/excision and collar proofs.
+
+#### K.1. One exact rescaling makes every differential negative
+
+Use homological degree $j$, with a differential $P_j$ from the $j$-th free term to the $(j-1)$-st. All entries of $P_j$ lie in $R_0$ and have total symbol order at most zero. Replace every free basis in degree $j$ by $h^j$ times that basis; over $E$ these are invertible basis changes. The new differential is
+
+\[
+\begin{gathered}
+Q_j=h^j\circ P_j\circ h^{-(j-1)}\\ =\sigma^j(P_j)\circ h,\\ \operatorname{ord}Q_j\le-1 .
+\end{gathered}
+\tag{K.1}
+\]
+
+The normal automorphism $\sigma$ is the actual one in §5.22.1 and §5.30, F.1 and preserves $R_0$. Every entry can consequently be written as a finite polynomial
+
+\[
+\begin{gathered}
+Q=\sum_{\beta\in B}a_\beta(u,h)z^\beta h\\ =\sum_{\beta\in B}\sum_{n\ge0}\\ a_{\beta,n}(t,x)h^{n+|\beta|+1}\partial_x^\beta,\\ |a_{\beta,n}|\le B_\beta C_\beta^n n! .
+\end{gathered}
+\tag{K.2}
+\]
+
+The first sum has finite $B$, the common coefficient domain is actual, and right multiplication by the cotangent polynomial is ordinary normal multiplication. The inverse basis changes show exactness of the rescaled free $E$-complex. Moreover
+$Q_j\circ Q_{j-1}=h^j\circ(P_j\circ P_{j-1})\circ h^{-(j-2)}=0$,
+with row-vector map composition understood as in §5.31, L.8. If $Q_j$ is an $r_j\times r_{j-1}$ matrix, its action on column function vectors runs from length $r_{j-1}$ to length $r_j$. Thus the function complex runs in the opposite direction to the free resolution, and $\mathcal V_{Q_j}\mathcal V_{Q_{j-1}}$ is well typed. No differential sign has been changed.
+
+#### K.2. A convergent analytic kernel with an explicit radius
+
+For the coefficient of $\partial_x^\beta$, define
+
+\[
+\begin{gathered}
+K_\beta(t,s,x)=\\ \sum_{n\ge0}a_{\beta,n}(t,x)\\ \frac{(t-s)^{n+|\beta|}}{(n+|\beta|)!}.
+\end{gathered}
+\tag{K.3}
+\]
+
+On a fixed compact coefficient domain and for $C_\beta|t-s|<1$, this converges absolutely and uniformly on smaller compacts, with
+
+\[
+ |K_\beta(t,s,x)|
+ \le \frac{B_\beta|t-s|^{|\beta|}}
+                       {1-C_\beta|t-s|}.
+ \tag{K.4}
+\]
+
+Indeed $n!/(n+|\beta|)!\le1$ and the geometric sum proves the bound. On a compact with $C_\beta|t-s|\le r<1$, termwise holomorphy and uniform convergence make the sum holomorphic in $(t,s,x)$. Fixed derivatives have bounds on a smaller common product by the Cauchy formula. The finite number of coefficients in all $Q_j$ permits one coefficient-domain intersection and one radius $\eta>0$ with $C_\beta\eta<1/2$ for every one of them.
+
+Choose a convex $t$-disc of diameter less than $\eta$ and a fixed anchor $a$ in it, independent of $x$. For a holomorphic function $f$ on the product with a smaller $x$-polydisc, define
+
+\[
+\begin{gathered}
+\mathcal V_Qf(t,x)\\ =\sum_{\beta\in B}\int_a^t\\ K_\beta(t,s,x)\,\partial_x^\beta f(s,x)\,ds .
+\end{gathered}
+\tag{K.5}
+\]
+
+The path is the straight segment in that convex disc. Bounds (K.4), finite $B$ and fixed Cauchy derivative bounds for $f$ give absolute uniform convergence on smaller compacts. The integral is holomorphic, either by its segment parametrization and differentiation on compacts or the primitive theorem for a holomorphic integrand in $s$ with holomorphic parameters. The anchor contributes no $x$-derivative terms.
+
+This normalization agrees with
+$h^m f=\int_a^t(t-s)^{m-1}f(s)/(m-1)!\,ds$
+for a pure negative integer power, with positive orientation from $a$ to $t$. In particular $\partial_t h f=f$. There is no residue normalization or $(2\pi i)$ factor in this ordinary Volterra action. The relation $h\partial_t f=f-f(a,x)$ explains why this action is asserted for the negative-power algebra, not as an action of the full localized ring containing $\partial_t^{-1}$ as a two-sided inverse.
+
+#### K.3. The analytic kernel product is exactly the actual symbol product
+
+For two actual symbols with finite polynomial $\partial_x$ dependence and only strictly negative $\partial_t$ powers, the action (K.5) preserves their product on a sufficiently small common convex product. We prove this, rather than regard it as a formal operator manipulation.
+
+First consider individual terms
+$P=p(t,x)h^m\partial_x^\beta$ and
+$Q=q(t,x)h^l\partial_x^\gamma$,
+where $m,l\ge1$. Distribute the finite $\partial_x^\beta$ derivative in the iterated integral, giving terms indexed by $\nu\le\beta$ with coefficient $\binom{\beta}{\nu}\partial_x^\nu q(s,x)$ and derivative $\partial_x^{\beta-\nu+\gamma}f$. On a smaller coefficient domain expand that coefficient at $t$:
+
+\[
+\begin{gathered}
+\partial_x^\nu q(s,x)\\ =\sum_{k\ge0}\frac{(-1)^k}{k!}\\ \partial_t^k\partial_x^\nu q(t,x)(t-s)^k .
+\end{gathered}
+\tag{K.6}
+\]
+
+Choose the convex $t$-disc still smaller than a fixed Taylor radius of the larger coefficient domain. This is uniformly convergent for all segments at issue. Absolute convergence justifies interchanging the integrals, putting their ordered triangle in the real parameters $0\le r\le q\le1$, with $v=a+r(t-a)$ and $s=a+q(t-a)$. This specifies an oriented complex segment without ordering complex numbers. The exact integer beta integral is
+
+\[
+\begin{gathered}
+\int_v^t\frac{(t-s)^{m+k-1}(s-v)^{l-1}}{(m-1)!(l-1)!k!}\,ds\\ =\binom{m+k-1}{k}\\ \frac{(t-v)^{m+l+k-1}}{(m+l+k-1)!}.
+\end{gathered}
+\tag{K.7}
+\]
+
+For justification, substitute $s=v+\theta(t-v)$; the scalar real integral
+$\int_0^1(1-\theta)^{m+k-1}\theta^{l-1}d\theta$
+equals $(m+k-1)!(l-1)!/(m+l+k-1)!$ by integration by parts and induction on the two positive integers. Thus (K.7) holds for every complex segment with the declared orientation.
+
+Multiplying by the sign in (K.6), its coefficient is
+$(-1)^k\binom{m+k-1}{k}=\binom{-m}{k}$.
+Together with $\binom{\beta}{\nu}$, these are precisely
+$\partial_\tau^k(\tau^{-m})/k!$ and the finite $\xi$-derivative coefficients of $\xi^\beta$ in the actual normalized Leibniz product. Consequently the convolution kernel is the kernel of $P\circ Q$, with the correct derivative $\partial_x^{\beta-\nu+\gamma}$ and negative $\partial_t$ exponent $m+l+k$. Every contraction, including all $\tau,t$ contractions, is retained.
+
+For arbitrary actual coefficients in (K.2), the kernels converge uniformly on a common smaller product by K.2, and their finite base derivative orders have the same property by Cauchy estimates. Their iterated integrals are uniformly absolutely convergent, so convolution passes to the infinite negative-power sums. Alternatively compare their Taylor coefficients in $t-v$: at a fixed power only finitely many homogeneous indices and $k$ occur, so the calculation above proves each coefficient identity. The complete actual product theorem §5.19 puts the symbol product in the factorial class, whose kernel is analytic on a smaller product by K.2. Two analytic kernels with those identical Taylor coefficients coincide there. It follows that
+
+\[
+ \mathcal V_P\mathcal V_Q=\mathcal V_{P\circ Q}
+ \tag{K.8}
+\]
+
+on the stated holomorphic functions, with their finite $\partial_x$ derivatives, on a common smaller convex product. The same proof applies to matrices, with coefficient order retained.
+
+In particular the finitely many rescaled matrices (K.1) give an actual holomorphic kernel complex:
+$\mathcal V_{Q_j}\mathcal V_{Q_{j-1}}=0$.
+This is a convergent matrix identity, not a claim that its holomorphic solution evaluation is faithful on $M$.
+
+#### K.4. What remains at the next analytic interface
+
+The common-domain convergent kernels above supply the negative-order integral matrices of the finite polynomial construction. [§§5.34–5.37](#5-34-full-current-resolutions-and-controlled-proper-image-comparison) prove their canonical classes in $\mathcal E(G;D)$ for the actual line cone, ring composition and action on every unrestricted-growth degree-one directional germ class, with the exact residue/trace signs and all sheaf support maps. Identification with the full kernel ring $E_R$, the full convergent-$z$ $E$ ring and arbitrary derived relative action remain required. Sectorial propagation, continuation and separation at singular support remain separate obligations.
+
+One finite algebraic observation may reduce that later proof's flatness requirements. Off the actual support, the bounded free $E$-complex in §5.31 is acyclic. A bounded acyclic complex of projective modules is split contractible: beginning at its lowest nonzero degree, split the surjection onto that projective term; its kernel is a direct summand of the next projective term, hence projective, and repeat finitely. The chosen splittings give a contracting homotopy. Any ring extension preserves that homotopy after tensoring. Thus, once the actual ring-to-kernel-stalk map is proved, that particular bounded complex remains acyclic off support after extension without requiring a general flatness theorem. This observation neither proves the ring map nor proves extension-faithfulness or the infinite-order comparison on $M$ itself.
+
+The faithful finite D-type embedding, regular finite-pole passage, microlocal order comparison, C1 and arbitrary proper analytic regularity remain open.
+
+![The oriented parameter triangle and exact negative-order kernels](assets/negative-polynomial-kernels.png)
+
+*The triangle uses real parameters along the oriented complex segment from $a$ to $t$. Every mixed derivative contraction and factorial denominator is retained. Proof: §5.33, K.1–K.3 and equations (K.1)–(K.8). The ordinary action has no assigned residue or trace normalization. Free reading: Kashiwara–Kawai, [HolIII](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), III.1–III.3 and IV.3–IV.4.*
+
+
+
+### 5.34. Full current resolutions and controlled proper-image comparison
+
+#### R.1. Complexes, supports and the coefficient convention
+
+Let M be a Hausdorff second-countable complex manifold of complex dimension m, and let L be a holomorphic vector bundle of finite rank. In the applications, M is an open product in two or three sets of N complex coordinates and L is the holomorphic line of input top forms. Dolbeault degree refers to **all complex coordinates of M**, including output coordinates. A complex constrained to remain holomorphic in output variables is not the complex considered here.
+
+Write A_L^q for smooth (0,q)-forms with coefficients in L and D_L^q for distributional (0,q)-forms with coefficients in L, q=0,…,m. Distributional means that each coefficient is a continuous linear functional on compactly supported smooth density test sections; in a coordinate box and a holomorphic frame it is the ordinary scalar distribution on that box. All sheaves are sheaves of complex vector spaces. Put
+
+    δ(∑_I u_I dbar z_I ⊗η)=∑_{j,I}(∂_{bar z_j}u_I)dbar z_j∧dbar z_I⊗η,
+    ∂_{bar z_j}=(∂_{a_j}+i∂_{b_j})/2,  z_j=a_j+ib_j.
+
+The ordered multiindices I are increasing. A holomorphic change of frame commutes with δ, so this defines a global differential and δ²=0. There are augmented complexes
+
+    0→O(L)→A_L^0→…→A_L^m→0,
+    0→O(L)→D_L^0→…→D_L^m→0,                         (R.1)
+
+and their inclusion j:A_L^*→D_L^*. The map O(L)→D_L^0 sends a holomorphic section to its locally integrable coefficient distribution. R.2–R.4 prove exactness and a local homotopy for j.
+
+The coefficient frame η is ungraded. If it is a holomorphic differential form, its full exterior realization is
+
+    J_q(α⊗η)=α∧η.                                   (R.2)
+
+This is the antiholomorphic-first convention and satisfies Jδ=∂bar J. This section does not put η in a shifted degree and does not define fibre integration. R.8 records the precise conversion to full exterior products.
+
+For a continuous map p:M→B between the manifolds occurring here, define p_!F as the sheaf whose sections over U⊂B are sections of F on p^{-1}U with support closed in p^{-1}U and proper over U. Proper means that the inverse image in that support of every compact subset of U is compact. Restriction to a **base open subset** preserves this property. Restriction to an arbitrary source open subset need not preserve it; R.7 instead uses controlled extension by zero. The functor p_! is left exact: kernels and finite limits retain their closed support inside a proper support.
+
+#### R.2. The one-coordinate fundamental solution and its parameter version
+
+On C, set E(z)=1/(πz), interpreted as a locally integrable distribution. It is locally integrable because the integral of |z|^{-1} on a radius-r disc is 2πr. For a compactly supported smooth test function φ,
+
+    ⟨∂bar E,φ⟩=−(1/π) lim_{ε→0}∫_{|z|>ε}(1/z)∂bar φ da db=φ(0).   (R.3)
+
+Indeed, Green's formula ∫∂bar f da db=(1/(2i))∮f dz follows by expanding ∂bar=(∂a+i∂b)/2 and applying the one-real-variable fundamental theorem to rectangles, then to a domain by subdivision. Apply it to φ/z off the deleted disc. The outer boundary is zero. The inner boundary is clockwise and tends to −2πiφ(0), whereas its difference from −2πiφ(0) is O(ε) by the mean-value bound for φ. Thus the integral in (R.3) tends to −πφ(0). This proves ∂bar E=δ_C with the indicated π and sign.
+
+Choose discs P_j⊂C and smaller concentric discs Q_j with closure contained in P_j. Pick χ_j∈C_c^∞(P_j), equal to 1 on an open neighbourhood of closure Q_j. Let P=∏P_j and Q=∏Q_j. For a distribution u on P, define partial convolution
+
+    T_j u=E *_j(χ_j u),     P_j u=E *_j((∂bar_jχ_j)u).             (R.4)
+
+The notation P_j for an operator is distinguished by its argument from the coordinate disc P_j. Multiplication by χ_j cuts off only the j-th coordinate; the other coordinates remain distributional parameters. Extend by zero only in that coordinate before convolution. The result is defined on C×∏_{k≠j}P_k and can be restricted to Q_j×∏_{k≠j}P_k.
+
+To make (R.4) precise, transpose the partial integral against a compact test function φ(z_j,z_hat). For example, T_j pairs u with
+
+    χ_j(ζ_j)∫_C E(z_j−ζ_j)φ(z_j,z_hat) da_j db_j.
+
+This is smooth in ζ_j and z_hat, has compact support in ζ_j from χ_j, and has compact support in z_hat from φ. Smoothness follows by moving every derivative to φ in convolution with the locally integrable E. Thus it is a valid distributional test function. The same construction with ∂bar_jχ_j defines P_j. This also proves continuity on bounded test-function sets and defines the operators for arbitrary distributional parameters. Finite iterated convolutions in different coordinates are legitimate: their transposed tests are compact and smooth in the integrated coordinates, and repeated integration gives the same product kernel. Fubini here concerns smooth compact tests paired with locally integrable kernels, with absolute integrability near their independent singularities.
+
+On Q_j×∏_{k≠j}P_k, the following identities hold distributionally:
+
+    ∂bar_j T_j u=u,       T_j∂bar_j u=u−P_j u,       ∂bar_jP_j u=0.       (R.5)
+
+The first follows from (R.3) and χ_j=1. For the second, use
+
+    χ_j∂bar_j u=∂bar_j(χ_ju)−(∂bar_jχ_j)u
+
+and (R.3) under convolution. For the third, use (R.3) again: its derivative equals (∂bar_jχ_j)u, which vanishes on Q_j. These calculations follow on tests by integration by parts, so they do not presume that u is smooth. For k≠j, T_j and P_j commute with ∂bar_k. The operators in distinct coordinates commute, with restrictions to the corresponding smaller boxes understood.
+
+Both T_j and P_j preserve smoothness. For T_j, every derivative can be transferred to the compactly supported smooth coefficient χ_ju in the j-th variable; derivatives in the other variables are ordinary derivatives of that coefficient. For P_j, when the output coordinate is in Q_j, the support of ∂barχ_j is a positive distance from it. The kernel E(z_j−ζ_j) is then smooth and holomorphic in z_j. A distribution in the remaining coordinates may still remain, which is exactly what the parameter construction allows.
+
+#### R.3. The explicit multivariable contraction
+
+Let ε_j mean left exterior multiplication by dbar z_j and let ι_j be its standard contraction:
+
+    ι_j(dbar z_{i_1}∧…∧dbar z_{i_q})
+      =∑_{r=1}^q(−1)^{r−1}δ_{j,i_r}
+         dbar z_{i_1}∧…∧omit(dbar z_{i_r})∧…∧dbar z_{i_q}.
+
+Then ε_jι_j+ι_jε_j=1 and, for j≠k, ε_kι_j+ι_jε_k=0. Put
+
+    h_j=T_jι_j,       π_j=(1−ε_jι_j)P_j.                       (R.6)
+
+Here P_j acts coefficientwise and 1−ε_jι_j deletes every component containing dbar z_j. On the appropriate partially shrunken box,
+
+    δh_j+h_jδ=1−π_j,       δπ_j=π_jδ.                         (R.7)
+
+For verification, write a form as a+ε_jb with neither a nor b containing dbar z_j. The j-th contribution to δh_j+h_jδ is
+
+    T_j∂bar_j a+ε_j∂bar_jT_jb=a−P_ja+ε_jb,
+
+by (R.5). Every k≠j contribution cancels by ε_kι_j+ι_jε_k=0 and commutation of ∂bar_k with T_j. This proves the first formula. The second follows because π_j annihilates ε_j-components, its surviving coefficients are ∂bar_j-closed by (R.5), and it commutes with every other coordinate differential. The maps π_i and π_j commute, including their exterior deletion operators.
+
+Define
+
+    Π=π_1…π_m,
+    H=h_1+π_1h_2+π_1π_2h_3+…+π_1…π_{m−1}h_m.               (R.8)
+
+Every term is applied from P to a partially smaller product and finally restricted to Q. The cutoffs depend on separate coordinates, so no unannounced common-domain choice is involved. Telescoping (R.7) gives the actual chain identity
+
+    δH+Hδ=restriction_{P→Q}−Π.                              (R.9)
+
+The image of Π is zero in every positive form degree: every nonempty multiindex contains a coordinate deleted by one π_j. In degree zero its coefficients are given by the full product kernel
+
+    Πu(z)=⟨u(ζ), ∏_{j=1}^m E(z_j−ζ_j)∂barχ_j(ζ_j)⟩.        (R.10)
+
+All ζ-coordinates have compact support in their respective cutoff annuli; all output coordinates are separated from those annuli. The paired test is therefore smooth, compactly supported in P, and holomorphic in every z_j∈Q_j. Pairing a distribution with this parameterized test is smooth, with derivatives obtained by differentiating the test. It is holomorphic because all its ∂bar_j derivatives vanish. Consequently Πu is an ordinary smooth holomorphic function on Q, without any growth hypothesis on u. The same statements apply componentwise in a holomorphic bundle frame.
+
+For a positive-degree closed current ω, (R.9) gives ω|Q=δHω. For a degree-zero current with δω=0, Hω=0 and (R.9) gives ω|Q=Πω, which is smooth and holomorphic by (R.10). Conversely every holomorphic coefficient is δ-closed. This proves exactness of both complexes (R.1), including identification of degree-zero distributional solutions with O(L). The proof is local on arbitrary coordinate products and hence proves sheaf exactness. It never assumes a distributional version of the assertion being proved.
+
+#### R.4. Local comparison of smooth forms and currents
+
+The inclusion j commutes with δ and with restriction. The operator Π takes currents to smooth forms (only degree zero survives), is a chain map, and is the identity on holomorphic closed sections after restriction. Equation (R.9), applied to currents and separately to smooth forms, states
+
+    jΠ−restriction=−(δH+Hδ),
+    Πj−restriction=−(δH+Hδ).                               (R.11)
+
+Thus j has the explicit local homotopy inverse Π. These are local maps from an outer product to a smaller product, rather than global support-preserving maps. They suffice for exactness and the sheaf quasi-isomorphism. Their spreading of supports is harmless for that claim. Proper-image comparisons below use a different support argument and never silently apply H to a fixed supported class.
+
+#### R.5. A self-contained acyclicity proof for C∞-module sheaves
+
+Let A=C_M^∞. Each A_L^q and D_L^q is an A-module by smooth multiplication. Multiplication need not commute with δ; acyclicity is an assertion about the individual sheaves, not A-linearity of the Dolbeault differential.
+
+We first give enough injectives in the category of sheaves of complex vector spaces. For any such sheaf F, put
+
+    G(F)=∏_{x∈M} i_{x*}F_x,
+    G(F)(U)=∏_{x∈U}F_x.                                   (R.12)
+
+The natural map a_F:F→G(F) sends a section to its germs and is injective. Each i_{x*}V is injective: a sheaf map F→i_{x*}V is precisely a linear map F_x→V; stalks preserve exact sequences, and a linear map from a subspace extends to the whole vector space by extending a basis. Products of injectives are injective because maps into the product are the product of the individual maps, and products of surjective linear maps are surjective. Thus G(F) is injective.
+
+The functor G is exact: for every U its sections are a product of the exact stalk sequences. Define Q(F)=G(F)/a_F(F), Q^0(F)=F, and
+
+    I^r(F)=G(Q^r(F)),
+    d_I:I^r(F)→Q^{r+1}(F)→G(Q^{r+1}(F)).                  (R.13)
+
+The first arrow is the quotient and the second is its germ embedding. The augmented complex 0→F→I^0(F)→I^1(F)→… is exact by this construction and has injective terms. Q is exact: in a short exact sequence, apply the exact G to obtain a diagram with injective vertical germ maps; taking cokernels is exact by a direct diagram chase. In detail, a cokernel class mapping to zero lifts to the middle G-term; its image is an original section in the right term; lift that original section, subtract its germ vector, and the resulting class comes from the left term. Surjectivity follows from surjectivity in the two right columns. Hence every functor I^r=GQ^r is exact.
+
+When F is an A-module, the stalk products in (R.12) are naturally A-modules, by the germ of a smooth function acting at each point. The augmentation, quotient maps and the differentials in (R.13) are A-linear. The underlying injective assertion remains the assertion in the category of complex-vector sheaves. This furnishes an actual injective resolution whose terms and column differentials carry the needed A-module structure.
+
+Here is the support-preserving lifting argument. In an exact complex of A-modules with A-linear differentials, let c be a cocycle section with compact support K. At each x∈K, stalk exactness gives a primitive v_x on a neighbourhood U_x. For any prescribed open O containing K, shrink U_x to relatively compact coordinate neighbourhoods in O and choose a finite subcover of K. Choose smooth bumps ψ_i supported compactly in these U_i and positive on a covering of K. Put ψ=∑ψ_i, and choose a smooth compactly supported η in {ψ>0} equal to 1 near K. Such bumps are obtained in a real coordinate ball from exp(−1/(1−|r|²)) inside the ball and zero outside, followed by rescaling and finite sums. Then
+
+    ρ_i=ηψ_i/ψ,       v=∑_i extension_by_zero(ρ_i v_i)        (R.14)
+
+are well defined, smooth-multiplication expressions. Every ρ_i has compact support inside U_i. The differential is A-linear, so dv=(∑ρ_i)c=ηc=c. The primitive has compact support contained in O. This is the exact support assertion: the primitive can enlarge K inside a chosen compact neighbourhood, but it need not stay inside K or a fixed singular support.
+
+For an unrestricted section c, use a locally finite version of the same construction. To obtain it, choose a countable precompact coordinate cover and a compact exhaustion K_n⊂int K_{n+1}. Cover each compact shell K_n\int K_{n−1} by finitely many coordinate neighbourhoods with closures in int K_{n+1}\K_{n−2}. The resulting collection is locally finite. Choose positive bumps on a covering refinement; their locally finite sum is positive everywhere. Division by that sum gives a smooth partition of unity. The locally finite sum in (R.14) then gives a global primitive. This proves Γ-acyclicity of A-module sheaves using the actual injective resolution (R.13), rather than an unproved fine-sheaf assertion.
+
+For p_! acyclicity assume p is smooth, as all projections in the application are, and take a stalk b∈B and a positive-degree cocycle c represented in p_!I^r(F) over a base neighbourhood U. Its support S is closed and proper over U. Choose V containing b with compact closure in U and choose θ∈C_c^∞(U), θ=1 near closure V. The section θ∘p times c has compact support, because it is supported in S∩p^{-1}(supp θ), which is compact by properness. Apply (R.14) on p^{-1}U to obtain a compactly supported primitive v. Restrict it to p^{-1}V. Its support is closed there and proper over V: over a compact C⊂V it is the closed subset supp(v)∩p^{-1}C of a compact support in p^{-1}U. The differential of this restricted primitive is c on p^{-1}V. Thus every positive-degree stalk cohomology class of p_!I^*(F) is zero; degree zero is p_!F by left exactness. Therefore
+
+    R^r p_!F=0 for r>0, for every C∞_M-module F.           (R.15)
+
+Only a base shrink is used, which is permitted in a sheaf assertion. A support remains proper; no growth, fibre-radius estimate or globally uniform support bound is presumed. The same proof applies to any smooth p between the local manifolds here, not only projections, because θ∘p is smooth. Ordinary global Γ corresponds to the unrestricted partition argument; compact Γ_c corresponds to (R.14).
+
+There is also an actual Čech homotopy preserving a **fixed common** closed support S. Let (U_i) be a locally finite cover with subordinate smooth partition (ρ_i). In alternating Čech degree r use cochains whose every component on U_{i_0…i_r} is supported in S∩U_{i_0…i_r}, with augmented degree -1 equal to Γ_S(M,F). Define
+
+    (h_Cech c)_{i_0…i_{r−1}}=∑_j extension_by_zero(ρ_j c_{j i_0…i_{r−1}}).
+
+The extension is inside U_{i_0…i_{r−1}}; its support is closed inside the j-th open set because supp ρ_j⊂U_j. Local finiteness makes the sum a section, and each summand vanishes outside S. The alternating differential Δ gives Δh_Cech+h_CechΔ=1: expand
+
+    (Δc)_{j i_0…i_r}=c_{i_0…i_r}+∑_{k=0}^r(-1)^{k+1}c_{j i_0…omit(i_k)…i_r};
+
+after multiplication by ρ_j and summation the first term is c, and the remaining terms cancel Δh_Cech c. In augmented degree -1, h_CechΔ=1. This works for every C∞ module, including currents. For the family of proper supports, take the filtered union over common proper S; finite unions are proper and the homotopy preserves each S. An unrestricted product of components with merely individually proper supports is different and is not used: their supports can escape to infinity even for B a point. This supplementary homotopy is not needed to identify Čech cohomology with derived cohomology; the injective proof above establishes acyclicity independently.
+
+#### R.6. The acyclic-resolution comparison, with chain maps
+
+Let C^q be either complex A_L^q or D_L^q, 0≤q≤m. Apply the exact functors I^r of R.5 to its terms and differential, forming
+
+    B^{q,r}=I^r(C^q),
+    d_T|B^{q,r}=I^r(δ)+(-1)^q d_I,
+    T^k=⊕_{q+r=k}B^{q,r}.                                 (R.16)
+
+The sum is finite for each k. The two differentials commute before insertion of (-1)^q, hence d_T²=0. Every T^k is injective. Define the chain augmentation
+
+    a_C:C^q→T^q,   a_C(c)=a_{C^q}(c) in B^{q,0}.            (R.17)
+
+It commutes with δ by naturality and its vertical derivative is zero. There is also a chain map a_L:I^*(O(L))→T^* induced by O(L)→C^0, in the column q=0.
+
+Before applying p_!, vertical exactness shows that a_C is a quasi-isomorphism. Horizontal exactness after applying each exact I^r to (R.1) shows that a_L is a quasi-isomorphism. Both assertions can be checked by the following finite elimination, without invoking a spectral-sequence theorem. In a cocycle of total degree k, start with the smallest q that occurs. Its component of vertical degree r=k−q is vertically closed, since the preceding q-component is zero. If r>0, solve its vertical equation, subtract the total boundary of that solution with the factor (-1)^q, and thereby remove that component. Only the next q-component can be introduced. Repeat; there are at most m+1 q-components. The survivors lie in vertical degree zero and in the augmented source. For the horizontal comparison, run the same procedure with r first; the relevant diagonal has only finitely many components. Injectivity is proved by applying the same removal to a purported boundary primitive. Thus T is an injective complex representing the same holomorphic sheaf as either resolution.
+
+After p_!, each vertical column p_!I^*(C^q) has cohomology p_!C^q in degree zero and zero above by (R.15). Consequently the actual chain map
+
+    p_!a_C:p_!C^*→p_!T^*                                (R.18)
+
+is a quasi-isomorphism. To verify this explicitly, apply the finite elimination just described to a total cocycle over a base neighbourhood. When a vertical component of positive degree is closed, R.5 provides a primitive after shrinking the base around the stalk under consideration, with proper support. Only finitely many components are removed; intersect the finitely many smaller base neighbourhoods. Multiplication by the column sign (-1)^q yields the required boundary correction. If k>m all components disappear. If k≤m, the last possible component has r=0; vertical closure puts it in the image of p_!C^k by left exactness. The total cocycle condition says its C-differential is zero. For injectivity, if a_C(z)=d_Tt, remove the least-q positive-r components of t by the same procedure; the right side has only q=k,r=0, so those least-q components are vertically closed. The remaining t lies at q=k−1,r=0 and vertical closure puts it in a_C(p_!C^{k−1}); hence z is a C-boundary. This proves (R.18) on every stalk, including all support conditions.
+
+The injective augmentation I^*(O(L))→T provides the usual derived comparison, so (R.18) identifies p_!A_L^* and p_!D_L^* with Rp_!O(L). Here Rp_! is defined using injective complexes; the explicit injective model (R.13) makes that definition concrete. For completeness, a bounded-below exact complex K of injectives has the following actual contraction. Write Z^n=ker d^n. Starting in the bottom degree with Z^n=0, injectivity of Z^n gives a retraction K^n→Z^n. Its complementary summand is isomorphic under d^n to Z^{n+1}, so Z^{n+1} is injective too. Inductively choose sections s^n:Z^{n+1}→K^n and write K^n=Z^n⊕s^nZ^{n+1}. Then
+
+    h^n(z+s^nw)=s^{n−1}z,       dh+hd=1.                  (R.18a)
+
+Apply this to the exact cone of a quasi-isomorphism f:X→Y between bounded-below injective complexes. In the convention Cone(f)^n=Y^n⊕X^{n+1}, d(y,x)=(d_Yy+fx,−d_Xx), the block g:Y^n→X^n of its contraction is a chain map. The equations dh+hd=1 say fg is homotopic to 1 via the Y-to-Y block, and gf is homotopic to 1 via the X-to-X block. Thus f is a chain homotopy equivalence, and applying p_! preserves those homotopies. This gives the claimed inverse for I^*(O(L))→T. No canonical splitting is asserted or needed. It also verifies independence of the injective model without importing a separate acyclic-resolution theorem.
+
+All constructions G,Q,I,a and the induced total maps are natural in C-linear sheaf maps. In particular j:A_L^*→D_L^* gives the commutative square with the two maps (R.18); it induces the identity on O(L) and hence on Rp_!O(L). The cone of j is a bounded exact sheaf complex whose terms are A-modules. Applying the same double-complex elimination to that cone shows that p_!j is a quasi-isomorphism. The support choices in elimination affect a primitive, not the chain maps or the induced derived identification.
+
+The same statement holds for Γ and Γ_c. For Γ, use the unrestricted locally finite partition proof in R.5. For Γ_c, use its compact version. In particular the complexes of global smooth forms and currents compute the same derived ordinary sections, and their inclusion gives the comparison. No fixed-domain higher-cohomology vanishing is asserted for O(L).
+
+#### R.7. Relative supports and controlled open excision
+
+Fix a closed subset S⊂M and let k:M∖S→M be its open inclusion. Define the sheaf complex
+
+    C_S^q(D)=D_L^q ⊕ k_*D_{L|M∖S}^{q−1},
+    d(a,b)=(δa, a|M∖S−δb),                               (R.19)
+
+with negative-degree terms zero; use the same definition with A in place of D. This is the explicit shifted-cone convention used throughout this section. This section only proves the resolution/excision comparison for that convention, rather than its connecting-map or cup normalization.
+
+Here is the missing elementary identification with the right-derived support functor, so no cone definition substitutes for a comparison. An injective complex-vector sheaf I is flabby. Indeed, for opens V⊂U, let C_V^! and C_U^! be their constant complex sheaves extended by zero to M. The stalkwise injection C_V^!→C_U^! induces, by injectivity,
+
+    Hom(C_U^!,I)→Hom(C_V^!,I) surjective.
+
+These two spaces are Γ(U,I) and Γ(V,I): a map from the constant sheaf is determined by the image of 1, and the extension-by-zero adjunction preserves this description. Thus restriction is surjective. The open restriction k^{-1} also sends injectives to injectives, since Hom(F,k^{-1}I)=Hom(k_!F,I) and k_! is exact on stalks. For an injective resolution I^* of O(L), there is consequently a degreewise exact sequence
+
+    0→Γ_S I^*→I^*→k_*k^{-1}I^*→0,
+
+where Γ_S is the subsheaf of sections vanishing off S. The first complex is the definition of RΓ_S O(L), and the third computes Rk_*O(L|M∖S). The map from Γ_S I^* to the shifted cone of the last restriction sends T to (T,0). Its quotient is the cone of the identity on k_*k^{-1}I^*, with contraction (j,b)↦(b,0); hence the map is a quasi-isomorphism. The same degreewise surjective restriction on global sections identifies the right-derived global supported-section functor with the global relative cone. This proves the local and global support comparisons from the injective definition.
+
+Every sheaf k_*D^{q−1} is a C∞_M-module: multiply by the restriction of a smooth function on M. For an open U⊂M, Γ(U,k_*D)=Γ(U∖S,D). The functor k_* sends injectives to injectives: Hom(F,k_*I)=Hom(k^{-1}F,I), and k^{-1} is exact, as verified on stalks. To check k_*-acyclicity of an individual term, use its injective resolution on M∖S. The stalk at x of its k_*-image complex is the filtered colimit over U containing x of the section complexes on U∖S. Filtered colimits of vector spaces preserve kernels and images: each finite equation or witness to an image already appears at one common later index. Their higher cohomology therefore vanishes by the Γ-acyclicity proved in R.5 on each open U∖S. This proves the individual terms are k_*-acyclic. The same finite double-complex elimination as in R.6 now proves that k_*D^* computes Rk_*O(L|M∖S); it need not be an exact resolution of a sheaf concentrated in degree zero. Thus (R.19) represents the canonical local-support object
+
+    RΓ_S O(L)=Cone(O(L)→Rk_*O(L|M∖S))[-1].               (R.20)
+
+The injective comparison just proved shows this is the right-derived support object, with its support long exact sequence furnished by the short exact sequence of cone complexes. Every term of (R.19) is a C∞ module and is p_!-acyclic by R.5. Applying R.6's bounded-complex comparison therefore gives
+
+    p_!C_S^*(D) represents Rp_!RΓ_S O(L),                  (R.21)
+
+and the smooth/current inclusion is a quasi-isomorphism also in (R.21). For ordinary sections the global cone is exactly
+
+    Γ(M,D^q) ⊕ Γ(M∖S,D^{q−1}),
+
+with the differential displayed in (R.19); it computes supported cohomology via (R.20). A closed current T supported in S maps to (T,0). Neither this map nor (R.21) asserts that every supported-cohomology class admits a current supported in S.
+
+Away from S, (R.19) is the cone of the identity on D^*. It has the explicit contracting homotopy
+
+    h(a,b)=(b,0),   dh+hd=(a,b).                           (R.22)
+
+The same formula works for A. This proves directly that its cohomology sheaves are supported in S.
+
+Now let i:W→M be an open inclusion with S⊂W. Restriction of (R.19) as a sheaf complex is C_S(D)|W=C_S(D|W). Let i_! be extension by zero. On sections, i_!F consists of sections on W whose support is closed in the ambient open set and contained in W; such sections vanish near its boundary and can be extended by zero. It is an exact sheaf functor, as can be checked on stalks: inside W it is the identity and outside W its stalk is zero. Define the literal chain map
+
+    e_W:i_!(C_S(D)|W)→C_S(D)                              (R.23)
+
+by extension by zero. On stalks in W it is the identity. Outside W, S is absent and the target is contractible by (R.22), while the source is zero. Thus e_W is a quasi-isomorphism. Both source and target terms are C∞_M-modules, and its cone is bounded and exact. R.6's elimination, applied to that cone, proves that
+
+    p_!e_W:p_!i_!(C_S(D)|W)→p_!C_S(D)                    (R.24)
+
+is a quasi-isomorphism. Moreover p_!i_!= (p|W)_! on sections. In one direction, extension by zero retains the same closed support and properness. Conversely, a section with proper support T in W vanishes near every boundary point z∈M∖W over the current base open U. To see this, choose a compact base neighbourhood C⊂U of p(z). The set T∩p^{-1}C is compact in W and hence a compact closed subset of M disjoint from z. A neighbourhood of z avoids that set; after also restricting to p^{-1}(int C), it avoids T. Thus zero extension is defined, its support is closed in p^{-1}U, and it remains proper. The identity does not claim that an arbitrary properly supported source section can be restricted to W. It identifies the properly supported extension-by-zero domain.
+
+Equations (R.23)–(R.24) are the controlled excision roof. They apply whenever the cohomological support is a closed S contained in W; S itself need not be globally compact, and the p_! representatives retain their own proper support. If S is already proper over B, it is the support condition used by a support-to-proper-image morphism. For two neighbourhoods W_1,W_2 of S, put W_12=W_1∩W_2. The extension-by-zero maps from W_12 into W_i and then into M compose literally to e_{W_12}. Each map is a quasi-isomorphism by the same stalk argument. Consequently the two excision identifications agree as morphisms of the injective/derived models from R.6. This supplies the actual comparison maps, rather than presuming that ordinary restriction of proper supports is allowed.
+
+The projection (a,b)↦a is a chain map C_S(D)→D. It defines the support-forgetting morphism and, after p_!, the supported-to-proper-image morphism when the selected representatives have proper support. It commutes literally with (R.23). A closed supported current is sent to the same current. Maps obtained on a smaller base neighbourhood agree on a common base restriction because all sheaf maps here commute with restriction. This is the precise interface needed when the line-cone intersection is proper only after the output has been shrunk.
+
+There is no extension assumption at a singular boundary. If f is holomorphic only on M∖S, even with unrestricted growth toward S, it is a smooth coefficient and a distribution on **that open set**. It is a valid second component of (R.19). This does not extend it as a distribution on M. Any collar used subsequently must stay inside its holomorphic domain; changes of collar and their cup/trace comparisons are the explicit chain statements of [§5.37, W.1–W.7](#5-37-interior-collars-and-the-canonical-directional-action).
+
+#### R.8. Coefficient products and scope
+
+For the [§5.36, U.1–U.5 construction](#5-36-canonical-finite-polynomial-line-cone-kernels), take m=2N on the kernel product or m=3N on the triple product, and take L to be the appropriate holomorphic input top-form line. The local full-normal currents use all output antiholomorphic components, exactly as required by D_L^*. There is no restriction to antiholomorphic fibre variables. The compact segment geometry of U.1 or U.5 is to be checked for the selected closed intersection S and output neighbourhood. Once checked, (R.18), (R.21) and (R.24) are available for the full smooth/current resolution and that controlled support.
+
+Our ungraded coefficient product and full exterior product differ by a declared factor. If η_A has holomorphic exterior degree a and β has antiholomorphic degree q, then
+
+    J((α∧β)⊗(η_A∧η_B))
+       =(-1)^{aq}J(α⊗η_A)∧J(β⊗η_B).                    (R.25)
+
+This follows by moving η_A across β. For two N-dimensional normal-block kernel factors at degree N, the factor is (-1)^{N²}. A raw coefficient integration defined by conjugating actual real fibre integration with J acquires this factor when applied to the ordinary coefficient product rather than the full-block wedge. The factor is explicit. [§5.35, V.3–V.6](#5-35-relative-cones-unshifted-cup-and-the-normalized-trace) proves the coefficient-line identification, fibre orientation and degree-dependent trace map. In the holomorphic-first realization η∧α, the full-form differential is (-1)^aδ, and the tensor permutation gives the usual shifted tensor sign. That is an equivalent convention when those signs are retained throughout.
+
+This section establishes exact full Dolbeault and current resolutions; explicit positive-degree homotopies and degree-zero distributional holomorphicity; their smooth/current comparison; ordinary, compact and properly supported acyclicity; the injective-double-complex comparison; and relative support and controlled excision by extension by zero. The normalized cup and trace are proved in [§5.35, V.1–V.6](#5-35-relative-cones-unshifted-cup-and-the-normalized-trace), the actual finite polynomial kernels in [§5.36, U.1–U.5](#5-36-canonical-finite-polynomial-line-cone-kernels), and the unrestricted-input collar comparison in [§5.37, W.1–W.8](#5-37-interior-collars-and-the-canonical-directional-action). The full convergent-\(z\) \(E\) map, infinite-order and arbitrary derived \(E\) actions, propagation, module separation, finite D-type, finite poles, intrinsic order, full C1 and arbitrary analytic proper regularity remain required.
+
+![Proper neighbourhoods and controlled excision](assets/proper-support-control.png)
+
+*The exact real model has \(p(x,y)=x\), \(S=\{y=x\}\), and closed neighbourhood \(F_r=\{|y|\le\sqrt{1+x^2}+1\}\). Its intersection over every compact base set is compact. Restricting \(S\) to \(W=\{y>0\}\) gives over \([-1,1]\) the noncompact set \(\{(x,x):0<x\le1\}\). Thus arbitrary source restriction need not preserve properness; the extension-by-zero maps (R.23)–(R.24) supply the controlled excision used here. This is an exact model of the support mechanism. Free human comparison: [Kashiwara–Schapira, Micro-hyperbolic systems](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/Microhyp.pdf), §3.1; the complete support proof is R.5–R.7 above.*
+
+### 5.35. Relative cones, unshifted cup and the normalized trace
+
+The full smooth/current and proper-support comparisons are [§5.34, R.1–R.7](#5-34-full-current-resolutions-and-controlled-proper-image-comparison). This section fixes the relative differential, connecting signs, ordered normal calibration and all-degree trace. The input coefficient lines are ungraded before the trace shift. Free human comparison: [Kashiwara–Schapira, Micro-hyperbolic systems](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/Microhyp.pdf), §3.1. Every chain identity used here is proved below.
+
+#### V.1 The actual relative differential and connecting homotopy
+
+Let I be a cochain complex on a manifold M, with differential δ, δ²=0,
+and let r:I(M)→I(M∖Z) be restriction. Define
+
+\[
+\begin{gathered}
+C_Z^q(I)=I^q(M)\\
+\oplus I^{q-1}(M\setminus Z),\qquad\\
+d(a,b)=(\delta a,ra-\delta b).
+\end{gathered}
+\tag{V.1}
+\]
+
+Both components of d² are zero: the second is
+rδa−δra+δ²b=0. This is the fixed model of Cone(r)[−1]; writing merely
+“shifted cone” would not specify its connecting sign. The inclusion of
+supported cochains is T↦(T,0). This is a chain map because rT=0.
+
+For a degree-zero δ-closed section f on the complement, its **positive**
+connecting representative in this convention is c_f=(0,−f), of degree1.
+If a distribution F on M restricts to f, then
+
+\[
+ c_f+d(F,0)=(\delta F,0).
+ \tag{V.2}
+\]
+
+This gives the actual chain homotopy identifying the connecting representative
+with the supported current δF. If F is replaced by F+G, with rG=0, the current
+changes by δG and the relative representative changes by d(G,0). Thus the
+comparison is independent of the extension, whenever such an extension
+exists. We do not assert that an arbitrary holomorphic function of unrestricted
+boundary growth has a distributional extension.
+
+The relative cone's ordinary projection to I(M∖Z)[−1] is (a,b)↦b. Its positive
+connecting convention above corresponds to taking the negative of that
+projection when identifying a complement function with its connecting class.
+That sign is fixed by (V.2), rather than inferred from an exterior permutation.
+
+#### V.2 Tensoring the normal connecting classes
+
+For ordered independent normal coordinates w₁,…,w_N, let C_i be the relative
+complex for the corresponding one-coordinate closed support. Tensor the
+underlying complexes over C, not over the holomorphic coefficient ring. Use the ordinary
+cochain tensor differential
+
+\[
+\begin{gathered}
+d(a\otimes b)=da\otimes b\\
++(-1)^{|a|}a\otimes db.
+\end{gathered}
+\tag{V.3}
+\]
+
+Suppose the one-coordinate functions f_i have extensions F_i, and put
+c_i=(0,−f_i), T_i=(δF_i,0), e_i=(F_i,0). Then T_i−c_i=de_i, and c_i,T_i
+are closed of degree1. The finite telescoping identity is
+
+\[
+\begin{gathered}
+T_1\otimes\cdots\otimes T_N\\
+-c_1\otimes\cdots\otimes c_N=dH,
+\end{gathered}
+\tag{V.4}
+\]
+
+where
+
+\[
+\begin{gathered}
+H=\sum_{i=1}^N(-1)^{i-1}\\
+T_1\otimes\cdots\otimes T_{i-1}\otimes e_i\\
+\otimes c_{i+1}\otimes\cdots\otimes c_N.
+\end{gathered}
+\tag{V.5}
+\]
+
+Indeed, every differential on a c or T factor is zero. The differential on
+e_i has the preceding tensor sign(−1)^{i−1}, which cancels the displayed
+coefficient. The resulting ith term replaces e_i by T_i−c_i. Adjacent
+telescoping terms cancel, leaving exactly(V.4). This proves the product
+comparison for every N, including changes of an individual extension.
+Multiplying by a holomorphic coefficient preserves it: δg=0, so the same
+H multiplied by g has differential g dH.
+
+The tensor-relative top-complement entry of c₁⊗⋯⊗c_N is
+(−1)^N f₁⋯f_N. Thus a statement using the unsigned ordered holomorphic
+representative f₁⋯f_N must declare its identification with this tensor entry;
+its sign is(−1)^N. It may not silently use the ordinary projection sign of
+the cone in(V.1).
+
+Products of the particular currents in U exist because the singular normal
+variables of the two factors are independent. Here is the distributional
+construction. For a tensor of distributions S(a),T(b), choose cutoffs equal
+to1 near the projections of the compact support of a test function φ(a,b).
+Define(S⊠T)(φ)=S_a(T_b(φ)). The inner evaluation is a smooth compactly
+supported function of a. To check this, derivatives in a may be moved inside
+T by continuity in the test-function topology: difference quotients converge
+there with every derivative on one compact set. A continuity bound for T
+and then one for S bounds the value by finitely many derivatives of φ on
+that compact product, so this is a distribution. It is independent of the
+cutoffs. On a third independent variable the two evaluations agree by the
+same construction; testing finite sums of separated test functions and
+approximating a compactly supported smooth function with its rectangular
+Fourier partial sums gives equality on general tests. The Fourier coefficients
+decay faster than every polynomial by repeated integration by parts, so the
+distributional seminorm bounds justify the limit and both evaluation orders.
+The rectangular Fourier expansion is applied inside a box after extending
+the compactly supported test by zero to a larger periodic box. This also
+proves the two-factor order interchange. Leibniz differentiation follows
+by testing and integration by parts. Consequently the exterior tensor map
+commutes with(V.3). Holomorphic parameter coefficients and the finite spatial
+derivatives of U are legitimate under the same seminorm argument.
+
+This proves equality in the specified tensor-relative model. Identifying
+that model with the derived relative support cup still requires the analytic
+resolution/comparison interface; it is not supplied by the existence of the
+distribution tensor product alone.
+
+#### V.3 The ungraded coefficient line and its full-form realization
+
+Let L have holomorphic frame η of holomorphic degree l. Its coefficient
+Dolbeault complex is I_L^q={α⊗η: α has antiholomorphic degree q}, with
+δ(α⊗η)=(∂bar α)⊗η. L is an ordinary degree-zero coefficient sheaf.
+The anti-first realization is
+
+\[
+ J_q(\alpha\otimes\eta)=\alpha\wedge\eta.
+ \tag{V.6}
+\]
+
+It commutes with ∂bar because η is holomorphic and occurs after α. If a has
+antiholomorphic degree p and holomorphic coefficient degree l, and b has
+antiholomorphic degree q, define the unshifted coefficient cup by
+
+\[
+ c(a,b)=(\alpha\wedge\beta)\otimes(\eta_A\wedge\eta_B).
+ \tag{V.7}
+\]
+
+Moving η_A past β gives the exact comparison
+
+\[
+ J(c(a,b))=(-1)^{lq}J(a)\wedge J(b).
+ \tag{V.8}
+\]
+
+The ungraded-line differential satisfies
+δc(a,b)=c(δa,b)+(−1)^p c(a,δb). This is verified by applying the ordinary
+exterior Leibniz rule to α∧β. Formula(V.8) records the extra full-form sign;
+it must not be suppressed by calling a complete block “even”.
+
+Within a kernel, grouping the N normal one-coordinate blocks
+∏_i(∂bar F_i∧dv_i) puts all antiholomorphic factors first with sign
+
+\[
+ (-1)^{N(N-1)/2}.
+ \tag{V.9}
+\]
+
+There are precisely(N−1)+(N−2)+⋯+1 crossings. Together with the ordered
+connecting map(V.2), this specifies the coefficient current of the ordered
+holomorphic input form dv₁∧⋯∧dv_N without a hidden connecting or regrouping
+choice. For a pair of kernels the two(V.9) factors multiply to1, while the
+between-kernel sign(V.8) is(−1)^{N²}.
+
+#### V.4 Proper fibre integration and the all-degree shifted trace
+
+Let p:B×F→B, dim_C F=N, with the complex orientation on the real2N fibre.
+For a smooth full form whose support is proper over B, real fibre integration
+is defined by first inserting all ordered real fibre tangent vectors and
+integrating the coefficient. On a compact subset K of B, properness puts
+the relevant support in a compact subset of K×F; finitely many fibre charts
+and a smooth partition of unity suffice. Derivatives in the base commute
+with integration by differentiation under a compactly supported integral.
+Fibre derivatives integrate to zero by ordinary one-coordinate integration
+by parts. These statements prove, in the vertical-first real orientation,
+
+\[
+ I\,\bar\partial=\bar\partial\,I.
+ \tag{V.10}
+\]
+
+For currents, define the same integral by duality against a compactly
+supported test on B, multiplying its pullback by a cutoff equal to1 near
+the properly supported current over that test's compact support. Such a
+cutoff exists inside finitely many coordinate charts. Changing it does not
+change the value, since the difference vanishes near the current support.
+The distributional differentiation identity follows by this definition and
+integration by parts; it is(V.10). There is no assertion that restriction
+of an arbitrary p!-supported section to an arbitrary smaller open set
+remains p!-supported.
+
+In coefficient notation set I=J_target^{-1} p_* J_source, where the source
+coefficient form orders the intermediate holomorphic block before the
+remaining holomorphic block. The differential on I_source[N] is(−1)^Nδ.
+The trace in degree q of the original complex is
+
+\[
+\begin{gathered}
+\operatorname{Tr}_q=(-1)^{N(q-N)}I_q,\\
+\qquad I_q=0\quad(q<N).
+\end{gathered}
+\tag{V.11}
+\]
+
+It is a chain map I_source[N]→I_target. For q≥N, the left-hand coefficient
+in Tr_{q+1}(−1)^Nδ is
+(−1)^{N(q+1−N)+N}=(−1)^{N(q−N)}, the right-hand coefficient in δTr_q.
+The q<N cases are zero. At the boundary q=N−1, I_N δ is also zero:
+the degree-N vertical contribution is a compactly supported fibre
+antiholomorphic derivative, whose integral vanishes by the just proved
+integration-by-parts identity. At q=N the sign is1, fixing the positive
+one-fibre Cauchy residue normalization.
+
+The definition is invariant under a holomorphic change of intermediate
+coordinates. The holomorphic coefficient block acquires detJ, its
+antiholomorphic block acquires the conjugate determinant, and the real
+complex-oriented integration acquires exactly|detJ|². This follows by
+writing the real linear matrix of a complex matrix; its determinant is
+detJ·conj(detJ), first for triangular matrices and then for an invertible
+matrix by Gaussian elimination. The ordinary real change-of-variables
+formula therefore identifies the two integrals, including the sign.
+Duality extends this equality to the currents just defined. No new residue
+scalar is introduced by a coordinate change.
+
+If the fibre-coordinate change depends holomorphically on the base, a
+full-form lift of its relative holomorphic top block also acquires terms
+containing base holomorphic differentials. Every such term has fibre
+holomorphic degree strictly less than N. The fibre antiholomorphic degree
+is at most N, so its total real fibre degree is strictly less than 2N;
+its fibre integral is zero. This also proves independence of the chosen
+full-form lift of a relative top block. The surviving fibre-top term is
+exactly the determinant term above. The same conclusion holds for
+currents by transposition on compactly supported tests.
+
+For consecutive fibres of dimensions N and M, raw integrations agree with
+integration over the ordered product fibre by repeated integration of the
+compactly supported coefficient. The scalar trace signs satisfy
+
+\[
+\begin{gathered}
+(-1)^{N(q-N)}(-1)^{M(q-N-M)}\\
+=(-1)^{NM}\\
+(-1)^{(N+M)(q-N-M)}.
+\end{gathered}
+\tag{V.12}
+\]
+
+This is a direct expansion of the exponents modulo2. The extra(−1)^{NM}
+is the tensor/shift identification of the two ordered holomorphic fibre
+coefficient blocks; it is not a second residue normalization. The full
+shift calculation is recorded next, so(V.12) does not silently identify
+two different tensor presentations.
+
+#### V.5 Cup first, then shift the intermediate trace coefficient
+
+The operation in U.3 is an **unshifted** cohomological cup of two degree-N
+classes, followed by the trace which lowers degree by N. Thus the cup
+current has q=2N and intermediate holomorphic coefficient degree N. By
+(V.8) and(V.11),
+
+\[
+\begin{gathered}
+\operatorname{Tr}_{2N}c(a,b)\\
+=(-1)^{N^2} I(c(a,b))\\
+=J_{\rm target}^{-1}\\
+p_*\bigl(J(a)\wedge J(b)\bigr).
+\end{gathered}
+\tag{V.13}
+\]
+
+The two parities cancel. This is the positive full-normal-block convolution,
+with precisely the normalization of U.5–U.8. The ordinary coefficient cup
+and the full-form cup are different before applying that trace.
+
+To make the shifts checkable, for complexes A,B and cochain degrees p,q,
+the standard tensor suspension identification is
+
+\[
+\begin{gathered}
+A[N]\otimes B[M]\\
+\longrightarrow(A\otimes B)[N+M],\qquad\\
+a\otimes b\longmapsto(-1)^{Mp}a\otimes b.
+\end{gathered}
+\tag{V.14}
+\]
+
+On a differential in A, p increases by1, so the displayed sign increases
+by(−1)^M. This converts the domain sign(−1)^N to the target sign
+(−1)^{N+M}. On a differential in B, the domain sign is
+(−1)^{p−N+M}, equal to the target sign(−1)^{N+M+p}. This proves(V.14)
+in every degree.
+
+Only A, the intermediate trace coefficient, is shifted at the trace step:
+A[N]⊗B→(A⊗B)[N] has M=0 and therefore has no tensor sign. The input
+classes at this stage have degrees0 and N. Applying(V.11) then gives(V.13).
+If one instead first writes **both** kernel classes as degree-zero classes
+in A[N] and B[N], the coordinate identification(V.14) contributes
+(−1)^{Np}; to express the same unshifted cup one must invert that
+identification before its trace. At p=N that inverse has sign(−1)^{N²}.
+Adding(V.14) as an extra product sign to a definition already using the
+unshifted cup changes the operation in odd N and is incorrect.
+
+The equivalent trace-first regrouping
+A[N]⊗B[M]→(A[N]⊗B)[M] has sign(−1)^{M(p−N)}. Its differential check
+is the same two computations just given, with the first factor's degree
+p−N. Composing it with the first-factor-only shift identifies the total
+shift with(V.14) multiplied by(−1)^{NM}. This is precisely the regrouping
+factor in(V.12). Both presentations of consecutive ordered traces thus
+have the same sign after their declared tensor identifications.
+
+For degree-N kernel classes, equality(V.13) reduces either association of
+three transverse factors to the ordered full-form wedge and the same two
+real fibre integrations. Both have compact support over compact endpoints;
+the distributional tensor construction in V.2 and duality in V.4 give the
+same repeated evaluation. Consequently the two associations agree in this
+current model, with positive normalized diagonal unit. For the unit, the
+normal Cauchy current has support v=u and integrates a holomorphic test
+coefficient to that coefficient: in one coordinate U.6 proves its scalar1;
+iterating in the fixed coordinate order gives scalar1 in every dimension.
+Convolution on either side therefore restricts to the diagonal with scalar1.
+
+These computations establish the signs of the canonical relative-support operation: [§5.34, R.1–R.7](#5-34-full-current-resolutions-and-controlled-proper-image-comparison) supplies its full resolution/support comparison and controlled excision. For unrestricted directional input, [§5.37, W.1–W.8](#5-37-interior-collars-and-the-canonical-directional-action) supplies the actual collar-to-relative-cone homotopy with the complement term retained. The keyhole evaluation is consistent with that complete chain comparison.
+
+#### V.6 The complement cube and the normal-class calibration
+
+For N normal supports Z_i in a common manifold M put U_i=M∖Z_i,
+Z=∩_i Z_i, U_A=∩_{i∈A}U_i and U_empty=M. The actual finite cube is
+
+\[
+\begin{gathered}
+K^k=\bigoplus_{A\subset\{1,\ldots,N\}}\\
+I^{k-|A|}(U_A),\qquad\\
+d_K=d_C+(-1)^{|A|}\delta.
+\end{gathered}
+\tag{V.15}
+\]
+
+At an ordered nonempty set A={i₀<⋯<i_r}, the d_C component is
+∑_{j=0}^r(−1)^j c_{A\setminus{i_j}} restricted to U_A. In particular
+the M component restricts to each singleton with sign+. Every pair of
+deleted indices occurs twice in d_C² with opposite signs. Since δ commutes
+with restriction, the cross terms of d_K² have coefficients(−1)^{|A|}
+and(−1)^{|A|+1}; hence d_K²=0.
+
+The complement U=M∖Z is covered by the U_i. Give its Čech–Dolbeault
+complex differential d_C+(−1)^rδ in Čech degree r. The identification
+of Cone(I(M)→Tot Čech(I,U))[−1] with(V.15) takes a complement component
+of Čech degree r to the cube component of cardinality r+1 with factor
+(−1)^r, leaving the M component unchanged. This is a chain isomorphism:
+the cone negates the Čech differential while the target factor changes by−1
+on increasing r; these signs cancel. Both Dolbeault signs are(−1)^{r+1}.
+Restriction from M has the r=0 factor1.
+
+The finite Čech comparison with I(U) needs no Leray-cover assumption.
+Choose a smooth partitionρ_i on U subordinate to U_i. For each smooth
+or current module I^q set
+(hc)_{i₀…i_{r−1}}=∑_jρ_j c_{j i₀…i_{r−1}}, extending terms by zero
+whereρ_j vanishes. Expansion gives d_C h+h d_C=1: the terms omitting j
+sum to∑_jρ_j c=c, and all remaining terms occur with opposite signs.
+Thus the horizontal rows of the augmented comparison cone are exact.
+The total cone is acyclic as well. Filter by Dolbeault degree; its finite
+associated horizontal complexes have zero cohomology. Equivalently, kill
+a total closed element's lowest nonzero Dolbeault row with h and subtract
+its total boundary. The remaining error lies in higher Dolbeault degree;
+iteration terminates because that complex is bounded. The same procedure
+applies to boundaries. The ordinary acyclic-resolution augmentation of I is proved in [§5.34, R.5–R.7](#5-34-full-current-resolutions-and-controlled-proper-image-comparison); thus this cube computes the relative derived support group.
+
+The tensor-to-cube sign is explicit. A normal factor has complement degree
+r_i∈{0,1}, antiholomorphic degree q_i and total degree p_i=q_i+r_i.
+Its image is the coefficient exterior product on U_A, A={i:r_i=1}, times
+
+\[
+ \epsilon=(-1)^{\sum_{i<j}q_i r_j}.
+ \tag{V.16}
+\]
+
+This moves each complement-degree symbol before preceding antiholomorphic
+factors. A Dolbeault differential on factor i supplies the tensor exponent
+∑_{l<i}(q_l+r_l)+r_i, while increasing q_i changesε by∑_{j>i}r_j.
+Their sum is∑_l r_l+∑_{l<i}q_l, the cube's overall Dolbeault sign plus
+its exterior-product sign. A complement restriction on factor i increases
+r_i from0 to1, changingε by∑_{l<i}q_l. Added to the preceding tensor
+degrees, this leaves∑_{l<i}r_l, its position in the ordered cube subset.
+This proves the chain-map identity in every degree.
+
+For smooth normal cochains the products are ordinary coefficient products.
+For the separated current cochains of V.2 use its distributional tensor
+construction. Holomorphic joint coefficients can be multiplied afterwards;
+their differential is zero. No product of arbitrary distributions with a
+shared singular parameter is asserted. Applying(V.16) to(V.5) gives the
+actual cube homotopy. Its current endpoint is∂bar F₁∧⋯∧∂bar F_N and
+its top-complement endpoint is(−1)^N f₁⋯f_N. By the cone-to-cube factor
+(−1)^{N−1}, the latter is−f₁⋯f_N in the full cone's ordinary Čech
+coordinate. This specifies the connecting augmentation.
+
+A separate holomorphic-line calibration remains. Treat the ordered
+one-coordinate classes with coefficients dv_i first inΩ¹[1]. Repeated
+standard tensor suspension(V.14) gives
+
+\[
+ r_N=(-1)^{N(N-1)/2}.
+ \tag{V.17}
+\]
+
+At each step the preceding unsuspended degree is the number of preceding
+degree-one classes, so the exponent is1+⋯+(N−1). The resulting anti-first
+coefficient current is r_N∂bar F₁∧⋯∧∂bar F_N with coefficient
+dv₁∧⋯∧dv_N. By(V.9) its full form is exactly the positive ordered
+complete-normal-block current. Its top cube entry is
+r_N(−1)^N f₁⋯f_N. Thus an unsigned ordered holomorphic expression
+f₁⋯f_N denotes this normalized class only with that declared identification;
+it is not literally its unsigned ordinary cube entry. N=2 already detects
+the distinction.
+
+This calibration of a single N-normal class precedes the between-kernel
+unshifted cup(V.13). Adding double-suspension there would count a different
+operation. The one-coordinate positive logarithmic/Cauchy distributions
+U.5–U.7 fix the scalar, and(V.17) extends that ordered input-frame
+normalization to N coordinates. [§5.37, W.1–W.8](#5-37-interior-collars-and-the-canonical-directional-action) proves the collar trace for unrestricted directional input with this calibration.
+
+![Relative connecting and trace signs](assets/cone-trace-signs.png)
+
+*The actual relative cone is (V.1)–(V.2). The unshifted coefficient cup has the regrouping sign (V.8); the all-degree trace (V.11) cancels its between-kernel parity at degree \(2N\), as proved in (V.13). The single-normal-class calibration (V.17) gives ordinary top cube entry \(r_N(-1)^N\varphi\). Proof: V.1–V.6, with the full resolution/excision proof in §5.34 and collar proof in §5.37. Free human comparison: [Kashiwara–Schapira, Micro-hyperbolic systems](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/Microhyp.pdf), §3.1.*
+
+### 5.36. Canonical finite polynomial line-cone kernels
+
+This section realizes the actual finite polynomial ring \(R\) of [§5.30, F.1–F.7](#5-30-actual-polynomial-flatness-and-reconstruction-after-finite-realization) and the negative polynomial matrices of [§5.33, K.1–K.3](#5-33-a-convergent-negative-order-polynomial-kernel-complex) by canonical supported-cohomology classes. The full resolutions and support comparison are §5.34; the unshifted cup and normalized trace are §5.35; §5.37 proves the action on arbitrary degree-one directional input with its residual complement term retained. The actual operator product and normal localization are [§5.19, S.1–S.4](#5-19-actual-factorial-growth-symbols-and-ordered-jets) and [§5.22.1](#5-22-1-the-actual-normal-element), repeated in F.1. The bounded actual resolution, coherent lattice/support comparison and negative kernels are §§5.31–5.33. Finite spatial degree is explicit; the full convergent-\(z\) \(E\) ring and the infinite-order, propagation, separation, D-type and analytic proper-regularity obligations remain distinct.
+
+#### U.1. Coordinates, properness and what the canonical trace means
+
+Put \(N=d+1\), write output \(u=(t,x)\), input \(v=(s,y)\), and keep \(h=\tau^{-1}\), \(z=\xi/\tau\). Use the closed proper convex line cone
+\[
+\begin{gathered}
+G_0=\{(r,0)\in\mathbf C\times\mathbf C^d:\\
+r\in\mathbf R_{\le0}\},\qquad\\
+Z_0=\{(u,v):v-u\in G_0\}.
+\end{gathered}
+\tag{U.1}
+\]
+Thus the kernel variable has its cut on \(s-t\le0\), whereas the directional quotient at \(p=(0;dt)\) has forbidden limiting directions \(\operatorname{Re}t\ge0\). The two sets live in different spaces. The normal coordinate of the diagonal used for the covector is output minus input; its pairing with \(dt\) is \(t-s\ge0\) on (U.1). No substitution \(\tau\mapsto-\tau\) is made. HolIII IV.2, printed p.908, explicitly defines \(G_0\) with \(\operatorname{Re}t\le0\); IV.5, printed p.917, explicitly uses \(\operatorname{Re}t\ge0\) for the directional support. 
+
+Let \(D\) be a sufficiently small convex product of discs in \((t,x)\). It is \(G_0\)-round: if \(u,v\in D\) and \((u,w),(w,v)\in Z_0\), then the intermediate point \(w\) lies on the real segment from \(v\) to \(u\), with unchanged spatial coordinates, and hence lies in \(D\). The projection
+\[
+\begin{gathered}
+p_{13}:p_{12}^{-1}Z_0\cap p_{23}^{-1}Z_0\\
+\cap D^3\longrightarrow Z_0\cap D^2
+\end{gathered}
+\tag{U.2}
+\]
+is proper. Over a compact set of endpoints its intermediate points lie in the union of their compact segments. That union is compact inside \(D\): it is the continuous image of the compact endpoint set times \([0,1]\), and convexity puts it inside \(D\). This verifies properness itself, rather than only boundedness in an open disc. The same argument applies to any finite string of intermediate points.
+
+Write \(\Omega_2^N\) for the holomorphic top forms in the input coordinates, ordered as \(ds\wedge dy_1\wedge\cdots\wedge dy_d\). The canonical multiplication under discussion is
+\[
+\begin{gathered}
+\mathcal E(G_0;D)\\
+=H^N_{Z_0}(D^2;\Omega_2^N),\qquad\\
+a*b=\operatorname{Tr}_{p_{13}}\\
+(p_{12}^*a\smile p_{23}^*b).
+\end{gathered}
+\tag{U.3}
+\]
+The support morphism in (U.3) is defined because of (U.2). The trace integrates the intermediate holomorphic top form and lowers cohomological degree by \(N\). It has no extra scalar factor; the factors \((2\pi i)^{-1}\) belong to the kernel representatives below.
+
+The full current and smooth resolutions, their actual injective comparisons, and the ordinary/proper image and controlled extension-by-zero maps are proved in [§5.34, R.1–R.7](#5-34-full-current-resolutions-and-controlled-proper-image-comparison). We use its anti-first realization \(J(\alpha\otimes\eta)=\alpha\wedge\eta\), with the input top-form line ungraded before trace. [§5.35, V.1–V.6](#5-35-relative-cones-unshifted-cup-and-the-normalized-trace) supplies the explicit relative cone \(d(a,b)=(\bar\partial a,ra-\bar\partial b)\), the positive connecting class \((0,-f)\), the separated-current tensor construction, the finite complement cube augmentation, and the canonical unshifted cup. The all-degree input trace is \(\operatorname{Tr}_q=(-1)^{N(q-N)}I_q\), with \(I=J_{\rm out}^{-1}p_*J_{\rm source}\), and is zero below \(q=N\). It is a chain map on the source shifted by \([N]\), with positive one-coordinate residue.
+
+For one ordered \(N\)-normal class the calibration is \(r_N=(-1)^{N(N-1)/2}\), proved in (V.17). Complete coordinate blocks below already incorporate it. Between two kernel classes of antiholomorphic degree \(N\), the unshifted coefficient cup contributes \((-1)^{N^2}\) relative to their full-block wedge, while the trace at degree \(2N\) contributes the same factor. Their product is \(1\), as proved in V.5. In triple coordinates \((u,a=v-u,b=w-v)\), the two singular normal variable lists are independent; V.2 and V.6 therefore identify their distributional tensor with the actual supported cup. A holomorphic joint coefficient can multiply that tensor. This does not define a product of arbitrary currents in shared singular variables.
+
+The compact-segment geometry (U.2), R.7's controlled excision and V.4's proper fibre integration now make (U.3) an actual canonical operation. V.4 proves compactly supported Stokes, complete output-variable differentiation and base-coordinate invariance; V.5 proves the successive-trace signs. The normalized trace has no extra residue scalar.
+
+This description also proves associativity wherever the support maps are proper: on four factors both associations use the same cup-product, the same proper support and the same double trace; Fubini identifies the traces. The normalized diagonal Cauchy class below is the unit. These are cohomology-class assertions; equality of contour actions is not used to infer equality of kernel classes.
+
+#### U.2. The one-variable connecting classes and exact normalization
+
+For a complex variable \(w=a+ib\), let \(\log w\) be the principal logarithm, with cut \(\mathbf R_{\le0}\). It is locally integrable, and its upper-minus-lower jump on \(a<0\) is \(2\pi i\). Its distributional antiholomorphic derivative is
+\[
+ \bar\partial\log w
+     =-\pi\,\mathbf1_{a<0}\delta(b)\,d\bar w.
+ \tag{U.4}
+\]
+For a direct proof, integrate against a compactly supported smooth test form, split the two half-planes along the negative ray, and integrate by parts. The two boundary values contribute \((i/2)(2\pi i)\delta(b)=-\pi\delta(b)\). The boundary of a deleted disc of radius \(\epsilon\) contributes at most a constant times \(\epsilon(1+|\log\epsilon|)\), which tends to zero. Off the cut the antiholomorphic derivative is zero. There is no additional point mass at the endpoint.
+
+Since \(d\bar w\wedge dw=2i\,da\wedge db\), (U.4) gives
+\[
+\begin{gathered}
+-\frac1{2\pi i}\bar\partial\log w\wedge dw\\
+=\mathbf1_{a<0}\delta(b)\,da\wedge db.
+\end{gathered}
+\tag{U.5}
+\]
+The right side integrates a holomorphic coefficient along the ray with increasing real coordinate. In particular its truncation between \(s=a_0\) and \(s=t\), where \(a_0<t\) on a real line, is \(\int_{a_0}^{t}\), with positive orientation. The value assigned to the step function at its endpoint is irrelevant to this current.
+
+The Cauchy–Pompeiu identity gives
+\[
+\begin{gathered}
+\frac1{2\pi i}\bar\partial\bigl(\frac1w\bigr)\wedge dw\\
+=\delta(a)\delta(b)\,da\wedge db.
+\end{gathered}
+\tag{U.6}
+\]
+One may prove its scalar coefficient by Stokes on a deleted disc: the positive boundary integral of \(dw/(2\pi i w)\) equals one. For \(k\ge0\), define the extension of \(k!/w^{k+1}\) by \((-1)^k\partial_w^k(1/w)\). Differentiating (U.6) then gives
+\[
+\begin{gathered}
+\frac1{2\pi i}\bar\partial\bigl(\frac{k!}{w^{k+1}}\bigr)\wedge dw\\
+=(-1)^k\partial_w^k\delta_{\mathbf C}(w).
+\end{gathered}
+\tag{U.7}
+\]
+On a holomorphic test function \(f\), the last distribution has value \(\partial_w^k f(0)\). Thus each spatial coordinate contributes precisely its ordinary derivative, with no surviving sign and with precisely one \((2\pi i)^{-1}\). The \(d\)-fold product gives the spatial diagonal derivative
+\(\Delta_\beta(x,y)=\prod_j(-1)^{\beta_j}\partial_{y_j}^{\beta_j}\delta_{\mathbf C}(y_j-x_j)\).
+It satisfies
+\[
+ \int_y\Delta_\beta(x,y)f(y)=\partial_x^\beta f(x).
+ \tag{U.8}
+\]
+
+The classes in (U.5)–(U.7) are the connecting classes of their displayed holomorphic representatives. For one coordinate this follows from the relative-cone differential of the chosen distributional extension. For several coordinates take the ordered external product of these connecting maps. Before the holomorphic-line calibration, its top cube entry is \((-1)^N\) times the ordered product of the holomorphic representatives. Applying (V.17) gives \(r_N(-1)^N\) times that product in the ordinary cube, or \(-r_N\) times it in the full cone’s ordinary complement Čech coordinate. This argument supplies the class without assuming that a particular complement covering is Leray.
+
+There is an equivalent contour verification useful for unrestricted holomorphic input functions. For a keyhole starting below the negative cut at a negative anchor \(a_0\), going positively around \(s=t\), and ending above that cut at the same anchor, set \(F(s)=\int_t^s A(t,r)f(r)\,dr\). Integration by parts on the two sides of the cut gives
+\[
+\begin{gathered}
+-\frac1{2\pi i}\int_\Gamma\\
+\log(s-t)A(t,s)f(s)\,ds\\
+=-F(a_0)+\frac1{2\pi i}\\
+\oint\frac{F(s)}{s-t}\,ds\\
+=\int_{a_0}^{t}A(t,s)f(s)\,ds.
+\end{gathered}
+\tag{U.9}
+\]
+The last closed-contour integral is zero because \(F(t)=0\). Positive spatial circles evaluate (U.8) by the ordinary iterated Cauchy formula. The ordinary contour identity (U.9) is consistent with the positive residue normalization. Its equality with the canonical cup/excision/trace action on unrestricted-growth input is proved by the actual relative-cone and full-neighbourhood coboundaries in [§5.37, (W.24)–(W.27) and (W.32)–(W.33)](#5-37-interior-collars-and-the-canonical-directional-action). That proof retains the complement component and requires no distributional extension of the input across its boundary.
+
+#### U.3. Actual analytic polynomial kernels define canonical classes
+
+An element of \(R\) has a finite \(\partial_x\)-degree and finite positive \(\partial_t\)-order. Remove that finite positive time order using a left power of \(h\). Thus it suffices first to treat
+\[
+\begin{gathered}
+P=\sum_{\beta\in B}\sum_{m\ge0}\\
+b_{m,\beta}(t,x)h^m\partial_x^\beta,\quad\\
+B\text{ finite},\quad\\
+|b_{m,\beta}|\le B_\beta C_\beta^m m!.
+\end{gathered}
+\tag{U.10}
+\]
+All coefficients have one common holomorphic base domain. Changing from F.1's \(h^n z^\beta\) to (U.10) only makes a fixed finite shift of \(m\) for each \(\beta\). The factorial estimate is preserved by \((m+k)!\le2^{m+k}m!k!\), with enlarged constants. Terms with a negative \(m\) are part of the removed finite differential operator.
+
+Separate the \(m=0\) terms and set
+\[
+\begin{gathered}
+A_\beta(t,s,x)=\sum_{m\ge1}\\
+b_{m,\beta}(t,x)\frac{(t-s)^{m-1}}{(m-1)!}.
+\end{gathered}
+\tag{U.11}
+\]
+For \(C_\beta|t-s|<1\), normal convergence follows from
+\[
+\begin{gathered}
+|A_\beta(t,s,x)|\\
+\le \frac{B_\beta C_\beta}{(1-C_\beta|t-s|)^2}.
+\end{gathered}
+\tag{U.12}
+\]
+The finite list \(B\) permits one actual product \(D^2\) with all \(C_\beta\operatorname{diam}D_t<1/2\). Fixed derivatives converge on one smaller common product by the Cauchy formula. This proves convergence at the time diagonal as well; the class is not defined by a merely formal Borel series.
+
+The canonical kernel is represented on the ordered complement intersection by
+\[
+\begin{gathered}
+K_P(u,v)=\frac1{(2\pi i)^{d+1}}\\
+\sum_{\beta\in B}\\
+\frac{\beta!}{\prod_j(y_j-x_j)^{\beta_j+1}}\\
+\bigl\{\frac{b_{0,\beta}(t,x)}{s-t}\\
+-\log(s-t)A_\beta(t,s,x)\bigr\}\\
+ds\wedge dy_1\wedge\cdots\wedge dy_d.
+\end{gathered}
+\tag{U.13}
+\]
+The complement covering first uses \(s-t\notin\mathbf R_{\le0}\), then \(y_j\ne x_j\), in that order. Its union is \(D^2\setminus Z_0\). The unsigned expression (U.13) denotes the normalized ordered class: its literal top entry in the ordinary complement cube is \(r_N(-1)^N K_P\), and its literal top full-cone Čech entry is \(-r_N K_P\), by (V.15)–(V.17). It is not an unsigned ordinary cube entry. With this declared calibration, equations (U.5)–(U.8) show that (U.13) defines a class \(\kappa(P)\in\mathcal E(G_0;D)\). In complete coordinate blocks its supported-current representative is
+\[
+\begin{gathered}
+T_P(u,v)=\sum_{\beta\in B}\\
+\bigl\{b_{0,\beta}(t,x)\delta_{\mathbf C}(s-t)\\
++A_\beta(t,s,x)\mathbf1_{\operatorname{Re}(s-t)<0}\\
+\delta(\operatorname{Im}(s-t))\bigr\}\\
+\Delta_\beta(x,y).
+\end{gathered}
+\tag{U.14}
+\]
+Equation (U.14) is a density notation for the complete normal coordinate blocks from (U.5)–(U.7). In particular the time block contains \(d\overline{(s-t)}\), and the spatial blocks contain \(d\overline{(y_j-x_j)}\). Their output antiholomorphic components are retained. The holomorphic factors are the relative input forms; in coordinates \((u,v-u)\) they are the corresponding normal holomorphic forms modulo output holomorphic forms. Thus (U.14) denotes the full closed Dolbeault current, not merely its top fibre component. Every distribution in it has finite local order. This is where finite \(B\) is essential. Normal convergence in (U.11) gives a holomorphic smooth coefficient for the ray current, and its multiplication by the finite diagonal distributions is defined.
+
+For K's rescaled matrices specifically, \(b_{m,\beta}=0\) until \(m=n+|\beta|+1\), and (U.11) is exactly K.3. Its sharper common-domain bound K.4 therefore remains unchanged. There is no loss of the \(|\beta|\) factorial and no change in the rescaling \(Q_j=h^jP_jh^{-(j-1)}\).
+
+#### U.4. Composition is equality of canonical classes
+
+First take strictly negative monomials
+\(P=p(t,x)h^m\partial_x^\beta\), \(Q=q(t,x)h^l\partial_x^\gamma\), with \(m,l\ge1\). Their current product is a product in independent difference coordinates as explained in U.1. Under the proper intermediate trace, the two ray currents impose
+\(\operatorname{Im}t=\operatorname{Im}s=\operatorname{Im}v\) and
+\(\operatorname{Re}v\le\operatorname{Re}s\le\operatorname{Re}t\).
+The spatial delta derivatives give the finite ordinary Leibniz sum. The resulting current has ray coefficient
+\[
+\begin{gathered}
+p(t,x)\sum_{\nu\le\beta}\binom\beta\nu\\
+\int_v^t\frac{(t-s)^{m-1}(s-v)^{l-1}}{(m-1)!(l-1)!}\\
+\partial_x^\nu q(s,x)\,ds\\
+\ \Delta_{\beta-\nu+\gamma}(x,w).
+\end{gathered}
+\tag{U.15}
+\]
+The integration has the positive orientation \(v\to t\) by (U.5), and lies on the actual compact segment required by (U.2). It is already the canonical cup/trace current, not an action evaluated on test solutions.
+
+Expand \(\partial_x^\nu q(s,x)\) at \(t\) on a common smaller domain. Its coefficient of \((t-s)^k\) is \((-1)^k\partial_t^k\partial_x^\nu q(t,x)/k!\). The integer beta integral is exactly
+\[
+\begin{gathered}
+\int_v^t\frac{(t-s)^{m+k-1}(s-v)^{l-1}}{(m-1)!(l-1)!k!}\,ds\\
+=\binom{m+k-1}{k}\\
+\frac{(t-v)^{m+l+k-1}}{(m+l+k-1)!}.
+\end{gathered}
+\tag{U.16}
+\]
+It follows by parametrizing the complex segment by a real variable and integrating by parts; it holds including the declared orientation. Thus the coefficient of the canonical convolution is
+\(\binom\beta\nu\binom{-m}{k}\), since
+\((-1)^k\binom{m+k-1}{k}=\binom{-m}{k}\).
+These are precisely the actual \(\xi,x\) and \(\tau,t\) Leibniz coefficients of \(P\circ Q\), with exponent \(m+l+k\). All time contractions are retained. By (U.11) the current in (U.15) is therefore \(T_{P\circ Q}\).
+
+For infinite negative time tails but finite spatial degree, their holomorphic coefficients and finitely many derivatives converge normally on one smaller product by (U.12). The trace integrates a compact segment, so the convolution is normally convergent there. K.3's Taylor-coefficient proof, or the same bound and (U.16), gives equality with the analytic coefficient of the actual symbol product. At a fixed time-difference power only finitely many indices \(m,l,k\) contribute. The actual product theorem puts the product in the factorial class, so its convergent Borel coefficient is uniquely determined by these Taylor coefficients. This proves equality of the supported currents, hence equality of their relative-cone classes. A function-space faithfulness argument is unnecessary for this step.
+
+Terms with \(m=0\) are supported on the time diagonal. Their trace acts by the finite indicated derivative. The distributional Leibniz rule in (U.8) gives exactly their finite spatial contractions; multiplying by a holomorphic coefficient on the input differentiates that coefficient when the derivative is on its left. A negative time term composed on the right with a multiplying coefficient \(b(v,x)\) has coefficient \((t-v)^{m-1}b(v,x)/(m-1)!\). Taylor expansion of \(b(v,x)\) at \(t\) gives \((-1)^k/(k!(m-1)!)\), equal to \(\binom{-m}{k}/(m+k-1)!\), after retaining the factor \((t-v)^{m+k-1}\). Thus it gives every time contraction also in this diagonal case; the finite spatial Leibniz sum is taken at the same time. Uniform Taylor convergence and (U.12) justify the actual negative tails. For the time derivative, differentiation of the holomorphic representative gives
+\[
+\begin{gathered}
+\partial_t\bigl(-\frac{\log(s-t)}{2\pi i}\bigr)\\
+=\frac1{2\pi i(s-t)},\qquad\\
+-\partial_s\bigl(-\frac{\log(s-t)}{2\pi i}\bigr)\\
+=\frac1{2\pi i(s-t)}.
+\end{gathered}
+\tag{U.17}
+\]
+The first is composition with \(\partial_t\) on the output; the second is composition with its input diagonal derivative, by integration by parts. These are identities of holomorphic representatives on the complement and hence of their connecting classes, rather than literal derivatives of a chosen logarithmic current extension. To check the distinction, let \(G\) be the distributional logarithmic extension and \(F\) the normalized Cauchy extension. The displayed holomorphic derivative says that \(H=\partial_tG-F\) is supported on the cut. Explicitly, for \(w=s-t\), the jump calculation of (U.4) applied to the holomorphic derivative gives \(H=(2i)^{-1}\mathbf1_{\operatorname{Re}w<0}\delta(\operatorname{Im}w)\). The two supported-current representatives differ by \((\bar\partial H,0)=d(H,0)\), an actual relative-cone boundary; for the input derivative use \(H=-\partial_sG-F\), which has the same value. In \(N\) normals, let \(S_{\rm sp}\) be the ordered product of the normalized closed spatial Cauchy coefficient currents and put \(H_N=r_N H S_{\rm sp}\), with coefficient \(ds\wedge dy_1\wedge\cdots\wedge dy_d\). It has antiholomorphic degree \(N-1\), and the complete-current difference is \((\bar\partial H_N,0)=d(H_N,0)\), because \(S_{\rm sp}\) is closed. This boundary persists after the proper intersection cup and trace by the chain maps of R.7/V.4. Thus any extra supported term in the distributional derivative is retained as an exact current. It is not discarded as a pointwise identity. It follows as an equality of canonical classes that
+\[
+\begin{gathered}
+\kappa(\partial_t)*\kappa(h)\\
+=\kappa(h)*\kappa(\partial_t)=1.
+\end{gathered}
+\tag{U.18}
+\]
+The diagonal product of (U.6) over all coordinates is the unit: tracing against it restricts every coefficient to the diagonal, with positive sign. The ordinary relations of all finite differential operators follow by distributional differentiation of that same diagonal. Combining them with the preceding negative-tail calculation and the exact normal localization of F.1 yields a unital homomorphism
+\[
+\begin{gathered}
+\kappa:R\longrightarrow\\
+\underset{D\ni0}{\operatorname{colim}}\mathcal E(G_0;D),\qquad\\
+\kappa(P\circ Q)=\kappa(P)*\kappa(Q).
+\end{gathered}
+\tag{U.19}
+\]
+If the two inputs need different coefficient domains, intersect those domains and shrink \(D\) once before the calculation. This is a germ statement. It is not a uniform domain assertion for all elements of \(R\) at once.
+
+Consequently the rescaled K matrices form a canonical kernel complex:
+\[
+ \kappa(Q_j)*\kappa(Q_{j-1})=0.
+ \tag{U.20}
+\]
+This includes the entire matrices and their actual analytic tails. It holds on a common \(D\) for the finite matrix list and its products, with row-vector composition in the order used in L.8. No reduced-fibre replacement or generic-support restriction occurs.
+
+#### U.5. The canonical action on the directional degree-one quotient
+
+Define \(C_p\) as the filtered colimit of
+\(\mathcal O(V\setminus Z)/\mathcal O(V)\), where \(Z\) is a closed germ whose limiting directions satisfy \(\operatorname{Re}t\ge0\). It is the degree-one supported-cohomology colimit: the support exact sequence gives the quotient, and the colimit over neighbourhoods of the remaining \(H^1(V,\mathcal O)\) vanishes by exactness of stalks. This uses no degree-zero or higher-degree vanishing assertion for an arbitrary fixed \(V\).
+
+Every such \(Z\) can be enlarged to one with convex complement
+\[
+\begin{gathered}
+\Omega_g=\\
+\{\operatorname{Re}t<-g(|(\operatorname{Im}t,x)|)\},\\
+\qquad g\text{ convex, nondecreasing},\\
+\quad g(r)=o(r).
+\end{gathered}
+\tag{U.21}
+\]
+Here is the construction. On a sufficiently small ball, define
+\[
+\begin{gathered}
+e(r)=\sup\bigl(\{0\}\cup\\
+\{-\operatorname{Re}t/|v|:\\
+(t,x)\in Z,\operatorname{Re}t<0,\\
+0<|v|\le r\}\bigr)
+\end{gathered}
+\tag{U.21a}
+\], with \(v=(\operatorname{Im}t,x)\). The support direction condition first bounds this supremum and then gives \(e(r)\to0\). Replace a bound by one if necessary after shrinking. Put \(g(r)=\int_0^{2r}e(a)\,da\). Monotonicity gives convexity, \(g(r)\ge re(r)\) and \(g(r)\le2re(2r)=o(r)\). The radial composition is convex by the triangle inequality and monotonicity. Thus its strict hypograph in (U.21) is convex, its complementary support contains \(Z\), and that support has exactly the required limiting direction condition. Unions of two allowed support germs remain allowed, so this construction is cofinal and compares representatives.
+
+The domain \(\Omega_g\) is \(G_0\)-open: decreasing the real time coordinate while fixing \(\operatorname{Im}t,x\) preserves the inequality. For a sufficiently small output neighbourhood inside a larger product \(D\), the kernel support intersected with the input support \(D\setminus\Omega_g\) is proper over the output. In fact its input real coordinate lies between \(-g(|v|)\) and the output real coordinate, with the other coordinates fixed. For output near zero this entire segment lies compactly inside the chosen larger \(D\), by continuity of \(g\) and \(g(0)=0\). This is the exact local support condition for the cup/trace action on the degree-one relative group. At output points of \(\Omega_g\), all lower real input points are in \(\Omega_g\); hence its support maps into the output support. Excision gives the action on the germ, independently of the larger product.
+
+Take a sufficiently small negative real anchor \(a_0\). For output \((t,x)\) in a smaller convex part of \(\Omega_g\), the segment from \((a_0,x)\) to \((t,x)\) lies in the input domain. On a compact output subset that union of segments is compactly inside the input domain, and thus has a fixed spatial Cauchy radius. Only finitely many spatial derivatives occur. Equations (U.11)–(U.12) give the actual canonical action
+\[
+\begin{gathered}
+\rho(P)[f]=\bigl[\\
+\sum_{\beta\in B}\\
+b_{0,\beta}(t,x)\partial_x^\beta f(t,x)\\
++\sum_{\beta\in B}\int_{a_0}^t\\
+A_\beta(t,s,x)\partial_x^\beta f(s,x)\,ds\bigr].
+\end{gathered}
+\tag{U.22}
+\]
+Its equality with the canonical action is proved by [§5.37, W.1–W.8 and (W.24)–(W.33)](#5-37-interior-collars-and-the-canonical-directional-action), including the actual smooth/current augmentation, proper localization, shifted relative trace and full-output collar primitive. For the finite matrix list, select one anchor tube, one smaller product and one time radius before applying the formula. The integrals and their derivatives converge uniformly on every compact output subset; no derivative-radius choice depends on the tail index.
+
+Changing the anchor changes (U.22) by integrals over a compact segment at negative real time. The input is holomorphic on a full tube around that segment. For \(t,x\) in a full sufficiently small neighbourhood of zero, (U.12) holds on that tube, so the difference extends holomorphically across zero. An extending input produces an extending output by the same bound. The cofinal common supports in (U.21) compare any two input representatives. Therefore the formula descends to \(C_p\).
+
+The finite time derivative acts by its ordinary derivative. In particular
+\(\partial_t\rho(h)f=f\) and
+\(\rho(h)\partial_tf=f-f(a_0,x)\). The anchor term is holomorphic on a full neighbourhood of zero and is zero in \(C_p\). Thus (U.18) and (U.22) agree with the localized \(R\)-action, and \(\partial_t,h\) are two-sided inverses in this quotient. This does not assert a two-sided inverse on ordinary holomorphic functions before taking the quotient.
+
+The action, and hence (U.19), is faithful on the ring \(R\). Here is a finite-polynomial proof. After a finite left shift by \(h\), take \(P\) in (U.10). For \(\lambda\notin\mathbf Z\) and \(v_0\in\mathbf C^d\), use
+\(f=e^{v_0\cdot x}t^\lambda\), with its cut on the positive real time ray. Modulo extending functions, its \(m\)-th primitive is
+\(e^{v_0\cdot x}t^{\lambda+m}/(\lambda+1)_m\).
+The anchor corrections converge holomorphically near zero: for fixed \(\lambda\),
+\(|(\lambda+1)_m|^{-1}\le A(m+1)^k/m!\), as follows by summing
+\(\log|1+\lambda/j|=\operatorname{Re}\lambda/j+O(j^{-2})\).
+The Taylor polynomial at the anchor of that primitive is bounded by a fixed polynomial in \(m\) times
+\((|a_0|+|t-a_0|)^m/m!\). The factorial estimate in (U.10) and a sufficiently small anchor make its sum normally convergent. The set of spatial indices is finite.
+
+If \(\rho(P)=0\), the nonextending part is
+\[
+\begin{gathered}
+e^{v_0\cdot x}t^\lambda\\
+\sum_{m\ge0,\beta\in B}\\
+b_{m,\beta}(t,x)\frac{t^m v_0^\beta}{(\lambda+1)_m}=0.
+\end{gathered}
+\tag{U.23}
+\]
+The inner sum is holomorphic at zero. Continuation around a small circle multiplies \(t^\lambda\) by \(e^{2\pi i\lambda}\ne1\) and leaves a holomorphic extension fixed, so the inner sum must vanish. At the coefficient of \(t^q\) this is a finite rational identity
+\(\sum_{m=0}^q R_{m,q}(v_0,x)/(\lambda+1)_m=0\).
+The pole at \(\lambda=-q\) isolates \(R_{q,q}\); descending through the remaining poles and the constant term isolates every \(R_{m,q}\). The polynomial monomials \(v_0^\beta\) then isolate every Taylor coefficient of every \(b_{m,\beta}\). Hence \(P=0\). Invertibility of \(\rho(h)\) proves the same after localization. This is ring faithfulness; it is not a theorem that solution functionals separate every holonomic module.
+
+#### U.6. Exact consequence and remaining interfaces
+
+The actual finite-polynomial kernel complex of K now has canonical line-cone classes, its positive residue normalization, its ring products and its degree-one directional action. Its matrices have one actual coefficient domain and the original factorial bounds. All singular-support sections of the original finite modules remain in the supplied algebraic complex; the construction has imposed no generic-support or reduced-fibre restriction. Off-support algebraic contractibility from K.4 is preserved after any already defined ring map, including the restricted map (U.19) wherever a contracting homotopy has entries in its domain. A homotopy with entries in arbitrary \(E\) cannot be transferred through (U.19) without the still missing full \(E\) comparison.
+
+The precise still-open steps are:
+
+1. The analogous proper-cone cup/trace comparison for every convergent \(z=\xi/\tau\) coefficient of \(E\), beyond finite polynomial degree. An unbounded spatial derivative sum cannot be treated as the finite current (U.14); its proper-cone product and trace require a separate complete proof.
+2. The ring action on the derived relative complexes needed by Microhyp 3.2.5 and 4.5.1, with its exact supports, cone hypotheses and shifts, and the weakened off-support exactness condition used in HolIII IV.4.4.1. A degree-one quotient action does not supply that derived assertion.
+3. Sectorial propagation, continuation across the discriminant and separation for an arbitrary holonomic module, including singular support. Ring faithfulness of (U.19) proves none of these solution-space assertions.
+4. Actual \(E^\infty\)-linearity, \(A^\infty\) monodromy-ideal stability, the \(E^\infty\otimes_{A^\infty}\) comparison and extension-faithfulness. Neither the finite-polynomial canonical action nor the actual positive-degree formal completion is such an extension.
+5. The resulting finite D-type embedding, ordinary finite-pole recovery for regular holonomic systems, intrinsic microlocal order, full C1 and arbitrary proper/support-proper analytic regularity.
+
+Free human source material, distinguished from this original proof: Kashiwara–Kawai, [HolIII](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), III.1 (printed pp.869–882), III.2–III.3 (pp.883–889), IV.2 (p.908) and IV.5 (p.917); Kashiwara–Schapira, [Micro-hyperbolic systems](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/Microhyp.pdf), §3.1, printed pp.11–13. Their statements are proof targets and normalization checks; no omitted SKK theorem, infinite-order flatness, finite D-type theorem or analytic proper theorem is imported.
+
+The figure below illustrates precisely (U.1)–(U.2), (U.5)–(U.8), (U.15)–(U.18) and (U.20). It is a real slice of the stated complex supports and not a depiction of all higher-dimensional cotangent geometry.
+
+![Canonical polynomial kernels, proper supports and positive residues](assets/canonical-line-cone-kernels.png)
+
+*The exact real slice shows the compact intermediate segment of (U.2), the independent negative normal coordinates of (U.15), positive ray/Cauchy residues (U.5)–(U.8), and the convergent product (U.11)–(U.20). Derivative inverse identities in (U.17)–(U.18) hold in canonical cohomology with the exact supported correction stated there. The full complex and spatial constraints are retained in U.1–U.5. Free human comparisons are HolIII and Micro-hyperbolic systems at the locators above.*
+
+### 5.37. Interior collars and the canonical directional action
+
+The theorem proved here is the equality missing from U.9/U.22: the **unshifted** supported cup of an actual finite polynomial line-cone kernel with an arbitrary degree-one directional input, followed by the normalized shifted input trace, is represented by the anchored Volterra formula U.22. There is no boundary-growth assumption on the input. The complement component of the relative cone is retained throughout.
+
+The actual coefficients and kernels are [§5.36, U.1–U.5](#5-36-canonical-finite-polynomial-line-cone-kernels); the full smooth/current resolutions, acyclic/injective and controlled-excision comparisons are [§5.34, R.1–R.7](#5-34-full-current-resolutions-and-controlled-proper-image-comparison); and the coefficient cup, finite complement cube, ordered normal calibration and all-degree trace are [§5.35, V.1–V.6](#5-35-relative-cones-unshifted-cup-and-the-normalized-trace). Free human comparisons are [Kashiwara–Schapira, Micro-hyperbolic systems](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/Microhyp.pdf), §3.1, and [Kashiwara–Kawai, HolIII](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), III.1, IV.2 and IV.5. These identify the target operation and kernel/input cones; every comparison used here is proved below.
+
+Every degree-one **germ-colimit relative class** has a representative of the kind treated below. Indeed R.6–R.7 allow the smooth input relative cone. A closed degree-one cochain \((a,b)\) has \(\delta a=0\) on the input neighbourhood and \(ra=\delta b\) on its complement. The explicit R.3 contraction, preserving smoothness, supplies \(F\) on a smaller input box with \(a=\delta F\). Subtracting \(d(F,0)\) gives \((0,b-rF)\); its degree-zero complement coefficient is \(\delta\)-closed. The degree-zero identification in R.3 makes \(f=rF-b\) holomorphic on that entire open complement, so the representative is \((0,-f)\). This requires only a neighbourhood shrink in the germ colimit. It imports neither fixed-domain Stein vanishing nor an extension of \(f\) across its excluded boundary. Enlarging the support to the cofinal U.21 family then gives the convex complement used below.
+
+#### W.1. Relative cones and an explicit proper-support roof
+
+Write \(\delta=\bar\partial\) in the full coefficient Dolbeault complex \(I\), with all output and input antiholomorphic variables included. For a closed \(S\subset M\) put
+\[
+\begin{gathered}
+C_S^q(I)=I^q(M)\\
+\oplus I^{q-1}(M\setminus S),\qquad\\
+d(a,b)=(\delta a,ra-\delta b).
+\end{gathered}
+\tag{W.1}
+\]
+Thus a holomorphic complement function has positive connecting representative \(c_f=(0,-f)\). An interior cutoff \(F=\chi f\), with \(\chi\) smooth and compactly supported in the holomorphic domain of \(f\), extends smoothly by zero and gives
+\[
+ c_f+d(F,0)=(\delta F,F-f).
+ \tag{W.2}
+\]
+Its second component is generally nonzero. No extension of \(f\) across its excluded boundary occurs in (W.2).
+
+Let \(p:M\to B\) be the projection forgetting input variables over the output base, and suppose \(S\) is proper over \(B\). On a sufficiently small base open choose a smooth \(\eta\), equal to one on an open neighbourhood of \(S\), whose closed support is proper over \(B\) and contained in an open \(W\subset M\). In our application \(W=B\times D'\) with \(\overline{D'}\subset D\), and an explicit \(\eta\) is constructed in W.4. Define
+\[
+ \begin{split}
+ L_\eta(a,b)&=(\eta a+\delta\eta\wedge b,\eta b),\\
+ E_\eta(a,b)&=((1-\eta)b,0).
+ \end{split}
+ \tag{W.3}
+\]
+The first occurrence of \(\delta\eta\wedge b\), and the first component of \(E_\eta\), extend by zero across \(S\). They are defined because \(\delta\eta\) and \(1-\eta\) vanish on a neighbourhood of \(S\). This is valid even when \(b\) has unbounded growth toward \(S\).
+
+Direct expansion, using restriction on the complement, proves
+\[
+\begin{gathered}
+dL_\eta=L_\eta d,\qquad\\
+1-L_\eta=dE_\eta+E_\eta d.
+\end{gathered}
+\tag{W.4}
+\]
+For example the first component of \(dE_\eta+E_\eta d\) is
+\((1-\eta)a-\delta\eta\wedge b\); the second is \((1-\eta)b\). In the first component of \(dL_\eta\), the cross term is
+\(\delta\eta\wedge(ra-\delta b)\), exactly the first cross term of \(L_\eta d\).
+
+All components of \(L_\eta c\) have closed support inside \(\operatorname{supp}\eta\), so they are proper. A complement component is a section of \(k_*I\); it need not extend as a current across \(S\). Its sheaf support is still contained in the same proper set. The homotopy \(E_\eta\) also preserves a pre-existing proper support. Consequently inclusion
+\[
+ p_!C_S(I)\longrightarrow p_*C_S(I)
+ \tag{W.5}
+\]
+has the actual local chain homotopy inverse \(L_\eta\). Here \(p_*\) means the section complex on the inverse image of the base open; it is not an assertion that its individual terms are \(p_*\)-acyclic. Formula (W.4) proves exactly the needed comparison of these two particular complexes.
+
+Moreover \(L_\eta\) lands in the extension-by-zero complex on \(W\). The roof
+\[
+\begin{gathered}
+p_*C_S(I)\ \longleftarrow\\
+(p|_W)_!C_S(I|_W)\\
+\ \xrightarrow{\,e_W\,}\ p_!C_S(I)
+\end{gathered}
+\tag{W.6}
+\]
+uses inclusion/extension by zero, with inverse to its left arrow supplied by \(L_\eta\). The two homotopies are (W.4). The right arrow is the controlled excision quasi-isomorphism (R.24). Thus (W.6) is an explicit support-to-proper-image roof, and not restriction of a proper section to an arbitrary source open.
+
+For two such cutoffs, all terms of
+\[
+\begin{gathered}
+(L_{\eta'}-L_\eta)c\\
+=d\bigl(( (\eta'-\eta)b,0)\bigr),\\
+\qquad dc=0,
+\end{gathered}
+\tag{W.7}
+\]
+have proper support in the union of their two proper neighbourhoods. The primitive extends by zero across \(S\), since \(\eta'-\eta\) vanishes there. The same formula, including the \(E d\) term in (W.4), is the chain homotopy on arbitrary cochains. It establishes agreement of the two roofs, also after intersecting excision neighbourhoods. This supplies change-of-neighbourhood and change-of-collar compatibility at the chain level.
+
+#### W.2. The cup and its augmentation with a supported kernel
+
+Let \(A\) be the kernel support, \(B_{\rm in}\) the inverse image of the input support, and \(S=A\cap B_{\rm in}\). Let \(T\) be a closed supported kernel coefficient current of antiholomorphic degree \(N\). Its coefficient is the **ungraded** input top-form line; the input has the ungraded coefficient \(\mathcal O\).
+
+For a smooth input relative cochain \((a,b)\), the cup with this kernel is
+\[
+\begin{gathered}
+m_T(a,b)=\bigl(T\wedge a,\;\\
+(-1)^N T\wedge b\bigr)\in C_S.
+\end{gathered}
+\tag{W.8}
+\]
+The complement component is first defined on \(M\setminus B_{\rm in}\). On \(M\setminus A\) it is zero. These definitions agree on the overlap because \(T\) vanishes there, and hence glue on \(M\setminus S\). Smooth multiplication of a current is well defined, including its finitely many distributional derivatives. The input resolution is the smooth one; no product of arbitrary distributions is used.
+
+The general version with a supported current of degree \(p\) has the sign \((-1)^p\). Expanding \(\delta(Ta)\) and \(\delta(Tb)\) proves that it is a chain map from the ordinary tensor complex. With \(T\) closed, \(d\,m_T=(-1)^N m_Td\).
+
+Here is the precise identification of (W.8) with the canonical supported cup. Use the two-support finite cube of V.6, whose components are forms on \(M\), \(M\setminus A\), \(M\setminus B_{\rm in}\), and their intersection. Map the tensor of the two relative complexes to this cube by V.16. A supported kernel has only its \(M\) component, of Dolbeault degree \(N\). Moving the input complement symbol past it contributes \((-1)^N\). Thus the only complement component is exactly that of (W.8); its restriction to \(M\setminus A\) is zero, and its higher intersection component is zero. The augmentation from the full relative cone to the complement Čech complex is ordinary restriction in singleton degree, with no further sign (V.15). Therefore (W.8) maps literally to this cup cube.
+
+The cube augmentation is a quasi-isomorphism: V.6 gives the finite Čech partition homotopy and the terminating row elimination, without a Leray assumption. R.1–R.7 identify the smooth/current augmentations with the holomorphic and derived-support objects. Multiplication of a current by a smooth form commutes with these augmentations and with the holomorphic coefficient multiplication. Tensoring these augmentations over \(\mathbf C\) preserves quasi-isomorphisms: at each stalk an exact complex of vector spaces splits by choosing complements to kernels; tensoring its contraction with a bounded complex preserves exactness, and the finite degree filtration gives the assertion for the total tensor. Thus this commutative augmentation/cube roof realizes the canonical unshifted cup, rather than only a formal current product.
+
+For the input \(c_f=(0,-f)\), (W.8) gives
+\[
+ c_0=(0,(-1)^{N+1}Tf).
+ \tag{W.9}
+\]
+The current \(Tf\) is only a complement current on \(M\setminus S\), glued as just described. With an actual interior \(F=\chi f\), the representative becomes
+\[
+\begin{gathered}
+c_F=\bigl(T\wedge\delta F,\;\\
+(-1)^N T(F-f)\bigr),\qquad\\
+c_F-c_0=(-1)^N d(TF,0).
+\end{gathered}
+\tag{W.10}
+\]
+This follows from \(\delta(TF)=(-1)^N T\wedge\delta F\). After localization it is the proper coboundary
+\[
+\begin{gathered}
+L_\eta c_F-L_\eta c_0\\
+=(-1)^N d(\eta TF,0).
+\end{gathered}
+\tag{W.11}
+\]
+These formulas keep the residual \(F-f=(\chi-1)f\) explicitly.
+
+#### W.3. The relative shifted trace
+
+Let \(Z\subset B\) be the output support and suppose \(p(S)\subset Z\). The open \(p^{-1}(B\setminus Z)\) lies in \(M\setminus S\). In the anti-first coefficient convention put
+\[
+\begin{gathered}
+I_q=J_{\rm out}^{-1}p_*J_{\rm in},\qquad\\
+\operatorname{Tr}_q=(-1)^{N(q-N)}I_q.
+\end{gathered}
+\tag{W.12}
+\]
+The input holomorphic coefficient block is ordered before any remaining block. The trace is zero below \(q=N\). V.4 proves by compactly supported Stokes/duality that \(I\delta=\delta I\), including the zero boundary case, and hence that \(\operatorname{Tr}:p_!I[N]\to I_{\rm out}\) is a chain map with positive residue scalar at \(q=N\).
+
+The map on relative cones is **not** componentwise the same sign. It is
+\[
+\begin{gathered}
+Q_N(a,b)=\bigl(\operatorname{Tr}_q a,\;\\
+(-1)^N\operatorname{Tr}_{q-1}\\
+(b|_{p^{-1}(B\setminus Z)})\bigr),\qquad\\
+(a,b)\in p_!C_S^q.
+\end{gathered}
+\tag{W.13}
+\]
+It is a map \(p_!C_S[N]\to C_Z\). For its second component the chain-map identity is
+\[
+\begin{gathered}
+(-1)^N\operatorname{Tr}_q\\
+((-1)^N(ra-\delta b))\\
+=r\operatorname{Tr}_qa\\
+-\delta((-1)^N\operatorname{Tr}_{q-1}b).
+\end{gathered}
+\]
+The first component is the identity already proved for (W.12). This verifies all degrees and the cone shift. In particular, for \(N=1,q=2\) the map is \((a,b)\mapsto(-I_2a,-I_1b)\). Omitting the second minus would change the connecting class.
+
+Equations (W.6), (W.8) and (W.13) are the cup/augmentation/excision/trace roofs used here. Their maps commute with the holomorphic augmentations, with support forgetting and with restriction to the output complement. R.6–R.7 consequently identify their composite with the canonical support-to-proper-image morphism followed by the normalized holomorphic trace. This is exactly the operation specified by Microhyp Proposition 3.1.4 and Theorem 3.1.6. Its sign is fixed by the chain maps and the positive one-coordinate residue, not by the evaluation of a contour.
+
+If proper source representatives change by \(de\) in the unshifted cone, their outputs change by
+\[
+ Q_N(de)=(-1)^N d\,Q_N(e).
+ \tag{W.14}
+\]
+This shift sign will be used for collar changes.
+
+#### W.4. Complete one-normal-coordinate geometry
+
+First take \(N=1\), with output \(t\), input \(s\), kernel support
+\(A=\{s-t\in\mathbf R_{\le0}\}\), and input holomorphic domain
+\[
+\begin{gathered}
+\Omega=\{\,\operatorname{Re}s\\
+<-g(|\operatorname{Im}s|)\,\},\qquad\\
+g(0)=0,\quad\\
+g\text{ convex and}\\
+\text{ nondecreasing}.
+\end{gathered}
+\tag{W.15}
+\]
+We choose \(g\) from the convex, \(o(r)\) cofinal family of U.21; in particular it is continuous and \(\Omega\) is convex. Intersect with the actual coefficient disc \(D\). Let \(B\) be a much smaller disc about zero and set \(Z=B\setminus\Omega\), \(B_{\rm in}=p_s^{-1}(D\setminus\Omega)\). This convexity is retained when using the straight-segment formula (W.21).
+
+On \(S=A\cap B_{\rm in}\), the input imaginary part equals \(\operatorname{Im}t\) and
+\[
+ -g(|\operatorname{Im}t|)\le\operatorname{Re}s\le\operatorname{Re}t.
+ \tag{W.16}
+\]
+After shrinking \(B\), these intervals form a closed proper subset inside \(B\times D'\), \(\overline{D'}\subset D\). The inverse image of a compact output set is the closed set of these bounded intervals with matching imaginary part, contained in a compact subset of \(D'\). Also \(p(S)\subset Z\): if \(t\in\Omega\), all lower real input points at the same imaginary part are in \(\Omega\).
+
+Choose real numbers \(L<a_0<0\), all inside \(D\), and a small \(\epsilon>0\), with the full closed tube
+\[
+\begin{gathered}
+\{L-\epsilon\le\operatorname{Re}s\le a_0+\epsilon,\\
+\ |\operatorname{Im}s|\le\epsilon\}\Subset D\cap\Omega.
+\end{gathered}
+\tag{W.17}
+\]
+This is possible because the real compact segment is strictly negative and \(g(0)=0\). Shrink \(B\) to have \(|t|<\epsilon'\ll\min(\epsilon,|a_0|)\). Take a smooth real function \(\theta\) which is zero for \(r\le L\), equals one for \(r\ge a_0\) in the relevant part of \(D\), and whose transition is contained in \((L,a_0)\). Multiply \(\theta(\operatorname{Re}s)\) by compact cutoffs in the input imaginary and far-right directions, equal to one on an open neighbourhood of the portion of \(A\) over \(B\) with \(\operatorname{Re}s\ge L\). A further left cutoff can be placed below \(L\), where \(\theta\) and its derivatives are zero. The resulting \(\eta(s)\) has compact support in \(D'\), equals one near \(S\), and, on \(A\) over \(B\), is exactly \(\theta(\operatorname{Re}s)\). Thus every occurrence of \(\delta\eta\) on \(A\) is in the strictly interior tube (W.17). No cutoff touches the singular input boundary.
+
+Let \(A_0(t,s)\) be an actual holomorphic kernel coefficient on the common product, and let
+\[
+\begin{gathered}
+T=A_0(t,s)\,\\
+\bigl(-\frac1{2\pi i}\bar\partial\log(s-t)\bigr)\\
+\otimes ds.
+\end{gathered}
+\tag{W.18}
+\]
+Its full realization is the positive ray density of U.5, with the complete antiholomorphic normal \(d\overline{(s-t)}\). It is a closed degree-one current supported on \(A\). The Cauchy kernel will be considered separately below.
+
+#### W.5. One-coordinate trace and the actual coboundary
+
+Let \(f\) be **any** holomorphic function on \(D\cap\Omega\). On the output complement define the smooth function
+\[
+\begin{gathered}
+G(t)=I_1(\eta Tf)\\
+=\int_{L+i\,\operatorname{Im}t}^{t}\\
+\theta(\operatorname{Re}s)\,A_0(t,s)f(s)\,ds,
+\end{gathered}
+\tag{W.19}
+\]
+where the path is horizontal. The integral exists for each allowed output and is smooth there: every local compact set of outputs has its entire integration set compactly inside the input domain. This assertion needs no estimate as the output approaches its excluded boundary.
+
+Localizing (W.9) gives \((\delta\eta\wedge Tf,\eta Tf)\). Formula (W.13) and compactly supported fibre differentiation give its output
+\[
+ Q_1L_\eta c_0=(-\delta G,-G).
+ \tag{W.20}
+\]
+Here the first component is a current on **all** of \(B\). It only uses \(f\) on (W.17), since \(\delta\eta\) on the ray is supported there. The expression \(-\delta G\) initially denotes its restriction to \(B\cap\Omega\).
+
+Let the anchored holomorphic Volterra function be
+\[
+ V(t)=\int_{a_0}^{t}A_0(t,s)f(s)\,ds.
+ \tag{W.21}
+\]
+The straight segment is contained in the convex input domain. It can equivalently be replaced by \(a_0\to a_0+i\,\operatorname{Im}t\to t\); the small vertical segment is in (W.17), and a primitive on the convex domain proves equality of these paths.
+
+The following function is defined smoothly on the **full** output neighbourhood:
+\[
+\begin{gathered}
+E(t)=\\
+\int_{a_0}^{a_0+i\,\operatorname{Im}t}\\
+A_0(t,s)f(s)\,ds\\
+-\int_{L+i\,\operatorname{Im}t}^{a_0+i\,\operatorname{Im}t}\\
+\theta(\operatorname{Re}s)A_0(t,s)f(s)\,ds.
+\end{gathered}
+\tag{W.22}
+\]
+All its input points are in the fixed interior tube (W.17); \(A_0\) is holomorphic on the fixed product. Parametrizing the two compact segments gives smoothness with every derivative obtained on a compact subset of that tube. On the complement, \(V=G+E\), so \(\delta E=-\delta G\).
+
+For completeness this equality of the **full** first component can be checked without density or continuation across the unknown boundary. Put \(t=r+iy\), \(H(t,s)=A_0(t,s)f(s)\). For the second integral of (W.22), differentiation along \(y\) and integration by parts gives
+\[
+\begin{gathered}
+\bar\partial_t\int_L^{a_0}\\
+\theta(u)H(t,u+iy)\,du\\
+=-\tfrac12H(t,a_0+iy)\\
++\tfrac12\int_L^{a_0}\\
+\theta'(u)H(t,u+iy)\,du .
+\end{gathered}
+\]
+The first integral of (W.22) has derivative \(-\tfrac12H(t,a_0+iy)\). Their difference is therefore
+\[
+\begin{gathered}
+\bar\partial_t E(t)\\
+=-\tfrac12\int_L^{a_0}\\
+\theta'(u)H(t,u+iy)\,du .
+\end{gathered}
+\tag{W.23}
+\]
+The upper endpoint of (W.19), with \(\theta=1\), contributes zero to \(\bar\partial_tG\), and the same integration by parts gives
+\(\bar\partial_tG=\tfrac12\int_L^{a_0}\theta'H(t,u+iy)\,du\). Direct normal-block integration of \(-I_2(\delta\eta\wedge Tf)\) gives the negative of this expression: moving \(d\bar t\) before the fibre normal and using \(d\bar s\wedge ds=2i\,d\operatorname{Re}s\wedge d\operatorname{Im}s\) gives the same factor \(1/2\). Thus (W.23) identifies the first component on every output of \(B\), using only the compact tube.
+
+Combining (W.20)–(W.23) yields the requested equality of relative classes with an actual primitive:
+\[
+\begin{gathered}
+Q_1L_\eta c_0=(\delta E,E-V)\\
+=(0,-V)+d(E,0).
+\end{gathered}
+\tag{W.24}
+\]
+This is a cone/cup/excision/trace equality. The ordinary keyhole evaluation is unnecessary for its proof.
+
+Now use an arbitrary interior collar \(F=\chi f\) from (W.2). Define
+\(J_\chi=I_1(\eta TF)\), a smooth function on all of \(B\). Its input support is compactly inside \(\Omega\); parametrizing the ray against the smooth compact \(F\) proves smoothness, including at its endpoint. Applying (W.11), (W.14) gives
+\[
+\begin{gathered}
+Q_1L_\eta c_F\\
+=(0,-V)+d(E+J_\chi,0).
+\end{gathered}
+\tag{W.25}
+\]
+In particular its complement component is \(-G+J_\chi\), the trace of \(T(f-F)\) with the relative minus sign. Dropping that term would not produce (W.25). The input need never extend as a distribution.
+
+For the normalized Cauchy kernel \(T_{\rm C}\), the cutoff is one with all derivatives zero near \(s=t\), for every \(t\in B\). Therefore \(L_\eta(0,T_{\rm C}f)=(0,T_{\rm C}f)\), its first component is zero, and (W.13) gives \((0,-f)\). Finite derivatives of its diagonal current give \((0,-\partial_t^kf)\) by U.7. The same collar correction is (W.25) with the Volterra term replaced by \(f\) or its indicated derivative.
+
+#### W.6. Changes of cutoffs, collars, anchors, and representatives
+
+Equation (W.7), followed by the relative trace, gives for \(c_0\)
+\[
+\begin{gathered}
+Q_N(L_{\eta'}-L_\eta)c_0\\
+=-d\bigl(I_N((\eta'-\eta)Tf),0\bigr).
+\end{gathered}
+\tag{W.26}
+\]
+The function in this primitive is smooth on all of the base. Over a compact base set, the part of \(A\) where the difference is nonzero is compact and avoids \(S\); it therefore has a finite covering by interior input tubes on which \(f\) is smooth. A partition on those tubes makes its coefficient a finite sum of smooth compact coefficients near the normal-current support. Parametrizing the translated ray and evaluating the finite diagonal derivatives proves smoothness of each fibre integral; the result is independent of the coefficient extensions away from \(A\). This includes arbitrary changes of the compact excision collar, not only the special \(\theta\)'s of W.4.
+
+For two interior \(F,F'\), their localized cups differ by
+\((-1)^Nd(\eta T(F'-F),0)\); their outputs differ by
+\[
+ d\bigl(I_N(\eta T(F'-F)),0\bigr).
+ \tag{W.27}
+\]
+This primitive is again smooth on the full base. Combined changes follow by adding these two proper primitives. There is no term left unaccounted for on the complement.
+
+Changing \(a_0\) to another strictly negative anchor \(a_1\) changes \(V\) by
+\(\int_{a_1}^{a_0}A_0(t,s)f(s)\,ds\), defined holomorphically on a full smaller output neighbourhood by the fixed negative-time tube. If this difference is \(H_0\), then \(c_{V+H_0}-c_V=d(-H_0,0)\). An extending input \(f_0\) has \(c_{f_0}=d(-f_0,0)\); (W.8), localization and (W.14) preserve this exactness. Its anchored output also extends holomorphically by the same fixed-product bound. These are the concrete quotient and germ compatibilities. Enlarging to a common cofinal U.21 support and restricting to common smaller coefficient products makes the same constructions compare two arbitrary input representatives.
+
+#### W.7. Ordered multi-normal tensor and trace
+
+Return to \(N=d+1\), with input \(v=(s,y)\), output \(u=(t,x)\), normal coordinates \(w_0=s-t\), \(w_j=y_j-x_j\), and kernel support \(A=Z_0\) of U.1. The input domain is the convex U.21 domain
+\(\Omega_g=\{\operatorname{Re}s<-g(|(\operatorname{Im}s,y)|)\}\).
+
+Take the ordered tensor of the one-normal negative-log/Cauchy classes and the finite spatial pole derivatives. Use the exact V.16 tensor-to-cube map and V.17 calibration
+\[
+ r_N=(-1)^{N(N-1)/2}.
+ \tag{W.28}
+\]
+Consequently \(T_N\), in anti-first coefficient notation, includes \(r_N\); its full form is the positive ordered complete-normal-block current U.14. The top cube entry of an ordered unsigned holomorphic representative is \(r_N(-1)^N\) times that representative. No double suspension is added to the **unshifted** between-kernel or kernel/input cup.
+
+All singular normal variables in this single kernel are independent. Their finite distributional derivatives and tensor product exist by V.2; holomorphic coefficients multiply them. The current contains every output antiholomorphic component \(d\overline{(v-u)}\) and is closed. In the action, its second factor is smooth. Thus this construction requires no product of distributions sharing a singular input boundary.
+
+On the support intersection \(S\), \(y=x\), \(\operatorname{Im}s=\operatorname{Im}t\), and
+\[
+\begin{gathered}
+-g(|(\operatorname{Im}t,x)|)\\
+\le\operatorname{Re}s\le\operatorname{Re}t.
+\end{gathered}
+\tag{W.29}
+\]
+The proof of properness and \(p(S)\subset Z\) is the closed-interval argument of W.4, with the unchanged compact spatial coordinates. Choose the full tube (W.17) also with \(|x|<\epsilon\); continuity and \(g(0)=0\) put its closure inside \(\Omega_g\). Take
+\(\eta(s,y)\) to be the time cutoff of W.4 times a compact spatial cutoff which is identically one on an open neighbourhood of every \(y=x\) over the smaller output product. All derivatives of this spatial cutoff vanish there. This \(\eta\) has support compactly inside the actual input product and equals one near \(S\).
+
+Now (W.8)–(W.14) apply with kernel degree \(N\) and input degree one. In source degree \(q=N+1\), localization of (W.9) and the cone trace give, for every \(N\),
+\[
+\begin{gathered}
+Q_NL_\eta c_0=(-\delta G,-G),\\
+\qquad G=I_N(\eta T_Nf).
+\end{gathered}
+\tag{W.30}
+\]
+Indeed the source components are
+\((-1)^{N+1}\delta\eta\wedge T_Nf\) and
+\((-1)^{N+1}\eta T_Nf\).
+The first trace sign is \((-1)^N\); the second is
+\((-1)^N\operatorname{Tr}_N=(-1)^NI_N\). Both become a minus. Raw integration commutes with \(\delta\), so the first component is \(-\delta G\). These signs use \(r_N\) inside \(T_N\) once and the unshifted coefficient cup once.
+
+Ordered spatial Cauchy integration is an equality of these currents, U.7–U.8, and evaluates the finite spatial derivatives. Since the spatial cutoff is flat on their support, it introduces no derivative terms. For a U.10 kernel its value on the output complement is
+\[
+\begin{gathered}
+G(t,x)=\sum_{\beta\in B}\\
+b_{0,\beta}(t,x)\partial_x^\beta f(t,x)\\
++\sum_{\beta\in B}\int_{L+i\,\operatorname{Im}t}^{t}\\
+\theta(\operatorname{Re}s)A_\beta(t,s,x)\\
+\partial_x^\beta f(s,x)\,ds.
+\end{gathered}
+\tag{W.31}
+\]
+Only the negative-time terms have cutoff tails. Define \(E(t,x)\) by the finite sum of (W.22), with
+\(A_0(t,s)f(s)\) replaced by
+\(A_\beta(t,s,x)\partial_x^\beta f(s,x)\).
+The full negative-time tube is holomorphic also in \(x\), so this is smooth on the full output product and has no additional \(\bar\partial_x\) term. Formula (W.23) proves its full \(\bar\partial_t\) identity. Therefore (W.24) becomes
+\[
+\begin{gathered}
+Q_NL_\eta c_0\\
+=(0,-V_P)+d(E,0),\quad\\
+V_P=\sum_{\beta}b_{0,\beta}\partial_x^\beta f\\
++\sum_{\beta}\int_{a_0}^{t}\\
+A_\beta(t,s,x)\partial_x^\beta f(s,x)\,ds.
+\end{gathered}
+\tag{W.32}
+\]
+This is U.22 with its unchanged positive sign. For an arbitrary interior \(F=\chi f\), put \(J_\chi=I_N(\eta T_NF)\). It is smooth on the full output product: all inputs are in a compact interior set, spatial derivatives are finite, and the ray evaluation against a smooth compact coefficient can be differentiated by ordinary compact-segment calculus. Equations (W.11) and (W.14) again cancel the two factors \((-1)^N\), giving
+\[
+\begin{gathered}
+Q_NL_\eta c_F\\
+=(0,-V_P)+d(E+J_\chi,0).
+\end{gathered}
+\tag{W.33}
+\]
+This proves the full ordered tensor/trace extension and the actual collar coboundary with the conventions of §§5.34–5.35.
+
+#### W.8. Actual analytic tails, finite positive orders, and scope
+
+For every \(\beta\) the coefficient \(A_\beta\) is the actual normally convergent U.11 series on one common product, bounded by U.12. There are only finitely many \(\beta\). Choose \(B,D',L,a_0,\eta,\chi\) and the negative-time tube before evaluating that series. Its finitely many derivatives converge uniformly on every compact set used by the trace and the corrections. Multiplication by the fixed finite-order normal current is continuous on these bounded smooth-coefficient sets: by the definition of a finite-order distribution its value is bounded by finitely many coefficient derivatives on the compact support of each test. Consequently all the above identities hold for the actual negative tails and their trace, not merely termwise formal expansions. There is no boundary bound on \(f\); only compact interior bounds enter.
+
+Finite positive time orders are normalized finite derivatives of the diagonal Cauchy current, just as U.7 treats the spatial derivatives. The cutoff is one with all derivatives zero near that diagonal, so their localization has no first component and their relative trace is the positive connecting class of the ordinary indicated derivative. Output holomorphic multipliers and finite output derivatives commute with the cup augmentations and trace: test-function transposition proves this for the currents, and proper support allows integration by parts without a boundary term. Derivatives commute literally with \(L_\eta\) for the chosen input-only cutoffs of W.4/W.7. For a general base-dependent cutoff and a first-order holomorphic coordinate derivative \(D\), the exact replacement is
+\[
+\begin{gathered}
+{}[D,L_\eta]=dK_D+K_Dd,\qquad\\
+K_D(a,b)=((D\eta)b,0).
+\end{gathered}
+\]
+The coefficient \(D\eta\) vanishes near \(S\), so the primitive extends by zero and has proper support. Expansion gives first component \((D\eta)a+\delta(D\eta)\wedge b\), and second component \((D\eta)b\), which are precisely the commutator. Iterating this identity gives the corresponding homotopy for finite higher derivatives. Thus derivative compatibility with arbitrary controlled roofs holds on cohomology. This proves the same equality after the finite left time shift used to put an arbitrary element of the stated polynomial ring \(R\) into U.10. In particular the already identified ordinary \(h\)-primitive and \(\partial_t\) actions are inverse after quotienting the holomorphic anchor correction.
+
+Thus every input in the stated unrestricted directional degree-one quotient, and every ordinary finite polynomial directional operator in the stated finite polynomial scope, has canonical action equal to U.22. Equations (W.24), (W.25), (W.32), (W.33), and the proper primitives (W.26)–(W.27) are the requested explicit comparison and independence data. The result uses the full-resolution and cup/trace proofs in §§5.34–5.35; it does not re-certify unrelated dependencies.
+
+![Exact collar geometry and cone comparison](assets/collar-comparison.png)
+
+**Figure W.1.** Exact illustrative slice \(g=0\), \(L=-1.8\), \(a_0=-0.8\), allowed output \(t=-0.20+0.10i\), and a second output \(t_+=0.20-0.08i\). The latter fibre has proper intersection \(S_{t_+}=[0,0.20]-0.08i\). The shaded finite transition window \([-1.6,-1.0]\times[-0.125,0.125]\) lies compactly inside the dashed negative-time tube; only that tube supplies the full-neighbourhood correction \(E\) in W.22. The right panel keeps \(F-f\) and records the cup, localization and shifted trace leading to W.33. The exact coordinates are retained in the reproducible figure source supplied with the lesson. It illustrates W.3, W.5 and W.7; it is not a numerical proof or a claim that the general \(g\) vanishes. Human-source context: Micro-hyperbolic systems §3.1 and HolIII III.1/IV.2/IV.5 above.
+
+No full convergent-\(z\) \(E\) ring, infinite-order extension, arbitrary derived action, arbitrary \(E\)-valued off-support homotopy transfer, propagation, module separation, finite D-type theorem, pole recovery, intrinsic order, full C1, or analytic proper-regularity theorem follows here. Those interfaces remain outside this proof.
+
+
+### 5.38. Convergent spatial symbols and supported thick-cone currents
+
+This section constructs a normally convergent, canonically calibrated supported current for every actual order-zero symbol, with a normal distribution-order bound independent of the number of spatial Taylor terms. Its complete current construction is E.1–E.3. Normal-localization independence is proved in [§5.39,NL.1–NL.7](#5-39-canonical-normal-localization-of-convergent-spatial-symbols). The full canonical product and unrestricted-input action remain required in E.4; a limit of exact polynomial identities alone does not prove them.
+
+The actual coefficient ring and factorial bounds are [§§5.19–5.22](#5-19-actual-factorial-growth-symbols-and-ordered-jets) and [§5.30, F.1](#5-30-actual-polynomial-flatness-and-reconstruction-after-finite-realization). The complete smooth/current resolutions and support comparisons are [§5.34, R.1–R.7](#5-34-full-current-resolutions-and-controlled-proper-image-comparison). The finite complement cube, connecting signs and ordered coefficient-line calibration are [§5.35, V.1–V.6](#5-35-relative-cones-unshifted-cup-and-the-normalized-trace). The finite-spatial polynomial kernel comparison is [§5.36, U.1–U.4](#5-36-canonical-finite-polynomial-line-cone-kernels); its unrestricted-growth input proof is [§5.37, W.1–W.8](#5-37-interior-collars-and-the-canonical-directional-action). Each is a complete earlier programme proof in its stated scope.
+
+Free human comparison sources specifying the intended kernel/cohomology object and cone are Kashiwara–Schapira, [Micro-hyperbolic systems](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/Microhyp.pdf), §3.1, and Kashiwara–Kawai, [HolIII](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), III.1 and IV.2. Every comparison used in this section is proved below or at the exact earlier programme loci just listed.
+
+#### E.1. The analytic coefficient and a genuinely thicker proper cone
+
+Put \(N=d+1\), \(u=(t,x)\), \(v=(s,y)\), and use normal coordinates
+\(w=s-t\), \(\zeta_j=y_j-x_j\). The input coefficient frame is
+\(ds\wedge dy_1\wedge\cdots\wedge dy_d\), ungraded before the trace.
+An actual order-zero symbol has, on one base neighbourhood and one cotangent polydisc,
+\[
+\begin{gathered}
+P=\sum_{n\ge0,\ \beta\in\mathbf N^d}p_{n,\beta}(u)h^nz^\beta,\\
+|p_{n,\beta}|\le B C^n n!r_z^{-|\beta|}.
+\end{gathered}
+\tag{E.1}
+\]
+These coefficient estimates hold on every smaller compact base polydisc, with fixed \(B,C,r_z>0\). Here is the Cauchy step explicitly. R.2 proves the Green formula and deleted-circle normalization. Apply that formula to a holomorphic function divided by its displacement from an interior point. The integral off that point is zero, while the inner positively oriented circle tends to \(2\pi i\) times its value there; this gives the Cauchy integral formula. Iterate it on a product of coordinate circles and expand each denominator geometrically on a smaller polydisc. The coefficient \(p_{n,\beta}\) is the integral of \(p_n\) times the ordered powers \(z_j^{-\beta_j-1}\), divided by \((2\pi i)^d\). The circle lengths cancel one inverse radius in each variable, giving the bound in (E.1) from the factorial estimate for \(p_n\). Differentiating the base Cauchy formula a fixed finite number of times on a strictly smaller product supplies the same estimate with a finite additional constant. All these choices use one common neighbourhood.
+
+Define the unsigned ordered holomorphic coefficient
+\[
+\begin{gathered}
+K_P=\frac1{(2\pi i)^N}\\
+\left\{\begin{gathered}\frac{p_{0,0}(u)}{w\prod_j\zeta_j}\\-\log w\!\sum_{n+|\beta|\ge1}\\\frac{\begin{gathered}p_{n,\beta}(u)\beta!\\(-w)^{n+|\beta|-1}\end{gathered}}{\begin{gathered}(n+|\beta|-1)!\\\prod_j\zeta_j^{\beta_j+1}\end{gathered}}\end{gathered}\right\}.
+\end{gathered}
+\tag{E.2}
+\]
+The logarithm is principal, cut along the nonpositive real ray. Select
+\(a_j>r_z^{-1}\). This coefficient is holomorphic on the intersection of
+\[
+\begin{gathered}
+U_0=\{w\notin\mathbf R_{\le0}\},\\
+U_j=\{|\zeta_j|>a_j|w|\}\\
+(1\le j\le d).
+\end{gathered}
+\tag{E.3}
+\]
+Its complement support is the thin cone
+\[
+\begin{gathered}
+G_a=\left\{\begin{gathered}w\in\mathbf R_{\le0},\\|\zeta_j|\le a_j(-\operatorname{Re}w)\end{gathered}\right\}.
+\end{gathered}
+\tag{E.4}
+\]
+In dimension \(d=0\), omit all spatial products and sets.
+
+For clarity, normal convergence is proved here. If \(k=|\beta|\), then
+\(\beta!\le k!\) and
+\[
+\begin{gathered}
+\frac{n!\beta!}{(n+k-1)!}\le n+k\\
+(n+k\ge1).
+\end{gathered}
+\tag{E.5}
+\]
+Indeed \((n+k)!/(n!k!)\) is a positive integer. After taking absolute values in (E.2), factor out
+\(|w|^{-1}\prod_j|\zeta_j|^{-1}\). The remaining majorant is
+\[
+\begin{gathered}
+B\sum_{n,\beta,\ n+|\beta|\ge1}\\
+(n+|\beta|)\,q^n\prod_j\theta_j^{\beta_j},\\
+q=C|w|,\\
+\theta_j=\frac{|w|}{r_z|\zeta_j|}.
+\end{gathered}
+\tag{E.6}
+\]
+On a smaller time-difference disc, \(q<1/2\); on every compact subset of (E.3), each \(\theta_j<1\) uniformly. The sum is finite: multiply the geometric series and differentiate each one once. The same calculation with any fixed power of \(n+|\beta|\) proves locally uniform convergence of every fixed finite derivative. Thus (E.2) is an actual holomorphic coefficient.
+
+Choose \(\epsilon>0\) and \(A_j>a_j\), and enlarge the support to
+\[
+\begin{gathered}
+G=\left\{\begin{gathered}\operatorname{Re}w\le0,\\|\operatorname{Im}w|\le\epsilon(-\operatorname{Re}w),\\|\zeta_j|\le A_j(-\operatorname{Re}w)\end{gathered}\right\}.
+\end{gathered}
+\tag{E.7}
+\]
+This is a closed convex cone: it is the intersection of the halfspace and the epigraph inequalities of the convex absolute-value/norm functions. If a point and its negative belong to it, their real time is zero and every remaining coordinate is zero. It is therefore pointed. It satisfies
+\[
+\begin{gathered}
+|(w,\zeta)|\le\left(1+\epsilon^2+\sum_jA_j^2\right)^{1/2}\\
+(-\operatorname{Re}w)\quad\text{on }G.
+\end{gathered}
+\tag{E.8}
+\]
+In particular every nonzero cone point has strictly negative real time.
+The angular set \(G_a\cap S^{2N-1}\) is a compact subset of the relative interior of \(G\cap S^{2N-1}\): on \(G_a\) the imaginary-time inequality is strict, all spatial inequalities have the strict margin \(A_j-a_j\), and the real-time coordinate cannot vanish on the sphere.
+
+These inequalities also prove the required local properness for a two-kernel intersection. If \(a,b\in G\) and their sum ranges in a compact endpoint set, the two nonnegative numbers \(-\operatorname{Re}a\), \(-\operatorname{Re}b\) sum to the bounded number \(-\operatorname{Re}(a+b)\). Formula (E.8) bounds every intermediate coordinate. The intersection is closed in that bounded endpoint/fibre set, so it is compact in the full affine coordinate space. Choose the actual coefficient neighbourhood larger than this compact fibre family and shrink the endpoint neighbourhood once to place the whole family inside it. Compactness in that chosen source, rather than boundedness in an arbitrary open domain, proves properness. For a finite ordered list, the identical argument uses the sum of the nonnegative real-time lengths.
+
+#### E.2. A homogeneous angular partition and the exact Čech sign
+
+On the normal unit sphere, the open sets \(U_0,\ldots,U_d\) together with
+\(U_G=\operatorname{int}G\) cover the sphere. Indeed a point outside all the \(U_i\) belongs to \(G_a\), and the final assertion of E.1 places it in \(U_G\).
+Choose a smooth finite partition
+\(\psi_0,\ldots,\psi_d,\psi_G\) subordinate to this cover, with each support compactly contained in its corresponding angular open set.
+
+Here is the finite construction. At every sphere point select a sphere ball whose closed ball lies in one member of the cover and a smaller ball about the same point. Finitely many smaller balls cover the compact sphere. In a sphere coordinate chart use the bump
+\(\exp(-1/(1-|q|^2))\) for \(|q|<1\) and zero otherwise, rescaled to the larger ball, and positive on the smaller ball. Sum the bumps assigned to each cover member and divide by the strictly positive sum of all the bumps. The smoothness of the bump at its boundary follows by differentiating: each derivative is a polynomial in inverse powers of \(1-|q|^2\) times the exponential, which tends to zero faster than those powers. Finite compactness bounds every fixed derivative. This constructs the asserted partition without a sheaf or acyclicity assumption.
+
+Extend the partition by degree-zero homogeneity to the punctured normal space. If \(r=|(w,\zeta)|\), each normal derivative of order \(j\) is bounded by a constant times \(r^{-j}\). This follows by differentiating the radial projection to the sphere; its \(j\)-th derivatives have degree \(-j\) and bounded angular coefficients. Outside \(G\), \(\psi_G=0\), so \(\sum_{i=0}^d\psi_i=1\).
+
+Set
+\[
+\begin{gathered}
+\omega_\psi=\sum_{i=0}^{N-1}(-1)^i\psi_i\\
+\bar\partial\psi_0\wedge\cdots\wedge\\
+\widehat{\bar\partial\psi_i}\wedge\cdots\wedge\bar\partial\psi_{N-1},\\
+F_P=r_N(N-1)!\,K_P\,\omega_\psi,\\
+r_N=(-1)^{N(N-1)/2}.
+\end{gathered}
+\tag{E.9}
+\]
+For \(N=1\), the empty wedge is one, so \(F_P=\psi_0K_P\).
+Attach the holomorphic input frame to \(F_P\) exactly once.
+
+Every term in (E.9) is supported in a compact angular subset of the full intersection \(U_0\cap\cdots\cap U_d\): the undifferentiated factor has support in its own \(U_i\), and each differentiated factor has support in its own \(U_j\). Consequently the term, initially using (E.2) on that intersection, extends by zero smoothly across the other punctured normal points. This extension never evaluates a logarithm on its cut. Compact angular containment also supplies uniform strictly smaller bounds \(\theta_j<1\) in (E.6) on all these supports.
+
+The factor in (E.9) is forced by the exact cone convention, rather than selected afterwards by its action. The unsigned \(K_P\) denotes ordinary top cube coefficient \(r_N(-1)^NK_P\) and ordinary full-cone complement Čech coefficient \(-r_NK_P\), by V.15–V.17. Write the usual alternating Čech contraction as
+\((hc)_{i_0\ldots i_{r-1}}=\sum_j\psi_jc_{ji_0\ldots i_{r-1}}\), on the complement of \(G\).
+With total differential \(d_C+(-1)^r\bar\partial\), subtracting the differential of \(hc\) sends a holomorphic Čech \(r\)-cocycle to
+\((-1)^r\bar\partial hc\) in Čech degree \(r-1\).
+Repeated descent therefore gives sign
+\((-1)^{1+\cdots+(N-1)}=r_N\).
+Applied to the complement coefficient \(-r_NK_P\), the resulting relative-cone complement coefficient is
+\(-(\bar\partial h)^{N-1}K_P\).
+
+Expanding the finite alternating sums gives
+\[
+\begin{gathered}
+(\bar\partial h)^{N-1}K_P\\
+=r_N(N-1)!\,K_P\omega_\psi.
+\end{gathered}
+\tag{E.10}
+\]
+The following local-entry calculation proves (E.10) in every normal dimension. Let the top alternating cochain be \(c_{0\ldots N-1}=K_P\) and put \(A^j=(\bar\partial h)^jc\). For an increasing index list \(I\) of length \(N-j\), let \(J\) be its increasing complement, and let \(\varepsilon(J,I)\) be the permutation sign of their concatenation. Then
+\[
+\begin{gathered}
+A_I^j=(-1)^{j(j-1)/2}j!\,\\
+\varepsilon(J,I)K_P\\
+\bigwedge_{\ell\in J}\bar\partial\psi_\ell.
+\end{gathered}
+\tag{E.10a}
+\]
+For \(j=0\) this is the top cochain. To expand \(j\) consecutive contractions, choose the ordered list of the \(j\) deleted indices. Its coefficient has the alternating sign of that list followed by \(I\). Each new antiholomorphic differential acts on the left, so their wedge appears in the reverse deletion order. Reversing the list contributes \((-1)^{j(j-1)/2}\). Sorting the deleted indices contributes the same permutation sign to both coefficient and wedge, so those two signs cancel. Every one of the \(j!\) orderings therefore gives the same term displayed in (E.10a). This proves the formula by the full finite expansion, without extrapolating dimension checks.
+
+At \(j=N-1\), \(I=(i)\) and \(\varepsilon(J,i)=(-1)^{N-1-i}\). Hence
+\[
+\begin{gathered}
+A_i^{N-1}=r_N(-1)^i(N-1)!\\
+K_P\bar\partial\psi_0\wedge\cdots\wedge\\
+\widehat{\bar\partial\psi_i}\wedge\cdots\wedge\bar\partial\psi_{N-1}.
+\end{gathered}
+\tag{E.10b}
+\]
+On the complement of \(G\), the partition relations are \(\sum_i\psi_i=1\) and \(\sum_i\bar\partial\psi_i=0\). Substitute the second into \(\omega_\psi\); every summand becomes its coefficient \(\psi_j\) times the same signed wedge \((-1)^i\bigwedge_{j\ne i}\bar\partial\psi_j\). Their coefficients sum to one. Every local entry in (E.10b) is therefore \(r_N(N-1)!K_P\omega_\psi\), proving (E.10). For \(N=1\), \(\psi_0=1\) on the complement and the same identity holds immediately.
+
+Thus the actual complement representative is \((0,-F_P)\). The positive connecting convention sends it to \((\bar\partial F_P,0)\) whenever \(F_P\) extends as a current to the normal origin. The following section supplies that extension with a quantitative bound.
+
+#### E.3. Local integrability, supported current and actual tail convergence
+
+On the compact angular supports in E.2, the geometric estimate (E.6) and the fixed angular separation from \(w=0\) and each \(\zeta_j=0\) imply, on every compact output base,
+\[
+\begin{gathered}
+|K_P|\le C_0r^{-N}\\
+(1+|\log r|),\\
+|F_P|\le C_1r^{-(2N-1)}\\
+(1+|\log r|).
+\end{gathered}
+\tag{E.11}
+\]
+The constants include the finite partition bounds and the actual coefficient bound. The multiplication term has the first bound without a logarithm. All terms with \(n\ge1\) are less singular; the \(n=0\), unbounded-\(\beta\) sum is controlled by the geometric factors in (E.6). There is no infinite derivative of a spatial delta distribution in this construction.
+
+The normal space has real dimension \(2N\). Polar integration of the second bound is at most a constant times
+\(\int_0^R(1+|\log r|)\,dr\), which is finite. Hence \(F_P\) is a locally integrable \((0,N-1)\)-coefficient form, and has its literal locally integrable extension to the origin. In particular
+\[
+ T_P=\bar\partial F_P
+ \tag{E.12}
+\]
+is a distributional \((0,N)\)-coefficient current of order at most one in the normal variables, locally uniformly over each compact output base. For a compactly supported test form, its value is defined by transposing the differential onto that test form. The \(L^1\) bound on \(F_P\) bounds the value by a constant times its first derivatives. The derivative bound is independent of the number of spatial Taylor terms. The full antiholomorphic differential, including output variables, is used.
+
+The current is closed because \(\bar\partial^2=0\) on test forms. It is supported in \(G\). Away from the origin all coefficients in E.9 are smooth, and direct differentiation gives
+\(\bar\partial\omega_\psi=N\bar\partial\psi_0\wedge\cdots\wedge\bar\partial\psi_{N-1}\).
+Outside \(G\), differentiating \(\sum_i\psi_i=1\) makes this wedge zero. The coefficient \(K_P\) is holomorphic wherever its multiplier is nonzero. Thus \(T_P\) vanishes outside \(G\), and the only new extension point, the origin, belongs to \(G\).
+
+By E.2, the relative representative \((0,-F_P)\) on the complement has the calibrated full-cone Čech class \(-r_NK_P\). Adding the literal relative boundary \(d(F_P,0)\) gives \((T_P,0)\). The full resolution comparison R.1–R.7 consequently identifies (E.12) with the canonical supported class specified by (E.2), after enlargement from \(G_a\) to \(G\). This proves the class construction, rather than identifying it from a solution action.
+
+For actual convergence, truncate (E.1) in \(n\) and \(|\beta|\), while retaining its holomorphic base coefficients. On the fixed angular supports, the geometric tail in (E.6) tends to zero uniformly after factoring the common radial bound in (E.11). Dominated polar integration therefore gives \(F_{P_m}\to F_P\) in \(L^1\) on each compact normal/output set. Transposing one differential gives \(T_{P_m}\to T_P\) as currents, with a common first-order test-function bound.
+
+Output differentiation with the input held fixed includes normal derivatives. In the coordinates \((u,w,\zeta)\),
+\[
+\begin{gathered}
+\left.\partial_t\right|_{s,y}=\left.\partial_t\right|_{w,\zeta}-\partial_w,\\
+\left.\partial_{x_j}\right|_{s,y}=\left.\partial_{x_j}\right|_{w,\zeta}-\partial_{\zeta_j}.
+\end{gathered}
+\tag{E.13}
+\]
+The coordinate transformation is linear, so the constant normal differential forms and input holomorphic frame introduce no coefficient derivative. Expanding a fixed output derivative of order \(k\) gives finitely many mixed fixed-normal base and normal derivatives. For the base factors, a smaller common base and the coefficient Cauchy estimate retain the \(L^1\) convergence of the primitives. Transpose each normal factor onto the test form. This proves convergence of the actual output derivatives as currents, with a common normal distribution-order bound at most \(k+1\). It does not claim \(L^1\) convergence of their normal derivatives as functions.
+
+This provides a uniform current representative for full convergent spatial order-zero symbols. Finite positive time orders can be treated by applying their finite output derivatives to these currents, which preserves closedness and support and gives a finite distribution order. The explicit supported normal-generator and presentation primitives in [§5.39,NL.2–NL.7](#5-39-canonical-normal-localization-of-convergent-spatial-symbols) prove independence of that presentation.
+
+#### E.4. The remaining product and action step
+
+The independent-normal distribution tensor of V.2 applies to the two full currents in (E.12), and E.1 supplies an actual locally proper thick-cone intersection. These facts define their canonical unshifted cup and normalized trace using R/V. They do not yet prove its equality with the symbol product.
+
+The exact equality for every finite spatial polynomial follows from U.1–U.4. The convergent current construction in E.3 gives actual limits of those polynomial representatives. To deduce equality of canonical classes from that limit, one must provide a uniformly controlled proper primitive for their differences, or compute the full canonical finite Čech/trace roof on a fixed common angular cover and establish its normally convergent equality with (E.2) for \(P\circ Q\). Exactness of each approximating difference by itself is insufficient: no closed-range or continuity theorem for the relevant cohomology quotient has been proved. No such theorem is being silently used.
+
+For unrestricted directional input, the chosen thick cone also changes the spatial input geometry. The finite-spatial-current argument of W.7 cannot be reused as an unbounded sum of spatial delta derivatives. A common-domain Cauchy contour on the thick cone, the explicit smooth-input relative augmentation and a full-output collar primitive remain necessary. The full-ring comparison must prove those estimates and the nested composition domains on a single neighbourhood before its action is accepted.
+
+Every original infinite-order, propagation, module-separation, finite D-type, finite-pole, intrinsic-order, C1 and arbitrary analytic proper-regularity obligation remains required.
+
+![Temporal and spatial sections of the precise thick cone](assets/thick-cone-sections.png)
+
+*Exact sections of (E.7) with \(\epsilon=1/4\), \(a=2\), \(A=3\): the temporal section sets \(\zeta=0\); the spatial section sets \(\operatorname{Im}w=0\) and \(\operatorname{Im}\zeta=0\). The dashed thin support lies in the relative interior of the thick cone on every normal unit sphere. The depicted fibre interval uses real final normal length \(2\), so each intermediate nonnegative real-time length lies between \(0\) and \(2\). These are sections and a real slice, rather than the whole complex cone. Bounds and properness are proved in E.1; the angular-cutoff and distribution arguments are E.2–E.3. Reproducible source retains every coordinate.*
+
+
+The exact figure has a full-resolution PNG, SVG, editable plotting source and coordinate data. Its mathematical proof is E.1–E.3; free human cone comparison is HolIII IV.2 and Micro-hyperbolic systems §3.1, linked above.
+
+
+### 5.39. Canonical normal localization of convergent spatial symbols
+
+This section proves both normal-generator products, the calibrated diagonal unit and two-sided inverse, and independence of every finite time-order presentation of an actual convergent-spatial symbol. All correction terms are literal supported relative-cone primitives. General symbol-pair multiplication and the canonical unrestricted-input action are separate requirements.
+
+The actual coefficient algebra, common-domain growth and normal conjugation are proved in [§§5.19–5.22](#5-19-actual-factorial-growth-symbols-and-ordered-jets), with the precise finite-order coefficient class in [§5.28,Q.8](#5-28-convergent-contact-quantization-and-whole-germ-generic-position). The full current/smooth resolution and controlled proper support maps are [§5.34,R.1–R.7](#5-34-full-current-resolutions-and-controlled-proper-image-comparison); the calibrated complement cube, ungraded frame and all-degree cup/trace are [§5.35,V.1–V.6](#5-35-relative-cones-unshifted-cup-and-the-normalized-trace). The actual convergent-spatial current and complete derivative bounds are [§5.38,E.1–E.3](#5-38-convergent-spatial-symbols-and-supported-thick-cone-currents). Each cited programme locus contains its complete proof. The finite polynomial inverse correction is also explicit in [§5.36,U.17–U.18](#5-36-canonical-finite-polynomial-line-cone-kernels); the proof below supplies the full convergent-spatial and auxiliary-choice extension.
+
+Free human comparison sources are Kashiwara–Schapira, [Micro-hyperbolic systems](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/Microhyp.pdf), §3.1, and Kashiwara–Kawai, [HolIII](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), III.1 and IV.2. Every additional argument used here is proved below.
+
+#### NL.1 The actual shifts and their common domains
+
+Keep \(N=d+1\), output \(u=(t,x)\), input \(v=(s,y)\), \(w=s-t\), \(\zeta =y-x\), \(h=\tau ^{-1}\), \(z=\xi /\tau\). The ungraded coefficient frame is \(\eta _{\mathrm{in}}=ds\wedge dy_1\wedge \cdots \wedge dy_d\). Write \(\delta\) for the full antiholomorphic differential, including output variables. The relative cone has
+
+\[
+ d(a,b)=(\delta a,ra-\delta b).
+\tag{NL.1}
+\]
+
+Let \(P=\sum _{n,\beta }p_{n,\beta }(u)h^nz^\beta\) be actual order zero on one common coefficient domain, with \(|p_{n,\beta }|\le BC^n n!r_z^{-|\beta |}\) on a chosen compact base. Define
+
+\[
+\begin{gathered}
+H_LP=h\circ P,\\
+H_RP=P\circ h,\\
+q_{0,\beta}^{L}=q_{0,\beta}^{R}=0.
+\end{gathered}
+\tag{NL.2}
+\]
+
+The exact §5.19 Leibniz rule gives, for \(r\ge 1\),
+
+\[
+\begin{gathered}
+q^L_{r,\beta}=\sum_{n+a+1=r}\\
+(-1)^a\partial_t^a p_{n,\beta},\\
+q^R_{r,\beta}=p_{r-1,\beta}.
+\end{gathered}
+\tag{NL.3}
+\]
+
+Indeed \(\partial _\tau ^a h=(-1)^a a!h^{a+1}\); its paired base derivative is \(\partial _t^a\) and the \(a!\) cancels the Leibniz denominator. No \(\xi\) derivative of \(h\) occurs. Right multiplication by \(h\) has no base derivative correction. In particular
+
+\[
+ q^L_{r,\beta}+\partial_tq^L_{r-1,\beta}=p_{r-1,\beta}.
+\tag{NL.4}
+\]
+
+Choose a base Cauchy margin \(\rho >0\). Then \(|\partial _t^a p_{n,\beta }|\le B C^n n!a!\rho ^{-a}r_z^{-|\beta |}\). Since \(n+a=r-1\) and \(n!a!\le (r-1)!\), the nonnegative binomial expansion bounds (NL.3) by
+
+\[
+\begin{gathered}
+|q^L_{r,\beta}|\le B\\
+(C+\rho^{-1})^{r-1}(r-1)!r_z^{-|\beta|}.
+\end{gathered}
+\tag{NL.5}
+\]
+
+Thus both shifts are actual order-zero symbols with one common spatial radius; both have zero index-zero coefficient. A fixed finite list of shifts and finite coefficient derivatives uses one smaller common base, one common spatial radius, and one larger time-growth constant. Shrink the time-difference disc once for that finite list. These choices precede all subsequent infinite sums.
+
+In the actual finite-order ring, \(\tau =h^{-1}\). The exact rule gives
+
+\[
+\begin{gathered}
+\tau\circ Q=\tau Q+\partial_tQ,\\
+Q\circ\tau=\tau Q.
+\end{gathered}
+\tag{NL.6}
+\]
+
+Together with (NL.4) this proves \(\tau \circ H_LP=P\). The right identity \(H_RP\circ \tau =P\) follows immediately. The inverse and normality assertions in §5.22.1 hold in the actual common-domain factorial class, with the explicit Cauchy bounds stated there. We use that actual localization, not a formal completion.
+
+#### NL.2 The supported principal-log derivative correction
+
+In one normal variable \(w=a+ib\), let \(\log w\) be principal. Its upper-minus-lower jump at \(a<0\) is \(2\pi i\). Off the cut \(\partial _w \log w=1/w\) and \(\partial _{\bar w}\log w=0\). Integration by parts in the two half-planes gives the additional boundary terms
+
+\[
+\begin{gathered}
+\partial_w\log w=\frac1w\\
++\pi\mathbf1_{a<0}\delta(b),\\
+\partial_{\bar w}\log w\\
+=-\pi\mathbf1_{a<0}\delta(b).
+\end{gathered}
+\tag{NL.7}
+\]
+
+The sign in the first formula is \((-i/2)(2\pi i)=+\pi\); the sign in the second is \((i/2)(2\pi i)=-\pi\). A deleted circle of radius \(\epsilon\) contributes \(O(\epsilon (1+|\log \epsilon |))\) and hence no origin point mass. The coefficient \(1/w\) is its literal locally integrable distribution. This proves both formulas by tests, including their endpoint behavior.
+
+Put
+
+\[
+\begin{gathered}
+L(w)=-\frac{\log w}{2\pi i},\\
+C(w)=\frac1{2\pi i w},\\
+B_{\log}(w)=\frac1{2i}\mathbf1_{a<0}\delta(b).
+\end{gathered}
+\tag{NL.8}
+\]
+
+Since \(D_{\mathrm{out}}=\partial _t|_s=-\partial _w\) and \(D_{\mathrm{in}}^{-}=-\partial _s=-\partial _w\) on this coefficient,
+
+\[
+\begin{gathered}
+D_{\rm out}L=D_{\rm in}^{-}L=C+B_{\log},\\
+D_{\rm out}(\delta L)-\delta C\\
+=D_{\rm in}^{-}(\delta L)-\delta C\\
+=\delta B_{\log}.
+\end{gathered}
+\tag{NL.9}
+\]
+
+\(B_{\log}\) is supported on the negative ray and is an order-zero measure coefficient. Therefore the difference in (NL.9) is the literal relative boundary \(d(B_{\log},0)\). Suppressing \(B_{\log}\) would be incorrect as an identity of currents.
+
+For \(d\) spatial coordinates let \(C_j=(2\pi i\zeta _j)^{-1}\) and \(S_j=\delta C_j\), with their positive Cauchy normalization proved in R.2 and U.6. Let \(r_N=(-1)^{N(N-1)/2}\). The calibrated line-current representatives of \(h\) and \(1\) are
+
+\[
+\begin{gathered}
+S_h=r_N\,\delta L\\
+\wedge S_1\wedge\cdots\wedge S_d\otimes\eta_{\rm in},\\
+I=r_N\,\delta C\\
+\wedge S_1\wedge\cdots\wedge S_d\otimes\eta_{\rm in}.
+\end{gathered}
+\tag{NL.10}
+\]
+
+All independent distribution tensors exist by V.2. Their full differential forms contain \(d\bar w=d\bar s-d\bar t\) and \(d\bar \zeta _j=d\bar y_j-d\bar x_j\). Define the explicit degree-\((N-1)\) primitive
+
+\[
+\begin{gathered}
+\mathcal B_{\log}=r_N B_{\log}\\
+S_1\wedge\cdots\wedge S_d\otimes\eta_{\rm in}.
+\end{gathered}
+\tag{NL.11}
+\]
+
+It is supported in the line cone \(G_0\) and
+
+\[
+\begin{gathered}
+D_{\rm out}S_h-I\\
+=D_{\rm in}^{-}S_h-I=\delta\mathcal B_{\log},\\
+(D_{\rm out}S_h-I,0)\\
+=d(\mathcal B_{\log},0).
+\end{gathered}
+\tag{NL.12}
+\]
+
+The same equation holds after support enlargement to E.1's thick cone. The ordinary top complement coefficients of these line currents agree with the calibrated coefficients for \(h\) and \(1\) in E.2 by V.15–V.17. The relative resolution comparison thus identifies their classes with \(\kappa _0(h)\), \(\kappa _0(1)\). This comparison uses the exact cone/cube maps and the explicit V.4 telescoping homotopy, rather than a solution action.
+
+#### NL.3 The spatial face left by a time derivative
+
+Let \(c_N=(2\pi i)^{-N}\), \(S_\beta =\beta !/\prod _j\zeta _j^{\beta _j+1}\), and
+
+\[
+\begin{gathered}
+M_P=\frac{p_{0,0}(u)}{\prod_j\zeta_j},\\
+A_P=\sum_{n+|\beta|\ge1}p_{n,\beta}S_\beta\\
+\frac{(-w)^{n+|\beta|-1}}{(n+|\beta|-1)!}.
+\end{gathered}
+\tag{NL.13}
+\]
+
+The accepted coefficient is \(K_P=c_N(M_P/w-\log w A_P)\). For \(Q=H_LP\) or \(H_RP\), \(q_{0,\beta }=0\), so \(K_Q=-c_N \log w A_Q\). Use respectively
+
+\[
+\begin{gathered}
+D_L=\partial_t|_{s,y}\\
+=\partial_t|_{w,\zeta}-\partial_w,\\
+D_R=-\partial_s=-\partial_w.
+\end{gathered}
+\tag{NL.14}
+\]
+
+For \(D_L\), the coefficient of \((-w)^{n+|\beta |-1}/(n+|\beta |-1)!\) in \(D_LA_Q\) is \(q^L_{n+1,\beta }+\partial _tq^L_{n,\beta }=p_{n,\beta }\). For \(D_R\) it is \(q^R_{n+1,\beta }=p_{n,\beta }\). The excluded \(n=|\beta |=0\) term is constant before the normal derivative and contributes nothing. Normal convergence and the fixed derivative bounds in E.1 and (NL.5) justify this equality of actual holomorphic coefficients. Hence, for either ordered pair \((Q,D)\),
+
+\[
+\begin{gathered}
+DA_Q=A_P,\\
+DK_Q-K_P=R_{Q,P},\\
+R_{Q,P}=c_N\frac{A_Q-M_P}{w}.
+\end{gathered}
+\tag{NL.15}
+\]
+
+\(R_{Q,P}\) is holomorphic on the spatial face \(V=U_1\cap \cdots \cap U_d\), including across the logarithm's time cut. For \(d=0\), \(V\) is the whole local normal space. To see the removable \(w\) factor termwise, \(q_{1,0}=p_{0,0}\); this is exactly \(A_Q\)'s single term with exponent zero. Every remaining term has \(r+|\beta |\ge 2\) and therefore contains a factor \(w\). After division the series is
+
+\[
+\begin{gathered}
+R_{Q,P}=-c_N\\
+\sum_{r+|\beta|\ge2}q_{r,\beta}S_\beta\\
+\frac{(-w)^{r+|\beta|-2}}{(r+|\beta|-1)!}.
+\end{gathered}
+\tag{NL.16}
+\]
+
+The sum runs over \(r\ge 1\). In particular it has no logarithm and no negative power of \(w\).
+
+Choose \(|\zeta _j|>a_j|w|\) with \(a_j>r_z^{-1}\), and \(C_Q|w|<1/2\). For \(r\ge 2\), (E.5) bounds the sum by a fixed multiple of
+
+\[
+\begin{gathered}
+\prod_j|\zeta_j|^{-1} C_Q^2\\
+\sum_{r'\ge0,\beta}(r'+2+|\beta|)\\
+(C_Q|w|)^{r'}\prod_j\theta_j^{\beta_j},\\
+\theta_j=\frac{|w|}{r_z|\zeta_j|}.
+\end{gathered}
+\]
+
+For \(r=1\) and \(|\beta |\ge 1\), use \(\beta !/|\beta |!\le 1\). The sum is bounded by a constant times \(\prod |\zeta _j|^{-1}[(\prod (1-\theta _j)^{-1}-1)/|w|]\). Expanding the product one factor at a time bounds the bracket by a constant times \(\sum _j(r_z|\zeta _j|)^{-1}\) on compact angular subsets of \(V\). This expression remains bounded as \(w\to 0\) when the spatial denominators stay separated. These are geometric majorants for (NL.16), including all derivatives on smaller compacts, so the assertion of holomorphy on \(V\) is literal.
+
+Write \(r=|(w,\zeta )|\). On any compact angular subset of \(V\) and a smaller output base,
+
+\[
+ |R_{Q,P}|\le C r^{-N}.
+\tag{NL.17}
+\]
+
+On compact angular subsets of the full intersection, \(Q\)'s missing index-zero coefficient gives the stronger bound
+
+\[
+\begin{gathered}
+|K_Q|\le C r^{1-N}\\
+(1+|\log r|).
+\end{gathered}
+\tag{NL.18}
+\]
+
+The factor \(C_Q|w|\) in E.6's \(r\ge 1\) sum supplies the additional \(r\) in (NL.18). The bounds are uniform in actual spatial and time tails, on the chosen fixed domains.
+
+#### NL.4 A literal supported primitive for both shifts
+
+Use a single E.2 homogeneous partition \(\psi _0,\cdots ,\psi _d,\psi _G\) and the same thick cone \(G\) for the finite list under consideration. Write \(\omega =\omega _\psi\) and \(\lambda _N=r_N(N-1)!\). Then \(F_P=\lambda _NK_P\omega\) and \(T_P=\delta F_P\).
+
+Assume first \(N\ge 2\). Put
+
+\[
+\begin{gathered}
+\eta_\psi=\psi_1\bar\partial\psi_2\wedge\cdots\wedge\bar\partial\psi_d\\
+(N=2:\ \eta_\psi=\psi_1),
+\end{gathered}
+\tag{NL.19}
+\]
+
+and define the degree-\((N-2)\) transgression
+
+\[
+\begin{gathered}
+\Theta_D=\sum_{0\le i<j\le d}(-1)^{i+j+1}\\
+(\psi_iD\psi_j-\psi_jD\psi_i)\\
+\bar\partial\psi_0\wedge\cdots\wedge\\
+\widehat{\bar\partial\psi_i}\wedge\cdots\wedge\\
+\widehat{\bar\partial\psi_j}\wedge\cdots\wedge\bar\partial\psi_d.
+\end{gathered}
+\tag{NL.20}
+\]
+
+The wedge keeps its original increasing order. \(\eta _\psi\) is supported compactly in the spatial face \(V\) on the sphere. Every summand of \(\Theta _D\) is supported compactly in the full intersection: its two undifferentiated or \(D\)-differentiated indices and its \(N-2\) remaining differentiated indices cover all \(N\) indices. Therefore \(R\eta _\psi\) and \(K_Q\Theta _D\) extend by zero smoothly on the punctured normal space on their respective stated domains. The latter never evaluates \(\log w\) on its cut.
+
+On the complement of \(G\), \(\sum \psi _i=1\), \(\sum D\psi _i=0\), \(\sum \delta \psi _i=0\). There \(\omega =\delta \psi _1\wedge \cdots \wedge \delta \psi _d\), whence \(\delta \eta _\psi =\omega\). Substituting \(\psi _0=1-\sum _{i\ge 1}\psi _i\), \(D\psi _0=-\sum _{i\ge 1}D\psi _i\), and \(\delta \psi _0=-\sum _{i\ge 1}\delta \psi _i\) into (NL.20) gives
+
+\[
+\begin{gathered}
+\Theta_D=\sum_{j=1}^d(-1)^{j-1}D\psi_j\\
+\bar\partial\psi_1\wedge\cdots\wedge\\
+\widehat{\bar\partial\psi_j}\wedge\cdots\wedge\bar\partial\psi_d.
+\end{gathered}
+\tag{NL.21}
+\]
+
+To verify the substitution, fix the wedge omitting a given \(j\). The terms with either omitted index zero supply the coefficients involving \(\psi _0\) and \(\psi _j\); the remaining terms replace their \(\delta \psi _0\) by the unique nonrepeating \(\delta \psi\) factor. Their signed coefficients add to \((\sum \psi _i)D\psi _j-\psi _j\sum D\psi _i=D\psi _j\). Reordering to the original increasing wedge gives exactly \((-1)^{j-1}\). This checks every coefficient of (NL.21). Differentiating (NL.21) gives \(\delta \Theta _D=D\omega\), because \(D\) commutes with \(\delta\). Thus both forms \(\omega -\delta \eta _\psi\) and \(D\omega -\delta \Theta _D\) vanish on the complement of \(G\).
+
+Define
+
+\[
+\begin{gathered}
+\mathcal B_{Q,P,D}=\lambda_N\\
+\{\begin{gathered}R_{Q,P}(\omega-\delta\eta_\psi)\\+K_Q(D\omega-\delta\Theta_D)\end{gathered}\}\\
+\otimes\eta_{\rm in}.
+\end{gathered}
+\tag{NL.22}
+\]
+
+This is a literal supported degree-\((N-1)\) current, rather than an unnamed existence assertion. Its support is contained in \(G\). By homogeneity, \(|\eta _\psi |\le Cr^{-(N-2)}\), \(|\Theta _D|\le Cr^{-(N-1)}\), \(|\omega |\le Cr^{-(N-1)}\), and \(|D\omega |+|\delta \Theta _D|\le Cr^{-N}\). With (NL.17)–(NL.18), every coefficient of (NL.22) is bounded by \(Cr^{-(2N-1)}(1+|\log r|)\), hence is locally integrable exactly as in E.3. It has local order zero; its \(\delta\) derivative has local normal order at most one.
+
+Also define
+
+\[
+\begin{gathered}
+\mathcal H_{Q,P,D}=\lambda_N\\
+(R_{Q,P}\eta_\psi+K_Q\Theta_D)\otimes\eta_{\rm in}.
+\end{gathered}
+\tag{NL.23}
+\]
+
+It has coefficient bound \(Cr^{-(2N-2)}(1+|\log r|)\). A deleted normal sphere has area proportional to \(r^{2N-1}\); its boundary term is consequently \(O(r(1+|\log r|))\to 0\). The classical derivative away from zero is locally integrable with bound \(Cr^{-(2N-1)}(1+|\log r|)\). Integration by parts therefore identifies its full distributional \(\delta\) with that classical derivative and introduces no origin correction. Since \(R\) and \(K_Q\) are holomorphic wherever their cutoffs occur,
+
+\[
+\begin{gathered}
+DF_Q-F_P\\
+=\mathcal B_{Q,P,D}+\delta\mathcal H_{Q,P,D}.
+\end{gathered}
+\tag{NL.24}
+\]
+
+Here \(DF_Q\) is also literal locally integrable: \(F_Q\) has the weaker singularity \(Cr^{-(2N-2)}(1+|\log r|)\), and the same deleted-sphere argument identifies its first derivative. The frame and normal differential basis are constant under the linear input/output coordinate transformation. All coefficients and all output antiholomorphic components are retained. Applying \(\delta\) to (NL.24) proves
+
+\[
+\begin{gathered}
+DT_Q-T_P=\delta\mathcal B_{Q,P,D},\\
+(DT_Q-T_P,0)\\
+=d(\mathcal B_{Q,P,D},0).
+\end{gathered}
+\tag{NL.25}
+\]
+
+For \(N=1\), \(R\) is holomorphic on the full local product. Set
+
+\[
+\begin{gathered}
+\mathcal B_{Q,P,D}=\\
+\{\begin{gathered}R_{Q,P}(\psi_0-1)\\+K_QD\psi_0\end{gathered}\}\otimes ds.
+\end{gathered}
+\tag{NL.26}
+\]
+
+The first term is supported in \(G\) because \(\psi _0=1\) outside \(G\); the second is supported there because \(D\psi _0=0\) outside \(G\). Both are locally integrable. In this case \(DF_Q-F_P= B+R\otimes ds\), and \(\delta R=0\) on the full neighbourhood. Equation (NL.25) follows directly. This treats \(d=0\) without introducing a fictitious negative-degree form.
+
+Taking classes in (NL.25) proves both actual canonical shift identities
+
+\[
+\begin{gathered}
+D_{\rm out}\kappa_0(h\circ P)=\kappa_0(P),\\
+-\partial_s\kappa_0(P\circ h)=\kappa_0(P).
+\end{gathered}
+\tag{NL.27}
+\]
+
+The spatial face \(R\) and the cutoff correction both remain explicitly in the supported primitive. No exactness argument is passed through a cohomology quotient limit.
+
+#### NL.5 The canonical unit and products with the normal generator
+
+The class of \(I\) in (NL.10) is the normalized diagonal unit. For the canonical cup followed by trace, V.13 converts the coefficient cup and shifted trace to the positive full-block distribution convolution. Tensor the independent normal variables \(a,b\) and apply \(I\) in the \(a\) variables. Its normalized delta evaluation sets the corresponding intermediate point to the output, and leaves \(T_P(u,b)\) with scalar one. On the other side it sets the intermediate point to the input and again leaves \(T_P\). This is an equality on arbitrary compact smooth tests, by the distribution tensor construction and the positive R.2 Cauchy normalization; it does not require holomorphic solution tests. The diagonal has a one-point proper fibre, so the controlled proper roof is available. Thus
+
+\[
+\begin{gathered}
+{}[I]*\kappa_0(P)\\
+=\kappa_0(P)*[I]=\kappa_0(P).
+\end{gathered}
+\tag{NL.28}
+\]
+
+Let \(J=D_{\mathrm{out}} I=-\partial _s I\), the normalized time derivative of the diagonal unit. Differentiating that same test evaluation gives
+
+\[
+\begin{gathered}
+{}[J]*\kappa_0(P)=D_{\rm out}\kappa_0(P),\\
+\kappa_0(P)*[J]=-\partial_s\kappa_0(P).
+\end{gathered}
+\tag{NL.29}
+\]
+
+For the right formula the delta derivative is transposed against the intermediate/input variable and gives the displayed minus sign. The input holomorphic frame is constant, and proper compact support permits the transposition without a boundary. For the left formula the surviving derivative is the derivative in the final output variable with input held fixed. The smooth parameter bounds of corrected E.13 justify every compact derivative of the full current families in these evaluations.
+
+Equation (NL.12) now gives the two-sided inverse identities with their complete literal primitives:
+
+\[
+\begin{gathered}
+{}[J]*\kappa_0(h)=[I]\\
+=\kappa_0(h)*[J],\\
+\kappa_0(1)=[I],\quad\kappa(\partial_t)=[J].
+\end{gathered}
+\tag{NL.30}
+\]
+
+Associativity here is the canonical current operation, not an asserted full-symbol product identity. For three factors use three independent normal variable sets, tensor their finite-order distributions with their smooth parameter coefficients, and the E.1 bound on all intermediate nonnegative time lengths. Over a compact endpoint set their support is compact inside the chosen outer source. V.2's repeated evaluation and V.4–V.5's ordered trace signs make the two repeated traces agree on tests. This proves the required associativity for the germ operation on these full current classes. No multiplication formula for general symbol pairs enters this argument.
+
+Multiply the first identity in (NL.27) on the left by \(\kappa _0(h)\), using (NL.29)–(NL.30); multiply the second on the right. Associativity and the unit give
+
+\[
+\begin{gathered}
+\kappa_0(h\circ P)\\
+=\kappa_0(h)*\kappa_0(P),\\
+\kappa_0(P\circ h)\\
+=\kappa_0(P)*\kappa_0(h).
+\end{gathered}
+\tag{NL.31}
+\]
+
+These are special canonical products with the normal generator, proved for the full convergent spatial class. General \(P,Q\) products remain open.
+
+For completeness, at fixed normal coordinates \((\partial _t|_{s,y}+\partial _s)=\partial _t|_{w,\zeta }\), so differentiation of \(F_P\) gives the exact current identity
+
+\[
+\begin{gathered}
+D_{\rm out}T_P+\partial_sT_P\\
+=T_{\partial_t^{\rm coeff}P}.
+\end{gathered}
+\tag{NL.32}
+\]
+
+The right member differentiates only the holomorphic base coefficients \(p_{n,\beta }\); the angular partition is fixed. This proves compatibility with (NL.6), including the genuine time contraction. It also supplies the right-normal identity when a right positive time factor is represented by a left presentation.
+
+#### NL.6 Independence of finite time-order presentations
+
+For an actual finite-order symbol \(P\) choose a finite left presentation
+
+\[
+\begin{gathered}
+P=\tau^k\circ P_0,\\
+k\ge0,\quad P_0\in E_0,\\
+\kappa(P):=D_{\rm out}^{\,k}\kappa_0(P_0).
+\end{gathered}
+\tag{NL.33}
+\]
+
+The class is represented by the complete current \(D_{\mathrm{out}}^kT_{P_0}\), of common normal distribution order at most \(k+1\) on each chosen compact, by corrected E.13. Suppose also \(P=\tau ^l\circ Q_0\) and \(l\ge k\). Actual multiplication by \(h^l\) on the left and the actual inverse relation give \(Q_0=H_L^{l-k}P_0\). Put \(r=l-k\) and \(P_j=H_L^jP_0\). Choose one common domain, cone and angular partition for this finite list as in NL.1. Equation (NL.25) supplies \(B_j=B_{P_j,P_{j-1},D_{\mathrm{out}}}\) with
+
+\[
+ D_{\rm out}T_{P_j}-T_{P_{j-1}}=\delta B_j.
+\]
+
+The exact finite telescoping identity is
+
+\[
+\begin{gathered}
+D_{\rm out}^{r}T_{P_r}-T_{P_0}\\
+=\delta\left(\sum_{j=1}^{r}D_{\rm out}^{j-1}B_j\right).
+\end{gathered}
+\tag{NL.34}
+\]
+
+Expansion verifies it: consecutive terms \(D^{j}T_{P_j}\) and \(-D^{j-1}T_{P_{j-1}}\) cancel. After applying \(D_{\mathrm{out}}^k\), the difference between the two representatives in (NL.33) is therefore the literal relative boundary
+
+\[
+\begin{gathered}
+d\left(\begin{gathered}D_{\rm out}^{k}\sum_{j=1}^{r}\\D_{\rm out}^{j-1}B_j,\ 0\end{gathered}\right).
+\end{gathered}
+\tag{NL.35}
+\]
+
+Every derivative preserves support in \(G\). The primitive is a finite-order current of normal order at most \(l-1\), since each \(B_j\) is locally integrable and \(j-1+k\le l-1\). A later two-kernel proper trace uses its intersection with the fixed endpoint support, whose properness is the E.1 bound. The case \(k\ge l\) is obtained by exchanging the presentations. This proves independence, including equality of actual full-current classes, without assuming a closed-range theorem or faithful solution action.
+
+Linearity is immediate on a fixed common domain and partition, and different presentation orders may be raised to the same finite order by (NL.34). Thus (NL.33) is a well-defined complex-linear germ class map extending \(\kappa _0\). Equations (NL.29), (NL.31) and (NL.32) give its left and right normal-generator compatibility. Consequently the actual normal conjugation of §5.22.1 is carried to conjugation by the canonical two-sided inverse pair \([J],\kappa _0(h)\). This is the normal-localization interface needed to extend a future order-zero ring proof.
+
+#### NL.7 Germ restriction and all auxiliary choices
+
+For fixed coefficient representatives, cone, cover and partition, every displayed construction restricts literally on a smaller common base and normal neighbourhood. The Borel kernels converge normally and the primitives are actual locally integrable or finite-order currents. Distributional differentiation commutes with restriction. If two coefficient representatives define the same actual germ, their coefficient holomorphic functions agree on one smaller common connected coefficient domain for every \(n\); the identity theorem as used in §5.19 makes that one domain valid for the whole sequence. Their common Taylor coefficients and the actual normally convergent kernels then agree there.
+
+Partition independence also has an explicit supported primitive. On one common cover and cone, let \(\psi (q)=(1-q)\psi +q\phi\), \(0\le q\le 1\), including the \(G\)-member. Use (NL.20) with \(D=\partial _q\) and call it \(\Theta _q\). On the complement, \(\sum \psi (q)=1\) and \(\sum \partial _q\psi (q)=0\), so the same direct calculation gives \(\partial _q\omega _q=\delta \Theta _q\). For \(N\ge 2\) put
+
+\[
+\begin{gathered}
+B_{\psi,\phi}=\lambda_N\int_0^1\\
+K_P(\partial_q\omega_q-\delta\Theta_q)\,dq\\
+\otimes\eta_{\rm in},\\
+H_{\psi,\phi}=\lambda_N\int_0^1K_P\Theta_q\,dq\\
+\otimes\eta_{\rm in}.
+\end{gathered}
+\tag{NL.36}
+\]
+
+The first current is supported in \(G\). Here the \(q\)-variation has degree zero in normal coordinates, so \(\Theta _q\) has bound \(Cr^{-(N-2)}\). Thus \(H\) has coefficient bound \(Cr^{-(2N-2)}(1+|\log r|)\), while \(B\) has the integrable bound \(Cr^{-(2N-1)}(1+|\log r|)\). The deleted-sphere estimate used in NL.4 again removes any origin term, and \(F_\phi -F_\psi =B+\delta H\). Therefore
+
+\[
+\begin{gathered}
+T_\phi-T_\psi=\delta B_{\psi,\phi},\\
+(T_\phi-T_\psi,0)=d(B_{\psi,\phi},0).
+\end{gathered}
+\tag{NL.37}
+\]
+
+For \(N=1\) set \(B_{\psi ,\phi }=K_P(\phi _0-\psi _0)\otimes ds\); it is supported in \(G\) and gives the same literal boundary. This also proves partition independence for all finite output derivatives by transposition of the finite derivatives of (NL.37).
+
+For two initially different cones choose \(\epsilon _*\) and \(A_{*,j}\) strictly larger than both original sets of constants. The resulting \(G_*\) is pointed and contains both angular closed cone sets in its interior. Both \(G\)-cutoffs are compactly supported in \(\operatorname{int} G_*\) on the sphere. Both families \(\psi _i\) are subordinate to the wider opens \(|\zeta _j|>\min(a_j,a'_j)|w|\) and the same principal slit. For two scalar spatial radii representing the same germ, the larger radius is available on a smaller common base from its original representative, and \(\min(a_j,a'_j)>1/\max(r_z,r'_z)\). Thus \(K_P\) converges on this wider common full intersection. Use the larger of the finitely many time growth constants and shrink the time disc once. The convex partition path above is now legitimate on the common wider cover and \(G_*\), and (NL.37) proves equality after support enlargement. Equivalently the calibrated finite complement cubes refine to the same top holomorphic coefficient; both descriptions use the exact relative maps of R/V.
+
+This proves actual germ restriction and auxiliary-domain, cone and partition independence in the common supported kernel germ target. It is not an assertion that every symbol has one fixed domain or fixed cone at once. All finite localization presentations and their restriction maps agree after one common shrink and, when needed, one common support enlargement.
+
+The complete normal-localization interface is proved. Once the full order-zero cup/product equality is proved, (NL.30)–(NL.35) provide the actual canonical extension to the full finite-order ring by its normal localization. Until then \(\kappa\) is a well-defined canonical linear class map with proved normal-generator compatibility; general multiplicativity is not asserted. An unrestricted-input action still requires the common-domain contour, smooth-input relative augmentation, proper collar and full-output primitive. Infinite-order, propagation, separation, finite \(D\)-type, finite-pole, intrinsic-order, C1 and arbitrary analytic proper-regularity obligations remain outside this proof.
+
+![Principal-log ray correction and the exact canonical localization square](assets/localization-correction.png)
+
+*Exact upper and lower principal-log limits at the normal point \(w=-1\) are \(+i\pi\) and \(-i\pi\). Their jump creates the retained ray coefficient \(B_{\log}=(2i)^{-1}1_{a<0}\delta (b)\); the open endpoint marks absence of an origin point mass, while its closed distributional support includes zero. The approach arrows are schematic. The right square is the actual identity \(\partial _t\circ (h\circ P)=P\) and its canonical class identity, proved through the supported relative primitive (NL.22)–(NL.27). The figure is an original exact-limit and class-map illustration; it supplies no numerical distribution proof. Reproducible source and coordinate data are retained. Proof locators and free human-source context appear in the figure.*
+
+
+The figure has a full-resolution PNG, SVG, editable plotting source and coordinate data. Its exact proof locators are NL.2, (NL.7)–(NL.12), and NL.4, (NL.22)–(NL.27). The free human comparison sources are linked above.
+
+
+### 5.40. Ordinary degree-one evaluation for actual convergent spatial symbols
+
+Let \(p=(0;dt)\), with base coordinates \(u=(t,x)\in\mathbf C\times\mathbf C^d\), and put \(h=\tau^{-1}\), \(z=\xi/\tau\). We prove that every actual order-zero symbol defines a complex-linear endomorphism of the full directional degree-one holomorphic quotient, by an ordinary integral formula containing all spatial Taylor terms. The formula is independent of its anchor, domains and representatives. The ordinary integral operator for \(h\) has the ordinary time derivative as its two-sided inverse on that quotient.
+
+The actual coefficient class is [§5.19.1, (5.19a)–(5.19b)](#5-19-1-the-chart-and-the-convergence-class); its absolute Taylor norm and coefficient estimate are [§5.21.1, (5.21b)–(5.21c)](#5-21-1-an-absolute-taylor-version-of-the-product-norm). The actual normal element is [§5.22.1, (5.22a)–(5.22b)](#5-22-1-the-actual-normal-element). For the degree-one relative convention, see [§5.34, R.1, R.3 and R.6–R.7](#5-34-full-current-resolutions-and-controlled-proper-image-comparison) and [§5.35, V.1](#5-35-relative-cones-unshifted-cup-and-the-normalized-trace). The positive one-variable orientation agrees with [§5.36, U.2, (U.5)](#5-36-canonical-finite-polynomial-line-cone-kernels). Comparison with the canonical cup and proper trace, and multiplication for general symbol pairs, require the further arguments given in the later sections.
+
+#### PB.1. The full support quotient and cofinal convex complements
+
+Write \(t=T+iT'\), \(v=(T',x)\in\mathbf R^{2d+1}\), using the Euclidean norm. A closed support germ \(Z\) at zero is admissible if every limiting direction of \(Z\) at zero satisfies \(T\ge0\). Define
+
+\[
+\begin{gathered}
+C_p=\underset{Z,V}{\operatorname{colim}}\;\\
+\mathcal O(V\setminus Z)/\mathcal O(V).
+\end{gathered}
+\tag{PB.1}
+\]
+
+The maps are restriction to smaller neighbourhoods and enlargement of the support. The union of two admissible closed germs is admissible: every sequence in their union has a subsequence in one member, so every limiting direction belongs to one of the two allowed sets. Intersecting the neighbourhoods and taking that union therefore makes the system filtered.
+
+Every admissible support can be enlarged to one with a convex complement. First shrink a ball so that its points in \(Z\) with \(T<0\) satisfy \(-T\le |v|\). Otherwise a sequence tending to zero with \(-T>|v|\) has a normalized subsequential direction with strictly negative \(T\), contradicting admissibility. In particular there is no such point with \(v=0\). For sufficiently small \(r\), set
+
+\[
+\begin{gathered}
+e(r)=\sup\\
+\left(\begin{gathered}\{0\}\cup\\\left\{\begin{gathered}-T/|v|:(T,v)\in Z,\\T<0,\ 0<|v|\le r\end{gathered}\right\}\end{gathered}\right),\\
+g(r)=\int_0^{2r}e(s)\,ds.
+\end{gathered}
+\tag{PB.2}
+\]
+
+The radius is small enough that \(e\) is defined up to \(2r\). It is nondecreasing and bounded by one. If it did not tend to zero, choose points with \(|v|\to0\) and \(-T/|v|\) bounded below by a fixed positive number. The preceding bound forces \(T\to0\), and a normalized subsequence again has strictly negative \(T\). Thus \(e(r)\to0\).
+
+The integral makes \(g\) continuous, nondecreasing and convex, with \(g(0)=0\). Monotonicity gives
+
+\[
+\begin{gathered}
+r e(r)\le g(r)\le 2r e(2r),\\
+g(r)=o(r).
+\end{gathered}
+\tag{PB.3}
+\]
+
+Its one-sided slopes on a small interval are bounded by \(2e(2r)\) at that interval's outer radius. They can consequently be made arbitrarily small. The radial function \(v\mapsto g(|v|)\) is convex: use the triangle inequality, then monotonicity of \(g\), then its one-variable convexity. Hence
+
+\[
+\begin{gathered}
+\Omega_g=\{T<-g(|v|)\},\\
+Z_g=\{T\ge-g(|v|)\}
+\end{gathered}
+\tag{PB.4}
+\]
+
+are respectively convex open and closed. For a point of \(Z\) with \(T<0\), (PB.3) gives \(-T\le |v|e(|v|)\le g(|v|)\); points with \(T\ge0\) belong to \(Z_g\) too. Thus \(Z\subset Z_g\) as germs. Also \(Z_g\) is admissible: its negative \(T\)-coordinates satisfy \(-T\le g(|v|)=o(|v|)\), so every normalized limiting direction has \(T\ge0\). Intersecting \(\Omega_g\) with a smaller Euclidean ball preserves convexity. These complements form a cofinal family for every admissible support, rather than a single fixed wedge.
+
+For any chosen small \(L>0\), restrict \(g\) to a radius at which its slopes are at most \(L\), and extend it beyond that radius by the linear ray of slope \(L\). The extension is convex, nondecreasing and globally \(L\)-Lipschitz; it has the same \(o(r)\) germ. It satisfies \(g(r)\le Lr\). This supplies a convenient representative whenever a global Lipschitz notation is used below; all evaluations of the original input function remain inside its given small ball.
+
+The quotient (PB.1) is exactly the directional colimit of degree-one local support groups. Indeed the support long exact sequence contains
+
+\[
+\begin{gathered}
+\mathcal O(V)\longrightarrow\mathcal O(V\setminus Z)\\
+\longrightarrow H_Z^1(V,\mathcal O)\longrightarrow H^1(V,\mathcal O).
+\end{gathered}
+\]
+
+The colimit of the last groups over neighbourhoods of zero is zero. For an injective resolution \(I^\bullet\) of \(\mathcal O\), the colimit of \(\Gamma(V,I^\bullet)\) is its stalk complex \(I^\bullet_0\); exactness of filtered colimits gives \(H^1(I^\bullet_0)=0\). Taking the colimit in the displayed exact sequence gives the asserted quotient, and then the filtered colimit over admissible supports gives (PB.1). A holomorphic section supported in an admissible \(Z\) is zero: it vanishes on a nonempty negative-direction open subset, and the identity theorem applies on a connected small ball. In the relative convention \(d(a,b)=(\bar\partial a,ra-\bar\partial b)\) of §5.35, V.1, a quotient representative \(f\) corresponds to \((0,-f)\). This degree-one identification uses no vanishing assertion for higher directional cohomology or for a fixed arbitrary neighbourhood.
+
+#### PB.2. Actual coefficients and the order of choices
+
+Write \(E_0\) for the actual order-zero class of §5.19. An element has coefficient functions on one common base and cotangent neighbourhood:
+
+\[
+\begin{gathered}
+P=\sum_{n\ge0}h^n p_n(t,x,z),\\
+p_n(t,x,z)=\sum_{\beta\in\mathbf N^d}p_{n,\beta}(t,x)z^\beta.
+\end{gathered}
+\]
+
+Choose a closed base polydisc strictly inside that common neighbourhood and a cotangent polyradius \(r_z>0\) whose closed torus stays inside the coefficient domain. The factorial estimate of §5.19.1 and the Cauchy coefficient formula on that torus give
+
+\[
+\begin{gathered}
+|p_{n,\beta}(t,x)|\le B C^n n! r_z^{-|\beta|}\\
+(n\ge0,\ \beta\in\mathbf N^d)
+\end{gathered}
+\tag{PB.5}
+\]
+
+on the chosen base. Thus all functions \(p_{n,\beta}\) are defined on that same base neighbourhood. When \(d=0\), \(\beta=0\) is the only index, and \(r_z\) can be any positive constant for the following notation. This is a symbol expansion with factorial growth; it makes no assertion of numerical convergence of the series at a nonzero value of \(h\).
+
+Let \(f\) be holomorphic on \(\Omega_g\cap B_R\), with this ball inside the coefficient base. Put
+
+\[
+\begin{gathered}
+D=\max(1,d),\qquad\kappa=4/r_z,\\
+b=R/(16\sqrt D).
+\end{gathered}
+\]
+
+Choose \(a_0>0\), and then the small Lipschitz bound \(L\) as above, so that
+
+\[
+\begin{gathered}
+\kappa(5a_0/4)<b/2,\\
+C(5a_0/4)<1/2,\\
+a_0<R/16,\quad L\le1/8,\\
+L\sqrt D\,\kappa\le1/8,\quad LR<a_0/8.
+\end{gathered}
+\tag{PB.6}
+\]
+
+Here is a noncircular choice. Fix \(B,C,r_z,\kappa\) first. Choose a positive ratio \(\lambda=a_0/R\) with \(\lambda<1/16\) and \(5\kappa\lambda/4<1/(32\sqrt D)\). Require \(L<\min(1/8,1/(8\sqrt D\kappa),\lambda/8)\). Since the small-radius slopes of \(g\) tend to zero, shrink \(R\) until this requirement holds and extend \(g\) by slope \(L\) if needed. Shrink \(R\) further to arrange \(5C\lambda R/4<1/2\). Set \(a_0=\lambda R\). Every inequality in (PB.6) now holds. Fix the negative real anchor \(a=-a_0\).
+
+#### PB.3. One domain for every spatial derivative
+
+The target consists of points \((t,x)\in\Omega_g\) with
+
+\[
+ |t|<a_0/4,\qquad |x_j|<R/(8\sqrt D).
+\]
+
+At such a point define
+
+\[
+\begin{gathered}
+\mu=-\operatorname{Re}t\\
+-g(|(\operatorname{Im}t,x)|)>0,\\
+\delta_t=\min\{b/2,\mu/(4L\sqrt D)\},\\
+\delta_s=\delta_t+\kappa|t-s|,
+\end{gathered}
+\tag{PB.7}
+\]
+
+where \(s=a+\theta(t-a)\), \(0\le\theta\le1\). If \(L=0\), take \(\delta_t=b/2\). The time segment satisfies
+
+\[
+\begin{gathered}
+-\operatorname{Re}s\ge-\operatorname{Re}t+\tfrac12|t-s|,\\
+|\operatorname{Im}s-\operatorname{Im}t|\le |t-s|.
+\end{gathered}
+\]
+
+For the first inequality, the ratio is \((a_0+\operatorname{Re}t)/|t-a|\ge(3a_0/4)/(5a_0/4)>1/2\). For every \(y\) in the closed complex polydisc of radius \(\delta_s\) about \(x\), the change in \(v\) has norm at most \(|t-s|+\sqrt d\,\delta_s\). Consequently
+
+\[
+\begin{gathered}
+-\operatorname{Re}s-g(|(\operatorname{Im}s,y)|)\\
+\ge\mu+\tfrac12|t-s|-L|t-s|\\
+-L\sqrt d\,\delta_s\\
+\ge\tfrac34\mu+\tfrac14|t-s|>0.
+\end{gathered}
+\tag{PB.8}
+\]
+
+We used \(L\sqrt d\,\delta_t\le\mu/4\), \(L\le1/8\), and \(L\sqrt d\,\kappa\le1/8\). The radii are at most \(b\), because \(|t-s|\le|t-a|<5a_0/4\). Moreover \(|s|\le a_0<R/16\), \(|x|\le R/8\), and \(|y-x|\le\sqrt d\,b\le R/16\); thus \(|y|\le3R/16\) and \((s,y)\) lies strictly inside \(B_R\). The Lipschitz estimate was therefore used on points belonging to the actual input domain.
+
+For a compact target subset \(K\), \(\mu\) has a positive minimum and \(\delta_t\) has a positive lower bound. The union of the segments and their closed polydiscs is the continuous image of a compact set; (PB.8) and the preceding ball bounds place it compactly inside \(\Omega_g\cap B_R\). Let \(M_K\) bound \(f\) on that union. Cauchy's formula gives
+
+\[
+\begin{gathered}
+|\partial_x^\beta f(s,x)|\le M_K\beta!\delta_s^{-|\beta|},\\
+r_s=\frac{|t-s|}{r_z\delta_s}\le\frac14.
+\end{gathered}
+\tag{PB.9}
+\]
+
+These estimates use a single actual domain for all \(\beta\). No growth assumption is imposed near the input boundary. For \(d=0\) the spatial polydiscs and sums are absent; the same time-segment margin applies.
+
+#### PB.4. The complete ordinary sum and normal convergence
+
+Define, with the positive orientation from \(a\) to \(t\),
+
+\[
+\begin{gathered}
+\rho_a(P)f(t,x)=\\
+p_{0,0}(t,x)f(t,x)\\
++\sum_{\substack{n\ge0,\ \beta\in\mathbf N^d\\n+|\beta|\ge1}}p_{n,\beta}(t,x)\int_a^t\\
+\frac{(t-s)^{n+|\beta|-1}}{(n+|\beta|-1)!}\,\\
+\partial_x^\beta f(s,x)\,ds.
+\end{gathered}
+\tag{PB.10}
+\]
+
+The normal monomial \(h^n z^\beta\) here means \(n+|\beta|\) ordinary time primitives followed by the ordinary \(\beta\)-th spatial derivative, because \(z=\xi/\tau\). Repeated integration gives the displayed integral kernel: induction integrates \((t-s)^{m-1}/(m-1)!\) once more and gives \((t-s)^m/m!\). The only term with total index zero is multiplication by \(p_{0,0}\).
+
+For total index \(m=n+|\beta|\ge1\),
+
+\[
+ \frac{n!\beta!}{(n+|\beta|-1)!}\le n+|\beta|.
+ \tag{PB.11}
+\]
+
+Indeed \(\beta!\le|\beta|!\), and \(n!|\beta|!\le(n+|\beta|)!\). Put \(q=C|t-s|\). By (PB.5), (PB.9) and (PB.11), the sum of absolute integrands is bounded, for \(s\ne t\), by
+
+\[
+ \frac{BM_K}{|t-s|}\sum_{n+|\beta|\ge1}(n+|\beta|)q^n r_s^{|\beta|}.
+\]
+
+The identities \(\sum_\beta r^{|\beta|}=(1-r)^{-d}\) and \(\sum_\beta|\beta|r^{|\beta|}=dr(1-r)^{-d-1}\) follow by multiplying the \(d\) geometric series and differentiating. Separating the two parts of the last sum therefore gives
+
+\[
+\begin{gathered}
+BM_K\\
+\left\{\begin{gathered}\frac{C}{(1-q)^2(1-r_s)^d}\\+\frac{d}{\begin{gathered}(1-q)r_z\delta_s\\(1-r_s)^{d+1}\end{gathered}}\end{gathered}\right\}\\
+\le BM_K\\
+\left\{\begin{gathered}4C(4/3)^d\\+\frac{2d(4/3)^{d+1}}{r_z\delta_t}\end{gathered}\right\}.
+\end{gathered}
+\tag{PB.12}
+\]
+
+The apparent factor \(|t-s|^{-1}\) has cancelled against \(q\) or \(r_s\). The estimate extends to the endpoint \(s=t\); individual terms have nonnegative powers of \(t-s\). In particular the \(n=0,\ |\beta|\ge1\) terms have no endpoint divergence. We have \(q<1/2\), \(r_s\le1/4\) for every term, and the right side is uniform on \(K\).
+
+For an explicit uniform tail majorant, put \(q_0=5Ca_0/4<1/2\) and \(\delta_*=\min_K\delta_t>0\). Terms with \(n\ge1\) are bounded by
+\[
+ BM_K(n+|\beta|)C q_0^{\,n-1}4^{-|\beta|};
+\]
+terms with \(n=0,\ |\beta|\ge1\) are bounded by
+\[
+ BM_K\,\frac{|\beta|}{r_z\delta_*}\,4^{-(|\beta|-1)}.
+\]
+Both bounds are summable over their indicated indices, independently of the point and segment parameter. Multiplication by the segment length, at most \(5a_0/4\), therefore supplies a summable uniform majorant for the integrated terms. Thus (PB.10) converges absolutely and uniformly on every compact target set, including convergence of its tails.
+
+Each summand is holomorphic. To check this for its integral, parameterize \(s=a+\theta(t-a)\): on a compact target neighbourhood the segment and the required input polydiscs lie in a fixed interior compact, so the holomorphic integrand and its finite derivatives are bounded there uniformly in \(0\le\theta\le1\). Differentiation under the parameter integral is valid. Uniform convergence of holomorphic sums, and Cauchy's formula on a smaller target compact neighbourhood, give holomorphy and every finite termwise derivative of (PB.10). The spatial and time sums use the domains fixed in PB.2–PB.3 before either sum is taken.
+
+There is also the norm continuity needed for subsequent common-domain arguments. Fix the absolute Taylor norm \(\|P\|_{R',\epsilon}\) of §5.21.1, (5.21b), with the base polyradii containing the selected base compact and cotangent polyradii at least \(r_z\). Equation (5.21c) and the absolute Taylor coefficient bound give (PB.5) with
+
+\[
+ B=\tfrac12\|P\|_{R',\epsilon},\qquad C=2(d+1)/\epsilon^2.
+\]
+
+Writing \(\delta_*=\min_K\delta_t>0\) and \(\ell=5a_0/4\), (PB.12) implies
+
+\[
+\begin{gathered}
+\sup_K|\rho_a(P)f|\le\\
+\tfrac12\|P\|_{R',\epsilon}M_K\\
+\left[\begin{gathered}1+\ell\\\left\{\begin{gathered}4C(4/3)^d\\+\frac{2d(4/3)^{d+1}}{r_z\delta_*}\end{gathered}\right\}\end{gathered}\right].
+\end{gathered}
+\tag{PB.13}
+\]
+
+All constants and input compacts are fixed independently of the symbol's tails. The coefficient norm is the weighted absolute \(\ell^1\)-norm proved in §5.21.1 by (5.21f); finite coefficient-Taylor projections consequently converge in it. Equation (PB.13) gives continuity of their ordinary evaluations on these fixed compacts. It does not assert a composition-domain estimate for two operators; that estimate is proved separately in the later action section.
+
+#### PB.5. Anchor, extending-input and representative independence
+
+First consider two sufficiently small negative real anchors \(a,a'\) in one fixed input domain, with \(|a|,|a'|\le a_0\), and assume \(a<a'\). For target points on which both formulas are defined, convexity and path independence of holomorphic primitives give their difference by replacing \(\int_a^t-\int_{a'}^t\) with \(\int_a^{a'}\) in (PB.10). We prove that this entire infinite difference extends to a full neighbourhood of zero.
+
+Put \(\alpha_*=\min(|a|,|a'|)>0\), and on the fixed negative segment use spatial radius \(\delta(s)=\kappa|s|=4|s|/r_z\). Choose the full target neighbourhood with \(|t|<\min(\alpha_*/2,a_0/4)\), \(|x|<\kappa\alpha_*\), and smaller if needed for the coefficient base. Every point on these spatial polydiscs satisfies
+
+\[
+\begin{gathered}
+|y|\le\kappa(1+\sqrt d)|s|,\\
+g(|y|)\le L\kappa(1+\sqrt d)|s|\le |s|/4
+\end{gathered}
+\]
+
+when \(d\ge1\), by \(1+\sqrt d\le2\sqrt D\) and (PB.6). Their real input time is \(s<0\), so they lie strictly in \(\Omega_g\); their time and spatial bounds also put them compactly inside \(B_R\). For \(d=0\) the negative segment is already compactly inside the input domain. Furthermore
+
+\[
+\begin{gathered}
+\frac{|t-s|}{r_z\delta(s)}<3/8,\\
+C|t-s|<1/2,\qquad\delta(s)\ge\kappa\alpha_*>0.
+\end{gathered}
+\]
+
+The second inequality follows from \(|t|\le a_0/4\), \(|s|\le a_0\), and (PB.6). The geometric calculation of (PB.12), with these fixed strict bounds, proves absolute uniform convergence of the difference on a full neighbourhood containing zero. Its coefficients are holomorphic there; its input values lie in the fixed interior negative-time tube. The segment integral and the sum are therefore holomorphic on that full neighbourhood. Reversing the anchors changes only the orientation.
+
+An existing construction may consequently replace its anchor by any smaller negative anchor within its own input domain, changing the result only by an extending holomorphic function. For constructions initially using different small balls or cofinal majorants, first make this replacement in each original domain, then choose one common sufficiently small anchor for their comparison. This avoids requiring an old, more distant anchor to belong to a later restricted domain.
+
+If \(f\) extends holomorphically to a full neighbourhood of zero, choose such a smaller anchor inside that neighbourhood. Select a fixed positive spatial Cauchy radius there, and a full target neighbourhood whose segments and spatial polydiscs stay compactly inside the extending domain. Make both \(C|t-s|\) and \(|t-s|/(r_z\delta)\) less than \(1/2\). The same geometric estimate now has the fixed radius \(\delta>0\); it proves absolute uniform convergence across zero. The multiplication term extends as well. Thus an extending input has an extending output. The anchor comparison just proved gives this assertion also for the original allowable anchor.
+
+Finally, take two admissible support and input representatives of the same element of (PB.1). By the definition of the filtered quotient, after restriction to a common neighbourhood and enlargement to the union of the two supports, their difference is an extending holomorphic function. Enlarge that union to the cofinal convex support of PB.1. Replace their anchors by one common sufficiently small anchor as above and make one common choice of the coefficient base, cotangent radius and time constants. On this common complement (PB.10) is linear, so the extending-input result shows that the two outputs have the same quotient class. The Cauchy radii used in the proof do not occur in the formula; changing them or restricting the base gives the same formula on its common domain. Equivalent actual symbol representatives have all coefficient functions equal on one common neighbourhood by §5.19.1's definition, and their cotangent Taylor coefficients agree there by uniqueness of Taylor expansion. Their normally convergent evaluations therefore agree after the same common restriction.
+
+It follows that
+
+\[
+\begin{gathered}
+\rho(P)[f]=[\rho_a(P)f],\\
+\rho:E_{0,p}\longrightarrow\operatorname{End}_{\mathbf C}(C_p)
+\end{gathered}
+\tag{PB.14}
+\]
+
+is a well-defined complex-linear map. It is linear in both \(P\) and \([f]\), since a finite list uses one common coefficient domain, cofinal complement and anchor. The identity symbol has only \(p_{0,0}=1\), so \(\rho(1)\) is the identity endomorphism.
+
+#### PB.6. The elementary ordinary inverse
+
+Ordinary differentiation \(\partial_t\) is well defined on \(C_p\): it preserves holomorphy on each input complement, commutes with restriction and takes extending holomorphic functions to extending functions. For the symbol \(h\), (PB.10) is exactly
+
+\[
+ \rho_a(h)f(t,x)=\int_a^t f(s,x)\,ds.
+\]
+
+The time slice of the convex input domain contains the anchor and target segment. The fundamental theorem for holomorphic primitives, with the stated positive orientation, gives
+
+\[
+\begin{gathered}
+\partial_t\rho_a(h)f=f,\\
+\rho_a(h)\partial_t f=f-f(a,x).
+\end{gathered}
+\tag{PB.15}
+\]
+
+The anchor belongs to a full spatial tube inside the input domain: \(g(0)=0\) and \(a<0\), so \(g(|x|)<-a/2\) for sufficiently small \(x\). Hence \(f(a,x)\) is holomorphic on a full spatial neighbourhood of zero and, being independent of \(t\), extends on a full base neighbourhood. It is zero in \(C_p\). Both equations in (PB.15) consequently descend to
+
+\[
+\begin{gathered}
+\partial_t\,\rho(h)=1=\rho(h)\,\partial_t\\
+\quad\text{on }C_p.
+\end{gathered}
+\tag{PB.16}
+\]
+
+This proves the two-sided inverse of the ordinary integral operator on the quotient. The general composition theorem, its same-anchor nested-domain estimate, finite-order symbol presentation independence, and the comparison with the canonical relative cup and proper trace are established in the subsequent sections. No faithfulness assertion is used in the present construction.
+
+![Cofinal convex complement and the common Cauchy tube](assets/ordinary-action-prerequisites.png)
+
+*Exact real sections of PB.1–PB.3, for \(d=1\), \(\operatorname{Im}s=\operatorname{Im}x=0\). The left panel uses the admissible sample support \(T\ge-\alpha|v|^2\), for which \(e(r)=\alpha r\) and the constructed majorant is \(g(r)=2\alpha r^2\), within the displayed small ball. Its convex complement lies below the lower parabola. The right panel uses \(R=1\), \(r_z=32\), \(\kappa=1/8\), \(C=2\), \(L=1/2048\), \(a_0=1/128\), \(a=-1/128\), \(t=-1/1024\), and \(x=1/20\); here \(\alpha=L/4\), \(b=1/16\), and \(\delta_t=1/32\). The shaded intervals are the real sections of the complex spatial polydiscs of radius \(\delta_s=\delta_t+\kappa|t-s|\) along the fixed segment. Every displayed constant satisfies (PB.6); (PB.8) proves the positive margin for the full complex polydiscs. The vertical axes explicitly rescale the real time coordinate for legibility and do not alter the Euclidean metric in the proof. This is a section, not the full complex support. The reproducible plotting source and exact rational parameter data accompany the figure. Human context: Kashiwara–Schapira, [Micro-hyperbolic systems](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/Microhyp.pdf), §3.1, and Kashiwara–Kawai, [HolIII](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), IV.5; the estimates and cofinal construction are proved above.*
+
+
+The figure has a full-resolution PNG, SVG, editable plotting source and exact coordinate data.
+
+
+### 5.41. Canonical products for full convergent spatial symbols
+
+The actual canonical kernel of a convergent spatial symbol is compatible with the unshifted supported cup and normalized proper trace. Spatial Cauchy-shell representatives are constructed directly from the calibrated finite complement cube, and a locally integrable supported primitive controls their product difference. The proof retains every spatial Taylor coefficient and every mixed temporal and spatial contraction on one common neighbourhood. Explicit normal-localization and presentation primitives include finite positive time orders.
+
+The actual product and common-domain estimates are §5.19, §5.20 and §5.21.1, (5.21b)–(5.21f); the normal automorphism is §5.22.1, (5.22a)–(5.22b). Full resolutions and controlled proper excision are §5.34, R.1–R.7; the finite cube, unshifted cup and normalized trace are §5.35, V.1–V.6; and the one-coordinate normalizations and beta integral are §5.36, U.2 and U.4. The angular current and its convergence estimates are §5.38, E.1–E.3. Both full spatial shifts and the presentation primitives are §5.39, NL.2–NL.7. The target operations are those of [Micro-hyperbolic systems, §3.1](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/Microhyp.pdf) and [HolIII, III.1 and IV.2](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf); all arguments used here are proved in these proof loci.
+
+#### CP.1. Fixed domains, cutoffs, and the spatial shells
+
+Write \(N=d+1\), \(u=(t,x)\), \(v=(s,y)\), \(w=s-t\), \(\zeta=y-x\). The coefficient line is the **ungraded** ordered input frame
+\(\eta=ds\wedge dy_1\wedge\cdots\wedge dy_d\). Put \(r_N=(-1)^{N(N-1)/2}\).
+
+For the finite list \(P,Q,R=P\circ Q\), the actual symbol theorem supplies one coefficient product domain, after restriction, and constants
+\[
+\begin{gathered}
+|p_{n,\beta}(u)|\le B C^n n! r^{-\lvert\beta\rvert},\\[2pt]
+n\ge0.
+\end{gathered}
+\tag{CP.1}
+\]
+Use the largest necessary \(B,C\) and the smallest necessary \(r\) for this finite list. Every fixed finite base derivative has the same estimate with another constant on a smaller common base polydisc. Choose once
+\[
+ r^{-1}<a<b<c<B_*<A.
+ \tag{CP.2}
+\]
+Choose the time-difference radius so that \(C|w|<1/2\). Choose a radial smooth function \(\chi\) on \(\mathbf C\), equal to one on \(|z|\le b\), zero on \(|z|\ge c\), and with \(0\le\chi\le1\). Such a function follows from the explicit smooth bump construction in §5.38, E.2. For \(w\ne0\), set
+\[
+\begin{gathered}
+\chi_j(w,\zeta_j)=\chi(\zeta_j/|w|),\\[2pt]
+f_{j,k}={1-\chi_j\over2\pi i}{k!\over\zeta_j^{k+1}}.
+\end{gathered}
+\tag{CP.3}
+\]
+The expression is zero near \(\zeta_j=0\), so it is smooth there. At \(w=0,\zeta_j\ne0\), its extension is the holomorphic Cauchy expression and is smooth. Only the joint origin in \((w,\zeta_j)\) needs separate interpretation. Throughout a full antiholomorphic differential is used, including the output variables.
+
+For \(\sigma>0\), let \(s_{j,k}^{\sigma}\) denote the spatial coefficient of \(\bar\partial f_{j,k}\) at \(w=-\sigma\), before its input holomorphic differential. Thus it is
+\[
+\begin{gathered}
+s_{j,k}^{\sigma}=-{1\over2\pi i}\\[2pt]
+\bar\partial_{\zeta_j}\chi(\zeta_j/\sigma)\\[2pt]
+{k!\over\zeta_j^{k+1}}.
+\end{gathered}
+\tag{CP.4}
+\]
+It is supported on \(b\sigma\le|\zeta_j|\le c\sigma\). The positive complete spatial block is \(s_{j,k}^{\sigma}\wedge d\zeta_j\). For a holomorphic \(g\) on a neighbourhood of \(|\zeta_j|\le c\sigma\), compactly supported Stokes on the annulus gives
+\[
+ \int s_{j,k}^{\sigma}\wedge d\zeta_j\,g(\zeta_j)=g^{(k)}(0).
+ \tag{CP.5}
+\]
+Indeed the integral equals the positive outer Cauchy circle integral; its inner extension is zero. Taylor expansion of \(g\), uniformly on a slightly larger circle, selects coefficient \(k\) and gives the factor \(k!\). This proves the sign and scalar without identifying any class from a function-space action.
+
+Define the spatial top coefficient form
+\[
+\begin{gathered}
+A_P(u;\sigma,\zeta)=\\[2pt]
+\sum_{n+|\beta|\ge1}p_{n,\beta}(u)\\[2pt]
+{\sigma^{n+|\beta|-1}\over(n+|\beta|-1)!}\\[2pt]
+s_{1,\beta_1}^{\sigma}\wedge\cdots\wedge s_{d,\beta_d}^{\sigma}.
+\end{gathered}
+\tag{CP.6}
+\]
+Spatial integration below means anti-first realization with the spatial holomorphic frame and its \(r_d\) calibration, equivalently the product of the positive blocks in (CP.5). With this convention the moment of (CP.6) is
+\[
+\begin{gathered}
+\int A_P(u;\sigma,\zeta)\,g(\zeta)=\\[2pt]
+\sum_{n+|\beta|\ge1}p_{n,\beta}(u)\\[2pt]
+{\sigma^{n+|\beta|-1}\over(n+|\beta|-1)!}\partial_\zeta^\beta g(0).
+\end{gathered}
+\tag{CP.7}
+\]
+For a polynomial \(g\), only finitely many spatial indices survive. This will be used as a calculation of the Cauchy transform of compactly supported currents, not as faithfulness of an action on solutions.
+
+If \(j\) is any fixed derivative order in \(\zeta\) and the base, differentiation of the fixed cutoffs and of their holomorphic coefficients gives
+\[
+\begin{gathered}
+\|\partial^j A_P(u;\sigma,\cdot)\|_\infty\\[2pt]
+\le K_j\sigma^{-2d-1-j},\\[2pt]
+\int |A_P|\le K_0/\sigma,\\[2pt]
+\left|\int A_P\right|\le K_0.
+\end{gathered}
+\tag{CP.8}
+\]
+Here and below coefficient norms in fixed coordinate frames suffice. To prove the first bound, differentiate a term of (CP.4): its coefficient is bounded by a fixed constant times
+\(k!b^{-k}\sigma^{-k-2-j}\) times a fixed polynomial in \(k+1\). After inserting (CP.1), use
+\[
+ {n!\beta!\over(n+|\beta|-1)!}\le n+|\beta|
+ \tag{CP.9}
+\]
+and sum the product of geometric series with ratios \(C\sigma<1/2\) and \((br)^{-1}<1\). Fixed powers of \(n+|\beta|\) are harmless: successive applications of \(q\partial_q\) to the geometric series give finite bounds on smaller ratios. The support volume is at most \((\pi c^2\sigma^2)^d\), proving the second bound. Formula (CP.5) with \(g=1\) annihilates every \(\beta\ne0\). The surviving terms have \(n\ge1\), and their geometric sum proves the last bound. All constants and radii are common to the finite list.
+
+#### CP.2. The actual current and its finite-cube calibration
+
+Let \(L(w)=-\log w/(2\pi i)\), with principal logarithm cut on the negative real ray. On the punctured normal space form
+\[
+\begin{gathered}
+F_P^-=r_N\sum_{n+|\beta|\ge1}\\[2pt]
+p_{n,\beta}(u){(-w)^{n+|\beta|-1}\over(n+|\beta|-1)!}\\[2pt]
+L(w)\,\bar\partial f_{1,\beta_1}\wedge\cdots\wedge\\[2pt]
+\bar\partial f_{d,\beta_d}\otimes\eta .
+\end{gathered}
+\tag{CP.10}
+\]
+Every term requires all spatial annuli, so \(|\zeta_j|\asymp|w|\) on its support. The same geometric bound proves
+\[
+\begin{gathered}
+|F_P^-|\le K |(w,\zeta)|^{-(2N-1)}\\[2pt]
+(1+|\log|(w,\zeta)||).
+\end{gathered}
+\tag{CP.11}
+\]
+The normal real dimension is \(2N\); polar integration leaves
+\(\int_0^R(1+|\log r|)\,dr<\infty\). Give (CP.10) its literal locally integrable extension. Define
+\[
+ C_P=p_{0,0}(u)\Delta_N+\bar\partial F_P^- .
+ \tag{CP.12}
+\]
+Here \(\Delta_N\) is the positive ordered normalized diagonal current of §5.36, U.6/§5.35, V.17. This is closed, of normal distribution order at most one. It is supported on
+\[
+\left\{\begin{gathered}
+w\in\mathbf R_{\le0},\\[2pt]
+|\zeta_j|\le c(-\operatorname{Re}w)
+\end{gathered}\right\},
+\tag{CP.13}
+\]
+and its negative-ray part is precisely the positive time-ray block of §5.36, U.5 times (CP.6).
+
+The endpoint claim requires proof. Away from the origin, differentiating (CP.10) leaves only \(\bar\partial L\); the differential of each spatial factor is zero. Formula §5.36, U.4 makes it the negative-ray density. Delete \(|w|\le\epsilon\) and apply Stokes against a smooth compact test. On the cylindrical boundary, every term containing \(d\bar w\) vanishes on realization with \(dw\); the remaining term is the spatial-top part. Its spatial integral on a constant normal test is zero for \(\beta\ne0\). Replace the test by its difference from its value at the normal origin; on the spatial support this difference is at most \(K\epsilon\) times a first derivative seminorm. The bound (CP.8) then bounds the boundary integral by \(K\epsilon(1+|\log\epsilon|)\). For \(\beta=0\), necessarily \(n\ge1\), and the same bound follows from the extra positive time power. Both tend to zero, uniformly in the full series. Thus no additional endpoint current occurs. In particular the negative part has the direct, convergent test definition
+\[
+\begin{gathered}
+\int_0^R\\[2pt]
+\left\{\begin{gathered}
+\int A_P(u;\sigma,\zeta)\\[2pt]
+[\phi(-\sigma,\zeta)-\phi(0,0)]\\[2pt]
++\phi(0,0)\\[2pt]
+\int A_P(u;\sigma,\zeta)
+\end{gathered}\right\}\\[2pt]
+\,d\sigma .
+\end{gathered}
+\tag{CP.14}
+\]
+Fixed compact cutoffs outside the normal origin are understood. Equations (CP.8) prove convergence and a first-order test bound. This is an actual distribution, rather than an infinite sum of spatial delta derivatives.
+
+Here is the finite cube identifying (CP.12) canonically. Use the ordered complement opens
+\(U_0=\{w\notin\mathbf R_{\le0}\}\),
+\(U_j=\{|\zeta_j|>c|w|\}\). The unsigned holomorphic top expression is
+\[
+\begin{gathered}
+K_P={1\over(2\pi i)^N}\\[2pt]
+\left\{\begin{gathered}
+{p_{0,0}\over w\prod_j\zeta_j}\\[2pt]
+-\log w\sum_{n+|\beta|\ge1}\\[2pt]
+{\begin{gathered}
+p_{n,\beta}\beta!\\[2pt]
+(-w)^{n+|\beta|-1}
+\end{gathered}\over \begin{gathered}
+(n+|\beta|-1)!\\[2pt]
+\prod_j\zeta_j^{\beta_j+1}
+\end{gathered}}
+\end{gathered}\right\}.
+\end{gathered}
+\tag{CP.15}
+\]
+Its literal ordinary top cube coefficient is \(r_N(-1)^N K_P\), or \(-r_NK_P\) in the full-cone ordinary complement Čech coefficient, exactly §5.35, V.15–V.17. We prove this calibration for the shell current by a triangular complement homotopy; its intermediate entries live only on the complement, and require no distributional extension at a partial normal origin.
+
+On the complement, \(F_P^-\) is smooth and closed. Its restriction to every spatial \(U_j\) is zero, since \(\bar\partial f_{j,\beta_j}=0\) there. On \(U_0\), \(L\) is holomorphic. Let the complement Čech–Dolbeault differential be \(D=d_C+(-1)^r\bar\partial\), with \(r\) the Čech degree, as in §5.35, V.6. For \(r=0,\ldots,d-1\), define a cochain of total degree \(d-1\), with its sole possibly nonzero ordered entry on \(U_0\cap\cdots\cap U_r\), by
+\[
+\begin{gathered}
+b^r_{0\ldots r}=(-1)^r r_N\\[2pt]
+\sum_{n+|\beta|\ge1}\\[2pt]
+{p_{n,\beta}(-w)^{n+|\beta|-1}\over(n+|\beta|-1)!}\\[2pt]
+L(w)\,f_{1,\beta_1}\cdots f_{r+1,\beta_{r+1}}\\[2pt]
+\bar\partial f_{r+2,\beta_{r+2}}\wedge\cdots\wedge\\[2pt]
+\bar\partial f_{d,\beta_d}.
+\end{gathered}
+\tag{CP.16}
+\]
+For \(r=0\) the domain is just \(U_0\). Give other ordered entries value zero, and antisymmetrize the Čech indices. Each of these domains contains \(U_0\); hence \(w=0\) is absent and every coefficient is smooth. Every spatial factor, differentiated or undifferentiated, requires \(|\zeta_j|\ge b|w|\), or is on the stronger complement domain. The strict geometric majorant in (CP.8) proves normal convergence with every fixed derivative on each compact subset of the specified domain. These are actual smooth complement cochains.
+
+Start with \(c^0\), the Čech-degree-zero restriction of the global complement form \(F_P^-\); its only nonzero entry is at index \(0\). Subtract \(Db^0\). Its Dolbeault part cancels \(c^0\), and its remaining entry is positive on indices \(01\). Repeating, on indices \(0,\ldots,r\), the spatial factors \(f_1,\ldots,f_r\) are holomorphic; thus \(\bar\partial b^r\) differentiates only \(f_{r+1}\). The factor \((-1)^r\) in \(D\) cancels the factor in (CP.16). The only nonzero new Čech restriction is obtained by adding index \(r+1\): adding any larger index kills one of the still-differentiated spatial factors. Deleting the last new index contributes \((-1)^{r+1}\); the minus from subtracting \(Db^r\), and (CP.16)'s \((-1)^r\), make the next coefficient positive. Induction gives the exact total-complex identity
+\[
+ F_P^- -D\sum_{r=0}^{d-1}b^r=r_N K_P^-
+ \tag{CP.16a}
+\]
+where the right side is the top Čech cochain, and \(K_P^-\) is the negative part of (CP.15). At that last intersection every \(f_j\) equals its holomorphic Cauchy function. For \(d=0\) the identity reads \(F_P^-=K_P^-\) on \(U_0\), with empty homotopy.
+
+The relative current class has representative \((0,-F_P^-)\), because adding the literal boundary \(d(F_P^-,0)\) yields \((\bar\partial F_P^-,0)\). Equation (CP.16a) replaces its complement component by \(-r_NK_P^-\); the replacement boundary is exactly \(d(0,\sum b^r)=(0,-D\sum b^r)\) in the full cone over the Čech complex. Adding §5.36, U.6/§5.35, V.17's multiplication-class calibration gives (CP.15) in full. §5.35, V.6's finite Čech augmentation, with its explicitly proved row contraction, identifies this exact cone with the actual derived support cone. This proves the canonical class assertion.
+
+Thus (CP.12) is the actual canonical class of (CP.15). It also supplies the explicit comparison to §5.38, E.2–E.3: both are compared with the same calibrated top cochain by their finite complement homotopies and their literal locally integrable global primitives. No polynomial-class limit is required. The finite complement homotopies (CP.16)–(CP.16a) and §5.38, (E.10), give their comparison on the same coefficient intersection.
+
+#### CP.3. Smooth ray densities for the canonical convolution
+
+The two kernel singularity lists are independent in \((u,a=v-u,b=z-v)\). Sections 5.34–5.35, §5.34, R.6–R.7 and §5.35, V.2, define their ordinary unshifted supported cup. The normalization is exact: its full-form realization has factor \((-1)^{N^2}\), and \(\operatorname{Tr}_{2N}\) has the same factor; they cancel by §5.35, V.13. The resulting complete-block convolution has positive orientation.
+
+For two negative parts, at final real time length \(\tau>0\), the spatial density is
+\[
+\begin{gathered}
+D_{P,Q}(u;\tau,\zeta)=\\[2pt]
+\int_0^\tau\int_{\eta\in\mathbf C^d}\\[2pt]
+A_P(u;\alpha,\eta)\,\\[2pt]
+A_Q\left(\begin{gathered}
+t-\alpha,x+\eta;\\[2pt]
+\tau-\alpha,\zeta-\eta
+\end{gathered}\right)\,d\eta\,d\alpha .
+\end{gathered}
+\tag{CP.17}
+\]
+The spatial notation denotes the positive ordered complete spatial block integral, including its usual real complex orientation. It has support \(|\zeta_j|\le c\tau\). Terms involving the diagonal are, respectively,
+\(p_{0,0}(u)A_Q(u;\tau,\zeta)\) and
+\(A_P(u;\tau,\zeta)q_{0,0}(t-\tau,x+\zeta)\). The diagonal×diagonal term is \(p_{0,0}q_{0,0}\Delta_N\).
+
+We justify the endpoint integrals and their common bounds. If \(0<\alpha\le\tau/2\), the second density and all its fixed derivatives are smooth on scale \(\tau\). In its pairing with the first density subtract its value at \(\eta=0\). The mean-value bound gives a factor \(c\alpha\); (CP.8)'s \(K/\alpha\) mass bound cancels that factor. Its constant value is multiplied by the bounded zeroth moment of the first density. Thus for every fixed \(j\) the inner integral and its \(\zeta\)-derivatives are bounded by
+\(K_j\tau^{-2d-2-j}\), uniformly as \(\alpha\downarrow0\). Base derivatives have the same estimate.
+
+For \(0<\tau-\alpha\le\tau/2\), put \(\theta=\zeta-\eta\). Freeze every holomorphic coefficient of the second density at \(x+\zeta\). The difference of a coefficient from this frozen value is bounded by its common base Cauchy derivative estimate times \(|\theta|\le c(\tau-\alpha)\); summing retains exactly the geometric ratios used in (CP.8). This cancels the second density's mass factor \(1/(\tau-\alpha)\). Pair the frozen part with the first density's value at \(\theta=0\), and subtract that value in the remainder. The frozen zeroth moment is bounded by (CP.8), and the remainder gains the same \(|\theta|\) factor. Again the bound is \(K_j\tau^{-2d-2-j}\). Integrating over the two half intervals gives
+\[
+\begin{gathered}
+\|\partial_\zeta^jD_{P,Q}\|_\infty\\[2pt]
+\le K_j\tau^{-2d-1-j}.
+\end{gathered}
+\tag{CP.18}
+\]
+The same argument after fixed derivatives proves smoothness for \(\tau>0\) and holomorphic dependence on the base. It also applies to the diagonal-negative densities. The endpoint cancellation used in (CP.14), twice, identifies (CP.17) off the final normal origin with the tensor-current/proper-trace distribution: on tests the cutoff integrals converge, and the terms subtracted at the two endpoints are exactly the zeroth-moment terms retained above.
+
+We check that this has no additional current at the final origin. Under the simultaneous dilation \((w,\zeta)\mapsto\lambda(w,\zeta)\), (CP.14) evaluated on a fixed rescaled test is uniformly bounded as \(\lambda\downarrow0\): its difference from the constant test gains \(\sigma/\lambda\), cancelling the mass factor \(1/\sigma\) on \(0<\sigma<O(\lambda)\). In the two-factor tensor use the two successive subtractions; their joint remainder gains \(\sigma_1\sigma_2/\lambda^2\), and their two masses are \(O(1/\sigma_1\sigma_2)\). The proper-cone geometry confines both lengths to \(O(\lambda)\). The remaining terms each include one or two bounded zeroth moments. Thus the convolution too is uniformly bounded on rescaled tests. Any distribution of finite order supported at a point is a finite linear combination of derivatives of its delta: subtract the finite Taylor polynomial of a test and use a cutoff shrinking to that point in its defining finite-order seminorm to prove that it depends only on that finite Taylor jet. Rescaled tests show that every nonzero derivative of delta is excluded by the uniform bound just proved. The only possible discrepancy is a scalar delta. First subtract the already identified diagonal×diagonal term \(p_{0,0}(u)q_{0,0}(u)\Delta _N\) from the canonical convolution. Compare this remaining distribution with the ray-density extension of (CP.17) and its two diagonal-negative terms. Test against a function constant in the spatial variables on the entire cone fibre and supported in time length at most \(O(\lambda )\). A diagonal-negative term has bounded zeroth moment: freeze its multiplying holomorphic coefficient and use (CP.8), with the remainder gaining one spatial length. For two negative terms the zeroth moment is bounded as \(\tau \downarrow 0\): in (CP.20) with \(g=1\), only \(\gamma =0\) and \(\nu =\beta\) survive, and the common Cauchy/geometric bounds give integrable nonnegative endpoint powers with both negative total indices positive. Equivalently, freeze the second holomorphic coefficient and use the two bounded zeroth moments and the spatial difference estimate. Both remaining distributions evaluate as \(O(\lambda )\). A scalar delta would give a constant nonzero value, so its coefficient is zero. Restoring the known diagonal×diagonal term now identifies the complete canonical convolution, including the final origin.
+
+
+For the needed local properness, put all kernels and the forthcoming primitive inside the larger cone
+\[
+\begin{gathered}
+G_A=\\[2pt]
+\left\{\begin{gathered}
+\operatorname{Re}w\le0,\\[2pt]
+|\operatorname{Im}w|\le\epsilon(-\operatorname{Re}w),\\[2pt]
+|\zeta_j|\le A(-\operatorname{Re}w)
+\end{gathered}\right\}.
+\end{gathered}
+\tag{CP.19}
+\]
+For two differences in this cone, their nonnegative real time lengths add to the final length. Each intermediate normal length is bounded by a fixed multiple of that final length. Over a compact endpoint set the intermediate set is closed and bounded. Choose a coefficient source polydisc first, then a smaller endpoint polydisc so that this entire closed bounded fibre family has positive distance from the source boundary. It is then compact **inside** the selected source, giving the proper-support map required by §5.34, R.7/§5.35, V.4. No assertion that arbitrary polydiscs are cone-round is made. The same selection works for the finite list and its intermediate fibres.
+
+#### CP.4. All holomorphic moments are the actual symbol product
+
+Apply a polynomial test \(g(\zeta)\) to (CP.17). Formula (CP.7), the finite ordinary spatial Leibniz rule, and the stated orientation give for individual terms, writing \(m=n+|\beta|\), \(l=n'+|\gamma|\),
+\[
+\begin{gathered}
+p(u)\sum_{\nu\le\beta}\binom\beta\nu\int_0^\tau\\[2pt]
+{\alpha^{m-1}(\tau-\alpha)^{l-1}\over(m-1)!(l-1)!}\\[2pt]
+\partial_x^\nu q(t-\alpha,x)\\[2pt]
+\partial_x^{\beta-\nu+\gamma}g(0)\,d\alpha.
+\end{gathered}
+\tag{CP.20}
+\]
+Expand the holomorphic coefficient at \(t\): its \(k\)-th term is
+\((-1)^k\alpha^k\partial_t^k\partial_x^\nu q(t,x)/k!\).
+Repeated real integration by parts gives the integer beta integral
+\[
+\begin{gathered}
+\int_0^\tau\\[2pt]
+{\begin{gathered}
+\alpha^{m+k-1}\\[2pt]
+(\tau-\alpha)^{l-1}
+\end{gathered}\over(m-1)!(l-1)!k!}\,d\alpha\\[2pt]
+=\binom{m+k-1}{k}\\[2pt]
+{\tau^{m+l+k-1}\over(m+l+k-1)!}.
+\end{gathered}
+\tag{CP.21}
+\]
+For completeness, start with
+\(\int_0^1 a^{M-1}(1-a)^{L-1}da\). Integration by parts reduces \(L\) by one and increases \(M\) by one, multiplying by \((L-1)/M\); the last integral is \(1/(M+L-1)\). The product is \((M-1)!(L-1)!/(M+L-1)!\). Rescale by \(\tau\) and put \(M=m+k\). This proves (CP.21), including endpoints.
+
+The coefficient in (CP.20) is consequently
+\[
+\begin{gathered}
+\binom\beta\nu\binom{-m}{k}p\,\partial_t^k\partial_x^\nu q,\\[2pt]
+h^{m+l+k}\partial_x^{\beta-\nu+\gamma}.
+\end{gathered}
+\tag{CP.22}
+\]
+These are precisely **all** mixed \((\tau,t)\) and \((\xi,x)\) contractions in the actual product of §5.19, with the complete estimates of §5.20–§5.21.1. Rewriting in \(h,z\) gives time index
+\(n+n'+k+|\nu|\) and spatial exponent \(\beta-\nu+\gamma\). In particular none is a negative time index. A left multiplication coefficient gives its literal left product. A right multiplication coefficient is expanded at \((t,x)\) in \(( -\tau,\zeta)\), producing the same binomial coefficients with \(l=0,\gamma=0\); the equality
+\((-1)^k/(k!(m-1)!)=\binom{-m}{k}/(m+k-1)!\)
+is immediate from the factorial expression. The spatial finite Leibniz rule is unchanged. The only diagonal output is \(p_{0,0}q_{0,0}\).
+
+We also need actual, rather than formal, equality. Fix a polynomial degree \(M\). In (CP.20), a nonzero derivative of \(g\) has \(\delta=\beta-\nu\ge0\), \(|\delta+\gamma|\le M\); thus \(\delta,\gamma\) run through finite sets, though \(\nu\) remains unbounded. At a fixed time power, (CP.22) has \(n+n'+k+|\nu|+|\delta+\gamma|\) fixed; hence all indices are finite. Take one larger base polydisc with spatial and temporal Cauchy margins \(R_x,R_t>0\). After the \(1/k!\) in the temporal Taylor expansion is included, the derivative of the second coefficient is bounded by
+\(B C^{n'}n'!\nu! R_x^{-|\nu|}R_t^{-k}r^{-|\gamma|}\).
+The spatial Leibniz factor satisfies the explicit inequality
+\[
+\begin{gathered}
+{n!\over(n+|\beta|-1)!}\binom\beta\nu\nu!\\[2pt]
+={n!\beta!\over\delta!(n+|\beta|-1)!}\\[2pt]
+\le {n+|\beta|\over\delta!}.
+\end{gathered}
+\tag{CP.22a}
+\]
+The corresponding second factor satisfies
+\(n'!/(n'+|\gamma|-1)!\le n'+|\gamma|\), since it is a negative term. Hence the absolute integrand is bounded, up to the finite \(g,\delta,\gamma\) constants, by a product of geometric series with fixed polynomial factors and ratios
+\[
+\begin{gathered}
+C\alpha,\quad C(\tau-\alpha),\\[2pt]
+{\alpha\over rR_x},\quad {\alpha\over R_t}.
+\end{gathered}
+\tag{CP.22b}
+\]
+Choose \(\tau\) once so that all these ratios are below \(1/2\), also retaining \((br)^{-1}<1\) for the shell series and putting the full shells in the base domain. The apparent factors \(\alpha^{-1}\) and \((\tau-\alpha)^{-1}\) in this majorant cancel: respectively \(n+|\nu|+|\delta|\ge1\) and \(n'+|\gamma|\ge1\). Differentiating geometric series bounds the fixed polynomial factors. This proves absolute uniform convergence and integrability of the moment sums at both endpoints, and of the temporal Taylor expansion, on one fixed smaller disc. Parametrize \(\alpha=\tau\lambda\); each term is an ordinary nonnegative integer power of \(\tau\), and the majorant proves that the moment is holomorphic at \(\tau=0\). Its Taylor coefficients are (CP.22). The factorial product theorem gives the same convergent moment series for \(R\). Uniqueness of ordinary holomorphic Taylor expansion gives equality on that disc.
+
+This holds for every polynomial \(g\) on the **same** fixed domain; the domain was chosen from the coefficient constants and shell geometry, not from \(M\). Consequently, if \(S(u;\tau,\zeta)\) is the spatial density of the canonical convolution, including its two diagonal-negative terms, minus \(A_R\),
+\[
+\begin{gathered}
+\int S(u;\tau,\zeta)\,\zeta^\alpha=0\\[2pt]
+\text{for every }\alpha\in\mathbf N^d,\\[2pt]
+\operatorname{supp}S\subset\{|\zeta_j|\le c\tau\},\\[2pt]
+\|\partial^jS\|_\infty\le K_j\tau^{-2d-1-j}.
+\end{gathered}
+\tag{CP.23}
+\]
+This is a statement about the actual compactly supported current density and its Cauchy transform. The next section supplies the missing primitive explicitly.
+
+#### CP.5. A finite Cauchy homotopy with support and norm control
+
+Choose \(\chi_j^\tau\) equal to one on \(|\zeta_j|\le c\tau\), supported on \(|\zeta_j|<B_*\tau\), with a fixed positive scaled margin. Use \(E(z)=1/(\pi z)\), so \(\bar\partial E=\delta_{\mathbf C}\), proved in §5.34, R.2. Let \(\iota_j\) be the signed contraction with \(d\bar\zeta_j\), and let \(T_j=E*_j\) denote partial convolution in the \(j\)-th spatial variable. On a spatial top form \(U\), define
+\[
+\begin{gathered}
+H_jU=\chi_j^\tau T_j\iota_jU,\\[2pt]
+\Pi_jU=-d\bar\zeta_j\wedge\\[2pt]
+(\partial_{\bar\zeta_j}\chi_j^\tau)T_j\iota_jU.
+\end{gathered}
+\tag{CP.24}
+\]
+Because a top form contains all the spatial antiholomorphic factors, every other spatial differential in \(\bar\partial H_jU\) repeats a factor and is zero. §5.34, R.2's fundamental-solution identity therefore gives
+\[
+ \bar\partial_{\rm sp}H_jU=U-\Pi_jU.
+ \tag{CP.25}
+\]
+This identity holds whenever \(U\)'s \(j\)-th support is inside the region where \(\chi_j^\tau=1\). Previously applied \(\Pi_i\), \(i\ne j\), do not enlarge its \(j\)-th support. Define
+\[
+\begin{gathered}
+H_\tau S=\sum_{j=1}^{d}\\[2pt]
+H_j\Pi_{j-1}\cdots\Pi_1 S,\\[2pt]
+\text{empty product }1.
+\end{gathered}
+\tag{CP.26}
+\]
+Telescoping (CP.25) gives
+\(\bar\partial_{\rm sp}H_\tau S=S-\Pi_d\cdots\Pi_1 S\).
+The last term is zero. In fact its coefficient, apart from its fixed exterior sign and the outer cutoff derivatives, is the simultaneous Cauchy transform
+\[
+ \int {S(\eta)\over\prod_j(\zeta_j-\eta_j)}\,d\eta
+ \tag{CP.27}
+\]
+on the product of the outer annuli. Each \(|\zeta_j|\) is strictly larger than the original \(c\tau\)-support radius. Expand each denominator as its uniformly convergent geometric series in \(\eta_j/\zeta_j\). Every coefficient is a moment in (CP.23), and is zero. Fubini is justified by compact smooth coefficients and their bounded Cauchy denominators. Thus
+\[
+ \bar\partial_{\rm sp}H_\tau S=S.
+ \tag{CP.28}
+\]
+
+Here are the quantitative bounds. On a disc of radius \(O(\tau)\), the integral of \(|E(z)|\) is \(O(\tau)\), by polar integration. Hence \(T_j\) multiplies a sup norm by at most \(K\tau\). Cutoff derivatives are \(O(\tau^{-1})\); therefore each \(\Pi_j\) preserves the estimate in (CP.23), and each \(H_j\) gains a factor \(\tau\). For derivatives transfer the convolution derivative to the smooth coefficient, or differentiate the fixed scaled cutoff; this gives
+\[
+\begin{gathered}
+\operatorname{supp}H_\tau S\subset\{|\zeta_j|\le B_*\tau\},\\[2pt]
+\|\partial^jH_\tau S\|_\infty\le K_j\tau^{-2d-j},\\[2pt]
+\int |H_\tau S|\le K_0.
+\end{gathered}
+\tag{CP.29}
+\]
+All forms are smooth for \(\tau>0\) and holomorphic in the output base. No inverse with an unproved continuity property has been invoked.
+
+Let \(R_t\) be the time coefficient current \(\bar\partial L(w)\), whose positive complete block is §5.36, U.5. In normal coordinates define the primitive, with the input frame attached once,
+\[
+\begin{gathered}
+B_{P,Q}=-r_N R_t\wedge\\[2pt]
+H_{-\operatorname{Re}w}S\otimes\eta.
+\end{gathered}
+\tag{CP.30}
+\]
+The ray coefficient of (CP.30) is locally integrable in \((\tau,\zeta)\) by (CP.29). It is an order-zero distribution on the ray, supported in \(G_A\) on the final kernel product. The proper map used in forming the convolution is \(\pi _{13}:S_{12}\cap S_{23}\to D_{\mathrm{end}}\), from the triple kernel support intersection to the selected final endpoint neighbourhood \((u,z)\). CP.3's outer-source/inner-endpoint choice makes its fibres over compact endpoint sets compact inside the intermediate source. The primitive \(B_{P,Q}\) itself lives on the final kernel product and supplies a supported relative-cone boundary there. For the degree-one action of §5.42 the proper support is obtained by intersecting with the input support. Its full differential is
+\[
+\begin{gathered}
+\bar\partial B_{P,Q}\\[2pt]
+=\operatorname{Tr}_{2N}(C_P\smile C_Q)-C_R.
+\end{gathered}
+\tag{CP.31}
+\]
+Indeed the time current is closed. Derivatives of the \(\tau\)-dependent cutoff or coefficients contribute \(d\bar w\), already in \(R_t\), so vanish. Output antiholomorphic derivatives vanish because the coefficients are holomorphic in the output base. The remaining spatial differential has the sign minus from passing the degree-one time factor; it cancels the minus in (CP.30), and (CP.28) gives (CP.31). This argument also holds on tests at \(\tau=0\): no time differential survives the repeated \(d\bar w\), and the spatial primitive has the literal integrable extension (CP.29). The diagonal terms have already cancelled, and (CP.23)'s zeroth moment eliminates an endpoint mass in the difference. Thus (CP.31) is a literal full-current equality, including the origin.
+
+In the exact relative cone, (CP.31) says that the difference is \(d(B_{P,Q},0)\). It is a literal supported primitive in the final kernel target. The canonical cup and trace used the proper triple-to-endpoint map just specified; §5.34, R.7's controlled excision and §5.35, V.4's trace commute with the corresponding differentials. Equation (CP.31) gives the resulting boundary in the exact final relative cone and proves equality of the actual canonical classes on the selected common neighbourhood.
+\[
+\begin{gathered}
+\kappa(P)*\kappa(Q)=\kappa(P\circ Q),\\[2pt]
+P,Q\in E_0.
+\end{gathered}
+\tag{CP.32}
+\]
+For \(d=0\), omit the spatial shells and the homotopy: (CP.20)–(CP.22) are directly equality of the normally convergent time-ray densities, so (CP.31) holds with zero primitive.
+
+#### CP.6. Finite positive time orders and preserved scope
+
+The unit is the calibrated ordered diagonal class. The complete canonical normal-localization interface is §5.39, NL.2–NL.7. In particular, for the principal locally integrable logarithm, \(-\partial_wL=C+B_{\log}\), with \(B_{\log}=(2i)^{-1}\mathbf1_{\operatorname{Re}w<0}\delta(\operatorname{Im}w)\). Its derivative discrepancy is the literal supported boundary \(\bar\partial B_{\log}\); after spatial tensoring, §5.39, NL.11–NL.12 give the complete relative-cone primitive. The unit and derivative identities are established on arbitrary smooth current tests, and §5.39, NL.22–NL.27 give explicit supported primitives for both full convergent-spatial normal shifts. For \(P=\partial _t^k\circ P_0\), the complete representative is \(\partial _t^k T_{P_0}\); §5.39, NL.34–NL.35 give the literal finite supported telescoping primitive proving independence of every such presentation. §5.39, NL.36–NL.37 and §5.39, NL.7 prove actual germ restriction and partition/cone independence. Consequently the proved order-zero product identity (CP.32), together with the invertible normal-generator interface of §5.39, extends uniquely to the full finite-order ring \(E=E_0[h^{-1}]\) by the actual normal localization of §5.22.1, (5.22a)–(5.22b). The Ore localization property is applied after these current identities have been proved; no faithful solution-action inference or limit in a cohomology quotient is used.
+
+The following extension argument retains all finite common-domain bounds and the supported presentation primitives of §5.39, (NL.22)–(NL.37).
+
+##### CP.6.1 Actual algebra and common finite domains
+
+
+Write \(E_0\) for the actual common-domain factorial order-zero class and \(h=\tau ^{-1}\). The actual §5.22.1 automorphism is
+
+\[
+\begin{gathered}
+\sigma(P)=h\circ P\circ h^{-1},\\[2pt]
+\sigma(P)=\sum_{a\ge0}\\[2pt]
+(-1)^a h^a\partial_t^aP\\[2pt]
+\text{as ordinary}\\[2pt]
+\text{ normal-symbol}\\[2pt]
+\text{ coefficients}.
+\end{gathered}
+\tag{CP.33}
+\]
+
+The second display is a coefficient expression, not a replacement of its ordinary \(h^a\) multiplication by another Leibniz product. At any fixed index it is a finite sum. A base Cauchy margin \(\rho\) gives the actual estimate
+
+\[
+\begin{gathered}
+\sum_{n+a=m}BC^n n!a!\rho^{-a}\\[2pt]
+\le B(C+\rho^{-1})^m m!.
+\end{gathered}
+\tag{CP.34}
+\]
+
+Its inverse is the actual coefficient expression \(P+h\partial _tP\). Cancellation at every coefficient gives inverse algebra automorphisms, using the already proved associativity of §5.19. The normal relation is
+
+\[
+ h\circ P=\sigma(P)\circ h.
+ \tag{CP.35}
+\]
+
+The right \(h\) shift is ordinary coefficient shift and is injective; normality gives the corresponding left assertion. Finite shifts preserve the actual factorial class by \((n+k)!\le 2^{n+k}n!k!\). The finite-order class of §5.19 is the actual union of finite normal shifts; §5.21.2, (5.21h)–(5.21i), and §5.22.1 identify it with this normal localization. A finite-order symbol has a finite left product presentation
+
+\[
+\begin{gathered}
+A=h^{-k}\circ P,\\[2pt]
+k\ge0,\quad P\in E_0.
+\end{gathered}
+\tag{CP.36}
+\]
+
+For example choose \(k\) to remove its finite positive-order head and take \(P=h^k\circ A\). If \(A\) has ordinary normal coefficients with indices \(i\ge -m\) and \(k\ge m\), the normalized derivative of \(h^k\) has coefficient \((-1)^a\binom{k+a-1}{a}h^{k+a}\) for \(k\ge 1\). Hence its coefficient at index \(N\) is the finite sum over \(i+a+k=N\); no negative output index occurs. For \(i\ge 0\), the Cauchy bound contains \(i!a!\le (N-k)!\le N!\) and \(\binom{k+a-1}{a}\le2^{k+a-1}\). For the finitely many \(i<0\), one has \(a\le N\), and their Cauchy derivative \(a!\) is also bounded by \(N!\). A common enlarged exponential constant therefore gives actual factorial growth on a single smaller domain, including the spatial Cauchy radius. The \(k=0\) case is already order zero. This proves the stated finite left presentation directly and preserves the actual common domain; no arbitrary infinite formal coefficient lift occurs.
+
+For the finite pair \(A=h^{-k}\circ P\), \(B=h^{-l}\circ Q\), (CP.35) gives
+
+\[
+\begin{gathered}
+P\circ h^{-l}=h^{-l}\circ\sigma^l(P),\\[2pt]
+A\circ B=h^{-(k+l)}\circ\\[2pt]
+(\sigma^l(P)\circ Q).
+\end{gathered}
+\tag{CP.37}
+\]
+
+The power is \(\sigma ^l\), not \(\sigma ^{-l}\). Derive its first step by multiplying (CP.35) on the left and right by \(h^{-1}\), then iterate \(l\) times. At a fixed finite \(l\ge 1\), coefficientwise geometric multiplication gives \(\sigma^l(P)=\sum_a(-1)^a\binom{l+a-1}{a}h^a\partial_t^aP\) in ordinary normal-symbol coefficients. The bound \(\binom{l+a-1}{a}\le2^{l+a-1}\), with (CP.34), supplies another actual factorial estimate. Only a finite list of actual symbols and their finitely many \(\sigma\) iterates is used. Intersect their coefficient domains, take common factorial/Cauchy constants, and shrink once before applying the order-zero product proof.
+
+##### CP.6.2 Actual canonical classes and presentation primitives
+
+Let \(K\) denote the germ target of canonical supported kernel classes with its unshifted cup and normalized proper trace. For a finite list choose one common larger pointed thick cone and an outer source/inner endpoint neighbourhood. The sum of two such cone differences remains in the same cone, and their nonnegative real time lengths bound every intermediate point. §5.35, V.2/V.4/V.13, and the direct smooth-test proof in §5.39, NL.5, give an associative canonical operation with the positive diagonal unit on this germ target. This is a statement about actual finite-order distribution families and controlled proper traces, rather than a formal or solution-action algebra.
+
+The product proof CP.1–CP.5 establishes the unital order-zero map
+
+\[
+\begin{gathered}
+\phi:E_0\longrightarrow K,\\[2pt]
+\phi(P\circ Q)=\phi(P)*\phi(Q),\\[2pt]
+\phi(1)=I.
+\end{gathered}
+\tag{CP.38}
+\]
+
+The diagonal calibration in CP.2 gives \(\phi (1)=I\). Its extension does not assume a faithful map or a nonzero-kernel test.
+
+Put \(U=\phi (h)\). Section 5.39, NL.4–NL.6, gives \(J\), the ordinary output derivative of the positive diagonal unit, with
+
+\[
+\begin{gathered}
+J*U=I=U*J,\\[2pt]
+J*\phi(P)=\partial_t^{\rm out}\phi(P).
+\end{gathered}
+\tag{CP.39}
+\]
+
+These inverse identities retain the principal-log ray term. For \(L=-\log (w)/(2\pi i)\) and \(C=(2\pi iw)^{-1}\),
+
+\[
+\begin{gathered}
+-\partial_wL=C+B_{\log},\\[2pt]
+B_{\log}=(2i)^{-1}\\[2pt]
+\mathbf1_{\Re w<0}\delta(\Im w).
+\end{gathered}
+\tag{CP.40}
+\]
+
+§5.39, NL.7–NL.12 give the literal spatially tensored supported relative primitive for the discrepancy. §5.39, NL.22/NL.26 give the full convergent-spatial supported primitive for the normal shift identity; §5.39, NL.25 is an equality of full currents. These equations account for the spatial-face term, angular-cutoff term and full output components. Section 5.36, (U.17), retains the principal-log correction. The full convergent-spatial shift and presentation primitives are §5.39, (NL.22)–(NL.37).
+
+Define the extension on the actual left presentation by
+
+\[
+\begin{gathered}
+\Phi(A)=J^k*\phi(P),\\[2pt]
+A=h^{-k}\circ P.
+\end{gathered}
+\tag{CP.41}
+\]
+
+It is represented by the complete current \((\partial_t^{\mathrm{out}})^kT_P\). Its common normal distribution order is at most \(k+1\) on each selected compact, by §5.38, (E.13) and derivative transposition. Suppose another presentation has order \(k+r\). Actual algebra gives \(Q=H_L^rP\), where \(H_LP=h\circ P\). For the finite list \(P_j=H_L^jP\), the shift primitive \(B_j\) of §5.39, NL.3, satisfies
+
+\[
+ \partial_t^{\rm out}T_{P_j}-T_{P_{j-1}}=\delta B_j.
+\]
+
+Hence the difference of the two complete representatives is the literal relative boundary
+
+\[
+d\left(\begin{gathered}
+(\partial_t^{\rm out})^k\\[2pt]
+\sum_{j=1}^{r}(\partial_t^{\rm out})^{j-1}B_j,0
+\end{gathered}\right).
+\tag{CP.42}
+\]
+
+Its primitive remains supported in the same chosen thick cone and has finite normal order at most \(k+r-1\). This proves presentation independence at chain level before any localization universal property is invoked. Finite addition can use a common raised order; restriction and auxiliary-choice compatibility are §5.39, NL.7's explicit partition homotopy and common-cone refinement. Thus \(\Phi\) is the actual canonical linear germ class map, not an abstract extension whose agreement with the original current map is unproved.
+
+##### CP.6.3 Complete finite-order multiplication
+
+Apply (CP.38) to both sides of the actual order-zero identity (CP.35):
+
+\[
+ U*\phi(P)=\phi(\sigma(P))*U.
+\]
+
+By (CP.39) this gives, for every finite \(l\),
+
+\[
+\begin{gathered}
+\phi(\sigma^l(P))\\[2pt]
+=U^l*\phi(P)*J^l,\\[2pt]
+\phi(P)*J^l\\[2pt]
+=J^l*\phi(\sigma^l(P)).
+\end{gathered}
+\tag{CP.43}
+\]
+
+For (CP.36)'s finite pair, associativity, (CP.43), the order-zero product theorem and (CP.37) now prove
+
+\[
+\begin{gathered}
+\Phi(A)*\Phi(B)\\[2pt]
+=J^k*\phi(P)*J^l*\phi(Q)\\[2pt]
+=J^{k+l}*\phi(\sigma^l(P))*\phi(Q)\\[2pt]
+=J^{k+l}*\phi(\sigma^l(P)\circ Q)\\[2pt]
+=\Phi(A\circ B).
+\end{gathered}
+\tag{CP.44}
+\]
+
+This is the complete finite-order multiplication calculation. It uses actual finitely iterated \(\sigma\), common-domain order-zero multiplication, the separately proved literal inverse and presentation primitives, and actual canonical associativity. No unrestricted action, faithful representation, closed-range theorem, or limit of exact polynomial identities is needed. A homomorphism extending \(\phi\) and sending \(h^{-1}\) to \(J\) must obey (CP.41) on every actual finite left presentation, so it is unique. This proves the relevant normal Ore extension property directly; invoking its name introduces no missing theorem.
+
+The exact literal primitives used to identify presentations are (CP.40)/(§5.39, NL.11), (§5.39, NL.22)/(§5.39, NL.26), and (CP.42)/(§5.39, NL.35). Order-zero multiplication has the separate literal primitive CP.30. The proper chain maps used by the canonical cup and trace preserve boundaries. Consequently the finite multiplication computation does not suppress a supported correction. The proper map is the triple support intersection over the final endpoint pair, as in CP.3 and CP.5.
+
+This proves the complete canonical kernel ring-product interface for the actual finite-order convergent spatial symbol ring. Unrestricted-input action still requires its own actual relative roof, residual complement term and full-output primitive. Infinite-order linearity and extension-faithfulness, derived actions, propagation, separation of arbitrary modules, finite D-type, finite poles, intrinsic order, full C1, arbitrary analytic proper regularity, and the original BB/KL/GL scope remain substantive requirements. These further interfaces require their own proofs.
+
+![Exact shell and primitive support geometry](assets/shell-homotopy-geometry.png)
+
+*For one spatial complex coordinate these are exact sections at final time length \(\tau =1\). The orange ring is the centred first difference support \(b\alpha \le |\eta |\le c\alpha\), with \(\alpha =0.35\). Fixing the marked allowed point \(\eta =0.95\), the blue ring is the already translated second support \(b(\tau -\alpha )\le |\zeta -\eta |\le c(\tau -\alpha )\), with \(\tau -\alpha =0.65\). Its farthest possible radius from the origin is \(0.95+1.95=2.90<3=c\tau\). The union over all allowed first points lies in the \(c\tau\)-disc by \(|\zeta |\le |\eta |+|\zeta -\eta |\le c\alpha +c(\tau -\alpha )=c\tau\); equivalently, the Minkowski sum of the two centred difference supports lies in that disc. The green annulus is the outer cutoff transition used by the finite Cauchy homotopy; the full primitive has support in the \(B_*\tau\)-disc, with \(c<B_*<A\), inside the same larger cone. The time panel is the exact compact interval \(0\le \alpha \le \tau\). CP.5 gains one time length: density \(O(\tau ^{-2d-1})\) becomes primitive \(O(\tau ^{-2d})\), with bounded spatial \(L^1\) norm and integrability in \(d\tau\). These are sections and proved bounds, rather than a drawing of the full complex support. Proof locators are CP.17–CP.19 and CP.24–CP.31; reproducible plotting source and exact numeric parameters accompany the PNG/SVG.*
+
+
+The figure has a full-resolution PNG, SVG, editable plotting source and exact coordinate data.
+
+
+### 5.42. The canonical degree-one directional action
+
+The canonical unshifted cup, controlled excision and normalized shifted proper trace act on arbitrary degree-one directional inputs by the complete ordinary convergent spatial evaluation. The comparison is an equality in the relative current complex with explicit supported and ambient primitives. Finite left time derivatives give the finite-order action.
+
+The angular current is §5.38, E.1–E.3; write \(F^{\mathrm{root}}_P\) and \(T^{\mathrm{root}}_P=\bar\partial F^{\mathrm{root}}_P\) for its form and current. Its fixed-input output derivatives include the transposed normal derivatives of (E.13). Full smooth/current resolutions, finite Čech comparison and controlled excision are §5.34, R.1–R.7. The ungraded coefficient cup, ordered frame and all-degree trace are §5.35, V.1–V.6. Unrestricted-input relative roofs and the full-output collar calculation are §5.37, W.1–W.8. Cofinal input domains and complete ordinary evaluation are §5.40, PB.1–PB.5; the ordinary inverse is PB.6. CA.2 proves composition on one same-anchor nested domain. The separately proved canonical product and class-level localization are §5.41, CP.1–CP.6. The target operation agrees with [Micro-hyperbolic systems, §3.1](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/Microhyp.pdf) and [HolIII, III.1 and IV.2](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf).
+
+#### CA.1. The input, cone geometry and exact relative maps
+
+Write \(N=d+1\), \(u=(t,x)\), \(v=(s,y)\), and normal coordinates \(w=s-t\), \(\zeta =y-x\). The input top-form line is ordered \(ds\wedge dy_1\wedge\cdots\wedge dy_d\), ungraded before tracing. Put
+\[
+\begin{gathered}
+r_N=(-1)^{N(N-1)/2},\\[2pt]
+G=\left\{\begin{gathered}
+\operatorname{Re}w=-l\le0,\\[2pt]
+|\operatorname{Im}w|\le\epsilon l,\\[2pt]
+|\zeta_j|\le A_jl
+\end{gathered}\right\},\\[2pt]
+M=\sqrt{\epsilon^2+\sum_jA_j^2}.
+\end{gathered}
+\tag{CA.1}
+\]
+The symbol has actual coefficients on a common base and cotangent polydisc,
+\[
+\begin{gathered}
+P=\sum_{n,\beta}p_{n,\beta}(u)h^nz^\beta,\\[2pt]
+|p_{n,\beta}|\le B C^n n!r_z^{-|\beta|}.
+\end{gathered}
+\tag{CA.2}
+\]
+The cone constants satisfy \(A_j>a_j>1/r_z\). Shrinking to a common base gives the same bound for each fixed finite list of base derivatives, by the proved coefficient Cauchy formula.
+
+Every degree-one germ-colimit input class has a representative \((0,-f)\), with \(f\) holomorphic on
+\[
+\begin{gathered}
+\Omega_g\cap D=\\[2pt]
+\left\{\begin{gathered}
+\operatorname{Re}s<\\[2pt]
+-g(|(\operatorname{Im}s,y)|)
+\end{gathered}\right\}\cap D,\\[2pt]
+g(0)=0,\\[2pt]
+g\text{ convex, nondecreasing},\\[2pt]
+g(r)=o(r).
+\end{gathered}
+\tag{CA.3}
+\]
+Indeed the smooth relative resolution sends a closed \((a,b)\) after shrinking to \(a=\bar\partial  F\) by §5.34, R.3. Subtracting \(d(F,0)\) leaves \((0,b-rF)\); degree-zero holomorphicity in §5.34, R.3 gives \(f=rF-b\). §5.40, PB.1’s cofinal convex majorants supply (CA.3). This uses no fixed-domain Stein vanishing and no extension of \(f\) as a distribution. Choose a sufficiently small radius so \(g\) has Lipschitz constant smaller than a chosen \(L\) with \(LM<1\) and the extra inequalities in CA.2. For a global notation in the following cone inclusion, extend this restricted \(g\) beyond that radius by the linear ray of slope \(L\). Its left slope is at most \(L\), so the extension is convex, nondecreasing and globally \(L\)-Lipschitz. It has exactly the same cofinal \(o(r)\) germ and input domain on the small ball used here.
+
+For \(u \in  \Omega _g\) and \(a \in  G\), the input margin at \(u+a\) is at least the margin at \(u\) plus \((1-LM)l\). Thus \(\Omega _g+G \subset  \Omega _g\). If the input belongs to its excluded support instead, then
+\[
+\begin{gathered}
+(1-LM)l\\[2pt]
+\le\operatorname{Re}t+g(|(\operatorname{Im}t,x)|).
+\end{gathered}
+\tag{CA.4}
+\]
+Together with \(|(w,\zeta)|\le\sqrt{1+M^2}\,l\), this bounds the complete input fibre of \(S=G \cap  p_v^{-1}(D\setminus \Omega _g)\) over every compact small output set. It is closed, and an outer source product can be chosen before shrinking the output so that this entire bounded family lies compactly inside \(D\). This proves actual local properness and \(p_u(S) \subset  Z\), where \(Z=B\setminus \Omega _g\).
+
+Choose negative real \(L_0<a<0\), inside the actual input and coefficient products. Take a smooth real \(\theta\) zero below \(L_0\), one above \(a\), with transition compactly contained in \((L_0,a)\). For sufficiently small full output \(B\), the part of \(G\) meeting that transition lies in one fixed compact negative-time tube contained in \(\Omega _g \cap  D\). This follows from (CA.1), the strictly positive time length on the transition, and \(g(r)=o(r)\) after shrinking \(L_0,a\) and \(B\). Make compact input cutoffs in the imaginary/spatial and far-right directions equal to one on an open neighbourhood of the clipped cone over \(B\); their derivatives vanish there. Their product with \(\theta(\operatorname{Re}s)\) gives an input-only cutoff \(\eta\), compactly supported in \(D\), equal to one near \(S\), whose derivative on \(G\) is just the negative-time transition derivative. All constructions below use this full tube, including outputs outside \(\Omega _g\).
+
+For the full Dolbeault complex \(I\) put
+\[
+\begin{gathered}
+C_S^q=I^q\oplus I^{q-1}(M\setminus S),\\[2pt]
+d(a,b)=(\bar\partial a,ra-\bar\partial b),\\[2pt]
+L_\eta(a,b)=\left(\begin{gathered}
+\eta a+\bar\partial\eta\wedge b,\\[2pt]
+\eta b
+\end{gathered}\right).
+\end{gathered}
+\tag{CA.5}
+\]
+§5.37, W.3–W.7 prove the literal chain homotopy \(1-L_\eta =dE_\eta +E_\eta  d\), where \(E_\eta (a,b)=((1-\eta )b,0)\), and the controlled extension-by-zero excision roof. For a closed supported kernel current \(T\) of degree \(N\), the cup is
+\[
+m_T(a,b)=\left(\begin{gathered}
+T\wedge a,\\[2pt]
+(-1)^N T\wedge b
+\end{gathered}\right).
+\tag{CA.6}
+\]
+It is the canonical unshifted cup by the tensor-to-cube augmentation §5.35, V.15–V.17 and the smooth/current/injective comparisons §5.34, R.6–R.7. Only multiplication of a current by a smooth cochain is used.
+
+Let \(I_q=J_{\mathrm{out}}^{-1}p_*J_{\mathrm{in}}\) denote raw coefficient integration. The exact shifted trace is
+\[
+\begin{gathered}
+\operatorname{Tr}_q=(-1)^{N(q-N)}I_q,\\[2pt]
+Q_N(a,b)=\\[2pt]
+\left(\begin{gathered}
+\operatorname{Tr}_qa,\\[2pt]
+\begin{gathered}
+(-1)^N\\[2pt]
+\operatorname{Tr}_{q-1}b|_{p^{-1}(B\setminus Z)}
+\end{gathered}
+\end{gathered}\right).
+\end{gathered}
+\tag{CA.7}
+\]
+It is a chain map on \(C_S[N]\); in unshifted notation \(Q_N de=(-1)^N d Q_N e\). These are §5.37, W.12–W.14, with all-degree compact Stokes proved in §5.35, V.4. Consequently the actual output for \((0,-f)\) is
+\[
+\begin{gathered}
+O_T(f)=Q_NL_\eta m_T(0,-f)\\[2pt]
+=\left(\begin{gathered}
+-I_{N+1}(\bar\partial\eta\wedge Tf),\\[2pt]
+-I_N(\eta Tf)
+\end{gathered}\right)\\[2pt]
+=(A_T,-G_T).
+\end{gathered}
+\tag{CA.8}
+\]
+Here \(Tf\) is initially only a complement current. Its ambient first component uses \(f\) solely on the full negative-time transition tube, and is smooth on all of \(B\). To define it, multiply \(f\) by an interior bump equal to one near that compact tube and extend this smooth product by zero. Independence follows since \(\bar\partial  \eta  T\) vanishes outside the tube. On the output complement all clipped cone points lie in the holomorphic input domain, so \(G_T\) is defined without any boundary bound. Smoothness follows by compact current pairing in normal coordinates; §5.38, E.13 transposes each finite fixed-input output derivative onto the smooth coefficient. This also applies to the other finite-order kernel primitives constructed below.
+
+#### CA.2. Composition on a common nested domain
+
+Use the same anchor \(a=-a_0\) for both factors. Let \(D_0=\max (1,d)\), \(\kappa =4/r_z\), and reserve a spatial/base radius smaller than the base radius \(b\) of §5.40, PB.2 before choosing \(a_0/R\). Choose \(L\le 1/16\), \(L\sqrt{D_0}\,\kappa\le1/16\), \(C|t-a|<1/2\), and enough initial radius so that all spatial deviations below are less than that reserved radius. This is possible in the noncircular order of §5.40, PB.2. Fix a compact target set \(K \subset  \Omega _g\), with \(|t|<a_0/4\), and let \(\mu _*\) be its positive minimum input margin. Choose a fixed
+\[
+\begin{gathered}
+0<\delta\le\\[2pt]
+\min(b/8,\mu_*/(16L\sqrt{D_0})),
+\end{gathered}
+\tag{CA.9}
+\]
+omitting the second bound if \(L=0\). The outer and inner times are
+\[
+\begin{gathered}
+s=a+\theta(t-a),\\[2pt]
+r=a+\sigma(s-a),\\[2pt]
+|t-s|+|s-r|=|t-r|\\[2pt]
+(0\le\theta,\sigma\le1).
+\end{gathered}
+\tag{CA.10}
+\]
+Use outer spatial Cauchy radius \(\delta +\kappa |t-s|\) and inner radius \(\delta +\kappa |s-r|\). Every twice-used spatial input point differs from \(x\) by at most \(\sqrt d\,(2\delta+\kappa|t-r|)\). the ratio in §5.40, (PB.7), unchanged on this common segment, gives \(-\operatorname{Re}  r\ge -\operatorname{Re}  t+|t-r|/2\). The input margin therefore satisfies
+\[
+\begin{gathered}
+-\operatorname{Re}r\\[2pt]
+-g(|(\operatorname{Im}r,z)|)\\[2pt]
+\ge\mu_*-2L\sqrt d\delta\\[2pt]
++(1/2-L-L\sqrt d\kappa)\\[2pt]
+|t-r|\\[2pt]
+\ge7\mu_*/8+3|t-r|/8>0.
+\end{gathered}
+\tag{CA.11}
+\]
+The spatial radii and time lengths are bounded before either symbol is approximated. All these nested sets are one compact subset of the original input domain. At \(s=a\) the inner integral has length zero, and its multiplication term is defined on the full fixed spatial anchor tube. Holomorphy near the anchor follows from that tube, so the outer Cauchy estimates include the anchor without a domain gap.
+
+If \(M_f\) bounds \(f\) on the nested compact, §5.40, (PB.11)–(PB.13), bound the right action on every outer spatial Cauchy disc by a constant times \(\Vert Q\Vert  M_f\); the constant depends on \(\delta\) and the fixed geometric margins, not on finite Taylor projections. In that estimate the inner ratios are \(|s-r|/(r_z(\delta +\kappa |s-r|))\le 1/4\) and \(C|s-r|<1/2\). Applying the outer estimate gives a bound \(C_K \Vert P\Vert  \Vert Q\Vert  M_f\) for the composition. The actual absolute norm is the weighted \(\ell^1\)-norm of §5.21.1, (5.21b)–(5.21f); its product is submultiplicative by (5.21d), using §5.20’s complete allocation estimate. Thus finite monomial projections converge, their products converge, and these two actual operator estimates pass the compositions to the same-domain limit.
+
+For precision the finite identity is also an actual identity. With \(m=n+|\beta |\ge 1\), differentiate the right term spatially by finite Leibniz, Taylor-expand its holomorphic coefficient at \(t\) on the common coefficient disc, and integrate on the nested triangle \(a\le r\le s\le t\). Uniform coefficient Taylor convergence and the preceding input bounds allow each exchange. The integer beta integral gives \(\binom{-m}{k}\) for the time contractions and \(\binom{\beta}{\nu}\) for the spatial contractions, exactly the normal product of §5.19, with the complete estimates of §5.20–§5.21.1; multiplication on the left is literal multiplication. No independent anchors are compared. Hence
+\[
+\begin{gathered}
+\rho_a(P)\rho_a(Q)=\rho_a(P\circ Q),\\[2pt]
+\rho_a(1)=1
+\end{gathered}
+\tag{CA.12}
+\]
+where the finite identities and limit are taken on smaller common target neighbourhoods. §5.40, PB.5’s normally convergent full-neighbourhood anchor corrections and extending-input argument descend this to the germ quotient. The intermediate points need not lie in the small target neighbourhood of §5.40, PB.3. The common nested estimates above prove the required input-domain bounds directly.
+
+#### CA.3. An actual spatial-annulus representative
+
+Choose \(0<\epsilon _1<\epsilon\) and numbers
+\[
+\begin{gathered}
+a_j<c_j<b_j\\[2pt]
+<A_j/\sqrt{1+\epsilon_1^2}.
+\end{gathered}
+\tag{CA.13}
+\]
+First make \(\epsilon _1\) small enough for these inequalities. Let \(\chi _0(w)\) be a smooth angular function zero on an angular neighbourhood of the negative ray and one outside a narrower temporal wedge contained strictly in \(|\operatorname{Im}  w|<\epsilon _1(-\operatorname{Re}  w)\). It extends smoothly over the negative cut as zero. Its intermediate values and derivatives have negative real time.
+
+For a small positive \(e\), put
+\[
+\begin{gathered}
+r=|(w,\zeta)|,\\[2pt]
+R_e=\sqrt{|w|^2+e^2r^2},\\[2pt]
+\chi_j=\chi_{c_j,b_j}(|\zeta_j|/R_e)\\[2pt]
+(1\le j\le d).
+\end{gathered}
+\tag{CA.14}
+\]
+Here the flat step is zero below \(c\), one above \(b\), and in between is
+\(q(v-c)/(q(v-c)+q(b-v))\), with \(q(h)=\exp (-1/h)\) for \(h>0\) and zero otherwise. It is smooth and flat at both ends, by direct differentiation of the exponential. Since \(R_e>0\) on the punctured full normal space and the step is zero near \(\zeta _j=0\), these spatial functions are smooth there. They have degree zero under real radial scaling.
+
+Take \(e^2 \sum  b_j^2<1\). Wherever all spatial cutoffs are below one, or all their derivatives occur,
+\[
+\begin{gathered}
+r^2\le |w|^2\\[2pt]
++(\sum b_j^2)(|w|^2+e^2r^2),\\[2pt]
+r\le C_e|w|.
+\end{gathered}
+\tag{CA.15}
+\]
+Choose \(e\) still smaller so the upper bounds \(b_j\sqrt{1+e^2C_e^2}\sqrt{1+\epsilon_1^2}\) are strictly less than \(A_j\). Thus the intersection of the temporal and spatial transition regions lies compactly in the angular interior of \(G\). At \(w=0,r>0\), at least one spatial cutoff is identically one on a neighbourhood; this observation resolves the apparent singularity of the temporal angular function when multiplied by the spatial factors below.
+
+Use the unsigned coefficient of §5.38, E.2, \(K_P\):
+\[
+\begin{gathered}
+K_P={1\over(2\pi i)^N}\\[2pt]
+\left[\begin{gathered}
+{p_{0,0}(u)\over w\prod\zeta_j}\\[2pt]
+-\log w\sum_{n+|\beta|\ge1}\\[2pt]
+{\begin{gathered}
+p_{n,\beta}(u)\beta!\\[2pt]
+(-w)^{n+|\beta|-1}
+\end{gathered}\over \begin{gathered}
+(n+|\beta|-1)!\\[2pt]
+\prod\zeta_j^{\beta_j+1}
+\end{gathered}}
+\end{gathered}\right].
+\end{gathered}
+\tag{CA.16}
+\]
+Define
+\[
+\begin{gathered}
+F^{\rm ann}_P=r_N\chi_0K_P\,\\[2pt]
+\bar\partial\chi_1\wedge\cdots\wedge\bar\partial\chi_d,\\[2pt]
+T^{\rm ann}_P=\bar\partial F^{\rm ann}_P.
+\end{gathered}
+\tag{CA.17}
+\]
+For \(d=0\) the empty wedge is one. Every multiplier support in (CA.17) is compactly inside the complete coefficient intersection \(U_0\cap\cdots\cap U_d\) on the normal sphere: (CA.15) separates \(w\) from zero, \(\chi _0\) separates the logarithmic cut, and \(\bar\partial  \chi _j\) separates each spatial pole. Extension by zero is smooth on the punctured normal space. The §5.38, E.5–E.6 geometric sum gives
+\[
+\begin{gathered}
+|F^{\rm ann}_P|\le C r^{-(2N-1)}\\[2pt]
+(1+|\log r|).
+\end{gathered}
+\tag{CA.18}
+\]
+Polar integration proves its literal \(L^1\) extension to the origin. Its differential has order at most one. Away from the origin the differential is \(r_NK_P\,\bar\partial\chi_0\wedge\cdots\wedge\bar\partial\chi_d\), supported in \(G\); the origin belongs to \(G\). Thus this is a closed supported current with the same actual coefficient series and no infinite spatial delta derivatives.
+
+#### CA.4. Explicit supported homotopy from the angular current
+
+The following smooth partition is chosen to make the homotopy quantitative. Set
+\[
+\begin{gathered}
+\vartheta_j=1-(1-\chi_j)^{1/j},\\[2pt]
+\phi_j=\vartheta_j\prod_{k>j}(1-\vartheta_k)\\[2pt]
+(1\le j\le d),\\[2pt]
+Q=\prod_{k=1}^d(1-\vartheta_k),\\[2pt]
+\phi_0=\chi_0Q,\\[2pt]
+\phi_G=(1-\chi_0)Q.
+\end{gathered}
+\tag{CA.19}
+\]
+The displayed fractional powers are smooth: near each flat endpoint they are an exponential \(\exp (-1/(j h))\) times a smooth positive factor; away from that endpoint ordinary differentiation applies. All spatial factors are smooth on the punctured normal space. The factors involving \(\chi _0\) vanish on an open neighbourhood of every nonzero point with \(w=0\), by (CA.15). Hence all \(\phi\) are smooth homogeneous functions there. Their sum is one by telescoping. Each \(\phi _i\) is subordinate to \(U_i\), with compact angular margins, and \(\phi _G\) is compactly supported in the angular interior of \(G\).
+
+For an angular partition \(q=(q_0,\cdots,q_d)\) write
+\(\omega_q=\sum_i(-1)^iq_i\,\bar\partial q_0\wedge\cdots\wedge\widehat{\bar\partial q_i}\wedge\cdots\wedge\bar\partial q_d\).
+On the complement of \(G\), either a spatial cutoff is locally one, making both \(\omega _\phi\) and \(\chi_0\bigwedge_j\bar\partial\chi_j\) zero, or \(\chi _0=1\) and \(\sum _i \phi _i=1\). In the latter region \(\omega _\phi =\bar\partial  \phi _1 \wedge  \cdots \wedge  \bar\partial  \phi _d\). The triangular Jacobian of \((\chi _1,\cdots,\chi _d)\to (\phi _1,\cdots,\phi _d)\) is
+\[
+\begin{gathered}
+\prod_{j=1}^d\vartheta_j'\\[2pt]
+\prod_{k=1}^d(1-\vartheta_k)^{k-1}\\[2pt]
+=\prod_{j=1}^d{1\over j}={1\over d!}.
+\end{gathered}
+\tag{CA.20}
+\]
+Consequently
+\[
+\begin{gathered}
+d!\,\omega_\phi=\chi_0\bar\partial\chi_1\wedge\cdots\\[2pt]
+\wedge\bar\partial\chi_d\\[2pt]
+\text{on }M\setminus G.
+\end{gathered}
+\tag{CA.21}
+\]
+Boundary points follow by smoothness and the flat plateau. This proves directly that the annular and partition representatives have the same complement normalization.
+
+Let \(\psi\) be the angular partition of §5.38, E.2 and interpolate \(q(\lambda )=(1-\lambda )\psi +\lambda  \phi\), including its \(G\) component. In (CA.19) no angular partition is changed. Use the odd total differential \(D=\bar\partial+d\lambda\,\partial_\lambda\) and form \(\omega _q\) with \(Dq_i\). Put, for \(d\ge 1\),
+\[
+\begin{gathered}
+b_P=r_Nd!K_P\int_0^1\\[2pt]
+\iota_{\partial_\lambda}\omega_{q(\lambda)}\,d\lambda,\\[2pt]
+H_P=F^{\rm root}_P-F^{\rm ann}_P\\[2pt]
++\bar\partial b_P.
+\end{gathered}
+\tag{CA.22}
+\]
+For \(d=0\) take \(b_P=0\) and the same formula for \(H_P\). On the complement \(\sum _i q_i=1\), hence \(\sum _i Dq_i=0\); expanding gives \(D\omega_q=N\bigwedge_iDq_i=0\). The coefficient of \(d \lambda\) says \(\partial_\lambda\omega_q=\bar\partial(\iota_{\partial_\lambda}\omega_q)\). Since \(K_P\) is holomorphic on all multiplier supports, integration proves \(\bar\partial b_P=F_\phi-F^{\mathrm{root}}_P\) there. Equations (CA.21)–(CA.22) therefore give \(H_P=0\) outside \(G\), while
+\[
+ \bar\partial H_P=T^{\rm root}_P-T^{\rm ann}_P.
+ \tag{CA.23}
+\]
+For \(d=0\), both cutoffs are one outside \(G\), so the same support assertion is immediate.
+
+This is a literal supported primitive for the full coefficient, not an assertion of cohomological continuity. Every term of the integrand has one partition factor or its \(\lambda\)-derivative for each normal open and \(N-2\) normal differential factors. Its angular support is compactly inside the full coefficient intersection. Thus \(|b_P|\le C r^{-(2N-2)}(1+|\log  r|)\). This is \(L^1\), as is each \(F\). Its distributional derivative exists by transposition. \(H_P\) has order at most one and is smooth away from the normal origin; its support assertion remains valid at the origin because that point belongs to \(G\). All fixed-normal base derivatives satisfy the same bounds. The weighted geometric tails in §5.38, E.3 bound \(F\) and \(b\) by one scalar tail tending to zero, and hence bound \(H\) with one common first-order test norm. This supplies controlled primitives for the entire convergent series.
+
+The equality is also an actual canonical Čech roof. Section 5.38, E.10 identifies \(F^{\mathrm{root}}_P\) with the descent of ordinary full-cone complement coefficient \(-r_N K_P\); (CA.21) and (CA.22) give its explicit smooth homotopy to \(F^{\mathrm{ann}}_P\). Adding \(d(F^{\mathrm{ann}}_P,0)\) sends \((0,-F^{\mathrm{ann}}_P)\) to \((T^{\mathrm{ann}}_P,0)\), and (CA.23) is the supported ambient homotopy between the current endpoints. The augmentations of §§5.34–5.35, R.6–R.7 and §5.35, V.6, and §5.37’s cup/excision/trace maps therefore transport this same homotopy through the canonical operation. No Leray cover or polynomial-class limit is used.
+
+For later use, a supported \(H\) of degree \(N-1\) with \(T'-T=\bar\partial  H\) changes (CA.8) by
+\[
+\begin{gathered}
+O_{T'}(f)-O_T(f)\\[2pt]
+=d(D_H,0),\\[2pt]
+D_H=I_N(\bar\partial\eta\wedge Hf).
+\end{gathered}
+\tag{CA.24}
+\]
+Indeed on the output complement compact Stokes gives
+\(I_N(\eta  \bar\partial  H f)=-I_N(\bar\partial  \eta  \wedge  Hf)\), since raw integration of a degree \(N-1\) compact coefficient is zero. On the full output neighbourhood,
+\(-I_{N+1}(\bar\partial  \eta  \wedge  \bar\partial  H f)=\bar\partial  D_H\), using only the holomorphic negative-time tube. These two identities prove (CA.24) component by component with the shift signs of §5.35, V.4, and §5.37, (W.12)–(W.14). For (CA.22), \(D_H\) is smooth on all of \(B\) and all its actual tails converge with every fixed output derivative. The primitive has support proper before tracing. This gives the required controlled difference between the angular and annular actions.
+
+#### CA.5. The spatial Cauchy trace is a full canonical trace
+
+Fix \(w\ne 0\) in the temporal wedge, and a small allowed output. All spatial multiplier supports in (CA.17) lie in one polydisc contained in the holomorphic input domain, by (CA.13)–(CA.15) and the margin inequality in CA.1. The strict inequalities allow a slightly wider time wedge and slightly larger spatial polydiscs, still inside the same cone margins. Together with a small full normal neighbourhood of the diagonal for each allowed output, these give an actual open neighbourhood on which \(F^{\mathrm{ann}}_P f\) is defined and which contains the support needed in this calculation. Over compact subsets of the output complement these neighbourhoods can be chosen uniformly. The primitive and partial-current identities below are computed on this open neighbourhood, where \(f\) is holomorphic, and then transported by the controlled excision maps of §5.37, W.3–W.7, and §5.34, R.7. Outside the temporal support the traced supported current is zero; a globally defined \(F^{\mathrm{ann}}_P f\) at other positive-time input points is not used. For the ambient first component only the fixed full-output negative-time transition tube is used, as in CA.1 and CA.6.
+
+Replace \(e\) in \(R_e\) continuously by \(v \in  [0,e]\). At fixed nonzero \(w\) the cutoffs are smooth, and their joint differential product has compact spatial support away from every coordinate pole. Its derivative is the spatial Dolbeault differential of
+\[
+\begin{gathered}
+B_v=\sum_{j=1}^d(-1)^{j-1}\dot\chi_j^v\\[2pt]
+\bar\partial_\zeta\chi_1^v\wedge\cdots\\[2pt]
+\widehat{\bar\partial_\zeta\chi_j^v}\cdots\\[2pt]
+\wedge\bar\partial_\zeta\chi_d^v.
+\end{gathered}
+\tag{CA.25}
+\]
+Every multiplier, including the dotted one, has annular support in its coordinate, so the holomorphic coefficient and \(f\) are defined on all these supports. Compact Stokes annihilates its spatial integral. Thus the trace is exactly its value at \(v=0\), where the cutoffs depend independently on \(|\zeta _j|/|w|\).
+
+For one spatial coordinate, expanding the holomorphic Taylor series on a disc containing the annulus and integrating its angular terms gives
+\[
+\begin{gathered}
+{1\over2\pi i}\int {\bar\partial\chi_j\over\zeta_j^{\beta_j+1}}\\[2pt]
+f(s,x+\zeta)\wedge d\zeta_j\\[2pt]
+={1\over\beta_j!}\partial_{x_j}^{\beta_j}f(s,x).
+\end{gathered}
+\tag{CA.26}
+\]
+The radial integral is \(\int\chi_j^{\prime}(r)\,dr=1\); the angular integral retains exactly exponent \(\beta _j\), with positive \(d\bar\zeta\wedge d\zeta=2i\,r\,dr\wedge d\theta\). Iteration in the ordered spatial coordinates gives the full Cauchy formula. Normal coefficient convergence is uniform on these annuli because every ratio \(|w|/(r_z|\zeta _j|)\) is bounded strictly below one. Hence the complete series, including \(n=0\) and unbounded \(\beta\), is integrated there as an actual normally convergent coefficient.
+
+The holomorphic block and coefficient sign are explicit. Moving \(ds\) past the \(d\) spatial antiholomorphic factors, then grouping each spatial normal block, contributes \((-1)^d r_d\). Together with \(r_N\), this is one: \(r_N(-1)^d r_d=1\). The partial trace of \(F^{\mathrm{ann}}_P f\) is therefore the literal locally integrable one-time primitive
+\[
+\begin{gathered}
+\chi_0(w)K_f(u,w),\\[2pt]
+K_f={1\over2\pi i}\\[2pt]
+\left[\begin{gathered}
+{p_{0,0}(u)f(t+w,x)\over w}\\[2pt]
+-\log w\,\Phi_P(u,t+w)
+\end{gathered}\right],
+\end{gathered}
+\tag{CA.27}
+\]
+where
+\[
+\begin{gathered}
+\Phi_P(u,s)=\sum_{n+|\beta|\ge1}\\[2pt]
+p_{n,\beta}(u){(t-s)^{n+|\beta|-1}\over(n+|\beta|-1)!}\\[2pt]
+\partial_x^\beta f(s,x).
+\end{gathered}
+\tag{CA.28}
+\]
+For outputs in a compact subset of \(\Omega _g\), \(f\) is holomorphic on a fixed neighbourhood of the diagonal, so (CA.28) is holomorphic and normally convergent near \(w=0\). Away from that diagonal the preceding annular margins apply on the specified open support neighbourhood. The normal \(L^1\) bound (CA.18), integrated spatially, is \(C|w|^{-1}(1+|\log|w||)\), locally integrable in the two real time dimensions. Thus the equality off \(w=0\) extends there as equality of \(L^1\) primitives; no point distribution can be added. A fixed spatial cutoff flat on their supports makes partial integration proper on a smaller product. It commutes with the complete differential by compact Stokes, so on that neighbourhood the partial trace of \(T^{\mathrm{ann}}_P f\) is exactly \(\bar\partial (\chi _0 K_f)\), including its diagonal and output antiholomorphic components. Controlled excision transports this identity of supported currents into (CA.8), keeping its complement component on the output complement and its ambient first component on the full transition tube. This proves a chain trace comparison, rather than identifying it from a contour action.
+
+#### CA.6. One-time angular-to-ray comparison and the full ambient primitive
+
+We use (CA.27) near \(w=0\) for outputs in \(\Omega _g\); its values on the negative-time transition tube are defined for every output in \(B\). The literal principal \(K_f\) is \(L^1\) in time on those domains. Its Cauchy differential gives \(p_{0,0}(u)f(u)\) on the diagonal, and its negative-log differential gives the positive ray density with holomorphic coefficient (CA.28), by the explicit one-coordinate §5.36, U.5–U.7 calculation. Define
+\[
+ H_f^{\rm time}=(\chi_0-1)K_f.
+ \tag{CA.29}
+\]
+It is supported in the narrower negative-time wedge and is \(L^1\) there. The exact identity \(\bar\partial (\chi _0 K_f)-\bar\partial  K_f=\bar\partial  H_f^{\mathrm{time}}\) is valid as currents. Apply the one-time version of (CA.24): the two relative traced outputs differ by \(d(D_{\mathrm{time}},0)\), where
+\[
+D_{\rm time}=I_1\left(\begin{gathered}
+\bar\partial\eta_{\rm time}\wedge\\[2pt]
+H_f^{\rm time}
+\end{gathered}\right).
+\tag{CA.30}
+\]
+Only the fixed negative-time transition contributes. On that compact tube \(\Phi _P\) is an actual joint holomorphic series on a full smaller output neighbourhood: spatial Cauchy radii proportional to the strictly positive time length give all ratios below a fixed number less than one, and \(C|t-s|<1/2\). The logarithmic cut is a fixed \(L^1\) normal coefficient. Parametrizing in \(w\) and differentiating the smooth compact coefficient proves \(D_{\mathrm{time}}\) smooth on the full output neighbourhood. Every fixed derivative and every series tail has the same compact bounds. The imaginary input cutoffs are flat on this wedge, as arranged in CA.1. Consequently (CA.30) is a full ambient primitive, with no assertion about boundary growth.
+
+The ray calculation of §5.37, W.19–W.24 now applies to the joint holomorphic function \(\Phi _P(u,s)\). Its anchored output is precisely
+\[
+\begin{gathered}
+V_P(u)=p_{0,0}(u)f(u)\\[2pt]
++\int_a^t\Phi_P(u,s)\,ds.
+\end{gathered}
+\tag{CA.31}
+\]
+This is §5.40, (PB.10), with every spatial Taylor term. Its normal convergence and holomorphy on the common input/target domains are §5.40, PB.3–PB.4, (§5.40, PB.8)–(§5.40, PB.13). Points of the triangle between \(a\), \(a+i \operatorname{Im}  t\) and \(t\) have the form \(s=a+\theta (t-a)+i \nu (1-\theta )\operatorname{Im}  t\), with \(0\le \theta ,\nu \le 1\). They satisfy \(|t-s|\le (1-\theta )|t-a|\) and \(-\operatorname{Re}  s+\operatorname{Re}  t=(1-\theta )(\operatorname{Re}  t-a)\ge |t-s|/2\). Thus §5.40, (PB.8)’s complete spatial-disc margins hold on this triangle, including the vertical anchor edge. A holomorphic primitive changes its straight segment to the horizontal/vertical path. The full smooth correction is
+\[
+\begin{gathered}
+E_{\rm ray}(u)=\\[2pt]
+\int_a^{a+i\operatorname{Im}t}\Phi_P(u,s)\,ds\\[2pt]
+-\int_{L_0+i\operatorname{Im}t}^{a+i\operatorname{Im}t}\\[2pt]
+\theta(\operatorname{Re}s)\Phi_P(u,s)\,ds.
+\end{gathered}
+\tag{CA.32}
+\]
+All its input points belong to one fixed full negative-time tube. The geometric estimates for all \(\beta\) there converge uniformly with every fixed derivative. The §5.37, W.23 integration by parts gives its first component on every output, including the excluded output support:
+\(\bar\partial_tE_{\mathrm{ray}}=-(1/2)\int\theta^{\prime}(r)\Phi_P(u,r+i\operatorname{Im}t)\,dr\), and there is no \(\bar\partial _x\) term. The ray output is exactly \((0,-V_P)+d(E_{\mathrm{ray}},0)\); its Cauchy multiplication part has zero first component and positive connecting representative \((0,-p_{0,0}f)\).
+
+Combining (CA.24), (CA.27)–(CA.32), with \(H_P\) from (CA.22), proves the main literal equality
+\[
+\begin{gathered}
+Q_NL_\eta m_{T^{\rm root}_P}(0,-f)\\[2pt]
+=(0,-V_P)+d(E_P,0),\\[2pt]
+E_P=E_{\rm ray}+D_{\rm time}\\[2pt]
++I_N(\bar\partial\eta\wedge H_Pf).
+\end{gathered}
+\tag{CA.33}
+\]
+Every term of \(E_P\) is smooth on a full output neighbourhood and is formed from the convergent coefficient and fixed interior input tubes. The canonical cube, augmentation, excision and shifted trace maps are (CA.5)–(CA.7); the supported homotopy is CA.22; the actual spatial trace homotopy is CA.25; and the temporal supported homotopy is CA.29. These explicit maps establish canonical equality, through the actual relative cup, excision and trace maps.
+
+#### CA.7. Interior collars, changes, derivatives and remaining scope
+
+For any smooth interior cutoff \(\chi\) compactly supported in the holomorphic input domain, \(F=\chi  f\) extends smoothly by zero, but its relative representative is
+\[
+\begin{gathered}
+(\bar\partial F,F-f),\\[2pt]
+F-f=(\chi-1)f.
+\end{gathered}
+\tag{CA.34}
+\]
+The residual term is retained. §5.37, W.10–W.14 are chain identities for any finite-order supported current, so they give
+\[
+\begin{gathered}
+Q_NL_\eta\\[2pt]
+m_{T_P}(\bar\partial F,F-f)\\[2pt]
+=(0,-V_P)\\[2pt]
++d(E_P+J_\chi,0),\\[2pt]
+J_\chi=I_N(\eta T_PF).
+\end{gathered}
+\tag{CA.35}
+\]
+\(J_\chi\) is smooth on the full output neighbourhood: in normal coordinates it pairs the smoothly parameterized order-one current with a smooth compact input coefficient. Each fixed-input output derivative is the finite combination of base derivatives and transposed normal derivatives in §5.38, E.13. Their bounded test norms prove the asserted smoothness and actual tail convergence. This argument uses one finite current order, independently of all spatial Taylor terms.
+
+For a second collar \(F'\), the difference is \(d(I_N(\eta  T_P(F'-F)),0)\). For a second excision cutoff \(\eta '\), the output difference is \(-d(I_N((\eta '-\eta )T_Pf),0)\), exactly §5.37, W.26–W.27. The latter coefficient is defined on a compact subset of the input complement avoiding \(S\); an interior bump there gives its smooth zero extension, and compact finite-order current pairing gives a full smooth primitive. All proper supports and excision refinements are those in §5.37, W.4–W.7/§5.34, R.24. Changing angular partitions or annulus parameters gives the supported homotopies (CA.22)/(CA.25), so it changes the output by the displayed full-tube primitives. Changing negative anchors gives §5.40, PB.5’s normally convergent holomorphic full-neighbourhood correction. Extending inputs give extending outputs by that same estimate. These formulas prove the quotient, collar, domain, support and germ compatibilities for arbitrary original degree-one relative classes.
+
+Finite output time derivatives commute with the canonical cup/trace by test-function transposition and proper Stokes, and with the selected input-only \(\eta\). For a general base-dependent cutoff, §5.37, W.8's exact commutator homotopy \([D,L_\eta ]=dK_D+K_Dd\), \(K_D(a,b)=((D \eta )b,0)\), supplies the replacement. Thus a finite left shift \(h^{-k} \circ  P\) acts canonically by \(\partial _t^k V_P\). CA.2 proves the order-zero action multiplicative; §5.40, PB.6, proves that the ordinary \(h\) primitive and \(\partial _t\) actions are inverse modulo the holomorphic anchor correction. The actual normal automorphism is fully proved in §5.22.1, equations (5.22a)–(5.22b): \(hP=\sigma (P)h\), with \(\sigma\) an actual algebra automorphism, and finite shifts preserve the common-domain factorial class. Each finite-order symbol is a finite left \(h^{-k}\) shift of an order-zero symbol by §5.19's order definition and the finite-shift calculation §5.21.2, (5.21h)–(5.21i). Equality of two such presentations is tested by multiplying by a common positive power of the regular normal \(h\); their actions then agree because \(\rho (h)\) is invertible. Multiplication of presentations uses \(hP=\sigma (P)h\) and its inverse, and the already proved action identity carries the same relation. This directly proves the presentation-independent full finite-order symbol action, without an extra localization theorem. It is action independence; it does not by itself identify different supported kernel representatives under all localized ring presentations. The canonical ring product and class-level localization are §5.41, CP.1–CP.6, using §5.39, NL.2–NL.7.
+
+The closed result is the unrestricted-growth canonical degree-one action for the full convergent spatial symbol coefficients and their finite time shifts, with common domains, actual unbounded Taylor sums, residual complement, supported homotopies and full ambient primitives. It does not prove arbitrary derived-degree \(E\)-linearity, infinite-order extension/flatness, propagation, module separation, finite D-type embeddings, finite-pole recovery, intrinsic-order comparison, full C1, arbitrary analytic proper-image regularity, or any full GL/BB/KL/affine/critical/factorization completion. Those further interfaces require their own proofs.
+
+![Proper thick-cone slice, nested Cauchy domains and the controlled primitive chain](assets/full-action-domain-and-primitives.png)
+
+Figure 5.42.1 is an exact real slice of (CA.1)/(CA.4) with \(\epsilon =1/4\), \(A=3\), \(g(r)=r^2/20\), \(L=1/10\) on \(r\le 1\), and output \((\operatorname{Re}  t,x)=(1/10,1/20)\). It labels the complete local support-intersection bound. The middle panel has exact rational coordinates \(a=-3/20\), \(t=-3/200+i/50\), \(\theta =13/20\), \(\sigma =2/5\), \(\delta =1/250\), \(\kappa =2/5\); the two nested time lengths add exactly as in (CA.10). The right panel records the supported primitive (CA.22) and all three full-output corrections in (CA.33), retaining the collar residual (CA.34). This is a real section, a complex-time sample and a diagram of proved maps. Reproducible source and exact coordinate data are retained; the real section, time sample and primitive diagram use exactly these coordinates.
+
+
+The figure has a full-resolution PNG, SVG, editable plotting source and exact coordinate data.
+
+
 ## 6. What monodromy misses in the irregular world
 
 Consider $\partial_t e=t^{-2}e$. A horizontal coefficient is $e^{1/t}$; its ordinary monodromy is trivial. The trivial connection also has trivial monodromy, but (1.5) proves these meromorphic connections are not isomorphic. For $t=r e^{i\theta}$,
@@ -3977,6 +10151,10 @@ Its inverse sends $e_{\lambda+1}$ to $x e_\lambda$. Both coefficients are units 
 For any prescribed invertible $T$, its generalized eigenblocks and the finite nilpotent logarithm (2.6) construct a normalized $A$. Formula (2.5) proves that all morphisms between normalized constant models are constant intertwiners. Polynomial logarithms on the $T$-blocks prove that these are exactly the $T$-intertwiners. The constructions are therefore inverse equivalences, not merely a list of objects. Changing a basis conjugates $T$, and a conjugacy gives an isomorphism of connections. A formal connection over a general characteristic-zero field does not acquire a complex topological monodromy without additional choices or field extension; the stated classification uses the complex field.
 
 ## What this lesson does not prove
+
+Theorem 5.27 constructs an actual coherent reflexive strict coefficient lattice for a finite meromorphic connection on a reduced analytic divisor, under the analytic transverse-disc hypotheses on every local divisor component. It proves normalization at all smooth points, strict membership, saturation and logarithmic stability at all singular points, and the support statement for coherent submodules and actual classes. Arbitrary subquotients are excluded by the explicit counterexample. The full characteristic cutoff, initial global analytic generator, half-order correspondence and arbitrary analytic proper-image theorem remain obligations in §5.27.12.
+
+The theorems and propositions in §§5.19–5.26 prove the actual factorial-growth symbol construction, bounded division and units, finite stalk Noetherianity, exact faithful finite-module completion at the dummy zero section, fixed neighbourhood coherent kernels, the general bounded Rees ambient comparison, and actual descent for a supplied coherent generating lattice satisfying \(tL\subset hL\). Their full local proofs supersede the earlier future-completion scope of this construction. The canonical strict cutoff across singular characteristic strata, the initial global analytic generator, any half-order theorem, and full analytic arbitrary proper/support-proper regularity remain separate obligations.
 
 Theorem 3.3 proves Fuchs's criterion in every order for formal and convergent coefficients. Theorems 5.0 and 5.1 prove canonical logarithmic extensions, the full global algebraic connection/local-system correspondence, the algebraic curve and divisorial tests, and compactification independence. The proper compactification and GAGA inputs have exact earlier programme proofs; the coherent-extension, transverse-family, meromorphic-comparison and logarithmic-jet steps are proved here.
 

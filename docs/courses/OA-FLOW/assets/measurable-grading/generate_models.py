@@ -5,6 +5,7 @@ import math
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-measurable-grading-20261009-v1"
 import numpy as np
 from matplotlib.patches import Rectangle
 
@@ -54,7 +55,7 @@ bottom.set_axisbelow(True)
 bottom.spines[["top", "right"]].set_visible(False)
 fig.suptitle(r"$\tau(f)=\frac{1}{2\pi}\int e^{-q}f(q)\,dq$     |     $\theta_s f(q)=f(q-s)$", fontsize=13)
 fig.savefig(OUT / "time-and-measure.png", dpi=160)
-fig.savefig(OUT / "time-and-measure.svg")
+fig.savefig(OUT / "time-and-measure.svg", metadata={'Date': None})
 plt.close(fig)
 print(json.dumps({"files": ["time-and-measure.png", "time-and-measure.svg", "model-data.json"],
                   "finite_masses": masses}))
@@ -80,7 +81,7 @@ for ax, p, label in zip(axes, [.5, 1, 2], ["1/2", "1", "2"]):
     ax.grid(alpha=.15)
 fig.suptitle(r"Two orthogonal state densities: $g_p(a h_1^p+b h_2^p)=(|a|^{1/p}+|b|^{1/p})^p$"+"\nShaded: gauge at most one. Orange: midpoint of the two unit vectors.",fontsize=12)
 fig.savefig(OUT / "norm-and-quasinorm.png", dpi=160)
-fig.savefig(OUT / "norm-and-quasinorm.svg")
+fig.savefig(OUT / "norm-and-quasinorm.svg", metadata={'Date': None})
 plt.close(fig)
 (OUT / "norm-data.json").write_text(json.dumps({
     "algebra":"C direct-sum C", "densities":"h_1,h_2 of the two coordinate states; orthogonal supports",

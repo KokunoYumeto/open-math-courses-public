@@ -2,9 +2,11 @@
 
 *Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
+*Prerequisite reconciliation, distributional-continuation and cusp-minimality proofs, and reader corrections by GPT-6 Astra (OpenAI), Ultra, October 2026; original proofs and complete solutions retained.*
+
 Differentiating $x^{s+1}$ produces $(s+1)x^s$. For a general polynomial $f$, a suitable differential operator still lowers the formal exponent by one, but the scalar factor becomes a polynomial in $s$. The smallest such scalar factor is the Bernstein–Sato polynomial. Its existence follows from a growth estimate and finite length, even when no useful operator is apparent. The same estimate proves that allowing arbitrary powers of $f$ in denominators preserves holonomicity.
 
-Throughout, $k$ has characteristic zero, $R=k[x_1,\ldots,x_n]$, $A=A_n(k)$, and $0\ne f\in R$. Put $d=\deg f$ and $R_f=R[f^{-1}]$. Modules are left modules. The prerequisite is The Bernstein filtration and holonomic modules over the Weyl algebra: we use Bernstein's inequality, positive integral multiplicity, and finite length. No analytic correspondence is needed for the existence theorem or localization.
+Throughout, $k$ has characteristic zero, $R=k[x_1,\ldots,x_n]$, $A=A_n(k)$, and $0\ne f\in R$. Put $d=\deg f$ and $R_f=R[f^{-1}]$. Modules are left modules. The prerequisite is The Bernstein filtration and holonomic modules over the Weyl algebra: we use Bernstein's inequality, Theorem 3.1, positive integral multiplicity, Theorem 1.1, its exact-sequence formula, Proposition 1.2, and finite length, Theorem 5.1. No analytic correspondence is needed for the existence theorem or localization.
 
 ## 1. Giving meaning to the exponent
 
@@ -343,16 +345,184 @@ b_q(s)=(s+1)\left(s+\frac n2\right).
 
 This polynomial has rational coefficients. Field invariance from Section 3 first proves the assertion over $\mathbb Q$ from its extension to $\mathbb C$, and then over every characteristic-zero field. The integral argument only establishes the needed quadratic root; it assumes no general theorem on meromorphic distributions.
 
-### The cusp: a stated computation
+### The cusp: explicit equation and minimality
 
-For $f=x^2+y^3$, the answer is
+For $f=x^2+y^3$ over any characteristic-zero field, we will prove
 
 \[
 b_f(s)=(s+1)\left(s+\frac56\right)\left(s+\frac76\right).
 \tag{5.8}
 \]
 
-This computation is stated here, as assigned, rather than proved. See M. Popa, [*The Bernstein–Sato polynomial*](https://people.math.harvard.edu/~mpopa/notes/Bernstein-Sato-notes.pdf), Example 1.10(2) and Theorem 2.4. For orientation, the weights are $1/2,1/3$ and the Jacobian algebra is $k[x,y]/(x,y^2)$, with basis $1,y$ of weights $0,1/3$. The stated weighted-homogeneous formula gives the shifts $5/6$ and $7/6$. That general formula and its minimality theorem are not proved in this chapter.
+An operator proves that the right side is admissible. Two explicitly computed poles then prove that neither of the fractional roots can be removed. This is a proof of the cusp formula itself; it does not assume the general weighted-homogeneous formula stated below.
+
+#### An explicit operator
+
+Consider the polynomial-coefficient operator
+
+\[
+\begin{aligned}
+P={}&\frac38\partial_x^2+\frac1{27}\partial_y^3\\
+&+\frac18x\partial_x^3+\frac16y\partial_x^2\partial_y.
+\end{aligned}
+\tag{5.9}
+\]
+
+Multiplications by $x$ and $y$ here occur after the indicated derivatives. Put $X=x^2$, $Y=y^3$, so $f=X+Y$. Repeated use of (1.2) gives the following four identities in the formal-power module:
+
+\[
+\begin{aligned}
+\partial_x^2 f^{s+1}
+ &=(s+1)f^{s-2}\\
+ &\quad\cdot[2f^2+4sXf],\\
+\partial_y^3 f^{s+1}
+ &=(s+1)f^{s-2}\\
+ &\quad\cdot[6f^2+54sYf\\
+ &\qquad+27s(s-1)Y^2],\\
+x\partial_x^3 f^{s+1}
+ &=(s+1)f^{s-2}\\
+ &\quad\cdot[12sXf+8s(s-1)X^2],\\
+y\partial_x^2\partial_y f^{s+1}
+ &=(s+1)f^{s-2}\\
+ &\quad\cdot[6sYf+12s(s-1)XY].
+\end{aligned}
+\tag{5.10}
+\]
+
+For example, differentiate $2(s+1)f^s+4s(s+1)x^2f^{s-1}$ once more in $x$ and multiply by $x$ to obtain the third identity. For the fourth, differentiate that same expression in $y$ and multiply by $y$. The second follows by differentiating $3(s+1)y^2f^s$ twice; its two middle contributions are $18s(s+1)y^3f^{s-1}$ and $36s(s+1)y^3f^{s-1}$, giving the coefficient $54$.
+
+Multiply the four bracketed expressions by $3/8,1/27,1/8,1/6$, respectively, and add. Their coefficients of $X^2$, $XY$ and $Y^2$ are, respectively,
+
+\[
+\begin{gathered}
+s^2+2s+\frac{35}{36},\\
+2s^2+4s+\frac{35}{18},\\
+s^2+2s+\frac{35}{36}.
+\end{gathered}
+\tag{5.11}
+\]
+
+The sum is therefore $(s+5/6)(s+7/6)(X+Y)^2$. Substitution in (5.10) proves
+
+\[
+\begin{aligned}
+P f^{s+1}&=(s+1)(s+5/6)\\
+&\quad\cdot(s+7/6)f^s.
+\end{aligned}
+\tag{5.12}
+\]
+
+No division by $s+1$ was used, so the identity is valid at every parameter. By the definition of $I_f$, (5.12) proves that $b_f$ divides the polynomial in (5.8). Proposition 3.2 supplies its root $-1$; it remains to force $-5/6$ and $-7/6$.
+
+#### Two test integrals force the other roots
+
+Work first over $\mathbb C$ and use the real $(x,y)$-plane for the integrals. Write $v=-y$ and set
+
+\[
+\begin{gathered}
+g=-f=v^3-x^2,\\
+\Omega=\{(x,y):v>0,\ |x|<v^{3/2}\}.
+\end{gathered}
+\tag{5.13}
+\]
+
+Thus $\Omega=\{g>0\}$ and its entire finite boundary lies in $g=0$. Let $T(s)=1_\Omega g^s$. [Theorem 6.1](#theorem-6-1-real-and-complex-distributional-continuation) below supplies its unique meromorphic distribution-valued continuation; that proof depends on Section 3, not on this cusp computation, so there is no circular use.
+
+We first establish a stronger initial domain for this particular $T$. For $\operatorname{Re}s>-5/6$, all its compact-test integrals converge and are holomorphic. To see this, use $x=v^{3/2}u$, $-1<u<1$, with $dx=v^{3/2}du$ at fixed $v$. A compact support puts $v$ in $[0,V]$ for some finite $V$. The absolute value of the integral is bounded by the test's supremum times
+
+\[
+\begin{aligned}
+&\int_0^V v^{3\operatorname{Re}s+3/2}\,dv\\
+&\qquad\cdot\int_{-1}^1(1-u^2)^{\operatorname{Re}s}\,du.
+\end{aligned}
+\tag{5.14}
+\]
+
+The first integral converges exactly when $\operatorname{Re}s>-5/6$. The second converges for $\operatorname{Re}s>-1$: near either endpoint $1-u^2$ is bounded above and below by positive multiples of the distance to that endpoint. On any compact subset of $\operatorname{Re}s>-5/6$, allow a small positive slack in the exponent. The power-series estimate (6.3) then bounds every parameter derivative and the series tails by the same integrable product, with the smaller exponent near its zeros. Away from those zeros all factors are bounded. This proves holomorphy in a common order-zero compact-test bound, including for tests depending polynomially on $s$.
+
+Choose $0<\varepsilon<V$ and a smooth function $\rho$ on the real line, supported in $(-V,V)$ and equal to one on $[-\varepsilon,\varepsilon]$. Choose a compactly supported smooth $\chi(x)$ equal to one for $|x|\leq V^{3/2}$. For $j=0,1$ define the compact test
+
+\[
+\phi_j(x,y)=(-y)^j\rho(-y)\chi(x).
+\tag{5.15}
+\]
+
+Such cutoffs can be constructed from $h(t)=e^{-1/t}$ for $t>0$, $h(t)=0$ otherwise: its derivatives are polynomials in $1/t$ times $e^{-1/t}$ and tend to zero at zero, and $h(t)/(h(t)+h(1-t))$ gives a smooth transition. Translate and rescale that transition at the two endpoints of each desired interval.
+
+Where $\rho(v)\ne0$ inside $\Omega$, the factor $\chi$ is one. The same substitution as above therefore gives, initially for $\operatorname{Re}s>-5/6$,
+
+\[
+\begin{gathered}
+I_j(s):=T(s)(\phi_j)=A(s)M_j(s),\\
+A(s)=\int_{-1}^1(1-u^2)^s\,du,\\
+M_j(s)=\int_0^V v^{3s+j+3/2}\rho(v)\,dv.
+\end{gathered}
+\tag{5.16}
+\]
+
+The radial factor has the elementary meromorphic expression
+
+\[
+\begin{aligned}
+M_j(s)&=\frac{\varepsilon^{3s+j+5/2}}{3s+j+5/2}\\
+&\quad+\int_\varepsilon^V v^{3s+j+3/2}\rho(v)\,dv.
+\end{aligned}
+\tag{5.17}
+\]
+
+The last integral is entire, since its integration interval stays away from zero. Thus $M_j$ has a simple pole of residue $1/3$ at
+
+\[
+s_j=-\frac{2j+5}{6}.
+\tag{5.18}
+\]
+
+The angular factor is holomorphic for $\operatorname{Re}s>-1$, with $A(-5/6)>0$. To reach the other parameter, integrate the derivative of $u(1-u^2)^{s+1}$ on $(-1,1)$. When $\operatorname{Re}s>-1$ its endpoint values vanish and its derivative is integrable, so
+
+\[
+\begin{gathered}
+(2s+2)A(s)=(2s+3)A(s+1),\\
+A(s)=\frac{2s+3}{2s+2}A(s+1).
+\end{gathered}
+\tag{5.19}
+\]
+
+The second expression continues $A$ to $\operatorname{Re}s>-2$. In particular,
+
+\[
+A(-7/6)=-2A(-1/6)\ne0.
+\tag{5.20}
+\]
+
+Equations (5.16)–(5.20), with analytic uniqueness, now show that $I_0$ and $I_1$ have genuine simple poles at $-5/6$ and $-7/6$, respectively, with nonzero residues $A(s_j)/3$. These are poles of test pairings of $T$, not merely a scaling prediction. No Gamma-function formula or general theorem on roots is used.
+
+Finally let $b(s)f^s=Q(s)f^{s+1}$ be **any** polynomial functional equation over $\mathbb C$. Multiplication by the scalar $-1$ preserves $I_f$ by Section 3; under that identification an equation for $g=-f$ is $b(s)g^s=-Q(s)g^{s+1}$. The zero-set argument and formal transpose from (6.4)–(6.5) give
+
+\[
+b(s)I_j(s)=T(s+1)\bigl((-Q(s))^{\mathsf t}\phi_j\bigr)
+\tag{5.21}
+\]
+
+first far to the right and then meromorphically by uniqueness. The right side is holomorphic on $\operatorname{Re}s>-11/6$, by (5.14); transposition leaves the support compact and gives a test depending polynomially on $s$. This half-plane contains both $s_0$ and $s_1$. Comparing residues in (5.21) forces $b(-5/6)=b(-7/6)=0$. Together with Proposition 3.2, every admissible $b$ is divisible by the three distinct factors in (5.8). Equation (5.12) proves the reverse divisibility, establishing the exact monic polynomial over $\mathbb C$.
+
+The operator (5.9) and the polynomial (5.8) have rational coefficients. The field-extension invariance in Section 3 identifies the answer over $\mathbb Q$ with the answer over $\mathbb C$, and then identifies it over any characteristic-zero field with its extension from $\mathbb Q$. Thus (5.8) has the full field generality claimed.
+
+#### The general weighted-homogeneous formula remains separate
+
+The weights for this cusp are $1/2,1/3$, and its Jacobian algebra is $k[x,y]/(x,y^2)$, with basis $1,y$ of weights $0,1/3$. Their sum with $1/2+1/3$ gives the two shifts in (5.8), but this observation alone would not have proved either admissibility or minimality.
+
+For the full general result, let $f\in\mathbb C[x_1,\ldots,x_n]$ be weighted homogeneous of degree one for positive rational weights $w_i$, with an isolated critical point at the origin. Take a monomial basis of its finite-dimensional Jacobian algebra and let $\Sigma$ be the **set of its distinct weighted degrees**, not a list with repeated degrees. The general formula states
+
+\[
+\begin{aligned}
+b_f(s)&=(s+1)\\
+&\quad\cdot\prod_{\rho\in\Sigma}
+\left(s+\sum_{i=1}^n w_i+\rho\right).
+\end{aligned}
+\tag{5.22}
+\]
+
+See M. Popa, [*The Bernstein–Sato polynomial*](https://people.math.harvard.edu/~mpopa/notes/Bernstein-Sato-notes.pdf), Example 1.10(2) and Theorem 2.4, for the cusp and general formula. The general statement and its minimality proof remain external here; the direct cusp proof above is not a replacement for them. In particular repeated weights must not be converted into extra factors by treating $\Sigma$ as a multiset. The external proof uses an annihilator statement, Lemma 2.7, whose proof is delegated there to other references; that input must itself have an exact full proof provider before the general formula is counted as internally proved.
 
 ## 6. Two analytic statements
 
@@ -362,11 +532,182 @@ The following facts explain what the algebraic polynomial detects. Neither is an
 
 The characteristic-zero version follows from this statement and the field invariance proved above. The finitely many coefficients of $f$ lie in a finitely generated subfield of $k$, which embeds into $\mathbb C$. Extend to $\mathbb C$, apply the stated theorem, and extend back to $k$. In particular the monic polynomial has coefficients in $\mathbb Q$ under the canonical inclusion into $k$.
 
-**Distributional continuation — statement.** For a nonzero real polynomial, $|f|^s$, initially a locally integrable distribution for $\operatorname{Re}s>0$, has a meromorphic distribution-valued continuation to all $s\in\mathbb C$. Bernstein's [*The analytic continuation of generalized functions with respect to a parameter*](https://www.math.tau.ac.il/~bernstei/Publication_list/publication_texts/Bern-a-cont-FAN.pdf), Theorem 1, treats the powers extended by zero from a region where a polynomial is positive; applying it on the positive and negative regions gives this absolute-value version. The poles lie in finitely many progressions with step $-1$.
+### Theorem 6.1. Real and complex distributional continuation
 
-For a complex polynomial on $\mathbb C^n$, the standard normalization is $|f|^{2s}$. For every smooth compactly supported test function $\phi$, the integral $\int_{\mathbb C^n}|f|^{2s}\phi$ continues meromorphically, with possible poles $\alpha-j$, where $\alpha$ is a root of $b_f$ and $j\in\mathbb Z_{\geq0}$; see Popa, Theorem 5.2. For the exponent $|f|^s$ on that same complex space, rescaling the parameter gives possible poles $2(\alpha-j)$. This factor of two depends on the exponent convention.
+Let $0\ne f\in\mathbb R[x_1,\ldots,x_n]$. The distributions $|f|^s$, initially defined for $\operatorname{Re}s>0$, extend uniquely to a meromorphic family on the whole parameter plane. Their possible poles are among
 
-The distribution theory belongs to the analysis lessons *Finite parts of singular powers* and *Complex powers at a boundary*. Here the formal symbol $f^s$ and its algebraic equation are defined without a branch choice, a test function, or an analytic continuation.
+\[
+\alpha-j,\qquad b_f(\alpha)=0,\quad j\in\mathbb Z_{\geq0}.
+\tag{6.1}
+\]
+
+More generally, if $\Omega$ is any open subset of $\{f>0\}$ with $\partial\Omega\subseteq\{f=0\}$, the powers $f^s$ extended by zero outside $\Omega$ have the same conclusion. No regularity of that boundary is assumed.
+
+For $0\ne f\in\mathbb C[z_1,\ldots,z_n]$, the family $|f|^{2s}$ on $\mathbb C^n=\mathbb R^{2n}$ also has a unique meromorphic continuation, with possible poles (6.1). Thus $|f|^s$ on complex space has possible poles $2(\alpha-j)$. All these families, including every Laurent coefficient, are tempered distributions. The pole sets can be smaller than the displayed sets.
+
+The proof below requires only the functional equation in Theorem 3.1, with its minimal polynomial from (3.5); it does not require the negative-rational-root theorem. That still-external theorem additionally says that all the candidate poles in (6.1) are negative rational numbers. For a nonzero constant $f$, $b_f=1$ and the families are entire.
+
+#### Analytic families, test bounds and continuation
+
+Distributions pair **complex linearly** with tests. On $\mathbb R^d$ write
+
+\[
+\begin{gathered}
+p_{K,r}(\phi)=\max_{|\nu|\leq r}\sup_K|\partial^\nu\phi|,\\
+q_{L,r}(\phi)=\max_{|\nu|\leq r}\sup_x(1+|x|)^L|\partial^\nu\phi(x)|.
+\end{gathered}
+\tag{6.2}
+\]
+
+The first seminorm is used for smooth tests supported in a fixed compact $K$; the second is a Schwartz seminorm. Here a distribution-valued family is holomorphic when its test pairings have local power series with a common finite test-seminorm bound on smaller parameter disks. It is meromorphic when, near each parameter, multiplication by one nonzero scalar polynomial makes it holomorphic. Crucially, that polynomial and a bound on the pole order are independent of the test.
+
+We will use a direct integral observation. Consider the integrand $\eta(x)t(x)^{a+cs}\phi(x)$, where $a\geq0$, $c>0$, $t$ is the absolute value of a polynomial, and $\eta$ is a fixed measurable function with $|\eta|\leq1$. Set the integrand to zero at $t=0$. This defines a holomorphic family on $a+c\operatorname{Re}s>0$. Indeed, around $s_0$ choose $\rho>0$ with $a+c\operatorname{Re}s_0-c\rho>0$. Expand the parameter factor using the real logarithm of $t$:
+
+\[
+t^{c(s_0+h)}=t^{cs_0}\sum_{\ell\geq0}
+\frac{(ch\log t)^\ell}{\ell!}.
+\tag{6.3}
+\]
+
+For $|h|\leq\rho$, the sum of the absolute values, after multiplication by $t^a$, is at most $t^{a+c\operatorname{Re}s_0-c\rho}$ when $0<t\leq1$, and at most $t^{a+c\operatorname{Re}s_0+c\rho}$ when $t\geq1$. The first bound is at most one. The second has at most polynomial growth in $x$, since $t(x)\leq C(1+|x|)^{\deg f}$. On compact tests this is bounded by a constant times $p_{K,0}(\phi)$. On Schwartz tests choose $L$ larger than the growth exponent plus $d$ and integrate the bound $(1+|x|)^{-L}$ against that growth. This gives a constant times $q_{L,0}(\phi)$.
+
+For completeness, absolute convergence of the integrated series is uniform on every smaller disk $|h|\leq\rho'<\rho$: the tail starting at degree $m$ is at most $(\rho'/\rho)^m$ times the integrable sum just bounded at radius $\rho$. Thus the integrals of the series converge in a common test-seminorm bound, not just separately for each test. The same argument on a slightly larger disk bounds all parameter derivatives. It also applies after restricting the integral to a fixed measurable region.
+
+Scalar analytic uniqueness will be used on overlapping half-planes. A convergent power series which is not identically zero has isolated zeros: factor out its first nonzero power and use continuity of the remaining, nonzero factor. It follows that an analytic function zero on an open subset of a connected domain is zero everywhere: the set where its germ is zero is both open and closed, the latter by the isolated-zero observation. For meromorphic functions, first clear the finitely many local denominator factors. Applying this argument to each test gives uniqueness for the families used below.
+
+For a polynomial-coefficient differential operator $Q$, its formal transpose $Q^{\mathsf t}$ is determined by
+
+\[
+x_i^{\mathsf t}=x_i,\qquad
+\partial_i^{\mathsf t}=-\partial_i,\qquad
+(Q_1Q_2)^{\mathsf t}=Q_2^{\mathsf t}Q_1^{\mathsf t}.
+\tag{6.4}
+\]
+
+There is no complex conjugation, including when its coefficients depend on $s$. Integration by parts in one real coordinate, with compact support killing both endpoints, proves the formula for one derivative. Repeated application proves it for every monomial and hence every $Q$. Accordingly $(Qu)(\phi)=u(Q^{\mathsf t}\phi)$ defines its action on distributions. A transpose of order $r$ sends a compact test to one on the same support and satisfies $p_{K,0}(Q^{\mathsf t}\phi)\leq C_Kp_{K,r}(\phi)$. Polynomial coefficients and the finite Leibniz formula likewise give $q_{L,0}(Q^{\mathsf t}\phi)\leq Cq_{L',r}(\phi)$ for some $L'$. The constants can be chosen uniformly for $s$ in a compact parameter set. Thus polynomial families of these operators preserve the holomorphic families just constructed.
+
+#### Real powers and the zero set
+
+Choose an identity $P(s)f^{s+1}=b_f(s)f^s$ from Section 3, and let $r$ be the differential order of $P$. On $\Omega$, interpret $f^s=\exp(s\log f)$ with the real logarithm; the product rule makes the formal identity an identity of ordinary functions there. Write $T_\Omega(s)=1_\Omega f^s$, initially for $\operatorname{Re}s>0$. The integral observation proves its holomorphy in both compact-test and Schwartz-test bounds.
+
+We must justify extension through the boundary before integrating by parts. On compact sets, every spatial derivative of order $j\leq r$ of $f^{s+1}$ inside $\Omega$ is a finite sum of a polynomial in $s$, products of derivatives of $f$, and $f^{s+1-h}$ with $h\leq j$. If $\operatorname{Re}(s+1)>r$, these expressions tend to zero at the boundary. More precisely, near a boundary point $x_0$ the mean-value formula and $f(x_0)=0$ give $|f(x)|\leq C|x-x_0|$. For $j<r$, the expressions of order $j$ are therefore $O(|x-x_0|^{\operatorname{Re}(s+1)-j})=o(|x-x_0|)$. Their extensions by zero have derivative zero at the boundary. Induction on $j$ proves that $1_\Omega f^{s+1}$ is $C^r$ with exactly those extended derivatives. This argument uses no smoothness of $\partial\Omega$ and introduces no boundary delta term.
+
+Consequently, for $\operatorname{Re}s$ sufficiently large, ordinary differentiation and (6.4) give an equality of distributions
+
+\[
+b_f(s)T_\Omega(s)=P(s)T_\Omega(s+1).
+\tag{6.5}
+\]
+
+Both sides are holomorphic for $\operatorname{Re}s>0$, so testwise analytic uniqueness extends (6.5) throughout that half-plane. For $N\geq0$ define
+
+\[
+\begin{gathered}
+B_N(s)=\prod_{j=0}^{N-1}b_f(s+j),\\
+Q_N(s)=P(s)P(s+1)\cdots P(s+N-1),
+\end{gathered}
+\tag{6.6}
+\]
+
+with empty products equal to one and with the rightmost operator acting first. The formula
+
+\[
+\begin{gathered}
+T_{\Omega,N}(s)=\frac{Q_N(s)T_\Omega(s+N)}{B_N(s)}\\
+\text{on }\operatorname{Re}s>-N
+\end{gathered}
+\tag{6.7}
+\]
+
+is meromorphic there. Its numerator is a holomorphic distribution family with the finite bounds above. Iterating (6.5) shows equality with $T_\Omega(s)$ in the initial half-plane away from denominator zeros. Therefore all formulas (6.7) agree on overlaps by analytic uniqueness. These half-planes cover $\mathbb C$, and the zeros of their denominators are precisely among (6.1).
+
+Take $\Omega=\{f>0\}$ and then apply this construction to $-f$ on $\{f<0\}$. Section 3 proved $b_{-f}=b_f$; an operator for $-f$ is $-P(s)$ under the identification of their formal-power symbols. The sum of these two families is $|f|^s$ in the initial half-plane and hence gives its unique continuation. Values on $f=0$ were defined as zero there, so no assertion about the measure of the zero set is needed for this identity.
+
+#### Complex powers without assuming rational roots
+
+Use Wirtinger derivatives $\partial_{z_i}=\tfrac12(\partial_{x_i}-i\partial_{y_i})$ on $\mathbb C^n$, with Lebesgue measure in the $2n$ real coordinates. For each integer $N\geq0$ set
+
+\[
+\begin{gathered}
+U_N(s)=f^N|f|^{2s},\\
+H_N=\{s:\operatorname{Re}s>-N/2\},
+\end{gathered}
+\tag{6.8}
+\]
+
+initially as a locally integrable function on $H_N$, equal to zero at $f=0$. Its modulus off that zero set is $|f|^{N+2\operatorname{Re}s}$; the residual phase $(f/|f|)^N$ is independent of $s$ and has modulus one. The integral observation, with $a=N$ and $c=2$, proves that $U_N$ is holomorphic on $H_N$ with common compact-test and Schwartz-test bounds.
+
+Off the zero set choose any local holomorphic logarithm $\ell$ of $f$. It exists near each nonzero value by the convergent series for $\log(1+w)$ after factoring out that value. Then
+
+\[
+U_N(s)=\exp((s+N)\ell+s\overline\ell).
+\tag{6.9}
+\]
+
+Changing the logarithm by $2\pi i k$ leaves (6.9) unchanged because $N$ is an integer. Every holomorphic derivative leaves the antiholomorphic factor alone. Applying the functional equation with parameter $s+j$, and then proceeding from $j=N-1$ down to $j=0$, gives off the zero set
+
+\[
+Q_N(s)U_N(s)=B_N(s)|f|^{2s}.
+\tag{6.10}
+\]
+
+To check it distributionally, first take $\operatorname{Re}s$ sufficiently large. On the complex plane the function $w^N|w|^{2s}$, set to zero at $w=0$, is $C^m$ whenever $N+2\operatorname{Re}s>m$. Indeed its real derivatives away from zero of order $j\leq m$ are bounded by $C|w|^{N+2\operatorname{Re}s-j}$; extending these by zero and using the difference-quotient induction from the real case proves the assertion. Composition with the polynomial map $f$ proves the needed differentiability of $U_N$. Choosing $m$ at least the order of $Q_N$ justifies (6.10) across the zero set and integration by parts. Both sides are holomorphic distribution families on $\operatorname{Re}s>0$, so (6.10) holds throughout that half-plane by uniqueness.
+
+Now define
+
+\[
+Z_N(s)=\frac{Q_N(s)U_N(s)}{B_N(s)}
+\quad\text{on }H_N.
+\tag{6.11}
+\]
+
+Its numerator is holomorphic by (6.8) and the transpose bounds. Every $Z_N$ agrees with the original $|f|^{2s}$ where $\operatorname{Re}s>0$ away from denominator zeros. Thus the $Z_N$ agree on every overlap, and $\bigcup_NH_N=\mathbb C$ proves continuation with exactly the possible pole set (6.1). Only the polynomials $b_f(s+j)$ occur: this proof has not assumed that their coefficients or roots are real. Replacing $s$ by $s/2$ gives the claimed convention for $|f|^s$ on complex space.
+
+#### Pole order, temperedness and two checks
+
+At a fixed $s_0$, choose $N$ so that $s_0$ lies strictly inside the half-plane used in (6.7) or (6.11). The numerator is holomorphic in one test-seminorm bound on a disk there. The pole order is at most
+
+\[
+\operatorname{ord}_{s_0}B_N
+=\sum_{j=0}^{N-1}\operatorname{mult}_{s_0+j}(b_f),
+\tag{6.12}
+\]
+
+independently of the test. Expand the numerator in its locally convergent, seminorm-bounded power series and divide by the finite-order zero of $B_N$. This proves that all Laurent coefficients are continuous functionals, rather than merely a collection of unrelated scalar residues. The same argument with $q_{L,r}$ proves temperedness and uniform Schwartz bounds. The initial distributional identities hold for Schwartz tests as well: a smooth cutoff $\chi(x/R)$, equal to one near zero, satisfies $\chi(x/R)\phi\to\phi$ in every Schwartz seminorm. The Leibniz formula proves this by bounding the tails with one higher weight and the cutoff derivatives by $R^{-j}$. Compact-test equality therefore extends by continuity. This completes the proof of Theorem 6.1. $\square$
+
+As a normalization check, take a compact test $\phi$ equal to one near zero. On the real line,
+
+\[
+\int_{-\varepsilon}^{\varepsilon}|x|^s\,dx
+=\frac{2\varepsilon^{s+1}}{s+1};
+\tag{6.13}
+\]
+
+on the complex line with real Lebesgue area measure,
+
+\[
+\int_{|z|<\varepsilon}|z|^{2s}\,dx\,dy
+=\frac{\pi\varepsilon^{2s+2}}{s+1}.
+\tag{6.14}
+\]
+
+The portions away from zero are entire. For arbitrary smooth tests subtract $\phi(0)$ near zero; the remainder is $O(|x|)$ or $O(|z|)$, which is integrable on a neighborhood of $s=-1$. Thus the residues at $-1$ are respectively $2\delta_0$ and $\pi\delta_0$. For $|z|^s$ the pole is at $-2$ and the residue is $2\pi\delta_0$. These computations verify both the parameter scaling and the normalization; they do not assert that every candidate pole occurs for every polynomial.
+
+An alternative complex recurrence explains a common conjugation pitfall. If $b^*(s)=\overline{b_f(\overline s)}$ and $P^*(s)$ conjugates the coefficients of $P$ while replacing $z,\partial_z$ by $\overline z,\partial_{\overline z}$, leaving the indeterminate $s$ fixed, then
+
+\[
+\begin{aligned}
+&b_f(s)b^*(s)|f|^{2s}\\
+&\qquad=P(s)P^*(s)|f|^{2(s+1)}.
+\end{aligned}
+\tag{6.15}
+\]
+
+On a logarithm chart this follows by applying the two equations to their separate holomorphic and antiholomorphic factors; the zero-set and transpose arguments above extend it distributionally. It gives a continuation whose displayed denominator involves both root sets. Substituting $b^*=b_f$ is justified by the separately stated rationality theorem, not by taking $\overline{s}=s$. Nor does a whole differential operator annihilate an antiholomorphic factor merely because its positive-order holomorphic derivatives do: its zeroth-order term remains. Formula (6.11) avoids both issues and already gives the sharper pole set (6.1).
+
+The source context is Bernstein, [*The analytic continuation of generalized functions with respect to a parameter*](https://www.math.tau.ac.il/~bernstei/Publication_list/publication_texts/Bern-a-cont-FAN.pdf), Theorem 1, and Popa, [*The Bernstein–Sato polynomial*](https://people.math.harvard.edu/~mpopa/notes/Bernstein-Sato-notes.pdf), Theorem 5.2, Lemma 5.3 and Exercise .6. The proof here explicitly supplies the zero-set justification, parameter-independent distribution bounds, transposes, and the shifted-power route (6.8)–(6.11).
+
+For complementary one-variable constructions, read *Finite parts of singular powers* and *Complex powers at a boundary*. Their finite parts and upper/lower boundary values are not being substituted for Theorem 6.1's general-polynomial proof. The formal symbol $f^s$ of Section 1 remains algebraic; the distributions in this section are constructed by test integrals and continuation.
 
 ## 7. Exercises with complete solutions
 
@@ -424,8 +765,8 @@ It therefore fails to be $A_K$-linear unless the extra term vanishes. For $T_a$ 
 
 ## References and what this lesson does not prove
 
-The growth criterion, holonomicity over $k(s)$, Bernstein's existence theorem, field invariance, the factor $s+1$, localization of arbitrary holonomic Weyl modules, a generating denominator for $R_f$, and the coordinate-power and quadratic minimal polynomials are proved here. All six exercises are solved. The cusp computation, Kashiwara's negative-rational-root theorem, and the general distributional continuation statements are explicitly stated external results.
+The growth criterion, holonomicity over $k(s)$, Bernstein's existence theorem, field invariance, the factor $s+1$, localization of arbitrary holonomic Weyl modules, a generating denominator for $R_f$, and the coordinate-power and quadratic minimal polynomials are proved here. All six exercises are solved. Theorem 6.1 proves general real and complex distributional continuation, the precise candidate pole progressions, and temperedness, without assuming the negative-rational-root theorem. Section 5 proves the cusp polynomial by an explicit operator and two nonzero test-integral residues. The general weighted-homogeneous formula and its minimality, and Kashiwara's negative-rational-root theorem, remain explicitly stated external results.
 
 R. Bezrukavnikov, [*Noncommutative Algebra*, MIT 18.706](https://ocw.mit.edu/courses/18-706-noncommutative-algebra-spring-2023/mit18_706_s23_full_lec.pdf), Sections 24.1 and 24.6, supplies the broader growth context. V. Ginzburg, [*Lectures on D-modules*](https://math.berkeley.edu/~nadler/ginzburg.dmodules.pdf), Section 4.2, especially Theorem 4.2.9.2, treats localization by a Bernstein growth estimate. The proof above counts cumulative filtered dimensions, uses only an upper bound for a possibly nongood localization filtration, and establishes finite generation before invoking finite length on the ambient module.
 
-The analytic results have the exact locators given in Section 6. The formula for the cusp has the exact locators in Section 5. The algebraic existence and localization proofs depend only on the preceding chapter's growth and finite-length theorems.
+Section 6 identifies the analytic sources and distinguishes the proved continuation theorem from the still-external negative-rational-root theorem. Section 5 distinguishes the direct cusp proof from the broader weighted-homogeneous formula and records the exact external locators. The algebraic existence and localization proofs depend only on the preceding chapter's growth and finite-length theorems.

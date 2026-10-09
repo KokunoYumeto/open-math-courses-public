@@ -26,7 +26,7 @@ F(D_jf)=\xi_jFf,\qquad F(x_jf)=i\partial_{\xi_j}Ff.
 \]
 For the complex-linear distribution convention, \(\langle Fu,\phi\rangle=\langle u,F\phi\rangle\); transposition of the continuous Schwartz maps supplies the transform on \(\mathcal S'\), its inverse with the corresponding factor, and the differentiated identities. This convention agrees with the integral for regular distributions induced by Schwartz functions, by Fubini.
 
-**Proof of Theorem 1.1.** Differentiation under the integral and integration by parts give the displayed identities. More precisely, \(\xi^\alpha\partial_\xi^\beta Ff(\xi)=FD^\alpha((-ix)^\beta f)\). By the finite Leibniz rule, \(D^\alpha((-ix)^\beta f)\) is a finite linear combination of derivatives of \(x^\beta f(x)\), with each coefficient fixed by \(\alpha,\beta\). Its Fourier transform is bounded in supremum norm by the \(L^1\) norm of that full expression. If \(N>d\), then
+**Proof of Theorem 1.1.** Differentiation under the integral and integration by parts give the displayed identities. More precisely, \(\xi^\alpha\partial_\xi^\beta Ff(\xi)=F[D^\alpha((-ix)^\beta f)](\xi)\). By the finite Leibniz rule, \(D^\alpha((-ix)^\beta f)\) is a finite linear combination of derivatives of \(x^\beta f(x)\), with each coefficient fixed by \(\alpha,\beta\). Its Fourier transform is bounded in supremum norm by the \(L^1\) norm of that full expression. If \(N>d\), then
 \[
 \|h\|_1\leq\left(\int_{\mathbb R^d}\langle x\rangle^{-N}\,dx\right)
 \sup_x\langle x\rangle^N|h(x)|,

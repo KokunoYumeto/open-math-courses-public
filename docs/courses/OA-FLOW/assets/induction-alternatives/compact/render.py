@@ -11,6 +11,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-induction-alternatives-compact-20261008-v1"
 from matplotlib.colors import ListedColormap
 from matplotlib.patches import Rectangle
 
@@ -91,7 +92,7 @@ fig.text(.5,.105,r"$H=S_3,\quad e_x=\sqrt{6}\,1_{\{x\}},\quad dh(\{x\})=\frac{1}
 fig.text(.5,.035,"All displayed matrix entries are exact.  The conjugacy-dependent quantity t⁻¹s is not constant along this orbit.",
          ha="center",fontsize=11.5,color="#4c6071")
 for ext in ["svg","png"]:
-    fig.savefig(OUT/f"compact-kernel-averaging.{ext}",dpi=170)
+    fig.savefig(OUT/f"compact-kernel-averaging.{ext}",dpi=170, **({"metadata": {"Date": None}} if ext == "svg" else {}))
 plt.close(fig)
 
 # G=S3, H={e,b}: right b has three + and three - eigenvectors.
@@ -154,7 +155,7 @@ fig.text(.5,.105,r"$R_b=\operatorname{diag}(I_3,-I_3),\qquad "
 fig.text(.5,.028,"G = S₃,  H = {e,b},  N = ℂ.  Each square block is 3 × 3; averaging removes exactly the two mixed-sign blocks.",
          ha="center",fontsize=11.5,color="#4c6071")
 for ext in ["svg","png"]:
-    fig.savefig(OUT/f"compact-stabilization.{ext}",dpi=170)
+    fig.savefig(OUT/f"compact-stabilization.{ext}",dpi=170, **({"metadata": {"Date": None}} if ext == "svg" else {}))
 plt.close(fig)
 
 data={

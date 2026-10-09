@@ -1185,8 +1185,8 @@ The image has distance less than \(3r/4\) from the constant function \(z_0\), so
 
 Here the function-space smoothness used in SCF2 can be verified, rather than assumed. The pointwise substitution followed by integration has derivatives
 
-\
-\bigl(D_z^m\Theta[z\bigr)(t)
+\[
+\bigl(D_z^m\Theta[z](v_1,\ldots,v_m)\bigr)(t)
 =\int_0^t D_z^mF(s,z(s),\lambda)
        [v_1(s),\ldots,v_m(s)]\,ds
 \quad(m\geq1).

@@ -189,8 +189,8 @@ E_D(x_n)-x_n
 Fixed right multiplication preserves bounded strong* convergence. The changed sequence remains centralizing in \(M\) by the strong*-small-change estimate.
 
 For sequences already in \(D^c\), centralizing in \(D^c\) and in \(M\) are equivalent. If \(\eta\in(D^c)_*\), its normal extension \(\eta\circ E_D\) tests the commutator in \(M\), using the bimodule property. Conversely, write any \(z\in M\) in its finite matrix coordinates (2). For \(\psi\in M_*\), put \(\eta_{ij}(a)=\psi(e_{ij}a)\), \(a\in D^c\). The coefficients \(a_{ij}\) of a unit-ball \(z\) have norm at most one: each is the amplification of the corner coefficient \(e_{1i}ze_{j1}\). Since an \(x\in D^c\) commutes with \(e_{ij}\),
-\
-|[x,\psi|
+\[
+|[x,\psi](z)|
 \le\sum_{i,j}\|[x,\eta_{ij}]\|.
 \tag{23}
 \]

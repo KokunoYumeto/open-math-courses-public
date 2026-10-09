@@ -780,7 +780,7 @@ These are polynomial identities in the curve ring; the indicated factors of \(y\
 
 Set \(\varphi_m=x\psi_m^2-\psi_{m+1}\psi_{m-1}\) and
 \(\omega_m=(\psi_{m+2}\psi_{m-1}^2-\psi_{m-2}\psi_{m+1}^2)/(4y)\).
-Then \(m=(\varphi_m/\psi_m^2,\omega_m/\psi_m^3)\).
+Then \([m](x,y)=(\varphi_m/\psi_m^2,\omega_m/\psi_m^3)\).
 The three functions \(\varphi_m\psi_m,\omega_m,\psi_m^3\) have pole orders at most \(3m^2\) at the origin and no other poles. They therefore give homogeneous forms of degree \(m^2\) in the cubic embedding. Indeed, the pole basis is \(1,x^a,yx^a\) with pole order at most \(3m^2\). Reducing powers \(x^3\) by \(y^2-Ax-B\) expresses every basis element in monomials \(x^i y^j\), \(i\le2\), of ordinary degree at most \(m^2\); homogenize these with the third coordinate. This proves the required lifting and adds only \(Cm^2\) to the coefficient-size bound. At torsion points the middle coordinate is nonzero, and its leading term is nonzero at the origin, so the map has no base point.
 
 Recursion (15.41), reduction by \(y^2=x^3+Ax+B\), and the product bound for coefficient sums give arithmetic size \(Cm^2\log(m+2)\). For example the odd step combines indices \(m+2,m,m,m\); the sum of their squared indices is \((2m+1)^2+3\), while \(\log(2m+1)-\log(m+2)\) is bounded below for large \(m\). This absorbs both the fixed coefficient costs and the polynomial number of products. The even step has the same bound, with finitely many small indices absorbed in \(C\).

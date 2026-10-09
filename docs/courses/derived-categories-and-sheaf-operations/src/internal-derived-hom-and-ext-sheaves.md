@@ -240,7 +240,7 @@ c_{K,L,M}\circ([u,M]\otimes1)&\\
 \tag{4.4}
 \]
 
-Here and below association maps are the coherent tensor isomorphisms proved in the tensor lesson. Evaluation is natural in its target. For a source map \(u\), its defining adjunction gives the identity that evaluating \(u,M\) on \(l\) equals evaluating \(a\) on \(u(l)\). This is an identity of morphisms in the derived category: transpose either side by (3.1), and both are precomposition of the same identity map by \(u\). It therefore holds for roofs as well as chain maps.
+Here and below association maps are the coherent tensor isomorphisms proved in the tensor lesson. Evaluation is natural in its target. For a source map \(u\), its defining adjunction gives the identity that evaluating \([u,M](a)\) on \(l\) equals evaluating \(a\) on \(u(l)\). This is an identity of morphisms in the derived category: transpose either side by (3.1), and both are precomposition of the same identity map by \(u\). It therefore holds for roofs as well as chain maps.
 
 Postcomposing (4.4) by a map \(M\to M'\) proves target naturality. Precomposing its last tensor factor by a map \(K'\to K\), and applying the source evaluation identity, proves source naturality. For (4.3), transpose both sides and apply that identity once. Both become successive evaluation with \(u\) inserted between the two evaluations. Symbolically both give \(a(u(b(k)))\). The adjunction is a bijection of map groups, so equality of the transposes proves equality of the maps.
 

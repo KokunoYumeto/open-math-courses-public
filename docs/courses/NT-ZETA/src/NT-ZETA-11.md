@@ -207,7 +207,7 @@ $$
 \end{split}
 \tag{4.1}
 $$
-Both series converge absolutely, uniformly on compact subsets of $1,\infty)$, and the identity extends continuously to $x=1$.
+Both series converge absolutely, uniformly on compact subsets of $[1,\infty)$, and the identity extends continuously to $x=1$.
 
 **Proof.** The smoothed Perron identity in lesson nine gives
 $$
@@ -333,7 +333,7 @@ Exact integer enumeration of prime powers and 65-digit evaluation of these ten p
 
 At 97 and 101 the exact value includes half the corresponding jump, respectively $\log97$ and $\log101$. The continuous curve $P_{10}$ cannot reproduce the discontinuities of the exact count. The theorem concerns a growing symmetric cutoff, with uniform convergence restricted to sets away from prime powers.
 
-![Exact prime-power staircase and the approximation using ten computed conjugate pairs
+![Exact prime-power staircase and the approximation using ten computed conjugate pairs](figures/NT-ZETA-11/explicit_formula.png)
 
 *Figure 1. The staircase gives the one-sided values of $\psi$, and the marked midpoint at each prime in this interval gives $\psi_0$. The smooth curve uses precisely ten computed conjugate pairs and the constant and trivial-zero terms in (3.1). Coordinates and half weights come from the integer prime-power list. This is a finite numerical illustration of Theorem 3.1, not a bound for its remainder. The accompanying Python source reproduces the figure.*
 

@@ -102,9 +102,9 @@ where a unitary \(U\in M\) satisfies
 The trace identity holds at infinity as well. Every \(\vartheta^n\), \(n\ne0\), is outer: an inner automorphism preserves the trace, while scaling would change the finite nonzero trace of a nonzero finite-trace projection by \(\lambda^n\ne1\).
 
 Let \(K=M\rtimes_{\sigma^\psi}\mathbb R\). In its actual regular representation,
-\
- [\pi(x)\xi=\sigma_{-r}^\psi(x)\xi(r),\qquad
- u(t)\xi=\xi(r-t),\qquad
+\[
+ [\pi(x)\xi](r)=\sigma_{-r}^\psi(x)\xi(r),\qquad
+ [u(t)\xi](r)=\xi(r-t),\qquad
  \theta_s(u(t))=e^{-ist}u(t).
  \tag{PDM12}
 \]
@@ -167,8 +167,8 @@ Consequently \(\alpha\) commutes with \(\sigma^\psi\), by modular covariance. Th
  \tag{PDM19}
 \]
 In the full regular Hilbert space its implementing unitary is simply
-\
- [V_\psi(\alpha)\xi=\mu^{ir}U(\alpha)\xi(r),
+\[
+ [V_\psi(\alpha)\xi](r)=\mu^{ir}U(\alpha)\xi(r),
  \tag{PDM20}
 \]
 where \(U(\alpha)\) is the standard implementing unitary. This is an onto unitary, with inverse multiplier \(\mu^{-ir}U(\alpha)^*\). On translations its two scalar factors give

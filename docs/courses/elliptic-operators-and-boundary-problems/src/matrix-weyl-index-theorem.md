@@ -499,10 +499,10 @@ Now apply the **same** coordinate map \(F(x,\xi)=(p=\xi,q=x)\) as (FM3). Its deg
 ### 4.1 The actual algebra, projectors and source theorem hypotheses
 
 Keep the original isotropic metric \(g_z=h(z)(|dx|^2+|d\xi|^2)\), \(h(z)=(1+|z|^2)^{-1}\), and the original full \(a\in S(1,g;\operatorname{End}\mathbb C^\nu)\), uniformly invertible outside a compact set. Let \(\psi\) be the written exterior cutoff, \(b=\psi a^{-1}\) on the invertibility region extended by zero, \(t=1-\psi\), and \(\Omega_{\mathrm{AN}}=dx_1\wedge d\xi_1\wedge\cdots\wedge dx_n\wedge d\xi_n\). These are the objects of IP1–IP3, not a normalized replacement. The preceding lesson constructs from both ordered errors the full formal idempotents \(e_\infty,e_0\in M_{2\nu}(C^\infty(\mathbb R^{2n}_{x,\xi})[[\lambda]])\) with
-\
+\[
  e_\infty\#_\lambda e_\infty=e_\infty,\qquad
  e_0\#_\lambda e_0=e_0,\qquad
- \operatorname{supp}[\lambda^j
+ \operatorname{supp}[\lambda^j](e_\infty-e_0)
        \subseteq K:=\operatorname{supp}(1-\psi)\quad(j\ge0).
  \tag{MB1}
 \]
@@ -869,10 +869,10 @@ For completeness, the volume of \(0\le u_1\le\cdots\le u_d\le r\) is \(r^d/d!\):
 ### 8.2. The full finite coefficient and every linear-path hypothesis
 
 Fix an integer \(N>n\) and retain the original \(a,b,t=1-\psi\). Put \(r_1=I-b\#_\lambda a\), \(r_2=I-a\#_\lambda b\), with their full formal expansions. DE3–DE5 and OC27–OC30 of [the scaled Weyl lesson](scaled-weyl-index-degree.md) construct the finite degree-\(n\) coefficient of \(r_1^{\#N}-r_2^{\#N}\), with every intrinsic term and every later contraction. Both scaled analytic remainders lie in the original \(S(h_\varepsilon^{n+1},g_\varepsilon)\), with the complete product weight \((1+h_\varepsilon/4)^{4n}\) and its derivative comparison in RP1–RP5. RA1–RA10 prove their actual trace-norm bound \(C\varepsilon^2\). Each retained coefficient is compact: in any degree at most \(n<N\), one of the \(N\) intrinsic slots has degree zero, and its differentiated \(tI_\nu\) is supported in the original \(K\). CI12 gives its trace with \((2\pi)^{-n}\varepsilon^{-2n}\). T28 and IP16 give the index of the unchanged \(a^w\) at every positive scale. The finite asymptotic coefficient comparison consequently proves
-\
+\[
  \operatorname{ind}a^w=(2\pi)^{-n}
        \int_{\mathbb R^{2n}}\operatorname{tr}_\nu
-            [\lambda^n(z)\,dz.
+            [\lambda^n](r_1^{\#N}-r_2^{\#N})(z)\,dz.
  \tag{LP3}
 \]
 To check that comparison directly, multiply the finite expansion by \(\varepsilon^{2n}\) and take its limit to prove the degree-zero coefficient zero; after each lower coefficient is zero, multiply by the power which makes the next coefficient constant and take its limit. At degree \(n\) the remainder tends to zero and gives (LP3). The whole calculation is finite and has a proved trace-norm remainder.

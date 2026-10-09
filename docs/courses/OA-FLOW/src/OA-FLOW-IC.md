@@ -4,10 +4,10 @@
 ## The three algebras and the classification statement
 
 Let \(N\ne0\) have separable predual and be of type II\(_\infty\), and let \(\alpha\in\operatorname{Aut}(N)\) act ergodically on a nonatomic center. Here type II\(_\infty\) allows a nonfactor: the algebra is semifinite, has no nonzero abelian projection, and has no nonzero finite central summand. Put
-\
+\[
  M=N\rtimes_\alpha\mathbb Z,\qquad
- [\pi(x)\xi=\alpha^{-k}(x)\xi(k),\qquad
- u\xi=\xi(k-1).
+ [\pi(x)\xi](k)=\alpha^{-k}(x)\xi(k),\qquad
+ [u\xi](k)=\xi(k-1).
  \tag{IC1}
 \]
 A faithful normal representation of each coefficient is understood in this formula. Thus \(uxu^*=\alpha(x)\). The full normal independence of the representation is [NR3–4](OA-FLOW-NR.md#oa-flow.nr.3).

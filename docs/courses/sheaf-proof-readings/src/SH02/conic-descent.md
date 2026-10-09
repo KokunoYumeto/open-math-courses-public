@@ -306,7 +306,7 @@ $\mathbb R$, hence bounded. Consequently there is $R$ such that the germ
 of $s$ at every $j(u)\in K$ with $|u|>R$ is zero.
 
 There are positive integers $m_k\to\infty$ such that the distance of
-$m_k\lambda$ to $\mathbb Z$ tends to zero. Indeed, subdividing $0,1)$
+$m_k\lambda$ to $\mathbb Z$ tends to zero. Indeed, subdividing $[0,1)$
 into $N$ equal intervals and comparing the $N+1$ fractional parts of
 $0,\lambda,\ldots,N\lambda$ gives an integer $1\le m\le N$ with
 distance at most $1/N$. Such integers cannot stay in a finite set as the
@@ -345,7 +345,7 @@ torus; the second separates long parameter travel from small return
 distance and shows why proper supports obstruct an induced-orbit
 trivialization.
 
-![A finite irrational orbit segment on a torus, with its initial point and a later return marked
+![A finite irrational orbit segment on a torus, with its initial point and a later return marked](../assets/conic-orbit-torus.png)
 
 The blue curve samples $j(u)$ for $0\le u\le20\pi$ at 6,001 parameter
 values. It is shown through the embedding

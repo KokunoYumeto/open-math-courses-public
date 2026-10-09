@@ -257,8 +257,8 @@ The second equality follows by moving the scalar factor across the first one. Ea
 ## 5. Translation attains the integration bound
 
 Take \(Q=L^\infty(\mathbb R,dr)\), and define
-\
- [\theta_s(f)=f(r+s),\qquad
+\[
+ [\theta_s(f)](r)=f(r+s),\qquad
  \tau(f)=\int_{\mathbb R}f(r)e^r\,dr\quad(f\geq0).
  \tag{L19.5.a}
 \]
@@ -333,8 +333,8 @@ The density in the general theorem need not be central. To see this without any 
  \tag{L19.6.a}
 \]
 For bounded measurable matrix fields, define
-\
- [\theta_s(f)=W_s f(r+s)W_s^*,\qquad
+\[
+ [\theta_s(f)](r)=W_s f(r+s)W_s^*,\qquad
  \tau(f)=\int_{\mathbb R}e^r\operatorname{Tr}(f(r))\,dr
  \quad(f\geq0).
  \tag{L19.6.b}
@@ -401,9 +401,9 @@ These are complementary orthogonal projections, \(B=3P_++P_-\), and therefore
  \tag{L19.6.h}
 \]
 This is a unitary group. Its strong continuity follows by pointwise finite-dimensional continuity and dominated convergence on every \(L^2\) vector. Direct substitution gives both the density and unitary covariance:
-\
+\[
  \theta_s(h)=e^{-s}h,\qquad
- [\theta_s(v_t)
+ [\theta_s(v_t)](r)
  =e^{i(r+s)t}W_{-r}B^{-it}W_r
  =e^{ist}v_t(r).
  \tag{L19.6.i}
@@ -449,9 +449,9 @@ In [the scalar model](OA-FLOW-L19.md#l19-5), take \(T=1\). Verify the discrete e
  \theta_1(w_t)(r)=e^{it}w_t(r).
  \tag{L19.7.c}
 \]
-For every \(0<r<1/2\), however, both \(r\) and \(r+1/2\) lie in \(0,1)\), so
+For every \(0<r<1/2\), however, both \(r\) and \(r+1/2\) lie in \([0,1)\), so
 \[
- [\theta_{1/2}(w_1)=w_1(r+1/2)=1,\qquad
+ [\theta_{1/2}(w_1)](r)=w_1(r+1/2)=1,\qquad
  e^{i/2}w_1(r)=e^{i/2}\ne1.
  \tag{L19.7.d}
 \]

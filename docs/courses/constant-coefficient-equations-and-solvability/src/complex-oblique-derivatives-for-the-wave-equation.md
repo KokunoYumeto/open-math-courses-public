@@ -439,7 +439,7 @@ The faster branch begins exactly where the interior tangent slope equals one hal
 \quad 1+[E,E]=3/2,\\
 \quad [E,F]=-9/4,\\
 \qquad
- F,F\\
+ [F,F](1+[E,E])\\
 -[E,F]^2=9/16>0 .
 \end{gathered}
 \tag{33}

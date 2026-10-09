@@ -152,9 +152,9 @@ t_0=6.28983598883690278\ldots.
 \tag{2.7}
 \]
 
-Thus \(\theta\) has its unique minimum on \(0,\infty)\) at \(t_0\); the density is negative exactly when \(|t|<t_0\). The uniqueness follows from the proof, independently of the numerical root.
+Thus \(\theta\) has its unique minimum on \([0,\infty)\) at \(t_0\); the density is negative exactly when \(|t|<t_0\). The uniqueness follows from the proof, independently of the numerical root.
 
-![The archimedean density and its unique positive sign change
+![The archimedean density and its unique positive sign change](figures/archimedean-density.png)
 
 *Figure 1. The function in (1.4), computed from the digamma function. The upper panel shows \(0\leq t\leq60\); the lower panel shows the sign change in detail and compares the large-\(t\) expression \(\log(t/(2\pi))\). The uniqueness assertion is proved in (2.4)–(2.6). This is an independently drawn plot of the classical Riemann–Siegel density, with the normalization used by Connes and Consani in their archimedean explicit formula.*
 

@@ -2,6 +2,8 @@
 
 *Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
+*Source and dependency reconciliation and full algebraic non-characteristic proofs, including central specialization and characteristic equality, by GPT-6 Astra (OpenAI), Ultra, October 2026. Original examples and complete solutions retained.*
+
 The fiber of the point module at its own supporting point is zero as an ordinary tensor product. Its derived fiber is one-dimensional. This is the first reason inverse image of differential equations must be derived. A second issue is coherence: restricting the regular differential-operator module to a point leaves infinitely many derivative directions. Smooth maps and non-characteristic maps provide useful situations where these problems are controlled.
 
 Let $k$ have characteristic zero. All varieties are smooth, separated and of finite type, with pure dimensions. Geometric characteristic varieties use an algebraically closed $k$; analytic statements use $\mathbb C$. Modules are left differential-operator modules, quasi-coherent over the structure sheaf. For $f:X\to Y$, this chapter uses
@@ -58,13 +60,13 @@ For the Lie bracket relation, work in commuting étale coordinates $y_1,\ldots,y
 
 On a tensor $b\otimes m$, the commutator of two such operators has derivative coefficients
 
-\
+\[
 \xi\bigl(\zeta(f^*y_j)\bigr)
 -\zeta\bigl(\xi(f^*y_j)\bigr)
-=[\xi,\zeta.
+=[\xi,\zeta](f^*y_j).
 \]
 
-The terms containing two $\partial_y$ commute and cancel, and the remaining action on $b$ is $\xi,\zeta$. Hence $[\nabla^f_\xi,\nabla^f_\zeta]=\nabla^f_{[\xi,\zeta]}$. The relations for functions and vector fields defining $\mathcal D_X$ are all satisfied. This constructs its action and proves uniqueness. The construction in terms of $df$ glues across coordinate changes.
+The terms containing two $\partial_y$ commute and cancel, and the remaining action on $b$ is $[\xi,\zeta](b)$. Hence $[\nabla^f_\xi,\nabla^f_\zeta]=\nabla^f_{[\xi,\zeta]}$. The relations for functions and vector fields defining $\mathcal D_X$ are all satisfied. This constructs its action and proves uniqueness. The construction in terms of $df$ glues across coordinate changes.
 
 For a connection $\nabla:M\to\Omega_Y^1\otimes M$, let $\rho:f^*\Omega_Y^1\to\Omega_X^1$ be the map on differential forms. The usual pullback connection is
 
@@ -397,9 +399,211 @@ For a closed embedding this says that characteristic covectors contain no nonzer
 \tag{6.2}
 \]
 
-The analytic statement is Kashiwara–Schapira, Definition 11.2.11 and Proposition 11.2.12. An algebraic version, with non-characteristic expressed as finiteness of $f_d$ on the pulled-back conic support, is Schnell, [*D-modules*, Theorem 16.5](https://www.math.stonybrook.edu/~cschnell/pdf/notes/d-modules.pdf), pages 79–83. For conic support the kernel condition and that finiteness condition agree. The general theorem is stated here; the smooth case was proved completely in Section 3.
+For the analytic statement, see Pierre Schapira, [*An introduction to D-modules*, draft v7, March 2020](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/Dmod.pdf): Definition 2.3.1 and Theorem 2.3.7, pages 28–31, give the condition, coherence, concentration in degree zero and characteristic containment. Remark 2.3.8 on page 30 states the stronger equality (6.2), referring its proof to Kashiwara. Definition 3.1.10 and Lemma 3.1.11, page 54, give the cotangent-kernel and finite-projection comparison. Schapira's $f_D^{-1}$ is the unshifted $Lf^*$ here, not $f^!$.
+
+The algebraic statement, including equality (6.2), is Schnell, [*D-modules*, Theorem 16.5](https://www.math.stonybrook.edu/~cschnell/pdf/notes/d-modules.pdf), pages 79–83. Its proof supplies coherence and vanishing but leaves an additional filtration argument for the general equality. The smooth equality was proved in Section 3. Lemmas 6.1–6.2 and Proposition 6.3 below supply the general algebraic finite-projection comparison, coherence, vanishing and containment. Lemma 6.4 and Theorem 6.5 below complete the full algebraic equality by a Rees-torsion argument and the earlier involutivity theorem. The full analytic proof remains a separate obligation.
 
 At the origin of a line, the polynomial connection is non-characteristic and $\delta_0$ is characteristic. Their Koszul computations show the corresponding presence or absence of higher pullback cohomology. For $m>1$, $f_m$ is characteristic at zero for $Q_\lambda$, whose characteristic support includes the whole cotangent fiber there. Nevertheless its flatness eliminates higher Tor in Section 5. Non-characteristic is a sufficient condition, and its failure does not force higher cohomology in every example.
+
+### Lemma 6.1. A cone and a finite projection
+
+Let $A$ be a Noetherian ring and $C$ a quotient of $A[z_1,\ldots,z_r]$ by a homogeneous ideal; all $z_j$ have degree one. Let $\eta_1,\ldots,\eta_q\in C_1$. The map $\operatorname{Spec}C\to\operatorname{Spec}A[\eta_1,\ldots,\eta_q]$ is finite if the inverse image of the zero section has no nonzero geometric point. Conversely, finiteness implies that condition for this conic linear map.
+
+**Proof.** The condition says that every $z_j$ belongs to the radical of $(\eta_1,\ldots,\eta_q)C$. Choose positive integers $n_j$ with $z_j^{n_j}$ in that ideal. Every monomial of degree at least $N=1+\sum_j(n_j-1)$ therefore belongs to it. By taking homogeneous components, every element of $C_d$ for $d\geq N$ is a sum of $\eta_i$ times elements of $C_{d-1}$. Induction on $d$ shows that the finitely many monomials of degree less than $N$ generate $C$ over $A[\eta_1,\ldots,\eta_q]$. This is finiteness. The argument keeps nilpotents: the powers $n_j$ need not be one. Conversely, a nonzero geometric point in the kernel brings its entire scaling line into that fiber. Such a line cannot lie in a finite fiber. $\square$
+
+Apply the lemma locally to the coordinate algebra of $f_\pi^{-1}\operatorname{Ch}(M)$ and to the linear functions induced by $f_d$. It proves, in the algebraic setting, the asserted equivalence between (6.1) and finiteness on the pulled-back characteristic support. The image is consequently closed. No properness of $f$ is required.
+
+### Lemma 6.2. Normal multiplication is injective
+
+Let $i:X=\{t=0\}\hookrightarrow Y$ be a smooth hypersurface in a smooth characteristic-zero variety. Suppose it is non-characteristic for the coherent module $M$. Then $t:M\to M$ is injective near $X$.
+
+**Proof.** Choose adapted étale coordinates $(x_1,\ldots,x_n,t)$ at a point $y\in X$, and write their symbols as $(\xi_1,\ldots,\xi_n,\tau)$. Take $u$ with $tu=0$. The cyclic submodule $\mathcal D_Yu$ is coherent and has characteristic support contained in that of $M$, by the characteristic-support exact-sequence theorem. In its cyclic quotient filtration, this support is the zero set of the graded annihilator of $u$.
+
+At $y$, no nonzero point of the $\tau$-axis lies in that zero set. Some homogeneous element $q$ of the graded annihilator thus has a nonzero pure $\tau^d$ coefficient at $y$: restrict the homogeneous ideal to the axis, where an ideal whose zero set is only the origin contains a power of $\tau$, and lift a homogeneous expression for that power. Lift $q$ to an operator $P$ annihilating $u$. After shrinking the coordinate neighborhood its pure $\partial_t^d$ coefficient $a$ is a unit. All other monomials have normal derivative exponent less than $d$, since the total order is $d$.
+
+Define $\operatorname{ad}_t(Q)=tQ-Qt$. The Weyl relations give the operator identity
+
+\[
+\operatorname{ad}_t^{\,d}(P)=(-1)^d d!a.
+\tag{6.3}
+\]
+
+Indeed, $t$ commutes with coefficient functions and tangent derivatives, and $[t,\partial_t^j]=-j\partial_t^{j-1}$. Repeating the commutator kills every term with fewer than $d$ normal derivatives. Moreover every iterated commutator annihilates $u$: if $Qu=0$, then $(tQ-Qt)u=0$ because $tu=0$. Equation (6.3), the invertibility of $a$, and characteristic zero imply $u=0$. For $d=0$ the same conclusion follows directly from $Pu=au=0$. $\square$
+
+The commutators here are repeated commutators **with the normal coordinate $t$**, not repeated commutators with $P$. This distinction determines both the order reduction and the scalar in (6.3).
+
+### Proposition 6.3. Algebraic coherence, vanishing and containment
+
+For every algebraic morphism $f:X\to Y$ in the scope of this lesson satisfying (6.1), $Lf^*M$ is concentrated in degree zero, $f^*M$ is coherent, and
+
+\[
+\operatorname{Ch}(f^*M)
+\subseteq f_d\bigl(f_\pi^{-1}\operatorname{Ch}(M)\bigr).
+\tag{6.4}
+\]
+
+**Proof for a hypersurface.** Keep the coordinates of Lemma 6.2, put $B=\mathcal O_Y$ on the chosen chart, and let $\mathcal T$ be the subalgebra of $\mathcal D_Y$ generated by $B$ and the tangent derivatives $\partial_{x_1},\ldots,\partial_{x_n}$. The derivations commute and kill $t$. PBW gives
+
+\[
+\begin{aligned}
+\operatorname{gr}\mathcal T&=B[\xi_1,\ldots,\xi_n],\\
+\mathcal T/t\mathcal T&\simeq i_*\mathcal D_X
+\quad\text{on the hypersurface chart}.
+\end{aligned}
+\tag{6.5}
+\]
+
+The second identification means the sheaf with coefficients $B/(t)$ and the induced tangent derivations; it is not a splitting of $B\to B/(t)$.
+
+Give $M$ a good order filtration $F$. At $y$, the restriction of the homogeneous annihilator of $\operatorname{gr}_FM$ to the normal axis again contains a power of $\tau$. A homogeneous lift gives a polynomial in that annihilator whose pure $\tau^d$ coefficient is nonzero at $y$. Invert that coefficient on a neighborhood. If $d=0$, the resulting unit annihilates $\operatorname{gr}_FM$, so the exhaustive, bounded-below filtration gives $M=0$ there and all claims follow. Otherwise this yields a monic relation in $\tau$, with coefficients in $B[\xi]$. Division by this monic relation shows that $\operatorname{gr}_FM$ is finite over $B[\xi]$: take a finite set of its original symbol generators and their products by $1,\tau,\ldots,\tau^{d-1}$. Thus the same $F$ is a good $\mathcal T$-filtration, not merely a good $\mathcal D_Y$-filtration.
+
+Here are the finiteness details needed for the quotient. The Rees algebra of $\mathcal T$, with central homogenizing variable $h$, is generated by $B,h,h\partial_{x_j}$. Filtering by the number of $h\partial_{x_j}$ factors, while keeping $h$ in degree zero, gives the polynomial associated graded algebra $B[h,\zeta_1,\ldots,\zeta_n]$. The leading-term lifting proof of Noetherianity from the differential-operator lesson, Theorem 5.1 applies: finite homogeneous generators of a graded ideal lift to generators of the filtered ideal by successively decreasing order. The corresponding module argument gives finite submodules of finite Rees modules. Consequently the intersection filtration on the $\mathcal T$-submodule $tM$, and the image filtration on $N=M/tM$, are good. This is also the explicit Rees argument of the characteristic-variety lesson, Section 4, now applied to $\mathcal T$.
+
+The image filtration of $N$ therefore proves its coherence over $\mathcal T/t\mathcal T=\mathcal D_X$. There is a surjection of graded $(B/(t))[\xi]$-modules
+
+\[
+(\operatorname{gr}_FM)/t(\operatorname{gr}_FM)
+\twoheadrightarrow \operatorname{gr}_FN.
+\tag{6.6}
+\]
+
+To check it in degree $p$, map the class of $m\in F_pM$ to its class in $F_pN/F_{p-1}N$. Both $F_{p-1}M$ and $tF_pM$ map to zero, and every class in the target has such a lift. Tangent symbols commute with this construction. A normal derivative need not descend to $N$, so (6.6) is **not** asserted to be a map of modules over the full symbol algebra containing $\tau$.
+
+As a module over $(B/(t))[\xi,\tau]$, the left side has support $\operatorname{Ch}(M)\cap\{t=0\}$. This equality follows from localization and Nakayama's lemma applied to the finite graded module. Viewed instead over $(B/(t))[\xi]$, its support is the image under forgetting $\tau$. To verify this last fact, use the finite algebra obtained by quotienting by its annihilator: after localizing at a prime of the smaller ring, a nonzero finite module has a prime of its support above that prime, by Nakayama applied to the corresponding finite algebra. The reverse implication follows by localization. Thus support of the quotient in (6.6) is contained in that projected support. This proves (6.4) for $i$. Finally the two-term Koszul calculation in Proposition 4.1 and injectivity from Lemma 6.2 show that $Li^*M=N$ in degree zero.
+
+**Higher codimension.** At a point of a smooth closed embedding choose normal coordinates $t_1,\ldots,t_c$. Factor the embedding locally through the successive smooth hypersurfaces $t_1=0$, then $t_2=0$, and so on. The first hypersurface is non-characteristic near the point: its normal line lies in the full conormal space, which has zero intersection with the characteristic cone away from zero. The monic-relation argument above also proves this condition on a neighborhood, not only at the one point.
+
+After that restriction, (6.4) places the new characteristic support in the projection of the old one. A covector in this projected support which is normal to the remaining embedding lifts to an old covector in the full original conormal space. Condition (6.1) forces that lift, and hence its projection, to be zero. This proves the non-characteristic hypothesis for the next stage. Induction proves it at every stage. Theorem 2.1 composes the derived pullbacks; each stage is coherent and concentrated in degree zero. Composing the cotangent projections gives precisely (6.4) for the original embedding. The statements are local and hence glue.
+
+**An arbitrary morphism.** Factor $f$ by its graph:
+
+\[
+X\xrightarrow{\ i=(1,f)\ }X\times Y
+\xrightarrow{\ p\ }Y.
+\tag{6.7}
+\]
+
+The smooth theorem proves all three conclusions, including equality of characteristic supports, for $p^*M$. Along the graph, its covectors have the form $(0,\eta)$ with $\eta\in\operatorname{Ch}(M)$. Restriction to the graph sends this covector to $df^*\eta$. Therefore the graph is non-characteristic for $p^*M$ exactly when (6.1) holds. Apply the closed-embedding result and the canonical composition isomorphism $Lf^*\simeq Li^*Lp^*$. The resulting support projection is $f_d f_\pi^{-1}$, giving (6.4) with the original source and target. $\square$
+
+Surjectivity in (6.6) alone does not establish equality of supports. The following central-specialization argument supplies the missing reverse inclusion, using the already-proved involutivity theorem. The analytic theorem retains its full statement and exact external source; this algebraic argument is not being declared an analytic coherence proof.
+
+### Lemma 6.4. Central specialization without strictness
+
+Let $A$ be a filtered ring whose Rees ring $R$ is left Noetherian and whose symbol ring $S=R/hR$ is commutative Noetherian. Let $M$ have a good filtration, put $L=\operatorname{Rees}M$ and $E=L/hL$, and let $t\in F_0A$ be central. Suppose $t$ acts injectively on $M$. Give $N=M/tM$ the image filtration. If no irreducible component of $\operatorname{Supp}_S E$ is contained in $V(t)$, then
+
+\[
+\operatorname{Supp}_S\operatorname{gr}N
+=\operatorname{Supp}_S E\cap V(t).
+\tag{6.8}
+\]
+
+The $S$-action on $\operatorname{gr}N$ factors through $S/(t)$. The assertion concerns support, not an isomorphism $\operatorname{gr}N\simeq E/tE$. In particular, it does not assume that multiplication by $t$ is strict for the chosen filtration.
+
+**Proof.** Set $C=L/tL$, a finite graded $R$-module, and let $K$ be its $h$-power torsion. Since $R$ is left Noetherian, $K$ is finitely generated. Centrality of $h$ therefore gives a single integer $r$ with $h^rK=0$. Localizing at $h$ identifies
+
+\[
+C[h^{-1}]=N[h,h^{-1}],\qquad
+C/K=\operatorname{Rees}N.
+\tag{6.9}
+\]
+
+Indeed $L[h^{-1}]=M[h,h^{-1}]$ by exhaustiveness, and the image of $L$ in $N[h,h^{-1}]$ is precisely the Rees module of the image filtration. The kernel of a central localization consists of the elements killed by a power of the element being inverted. The quotient $C/K$ is $h$-torsion-free. Reduction of $0\to K\to C\to C/K\to0$ modulo $h$ is consequently exact on the left as well:
+
+\[
+0\longrightarrow K/hK\longrightarrow E/tE
+\longrightarrow\operatorname{gr}N\longrightarrow0.
+\tag{6.10}
+\]
+
+For example, injectivity on the left follows directly: if $k=hc$ belongs to $K$, then $h\bar c=0$ in $C/K$; thus $c\in K$. This also proves that the displayed middle term is $C/hC$.
+
+There is an $S$-linear identification, with a grading shift of one,
+
+\[
+E[t]:=\ker(t:E\to E)\ \simeq\ C[h]=K[h].
+\tag{6.11}
+\]
+
+Here is the actual map. Lift $e\in E[t]$ to $\ell\in L$. Write $t\ell=h\ell'$ and send $e$ to the class of $\ell'$ modulo $tL$. Changing $\ell$ by $hw$ changes $\ell'$ by $tw$, so the map is well-defined. Its image is killed by $h$. Conversely, if $h\ell'\in tL$, write $h\ell'=t\ell$; then the class of $\ell$ in $E$ is killed by $t$ and maps back to the given class. If $\ell'=tw$, injectivity of $t$ on $L\subset M[h,h^{-1}]$ gives $\ell=hw$, proving injectivity. Centrality of $t$ and $h$ proves $S$-linearity. The grading shift will not affect any ungraded local length below. Elements killed by $h$ belong to $K$, giving the last equality.
+
+We need to compare $K[h]$ and $K/hK$ without treating the noncommutative $R$-module $K$ as an $S$-module. Put
+
+\[
+\begin{aligned}
+Q_j&=h^jK/h^{j+1}K,\\
+A_j&=(K[h]\cap h^jK)/(K[h]\cap h^{j+1}K).
+\end{aligned}
+\tag{6.12}
+\]
+
+These modules really are finite $S$-modules. Multiplication by $h$ gives a surjection $Q_j\to Q_{j+1}$, with a grading shift. Its kernel is $A_j$: if $x\in h^jK$ and $hx=h^{j+2}z$, subtract $h^{j+1}z$ from $x$ to obtain an element of $K[h]\cap h^jK$ representing the same class. Thus $0\to A_j\to Q_j\to Q_{j+1}\to0$ is exact. Since $Q_r=0$, additivity of finite length and the filtration of $K[h]$ by its intersections with $h^jK$ give
+
+\[
+\ell_{S_{\mathfrak q}}((K/hK)_{\mathfrak q})
+=\ell_{S_{\mathfrak q}}(K[h]_{\mathfrak q})
+\tag{6.13}
+\]
+
+at any prime $\mathfrak q$ where $Q_0$ has finite length. Finiteness for every $Q_j$ follows from its being a quotient of $Q_0$, and for the $A_j$ from the displayed exact sequences. Thus (6.13) does not presuppose that localization of $K$ itself is defined over $S$.
+
+Containment in (6.8) follows from (6.10). For the reverse inclusion take a prime $\mathfrak q$ minimal in $\operatorname{Supp}E\cap V(t)$ and put $U=S_{\mathfrak q}$, $H=E_{\mathfrak q}$. The modules $H/tH$ and $H[t]$ have support only at the closed point of $\operatorname{Spec}U$, so they have finite length. To justify the last implication, their annihilator radicals are the maximal ideal; finite generation of that ideal supplies a power annihilating the module, and its finite maximal-ideal filtration has finite-dimensional residue-field factors. Equation (6.10) makes $(K/hK)_{\mathfrak q}$ finite length too. Equations (6.10)–(6.13) therefore yield the exact formula
+
+\[
+\ell_U((\operatorname{gr}N)_{\mathfrak q})
+=\ell_U(H/tH)-\ell_U(H[t]).
+\tag{6.14}
+\]
+
+The right side is positive. Here are the commutative-algebra details, including embedded components. A finite module over a Noetherian ring has a finite filtration with prime cyclic factors: choose a nonzero element with maximal annihilator, which is prime (if $ab$ kills it and $b$ does not, maximality of the annihilator of its nonzero $b$-multiple forces $a$ into the original annihilator). Repeat in the quotient. An infinite repetition would give a strictly ascending chain of submodules, so Noetherianity makes the process finite. Apply this to $H$.
+
+For a factor $U/\mathfrak p$, both its $t$-kernel and $t$-cokernel have finite length, since their support lies in $\operatorname{Supp}H\cap V(t)$, which consists only of the closed point. If $t\in\mathfrak p$, then $\mathfrak p$ is the maximal ideal, and those two modules are the same residue field: their length difference is zero. If $t\notin\mathfrak p$, primality makes the kernel zero, whereas $U/(\mathfrak p,t)$ is nonzero and has positive finite length. It is nonzero because both $\mathfrak p$ and $t$ lie in the maximal ideal. A short exact sequence of modules gives the six-term kernel/cokernel exact sequence for multiplication by $t$; hence the difference of the two lengths is additive along the prime filtration.
+
+At least one factor has $t\notin\mathfrak p$. Otherwise the support of $H$, the union of the supports of its factors, would lie in $V(t)$. But $\mathfrak q$ contains a minimal support prime of $E$, and no such prime contains $t$ by hypothesis; this prime remains in the support after localization. Thus the sum of the nonnegative factor contributions is positive. Equation (6.14) proves that every minimal point of $\operatorname{Supp}E\cap V(t)$ lies in $\operatorname{Supp}\operatorname{gr}N$. The latter is closed, so it contains their closures, proving (6.8). The empty-support case is immediate. $\square$
+
+The hypothesis excluding vertical components is essential. In the commutative filtered ring $k[t,z]$, with $t$ of order zero and $z$ of order one, take $M=k[t,z]/(tz-1)$. Multiplication by $t$ is invertible on $M$, so $N=0$, while $E=k[t,\xi]/(t\xi)$ and $E/tE=k[\xi]$. Its component $t=0$ violates the hypothesis. This is a counterexample to inferring equality from (6.6) or from injectivity on $M$ alone, not a counterexample to the non-characteristic theorem.
+
+### Theorem 6.5. Full algebraic characteristic equality
+
+For every algebraic morphism $f:X\to Y$ and coherent $\mathcal D_Y$-module $M$ in the stated characteristic-zero scope, condition (6.1) implies the full equality (6.2), as well as coherence and higher-Tor vanishing.
+
+**Proof.** Start with a hypersurface $t=0$ and use the neighborhood, good filtration and tangent-operator algebra $\mathcal T$ from Proposition 6.3. Write
+
+\[
+S=B[\xi_1,\ldots,\xi_n],\qquad
+\operatorname{gr}\mathcal D_Y=S[\tau],\qquad E=\operatorname{gr}_FM.
+\tag{6.15}
+\]
+
+On this neighborhood a monic polynomial $q(\tau)\in S[\tau]$ of degree $d>0$ annihilates $E$, and $E$ is finite over $S$. The case of a degree-zero unit was already handled by $M=0$. In particular the projection of the full characteristic support to $\operatorname{Spec}S$ is finite and its image is $\operatorname{Supp}_S E$, by the finite-support comparison proved in Proposition 6.3.
+
+No irreducible component of the full characteristic support lies in $t=0$. Indeed, let $\mathfrak p$ be a minimal support prime in $S[\tau]$. Theorem 7.0 of the characteristic-variety lesson, specifically its return to each minimal prime, proves $\{\mathfrak p,\mathfrak p\}\subset\mathfrak p$, not merely a bracket statement about an unreduced annihilator. If $t\in\mathfrak p$, the cotangent bracket gives
+
+\[
+a\in\mathfrak p\ \Longrightarrow\
+\{t,a\}=-\partial_\tau a\in\mathfrak p.
+\tag{6.16}
+\]
+
+Since $q\in\operatorname{Ann}E\subset\mathfrak p$, iterating (6.16) $d$ times puts $d!$ in $\mathfrak p$. This contradicts characteristic zero and primality. Here the leading coefficient of $q$ is exactly one; normalizing it was justified by the neighborhood construction in Proposition 6.3.
+
+Nor can an irreducible component of $\operatorname{Supp}_S E$ be contained in $t=0$. The finite projection sends each of the finitely many full support components to a closed irreducible set; their union is this support. Each irreducible component of the image is one of those maximal images. If it lay in $t=0$, its corresponding full component would also lie in $t=0$, since the projection preserves coefficient functions. This has just been excluded.
+
+All hypotheses of Lemma 6.4 now hold with $A=\mathcal T$. Its Noetherian Rees ring and the goodness of $F$ over $\mathcal T$ were proved in Proposition 6.3; $t$ is central in $\mathcal T$, and Lemma 6.2 proves its injectivity on $M$. Hence
+
+\[
+\begin{aligned}
+\operatorname{Ch}_X(M/tM)
+&=\operatorname{Supp}_S E\cap V(t)\\
+&=\operatorname{pr}_{\xi}\bigl(\operatorname{Ch}_Y(M)\cap\{t=0\}\bigr).
+\end{aligned}
+\tag{6.17}
+\]
+
+Both sides are viewed in $\operatorname{Spec}(S/(t))=T^*X$. The second equality holds because the finite projection preserves $t$: a point in its image has $t=0$ exactly when every point above it does. This is the reverse inclusion missing from (6.6). No action of the normal symbol $\tau$ on $M/tM$, and no strictness of the original filtration, was assumed.
+
+For a smooth closed embedding of arbitrary codimension, use the successive hypersurfaces in Proposition 6.3. That proof already establishes the non-characteristic condition at every stage using containment alone. Apply (6.17) at each stage. Composing the coordinate restrictions and cotangent projections gives equality for the original embedding, with precisely its original pulled-back characteristic support. Finally factor any $f$ into its graph and the smooth projection as in (6.7). The smooth equality in Theorem 3.1 and the closed-embedding equality just proved compose to (6.2); the graph non-characteristic comparison and the derived-composition map were verified in Proposition 6.3. These are local support equalities, so they agree on overlaps and give the global assertion. Coherence and higher-Tor vanishing are already supplied by Proposition 6.3. $\square$
+
+This closes the algebraic theorem without replacing its equality by containment, and without restricting $M$ to a holonomic module or $f$ to an embedding. The full analytic theorem remains an assigned proof obligation: the algebraic tangent-ring construction has not by itself supplied the analytic coherent-filtration input.
 
 ## 7. Exercises with complete solutions
 
@@ -439,11 +643,11 @@ For the affine-line Euler extension use (5.2), retaining the sign and integralit
 
 ### Exercise 7.5 — hard: holonomic pullback of a closed embedding
 
-Assume the general preservation theorem assigned to the later chapter *Preservation of holonomicity and minimal extensions*. Deduce that $i^!K$ has holonomic cohomology for a smooth closed embedding $i:Z\hookrightarrow X$ and $K\in D_h^b(\mathcal D_X)$.
+Use the general preservation theorem proved in *Preservation of holonomicity and minimal extensions*, Theorem 2.1. It is an explicitly assigned later result for this exercise. Deduce that $i^!K$ has holonomic cohomology for a smooth closed embedding $i:Z\hookrightarrow X$ and $K\in D_h^b(\mathcal D_X)$.
 
-**Solution.** The assumed theorem says that $Lf^*$ sends bounded complexes with holonomic cohomology to such complexes on the source for every morphism of smooth varieties. A confirmed external formulation is Schnell, Theorem 18.5(b), page 91. Applying it to $i$ gives $Li^*K\in D_h^b(\mathcal D_Z)$. Its additional shift is $[-c]$, which reindexes cohomology and preserves holonomicity. Therefore $i^!K\in D_h^b(\mathcal D_Z)$.
+**Solution.** The cited internal Theorem 2.1 proves that $f^!$ preserves bounded holonomic complexes for every morphism of smooth varieties. By (0.1), undoing its dimension shift gives the same assertion for $Lf^*$. Applying this to $i$ gives $Li^*K\in D_h^b(\mathcal D_Z)$. Its additional shift is $[-c]$, which reindexes cohomology and preserves holonomicity. Therefore $i^!K\in D_h^b(\mathcal D_Z)$.
 
-More concretely, (4.1) computes it by the finite Koszul total complex. For a module, the assumed theorem makes each of that complex's cohomology modules holonomic. For a bounded complex $K$, use the finite truncation triangles that assemble $K$ from its holonomic cohomology modules. Applying $Li^*$ preserves these triangles, and the holonomic Serre property makes the cohomology of each successive cone holonomic. This proves the complex version without identifying every individual Koszul term with a coherent $\mathcal D_Z$-module. The general preservation theorem is the explicit hypothesis of this exercise, not a consequence of the elementary Koszul formula alone.
+More concretely, (4.1) computes it by the finite Koszul total complex. For a module, the assumed theorem makes each of that complex's cohomology modules holonomic. For a bounded complex $K$, use the finite truncation triangles that assemble $K$ from its holonomic cohomology modules. Applying $Li^*$ preserves these triangles, and the holonomic Serre property makes the cohomology of each successive cone holonomic. This proves the complex version without identifying every individual Koszul term with a coherent $\mathcal D_Z$-module. The proof of the later preservation theorem uses its Proposition 1.1 on localization, the preceding adjunction lesson's Lemma 1.1 on the localization triangle, Kashiwara's Theorem 3.1 on supported modules, and this lesson's smooth Theorem 3.1 and composition Theorem 2.1. It does not use Exercise 7.5 or the non-characteristic equality in Theorem 6.5, so this forward reference introduces no proof cycle. The elementary Koszul formula alone would not establish holonomicity.
 
 ### Exercise 7.6 — hard: the opposite extension at its boundary
 
@@ -459,10 +663,10 @@ with all other groups zero. Over a point every finite complex of vector spaces i
 
 ## References and proof boundary
 
-The chain-rule module structure, pullback of connections, derived transfer composition, smooth coherence and holonomicity, the Koszul formula, all point and projection examples, and the full ramified Euler pullback are proved here. All six exercises have complete solutions, with the fifth using its explicitly assigned later preservation theorem. The general non-characteristic theorem and the general preservation theorem used in that exercise are stated external inputs.
+The chain-rule module structure, pullback of connections, derived transfer composition, smooth coherence and holonomicity, the Koszul formula, all point and projection examples, and the full ramified Euler pullback are proved here. All six exercises have complete solutions, with the fifth using its explicitly assigned later preservation theorem. The algebraic coherence, higher-Tor vanishing and characteristic containment for every non-characteristic map are proved in Proposition 6.3. Theorem 6.5 proves the full algebraic characteristic equality (6.2), using Lemma 6.4 to account exactly for non-strict filtration torsion. The full analytic proof remains an explicit obligation with its exact external statement. Exercise 7.5 now uses the internal preservation Theorem 2.1 in the later lesson, with its proof inputs identified above. Exact prerequisite identities and proof boundaries distinguish these states.
 
-Beilinson–Drinfeld, [*Quantization of Hitchin's integrable system and Hecke eigensheaves*](https://math.uchicago.edu/~drinfeld/langlands/QuantizationHitchin.pdf), Section 7.2.8, treats ordinary left-module pullback and its relation with the differential-form formalism. Non-characteristic pullback of analytic D-modules is treated in M. Kashiwara and P. Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), §10.2.
+Beilinson–Drinfeld, [*Quantization of Hitchin's integrable system and Hecke eigensheaves*](https://math.uchicago.edu/~drinfeld/langlands/QuantizationHitchin.pdf), Section 7.2.8, treats ordinary left-module pullback and its relation with the differential-form formalism. The analytic non-characteristic reference is Schapira's *An introduction to D-modules*, draft v7, March 2020, Theorem 2.3.7 and Remark 2.3.8, with the conventions specified in Section 6. Kashiwara–Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), §10.2, concerns a different result: a conditional normal-cone bound for induced systems and a regular-holonomic corollary. It is not the source of the general non-characteristic theorem or of the numbering 11.2.11–11.2.12.
 
-For algebraic pullback and the point examples see Schnell, [*D-modules*](https://www.math.stonybrook.edu/~cschnell/pdf/notes/d-modules.pdf), Lecture 14, Definition 14.2, Examples 14.3–14.5 and Lemma 14.6. Theorem 16.5 gives non-characteristic pullback; its smooth case is discussed on pages 79–81. Theorem 18.5(b) is the stated preservation input for Exercise 7.5.
+For algebraic pullback and the point examples see Schnell, [*D-modules*](https://www.math.stonybrook.edu/~cschnell/pdf/notes/d-modules.pdf), Lecture 14, Definition 14.2, Examples 14.3–14.5 and Lemma 14.6. Theorem 16.5 gives non-characteristic pullback; its smooth case is discussed on pages 79–81. Theorem 18.5(b) is a supplementary statement of the preservation result now proved in the internal lesson used by Exercise 7.5.
 
 [Stacks, Tag 0FL5](https://stacks.math.columbia.edu/tag/0FL5) concerns base change of the relative differential-form sheaves in a cartesian square. It supports the usual functorial differential-form background; it does not by itself assert the differential-operator transfer identity or arbitrary derived pullback composition proved in Section 2.

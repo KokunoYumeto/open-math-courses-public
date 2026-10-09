@@ -518,10 +518,10 @@ The projections of individual integers and powers of \(U\) generate every matrix
 The first panel uses the exact weights in (NC54), so the phase on the arrow \(\delta_{j+1}\mapsto\delta_j\) is \(\rho(j+1)^{it}\). The second panel plots the exact central bands determined by (NC55), in the coordinate \(\log_2\rho_n(j)\). The third panel uses (NC58) below; its horizontal line is a limit and is not an eigenvalue. The final panel compares the infinite coefficient fiber with its actual rank-one corner. These are exact models of (NC9), (NC21), (NC28) and (NC50), not drawings of the measure space of a general type III factor.
 
 **1. Which side contains the modular density?** At coordinate \(j\),
-\
- [D^{it}UD^{-it}\xi
+\[
+ [D^{it}UD^{-it}\xi](j)
        =\left(\frac{w_j}{w_{j+1}}\right)^{it}\xi(j+1)
-       =U\rho^{it}\xi.
+       =[U\rho^{it}\xi](j).
  \tag{NC57}
 \]
 At \(j=0\) its scalar is \((1/4)^{it}\); the incorrectly ordered \(\rho^{it}U\) gives \((1/2)^{it}\). Thus the two operators differ, for example at \(t=1\). The difference is not a Fourier convention: it is the noncommutation of \(U\) with the central coefficient.

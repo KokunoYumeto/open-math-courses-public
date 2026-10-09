@@ -1041,13 +1041,13 @@ The apparent denominator at zero has the full smooth extension
 
 Now define the original amplitudes by the following local receiver:
 
-\
+\[
  \begin{aligned}
  u_0(s,y)&=S(s,y),\\
  u_\nu(s,y)&=S(s,y)\int_0^1t^{\nu-1}S(ts,y)^{-1}
-                [-Q u_{\nu-1}\,dt\quad(\nu\geq1),\\
+                [-Q u_{\nu-1}](ts,y)\,dt\quad(\nu\geq1),\\
  (s\cdot\partial_s+\nu-h/2)u_\nu&=-Q u_{\nu-1},&
- u_\nu(0,y)&=-Q u_{\nu-1}/\nu .
+ u_\nu(0,y)&=-[Q u_{\nu-1}](0,y)/\nu .
  \end{aligned}\tag{FW12}
 \]
 

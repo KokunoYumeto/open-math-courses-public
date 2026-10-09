@@ -211,7 +211,7 @@ With \(q=e^{2\pi iz}\), \(|q|<1\), the bracket is \((1+q)/(1-q)\). Since \(\cot(
 
 ## 2. The exact exponential Cauchy sampling error
 
-**Theorem 2.1.** The whole Cauchy transform is \(F(1+x^2)^{-1}=\pi e^{-|\xi|}\), and for every \(\epsilon>0\),
+**Theorem 2.1.** The whole Cauchy transform is \(F[(1+x^2)^{-1}](\xi)=\pi e^{-|\xi|}\), and for every \(\epsilon>0\),
 \[
 \begin{gathered}
 \epsilon\sum_{k\in\mathbb Z}\frac1{1+\epsilon^2k^2}\\
@@ -257,7 +257,7 @@ The first interchange is absolute, bounded by \(\|h\|_1\int e^{-\delta\xi^2}d\xi
 \[
  \frac1\pi\int\frac{e^{ix\xi}}{1+\xi^2}d\xi=e^{-|x|}.
 \]
-Reflection of the integration variable changes the Fourier sign, so this is exactly \(F(1+x^2)^{-1}=\pi e^{-|x|}\). Every integral is absolute. This route uses the proved Gaussian identity, without assuming general Fourier inversion for the Cauchy density. \(\square\)
+Reflection of the integration variable changes the Fourier sign, so this is exactly \(F[(1+x^2)^{-1}](x)=\pi e^{-|x|}\). Every integral is absolute. This route uses the proved Gaussian identity, without assuming general Fourier inversion for the Cauchy density. \(\square\)
 
 ## Exercises
 
@@ -352,8 +352,8 @@ The physical sum is absolute and locally uniform in \(x\), and the frequency sum
 This is a closed form of the whole absolutely convergent sum, with no separate interpretation of conditionally convergent simple-pole series.
 
 **Solution 2.** Since \(\partial_zf_z=2z(x^2-z^2)^{-2}\), the locally uniform parameter-derivative bounds in Theorem 1.1 allow division by \(2z\) and differentiation of both whole identities. With \(\rho=|\xi|\), this gives
-\
-F[(x^2-z^2)^{-2}
+\[
+F[(x^2-z^2)^{-2}](\xi)
 =\left(-\frac{\pi i}{2z^3}-\frac{\pi\rho}{2z^2}\right)e^{iz\rho},
 \]
 \[

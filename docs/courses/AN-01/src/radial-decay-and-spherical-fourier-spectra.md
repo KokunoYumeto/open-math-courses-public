@@ -10,9 +10,9 @@ For surface geometry we use exactly the latitude-and-area proof in [U035, Theore
 
 ## A sphere integral reduces radial transforms to a sine integral
 
-**Lemma 1.1.** Let \(f:0,\infty)\to\mathbb C\) be measurable and suppose \(\int_0^\infty r^2|f(r)|\,dr<\infty\). Then \(f(|x|)\in L^1(\mathbb R^3)\), its Fourier transform is radial and continuous, and, for \(\rho=|\xi|>0\),
+**Lemma 1.1.** Let \(f:[0,\infty)\to\mathbb C\) be measurable and suppose \(\int_0^\infty r^2|f(r)|\,dr<\infty\). Then \(f(|x|)\in L^1(\mathbb R^3)\), its Fourier transform is radial and continuous, and, for \(\rho=|\xi|>0\),
 \[
-F[f(|x|)
+F[f(|x|)](\xi)
 =\frac{4\pi}{\rho}\int_0^\infty r f(r)\sin(r\rho)\,dr.
 \tag{1.1}
 \]

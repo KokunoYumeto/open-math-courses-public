@@ -207,7 +207,7 @@ No triangulation-existence theorem is hidden in this lemma: the compatible finit
 The main proof below uses supported real tests and finite sums. The stronger critical-support argument later in the lesson is retained as an alternative; its full vanishing-cycle comparison and nonisolated analytic theorem are not prerequisites of the main proof. The four inputs below are supplied by these lessons, with their exact external theorem statements and coefficient ranges kept visible:
 
 - Analytic geometry for finite maps supplies compatible strata, finite analytic images and closed conormals.
-- [Normal Morse data and change of coefficients](normal-morse-coefficients.md#SH02-NMC-UNIT) supplies the finite normal pairs, their stabilization and the coefficient comparison.
+- Normal Morse data and change of coefficients supplies the finite normal pairs, their stabilization and the coefficient comparison.
 - [Perverse degrees and normal Morse complexes](perverse-normal-morse-inputs.md#SH02-PNM-UNIT) supplies the field-perverse degree and normal-Morse exactness.
 - [An isolated holomorphic test and its Morse filtration](isolated-holomorphic-morse-tests.md#SH02-IHM-UNIT) supplies the controlled cluster, actual relative filtration and positive integer count.
 
@@ -228,6 +228,10 @@ Over every field, bounded complex-constructible complexes have the bounded middl
 ### SH02-FH-CONTROLLED-MORSE-INPUT — An isolated cluster and its finite filtration
 
 For a holomorphic germ with an isolated critical point for a finite adapted complex Whitney stratification, a sufficiently small relative pair computes its supported local test. A small generic holomorphic perturbation can be chosen with controlled noncharacteristic boundary, finitely many stratified Morse points, and distinct critical values. The relative complex remains identified with the original local test while those points are separated by a finite Morse filtration. At a point on a stratum of complex dimension $d$, the quotient is its normal Morse object shifted by $[-d]$. The number of points on each generic conormal is the local complex analytic intersection number; these numbers are positive at a nonempty isolated intersection and are preserved by this perturbation. The boundary control, relative-pair continuation and local analytic intersection theorem are substantive geometric inputs. The integer index and nonvanishing consequence are proved from them below.
+
+<a id="SH02-FH-FULL-ISOLATED-PROOF"></a>
+
+The complete [original isolated pair and whole-cluster construction IH0–IH22](../isolated-holomorphic-pair-and-cluster.html#IH0) proves this controlled isolated geometric input at its [exact retained provider floor](../isolated-holomorphic-pair-and-cluster.html#IH-PROVIDERS). It identifies the original relative restrictions, keeps the entire perturbation cluster inside the prescribed radial boundary, and gives the actual finite filtration with its orientation and every-field integer count. The [IHA1–IHA3 multiplicity bridge](../isolated-holomorphic-pair-and-cluster.html#IHA1) identifies both the oriented-cycle and Samuel conventions without a Cohen–Macaulay assumption. The original perfect-coefficient and residue-field steps below retain their own hypotheses.
 
 The linked lessons give the four prerequisite deductions relative to their exact external theorem statements. The cited analytic and constructible foundations retain their other-course owners.
 

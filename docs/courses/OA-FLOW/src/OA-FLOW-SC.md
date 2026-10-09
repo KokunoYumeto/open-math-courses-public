@@ -141,6 +141,22 @@ For a nonnegative function and \(a>0\), monotonicity gives the useful bound
 \]
 Indeed \(a1_{\{f>a\}}\le f\). If the integral is finite, \(\{f=\infty\}\) is measurable and null, by applying this bound to arbitrarily large \(a\). If the integral is zero, every \(\{f>1/n\}\) is null, so \(f=0\) a.e.
 
+<a id="sc-04m"></a>
+## SC-04M. Nonatomic Borel splitting and small positive sets
+
+**Lemma SC-04M.** Let \(\mu\) be a finite measure on the Borel sigma-algebra \(\mathcal B\) of \(X\). A *measure atom* is a Borel set \(A\) with \(\mu(A)>0\) such that every Borel \(D\subset A\) has measure either zero or \(\mu(A)\). Suppose \(\mu\) has no measure atoms. Then every positive Borel \(A\) has a Borel subset \(D\) such that both \(D\) and \(A\setminus D\) have positive measure. For every \(a>0\), that same \(A\) contains a Borel \(E\) with \(0<\mu(E)<a\).
+
+**Proof.** A positive \(A\) is not an atom, so there is a Borel \(D\subset A\) with \(\mu(D)\notin\{0,\mu(A)\}\). Monotonicity and finiteness give \(0<\mu(D)<\mu(A)\). Finite additivity gives \(\mu(A\setminus D)=\mu(A)-\mu(D)>0\), proving the splitting assertion.
+
+Put \(E_0=A\). At each step apply that assertion to \(E_k\), and take as \(E_{k+1}\) whichever of its two positive Borel parts has the smaller measure. Then \(E_{k+1}\subset E_k\) is Borel and
+\[
+0<\mu(E_{k+1})\le\tfrac12\mu(E_k),\qquad
+0<\mu(E_k)\le2^{-k}\mu(A).
+\]
+Choose a finite integer \(N\) with \(2^{-N}\mu(A)<a\). The positive Borel set \(E_N\) has the required measure. No infinite intersection or exact bisection theorem is used. \(\square\)
+
+If nonatomicity is given for the completed measure, the Borel restriction also has no atoms. Indeed, by the definition of completion every completed-measurable subset of a Borel set \(A\) differs from a Borel subset of \(A\) by a subset of a Borel null set: take a Borel representative and intersect it with \(A\). The representative has the same measure. Consequently a Borel atom would remain an atom after completion. The same representative construction turns a positive proper completed-measurable split of \(A\) into a Borel split with the same two positive masses.
+
 <a id="sc-05"></a>
 ## SC-05. Complex integration, Fatou and dominated convergence
 

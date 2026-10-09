@@ -1546,8 +1546,8 @@ Let d be invertible in k. The differential of [d]:J→J at the identity is d tim
 
 If k'/k is algebraically closed, J_{k'} represents the degree-zero functor for C_{k'}. This is the base restriction of the same represented functor. Degree is preserved: coherent field base change on an affine Čech complex preserves Euler characteristic and genus, so deg(L)=χ(L)−1+g is unchanged. Therefore pullback on torsion bundles is the actual map
 
-\
-J[d\longrightarrow Jd.
+\[
+J[d](k)\longrightarrow J[d](k').
 \]
 
 A finite étale scheme split over k has exactly the same labelled points after extension. This map is an isomorphism, not merely a comparison of cardinalities.
@@ -1557,7 +1557,7 @@ A finite étale scheme split over k has exactly the same labelled points after e
 Choose a primitive d-th root of unity in k and retain it in k'; it identifies the constant Z/d sheaf with μ_d on both fields. The Kummer sequence proved in the programme identifies
 
 \[
-H^1(C,\mu_d)=\operatorname{Pic}(C)[d]=Jd.
+H^1(C,\mu_d)=\operatorname{Pic}(C)[d]=J[d](k).
 \]
 
 The units quotient is zero because k is algebraically closed, and torsion bundles have degree zero. Section B.2.2 proves that the actual field-extension map on this group is an isomorphism. Degree zero is the identical group μ_d(k)=μ_d(k'). In degree two, the proved projective-curve calculation Multiplicative group on a curve, Theorem 6.2 identifies H²(C,μ_d) with Z/d by the degree of a Kummer Chern class. A rational point c gives the degree-one bundle O_C(c); its pullback is the degree-one bundle O_{C_{k'}}(c_{k'}). Naturality of Kummer sends the generator to that generator, so the comparison is the identity under the degree identifications. Higher groups vanish by that same proved calculation.

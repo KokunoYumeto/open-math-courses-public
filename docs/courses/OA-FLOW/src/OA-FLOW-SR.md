@@ -8,9 +8,9 @@ All new exposition, models and figure components authored here are dedicated to 
 ## The statements and the measurable category
 
 A continuous action on a von Neumann algebra means a point-ultraweakly continuous action by normal automorphisms. Our regular crossed-product convention, for additive groups, is
-\
- [\pi_\alpha(x)\xi=\sigma(\alpha_{-t}(x))\xi(t),
- \qquad \lambda_s\xi=\xi(t-s),
+\[
+ [\pi_\alpha(x)\xi](t)=\sigma(\alpha_{-t}(x))\xi(t),
+ \qquad [\lambda_s\xi](t)=\xi(t-s),
  \tag{SR1}
 \]
 where \(\sigma\) is faithful and normal. All crossed products below are these generated von Neumann algebras. A change of faithful normal realization is understood through the normal regular transport, not through an arbitrary integrated representation.
@@ -26,8 +26,8 @@ on a standard sigma-finite nonsingular \(G\)-space with jointly Borel action rea
  \tag{SR2}
 \]
 The group \(H\) is not required to be abelian, unimodular, separable or second countable. Assume that \(\rho\) is Borel. We will prove the following **regular measurability** condition for every such \(H\). More generally, the same conclusion holds for a cocycle given directly by this condition, without requiring a global Borel representative. With right regular unitaries
-\
- [R_H(k)\xi=\Delta_H(k)^{1/2}\xi(hk),
+\[
+ [R_H(k)\xi](h)=\Delta_H(k)^{1/2}\xi(hk),
  \qquad \kappa(g,y)=\rho(g,g^{-1}y),
  \tag{SR3}
 \]
@@ -36,8 +36,8 @@ the maps \(y\mapsto R_H(\kappa(g,y))^{\pm1}\xi\) are strongly measurable for eve
 For orientation, this condition is automatic for a Borel cocycle when \(H\) is separable locally compact. Indeed, the continuous orbit of any one vector under \(H\) is separable: the image of a countable dense subset is dense in that orbit. Composition of its continuous orbit map with the Borel map \(\kappa\) is measurable into a separable metric space. The same argument treats inverses. It is not necessary that \(L^2(H)\) itself be separable. It also holds whenever the cocycle takes values in a fixed separable subgroup. The measure argument HS1–HS6 below removes this subgroup requirement for every Borel cocycle in the stated category.
 
 Use inner-regular Haar measure and the locally determined multiplication algebra \(L^\infty(H)\), as in the actual arbitrary-group Haar and induction providers. For non-sigma-compact \(H\) this is a spatial multiplication algebra, not an assertion about every possible global outer-regular product completion. The theorem gives a normal continuous action on \(L^\infty(H)\bar\otimes P\), with normal inverse at each parameter, whose fixed-parameter field formula is
-\
- [\widetilde\alpha_gx^{-1},gy)
+\[
+ [\widetilde\alpha_gx](h\rho(g,y)^{-1},gy)
        =\alpha_{g,y}(x(h,y)).
  \tag{AC1}
 \]
@@ -261,10 +261,10 @@ is Borel into the product Borel sigma algebra. Hence
 is Borel.
 
 Use the exact left Haar convention of L24:
-\
+\[
  \int_H F(hk)\,dh=\Delta_H(k)^{-1}\int_H F(h)\,dh,
  \qquad
- [R_H(k)\xi=\Delta_H(k)^{1/2}\xi(hk).
+ [R_H(k)\xi](h)=\Delta_H(k)^{1/2}\xi(hk).
  \tag{HS14}
 \]
 The unitaries \(R_H(k)\) form a strongly continuous representation on \(L^2(H)\) for arbitrary \(H\). To recall the actual proof, for \(\xi\in C_c(H)\), right translates have locally common compact support and converge uniformly, while \(\Delta_H\) is continuous. This proves \(L^2\) continuity. Density of \(C_c(H)\) and the unitary bound extend it to every \(\xi\in L^2(H)\), using the finite-exponent Haar model of L24. Inversion gives continuity of \(k\mapsto R_H(k)^{-1}\xi\) too.
@@ -296,8 +296,8 @@ give actual unitary operators and normal automorphisms, with
 The inverse of \(\widetilde\alpha_g\) is the normal map \(\widetilde\alpha_{g^{-1}}\). The integrated-vector proof below now has its strong-measurability premise, including separable essential ranges for the adjoint orbits, and proves strong continuity of \(\widetilde V\) on the possibly nonseparable tensor Hilbert space.
 
 The field formula is unchanged:
-\
- [\widetilde\alpha_gx^{-1},gy)
+\[
+ [\widetilde\alpha_gx](h\rho(g,y)^{-1},gy)
       =\alpha_{g,y}(x(h,y)).
  \tag{HS18}
 \]
@@ -499,16 +499,16 @@ The two routes yield conjugate specified return systems. Compose their normal pr
 ## 5. Faithful regular models for all the crossed-product arrows
 
 **The real translation crossing.** Let \(N\) be represented faithfully normally on \(K\). Represent \(L^\infty(\mathbb R)\bar\otimes N\) on \(L^2(\mathbb R_x;K)\), and use (SR1) for \(\operatorname{lt}\). On \(L^2(\mathbb R_t\times\mathbb R_x;K)\),
-\
- [\pi(a)\xi=a(x+t)\xi(t,x),\qquad
- \lambda_s\xi=\xi(t-s,x).
+\[
+ [\pi(a)\xi](t,x)=a(x+t)\xi(t,x),\qquad
+ [\lambda_s\xi](t,x)=\xi(t-s,x).
 \]
 The measure-preserving change of variables
-\
- [J\xi=\xi(y-v,v)
+\[
+ [J\xi](y,v)=\xi(y-v,v)
  \tag{SR19}
 \]
-is a unitary with inverse \(J^*\zeta=\zeta(x+t,x)\). It sends the coefficients to \(a(y)\), and \(\lambda_s\) to translation \(\zeta(y,v)\mapsto\zeta(y-s,v)\).
+is a unitary with inverse \([J^*\zeta](t,x)=\zeta(x+t,x)\). It sends the coefficients to \(a(y)\), and \(\lambda_s\) to translation \(\zeta(y,v)\mapsto\zeta(y-s,v)\).
 
 On \(L^2(\mathbb R_y)\), multipliers and translations generate \(B(L^2\mathbb R)\). An operator commuting with the multipliers is a multiplier, by the finite-measure localization argument; commuting also with translations makes it scalar by the scalar lemma. The bicommutant theorem proves the claim. Equivalently, the retained compact-kernel proof integrates \(M_{p(y)\overline{q(y-s)}}\lambda_s\) to the rank-one operator \(\xi\mapsto p\int\overline q\,\xi\).
 
@@ -521,13 +521,13 @@ Removing this explicit multiplicity has a normal inverse: compress its last coor
 
 **The integer translation crossing with our orientation.** On
 \(\ell^2(\mathbb Z_k)\otimes\ell^2(\mathbb Z_m)\otimes\mathcal H_P\), its regular coefficients and implementing unitaries are
-\
- [\pi_\chi(q)\xi=q(m-k)\xi(k,m),\qquad
- d_j\xi=\xi(k-j,m).
+\[
+ [\pi_\chi(q)\xi](k,m)=q(m-k)\xi(k,m),\qquad
+ [d_j\xi](k,m)=\xi(k-j,m).
 \]
 The unitary
-\
- [J_{\mathbb Z}\xi=\xi(v-a,v)
+\[
+ [J_{\mathbb Z}\xi](a,v)=\xi(v-a,v)
  \tag{SR21}
 \]
 has inverse \(\xi(k,m)=\zeta(m-k,m)\). It sends coefficients to \(q(a)\) and \(d_j\) to \(D_j\zeta(a)=\zeta(a+j)\), with the \(v\)-coordinate unchanged. If \(e_i\) is the \(i\)-th diagonal projection, then
@@ -581,8 +581,8 @@ Under (SR23) the extended real action is
 Check this first on diagonal \(q\): conjugation by \(S_{n(t,S_{-t}z)}\) shifts its integer input to \(m-n(t,S_{-t}z)\), exactly the lifted coefficient formula. It fixes \(D_1\), since integer shifts commute and \(U_t\) has central \(P\)-coefficients. These generators give (SR26) on the whole algebra by normality.
 
 Put \(\alpha^0=\mathrm{id}\otimes\theta\). The actual cocycle unitary of NR5 is
-\
- [F\xi=\sigma(U_{-t})\xi(t),\qquad
+\[
+ [F\xi](t)=\sigma(U_{-t})\xi(t),\qquad
  F\pi_{\alpha^0}(a)F^*=\pi_\gamma(a),\qquad
  F\lambda_t^{\,0}F^*=\pi_\gamma(U_t^*)\lambda_t^{\,\gamma}.
  \tag{SR27}
@@ -681,8 +681,8 @@ Choose either \(r=1\), or the nonconstant roof
  \tag{SR34}
 \]
 It lies in \([3/2,5/2]\). Let \(F\) be any specified factor with separable predual, and \(v:\Omega\to\mathcal U(F)\) a strongly Borel unitary field. On \(Q_0=L^\infty(\Omega)\bar\otimes F\) define
-\
- [\beta(a)=v(\omega)a(\omega)v(\omega)^*.
+\[
+ [\beta(a)](T\omega)=v(\omega)a(\omega)v(\omega)^*.
  \tag{SR35}
 \]
 Measurable conjugation and nonsingular pullback give a normal automorphism; its inverse at \(\omega\) is conjugation by \(v(\omega)^*\) after evaluation at \(T\omega\). Its iterates use the ordered products
@@ -729,10 +729,10 @@ Left multiplication has Jacobian \(a_0^2\), canceled by the density; right multi
 This proves both formulas directly.
 
 Take \(G=\mathbb R\), \(Y\) a point, \(P=M_2\), \(\alpha_t=\operatorname{Ad}e^{itD}\) for a fixed self-adjoint matrix \(D\), and \(\rho(t)=(e^t,0)\). The extended action is
-\
- [\widetilde\alpha_t x
+\[
+ [\widetilde\alpha_t x](a,b)
    =e^{itD}x(ae^t,b)e^{-itD},\qquad
- R_H(\rho(t))\xi=e^{-t/2}\xi(ae^t,b).
+ [R_H(\rho(t))\xi](a,b)=e^{-t/2}\xi(ae^t,b).
  \tag{SR40}
 \]
 The Hilbert norm is unchanged because the integral before the factor is multiplied by \(e^t\). The normal inverse is obtained by \(-t\), and strong continuity follows from the explicit regular representation. In \(q=\log a\) coordinates the scalar Haar measure is \(e^{-q}dq\,db\), equivalent to product Lebesgue measure. The scalar translation argument therefore identifies the stable-range algebra as \(L^\infty(\mathbb R_b)\). Left \(H\)-translation acts on it by

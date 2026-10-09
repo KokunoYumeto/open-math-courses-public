@@ -80,8 +80,8 @@ The action of \(\operatorname{End}(E)\) on \(T_\ell E\) is faithful. Indeed an e
 Let \(K_v\) have residue field \(\mathbb F_q\) of characteristic \(p\), and let \(E/K_v\) have good reduction \(\widetilde E\). Assume \(\ell\ne p\).
 
 **Theorem 3.1 (unramified torsion).** Reduction identifies the prime-to-\(p\) torsion groups equivariantly:
-\
- E[\ell^a\simeq
+\[
+ E[\ell^a](\overline{K_v})\simeq
  \widetilde E[\ell^a](\overline{\mathbb F}_q).
 \]
 Inertia acts trivially on \(T_\ell E\), and arithmetic Frobenius acts through the endomorphism \(\varphi:(x,y)\mapsto(x^q,y^q)\) of \(\widetilde E\).

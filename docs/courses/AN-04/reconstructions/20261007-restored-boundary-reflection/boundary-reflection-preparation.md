@@ -213,10 +213,10 @@ Assume \(q_0\) misses the forcing and boundary-data wavefronts. Shrink the tubes
  \tag{RF21}
 \]
 All derivatives and tangential actions preserve \(\mathcal N\). Equations (RF17)–(RF19) give the actual equations
-\
+\[
  \begin{aligned}
  L_+v&=Q_+f-Q_+\Omega u
-                   +[L_+,Q_+u,\\
+                   +[L_+,Q_+](D_r-A_-)u,\\
  \widetilde L_-\widetilde v
    &=\widetilde Q_-f-\widetilde Q_-\widetilde\Omega u
            +[\widetilde L_-,\widetilde Q_-]

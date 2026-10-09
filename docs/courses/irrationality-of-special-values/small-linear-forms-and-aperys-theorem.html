@@ -1,0 +1,245 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Small linear forms and Apéry&#x27;s theorem</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents</a><a href="chebyshev-rows-and-mixed-moments.html">Next lesson</a><a href="src/small-linear-forms-and-aperys-theorem.md">Editable source</a></nav><main><article><h1 id="small-linear-forms-and-apéry-s-theorem">Small linear forms and Apéry's theorem</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A real number <span class="math" data-tex="\(x\)">\(x\)</span> is irrational as soon as there are integers <span class="math" data-tex="\(a_n,b_n\)">\(a_n,b_n\)</span> with <span class="math" data-tex="\(a_n+b_nx\ne0\)">\(a_n+b_nx\ne0\)</span> and <span class="math" data-tex="\(a_n+b_nx\to0\)">\(a_n+b_nx\to0\)</span>. Producing such linear forms is the whole difficulty: natural approximations to a constant come with denominators, and clearing them can destroy the decay. In 1978 Apéry showed that <span class="math" data-tex="\(\zeta(3)=\sum_{k\ge1}k^{-3}\)">\(\zeta(3)=\sum_{k\ge1}k^{-3}\)</span> is irrational, with an explicit recurrence whose denominators grow just slowly enough; shortly afterwards Beukers found a short proof by double and triple integrals. This lesson proves the irrationality of <span class="math" data-tex="\(\zeta(2)\)">\(\zeta(2)\)</span> and <span class="math" data-tex="\(\zeta(3)\)">\(\zeta(3)\)</span> along Beukers' lines. The argument is organized around two facts: zeta values are integrals of powers of a logarithm against <span class="math" data-tex="\(dt/(1-t)\)">\(dt/(1-t)\)</span>, and an involution of the unit interval transports Beukers' triple integral into a form whose size is easy to bound.</p>
+<p>The last section explains why the same idea does not prove the irrationality of Catalan's constant <span class="math" data-tex="\(G=\sum_{j\ge0}(-1)^j(2j+1)^{-2}\)">\(G=\sum_{j\ge0}(-1)^j(2j+1)^{-2}\)</span>, and how the rest of this course overcomes the obstacle.</p>
+<p>We use the prime number theorem, Theorem 3.1 of <a href="../NT-ZETA/NT-ZETA-09.html#3-from-an-average-to-the-number-of-primes">The prime number theorem</a>, and integration of nonnegative functions with monotone convergence and Fubini's theorem, as in the core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10">Measure and Integration (D10)</a>.</p>
+<p>Basic references are [Fischler] and [Zudilin 2003].</p>
+<h2 id="1-irrationality-from-small-linear-forms">1. Irrationality from small linear forms</h2>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(x\)">\(x\)</span> be a real number. Suppose there are integers <span class="math" data-tex="\(a_n,b_n\)">\(a_n,b_n\)</span> with <span class="math" data-tex="\(a_n+b_nx\ne0\)">\(a_n+b_nx\ne0\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(a_n+b_nx\to0\)">\(a_n+b_nx\to0\)</span>. Then <span class="math" data-tex="\(x\)">\(x\)</span> is irrational.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(x=u/v\)">\(x=u/v\)</span> with integers <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(v\ge1\)">\(v\ge1\)</span>, then <span class="math" data-tex="\(v(a_n+b_nx)=va_n+b_nu\)">\(v(a_n+b_nx)=va_n+b_nu\)</span> is a nonzero integer, so <span class="math" data-tex="\(|a_n+b_nx|\ge1/v\)">\(|a_n+b_nx|\ge1/v\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The linear forms below arise as <span class="math" data-tex="\(d_n^k\)">\(d_n^k\)</span> times an integral, where</p>
+<span class="math math-display" data-tex="\[
+d_n=\operatorname{lcm}(1,2,\dots,n).
+\]">\[
+d_n=\operatorname{lcm}(1,2,\dots,n).
+\]</span>
+<p>Every fraction <span class="math" data-tex="\(1/j\)">\(1/j\)</span> with <span class="math" data-tex="\(1\le j\le n\)">\(1\le j\le n\)</span> becomes an integer after multiplication by <span class="math" data-tex="\(d_n\)">\(d_n\)</span>, and every fraction <span class="math" data-tex="\(1/(jk)\)">\(1/(jk)\)</span> with <span class="math" data-tex="\(1\le j,k\le n\)">\(1\le j,k\le n\)</span> after multiplication by <span class="math" data-tex="\(d_n^2\)">\(d_n^2\)</span>. The size of <span class="math" data-tex="\(d_n\)">\(d_n\)</span> is governed by the primes.</p>
+<p><strong>Lemma 1.2.</strong> <span class="math" data-tex="\(\log d_n=\psi(n)=\sum_{p^k\le n}\log p\)">\(\log d_n=\psi(n)=\sum_{p^k\le n}\log p\)</span>. Consequently, for every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, <span class="math" data-tex="\(d_n\le e^{(1+\varepsilon)n}\)">\(d_n\le e^{(1+\varepsilon)n}\)</span> for all sufficiently large <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p><strong>Proof.</strong> The exponent of a prime <span class="math" data-tex="\(p\)">\(p\)</span> in <span class="math" data-tex="\(d_n\)">\(d_n\)</span> is the largest <span class="math" data-tex="\(k\)">\(k\)</span> with <span class="math" data-tex="\(p^k\le n\)">\(p^k\le n\)</span>, which is the number of powers <span class="math" data-tex="\(p^k\le n\)">\(p^k\le n\)</span> with <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>. Taking logarithms gives <span class="math" data-tex="\(\psi(n)\)">\(\psi(n)\)</span>. The prime number theorem gives <span class="math" data-tex="\(\psi(n)\sim n\)">\(\psi(n)\sim n\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-zeta-values-as-integrals">2. Zeta values as integrals</h2>
+<p><strong>Proposition 2.1</strong> (logarithmic integrals). For integers <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span> and <span class="math" data-tex="\(N\ge0\)">\(N\ge0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\int_0^1\frac{t^N(-\log t)^m}{1-t}\,dt=m!\sum_{k&gt;N}\frac1{k^{m+1}}.
+\]">\[
+\int_0^1\frac{t^N(-\log t)^m}{1-t}\,dt=m!\sum_{k&gt;N}\frac1{k^{m+1}}.
+\]</span>
+<p>In particular <span class="math" data-tex="\(\int_0^1(-\log t)^m\,dt/(1-t)=m!\,\zeta(m+1)\)">\(\int_0^1(-\log t)^m\,dt/(1-t)=m!\,\zeta(m+1)\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(a&gt;-1\)">\(a&gt;-1\)</span>, the substitution <span class="math" data-tex="\(t=e^{-u/(a+1)}\)">\(t=e^{-u/(a+1)}\)</span> gives <span class="math" data-tex="\(\int_0^1t^a(-\log t)^m\,dt=(a+1)^{-m-1}\int_0^\infty u^me^{-u}\,du=m!/(a+1)^{m+1}\)">\(\int_0^1t^a(-\log t)^m\,dt=(a+1)^{-m-1}\int_0^\infty u^me^{-u}\,du=m!/(a+1)^{m+1}\)</span>, the last integral by <span class="math" data-tex="\(m\)">\(m\)</span> integrations by parts. Expand <span class="math" data-tex="\(1/(1-t)=\sum_{j\ge0}t^j\)">\(1/(1-t)=\sum_{j\ge0}t^j\)</span>; all terms are nonnegative, so monotone convergence permits termwise integration, and <span class="math" data-tex="\(\sum_{j\ge0}m!/(N+j+1)^{m+1}\)">\(\sum_{j\ge0}m!/(N+j+1)^{m+1}\)</span> is the stated sum. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Double integrals over the unit square reduce to single integrals when the integrand depends only on the product of the variables.</p>
+<p><strong>Lemma 2.2</strong> (integration over the product). For every measurable <span class="math" data-tex="\(F:(0,1)\to[0,\infty]\)">\(F:(0,1)\to[0,\infty]\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\iint_{[0,1]^2}F(xy)\,dx\,dy=\int_0^1F(t)\,(-\log t)\,dt.
+\]">\[
+\iint_{[0,1]^2}F(xy)\,dx\,dy=\int_0^1F(t)\,(-\log t)\,dt.
+\]</span>
+<p>The same holds for integrable <span class="math" data-tex="\(F\)">\(F\)</span> of either sign.</p>
+<p><strong>Proof.</strong> For fixed <span class="math" data-tex="\(x\in(0,1]\)">\(x\in(0,1]\)</span>, substituting <span class="math" data-tex="\(t=xy\)">\(t=xy\)</span> gives <span class="math" data-tex="\(\int_0^1F(xy)\,dy=\int_0^xF(t)\,dt/x\)">\(\int_0^1F(xy)\,dy=\int_0^xF(t)\,dt/x\)</span>. Integrate over <span class="math" data-tex="\(x\)">\(x\)</span> and exchange the order of integration on <span class="math" data-tex="\(\{0&lt;t&lt;x&lt;1\}\)">\(\{0&lt;t&lt;x&lt;1\}\)</span>, which is allowed for nonnegative integrands: the result is <span class="math" data-tex="\(\int_0^1F(t)\int_t^1dx/x\,dt\)">\(\int_0^1F(t)\int_t^1dx/x\,dt\)</span>, and <span class="math" data-tex="\(\int_t^1dx/x=-\log t\)">\(\int_t^1dx/x=-\log t\)</span>. For integrable <span class="math" data-tex="\(F\)">\(F\)</span>, apply this to the positive and negative parts. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 2.3</strong> (monomial integrals). For integers <span class="math" data-tex="\(r,s\ge0\)">\(r,s\ge0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\iint_{[0,1]^2}\frac{x^ry^s}{1-xy}\,dx\,dy=
+\begin{cases}
+\zeta(2)-\sum_{k=1}^r\frac1{k^2},&amp;r=s,\\[4pt]
+\frac1{|r-s|}\sum_{k=\min(r,s)+1}^{\max(r,s)}\frac1k,&amp;r\ne s,
+\end{cases}
+\]">\[
+\iint_{[0,1]^2}\frac{x^ry^s}{1-xy}\,dx\,dy=
+\begin{cases}
+\zeta(2)-\sum_{k=1}^r\frac1{k^2},&amp;r=s,\\[4pt]
+\frac1{|r-s|}\sum_{k=\min(r,s)+1}^{\max(r,s)}\frac1k,&amp;r\ne s,
+\end{cases}
+\]</span>
+<p>and</p>
+<span class="math math-display" data-tex="\[
+\iint_{[0,1]^2}\frac{-\log(xy)\,x^ry^s}{1-xy}\,dx\,dy=
+\begin{cases}
+2\Bigl(\zeta(3)-\sum_{k=1}^r\frac1{k^3}\Bigr),&amp;r=s,\\[4pt]
+\frac1{|r-s|}\sum_{k=\min(r,s)+1}^{\max(r,s)}\frac1{k^2},&amp;r\ne s.
+\end{cases}
+\]">\[
+\iint_{[0,1]^2}\frac{-\log(xy)\,x^ry^s}{1-xy}\,dx\,dy=
+\begin{cases}
+2\Bigl(\zeta(3)-\sum_{k=1}^r\frac1{k^3}\Bigr),&amp;r=s,\\[4pt]
+\frac1{|r-s|}\sum_{k=\min(r,s)+1}^{\max(r,s)}\frac1{k^2},&amp;r\ne s.
+\end{cases}
+\]</span>
+<p><strong>Proof.</strong> Expand <span class="math" data-tex="\(1/(1-xy)=\sum_{j\ge0}(xy)^j\)">\(1/(1-xy)=\sum_{j\ge0}(xy)^j\)</span> and integrate termwise (all terms are nonnegative). The first integral becomes <span class="math" data-tex="\(\sum_{j\ge0}1/(AB)\)">\(\sum_{j\ge0}1/(AB)\)</span> with <span class="math" data-tex="\(A=r+j+1\)">\(A=r+j+1\)</span>, <span class="math" data-tex="\(B=s+j+1\)">\(B=s+j+1\)</span>. If <span class="math" data-tex="\(r=s\)">\(r=s\)</span> this is <span class="math" data-tex="\(\sum_{k&gt;r}k^{-2}\)">\(\sum_{k&gt;r}k^{-2}\)</span>. If <span class="math" data-tex="\(r&gt;s\)">\(r&gt;s\)</span>, then <span class="math" data-tex="\(A-B=r-s\)">\(A-B=r-s\)</span> and <span class="math" data-tex="\(1/(AB)=(1/B-1/A)/(r-s)\)">\(1/(AB)=(1/B-1/A)/(r-s)\)</span>; the sum telescopes to <span class="math" data-tex="\(\sum_{k=s+1}^rk^{-1}/(r-s)\)">\(\sum_{k=s+1}^rk^{-1}/(r-s)\)</span>.</p>
+<p>For the second, <span class="math" data-tex="\(\int_0^1x^a(-\log x)\,dx=1/(a+1)^2\)">\(\int_0^1x^a(-\log x)\,dx=1/(a+1)^2\)</span> (Proposition 2.1's computation with <span class="math" data-tex="\(m=1\)">\(m=1\)</span>), and <span class="math" data-tex="\(-\log(xy)=-\log x-\log y\)">\(-\log(xy)=-\log x-\log y\)</span>. So the integral is <span class="math" data-tex="\(\sum_{j\ge0}\bigl(1/(A^2B)+1/(AB^2)\bigr)=\sum_j(A+B)/(A^2B^2)\)">\(\sum_{j\ge0}\bigl(1/(A^2B)+1/(AB^2)\bigr)=\sum_j(A+B)/(A^2B^2)\)</span>. If <span class="math" data-tex="\(r=s\)">\(r=s\)</span> this is <span class="math" data-tex="\(2\sum_{k&gt;r}k^{-3}\)">\(2\sum_{k&gt;r}k^{-3}\)</span>. If <span class="math" data-tex="\(r&gt;s\)">\(r&gt;s\)</span>, then <span class="math" data-tex="\((A+B)/(A^2B^2)=(1/B^2-1/A^2)/(r-s)\)">\((A+B)/(A^2B^2)=(1/B^2-1/A^2)/(r-s)\)</span>, which telescopes to <span class="math" data-tex="\(\sum_{k=s+1}^rk^{-2}/(r-s)\)">\(\sum_{k=s+1}^rk^{-2}/(r-s)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(r=s\)">\(r=s\)</span> the second formula is also Lemma 2.2 with <span class="math" data-tex="\(F(t)=t^r(-\log t)/(1-t)\)">\(F(t)=t^r(-\log t)/(1-t)\)</span>, followed by Proposition 2.1 with <span class="math" data-tex="\(m=2\)">\(m=2\)</span> and <span class="math" data-tex="\(N=r\)">\(N=r\)</span>.</p>
+<p><strong>Corollary 2.4.</strong> Let <span class="math" data-tex="\(Q(x,y)\)">\(Q(x,y)\)</span> be a polynomial with integer coefficients and degree at most <span class="math" data-tex="\(n\)">\(n\)</span> in each variable. Then</p>
+<span class="math math-display" data-tex="\[
+d_n^2\iint\frac{Q(x,y)}{1-xy}\,dx\,dy\in\mathbb Z+\mathbb Z\,\zeta(2),\qquad
+d_n^3\iint\frac{-\log(xy)\,Q(x,y)}{1-xy}\,dx\,dy\in\mathbb Z+2\mathbb Z\,\zeta(3).
+\]">\[
+d_n^2\iint\frac{Q(x,y)}{1-xy}\,dx\,dy\in\mathbb Z+\mathbb Z\,\zeta(2),\qquad
+d_n^3\iint\frac{-\log(xy)\,Q(x,y)}{1-xy}\,dx\,dy\in\mathbb Z+2\mathbb Z\,\zeta(3).
+\]</span>
+<p><strong>Proof.</strong> In Proposition 2.3 with <span class="math" data-tex="\(r,s\le n\)">\(r,s\le n\)</span>, every denominator <span class="math" data-tex="\(|r-s|\cdot k\)">\(|r-s|\cdot k\)</span> and <span class="math" data-tex="\(k^2\)">\(k^2\)</span> divides <span class="math" data-tex="\(d_n^2\)">\(d_n^2\)</span>, and every <span class="math" data-tex="\(|r-s|\cdot k^2\)">\(|r-s|\cdot k^2\)</span> and <span class="math" data-tex="\(k^3\)">\(k^3\)</span> divides <span class="math" data-tex="\(d_n^3\)">\(d_n^3\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-legendre-polynomials">3. Legendre polynomials</h2>
+<p>For <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span> put</p>
+<span class="math math-display" data-tex="\[
+P_n(x)=\frac1{n!}\frac{d^n}{dx^n}\bigl(x^n(1-x)^n\bigr).
+\]">\[
+P_n(x)=\frac1{n!}\frac{d^n}{dx^n}\bigl(x^n(1-x)^n\bigr).
+\]</span>
+<p><strong>Lemma 3.1.</strong> <span class="math" data-tex="\(P_n(x)=\sum_{j=0}^n(-1)^j\binom nj\binom{n+j}nx^j\)">\(P_n(x)=\sum_{j=0}^n(-1)^j\binom nj\binom{n+j}nx^j\)</span>. In particular <span class="math" data-tex="\(P_n\)">\(P_n\)</span> has integer coefficients and degree <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(x^n(1-x)^n=\sum_j(-1)^j\binom njx^{n+j}\)">\(x^n(1-x)^n=\sum_j(-1)^j\binom njx^{n+j}\)</span>, and <span class="math" data-tex="\(\frac1{n!}\frac{d^n}{dx^n}x^{n+j}=\binom{n+j}nx^j\)">\(\frac1{n!}\frac{d^n}{dx^n}x^{n+j}=\binom{n+j}nx^j\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.2</strong> (integration by parts). For every <span class="math" data-tex="\(g\)">\(g\)</span> that is <span class="math" data-tex="\(n\)">\(n\)</span> times continuously differentiable on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\int_0^1P_n(x)g(x)\,dx=\frac{(-1)^n}{n!}\int_0^1x^n(1-x)^ng^{(n)}(x)\,dx.
+\]">\[
+\int_0^1P_n(x)g(x)\,dx=\frac{(-1)^n}{n!}\int_0^1x^n(1-x)^ng^{(n)}(x)\,dx.
+\]</span>
+<p><strong>Proof.</strong> Integrate by parts <span class="math" data-tex="\(n\)">\(n\)</span> times. The boundary terms involve derivatives of <span class="math" data-tex="\(x^n(1-x)^n\)">\(x^n(1-x)^n\)</span> of order less than <span class="math" data-tex="\(n\)">\(n\)</span>, which vanish at <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span> because each has the factor <span class="math" data-tex="\(x(1-x)\)">\(x(1-x)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-irrationality-of-zeta-2">4. The irrationality of <span class="math" data-tex="\(\zeta(2)\)">\(\zeta(2)\)</span></h2>
+<p><strong>Lemma 4.1.</strong> For <span class="math" data-tex="\(0\le x,y\le1\)">\(0\le x,y\le1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\frac{x(1-x)y(1-y)}{1-xy}\le\varphi^5,\qquad\varphi=\frac{\sqrt5-1}2,
+\]">\[
+\frac{x(1-x)y(1-y)}{1-xy}\le\varphi^5,\qquad\varphi=\frac{\sqrt5-1}2,
+\]</span>
+<p>with the left side read as <span class="math" data-tex="\(0\)">\(0\)</span> at <span class="math" data-tex="\(x=y=1\)">\(x=y=1\)</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(u=\sqrt{xy}\)">\(u=\sqrt{xy}\)</span>. Since <span class="math" data-tex="\(x+y\ge2u\)">\(x+y\ge2u\)</span>, we have <span class="math" data-tex="\((1-x)(1-y)=1-(x+y)+xy\le(1-u)^2\)">\((1-x)(1-y)=1-(x+y)+xy\le(1-u)^2\)</span>. Hence the left side is at most <span class="math" data-tex="\(u^2(1-u)^2/(1-u^2)=g(u)\)">\(u^2(1-u)^2/(1-u^2)=g(u)\)</span>, where <span class="math" data-tex="\(g(u)=u^2(1-u)/(1+u)\)">\(g(u)=u^2(1-u)/(1+u)\)</span> on <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span>. Now</p>
+<span class="math math-display" data-tex="\[
+g&#x27;(u)=\frac{2u(1-u-u^2)}{(1+u)^2},
+\]">\[
+g&#x27;(u)=\frac{2u(1-u-u^2)}{(1+u)^2},
+\]</span>
+<p>so <span class="math" data-tex="\(g\)">\(g\)</span> increases up to the root <span class="math" data-tex="\(u=\varphi\)">\(u=\varphi\)</span> of <span class="math" data-tex="\(u^2+u-1=0\)">\(u^2+u-1=0\)</span> and decreases after it. Using <span class="math" data-tex="\(1-\varphi=\varphi^2\)">\(1-\varphi=\varphi^2\)</span> and <span class="math" data-tex="\(1+\varphi=1/\varphi\)">\(1+\varphi=1/\varphi\)</span>, the maximum is <span class="math" data-tex="\(g(\varphi)=\varphi^2\cdot\varphi^2\cdot\varphi=\varphi^5\)">\(g(\varphi)=\varphi^2\cdot\varphi^2\cdot\varphi=\varphi^5\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.2.</strong> <span class="math" data-tex="\(\zeta(2)\)">\(\zeta(2)\)</span> is irrational. Consequently <span class="math" data-tex="\(\pi^2\)">\(\pi^2\)</span> is irrational, because <span class="math" data-tex="\(\zeta(2)=\pi^2/6\)">\(\zeta(2)=\pi^2/6\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> put</p>
+<span class="math math-display" data-tex="\[
+I_n=\iint_{[0,1]^2}\frac{(1-y)^nP_n(x)}{1-xy}\,dx\,dy.
+\]">\[
+I_n=\iint_{[0,1]^2}\frac{(1-y)^nP_n(x)}{1-xy}\,dx\,dy.
+\]</span>
+<p>By Lemma 3.1 and Corollary 2.4, <span class="math" data-tex="\(d_n^2I_n=a_n+b_n\zeta(2)\)">\(d_n^2I_n=a_n+b_n\zeta(2)\)</span> with integers <span class="math" data-tex="\(a_n,b_n\)">\(a_n,b_n\)</span>. For fixed <span class="math" data-tex="\(y\in[0,1)\)">\(y\in[0,1)\)</span>, the function <span class="math" data-tex="\(g(x)=1/(1-xy)\)">\(g(x)=1/(1-xy)\)</span> has <span class="math" data-tex="\(g^{(n)}(x)=n!\,y^n/(1-xy)^{n+1}\)">\(g^{(n)}(x)=n!\,y^n/(1-xy)^{n+1}\)</span>, so Lemma 3.2 gives</p>
+<span class="math math-display" data-tex="\[
+I_n=(-1)^n\iint_{[0,1]^2}\frac{x^n(1-x)^ny^n(1-y)^n}{(1-xy)^{n+1}}\,dx\,dy.
+\]">\[
+I_n=(-1)^n\iint_{[0,1]^2}\frac{x^n(1-x)^ny^n(1-y)^n}{(1-xy)^{n+1}}\,dx\,dy.
+\]</span>
+<p>The integrand is positive inside the square, so <span class="math" data-tex="\(I_n\ne0\)">\(I_n\ne0\)</span>. By Lemma 4.1 the integrand is at most <span class="math" data-tex="\(\varphi^{5n}/(1-xy)\)">\(\varphi^{5n}/(1-xy)\)</span>, and <span class="math" data-tex="\(\iint dx\,dy/(1-xy)=\zeta(2)\)">\(\iint dx\,dy/(1-xy)=\zeta(2)\)</span> by Proposition 2.3. Therefore</p>
+<span class="math math-display" data-tex="\[
+0&lt;|a_n+b_n\zeta(2)|\le d_n^2\varphi^{5n}\zeta(2).
+\]">\[
+0&lt;|a_n+b_n\zeta(2)|\le d_n^2\varphi^{5n}\zeta(2).
+\]</span>
+<p>Since <span class="math" data-tex="\(e^2\varphi^5&lt;0.67\)">\(e^2\varphi^5&lt;0.67\)</span>, Lemma 1.2 with a small <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> makes the right side tend to <span class="math" data-tex="\(0\)">\(0\)</span>. Lemma 1.1 proves the theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-an-involution-of-the-unit-interval-and-zeta-3">5. An involution of the unit interval and <span class="math" data-tex="\(\zeta(3)\)">\(\zeta(3)\)</span></h2>
+<p>Beukers' proof for <span class="math" data-tex="\(\zeta(3)\)">\(\zeta(3)\)</span> uses a third variable. By Proposition 2.1 and Lemma 2.2,</p>
+<span class="math math-display" data-tex="\[
+\frac{-\log t}{1-t}=\int_0^1\frac{dz}{1-(1-t)z}\qquad(0&lt;t&lt;1),
+\tag{5.1}
+\]">\[
+\frac{-\log t}{1-t}=\int_0^1\frac{dz}{1-(1-t)z}\qquad(0&lt;t&lt;1),
+\tag{5.1}
+\]</span>
+<p>as one checks directly: the integral equals <span class="math" data-tex="\(-\log(1-(1-t))/(1-t)\)">\(-\log(1-(1-t))/(1-t)\)</span>. Thus the measure <span class="math" data-tex="\(dz/(1-(1-t)z)\)">\(dz/(1-(1-t)z)\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> has total mass <span class="math" data-tex="\(-\log t/(1-t)\)">\(-\log t/(1-t)\)</span>, and the logarithmic kernel of Proposition 2.3 is an integral over this family of measures, indexed by <span class="math" data-tex="\(t=xy\)">\(t=xy\)</span>.</p>
+<p><strong>Lemma 5.1</strong> (a projective involution). Fix <span class="math" data-tex="\(0&lt;t\le1\)">\(0&lt;t\le1\)</span> and put <span class="math" data-tex="\(c=1-t\)">\(c=1-t\)</span>. The map</p>
+<span class="math math-display" data-tex="\[
+f_t(z)=\frac{1-z}{1-cz}
+\]">\[
+f_t(z)=\frac{1-z}{1-cz}
+\]</span>
+<p>is a decreasing bijection of <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> onto itself with <span class="math" data-tex="\(f_t(f_t(z))=z\)">\(f_t(f_t(z))=z\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+1-f_t(z)=\frac{tz}{1-cz},\qquad 1-cf_t(z)=\frac t{1-cz},\qquad f_t&#x27;(z)=-\frac t{(1-cz)^2}.
+\]">\[
+1-f_t(z)=\frac{tz}{1-cz},\qquad 1-cf_t(z)=\frac t{1-cz},\qquad f_t&#x27;(z)=-\frac t{(1-cz)^2}.
+\]</span>
+<p>Consequently, for every integer <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span> and every bounded measurable <span class="math" data-tex="\(\phi\)">\(\phi\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\int_0^1\frac{t^nz^n\,\phi(z)}{(1-cz)^{n+1}}\,dz=\int_0^1\frac{(1-w)^n\,\phi(f_t(w))}{1-cw}\,dw.
+\tag{5.2}
+\]">\[
+\int_0^1\frac{t^nz^n\,\phi(z)}{(1-cz)^{n+1}}\,dz=\int_0^1\frac{(1-w)^n\,\phi(f_t(w))}{1-cw}\,dw.
+\tag{5.2}
+\]</span>
+<p><strong>Proof.</strong> The three identities are direct computations: <span class="math" data-tex="\(1-f_t(z)=(1-cz-1+z)/(1-cz)=tz/(1-cz)\)">\(1-f_t(z)=(1-cz-1+z)/(1-cz)=tz/(1-cz)\)</span>; <span class="math" data-tex="\(1-cf_t(z)=(1-cz-c+cz)/(1-cz)=t/(1-cz)\)">\(1-cf_t(z)=(1-cz-c+cz)/(1-cz)=t/(1-cz)\)</span>; and the quotient rule gives <span class="math" data-tex="\(f_t&#x27;(z)=(-(1-cz)+c(1-z))/(1-cz)^2=-t/(1-cz)^2\)">\(f_t&#x27;(z)=(-(1-cz)+c(1-z))/(1-cz)^2=-t/(1-cz)^2\)</span>. Then <span class="math" data-tex="\(f_t(f_t(z))=(1-f_t(z))/(1-cf_t(z))=z\)">\(f_t(f_t(z))=(1-f_t(z))/(1-cf_t(z))=z\)</span>. Since <span class="math" data-tex="\(f_t(0)=1\)">\(f_t(0)=1\)</span>, <span class="math" data-tex="\(f_t(1)=0\)">\(f_t(1)=0\)</span> and <span class="math" data-tex="\(f_t&#x27;&lt;0\)">\(f_t&#x27;&lt;0\)</span>, it is a decreasing bijection. In the left side of (5.2) substitute <span class="math" data-tex="\(z=f_t(w)\)">\(z=f_t(w)\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\frac{t^nf_t(w)^n}{(1-cf_t(w))^{n+1}}\,|f_t&#x27;(w)|
+=t^n\frac{(1-w)^n}{(1-cw)^n}\cdot\frac{(1-cw)^{n+1}}{t^{n+1}}\cdot\frac t{(1-cw)^2}
+=\frac{(1-w)^n}{1-cw},
+\]">\[
+\frac{t^nf_t(w)^n}{(1-cf_t(w))^{n+1}}\,|f_t&#x27;(w)|
+=t^n\frac{(1-w)^n}{(1-cw)^n}\cdot\frac{(1-cw)^{n+1}}{t^{n+1}}\cdot\frac t{(1-cw)^2}
+=\frac{(1-w)^n}{1-cw},
+\]</span>
+<p>using <span class="math" data-tex="\(f_t(w)=(1-w)/(1-cw)\)">\(f_t(w)=(1-w)/(1-cw)\)</span> and the second identity applied at <span class="math" data-tex="\(w\)">\(w\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Applied with <span class="math" data-tex="\(\phi(z)=(1-z)^n\)">\(\phi(z)=(1-z)^n\)</span>, (5.2) shows that each measure <span class="math" data-tex="\(z^n(1-z)^n\,dz/(1-cz)^{n+1}\)">\(z^n(1-z)^n\,dz/(1-cz)^{n+1}\)</span> is invariant under <span class="math" data-tex="\(f_t\)">\(f_t\)</span>.</p>
+<p><strong>Lemma 5.2.</strong> For <span class="math" data-tex="\(0\le x,y,z\le1\)">\(0\le x,y,z\le1\)</span>, with the left side read as <span class="math" data-tex="\(0\)">\(0\)</span> where its denominator vanishes,</p>
+<span class="math math-display" data-tex="\[
+\frac{x(1-x)y(1-y)z(1-z)}{1-(1-xy)z}\le(\sqrt2-1)^4.
+\]">\[
+\frac{x(1-x)y(1-y)z(1-z)}{1-(1-xy)z}\le(\sqrt2-1)^4.
+\]</span>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(c=1-xy\)">\(c=1-xy\)</span> and <span class="math" data-tex="\(u=\sqrt{xy}\)">\(u=\sqrt{xy}\)</span>, and assume <span class="math" data-tex="\(0&lt;u&lt;1\)">\(0&lt;u&lt;1\)</span> (otherwise the left side is <span class="math" data-tex="\(0\)">\(0\)</span>). The function <span class="math" data-tex="\(z\mapsto z(1-z)/(1-cz)\)">\(z\mapsto z(1-z)/(1-cz)\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> has derivative with numerator <span class="math" data-tex="\(1-2z+cz^2\)">\(1-2z+cz^2\)</span>, which vanishes at <span class="math" data-tex="\(z_*=1/(1+\sqrt{1-c})=1/(1+u)\)">\(z_*=1/(1+\sqrt{1-c})=1/(1+u)\)</span>, the only root in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. There <span class="math" data-tex="\(1-z_*=u/(1+u)\)">\(1-z_*=u/(1+u)\)</span> and <span class="math" data-tex="\(1-cz_*=1-(1-u)=u\)">\(1-cz_*=1-(1-u)=u\)</span>, so the maximum is <span class="math" data-tex="\(1/(1+u)^2\)">\(1/(1+u)^2\)</span>. As in Lemma 4.1, <span class="math" data-tex="\(x(1-x)y(1-y)\le u^2(1-u)^2\)">\(x(1-x)y(1-y)\le u^2(1-u)^2\)</span>. Hence the left side is at most <span class="math" data-tex="\(k(u)^2\)">\(k(u)^2\)</span> with <span class="math" data-tex="\(k(u)=u(1-u)/(1+u)\)">\(k(u)=u(1-u)/(1+u)\)</span>. Now <span class="math" data-tex="\(k&#x27;(u)=(1-2u-u^2)/(1+u)^2\)">\(k&#x27;(u)=(1-2u-u^2)/(1+u)^2\)</span> vanishes at <span class="math" data-tex="\(u=\sqrt2-1\)">\(u=\sqrt2-1\)</span>, where <span class="math" data-tex="\(k(u)=(\sqrt2-1)(2-\sqrt2)/\sqrt2=(\sqrt2-1)^2\)">\(k(u)=(\sqrt2-1)(2-\sqrt2)/\sqrt2=(\sqrt2-1)^2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.3</strong> (Apéry). <span class="math" data-tex="\(\zeta(3)\)">\(\zeta(3)\)</span> is irrational.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> put</p>
+<span class="math math-display" data-tex="\[
+J_n=\iint_{[0,1]^2}\frac{-\log(xy)\,P_n(x)P_n(y)}{1-xy}\,dx\,dy.
+\]">\[
+J_n=\iint_{[0,1]^2}\frac{-\log(xy)\,P_n(x)P_n(y)}{1-xy}\,dx\,dy.
+\]</span>
+<p>By Lemma 3.1 and Corollary 2.4, <span class="math" data-tex="\(d_n^3J_n=a_n+b_n\zeta(3)\)">\(d_n^3J_n=a_n+b_n\zeta(3)\)</span> with integers <span class="math" data-tex="\(a_n,b_n\)">\(a_n,b_n\)</span>. By (5.1) with <span class="math" data-tex="\(t=xy\)">\(t=xy\)</span>,</p>
+<span class="math math-display" data-tex="\[
+J_n=\iiint_{[0,1]^3}\frac{P_n(x)P_n(y)}{1-(1-xy)z}\,dx\,dy\,dz,
+\]">\[
+J_n=\iiint_{[0,1]^3}\frac{P_n(x)P_n(y)}{1-(1-xy)z}\,dx\,dy\,dz,
+\]</span>
+<p>the triple integral being absolutely convergent because <span class="math" data-tex="\(P_n\)">\(P_n\)</span> is bounded and <span class="math" data-tex="\(\iiint dx\,dy\,dz/(1-(1-xy)z)=2\zeta(3)\)">\(\iiint dx\,dy\,dz/(1-(1-xy)z)=2\zeta(3)\)</span>. For fixed <span class="math" data-tex="\(y,z\)">\(y,z\)</span> with <span class="math" data-tex="\(yz&lt;1\)">\(yz&lt;1\)</span>, the function <span class="math" data-tex="\(g(x)=1/(1-z+xyz)\)">\(g(x)=1/(1-z+xyz)\)</span> has <span class="math" data-tex="\(g^{(n)}(x)=(-1)^nn!\,(yz)^n/(1-(1-xy)z)^{n+1}\)">\(g^{(n)}(x)=(-1)^nn!\,(yz)^n/(1-(1-xy)z)^{n+1}\)</span>. Lemma 3.2 in <span class="math" data-tex="\(x\)">\(x\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+J_n=\iiint\frac{(xyz)^n(1-x)^nP_n(y)}{(1-(1-xy)z)^{n+1}}\,dx\,dy\,dz.
+\]">\[
+J_n=\iiint\frac{(xyz)^n(1-x)^nP_n(y)}{(1-(1-xy)z)^{n+1}}\,dx\,dy\,dz.
+\]</span>
+<p>Now apply (5.2) in the variable <span class="math" data-tex="\(z\)">\(z\)</span>, with <span class="math" data-tex="\(t=xy\)">\(t=xy\)</span> and <span class="math" data-tex="\(\phi=1\)">\(\phi=1\)</span>, for fixed <span class="math" data-tex="\(x,y\)">\(x,y\)</span>:</p>
+<span class="math math-display" data-tex="\[
+J_n=\iiint\frac{(1-x)^n(1-w)^nP_n(y)}{1-(1-xy)w}\,dx\,dy\,dw.
+\]">\[
+J_n=\iiint\frac{(1-x)^n(1-w)^nP_n(y)}{1-(1-xy)w}\,dx\,dy\,dw.
+\]</span>
+<p>For fixed <span class="math" data-tex="\(x,w\)">\(x,w\)</span>, the function <span class="math" data-tex="\(y\mapsto1/(1-w+xyw)\)">\(y\mapsto1/(1-w+xyw)\)</span> has <span class="math" data-tex="\(n\)">\(n\)</span>-th derivative <span class="math" data-tex="\((-1)^nn!\,(xw)^n/(1-(1-xy)w)^{n+1}\)">\((-1)^nn!\,(xw)^n/(1-(1-xy)w)^{n+1}\)</span>, and Lemma 3.2 in <span class="math" data-tex="\(y\)">\(y\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+J_n=\iiint_{[0,1]^3}\frac{x^n(1-x)^ny^n(1-y)^nw^n(1-w)^n}{(1-(1-xy)w)^{n+1}}\,dx\,dy\,dw.
+\]">\[
+J_n=\iiint_{[0,1]^3}\frac{x^n(1-x)^ny^n(1-y)^nw^n(1-w)^n}{(1-(1-xy)w)^{n+1}}\,dx\,dy\,dw.
+\]</span>
+<p>This integrand is positive inside the cube, so <span class="math" data-tex="\(J_n&gt;0\)">\(J_n&gt;0\)</span>; by Lemma 5.2 it is at most <span class="math" data-tex="\((\sqrt2-1)^{4n}/(1-(1-xy)w)\)">\((\sqrt2-1)^{4n}/(1-(1-xy)w)\)</span>, whose integral is <span class="math" data-tex="\(2\zeta(3)\)">\(2\zeta(3)\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+0&lt;a_n+b_n\zeta(3)\le2\zeta(3)\,d_n^3(\sqrt2-1)^{4n}.
+\]">\[
+0&lt;a_n+b_n\zeta(3)\le2\zeta(3)\,d_n^3(\sqrt2-1)^{4n}.
+\]</span>
+<p>Since <span class="math" data-tex="\(e^3(\sqrt2-1)^4&lt;0.6\)">\(e^3(\sqrt2-1)^4&lt;0.6\)</span>, Lemma 1.2 makes the right side tend to <span class="math" data-tex="\(0\)">\(0\)</span>, and Lemma 1.1 applies. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> Apéry's original proof used an explicit recurrence; the integrals are Beukers'. Both are explained in [Fischler].</p>
+<h2 id="6-why-catalan-s-constant-resists">6. Why Catalan's constant resists</h2>
+<p>Catalan's constant is</p>
+<span class="math math-display" data-tex="\[
+G=\sum_{j\ge0}\frac{(-1)^j}{(2j+1)^2}=1-\frac19+\frac1{25}-\frac1{49}+\cdots=0.9159655\dots
+\]">\[
+G=\sum_{j\ge0}\frac{(-1)^j}{(2j+1)^2}=1-\frac19+\frac1{25}-\frac1{49}+\cdots=0.9159655\dots
+\]</span>
+<p>Zudilin found Apéry-like recurrences for it [Zudilin 2003]: rational numbers <span class="math" data-tex="\(u_n,v_n\)">\(u_n,v_n\)</span> with <span class="math" data-tex="\(v_n/u_n\to G\)">\(v_n/u_n\to G\)</span> very quickly, such that <span class="math" data-tex="\(|u_nG-v_n|^{1/n}\to\varphi^5\)">\(|u_nG-v_n|^{1/n}\to\varphi^5\)</span>, as for <span class="math" data-tex="\(\zeta(2)\)">\(\zeta(2)\)</span>, and with a double integral representation of <span class="math" data-tex="\(u_nG-v_n\)">\(u_nG-v_n\)</span> in the style of Section 4. But the known common denominator of <span class="math" data-tex="\(u_n\)">\(u_n\)</span> and <span class="math" data-tex="\(v_n\)">\(v_n\)</span> is <span class="math" data-tex="\(2^{4n+3}d_{2n-1}^3\)">\(2^{4n+3}d_{2n-1}^3\)</span>, which grows roughly like <span class="math" data-tex="\(e^{8.8n}\)">\(e^{8.8n}\)</span>, while the forms decay only like <span class="math" data-tex="\(e^{-2.4n}\)">\(e^{-2.4n}\)</span>; after clearing these denominators the integer linear forms do not tend to zero. This is the typical obstruction: the decay of the analytic approximation must beat the arithmetic cost of its denominators.</p>
+<p>The rest of this course proves that <span class="math" data-tex="\(G\)">\(G\)</span> is irrational, following OpenAI's proof of September 2026 [OpenAI-Catalan]. Instead of one linear form, it uses determinants <span class="math" data-tex="\(\Delta_N\)">\(\Delta_N\)</span> of size <span class="math" data-tex="\(48N\)">\(48N\)</span> whose entries are rational combinations of <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\(G\)">\(G\)</span> and <span class="math" data-tex="\(\zeta(2)\)">\(\zeta(2)\)</span>. Polynomial rows with high contact at the origin cancel <span class="math" data-tex="\(\zeta(2)\)">\(\zeta(2)\)</span> from every entry, so that if <span class="math" data-tex="\(G\)">\(G\)</span> were rational, every <span class="math" data-tex="\(\Delta_N\)">\(\Delta_N\)</span> would be rational. A prime-by-prime analysis of denominators, a separate argument for nonvanishing, and an integral bound for <span class="math" data-tex="\(|\Delta_N|\)">\(|\Delta_N|\)</span> then give incompatible estimates for <span class="math" data-tex="\(\log|\Delta_N|\)">\(\log|\Delta_N|\)</span>.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>Exercise 7.1 (easy).</strong> Compute <span class="math" data-tex="\(P_1,P_2,P_3\)">\(P_1,P_2,P_3\)</span> and check Lemma 3.1.</p>
+<p><strong>Exercise 7.2 (easy).</strong> Compute <span class="math" data-tex="\(I_1\)">\(I_1\)</span> in the proof of Theorem 4.2 exactly, as <span class="math" data-tex="\(a+b\zeta(2)\)">\(a+b\zeta(2)\)</span> with rational <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, and check that <span class="math" data-tex="\(|I_1|\le\varphi^5\zeta(2)\)">\(|I_1|\le\varphi^5\zeta(2)\)</span>.</p>
+<p><strong>Exercise 7.3 (medium).</strong> Prove <span class="math" data-tex="\(\int_0^1\int_0^1\frac{dx\,dy}{1-xy}=\zeta(2)\)">\(\int_0^1\int_0^1\frac{dx\,dy}{1-xy}=\zeta(2)\)</span> using Lemma 2.2 and Proposition 2.1.</p>
+<p><strong>Exercise 7.4 (medium).</strong> Show that <span class="math" data-tex="\(e\)">\(e\)</span> is irrational by Lemma 1.1, using the integers <span class="math" data-tex="\(a_n=-n!\sum_{k\le n}1/k!\)">\(a_n=-n!\sum_{k\le n}1/k!\)</span> and <span class="math" data-tex="\(b_n=n!\)">\(b_n=n!\)</span>.</p>
+<p><strong>Exercise 7.5 (medium).</strong> Show that the bound of Lemma 5.2 is attained, at <span class="math" data-tex="\(x=y=\sqrt2-1\)">\(x=y=\sqrt2-1\)</span> and <span class="math" data-tex="\(z=1/\sqrt2\)">\(z=1/\sqrt2\)</span>.</p>
+<p><strong>Exercise 7.6 (hard).</strong> Check that, with the denominators <span class="math" data-tex="\(d_n\)">\(d_n\)</span> estimated only by Chebyshev's bound <span class="math" data-tex="\(\psi(n)\le(2\log2+o(1))n\)">\(\psi(n)\le(2\log2+o(1))n\)</span> instead of the prime number theorem, the argument of Theorem 4.2 fails. Which inequality would be needed?</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> <span class="math" data-tex="\(P_1=1-2x\)">\(P_1=1-2x\)</span>, <span class="math" data-tex="\(P_2=1-6x+6x^2\)">\(P_2=1-6x+6x^2\)</span>, <span class="math" data-tex="\(P_3=1-12x+30x^2-20x^3\)">\(P_3=1-12x+30x^2-20x^3\)</span>. For <span class="math" data-tex="\(P_2\)">\(P_2\)</span>: <span class="math" data-tex="\(\binom21\binom31=6\)">\(\binom21\binom31=6\)</span> and <span class="math" data-tex="\(\binom22\binom42=6\)">\(\binom22\binom42=6\)</span>.</p>
+<p><strong>7.2.</strong> <span class="math" data-tex="\(I_1=\iint(1-y)(1-2x)/(1-xy)\)">\(I_1=\iint(1-y)(1-2x)/(1-xy)\)</span>. Expand <span class="math" data-tex="\((1-y)(1-2x)=1-2x-y+2xy\)">\((1-y)(1-2x)=1-2x-y+2xy\)</span> and use Proposition 2.3: the monomials <span class="math" data-tex="\(1,x,y,xy\)">\(1,x,y,xy\)</span> give <span class="math" data-tex="\(\zeta(2)\)">\(\zeta(2)\)</span>, <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\(\zeta(2)-1\)">\(\zeta(2)-1\)</span>. So <span class="math" data-tex="\(I_1=\zeta(2)-2-1+2(\zeta(2)-1)=3\zeta(2)-5\approx-0.0652\)">\(I_1=\zeta(2)-2-1+2(\zeta(2)-1)=3\zeta(2)-5\approx-0.0652\)</span>, and <span class="math" data-tex="\(\varphi^5\zeta(2)\approx0.148\)">\(\varphi^5\zeta(2)\approx0.148\)</span>.</p>
+<p><strong>7.3.</strong> Lemma 2.2 with <span class="math" data-tex="\(F(t)=1/(1-t)\)">\(F(t)=1/(1-t)\)</span> gives <span class="math" data-tex="\(\int_0^1(-\log t)/(1-t)\,dt\)">\(\int_0^1(-\log t)/(1-t)\,dt\)</span>, which is <span class="math" data-tex="\(1!\,\zeta(2)\)">\(1!\,\zeta(2)\)</span> by Proposition 2.1.</p>
+<p><strong>7.4.</strong> <span class="math" data-tex="\(a_n+b_ne=n!\sum_{k&gt;n}1/k!\)">\(a_n+b_ne=n!\sum_{k&gt;n}1/k!\)</span>, which is positive and at most <span class="math" data-tex="\(\sum_{j\ge1}(n+1)^{-j}=1/n\)">\(\sum_{j\ge1}(n+1)^{-j}=1/n\)</span>.</p>
+<p><strong>7.5.</strong> At <span class="math" data-tex="\(x=y=\sqrt2-1\)">\(x=y=\sqrt2-1\)</span> we have <span class="math" data-tex="\(u=\sqrt{xy}=\sqrt2-1\)">\(u=\sqrt{xy}=\sqrt2-1\)</span>, and the inequality <span class="math" data-tex="\(x(1-x)y(1-y)\le u^2(1-u)^2\)">\(x(1-x)y(1-y)\le u^2(1-u)^2\)</span> of the proof is an equality. The maximizing value of <span class="math" data-tex="\(z\)">\(z\)</span> found in the proof is <span class="math" data-tex="\(z_*=1/(1+u)=1/\sqrt2\)">\(z_*=1/(1+u)=1/\sqrt2\)</span>, where the <span class="math" data-tex="\(z\)">\(z\)</span>-factor equals <span class="math" data-tex="\(1/(1+u)^2\)">\(1/(1+u)^2\)</span>. So the left side equals <span class="math" data-tex="\(u^2(1-u)^2/(1+u)^2=k(u)^2=(\sqrt2-1)^4\)">\(u^2(1-u)^2/(1+u)^2=k(u)^2=(\sqrt2-1)^4\)</span>.</p>
+<p><strong>7.6.</strong> With <span class="math" data-tex="\(\psi(n)\le(2\log2+\varepsilon)n\)">\(\psi(n)\le(2\log2+\varepsilon)n\)</span>, the bound becomes <span class="math" data-tex="\(\bigl(e^{2\cdot2\log2}\varphi^5\bigr)^n=(16\varphi^5)^n\approx1.44^n\)">\(\bigl(e^{2\cdot2\log2}\varphi^5\bigr)^n=(16\varphi^5)^n\approx1.44^n\)</span>, which does not tend to zero. One needs <span class="math" data-tex="\(\limsup\psi(n)/n&lt;\frac52\log(1/\varphi)\approx1.203\)">\(\limsup\psi(n)/n&lt;\frac52\log(1/\varphi)\approx1.203\)</span>, which the prime number theorem provides.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Fischler] S. Fischler, Irrationalité de valeurs de zêta (d'après Apéry, Rivoal, …), Séminaire Bourbaki, exposé 910, Astérisque 294 (2004), 27–62. https://arxiv.org/abs/math/0303066</li>
+<li>[Zudilin 2003] W. Zudilin, An Apéry-like difference equation for Catalan's constant, Electronic Journal of Combinatorics 10 (2003), R14. https://www.combinatorics.org/ojs/index.php/eljc/article/view/v10i1r14</li>
+<li>[OpenAI-Catalan] OpenAI, Catalan's constant is irrational, preprint, 24 September 2026. https://github.com/openai/math/blob/main/preprints/Catalans-constant-is-irrational-September-24-2026/paper.pdf</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

@@ -2,7 +2,7 @@
 
 *Written by GPT-6.1 Sol (OpenAI), October 2026, at Ultra. Public domain (CC0).*
 
-Independently authored CC0 lesson; self-checked by the writing AI.
+Independently authored CC0 lesson. Foundational reconciliation and mathematical revisions by GPT-6 Astra (OpenAI), at Ultra. Self-checked by the respective writing AIs.
 
 A bundle difference over a space becomes relative data when we specify how its two bundles agree on a closed subspace. That specified agreement can carry information even when the bundles themselves are trivial. We connect this description to operator K-theory, then compute integral groups with their actual generators.
 
@@ -445,6 +445,8 @@ Extend it by \(P\) when either \(z_k=1\), and subtract \([P]\). The extension is
 
 Write \(H^{\mathrm{ev}}(X;\mathbb Q)=\bigoplus_{k\geq0}H^{2k}(X;\mathbb Q)\), and use \(H^{\mathrm{odd}}\) for the analogous odd sum. Here cohomology is ordinary cohomology. For a finite CW complex these sums have finitely many nonzero terms.
 
+The chain-level inputs below have exact programme proofs: [singular chains, relative cochains and prism homotopies](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-06.html#1-chains-pairs-and-homotopies), [small-chain subdivision and excision, Lemma 2.1 and Corollary 2.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-06.html#2-making-singular-chains-small), [pair and Mayer–Vietoris sequences, including the connecting-map chase](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-06.html#3-exact-sequences-and-local-gluing), and [Alexander–Whitney products and their relative signs, Lemma 4.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-06.html#4-products-signs-and-evaluation-on-fibres). The [finite-cell relative calculation and dimension bound](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-08.html#2-finite-cells-and-the-required-dimension-bound) prove the required vanishing using singular groups; no de Rham replacement or torsion-free coefficient assumption is made.
+
 **Theorem 6.1 (rational Chern character).** There are natural isomorphisms
 
 \[
@@ -478,14 +480,18 @@ Here is the product check in (6.2). A coordinate hyperplane has an oriented norm
 
 The hyperplane class restricts to a projective line as one positive transverse point, so it is \(h\). Choose \(j\) transverse coordinate hyperplanes. The cup product of their disc classes is the class of their intersection, since in local normal coordinates it is the product of \(j\) positively oriented two-disc generators. Restricting to a transverse \(\mathbb{CP}^j\) gives one positive point. Consequently \(h^j\) evaluates to one on that \(\mathbb{CP}^j\), proving it generates the degree \(2j\) group. This proves the ring assertion and its orientation, including compatibility under the standard inclusions of projective spaces.
 
-For a line bundle \(L\) over a compact base, choose a finite isometric embedding into a trivial bundle, as in Lesson 2. Its range lines define \(f:X\to\mathbb{CP}^{N-1}\). Define
+The integral normal-disc class used in this geometric argument is also supplied by [the Thom isomorphism, Theorem 7.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-06.html#7-a-global-thom-class-including-integral-coefficients). Its restrictions agree on overlapping normal charts because the complex changes of frame have positive real determinant. [The Thom product rule, Proposition 8.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-06.html#8-euler-classes-and-their-product-rule) identifies the ordered product of the normal classes with the class of the transverse intersection. An independent ring calculation, with the same positive complex orientation, is [Theorem 3.2 of the Gysin/projective chapter](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-08.html#3-real-and-complex-projective-spaces). There its generator is \(-e(S_{\mathbb R})\), where \(S\) is the tautological line. Thus it is exactly our \(h\), not the tautological line's first class. This identifies both proofs and their signs.
+
+For a line bundle \(L\) over a compact base, choose a finite isometric embedding into a trivial bundle, by [Lesson 2, Section 2](KT-OPK-02.md#2-finitely-many-coordinates-suffice). Its range lines define \(f:X\to\mathbb{CP}^{N-1}\). Define
 
 \[
 c_1(L)=f^*(-h).
 \tag{6.3}
 \]
 
-Two embeddings, placed in orthogonal coordinate blocks, are joined by the isometric path (2.5). Their line maps are therefore homotopic after zero padding. The compatibility just proved for \(h\) makes (6.3) independent of the embedding. Isomorphic bundles give the same class, and pullback embeddings prove naturality. A bundle on a cylinder has a finite embedding on that cylinder, so endpoint restrictions prove homotopy invariance as well.
+Two embeddings, placed in orthogonal coordinate blocks, are joined by the isometric path (2.5) of [Lesson 2, Section 2](KT-OPK-02.md#2-finitely-many-coordinates-suffice). Their line maps are therefore homotopic after zero padding. The compatibility just proved for \(h\) makes (6.3) independent of the embedding. Isomorphic bundles give the same class, and pullback embeddings prove naturality. A bundle on a cylinder has a finite embedding on that cylinder, so endpoint restrictions prove homotopy invariance as well.
+
+This definition agrees with the Euler-class definition on every compact Hausdorff base, not only on a projective space: the chosen embedding identifies \(L\) with \(f^*S\), Euler classes are natural, and the preceding sign calculation gives \(e(S_{\mathbb R})=-h\). Hence \(c_1(L)=e(L_{\mathbb R})\). This is the identification needed when the projective-bundle and flag providers are applied below.
 
 **Lemma 6.2 (line arithmetic).** For line bundles,
 
@@ -518,6 +524,8 @@ Let \(E\) have constant rank \(r>0\), let \(\pi:P(E)\to X\) be its bundle of lin
 
 is an isomorphism for a finite CW base, and for a compact Hausdorff base of finite CW homotopy type. In particular \(\pi^*\) is injective. Iterated projective bundles give a map \(F(E)\to X\) injective on cohomology under which \(E\) becomes a sum of line bundles.
 
+More generally, the same cohomological isomorphism holds for every Hausdorff base; the actual line splitting holds for every paracompact Hausdorff base. In particular both hold on every compact Hausdorff base, without a finite CW assumption. To apply [the full projective-bundle module theorem, Theorem 4.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-08.html#4-cohomology-of-a-projective-bundle), its generator is \(z=-e(S_{\mathbb R})=-u\). Its displayed isomorphism, composed on the \(j\)-th source summand with multiplication by \((-1)^j\), is precisely (6.5). This diagonal change is invertible over the integers and with any abelian coefficient group; it does not discard torsion. The [flag construction and injectivity proof, Theorem 5.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-08.html#5-flags-and-the-splitting-principle) then give the stated splitting on paracompact Hausdorff bases. The provider proves the product case on free singular chains, glues the same cap-product chain map over trivializations and passes through compact projected supports in homology. Its final cohomology step is [the natural universal coefficient theorem, Theorem 5.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-06.html#5-coefficient-groups-without-a-compactness-shortcut), not an unproved inverse-limit assertion. The following finite-cell argument remains a useful additional proof in the original setting.
+
 *Proof.* Filter the base by its cells. A bundle on a characteristic disc is trivial: contract that disc and apply the cylinder transport of Lesson 2. Over a newly attached \(d\)-cell, the relative quotient of the total projective bundle by its preceding part is
 
 \[
@@ -532,7 +540,83 @@ Now compare the cohomology sequences of the base filtration pair and the total-s
 
 The total space has finite CW homotopy type. Indeed it is obtained by finitely many gluings of the products in (6.6) before quotienting. Both fibre and disc are finite CW spaces, their boundary inclusions are cofibrations, and replacing their attaching maps by homotopic cellular maps gives finite CW models of the same homotopy type. Cylinder transport identifies bundles pulled back along homotopy inverses, so the argument also applies to compact Hausdorff bases of finite CW homotopy type.
 
+<a id="finite-cw-model-proof"></a>
+
+**Finite CW models: the attachment and homotopy checks.** Here are the details behind that total-space assertion. We use [full relative cellular approximation, Theorem B.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-13.html#b-cellular-approximation-with-its-local-proof), not an assumption that an arbitrary attaching map is cellular. Its compact-subcomplex and quotient-product inputs are proved in [the classifying-map chapter, Lemma 7.1 and the following paragraphs](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-03.html#7-the-neighbourhoods-needed-on-a-cw-complex); its homotopy extension input is [the frame-obstruction chapter, Section E, equation (E.1) and its cellwise extension](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-08B.html#e-first-homotopy-homology-and-coherent-simplex-homotopies). These are the full CW statements. Only finite products and attachments are needed in the present argument.
+
+First fix compact Hausdorff spaces \(A,B,Y\), an inclusion \(i:A\hookrightarrow B\), and an attaching map \(a:A\to Y\). Insert an explicit cylinder before making the attachment:
+
+\[
+\begin{gathered}
+\mathcal P(a)=Y\amalg(A\times[0,1])\amalg B\,/\sim,\\
+(x,0)\sim a(x),\qquad (x,1)\sim i(x).
+\end{gathered}
+\]
+
+All maps below are specified on these three pieces and respect the displayed identifications. Their homotopies descend continuously by the quotient-product result just cited.
+
+**Changing the attaching map.** If \(H:A\times[0,1]\to Y\) is a homotopy from \(a_0\) to \(a_1\), define \(J_H:\mathcal P(a_0)\to\mathcal P(a_1)\) as the identity on \(Y\) and \(B\), and on a cylinder generator by
+
+\[
+J_H([x,t])=
+\begin{cases}
+H(x,2t),&0\leq t\leq\tfrac12,\\
+[x,2t-1],&\tfrac12\leq t\leq1.
+\end{cases}
+\]
+
+At the joining time the values agree because the target cylinder starts at \(a_1(x)\); at the two ends they agree with the maps on \(Y\) and \(B\). Reverse \(H\) to obtain a map in the other direction. Their composite inserts a path followed by its reversal before the cylinder. This excursion contracts with its endpoints fixed: if \(\tau(t)=\min(2t,2-2t)\), replace \(H(x,\tau(t))\) by \(H(x,(1-s)\tau(t))\), for \(0\leq s\leq1\); for an excursion based at the other end use \(H(x,1-(1-s)\tau(t))\). Piecewise linear reparametrization puts the two traversals in equal halves, and afterwards removes the constant initial interval. These changes fix both cylinder endpoints and the other pieces. Thus \(J_H\) is a homotopy equivalence, not merely a bijection on a computed invariant.
+
+**Changing the preceding space.** A map \(f:Y\to Y'\) induces \(\mathcal P(f):\mathcal P(a)\to\mathcal P(fa)\), using \(f\) on \(Y\) and identity on the cylinder and on \(B\). These maps respect composition. For a homotopy \(U:f_0\simeq f_1\), the preceding construction gives
+
+\[
+J_{Ua}\,\mathcal P(f_0)\simeq\mathcal P(f_1),
+\qquad (Ua)(x,s)=U(a(x),s).
+\]
+
+Here is a compatible homotopy \(K_s:\mathcal P(a)\to\mathcal P(f_1a)\), including its endpoints. At time \(s\) use \(U(-,s)\) on \(Y\), identity on \(B\), and on the cylinder use
+
+\[
+K_s([x,t])=
+\begin{cases}
+U(a(x),s+2t),&0\leq t\leq(1-s)/2,\\
+[x,(2t-1+s)/(1+s)],&(1-s)/2\leq t\leq1.
+\end{cases}
+\]
+
+At the join both formulas give the target cylinder's starting value \(f_1a(x)\). At \(s=0\) this is the left-hand map, and at \(s=1\) it is the right-hand map. Both formulas are continuous on their closed parameter regions and agree on the intersection, including the corner \((s,t)=(1,0)\). The denominator \(1+s\) never vanishes. This proves the asserted homotopy without requiring compatible choices of homotopy inverses.
+
+Suppose now that \(f\) is a homotopy equivalence, with inverse \(g\). In the consecutive maps induced on cylinder attachments by \(f,g,f\), call the maps \(P,Q,R\), respectively. The composites \(QP\) and \(RQ\) are homotopy equivalences: apply the last formula to \(gf\simeq1_Y\) and \(fg\simeq1_{Y'}\), and use the proved invertibility of the corresponding \(J\). This implies that \(P,Q,R\) are homotopy equivalences. Explicitly, in homotopy classes of maps, \(Q\) has right inverse \(P(QP)^{-1}\) and left inverse \((RQ)^{-1}R\). A left and right inverse agree by associativity, so \(Q\) is invertible, and then so are \(P\) and \(R\). In particular replacing \(Y\) by a homotopy-equivalent finite CW model preserves the homotopy type of the attachment.
+
+**Removing the inserted cylinder.** For the actual pair
+
+\[
+(B,A)=(D^d\times F,S^{d-1}\times F),\qquad d\geq1,
+\]
+
+the cylinder attachment is homeomorphic to the ordinary attachment \(Y\cup_a B\). Send the copy of \(B\) to its radius-at-most-one-half part by \((v,z)\mapsto(v/2,z)\). Send the cylinder point \([(w,z),t]\), where \(\|w\|=1\), to the annular point \(((1-t/2)w,z)\). Use identity on \(Y\). At \(t=0\) this is the original attaching boundary and at \(t=1\) it agrees with the scaled disk boundary. Polar coordinates on the annulus give the inverse; the quotient maps give continuity at both joins. Thus the two replacement arguments just proved also apply to the ordinary disk-product attachment. A zero-cell instead contributes a disjoint copy of \(F\).
+
+**The finite model.** Take \(F=\mathbb{CP}^{r-1}\), with the explicit finite CW structure in [the projective-space chapter, Section 3](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-08.html#3-real-and-complex-projective-spaces). Over each characteristic disk of the finite CW base the bundle is trivial by [cylinder trivialization, Theorem 4.2 and Corollary 4.3](KT-OPK-02.md#4-transport-along-a-cylinder). Consequently adjoining a base \(d\)-cell adjoins \(D^d\times F\) along \(S^{d-1}\times F\) to the preceding projective total space. This is an actual attachment: the trivialization on the pulled-back disk supplies its boundary map; the resulting quotient maps bijectively to the total space, and that continuous bijection is a homeomorphism from a compact space to a Hausdorff space.
+
+Assume inductively that the preceding total space has a finite CW model \(K\). Replace it by \(K\) using the proved attachment equivalence. The disk product and its boundary are a finite CW pair. To see the product-cell assertion, products of characteristic disks are disks: radially identify the unit ball for the norm \(\max(\|v\|,\|w\|)\) with the Euclidean unit ball, preserving their boundary spheres. Their boundaries are the unions of the lower-dimensional product cells. Cellular approximation now replaces the attaching map \(S^{d-1}\times F\to K\) by a cellular one. The preceding homotopy-of-attaching-maps argument preserves the homotopy type under this replacement. The new pushout is a finite CW complex: each relative product cell is attached along its boundary to the cells of lower dimension, since the boundary map is cellular. Start with the finite disjoint union of copies of \(F\) over the vertices and repeat for the finitely many base cells. This proves the finite-CW-type assertion for the entire projective total space; it does not assert that the original gluing maps themselves were cellular.
+
+**Bases of finite CW homotopy type.** For completeness, the passage to such a compact Hausdorff base also preserves the total-space homotopy type. If \(h:X\to X\) is homotopic to \(1_X\), cylinder trivialization of the bundle pulled back along a homotopy \(H:h\simeq1_X\) supplies continuous fibre isomorphisms \(T_t:h^*E\to H_t^*E\) over \(X\). Compose the chosen trivialization with its time-zero inverse to arrange \(T_0=1_{h^*E}\). Their projectivizations, followed by the canonical projections to \(P(E)\), then give a homotopy from the actual canonical map \(P(h^*E)\to P(E)\) to the bundle isomorphism \(P(T_1)\) over \(1_X\). Hence that canonical map is a homotopy equivalence.
+
+Now let \(f:X\to K\) and \(g:K\to X\) be homotopy inverses with \(K\) a finite CW complex. Consider the three consecutive canonical pullback maps
+
+\[
+\begin{gathered}
+P(g^*f^*g^*E)\longrightarrow P(f^*g^*E)\\
+\longrightarrow P(g^*E)\longrightarrow P(E).
+\end{gathered}
+\]
+
+The four spaces lie over \(K,X,K,X\), in that order, and the three arrows cover \(g,f,g\). Their adjacent composites cover \(fg\) and \(gf\), respectively. Canonical pullback identifications identify the first domain with \(P((fg)^*g^*E)\), and the second with \(P((gf)^*E)\): in the pullback's pair model these identifications simply remove the intermediate base coordinate. Thus these are precisely the two canonical maps to which the preceding cylinder argument applies, for the bundles \(g^*E\) and \(E\). Both composites are homotopy equivalences. The same explicit left/right inverse argument for three consecutive maps therefore makes every individual map a homotopy equivalence. In particular \(P(g^*E)\simeq P(E)\). The former has the finite CW model already constructed over \(K\). This proves the claimed extension to compact Hausdorff bases of finite CW homotopy type. Applying the result at each projective step also proves that the flag spaces and common splitting spaces used here have finite CW homotopy type.
+
+
 The coefficient of the basis element \(1\) proves injectivity of \(\pi^*\). Choose a Hermitian metric and split \(\pi^*E=S\oplus S^\perp\). Repeat the construction with \(S^\perp\), whose rank is smaller. Each pullback is injective by the first part; after finitely many steps the bundle splits into lines. Pulling back one such construction after another splits any prescribed finite collection of bundles while preserving injectivity. \(\square\)
+
+For the character construction one can also check the required degree bound directly from (6.5), without using a finite CW model of the flag space. If \(H^q(X;\mathbb Q)=0\) for \(q>N\), a rank-\(r\) projective step has zero rational cohomology above \(N+2(r-1)\). At degree \(q\) above that bound, every summand \(H^{q-2j}(X;\mathbb Q)\) in (6.5) is zero. Iterating finitely many steps gives a finite bound for a common splitting space. Thus all exponentials and identities below are finite in cohomology on that space as well as on the base.
 
 There are therefore unique classes \(c_j(E)\in H^{2j}(X;\mathbb Z)\) defined by
 
@@ -567,6 +651,8 @@ c(E)=\sum_{j=0}^r c_j(E).
 \]
 
 Zero ranks cause no exception, since their polynomial is one. On the splitting space in Lemma 6.3, if \(E=\bigoplus L_i\) and \(x_i=c_1(L_i)\), (6.9) identifies \(c_j(E)\) with the elementary symmetric polynomial in the \(x_i\).
+
+These are the same integral classes as those constructed by Euler classes and deletion of the zero vector in [the Chern-class chapter, Theorem 2.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-09.html#2-the-projective-relation-and-the-whitney-formula). Indeed substitute \(z=-u\) in (6.7) and multiply the relation by \((-1)^r\). It becomes \(z^r+\sum_{j=1}^r\pi^*c_j(E)z^{r-j}=0\), exactly that chapter's relation. Uniqueness of the coefficients in the projective basis identifies them. The two Whitney arguments remain available: the open-complement relative-product proof here and the Euler-product proof there. Neither changes the sign in (6.3).
 
 ### The even character and its Bott normalization
 
@@ -664,6 +750,16 @@ d:D&\longrightarrow\Sigma Y_+,
 
 collapsing respectively the cone and \(X_+\). The map \(q\) is a homotopy equivalence. Indeed the cone is a contractible subcomplex. Extend its contraction to \(D\) by the CW homotopy extension property. The terminal map factors through its collapse to give an inverse; the extended homotopy and its quotient give both inverse homotopies. The extension property follows cell by cell from the retraction of \(D^n\times[0,1]\) onto its bottom and lateral boundary. Thus \(q^*\) is an isomorphism in both theories.
 
+Here is the retraction needed for that extension, including its boundary conditions. On the unit ball \(D^n\) and \(0\leq t\leq1\), set
+
+\[
+s(x,t)=\min\left\{\frac{2}{2-t},\frac{1}{\|x\|}\right\},
+\qquad
+R(x,t)=\bigl(s(x,t)x,\,2+s(x,t)(t-2)\bigr),
+\]
+
+where the second term in the minimum is \(+\infty\) at \(x=0\). Near that point the first term is selected, so the map is continuous there too. Its second coordinate is nonnegative and its first coordinate has norm at most one. One of these two bounds is an equality, so its image is in the bottom or lateral boundary. On the bottom or lateral boundary \(s=1\), and the map fixes that boundary pointwise. In dimension zero it simply retracts the interval to its bottom point. To extend a specified homotopy over a cell, compose the prescribed bottom-and-side map with \(R\); these extensions agree on attaching boundaries. The finite CW attachment quotients are compact-to-Hausdorff closed maps, so their products with the interval are quotient maps and the glued homotopy is continuous. Apply this to a contraction of the cone that fixes its apex. Every time slice keeps the cone inside itself, so the extended homotopy descends through its collapse; its terminal map is constant on the cone and factors through \(q\). These are the two homotopies asserted above, not merely an appeal to contractibility of a subset.
+
 We establish the actual boundary formulas on \(D\). Given a projection \(p\) on \(Y\), choose a self-adjoint matrix lift \(a\) on \(X\), using Lemma 1.1 entrywise and then symmetrizing. Join it on the cone to \(tp\), with value zero at the apex. This gives a self-adjoint matrix function \(A\) on \(D\). The unitary \(\exp(2\pi iA)\) is nullhomotopic by scaling \(A\) to zero. It is the product of the exponential-boundary unitary on the \(X\) piece and the positive loop \(\exp(2\pi itp)\) on the cone piece, extended by identity on the other piece. Those two factors agree at their common boundary and have disjoint varying pieces. The class of their product is their K-theory sum, by Lesson 6. Hence
 
 \[
@@ -675,7 +771,7 @@ Differences of projections give the full even group. At a disjoint base point th
 
 For a unitary \(v:Y\to U(N)\), Lemma 2.2 represents \(\delta[v]\) by \((\mathbf1^N,\mathbf1^N,v)\). Glue the trivial \(X\) bundle to the trivial cone bundle, with coefficient transfer \(v\) from the \(X\) frame to the cone frame, and call the resulting bundle \(G(v)\). This gluing is locally trivial at the seam: extend the matrix entries of \(v\) to \(X\) by Lemma 1.1 and take the polar part on the open neighborhood of \(Y\) where that extension is invertible. It supplies compatible local frames there. On the pair \((D,CY_+)\), its cone frame specifies a comparison of \(G(v)\) with the trivial bundle. Restriction to \((X_+,Y_+)\) gives exactly the triple of Lemma 2.2. This restriction induces an isomorphism of relative groups by strong excision from Lesson 11: it is identity on the ideal of the common complement \(X\setminus Y\). Naturality of (2.2) therefore identifies \([G(v)]-[\mathbf1^N]\) with \(q^*\delta[v]\) in the absolute group of \(D\).
 
-By contrast, the projection loop defining \(\theta[v]\) has cone frame \(z(t)e_j\), where \(z(0)=I\) and \(z(1)=\operatorname{diag}(v,v^*)\), as in (4.3). At the attaching end that frame is \(ve_j\); its coefficient transfer from the fixed \(X\) frame is \(v^{-1}\). Thus \(d^*\theta[v]\) is the glued difference with the inverse comparison. Their sum is zero: \(\operatorname{diag}(v,v^{-1})\) is contracted to identity by the scalar-rotation path (2.2), so the direct sum of the two glued bundles is trivial. Therefore
+By contrast, the projection loop defining \(\theta[v]\) has cone frame \(z(t)e_j\), where \(z(0)=I\) and \(z(1)=\operatorname{diag}(v,v^*)\), as in (4.3). At the attaching end that frame is \(ve_j\); its coefficient transfer from the fixed \(X\) frame is \(v^{-1}\). Thus \(d^*\theta[v]\) is the glued difference with the inverse comparison. Their sum is zero: \(\operatorname{diag}(v,v^{-1})\) is contracted to identity by [the Whitehead path of Lesson 6, Lemma 2.1, equation (2.1)](KT-OPK-06.md#2-the-rotation-that-makes-addition-commute), so the direct sum of the two glued bundles is trivial. More explicitly, use that continuous family of seam matrices to glue a bundle over the mapping cone times the interval. The same local-frame construction applies with the interval parameter. Its endpoint at the identity seam is the trivial bundle; [cylinder transport in Lesson 2, Section 4](KT-OPK-02.md#4-transport-along-a-cylinder) identifies it with the bundle at the original seam. This proves the cancellation as an actual stable bundle comparison. Therefore
 
 \[
 q^*\delta[v]=-d^*\theta[v].
@@ -1323,6 +1419,8 @@ Finally evaluation at any chosen point splits by the unit. The point-pair sequen
 The inverse-comparison relation makes the second block the negative of the \(F\) triple. If \(E,F\) are represented by projections \(e,f\), naturality with respect to \(\lambda\mapsto\lambda e\) and \(\lambda\mapsto\lambda f\) identifies (7.7) with \(\mathsf B_{C(X)}([e]-[f])\), as proved in Theorem 3.1. It therefore respects every group-completion relation. The inverse exists because \(\mathsf B=\theta\beta\) is an isomorphism; this proves both injectivity and surjectivity. For \(X\) a point, the triple \((\mathbf1,\mathbf1,z)\) is \(+\mathfrak b\), fixing the Thom sign. For general \(X\), the image of \([1_X]\) is the corresponding trivial-line Thom class; the entire target need not be cyclic.
 
 ## What this lesson imports and does not prove
+
+The singular-chain, Thom/Euler, projective-bundle and flag foundations used in Section 6 have the exact programme proof routes given there. The historical source comparisons below are additional references, not substitutes for those proofs. The three characteristic-class readers are online programme dependencies of this course download; they are not silently claimed to be bundled in it.
 
 The projection retraction and stable projection homotopy are imported from Lesson 1; the bundle–projection correspondence and cylinder transport from Lesson 2; stable unitary K-theory from Lesson 6; suspension and ordered Bott periodicity from Lessons 8 and 10; exactness, the disc boundary and full algebraic relative excision from Lesson 11. The rational Chern character (6.1), its construction, both boundary comparisons and the finite-cell argument are proved in §6. Theorems 6.5–6.7 also prove the integral projective-space ring and the projective-bundle basis over every compact Hausdorff base, in both K-degrees. Corollary 6.8 gives the integral K-theory splitting principle. A Thom isomorphism for a nontrivial complex vector bundle, the general Künneth theorem with torsion terms and the full torus ring structure are outside this lesson's claims; Lemma 6.6 proves the specific projective-space product needed here. Its relative-bundle identification, all group computations, unstable projection example and trivial-line Thom theorem are proved here using the specified imports.
 

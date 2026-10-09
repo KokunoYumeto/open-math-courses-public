@@ -13,6 +13,7 @@ import shutil
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-internal-operator-spaces-20261009-v1"
 from matplotlib.colors import ListedColormap
 from matplotlib.patches import FancyBboxPatch
 import numpy as np
@@ -111,7 +112,7 @@ fig.text(.055, .043,
          "The full operators act on the infinite space. Equations O12–O14; general splitting: Sections 3–5.",
          fontsize=11, color=navy)
 fig.savefig(DEST / "internal-operator-spaces.png", dpi=170)
-fig.savefig(DEST / "internal-operator-spaces.svg")
+fig.savefig(DEST / "internal-operator-spaces.svg", metadata={"Date": None})
 plt.close(fig)
 
 font_license = Path(matplotlib.get_data_path()) / "fonts" / "ttf" / "LICENSE_DEJAVU"

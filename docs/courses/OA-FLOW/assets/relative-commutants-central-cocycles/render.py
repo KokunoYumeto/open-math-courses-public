@@ -5,6 +5,7 @@ import shutil
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-relative-commutants-central-cocycles-20261009-v1"
 from matplotlib import font_manager
 from matplotlib.patches import FancyBboxPatch, Polygon
 
@@ -163,7 +164,7 @@ fig.text(.045, .024,
     "Original diagram and source: CC0. Exact data and reproducible script accompany the figure.",
     fontsize=11, color=MUTED)
 fig.savefig(HERE / "rcc-models.png", dpi=180, facecolor=BG)
-fig.savefig(HERE / "rcc-models.svg", facecolor=BG)
+fig.savefig(HERE / "rcc-models.svg", facecolor=BG, metadata={"Date": None})
 plt.close(fig)
 font_license = Path(font_manager.findfont("DejaVu Sans")).parent / "LICENSE_DEJAVU"
 if not font_license.is_file():

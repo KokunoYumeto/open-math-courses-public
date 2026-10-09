@@ -84,10 +84,10 @@ This amplitude convergence is Hörmander [H4, (30.5.37)]. The source leaves its 
 
 **Theorem 1.2.** Work in a fixed regular frequency chart with a positive distinguished free velocity component. Use one compact frequency cutoff \(\chi\), one transverse cutoff, and the normalized Hamilton constructions with one common starting time. Let \(G_j,G\) be their local real generating functions, and set
 
-\
+\[
  \begin{aligned}
- v_{j,\lambda}(s)&=[\chi(D)R_{j,+}(\lambda)f,\\
- v_\lambda(s)&=\chi(D)R_+(\lambda)f.
+ v_{j,\lambda}(s)&=[\chi(D)R_{j,+}(\lambda)f](s,\cdot),\\
+ v_\lambda(s)&=[\chi(D)R_+(\lambda)f](s,\cdot).
  \end{aligned}
  \tag{7}
 \]

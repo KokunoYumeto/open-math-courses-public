@@ -1,14 +1,14 @@
 # Smooth subalgebras and the density theorem
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Public domain (CC0).*
 
-*Independently authored CC0 lesson; self-checked by the writing AI.*
+*Independently authored CC0 lesson. Mathematical revisions by GPT-6 Astra (OpenAI), Ultra.*
 
 A differential formula requires derivatives of its coefficients. A projection or invertible supplied by a C*-algebra need not have those derivatives. The density theorem explains when one can replace it by a smooth representative without changing its K-class, and when equivalences between smooth representatives can themselves be made smooth.
 
 The decisive properties concern inverses, spectral projections and matrices. Norm density supplies approximations. Functional calculus turns those approximations into exact representatives. We will keep these two operations separate, including the completeness assumption needed when contour integration is used inside a finer topology.
 
-We use stable idempotent equivalence from [Idempotents, projections and their equivalences](KT-OPK-01.md), the Grothendieck construction from [K_0 of a unital algebra](KT-OPK-03.md), and stable invertible homotopy from [Invertibles, unitaries and K_1](KT-OPK-06.md). The contour calculus, its algebra property and spectral mapping are [Banach algebras, spectrum, holomorphic functional calculus and Gelfand theory, §6, Definition 6.4 and Theorems 6.7 and 6.10](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#6-the-holomorphic-functional-calculus).
+We use stable idempotent equivalence from [Lesson 1, Theorem 3.1 and Corollary 3.3](KT-OPK-01.md#3-why-an-extra-block-removes-the-difference), the Grothendieck construction from [Lesson 3, Theorem 1.1](KT-OPK-03.md#1-additive-measurements-and-formal-subtraction), and stable invertible homotopy from [Lesson 6, Definition 1.1 and Proposition 1.2](KT-OPK-06.md#1-a-definition-that-keeps-the-scalar-part-fixed). The contour calculus, its algebra property and spectral mapping are [Banach algebras, spectrum, holomorphic functional calculus and Gelfand theory, §6, Definition 6.4 and Theorems 6.7 and 6.10](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#6-the-holomorphic-functional-calculus).
 
 ## 1. What stability means
 
@@ -38,7 +38,7 @@ Here is the precise scalar-to-matrix result we will prove. A Fréchet algebra is
 1. Scalar inverse closure of \(B^+\) implies inverse closure at every matrix level, without a completeness assumption.
 2. If \(B^+\) is also a Fréchet continuous inverse algebra whose inclusion into \(A^+\) is continuous, scalar holomorphic stability implies matrix holomorphic stability. In fact scalar inverse closure suffices under these additional hypotheses.
 
-*Proof.* Write \(D=B^+\), \(E=A^+\). Suppose \(M\in M_n(D)\) is invertible in \(M_n(E)\). Choose \(N\in M_n(D)\) so close to \(M^{-1}\) that \(T=NM\) is near the identity. We prove by induction that such a \(T\) has inverse in \(M_n(D)\). The case \(n=1\) is scalar inverse closure.
+*Proof.* Write \(D=B^+\), \(E=A^+\). Suppose \(M\in M_n(D)\) is invertible in \(M_n(E)\). Choose \(N\in M_n(D)\) so close to \(M^{-1}\) that \(T=NM\) is near the identity. We prove by induction that such a \(T\) has inverse in \(M_n(D)\). The case \(n=1\) is scalar inverse closure. The induction hypothesis is the full assertion: every ambient invertible matrix over \(D\) of smaller size has its inverse over \(D\), not merely those near the identity. At size \(n\), the reduction just made lets us treat \(T\) near the identity; equation (1.4) then proves the full assertion for arbitrary \(M\).
 
 Write
 
@@ -50,7 +50,7 @@ S=d-ca^{-1}b.
 \tag{1.2}
 \]
 
-The scalar entry \(a\) is near \(1\), so is invertible in \(E\), with \(a^{-1}\in D\). Multiplication gives the factorization
+The scalar entry \(a\) is near \(1\), so is invertible in \(E\) by [the Neumann criterion, Proposition 2.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#OA-FND-BN-02), with \(a^{-1}\in D\). Multiplication gives the factorization
 
 \[
 \begin{gathered}
@@ -153,7 +153,7 @@ Thus the additional continuous-inverse condition in Theorem 1.2 is automatic in 
 
 ## 2. The density theorem, including injectivity
 
-Define \(K_0(B^+)\) from stable algebraic equivalence classes of idempotents, and \(K_1(B^+)\) from stable norm homotopy classes of invertibles. As in [Nonunital algebras](KT-OPK-04.md), \(K_0(B)\) is the kernel of the scalar map to \(\mathbb Z\); scalar normalization gives the relative description of \(K_1(B)\).
+Define \(K_0(B^+)\) from stable algebraic equivalence classes of idempotents, and \(K_1(B^+)\) from stable norm homotopy classes of invertibles. As in [Lesson 4, Section 1 and Theorem 1.1](KT-OPK-04.md#1-recording-the-scalar-part), \(K_0(B)\) is the kernel of the scalar map to \(\mathbb Z\); scalar normalization gives the relative description of \(K_1(B)\).
 
 **Theorem 2.1 (density).** If \(B\subset A\) is dense and matrix holomorphically stable, then inclusion induces isomorphisms
 
@@ -200,7 +200,7 @@ we&=qw.
 
 If \(\|q-e\|\|2e-1\|<1\), \(w\) is invertible by the ambient Neumann estimate. Hence \(e\) and \(q\) represent the same stable class. This proves surjectivity on the semigroup of idempotent classes.
 
-For injectivity, suppose two idempotents \(h,k\) over \(D\) become stably equivalent over \(E\). After adding zero blocks, the equivalence results of Lesson 1 give an invertible \(w\) over \(E\) with \(whw^{-1}=k\). Approximate \(w\) by \(v\) over \(D\). For a sufficiently close approximation, \(v\) is invertible in \(E\), hence has its inverse in \(D\). Then \(k'=vhv^{-1}\) is arbitrarily close to \(k\). Formula (2.4), applied to \(k'\) and \(k\), gives an invertible \(z\) over \(D\) with \(zk'z^{-1}=k\). Therefore \(zv\) implements the equivalence already over \(D\). The idempotent semigroups are isomorphic, so their Grothendieck groups are isomorphic.
+For injectivity, suppose two idempotents \(h,k\) over \(D\) become stably equivalent over \(E\). After adding zero blocks, [Lesson 1, Theorem 3.1 and Corollary 3.3](KT-OPK-01.md#3-why-an-extra-block-removes-the-difference) give an invertible \(w\) over \(E\) with \(whw^{-1}=k\). Approximate \(w\) by \(v\) over \(D\). For a sufficiently close approximation, \(v\) is invertible in \(E\), hence has its inverse in \(D\). Then \(k'=vhv^{-1}\) is arbitrarily close to \(k\). Formula (2.4), applied to \(k'\) and \(k\), gives an invertible \(z\) over \(D\) with \(zk'z^{-1}=k\). Therefore \(zv\) implements the equivalence already over \(D\). The idempotent semigroups are isomorphic, so their Grothendieck groups are isomorphic.
 
 If \(B\) is a *-subalgebra, \(b\) can be chosen selfadjoint when \(e\) is a projection. Then (2.2) is an orthogonal projection. For example \(\varepsilon<1/8\) gives \(R=2\) and \(\|q-e\|\leq(8/3)\varepsilon<1/3\). This is the smooth-projection mechanism used for projective modules.
 
@@ -222,7 +222,7 @@ For injectivity, let an ambient path \(u(t)\) join two stabilized invertibles ov
 
 Every \(v(t)\) is ambient invertible, so matrix inverse closure makes it invertible over \(D\). It is a norm-continuous path in \(D\) with the prescribed endpoints. Hence the original two classes agree over \(D\).
 
-The external scalar maps on \(D\) and \(E\) commute with inclusion and have the same scalar splitting. The \(K_0\) isomorphism therefore restricts to their kernels. The relative \(K_1\) identification from Lesson 6 likewise gives (2.1) for \(B\) and \(A\). \(\square\)
+The external scalar maps on \(D\) and \(E\) commute with inclusion and have the same scalar splitting. The \(K_0\) isomorphism therefore restricts to their kernels. The relative \(K_1\) identification from [Lesson 6, Proposition 1.2](KT-OPK-06.md#1-a-definition-that-keeps-the-scalar-part-fixed) likewise gives (2.1) for \(B\) and \(A\). \(\square\)
 
 This proof also covers a finer Fréchet continuous-inverse topology on \(B\). The polygonal path is continuous in that topology, and stable similarities implement the algebraic \(K_0\) equivalence. Conversely every path continuous in the finer topology is norm continuous. Thus the \(K_1\) group defined using that topology has the same answer.
 
@@ -375,7 +375,7 @@ Both expressions are norm continuous on a surrounding cycle. The resolvent is th
 
 This theorem also holds for a derivation with values in a Banach algebra containing \(A\), using the inherited left and right multiplication, provided its graph is closed. The preceding estimates and the graph integral are unchanged.
 
-For example \(C^1[0,1]\), with derivative and graph norm, has the same K-theory as \(C[0,1]\). Completeness of the derivative graph follows by integrating the limiting derivative; polynomial approximation makes the domain norm dense.
+For example \(C^1[0,1]\), with derivative and graph norm, has the same K-theory as \(C[0,1]\). Completeness of the derivative graph follows by integrating the limiting derivative. Polynomial approximation here also follows from the already proved [Fejér approximation in Lesson 10, Section 5](KT-OPK-10.md#5-the-polynomial-loop-route-an-outline-with-explicit-reductions): for a continuous function \(v\) on \([0,1]\), the function \(v((1+\cos t)/2)\) is continuous, even and periodic. Its Fejér polynomials are even, hence finite sums of \(\cos(kt)\). The recurrence \(\cos((k+1)t)=2\cos t\cos(kt)-\cos((k-1)t)\) makes them polynomials in \(\cos t\), and therefore in \((1+\cos t)/2\). Uniform approximation on the circle gives uniform polynomial approximation of \(v\) on \([0,1]\), proving norm density of the graph domain.
 
 ### A differential norm gives a checkable criterion
 
@@ -393,7 +393,7 @@ N(bc)&\leq C\bigl(\|b\|_A N(c)\\
 
 Then \(B\) is inverse closed and holomorphically stable at every matrix level, with external unitizations when needed. Inclusion induces both K-isomorphisms of Theorem 2.1, also when \(K_1(B)\) uses its Banach norm topology.
 
-*Proof.* First suppose the two algebras have the same identity. Write \(\rho_B,\rho_A\) for their spectral radii. Applying (3.6) to \(b^m,b^m\), taking \(m\)-th roots, and using the Banach spectral-radius formula gives
+*Proof.* First suppose the two algebras have the same identity. Write \(\rho_B,\rho_A\) for their spectral radii. Applying (3.6) to \(b^m,b^m\), taking \(m\)-th roots, and using [the Banach spectral-radius formula, Theorem 5.4](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#OA-FND-BN-09) gives
 
 \[
 \rho_B(b)^2\leq\rho_B(b)\rho_A(b).
@@ -402,7 +402,7 @@ Then \(B\) is inverse closed and holomorphically stable at every matrix level, w
 
 Indeed the constant \(2C\) has \(m\)-th root tending to one, and \(N(b^{2m})^{1/m}\) tends to \(\rho_B(b)^2\). If \(\rho_B(b)>0\), divide by it; if it is zero the resulting inequality already holds. The reverse inequality follows from \(\|b^m\|_A\leq N(b^m)\). Thus the two radii agree for every \(b\in B\).
 
-Equality of radii alone is not used as an assertion of equality of spectra. Let \(b\in B\) be invertible in \(A\). Positivity and invertibility of \(b^*b\) give, for \(\lambda>\|b^*b\|_A\),
+Equality of radii alone is not used as an assertion of equality of spectra. Let \(b\in B\) be invertible in \(A\). [The positive-cone theorem, Theorem 8.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-15) and [continuous spectral mapping, Theorem 5.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-07) show that positivity and invertibility of \(b^*b\) give, for \(\lambda>\|b^*b\|_A\),
 
 \[
 \begin{gathered}
@@ -459,6 +459,28 @@ Let a finite-dimensional Lie group \(G\) act on \(A\) by automorphisms, continuo
 
 *Proof.* For nonnegative \(f\in C_c^\infty(G)\) with Haar integral one, set \(a_f=\int f(g)\alpha_g(a)\,dg\). Applying \(\alpha_h\) changes the coefficient to \(f(h^{-1}g)\). All derivatives in \(h\), on a fixed small neighborhood, are supported in one compact set and uniformly bounded there. Differentiation under the norm integral proves \(a_f\in A^\infty\). Concentrating the support at the identity gives \(a_f\to a\).
 
+Here are the existence and limiting steps in that construction. [Haar measure, Theorem 8.3 and its proof](https://kokunoyumeto.github.io/open-math-courses-public/courses/harmonic-analysis-on-locally-compact-groups/reader/haar-measure-on-locally-compact-groups.html#OA-FND-HM-05) supplies a left invariant measure finite on compact sets and positive on nonempty open sets. In an identity chart choose a closed ball inside any prescribed identity neighborhood. The flat factor of [Local tools, Lemma 0.5](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-FND/local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations) applied to the squared radius minus the squared coordinate norm is a nonnegative smooth function, positive on the interior of that ball and zero outside it. Extend by zero outside the chart. Its support is compactly contained in the chart, so this extension is smooth. Its Haar integral is finite and strictly positive; division by that integral produces the required normalized function. Only a local chart is used, not a global countability assumption on the group.
+
+The norm integral used here can be constructed without presupposing a general vector integration theorem. For a continuous Banach-valued function supported in a compact set \(K\), its image is totally bounded. Cover that image by finitely many balls of radius \(\epsilon\); the successive differences of their inverse images give disjoint Borel sets on which a constant value approximates the function within \(\epsilon\). Integrate the resulting finite-valued function by summing its values times the measures of those sets. For finite-valued functions the triangle inequality gives
+
+\[
+\left\|\int_K F\,d\mu\right\|
+\leq\mu(K)\sup_K\|F\|.
+\]
+
+The same estimate on differences makes these approximating integrals Cauchy and independent of the approximations. Completeness of the Banach space gives their limit. The estimate, linearity and commutation with bounded linear maps pass to this limit. Scalar left invariance, first on the finite Borel partitions and then by approximation, proves the change of variables used above. Automorphisms of a C*-algebra are isometries by [C*-algebras, Corollary 4.6](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-12), so they are bounded maps for this argument.
+
+Restrict \(h\) to a neighborhood with compact closure \(L\). Every function \(g\mapsto f(h^{-1}g)\), and every coordinate derivative in \(h\), is supported in \(L\operatorname{supp}f\). On this compact set the difference quotients converge uniformly to the derivatives, by the scalar fundamental theorem of calculus and continuity of the next derivative. Multiplication by \(\alpha_g(a)\) preserves uniform convergence because its norm is \(\|a\|\). The displayed integral estimate therefore passes each difference quotient through the integral. Repeating the argument proves smoothness of all orders, not merely weak differentiability. Finally,
+
+\[
+\|a_f-a\|
+\leq\sup_{g\in\operatorname{supp}f}\|\alpha_g(a)-a\|.
+\]
+
+The right side tends to zero as the support is restricted to smaller identity neighborhoods. This proves norm density for every \(a\), including in a nonunital algebra.
+
+For use with the orbit derivatives below, the fundamental theorem of calculus also holds for a continuously norm-differentiable Banach-valued curve. Apply any bounded linear functional to the difference between its endpoint increment and the integral of its derivative. Commutation with the norm integral reduces this to [the scalar fundamental theorem, Local tools, Lemma 0.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-FND/local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations), so every such functional gives zero. The point-separation consequence of [Hahn–Banach, Corollary 2.3(2)](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-02) makes that difference zero in the Banach space itself. This supplies the vector identity used below, not only a scalar or weak identity.
+
 If a smooth \(a\) is ambient invertible, \(\alpha_g(a^{-1})=\alpha_g(a)^{-1}\) is smooth. Indeed Banach-algebra inversion is smooth by its local Neumann expansion, with first derivative \(h\mapsto-a^{-1}ha^{-1}\). For holomorphic \(f\), apply the contour formula to \(\alpha_g(a)\) on a fixed surrounding cycle. Its resolvents and every derivative in \(g\) are uniformly bounded on that cycle locally in \(g\). Differentiating the integral proves that \(f(a)\) is smooth. The entrywise action on matrices proves matrix stability; external unitization treats a nonunital algebra. Theorem 2.1 now applies. \(\square\)
 
 For a basis \(X_1,\ldots,X_d\) of the Lie algebra, the seminorms
@@ -472,6 +494,31 @@ p_m(a)=\sum_{r=0}^m
 
 give the usual smooth Fréchet topology. Completeness follows by closedness of the infinitesimal generators and induction on derivative order; convergence of orbit maps and their derivatives in local coordinates then recovers smoothness. The Leibniz rule bounds each product seminorm by a finite sum of products of lower seminorms. The inverse formulas just proved give continuous inversion in this topology. The finer-topology conclusion following Theorem 2.1 therefore applies.
 
+To justify completeness explicitly, let \(a_j\) be Cauchy for every \(p_m\). The term of order zero gives a norm limit \(a\in A\), and every ordered iterated derivative has a norm limit. Define the left invariant vector field acting on an orbit map by
+
+\[
+(V_XF)(g)=\left.\frac{d}{dt}\right|_{t=0}F(g\exp(tX)).
+\]
+
+For smooth \(a_j\), repeated differentiation gives
+
+\[
+V_{X_{i_1}}\cdots V_{X_{i_r}}\mathcal O_{a_j}(g)
+=\alpha_g(\delta_{X_{i_1}}\cdots\delta_{X_{i_r}}a_j).
+\]
+
+Isometry makes these derivatives uniformly Cauchy in \(g\), and the orbit maps themselves converge uniformly to \(\mathcal O_a\). On a relatively compact coordinate neighborhood, the coordinate vector fields are smooth linear combinations of the frame \(V_{X_1},\ldots,V_{X_d}\). Repeated product rules express every coordinate partial derivative as a finite sum of iterated frame derivatives with bounded smooth coefficients on a smaller compact coordinate box. Thus all coordinate partial derivatives have uniform limits there. These limits really are derivatives: along a segment parallel to one coordinate axis the fundamental-theorem identity for the smooth maps passes to the limit in norm. The integral estimate above, now on a compact real interval, justifies that passage. Dividing the limiting identity by the segment length gives the indicated partial derivative, because its limit function is continuous. Iterating this argument for the derivative functions proves smoothness of every order. At the identity their values are exactly the previously obtained norm limits. Hence \(a\in A^\infty\) and \(p_m(a_j-a)\to0\) for every \(m\).
+
+The closed-generator assertion can also be seen directly. Put \(U_X(t)=\alpha_{\exp(tX)}\). For a vector in the generator domain, the group law differentiates its orbit and gives
+
+\[
+U_X(t)b-b=\int_0^t U_X(s)\delta_Xb\,ds.
+\]
+
+If \(b_j\to b\) and \(\delta_Xb_j\to c\) in norm, this identity passes to the limit uniformly on bounded time intervals. Dividing by \(t\) and using continuity of \(U_X(s)c\) gives \(\delta_Xb=c\). This proves closedness without assuming differentiability of a limit in advance. A countable family of separating seminorms is metrized here by the sum of \(2^{-m}\min(1,p_m(a-b))\); its Cauchy sequences are precisely the sequences Cauchy for each seminorm. The completeness just proved therefore gives a Fréchet space.
+
+Repeated Leibniz expansion also gives the concrete bound \(p_m(ab)\leq2^m p_m(a)p_m(b)\). Derivatives of an inverse are finite sums of products of the inverse and derivatives of the original element, obtained by repeatedly differentiating \(aa^{-1}=1\). Ambient inverse continuity together with these formulas proves inverse continuity for every \(p_m\). Thus the algebra and continuous-inverse hypotheses used here hold in the stated topology.
+
 For the rotation algebra \(A_\theta\), generated by unitaries with \(VU=e^{2\pi i\theta}UV\), the action
 
 \[
@@ -484,7 +531,7 @@ For the rotation algebra \(A_\theta\), generated by unitaries with \(VU=e^{2\pi 
 
 defines \(A_\theta^\infty\) by (4.1), with \(G=\mathbb T^2\). The relations are preserved, and the inverse action is \(\alpha_{-s,-t}\). Continuity holds first on finite words in the generators and then on their norm closure. Theorem 4.1 applies for rational and irrational \(\theta\). We need no K-group computation of \(A_\theta\) to conclude that its smooth algebra has the same groups. This is the algebra used in [Connections and curvature from symmetries of an algebra, §1](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-CP/prerequisites/NCG-CYCLIC/connections-and-curvature-for-c-star-dynamical-systems.html#1-smooth-elements-retain-projective-modules).
 
-For a compact smooth manifold \(M\), \(C^\infty(M)\subset C(M)\) is another example. In a finite coordinate cover, multiply a continuous function by a smooth partition of unity, approximate each compactly supported coordinate function by convolution, and sum; this proves uniform density. For a matrix of smooth functions, pointwise inversion is smooth wherever the determinant is nonzero. The contour formula then preserves smoothness, by differentiating under its compact integral. Thus Theorem 2.1 applies.
+For a compact smooth manifold \(M\), \(C^\infty(M)\subset C(M)\) is another example. Use [Local tools, Theorem 3.E](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-FND/local-tools-for-bundles-and-transport.html#3-smooth-weights-with-controlled-support) for a subordinate smooth partition with compact supports inside coordinate domains. Compactness leaves only finitely many nonzero partition terms: a finite subcover of neighborhoods on each of which only finitely many terms occur proves this. Each coordinate piece extends continuously by zero to Euclidean space. Convolve it with a nonnegative mass-one smooth function supported in a sufficiently small ball. The norm-integral argument above proves smoothness, and uniform continuity bounds the error by the supremum of the translation differences over that ball. Choose the ball so that the support remains compactly inside its coordinate domain. Extending back by zero is then smooth. With each of the finitely many errors smaller than the total tolerance divided by the number of pieces, their sum approximates the original function uniformly. For a matrix of smooth functions, pointwise inversion is smooth wherever the determinant is nonzero. The contour formula then preserves smoothness, by differentiating under its compact integral. Thus Theorem 2.1 applies.
 
 Here is a careful spectral-triple version. Let \(\Lambda\) be selfadjoint on \(H\), and let \(\delta(T)=[\Lambda,T]\) on bounded operators preserving \(\operatorname{Dom}\Lambda\) with bounded commutator. This derivation has the adjoint rule \(\delta(T^*)=-\delta(T)^*\). It is closed: if \(T_j\to T\) and \(\delta(T_j)\to C\), then for \(\xi\in\operatorname{Dom}\Lambda\),
 
@@ -507,7 +554,7 @@ Suppose a unital C*-algebra \(A\subset B(H)\) contains a norm-dense *-algebra \(
 
 is a dense Fréchet *-algebra with seminorms \(\sum_{j\leq k}\|\delta^j(a)\|\). Completeness follows successively from closedness of \(\delta\). For \(a\) invertible in \(A\), approximate \(a^{-1}\) by \(b\in\mathcal A_0\); the derivative-summable Neumann argument (3.3) puts \(b(ab)^{-1}=a^{-1}\) in the first commutator domain. No norm density in all of \(B(H)\) is needed. Formula (3.4) and the Leibniz rule then inductively put that inverse in every iterated domain. The same formulas give (3.5) and its higher derivatives. Repeated differentiation of the contour formula, in these complete graph seminorms, proves matrix holomorphic stability.
 
-For a **regular** spectral triple take \(\Lambda=|D|\). The required dense algebra is the represented spectral-triple algebra; regularity places both its elements and their \(D\)-commutators in all these domains. These are exactly the hypotheses in [Spectral triples and dimension spectrum, §1](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-OPK/preparation.html#dependency-f1d9b2ae7966). A spectral triple without regularity does not supply this conclusion automatically. Derivatives may take values in \(B(H)\), rather than in \(A\), which is why the containing-algebra version of Theorem 3.1 matters.
+For a **regular** spectral triple take \(\Lambda=|D|\). The required dense algebra is the represented spectral-triple algebra; regularity places both its elements and their \(D\)-commutators in all these domains. The definition and regularity condition are recorded in [Spectral triples and dimension spectrum, Section 1](https://kokunoyumeto.github.io/open-math-courses-public/courses/NCG-LOCAL-INDEX/spectral-triples-and-dimension-spectrum.html#1-differentiation-represented-on-a-hilbert-space). That comparison chapter imposes invertibility of \(D\) for its later analytic calculus; neither invertibility nor a summability condition is needed for the commutator-domain argument proved here. It is optional context, not a proof of (4.5). A spectral triple without regularity does not supply this conclusion automatically. Derivatives may take values in \(B(H)\), rather than in \(A\), which is why the containing-algebra version of Theorem 3.1 matters.
 
 ## 5. Incomplete ideals still admit matrix calculus
 
@@ -515,7 +562,13 @@ Not every useful smooth or local algebra carries the Fréchet topology of Theore
 
 **Proposition 5.1.** Any algebraic two-sided ideal \(I\) of a C*-algebra \(A\) is holomorphically stable in all matrix unitizations.
 
-*Proof.* Work in \(A^+\), in which \(I\) is still an ideal. Let \(X\in M_n(I^+)\) have scalar part \(C\in M_n(\mathbb C)\). The scalar quotient implies \(\sigma(C)\subseteq\sigma(X)\). Let \(m_C\) be the minimal polynomial of \(C\). Choose a polynomial \(r\) having the same derivatives as \(f\) at each root of \(m_C\), through one less than its multiplicity. Such an \(r\) exists by the polynomial Chinese remainder theorem for the pairwise coprime powers of \(z-\lambda\).
+*Proof.* Work in \(A^+\), in which \(I\) is still an ideal. Let \(X\in M_n(I^+)\) have scalar part \(C\in M_n(\mathbb C)\). The scalar quotient implies \(\sigma(C)\subseteq\sigma(X)\). Let \(m_C\) be the minimal polynomial of \(C\). Choose a polynomial \(r\) having the same derivatives as \(f\) at each root of \(m_C\), through one less than its multiplicity. Here is that Hermite interpolation explicitly. Write \(m_C(z)=\prod_\lambda(z-\lambda)^{d_\lambda}\) and put \(q_\lambda(z)=m_C(z)/(z-\lambda)^{d_\lambda}\). This polynomial is nonzero at \(\lambda\). Let \(t_\lambda\) be the Taylor polynomial of \(f/q_\lambda\) at \(\lambda\) through degree \(d_\lambda-1\), and set
+
+\[
+r(z)=\sum_\lambda q_\lambda(z)t_\lambda(z).
+\]
+
+At \(\lambda\), its own summand agrees with \(f\) to the required order, and each other summand is divisible by \((z-\lambda)^{d_\lambda}\). Thus \(r\) has exactly the required jets. This proves the needed polynomial Chinese remainder assertion for the pairwise coprime powers of \(z-\lambda\), rather than leaving it as a separate import.
 
 The function \(g=(f-r)/m_C\) has removable singularities at these roots and is holomorphic near \(\sigma(X)\). Since \(m_C(C)=0\), \(m_C(X)\in M_n(I)\). Moreover \(r(X)-r(C)\in M_n(I)\). Consequently
 
@@ -529,7 +582,7 @@ f(X)-f(C)
 \tag{5.1}
 \]
 
-Here \(r(C)=f(C)\) by the finite-dimensional holomorphic calculus, and the ideal property permits multiplication by the ambient \(g(X)\). This proves the assertion without completing \(I\). \(\square\)
+Here \(r(C)=f(C)\): the [algebra property of holomorphic calculus, Theorem 6.7](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#6-the-holomorphic-functional-calculus) gives \(f(C)-r(C)=m_C(C)g(C)=0\), and the ideal property permits multiplication by the ambient \(g(X)\). This proves the assertion without completing \(I\). \(\square\)
 
 There is a canonical smallest dense ideal to which this proposition applies. Its construction needs only positive functional calculus and the Neumann criterion.
 
@@ -545,7 +598,7 @@ a\in A_+,\quad\varepsilon>0.
 
 Then \(K(A)\) is a dense *-ideal contained in every dense algebraic two-sided ideal of \(A\). In particular it is the unique smallest dense ideal.
 
-*Proof.* Positive functional calculus puts each generator in \(A\), since the scalar function vanishes at zero. The generators are selfadjoint, so the two-sided ideal they generate is invariant under adjoints. Moreover
+*Proof.* [Continuous functional calculus, Theorems 5.1 and 5.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-07) puts each positive generator in \(A\), since the scalar function vanishes at zero. The generators are selfadjoint, so the two-sided ideal they generate is invariant under adjoints. Moreover
 
 \[
 \|a-(a-\varepsilon)_+\|\leq\varepsilon.
@@ -602,7 +655,7 @@ These two functions are algebraically independent. Write a hypothetical relation
 \tag{6.3}
 \]
 
-Each left side is an entire exponential polynomial, so vanishing on the interval makes it identically zero. For the largest exponent, divide by its exponential and let real \(u\to+\infty\). Its polynomial coefficient tends to zero because every lower exponential dominates its polynomial factor in decay. A polynomial tending to zero there is zero. Induction proves all coefficients zero, and hence every \(p_j=0\).
+Each left side is an entire exponential polynomial. Its restriction to the real interval is identically zero, so every real derivative at an interior point is zero. Holomorphic differentiation along the real direction identifies these with all its complex derivatives. [The power-series identity theorem, Theorem 2.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/complex-analytic-spaces-and-coherent-sheaves/holomorphic-functions-of-several-variables.html#2-power-series-and-the-regularity-of-holomorphic-functions) therefore makes it identically zero on the complex plane. For the largest exponent, divide by its exponential and let real \(u\to+\infty\). Its polynomial coefficient tends to zero because every lower exponential dominates its polynomial factor in decay. A polynomial tending to zero there is zero. Induction proves all coefficients zero, and hence every \(p_j=0\).
 
 Thus \(B\) is isomorphic to \(\mathbb C[X,Y]\). The only units of this polynomial ring are nonzero constants: total degrees add in a product of nonzero polynomials. Every matrix invertible over \(B\) consequently has constant determinant. Its circle winding pairing
 

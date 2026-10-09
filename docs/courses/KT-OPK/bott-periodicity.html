@@ -1,20 +1,21 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Bott periodicity · K-theory of C*-algebras</title>
-<meta name="description" content="A lesson of the course K-theory of C*-algebras. Draft, written by AI; English only for now.">
-<meta name="color-scheme" content="light dark">
-<link rel="stylesheet" href="../../assets/site.css">
+<meta content="A lesson of the course K-theory of C*-algebras. Draft, written by AI; English only for now." name="description"/>
+<meta content="light dark" name="color-scheme"/>
+<link href="../../assets/site.css" rel="stylesheet"/>
 <script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
-<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<script defer="" id="MathJax-script" src="../../assets/mathjax/tex-chtml-full.js"></script>
 </head>
 <body class="no-math">
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><div class="header-inner">
 <a class="brand" href="../../">Open Mathematics Courses</a>
-<nav class="primary-nav" aria-label="Main">
+<nav aria-label="Main" class="primary-nav">
 <a href="../../index.html">Courses</a>
 <a href="sources.html">Licensing</a>
 <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
@@ -22,30 +23,29 @@
 <p class="lang-note">English only for now</p>
 </div></header>
 <main id="main">
-<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">K-theory of C*-algebras</a> <span aria-hidden="true">›</span> <span>Lesson 10 of 23</span></nav>
-<aside class="notice" aria-label="About this lesson">
+<nav aria-label="Breadcrumb" class="crumbs"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">K-theory of C*-algebras</a> <span aria-hidden="true">›</span> <span>Lesson 10 of 23</span></nav>
+<aside aria-label="About this lesson" class="notice">
 <p>Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). Self-checked by the writing AI.</p>
 <p class="small">English only for now · CC0 1.0</p>
-<p class="small">Some separate prerequisite proof readings are not yet available in this public collection. See the <a href="preparation.html">preparation and proof-dependency notes</a> for this lesson’s exact assumptions.</p></aside>
+<p class="small">See the <a href="preparation.html">preparation and proof-dependency notes</a> for prerequisite proofs and optional comparisons.</p></aside>
 <details class="assumed"><summary>What this lesson assumes (8)</summary><ul><li><a href="toeplitz-operators-and-the-index-theorem-on-the-circle.html">Toeplitz operators and the index theorem on the circle</a></li><li><a href="matrix-stability-stability-and-continuity-of-k0.html">Matrix stability, stability and continuity of <span class="math" data-tex="\(K_0\)">\(K_0\)</span></a></li><li><a href="invertibles-unitaries-and-k1.html">Invertibles, unitaries and <span class="math" data-tex="\(K_1\)">\(K_1\)</span></a></li><li><a href="the-index-map-and-the-exact-sequence-at-k0.html">The index map and the exact sequence at <span class="math" data-tex="\(K_0\)">\(K_0\)</span></a></li><li><a href="suspension-higher-k-groups-and-the-long-exact-sequence.html">Suspension, higher K-groups and the long exact sequence</a></li><li><a href="idempotents-projections-and-their-equivalences.html">Idempotents, projections and their equivalences</a></li><li><a href="nonunital-algebras-unitization-relative-classes-and-half-exactness.html">Nonunital algebras: unitization, relative classes and half-exactness</a></li><li><a href="vector-bundles-and-finitely-generated-projective-modules.html">Vector bundles and finitely generated projective modules</a></li></ul></details>
-<article class="lesson">
-<h1 id="bott-periodicity">Bott periodicity</h1>
+<article class="lesson"><h1 id="bott-periodicity">Bott periodicity</h1>
 <p><em>Written by GPT-6.1 Sol (OpenAI), October 2026, at Ultra. Public domain (CC0).</em></p>
-<p>Independently authored CC0 lesson; self-checked by the writing AI.</p>
+<p>Independently authored CC0 lesson. Mathematical revisions by GPT-6 Astra (OpenAI), at Ultra.</p>
 <p>A projection gives a loop by rotating its range once and leaving its complement fixed. Bott periodicity says that every stable invertible loop comes from a unique difference of projection classes. We prove this for every complex C*-algebra, including nonunital, nonseparable algebras, by a concrete homotopy in the Toeplitz algebra.</p>
-<p>We use <a href="toeplitz-operators-and-the-index-theorem-on-the-circle.html">Lesson 9</a>, especially its Toeplitz extension and character <span class="math" data-tex="\(\chi(T_f+k)=f(1)\)">\(\chi(T_f+k)=f(1)\)</span>. We also import compact stability from <a href="matrix-stability-stability-and-continuity-of-k0.html#4-compact-operator-stabilization">Lesson 5, Theorem 4.1</a> and <a href="invertibles-unitaries-and-k1.html#4-realizing-an-invertible-path-at-a-late-stage">Lesson 6, Corollary 4.2</a>, split exactness and the index formula from <a href="the-index-map-and-the-exact-sequence-at-k0.html">Lesson 7, Corollary 4.2 and Proposition 5.1</a>, and the natural suspension isomorphism from <a href="suspension-higher-k-groups-and-the-long-exact-sequence.html#2-the-idempotent-loop-of-an-invertible">Lesson 8, Theorem 2.1</a>. These results precede periodicity. Tensor products below are minimal C*-tensor products.</p>
+<p>We use <a href="toeplitz-operators-and-the-index-theorem-on-the-circle.html#2-the-symbol-survives-modulo-compact-operators">Lesson 9, Theorem 2.3</a>, for its Toeplitz extension, and <a href="toeplitz-operators-and-the-index-theorem-on-the-circle.html#4-two-k-theory-computations-before-bott-periodicity">Section 4, equation (4.3)</a> for its character <span class="math" data-tex="\(\chi(T_f+k)=f(1)\)">\(\chi(T_f+k)=f(1)\)</span>. We also import compact stability from <a href="matrix-stability-stability-and-continuity-of-k0.html#4-compact-operator-stabilization">Lesson 5, Theorem 4.1</a> and <a href="invertibles-unitaries-and-k1.html#4-realizing-an-invertible-path-at-a-late-stage">Lesson 6, Corollary 4.2</a>, split exactness on degree zero from <a href="nonunital-algebras-unitization-relative-classes-and-half-exactness.html#4-a-splitting-makes-the-entire-short-sequence-exact">Lesson 4, Theorem 4.1</a>, on degree one from <a href="the-index-map-and-the-exact-sequence-at-k0.html#4-exactness-at-the-four-interior-groups">Lesson 7, Corollary 4.2</a>, and the index formula from <a href="the-index-map-and-the-exact-sequence-at-k0.html#5-the-partial-isometry-formula">Lesson 7, Proposition 5.1</a>, and the natural suspension isomorphism from <a href="suspension-higher-k-groups-and-the-long-exact-sequence.html#2-the-idempotent-loop-of-an-invertible">Lesson 8, Theorem 2.1</a>. These results precede periodicity. Tensor products below are minimal C*-tensor products.</p>
 <h2 id="1-a-projection-makes-a-based-loop">1. A projection makes a based loop</h2>
 <p>Write <span class="math" data-tex="\(SA=C_0((0,1),A)\)">\(SA=C_0((0,1),A)\)</span>, and use <span class="math" data-tex="\(z(t)=e^{2\pi it}\)">\(z(t)=e^{2\pi it}\)</span>, with increasing <span class="math" data-tex="\(t\)">\(t\)</span> the positive circle direction. For a projection <span class="math" data-tex="\(e\in M_n(D)\)">\(e\in M_n(D)\)</span> in a unital algebra, put</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math math-display" data-tex="\[
 f_e(t)=z(t)e+I_n-e.
 \tag{1.1}
 \]">\[
 f_e(t)=z(t)e+I_n-e.
 \tag{1.1}
-\]</span>
+\]</span></p>
 <p>It is unitary, its inverse is <span class="math" data-tex="\(\overline z e+I_n-e\)">\(\overline z e+I_n-e\)</span>, and its endpoint values are <span class="math" data-tex="\(I_n\)">\(I_n\)</span>. Thus it represents an element of <span class="math" data-tex="\(K_1(SD)\)">\(K_1(SD)\)</span>.</p>
 <p><strong>Proposition 1.1.</strong> Formula (1.1) induces a natural homomorphism</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math math-display" data-tex="\[
 \beta_D:K_0(D)\longrightarrow K_1(SD),
 \qquad [e]\longmapsto[f_e].
 \tag{1.2}
@@ -53,10 +53,10 @@ f_e(t)=z(t)e+I_n-e.
 \beta_D:K_0(D)\longrightarrow K_1(SD),
 \qquad [e]\longmapsto[f_e].
 \tag{1.2}
-\]</span>
-<p><em>Proof.</em> A projection homotopy gives a based loop homotopy by (1.1). Equivalent projections become homotopic after zero stabilization by <a href="idempotents-projections-and-their-equivalences.html">Lesson 1, §§3–4</a>; adding a zero projection adds an identity loop. Moreover <span class="math" data-tex="\(f_{e\oplus h}=f_e\oplus f_h\)">\(f_{e\oplus h}=f_e\oplus f_h\)</span>. Hence the map on the projection monoid is well-defined and additive, and extends to its group completion. Applying a *-homomorphism entrywise to the nonconstant part of the loop proves naturality. This also works for a nonunital homomorphism: its extension to the suspension unitization sends the scalar identity to the target scalar identity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
-<p>For nonunital <span class="math" data-tex="\(A\)">\(A\)</span>, let <span class="math" data-tex="\(\epsilon:A^+\to\mathbb C\)">\(\epsilon:A^+\to\mathbb C\)</span> be the scalar quotient. Split exactness, also after suspension, identifies</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p><em>Proof.</em> A projection homotopy gives a based loop homotopy by (1.1). Equivalent projections become homotopic after zero stabilization by <a href="idempotents-projections-and-their-equivalences.html#4-replacing-idempotents-by-projections">Lesson 1, Theorem 4.3</a>; adding a zero projection adds an identity loop. Moreover <span class="math" data-tex="\(f_{e\oplus h}=f_e\oplus f_h\)">\(f_{e\oplus h}=f_e\oplus f_h\)</span>. Hence the map on the projection monoid is well-defined and additive, and extends to its group completion. Applying a *-homomorphism entrywise to the nonconstant part of the loop proves naturality. This also works for a nonunital homomorphism: its extension to the suspension unitization sends the scalar identity to the target scalar identity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For nonunital <span class="math" data-tex="\(A\)">\(A\)</span>, let <span class="math" data-tex="\(\epsilon:A^+\to\mathbb C\)">\(\epsilon:A^+\to\mathbb C\)</span> be the scalar quotient. <a href="nonunital-algebras-unitization-relative-classes-and-half-exactness.html#4-a-splitting-makes-the-entire-short-sequence-exact">Degree-zero split exactness</a> and <a href="the-index-map-and-the-exact-sequence-at-k0.html#4-exactness-at-the-four-interior-groups">degree-one split exactness</a>, also after suspension, identify</p>
+<p><span class="math math-display" data-tex="\[
 \begin{aligned}
 K_0(A)&amp;=\ker\epsilon_*,\\
 K_1(SA)&amp;=\ker(S\epsilon)_*.
@@ -68,30 +68,45 @@ K_0(A)&amp;=\ker\epsilon_*,\\
 K_1(SA)&amp;=\ker(S\epsilon)_*.
 \end{aligned}
 \tag{1.3}
-\]</span>
+\]</span></p>
 <p>Naturality of <span class="math" data-tex="\(\beta_{A^+}\)">\(\beta_{A^+}\)</span> therefore restricts it to <span class="math" data-tex="\(\beta_A\)">\(\beta_A\)</span>. Explicitly, represent a relative class as <span class="math" data-tex="\([e]-[P]\)">\([e]-[P]\)</span>, where <span class="math" data-tex="\(e\)">\(e\)</span> is a projection over <span class="math" data-tex="\(A^+\)">\(A^+\)</span> and <span class="math" data-tex="\(P=\epsilon(e)\)">\(P=\epsilon(e)\)</span> is its constant scalar projection. Then</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math math-display" data-tex="\[
 \boxed{\beta_A([e]-[P])=[f_e f_P^{-1}].}
 \tag{1.4}
 \]">\[
 \boxed{\beta_A([e]-[P])=[f_e f_P^{-1}].}
 \tag{1.4}
-\]</span>
+\]</span></p>
 <p>The product has scalar part <span class="math" data-tex="\(I\)">\(I\)</span> for every <span class="math" data-tex="\(t\)">\(t\)</span> and endpoints <span class="math" data-tex="\(I\)">\(I\)</span>, so belongs to the invertible matrices over <span class="math" data-tex="\((SA)^+\)">\((SA)^+\)</span>. The equality with the restricted map follows from the product/block-sum identity in <a href="invertibles-unitaries-and-k1.html#2-the-rotation-that-makes-addition-commute">Lesson 6, Theorem 2.2</a> and the injectivity in (1.3). This proves representative independence, rather than imposing it as an additional equivalence relation. Unital consistency follows from the same split diagram. We will prove that every <span class="math" data-tex="\(\beta_A\)">\(\beta_A\)</span> is an isomorphism.</p>
 <h2 id="2-exact-toeplitz-extensions-with-coefficients">2. Exact Toeplitz extensions with coefficients</h2>
 <p>Let <span class="math" data-tex="\(\mathcal T=C^*(S)\)">\(\mathcal T=C^*(S)\)</span> on <span class="math" data-tex="\(H^2\)">\(H^2\)</span>, <span class="math" data-tex="\(p_0=1-SS^*\)">\(p_0=1-SS^*\)</span>, <span class="math" data-tex="\(\mathcal K=K(H^2)\)">\(\mathcal K=K(H^2)\)</span>, and <span class="math" data-tex="\(\sigma:\mathcal T\to C(\mathbb T)\)">\(\sigma:\mathcal T\to C(\mathbb T)\)</span> its symbol map. Put <span class="math" data-tex="\(\mathcal T_0=\ker\chi\)">\(\mathcal T_0=\ker\chi\)</span>, where <span class="math" data-tex="\(\chi=\operatorname{ev}_1\sigma\)">\(\chi=\operatorname{ev}_1\sigma\)</span>.</p>
 <p><strong>Lemma 2.1 (universal isometry).</strong> An isometry <span class="math" data-tex="\(V\)">\(V\)</span> in a unital C*-algebra determines a unique unital *-homomorphism <span class="math" data-tex="\(\mathcal T\to C^*(V)\)">\(\mathcal T\to C^*(V)\)</span> sending <span class="math" data-tex="\(S\)">\(S\)</span> to <span class="math" data-tex="\(V\)">\(V\)</span>. A corner isometry <span class="math" data-tex="\(V^*V=p\)">\(V^*V=p\)</span>, <span class="math" data-tex="\(VV^*\leq p\)">\(VV^*\leq p\)</span>, similarly determines a homomorphism with unit image <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
-<p><em>Proof.</em> Faithfully represent the target algebra on a Hilbert space. For an isometry <span class="math" data-tex="\(V\)">\(V\)</span>, let <span class="math" data-tex="\(D=\ker V^*\)">\(D=\ker V^*\)</span>. The spaces <span class="math" data-tex="\(V^jD\)">\(V^jD\)</span> are pairwise orthogonal, and</p>
-<span class="math math-display" data-tex="\[
+<p><em>Proof.</em> Use <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.html#OA-FND-GN-07">Gelfand–Naimark, Theorem 7.2</a> to represent the target faithfully on a Hilbert space; for a unital target restrict to the range of its identity so that the representation is unital. For an isometry <span class="math" data-tex="\(V\)">\(V\)</span>, let <span class="math" data-tex="\(D=\ker V^*\)">\(D=\ker V^*\)</span>. The spaces <span class="math" data-tex="\(V^jD\)">\(V^jD\)</span> are pairwise orthogonal, and</p>
+<p><span class="math math-display" data-tex="\[
 I-V^NV^{*N}=\sum_{j=0}^{N-1}V^j(I-VV^*)V^{*j}.
 \tag{2.1}
 \]">\[
 I-V^NV^{*N}=\sum_{j=0}^{N-1}V^j(I-VV^*)V^{*j}.
 \tag{2.1}
-\]</span>
-<p>The increasing ranges on the right have closed union <span class="math" data-tex="\(H_s=\bigoplus_{j\geq0}V^jD\)">\(H_s=\bigoplus_{j\geq0}V^jD\)</span>; their orthogonal complement is <span class="math" data-tex="\(H_u=\bigcap_{N\geq0}V^NH\)">\(H_u=\bigcap_{N\geq0}V^NH\)</span>. Both reduce <span class="math" data-tex="\(V\)">\(V\)</span>. It acts as copies of <span class="math" data-tex="\(S\)">\(S\)</span> on <span class="math" data-tex="\(H_s\)">\(H_s\)</span>, and as a unitary on <span class="math" data-tex="\(H_u\)">\(H_u\)</span>: on the latter <span class="math" data-tex="\(VV^*=I\)">\(VV^*=I\)</span>, and <span class="math" data-tex="\(V^*\)">\(V^*\)</span> preserves every <span class="math" data-tex="\(V^NH\)">\(V^NH\)</span>. For any *-polynomial <span class="math" data-tex="\(r\)">\(r\)</span>, the norm on <span class="math" data-tex="\(H_s\)">\(H_s\)</span> is at most <span class="math" data-tex="\(\|r(S)\|\)">\(\|r(S)\|\)</span>; on <span class="math" data-tex="\(H_u\)">\(H_u\)</span>, continuous functional calculus gives the bound <span class="math" data-tex="\(\|r(z)\|_\infty\leq\|r(S)\|\)">\(\|r(z)\|_\infty\leq\|r(S)\|\)</span>, using the symbol quotient of Lesson 9. Thus evaluation at <span class="math" data-tex="\(V\)">\(V\)</span> is well-defined and contractive on the dense *-polynomial algebra, and extends to the required homomorphism. Uniqueness follows from the generator. Apply this argument in the corner <span class="math" data-tex="\(pEp\)">\(pEp\)</span> for the last assertion; the zero corner gives the zero map. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+\]</span></p>
+<p>The increasing ranges on the right have closed linear span <span class="math" data-tex="\(H_s=\bigoplus_{j\geq0}V^jD\)">\(H_s=\bigoplus_{j\geq0}V^jD\)</span>; their orthogonal complement is <span class="math" data-tex="\(H_u=\bigcap_{N\geq0}V^NH\)">\(H_u=\bigcap_{N\geq0}V^NH\)</span>. Both reduce <span class="math" data-tex="\(V\)">\(V\)</span>. It acts as copies of <span class="math" data-tex="\(S\)">\(S\)</span> on <span class="math" data-tex="\(H_s\)">\(H_s\)</span>, and as a unitary on <span class="math" data-tex="\(H_u\)">\(H_u\)</span>: on the latter <span class="math" data-tex="\(VV^*=I\)">\(VV^*=I\)</span>, and <span class="math" data-tex="\(V^*\)">\(V^*\)</span> preserves every <span class="math" data-tex="\(V^NH\)">\(V^NH\)</span>. For any *-polynomial <span class="math" data-tex="\(r\)">\(r\)</span>, the norm on <span class="math" data-tex="\(H_s\)">\(H_s\)</span> is at most <span class="math" data-tex="\(\|r(S)\|\)">\(\|r(S)\|\)</span>; on <span class="math" data-tex="\(H_u\)">\(H_u\)</span>, <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-07">continuous functional calculus</a> gives the bound <span class="math" data-tex="\(\|r(z)\|_\infty\leq\|r(S)\|\)">\(\|r(z)\|_\infty\leq\|r(S)\|\)</span>, using the symbol quotient of Lesson 9. Thus evaluation at <span class="math" data-tex="\(V\)">\(V\)</span> is well-defined and contractive on the dense *-polynomial algebra, and extends to the required homomorphism. Uniqueness follows from the generator. Apply this argument in the corner <span class="math" data-tex="\(pEp\)">\(pEp\)</span> for the last assertion; the zero corner gives the zero map. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>The function-algebra norm used here.</strong> Theorem 2.2 and Corollary 2.3 of <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/tensor-products-of-operator-algebras/tensor-products-of-c-star-algebras-and-the-minimal-norm.html#2-the-spatial-norm">Tensor products, Section 2</a> prove representation independence, functoriality and preservation of inclusions for the minimal tensor product. Here is the resulting function-algebra identification, including its norm. Let <span class="math" data-tex="\(X\)">\(X\)</span> be a compact metric space. Represent <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span> diagonally on <span class="math" data-tex="\(\ell^2(X)\)">\(\ell^2(X)\)</span> by all point evaluations, and represent <span class="math" data-tex="\(B\)">\(B\)</span> faithfully on <span class="math" data-tex="\(H_B\)">\(H_B\)</span>. Under <span class="math" data-tex="\(\ell^2(X)\otimes H_B=\bigoplus_{x\in X}H_B\)">\(\ell^2(X)\otimes H_B=\bigoplus_{x\in X}H_B\)</span>, a finite tensor acts diagonally, so</p>
+<p><span class="math math-display" data-tex="\[
+\left\|\sum_j f_j\otimes b_j\right\|_{\min}
+=\sup_{x\in X}\left\|\sum_j f_j(x)b_j\right\|.
+\]">\[
+\left\|\sum_j f_j\otimes b_j\right\|_{\min}
+=\sup_{x\in X}\left\|\sum_j f_j(x)b_j\right\|.
+\]</span></p>
+<p>Testing vectors supported in one summand shows that the operator norm is at least the displayed supremum. Summing the squared norm bounds in all summands proves that it is at most that supremum. Thus completion gives an isometric map into <span class="math" data-tex="\(C(X,B)\)">\(C(X,B)\)</span>. It is onto: given <span class="math" data-tex="\(F\in C(X,B)\)">\(F\in C(X,B)\)</span> and a positive error tolerance, choose a radius <span class="math" data-tex="\(r\)">\(r\)</span> for uniform continuity and finitely many balls of radius <span class="math" data-tex="\(r\)">\(r\)</span> covering <span class="math" data-tex="\(X\)">\(X\)</span>, with centers <span class="math" data-tex="\(x_j\)">\(x_j\)</span>. Normalize the functions <span class="math" data-tex="\(\max(0,r-d(x,x_j))\)">\(\max(0,r-d(x,x_j))\)</span> by their everywhere-positive sum to obtain <span class="math" data-tex="\(\varphi_j\)">\(\varphi_j\)</span>. Then <span class="math" data-tex="\(\sum_j\varphi_j=1\)">\(\sum_j\varphi_j=1\)</span>, and each nonzero term uses a center within radius <span class="math" data-tex="\(r\)">\(r\)</span>. Consequently <span class="math" data-tex="\(\sum_j\varphi_j(x)F(x_j)\)">\(\sum_j\varphi_j(x)F(x_j)\)</span> approximates <span class="math" data-tex="\(F\)">\(F\)</span> uniformly within the chosen tolerance. This proves</p>
+<p><span class="math math-display" data-tex="\[
+C(X)\otimes_{\min}B\cong C(X,B).
+\]">\[
+C(X)\otimes_{\min}B\cong C(X,B).
+\]</span></p>
+<p>For a point <span class="math" data-tex="\(x_0\in X\)">\(x_0\in X\)</span>, a function vanishing at <span class="math" data-tex="\(x_0\)">\(x_0\)</span> is approximated by such finite sums with their values at <span class="math" data-tex="\(x_0\)">\(x_0\)</span> subtracted. The error is at most twice the original error, and every scalar factor now vanishes at <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. Preservation of inclusions gives the same norm on that ideal. Applying this to the one-point compactification of <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> proves <span class="math" data-tex="\(C_0(\mathbb R^n)\otimes_{\min}B\cong C_0(\mathbb R^n,B)\)">\(C_0(\mathbb R^n)\otimes_{\min}B\cong C_0(\mathbb R^n,B)\)</span>; applying it to the circle based at <span class="math" data-tex="\(1\)">\(1\)</span> gives the suspension identification in (2.2). No separability, unit or exactness assumption on <span class="math" data-tex="\(B\)">\(B\)</span> enters this argument. The representation space may have arbitrarily many point summands.</p>
 <p><strong>Lemma 2.2 (coefficient exactness).</strong> For every C*-algebra <span class="math" data-tex="\(B\)">\(B\)</span>, the sequences</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math math-display" data-tex="\[
 \begin{aligned}
 0&amp;\longrightarrow B\otimes\mathcal K
 \longrightarrow B\otimes\mathcal T\\
@@ -115,34 +130,34 @@ I-V^NV^{*N}=\sum_{j=0}^{N-1}V^j(I-VV^*)V^{*j}.
 \longrightarrow0
 \end{aligned}
 \tag{2.2}
-\]</span>
+\]</span></p>
 <p>are exact. Here <span class="math" data-tex="\(SB\)">\(SB\)</span> is identified with the functions on the circle vanishing at <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
 <p><em>Proof.</em> Faithfully represent <span class="math" data-tex="\(B\)">\(B\)</span> on <span class="math" data-tex="\(H_B\)">\(H_B\)</span>. For <span class="math" data-tex="\(F\in C(\mathbb T,B)\)">\(F\in C(\mathbb T,B)\)</span>, multiply on <span class="math" data-tex="\(L^2(\mathbb T)\otimes H_B\)">\(L^2(\mathbb T)\otimes H_B\)</span> and compress to <span class="math" data-tex="\(H^2\otimes H_B\)">\(H^2\otimes H_B\)</span>. This gives a contractive linear map <span class="math" data-tex="\(s_B\)">\(s_B\)</span>. For a finite <span class="math" data-tex="\(B\)">\(B\)</span>-valued trigonometric polynomial, its compression is a finite sum <span class="math" data-tex="\(\sum T_{z^j}\otimes b_j\)">\(\sum T_{z^j}\otimes b_j\)</span>, with tensor factors flipped if necessary, and its symbol is <span class="math" data-tex="\(F\)">\(F\)</span>. Such polynomials are uniformly dense: a finite partition of unity approximates a continuous Banach-valued function by finite scalar functions times values in <span class="math" data-tex="\(B\)">\(B\)</span>, and scalar trigonometric approximation approximates the scalar functions. Consequently <span class="math" data-tex="\(s_B\)">\(s_B\)</span> takes values in <span class="math" data-tex="\(B\otimes\mathcal T\)">\(B\otimes\mathcal T\)</span> and is a right inverse to the symbol map.</p>
 <p>For an algebraic tensor <span class="math" data-tex="\(x=\sum b_j\otimes a_j\)">\(x=\sum b_j\otimes a_j\)</span>, each
 <span class="math" data-tex="\(a_j-T_{\sigma(a_j)}\)">\(a_j-T_{\sigma(a_j)}\)</span> is compact by Lesson 9. Hence
 <span class="math" data-tex="\(x-s_B\sigma_B(x)\in B\odot\mathcal K\)">\(x-s_B\sigma_B(x)\in B\odot\mathcal K\)</span>. If <span class="math" data-tex="\(\sigma_B(x)=0\)">\(\sigma_B(x)=0\)</span> for a general completed tensor, approximate <span class="math" data-tex="\(x\)">\(x\)</span> by algebraic tensors <span class="math" data-tex="\(x_m\)">\(x_m\)</span>. Boundedness of <span class="math" data-tex="\(I-s_B\sigma_B\)">\(I-s_B\sigma_B\)</span> shows
-<span class="math" data-tex="\(x_m-s_B\sigma_B(x_m)\to x\)">\(x_m-s_B\sigma_B(x_m)\to x\)</span>, proving the exact kernel assertion. Minimal tensor products preserve inclusions, so the indicated kernel is the stated completed tensor algebra.</p>
+<span class="math" data-tex="\(x_m-s_B\sigma_B(x_m)\to x\)">\(x_m-s_B\sigma_B(x_m)\to x\)</span>, proving the exact kernel assertion. <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/tensor-products-of-operator-algebras/tensor-products-of-c-star-algebras-and-the-minimal-norm.html#2-the-spatial-norm">Minimal tensor products preserve inclusions (Corollary 2.3(2))</a>, so the indicated kernel is the stated completed tensor algebra.</p>
 <p>The character extension <span class="math" data-tex="\(0\to\mathcal T_0\to\mathcal T\xrightarrow\chi\mathbb C\to0\)">\(0\to\mathcal T_0\to\mathcal T\xrightarrow\chi\mathbb C\to0\)</span> has *-section <span class="math" data-tex="\(j(\lambda)=\lambda1\)">\(j(\lambda)=\lambda1\)</span>. A *-split extension remains exact after tensoring with any <span class="math" data-tex="\(B\)">\(B\)</span>: for its quotient <span class="math" data-tex="\(q\)">\(q\)</span> and section <span class="math" data-tex="\(s\)">\(s\)</span>, <span class="math" data-tex="\(\mathrm{id}_B\otimes sq\)">\(\mathrm{id}_B\otimes sq\)</span> is a bounded *-homomorphism. Applying <span class="math" data-tex="\(I-\mathrm{id}_B\otimes sq\)">\(I-\mathrm{id}_B\otimes sq\)</span> to algebraic approximations proves the kernel equality just as above. It follows that the tensors with zero character are precisely <span class="math" data-tex="\(B\otimes\mathcal T_0\)">\(B\otimes\mathcal T_0\)</span>. For a symbol <span class="math" data-tex="\(F\)">\(F\)</span> with <span class="math" data-tex="\(F(1)=0\)">\(F(1)=0\)</span>, its compression already has zero character. Restrict the first sequence to obtain the second. No exactness hypothesis on <span class="math" data-tex="\(B\)">\(B\)</span> has been used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
 <p>The bounded linear compression section need not be multiplicative. The proof uses its boundedness to identify the kernel; it does not turn the Toeplitz extension into a *-split extension.</p>
 <h2 id="3-the-homotopy-that-removes-the-reduced-toeplitz-algebra">3. The homotopy that removes the reduced Toeplitz algebra</h2>
 <p><strong>Theorem 3.1.</strong> For every C*-algebra <span class="math" data-tex="\(B\)">\(B\)</span>, the maps</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math math-display" data-tex="\[
 j_B:B\to B\otimes\mathcal T,\quad b\mapsto b\otimes1,
 \qquad \chi_B=\mathrm{id}_B\otimes\chi
 \]">\[
 j_B:B\to B\otimes\mathcal T,\quad b\mapsto b\otimes1,
 \qquad \chi_B=\mathrm{id}_B\otimes\chi
-\]</span>
+\]</span></p>
 <p>induce mutually inverse isomorphisms on <span class="math" data-tex="\(K_0\)">\(K_0\)</span> and <span class="math" data-tex="\(K_1\)">\(K_1\)</span>. In particular,</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math math-display" data-tex="\[
 K_i(B\otimes\mathcal T_0)=0\quad(i=0,1).
 \tag{3.1}
 \]">\[
 K_i(B\otimes\mathcal T_0)=0\quad(i=0,1).
 \tag{3.1}
-\]</span>
+\]</span></p>
 <p><em>Proof.</em> We first construct the homotopy before introducing <span class="math" data-tex="\(B\)">\(B\)</span>. Inside <span class="math" data-tex="\(\mathcal T\otimes\mathcal T\)">\(\mathcal T\otimes\mathcal T\)</span>, define</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math math-display" data-tex="\[
 \widehat{\mathcal T}
 =C^*(\mathcal K\otimes\mathcal T,\mathcal T\otimes1),
 \qquad v=S\otimes1.
@@ -152,9 +167,9 @@ K_i(B\otimes\mathcal T_0)=0\quad(i=0,1).
 =C^*(\mathcal K\otimes\mathcal T,\mathcal T\otimes1),
 \qquad v=S\otimes1.
 \tag{3.2}
-\]</span>
+\]</span></p>
 <p>Apply Lemma 2.2 with coefficient algebra <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>, then flip the factors. The restriction of <span class="math" data-tex="\(\sigma\otimes\mathrm{id}\)">\(\sigma\otimes\mathrm{id}\)</span> to (3.2) has kernel <span class="math" data-tex="\(\mathcal K\otimes\mathcal T\)">\(\mathcal K\otimes\mathcal T\)</span> and image <span class="math" data-tex="\(C(\mathbb T)\otimes1\)">\(C(\mathbb T)\otimes1\)</span>. Denote the resulting quotient by <span class="math" data-tex="\(\widehat\sigma\)">\(\widehat\sigma\)</span>, so <span class="math" data-tex="\(\widehat\sigma(v)=z\)">\(\widehat\sigma(v)=z\)</span>. Its quotient is <span class="math" data-tex="\(C(\mathbb T)\)">\(C(\mathbb T)\)</span>. Form the pullback</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math math-display" data-tex="\[
 \mathcal P=
 \{(x,y)\in\widehat{\mathcal T}\oplus\mathcal T:
 \widehat\sigma(x)=\sigma(y)\}.
@@ -164,10 +179,10 @@ K_i(B\otimes\mathcal T_0)=0\quad(i=0,1).
 \{(x,y)\in\widehat{\mathcal T}\oplus\mathcal T:
 \widehat\sigma(x)=\sigma(y)\}.
 \tag{3.3}
-\]</span>
+\]</span></p>
 <p>Projection onto <span class="math" data-tex="\(y\)">\(y\)</span> gives a *-split extension with kernel <span class="math" data-tex="\(\mathcal K\otimes\mathcal T\)">\(\mathcal K\otimes\mathcal T\)</span> and section <span class="math" data-tex="\(y\mapsto(y\otimes1,y)\)">\(y\mapsto(y\otimes1,y)\)</span>.</p>
 <p>Set</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math math-display" data-tex="\[
 \begin{aligned}
 f&amp;=p_0\otimes1,&amp; w&amp;=p_0\otimes S,&amp; g&amp;=p_0\otimes p_0,\\
 h&amp;=vfv^*,&amp; a&amp;=v(1-f)v^*.
@@ -179,9 +194,9 @@ f&amp;=p_0\otimes1,&amp; w&amp;=p_0\otimes S,&amp; g&amp;=p_0\otimes p_0,\\
 h&amp;=vfv^*,&amp; a&amp;=v(1-f)v^*.
 \end{aligned}
 \tag{3.4}
-\]</span>
+\]</span></p>
 <p>The projections <span class="math" data-tex="\(a,h,f\)">\(a,h,f\)</span> are orthogonal and sum to <span class="math" data-tex="\(1\)">\(1\)</span>. Also <span class="math" data-tex="\(w^*w=f\)">\(w^*w=f\)</span>, <span class="math" data-tex="\(ww^*=f-g\)">\(ww^*=f-g\)</span>. The partial isometry <span class="math" data-tex="\(wv^*\)">\(wv^*\)</span> exchanges <span class="math" data-tex="\(h\)">\(h\)</span> with <span class="math" data-tex="\(f-g\)">\(f-g\)</span>, and <span class="math" data-tex="\(fv^*\)">\(fv^*\)</span> exchanges <span class="math" data-tex="\(h\)">\(h\)</span> with <span class="math" data-tex="\(f\)">\(f\)</span>. Therefore</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math math-display" data-tex="\[
 \begin{aligned}
 Z_0&amp;=a+wv^*+vw^*+g,\\
 Z_1&amp;=a+fv^*+vf
@@ -193,10 +208,10 @@ Z_0&amp;=a+wv^*+vw^*+g,\\
 Z_1&amp;=a+fv^*+vf
 \end{aligned}
 \tag{3.5}
-\]</span>
+\]</span></p>
 <p>are self-adjoint unitaries. Indeed each exchanged pair contributes its two support projections to the square, all cross-products with the complementary identity projections are zero, and those supports exhaust <span class="math" data-tex="\(1\)">\(1\)</span>. Their quotient symbols are both <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
 <p>Let <span class="math" data-tex="\(E_j=(1-Z_j)/2\)">\(E_j=(1-Z_j)/2\)</span>, and put</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math math-display" data-tex="\[
 Z_t=e^{i\pi tE_1}e^{i\pi(1-t)E_0},
 \qquad v_t=Z_tv\quad(0\leq t\leq1).
 \tag{3.6}
@@ -204,9 +219,9 @@ Z_t=e^{i\pi tE_1}e^{i\pi(1-t)E_0},
 Z_t=e^{i\pi tE_1}e^{i\pi(1-t)E_0},
 \qquad v_t=Z_tv\quad(0\leq t\leq1).
 \tag{3.6}
-\]</span>
+\]</span></p>
 <p>These are norm-continuous unitaries and isometries, respectively; <span class="math" data-tex="\(Z_t\)">\(Z_t\)</span> has quotient <span class="math" data-tex="\(1\)">\(1\)</span>, and its endpoints are <span class="math" data-tex="\(Z_0,Z_1\)">\(Z_0,Z_1\)</span>. Lemma 2.1 defines a homotopy <span class="math" data-tex="\(\phi_t:\mathcal T\to\widehat{\mathcal T}\)">\(\phi_t:\mathcal T\to\widehat{\mathcal T}\)</span>, <span class="math" data-tex="\(\phi_t(S)=v_t\)">\(\phi_t(S)=v_t\)</span>. It is pointwise norm-continuous because this is true on *-polynomials and all these homomorphisms are contractive. Multiplication of (3.5) by <span class="math" data-tex="\(v\)">\(v\)</span> gives</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math math-display" data-tex="\[
 \begin{aligned}
 \phi_0(S)&amp;=v(1-f)+w,\\
 \phi_1(S)&amp;=v(1-f)+f.
@@ -218,9 +233,9 @@ Z_t=e^{i\pi tE_1}e^{i\pi(1-t)E_0},
 \phi_1(S)&amp;=v(1-f)+f.
 \end{aligned}
 \tag{3.7}
-\]</span>
+\]</span></p>
 <p>In (3.3), define <span class="math" data-tex="\(\psi_t(S)=(v_t,S)\)">\(\psi_t(S)=(v_t,S)\)</span>. Also define the two corner homomorphisms</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math math-display" data-tex="\[
 \begin{aligned}
 \psi(S)&amp;=(v(1-f),S),&amp;\psi(1)&amp;=(1-f,1),\\
 \omega(S)&amp;=(w,0),&amp;\omega(1)&amp;=(f,0).
@@ -232,9 +247,9 @@ Z_t=e^{i\pi tE_1}e^{i\pi(1-t)E_0},
 \omega(S)&amp;=(w,0),&amp;\omega(1)&amp;=(f,0).
 \end{aligned}
 \tag{3.8}
-\]</span>
+\]</span></p>
 <p>The displayed generators are isometries in their indicated corners. Their quotient symbols satisfy the pullback condition. The two corners are orthogonal and their units sum to <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span>. Formula (3.7) therefore implies equalities of homomorphisms</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math math-display" data-tex="\[
 \psi_0=\psi+\omega,
 \qquad \psi_1=\psi+\omega j\chi.
 \tag{3.9}
@@ -242,11 +257,11 @@ Z_t=e^{i\pi tE_1}e^{i\pi(1-t)E_0},
 \psi_0=\psi+\omega,
 \qquad \psi_1=\psi+\omega j\chi.
 \tag{3.9}
-\]</span>
+\]</span></p>
 <p>For orthogonal-range homomorphisms <span class="math" data-tex="\(\rho,\eta:D\to E\)">\(\rho,\eta:D\to E\)</span>, one has
-<span class="math" data-tex="\((\rho+\eta)_*=\rho_*+\eta_*\)">\((\rho+\eta)_*=\rho_*+\eta_*\)</span> on either K-group. To see this even for nonunital algebras, factor the sum through <span class="math" data-tex="\(D\xrightarrow{\Delta}D\oplus D\xrightarrow{\rho\oplus\eta}E\)">\(D\xrightarrow{\Delta}D\oplus D\xrightarrow{\rho\oplus\eta}E\)</span>. Direct-sum K-theory identifies <span class="math" data-tex="\(\Delta_*x=(x,x)\)">\(\Delta_*x=(x,x)\)</span>; the last induced map is the sum of its two restrictions. These are the direct-sum statements of Lessons 4 and 6.</p>
+<span class="math" data-tex="\((\rho+\eta)_*=\rho_*+\eta_*\)">\((\rho+\eta)_*=\rho_*+\eta_*\)</span> on either K-group. To see this even for nonunital algebras, factor the sum through <span class="math" data-tex="\(D\xrightarrow{\Delta}D\oplus D\xrightarrow{\rho\oplus\eta}E\)">\(D\xrightarrow{\Delta}D\oplus D\xrightarrow{\rho\oplus\eta}E\)</span>. Direct-sum K-theory identifies <span class="math" data-tex="\(\Delta_*x=(x,x)\)">\(\Delta_*x=(x,x)\)</span>; the last induced map is the sum of its two restrictions. These are <a href="nonunital-algebras-unitization-relative-classes-and-half-exactness.html#4-a-splitting-makes-the-entire-short-sequence-exact">Lesson 4, Corollary 4.2</a> and <a href="invertibles-unitaries-and-k1.html#3-functoriality-and-finite-matrix-properties">Lesson 6, Proposition 3.2</a>.</p>
 <p>Now tensor all these maps with <span class="math" data-tex="\(B\)">\(B\)</span>. Their homotopies remain pointwise norm-continuous, by density of finite tensors and contractivity. The map <span class="math" data-tex="\(\omega_B\)">\(\omega_B\)</span> factors as</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math math-display" data-tex="\[
 B\otimes\mathcal T
 \xrightarrow{\ c\ }B\otimes\mathcal K\otimes\mathcal T
 \xrightarrow{\ \iota\ }B\otimes\mathcal P,
@@ -258,28 +273,28 @@ B\otimes\mathcal T
 \xrightarrow{\ \iota\ }B\otimes\mathcal P,
 \qquad c(b\otimes y)=b\otimes p_0\otimes y.
 \tag{3.10}
-\]</span>
-<p>Compact stability makes <span class="math" data-tex="\(c_*\)">\(c_*\)</span> an isomorphism. The *-split pullback extension stays exact after tensoring by Lemma 2.2's split-extension argument, and split K-exactness makes <span class="math" data-tex="\(\iota_*\)">\(\iota_*\)</span> injective. Thus <span class="math" data-tex="\((\omega_B)_*\)">\((\omega_B)_*\)</span> is injective. Homotopy invariance and (3.9) give</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p><a href="matrix-stability-stability-and-continuity-of-k0.html#4-compact-operator-stabilization">Compact stability in degree zero (Lesson 5, Theorem 4.1)</a> and <a href="invertibles-unitaries-and-k1.html#4-realizing-an-invertible-path-at-a-late-stage">degree one (Lesson 6, Corollary 4.2)</a> make <span class="math" data-tex="\(c_*\)">\(c_*\)</span> an isomorphism. The *-split pullback extension stays exact after tensoring by Lemma 2.2's split-extension argument, and split K-exactness makes <span class="math" data-tex="\(\iota_*\)">\(\iota_*\)</span> injective. Thus <span class="math" data-tex="\((\omega_B)_*\)">\((\omega_B)_*\)</span> is injective. <a href="the-grothendieck-group-and-k0-of-a-unital-algebra.html#4-changing-the-algebra">Homotopy invariance of degree zero</a>, <a href="the-index-map-and-the-exact-sequence-at-k0.html#6-the-fredholm-sign-and-a-cone-extension">its nonunital extension</a>, <a href="invertibles-unitaries-and-k1.html#3-functoriality-and-finite-matrix-properties">homotopy invariance of degree one</a> and (3.9) give</p>
+<p><span class="math math-display" data-tex="\[
 (\psi_B)_*+(\omega_B)_*
 =(\psi_B)_*+(\omega_B)_*(j_B\chi_B)_*.
 \]">\[
 (\psi_B)_*+(\omega_B)_*
 =(\psi_B)_*+(\omega_B)_*(j_B\chi_B)_*.
-\]</span>
+\]</span></p>
 <p>Subtract the common summand and cancel this injective map. It follows that <span class="math" data-tex="\((j_B\chi_B)_*=\mathrm{id}\)">\((j_B\chi_B)_*=\mathrm{id}\)</span>. The reverse composite <span class="math" data-tex="\(\chi_Bj_B\)">\(\chi_Bj_B\)</span> is literally <span class="math" data-tex="\(\mathrm{id}_B\)">\(\mathrm{id}_B\)</span>. Finally the split character extension identifies <span class="math" data-tex="\(K_i(B\otimes\mathcal T)\)">\(K_i(B\otimes\mathcal T)\)</span> with <span class="math" data-tex="\(K_i(B\otimes\mathcal T_0)\oplus K_i(B)\)">\(K_i(B\otimes\mathcal T_0)\oplus K_i(B)\)</span>. Since its section already induces an isomorphism, the first summand is zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
 <p>The injectivity in (3.10) uses both compact stability and the split ideal inclusion. Split exactness alone would not make the corner map an isomorphism. In (3.7), the final summand is <span class="math" data-tex="\(f\)">\(f\)</span>: replacing it by <span class="math" data-tex="\(g\)">\(g\)</span> gives initial projection <span class="math" data-tex="\(1-f+g\)">\(1-f+g\)</span>, so fails the isometry equation. These checks also fix the pullback (3.3) over the actual quotient circle algebra.</p>
 <h2 id="4-the-boundary-proves-periodicity-and-fixes-its-sign">4. The boundary proves periodicity and fixes its sign</h2>
 <p><strong>Theorem 4.1 (Bott periodicity).</strong> The map <span class="math" data-tex="\(\beta_A:K_0(A)\to K_1(SA)\)">\(\beta_A:K_0(A)\to K_1(SA)\)</span> is a natural isomorphism for every complex C*-algebra <span class="math" data-tex="\(A\)">\(A\)</span>. Under compact stability, the index boundary of the second extension in (2.2) satisfies</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math math-display" data-tex="\[
 \boxed{\partial_A\beta_A=-\mathrm{id}_{K_0(A)}.}
 \tag{4.1}
 \]">\[
 \boxed{\partial_A\beta_A=-\mathrm{id}_{K_0(A)}.}
 \tag{4.1}
-\]</span>
-<p><em>Proof.</em> The exact segment from Lesson 7 for the second extension in (2.2) is</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p><em>Proof.</em> The exact segment from <a href="the-index-map-and-the-exact-sequence-at-k0.html#4-exactness-at-the-four-interior-groups">Lesson 7, Theorem 4.1</a> for the second extension in (2.2) is</p>
+<p><span class="math math-display" data-tex="\[
 \begin{aligned}
 K_1(B\otimes\mathcal T_0)
 &amp;\longrightarrow K_1(SB)\\
@@ -295,18 +310,18 @@ K_1(B\otimes\mathcal T_0)
 &amp;\longrightarrow K_0(B\otimes\mathcal T_0).
 \end{aligned}
 \tag{4.2}
-\]</span>
+\]</span></p>
 <p>The outside groups vanish by Theorem 3.1; compact stability identifies the middle target with <span class="math" data-tex="\(K_0(B)\)">\(K_0(B)\)</span>. Thus <span class="math" data-tex="\(\partial_B\)">\(\partial_B\)</span> is an isomorphism for every <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
 <p>For unital <span class="math" data-tex="\(B\)">\(B\)</span> and a projection <span class="math" data-tex="\(e\in M_n(B)\)">\(e\in M_n(B)\)</span>, lift <span class="math" data-tex="\(f_e\)">\(f_e\)</span> to</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math math-display" data-tex="\[
 V_e=S\otimes e+1\otimes(I_n-e).
 \tag{4.3}
 \]">\[
 V_e=S\otimes e+1\otimes(I_n-e).
 \tag{4.3}
-\]</span>
+\]</span></p>
 <p>Its character is <span class="math" data-tex="\(I_n\)">\(I_n\)</span>, so <span class="math" data-tex="\(V_e-I_n\)">\(V_e-I_n\)</span> belongs to <span class="math" data-tex="\(M_n(B\otimes\mathcal T_0)\)">\(M_n(B\otimes\mathcal T_0)\)</span>, after the tensor flip. Direct multiplication gives</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math math-display" data-tex="\[
 V_e^*V_e=I_n,
 \qquad I_n-V_eV_e^*=p_0\otimes e.
 \tag{4.4}
@@ -314,25 +329,25 @@ V_e^*V_e=I_n,
 V_e^*V_e=I_n,
 \qquad I_n-V_eV_e^*=p_0\otimes e.
 \tag{4.4}
-\]</span>
-<p>The partial-isometry boundary is initial defect minus final defect, by Lesson 7, Proposition 5.1. Hence
+\]</span></p>
+<p>The partial-isometry boundary is initial defect minus final defect, by <a href="the-index-map-and-the-exact-sequence-at-k0.html#5-the-partial-isometry-formula">Lesson 7, Proposition 5.1</a>. Hence
 <span class="math" data-tex="\(\partial_B[f_e]=0-[p_0\otimes e]=-[e]\)">\(\partial_B[f_e]=0-[p_0\otimes e]=-[e]\)</span>. This already gives <span class="math" data-tex="\(\partial_\mathbb C[z]=-1\)">\(\partial_\mathbb C[z]=-1\)</span>, the shift convention of Lesson 9. Additivity proves (4.1) on <span class="math" data-tex="\(K_0(B)\)">\(K_0(B)\)</span>. Since <span class="math" data-tex="\(\partial_B\)">\(\partial_B\)</span> is an isomorphism, <span class="math" data-tex="\(\beta_B=-\partial_B^{-1}\)">\(\beta_B=-\partial_B^{-1}\)</span> is one too.</p>
 <p>For nonunital <span class="math" data-tex="\(A\)">\(A\)</span>, use the two split kernel identifications (1.3). The natural maps <span class="math" data-tex="\(\beta_{A^+}\)">\(\beta_{A^+}\)</span> and <span class="math" data-tex="\(\beta_\mathbb C\)">\(\beta_\mathbb C\)</span> are isomorphisms, so their commuting diagram restricts to an isomorphism of kernels: injectivity is inherited; for surjectivity, an element of the lower kernel has a unique preimage upstairs, whose scalar image must be zero by injectivity of <span class="math" data-tex="\(\beta_\mathbb C\)">\(\beta_\mathbb C\)</span>. Naturality of the coefficient Toeplitz boundaries, followed by the injective map <span class="math" data-tex="\(K_0(A)\to K_0(A^+)\)">\(K_0(A)\to K_0(A^+)\)</span>, proves (4.1) for <span class="math" data-tex="\(A\)">\(A\)</span>. There is no need to assume that a product of two relative partial-isometry lifts is itself a partial isometry. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
 <h2 id="5-the-polynomial-loop-route-an-outline-with-explicit-reductions">5. The polynomial-loop route: an outline with explicit reductions</h2>
 <p>Here is the finite-dimensional algebra behind the alternative polynomial proof. The reductions work over any unital complex Banach algebra <span class="math" data-tex="\(D\)">\(D\)</span>; for the present course <span class="math" data-tex="\(D\)">\(D\)</span> is a C*-algebra. Reduction from a nonunital algebra is the split kernel diagram (1.3).</p>
 <p>First, a based continuous invertible loop <span class="math" data-tex="\(u:\mathbb T\to GL_n(D)\)">\(u:\mathbb T\to GL_n(D)\)</span> is based-homotopic to a Laurent polynomial loop. To verify the analytic step, convolve with the Fejér kernel</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math math-display" data-tex="\[
 F_N(\theta)=\frac1{N+1}
 \left|\sum_{j=0}^N e^{ij\theta}\right|^2.
 \]">\[
 F_N(\theta)=\frac1{N+1}
 \left|\sum_{j=0}^N e^{ij\theta}\right|^2.
-\]</span>
-<p>It is nonnegative, has normalized integral one, and its integral outside any fixed arc about zero tends to zero, by the geometric-sum bound <span class="math" data-tex="\(F_N(\theta)\leq((N+1)\sin^2(\theta/2))^{-1}\)">\(F_N(\theta)\leq((N+1)\sin^2(\theta/2))^{-1}\)</span>. Uniform continuity gives uniform convergence of these Banach-valued convolutions to <span class="math" data-tex="\(u\)">\(u\)</span>. If <span class="math" data-tex="\(M=\sup_z\|u(z)^{-1}\|\)">\(M=\sup_z\|u(z)^{-1}\|\)</span>, choose a polynomial <span class="math" data-tex="\(g\)">\(g\)</span> with <span class="math" data-tex="\(\|g-u\|_\infty&lt;M^{-1}\)">\(\|g-u\|_\infty&lt;M^{-1}\)</span>. The Neumann series makes every straight interpolation between <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(g\)">\(g\)</span> invertible. Normalize each interpolation <span class="math" data-tex="\(H\)">\(H\)</span> by <span class="math" data-tex="\(H(z)H(1)^{-1}\)">\(H(z)H(1)^{-1}\)</span>. This makes the homotopy based, and its endpoint is the based Laurent polynomial <span class="math" data-tex="\(g(z)g(1)^{-1}\)">\(g(z)g(1)^{-1}\)</span>. The argument is uniform for a continuous family of loops, since a compact family has a common inverse bound and uniform continuity.</p>
+\]</span></p>
+<p>It is nonnegative, has normalized integral one, and its integral outside any fixed arc about zero tends to zero, by the geometric-sum bound <span class="math" data-tex="\(F_N(\theta)\leq((N+1)\sin^2(\theta/2))^{-1}\)">\(F_N(\theta)\leq((N+1)\sin^2(\theta/2))^{-1}\)</span>. Uniform continuity gives uniform convergence of these Banach-valued convolutions to <span class="math" data-tex="\(u\)">\(u\)</span>. If <span class="math" data-tex="\(M=\sup_z\|u(z)^{-1}\|\)">\(M=\sup_z\|u(z)^{-1}\|\)</span>, choose a polynomial <span class="math" data-tex="\(g\)">\(g\)</span> with <span class="math" data-tex="\(\|g-u\|_\infty&lt;M^{-1}\)">\(\|g-u\|_\infty&lt;M^{-1}\)</span>. <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#OA-FND-BN-02">The Neumann series</a> makes every straight interpolation between <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(g\)">\(g\)</span> invertible. Normalize each interpolation <span class="math" data-tex="\(H\)">\(H\)</span> by <span class="math" data-tex="\(H(z)H(1)^{-1}\)">\(H(z)H(1)^{-1}\)</span>. This makes the homotopy based, and its endpoint is the based Laurent polynomial <span class="math" data-tex="\(g(z)g(1)^{-1}\)">\(g(z)g(1)^{-1}\)</span>. The argument is uniform for a continuous family of loops, since a compact family has a common inverse bound and uniform continuity.</p>
 <p>Multiply a based Laurent loop by <span class="math" data-tex="\(z^N I_n\)">\(z^N I_n\)</span> to obtain a polynomial
 <span class="math" data-tex="\(f(z)=a_0+a_1z+\cdots+a_mz^m\)">\(f(z)=a_0+a_1z+\cdots+a_mz^m\)</span> with <span class="math" data-tex="\(f(1)=I_n\)">\(f(1)=I_n\)</span>. The multiplication changes its K-class by <span class="math" data-tex="\(N\beta_D[I_n]\)">\(N\beta_D[I_n]\)</span>. The next lemma supplies a linear loop in a larger matrix algebra.</p>
 <p><strong>Lemma 5.1 (finite linearization).</strong> In block size <span class="math" data-tex="\(n\)">\(n\)</span>, form the <span class="math" data-tex="\((m+1)\)">\((m+1)\)</span>-by-<span class="math" data-tex="\((m+1)\)">\((m+1)\)</span> block matrix</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math math-display" data-tex="\[
 \begin{gathered}
 \mu_m(f)(z)=\\
 \begin{pmatrix}
@@ -354,7 +369,7 @@ a_0&amp;a_1&amp;\cdots&amp;a_m\\
 \end{pmatrix}.
 \end{gathered}
 \tag{5.1}
-\]</span>
+\]</span></p>
 <p>Precisely, the top-row blocks are <span class="math" data-tex="\((\mu_m)_{0j}=a_j\)">\((\mu_m)_{0j}=a_j\)</span>; for <span class="math" data-tex="\(1\leq j\leq m\)">\(1\leq j\leq m\)</span>, its only other nonzero blocks are <span class="math" data-tex="\((\mu_m)_{jj}=I\)">\((\mu_m)_{jj}=I\)</span> and <span class="math" data-tex="\((\mu_m)_{j,j-1}=-zI\)">\((\mu_m)_{j,j-1}=-zI\)</span>. It is pointwise invertible exactly when <span class="math" data-tex="\(f\)">\(f\)</span> is. The normalized linear loop
 <span class="math" data-tex="\(\widehat\mu_m(f)(z)=\mu_m(f)(z)\mu_m(f)(1)^{-1}\)">\(\widehat\mu_m(f)(z)=\mu_m(f)(z)\mu_m(f)(1)^{-1}\)</span> is based-homotopic to <span class="math" data-tex="\(\operatorname{diag}(f,I_{mn})\)">\(\operatorname{diag}(f,I_{mn})\)</span>. For <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, use <span class="math" data-tex="\(\mu_0(f)=f\)">\(\mu_0(f)=f\)</span>.</p>
 <p><em>Proof.</em> Index the block rows and columns from <span class="math" data-tex="\(0\)">\(0\)</span> to <span class="math" data-tex="\(m\)">\(m\)</span>. Work downward from <span class="math" data-tex="\(j=m\)">\(j=m\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>. At stage <span class="math" data-tex="\(j\)">\(j\)</span>, the first row through column <span class="math" data-tex="\(j\)">\(j\)</span> is
@@ -364,27 +379,27 @@ a_0&amp;a_1&amp;\cdots&amp;a_m\\
 <p>The normalization matters: <span class="math" data-tex="\(\mu_m(f)(1)\)">\(\mu_m(f)(1)\)</span> is generally not the identity, even for a based <span class="math" data-tex="\(f\)">\(f\)</span>. Without it, the displayed elementary homotopy need not be a homotopy in <span class="math" data-tex="\((SD)^+\)">\((SD)^+\)</span>.</p>
 <p><strong>Lemma 5.2 (linear loops retract to idempotent loops).</strong> A based linear invertible loop <span class="math" data-tex="\(\ell(z)=a+bz\)">\(\ell(z)=a+bz\)</span> is homotopic, through based linear invertible loops, to <span class="math" data-tex="\(f_e(z)=I-e+ze\)">\(f_e(z)=I-e+ze\)</span> for an idempotent <span class="math" data-tex="\(e\)">\(e\)</span>. The idempotent depends continuously on <span class="math" data-tex="\(\ell\)">\(\ell\)</span>.</p>
 <p><em>Proof.</em> Basing gives <span class="math" data-tex="\(a+b=I\)">\(a+b=I\)</span>. For <span class="math" data-tex="\(z\ne1\)">\(z\ne1\)</span>,</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math math-display" data-tex="\[
 I+(z-1)b=(1-z)\big((1-z)^{-1}I-b\big).
 \tag{5.2}
 \]">\[
 I+(z-1)b=(1-z)\big((1-z)^{-1}I-b\big).
 \tag{5.2}
-\]</span>
-<p>As <span class="math" data-tex="\(z\)">\(z\)</span> runs around the circle minus <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\((1-z)^{-1}\)">\((1-z)^{-1}\)</span> runs through the vertical line <span class="math" data-tex="\(\operatorname{Re}\lambda=1/2\)">\(\operatorname{Re}\lambda=1/2\)</span>. Therefore the spectrum of <span class="math" data-tex="\(b\)">\(b\)</span> misses that line. Let <span class="math" data-tex="\(e\)">\(e\)</span> be its Riesz idempotent for the spectral part to the right of the line, using the holomorphic functional calculus of <a href="idempotents-projections-and-their-equivalences.html">Lesson 1</a>. It commutes with <span class="math" data-tex="\(b\)">\(b\)</span>. Define <span class="math" data-tex="\(b_r=(1-r)b+re\)">\(b_r=(1-r)b+re\)</span>. On the right spectral part its spectral values are <span class="math" data-tex="\((1-r)\lambda+r\)">\((1-r)\lambda+r\)</span>, which remain strictly to the right; on the left they are <span class="math" data-tex="\((1-r)\lambda\)">\((1-r)\lambda\)</span>, which remain strictly to the left. Holomorphic spectral mapping gives these assertions also for nonnormal <span class="math" data-tex="\(b\)">\(b\)</span>. Equation (5.2) then shows that <span class="math" data-tex="\(I+(z-1)b_r\)">\(I+(z-1)b_r\)</span> is invertible for every <span class="math" data-tex="\(z\)">\(z\)</span>, and equals <span class="math" data-tex="\(I\)">\(I\)</span> at <span class="math" data-tex="\(z=1\)">\(z=1\)</span>. This is the claimed homotopy.</p>
+\]</span></p>
+<p>As <span class="math" data-tex="\(z\)">\(z\)</span> runs around the circle minus <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\((1-z)^{-1}\)">\((1-z)^{-1}\)</span> runs through the vertical line <span class="math" data-tex="\(\operatorname{Re}\lambda=1/2\)">\(\operatorname{Re}\lambda=1/2\)</span>. Therefore the spectrum of <span class="math" data-tex="\(b\)">\(b\)</span> misses that line. Let <span class="math" data-tex="\(e\)">\(e\)</span> be its Riesz idempotent for the spectral part to the right of the line, using <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#OA-FND-BN-22">the Riesz-idempotent construction in Banach algebras, Example 6.12</a>. It commutes with <span class="math" data-tex="\(b\)">\(b\)</span>. Define <span class="math" data-tex="\(b_r=(1-r)b+re\)">\(b_r=(1-r)b+re\)</span>. On the right spectral part its spectral values are <span class="math" data-tex="\((1-r)\lambda+r\)">\((1-r)\lambda+r\)</span>, which remain strictly to the right; on the left they are <span class="math" data-tex="\((1-r)\lambda\)">\((1-r)\lambda\)</span>, which remain strictly to the left. <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#OA-FND-BN-12">Holomorphic spectral mapping</a> gives these assertions also for nonnormal <span class="math" data-tex="\(b\)">\(b\)</span>. Equation (5.2) then shows that <span class="math" data-tex="\(I+(z-1)b_r\)">\(I+(z-1)b_r\)</span> is invertible for every <span class="math" data-tex="\(z\)">\(z\)</span>, and equals <span class="math" data-tex="\(I\)">\(I\)</span> at <span class="math" data-tex="\(z=1\)">\(z=1\)</span>. This is the claimed homotopy.</p>
 <p>For <span class="math" data-tex="\(b\)">\(b\)</span> sufficiently close to a fixed <span class="math" data-tex="\(b_0\)">\(b_0\)</span>, a common finite contour separates the same two parts of the spectrum; the resolvent identity and Neumann series make its Riesz integral continuous. These local definitions agree because they select exactly the right spectral component, giving continuity globally on the domain. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
-<p>For a C*-algebra, the idempotent <span class="math" data-tex="\(e\)">\(e\)</span> can be replaced by a projection in its stable homotopy class by Lesson 1. Its idempotent loop has the same K-class as that projection loop. Combining the reductions gives the concrete representation</p>
-<span class="math math-display" data-tex="\[
+<p>For a C*-algebra, the idempotent <span class="math" data-tex="\(e\)">\(e\)</span> can be replaced by a projection in its stable homotopy class by <a href="idempotents-projections-and-their-equivalences.html#4-replacing-idempotents-by-projections">Lesson 1, Theorem 4.1</a>. Its idempotent loop has the same K-class as that projection loop. Combining the reductions gives the concrete representation</p>
+<p><span class="math math-display" data-tex="\[
 [u]=\beta_D\big([e]-N[I_n]\big).
 \tag{5.3}
 \]">\[
 [u]=\beta_D\big([e]-N[I_n]\big).
 \tag{5.3}
-\]</span>
+\]</span></p>
 <p>This outlines the surjectivity half of the polynomial proof and proves each reduction used in it. The full polynomial method additionally carries homotopies through common Laurent denominators, linearization sizes and identity padding to establish stable uniqueness of the relative idempotent class. In this lesson uniqueness follows from the completed Toeplitz proof, Theorem 4.1: two expressions in (5.3) for the same loop must have equal K₀-classes. It does not assert uniqueness of an unstabilized idempotent or of a denominator. Exercise 10.4 gives the complete finite linearization argument in a directly reusable form.</p>
 <h2 id="6-two-periodicity-euclidean-spaces-and-the-planar-sign">6. Two-periodicity, Euclidean spaces, and the planar sign</h2>
-<p>Let <span class="math" data-tex="\(\theta_A:K_1(A)\to K_0(SA)\)">\(\theta_A:K_1(A)\to K_0(SA)\)</span> be the positive cone-boundary isomorphism of Lesson 8. Define the ordered double suspension</p>
-<span class="math math-display" data-tex="\[
+<p>Let <span class="math" data-tex="\(\theta_A:K_1(A)\to K_0(SA)\)">\(\theta_A:K_1(A)\to K_0(SA)\)</span> be the positive cone-boundary isomorphism of <a href="suspension-higher-k-groups-and-the-long-exact-sequence.html#2-the-idempotent-loop-of-an-invertible">Lesson 8, Theorem 2.1</a>. Define the ordered double suspension</p>
+<p><span class="math math-display" data-tex="\[
 \mathsf B_A=\theta_{SA}\beta_A:
 K_0(A)\xrightarrow{\cong}K_0(S^2A).
 \tag{6.1}
@@ -392,10 +407,10 @@ K_0(A)\xrightarrow{\cong}K_0(S^2A).
 \mathsf B_A=\theta_{SA}\beta_A:
 K_0(A)\xrightarrow{\cong}K_0(S^2A).
 \tag{6.1}
-\]</span>
-<p>Apply this to every <span class="math" data-tex="\(S^nA\)">\(S^nA\)</span>. With the higher groups <span class="math" data-tex="\(K_n(A)=K_0(S^nA)\)">\(K_n(A)=K_0(S^nA)\)</span> and their degree-one identification fixed in Lesson 8, it gives natural isomorphisms <span class="math" data-tex="\(K_n(A)\cong K_{n+2}(A)\)">\(K_n(A)\cong K_{n+2}(A)\)</span> for all <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>. In the same way (3.1), applied to <span class="math" data-tex="\(S^nB\)">\(S^nB\)</span>, proves vanishing of all higher groups of <span class="math" data-tex="\(B\otimes\mathcal T_0\)">\(B\otimes\mathcal T_0\)</span>. We use the usual function-algebra identification <span class="math" data-tex="\(S^n(B\otimes\mathcal T_0)\cong S^nB\otimes\mathcal T_0\)">\(S^n(B\otimes\mathcal T_0)\cong S^nB\otimes\mathcal T_0\)</span>, obtained by uniform approximation of continuous compactly supported functions by finite scalar functions times tensor values.</p>
+\]</span></p>
+<p>Apply this to every <span class="math" data-tex="\(S^nA\)">\(S^nA\)</span>. With the higher groups <span class="math" data-tex="\(K_n(A)=K_0(S^nA)\)">\(K_n(A)=K_0(S^nA)\)</span> and their degree-one identification fixed in Lesson 8, it gives natural isomorphisms <span class="math" data-tex="\(K_n(A)\cong K_{n+2}(A)\)">\(K_n(A)\cong K_{n+2}(A)\)</span> for all <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>. In the same way (3.1), applied to <span class="math" data-tex="\(S^nB\)">\(S^nB\)</span>, proves vanishing of all higher groups of <span class="math" data-tex="\(B\otimes\mathcal T_0\)">\(B\otimes\mathcal T_0\)</span>. We use the usual function-algebra identification <span class="math" data-tex="\(S^n(B\otimes\mathcal T_0)\cong S^nB\otimes\mathcal T_0\)">\(S^n(B\otimes\mathcal T_0)\cong S^nB\otimes\mathcal T_0\)</span>. The norm and density assertions were proved in Section 2 above; associativity is implemented by the unitary identifying the two bracketings of three Hilbert tensor factors.</p>
 <p><strong>Corollary 6.1.</strong> For every <span class="math" data-tex="\(d\geq0\)">\(d\geq0\)</span> and <span class="math" data-tex="\(i=0,1\)">\(i=0,1\)</span>,</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math math-display" data-tex="\[
 K_i(C_0(\mathbb R^d))=
 \begin{cases}
 \mathbb Z,&amp;i\equiv d\pmod2,\\
@@ -409,10 +424,10 @@ K_i(C_0(\mathbb R^d))=
 0,&amp;i\not\equiv d\pmod2.
 \end{cases}
 \tag{6.2}
-\]</span>
-<p><em>Proof.</em> For <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, use <span class="math" data-tex="\(K_0(\mathbb C)=\mathbb Z[1]\)">\(K_0(\mathbb C)=\mathbb Z[1]\)</span> and <span class="math" data-tex="\(K_1(\mathbb C)=0\)">\(K_1(\mathbb C)=0\)</span>. For <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, Lesson 8 gives <span class="math" data-tex="\(K_0(S\mathbb C)=0\)">\(K_0(S\mathbb C)=0\)</span>, and Theorem 4.1 gives <span class="math" data-tex="\(K_1(S\mathbb C)=\mathbb Z[z]\)">\(K_1(S\mathbb C)=\mathbb Z[z]\)</span>. Identify increasing real coordinates with <span class="math" data-tex="\(t\in(0,1)\)">\(t\in(0,1)\)</span> by <span class="math" data-tex="\(x=-\cot(\pi t)\)">\(x=-\cot(\pi t)\)</span>. Repeated application of (6.1) gives the groups for every subsequent <span class="math" data-tex="\(d\)">\(d\)</span>, together with generators obtained by ordered Bott suspensions of these two base generators. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+\]</span></p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, use <a href="the-grothendieck-group-and-k0-of-a-unital-algebra.html#5-calculations-dimensions-absorption-and-bundles">Lesson 3, Example 5.1</a> for <span class="math" data-tex="\(K_0(\mathbb C)=\mathbb Z[1]\)">\(K_0(\mathbb C)=\mathbb Z[1]\)</span>, and <a href="invertibles-unitaries-and-k1.html#5-components-detected-by-spectra-winding-and-index">Lesson 6, Theorem 5.1 applied to the scalar algebra</a> for <span class="math" data-tex="\(K_1(\mathbb C)=0\)">\(K_1(\mathbb C)=0\)</span>. For <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, <a href="suspension-higher-k-groups-and-the-long-exact-sequence.html#4-the-line-and-plane-before-periodicity">Lesson 8, Section 4</a> gives <span class="math" data-tex="\(K_0(S\mathbb C)=0\)">\(K_0(S\mathbb C)=0\)</span>, and Theorem 4.1 gives <span class="math" data-tex="\(K_1(S\mathbb C)=\mathbb Z[z]\)">\(K_1(S\mathbb C)=\mathbb Z[z]\)</span>. Identify increasing real coordinates with <span class="math" data-tex="\(t\in(0,1)\)">\(t\in(0,1)\)</span> by <span class="math" data-tex="\(x=-\cot(\pi t)\)">\(x=-\cot(\pi t)\)</span>. Repeated application of (6.1) gives the groups for every subsequent <span class="math" data-tex="\(d\)">\(d\)</span>, together with generators obtained by ordered Bott suspensions of these two base generators. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
 <p>To fix the planar generator, retain the coordinate order of Lesson 8: the new outer suspension variable <span class="math" data-tex="\(t\)">\(t\)</span> comes first, the inner loop variable <span class="math" data-tex="\(s\)">\(s\)</span> second. Set <span class="math" data-tex="\(x=-\cot(\pi t)\)">\(x=-\cot(\pi t)\)</span>, <span class="math" data-tex="\(y=-\cot(\pi s)\)">\(y=-\cot(\pi s)\)</span>, and <span class="math" data-tex="\(\zeta=x+iy\)">\(\zeta=x+iy\)</span>. The projection from <a href="nonunital-algebras-unitization-relative-classes-and-half-exactness.html#6-compact-supports-and-the-determinant-at-the-equator">Lesson 4, equation (6.2)</a> is</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math math-display" data-tex="\[
 q(\zeta)=\frac1{1+|\zeta|^2}
 \begin{pmatrix}1&amp;\overline\zeta\\\zeta&amp;|\zeta|^2\end{pmatrix},
 \qquad q(\infty)=P=\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix}.
@@ -422,9 +437,9 @@ q(\zeta)=\frac1{1+|\zeta|^2}
 \begin{pmatrix}1&amp;\overline\zeta\\\zeta&amp;|\zeta|^2\end{pmatrix},
 \qquad q(\infty)=P=\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix}.
 \tag{6.3}
-\]</span>
-<p>Its relative class is <span class="math" data-tex="\(\mathfrak b=[q]-[P]\)">\(\mathfrak b=[q]-[P]\)</span>. Lesson 8, equation (4.9), computes its actual finite-to-infinity clutching degree and proves</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p>Its relative class is <span class="math" data-tex="\(\mathfrak b=[q]-[P]\)">\(\mathfrak b=[q]-[P]\)</span>. <a href="suspension-higher-k-groups-and-the-long-exact-sequence.html#fixing-the-generator-s-sign">Lesson 8, equation (4.9)</a>, computes its actual finite-to-infinity clutching degree and proves</p>
+<p><span class="math math-display" data-tex="\[
 \boxed{\theta_{S\mathbb C}\beta_\mathbb C[1]
 =\mathfrak b,
 \qquad
@@ -436,17 +451,17 @@ q(\zeta)=\frac1{1+|\zeta|^2}
 \qquad
 \partial_\mathbb C\theta_{S\mathbb C}^{-1}(\mathfrak b)=-[1].}
 \tag{6.4}
-\]</span>
+\]</span></p>
 <p>Thus <span class="math" data-tex="\(\mathfrak b\)">\(\mathfrak b\)</span> is the positive generator of <span class="math" data-tex="\(K_0(C_0(\mathbb R^2))\)">\(K_0(C_0(\mathbb R^2))\)</span>, while the Toeplitz index of its positive loop antecedent is negative. Exchanging the two real coordinates reverses the clutching degree and gives <span class="math" data-tex="\(-\mathfrak b\)">\(-\mathfrak b\)</span>. Swapping the two vector coordinates by a constant unitary instead sends (6.3) to <span class="math" data-tex="\((1+|\zeta|^2)^{-1}\begin{pmatrix}|\zeta|^2&amp;\zeta\\\overline\zeta&amp;1\end{pmatrix}\)">\((1+|\zeta|^2)^{-1}\begin{pmatrix}|\zeta|^2&amp;\zeta\\\overline\zeta&amp;1\end{pmatrix}\)</span>, the common alternative Bott projection, and conjugates its scalar projection at the same time. It preserves the relative class. A vector-coordinate swap is therefore different from reversing the orientation of the plane.</p>
-<p>For <span class="math" data-tex="\(A=C(X)\)">\(A=C(X)\)</span>, where <span class="math" data-tex="\(X\)">\(X\)</span> is compact Hausdorff, the Serre–Swan correspondence of Lesson 2 makes (6.1) the two-periodicity of topological complex K-theory with compact supports on <span class="math" data-tex="\(\mathbb R^2\times X\)">\(\mathbb R^2\times X\)</span>. Equivalently, it identifies <span class="math" data-tex="\(K^0(X)\)">\(K^0(X)\)</span> with the reduced group of <span class="math" data-tex="\(S^2\wedge X_+\)">\(S^2\wedge X_+\)</span>, where <span class="math" data-tex="\(X_+\)">\(X_+\)</span> adds a disjoint base point. Evaluation at <span class="math" data-tex="\(\infty\in S^2\)">\(\infty\in S^2\)</span> gives a split extension with ideal <span class="math" data-tex="\(C_0(\mathbb R^2,C(X))\)">\(C_0(\mathbb R^2,C(X))\)</span>, so</p>
-<span class="math math-display" data-tex="\[
+<p>For <span class="math" data-tex="\(A=C(X)\)">\(A=C(X)\)</span>, where <span class="math" data-tex="\(X\)">\(X\)</span> is compact Hausdorff, <a href="vector-bundles-and-finitely-generated-projective-modules.html#3-recovering-bundles-and-all-their-maps">the Serre–Swan correspondence of Lesson 2, Theorem 3.1</a> makes (6.1) the two-periodicity of topological complex K-theory with compact supports on <span class="math" data-tex="\(\mathbb R^2\times X\)">\(\mathbb R^2\times X\)</span>. Equivalently, it identifies <span class="math" data-tex="\(K^0(X)\)">\(K^0(X)\)</span> with the reduced group of <span class="math" data-tex="\(S^2\wedge X_+\)">\(S^2\wedge X_+\)</span>, where <span class="math" data-tex="\(X_+\)">\(X_+\)</span> adds a disjoint base point. Evaluation at <span class="math" data-tex="\(\infty\in S^2\)">\(\infty\in S^2\)</span> gives a split extension with ideal <span class="math" data-tex="\(C_0(\mathbb R^2,C(X))\)">\(C_0(\mathbb R^2,C(X))\)</span>, so</p>
+<p><span class="math math-display" data-tex="\[
 K_0(C(S^2\times X))\cong K_0(C(X))\oplus K_0(C(X)).
 \tag{6.5}
 \]">\[
 K_0(C(S^2\times X))\cong K_0(C(X))\oplus K_0(C(X)).
 \tag{6.5}
-\]</span>
-<p>For <span class="math" data-tex="\(X\)">\(X\)</span> a point this gives two infinite cyclic summands; Exercise 10.5 derives their basis directly from clutching. The <a href="../bott-and-weyl-traces/bott-suspension.html">analytic Bott-operator lesson, §2</a> supplies the separate index-one model <span class="math" data-tex="\(x+d/dx\)">\(x+d/dx\)</span>. The present coefficient theorem supplies the K-theory periodicity used alongside that analytic construction.</p>
+\]</span></p>
+<p>For <span class="math" data-tex="\(X\)">\(X\)</span> a point this gives two infinite cyclic summands; Exercise 10.5 derives their basis directly from clutching. The <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-CP/prerequisites/index-theory-of-elliptic-operators/the-bott-operator-suspension-and-reduction-of-the-index-to-euclidean-space.html#AN-FND-BO-02">analytic Bott-operator lesson, §2</a> supplies the separate index-one model <span class="math" data-tex="\(x+d/dx\)">\(x+d/dx\)</span>. The present coefficient theorem supplies the K-theory periodicity used alongside that analytic construction.</p>
 <h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
 <p><strong>Exercise 10.1 — The positive scalar loop (basic).</strong> Prove that <span class="math" data-tex="\(\beta_\mathbb C(1)=[z]\)">\(\beta_\mathbb C(1)=[z]\)</span> generates <span class="math" data-tex="\(K_1(C_0(\mathbb R))\)">\(K_1(C_0(\mathbb R))\)</span>.</p>
 <p><em>Solution.</em> For <span class="math" data-tex="\(e=1\)">\(e=1\)</span>, (1.1) is exactly <span class="math" data-tex="\(z(t)=e^{2\pi it}\)">\(z(t)=e^{2\pi it}\)</span>. This is a unitary in <span class="math" data-tex="\((S\mathbb C)^+\)">\((S\mathbb C)^+\)</span>, with scalar part one and equal endpoint values. Under inclusion into <span class="math" data-tex="\(C(\mathbb T)\)">\(C(\mathbb T)\)</span>, its determinant has winding <span class="math" data-tex="\(+1\)">\(+1\)</span>, the generator in Lesson 6, Theorem 5.2. The circle evaluation extension splits, and <span class="math" data-tex="\(K_1(\mathbb C)=0\)">\(K_1(\mathbb C)=0\)</span>, so the inclusion <span class="math" data-tex="\(K_1(S\mathbb C)\to K_1(C(\mathbb T))\)">\(K_1(S\mathbb C)\to K_1(C(\mathbb T))\)</span> is an isomorphism. Therefore <span class="math" data-tex="\([z]\)">\([z]\)</span> generates the source, and the increasing real-coordinate identification in Corollary 6.1 gives the claimed line group. This also verifies the normalization independently of the general Bott theorem.</p>
@@ -460,7 +475,7 @@ K_0(C(S^2\times X))\cong K_0(C(X))\oplus K_0(C(X)).
 <p><em>Solution.</em> Every bundle is trivial over each closed hemisphere by <a href="vector-bundles-and-finitely-generated-projective-modules.html#4-transport-along-a-cylinder">Lesson 2, Corollary 4.3</a>. It therefore has a clutching map <span class="math" data-tex="\(g:S^1\to GL_r(\mathbb C)\)">\(g:S^1\to GL_r(\mathbb C)\)</span>. Its determinant winding <span class="math" data-tex="\(d(g)\)">\(d(g)\)</span> is independent of the frames: each change of frame extends across its disk, so its determinant loop has winding zero. The determinant-degree construction and its additivity are proved in Lesson 4, §6; rank is constant since the sphere is connected.</p>
 <p>Two bundles of the same rank and degree become isomorphic after adding trivial bundles. Indeed their stabilized clutching maps have the same class by the determinant classification in Lesson 6, Theorem 5.2. Pad to a common finite size in which there is an actual invertible-loop homotopy. Gluing the two hemisphere products with that homotopy gives a bundle over <span class="math" data-tex="\(S^2\times[0,1]\)">\(S^2\times[0,1]\)</span>: on a collar of the seam the continuous invertible transition matrix supplies its bundle charts. Homotopy invariance of bundles, Lesson 2, Theorem 4.2, identifies its endpoint bundles. Conversely isomorphic bundles have the same rank and degree, as does adding the same trivial bundle.</p>
 <p>Consequently the homomorphism</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math math-display" data-tex="\[
 K_0(C(S^2))\longrightarrow\mathbb Z^2,
 \qquad [E]-[F]\longmapsto
 (\operatorname{rank}E-\operatorname{rank}F,d(E)-d(F))
@@ -470,23 +485,19 @@ K_0(C(S^2))\longrightarrow\mathbb Z^2,
 \qquad [E]-[F]\longmapsto
 (\operatorname{rank}E-\operatorname{rank}F,d(E)-d(F))
 \tag{7.1}
-\]</span>
+\]</span></p>
 <p>is injective: zero coordinates give equal-rank, equal-degree bundles, whose stable isomorphism makes their K₀-difference zero. It is surjective because the trivial line has coordinates <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span>, while (6.3) has coordinates <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span>, by the explicit frame transfer in Exercise 10.3. Their two coordinate vectors form an integral basis: <span class="math" data-tex="\((r,d)=(r-d)(1,0)+d(1,1)\)">\((r,d)=(r-d)(1,0)+d(1,1)\)</span>. Thus <span class="math" data-tex="\([1],[q]\)">\([1],[q]\)</span> is the stated basis. Equivalently <span class="math" data-tex="\([1],[q]-[1]\)">\([1],[q]-[1]\)</span> is the basis adapted to evaluation at infinity. Its kernel is generated by the second basis vector, agreeing with (6.5) and (6.4). This proof uses only disk triviality, stable determinant classification and group completion; its sphere computation does not assume Bott periodicity.</p>
 <h2 id="references-and-exact-convention-checks">References and exact convention checks</h2>
 <p>The main proof is the coefficient Toeplitz argument associated with Cuntz, compared with [Blackadar 1998, §9.4.2(d)–(f)]. Equations (3.3) and (3.7) spell out its required quotient and endpoint; (3.10) supplies the compact-stability step needed for cancellation. Definition (1.4) agrees with [Blackadar 1998, Definition 9.1.1]. Section 5 gives the explicit reductions corresponding to Lemmas 9.2.5, 9.2.7 and 9.2.8, with a based normalization at every elementary step.</p>
-<p>[Emerson 2024, §8.8] treats the two-degree external-product Bott map. Here the one-degree projection-loop map has type <span class="math" data-tex="\(K_0(A)\to K_1(SA)\)">\(K_0(A)\to K_1(SA)\)</span>, and its composition with <span class="math" data-tex="\(\theta_{SA}\)">\(\theta_{SA}\)</span> has type <span class="math" data-tex="\(K_0(A)\to K_0(S^2A)\)">\(K_0(A)\to K_0(S^2A)\)</span>. The typed, ordered formulas (4.1) and (6.4) specify the signs without identifying maps of different types. They use the positive loop and outer-first suspension convention in <a href="../NCG-CYCLIC/public/reader/action-pseudodifferential-calculus.html#a-bott-orientation-determined-by-clutching">Frequency calculus for an action of Euclidean space, “A Bott orientation determined by clutching”</a>, and the unitization convention in <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-OPK/preparation.html#dependency-327fefcb6f08">K-theory of the leaf space, “Suspension, Bott periodicity and extension boundaries”</a>.</p>
+<p>[Emerson 2024, §8.8] treats the two-degree external-product Bott map. Here the one-degree projection-loop map has type <span class="math" data-tex="\(K_0(A)\to K_1(SA)\)">\(K_0(A)\to K_1(SA)\)</span>, and its composition with <span class="math" data-tex="\(\theta_{SA}\)">\(\theta_{SA}\)</span> has type <span class="math" data-tex="\(K_0(A)\to K_0(S^2A)\)">\(K_0(A)\to K_0(S^2A)\)</span>. The typed, ordered formulas (4.1) and (6.4) specify the signs without identifying maps of different types. They use the positive loop and outer-first suspension convention in <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-CP/prerequisites/NCG-CYCLIC/pseudodifferential-calculus-for-actions-of-rn.html#a-bott-orientation-determined-by-clutching">Frequency calculus for an action of Euclidean space, “A Bott orientation determined by clutching”</a>, and the unitization convention in <a href="preparation.html#dependency-327fefcb6f08">K-theory of the leaf space, “Suspension, Bott periodicity and extension boundaries”</a>.</p>
 <ul>
 <li><strong>[Blackadar 1998]</strong> B. Blackadar, <em>K-Theory for Operator Algebras</em>, second edition, MSRI Publications 5, Cambridge University Press, 1998, §§9.1–9.2 and 9.4.2. <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf">Author's corrected second edition</a>.</li>
 <li><strong>[Emerson 2024]</strong> H. Emerson, <em>An Introduction to C*-Algebras and Noncommutative Geometry</em>, Birkhäuser Advanced Texts, 2024, §8.8.</li>
 <li><strong>[Arici–Mesland 2019]</strong> Francesca Arici and Bram Mesland, <em>Toeplitz extensions in noncommutative topology and mathematical physics</em>, arXiv:1911.05823v1, §3.1, pp. 6–7. <a href="https://arxiv.org/pdf/1911.05823v1#page=6">Freely readable versioned paper</a>. This compares the Toeplitz route to Bott periodicity; its cited coefficient K-isomorphism is fully proved in Theorem 3.1 here, and Theorem 4.1 fixes the actual boundary sign. It is not used as an omitted KK-theory or Clifford-algebra proof.</li>
 <li><strong>[Connes 1994]</strong> A. Connes, <em>Noncommutative Geometry</em>, Academic Press, 1994, Chapter II, §1, printed pp. 86–90. <a href="https://alainconnes.org/wp-content/uploads/book94bigpdf.pdf#page=86">Author's electronic edition</a>.</li>
 </ul>
-
 </article>
-
-
-
-<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="toeplitz-operators-and-the-index-theorem-on-the-circle.html">← Toeplitz operators and the index theorem on the circle</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="six-term-exact-sequence-and-exponential-map.html">The six-term exact sequence and the exponential map →</a></span></nav>
+<nav aria-label="Lessons" class="pager"><span class="pager-prev"><a href="toeplitz-operators-and-the-index-theorem-on-the-circle.html" rel="prev">← Toeplitz operators and the index theorem on the circle</a></span><a href="./">Course contents</a><span class="pager-next"><a href="six-term-exact-sequence-and-exponential-map.html" rel="next">The six-term exact sequence and the exponential map →</a></span></nav>
 <p class="small source-link"><a href="src/KT-OPK-10.md">Markdown source of this lesson</a></p>
 </main>
 <footer class="site-footer"><p>This course’s original exposition and solutions use CC0 1.0. Human mathematical sources are credited in each lesson. See <a href="sources.html">sources, authorship and component terms</a>.</p><p><a href="../../index.html">Open Mathematics Courses</a> · <a href="preparation.html">Preparation</a></p></footer>

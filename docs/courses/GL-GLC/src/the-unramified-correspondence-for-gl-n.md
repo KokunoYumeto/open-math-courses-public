@@ -25,9 +25,9 @@ a(M,M',\iota)=M,\qquad b(M,M',\iota)=M',
 \tag{T7.2}
 \]
 Positive averaging has the normalization
-\
+\[
 \mathsf A_{r,E}^d(F)
-=b_!(a^*F\otimes u^*\mathcal L_E^d)[rd.
+=b_!(a^*F\otimes u^*\mathcal L_E^d)[rd](rd/2).
 \tag{T7.3}
 \]
 Here \(\mathcal L_E^d\) is the intermediate-extension Laumon complex specified in §4. The half Tate twist is included only in an arithmetic convention with a chosen half twist. It is omitted in the de Rham theory. The underlying symmetric complex \(E^{(d)}\) is unshifted; its perverse normalization on \(X^{(d)}\) is \(E^{(d)}[d]\).
@@ -365,7 +365,7 @@ For every Cartesian square used in N8, require compact-support base change \(g^*
 \]
 Finite and proper base change alone do not supply this statement: the stack Abel map has nonzero-section fibres, which are generally not proper. These compact-support stack operations and their coherences remain part of the exact open foundation chain for the chosen theory.
 
-2. Verdier duality commutes with finite proper pushforward and has the smooth orientation formula \(\mathbb D(E^{\boxtimes d}[d])=(E^\vee)^{\boxtimes d}d\) on \(X^d\) in the étale convention. Perverse upper bounds are the support-dimension bounds, lower bounds are their duals, and the resulting recollement has intermediate extension. Smooth pullback normalized by relative dimension is perverse exact, is conservative for smooth covers, and commutes with open \(!\)- and \(*\)-extension, including the atlas (N5.4).
+2. Verdier duality commutes with finite proper pushforward and has the smooth orientation formula \(\mathbb D(E^{\boxtimes d}[d])=(E^\vee)^{\boxtimes d}[d](d)\) on \(X^d\) in the étale convention. Perverse upper bounds are the support-dimension bounds, lower bounds are their duals, and the resulting recollement has intermediate extension. Smooth pullback normalized by relative dimension is perverse exact, is conservative for smooth covers, and commutes with open \(!\)- and \(*\)-extension, including the atlas (N5.4).
 3. The same stack operations apply to the Picard stack and its products, to the support gerbe in N5, and to the averaging and Abel maps. They include the algebraicity of the full torsion stack and the identification of its regular open with the finite-family gerbe of N5; in the proper-support convention this includes the finite-support and locally free pushforward theorem stated above. They also include extension to the chosen inverse-limit or presentable sheaf category on the locally finite-type Picard stack whenever the kernel criterion is asserted there. Bounded constructible calculations do not alone establish those extensions.
 
 GL-PERV-02, Theorem 3.2, proves the abstract intermediate-extension uniqueness and full-faithfulness theorem from the recollement and t-structure axioms. Its proof is usable here for that categorical step. It does not establish the above algebraic-stack sheaf operations. The actual GL-PERV-10 theorem concerns Grothendieck–Springer maps for a connected complex reductive group, with separately specified arithmetic inputs. It cannot alone certify a torsion-stack Laumon/Springer comparison or a de Rham version. The precise missing foundations in this list remain open in this comparison.
@@ -435,12 +435,12 @@ Define the stack Abel map and tensor-product map by
 
 These are morphisms in families, using the universal divisor just proved. Equations (N4.2)–(N4.3) identify the target-bundle map with \(\mathrm{mult}\circ(1\times\mathrm{AJ}_d)\). Composition and projection formula in N6, together with (N7.5), consequently give
 
-\
+\[
 \begin{aligned}
 b_!(a^*F\otimes u^*\mathcal L_E^d)
 &\simeq \mathrm{mult}_!\left(F\boxtimes(\mathrm{AJ}_d)_!E^{(d)}\right),\\
 \mathsf A_{1,E}^d(F)
-&\simeq \mathrm{mult}_!\left(F\boxtimes(\mathrm{AJ}_d)_!E^{(d)}\right)[d.
+&\simeq \mathrm{mult}_!\left(F\boxtimes(\mathrm{AJ}_d)_!E^{(d)}\right)[d](d/2).
 \end{aligned}
 \tag{N8.2}
 \]
@@ -480,13 +480,13 @@ E^{(d)}\simeq a_d^*C_E^d.
 
 Its proof translates the large-degree projective-bundle descent by a fixed divisor and uses symmetric tensor grouping to verify independence, multiplicativity and collision coherence. It remains relative to Lesson 5's explicitly retained geometric, cohomological and realization foundations. We import (N8.5) only when those hypotheses hold in the same sheaf theory as N6. For \(\widetilde C_E^d\) its pullback to the Picard stack, projection formula now proves
 
-\
+\[
 (\mathrm{AJ}_d)_!E^{(d)}
 \simeq\widetilde C_E^d\otimes(\mathrm{AJ}_d)_!\Lambda,
 \qquad
 \mathsf A_{1,E}^d(F)
 \simeq\mathrm{mult}_!\bigl(F\boxtimes(
-\widetilde C_E^d\otimes(\mathrm{AJ}_d)_!\Lambda)\bigr)[d.
+\widetilde C_E^d\otimes(\mathrm{AJ}_d)_!\Lambda)\bigr)[d](d/2).
 \tag{N8.6}
 \]
 
@@ -609,14 +609,14 @@ These are mathematical hypotheses for V4, not the theorem to be proved. V5–V10
 
 For clarity about the top adjoint, with Tate factors retained it is
 
-\
+\[
 L_i(K)={}^{p}H^i p_!\bigl(E^{\boxtimes i}\otimes K\bigr),
 \qquad
-R_i(B)=(E^*)^{\boxtimes i}[i\boxtimes B.
+R_i(B)=(E^*)^{\boxtimes i}[i](i)\boxtimes B.
 \tag{V3.4}
 \]
 
-The shift follows from \(p^!B=p^*B2i\): a map \(L_iK\to B\) is a map \(p_!(E^{\boxtimes i}\otimes K)\to B[-i]\), because this integral has no perverse cohomology above \(i\). Adjunction and the dual of \(E\) give exactly (V3.4). One can instead twist \(L_i\) by \((i)\) and omit the twist in \(R_i\). On the chosen geometric Tate trivialization both versions give (V3.3). The \([-i]\) on a smooth pullback in the printed argument at Gaitsgory native line 1431 is a sign typo; the heart pullback is \(p^*[i]\).
+The shift follows from \(p^!B=p^*B[2i](i)\): a map \(L_iK\to B\) is a map \(p_!(E^{\boxtimes i}\otimes K)\to B[-i]\), because this integral has no perverse cohomology above \(i\). Adjunction and the dual of \(E\) give exactly (V3.4). One can instead twist \(L_i\) by \((i)\) and omit the twist in \(R_i\). On the chosen geometric Tate trivialization both versions give (V3.3). The \([-i]\) on a smooth pullback in the printed argument at Gaitsgory native line 1431 is a sign typo; the heart pullback is \(p^*[i]\).
 
 The adjunction unit \(K\to R_iL_iK\) is an epimorphism. Its cokernel \(R_iB\) lies in the image of \(R_i\) by the subquotient property. The composite \(K\to R_iL_iK\to R_iB\) is zero. Adjunction identifies this composite with \(L_iK\to B\), which must therefore be zero. But the corresponding \(R_iL_iK\to R_iB\) is the cokernel epimorphism and hence cannot be zero unless \(B=0\). This proves the unit epimorphism, including its equivariant version by the faithful forgetful functor. An exact Serre quotient preserves that epimorphism. Applied to \(K=H^{(i)}S\), it gives
 
@@ -854,7 +854,7 @@ Second integrate the \(T\)-extension using the Laumon parabolic restriction iden
 \tag{V8.4}
 \]
 
-Third integrate the lower-bundle extension to obtain the constant term of \(F\). These two diagrams are actual Cartesian diagrams once the families have been constructed. Base change and projection then give the upward version of (V7.2). The affine torsor contributes its compact trace \(-2r_1d_2\) before comparing the dimension-normalized kernels. FGV's displayed normalized filtration records \(-r_1d_2\). One must compute this from the full normalization rather than transfer that factor unchanged to Gaitsgory's reversed direction. The vanishing proof V7 deliberately uses only that the factor is an invertible shift and Tate line.
+Third integrate the lower-bundle extension to obtain the constant term of \(F\). These two diagrams are actual Cartesian diagrams once the families have been constructed. Base change and projection then give the upward version of (V7.2). The affine torsor contributes its compact trace \([-2r_1d_2](-r_1d_2)\) before comparing the dimension-normalized kernels. FGV's displayed normalized filtration records \([-r_1d_2](-r_1d_2/2)\). One must compute this from the full normalization rather than transfer that factor unchanged to Gaitsgory's reversed direction. The vanishing proof V7 deliberately uses only that the factor is an invertible shift and Tate line.
 
 For the opposite direction, use **algebraic duality of vector bundles**, not Verdier duality of sheaves. Denote by \(\iota_r\) the involution \(M\mapsto M^\vee\) on \(\operatorname{Bun}_r\). If relative torsion duality has been proved, dualizing a flat modification gives
 
@@ -908,7 +908,7 @@ or by the exponential connection in characteristic zero. The isomorphism include
 
 The next Whittaker step \(W_{k,k+1,\mathrm{ex}}\) is relative Fourier transform of these meromorphic extension directions. Its source and target on a fixed defect stratum are dual extension/section vector stacks over the lower-rank bundle and divisor parameters. The stratum with line increments \(D'_j=D_j-D_{j-1}\) can support a Whittaker object only if \(D'_j\) and \(D'_{j+1}-D'_j\) are effective, and the last section extends across the additional divisor. The proof mechanism is the stabilizer character: if the condition fails, some stabilizer acts trivially on the point but has nontrivial additive character; restriction of (V9.2) forces zero there. Establishing this mechanism globally requires computing the actual stabilizer and its residue character in every family, then proving descent and extension across the strata. Merely naming the effectiveness conditions does not give that computation. Gaitsgory §4, Proposition 4.13, states the stratum category description by comparison with a separate Whittaker-pattern paper; its proof is not supplied there.
 
-If the Fourier steps have been constructed as equivalences, perverse-exact with quasi-inverse \(\pi_!=\pi_*\), define \(W_{k,k+1}\) by restricting to the nonzero last-section open, and \(W=W_{1,r}\). The inverse extended transform and localization give the following rigorous orthogonality deduction. For cuspidal \(F\), zero-frequency Fourier restriction vanishes because on each stratum it is the corresponding constant term. Indeed at the zero covector the pairing kernel is constant, so the Fourier integral is exactly the proper-support integral of the extension direction, with its normalization. For a bundle of rank \(a\), this is \(\pi_!Fa\); the vector-stack version requires its virtual-rank density. The same calculation and the Cartesian constant-term diagram give commutation of \(W\) with the remaining constant terms. Thus every successive \(W_{k,k+1,\mathrm{ex}}F\) has zero ordinary restriction to its zero-section complement.
+If the Fourier steps have been constructed as equivalences, perverse-exact with quasi-inverse \(\pi_!=\pi_*\), define \(W_{k,k+1}\) by restricting to the nonzero last-section open, and \(W=W_{1,r}\). The inverse extended transform and localization give the following rigorous orthogonality deduction. For cuspidal \(F\), zero-frequency Fourier restriction vanishes because on each stratum it is the corresponding constant term. Indeed at the zero covector the pairing kernel is constant, so the Fourier integral is exactly the proper-support integral of the extension direction, with its normalization. For a bundle of rank \(a\), this is \(\pi_!F[a](a/2)\); the vector-stack version requires its virtual-rank density. The same calculation and the Cartesian constant-term diagram give commutation of \(W\) with the remaining constant terms. Thus every successive \(W_{k,k+1,\mathrm{ex}}F\) has zero ordinary restriction to its zero-section complement.
 
 Write \(j\) for its nonzero open and \(i\) for the complement. Localization now gives \(j_!j^*W_{k,k+1,\mathrm{ex}}F\simeq W_{k,k+1,\mathrm{ex}}F\), since \(i^*\) is zero. For any \(G\), adjunction yields
 
@@ -969,10 +969,10 @@ K_{P^\vee}=(\ker P^\vee\to Y)_!\Lambda[b].
 \tag{V10.2}
 \]
 
-On \(A\times_Y B^\vee\), integrate the character \(\mathcal L_\psi(\langle P x,\xi\rangle)\) over both factors with total shift \([a+b]\). First integration over \(B^\vee\), base change, and localization identify the integral with \(K_P-b\). It is zero off \(\ker P\), and its closed restriction there is the specified affine trace. First integration over \(A\) similarly gives \(K_{P^\vee}-a\). Fubini identifies the two actual complexes, not just their stalk ranks. Therefore
+On \(A\times_Y B^\vee\), integrate the character \(\mathcal L_\psi(\langle P x,\xi\rangle)\) over both factors with total shift \([a+b]\). First integration over \(B^\vee\), base change, and localization identify the integral with \(K_P[-b](-b)\). It is zero off \(\ker P\), and its closed restriction there is the specified affine trace. First integration over \(A\) similarly gives \(K_{P^\vee}[-a](-a)\). Fubini identifies the two actual complexes, not just their stalk ranks. Therefore
 
-\
-K_P\simeq K_{P^\vee}[b-a.
+\[
+K_P\simeq K_{P^\vee}[b-a](b-a).
 \tag{V10.3}
 \]
 
@@ -1038,9 +1038,9 @@ This has \(d_1+d_2=d\), correcting the zero printed at native line 4496. For a t
 
 One more printed normalization needs correction. With the geometrically unshifted constant Laumon kernel and smooth modification projection of relative dimension \(rd\),
 
-\
-b^!=b^*[2rd,\qquad
-a_!b^*rd=a_!b^![-rd](-rd/2).
+\[
+b^!=b^*[2rd](rd),\qquad
+a_!b^*[rd](rd/2)=a_!b^![-rd](-rd/2).
 \tag{V10.9}
 \]
 

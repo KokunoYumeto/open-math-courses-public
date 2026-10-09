@@ -2,9 +2,9 @@
 
 A complex normal line has two useful sections. A normal vector on which the defining function has derivative one computes nearby cycles. The conormal covector given by that derivative computes vanishing cycles. The second assertion depends on the Fourier convention and on including the endpoint of a closed ray. We prove both comparisons, then deduce constructibility and the support bound for an arbitrary holomorphic function.
 
-Let \(k\) be a commutative ring of finite global dimension. Manifolds are complex analytic, Hausdorff and countable at infinity. An object of \(D^b_{w\text{-}\mathbb C\text{-}c}(k_X)\) has locally constant cohomology on a locally finite complex analytic stratification. Its coefficient modules may be infinite. The perfect constructible subcategory additionally requires perfect stalk complexes. No Noetherian hypothesis is imposed on \(k\).
+Let \(k\) be a commutative ring of finite global dimension. Manifolds are complex analytic, Hausdorff and countable at infinity, with uniform finite dimension bounds. An object of \(D^b_{w\text{-}\mathbb C\text{-}c}(k_X)\) has locally constant cohomology on a locally finite complex analytic stratification. Its coefficient modules may be infinite. The perfect constructible subcategory additionally requires perfect stalk complexes. No Noetherian hypothesis is imposed on \(k\).
 
-We retain the cycle normalization from Nearby cycles and the two monodromy triangles:
+We retain the cycle normalization from [Nearby cycles and the two monodromy triangles](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/nearby-cycles-monodromy-and-specialization/src/nearby-cycles-and-the-two-monodromy-triangles.md#one-two-term-complex-gives-two-triangles):
 
 \[
 \phi_f(F)=\operatorname{Cone}\bigl(i^{-1}F\longrightarrow\psi_f(F)\bigr)[-1].
@@ -13,15 +13,15 @@ We retain the cycle normalization from Nearby cycles and the two monodromy trian
 
 Thus the vanishing object here already contains the source's shift by \(-1\). The real covector associated to a complex covector is its real part. On a normal complex line the pairing is \(\operatorname{Re}(v\xi)\), without a conjugate. The Fourier transform uses the closed kernel \(\operatorname{Re}(v\xi)\leq0\).
 
-The normal-deformation comparison for weak real constructibility is proved in Nearby cycles through the normal deformation. Here the additional complex geometry is essential. The proof uses the bounded specialization estimate, Fourier test and whole-complex descent theorems in the precise forms stated below.
+The normal-deformation comparison for weak real constructibility is proved in [Nearby cycles through the normal deformation](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/nearby-cycles-monodromy-and-specialization/src/nearby-cycles-through-the-normal-deformation.md#recovering-nearby-cycles-from-the-punctured-normal-bundle). Here the additional complex geometry is essential. The proof uses the bounded specialization estimate, Fourier test and whole-complex descent theorems in the precise forms stated below.
 
 *Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources are credited below.*
 
 ## Complex constructibility survives specialization
 
-Let \(Y\subset X\) be a closed complex submanifold. Put \(E=T_YX\), \(L=T_Y^*X\subset T^*X\), and \(\Lambda=\operatorname{SS}(F)\). The complex constructibility criterion proved in Complex microlocal stratifications and constructibility makes \(\Lambda\) closed complex analytic, complex-conic and real-isotropic.
+Let \(Y\subset X\) be a closed complex submanifold. Put \(E=T_YX\), \(L=T_Y^*X\subset T^*X\), and \(\Lambda=\operatorname{SS}(F)\). The complex constructibility criterion proved in [Complex microlocal stratifications and constructibility](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/complex-microlocal-stratifications-and-constructibility.md#four-equivalent-geometric-tests) makes \(\Lambda\) closed complex analytic, complex-conic and real-isotropic.
 
-The bounded specialization estimate `SH02-CHE-001` gives
+The [bounded specialization estimate SH02-CHE-001](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/characteristic-estimates.md#sh02-che-001--what-specialization-can-contribute) gives
 
 \[
 \operatorname{SS}(\nu_YF)\subset C_L(\Lambda),
@@ -38,9 +38,9 @@ under the canonical normal/cotangent identification. In adapted holomorphic coor
 \tag{3}
 \]
 
-Each map is holomorphic. The second map uses the symplectic normal identification \(K([w])(a)=\operatorname{Re}\Omega(w,a)\); its inverse is induced by \(-H\) with the Hamiltonian convention used earlier. The first is the Fourier cotangent map. These signs agree with the selected specialization contract.
+Each map is holomorphic. The second map uses the [symplectic normal identification](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/boundary-forms-and-lagrangian-normal-cones.md#the-cotangent-identification-and-its-sign) \(K([w])(a)=\operatorname{Re}\Omega(w,a)\); its inverse is induced by \(-H\) with the Hamiltonian convention used earlier. The first is the Fourier cotangent map. These signs agree with the selected specialization contract.
 
-The analytic normal-cone argument in Analytic normal cones through complex deformation applies to the analytic set \(\Lambda\) and the analytic submanifold \(L\). Its accessible central fibre is analytic and invariant under complex normal scaling. The Lagrangian normal-cone theorem proved in Boundary forms and Lagrangian normal cones makes its image in \(T^*L\) real-isotropic. The holomorphic symplectic Fourier identification in (3) preserves this property on \(T^*E\).
+The [analytic normal-cone argument](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/analytic-normal-cones-through-complex-deformation.md#reparameterizing-an-arc-to-make-the-scale-positive-real), in its [adapted-submanifold form](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/complex-microlocal-stratifications-and-constructibility.md#why-the-full-limiting-conormal-sum-is-analytic), applies to the analytic set \(\Lambda\) and the analytic submanifold \(L\). Its accessible central fibre is analytic and invariant under complex normal scaling. The [Lagrangian normal-cone theorem proved in Boundary forms and Lagrangian normal cones](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/boundary-forms-and-lagrangian-normal-cones.md#the-full-lagrangian-normal-cone-theorem) makes its image in \(T^*L\) real-isotropic. The holomorphic symplectic Fourier identification in (3) preserves this property on \(T^*E\).
 
 We must also check cotangent conicity in \(T^*E\), since normal scaling alone is a different action. A normal-cone sequence in these coordinates has
 
@@ -60,9 +60,9 @@ D^b_{w\text{-}\mathbb C\text{-}c}(k_{E^\vee}).
 \tag{5}
 \]
 
-For the second assertion use the complex Fourier theorem proved in Holomorphic operations and complex Fourier symmetries. Both objects are bounded and positively conic along their bundle fibres. The boundedness and conicity are part of the selected specialization/Fourier contracts, rather than consequences of finite-dimensional coefficient modules.
+For the second assertion use the [complex Fourier theorem proved in Holomorphic operations and complex Fourier symmetries](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/holomorphic-operations-and-complex-fourier-symmetries.md#holomorphic-fourier-exchange-and-its-cotangent-conicity). Both objects are bounded and positively conic along their bundle fibres. The [uniform boundedness](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/holomorphic-operations-and-complex-fourier-symmetries.md#the-geometric-and-boundedness-contracts) and [positive conicity](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/specialization.md#sh02-sp-conic--directions-and-support) are part of the specialization/Fourier contracts, rather than consequences of finite-dimensional coefficient modules.
 
-For perfect constructible \(F\), Perfect operations and finite microlocal coefficients proves perfect stalks for both \(\nu_YF\) and \(\mu_YF\). That proof keeps the real deformation chamber and treats it using weak real constructibility and perfect internal Hom. We have not treated a positive real chamber as a holomorphic open subset. Combining the real perfection theorem with (5) proves both perfect complex constructibility statements.
+For perfect constructible \(F\), [Perfect operations and finite microlocal coefficients](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/perfect-operations-and-finite-microlocal-coefficients.md#specialization-and-microlocal-hom) proves perfect stalks for both \(\nu_YF\) and \(\mu_YF\). That proof keeps the real deformation chamber and treats it using weak real constructibility and perfect internal Hom. We have not treated a positive real chamber as a holomorphic open subset. Combining the real perfection theorem with (5) proves both perfect complex constructibility statements.
 
 ## Fibre constancy after lifting the punctured normal line
 
@@ -77,7 +77,7 @@ s'(y)=df_y\in T_Y^*X.
 
 In the dual coordinate \(\xi\), \(s'\) is the section \(\xi=1\). Let \(G=\nu_YF\), and let \(e:Y\hookrightarrow E\) be the zero section. A reduced smooth zero set for a ramified defining function does not suffice for (6); \(z^m\), \(m>1\), has zero derivative at its reduced zero set.
 
-On \(E\setminus e(Y)\), the cohomology of \(G\) is locally constant on every \(\mathbb C^*\) fibre. Here is the relevant microsupport check. Positive conicity annihilates the real radial vector field. The full complex Euler calculation in the preceding Fourier lesson, using the complex-conic actual microsupport, annihilates the imaginary radial vector field as well. In local coordinates a vertical covector \(\alpha\) consequently satisfies
+On \(E\setminus e(Y)\), the cohomology of \(G\) is locally constant on every \(\mathbb C^*\) fibre. Here is the relevant microsupport check. Positive conicity annihilates the real radial vector field. The [full complex Euler calculation in the preceding Fourier lesson](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/holomorphic-operations-and-complex-fourier-symmetries.md#the-two-complex-fourier-actions), using the complex-conic actual microsupport, annihilates the imaginary radial vector field as well. In local coordinates a vertical covector \(\alpha\) consequently satisfies
 
 \[
 \operatorname{Re}(v\alpha)=0,
@@ -85,7 +85,7 @@ On \(E\setminus e(Y)\), the cohomology of \(G\) is locally constant on every \(\
 \tag{7}
 \]
 
-When \(v\ne0\), it has \(\alpha=0\). The submersion descent criterion for microsupport therefore makes \(G\) locally a whole derived pullback in these fibre coordinates, and in particular makes its cohomology locally constant on each punctured fibre. The same reasoning applies to \(\mu_YF\) away from its dual zero section, by (5).
+When \(v\ne0\), it has \(\alpha=0\). The [submersion descent criterion for microsupport](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/microsupport-operations.md#sh02-mo-submersion--exact-pullback-and-local-descent) therefore makes \(G\) locally a whole derived pullback in these fibre coordinates, and in particular makes its cohomology locally constant on each punctured fibre. The same reasoning applies to \(\mu_YF\) away from its dual zero section, by (5).
 
 Use the cover
 
@@ -96,7 +96,7 @@ p:\mathbb C_w\times Y\longrightarrow\mathbb C_v^*\times Y,
 \tag{8}
 \]
 
-The pullback \(p^{-1}(G|_{v\ne0})\) has locally constant cohomology on the contractible \(\mathbb C_w\) fibres. The exact contract `SH02-CON-CYLINDER` identifies its derived direct image with evaluation at \(w=0\), through the actual evaluation morphism. It applies twice, to the two real coordinates of \(w\), and retains the full extension data and arbitrary coefficient modules. Thus
+The pullback \(p^{-1}(G|_{v\ne0})\) has locally constant cohomology on the contractible \(\mathbb C_w\) fibres. The [whole-complex cylinder descent theorem (SH02-CON-CYLINDER)](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/conic-descent.md#sh02-con-cylinder--descent-across-a-contractible-parameter) identifies its derived direct image with evaluation at \(w=0\), through the actual evaluation morphism. It applies twice, to the two real coordinates of \(w\), and retains the full extension data and arbitrary coefficient modules. Thus
 
 \[
 Rq_*p^{-1}(G|_{v\ne0})\simeq s^{-1}G.
@@ -105,14 +105,14 @@ Rq_*p^{-1}(G|_{v\ne0})\simeq s^{-1}G.
 
 This contract proves descent on a product with \(\mathbb R\) using closed-strip exhaustions and their evaluation maps. Iteration on \(\mathbb R^2\) is legitimate. It does not assert unrestricted nonproper base change or descent from a punctured fibre with nontrivial fundamental group.
 
-Ordinary positive-conic contraction identifies the left side of (9) with \(\psi_\ell(G)\). Explicitly, the cover direct image in the nearby definition has a lifted positive action: multiplying \(v\) by \(r>0\) translates \(w\) by \(\log r/(2\pi i)\). Contracting its ordinary direct image to the zero section and composing the two direct images gives \(Rq_*\) in (9). The normal comparison already proved therefore yields
+[Ordinary positive-conic contraction](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/conic-descent.md#sh02-con-radial-star--ordinary-contraction-to-the-zero-section) identifies the left side of (9) with \(\psi_\ell(G)\). Explicitly, the cover direct image in the nearby definition has a lifted positive action: multiplying \(v\) by \(r>0\) translates \(w\) by \(\log r/(2\pi i)\). Contracting its ordinary direct image to the zero section and composing the two direct images gives \(Rq_*\) in (9). The normal comparison already proved therefore yields
 
 \[
 \psi_f(F)\simeq\psi_\ell(G)\simeq s^{-1}\nu_YF.
 \tag{10}
 \]
 
-Fixing \(w=0\) fixes the lift of the normal section. Deck translation \(w\mapsto w+1\) remains the monodromy automorphism. Fibrewise local constancy on \(\mathbb C^*\) does not force this automorphism to be the identity.
+Fixing \(w=0\) fixes the lift of the normal section. Deck translation \(w\mapsto w+1\) remains visible through the [coefficient action and its induced nearby monodromy](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/nearby-cycles-monodromy-and-specialization/src/nearby-cycles-and-the-two-monodromy-triangles.md#deck-action-and-its-exact-sequence). Fibrewise local constancy on \(\mathbb C^*\) does not force this automorphism to be the identity.
 
 ## A dual halfspace has a closed-ray polar
 
@@ -145,7 +145,7 @@ In the real pairing \(\operatorname{Re}(v\xi)\), the positive polar of \(U\) is 
 
 Nonnegativity for every such \(a,b\) forces \(w=0\) and \(u\geq0\), and these conditions suffice. The zero vector passes every inequality and must be included.
 
-The open-convex-cone test `SH02-FS-SECTIONS`, formula FS13, now gives
+The [open-convex-cone test SH02-FS-SECTIONS, formula FS13](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/fourier-sato.md#sh02-fs-sections--testing-a-transform-on-regions), now gives
 
 \[
 R\tau^\vee_*R\mathcal Hom(k_{U\times Y},G^\wedge)
@@ -175,7 +175,7 @@ k_{O\times Y}\longrightarrow k_E.
 \tag{16}
 \]
 
-The trace is the composite of the punctured-target counit, extended by \(j_!\), with the open-inclusion counit \(j_!k_{E^*}\to k_E\). On \(E^*\) it sums finitely supported sheet coefficients. Consequently \(\operatorname{tr}\circ\alpha\) is the ordinary open-extension inclusion. Both two-term complexes below are objects on \(E\), with terms in degrees \(-1,0\):
+The [trace](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/nearby-cycles-monodromy-and-specialization/src/nearby-cycles-and-the-two-monodromy-triangles.md#the-coefficient-sheaf-uses-a-sum) is the composite of the punctured-target counit, extended by \(j_!\), with the open-inclusion counit \(j_!k_{E^*}\to k_E\). On \(E^*\) it sums finitely supported sheet coefficients. Consequently \(\operatorname{tr}\circ\alpha\) is the ordinary open-extension inclusion. Both two-term complexes below are objects on \(E\), with terms in degrees \(-1,0\):
 
 \[
 B=[k_{O\times Y}\longrightarrow k_E],
@@ -192,7 +192,7 @@ R\tau_*R\mathcal Hom(K,G)
 \tag{18}
 \]
 
-The left side equals \(\phi_\ell(G)\). This follows from the coefficient definition in the monodromy lesson and ordinary positive-conic contraction to \(e\). The coefficient \(K\), the target \(G\), and their internal Hom have the needed positive conicity; the lifted positive action preserves \(S\), so it also preserves the coefficient map in (17).
+The left side equals \(\phi_\ell(G)\). This follows from the [two-term coefficient definition in the monodromy lesson](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/nearby-cycles-monodromy-and-specialization/src/nearby-cycles-and-the-two-monodromy-triangles.md#one-two-term-complex-gives-two-triangles) and ordinary positive-conic contraction to \(e\). The coefficient \(K\), the target \(G\), and their internal Hom have the needed [positive conicity](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/conic-descent.md#sh02-con-functors--transport-through-sheaf-operations); the lifted positive action preserves \(S\), so it also preserves the coefficient map in (17).
 
 We show that (18) is an isomorphism by comparing the Hom triangles of the two complexes in (17). Their \(k_E\) terms have the identity map. On the other terms, ordinary composition and the cover adjunction identify the map with restriction
 
@@ -207,7 +207,7 @@ It is restriction from the entire cover to \(S\). The whole cover and the open s
 
 The evaluation point lies above \(v=-1\), which belongs to \(O\). In contrast, \(v=1\) lies on the removed ray. Evaluation at \(w=0\) from (9) is related to evaluation at \(w=1/2\) by transport in the contractible cover, rather than by pretending that the normal section \(1\) lies in the slit. This distinction allows arbitrary monodromy on the punctured normal line.
 
-The map between the two Hom triangles is now an isomorphism on both their other terms. Their fibre term (18) is an isomorphism too. Combining (12), (14), (18), and the normal vanishing comparison gives
+The map between the two Hom triangles is now an isomorphism on both their other terms. Their fibre term (18) is an isomorphism too. Combining (12), (14), (18), and the [normal vanishing comparison](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/nearby-cycles-monodromy-and-specialization/src/nearby-cycles-through-the-normal-deformation.md#the-ordinary-unit-and-the-vanishing-comparison) gives
 
 \[
 \phi_f(F)\simeq\phi_\ell(\nu_YF)
@@ -220,7 +220,7 @@ The coefficient map (17) fixes the slit branch used in this comparison. Formula 
 
 ## Constructibility and support for a critical function
 
-For a regular fibre, (5), (10), and (20), followed by holomorphic ordinary inverse image along \(s,s'\), prove weak complex constructibility of both cycles. If \(F\) has perfect stalks, both bundle objects have perfect stalks and ordinary inverse image retains them. This proves perfect complex constructibility as well.
+For a regular fibre, (5), (10), and (20), followed by [holomorphic ordinary inverse image](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/holomorphic-operations-and-complex-fourier-symmetries.md#full-characteristic-inverse-image-for-a-holomorphic-map) along \(s,s'\), prove weak complex constructibility of both cycles. If \(F\) has perfect stalks, both bundle objects have perfect stalks and ordinary inverse image retains them. This proves perfect complex constructibility as well.
 
 Now allow any holomorphic \(f:X\to\mathbb C\). Its zero set \(Y\) can be singular. Use the closed graph and the coordinate projection
 
@@ -231,7 +231,7 @@ g:X\hookrightarrow\mathbb C_t\times X,
 \tag{21}
 \]
 
-The graph is proper and holomorphic. The operation theorem makes \(H\) weakly, or perfectly, complex constructible as appropriate. The target coordinate \(t\) has a regular fibre \(Z\), so the results just proved apply to \(\psi_t(H)\) and \(\phi_t(H)\). With \(a:Y\hookrightarrow Z\) the closed inclusion, the actual proper-on-support comparisons from Proper pushforwards of nearby and vanishing cycles give
+The graph is proper and holomorphic. The [proper holomorphic operation theorem](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/holomorphic-operations-and-complex-fourier-symmetries.md#proper-direct-image-uses-the-actual-support) makes \(H\) weakly, or perfectly, complex constructible as appropriate. The target coordinate \(t\) has a regular fibre \(Z\), so the results just proved apply to \(\psi_t(H)\) and \(\phi_t(H)\). With \(a:Y\hookrightarrow Z\) the closed inclusion, the actual proper-on-support comparisons from [Proper pushforwards of nearby and vanishing cycles](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/nearby-cycles-monodromy-and-specialization/src/proper-pushforwards-of-nearby-and-vanishing-cycles.md#the-graph-construction-has-a-zero-extension-term) give
 
 \[
 \psi_t(H)\simeq a_*\psi_f(F),
@@ -241,7 +241,7 @@ The graph is proper and holomorphic. The operation theorem makes \(H\) weakly, o
 
 These are objects supported on \(a(Y)\). Refine their analytic stratifications in \(Z\) compatibly with the analytic subset \(Y\). Their restrictions are locally constant on the resulting strata of \(Y\); ordinary stalk restriction retains the perfect condition. Thus both cycles are weakly complex constructible on \(Y\), and are perfect constructible when \(F\) is. This argument does not assign a smooth normal line to a singular fibre.
 
-The selected contract `SH02-MO-MICROLOCAL-SUPPORT` gives
+The [microlocal support theorem SH02-MO-MICROLOCAL-SUPPORT](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/microsupport-operations.md#sh02-mo-microlocal-support--where-directional-sheaves-can-live) gives
 
 \[
 \operatorname{supp}(\mu_YF)
@@ -257,7 +257,7 @@ for a smooth \(Y\). Here and below support is the closed support of the cohomolo
 \tag{24}
 \]
 
-For a critical function use (21)–(22). At \((0,x)\), the covector \(dt\) restricts to the graph as \(df_x\). More explicitly, graph transpose pullback sends \((c,\xi)\) to \(c\,df_x+\xi\). The proper direct-image estimate `SH02-MO-PROPER-PUSH`, formula MO8, implies
+For a critical function use (21)–(22). At \((0,x)\), the covector \(dt\) restricts to the graph as \(df_x\). More explicitly, graph transpose pullback sends \((c,\xi)\) to \(c\,df_x+\xi\). The [proper direct-image estimate SH02-MO-PROPER-PUSH, formula MO8](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/microsupport-operations.md#sh02-mo-proper-push--collecting-tests-along-a-fibre), implies
 
 \[
 ((0,x);dt)\in\operatorname{SS}(g_*F)
@@ -274,7 +274,7 @@ Finally, if \(p\notin\operatorname{SS}(F)\), choose an open cotangent neighborho
 \tag{26}
 \]
 
-This proves the uniform forward holomorphic test. Quadratic cycles and the holomorphic microsupport test proves the reverse implication using generic microlocal models, transfer of the test to those models, and the quadratic calculation.
+This proves the uniform forward holomorphic test. [Quadratic cycles and the holomorphic microsupport test](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/nearby-cycles-monodromy-and-specialization/src/quadratic-cycles-and-the-holomorphic-microsupport-test.md#the-uniform-holomorphic-criterion) proves the reverse implication using generic microlocal models, transfer of the test to those models, and the quadratic calculation.
 
 ## Exercises with complete solutions
 
@@ -292,7 +292,7 @@ Compute the polar of \(U=\{\operatorname{Re}\xi>0\}\) using the pairing in (13).
 
 For (15), locate lifts of \(v=1\) and \(v=-1\). Prove directly that restriction from the cover to \(S\) induces an isomorphism of ordinary derived section complexes for a cohomologically locally constant complex on the cover. Describe the effect of choosing the strip \(m<\operatorname{Re}w<m+1\) instead.
 
-**Solution.** The lifts of \(1\) are the integers, all on strip boundaries. The lift \(1/2\) of \(-1\) lies inside \(S\). The two cylinder descent evaluations at \(1/2\) are isomorphisms and commute with the restriction morphism, so that morphism is an isomorphism in the derived category, including higher extension data. For the other strip use \(m+1/2\). Let \(\rho_m\) be restriction to that strip, transported to the original strip by translation by \(-m\), and let \(M\) denote the nearby deck action. With the convention \(M(e_n)=e_{n-1}\), these maps satisfy \(\rho_m M^m=\rho_0\), or \(\rho_m=\rho_0M^{-m}\). The result is independent up to this specified transport, without assuming trivial monodromy.
+**Solution.** The lifts of \(1\) are the integers, all on strip boundaries. The lift \(1/2\) of \(-1\) lies inside \(S\). The two cylinder descent evaluations at \(1/2\) are isomorphisms and commute with the restriction morphism, so that morphism is an isomorphism in the derived category, including higher extension data. For the other strip use \(m+1/2\). Let \(\rho_m\) be restriction to that strip, transported to the original strip by translation by \(-m\), and let \(M\) denote the nearby deck action. With the coefficient convention \(T(e_n)=e_{n-1}\), and nearby monodromy induced by precomposition with this action, these maps satisfy \(\rho_m M^m=\rho_0\), or \(\rho_m=\rho_0M^{-m}\). The result is independent up to this specified transport, without assuming trivial monodromy.
 
 ### Nontrivial puncture monodromy survives the section formula
 
@@ -300,7 +300,7 @@ For (15), locate lifts of \(v=1\) and \(v=-1\). Prove directly that restriction 
 
 Let \(k=\mathbb Q\), let \(j:\mathbb C^*\hookrightarrow\mathbb C\), and let \(\mathcal L\) be the rank-one local system with counterclockwise holonomy \(H\) equal to multiplication by \(2\). For \(F=j_!\mathcal L\) and \(f(z)=z\), compute the nearby and vanishing objects at zero and the conormal section of \(\mu_{\{0\}}F\). Explain why (9) does not trivialize the original local system.
 
-**Solution.** The central stalk is zero. The cover pullback of \(\mathcal L\) is constant \(\mathbb Q\); its contractible fibre has ordinary derived sections \(\mathbb Q\), with no higher cohomology. Thus \(\psi=\mathbb Q\), with nearby deck automorphism \(M=H^{-1}=1/2\) under the selected convention \(M(e_n)=e_{n-1}\), and (1) gives \(\phi=\mathbb Q[-1]\). The conormal section \(\xi=1\) is therefore \(\mathbb Q[-1]\) by (20). Positive radial transport makes the original sheaf positively conic; its specialization at zero is the same conic sheaf by the homogeneous specialization calibration. The descent takes place on the simply connected cover. Descent to a counterclockwise loop recovers \(H=M^{-1}=2\), so \(\mathcal L\) on \(\mathbb C^*\) remains nontrivial. Both coefficients are perfect, and the two-stratum complex analytic stratification is valid.
+**Solution.** The central stalk is zero. The cover pullback of \(\mathcal L\) is constant \(\mathbb Q\); its contractible fibre has ordinary derived sections \(\mathbb Q\), with no higher cohomology. Thus \(\psi=\mathbb Q\), with nearby deck automorphism \(M=H^{-1}=1/2\) under the [coefficient and precomposition convention](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/nearby-cycles-monodromy-and-specialization/src/nearby-cycles-and-the-two-monodromy-triangles.md#a-disc-calculation-including-the-action-direction) \(T(e_n)=e_{n-1}\), and (1) gives \(\phi=\mathbb Q[-1]\). The conormal section \(\xi=1\) is therefore \(\mathbb Q[-1]\) by (20). Positive radial transport makes the original sheaf positively conic; its specialization at zero is the same conic sheaf by the [homogeneous specialization calibration](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH02/specialization.md#sh02-sp-homogeneous--a-calibration-on-a-vector-space). The descent takes place on the simply connected cover. Descent to a counterclockwise loop recovers \(H=M^{-1}=2\), so \(\mathcal L\) on \(\mathbb C^*\) remains nontrivial. Both coefficients are perfect, and the two-stratum complex analytic stratification is valid.
 
 ### Arbitrary weak coefficients and central support
 
@@ -344,10 +344,10 @@ For \(F=k_X\) with nonzero \(k\), prove the forward test near any nonzero cotang
 
 ## What has been established
 
-The normal and conormal comparisons give weak and perfect complex cycle constructibility for every holomorphic function, the closed vanishing support bound, and the uniform forward test, using the stated prerequisite theorems. Quadratic cycles and the holomorphic microsupport test proves the reverse criterion and its coefficient model. Vanishing cycles as positive real support gives the local-support comparison, including critical functions and singular zero fibres.
+The normal and conormal comparisons give weak and perfect complex cycle constructibility for every holomorphic function, the closed vanishing support bound, and the uniform forward test, using the stated prerequisite theorems. [Quadratic cycles and the holomorphic microsupport test](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/nearby-cycles-monodromy-and-specialization/src/quadratic-cycles-and-the-holomorphic-microsupport-test.md#the-uniform-holomorphic-criterion) proves the reverse criterion and its coefficient model. [Vanishing cycles as positive real support](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/nearby-cycles-monodromy-and-specialization/src/vanishing-cycles-as-positive-real-support.md#the-actual-cover-to-sector-restriction-is-an-isomorphism) gives the local-support comparison, including critical functions and singular zero fibres.
 
 ## References
 
-David B. Massey, *Notes on Perverse Sheaves and Vanishing Cycles*, [arXiv:math/9908107v13, §3](https://arxiv.org/abs/math/9908107v13), supplies the cycle conventions and explains the coefficient-complex construction credited to Kashiwara and Schapira. Ren Fernandes, Kazuki Kudomi and Kiyoshi Takeuchi, *Characteristic cycles of real and complex constructible sheaves, revisited*, [arXiv:2603.14821v2, §2.4 and §5, (5.42)–(5.43)](https://arxiv.org/abs/2603.14821v2), defines specialization and states the regular-fibre conormal comparison. Its vanishing object is this lesson's object shifted by one. The paper refers elsewhere for that comparison; it does not supply an independent proof of it in those passages. Its field-valued constructible setting also does not establish our weak-coefficient extension.
+David B. Massey, *Notes on Perverse Sheaves and Vanishing Cycles*, [arXiv:math/9908107v13, §3, pp. 26 and 28](https://arxiv.org/pdf/math/9908107v13#page=28), supplies the cycle conventions and explains the coefficient-complex construction credited to Kashiwara and Schapira. Ren Fernandes, Kazuki Kudomi and Kiyoshi Takeuchi, *Characteristic cycles of real and complex constructible sheaves, revisited*, [arXiv:2603.14821v2, §2.4](https://arxiv.org/html/2603.14821v2#S2.SS4) and [§5, (5.42)–(5.43)](https://arxiv.org/html/2603.14821v2#S5.E42), defines specialization and states the regular-fibre conormal comparison. Its vanishing object is this lesson's object shifted by one. The paper refers elsewhere for that comparison; it does not supply an independent proof of it in those passages. Its characteristic-zero field-valued constructible setting also does not establish our weak-coefficient extension.
 
-The argument here must therefore stand on its displayed normal-cone estimate, complex Euler annihilation, full-complex cylinder descent, Fourier section formula and slit coefficient map. The graph factorisation then handles critical functions. The named programme providers for these steps, and their remaining transitive proof obligations, are recorded in the source and proof guide. A free statement of a comparison is not a replacement for those proofs.
+The argument here must therefore stand on its displayed normal-cone estimate, complex Euler annihilation, full-complex cylinder descent, Fourier section formula and slit coefficient map. The graph factorisation then handles critical functions. The linked programme proofs supply these geometric and sheaf-theoretic inputs. The human sources retain their mathematical credit; this lesson’s independently written exposition and eight solutions are CC0.

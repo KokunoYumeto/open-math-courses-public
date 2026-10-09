@@ -40,11 +40,11 @@ After any \(x\)-derivative and the weight \((1+|x|)^M\), the integral is bounded
 The last inequality uses \(1+|x|,1+|y|\le1+|(x,y)|\) and \(|\alpha|+|\beta|\le M+k\). Thus \(h\in\mathcal S\) and \(|B(h)|\le C_AC_Bp_{M+N}(\theta)\). Reversing the roles gives another continuous functional. On compact tests both are exactly the tensor of U021 B2. The cutoff approximation of Fourier foundation F1 shows that compact tests are dense in the joint Schwartz space, so these two functionals agree and the extension is unique.
 
 For \(\alpha\in\mathcal D(\mathbb R^p)\), \(\beta\in\mathcal D(\mathbb R^q)\), absolute Fubini gives \(F_{p+q}(\alpha\otimes\beta)=F_p\alpha\otimes F_q\beta\). The functions on the right are Schwartz. Applying the already proved iterated formula shows
-\
+\[
  \begin{aligned}
- [F_{p+q}(A\otimes B)
+ [F_{p+q}(A\otimes B)](\alpha\otimes\beta)
  &=A(F_p\alpha)B(F_q\beta)\\
- &=(F_pA)\otimes(F_qB).
+ &=[(F_pA)\otimes(F_qB)](\alpha\otimes\beta).
  \end{aligned}
 \]
 Both sides are tempered distributions. Product-test density in U021 B2 first identifies their compact-test restrictions, and Fourier foundation F1 then identifies them on \(\mathcal S\). This proves (1.1). If a coordinate space has dimension zero, its test space is \(\mathbb C\), its Fourier map is the identity, and the statement is just scalar multiplication. \(\square\)
@@ -162,12 +162,12 @@ For \(\theta\in\mathcal S(\mathbb R^n)\), this estimate makes \(\int u(x)\theta(
                  (1+|x|)^m|\theta(x)|.
 \]
 Its joint integral is finite. On compact \(r,x\) rectangles, Riemann sums converge in each sphere seminorm, allowing \(T\) through the integrals; the displayed majorant controls the tails in those same seminorms. Absolute Fubini and passage to the limits give
-\
+\[
  \begin{aligned}
  \int u(x)\theta(x)\,dx
  &=(2\pi)^{-n}T\!\left(\int_0^\infty
      r^{n-1}e^{-r^2/2}F\theta(-r\omega)\,dr\right)\\
- &=[G(bW_0(T)).
+ &=[G(bW_0(T))](\theta).
  \end{aligned}
 \]
 The last equality is exactly the transposed inverse transform in Fourier foundation F5. This proves (2.3) as a distributional identity, not only as a formal integral.

@@ -2,9 +2,13 @@
 
 *Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
+*Mathematical and source-comparison corrections by GPT-6 Astra (OpenAI), Ultra, October 2026; original exposition and complete solutions retained.*
+
 The equation \(u'=u\) has the solution \(e^x\). We can record the equation algebraically without adjoining that function: take a generator \(e\) and impose \(\partial e=e\). A map from this module to a space of functions sends \(e\) to a solution. A horizontal section **inside** the module, however, is \(e^{-x}e\). These two uses of the exponential have opposite signs. Keeping them distinct will organize the passage from differential equations to modules and then to local systems.
 
 We assume the [preceding lesson](differential-operators-and-the-weyl-algebra.md), elementary coherent sheaf theory, Nakayama's lemma and the separatedness of the maximal-ideal filtration on a Noetherian local ring. The analytic part uses holomorphic power series and locally constant sheaves; its local differential-equation argument is proved below. The [Algebraic Geometry Bridge](https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D100), [Algebraic Topology](https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D60) and [Complex Analysis](https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C50) provide background.
+
+For the exact algebra inputs, read finite generators and Nakayama, Theorem 4.2, Artin–Rees, Theorem 5.1, and Krull intersection, Theorem 6.1. The local coordinate construction uses formal étale lifting, Lemma 1.1 and Theorem 1.2 and standard smooth coordinates, Theorems 4.1 and 5.1. The descent step uses free resolutions and comparison, Theorem 1.1, the Tor criterion, Theorem 2.1, and faithfully flat descent, Theorem 3.1. These are programme proofs, not requirements to obtain an outside text. Their exact source and reader revisions are listed in the local-freeness prerequisite record.
 
 Throughout, \(k\) has characteristic zero and \(X\) is a smooth separated variety of pure dimension \(d\) over \(k\). Write \(\mathcal D=\mathcal D_X\), \(\mathcal T=\mathcal T_X\) and \(\omega_X=\bigwedge^d\Omega_X^1\). A D-module is a left \(\mathcal D\)-module quasi-coherent over \(\mathcal O_X\). Coherence over \(\mathcal O_X\) and coherence over \(\mathcal D\) are different conditions. Analytification is used only over \(\mathbf C\). All local systems here have finite-dimensional complex stalks. No cohomological shift enters the horizontal-section functor in this lesson.
 
@@ -108,6 +112,38 @@ The next theorem upgrades a finite module with a connection to a vector bundle. 
 
 At a \(k\)-rational smooth point \(p\), étale parameters \(t_i=x_i-x_i(p)\) identify the completed local ring with \(k[[t_1,\ldots,t_d]]\). One way to obtain this description is to apply the unique lifting property of the coordinate chart to each quotient by a power of the maximal ideal, and then take the inverse limit. Coordinate derivations extend continuously to the completion and become the formal partial derivatives. Consequently a nonzero element, or a nonzero vector of elements, has a finite least total degree. If that degree is positive, some partial derivative of its leading homogeneous part is nonzero and lowers the degree by one. Characteristic zero is essential for this last assertion.
 
+**Completed coordinates: explicit comparison.** Here is the construction, including the inverse maps. A standard smooth presentation has some variables whose square Jacobian block is invertible. Hold the remaining variables fixed as base coordinates. The square-zero correction in the standard smooth proof, Theorem 4.1 then gives existence and uniqueness of a lift over that base: the correction vector is the inverse Jacobian matrix applied to the negative error vector. A difference of two lifts is killed by the same invertible matrix and is zero. Theorem 5.1 supplies these presentations near every smooth point. Localization preserves formal étaleness by Theorem 1.2 there. Thus, at our rational point, put
+
+\[
+B=k[t_1,\ldots,t_d]_{(t_1,\ldots,t_d)},\qquad
+\mathfrak n=(t_1,\ldots,t_d)B,\qquad
+A=\mathcal O_{X,p}.
+\]
+
+The local map \(B\to A\) is formally étale, and its residue-field map is the identity of \(k\). For each integer \(n\geq1\), lift the residue map \(A\to k\) uniquely to a \(B\)-algebra map \(u_n:A\to B/\mathfrak n^n\). The kernel of \(B/\mathfrak n^n\to k\) is nilpotent, so Lemma 1.1 applies, not merely the square-zero case. Every element of \(\mathfrak m\) maps into \(\mathfrak n/\mathfrak n^n\), so \(u_n\) factors through \(\alpha_n:A/\mathfrak m^n\to B/\mathfrak n^n\). The structural map gives \(\beta_n:B/\mathfrak n^n\to A/\mathfrak m^n\), since \(\mathfrak n A\subseteq\mathfrak m\).
+
+\[
+\begin{aligned}
+A/\mathfrak m^n&\xrightarrow{\ \alpha_n\ }B/\mathfrak n^n
+ \xrightarrow{\ \beta_n\ }A/\mathfrak m^n,\\
+\alpha_n\beta_n&=1_{B/\mathfrak n^n},\qquad
+\beta_n\alpha_n=1_{A/\mathfrak m^n}.
+\end{aligned}
+\]
+
+The first identity holds because \(u_n\) is a \(B\)-algebra map. For the second, the two \(B\)-algebra maps from \(A\) to \(A/\mathfrak m^n\), namely the quotient map and \(\beta_nu_n\), reduce to the same residue map; formal uniqueness across the nilpotent ideal \(\mathfrak m/\mathfrak m^n\) makes them equal. Since the quotient map is surjective, this proves the second identity. Reduction of \(u_{n+1}\) is \(u_n\) by the same uniqueness, so these isomorphisms commute with the transition maps. Taking inverse limits gives a specific isomorphism
+
+\[
+\widehat A\cong\varprojlim_n B/\mathfrak n^n
+\cong k[[t_1,\ldots,t_d]].
+\]
+
+For the last identification, a denominator outside \((t_1,\ldots,t_d)\) has nonzero constant term and a finite geometric-series inverse modulo \((t_1,\ldots,t_d)^n\). Thus each quotient is the polynomial ring truncated in total degree \(n\); a compatible sequence of such truncations specifies exactly one coefficient for every monomial. Addition and multiplication agree coefficientwise. The inverse-limit and filtration facts are proved in Completion, Sections 1–2. No equality of completions or flatness of completion was assumed in constructing the two inverse maps.
+
+Finally, every derivation satisfies \(\partial_i(\mathfrak m^{n+1})\subseteq\mathfrak m^n\), by applying the product rule to a product of \(n+1\) elements of \(\mathfrak m\). It therefore acts continuously on the completion. The extended derivation agrees on every polynomial in the \(t_j\) with the formal partial derivative, since \(\partial_i t_j=\delta_{ij}\). Polynomials are dense by the truncation description, so the two continuous derivations agree everywhere. For a nonconstant homogeneous polynomial of degree \(q>0\), a nonzero monomial coefficient has a positive exponent in some variable, and differentiation multiplies it by that nonzero integer; distinct monomials remain distinct after differentiation in that variable. In characteristic zero some partial derivative is therefore nonzero. Apply this to a nonzero component of the leading homogeneous vector. This proves exactly the degree-lowering statement used below, including its characteristic hypothesis.
+
+All rings and kernels in this argument have the required finiteness. A smooth affine chart is a finite-type algebra over a field, hence Noetherian by Hilbert's basis theorem and its localization consequences. Its finite modules have finite relation modules by the finite-module theorem. At a closed point the residue field is finite over the ground field by the weak Nullstellensatz, Theorem 2.1, with Zariski's lemma and its proof in the preceding section. Over an algebraically closed field this residue field is the ground field, so the rational-point comparison above applies. The injection into the completion is precisely Krull intersection, Theorem 6.1, applied to the finite module \(A^r\).
+
 **Theorem 3.1.** A D-module coherent over \(\mathcal O_X\) is locally free of finite rank.
 
 **Proof.** First suppose \(k\) is algebraically closed, and let \(A=\mathcal O_{X,p}\) at a closed point, with maximal ideal \(\mathfrak m\). Choose a minimal set \(m_1,\ldots,m_r\) of generators of \(M_p\). If \(r=0\), Nakayama's lemma gives \(M_p=0\), which is free of rank zero. Otherwise let
@@ -128,6 +164,10 @@ Suppose \(0\ne v\in K\). Separatedness embeds \(A^r\) in its completion, so \(v\
 
 A finite presentation makes freeness at a stalk persist on an open neighborhood: lift a stalk basis to sections, and shrink until the finitely generated kernel and cokernel of the resulting presentation vanish. Every point of a finite-type variety specializes to a closed point. An open neighborhood of that closed point contains its generalizations. Therefore these neighborhoods cover \(X\).
 
+To spell out the neighborhood argument, on an affine neighborhood \(U=\operatorname{Spec}R\) write the coherent module as \(N\) and lift the chosen basis of \(N_{\mathfrak p}\) to a map \(R_f^r\to N_f\), for some \(f\notin\mathfrak p\). Its kernel and cokernel are finite over the Noetherian ring \(R_f\), and both vanish at \(\mathfrak p\). If a finite module has zero localization there, each member of a finite generating list is killed by a denominator outside \(\mathfrak p\); the product kills the entire module. Localize once more at those two products. The map is now an isomorphism, including when \(r=0\). This is the finite-denominator mechanism in Localization, Proposition 6.1.
+
+One can cover the variety affine chart by affine chart, avoiding any implicit assertion about closed points of an arbitrary scheme. For any prime \(\mathfrak p\subset R\), choose a maximal ideal \(\mathfrak q\supseteq\mathfrak p\). Over the algebraically closed ground field the point \(\mathfrak q\) is rational. Its free neighborhood inside this chart also contains \(\mathfrak p\): every basic open containing \(\mathfrak q\) contains every smaller prime. Thus these free neighborhoods cover every affine chart and hence all of \(X\).
+
 For a general characteristic-zero field, extend scalars to an algebraic closure. The pulled-back connection has the same properties, so the pulled-back module is locally free. To justify descent without a geometric shortcut, work on an affine chart \(\operatorname{Spec}A\). For every \(A\)-module \(N\), flat base change gives
 
 \[
@@ -138,6 +178,29 @@ For a general characteristic-zero field, extend scalars to an algebraic closure.
 \]
 
 Faithfulness of the field extension makes the group on the left zero before base change. Thus \(M\) is flat over \(A\). A finite flat module over a Noetherian local ring is free: for a minimal presentation (3.1), tensor with the residue field. Flatness and minimality imply \(K/\mathfrak mK=0\), so Nakayama gives \(K=0\). This proves the assertion over \(k\). \(\square\)
+
+Here are the maps behind (3.3). Set \(S=A\otimes_k\overline k\). For any \(A\)-module \(V\), the maps
+
+\[
+V\otimes_A S\longrightarrow V\otimes_k\overline k,
+\quad v\otimes(a\otimes c)\longmapsto av\otimes c,
+\qquad v\otimes c\longmapsto v\otimes(1\otimes c)
+\]
+
+are inverse \(S\)-linear maps. Tensoring a vector space with a field extension is exact: choose a basis in a subspace and extend it to a basis of the larger space, so an injection remains an injection on the resulting direct sums. It is faithful because a nonzero vector can be included in a basis and remains nonzero after extension. Thus \(A\to S\) is faithfully flat. Smoothness persists under this base change by formal smoothness and finite-presentation stability. The pulled-back connection is \(\overline\nabla(m\otimes c)=\nabla(m)\otimes c\), under \(\Omega_{S/\overline k}\cong\Omega_{A/k}\otimes_A S\). This differential identification sends \(d(a\otimes c)\) to \(da\otimes c\); its inverse sends \(da\otimes s\) to \(s\,d(a\otimes1)\). The additive, product and scalar relations defining differentials make both maps well-defined and inverse. The displayed connection is balanced over \(k\), obeys the Leibniz rule for \(a\otimes c\), and preserves the curvature identity. In particular the coherent module remains coherent, since its finite presentation tensors to a finite presentation over the Noetherian algebra \(S\).
+
+Choose a free resolution \(P_\bullet\to M\). Resolutions, Sections 1–3 prove existence, independence of choices and the two-variable Tor construction. Flatness makes \(P_\bullet\otimes_A S\) a free resolution of \(M\otimes_A S\). There is a chain isomorphism
+
+\[
+(P_\bullet\otimes_A N)\otimes_A S
+\longrightarrow
+(P_\bullet\otimes_A S)\otimes_S(N\otimes_A S),
+\quad(p\otimes n)\otimes s\longmapsto(p\otimes1)\otimes(n\otimes s),
+\]
+
+whose inverse sends \((p\otimes s)\otimes(n\otimes t)\) to \((p\otimes n)\otimes st\). Both are balanced and commute with the differentials. Flat tensoring preserves the short exact sequences defining cycles, boundaries and their quotient; consequently it commutes with homology, as proved in Faithful flatness, Section 1. Degree one gives (3.3). The pulled-back module is flat by its local freeness and local detection of flatness, Theorem 3.3. Faithfulness and the Tor criterion, Theorem 2.1 now give the claimed flatness over \(A\). The relation module in the final minimal local presentation is finite by Noetherianity, so its last use of Nakayama is justified. The finite-denominator argument above then extends its free stalk bases to open neighborhoods over the original field as well.
+
+There is also a direct descent route, without Tor: for any inclusion of \(A\)-modules \(U\hookrightarrow V\), tensor first with the flat algebra \(S\), then with the flat module \(M\otimes_A S\). The resulting injection is the scalar extension of \(U\otimes_A M\to V\otimes_A M\). Flatness of \(S\) identifies its kernel after extension with the extension of its kernel; faithfulness forces that kernel to be zero. Hence \(M\) is flat. This is faithfully flat descent, Theorem 3.1. Theorems 5.2–5.3 of Tor and flat modules prove, more generally, that every finite flat module over a local ring is free and every finitely presented flat module is locally free, without assuming that the ring is Noetherian. Those stronger statements remain available; our coherent module on a Noetherian chart meets their finite-presentation condition.
 
 The proof used the Leibniz rule and smoothness, but did not need zero curvature. Any connection on a coherent module in characteristic zero already forces local freeness. Integrability determines which bundles carry a D-action.
 
@@ -404,7 +467,7 @@ Consider on the analytic line the unshifted two-term complex
 \tag{7.10}
 \]
 
-It computes the degree-zero solution sheaf and the first derived solution sheaf of \(\mathcal D/\mathcal D(z\partial_z-\lambda)\). Indeed right multiplication by this nonzero operator gives an injective map of free left D-modules: the order-symbol domain argument in coordinates proves injectivity. Applying Hom into \(\mathcal O^{an}\) gives (7.10).
+It computes the degree-zero solution sheaf and the first derived solution sheaf of \(\mathcal D/\mathcal D(z\partial_z-\lambda)\). Indeed right multiplication by this nonzero operator gives an injective map of free left D-modules: the order-symbol domain argument in coordinates proves injectivity. For completeness, at any point take a nonzero local operator \(P=\sum_{j=0}^r a_j(z)\partial_z^j\) with \(a_r\neq0\). The coefficient of \(\partial_z^{r+1}\) in \(P(z\partial_z-\lambda)\) is \(z a_r(z)\). It is a nonzero germ, including at the origin: the ring of convergent one-variable germs is a domain, since the first nonzero coefficients of two power series have nonzero product. Thus right multiplication is injective on every stalk, which proves the claimed sheaf injection. Applying Hom into \(\mathcal O^{an}\) gives (7.10).
 
 At the origin, write a holomorphic germ as \(\sum_{j\geq0}a_jz^j\). The operator multiplies its \(j\)-th coefficient by \(j-\lambda\). If \(\lambda\notin\mathbf Z_{\geq0}\), these numbers are nonzero and their inverses are uniformly bounded for \(j\geq0\); division therefore preserves convergence. Both kernel and cokernel stalks at zero vanish. If \(\lambda=N\in\mathbf Z_{\geq0}\), the kernel is \(\mathbf C z^N\) and the cokernel is the one-dimensional class of \(z^N\), since the same convergent division works for the other coefficients.
 
@@ -415,7 +478,9 @@ u=z^\lambda\left(c+\int z^{-\lambda-1}g(z)\,dz\right)
 \tag{7.11}
 \]
 
-solves \((z\partial_z-\lambda)u=g\). Thus for nonintegral \(\lambda\) the kernel has no nonzero section on the full punctured disc, because its monodromy has no fixed vector. For negative integral \(\lambda\) it is constant on the punctured disc but has zero stalk at the origin. For nonnegative integral \(\lambda\), the kernel extends as a constant rank-one sheaf, generated locally by \(z^N\), and the first cohomology sheaf is a skyscraper at zero. This reproduces the example of [Kashiwara–Schapira, Section 2.9.14] by direct power-series calculation. Perverse normalization would shift this solution complex by \([1]\); its extensions will be studied later.
+solves \((z\partial_z-\lambda)u=g\). Thus for nonintegral \(\lambda\) the kernel has no nonzero section on the full punctured disc, because its monodromy has no fixed vector. For negative integral \(\lambda\) it is constant on the punctured disc but has zero stalk at the origin. For nonnegative integral \(\lambda\), the kernel extends as a constant rank-one sheaf, generated locally by \(z^N\), and the first cohomology sheaf is a skyscraper at zero. This is the Euler cyclic-module example of [Frenkel, Section 3.5, version 1], with its analytic stalks computed directly above. Perverse normalization would shift this solution complex by \([1]\); its extensions will be studied later.
+
+**Comparison with the cited edition.** Section 3.5 of Frenkel's version 1 uses this same cyclic quotient and right-multiplication resolution. For the convention \([\partial,x]=1\), formulas (7.4), (7.8) and (7.9) above correct three displayed formulas in that section: the derivative on the punctured-line generator has coefficient \(+\lambda/x\), multiplication by \(x\) on \(\partial^s e\) has coefficient \(\lambda-s+1\), and restriction has the falling factorial, not a single factor of \(\lambda\) times an ordinary factorial. The stalk computation here uses convergent power series, not polynomial sections in place of analytic germs. We have computed the solution complex directly; no general Riemann–Hilbert or perverse-extension theorem is being used to prove it.
 
 ## 8. Exercises with complete solutions
 
@@ -478,13 +543,13 @@ Now choose a minimal presentation (3.1) of \(M_p\) with \(r>0\). The entries of 
 
 ## What this lesson does not prove
 
-The commutative algebra prerequisites are [Nakayama's lemma, Stacks Tag 00DV](https://stacks.math.columbia.edu/tag/00DV), separatedness \(\bigcap_q\mathfrak m^qA=0\) for a Noetherian local ring, and the local coordinate description of a smooth variety. For the separatedness assertion, [Krull's intersection theorem, Stacks Tag 00IP](https://stacks.math.columbia.edu/tag/00IP), states that \(\bigcap_n I^nM=0\) for a finite module over a Noetherian local ring and a proper ideal \(I\); apply it to \(M=A\) and \(I=\mathfrak m\). Étale coordinates identify the completed local ring at a rational smooth point with a formal power-series ring by nilpotent lifting, as discussed in Section 3. We also use the elementary flat-base-change identity for Tor, which follows by tensoring a free resolution with a flat algebra. Smooth coordinate charts and étale lifting were the geometric prerequisites of the preceding lesson.
+The algebraic inputs to Theorem 3.1 have complete programme proofs at the exact locations linked above: Nakayama, finite relation modules, Artin–Rees and Krull intersection, the weak Nullstellensatz, nilpotent étale lifting, free resolutions, the Tor criterion and faithfully flat descent. Section 3 constructs the completed-coordinate isomorphism and the Tor comparison explicitly. For comparison with the classical references, [Stacks Tag 00DV](https://stacks.math.columbia.edu/tag/00DV) gives Nakayama and [Stacks Tag 00IP](https://stacks.math.columbia.edu/tag/00IP) gives the local Krull-intersection statement; these citations supplement the programme proofs rather than replace them. The prerequisite record distinguishes direct proof inputs from optional context and pins their revisions. This dependency reconciliation concerns local freeness; it does not certify the entire recursive background of every theorem in this course.
 
 All four central equivalences and local-freeness assertions are proved here. We have not proved algebraic Riemann–Hilbert, a regularity criterion at the boundary of a compactification, or the extension theory of perverse sheaves. Nor have we identified flat connections with crystals on a de Rham prestack; that requires a later construction. The crystalline definitions in [Stacks, Tags 07IR and 07J5] provide background, with their own divided-power hypotheses, rather than a substitute for the characteristic-zero proofs above.
 
 ## References
 
-- The Stacks project, *Crystalline Cohomology*, [Tag 07J5, Connections](https://stacks.math.columbia.edu/tag/07J5), and [Tag 07IR, Crystals in modules](https://stacks.math.columbia.edu/tag/07IR); *Sheaves of Modules*, [Tag 0G3P](https://stacks.math.columbia.edu/tag/0G3P). These sections were compared in the [AI Integrated Stacks Project English reader](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/crystalline.html#section-connections), an edition with AI-proposed corrections and additions, not reviewed by the official Stacks maintainers.
-- Edward Frenkel, *Lectures on the Langlands Program and Conformal Field Theory*, Sections 3.4–3.6, for cyclic equations, the Euler example and the distinction between algebraic and analytic descriptions. [Author's arXiv text](https://arxiv.org/abs/hep-th/0512172). The actions and sign conventions used here are derived from \([\partial,x]=1\).
+- The Stacks project, *Crystalline Cohomology*, [Tag 07J5, Connections](https://stacks.math.columbia.edu/tag/07J5), and [Tag 07IR, Crystals in modules](https://stacks.math.columbia.edu/tag/07IR); *Sheaves of Modules*, [Tag 0G3P](https://stacks.math.columbia.edu/tag/0G3P). These sections were compared in the [AI Integrated Stacks Project English reader](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/crystalline.html#crystalline-section-connections), an edition with AI-proposed corrections and additions, not reviewed by the official Stacks maintainers.
+- Edward Frenkel, *Lectures on the Langlands Program and Conformal Field Theory*, Version 1 (15 December 2005), Sections 3.4–3.6, for cyclic equations, the Euler example and the distinction between algebraic and analytic descriptions. [Author's arXiv text](https://arxiv.org/abs/hep-th/0512172v1). The actions and sign conventions used here are derived from \([\partial,x]=1\).
 - Alexander Beilinson and Vladimir Drinfeld, *Quantization of Hitchin's integrable system and Hecke eigensheaves*, Sections 7.2.1–7.2.3, for D-complexes, differential forms and tensor structures. Side-changing is given directly in Section 5 above; no derived equivalence from that appendix is required here.
 - V. Ginzburg, [*Lectures on D-modules*](https://math.berkeley.edu/~nadler/ginzburg.dmodules.pdf), for solution complexes of D-modules. Section 7 above computes the stalks and local monodromy of the Euler solution complex directly, without the general Riemann–Hilbert theorem.

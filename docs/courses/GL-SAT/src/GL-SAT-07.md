@@ -848,9 +848,9 @@ All differential checks are vacuous here, but compatibility with the dual-first 
 R=\pi^*P[1]=E_{U\times H}[d+1],
 \qquad \sigma^*R[-1]=E_U[d]=P.
 \]
-The smooth orientations give \(D_UP=E_Ud\) and
-\
-D_{U\times H}R=E_{U\times H}[d+1
+The smooth orientations give \(D_UP=E_U[d](d)\) and
+\[
+D_{U\times H}R=E_{U\times H}[d+1](d+1)
 =\pi^*D_UP(1)[1].
 \]
 Thus the inverse of normalized pullback uses the section shift \([-1]\); the smooth dual comparison also carries the line \(E(1)\). In the twisted product both normalized pullbacks have shift \([h_n]\), so their section restrictions leave \(P|_U\boxtimes Q\). Dualizing gives \(q^*D_YA(h_n)[h_n]\) and \(\pi^*D(P\boxtimes Q)(h_n)[h_n]\). The identical line and shift cancel in their comparison, leaving \(D_YA=DP\widetilde\boxtimes DQ\), with no remaining \(h_n\) correction. These cancellations use the same normalized frame torsor on both sides. □
@@ -1201,9 +1201,9 @@ Modulo \(t^9\mathfrak{gl}_2(O)\), its ranks are \(2,2,4,0\), summing to \(8=(9-7
 \]
 The inverse support is a central translate of the same projective line. Its cohomology is \(E(1)\) in degree \(-1\) and \(E\) in degree \(1\), by the projective-line calculation. This matches the graded vector dual of \(H(P)\), whose groups are \(E\) in degree \(-1\) and \(E(-1)\) in degree \(1\). No monoidal structure on cohomology is required for this duality check: it follows from actual proper structural dual exchange.
 
-The unit fiber is that projective line of intermediate lattices, as in GL-SAT-07 §10 and Exercise A.7.3. Its coefficient complex is \(E2\), by (B.4.1.2). The structural trace sends
-\
-R\Gamma(\mathbf P^1,E[2)\longrightarrow E.
+The unit fiber is that projective line of intermediate lattices, as in GL-SAT-07 §10 and Exercise A.7.3. Its coefficient complex is \(E[2](1)\), by (B.4.1.2). The structural trace sends
+\[
+R\Gamma(\mathbf P^1,E[2](1))\longrightarrow E.
 \]
 Its degree-zero group is \(H^2(\mathbf P^1,E(1))=E\); the Kummer class of \(\mathcal O(1)\) maps to \(1\) by the proved trace normalization. The degree-\(-2\) group \(E(1)\) maps to zero since the point target has degree zero. Thus evaluation has precisely that normalized top-degree trace. Omitting the Tate line would change its coefficient target and fail to give this actual evaluation. □
 

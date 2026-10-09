@@ -334,7 +334,7 @@ extends to a faithful conditional expectation \(C\to A\). The unitary
 J:L^2(C,P)\longrightarrow\ell^2(\Gamma,A)
 \tag{7.3}
 \]
-is given on finite sums by \(J\sum_g a_g u_g=\alpha_{g^{-1}}(a_g)\). It identifies the KSGNS representation with (7.1), \(V\) with the identity-coordinate embedding, and \(q\) with the projection onto that coordinate.
+is given on finite sums by \(J[\sum_g a_g u_g](g)=\alpha_{g^{-1}}(a_g)\). It identifies the KSGNS representation with (7.1), \(V\) with the identity-coordinate embedding, and \(q\) with the projection onto that coordinate.
 
 *Proof.* Let \(W:A\to\ell^2(\Gamma,A)\) send \(a\) to the column with value \(a\) at \(e\). Its adjoint is coordinate evaluation. Compression gives \(W^*cW=L_{a_e}\) for a finite sum. Since \(A\) is norm closed in \(M(A)=\mathcal L(A)\), the same compression has its value in \(A\) for every \(c\in C\). Compression is completely positive and contractive, so this defines \(P\). It fixes \(A\) and is \(A\)-bimodular, either by compression and \(r(a)W=WL_a\), or by (7.2).
 
@@ -450,9 +450,9 @@ This is the compression mechanism behind the use of generalized Stinespring in e
 
 **Exercise 10.4 (Crossed-product coordinates).** Identify the module and representation of the expectation \(A\rtimes_r\Gamma\to A\), taking account of the right \(A\)-action.
 
-*Solution.* On a finite sum \(b=\sum_g b_g u_g\), use \(Jb=\alpha_{g^{-1}}(b_g)\). The product rule \((a u_g)(b u_h)=a\alpha_g(b)u_{gh}\) gives (7.5), so \(J\) preserves inner products. Since \(b a=\sum_g b_g\alpha_g(a)u_g\), the transformed column is \(Jba\); this verifies module linearity. For any finite column \(\xi\), choosing \(b_g=\alpha_g(\xi(g))\) gives \(J[b]=\xi\). Density of finite sums in the algebra norm, and \(\|[b]\|\leq\|b\|\), now make \(J\) an onto unitary of the completed modules.
+*Solution.* On a finite sum \(b=\sum_g b_g u_g\), use \(J[b](g)=\alpha_{g^{-1}}(b_g)\). The product rule \((a u_g)(b u_h)=a\alpha_g(b)u_{gh}\) gives (7.5), so \(J\) preserves inner products. Since \(b a=\sum_g b_g\alpha_g(a)u_g\), the transformed column is \(J[b](g)a\); this verifies module linearity. For any finite column \(\xi\), choosing \(b_g=\alpha_g(\xi(g))\) gives \(J[b]=\xi\). Density of finite sums in the algebra norm, and \(\|[b]\|\leq\|b\|\), now make \(J\) an onto unitary of the completed modules.
 
-To check the representation, left multiplication by \(a u_h\) gives coefficient \(a\alpha_h(b_g)\) at \(t=hg\). Applying \(\alpha_{t^{-1}}\) yields \(\alpha_{t^{-1}}(a)Jb\), exactly \((r(a)u_hJ[b])(t)\). Extend by norm continuity to all of \(A\rtimes_r\Gamma\). The embedding \(Va=[a]\) becomes the column supported at \(e\); its adjoint evaluates that coordinate, and its range projection deletes every other coordinate. Thus the KSGNS triple is the regular module representation with this compression. ∎
+To check the representation, left multiplication by \(a u_h\) gives coefficient \(a\alpha_h(b_g)\) at \(t=hg\). Applying \(\alpha_{t^{-1}}\) yields \(\alpha_{t^{-1}}(a)J[b](h^{-1}t)\), exactly \((r(a)u_hJ[b])(t)\). Extend by norm continuity to all of \(A\rtimes_r\Gamma\). The embedding \(Va=[a]\) becomes the column supported at \(e\); its adjoint evaluates that coordinate, and its range projection deletes every other coordinate. Thus the KSGNS triple is the regular module representation with this compression. ∎
 
 ## What this lesson does not prove
 

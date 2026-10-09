@@ -150,8 +150,8 @@ Set
 The shear preserves compact supports and the squared integral norm: integrate in \(q\) first and translate by \(t\). [L24's qualified Radon-product Fubini](OA-FLOW-L24.md#oa-flow.grp.vectorintegration) applies to these compact carriers. [H0](OA-FLOW-TOPOLOGY.md#l138-h0)'s product approximation identifies their compact continuous vector functions with the Hilbert tensor completion. Thus \(S\) and its displayed inverse extend to inverse unitaries. For general vectors the calculation is obtained by density, not by an unrestricted product-Borel assertion or a dominated-convergence claim for arbitrary nets.
 
 On the multiplicity space \(K=L^2(G_q,H)\), define
-\
- [\sigma(a)v=\pi(\alpha_{-q}(a))v(q).
+\[
+ [\sigma(a)v](q)=\pi(\alpha_{-q}(a))v(q).
  \tag{55a}
 \]
 This is a contractive star representation. Its continuous vector fields on sigma compact carriers are strongly measurable by [L24 Section 4](OA-FLOW-L24.md#oa-flow.grp.vectorintegration), and approximation extends its action to every vector. It is faithful: if \(\pi(a)v_0\ne0\), continuity makes this field nonzero with a uniform lower bound near zero; multiply \(v_0\) by a nonzero compact bump there and use Haar full support.
@@ -168,11 +168,11 @@ It is also nondegenerate, with a genuine net proof. Let \((e_i)\) be the positiv
 The compact orbit image has a finite norm net; approximate-identity convergence at its finitely many members and the uniform contraction bound prove the last convergence. Finite sums of compact scalar functions times vectors in \(\pi(A)H\) are dense in \(K\). Equation (TC7) gives strong convergence of \(\sigma(e_i)\) to the identity on them, and the contraction bound extends it to all of \(K\).
 
 After the shear, the three generators on \(L^2(G_t,K)\) are precisely
-\
+\[
  \begin{aligned}
- [A_a\xi&=\sigma(\alpha_{-t}(a))\xi(t),\\
- \Lambda_s\xi&=\xi(t-s),\\
- Q_\gamma\xi&=\overline{\gamma(t)}\,\xi(t).
+ [A_a\xi](t)&=\sigma(\alpha_{-t}(a))\xi(t),\\
+ [\Lambda_s\xi](t)&=\xi(t-s),\\
+ [Q_\gamma\xi](t)&=\overline{\gamma(t)}\,\xi(t).
  \end{aligned}
  \tag{56}
 \]
@@ -221,8 +221,8 @@ Here \(\mathcal K\) is the norm closure of finite-rank operators. It agrees with
 ## 5. The coefficient orbit and both inclusions
 
 We retain \(K\) and represent \(A\) faithfully by \(\sigma\). The kernel of a generator in (57), applied to a compact vector field \(v\), is
-\
- [A_a(1_K\otimes\theta_{\xi,\eta})v
+\[
+ [A_a(1_K\otimes\theta_{\xi,\eta})v](t)
  =\int_G\sigma(\alpha_{-t}(a))\,
        \xi(t)\overline{\eta(r)}v(r)\,dm(r).
  \tag{58}

@@ -10,6 +10,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-gns-foundation-20261008-v1"
 from matplotlib.patches import FancyBboxPatch
 
 HERE = Path(__file__).resolve().parent
@@ -89,7 +90,7 @@ fig.text(.5,.005,
          ha="center", fontsize=10, color="#435364")
 fig.tight_layout(rect=(0,.035,1,.94),w_pad=2.6)
 fig.savefig(HERE/"gns-nonunital-vector.png",dpi=150,facecolor="white")
-fig.savefig(HERE/"gns-nonunital-vector.svg",facecolor="white")
+fig.savefig(HERE/"gns-nonunital-vector.svg",facecolor="white",metadata={"Date": None})
 plt.close(fig)
 checks = {
     "license": "CC0-1.0",

@@ -90,9 +90,9 @@ In the standard model $\mathcal H=L^2(G,H)$,
 
 <a id="equation-a9"></a>
 
-$$\pi_\alpha(a)\xi=\alpha_{-r}(a)\xi(r),\quad
-\lambda_s\xi=\xi(r-s),\quad
-Q_\chi\xi=\overline{\chi(r)}\xi(r).
+$$[\pi_\alpha(a)\xi](r)=\alpha_{-r}(a)\xi(r),\quad
+[\lambda_s\xi](r)=\xi(r-s),\quad
+[Q_\chi\xi](r)=\overline{\chi(r)}\xi(r).
 \tag{A9}$$
 
 The representation $\chi\mapsto Q_\chi$ is strongly continuous: on a compactly supported continuous vector function, compact-open convergence of characters gives uniform convergence on its support and hence $L^2$ convergence. Density and the common unitary bound extend this to every vector and convergent net.
@@ -117,7 +117,7 @@ The scalar multiplication preserves $\mathcal K_\alpha$.
 
 <a id="equation-a11"></a>
 
-$$V_s\xi=U_s\xi(r+s),\qquad W\xi=U_r\xi(r).
+$$[V_s\xi](r)=U_s\xi(r+s),\qquad [W\xi](r)=U_r\xi(r).
 \tag{A11}$$
 
 For $W$, both this formula and the formula with $U_r^*$ preserve continuity and compact support of vector functions. Pointwise norm equality gives two inverse isometries on a dense class, hence inverse unitaries on $\mathcal H$. No countable basis is chosen.

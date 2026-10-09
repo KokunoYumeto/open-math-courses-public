@@ -357,12 +357,12 @@ Rj_*j^{-1}p^{-1}F\simeq R\mathcal Hom(k_\Omega,p^{-1}F).
 Perfect inverse image and internal Hom make this bounded constructible with finite stalks; ordinary central restriction preserves those properties. This is the specialization and microlocal-Hom finiteness proof, with the actual open-image comparison retained. Together with (9) and (16), it proves the function domains in (25), additivity and representative independence in (28). Uniform manifold dimension bounds control all degree ranges; pointwise finite ranks need not have a common bound. Normal bundles of different ranks on different components are treated componentwise, with the same uniform dimension bound. Restriction to smaller analytic charts commutes with every construction.
 
 Using \(s^!=D_{T_MX}s^*D_{D_MX}\), the coordinate expression is
-\
+\[
 (\nu_M\phi)(v,x'')=
 -D_{T_MX}\!\left[
 \left.D_{D_MX}
 \bigl(\phi(tv,x'')\,1_{\{t>0\}}\bigr)\right|_{t=0}
-\right.
+\right](v,x'').
 \qquad\text{(29)}
 \]
 Both dualities are taken in their displayed ambient manifolds. Replacing them by duality only in the \(t\) variable would discard normal and tangential contributions. Equation (29) is simply (25) in deformation coordinates, so the construction is independent of the chart.

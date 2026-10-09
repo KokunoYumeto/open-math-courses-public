@@ -1156,8 +1156,8 @@ In particular \(C_k=I\) eventually. Apply I.2 backwards through
 \(|T(x+iy)|^2=|Tx|^2+|Ty|^2\), giving one inequality, and real vectors give the reverse inequality.
 
 Now \(A,B\) commute. Formula (I.4) makes their motion commutator the translation
-\
-[g,h=x+t,\qquad t=(I-B)p+(A-I)q.
+\[
+[g,h](x)=x+t,\qquad t=(I-B)p+(A-I)q.
 \tag{I.7}
 \]
 For a translation \(\tau_v(x)=x+v\), the same formula gives

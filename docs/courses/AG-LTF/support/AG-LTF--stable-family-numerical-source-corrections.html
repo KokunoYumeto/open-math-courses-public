@@ -1,12 +1,317 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Numerical annotations to the original model source</title><link rel="stylesheet" href="../runtime/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="../runtime/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="../index.html">ℓ-adic cohomology and trace formulas</a></nav><article class="lesson"><h1 id="numerical-annotations-to-the-original-model-source">Numerical annotations to the original model source</h1>
-<p>The original <a href="../support/proofs/stable-family/native/models.tex">models.tex</a> retains its exact pinned565b bytes. The corrections are recorded in <span class="unlinked">the patch</span>, <a href="../support/proofs/stable-family/annotated/models-numerical-corrected.tex">the annotated editable teaching version</a>, and <a href="../support/proofs/stable-family/native-patches/models-corrections.json">the correction record</a>.  They do not change the complete independent NS.11a.</p>
-<ul>
-<li>Original line1068: the complete all-<span class="math" data-tex="\((-2)\)">\((-2)\)</span> case has <span class="math" data-tex="\(g=1\)">\(g=1\)</span>, not <span class="math" data-tex="\(g=0\)">\(g=0\)</span>.</li>
-<li>Original lines1915–1916, C5: the displayed matrix and <span class="math" data-tex="\(Am=0\)">\(Am=0\)</span> give <span class="math" data-tex="\(2m_3\ge m_2+m_4\)">\(2m_3\ge m_2+m_4\)</span>, <span class="math" data-tex="\(2m_4\ge m_3+2m_5\)">\(2m_4\ge m_3+2m_5\)</span>, <span class="math" data-tex="\(2m_5\ge m_4\)">\(2m_5\ge m_4\)</span>.</li>
-<li>Original lines1951–1952, B5: the terminal inequality is <span class="math" data-tex="\(m_5\ge m_4\)">\(m_5\ge m_4\)</span>.</li>
-<li>Original line2389, E7: the matrix determinant is <span class="math" data-tex="\(-2w^7&lt;0\)">\(-2w^7&lt;0\)</span>, rather than the incorrect coefficient and sign in <span class="math" data-tex="\(-8w^7&gt;0\)">\(-8w^7&gt;0\)</span>. Nonsingularity still excludes a full seven-vertex positive-kernel type.</li>
-<li>Original line2497, E8: the actual diagram/matrix edges are <span class="math" data-tex="\(a_{12},a_{23},a_{34},a_{45},a_{56},a_{67},a_{58}\)">\(a_{12},a_{23},a_{34},a_{45},a_{56},a_{67},a_{58}\)</span>. Correct the repeated/relabelled <span class="math" data-tex="\(a_{65},a_{57}\)">\(a_{65},a_{57}\)</span> to <span class="math" data-tex="\(a_{67},a_{58}\)">\(a_{67},a_{58}\)</span>.</li>
-<li>Original line3994: the propagated bound is <span class="math" data-tex="\(m_i|a_{ii}|\le768g\)">\(m_i|a_{ii}|\le768g\)</span>, with the multiplicity and the absolute diagonal. It does not concern a positive raw diagonal or the weight-times-diagonal expression printed there.</li>
-</ul>
-<p>The original expression and the modified editable teaching source retain GFDL terms, human Stacks authorship and credited AI Integrated Stacks contributions. These independent annotations do not relabel the original chapter AI-original CC0. The unrestricted imperfect-residue0CEE inference remains unclaimed.</p>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Numerical models and corrected weighted calculations</title><link rel="stylesheet" href="../runtime/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="../runtime/mathjax/tex-chtml-full.js"></script><style id="stable-family-inline-math">.lesson .math:not(.math-display){display:inline;max-width:none;overflow:visible;vertical-align:baseline;overflow-wrap:normal}</style></head><body class="no-math"><main><nav><a href="../index.html">ℓ-adic cohomology and trace formulas</a></nav><article class="lesson"><h1 id="numerical-models-and-corrected-weighted-calculations">Numerical models and corrected weighted calculations</h1>
+<p>Independent teaching exposition, CC0 1.0. AI author: GPT-6.1 Sol, Ultra. Self-checked by the writing AI.</p>
+<p>This reading supplies the geometric numerical statements used in Section S.3 of the stable pointed-family extension. Its mathematical references are the Stacks project authors' <a href="https://stacks.math.columbia.edu/tag/0CA3">model genus formula</a>, <a href="https://stacks.math.columbia.edu/tag/0CA4">numerical type of a model</a>, <a href="https://stacks.math.columbia.edu/tag/0CA6">minimality comparison</a>, <a href="https://stacks.math.columbia.edu/tag/0CE9">genus after reduction</a>, <a href="https://stacks.math.columbia.edu/tag/0CEA">comparison with geometric genus</a>, and <a href="https://stacks.math.columbia.edu/tag/0CAD">Picard torsion</a>. The matrix, heart, classification and <span class="math" data-tex="\(768g\)">\(768g\)</span> proofs are in <a href="AG-LTF--numerical-completion-NS11a.html">Numerical completion NS.11a</a>.</p>
+<span class="heading-anchor" id="g-model-type"></span>
+<h2 id="g-1-from-a-regular-model-to-its-numerical-type">G.1. From a regular model to its numerical type</h2>
+<p>Let <span class="math" data-tex="\(R\)">\(R\)</span> be a discrete valuation ring, with uniformizer <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, fraction field <span class="math" data-tex="\(K\)">\(K\)</span>, and residue field <span class="math" data-tex="\(k\)">\(k\)</span>. Let <span class="math" data-tex="\(C/K\)">\(C/K\)</span> be a smooth projective geometrically connected curve of genus <span class="math" data-tex="\(G\)">\(G\)</span>, and let <span class="math" data-tex="\(X/R\)">\(X/R\)</span> be a regular proper flat model. Write
+<span class="math math-display" data-tex="\[
+ F=X_k=\sum_{i=1}^n m_iC_i,\quad
+ \kappa_i=H^0(C_i,\mathcal O_{C_i}),\quad
+ w_i=[\kappa_i:k],\quad
+ g_i=\dim_{\kappa_i}H^1(C_i,\mathcal O_{C_i}).
+\tag{G.1}
+\]">\[
+ F=X_k=\sum_{i=1}^n m_iC_i,\quad
+ \kappa_i=H^0(C_i,\mathcal O_{C_i}),\quad
+ w_i=[\kappa_i:k],\quad
+ g_i=\dim_{\kappa_i}H^1(C_i,\mathcal O_{C_i}).
+\tag{G.1}
+\]</span>
+The integral curves <span class="math" data-tex="\(C_i\)">\(C_i\)</span> are Cartier divisors, since regular surface local rings are factorial. The fibre <span class="math" data-tex="\(F\)">\(F\)</span> is the principal Cartier divisor of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Properness makes each <span class="math" data-tex="\(\kappa_i\)">\(\kappa_i\)</span> finite over <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p>Set <span class="math" data-tex="\(a_{ij}=\deg_k(\mathcal O_X(C_j)|_{C_i})\)">\(a_{ij}=\deg_k(\mathcal O_X(C_j)|_{C_i})\)</span>. For <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>, this is the <span class="math" data-tex="\(k\)">\(k\)</span>-length of the finite intersection <span class="math" data-tex="\(C_i\cap C_j\)">\(C_i\cap C_j\)</span>. It is symmetric, positive when the curves meet, and zero otherwise. Each degree is a multiple of <span class="math" data-tex="\(w_i\)">\(w_i\)</span>, because the Euler characteristics defining it are dimensions of <span class="math" data-tex="\(\kappa_i\)">\(\kappa_i\)</span>-vector spaces. The triviality of <span class="math" data-tex="\(\mathcal O_X(F)\)">\(\mathcal O_X(F)\)</span> gives <span class="math" data-tex="\(Am=0\)">\(Am=0\)</span>. The special fibre is connected: <span class="math" data-tex="\(H^0(X,\mathcal O_X)=R\)">\(H^0(X,\mathcal O_X)=R\)</span>, since this finite <span class="math" data-tex="\(R\)">\(R\)</span>-algebra is contained in <span class="math" data-tex="\(H^0(C,\mathcal O_C)=K\)">\(H^0(C,\mathcal O_C)=K\)</span> and <span class="math" data-tex="\(R\)">\(R\)</span> is integrally closed; Stein factorization then gives connected fibres. Thus (G.1), with the intersection matrix, satisfies every numerical-type condition.</p>
+<p>We derive its genus rather than assuming it. If <span class="math" data-tex="\(D&#x27;=D+C_i\)">\(D&#x27;=D+C_i\)</span> is a sum of effective Cartier divisors, the quotient of their ideals gives
+<span class="math math-display" data-tex="\[
+ 0\longrightarrow\mathcal O_X(-D)|_{C_i}
+ \longrightarrow\mathcal O_{D&#x27;}
+ \longrightarrow\mathcal O_D\longrightarrow0.
+\tag{G.2}
+\]">\[
+ 0\longrightarrow\mathcal O_X(-D)|_{C_i}
+ \longrightarrow\mathcal O_{D&#x27;}
+ \longrightarrow\mathcal O_D\longrightarrow0.
+\tag{G.2}
+\]</span>
+Hence the change in Euler characteristic is
+<span class="math" data-tex="\(\chi(C_i,\mathcal O_{C_i})-(D\cdot C_i)\)">\(\chi(C_i,\mathcal O_{C_i})-(D\cdot C_i)\)</span>.
+Build <span class="math" data-tex="\(F\)">\(F\)</span> by adding a list of components in which <span class="math" data-tex="\(C_i\)">\(C_i\)</span> occurs <span class="math" data-tex="\(m_i\)">\(m_i\)</span> times. Summing (G.2) counts the intersection of every pair of distinct occurrences once. Since <span class="math" data-tex="\(F^2=0\)">\(F^2=0\)</span>, that sum of pairwise intersections is
+<span class="math" data-tex="\(-\frac12\sum_i m_i a_{ii}\)">\(-\frac12\sum_i m_i a_{ii}\)</span>. We obtain
+<span class="math math-display" data-tex="\[
+ \chi(F,\mathcal O_F)
+ =\sum_i m_iw_i(1-g_i)+\frac12\sum_i m_i a_{ii}.
+\]">\[
+ \chi(F,\mathcal O_F)
+ =\sum_i m_iw_i(1-g_i)+\frac12\sum_i m_i a_{ii}.
+\]</span>
+Euler characteristic is constant in a proper flat curve family, so the left side is <span class="math" data-tex="\(1-G\)">\(1-G\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+ G=1+\sum_i m_i\left(w_i(g_i-1)-\frac{a_{ii}}2\right).
+\tag{G.3}
+\]">\[
+ G=1+\sum_i m_i\left(w_i(g_i-1)-\frac{a_{ii}}2\right).
+\tag{G.3}
+\]</span>
+This proves the model and genus assertions of <a href="https://stacks.math.columbia.edu/tag/0CA4">Stacks 0CA4</a> and <a href="https://stacks.math.columbia.edu/tag/0CA3">0CA3</a>.</p>
+<p>A component is exceptional precisely when <span class="math" data-tex="\(g_i=0\)">\(g_i=0\)</span> and <span class="math" data-tex="\(a_{ii}=-w_i\)">\(a_{ii}=-w_i\)</span>. In this case <span class="math" data-tex="\(\mathcal O_X(-C_i)|_{C_i}\)">\(\mathcal O_X(-C_i)|_{C_i}\)</span> has degree one over <span class="math" data-tex="\(\kappa_i\)">\(\kappa_i\)</span>. On an integral genus-zero curve a degree-one invertible sheaf has at least two sections by Riemann–Roch. A nonzero section has a Cartier zero scheme of length one, so the exact sequence from that section bounds the dimension of its full space of sections by two. At the unique zero point the local equation generates the maximal ideal, making the curve regular there. The two sections cannot share this zero: otherwise their quotient after removing it would lie in the one-dimensional space of global constants. Thus they give a base-point-free map to <span class="math" data-tex="\(\mathbf P^1_{\kappa_i}\)">\(\mathbf P^1_{\kappa_i}\)</span>, finite of degree one. Normality of the target makes it an isomorphism. The normal bundle is consequently <span class="math" data-tex="\(\mathcal O_{\mathbf P^1}(-1)\)">\(\mathcal O_{\mathbf P^1}(-1)\)</span>, the exceptional-curve criterion. Conversely such a curve has exactly these genus and degree data. Thus a model without exceptional curves has a minimal numerical type, and conversely, as in <a href="https://stacks.math.columbia.edu/tag/0CA6">Stacks 0CA6</a>.</p>
+<span class="heading-anchor" id="g-rational-point"></span>
+<h2 id="g-2-a-section-makes-the-multiplicity-vector-primitive">G.2. A section makes the multiplicity vector primitive</h2>
+<p>A <span class="math" data-tex="\(K\)">\(K\)</span>-rational point of <span class="math" data-tex="\(C\)">\(C\)</span> extends to a section of <span class="math" data-tex="\(X/R\)">\(X/R\)</span> by properness, the starting point of <a href="https://stacks.math.columbia.edu/tag/0CE8">Stacks 0CE8</a>. At its special point <span class="math" data-tex="\(x\)">\(x\)</span>, the local homomorphism
+<span class="math" data-tex="\(\mathcal O_{X,x}\to R\)">\(\mathcal O_{X,x}\to R\)</span> sends <span class="math" data-tex="\(\pi\)">\(\pi\)</span> to a uniformizer. Thus <span class="math" data-tex="\(\pi\)">\(\pi\)</span> cannot lie in <span class="math" data-tex="\(\mathfrak m_x^2\)">\(\mathfrak m_x^2\)</span>. Quotienting the regular surface local ring by this parameter gives a regular curve local ring with residue field <span class="math" data-tex="\(k\)">\(k\)</span>, hence a smooth <span class="math" data-tex="\(k\)">\(k\)</span>-point of <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>Only one component passes through <span class="math" data-tex="\(x\)">\(x\)</span>. At that component the multiplicity is one, and evaluation at <span class="math" data-tex="\(x\)">\(x\)</span> embeds its field of constants into <span class="math" data-tex="\(k\)">\(k\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+ m_i=w_i=1\quad\text{for that component},\qquad
+ d:=\gcd(m_1,\ldots,m_n)=1.
+\tag{G.4}
+\]">\[
+ m_i=w_i=1\quad\text{for that component},\qquad
+ d:=\gcd(m_1,\ldots,m_n)=1.
+\tag{G.4}
+\]</span>
+The reduced fibre <span class="math" data-tex="\(Y=F_{\mathrm{red}}\)">\(Y=F_{\mathrm{red}}\)</span> is proper, connected and reduced. Its finite ring of global functions is a field; evaluation at <span class="math" data-tex="\(x\)">\(x\)</span> gives <span class="math" data-tex="\(H^0(Y,\mathcal O_Y)=k\)">\(H^0(Y,\mathcal O_Y)=k\)</span>. These facts supply the hypotheses of the next comparison without any assumption about the other components' constant fields.</p>
+<span class="heading-anchor" id="g-reduction-genus"></span>
+<h2 id="g-3-reduction-lowers-genus-strictly-for-a-nonreduced-minimal-fibre">G.3. Reduction lowers genus, strictly for a nonreduced minimal fibre</h2>
+<p>Assume <span class="math" data-tex="\(d=1\)">\(d=1\)</span> and <span class="math" data-tex="\(H^0(Y,\mathcal O_Y)=k\)">\(H^0(Y,\mathcal O_Y)=k\)</span>. We construct a filtration from <span class="math" data-tex="\(Y\)">\(Y\)</span> to <span class="math" data-tex="\(F\)">\(F\)</span> in which all global-function rings remain <span class="math" data-tex="\(k\)">\(k\)</span>. Suppose
+<span class="math" data-tex="\(Z=\sum z_iC_i\)">\(Z=\sum z_iC_i\)</span>, with <span class="math" data-tex="\(1\le z_i\le m_i\)">\(1\le z_i\le m_i\)</span>, has been constructed and <span class="math" data-tex="\(Z\ne F\)">\(Z\ne F\)</span>. The quadratic identity in N.1 gives <span class="math" data-tex="\(Z^2&lt;0\)">\(Z^2&lt;0\)</span>. Indeed, equality would give <span class="math" data-tex="\(z_i=qm_i\)">\(z_i=qm_i\)</span>; integrality of all <span class="math" data-tex="\(z_i\)">\(z_i\)</span> and primitivity of <span class="math" data-tex="\(m\)">\(m\)</span> imply <span class="math" data-tex="\(q\in\mathbf Z\)">\(q\in\mathbf Z\)</span>, impossible with <span class="math" data-tex="\(0&lt;q&lt;1\)">\(0&lt;q&lt;1\)</span>. Since <span class="math" data-tex="\(F\cdot Z=0\)">\(F\cdot Z=0\)</span>,
+<span class="math math-display" data-tex="\[
+ (F-Z)\cdot Z=-Z^2&gt;0.
+\]">\[
+ (F-Z)\cdot Z=-Z^2&gt;0.
+\]</span>
+Some component with <span class="math" data-tex="\(z_i&lt;m_i\)">\(z_i&lt;m_i\)</span> therefore satisfies <span class="math" data-tex="\(C_i\cdot Z&gt;0\)">\(C_i\cdot Z&gt;0\)</span>. Add this component to <span class="math" data-tex="\(Z\)">\(Z\)</span>. In (G.2) the kernel <span class="math" data-tex="\(\mathcal O_X(-Z)|_{C_i}\)">\(\mathcal O_X(-Z)|_{C_i}\)</span> has negative degree, so has no global section. It follows that
+<span class="math math-display" data-tex="\[
+ k\subset H^0(Z+C_i,\mathcal O)\subset H^0(Z,\mathcal O)=k.
+\]">\[
+ k\subset H^0(Z+C_i,\mathcal O)\subset H^0(Z,\mathcal O)=k.
+\]</span>
+The finite procedure ends at <span class="math" data-tex="\(F\)">\(F\)</span>, and all intermediate global-function rings equal <span class="math" data-tex="\(k\)">\(k\)</span>. In particular,
+<span class="math math-display" data-tex="\[
+ H^0(F,\mathcal O_F)=k,\qquad
+ \dim_kH^1(F,\mathcal O_F)=G.
+\tag{G.5}
+\]">\[
+ H^0(F,\mathcal O_F)=k,\qquad
+ \dim_kH^1(F,\mathcal O_F)=G.
+\tag{G.5}
+\]</span>
+The filtration is the elementary mechanism behind <a href="https://stacks.math.columbia.edu/tag/0C68">Stacks 0C68</a>.</p>
+<p>The map <span class="math" data-tex="\(H^1(F,\mathcal O_F)\to H^1(Y,\mathcal O_Y)\)">\(H^1(F,\mathcal O_F)\to H^1(Y,\mathcal O_Y)\)</span> is surjective, since the coherent kernel of <span class="math" data-tex="\(\mathcal O_F\to\mathcal O_Y\)">\(\mathcal O_F\to\mathcal O_Y\)</span> has support of dimension at most one and hence no <span class="math" data-tex="\(H^2\)">\(H^2\)</span>. Put <span class="math" data-tex="\(h=\dim_kH^1(Y,\mathcal O_Y)\)">\(h=\dim_kH^1(Y,\mathcal O_Y)\)</span>. We have <span class="math" data-tex="\(G\ge h\)">\(G\ge h\)</span>.</p>
+<p>Now assume <span class="math" data-tex="\(X\)">\(X\)</span> is minimal and <span class="math" data-tex="\(Y\ne F\)">\(Y\ne F\)</span>. In the last step of the filtration, write <span class="math" data-tex="\(F=Z+C_i\)">\(F=Z+C_i\)</span> and <span class="math" data-tex="\(L=\mathcal O_X(-Z)|_{C_i}\)">\(L=\mathcal O_X(-Z)|_{C_i}\)</span>. Since <span class="math" data-tex="\(F\cdot C_i=0\)">\(F\cdot C_i=0\)</span>,
+<span class="math math-display" data-tex="\[
+ \deg_kL=a_{ii},\qquad
+ \chi(C_i,L)=w_i(1-g_i)+a_{ii}&lt;0.
+\tag{G.6}
+\]">\[
+ \deg_kL=a_{ii},\qquad
+ \chi(C_i,L)=w_i(1-g_i)+a_{ii}&lt;0.
+\tag{G.6}
+\]</span>
+There is more than one component, since otherwise <span class="math" data-tex="\(d=1\)">\(d=1\)</span> would make the fibre reduced. If <span class="math" data-tex="\(g_i=0\)">\(g_i=0\)</span>, minimality gives <span class="math" data-tex="\(a_{ii}\le-2w_i\)">\(a_{ii}\le-2w_i\)</span>; if <span class="math" data-tex="\(g_i\ge1\)">\(g_i\ge1\)</span>, the negativity of <span class="math" data-tex="\(a_{ii}\)">\(a_{ii}\)</span> gives the same strict sign in (G.6). Thus <span class="math" data-tex="\(H^1(C_i,L)\ne0\)">\(H^1(C_i,L)\ne0\)</span>. The two global-function rings of the last step equal <span class="math" data-tex="\(k\)">\(k\)</span>, so its long exact sequence injects this nonzero group into the kernel of <span class="math" data-tex="\(H^1(F,\mathcal O_F)\to H^1(Z,\mathcal O_Z)\)">\(H^1(F,\mathcal O_F)\to H^1(Z,\mathcal O_Z)\)</span>. The subsequent map to <span class="math" data-tex="\(H^1(Y,\mathcal O_Y)\)">\(H^1(Y,\mathcal O_Y)\)</span> is surjective. We conclude
+<span class="math math-display" data-tex="\[
+ G&gt;h\quad\text{if a minimal fibre with these hypotheses is nonreduced}.
+\tag{G.7}
+\]">\[
+ G&gt;h\quad\text{if a minimal fibre with these hypotheses is nonreduced}.
+\tag{G.7}
+\]</span>
+This proves the strict statement of <a href="https://stacks.math.columbia.edu/tag/0CE9">Stacks 0CE9</a>.</p>
+<span class="heading-anchor" id="g-geometric-genus"></span>
+<h2 id="g-4-the-lower-genus-bound-and-the-component-equality-statement">G.4. The lower genus bound and the component equality statement</h2>
+<p>Assume <span class="math" data-tex="\(F\)">\(F\)</span> has a smooth <span class="math" data-tex="\(k\)">\(k\)</span>-rational point <span class="math" data-tex="\(x\)">\(x\)</span>, as in G.2. Let <span class="math" data-tex="\(b=e-n+1\)">\(b=e-n+1\)</span> be the graph genus, and let <span class="math" data-tex="\(a_i\)">\(a_i\)</span> be the sum of the genera of the normalizations of the irreducible components of <span class="math" data-tex="\((C_i)_{\overline k,\mathrm{red}}\)">\((C_i)_{\overline k,\mathrm{red}}\)</span>. Write <span class="math" data-tex="\(a=\sum_i a_i\)">\(a=\sum_i a_i\)</span>. Then
+<span class="math math-display" data-tex="\[
+ h\ge b+a.
+\tag{G.8}
+\]">\[
+ h\ge b+a.
+\tag{G.8}
+\]</span>
+We prove this over an arbitrary residue field, as in <a href="https://stacks.math.columbia.edu/tag/0CEA">Stacks 0CEA</a>.</p>
+<p>First note the component estimate
+<span class="math math-display" data-tex="\[
+ a_i\le[\kappa_i:k]_{\mathrm s}g_i\le w_ig_i.
+\tag{G.9}
+\]">\[
+ a_i\le[\kappa_i:k]_{\mathrm s}g_i\le w_ig_i.
+\tag{G.9}
+\]</span>
+There are <span class="math" data-tex="\([\kappa_i:k]_{\mathrm s}\)">\([\kappa_i:k]_{\mathrm s}\)</span> embeddings of <span class="math" data-tex="\(\kappa_i\)">\(\kappa_i\)</span> into <span class="math" data-tex="\(\overline k\)">\(\overline k\)</span>. The corresponding base changes of <span class="math" data-tex="\(C_i\)">\(C_i\)</span> have disjoint underlying supports and each has <span class="math" data-tex="\(H^1\)">\(H^1\)</span>-dimension <span class="math" data-tex="\(g_i\)">\(g_i\)</span>, by flat field base change. For each of them, passing to the reduction surjects on <span class="math" data-tex="\(H^1\)">\(H^1\)</span>, and passing from the reduction to its finite normalization also surjects on <span class="math" data-tex="\(H^1\)">\(H^1\)</span>, because the cokernel is supported at finitely many points. The <span class="math" data-tex="\(H^1\)">\(H^1\)</span> of that normalization is the sum of its component genera. Summing over the embeddings proves (G.9), the inequality of <a href="https://stacks.math.columbia.edu/tag/0CE5">Stacks 0CE5</a>.</p>
+<p>Root a spanning tree of the graph at the component containing <span class="math" data-tex="\(x\)">\(x\)</span>, and order vertices so that a parent precedes its children. The union of every initial segment is connected and contains <span class="math" data-tex="\(x\)">\(x\)</span>. Its global-function field is <span class="math" data-tex="\(k\)">\(k\)</span>, by evaluation at <span class="math" data-tex="\(x\)">\(x\)</span>. The root component is geometrically integral because it has a smooth rational point; its contribution to <span class="math" data-tex="\(h\)">\(h\)</span> is <span class="math" data-tex="\(g_i\ge a_i\)">\(g_i\ge a_i\)</span>, while its graph genus is zero.</p>
+<p>Add another component <span class="math" data-tex="\(C_i\)">\(C_i\)</span> to a preceding union <span class="math" data-tex="\(D&#x27;\)">\(D&#x27;\)</span>. Let <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span> count its neighbours already in <span class="math" data-tex="\(D&#x27;\)">\(D&#x27;\)</span>. The union exact sequence, or (G.2), gives
+<span class="math math-display" data-tex="\[
+ \Delta h=w_i(g_i-1)+\sum_{C_j\subset D&#x27;}a_{ij},\qquad
+ \Delta b=r-1,\qquad \Delta a=a_i.
+\]">\[
+ \Delta h=w_i(g_i-1)+\sum_{C_j\subset D&#x27;}a_{ij},\qquad
+ \Delta b=r-1,\qquad \Delta a=a_i.
+\]</span>
+Hence
+<span class="math math-display" data-tex="\[
+ \Delta(h-b-a)=
+ (w_ig_i-a_i)+
+ \sum_{\substack{C_j\subset D&#x27;\\a_{ij}&gt;0}}(a_{ij}-1)
+ -(w_i-1)\ge0.
+\tag{G.10}
+\]">\[
+ \Delta(h-b-a)=
+ (w_ig_i-a_i)+
+ \sum_{\substack{C_j\subset D&#x27;\\a_{ij}&gt;0}}(a_{ij}-1)
+ -(w_i-1)\ge0.
+\tag{G.10}
+\]</span>
+The first term is nonnegative by (G.9). Every edge in the sum is a positive multiple of <span class="math" data-tex="\(w_i\)">\(w_i\)</span>, so the remaining terms are at least
+<span class="math" data-tex="\((r-1)(w_i-1)\ge0\)">\((r-1)(w_i-1)\ge0\)</span>. Induction proves (G.8). The spanning-tree order explicitly avoids any requirement that an arbitrary component be a leaf.</p>
+<p>Over an algebraically closed residue field, all <span class="math" data-tex="\(w_i=1\)">\(w_i=1\)</span>, and equality <span class="math" data-tex="\(h=b+a\)">\(h=b+a\)</span> forces every component to be smooth. Indeed, every nonnegative contribution in (G.10), together with the root contribution, must vanish; in particular <span class="math" data-tex="\(g_i=a_i\)">\(g_i=a_i\)</span> for every component. For an integral component over this field, the finite normalization has the same global constants <span class="math" data-tex="\(k\)">\(k\)</span>. Its exact sequence
+<span class="math math-display" data-tex="\[
+ 0\to\mathcal O_{C_i}\to\nu_*\mathcal O_{C_i^\nu}\to Q_i\to0
+\]">\[
+ 0\to\mathcal O_{C_i}\to\nu_*\mathcal O_{C_i^\nu}\to Q_i\to0
+\]</span>
+therefore gives <span class="math" data-tex="\(g_i-a_i=\dim_kH^0(Q_i)\)">\(g_i-a_i=\dim_kH^0(Q_i)\)</span>. Equality makes <span class="math" data-tex="\(Q_i=0\)">\(Q_i=0\)</span>, so <span class="math" data-tex="\(C_i\)">\(C_i\)</span> is normal, hence regular and smooth over the perfect field <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p>The constant-field qualification matters. In the general-field comparison <span class="math" data-tex="\(w_ig_i\ge[\kappa_i:k]_{\mathrm s}g_i\)">\(w_ig_i\ge[\kappa_i:k]_{\mathrm s}g_i\)</span>, equality when <span class="math" data-tex="\(g_i=0\)">\(g_i=0\)</span> says nothing about whether <span class="math" data-tex="\(\kappa_i/k\)">\(\kappa_i/k\)</span> is separable. Thus this particular numerical equality cannot by itself justify the unrestricted separability conclusion printed in <a href="https://stacks.math.columbia.edu/tag/0CEE">Stacks 0CEE</a>. The component-smoothness equality statement just proved is the one used over the algebraically closed residue field in S.3; the inequality (G.8) itself has no such residue-field restriction.</p>
+<span class="heading-anchor" id="g-torsion"></span>
+<h2 id="g-5-vertical-divisors-torsion-and-specialization">G.5. Vertical divisors, torsion and specialization</h2>
+<p>For a regular proper model, restriction gives the exact sequence
+<span class="math math-display" data-tex="\[
+ 0\longrightarrow\mathbf Z
+ \xrightarrow{\,1\mapsto m\,}\mathbf Z^n
+ \xrightarrow{\,e_i\mapsto\mathcal O_X(C_i)\,}
+ \operatorname{Pic}(X)\longrightarrow\operatorname{Pic}(C)
+ \longrightarrow0.
+\tag{G.11}
+\]">\[
+ 0\longrightarrow\mathbf Z
+ \xrightarrow{\,1\mapsto m\,}\mathbf Z^n
+ \xrightarrow{\,e_i\mapsto\mathcal O_X(C_i)\,}
+ \operatorname{Pic}(X)\longrightarrow\operatorname{Pic}(C)
+ \longrightarrow0.
+\tag{G.11}
+\]</span>
+To see surjectivity on the right, represent a line bundle on the smooth generic curve by a divisor and close that divisor in the regular surface; its closure is Cartier. A line bundle trivial on <span class="math" data-tex="\(C\)">\(C\)</span> has a meromorphic trivializing section, whose divisor is a sum of the <span class="math" data-tex="\(C_i\)">\(C_i\)</span>. Finally, a principal divisor supported on <span class="math" data-tex="\(F\)">\(F\)</span> comes from a rational function with no zero or pole on <span class="math" data-tex="\(C\)">\(C\)</span>. Such a function is in <span class="math" data-tex="\(K^*\)">\(K^*\)</span>, and its divisor is an integral multiple of <span class="math" data-tex="\(F\)">\(F\)</span>. These facts prove exactness, the result of <a href="https://stacks.math.columbia.edu/tag/0C63">Stacks 0C63</a>.</p>
+<p>Divide the degree on <span class="math" data-tex="\(C_i\)">\(C_i\)</span> by <span class="math" data-tex="\(w_i\)">\(w_i\)</span>. The image of <span class="math" data-tex="\(\mathcal O_X(C_j)\)">\(\mathcal O_X(C_j)\)</span> is the <span class="math" data-tex="\(j\)">\(j\)</span>-th column of <span class="math" data-tex="\(D_w^{-1}A\)">\(D_w^{-1}A\)</span>. This defines
+<span class="math math-display" data-tex="\[
+ \operatorname{Pic}(C)\longrightarrow P(T).
+\tag{G.12}
+\]">\[
+ \operatorname{Pic}(C)\longrightarrow P(T).
+\tag{G.12}
+\]</span>
+A generic line bundle maps to zero precisely when it has an extension to <span class="math" data-tex="\(X\)">\(X\)</span> of degree zero on every <span class="math" data-tex="\(C_i\)">\(C_i\)</span>: adjust any extension by a vertical divisor realizing its degree relation.</p>
+<p>A degree-zero extension trivial on <span class="math" data-tex="\(C\)">\(C\)</span> is killed by <span class="math" data-tex="\(d=\gcd(m_i)\)">\(d=\gcd(m_i)\)</span>. Indeed, write it as <span class="math" data-tex="\(\mathcal O_X(\sum z_iC_i)\)">\(\mathcal O_X(\sum z_iC_i)\)</span>. Its degrees give <span class="math" data-tex="\(Az=0\)">\(Az=0\)</span>, so N.1 gives <span class="math" data-tex="\(z=qm\)">\(z=qm\)</span>. The integer vector <span class="math" data-tex="\(m/d\)">\(m/d\)</span> is primitive, whence <span class="math" data-tex="\(q\in d^{-1}\mathbf Z\)">\(q\in d^{-1}\mathbf Z\)</span>. Multiplying the divisor by <span class="math" data-tex="\(d\)">\(d\)</span> produces an integral multiple of the principal fibre.</p>
+<p>For an integer <span class="math" data-tex="\(q\ge1\)">\(q\ge1\)</span> coprime to <span class="math" data-tex="\(d\)">\(d\)</span>, we obtain
+<span class="math math-display" data-tex="\[
+ 0\longrightarrow\operatorname{Pic}(X)[q]
+ \longrightarrow\operatorname{Pic}(C)[q]
+ \longrightarrow P(T)[q].
+\tag{G.13}
+\]">\[
+ 0\longrightarrow\operatorname{Pic}(X)[q]
+ \longrightarrow\operatorname{Pic}(C)[q]
+ \longrightarrow P(T)[q].
+\tag{G.13}
+\]</span>
+The vertical group <span class="math" data-tex="\(\mathbf Z^n/\mathbf Zm\)">\(\mathbf Z^n/\mathbf Zm\)</span> in (G.11) has torsion <span class="math" data-tex="\(\mathbf Z/d\mathbf Z\)">\(\mathbf Z/d\mathbf Z\)</span>, so contributes no <span class="math" data-tex="\(q\)">\(q\)</span>-torsion and proves injectivity on the left. For the middle exactness, let <span class="math" data-tex="\(\xi\in\operatorname{Pic}(C)[q]\)">\(\xi\in\operatorname{Pic}(C)[q]\)</span> map to zero. Choose its degree-zero extension <span class="math" data-tex="\(L\)">\(L\)</span>. The preceding paragraph says <span class="math" data-tex="\((L^{\otimes q})^{\otimes d}\)">\((L^{\otimes q})^{\otimes d}\)</span> is trivial. Choose <span class="math" data-tex="\(d&#x27;\)">\(d&#x27;\)</span> with <span class="math" data-tex="\(dd&#x27;\equiv1\pmod q\)">\(dd&#x27;\equiv1\pmod q\)</span>; then <span class="math" data-tex="\(L^{\otimes dd&#x27;}\)">\(L^{\otimes dd&#x27;}\)</span> is <span class="math" data-tex="\(q\)">\(q\)</span>-torsion and restricts to <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. Conversely, a torsion line bundle on <span class="math" data-tex="\(X\)">\(X\)</span> has all degrees zero. This proves <a href="https://stacks.math.columbia.edu/tag/0CAD">Stacks 0CAD</a>.</p>
+<p>If <span class="math" data-tex="\(q\)">\(q\)</span> is also prime to the residue characteristic, then
+<span class="math math-display" data-tex="\[
+ \operatorname{Pic}(X)[q]\longrightarrow\operatorname{Pic}(Y)[q]
+ \quad\text{is injective}.
+\tag{G.14}
+\]">\[
+ \operatorname{Pic}(X)[q]\longrightarrow\operatorname{Pic}(Y)[q]
+ \quad\text{is injective}.
+\tag{G.14}
+\]</span>
+Here is a proof including the formal compatibility step in <a href="https://stacks.math.columbia.edu/tag/0CAE">Stacks 0CAE</a>. Put <span class="math" data-tex="\(X_r=X\times_RR/(\pi^r)\)">\(X_r=X\times_RR/(\pi^r)\)</span>. Each <span class="math" data-tex="\(X_r\)">\(X_r\)</span> is a finite nilpotent thickening of <span class="math" data-tex="\(Y\)">\(Y\)</span>. We justify the prime-to-characteristic torsion comparison, including the possible quotient coming from global units, rather than inferring it solely from the cohomology of a square-zero ideal.</p>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> cut out <span class="math" data-tex="\(Y\)">\(Y\)</span> in <span class="math" data-tex="\(X_r\)">\(X_r\)</span>, and write <span class="math" data-tex="\(\mathcal K=1+I\)">\(\mathcal K=1+I\)</span> for the kernel of the restriction on unit sheaves. The <span class="math" data-tex="\(q\)">\(q\)</span>-th power map is an automorphism of <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>: a unit congruent to one has a unique <span class="math" data-tex="\(q\)">\(q\)</span>-th root congruent to one, by successive lifting through the nilpotent ideal, since <span class="math" data-tex="\(q\)">\(q\)</span> is invertible. Thus multiplication by <span class="math" data-tex="\(q\)">\(q\)</span> is an automorphism on every <span class="math" data-tex="\(H^j(Y,\mathcal K)\)">\(H^j(Y,\mathcal K)\)</span>. The unit sequence identifies the kernel of <span class="math" data-tex="\(\operatorname{Pic}(X_r)\to\operatorname{Pic}(Y)\)">\(\operatorname{Pic}(X_r)\to\operatorname{Pic}(Y)\)</span> with
+<span class="math math-display" data-tex="\[
+ H^1(Y,\mathcal K)/D,
+ \qquad
+ D=\operatorname{im}\left(H^0(Y,\mathcal O_Y^*)
+                    \longrightarrow H^1(Y,\mathcal K)\right).
+\tag{G.14a}
+\]">\[
+ H^1(Y,\mathcal K)/D,
+ \qquad
+ D=\operatorname{im}\left(H^0(Y,\mathcal O_Y^*)
+                    \longrightarrow H^1(Y,\mathcal K)\right).
+\tag{G.14a}
+\]</span></p>
+<p>The proper connected reduced curve <span class="math" data-tex="\(Y\)">\(Y\)</span> has a finite constant field <span class="math" data-tex="\(\kappa=H^0(Y,\mathcal O_Y)\)">\(\kappa=H^0(Y,\mathcal O_Y)\)</span> over <span class="math" data-tex="\(k\)">\(k\)</span>. Every constant <span class="math" data-tex="\(v\in\kappa\)">\(v\in\kappa\)</span> separable over <span class="math" data-tex="\(k\)">\(k\)</span> lifts to a global function on <span class="math" data-tex="\(X_r\)">\(X_r\)</span>. To prove this, lift the coefficients of its separable minimal polynomial from <span class="math" data-tex="\(k\)">\(k\)</span> to <span class="math" data-tex="\(R/(\pi^r)\)">\(R/(\pi^r)\)</span>. Its root <span class="math" data-tex="\(v\)">\(v\)</span> on <span class="math" data-tex="\(Y\)">\(Y\)</span> has invertible derivative. Nilpotent root lifting therefore gives a unique root reducing to <span class="math" data-tex="\(v\)">\(v\)</span> on each open set; uniqueness glues these roots globally. When <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>, the lift is a unit. In residue characteristic zero every constant is separable, so <span class="math" data-tex="\(D=0\)">\(D=0\)</span>. In residue characteristic <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span>, each <span class="math" data-tex="\(u\in\kappa^*\)">\(u\in\kappa^*\)</span> has a power <span class="math" data-tex="\(u^{p^e}\)">\(u^{p^e}\)</span> separable over <span class="math" data-tex="\(k\)">\(k\)</span>, since the minimal polynomial of <span class="math" data-tex="\(u\)">\(u\)</span> is a separable polynomial in <span class="math" data-tex="\(T^{p^e}\)">\(T^{p^e}\)</span>. Hence its unit connecting class satisfies <span class="math" data-tex="\(p^e\delta(u)=0\)">\(p^e\delta(u)=0\)</span>. The group <span class="math" data-tex="\(D\)">\(D\)</span> is consequently <span class="math" data-tex="\(p\)">\(p\)</span>-primary torsion. Multiplication by <span class="math" data-tex="\(q\)">\(q\)</span>, being prime to <span class="math" data-tex="\(p\)">\(p\)</span>, is bijective on <span class="math" data-tex="\(D\)">\(D\)</span>: for a class killed by <span class="math" data-tex="\(p^e\)">\(p^e\)</span>, its inverse is multiplication by any integer inverse of <span class="math" data-tex="\(q\)">\(q\)</span> modulo <span class="math" data-tex="\(p^e\)">\(p^e\)</span>.</p>
+<p>It follows that multiplication by <span class="math" data-tex="\(q\)">\(q\)</span> is bijective on the quotient in (G.14a). Explicitly, if <span class="math" data-tex="\(qz\in D\)">\(qz\in D\)</span>, take <span class="math" data-tex="\(d\in D\)">\(d\in D\)</span> with <span class="math" data-tex="\(qd=qz\)">\(qd=qz\)</span>; injectivity on <span class="math" data-tex="\(H^1(Y,\mathcal K)\)">\(H^1(Y,\mathcal K)\)</span> gives <span class="math" data-tex="\(z=d\)">\(z=d\)</span>. Surjectivity follows from that on <span class="math" data-tex="\(H^1(Y,\mathcal K)\)">\(H^1(Y,\mathcal K)\)</span>. Thus this quotient introduces no <span class="math" data-tex="\(q\)">\(q\)</span>-torsion. The obstruction group <span class="math" data-tex="\(H^2(Y,\mathcal K)\)">\(H^2(Y,\mathcal K)\)</span> also has bijective multiplication by <span class="math" data-tex="\(q\)">\(q\)</span>, so a <span class="math" data-tex="\(q\)">\(q\)</span>-torsion class on <span class="math" data-tex="\(Y\)">\(Y\)</span> has zero lifting obstruction; correcting any lift by the unique <span class="math" data-tex="\(q\)">\(q\)</span>-division of its <span class="math" data-tex="\(q\)">\(q\)</span>-fold multiple in (G.14a) gives a <span class="math" data-tex="\(q\)">\(q\)</span>-torsion lift. This proves the torsion comparison needed here, corresponding to <a href="https://stacks.math.columbia.edu/tag/0C6S">Stacks 0C6S</a>. In the course application <span class="math" data-tex="\(H^0(Y,\mathcal O_Y)=k\)">\(H^0(Y,\mathcal O_Y)=k\)</span>, every residue constant already lifts from <span class="math" data-tex="\(R\)">\(R\)</span>, and simply <span class="math" data-tex="\(D=0\)">\(D=0\)</span>. In particular a <span class="math" data-tex="\(q\)">\(q\)</span>-torsion line bundle <span class="math" data-tex="\(L\)">\(L\)</span> trivial on <span class="math" data-tex="\(Y\)">\(Y\)</span> is trivial on every <span class="math" data-tex="\(X_r\)">\(X_r\)</span>.</p>
+<p>We need compatible trivializations, not just unrelated triviality at each order. Set <span class="math" data-tex="\(V_r=H^0(X_r,L|_{X_r})\)">\(V_r=H^0(X_r,L|_{X_r})\)</span>. For fixed <span class="math" data-tex="\(r\)">\(r\)</span>, the images of <span class="math" data-tex="\(V_s\to V_r\)">\(V_s\to V_r\)</span>, <span class="math" data-tex="\(s\ge r\)">\(s\ge r\)</span>, stabilize because <span class="math" data-tex="\(V_r\)">\(V_r\)</span> has finite length over <span class="math" data-tex="\(R\)">\(R\)</span>. Every such image contains a trivializing section, by restricting a trivialization from <span class="math" data-tex="\(X_s\)">\(X_s\)</span>. A section on a thickening is a generator exactly when its reduction is a generator, since the underlying point set is unchanged and the ideal is nilpotent. Therefore the images of the sets of trivializing sections stabilize as well. Their stabilized sets map surjectively at successive orders. Choosing in these sets gives compatible trivializations <span class="math" data-tex="\(t_r\)">\(t_r\)</span>.</p>
+<p>The compatible <span class="math" data-tex="\(t_r\)">\(t_r\)</span> identify
+<span class="math" data-tex="\(\varprojlim V_r\)">\(\varprojlim V_r\)</span> with <span class="math" data-tex="\(\varprojlim H^0(X_r,\mathcal O_{X_r})\)">\(\varprojlim H^0(X_r,\mathcal O_{X_r})\)</span>. The theorem on formal functions <a href="https://stacks.math.columbia.edu/tag/02OC">Stacks 02OC</a> identifies these limits with the completions of <span class="math" data-tex="\(H^0(X,L)\)">\(H^0(X,L)\)</span> and <span class="math" data-tex="\(H^0(X,\mathcal O_X)=R\)">\(H^0(X,\mathcal O_X)=R\)</span>. Hence <span class="math" data-tex="\(H^0(X,L)^\wedge\cong\widehat R\)">\(H^0(X,L)^\wedge\cong\widehat R\)</span>. The finite torsion-free <span class="math" data-tex="\(R\)">\(R\)</span>-module <span class="math" data-tex="\(H^0(X,L)\)">\(H^0(X,L)\)</span> is consequently free of rank one. Its generator restricts to a trivialization on every <span class="math" data-tex="\(X_r\)">\(X_r\)</span>, since in the completed module it is a unit multiple of the compatible formal generator. Its zero scheme is closed, proper over <span class="math" data-tex="\(R\)">\(R\)</span>, and misses the special fibre. A nonempty closed proper subscheme meeting the generic fibre would have closed image containing the closed point of <span class="math" data-tex="\(\operatorname{Spec}R\)">\(\operatorname{Spec}R\)</span>, a contradiction. Thus the generator has no zero anywhere and <span class="math" data-tex="\(L\)">\(L\)</span> is trivial. This proves (G.14).</p>
+<p>In S.3, a section gives <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, and visibility supplies <span class="math" data-tex="\(2G\)">\(2G\)</span> independent <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-torsion classes on <span class="math" data-tex="\(C\)">\(C\)</span>, with <span class="math" data-tex="\(\ell&gt;768G\)">\(\ell&gt;768G\)</span> prime to the residue characteristic. N.5 bounds the image of (G.13) by <span class="math" data-tex="\(b\)">\(b\)</span>, so its kernel has at least <span class="math" data-tex="\(2G-b\)">\(2G-b\)</span> independent classes. By (G.14) these inject into <span class="math" data-tex="\(\operatorname{Pic}(Y)[\ell]\)">\(\operatorname{Pic}(Y)[\ell]\)</span>. Combining this with G.3 and G.4 supplies precisely the numerical-model inequalities
+<span class="math math-display" data-tex="\[
+ G\ge h\ge b+a
+ \quad\text{and}\quad
+ \dim_{\mathbf F_\ell}\operatorname{Pic}(Y)[\ell]\ge2G-b.
+\tag{G.15}
+\]">\[
+ G\ge h\ge b+a
+ \quad\text{and}\quad
+ \dim_{\mathbf F_\ell}\operatorname{Pic}(Y)[\ell]\ge2G-b.
+\tag{G.15}
+\]</span>
+Equality <span class="math" data-tex="\(G=h\)">\(G=h\)</span> forces a minimal fibre to be reduced; over algebraically closed residue, equality <span class="math" data-tex="\(h=b+a\)">\(h=b+a\)</span> makes its components smooth. The remaining reduced-curve torsion bound and its singularity equality calculation are proved in S.3 of the stable-family reading.</p>
+<span class="heading-anchor" id="g-corrections"></span>
+<h2 id="g-6-corrected-chain-rows-and-exceptional-determinants">G.6. Corrected chain rows and exceptional determinants</h2>
+<p>These computations make explicit the corrections needed in the numerical results cited above.</p>
+<p>For the five-vertex chain with vertex weights <span class="math" data-tex="\((w,w,w,w,2w)\)">\((w,w,w,w,2w)\)</span>, diagonal entries are <span class="math" data-tex="\((-2w,-2w,-2w,-2w,-4w)\)">\((-2w,-2w,-2w,-2w,-4w)\)</span>, and successive edge entries are <span class="math" data-tex="\((w,w,w,2w)\)">\((w,w,w,2w)\)</span>. On a proper rational subgraph, the matrix applied to its multiplicities is nonpositive, by (N.14). Reading rows three, four and five gives
+<span class="math math-display" data-tex="\[
+ \boxed{2m_3\ge m_2+m_4,\quad
+        2m_4\ge m_3+2m_5,\quad
+        2m_5\ge m_4.}
+\tag{G.16}
+\]">\[
+ \boxed{2m_3\ge m_2+m_4,\quad
+        2m_4\ge m_3+2m_5,\quad
+        2m_5\ge m_4.}
+\tag{G.16}
+\]</span>
+The coefficient two belongs to the final edge in the fourth row. For the opposite orientation, the weights are <span class="math" data-tex="\((2w,2w,2w,2w,w)\)">\((2w,2w,2w,2w,w)\)</span>, the first four diagonal entries are <span class="math" data-tex="\(-4w\)">\(-4w\)</span>, the last is <span class="math" data-tex="\(-2w\)">\(-2w\)</span>, and all successive edges have weight <span class="math" data-tex="\(2w\)">\(2w\)</span>. Its terminal row is
+<span class="math" data-tex="\(-2wm_5+2wm_4\le0\)">\(-2wm_5+2wm_4\le0\)</span>, giving
+<span class="math math-display" data-tex="\[
+ \boxed{m_5\ge m_4.}
+\tag{G.17}
+\]">\[
+ \boxed{m_5\ge m_4.}
+\tag{G.17}
+\]</span>
+These are the corrected <span class="math" data-tex="\(C_5\)">\(C_5\)</span> and <span class="math" data-tex="\(B_5\)">\(B_5\)</span> instances of the two long cases, with their labels as used in <a href="https://stacks.math.columbia.edu/tag/0C82">Stacks 0C82</a>.</p>
+<p>The <span class="math" data-tex="\(E_7\)">\(E_7\)</span> tree has arm lengths <span class="math" data-tex="\(1,2,3\)">\(1,2,3\)</span>. Its normalized positive matrix <span class="math" data-tex="\(H\)">\(H\)</span> has determinant
+<span class="math math-display" data-tex="\[
+ (1+1)(2+1)(3+1)
+ \left(\frac12+\frac13+\frac14-1\right)=2,
+\]">\[
+ (1+1)(2+1)(3+1)
+ \left(\frac12+\frac13+\frac14-1\right)=2,
+\]</span>
+by the arm elimination in (N.13). Therefore its intersection matrix <span class="math" data-tex="\(A=-wH\)">\(A=-wH\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ \boxed{\det A=-2w^7&lt;0.}
+\tag{G.18}
+\]">\[
+ \boxed{\det A=-2w^7&lt;0.}
+\tag{G.18}
+\]</span>
+It is nonsingular, so the tree in <a href="https://stacks.math.columbia.edu/tag/0C8J">Stacks 0C8J</a> cannot constitute the full positive-kernel numerical type. For the eight-vertex tree, number the main path <span class="math" data-tex="\(1,2,3,4,5,6,7\)">\(1,2,3,4,5,6,7\)</span>, attaching vertex <span class="math" data-tex="\(8\)">\(8\)</span> to vertex <span class="math" data-tex="\(5\)">\(5\)</span>. Its complete edge set is
+<span class="math math-display" data-tex="\[
+ \boxed{\{12,23,34,45,56,67,58\}.}
+\tag{G.19}
+\]">\[
+ \boxed{\{12,23,34,45,56,67,58\}.}
+\tag{G.19}
+\]</span>
+This has arm lengths <span class="math" data-tex="\(1,2,4\)">\(1,2,4\)</span>, so the same determinant computation gives
+<span class="math" data-tex="\(2\cdot3\cdot5(1/2+1/3+1/5-1)=1\)">\(2\cdot3\cdot5(1/2+1/3+1/5-1)=1\)</span>.
+All edge entries are <span class="math" data-tex="\(w\)">\(w\)</span> and all diagonals are <span class="math" data-tex="\(-2w\)">\(-2w\)</span>. In particular the row at <span class="math" data-tex="\(5\)">\(5\)</span> is
+<span class="math" data-tex="\(2m_5\ge m_4+m_6+m_8\)">\(2m_5\ge m_4+m_6+m_8\)</span>; the row at <span class="math" data-tex="\(6\)">\(6\)</span> is
+<span class="math" data-tex="\(2m_6\ge m_5+m_7\)">\(2m_6\ge m_5+m_7\)</span>. The edge list matches the matrix and supplies the corrected <span class="math" data-tex="\(E_8\)">\(E_8\)</span> labelling of <a href="https://stacks.math.columbia.edu/tag/0C8L">Stacks 0C8L</a>.</p>
+<p>Finally, the propagated quantity is
+<span class="math math-display" data-tex="\[
+ \boxed{m_i|a_{ii}|\le768g.}
+\tag{G.20}
+\]">\[
+ \boxed{m_i|a_{ii}|\le768g.}
+\tag{G.20}
+\]</span>
+The diagonal is negative; the bound includes its absolute value and the vertex multiplicity. It follows from NS.11a for every proper rational component and from the heart bound for the remaining vertices. An all-rational-<span class="math" data-tex="\((-2)\)">\((-2)\)</span> full type has genus one by (N.2), rather than genus zero. These signs, coefficients and hypotheses are used in (G.15). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
 </article></main></body></html>
