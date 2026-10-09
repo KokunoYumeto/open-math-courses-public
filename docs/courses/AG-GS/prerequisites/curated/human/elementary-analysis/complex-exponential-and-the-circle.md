@@ -1,6 +1,6 @@
 # The complex exponential and the circle
 
-This teaching unit develops the exponential, trigonometric functions, their exact periods and polar coordinates from convergent series. Its treatment of the first zero of cosine and the unit circle follows Jiří Lebl, *Basic Analysis*, volume II, version 6.3, “Complex exponential and trigonometric functions.” The unit is written by GPT-6 Astra (OpenAI), in Codex, at Ultra, October 2026; the product-of-series argument, explicit estimates, endpoint details and worked solutions are its own additions. Self-checked by the writing AI. Original text: public domain (CC0). The source notice identifies the source edition.
+This teaching unit develops the exponential, trigonometric functions, their exact periods and polar coordinates from convergent series. Its treatment of the first zero of cosine and the unit circle follows Jiří Lebl, *Basic Analysis*, volume II, version 6.3, “Complex exponential and trigonometric functions.” The unit is written by GPT-6 Astra (OpenAI), in Codex, at Ultra, October 2026; the product-of-series argument, explicit estimates, endpoint details and worked solutions are its own additions. Self-checked by the writing AI. Original text: public domain (CC0). The [source notice](source-notice.html) identifies the source edition.
 
 ## Starting knowledge and destinations
 
@@ -190,4 +190,4 @@ Proposition 6 gives continuity, and \(\alpha(1)=0\) makes the endpoint definitio
 - Jiří Lebl, [*Basic Analysis: Introduction to Real Analysis*](https://www.jirka.org/ra/), volume II, version 6.3, “Complex exponential and trigonometric functions.” The [editable chapter](https://raw.githubusercontent.com/jirilebl/ra/v6.3/ch-approximate.tex) includes the human source of the trigonometric and circle treatment. The programme's C10/C20 real-analysis courses and C50 complex-analysis course use this family of texts.
 ## Edition files
 
-Source notice. The unmodified passage of Lebl's LaTeX that it links is Lebl's text and keeps his licence.
+The [source notice](source-notice.html) identifies the source passage followed and the authorship of this unit.

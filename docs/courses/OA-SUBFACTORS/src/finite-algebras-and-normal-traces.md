@@ -323,6 +323,84 @@ Rational bounds force \(s(p)=t(p)\). Spectral norm approximation gives equality 
 
 *FigureTE1.* The first arrow uses the orthogonal projection tails and sliding-hump argument of TE10–TE11. The second uses the derived common corner, complete additivity and normal extension of TE1–TE6. The last box combines the minimal-set proof with compact finite intersections for the full unitary group. The lower panel states the preserved central values and the full finite-algebra and finite-factor conclusions. The boxes are schematic logical steps. Human fixed-point background: Namioka–Asplund, pp.443–445, cited above. [Editable figure source](figures/finite-trace-existence-v3.py).
 
+## How the center determines traces and densities
+
+The trace construction above does not require a factor. In a general finite algebra, the center records the part of a trace that can vary. The relevant complete programme arguments are [Traces on von Neumann algebras, Theorems 5.2 and 5.5](../../OA-FOUND-REMAINDER/reader/supplements/traces-on-von-neumann-algebras-part-a-def-v-2-1-to-def-v-2-17.html#oa-fnd-ta-13), including the center-valued trace construction and its finite-trace factorization proof, and [Trace densities and noncommutative integration](../../OA-MOD/OA-MOD-TI.html#the-trace-pairing-fills-the-whole-predual), TI-01–TI-06. The latter constructs actual trace-measurable operators, proves that their integrable space is complete, and proves that trace pairing fills the whole predual. Its trace may be semifinite and its Hilbert space arbitrary. These are linked programme lessons outside this course's offline download.
+
+**TE16 — central trace factorization and comparison.** Let \(M\) be any finite von Neumann algebra and \(Z=Z(M)\). There is a unique normalized faithful normal center-valued trace \(T_M:M\to Z\). Every finite positive trace \(\sigma\), including a trace not initially assumed normal, satisfies
+
+\[
+ \sigma(x)=\sigma|_Z(T_M(x))\qquad(x\in M).
+ \tag{TE16.1}
+\]
+
+Its normality is equivalent to normality of \(\sigma|_Z\). For projections,
+
+\[
+ p\precsim q\iff T_M(p)\leq T_M(q),
+ \qquad p\sim q\iff T_M(p)=T_M(q).
+ \tag{TE16.2}
+\]
+
+**Proof.** Theorem 5.2 of the linked trace lesson constructs \(T_M\) on every finite algebra by its orthogonal central pieces; it assumes neither a global faithful state nor countable decomposability. Theorem 5.5 proves (TE16.1), uniqueness and the normality correspondence. Its projection comparison is Corollary 5.4, whose converse uses central comparison and faithfulness of \(T_M\). Thus both implications in (TE16.2) use the actual central order, rather than an arbitrarily chosen scalar trace.
+
+When a faithful normal finite trace \(\tau\) is given, this \(T_M\) is the normal \(\tau\)-preserving expectation onto \(Z\) constructed in M1–M5 of [Finite traces and Jones projections](finite-traces-and-jones-projections.md). Indeed, applying (TE16.1) to the finite normal traces \(x\mapsto\tau(zx)\), for \(z\in Z_+\), gives \(\tau(zT_M(x))=\tau(zx)\). Linearity in \(z\) and the trace-pairing uniqueness in M5 identify the two maps. This identifies their actual domains and normalizations. \(\square\)
+
+**TE17 — a normal functional on a finite center has an actual integrable density.** Let \(D\) be an abelian von Neumann algebra with faithful normal finite trace \(\nu\). For every \(\psi\in D_*^+\) there is a unique positive \(\nu\)-integrable affiliated operator \(h\) such that
+
+\[
+ \psi(a)=\nu(ha)\quad(a\in D),\qquad
+ \nu(h)=\psi(1)=\|\psi\|.
+ \tag{TE17.1}
+\]
+
+Here \(h\) can be unbounded; its spectral projections belong to \(D\), and the pairing is the integrable-operator pairing. For \(C\geq0\),
+
+\[
+ \psi\leq C\nu\iff 0\leq h\leq C1.
+ \tag{TE17.2}
+\]
+
+In particular, a dominated normal central component has a bounded density in its original center. No change of representation or replacement of its inherited trace is needed.
+
+**Proof.** Apply TI-06, equations (TI.19)–(TI.20), to \((D,\nu)\). That theorem is an onto isometry between the actual integrable operators and the entire predual, and identifies their positive cones. It gives (TE17.1), positivity and uniqueness. Since \(\nu(1)<\infty\), \(C1-h\) is also integrable. The inequality \(C\nu-\psi\geq0\) is equivalent, by the same positive-cone identification, to \(C1-h\geq0\). This proves both directions of (TE17.2), including \(C=0\).
+
+For the centers in Lesson 52, \(\nu\) is the faithful finite measure in (52.6). The normal functional \(z\mapsto\operatorname{Tr}(qz)\) associated with any finite-trace projection \(q\) therefore has precisely the positive density (52.7). For a finite algebra carrying a faithful normal finite trace \(\tau\), TE16 and TE17 also give every finite normal trace in the form
+
+\[
+ \sigma(x)=\nu(hT_M(x)),\qquad \nu=\tau|_{Z(M)}.
+ \tag{TE17.3}
+\]
+
+The normality assumption in TE17 matters. For example, on \(D=\ell^\infty(\mathbb N)\) with \(\nu(a)=\sum_{n\geq1}2^{-n}a_n\), a free-ultrafilter state vanishes on every coordinate projection but has value one at the unit. An integrable density with those coordinate values would vanish at every coordinate and hence have integral zero. Such a singular state has no density relative to \(\nu\). TE16 still factors a singular trace through the center, without making it normal. \(\square\)
+
+**TE18 — expectations on integrable densities.** Let \(A\subseteq B\) be unital von Neumann algebras with a faithful normal semifinite trace \(\tau\) on \(B\), whose restriction to \(A\) is semifinite. Suppose \(E:B\to A\) is a normal trace-preserving conditional expectation. There is a unique positive contraction
+
+\[
+ E^{(1)}:L^1(B,\tau)\longrightarrow L^1(A,\tau),\qquad
+ \tau(E^{(1)}(h)a)=\tau(ha)\quad(a\in A).
+ \tag{TE18.1}
+\]
+
+It agrees with \(E\) on the bounded trace ideal, preserves the integral and satisfies
+
+\[
+ \|E^{(1)}(h)\|_1\leq\|h\|_1,
+ \qquad \tau(E^{(1)}(h))=\tau(h).
+ \tag{TE18.2}
+\]
+
+**Proof.** Restriction of normal functionals from \(B\) to its normal unital subalgebra \(A\) is a positive contraction \(r:B_*\to A_*\). The two onto isometries \(J_B,J_A\) of TI-06 define \(E^{(1)}=J_A^{-1}rJ_B\). Their positive-cone identifications prove positivity, and their norm equalities prove the contraction bound. Evaluation at the common unit proves integral preservation and (TE18.1).
+
+For a bounded positive \(h\) of finite trace, trace preservation puts \(E(h)\) in the bounded trace ideal of \(A\). That ideal is complex linearly spanned by its positive finite-trace elements, as proved in TI-04. Trace preservation on positives therefore extends to its complex-linear trace. For every \(a\in A\), bimodularity gives
+
+\[
+ \tau(aE(h))=\tau(E(ah))=\tau(ah)=\tau(ha).
+ \tag{TE18.3}
+\]
+
+The positive finite elements span the bounded trace ideal of \(B\), so the same identity identifies \(E^{(1)}\) with \(E\) throughout that ideal. TI-05 makes the ideal dense in the actual \(L^1\), proving uniqueness of its continuous extension. For positive \(h\), bounded finite-support spectral approximants converge in \(L^1\); their expectations consequently converge to this same \(E^{(1)}(h)\). Thus the truncation convention in the central fixed-point calculations of Lesson 83 is the normal trace-pairing extension, with its exact integral and norm control. No sequence exhausting the entire semifinite algebra has been assumed. \(\square\)
+
 ## Exercises with complete solutions
 
 ### Exercise TE1 — why the common corner is derived
@@ -343,4 +421,43 @@ In TE15 let \(t\) be the constructed faithful normal trace and \(s\) an arbitrar
 
 **Solution.** Put \(k=\lfloor nt(p)\rfloor\). If \(k<n\), the rational comparison bounds give \(k/n\leq s(p)\leq(k+1)/n\), and \(t(p)\) belongs to the same interval. Thus the difference is at most \(1/n\). If \(k=n\), then \(t(p)=1\) and the lower bound and normalization force \(s(p)=1\). Taking all \(n\) yields equality on projections. Spectral norm approximation yields equality on self-adjoint elements and linearity on all elements. The proof uses positivity and traciality of \(s\), without assuming its normality; equality with \(t\) then supplies normality.
 
-Authored by GPT-6.1 Sol (OpenAI), Ultra reasoning, October2026. Original exposition CC0-1.0. The complete course remains in development.
+### Exercise TE4 — two different central weights
+
+On \(M=M_2(\mathbb C)\oplus M_3(\mathbb C)\), use normalized matrix traces and set
+
+\[
+ \tau=\tfrac13\operatorname{tr}_2\oplus\tfrac23\operatorname{tr}_3,
+ \qquad \sigma=\tfrac34\operatorname{tr}_2\oplus\tfrac14\operatorname{tr}_3.
+\]
+
+Find the central density of \(\sigma\) relative to \(\tau\), and the least \(C\) such that \(\sigma\leq C\tau\).
+
+**Solution.** The center-valued trace is \(T_M(x,y)=(\operatorname{tr}_2(x),\operatorname{tr}_3(y))\). The ratios of its two trace weights give
+
+\[
+ h=\tfrac94\,1_2\oplus\tfrac38\,1_3,
+ \qquad \tau(h)=\tfrac13\tfrac94+\tfrac23\tfrac38=1.
+\]
+
+Thus \(\sigma(x,y)=\tau(h(x,y))\). TE17.2 gives the least constant \(C=9/4\); equality on the first central summand proves sharpness. The dimension of a matrix block and the scalar weight of its trace are distinct data.
+
+### Exercise TE5 — restriction of a normal density
+
+For normalized trace on \(M_2(\mathbb C)\), let \(A\) be the diagonal algebra and
+
+\[
+ h=\begin{pmatrix}3/2&1/2\\1/2&1/2\end{pmatrix}.
+\]
+
+Verify that \(h\) defines a normal state, and compute the density of its restriction to \(A\).
+
+**Solution.** The eigenvalues of \(h\) are \(1\pm1/\sqrt2\), both positive, and \(\tau(h)=1\). For \(a=\operatorname{diag}(a_1,a_2)\),
+
+\[
+ \tau(ha)=\tfrac34a_1+\tfrac14a_2
+ =\tau\!\left(\operatorname{diag}(3/2,1/2)a\right).
+\]
+
+Hence \(E^{(1)}(h)=E(h)=\operatorname{diag}(3/2,1/2)\). Its integral and its positive \(L^1\) norm are both one. This is restriction of the actual normal functional, with no assumption that \(h\) commutes with every element of the original factor.
+
+Written by GPT-6.1 Sol (OpenAI), October2026. Text and exercises: CC0-1.0. The complete course remains in development.

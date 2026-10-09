@@ -21,9 +21,9 @@ The cover and generic-base statements below explicitly require isotropy. The ful
 
 We use the programme proofs of local finite generation of reduced analytic ideals, analyticity of the singular locus, [locally finite global components](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/SH-03/src/weierstrass-parametrization-and-connected-regular-loci.md#the-global-component-theorem), and dimension on an irreducible germ. The global component proof also gives connected dense regular loci, so each irreducible component has one dimension. Closure of an analytic set after deleting an analytic subset retains precisely the components not contained in the deleted set, by the [deletion argument on connected regular loci](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/SH-03/src/weierstrass-parametrization-and-connected-regular-loci.md#deleting-a-proper-analytic-subset-preserves-connectedness). The [complex deformation lesson](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/analytic-normal-cones-through-complex-deformation.md) proves the application of that component rule to real positive normal cones; in particular, those cones for analytic pieces are complex analytic and complex-conic.
 
-Two further geometry inputs are needed here. A proper holomorphic map carries a closed analytic subset to a closed analytic subset. A holomorphic image that is subanalytic has real dimension twice the maximum generic complex rank on the regular irreducible components of its source. For the exact image and rank contracts see [Peterzil–Starchenko, Theorem 6.1 and Claim 1 in its proof, manuscript PDF 16–17](https://math.haifa.ac.il/kobi/analytic.pdf#page=16). We use these as explicit prerequisites; their underlying dimension and analytic removal machinery remains an open dependency.
+The [proper holomorphic image theorem](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/SH-03/src/weierstrass-parametrization-and-connected-regular-loci.md#proper-holomorphic-images) is proved in the Weierstrass and component lesson. It applies to maps proper on the actual closed analytic carrier, including the compact Grassmann incidences used here. For a holomorphic image that is subanalytic, the [connected maximal-rank regions](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/SH-03/src/weierstrass-parametrization-and-connected-regular-loci.md#a-connected-maximal-rank-region-inside-the-regular-carrier) and the [dimension and fibre calculation](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/analytic-finiteness-and-preparation/src/analytic-finiteness-for-preparation.md#images-graphs-and-fibre-dimensions) identify its real dimension with twice the maximum generic complex rank on the regular irreducible source components. [Peterzil–Starchenko, Theorem 6.1 and Claim 1 in its proof, manuscript PDF 16–17](https://math.haifa.ac.il/kobi/analytic.pdf#page=16), give the broader closed-image theorem and its rank account. The image and dimension contracts used here thus have explicit programme proof suppliers.
 
-We also use the following specialization contract. In a smooth complex Poisson manifold, if the reduced ideal of a closed analytic set is closed under the Poisson bracket and a holomorphic function has zero Hamiltonian field, intersecting that set with the function's zero fibre again gives an analytic set with bracket-closed reduced ideal. This is [Kashiwara–Monteiro-Fernandes, Corollary 1.1.14, printed p. 397 / PDF 6](https://www.numdam.org/item/10.24033/bsmf.2062.pdf#page=6). Its Thom stratification input is a further explicit open prerequisite. The arguments below show exactly how this contract gives the real singular condition; regular coisotropy alone is not used as a definition of that condition.
+The [reduced-fibre theorem proved below](#specialization-of-a-reduced-involutive-ideal), Theorem CS4, shows that intersecting a reduced involutive analytic set with the zero fibre of a holomorphic function preserves involutivity whenever its Hamiltonian field is tangent to the set. The finite ramified charts of Lemma CS3 supply the required central tangent planes. The Casimir case, where the Hamiltonian field is zero, is [Kashiwara–Monteiro-Fernandes, Corollary 1.1.14, printed p. 397 / PDF 6](https://www.numdam.org/item/10.24033/bsmf.2062.pdf#page=6). The argument below shows how this proved specialization gives the real singular condition; regular coisotropy alone is not used as a definition of that condition.
 
 ## From regular coisotropy to the real normal-cone condition
 
@@ -75,7 +75,7 @@ For (6), apply the earlier analytic pair-normal-cone argument to \((S,\{p\})\). 
 
 Give the \(v\) coordinates the constant Poisson tensor associated with \(\Omega_p\), and make \(t\) a Casimir: its bracket with every function is zero. At \(t\ne0\), the map \(v\mapsto p+tv\) scales the symplectic form by \(t^2\). Each slice of (5) is consequently coisotropic. For two local holomorphic functions vanishing on \(D\), compute their bracket using only their \(v\) derivatives. It vanishes at every regular point of every nonzero slice. Those points are dense in \(D\), so the bracket vanishes on all of \(D\). Thus its reduced ideal is bracket-closed.
 
-Apply the stated specialization contract to the Casimir \(t\). We conclude that
+Apply [Theorem CS4](#specialization-of-a-reduced-involutive-ideal) to the Casimir \(t\). We conclude that
 
 \[
 C=C_p(S)\subset T_pP
@@ -290,6 +290,155 @@ At a point of \(R_{e,a}\) over \(Y_0\), the projection has complex rank \(e\), s
 
 This argument allows \(\Lambda\) to have no covectors over a generic part of \(Y\). Surjectivity onto \(Y\) was never assumed. Analytic bad-set removal here will be needed for complex microlocal stratifications; a conormal cover by itself does not yet supply a compatible stratification or its frontier condition.
 
+## Reduced fibres and Casimir specialization
+
+All analytic sets below carry their reduced structures. A holomorphic Poisson tensor on a complex manifold \(M\) is denoted by \(\Pi\), with \(\{g,h\}=\Pi(dg,dh)\). A linear subspace \(L\subset T_xM\) is coisotropic when \(\Pi_x(\alpha,\beta)=0\) for every \(\alpha,\beta\in L^\perp\). This definition permits a degenerate Poisson tensor.
+
+We use the [proper holomorphic image theorem proved in the Weierstrass and component lesson](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/SH-03/src/weierstrass-parametrization-and-connected-regular-loci.md#proper-holomorphic-images): the image of a closed analytic set under a proper holomorphic map is a closed analytic set. Its source may be a reduced analytic space; equivalently, one applies the assertion to the graph in local ambient charts. The proof below uses this theorem only for local proper maps with finite fibres and for holomorphic coordinate functions on compact analytic sets.
+
+The remaining local inputs have programme proofs: finite local parametrization and dimension, coherence of the reduced ideal and the Jacobian description of singular points, and [locally finite components and dense regular loci](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/SH-03/src/weierstrass-parametrization-and-connected-regular-loci.md#the-global-component-theorem). The inverse and constant-rank theorems are used on complex manifolds.
+
+### Isolated fibres and one equation
+
+**Lemma CS1 (a proper finite representative).** Let \(Y\) be an analytic set near \(a\in\mathbf C^N\), and let \(F:Y\to\mathbf C^m\) be holomorphic. If \(a\) is isolated in the germ of \(F^{-1}(F(a))\), there is a neighbourhood of \(a\) on which \(F\), restricted over a sufficiently small target neighbourhood, is proper and has finite fibres.
+
+**Proof.** Translate so that \(F(a)=0\). Choose a closed ball \(\overline B\) centered at \(a\), contained in the domain of representatives, such that \(Y\cap\overline B\cap F^{-1}(0)=\{a\}\). Compactness gives a target neighbourhood \(W\) of zero for which \(F^{-1}(W)\cap Y\cap\partial B=\varnothing\). Then
+
+\[
+Y'=Y\cap B\cap F^{-1}(W)\longrightarrow W
+\tag{CS1}
+\]
+
+is proper: the inverse image of a compact subset of \(W\) is closed in the compact set \(Y\cap\overline B\), and cannot meet its boundary.
+
+Every fibre \(K\) of (CS1) is a compact analytic subset of the open ball. Each ambient coordinate \(w_j:K\to\mathbf C\) is a proper holomorphic map. The proper-image theorem makes \(w_j(K)\) a compact analytic subset of \(\mathbf C\). Such a subset is finite: a proper analytic subset of the connected plane has isolated points, and a compact discrete analytic subset is finite. Thus \(K\) lies in a finite product of finite coordinate sets, and is finite. □
+
+We record two elementary dimension consequences. A holomorphic map with finite fibres from a pure \(r\)-dimensional analytic set has rank \(r\) somewhere on the regular locus of each local irreducible component. Otherwise choose a point where the rank on that component is maximal; on a neighbourhood of that regular point the rank is constant and less than \(r\). The constant-rank theorem supplies a positive-dimensional local fibre, a contradiction. In particular the target dimension is at least \(r\).
+
+Also, the image of an analytic set of complex dimension at most \(s\) under a holomorphic map cannot contain an open subset of \(\mathbf C^{s+1}\). Here is a direct justification sufficient for its use below. Split each regular component into its open maximal-rank locus and the analytic rank-drop locus, and include the analytic singular locus in the latter stage. Repeat on the lower-dimensional sets. The dimension strictly decreases, so this gives a countable cover by complex manifolds on which the map has constant rank at most \(s\). Each is covered by countably many relatively compact constant-rank coordinate patches. The image of each such patch has real \(2s+2\)-dimensional measure zero, since locally it is contained in a smooth submanifold of real dimension at most \(2s\). A countable union still has measure zero and cannot contain an open set. This argument uses no analyticity assertion for a nonproper image.
+
+**Lemma CS2 (dimension of a zero divisor).** Let \(Y\) be pure \(r\)-dimensional, and let \(h\) be holomorphic and nonzero on every local irreducible component of \(Y\). Every irreducible component of \(Y_0=Y\cap\{h=0\}\), if nonempty, has dimension \(r-1\).
+
+**Proof.** Let \(E\) be such a component, of dimension \(s\). Work near a regular point \(a\) of \(E\) which lies on no other component of \(Y_0\). Then \(Y_0=E\) near \(a\). Proper analytic subgerms of an irreducible \(r\)-dimensional germ have dimension less than \(r\), so \(s\le r-1\). Choose \(s\) ambient linear coordinate functions \(z=(z_1,\ldots,z_s)\) whose restrictions are local coordinates on \(E\), with \(z(a)=0\). The map
+
+\[
+F=(z,h):Y\longrightarrow\mathbf C^{s+1}
+\tag{CS2}
+\]
+
+has an isolated zero fibre at \(a\). By CS1 it has a finite representative. The preceding rank argument gives \(r\le s+1\). Hence \(s=r-1\). □
+
+### Ramified charts along a generic central component
+
+**Lemma CS3 (charts with a fixed parameter power).** Let \(Y\subset M\) be a pure \(r\)-dimensional analytic set, let \(h\) be holomorphic and nonzero on every local component, and let \(Q\subset Y\) be a closed analytic subset containing no component of \(Y\). Let \(E\) be any irreducible component of \(Y_0=Y\cap\{h=0\}\). On a dense set of regular points \(a\) of \(E\), there are a polydisc \(P\subset\mathbf C^{r-1}\), a disc \(\Delta\subset\mathbf C\), an integer \(k\ge1\), and a holomorphic map
+
+\[
+\phi:P\times\Delta\longrightarrow Y,
+\qquad h(\phi(z,u))=u^k,
+\tag{CS3}
+\]
+
+such that:
+
+- \(\phi(z,0)\) parametrizes an open subset of \(E_{\rm reg}\) containing \(a\), with rank \(r-1\);
+- for \(u\ne0\), \(\phi(z,u)\) lies in \(Y_{\rm reg}\setminus Q\), and \(dh|_{T_{\phi(z,u)}Y}\ne0\);
+- the \(r-1\) derivatives with respect to \(z\) form a basis of \(T_{\phi(z,u)}Y\cap\ker dh\) for \(u\ne0\), and of \(T_{\phi(z,0)}E\) for \(u=0\).
+
+**Proof.** The assertion is local along \(E\). Choose a regular point \(a_0\in E\) away from other central components. By CS2, \(\dim E=r-1\). Choose ambient coordinate functions \(z=(z_1,\ldots,z_{r-1})\) restricting to coordinates on \(E\) near \(a_0\). Shrink the source so that \(Y_0=E\), and so that \(z|_E\) is one-to-one. CS1 makes \(F=(z,h)\) proper with finite fibres over a small connected base polydisc
+
+\[
+B=P_0\times\Delta_t\subset\mathbf C^{r-1}\times\mathbf C.
+\]
+
+Keep a representative containing only the local components through \(a_0\). Each has dimension \(r\), none is contained in \(Q\), and none is contained in \(h=0\). Shrinking achieves these assertions for all components of the representative. The image \(F(Y)\) is closed analytic in \(B\) by the proper-image theorem. It contains an open set by the finite-fibre rank argument. Hence \(F(Y)=B\).
+
+Let \(C\subset Y\) be the union of \(Q\), the singular locus, and the critical locus of \(F\) on \(Y_{\rm reg}\). This is a closed analytic subset of smaller dimension. For completeness, if \(g_1,\ldots,g_q\) generate the reduced ideal of \(Y\subset\mathbf C^N\), its singular-or-critical part is cut out on \(Y\) by the \(N\)-minors of the matrix with rows
+
+\[
+dg_1,\ldots,dg_q,dF_1,\ldots,dF_r.
+\tag{CS4}
+\]
+
+At a regular point the \(dg_j\) span an \((N-r)\)-dimensional conormal, so an \(N\)-minor is nonzero exactly when \(dF|_{TY}\) has rank \(r\). At a singular point their rank is less than \(N-r\), so all these minors vanish. Finite fibres ensure that (CS4) does not vanish identically on any component. Adding \(Q\) still gives a proper analytic subset on every component.
+
+The restriction \(F|_C\) is proper. Consequently \(F(C)\) is closed analytic in \(B\), and is proper there by the dimension observation following CS1. Choose, after shrinking \(B\), a nonzero holomorphic function \(b(z,t)\) vanishing on \(F(C)\). Expand in \(t\) and remove the largest common power of \(t\):
+
+\[
+b(z,t)=t^m c(z,t),\qquad c(z,0)\not\equiv0.
+\tag{CS5}
+\]
+
+The set of \(z\in P_0\) with \(c(z,0)\ne0\) is open and dense. Around any such \(z_0\), shrink to a product \(P\times\Delta_t\) on which \(c\) is nowhere zero. Thus \(F(C)\cap(P\times\Delta_t)\subset\{t=0\}\). Over \(P\times\Delta_t^*\), \(F\) is therefore a proper local biholomorphism with finite fibres, and hence a finite covering. The elementary proof is the usual disjoint inverse-chart argument: finitely many inverse charts around a fibre cover the inverse image of a small base neighbourhood, since any escaping sequence over a convergent base sequence would violate properness.
+
+The polydisc \(P\) is simply connected and \(\pi_1(P\times\Delta_t^*)\cong\mathbf Z\). A generator acts on the finite set of sheets by a permutation. Choose \(k\) divisible by its order. After the change of base \(t=u^k\), monodromy is trivial. Path lifting consequently gives finitely many single-valued inverse branches
+
+\[
+\phi_j:P\times\Delta_u^*\longrightarrow Y,
+\qquad F(\phi_j(z,u))=(z,u^k).
+\tag{CS6}
+\]
+
+They are holomorphic because every local inverse of \(F\) is holomorphic. Their ambient coordinates are bounded: the proper finite representative lies in the fixed source ball used in CS1. Each coordinate extends holomorphically across \(u=0\). One can see joint holomorphicity directly by its Laurent coefficients in \(u\), given by Cauchy integrals on a small fixed circle. They are holomorphic in \(z\); boundedness makes every negative coefficient zero, so the resulting power series extends across the whole smaller product. Closedness of \(Y\) and its defining equations show that the extended maps still take values in \(Y\). The strict boundary margin from CS1 ensures that their limiting values remain in the chosen source representative. Equation (CS6) extends as well.
+
+Every central point over \(P\times\{0\}\) is attained by at least one extended branch. Indeed \(Y\setminus\{h=0\}\) is dense in \(Y\), since \(h\) vanishes on no component. Approximate the given point by nonzero-parameter points, lift each base parameter to a \(k\)-th root, and pass to a subsequence with one fixed branch index. Its limit is the required branch value. In the chosen neighbourhood \(Y_0=E\) and \(z|_E\) is one-to-one, so each such \(\phi_j(z,0)\) is exactly the inverse \(z\)-coordinate parametrization of \(E\). In particular its \(z\)-derivative has rank \(r-1\). For \(u\ne0\), differentiating (CS6) gives \(dz\circ d_z\phi_j=\mathrm{id}\) and \(dh\circ d_z\phi_j=0\). The target relative tangent space has dimension \(r-1\), since \(F\) is locally biholomorphic. The derivative columns therefore form its basis. At \(u=0\) they form a basis of \(TE\).
+
+The permitted \(z_0\)'s are dense in the initial central chart. The same construction begins in any open subset of \(E_{\rm reg}\) away from the other central components. It therefore supplies a dense set in \(E\), as asserted. For \(r=1\), \(P\) is a point and the tangent bases have zero columns; the argument and conclusion retain their usual meanings. □
+
+![The finite cover and its ramified chart](figures/casimir-ramified-chart.svg)
+
+The diagram displays the exact maps in CS3 and CS6. In the example \(Y=\{a^2=t^3\}\times\mathbf C_z\), \(F(z,a,t)=(z,t)\) and \(\phi(z,u)=(z,u^3,u^2)\); the two sheets over \(t\ne0\) become single-valued after \(t=u^2\). Here \(d_z\phi=(1,0,0)\) spans both the nearby relative tangent and the central tangent. The drawn cusp is its real trace, while the maps and tangent statements are complex. This example illustrates the chart, without asserting a symplectic structure on the cusp. Diagram: original programme exposition, CC0. [Reproducible figure source](figures/draw_casimir_chart.py).
+
+### Specialization of a reduced involutive ideal
+
+**Theorem CS4.** Let \((M,\Pi)\) be a smooth complex Poisson manifold. Let \(Y\subset M\) be a closed reduced analytic subset satisfying
+
+\[
+\{\mathcal I_Y,\mathcal I_Y\}\subset\mathcal I_Y.
+\tag{CS7}
+\]
+
+If \(f\in\mathcal O(M)\) has Hamiltonian field tangent to \(Y\), then the reduced analytic zero fibre \(Y_0=Y\cap\{f=0\}\) also satisfies (CS7). In particular this holds when \(f\) is a Casimir, meaning that its Hamiltonian field is identically zero.
+
+**Proof.** At a regular point of \(Y\), (CS7) says exactly that \(T_yY\) is coisotropic: differentials of reduced ideal generators span its conormal. Conversely, coisotropy on a dense set of regular points of every component implies (CS7), since the bracket of any two ideal functions is holomorphic and vanishes on that dense set. This equivalence also shows that each local irreducible component of \(Y\) is involutive: away from the other components its regular locus is part of the regular locus of \(Y\), and density extends the bracket identity to the component. Tangency of \(H_f\) to each component follows in the same way by differentiating its local ideal functions on that dense locus.
+
+It therefore suffices to treat one pure-dimensional local irreducible component. If \(f\) vanishes identically on it, its zero fibre is the same component and there is nothing to prove. Otherwise take \(h=f\) in CS3, and consider a central component \(E\subset Y_0\). At the nonzero-parameter points of the resulting chart, put
+
+\[
+L_{z,u}=T_{\phi(z,u)}Y\cap\ker df,
+\qquad u\ne0.
+\tag{CS8}
+\]
+
+Since \(df|_{TY}\ne0\), elementary linear algebra gives
+
+\[
+L_{z,u}^{\perp}=(T_{\phi(z,u)}Y)^{\perp}+\mathbf C\,df.
+\tag{CS9}
+\]
+
+The Poisson tensor vanishes on pairs from the first summand by (CS7). It vanishes on a pair \(\alpha,df\), with \(\alpha\in(TY)^\perp\), because \(H_f\) is tangent to \(Y\). It vanishes on \(df,df\) by alternation. Thus \(L_{z,u}\) is coisotropic.
+
+Fix \(z\). By CS3 the columns \(d_z\phi(z,u)\) are a holomorphic family of \(r-1\) independent vectors even at \(u=0\). Their spans tend to \(T_{\phi(z,0)}E\). Coisotropy is closed under this limit. Explicitly, an invertible minor of the column matrix remains invertible near \(u=0\); solving with that minor produces a continuous local basis of its annihilator. Evaluate \(\Pi\) on pairs of these covectors and pass to \(u=0\). All resulting pairings are zero. Hence \(E\) is coisotropic at every central point provided by CS3, a dense set in \(E\).
+
+For local holomorphic \(g_1,g_2\) vanishing on \(Y_0\), their differentials annihilate \(TE\) at these points, so \(\{g_1,g_2\}=0\) there. Continuity makes the bracket zero on all of \(E\). Do this for every central component of each original component. There are finitely many in a sufficiently small representative, and they cover \(Y_0\). Therefore the bracket vanishes on \(Y_0\), which is exactly bracket closure of its reduced ideal. This argument includes mixed-dimensional \(Y\) by the initial component reduction. □
+
+The proof does not say that the radical of an arbitrary bracket-closed ideal is bracket-closed. For example, in \(\mathbf C^2\) with \(\{x,y\}=1\), the ideal \((x,y)^2\) is bracket-closed whereas its radical \((x,y)\) is not. CS4 uses reducedness of the original set, the Hamiltonian tangency condition, and the analytic family of tangent planes produced above.
+
+### Applying the theorem to the point cone
+
+Use the canonical holomorphic coordinates and the accessible deformation
+
+\[
+D=\overline{\{(v,t):t\ne0,\ p+tv\in S\}}
+\subset T_pP\times\mathbf C
+\]
+
+from the [complex deformation proof](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/analytic-normal-cones-through-complex-deformation.md). It is analytic, has no component contained in \(t=0\), and its reduced central fibre is \(C_p(S)\times\{0\}\). Give the \(v\)-space its constant Poisson tensor and declare \(t\) to be a Casimir. For \(t\ne0\), the map \(v\mapsto p+tv\) scales the symplectic form by \(t^2\), so the regular nonzero slices are coisotropic. They are dense in \(D\), and the bracket of two functions vanishing on \(D\), computed in the \(v\) variables, vanishes there and hence on \(D\). Thus CS4 applies.
+
+Consequently \(D\cap\{t=0\}\) has bracket-closed reduced ideal in the product Poisson manifold. Functions vanishing on \(C_p(S)\) extend independently of \(t\), and their product Poisson bracket is their constant symplectic bracket in \(v\). It follows that the reduced ideal of \(C_p(S)\subset T_pP\) is bracket-closed. At its regular points the tangent spaces are coisotropic. This is precisely the assertion needed before the constant-Hamiltonian flow argument at the cone vertex; that flow argument requires no change.
+
+*Specialization proof and diagram by GPT-6 Astra (OpenAI), Ultra, 9 October 2026. Original programme exposition, CC0.*
+
 ## Exercises with complete solutions
 
 ### Reduced equations and large coefficients
@@ -387,14 +536,14 @@ Consider the discrete analytic set \(A=\{(1/m,m):m\ge1\}\subset T^*\mathbb C\). 
 
 ## What remains a prerequisite
 
-The normal-cone, ideal, flow, tangent-graph, finite-cover and generic-base arguments above are complete relative to the specified analytic image/dimension, Casimir specialization and subanalytic geometry contracts. We have not proved the underlying Thom stratification theorem or all analytic proper-image and dimension theory here. A complex microlocal stratification refining an analytic covering, the sheaf constructibility equivalences, and the nonproper curve-base direct-image theorem still require their own arguments. The defining-equation and missing-isotropy counterexamples retain the precise limits of the constructions; full transitive proof closure is not claimed.
+The normal-cone, ideal, flow, tangent-graph, finite-cover and generic-base arguments use the linked programme proofs of local analytic algebra, proper holomorphic images, dimension and subanalytic geometry. The reduced-fibre specialization needed here is proved in CS1–CS4. The stronger Thom statement about every limiting sequence is not required by that proof. A complex microlocal stratification refining an analytic covering, the sheaf constructibility equivalences, and the nonproper curve-base direct-image theorem require their own arguments. The defining-equation and missing-isotropy counterexamples retain the precise limits of the constructions; full transitive proof closure is not claimed.
 
 ## Sources and the conormal construction
 
-**Reduced ideals and specialization.** Masaki Kashiwara and Teresa Monteiro Fernandes, [*Involutivité des variétés microcaractéristiques*, Bulletin de la Société Mathématique de France 114 (1986), 393–402](https://www.numdam.org/item/10.24033/bsmf.2062.pdf#page=5), Definition 1.1.9 and Lemma 1.1.11, printed p. 396, describe analytic involutivity by bracket closure of the defining ideal. Theorem 1.1.12, p. 397, assumes that the Hamiltonian field of the chosen holomorphic function is tangent to the original involutive analytic set; intersecting that set with the function's zero fibre then preserves involutivity. Corollary 1.1.14 applies when the Hamiltonian field vanishes identically. The proof uses Lemma 1.1.13 on limiting tangent spaces, a consequence of Thom stratification. This Casimir case is the exact input used for the central fibre of (5). The lesson then supplies the constant-Hamiltonian ideal equation and the flow argument at the cone vertex to obtain the real normal-cone condition (3). The analytic specialization theorem alone is not a definition of that real condition.
+**Reduced ideals and specialization.** Masaki Kashiwara and Teresa Monteiro Fernandes, [*Involutivité des variétés microcaractéristiques*, Bulletin de la Société Mathématique de France 114 (1986), 393–402](https://www.numdam.org/item/10.24033/bsmf.2062.pdf#page=5), Definition 1.1.9 and Lemma 1.1.11, printed p. 396, describe analytic involutivity by bracket closure of the reduced defining ideal. Theorem 1.1.12, printed p. 397 / PDF 6, assumes that the Hamiltonian field of the chosen holomorphic function is tangent to the involutive analytic set; Corollary 1.1.14 treats a Casimir. Their proof uses the generic limiting-tangent Lemma 1.1.13 and its Thom-stratification input. Our Theorem CS4 proves the same specialization statement using the independently proved ramified-chart Lemma CS3. It needs a dense set of attainable central tangent planes, rather than the stronger assertion about every limiting sequence. The Casimir case gives the central fibre of (5); the constant-Hamiltonian ideal equation and flow at the cone vertex then give the real normal-cone condition (3).
 
-**Analytic images, dimensions and ideals.** Ya’acov Peterzil and Sergei Starchenko, [*Complex analytic geometry and analytic-geometric categories*, author manuscript](https://math.haifa.ac.il/kobi/analytic.pdf#page=16), Theorem 6.1 and Claim 1 of its proof, manuscript pp. 16–17, give analyticity of a closed holomorphic image in the analytic-geometric category and its dimension from maximal generic complex rank. Their proof uses countable local charts, regular irreducible components and the preceding removal results. Properness supplies closedness and subanalyticity in the applications here; neither arbitrary projection nor rank at a single exceptional point suffices. Jean-Pierre Demailly, [*Complex Analytic and Differential Geometry*, 21 June 2012](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf#page=99), Chapter II, Theorem 4.29 and Theorem 4.31, pp. 99–101, supplies coherence of the reduced ideal and analyticity of the singular locus; Corollary 5.4, p. 103, gives the component-deletion rule. [Theorem 8.8](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf#page=118), pp. 118–121, is the proper mapping theorem used for compact Grassmann incidence. Its simultaneous induction with the extension theorem ends on p. 121.
+**Analytic images, dimensions and ideals.** Ya’acov Peterzil and Sergei Starchenko, [*Complex analytic geometry and analytic-geometric categories*, author manuscript](https://math.haifa.ac.il/kobi/analytic.pdf#page=16), Theorem 6.1 and Claim 1 of its proof, manuscript pp. 16–17, give analyticity of a closed holomorphic image in the analytic-geometric category and its dimension from maximal generic complex rank. Their proof uses countable local charts, regular irreducible components and the preceding removal results. Properness supplies closedness and subanalyticity in the applications here; neither arbitrary projection nor rank at a single exceptional point suffices. Jean-Pierre Demailly, [*Complex Analytic and Differential Geometry*, 21 June 2012](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf#page=99), Chapter II, Theorem 4.29 and Theorem 4.31, pp. 99–101, supplies coherence of the reduced ideal and analyticity of the singular locus; Corollary 5.4, p. 103, gives the component-deletion rule. [Theorem 8.8](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf#page=118), pp. 118–121, is the classical proper mapping theorem. Its simultaneous induction with the extension theorem ends on p. 121. The [programme proper-image proof](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/SH-03/src/weierstrass-parametrization-and-connected-regular-loci.md#proper-holomorphic-images) supplies the theorem used for compact Grassmann incidence here, using the proved pure-dimensional removal theorem.
 
 **What the lesson constructs.** The conormal is built from the closure of the tangent graph and its annihilator incidence, retaining compactness of the Grassmann factor. The reduced-generator test is essential: the solved zero-set example shows exactly why equations with vanishing differentials can give the wrong conormal. The finite covering argument groups the analytic bases by generic projection dimension and explicitly keeps isotropy. The final rank-drop construction deletes the analytic frontier before closing the critical locus and projects only after checking its analytic, conic and dimension properties.
 
-**Teaching route and remaining foundations.** The sequence runs from singular involutivity to the tangent graph, the finite family and generic base directions, with eight complete solutions testing hypotheses and calculations. It does not purport to reprove the analytic local algebra, Thom stratification, proper-image theorem or subanalytic dimension theory. Those exact dependencies remain separate proof obligations. The source credit above identifies the mathematical mechanisms used, while the normal-cone flow, incidence and projection arguments are given explicitly here.
+**Teaching route and remaining foundations.** The sequence runs from singular involutivity to the tangent graph, the finite family and generic base directions, with eight complete solutions testing hypotheses and calculations. The ramified-chart supplement proves the full Hamiltonian-tangent specialization theorem and its Casimir case. The [proper-image proof](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/SH-03/src/weierstrass-parametrization-and-connected-regular-loci.md#proper-holomorphic-images) and the exact local algebra and subanalytic providers supply the other geometric inputs named above. The source credit identifies the human theorems and methods, while the normal-cone flow, incidence, projection and specialization arguments are given explicitly in the programme.

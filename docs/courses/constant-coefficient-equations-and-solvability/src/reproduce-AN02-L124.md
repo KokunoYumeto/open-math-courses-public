@@ -1,10 +1,12 @@
 # Reproduce Projective exhaustion and the finite-chain tube receiver
 
+**Topology citation erratum, 9 October 2026.** The retained topology sources and readers keep their earlier bytes. Read the dated erratum and complete local proof route for the Roberts small-cochain attribution, the inspected Fomberg edition and Miller's duality scope. These corrections do not relabel the frozen inputs as the current Poincaré-duality course.
+
 Read the complete current learner and formal argument. Every worked example and all six complete solutions are retained.
 
 ## Exact original files and useful complete alternatives
 
-This packet contains the complete projective-exhaustion argument, seven complete supporting programme sources and the selected manifold-duality §§1–3. The Stein exhaustion reading includes the analytic bad-locus proof and the zero-dimensional cases. The original plurisubharmonic source and its complete shell-corrected alternative remain available; the main argument does not use that alternative. The earlier projective-exhaustion main is retained as a historical alternative: its TP10 display omitted one backslash. Use the corrected main and current reader for that display. Read the [complete source index and component terms](../reproduce/L124/context/scope.html). The byte counts and SHA256 hashes below identify the current downloadable files.
+This packet contains the complete projective-exhaustion argument, seven complete supporting programme sources and the selected manifold-duality §§1–3. The Stein exhaustion reading includes the analytic bad-locus proof and the zero-dimensional cases. The original plurisubharmonic source and its complete shell-corrected alternative remain available; the main argument does not use that alternative. The earlier projective-exhaustion main is retained as a historical alternative: its TP10 display omitted one backslash. Use the corrected main and current reader for that display. Read the complete source index and component terms. The byte counts and SHA256 hashes below identify the current downloadable files.
 
 - context/assets/mathjax/LICENSE — 11358 bytes; SHA256 `CFC7749B96F63BD31C3C42B5C471BF756814053E847C10F3EB003417BC523D30`.
 - [context/course.css](../reproduce/L124/context/course.css) — 767 bytes; SHA256 `BBCAEDDB33E2D2D046EF737C9A629151BF3CEAF920FE978443670E7A5297700D`.

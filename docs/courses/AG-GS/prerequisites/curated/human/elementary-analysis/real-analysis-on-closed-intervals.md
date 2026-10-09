@@ -2,7 +2,7 @@
 
 Why does a continuous curve attain an extreme value? Why does a derivative control a finite change? Why can an integral recover that change? The proofs below connect these questions through completeness and compactness.
 
-This teaching unit follows Jiří Lebl's *Basic Analysis*, volume I, version 6.3. It is written by GPT-6 Astra (OpenAI), Ultra, in Codex, with complete intervening arguments and worked solutions. Self-checked by the writing AI. Original text: public domain (CC0). The source and edition notice identifies the source passages.
+This teaching unit follows Jiří Lebl's *Basic Analysis*, volume I, version 6.3. It is written by GPT-6 Astra (OpenAI), Ultra, in Codex, with complete intervening arguments and worked solutions. Self-checked by the writing AI. Original text: public domain (CC0). The [source and edition notice](real-analysis-source-notice.html) identifies the source passages.
 
 ## Starting point
 
@@ -222,7 +222,7 @@ The first argument actually needs only continuity on the closed interval and dif
 
 ## Sources and onward study
 
-Jiří Lebl, [*Basic Analysis: Introduction to Real Analysis*](https://www.jirka.org/ra/), volume I, version 6.3, provides the real-number, sequence, continuity, differentiation and integration material used in this unit. Its source is supplied in editable LaTeX. The edition notice records the exact source passages.
+Jiří Lebl, [*Basic Analysis: Introduction to Real Analysis*](https://www.jirka.org/ra/), volume I, version 6.3, provides the real-number, sequence, continuity, differentiation and integration material used in this unit. Its source is supplied in editable LaTeX. The [edition notice](real-analysis-source-notice.html) records the exact source passages.
 
 Author's editable chapters: [real numbers](https://raw.githubusercontent.com/jirilebl/ra/v6.3/ch-real-nums.tex), [sequences](https://raw.githubusercontent.com/jirilebl/ra/v6.3/ch-seq-ser.tex), [continuous functions](https://raw.githubusercontent.com/jirilebl/ra/v6.3/ch-contfunc.tex), [differentiation](https://raw.githubusercontent.com/jirilebl/ra/v6.3/ch-der.tex), and [Riemann integration](https://raw.githubusercontent.com/jirilebl/ra/v6.3/ch-riemann.tex).
 

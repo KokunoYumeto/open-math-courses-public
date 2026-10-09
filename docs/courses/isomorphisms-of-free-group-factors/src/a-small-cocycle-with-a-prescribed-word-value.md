@@ -2,7 +2,7 @@
 
 *Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
-Let \(n\ge3\) and \(\Gamma=\mathbb F_n\), with free generators \(x_1,\ldots,x_n\). For \(h\in\mathbb R^{(\Gamma)}\) let \(D^h\) be the cocycle with generator values \(h_1=h\) and \(h_2=\cdots=h_n=0\) (Lemma 1.1 of Trace-preserving polynomial flows). This lesson proves:
+Let \(n\ge3\) and \(\Gamma=\mathbb F_n\), with free generators \(x_1,\ldots,x_n\). For \(h\in\mathbb R^{(\Gamma)}\) let \(D^h\) be the cocycle with generator values \(h_1=h\) and \(h_2=\cdots=h_n=0\) (Lemma 1.1 of [Trace-preserving polynomial flows](trace-preserving-polynomial-flows.md#1-cocycles-on-the-free-group)). This lesson proves:
 
 **Theorem 4.1.** For every \(\eta>0\) there are a word \(w\in\Gamma\) and \(h\in\mathbb R^{(\Gamma)}\) with
 \[
@@ -13,7 +13,7 @@ By Theorem 6.2 of the previous lesson, the time-one automorphism of the flow wit
 
 The theorem asks for a lot. The value \(D^h_w\) is a sum of translates of \(h\), one for each occurrence of \(x_1^{\pm1}\) in \(w\) (Exercise 5.1), so \(w\) must be long. The construction takes \(w=w_m\) with \(m+1\) letters \(x_1\) whose prefixes \(p_0=e,p_1,\ldots,p_m\) form a free family; then \(D^h_{w_m}=T_mh\) with \(T_m=\sum_{j=0}^m\lambda(p_j)\). Since the \(\lambda(p_j)\) behave like free Haar unitaries, \(T_mT_m^*/m\) has, for large \(m\), approximately the distribution with density \(\frac1{2\pi}\sqrt{(4-x)/x}\) on \((0,4)\). This distribution has no atom at \(0\), so \(T_mT_m^*\) is at least \(dm\) on most of the space, for a fixed small \(d\). Inverting \(T_mT_m^*\) there gives \(h\) of norm about \((dm)^{-1/2}\) with \(T_mh\) close to \(\delta_e\).
 
-We use: Lemma 2.1 of [Free independence and Haar tuples](free-independence-and-haar-tuples.md) (normal form in free groups) and Lemma 1.1 of Trace-preserving polynomial flows; the spectral measure of a vector and the Borel functional calculus, [Proposition 2.1 and Theorem 3.1 of the spectral theorem lesson](course:foundations-of-von-neumann-algebras/the-spectral-theorem-for-bounded-self-adjoint-operators#OA-FND-ST-03); and the Weierstrass approximation theorem, [Corollary 14.3 of the Stone–Weierstrass lesson](course:function-algebras-and-approximation/the-stone-weierstrass-theorem-for-functions-vanishing-at-infinity#OA-FND-SW-14).
+We use: Lemma 2.1 of [Free independence and Haar tuples](free-independence-and-haar-tuples.md) (normal form in free groups) and Lemma 1.1 of [Trace-preserving polynomial flows](trace-preserving-polynomial-flows.md); the spectral measure of a vector and the Borel functional calculus, [Proposition 2.1 and Theorem 3.1 of the spectral theorem lesson](course:foundations-of-von-neumann-algebras/the-spectral-theorem-for-bounded-self-adjoint-operators#OA-FND-ST-03); and the Weierstrass approximation theorem, [Corollary 14.3 of the Stone–Weierstrass lesson](course:function-algebras-and-approximation/the-stone-weierstrass-theorem-for-functions-vanishing-at-infinity#OA-FND-SW-14).
 
 ## 1. Free prefixes
 

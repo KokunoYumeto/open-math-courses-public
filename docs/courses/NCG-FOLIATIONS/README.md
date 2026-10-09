@@ -2,7 +2,7 @@
 
 This course develops transverse measures and currents, holonomy C*-algebras, Hilbert modules, measured index theory and the K-theory of a leaf space. The lessons include proofs, examples, exercises and solutions.
 
-The course is an incomplete draft. Status and remaining mathematics describes its proved scope and unresolved dependencies. Most lessons have not had a separate-session check; the transverse-measure lesson records a spot check of its selected countable-section proof.
+The course is an incomplete draft. Status and remaining mathematics describes its proved scope and unresolved dependencies.
 
 Read the lessons in this order:
 

@@ -458,7 +458,7 @@ A projection onto \(W\) alone would not do this when \(S\neq W\). Every conjugat
 
 ## 7. Programme connections
 
-Lemmas 0.1–0.3 supply the elementary algebraic and inner-product inputs to the proofs. Algebraic closedness is part of the stated condition on \(k\) in Section 3. For the complex examples, the programme's [fundamental theorem of algebra](../../AG-CA/src/the-nullstellensatz-and-jacobson-rings.md#5-equations-residue-fields-and-arithmetic-points), Lemma 5.1, supplies that condition. The cyclic examples use complex exponential and polar coordinates; the full human-authored treatment is [Jiří Lebl, Complex exponential and trigonometric functions](https://www.jirka.org/ra/), included with its source and attribution in this programme.
+Lemmas 0.1–0.3 supply the elementary algebraic and inner-product inputs to the proofs. Algebraic closedness is part of the stated condition on \(k\) in Section 3. For the complex examples, the programme's [fundamental theorem of algebra](../../AG-CA/src/the-nullstellensatz-and-jacobson-rings.md#5-equations-residue-fields-and-arithmetic-points), Lemma 5.1, supplies that condition. The cyclic examples use the complex exponential and polar coordinates; the programme's The complex exponential and the circle proves the facts used, and Jiří Lebl treats them in [Complex exponential and trigonometric functions](https://www.jirka.org/ra/html/sec_complexexp.html), in the text of the core course [Real Analysis II](https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C20).
 
 Two general algebra results provide context, but none of our finite-group proofs depends on them.
 

@@ -621,10 +621,12 @@ and receiving wave norms. Substituting it in CF.8 and CF.13
 fully estimates the curl-free product in those same quantities.
 The symbols \(\mathcal F_k^2\) retain their full definitions
 CF.22, including the wave forcing. They have not been declared
-energy-bounded. The next actual task is to combine this proved
-interaction with the remaining nonlinear terms and close the
-physical-time inequality. The missing closure is not assumed
-in any of CF.14–CF.28.
+energy-bounded. The [potential wave chapter](../classical-potential-wave.html),
+[space-time tension chapter](../classical-spacetime-tension.html), and
+[temporal boundary chapter](../classical-temporal-boundary.html)
+supply the next receiving estimates. Combining all interactions
+into the finite physical-time bound remains required. That
+closure is not assumed in CF.14–CF.28.
 
 
 ![The original finite backward-kernel row norm and the physical radius-dependent Morrey bound.](../figures/f09-curlfree-backward.svg)

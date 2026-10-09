@@ -48,7 +48,7 @@ This proves every full smoothing seminorm. The operator identity \(BC=\operatorn
 
 ## M3. The product with the spatial operator on the left
 
-Choose a smooth frequency cutoff \(\chi(\tau,\xi)\in S^0\), supported strictly inside the region where (MC1) gives zero, and equal to one on a narrower temporal cone at sufficiently large frequency. It can be obtained by multiplying a radial high-frequency cutoff and a smooth angular cutoff whose closed support satisfies \(|\xi|<\epsilon|\tau|\), with a positive margin. Increase the radial threshold so that \(\epsilon|\tau|>1\) throughout its support. The earlier [bump construction](../20261004-free-stationary-phase/proof-map.html#U001-A4) supplies both cutoffs. On the high-frequency support of \(1-\chi\),
+Choose a smooth frequency cutoff \(\chi(\tau,\xi)\in S^0\), supported strictly inside the region where (MC1) gives zero, and equal to one on a narrower temporal cone at sufficiently large frequency. It can be obtained by multiplying a radial high-frequency cutoff and a smooth angular cutoff whose closed support satisfies \(|\xi|<\epsilon|\tau|\), with a positive margin. Increase the radial threshold so that \(\epsilon|\tau|>1\) throughout its support. The earlier bump construction supplies both cutoffs. On the high-frequency support of \(1-\chi\),
 \(\langle\xi\rangle\) and \(\langle\zeta\rangle\) are comparable. Hence
 \[
 b_1(z,\zeta)=(1-\chi(\zeta))b(z,\xi)\in S^{m'},

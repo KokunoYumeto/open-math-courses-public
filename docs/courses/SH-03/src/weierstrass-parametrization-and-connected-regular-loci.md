@@ -210,6 +210,239 @@ Deleting intersections is thus exactly what makes the rank statement concern the
 
 For a holomorphic cotangent projection, this gives one connected dense region on each irreducible analytic component where the carrier is regular and the projection has its maximal rank. Any propagation of a sheaf coefficient type from that region still uses the separate microlocal continuity theorem. Neither a hypersurface equation nor local irreducibility of the global component has been assumed.
 
+## Proper holomorphic images
+
+*Written by OpenAI GPT-6 Astra, October 2026. Original explanatory wording, CC0.*
+
+The theorem is Remmert's proper mapping theorem. The source-dimension induction below follows the classical method explained by Jean-Pierre Demailly, [*Complex Analytic and Differential Geometry*, version 21 June 2012, II §8.1–8.2, pp. 116–120](https://people.math.harvard.edu/~demarco/Math274/Demailly_ComplexAnalyticDiffGeom.pdf#page=116). Peterzil and Starchenko, [*Complex Analytic Geometry and Analytic-Geometric Categories*, §6.1, pp. 16–18](https://math.haifa.ac.il/kobi/analytic.pdf#page=16), explain how subanalytic geometry supplies a stronger closed-image theorem. We use properness throughout, prove the needed fibre-dimension assertion, and apply the **pure-dimensional** removal theorem proved in the programme. The small-boundary removal principle is classically associated with Shiffman; its proof and attribution are given in the linked reading below.
+
+### The statement and the existing inputs
+
+**Theorem.** Let \(f:M\to N\) be holomorphic between finite-dimensional, Hausdorff, second-countable complex manifolds. Let \(A\subset M\) be a closed reduced complex analytic subset. Suppose the restricted map
+\[
+ f|_A:A\longrightarrow N
+\]
+is proper. Then \(f(A)\) is a closed complex analytic subset of \(N\).
+
+Neither \(A\) nor its fibres need be smooth, irreducible or pure-dimensional. The source \(A\) need not be compact; every fibre of \(f|_A\) is compact by properness and may have positive dimension. Properness of \(f\) away from \(A\) is not required. The argument is local on the target and therefore also applies to locally embedded reduced analytic source spaces with holomorphic maps given in those local embeddings.
+
+Here are the programme inputs and their proof locations.
+
+1. **Local analytic algebra and parametrization.** An analytic germ has finitely many irreducible components. A pure irreducible germ of dimension \(d\) has a finite projection to a \(d\)-polydisc, a cone bound in the remaining coordinates, and a finite holomorphic covering outside a discriminant. Its regular points are dense. A proper analytic subgerm has smaller dimension. These are proved in *Analytic germs, local parametrization and the Nullstellensatz*, §§1–5, with the [uniform and exceptional-fibre details](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/SH-03/src/weierstrass-parametrization-and-connected-regular-loci.md#local-tools-and-where-their-proofs-enter). Normality enters that construction for the holomorphic power-series ring on the parameter polydisc, to obtain holomorphic coefficients of an integral minimal polynomial. The analytic source \(A\) in our theorem is only reduced; it is not assumed normal.
+2. **Global components and reduced ideals.** Irreducible components are closed and ambiently locally finite; the intrinsic regular locus of each component is connected. The reduced ideal has finitely many holomorphic generators on a neighborhood, and their Jacobian detects the singular locus. See the [global component proof](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/SH-03/src/weierstrass-parametrization-and-connected-regular-loci.md#the-global-component-theorem), its [maximal-rank continuation](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/SH-03/src/weierstrass-parametrization-and-connected-regular-loci.md#a-connected-maximal-rank-region-inside-the-regular-carrier), Cartan's reduced-ideal proof, and the Jacobian singular-locus criterion. The coherence input has its [Oka proof](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/complex-analytic-spaces-and-coherent-sheaves/src/coherent-sheaves-and-okas-theorem.md#2-okas-coherence-theorem).
+3. **Subanalytic calculus.** In a bounded working chart, finite Boolean operations and projection preserve definability; cell dimension is invariant under closure and satisfies the fibre-dimension formula. The complete real-analytic regular locus of a subanalytic set is subanalytic and relatively open. Proper locally analytic images are locally subanalytic, with a finite chart proof over each compact target neighborhood. See the local calculus and images proper on the selected closure, the entire regular-locus proof, and the [dimension and fibre-dimension proof](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/analytic-finiteness-and-preparation/src/analytic-finiteness-for-preparation.md#images-graphs-and-fibre-dimensions). Their image assertions give subanalyticity by finite graph projection; they do not assume complex analyticity of proper holomorphic images.
+4. **Pure-dimensional removal.** If \(S\) is closed subanalytic, \(E\subset S\) is closed subanalytic, \(S\setminus E\) is a complex submanifold of pure dimension \(r\), \(S=\overline{S\setminus E}\), and locally \(\dim_{\mathbb R}E\le 2r-2\), then \(S\) is analytic. For \(r=0\), the theorem requires \(E=\varnothing\). The [complete proof constructs the local holomorphic equations](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/complex-conicity-and-analytic-lagrangian-closures.md#proof-of-removal-across-a-subanalytic-exceptional-set), using a proper projection, bounded holomorphic extension, and symmetric polynomials of its finite fibres.
+
+We also use the elementary holomorphic constant-rank and one-variable removable-singularity theorems. The [coordinate inverse-function proof](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/complex-conicity-and-analytic-lagrangian-closures.md#the-statement-and-its-lower-inputs) is holomorphic. To obtain constant-rank coordinates, retain independent output coordinates and complementary source coordinates; the other outputs have zero derivatives in the remaining source directions and hence depend only on the retained outputs. For a bounded holomorphic function on a punctured disc, Cauchy's estimate on circles of radius \(\rho\) bounds its Laurent coefficient of \(z^{-j}\), \(j\ge1\), by \(M\rho^j\); letting \(\rho\) tend to zero eliminates every negative coefficient. The uses of a punctured-disc covering and of compactness are included below.
+
+![The source-dimension induction, its fibre bound, and the pure-dimensional removal step](figures/proper-image-induction.png)
+
+The diagram records the actual sets and bounds proved in Sections 1–6. The two branches distinguish an image already supplied by the induction hypothesis from the case requiring removal. [Full-size diagram](figures/proper-image-induction.png) · [Reproducible figure source](figures/draw_proper_image_induction.py).
+
+### 1. A disc through a positive-dimensional analytic germ
+
+Let \((Z,a)\) be a positive-dimensional irreducible analytic germ. Center adapted coordinates at \(a\). Local parametrization gives a finite covering
+\[
+ \pi:Z\setminus\pi^{-1}\{\delta=0\}\longrightarrow
+ \Delta^d\setminus\{\delta=0\},\qquad d\ge1,
+\]
+with \(q\) sheets, where \(\delta\) is a nonzero holomorphic function. The remaining coordinates satisfy \(|z''|\le C|z'|\).
+
+Choose \(v\ne0\) such that \(t\mapsto\delta(tv)\) is not identically zero: take \(v\) outside the zero set of the first nonzero homogeneous term of \(\delta\). After reducing the disc radius, \(\delta(tv)\ne0\) for \(0<|t|<\varepsilon\). The restriction of the covering to this punctured disc has monodromy given by one permutation of its \(q\) sheets. A loop around zero generates the fundamental group. Pullback by \(t=s^{q!}\) kills that permutation. Continuing any selected sheet along paths therefore gives a single-valued holomorphic lift \(\gamma(s)\) on a punctured disc.
+
+All its coordinates are bounded, so the one-variable removable-singularity theorem extends \(\gamma\) across zero. The cone bound gives \(\gamma(0)=a\), whereas
+\[
+ \pi\gamma(s)=s^{q!}v
+\]
+makes \(\gamma\) nonconstant. Closedness of the analytic representative ensures that the extended disc still lies in \(Z\). This proves the required disc assertion without a curve-normalization or image theorem.
+
+**Consequence.** Every compact analytic subset \(K\) of an open subset of \(\mathbb C^n\) is finite. Indeed, if one of its irreducible components has positive dimension, that component is closed and compact. Choose \(a\) on it maximizing the squared Euclidean norm. Its local germ has a positive-dimensional branch, so the preceding construction gives a nonconstant holomorphic disc \(\gamma\) through \(a\), contained in that component. Write
+\[
+ \gamma(s)=a+\sum_{j\ge1}v_js^j.
+\]
+On a sufficiently small circle the power series converges uniformly, and termwise integration gives
+\[
+ \frac1{2\pi}\int_0^{2\pi}|\gamma(\rho e^{i\theta})|^2\,d\theta
+ =|a|^2+\sum_{j\ge1}|v_j|^2\rho^{2j}>|a|^2.
+\]
+This contradicts the choice of \(a\). Thus every component is zero-dimensional. Local parametrization makes a zero-dimensional germ an isolated point, and a compact discrete analytic set is finite.
+
+### 2. The local fibre-dimension bound
+
+We prove that, for a holomorphic map \(g:Z\to\mathbb C^m\) from a reduced analytic set,
+\[
+ s(z)=\dim_{\mathbb C}\bigl(g^{-1}(g(z)),z\bigr)
+ \tag{PI1}
+\]
+is upper semicontinuous. The assertion concerns the local fibre germ at \(z\), not just a generic smooth fibre.
+
+Fix \(a\in Z\), put \(b=g(a)\), and let \(s=s(a)\). Embed a neighborhood of \(a\) in \(\mathbb C^n\). Choose \(s\) independent linear forms \(w_1,\ldots,w_s\) such that
+\[
+ \bigl(g^{-1}(b)\cap\{w_1=\cdots=w_s=0\},a\bigr)=\{a\}.
+ \tag{PI2}
+\]
+Here is the existence argument. At each stage there are only finitely many positive-dimensional irreducible germs in the current intersection. A linear form not identically zero on any of them makes every surviving positive-dimensional component smaller-dimensional. Such choices exclude finitely many proper linear subspaces of the space of linear forms; linear independence can be imposed at the same time. After at most \(s\) choices the germ is zero-dimensional. If fewer choices suffice, add independent forms. This uses only the strict dimension drop of a proper analytic subgerm.
+
+Complete \(w\) to coordinates \((w,z'')\). Choose a small closed vertical ball \(\overline B''\) so that \(Z\cap\{w=0\}\cap g^{-1}(b)\) meets it only at \(a\). The compact vertical boundary then misses that fibre. Shrinking a horizontal ball \(B'\subset\mathbb C^s\), with all closures inside the analytic chart, ensures that
+\[
+ K=Z\cap\bigl(\overline B'\times\partial B''\bigr)
+\]
+is compact and disjoint from \(g^{-1}(b)\). Choose \(\eta>0\) with \(|g-b|>\eta\) on \(K\); if \(K\) is empty, any sufficiently small \(\eta\) will do.
+
+For \(|c-b|<\eta\), set
+\[
+ Z_c=Z\cap g^{-1}(c)\cap(B'\times B'').
+\]
+Projection \(\pi_w:Z_c\to B'\) is proper. To check it, take a convergent sequence over a compact subset of \(B'\); a subsequence converges in the closed vertical ball, and the preceding separation excludes a limit on its boundary. Each fibre of \(\pi_w\) is a compact analytic subset of the open ball \(B''\), and hence is finite by Section 1.
+
+A holomorphic map to \(\mathbb C^s\) with finite fibres has source local dimension at most \(s\). Otherwise a local analytic branch of dimension \(e>s\) has regular points where the derivative has its maximum rank \(t\le s\); on an open neighborhood of such a point the constant-rank theorem gives fibres of dimension \(e-t>0\), contradicting finiteness. This argument does not presuppose that the image is analytic.
+
+It follows that every local germ of \(Z_c\) has dimension at most \(s\). For \(z\) close enough to \(a\), both \(z\in B'\times B''\) and \(|g(z)-b|<\eta\), and its full local fibre germ agrees with the germ just considered. Thus \(s(z)\le s(a)\), proving upper semicontinuity. The construction includes \(s=0\), with \(B'\) a point.
+
+Now let \(A\) be an irreducible analytic set of pure dimension \(d\), and let \(r\) be the maximum complex rank of \(df\) on its regular locus. The maximum-rank locus is dense: a nonzero rank minor on the connected regular locus cannot vanish on an open set, by analytic continuation. At every such point the local fibre has dimension \(d-r\). Upper semicontinuity therefore gives, at **every** \(a\in A\),
+\[
+ \dim_{\mathbb C}\bigl(f^{-1}(f(a))\cap A,a\bigr)\ge d-r.
+ \tag{PI3}
+\]
+In particular, (PI3) remains valid at a singular point and for a singular or higher-dimensional fibre.
+
+### 3. The analytic locus removed in the induction
+
+For irreducible \(A\) and \(r\) as above, define
+\[
+ D=A_{\rm sing}\ \cup\
+ \{a\in A_{\rm reg}:\operatorname{rank}_{\mathbb C}(df|_{T_aA})<r\}.
+ \tag{PI4}
+\]
+This is a closed analytic subset of \(A\), and \(\dim_{\mathbb C}D\le d-1\).
+
+For completeness, analyticity in (PI4) does not require taking an uncontrolled closure of a rank locus. In a local embedding \(A\subset\mathbb C^n\), choose generators \(g_1,\ldots,g_k\) of the **reduced** ideal and put \(c=n-d\). On \(A_{\rm reg}\), the matrix \(dg\) has rank \(c\), and elementary linear algebra gives
+\[
+ \operatorname{rank}\begin{pmatrix}dg\\df\end{pmatrix}
+ =c+\operatorname{rank}(df|_{\ker dg}).
+ \tag{PI5}
+\]
+The singular locus is defined on \(A\) by the \(c\)-minors of \(dg\). The set where the stacked matrix has rank less than \(c+r\) is defined by its \((c+r)\)-minors. Their union is analytic; for example it is the common zero set of all products of one minor from each list. On regular points it is precisely the rank-drop set, and on singular points the first factor vanishes. Thus this union is (PI4). The convention for a zero-sized minor is 1. Because the regular maximum-rank locus is nonempty, \(D\ne A\); irreducibility and the strict dimension theorem give the asserted bound.
+
+This use of the reduced ideal matters. Arbitrary equations with repeated factors need not detect the tangent space or the singular locus.
+
+### 4. Properness supplies all finite local descriptions
+
+Several elementary consequences will be used in the induction.
+
+First, \(f(A)\) is closed. If \(f(a_j)\to y\), the sequence together with its limit lies in a compact subset of a relatively compact target chart. Properness supplies a convergent subsequence of the \(a_j\), whose limit lies in \(A\) and maps to \(y\).
+
+Second, \(f(A)\) is locally subanalytic. Over a small target ball with compact closure, its inverse image in \(A\) is compact. Cover that inverse image by finitely many closed source-coordinate boxes whose interiors cover it and whose closures stay inside their analytic charts. In each box the graph of \(f|_A\) is a bounded subanalytic set in source and target coordinates. Its projection is subanalytic by the bounded-chart projection theorem. The finite union of these projections, restricted to the smaller target ball, is exactly the image. This does not assert global definability of a noncompact source.
+
+Third, closed locally finite analytic source components have locally finite images. The compact inverse image of a closed target ball meets only finitely many source components. Only those components can contribute to the image in the smaller ball. Restriction of \(f\) to each closed component remains proper.
+
+Finally, suppose a holomorphic map \(h:P\to Q\) from a manifold is proper and has constant complex rank \(r\). Its image is locally a finite union of closed complex submanifolds of dimension \(r\). Indeed, cover the compact fibre over \(y\) by finitely many constant-rank neighborhoods \(V_j\). They may be chosen so that
+\[
+ h(V_j)=H_j\cap W_j,
+\]
+where \(H_j\) is a closed complex \(r\)-submanifold of the target neighborhood \(W_j\) of \(y\). Properness makes the image of the closed complement \(P\setminus\bigcup_jV_j\) closed and disjoint from \(y\). Choose a target neighborhood \(W\subset\bigcap_jW_j\) avoiding that image. Then
+\[
+ h(P)\cap W=\bigcup_j(H_j\cap W).
+ \tag{PI6}
+\]
+A finite union is analytic: products of defining ideals give local equations for the union. It is pure of dimension \(r\). This proves the constant-rank case with the actual finite-fibre-neighborhood argument; finite-dimensional fibres themselves need not be finite sets.
+
+### 5. Induction on the source dimension
+
+We prove the theorem for all analytic sources of dimension at most \(d\), simultaneously for all holomorphic maps proper on those sources. Dimension zero is immediate: a zero-dimensional analytic source is discrete, and a compact inverse image of a target neighborhood meets only finitely many of its points. Its image is locally finite, hence analytic.
+
+Assume the assertion proved through dimension \(d-1\). Work near a fixed target point. Section 4 reduces the source to finitely many irreducible components; apply the argument separately to each. We may therefore assume \(A\) irreducible of dimension \(d\). Let \(r\) and \(D\) be as in Sections 2–3. The restriction \(f|_D\) is proper and \(\dim D<d\). By the induction hypothesis,
+\[
+ B=f(D)
+ \tag{PI7}
+\]
+is closed analytic. Write \(S=f(A)\).
+
+If \(B=S\), the induction hypothesis already proves the conclusion. Suppose \(B\ne S\), and put
+\[
+ T=A\cap f^{-1}(B).
+ \tag{PI8}
+\]
+This is a proper closed analytic subset of the irreducible set \(A\), so
+\[
+ \dim_{\mathbb R}T\le2d-2.
+ \tag{PI9}
+\]
+Every fibre over a point of \(B\) lies wholly in \(T\). By (PI3), each such fibre has real dimension at least \(2(d-r)\). The subanalytic fibre-dimension theorem therefore gives, locally on the target,
+\[
+ \dim_{\mathbb R}B+2(d-r)\le\dim_{\mathbb R}T\le2d-2,
+ \qquad \dim_{\mathbb R}B\le2r-2.
+ \tag{PI10}
+\]
+
+Here is the bounded-chart justification of this use of the fibre theorem. Over a compact target neighborhood cover \(f^{-1}(\overline V)\cap A\) by finitely many closed coordinate boxes with interiors covering it. Take the disjoint union of the definable graphs of \(f\) on \(T\) in those boxes, restricted over \(B\cap V\). Its dimension is at most \(2d-2\). For every \(y\in B\cap V\), at least one box contains an open neighborhood in \(A\) of a point in its fibre. That graph fibre has dimension at least \(2(d-r)\) by (PI3). The finite disjoint union has the same lower fibre bound. Decompose its graph with target coordinates first; over each target cell, total dimension is the dimension of that cell plus the fibre dimension. This proves (PI10). No analyticity of a general fibre-dimension locus or nonproper global image is used.
+
+On \(A\setminus T\), the source is smooth and \(f\) has constant rank \(r\), because \(D\subset T\). The restricted map
+\[
+ f:A\setminus T\longrightarrow N\setminus B
+ \tag{PI11}
+\]
+is proper: inverse images of compact subsets of \(N\setminus B\) are exactly the corresponding compact inverse images under \(f|_A\). By (PI6),
+\[
+ C=S\setminus B
+ \tag{PI12}
+\]
+is a closed analytic subset of \(N\setminus B\), pure of dimension \(r\).
+
+Moreover \(S=\overline C\). A proper analytic subset of an irreducible analytic source has empty interior; hence \(A\setminus T\) is dense in \(A\). For any \(a\in A\), choose \(a_j\in A\setminus T\) tending to \(a\); then \(f(a_j)\in C\) tends to \(f(a)\). This proves \(S\subset\overline C\). The reverse inclusion uses the already established closedness of \(S\).
+
+If \(r=0\), (PI10) forces \(B=\varnothing\), unless we were in the already settled case \(B=S\). In the remaining case (PI6) says that \(S\) is locally a finite set of points, proving the theorem. We may now assume \(r\ge1\).
+
+### 6. Applying exactly the available pure-dimensional removal theorem
+
+Let \(\operatorname{Reg}_{\mathbb R\mathrm{an}}S\) denote points where \(S\) agrees on an ambient neighborhood with a closed embedded **real-analytic** submanifold. This entire regular locus is subanalytic and relatively open by the proved regularity test in Lesson 24. Define
+\[
+ E=B\ \cup\bigl(S\setminus\operatorname{Reg}_{\mathbb R\mathrm{an}}S\bigr).
+ \tag{PI13}
+\]
+It is a closed subanalytic subset of the closed subanalytic set \(S\).
+
+Outside \(B\), (PI6) expresses \(S=C\) locally as a finite union of complex \(r\)-submanifolds. The real-analytic regular points of this union are exactly its complex regular points. To see the only nontrivial direction, suppose the union agrees with a real-analytic manifold \(L\). Its real dimension is \(2r\), since all its constituent complex submanifolds have that dimension. A constituent through a given point is an embedded real submanifold of \(L\) of the same dimension; the inverse-function theorem makes its inclusion locally open. Thus \(L\) agrees with that complex constituent near the point. The converse is immediate.
+
+The singular locus of the pure complex analytic set \(C\) has complex dimension at most \(r-1\). This follows directly from the reduced-ideal Jacobian criterion and strict dimension decrease on each local component (or from the intersections of the finitely many distinct submanifold germs in (PI6)). Consequently,
+\[
+ \dim_{\mathbb R}(E\setminus B)\le2r-2.
+\]
+Together with (PI10) and the finite-union dimension rule, this gives locally \(\dim_{\mathbb R}E\le2r-2\), including neighborhoods centered on \(B\). The local statement on \(E\setminus B\) gives the same bound in a bounded definable chart: a cell of larger dimension would have a point outside \(B\) contradicting that local statement, or would lie in \(B\) contradicting (PI10).
+
+Now \(R=S\setminus E=C_{\rm reg}\) is a complex submanifold of pure dimension \(r\). Its closure contains \(C\), since regular points are dense in each analytic component of \(C\), and hence equals \(S=\overline C\). These are precisely the hypotheses of the proved pure-dimensional removal theorem. It makes \(S\) analytic and completes the induction. Finite unions and the locally finite component reduction in Section 4 finish the nonpure and noncompact cases. \(\square\)
+
+The induction has one direction: analyticity of the image of the strictly smaller-dimensional analytic set \(D\) is used first; the removal theorem is then applied to the pure rank-\(r\) part of its complement. It does not assume the conclusion for \(A\), nor a mixed-dimensional extension theorem.
+
+### 7. The two course applications
+
+In Lesson 44, the analytic annihilator incidence is
+\[
+ E_S=\{(x,L,\xi):(x,L)\in\Gamma_S,\ \xi|_L=0\},
+ \qquad q(x,L,\xi)=(x,\xi).
+\]
+The ambient Grassmann bundle and cotangent bundle are complex manifolds; the incidence equations are holomorphic. Over a compact cotangent set, the omitted Grassmann coordinate stays in a compact Grassmannian. The incidence is closed, so \(q|_{E_S}\) is proper. The theorem applies to this actual analytic carrier and gives the analytic conormal closure. It applies in the same way to the closed analytic component closure \(Z'\) in the critical-rank tangent graph: the Grassmann projection is proper on \(Z'\), so its image is analytic. No finite-fibre assumption is made in either application.
+
+In Lesson 46, write the base map as \(f:Y\to X\), and use
+\[
+ C_f=Y\times_XT^*X,\quad
+ f_d(y,\xi)=(y,(df_y)^t\xi),\quad
+ f_\pi(y,\xi)=(f(y),\xi).
+\]
+For the actual closed analytic microsupport \(\Lambda=\operatorname{SS}(G)\), set \(A=f_d^{-1}\Lambda\). The base point of every element of \(\Lambda\), including the zero covector, lies in the closed support of \(G\). If \(f\) is proper on that closed support, then for compact \(K\subset T^*X\),
+\[
+ A\cap f_\pi^{-1}(K)
+ \subset
+ \bigl(\operatorname{supp}G\cap f^{-1}(\pi K)\bigr)\times K
+\]
+is closed in a compact product. Thus \(f_\pi|_A\) is proper, even when \(df\) has a kernel or \(f\) is not proper on all of \(Y\). The theorem gives analyticity of \(f_\pi(A)\), exactly as required there. It does not supply the separate microsupport estimate, isotropic transport theorem, or the Casimir specialization argument.
+
+### Relation to the classical proofs
+
+Demailly's II §8.1 proves the upper semicontinuity of local fibre dimension using a projection separated from the vertical boundary. Sections 1–2 above supply the analytic-disc and compact-fibre arguments for that construction. His II §8.2 proves the general proper mapping and Remmert–Stein extension theorems by simultaneous induction. Here the proved subanalytic pure-dimensional removal theorem supplies the extension step instead.
+
+Peterzil–Starchenko's stronger Theorem 6.1 assumes a closed image in an analytic-geometric category rather than properness. Its proof uses fibre upper semicontinuity, [Lemma 4.7](https://math.haifa.ac.il/kobi/analytic.pdf#page=12), and a mixed-dimensional analytic criterion. Our proper-map argument uses compact fibres in (PI6), the induction on \(D\), and the pure-dimensional complement (PI12). Those hypotheses give exactly the proper-image theorem needed for the Grassmann and cotangent incidences above.
+
 ## Exercises with complete solutions
 
 ### 1. Multiplicities determine the remainder

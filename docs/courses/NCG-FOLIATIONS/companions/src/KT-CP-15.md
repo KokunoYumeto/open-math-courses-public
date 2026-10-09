@@ -500,7 +500,7 @@ We also use the following Hilbert-module prerequisites: complementary full corne
 
 Haar-system existence for an abstract Hausdorff reduction uses Williams's Theorem 2.1. The theorem here assumes a supplied full Haar system on each side in the locally Hausdorff case. It proves Morita equivalence, without claiming a literal algebra isomorphism or reproving the stable-isomorphism theorem.
 
-Morita invariance of K-theory is proved in the written programme lesson *Morita invariance of K-theory and maps induced by correspondences*, Corollary 2.2 and Theorem 5.1. The second countable locally compact suspension spaces give separable, hence sigma-unital, algebras, as required by that proof. The Connes–Thom and mapping-torus boundary results are proved in Lessons 10–11. The canonical PV coefficient maps use the written Fourier-window proof identified above. The classical circle K-groups used in the numerical example are the same Bott prerequisite as in Lesson 11.
+Morita invariance of K-theory is proved in the written programme lesson *Morita invariance of K-theory and maps induced by correspondences*, Corollary 2.5 and Theorem 5.1. The second countable locally compact suspension spaces give separable, hence sigma-unital, algebras, as required by that proof. The Connes–Thom and mapping-torus boundary results are proved in Lessons 10–11. The canonical PV coefficient maps use the written Fourier-window proof identified above. The classical circle K-groups used in the numerical example are the same Bott prerequisite as in Lesson 11.
 
 ## References
 

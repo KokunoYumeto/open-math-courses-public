@@ -11018,7 +11018,7 @@ The figure has a full-resolution PNG, SVG, editable plotting source and exact co
 
 We construct the common-domain full homogeneous coefficient ring, its complete infinite products and derivative tails, and a canonical linear pole/log kernel map. Supplied strict angular data admit an explicit normalization with all overlap and missing-face primitives. The ordinary diagonal infinite-order subring has a canonical residue product and arbitrary ordinary holomorphic coordinate overlaps.
 
-The full geometric identification for arbitrary projectivized microlocal sections and the mixed pole/log canonical product remain separate assertions, denoted IK.G and IK.M. The strict angular hypothesis is retained throughout. The ordinary calculation supplies neither assertion, and no infinite-order module-derived instantiation is made.
+The full geometric identification for arbitrary projectivized microlocal sections and the mixed pole/log canonical product remain separate assertions, denoted IK.G and IK.M. The strict angular hypothesis is retained throughout. The ordinary calculation supplies neither assertion, and no infinite-order module-derived instantiation is made. The two separate geometric assertions are proved in [§5.45, IG.1–IG.5 and IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product). The conditional input and ordinary conclusions in this section retain their stated scope.
 
 Free human specifications are [Kashiwara–Schapira, Micro-hyperbolic systems, §§1.3 and 3.1](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/Microhyp.pdf), and [Kashiwara–Kawai, Holonomic systems III, III.2, printed pp.883–884](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf). The distinct real-conic symbol problem is treated in the freely accessible [Aoki–Honda–Yamazaki, Foundation of symbol theory for analytic pseudodifferential operators, I](https://www.jstage.jst.go.jp/article/jmath/69/4/69_1715/_pdf), and [Komori, The equivalence of pseudodifferential operators and their symbols via Čech–Dolbeault cohomology](https://content.ems.press/assets/public/full-texts/serials/prims/61/3/14299041/online/10.4171-prims-61-3-3.pdf). No symbol theorem from these references replaces a proof below.
 
@@ -12233,7 +12233,7 @@ The complete ordinary product estimates OR.1/OR.3 and the ordinary coordinate-ch
 
 with all fixed-output infinite contractions and every derivative tail controlled by OR.4/OR.11. TC.15 identifies this equality with the full ordinary canonical cup/excision/normalized trace, including every target complement coordinate and every sign. OC.4’s complete finite torus/Laurent separation then gives the ordinary coordinate-class correspondence in OR.4. These are the complete ordinary coefficient formulas and ordinary canonical scope.
 
-Full IK.G still requires the angular projectivized-sheaf identification. Full IK.M still requires the mixed pole/log thick-cone comparison. Ordinary trace and coordinate conclusions do not imply either, and no derived instantiation or later matrix-flatness, faithfulness, reconstruction, propagation, D-type/C1/analytic proper/GL/BB/KL conclusion is asserted here.
+Full IK.G and IK.M are proved in [§5.45, IG.1–IG.5 and IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product). Ordinary trace and coordinate conclusions alone supply neither assertion. No derived instantiation or later matrix-flatness, faithfulness, reconstruction, propagation, D-type/C1/analytic proper/GL/BB/KL conclusion is asserted in this ordinary unit.
 
 #### OR.3. Complete ordinary canonical multiplication
 
@@ -12359,9 +12359,9 @@ Plotting source, exact data, full PNG, and editable SVG.
 | Actual holomorphic forward class, branch/harmonic-term boundaries, finite calibration | IK.6; §5.41 CP.2 and §5.39 NL.11–NL.12/NL.22–NL.27 | Proved as a linear map |
 | Common proper triple geometry | IK.7 | Proved |
 | Exact inverse full coefficient extraction from supplied pole/log normal forms | IK.8, especially IK.24-IK.28 | Proved |
-| IK.G: full \(\gamma^{-1}\gamma_*C^R_{\Delta}\) identification with the full coefficient class; nonlinear coordinate transitions and zero-section/off-zero compatibility | Requires an explicit angular/projective descent and reduction to the supplied normal forms whose inverse estimates are proved in IK.8 | Open |
-| IK.M: canonical full holomorphic relative-cone cup/excision/normalized-trace comparison with IK.10 | Requires literal convergent holomorphic correction cochains on a common proper triple product; finite current convergence is unavailable | Open |
-| Whole-ring degree-one/all-degree action, support preservation and finite full-infinite-order derived diagrams | IK.G/IK.M plus §5.43 full relative-kernel action and its cone-open/support/common-collar hypotheses | Conditional; no instantiation |
+| IK.G: full \(\gamma^{-1}\gamma_*C^R_{\Delta}\) identification with the full coefficient class; nonlinear coordinate transitions and zero-section/off-zero compatibility | Complete cofinal-support, angular-witness, zero-detection, nonlinear and ordinary compatibility proof: [§5.45, IG.1–IG.5 and IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product) | Proved in §5.45 |
+| IK.M: canonical full holomorphic relative-cone cup/excision/normalized-trace comparison with IK.10 | Complete bounded-normalization, full cup/excision/trace and final-support primitive proof: [§5.45, IG.1–IG.5 and IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product) | Proved in §5.45 |
+| Whole-ring degree-one/all-degree action, support preservation and finite full-infinite-order derived diagrams | Complete actual finite-diagram realization and module-derived action: [§5.46, ID.1–ID.6](#5-46-finite-infinite-order-diagrams-on-actual-derived-support-modules); exact final-cone, cone-open, round-domain, restricted action-source and common-collar hypotheses retained | Proved under ID.1–ID.4 hypotheses |
 | All finite matrix relations, right flatness, proper-ideal detection and unit injectivity | No deduction from the coefficient-ring result | Open |
 | Ordinary/mixed scalar changes, infinite Späth division and balanced reconstruction | Separate analytic proofs required | Open |
 | Propagation, purity, arbitrary-section separation, monodromy stability/full infinite-order D-type linearity | Separate actual module/solution proofs required | Open |
@@ -12375,15 +12375,844 @@ Plotting source, exact data, full PNG, and editable SVG.
 | Complete ordinary all-spatial infinite product and fixed-index infinite contractions | OR.1, OR.3–OR.4 | Proved |
 | Ordinary diagonal holomorphic cup/excision/normalized residue trace and canonical ordinary kernel multiplication | OR.2–OR.3, TC.1–TC.4 and OC.1–OC.4; finite-cube V.6 and compact smooth collar trace V.4–V.5 | Proved |
 | Arbitrary ordinary holomorphic coordinate transitions, actual class correspondence and triple overlaps | OR.4, OR.13–OR.16 and the proved ordinary Laurent pairing separation | Proved |
-| Full IK.G identification of arbitrary \(\gamma^{-1}\gamma_*C^R_\Delta\) sections with the coefficient sheaf | Need cofinal microlocal-support-to-strict-angular-data construction, exact lower overlap primitives, zero-class detection, nonlinear coordinate transitions and zero-section/off-zero compatibility | Open; AN.3 is not supplied automatically |
-| Full IK.M product of arbitrary mixed pole/log thick-cone kernels | Need a literal holomorphic relative-cone trace/correction on a common proper triple product, controlling all ray endpoints and all spatial faces simultaneously | Open; OR.12 is the ordinary diagonal subring only |
-| Whole infinite-order support-preserving degree-one/all-degree action and module-derived finite diagrams | Full IK.G/IK.M and §5.43’s full relative-kernel action/cone-open/support/common-collar hypotheses | Conditional; not instantiated |
+| Full IK.G identification of arbitrary \(\gamma^{-1}\gamma_*C^R_\Delta\) sections with the coefficient sheaf | Complete cofinal-support, angular-witness, zero-detection, nonlinear and ordinary compatibility proof: [§5.45, IG.1–IG.5 and IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product) | Proved in §5.45 |
+| Full IK.M product of arbitrary mixed pole/log thick-cone kernels | Complete bounded-normalization, full cup/excision/trace and final-support primitive proof: [§5.45, IG.1–IG.5 and IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product) | Proved in §5.45 |
+| Whole infinite-order support-preserving degree-one/all-degree action and module-derived finite diagrams | Complete actual finite-diagram realization and module-derived action: [§5.46, ID.1–ID.6](#5-46-finite-infinite-order-diagrams-on-actual-derived-support-modules); exact final-cone, cone-open, round-domain, restricted action-source and common-collar hypotheses retained | Proved under ID.1–ID.4 hypotheses |
 | Finite matrix relations, right flatness, proper-ideal detection/unit injectivity, ordinary and mixed scalar changes | Separate complete analytic matrix-relation, ideal, unit and scalar-change estimates | Open |
 | Infinite Späth division and balanced reconstruction | Separate complete division and reconstruction for every actual singular-support section | Open |
 | Moving-sector propagation, singular-support purity, arbitrary-section separation, special-action/monodromy stability, infinite-order D-type linearity | Separate actual module/solution proofs | Open |
 | Faithful finite D-type embedding, finite poles/intrinsic order/half-order/full C1/initial generators, arbitrary analytic proper regularity, every retained BB/KL/GL14/GL16/affine/critical/factorization assertion | The full original programme dependency chain | Unfinished |
 
-The full infinite-order geometric ring theorem remains unfinished. Supplied strict angular data and the ordinary diagonal subring retain their explicit scope. Full matrix flatness, faithfulness, reconstruction, propagation, analytic proper regularity and every other original mathematical programme assertion remain open.
+The full infinite-order geometric ring theorem is proved in [§5.45, IG.1–IG.5 and IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product). Supplied strict angular data and the ordinary diagonal subring retain their explicit scope. Full matrix flatness, faithfulness, reconstruction, propagation, analytic proper regularity and every other unresolved original mathematical programme assertion remain open.
+
+
+### 5.45. The full geometric infinite-order kernel ring and its canonical product
+
+We identify the full homogeneous coefficient class with the source-defined complex-projectivized diagonal sheaf. We derive strict angular data from arbitrary sections over the complete normal-phase fiber, detect zero classes, and prove actual nonlinear coordinate and zero-section compatibility. The full mixed canonical product is then proved in IM.1–IM.6. Every spatial index, both growth regimes, fixed derivative tails and one common actual coefficient domain are retained.
+
+The free human definitions are [Kashiwara–Schapira, Micro-hyperbolic systems](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/Microhyp.pdf), §1.2, printed/PDF p.5, and §1.3, p.6. The first page defines the stalks by supported cohomology on the comonoidal topology and specifies the antipodal convention; the second defines \(C^\infty=\gamma^{-1}\gamma_*C^R\) off zero. The same local-support specification is written explicitly in [Aoki–Honda–Yamazaki, Foundation of symbol theory for analytic pseudodifferential operators, I](https://www.jstage.jst.go.jp/article/jmath/69/4/69_1715/_pdf), §2, printed p.1721, PDF p.7. Their recalled symbol theorem is not a premise.
+
+The earlier full Dolbeault/current resolutions and controlled excision are [§5.34, R.1–R.7](#5-34-full-current-resolutions-and-controlled-proper-image-comparison); the finite relative cube, normalized trace, tensor signs and normal-line calibration are [§5.35, V.1–V.6](#5-35-relative-cones-unshifted-cup-and-the-normalized-trace). Global locally \(L^2\) existence and the actual graph-domain estimates are proved in [§5.43, DLH.1–DLH.4](#5-43-the-canonical-all-degree-action-and-its-derived-module-structure). The complete homogeneous coefficients, forward kernels and inverse estimates are [§5.44, IK.1–IK.8](#5-44-full-homogeneous-coefficients-and-ordinary-infinite-order-kernels); its [AN.1–AN.4 normalization](#an-1-the-exact-strict-angular-input) is applied below only after we derive the required angular data from arbitrary geometric sections. The ordinary puncture resolution is [OC.1–OC.4](#oc-1-explicit-exhaustions-on-every-ordinary-puncture-intersection), and the complete ordinary two-support trace is [TC.1–TC.4](#tc-1-one-coordinate-all-four-source-entries). The ordinary canonical products and arbitrary ordinary coordinate changes are [OR.3–OR.4](#or-3-complete-ordinary-canonical-multiplication).
+
+#### IG.1. Unfold the actual microlocal-support stalk and prove the cofinal cones
+
+Let \(u=(t,x)\), \(v=u+(w,\zeta)\), \(d=N-1\). The diagonal has complex codimension \(N\). The source's comonoidal topology identifies all positive real multiples of a covector and gives, with its antipodal convention in the chosen \(w=s-t\) orientation,
+
+\[
+\begin{gathered}
+C^R_{\Delta,p}=
+\underset{D,H}{\mathop{\rm colim}}\ H_H^N(D;\mathcal O),\\
+C_\Delta(H)_{u_0}\setminus\{0\}\\
+\subset\{-\Re\langle(w,\zeta),p\rangle>0\}.
+\end{gathered}
+\tag{IG.1}
+\]
+
+Here \(D\) is an actual neighborhood of \((u_0,0)\), \(H\) is closed, and arrows are restriction in \(D\) and support forgetting on inclusion of supports. The same formula at nearby covectors with a strict polar margin defines the local section represented by that supported class. Formula IG.1 is the stated sheaf definition: a finite cocycle uses one neighborhood, and two such cocycles have the same germ exactly when their difference is a boundary after one later restriction/support map. This follows directly from filtered colimits of vector-space complexes: a cocycle, a primitive and every equality have finitely many entries and occur at one later index. No completion, coefficient-wise neighborhood choice or omitted symbol construction is involved.
+
+Normalize the central covector to \(p=(1,0)\), using a fixed linear base-coordinate change. For a representative support \(H\), its normal cone intersected with the unit sphere is compact. The function \(-\Re w\) is strictly positive on that compact set by IG.1, so it has a positive minimum \(\mu\). If the set is empty, a sequence of nonzero normal displacements approaching the diagonal would produce a unit normal-cone vector, a contradiction; thus \(H\) is contained in the diagonal locally and there is no extra off-diagonal support to bound. Otherwise the compact minimum gives
+
+\[
+\begin{gathered}
+-\Re w\ge\mu\sqrt{|w|^2+\sum_i|\zeta_i|^2}\\
+\text{on the unit-direction}\\
+\text{normal cone.}
+\end{gathered}
+\tag{IG.2}
+\]
+
+Choose \(0<\lambda<\pi/2\) and \(B_i>0\), with strict margins large enough to contain that cone in
+
+\[
+\begin{gathered}
+T_{\lambda,B,\phi}=\\
+\left\{\begin{gathered}
+|\arg(-e^{i\phi}w)|\le\lambda,\\
+|\zeta_i|\le B_i|w|
+\end{gathered}\right\},
+\end{gathered}
+\tag{IG.3}
+\]
+
+where the zero normal vector is included. At \(\phi=0\), one may take \(\lambda>\arccos\mu\) and \(B_i>\mu^{-1}\). After one shrink of \(D\), the **actual** support \(H\) is contained in IG.3. If no shrink worked, choose points of \(H\) with base tending to \(u_0\) and normal norm tending to zero, normalize their normal displacements and pass to a sphere subsequence. Its limit is in \(C_\Delta(H)\) by the definition of that normal cone and violates the strict containment margin, a contradiction. This also proves uniform containment on a smaller base neighborhood; otherwise the failing base points provide the same sequence.
+
+These standard cones are themselves admissible on an actual covector neighborhood. For \(p'=e^{i(\phi+\eta)}(1,z)\),
+
+\[
+\begin{gathered}
+-\Re\langle(w,\zeta),p'\rangle\\
+\ge\left(\begin{gathered}\cos(\lambda+|\eta|)\\-\sum_iB_i|z_i|\end{gathered}\right)|w|.
+\end{gathered}
+\tag{IG.4}
+\]
+
+For \(|\eta|\le\eta_*\), \(\lambda+\eta_*<\pi/2\), and
+\(\sum_iB_i|z_i|<\frac12\cos(\lambda+\eta_*)\), this is strictly positive on every nonzero vector of IG.3. Thus replacing \(H\) by IG.3 is a legitimate support map on a common base/covariable product and a phase interval. This proves cofinality in the actual source-defined stalks; it is not an assertion that an arbitrary real-conic class has ray support.
+
+For later proper geometry the standard support lies in the closed convex, full-dimensional cone
+
+\[
+\begin{gathered}
+\mathcal G_\phi=\\
+\left\{\begin{gathered}
+-\Re(e^{i\phi}w)\ge0,\\
+|\Im(e^{i\phi}w)|\\
+\le\tan\lambda[-\Re(e^{i\phi}w)],\\
+|\zeta_i|\\
+\le\tfrac{B_i}{\cos\lambda}[-\Re(e^{i\phi}w)]
+\end{gathered}\right\}.
+\end{gathered}
+\tag{IG.5}
+\]
+
+Its interior contains \(e^{i\phi}w=-1,\zeta=0\). The inclusion is a literal support-enlargement chain map, and the explicit margins/properness proof AN.19–AN.20 applies. No injectivity of support enlargement or equality of cone quotient topologies is asserted.
+
+#### IG.2. Top holomorphic cochains and exact zero witnesses
+
+Take one actual product source \(M=U\times\Delta_w\times\prod_i\Delta_{\zeta_i}\), restricted from \(D\). The complement of IG.3 has the exact ordered cover
+
+\[
+\begin{gathered}
+V_{0,\phi}=\\
+\{w\notin e^{-i\phi}(-\text{sector}_\lambda)\},\\
+V_i=\{|\zeta_i|>B_i|w|\},\\
+1\le i\le d.
+\end{gathered}
+\tag{IG.6}
+\]
+
+The normal open \(V_{0,\phi}\) is a connected normal sector of aperture \(2\pi-2\lambda\), strictly between \(\pi\) and \(2\pi\). Its branch of \(L=\log w\) has imaginary part in one interval \((\alpha,\beta)\) of that length. A normal-face intersection omitting index 0 includes \(w=0\) whenever its spatial differences are nonzero.
+
+We prove that every finite cover intersection is \(\mathcal O\)-acyclic on this **whole** domain. Let \(I\) be its set of spatial indices. Start with the squared norm of all base and normal coordinates and add the usual outer-disc barriers \(-\log(R_j^2-|q_j|^2)\). For each \(i\in I\) add
+
+\[
+ |\zeta_i^{-1}|^2-\log(1-|B_iw/\zeta_i|^2).
+ \tag{IG.7}
+\]
+
+If index 0 is present, add
+
+\[
+\begin{gathered}
+|L|^2-\log(\Im L-\alpha)\\
+-\log(\beta-\Im L).
+\end{gathered}
+\tag{IG.8}
+\]
+
+Every term is smooth and plurisubharmonic on the specified intersection. For a holomorphic function \(h\), \(|h|^2\) has Levi form \(|dh|^2\). Direct differentiation gives the nonnegative Levi form \(|dh|^2/(1-|h|^2)^2\) of \(-\log(1-|h|^2)\). The last two terms of IG.8 are convex functions of positive harmonic functions, so their Levi forms are the nonnegative squares of the corresponding derivatives divided by the squares of those harmonic functions. The squared coordinate norm makes the sum strictly plurisubharmonic. It is an exhaustion: outer boundaries, a required spatial puncture, a forbidden normal angle and \(w\to0\) when index 0 is present each force a displayed term to tend to infinity. Add a constant to make it nonnegative.
+
+The complete DLH.1–DLH.4 analytic existence proof now solves every closed positive-degree locally \(L^2\) Dolbeault form on each intersection. To identify this with actual holomorphic cohomology, use the maximal graph sheaf \(\mathcal L^q\) of locally \(L^2\) forms whose distributional Dolbeault differential is locally \(L^2\). Multiplication by a smooth function preserves both conditions, so it is a \(C^\infty\)-module sheaf. Its augmentation by \(\mathcal O\) is locally exact: DLH.1–DLH.4 on a small actual polydisc solves positive degree, and R.3's distributional holomorphicity identifies degree zero. The primitive has the given locally \(L^2\) differential and hence lies in the graph sheaf. R.5 proves ordinary-section acyclicity of these module sheaves, and R.6's finite acyclic-resolution comparison computes actual derived holomorphic sections by their global complex. DLH.1–DLH.4 on IG.7–IG.8 now makes that global complex exact in positive degree. Thus positive-degree holomorphic cohomology vanishes on every stated intersection. This is an explicit graph-sheaf/exhaustion/existence argument, rather than an invocation of a named Stein theorem. The source product \(M\) has the same property using its outer-disc barriers.
+
+The finite V.6 augmentation therefore reduces the actual supported complex to the holomorphic cube for IG.6. For the diagonal input top-form twist, use the ungraded frame and the V.17 calibration: an unsigned physical kernel function has ordinary top cube coordinate \(r_N(-1)^N\) times that function, or full-cone Čech top coordinate \(-r_N\) times it. The functions below are expressed in that physical kernel coordinate; multiplying every representative and face primitive by the same fixed nonzero calibration changes no equality or zero test. Its top degree \(N\) has one holomorphic function on
+
+\[
+ \Omega_\phi\times
+ \{|\zeta_i|>B_i|w|\text{ for all }i\},
+ \tag{IG.9}
+\]
+
+with every outer source bound and base variable retained. Its top boundaries are exactly
+
+\[
+ f=\sum_{i=0}^d(-1)^i h_{0\cdots\widehat i\cdots d},
+ \tag{IG.10}
+\]
+
+where each \(h\) is an actual holomorphic function on that omitted-coordinate face. This conclusion includes zero detection at the level of representatives: if the supported class is zero, it has a finite holomorphic face primitive on a common actual smaller product. The cover acyclicity and the finite cube comparison prove this statement; it is not assumed from an equality of quotient classes.
+
+For a support equal to the union of two neighboring standard cones with the same \(\lambda,B\), its normal closed sector is their connected union and its spatial inequality is unchanged. If the phase-center gap \(h\) satisfies \(h<2\lambda\) and \(2\lambda+h<\pi\), the normal complement is again a connected sector of aperture between \(\pi\) and \(2\pi\). The same exhaustion and face-primitive proof applies verbatim. This is the exact overlap domain used next.
+
+#### IG.3. Arbitrary projectivized sections give strict angular data
+
+Let \(s\) be an arbitrary germ of \(\gamma_*C^R_\Delta\) at \((u_0,[1:0])\). By definition it is a section of \(C^R\) on the inverse image of a projective neighborhood, hence over every normal phase. The positive real radial variable carries no additional data: the source's topology is the inverse image of the spherical topology, so restrictions on each positive real orbit are the same support germs. The relevant fiber is the compact phase circle.
+
+Choose finitely many phase neighborhoods with supported representatives by IG.1–IG.2. Restrict the finitely many base/covariable products to one common smaller product. On their phase overlaps the representatives are equal as sections of \(C^R\). A zero germ in the filtered support complex has one later neighborhood/support primitive by IG.1. On compact subarcs of the finitely many overlaps choose finitely many such witnesses, and restrict to one common source. This finite selection occurs **before** any coefficient index appears.
+
+For these finitely many supports and witnesses choose strict polar margins on their compact phase subarcs. Compact unit normal-direction sets give one positive minimum margin. Refine the circle to a sufficiently fine cyclic grid \(\phi_i\), retaining the already chosen witnesses on the subarcs assigned to the grid. Choose one \(\lambda<\pi/2\), common \(B_i\), and grid spacing \(h\) so that all assigned supports/witnesses are contained, with a strict margin, in the corresponding standard cones, and
+
+\[
+ 0<h<\min(2\lambda,\pi-2\lambda).
+ \tag{IG.11}
+\]
+
+This choice is finite and possible: first take a uniform angular margin from the selected compact subarcs and supports; then take the grid step smaller than that margin and enlarge the finitely bounded spatial constants. No new support witness is required by this refinement. A representative/witness assigned to a grid point or neighboring overlap remains admissible throughout its compact subarc by the same strict margin. Enlarging it to the standard cone uses IG.2's sequential containment proof.
+
+We obtain top functions \(f_i\) on IG.9. The difference of neighboring functions, on their common connected normal complement, is an actual top boundary for the union support. By IG.10 it has one normal-face term \(h_i\), extending holomorphically to \(w=0\) on the **whole** common thick spatial complement, and finitely many spatial-face terms. Apply the full negative spatial Laurent projection from AN.5–AN.6. It kills each spatial-face term: a function holomorphic across \(\zeta_k=0\) has no negative Laurent coefficient in that variable. Let \(F_i=\Pi_-f_i\) and \(H_i=\Pi_-h_i\), including the deletion sign in the latter. Then the literal equality is
+
+\[
+ F_i-F_{i+1}=H_i
+ \tag{IG.12}
+\]
+
+on their common normal complement. Each \(H_i\) is holomorphic on one common domain
+\(\{|w|<r,\ B_k|w|<|\zeta_k|<r_k\}\), including the normal zero face. The actual primitive, not an analytic-continuation assumption, supplies that common-domain extension. All negative spatial projections are defined by the same locally fixed Cauchy circles and agree on overlaps as proved in AN.2.
+
+Lift the normal complements to intervals on the real normal-angle line, with equal length \(2\pi-2\lambda\) and consecutive center spacing \(h\). They cover that line. Put \(C_0=0\), \(C_{i+1}=C_i+H_i\), extending the indices periodically, and glue the functions \(F_i+C_i\) on these lifted intervals. Equation IG.12 makes adjacent pieces equal. If two more distant lifted intervals overlap, their intersection lies in every intervening interval because the intervals have equal length and ordered centers; hence the adjacent equalities telescope there as well. This proves actual gluing on all overlaps, including the complete lifted phase cover.
+
+After one circuit the glued function satisfies
+
+\[
+\begin{gathered}
+F(L+2\pi i)-F(L)\\
+=\sum_i H_i=:H.
+\end{gathered}
+\tag{IG.13}
+\]
+
+The finite sum \(H\) is holomorphic on the entire common normal-zero thick complement. Thus **arbitrary** source-defined projectivized sections have the strict datum AN.1–AN.3. The previously missing common-domain overlap extension has now been supplied by IG.10–IG.12, and not by compactness of the phase circle alone.
+
+AN.2–AN.4 applies to this datum. It gives \(K_0-\log w\,G\), modulo literal normal and spatial face primitives, with \(K_0\) fully negative in every normal Laurent variable, \(G\) holomorphic at normal zero on the thick complement and fully negative in the spatial Laurent variables. Cauchy extraction gives all \(p_j(u,z)\) on one normalized covariable neighborhood, the factorial negative bound and every-\(\varepsilon\) positive bound, including all spatial indices and the positive-homogeneous/negative-normal mixed terms. These are the proved estimates AN.14–AN.18, with every fixed derivative and tail obtained by one compact enlargement. This proves surjectivity from the full coefficient class onto the actual projectivized geometric germs.
+
+#### IG.4. Zero-class detection and the inverse sheaf map
+
+Conversely, a full coefficient sequence has its normally convergent holomorphic pole/log kernel, with the fixed source factorial signs, as in IK.5–IK.6. Remove its explicit holomorphic harmonic-number face boundary. For every phase choose the corresponding branch of \(\log w\) on IG.9. Branch changes are multiples of the normal-holomorphic function \(G\); AN.11–AN.12 gives their literal common face primitives and their triple-overlap identity. Thus these representatives define a section over the whole phase fiber, with one common base/covariable product. This is an actual map to \(\gamma_*C^R\), not merely to one real-conic stalk.
+
+Suppose its geometric germ is zero. At a central phase, IG.1 and IG.10 give, after one actual later support/domain choice, a holomorphic missing-face expression for \(K_0-LG\). Project fully negatively in the spatial variables. The kernel is already so normalized, and the spatial-face terms vanish; hence
+
+\[
+ K_0-LG=J,
+ \tag{IG.14}
+\]
+
+where \(J\) is holomorphic on a thick normal-zero complement. Fix a compact spatial product annulus and choose a small normal punctured disc entirely in that complement. The three functions in IG.14 are holomorphic there on a normal angular sector. Continue this literal identity around its normal circle. The functions \(K_0,G,J\) are single-valued; the lifted logarithm changes by \(2\pi i\). Subtracting the two continuations gives \(2\pi iG=0\). The identity theorem gives \(G=0\) on the actual common thick neighborhood. Now \(K_0=J\) extends across normal zero. Its fully negative normal Laurent coefficients are therefore zero, so \(K_0=0\). The unique Cauchy coefficient extraction AN.15/AN.18 makes every reconstructed coefficient germ zero.
+
+This proves injectivity. More generally equal geometric germs give equal coefficient germs by applying the same argument to their difference, on the finite intersection of their domains. All changes of initial phase cover, representatives, face witnesses, Cauchy radii, cone constants and branches therefore give the same actual coefficient germ. Surjectivity and injectivity identify sheaves, since all constructions commute with restriction and equality is on one smaller product, not separately in each degree. Finite operator diagrams use the finite intersection of these source and coefficient products and one common admissible full-dimensional cone enlargement IG.5.
+
+#### IG.5. Actual nonlinear coordinates and zero-section compatibility
+
+Let \(\widehat u=\phi(u)\) be any local biholomorphism. Its map on diagonal pairs is an actual biholomorphism preserving the diagonal. It pulls back the input top-form frame with the holomorphic Jacobian determinant, and carries the cotangent direction by the dual derivative. It preserves the source comonoidal-support germs. Here is the support estimate needed to verify that statement rather than assume it. On one compact enlargement Taylor's integral formula gives
+
+\[
+\begin{gathered}
+\phi(u+q)-\phi(u)\\
+=d\phi_u(q)+E(u,q),\\
+|E(u,q)|\le C|q|^2.
+\end{gathered}
+\tag{IG.15}
+\]
+
+The inverse derivative and its norm are uniformly bounded there. A cofinal support with strict polar margin \(\mu|q|\) for the corresponding transformed covectors retains at least half that margin for \(|q|<\mu/(2C')\), after absorbing the bounded derivative/covector constants into \(C'\). Finitely many phase supports and witnesses permit the minimum of their positive margins and this single normal-radius shrink. The transformed supports can consequently be enlarged to the standard cones of IG.3 in the new coordinates by the same cofinal argument IG.1. The Jacobian multiplier and all its fixed derivatives are holomorphic on one common pair domain and introduce no index-dependent neighborhood.
+
+Apply IG.2–IG.3 and AN.14–AN.18 in the transformed chart. The resulting full coefficients are holomorphic on one actual common new base/projective product and have exactly both growth conditions, all fixed derivative tails and every spatial index. This is the nonlinear transition map; it is obtained from an actual geometric germ and explicit normal-form bounds, not a formal transformation series. Its inverse comes from \(\phi^{-1}\). Composition on triple overlaps is exact: pullbacks of cochains compose, the input top-form determinants obey the ordinary chain rule, and IG.4 makes the coefficient representative unique. Hence these transition maps identify the coordinate coefficient sheaf with the intrinsic projectivized kernel sheaf. Multiplicativity of the full transition maps awaits IK.M; no coordinate-ring naturality is inferred from the still-missing mixed product.
+
+At the zero section the source definition is \(H^N_\Delta(\Omega^{(0,N)})\). For the ordinary coordinate-puncture cover, every intersection has the explicit proper strictly plurisubharmonic exhaustion consisting of the squared coordinate norm, all outer-disc barriers, and \(\sum_{i\in I}|q_i^{-1}|^2\) for its required normal punctures. The same DLH.1–DLH.4 existence and R/V finite-column elimination used in IG.2 therefore reduce this cover to its holomorphic row; V.6 alone would not supply that analytic acyclicity. Its complete coordinate puncture cube has the unique fully negative Laurent representative of OR.5; Cauchy extraction on arbitrarily small product circles proves exactly the ordinary every-\(\varepsilon\) class OR.1. Its off-zero map is the actual support-forgetting map \(\Delta\subset T_{\lambda,B,\phi}\), phase by phase. The kernel has no log part, so the just constructed identification sends it to
+
+\[
+\begin{gathered}
+P_j(u;\tau,\xi)=\\
+\sum_{m+|\beta|=j}a_{m\beta}(u)\tau^m\xi^\beta,\\
+j\ge0;\\
+P_j=0\quad(j<0).
+\end{gathered}
+\tag{IG.16}
+\]
+
+The full \(P_j\) is a homogeneous polynomial of total degree \(j\); its normalized \(p_j(u,z)\) has spatial degree at most \(j\). Every time/spatial multiindex is retained. These are literal restrictions of the same diagonal class, so they agree on a common neighborhood and are compatible with the source's zero/off-zero restriction maps. Not every off-zero germ extends to zero; no such extension is asserted. For an actual germ near zero, its zero-section representative is the ordinary class just calculated. Under nonlinear coordinates the support maps commute with pair pullback, and the corrected ordinary two-support trace TC.1–TC.4 supplies the ordinary top-form pairing correspondence. Thus the entire zero-section compatibility, including arbitrary ordinary coordinate overlaps, is actual.
+
+![Actual cofinal support slices and connected angular descent](assets/infinite-projective-descent.png)
+
+**Figure IG.1.** Left: exact one-spatial-coordinate real slice of IG.2 with initial strict polar margin \(\mu=2/3\), whose spatial bound is \(|\Re\zeta|\le\sqrt5\sigma/2\), \(\sigma=-\Re w\); it lies strictly inside the standard bound \(2\sigma\). The full proof uses complex spatial norms. Center: \(\lambda=\pi/3\), phase spacing \(h=\pi/4\); neighboring support sectors have union aperture \(11\pi/12<\pi\), and their common connected normal complement has aperture \(13\pi/12>\pi\). A normalized covariable disc \(|z|<1/16\), with phase half-neighborhood \(\pi/24\), has the exact positive polar margin \(\cos(3\pi/8)-1/8\). Right: IG.10–IG.14's actual face-witness projection, normal-zero overlap extension, monodromy datum and zero test. The editable figure, exact data and reproducible source are linked below. The outer normal/spatial source radii are 3.
+
+Editable SVG · Exact data · Figure source
+
+
+#### Mathematical identification and its product interface
+
+| Assertion | Complete proof |
+|---|---|
+| Source-defined support stalks and cofinal actual pointed cones | IG.1, compact normal-direction argument IG.2–IG.4; definition on inspected free source p.5 |
+| Whole-domain holomorphic top representatives and actual missing-face zero witnesses | IG.2, explicit strict PSH exhaustions IG.7–IG.8, exact DLH.1–DLH.4 existence and R/V resolutions |
+| Arbitrary whole-phase/projectivized section gives strict common-domain angular datum | IG.3, IG.10–IG.13, including finite actual overlap witnesses |
+| Full homogeneous coefficient bounds and inverse signs, every spatial index and fixed derivative tail | AN.2–AN.4 applied to the angular datum derived in IG.3 |
+| Geometric zero detection and actual germ/sheaf identification | IG.4, monodromy followed by negative Laurent uniqueness |
+| Arbitrary nonlinear geometric coordinate overlaps and triple identities | IG.5, actual Taylor remainder, source pullback and zero detection |
+| Ordinary zero-section and actual off-zero restriction compatibility | IG.16, the complete ordinary Laurent calculation, and [§5.44, OC.1–OC.4 and TC.1–TC.4](#oc-1-explicit-exhaustions-on-every-ordinary-puncture-intersection) |
+| Full canonical mixed pole/log proper cup/excision/trace and ring compatibility | IM.1–IM.6 below |
+| Full infinite-order support-preserving degree-one/all-degree and derived diagrams | Actual finite full-infinite diagrams and all-degree strict module-derived action are proved in [§5.46, ID.1–ID.6](#5-46-finite-infinite-order-diagrams-on-actual-derived-support-modules), with every geometric and common-domain premise checked |
+| Every matrix relation/flatness/faithfulness, ordinary/mixed scalar change, Späth/reconstruction, propagation/purity/separation, special/monodromy/D-type, finite poles/order/half-order/C1/initial generator/arbitrary analytic proper, BB/KL/GL14/GL16/affine/critical/factorization and sourcing/proof obligation | Separate proofs required; the full remaining scope is stated after IM.6 |
+
+The geometric identification is multiplicative by IM.1–IM.6 below. A particular module-derived application still requires the exact cone-open, round-domain, support-to-output and common-collar hypotheses of §5.43; no such application is inferred here.
+
+
+**The full mixed holomorphic relative-cone product.**
+
+We work in the actual holomorphic relative-cochain complexes, with fixed proper collars and a finite, bounded Dolbeault/Čech contraction chosen for the entire input family. In particular, the essential kernel \(e^{1/w}/(2\pi iw)\) remains a holomorphic complement coefficient throughout.
+
+The complete coefficient/forward-kernel construction is [§5.44, IK.1–IK.8](#5-44-full-homogeneous-coefficients-and-ordinary-infinite-order-kernels), strict angular normalization is [AN.1–AN.4](#an-1-the-exact-strict-angular-input), and the full ordinary trace is [TC.1–TC.4](#tc-1-one-coordinate-all-four-source-entries). IG.1–IG.5 above supply the arbitrary-section geometric identification and its zero detector.
+
+Finite-order equality of the actual canonical classes, including all principal-log and normal-localization corrections, is [§5.41, CP.1–CP.6](#5-41-canonical-products-for-full-convergent-spatial-symbols) together with [§5.39, NL.1–NL.7](#5-39-canonical-normal-localization-of-convergent-spatial-symbols). The full resolution, cube, excision and normalized-trace proofs are [§§5.34–5.35, R.1–R.7 and V.1–V.6](#5-34-full-current-resolutions-and-controlled-proper-image-comparison). The weighted existence, Hilbert representation, graph approximation and reweighting arguments used here are [§5.43, DLH.1–DLH.4](#5-43-the-canonical-all-degree-action-and-its-derived-module-structure).
+
+The freely accessible human specifications are [Micro-hyperbolic systems](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/Microhyp.pdf), §3.1, and [Holonomic systems III](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), III.2. Their recalled symbol calculus is not used to discharge a premise. All new analytic contraction and limit arguments are proved below.
+
+#### IM.1. A bounded finite-column contraction on one actual family
+
+Consider any one of the finite relative cubes in IG.2, including its whole-domain component. Every face domain has the explicit smooth proper strictly plurisubharmonic exhaustion IG.7–IG.8; the whole domain has the ordinary disc exhaustion. Let \(m\) be its complex dimension. Work with a specified family of cochains and their differentials that is locally bounded and convergent on each compact face domain. The family may include every positive-head truncation of a finite operator list and their actual output/overlap cochains. There is no coefficient-dependent domain.
+
+For each face choose the graph-domain cutoffs and the smooth derivative majorant \(\psi\) of DLH.2. Define degree weights
+
+\[
+\begin{gathered}
+\varphi_q=\Phi+(q-m)\psi,\\
+ 0\le q\le m+1.
+\end{gathered}
+\tag{IM.1}
+\]
+
+Choose \(\Phi=\chi\circ\psi_0\), with \(\psi_0\) the displayed strict exhaustion, so large that every \(\varphi_{q+1}\), \(1\le q\le m\), satisfies DLH.7. It is enough that the smallest Levi eigenvalue of \(\Phi\) dominate
+\((m+1)\|\partial\bar\partial\psi\|+2|\partial\psi|^2+2e^\psi\). DLH.4's explicit increasing convex step construction supplies this domination on successive compact exhaustion levels. The same construction makes the locally bounded envelope of **all** specified input cochains and their differentials square-integrable with each of the finitely many weights. To see this directly, on exhaustion shell \(k-1\le\psi_0<k\) increase \(\chi(k-1)\) above \(k+\log(1+\int_{\psi_0\le k}E^2e^{(m+1)|\psi|})\). The shell contribution is then at most \(e^{-k}\). The one envelope \(E\) is locally finite because the entire family converges on compacts.
+
+Choose face weights in increasing intersection cardinality. For every restriction from a parent face to a smaller child intersection, enlarge the child's \(\Phi\) further so that
+
+\[
+\begin{gathered}
+\varphi_{q,\mathrm{child}}\\
+\ge\varphi_{q,\mathrm{parent}}\big|_{\mathrm{child}}\\
+\text{for every }q.
+\end{gathered}
+\tag{IM.2}
+\]
+
+There are finitely many parents and degrees; their required values and Hessian bounds are locally bounded on the child's exhaustion sublevels, so the same convex construction supplies them simultaneously. Restrictions are then bounded with norm at most one. Equal face domains use the same weights. Include all neighboring-phase intersection domains in this finite selection; restrictions between the finitely many covers obey the same condition.
+
+Let \(H_q=L^2_{(0,q)}(W,\varphi_q)\), and let \(\delta_q\) be maximal distributional \(\bar\partial\). It is closed: convergence in the source and target norms gives distributional convergence on compacts and preserves the distributional equation. Its kernel is closed. DLH.1–DLH.4, with the consistent consecutive three weights IM.1, gives
+\(\operatorname{im}\delta_{q-1}=\ker\delta_q\), and a solution of norm at most the norm of the right side. Choose the unique solution orthogonal to \(\ker\delta_{q-1}\); it is linear and has the same norm bound, since orthogonal projection removes a closed-kernel vector without changing its differential. Denote this bounded right inverse on closed forms by \(R_q\). Put
+
+\[
+\begin{gathered}
+h_q=R_q\Pi_{\ker\delta_q},\\
+
+ \pi_0=\Pi_{\ker\delta_0},\\
+ \pi_q=0\ (q>0).
+\end{gathered}
+\tag{IM.3}
+\]
+
+The projections exist by the Hilbert proof DLH.1. Weak degree-zero closed forms are holomorphic by R.3. Directly, on the actual maximal graph domains,
+
+\[
+\begin{gathered}
+\delta h+h\delta=1-i\pi,\\
+
+ h^2=0,\\
+ h i=0,\\
+ \pi h=0,\\
+\pi i=1.
+\end{gathered}
+\tag{IM.4}
+\]
+
+For \(q>0\), \(\delta h_q=\Pi_{\ker\delta_q}\), while \(h_{q+1}\delta f\) is the unique solution orthogonal to that kernel, namely \(f-\Pi_{\ker\delta_q}f\). The same argument in degree zero gives the first identity with the holomorphic projection. The output of \(R_q\) is orthogonal to \(\ker\delta_{q-1}\), proving the three side identities. This proves an actual bounded contraction, not a choice of an unproved continuous inverse.
+
+Let \(d_v=(-1)^r\delta\) in cube cardinality \(r\), and let \(d_h=d_C\) be the finite restriction differential. Set \(h_v=(-1)^rh\), so IM.4 holds with \(d_v\). If the cube has at most \(L\) opens, \(d_hh_v\) increases cardinality and its \((L+1)\)-st power is zero. Define the finite operators
+
+\[
+\begin{gathered}
+A=\sum_{k=0}^{L}(-d_hh_v)^k,\\
+
+ \mathsf H=h_vA,\\
+ \mathsf P=\pi A.
+\end{gathered}
+\tag{IM.5}
+\]
+
+With \(D=d_v+d_h\), they satisfy
+
+\[
+\begin{gathered}
+D\mathsf H+\mathsf H D=1-i\mathsf P,
+ \\
+ \mathsf P D=d_C\mathsf P,
+ \\
+ \mathsf P i=1.
+\end{gathered}
+\tag{IM.6}
+\]
+
+Here is the algebraic verification. The finite sum is \((1+d_hh_v)^{-1}\). Use \(d_vh_v+h_vd_v=1-i\pi\), \(d_vd_h+d_hd_v=0\), and \(d_h^2=0\). Expansion gives
+\([D,1+d_hh_v]=-d_h+d_hi\pi-d_hh_vd_h\). Substitute this into the commutator with its finite inverse, use \(h_vi=0\) and \(d_hi=i d_C\), and telescope to obtain the first identity. Applying \(D\) on both sides gives \(i(\mathsf P D-d_C\mathsf P)=0\), so the second holds because \(i\) is injective. The third follows from \(h_vi=0\). No infinite operator series appears in this verification.
+
+All operators in IM.5 are bounded on the finite sum of face Hilbert spaces, and preserve the actual graph domains used by these identities. Restrictions preserve graph domains because they commute with distributional differentiation and satisfy IM.2 in both adjacent degrees. A convergent locally bounded input family fits these one-time weights; dominated convergence makes it converge in each chosen graph norm. IM.5 therefore gives convergence of its primitives and holomorphic projections. Holomorphic weighted-\(L^2\) convergence implies normal convergence on each compact: the iterated disc mean-value inequality bounds its square by a fixed local \(L^2\) norm, weights are comparable to constants on a compact enlargement, and Cauchy bounds every fixed derivative. This is the precise continuity used below.
+
+#### IM.2. The full holomorphic cup/excision/trace cochains
+
+Fix \(P,Q\) in the full coefficient class on one actual common base/projective product. Let \(R=P\circ Q\) be the complete infinite contraction of IK.2–IK.3. Choose a common slightly larger coefficient compact, all base/covariable Cauchy margins, the negative factorial constant and the positive every-\(\varepsilon\) prefactors before any summation. IK.5 gives normally convergent pole/log/holomorphic kernels on the coordinate-punctured and source thick-complement domains. Its inequalities are the source III.2 inequalities \(>\), not the distinct III.3 special-fibration inequalities \(<\).
+
+Choose finitely many normal phases with the source domains/cones of IG.2–IG.3, with adjacent spacing \(h<2\lambda\) and \(2\lambda+h<\pi\). A common \(\lambda,B_i\) is allowed for the finite symbol/product list, but every cone is **phase-local**: at phase \(\phi_i\) use its rotated convex cone \(\mathcal G_i=\mathcal G_{\phi_i}(\lambda,B)\) of IG.5. At a neighboring pair use the separate cone centered at \(\psi_i=(\phi_i+\phi_{i+1})/2\), with half-angle \(\alpha=\lambda+h/2\) and spatial slope \(B_i/\cos\alpha\). It contains both phase cones: on their union the rotated normal angle has absolute value at most \(\alpha\), and
+
+\[
+\begin{gathered}
+-\Re(e^{i\phi_i}w)\\
+\le\frac{\cos\lambda}{\cos\alpha}[-\Re(e^{i\psi_i}w)]
+\end{gathered}
+\tag{IM.18}
+\]
+
+holds at the appropriate endpoint phase, by \(\cos(h/2)+\tan\alpha\sin(h/2)=\cos\lambda/\cos\alpha\). Thus its spatial slope contains the endpoint slopes as well. Since \(\alpha<\pi/2\), this neighboring cone is pointed. No single pointed cone is chosen to contain the whole circle of rotated phase cones. The domains of all input symbols and finitely many intermediate products are intersected once; every subsequent Cauchy margin, cone constant and collar is fixed on a smaller common product.
+
+Choose once
+
+\[
+\begin{gathered}
+\lambda<\lambda'<(\pi-h)/2,\\
+B'_k>\frac{B_k}{\cos(\lambda+h/2)}\\
+>\frac{B_k}{\cos\lambda}.
+\end{gathered}
+\tag{IM.19}
+\]
+
+The stronger spatial choice also handles the neighboring convex cones on the same product. It retains \(h<2\lambda'\) and \(2\lambda'+h<\pi\). Define the standard normalization supports
+\(T'_i=T_{\lambda',B',\phi_i}\), and on a neighboring pair
+\(T'_{i,i+1}=T_{\lambda'+h/2,B',\psi_i}\).
+They respectively contain \(\mathcal G_i\) and the neighboring convex cone just constructed. Their complements have exactly the normal/spatial open covers IG.6, with the new angle and spatial constants; every intersection has the literal IG.7–IG.8 exhaustion. Thus these supports, not an undeclared cover of a convex cone, are the normalization complexes to which IM.1 will be applied.
+
+For the final full-dimensional convex supports take
+\(\mathcal G'_i=\mathcal G_{\phi_i}(\lambda',B')\), and on each neighbor
+\(\mathcal G'_{i,i+1}=\mathcal G_{\psi_i}(\lambda'+h/2,B')\).
+Then \(T'_i\subset\mathcal G'_i\) and
+\(T'_{i,i+1}\subset\mathcal G'_{i,i+1}\) by IG.5. Each is pointed and stable under addition. All of this geometry is selected before any truncation or weight construction. Put \(\alpha'=\lambda'+h/2<\pi/2\) and
+\(K_k=B'_k/\cos\alpha'\). Choose a neighboring-overlap half-width \(\eta_*>0\) with \(\alpha'+\eta_*<\pi/2\), and shrink one covariable polydisc so that
+
+\[
+\begin{gathered}
+\sum_k K_k|z_k|\\
+<\tfrac12\cos(\alpha'+\eta_*).
+\end{gathered}
+\tag{IM.20}
+\]
+
+Give the actual covector-phase neighborhood of \(\phi_i\) half-width \(h/2+\eta_*\). Its neighboring intersection is centered at \(\psi_i\) and has half-width \(\eta_*\), including the last/first overlap on the lifted phase line. These phase intervals cover the entire circle since their half-width exceeds \(h/2\). For a phase cone, the sum of its normal half-angle and this covector half-width is \(\lambda'+h/2+\eta_*=\alpha'+\eta_*\); for its neighboring cone, the corresponding sum is also \(\alpha'+\eta_*\). Thus the very same IM.20 polar margin covers both kinds of supports on their actual phase neighborhoods, rather than only at the finite phase centers.
+
+IG.4's polar inequality, applied to the radial bound \(|\zeta_k|\le K_k|w|\), proves admissibility for every support in this finite phase/neighbor system. The covariable shrink is one-time and common to all homogeneous and spatial indices.
+
+![Phase-local cones and the forward normalization support maps](assets/infinite-phase-local-support-bridge.png)
+
+**Figure IM.2.** The exact example has \(\lambda=\pi/6\), \(\lambda'=\pi/4\), \(h=\pi/12\), \(B=1\), \(B'=3/2\). Its final neighboring normal half-angle is \(7\pi/24\), so the support union aperture is \(7\pi/12<\pi\). Covector-phase intervals have half-width \(\pi/16=h/2+\eta_*\); neighboring overlaps have half-width \(\pi/48=\eta_*\). The central panel is the real slice \(\Im(e^{i\phi}w)=\Im\zeta=0\); the proof uses complex spatial norms. Endpoints have coordinate radii \(1/64\), the collar is one on radius \(1/4\) and supported in radius \(1/2\), and the outer source radii are 3. The arrows are the literal support maps IM.21–IM.23: the boundary is on \(T'\), then mapped forward to final \(\mathcal G'\).
+
+Editable SVG · Exact data · Figure source
+
+
+In triple difference coordinates \(a=s-u\), \(b=v-s\), the singularity lists are independent. Put the actual two kernel relative cubes on the source \((u,a,b)\) and form their entire tensor-to-cube map V.16. Holomorphic joint coefficients may be multiplied after that map. All lower complement entries and all Dolbeault components are retained; this is the same full operation corrected in TC.1–TC.3, with more general cone complement opens.
+
+Augment this finite source cube to the full cone for the intersection of the two actual kernel supports using V.6's smooth Čech row contraction. Choose a fixed smooth partition on that union complement subordinate to its finite complement opens. Such a partition exists by the explicit locally finite ball/closure construction R.5: group the locally finite small-ball functions by the finitely many opens and normalize their sum. On each compact only finitely many balls occur, and their closures lie inside the respective opens. Multiplying a holomorphic face coefficient by the corresponding cutoff or its derivative consequently extends by zero only on a neighborhood where the cutoff is zero. It never extends an essential singularity across its support. This addresses individual pole/log/spatial faces as well as the normal origin.
+
+The source intersection has a proper intermediate fiber. In the rotated normal coordinate write \(\sigma_a=-\Re a_t\ge0\), \(\sigma_b=-\Re b_t\ge0\); their sum is the final \(\sigma\). All imaginary and spatial intermediate coordinates are bounded by the common constants times \(\sigma\). Choose the actual outer source first, and an inner endpoint product satisfying AN.20 for the largest constants of the finite final phase/neighbor cones just selected. These have normal half-angle at most α′ and spatial slope at most K_k. For endpoint radii δ one may require δ+2δ/cosα′<R_t/3 and δ+2K_kδ<R_k/3 in the actual source polydisc. A fixed collar equal to one on these inner intermediate polydiscs and supported inside the source half-radii then works for every phase and neighboring pair. Only this compact collar and the domain margins are uniform across the finite phase system; its entire circle of supports is not put in one pointed cone. Thus the entire intersection over the inner endpoint domain is inside a fixed compact intermediate collar with a positive source-boundary margin. Use one collar \(\eta\), equal to one near this entire closed intersection and compactly supported in that actual source. The controlled localization is
+
+\[
+\begin{gathered}
+L_\eta(a_0,b_0)=\\
+\left(\begin{gathered}
+\eta a_0+\delta\eta\wedge b_0,\\
+\eta b_0
+\end{gathered}\right).
+\end{gathered}
+\tag{IM.7}
+\]
+
+The first coefficient is a genuine whole-domain cochain: \(\delta\eta\) is supported away from the closed intersection, where \(b_0\) is smooth. The second remains a complement coefficient. On the output complement the source intersection is empty, since the cone is stable under addition. There \(\eta b_0\) is properly supported over the output and may be integrated on a compact smooth intermediate fiber. At an individual kernel support face the augmented coefficient is already smooth by the subordinate partition; there is no undefined pole evaluation at a ray endpoint.
+
+Apply the actual normalized relative trace
+
+\[
+\begin{gathered}
+(a_0,b_0)\longmapsto\\
+\left(\begin{gathered}
+\operatorname{Tr}_qa_0,\\
+(-1)^N\operatorname{Tr}_{q-1}b_0
+\end{gathered}\right),\\
+\operatorname{Tr}_q=(-1)^{N(q-N)}I_q.
+\end{gathered}
+\tag{IM.8}
+\]
+
+These are the V.4/W.3 chain-map signs; TC.11 is their one-dimensional case. The base-antiholomorphic components remain in IM.7–IM.8; only insufficient fiber-degree terms vanish upon integration. Compact integration of the first component is on the collar-derivative region separated from the source intersection. Compact integration of the second is only on the actual output complement. No complement coefficient is extended across the output support.
+
+![The complete ordinary two-support trace on its actual union complement](assets/infinite-two-support-trace.png)
+
+**Figure IM.3.** The two-pole calibration is [§5.44, TC.1–TC.4](#tc-1-one-coordinate-all-four-source-entries). At \(c=1/8\), the cutoff transition is \(1/64\le|a|\le1/32\), so \(|b|\ge3/32\). The full cube is augmented to \((0,\bar\partial\rho_A f)\) on the union complement and traced to \((0,-\oint f\,da)\) on \(c\ne0\). The central plot is a real parameter slice; the marked joint intersection is excluded. This figure illustrates the earlier complete trace proof used by IM.7–IM.8; it does not introduce a whole-domain pole extension.
+
+Editable SVG · Exact data · Figure source
+
+
+Denote the resulting output relative cycle by \(\mathcal C_i(P,Q)\) at phase \(i\), on the convex support \(\mathcal G_i\). After this output is formed, **literally forget its support** to \(T'_i\) before weights, positive truncations or holomorphic-row normalization. If \(H\subset K\), write \(\mathsf F_{H,K}\) for that chain map. In the full relative cone it is
+
+\[
+\begin{gathered}
+\mathsf F_{H,K}(a,b)=(a,b|_{M\setminus K}),\\
+\mathsf F_{K,L}\mathsf F_{H,K}=\mathsf F_{H,L}.
+\end{gathered}
+\tag{IM.21}
+\]
+
+It keeps the whole-domain entry, restricts every complement entry and commutes with the total differential. When covers differ, use the actual V.6 refinement/augmentation roof with all entries, and then the IG.6 standard cover of \(T'_i\). On a neighboring pair first use its pointed common convex support and then \(T'_{i,i+1}\). The same restrictions supply the comparison maps from either phase cube to that neighboring standard cube. This is a map of actual complexes; no support-forgetting injectivity is claimed. The normalization bridge is exactly
+
+\[
+\begin{gathered}
+\mathcal G_i\longrightarrow T'_i
+\longrightarrow\mathcal G'_i,\\
+\mathcal G_{i,i+1}\longrightarrow T'_{i,i+1}\\
+\longrightarrow\mathcal G'_{i,i+1}.
+\end{gathered}
+\tag{IM.22}
+\]
+
+All face exhaustion and bounded-normalization arguments below take place on the standard \(T'\) cubes. The output cycle represents exactly the canonical unshifted cup, controlled support/excision and shifted normalized trace. This is a construction by the actual R/V augmentation roofs, not an operator evaluation. The ordinary subring calibration is TC.15; the earlier finite pole/log calibration is CP.1–CP.6/NL. The same source collar and finite partitions work for the entire input family.
+
+All fixed output derivatives of these cochains depend continuously on the kernel coefficients on compact subsets of their **actual** holomorphic face domains. To verify this, on any compact source union-complement set a subordinate partition has finitely many terms supported on compact subsets of the relevant face opens. Kernel convergence and all fixed derivatives hold there by IK.5. The source total coefficient in IM.7 uses only the compact collar-derivative region. On a compact output-complement set, properness gives a compact union-complement fiber family, so differentiation under the fixed compact smooth integration gives the same bounds. These statements cover all individual ray/spatial endpoints by the full augmentation, rather than integrating a singular raw product across them.
+
+#### IM.3. Actual angular overlap primitives for the product
+
+A branch change of the kernel \(P\) is its explicit normal-face boundary \(d\beta_P\), where \(\beta_P\) is AN.11 with the full normally convergent \(G_P\). The harmonic-number holomorphic part is another explicit normal-face boundary. The same holds for \(Q,R\), with their exact source factorial signs. These are actual common-domain cochains; no supported logarithmic term is discarded.
+
+For a bilinear unshifted cup \(\mu\), closed degree-\(N\) inputs satisfy
+
+\[
+\begin{gathered}
+\mu\left(\begin{gathered}P+d\beta_P,\\Q+d\beta_Q\end{gathered}\right)\\
+-\mu(P,Q)\\
+=d\left\{\begin{gathered}
+\mu(\beta_P,Q)\\
++\!(-1)^N\mu\left(\begin{gathered}P\\+d\beta_P,\\\beta_Q\end{gathered}\right)
+\end{gathered}\right\}.
+\end{gathered}
+\tag{IM.9}
+\]
+
+This is the ordinary differential Leibniz rule with \(|\beta_P|=N-1\). A trace of degree \(-N\) obeys \(d\operatorname{Tr}=(-1)^N\operatorname{Tr}d\), so the corresponding output primitive is \((-1)^N\) times the trace of the braces. Append the \(-\beta_R\) term when subtracting the output kernel.
+
+All covers and support enlargements may be refined to the finite neighboring-phase common cover of IG.3. If two augmentation partitions differ, apply V.6's finite Čech row contraction to their difference: kill its lowest nonzero row, subtract its total boundary, and continue through the finite Dolbeault degrees. This explicitly constructs the comparison homotopy. Each step is multiplication by the fixed partition, restriction and a fixed derivative. Collar changes are the exact IM.7 homotopy: for \(\eta'-\eta\), the primitive is \(((\eta'-\eta)b_0,0)\), extended where that difference is supported away from the intersection. Its differential is the difference of the localized cochains. A common properly supported collar may instead be used throughout, eliminating that change. The resulting finite comparison homotopies include every complement component and all shift signs IM.8.
+
+Consequently the phase cycles
+
+\[
+\begin{gathered}
+D_i=\mathsf F_{\mathcal G_i,T'_i}\mathcal C_i(P,Q)\\
+-\kappa'_i(R)
+\end{gathered}
+\tag{IM.10}
+\]
+
+have actual neighboring overlap primitives \(T_i\) on the standard common support \(T'_{i,i+1}\) and common domain. Here \(\kappa'_i(R)\) is the forward kernel supported on \(T'_i\), or equivalently its original forward class mapped through \(T_{\lambda,B,\phi_i}\subset\mathcal G_i\subset T'_i\). Restrictions to the neighboring support are understood in every difference. The degree-zero chain maps IM.21 add no trace, shift, or coefficient-frame sign. They are the finite cochains just constructed from IM.9, the branch/harmonic face primitives, and the cover/collar homotopies. Their construction consists of fixed finite operations and compact traces on actual common domains, so the continuity statement of IM.2 applies to them too. This supplies the strict chain-level angular data needed for normalization; it is not an assertion of equality of abstract phase classes without witnesses.
+
+#### IM.4. Full positive truncations, all infinite contractions and actual tails
+
+Let \(P^{[J]}\) retain every negative homogeneous coefficient of \(P\) and every nonnegative coefficient through \(J\); define \(Q^{[J]}\) similarly. They are actual finite-order symbols, retaining **all** spatial Taylor indices, on the same coefficient product. Their input bounds have the same constants as the full symbols. Let \(R^{[J]}=P^{[J]}\circ Q^{[J]}\).
+
+The complete fixed-degree contraction and its derivative tails are the IK.2–IK.3 estimates. To make their uniform use explicit, the absolute scalar majorant is
+
+\[
+\begin{gathered}
+S_\ell(E,D,L)=\\
+\sum_{J_+-M_--m=\ell}
+\begin{gathered}
+E^{J_+}D^{M_-}L^m\\
+\frac{M_-!m!}{J_+!},
+\end{gathered}\\
+E(D+L)<1.
+\end{gathered}
+\tag{IM.11}
+\]
+
+All base/covariable margins and constants are chosen once. For \(\ell\ge0\) its bound is
+\(E^\ell/[\ell!(1-ED)(1-EL)]\); for \(\ell=-n<0\) it is
+\(n!(D+L)^n/[1-E(D+L)]^{n+1}\). Its positive-degree cutoff tails are geometric, and its negative-degree cutoff tails are the finite derivatives of \(a^K/(1-a)\), \(a=E(D+L)<1\). Thus truncating one positive input index gives a tail tending to zero at every fixed output degree, uniformly on the common coefficient compact. Cauchy on one enlargement gives every fixed base and normalized-covariable derivative tail. The arbitrary input every-\(\varepsilon\) choice makes \(E\) as small as required for any output positive bound. Negative output uses one fixed such choice. None of these constants depends on the truncation index.
+
+It follows that \(R^{[J]}_\ell\to R_\ell\) normally for each \(\ell\), while **all** \(R^{[J]}\) have one uniform factorial negative bound and the uniform every-\(\varepsilon\) positive bounds. Spatial coefficient extraction on the common enlarged \(z\)-polydisc has one Cauchy cost \(r_z^{-|\beta|}\). The full forward-kernel bounds IK.18–IK.21 therefore dominate every \(K_{R^{[J]}}\) by the same summable series on each permitted compact complement. This includes the mixed positive-homogeneous/negative-normal terms \(j=|\beta|-n-1\ge0\); their majorant is the exact rational series \((1-x-q)^{-2}\), with one fixed strict choice \(x+q<1\). Termwise coefficient convergence and the common dominator give
+
+\[
+\begin{gathered}
+K_{P^{[J]}}\to K_P,\\
+
+ K_{Q^{[J]}}\to K_Q,\\
+
+ K_{R^{[J]}}\to K_R
+\end{gathered}
+\tag{IM.12}
+\]
+
+normally on every actual holomorphic face domain, with every fixed derivative. Fixed derivative tails follow by compact enlargement. The logarithmic branch factors are bounded on the relevant cut compacts; the harmonic-number factors are absorbed by slightly larger strict ratios. Every spatial, homogeneous and contraction index is included. This is convergence of holomorphic complement cochains, not of ordinary diagonal currents.
+
+IM.2–IM.3 now gives convergence of the entire output/overlap cochain family
+\(D_i^{[J]},T_i^{[J]}\) to \(D_i,T_i\) on every compact actual domain, including their differentials. These cycles and their overlap primitives have already been mapped by IM.21 into the fixed standard T′ phase/neighbor cubes. Fit this **whole** family to the one-time weights and operators IM.1–IM.6 on exactly those IG.7–IG.8 face domains, with λ′ and λ′+h/2 in place of the initial angles. No acyclicity for an unspecified convex-cone cover is being used. Their projections and their actual primitives then converge in those fixed weighted graph models. This is why an arbitrary sequence of high-order finite current primitives is unnecessary and is not summed.
+
+#### IM.5. A literal product-difference primitive, without a closed-image assumption
+
+Normalize each phase cycle on its standard T′_i cube using IM.6; every support/domain restriction was fixed in IM.19–IM.22 before this step. Since its degree is \(N\), its holomorphic cube projection has only the top holomorphic row entry. Write it as \(f_i\) in the physical kernel coordinate of IG.2. The primitive \(\mathsf H_iD_i\) is an actual relative-cube primitive for the difference between \(D_i\) and that top entry.
+
+On a neighboring overlap, first restrict both phase cubes and their cochains to the fixed standard T′_{i,i+1} cube, with its IG.7–IG.8 exhaustions and common weights. There
+\(D_i-D_{i+1}=dT_i\). Subtract the two normalization primitives and project on the common holomorphic overlap cube. Because that projection is a chain map and is the identity on holomorphic rows, we obtain the actual holomorphic face primitive
+
+\[
+\begin{gathered}
+t_i=\mathsf P_{i,i+1}
+\left\{\begin{gathered}
+T_i-\mathsf H_iD_i\\
++\mathsf H_{i+1}D_{i+1}
+\end{gathered}\right\},\\
+f_i-f_{i+1}=d_Ct_i.
+\end{gathered}
+\tag{IM.13}
+\]
+
+Apply the finite negative spatial Cauchy projections to these top and face entries. They kill every spatial-face coefficient and produce the normal-zero correction \(H_i\) on the whole common thick domain. Glue their lifted functions with cumulative corrections exactly as IG.12–IG.13. Finally AN.2–AN.4 gives a normally convergent pole/log pair \(\nu(D)=(K_0,G)\), with every coefficient bound on one product. All these steps are finite sums, the bounded operators IM.5 and actual compact Cauchy integrals. Thus
+
+\[
+ \nu(D^{[J]})\longrightarrow\nu(D)
+ \tag{IM.14}
+\]
+
+normally on all actual compact pole/log domains, including the normal-zero face domains for \(G\). No unspecified inverse or quotient topology is used.
+
+For each finite-order pair the earlier CP.1–CP.6/NL proof says that \(D^{[J]}\) is zero as a canonical kernel germ, with its full principal-log correction. IG.4's geometric zero test therefore gives \(\nu(D^{[J]})=0\) as a germ. These normalized functions are holomorphic on the same connected actual domains chosen above; vanishing on a smaller nonempty neighborhood implies vanishing throughout by the identity theorem. Hence every term on the left of IM.14 is the literal zero pair. It follows that \(\nu(D)=0\). This passage uses a proved bounded normalization and zero detector, rather than assuming that the image of a boundary operator is closed or that cohomology commutes with an unspecified limit.
+
+Here is the resulting literal boundary. For each phase, decompose its projected top entry by the actual AN.6 spatial Cauchy projections. Let \(S_{i,k}\) be its spatial-face terms, and let \(C_i\) be the finite cumulative normal-zero correction in IG.3. Since its normalized pole/log pair is zero, its glued fully spatial-negative function has only the nonnegative normal part \(J\). Thus its fully negative spatial top entry is \(J-C_i\), holomorphic on the normal face. With \(r_N=(-1)^{N(N-1)/2}\), define the actual face primitive in **full-cone Čech coordinates** by
+
+\[
+\begin{gathered}
+c_{i,\widehat0}=r_N(J-C_i),\\
+
+ c_{i,\widehat k}=r_N(-1)^kS_{i,k}\\
+(1\le k\le d).
+\end{gathered}
+\tag{IM.15}
+\]
+
+For \(N\ge2\), these are Čech degree \(N-2\) complement coordinates. Their V.15 conversion to the ordinary relative cube contributes \((-1)^{N-2}\); the physical top function \(f_i\) has full-cone top coordinate \(-r_Nf_i\), whose Čech degree \(N-1\) conversion contributes \((-1)^{N-1}\) and yields the calibrated ordinary top \(r_N(-1)^Nf_i\). Thus IM.15 and its differential use the same exact frame/shift convention as IG.2/V.17. For \(N=1\), there is no degree-minus-one complement face; the normal-face term instead uses the whole-domain primitive of AN.3. This exception retains the TC one-dimensional roof and its negative relative trace. These functions are obtained by the displayed Cauchy integral projections, on their actual omitted-coordinate faces; all fixed derivatives and tails were controlled in IM.12–IM.14. Add this face primitive to the actual \(\mathsf H_iD_i\), with the cone-to-cube identification V.15. The result \(B_{P,Q,i}\) satisfies
+
+\[
+\begin{gathered}
+dB_{P,Q,i}\\
+=D_i=\mathsf F_{\mathcal G_i,T'_i}\mathcal C_i(P,Q)\\
+-\kappa'_i(P\circ Q).
+\end{gathered}
+\tag{IM.16}
+\]
+
+This is a literal relative-cone identity on \(T'_i\), with all total and complement entries retained. Its Dolbeault primitives are locally \(L^2\) on exactly those standard-cube face domains, and its holomorphic face primitives are normally convergent there. None is an ordinary distribution extension of the positive-head singularity. The boundary is **not** asserted on the initial \(\mathcal G_i\). Map it forward once more to the specified full-dimensional convex support \(\mathcal G'_i\):
+
+\[
+\begin{gathered}
+d\mathsf F_{T'_i,\mathcal G'_i}B_{P,Q,i}\\
+=\mathsf F_{\mathcal G_i,\mathcal G'_i}\mathcal C_i(P,Q)\\
+-\mathsf F_{T'_i,\mathcal G'_i}\kappa'_i(P\circ Q).
+\end{gathered}
+\tag{IM.23}
+\]
+
+The analogous identity holds on \(\mathcal G'_{i,i+1}\) for the neighboring comparisons. Every final support remains admissible by IM.20. The collar was selected for these final cones as well. Naturality of the entire cup/support/excision/trace roof identifies the first class with the canonical product of the input classes mapped to \(\mathcal G'_i\): the restriction maps commute with cup, their full augmentation roofs commute after the finite partition homotopies of IM.3, and compact trace commutes with restriction. If a source-support enlargement is used before cup, the same collar is one near its enlarged intersection; its excision comparison is therefore valid on the same proper family. Consequently IM.23 gives equality of the full canonical thick-cone classes on this exact common **final** support:
+
+\[
+ \kappa(P)*\kappa(Q)=\kappa(P\circ Q).
+ \tag{IM.17}
+\]
+
+The original holomorphic harmonic-number normalization and every branch change are among the explicit normal-face primitives used in IM.3/IM.15. Consequently IM.16 does not remove a supported principal-log correction by formal differentiation or by evaluation on solutions. Finite-subring calibration is the earlier CP/NL proof; TC supplies the corrected ordinary all-dimensional trace and line signs. The infinite correction is the full-cochain primitive IM.16.
+
+#### IM.6. Unital ring, triple products, coordinates, and finite diagrams
+
+The diagonal unit is the exact finite calibrated unit. IM.17 and the actual coefficient associativity IK.3 make \(\kappa\) a unital ring map for the full class. IG.3–IG.4 makes it the geometric sheaf identification; hence the ring product is the intrinsic canonical product on the source-defined projectivized diagonal sheaf. Arbitrary nonlinear transition maps IG.5 are now multiplicative because the actual pair pullback, unshifted cup and normalized proper trace commute with that coordinate change. V.4's determinant/real-orientation computation applies on the same compact collar integrations, and IG.15 supplies the common support margins.
+
+For a triple product use one pointed full-dimensional cone at each fixed phase for all three kernels and their finitely many intermediate products; use a separate pointed midpoint cone on each neighboring overlap. Choose λ,λ′,B,B′ once for that finite list as in IM.18–IM.22. Repeat the literal normalization bridge and final-support map there. Only the compact intermediate collar and outer-source/inner-endpoint margins are common across the finite phase system; there is no pointed cone containing the full phase circle. Nonnegative normal lengths add, bounding both intermediate points in one compact family inside the actual coefficient domain. The complete triple contraction majorant is the IK.2 estimate with three homogeneous inputs and all three multiorders; its factorial factor is bounded by \(M_-!m!/J_+!\), as proved there. It gives absolute convergence, the factorial/every-\(\varepsilon\) output bounds and every fixed derivative tail. The corresponding finite full-cube cups and two compact proper traces have the same signs by V.12–V.14. Their order is immaterial by compact Fubini after the specified shift/line reordering. Alternatively both are the same actual coefficient triple product under the injective identification IG.4. No formal positive-degree completion occurs in either argument.
+
+For any finite list of full symbols, matrices, relations, idempotents, maps, inverses and homotopies, take the finite intersection of their actual coefficient domains and the minimum of their finitely many Cauchy margins. Choose common negative and spatial constants and a finite phase cover. At each phase choose one common cone for that finite symbol/product list, and on each neighboring overlap choose its separate pointed cone, retaining 2λ′+h<π. Choose the standard T′ normalization cubes, the final convex G′ supports and one compact proper collar for the resulting finite system before performing any infinite contraction. The proof above fits all their finitely many product/overlap cochains and their entire positive-truncation families into one fixed finite weighted model. Every relation then holds on a single smaller actual neighborhood. There is no shrinking for each positive degree, spatial Taylor index or relation coefficient.
+
+![Controlled holomorphic tails and the finite full-cochain product primitive](assets/infinite-holomorphic-product.png)
+
+**Figure IM.1.** Left: exact samples \(w=1/k\), \(2\le k\le12\), of \(2\pi|K(w)|=k e^k\) for \(P=\sum_{j\ge0}\partial_t^j/(j!)^2\), and finite positive cutoffs \(J=1,3,8\), whose scaled values are the exact rational numbers \(k\sum_{j=0}^Jk^j/j!\). These are punctured-complement samples, not current boundary values. Center: for \(N=2\), the output cube has cardinalities \(r=0,1,2\), all ambient Dolbeault degrees \(q=0,\ldots,4\), and the finite inverse \(A=1-d_hh_v+(d_hh_v)^2\); no infinite homotopy series is drawn or used. Right: IM.13–IM.16 retains the full output and overlap cochains, proves the zero pair by bounded normalization, and constructs its actual relative-cone primitive. The editable figure, exact data and reproducible source are linked below. The full proof includes every normal dimension, every spatial Taylor index, both growth regimes and every fixed derivative tail.
+
+The right panel displays IM.16 on the standard support \(T'_i\), with the actual \(\mathsf F_{\mathcal G_i,T'_i}\) support map and \(\kappa'_i\); its next arrow is IM.23 on final \(\mathcal G'_i\).
+
+Editable SVG · Exact data · Figure source
+
+
+This proves the full coefficient/geometric-kernel ring, its canonical mixed product, unit, associativity, nonlinear coordinate compatibility and ordinary zero-section restriction. A particular all-degree module-derived application still requires the exact cone-open, round-domain, common-collar and output-support hypotheses of §5.43. The matrix relation theorem, right flatness, extension faithfulness and unit injectivity, ordinary and mixed scalar change, infinite Späth division and whole-germ reconstruction remain to be proved. Moving-sector propagation, purity, arbitrary-section separation, special action and monodromy stability, full infinite-order D-type linearity and faithful D-type embedding remain separate. Finite poles, intrinsic and half order, full C1 and characteristic cutoff, initial generators and arbitrary analytic proper regularity also remain required. Generalized and nonactual central characters, other regular complex characters, singular and parabolic blocks, full IC/Hecke/KL, GL14/GL16, stack/ind/restricted local systems, affine/critical/factorization and every other unresolved mathematical assertion retain their full scope.
+
+
+### 5.46. Finite infinite-order diagrams on actual derived support modules
+
+We realize any specified finite full-symbol diagram, including its product, zero, idempotent, differential, map and contraction identities, in one canonical ring on one newly chosen actual domain. Under the checked final-cone and support hypotheses, that ring acts on a strict module-derived support object in every degree. Supplied bounded finite-projective contractions transfer by the explicit tensor and Hom formulas below.
+
+The complete geometric ring and mixed product are [§5.45, IG.1–IG.5 and IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product). The entire earlier [§5.43, DL.1–DL.9, DLG.1–DLG.7 and DLH.1–DLH.4](#5-43-the-canonical-all-degree-action-and-its-derived-module-structure) supplies the full relative-kernel action, analytic concentration and genuine module-derived construction; the [§5.44 coefficient and trace proofs](#5-44-full-homogeneous-coefficients-and-ordinary-infinite-order-kernels) retain every homogeneous/spatial index and exact sign. A finite diagram uses one common domain; the whole symbol stalk need not be represented on a preassigned domain. Arbitrary-module flatness and faithfulness require further proofs.
+
+The freely accessible human target is [Micro-hyperbolic systems, Corollary3.2.5](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/Microhyp.pdf). Every mathematical premise is proved here or in the complete earlier lesson proofs linked above.
+
+#### ID.1. The final cone is precisely an admitted full thick cone
+
+Fix any finite list of full infinite-order symbol germs, including all entries, products, idempotents, differentials, maps, inverses and homotopies in a specified finite diagram. Fix a nonzero real cotangent phase over its normalized projective chart. Translate the base point to zero and rotate the complex time coordinate so that this phase is zero. The pair pullback and input top-form determinant in IG.5/IM.6 transport the ring and its products, so this coordinate normalization preserves the canonical coefficient-frame conventions.
+
+IG/IM supplies one actual product of coefficient domains, one common phase and neighboring support system, and literal finite product/zero witnesses before any infinite index is summed. At the chosen phase its final support is
+
+\[
+\begin{gathered}
+G=\left\{\begin{gathered}-\Re w=l\ge0,\\
+|\Im w|\le\epsilon l,\\
+|\zeta_j|\le A_jl\end{gathered}\right\},\\
+\epsilon=\tan\lambda'>0,\\
+A_j=B'_j/\cos\lambda'>0.
+\end{gathered}
+\tag{ID.1}
+\]
+
+This is exactly the full-dimensional cone of §5.43, (DL.11). In particular, no line support with empty ordinary interior is used. The cone is closed and convex by the triangle inequality in each constraint. If both a vector and its negative belong, their real-time lengths are zero, so every coordinate is zero; it is pointed. The strict inequalities hold at \(w=-1,\zeta=0\), giving ordinary interior. Put
+
+\[
+\begin{gathered}
+K_G=\left(1+\epsilon^2+\sum_jA_j^2\right)^{1/2}.\\
+g\in G\Longrightarrow |g|\le K_G[-\Re g_t].
+\end{gathered}
+\tag{ID.2}
+\]
+
+The assertion follows by squaring each displayed coordinate bound and adding. The empty spatial list, hence normal dimension one, is allowed. For a common neighboring cone use its own midpoint coordinates and its own constants \(\epsilon=\tan(\lambda'+h/2)\), \(A_j=B'_j/\cos(\lambda'+h/2)\); these are positive and finite by IM.19. A finite comparison uses the finite maximum of these constants. It does not put all rotated phases in one pointed cone.
+
+#### ID.2. One actual round coefficient domain and one ring for the finite diagram
+
+In these coordinates take
+
+\[
+\begin{gathered}
+D_R=(R e_t+\operatorname{int}G)\\
+\cap(-R e_t-\operatorname{int}G),\\ R>0.
+\end{gathered}
+\tag{ID.3}
+\]
+
+Here \(e_t\) is the positive real time unit vector. Explicitly \(|\Re t|<R\), and the transverse bounds are \(|\Im t|<\epsilon(R-|\Re t|)\), \(|x_j|<A_j(R-|\Re t|)\). Thus it contains zero and is bounded by \(|u|<K_GR\). If \(u,z\in D_R\) and \(v-u,z-v\in G\), then \(v\) lies in its first open cone by addition to \(u\), and in its second by subtraction from \(z\). Hence \(v\in D_R\): this is the required roundness, not an assertion about ordinary Euclidean balls.
+
+Choose the outer base/normal coefficient product first. A sufficiently small \(R\) puts \(\overline{D_R}\) inside the base coefficient domain and makes every difference of two points of \(D_R\) fit strictly inside every selected normal source radius: its time modulus is at most \(2R\sqrt{1+\epsilon^2}\) and its spatial moduli at most \(2A_jR\). Take the minimum of finitely many strict upper bounds on \(R\). The choice depends on this finite symbol/witness list, not on any homogeneous or spatial coefficient index.
+
+Let \(\mathcal R=E(G;D_R)\) be the whole canonical degree-\(N\) kernel cohomology ring of §5.43. Each full symbol's forward holomorphic relative representative first forgets support from its standard \(T'\) to this final \(G\), then restricts to \(D_R\times D_R\). These are literal relative-complex maps. All complement entries remain on their actual complements; no infinite positive head is extended as an ordinary current.
+
+The full product primitive IM.16 is on \(T'\); IM.23 already maps it forward to the final \(G\). Its restriction to \(D_R\times D_R\) therefore remains a literal boundary there. The resulting class is the product in \(\mathcal R\), not a different outer-domain product: for compact endpoint sets, the kernel-supported intermediate points belong to \(D_R\) by roundness. Nonnegative lengths add, so (ID.2) bounds those points. The closed intersection is consequently compact inside the actual intermediate domain. The controlled excision/collar comparison of DLG.3–DLG.5 restricts the outer cup/trace roof to this one proper family. Its finite partition homotopies keep every complement entry and its normalized trace sign. Thus the restricted IM.23 compares exactly the inner-domain canonical product.
+
+IG.4 supplies actual finite zero witnesses for germ identities. IM.6 places their finite union and every selected product comparison on one later support/domain system. Reducing \(R\) there, as above, realizes every specified relation in the **same** \(\mathcal R\). The diagonal class is its genuine unit by the exact finite-subring calibration and DLG.5. Finite idempotents, complexes and their maps therefore become actual finite \(\mathcal R\)-diagrams with all their equations holding. This neither requires one fixed domain for every possible germ nor promotes coefficient-wise vanishing to an unwitnessed common-domain relation.
+
+#### ID.3. Verify the input cone-open premise, rather than inherit it silently
+
+Choose input opens \(\Omega_0\subset\Omega_1\) that are \(G\)-open for the **final** (ID.1) cone, and put \(S=\Omega_1\setminus\Omega_0\). Require its ordinary closure to lie in a sufficiently small output neighborhood \(U\Subset D_R\). Being open for an earlier smaller cone alone is not this premise.
+
+There is a concrete test for the usual directional inputs. Write \(y=(\Im t,x)\), let \(g(y)\) have Lipschitz constant \(L\) in the actual transverse Euclidean metric, and put
+
+\[
+\begin{gathered}
+M_G=\left(\epsilon^2+\sum_jA_j^2\right)^{1/2},\\
+\Omega_g=\{-\Re t>g(y)\},\\ LM_G<1.
+\end{gathered}
+\tag{ID.4}
+\]
+
+For \(a\in G\), write \(\sigma=-\Re a_t\ge0\). Its transverse displacement has norm at most \(M_G\sigma\). Then
+
+\[
+\begin{gathered}
+-\Re(t+a_t)-g(y+a_y)\\
+\ge -\Re t-g(y)\\
++(1-LM_G)\sigma>0.
+\end{gathered}
+\tag{ID.5}
+\]
+
+So \(\Omega_g+G\subset\Omega_g\). Finite intersections/unions of such invariant opens are invariant, as is every strict lower real-time halfspace. Alternatively the admitted basis \(x+a e_t+\operatorname{int}G\) is invariant by convex-cone addition. These furnish actual input opens whenever their relative support satisfies the stated compact output condition. This calculation does not assert that every preexisting directional input passes the enlarged constants.
+
+Choose \(U\subset B(0,r)\) and \(a>r\) so small that
+
+\[
+ \overline{(U+G)\cap\{\Re t\ge-a\}}\Subset D_R.
+ \tag{ID.6}
+\]
+
+This is an actual choice. If \(v=u+g\), \(|u|<r\), and \(\Re v_t\ge-a\), then \(-\Re g_t\le a+r\) and \(|v|\le r+K_G(a+r)\). An ordinary ball about zero lies compactly inside \(D_R\); first fix its radius, then choose \(r,a\) with that last bound smaller. All finitely many cones in an admissible comparison can use their largest \(K_G\). Intersecting both input opens with \(U+G\) leaves \(S\) unchanged and gives the exact supported object by the proved open-excision map of DL.7/DLG.7. From now on \(\Omega=\Omega_1\subset U+G\).
+
+#### ID.4. Actual properness and the support-to-output inclusions
+
+Set \(\omega=\{\Re t<-a\}\), \(S_*=\Omega\setminus\omega\). Both \(S\) and \(S_*\) are closed in \(\Omega_G\), and \(S\subset S_*\) because \(\omega\cap U=\varnothing\). Condition (ID.6) puts the ordinary closure of \(S_*\) compactly inside \(D_R\).
+
+Let \(K\Subset\Omega\) be a compact output family. Its relevant auxiliary inputs belong to
+
+\[
+ (K+G)\cap\{\Re t\ge-a\}.
+ \tag{ID.7}
+\]
+
+This set is bounded by (ID.2). It is closed: a convergent sequence has a subsequence of its \(K\)-coordinates converging in \(K\), and the corresponding differences converge in the closed cone. It lies in \(\Omega\) because \(\Omega+G\subset\Omega\), and it lies inside the coefficient domain by (ID.6). Thus it is compact **inside** the actual source. Intersecting it with the relative closed support \(S_*\), or \(S\), preserves that compactness. This proves properness for the canonical action, including the source boundary condition.
+
+The support-to-output premise is checked on the actual action source. Define \(A_G=\left\{\begin{gathered}(u,v)\in(\Omega\cap D_R)\\\times(\Omega\cap D_R):v-u\in G\end{gathered}\right\}\), with \(p_1\) and \(p_2\) the restrictions of the output and input projections. If an output \(u\in\Omega_0\), every supported input \(v\in u+G\) lies in \(\Omega_0\) and cannot lie in \(S\). Every output in this relation already lies in \(\Omega\); hence an output paired with an input in \(S\) lies in \(\Omega\setminus\Omega_0=S\). Therefore
+
+\[
+ p_1(A_G\cap p_2^{-1}S)\subset S.
+ \tag{ID.8}
+\]
+
+The same argument with the invariant halfspace \(\omega\) gives the corresponding inclusion for \(S_*\). The collar construction of DLG.4, applied to these compact source families, supplies actual properly supported cutoffs equal to one near the whole intersections. Its finite-output partition permits one collar for all entries of the specified finite diagram. Derivative-collar terms are away from the closed intersection; their complement coefficients are therefore defined there. No unrestricted complement function is extended over a kernel support.
+
+If one performs several consecutive products, their nonnegative lengths add to the endpoint length. All intermediate points stay in \(D_R\) by roundness and satisfy the same bounds. One final collar can be chosen for the whole finite intersection. DLG.5's projection formula and eight-entry triple comparison then apply literally. The essential positive head has remained a holomorphic complement coefficient throughout.
+
+#### ID.5. The genuine module-derived object and every-degree action
+
+All hypotheses of the earlier complete DL/DLG construction are now checked for the actual full infinite symbols realized in \(\mathcal R\). Its exact analytic DLH existence and cone-topology concentration give
+
+\[
+\begin{gathered}
+\mathcal F=H^1_{S_*}(q_{G*}\mathcal O_\Omega),\\
+R\Gamma_{S_*}(q_{G*}\mathcal O_\Omega)\\
+\simeq\mathcal F[-1].
+\end{gathered}
+\tag{ID.9}
+\]
+
+DLG.6–DLG.7 constructs a **strict** sheaf of left \(\mathcal R\)-modules \(\mathcal F\) using the full arbitrary-relative-kernel cup, complete cube augmentation, controlled proper excision and normalized trace. Its unit and multiplication identities are ordinary sheaf identities. These earlier proofs act on the whole kernel ring; the present full symbols require no supported-current shortcut or new growth premise.
+
+Use its actual module-injective resolution \(J^\bullet_\mathcal R(\mathcal F)\), or its common natural vector-injective model endowed with this strict action. Then
+
+\[
+\begin{gathered}
+\mathcal Q_\mathcal R=\\
+\Gamma_SJ^\bullet_\mathcal R(\mathcal F)[-1]\\
+\in D(\mathcal R\operatorname{-Mod}(\Omega_G)).
+\end{gathered}
+\tag{ID.10}
+\]
+
+The complete DL.6/DLG.7 concentration roof identifies its underlying vector-derived object with \(R\Gamma_S(q_{G*}\mathcal O_\Omega)\), and identifies its operation by each \(r\in\mathcal R\) with the original canonical whole-relative-kernel operation **in every degree**. The proof uses the literal equality of support functors \(\Gamma_S\Gamma_{S_*}=\Gamma_S\) on injectives, the full finite support cube and the same proper collar. Thus (ID.10) is an actual object in the module-derived category, not an arbitrarily chosen collection of chain lifts of vector-derived endomorphisms.
+
+Apply the actual selected full-symbol classes of ID.2 to this strict module object. Every finite operator relation, matrix identity and composition in the diagram holds there because it holds in the one ring \(\mathcal R\). For a coefficient-domain, cone or auxiliary-halfspace change, use DL.7/DLG.7's actual finite module-derived comparison roofs. A common cone change is admitted only after rechecking ID.3–ID.4 for the common enlarged cone. Under those premises the comparisons commute with the full ring maps and the canonical all-degree action; their successive maps compose because they originate from the same ordinary injective resolution. This supplies the actual finite full-infinite-order germ diagrams.
+
+#### ID.6. Finite projectives, idempotents and contractions
+
+For a bounded exact complex of finite projectives over the full symbol-germ ring, start with its highest nonzero differential onto the last term. Projectivity splits that surjection. Its kernel is a direct summand of the preceding projective term, hence projective; descend finitely. The resulting contraction \(h\) satisfies \(dh+hd=1\). This is the complete algebraic splitting of DL.8; it uses neither Noetherianity of the infinite ring nor its flatness over the finite ring.
+
+Write each projective term as a split idempotent of a finite free term. Its differentials, maps, idempotents and the contraction have finitely many full-symbol entries. Include all their equations in the finite list of ID.1–ID.2. Their images in \(\mathcal R\) form the actual realized complex \(P^\bullet_\mathcal R\), with the realized idempotents, maps and contraction. This is a finite-diagram realization; it is not a claim that arbitrary infinite-ring modules extend underived or that one preassigned domain receives the entire symbol stalk.
+
+For right projective terms, the actual tensor totalization with (ID.10) has
+
+\[
+\begin{gathered}
+d(p\otimes q)=\\
+d_Pp\otimes q+(-1)^i p\otimes d_Qq,\\
+H=h\otimes1,\\dH+Hd=1\qquad(p\in P^i).
+\end{gathered}
+\tag{ID.11}
+\]
+
+The two mixed terms cancel with signs \((-1)^{i-1}+(-1)^i=0\). For left projective terms and a degree-\(k\) Hom element,
+
+\[
+\begin{gathered}
+d\phi=d_Q\phi-(-1)^k\phi d_P,\\
+H\phi=(-1)^k\phi h,\\ dH+Hd=1.
+\end{gathered}
+\tag{ID.12}
+\]
+
+Expanding gives cancellation of \(d_Q\phi h\) with signs \((-1)^k+(-1)^{k+1}\), leaving \(\phi(hd_P+d_Ph)=\phi\). Restrict these formulas through the split idempotents. All sums in the projective direction are finite even if the support resolution is unbounded above. The exact finite-column filtration of DL.8 proves that these projective tensor/Hom complexes compute the corresponding derived models. The contraction therefore transfers in the actual module-derived category with all degree, idempotent and map identities intact.
+
+This proves finite full-infinite-order instantiation under the checked geometric hypotheses. The general matrix relation criterion, proper-ideal detection, arbitrary-module unit injectivity, ordinary/mixed scalar-change flatness, infinite Späth division/reconstruction, propagation/purity/separation, D-type/C1/half-order/initial generators, analytic proper regularity and every other unresolved programme obligation require their own complete proofs.
+
+![One actual round-domain margin and the strict module-derived mechanism](assets/full-infinite-derived-instantiation.png)
+
+**Figure ID.1.** Exact normal-dimension-two example at one real phase: \(\lambda'=\pi/4\), \(B'=3/2\), so \(\epsilon=1\), \(A=3/\sqrt2\), \(K_G=\sqrt{13/2}\). The left panel is only the real slice \(\Im t=\Im x=0\); the full domain has the complex-norm inequalities of ID.2. Here \(R=1/32\), \(r=1/1024\), \(a=1/512\), and the auxiliary closure has norm at most \((1+3\sqrt{13/2})/1024<1/(32\sqrt2)\). The open complex ball of the latter radius lies in \(D_R\) because \(|\Re t|+|\Im t|\le\sqrt2|u|\) and \(|\Re t|+|x|/A\le\sqrt{1+A^{-2}}|u|<\sqrt2|u|\); its dashed boundary is excluded. The difference-time bound \(\sqrt2/16\), spatial bound \(3/(16\sqrt2)\), and base bound \(\sqrt{13/2}/32\) are all strictly below the illustrative common outer coefficient radius \(1/4\). With \(L=1/8\), the actual directional condition is \(LM_G=\sqrt{11/2}/8<1\). The right panel constructs a strict whole-\(\mathcal R\) action before the module-derived support object, retaining its shift and finite contraction maps. Exact general proof: ID.1–ID.6 and the named earlier DL/DLG/DLH proofs. Free human target: [Micro-hyperbolic systems, Corollary3.2.5](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/Microhyp.pdf).
+
+Editable SVG, exact data, and reproducible plotting source.
 
 
 ## 6. What monodromy misses in the irregular world

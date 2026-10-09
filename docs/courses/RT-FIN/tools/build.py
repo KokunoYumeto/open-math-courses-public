@@ -38,7 +38,6 @@ def build():
         '../../NT-CFT/src/artin-l-functions-conductors-and-discriminants.md':'../NT-CFT/artin-l-functions-conductors-and-discriminants.html',
         '../../NT-CFT/proof-dependencies.html':'../NT-CFT/proof-dependencies.html',
         '../../AG-CA/src/the-nullstellensatz-and-jacobson-rings.md':'../AG-CA/AG-CA-06.html',
-        '../../../human/lebl-basic-analysis/sec_complexexp.html':'../../human/lebl-basic-analysis/sec_complexexp.html',
         '../../../human/linear-algebra-bridges/from-bases-to-projections.html':'../../human/linear-algebra-bridges/from-bases-to-projections.html',
         '../../../human/linear-algebra-bridges/finite-hermitian-spaces.html':'../../human/linear-algebra-bridges/finite-hermitian-spaces.html',
         '../../../human/elementary-analysis/complex-exponential-and-the-circle.html':'../../human/elementary-analysis/complex-exponential-and-the-circle.html',

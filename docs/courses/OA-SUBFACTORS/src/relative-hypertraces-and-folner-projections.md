@@ -4,6 +4,8 @@ A relative hypertrace is a state on a large algebra that commutes with the small
 
 We prove both directions of the relative Følner criterion, including the expectation correction, the choice of one cutoff for a whole finite set, and the normalization of the limiting state. The general trace inequalities are reused from the existing course on injective factors. This criterion is one part of the full strong-amenability argument: central-trace rounding, approximation by bounded relative frames, and the subsequent local and global approximation steps are still needed.
 
+The trace-predual pairing used here is proved for actual integrable operators in [Trace densities and noncommutative integration, TI-05–TI-06](../../OA-MOD/OA-MOD-TI.html#the-trace-pairing-fills-the-whole-predual). It allows faithful normal semifinite traces and arbitrary ambient Hilbert spaces. [TE18, expectations on integrable densities](finite-algebras-and-normal-traces.md#how-the-center-determines-traces-and-densities), identifies the trace-preserving expectation extension and its exact pairing and contraction bounds. The expectation in this criterion still has to satisfy the hypotheses below.
+
 ## The expected semifinite pair
 
 Let \(\mathcal B\) be a von Neumann algebra with faithful normal semifinite trace \(\operatorname{Tr}\). Let \(\mathcal A\subseteq\mathcal B\) be a unital von Neumann subalgebra. Assume that the restriction of the trace to \(\mathcal A\) is semifinite and that

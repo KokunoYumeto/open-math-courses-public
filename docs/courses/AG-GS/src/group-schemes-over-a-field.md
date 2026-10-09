@@ -1201,7 +1201,7 @@ record.
   generated quotient field, and realization of a strict rational group law.
   In A.6 below the characteristic-zero restrictions in A.2, the field-test
   argument in A.9, and the smooth-model step in A.8 are replaced explicitly.
-* [Bootstrap theorem](../../AG-AS/src/bootstrap-theorem.md), Theorem 4.1, is the flat, locally finitely presented equivalence
+* Bootstrap theorem, Theorem 4.1, is the flat, locally finitely presented equivalence
   relation quotient theorem used in the proof of AG-GS-02 Lemma A.7. The
   relation at that point is of finite type, so this is its stated scope.
 * AG-MO, *Limits and Noetherian approximation*, Theorem 1.1, Lemmas 2.1–2.3,

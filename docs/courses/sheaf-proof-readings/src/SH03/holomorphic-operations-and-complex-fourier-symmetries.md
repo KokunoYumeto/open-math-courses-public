@@ -84,7 +84,7 @@ C_f=Y\times_XT^*X,
 
 For \(\Lambda=\operatorname{SS}(G)\), put \(A=f_d^{-1}\Lambda\). It is closed complex analytic. Over a compact cotangent set \(K\subset T^*X\), every point of \(A\) has \(y\) in the compact set \(\operatorname{supp}(G)\cap f^{-1}(\pi K)\); even a zero transpose covector has this support condition. The preimage of \(K\) is a closed subset of the corresponding compact product with \(K\). Thus \(f_\pi|_A\) is proper. This is the full cotangent compactness check, including points at which \(df\) has a kernel.
 
-[Remmert’s proper mapping theorem](https://people.math.harvard.edu/~demarco/Math274/Demailly_ComplexAnalyticDiffGeom.pdf#page=118) makes
+[Demailly’s account of Remmert’s theorem](https://people.math.harvard.edu/~demarco/Math274/Demailly_ComplexAnalyticDiffGeom.pdf#page=118) gives the human source. The [proper-image theorem proved in Weierstrass parametrization and connected regular loci](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/SH-03/src/weierstrass-parametrization-and-connected-regular-loci.md#proper-holomorphic-images) applies to this restricted map and makes
 
 \[
 B=f_\pi f_d^{-1}\Lambda

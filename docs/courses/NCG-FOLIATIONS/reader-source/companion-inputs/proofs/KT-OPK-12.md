@@ -530,6 +530,80 @@ Now compare the cohomology sequences of the base filtration pair and the total-s
 
 The total space has finite CW homotopy type. Indeed it is obtained by finitely many gluings of the products in (6.6) before quotienting. Both fibre and disc are finite CW spaces, their boundary inclusions are cofibrations, and replacing their attaching maps by homotopic cellular maps gives finite CW models of the same homotopy type. Cylinder transport identifies bundles pulled back along homotopy inverses, so the argument also applies to compact Hausdorff bases of finite CW homotopy type.
 
+### Finite CW models: the attachment and homotopy checks
+
+Here are the details behind that total-space assertion. We use [full relative cellular approximation, Theorem B.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-13.html#b-cellular-approximation-with-its-local-proof), not an assumption that an arbitrary attaching map is cellular. Its compact-subcomplex and quotient-product inputs are proved in [the classifying-map chapter, Lemma 7.1 and the following paragraphs](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-03.html#7-the-neighbourhoods-needed-on-a-cw-complex); its homotopy extension input is [the frame-obstruction chapter, Section E, equation (E.1) and its cellwise extension](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-08B.html#e-first-homotopy-homology-and-coherent-simplex-homotopies). These are the full CW statements. Only finite products and attachments are needed in the present argument.
+
+First fix compact Hausdorff spaces \(A,B,Y\), an inclusion \(i:A\hookrightarrow B\), and an attaching map \(a:A\to Y\). Insert an explicit cylinder before making the attachment:
+
+\[
+\begin{gathered}
+\mathcal P(a)=Y\amalg(A\times[0,1])\amalg B\,/\sim,\\
+(x,0)\sim a(x),\qquad (x,1)\sim i(x).
+\end{gathered}
+\]
+
+All maps below are specified on these three pieces and respect the displayed identifications. Their homotopies descend continuously by the quotient-product result just cited.
+
+**Changing the attaching map.** If \(H:A\times[0,1]\to Y\) is a homotopy from \(a_0\) to \(a_1\), define \(J_H:\mathcal P(a_0)\to\mathcal P(a_1)\) as the identity on \(Y\) and \(B\), and on a cylinder generator by
+
+\[
+J_H([x,t])=
+\begin{cases}
+H(x,2t),&0\leq t\leq\tfrac12,\\
+[x,2t-1],&\tfrac12\leq t\leq1.
+\end{cases}
+\]
+
+At the joining time the values agree because the target cylinder starts at \(a_1(x)\); at the two ends they agree with the maps on \(Y\) and \(B\). Reverse \(H\) to obtain a map in the other direction. Their composite inserts a path followed by its reversal before the cylinder. This excursion contracts with its endpoints fixed: if \(\tau(t)=\min(2t,2-2t)\), replace \(H(x,\tau(t))\) by \(H(x,(1-s)\tau(t))\), for \(0\leq s\leq1\); for an excursion based at the other end use \(H(x,1-(1-s)\tau(t))\). Piecewise linear reparametrization puts the two traversals in equal halves, and afterwards removes the constant initial interval. These changes fix both cylinder endpoints and the other pieces. Thus \(J_H\) is a homotopy equivalence, not merely a bijection on a computed invariant.
+
+**Changing the preceding space.** A map \(f:Y\to Y'\) induces \(\mathcal P(f):\mathcal P(a)\to\mathcal P(fa)\), using \(f\) on \(Y\) and identity on the cylinder and on \(B\). These maps respect composition. For a homotopy \(U:f_0\simeq f_1\), the preceding construction gives
+
+\[
+J_{Ua}\,\mathcal P(f_0)\simeq\mathcal P(f_1),
+\qquad (Ua)(x,s)=U(a(x),s).
+\]
+
+Here is a compatible homotopy \(K_s:\mathcal P(a)\to\mathcal P(f_1a)\), including its endpoints. At time \(s\) use \(U(-,s)\) on \(Y\), identity on \(B\), and on the cylinder use
+
+\[
+K_s([x,t])=
+\begin{cases}
+U(a(x),s+2t),&0\leq t\leq(1-s)/2,\\
+[x,(2t-1+s)/(1+s)],&(1-s)/2\leq t\leq1.
+\end{cases}
+\]
+
+At the join both formulas give the target cylinder's starting value \(f_1a(x)\). At \(s=0\) this is the left-hand map, and at \(s=1\) it is the right-hand map. Both formulas are continuous on their closed parameter regions and agree on the intersection, including the corner \((s,t)=(1,0)\). The denominator \(1+s\) never vanishes. This proves the asserted homotopy without requiring compatible choices of homotopy inverses.
+
+Suppose now that \(f\) is a homotopy equivalence, with inverse \(g\). In the consecutive maps induced on cylinder attachments by \(f,g,f\), call the maps \(P,Q,R\), respectively. The composites \(QP\) and \(RQ\) are homotopy equivalences: apply the last formula to \(gf\simeq1_Y\) and \(fg\simeq1_{Y'}\), and use the proved invertibility of the corresponding \(J\). This implies that \(P,Q,R\) are homotopy equivalences. Explicitly, in homotopy classes of maps, \(Q\) has right inverse \(P(QP)^{-1}\) and left inverse \((RQ)^{-1}R\). A left and right inverse agree by associativity, so \(Q\) is invertible, and then so are \(P\) and \(R\). In particular replacing \(Y\) by a homotopy-equivalent finite CW model preserves the homotopy type of the attachment.
+
+**Removing the inserted cylinder.** For the actual pair
+
+\[
+(B,A)=(D^d\times F,S^{d-1}\times F),\qquad d\geq1,
+\]
+
+the cylinder attachment is homeomorphic to the ordinary attachment \(Y\cup_a B\). Send the copy of \(B\) to its radius-at-most-one-half part by \((v,z)\mapsto(v/2,z)\). Send the cylinder point \([(w,z),t]\), where \(\|w\|=1\), to the annular point \(((1-t/2)w,z)\). Use identity on \(Y\). At \(t=0\) this is the original attaching boundary and at \(t=1\) it agrees with the scaled disk boundary. Polar coordinates on the annulus give the inverse; the quotient maps give continuity at both joins. Thus the two replacement arguments just proved also apply to the ordinary disk-product attachment. A zero-cell instead contributes a disjoint copy of \(F\).
+
+**The finite model.** Take \(F=\mathbb{CP}^{r-1}\), with the explicit finite CW structure in [the projective-space chapter, Section 3](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-08.html#3-real-and-complex-projective-spaces). Over each characteristic disk of the finite CW base the bundle is trivial by [cylinder trivialization, Theorem 4.2 and Corollary 4.3](KT-OPK-02.md#4-transport-along-a-cylinder). Consequently adjoining a base \(d\)-cell adjoins \(D^d\times F\) along \(S^{d-1}\times F\) to the preceding projective total space. This is an actual attachment: the trivialization on the pulled-back disk supplies its boundary map; the resulting quotient maps bijectively to the total space, and that continuous bijection is a homeomorphism from a compact space to a Hausdorff space.
+
+Assume inductively that the preceding total space has a finite CW model \(K\). Replace it by \(K\) using the proved attachment equivalence. The disk product and its boundary are a finite CW pair. To see the product-cell assertion, products of characteristic disks are disks: radially identify the unit ball for the norm \(\max(\|v\|,\|w\|)\) with the Euclidean unit ball, preserving their boundary spheres. Their boundaries are the unions of the lower-dimensional product cells. Cellular approximation now replaces the attaching map \(S^{d-1}\times F\to K\) by a cellular one. The preceding homotopy-of-attaching-maps argument preserves the homotopy type under this replacement. The new pushout is a finite CW complex: each relative product cell is attached along its boundary to the cells of lower dimension, since the boundary map is cellular. Start with the finite disjoint union of copies of \(F\) over the vertices and repeat for the finitely many base cells. This proves the finite-CW-type assertion for the entire projective total space; it does not assert that the original gluing maps themselves were cellular.
+
+**Bases of finite CW homotopy type.** For completeness, the passage to such a compact Hausdorff base also preserves the total-space homotopy type. If \(h:X\to X\) is homotopic to \(1_X\), cylinder trivialization of the bundle pulled back along a homotopy \(H:h\simeq1_X\) supplies continuous fibre isomorphisms \(T_t:h^*E\to H_t^*E\) over \(X\). Compose the chosen trivialization with its time-zero inverse to arrange \(T_0=1_{h^*E}\). Their projectivizations, followed by the canonical projections to \(P(E)\), then give a homotopy from the actual canonical map \(P(h^*E)\to P(E)\) to the bundle isomorphism \(P(T_1)\) over \(1_X\). Hence that canonical map is a homotopy equivalence.
+
+Now let \(f:X\to K\) and \(g:K\to X\) be homotopy inverses with \(K\) a finite CW complex. Consider the three consecutive canonical pullback maps
+
+\[
+\begin{gathered}
+P(g^*f^*g^*E)\longrightarrow P(f^*g^*E)\\
+\longrightarrow P(g^*E)\longrightarrow P(E).
+\end{gathered}
+\]
+
+The four spaces lie over \(K,X,K,X\), in that order, and the three arrows cover \(g,f,g\). Their adjacent composites cover \(fg\) and \(gf\), respectively. Canonical pullback identifications identify the first domain with \(P((fg)^*g^*E)\), and the second with \(P((gf)^*E)\): in the pullback's pair model these identifications simply remove the intermediate base coordinate. Thus these are precisely the two canonical maps to which the preceding cylinder argument applies, for the bundles \(g^*E\) and \(E\). Both composites are homotopy equivalences. The same explicit left/right inverse argument for three consecutive maps therefore makes every individual map a homotopy equivalence. In particular \(P(g^*E)\simeq P(E)\). The former has the finite CW model already constructed over \(K\). This proves the claimed extension to compact Hausdorff bases of finite CW homotopy type. Applying the result at each projective step also proves that the flag spaces and common splitting spaces used here have finite CW homotopy type.
+
+
 The coefficient of the basis element \(1\) proves injectivity of \(\pi^*\). Choose a Hermitian metric and split \(\pi^*E=S\oplus S^\perp\). Repeat the construction with \(S^\perp\), whose rank is smaller. Each pullback is injective by the first part; after finitely many steps the bundle splits into lines. Pulling back one such construction after another splits any prescribed finite collection of bundles while preserving injectivity. \(\square\)
 
 There are therefore unique classes \(c_j(E)\in H^{2j}(X;\mathbb Z)\) defined by

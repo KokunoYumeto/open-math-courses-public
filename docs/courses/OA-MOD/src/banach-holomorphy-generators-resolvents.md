@@ -4,7 +4,7 @@
 
 Analytic continuation in modular theory moves between Banach-valued functions, unitary groups and unbounded generators. This lesson states the exact domains and convergence hypotheses used by the modular arguments. The existing programme proofs supply norming-dual holomorphy, Stone's theorem, invariant and analytic cores, resolvent convergence and logarithmic transport. Their original proof ownership is retained; the local derivative calculation, closure wrapper, bounded-transform check and solved examples remain.
 
-The two programme sources are Analytic elements and strip arguments and Holomorphy in Banach spaces, Stone's theorem and resolvent convergence, written by Claude Opus 5.5 (Anthropic), September 2026, under CC0. The exact selected clauses are identified below. The proofs in those two lessons rely on complex-analysis, integration, spectral-calculus and analytic-generator results that are not all proved in these courses.
+The two programme sources are [Analytic elements and strip arguments](https://kokunoyumeto.github.io/open-math-courses-public/courses/analytic-elements-strips-and-kms/analytic-elements-and-strip-arguments.html) and [Holomorphy in Banach spaces, Stone's theorem and resolvent convergence](https://kokunoyumeto.github.io/open-math-courses-public/courses/analytic-elements-strips-and-kms/holomorphy-in-banach-spaces-stone-s-theorem-and-resolvent-convergence.html), written by Claude Opus 5.5 (Anthropic), September 2026, under CC0. The exact selected clauses are identified below. The proofs in those two lessons rely on complex-analysis, integration, spectral-calculus and analytic-generator results that are not all proved in these courses.
 
 The human-source antecedent is Takesaki, *Theory of Operator Algebras II*, Appendix A.1–A.6. Its printed A.6(ii) omits a necessary condition: on a nonzero Hilbert space, \(A_n=nI\) has both half-plane resolvents tending to zero, while zero is not a self-adjoint resolvent. This correction is proved in the programme's Theorem 8.2(5), with Lemma 8.1 and Example 8.3. SG-08 imports that result and preserves the counterexample.
 
@@ -49,7 +49,7 @@ Let \(E\) be a Banach space, \(\Omega\subseteq\mathbb C\) open and \(f:\Omega\to
  \tag{SG.3}
 \]
 
-Read **Lemma 2.1(1)–(2)** of Analytic elements and strip arguments. It gives the following equivalent descriptions:
+Read **Lemma 2.1(1)–(2)** of [Analytic elements and strip arguments](https://kokunoyumeto.github.io/open-math-courses-public/courses/analytic-elements-strips-and-kms/analytic-elements-and-strip-arguments.html#oa-fnd-ae-01). It gives the following equivalent descriptions:
 
 1. Near every point, \(f\) has a norm-convergent power series in \(E\).
 2. Every \(x'\circ f\) is holomorphic for a norm-closed norming subspace \(N\subseteq E^*\).
@@ -91,7 +91,7 @@ to assume the norm continuity that it is meant to prove.
 
 ## Stone's theorem with the derivative domain
 
-Read **Theorem 8.1(3)** of Analytic elements and strip arguments. For a strongly continuous unitary group \(U\) on an arbitrary Hilbert space, it constructs the unique positive injective self-adjoint operator \(B=U_{-i}\) with \(U_t=B^{it}\). Its self-adjoint logarithm \(A=\log B\) therefore satisfies
+Read **Theorem 8.1(3)** of [Analytic elements and strip arguments](https://kokunoyumeto.github.io/open-math-courses-public/courses/analytic-elements-strips-and-kms/analytic-elements-and-strip-arguments.html#oa-fnd-ae-08). For a strongly continuous unitary group \(U\) on an arbitrary Hilbert space, it constructs the unique positive injective self-adjoint operator \(B=U_{-i}\) with \(U_t=B^{it}\). Its self-adjoint logarithm \(A=\log B\) therefore satisfies
 
 \[
  U_t=e^{itA}\qquad(t\in\mathbb R),
@@ -112,7 +112,7 @@ Conversely, the spectral group of a self-adjoint \(A\) is strongly continuous an
 
 ## A dense invariant generator domain is a core
 
-Let \(A\) be self-adjoint and \(U_t=e^{itA}\). **Theorem 8.1(4)** of Analytic elements and strip arguments states: if a linear subspace \(D\subseteq D(A)\) is dense in \(H\) and \(U_tD\subseteq D\) for every real \(t\), then \(D\) is a graph core for \(A\).
+Let \(A\) be self-adjoint and \(U_t=e^{itA}\). **Theorem 8.1(4)** of [Analytic elements and strip arguments](https://kokunoyumeto.github.io/open-math-courses-public/courses/analytic-elements-strips-and-kms/analytic-elements-and-strip-arguments.html#oa-fnd-ae-08) states: if a linear subspace \(D\subseteq D(A)\) is dense in \(H\) and \(U_tD\subseteq D\) for every real \(t\), then \(D\) is a graph core for \(A\).
 
 The full proof belongs to that theorem. It first closes the restricted graph and uses Gaussian averages inside that closed graph; the proposed core itself need not be complete. Invariance is required on \(D\), and Hilbert-norm density alone does not imply graph density. The core conclusion includes convergence of both \(x\) and \(Ax\) in the norm (SG.1).
 
@@ -146,11 +146,11 @@ For \(x\in D_0\), invariance gives \(T^kx=S^kx\) for every \(k\).
 Consequently the analytic vectors \(E_{\mathrm{an}}\) of the closed
 symmetric operator \(T\) contain the dense subspace \(D_0\).
 
-Apply **Theorem 8.1(5)** of Analytic elements and strip arguments to this closed, densely defined symmetric \(T\). It has a dense space of analytic vectors, so the programme theorem makes \(T\) self-adjoint. Its full closed-operator proof belongs to that theorem. By the definition of \(T=\overline{S|_{D_0}}\), the original restriction is essentially self-adjoint. Moreover \(T\subseteq\overline S\subseteq S^*\subseteq T^*=T\), so \(\overline S=T\). This last closure argument is the local extension from the programme's closed-operator hypothesis; it never applies that theorem directly to a nonclosed \(S\). \(\square\)
+Apply **Theorem 8.1(5)** of [Analytic elements and strip arguments](https://kokunoyumeto.github.io/open-math-courses-public/courses/analytic-elements-strips-and-kms/analytic-elements-and-strip-arguments.html#oa-fnd-ae-08) to this closed, densely defined symmetric \(T\). It has a dense space of analytic vectors, so the programme theorem makes \(T\) self-adjoint. Its full closed-operator proof belongs to that theorem. By the definition of \(T=\overline{S|_{D_0}}\), the original restriction is essentially self-adjoint. Moreover \(T\subseteq\overline S\subseteq S^*\subseteq T^*=T\), so \(\overline S=T\). This last closure argument is the local extension from the programme's closed-operator hypothesis; it never applies that theorem directly to a nonclosed \(S\). \(\square\)
 
 ## Resolvents and unitary groups carry the same convergence
 
-Read **Theorem 7.4**, with **Lemma 7.2(4)**, of Holomorphy in Banach spaces, Stone's theorem and resolvent convergence. Let \(A_j\) and the proposed limit \(A\) be self-adjoint, with \(j\) in a directed set. The theorem gives the equivalence of:
+Read **Theorem 7.4**, with **Lemma 7.2(4)**, of [Holomorphy in Banach spaces, Stone's theorem and resolvent convergence](https://kokunoyumeto.github.io/open-math-courses-public/courses/analytic-elements-strips-and-kms/holomorphy-in-banach-spaces-stone-s-theorem-and-resolvent-convergence.html#oa-fnd-sg-07). Let \(A_j\) and the proposed limit \(A\) be self-adjoint, with \(j\) in a directed set. The theorem gives the equivalence of:
 
 1. \((A_j-z)^{-1}\to(A-z)^{-1}\) strongly for every nonreal \(z\).
 2. These resolvents converge weakly at one nonreal \(z_0\), to the resolvent of this given \(A\).
@@ -181,7 +181,7 @@ Their convergence follows from the imported theorem under its indicated sequence
 
 ## Corrected limits of two half-plane resolvents
 
-Read **Lemma 8.1 and Theorem 8.2(1)–(5)** of Holomorphy in Banach spaces, Stone's theorem and resolvent convergence. For a net of self-adjoint \(A_j\), choose \(z_+\in\mathbb C_+\) and \(z_-\in\mathbb C_-\), and suppose
+Read **Lemma 8.1 and Theorem 8.2(1)–(5)** of [Holomorphy in Banach spaces, Stone's theorem and resolvent convergence](https://kokunoyumeto.github.io/open-math-courses-public/courses/analytic-elements-strips-and-kms/holomorphy-in-banach-spaces-stone-s-theorem-and-resolvent-convergence.html#oa-fnd-sg-08). For a net of self-adjoint \(A_j\), choose \(z_+\in\mathbb C_+\) and \(z_-\in\mathbb C_-\), and suppose
 
 \[
  (A_j-z_+)^{-1}\longrightarrow R_+,
@@ -222,7 +222,7 @@ The complete propagation, adjoint, domain and necessity proofs belong to the pro
 
 ## Convergence on one common core
 
-Read **Theorem 7.6** of Holomorphy in Banach spaces, Stone's theorem and resolvent convergence. Let \(A_j\) and \(A\) be self-adjoint, and let \(D\) be a graph core for \(A\). If each \(x\in D\) belongs to \(D(A_j)\) eventually, with the threshold allowed to depend on \(x\), and
+Read **Theorem 7.6** of [Holomorphy in Banach spaces, Stone's theorem and resolvent convergence](https://kokunoyumeto.github.io/open-math-courses-public/courses/analytic-elements-strips-and-kms/holomorphy-in-banach-spaces-stone-s-theorem-and-resolvent-convergence.html#oa-fnd-sg-07). Let \(A_j\) and \(A\) be self-adjoint, and let \(D\) be a graph core for \(A\). If each \(x\in D\) belongs to \(D(A_j)\) eventually, with the threshold allowed to depend on \(x\), and
 
 \[
  A_jx\longrightarrow Ax\qquad(x\in D),
@@ -250,7 +250,7 @@ in the strong resolvent sense, and for every \(x\in H\) and \(T<\infty\),
 \tag{SG.31}
 \]
 
-**Earlier programme proof.** Read **Theorem 9.1 and Corollary 9.2(1)** of Holomorphy in Banach spaces, Stone's theorem and resolvent convergence. They prove this conclusion for arbitrary nets of positive injective self-adjoint operators, with an injective proposed limit. The full transformation proof and time-uniform conclusion remain with that source. In particular no spectral gap at zero or bounded inverse is assumed.
+**Earlier programme proof.** Read **Theorem 9.1 and Corollary 9.2(1)** of [Holomorphy in Banach spaces, Stone's theorem and resolvent convergence](https://kokunoyumeto.github.io/open-math-courses-public/courses/analytic-elements-strips-and-kms/holomorphy-in-banach-spaces-stone-s-theorem-and-resolvent-convergence.html#oa-fnd-sg-09). They prove this conclusion for arbitrary nets of positive injective self-adjoint operators, with an injective proposed limit. The full transformation proof and time-uniform conclusion remain with that source. In particular no spectral gap at zero or bounded inverse is assumed.
 
 **Solved bounded-transform check.** Let \(K_n=(I+A_n)^{-1}\) and \(K=(I+A)^{-1}\). Choose a bounded
 continuous function on the real line which equals \(t\mapsto(1+t)^{-1}\)

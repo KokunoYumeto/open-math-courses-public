@@ -135,6 +135,19 @@ Q_i&=2\sum_{k,j}[F_{kj},D_kF_{ij}+D_jF_{ik}]\\
 This exact expression retains all nine spatial pairs, all three
 electric pairs, each sign and the original electric metric factor.
 
+There is a further exact cancellation within the two spatial sums.
+Exchanging the two dummy labels in the second gives
+\(\sum_{k,j}[F_{jk},D_kF_{ij}]
+=-\sum_{k,j}[F_{kj},D_kF_{ij}]\).
+This is a bijection of all nine ordered pairs; diagonal terms
+vanish by \(F_{kk}=0\). Thus their full sum is zero, while
+neither individual sum is presumed zero. The termwise bound
+below remains valid. [Space-time tension estimates](../classical-spacetime-tension.html),
+ST.1–ST.2, uses the stronger electric-only expression with
+its original factor \(c^{-2}\), and proves all ensuing
+space-time bounds through every ordinary derivative order.
+
+
 ## 2. Base bound with the actual curvature coefficients
 
 Use the earlier H9 curvature norm \(f_m=\|D^{(m)}F\|_{2,c}\),
@@ -972,6 +985,9 @@ The tension heat estimate, exact divergence-free interaction
 and temporal connection derivative are now available with
 their complete constants and heat weights. [Curl-free interaction and backward heat bounds](../classical-curlfree-backward-heat.html)
 now proves the full curl-free interaction and its low-order
-backward heat inputs. The remaining quadratic and cubic
-terms, boundary gauge estimates, closed continuation bound
-and main lesson exercises remain required for Lesson 9.
+backward heat inputs. The [potential wave chapter](../classical-potential-wave.html)
+now bounds the divergence-free coefficient, and the
+[temporal boundary chapter](../classical-temporal-boundary.html)
+supplies all five boundary norms. The remaining interactions,
+finite wave closure, spatial gauge estimates and main unit
+exercises remain required for Lesson 9.

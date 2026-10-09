@@ -2283,3 +2283,41 @@ figure of the finite kernels.
 The remaining nonlinear interactions, boundary gauge estimates and
 closed physical-time continuation argument are still required, along
 with the main lesson exercises, before this unit is complete.
+
+
+## 21. The uniform potential wave coefficient
+
+[Potential wave bounds from the complete heat equation](../classical-potential-wave.html)
+estimates the coefficient required by the divergence-free null term.
+PW.1–PW.22 keeps every quadratic and cubic derivative placement,
+uses the complete degenerate heat energy identity, and proves the
+finite positive-weight integration needed for a uniform bound.
+Its exact linear Fourier example shows the retained longitudinal
+component. Eight exercises have full solutions.
+
+## 22. Space-time tension through every spatial order
+
+[Space-time tension at every spatial order](../classical-spacetime-tension.html)
+uses the exact cancellation between both spatial-pair forcing sums
+and bounds the remaining electric expression. ST.1–ST.41 provides
+every ordinary electric input, the complete finite temporal kernels,
+and a triangular recurrence for all tension and forcing derivatives.
+The source-coordinate comparison retains the physical measure and
+component factors. Eight exercises include the full next recurrence,
+a noncommuting electric jet and the strict heat-weight threshold.
+
+## 23. The full temporal boundary estimates
+
+[Temporal boundary estimates and the endpoint identity](../classical-temporal-boundary.html)
+integrates the actual heat equation before estimating its Laplacian.
+TB.1–TB.19 proves the negative heat-endpoint sign, the full limiting
+Hessian domain and all five physical boundary norms, with eight
+complete solutions. Its Gaussian diagnostic retains every term
+and displays the exact defect produced by reversing the sign.
+The last exercise constructs the time ODE with integrable
+anti-Hermitian coefficients.
+
+These three chapters retain the actual differentiated wave forcing
+and endpoint norms. The finite family of physical wave estimates
+still needs its final closure and spatial gauge estimates; the
+general continuation proof and main unit exercises remain required.
