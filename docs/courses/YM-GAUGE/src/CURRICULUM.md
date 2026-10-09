@@ -184,3 +184,8 @@ every theorem in a cited work.
 - Kenneth G. Wilson, [Confinement of quarks](https://journals.aps.org/prd/abstract/10.1103/PhysRevD.10.2445). Historical primary route to lattice gauge theory and its strong-coupling regime.
 
 The exact scope of the present source reading is recorded in [the literature map](../literature-map.json). No protected source exposition is reproduced in this plan.
+
+
+## Current writing
+
+A [partial Unit 9](../local-and-global-classical-evolution.html) now supplies the local solution construction, exact constraint and propagation proofs, smooth constrained approximation, gauge estimates and a global commuting example. The general finite-energy global argument and exercises are unfinished, so the completed-unit count remains eight.

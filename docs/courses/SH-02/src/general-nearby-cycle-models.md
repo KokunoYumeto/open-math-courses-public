@@ -241,9 +241,11 @@ Thus \(\chi_\psi\) is an isomorphism on every zero-fibre stalk. HN8a and its act
 
 ## HN9. Actual normal-slice comparison
 
+[Holomorphic critical support and graph covectors](../general-critical-support.html) uses precisely this normal zero-stratum comparison, together with visible conormal preparation and a compact Morse filtration, to prove the full closed-support criterion for arbitrary holomorphic functions.
+
 For a normal complex slice \(N_y=\{\pi=y\}\), the natural nearby-cycle base-change map at its intersection with \(Y\) is an isomorphism. Its cofinal normal-radius/value packets and their actual restrictions are the fibres of precisely the parameter packets above. Both stalks reduce to the same compact \(F_{y,w}\), and the unit square HN6c commutes with this slice restriction. Thus the vanishing-cycle comparison at that point is also the actual cone comparison. This does not presume nonproper base change is always an isomorphism.
 
-The preceding argument proves finite local models, complex constructibility, perfection, specialization and residue-field compatibility for arbitrary holomorphic functions, including singular and positive-dimensional critical loci. The comparison above concerns precisely the normal slices of the prepared zero-fibre strata. \(A\) critical-support criterion additionally requires visible conormal components and the bounded-complex/perverse-cohomology reduction.
+The preceding argument proves finite local models, complex constructibility, perfection, specialization and residue-field compatibility for arbitrary holomorphic functions, including singular and positive-dimensional critical loci. The comparison above concerns precisely the normal slices of the prepared zero-fibre strata. [The critical-support proof](../general-critical-support.html) supplies the visible conormal preparation and bounded-complex/perverse-cohomology reduction for the coefficient \(A\) that complete this criterion.
 
 <a id="HN10"></a>
 

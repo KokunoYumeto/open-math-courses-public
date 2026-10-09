@@ -4,9 +4,9 @@ The Euler characteristic of a compact manifold can be computed from finite cells
 
 *Original programme exposition, examples and solutions are dedicated to the public domain under CC0.*
 
-The finite compact-cohomology proof supplies the perfect section complexes, and the trace-normalized dual-sections pairing supplies their actual duality map. The Euclidean compact-support generator, orientation line and submersion dualizing comparison fix the integral Thom class and \(\omega_X=\operatorname{or}_X[n]\). We use a finite compatible subanalytic triangulation for the compact manifold. The proof below keeps the skeleton localization maps, so their Euler sum is an integer over every field.
+The [finite compact-cohomology proof](../../sheaf-proof-readings/src/SH03/perfect-coefficients-on-compact-fibres.md#finite-descent-on-a-compact-triangulation) supplies the perfect section complexes, and the [trace-normalized dual-sections pairing](../../sheaf-proof-readings/src/SH03/constructible-costalks-and-verdier-duality.md#duality-exchanges-the-measurements-before-biduality) supplies their actual duality map. The [Euclidean compact-support generator](../../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-euclidean--the-compact-support-generator), [orientation line](../../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-orientation-line--orientation-as-a-local-system) and [submersion dualizing comparison](../../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-submersion--recovering-the-exceptional-inverse-image-locally) fix the integral Thom class and \(\omega_X=\operatorname{or}_X[n]\). We use a finite compatible subanalytic triangulation for the compact manifold. The proof below keeps the skeleton localization maps, so their Euler sum is an integer over every field.
 
-For the index, the continuous-section supported unit and complete supported comparison identify the ordered cup with ordinary pullback of the cycle class and proper trace on its actual intersection. The compact characteristic-cycle index evaluates that class for every continuous section. The tangent sign of the graph-normalized conormal must be combined with the signed constant-sheaf coefficient; their two factors cancel for the positive zero-section Thom class used here. The ordered transverse formula and local map-of-pairs sign calculation then fix the determinant without a global orientation choice.
+For the index, the [continuous-section supported unit](continuous-sections-and-supported-cycle-intersections.md#a-continuous-section-supplies-a-supported-unit) and [complete supported comparison](continuous-sections-and-supported-cycle-intersections.md#the-complete-supported-section-intersection-comparison) identify the ordered cup with ordinary pullback of the cycle class and proper trace on its actual intersection. The [compact characteristic-cycle index](differential-sections-and-proper-below-euler-indices.md#recovering-the-base-class-from-the-microlocal-trace) evaluates that class for every continuous section. The [tangent sign of the graph-normalized conormal](orientations-of-conormal-cycles-and-transverse-intersections.md#the-normalized-conormal-retains-the-tangent-zero-section-sign) must be combined with the [signed constant-sheaf coefficient](integer-coefficients-and-additive-characteristic-cycles.md#local-ranks-use-an-actual-derived-constant-model); their two factors cancel for the positive zero-section Thom class used here. The [ordered transverse formula](orientations-of-conormal-cycles-and-transverse-intersections.md#ordered-transverse-forms-give-the-local-number) and [local map-of-pairs sign calculation](../../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-smooth-sign--submersion-signs) then fix the determinant without a global orientation choice.
 
 Throughout, manifolds have no boundary. They are real analytic, Hausdorff and countable at infinity, with the standing finite dimension bounds. The compact manifold in the global theorems has dimension \(n\). The supported index is defined for continuous vector fields with isolated zeros. Its determinant formula applies when the field is continuously differentiable near the zero, in particular for smooth or analytic fields. Local indices require only an isolating neighborhood; compactness of \(X\) is used for the global Euler number and finite total trace.
 
@@ -89,13 +89,13 @@ Positive definiteness gives \(\sigma(x)=0\) exactly when \(v(x)=0\). The section
 Let \(0_X\subset T^*X\) denote the zero section. Write \(\lambda_0\) for its positive integral fibre Thom class, viewed as a cycle with the relative cotangent orientation coefficient. In base coordinates \(x\) and cotangent coordinates \(\xi\), its coefficient is
 
 \[
- \operatorname{sgn}(dx_1\wedge\cdots\wedge dx_n)
+ (-1)^n\operatorname{sgn}(dx_1\wedge\cdots\wedge dx_n)
    \otimes
  \operatorname{sgn}(d\xi_1\wedge\cdots\wedge d\xi_n).
  \qquad\text{(7)}
 \]
 
-The normal-first ambient orientation is \(\Omega=d\xi_1\wedge\cdots\wedge d\xi_n\wedge dx_1\wedge\cdots\wedge dx_n\). A positive normal Thom generator in the fibre variables \(\xi\), with base orientation coefficient \(\operatorname{sgn}(dx)\), corresponds to (7). Under a base-coordinate change with Jacobian \(J\), the fibre frame changes by \(J^{-t}\). Their orientation signs therefore change together, and (7) glues without orienting \(X\).
+The normal-first ambient orientation is \(\Omega=d\xi_1\wedge\cdots\wedge d\xi_n\wedge dx_1\wedge\cdots\wedge dx_n\). A positive normal Thom generator in the fibre variables \(\xi\), with base orientation coefficient \(\operatorname{sgn}(dx)\), corresponds to (7). The ordered comparison with cycle coefficients moves the shifted inverse fibre line past the base dualizing line. The inverse fibre generator has degree \(n\), while the base dualizing generator has degree \(-n\); their graded exchange contributes \((-1)^{n^2}=(-1)^n\); this factor must remain in (7). Under a base-coordinate change with Jacobian \(J\), the fibre frame changes by \(J^{-t}\). Their orientation signs therefore change together, and (7) glues without orienting \(X\).
 
 The graph-normalized conormal has a different convention: \([T_X^*X]=(-1)^n\lambda_0\). Its tangent zero-section factor comes from the graph inverse coefficient and is \((-1)^n\) times the positive fibre Thom unit. The constant-sheaf coefficient theorem contributes the same factor, so \(\operatorname{CC}(\mathbb Q_X)=(-1)^n[T_X^*X]_{\mathbb Q}=(\lambda_0)_{\mathbb Q}\). Thus \(\lambda_0=(-1)^n[T_X^*X]\) is the integral class used below. In odd dimension it must not be identified with the graph-normalized conormal itself.
 
@@ -159,7 +159,7 @@ The graph unit can be computed directly as a supported Thom class. The coordinat
  \qquad\text{(11)}
 \]
 
-Every other wedge term has an additional base differential and vanishes. Hence the supported graph Thom unit has base tangent orientation tensored with the fibre orientation, while the second input \(\lambda_0\) has the positive coefficient (7). This is a normal-coordinate computation of the classes in (8); it does not require placing a nonanalytic graph in the subanalytic cycle sheaf. Neither symmetry of \(D\sigma\) nor a Lagrangian graph is used.
+Every other wedge term has an additional base differential and vanishes. Use the positive dual-frame identification of the relative and base orientation lines to put both inputs in the same cycle coordinates. The ordered coefficient comparison then gives the supported graph Thom unit its base tangent orientation tensored with the fibre orientation, multiplied by \((-1)^n\). The positive Thom class \(\lambda_0\) has the same scalar in (7). This is a normal-coordinate computation of the classes in (8); it does not require placing a nonanalytic graph in the subanalytic cycle sheaf. Neither symmetry of \(D\sigma\) nor a Lagrangian graph is used.
 
 Let \(G=g(a)\) be the positive definite metric matrix and \(B=D\sigma(a)\). Differentiating \(g(x)v(x)\) gives \(B=GA\), since the term involving \(Dg\) is multiplied by \(v(a)=0\). In row order \((\xi,x)\), the tangent columns for the graph followed by the zero section give
 
@@ -172,7 +172,7 @@ Let \(G=g(a)\) be the positive definite metric matrix and \(B=D\sigma(a)\). Diff
  \qquad\text{(12)}
 \]
 
-The two submanifolds are transverse exactly when \(B\) is invertible. Their integral fibre coefficients pair to one. The ordered transverse formula with
+The two submanifolds are transverse exactly when \(B\) is invertible. Their cycle weights are both \((-1)^n\), so the weights multiply to one; the integral fibre sign generators also have square one. The ordered transverse formula with
 \(\Omega=d\xi\wedge dx\) consequently gives
 
 \[

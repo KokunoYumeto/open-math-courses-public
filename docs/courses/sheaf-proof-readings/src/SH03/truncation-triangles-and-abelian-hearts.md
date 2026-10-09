@@ -4,7 +4,7 @@ A triangulated category supplies cones and connecting maps. A t-structure specif
 
 *AI-generated exposition: GPT-6.1 Sol and GPT-6 Astra (OpenAI), Ultra. Edition: 5 October 2026. Independently written lesson text: CC0. Human mathematical sources are credited below.*
 
-We use the axioms of a triangulated category: shifts, distinguished triangles, completion of a commuting square to a triangle map, the exact Hom sequences, and the octahedral axiom for composable arrows. These are the ambient categorical structure assumed in the theorem. All t-structure arguments are proved below. For the constructible example alone, Constructible costalks and Verdier duality supplies the already written bounded constructible duality equivalence, with its exact sheaf and geometric prerequisites.
+We use the axioms of a triangulated category: shifts, distinguished triangles, completion of a commuting square to a triangle map, the exact Hom sequences, and the octahedral axiom for composable arrows. These are the ambient categorical structure assumed in the theorem. All t-structure arguments are proved below. For the constructible example alone, [Constructible costalks and Verdier duality](constructible-costalks-and-verdier-duality.md#the-evaluation-map-is-biduality) supplies the already written bounded constructible duality equivalence, with its exact sheaf and geometric prerequisites.
 
 ## The cone that the heart must recover
 
@@ -14,7 +14,7 @@ Start with the module map \(f:\mathbb Z^2\to\mathbb Z\), \(f(a,b)=2a+4b\). Its c
         \quad\text{in degrees }-1,0.
  \tag{T1}
 \]
-The kernel is \(\mathbb Z(-2,1)\); the cokernel is \(\mathbb Z/2\). A lower cut at \(-1\) must keep that kernel, with its actual inclusion into \(\mathbb Z^2\). An upper cut at zero must keep the quotient map \(\mathbb Z\to\mathbb Z/2\). Simply deleting a term gives the wrong object. The fixed interval diagram uses this same row as one of its attachments, so these kernel maps will return in its directional test.
+The kernel is \(\mathbb Z(-2,1)\); the cokernel is \(\mathbb Z/2\). A lower cut at \(-1\) must keep that kernel, with its actual inclusion into \(\mathbb Z^2\). An upper cut at zero must keep the quotient map \(\mathbb Z\to\mathbb Z/2\). Simply deleting a term gives the wrong object. The [fixed interval diagram](constructible-gluing-on-an-interval.md#one-diagram-from-sections-to-a-closed-layer-correction) uses this same row as one of its attachments, so these kernel maps will return in its directional test.
 
 Maps matter even when the objects are familiar. The sequence
 \[
@@ -399,4 +399,4 @@ Reversal of triangles, Hom directions and shifts verifies every axiom by (2). It
 
 ## References
 
-A. A. Beilinson, J. Bernstein and P. Deligne, [*Faisceaux pervers*](https://publications.ias.edu/sites/default/files/Faisceaux%20pervers.pdf), Astérisque 100 (1982), develops t-structures, their abelian hearts, truncation and cohomology functors, and nondegenerate detection. The arguments and examples above give the proofs needed here in the stated conventions. The optional constructible application uses the internal Verdier-duality theorem linked in its prerequisite paragraph; that geometric theorem is separate from the abstract heart construction.
+A. A. Beilinson, J. Bernstein and P. Deligne, [*Faisceaux pervers*](https://publications.ias.edu/sites/default/files/Faisceaux%20pervers.pdf), Astérisque 100 (1982): Corollary 1.1.10 (p. 24) gives the uniqueness of the connecting arrow; Propositions 1.2.2 and 1.2.4 (pp. 27–28) give the cone kernel/cokernel and image/coimage arguments; Definition 1.3.1 and Propositions 1.3.3 and 1.3.5 (pp. 29–31) give t-structures and truncation; Theorem 1.3.6 (pp. 31–32) gives the abelian heart and exact cohomology; Proposition 1.3.7 (pp. 32–33) gives nondegenerate detection. The arguments and examples above give the proofs needed here in the stated conventions. The optional constructible application uses the internal Verdier-duality theorem linked in its prerequisite paragraph; that geometric theorem is separate from the abstract heart construction.

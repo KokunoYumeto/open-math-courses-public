@@ -268,7 +268,9 @@ The partial-isometry boundary is initial defect minus final defect, by [Lesson 7
 
 For nonunital \(A\), use the two split kernel identifications (1.3). The natural maps \(\beta_{A^+}\) and \(\beta_\mathbb C\) are isomorphisms, so their commuting diagram restricts to an isomorphism of kernels: injectivity is inherited; for surjectivity, an element of the lower kernel has a unique preimage upstairs, whose scalar image must be zero by injectivity of \(\beta_\mathbb C\). Naturality of the coefficient Toeplitz boundaries, followed by the injective map \(K_0(A)\to K_0(A^+)\), proves (4.1) for \(A\). There is no need to assume that a product of two relative partial-isometry lifts is itself a partial isometry. \(\square\)
 
-## 5. The polynomial-loop route: an outline with explicit reductions
+<span id="5-the-polynomial-loop-route-an-outline-with-explicit-reductions"></span>
+
+## 5. The polynomial-loop route: existence and stable uniqueness
 
 Here is the finite-dimensional algebra behind the alternative polynomial proof. The reductions work over any unital complex Banach algebra \(D\); for the present course \(D\) is a C*-algebra. Reduction from a nonunital algebra is the split kernel diagram (1.3).
 
@@ -330,7 +332,148 @@ For a C*-algebra, the idempotent \(e\) can be replaced by a projection in its st
 \tag{5.3}
 \]
 
-This outlines the surjectivity half of the polynomial proof and proves each reduction used in it. The full polynomial method additionally carries homotopies through common Laurent denominators, linearization sizes and identity padding to establish stable uniqueness of the relative idempotent class. In this lesson uniqueness follows from the completed Toeplitz proof, Theorem 4.1: two expressions in (5.3) for the same loop must have equal K₀-classes. It does not assert uniqueness of an unstabilized idempotent or of a denominator. Exercise 10.4 gives the complete finite linearization argument in a directly reusable form.
+These reductions prove surjectivity for unital coefficients. Exercise 10.4 gives the complete finite linearization argument in a directly reusable form. The next argument supplies stable uniqueness independently of the Toeplitz proof.
+
+### A polynomial proof of stable uniqueness
+
+The reductions above also prove injectivity, without Theorem 4.1 or the Toeplitz extension. The issue is not to assign a unique matrix to a loop: matrix sizes and Laurent denominators change. The invariant that must be unique is the difference of idempotent classes in (5.3). We first calculate the effect of a common denominator on the endpoints of a homotopy.
+
+**Lemma 5.3 (one finite polynomial family).** Let \(D\) be a unital complex Banach algebra. Suppose \(H:[0,1]\times\mathbb T\to GL_n(D)\) is continuous, \(H(s,1)=I_n\), and both endpoint loops are Laurent polynomials. There are integers \(N\geq1\), \(m\geq N\), and a continuous family of based polynomial loops \(p_s\), all of degree at most \(m\), such that
+\[
+\begin{aligned}
+p_0(z)&=z^N H(0,z),\\
+p_1(z)&=z^N H(1,z).
+\end{aligned}
+\tag{5.4}
+\]
+Their normalized linearizations have the same fixed size \((m+1)n\), and Lemma 5.2 gives a continuous path of idempotents in that size.
+
+*Proof.* Inversion is continuous on the open invertible group, so compactness supplies
+\[
+M=\max_{s,z}\|H(s,z)^{-1}\|<\infty.
+\]
+Apply the Fejér convolutions already justified above in the circle variable, uniformly in \(s\), obtaining Laurent polynomials \(Q_s(z)\) with coefficients continuous in \(s\). Joint continuity on the compact parameter space gives a common modulus of continuity, so their uniform error \(\varepsilon\) can be arbitrarily small. For \(j=0,1\), define the endpoint errors and corrected family by
+\[
+\begin{aligned}
+\Delta_j(z)&=H(j,z)-Q_j(z),\\
+R_s(z)&=Q_s(z)+(1-s)\Delta_0(z)\\
+&\quad+s\Delta_1(z).
+\end{aligned}
+\tag{5.5}
+\]
+This is still one finite Laurent family; its endpoints are exactly the prescribed ones. Its error from \(H\) is at most \(2\varepsilon\), since the two correction coefficients are nonnegative and sum to one. Choose \(2\varepsilon M<1\). Then
+\[
+\begin{aligned}
+R_s(z)&=H(s,z)(I_n+K_s(z)),\\
+K_s(z)&=H(s,z)^{-1}(R_s(z)-H(s,z)),\\
+\|K_s(z)\|&\leq2\varepsilon M<1
+\end{aligned}
+\]
+Hence \(R_s(z)\) is invertible by the Neumann series. In particular \(R_s(1)\) is invertible. The based Laurent family
+\[
+P_s(z)=R_s(z)R_s(1)^{-1}
+\tag{5.6}
+\]
+has unchanged endpoints, because those endpoints were based. Right multiplication by a matrix independent of \(z\) does not introduce new Laurent exponents.
+
+Choose \(N\geq1\) that removes every negative exponent in this one family, and choose \(m\) at least its largest resulting degree and at least \(N\). Set \(p_s=z^N P_s\). These polynomials are based and invertible on the circle. Pad their coefficient lists by zero coefficients to the common degree \(m\). Lemma 5.1 now gives the continuous family
+\[
+\begin{aligned}
+L_s(z)&=\mu_m(p_s)(z)\mu_m(p_s)(1)^{-1}\\
+&=I_{(m+1)n}+(z-1)b_s.
+\end{aligned}
+\tag{5.7}
+\]
+The entries of \(b_s\) are continuous, and every spectrum avoids the line \(\operatorname{Re}\lambda=1/2\). Lemma 5.2 gives the continuous right-half-plane Riesz idempotents. A single global contour is not required: the local common-contour constructions agree on overlaps. Thus this is an actual idempotent homotopy in one matrix algebra. No limit in matrix size is taken inside the homotopy. \(\square\)
+
+**Lemma 5.4 (the endpoint calculation).** For \(0\leq k\leq m\), apply the same normalized linearization to the scalar polynomial \(z^k\). The right-half-plane Riesz idempotent of its coefficient \(b\in M_{m+1}(\mathbb C)\) has rank \(k\). Consequently, for an idempotent \(e\in M_n(D)\) and \(0\leq k,l\leq m\), the idempotent obtained from
+\[
+p(z)=z^k e+z^l(I_n-e)
+\tag{5.8}
+\]
+has K₀-class \(k[e]+l[I_n-e]\).
+
+*Proof.* First take scalar coefficients and write \(d=m+1\). The elementary row and column operations in Lemma 5.1 have determinant one. They show, as a polynomial identity, that
+\[
+\det\mu_m(z^k)(z)=z^k,
+\qquad \det\mu_m(z^k)(1)=1.
+\]
+For the normalized linearization \(I_d+(z-1)b\), this implies
+\[
+\begin{aligned}
+\det(\lambda I_d-b)
+&=\lambda^d\det(I_d-\lambda^{-1}b)\\
+&=\lambda^{d-k}(\lambda-1)^k.
+\end{aligned}
+\tag{5.9}
+\]
+The computation first holds for \(\lambda\ne0\); both sides are polynomials, so it holds everywhere. Thus the spectrum is contained in \(\{0,1\}\).
+
+Here is a direct verification of the rank count. Multilinearity of the determinant in its columns gives, for an invertible differentiable complex matrix \(A(\lambda)\),
+\[
+\frac{d}{d\lambda}\det A(\lambda)
+=\det A(\lambda)\operatorname{tr}
+  \bigl(A(\lambda)^{-1}A'(\lambda)\bigr).
+\]
+Indeed, differentiating one column at a time and factoring out \(A\) leaves the corresponding diagonal entries of \(A^{-1}A'\). Apply this to \(A=\lambda I_d-b\) and use (5.9). Write the resulting scalar resolvent trace as
+\[
+\begin{aligned}
+T(\lambda)&=\operatorname{tr}\bigl((\lambda I_d-b)^{-1}\bigr),\\
+T(\lambda)&=\frac{d-k}{\lambda}+\frac{k}{\lambda-1}.
+\end{aligned}
+\]
+On a positively oriented circle \(\Gamma\) enclosing \(1\) but not \(0\), the Riesz idempotent \(r\) satisfies
+\[
+\begin{aligned}
+\operatorname{tr}(r)
+&=\frac{1}{2\pi i}\int_\Gamma T(\lambda)\,d\lambda=k.
+\end{aligned}
+\tag{5.10}
+\]
+An idempotent acts as the identity on its image and as zero on its kernel; these two subspaces form a direct sum. Its trace therefore equals its rank. This proves the first assertion, including \(k=0\).
+
+For (5.8), decompose each of the \(d\) copies of \(D^n\) into \(eD^n\oplus(I_n-e)D^n\). Every block in \(\mu_m(p)\), its value at \(1\), and its inverse respects this decomposition. On the first summand, the normalized matrix is the scalar normalized linearization of \(z^k\), tensored with the identity of \(eD^n\); on the second it is the one for \(z^l\). Resolvents and their contour integrals respect the same decomposition. A complex basis identifying a rank-\(k\) scalar idempotent with \(\operatorname{diag}(I_k,0)\) identifies its image on the first summand with \(k\) copies of \(eD^n\). The second image is \(l\) copies of \((I_n-e)D^n\). The projective-module interpretation of idempotents, proved in [Lesson 3, Proposition 2.2a](KT-OPK-03.md#projective-module-correspondence), gives the asserted K₀-class. Equivalently, apply these constant change-of-basis matrices separately on the two summands and use stable invariance under conjugation. No rank for a general \(D\)-module has been presumed. \(\square\)
+
+**Theorem 5.5 (stable uniqueness without Toeplitz).** For every complex C*-algebra \(A\), the projection-loop map \(\beta_A\) is injective. In particular all constructions (5.3) for a fixed stable loop class yield the same relative K₀-class, independently of approximation, denominator, linearization degree or identity padding.
+
+*Proof.* First let \(D\) be a unital C*-algebra. Write a class in the kernel of \(\beta_D\) as \([e]-[q]\), for projections in \(M_a(D)\) and \(M_b(D)\). The pointwise-product/block-sum identity of [Lesson 6, Theorem 2.2](KT-OPK-06.md#2-the-rotation-that-makes-addition-commute) represents its image by the based loop
+\[
+u(z)=\operatorname{diag}(f_e(z),f_q(z)^{-1},I_r)
+\tag{5.11}
+\]
+for a sufficiently large identity padding \(r\geq0\). Being zero in K₁ means that some such finite padding admits a homotopy to the identity. It can be made based throughout by replacing a homotopy \(G_s(z)\) by \(G_s(z)G_s(1)^{-1}\); its already-based endpoints remain fixed. Set \(n=a+b+r\) and denote this homotopy by \(H_s\).
+
+Its endpoints are Laurent polynomials. Apply Lemma 5.3 and, if needed, pad by more zero coefficients so that \(m\geq N+1\). Let \(E_s\) be the resulting idempotent path in \(M_{(m+1)n}(D)\). The first endpoint polynomial is block diagonal with blocks
+\[
+\begin{aligned}
+&z^{N+1}e+z^N(I_a-e),\\
+&z^{N-1}q+z^N(I_b-q),\\
+&z^N I_r.
+\end{aligned}
+\tag{5.12}
+\]
+The second is \(z^N I_n\). A constant permutation of coordinates groups the linearization of this block diagonal polynomial into the individual linearizations. Normalization at \(1\) and the Riesz construction commute with that permutation and with block direct sums. Lemma 5.4 therefore computes
+\[
+\begin{aligned}
+{}[E_0]&=(N+1)[e]+N[I_a-e]\\
+&\quad +(N-1)[q]+N[I_b-q]\\
+&\quad +Nr[1_D]\\
+&=Nn[1_D]+[e]-[q],\\
+[E_1]&=Nn[1_D].
+\end{aligned}
+\tag{5.13}
+\]
+The idempotent homotopy gives \([E_0]=[E_1]\) by [Lesson 1, Theorem 2.4](KT-OPK-01.md#2-changing-coordinates-and-following-a-deformation): its endpoints are similar and hence algebraically equivalent. Subtracting \(Nn[1_D]\) in the group K₀ proves \([e]-[q]=0\). This subtraction is group subtraction, not cancellation of projections or of projective modules; stable finiteness is unnecessary.
+
+For nonunital \(A\), let \(j:A\hookrightarrow A^+\) be the canonical inclusion and use the two split-kernel identifications (1.3). If \(\beta_A(x)=0\), naturality sends its image \(j_*x\in K_0(A^+)\) to zero under \(\beta_{A^+}\). Unital injectivity gives \(j_*x=0\); the injection in (1.3) gives \(x=0\). This also includes the zero algebra.
+
+For completeness, surjectivity also passes to the nonunital algebra without the Toeplitz proof. Given \(y\in K_1(SA)\), the polynomial construction for \(A^+\) gives \(x\in K_0(A^+)\) with \(\beta_{A^+}(x)=(Sj)_*y\). Naturality gives \(\beta_{\mathbb C}(\epsilon_*x)=0\). The injectivity just proved for \(\mathbb C\) implies \(\epsilon_*x=0\), so (1.3) gives \(x=j_*x_0\) for a unique \(x_0\in K_0(A)\). Then \((Sj)_*\beta_A(x_0)=(Sj)_*y\); the other injection in (1.3) gives \(\beta_A(x_0)=y\).
+
+Finally the earlier reductions prove that any chosen polynomial construction has image \([u]\) under \(\beta_D\). Injectivity makes the differences \([e]-N[I_n]\) equal for any two constructions of that stable loop class. Restriction through (1.3) yields the same statement for relative nonunital classes. No uniqueness of an unstabilized idempotent, a matrix size or a Laurent denominator follows or is needed. Together with the surjectivity above, this completes the polynomial route while retaining the independent Toeplitz route. \(\square\)
+
+**Example (why the subtraction is essential).** For the scalar constant loop \(u=1\), a denominator \(z^N\) produces the polynomial \(z^N\). Lemma 5.4 gives a Riesz idempotent of rank \(N\), while the relative class is \(N-N=0\). Changing \(N\) changes that rank. It does not change the relative class, and cannot justify a claim that the idempotent itself is unique.
+
+The proof follows the polynomial method of Blackadar's corrected second edition, Lemmas 9.2.5–9.2.8 and Corollary 9.2.9 (printed pp. 65–66). Equations (5.5)–(5.13) supply the endpoint-preserving family and finite endpoint calculation used here. They are independently written; the Toeplitz proof is not an input to Theorem 5.5.
 
 ## 6. Two-periodicity, Euclidean spaces, and the planar sign
 

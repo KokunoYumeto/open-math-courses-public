@@ -460,68 +460,124 @@ The pinning is essential for uniqueness. Conjugation by an element of \(T\) pres
 
 ## 6. Constructing the simply connected group in characteristic zero
 
-The preceding lesson [Lie proofs for the characteristic-zero group construction](AG-RG-S06.md) supplies the entire Lie argument. Its Theorem 1.A proves the ordered-word basis and the relation-ideal assertion; Theorem 6.2 constructs the rational split semisimple algebra by the Serre relations; Section 7 proves the nonzero finite highest-weight presentation (7.6); and Section 8 proves the rational rank-one integration and faithful action used here. These proofs precede this construction and do not assume a group existence theorem.
+The preceding supporting lesson [Lie proofs for the characteristic-zero group construction](AG-RG-S06.md) proves the rational Serre algebra and its integrable highest-weight modules. We use those complete proofs before constructing any algebraic group. The construction below includes its finite-presentation, group-law, geometric connectedness, Lie-algebra and root-datum arguments.
 
-Let \(\Phi\) be a reduced semisimple root system, \(Q=\mathbf Z\Phi\) its root lattice and \(P\) its weight lattice. Theorem 6.2 gives \(\mathfrak g/\mathbf Q\) with exactly those roots. For a dominant integral \(\lambda\), Section 7 forms the cyclic quotient with relations \(e_jv=0\), \(h_jv=\langle\lambda,\alpha_j^\vee\rangle v\), and \(f_j^{\langle\lambda,\alpha_j^\vee\rangle+1}v=0\). The ordered-word basis proves that its top vector survives. Local nilpotence of the simple root operators gives Weyl-invariant weights. Every occurring weight \(\mu\) satisfies both \(\lambda-\mu\in Q^+\) and \(\mu-w_0\lambda\in Q^+\); hence it lies in a finite integral box, with finite-dimensional weight spaces. Only after this proves finite dimension does Theorem 4.2 give complete reducibility and the cyclic, one-dimensional top imply irreducibility. Exact base change of this rational presentation proves absolute irreducibility over every characteristic-zero extension. Apply this to the fundamental weights and put \(V_i=L_{\mathbf Q}(\omega_i)\) and \(V=\bigoplus_iV_i\).
+### The finite modules and their matrix parameters
 
-For every root vector \(e_\alpha\), its action on \(V\) is nilpotent. Define the polynomial matrix
+Let \(\Phi\) be a reduced semisimple root system, \(Q=\mathbf Z\Phi\), and \(P\) its weight lattice. Write \(\alpha_i^\vee\) for the simple coroots and \(\omega_i\) for their dual fundamental weights, so \(P=\bigoplus_i\mathbf Z\omega_i\). S06 Theorem 6.2 supplies the rational split semisimple algebra
 
 $$
-x_\alpha(u)=\exp(u e_\alpha)
-=\sum_{j\geq0}\frac{u^j e_\alpha^j}{j!}
-\quad(u\in\mathbf G_{a,\mathbf Q}).
+\mathfrak g=\mathfrak n^-\oplus\mathfrak h\oplus\mathfrak n^+,
+\qquad
+\mathfrak h=\bigoplus_i\mathbf Qh_i,
 $$
+
+with exactly the prescribed one-dimensional root spaces and the simple rank-one brackets. It remains semisimple after every characteristic-zero field extension, as the whole proof there verifies.
+
+For a dominant integral \(\lambda\), S06 Section 7 constructs the cyclic module with relations
+
+$$
+e_i v=0,\qquad
+h_i v=\langle\lambda,\alpha_i^\vee\rangle v,\qquad
+f_i^{\langle\lambda,\alpha_i^\vee\rangle+1}v=0.
+$$
+
+Its proof first uses the complete ordered-word theorem, S06 Theorem 1.A, to identify the induced module with \(U(\mathfrak n^-)\). The additional singular-vector submodules have no top \(\lambda\)-component. Thus this quotient has a nonzero cyclic vector and a one-dimensional top *before* finite-dimensional complete reducibility is applied.
+
+The same proof establishes local nilpotence and Weyl symmetry before finiteness: the finite-on-each-vector operators \(\exp(e_i)\exp(-f_i)\exp(e_i)\) carry a weight to its simple reflection. Every weight \(\mu\) consequently satisfies
+
+$$
+\lambda-\mu\in Q^+,\qquad \mu-w_0\lambda\in Q^+.
+$$
+
+Write \(\lambda-w_0\lambda=\sum b_i\alpha_i\) and \(\lambda-\mu=\sum d_i\alpha_i\). Since \(\lambda\) and its Weyl translates occur, the \(b_i\) are nonnegative integers; the two inequalities say \(0\le d_i\le b_i\). There are only finitely many such tuples. For each fixed tuple, a negative-root PBW monomial has exponents \(m_\beta\) with \(\sum_{\beta>0}m_\beta\operatorname{ht}(\beta)=\sum d_i\). All positive heights are at least one, so only finitely many monomials occur. Each weight space, and hence the whole quotient, is finite-dimensional.
+
+Now S06 Theorem 4.2 gives complete reducibility. If a proper submodule had a nonzero top component, it would contain the cyclic generator and would be the whole module. It therefore has top component zero. An invariant complement contains the generator, since projection preserves weights, and cyclicity makes that complement the entire module. Thus the proper submodule is zero. Denote the resulting irreducible module by \(L_{\mathbf Q}(\lambda)\). Tensoring its left-ideal presentation with any characteristic-zero field is exact; the top stays nonzero and one-dimensional, cyclicity stays true, and the same complement argument applies. These particular modules are absolutely irreducible.
+
+Put \(V_i=L_{\mathbf Q}(\omega_i)\) and \(V=\bigoplus_iV_i\). They remain pairwise nonisomorphic after field extension: an isomorphism between top weights \(\lambda,\mu\) would force both \(\lambda-\mu\) and \(\mu-\lambda\) to belong to \(Q^+\), hence \(\lambda=\mu\). The representation \(\rho:\mathfrak g\to\operatorname{End}(V)\) is faithful by S06 Section 8: its kernel is a sum of simple diagram ideals, and an ideal containing index \(i\) acts nontrivially on \(V_i\), since \(h_i\) acts by one on its top.
+
+Choose a rational root vector \(e_\alpha\) in each root line, with \(e_{\alpha_i}=e_i\) and \(e_{-\alpha_i}=f_i\) for the linked simple choices. It raises a weight by \(\alpha\). The finite weight set contains no arbitrarily long sequence \(\mu+j\alpha\), so \(E_\alpha=\rho(e_\alpha)\) is nilpotent. The finite matrix series
+
+$$
+x_\alpha(u)=\exp(uE_\alpha)
+=\sum_{j\ge0}\frac{u^jE_\alpha^j}{j!}
+$$
+
+is a morphism over \(\mathbf Q\) on every test algebra. Multiplying two such series and collecting the coefficient of \(E_\alpha^j\) gives the binomial formula, hence \(x_\alpha(u)x_\alpha(v)=x_\alpha(u+v)\) and inverse \(x_\alpha(-u)\).
 
 **Lemma 6.1 (polynomial rank-one actions).** The irreducible finite-dimensional complex \(\mathfrak{sl}_2\)-modules are \(\operatorname{Sym}^n(\mathbf C^2)\), for \(n\geq0\), with weights \(n,n-2,\ldots,-n\); every finite-dimensional module is their direct sum. Every finite-dimensional rational representation of \(\mathfrak{sl}_2\) integrates to a polynomial representation of \(\operatorname{SL}_{2,\mathbf Q}\). On its summands of highest weight \(n\), the upper and lower root groups act by \(\exp(xe)\) and \(\exp(xf)\), and the diagonal torus acts on weight \(m\) by \(z^m\).
 
-**Proof.** Begin with \(W_n=\operatorname{Sym}^n(\mathbf Q^2)\), written as the degree-\(n\) polynomials in the basis vectors \(u,v\). For every \(\mathbf Q\)-algebra \(A\), a matrix \(g=\left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)\in\operatorname{SL}_2(A)\) acts by
+**Proof.** The trace-zero algebra with basis \(e,f,h\) and brackets \([h,e]=2e\), \([h,f]=-2f\), \([e,f]=h\) is simple in characteristic zero. An ideal is stable under \(\operatorname{ad}h\), whose three eigenvalues \(2,-2,0\) are distinct. Polynomial projections isolate any nonzero basis component, and bracketing that component with the other generators gives all three. Thus S06 Theorem 4.2 applies to its finite-dimensional modules.
+
+Let \(W_n=\operatorname{Sym}^n(\mathbf Q^2)\), with basis the degree-\(n\) monomials in \(u,v\). On every \(\mathbf Q\)-algebra, the matrix \(\left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)\) acts by
 
 $$
 u\longmapsto au+cv,\qquad v\longmapsto bu+dv.
 $$
 
-The coefficients on the monomial basis \(u^{n-j}v^j\) are polynomials in \(a,b,c,d\). Acting successively by \(h\) and \(g\) sends each basis vector to its image under \(gh\); hence these substitutions define a group-scheme representation. The identity acts identically, and the substitution for \(g^{-1}\) is its inverse. Differentiating gives
+The resulting matrix entries are polynomials in \(a,b,c,d\). Composing the substitutions gives matrix multiplication, the identity substitution is the identity, and the substitution for the inverse matrix is inverse. For determinant one, the inverse entries are again polynomials in these four entries. This defines a group-scheme representation. Its differential is
 
 $$
-e=u\frac{\partial}{\partial v},\qquad
-f=v\frac{\partial}{\partial u},\qquad
-h=u\frac{\partial}{\partial u}-v\frac{\partial}{\partial v}.
+e=u\partial_v,\qquad f=v\partial_u,\qquad
+h=u\partial_u-v\partial_v.
 $$
 
-An upper unipotent matrix fixes \(u\) and replaces \(v\) by \(v+xu\); the finite Taylor formula is exactly \(\exp(xe)\). A lower unipotent matrix similarly gives \(\exp(xf)\). The diagonal matrix \(\operatorname{diag}(z,z^{-1})\) multiplies \(u^{n-j}v^j\) by \(z^{n-2j}\). These identities hold over every \(\mathbf Q\)-algebra.
+Upper and lower unipotent substitutions give the finite Taylor series \(\exp(xe)\), \(\exp(xf)\), and the diagonal multiplies \(u^{n-j}v^j\) by \(z^{n-2j}\). All these are identities over every \(\mathbf Q\)-algebra.
 
-Here is the finite-dimensional weight argument. In an irreducible complex module, choose an eigenvector of \(h\). Applying \(e\) raises its eigenvalue by two; the finite set of eigenvalues makes this process end at a nonzero \(w\) with \(ew=0\), \(hw=\lambda w\). The commutator relations give, by induction,
+In a nonzero irreducible complex module choose an \(h\)-eigenvector. Applying \(e\) repeatedly raises its eigenvalue by two; finitely many eigenvalues force a last nonzero vector \(w\), with \(ew=0\), \(hw=\lambda w\). Commutator induction gives
 
 $$
 hf^jw=(\lambda-2j)f^jw,\qquad
 ef^jw=j(\lambda-j+1)f^{j-1}w.
 $$
 
-The first identity follows from \([h,f]=-2f\). For the second, commute \(e\) past one more \(f\): the new coefficient is \((\lambda-2j)+j(\lambda-j+1)=(j+1)(\lambda-j)\). There is a last nonzero vector \(f^nw\), again because the eigenvalues are distinct and the module is finite. Applying the second identity at \(j=n+1\) gives \((n+1)(\lambda-n)f^nw=0\), hence \(\lambda=n\). The string spans a nonzero submodule, so is the entire irreducible module. Its operators agree with those on \(W_n\) by the map \(f^ju^n\mapsto f^jw\). Conversely \(W_n\) is irreducible: its distinct one-dimensional \(h\)-weight spaces split every invariant subspace, and repeated \(e\) carries any nonzero weight vector to \(u^n\); repeated \(f\) then gives all of \(W_n\). Weyl complete reducibility, proved in the preceding Lie lesson, Theorem 4.2, now gives the assertion for every finite-dimensional complex module.
+For the second induction step, commuting past one further \(f\) adds \(\lambda-2j\) to the preceding coefficient and gives \((j+1)(\lambda-j)\). Lowering also ends, since nonzero \(f^jw\) have distinct eigenvalues. If \(f^nw\ne0\) and \(f^{n+1}w=0\), the second equation at \(n+1\) gives \((n+1)(\lambda-n)f^nw=0\), hence \(\lambda=n\). The string spans a nonzero invariant submodule and is therefore the whole irreducible module. The map \(f^ju^n\mapsto f^jw\), \(0\le j\le n\), identifies its operators with those of \(W_n\). These vectors are a basis: the coefficients of \(f^ju^n\) are \(n!/(n-j)!\ne0\).
 
-For a general rational module \(M\), that argument after extension to \(\mathbf C\) gives a direct sum of these modules. The rational highest-vector spaces
+Conversely \(W_n\) is irreducible. Polynomial projections in its distinct \(h\)-eigenvalues split any invariant subspace into weight components. Repeated \(e\) takes any nonzero such component to \(u^n\), with nonzero coefficients in characteristic zero, and repeated \(f\) generates all basis vectors. Complete reducibility now proves the decomposition of every finite-dimensional complex module.
 
-$$
-K_n=\ker(e:M\to M)\cap\ker(h-n:M\to M)
-$$
-
-commute with field extension because they are kernels of rational linear maps. For \(w\in K_n\), send \(f^ju^n\) to \(f^jw\), for \(0\leq j\leq n\). The identity \(ef^jw=j(n-j+1)f^{j-1}w\) and \(hf^jw=(n-2j)f^jw\) prove equivariance. The relation \(f^{n+1}w=0\) follows over \(\mathbf C\) from the weight theorem and therefore over \(\mathbf Q\). These maps give
+For a rational module \(M\), put \(K_n=\ker e\cap\ker(h-n)\). Kernels of these rational linear maps commute with field extension. Over \(\mathbf C\), only finitely many \(K_n\), with \(n\ge0\), occur. The string equations give an equivariant map
 
 $$
-\bigoplus_{n\geq0}W_n\otimes_{\mathbf Q}K_n\longrightarrow M.
+\bigoplus_{n\ge0}W_n\otimes_{\mathbf Q}K_n\longrightarrow M,
+\qquad f^ju^n\otimes w\longmapsto f^jw.
 $$
 
-Only finitely many summands occur. After extension to \(\mathbf C\), the highest-vector classification makes this map an isomorphism; faithful flatness makes it an isomorphism over \(\mathbf Q\). Transport the displayed polynomial actions through it. Their differentials and root and torus formulas are the prescribed ones. \(\square\)
+The relation \(f^{n+1}w=0\) follows over \(\mathbf C\) from its decomposition, and hence over \(\mathbf Q\). That decomposition makes the displayed map an isomorphism after extension. A rational kernel or cokernel with zero faithful field extension is zero, so it is an isomorphism over \(\mathbf Q\). Transport the polynomial actions on its finitely many summands. Their differentials, diagonal weights and unipotent exponentials are the prescribed ones. This proves every assertion of the lemma. \(\square\)
 
-Let \(T=D_\mathbf Q(P)\) act on \(V_\mu\) through the character \(\mu\). The highest-weight vectors have characters \(\omega_i\); these generate \(P\), so this torus representation is faithful. Let \(G\) be the reduced algebraic closure of the subgroup of \(\operatorname{GL}(V)\) generated by \(T\) and all \(x_\alpha\). It is an algebraic group: multiplication and inversion preserve the closure, as can be checked first with one argument in the generating subgroup and then by density with both arguments. It is connected because the generating torus and additive groups are connected. Theorem G.3.4 of [Supporting group-scheme proofs](AG-RG-S08.md) proves that this finite-type characteristic-zero group is smooth.
+### The closed group generated by the matrices
 
-We prove its Lie algebra is exactly \(\mathfrak g\). The representation \(\rho:\mathfrak g\to\operatorname{End}(V)\) is faithful: its kernel is an ideal, and each simple factor acts nontrivially in one of its fundamental modules. The torus and root exponentials normalize \(\rho(\mathfrak g)\). Hence \(G\) lies in its linear normalizer, whose Lie algebra is
+Let \(T=D_{\mathbf Q}(P)\) act on \(V_\mu\) by \(\mu\). This is a closed torus embedding. Indeed choose a weight basis containing the fundamental highest vectors. Their diagonal matrix entries restrict to the basis characters \(\omega_i\), and the corresponding inverse-matrix entries restrict to their inverses. Inverse entries are regular on \(\operatorname{GL}(V)\), by the adjugate formula. These restricted functions generate \(\mathbf Q[P]\), so the coordinate map onto the torus algebra is surjective, as also proved in S06 Section 8.
+
+If \(\Phi\) is empty, then \(P=\mathfrak g=V=0\); take \(G=1\), with its empty pinning and datum. Henceforth suppose \(\Phi\ne\varnothing\).
+
+Let \(\Gamma\subset\operatorname{GL}(V)(\mathbf Q)\) be the subgroup generated by \(T(\mathbf Q)\) and all \(x_\alpha(\mathbf Q)\). In \(B=\mathbf Q[\operatorname{GL}(V)]\), let \(I\) be the ideal of functions vanishing at every element of \(\Gamma\), and put \(C=B/I\), \(G=\operatorname{Spec}C\). Explicitly \(B=\mathbf Q[m_{ab},z]/(z\det(m_{ab})-1)\), so its presentation is finite. Evaluation embeds \(C\) into the \(\mathbf Q\)-valued functions on \(\Gamma\), so \(I\) is radical.
+
+This closed subscheme is of finite presentation. Here is the algebra input explicitly. A field is Noetherian. If \(R\) is Noetherian and \(J\subset R[x]\), let \(L_n\) be the ideal of coefficients of \(x^n\) in elements of \(J\) of degree at most \(n\). Multiplication by \(x\) gives \(L_n\subset L_{n+1}\). This chain stabilizes: its union is an ideal with finitely many generators, all lying at a single finite stage. Choose polynomials furnishing generators of each \(L_n\) up to the stabilizing stage \(N\). For a polynomial of degree \(m\ge N\), subtract multiples of \(x^{m-N}\) times the chosen degree-\(N\) polynomials to remove its leading coefficient. For \(m<N\), use the chosen degree-\(m\) polynomials. Induction on degree shows that this finite collection generates \(J\). Thus \(R[x]\) is Noetherian. Induct on the variables. Quotients preserve this property by taking ideal inverse images; localization preserves it because any localized ideal is generated by the extension of its contraction. Hence \(B\), a localization of a finite polynomial algebra over \(\mathbf Q\), is Noetherian. The ideal \(I\) is finitely generated, and its quotient is finitely presented.
+
+We prove the group law on this scheme rather than assume it from a point closure. The set \(\Gamma\times\Gamma\) is schematically dense in \(G\times G\). To see this, write an element of \(C\otimes C\) as \(\sum a_i\otimes b_i\), with the \(b_i\) linearly independent. The vectors \((b_i(\gamma))_i\), \(\gamma\in\Gamma\), span the full finite-dimensional coordinate space. Otherwise a nonzero linear functional would make a nontrivial linear combination of the \(b_i\) vanish on all of \(\Gamma\), contradicting the evaluation injection. Choose finitely many such vectors as a basis. If the tensor vanishes at every pair, evaluation at this chosen second-variable basis makes each \(a_i\) vanish at every \(\gamma\), so \(a_i=0\). This proves the injection into functions on \(\Gamma\times\Gamma\).
+
+Multiplication in \(\operatorname{GL}(V)\) pulls every element of \(I\) to a function zero on \(\Gamma\times\Gamma\), so it factors through \(G\times G\to G\). Inversion pulls \(I\) into \(I\), because \(\Gamma\) is a subgroup. The identity belongs to \(G\). All group axioms are the restrictions of the matrix identities. Thus \(G\) is an affine finite-presentation group scheme over \(\mathbf Q\).
+
+The given torus and additive matrix morphisms factor through \(G\). A Laurent polynomial vanishing on \((\mathbf Q^\times)^r\) is zero: multiply by a monomial, then induct on the variables using the bound of the degree on the number of roots of a nonzero one-variable polynomial. The same argument applies to the ordinary polynomial parameter of \(x_\alpha\). Pullbacks of \(I\) along these morphisms are consequently zero.
+
+S08 Theorem G.3.4, with its complete Cartier proof, makes \(G\) smooth. It is geometrically connected. For any field extension \(k/\mathbf Q\), the same rational points \(\Gamma\) are schematically dense in \(G_k\): write a function as a finite sum \(\sum c_i a_i\) with the \(c_i\in k\) linearly independent over \(\mathbf Q\). Its values at \(\Gamma\) have \(a_i(\gamma)\in\mathbf Q\); vanishing forces each \(a_i(\gamma)=0\), hence each \(a_i=0\). Over an algebraic closure, the smooth-component argument of S08 Theorem G.4.2 makes the identity component an open-and-closed subgroup. The connected torus and additive images lie in it. Their rational products contain \(\Gamma\), so schematic density makes that component all of \(G_k\).
+
+Each root parameter is a closed immersion into \(G\). For a nonzero nilpotent \(E=E_\alpha\) of index \(d\), the matrices \(1,E,\ldots,E^{d-1}\) are linearly independent. In a proposed relation take the smallest nonzero power coefficient; its remaining polynomial factor has nonzero constant term and is invertible at \(E\), forcing that power of \(E\) to be zero, contrary to its index. A rational linear functional on matrices can therefore take value one on \(E\) and zero on the other listed powers. Its value on \(\exp(uE)\) is exactly \(u\). Matrix-entry functions consequently surject onto \(\mathbf Q[u]\), proving the closed immersion, including on nonreduced test algebras.
+
+### Its Lie algebra, centre and root datum
+
+Put \(\mathfrak l=\rho(\mathfrak g)\subset\operatorname{End}(V)\). Its matrix normalizer is closed: on a basis of \(\mathfrak l\), require the images under conjugation by \(g\) and by \(g^{-1}\) to have zero components in the quotient space \(\operatorname{End}(V)/\mathfrak l\). These are finitely many regular equations on \(\operatorname{GL}(V)\), and both conditions give equality of the submodules after every test-algebra extension. The torus preserves \(\mathfrak l\) by its root weights. For a root exponential, binomial expansion gives
 
 $$
-\{A:[A,\rho(\mathfrak g)]\subset\rho(\mathfrak g)\}.
+\exp(uE_\alpha)\rho(x)\exp(-uE_\alpha)
+=\rho\left(\sum_{j\ge0}\frac{u^j(\operatorname{ad}e_\alpha)^j x}{j!}\right).
 $$
 
-For such an \(A\), commutation defines a derivation of \(\mathfrak g\). The preceding Lie lesson, Proposition 3.1, proves nondegeneracy of the Killing form; Proposition 3.3 proves the needed inner-derivation assertion. Its short calculation is repeated here. For a derivation $D$, nondegeneracy of the Killing form $\kappa$ gives $z$ with $\kappa(z,x)=\operatorname{tr}(D\operatorname{ad}x)$ for all $x$. Set $E=D-\operatorname{ad}z$. Then $\operatorname{tr}(E\operatorname{ad}x)=0$, and
+Both sides are finite sums: nilpotence on the finite root-weight decomposition bounds the adjoint sum. Thus these generators normalize \(\mathfrak l\) as schemes. Their rational subgroup \(\Gamma\) does too, and its defining density puts \(G\) in this closed normalizer.
+
+At the identity, conjugation by \(1+\varepsilon A\), \(\varepsilon^2=0\), changes \(\rho(x)\) by \(\varepsilon[A,\rho(x)]\). Thus a tangent vector \(A\in\operatorname{Lie}(G)\) satisfies \([A,\mathfrak l]\subset\mathfrak l\). Faithfulness defines a derivation \(D_A\) of \(\mathfrak g\); the derivation equation follows directly by expanding the matrix Jacobi identity.
+
+For clarity, the entire inner-derivation calculation of S06 Proposition 3.3 is as follows. Its Proposition 3.1 makes the Killing form \(\kappa\) nondegenerate. Choose \(z\) with \(\kappa(z,x)=\operatorname{tr}(D_A\operatorname{ad}x)\), and set \(E=D_A-\operatorname{ad}z\). Then \(\operatorname{tr}(E\operatorname{ad}x)=0\). The derivation identity gives \([E,\operatorname{ad}x]=\operatorname{ad}(Ex)\), and cyclic trace gives
 
 $$
 0=\operatorname{tr}(E\operatorname{ad}[x,y])
@@ -529,35 +585,49 @@ $$
 =\kappa(Ex,y).
 $$
 
-Nondegeneracy makes $E=0$. This proof applies directly over $\mathbf Q$. Thus
+Hence \(E=0\), so
 
 $$
 A\in\rho(\mathfrak g)+\operatorname{End}_{\mathfrak g}(V).
 \tag{6.1}
 $$
 
-After algebraic closure, the distinct irreducible \(V_i\) have commutant consisting of one scalar on each summand. On the other hand every generator of \(G\) has determinant one on each \(V_i\). For exponentials this follows from nilpotence. For \(T\), the determinant character is the sum of the weights with multiplicity; its differential is the trace of \(\mathfrak h\) on \(V_i\), which is zero because \(\mathfrak g=[\mathfrak g,\mathfrak g]\). In characteristic zero a character with zero differential is zero. Therefore
+Over an algebraic closure \(k\), the commutant is one scalar on each \(V_i\). A nonzero map between two irreducible summands has zero kernel and full image and would be an isomorphism; their distinct top weights rule this out. On one irreducible summand, subtract an eigenvalue of a commuting endomorphism. Its nonzero kernel is invariant and hence the whole summand, so the endomorphism is scalar. This proves the full commutant assertion.
+
+Every generator has determinant one on each \(V_i\). For a root exponential, a basis adapted to kernels of powers of its nilpotent generator makes the matrix upper triangular with all diagonal entries one. For \(T\), let \(\sigma_i\in P\) be the sum of its weights with multiplicities. Its pairing with every simple coroot is the trace of \(h_j\) on \(V_i\). This trace is zero: S06 Proposition 3.2 gives \(\mathfrak g=[\mathfrak g,\mathfrak g]\), and a matrix commutator has trace zero. The simple coroots are the dual basis of \(P\), so \(\sigma_i=0\) in the lattice. Thus \(G\subset\prod_i\operatorname{SL}(V_i)\), by the same defining density.
+
+For a tangent matrix, \(\det(1+\varepsilon A_i)=1+\varepsilon\operatorname{tr}(A_i)\). Each block trace is therefore zero. In (6.1) the block trace of \(\rho(z)\) is zero by perfectness, and a scalar \(c_i\) has trace \((\dim V_i)c_i\). Characteristic zero makes every \(c_i=0\). This proves \(\operatorname{Lie}(G_k)\subset\rho(\mathfrak g_k)\). Conversely the torus tangent vectors give \(\rho(\mathfrak h_k)\), and each additive parameter has tangent \(E_\alpha\). They span the whole algebra. Consequently
 
 $$
-G\subset\prod_i\operatorname{SL}(V_i).
+\operatorname{Lie}(G_k)=\rho(\mathfrak g_k).
 $$
 
-In (6.1) a scalar on \(V_i\) has trace \((\dim V_i)c_i\). The trace condition makes every \(c_i=0\). It follows that \(\operatorname{Lie}(G)\subset\rho(\mathfrak g)\). The reverse inclusion follows from the torus and root-group tangent vectors, which span \(\mathfrak g\). We have equality.
+The rational equality follows as well: tangent equations are rational linear equations, and a kernel or quotient with zero faithful field extension is zero.
 
-We check reductivity and semisimplicity over an algebraic closure $k$ of $\mathbf Q$. Let $N\subset G_k$ be any smooth connected normal unipotent subgroup. In the unitriangular characterization of unipotent groups used in AG-RG-01 Lemma 2.A, its Lie algebra embeds in the strictly upper triangular matrices and is nilpotent: a bracket of $j$ such matrices lies in the $j$th power of that strictly upper triangular algebra, which is zero for large $j$. Normality makes $\operatorname{Lie}N$ an ideal in $\operatorname{Lie}G_k=\mathfrak g_k$; this follows by differentiating conjugation, as in *Lie algebras and smoothness*, Theorem 2.9. Semisimplicity of $\mathfrak g_k$ gives $\operatorname{Lie}N=0$. Since $N$ is smooth, its dimension is zero; over the algebraically closed field a connected smooth zero-dimensional group is the identity. The geometric reductivity criterion of AG-RG-01 Section 1 therefore makes $G$ reductive.
+The group is reductive. Let \(N\subset G_k\) be a smooth connected normal unipotent subgroup. Use a faithful closed unitriangular realization of \(N\), as in the unipotent convention of RG01 Lemma 2.A. Its Lie algebra is nilpotent: commutators of strictly upper triangular matrices lie in successive powers of that associative algebra, which eventually vanish. Normality makes \(\operatorname{Lie}N\) an ideal of \(\operatorname{Lie}G_k\); differentiating the conjugation identity gives \([X,Y]\in\operatorname{Lie}N\) for \(X\in\operatorname{Lie}G_k\), \(Y\in\operatorname{Lie}N\). A nilpotent Lie algebra is solvable, since its successive derived brackets have lengths at least \(2^j\). Semisimplicity of \(\mathfrak g_k\) therefore forces \(\operatorname{Lie}N=0\).
 
-The closed centre is represented by the coefficient proof in *Group schemes over a field*, Proposition 5.3. Its Lie algebra is contained in the centre of $\mathfrak g_k$, by the centralizer tangent calculation in Theorem 2.9, and is therefore zero. The characteristic-zero Cartier theorem, [AG-RG-S08 Theorem G.3.4](AG-RG-S08.html), makes this finite-type closed subgroup smooth; hence it is zero-dimensional. A zero-dimensional affine finite-type $k$-algebra is finite-dimensional by the written proof in [AG-RG-S04 Lemma P0.9](AG-RG-S04.html): it has finitely many local Artinian factors, and the finite nilradical filtrations have finite-dimensional layers over residue fields that are finite over $k$. Thus the centre of $G_k$ is finite, and finite-dimensionality descends over the field extension: independent vectors stay independent after tensoring with $k$. A reductive group with finite centre has trivial radical, by the character-lattice definition in AG-RG-03 Section 1, so $G$ is semisimple.
+Smoothness makes every tangent rank of \(N\) zero, by translation. The pointwise differential criterion and field classification in AG-FSE, *Unramified morphisms*, Theorems 3.2 and 3.3, make it a disjoint union of reduced points over \(k\). Connectedness leaves only the identity point. Thus no nontrivial such \(N\) exists, which is precisely geometric reductivity in RG01 Section 1.
 
-The torus $T$ is geometrically maximal. Indeed, its Lie algebra is $\mathfrak h_k$, and the root decomposition gives $C_{\mathfrak g_k}(\mathfrak h_k)=\mathfrak h_k$: each root is a nonzero linear functional in characteristic zero. A torus $T'\supset T_k$ would have its Lie algebra in this centralizer, so its dimension would equal that of $T_k$. The closed inclusion of these split tori corresponds to a surjection of free character lattices of that same rank, hence an isomorphism. Thus $T'=T_k$. Its adjoint root spaces and their $T$-characters are exactly the prescribed $\Phi$.
+The closed torus \(T\) is geometrically maximal. The exhaustive Lie grading just obtained has zero-weight part \(\rho(\mathfrak h_k)=\operatorname{Lie}T_k\) and nonzero characters exactly \(\Phi\). If a torus \(T'\) contains \(T_k\), its tangent vectors centralize \(T_k\), so they lie in this zero-weight part. The reverse tangent inclusion comes from \(T_k\subset T'\); their ranks agree. Over \(k\) both tori are split. Their closed inclusion induces a surjection of free character lattices, by exponent-basis comparison in their group algebras, as in AG-GS Theorem 2.2. Equal ranks give a rank-zero free kernel, hence zero. The inclusion is an isomorphism. This proves maximality on every geometric fibre.
 
-The Lie algebra for each simple root is an \(\mathfrak{sl}_2\). On each finite-dimensional module its exponential matrices and diagonal weight matrices give the usual algebraic \(\operatorname{SL}_2\) action, by Lemma 6.1. Its diagonal torus is the cocharacter of \(D(P)\) pairing with \(\mu\) by \(\langle\mu,\alpha^\vee\rangle\). The rank-one Gauss characterization identifies it with the group coroot. Hence
+Now apply the complete centre calculation in RG03 Section 1 to this reductive group and maximal torus. It gives
+
+$$
+Z(G)=D_{\mathbf Q}(P/Q).
+$$
+
+This is finite. In the fundamental-weight basis the simple roots form an integral square matrix with nonzero determinant \(d\), since they span the rational root space. The adjugate identity gives \(dP\subset Q\); therefore \(P/Q\) is a quotient of the finite group \(P/dP\). Its group algebra has the finite exponent basis, so the diagonalizable centre is finite over \(\mathbf Q\). The radical formula in RG03 Section 1 then gives trivial radical and proves that \(G\) is semisimple. This also identifies its entire centre as a scheme.
+
+The closed parameters \(x_\alpha\) have the required characters and identity differential on their root lines. RG03 Theorem 4.1 identifies them with the canonical root groups of \(G\). For a simple root, Lemma 6.1 integrates the \((e_i,f_i,h_i)\)-action on \(V\) to \(\operatorname{SL}_2\). Its image lies in \(G\) on all test schemes: on the open where the upper-left matrix entry \(a\) is invertible, the Gauss decomposition is a product of its two root parameters and its diagonal. The diagonal acts on weight \(\mu\) by \(z^{\langle\mu,\alpha_i^\vee\rangle}\), hence is the stated cocharacter of \(T\). On the other open \(D(c)\), left multiplication by \(\left(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\right)\), itself a product of the two root matrices, reduces to \(D(a)\). These opens cover because \(ad-bc=1\) makes \((a,c)\) the unit ideal. Thus the whole polynomial action factors through \(G\).
+
+The linked Gauss formula in RG03 Theorem 7.1 identifies that diagonal cocharacter with the canonical group coroot. For every root, transport a simple root by a Weyl word, using the finite height descent in Section 5. RG04 Theorem 2.1 gives the action of each integrated simple representative on \(P\) by the prescribed simple reflection. Conjugating the linked Gauss identity and applying its uniqueness in RG03 Theorem 7.1 transports each coroot with its root. Successive conjugation therefore gives precisely the prescribed \(\Phi^\vee\). Consequently
 
 $$
 \mathcal R(G,T)=(P,\Phi,P^*,\Phi^\vee).
 \tag{6.2}
 $$
 
-This is the simply connected datum: its cocharacter lattice \(P^*\) is the coroot lattice. The construction is over \(\mathbf Q\), which will let us check integral polynomial identities in one characteristic-zero fibre.
+Its simple root frames are \(E_{\alpha_i}\), so \(G\) is pinned split. Since the \(\omega_i\) are the dual basis of the simple coroots, \(P^*\) is exactly the coroot lattice. This is the simply connected semisimple datum. The empty-root case specified above has the same conclusion. Everything was constructed over \(\mathbf Q\), before any integral model, and all polynomial identities hold on arbitrary commutative \(\mathbf Q\)-algebras.
 
 ## 7. Integral coordinates and a partial group law
 
@@ -631,17 +701,25 @@ $$
 
 This domain contains \(T,U^-,U^+\). Associativity on common domains, the identity rule, and the inverse rule hold as integral identities: they hold in the characteristic-zero group, and the domains in question are flat open subschemes of products of \(X\).
 
-For the next construction we need the partial translations to be open isomorphisms with dense domains and images in every fibre. This can be arranged without a characteristic restriction. For either universal translation map
+For the next construction we need open partial translations with dense domains and images in every fibre. Write \(D\subset X\times_{\mathbf Z}X\) for the multiplication domain just constructed. Its two universal translation maps are
 
 $$
 (x,y)\longmapsto(x,m(x,y)),\qquad
-(x,y)\longmapsto(m(x,y),y),
+(x,y)\longmapsto(m(x,y),y).
 \tag{7.6}
 $$
 
-the differential is an isomorphism along both identity axes. Here is a way to check the potentially nontrivial differential. Factor an arbitrary \(x\) into its ordered negative root factors, its torus factor, and its ordered positive root factors. Left translation by these successive factors is defined at the successive suffixes of this factorization: a negative or torus factor uses \(B^-\times X\), and a positive factor encounters a suffix in \(U^+\). Translation by its inverse is defined at the resulting point by the same conditions. The inverse identity, checked over \(\mathbf Q\), makes these local maps mutually inverse on neighborhoods. Their composition is left translation by \(x\) near \(e\), so that translation is a local isomorphism there. Ordered prefixes give the corresponding assertion for right translation. The argument works with the universal coordinates and therefore after every base change.
+Both maps are local isomorphisms along both identity axes. At \((e,y)\), the first map has identity differential in the \(y\)-direction; at \((x,e)\), the second has identity differential in the \(x\)-direction. We give the other two assertions explicitly. Factor the universal \(x\) into its ordered negative root factors, torus factor and ordered positive root factors. For left translation, apply these factors from right to left to successive suffixes, starting at \(e\). A positive factor and its suffix are in \(U^+\times U^+\); a torus or negative factor uses \(B^-\times X\). Translation by the inverse factor is defined at the resulting suffix: the positive case stays in \(U^+\), and the other cases again use \(B^-\times X\). On the common open neighbourhoods the two maps are inverse. Indeed their compositions are the identity over \(\mathbf Q\), and the coordinate rings of their open domains are \(\mathbf Z\)-flat, so equality holds over \(\mathbf Z\). Composing gives left translation by \(x\) as a local isomorphism at \(e\). Associativity identifies this composition with the existing \(m(x,-)\) on their common neighbourhood of \(e\). For right translation, start at \(e\), apply factors from left to right to successive prefixes, and use \(U^-\times U^-\) or \(X\times B^+\) and the inverse factors. This gives right translation by \(x\) as a local isomorphism at \(e\). All the points, factors and neighbourhoods here use universal coordinates; thus the assertions hold after every base change, rather than only at rational points.
 
-Restrict (7.6) to the open on which both maps are étale. It contains both identity axes. Each map is separated, quasi-finite and birational between integral normal Noetherian schemes smooth over \(\mathbf Z\), so [the preceding Zariski Main supporting lesson](AG-RG-S04.md), Corollary D7.4, makes it an open immersion. Its images, and the domain, are dense relative to both projections: each slice contains the corresponding identity-axis point and is a nonempty open in an irreducible geometric fibre. The graph of this restricted multiplication consequently has all three pair projections open, with dense slices. This is a **strict partial group law** on \(X\).
+The same inverse-factor argument works at every pair in \(U^-\times U^-\), \(U^+\times U^+\) and \(T\times T\): the intermediate products and inverse products stay in that subgroup. The two maps in (7.6) are therefore étale at all those pairs as well. Let \(D^\circ\subset D\) be the intersection of their étale loci. It contains both identity axes and those three whole pair subschemes. Retain \(m\) on \(D^\circ\).
+
+The two restricted maps in (7.6) are open immersions. Here their sources and targets are integral normal Noetherian schemes. Their coordinate algebras are localizations of finite polynomial algebras over \(\mathbf Z\). The complete integer-factorization proof in S04 Lemma B1.1 and the reduced-fraction proof in Lemma P0.5 make \(\mathbf Z\) normal. S04 Corollary B1.2 gives polynomial normality by induction on the variables, and Lemma P0.3 gives normality after localization. Every integer ideal is principal by the least-positive-generator argument in S04 Lemma P0.10; thus \(\mathbf Z\) is Noetherian, and the complete leading-coefficient proof in Section 6 makes these polynomial algebras and their localizations Noetherian. These properties pass to their open subschemes. Each restricted map is separated, since it is a morphism between separated \(\mathbf Z\)-schemes; it is quasi-finite, since it is étale and its Noetherian open domain is quasi-compact. It is birational: over \(\mathbf Q\) it is the restriction of multiplication in the group constructed in Section 6, whose big cell is \(X_{\mathbf Q}\), so the generic translation has the inverse supplied by the group law. The exact normal birational consequence, [S04 Corollary D7.4](AG-RG-S04.md), consequently applies to each map over \(\mathbf Z\). Denote their open images by \(D_{13},D_{23}\).
+
+Every slice of each of \(D^\circ,D_{13},D_{23}\) over either coordinate projection is a nonempty open in the corresponding geometrically irreducible fibre of \(X\), and hence is dense. For \(D^\circ\) this follows from its two identity axes. The first translation sends \((x,e)\) to \((x,x)\) and \((e,y)\) to \((e,y)\), so both types of slices of \(D_{13}\) have a point. The second sends these axes to \((x,e)\) and \((y,y)\), giving the same conclusion for \(D_{23}\). These are statements on geometric fibres and remain true after arbitrary base change. The graph
+\[
+W=\{(x,y,m(x,y)):(x,y)\in D^\circ\}\subset X^3
+\]
+therefore projects isomorphically onto each of the three open subschemes \(D^\circ,D_{13},D_{23}\subset X^2\), with the required dense slices. Associativity, identity and partial inversion remain the already verified integral identities on common domains. This is the strict partial group law used below. Its restriction to each torus or root subgroup still contains the entire multiplication law.
 
 ## 8. Completing a strict partial group law
 
@@ -649,44 +727,87 @@ We give the construction rather than assuming a group already exists. This is th
 
 **Lemma 8.1.** Suppose \(X/S\) is smooth, separated and of finite presentation, with geometrically irreducible nonempty fibres. Suppose \(X\) has a strict associative partial group law, an identity section, and partial inversion, with the translation maps defined and invertible locally along both identity axes. Then there is a unique smooth separated group algebraic space \(K/S\) of finite presentation containing \(X\) as a fibrewise dense open and extending its partial group law. Formation of \(K\) commutes with base change.
 
-**Proof.** On each \(S\)-scheme \(R\), consider germs of isomorphisms between fibrewise dense open subschemes of \(X_R\); two representatives agree if they agree on such an open. Finite intersections of dense opens remain dense, and composition and inversion make these germs a group. Apply [AG-RG-S08 Lemma G.3.5](AG-RG-S08.html#universal-schematic-density) on every common open domain. Its fibres are nonempty opens of the geometrically irreducible smooth fibres of $X_R$, so they are geometrically irreducible. Consequently two representatives equal as germs agree on their entire common domain, since $X_R$ is separated. Their domains and their inverse domains can therefore be united and their maps glued to a largest representative isomorphism.
+**Proof.** Write \(D_{12},D_{13},D_{23}\subset X\times_SX\) for the three open images of the strict multiplication graph, ordering the pair for \(D_{23}\) as output followed by second input. Projection to any pair is an isomorphism from that graph. Fixing either entry in any pair leaves a fibrewise dense open in \(X\). In particular the left and right partial translations are isomorphisms between fibrewise dense opens. Denote the inverse of the right-translation pair map by partial right division:
+\[
+q:D_{23}\longrightarrow X,\qquad q(z,b)=a\ \Longleftrightarrow\ (a,b,z)\in W.
+\]
+The pair order here is \((z,b)\); it is obtained from the usual \((b,z)\) projection by exchanging its two entries.
 
-Here is effectiveness of fppf descent without assuming that this largest domain commutes with a flat pullback. Let $R'\to R$ be an fppf cover, and let a descent datum of germs be represented by an isomorphism $h':D'\xrightarrow{\sim}E'$ of fibrewise dense opens of $X_{R'}$. An fppf covering family is handled by the disjoint union of its members and the same argument. Let $O,P\subset X_R$ be the open images of $D',E'$ respectively; they are open by the arbitrary-base openness proof in [*Flat morphisms*, Theorem 3.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-FSE/flat-morphisms.html#3-what-flatness-does-to-the-topology): flatness lifts generizations, the finite-presentation image is constructible by [*Quasi-finite morphisms and Chevalley*, Theorem 5.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-MO/quasi-finite-morphisms-and-chevalley.html#5-chevalley-by-noetherian-approximation), and constructibly compact specialization-stable complements are closed. The maps $D'\to O$ and $E'\to P$ are faithfully flat covering maps. On $D'\times_O D'=D'\times_{X_R}D'$, the two maps $h'$ to $X_R$ agree. Indeed this overlap is the intersection of the two pulled-back dense domains inside $X_{R'\times_RR'}$; the cocycle says that the two germs agree there, and Lemma G.3.5 makes their representatives equal on that entire intersection. Morphism descent from [AG-RG-S04 Lemma A1.5](AG-RG-S04.html) descends $h'$ to a map $h:O\to X_R$. It factors through $P$, because this can be checked on the faithfully flat cover $D'\to O$. Descend $(h')^{-1}$ in the same way to $P\to O$. Their composites are the identities, as is checked on $D'$ and $E'$. Thus $h:O\xrightarrow{\sim}P$ is an isomorphism. Both $O$ and $P$ are fibrewise dense: after a field extension supplied by a point of the covering base, their fibres contain the images of the dense fibres of $D'$ and $E'$. The descended isomorphism represents the required germ, and its pullback agrees with the initial germ on $D'$. Uniqueness follows from the same common-domain equality and faithfully flat morphism descent. The germs therefore form an fppf sheaf. Write \(\operatorname{Bir}(X)\) for this sheaf.
+**Germs and their descent.** On an \(S\)-scheme \(R\), take isomorphisms between fibrewise dense opens of \(X_R\), identifying two when they agree on a fibrewise dense common open. Intersections of finitely many such opens are dense in every geometric fibre. Composition is defined on the inverse image of the intersection of the intermediate image and domain; inversion reverses a representative. These constructions give a group of germs and commute with pullback.
 
-For \(a\in X(R)\), partial left translation defines a germ \(L_a\), and right translation defines a germ \(R_a\). Strictness supplies their dense isomorphic domains and images. Associativity implies that the left translations commute with all right translations, and \(L_aL_b=L_{ab}\) whenever the partial product exists. Let \(K\) be the subgroup sheaf generated by the \(L_a\).
+Whenever two representatives of the same germ have a common domain, they agree on that entire domain. Apply [S08 Lemma G.3.5](AG-RG-S08.html#universal-schematic-density) to the common open: it is smooth, and each nonempty geometric fibre is an open of a geometrically irreducible fibre of \(X\). Restrict the base to its open image when necessary. The separated target \(X_R\) and universal schematic density give equality, including on nonreduced tests. This also proves that the maps and their inverse maps glue across compatible representative domains.
 
-A germ \(g\in K(R)\) that is defined at one section \(x\) and fixes it is the identity. Indeed, \(g\) fixes every partial product \(xb\) where that product and \(g\) are defined, since it commutes with \(R_b\). These points form a fibrewise dense open, by strictness. This proves the claim. Likewise \(a\mapsto L_a\) is injective: if \(L_a=L_b\), choose a section \(z\) in their common dense domains fppf locally. The two partial products \(az=bz\) and the injectivity of partial right translation give \(a=b\).
+The germs are an fppf sheaf. To prove effectivity, represent a compatible germ over a covering \(R'\to R\) by \(h':A'\xrightarrow{\sim}B'\), with both opens fibrewise dense. A covering family is treated by the disjoint union of its members. Let \(A,B\subset X_R\) be their images. They are open because flat locally finitely presented maps are universally open, with the complete proof in [AG-FSE, *Flat morphisms*, Theorem 3.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-FSE/flat-morphisms.html#3-what-flatness-does-to-the-topology). The maps \(A'\to A,B'\to B\) are surjective flat and locally finitely presented. The two representatives agree on \(A'\times_{X_R}A'\): compatibility gives equality as germs on the base overlap, and the preceding density argument gives equality on the entire intersection of domains. [S04 Lemma A1.5](AG-RG-S04.md) therefore descends \(h'\) to \(A\to X_R\). Its image is in \(B\), as can be checked after the covering. Descend its inverse to \(B\to A\); both inverse equations hold after the covers and hence before them. The opens \(A,B\) are fibrewise dense, since their fibres contain the images of the dense covering fibres after a residue-field extension. Thus this is the descended germ. The same whole-common-domain argument and morphism descent prove uniqueness. Write \(\operatorname{Bir}(X)\) for this sheaf. No assertion about base change of maximal representative domains has been used.
 
-The injection \(X\to K\) is an open immersion. To check it, take \(g\in K(R)\), let \(D_g\subset X_R\) be a representative domain, and retain points \(z\) for which the partial division of \(g(z)\) by \(z\) exists. This is an open \(E\subset D_g\), whose image \(O\subset R\) is open because \(X_R\to R\) is smooth. On \(E\), that division gives \(a\in X(E)\) with \(L_a=g\): their quotient fixes \(z\), so the preceding claim applies. The injectivity just proved makes these local \(a\)'s agree on \(E\times_OE\), and they descend to \(a\in X(O)\). Conversely, if \(g=L_a\) after a base change, the dense slice conditions provide such \(z\) locally. This is precisely the universal property of \(R\times_KX=O\).
+**Translation germs and one-point faithfulness.** For \(a\in X(R)\), let \(L_a\) and \(R_a\) be its partial left and right translation germs. Associativity gives
+\[
+L_aR_b=R_bL_a,\qquad L_aL_b=L_{m(a,b)}
+\]
+when the displayed partial product exists. For these germ equalities the composed domains are fibrewise dense: each translation is an isomorphism between dense opens, and finite intersections stay dense. Associativity gives equality on their common triple-product domain, and the preceding schematic-density argument extends it over each whole common domain. Let \(K\) be the subgroup sheaf of \(\operatorname{Bir}(X)\) generated by the \(L_a\); concretely its sections are fppf locally finite words in these germs and their inverses. They commute with every \(R_b\), after every test-scheme extension.
 
-Every germ \(g\in K(R)\) can fppf locally be written
+If a representative of \(g\in K(R)\) is defined at a section \(x\) and satisfies \(g(x)=x\), then \(g=1\). To see this on all tests, let \(b\) vary in \(X_R\). Retain the open on which \(xb\) exists and belongs to the chosen domain of \(g\). It is fibrewise dense: \(L_x\) is a dense-open isomorphism, and its image meets that domain densely. On this open the two compositions \(gR_b\) and \(R_bg\) are both defined at \(x\). Their equality on the whole common domain gives
+\[
+g(xb)=g(x)b=xb.
+\]
+The points \(xb\) range over a fibrewise dense open via \(L_x\), so \(g\) is the identity germ. This argument uses the universal \(b\), rather than a choice of rational points.
 
-$$
-g=L_aL_b^{-1}\quad(a,b\in X).
+The map \(j:X\to K\), \(a\mapsto L_a\), is injective. For \(L_a=L_b\), choose \(z\) in the intersection of their dense domains fppf locally; that intersection is smooth and surjective over \(R\). Then \(az=bz\), and the open-immersion right-translation pair map makes \(a=b\). Morphism descent gives the original equality on \(R\).
+
+**The open chart.** This injection is representable by open immersions. Fix \(g\in K(R)\) and one dense-open representative \(g:A_g\to B_g\). Let
+\[
+E_g=\{z\in A_g:(g(z),z)\in D_{23,R}\},\qquad
+O_g=\operatorname{image}(E_g\to R).
+\]
+Both are open; the latter follows from smooth openness. On \(E_g\) put \(a=q(g(z),z)\). The germ \(L_a^{-1}g\) is defined at \(z\) and fixes it, so one-point faithfulness gives \(L_a=g\). Injectivity of \(j\) makes these \(a\)'s agree on \(E_g\times_{O_g}E_g\). The smooth surjection \(E_g\to O_g\), together with S04 Lemma A1.5, descends them to a unique section \(a\in X(O_g)\) with \(j(a)=g\).
+
+This open has the required property after every \(R'\to R\). If \(g_{R'}=L_a\), intersect the pullback of the fixed original domain \(A_g\) with the partial left-translation domain of \(a\). This is fibrewise dense and smooth-surjective over \(R'\). On it \(g(z)=az\), by equality of representatives on their whole common domain; hence \((g(z),z)\in D_{23}\), and \(a=q(g(z),z)\). The cover therefore factors through \(E_g\), so \(R'\to R\) factors through \(O_g\). Conversely a map through \(O_g\) pulls back its unique section. Thus
+\[
+R\times_KX=O_g
+\]
+as functors on all schemes. In particular this proves the open-immersion claim without assuming that a maximal domain commutes with base change.
+
+**Translated charts and the quotient.** A translate \(j_g=(g\cdot)j_R:X_R\to K_R\) is again a representable open immersion of sheaves. Define the intersection chart
+\[
+\Omega_g=X_R\cap g^{-1}X_R.
+\]
+Precisely, it is the inverse image of the open subfunctor \(j_R(X_R)\) under \(j_g\). It is an open subscheme of \(X_R\), and its formation commutes with every base change by this fibre-product definition. The corresponding unique section in \(X_R\) gives an isomorphism
+\[
+\gamma_g:\Omega_g\xrightarrow{\sim}\Omega_{g^{-1}},\qquad
+j(\gamma_g(b))=g\,j(b).
+\]
+
+Every dense-open representative \(g:A_g\to B_g\) maps into this chart. Indeed on the scheme \(A_g\), take its universal section \(b\) and put \(a=g(b)\). The local identity-axis hypothesis makes \(L_b\) defined and invertible near \(e\), with \(L_b(e)=b\), and gives the same assertion for \(L_a\). Thus \(L_a^{-1}gL_b\) is defined at \(e\) and fixes it. One-point faithfulness gives \(gL_b=L_a\). This is exactly \(b\in\Omega_g\) and \(\gamma_g(b)=g(b)\). Consequently \(\Omega_g\) is fibrewise dense and smooth-surjective over \(R\), including after arbitrary base change. We have not identified it with a maximal domain of an arbitrary birational map; its represented intersection is what proves the required base-change property.
+
+It follows that every section of \(K\) is fppf locally
+\[
+g=L_aL_b^{-1}\qquad(a,b\in X).
 \tag{8.1}
-$$
-
-Choose \(b\) in its representative dense domain and put \(a=g(b)\). The germs \(L_b,L_a\) are invertible on neighborhoods of \(e\), taking \(e\) to \(b,a\). Thus \(L_a^{-1}gL_b\) is defined at \(e\) and fixes it, so it is the identity. The choices of \(b\) form a smooth surjective open of \(X_R\).
-
-More precisely, the fibre of
-
-$$
+\]
+Choose \(b\) in \(\Omega_g\) on its smooth covering and let \(a=\gamma_g(b)\). More precisely the fibre over \(g\) of
+\[
 \delta:X\times_SX\longrightarrow K,\qquad
 (a,b)\longmapsto L_aL_b^{-1}
 \tag{8.2}
-$$
-
-over a germ \(g\) is the graph \(a=g(b)\) on the intersection of the translated \(X\)-charts. This is an open in \(X_R\), and is fibrewise dense by the preceding construction. Hence \(\delta\) is representable, smooth and surjective. Its equivalence relation is a scheme explicitly: write a related pair as \(((a,b),(c,d))\). The equality \(L_aL_b^{-1}=L_cL_d^{-1}\) says that \(b\) belongs to the translated-chart domain of the universal germ \(L_cL_d^{-1}\), and that \(a=(L_cL_d^{-1})(b)\). Thus the relation is the graph of that evaluation, parametrized by an open subscheme of \(X^3\) with coordinates \((c,d,b)\). The domain is open because representative domains of the universal germ are open and their union is its maximal domain. Both projections are smooth, being base changes of \(\delta\). Theorem 8.2 of [Flat quotient bootstrap](AG-RG-S07.md) applies to this explicit relation: its endpoint map is a monomorphism on all test schemes, and its smooth projections are flat and locally finitely presented. Its fppf quotient is therefore an algebraic space, with this relation as its equality relation. The sheaf quotient is precisely \(K\), by (8.1). Smoothness of $K/S$ follows from the representable smooth surjection (8.2), whose source $X\times_SX$ is smooth over $S$. In particular $K/S$ is locally of finite presentation. Over each affine open of $S$, the source of (8.2) is quasi-compact, so surjectivity makes $K$ quasi-compact over that open. The separation argument in the next paragraph makes $K/S$ separated and hence quasi-separated. Thus $K/S$ is locally of finite presentation, quasi-compact and quasi-separated, which proves finite presentation. This argument works over the given base and does not require the open relation in $X^3$ to be quasi-compact in advance. Each geometric fibre of $K$ is irreducible, since it is the surjective image of the irreducible fibre of $X\times_SX$.
-
-For completeness, separation can be checked on every scheme test $R\to K\times_SK$. Write its two sections as $a,b\in K(R)$ and consider the open
-\[
-E=a^{-1}X_R\cap b^{-1}X_R\subset K_R.
 \]
-Each geometric fibre of $K_R$ is irreducible by (8.2), and each translate of $X_R$ is a nonempty open in that fibre. Their intersection is therefore nonempty, so $E\to R$ is smooth and surjective. A scheme atlas of $E$ supplies an fppf scheme covering $R_i\to R$ and sections $t_i\in E(R_i)$. Right multiplication by $t_i$ puts both $a$ and $b$ in $X_{R_i}$. The equalizer of $a$ and $b$ over $R_i$ is exactly the equalizer of $at_i$ and $bt_i$, by cancellation in the group sheaf. The latter is a closed subscheme because $X/S$ is separated. This is an equality of functors on every further test scheme, so the pullback of the diagonal of $K/S$ is a closed immersion after the fppf covering. Closed immersions descend by AG-RG-S04 Corollary A3.2; thus the tested diagonal is a closed immersion over $R$. Since the test was arbitrary, the diagonal of $K/S$ is closed. This proves separation over the given base, including nonreduced bases.
+is the graph of \(\gamma_g\), with coordinates \((a,b)=(\gamma_g(b),b)\). This is an equality on every further test scheme, since its defining equality is exactly \(j(a)=g\,j(b)\). Thus \(\delta\) is representable by schemes, smooth and surjective.
 
-In each geometric fibre, the open \(X\) and all its translates have dense pairwise intersections. They cover \(K\) by (8.2), so \(X\) is dense and the fibre is irreducible. A second extension acts on \(X\) by the same translation germs and, by (8.2), is generated by them. This gives the unique isomorphism between two extensions. The construction uses sheaves, dense-slice conditions and open immersions, all preserved by base change, proving the final assertion. \(\square\)
+Its equality relation is a scheme with an explicit chart. Over the parameter scheme \(X^2\) with coordinates \((c,d)\), take the universal \(g=L_cL_d^{-1}\) and its represented open \(\Omega_g\subset X^3\), whose third coordinate is \(b\). The graph \(a=\gamma_g(b)\) identifies this open with the relation between \((a,b)\) and \((c,d)\). Both relation projections are smooth, as base changes of \(\delta\); its endpoint map is a monomorphism on all tests. [S07 Theorem 8.2](AG-RG-S07.md) now applies to this flat locally finitely presented equivalence relation. Its fppf quotient is an algebraic space, and (8.1) and the equality relation identify that quotient with \(K\).
 
-Apply this lemma to (7.1). We obtain a smooth separated group algebraic space \(G_{\mathbf Z}\), containing \(X\), with generic fibre the characteristic-zero group already constructed. The torus and root subgroups embed in it and have their prescribed multiplication. Conjugation identities between their morphisms hold over \(\mathbf Z\), because their sources are flat and they hold over \(\mathbf Q\).
+The group operations are already operations of its sheaf, so Yoneda gives operations on this algebraic space satisfying the group axioms. Smoothness of \(K/S\) follows from the representable smooth covering (8.2) with smooth source. Each geometric fibre is irreducible, as the continuous surjective image of the irreducible \(X_s\times X_s\). The open \(X_s\) is therefore dense in it.
+
+**Separation, finiteness and uniqueness.** On any scheme test \(R\to K\times_SK\), write its sections as \(u,v\). The two translated opens
+\[
+F=u^{-1}X_R\cap v^{-1}X_R\subset K_R
+\]
+meet in every geometric fibre, by irreducibility. This open is smooth-surjective over \(R\). A scheme atlas and its affine opens give an fppf scheme covering \(R_i\to R\) with sections \(t_i\in F(R_i)\). Both \(ut_i\) and \(vt_i\) lie in \(X(R_i)\). Cancellation identifies the equalizer of \(u,v\) on every further test with the equalizer of \(ut_i,vt_i\), which is closed because \(X/S\) is separated. S04 Corollary A3.2 descends this closed immersion. Since the original scheme test was arbitrary, the diagonal of \(K/S\) is a closed immersion and \(K/S\) is separated.
+
+It is locally of finite presentation by smoothness. Over every affine open of \(S\), \(X\times_SX\) is quasi-compact because \(X/S\) is of finite presentation. Surjectivity of (8.2) makes \(K\) quasi-compact there. The closed diagonal is quasi-compact, being an affine closed immersion, so \(K/S\) is quasi-separated. These three properties give finite presentation. No quasi-compactness of the open relation in \(X^3\) was assumed.
+
+For any second extension \(K'\), each geometric fibre has the dense irreducible open \(X_s\), and hence is irreducible. Every section \(g'\) is fppf locally \(ab^{-1}\): the open \(X_R\cap (g')^{-1}X_R\) is smooth-surjective, so choose \(b\) there and set \(a=g'b\). Left translation restricts to a dense-open isomorphism of \(X_R\), giving a homomorphism \(K'\to\operatorname{Bir}(X)\). It is faithful: an identity germ fixes a section on a dense-open smooth cover, and cancellation in \(K'\) gives \(g'=1\). Its restriction to \(X\) is \(a\mapsto L_a\), since the original partial product is extended. The local difference expression identifies its image with \(K\). This gives the unique isomorphism fixing \(X\); uniqueness also follows because those differences generate the whole sheaf. After every \(S'\to S\), the constructed \(K_{S'}\) is another such extension of \(X_{S'}\), with the same translated-chart fibre products and multiplication. Uniqueness supplies the canonical base-change identification and its cocycle. This proves the entire lemma. \(\square\)
+
+Apply the lemma to (7.1) and its strict graph. We obtain a smooth separated finite-presentation group algebraic space \(G_{\mathbf Z}\) containing \(X\) as an open. Its generic fibre is canonically the characteristic-zero group of Section 6: that group has this same dense big cell and partial law, so the uniqueness just proved identifies the two extensions. The torus and root axes are closed subschemes of \(X\), hence are locally closed immersions into \(G_{\mathbf Z}\). The whole pair laws retained in Section 7 make them subgroup morphisms with their prescribed multiplication and inverse. Their characters and parameter differentials are the specified ones on the identity cell.
+
+The required conjugation and Gauss relations hold as morphisms over \(\mathbf Z\) on their stated domains. Their parameter sources are flat over \(\mathbf Z\); localization to \(\mathbf Q\) is injective on their structure sheaves. The target is separated, so the equalizer ideal of the two morphisms is zero if it is zero after this localization. The characteristic-zero relations thus give the integral identities, including over nonreduced test rings. Affineness, closedness of the eventual canonical root groups and positive-characteristic reductivity are the separate arguments of Section 9.
 
 ## 9. Why the completed integral group is affine and reductive
 

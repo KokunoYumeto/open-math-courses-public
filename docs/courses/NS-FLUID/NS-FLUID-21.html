@@ -1,0 +1,1654 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Residual stresses and exact Beltrami fields — Incompressible flow</title><link rel="stylesheet" href="reader.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script>
+<script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Incompressible flow</a><a href="src/residual-stresses-and-exact-beltrami-fields.md">Editable lesson</a><span class="unlinked">Sources and authorship</span></nav></header><main id="main"><nav aria-label="Lesson sequence"><a href="NS-FLUID-20.html">Previous lesson</a></nav><article class="lesson"><h1 id="residual-stresses-and-exact-beltrami-fields">Residual stresses and exact Beltrami fields</h1>
+<p>A residual stress records the remaining vector error in the fluid
+equation as the divergence of a tensor. This chapter constructs
+that tensor exactly, proves how pressure and constant modes enter,
+and then builds explicit periodic waves whose average quadratic
+tensor is a prescribed matrix.</p>
+<p>The pressure and Fourier conventions come from
+<a href="NS-FLUID-02.html">lesson 2</a>;
+the original energy identity comes from
+<a href="NS-FLUID-01.html">lesson 1</a>.
+Sections RS1–RS8 apply to arbitrary rectangular tori in dimension
+at least two. Sections BG1–BG6 construct the three-dimensional
+waves on the original cube with period <span class="math" data-tex="\(L&gt;0\)">\(L&gt;0\)</span>.
+Equation labels RS and BG distinguish the two connected calculations.
+Every finite correction is substituted into the original equation
+before a bound is claimed.</p>
+<p>The human sources are Tristan Buckmaster and Vlad Vicol,
+<a href="https://arxiv.org/abs/1709.10033v4"><em>Nonuniqueness of weak solutions to the Navier–Stokes equation</em>,
+arXiv:1709.10033v4</a>,
+original author source lines 142–303, 407–474 and 1204–1221;
+and their <a href="https://arxiv.org/abs/1901.09023v2"><em>Convex integration and phenomenologies in turbulence</em>,
+arXiv:1901.09023v2</a>,
+original EMS21_arxiv_2.tex lines 160–195, 629–734 and 1185–1200.
+The comparisons below give complete local corrections of the cited
+sign, mean and repeated-filter formulas. The explicit geometric
+construction supplies the finite provider in their propositions
+p:Beltrami and p:split. No novelty or independent review is claimed.</p>
+<h2 id="rs1-the-equation-and-every-constant-mode">RS1. The equation and every constant mode</h2>
+<p>Let <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, <span class="math" data-tex="\(L_1,\ldots,L_n&gt;0\)">\(L_1,\ldots,L_n&gt;0\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\mathbb T_L^n=\prod_{j=1}^n\mathbb R/L_j\mathbb Z,\qquad
+V_L=\prod_{j=1}^nL_j,\qquad
+\langle h\rangle=V_L^{-1}\int_{\mathbb T_L^n}h(x)\,dx .
+\tag{RS1}
+\]">\[
+\mathbb T_L^n=\prod_{j=1}^n\mathbb R/L_j\mathbb Z,\qquad
+V_L=\prod_{j=1}^nL_j,\qquad
+\langle h\rangle=V_L^{-1}\int_{\mathbb T_L^n}h(x)\,dx .
+\tag{RS1}
+\]</span>
+<p>No period or viscosity is set to one.
+For smooth real periodic velocity <span class="math" data-tex="\(u\)">\(u\)</span>, pressure <span class="math" data-tex="\(p\)">\(p\)</span>, force <span class="math" data-tex="\(f\)">\(f\)</span>,
+and symmetric tensor <span class="math" data-tex="\(S\)">\(S\)</span>, use the convention</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal E_\nu(u,p;f):=
+\partial_tu+\operatorname{div}(u\otimes u)+\nabla p
+-\nu\Delta u-f=\operatorname{div}S,\qquad
+\operatorname{div}u=0,\quad \nu&gt;0,\\
+(u\otimes u)_{ij}=u_i u_j,\qquad
+(\operatorname{div}S)_i=\sum_{j=1}^n\partial_jS_{ij}.
+\end{gathered}
+\tag{RS2}
+\]">\[
+\begin{gathered}
+\mathcal E_\nu(u,p;f):=
+\partial_tu+\operatorname{div}(u\otimes u)+\nabla p
+-\nu\Delta u-f=\operatorname{div}S,\qquad
+\operatorname{div}u=0,\quad \nu&gt;0,\\
+(u\otimes u)_{ij}=u_i u_j,\qquad
+(\operatorname{div}S)_i=\sum_{j=1}^n\partial_jS_{ij}.
+\end{gathered}
+\tag{RS2}
+\]</span>
+<p>Integrating each derivative over its full original period gives</p>
+<span class="math math-display" data-tex="\[
+\frac{d}{dt}\langle u\rangle=\langle f\rangle .
+\tag{RS3}
+\]">\[
+\frac{d}{dt}\langle u\rangle=\langle f\rangle .
+\tag{RS3}
+\]</span>
+<p>The integral of a derivative is zero because the values at the two
+identified endpoints agree. Thus a tensor divergence cannot change
+the original momentum equation. In particular, subtracting the
+integral instead of its average is incorrect when <span class="math" data-tex="\(V_L\ne1\)">\(V_L\ne1\)</span>.</p>
+<h2 id="rs2-exact-pressure-and-trace-maps">RS2. Exact pressure and trace maps</h2>
+<p>Set <span class="math" data-tex="\(\theta=\operatorname{tr}S/n\)">\(\theta=\operatorname{tr}S/n\)</span>. The maps</p>
+<span class="math math-display" data-tex="\[
+(p,S)\longmapsto(p^\circ,S^\circ)
+=(p-\theta,S-\theta I_n),\qquad
+(p^\circ,S^\circ,\theta)\longmapsto
+(p^\circ+\theta,S^\circ+\theta I_n)
+\tag{RS4}
+\]">\[
+(p,S)\longmapsto(p^\circ,S^\circ)
+=(p-\theta,S-\theta I_n),\qquad
+(p^\circ,S^\circ,\theta)\longmapsto
+(p^\circ+\theta,S^\circ+\theta I_n)
+\tag{RS4}
+\]</span>
+<p>are inverse maps between the full tensor formulation and the
+trace-free formulation together with its retained trace.
+Indeed <span class="math" data-tex="\(\operatorname{tr}S^\circ=0\)">\(\operatorname{tr}S^\circ=0\)</span> and
+<span class="math" data-tex="\(\operatorname{div}(\theta I_n)=\nabla\theta\)">\(\operatorname{div}(\theta I_n)=\nabla\theta\)</span>, so subtracting
+that same gradient from both sides of RS2 proves the transformed
+equation. The velocity, force and viscosity have not changed.
+Keeping <span class="math" data-tex="\(\theta\)">\(\theta\)</span> makes the map invertible; deleting it would lose
+part of the original tensor and pressure.</p>
+<p>There is also an exact sign-convention map:</p>
+<span class="math math-display" data-tex="\[
+\mathcal E_\nu(u,p;f)=\operatorname{div}S
+\quad\Longleftrightarrow\quad
+\mathcal E_\nu(u,p;f)=-\operatorname{div}C,\qquad C=-S .
+\tag{RS5}
+\]">\[
+\mathcal E_\nu(u,p;f)=\operatorname{div}S
+\quad\Longleftrightarrow\quad
+\mathcal E_\nu(u,p;f)=-\operatorname{div}C,\qquad C=-S .
+\tag{RS5}
+\]</span>
+<p>This changes both the tensor and the sign in the equation.
+Changing only one of them does not preserve the equation.</p>
+<h2 id="rs3-the-full-periodic-inverse-divergence">RS3. The full periodic inverse divergence</h2>
+<p>Use the original frequencies and Fourier coefficients</p>
+<span class="math math-display" data-tex="\[
+\kappa(k)=\left(\frac{2\pi k_1}{L_1},\ldots,
+\frac{2\pi k_n}{L_n}\right),\qquad
+\widehat h(k)=V_L^{-1}\int_{\mathbb T_L^n}
+h(x)e^{-i\kappa(k)\cdot x}\,dx,\quad k\in\mathbb Z^n.
+\tag{RS6}
+\]">\[
+\kappa(k)=\left(\frac{2\pi k_1}{L_1},\ldots,
+\frac{2\pi k_n}{L_n}\right),\qquad
+\widehat h(k)=V_L^{-1}\int_{\mathbb T_L^n}
+h(x)e^{-i\kappa(k)\cdot x}\,dx,\quad k\in\mathbb Z^n.
+\tag{RS6}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\widehat{\partial_jh}=i\kappa_j\widehat h\)">\(\widehat{\partial_jh}=i\kappa_j\widehat h\)</span>.
+On mean-zero functions define <span class="math" data-tex="\(\Delta^{-1}\)">\(\Delta^{-1}\)</span> by the multiplier
+<span class="math" data-tex="\(-|\kappa|^{-2}\)">\(-|\kappa|^{-2}\)</span> at <span class="math" data-tex="\(k\ne0\)">\(k\ne0\)</span> and zero at <span class="math" data-tex="\(k=0\)">\(k=0\)</span>.
+Its square has multiplier <span class="math" data-tex="\(|\kappa|^{-4}\)">\(|\kappa|^{-4}\)</span>.
+For any smooth vector field <span class="math" data-tex="\(g\)">\(g\)</span>, write
+<span class="math" data-tex="\(g^\circ=g-\langle g\rangle\)">\(g^\circ=g-\langle g\rangle\)</span> and define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(\mathcal R_Lg)_{ij}={}&amp;
+\partial_j\Delta^{-1}g_i^\circ+
+\partial_i\Delta^{-1}g_j^\circ\\
+&amp;-\frac{\delta_{ij}}{n-1}\Delta^{-1}\operatorname{div}g^\circ
+-\frac{n-2}{n-1}\partial_i\partial_j
+\Delta^{-2}\operatorname{div}g^\circ .
+\end{aligned}
+\tag{RS7}
+\]">\[
+\begin{aligned}
+(\mathcal R_Lg)_{ij}={}&amp;
+\partial_j\Delta^{-1}g_i^\circ+
+\partial_i\Delta^{-1}g_j^\circ\\
+&amp;-\frac{\delta_{ij}}{n-1}\Delta^{-1}\operatorname{div}g^\circ
+-\frac{n-2}{n-1}\partial_i\partial_j
+\Delta^{-2}\operatorname{div}g^\circ .
+\end{aligned}
+\tag{RS7}
+\]</span>
+<p>All four original terms are retained. At <span class="math" data-tex="\(n=2\)">\(n=2\)</span> the last
+coefficient is exactly zero. At <span class="math" data-tex="\(n=3\)">\(n=3\)</span> both displayed fractional
+coefficients are <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, giving the precise operator in the
+Buckmaster–Vicol survey, equation eq:RSZ, with its original
+periods <span class="math" data-tex="\(L_j=2\pi\)">\(L_j=2\pi\)</span>.</p>
+<p>Commuting the Fourier multipliers proves symmetry and</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{tr}\mathcal R_Lg
+&amp;=\left(2-\frac n{n-1}-\frac{n-2}{n-1}\right)
+\Delta^{-1}\operatorname{div}g^\circ=0,\\
+\operatorname{div}\mathcal R_Lg
+&amp;=g^\circ+
+\left(1-\frac1{n-1}-\frac{n-2}{n-1}\right)
+\nabla\Delta^{-1}\operatorname{div}g^\circ
+=g^\circ,\\
+\langle\mathcal R_Lg\rangle&amp;=0 .
+\end{aligned}
+\tag{RS8}
+\]">\[
+\begin{aligned}
+\operatorname{tr}\mathcal R_Lg
+&amp;=\left(2-\frac n{n-1}-\frac{n-2}{n-1}\right)
+\Delta^{-1}\operatorname{div}g^\circ=0,\\
+\operatorname{div}\mathcal R_Lg
+&amp;=g^\circ+
+\left(1-\frac1{n-1}-\frac{n-2}{n-1}\right)
+\nabla\Delta^{-1}\operatorname{div}g^\circ
+=g^\circ,\\
+\langle\mathcal R_Lg\rangle&amp;=0 .
+\end{aligned}
+\tag{RS8}
+\]</span>
+<p>The inverse divergence equation in the space of periodic symmetric
+trace-free tensors is therefore solvable exactly when
+<span class="math" data-tex="\(\langle g\rangle=0\)">\(\langle g\rangle=0\)</span>. Necessity is periodic integration.
+Sufficiency is the explicit RS7–RS8 construction, including
+smoothness: Fourier coefficients of a smooth periodic input
+decay faster than every power, and these multipliers have only
+polynomial growth away from the removed zero mode.</p>
+<p>The survey's sentence immediately after eq:RSZ subtracts
+<span class="math" data-tex="\(\int_{\mathbb T^3}g\,dx\)">\(\int_{\mathbb T^3}g\,dx\)</span>. On its stated <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>-periodic torus,
+that must be <span class="math" data-tex="\((2\pi)^{-3}\int g\,dx\)">\((2\pi)^{-3}\int g\,dx\)</span>.
+For a nonzero constant vector <span class="math" data-tex="\(c\)">\(c\)</span>, its written subtraction gives
+<span class="math" data-tex="\((1-(2\pi)^3)c\)">\((1-(2\pi)^3)c\)</span>, whose divergence-inverse equation is impossible
+by RS3. Formula RS8 proves the corrected map.
+The original research paper, lines 1207–1209, uses the average.</p>
+<h2 id="rs4-exact-norm-sharp-sobolev-bound-and-the-whole-solution-space">RS4. Exact norm, sharp Sobolev bound and the whole solution space</h2>
+<p>For <span class="math" data-tex="\(k\ne0\)">\(k\ne0\)</span>, keep <span class="math" data-tex="\(\kappa=\kappa(k)\)">\(\kappa=\kappa(k)\)</span> and set</p>
+<span class="math math-display" data-tex="\[
+e=\kappa/|\kappa|,\quad
+g_\parallel=(\widehat g(k)\cdot e)e,\quad
+g_\perp=\widehat g(k)-g_\parallel,\quad
+\alpha=\widehat g(k)\cdot e .
+\tag{RS9}
+\]">\[
+e=\kappa/|\kappa|,\quad
+g_\parallel=(\widehat g(k)\cdot e)e,\quad
+g_\perp=\widehat g(k)-g_\parallel,\quad
+\alpha=\widehat g(k)\cdot e .
+\tag{RS9}
+\]</span>
+<p>These are the longitudinal and transverse components of the
+same original Fourier vector. No physical coordinate is rescaled.
+Direct substitution in RS7 gives</p>
+<span class="math math-display" data-tex="\[
+\widehat{\mathcal R_Lg}(k)=
+-\frac{i}{|\kappa|}
+\left[g_\perp\otimes e+e\otimes g_\perp+
+\alpha\left(e\otimes e-\frac{I_n-e\otimes e}{n-1}\right)\right].
+\tag{RS10}
+\]">\[
+\widehat{\mathcal R_Lg}(k)=
+-\frac{i}{|\kappa|}
+\left[g_\perp\otimes e+e\otimes g_\perp+
+\alpha\left(e\otimes e-\frac{I_n-e\otimes e}{n-1}\right)\right].
+\tag{RS10}
+\]</span>
+<p>This equality retains the identity on the full orthogonal
+complement; it includes every diagonal component.
+The transverse tensor has squared Frobenius norm
+<span class="math" data-tex="\(2|g_\perp|^2\)">\(2|g_\perp|^2\)</span>. The longitudinal tensor has squared norm
+<span class="math" data-tex="\(n|\alpha|^2/(n-1)\)">\(n|\alpha|^2/(n-1)\)</span>. Their Frobenius inner product vanishes:
+each contraction contains <span class="math" data-tex="\(g_\perp\cdot e=0\)">\(g_\perp\cdot e=0\)</span>.
+The same calculation uses complex conjugates for complex Fourier
+coefficients. Consequently</p>
+<span class="math math-display" data-tex="\[
+|\widehat{\mathcal R_Lg}(k)|_{\rm F}^2
+=\frac{2|g_\perp|^2+\frac n{n-1}|g_\parallel|^2}{|\kappa(k)|^2}.
+\tag{RS11}
+\]">\[
+|\widehat{\mathcal R_Lg}(k)|_{\rm F}^2
+=\frac{2|g_\perp|^2+\frac n{n-1}|g_\parallel|^2}{|\kappa(k)|^2}.
+\tag{RS11}
+\]</span>
+<p>For any real <span class="math" data-tex="\(s\)">\(s\)</span>, define the full inhomogeneous norm by</p>
+<span class="math math-display" data-tex="\[
+\|h\|_{H_L^s}^2
+=V_L\sum_{k\in\mathbb Z^n}
+(1+|\kappa(k)|^2)^s|\widehat h(k)|^2,\qquad
+\kappa_{\min}=\frac{2\pi}{\max_j L_j}.
+\tag{RS12}
+\]">\[
+\|h\|_{H_L^s}^2
+=V_L\sum_{k\in\mathbb Z^n}
+(1+|\kappa(k)|^2)^s|\widehat h(k)|^2,\qquad
+\kappa_{\min}=\frac{2\pi}{\max_j L_j}.
+\tag{RS12}
+\]</span>
+<p>Since <span class="math" data-tex="\(n/(n-1)\leq2\)">\(n/(n-1)\leq2\)</span>, RS11 gives the bounded linear map</p>
+<span class="math math-display" data-tex="\[
+\mathcal R_L:H_L^s(\mathbb T_L^n;\mathbb R^n)
+\longrightarrow H_L^{s+1}(\mathbb T_L^n;\operatorname{Sym}_0^2),
+\qquad
+\|\mathcal R_Lg\|_{H_L^{s+1}}
+\leq\sqrt{2(1+\kappa_{\min}^{-2})}
+\|g-\langle g\rangle\|_{H_L^s}.
+\tag{RS13}
+\]">\[
+\mathcal R_L:H_L^s(\mathbb T_L^n;\mathbb R^n)
+\longrightarrow H_L^{s+1}(\mathbb T_L^n;\operatorname{Sym}_0^2),
+\qquad
+\|\mathcal R_Lg\|_{H_L^{s+1}}
+\leq\sqrt{2(1+\kappa_{\min}^{-2})}
+\|g-\langle g\rangle\|_{H_L^s}.
+\tag{RS13}
+\]</span>
+<p>Indeed the squared ratio of the two weights at any nonzero mode is
+bounded by <span class="math" data-tex="\(2(1+|\kappa|^{-2})\)">\(2(1+|\kappa|^{-2})\)</span>, and the smallest nonzero
+original frequency is exactly <span class="math" data-tex="\(\kappa_{\min}\)">\(\kappa_{\min}\)</span>.
+This constant is attained by a real single-frequency vector field
+whose frequency has that length and whose amplitude is perpendicular
+to that frequency. Such an amplitude exists since <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>.
+Both opposite Fourier modes have the same ratio, so reality
+does not alter equality. Density extends RS7 to the stated spaces.</p>
+<p>The map also chooses the unique tensor of least <span class="math" data-tex="\(H_L^{s+1}\)">\(H_L^{s+1}\)</span>
+norm among all solutions of its divergence equation.
+To prove this rather than infer it from a right inverse, let <span class="math" data-tex="\(K\)">\(K\)</span>
+be symmetric trace-free with <span class="math" data-tex="\(\operatorname{div}K=0\)">\(\operatorname{div}K=0\)</span>.
+For each nonzero mode <span class="math" data-tex="\(\widehat K\kappa=0\)">\(\widehat K\kappa=0\)</span>. Symmetry also gives
+<span class="math" data-tex="\(e^T\widehat K=0\)">\(e^T\widehat K=0\)</span>. Hence its Frobenius contraction with both
+transverse summands of RS10 is zero. Its contraction with
+<span class="math" data-tex="\(e\otimes e\)">\(e\otimes e\)</span> is zero, and its contraction with
+<span class="math" data-tex="\(I_n-e\otimes e\)">\(I_n-e\otimes e\)</span> is zero by its trace and previous contraction.
+The mean mode of <span class="math" data-tex="\(\mathcal R_Lg\)">\(\mathcal R_Lg\)</span> vanishes as well.
+Parseval with every weight in RS12 gives</p>
+<span class="math math-display" data-tex="\[
+\|\mathcal R_Lg+K\|_{H_L^{s+1}}^2
+=\|\mathcal R_Lg\|_{H_L^{s+1}}^2+\|K\|_{H_L^{s+1}}^2 .
+\tag{RS14}
+\]">\[
+\|\mathcal R_Lg+K\|_{H_L^{s+1}}^2
+=\|\mathcal R_Lg\|_{H_L^{s+1}}^2+\|K\|_{H_L^{s+1}}^2 .
+\tag{RS14}
+\]</span>
+<p>Every solution is of this form: subtract RS8 from its divergence
+equation. Conversely each such <span class="math" data-tex="\(K\)">\(K\)</span> gives another solution.
+This proves both the full affine solution space and uniqueness
+of its least-norm member, including arbitrary constant
+trace-free tensors in the kernel.</p>
+<h2 id="rs5-the-exact-new-stress-for-a-velocity-correction">RS5. The exact new stress for a velocity correction</h2>
+<p>Keep a smooth solution of RS2. Let <span class="math" data-tex="\(w\)">\(w\)</span> be a smooth
+divergence-free velocity correction, with <span class="math" data-tex="\(\partial_t\langle
+w\rangle=0\)">\(\partial_t\langle
+w\rangle=0\)</span>, and define the symmetric tensor and vector</p>
+<span class="math math-display" data-tex="\[
+Q=u\otimes w+w\otimes u+w\otimes w,\qquad
+h=\partial_tw-\nu\Delta w .
+\tag{RS15}
+\]">\[
+Q=u\otimes w+w\otimes u+w\otimes w,\qquad
+h=\partial_tw-\nu\Delta w .
+\tag{RS15}
+\]</span>
+<p>The vector <span class="math" data-tex="\(h\)">\(h\)</span> has zero mean by the stated constant-mean
+condition. Its exact inverse divergence therefore exists.
+Set</p>
+<span class="math math-display" data-tex="\[
+T=S+Q+\mathcal R_Lh,\qquad
+\theta_T=\operatorname{tr}T/n,\qquad
+u_+=u+w,\quad p_+=p-\theta_T,\quad S_+=T-\theta_T I_n .
+\tag{RS16}
+\]">\[
+T=S+Q+\mathcal R_Lh,\qquad
+\theta_T=\operatorname{tr}T/n,\qquad
+u_+=u+w,\quad p_+=p-\theta_T,\quad S_+=T-\theta_T I_n .
+\tag{RS16}
+\]</span>
+<p>Expansion of the original quadratic expression gives</p>
+<span class="math math-display" data-tex="\[
+\mathcal E_\nu(u+w,p;f)
+=\operatorname{div}S+h+\operatorname{div}Q
+=\operatorname{div}T .
+\tag{RS17}
+\]">\[
+\mathcal E_\nu(u+w,p;f)
+=\operatorname{div}S+h+\operatorname{div}Q
+=\operatorname{div}T .
+\tag{RS17}
+\]</span>
+<p>Applying RS4 now proves
+<span class="math" data-tex="\(\mathcal E_\nu(u_+,p_+;f)=\operatorname{div}S_+\)">\(\mathcal E_\nu(u_+,p_+;f)=\operatorname{div}S_+\)</span>,
+<span class="math" data-tex="\(\operatorname{div}u_+=0\)">\(\operatorname{div}u_+=0\)</span>, and <span class="math" data-tex="\(\operatorname{tr}S_+=0\)">\(\operatorname{tr}S_+=0\)</span>.
+There is no unproved cancellation of viscosity, transport,
+quadratic error, trace or pressure. The original body force
+is exactly the same.
+The constant-mean condition is necessary for keeping that force:
+subtracting the two RS3 identities gives it.
+If an actual correction has mean derivative <span class="math" data-tex="\(a(t)\ne0\)">\(a(t)\ne0\)</span>,
+the complete residual is instead</p>
+<span class="math math-display" data-tex="\[
+\mathcal E_\nu(u+w,p;f)
+=a(t)+\operatorname{div}
+\big[S+Q+\mathcal R_L(\partial_tw-\nu\Delta w)\big].
+\tag{RS18}
+\]">\[
+\mathcal E_\nu(u+w,p;f)
+=a(t)+\operatorname{div}
+\big[S+Q+\mathcal R_L(\partial_tw-\nu\Delta w)\big].
+\tag{RS18}
+\]</span>
+<p>This displays the unrepresented constant vector; it does not
+silently include it in a different force.</p>
+<p>In the survey, lines 665–670 have
+<span class="math" data-tex="\(\operatorname{div}(w\otimes w-\mathring R_q)\)">\(\operatorname{div}(w\otimes w-\mathring R_q)\)</span> while the
+equation just above has the plus-divergence convention RS2.
+Under that convention the old stress has a plus sign, as RS17
+proves by full substitution. The same source's later average
+cancellation, eq:low_freq_R_cancellation, uses
+the negative of the old stress and is consistent with the
+corrected sum <span class="math" data-tex="\(S+w\otimes w\)">\(S+w\otimes w\)</span>.
+This checks the actual connecting formula without claiming
+that the entire infinite iteration has been checked.</p>
+<h2 id="rs6-filtering-covariance-and-the-missing-terms">RS6. Filtering, covariance and the missing terms</h2>
+<p>Let <span class="math" data-tex="\(\mathscr F\)">\(\mathscr F\)</span> be convolution on the original torus by a
+nonnegative smooth kernel <span class="math" data-tex="\(K\)">\(K\)</span> of integral one. It commutes
+with spatial and time derivatives. Write
+<span class="math" data-tex="\(\bar u=\mathscr Fu\)">\(\bar u=\mathscr Fu\)</span>, <span class="math" data-tex="\(\bar p=\mathscr Fp\)">\(\bar p=\mathscr Fp\)</span>,
+<span class="math" data-tex="\(\bar f=\mathscr Ff\)">\(\bar f=\mathscr Ff\)</span>. For an exact smooth solution with <span class="math" data-tex="\(S=0\)">\(S=0\)</span>,
+filtering every term and subtracting the full quadratic
+expression proves</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C=\mathscr F(u\otimes u)-\bar u\otimes\bar u,\qquad
+\mathcal E_\nu(\bar u,\bar p;\bar f)
+=-\operatorname{div}C,\\
+C(x)=\int_{\mathbb T_L^n}K(y)
+[u(x-y)-\bar u(x)]\otimes[u(x-y)-\bar u(x)]\,dy .
+\end{gathered}
+\tag{RS19}
+\]">\[
+\begin{gathered}
+C=\mathscr F(u\otimes u)-\bar u\otimes\bar u,\qquad
+\mathcal E_\nu(\bar u,\bar p;\bar f)
+=-\operatorname{div}C,\\
+C(x)=\int_{\mathbb T_L^n}K(y)
+[u(x-y)-\bar u(x)]\otimes[u(x-y)-\bar u(x)]\,dy .
+\end{gathered}
+\tag{RS19}
+\]</span>
+<p>To prove the second line, expand all four terms.
+The two mixed integrals each equal <span class="math" data-tex="\(\bar u(x)\otimes\bar u(x)\)">\(\bar u(x)\otimes\bar u(x)\)</span>;
+the last integral equals that same tensor because <span class="math" data-tex="\(\int K=1\)">\(\int K=1\)</span>.
+Thus <span class="math" data-tex="\(C\)">\(C\)</span> is positive semidefinite: its quadratic form at any
+real vector <span class="math" data-tex="\(a\)">\(a\)</span> is the integral of
+<span class="math" data-tex="\([a\cdot(u(x-y)-\bar u(x))]^2\)">\([a\cdot(u(x-y)-\bar u(x))]^2\)</span> against <span class="math" data-tex="\(K\)">\(K\)</span>.
+The stress in the plus convention is <span class="math" data-tex="\(S=-C\)">\(S=-C\)</span>.
+Its trace-free pressure is
+<span class="math" data-tex="\(\bar p+\operatorname{tr}C/n\)">\(\bar p+\operatorname{tr}C/n\)</span>, by RS4.</p>
+<p>The center inside this integral is <span class="math" data-tex="\(\bar u(x)\)">\(\bar u(x)\)</span>, not
+<span class="math" data-tex="\(\bar u(x-y)\)">\(\bar u(x-y)\)</span>. For the latter, full expansion gives instead</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C={}&amp;\mathscr F[(u-\bar u)\otimes(u-\bar u)]\\
+&amp;+\mathscr F(u\otimes\bar u+\bar u\otimes u-\bar u\otimes\bar u)
+-\bar u\otimes\bar u .
+\end{aligned}
+\tag{RS20}
+\]">\[
+\begin{aligned}
+C={}&amp;\mathscr F[(u-\bar u)\otimes(u-\bar u)]\\
+&amp;+\mathscr F(u\otimes\bar u+\bar u\otimes u-\bar u\otimes\bar u)
+-\bar u\otimes\bar u .
+\end{aligned}
+\tag{RS20}
+\]</span>
+<p>Every omitted mixed or repeated-filter term is now visible.
+Commutation with derivatives alone does not make the second
+line vanish.</p>
+<p>Here is an exact smooth divergence-free counterexample to
+dropping that line. Choose any nonzero original lattice frequency
+<span class="math" data-tex="\(\kappa=\kappa(k)\)">\(\kappa=\kappa(k)\)</span>, a real unit vector <span class="math" data-tex="\(a\perp\kappa\)">\(a\perp\kappa\)</span>,
+and <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span>. The steady field</p>
+<span class="math math-display" data-tex="\[
+u(x)=A a\cos(\kappa\cdot x),\quad p=0,\quad
+f(x)=\nu|\kappa|^2u(x)
+\tag{RS21}
+\]">\[
+u(x)=A a\cos(\kappa\cdot x),\quad p=0,\quad
+f(x)=\nu|\kappa|^2u(x)
+\tag{RS21}
+\]</span>
+<p>solves the full original forced equation: its divergence and
+convective term vanish and <span class="math" data-tex="\(-\nu\Delta u=f\)">\(-\nu\Delta u=f\)</span>.
+Use the periodic heat filter <span class="math" data-tex="\(\mathscr F=e^{\epsilon\Delta}\)">\(\mathscr F=e^{\epsilon\Delta}\)</span>,
+<span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>, and retain
+<span class="math" data-tex="\(b=e^{-\epsilon|\kappa|^2}\in(0,1)\)">\(b=e^{-\epsilon|\kappa|^2}\in(0,1)\)</span>.
+The exact zero and second Fourier modes give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C(x)&amp;=\frac{A^2}{2}
+[(1-b^2)+(b^4-b^2)\cos(2\kappa\cdot x)]\,a\otimes a,\\
+\mathscr F[(u-\bar u)\otimes(u-\bar u)](x)
+&amp;=\frac{A^2}{2}(1-b)^2
+[1+b^4\cos(2\kappa\cdot x)]\,a\otimes a,\\
+\left\langle C-\mathscr F[(u-\bar u)\otimes(u-\bar u)]\right\rangle
+&amp;=A^2b(1-b)\,a\otimes a\ne0 .
+\end{aligned}
+\tag{RS22}
+\]">\[
+\begin{aligned}
+C(x)&amp;=\frac{A^2}{2}
+[(1-b^2)+(b^4-b^2)\cos(2\kappa\cdot x)]\,a\otimes a,\\
+\mathscr F[(u-\bar u)\otimes(u-\bar u)](x)
+&amp;=\frac{A^2}{2}(1-b)^2
+[1+b^4\cos(2\kappa\cdot x)]\,a\otimes a,\\
+\left\langle C-\mathscr F[(u-\bar u)\otimes(u-\bar u)]\right\rangle
+&amp;=A^2b(1-b)\,a\otimes a\ne0 .
+\end{aligned}
+\tag{RS22}
+\]</span>
+<p>Thus the equality asserted in the survey at line 652 fails for
+this actual derivative-commuting filter and exact smooth flow.
+The corrected identities are RS19–RS20; the comparison preserves
+the actual field and its original force.</p>
+<h2 id="rs7-energy-transfer-and-the-full-pressure-flux">RS7. Energy transfer and the full pressure flux</h2>
+<p>Put <span class="math" data-tex="\(e_u=|u|^2/2\)">\(e_u=|u|^2/2\)</span>. Pair RS2 with <span class="math" data-tex="\(u\)">\(u\)</span> pointwise and expand
+every product. Divergence freedom gives</p>
+<span class="math math-display" data-tex="\[
+\partial_te_u+
+\operatorname{div}\big[(e_u+p)u-\nu\nabla e_u-Su\big]
+=f\cdot u-\nu|\nabla u|^2-S: \nabla u .
+\tag{RS23}
+\]">\[
+\partial_te_u+
+\operatorname{div}\big[(e_u+p)u-\nu\nabla e_u-Su\big]
+=f\cdot u-\nu|\nabla u|^2-S: \nabla u .
+\tag{RS23}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(u_i\partial_jS_{ij}
+=\partial_j(u_iS_{ij})-S_{ij}\partial_ju_i\)">\(u_i\partial_jS_{ij}
+=\partial_j(u_iS_{ij})-S_{ij}\partial_ju_i\)</span>;
+symmetry identifies the flux with <span class="math" data-tex="\(Su\)">\(Su\)</span>.
+Also <span class="math" data-tex="\(u\cdot\Delta u=\Delta e_u-|\nabla u|^2\)">\(u\cdot\Delta u=\Delta e_u-|\nabla u|^2\)</span>.
+Periodic integration retains the full work and dissipation:</p>
+<span class="math math-display" data-tex="\[
+\frac{d}{dt}\frac12\int_{\mathbb T_L^n}|u|^2\,dx+
+\nu\int_{\mathbb T_L^n}|\nabla u|^2\,dx
+=\int_{\mathbb T_L^n}f\cdot u\,dx-
+\int_{\mathbb T_L^n}S: \nabla u\,dx .
+\tag{RS24}
+\]">\[
+\frac{d}{dt}\frac12\int_{\mathbb T_L^n}|u|^2\,dx+
+\nu\int_{\mathbb T_L^n}|\nabla u|^2\,dx
+=\int_{\mathbb T_L^n}f\cdot u\,dx-
+\int_{\mathbb T_L^n}S: \nabla u\,dx .
+\tag{RS24}
+\]</span>
+<p>The pressure/trace map RS4 preserves this identity pointwise:</p>
+<span class="math math-display" data-tex="\[
+(p-\theta)u-(S-\theta I_n)u=pu-Su,\qquad
+(S-\theta I_n):\nabla u=S: \nabla u
+\tag{RS25}
+\]">\[
+(p-\theta)u-(S-\theta I_n)u=pu-Su,\qquad
+(S-\theta I_n):\nabla u=S: \nabla u
+\tag{RS25}
+\]</span>
+<p>because <span class="math" data-tex="\(\operatorname{div}u=0\)">\(\operatorname{div}u=0\)</span>.
+The trace is transferred exactly into the pressure flux.
+It is not an omitted contribution.</p>
+<h2 id="rs8-the-original-duhamel-sign">RS8. The original Duhamel sign</h2>
+<p>For the exact original equation with <span class="math" data-tex="\(S=0\)">\(S=0\)</span>, apply the original
+Leray projection <span class="math" data-tex="\(\mathbb P_L\)">\(\mathbb P_L\)</span>, retaining the zero mode as the
+identity. The equation is</p>
+<span class="math math-display" data-tex="\[
+\partial_tu-\nu\Delta u=
+-\mathbb P_L\operatorname{div}(u\otimes u)+\mathbb P_Lf .
+\tag{RS26}
+\]">\[
+\partial_tu-\nu\Delta u=
+-\mathbb P_L\operatorname{div}(u\otimes u)+\mathbb P_Lf .
+\tag{RS26}
+\]</span>
+<p>At each Fourier mode solve this scalar linear ordinary
+differential equation with its actual exponential factor.
+For any earlier time <span class="math" data-tex="\(a\leq t\)">\(a\leq t\)</span> it yields</p>
+<span class="math math-display" data-tex="\[
+u(t)=e^{\nu(t-a)\Delta}u(a)
+-\int_a^t e^{\nu(t-s)\Delta}
+\mathbb P_L\operatorname{div}(u\otimes u)(s)\,ds
++\int_a^t e^{\nu(t-s)\Delta}\mathbb P_Lf(s)\,ds .
+\tag{RS27}
+\]">\[
+u(t)=e^{\nu(t-a)\Delta}u(a)
+-\int_a^t e^{\nu(t-s)\Delta}
+\mathbb P_L\operatorname{div}(u\otimes u)(s)\,ds
++\int_a^t e^{\nu(t-s)\Delta}\mathbb P_Lf(s)\,ds .
+\tag{RS27}
+\]</span>
+<p>Smoothness justifies summing the modes and differentiating.
+At the zero mode this is exactly RS3, since the quadratic
+divergence is zero. The original research paper's equation
+eq:mild at lines 190–192 has a plus sign before its unforced
+nonlinear integral. Its preceding differential equation has the
+convention RS26, so that integral requires the minus in RS27.
+The earlier course pressure and mild-solution lessons already
+use this negative sign.</p>
+<p><img src="assets/NS-FLUID-21/original-reynolds-stress-maps-4ECC3606D1A42D7612F374D5928522ECB3546E91777F226526849D9A9F92B826.png" alt="Original residual, zero mode, least-norm stress and pressure trace" class="course-figure" width="2100" height="1260" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-reynolds-stress-maps" data-asset-sha256="4ECC3606D1A42D7612F374D5928522ECB3546E91777F226526849D9A9F92B826"></p>
+<p>Figure: RS1–RS14 and RS23–RS25. The split keeps the constant
+residual visible; the norm triangle shows the proved orthogonality,
+with schematic side lengths. The pressure panel displays the exact
+unchanged energy flux. Source comparisons are the Buckmaster–Vicol
+equations identified above.
+<a href="assets/original-reynolds-stress-maps.py">Reproducible figure source</a>.</p>
+<h2 id="bg1-rational-directions-and-the-full-geometric-coefficients">BG1. Rational directions and the full geometric coefficients</h2>
+<p>Keep these six distinct unit vectors:</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{ll}
+\xi_{1,+}=(3,4,0)/5,&amp;\xi_{1,-}=(3,-4,0)/5,\\
+\xi_{2,+}=(0,3,4)/5,&amp;\xi_{2,-}=(0,3,-4)/5,\\
+\xi_{3,+}=(4,0,3)/5,&amp;\xi_{3,-}=(-4,0,3)/5.
+\end{array}
+\tag{BG1}
+\]">\[
+\begin{array}{ll}
+\xi_{1,+}=(3,4,0)/5,&amp;\xi_{1,-}=(3,-4,0)/5,\\
+\xi_{2,+}=(0,3,4)/5,&amp;\xi_{2,-}=(0,3,-4)/5,\\
+\xi_{3,+}=(4,0,3)/5,&amp;\xi_{3,-}=(-4,0,3)/5.
+\end{array}
+\tag{BG1}
+\]</span>
+<p>The signs after the comma name the two directions in each pair;
+they do not mean antipodal vectors. Let <span class="math" data-tex="\(\Lambda_0\)">\(\Lambda_0\)</span> contain all
+six and their six negatives. Every vector has length one since
+<span class="math" data-tex="\(3^2+4^2=5^2\)">\(3^2+4^2=5^2\)</span>; the displayed zero coordinate and the signs show
+that all twelve are distinct.
+For every direction put <span class="math" data-tex="\(P_\xi=I_3-\xi\otimes\xi\)">\(P_\xi=I_3-\xi\otimes\xi\)</span>.
+It is the full orthogonal projection onto its perpendicular plane.</p>
+<p>For a real symmetric matrix <span class="math" data-tex="\(R\)">\(R\)</span>, write <span class="math" data-tex="\(r=(R_{11},R_{22},R_{33})^T\)">\(r=(R_{11},R_{22},R_{33})^T\)</span>
+and define the full pair totals and differences by</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M=\frac1{25}
+\begin{pmatrix}16&amp;25&amp;9\\9&amp;16&amp;25\\25&amp;9&amp;16\end{pmatrix},
+\qquad \det M=\frac{386}{625},\\
+M^{-1}=\frac1{386}
+\begin{pmatrix}31&amp;-319&amp;481\\481&amp;31&amp;-319\\-319&amp;481&amp;31\end{pmatrix},\\
+s=M^{-1}r,\qquad
+d=-\frac{25}{12}(R_{12},R_{23},R_{13})^T,\qquad
+c_{i,\pm}(R)=\frac{s_i\pm d_i}{2}.
+\end{gathered}
+\tag{BG2}
+\]">\[
+\begin{gathered}
+M=\frac1{25}
+\begin{pmatrix}16&amp;25&amp;9\\9&amp;16&amp;25\\25&amp;9&amp;16\end{pmatrix},
+\qquad \det M=\frac{386}{625},\\
+M^{-1}=\frac1{386}
+\begin{pmatrix}31&amp;-319&amp;481\\481&amp;31&amp;-319\\-319&amp;481&amp;31\end{pmatrix},\\
+s=M^{-1}r,\qquad
+d=-\frac{25}{12}(R_{12},R_{23},R_{13})^T,\qquad
+c_{i,\pm}(R)=\frac{s_i\pm d_i}{2}.
+\end{gathered}
+\tag{BG2}
+\]</span>
+<p>Multiplication verifies both the inverse and the determinant.
+The diagonal part of
+<span class="math" data-tex="\(\sum_{i,\pm}c_{i,\pm}P_{\xi_{i,\pm}}\)">\(\sum_{i,\pm}c_{i,\pm}P_{\xi_{i,\pm}}\)</span> is <span class="math" data-tex="\(Ms=r\)">\(Ms=r\)</span>.
+Its <span class="math" data-tex="\(12,23,13\)">\(12,23,13\)</span> components are respectively
+<span class="math" data-tex="\(-12d_1/25,-12d_2/25,-12d_3/25\)">\(-12d_1/25,-12d_2/25,-12d_3/25\)</span>, equal to those of <span class="math" data-tex="\(R\)">\(R\)</span>.
+Symmetry gives the remaining entries. Thus</p>
+<span class="math math-display" data-tex="\[
+R=\sum_{i=1}^3\sum_{\epsilon\in\{+,-\}}
+c_{i,\epsilon}(R)P_{\xi_{i,\epsilon}},
+\qquad
+\sum_{i,\epsilon}P_{\xi_{i,\epsilon}}=4I_3,\qquad
+c_{i,\epsilon}(I_3)=\frac14 .
+\tag{BG3}
+\]">\[
+R=\sum_{i=1}^3\sum_{\epsilon\in\{+,-\}}
+c_{i,\epsilon}(R)P_{\xi_{i,\epsilon}},
+\qquad
+\sum_{i,\epsilon}P_{\xi_{i,\epsilon}}=4I_3,\qquad
+c_{i,\epsilon}(I_3)=\frac14 .
+\tag{BG3}
+\]</span>
+<p>This is an identity on the complete six-dimensional space of
+symmetric matrices. Its coefficients are unique: zero off-diagonal
+entries force <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, and zero diagonal entries force <span class="math" data-tex="\(s=0\)">\(s=0\)</span>
+by the nonzero determinant. In particular, the six projections
+are a basis, not only a spanning collection on trace-free inputs.</p>
+<p><img src="assets/NS-FLUID-21/original-rational-beltrami-directions-7C1559B2E1885EFD77763850F592A8099BFE29CA8C252081A606EA90D1A12278.png" alt="The twelve exact rational directions in their three coordinate planes." class="course-figure" width="2240" height="960" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-rational-beltrami-directions" data-asset-sha256="7C1559B2E1885EFD77763850F592A8099BFE29CA8C252081A606EA90D1A12278"></p>
+<p>The three panels show the actual directions of BG1 and their negatives,
+with the polarization perpendicular to each displayed plane. Each pair
+is retained separately. BG2–BG3 prove the full tensor identity; BG11–BG19
+give the rotations and physical wave frequencies. Human comparison:
+Buckmaster–Vicol, original propositions p:Beltrami and p:split cited above.
+<a href="assets/original-rational-beltrami-directions.py">Reproducible figure source</a>.</p>
+<h2 id="bg2-the-exact-positive-domain-and-its-inscribed-balls">BG2. The exact positive domain and its inscribed balls</h2>
+<p>Use the Frobenius norm and inner product, with both off-diagonal
+entries included. Put</p>
+<span class="math math-display" data-tex="\[
+C_{\rm diag}=\frac{\sqrt{31^2+319^2+481^2}}{386},\qquad
+D_{\rm coeff}=\frac12
+\sqrt{C_{\rm diag}^2+\frac{25^2}{12^2\,2}} .
+\tag{BG4}
+\]">\[
+C_{\rm diag}=\frac{\sqrt{31^2+319^2+481^2}}{386},\qquad
+D_{\rm coeff}=\frac12
+\sqrt{C_{\rm diag}^2+\frac{25^2}{12^2\,2}} .
+\tag{BG4}
+\]</span>
+<p>The linear functional <span class="math" data-tex="\(c_{i,\epsilon}\)">\(c_{i,\epsilon}\)</span> has exactly this
+operator norm. To see every coefficient, its symmetric Riesz
+matrix <span class="math" data-tex="\(A_{i,\epsilon}\)">\(A_{i,\epsilon}\)</span>, defined by
+<span class="math" data-tex="\(c_{i,\epsilon}(R)=A_{i,\epsilon}:R\)">\(c_{i,\epsilon}(R)=A_{i,\epsilon}:R\)</span>, has diagonal entries
+one half of row <span class="math" data-tex="\(i\)">\(i\)</span> of <span class="math" data-tex="\(M^{-1}\)">\(M^{-1}\)</span>.
+At its relevant off-diagonal pair, both entries are
+<span class="math" data-tex="\(-25/48\)">\(-25/48\)</span> for <span class="math" data-tex="\(\epsilon=+\)">\(\epsilon=+\)</span> and <span class="math" data-tex="\(25/48\)">\(25/48\)</span> for <span class="math" data-tex="\(\epsilon=-\)">\(\epsilon=-\)</span>;
+all other off-diagonal entries vanish.
+Its squared norm is</p>
+<span class="math math-display" data-tex="\[
+|A_{i,\epsilon}|_{\rm F}^2
+=\frac14 C_{\rm diag}^2+
+2\left(\frac{25}{48}\right)^2
+=D_{\rm coeff}^2,\qquad
+\operatorname{tr}A_{i,\epsilon}=\frac14 .
+\tag{BG5}
+\]">\[
+|A_{i,\epsilon}|_{\rm F}^2
+=\frac14 C_{\rm diag}^2+
+2\left(\frac{25}{48}\right)^2
+=D_{\rm coeff}^2,\qquad
+\operatorname{tr}A_{i,\epsilon}=\frac14 .
+\tag{BG5}
+\]</span>
+<p>Cauchy–Schwarz proves the bound, and a scalar multiple of
+<span class="math" data-tex="\(A_{i,\epsilon}\)">\(A_{i,\epsilon}\)</span> gives equality. The rows are cyclic
+permutations, so every one of the six norms is the same.</p>
+<p>For each actual <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span>, the largest open Frobenius ball
+centered at <span class="math" data-tex="\(\rho I_3\)">\(\rho I_3\)</span> on which all six coefficients are
+positive has radius</p>
+<span class="math math-display" data-tex="\[
+r_{\rm pos}(\rho)=\frac{\rho}{4D_{\rm coeff}} .
+\tag{BG6}
+\]">\[
+r_{\rm pos}(\rho)=\frac{\rho}{4D_{\rm coeff}} .
+\tag{BG6}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(c_{i,\epsilon}(\rho I_3+H)
+=\rho/4+A_{i,\epsilon}:H\)">\(c_{i,\epsilon}(\rho I_3+H)
+=\rho/4+A_{i,\epsilon}:H\)</span>, so <span class="math" data-tex="\(|H|_{\rm F}&lt;r_{\rm pos}\)">\(|H|_{\rm F}&lt;r_{\rm pos}\)</span>
+makes all coefficients positive. The particular matrix</p>
+<span class="math math-display" data-tex="\[
+R=\rho I_3-\frac{\rho}{4D_{\rm coeff}^2}A_{i,\epsilon}
+\tag{BG7}
+\]">\[
+R=\rho I_3-\frac{\rho}{4D_{\rm coeff}^2}A_{i,\epsilon}
+\tag{BG7}
+\]</span>
+<p>has distance <span class="math" data-tex="\(r_{\rm pos}\)">\(r_{\rm pos}\)</span> from the center and that coefficient
+equal to zero. Every larger open ball therefore fails the
+strict-positivity requirement. The exact entire positive domain
+is the open polyhedral cone given by all six inequalities
+<span class="math" data-tex="\(c_{i,\epsilon}(R)&gt;0\)">\(c_{i,\epsilon}(R)&gt;0\)</span>; the ball is its stated centered subset.</p>
+<p>For uniform derivative estimates use the smaller actual ball</p>
+<span class="math math-display" data-tex="\[
+|R-\rho I_3|_{\rm F}&lt;\frac{\rho}{8D_{\rm coeff}},
+\qquad
+\frac{\rho}{8}&lt;c_{i,\epsilon}(R)&lt;\frac{3\rho}{8}.
+\tag{BG8}
+\]">\[
+|R-\rho I_3|_{\rm F}&lt;\frac{\rho}{8D_{\rm coeff}},
+\qquad
+\frac{\rho}{8}&lt;c_{i,\epsilon}(R)&lt;\frac{3\rho}{8}.
+\tag{BG8}
+\]</span>
+<p>Define <span class="math" data-tex="\(\gamma_\xi(R)=\sqrt{c_{i,\epsilon}(R)}\)">\(\gamma_\xi(R)=\sqrt{c_{i,\epsilon}(R)}\)</span> for
+<span class="math" data-tex="\(\xi=\xi_{i,\epsilon}\)">\(\xi=\xi_{i,\epsilon}\)</span>, and give its negative the same value.
+Then the original paired formula is</p>
+<span class="math math-display" data-tex="\[
+R=\frac12\sum_{\xi\in\Lambda_0}
+\gamma_\xi(R)^2(I_3-\xi\otimes\xi),
+\qquad \gamma_{-\xi}=\gamma_\xi&gt;0 .
+\tag{BG9}
+\]">\[
+R=\frac12\sum_{\xi\in\Lambda_0}
+\gamma_\xi(R)^2(I_3-\xi\otimes\xi),
+\qquad \gamma_{-\xi}=\gamma_\xi&gt;0 .
+\tag{BG9}
+\]</span>
+<p>No trace or positive scalar has been absorbed into a replacement
+matrix. In particular, the original <span class="math" data-tex="\(\rho I_3\)">\(\rho I_3\)</span> remains in
+the domain and every bound.
+For <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span> and symmetric directions <span class="math" data-tex="\(H_1,\ldots,H_m\)">\(H_1,\ldots,H_m\)</span>,
+repeated differentiation of the square root gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D^m\gamma_\xi(R)[H_1,\ldots,H_m]
+&amp;=\left[\prod_{j=0}^{m-1}\left(\frac12-j\right)\right]
+c_\xi(R)^{1/2-m}\prod_{\ell=1}^m c_\xi(H_\ell),\\
+|D^m\gamma_\xi(R)[H_1,\ldots,H_m]|
+&amp;\leq
+\left|\prod_{j=0}^{m-1}\left(\frac12-j\right)\right|
+\left(\frac{\rho}{8}\right)^{1/2-m}
+D_{\rm coeff}^m\prod_{\ell=1}^m|H_\ell|_{\rm F}.
+\end{aligned}
+\tag{BG10}
+\]">\[
+\begin{aligned}
+D^m\gamma_\xi(R)[H_1,\ldots,H_m]
+&amp;=\left[\prod_{j=0}^{m-1}\left(\frac12-j\right)\right]
+c_\xi(R)^{1/2-m}\prod_{\ell=1}^m c_\xi(H_\ell),\\
+|D^m\gamma_\xi(R)[H_1,\ldots,H_m]|
+&amp;\leq
+\left|\prod_{j=0}^{m-1}\left(\frac12-j\right)\right|
+\left(\frac{\rho}{8}\right)^{1/2-m}
+D_{\rm coeff}^m\prod_{\ell=1}^m|H_\ell|_{\rm F}.
+\end{aligned}
+\tag{BG10}
+\]</span>
+<p>The zeroth derivative is bounded by <span class="math" data-tex="\(\sqrt{3\rho/8}\)">\(\sqrt{3\rho/8}\)</span>.
+These statements also prove smoothness and every finite
+derivative bound, without appealing to an unspecified
+geometric decomposition.</p>
+<h2 id="bg3-any-prescribed-finite-number-of-disjoint-rational-families">BG3. Any prescribed finite number of disjoint rational families</h2>
+<p>Fix the actual positive integer <span class="math" data-tex="\(N\)">\(N\)</span>, put <span class="math" data-tex="\(D_N=10N\)">\(D_N=10N\)</span>, and
+for <span class="math" data-tex="\(\alpha=0,\ldots,N-1\)">\(\alpha=0,\ldots,N-1\)</span> set</p>
+<span class="math math-display" data-tex="\[
+t_\alpha=\frac{\alpha}{D_N},\qquad
+Q(t)=\frac1{1+t^2}
+\begin{pmatrix}
+1-t^2&amp;-2t&amp;0\\2t&amp;1-t^2&amp;0\\0&amp;0&amp;1+t^2
+\end{pmatrix},\qquad
+\Lambda_\alpha=Q(t_\alpha)\Lambda_0 .
+\tag{BG11}
+\]">\[
+t_\alpha=\frac{\alpha}{D_N},\qquad
+Q(t)=\frac1{1+t^2}
+\begin{pmatrix}
+1-t^2&amp;-2t&amp;0\\2t&amp;1-t^2&amp;0\\0&amp;0&amp;1+t^2
+\end{pmatrix},\qquad
+\Lambda_\alpha=Q(t_\alpha)\Lambda_0 .
+\tag{BG11}
+\]</span>
+<p>Direct multiplication proves <span class="math" data-tex="\(Q(t)^TQ(t)=I_3\)">\(Q(t)^TQ(t)=I_3\)</span> and
+<span class="math" data-tex="\(\det Q(t)=1\)">\(\det Q(t)=1\)</span>. Its entries are rational at every chosen
+parameter. It fixes the third coordinate.
+For any real vector <span class="math" data-tex="\(z\)">\(z\)</span>, an exact subtraction of these
+matrices gives</p>
+<span class="math math-display" data-tex="\[
+|Q(t)z-Q(s)z|^2
+=\frac{4(t-s)^2}{(1+t^2)(1+s^2)}(z_1^2+z_2^2).
+\tag{BG12}
+\]">\[
+|Q(t)z-Q(s)z|^2
+=\frac{4(t-s)^2}{(1+t^2)(1+s^2)}(z_1^2+z_2^2).
+\tag{BG12}
+\]</span>
+<p>All base directions have a nonzero horizontal component.
+Two different base directions with the same third coordinate
+are separated by at least <span class="math" data-tex="\(6/5\)">\(6/5\)</span>: the possible third coordinates
+are <span class="math" data-tex="\(0,\pm3/5,\pm4/5\)">\(0,\pm3/5,\pm4/5\)</span>, and inspection of BG1 and its negatives
+gives that exact lower bound.</p>
+<p>Suppose <span class="math" data-tex="\(Q(t_\alpha)\xi=Q(t_\beta)\eta\)">\(Q(t_\alpha)\xi=Q(t_\beta)\eta\)</span>.
+Then <span class="math" data-tex="\(\xi_3=\eta_3\)">\(\xi_3=\eta_3\)</span>. Orthogonality and BG12 imply</p>
+<span class="math math-display" data-tex="\[
+|\xi-\eta|
+=|Q(t_\alpha)\xi-Q(t_\alpha)\eta|
+=|Q(t_\beta)\eta-Q(t_\alpha)\eta|
+\leq2|t_\alpha-t_\beta|&lt;\frac15 .
+\tag{BG13}
+\]">\[
+|\xi-\eta|
+=|Q(t_\alpha)\xi-Q(t_\alpha)\eta|
+=|Q(t_\beta)\eta-Q(t_\alpha)\eta|
+\leq2|t_\alpha-t_\beta|&lt;\frac15 .
+\tag{BG13}
+\]</span>
+<p>Hence <span class="math" data-tex="\(\xi=\eta\)">\(\xi=\eta\)</span>. Applying BG12 again, with its nonzero
+horizontal component, forces <span class="math" data-tex="\(t_\alpha=t_\beta\)">\(t_\alpha=t_\beta\)</span> and
+<span class="math" data-tex="\(\alpha=\beta\)">\(\alpha=\beta\)</span>. The families are pairwise disjoint.
+Within each family the twelve vectors remain distinct
+and closed under negation.</p>
+<p>For <span class="math" data-tex="\(\xi=Q(t_\alpha)\eta\)">\(\xi=Q(t_\alpha)\eta\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+\gamma_\xi^{(\alpha)}(R)
+=\gamma_\eta(Q(t_\alpha)^TRQ(t_\alpha)).
+\tag{BG14}
+\]">\[
+\gamma_\xi^{(\alpha)}(R)
+=\gamma_\eta(Q(t_\alpha)^TRQ(t_\alpha)).
+\tag{BG14}
+\]</span>
+<p>Conjugation is an explicit invertible map on symmetric tensors
+with inverse <span class="math" data-tex="\(H\mapsto Q(t_\alpha)H Q(t_\alpha)^T\)">\(H\mapsto Q(t_\alpha)H Q(t_\alpha)^T\)</span>.
+It fixes <span class="math" data-tex="\(\rho I_3\)">\(\rho I_3\)</span>, preserves the full Frobenius norm and
+each trace, and maps <span class="math" data-tex="\(P_\eta\)">\(P_\eta\)</span> to <span class="math" data-tex="\(P_\xi\)">\(P_\xi\)</span>.
+Applying it to BG9 proves</p>
+<span class="math math-display" data-tex="\[
+R=\frac12\sum_{\xi\in\Lambda_\alpha}
+\big(\gamma_\xi^{(\alpha)}(R)\big)^2P_\xi
+\tag{BG15}
+\]">\[
+R=\frac12\sum_{\xi\in\Lambda_\alpha}
+\big(\gamma_\xi^{(\alpha)}(R)\big)^2P_\xi
+\tag{BG15}
+\]</span>
+<p>on exactly the same balls BG6 and BG8.
+All derivative bounds BG10 hold unchanged because conjugation
+is an isometry on each direction <span class="math" data-tex="\(H_\ell\)">\(H_\ell\)</span>.
+No constant in those bounds depends on a later oscillation
+frequency or on the number of families.</p>
+<p>An explicit common integer denominator is</p>
+<span class="math math-display" data-tex="\[
+N_\Lambda=
+5\,\operatorname{lcm}_{0\leq\alpha&lt;N}
+(D_N^2+\alpha^2).
+\tag{BG16}
+\]">\[
+N_\Lambda=
+5\,\operatorname{lcm}_{0\leq\alpha&lt;N}
+(D_N^2+\alpha^2).
+\tag{BG16}
+\]</span>
+<p>The matrix entries of <span class="math" data-tex="\(Q(t_\alpha)\)">\(Q(t_\alpha)\)</span> have the displayed
+integer denominator <span class="math" data-tex="\(D_N^2+\alpha^2\)">\(D_N^2+\alpha^2\)</span>, and each original
+direction has denominator five. Thus <span class="math" data-tex="\(N_\Lambda\xi\)">\(N_\Lambda\xi\)</span>
+is an integer vector. This is a valid chosen denominator,
+without a claim of minimality.
+For any two directions in the entire union with
+<span class="math" data-tex="\(\xi+\eta\ne0\)">\(\xi+\eta\ne0\)</span>, the vector <span class="math" data-tex="\(N_\Lambda(\xi+\eta)\)">\(N_\Lambda(\xi+\eta)\)</span>
+is a nonzero integer vector. Therefore</p>
+<span class="math math-display" data-tex="\[
+|\xi+\eta|\geq N_\Lambda^{-1}=2c_\Lambda,
+\qquad c_\Lambda=(2N_\Lambda)^{-1}\in(0,1).
+\tag{BG17}
+\]">\[
+|\xi+\eta|\geq N_\Lambda^{-1}=2c_\Lambda,
+\qquad c_\Lambda=(2N_\Lambda)^{-1}\in(0,1).
+\tag{BG17}
+\]</span>
+<p>This gives the complete nonresonant carrier separation,
+including directions from different families.</p>
+<h2 id="bg4-the-original-real-beltrami-fields">BG4. The original real Beltrami fields</h2>
+<p>On the original cube <span class="math" data-tex="\(\mathbb T_L^3=(\mathbb R/L\mathbb Z)^3\)">\(\mathbb T_L^3=(\mathbb R/L\mathbb Z)^3\)</span>
+keep a positive integer <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> divisible by <span class="math" data-tex="\(N_\Lambda\)">\(N_\Lambda\)</span> and set</p>
+<span class="math math-display" data-tex="\[
+\varkappa=\frac{2\pi\lambda}{L}.
+\tag{BG18}
+\]">\[
+\varkappa=\frac{2\pi\lambda}{L}.
+\tag{BG18}
+\]</span>
+<p>For base directions in the <span class="math" data-tex="\(12\)">\(12\)</span>, <span class="math" data-tex="\(23\)">\(23\)</span>, <span class="math" data-tex="\(13\)">\(13\)</span> planes
+choose respectively the rational polarization <span class="math" data-tex="\(e_3,e_1,e_2\)">\(e_3,e_1,e_2\)</span>.
+Give each negative the same polarization.
+Rotate each polarization by the same <span class="math" data-tex="\(Q(t_\alpha)\)">\(Q(t_\alpha)\)</span>
+as its direction; call it <span class="math" data-tex="\(A_\xi\)">\(A_\xi\)</span>. All these vectors are
+rational, unit length, perpendicular to <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, and
+<span class="math" data-tex="\(A_{-\xi}=A_\xi\)">\(A_{-\xi}=A_\xi\)</span>. Since proper rotations preserve cross
+products, BG16 also makes
+<span class="math" data-tex="\(N_\Lambda A_\xi\)">\(N_\Lambda A_\xi\)</span> and <span class="math" data-tex="\(N_\Lambda(\xi\times A_\xi)\)">\(N_\Lambda(\xi\times A_\xi)\)</span>
+integer vectors: the base polarizations have denominator one,
+and their cross products with the base directions have denominator five.</p>
+<p>Set <span class="math" data-tex="\(C_\xi=\xi\times A_\xi\)">\(C_\xi=\xi\times A_\xi\)</span> and retain the full complex vector</p>
+<span class="math math-display" data-tex="\[
+B_\xi=\frac{A_\xi+iC_\xi}{\sqrt2},\qquad
+B_{-\xi}=\overline{B_\xi},\qquad
+i\xi\times B_\xi=B_\xi,\quad
+\xi\cdot B_\xi=0,\quad |B_\xi|^2=1 .
+\tag{BG19}
+\]">\[
+B_\xi=\frac{A_\xi+iC_\xi}{\sqrt2},\qquad
+B_{-\xi}=\overline{B_\xi},\qquad
+i\xi\times B_\xi=B_\xi,\quad
+\xi\cdot B_\xi=0,\quad |B_\xi|^2=1 .
+\tag{BG19}
+\]</span>
+<p>The ordered frame <span class="math" data-tex="\(A_\xi,C_\xi,\xi\)">\(A_\xi,C_\xi,\xi\)</span> is orthonormal:
+the cross product is perpendicular to both inputs, has length one,
+and <span class="math" data-tex="\(\xi\times C_\xi=-A_\xi\)">\(\xi\times C_\xi=-A_\xi\)</span>.
+These identities prove every assertion in BG19 directly.</p>
+<p>Choose complex coefficients with <span class="math" data-tex="\(a_{-\xi}=\overline{a_\xi}\)">\(a_{-\xi}=\overline{a_\xi}\)</span>
+on any one family, or on any finite union of them. The field</p>
+<span class="math math-display" data-tex="\[
+W(x)=\sum_\xi a_\xi B_\xi e^{i\varkappa\xi\cdot x}
+\tag{BG20}
+\]">\[
+W(x)=\sum_\xi a_\xi B_\xi e^{i\varkappa\xi\cdot x}
+\tag{BG20}
+\]</span>
+<p>is periodic on the original cube since <span class="math" data-tex="\(\lambda\xi\in\mathbb Z^3\)">\(\lambda\xi\in\mathbb Z^3\)</span>.
+Opposite modes are conjugates, so <span class="math" data-tex="\(W\)">\(W\)</span> is real. Each mode has
+zero divergence and nonzero frequency; hence its mean is zero.
+Differentiation with the actual physical frequency gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{curl}W=\varkappa W,\qquad
+\Delta W=-\varkappa^2 W,\qquad
+\operatorname{div}(W\otimes W)
+=\nabla\frac{|W|^2}{2}.
+\tag{BG21}
+\]">\[
+\operatorname{curl}W=\varkappa W,\qquad
+\Delta W=-\varkappa^2 W,\qquad
+\operatorname{div}(W\otimes W)
+=\nabla\frac{|W|^2}{2}.
+\tag{BG21}
+\]</span>
+<p>For completeness, the last identity follows componentwise from</p>
+<span class="math math-display" data-tex="\[
+\partial_i\frac{|W|^2}{2}
+-\sum_jW_j\partial_jW_i
+=(W\times\operatorname{curl}W)_i=0 .
+\tag{BG22}
+\]">\[
+\partial_i\frac{|W|^2}{2}
+-\sum_jW_j\partial_jW_i
+=(W\times\operatorname{curl}W)_i=0 .
+\tag{BG22}
+\]</span>
+<p>The equality before zero is obtained by expanding the two
+Levi-Civita symbols in the curl. Divergence freedom identifies
+the convective term with the tensor divergence.
+Thus this equality holds for all cross interactions in BG20,
+not only one mode at a time.</p>
+<p>Integrating each exponential over the cube annihilates every
+mode except pairs with <span class="math" data-tex="\(\xi+\eta=0\)">\(\xi+\eta=0\)</span>.
+The exact polarization relation is</p>
+<span class="math math-display" data-tex="\[
+B_\xi\otimes\overline{B_\xi}
++\overline{B_\xi}\otimes B_\xi
+=A_\xi\otimes A_\xi+C_\xi\otimes C_\xi
+=I_3-\xi\otimes\xi .
+\tag{BG23}
+\]">\[
+B_\xi\otimes\overline{B_\xi}
++\overline{B_\xi}\otimes B_\xi
+=A_\xi\otimes A_\xi+C_\xi\otimes C_\xi
+=I_3-\xi\otimes\xi .
+\tag{BG23}
+\]</span>
+<p>Grouping opposite pairs therefore gives</p>
+<span class="math math-display" data-tex="\[
+\frac1{L^3}\int_{\mathbb T_L^3}W\otimes W\,dx
+=\frac12\sum_\xi |a_\xi|^2 P_\xi,\qquad
+\frac1{L^3}\int_{\mathbb T_L^3}|W|^2\,dx
+=\sum_\xi |a_\xi|^2 .
+\tag{BG24}
+\]">\[
+\frac1{L^3}\int_{\mathbb T_L^3}W\otimes W\,dx
+=\frac12\sum_\xi |a_\xi|^2 P_\xi,\qquad
+\frac1{L^3}\int_{\mathbb T_L^3}|W|^2\,dx
+=\sum_\xi |a_\xi|^2 .
+\tag{BG24}
+\]</span>
+<p>Both the factor one half and the full original volume are retained.
+In particular, using one family and
+<span class="math" data-tex="\(a_\xi=\gamma_\xi^{(\alpha)}(R)\)">\(a_\xi=\gamma_\xi^{(\alpha)}(R)\)</span> realizes the full target
+matrix <span class="math" data-tex="\(R\)">\(R\)</span> as the average tensor, with total energy integral
+<span class="math" data-tex="\(L^3\operatorname{tr}R\)">\(L^3\operatorname{tr}R\)</span>.
+The matrix domain and positivity are the proved ones in BG8;
+the coefficients have not been assumed to exist.</p>
+<h2 id="bg5-a-spatially-varying-tensor-and-its-exact-divergence-correction">BG5. A spatially varying tensor and its exact divergence correction</h2>
+<p>Now keep a smooth symmetric trace-free stress <span class="math" data-tex="\(S(t,x)\)">\(S(t,x)\)</span>
+and any fixed <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> with the same units as a stress.
+The explicit smooth positive function</p>
+<span class="math math-display" data-tex="\[
+\rho(t,x)=8D_{\rm coeff}
+\sqrt{\delta^2+|S(t,x)|_{\rm F}^2},\qquad
+R(t,x)=\rho(t,x)I_3-S(t,x)
+\tag{BG25}
+\]">\[
+\rho(t,x)=8D_{\rm coeff}
+\sqrt{\delta^2+|S(t,x)|_{\rm F}^2},\qquad
+R(t,x)=\rho(t,x)I_3-S(t,x)
+\tag{BG25}
+\]</span>
+<p>satisfies <span class="math" data-tex="\(|R-\rho I_3|_{\rm F}&lt;\rho/(8D_{\rm coeff})\)">\(|R-\rho I_3|_{\rm F}&lt;\rho/(8D_{\rm coeff})\)</span>.
+Use one fixed family and the now constructed smooth positive
+coefficients
+<span class="math" data-tex="\(a_\xi(t,x)=\gamma_\xi^{(\alpha)}(R(t,x))\)">\(a_\xi(t,x)=\gamma_\xi^{(\alpha)}(R(t,x))\)</span>.
+This is a concrete choice for every such stress.
+Other positive <span class="math" data-tex="\(\rho\)">\(\rho\)</span> with the same proved inequality also
+receive the following exact calculation, but their existence
+is not needed here.</p>
+<p>Define the principal field, full correction and total field by</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+w^{\rm p}&amp;=\sum_\xi a_\xi B_\xi e^{i\varkappa\xi\cdot x},\\
+w^{\rm c}&amp;=\varkappa^{-1}
+\sum_\xi\nabla a_\xi\times B_\xi
+e^{i\varkappa\xi\cdot x},\\
+w&amp;=w^{\rm p}+w^{\rm c}
+=\varkappa^{-1}\operatorname{curl}w^{\rm p}.
+\end{aligned}
+\tag{BG26}
+\]">\[
+\begin{aligned}
+w^{\rm p}&amp;=\sum_\xi a_\xi B_\xi e^{i\varkappa\xi\cdot x},\\
+w^{\rm c}&amp;=\varkappa^{-1}
+\sum_\xi\nabla a_\xi\times B_\xi
+e^{i\varkappa\xi\cdot x},\\
+w&amp;=w^{\rm p}+w^{\rm c}
+=\varkappa^{-1}\operatorname{curl}w^{\rm p}.
+\end{aligned}
+\tag{BG26}
+\]</span>
+<p>The product rule and BG19 prove the last equality.
+Opposite-mode conjugation proves that both fields are real.
+The divergence of a curl is zero because mixed derivatives
+commute and the alternating coefficients cancel in pairs.
+The integral of each derivative of a periodic function is zero.
+Thus</p>
+<span class="math math-display" data-tex="\[
+\operatorname{div}w=0,\qquad
+\langle w\rangle=0,\qquad
+\partial_t\langle w\rangle=0 .
+\tag{BG27}
+\]">\[
+\operatorname{div}w=0,\qquad
+\langle w\rangle=0,\qquad
+\partial_t\langle w\rangle=0 .
+\tag{BG27}
+\]</span>
+<p>These statements do not require the principal field to have
+zero mean. Its coefficient functions may themselves carry
+frequencies that interact with the carriers.
+The correction removes the entire resulting mean.</p>
+<p>At each original point <span class="math" data-tex="\(t,x\)">\(t,x\)</span>, the opposite-mode terms in
+<span class="math" data-tex="\(w^{\rm p}\otimes w^{\rm p}\)">\(w^{\rm p}\otimes w^{\rm p}\)</span> give exactly BG15.
+Therefore the complete oscillatory tensor is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+O&amp;=w^{\rm p}\otimes w^{\rm p}-(\rho I_3-S)\\
+&amp;=\sum_{\xi+\eta\ne0}
+a_\xi a_\eta B_\xi\otimes B_\eta
+e^{i\varkappa(\xi+\eta)\cdot x}.
+\end{aligned}
+\tag{BG28}
+\]">\[
+\begin{aligned}
+O&amp;=w^{\rm p}\otimes w^{\rm p}-(\rho I_3-S)\\
+&amp;=\sum_{\xi+\eta\ne0}
+a_\xi a_\eta B_\xi\otimes B_\eta
+e^{i\varkappa(\xi+\eta)\cdot x}.
+\end{aligned}
+\tag{BG28}
+\]</span>
+<p>The sum is over ordered pairs. Reversing the order proves
+symmetry, and conjugating both directions proves reality.
+Every carrier has physical length at least
+<span class="math" data-tex="\(\varkappa/N_\Lambda\)">\(\varkappa/N_\Lambda\)</span> by BG17.
+This statement concerns carriers; unrestricted coefficient
+functions can broaden the full Fourier support, so no
+unsupported high-frequency support claim is made for <span class="math" data-tex="\(O\)">\(O\)</span>.</p>
+<p>For an actual original solution of the stress equation RS2,
+with this same trace-free <span class="math" data-tex="\(S\)">\(S\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+K={}&amp;O+u\otimes w+w\otimes u\\
+&amp;+w^{\rm p}\otimes w^{\rm c}
++w^{\rm c}\otimes w^{\rm p}
++w^{\rm c}\otimes w^{\rm c}
++\mathcal R_L(\partial_tw-\nu\Delta w),\\
+u_+&amp;=u+w,\qquad
+S_+=K-\frac{\operatorname{tr}K}{3}I_3,\qquad
+p_+=p-\rho-\frac{\operatorname{tr}K}{3}.
+\end{aligned}
+\tag{BG29}
+\]">\[
+\begin{aligned}
+K={}&amp;O+u\otimes w+w\otimes u\\
+&amp;+w^{\rm p}\otimes w^{\rm c}
++w^{\rm c}\otimes w^{\rm p}
++w^{\rm c}\otimes w^{\rm c}
++\mathcal R_L(\partial_tw-\nu\Delta w),\\
+u_+&amp;=u+w,\qquad
+S_+=K-\frac{\operatorname{tr}K}{3}I_3,\qquad
+p_+=p-\rho-\frac{\operatorname{tr}K}{3}.
+\end{aligned}
+\tag{BG29}
+\]</span>
+<p>Here <span class="math" data-tex="\(\mathcal R_L\)">\(\mathcal R_L\)</span> is exactly RS7 on the original cube,
+with all its components and zero mode.
+Indeed <span class="math" data-tex="\(S+w^{\rm p}\otimes w^{\rm p}=\rho I_3+O\)">\(S+w^{\rm p}\otimes w^{\rm p}=\rho I_3+O\)</span>;
+expanding the other quadratic terms gives exactly
+the tensor <span class="math" data-tex="\(T=\rho I_3+K\)">\(T=\rho I_3+K\)</span> in RS16.
+The mean-zero condition follows from BG27.
+Thus RS17 and the full trace map prove</p>
+<span class="math math-display" data-tex="\[
+\partial_tu_++\operatorname{div}(u_+\otimes u_+)
++\nabla p_+-\nu\Delta u_+
+=f+\operatorname{div}S_+,\qquad
+\operatorname{div}u_+=0 .
+\tag{BG30}
+\]">\[
+\partial_tu_++\operatorname{div}(u_+\otimes u_+)
++\nabla p_+-\nu\Delta u_+
+=f+\operatorname{div}S_+,\qquad
+\operatorname{div}u_+=0 .
+\tag{BG30}
+\]</span>
+<p>Every original force, transport term, viscosity contribution,
+quadratic cross term, mean and pressure trace appears in this
+finite identity. It is not yet an estimate that the new stress
+is smaller.</p>
+<h2 id="bg6-the-full-viscous-cost-of-these-ordinary-fields">BG6. The full viscous cost of these ordinary fields</h2>
+<p>For constant coefficients, BG21 makes</p>
+<span class="math math-display" data-tex="\[
+u=W,\qquad p=-|W|^2/2,\qquad f=\nu\varkappa^2W
+\tag{BG31}
+\]">\[
+u=W,\qquad p=-|W|^2/2,\qquad f=\nu\varkappa^2W
+\tag{BG31}
+\]</span>
+<p>an exact stationary solution of the original forced equation.
+All frequencies of <span class="math" data-tex="\(W\)">\(W\)</span> have length <span class="math" data-tex="\(\varkappa\)">\(\varkappa\)</span>, and its
+Fourier vectors are transverse. The exact RS11 identity gives</p>
+<span class="math math-display" data-tex="\[
+\|\mathcal R_L(\nu\varkappa^2W)\|_2^2
+=2\nu^2\varkappa^2\|W\|_2^2 .
+\tag{BG32}
+\]">\[
+\|\mathcal R_L(\nu\varkappa^2W)\|_2^2
+=2\nu^2\varkappa^2\|W\|_2^2 .
+\tag{BG32}
+\]</span>
+<p>By RS14 this is the smallest squared <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm of a
+symmetric trace-free tensor representing this particular
+viscous force. It is not a statement that unrelated nonlinear
+terms can never cancel; its exact range is the stated force map.
+With a fixed nonzero target tensor, increasing the original
+frequency increases this minimum. No viscosity or period has
+been changed to suppress it.</p>
+<h2 id="15-five-exercises-with-complete-solutions">15. Five exercises with complete solutions</h2>
+<h3 id="exercise-1-allow-the-pressure-to-vary-in-the-least-stress-problem">Exercise 1: allow the pressure to vary in the least-stress problem</h3>
+<p>On the original rectangular torus of RS1, let <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>,
+<span class="math" data-tex="\(s\in\mathbb R\)">\(s\in\mathbb R\)</span>, and <span class="math" data-tex="\(g\in H_L^s\)">\(g\in H_L^s\)</span> have zero mean.
+Among all mean-zero scalar <span class="math" data-tex="\(q\in H_L^{s+1}\)">\(q\in H_L^{s+1}\)</span> and symmetric
+trace-free <span class="math" data-tex="\(S\in H_L^{s+1}\)">\(S\in H_L^{s+1}\)</span> satisfying
+<span class="math" data-tex="\(\operatorname{div}S=g+\nabla q\)">\(\operatorname{div}S=g+\nabla q\)</span>, find the smallest tensor norm.
+Describe the entire solution space and the equality case.
+Also determine what happens if the original mean of <span class="math" data-tex="\(g\)">\(g\)</span> is nonzero.</p>
+<p><strong>Solution.</strong> Keep the original scalar and vector</p>
+<span class="math math-display" data-tex="\[
+\psi=\Delta^{-1}\operatorname{div}g,\qquad
+\mathbb P_Lg=g-\nabla\psi,\qquad \langle\psi\rangle=0 .
+\tag{EX1}
+\]">\[
+\psi=\Delta^{-1}\operatorname{div}g,\qquad
+\mathbb P_Lg=g-\nabla\psi,\qquad \langle\psi\rangle=0 .
+\tag{EX1}
+\]</span>
+<p>At every nonzero original frequency, <span class="math" data-tex="\(\nabla\psi\)">\(\nabla\psi\)</span> is the
+longitudinal component of <span class="math" data-tex="\(g\)">\(g\)</span>, and <span class="math" data-tex="\(\mathbb P_Lg\)">\(\mathbb P_Lg\)</span> is its
+transverse component. The inverse multiplier and RS12 give
+<span class="math" data-tex="\(\psi\in H_L^{s+1}\)">\(\psi\in H_L^{s+1}\)</span>. For every admissible pressure the full
+affine solution space from RS14 is</p>
+<span class="math math-display" data-tex="\[
+S=\mathcal R_L(\mathbb P_Lg)
++\mathcal R_L\nabla(\psi+q)+K,\qquad
+K\in H_L^{s+1}(\operatorname{Sym}_0^2),\quad
+\operatorname{div}K=0 .
+\tag{EX2}
+\]">\[
+S=\mathcal R_L(\mathbb P_Lg)
++\mathcal R_L\nabla(\psi+q)+K,\qquad
+K\in H_L^{s+1}(\operatorname{Sym}_0^2),\quad
+\operatorname{div}K=0 .
+\tag{EX2}
+\]</span>
+<p>The first two terms are orthogonal mode by mode: the first has
+the transverse tensor of RS10 and the second has its longitudinal
+tensor. Each is orthogonal to <span class="math" data-tex="\(K\)">\(K\)</span>, by the complete proof of RS14.
+All zero modes of both inverse terms vanish, while <span class="math" data-tex="\(K\)">\(K\)</span> retains
+its possible constant tensor. With the full original weights,</p>
+<span class="math math-display" data-tex="\[
+\|S\|_{H_L^{s+1}}^2
+=\|\mathcal R_L\mathbb P_Lg\|_{H_L^{s+1}}^2
++\|\mathcal R_L\nabla(\psi+q)\|_{H_L^{s+1}}^2
++\|K\|_{H_L^{s+1}}^2 .
+\tag{EX3}
+\]">\[
+\|S\|_{H_L^{s+1}}^2
+=\|\mathcal R_L\mathbb P_Lg\|_{H_L^{s+1}}^2
++\|\mathcal R_L\nabla(\psi+q)\|_{H_L^{s+1}}^2
++\|K\|_{H_L^{s+1}}^2 .
+\tag{EX3}
+\]</span>
+<p>Thus the unique least tensor and the unique mean-zero pressure are</p>
+<span class="math math-display" data-tex="\[
+S_*=\mathcal R_L\mathbb P_Lg,\qquad q_*=-\psi,\qquad
+\|S_*\|_{H_L^{s+1}}^2
+=2V_L\sum_{k\ne0}
+\frac{(1+|\kappa(k)|^2)^{s+1}}{|\kappa(k)|^2}
+|\widehat{\mathbb P_Lg}(k)|^2 .
+\tag{EX4}
+\]">\[
+S_*=\mathcal R_L\mathbb P_Lg,\qquad q_*=-\psi,\qquad
+\|S_*\|_{H_L^{s+1}}^2
+=2V_L\sum_{k\ne0}
+\frac{(1+|\kappa(k)|^2)^{s+1}}{|\kappa(k)|^2}
+|\widehat{\mathbb P_Lg}(k)|^2 .
+\tag{EX4}
+\]</span>
+<p>Indeed equality in EX3 forces <span class="math" data-tex="\(K=0\)">\(K=0\)</span> and
+<span class="math" data-tex="\(\mathcal R_L\nabla(\psi+q)=0\)">\(\mathcal R_L\nabla(\psi+q)=0\)</span>; applying divergence gives
+<span class="math" data-tex="\(\nabla(\psi+q)=0\)">\(\nabla(\psi+q)=0\)</span>, whose mean-zero solution is <span class="math" data-tex="\(q=-\psi\)">\(q=-\psi\)</span>.
+If the scalar mean is unrestricted, add an arbitrary spatial
+constant to <span class="math" data-tex="\(q_*\)">\(q_*\)</span>. The full equation and its sign are unchanged.
+If <span class="math" data-tex="\(\langle g\rangle\ne0\)">\(\langle g\rangle\ne0\)</span>, integration of the original equation
+gives <span class="math" data-tex="\(0=\langle g\rangle\)">\(0=\langle g\rangle\)</span>, which is impossible. Pressure cannot
+remove that constant vector.</p>
+<h3 id="exercise-2-find-the-sharp-ball-for-trace-free-inputs">Exercise 2: find the sharp ball for trace-free inputs</h3>
+<p>For the actual matrices <span class="math" data-tex="\(R=\rho I_3-S\)">\(R=\rho I_3-S\)</span>, where <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span> and
+<span class="math" data-tex="\(\operatorname{tr}S=0\)">\(\operatorname{tr}S=0\)</span>, determine the largest Frobenius ball in
+the space of such <span class="math" data-tex="\(S\)">\(S\)</span> on which every BG2 coefficient stays positive.
+Compare its radius with BG6 and propagate the result into BG25.</p>
+<p><strong>Solution.</strong> Retain every coefficient matrix <span class="math" data-tex="\(A_{i,\epsilon}\)">\(A_{i,\epsilon}\)</span>
+of BG5 and define</p>
+<span class="math math-display" data-tex="\[
+A_{i,\epsilon}^{\,0}
+=A_{i,\epsilon}-\frac1{12}I_3,\qquad
+D_0^2=D_{\rm coeff}^2-\frac1{48}.
+\tag{EX5}
+\]">\[
+A_{i,\epsilon}^{\,0}
+=A_{i,\epsilon}-\frac1{12}I_3,\qquad
+D_0^2=D_{\rm coeff}^2-\frac1{48}.
+\tag{EX5}
+\]</span>
+<p>The trace is <span class="math" data-tex="\(1/4\)">\(1/4\)</span>, so <span class="math" data-tex="\(A^0\)">\(A^0\)</span> is trace-free.
+For a trace-free <span class="math" data-tex="\(S\)">\(S\)</span>, <span class="math" data-tex="\(A:S=A^0:S\)">\(A:S=A^0:S\)</span>.
+The full norm calculation is</p>
+<span class="math math-display" data-tex="\[
+|A^0|_{\rm F}^2
+=|A|_{\rm F}^2-\frac{2}{12}\operatorname{tr}A
++\frac{3}{12^2}
+=D_{\rm coeff}^2-\frac1{48}=D_0^2&gt;0 .
+\tag{EX6}
+\]">\[
+|A^0|_{\rm F}^2
+=|A|_{\rm F}^2-\frac{2}{12}\operatorname{tr}A
++\frac{3}{12^2}
+=D_{\rm coeff}^2-\frac1{48}=D_0^2&gt;0 .
+\tag{EX6}
+\]</span>
+<p>Positivity follows also from either retained nonzero off-diagonal
+entry of <span class="math" data-tex="\(A^0\)">\(A^0\)</span>. The trace-free functional has exactly norm <span class="math" data-tex="\(D_0\)">\(D_0\)</span>,
+since <span class="math" data-tex="\(S=A^0\)">\(S=A^0\)</span> attains its Cauchy–Schwarz bound. Therefore</p>
+<span class="math math-display" data-tex="\[
+c_{i,\epsilon}(\rho I_3-S)=\frac{\rho}{4}-A_{i,\epsilon}^{\,0}:S&gt;0
+\quad\text{if}\quad |S|_{\rm F}&lt;\frac{\rho}{4D_0}.
+\tag{EX7}
+\]">\[
+c_{i,\epsilon}(\rho I_3-S)=\frac{\rho}{4}-A_{i,\epsilon}^{\,0}:S&gt;0
+\quad\text{if}\quad |S|_{\rm F}&lt;\frac{\rho}{4D_0}.
+\tag{EX7}
+\]</span>
+<p>For any one coefficient, the actual trace-free boundary matrix</p>
+<span class="math math-display" data-tex="\[
+S=\frac{\rho}{4D_0^2}A_{i,\epsilon}^{\,0}
+\tag{EX8}
+\]">\[
+S=\frac{\rho}{4D_0^2}A_{i,\epsilon}^{\,0}
+\tag{EX8}
+\]</span>
+<p>has that exact norm and makes that coefficient zero.
+This proves sharpness in the stated affine trace slice.
+Since <span class="math" data-tex="\(0&lt;D_0&lt;D_{\rm coeff}\)">\(0&lt;D_0&lt;D_{\rm coeff}\)</span>, its radius is strictly larger
+than the full-space radius BG6.</p>
+<p>On the smaller ball <span class="math" data-tex="\(|S|_{\rm F}&lt;\rho/(8D_0)\)">\(|S|_{\rm F}&lt;\rho/(8D_0)\)</span>, every original
+coefficient lies strictly between <span class="math" data-tex="\(\rho/8\)">\(\rho/8\)</span> and <span class="math" data-tex="\(3\rho/8\)">\(3\rho/8\)</span>.
+The smooth explicit choice</p>
+<span class="math math-display" data-tex="\[
+\rho_0(t,x)=8D_0\sqrt{\delta^2+|S(t,x)|_{\rm F}^2},\qquad
+R_0(t,x)=\rho_0(t,x)I_3-S(t,x),\qquad \delta&gt;0
+\tag{EX9}
+\]">\[
+\rho_0(t,x)=8D_0\sqrt{\delta^2+|S(t,x)|_{\rm F}^2},\qquad
+R_0(t,x)=\rho_0(t,x)I_3-S(t,x),\qquad \delta&gt;0
+\tag{EX9}
+\]</span>
+<p>lies in this proved domain. Conjugating <span class="math" data-tex="\(A^0\)">\(A^0\)</span> by any BG11
+rotation preserves its trace and Frobenius norm, so the same
+assertion holds for each constructed family.
+Use its actual positive coefficients in BG26.
+Every identity BG26–BG30 still follows from the full tensor
+identity BG15 and the product rule, with <span class="math" data-tex="\(\rho_0\)">\(\rho_0\)</span> in both the
+target and the pressure <span class="math" data-tex="\(p_+=p-\rho_0-\operatorname{tr}K/3\)">\(p_+=p-\rho_0-\operatorname{tr}K/3\)</span>.
+These matrices need not lie in the smaller full-space ball BG8;
+their positivity has just been proved directly.
+The derivative formula BG10 remains valid on the entire positive
+cone. On this new half ball its full-direction estimate still uses
+<span class="math" data-tex="\(D_{\rm coeff}\)">\(D_{\rm coeff}\)</span>, while restricting every direction to trace-free
+tensors gives the sharper factor <span class="math" data-tex="\(D_0^m\)">\(D_0^m\)</span>.
+Thus the improvement changes the actual scalar and pressure
+without discarding any tensor component.</p>
+<h3 id="exercise-3-combine-the-disjoint-families-and-keep-every-interaction">Exercise 3: combine the disjoint families and keep every interaction</h3>
+<p>For each of finitely many disjoint families <span class="math" data-tex="\(\Lambda_\alpha\)">\(\Lambda_\alpha\)</span>,
+construct the constant-coefficient field <span class="math" data-tex="\(W_\alpha\)">\(W_\alpha\)</span> of BG20
+with average tensor <span class="math" data-tex="\(R_\alpha\)">\(R_\alpha\)</span> in its proved positive domain.
+Use the same original positive frequency <span class="math" data-tex="\(\varkappa=2\pi\lambda/L\)">\(\varkappa=2\pi\lambda/L\)</span>.
+For real differentiable functions <span class="math" data-tex="\(h_\alpha(t)\)">\(h_\alpha(t)\)</span>, determine
+the exact equation, pressure, average tensor, energy and force norm
+of <span class="math" data-tex="\(u=\sum_\alpha h_\alpha W_\alpha\)">\(u=\sum_\alpha h_\alpha W_\alpha\)</span>.</p>
+<p><strong>Solution.</strong> Disjointness and closure under negatives imply that
+no frequency of <span class="math" data-tex="\(W_\alpha\)">\(W_\alpha\)</span> cancels a frequency of <span class="math" data-tex="\(W_\beta\)">\(W_\beta\)</span>
+when <span class="math" data-tex="\(\alpha\ne\beta\)">\(\alpha\ne\beta\)</span>. Integration of each original exponential
+therefore gives</p>
+<span class="math math-display" data-tex="\[
+\frac1{L^3}\int W_\alpha\otimes W_\beta\,dx=0
+\quad(\alpha\ne\beta),\qquad
+\int |W_\alpha|^2\,dx=L^3\operatorname{tr}R_\alpha .
+\tag{EX10}
+\]">\[
+\frac1{L^3}\int W_\alpha\otimes W_\beta\,dx=0
+\quad(\alpha\ne\beta),\qquad
+\int |W_\alpha|^2\,dx=L^3\operatorname{tr}R_\alpha .
+\tag{EX10}
+\]</span>
+<p>At each fixed time every summand has the same curl eigenvalue.
+Consequently <span class="math" data-tex="\(\operatorname{curl}u=\varkappa u\)">\(\operatorname{curl}u=\varkappa u\)</span>,
+<span class="math" data-tex="\(\Delta u=-\varkappa^2u\)">\(\Delta u=-\varkappa^2u\)</span>, and BG22 gives the full nonlinear
+term <span class="math" data-tex="\(\operatorname{div}(u\otimes u)=\nabla(|u|^2/2)\)">\(\operatorname{div}(u\otimes u)=\nabla(|u|^2/2)\)</span>.
+This includes all cross interactions. With</p>
+<span class="math math-display" data-tex="\[
+a=\nu\varkappa^2,\qquad
+p=-\frac12\left|\sum_\alpha h_\alpha W_\alpha\right|^2,\qquad
+f=\sum_\alpha(h_\alpha&#x27;+a h_\alpha)W_\alpha ,
+\tag{EX11}
+\]">\[
+a=\nu\varkappa^2,\qquad
+p=-\frac12\left|\sum_\alpha h_\alpha W_\alpha\right|^2,\qquad
+f=\sum_\alpha(h_\alpha&#x27;+a h_\alpha)W_\alpha ,
+\tag{EX11}
+\]</span>
+<p>the original forced Navier–Stokes equation holds exactly.
+The pressure contains all terms
+<span class="math" data-tex="\(-h_\alpha h_\beta W_\alpha\cdot W_\beta\)">\(-h_\alpha h_\beta W_\alpha\cdot W_\beta\)</span> for <span class="math" data-tex="\(\alpha&lt;\beta\)">\(\alpha&lt;\beta\)</span>;
+their pointwise values are retained although their spatial integrals
+vanish. The exact averages and norms are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L^{-3}\int u\otimes u\,dx&amp;=\sum_\alpha h_\alpha^2R_\alpha,\\
+\|u\|_2^2&amp;=L^3\sum_\alpha h_\alpha^2\operatorname{tr}R_\alpha,\\
+\|f\|_2^2&amp;=L^3\sum_\alpha(h_\alpha&#x27;+a h_\alpha)^2
+\operatorname{tr}R_\alpha,\\
+\nu\|\nabla u\|_2^2&amp;=a L^3\sum_\alpha h_\alpha^2
+\operatorname{tr}R_\alpha .
+\end{aligned}
+\tag{EX12}
+\]">\[
+\begin{aligned}
+L^{-3}\int u\otimes u\,dx&amp;=\sum_\alpha h_\alpha^2R_\alpha,\\
+\|u\|_2^2&amp;=L^3\sum_\alpha h_\alpha^2\operatorname{tr}R_\alpha,\\
+\|f\|_2^2&amp;=L^3\sum_\alpha(h_\alpha&#x27;+a h_\alpha)^2
+\operatorname{tr}R_\alpha,\\
+\nu\|\nabla u\|_2^2&amp;=a L^3\sum_\alpha h_\alpha^2
+\operatorname{tr}R_\alpha .
+\end{aligned}
+\tag{EX12}
+\]</span>
+<p>The last equality follows by periodic integration of
+<span class="math" data-tex="\(-u\cdot\Delta u=\varkappa^2|u|^2\)">\(-u\cdot\Delta u=\varkappa^2|u|^2\)</span>.
+Finally, differentiating the energy and using EX12 yields</p>
+<span class="math math-display" data-tex="\[
+\frac{d}{dt}\frac{L^3}{2}
+\sum_\alpha h_\alpha^2\operatorname{tr}R_\alpha
++a L^3\sum_\alpha h_\alpha^2\operatorname{tr}R_\alpha
+=L^3\sum_\alpha(h_\alpha&#x27;+a h_\alpha)h_\alpha
+\operatorname{tr}R_\alpha
+=\int f\cdot u\,dx .
+\tag{EX13}
+\]">\[
+\frac{d}{dt}\frac{L^3}{2}
+\sum_\alpha h_\alpha^2\operatorname{tr}R_\alpha
++a L^3\sum_\alpha h_\alpha^2\operatorname{tr}R_\alpha
+=L^3\sum_\alpha(h_\alpha&#x27;+a h_\alpha)h_\alpha
+\operatorname{tr}R_\alpha
+=\int f\cdot u\,dx .
+\tag{EX13}
+\]</span>
+<p>This realizes every chosen smooth time path of these coefficients
+with its exact required force.</p>
+<h3 id="exercise-4-calculate-a-resonant-amplitude-and-its-full-mean-correction">Exercise 4: calculate a resonant amplitude and its full mean correction</h3>
+<p>Fix one actual opposite pair with real unit polarization <span class="math" data-tex="\(A\)">\(A\)</span>,
+<span class="math" data-tex="\(C=\xi\times A\)">\(C=\xi\times A\)</span>, and <span class="math" data-tex="\(\theta=\varkappa\xi\cdot x\)">\(\theta=\varkappa\xi\cdot x\)</span>.
+For positive integers <span class="math" data-tex="\(m\)">\(m\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+W_m=\sqrt2\,[A\cos(m\theta)-C\sin(m\theta)],\qquad
+b(x)=b_0+\epsilon\cos\theta,\quad b_0&gt;|\epsilon|,\quad \epsilon\ne0 .
+\tag{EX14}
+\]">\[
+W_m=\sqrt2\,[A\cos(m\theta)-C\sin(m\theta)],\qquad
+b(x)=b_0+\epsilon\cos\theta,\quad b_0&gt;|\epsilon|,\quad \epsilon\ne0 .
+\tag{EX14}
+\]</span>
+<p>Take <span class="math" data-tex="\(w^{\rm p}=bW_1\)">\(w^{\rm p}=bW_1\)</span> and <span class="math" data-tex="\(w=\varkappa^{-1}\operatorname{curl}w^{\rm p}\)">\(w=\varkappa^{-1}\operatorname{curl}w^{\rm p}\)</span>.
+Find the principal field, its full correction, both means and
+both average quadratic tensors. Decide whether increasing the
+carrier frequency makes this correction small.</p>
+<p><strong>Solution.</strong> The original frequency is periodic and nonzero.
+Direct cross products, or BG19 applied to <span class="math" data-tex="\(m\xi\)">\(m\xi\)</span> in the phase,
+give <span class="math" data-tex="\(\operatorname{curl}W_m=m\varkappa W_m\)">\(\operatorname{curl}W_m=m\varkappa W_m\)</span>.
+The two product identities
+<span class="math" data-tex="\(\cos^2\theta=(1+\cos2\theta)/2\)">\(\cos^2\theta=(1+\cos2\theta)/2\)</span> and
+<span class="math" data-tex="\(\sin\theta\cos\theta=\sin2\theta/2\)">\(\sin\theta\cos\theta=\sin2\theta/2\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+w^{\rm p}&amp;=b_0W_1+\frac{\epsilon}{2}W_2
++\frac{\epsilon}{\sqrt2}A,\\
+w&amp;=b_0W_1+\epsilon W_2,\\
+w^{\rm c}=w-w^{\rm p}
+&amp;=\frac{\epsilon}{2}W_2-\frac{\epsilon}{\sqrt2}A .
+\end{aligned}
+\tag{EX15}
+\]">\[
+\begin{aligned}
+w^{\rm p}&amp;=b_0W_1+\frac{\epsilon}{2}W_2
++\frac{\epsilon}{\sqrt2}A,\\
+w&amp;=b_0W_1+\epsilon W_2,\\
+w^{\rm c}=w-w^{\rm p}
+&amp;=\frac{\epsilon}{2}W_2-\frac{\epsilon}{\sqrt2}A .
+\end{aligned}
+\tag{EX15}
+\]</span>
+<p>The constant has zero curl; the doubled carrier has eigenvalue
+<span class="math" data-tex="\(2\varkappa\)">\(2\varkappa\)</span>. All nonzero original lattice modes integrate to zero,
+so</p>
+<span class="math math-display" data-tex="\[
+\langle w^{\rm p}\rangle=\frac{\epsilon}{\sqrt2}A,\qquad
+\langle w^{\rm c}\rangle=-\frac{\epsilon}{\sqrt2}A,\qquad
+\langle w\rangle=0 .
+\tag{EX16}
+\]">\[
+\langle w^{\rm p}\rangle=\frac{\epsilon}{\sqrt2}A,\qquad
+\langle w^{\rm c}\rangle=-\frac{\epsilon}{\sqrt2}A,\qquad
+\langle w\rangle=0 .
+\tag{EX16}
+\]</span>
+<p>Set <span class="math" data-tex="\(P=A\otimes A+C\otimes C=I_3-\xi\otimes\xi\)">\(P=A\otimes A+C\otimes C=I_3-\xi\otimes\xi\)</span>.
+The exact averages of each <span class="math" data-tex="\(W_m\otimes W_m\)">\(W_m\otimes W_m\)</span> equal <span class="math" data-tex="\(P\)">\(P\)</span>.
+Every mixed first/second-frequency or constant/nonconstant average
+vanishes by integration of its nonzero exponential. Hence</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle w^{\rm p}\otimes w^{\rm p}\rangle
+&amp;=(b_0^2+\epsilon^2/4)P+\frac{\epsilon^2}{2}A\otimes A,\\
+\langle w\otimes w\rangle&amp;=(b_0^2+\epsilon^2)P,\\
+L^{-3}\|w^{\rm p}\|_2^2&amp;=2b_0^2+\epsilon^2,\\
+L^{-3}\|w\|_2^2&amp;=2(b_0^2+\epsilon^2),\qquad
+L^{-3}\|w^{\rm c}\|_2^2=\epsilon^2 .
+\end{aligned}
+\tag{EX17}
+\]">\[
+\begin{aligned}
+\langle w^{\rm p}\otimes w^{\rm p}\rangle
+&amp;=(b_0^2+\epsilon^2/4)P+\frac{\epsilon^2}{2}A\otimes A,\\
+\langle w\otimes w\rangle&amp;=(b_0^2+\epsilon^2)P,\\
+L^{-3}\|w^{\rm p}\|_2^2&amp;=2b_0^2+\epsilon^2,\\
+L^{-3}\|w\|_2^2&amp;=2(b_0^2+\epsilon^2),\qquad
+L^{-3}\|w^{\rm c}\|_2^2=\epsilon^2 .
+\end{aligned}
+\tag{EX17}
+\]</span>
+<p>The correction norm is independent of <span class="math" data-tex="\(\varkappa\)">\(\varkappa\)</span> when <span class="math" data-tex="\(b_0\)">\(b_0\)</span>
+and <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> are fixed. Its amplitude gradient grows with
+<span class="math" data-tex="\(\varkappa\)">\(\varkappa\)</span> and cancels the prefactor <span class="math" data-tex="\(\varkappa^{-1}\)">\(\varkappa^{-1}\)</span> in BG26.
+This is an exact family of smooth examples showing why a carrier
+frequency alone gives no small-correction estimate for unrestricted
+amplitude functions.</p>
+<h3 id="exercise-5-find-the-exact-least-force-for-a-prescribed-terminal-flow">Exercise 5: find the exact least force for a prescribed terminal flow</h3>
+<p>Keep the fields of Exercise 3, <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, an actual duration <span class="math" data-tex="\(T&gt;0\)">\(T&gt;0\)</span>,
+and terminal real coefficients <span class="math" data-tex="\(b_\alpha\)">\(b_\alpha\)</span>. Among absolutely
+continuous functions with</p>
+<span class="math math-display" data-tex="\[
+h_\alpha(0)=0,\qquad h_\alpha(T)=b_\alpha,\qquad
+h_\alpha&#x27;+a h_\alpha\in L^2(0,T),\qquad
+a=\nu(2\pi\lambda/L)^2&gt;0 ,
+\tag{EX18}
+\]">\[
+h_\alpha(0)=0,\qquad h_\alpha(T)=b_\alpha,\qquad
+h_\alpha&#x27;+a h_\alpha\in L^2(0,T),\qquad
+a=\nu(2\pi\lambda/L)^2&gt;0 ,
+\tag{EX18}
+\]</span>
+<p>minimize the original total force cost
+<span class="math" data-tex="\(\int_0^T\|f(t)\|_2^2\,dt\)">\(\int_0^T\|f(t)\|_2^2\,dt\)</span>, where <span class="math" data-tex="\(f\)">\(f\)</span> is EX11.
+Determine the unique minimizing path and retain all physical
+period, viscosity and volume factors.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(q_\alpha=h_\alpha&#x27;+a h_\alpha\)">\(q_\alpha=h_\alpha&#x27;+a h_\alpha\)</span>.
+The integrating factor for this exact scalar equation gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+h_\alpha(t)=\int_0^t e^{-a(t-s)}q_\alpha(s)\,ds,\qquad
+b_\alpha=\int_0^T e^{-a(T-s)}q_\alpha(s)\,ds,\\
+J=\int_0^T e^{-2a(T-s)}\,ds=\frac{1-e^{-2aT}}{2a}&gt;0 .
+\end{gathered}
+\tag{EX19}
+\]">\[
+\begin{gathered}
+h_\alpha(t)=\int_0^t e^{-a(t-s)}q_\alpha(s)\,ds,\qquad
+b_\alpha=\int_0^T e^{-a(T-s)}q_\alpha(s)\,ds,\\
+J=\int_0^T e^{-2a(T-s)}\,ds=\frac{1-e^{-2aT}}{2a}&gt;0 .
+\end{gathered}
+\tag{EX19}
+\]</span>
+<p>Cauchy–Schwarz gives <span class="math" data-tex="\(\int_0^T q_\alpha^2\geq b_\alpha^2/J\)">\(\int_0^T q_\alpha^2\geq b_\alpha^2/J\)</span>.
+For an exact equality and uniqueness proof, subtract its candidate:</p>
+<span class="math math-display" data-tex="\[
+\int_0^T q_\alpha(s)^2\,ds
+=\frac{b_\alpha^2}{J}
++\int_0^T\left[q_\alpha(s)-
+\frac{b_\alpha e^{-a(T-s)}}{J}\right]^2ds .
+\tag{EX20}
+\]">\[
+\int_0^T q_\alpha(s)^2\,ds
+=\frac{b_\alpha^2}{J}
++\int_0^T\left[q_\alpha(s)-
+\frac{b_\alpha e^{-a(T-s)}}{J}\right]^2ds .
+\tag{EX20}
+\]</span>
+<p>Expansion uses the terminal equality in EX19 and the full integral
+<span class="math" data-tex="\(J\)">\(J\)</span>. All target traces are strictly positive by their positive
+geometric representations. Summing EX20 with the actual weights
+in EX12 therefore yields</p>
+<span class="math math-display" data-tex="\[
+\min\int_0^T\|f(t)\|_2^2\,dt
+=\frac{2\nu(2\pi\lambda/L)^2L^3}
+{1-e^{-2\nu(2\pi\lambda/L)^2T}}
+\sum_\alpha b_\alpha^2\operatorname{tr}R_\alpha .
+\tag{EX21}
+\]">\[
+\min\int_0^T\|f(t)\|_2^2\,dt
+=\frac{2\nu(2\pi\lambda/L)^2L^3}
+{1-e^{-2\nu(2\pi\lambda/L)^2T}}
+\sum_\alpha b_\alpha^2\operatorname{tr}R_\alpha .
+\tag{EX21}
+\]</span>
+<p>Equality holds exactly for</p>
+<span class="math math-display" data-tex="\[
+q_\alpha^*(t)=\frac{b_\alpha e^{-a(T-t)}}{J},\qquad
+h_\alpha^*(t)=b_\alpha\frac{\sinh(at)}{\sinh(aT)} .
+\tag{EX22}
+\]">\[
+q_\alpha^*(t)=\frac{b_\alpha e^{-a(T-t)}}{J},\qquad
+h_\alpha^*(t)=b_\alpha\frac{\sinh(at)}{\sinh(aT)} .
+\tag{EX22}
+\]</span>
+<p>Substitution in the original convolution EX19 proves the second
+formula, and its endpoints and derivative verify all requirements.
+The minimizing fields are smooth, so EX11 and the original energy
+identity EX13 hold classically. If a different periodic pressure
+is allowed for the same velocity path, the required force changes
+by its gradient. The force EX11 is divergence-free; periodic
+integration gives its <span class="math" data-tex="\(L^2\)">\(L^2\)</span> orthogonality to that gradient.
+Thus pressure variation cannot decrease EX21.
+This optimum is over the displayed finite profile class and its
+pressure choices. It is not a lower bound over every possible
+Navier–Stokes trajectory with the same terminal velocity.</p>
+<h2 id="16-what-the-construction-supplies">16. What the construction supplies</h2>
+<p>The chapter proves the full finite stress and pressure maps,
+an explicit positive tensor decomposition, and every wave identity
+used in its actual velocity correction. The five exercises keep the
+pressure freedom, trace-free improvement, mixed families, resonant
+mean and exact force cost visible.</p>
+<p>The ordinary-wave viscous cost BG32 grows with the original
+frequency for a fixed nonzero target. The next construction must
+improve the relevant integrability while retaining that viscosity.
+The next lesson derives the source's intermittent Dirichlet factors,
+their transport identity, norms and frequency support, and their
+contributions to the complete residual BG29.</p>
+<p>The finite identities here do not assert a completed infinite
+iteration. The separate forced Leray construction of Dallas Albritton,
+Elia Brué and Maria Colombo,
+<a href="https://arxiv.org/abs/2112.03116v1"><em>Non-uniqueness of Leray solutions of the forced Navier–Stokes
+equations</em>, arXiv:2112.03116v1</a>,
+requires its actual unstable profile and second solution.
+Its original main.tex lines 295–494 and 544–599 supply the compared
+equation and theorem statements; its full instability proof is later
+work in this series. The subsequent Alpöge–Buckmaster, OpenAI and
+workbench constructions retain their own exact hypotheses and
+required proofs.</p>
+</article><nav aria-label="Lesson sequence"><a href="NS-FLUID-20.html">Previous lesson</a></nav></main><footer>Mathematical text: CC0 1.0. Cited works and reader software retain their respective terms.</footer></body></html>

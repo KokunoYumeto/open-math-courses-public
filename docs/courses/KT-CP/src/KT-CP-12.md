@@ -1,6 +1,6 @@
 # Exterior equivalence and Connes's construction of the Thom map
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Tensor-norm proof-provider reconciliation by GPT-6 Astra (OpenAI), Ultra. Self-checked; independent review is separate. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Tensor-norm proof-provider reconciliation and the explicit stabilized-ideal argument by GPT-6 Astra (OpenAI), Ultra. Self-checked; independent review is separate. Public domain (CC0).*
 
 A projection can move under an action even though its K-class cannot move along a continuous orbit. We first replace it by a smooth projection, then compensate for its motion with a unitary cocycle. The resulting action fixes the projection. Its scalar suspension class can then be transported back to the original crossed product.
 
@@ -234,7 +234,26 @@ A\rtimes\mathbb Z^2\cong
  A\otimes A_{-\theta},
 \tag{12B.16}
 \]
-where \(A_{-\theta}\) is the universal rotation algebra with relation (12B.15). Its realization as an irrational rotation crossed product and its simplicity are proved in Lesson 3. Spatial tensoring with compacts preserves simplicity, as follows by cutting an ideal by matrix units. Thus (12B.16) is simple. The trivial action instead gives \(A\otimes C(\mathbb T^2)\), which has proper ideals \(A\otimes C_0(\mathbb T^2\setminus\{z\})\). Pointwise innerness has not supplied the ordinary cocycle needed to identify these crossed products.
+where \(A_{-\theta}\) is the universal rotation algebra with relation (12B.15). Its realization as an irrational rotation crossed product and its simplicity are proved in Lesson 3. Here is the ideal argument, including its general scope. Let \(B\) be any C*-algebra and let \(H\ne0\) be a Hilbert space. The exterior Hilbert \(B\)-module \(E=H\otimes B\) is full: for a unit vector \(\xi\in H\),
+\[
+\langle\xi\otimes b,\xi\otimes c\rangle_B=b^*c,
+\]
+and products span a dense subspace of \(B\), also when \(B\) has no unit. The [exterior compact-operator theorem](../prerequisites/src/hilbert-c-star-modules-and-morita-equivalence/tensor-products-and-c-star-correspondences.md#5-exterior-tensor-products-and-compact-operators), together with the [identity-module calculation](../prerequisites/src/hilbert-c-star-modules-and-morita-equivalence/compact-operators-multipliers-and-the-strict-topology.md#2-three-calculations-including-nonunital-coefficients), identifies
+\[
+\mathcal K_B(E)\cong\mathcal K(H)\otimes_{\min}B.
+\]
+With left inner product \({}_{\mathcal K_B(E)}\langle x,y\rangle=\theta_{x,y}\), [Proposition 2.1](../prerequisites/src/hilbert-c-star-modules-and-morita-equivalence/imprimitivity-bimodules-and-morita-equivalence.md#2-compact-operators-and-rectangular-examples) makes \(E\) a \(\mathcal K_B(E)\)-\(B\) imprimitivity bimodule. The [Rieffel correspondence, Theorem 2.1](../prerequisites/src/exact/hilbert-c-star-modules-and-morita-equivalence/81E3988691F5/the-rieffel-correspondence-and-induced-representations.md#2-the-ideal-lattice-and-its-inverse), gives inverse order-preserving maps on closed two-sided ideals:
+\[
+\begin{aligned}
+I\lhd B&\longmapsto\mathcal R(I),\\
+\mathcal R(I)&=\overline{\operatorname{span}}\{\theta_{xi,y}:\\
+&\qquad x,y\in E,\ i\in I\},\\
+J\lhd\mathcal K_B(E)&\longmapsto\mathcal S(J),\\
+\mathcal S(J)&=\overline{\operatorname{span}}\{\langle x,Ty\rangle_B:\\
+&\qquad x,y\in E,\ T\in J\}.
+\end{aligned}
+\]
+The zero ideals correspond, and fullness makes the whole algebras correspond. Thus, for nonzero \(B\), \(\mathcal K(H)\otimes B\) is simple if and only if \(B\) is simple. If \(B=0\), both algebras are zero; no simplicity assertion is needed. This proof imposes no separability or countable-generation hypothesis. Applying it to \(H=\ell^2(\mathbb Z)\) and \(B=A_{-\theta}\) proves that (12B.16) is simple. The trivial action instead gives \(A\otimes C(\mathbb T^2)\), which has proper ideals \(A\otimes C_0(\mathbb T^2\setminus\{z\})\). Pointwise innerness has not supplied the ordinary cocycle needed to identify these crossed products.
 
 ## A smooth representative of a projection
 

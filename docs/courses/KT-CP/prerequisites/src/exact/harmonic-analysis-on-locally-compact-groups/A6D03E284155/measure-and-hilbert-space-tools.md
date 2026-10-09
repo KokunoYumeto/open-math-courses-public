@@ -1,10 +1,10 @@
 # Measure and Hilbert space tools for Haar integration
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. GPT-6 Astra (OpenAI), Ultra, reconciled the measurable-limit conventions and one-variable boundary and parameter proofs in Sections 2 and 6. Self-checked; independent AI review remains separate. Original exposition is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. GPT-6 Astra (OpenAI), Ultra, reconciled the measurable-limit, Radon regularity, sigma-finiteness counterexample, and one-variable boundary and parameter proofs with exact programme prerequisites. Self-checked; independent AI review remains separate. Original exposition is public domain (CC0).*
 
 Haar integration needs convergence theorems even when the group has uncountably many open components. It also needs a precise meaning for a tensor product of Hilbert spaces. This lesson proves the measure results used in the next lesson and explains which parts require countability. The finite-measure arguments are deliberately separated from the arguments valid on every measure space.
 
-The earlier programme lesson [Hilbert spaces and compact operators](course:foundations-of-von-neumann-algebras/hilbert-spaces-and-compact-operators), Theorems 2.1–2.3, 4.1 and 8.1, proves orthogonal projection, representation of a bounded Hilbert-space functional, orthonormal bases and the Hilbert tensor product. Those complete proofs are the Hilbert-space prerequisites below. Elementary set theory, including the axiom of choice, is assumed. No topology is needed until the following Haar lesson. Basic references for measure theory are [Fremlin] and [Lebesgue].
+The earlier programme lesson *Hilbert spaces and compact operators* proves [orthogonal projection and representation of bounded Hilbert-space functionals, Theorems 2.1–2.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/hilbert-spaces-and-compact-operators.html#OA-FND-HS-02), [orthonormal bases, Theorem 4.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/hilbert-spaces-and-compact-operators.html#OA-FND-HS-04), and [Hilbert tensor products, Theorem 8.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/hilbert-spaces-and-compact-operators.html#OA-FND-HS-08). These are complete Hilbert-space prerequisite proofs, available in the online programme. Elementary set theory, including the axiom of choice, is assumed. For the real-line construction, [Lemma 4.1 of the bundled topology lesson](../../function-algebras-and-approximation/CD62124F940F/the-stone-weierstrass-theorem-for-functions-vanishing-at-infinity.md#lemma-4-1) proves interval and Euclidean compactness and uniform continuity. Lemma 6.1 below supplies the integral identities and links their precise one-variable calculus prerequisites. Basic references for measure theory are [Fremlin] and [Lebesgue].
 
 ## 1. From an outer measure to a measure
 
@@ -31,7 +31,13 @@ Let \(N\) increase. Subadditivity gives \(\sum_n m^*(A\cap E_n)\geq m^*(A\cap E)
 
 **Example.** Assign to a subset of the real line the infimum of the sums of lengths of countable open interval covers. This is an outer measure: combine covers with errors \(\varepsilon2^{-n}\) to prove subadditivity. Splitting every covering interval at a fixed point splits its total length between the two half-lines; enlarge the split intervals by errors whose sum is arbitrarily small. This gives the reverse Carathéodory inequality for each half-line. Half-lines generate the Borel sigma-algebra, so Theorem 1.1 makes every Borel set measurable.
 
-The measure of \([a,b]\) is \(b-a\). An enlarged interval gives the upper bound. For any countable open cover of \([a,b]\), compactness selects a finite subcover. The sum of its interval lengths is at least \(b-a\): arrange its endpoints in order, and each successive subinterval of \([a,b]\) is covered by at least one member. Summing lengths proves the lower bound. Singletons have measure zero, so the same length formula holds for open and half-open bounded intervals. Translating or dilating interval covers shows directly that \(m^*(E+t)=m^*(E)\) and \(m^*(aE)=|a|m^*(E)\) for \(a\ne0\), using the inverse operation for the reverse inequalities. The resulting Borel Lebesgue measure, or its completion, is therefore translation invariant. The next lesson instead constructs an outer measure using continuous functions on an arbitrary LCH space.
+The measure of \([a,b]\) is \(b-a\). An enlarged interval gives the upper bound. For any countable open cover of \([a,b]\), compactness selects a finite subcover. The sum of its interval lengths is at least \(b-a\): arrange its endpoints in order, and each successive subinterval of \([a,b]\) is covered by at least one member. Summing lengths proves the lower bound. Singletons have measure zero, so the same length formula holds for open and half-open bounded intervals. Translating or dilating interval covers shows directly that \(m^*(E+t)=m^*(E)\) and \(m^*(aE)=|a|m^*(E)\) for \(a\ne0\), using the inverse operation for the reverse inequalities. The resulting Borel Lebesgue measure, or its completion, is therefore translation invariant.
+
+Its Borel restriction is Radon in the convention used in the following lesson. Every compact set is contained in a bounded interval, so it has finite measure. If a Borel set \(E\) has finite measure, a countable interval cover whose total length is less than \(m(E)+\varepsilon\) has an open union \(U\supset E\) with \(m(U)<m(E)+\varepsilon\). Monotonicity supplies the reverse bound; sets of infinite measure already have that bound for every open superset. This proves outer regularity on all Borel sets. For an open \(U\ne\mathbb R\), put
+\[
+K_n=\{x\in[-n,n]:\operatorname{dist}(x,\mathbb R\setminus U)\geq1/n\}.
+\]
+Distance to a nonempty closed set is continuous: the triangle inequality gives \(|d(x)-d(y)|\leq|x-y|\) after taking infima. Hence \(K_n\) is closed and bounded and therefore compact, by [Lemma 4.1(b) of the earlier topology lesson](../../function-algebras-and-approximation/CD62124F940F/the-stone-weierstrass-theorem-for-functions-vanishing-at-infinity.md#lemma-4-1). The sets \(K_n\) increase to \(U\), since each point of an open set has positive distance from its complement. Countable additivity, applied to their successive differences, gives \(m(K_n)\uparrow m(U)\). For \(U=\mathbb R\), use \(K_n=[-n,n]\). Thus the measure is inner regular on open sets. Products of this measure used later are the Radon products constructed and proved in the Haar lesson, rather than an assumed multidimensional regularity theorem. The next lesson constructs an outer measure using continuous functions on an arbitrary LCH space.
 
 ## 2. Integration and convergence without countability assumptions
 
@@ -134,6 +140,16 @@ Thus \(\mu(E)=0\), and \(\|b\|_\infty\leq\|\Phi\|\). Simple functions are in \(L
 In the sigma-finite case partition \(X\) into finite-measure pieces \(E_n\), apply the argument to \(u\mapsto\Phi(u1_{E_n})\), and join the bounded densities. They have the uniform bound \(\|\Phi\|\). The series \(u=\sum_nu1_{E_n}\) converges in \(L^1\), so the joined density represents \(\Phi\). Its uniqueness follows by testing the phase of the difference on finite-measure pieces. Hölder gives \(\|\Phi\|\leq\|b\|_\infty\), proving norm equality. \(\square\)
 
 The sigma-finite hypothesis in this last theorem is explicit. The Haar lesson later decomposes a general group into open sigma-compact cosets and applies the theorem on each coset; it will not assume the hypothesis globally.
+
+### Why sigma-finiteness matters for a density
+
+**Example 4.3.** Let \(X=[0,1]\) with its Borel sigma-algebra, let \(\mu\) be counting measure, and let \(\nu\) be Lebesgue measure. Then \(\nu\ll\mu\), but no nonnegative measurable function \(h\) satisfies \(\nu(E)=\int_Eh\,d\mu\) for every Borel \(E\).
+
+*Proof.* Counting measure has no nonempty null set, so absolute continuity is automatic. If a density existed, then for every \(x\in[0,1]\),
+\[
+0=\nu(\{x\})=\int_{\{x\}}h\,d\mu=h(x).
+\]
+Thus \(h\) would vanish everywhere, contradicting \(\nu([0,1])=1\). A finite-counting-measure set is finite, and a countable union of finite sets is countable, whereas \([0,1]\) is uncountable. Consequently \(\mu\) is not sigma-finite. This example pinpoints the failure of the reference-measure hypothesis in Theorem 4.1, even though the target measure is finite. \(\square\)
 
 ## 5. Tensor products as Hilbert–Schmidt operators
 

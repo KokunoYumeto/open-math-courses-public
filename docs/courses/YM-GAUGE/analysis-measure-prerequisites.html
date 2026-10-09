@@ -1,0 +1,584 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Measure, integration and complete function spaces</title><link rel="stylesheet" href="reader.css"></head><body><nav><a href="index.html">Course contents</a><a href="src/YM-F09-measure-prerequisites.md">Lesson source</a><span class="unlinked">Source and reader download</span></nav><main><h1 id="measure-integration-and-complete-function-spaces">Measure,
+integration and complete function spaces</h1>
+<p><em>Original proof sections by GPT-6.1 Sol (OpenAI) and GPT-6 Astra
+(OpenAI), under CC0. The writing AIs self-checked these sections;
+independent human review is not claimed.</em></p>
+<p>These are the selected measure and Euclidean-product sections of the
+<span class="unlinked">exact
+AN-06 provider edition</span>, source lines 29–104 and 186–204. The
+component proves outer measure, integration convergence, Hölder,
+complete function spaces, Euclidean measure and the needed product
+theorem. Its scalar power prerequisite is included in the <a href="analysis-scalar-prerequisites.html">companion component</a>. The
+teaching prerequisites are the course’s stated real arithmetic and
+one-variable calculus.</p>
+<p>The spectral-measure and operator-quantization sections of the
+original component are outside this selection. The editorial provenance
+sentence about an earlier AN03 version is omitted; no mathematical step
+in the selected sections is omitted. The single prerequisite link is
+directed to the bundled component.</p>
+<p><a id="measure-foundations"></a></p>
+<aside aria-label="Contents" class="contents"><strong>In this lesson</strong><ol><li><a href="#measure-construction-convergence-and-complete-function-spaces">Measure
+construction, convergence and complete function spaces</a></li><li><a href="#euclidean-measure-and-the-product-theorem-used-below">Euclidean
+measure and the product theorem used below</a></li></ol></aside><h2 id="measure-construction-convergence-and-complete-function-spaces">Measure
+construction, convergence and complete function spaces</h2>
+<p>An outer measure on a set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+is a monotone function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mo>*</mo></msup><mo>:</mo><msup><mn>2</mn><mi>S</mi></msup><mo>→</mo><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">m^*:2^S\to[0,\infty]</annotation></semantics></math>,
+zero at the empty set, with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mo>*</mo></msup><mo form="prefix" stretchy="false">(</mo><msub><mo>⋃</mo><mi>j</mi></msub><msub><mi>A</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>≤</mo><msub><mo>∑</mo><mi>j</mi></msub><msup><mi>m</mi><mo>*</mo></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">m^*(\bigcup_j A_j)\le\sum_jm^*(A_j)</annotation></semantics></math>.
+A set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+is called measurable for this construction when</p>
+<div class="equation"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mo>*</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msup><mi>m</mi><mo>*</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>∩</mo><mi>E</mi><mo form="postfix" stretchy="false">)</mo><mo>+</mo><msup><mi>m</mi><mo>*</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>\</mo><mi>E</mi><mo form="postfix" stretchy="false">)</mo><mspace width="2.0em"></mspace><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>⊂</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ m^*(A)=m^*(A\cap E)+m^*(A\setminus E)\qquad(A\subset S).
+</annotation></semantics></math></div></div>
+<p>It suffices to prove the greater-than-or-equal inequality:
+subadditivity gives the reverse, and the desired inequality is automatic
+when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mo>*</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">m^*(A)=\infty</annotation></semantics></math>.</p>
+<p><a id="outer-measure-construction"></a></p>
+<p><strong>Outer-measure lemma.</strong> These measurable sets form a
+sigma-algebra, and restriction of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>m</mi><mo>*</mo></msup><annotation encoding="application/x-tex">m^*</annotation></semantics></math>
+to it is a complete measure.</p>
+<p><strong>Proof.</strong> The empty set and complements have the
+required property. Split
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+by two measurable sets
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>,</mo><mi>F</mi></mrow><annotation encoding="application/x-tex">E,F</annotation></semantics></math>
+in succession. The resulting three pieces show</p>
+<div class="equation"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mo>*</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo>≥</mo><msup><mi>m</mi><mo>*</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>∩</mo><mo form="prefix" stretchy="false">(</mo><mi>E</mi><mo>∪</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>+</mo><msup><mi>m</mi><mo>*</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>\</mo><mo form="prefix" stretchy="false">(</mo><mi>E</mi><mo>∪</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+ m^*(A)\ge m^*(A\cap(E\cup F))+m^*(A\setminus(E\cup F)),
+</annotation></semantics></math></div></div>
+<p>using subadditivity on the pieces inside
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>∪</mo><mi>F</mi></mrow><annotation encoding="application/x-tex">E\cup F</annotation></semantics></math>.
+Thus finite unions, intersections and differences are measurable. For
+disjoint measurable
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>j</mi></msub><annotation encoding="application/x-tex">E_j</annotation></semantics></math>,
+finite splitting gives</p>
+<div class="equation"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mo>*</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo>≥</mo><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>k</mi></munderover><msup><mi>m</mi><mo>*</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>∩</mo><msub><mi>E</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>+</mo><msup><mi>m</mi><mo>*</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>\</mo><munder><mo>⋃</mo><mi>j</mi></munder><msub><mi>E</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ m^*(A)\ge\sum_{j=1}^k m^*(A\cap E_j)+m^*(A\setminus\textstyle\bigcup_j E_j).
+</annotation></semantics></math></div></div>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">k\to\infty</annotation></semantics></math>
+and apply subadditivity to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>∩</mo><msub><mo>⋃</mo><mi>j</mi></msub><msub><mi>E</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">A\cap\bigcup_jE_j</annotation></semantics></math>.
+This proves measurability of the disjoint union. An arbitrary union is
+disjointified by removing all earlier sets, proving the sigma-algebra
+assertion. Taking
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><msub><mo>⋃</mo><mi>j</mi></msub><msub><mi>E</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">A=\bigcup_jE_j</annotation></semantics></math>
+in the finite inequality, and then using subadditivity, proves countable
+additivity. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mo>*</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>N</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">m^*(N)=0</annotation></semantics></math>,
+every subset
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>⊂</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">Z\subset N</annotation></semantics></math>
+satisfies the splitting equality: its first piece has measure zero, and
+monotonicity and subadditivity make the second piece have measure
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mo>*</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">m^*(A)</annotation></semantics></math>.
+This proves completeness.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p><a id="simple-integral-construction"></a></p>
+<p>Here a sigma-algebra contains the whole set and is closed under
+complements and countable unions; a measure is countably additive on
+disjoint sets and zero at the empty set. On a measure space
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo>,</mo><mi mathvariant="normal">Σ</mi><mo>,</mo><mi>μ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(S,\Sigma,\mu)</annotation></semantics></math>,
+a real function is measurable when all its strict upper level sets
+belong to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Σ</mi><annotation encoding="application/x-tex">\Sigma</annotation></semantics></math>;
+a complex function is measurable when its real and imaginary parts are.
+A nonnegative simple function is a finite sum
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><msub><mo>∑</mo><mi>j</mi></msub><msub><mi>c</mi><mi>j</mi></msub><msub><mn>1</mn><msub><mi>E</mi><mi>j</mi></msub></msub></mrow><annotation encoding="application/x-tex">s=\sum_jc_j1_{E_j}</annotation></semantics></math>
+on disjoint measurable sets, with finite
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>j</mi></msub><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">c_j\ge0</annotation></semantics></math>.
+Define
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><mi>s</mi><mo>=</mo><msub><mo>∑</mo><mi>j</mi></msub><msub><mi>c</mi><mi>j</mi></msub><mi>μ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>E</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\int s=\sum_jc_j\mu(E_j)</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>⋅</mo><mi>∞</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">0\cdot\infty=0</annotation></semantics></math>.
+A common finite partition proves that this definition is independent of
+the representation, additive and order preserving. For measurable
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f\ge0</annotation></semantics></math>
+define
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><mi>f</mi></mrow><annotation encoding="application/x-tex">\int f</annotation></semantics></math>
+as the supremum of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">\int s</annotation></semantics></math>
+over simple
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>s</mi><mo>≤</mo><mi>f</mi></mrow><annotation encoding="application/x-tex">0\le s\le f</annotation></semantics></math>.
+The functions
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><mi>−</mi><mi>k</mi></mrow></msup><mo form="prefix" stretchy="false">⌊</mo><msup><mn>2</mn><mi>k</mi></msup><mrow><mi mathvariant="normal">min</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>f</mi><mo>,</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">⌋</mo></mrow><annotation encoding="application/x-tex">2^{-k}\lfloor2^k\min(f,k)\rfloor</annotation></semantics></math>
+are increasing finite-valued measurable functions with limit
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>.
+Countable suprema and limits are measurable because their strict level
+sets are countable unions and intersections of level sets. Countable
+additivity also gives continuity from below for sets: disjointify an
+increasing union and sum its measures.</p>
+<p><a id="scalar-measurability"></a></p>
+<p><strong>Scalar and measurability details.</strong> We use
+ordered-real completeness and elementary field operations. Completeness
+implies the Archimedean property: if the positive integers had supremum
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>,
+some integer would exceed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">a-1</annotation></semantics></math>,
+and its successor would exceed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>.
+Hence positive rational meshes can be arbitrarily small, and every
+nonempty real open interval contains a rational number. It follows that
+open subsets of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="double-struck">ℝ</mi><mi>d</mi></msup><annotation encoding="application/x-tex">\mathbb R^d</annotation></semantics></math>
+are countable unions of rational open rectangles: around each point
+choose a sufficiently small rectangle contained in the given open
+neighbourhood. The countability follows because finite tuples of
+integers form a countable set, by enumerating tuples whose entries have
+bounded absolute value.</p>
+<p>For completeness, the nonnegative square root uses no calculus. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r\ge0</annotation></semantics></math>,
+the set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mi>t</mi><mo>≥</mo><mn>0</mn><mo>:</mo><msup><mi>t</mi><mn>2</mn></msup><mo>≤</mo><mi>r</mi><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{t\ge0:t^2\le r\}</annotation></semantics></math>
+is nonempty and bounded by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">r+1</annotation></semantics></math>.
+Its supremum
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>
+satisfies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>s</mi><mn>2</mn></msup><mo>=</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">s^2=r</annotation></semantics></math>:
+if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>s</mi><mn>2</mn></msup><mo>&lt;</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">s^2&lt;r</annotation></semantics></math>,
+a sufficiently small positive increment still has square less than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>,
+contradicting the upper bound; if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>s</mi><mn>2</mn></msup><mo>&gt;</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">s^2&gt;r</annotation></semantics></math>,
+a sufficiently small decrement remains an upper bound, contradicting the
+supremum. These choices follow by expanding
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>s</mi><mo>±</mo><mi>h</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">(s\pm h)^2</annotation></semantics></math>;
+the zero case is immediate. Uniqueness follows from strict increase of
+the square on nonnegative reals. The identity
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><msup><mi>s</mi><mn>2</mn></msup><mo>−</mo><msup><mi>t</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">|</mo><mo>=</mo><mo form="prefix" stretchy="false">|</mo><mi>s</mi><mo>−</mo><mi>t</mi><mo form="prefix" stretchy="false">|</mo><mo form="prefix" stretchy="false">(</mo><mi>s</mi><mo>+</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>≥</mo><mo form="prefix" stretchy="false">|</mo><mi>s</mi><mo>−</mo><mi>t</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">|s^2-t^2|=|s-t|(s+t)\ge|s-t|^2</annotation></semantics></math>
+proves continuity of this root. Finite sums and products are continuous
+by the identities for their differences, with the factors bounded in a
+small neighbourhood. Thus complex conjugation and modulus, and real
+maxima, minima and positive and negative parts, are continuous as well.
+Here
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">max</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>a</mi><mo>−</mo><mi>b</mi><mo form="prefix" stretchy="false">|</mo><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\max(a,b)=(a+b+|a-b|)/2</annotation></semantics></math>.
+The complex triangle inequality follows by expanding
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>z</mi><mo>+</mo><mi>w</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">|z+w|^2</annotation></semantics></math>
+and using
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Re</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>z</mi><mover><mi>w</mi><mo accent="true">¯</mo></mover><mo form="postfix" stretchy="false">)</mo><mo>≤</mo><mo form="prefix" stretchy="false">|</mo><mi>z</mi><mo form="prefix" stretchy="false">|</mo><mo form="prefix" stretchy="false">|</mo><mi>w</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">\operatorname{Re}(z\overline w)\le|z||w|</annotation></semantics></math>;
+the latter follows from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Re</mi><mo>⁡</mo></mrow><mi>u</mi><mo>≤</mo><mo form="prefix" stretchy="false">|</mo><mi>u</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">\operatorname{Re}u\le|u|</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>z</mi><mover><mi>w</mi><mo accent="true">¯</mo></mover><mo form="prefix" stretchy="false">|</mo><mo>=</mo><mo form="prefix" stretchy="false">|</mo><mi>z</mi><mo form="prefix" stretchy="false">|</mo><mo form="prefix" stretchy="false">|</mo><mi>w</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|z\overline w|=|z||w|</annotation></semantics></math>.</p>
+<p>If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>f</mi><mi>d</mi></msub></mrow><annotation encoding="application/x-tex">f_1,\ldots,f_d</annotation></semantics></math>
+are finite real measurable functions and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>:</mo><msup><mi mathvariant="double-struck">ℝ</mi><mi>d</mi></msup><mo>→</mo><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">H:\mathbb R^d\to\mathbb R</annotation></semantics></math>
+is continuous, then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>f</mi><mi>d</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">H(f_1,\ldots,f_d)</annotation></semantics></math>
+is measurable. Indeed, the preimage under
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math>
+of a strict upper interval is open and is therefore a countable union of
+rational rectangles. The preimage of each rectangle under
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>f</mi><mi>d</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(f_1,\ldots,f_d)</annotation></semantics></math>
+is a finite intersection of measurable interval preimages. This proves
+all the finite algebra and modulus operations on measurable functions
+used in integration below.</p>
+<p>The assertions about sequences follow directly from level sets,
+including extended values. For example
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><msub><mrow><mi mathvariant="normal">sup</mi><mo>⁡</mo></mrow><mi>j</mi></msub><msub><mi>f</mi><mi>j</mi></msub><mo>&gt;</mo><mi>a</mi><mo form="postfix" stretchy="false">}</mo><mo>=</mo><msub><mo>⋃</mo><mi>j</mi></msub><mo form="prefix" stretchy="false">{</mo><msub><mi>f</mi><mi>j</mi></msub><mo>&gt;</mo><mi>a</mi><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{\sup_j f_j&gt;a\}=\bigcup_j\{f_j&gt;a\}</annotation></semantics></math>,
+whereas
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><msub><mrow><mi mathvariant="normal">inf</mi><mo>⁡</mo></mrow><mi>j</mi></msub><msub><mi>f</mi><mi>j</mi></msub><mo>&gt;</mo><mi>a</mi><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{\inf_j f_j&gt;a\}</annotation></semantics></math>
+is the union, over rational
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>&gt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">q&gt;a</annotation></semantics></math>,
+of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>⋂</mo><mi>j</mi></msub><mo form="prefix" stretchy="false">{</mo><msub><mi>f</mi><mi>j</mi></msub><mo>≥</mo><mi>q</mi><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\bigcap_j\{f_j\ge q\}</annotation></semantics></math>.
+Complements convert strict upper to weak lower sets and conversely.
+Infima, suprema, liminf and limsup are consequently measurable, as are
+pointwise limits when they exist. Also
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mi>f</mi><mo>&lt;</mo><mi>h</mi><mo form="postfix" stretchy="false">}</mo><mo>=</mo><msub><mo>⋃</mo><mrow><mi>q</mi><mo>∈</mo><mi mathvariant="double-struck">ℚ</mi></mrow></msub><mo form="prefix" stretchy="false">{</mo><mi>f</mi><mo>&lt;</mo><mi>q</mi><mo form="postfix" stretchy="false">}</mo><mo>∩</mo><mo form="prefix" stretchy="false">{</mo><mi>h</mi><mo>&gt;</mo><mi>q</mi><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{f&lt;h\}=\bigcup_{q\in\mathbb Q}\{f&lt;q\}\cap\{h&gt;q\}</annotation></semantics></math>,
+which proves measurability of the comparisons used below. For
+nonnegative extended
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>,
+the dyadic approximations in the preceding paragraph are measurable
+because their level sets are interval preimages. Refining the dyadic
+grid and increasing the cutoff proves that they increase; once
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>&gt;</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">k&gt;f(x)</annotation></semantics></math>
+their error is less than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mrow><mi>−</mi><mi>k</mi></mrow></msup><annotation encoding="application/x-tex">2^{-k}</annotation></semantics></math>,
+and when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">f(x)=\infty</annotation></semantics></math>
+their value is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.
+Thus they converge pointwise in both cases.</p>
+<p><a id="monotone-integral-and-convergence"></a></p>
+<p><strong>Convergence lemma.</strong> If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><msub><mi>f</mi><mi>j</mi></msub><mo>↑</mo><mi>f</mi></mrow><annotation encoding="application/x-tex">0\le f_j\uparrow f</annotation></semantics></math>
+almost everywhere, then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><msub><mi>f</mi><mi>j</mi></msub><mo>↑</mo><mo>∫</mo><mi>f</mi></mrow><annotation encoding="application/x-tex">\int f_j\uparrow\int f</annotation></semantics></math>.
+If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>j</mi></msub><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f_j\ge0</annotation></semantics></math>,
+then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><msub><mrow><mi mathvariant="normal">liminf</mi><mo>⁡</mo></mrow><mi>j</mi></msub><msub><mi>f</mi><mi>j</mi></msub><mo>≤</mo><msub><mrow><mi mathvariant="normal">liminf</mi><mo>⁡</mo></mrow><mi>j</mi></msub><mo>∫</mo><msub><mi>f</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">\int\liminf_jf_j\le\liminf_j\int f_j</annotation></semantics></math>.
+If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mi>j</mi></msub><mo>→</mo><mi>u</mi></mrow><annotation encoding="application/x-tex">u_j\to u</annotation></semantics></math>
+almost everywhere, the functions are complex measurable, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><msub><mi>u</mi><mi>j</mi></msub><mo form="prefix" stretchy="false">|</mo><mo>≤</mo><mi>g</mi></mrow><annotation encoding="application/x-tex">|u_j|\le g</annotation></semantics></math>
+for one integrable
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">g\ge0</annotation></semantics></math>,
+then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><mo form="prefix" stretchy="false">|</mo><msub><mi>u</mi><mi>j</mi></msub><mo>−</mo><mi>u</mi><mo form="prefix" stretchy="false">|</mo><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\int|u_j-u|\to0</annotation></semantics></math>.</p>
+<p><strong>Proof.</strong> Integrals over a measurable null set vanish
+by the simple-function definition, so remove the exceptional set first.
+In the increasing case, fix simple
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>≤</mo><mi>f</mi></mrow><annotation encoding="application/x-tex">s\le f</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>c</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0&lt;c&lt;1</annotation></semantics></math>.
+The sets
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>j</mi></msub><mo>=</mo><mo form="prefix" stretchy="false">{</mo><msub><mi>f</mi><mi>j</mi></msub><mo>≥</mo><mi>c</mi><mi>s</mi><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">E_j=\{f_j\ge cs\}</annotation></semantics></math>
+increase and cover
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mi>s</mi><mo>&gt;</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{s&gt;0\}</annotation></semantics></math>.
+Continuity from below on the finitely many levels of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>
+yields
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><mi>s</mi><msub><mn>1</mn><msub><mi>E</mi><mi>j</mi></msub></msub><mo>↑</mo><mo>∫</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">\int s1_{E_j}\uparrow\int s</annotation></semantics></math>.
+Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>j</mi></msub><mo>≥</mo><mi>c</mi><mi>s</mi><msub><mn>1</mn><msub><mi>E</mi><mi>j</mi></msub></msub></mrow><annotation encoding="application/x-tex">f_j\ge cs1_{E_j}</annotation></semantics></math>,
+the limit of their integrals is at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>∫</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">c\int s</annotation></semantics></math>.
+Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>↑</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">c\uparrow1</annotation></semantics></math>
+and take the supremum over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>.
+Monotonicity supplies the opposite inequality, including infinite
+integrals.</p>
+<p>Apply this conclusion to increasing simple approximations of two
+functions and to their sum. It proves additivity of nonnegative
+integration, and then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><msub><mo>∑</mo><mi>j</mi></msub><msub><mi>v</mi><mi>j</mi></msub><mo>=</mo><msub><mo>∑</mo><mi>j</mi></msub><mo>∫</mo><msub><mi>v</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">\int\sum_jv_j=\sum_j\int v_j</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>j</mi></msub><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">v_j\ge0</annotation></semantics></math>.
+Define integrals of absolutely integrable real functions by their
+positive and negative parts, and complex integrals by real and imaginary
+parts. Nonnegative additivity proves linearity. Multiplying an integral
+by a complex scalar of modulus one that makes it nonnegative real shows
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mo>∫</mo><mi>u</mi><mo form="prefix" stretchy="false">|</mo><mo>≤</mo><mo>∫</mo><mo form="prefix" stretchy="false">|</mo><mi>u</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|\int u|\le\int|u|</annotation></semantics></math>.</p>
+<p>For Fatou, the functions
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">inf</mi><mo>⁡</mo></mrow><mrow><mi>j</mi><mo>≥</mo><mi>k</mi></mrow></msub><msub><mi>f</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">\inf_{j\ge k}f_j</annotation></semantics></math>
+increase to the liminf and have integral at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">inf</mi><mo>⁡</mo></mrow><mrow><mi>j</mi><mo>≥</mo><mi>k</mi></mrow></msub><mo>∫</mo><msub><mi>f</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">\inf_{j\ge k}\int f_j</annotation></semantics></math>;
+use the increasing case. In the dominated case,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>u</mi><mo form="prefix" stretchy="false">|</mo><mo>≤</mo><mi>g</mi></mrow><annotation encoding="application/x-tex">|u|\le g</annotation></semantics></math>
+almost everywhere and all differences are integrable. Apply Fatou to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>g</mi><mo>−</mo><mo form="prefix" stretchy="false">|</mo><msub><mi>u</mi><mi>j</mi></msub><mo>−</mo><mi>u</mi><mo form="prefix" stretchy="false">|</mo><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">2g-|u_j-u|\ge0</annotation></semantics></math>.
+Their pointwise limit is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>g</mi></mrow><annotation encoding="application/x-tex">2g</annotation></semantics></math>,
+so</p>
+<div class="equation"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>∫</mo><mi>g</mi><mo>≤</mo><mn>2</mn><mo>∫</mo><mi>g</mi><mo>−</mo><munder><mi mathvariant="normal">limsup</mi><mi>j</mi></munder><mo>∫</mo><mo form="prefix" stretchy="false">|</mo><msub><mi>u</mi><mi>j</mi></msub><mo>−</mo><mi>u</mi><mo form="prefix" stretchy="false">|</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ 2\int g\le 2\int g-\limsup_j\int|u_j-u|.
+</annotation></semantics></math></div></div>
+<p>The integral of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>
+is finite; subtract it to conclude. The integral inequality above also
+proves
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><msub><mi>u</mi><mi>j</mi></msub><mo>→</mo><mo>∫</mo><mi>u</mi></mrow><annotation encoding="application/x-tex">\int u_j\to\int u</annotation></semantics></math>.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p><a id="complete-function-spaces"></a></p>
+<p>For finite
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p\ge1</annotation></semantics></math>
+set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mi>f</mi><msub><mo form="postfix" stretchy="false">∥</mo><mi>p</mi></msub><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mo>∫</mo><mo form="prefix" stretchy="false">|</mo><mi>f</mi><msup><mo form="prefix" stretchy="false">|</mo><mi>p</mi></msup><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>1</mn><mi>/</mi><mi>p</mi></mrow></msup></mrow><annotation encoding="application/x-tex">\|f\|_p=(\int|f|^p)^{1/p}</annotation></semantics></math>,
+and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mi>f</mi><msub><mo form="postfix" stretchy="false">∥</mo><mi>∞</mi></msub></mrow><annotation encoding="application/x-tex">\|f\|_\infty</annotation></semantics></math>
+be the infimum of bounds for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>f</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|f|</annotation></semantics></math>
+outside measurable null sets. The space
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>L</mi><mi>p</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>μ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L^p(\mu)</annotation></semantics></math>
+consists of functions with finite such quantity, modulo
+almost-everywhere equality. A finite essential bound equal to the
+infimum is attained: choose the bounds
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mi>f</mi><msub><mo form="postfix" stretchy="false">∥</mo><mi>∞</mi></msub><mo>+</mo><mn>1</mn><mi>/</mi><mi>j</mi></mrow><annotation encoding="application/x-tex">\|f\|_\infty+1/j</annotation></semantics></math>
+outside their measurable null sets and discard the countable union of
+those sets. On the complement let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">j\to\infty</annotation></semantics></math>.
+In particular essential norm zero means vanishing almost everywhere.</p>
+<p><strong>Function-space lemma.</strong> For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>p</mi><mo>≤</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">1\le p\le\infty</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>L</mi><mi>p</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>μ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L^p(\mu)</annotation></semantics></math>
+is a complete normed space. For finite
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>,
+simple functions supported on sets of finite measure are dense. Hölder’s
+inequality holds for conjugate exponents, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math>
+is a Hilbert space with inner product
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>f</mi><mo>,</mo><mi>h</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo>∫</mo><mi>f</mi><mover><mi>h</mi><mo accent="true">¯</mo></mover></mrow><annotation encoding="application/x-tex">(f,h)=\int f\overline h</annotation></semantics></math>.</p>
+<p>For the Hilbert-space case
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mi>q</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">p=q=2</annotation></semantics></math>,
+the scalar inequality needed below is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>b</mi><mo>≤</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">ab\le(a^2+b^2)/2</annotation></semantics></math>,
+obtained by expanding
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>a</mi><mo>−</mo><mi>b</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(a-b)^2\ge0</annotation></semantics></math>.
+Thus the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math>
+norm, completeness and density arguments below use only the scalar and
+integration facts already proved, without a differentiation input. The
+endpoint cases
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>1</mn><mo>,</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">p=1,\infty</annotation></semantics></math>
+likewise use only those facts. The proof also retains the full range of
+exponents. For the general real exponents, first read the <a href="analysis-scalar-prerequisites.html#logarithm-and-real-powers">logarithm,
+real-power and Young proofs (EF6)–(EF8)</a>. Their scalar integral input
+uses only the preceding measure facts, not the function-space lemma.</p>
+<p><strong>Proof.</strong> For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>&lt;</mo><mi>p</mi><mo>&lt;</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">1&lt;p&lt;\infty</annotation></semantics></math>
+put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>=</mo><mi>p</mi><mi>/</mi><mo form="prefix" stretchy="false">(</mo><mi>p</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">q=p/(p-1)</annotation></semantics></math>.
+The function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>a</mi><mi>p</mi></msup><mi>/</mi><mi>p</mi><mo>−</mo><mi>a</mi><mi>b</mi><mo>+</mo><msup><mi>b</mi><mi>q</mi></msup><mi>/</mi><mi>q</mi></mrow><annotation encoding="application/x-tex">a^p/p-ab+b^q/q</annotation></semantics></math>,
+for fixed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b&gt;0</annotation></semantics></math>,
+decreases until
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><msup><mi>b</mi><mrow><mn>1</mn><mi>/</mi><mo form="prefix" stretchy="false">(</mo><mi>p</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow></msup></mrow><annotation encoding="application/x-tex">a=b^{1/(p-1)}</annotation></semantics></math>
+and increases thereafter, since its derivative is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>a</mi><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>−</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a^{p-1}-b</annotation></semantics></math>.
+Its value at that minimum is zero. Continuity handles
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a=0</annotation></semantics></math>
+or
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b=0</annotation></semantics></math>.
+Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>b</mi><mo>≤</mo><msup><mi>a</mi><mi>p</mi></msup><mi>/</mi><mi>p</mi><mo>+</mo><msup><mi>b</mi><mi>q</mi></msup><mi>/</mi><mi>q</mi></mrow><annotation encoding="application/x-tex">ab\le a^p/p+b^q/q</annotation></semantics></math>.
+Apply this inequality to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>f</mi><mo form="prefix" stretchy="false">|</mo><mi>/</mi><mo form="postfix" stretchy="false">∥</mo><mi>f</mi><msub><mo form="postfix" stretchy="false">∥</mo><mi>p</mi></msub></mrow><annotation encoding="application/x-tex">|f|/\|f\|_p</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>h</mi><mo form="prefix" stretchy="false">|</mo><mi>/</mi><mo form="postfix" stretchy="false">∥</mo><mi>h</mi><msub><mo form="postfix" stretchy="false">∥</mo><mi>q</mi></msub></mrow><annotation encoding="application/x-tex">|h|/\|h\|_q</annotation></semantics></math>
+and integrate to obtain
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><mo form="prefix" stretchy="false">|</mo><mi>f</mi><mi>h</mi><mo form="prefix" stretchy="false">|</mo><mo>≤</mo><mo form="postfix" stretchy="false">∥</mo><mi>f</mi><msub><mo form="postfix" stretchy="false">∥</mo><mi>p</mi></msub><mo form="postfix" stretchy="false">∥</mo><mi>h</mi><msub><mo form="postfix" stretchy="false">∥</mo><mi>q</mi></msub></mrow><annotation encoding="application/x-tex">\int|fh|\le\|f\|_p\|h\|_q</annotation></semantics></math>.
+A zero norm implies vanishing almost everywhere, since each set where
+the modulus exceeds
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>j</mi></mrow><annotation encoding="application/x-tex">1/j</annotation></semantics></math>
+then has measure zero. Infinite positive norms make the inequality
+automatic. The endpoint cases follow by bounding the essentially bounded
+factor outside a null set. In particular
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mi>q</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">p=q=2</annotation></semantics></math>
+gives Cauchy–Schwarz.</p>
+<p>The inequality
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>a</mi><mo>+</mo><mi>b</mi><msup><mo form="postfix" stretchy="false">)</mo><mi>p</mi></msup><mo>≤</mo><msup><mn>2</mn><mi>p</mi></msup><mo form="prefix" stretchy="false">(</mo><msup><mi>a</mi><mi>p</mi></msup><mo>+</mo><msup><mi>b</mi><mi>p</mi></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(a+b)^p\le2^p(a^p+b^p)</annotation></semantics></math>
+first ensures that the sum of two
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mi>p</mi></msup><annotation encoding="application/x-tex">L^p</annotation></semantics></math>
+functions is in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mi>p</mi></msup><annotation encoding="application/x-tex">L^p</annotation></semantics></math>.
+For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>&lt;</mo><mi>p</mi><mo>&lt;</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">1&lt;p&lt;\infty</annotation></semantics></math>,
+apply Hölder to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>f</mi><mo form="prefix" stretchy="false">|</mo><mspace width="0.167em"></mspace><mo form="prefix" stretchy="false">|</mo><mi>f</mi><mo>+</mo><mi>h</mi><msup><mo form="prefix" stretchy="false">|</mo><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">|f|\,|f+h|^{p-1}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>h</mi><mo form="prefix" stretchy="false">|</mo><mspace width="0.167em"></mspace><mo form="prefix" stretchy="false">|</mo><mi>f</mi><mo>+</mo><mi>h</mi><msup><mo form="prefix" stretchy="false">|</mo><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">|h|\,|f+h|^{p-1}</annotation></semantics></math>.
+It follows that</p>
+<div class="equation"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mi>f</mi><mo>+</mo><mi>h</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><mi>p</mi><mi>p</mi></msubsup><mo>≤</mo><mo form="prefix" stretchy="false">(</mo><mo form="postfix" stretchy="false">∥</mo><mi>f</mi><msub><mo form="postfix" stretchy="false">∥</mo><mi>p</mi></msub><mi>+</mi><mo form="postfix" stretchy="false">∥</mo><mi>h</mi><msub><mo form="postfix" stretchy="false">∥</mo><mi>p</mi></msub><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">∥</mo><mi>f</mi><mo>+</mo><mi>h</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><mi>p</mi><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow></msubsup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \|f+h\|_p^p\le(\|f\|_p+\|h\|_p)\|f+h\|_p^{p-1}.
+</annotation></semantics></math></div></div>
+<p>Division proves the triangle inequality when the sum has positive
+norm; the zero case is immediate. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>1</mn><mo>,</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">p=1,\infty</annotation></semantics></math>
+use the pointwise triangle inequality. Homogeneity and definiteness on
+equivalence classes now give a norm.</p>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mi>j</mi></msub><annotation encoding="application/x-tex">f_j</annotation></semantics></math>
+be Cauchy in that norm, with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>&lt;</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">p&lt;\infty</annotation></semantics></math>.
+Choose indices
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>j</mi><mi>k</mi></msub><annotation encoding="application/x-tex">j_k</annotation></semantics></math>
+so that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><msub><mi>f</mi><msub><mi>j</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub></msub><mo>−</mo><msub><mi>f</mi><msub><mi>j</mi><mi>k</mi></msub></msub><msub><mo form="postfix" stretchy="false">∥</mo><mi>p</mi></msub><mo>≤</mo><msup><mn>2</mn><mrow><mi>−</mi><mi>k</mi></mrow></msup></mrow><annotation encoding="application/x-tex">\|f_{j_{k+1}}-f_{j_k}\|_p\le2^{-k}</annotation></semantics></math>.
+The partial sums of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><msub><mo>∑</mo><mi>k</mi></msub><mo form="prefix" stretchy="false">|</mo><msub><mi>f</mi><msub><mi>j</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub></msub><mo>−</mo><msub><mi>f</mi><msub><mi>j</mi><mi>k</mi></msub></msub><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">v=\sum_k|f_{j_{k+1}}-f_{j_k}|</annotation></semantics></math>
+have norms at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∑</mo><mi>k</mi></msub><msup><mn>2</mn><mrow><mi>−</mi><mi>k</mi></mrow></msup></mrow><annotation encoding="application/x-tex">\sum_k2^{-k}</annotation></semantics></math>.
+Monotone convergence of their
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>th
+powers implies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>∈</mo><msup><mi>L</mi><mi>p</mi></msup></mrow><annotation encoding="application/x-tex">v\in L^p</annotation></semantics></math>,
+so the subsequence converges pointwise outside a measurable null set to
+a finite measurable
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>.
+Define
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f=0</annotation></semantics></math>
+on that set. The same argument applied to each tail gives</p>
+<div class="equation"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mi>f</mi><mo>−</mo><msub><mi>f</mi><msub><mi>j</mi><mi>k</mi></msub></msub><msub><mo form="postfix" stretchy="false">∥</mo><mi>p</mi></msub><mo>≤</mo><munder><mo>∑</mo><mrow><mi>l</mi><mo>≥</mo><mi>k</mi></mrow></munder><msup><mn>2</mn><mrow><mi>−</mi><mi>l</mi></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \|f-f_{j_k}\|_p\le\sum_{l\ge k}2^{-l}.
+</annotation></semantics></math></div></div>
+<p>In particular
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>∈</mo><msup><mi>L</mi><mi>p</mi></msup></mrow><annotation encoding="application/x-tex">f\in L^p</annotation></semantics></math>.
+The Cauchy property and the triangle inequality extend convergence from
+the subsequence to the entire sequence. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">p=\infty</annotation></semantics></math>,
+remove the null sets on which the chosen differences violate the same
+bounds, as well as the null set on which the first term violates an
+essential bound. The series of differences converges uniformly on the
+complement, to a bounded measurable limit; its uniform tail bound gives
+convergence in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mi>∞</mi></msup><annotation encoding="application/x-tex">L^\infty</annotation></semantics></math>.</p>
+<p>Finally, if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>∈</mo><msup><mi>L</mi><mi>p</mi></msup></mrow><annotation encoding="application/x-tex">f\in L^p</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>&lt;</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">p&lt;\infty</annotation></semantics></math>,
+the sets
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>j</mi></msub><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mn>1</mn><mi>/</mi><mi>j</mi><mo>&lt;</mo><mo form="prefix" stretchy="false">|</mo><mi>f</mi><mo form="prefix" stretchy="false">|</mo><mo>≤</mo><mi>j</mi><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">E_j=\{1/j&lt;|f|\le j\}</annotation></semantics></math>
+increase to its nonzero set, up to a null set, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>E</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>≤</mo><msup><mi>j</mi><mi>p</mi></msup><mo form="postfix" stretchy="false">∥</mo><mi>f</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><mi>p</mi><mi>p</mi></msubsup></mrow><annotation encoding="application/x-tex">\mu(E_j)\le j^p\|f\|_p^p</annotation></semantics></math>.
+Dominated convergence gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><msub><mn>1</mn><msub><mi>E</mi><mi>j</mi></msub></msub><mo>→</mo><mi>f</mi></mrow><annotation encoding="application/x-tex">f1_{E_j}\to f</annotation></semantics></math>
+in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mi>p</mi></msup><annotation encoding="application/x-tex">L^p</annotation></semantics></math>.
+Partition a bounded region of the complex plane into squares of
+arbitrarily small side length to approximate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><msub><mn>1</mn><msub><mi>E</mi><mi>j</mi></msub></msub></mrow><annotation encoding="application/x-tex">f1_{E_j}</annotation></semantics></math>
+uniformly by finite-valued measurable functions, zero outside
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>j</mi></msub><annotation encoding="application/x-tex">E_j</annotation></semantics></math>.
+Their
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mi>p</mi></msup><annotation encoding="application/x-tex">L^p</annotation></semantics></math>
+error is bounded by the uniform error times
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>E</mi><mi>j</mi></msub><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>1</mn><mi>/</mi><mi>p</mi></mrow></msup></mrow><annotation encoding="application/x-tex">\mu(E_j)^{1/p}</annotation></semantics></math>.
+This proves density. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">p=2</annotation></semantics></math>,
+Cauchy–Schwarz, linearity and conjugation of the integral verify the
+inner-product axioms, and completeness was just proved.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p><a id="euclidean-products"></a></p>
+<h2 id="euclidean-measure-and-the-product-theorem-used-below">Euclidean
+measure and the product theorem used below</h2>
+<p>In
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="double-struck">ℝ</mi><mi>d</mi></msup><annotation encoding="application/x-tex">\mathbb R^d</annotation></semantics></math>
+cover a set by countably many bounded open axis-parallel rectangles and
+take the infimum of the sums of their volumes. The empty set and
+monotonicity properties are immediate. Combining covers with summable
+errors proves countable subadditivity; if the sum of outer measures is
+infinite there is no inequality to check. The splitting inequality for a
+coordinate half-space can be seen directly. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>x</mi><mo>:</mo><msub><mi>x</mi><mi>i</mi></msub><mo>&lt;</mo><mi>a</mi><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">H=\{x:x_i&lt;a\}</annotation></semantics></math>,
+split a covering open rectangle crossing the hyperplane into its left
+open part and an open rectangle containing its right part, extending
+that second rectangle to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>i</mi></msub><mo>&gt;</mo><mi>a</mi><mo>−</mo><mi>δ</mi></mrow><annotation encoding="application/x-tex">x_i&gt;a-\delta</annotation></semantics></math>.
+The sum of their volumes exceeds the original volume by at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+times the product of the other side lengths. Rectangles not crossing the
+hyperplane need no split. Choose the enlargements so that their total
+excess is below any prescribed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\varepsilon&gt;0</annotation></semantics></math>.
+These rectangles cover the two parts of the set in question. For a set
+of finite outer measure, take a cover whose volume sum is within
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ε</mi><annotation encoding="application/x-tex">\varepsilon</annotation></semantics></math>
+of its outer measure, and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ε</mi><annotation encoding="application/x-tex">\varepsilon</annotation></semantics></math>
+tend to zero; an infinite outer measure makes the desired inequality
+automatic. Thus every coordinate half-space satisfies the outer-measure
+splitting criterion. Complements, finite intersections and countable
+unions of these half-spaces give every open set: each open set is the
+union of the rational rectangles contained in it. Thus the preceding
+outer-measure lemma makes all Borel sets measurable and supplies a
+complete measure.</p>
+<p>A closed bounded rectangle has its usual volume. Enlargement gives
+the upper bound. For the lower bound, a cover by open rectangles has a
+finite subcover. Here is the needed compactness argument: if a closed
+box had no finite subcover, subdivision into
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mi>d</mi></msup><annotation encoding="application/x-tex">2^d</annotation></semantics></math>
+equal boxes would leave one box without such a subcover. Iterate; the
+nested coordinate intervals have lengths tending to zero and, by real
+completeness, one common point. An open set of the cover containing that
+point contains an entire sufficiently small box, a contradiction. For
+the finite cover now obtained, draw the grid of all its coordinate
+endpoints and the target endpoints. The interior of each grid cell in
+the target lies wholly in any covering rectangle that contains its
+midpoint. Assign each cell to one such rectangle. Finite distributivity
+of products of interval lengths shows that the sum of the cell volumes
+is the target volume and that the sum assigned to each covering
+rectangle is at most its volume. This proves the lower bound without a
+product-integration assumption. Bounded faces have measure zero by
+arbitrarily thin rectangle covers. Translation invariance follows by
+translating covers and translating back. Increasing bounded boxes give
+sigma-finiteness.</p>
+<p>We will also need the exact relation with Borel sets. If a measurable
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+has finite measure, choose open rectangle unions
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>O</mi><mi>j</mi></msub><mo>⊃</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">O_j\supset E</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>O</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>≤</mo><mi>μ</mi><mo form="prefix" stretchy="false">(</mo><mi>E</mi><mo form="postfix" stretchy="false">)</mo><mo>+</mo><msup><mn>2</mn><mrow><mi>−</mi><mi>j</mi></mrow></msup></mrow><annotation encoding="application/x-tex">\mu(O_j)\le\mu(E)+2^{-j}</annotation></semantics></math>.
+Their intersection
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>
+is Borel and contains
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>\</mo><mi>E</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\mu(G\setminus E)=0</annotation></semantics></math>.
+Every set of outer measure zero is contained in a Borel null set:
+intersect open rectangle unions of total volumes tending to zero. Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+differs from a Borel set by a subset of a Borel null set. For general
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>,
+apply this argument to its intersections with bounded boxes and take the
+union of the resulting Borel sets and null envelopes. This proves the
+same assertion without a finite-measure hypothesis. Conversely, the
+completeness already proved makes every such modification
+measurable.</p>
+<p>Here is the product argument without importing an interchange rule.
+Restrict first to two bounded boxes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>⊂</mo><msup><mi mathvariant="double-struck">ℝ</mi><mi>r</mi></msup></mrow><annotation encoding="application/x-tex">B\subset\mathbb R^r</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>⊂</mo><msup><mi mathvariant="double-struck">ℝ</mi><mi>s</mi></msup></mrow><annotation encoding="application/x-tex">C\subset\mathbb R^s</annotation></semantics></math>.
+For a Borel rectangle
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><msub><mi>E</mi><mn>1</mn></msub><mo>×</mo><msub><mi>E</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">E=E_1\times E_2</annotation></semantics></math>
+whose two factors are axis rectangles, its sections are measurable
+and</p>
+<div class="equation"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>μ</mi><mrow><mi>r</mi><mo>+</mo><mi>s</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>E</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mo>∫</mo><mi>B</mi></msub><msub><mi>μ</mi><mi>s</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>E</mi><mi>x</mi></msub><mo form="postfix" stretchy="false">)</mo><mspace width="0.167em"></mspace><mi>d</mi><msub><mi>μ</mi><mi>r</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \mu_{r+s}(E)=\int_B\mu_s(E_x)\,d\mu_r(x).
+</annotation></semantics></math></div></div>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">𝒟</mi><annotation encoding="application/x-tex">\mathcal D</annotation></semantics></math>
+be the class of Borel subsets of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>×</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">B\times C</annotation></semantics></math>
+for which this equality holds and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>↦</mo><msub><mi>μ</mi><mi>s</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>E</mi><mi>x</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x\mapsto\mu_s(E_x)</annotation></semantics></math>
+is measurable. Sections of Borel sets are Borel: for each fixed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+taking a section preserves complements and countable unions and sends
+generating rectangles to Borel sets. The class
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">𝒟</mi><annotation encoding="application/x-tex">\mathcal D</annotation></semantics></math>
+contains the whole box and the generating axis rectangles. It is closed
+under complements in the whole box, by subtracting from the finite
+constant
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>μ</mi><mi>s</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>C</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mu_s(C)</annotation></semantics></math>
+and the finite total measure; it is closed under countable disjoint
+unions, by the monotone convergence theorem just proved applied to the
+nonnegative section measures. Thus it is a Dynkin class. The elementary
+pi-lambda argument shows that it contains the sigma-algebra generated by
+the rectangles. To recall that argument, take the smallest Dynkin class
+containing a family closed under finite intersections. For a fixed
+generator the class of sets whose intersection with it belongs to that
+smallest class is a Dynkin class; this proves intersections first with
+generators, and by repeating the argument with a fixed member, between
+any two members. A Dynkin class closed under finite intersections is a
+sigma-algebra, since differences and then disjointification give
+countable unions. This proves the claim.</p>
+<p>Increasing the boxes proves the section formula for every Borel set
+in the full product. For a completed measurable set, enclose its null
+difference from a Borel set in a Borel null set. The section formula for
+that enclosing null set makes its sections null for almost every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>;
+completeness then gives the same formula and measurability after one
+null exceptional set is discarded. This also applies to every
+completed-measurable function: outside a product null set it has a Borel
+representative, obtained by choosing Borel representatives of the level
+sets in a countable simple approximation. The section formula for
+indicators extends by simple approximation and monotone convergence to
+every nonnegative function. Applying it to the absolute value and then
+positive/negative real and imaginary parts gives Fubini for absolutely
+integrable complex functions. These are exactly all the product
+interchanges in this proof.</p>
+<p>The finite-measure approximation used for Schwartz density follows
+from this construction too: choose an open rectangle cover of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+whose total volume is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi><mo form="prefix" stretchy="false">(</mo><mi>E</mi><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mi>ε</mi></mrow><annotation encoding="application/x-tex">\mu(E)+\varepsilon</annotation></semantics></math>.
+Its union differs from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+by measure at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ε</mi><annotation encoding="application/x-tex">\varepsilon</annotation></semantics></math>.
+Finite truncations approximate the union in measure by continuity from
+below. A finite union of boxes therefore approximates
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+in measure.</p>
+</main><footer>Geometry and states in Yang–Mills theory · Mathematical content: CC0 1.0.</footer></body></html>

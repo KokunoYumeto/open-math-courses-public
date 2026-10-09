@@ -1,12 +1,12 @@
 """Rebuild all exact checks, readers and the complete offline archive. CC0-1.0.
 
-Requires Python 3, SymPy and Pandoc. Uses only the included course files.
+Requires Python 3, SymPy, NumPy, Matplotlib and Pandoc. Uses only the included course files.
 """
 from pathlib import Path
 import datetime,json,subprocess,sys,zipfile
 
 root=Path(__file__).resolve().parent
-for name in ['verify_finite_quotients.py','verify_normal_boundaries.py','verify_varying_fillings.py','verify_global_periods.py','draw_period_quotient.py','verify_cusp_geometry.py','draw_cusp_geometry.py','verify_integral_monodromy.py','draw_fundamental_group.py','verify_canonical_ring.py','draw_canonical_ring.py','verify_period_deformation.py','draw_period_identifications.py']:
+for name in ['verify_finite_quotients.py','verify_normal_boundaries.py','verify_varying_fillings.py','verify_global_periods.py','draw_period_quotient.py','verify_cusp_geometry.py','draw_cusp_geometry.py','verify_integral_monodromy.py','draw_fundamental_group.py','verify_canonical_ring.py','draw_canonical_ring.py','verify_period_deformation.py','draw_period_identifications.py','verify_almost_complex.py','render_lesson11_figures.py']:
     subprocess.run([sys.executable,'-B',str(root/'checks'/name)],check=True)
 subprocess.run([sys.executable,'-B',str(root/'rebuild_reader.py')],check=True)
 course=json.loads((root/'course.json').read_text(encoding='utf-8'))

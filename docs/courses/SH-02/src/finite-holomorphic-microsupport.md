@@ -211,7 +211,7 @@ The main proof below uses supported real tests and finite sums. The stronger cri
 - [Perverse degrees and normal Morse complexes](perverse-normal-morse-inputs.md#SH02-PNM-UNIT) supplies the field-perverse degree and normal-Morse exactness.
 - [An isolated holomorphic test and its Morse filtration](isolated-holomorphic-morse-tests.md#SH02-IHM-UNIT) supplies the controlled cluster, actual relative filtration and positive integer count.
 
-For the primary proof, use these inputs with the [finite conormal-image argument](#SH02-FH-CONORMAL-IMAGE), [quadratic test construction](#SH02-FH-HOLOMORPHIC-TEST), [field argument](#SH02-FH-FIELD-FINITE) and [coefficient recovery](#SH02-FH-RING-FINITE). The [full critical-support route](#SH02-FH-GEOMETRIC-CONTRACT) is a separate, stronger direction; The [general nearby-cycle proof](../general-nearby-cycle-models.html) supplies FH13; FH14 remains a separate stronger theorem. Neither is needed for FH30.
+For the primary proof, use these inputs with the [finite conormal-image argument](#SH02-FH-CONORMAL-IMAGE), [quadratic test construction](#SH02-FH-HOLOMORPHIC-TEST), [field argument](#SH02-FH-FIELD-FINITE) and [coefficient recovery](#SH02-FH-RING-FINITE). The [full critical-support route](#SH02-FH-GEOMETRIC-CONTRACT) is a separate, stronger direction; The [general nearby-cycle proof](../general-nearby-cycle-models.html) supplies FH13; The [critical-support proof](../general-critical-support.html) supplies FH14 separately. Neither is needed for FH30.
 
 ### SH02-FH-ANALYTIC-INPUT — Analytic sets and adapted finite maps
 
@@ -633,7 +633,7 @@ $$
 
 Finite direct image is bounded and has perfect stalks by FH4; weak complex constructibility is proved in `SH02-FH-CONSTRUCTIBLE-IMAGE` from the same compatible analytic stratification input already used for FH17. Thus every application of FH28 is legitimate. The zero ring gives empty microsupports on both sides. There is no original-ring perverse t-structure, rank cancellation, division by the finite degree, flatness assumption on $f$, or characteristic-zero coefficient assumption in the proof. $\square$
 
-This route uses the four prerequisite lessons linked in [the geometric inputs](#SH02-FH-INPUTS), with their exact external theorem statements retained. It does not require the full critical-support equivalence FH14, the general Milnor coefficient comparison FH13, or any nearby-cycle/vanishing-cycle comparison. The general nearby-cycle proof supplies the Milnor coefficient comparison. The stronger critical-support theorem remains separate from the dependency chain of FH30.
+This route uses the four prerequisite lessons linked in [the geometric inputs](#SH02-FH-INPUTS), with their exact external theorem statements retained. It does not require the full critical-support equivalence FH14, the general Milnor coefficient comparison FH13, or any nearby-cycle/vanishing-cycle comparison. The general nearby-cycle proof supplies the Milnor coefficient comparison. The critical-support theorem is proved in [its own lesson](../general-critical-support.html) and remains separate from the dependency chain of FH30.
 
 ## SH02-FH-MONOMIAL-CURVE — A full cotangent fibre created by a finite parametrization
 
@@ -687,7 +687,9 @@ Its component at $t=0$ is the whole target covector plane. Its other component c
 
 ## SH02-FH-GEOMETRIC-CONTRACT — An alternative through full critical support
 
-[Finite nearby-cycle models for an arbitrary holomorphic function](../general-nearby-cycle-models.html) proves the full finite-model and coefficient contract FH13, including singular and nonisolated critical loci. Its cofinal restrictions compute the actual specialization unit, its unshifted cone and the original deck action. The field critical-support equivalence FH14 is a separate theorem.
+[Holomorphic critical support and graph covectors](../general-critical-support.html) proves the full critical-support equivalence FH14 at the original coefficient scope. It includes singular and nonisolated critical loci, closed support on the fixed level, visible normal slicing, a direct radial-boundary proof and the actual finite Morse filtration and scalar maps.
+
+[Finite nearby-cycle models for an arbitrary holomorphic function](../general-nearby-cycle-models.html) proves the full finite-model and coefficient contract FH13, including singular and nonisolated critical loci. Its cofinal restrictions compute the actual specialization unit, its unshifted cone and the original deck action. The [critical-support proof](../general-critical-support.html) supplies FH14 for the original coefficient ring by its actual residue-field comparison.
 
 This alternative route uses stronger analytic inputs than FH30. They are retained as precise dependency contracts for the critical-support theorem itself. They are not required by the finite-map proof above and are not established by its algebraic lemmas.
 
@@ -806,4 +808,4 @@ The finite holomorphic equality goes back to Kashiwara's work on systems of micr
 
 The analytic antecedent used to locate the remaining precise theorem is David B. Massey, [*A Little Microlocal Morse Theory*, arXiv:math/0006185v2](https://arxiv.org/abs/math/0006185v2), Corollary 4.15. It is stated over a principal ideal domain, so its field specialization has the required coefficient scope for FH14. Its proof depends on a perverse critical-support theorem and a visible-conormal description.
 
-The primary finite-map proof is FH30. Its analytic, normal-Morse, field-perverse and controlled stratified Morse inputs are supplied by the four lessons linked in [the geometric prerequisites](#SH02-FH-INPUTS), relative to their exact external theorem statements. The finite image geometry, symmetric-Hessian test, finite constructibility and perverse exactness, integer filtration deduction, direct support comparison and residue-field recovery are supplied explicitly. The earlier FH14 route remains an alternative with a separate stronger critical-support theorem. The [general nearby-cycle proof](../general-nearby-cycle-models.html) supplies FH13 independently; FH13–FH14 do not lie on the primary proof chain.
+The primary finite-map proof is FH30. Its analytic, normal-Morse, field-perverse and controlled stratified Morse inputs are supplied by the four lessons linked in [the geometric prerequisites](#SH02-FH-INPUTS), relative to their exact external theorem statements. The finite image geometry, symmetric-Hessian test, finite constructibility and perverse exactness, integer filtration deduction, direct support comparison and residue-field recovery are supplied explicitly. The earlier FH14 route remains an alternative using the [proved critical-support theorem](../general-critical-support.html). The [general nearby-cycle proof](../general-nearby-cycle-models.html) supplies FH13 independently; FH13–FH14 do not lie on the primary proof chain.

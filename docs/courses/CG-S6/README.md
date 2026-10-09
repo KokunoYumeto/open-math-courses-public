@@ -16,7 +16,9 @@ Continue with [lesson 6: Integral monodromy and the fundamental group](CG-S6-06.
 
 [Lesson 9](CG-S6-09.html) constructs the proper parameter family, calculates its nonzero deformation class and classifies all parameter identifications. The middle family permits every integer shift; the full finite and cusp calculation permits exactly the even shifts. All maps and four solved exercises are included.
 
-The [series map](series.json) retains the full remaining assignment. Lessons 1–6, 8 and 9 are available. The analytic lessons 8–9 can be read while the exact topology providers for lesson 7 are completed. Integral homology and sphere recognition, the vanishing calculation and the remaining background remain assigned as lessons 7, 10 and 11. Source reading and proof acceptance have separate records.
+[Lesson 11](CG-S6-11.html) proves the exact octonion and Nijenhuis calculations, the smooth integrability theorem, and the almost-complex sphere restriction. Six solved exercises and three complete characteristic-class prerequisite chapters are included.
+
+The [series map](series.json) retains the full remaining assignment. Lessons 1–6, 8, 9 and 11 are available. The analytic lessons 8–9 can be read while the exact topology providers for lesson 7 are completed. Integral homology and smooth sphere recognition, and the vanishing calculation, remain assigned as lessons 7 and 10. Source reading and proof acceptance have separate records.
 
 - [Course and result metadata](course.json)
 - Finite-quotient calculations
@@ -27,13 +29,19 @@ The [series map](series.json) retains the full remaining assignment. Lessons 1�
 - [Integral monodromy and group calculations](checks/verify_integral_monodromy.py)
 - [Canonical ring and recovered fibration](checks/verify_canonical_ring.py)
 - [Period deformation and all parameter identifications](checks/verify_period_deformation.py)
+- [Octonions, obstruction maps and integrability checks](checks/verify_almost_complex.py)
+- Included Thom/Euler proofs
+- Included integral splitting proofs
+- Included integral Chern-class proofs
 - Source identities and attribution
 - Complete current source and offline reader
 
 New mathematical exposition and diagrams are dedicated under CC0-1.0. Bundled rendering software and fonts retain their own notices in `assets/mathjax/`. Current authoring provenance: GPT-6 Astra (OpenAI), Codex, Ultra, 9 October 2026. Independent review is not claimed.
 
-Run `python rebuild_course.py` with SymPy installed and Pandoc on PATH to reproduce all eight exact checkers, regenerate the diagrams and readers and rebuild the complete offline download. For individual operations, run the checkers above or `python rebuild_reader.py`. Each SVG figure is its editable source. Open `index.html` in the extracted archive to read offline; all equation-rendering assets and fonts are included.
+Run `python rebuild_course.py` with SymPy, NumPy and Matplotlib installed and Pandoc on PATH to reproduce all nine exact checkers, regenerate the diagrams and readers and rebuild the complete offline download. For individual operations, run the checkers above or `python rebuild_reader.py`. Each SVG figure is its editable source. Open `index.html` in the extracted archive to read offline; all equation-rendering assets and fonts are included.
 
 Linked prerequisite courses are separate providers. The fourth lesson includes its reproducible drawing program in `checks/draw_period_quotient.py`.
 
 The fifth lesson includes its two reproducible figures in the program checks/draw_cusp_geometry.py.
+
+The eleventh lesson includes its reproducible figure program in `checks/render_lesson11_figures.py`. Its prerequisite chapters preserve GPT-6.1 Sol authorship where source arguments are retained and identify the receiving derivations by GPT-6 Astra. All original CC0 provider sources are included unchanged with hashes in `provenance.json`.

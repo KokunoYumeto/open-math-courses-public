@@ -8,14 +8,15 @@ import hashlib,json,subprocess
 
 root=Path(__file__).resolve().parent
 data=json.loads((root/'course.json').read_text(encoding='utf-8'))
-for unit in data['units']:
+for unit in data['units']+data.get('proof_providers',[]):
     source=root/unit['source'];reader=root/unit['reader']
     content=subprocess.check_output(['pandoc','--from=markdown+tex_math_single_backslash+header_attributes',
         '--to=html5','--mathjax',str(source)],text=True,encoding='utf-8')
     content=content.replace('src="../assets/','src="assets/')
     content=content.replace('href="../checks/','href="checks/')
     content=content.replace('href="../sources/','href="sources/')
-    for other in data['units']:
+    content=content.replace('href="../CG-S6-', 'href="CG-S6-')
+    for other in data['units']+data.get('proof_providers',[]):
         content=content.replace('href="'+Path(other['source']).name,'href="'+other['reader'])
     old=reader.read_text(encoding='utf-8')
     assert old.count('<article>')==old.count('</article>')==1
