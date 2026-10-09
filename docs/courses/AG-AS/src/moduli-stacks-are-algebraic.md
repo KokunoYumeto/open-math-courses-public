@@ -1835,181 +1835,240 @@ is perfect on $B$.
 $$R\mathcal Hom(E,G^\bullet)\simeq E^\vee\otimes_{\mathcal O_X}^{\mathbf L}G^\bullet.$$
 Apply the tensor lemma to the perfect object $E^\vee$. Its proper-support and relative-flatness hypotheses concern the same complex $G^\bullet$, so all of them remain satisfied. $\square$
 
-#### Lemma. Perfect complexes and tensor products and direct sums
- Assumptions and notation as in Lemma [Perfect complexes and tensor products and direct sums](#native-spaces-perfect-lemma-tensor-perfect). Then there are functorial isomorphisms $$H^i(B, K \otimes^\mathbf{L}_{\mathcal{O}_B} \mathcal{F})
-\longrightarrow
-H^i(X, E \otimes^\mathbf{L}_{\mathcal{O}_X}
-(\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F}))$$ for $\mathcal{F}$ quasi-coherent on $B$ compatible with boundary maps (see proof).
+#### Lemma. Coefficient cohomology for a perfect proper-support tensor
 
-**Proof.** We have $$\mathcal{G}^\bullet \otimes_{\mathcal{O}_X}^\mathbf{L} Lf^*\mathcal{F} =
-\mathcal{G}^\bullet \otimes_{f^{-1}\mathcal{O}_B}^\mathbf{L} f^{-1}\mathcal{F} =
-\mathcal{G}^\bullet \otimes_{f^{-1}\mathcal{O}_B} f^{-1}\mathcal{F} =
-\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F}$$ the first equality by Cohomology on Sites, Lemma [Derived categories](#native-sites-cohomology-lemma-variant-derived-pullback), the second as $\mathcal{G}^n$ is a flat $f^{-1}\mathcal{O}_B$-module, and the third by definition of pullbacks. Hence we obtain $$\begin{aligned}
-H^i(X, E \otimes^\mathbf{L}_{\mathcal{O}_X}
-(\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F}))
-& =
-H^i(X, E \otimes^\mathbf{L}_{\mathcal{O}_X} \mathcal{G}^\bullet
-\otimes_{\mathcal{O}_X}^\mathbf{L} Lf^*\mathcal{F}) \\
-& =
-H^i(B,
-Rf_*(E \otimes^\mathbf{L}_{\mathcal{O}_X} \mathcal{G}^\bullet
-\otimes^\mathbf{L}_{\mathcal{O}_X} Lf^*\mathcal{F})) \\
-& =
-H^i(B,
-Rf_*(E \otimes^\mathbf{L}_{\mathcal{O}_X} \mathcal{G}^\bullet)
-\otimes^\mathbf{L}_{\mathcal{O}_B} \mathcal{F}) \\
-& =
-H^i(B, K \otimes^\mathbf{L}_{\mathcal{O}_B} \mathcal{F})
-\end{aligned}$$ The first equality by the above, the second by Leray (Cohomology on Sites, Remark [Sheaf cohomology](#native-sites-cohomology-remark-before-leray)), and the third equality by Lemma [Base change for sheaf cohomology](#native-spaces-perfect-lemma-cohomology-base-change). The statement on boundary maps means the following: Given a short exact sequence $0 \to \mathcal{F}_1 \to \mathcal{F}_2 \to \mathcal{F}_3 \to 0$ then the isomorphisms fit into commutative diagrams $$\begin{gathered}\begin{matrix}H^i(B, K \otimes^\mathbf{L}_{\mathcal{O}_B} \mathcal{F}_3) & H^i(X, E \otimes^\mathbf{L}_{\mathcal{O}_X}
-(\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F}_3)) \\ H^{i + 1}(B, K \otimes^\mathbf{L}_{\mathcal{O}_B} \mathcal{F}_1) & H^{i + 1}(X, E \otimes^\mathbf{L}_{\mathcal{O}_X}
-(\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F}_1))\end{matrix} \\[6pt] \begin{aligned}H^i(B, K \otimes^\mathbf{L}_{\mathcal{O}_B} \mathcal{F}_3) & \longrightarrow H^i(X, E \otimes^\mathbf{L}_{\mathcal{O}_X}
-(\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F}_3)) \\ H^i(B, K \otimes^\mathbf{L}_{\mathcal{O}_B} \mathcal{F}_3) & \xrightarrow{\delta} H^{i + 1}(B, K \otimes^\mathbf{L}_{\mathcal{O}_B} \mathcal{F}_1) \\ H^i(X, E \otimes^\mathbf{L}_{\mathcal{O}_X}
-(\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F}_3)) & \xrightarrow{\delta} H^{i + 1}(X, E \otimes^\mathbf{L}_{\mathcal{O}_X}
-(\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F}_1)) \\ H^{i + 1}(B, K \otimes^\mathbf{L}_{\mathcal{O}_B} \mathcal{F}_1) & \longrightarrow H^{i + 1}(X, E \otimes^\mathbf{L}_{\mathcal{O}_X}
-(\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F}_1))\end{aligned}\end{gathered}$$ where the boundary maps come from the distinguished triangle $$K \otimes^\mathbf{L}_{\mathcal{O}_B} \mathcal{F}_1 \to
-K \otimes^\mathbf{L}_{\mathcal{O}_B} \mathcal{F}_2 \to
-K \otimes^\mathbf{L}_{\mathcal{O}_B} \mathcal{F}_3 \to
-K \otimes^\mathbf{L}_{\mathcal{O}_B} \mathcal{F}_1[1]$$ and the distinguished triangle in $D(\mathcal{O}_X)$ associated to the short exact sequence $$0 \to
-\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F}_1 \to
-\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F}_2 \to
-\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F}_3 \to 0$$ of complexes. This sequence is exact because $\mathcal{G}^n$ is flat over $B$. We omit the verification of the commutativity of the displayed diagram. $\square$
+Let $B$ be Noetherian, let $f:X\to B$ be locally of finite type and quasi-separated between algebraic spaces over a scheme $S$, and let $E$ be perfect on $X$. Let $G^\bullet$ be bounded, with coherent terms flat over $B$ and with support proper over $B$. For a quasi-coherent module $F$ on $B$, set
+$$J(F)=G^\bullet\otimes_{\mathcal O_X}f^*F,
+\qquad K=Rf_*(E\otimes_{\mathcal O_X}^{\mathbf L}G^\bullet).$$
+Then $K$ is perfect by the [proper-support tensor theorem](#native-spaces-perfect-lemma-tensor-perfect), and there are natural isomorphisms
+$$\theta_F^i:H^i(B,K\otimes_{\mathcal O_B}^{\mathbf L}F)
+\xrightarrow{\ \sim\ }H^i(X,E\otimes_{\mathcal O_X}^{\mathbf L}J(F)).$$
+They commute with the connecting morphisms for every short exact sequence of quasi-coherent coefficients.
 
-#### Lemma. Perfect complexes and derived Hom and Ext
- Assumption and notation as in Lemma [Perfect complexes and derived Hom and Ext](#native-spaces-perfect-lemma-ext-perfect). Then there are functorial isomorphisms $$H^i(B, K \otimes^\mathbf{L}_{\mathcal{O}_B} \mathcal{F})
-\longrightarrow
-\operatorname{Ext}^i_{\mathcal{O}_X}(E,
-\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F})$$ for $\mathcal{F}$ quasi-coherent on $B$ compatible with boundary maps (see proof).
+**Proof.** Relative flatness and boundedness make $G^\bullet$ K-flat over $f^{-1}\mathcal O_B$. The [inverse-image-ring tensor formula](#native-sites-cohomology-lemma-variant-derived-pullback) therefore gives canonical identifications
+$$\begin{aligned}
+G^\bullet\otimes_{\mathcal O_X}^{\mathbf L}Lf^*F
+&\simeq G^\bullet\otimes_{f^{-1}\mathcal O_B}^{\mathbf L}f^{-1}F\\
+&\simeq G^\bullet\otimes_{f^{-1}\mathcal O_B}f^{-1}F
+\simeq J(F).
+\end{aligned}$$
+To use the quasi-compact [projection formula](#native-spaces-perfect-lemma-cohomology-base-change), restrict first to a quasi-compact open $j:X_0\hookrightarrow X$ containing the proper support $T$ of $G^\bullet$. Such an open exists since $T$ is quasi-compact. On $X\setminus T$, the complex $G^\bullet$ is zero in the derived category, also over the inverse-image base ring. The displayed formula shows that $J(F)$ vanishes there for every $F$. The tensors with $E$ vanish there as well. For any of these supported objects $M$, the canonical map $M\to Rj_*(M|_{X_0})$ is an isomorphism, as is checked on $X_0$ and $X\setminus T$ using localization. Direct images and global cohomology are consequently unchanged by this restriction. Thus we may assume $f$ is quasi-compact, as well as quasi-separated.
 
-**Proof.** As in the proof of Lemma [Perfect complexes and derived Hom and Ext](#native-spaces-perfect-lemma-ext-perfect) let \(E^\vee\) be the dual perfect complex and recall that \(K = Rf_*(E^\vee \otimes_{\mathcal{O}_X}^\mathbf{L} \mathcal{G}^\bullet)\). Since we also have 
+Derived associativity, the projection formula and [derived Leray](#native-sites-cohomology-remark-before-leray) now give
+$$\begin{aligned}
+R\Gamma(B,K\otimes^{\mathbf L}F)
+&\simeq R\Gamma\bigl(B,Rf_*(E\otimes^{\mathbf L}G^\bullet\otimes^{\mathbf L}Lf^*F)\bigr)\\
+&\simeq R\Gamma(X,E\otimes^{\mathbf L}J(F)).
+\end{aligned}$$
+Taking cohomology defines $\theta_F^i$.
 
-\[
-\operatorname{Ext}^i_{\mathcal{O}_X}(E,
-\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F})
-=
-H^i(X, E^\vee \otimes^\mathbf{L}_{\mathcal{O}_X}
-(\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F}))
-\]
+Here is the boundary compatibility. Given $0\to F_1\to F_2\to F_3\to0$, relative flatness makes
+$$0\longrightarrow J(F_1)\longrightarrow J(F_2)\longrightarrow J(F_3)\longrightarrow0$$
+a short exact sequence of complexes. On the base, derived tensor gives the triangle
+$$K\otimes^{\mathbf L}F_1\longrightarrow K\otimes^{\mathbf L}F_2
+\longrightarrow K\otimes^{\mathbf L}F_3\longrightarrow(K\otimes^{\mathbf L}F_1)[1].$$
+On $X$, apply $E\otimes^{\mathbf L}-$ to the triangle of the displayed short exact sequence. The comparison above is a morphism of these triangles after derived global sections. Indeed associativity and Leray are compatible with shifts and cones, while the projection map is constructed from the counit of exact derived adjunction. On complex models the relevant tensor–cone identification sends the second cone summand $x\otimes a$, with $x$ of degree $p$, to $(-1)^p x\otimes a$; the first summand is unchanged. This is precisely the usual tensor shift identification, so the fourth arrows, not just the first three objects, commute.
 
- by construction of \(E^\vee\), the existence of the isomorphisms follows from Lemma [Perfect complexes and tensor products and direct sums](#native-spaces-perfect-lemma-compute-tensor-perfect) applied to \(E^\vee\) and \(\mathcal{G}^\bullet\). The statement on boundary maps means the following: Given a short exact sequence \(0 \to \mathcal{F}_1 \to \mathcal{F}_2 \to \mathcal{F}_3 \to 0\) then the isomorphisms fit into commutative diagrams 
+Writing $A^i(F)=H^i(B,K\otimes^{\mathbf L}F)$ and $T^i(F)=H^i(X,E\otimes^{\mathbf L}J(F))$, the resulting boundary square is
+$$\begin{array}{ccc}
+A^i(F_3)&\xrightarrow{\theta_{F_3}^i}&T^i(F_3)\\
+\delta_B\downarrow&&\downarrow\delta_X\\
+A^{i+1}(F_1)&\xrightarrow{\theta_{F_1}^{i+1}}&T^{i+1}(F_1).
+\end{array}$$
+This proves the claimed compatibility with its specified connecting maps. $\square$
 
-\[
-\begin{gathered}\begin{matrix}H^i(B, K \otimes^\mathbf{L}_{\mathcal{O}_B} \mathcal{F}_3) & \operatorname{Ext}^i_{\mathcal{O}_X}(E,
-\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F}_3) \\ H^{i + 1}(B, K \otimes^\mathbf{L}_{\mathcal{O}_B} \mathcal{F}_1) & \operatorname{Ext}^{i + 1}_{\mathcal{O}_X}(E,
-\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F}_1)\end{matrix} \\[6pt] \begin{aligned}H^i(B, K \otimes^\mathbf{L}_{\mathcal{O}_B} \mathcal{F}_3) & \longrightarrow \operatorname{Ext}^i_{\mathcal{O}_X}(E,
-\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F}_3) \\ H^i(B, K \otimes^\mathbf{L}_{\mathcal{O}_B} \mathcal{F}_3) & \xrightarrow{\delta} H^{i + 1}(B, K \otimes^\mathbf{L}_{\mathcal{O}_B} \mathcal{F}_1) \\ \operatorname{Ext}^i_{\mathcal{O}_X}(E,
-\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F}_3) & \xrightarrow{\delta} \operatorname{Ext}^{i + 1}_{\mathcal{O}_X}(E,
-\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F}_1) \\ H^{i + 1}(B, K \otimes^\mathbf{L}_{\mathcal{O}_B} \mathcal{F}_1) & \longrightarrow \operatorname{Ext}^{i + 1}_{\mathcal{O}_X}(E,
-\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F}_1)\end{aligned}\end{gathered}
-\]
+#### Lemma. Coefficient Ext for a perfect proper-support Hom
 
- where the boundary maps come from the distinguished triangle 
+Under the same hypotheses on $B,f,E,G^\bullet$, put
+$$K=Rf_*R\mathcal Hom(E,G^\bullet),\qquad
+J(F)=G^\bullet\otimes_{\mathcal O_X}f^*F.$$
+For every quasi-coherent $F$ on $B$ and every $i\in\mathbf Z$, there is a natural isomorphism
+$$\eta_F^i:H^i(B,K\otimes_{\mathcal O_B}^{\mathbf L}F)
+\xrightarrow{\ \sim\ }\operatorname{Ext}^i_{\mathcal O_X}(E,J(F)).$$
+These isomorphisms preserve the boundary maps for short exact sequences of coefficients.
 
-\[
-K \otimes^\mathbf{L}_{\mathcal{O}_B} \mathcal{F}_1 \to
-K \otimes^\mathbf{L}_{\mathcal{O}_B} \mathcal{F}_2 \to
-K \otimes^\mathbf{L}_{\mathcal{O}_B} \mathcal{F}_3 \to
-K \otimes^\mathbf{L}_{\mathcal{O}_B} \mathcal{F}_1[1]
-\]
+**Proof.** The [perfect dual](#native-sites-cohomology-lemma-dual-perfect-complex) gives $K\simeq Rf_*(E^\vee\otimes^{\mathbf L}G^\bullet)$ and
+$$\operatorname{Ext}^i_{\mathcal O_X}(E,J(F))
+\simeq H^i(X,E^\vee\otimes^{\mathbf L}J(F)).$$
+Apply the preceding coefficient theorem with $E^\vee$ in place of $E$. This produces $\eta_F^i$ in every degree.
 
- and the distinguished triangle in \(D(\mathcal{O}_X)\) associated to the short exact sequence 
+For $0\to F_1\to F_2\to F_3\to0$, the base boundary comes from the triangle $K\otimes^{\mathbf L}F_1\to K\otimes^{\mathbf L}F_2\to K\otimes^{\mathbf L}F_3\to(K\otimes^{\mathbf L}F_1)[1]$. The Ext boundary comes from applying $\operatorname{Hom}(E,-[i])$ to the triangle associated with the termwise exact sequence $0\to J(F_1)\to J(F_2)\to J(F_3)\to0$. Perfect duality identifies this second triangle calculation with the tensor calculation for $E^\vee$, including its shift. Consequently, with $A^i(F)=H^i(B,K\otimes^{\mathbf L}F)$ and $Q^i(F)=\operatorname{Ext}^i_X(E,J(F))$, one has the commutative square
+$$\begin{array}{ccc}
+A^i(F_3)&\xrightarrow{\eta_{F_3}^i}&Q^i(F_3)\\
+\delta_B\downarrow&&\downarrow\delta_{\mathrm{Ext}}\\
+A^{i+1}(F_1)&\xrightarrow{\eta_{F_1}^{i+1}}&Q^{i+1}(F_1).
+\end{array}$$
+Thus the comparison is an isomorphism of the full cohomological functors in $F$. $\square$
 
-\[
-0 \to
-\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F}_1 \to
-\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F}_2 \to
-\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F}_3 \to 0
-\]
+#### Lemma. Perfect approximations and a pseudo-coherent representative for coefficient Ext
 
- of complexes. This sequence is exact because \(\mathcal{G}^n\) is flat over \(B\). We omit the verification of the commutativity of the displayed diagram. \(\square\)
+Let $f:X\to B$ be a locally finite type, quasi-separated morphism of algebraic spaces over a scheme $S$. Assume $B$ is Noetherian and $E\in D^-_{\mathrm{Coh}}(\mathcal O_X)$. Let $G^\bullet$ be bounded, with each term coherent and flat over $B$, and require its support to be proper over $B$. For a quasi-coherent $F$ on $B$, write
+$$J(F)=G^\bullet\otimes_{\mathcal O_X}f^*F.$$
+The following assertions hold.
 
-#### Lemma. Derived Hom and Ext
+**(1)** Given any integer $m$, there is a perfect $K$ on $B$ and natural maps, defined in every degree,
+$$\alpha_F^i:\operatorname{Ext}^i_X(E,J(F))\longrightarrow H^i(B,K\otimes^{\mathbf L}F).$$
+They are isomorphisms for $i\leq m$ and commute with the boundaries of short exact coefficient sequences.
 
-Let $S$ be a scheme. Let $f : X \to B$ be a morphism of algebraic spaces over $S$, $E \in D(\mathcal{O}_X)$, and $\mathcal{F}^\bullet$ a complex of $\mathcal{O}_X$-modules. Assume
+**(2)** There is a pseudo-coherent $L$ on $B$ and natural isomorphisms
+$$\operatorname{Ext}^i_B(L,F)\xrightarrow{\ \sim\ }\operatorname{Ext}^i_X(E,J(F))$$
+for every integer $i$ and every quasi-coherent $F$. These also commute with coefficient boundaries.
 
-1.  $B$ is Noetherian,
+**Common reduction.** Choose $a\leq b$ outside which the terms of $G^\bullet$ vanish. Then $J(F)\in D^{\geq a}(X)$ for every $F$. Its ordinary tensor description agrees with derived tensor over $f^{-1}\mathcal O_B$, by relative flatness and boundedness. Hence its support is contained in that of $G^\bullet$, even if support is understood cohomologically. Choose a quasi-compact open $j:X_0\hookrightarrow X$ containing this proper support. Localization gives $J(F)\simeq Rj_*(J(F)|_{X_0})$. Derived adjunction therefore identifies
+$$\operatorname{Ext}^i_X(E,J(F))\simeq
+\operatorname{Ext}^i_{X_0}(E|_{X_0},J(F)|_{X_0}).$$
+These are natural identifications of cohomological functors in $F$. No support condition on $E$ is needed. We may thus replace $X$ by $X_0$. It is now Noetherian and quasi-separated: local finite type gives local Noetherianity, quasi-compactness gives Noetherianity, and quasi-separatedness follows from that of $f$ and $B$. In particular $E$ is pseudo-coherent by the [Noetherian criterion](#native-spaces-perfect-lemma-identify-pseudo-coherent-noetherian).
 
-2.  $f$ is locally of finite type and quasi-separated,
+**Proof of (1).** Apply [perfect approximation](#native-spaces-perfect-theorem-approximation) at cutoff $r=a-m-1$, obtaining $P\to E$ with $P$ perfect. Its cone $C$ lies in $D^{\leq a-m-2}$. The [negative Ext bound](#native-derived-lemma-negative-exts) gives
+$$\operatorname{Ext}^i_X(C,J(F))=0\qquad(i\leq m+1).$$
+Indeed its strict vanishing range is $i<a-(a-m-2)=m+2$. The long exact sequence for $P\to E\to C$ now shows that precomposition
+$$\operatorname{Ext}^i_X(E,J(F))\longrightarrow\operatorname{Ext}^i_X(P,J(F))$$
+is an isomorphism when $i\leq m$. Set $K=Rf_*R\mathcal Hom(P,G^\bullet)$, which is perfect by the [proper-support Hom theorem](#native-spaces-perfect-lemma-ext-perfect). The [perfect coefficient-Ext comparison](#native-spaces-perfect-lemma-compute-ext-perfect) identifies the last Ext group with $H^i(B,K\otimes^{\mathbf L}F)$. This defines $\alpha_F^i$ in all degrees. Precomposition and that comparison respect the entire coefficient triangles, including their shift arrows, so the maps have the required boundary compatibility.
 
-3.  $E \in D^-_{\textit{Coh}}(\mathcal{O}_X)$,
+**Proof of (2): construction and bounds.** Use the stronger construction in the [perfect telescope theorem](#native-spaces-perfect-lemma-pseudo-coherent-hocolim) to obtain compatible perfect $E_n\to E$ with
+$$E\simeq\operatorname{hocolim}_n E_n,\qquad
+\operatorname{Cone}(E_n\to E)\in D^{\leq-n-2}.$$
+The strengthened cone bound is part of that construction; agreement only on $\tau_{\geq-n}$ would not by itself give the endpoint used below. Put
+$$K_n=Rf_*(E_n^\vee\otimes^{\mathbf L}G^\bullet),\qquad L_n=K_n^\vee.$$
+Each $K_n$ is perfect by the [proper-support tensor theorem](#native-spaces-perfect-lemma-tensor-perfect), and each $L_n$ is perfect by [duality](#native-sites-cohomology-lemma-dual-perfect-complex). The transitions form an inverse system of $K_n$ and a direct system of $L_n$, all on $B$.
 
-4.  $\mathcal{G}^\bullet$ is a bounded complex of coherent $\mathcal{O}_X$-module flat over $B$ with support proper over $B$.
+For every $F$ there are compatible maps and identifications
+$$\begin{aligned}
+\operatorname{Ext}^i_X(E,J(F))&\longrightarrow\operatorname{Ext}^i_X(E_n,J(F))\\
+&\simeq H^i(B,K_n\otimes^{\mathbf L}F)
+\simeq\operatorname{Ext}^i_B(L_n,F).
+\end{aligned}$$
+The first arrow is an isomorphism for $i\leq n+a$: negative Ext from its cone vanishes through degree $n+a+1$. The other two are isomorphisms in every degree. Every map is natural in $F$ and preserves boundaries. Thus
+$$\operatorname{Ext}^i_B(L_{n+1},F)\longrightarrow\operatorname{Ext}^i_B(L_n,F)$$
+is an isomorphism for $i\leq n+a$, and in particular for the weaker bound $i\leq N=n+a-1$ used next.
 
-Then the following two statements are true
+Let $D_n$ be the cone of $L_n\to L_{n+1}$. The long exact Ext sequence in the first argument, using the preceding isomorphisms in degrees $i-1$ and $i$, gives
+$$\operatorname{Ext}^i_B(D_n,F)=0\qquad(i\leq N)$$
+for all quasi-coherent $F$. Since $D_n$ is perfect on quasi-compact $B$, it is bounded above. If it had a highest nonzero cohomology sheaf $H^d(D_n)$ with $d\geq-N$, the edge case of the negative Ext lemma would give
+$$\operatorname{Ext}^{-d}_B(D_n,H^d(D_n))
+\simeq\operatorname{Hom}_{\mathcal O_B}(H^d(D_n),H^d(D_n)).$$
+The right side contains a nonzero identity, whereas the left side must vanish. Consequently
+$$D_n\in D^{\leq-N-1}=D^{\leq-n-a},$$
+and $L_n\to L_{n+1}$ is an isomorphism on $\tau_{\geq-n-a+2}$.
 
-1.  for every $m \in \mathbf{Z}$ there exists a perfect object $K$ of $D(\mathcal{O}_B)$ and functorial maps $$\alpha^i_\mathcal{F} :
-    \operatorname{Ext}^i_{\mathcal{O}_X}(E,
-    \mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F})
-    \longrightarrow
-    H^i(B, K \otimes^\mathbf{L}_{\mathcal{O}_B} \mathcal{F})$$ for $\mathcal{F}$ quasi-coherent on $B$ compatible with boundary maps (see proof) such that $\alpha^i_\mathcal{F}$ is an isomorphism for $i \leq m$, and
+Set $L=\operatorname{hocolim}_nL_n$. The [cohomology formula for telescopes](#native-derived-lemma-cohomology-of-hocolim) implies that $L_n\to L$ is an isomorphism in the same range. To check pseudo-coherence without suppressing the index shift, let $c=\max(0,2-a)$ and use the cofinal sequence $L_{r+c}$, $r\geq1$. Its map to $L$ is an isomorphism on $\tau_{\geq-r}$ because $-r-c-a+2\leq-r$. Passing to this tail does not change the telescope: its canonical map induces the identity on every cohomological colimit. The reverse direction of the perfect telescope theorem therefore makes $L$ pseudo-coherent.
 
-2.  there exists a pseudo-coherent $L \in D(\mathcal{O}_B)$ and functorial isomorphisms $$\operatorname{Ext}^i_{\mathcal{O}_B}(L, \mathcal{F}) \longrightarrow
-    \operatorname{Ext}^i_{\mathcal{O}_X}(E,
-    \mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F})$$ for $\mathcal{F}$ quasi-coherent on $B$ compatible with boundary maps.
+**Mapping property and boundaries.** We give the telescope calculation explicitly. Applying $\operatorname{Hom}(-,F[i])$ to the defining telescope triangle and identifying Hom out of a direct sum with a product yields
+$$0\longrightarrow\operatorname{coker}\Delta_{i-1}
+\longrightarrow\operatorname{Ext}^i_B(L,F)
+\longrightarrow\ker\Delta_i\longrightarrow0,$$
+where
+$$\Delta_j:\prod_{n\geq1}\operatorname{Ext}^j_B(L_n,F)
+\longrightarrow\prod_{n\geq1}\operatorname{Ext}^j_B(L_n,F),
+\qquad(x_n)\longmapsto(x_n-t_n^*x_{n+1}).$$
+Here $t_n:L_n\to L_{n+1}$. The kernel is the inverse limit and the cokernel is its degree-one derived-limit term. In each fixed degree the transition maps are eventually isomorphisms. Thus $\Delta_{i-1}$ is surjective: given $(y_n)$, choose a starting value in the invertible tail, solve $x_{n+1}=(t_n^*)^{-1}(x_n-y_n)$ along that tail, and then solve $x_n=y_n+t_n^*x_{n+1}$ through the finitely many earlier terms. The kernel of $\Delta_i$ is its stable value. In particular precomposition with $L_n\to L$ gives
+$$\operatorname{Ext}^i_B(L,F)\xrightarrow{\ \sim\ }
+\operatorname{Ext}^i_B(L_n,F)\qquad(i\leq n+a-3),$$
+retaining the stated safe range. Composing with the inverse of the earlier stable comparison gives the isomorphism in (2), independently of the sufficiently large choice of $n$.
 
-**Proof.** Proof of (A). Suppose $\mathcal{G}^i$ is nonzero only for $i \in [a, b]$. We may replace $X$ by a quasi-compact open neighbourhood of the union of the supports of $\mathcal{G}^i$. Hence we may assume $X$ is Noetherian. In this case $X$ and $f$ are quasi-compact and quasi-separated. Choose an approximation $P \to E$ by a perfect complex $P$ of $(X, E, -m - 1 + a)$ (possible by Theorem [Perfect approximation with prescribed closed support](#native-spaces-perfect-theorem-approximation)). Then the induced map $$\operatorname{Ext}^i_{\mathcal{O}_X}(E,
-\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F})
-\longrightarrow
-\operatorname{Ext}^i_{\mathcal{O}_X}(P,
-\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F})$$ is an isomorphism for $i \leq m$. Namely, the kernel, resp. cokernel of this map is a quotient, resp. submodule of $$\operatorname{Ext}^i_{\mathcal{O}_X}(C,
-\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F})
-\quad\text{resp.}\quad
-\operatorname{Ext}^{i + 1}_{\mathcal{O}_X}(C,
-\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F})$$ where $C$ is the cone of $P \to E$. Since $C$ has vanishing cohomology sheaves in degrees $\geq -m - 1 + a$ these $\operatorname{Ext}$-groups are zero for $i \leq m + 1$ by Derived Categories, Lemma [Vanishing of negative Ext groups](#native-derived-lemma-negative-exts). This reduces us to the case that $E$ is a perfect complex which is Lemma [Perfect complexes and derived Hom and Ext](#native-spaces-perfect-lemma-compute-ext-perfect). The statement on boundaries is explained in the proof of Lemma [Perfect complexes and derived Hom and Ext](#native-spaces-perfect-lemma-compute-ext-perfect).
+All telescope maps and finite-stage comparisons are natural in the coefficient module. For a short exact sequence $0\to F_1\to F_2\to F_3\to0$, choose one sufficiently large $n$ for the two adjacent degrees involved in its boundary. Precomposition by $L_n\to L$ and the finite-stage coefficient-Ext comparisons both commute with that boundary. Their isomorphisms identify the two boundary squares, proving the assertion in every degree. This completes both parts. $\square$
 
-Proof of (B). As in the proof of (A) we may assume $X$ is Noetherian. Observe that $E$ is pseudo-coherent by Lemma [Pseudo-coherent complexes and coherent sheaves](#native-spaces-perfect-lemma-identify-pseudo-coherent-noetherian). By Lemma [Pseudo-coherent complexes and coherent sheaves](#native-spaces-perfect-lemma-pseudo-coherent-hocolim) we can write $E = \text{hocolim} E_n$ with $E_n$ perfect and $E_n \to E$ inducing an isomorphism on truncations $\tau_{\geq -n}$. Let $E_n^\vee$ be the dual perfect complex (Cohomology on Sites, Lemma [Perfect complexes and derived categories](#native-sites-cohomology-lemma-dual-perfect-complex)). We obtain an inverse system $\ldots \to E_3^\vee \to E_2^\vee \to E_1^\vee$ of perfect objects. This in turn gives rise to an inverse system $$\ldots \to K_3 \to K_2 \to K_1\quad\text{with}\quad
-K_n = Rf_*(E_n^\vee \otimes_{\mathcal{O}_X}^\mathbf{L} \mathcal{G}^\bullet)$$ perfect on $Y$, see Lemma [Perfect complexes and tensor products and direct sums](#native-spaces-perfect-lemma-tensor-perfect). By Lemma [Perfect complexes and derived Hom and Ext](#native-spaces-perfect-lemma-compute-ext-perfect) and its proof and by the arguments in the previous paragraph (with $P = E_n$) for any quasi-coherent $\mathcal{F}$ on $Y$ we have functorial canonical maps $$\begin{gathered}\begin{matrix}\phantom{X} & \operatorname{Ext}^i_{\mathcal{O}_X}(E,
-\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F}) \\ H^i(Y, K_{n + 1} \otimes_{\mathcal{O}_Y}^\mathbf{L} \mathcal{F}) & \phantom{X} & H^i(Y, K_n \otimes_{\mathcal{O}_Y}^\mathbf{L} \mathcal{F})\end{matrix} \\[6pt] \begin{aligned}\operatorname{Ext}^i_{\mathcal{O}_X}(E,
-\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F}) & \longrightarrow H^i(Y, K_{n + 1} \otimes_{\mathcal{O}_Y}^\mathbf{L} \mathcal{F}) \\ \operatorname{Ext}^i_{\mathcal{O}_X}(E,
-\mathcal{G}^\bullet \otimes_{\mathcal{O}_X} f^*\mathcal{F}) & \longrightarrow H^i(Y, K_n \otimes_{\mathcal{O}_Y}^\mathbf{L} \mathcal{F}) \\ H^i(Y, K_{n + 1} \otimes_{\mathcal{O}_Y}^\mathbf{L} \mathcal{F}) & \longrightarrow H^i(Y, K_n \otimes_{\mathcal{O}_Y}^\mathbf{L} \mathcal{F})\end{aligned}\end{gathered}$$ which are isomorphisms for $i \leq n + a$. Let $L_n = K_n^\vee$ be the dual perfect complex. Then we see that $L_1 \to L_2 \to L_3 \to \ldots$ is a system of perfect objects in $D(\mathcal{O}_Y)$ such that for any quasi-coherent $\mathcal{F}$ on $Y$ the maps $$\operatorname{Ext}^i_{\mathcal{O}_Y}(L_{n + 1}, \mathcal{F})
-\longrightarrow
-\operatorname{Ext}^i_{\mathcal{O}_Y}(L_n, \mathcal{F})$$ are isomorphisms for $i \leq n + a - 1$. This implies that $L_n \to L_{n + 1}$ induces an isomorphism on truncations $\tau_{\geq -n - a + 2}$ (hint: take cone of $L_n \to L_{n + 1}$ and look at its last nonvanishing cohomology sheaf). Thus $L = \text{hocolim} L_n$ is pseudo-coherent, see Lemma [Pseudo-coherent complexes and coherent sheaves](#native-spaces-perfect-lemma-pseudo-coherent-hocolim). The mapping property of homotopy colimits gives that $\operatorname{Ext}^i_{\mathcal{O}_Y}(L, \mathcal{F}) =
-\operatorname{Ext}^i_{\mathcal{O}_Y}(L_n, \mathcal{F})$ for $i \leq n + a - 3$ which finishes the proof. $\square$
+The notation here uses $G^\bullet$ for the coefficient complex and $B$ for its base throughout; these correct the native statement's initial $F^\bullet$ and the proof's later undefined $Y$.
 
-#### Lemma. Perfect proper-support direct images over arbitrary bases
- Let $S$ be a scheme. Let $f : X \to Y$ be a morphism of finite presentation between algebraic spaces over $S$. Let $E \in D(\mathcal{O}_X)$ be a perfect object. Let $\mathcal{G}^\bullet$ be a bounded complex of finitely presented $\mathcal{O}_X$-modules, flat over $Y$, with support proper over $Y$. Then $$K = Rf_*(E \otimes_{\mathcal{O}_X}^\mathbf{L} \mathcal{G}^\bullet)$$ is a perfect object of $D(\mathcal{O}_Y)$ and its formation commutes with arbitrary base change.
+#### Lemma. Perfect tensor pushforwards over an arbitrary base
 
-**Proof.** The statement on base change is Lemma [Canonical arbitrary base change for relatively flat tensors](#native-spaces-perfect-lemma-base-change-tensor). Thus it suffices to show that $K$ is a perfect object. If $Y$ is Noetherian, then this follows from Lemma [Perfect complexes and tensor products and direct sums](#native-spaces-perfect-lemma-tensor-perfect). We will reduce to this case by Noetherian approximation. We encourage the reader to skip the rest of this proof.
+Let $f:X\to Y$ be of finite presentation between algebraic spaces over a scheme $S$. Suppose $E$ is perfect and $G^\bullet$ is bounded, with finitely presented terms that are flat over $Y$ and have proper support over $Y$. Then
+$$K=Rf_*(E\otimes_{\mathcal O_X}^{\mathbf L}G^\bullet)$$
+is perfect on $Y$. Its formation commutes with every base change: for $g:Y'\to Y$, with induced $f':X'\to Y'$ and $g':X'\to X$, the canonical comparison is
+$$Lg^*K\xrightarrow{\ \sim\ }
+Rf'_*(Lg'^*E\otimes_{\mathcal O_{X'}}^{\mathbf L}g'^*G^\bullet).$$
+The pullback of $G^\bullet$ here is termwise ordinary pullback, as in the [relatively flat tensor base-change theorem](#native-spaces-perfect-lemma-base-change-tensor).
 
-The question is local on $Y$, hence we may assume $Y$ is affine. Say $Y = \operatorname{Spec}(R)$. We write $R = \mathop{\operatorname{colim}} R_i$ as a filtered colimit of Noetherian rings $R_i$. By Limits of Spaces, Lemma [Descent of finite presentation and finite algebras](#native-spaces-limits-lemma-descend-finite-presentation) there exists an $i$ and an algebraic space $X_i$ of finite presentation over $R_i$ whose base change to $R$ is $X$. By Limits of Spaces, Lemma [Descent of finite presentation and modules](#native-spaces-limits-lemma-descend-modules-finite-presentation) we may assume after increasing $i$, that there exists a bounded complex of finitely presented $\mathcal{O}_{X_i}$-modules $\mathcal{G}_i^\bullet$ whose pullback to $X$ is $\mathcal{G}^\bullet$. After increasing $i$ we may assume $\mathcal{G}_i^n$ is flat over $R_i$, see Limits of Spaces, Lemma [Descent of flatness](#native-spaces-limits-lemma-descend-flat). After increasing $i$ we may assume the support of $\mathcal{G}_i^n$ is proper over $R_i$, see Limits of Spaces, Lemma [Proper morphisms and closed support](#native-spaces-limits-lemma-eventually-proper-support). Finally, by Lemma [Perfect complexes](#native-spaces-perfect-lemma-perfect-on-limit) we may, after increasing $i$, assume there exists a perfect object $E_i$ of $D(\mathcal{O}_{X_i})$ whose pullback to $X$ is $E$. By Lemma [Perfect complexes and tensor products and direct sums](#native-spaces-perfect-lemma-tensor-perfect) we have that $K_i =
-Rf_{i, *}(E_i \otimes_{\mathcal{O}_{X_i}}^\mathbf{L} \mathcal{G}_i^\bullet)$ is perfect on $\operatorname{Spec}(R_i)$ where $f_i : X_i \to \operatorname{Spec}(R_i)$ is the structure morphism. By the base change result (Lemma [Canonical arbitrary base change for relatively flat tensors](#native-spaces-perfect-lemma-base-change-tensor)) the pullback of $K_i$ to $Y = \operatorname{Spec}(R)$ is $K$ and we conclude. $\square$
+**Proof.** That base-change theorem already gives the displayed isomorphism. Perfection can be checked étale locally on $Y$, so take $Y=\operatorname{Spec}R$. Express $R$ as the filtered union of its finitely generated subrings over $\mathbf Z$; denote them by $R_i$. Each $R_i$ is Noetherian.
 
-#### Lemma. Base change for pseudo-coherent complexes and coherent sheaves
+The [finite-presentation descent theorem for spaces](#native-spaces-limits-lemma-descend-finite-presentation) supplies a space $X_i$ of finite presentation over $R_i$ whose pullback is $X$. On its later base changes the [module descent theorem](#native-spaces-limits-lemma-descend-modules-finite-presentation) descends every nonzero term of $G^\bullet$. There are only finitely many terms. Descend their differentials as module morphisms and then enlarge the index so that each of the finitely many composites $d^{q+1}d^q$ is zero. This produces an actual bounded complex $G_i^\bullet$, together with an identification of its pullback with $G^\bullet$.
 
-Let $S$ be a scheme. Let $f : X \to Y$ be a morphism of finite presentation between algebraic spaces over $S$. Let $E \in D(\mathcal{O}_X)$ be a pseudo-coherent object. Let $\mathcal{G}^\bullet$ be a bounded above complex of finitely presented $\mathcal{O}_X$-modules, flat over $Y$, with support proper over $Y$. Then $$K = Rf_*(E \otimes_{\mathcal{O}_X}^\mathbf{L} \mathcal{G}^\bullet)$$ is a pseudo-coherent object of $D(\mathcal{O}_Y)$ and its formation commutes with arbitrary base change.
+For each of those terms, [descent of relative flatness](#native-spaces-limits-lemma-descend-flat) and [descent of proper support](#native-spaces-limits-lemma-eventually-proper-support) apply. A common later index makes all terms relatively flat with proper support. These properties persist under further base change. Finally, [descent of perfect objects along limits](#native-spaces-perfect-lemma-perfect-on-limit) gives a perfect $E_i$ with $Lg_i^*E_i\simeq E$, after another finite enlargement of the index.
 
-**Proof.** The statement on base change is Lemma [Canonical arbitrary base change for relatively flat tensors](#native-spaces-perfect-lemma-base-change-tensor). Thus it suffices to show that $K$ is a pseudo-coherent object. This will follow from Lemma [Perfect proper-support direct images over arbitrary bases](#native-spaces-perfect-lemma-base-change-tensor-perfect) by approximation by perfect complexes. We encourage the reader to skip the rest of the proof.
+The space $X_i$ is Noetherian, so the terms of $G_i^\bullet$ are coherent. The [Noetherian proper-support tensor theorem](#native-spaces-perfect-lemma-tensor-perfect) makes
+$$K_i=Rf_{i*}(E_i\otimes^{\mathbf L}G_i^\bullet)$$
+perfect over $R_i$. Applying the already established canonical base-change isomorphism to $R_i\to R$ identifies $K$ with $K_i\otimes_{R_i}^{\mathbf L}R$. Derived pullback preserves perfect objects. Thus $K$ is perfect, and its base-change identification is the stated canonical one. $\square$
 
-The question is étale local on $Y$, hence we may assume $Y$ is affine. Then $X$ is quasi-compact and quasi-separated. Moreover, there exists an integer $N$ such that total direct image $Rf_* : D_\mathrm{QCoh}(\mathcal{O}_X) \to D_\mathrm{QCoh}(\mathcal{O}_Y)$ has cohomological dimension $N$ as explained in Lemma [Quasi-coherent complexes and coherent sheaves](#native-spaces-perfect-lemma-quasi-coherence-direct-image). Choose an integer $b$ such that $\mathcal{G}^i = 0$ for $i > b$. It suffices to show that $K$ is $m$-pseudo-coherent for every $m$. Choose an approximation $P \to E$ by a perfect complex $P$ of $(X, E, m - N - 1 - b)$. This is possible by Theorem [Perfect approximation with prescribed closed support](#native-spaces-perfect-theorem-approximation). Choose a distinguished triangle $$P \to E \to C \to P[1]$$ in $D_\mathrm{QCoh}(\mathcal{O}_X)$. The cohomology sheaves of $C$ are zero in degrees $\geq m - N - 1 - b$. Hence the cohomology sheaves of $C \otimes^\mathbf{L} \mathcal{G}^\bullet$ are zero in degrees $\geq m - N - 1$. Thus the cohomology sheaves of $Rf_*(C \otimes^\mathbf{L} \mathcal{G})$ are zero in degrees $\geq m - 1$. Hence $$Rf_*(P \otimes^\mathbf{L} \mathcal{G}) \to
-Rf_*(E \otimes^\mathbf{L} \mathcal{G})$$ is an isomorphism on cohomology sheaves in degrees $\geq m$. Next, suppose that $H^i(P) = 0$ for $i > a$. Then $P \otimes^\mathbf{L} \sigma_{\geq m - N - 1 - a}\mathcal{G}^\bullet
-\longrightarrow
-P \otimes^\mathbf{L} \mathcal{G}^\bullet$ is an isomorphism on cohomology sheaves in degrees $\geq m - N - 1$. Thus again we find that $$Rf_*(P \otimes^\mathbf{L} \sigma_{\geq m - N - 1 - a}\mathcal{G}^\bullet) \to
-Rf_*(P \otimes^\mathbf{L} \mathcal{G}^\bullet)$$ is an isomorphism on cohomology sheaves in degrees $\geq m$. By Lemma [Perfect proper-support direct images over arbitrary bases](#native-spaces-perfect-lemma-base-change-tensor-perfect) the source is a perfect complex. We conclude that $K$ is $m$-pseudo-coherent as desired. $\square$
+#### Lemma. Pseudo-coherent tensor pushforwards over an arbitrary base
 
-#### Lemma. Pullback of derived quasi-coherent complexes
- Let $R$ be a ring. Let $X$ be an algebraic space and let $f : X \to \operatorname{Spec}(R)$ be proper, flat, and of finite presentation. Let $(M_n)$ be an inverse system of $R$-modules with surjective transition maps. Then the canonical map $$\mathcal{O}_X \otimes_R (\varprojlim M_n)
-\longrightarrow
-\varprojlim \mathcal{O}_X \otimes_R M_n$$ induces an isomorphism from the source to $DQ_X$ applied to the target.
+Keep $f:X\to Y$ of finite presentation over $S$. Let $E$ be pseudo-coherent, and let $G^\bullet$ have finitely presented terms, each flat over $Y$ with proper support over $Y$. Assume only that $G^\bullet$ is bounded above. Then
+$$K=Rf_*(E\otimes^{\mathbf L}G^\bullet)$$
+is pseudo-coherent on $Y$ and has the same canonical arbitrary-base-change property as in the preceding lemma.
 
-**Proof.** The statement means that for any object $E$ of $D_\mathrm{QCoh}(\mathcal{O}_X)$ the induced map $$\operatorname{Hom}(E, \mathcal{O}_X \otimes_R (\varprojlim M_n))
-\longrightarrow
-\operatorname{Hom}(E, \varprojlim \mathcal{O}_X \otimes_R M_n)$$ is an isomorphism. Since $D_\mathrm{QCoh}(\mathcal{O}_X)$ has a perfect generator (Theorem [A perfect generator for a quasi-compact algebraic space](#native-spaces-perfect-theorem-bondal-van-den-bergh)) it suffices to check this for perfect $E$. By Lemma [Quasi-coherent complexes and coherent sheaves](#native-spaces-perfect-lemma-rlim-quasi-coherent) we have $\varprojlim \mathcal{O}_X \otimes_R M_n = R\varprojlim \mathcal{O}_X \otimes_R M_n$. The exact functor $R\operatorname{Hom}_X(E, -) : D_\mathrm{QCoh}(\mathcal{O}_X) \to D(R)$ of Cohomology on Sites, Section [Derived Hom and Ext](#context-sites-cohomology-section-global-rhom) commutes with products and hence with derived limits, whence $$R\operatorname{Hom}_X(E, \varprojlim \mathcal{O}_X \otimes_R M_n) =
-R\varprojlim R\operatorname{Hom}_X(E, \mathcal{O}_X \otimes_R M_n)$$ Let $E^\vee$ be the dual perfect complex, see Cohomology on Sites, Lemma [Perfect complexes and derived categories](#native-sites-cohomology-lemma-dual-perfect-complex). We have $$R\operatorname{Hom}_X(E, \mathcal{O}_X \otimes_R M_n) =
-R\Gamma(X, E^\vee \otimes_{\mathcal{O}_X}^\mathbf{L} Lf^*M_n) =
-R\Gamma(X, E^\vee) \otimes_R^\mathbf{L} M_n$$ by Lemma [Base change for sheaf cohomology](#native-spaces-perfect-lemma-cohomology-base-change). From Lemma [Perfect direct images for proper morphisms of finite presentation](#native-spaces-perfect-lemma-flat-proper-perfect-direct-image-general) we see $R\Gamma(X, E^\vee)$ is a perfect complex of $R$-modules. In particular it is a pseudo-coherent complex and by More on Algebra, Lemma [Pseudo-coherent complexes and coherent sheaves](#native-more-algebra-lemma-pseudo-coherent-tensor-limit) we obtain $$R\varprojlim R\Gamma(X, E^\vee) \otimes_R^\mathbf{L} M_n =
-R\Gamma(X, E^\vee) \otimes_R^\mathbf{L} \varprojlim M_n$$ as desired. $\square$
+**Proof.** Base change again follows from the [tensor comparison](#native-spaces-perfect-lemma-base-change-tensor). To prove pseudo-coherence, work over an affine étale chart of $Y$. Then $X$ is quasi-compact and quasi-separated. By the [unbounded direct-image bound](#native-spaces-perfect-lemma-quasi-coherence-direct-image), choose an integer $N\geq1$ such that
+$$A\in D^{\leq d}_{\mathrm{QCoh}}(X)
+\quad\Longrightarrow\quad Rf_*A\in D^{\leq d+N}_{\mathrm{QCoh}}(Y)$$
+for every integer $d$. We have allowed one extra degree beyond the strict bound there. Fix $b$ with $G^q=0$ for $q>b$, and fix any approximation degree $m$.
 
-#### Lemma. Detecting a complex by perfect tests
- Let $A$ be a ring. Let $X$ be an algebraic space over $A$ which is quasi-compact and quasi-separated. Let $K \in D^-_\mathrm{QCoh}(\mathcal{O}_X)$. If $R\Gamma(X, E \otimes^\mathbf{L} K)$ is pseudo-coherent in $D(A)$ for every perfect $E$ in $D(\mathcal{O}_X)$, then $R\Gamma(X, E \otimes^\mathbf{L} K)$ is pseudo-coherent in $D(A)$ for every pseudo-coherent $E$ in $D(\mathcal{O}_X)$.
+Choose a [perfect approximation](#native-spaces-perfect-theorem-approximation) $P\to E$ at cutoff $m-N-1-b$. If $C$ is its cone, the approximation convention and right t-exactness of derived tensor give
+$$C\in D^{\leq m-N-2-b},\qquad
+C\otimes^{\mathbf L}G^\bullet\in D^{\leq m-N-2},\qquad
+Rf_*(C\otimes^{\mathbf L}G^\bullet)\in D^{\leq m-2}.$$
+Thus $Rf_*(P\otimes^{\mathbf L}G^\bullet)\to K$ is an isomorphism on cohomology in degrees at least $m$.
 
-**Proof.** There exists an integer $N$ such that $R\Gamma(X, -) : D_\mathrm{QCoh}(\mathcal{O}_X) \to D(A)$ has cohomological dimension $N$ as explained in Lemma [Quasi-coherent complexes and coherent sheaves](#native-spaces-perfect-lemma-quasi-coherence-direct-image). Let $b \in \mathbf{Z}$ be such that $H^i(K) = 0$ for $i > b$. Let $E$ be pseudo-coherent on $X$. It suffices to show that $R\Gamma(X, E \otimes^\mathbf{L} K)$ is $m$-pseudo-coherent for every $m$. Choose an approximation $P \to E$ by a perfect complex $P$ of $(X, E, m - N - 1 - b)$. This is possible by Theorem [Perfect approximation with prescribed closed support](#native-spaces-perfect-theorem-approximation). Choose a distinguished triangle $$P \to E \to C \to P[1]$$ in $D_\mathrm{QCoh}(\mathcal{O}_X)$. The cohomology sheaves of $C$ are zero in degrees $\geq m - N - 1 - b$. Hence the cohomology sheaves of $C \otimes^\mathbf{L} K$ are zero in degrees $\geq m - N - 1$. Thus the cohomology of $R\Gamma(X, C \otimes^\mathbf{L} K)$ are zero in degrees $\geq m - 1$. Hence $$R\Gamma(X, P \otimes^\mathbf{L} K) \to R\Gamma(X, E \otimes^\mathbf{L} K)$$ is an isomorphism on cohomology in degrees $\geq m$. By assumption the source is pseudo-coherent. We conclude that $R\Gamma(X, E \otimes^\mathbf{L} K)$ is $m$-pseudo-coherent as desired. $\square$
+Choose $a$ with $P\in D^{\leq a}$ and set $t=m-N-1-a$. Let $G_{\geq t}^\bullet$ be the brutal subcomplex retaining exactly the terms in degrees at least $t$. It is bounded, still has finitely presented relatively flat terms with proper support, and fits into a termwise exact sequence
+$$0\longrightarrow G_{\geq t}^\bullet\longrightarrow G^\bullet
+\longrightarrow G_{<t}^\bullet\longrightarrow0.$$
+The quotient is concentrated in degrees at most $t-1$. Consequently
+$$P\otimes^{\mathbf L}G_{<t}^\bullet\in D^{\leq a+t-1}
+=D^{\leq m-N-2},$$
+and its direct image lies in $D^{\leq m-2}$. The triangle of this sequence shows that
+$$Rf_*(P\otimes^{\mathbf L}G_{\geq t}^\bullet)
+\longrightarrow Rf_*(P\otimes^{\mathbf L}G^\bullet)$$
+is likewise an isomorphism on cohomology in degrees at least $m$. The source is perfect by the preceding theorem. Its composite map to $K$ is therefore a perfect $m$-approximation, even an isomorphism in degree $m$. Locally represent this map by a chain map from a strictly perfect complex; this is exactly $m$-pseudo-coherence. Since $m$ was arbitrary, $K$ is pseudo-coherent. $\square$
 
-#### Lemma. Perfect proper-support derived Hom over arbitrary bases
+#### Lemma. Pullback and a surjective inverse system after quasi-coheration
 
-Let $S$ be a scheme. Let $f : X \to Y$ be a morphism of finite presentation between algebraic spaces over $S$. Let $E \in D(\mathcal{O}_X)$ be a perfect object. Let $\mathcal{G}^\bullet$ be a bounded complex of finitely presented $\mathcal{O}_X$-modules, flat over $Y$, with support proper over $Y$. Then $$K = Rf_*R\mathcal{H}om(E, \mathcal{G}^\bullet)$$ is a perfect object of $D(\mathcal{O}_Y)$ and its formation commutes with arbitrary base change.
+Let $f:X\to\operatorname{Spec}R$ be a proper, flat morphism of finite presentation, with $X$ an algebraic space. For an inverse sequence of $R$-modules $(M_n)$ with surjective transitions, the canonical map
+$$A=\mathcal O_X\otimes_R\varprojlim_nM_n
+\longrightarrow T=\varprojlim_n(\mathcal O_X\otimes_RM_n)$$
+induces an isomorphism $A\simeq DQ_X(T)$, where $DQ_X$ is the right adjoint to the inclusion of complexes with quasi-coherent cohomology.
 
-**Proof.** The statement on base change is Lemma [Canonical arbitrary base change for derived Hom](#native-spaces-perfect-lemma-base-change-rhom). Thus it suffices to show that $K$ is a perfect object. If $Y$ is Noetherian, then this follows from Lemma [Perfect complexes and derived Hom and Ext](#native-spaces-perfect-lemma-ext-perfect). We will reduce to this case by Noetherian approximation. We encourage the reader to skip the rest of this proof.
+**Proof.** The source $A$ is quasi-coherent. The target is an ordinary sheaf limit and is not assumed quasi-coherent. Put $F_n=\mathcal O_X\otimes_RM_n$. These sheaves are quasi-coherent and their transitions are surjective. The [surjective-tower theorem](#native-spaces-perfect-lemma-rlim-quasi-coherent) gives $T\simeq R\varprojlim F_n$ in the ambient category $D(\mathcal O_X)$.
 
-The question is local on $Y$, hence we may assume $Y$ is affine. Say $Y = \operatorname{Spec}(R)$. We write $R = \mathop{\operatorname{colim}} R_i$ as a filtered colimit of Noetherian rings $R_i$. By Limits of Spaces, Lemma [Descent of finite presentation and finite algebras](#native-spaces-limits-lemma-descend-finite-presentation) there exists an $i$ and an algebraic space $X_i$ of finite presentation over $R_i$ whose base change to $R$ is $X$. By Limits of Spaces, Lemma [Descent of finite presentation and modules](#native-spaces-limits-lemma-descend-modules-finite-presentation) we may assume after increasing $i$, that there exists a bounded complex of finitely presented $\mathcal{O}_{X_i}$-module $\mathcal{G}_i^\bullet$ whose pullback to $X$ is $\mathcal{G}$. After increasing $i$ we may assume $\mathcal{G}_i^n$ is flat over $R_i$, see Limits of Spaces, Lemma [Descent of flatness](#native-spaces-limits-lemma-descend-flat). After increasing $i$ we may assume the support of $\mathcal{G}_i^n$ is proper over $R_i$, see Limits of Spaces, Lemma [Proper morphisms and closed support](#native-spaces-limits-lemma-eventually-proper-support). Finally, by Lemma [Descent of perfect complexes](#native-spaces-perfect-lemma-descend-perfect) we may, after increasing $i$, assume there exists a perfect object $E_i$ of $D(\mathcal{O}_{X_i})$ whose pullback to $X$ is $E$. Applying Lemma [Perfect complexes and derived Hom and Ext](#native-spaces-perfect-lemma-compute-ext-perfect) to $X_i \to \operatorname{Spec}(R_i)$, $E_i$, $\mathcal{G}_i^\bullet$ and using the base change property already shown we obtain the result. $\square$
+Fix a perfect $P$ on $X$. Use the global derived Hom functor $R\operatorname{Hom}_X(P,-)$ on this ambient category, not just on $D_{\mathrm{QCoh}}(X)$. It preserves products: for a perfect source, internal derived Hom is tensor with $P^\vee$ and is right adjoint to tensor with $P$; derived global sections is a right adjoint as well. These exact functors therefore preserve the triangle defining a derived inverse limit. Hence
+$$R\operatorname{Hom}_X(P,T)
+\simeq R\varprojlim_nR\operatorname{Hom}_X(P,F_n).$$
+Flatness of $f$ identifies $F_n$ with $Lf^*M_n$ and $A$ with $Lf^*(\varprojlim M_n)$. By [perfect duality](#native-sites-cohomology-lemma-dual-perfect-complex) and the [projection formula](#native-spaces-perfect-lemma-cohomology-base-change), writing $Q=R\Gamma(X,P^\vee)$ gives
+$$R\operatorname{Hom}_X(P,F_n)\simeq Q\otimes_R^{\mathbf L}M_n,
+\qquad R\operatorname{Hom}_X(P,A)\simeq Q\otimes_R^{\mathbf L}\varprojlim_nM_n.$$
+The [flat proper direct-image theorem](#native-spaces-perfect-lemma-flat-proper-perfect-direct-image-general) makes $Q$ perfect over $R$. The [pseudo-coherent tensor-limit formula](#native-more-algebra-lemma-pseudo-coherent-tensor-limit) applies, and surjectivity gives $R\varprojlim M_n\simeq\varprojlim M_n$. It follows that the canonical map
+$$R\operatorname{Hom}_X(P,A)\longrightarrow R\operatorname{Hom}_X(P,T)$$
+is an isomorphism. The comparisons used here come from the projections to $M_n$, so this is the map induced by the original coefficient map, not just an abstract isomorphism of its endpoints.
+
+For completeness, the last tensor-limit step can also be seen using a finite complex of finite projective modules representing $Q$. Tensoring this complex commutes with products in each degree and preserves the difference-map triangle of the module tower. Its degree-zero module limit is the derived limit because the difference map on products is surjective.
+
+By [quasi-coherator adjunction](#native-spaces-perfect-lemma-better-coherator), the map $A\to T$ factors uniquely through $A\to DQ_X(T)$. For every integer $r$ and perfect $P$, the map on $\operatorname{Hom}(P,-[r])$ of this factorization is the isomorphism just proved. Apply this to all shifts of a [perfect generator](#native-spaces-perfect-theorem-bondal-van-den-bergh). Its vanishing test makes the cone of $A\to DQ_X(T)$ zero. This proves the assertion and consequently the corresponding Hom isomorphism for every object of $D_{\mathrm{QCoh}}(X)$. $\square$
+
+#### Lemma. Extending perfect tests to pseudo-coherent coefficients
+
+Let $X$ be a quasi-compact, quasi-separated algebraic space over a ring $A$, and let $K\in D^-_{\mathrm{QCoh}}(X)$. Suppose $R\Gamma(X,P\otimes^{\mathbf L}K)$ is pseudo-coherent over $A$ for every perfect $P$. Then $R\Gamma(X,E\otimes^{\mathbf L}K)$ is pseudo-coherent over $A$ for every pseudo-coherent $E$.
+
+**Proof.** Fix an integer $m$. Choose $b$ with $K\in D^{\leq b}$ and a uniform upper shift $N$ for derived global sections, as in the [direct-image bound](#native-spaces-perfect-lemma-quasi-coherence-direct-image). Approximate $E$ by a perfect $P$ at cutoff $r=m-N-1-b$. Its cone $C$ belongs to $D^{\leq m-N-2-b}$. Therefore
+$$C\otimes^{\mathbf L}K\in D^{\leq m-N-2},\qquad
+R\Gamma(X,C\otimes^{\mathbf L}K)\in D^{\leq m-2}.$$
+The map
+$$R\Gamma(X,P\otimes^{\mathbf L}K)\longrightarrow
+R\Gamma(X,E\otimes^{\mathbf L}K)$$
+is consequently an isomorphism on cohomology in every degree at least $m$. Its source is pseudo-coherent by hypothesis. Compose an $m$-approximation of that source by a bounded finite free complex with the displayed map. The composite is an $m$-approximation of the target. Thus the target is $m$-pseudo-coherent for every $m$, which proves pseudo-coherence. $\square$
+
+#### Lemma. Perfect derived-Hom pushforwards over an arbitrary base
+
+Suppose $f:X\to Y$ is of finite presentation between algebraic spaces over $S$, $E$ is perfect, and $G^\bullet$ is bounded with finitely presented terms flat over $Y$ and with proper support over $Y$. Then
+$$K=Rf_*R\mathcal Hom(E,G^\bullet)$$
+is perfect on $Y$ and commutes with arbitrary base change, with the canonical comparison of the [perfect-source Hom base-change theorem](#native-spaces-perfect-lemma-base-change-rhom).
+
+**Proof by Noetherian descent.** The cited theorem gives base change for a perfect source. Work over an affine étale chart $Y=\operatorname{Spec}R$ and write $R=\operatorname{colim}R_i$ with $R_i$ Noetherian. As in the tensor theorem, descend $X$, the finitely many terms and differentials of $G^\bullet$, and their zero-composite relations to one index. Relative flatness and properness of all term supports hold after a further common enlargement. Descend $E$ as a perfect $E_i$ using [perfect objects on inverse limits](#native-spaces-perfect-lemma-perfect-on-limit).
+
+The [Noetherian proper-support Hom theorem](#native-spaces-perfect-lemma-ext-perfect) now gives a perfect
+$$K_i=Rf_{i*}R\mathcal Hom(E_i,G_i^\bullet).$$
+The perfect-source base-change comparison identifies $K$ with $K_i\otimes_{R_i}^{\mathbf L}R$. This proves perfection and retains the canonical arbitrary-base-change statement.
+
+The inverse-limit descent citation is essential here: the native citation to the étale-versus-Zariski perfectness criterion does not descend an object from $R$ to $R_i$. The Noetherian perfect-Hom theorem is also the direct reason that $K_i$ is perfect; the coefficient-Ext comparison uses this object but is not needed for that step.
+
+**Proof by duality.** The canonical perfect-duality isomorphism gives
+$$R\mathcal Hom(E,G^\bullet)\simeq E^\vee\otimes^{\mathbf L}G^\bullet.$$
+Apply the arbitrary-base perfect tensor theorem to $E^\vee$. Its perfection and base-change conclusions identify with those for derived Hom because perfect duality commutes with pullback and its evaluation defines the same comparison map. This gives a second complete route under the original perfect-source hypothesis. $\square$
 
 #### Lemma. Sheaf cohomology
 
@@ -2919,53 +2978,61 @@ These statements and full proofs supply local support for the preceding argument
 
 Proof of (1). A finite locally free module $E$ has a finitely presented dual $E^\vee$, with evaluation and coevaluation maps satisfying the two triangle identities. Descend the two modules by Lemma [Descent of finite presentation and modules](#native-spaces-limits-lemma-descend-modules-finite-presentation), then their two maps by its full faithfulness, and finally the two identities by equality at a later stage in the same colimit category. The resulting module $E_i$ is dualizable. To check that it is finite locally free, work on an affine etale chart and write its coevaluation as a finite sum $\sum_j n_j\otimes m_j$. The triangle identity says $m=\sum_j m_j\operatorname{ev}(m\otimes n_j)$ for every $m$. Hence the maps $R^{\oplus r}\to E_i$, given by the $m_j$, and $E_i\to R^{\oplus r}$, given by these evaluations, compose to the identity. The module is therefore finite projective. A finite projective module is finite locally free: over each local ring choose a residue-field basis, split the resulting surjection from a finite free module, and apply Nakayama to its finite projective kernel; the chosen basis and its inverse maps then spread to a neighbourhood. This proves (1) over arbitrary bases, with the original module as its pullback. $\square$
 
-#### Lemma. Descent of finite presentation and finite algebras
- Let $S$ be a scheme. Let $I$ be a directed set. Let $(X_i, f_{ii'})$ be an inverse system over $I$ of algebraic spaces over $S$. Assume
+#### Lemma. Finitely presented algebraic spaces on an inverse limit
 
-1.  the morphisms $f_{ii'} : X_i \to X_{i'}$ are affine,
+Let $X=\varprojlim_iX_i$ be a directed inverse limit of quasi-compact, quasi-separated algebraic spaces over a scheme $S$, with affine transition maps. Pullback identifies the category of spaces of finite presentation over $X$ with the filtered colimit of the corresponding categories over the $X_i$. This means descent of objects and morphisms, and eventual equality for any two morphisms equal after passage to $X$.
 
-2.  the spaces $X_i$ are quasi-compact and quasi-separated.
+**Descent of objects.** Fix $0$ and an affine surjective étale atlas $U_0\to X_0$. Let $R_0=U_0\times_{X_0}U_0$. Its pullbacks give presentations $X_i=U_i/R_i$ and $X=U/R$, with $U=\varprojlim U_i$ and $R=\varprojlim R_i$, by the [construction of limits of spaces](#native-spaces-limits-lemma-directed-inverse-system-has-limit). The $U_i$ are affine; the relation schemes $R_i$ are quasi-compact and separated. Their iterated relation schemes have the same properties needed for descent.
 
-Let $X = \varprojlim_i X_i$. Then the category of algebraic spaces of finite presentation over $X$ is the colimit over $I$ of the categories of algebraic spaces of finite presentation over $X_i$.
+Given $Y\to X$ of finite presentation, put $V=Y\times_XU$ and choose an affine surjective étale atlas $W\to V$ of finite presentation. Then $W\to Y$ is an étale cover. Its relation $T=W\times_YW$ is a scheme and gives $Y=W/T$. The scheme $W$ is of finite presentation over $U$. To see the corresponding fact for $T$ over $R$, factor its map as
+$$W\times_YW\longrightarrow V\times_YV\simeq Y\times_XR\longrightarrow R.$$
+The first map is a product of étale finite-presentation maps and the second is a base change of $Y\to X$. Thus $T\to R$ is of finite presentation.
 
-**Proof.** Pick $0 \in I$. Choose a surjective étale morphism $U_0 \to X_0$ where $U_0$ is an affine scheme (Properties of Spaces, Lemma [Affine neighbourhoods](#native-spaces-properties-lemma-quasi-compact-affine-cover)). Set $U_i = X_i \times_{X_0} U_0$. Set $R_0 = U_0 \times_{X_0} U_0$ and $R_i = R_0 \times_{X_0} X_i$. Denote $s_i, t_i : R_i \to U_i$ and $s, t : R \to U$ the two projections. In the proof of Lemma [Descent of algebraic spaces](#native-spaces-limits-lemma-directed-inverse-system-has-limit) we have seen that there exists a presentation $X = U/R$ with $U = \varprojlim U_i$ and $R = \varprojlim R_i$. Note that $U_i$ and $U$ are affine and that $R_i$ and $R$ are quasi-compact and separated (as $X_i$ is quasi-separated). Let $Y$ be an algebraic space over $S$ and let $Y \to X$ be a morphism of finite presentation. Set $V = U \times_X Y$. This is an algebraic space of finite presentation over $U$. Choose an affine scheme $W$ and a surjective étale morphism $W \to V$. Then $W \to Y$ is surjective étale as well. Set $R' = W \times_Y W$ so that $Y = W/R'$ (see Spaces, Section [The geometric construction](#context-spaces-section-presentations)). Note that $W$ is a scheme of finite presentation over $U$ and that $R'$ is a scheme of finite presentation over $R$ (details omitted). By Limits, Lemma [Descent of finite presentation and finite algebras](#native-limits-lemma-descend-finite-presentation) we can find an index $i$ and a morphism of schemes $W_i \to U_i$ of finite presentation whose base change to $U$ gives $W \to U$. Similarly we can find, after possibly increasing $i$, a scheme $R'_i$ of finite presentation over $R_i$ whose base change to $R$ is $R'$. The projection morphisms $s', t' : R' \to W$ are morphisms over the projection morphisms $s, t : R \to U$. Hence we can view $s'$, resp. $t'$ as a morphism between schemes of finite presentation over $U$ (with structure morphism $R' \to U$ given by $R' \to R$ followed by $s$, resp. $t$). Hence we can apply Limits, Lemma [Descent of finite presentation and finite algebras](#native-limits-lemma-descend-finite-presentation) again to see that, after possibly increasing $i$, there exist morphisms $s'_i, t'_i : R'_i \to W_i$, whose base change to $U$ is $S', t'$. By Limits, Lemmas [Descent of étale morphisms](#native-limits-lemma-descend-etale) and [Descent of finite-presentation descent](#native-limits-lemma-descend-monomorphism) we may assume that $s'_i, t'_i$ are étale and that $j'_i : R'_i \to W_i \times_{X_i} W_i$ is a monomorphism (here we view $j'_i$ as a morphism of schemes of finite presentation over $U_i$ via one of the projections -- it doesn't matter which one). Setting $Y_i = W_i/R'_i$ (see Spaces, Theorem [The geometric construction (uncovered prerequisite)](#uncovered-spaces-theorem-presentation)) we obtain an algebraic space of finite presentation over $X_i$ whose base change to $X$ is isomorphic to $Y$.
+Use [finite-presentation descent for schemes](#native-limits-lemma-descend-finite-presentation) to descend $W$ over $U$ and $T$ over $R$ to a common stage. The source and target maps descend as well, by viewing them over the respective projections $R_i\rightrightarrows U_i$. Enlarge the index so that these maps are étale and
+$$T_i\longrightarrow W_i\times_{X_i}W_i$$
+is a monomorphism, using [étale descent along limits](#native-limits-lemma-descend-etale) and [descent of monomorphisms](#native-limits-lemma-descend-monomorphism).
 
-This shows that every algebraic space of finite presentation over $X$ comes from an algebraic space of finite presentation over some $X_i$, i.e., it shows that the functor of the lemma is essentially surjective. To show that it is fully faithful, consider an index $0 \in I$ and two algebraic spaces $Y_0, Z_0$ of finite presentation over $X_0$. Set $Y_i = X_i \times_{X_0} Y_0$, $Y = X \times_{X_0} Y_0$, $Z_i = X_i \times_{X_0} Z_0$, and $Z = X \times_{X_0} Z_0$. Let $\alpha : Y \to Z$ be a morphism of algebraic spaces over $X$. Choose a surjective étale morphism $V_0 \to Y_0$ where $V_0$ is an affine scheme. Set $V_i = V_0 \times_{Y_0} Y_i$ and $V = V_0 \times_{Y_0} Y$ which are affine schemes endowed with surjective étale morphisms to $Y_i$ and $Y$. The composition $V \to Y \to Z \to Z_0$ comes from a (essentially unique) morphism $V_i \to Z_0$ for some $i \geq 0$ by Proposition [Criteria for finite presentation and finite algebras](#native-spaces-limits-proposition-characterize-locally-finite-presentation) (applied to $Z_0 \to X_0$ which is of finite presentation by assumption). After increasing $i$ the two compositions $$V_i \times_{Y_i} V_i \to V_i \to Z_0$$ are equal as this is true in the limit. Hence we obtain a (essentially unique) morphism $Y_i \to Z_0$. Since this is a morphism over $X_0$ it induces a morphism into $Z_i = Z_0 \times_{X_0} X_i$ as desired. $\square$
+One must also descend the relation structure. Descend the unit $W\to T$, inverse $T\to T$, and composition $T\times_WT\to T$. Each is a morphism between finitely presented schemes over $U$, $R$, or an iterated relation scheme, with the corresponding operation of $R\rightrightarrows U$ as base map. The scheme descent theorem therefore applies. The unit, inverse, source-target and associativity identities are finitely many equalities of such morphisms; they hold at one common later stage. Thus $T_i\rightrightarrows W_i$ is an étale groupoid whose relation map is a monomorphism, hence an étale equivalence relation. The [quotient construction](#uncovered-spaces-theorem-presentation) gives the space $Y_i=W_i/T_i$. It is of finite presentation over $X_i$, as may be checked on its finite-presentation atlas and quasi-compact relation. Its pullback is $W/T=Y$.
 
-#### Lemma. Descent of finite presentation and modules
- With notation and assumptions as in Lemma [Descent of finite presentation and finite algebras](#native-spaces-limits-lemma-descend-finite-presentation). The category of $\mathcal{O}_X$-modules of finite presentation is the colimit over $I$ of the categories $\mathcal{O}_{X_i}$-modules of finite presentation.
+**Descent of morphisms and equalities.** Let $Y_0,Z_0$ be finitely presented over $X_0$ and let $\alpha:Y\to Z$ be a morphism of their pullbacks over $X$. Choose an affine étale atlas $V_0\to Y_0$ and pull it to $V_i,V$. The map $V\to Y\xrightarrow\alpha Z\to Z_0$ descends to a map $V_i\to Z_0$ over $X_0$ by the [limit criterion for local finite presentation](#native-spaces-limits-proposition-characterize-locally-finite-presentation). The two maps on $V_i\times_{Y_i}V_i$ agree at the limit. This overlap is a quasi-compact, quasi-separated scheme; cover it by finitely many affines and use the equality part of the same criterion. At a common later stage the two maps agree everywhere. Étale descent of maps then gives $Y_i\to Z_0$, hence $Y_i\to Z_i$ over $X_i$. If two descended maps become equal on $Y$, their restrictions to the affine atlas agree at some later stage by the same criterion, so the maps themselves agree there. This proves full faithfulness and finishes the categorical assertion. $\square$
 
-**Proof.** Choose $0 \in I$. Choose an affine scheme $U_0$ and a surjective étale morphism $U_0 \to X_0$. Set $U_i = X_i \times_{X_0} U_0$. Set $R_0 = U_0 \times_{X_0} U_0$ and $R_i = R_0 \times_{X_0} X_i$. Denote $s_i, t_i : R_i \to U_i$ and $s, t : R \to U$ the two projections. In the proof of Lemma [Descent of algebraic spaces](#native-spaces-limits-lemma-directed-inverse-system-has-limit) we have seen that there exists a presentation $X = U/R$ with $U = \varprojlim U_i$ and $R = \varprojlim R_i$. Note that $U_i$ and $U$ are affine and that $R_i$ and $R$ are quasi-compact and separated (as $X_i$ is quasi-separated). Moreover, it is also true that $R \times_{s, U, t} R = \mathop{\operatorname{colim}} R_i \times_{s_i, U_i, t_i} R_i$. Thus we know that $\mathrm{QCoh}(\mathcal{O}_U) = \mathop{\operatorname{colim}} \mathrm{QCoh}(\mathcal{O}_{U_i})$, $\mathrm{QCoh}(\mathcal{O}_R) = \mathop{\operatorname{colim}} \mathrm{QCoh}(\mathcal{O}_{R_i})$, and $\mathrm{QCoh}(\mathcal{O}_{R \times_{s, U, t} R}) =
-\mathop{\operatorname{colim}} \mathrm{QCoh}(\mathcal{O}_{R_i \times_{s_i, U_i, t_i} R_i})$ by Limits, Lemma [Descent of finite presentation and modules](#native-limits-lemma-descend-modules-finite-presentation). We have $\mathrm{QCoh}(\mathcal{O}_X) = \mathrm{QCoh}(U, R, s, t, c)$ and $\mathrm{QCoh}(\mathcal{O}_{X_i}) = \mathrm{QCoh}(U_i, R_i, s_i, t_i, c_i)$, see Properties of Spaces, Proposition [Quasi-coherent complexes and coherent sheaves](#native-spaces-properties-proposition-quasi-coherent). Thus the result follows formally. $\square$
+#### Lemma. Finitely presented modules on an inverse limit of spaces
 
-#### Lemma. Descent of flatness
+For the same system $X=\varprojlim_iX_i$, pullback induces an equivalence between the filtered colimit of finitely presented $\mathcal O_{X_i}$-modules and the category of finitely presented $\mathcal O_X$-modules.
 
-Notation and assumptions as in Situation [A property to be descended through a filtered inverse system](#native-spaces-limits-situation-descent-property). Let $\mathcal{F}_0$ be a quasi-coherent $\mathcal{O}_{X_0}$-module and denote $\mathcal{F}_i$ the pullback to $X_i$ and $\mathcal{F}$ the pullback to $X$. If
+**Proof.** Use the affine atlas $U_0\to X_0$ and relation $R_0\rightrightarrows U_0$ from the preceding proof, and put $C_i=R_i\times_{s_i,U_i,t_i}R_i$. Then
+$$U=\varprojlim U_i,\qquad R=\varprojlim R_i,\qquad C=\varprojlim C_i.$$
+All three are inverse limits of schemes with affine transitions and quasi-compact, quasi-separated stages. The [scheme theorem for finitely presented modules](#native-limits-lemma-descend-modules-finite-presentation) applies to each.
 
-1.  $\mathcal{F}$ is flat over $Y$,
+A finitely presented module on $X$ consists of a finitely presented module $F_U$ on $U$ and an isomorphism $\alpha:s^*F_U\to t^*F_U$ on $R$ satisfying the descent identities. Descend $F_U$, then $\alpha$ and its inverse. Their two identity equations, the unit equation and the cocycle equation on $C$ all hold at some common later index by the equality part of module descent. We obtain genuine descent data $(F_{U_i},\alpha_i)$. By [étale descent for quasi-coherent modules](#native-spaces-properties-proposition-quasi-coherent), these determine $F_i$ on $X_i$. Finite presentation can be checked on the atlas, so $F_i$ has the required finiteness and pulls back to the original module.
 
-2.  $\mathcal{F}_0$ is of finite presentation, and
+A morphism of modules on $X$ descends first on $U$. Its compatibility with the two relation maps is one equality on $R$, which holds at a later stage. It then descends to a morphism on $X_i$. Equality of two morphisms is detected on the atlas and holds at a later stage by scheme module descent. These arguments prove both fullness and faithfulness.
 
-3.  $f_0$ is locally of finite presentation,
+Only finitely presented modules are asserted to descend this way. The native proof's displayed categories of all quasi-coherent modules must be restricted to their finitely presented subcategories. Likewise the composable-relation space $C$ is an inverse limit, as displayed above, not a colimit of spaces. $\square$
 
-then $\mathcal{F}_i$ is flat over $Y_i$ for some $i \geq 0$. In particular, if $f_0$ is locally of finite presentation and $f$ is flat, then $f_i$ is flat for some $i \geq 0$.
+#### Lemma. Relative flatness descends to a finite stage
 
-**Proof.** Choose an affine scheme $V_0$ and a surjective étale morphism $V_0 \to Y_0$. Choose an affine scheme $U_0$ and a surjective étale morphism $U_0 \to V_0 \times_{Y_0} X_0$. Diagram $$\begin{gathered}\begin{matrix}U_0 & V_0 \\ X_0 & Y_0\end{matrix} \\[6pt] \begin{aligned}U_0 & \longrightarrow X_0 \\ U_0 & \longrightarrow V_0 \\ V_0 & \longrightarrow Y_0 \\ X_0 & \longrightarrow Y_0\end{aligned}\end{gathered}$$ The vertical arrows are surjective and étale by construction. We can base change this diagram to $B_i$ or $B$ to get $$\begin{gathered}\begin{matrix}U_i & V_i \\ X_i & Y_i\end{matrix} \\[6pt] \begin{aligned}U_i & \longrightarrow X_i \\ U_i & \longrightarrow V_i \\ V_i & \longrightarrow Y_i \\ X_i & \longrightarrow Y_i\end{aligned}\end{gathered}
-\quad\text{and}\quad
-\begin{gathered}\begin{matrix}U & V \\ X & Y\end{matrix} \\[6pt] \begin{aligned}U & \longrightarrow X \\ U & \longrightarrow V \\ V & \longrightarrow Y \\ X & \longrightarrow Y\end{aligned}\end{gathered}$$ Note that $U_i, V_i, U, V$ are affine schemes, the vertical morphisms are surjective étale, and the limit of the morphisms $U_i \to V_i$ is $U \to V$. Recall that $\mathcal{F}_i$ is flat over $Y_i$ if and only if $\mathcal{F}_i|_{U_i}$ is flat over $V_i$ and similarly $\mathcal{F}$ is flat over $Y$ if and only if $\mathcal{F}|_U$ is flat over $V$ (Morphisms of Spaces, Definition [Flat morphisms of algebraic spaces](#native-spaces-morphisms-definition-flat)). Since $f_0$ is locally of finite presentation, so is the morphism $U_0 \to V_0$. Hence the lemma follows from Limits, Lemma [Descent of finite presentation and flatness](#native-limits-lemma-descend-module-flat-finite-presentation). $\square$
+Use the [property-descent situation](#native-spaces-limits-situation-descent-property): $B=\varprojlim_iB_i$ has affine transitions, and $f_i:X_i\to Y_i$ are base changes of $f_0:X_0\to Y_0$ over $B_0$, with $B_0,X_0,Y_0$ quasi-compact and quasi-separated. Let $F_i$ and $F$ be the pullbacks of a finitely presented quasi-coherent module $F_0$ on $X_0$. If $f_0$ is locally of finite presentation and $F$ is flat over $Y$, then $F_i$ is flat over $Y_i$ at some stage. In particular, flatness of the limit morphism descends when $f_0$ is locally of finite presentation.
 
-#### Lemma. Proper morphisms and closed support
- Assumptions and notation as in Situation [A property to be descended through a filtered inverse system](#native-spaces-limits-situation-descent-property). Let $\mathcal{F}_0$ be a quasi-coherent $\mathcal{O}_{X_0}$-module. Denote $\mathcal{F}$ and $\mathcal{F}_i$ the pullbacks of $\mathcal{F}_0$ to $X$ and $X_i$. Assume
+**Proof.** Choose an affine surjective étale atlas $V_0\to Y_0$, and an affine surjective étale atlas $U_0\to X_0\times_{Y_0}V_0$. Pulling back gives affine schemes $U_i,V_i,U,V$ and commuting squares
+$$\begin{array}{ccc}
+U_i&\longrightarrow&V_i\\
+\downarrow&&\downarrow\\
+X_i&\xrightarrow{f_i}&Y_i.
+\end{array}$$
+The vertical maps are surjective étale. The transition maps on both affine systems are affine and $U_i=U_0\times_{V_0}V_i$. The map $U_0\to V_0$ is locally of finite presentation, and, being a map between affines, is quasi-compact and quasi-separated; thus it is of finite presentation. The pullback of $F_0$ to $U_0$ is finitely presented.
 
-1.  $f_0$ is locally of finite type,
+Flatness over the target is checked after these étale covers. The module on $U$ is flat over $V$ by assumption. Apply the [scheme descent theorem for relative flatness](#native-limits-lemma-descend-module-flat-finite-presentation) to the inverse system with bases $V_i$ and source $U_i$. Both source and target are finitely presented over these bases. At some stage the module on $U_i$ is flat over $V_i$. Étale descent of flatness then gives the result on $X_i\to Y_i$. Taking $F_0=\mathcal O_{X_0}$ proves the last assertion. $\square$
 
-2.  $\mathcal{F}_0$ is of finite type,
+#### Lemma. Properness of a module's support descends
 
-3.  the scheme theoretic support of $\mathcal{F}$ is proper over $Y$.
+In the same property-descent situation, let $f_0$ be locally of finite type and $F_0$ a finite-type quasi-coherent module. Assume its pullback $F$ has scheme-theoretic support proper over $Y$. There is then a stage $i$ where the support cut out by the annihilator of $F_i$ is proper over $Y_i$.
 
-Then the scheme theoretic support of $\mathcal{F}_i$ is proper over $Y_i$ for some $i$.
+**Proof.** Replace $X_0$ by the closed subspace cut out by the annihilator of $F_0$. This replacement is still quasi-compact and quasi-separated, and its map to $Y_0$ is still locally of finite type. The [support and pullback criterion for finite-type modules](#native-spaces-morphisms-lemma-support-finite-type) shows that every resulting $F_i$ has all of $|X_i|$ as its topological support, and $F$ has support $|X|$. Let $Z\subset X$ be its scheme-theoretic support. It is therefore a thickening in the sense that $Z\to X$ is a closed immersion inducing a universal homeomorphism.
 
-**Proof.** We may replace $X_0$ by the scheme theoretic support of $\mathcal{F}_0$. By Morphisms of Spaces, Lemma [Closed support and finite algebras](#native-spaces-morphisms-lemma-support-finite-type) this guarantees that $X_i$ is the support of $\mathcal{F}_i$ and $X$ is the support of $\mathcal{F}$. Then, if $Z \subset X$ denotes the scheme theoretic support of $\mathcal{F}$, we see that $Z \to X$ is a universal homeomorphism. We conclude that $X \to Y$ is proper as this is true for $Z \to Y$ by assumption, see Morphisms, Lemma [Proper morphisms (uncovered prerequisite)](#uncovered-morphisms-lemma-image-proper-is-proper). By Lemma [Proper morphisms](#native-spaces-limits-lemma-eventually-proper) we see that $X_i \to Y$ is proper for some $i$. Then it follows that the scheme theoretic support $Z_i$ of $\mathcal{F}_i$ is proper over $Y$ by Morphisms of Spaces, Lemmas [Proper morphisms and diagonals and separation](#native-spaces-morphisms-lemma-closed-immersion-proper) and [Composition and proper morphisms](#native-spaces-morphisms-lemma-composition-proper). $\square$
+The properness of $Z\to Y$ implies universal closedness of $X\to Y$: after any base change, a closed subset of $X$ has a closed inverse image in $Z$ with the same image in the base. Separatedness also follows. The map $Z\times_YZ\to X\times_YX$ is a universal homeomorphism, and the inverse image of the diagonal of $X/Y$ is the closed diagonal of $Z/Y$. Thus the diagonal of $X/Y$ is universally closed. A diagonal of algebraic spaces is a representable locally finite type monomorphism; being universally closed, it is proper and hence a closed immersion. Thus $X\to Y$ is separated. It is of finite type, since the original map was locally of finite type and all spaces here are quasi-compact. Hence $X\to Y$ is proper.
+
+By [descent of properness](#native-spaces-limits-lemma-eventually-proper), $X_i\to Y_i$ is proper after increasing $i$. The scheme-theoretic support $Z_i\subset X_i$ of $F_i$ is a closed subspace, so $Z_i\to Y_i$ is proper as well. This proves the stated conclusion. At the finite stage the base is $Y_i$ throughout; the native proof's final occurrences of $Y$ are replaced accordingly. $\square$
 
 #### Lemma. Descent of diagonals and separation
 
@@ -2982,18 +3049,15 @@ Notation and assumptions as in Situation [A property to be descended through a f
 
 **Proof.** Part (1) is the special case of (2) with $U = X$. Let $Y \to X$ be as in Decent Spaces, Lemma [Integral extensions](#native-decent-spaces-lemma-there-is-a-scheme-integral-over). Choose a finite affine open covering $Y = \bigcup V_j$ such that $V_j \to X$ factors through $U$. We can write $Y = \varprojlim Y_i$ with $Y_i \to X$ finite and of finite presentation, see Lemma [Finite presentation and integral extensions](#native-spaces-limits-lemma-integral-limit-finite-and-finite-presentation). For large enough $i$ the algebraic space $Y_i$ is a scheme, see Lemma [Filtered limits and descent of algebraic spaces](#native-spaces-limits-lemma-limit-is-scheme). For large enough $i$ we can find affine opens $V_{i, j} \subset Y_i$ whose inverse image in $Y$ recovers $V_j$, see Lemma [Descent of descent of algebraic spaces](#native-spaces-limits-lemma-descend-opens). For even larger $i$ the morphisms $V_j \to U$ over $X$ come from morphisms $V_{i, j} \to U$ over $X$, see Proposition [Criteria for finite presentation and finite algebras](#native-spaces-limits-proposition-characterize-locally-finite-presentation). This finishes the proof. $\square$
 
-#### Lemma. Proper morphisms
- Assumptions and notation as in Situation [A property to be descended through a filtered inverse system](#native-spaces-limits-situation-descent-property). If
+#### Lemma. Properness at a finite stage of an inverse system
 
-1.  $f$ is proper, and
+In the [property-descent situation](#native-spaces-limits-situation-descent-property), suppose $f_0:X_0\to Y_0$ is locally of finite type and its limit $f:X\to Y$ is proper. Then $f_i:X_i\to Y_i$ is proper at some later index.
 
-2.  $f_0$ is locally of finite type,
+**Proof.** Choose an affine surjective étale atlas $V_0\to Y_0$ and pull it to $V_i\to Y_i$. Properness is étale local on the target, so it suffices to prove the assertion after this replacement. We may assume $Y_0$ affine. Since the limit is separated, [descent of separatedness](#native-spaces-limits-lemma-descend-separated-morphism) gives a stage where $f_i$ is separated. Start from that stage. Quasi-compactness of $X_0,Y_0$ and quasi-separatedness of $Y_0$ make $f_0$ quasi-compact; therefore $f_0$ is separated and of finite type.
 
-then there exists an $i$ such that $f_i$ is proper.
+The [weak Chow construction](#native-spaces-cohomology-lemma-weak-chow) produces a proper surjection $\pi_0:X'_0\to X_0$ and an immersion $h_0:X'_0\to\mathbf P^n_{Y_0}$. After base change to the limit, $X'\to Y$ is proper by composition. The map $h:X'\to\mathbf P^n_Y$ is proper too: its graph is closed because projective space is separated over $Y$, and the projection from $X'\times_Y\mathbf P^n_Y$ is a base change of the proper map $X'\to Y$. A proper immersion is closed. Hence $h$ is a closed immersion.
 
-**Proof.** Choose an affine scheme $V_0$ and a surjective étale morphism $V_0 \to Y_0$. Set $V_i = Y_i \times_{Y_0} V_0$ and $V = Y \times_{Y_0} V_0$. It suffices to prove that the base change of $f_i$ to $V_i$ is proper, see Morphisms of Spaces, Lemma [Proper morphisms and local algebra](#native-spaces-morphisms-lemma-proper-local). Thus we may assume $Y_0$ is affine.
-
-By Lemma [Descent of diagonals and separation](#native-spaces-limits-lemma-descend-separated-morphism) we see that $f_i$ is separated for some $i \geq 0$. Replacing $0$ by $i$ we may assume that $f_0$ is separated. Observe that $f_0$ is quasi-compact. Thus $f_0$ is separated and of finite type. By Cohomology of Spaces, Lemma [The weak Chow lemma for algebraic spaces](#native-spaces-cohomology-lemma-weak-chow) we can choose a diagram $$\begin{gathered}\begin{matrix}X_0 & X_0' & \mathbf{P}^n_{Y_0} \\ \phantom{X} & Y_0 & \phantom{X}\end{matrix} \\[6pt] \begin{aligned}X_0 & \longrightarrow Y_0 \\ X_0' & \longrightarrow Y_0 \\ X_0' & \xrightarrow{\pi} X_0 \\ X_0' & \longrightarrow \mathbf{P}^n_{Y_0} \\ \mathbf{P}^n_{Y_0} & \longrightarrow Y_0\end{aligned}\end{gathered}$$ where $X_0' \to \mathbf{P}^n_{Y_0}$ is an immersion, and $\pi : X_0' \to X_0$ is proper and surjective. Introduce $X' = X_0' \times_{Y_0} Y$ and $X_i' = X_0' \times_{Y_0} Y_i$. By Morphisms of Spaces, Lemmas [Composition and proper morphisms](#native-spaces-morphisms-lemma-composition-proper) and [Base change for proper morphisms](#native-spaces-morphisms-lemma-base-change-proper) we see that $X' \to Y$ is proper. Hence $X' \to \mathbf{P}^n_Y$ is a closed immersion (Morphisms of Spaces, Lemma [Morphisms of algebraic spaces](#native-spaces-morphisms-lemma-universally-closed-permanence)). By Morphisms of Spaces, Lemma [Proper morphisms](#native-spaces-morphisms-lemma-image-proper-is-proper) it suffices to prove that $X'_i \to Y_i$ is proper for some $i$. By Lemma [Descent of diagonals and separation](#native-spaces-limits-lemma-descend-closed-immersion) we find that $X'_i \to \mathbf{P}^n_{Y_i}$ is a closed immersion for $i$ large enough. Then $X'_i \to Y_i$ is proper and we win. $\square$
+Apply [descent of closed immersions](#native-spaces-limits-lemma-descend-closed-immersion) to $h_0$, which is locally of finite type. At some stage $h_i:X'_i\to\mathbf P^n_{Y_i}$ is a closed immersion, making $X'_i\to Y_i$ proper. The map $\pi_i:X'_i\to X_i$ remains proper and surjective. For any base change of $Y_i$ and any closed subset of the corresponding $X_i$, its inverse image in $X'_i$ is closed and has the same image in that base. Thus $X_i\to Y_i$ is universally closed. It is already separated and of finite type, so it is proper. $\square$
 
 #### Lemma. Dimension and codimension
  Assumptions and notation as in Situation [A property to be descended through a filtered inverse system](#native-spaces-limits-situation-descent-property). Let $d \geq 0$. If
@@ -4436,11 +4500,19 @@ $$H^n\operatorname{Hom}^\bullet_R(P,L)
 \cong\operatorname{Hom}_{D(R)}(P,L[n]).$$
 For completeness, degree-zero Hom cocycles are chain maps and its boundaries are null-homotopic maps. Maps into the K-injective complex $J[n]$ compute morphisms in $D(R)$, while the preceding quasi-isomorphism identifies their homotopy classes with those calculated from $L[n]$. This gives the stated identification, not merely equality of the sizes of the cohomology groups. $\square$
 
-#### Lemma. Pseudo-coherent complexes and coherent sheaves
+#### Lemma. Pseudo-coherent tensor products and inverse limits of modules
 
-Let $R$ be a ring. Let $K \in D(R)$ be pseudo-coherent. Let $(M_n)$ be an inverse system of $R$-modules. Then $R\varprojlim K \otimes_R^\mathbf{L} M_n = K \otimes_R^\mathbf{L} R\varprojlim M_n$.
+For a ring $R$, a pseudo-coherent $K\in D(R)$ and any inverse sequence of modules $(M_n)$, the canonical comparison is an isomorphism
+$$K\otimes_R^{\mathbf L}R\varprojlim_n M_n
+\xrightarrow{\ \sim\ }R\varprojlim_n(K\otimes_R^{\mathbf L}M_n).$$
+The transitions need not be surjective.
 
-**Proof.** Consider the defining distinguished triangle $$R\varprojlim M_n \to \prod M_n \to \prod M_n \to R\varprojlim M_n[1]$$ and apply Lemma [Pseudo-coherent complexes and coherent sheaves](#native-more-algebra-lemma-pseudo-coherent-tensor). $\square$
+**Proof.** Choose a bounded-above complex $P^\bullet$ of finite free modules representing $K$. It is K-flat. For any family of modules $(N_j)$, finite freeness gives, degree by degree,
+$$P^\bullet\otimes_R\prod_jN_j\simeq\prod_j(P^\bullet\otimes_RN_j).$$
+Products of modules are exact, so ordinary products of complexes compute products in $D(R)$. The displayed identity therefore identifies derived tensor with the products in the inverse-limit triangles
+$$R\varprojlim M_n\longrightarrow\prod_n M_n
+\xrightarrow{1-\mathrm{shift}}\prod_n M_n\longrightarrow(R\varprojlim M_n)[1].$$
+Tensoring this triangle with $K$ gives a morphism to the triangle defining $R\varprojlim(K\otimes_R^{\mathbf L}M_n)$. On both product terms it is the displayed isomorphism; it commutes with $1-\mathrm{shift}$ by naturality in every $M_n$. The resulting fibre comparison is an isomorphism as well. This proves the canonical formula, retaining the difference-map proof without any Mittag-Leffler assumption. $\square$
 
 #### Lemma. Criteria for henselian rings
 
@@ -5194,24 +5266,23 @@ Part (3) of the statement. Observe that $H^n(P^\bullet) = \mathop{\operatorname{
 
 Part (2) of the statement. To see that $P^\bullet$ is K-flat, by Lemma [Filtered limits and derived tensor products, Tor amplitude and flatness](#native-more-algebra-lemma-colimit-k-flat), it suffices to show that $P_m^\bullet$ is K-flat. By Lemma [Derived tensor products, Tor amplitude and flatness](#native-more-algebra-lemma-k-flat-two-out-of-three-ses) and induction it suffices to note that a complex with zero differentials and free terms is K-flat. The same argument works to show that $F^iP^\bullet$ is K-flat for all $i \in \mathbf{Z}$. Finally, we see that $\text{gr}^iP^\bullet$ is K-flat by another application of Lemma [Derived tensor products, Tor amplitude and flatness](#native-more-algebra-lemma-k-flat-two-out-of-three-ses). $\square$
 
-#### Lemma. Filtered limits and perfect complexes and derived categories
- Let $R = \mathop{\operatorname{colim}}_{i \in I} R_i$ be a filtered colimit of rings.
+#### Lemma. Perfect complexes over a filtered colimit of rings
 
-1.  Given a perfect $K$ in $D(R)$ there exists an $i \in I$ and a perfect $K_i$ in $D(R_i)$ such that $K \cong K_i \otimes_{R_i}^\mathbf{L} R$ in $D(R)$.
+Let $R=\operatorname{colim}_{i\in I}R_i$ be a filtered colimit. Every perfect object of $D(R)$ is obtained by derived extension of scalars from a perfect object over some $R_i$. Moreover, if $K_0$ is perfect over a fixed $R_0$ and $L_0$ is any object of $D(R_0)$, then the canonical map
+$$\operatorname{colim}_{i\geq0}\operatorname{Hom}_{D(R_i)}
+(K_0\otimes_{R_0}^{\mathbf L}R_i,L_0\otimes_{R_0}^{\mathbf L}R_i)
+\xrightarrow{\ \sim\ }
+\operatorname{Hom}_{D(R)}(K_0\otimes_{R_0}^{\mathbf L}R,L_0\otimes_{R_0}^{\mathbf L}R)$$
+is an isomorphism. Thus the perfect derived category of $R$ is the filtered colimit of the perfect derived categories of the $R_i$, including their triangulated structure.
 
-2.  Given $0 \in I$ and $K_0, L_0 \in D(R_0)$ with $K_0$ perfect, we have $$\operatorname{Hom}_{D(R)}(K_0 \otimes_{R_0}^\mathbf{L} R, L_0 \otimes_{R_0}^\mathbf{L} R) =
-    \mathop{\operatorname{colim}}_{i \geq 0}
-    \operatorname{Hom}_{D(R_i)}(K_0 \otimes_{R_0}^\mathbf{L} R_i,
-    L_0 \otimes_{R_0}^\mathbf{L} R_i)$$
+**Proof of descent of objects.** Represent a perfect complex by a finite complex $P^\bullet$ of finite projective $R$-modules. Write each $P^q$ as the image of an idempotent matrix $e_q$ on a finite free module. Its differential is represented by a matrix $D_q$ satisfying
+$$e_q^2=e_q,\qquad D_q=e_{q+1}D_qe_q,\qquad D_{q+1}D_q=0.$$
+There are finitely many entries and finitely many equations. All entries lift to one $R_i$, and all equations hold after passing to a common later index: an equality in a filtered colimit holds at some later stage. The resulting idempotent images and differential matrices give a finite projective complex over that stage. Its scalar extension is the chosen complex $P^\bullet$.
 
-In other words, the triangulated category of perfect complexes over $R$ is the colimit of the triangulated categories of perfect complexes over $R_i$.
-
-**Proof.** We will use the results of Algebra, Lemmas [Filtered limits and proper morphisms and modules](#native-algebra-lemma-module-map-property-in-colimit) and [Finite module presentations in a filtered colimit](#native-algebra-lemma-colimit-category-fp-modules) without further mention. These lemmas in particular say that the category of finitely presented $R$-modules is the colimit of the categories of finitely presented $R_i$-modules. Since finite projective modules can be characterized as summands of finite free modules (Algebra, Lemma [Characterizations of finite projective modules](#native-algebra-lemma-finite-projective)) we see that the same is true for the category of finite projective modules. This proves (1) by our definition of perfect objects of $D(R)$.
-
-To prove (2) we may represent $K_0$ by a bounded complex $K_0^\bullet$ of finite projective $R_0$-modules. We may represent $L_0$ by a K-flat complex $L_0^\bullet$ (Lemma [Derived tensor products, Tor amplitude and flatness](#native-more-algebra-lemma-k-flat-resolution)). Then we have $$\operatorname{Hom}_{D(R)}(K_0 \otimes_{R_0}^\mathbf{L} R, L_0 \otimes_{R_0}^\mathbf{L} R) =
-\operatorname{Hom}_{K(R)}(K_0^\bullet \otimes_{R_0} R, L_0^\bullet \otimes_{R_0} R)$$ by Derived Categories, Lemma [Derived Hom, Ext and projective and locally free modules](#native-derived-lemma-morphisms-from-projective-complex). Similarly for the $\operatorname{Hom}$ with $R$ replaced by $R_i$. Since in the right hand side only a finite number of terms are involved, since $$\operatorname{Hom}_R(K_0^p \otimes_{R_0} R, L_0^q \otimes_{R_0} R) =
-\mathop{\operatorname{colim}}_{i \geq 0}
-\operatorname{Hom}_{R_i}(K_0^p \otimes_{R_0} R_i, L_0^q \otimes_{R_0} R_i)$$ by the lemmas cited at the beginning of the proof, and since filtered colimits are exact (Algebra, Lemma [Filtered limits and commutative algebra (uncovered prerequisite)](#uncovered-algebra-lemma-directed-colimit-exact)) we conclude that (2) holds as well. $\square$
+**Proof of descent of morphisms.** Choose a finite projective complex $P_0^\bullet$ for $K_0$ and a K-flat complex $Q_0^\bullet$ for $L_0$. Ordinary scalar extension computes both derived pullbacks. Since $P_0^\bullet$ is bounded and projective, the [projective-source Hom calculation](#native-derived-lemma-morphisms-from-projective-complex) computes the displayed groups as degree-zero cohomology of
+$$\mathcal H_i^r=\prod_q
+\operatorname{Hom}_{R_i}(P_0^q\otimes R_i,Q_0^{q+r}\otimes R_i).$$
+Only finitely many factors occur. Finite projectivity makes each factor commute with the filtered colimit, and the Hom differential does so as well. Thus $\operatorname{colim}_i\mathcal H_i^\bullet$ is the corresponding Hom complex over $R$. Exactness of filtered colimits identifies its $H^0$ with $\operatorname{colim}_iH^0(\mathcal H_i^\bullet)$, proving the morphism formula for an arbitrary, possibly unbounded, $L_0$. The same proof after shifts covers all Ext degrees. Shifts and cones are finite complex constructions and commute with scalar extension, so this equivalence also respects distinguished triangles. $\square$
 
 #### Definition. Tor-independent pairs
 
@@ -7103,19 +7174,22 @@ for every quasi-coherent $\mathcal F$ on $X$.
 
 Write $U=\operatorname{Spec}(R)$ and let $M\in D(R)$ correspond to $E|_U$ under the [affine derived equivalence](#native-perfect-lemma-affine-compare-bounded). Quasi-coherent modules on $U$ run through the sheafifications of all $R$-modules $N$. The preceding vanishing is therefore exactly $H^i(M\otimes_R^{\mathbf L}N)=0$ outside $[a,b]$ for every $N$. The [affine Tor comparison](#native-perfect-lemma-tor-dimension-affine) gives that amplitude for $E|_U$ against arbitrary sheaves. These affine opens cover $X$, so the amplitude bound holds on $X$. No quasi-compactness assumption on $X$ was used. $\square$
 
-#### Lemma. Descent of perfect complexes
+#### Lemma. Perfect objects descend along affine inverse limits of schemes
 
-In Situation [A filtered inverse system for descent](#native-perfect-situation-descent) the category of perfect objects of $D(\mathcal{O}_S)$ is the colimit of the categories of perfect objects of $D(\mathcal{O}_{S_i})$.
+For a directed inverse system of quasi-compact, quasi-separated schemes with affine transitions, let $S=\varprojlim_iS_i$. Derived pullback induces an equivalence
+$$\operatorname{colim}_iD_{\mathrm{perf}}(S_i)\xrightarrow{\ \sim\ }D_{\mathrm{perf}}(S).$$
+In particular every perfect object descends to one stage, every morphism between descended objects descends after enlarging that stage, and equality of two such morphisms can be checked at a later finite stage.
 
-**Proof.** For every open $U_0 \subset S_0$ consider the condition $P$ that the functor $$\mathop{\operatorname{colim}}_{i \geq 0} D_{perf}(\mathcal{O}_{U_i})
-\longrightarrow
-D_{perf}(\mathcal{O}_U)$$ is an equivalence where ${}_{perf}$ indicates the full subcategory of perfect objects and where $U = f_0^{-1}(U_0)$ and $U_i = f_{i0}^{-1}(U_0)$. We will prove $P$ holds for all quasi-compact opens $U_0$ by the induction principle of Cohomology of Schemes, Lemma [Induction by elementary distinguished squares (uncovered prerequisite)](#uncovered-coherent-lemma-induction-principle). First, we observe that we already know the functor is fully faithful by Lemma [Descent of perfect complexes](#native-perfect-lemma-descend-homomorphisms). Thus it suffices to prove essential surjectivity.
+**Proof.** Full faithfulness is the [derived-Hom descent theorem](#native-perfect-lemma-descend-homomorphisms), applied with a perfect source. We prove essential surjectivity by [induction on quasi-compact opens](#uncovered-coherent-lemma-induction-principle) of a fixed $S_0$.
 
-We first check condition (2) of the induction principle. Thus suppose that we have $S_0 = U_0 \cup V_0$ and that $P$ holds for $U_0$, $V_0$, and $U_0 \cap V_0$. Let $E$ be a perfect object of $D(\mathcal{O}_S)$. We can find $i \geq 0$ and $E_{U, i}$ perfect on $U_i$ and $E_{V, i}$ perfect on $V_i$ whose pullback to $U$ and $V$ are isomorphic to $E|_U$ and $E|_V$. Denote $$a : E_{U, i} \to (Rf_{i, *}E)|_{U_i}
-\quad\text{and}\quad
-b : E_{V, i} \to (Rf_{i, *}E)|_{V_i}$$ the maps adjoint to the isomorphisms $Lf_i^*E_{U, i} \to E|_U$ and $Lf_i^*E_{V, i} \to E|_V$. By fully faithfulness, after increasing $i$, we can find an isomorphism $c : E_{U, i}|_{U_i \cap V_i} \to E_{V, i}|_{U_i \cap V_i}$ which pulls back to the identifications $$Lf_i^*E_{U, i}|_{U \cap V} \to E|_{U \cap V} \to Lf_i^*E_{V, i}|_{U \cap V}.$$ Apply Cohomology, Lemma [Derived gluing across an elementary distinguished square](#native-cohomology-lemma-glue) to get an object $E_i$ on $S_i$ and a map $d : E_i \to Rf_{i, *}E$ which restricts to the maps $a$ and $b$ over $U_i$ and $V_i$. Then it is clear that $E_i$ is perfect and that $d$ is adjoint to an isomorphism $Lf_i^*E_i \to E$.
+When $S_0$ is affine, all its pullbacks are affine. The [affine perfect-complex criterion](#native-perfect-lemma-perfect-affine) and [descent of finite projective complexes over ring colimits](#native-more-algebra-lemma-colimit-perfect-complexes) give essential surjectivity, including descent of differentials and their square-zero equations.
 
-Finally, we check condition (1) of the induction principle, in other words, we check the lemma holds when $S_0$ is affine. Say $S_0 = \operatorname{Spec}(A_0)$, $S_i = \operatorname{Spec}(A_i)$, and $S = \operatorname{Spec}(A)$. Using Lemmas [Bounded comparison of affine derived categories](#native-perfect-lemma-affine-compare-bounded) and [Perfect complexes on an affine scheme](#native-perfect-lemma-perfect-affine) we see that we have to show that $$D_{perf}(A) = \mathop{\operatorname{colim}} D_{perf}(A_i)$$ This is clear from the fact that perfect complexes over rings are given by finite complexes of finite projective (hence finitely presented) modules. See More on Algebra, Lemma [Filtered limits and perfect complexes and derived categories](#native-more-algebra-lemma-colimit-perfect-complexes) for details. $\square$
+For the induction step, write $S_0=U_0\cup V_0$ and assume the result on $U_0,V_0,W_0=U_0\cap V_0$. Let $E$ be perfect on $S$. At a common stage $i$, descend $E|_U$ and $E|_V$ to perfect $A_i$ and $B_i$. Their comparison on $W$ descends by full faithfulness to a map $c_i:A_i|_{W_i}\to B_i|_{W_i}$. Descend its inverse too and enlarge the index until both composites are identities. Thus $c_i$ is an isomorphism at the stage, not merely after taking the limit.
+
+Let $p_i:S\to S_i$. The chosen local identifications with $E$ have adjoints
+$$a_i:A_i\longrightarrow(Rp_{i*}E)|_{U_i},\qquad
+b_i:B_i\longrightarrow(Rp_{i*}E)|_{V_i}.$$
+Restriction of direct image to an open agrees with direct image of the restriction. The equality defining $c_i$ after pullback is therefore, by adjunction, exactly $a_i|_{W_i}=b_i|_{W_i}c_i$. The [two-open derived gluing theorem](#native-cohomology-lemma-glue) supplies an object $E_i$ and a map $E_i\to Rp_{i*}E$ with these restrictions. Its restrictions are $A_i$ and $B_i$, so $E_i$ is perfect. The adjoint $Lp_i^*E_i\to E$ restricts to the original isomorphisms on $U$ and $V$, and hence is an isomorphism globally. This completes the induction and proves the equivalence. $\square$
 
 #### Definition. Tor-independent pairs
  Let $S$ be a scheme. Let $X$, $Y$ be schemes over $S$. We say $X$ and $Y$ are *Tor independent over $S$* if for every $x \in X$ and $y \in Y$ mapping to the same point $s \in S$ the rings $\mathcal{O}_{X, x}$ and $\mathcal{O}_{Y, y}$ are Tor independent over $\mathcal{O}_{S, s}$ (see More on Algebra, Definition [Tor-independent pairs](#native-more-algebra-definition-tor-independent)).
@@ -7243,34 +7317,24 @@ Part (3) follows from the computation of the internal hom of Cohomology, Lemma [
 To prove (4) recall that on any ringed space the $n$th cohomology sheaf of $R\mathcal{H}om(A, B)$ is the sheaf associated to the presheaf $$U \mapsto \operatorname{Hom}_{D(U)}(A|_U, B|_U[n]) =
 \operatorname{Ext}^n_{D(\mathcal{O}_U)}(A|_U, B|_U)$$ See Cohomology, Section [Derived Hom and Ext](#context-cohomology-section-internal-hom). On the other hand, the restriction of $\widetilde{K}$ to a principal open $D(f)$ is the image of $K \otimes_A A_f$ and similarly for $L$. Hence (4) follows from the equivalence of categories of Lemma [Bounded comparison of affine derived categories](#native-perfect-lemma-affine-compare-bounded). $\square$
 
-#### Lemma. Descent of perfect complexes
+#### Lemma. Derived morphisms on inverse limits of schemes
 
-In Situation [A filtered inverse system for descent](#native-perfect-situation-descent). Let $E_0$ and $K_0$ be objects of $D(\mathcal{O}_{S_0})$. Set $E_i = Lf_{i0}^*E_0$ and $K_i = Lf_{i0}^*K_0$ for $i \geq 0$ and set $E = Lf_0^*E_0$ and $K = Lf_0^*K_0$. Then the map $$\mathop{\operatorname{colim}}_{i \geq 0} \operatorname{Hom}_{D(\mathcal{O}_{S_i})}(E_i, K_i)
-\longrightarrow
-\operatorname{Hom}_{D(\mathcal{O}_S)}(E, K)$$ is an isomorphism if either
+Let $S=\varprojlim_iS_i$, where the schemes $S_i$ are quasi-compact and quasi-separated and the transitions are affine. Fix an index $0$ and objects $E_0,K_0$ on $S_0$. Write $E_i,K_i$ and $E,K$ for their derived pullbacks to later stages and to the limit. The natural map
+$$\operatorname{colim}_{i\geq0}\operatorname{Hom}_{D(\mathcal O_{S_i})}(E_i,K_i)
+\longrightarrow\operatorname{Hom}_{D(\mathcal O_S)}(E,K)$$
+is an isomorphism under either of these hypotheses:
 
-1.  $E_0$ is perfect and $K_0 \in D_\mathrm{QCoh}(\mathcal{O}_{S_0})$, or
+1. $E_0$ is perfect and $K_0$ has quasi-coherent cohomology, with no boundedness requirement;
+2. $E_0$ is pseudo-coherent and $K_0$ has quasi-coherent cohomology and finite Tor dimension.
 
-2.  $E_0$ is pseudo-coherent and $K_0 \in D_\mathrm{QCoh}(\mathcal{O}_{S_0})$ has finite tor dimension.
+**Affine calculation.** If $S_0=\operatorname{Spec}A_0$, all later stages are affine, say $S_i=\operatorname{Spec}A_i$ and $S=\operatorname{Spec}A$ with $A=\operatorname{colim}A_i$. Use the [unbounded affine derived equivalence](#native-perfect-lemma-affine-compare-bounded). In case (1), represent $E_0$ by a finite projective complex $P_0^\bullet$ and $K_0$ by a K-flat complex $Q_0^\bullet$. The [ring-colimit Hom formula](#native-more-algebra-lemma-colimit-perfect-complexes) applies directly.
 
-**Proof.** For every open $U_0 \subset S_0$ consider the condition $P$ that the canonical map $$\mathop{\operatorname{colim}}_{i \geq 0} \operatorname{Hom}_{D(\mathcal{O}_{U_i})}(E_i|_{U_i}, K_i|_{U_i})
-\longrightarrow
-\operatorname{Hom}_{D(\mathcal{O}_U)}(E|_U, K|_U)$$ is an isomorphism, where $U = f_0^{-1}(U_0)$ and $U_i = f_{i0}^{-1}(U_0)$. We will prove $P$ holds for all quasi-compact opens $U_0$ by the induction principle of Cohomology of Schemes, Lemma [Induction by elementary distinguished squares (uncovered prerequisite)](#uncovered-coherent-lemma-induction-principle). Condition (2) of this lemma follows immediately from Mayer-Vietoris for hom in the derived category, see Cohomology, Lemma [Derived Hom and Ext](#native-cohomology-lemma-mayer-vietoris-hom). Thus it suffices to prove the lemma when $S_0$ is affine.
+In case (2), the [affine pseudo-coherence criterion](#native-perfect-lemma-pseudo-coherent-affine) gives a bounded-above complex $P_0^\bullet$ of finite free modules representing $E_0$. The [affine Tor criterion](#native-perfect-lemma-tor-dimension-affine) and the [bounded flat representative theorem](#native-more-algebra-lemma-tor-amplitude) give a bounded complex $Q_0^\bullet$ of flat modules representing $K_0$. These are K-flat, and $P_0^\bullet$ is K-projective. Thus ordinary scalar extension computes the pullbacks, and maps in the derived category are $H^0$ of the Hom complex
+$$\mathcal H_i^r=\prod_q\operatorname{Hom}_{A_i}
+(P_0^q\otimes A_i,Q_0^{q+r}\otimes A_i).$$
+For each fixed $r$, boundedness of $Q_0^\bullet$ leaves only finitely many $q$. Each $P_0^q$ is finite free. Consequently $\operatorname{colim}_i\mathcal H_i^r=\mathcal H^r$ over $A$, with the differentials identified. Exactness of the colimit proves the result on $H^0$. This argument also applies after any shift of the target.
 
-Assume $S_0$ is affine. Say $S_0 = \operatorname{Spec}(A_0)$, $S_i = \operatorname{Spec}(A_i)$, and $S = \operatorname{Spec}(A)$. We will use Lemma [Bounded comparison of affine derived categories](#native-perfect-lemma-affine-compare-bounded) without further mention.
-
-In case (1) the object $E_0^\bullet$ corresponds to a finite complex of finite projective $A_0$-modules, see Lemma [Perfect complexes on an affine scheme](#native-perfect-lemma-perfect-affine). We may represent the object $K_0$ by a K-flat complex $K_0^\bullet$ of $A_0$-modules. In this situation we are trying to prove $$\mathop{\operatorname{colim}}_{i \geq 0} \operatorname{Hom}_{D(A_i)}(E_0^\bullet \otimes_{A_0} A_i,
-K_0^\bullet \otimes_{A_0} A_i)
-\longrightarrow
-\operatorname{Hom}_{D(A)}(E_0^\bullet \otimes_{A_0} A, K_0^\bullet \otimes_{A_0} A)$$ Because $E_0^\bullet$ is a bounded above complex of projective modules we can rewrite this as $$\mathop{\operatorname{colim}}_{i \geq 0} \operatorname{Hom}_{K(A_0)}(E_0^\bullet,
-K_0^\bullet \otimes_{A_0} A_i)
-\longrightarrow
-\operatorname{Hom}_{K(A_0)}(E_0^\bullet, K_0^\bullet \otimes_{A_0} A)$$ Since there are only a finite number of nonzero modules $E_0^n$ and since these are all finitely presented modules, this map is an isomorphism.
-
-In case (2) the object $E_0$ corresponds to a bounded above complex $E_0^\bullet$ of finite free $A_0$-modules, see Lemma [Pseudo-coherent complexes on an affine scheme](#native-perfect-lemma-pseudo-coherent-affine). We may represent $K_0$ by a finite complex $K_0^\bullet$ of flat $A_0$-modules, see Lemma [Derived tensor products, Tor amplitude and dimension and codimension](#native-perfect-lemma-tor-dimension-affine) and More on Algebra, Lemma [Derived tensor products and Tor amplitude](#native-more-algebra-lemma-tor-amplitude). In particular $K_0^\bullet$ is K-flat and we can argue as before to arrive at the map $$\mathop{\operatorname{colim}}_{i \geq 0} \operatorname{Hom}_{K(A_0)}(E_0^\bullet,
-K_0^\bullet \otimes_{A_0} A_i)
-\longrightarrow
-\operatorname{Hom}_{K(A_0)}(E_0^\bullet, K_0^\bullet \otimes_{A_0} A)$$ It is clear that this map is an isomorphism (only a finite number of terms are involved since $K_0^\bullet$ is bounded). $\square$
+**Passage to a scheme.** For every quasi-compact open $U_0\subseteq S_0$, impose the asserted comparison in all degrees $\operatorname{Hom}(E_i,K_i[r])$, not just degree zero. It holds for affine opens by the preceding calculation. For $U_0=V_0\cup W_0$, the [Mayer-Vietoris Hom sequence](#native-cohomology-lemma-mayer-vietoris-hom) at each stage and at the limit gives a diagram of long exact sequences. Filtered colimits of abelian groups are exact. If the comparison holds on $V_0,W_0,V_0\cap W_0$ in all shifts, the five-lemma argument in each finite segment proves it on $U_0$. The [quasi-compact open induction principle](#uncovered-coherent-lemma-induction-principle) now proves the comparison on $S_0$. The hypotheses are preserved by every restriction and derived pullback used in this argument. $\square$
 
 #### Situation. A filtered inverse system for descent
 
@@ -7613,23 +7677,34 @@ $$\operatorname{Hom}_{\mathcal D}(W,GY)
 \simeq\operatorname{Hom}_{\mathcal D'}(FW,Y).$$
 For a morphism $Y\to Y'$, postcomposition defines a transformation $H_Y\to H_{Y'}$. Yoneda gives a unique corresponding map $GY\to GY'$. This makes $G$ a functor and the displayed bijections an adjunction. The [exactness of right adjoints](#native-derived-lemma-adjoint-is-exact) completes the proof. $\square$
 
-#### Lemma. Vanishing of negative Ext groups
+#### Lemma. The first possible degree of Ext
 
-Let $\mathcal{A}$ be an abelian category.
+In the derived category of any abelian category $\mathcal A$, suppose $X\in D^{\leq a}$ and $Y\in D^{\geq b}$. Then
+$$\operatorname{Ext}^n_{\mathcal A}(X,Y)=0\quad(n<b-a),\qquad
+\operatorname{Ext}^{b-a}_{\mathcal A}(X,Y)
+\simeq\operatorname{Hom}_{\mathcal A}(H^a(X),H^b(Y)).$$
+For objects $A,B$ of $\mathcal A$ placed in degree zero this says, in particular, that $\operatorname{Ext}^i(B,A)=0$ for $i<0$ and $\operatorname{Ext}^0(B,A)=\operatorname{Hom}_{\mathcal A}(B,A)$.
 
-1.  Let $X$, $Y$ be objects of $D(\mathcal{A})$. Given $a, b \in \mathbf{Z}$ such that $H^i(X) = 0$ for $i > a$ and $H^j(Y) = 0$ for $j < b$, we have $\operatorname{Ext}^n_\mathcal{A}(X, Y) = 0$ for $n < b - a$ and $$\operatorname{Ext}^{b - a}_\mathcal{A}(X, Y) = \operatorname{Hom}_\mathcal{A}(H^a(X), H^b(Y))$$
+**Proof.** Replace a representative of $Y$ by its smart truncation in degrees at least $b$. Represent a derived morphism $X\to Y[n]$ by a roof $X\leftarrow Q\to Y[n]$, whose left arrow is a quasi-isomorphism. Replacing $Q$ by $\tau_{\leq a}Q$ preserves that quasi-isomorphism and makes its terms above $a$ zero. If $n<b-a$, the two complexes have no possibly nonzero terms in a common degree, so the roof represents zero.
 
-2.  Let $A, B \in \operatorname{Ob}(\mathcal{A})$. For $i < 0$ we have $\operatorname{Ext}^i_\mathcal{A}(B, A) = 0$. We have $\operatorname{Ext}^0_\mathcal{A}(B, A) = \operatorname{Hom}_\mathcal{A}(B, A)$.
+At $n=b-a$ a chain map in the roof has only its degree-$a$ component. The chain-map identities make this component factor through the quotient $H^a(Q)$ and into the subobject $H^b(Y)$. Hence it determines a map $H^a(X)\to H^b(Y)$, unchanged by equivalent roofs. Conversely such a map gives a derived morphism by composing the canonical truncation maps
+$$X\longrightarrow H^a(X)[-a]\longrightarrow
+H^b(Y)[-a]\longrightarrow Y[b-a].$$
+The last arrow is the shift of $H^b(Y)[-b]\to Y$. On the truncated roof these operations are inverse, since they recover its sole component. This proves the natural edge isomorphism. Taking $a=b=0$ proves the final assertions, without requiring enough injectives in $\mathcal A$. $\square$
 
-**Proof.** Choose complexes $X^\bullet$ and $Y^\bullet$ representing $X$ and $Y$. Since $Y^\bullet \to \tau_{\geq b}Y^\bullet$ is a quasi-isomorphism, we may assume that $Y^j = 0$ for $j < b$. Let $L^\bullet \to X^\bullet$ be any quasi-isomorphism. Then $\tau_{\leq a}L^\bullet \to X^\bullet$ is a quasi-isomorphism. Hence a morphism $X \to Y[n]$ in $D(\mathcal{A})$ can be represented as $fs^{-1}$ where $s : L^\bullet \to X^\bullet$ is a quasi-isomorphism, $f : L^\bullet \to Y^\bullet[n]$ a morphism, and $L^i = 0$ for $i > a$. Note that $f$ maps $L^i$ to $Y^{i + n}$. Thus $f = 0$ if $n < b - a$ because always either $L^i$ or $Y^{i + n}$ is zero. If $n = b - a$, then $f$ corresponds exactly to a morphism $H^a(X) \to H^b(Y)$. Part (2) is a special case of (1). $\square$
+#### Lemma. Cohomology of a sequential telescope
 
-#### Lemma. Sheaf cohomology
+Let $\mathcal D$ be triangulated with countable direct sums, and let $\mathcal A$ be abelian with exact sequential colimits. If a homological functor $H:\mathcal D\to\mathcal A$ preserves countable direct sums, then for any sequence $(K_n,f_n)$,
+$$H(\operatorname{hocolim}_nK_n)\simeq\operatorname{colim}_nH(K_n).$$
 
-Let $\mathcal{D}$ be a triangulated category having countable direct sums. Let $\mathcal{A}$ be an abelian category with exact colimits over $\mathbf{N}$. Let $H : \mathcal{D} \to \mathcal{A}$ be a homological functor commuting with countable direct sums. Then $H(\text{hocolim} K_n) = \mathop{\operatorname{colim}} H(K_n)$ for any system of objects of $\mathcal{D}$.
-
-**Proof.** Write $K = \text{hocolim} K_n$. Apply $H$ to the defining distinguished triangle to get $$\bigoplus H(K_n) \to \bigoplus H(K_n)
-\to H(K) \to
-\bigoplus H(K_n[1]) \to \bigoplus H(K_n[1])$$ where the first map is given by $1 - H(f_n)$ and the last map is given by $1 - H(f_n[1])$. Apply Lemma [Computation of a homotopy colimit](#native-derived-lemma-compute-colimit) to see that this proves the lemma. $\square$
+**Proof.** Put $K=\operatorname{hocolim}K_n$. Its telescope triangle is
+$$\bigoplus_nK_n\xrightarrow{1-\mathrm{shift}}\bigoplus_nK_n
+\longrightarrow K\longrightarrow\left(\bigoplus_nK_n\right)[1].$$
+Applying $H$ gives the exact segment
+$$\bigoplus_nH(K_n)\xrightarrow{\delta}\bigoplus_nH(K_n)
+\longrightarrow H(K)\longrightarrow\bigoplus_nH(K_n[1])
+\xrightarrow{\delta'}\bigoplus_nH(K_n[1]).$$
+The shift functor preserves sums, so the displayed direct-sum identifications follow from the hypothesis on $H$. The [sequential-colimit formula](#native-derived-lemma-compute-colimit) says that $\delta'$ is injective and that the cokernel of $\delta$ is $\operatorname{colim}H(K_n)$. Exactness therefore identifies that cokernel with $H(K)$, through the maps furnished by the telescope. $\square$
 
 #### Lemma. Vanishing in negative degrees
  Let $F : \mathcal{A} \to \mathcal{B}$ be an additive functor between abelian categories. Let $K^\bullet$ be a complex of $\mathcal{A}$ and $a \in \mathbf{Z}$.
@@ -7671,11 +7746,17 @@ Let $\mathcal{A}$ be an abelian category. Consider a solid diagram $$\begin{gath
 
 **Proof.** Dual to Lemma [Triangulated categories (uncovered prerequisite)](#uncovered-derived-lemma-morphisms-lift). $\square$
 
-#### Lemma. Representability of a homological functor
+#### Lemma. Exactness of representable functors on triangles
 
-Let $\mathcal{D}$ be a pre-triangulated category. For any object $W$ of $\mathcal{D}$ the functor $\operatorname{Hom}_\mathcal{D}(W, -)$ is homological, and the functor $\operatorname{Hom}_\mathcal{D}(-, W)$ is cohomological.
+For an object $W$ of a pre-triangulated category $\mathcal D$, the covariant functor $\operatorname{Hom}_{\mathcal D}(W,-)$ is homological and the contravariant functor $\operatorname{Hom}_{\mathcal D}(-,W)$ is cohomological.
 
-**Proof.** Consider a distinguished triangle $(X, Y, Z, f, g, h)$. We have already seen that $g \circ f = 0$, see Lemma [Composition and triangulated categories](#native-derived-lemma-composition-zero). Suppose $a : W \to Y$ is a morphism such that $g \circ a = 0$. Then we get a commutative diagram $$\begin{gathered}\begin{matrix}W & W & 0 & W[1] \\ X & Y & Z & X[1]\end{matrix} \\[6pt] \begin{aligned}W & \xrightarrow{1} W \\ W & \overset{b}{\cdots\!\!\rightarrow} X \\ W & \longrightarrow 0 \\ W & \xrightarrow{a} Y \\ 0 & \longrightarrow W[1] \\ 0 & \xrightarrow{0} Z \\ W[1] & \overset{b[1]}{\cdots\!\!\rightarrow} X[1] \\ X & \longrightarrow Y \\ Y & \longrightarrow Z \\ Z & \longrightarrow X[1]\end{aligned}\end{gathered}$$ Both rows are distinguished triangles (use TR1 for the top row). Hence we can fill the dotted arrow $b$ (first rotate using TR2, then apply TR3, and then rotate back). This proves the lemma. $\square$
+**Proof.** Consider a distinguished triangle $X\xrightarrow fY\xrightarrow gZ\xrightarrow hX[1]$. Consecutive arrows compose to zero by the [triangle composition lemma](#native-derived-lemma-composition-zero). To prove exactness at $\operatorname{Hom}(W,Y)$, take $u:W\to Y$ with $gu=0$. Rotate the identity triangle of $W$ and the given triangle to obtain
+$$\begin{array}{ccccccc}
+W&\longrightarrow&0&\longrightarrow&W[1]&\xrightarrow{-1}&W[1]\\
+u\downarrow&&0\downarrow&&v[1]\downarrow&&u[1]\downarrow\\
+Y&\xrightarrow g&Z&\xrightarrow h&X[1]&\xrightarrow{-f[1]}&Y[1].
+\end{array}$$
+The first square commutes because $gu=0$. The triangle-morphism axiom supplies the indicated third arrow; write it as $v[1]$ since shifting is an equivalence. The final square gives $(-f[1])v[1]=-u[1]$, hence $fv=u$. This proves that the kernel at the middle term is the image of the preceding map. Repeating after rotations and shifts proves the entire long exact sequence. Apply the same argument in the opposite pre-triangulated category, with its inverse translation, to obtain the contravariant long exact sequence. $\square$
 
 #### Lemma. Derived categories and tensor products and direct sums
  Let $\mathcal{D}$ be a pre-triangulated category. Let $(X, Y, Z, f, g, h)$ and $(X', Y', Z', f', g', h')$ be triangles. The following are equivalent
@@ -7820,12 +7901,21 @@ G(F(I^\bullet)) \to
 RG(F(I^\bullet)) =
 RG(RF(A^\bullet))$$ where the arrow is an isomorphism by Lemma [Sheaf cohomology (uncovered prerequisite)](#uncovered-derived-lemma-leray-acyclicity). $\square$
 
-#### Lemma. Computation of a homotopy colimit
- Let $\mathcal{A}$ be an abelian category. Assume colimits over $\mathbf{N}$ exist and are exact. Then countable direct sums exist and are exact. Moreover, if $(A_n, f_n)$ is a system over $\mathbf{N}$, then there is a short exact sequence $$0 \to \bigoplus A_n \to \bigoplus A_n \to \mathop{\operatorname{colim}} A_n \to 0$$ where the first map in degree $n$ is given by $1 - f_n$.
+#### Lemma. A difference-map presentation of sequential colimits
 
-**Proof.** The first statement follows from $\bigoplus A_n = \mathop{\operatorname{colim}} (A_1 \oplus \ldots \oplus A_n)$. For the second, note that for each $n$ we have the short exact sequence $$0 \to
-A_1 \oplus \ldots \oplus A_{n - 1} \to
-A_1 \oplus \ldots \oplus A_n \to A_n \to 0$$ where the first map is given by the maps $1 - f_i$ and the second map is the sum of the transition maps. Take the colimit to get the sequence of the lemma. $\square$
+Suppose sequential colimits exist and are exact in an abelian category $\mathcal A$. Countable direct sums then exist and are exact. For a sequence $A_1\xrightarrow{f_1}A_2\xrightarrow{f_2}\cdots$, there is a canonical short exact sequence
+$$0\longrightarrow\bigoplus_{n\geq1}A_n\xrightarrow{\delta}
+\bigoplus_{n\geq1}A_n\longrightarrow\operatorname{colim}_nA_n\longrightarrow0,$$
+where the restriction of $\delta$ to $A_n$ is its inclusion in position $n$ minus $f_n$ followed by inclusion in position $n+1$.
+
+**Proof.** The sequential colimit of the finite partial sums satisfies the universal property of the countable sum. Applying exactness of sequential colimits to the exact finite direct-sum functors proves that this countable sum functor is exact.
+
+For each $n$, use the finite sequence
+$$0\longrightarrow\bigoplus_{i<n}A_i\xrightarrow{\delta_n}
+\bigoplus_{i\leq n}A_i\xrightarrow{\pi_n}A_n\longrightarrow0.$$
+Here $\delta_n$ has the same two-entry columns as $\delta$, and on $A_i$ the map $\pi_n$ is the transition $A_i\to A_n$ (the identity when $i=n$). Their composite is zero. This sequence is split exact: the map from $(\bigoplus_{i<n}A_i)\oplus A_n$ to the middle term given by $\delta_n$ on the first factor and the final-summand inclusion on the second has a finite triangular matrix with identity diagonal, hence an inverse obtained by finite back substitution. In these coordinates $\pi_n$ is projection onto the last factor.
+
+The natural inclusions on the two sums and $f_n$ on the last term give a compatible system of these short exact sequences. Their colimit is exact by hypothesis; its two sum terms are both $\bigoplus_{i\geq1}A_i$, its first arrow is $\delta$, and its last term is $\operatorname{colim}A_n$. This proves the formula in an arbitrary abelian category, without an elementwise argument. $\square$
 
 #### Lemma. Triangulated categories
  Let $\mathcal{D}$, $\mathcal{D}'$ be triangulated categories. Let $F : \mathcal{D} \to \mathcal{D}'$ and $G : \mathcal{D}' \to \mathcal{D}$ be functors. Assume that
@@ -10908,41 +10998,53 @@ Now let $Y=\operatorname{Spec}(R)$. For fixed $E$, each side is an exact functor
 
 The [free-resolution reduction](#native-more-algebra-remark-p-resolution) now applies. Explicitly, $R$ is a compact generator of $D(R)$, since $\operatorname{Hom}(R[-q],M)=H^q(M)$. The [compact-generator telescope construction](#uncovered-derived-lemma-write-as-colimit) builds every $M$ from sums of these shifts by successive triangles and one telescope triangle. The closure properties just checked therefore carry invertibility to every $K$. This proves the formula with its canonical map, without a boundedness restriction. $\square$
 
-#### Lemma. Pseudo-coherent complexes and coherent sheaves
- Let $S$ be a scheme. Let $X$ be a quasi-compact and quasi-separated algebraic space over $S$. Let $K \in D(\mathcal{O}_X)$. The following are equivalent
+#### Lemma. Pseudo-coherent objects as improving perfect telescopes
 
-1.  $K$ is pseudo-coherent, and
+On a quasi-compact, quasi-separated algebraic space $X/S$, an object $K\in D(\mathcal O_X)$ is pseudo-coherent if and only if it can be written
+$$K\simeq\operatorname{hocolim}_{n\geq1}K_n,$$
+where every $K_n$ is perfect and the compatible maps $K_n\to K$ induce isomorphisms on $\tau_{\geq-n}$. In constructing the system from a pseudo-coherent $K$, one may moreover arrange
+$$\operatorname{Cone}(K_n\to K)\in D^{\leq-n-2}_{\mathrm{QCoh}}(\mathcal O_X).$$
 
-2.  $K = \text{hocolim} K_n$ where $K_n$ is perfect and $\tau_{\geq -n}K_n \to \tau_{\geq -n}K$ is an isomorphism for all $n$.
+**Proof from a telescope.** This direction holds on any ringed site. Locally a perfect $K_n$ has a strictly perfect representative, and its map to $K$ can be represented by a chain map after refining the cover, by the [local representative theorem](#native-sites-cohomology-lemma-local-actual). Agreement in cohomology in degrees at least $-n$ then gives, in particular, an approximation at cutoff $-n+1$. These cutoffs are arbitrarily small, so $K$ is pseudo-coherent by the [all-cutoffs definition](#native-sites-cohomology-definition-pseudo-coherent). Equivalently, the same conclusion follows by first transferring the $(-n+1)$-approximation through the identified truncations.
 
-**Proof.** The implication (2) $\Rightarrow$ (1) is true on any ringed site. Namely, assume (2) holds. Recall that a perfect object of the derived category is pseudo-coherent, see Cohomology on Sites, Lemma [Perfect complexes](#native-sites-cohomology-lemma-perfect). Then it follows from the definitions that $\tau_{\geq -n}K_n$ is $(-n + 1)$-pseudo-coherent and hence $\tau_{\geq -n}K$ is $(-n + 1)$-pseudo-coherent, hence $K$ is $(-n + 1)$-pseudo-coherent. This is true for all $n$, hence $K$ is pseudo-coherent, see Cohomology on Sites, Definition [Pseudo-coherent complexes](#native-sites-cohomology-definition-pseudo-coherent).
+**Construction from pseudo-coherence.** The [perfect approximation theorem](#native-spaces-perfect-theorem-approximation) applies with support $|X|$ at any cutoff. Begin with an approximation $K_1\to K$ at cutoff $-2$. Suppose $K_1\to\cdots\to K_n\to K$ has been constructed. Choose the interval $[a,b]$ in the [perfect Ext-window lemma](#native-spaces-perfect-lemma-ext-from-perfect-into-bounded-qcoh) for $K_n$, and approximate $K$ by $K_{n+1}$ at cutoff
+$$r=\min(a-1,-n-2).$$
+The [approximation convention](#native-spaces-perfect-definition-approximation-holds) gives isomorphisms above $r$ and a surjection at $r$. In the triangle
+$$K_{n+1}\longrightarrow K\longrightarrow C\longrightarrow K_{n+1}[1],$$
+this implies $C\in D^{\leq r-1}_{\mathrm{QCoh}}$. In particular its cohomology vanishes throughout $[a,b]$, so $\operatorname{Hom}(K_n,C)=0$. The [long exact Hom sequence](#native-derived-lemma-representable-homological) lifts $K_n\to K$ to $K_n\to K_{n+1}$. This makes the maps to $K$ compatible and completes the induction.
 
-Assume (1). We start by choosing an approximation $K_1 \to K$ of $(X, K, -2)$ by a perfect complex $K_1$, see Definitions [Bounds for perfect approximation](#native-spaces-perfect-definition-approximation-holds) and [Perfect approximation with prescribed cohomology](#native-spaces-perfect-definition-approximation) and Theorem [Perfect approximation with prescribed closed support](#native-spaces-perfect-theorem-approximation). Suppose by induction we have $$K_1 \to K_2 \to \ldots \to K_n \to K$$ with $K_i$ perfect such that such that $\tau_{\geq -i}K_i \to \tau_{\geq -i}K$ is an isomorphism for all $1 \leq i \leq n$. Then we pick $a \leq b$ as in Lemma [Ext from a perfect complex to bounded quasi-coherent cohomology](#native-spaces-perfect-lemma-ext-from-perfect-into-bounded-qcoh) for the perfect object $K_n$. Choose an approximation $K_{n + 1} \to K$ of $(X, K, \min(a - 1, -n - 1))$. Choose a distinguished triangle $$K_{n + 1} \to K \to C \to K_{n + 1}[1]$$ Then we see that $C \in D_\mathrm{QCoh}(\mathcal{O}_X)$ has $H^i(C) = 0$ for $i \geq a$. Thus by our choice of $a, b$ we see that $\operatorname{Hom}_{D(\mathcal{O}_X)}(K_n, C) = 0$. Hence the composition $K_n \to K \to C$ is zero. Hence by Derived Categories, Lemma [Representability of a homological functor](#native-derived-lemma-representable-homological) we can factor $K_n \to K$ through $K_{n + 1}$ proving the induction step.
+The chosen cutoff is at most $-(n+1)-1$, so $K_{n+1}\to K$ is an isomorphism in every degree at least $-(n+1)$, and its cone lies in degrees at most $-(n+1)-2$. The initial approximation has these same properties for $n=1$. The native induction used $-n-1$ in place of $-n-2$; that cutoff gives only a surjection in degree $-n-1$, so it does not establish the advertised next truncation isomorphism. The lower cutoff above repairs this without changing the theorem.
 
-We still have to prove that $K = \text{hocolim} K_n$. This follows by an application of Derived Categories, Lemma [Sheaf cohomology](#native-derived-lemma-cohomology-of-hocolim) to the functors $H^i( - ) : D(\mathcal{O}_X) \to \textit{Mod}(\mathcal{O}_X)$ and our choice of $K_n$. $\square$
+The compatible maps induce a map from a chosen telescope to $K$: apply $\operatorname{Hom}(-,K)$ to its defining triangle, since their product is killed by the difference map. By the [cohomology formula for a homotopy colimit](#native-derived-lemma-cohomology-of-hocolim), its map in degree $q$ is
+$$\operatorname{colim}_nH^q(K_n)\longrightarrow H^q(K).$$
+For sufficiently large $n$ these maps are compatible isomorphisms, so the displayed map is an isomorphism. This holds for every $q$, proving that the telescope is $K$ and retaining the stronger cone bounds of the construction. $\square$
 
-#### Lemma. Perfect complexes
- In Situation [A filtered inverse system for descent](#native-spaces-perfect-situation-descent) the category of perfect objects of $D(\mathcal{O}_X)$ is the colimit of the categories of perfect objects of $D(\mathcal{O}_{X_i})$.
+#### Lemma. Perfect objects on affine inverse limits of algebraic spaces
 
-**Proof.** For every quasi-compact and quasi-separated object $U_0$ of $(X_0)_{spaces, \mathrm{\acute{e}tale}}$ consider the condition $P$ that the functor $$\mathop{\operatorname{colim}}_{i \geq 0} D_{perf}(\mathcal{O}_{U_i})
-\longrightarrow
-D_{perf}(\mathcal{O}_U)$$ is an equivalence where ${}_{perf}$ indicates the full subcategory of perfect objects and where $U = X \times_{X_0} U_0$ and $U_i = X_i \times_{X_0} U_0$. We will prove $P$ holds for every $U_0$ by the induction principle of Lemma [Induction by elementary distinguished squares](#native-spaces-perfect-lemma-induction-principle). First, we observe that we already know the functor is fully faithful by Lemma [Descent of derived quasi-coherent complexes](#native-spaces-perfect-lemma-descend-homomorphisms). Thus it suffices to prove essential surjectivity.
+Let $X=\varprojlim_iX_i$ be a directed inverse limit of quasi-compact, quasi-separated algebraic spaces over a scheme, with affine transition maps. Then derived pullback gives an equivalence
+$$\operatorname{colim}_iD_{\mathrm{perf}}(X_i)\xrightarrow{\ \sim\ }D_{\mathrm{perf}}(X).$$
 
-We first check condition (2) of the induction principle. Thus suppose that we have an elementary distinguished square $(U_0 \subset X_0, V_0 \to X_0)$ and that $P$ holds for $U_0$, $V_0$, and $U_0 \times_{X_0} V_0$. Let $E$ be a perfect object of $D(\mathcal{O}_X)$. We can find $i \geq 0$ and $E_{U, i}$ perfect on $U_i$ and $E_{V, i}$ perfect on $V_i$ whose pullback to $U$ and $V$ are isomorphic to $E|_U$ and $E|_V$. Denote $$a : E_{U, i} \to (R(X \to X_i)_*E)|_{U_i}
-\quad\text{and}\quad
-b : E_{V, i} \to (R(X \to X_i)_*E)|_{V_i}$$ the maps adjoint to the isomorphisms $L(U \to U_i)^*E_{U, i} \to E|_U$ and $L(V \to V_i)^*E_{V, i} \to E|_V$. By fully faithfulness, after increasing $i$, we can find an isomorphism $c : E_{U, i}|_{U_i \times_{X_i} V_i} \to E_{V, i}|_{U_i \times_{X_i} V_i}$ which pulls back to the identifications $$L(U \to U_i)^*E_{U, i}|_{U \times_X V} \to E|_{U \times_X V} \to
-L(V \to V_i)^*E_{V, i}|_{U \times_X V}.$$ Apply Lemma [Derived gluing across an elementary distinguished square](#native-spaces-perfect-lemma-glue) to get an object $E_i$ on $X_i$ and a map $d : E_i \to R(X \to X_i)_*E$ which restricts to the maps $a$ and $b$ over $U_i$ and $V_i$. Then it is clear that $E_i$ is perfect and that $d$ is adjoint to an isomorphism $L(X \to X_i)^*E_i \to E$.
+**Proof.** Full faithfulness follows from [derived-Hom descent for spaces](#native-spaces-perfect-lemma-descend-homomorphisms). To prove descent of objects, apply [induction by elementary distinguished squares](#native-spaces-perfect-lemma-induction-principle) to quasi-compact, quasi-separated étale objects over a fixed $X_0$.
 
-Finally, we check condition (1) of the induction principle, in other words, we check the lemma holds when $X_0$ is affine. This follows from the case of schemes, see Derived Categories of Schemes, Lemma [Descent of perfect complexes](#native-perfect-lemma-descend-perfect). To see this use the equivalence of Lemma [Étale morphisms and quasi-coherent complexes](#native-spaces-perfect-lemma-derived-quasi-coherent-small-etale-site) and use the translation of Lemma [Descent of perfect complexes](#native-spaces-perfect-lemma-descend-perfect). $\square$
+For an affine object, all its inverse images are affine. The [scheme perfect-descent theorem](#native-perfect-lemma-descend-perfect), the [étale derived equivalence](#native-spaces-perfect-lemma-derived-quasi-coherent-small-etale-site), and the [comparison of perfectness](#native-spaces-perfect-lemma-descend-perfect) give the assertion.
 
-#### Lemma. Perfect direct images for proper morphisms of finite presentation
- Let $S$ be a scheme. Let $f : X \to Y$ be a proper morphism of finite presentation of algebraic spaces over $S$.
+For the other induction condition, take an elementary distinguished square $(U_0\subset X_0,V_0\to X_0)$ and write $W_0=U_0\times_{X_0}V_0$. Suppose descent is known for these three pieces. Given perfect $E$ on $X$, descend its restrictions to perfect $A_i$ on $U_i$ and $B_i$ on $V_i$ at a common stage. Full faithfulness on the overlap descends their comparison and its inverse; their two identity equations hold after a further common stage. We obtain an actual isomorphism $c_i:A_i|_{W_i}\to B_i|_{W_i}$.
 
-1.  Let $E \in D(\mathcal{O}_X)$ be perfect and $f$ flat. Then $Rf_*E$ is a perfect object of $D(\mathcal{O}_Y)$ and its formation commutes with arbitrary base change.
+Let $p_i:X\to X_i$. Étale localization of derived direct image identifies the adjoints of the local pullback isomorphisms with maps
+$$a_i:A_i\longrightarrow(Rp_{i*}E)|_{U_i},\qquad
+b_i:B_i\longrightarrow(Rp_{i*}E)|_{V_i}.$$
+Because $c_i$ pulls back to the comparison through $E|_W$, adjunction gives $a_i|_{W_i}=b_i|_{W_i}c_i$. Apply [derived gluing across the square](#native-spaces-perfect-lemma-glue). It produces $E_i\to Rp_{i*}E$ with the prescribed restrictions. Perfection is étale local, so $E_i$ is perfect. The adjoint $Lp_i^*E_i\to E$ is an isomorphism on both members of the cover, hence globally. This proves descent of objects and the theorem. $\square$
 
-2.  Let $\mathcal{G}$ be an $\mathcal{O}_X$-module of finite presentation, flat over $Y$. Then $Rf_*\mathcal{G}$ is a perfect object of $D(\mathcal{O}_Y)$ and its formation commutes with arbitrary base change.
+#### Lemma. Two perfect direct-image consequences for proper maps
 
-**Proof.** Special cases of Lemma [Perfect proper-support direct images over arbitrary bases](#native-spaces-perfect-lemma-base-change-tensor-perfect) applied with (1) $\mathcal{G}^\bullet$ equal to $\mathcal{O}_X$ in degree $0$ and (2) $E = \mathcal{O}_X$ and $\mathcal{G}^\bullet$ consisting of $\mathcal{G}$ sitting in degree $0$. $\square$
+Let $f:X\to Y$ be proper and of finite presentation between algebraic spaces over a scheme $S$.
+
+1. If $f$ is flat and $E$ is perfect, then $Rf_*E$ is perfect and commutes with arbitrary base change.
+2. If $G$ is a finitely presented $\mathcal O_X$-module flat over $Y$, then $Rf_*G$ is perfect and commutes with arbitrary base change.
+
+**Proof.** In (1), apply the [arbitrary-base perfect tensor theorem](#native-spaces-perfect-lemma-base-change-tensor-perfect) with coefficient complex $\mathcal O_X[0]$. Its term is finitely presented, flat over $Y$, and has proper support because $f$ is proper. In (2), use perfect coefficient $E=\mathcal O_X$ and complex $G[0]$. Its support is a closed subspace of the proper space $X$, hence proper over $Y$. The theorem supplies both the perfect direct image and its canonical base-change map in each case. $\square$
+
+The base in (2) is $Y$, as in the statement above. The native text's $S$ at this point would be insufficient. For example, with $S=\operatorname{Spec}k$, $X=Y=\operatorname{Spec}(k[\epsilon]/\epsilon^2)$ and $f$ the identity, the module $G=k$ is finitely presented and flat over $k$, but is not perfect over $k[\epsilon]/\epsilon^2$. Its free resolution has multiplication by $\epsilon$ in every negative degree; tensoring with $k$ gives nonzero Tor in arbitrarily high degrees. This also explains why the already corrected $Y$-flat hypothesis must be retained.
 
 #### Lemma. Mayer--Vietoris for unbounded quasi-coherent complexes
  Let $S$ be a scheme. Let $(U \subset X, V \to X)$ be an elementary distinguished square of algebraic spaces over $S$. For an object $E$ of $D(\mathcal{O}_X)$ we have a distinguished triangle $$R\Gamma(X, E) \to R\Gamma(U, E) \oplus R\Gamma(V, E) \to
@@ -11165,41 +11267,45 @@ Proof of (2). Assume $f$ is universally closed and $T \subset |X|$ is a closed s
 
 Proof of (3). Assume $f$ is proper and $T \subset |Y|$ is a closed subset proper over $B$. Let $Z$ be the reduced induced closed subspace structure on $T$. Denote $Z' = f^{-1}(Z)$ the scheme theoretic inverse image. Then $Z' \to Z$ is proper as a base change of $f$ (Morphisms of Spaces, Lemma [Base change for proper morphisms](#native-spaces-morphisms-lemma-base-change-proper)). Whence $Z' \to B$ is proper as the composition of $Z' \to Z$ and $Z \to B$ (Morphisms of Spaces, Lemma [Composition and proper morphisms](#native-spaces-morphisms-lemma-composition-proper)). This finishes the proof. $\square$
 
-#### Lemma. Ext from a perfect complex to bounded quasi-coherent cohomology
- Let $S$ be a scheme. Let $X$ be a quasi-compact and quasi-separated algebraic space over $S$. Let $K$ be a perfect object of $D(\mathcal{O}_X)$. Then
+#### Lemma. A finite cohomological window for maps from a perfect complex
 
-1.  there exist integers $a \leq b$ such that $\operatorname{Hom}_{D(\mathcal{O}_X)}(K, L) = 0$ for $L \in D_\mathrm{QCoh}(\mathcal{O}_X)$ with $H^i(L) = 0$ for $i \in [a, b]$, and
+Let $X$ be quasi-compact and quasi-separated over a scheme $S$, and let $P$ be perfect on this algebraic space.
 
-2.  if $L$ is bounded, then $\operatorname{Ext}^n_{D(\mathcal{O}_X)}(K, L)$ is zero for all but finitely many $n$.
+1. There is a finite interval $[a,b]$ such that $\operatorname{Hom}_{D(\mathcal O_X)}(P,L)=0$ whenever $L\in D_{\mathrm{QCoh}}(\mathcal O_X)$ and $H^q(L)=0$ for every $q\in[a,b]$.
+2. If such an $L$ is bounded, then $\operatorname{Ext}^n(P,L)$ vanishes outside a finite interval of integers $n$.
 
-**Proof.** Part (2) follows from (1) as $\operatorname{Ext}^n_{D(\mathcal{O}_X)}(K, L) =
-\operatorname{Hom}_{D(\mathcal{O}_X)}(K, L[n])$. We prove (1). Since $K$ is perfect we have $$\operatorname{Ext}^i_{D(\mathcal{O}_X)}(K, L) =
-H^i(X, K^\vee \otimes_{\mathcal{O}_X}^\mathbf{L} L)$$ where $K^\vee$ is the "dual" perfect complex to $K$, see Cohomology on Sites, Lemma [Perfect complexes and derived categories](#native-sites-cohomology-lemma-dual-perfect-complex). Note that $P = K^\vee \otimes_{\mathcal{O}_X}^\mathbf{L} L$ is in $D_\mathrm{QCoh}(X)$ by Lemmas [Quasi-coherent complexes and coherent sheaves](#native-spaces-perfect-lemma-quasi-coherence-tensor-product) and [Pseudo-coherent complexes and coherent sheaves](#native-spaces-perfect-lemma-pseudo-coherent) (to see that a perfect complex has quasi-coherent cohomology sheaves). Say $K^\vee$ has tor amplitude in $[a, b]$. Then the spectral sequence $$E_1^{p, q} = H^p(K^\vee \otimes_{\mathcal{O}_X}^\mathbf{L} H^q(L))
-\Rightarrow
-H^{p + q}(K^\vee \otimes_{\mathcal{O}_X}^\mathbf{L} L)$$ shows that $H^j(K^\vee \otimes_{\mathcal{O}_X}^\mathbf{L} L)$ is zero if $H^q(L) = 0$ for $q \in [j - b, j - a]$. Let $N$ be the integer $\max(d_p + p)$ of Cohomology of Spaces, Lemma [Vanishing and diagonals and separation](#native-spaces-cohomology-lemma-vanishing-quasi-separated). Then $H^0(X, K^\vee \otimes_{\mathcal{O}_X}^\mathbf{L} L)$ vanishes if the cohomology sheaves $$H^{-N}(K^\vee \otimes_{\mathcal{O}_X}^\mathbf{L} L),
-\ H^{-N + 1}(K^\vee \otimes_{\mathcal{O}_X}^\mathbf{L} L),
-\ \ldots,
-\ H^0(K^\vee \otimes_{\mathcal{O}_X}^\mathbf{L} L)$$ are zero. Namely, by the lemma cited and Lemma [Computing derived Hom with a quasi-coherent K-injective model](#native-spaces-perfect-lemma-application-nice-k-injective), we have $$H^0(X, K^\vee \otimes_{\mathcal{O}_X}^\mathbf{L} L) =
-H^0(X, \tau_{\geq -N}(K^\vee \otimes_{\mathcal{O}_X}^\mathbf{L} L))$$ and by the vanishing of cohomology sheaves, this is equal to $H^0(X, \tau_{\geq 1}(K^\vee \otimes_{\mathcal{O}_X}^\mathbf{L} L))$ which is zero by Derived Categories, Lemma [Vanishing in negative degrees](#native-derived-lemma-negative-vanishing). It follows that $\operatorname{Hom}_{D(\mathcal{O}_X)}(K, L)$ is zero if $H^i(L) = 0$ for $i \in [-b - N, -a]$. $\square$
+**Proof.** By [perfect duality](#native-sites-cohomology-lemma-dual-perfect-complex),
+$$\operatorname{Ext}^i(P,L)=H^i(X,P^\vee\otimes^{\mathbf L}L).$$
+The [pseudo-coherent quasi-coherence criterion](#native-spaces-perfect-lemma-pseudo-coherent) and [tensor stability](#native-spaces-perfect-lemma-quasi-coherence-tensor-product) put the tensor in $D_{\mathrm{QCoh}}(X)$. Choose a Tor interval $[u,v]$ for $P^\vee$; a finite cover of the quasi-compact space combines its local strictly perfect bounds into one interval.
+
+The tensor-cohomology filtration has terms $H^p(P^\vee\otimes^{\mathbf L}H^q(L))$ in total degree $p+q$, with $u\leq p\leq v$. In particular,
+$$H^j(P^\vee\otimes^{\mathbf L}L)=0
+\quad\text{if }H^q(L)=0\text{ for }j-v\leq q\leq j-u.$$
+This finite-window assertion also follows directly from truncations: the part of $L$ below $j-v$ tensors into degrees at most $j-1$, and the part above $j-u$ tensors into degrees at least $j+1$. The part between them is zero under the stated hypothesis. The truncation triangles therefore prove the displayed vanishing even when $L$ is unbounded.
+
+Choose $N\geq0$ bounding quasi-coherent sheaf cohomology on $X$, as supplied by the [quasi-separated vanishing theorem](#native-spaces-cohomology-lemma-vanishing-quasi-separated). For $M\in D_{\mathrm{QCoh}}(X)$, the [unbounded finite-cohomological-dimension calculation](#native-spaces-perfect-lemma-application-nice-k-injective) gives
+$$H^0(X,M)\simeq H^0(X,\tau_{\geq-N}M).$$
+If $H^j(M)=0$ for $-N\leq j\leq0$, the latter truncation lies in $D^{\geq1}$, so its degree-zero global cohomology vanishes by [negative-degree vanishing](#native-derived-lemma-negative-vanishing).
+
+Apply this to $M=P^\vee\otimes^{\mathbf L}L$. Taking
+$$a=-N-v,\qquad b=-u$$
+ensures that vanishing of $L$ on $[a,b]$ gives the required vanishing of $M$ in every degree from $-N$ to zero. This proves (1). If $L$ has cohomology in $[c,d]$, then $L[n]$ has it in $[c-n,d-n]$. This interval meets $[a,b]$ only when $c-b\leq n\leq d-a$. Apply (1) to $L[n]$ outside that finite range to prove (2). $\square$
 
 #### Situation. A filtered inverse system for descent
  Let $S$ be a scheme. Let $X = \varprojlim_{i \in I} X_i$ be a limit of a directed system of algebraic spaces over $S$ with affine transition morphisms $f_{i'i} : X_{i'} \to X_i$. We denote $f_i : X \to X_i$ the projection. We assume that $X_i$ is quasi-compact and quasi-separated for all $i \in I$. We also choose an element $0 \in I$.
 
-#### Lemma. Descent of derived quasi-coherent complexes
+#### Lemma. Derived morphisms on inverse limits of algebraic spaces
 
-In Situation [A filtered inverse system for descent](#native-spaces-perfect-situation-descent). Let $E_0$ and $K_0$ be objects of $D(\mathcal{O}_{X_0})$. Set $E_i = Lf_{i0}^*E_0$ and $K_i = Lf_{i0}^*K_0$ for $i \geq 0$ and set $E = Lf_0^*E_0$ and $K = Lf_0^*K_0$. Then the map $$\mathop{\operatorname{colim}}_{i \geq 0} \operatorname{Hom}_{D(\mathcal{O}_{X_i})}(E_i, K_i)
-\longrightarrow
-\operatorname{Hom}_{D(\mathcal{O}_X)}(E, K)$$ is an isomorphism if either
+Let $X=\varprojlim_iX_i$ be a directed inverse limit of quasi-compact, quasi-separated algebraic spaces over a scheme, with affine transitions. Fix $0$ and let $E_i,K_i,E,K$ be the derived pullbacks of objects $E_0,K_0$ on $X_0$. Then
+$$\operatorname{colim}_{i\geq0}\operatorname{Hom}_{D(\mathcal O_{X_i})}(E_i,K_i)
+\xrightarrow{\ \sim\ }\operatorname{Hom}_{D(\mathcal O_X)}(E,K)$$
+under the following conditions. Require $K_0\in D_{\mathrm{QCoh}}(X_0)$. A perfect $E_0$ permits any such $K_0$, including unbounded objects. Alternatively, one may take $E_0$ pseudo-coherent if $K_0$ has finite Tor dimension.
 
-1.  $E_0$ is perfect and $K_0 \in D_\mathrm{QCoh}(\mathcal{O}_{X_0})$, or
+**Proof.** For each quasi-compact, quasi-separated étale object $U_0\to X_0$, consider the same assertion on $U_i=X_i\times_{X_0}U_0$ and $U=X\times_{X_0}U_0$, in every shifted degree $\operatorname{Hom}(E_i,K_i[r])$. This formulation permits the [étale induction principle](#native-spaces-perfect-lemma-induction-principle).
 
-2.  $E_0$ is pseudo-coherent and $K_0 \in D_\mathrm{QCoh}(\mathcal{O}_{X_0})$ has finite tor dimension.
+If $U_0$ is affine, so are all $U_i$ and $U$. The [étale/Zariski derived comparison](#native-spaces-perfect-lemma-derived-quasi-coherent-small-etale-site) identifies their derived categories of quasi-coherent objects with the scheme categories. Its criteria for [pseudo-coherence](#native-spaces-perfect-lemma-descend-pseudo-coherent), [Tor amplitude](#native-spaces-perfect-lemma-descend-tor-amplitude) and [perfection](#native-spaces-perfect-lemma-descend-perfect) identify the two sets of hypotheses as well. The [scheme derived-Hom descent theorem](#native-perfect-lemma-descend-homomorphisms) thus proves every required shifted comparison.
 
-**Proof.** For every quasi-compact and quasi-separated object $U_0$ of $(X_0)_{spaces, \mathrm{\acute{e}tale}}$ consider the condition $P$ that the canonical map $$\mathop{\operatorname{colim}}_{i \geq 0} \operatorname{Hom}_{D(\mathcal{O}_{U_i})}(E_i|_{U_i}, K_i|_{U_i})
-\longrightarrow
-\operatorname{Hom}_{D(\mathcal{O}_U)}(E|_U, K|_U)$$ is an isomorphism, where $U = X \times_{X_0} U_0$ and $U_i = X_i \times_{X_0} U_0$. We will prove $P$ holds for each $U_0$ by the induction principle of Lemma [Induction by elementary distinguished squares](#native-spaces-perfect-lemma-induction-principle). Condition (2) of this lemma follows immediately from Mayer-Vietoris for hom in the derived category, see Lemma [Derived Hom and Ext](#native-spaces-perfect-lemma-mayer-vietoris-hom). Thus it suffices to prove the lemma when $X_0$ is affine.
-
-If $X_0$ is affine, then the result follows from the case of schemes, see Derived Categories of Schemes, Lemma [Descent of perfect complexes](#native-perfect-lemma-descend-homomorphisms). To see this use the equivalence of Lemma [Étale morphisms and quasi-coherent complexes](#native-spaces-perfect-lemma-derived-quasi-coherent-small-etale-site) and use the translation of properties explained in Lemmas [Descent of pseudo-coherent complexes and coherent sheaves](#native-spaces-perfect-lemma-descend-pseudo-coherent), [Descent of derived tensor products and Tor amplitude](#native-spaces-perfect-lemma-descend-tor-amplitude), and [Descent of perfect complexes](#native-spaces-perfect-lemma-descend-perfect). $\square$
+For an elementary distinguished square, use the [Mayer-Vietoris long exact sequence for derived Hom](#native-spaces-perfect-lemma-mayer-vietoris-hom). Pulling the square to each stage and to the limit preserves its defining properties. Taking the filtered colimit of the stage sequences remains exact. If the comparison is known on the open part, the étale part and their overlap for every shift, a diagram chase in the resulting exact sequences proves it on the whole space for every shift. Both induction conditions are now verified. The comparison on $X_0$, in degree zero, is the claimed formula. $\square$
 
 #### Lemma. Quasi-coherent complexes and derived categories
 

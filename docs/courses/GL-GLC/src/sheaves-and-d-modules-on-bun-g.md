@@ -7000,6 +7000,311 @@ In particular the frame module has finite projective rank \(b\) over \(A\), but 
 
 Free further reading is [Arinkin and Gaitsgory, *Singular support of coherent sheaves, and the geometric Langlands conjecture*](https://arxiv.org/abs/1201.6343), §10.3, for the boundedness question, and [Gaitsgory, *Outline of the proof of the geometric Langlands conjecture for GL(2)*](https://arxiv.org/abs/1302.2506), §4.3, for spectral localization. The full derived torsor reconstruction is (TBF.1)–(TBF.7), the uniform connection slope argument is (TBF.8)–(TBF.14), and the full derived bounded frame calculation is (TBF.15)–(TBF.20). The three complete solutions are (TBF.21)–(TBF.24).
 
+### 3.84. Proper curve cohomology over every connective DG base
+
+Let \(A\) be a connective commutative DG \(\mathbf C\)-algebra. A vector bundle below means a finite projective module over the full local DG coordinate algebra. We first prove the cohomology assertion needed for an arbitrary bundle, without assuming that it already has a connection.
+
+Write \(E_0=E\otimes_AH^0(A)\). The local finite-projective retraction gives
+\[
+ H^i(E)=E_0\otimes_{H^0(A)}H^i(A).
+ \tag{DCA.1}
+\]
+This is an identity of sheaves, compatible with scalar multiplication. Use the two affine hyperplane complements of the earlier bundle lesson, §1.1. Their intersection is affine. The full cohomology complex is the fibre
+\[
+ R\Gamma(X_A,E)=
+ \operatorname{fib}\!\left(
+ E(U_A)\oplus E(V_A)\longrightarrow E((U\cap V)_A)
+ \right).
+ \tag{DCA.2}
+\]
+The affine terms are the actual modules. A finite fibre in a stable category is also a finite colimit, so tensoring with any DG \(A\)-algebra commutes with this formula. In particular this proves full derived base change, including nonflat changes and unbounded coefficient complexes.
+
+Choose an effective hyperplane divisor \(D_0\), and a sufficiently large positive integer \(j\). Put \(D=jD_0\). The ordinary bundle \(E_0\) descends to a finitely generated coefficient algebra by the idempotent-and-gluing construction in the earlier bundle lesson, §1.1. [*Coherent sheaves on projective schemes: Serre's theorems*](../../AG-QC/src/serres-theorems-on-projective-schemes.md), Theorem 2.2, makes the model's first cohomology vanish for large \(j\). Its two-term finite projective complex (BA.1) then has a surjective differential onto its projective degree-one term. Split that surjection; its remaining kernel is finite projective. This proves, after extension to \(H^0(A)\), that for every module \(I\), \(H^1(E_0(D)\otimes I)=0\) and its sections are \(V_0\otimes I\), with \(V_0\) finite projective. The splitting tests modules as well as algebras.
+
+Apply (DCA.1) to (DCA.2). There are only two Čech columns. The high-twist vanishing kills the second column on cohomology and gives, even if \(A\) is unbounded to the left,
+\[
+ H^iR\Gamma(X_A,E(D))=
+ V_0\otimes_{H^0(A)}H^i(A).
+ \tag{DCA.3}
+\]
+There is no convergence across infinitely many Čech degrees. Locally on the coefficient base, lift a basis of \(V_0\) to degree-zero section classes and hence to a map \(A^r\to R\Gamma(E(D))\). Formula (DCA.3) and its scalar multiplication identify this map on every cohomology group. Its cone is acyclic. Thus \(K_0=R\Gamma(E(D))\) is finite projective over the full \(A\).
+
+The divisor \(D\) is finite over \(\mathbf C\). A finite projective module over \(\mathcal O_D\otimes A\), restricted to \(A\), is finite projective: it is a retract of finitely many copies of the finite free \(A\)-module \(\mathcal O_D\otimes A\). Consequently \(K_1=R\Gamma(D_A,E(D)|_{D_A})\) is finite projective. The effective-divisor sequence is exact after derived scalar extension, because the fixed divisor sequence over the field is exact and its quotient is coefficient-flat. It gives
+\[
+ \begin{gathered}
+ K_E=R\Gamma(X_A,E)\simeq
+ [\,K_0\xrightarrow{\delta}K_1\,],\\
+ K_0\text{ in relative degree }0,\qquad
+ K_1\text{ in relative degree }1 .
+ \end{gathered}
+ \tag{DCA.4}
+\]
+“Relative degree” retains the internal negative degrees of \(A\). Both terms are projective \(A\)-modules; this is not a complex over the degree-zero quotient. Formula (DCA.2) gives
+\[
+ \begin{gathered}
+ K_E\text{ perfect of relative Tor amplitude }[0,1],\\
+ K_E\otimes_A^{\mathbf L}B
+ \simeq R\Gamma(X_B,E\otimes_A^{\mathbf L}B)
+ \quad\text{for every connective }B .
+ \end{gathered}
+ \tag{DCA.5}
+\]
+These identifications include maps and their higher homotopies. Different divisor choices compare through their common larger divisor and the same actual cohomology fibre. The ordinary finite-complex argument used here is proved in [*Base change and the Grothendieck complex*](../../AG-QC/src/base-change-and-the-grothendieck-complex.md), Lemma 3.1 and Theorem 3.2; (DCA.1)–(DCA.5) supply its full DG extension.
+
+### 3.85. Connections as an affine derived nullhomotopy scheme
+
+Fix a derived \(H\)-torsor \(P\) on \(X_A\), with \(H=\widehat G\), and keep a specified identification of its underlying torsor. Its adjoint bundle is finite projective by the associated-module construction (TBF.5). The Atiyah extension is
+\[
+ \operatorname{ad}(P)\longrightarrow
+ \operatorname{At}(P)\longrightarrow T_{X_A/A},
+ \qquad F=\operatorname{ad}(P)\otimes\Omega^1_{X_A/A}.
+ \tag{DCA.6}
+\]
+Here \(\operatorname{At}(P)\) consists of \(H\)-invariant first-order derivations of the torsor algebra, with their derivation on the base. This definition retains the internal DG differential. Étale-locally a torsor frame identifies it with the direct sum of the vertical adjoint module and the tangent line. In two frames, let \(g_{ij}\) take coordinates in frame \(j\) to coordinates in frame \(i\). The coefficient one-forms of a connection satisfy
+\[
+ \beta_i=\operatorname{Ad}(g_{ij})\beta_j
+             -(d_Xg_{ij})g_{ij}^{-1}.
+ \tag{DCA.7}
+\]
+Differentiating \(g_{ij}g_{jk}=g_{ik}\) proves the affine cocycle identity. It also shows that two connections differ by a section of \(F\). Thus these local direct sums glue the extension (DCA.6), and its splittings are exactly compatible connection data.
+
+We check that this describes full operator connections, rather than only first-order classical data. On an étale coordinate chart the tangent module has one generator \(\partial\). A horizontal derivation \(D\) of the torsor algebra obeys \(D(rs)=D(r)s+rD(s)\), commutes with the internal differential and with the \(H\)-coaction, and restricts to \(\partial\) on the curve algebra. It extends to every operator power. Its formal transport is
+\[
+ \exp(\epsilon D)=\sum_{q\geq0}\frac{\epsilon^qD^q}{q!},
+ \qquad
+ \exp(\epsilon D)\exp(\epsilon' D)=
+ \exp((\epsilon+\epsilon')D).
+ \tag{DCA.8}
+\]
+The iterated Leibniz formula proves multiplicativity coefficient by coefficient. The second identity is the binomial formula; every fixed coefficient uses finitely many terms. Horizontality and commutation with the internal differential hold term by term. Conversely, differentiating a formal transport satisfying composition recovers \(D\); differentiating its composition equation recursively forces the displayed coefficient \(D^q/q!\). Under a coordinate change, use the difference of the new coordinate at the transported point and its value at the original base point as the new formal parameter. The chain rule identifies the first derivative, and composition is the composition of the same infinitesimal curve arrows. The recursive uniqueness therefore identifies the transports in the two coordinates. This proves uniqueness of its higher jet relations. Curvature is a two-form, and \(\Omega^2_{X_A/A}=0\), so every such curve connection is integrable.
+
+These are identities of DG maps and natural in coefficient algebras. Apply them degree by degree to simplicial free algebra resolutions, retaining their face and degeneracy maps; the full free-algebra bar reconstruction is proved in (CSD.11)–(CSD.12). Thus the mutually inverse constructions also apply to enriched mapping spaces. Locally the anchor condition can be imposed strictly: the tangent line is projective and the map from the local Atiyah direct sum to that line is split surjective in every degree. Its homotopy fibre over the identity is therefore the translated mapping complex of the vertical summand. The smooth DG derivation calculation in §3.86 justifies this projective mapping complex for the torsor algebra as well. Full descent of these complexes and their affine transition maps gives the global space of splittings. Thus (DCA.8) identifies the entire splitting space with the entire operator-connection fibre, including higher paths.
+
+Put \(K=R\Gamma(X_A,F)\). Let \(a\in K[1]\) be the degree-zero cocycle of local zero connections. With the Čech convention \((\delta\beta)_{ij}=\operatorname{Ad}(g_{ij})\beta_j-\beta_i\), its representative is \(-(d_Xg_{ij})g_{ij}^{-1}\); equation (DCA.7) is \(\delta\beta+a=0\). Refinement of the cover computes the same derived class. The global splitting space is
+\[
+ \operatorname{Conn}_A(P)
+ \simeq
+ \operatorname{Path}_{\Omega^\infty(K[1])}(a,0).
+ \tag{DCA.9}
+\]
+This also follows directly by applying the global mapping complex from the tangent line to (DCA.6): the connecting map takes the identity of the line to \(a\). Its homotopy fibre is the displayed nullhomotopy space.
+
+Use (DCA.4) for \(F\). After a Zariski cover of the coefficient base the two projective terms are free. The model and class take the form
+\[
+ K=[\,K_0\xrightarrow{\delta}K_1\,],
+ \qquad a\in Z^0(K_1),\qquad
+ \delta\beta+a=0 .
+ \tag{DCA.10}
+\]
+The last equality is to be interpreted with a nullhomotopy over a DG coefficient algebra. A cycle representing the class has no component in positive degree of \(K_0\), since \(A\) is connective. Define the actual commutative DG coordinate algebra
+\[
+ \begin{gathered}
+ D_A(P)=
+ \operatorname{Sym}_A
+ \bigl(K_0^\vee\oplus K_1^\vee[1]\bigr),\\
+ d(\xi)=\langle\xi,\delta t+a\rangle
+ \quad(\xi\in K_1^\vee[1]).
+ \end{gathered}
+ \tag{DCA.11}
+\]
+The variables \(t\) have relative degree zero and the relation variables \(\xi\) have relative degree minus one. The differential includes the internal coefficient differential. Its square is zero because the matrix \(\delta\) and the vector \(a\) are closed.
+
+The universal property of the free commutative algebra computes maps out of (DCA.11). They choose degree-zero cycles \(t_B\), together with degree-minus-one values \(h_B\) for its relation variables, satisfying
+\[
+ d_Bh_B=\delta t_B+a_B .
+ \tag{DCA.12}
+\]
+The same equations in every simplicial mapping model give the entire nullhomotopy space in (DCA.9). Equivalently the algebra is the derived pushout of the two free algebras describing the affine linear section \(\delta t+a\) and the zero section. This free-algebra pushout proves the assertion on all mapping spaces without reducing it to solutions over ordinary rings. Projective generators are handled by their finite free retractions. The canonical identifications through (DCA.9) glue the local affine schemes.
+
+Hence the forgetful connection fibre of every such torsor is represented by a connective affine derived scheme. Its relative presentation has finitely many generators in degrees zero and minus one, and
+\[
+ \begin{gathered}
+ D_A(P)\otimes_A^{\mathbf L}B
+ \simeq D_B(P_B),\\
+ L_{D_A(P)/A}\text{ perfect of amplitude }[-1,0].
+ \end{gathered}
+ \tag{DCA.13}
+\]
+The first identity uses the actual cohomology and class base changes (DCA.5); it permits nonflat \(B\). For the second, derivations from the free presentation are specified on precisely these two finite projective generator modules, with the derivative of \(\delta t+a\) as their differential. This proves the stated cotangent complex and its amplitude. It also proves finite derived presentation, since the displayed finite free-cell construction commutes with filtered coefficient colimits. A free retraction and a finite coefficient cover give the same conclusion for projective generators.
+
+### 3.86. The bounded ordinary frame scheme represents the full derived frame functor
+
+Let \(n,m,b\) have their exact values in (TBF.15). Denote by \(\mathcal F(A)\) the space of derived \(H\)-torsors \(P\) for which \(E=P\times^H\mathbf C^n\) has degree-zero fibres, \(E(mx)\) is generated and has vanishing first fibre cohomology, together with a frame of its sections. Equations (DCA.5) and (CSD.4) prove
+\[
+ \begin{gathered}
+ R\Gamma(X_A,E(mx))=W_P
+ \text{ finite projective of rank }b,\\
+ A^b\xrightarrow{\sim}W_P,\qquad
+ \mathcal O_{X_A}^b\longrightarrow E(mx)
+ \text{ a derived quotient with projective kernel}.
+ \end{gathered}
+ \tag{DCA.14}
+\]
+Indeed the proper cohomology complex is perfect and each residue fibre has only degree-zero cohomology of dimension \(b\). The evaluation fibre is perfect and each of its residue fibres is an ordinary kernel. These are exactly the hypotheses of (CSD.4).
+
+The scheme \(Q\) in (TBF.20) represents this functor on all ordinary rings. We now prove that its natural derived functor \(A\mapsto\operatorname{Map}(\operatorname{Spec}A,Q)\) represents \(\mathcal F\) as well.
+
+First we establish the infinitesimal calculation for DG ideals. For a smooth finite-type algebra over \(\mathbf C\), the standard smooth presentations are proved in [*Formally smooth, unramified and étale ring maps*](../../AG-CA/src/formally-smooth-unramified-and-etale-ring-maps.md), §§4–5. Locally their equations \(f_1,\ldots,f_c\) have an invertible \(c\)-column Jacobian minor. These equations have a free Koszul DG resolution. Here is an exactness check. At a closed point of the localized polynomial ring, its completion is a power-series ring by [*Completion*](../../AG-CA/src/completion.md), formula (12). The formal change from the pivot variables to the \(f_i\), retaining the other variables, is invertible: solve its linear part by the invertible Jacobian and then solve each homogeneous degree by that same inverse matrix. In the completed ring the Koszul complex is therefore the complex of distinct coordinate variables. Its exactness follows successively from multiplication by each variable and its quotient. Completion is faithfully flat by the same lesson, Theorem 3.2, so the original localized Koszul complex is exact. All its possible negative homology modules are finite. A nonempty support has a closed complex point by [*The Nullstellensatz and Jacobson rings*](../../AG-CA/src/the-nullstellensatz-and-jacobson-rings.md), Theorem 2.1, applied to its finite-type localized coordinate algebra. The closed-point checks prove exactness everywhere.
+
+For a square-zero DG extension with ideal \(I\), lifting a map from this resolution and subtracting two lifts linearizes its equations. Products of two corrections vanish. The correction complex is obtained by mapping the Jacobian differential complex into the full ideal \(I\). Its pivot block is contractible; the remaining summand is the complex of maps from the projective differential module into \(I\). Applying this calculation in every mapping simplex proves the full derived derivation space, including higher homotopies. At the identity of \(H\) it gives
+\[
+ \text{based infinitesimal }H\text{-points}
+ \simeq\Omega^\infty(\mathfrak h\otimes I).
+ \tag{DCA.15}
+\]
+Comultiplication makes the correction addition, and conjugation gives the adjoint transition. The same calculation applies to twisted square-zero extensions: the defect of tentative lifts is the connecting cocycle in the correction complex; all choices and homotopies differ by that complex. Étale equations have an invertible full Jacobian, so their correction complex is contractible and their lifts, including coherent identifications, are unique.
+
+Repeat the earlier bundle lesson's square-zero Čech calculation (DS.3)–(DS.7), now with the full ideal complex \(I\). The polynomial product identities used there hold in every degree, and the additive correction complexes have just been proved. Totalization therefore gives the full deformation complex
+\[
+ T_P\operatorname{Bun}_H=
+ R\Gamma(X_A,\operatorname{ad}(P))[1].
+ \tag{DCA.16}
+\]
+The defect is its degree-one obstruction class; once corrected, the space of lifts is a torsor for \(\Omega^\infty(T_P\otimes_A I)\). This includes nontrivial higher paths of lifts. Étale descent and (DCA.2) compare the cover computation with the proper two-term complex. No ordinary truncation of \(I\) is made.
+
+A frame of \(W_P\) has infinitesimal changes \(\operatorname{End}_A(W_P)\). An infinitesimal bundle automorphism acts on these sections. Combining that action with (DCA.16) gives
+\[
+ T_{(P,\mathrm{frame})}\mathcal F=
+ \operatorname{Cone}\!\left(
+ R\Gamma(X_A,\operatorname{ad}(P))
+ \longrightarrow\operatorname{End}_A(W_P)
+ \right).
+ \tag{DCA.17}
+\]
+The first complex has relative degrees zero and one; its cone has relative degrees minus one and zero. This formula follows also by fixing the bundle lifts in the preceding Čech calculation and adjoining the degree-zero frame changes; frame changes transform under exactly the displayed automorphism map.
+
+Over an ordinary field, an adjoint infinitesimal automorphism acting trivially on all sections acts trivially on \(E(mx)\), because those sections generate. The differential of the closed representation is injective: the coordinate-algebra surjection makes the differential-module map surjective, and dualizing at the identity gives the injection. The automorphism is therefore zero. There is no degree-one term in (DCA.17), since the curve has no degree-two adjoint cohomology. Thus every residue fibre of that perfect cone is in degree zero. Criterion (CSD.4) makes it finite projective on the ordinary universal \(Q\).
+
+The ordinary \(Q\) is smooth. The bundle lifting argument of the earlier lesson, §2.2, has no curve obstruction. On the unchanged bounded open, the section module of a lifted bundle is finite projective by (BA.2) and reduces to the original section module. A basis lifts across a square-zero coefficient ideal: lift its finitely many vectors, and a local inverse matrix lifts because its reduced determinant is a unit. The local lifting problems glue over an affine coefficient scheme by affine vanishing for the derivation module, exactly as in that lesson's §2.2. Thus \(Q\) has the infinitesimal lifting property, and its finite-presentation scheme satisfies the smoothness criterion proved there. The standard smooth coordinate calculation above computes its full DG tangent module as the degree-zero projective module \(T_Q\).
+
+The ordinary representing equivalence identifies lifts over every ordinary square-zero ideal, hence identifies their represented derivation modules. The cone (DCA.17) has already been proved projective in degree zero. The differential of the natural comparison therefore gives
+\[
+ T_{\mathcal F}|_Q\text{ is finite projective in degree zero},
+ \qquad T_Q\xrightarrow{\sim}T_{\mathcal F}|_Q .
+ \tag{DCA.18}
+\]
+Formula (DCA.5) and the explicit smooth coordinate complex extend (DCA.18) by every derived scalar change.
+
+We spell out effectivity for the remaining infinite Postnikov tower. Finite projective modules and their equivalences are recovered from compatible restrictions to \(A_{\leq r}=\tau^{\geq-r}A\): on a principal open lift a reduced basis at each stage. The reduction of an invertible matrix is invertible and is surjective on components at each negative square-zero step by the smooth matrix calculation. Choose compatible representatives and paths, or replace the tower by its equivalent tower of mapping-space fibrations; these choices identify the limit with \(A^s\). Their maps are the limits of the finite matrix mapping complexes. The limit of a complex tower is the fibre of one minus shift on its product. Its cohomology exact sequence has the ordinary limit and the first derived limit of the cohomology groups. Here each degree is eventually constant. On such a tower, one minus shift on the product of groups is surjective: choose a value at the start of the constant tail, solve the tail successively using its surjective transition maps, then solve the finitely many preceding equations backwards. Thus the first derived limit vanishes and the limit complex has the required cohomology. This proves effectivity, not only uniqueness.
+
+For torsors, take a finite affine étale trivializing cover of the ordinary reduction. Such covers and local sections are supplied by the earlier bundle lesson's smooth torsor argument in §§7.6–7.7. This cover may depend on the ordinary coefficient algebra; lift its actual coordinate algebras through the tower. The full-Jacobian correction complex is contractible, so the lifts and their overlap identifications are unique. At each negative square-zero step, the free variable-and-relation correction layers cancel by that invertible Jacobian. The only new coefficient layer is the square-zero base ideal tensored with the ordinary étale chart algebra. It follows inductively that each chart's degree-\(i\) cohomology is its ordinary chart algebra tensored with \(H^i(A)\) over \(H^0(A)\). It is eventually constant along the tower. The inverse-limit calculation above therefore reconstructs the lifted chart algebra with exactly these cohomology groups; its ordinary étale cover and coefficient-flatness remain intact.
+
+A torsor on a lifted affine member whose reduction is trivial remains trivial at every negative step: (DCA.16) on an affine is \(\mathfrak h\otimes I[1]\), and its degree-zero and degree-one groups vanish when \(I\) is concentrated in a strictly negative degree. Trivializations can be chosen compatibly by (DCA.15). Group mapping spaces on overlaps commute with the limits of these actual chart algebras, because they are maps out of the fixed group coordinate algebra. Descent diagrams and limits commute. They reconstruct the torsor and every arrow and higher path. Equivalently, reconstruct its finite associated coefficient modules and tensor maps one representation at a time, then use the Hopf reconstruction of (TBF.2)–(TBF.5). This uses finite tensor products and makes no interchange between an infinite sum of representations and an inverse limit.
+
+Generation and the cohomology rank are determined by the ordinary residue fibres. The proper cohomology comparison (DCA.5) recovers the section module, its frame and its maps through that same tower. We have proved
+\[
+ \mathcal F(A)\simeq\lim_r\mathcal F(A_{\leq r}),
+ \qquad Q(A)\simeq\lim_rQ(A_{\leq r}).
+ \tag{DCA.19}
+\]
+For \(Q\), maps out of each affine chart's coordinate algebra commute with limits, and factorization through those charts is decided on the common ordinary underlying space. Zariski descent proves the second equality.
+
+Start with the ordinary representing equivalence. At each negative Postnikov extension, the comparison preserves the connecting obstruction and identifies the complete correction complex by (DCA.18). On the already represented base these complexes are finite projective in degree zero, so the obstruction groups for a strictly negative ideal vanish. The nonempty lift spaces are torsors under the same mapping space; their comparison is an equivalence. Induction proves the equivalence at every finite stage, and (DCA.19) proves
+\[
+ Q(A)\simeq\mathcal F(A)
+ \quad\text{for every connective DG }A .
+ \tag{DCA.20}
+\]
+Thus the ordinary scheme is smooth, but its derived mapping functor still contains all negative coefficient degrees and higher paths. Replacing \(Q(A)\) by \(Q(H^0(A))\) would not be this assertion.
+
+### 3.87. A finite derived connection atlas for the actual spectral prestack
+
+Let \(P_Q\) be the universal torsor on \(X_Q\). Apply (DCA.9)–(DCA.13) on affine coefficient opens of \(Q\). Their canonical comparison glues an affine morphism
+\[
+ W=\operatorname{Conn}_{Q}(P_Q)\longrightarrow Q .
+ \tag{DCA.21}
+\]
+It has finite derived presentation and relative cotangent amplitude \([-1,0]\). The construction includes the universal connection and its identification with \(P_Q\), so it gives a map to the actual complex spectral prestack \(\mathcal Z\) via (TBF.7).
+
+Every spectral torsor belongs to the bounded open by (TBF.13)–(TBF.18). The full frame comparison (DCA.20) and the connection comparison (DCA.9) identify its actual affine pullback:
+\[
+ W\times_{\mathcal Z}\operatorname{Spec}A
+ \simeq\operatorname{Fr}_A(W_z)
+ \quad\text{for every }z\in\mathcal Z(A).
+ \tag{DCA.22}
+\]
+The frame scheme of a finite projective rank-\(b\) DG module is a derived \(GL_b\)-torsor. To check representability and smoothness directly, choose local bases as in (TBF.19); it is \(GL_b\) on each such coefficient open, with the actual invertible transition matrices. The determinant-open presentation of \(GL_b\) is smooth by the same Jacobian calculation. These frames give a surjective cover on the ordinary underlying space and retain all higher maps.
+
+Changing the frame acts on \(Q\) and its universal torsor, hence on \(W\) and its universal connection. The fibre calculation gives
+\[
+ W\times_{\mathcal Z}W\simeq W\times GL_b,
+ \qquad \mathcal Z\simeq[W/GL_b].
+ \tag{DCA.23}
+\]
+This is an equivalence of full prestacks on connective DG algebras. Indeed the Čech nerve of the frame torsor has precisely the iterated action terms. Full faithfully flat descent (TBF.2)–(TBF.7) reconstructs the torsor with connection from that nerve, and reconstructs its arrows and all higher paths. Conversely its frames produce that same descent data. These are inverse comparisons; the equality is not only an equality of geometric points.
+
+The finite-type ordinary \(Q\) is quasi-compact. An affine morphism is quasi-compact, so \(W\) is quasi-compact. Its finite local presentations above and the smooth ordinary cotangent module of \(Q\) give
+\[
+ L_{W/\mathbf C}\text{ perfect of amplitude }[-1,0],
+ \qquad W\longrightarrow\mathcal Z
+ \text{ a smooth }GL_b\text{-torsor atlas}.
+ \tag{DCA.24}
+\]
+For the amplitude, the cotangent triangle adjoins the degree-zero module from \(Q\) to the two generator degrees of (DCA.13). Thus \(W\) is a quasi-smooth derived scheme. The actual spectral prestack has this finite derived atlas and its already proved affine diagonal (CSD.21).
+
+This proves the required derived connection-atlas input. Global quasicoherent compact generation, the exterior tensor equivalence, the continuous fully faithful localization right adjoint, and the ordinary projector's nilpotent image and regularity still require their global categorical proofs. The construction here compares the complex spectral prestack already defined in (SPC.3); it does not by itself extend that spectral action to other geometric ground fields or prove the tempered and microlocal comparisons.
+
+![The full proper cohomology complex supplies the two degrees of the derived connection equations; the complete Postnikov comparison identifies the bounded frame scheme; its connection scheme gives the actual spectral quotient atlas.](figures/derived-connection-atlas.svg)
+
+**Figure 3.24.** The proper two-term complex is (DCA.1)–(DCA.5). The nullhomotopy equations and their nonflat base change are (DCA.9)–(DCA.13). The full frame comparison is (DCA.15)–(DCA.20), and the torsor atlas and quotient are (DCA.21)–(DCA.24). The lower examples display exactly the relation differential \(d\xi=st\), its derived zero fibre, and the degree-minus-two coefficient loop of Solution 3.BT.
+
+### 3.88. Degree obstructions, a nonflat relation and a higher connection path
+
+**Exercise 3.BR.** For \(H=\mathbb G_m\) on \(\mathbf P^1\), fix the underlying line \(\mathcal O(d)\), with \(d\in\mathbf Z\). Compute its entire derived connection fibre. Explain what happens for nonzero \(d\) and for \(d=0\).
+
+**Solution 3.BR.** Use coordinate \(z\) on the first chart and \(z^{-1}\) on the second. The transition on coefficient columns is \(g=z^d\). Thus (DCA.7) has defect \(-d\,dz/z\). The two-chart calculation of \(R\Gamma(\Omega^1_{\mathbf P^1})\) has zero sections and one degree-one class: the Laurent coefficient \(z^{-1}dz\) is the only class remaining after quotienting polynomial differentials on both charts. Choose generator \([-dz/z]\). We obtain
+\[
+ K_0=0,\quad K_1=\mathbf C,\quad a=d,\qquad
+ D_d=\mathbf C[\xi],\quad|\xi|=-1,\quad d_{\mathrm{DG}}\xi=d.
+ \tag{DCA.25}
+\]
+Here \(\xi^2=0\), by graded commutativity and characteristic zero. If the integer \(d\ne0\), the element \(\xi/d\) has differential \(1\). Multiplication by it contracts every module; the algebra is equivalent to the zero algebra and its spectrum is empty over every nonzero coefficient algebra. This is the degree obstruction proved geometrically in (TBF.10).
+
+If \(d=0\), the algebra is instead
+\[
+ D_0=\operatorname{Sym}_{\mathbf C}(\mathbf C[1])
+     =\mathbf C\oplus\mathbf C\xi,\qquad d_{\mathrm{DG}}\xi=0.
+ \tag{DCA.26}
+\]
+It has one ordinary point, the usual connection on the trivial line, and a genuine negative-degree coordinate. Both conclusions describe the fixed-underlying-line fibre; they do not quotient by the line's automorphisms.
+
+**Exercise 3.BS.** Test (DCA.11) on the linear complex \(K=[A\xrightarrow{s}A]\), with \(A=\mathbf C[s]\) and \(a=0\). Compute its coordinate algebra and its derived fibre at \(s=0\). Compare the latter with the ordinary tensor of degree-zero cohomology.
+
+**Solution 3.BS.** The formula gives
+\[
+ D=A[t,\xi],\qquad |t|=0,\quad|\xi|=-1,\quad
+ d_{\mathrm{DG}}\xi=st.
+ \tag{DCA.27}
+\]
+Since \(st\) is a nonzerodivisor in \(A[t]\), its cohomology is \(H^0(D)=A[t]/(st)\), with no negative cohomology. The displayed complex is free as a graded \(A\)-module and computes derived coefficient extension. At \(s=0\),
+\[
+ D\otimes_A^{\mathbf L}\mathbf C
+ =\mathbf C[t,\xi],\qquad
+ H^{-1}=\mathbf C[t]\xi,\quad H^0=\mathbf C[t].
+ \tag{DCA.28}
+\]
+Ordinarily tensoring \(H^0(D)\) gives just \(\mathbf C[t]\), and misses the displayed negative class. After inverting \(s\), the relation is the ordinary equation \(t=0\) with its contractible Koszul pair. This example tests the coordinate construction; no assertion that this particular linear family is a torsor family is needed.
+
+**Exercise 3.BT.** In the degree-zero case of Solution 3.BR, take \(B=\mathbf C[\delta]/(\delta^2)\), with \(|\delta|=-2\) and zero differential. Compute the homotopy groups of the connection fibre and exhibit its nontrivial loop.
+
+**Solution 3.BT.** The free commutative-algebra adjunction retains all higher maps and gives
+\[
+ \operatorname{Conn}_B(\mathcal O)
+ =\operatorname{Map}_{\mathbf C\text{-mod}}(\mathbf C[1],B),
+ \qquad
+ \pi_i=H^{-i-1}(B).
+ \tag{DCA.29}
+\]
+There is one component, \(\pi_1=\mathbf C\), and all \(\pi_i\) for \(i>1\) vanish. A simplex with interval coordinate \(u\) is
+\[
+ \xi\longmapsto\delta\,du
+ \quad\text{in }B\otimes\mathbf C[u,du].
+ \tag{DCA.30}
+\]
+It is a degree-minus-one cycle and vanishes at both endpoints. Its mapping-complex class is the nonzero element \(\delta\in H^{-2}(B)\); multiples give every loop class. Thus the ordinary point is unique but the full connection fibre has a nontrivial higher path. Passing to \(H^0(B)\) would erase it.
+
+Free further reading is Arinkin and Gaitsgory, [*Singular support of coherent sheaves, and the geometric Langlands conjecture*](https://arxiv.org/abs/1201.6343), §10.3, for the proper connection-fibre and boundedness framework. The full proper-cohomology proof here is (DCA.1)–(DCA.5), the full affine connection construction is (DCA.6)–(DCA.13), the complete derived frame comparison is (DCA.14)–(DCA.20), and the actual atlas comparison is (DCA.21)–(DCA.24). The complete solutions are (DCA.25)–(DCA.30).
+
 ## 4. Betti, constructible, and tempered categories
 
 Now suppose \(k=\mathbb C\), and choose a coefficient field \(E\) of characteristic zero. The **large Betti** category consists of complexes of \(E\)-sheaves on the analytic stack, with no finite-dimensional stalk requirement. Its automorphic subcategory is

@@ -1,10 +1,10 @@
 # SH02-UCE — Uniform tests for an unbounded Hom complex
 
-Working programme proof with explicit prerequisite contracts; complete transitive proof review remains unfinished. The purpose of this supplement is to justify the full input range in the tensor and Hom estimates, including a Hom complex with cohomology in arbitrarily negative degrees. The proof uses normal deformation before Fourier transformation. Consequently its inverse-image argument requires no Fourier adjunction normalization.
+This proof retains the explicit hypotheses of its derived-operation and geometric prerequisites. The purpose of this supplement is to justify the full input range in the tensor and Hom estimates, including a Hom complex with cohomology in arbitrarily negative degrees. The proof uses normal deformation before Fourier transformation. Consequently its inverse-image argument requires no Fourier adjunction normalization.
 
-All manifolds below are finite dimensional, Hausdorff, countable at infinity and smooth. A submanifold is locally closed; work in an open ambient neighborhood where it is closed. The coefficient ring $k$ is commutative, unital and of finite global dimension. No constructibility, finite generation, perfectness or field hypothesis is imposed. Write $D(k_X)$ for the classical unbounded derived category. Write $\operatorname{SS}_{\mathrm u}$ for the neighborhood-uniform $C^1$ support-test definition in [the unbounded bridge](unbounded-range-bridge.md#SH02-UR-MICROSUPPORT). A vanishing test means vanishing in every cohomological degree on the same prescribed cotangent neighborhood.
+All manifolds below are finite dimensional, Hausdorff, countable at infinity and smooth. A submanifold is locally closed; work in an open ambient neighborhood where it is closed. The coefficient ring $k$ is commutative, unital and of finite global dimension. No constructibility, finite generation, perfectness or field hypothesis is imposed. Write $D(k_X)$ for the classical unbounded derived category. Write $\operatorname{SS}_{\mathrm u}$ for the neighborhood-uniform $C^1$ support-test definition in [the unbounded bridge](../../SH02-unbounded-range-bridge.html#SH02-UR-MICROSUPPORT). A vanishing test means vanishing in every cohomological degree on the same prescribed cotangent neighborhood.
 
-The geometric operations $f^\#$ and $\widehat+$ have the smooth-coordinate sequence definitions in [characteristic estimates](characteristic-estimates.md#SH02-CHE-OPERATIONS). In particular,
+The geometric operations $f^\#$ and $\widehat+$ have the smooth-coordinate sequence definitions in [characteristic estimates](../../SH02-characteristic-estimates.html#SH02-CHE-OPERATIONS). In particular,
 
 \[
 (x_0;\zeta_0)\in A\widehat+B
@@ -21,7 +21,7 @@ for suitable sequences in a chart. The covectors need not remain bounded. Negati
 
 ## SH02-UCE-WINDOWS — Extending a functor identity without truncating a microsupport bound
 
-We use the following exact prerequisites from [UR](unbounded-range-bridge.md): the finite flat-soft model of $Rf_!$, its unbounded right adjoint, the unbounded projection formula, K-injective representatives with injective terms, finite ordinary and supported cohomological bounds on manifolds and their closed subsets, compact-neighborhood continuity, the unbounded open-union Milnor sequence, and the unbounded noncharacteristic deformation theorem. The finite-cohomological-dimension acyclic-complex theorem is the exact import [Stacks, Tag 07K7](https://stacks.math.columbia.edu/tag/07K7). The existing bounded proper base-change, localization and constant-sheaf adjunction comparisons retain their actual natural maps.
+We use the following exact prerequisites from [UR](../../SH02-unbounded-range-bridge.html): the finite flat-soft model of $Rf_!$, its unbounded right adjoint, the unbounded projection formula, K-injective representatives with injective terms, finite ordinary and supported cohomological bounds on manifolds and their closed subsets, compact-neighborhood continuity, the unbounded open-union Milnor sequence, and the unbounded noncharacteristic deformation theorem. The finite-cohomological-dimension acyclic-complex theorem is the exact import [Stacks, Tag 07K7](https://stacks.math.columbia.edu/tag/07K7). The existing bounded proper base-change, localization and constant-sheaf adjunction comparisons retain their actual natural maps.
 
 Here is a useful precise extension rule. Suppose triangulated functors $T_i$ have one common finite cohomological amplitude $[a,b]$. For a fixed output degree $q$, choose integers $l,u$ with
 
@@ -58,7 +58,7 @@ The bounded comparison is the compact-support comparison `SH02-AE-LIMITS`: on th
 
 ## SH02-UCE-DIRECTIONAL — The directional projector on the full derived category
 
-Let $E$ be a finite-dimensional real vector space, let $C\subset E$ be a closed convex cone, and let $q:E\to E_C$ be the identity into the topology of ordinary opens invariant under addition by $C$. The cone may contain lines. The following assertions of [the directional-topology lesson](cone-topology.md) hold with $D$ in place of $D^+$:
+Let $E$ be a finite-dimensional real vector space, let $C\subset E$ be a closed convex cone, and let $q:E\to E_C$ be the identity into the topology of ordinary opens invariant under addition by $C$. The cone may contain lines. The following assertions of [the directional-topology lesson](../../SH02-cone-topology.html) hold with $D$ in place of $D^+$:
 
 \[
 A\xrightarrow{\sim}Rq_*q^{-1}A,
@@ -306,7 +306,7 @@ Finally the boundary estimate applied to a cutoff adds a vertical covector of th
 
 ## SH02-UCE-SPECIALIZATION — Normal deformation with no cohomological endpoints
 
-For a closed embedding $i:M\hookrightarrow X$, set $E=N_MX$ and use the deformation maps of [specialization](specialization.md). Define
+For a closed embedding $i:M\hookrightarrow X$, set $E=N_MX$ and use the deformation maps of [specialization](../../SH02-specialization.html). Define
 
 \[
 \nu_MF=s^{-1}Rj_*p_+^{-1}F\in D(k_E).

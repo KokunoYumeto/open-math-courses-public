@@ -460,7 +460,16 @@ These path arguments apply to bounded-generator constructions. A general strictl
 
 ## Double Thom maps and Takai duality
 
-The double Thom compatibility is the product assertion conditional on the bivariant prerequisite *Descent and the K-theory of crossed products*, in *Kasparov's KK-theory*. The additional compatibility requires the full Fack–Skandalis proof, agreement with the Wiener–Hopf normalization, and the exercise proving the dual Thom product. In the source conventions of [Connes 1994], the assertion is:
+The product theorem of [Connes 1994, Theorem 8, p. 179] includes both parities and the regular-module identification of Theorem 6. Its suspension convention must be specified when it is expressed through this course's right-Clifford Thom class. We realize that positive double-product normalization by
+\[
+ \varphi_{C,\alpha}^{\,i}:=\Phi_\alpha^i
+       =(-1)^i\varphi_\alpha^i=(-1)^i\Gamma_\alpha^i,
+ \qquad i\in\mathbb Z/2.
+ \tag{12.32a}
+\]
+Thus its trivial-action values are the positive maps \(\beta_A\) and \(\theta_A\), whereas the suspension-compatible family \(\varphi=\Gamma\) of (12.27)–(12.30) has odd value \(-\theta_A\). The source describes its odd map by suspension without specifying our right-Clifford matrix order. Formula (12.32a) states the conversion used here; it does not identify two different odd conventions merely because both are called the Thom map.
+
+**Theorem 12.6 (double product with explicit normalization).** Let \(A\) be any C*-algebra, with a strongly continuous real action \(\alpha\). In the regular-module Takai identification \(\Psi_C\),
 \[
  \begin{gathered}
  \varphi_{C,\alpha}:K_i(A)\ \cong\
@@ -470,13 +479,47 @@ The double Thom compatibility is the product assertion conditional on the bivari
  \end{gathered}
  \tag{12.32}
 \]
-Here \(s_A\) is the rank-one stabilization map, and \(\Psi_C\) is the regular-module double-duality identification of that source's Theorem 6, p. 178. Both parities are included. The required proof is the Connes–Thom section and the dual-product exercise of the KK lesson just named. Its required comparison identifies the KK Thom classes with these source-convention maps, including the suspension sign and the Takai identification. This is an existing proof prerequisite not included in this edition; we do not assert that its proof has already been written. Its inputs from this course are the Thom theorem and its normalization in Lesson 11, not (12.32), so the product proof does not assume the compatibility being supplied.
+Here \(s_A\) is induced by \(a\mapsto a\otimes p\) for any rank-one projection \(p\). With the unmodified suspension-compatible family, the product is instead
+\[
+ (\Psi_C)_*\Gamma_{\widehat\alpha}^{i+1}\Gamma_\alpha^i
+       =-s_A.
+ \tag{12.32b}
+\]
+The superscript \(i+1\) in these formulas is reduced modulo two.
 
-The KK proof applies to separable coefficient algebras. Here is the extension to the arbitrary coefficients of this course. A countable subset of \(A\) lies in a separable \(\alpha\)-invariant C*-subalgebra: generate from its rational-time translates and adjoints. Point-norm continuity makes the closed generated algebra invariant under every real time. These subalgebras are directed and have dense union. Their full crossed products embed by reduced embedding and amenability of \(\mathbb R\), as proved in Lessons 2 and 4. Compact-support coefficient approximation makes their union dense in \(A\rtimes\mathbb R\); the same assertion applies to the dual products and to stabilization.
+**Proof for separable coefficients.** The real Thom cycle, its coefficient naturality and its inactive-factor compatibility are proved in [KT-KK-18, Propositions 4.1–4.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-KK/KT-KK-18.html#4-the-real-thom-operator). In that lesson let \(t_\alpha\in KK^1(A,B_\alpha)\), where \(B_\alpha=A\rtimes_\alpha\mathbb R\), and let \(m_\alpha\in KK(B_\alpha\rtimes_{\widehat\alpha}\mathbb R,A)\) be the Takai Morita class. [Section 5, equation (5.3) and Lemma 5.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-KK/KT-KK-18.html#5-the-scalar-pair-and-the-double-dual-convention) fixes
+\[
+ d_\alpha=-t_{\widehat\alpha}\widehat\otimes m_\alpha.
+ \tag{12.32c}
+\]
+Its scalar proof uses the positive-frequency Cayley class and the inverse differentiation operator \(-P\), with \(P=-i\,d/d\xi\). Their product is the graded oscillator with one even Gaussian zero mode and no odd zero mode. The raw dual cycle has \(+P\), giving the opposite index. The reverse product uses the explicit Bott inverse homotopy, not an inference from a one-sided inverse.
 
-The projection construction, suspension extension and regular-module Takai maps commute with these coefficient inclusions. For the first this follows from (12.27)-(12.30) and Thom naturality; for Takai it follows from its coefficient kernel formula. The finite-matrix and compact-homotopy continuity proof in Lesson 11 puts every input K-class at one separable stage. Applying the separable product identity there and then its inclusion proves (12.32) for arbitrary \(A\). This passage uses no KK group for a nonseparable algebra.
+[Theorem 6.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-KK/KT-KK-18.html#6-the-fack-skandalis-argument) proves both \(t_\alpha\widehat\otimes d_\alpha=1_A\) and \(d_\alpha\widehat\otimes t_\alpha=1_{B_\alpha}\). In its rescaling argument \(\rho_t f(r)=\alpha_{rt}(f(r))\), only the *double* crossed evaluation is identified with stabilized coefficient evaluation; no nonequivariant contraction is incorrectly crossed once. Substituting (12.32c) into the first inverse identity gives
+\[
+ t_\alpha\widehat\otimes t_{\widehat\alpha}
+                 \widehat\otimes m_\alpha=-1_A.
+ \tag{12.32d}
+\]
+The same section's Proposition 6.2 identifies right multiplication by \(t_\alpha\) on each \(K_i\) with precisely \(\Gamma_\alpha^i\), including its odd negative Bott value. For \(x\in K_i(A)\), associativity therefore sends the double \(\Gamma\) product, followed by \(m_\alpha\), to \(-x\). Morita transport is inverse to rank-one stabilization, proving (12.32b) in the Takai model of Lesson 8.
 
-The source symbols \(\varphi_C,\Psi_C\) in (12.32) specify its normalization. Passing to another Fourier model or to the positive-both-parities family \(\Phi\) requires the corresponding identifications and the signed conversion in (12.31). The extension argument above proves choice independence and invertibility directly; the planned product proof supplies the additional double compatibility.
+We check the model rather than suppress it. The regular-module map in [Connes 1994, pp. 176–178] acts on \(L^2(\mathbb R)\otimes A\) by
+\[
+ \begin{aligned}
+ \pi(a)\xi(x)&=\alpha_{-x}(a)\xi(x),\\
+ L_s\xi(x)&=\xi(x-s),\\
+ M_u\xi(x)&=e^{2\pi iux}\xi(x).
+ \end{aligned}
+ \tag{12.32e}
+\]
+The right-module unitary \((J\xi)(x)=\xi(-x)\) conjugates these three operators to multiplication by \(\alpha_x(a)\), translation \(\xi(x+s)\), and multiplication by \(e^{-2\pi iux}\), respectively. These are exactly [Lesson 8, equation (8.30)](KT-CP-08.md#finite-groups-integer-and-circle-actions-and-stability). Equality on the integrated dense core identifies the completed maps. Thus \(\operatorname{Ad}J\circ\Psi_C\) is that lesson's \(\Theta_\alpha\). Conjugation by this multiplier unitary acts trivially on K-theory by the matrix rotation argument (12.21)–(12.22), so the two maps give the same stabilized K-class. The KK lesson writes the characters as \(e^{ist}\): its dual parameter is \(s=2\pi u\) and its frequency is \(\xi=2\pi x\). This positive change of scale preserves both orientations; on the second crossed-product core the Haar-normalized map is \(k(u)\mapsto(2\pi)^{-1}k(s/(2\pi))\). Positive scalar dilations of the frequency operator give the same bounded-transform class by functional-calculus homotopy. There is no additional sign from this change of units.
+
+Finally the two factors introduced by (12.32a) have product \((-1)^{i+1}(-1)^i=-1\). Multiplying (12.32b) by that sign proves the positive identity (12.32) in both parities. Invertibility of each map already follows from (12.27)–(12.31); neither choice independence nor invertibility is being deduced from an unproved double-product formula.
+
+**Passage to arbitrary coefficients.** A countable subset of \(A\) lies in a separable \(\alpha\)-invariant C*-subalgebra: generate from its rational-time translates and adjoints. Point-norm continuity makes the closed generated algebra invariant under every real time. These subalgebras are directed and have dense union. Their full crossed products embed by reduced embedding and amenability of \(\mathbb R\), as proved in Lessons 2 and 4. Compact-support coefficient approximation makes their union dense in \(A\rtimes\mathbb R\); the same assertion applies to the dual products and to stabilization.
+
+The projection construction, suspension extension and regular-module Takai maps commute with these coefficient inclusions. For the first this follows from (12.27)–(12.30) and Thom naturality; for Takai it follows from its coefficient kernel formula. The finite-matrix and compact-homotopy continuity proof in Lesson 11 puts every input K-class at one separable stage. The parity factors are constant and the same inversion unitary is used at each stage. Applying the separable identity and then inclusion proves (12.32) and (12.32b) for arbitrary \(A\). No KK group of a nonseparable coefficient algebra is required. ∎
+
+The supplied KK proofs are online programme dependencies, not embedded in the KT-CP download. Their exact sections are linked above. They use the earlier crossed-product constructions and Wiener–Hopf normalization, not the double-product identity proved in this section.
 
 ## Examples
 
@@ -543,9 +586,9 @@ We use the full integrated-form and ideal exactness results of Lesson 1, the reg
 
 The normalized continuous twisted-action algebra, its regular norm, the full and reduced stabilization maps, and the projective example are proved here. No broader measurable or Green normal-subgroup twisted formulation is asserted by that theorem.
 
-The source-convention double-duality compatibility (12.32), including its normalization calculation, is supplied by the specified bivariant KK product lesson identified above. Its arbitrary-coefficient extension is proved here. We have proved the choice independence and the comparison (12.27), (12.30) directly. We do not import KK-theoretic uniqueness to replace either proof.
+Theorem 12.6 proves the normalized double-duality identity (12.32), using [KT-KK-18, Theorem 6.1 and Proposition 6.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-KK/KT-KK-18.html#6-the-fack-skandalis-argument), with the parity conversion, regular-module comparison and arbitrary-coefficient extension given here. The unmodified family satisfies (12.32b), not the positive identity. Choice independence and the comparison (12.27), (12.30) were proved directly and are not replaced by KK-theoretic uniqueness.
 
-[Connes 1994] A. Connes, *Noncommutative Geometry*, Chapter II, Appendix C, Definition 5 and Theorem 6, p. 178; Lemma 7 and Theorem 8, p. 179. [Author's electronic edition](https://alainconnes.org/wp-content/uploads/book94bigpdf.pdf). The product theorem is specified in (12.32), with its required bivariant proof identified above.
+[Connes 1994] A. Connes, *Noncommutative Geometry*, Chapter II, Appendix C, Definition 5 and Theorem 6, p. 178; Lemma 7 and Theorem 8, p. 179. [Author's electronic edition](https://alainconnes.org/wp-content/uploads/book94bigpdf.pdf). The positive product theorem is realized in the explicit normalization (12.32a) and proved in Theorem 12.6, including the regular-module comparison (12.32e).
 
 [Blackadar 1998] B. Blackadar, *K-Theory for Operator Algebras*, second edition, §19.3, Definition 19.3.3, Examples 19.3.4 and Theorem 19.3.6, pp. 191–192. These describe the Thom element, examples and the stronger separable KK equivalence. We prove cocycle compatibility directly through the Wiener–Hopf extension; it is not imported from those locators. [Author's second edition](https://www.bruceblackadar.com/Mathematics/book6.pdf).
 

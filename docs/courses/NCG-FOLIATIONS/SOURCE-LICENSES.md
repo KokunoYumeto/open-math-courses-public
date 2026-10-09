@@ -35,3 +35,5 @@ Section 11D / PT.1–PT.28 / CT.1–CT.8 and Proposition 6.8g / NP.1–NP.12 inc
 
 
 Proposition 6.8h / QB.1–QB.15 and Figure 6.8e retain the entire independently authored completed-duality and positive boundary-kernel proof, all three complete solved Exercises 31–33 and complete portable reproduction sources. Original expression alone is CC0 1.0; exact unchanged DejaVu/STIX fonts and glyphs, both full font notices and full actual software notices retain separate component terms. Existing human source credits are preserved.
+
+The weighted original normal cycle, Theorem 11BM.1, WN.1–WN.11, WB.1–WB.6, Exercises 291–293 and Figure 11BM are original CC0 mathematical text and diagram expression. The exact full inverse Spin-c and Clifford conventions are those proved in Theorem 7.17. Connes is credited for the historical fundamental-class problem. The new generator uses only the Python standard library; the SVG incorporates no font bytes or glyph outlines, and installed rendering software/fonts retain their terms. The theorem constructs a maximal normal cycle and its original positive disk calibration; it does not relabel that representation as reduced.

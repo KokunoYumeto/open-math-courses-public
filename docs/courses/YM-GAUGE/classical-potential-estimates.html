@@ -1,0 +1,925 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ordinary heat smoothing and physical-time bounds</title><link rel="stylesheet" href="reader.css"></head><body><nav><a href="index.html">Course contents</a><a href="src/YM-F09-potential-estimates.md">Lesson source</a><span class="unlinked">Source and reader download</span></nav><main><h1 id="ordinary-heat-smoothing-and-physical-time-bounds">Ordinary heat
+smoothing and physical-time bounds</h1>
+<p>The <a href="classical-heat-analysis.html">heat-analysis chapter</a>
+controlled covariant curvature derivatives. The <a href="classical-caloric-gauge.html">caloric-gauge chapter</a>
+constructed the regular and rough spatial solution maps. The <a href="classical-dynamic-heat.html">dynamic heat chapter</a> then
+constructed the original time component and the gauge in which it
+vanishes at a prescribed heat endpoint.</p>
+<p>This chapter proves every ordinary smoothing order of the DeTurck
+potential and uses the exact endpoint gauge to control the spatial
+potential during physical evolution. Its main calculations are an
+induction whose right side uses only earlier derivative orders, and a
+finite polynomial operation which retains every ordinary-to-covariant
+derivative placement.</p>
+<p>Keep all original spatial coordinates, physical time t, speed c, heat
+parameter s, reference length
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℓ</mi><annotation encoding="application/x-tex">\ell</annotation></semantics></math>,
+trace pairing and closed matrix group
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>⊂</mo><mi>U</mi><mo form="prefix" stretchy="false">(</mo><mi>N</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">G\subset U(N)</annotation></semantics></math>.
+Physical time and heat time retain their different units. All derivative
+words are ordered; all component norms are full tuple norms unless an
+intermediate component bound is explicitly stated. The original Sobolev
+constants are</p>
+<div class="equation" id="eq-HP-1"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>S</mi></msub><mo>=</mo><mfrac><mn>4</mn><msqrt><mn>3</mn></msqrt></mfrac><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>C</mi><mi>M</mi></msub><mo>=</mo><mn>2</mn><msqrt><mrow><msub><mi>A</mi><mo>*</mo></msub><msub><mi>B</mi><mo>*</mo></msub></mrow></msqrt><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>A</mi><mo>*</mo></msub><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>4</mn><mi>π</mi><mi>/</mi><mn>3</mn><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>1</mn><mi>/</mi><mn>6</mn></mrow></msup><mo>,</mo><mspace width="1.0em"></mspace><msub><mi>B</mi><mo>*</mo></msub><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>4</mn><mi>π</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mn>20</mn><mi>π</mi><mi>/</mi><mn>3</mn><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>5</mn><mi>/</mi><mn>6</mn></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+C_S=\frac4{\sqrt3},\qquad C_M=2\sqrt{A_*B_*},\qquad
+A_*=(4\pi/3)^{-1/6},\quad
+B_*=(4\pi)^{-1}(20\pi/3)^{5/6}.
+\tag{HP.1}
+</annotation></semantics></math></div><span class="eq-number">(HP.1)</span></div>
+<p>The human-source comparison is Sung-Jin Oh’s <a href="https://arxiv.org/abs/1210.1557v2"><em>Finite energy global
+well-posedness of the Yang–Mills equations on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="double-struck">ℝ</mi><mrow><mn>1</mn><mo>+</mo><mn>3</mn></mrow></msup><annotation encoding="application/x-tex">\mathbb R^{1+3}</annotation></semantics></math></em>,
+arXiv:1210.1557v2</a>, especially its initial-data and fixed-time
+estimates, and <a href="https://arxiv.org/abs/1210.1558v2"><em>Gauge
+choice for the Yang–Mills equations using the Yang–Mills heat flow and
+local well-posedness in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>H</mi><mn>1</mn></msup><annotation encoding="application/x-tex">H^1</annotation></semantics></math></em>,
+arXiv:1210.1558v2</a>. The complete receiving derivations, polynomial
+coefficients, examples, exercises and exposition here are independently
+written.</p>
+<aside aria-label="Contents" class="contents"><strong>In this lesson</strong><ol><li><a href="#full-derivative-tuples-and-the-initial-two-orders">Full
+derivative tuples and the initial two orders</a></li><li><a href="#every-ordered-derivative-of-q-and-t">Every ordered derivative
+of Q and T</a></li><li><a href="#the-precise-weighted-forcing-bounds-close-below-order-m">The
+precise weighted forcing bounds close below order m</a></li><li><a href="#energy-induction-and-an-explicit-recursive-bound">Energy
+induction and an explicit recursive bound</a></li><li><a href="#passage-to-rough-data-at-positive-heat-time">Passage to rough
+data at positive heat time</a></li><li><a href="#the-actual-constructed-fields-and-constants">The actual
+constructed fields and constants</a></li><li><a href="#exact-expression-before-taking-norms">Exact expression before
+taking norms</a></li><li><a href="#an-explicit-finite-polynomial-records-every-norm-contribution">An
+explicit finite polynomial records every norm contribution</a></li><li><a href="#triangular-physical-time-polynomials">Triangular
+physical-time polynomials</a></li><li><a href="#a-gaussian-with-every-derivative-and-endpoint-retained">A
+Gaussian with every derivative and endpoint retained</a></li><li><a href="#exercises-with-complete-solutions">Exercises with complete
+solutions</a></li><li><a href="#from-these-bounds-to-the-remaining-evolution-argument">From
+these bounds to the remaining evolution argument</a></li></ol></aside><h2 id="full-derivative-tuples-and-the-initial-two-orders">1. Full
+derivative tuples and the initial two orders</h2>
+<p>Use the actual solution of HC/HG, with the precise heat length
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mi>R</mi></msub><annotation encoding="application/x-tex">S_R</annotation></semantics></math>
+from HG.5 and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mn>1</mn></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>&lt;</mo><mi>R</mi><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">a_1(A_0)&lt;R/4</annotation></semantics></math>
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>S</mi><mo>≤</mo><msub><mi>S</mi><mi>R</mi></msub></mrow><annotation encoding="application/x-tex">0&lt;S\le S_R</annotation></semantics></math>.
+Retain the full ordinary derivative norms
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>j</mi></msub><mo>=</mo><mo form="postfix" stretchy="false">∥</mo><msup><mi>∂</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>j</mi><mo form="postfix" stretchy="false">)</mo></mrow></msup><mi>A</mi><msub><mo form="postfix" stretchy="false">∥</mo><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">a_j=\|\partial^{(j)}A\|_2</annotation></semantics></math>
+and set</p>
+<div class="equation" id="eq-HP-2"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="sans-serif">𝖠</mi><mi>m</mi></msub><mo>=</mo><munder><mi mathvariant="normal">sup</mi><mrow><mn>0</mn><mo>&lt;</mo><mi>s</mi><mo>≤</mo><mi>S</mi></mrow></munder><msup><mi>s</mi><mrow><mi>m</mi><mi>/</mi><mn>2</mn></mrow></msup><msub><mi>a</mi><mrow><mi>m</mi><mo>+</mo><mn>1</mn></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>s</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi mathvariant="sans-serif">𝖡</mi><mi>m</mi></msub><mo>=</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><msubsup><mo>∫</mo><mn>0</mn><mi>S</mi></msubsup><msup><mi>s</mi><mi>m</mi></msup><msub><mi>a</mi><mrow><mi>m</mi><mo>+</mo><mn>2</mn></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>s</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mi>d</mi><mi>s</mi><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mo>,</mo><mspace width="1.0em"></mspace><msub><mi mathvariant="sans-serif">𝖳</mi><mi>m</mi></msub><mo>=</mo><msub><mi mathvariant="sans-serif">𝖠</mi><mi>m</mi></msub><mo>+</mo><msub><mi mathvariant="sans-serif">𝖡</mi><mi>m</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\mathsf A_m=\sup_{0&lt;s\le S}s^{m/2}a_{m+1}(s),\qquad
+\mathsf B_m=\left(\int_0^S s^m a_{m+2}(s)^2ds\right)^{1/2},
+\quad\mathsf T_m=\mathsf A_m+\mathsf B_m.
+\tag{HP.2}
+</annotation></semantics></math></div><span class="eq-number">(HP.2)</span></div>
+<p>HC/HG prove
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="sans-serif">𝖳</mi><mn>0</mn></msub><mo>≤</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">\mathsf T_0\le R</annotation></semantics></math>
+and</p>
+<div class="equation" id="eq-HP-3"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="sans-serif">𝖳</mi><mn>1</mn></msub><mo>≤</mo><msub><mi>Y</mi><mi>R</mi></msub><mo>=</mo><mn>4</mn><mi>R</mi><mo>+</mo><mn>4</mn><mo form="prefix" stretchy="false">(</mo><msup><mi>K</mi><mn>2</mn></msup><mo>+</mo><mn>3</mn><mi>J</mi><mo form="postfix" stretchy="false">)</mo><msqrt><mi>S</mi></msqrt><mspace width="0.167em"></mspace><msup><mi>R</mi><mn>3</mn></msup><mo>,</mo><mspace width="1.0em"></mspace><mi>K</mi><mo>=</mo><mn>54</mn><mo form="prefix" stretchy="false">(</mo><msubsup><mi>C</mi><mi>S</mi><mrow><mn>3</mn><mi>/</mi><mn>2</mn></mrow></msubsup><mo>+</mo><msub><mi>C</mi><mi>M</mi></msub><msub><mi>C</mi><mi>S</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="1.0em"></mspace><mi>J</mi><mo>=</mo><mn>36</mn><msubsup><mi>C</mi><mi>S</mi><mn>3</mn></msubsup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\mathsf T_1\le Y_R
+=4R+4(K^2+3J)\sqrt S\,R^3,
+\quad K=54(C_S^{3/2}+C_MC_S),\quad J=36C_S^3 .
+\tag{HP.3}
+</annotation></semantics></math></div><span class="eq-number">(HP.3)</span></div>
+<p>No
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math>
+norm of the undifferentiated original potential enters these bounds. All
+time powers and original constants are retained.</p>
+<h2 id="every-ordered-derivative-of-q-and-t">2. Every ordered derivative
+of Q and T</h2>
+<p>The maps are exactly those in HG.4: for each spatial component,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>,</mo><mi>B</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>i</mi></msub><mo>=</mo><msub><mo>∑</mo><mi>j</mi></msub><mo form="prefix" stretchy="false">{</mo><mn>2</mn><mo form="prefix" stretchy="false">[</mo><msub><mi>A</mi><mi>j</mi></msub><mo>,</mo><msub><mi>∂</mi><mi>j</mi></msub><msub><mi>B</mi><mi>i</mi></msub><mo form="postfix" stretchy="false">]</mo><mo>−</mo><mo form="prefix" stretchy="false">[</mo><msub><mi>A</mi><mi>j</mi></msub><mo>,</mo><msub><mi>∂</mi><mi>i</mi></msub><msub><mi>B</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">]</mo><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">Q(A,B)_i=\sum_j\{2[A_j,\partial_jB_i]-[A_j,\partial_iB_j]\}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>,</mo><mi>B</mi><mo>,</mo><mi>C</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>i</mi></msub><mo>=</mo><msub><mo>∑</mo><mi>j</mi></msub><mo form="prefix" stretchy="false">[</mo><msub><mi>A</mi><mi>j</mi></msub><mo>,</mo><mo form="prefix" stretchy="false">[</mo><msub><mi>B</mi><mi>j</mi></msub><mo>,</mo><msub><mi>C</mi><mi>i</mi></msub><mo form="postfix" stretchy="false">]</mo><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">T(A,B,C)_i=\sum_j[A_j,[B_j,C_i]]</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>Q</mi><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>,</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mi>T</mi><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>,</mo><mi>A</mi><mo>,</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">N(A)=Q(A,A)+T(A,A,A)</annotation></semantics></math>.</p>
+<p>For a derivative word I of length m, differentiation of Q gives</p>
+<div class="equation" id="eq-HP-4"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>I</mi></msub><mi>Q</mi><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>,</mo><mi>A</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>i</mi></msub><mo>=</mo><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mn>3</mn></munderover><munder><mo>∑</mo><mrow><mi>J</mi><mo>⊆</mo><mo form="prefix" stretchy="false">[</mo><mi>m</mi><mo form="postfix" stretchy="false">]</mo></mrow></munder><mo form="prefix" stretchy="false">{</mo><mn>2</mn><mo form="prefix" stretchy="false">[</mo><msub><mi>∂</mi><msub><mi>I</mi><mi>J</mi></msub></msub><msub><mi>A</mi><mi>j</mi></msub><mo>,</mo><msub><mi>∂</mi><msub><mi>I</mi><msup><mi>J</mi><mi>c</mi></msup></msub></msub><msub><mi>∂</mi><mi>j</mi></msub><msub><mi>A</mi><mi>i</mi></msub><mo form="postfix" stretchy="false">]</mo><mo>−</mo><mo form="prefix" stretchy="false">[</mo><msub><mi>∂</mi><msub><mi>I</mi><mi>J</mi></msub></msub><msub><mi>A</mi><mi>j</mi></msub><mo>,</mo><msub><mi>∂</mi><msub><mi>I</mi><msup><mi>J</mi><mi>c</mi></msup></msub></msub><msub><mi>∂</mi><mi>i</mi></msub><msub><mi>A</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">]</mo><mo form="postfix" stretchy="false">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\partial_I Q(A,A)_i=
+\sum_{j=1}^3\sum_{J\subseteq[m]}
+\{2[\partial_{I_J}A_j,\partial_{I_{J^c}}\partial_jA_i]
+-[\partial_{I_J}A_j,\partial_{I_{J^c}}\partial_iA_j]\}.
+\tag{HP.4}
+</annotation></semantics></math></div><span class="eq-number">(HP.4)</span></div>
+<p>Each subword preserves its original order. For a fixed subset
+cardinality h there are exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="true">(</mo><mfrac linethickness="0"><mi>m</mi><mi>h</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">{m\choose h}</annotation></semantics></math>
+terms. The three spatial j values, coefficient sum three, bracket factor
+two and full
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>3</mn><mrow><mi>m</mi><mo>+</mo><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">3^{m+1}</annotation></semantics></math>
+output tuple give the safe explicit constant</p>
+<div class="equation" id="eq-HP-5"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>Q</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>18</mn><mspace width="0.167em"></mspace><msup><mn>3</mn><mrow><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+C_Q(m)=18\,3^{(m+1)/2}.
+\tag{HP.5}
+</annotation></semantics></math></div><span class="eq-number">(HP.5)</span></div>
+<p>The
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">h=0</annotation></semantics></math>
+term uses the actual A in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mi>∞</mi></msup><annotation encoding="application/x-tex">L^\infty</annotation></semantics></math>
+and the full
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mrow><mi>m</mi><mo>+</mo><mn>1</mn></mrow></msub><annotation encoding="application/x-tex">a_{m+1}</annotation></semantics></math>
+in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math>.
+For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">h\ge1</annotation></semantics></math>
+let</p>
+<div class="equation" id="eq-HP-6"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo form="prefix" stretchy="false">(</mo><mi>h</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="normal">min</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">{</mo><mi>h</mi><mo>,</mo><mi>m</mi><mo>−</mo><mi>h</mi><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="false">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+r(h)=\min\{h,m-h+1\}.
+\tag{HP.6}
+</annotation></semantics></math></div><span class="eq-number">(HP.6)</span></div>
+<p>Put the factor of derivative order r in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>3</mn></msup><annotation encoding="application/x-tex">L^3</annotation></semantics></math>
+and the other in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>6</mn></msup><annotation encoding="application/x-tex">L^6</annotation></semantics></math>.
+The bracket norm permits this exchange without asserting equality of the
+ordered brackets. The bound is</p>
+<div class="equation" id="eq-HP-7"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>C</mi><mi>S</mi><mrow><mn>3</mn><mi>/</mi><mn>2</mn></mrow></msubsup><mo form="prefix" stretchy="false">(</mo><msub><mi>a</mi><mrow><mi>r</mi><mo form="prefix" stretchy="false">(</mo><mi>h</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><msub><mi>a</mi><mrow><mi>r</mi><mo form="prefix" stretchy="false">(</mo><mi>h</mi><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mn>1</mn></mrow></msub><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><msub><mi>a</mi><mrow><mi>m</mi><mo>−</mo><mi>r</mi><mo form="prefix" stretchy="false">(</mo><mi>h</mi><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mn>2</mn></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+C_S^{3/2}
+(a_{r(h)}a_{r(h)+1})^{1/2}a_{m-r(h)+2}.
+\tag{HP.7}
+</annotation></semantics></math></div><span class="eq-number">(HP.7)</span></div>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">m\ge2</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo form="prefix" stretchy="false">(</mo><mi>h</mi><mo form="postfix" stretchy="false">)</mo><mo>≤</mo><mi>m</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">r(h)\le m-1</annotation></semantics></math>.</p>
+<p>For the trilinear term retain all ordered assignments of the
+derivative positions to its three factors:</p>
+<div class="equation" id="eq-HP-8"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>I</mi></msub><mi>T</mi><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>,</mo><mi>A</mi><mo>,</mo><mi>A</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>i</mi></msub><mo>=</mo><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mn>3</mn></munderover><munder><mo>∑</mo><mrow><msub><mi>J</mi><mn>1</mn></msub><mo>⊔</mo><msub><mi>J</mi><mn>2</mn></msub><mo>⊔</mo><msub><mi>J</mi><mn>3</mn></msub><mo>=</mo><mo form="prefix" stretchy="false">[</mo><mi>m</mi><mo form="postfix" stretchy="false">]</mo></mrow></munder><mo form="prefix" stretchy="false">[</mo><msub><mi>∂</mi><msub><mi>I</mi><msub><mi>J</mi><mn>1</mn></msub></msub></msub><msub><mi>A</mi><mi>j</mi></msub><mo>,</mo><mo form="prefix" stretchy="false">[</mo><msub><mi>∂</mi><msub><mi>I</mi><msub><mi>J</mi><mn>2</mn></msub></msub></msub><msub><mi>A</mi><mi>j</mi></msub><mo>,</mo><msub><mi>∂</mi><msub><mi>I</mi><msub><mi>J</mi><mn>3</mn></msub></msub></msub><msub><mi>A</mi><mi>i</mi></msub><mo form="postfix" stretchy="false">]</mo><mo form="postfix" stretchy="false">]</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\partial_I T(A,A,A)_i=
+\sum_{j=1}^3\sum_{J_1\sqcup J_2\sqcup J_3=[m]}
+[\partial_{I_{J_1}}A_j,
+ [\partial_{I_{J_2}}A_j,\partial_{I_{J_3}}A_i]] .
+\tag{HP.8}
+</annotation></semantics></math></div><span class="eq-number">(HP.8)</span></div>
+<p>The multiplicity at cardinalities (h,k,l) is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>!</mi><mi>/</mi><mo form="prefix" stretchy="false">(</mo><mi>h</mi><mi>!</mi><mi>k</mi><mi>!</mi><mi>l</mi><mi>!</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">m!/(h!k!l!)</annotation></semantics></math>.
+The nested bracket factor four, j-sum three and full output tuple
+give</p>
+<div class="equation" id="eq-HP-9"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>T</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>12</mn><mspace width="0.167em"></mspace><msup><mn>3</mn><mrow><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+C_T(m)=12\,3^{(m+1)/2}.
+\tag{HP.9}
+</annotation></semantics></math></div><span class="eq-number">(HP.9)</span></div>
+<p>Spatial Hölder with three
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>6</mn></msup><annotation encoding="application/x-tex">L^6</annotation></semantics></math>
+factors bounds a summand by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>C</mi><mi>S</mi><mn>3</mn></msubsup><msub><mi>a</mi><mrow><mi>h</mi><mo>+</mo><mn>1</mn></mrow></msub><msub><mi>a</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><msub><mi>a</mi><mrow><mi>l</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">C_S^3 a_{h+1}a_{k+1}a_{l+1}</annotation></semantics></math>.</p>
+<h2 id="the-precise-weighted-forcing-bounds-close-below-order-m">3. The
+precise weighted forcing bounds close below order m</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="sans-serif">𝖥</mi><mi>m</mi></msub><mo>=</mo><mo form="postfix" stretchy="false">∥</mo><msup><mi>s</mi><mrow><mi>m</mi><mi>/</mi><mn>2</mn></mrow></msup><msup><mi>∂</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo></mrow></msup><mi>N</mi><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msubsup><mi>L</mi><mi>s</mi><mn>2</mn></msubsup><msubsup><mi>L</mi><mi>x</mi><mn>2</mn></msubsup></mrow></msub></mrow><annotation encoding="application/x-tex">\mathsf F_m=\|s^{m/2}\partial^{(m)}N(A)\|_{L^2_sL^2_x}</annotation></semantics></math>.
+For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">m\ge2</annotation></semantics></math>
+the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">h=0</annotation></semantics></math>
+quadratic contribution is at most</p>
+<div class="equation" id="eq-HP-10"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>M</mi></msub><msub><mi>C</mi><mi>S</mi></msub><msup><mi>S</mi><mrow><mn>1</mn><mi>/</mi><mn>4</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="sans-serif">𝖠</mi><mn>0</mn></msub><msub><mi mathvariant="sans-serif">𝖠</mi><mn>1</mn></msub><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><msub><mi mathvariant="sans-serif">𝖡</mi><mrow><mi>m</mi><mo>−</mo><mn>1</mn></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+C_MC_S S^{1/4}
+(\mathsf A_0\mathsf A_1)^{1/2}\mathsf B_{m-1}.
+\tag{HP.10}
+</annotation></semantics></math></div><span class="eq-number">(HP.10)</span></div>
+<p>Indeed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>∞</mi></msub><mo>≤</mo><msub><mi>C</mi><mi>M</mi></msub><msub><mi>C</mi><mi>S</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>a</mi><mn>1</mn></msub><msub><mi>a</mi><mn>2</mn></msub><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">A_\infty\le C_MC_S(a_1a_2)^{1/2}</annotation></semantics></math>,
+so after taking its first two weighted suprema the remaining integral
+contains
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>s</mi><mrow><mi>m</mi><mo>−</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><msubsup><mi>a</mi><mrow><mi>m</mi><mo>+</mo><mn>1</mn></mrow><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">s^{m-1/2}a_{m+1}^2</annotation></semantics></math>.
+It is bounded by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>S</mi><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><msubsup><mi mathvariant="sans-serif">𝖡</mi><mrow><mi>m</mi><mo>−</mo><mn>1</mn></mrow><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">S^{1/2}\mathsf B_{m-1}^2</annotation></semantics></math>.</p>
+<p>For the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">h\ge1</annotation></semantics></math>
+contribution the exact bound is</p>
+<div class="equation" id="eq-HP-11"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><msup><mi>s</mi><mrow><mi>m</mi><mi>/</mi><mn>2</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>a</mi><mi>r</mi></msub><msub><mi>a</mi><mrow><mi>r</mi><mo>+</mo><mn>1</mn></mrow></msub><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><msub><mi>a</mi><mrow><mi>m</mi><mo>−</mo><mi>r</mi><mo>+</mo><mn>2</mn></mrow></msub><msub><mo form="postfix" stretchy="false">∥</mo><msubsup><mi>L</mi><mi>s</mi><mn>2</mn></msubsup></msub><mo>≤</mo><msup><mi>S</mi><mrow><mn>1</mn><mi>/</mi><mn>4</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="sans-serif">𝖠</mi><mrow><mi>r</mi><mo>−</mo><mn>1</mn></mrow></msub><msub><mi mathvariant="sans-serif">𝖠</mi><mi>r</mi></msub><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><msub><mi mathvariant="sans-serif">𝖡</mi><mrow><mi>m</mi><mo>−</mo><mi>r</mi></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\|s^{m/2}(a_ra_{r+1})^{1/2}a_{m-r+2}\|_{L^2_s}
+\le S^{1/4}
+(\mathsf A_{r-1}\mathsf A_r)^{1/2}\mathsf B_{m-r}.
+\tag{HP.11}
+</annotation></semantics></math></div><span class="eq-number">(HP.11)</span></div>
+<p>To check its powers, the extracted suprema contribute
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>4</mn><mo>+</mo><mi>r</mi><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">(r-1)/4+r/4</annotation></semantics></math>,
+and the B factor contributes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo>−</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">(m-r)/2</annotation></semantics></math>.
+Their sum is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>/</mi><mn>2</mn><mo>−</mo><mn>1</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">m/2-1/4</annotation></semantics></math>;
+the remaining
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>s</mi><mrow><mn>1</mn><mi>/</mi><mn>4</mn></mrow></msup><annotation encoding="application/x-tex">s^{1/4}</annotation></semantics></math>
+is bounded by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>S</mi><mrow><mn>1</mn><mi>/</mi><mn>4</mn></mrow></msup><annotation encoding="application/x-tex">S^{1/4}</annotation></semantics></math>.
+Each index
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>−</mo><mn>1</mn><mo>,</mo><mi>r</mi><mo>,</mo><mi>m</mi><mo>−</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">r-1,r,m-r</annotation></semantics></math>
+is at most m-1.</p>
+<p>For a cubic cardinality triple (h,k,l), choose one maximum entry r,
+using the first in the original order to break ties; call the other two
+entries u,v. Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">m\ge2</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">r\ge1</annotation></semantics></math>.
+Then</p>
+<div class="equation" id="eq-HP-12"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><msup><mi>s</mi><mrow><mi>m</mi><mi>/</mi><mn>2</mn></mrow></msup><msub><mi>a</mi><mrow><mi>r</mi><mo>+</mo><mn>1</mn></mrow></msub><msub><mi>a</mi><mrow><mi>u</mi><mo>+</mo><mn>1</mn></mrow></msub><msub><mi>a</mi><mrow><mi>v</mi><mo>+</mo><mn>1</mn></mrow></msub><msub><mo form="postfix" stretchy="false">∥</mo><msubsup><mi>L</mi><mi>s</mi><mn>2</mn></msubsup></msub><mo>≤</mo><msqrt><mi>S</mi></msqrt><mspace width="0.167em"></mspace><msub><mi mathvariant="sans-serif">𝖡</mi><mrow><mi>r</mi><mo>−</mo><mn>1</mn></mrow></msub><msub><mi mathvariant="sans-serif">𝖠</mi><mi>u</mi></msub><msub><mi mathvariant="sans-serif">𝖠</mi><mi>v</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\|s^{m/2}a_{r+1}a_{u+1}a_{v+1}\|_{L^2_s}
+\le\sqrt S\,\mathsf B_{r-1}\mathsf A_u\mathsf A_v.
+\tag{HP.12}
+</annotation></semantics></math></div><span class="eq-number">(HP.12)</span></div>
+<p>The extracted powers are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn><mo>+</mo><mi>u</mi><mi>/</mi><mn>2</mn><mo>+</mo><mi>v</mi><mi>/</mi><mn>2</mn><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">(r-1)/2+u/2+v/2=(m-1)/2</annotation></semantics></math>;
+the remaining
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msqrt><mi>s</mi></msqrt><annotation encoding="application/x-tex">\sqrt s</annotation></semantics></math>
+gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msqrt><mi>S</mi></msqrt><annotation encoding="application/x-tex">\sqrt S</annotation></semantics></math>.
+Every index is at most m-1. Thus the complete bound is</p>
+<div class="equation" id="eq-HP-13"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi mathvariant="sans-serif">𝖥</mi><mi>m</mi></msub><mo>≤</mo><mrow></mrow></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><msub><mi>C</mi><mi>Q</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo><msup><mi>S</mi><mrow><mn>1</mn><mi>/</mi><mn>4</mn></mrow></msup><mrow><mo form="prefix" stretchy="true">[</mo><msub><mi>C</mi><mi>M</mi></msub><msub><mi>C</mi><mi>S</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="sans-serif">𝖠</mi><mn>0</mn></msub><msub><mi mathvariant="sans-serif">𝖠</mi><mn>1</mn></msub><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><msub><mi mathvariant="sans-serif">𝖡</mi><mrow><mi>m</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>+</mo><msubsup><mi>C</mi><mi>S</mi><mrow><mn>3</mn><mi>/</mi><mn>2</mn></mrow></msubsup><munderover><mo>∑</mo><mrow><mi>h</mi><mo>=</mo><mn>1</mn></mrow><mi>m</mi></munderover><mrow><mo form="prefix" stretchy="true">(</mo><mfrac linethickness="0"><mi>m</mi><mi>h</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="sans-serif">𝖠</mi><mrow><mi>r</mi><mo form="prefix" stretchy="false">(</mo><mi>h</mi><mo form="postfix" stretchy="false">)</mo><mo>−</mo><mn>1</mn></mrow></msub><msub><mi mathvariant="sans-serif">𝖠</mi><mrow><mi>r</mi><mo form="prefix" stretchy="false">(</mo><mi>h</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><msub><mi mathvariant="sans-serif">𝖡</mi><mrow><mi>m</mi><mo>−</mo><mi>r</mi><mo form="prefix" stretchy="false">(</mo><mi>h</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo form="postfix" stretchy="true">]</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mi>+</mi><msub><mi>C</mi><mi>T</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo><msubsup><mi>C</mi><mi>S</mi><mn>3</mn></msubsup><msqrt><mi>S</mi></msqrt><munder><mo>∑</mo><mrow><mi>h</mi><mo>+</mo><mi>k</mi><mo>+</mo><mi>l</mi><mo>=</mo><mi>m</mi></mrow></munder><mfrac><mrow><mi>m</mi><mi>!</mi></mrow><mrow><mi>h</mi><mi>!</mi><mi>k</mi><mi>!</mi><mi>l</mi><mi>!</mi></mrow></mfrac><msub><mi mathvariant="sans-serif">𝖡</mi><mrow><mi>r</mi><mo>−</mo><mn>1</mn></mrow></msub><msub><mi mathvariant="sans-serif">𝖠</mi><mi>u</mi></msub><msub><mi mathvariant="sans-serif">𝖠</mi><mi>v</mi></msub><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{split}
+\mathsf F_m\le {}&amp;
+C_Q(m)S^{1/4}\left[
+C_MC_S(\mathsf A_0\mathsf A_1)^{1/2}\mathsf B_{m-1}
++C_S^{3/2}\sum_{h=1}^m{m\choose h}
+(\mathsf A_{r(h)-1}\mathsf A_{r(h)})^{1/2}
+\mathsf B_{m-r(h)}\right]\\
+&amp;+C_T(m)C_S^3\sqrt S
+\sum_{h+k+l=m}\frac{m!}{h!k!l!}
+\mathsf B_{r-1}\mathsf A_u\mathsf A_v .
+\end{split}
+\tag{HP.13}
+</annotation></semantics></math></div><span class="eq-number">(HP.13)</span></div>
+<p>This is an explicit expression involving only earlier orders.</p>
+<h2 id="energy-induction-and-an-explicit-recursive-bound">4. Energy
+induction and an explicit recursive bound</h2>
+<p>For a regular solution pair the equation for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>∂</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo></mrow></msup><mi>A</mi></mrow><annotation encoding="application/x-tex">\partial^{(m)}A</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msup><mi>s</mi><mi>m</mi></msup><mi mathvariant="normal">Δ</mi><msup><mi>∂</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo></mrow></msup><mi>A</mi></mrow><annotation encoding="application/x-tex">-s^m\Delta\partial^{(m)}A</annotation></semantics></math>.
+Every ordered derivative is retained, and Parseval identifies the full
+Laplacian norm with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mrow><mi>m</mi><mo>+</mo><mn>2</mn></mrow></msub><annotation encoding="application/x-tex">a_{m+2}</annotation></semantics></math>.
+The complete identity is</p>
+<div class="equation" id="eq-HP-14"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msup><mi>s</mi><mi>m</mi></msup><msub><mi>a</mi><mrow><mi>m</mi><mo>+</mo><mn>1</mn></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>s</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><msubsup><mo>∫</mo><mn>0</mn><mi>s</mi></msubsup><msup><mi>r</mi><mi>m</mi></msup><msub><mi>a</mi><mrow><mi>m</mi><mo>+</mo><mn>2</mn></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>r</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mi>d</mi><mi>r</mi><mo>=</mo><mstyle displaystyle="false"><mfrac><mi>m</mi><mn>2</mn></mfrac></mstyle><msubsup><mo>∫</mo><mn>0</mn><mi>s</mi></msubsup><msup><mi>r</mi><mrow><mi>m</mi><mo>−</mo><mn>1</mn></mrow></msup><msub><mi>a</mi><mrow><mi>m</mi><mo>+</mo><mn>1</mn></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>r</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mi>d</mi><mi>r</mi><mo>+</mo><msubsup><mo>∫</mo><mn>0</mn><mi>s</mi></msubsup><msup><mi>r</mi><mi>m</mi></msup><mo form="prefix" stretchy="false">⟨</mo><msup><mi>∂</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo></mrow></msup><mi>N</mi><mo>,</mo><mi>−</mi><mi mathvariant="normal">Δ</mi><msup><mi>∂</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo></mrow></msup><mi>A</mi><mo form="postfix" stretchy="false">⟩</mo><mi>d</mi><mi>r</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\tfrac12s^m a_{m+1}(s)^2+\int_0^s r^m a_{m+2}(r)^2dr
+=\tfrac m2\int_0^s r^{m-1}a_{m+1}(r)^2dr
++\int_0^s r^m\langle\partial^{(m)}N,
+-\Delta\partial^{(m)}A\rangle dr.
+\tag{HP.14}
+</annotation></semantics></math></div><span class="eq-number">(HP.14)</span></div>
+<p>The initial weighted term vanishes for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">m\ge1</annotation></semantics></math>.
+Young gives</p>
+<div class="equation" id="eq-HP-15"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi mathvariant="sans-serif">𝖠</mi><mi>m</mi><mn>2</mn></msubsup><mo>≤</mo><mi>m</mi><msubsup><mi mathvariant="sans-serif">𝖡</mi><mrow><mi>m</mi><mo>−</mo><mn>1</mn></mrow><mn>2</mn></msubsup><mo>+</mo><msubsup><mi mathvariant="sans-serif">𝖥</mi><mi>m</mi><mn>2</mn></msubsup><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi mathvariant="sans-serif">𝖡</mi><mi>m</mi><mn>2</mn></msubsup><mo>≤</mo><mi>m</mi><msubsup><mi mathvariant="sans-serif">𝖡</mi><mrow><mi>m</mi><mo>−</mo><mn>1</mn></mrow><mn>2</mn></msubsup><mo>+</mo><msubsup><mi mathvariant="sans-serif">𝖥</mi><mi>m</mi><mn>2</mn></msubsup><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\mathsf A_m^2\le m\mathsf B_{m-1}^2+\mathsf F_m^2,\qquad
+\mathsf B_m^2\le m\mathsf B_{m-1}^2+\mathsf F_m^2,
+\tag{HP.15}
+</annotation></semantics></math></div><span class="eq-number">(HP.15)</span></div>
+<p>by taking the endpoint supremum and the final integral separately.
+Hence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="sans-serif">𝖳</mi><mi>m</mi></msub><mo>≤</mo><mn>2</mn><msqrt><mi>m</mi></msqrt><mspace width="0.167em"></mspace><msub><mi mathvariant="sans-serif">𝖳</mi><mrow><mi>m</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>+</mo><mn>2</mn><msub><mi mathvariant="sans-serif">𝖥</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">\mathsf T_m\le2\sqrt m\,\mathsf T_{m-1}+2\mathsf F_m</annotation></semantics></math>.</p>
+<p>Define
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Γ</mi><mn>0</mn></msub><mo>=</mo><mi>R</mi><mo>,</mo><msub><mi mathvariant="normal">Γ</mi><mn>1</mn></msub><mo>=</mo><msub><mi>Y</mi><mi>R</mi></msub></mrow><annotation encoding="application/x-tex">\Gamma_0=R,\Gamma_1=Y_R</annotation></semantics></math>.
+For each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">m\ge2</annotation></semantics></math>
+let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="script">ℱ</mi><mi>m</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="normal">Γ</mi><mn>0</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi mathvariant="normal">Γ</mi><mrow><mi>m</mi><mo>−</mo><mn>1</mn></mrow></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal F_m(\Gamma_0,\ldots,\Gamma_{m-1})</annotation></semantics></math>
+be exactly the displayed forcing expression with every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="sans-serif">𝖠</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\mathsf A_j</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="sans-serif">𝖡</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\mathsf B_j</annotation></semantics></math>
+replaced in that bound by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Γ</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\Gamma_j</annotation></semantics></math>.
+Define</p>
+<div class="equation" id="eq-HP-16"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Γ</mi><mi>m</mi></msub><mo>=</mo><mn>2</mn><msqrt><mi>m</mi></msqrt><mspace width="0.167em"></mspace><msub><mi mathvariant="normal">Γ</mi><mrow><mi>m</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>+</mo><mn>2</mn><msub><mi mathvariant="script">ℱ</mi><mi>m</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="normal">Γ</mi><mn>0</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi mathvariant="normal">Γ</mi><mrow><mi>m</mi><mo>−</mo><mn>1</mn></mrow></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\Gamma_m=2\sqrt m\,\Gamma_{m-1}
++2\mathcal F_m(\Gamma_0,\ldots,\Gamma_{m-1}).
+\tag{HP.16}
+</annotation></semantics></math></div><span class="eq-number">(HP.16)</span></div>
+<p>All coefficients are explicit positive finite numbers. The preceding
+energy identity proves by induction
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="sans-serif">𝖳</mi><mi>m</mi></msub><mo>≤</mo><msub><mi mathvariant="normal">Γ</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">\mathsf T_m\le\Gamma_m</annotation></semantics></math>
+for every m, on the same original heat interval S and from the same
+original gradient radius R. This is a bound on actual constructed
+regular solutions, not an assumed smoothing estimate.</p>
+<h2 id="passage-to-rough-data-at-positive-heat-time">5. Passage to rough
+data at positive heat time</h2>
+<p>The regular approximations already constructed in HC/HG on the common
+S have all these uniform bounds. On every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mi>τ</mi><mo>,</mo><mi>S</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[\tau,S]</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\tau&gt;0</annotation></semantics></math>,
+their full
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>j</mi></msub><annotation encoding="application/x-tex">a_j</annotation></semantics></math>
+norms are uniformly bounded for every j. Their
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mn>1</mn></msub><annotation encoding="application/x-tex">a_1</annotation></semantics></math>
+differences tend uniformly to zero by HC.31. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">j\ge2</annotation></semantics></math>,
+Fourier Hölder gives the exact interpolation</p>
+<div class="equation" id="eq-HP-17"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>j</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>n</mi></msub><mo>−</mo><msub><mi>A</mi><mi>k</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>≤</mo><msub><mi>a</mi><mn>1</mn></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>n</mi></msub><mo>−</mo><msub><mi>A</mi><mi>k</mi></msub><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>1</mn><mi>/</mi><mi>j</mi></mrow></msup><msub><mi>a</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>n</mi></msub><mo>−</mo><msub><mi>A</mi><mi>k</mi></msub><msup><mo form="postfix" stretchy="false">)</mo><mrow><mo form="prefix" stretchy="false">(</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mi>j</mi></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+a_j(A_n-A_k)\le
+a_1(A_n-A_k)^{1/j}
+a_{j+1}(A_n-A_k)^{(j-1)/j}.
+\tag{HP.17}
+</annotation></semantics></math></div><span class="eq-number">(HP.17)</span></div>
+<p>All three Fourier integrals use the original measure
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>3</mn></mrow></msup><msup><mi>d</mi><mn>3</mn></msup><mi>ξ</mi></mrow><annotation encoding="application/x-tex">(2\pi)^{-3}d^3\xi</annotation></semantics></math>;
+the multiplier identity is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><msup><mo form="prefix" stretchy="false">|</mo><mrow><mn>2</mn><mi>j</mi></mrow></msup><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>1</mn><mi>/</mi><mi>j</mi></mrow></msup><mo>⋅</mo><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><msup><mo form="prefix" stretchy="false">|</mo><mrow><mn>2</mn><mi>j</mi><mo>+</mo><mn>2</mn></mrow></msup><msup><mo form="postfix" stretchy="false">)</mo><mrow><mo form="prefix" stretchy="false">(</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mi>j</mi></mrow></msup></mrow><annotation encoding="application/x-tex">|\xi|^{2j}=(|\xi|^2)^{1/j}
+\cdot(|\xi|^{2j+2})^{(j-1)/j}</annotation></semantics></math>. The
+higher difference norm is bounded by the sum of the two uniform bounds.
+Thus the approximations are Cauchy in every derivative norm uniformly on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mi>τ</mi><mo>,</mo><mi>S</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[\tau,S]</annotation></semantics></math>.
+Their limits are the distributional derivatives of the original rough
+solution. Sobolev and the PDE give spatial and heat smoothness for
+positive heat time. Uniform weak lower semicontinuity at each order
+retains the displayed weighted bounds on the original interval.</p>
+<h2 id="the-actual-constructed-fields-and-constants">6. The actual
+constructed fields and constants</h2>
+<p>Take the regular physical solution on its existing interval from F09
+and its HD dynamic heat extension. Apply the HD.27 endpoint gauge at a
+fixed S, so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>t</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a_t(t,S)=0</annotation></semantics></math>.
+All fields below are the actual fields on that endpoint slice, not new
+arbitrary coefficient fields. Write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>i</mi></msub><mo>=</mo><msub><mi>f</mi><mrow><mi>t</mi><mi>i</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">E_i=f_{ti}(t,S)</annotation></semantics></math>.
+The identity is exactly</p>
+<div class="equation" id="eq-HP-18"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>t</mi></msub><msub><mi>a</mi><mi>i</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>E</mi><mi>i</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\partial_t a_i(t,S)=E_i(t,S).
+\tag{HP.18}
+</annotation></semantics></math></div><span class="eq-number">(HP.18)</span></div>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mo>*</mo></msub><annotation encoding="application/x-tex">t_*</annotation></semantics></math>
+be the fixed reference time, and retain its conserved physical energy
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℰ</mi><annotation encoding="application/x-tex">\mathcal E</annotation></semantics></math>.
+The original positive curvature norm at the initial heat boundary
+satisfies</p>
+<div class="equation" id="eq-HP-19"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>d</mi><mn>2</mn></msup><mo>=</mo><msup><mi>c</mi><mrow><mi>−</mi><mn>2</mn></mrow></msup><munder><mo>∑</mo><mi>i</mi></munder><mo form="postfix" stretchy="false">∥</mo><msub><mi>F</mi><mrow><mi>t</mi><mi>i</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><msubsup><mo form="postfix" stretchy="false">∥</mo><mn>2</mn><mn>2</mn></msubsup><mo>+</mo><munder><mo>∑</mo><mrow><mi>i</mi><mo>&lt;</mo><mi>j</mi></mrow></munder><mo form="postfix" stretchy="false">∥</mo><msub><mi>F</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><msubsup><mo form="postfix" stretchy="false">∥</mo><mn>2</mn><mn>2</mn></msubsup><mo>=</mo><mfrac><msubsup><mi>g</mi><mrow><mi mathvariant="normal">Y</mi><mi mathvariant="normal">M</mi></mrow><mn>2</mn></msubsup><mrow><mi>ℏ</mi><mi>c</mi></mrow></mfrac><mi mathvariant="script">ℰ</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+d^2=c^{-2}\sum_i\|F_{ti}(t,0)\|_2^2
+       +\sum_{i&lt;j}\|F_{ij}(t,0)\|_2^2
+     =\frac{g_{\rm YM}^2}{\hbar c}\mathcal E.
+\tag{HP.19}
+</annotation></semantics></math></div><span class="eq-number">(HP.19)</span></div>
+<p>This follows from the complete energy functional already proved in
+F09. Choose the actual S positive with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>S</mi><mrow><mn>1</mn><mi>/</mi><mn>4</mn></mrow></msup><mi>d</mi><mo>≤</mo><msub><mi>ε</mi><mo>*</mo></msub></mrow><annotation encoding="application/x-tex">S^{1/4}d\le\varepsilon_*</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>≤</mo><msub><mi>S</mi><mi>R</mi></msub></mrow><annotation encoding="application/x-tex">S\le S_R</annotation></semantics></math>
+for the reference datum. This chooses an interval; it rescales neither
+the datum nor coordinates. If d=0 the threshold places no restriction on
+S.</p>
+<p>H9.40 and H9.8, followed by gauge covariance, give for every integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">l\ge0</annotation></semantics></math>
+the fixed constants</p>
+<div class="equation" id="eq-HP-20"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>e</mi><mi>l</mi><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mo form="postfix" stretchy="false">)</mo></mrow></msubsup><mo>=</mo><mi>c</mi><msub><mi>R</mi><mi>l</mi></msub><mi>d</mi><mspace width="0.167em"></mspace><msup><mi>S</mi><mrow><mi>−</mi><mi>l</mi><mi>/</mi><mn>2</mn></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>e</mi><mi>l</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>∞</mi><mo form="postfix" stretchy="false">)</mo></mrow></msubsup><mo>=</mo><mi>c</mi><msub><mi>C</mi><mi>M</mi></msub><msub><mi>C</mi><mi>S</mi></msub><msqrt><mrow><msub><mi>R</mi><mrow><mi>l</mi><mo>+</mo><mn>1</mn></mrow></msub><msub><mi>R</mi><mrow><mi>l</mi><mo>+</mo><mn>2</mn></mrow></msub></mrow></msqrt><mspace width="0.167em"></mspace><mi>d</mi><mspace width="0.167em"></mspace><msup><mi>S</mi><mrow><mi>−</mi><mi>l</mi><mi>/</mi><mn>2</mn><mo>−</mo><mn>3</mn><mi>/</mi><mn>4</mn></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+e_l^{(2)}=c R_l d\,S^{-l/2},\qquad
+e_l^{(\infty)}
+=c C_M C_S\sqrt{R_{l+1}R_{l+2}}\,d\,S^{-l/2-3/4}.
+\tag{HP.20}
+</annotation></semantics></math></div><span class="eq-number">(HP.20)</span></div>
+<p>Every individual component of every ordered word
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>D</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>l</mi><mo form="postfix" stretchy="false">)</mo></mrow></msup><msub><mi>E</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">D^{(l)}E_i</annotation></semantics></math>
+has respectively
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mi>∞</mi></msup><annotation encoding="application/x-tex">L^\infty</annotation></semantics></math>
+norm at most these constants. The factor c is required because H9 uses
+the positive electric weight
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>c</mi><mrow><mi>−</mi><mn>2</mn></mrow></msup><annotation encoding="application/x-tex">c^{-2}</annotation></semantics></math>.
+The original constants
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>R</mi><mi>l</mi></msub><annotation encoding="application/x-tex">R_l</annotation></semantics></math>
+and the finite S are unchanged. These bounds hold throughout the
+existing physical interval because d is conserved.</p>
+<p>The exact reference gauge HD.29 identifies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>i</mi></msub><annotation encoding="application/x-tex">a_i</annotation></semantics></math>(t_*,S)
+with the DeTurck endpoint. The Gamma bounds proved above therefore give
+actual initial bounds</p>
+<div class="equation" id="eq-HP-21"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>k</mi></msub><mo>=</mo><msub><mi>C</mi><mi>M</mi></msub><msub><mi>C</mi><mi>S</mi></msub><msqrt><mrow><msub><mi mathvariant="normal">Γ</mi><mi>k</mi></msub><msub><mi mathvariant="normal">Γ</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow></msqrt><mspace width="0.167em"></mspace><msup><mi>S</mi><mrow><mi>−</mi><mi>k</mi><mi>/</mi><mn>2</mn><mo>−</mo><mn>1</mn><mi>/</mi><mn>4</mn></mrow></msup><mspace width="1.0em"></mspace><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo>≥</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>D</mi><mi>k</mi></msub><mo>=</mo><msub><mi mathvariant="normal">Γ</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><msup><mi>S</mi><mrow><mi>−</mi><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn></mrow></msup><mspace width="1.0em"></mspace><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo>≥</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+C_k=C_M C_S\sqrt{\Gamma_k\Gamma_{k+1}}\,S^{-k/2-1/4}
+ \quad(k\ge0),\qquad
+D_k=\Gamma_{k-1}S^{-(k-1)/2}\quad(k\ge1).
+\tag{HP.21}
+</annotation></semantics></math></div><span class="eq-number">(HP.21)</span></div>
+<p>Here
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>C</mi><mi>k</mi></msub><annotation encoding="application/x-tex">C_k</annotation></semantics></math>
+bounds each k-fold ordinary derivative in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mi>∞</mi></msup><annotation encoding="application/x-tex">L^\infty</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>D</mi><mi>k</mi></msub><annotation encoding="application/x-tex">D_k</annotation></semantics></math>
+bounds the full k-fold ordinary derivative tuple in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math>.
+The first inequality is the actual Morrey–Sobolev estimate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><msup><mi>∂</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow></msup><mi>a</mi><msub><mo form="postfix" stretchy="false">∥</mo><mi>∞</mi></msub><mo>≤</mo><msub><mi>C</mi><mi>M</mi></msub><msub><mi>C</mi><mi>S</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>a</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><msub><mi>a</mi><mrow><mi>k</mi><mo>+</mo><mn>2</mn></mrow></msub><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\|\partial^{(k)}a\|_\infty
+\le C_MC_S(a_{k+1}a_{k+2})^{1/2}</annotation></semantics></math>. No
+undifferentiated
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math>
+norm of the potential enters (HP.21).</p>
+<h2 id="exact-expression-before-taking-norms">7. Exact expression before
+taking norms</h2>
+<p>Use an ordered word I of spatial indices and retain every index. The
+leaves of an expression are ordinary derivatives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>J</mi></msub><msub><mi>a</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">\partial_J a_j</annotation></semantics></math>
+and covariant derivatives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>K</mi></msub><msub><mi>E</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">D_K E_i</annotation></semantics></math>.
+Define an operation
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="fraktur">𝔡</mi><mi>r</mi></msub><annotation encoding="application/x-tex">\mathfrak d_r</annotation></semantics></math>
+on these actual expressions:</p>
+<div class="equation" id="eq-HP-22"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi mathvariant="fraktur">𝔡</mi><mi>r</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>∂</mi><mi>J</mi></msub><msub><mi>a</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msub><mi>∂</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo>,</mo><mi>J</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><msub><mi>a</mi><mi>j</mi></msub><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi mathvariant="fraktur">𝔡</mi><mi>r</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>D</mi><mi>K</mi></msub><msub><mi>E</mi><mi>i</mi></msub><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msub><mi>D</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo>,</mo><mi>K</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><msub><mi>E</mi><mi>i</mi></msub><mo>−</mo><mo form="prefix" stretchy="false">[</mo><msub><mi>a</mi><mi>r</mi></msub><mo>,</mo><msub><mi>D</mi><mi>K</mi></msub><msub><mi>E</mi><mi>i</mi></msub><mo form="postfix" stretchy="false">]</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi mathvariant="fraktur">𝔡</mi><mi>r</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>X</mi><mo>,</mo><mi>Y</mi><mo form="postfix" stretchy="false">]</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mo form="prefix" stretchy="false">[</mo><msub><mi mathvariant="fraktur">𝔡</mi><mi>r</mi></msub><mi>X</mi><mo>,</mo><mi>Y</mi><mo form="postfix" stretchy="false">]</mo><mo>+</mo><mo form="prefix" stretchy="false">[</mo><mi>X</mi><mo>,</mo><msub><mi mathvariant="fraktur">𝔡</mi><mi>r</mi></msub><mi>Y</mi><mo form="postfix" stretchy="false">]</mo><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\mathfrak d_r(\partial_Ja_j)&amp;=\partial_{(r,J)}a_j,\\
+\mathfrak d_r(D_KE_i)&amp;=D_{(r,K)}E_i-[a_r,D_KE_i],\\
+\mathfrak d_r[X,Y]&amp;=[\mathfrak d_rX,Y]+[X,\mathfrak d_rY].
+\end{aligned}
+\tag{HP.22}
+</annotation></semantics></math></div><span class="eq-number">(HP.22)</span></div>
+<p>It is linear on signed sums. The second identity is precisely
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>r</mi></msub><mo>=</mo><msub><mi>D</mi><mi>r</mi></msub><mo>−</mo><mrow><mi mathvariant="normal">ad</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>a</mi><mi>r</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\partial_r=D_r-\operatorname{ad}(a_r)</annotation></semantics></math>,
+acting on the original covariant derivative field. It does not commute
+any covariant derivatives. The other identities are the ordinary product
+rule. Starting at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>i</mi></msub><annotation encoding="application/x-tex">E_i</annotation></semantics></math>,
+apply (HP.22) for each ordinary derivative in its actual order.
+Induction proves that the resulting signed sum is exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>I</mi></msub><msub><mi>E</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\partial_I E_i</annotation></semantics></math>.</p>
+<p>Every summand retains one covariant E leaf and some ordered potential
+leaves inside nested brackets. If the potential leaf orders are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>h</mi><mn>1</mn></msub><annotation encoding="application/x-tex">h_1</annotation></semantics></math>,…,<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>h</mi><mi>j</mi></msub><annotation encoding="application/x-tex">h_j</annotation></semantics></math>
+and the E leaf order is l, induction in (HP.22) gives</p>
+<div class="equation" id="eq-HP-23"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munderover><mo>∑</mo><mrow><mi>ν</mi><mo>=</mo><mn>1</mn></mrow><mi>j</mi></munderover><mo form="prefix" stretchy="false">(</mo><msub><mi>h</mi><mi>ν</mi></msub><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mi>l</mi><mo>=</mo><mo form="prefix" stretchy="false">|</mo><mi>I</mi><mo form="prefix" stretchy="false">|</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\sum_{\nu=1}^j(h_\nu+1)+l=|I|.
+\tag{HP.23}
+</annotation></semantics></math></div><span class="eq-number">(HP.23)</span></div>
+<p>The signs and matrix order in (HP.22) are part of the exact
+expression; only the following norm bound takes their absolute values.
+Every bracket then contributes the proved factor two.</p>
+<h2 id="an-explicit-finite-polynomial-records-every-norm-contribution">8. An
+explicit finite polynomial records every norm contribution</h2>
+<p>Introduce nonnegative formal variables
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>h</mi></msub><annotation encoding="application/x-tex">x_h</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>y</mi><mi>l</mi></msub><annotation encoding="application/x-tex">y_l</annotation></semantics></math>.
+Define</p>
+<div class="equation" id="eq-HP-24"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mn>0</mn></msub><mo>=</mo><msub><mi>y</mi><mn>0</mn></msub><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>b</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><munderover><mo>∑</mo><mrow><mi>h</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></munderover><msub><mi>x</mi><mrow><mi>h</mi><mo>+</mo><mn>1</mn></mrow></msub><mfrac><mrow><mi>∂</mi><msub><mi>b</mi><mi>k</mi></msub></mrow><mrow><mi>∂</mi><msub><mi>x</mi><mi>h</mi></msub></mrow></mfrac><mo>+</mo><munderover><mo>∑</mo><mrow><mi>l</mi><mo>=</mo><mn>0</mn></mrow><mi>k</mi></munderover><mo form="prefix" stretchy="false">(</mo><msub><mi>y</mi><mrow><mi>l</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>+</mo><mn>2</mn><msub><mi>x</mi><mn>0</mn></msub><msub><mi>y</mi><mi>l</mi></msub><mo form="postfix" stretchy="false">)</mo><mfrac><mrow><mi>∂</mi><msub><mi>b</mi><mi>k</mi></msub></mrow><mrow><mi>∂</mi><msub><mi>y</mi><mi>l</mi></msub></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+b_0=y_0,\qquad
+b_{k+1}=
+\sum_{h=0}^{k-1}x_{h+1}\frac{\partial b_k}{\partial x_h}
++\sum_{l=0}^{k}(y_{l+1}+2x_0y_l)
+                      \frac{\partial b_k}{\partial y_l}.
+\tag{HP.24}
+</annotation></semantics></math></div><span class="eq-number">(HP.24)</span></div>
+<p>An empty sum is zero. Every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>b</mi><mi>k</mi></msub><annotation encoding="application/x-tex">b_k</annotation></semantics></math>
+is a finite polynomial with nonnegative integer coefficients, linear in
+the y variables, depending on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>x</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">x_0,\ldots,x_{k-1}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mn>0</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>y</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">y_0,\ldots,y_k</annotation></semantics></math>.
+For example</p>
+<div class="equation" id="eq-HP-25"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>=</mo><msub><mi>y</mi><mn>1</mn></msub><mo>+</mo><mn>2</mn><msub><mi>x</mi><mn>0</mn></msub><msub><mi>y</mi><mn>0</mn></msub><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>b</mi><mn>2</mn></msub><mo>=</mo><msub><mi>y</mi><mn>2</mn></msub><mo>+</mo><mn>4</mn><msub><mi>x</mi><mn>0</mn></msub><msub><mi>y</mi><mn>1</mn></msub><mo>+</mo><mn>2</mn><msub><mi>x</mi><mn>1</mn></msub><msub><mi>y</mi><mn>0</mn></msub><mo>+</mo><mn>4</mn><msubsup><mi>x</mi><mn>0</mn><mn>2</mn></msubsup><msub><mi>y</mi><mn>0</mn></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+b_1=y_1+2x_0y_0,\qquad
+b_2=y_2+4x_0y_1+2x_1y_0+4x_0^2y_0.
+\tag{HP.25}
+</annotation></semantics></math></div><span class="eq-number">(HP.25)</span></div>
+<p>To prove the bound, assign
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>h</mi></msub><annotation encoding="application/x-tex">x_h</annotation></semantics></math>
+to an upper bound for each ordinary h-derivative of a in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mi>∞</mi></msup><annotation encoding="application/x-tex">L^\infty</annotation></semantics></math>.
+Assign
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>y</mi><mi>l</mi></msub><annotation encoding="application/x-tex">y_l</annotation></semantics></math>
+either to the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mi>∞</mi></msup><annotation encoding="application/x-tex">L^\infty</annotation></semantics></math>
+or the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math>
+bound for each covariant l-derivative of E. Each term has exactly one E
+leaf, so all other factors can be put in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mi>∞</mi></msup><annotation encoding="application/x-tex">L^\infty</annotation></semantics></math>
+in either case. Differentiating a potential leaf gives the first sum in
+(HP.24). Differentiating the E leaf gives both terms in its second sum,
+the latter with the bracket factor two. Repeated identical placements
+are counted by the formal derivatives and their integer coefficients.
+Induction from (HP.22) proves that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>b</mi><mi>k</mi></msub><annotation encoding="application/x-tex">b_k</annotation></semantics></math>
+bounds the chosen norm of each exact ordinary k-derivative of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>i</mi></msub><annotation encoding="application/x-tex">E_i</annotation></semantics></math>.</p>
+<p>The full ordered spatial-output tuple has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>3</mn><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">3^{k+1}</annotation></semantics></math>
+components. Thus its
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math>
+norm is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>3</mn><mrow><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn></mrow></msup><msub><mi>b</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">3^{(k+1)/2}b_k</annotation></semantics></math>.
+Component maxima were used above only as intermediate bounds; the full
+tuple and this conversion factor are retained in every conclusion.</p>
+<h2 id="triangular-physical-time-polynomials">9. Triangular
+physical-time polynomials</h2>
+<p>Put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo>=</mo><mo form="prefix" stretchy="false">|</mo><mi>t</mi><mo>−</mo><msub><mi>t</mi><mo>*</mo></msub><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">\theta=|t-t_*|</annotation></semantics></math>,
+in the original physical-time units. Define polynomials with their
+dimensionful coefficients:</p>
+<div class="equation" id="eq-HP-26"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>0</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>θ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>C</mi><mn>0</mn></msub><mo>+</mo><mi>θ</mi><msubsup><mi>e</mi><mn>0</mn><mrow><mo form="prefix" stretchy="false">(</mo><mi>∞</mi><mo form="postfix" stretchy="false">)</mo></mrow></msubsup><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>P</mi><mi>k</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>θ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>C</mi><mi>k</mi></msub><mo>+</mo><msubsup><mo>∫</mo><mn>0</mn><mi>θ</mi></msubsup><msub><mi>b</mi><mi>k</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>P</mi><mn>0</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><msub><mi>P</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo>;</mo><msubsup><mi>e</mi><mn>0</mn><mrow><mo form="prefix" stretchy="false">(</mo><mi>∞</mi><mo form="postfix" stretchy="false">)</mo></mrow></msubsup><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><msubsup><mi>e</mi><mi>k</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>∞</mi><mo form="postfix" stretchy="false">)</mo></mrow></msubsup><mo form="postfix" stretchy="false">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>u</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+P_0(\theta)=C_0+\theta e_0^{(\infty)},\qquad
+P_k(\theta)=C_k+
+\int_0^\theta b_k(P_0(u),...,P_{k-1}(u);
+                  e_0^{(\infty)},...,e_k^{(\infty)})\,du.
+\tag{HP.26}
+</annotation></semantics></math></div><span class="eq-number">(HP.26)</span></div>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k\ge1</annotation></semantics></math>
+this uses only previously defined polynomials, so it is an actual finite
+recursive construction. The coefficients are nonnegative. The exact
+field identity
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>t</mi></msub><msub><mi>a</mi><mi>i</mi></msub><mo>=</mo><msub><mi>E</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\partial_ta_i=E_i</annotation></semantics></math>,
+the fundamental theorem of calculus in either time direction, and
+(HP.24) prove inductively that every ordinary k-derivative of every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>i</mi></msub><annotation encoding="application/x-tex">a_i</annotation></semantics></math>
+has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mi>∞</mi></msup><annotation encoding="application/x-tex">L^\infty</annotation></semantics></math>
+norm at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>k</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>θ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P_k(\theta)</annotation></semantics></math>.
+At each step the potential factors in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>b</mi><mi>k</mi></msub><annotation encoding="application/x-tex">b_k</annotation></semantics></math>
+have orders at most k-1, whose bounds have already been proved.</p>
+<p>Formula (HP.23) shows that a monomial’s potential orders satisfy
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∑</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>h</mi><mi>ν</mi></msub><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mo>≤</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">\sum(h_\nu+1)\le k</annotation></semantics></math>.
+Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mi>h</mi></msub><annotation encoding="application/x-tex">P_h</annotation></semantics></math>
+has degree at most h+1, induction shows that the integrand in (HP.26)
+has degree at most k and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mi>k</mi></msub><annotation encoding="application/x-tex">P_k</annotation></semantics></math>
+has degree at most k+1. This derives the growth exponent while
+preserving all lower polynomial coefficients. The time variable retains
+its original units in every polynomial term.</p>
+<p>For every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k\ge1</annotation></semantics></math>
+define</p>
+<div class="equation" id="eq-HP-27"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>k</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>θ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>D</mi><mi>k</mi></msub><mo>+</mo><msubsup><mo>∫</mo><mn>0</mn><mi>θ</mi></msubsup><msub><mi>b</mi><mi>k</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>P</mi><mn>0</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><msub><mi>P</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo>;</mo><msubsup><mi>e</mi><mn>0</mn><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mo form="postfix" stretchy="false">)</mo></mrow></msubsup><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><msubsup><mi>e</mi><mi>k</mi><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mo form="postfix" stretchy="false">)</mo></mrow></msubsup><mo form="postfix" stretchy="false">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>u</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+Q_k(\theta)=D_k+
+\int_0^\theta b_k(P_0(u),...,P_{k-1}(u);
+                         e_0^{(2)},...,e_k^{(2)})\,du.
+\tag{HP.27}
+</annotation></semantics></math></div><span class="eq-number">(HP.27)</span></div>
+<p>The fundamental theorem in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math>
+now proves</p>
+<div class="equation" id="eq-HP-28"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo form="postfix" stretchy="false">∥</mo><msup><mi>∂</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow></msup><mi>a</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">∥</mo><mn>2</mn></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><msup><mn>3</mn><mrow><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn></mrow></msup><msub><mi>Q</mi><mi>k</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>θ</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo form="postfix" stretchy="false">∥</mo><msup><mi>∂</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow></msup><msub><mi>∂</mi><mi>t</mi></msub><mi>a</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">∥</mo><mn>2</mn></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><msup><mn>3</mn><mrow><mi>k</mi><mi>/</mi><mn>2</mn></mrow></msup><msub><mi>b</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>P</mi><mn>0</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>θ</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><msub><mi>P</mi><mrow><mi>k</mi><mo>−</mo><mn>2</mn></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>θ</mi><mo form="postfix" stretchy="false">)</mo><mo>;</mo><msubsup><mi>e</mi><mn>0</mn><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mo form="postfix" stretchy="false">)</mo></mrow></msubsup><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><msubsup><mi>e</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mo form="postfix" stretchy="false">)</mo></mrow></msubsup><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\|\partial^{(k)}a(t,S)\|_2
+&amp;\le 3^{(k+1)/2}Q_k(\theta),\\
+\|\partial^{(k-1)}\partial_ta(t,S)\|_2
+&amp;\le 3^{k/2}
+b_{k-1}(P_0(\theta),...,P_{k-2}(\theta);
+                              e_0^{(2)},...,e_{k-1}^{(2)}).
+\end{aligned}
+\tag{HP.28}
+</annotation></semantics></math></div><span class="eq-number">(HP.28)</span></div>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k=1</annotation></semantics></math>
+the last expression is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>3</mn><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><msubsup><mi>e</mi><mn>0</mn><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mo form="postfix" stretchy="false">)</mo></mrow></msubsup></mrow><annotation encoding="application/x-tex">3^{1/2}e_0^{(2)}</annotation></semantics></math>
+and contains no P variables. All estimates refer to the original ordered
+tuples.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Q</mi><mi>k</mi></msub><annotation encoding="application/x-tex">Q_k</annotation></semantics></math>
+has degree at most k+1, and the last right-hand polynomial has degree at
+most k-1. In particular, the complete endpoint derivative range through
+31, including the physical derivative of order 30, has now been
+calculated for the already constructed regular interval.</p>
+<h2 id="a-gaussian-with-every-derivative-and-endpoint-retained">10. A
+Gaussian with every derivative and endpoint retained</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">L&gt;0</annotation></semantics></math>,
+let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ε</mi><annotation encoding="application/x-tex">\varepsilon</annotation></semantics></math>
+be dimensionless, and keep
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><mrow><mi mathvariant="normal">diag</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>i</mi><mo>,</mo><mi>−</mi><mi>i</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">T=\operatorname{diag}(i,-i)</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>κ</mi><mi>T</mi></msub><mo>=</mo><mi>−</mi><mrow><mi mathvariant="normal">tr</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>T</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\kappa_T=-\operatorname{tr}(T^2)=2</annotation></semantics></math>.
+The original spatial DeTurck connection is</p>
+<div class="equation" id="eq-HP-29"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mi>s</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><msup><mi>L</mi><mn>2</mn></msup><mrow><msup><mi>L</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>s</mi></mrow></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mn>3</mn><mi>/</mi><mn>2</mn></mrow></msup><mrow><mi mathvariant="normal">exp</mi><mo>⁡</mo></mrow><mspace width="-0.167em"></mspace><mrow><mo form="prefix" stretchy="true">(</mo><mi>−</mi><mfrac><mrow><mo form="prefix" stretchy="false">|</mo><mi>x</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup></mrow><mrow><mn>2</mn><mo form="prefix" stretchy="false">(</mo><msup><mi>L</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>s</mi><mo form="postfix" stretchy="false">)</mo></mrow></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>A</mi><mi>i</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>ε</mi><mspace width="0.167em"></mspace><msub><mi>∂</mi><mi>i</mi></msub><msub><mi>h</mi><mi>s</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mi>T</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+h_s(x)=\left(\frac{L^2}{L^2+2s}\right)^{3/2}
+          \exp\!\left(-\frac{|x|^2}{2(L^2+2s)}\right),\qquad
+A_i(s,x)=\varepsilon\,\partial_i h_s(x)T.
+\tag{HP.29}
+</annotation></semantics></math></div><span class="eq-number">(HP.29)</span></div>
+<p>Every bracket in N(A) vanishes, so this is exactly its Gaussian heat
+solution. The spatial curvature vanishes; this example measures the
+actual potential and its ordinary derivatives. The earlier exact heat
+gauge identifies its stationary caloric representative. Smoothness does
+not remove the need to keep track of the chosen representative.</p>
+<p>For each integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">j\ge0</annotation></semantics></math>,
+Parseval and the full component sums give</p>
+<div class="equation" id="eq-HP-30"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>a</mi><mi>j</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>;</mo><mi>s</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mfrac><mrow><msub><mi>κ</mi><mi>T</mi></msub><msup><mi>ε</mi><mn>2</mn></msup></mrow><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>3</mn></msup></mrow></mfrac><msub><mo>∫</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup></msub><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><msup><mo form="prefix" stretchy="false">|</mo><mrow><mn>2</mn><mi>j</mi><mo>+</mo><mn>2</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>3</mn></msup><msup><mi>L</mi><mn>6</mn></msup><msup><mi>e</mi><mrow><mi>−</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>L</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>s</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup></mrow></msup><mspace width="0.167em"></mspace><msup><mi>d</mi><mn>3</mn></msup><mi>ξ</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mn>2</mn><mi>π</mi><msub><mi>κ</mi><mi>T</mi></msub><msup><mi>ε</mi><mn>2</mn></msup><msup><mi>L</mi><mn>6</mn></msup><mfrac><mrow><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>j</mi><mo>+</mo><mn>5</mn><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="false">)</mo></mrow><mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>L</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>s</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>j</mi><mo>+</mo><mn>5</mn><mi>/</mi><mn>2</mn></mrow></msup></mrow></mfrac><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+a_j(A;s)^2
+&amp;=\frac{\kappa_T\varepsilon^2}{(2\pi)^3}
+       \int_{\mathbb R^3}|\xi|^{2j+2}
+                (2\pi)^3L^6e^{-(L^2+2s)|\xi|^2}\,d^3\xi\\
+&amp;=2\pi\kappa_T\varepsilon^2L^6
+        \frac{\Gamma(j+5/2)}{(L^2+2s)^{j+5/2}}.
+\end{aligned}
+\tag{HP.30}
+</annotation></semantics></math></div><span class="eq-number">(HP.30)</span></div>
+<p>The Fourier transform of the original
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>h</mi><mn>0</mn></msub><annotation encoding="application/x-tex">h_0</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>3</mn><mi>/</mi><mn>2</mn></mrow></msup><msup><mi>L</mi><mn>3</mn></msup><msup><mi>e</mi><mrow><mi>−</mi><msup><mi>L</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mi>/</mi><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">(2\pi)^{3/2}L^3e^{-L^2|\xi|^2/2}</annotation></semantics></math>.
+The ordered derivative and output sums multiply its squared modulus by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mo>∑</mo><mi>r</mi></msub><msubsup><mi>ξ</mi><mi>r</mi><mn>2</mn></msubsup><msup><mo form="postfix" stretchy="false">)</mo><mi>j</mi></msup><msub><mo>∑</mo><mi>i</mi></msub><msubsup><mi>ξ</mi><mi>i</mi><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">(\sum_r\xi_r^2)^j\sum_i\xi_i^2</annotation></semantics></math>.
+Radial integration is exactly</p>
+<div class="equation" id="eq-HP-31"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>π</mi><msubsup><mo>∫</mo><mn>0</mn><mi>∞</mi></msubsup><msup><mi>ρ</mi><mrow><mn>2</mn><mi>j</mi><mo>+</mo><mn>4</mn></mrow></msup><msup><mi>e</mi><mrow><mi>−</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>L</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>s</mi><mo form="postfix" stretchy="false">)</mo><msup><mi>ρ</mi><mn>2</mn></msup></mrow></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>ρ</mi><mo>=</mo><mn>2</mn><mi>π</mi><mfrac><mrow><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>j</mi><mo>+</mo><mn>5</mn><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="false">)</mo></mrow><mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>L</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>s</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>j</mi><mo>+</mo><mn>5</mn><mi>/</mi><mn>2</mn></mrow></msup></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+4\pi\int_0^\infty
+ \rho^{2j+4}e^{-(L^2+2s)\rho^2}\,d\rho
+=2\pi\frac{\Gamma(j+5/2)}{(L^2+2s)^{j+5/2}}.
+\tag{HP.31}
+</annotation></semantics></math></div><span class="eq-number">(HP.31)</span></div>
+<p>Thus every Fourier factor, the three-dimensional measure, matrix
+trace factor and original length remain in the calculation.</p>
+<p>For a finite endpoint S define</p>
+<div class="equation" id="eq-HP-32"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mi>S</mi></msub><mo>=</mo><mfrac><mrow><mn>2</mn><mi>S</mi></mrow><mrow><msup><mi>L</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>S</mi></mrow></mfrac><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>U</mi><mi>m</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msup><mi>S</mi><mrow><mi>m</mi><mi>/</mi><mn>2</mn></mrow></msup><msub><mi>a</mi><mrow><mi>m</mi><mo>+</mo><mn>1</mn></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>;</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>V</mi><mi>m</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><msubsup><mo>∫</mo><mn>0</mn><mi>S</mi></msubsup><msup><mi>s</mi><mi>m</mi></msup><msub><mi>a</mi><mrow><mi>m</mi><mo>+</mo><mn>2</mn></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>;</mo><mi>s</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>s</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+z_S=\frac{2S}{L^2+2S},\qquad
+U_m(S)=S^{m/2}a_{m+1}(A;S),\qquad
+V_m(S)^2=\int_0^S s^m a_{m+2}(A;s)^2\,ds.
+\tag{HP.32}
+</annotation></semantics></math></div><span class="eq-number">(HP.32)</span></div>
+<p>Here
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>m</mi></msub><annotation encoding="application/x-tex">U_m</annotation></semantics></math>
+is the value at that endpoint, not its supremum. Direct substitution
+gives</p>
+<div class="equation" id="eq-HP-33"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>U</mi><mi>m</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mn>2</mn><mi>π</mi><msub><mi>κ</mi><mi>T</mi></msub><msup><mi>ε</mi><mn>2</mn></msup><msup><mi>L</mi><mn>6</mn></msup><mfrac><mrow><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo>+</mo><mn>7</mn><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="false">)</mo><msup><mi>S</mi><mi>m</mi></msup></mrow><mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>L</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>S</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>m</mi><mo>+</mo><mn>7</mn><mi>/</mi><mn>2</mn></mrow></msup></mrow></mfrac><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>V</mi><mi>m</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mn>2</mn><mi>π</mi><msub><mi>κ</mi><mi>T</mi></msub><msup><mi>ε</mi><mn>2</mn></msup><msup><mi>L</mi><mn>6</mn></msup><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo>+</mo><mn>9</mn><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="false">)</mo><msubsup><mo>∫</mo><mn>0</mn><mi>S</mi></msubsup><mfrac><msup><mi>s</mi><mi>m</mi></msup><mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>L</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>s</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>m</mi><mo>+</mo><mn>9</mn><mi>/</mi><mn>2</mn></mrow></msup></mrow></mfrac><mspace width="0.167em"></mspace><mi>d</mi><mi>s</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mfrac><mrow><mn>2</mn><mi>π</mi><msub><mi>κ</mi><mi>T</mi></msub><msup><mi>ε</mi><mn>2</mn></msup><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo>+</mo><mn>9</mn><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="false">)</mo></mrow><mrow><msup><mn>2</mn><mrow><mi>m</mi><mo>+</mo><mn>1</mn></mrow></msup><mi>L</mi></mrow></mfrac><msubsup><mo>∫</mo><mn>0</mn><msub><mi>z</mi><mi>S</mi></msub></msubsup><msup><mi>z</mi><mi>m</mi></msup><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>z</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>5</mn><mi>/</mi><mn>2</mn></mrow></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>z</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mfrac><mrow><mn>2</mn><mi>π</mi><msub><mi>κ</mi><mi>T</mi></msub><msup><mi>ε</mi><mn>2</mn></msup><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo>+</mo><mn>9</mn><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="false">)</mo></mrow><mrow><msup><mn>2</mn><mrow><mi>m</mi><mo>+</mo><mn>1</mn></mrow></msup><mi>L</mi></mrow></mfrac><munderover><mo>∑</mo><mrow><mi>p</mi><mo>=</mo><mn>0</mn></mrow><mi>m</mi></munderover><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mn>1</mn><msup><mo form="postfix" stretchy="false">)</mo><mi>p</mi></msup><mrow><mo form="prefix" stretchy="true">(</mo><mfrac linethickness="0"><mi>m</mi><mi>p</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mfrac><mrow><mn>1</mn><mo>−</mo><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mi>z</mi><mi>S</mi></msub><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>p</mi><mo>+</mo><mn>7</mn><mi>/</mi><mn>2</mn></mrow></msup></mrow><mrow><mi>p</mi><mo>+</mo><mn>7</mn><mi>/</mi><mn>2</mn></mrow></mfrac><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+U_m(S)^2
+&amp;=2\pi\kappa_T\varepsilon^2L^6
+ \frac{\Gamma(m+7/2)S^m}{(L^2+2S)^{m+7/2}},\\
+V_m(S)^2
+&amp;=2\pi\kappa_T\varepsilon^2L^6\Gamma(m+9/2)
+ \int_0^S\frac{s^m}{(L^2+2s)^{m+9/2}}\,ds\\
+&amp;=\frac{2\pi\kappa_T\varepsilon^2\Gamma(m+9/2)}
+             {2^{m+1}L}
+ \int_0^{z_S}z^m(1-z)^{5/2}\,dz\\
+&amp;=\frac{2\pi\kappa_T\varepsilon^2\Gamma(m+9/2)}
+             {2^{m+1}L}
+ \sum_{p=0}^m(-1)^p{m\choose p}
+       \frac{1-(1-z_S)^{p+7/2}}{p+7/2}.
+\end{aligned}
+\tag{HP.33}
+</annotation></semantics></math></div><span class="eq-number">(HP.33)</span></div>
+<p>The substitution is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>2</mn><mi>s</mi><mi>/</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>L</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>s</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">z=2s/(L^2+2s)</annotation></semantics></math>,
+whose inverse and Jacobian are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><msup><mi>L</mi><mn>2</mn></msup><mi>z</mi><mi>/</mi><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>z</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">s=L^2z/(2(1-z))</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>s</mi><mo>=</mo><msup><mi>L</mi><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>z</mi><mi>/</mi><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>z</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">ds=L^2\,dz/(2(1-z)^2)</annotation></semantics></math>.
+Expanding
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>z</mi><mi>m</mi></msup><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>z</mi><mo form="postfix" stretchy="false">)</mo><msup><mo form="postfix" stretchy="false">)</mo><mi>m</mi></msup></mrow><annotation encoding="application/x-tex">z^m=(1-(1-z))^m</annotation></semantics></math>
+and integrating each term proves the last line, retaining its finite
+upper endpoint.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>m</mi></msub><annotation encoding="application/x-tex">U_m</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mi>m</mi></msub><annotation encoding="application/x-tex">V_m</annotation></semantics></math>
+both have units of inverse square root of length.</p>
+<p>Differentiating the exact
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>j</mi></msub><annotation encoding="application/x-tex">a_j</annotation></semantics></math>
+formula shows
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>s</mi></msub><msubsup><mi>a</mi><mrow><mi>m</mi><mo>+</mo><mn>1</mn></mrow><mn>2</mn></msubsup><mo>=</mo><mi>−</mi><mn>2</mn><msubsup><mi>a</mi><mrow><mi>m</mi><mo>+</mo><mn>2</mn></mrow><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">\partial_s a_{m+1}^2=-2a_{m+2}^2</annotation></semantics></math>,
+since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo>+</mo><mn>9</mn><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo>+</mo><mn>7</mn><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="false">)</mo><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo>+</mo><mn>7</mn><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Gamma(m+9/2)=(m+7/2)\Gamma(m+7/2)</annotation></semantics></math>.
+Multiplication by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>s</mi><mi>m</mi></msup><annotation encoding="application/x-tex">s^m</annotation></semantics></math>
+and integration by parts therefore gives</p>
+<div class="equation" id="eq-HP-34"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msub><mi>U</mi><mi>m</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><msub><mi>V</mi><mi>m</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mstyle displaystyle="false"><mfrac><mi>m</mi><mn>2</mn></mfrac></mstyle><msub><mi>V</mi><mrow><mi>m</mi><mo>−</mo><mn>1</mn></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup></mtd><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo>≥</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msub><mi>a</mi><mn>1</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>;</mo><mi>S</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><msub><mi>V</mi><mn>0</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msub><mi>a</mi><mn>1</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>;</mo><mn>0</mn><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\tfrac12 U_m(S)^2+V_m(S)^2
+ &amp;=\tfrac m2 V_{m-1}(S)^2 &amp;&amp;(m\ge1),\\
+\tfrac12 a_1(A;S)^2+V_0(S)^2
+ &amp;=\tfrac12 a_1(A;0)^2 .
+\end{aligned}
+\tag{HP.34}
+</annotation></semantics></math></div><span class="eq-number">(HP.34)</span></div>
+<p>These are the exact weighted energy identities for this connection.
+No nonlinear forcing or endpoint term has been discarded.</p>
+<figure>
+<div aria-label="Scrollable mathematical diagram" class="diagram" tabindex="0"><img alt="Exact endpoint derivative norms and accumulated heat dissipation for a three-dimensional Gaussian connection." src="figures/f09-ordinary-smoothing.svg"/></div>
+<figcaption aria-hidden="true">Exact endpoint derivative norms and
+accumulated heat dissipation for a three-dimensional Gaussian
+connection.</figcaption>
+</figure>
+<p><strong>Figure HP.</strong> The original Gaussian connection above,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">L=1</annotation></semantics></math>
+metre,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mo>=</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\varepsilon=1/2</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>κ</mi><mi>T</mi></msub><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\kappa_T=2</annotation></semantics></math>.
+The left panel plots the actual weighted endpoint values
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>m</mi></msub><annotation encoding="application/x-tex">U_m</annotation></semantics></math>(S);
+the right plots the full accumulated values
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mi>m</mi></msub><annotation encoding="application/x-tex">V_m</annotation></semantics></math>(S),
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">m=0,1,2</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>S</mi><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0\le S\le1</annotation></semantics></math>
+square metre. These are full-space norms, not coordinate sections or
+upper-bound constants. The formulas retain all three-dimensional radial
+factors.</p>
+<h2 id="exercises-with-complete-solutions">11. Exercises with complete
+solutions</h2>
+<h3 id="exercise-1.-every-quadratic-second-derivative">Exercise 1. Every
+quadratic second derivative</h3>
+<p>Expand the two ordinary derivatives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>r</mi></msub><msub><mi>∂</mi><mi>q</mi></msub></mrow><annotation encoding="application/x-tex">\partial_r\partial_q</annotation></semantics></math>
+of Q(A,A)_i without commuting or deleting derivative words.</p>
+<p><strong>Solution.</strong> The full ordered expansion is</p>
+<div class="equation" id="eq-HP-35"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>∂</mi><mi>r</mi></msub><msub><mi>∂</mi><mi>q</mi></msub><mi>Q</mi><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>,</mo><mi>A</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>i</mi></msub><mo>=</mo><munder><mo>∑</mo><mi>j</mi></munder><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">{</mo><mn>2</mn><mo form="prefix" stretchy="false">(</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo form="prefix" stretchy="false">[</mo><msub><mi>∂</mi><mi>r</mi></msub><msub><mi>∂</mi><mi>q</mi></msub><msub><mi>A</mi><mi>j</mi></msub><mo>,</mo><msub><mi>∂</mi><mi>j</mi></msub><msub><mi>A</mi><mi>i</mi></msub><mo form="postfix" stretchy="false">]</mo><mo>+</mo><mo form="prefix" stretchy="false">[</mo><msub><mi>∂</mi><mi>q</mi></msub><msub><mi>A</mi><mi>j</mi></msub><mo>,</mo><msub><mi>∂</mi><mi>r</mi></msub><msub><mi>∂</mi><mi>j</mi></msub><msub><mi>A</mi><mi>i</mi></msub><mo form="postfix" stretchy="false">]</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mi>+</mi><mo form="prefix" stretchy="false">[</mo><msub><mi>∂</mi><mi>r</mi></msub><msub><mi>A</mi><mi>j</mi></msub><mo>,</mo><msub><mi>∂</mi><mi>q</mi></msub><msub><mi>∂</mi><mi>j</mi></msub><msub><mi>A</mi><mi>i</mi></msub><mo form="postfix" stretchy="false">]</mo><mo>+</mo><mo form="prefix" stretchy="false">[</mo><msub><mi>A</mi><mi>j</mi></msub><mo>,</mo><msub><mi>∂</mi><mi>r</mi></msub><msub><mi>∂</mi><mi>q</mi></msub><msub><mi>∂</mi><mi>j</mi></msub><msub><mi>A</mi><mi>i</mi></msub><mo form="postfix" stretchy="false">]</mo><mo form="postfix" stretchy="false">)</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>−</mi><mo form="prefix" stretchy="false">(</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo form="prefix" stretchy="false">[</mo><msub><mi>∂</mi><mi>r</mi></msub><msub><mi>∂</mi><mi>q</mi></msub><msub><mi>A</mi><mi>j</mi></msub><mo>,</mo><msub><mi>∂</mi><mi>i</mi></msub><msub><mi>A</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">]</mo><mo>+</mo><mo form="prefix" stretchy="false">[</mo><msub><mi>∂</mi><mi>q</mi></msub><msub><mi>A</mi><mi>j</mi></msub><mo>,</mo><msub><mi>∂</mi><mi>r</mi></msub><msub><mi>∂</mi><mi>i</mi></msub><msub><mi>A</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">]</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mi>+</mi><mo form="prefix" stretchy="false">[</mo><msub><mi>∂</mi><mi>r</mi></msub><msub><mi>A</mi><mi>j</mi></msub><mo>,</mo><msub><mi>∂</mi><mi>q</mi></msub><msub><mi>∂</mi><mi>i</mi></msub><msub><mi>A</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">]</mo><mo>+</mo><mo form="prefix" stretchy="false">[</mo><msub><mi>A</mi><mi>j</mi></msub><mo>,</mo><msub><mi>∂</mi><mi>r</mi></msub><msub><mi>∂</mi><mi>q</mi></msub><msub><mi>∂</mi><mi>i</mi></msub><msub><mi>A</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">]</mo><mo form="postfix" stretchy="false">)</mo><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">}</mo><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\partial_r\partial_qQ(A,A)_i=\sum_j\bigl\{
+2(&amp;[\partial_r\partial_qA_j,\partial_jA_i]
++[\partial_qA_j,\partial_r\partial_jA_i]\\
+ &amp;+[\partial_rA_j,\partial_q\partial_jA_i]
++[A_j,\partial_r\partial_q\partial_jA_i])\\
+-(&amp;[\partial_r\partial_qA_j,\partial_iA_j]
++[\partial_qA_j,\partial_r\partial_iA_j]\\
+ &amp;+[\partial_rA_j,\partial_q\partial_iA_j]
++[A_j,\partial_r\partial_q\partial_iA_j])\bigr\}.
+\end{aligned}
+\tag{HP.35}
+</annotation></semantics></math></div><span class="eq-number">(HP.35)</span></div>
+<p>These are precisely the four subsets of the two derivative positions
+in each original bracket. Repeated indices remain separate placements;
+for r=q their multiplicities are still present. No matrix factor has
+been exchanged.</p>
+<h3 id="exercise-2.-why-the-all-order-induction-closes">Exercise 2. Why
+the all-order induction closes</h3>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">m\ge2</annotation></semantics></math>,
+prove that every A and B index in the weighted forcing bound is strictly
+less than m.</p>
+<p><strong>Solution.</strong> In the quadratic
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">h=0</annotation></semantics></math>
+term the indices are 0,1,m-1. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">h\ge1</annotation></semantics></math>,
+r=min(h,m-h+1) lies between 1 and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">⌊</mo><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="false">⌋</mo></mrow><annotation encoding="application/x-tex">\lfloor(m+1)/2\rfloor</annotation></semantics></math>,
+which is at most m-1 when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">m\ge2</annotation></semantics></math>.
+The other indices are r-1 and m-r, also between zero and m-1. In a cubic
+triple h+k+l=m, a maximum r is at least one. Its B index is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>−</mo><mn>1</mn><mo>≤</mo><mi>m</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">r-1\le m-1</annotation></semantics></math>.
+Either remaining entry is at most m-1, since an entry equal to m would
+be the unique maximum with the other entries zero. Thus no unknown
+order-m quantity occurs on the forcing side. The initial two bounds
+start an actual induction.</p>
+<h3 id="exercise-3.-the-cubic-heat-weight">Exercise 3. The cubic heat
+weight</h3>
+<p>Derive the exact factor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msqrt><mi>S</mi></msqrt><annotation encoding="application/x-tex">\sqrt S</annotation></semantics></math>
+in the cubic forcing estimate.</p>
+<p><strong>Solution.</strong> For the ordered triple with chosen maximum
+r and remaining entries u,v, write the integrand as</p>
+<div class="equation" id="eq-HP-36"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>s</mi><mrow><mi>m</mi><mi>/</mi><mn>2</mn></mrow></msup><msub><mi>a</mi><mrow><mi>r</mi><mo>+</mo><mn>1</mn></mrow></msub><msub><mi>a</mi><mrow><mi>u</mi><mo>+</mo><mn>1</mn></mrow></msub><msub><mi>a</mi><mrow><mi>v</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msup><mi>s</mi><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><msup><mi>s</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn></mrow></msup><msub><mi>a</mi><mrow><mi>r</mi><mo>+</mo><mn>1</mn></mrow></msub><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>s</mi><mrow><mi>u</mi><mi>/</mi><mn>2</mn></mrow></msup><msub><mi>a</mi><mrow><mi>u</mi><mo>+</mo><mn>1</mn></mrow></msub><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>s</mi><mrow><mi>v</mi><mi>/</mi><mn>2</mn></mrow></msup><msub><mi>a</mi><mrow><mi>v</mi><mo>+</mo><mn>1</mn></mrow></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+s^{m/2}a_{r+1}a_{u+1}a_{v+1}
+=s^{1/2}
+ (s^{(r-1)/2}a_{r+1})
+ (s^{u/2}a_{u+1})(s^{v/2}a_{v+1}).
+\tag{HP.36}
+</annotation></semantics></math></div><span class="eq-number">(HP.36)</span></div>
+<p>The equality follows from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>+</mo><mi>u</mi><mo>+</mo><mi>v</mi><mo>=</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">r+u+v=m</annotation></semantics></math>.
+Put the last two factors in the already defined weighted supremum norms
+and the first parenthesis in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>L</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>d</mi><mi>s</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L^2(ds)</annotation></semantics></math>.
+The factor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msqrt><mi>s</mi></msqrt><annotation encoding="application/x-tex">\sqrt s</annotation></semantics></math>
+is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msqrt><mi>S</mi></msqrt><annotation encoding="application/x-tex">\sqrt S</annotation></semantics></math>.
+This gives exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mi>S</mi></msqrt><mspace width="0.167em"></mspace><msub><mi mathvariant="sans-serif">𝖡</mi><mrow><mi>r</mi><mo>−</mo><mn>1</mn></mrow></msub><msub><mi mathvariant="sans-serif">𝖠</mi><mi>u</mi></msub><msub><mi mathvariant="sans-serif">𝖠</mi><mi>v</mi></msub></mrow><annotation encoding="application/x-tex">\sqrt S\,\mathsf B_{r-1}\mathsf A_u\mathsf A_v</annotation></semantics></math>,
+with no change of heat measure or endpoint.</p>
+<h3 id="exercise-4.-recovering-the-original-rough-derivatives">Exercise
+4. Recovering the original rough derivatives</h3>
+<p>Prove the interpolation inequality used to pass to the rough
+solution, retaining its Fourier measure.</p>
+<p><strong>Solution.</strong> For a difference u of two regular
+approximations, Parseval gives</p>
+<div class="equation" id="eq-HP-37"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>j</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>3</mn></mrow></msup><mo>∫</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><msup><mo form="prefix" stretchy="false">|</mo><mrow><mn>2</mn><mi>j</mi></mrow></msup><mo form="prefix" stretchy="false">|</mo><mover><mi>u</mi><mo accent="true">̂</mo></mover><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mspace width="0.167em"></mspace><msup><mi>d</mi><mn>3</mn></msup><mi>ξ</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+a_j(u)^2=(2\pi)^{-3}
+ \int|\xi|^{2j}|\widehat u(\xi)|^2\,d^3\xi .
+\tag{HP.37}
+</annotation></semantics></math></div><span class="eq-number">(HP.37)</span></div>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">j\ge2</annotation></semantics></math>,
+the integrand is the product of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo form="prefix" stretchy="false">|</mo><mover><mi>u</mi><mo accent="true">̂</mo></mover><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>1</mn><mi>/</mi><mi>j</mi></mrow></msup></mrow><annotation encoding="application/x-tex">(|\xi|^2|\widehat u|^2)^{1/j}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><msup><mo form="prefix" stretchy="false">|</mo><mrow><mn>2</mn><mi>j</mi><mo>+</mo><mn>2</mn></mrow></msup><mo form="prefix" stretchy="false">|</mo><mover><mi>u</mi><mo accent="true">̂</mo></mover><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mrow><mo form="prefix" stretchy="false">(</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mi>j</mi></mrow></msup></mrow><annotation encoding="application/x-tex">(|\xi|^{2j+2}|\widehat u|^2)^{(j-1)/j}</annotation></semantics></math>.
+Hölder with exponents j and j/(j-1), on the original measure
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>3</mn></mrow></msup><msup><mi>d</mi><mn>3</mn></msup><mi>ξ</mi></mrow><annotation encoding="application/x-tex">(2\pi)^{-3}d^3\xi</annotation></semantics></math>,
+gives</p>
+<div class="equation" id="eq-HP-38"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>j</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>≤</mo><msub><mi>a</mi><mn>1</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>2</mn><mi>/</mi><mi>j</mi></mrow></msup><msub><mi>a</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>2</mn><mo form="prefix" stretchy="false">(</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mi>j</mi></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+a_j(u)^2\le a_1(u)^{2/j}a_{j+1}(u)^{2(j-1)/j}.
+\tag{HP.38}
+</annotation></semantics></math></div><span class="eq-number">(HP.38)</span></div>
+<p>Taking square roots proves the stated formula. On every positive
+closed heat interval, the higher difference is bounded by the sum of its
+two uniform bounds and the first derivative tends uniformly to zero.
+Thus the actual sequence is Cauchy at order j. Integration against
+compactly supported tests identifies its limit as the distributional
+derivative of the original limit, rather than a new field.</p>
+<h3 id="exercise-5.-third-ordinary-derivative-majorant">Exercise 5.
+Third ordinary derivative majorant</h3>
+<p>Compute
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>b</mi><mn>3</mn></msub><annotation encoding="application/x-tex">b_3</annotation></semantics></math>
+from the exact polynomial operation.</p>
+<p><strong>Solution.</strong> Applying the x derivative and y derivative
+parts separately to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>b</mi><mn>2</mn></msub><annotation encoding="application/x-tex">b_2</annotation></semantics></math>
+gives</p>
+<div class="equation" id="eq-HP-39"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><munder><mo>∑</mo><mi>h</mi></munder><msub><mi>x</mi><mrow><mi>h</mi><mo>+</mo><mn>1</mn></mrow></msub><msub><mi>∂</mi><msub><mi>x</mi><mi>h</mi></msub></msub><msub><mi>b</mi><mn>2</mn></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mn>4</mn><msub><mi>x</mi><mn>1</mn></msub><msub><mi>y</mi><mn>1</mn></msub><mo>+</mo><mo form="prefix" stretchy="false">(</mo><mn>2</mn><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><mn>8</mn><msub><mi>x</mi><mn>0</mn></msub><msub><mi>x</mi><mn>1</mn></msub><mo form="postfix" stretchy="false">)</mo><msub><mi>y</mi><mn>0</mn></msub><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><munder><mo>∑</mo><mi>l</mi></munder><mo form="prefix" stretchy="false">(</mo><msub><mi>y</mi><mrow><mi>l</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>+</mo><mn>2</mn><msub><mi>x</mi><mn>0</mn></msub><msub><mi>y</mi><mi>l</mi></msub><mo form="postfix" stretchy="false">)</mo><msub><mi>∂</mi><msub><mi>y</mi><mi>l</mi></msub></msub><msub><mi>b</mi><mn>2</mn></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msub><mi>y</mi><mn>3</mn></msub><mo>+</mo><mn>6</mn><msub><mi>x</mi><mn>0</mn></msub><msub><mi>y</mi><mn>2</mn></msub><mo>+</mo><mo form="prefix" stretchy="false">(</mo><mn>2</mn><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><mn>12</mn><msubsup><mi>x</mi><mn>0</mn><mn>2</mn></msubsup><mo form="postfix" stretchy="false">)</mo><msub><mi>y</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mspace width="1.0em"></mspace><mo>+</mo><mo form="prefix" stretchy="false">(</mo><mn>4</mn><msub><mi>x</mi><mn>0</mn></msub><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><mn>8</mn><msubsup><mi>x</mi><mn>0</mn><mn>3</mn></msubsup><mo form="postfix" stretchy="false">)</mo><msub><mi>y</mi><mn>0</mn></msub><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\sum_hx_{h+1}\partial_{x_h}b_2
+ &amp;=4x_1y_1+(2x_2+8x_0x_1)y_0,\\
+\sum_l(y_{l+1}+2x_0y_l)\partial_{y_l}b_2
+ &amp;=y_3+6x_0y_2+(2x_1+12x_0^2)y_1\\
+ &amp;\quad +(4x_0x_1+8x_0^3)y_0.
+\end{aligned}
+\tag{HP.39}
+</annotation></semantics></math></div><span class="eq-number">(HP.39)</span></div>
+<p>Their sum is</p>
+<div class="equation" id="eq-HP-40"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mn>3</mn></msub><mo>=</mo><msub><mi>y</mi><mn>3</mn></msub><mo>+</mo><mn>6</mn><msub><mi>x</mi><mn>0</mn></msub><msub><mi>y</mi><mn>2</mn></msub><mo>+</mo><mo form="prefix" stretchy="false">(</mo><mn>6</mn><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><mn>12</mn><msubsup><mi>x</mi><mn>0</mn><mn>2</mn></msubsup><mo form="postfix" stretchy="false">)</mo><msub><mi>y</mi><mn>1</mn></msub><mo>+</mo><mo form="prefix" stretchy="false">(</mo><mn>2</mn><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><mn>12</mn><msub><mi>x</mi><mn>0</mn></msub><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><mn>8</mn><msubsup><mi>x</mi><mn>0</mn><mn>3</mn></msubsup><mo form="postfix" stretchy="false">)</mo><msub><mi>y</mi><mn>0</mn></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+b_3=y_3+6x_0y_2+(6x_1+12x_0^2)y_1
+ +(2x_2+12x_0x_1+8x_0^3)y_0.
+\tag{HP.40}
+</annotation></semantics></math></div><span class="eq-number">(HP.40)</span></div>
+<p>The preceding two lines identify every contribution to the combined
+coefficients. They are norm multiplicities; the signed noncommuting
+expression itself is still given by the exact derivative operation,
+before norms are taken.</p>
+<h3 id="exercise-6.-the-first-two-time-polynomials">Exercise 6. The
+first two time polynomials</h3>
+<p>Compute
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>0</mn></msub><annotation encoding="application/x-tex">P_0</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>1</mn></msub><annotation encoding="application/x-tex">P_1</annotation></semantics></math>
+completely, writing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mi>l</mi></msub><mo>=</mo><msubsup><mi>e</mi><mi>l</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>∞</mi><mo form="postfix" stretchy="false">)</mo></mrow></msubsup></mrow><annotation encoding="application/x-tex">e_l=e_l^{(\infty)}</annotation></semantics></math>.</p>
+<p><strong>Solution.</strong> The first is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>0</mn></msub><mo>=</mo><msub><mi>C</mi><mn>0</mn></msub><mo>+</mo><mi>θ</mi><msub><mi>e</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">P_0=C_0+\theta e_0</annotation></semantics></math>.
+Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>=</mo><msub><mi>y</mi><mn>1</mn></msub><mo>+</mo><mn>2</mn><msub><mi>x</mi><mn>0</mn></msub><msub><mi>y</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">b_1=y_1+2x_0y_0</annotation></semantics></math>,
+direct integration gives</p>
+<div class="equation" id="eq-HP-41"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>1</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>θ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>C</mi><mn>1</mn></msub><mo>+</mo><mi>θ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>e</mi><mn>1</mn></msub><mo>+</mo><mn>2</mn><msub><mi>C</mi><mn>0</mn></msub><msub><mi>e</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>+</mo><msup><mi>θ</mi><mn>2</mn></msup><msubsup><mi>e</mi><mn>0</mn><mn>2</mn></msubsup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+P_1(\theta)=C_1+\theta(e_1+2C_0e_0)+\theta^2 e_0^2.
+\tag{HP.41}
+</annotation></semantics></math></div><span class="eq-number">(HP.41)</span></div>
+<p>The term
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>θ</mi><mn>2</mn></msup><msubsup><mi>e</mi><mn>0</mn><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">\theta^2 e_0^2</annotation></semantics></math>
+comes from integrating
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>u</mi><msubsup><mi>e</mi><mn>0</mn><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">2u e_0^2</annotation></semantics></math>
+over the original time interval [0,theta].
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>C</mi><mn>1</mn></msub><annotation encoding="application/x-tex">C_1</annotation></semantics></math>
+has units of inverse length squared; both other summands have the same
+units. In particular theta is not a dimensionless time variable.</p>
+<h3 id="exercise-7.-the-electric-conversion-factor">Exercise 7. The
+electric conversion factor</h3>
+<p>Derive the factor c in the covariant endpoint estimates from the
+original physical energy.</p>
+<p><strong>Solution.</strong> The full original functional is</p>
+<div class="equation" id="eq-HP-42"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">ℰ</mi><mo>=</mo><mfrac><mrow><mi>ℏ</mi><mi>c</mi></mrow><msubsup><mi>g</mi><mrow><mi mathvariant="normal">Y</mi><mi mathvariant="normal">M</mi></mrow><mn>2</mn></msubsup></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><msup><mi>c</mi><mrow><mi>−</mi><mn>2</mn></mrow></msup><munder><mo>∑</mo><mi>i</mi></munder><mo form="postfix" stretchy="false">∥</mo><msub><mi>F</mi><mrow><mi>t</mi><mi>i</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><msubsup><mo form="postfix" stretchy="false">∥</mo><mn>2</mn><mn>2</mn></msubsup><mo>+</mo><munder><mo>∑</mo><mrow><mi>i</mi><mo>&lt;</mo><mi>j</mi></mrow></munder><mo form="postfix" stretchy="false">∥</mo><msub><mi>F</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><msubsup><mo form="postfix" stretchy="false">∥</mo><mn>2</mn><mn>2</mn></msubsup><mo form="postfix" stretchy="true">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\mathcal E=\frac{\hbar c}{g_{\rm YM}^2}
+ \left(c^{-2}\sum_i\|F_{ti}(t,0)\|_2^2
+       +\sum_{i&lt;j}\|F_{ij}(t,0)\|_2^2\right).
+\tag{HP.42}
+</annotation></semantics></math></div><span class="eq-number">(HP.42)</span></div>
+<p>Thus its curvature norm is exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msubsup><mi>g</mi><mrow><mi mathvariant="normal">Y</mi><mi mathvariant="normal">M</mi></mrow><mn>2</mn></msubsup><mi mathvariant="script">ℰ</mi><mi>/</mi><mo form="prefix" stretchy="false">(</mo><mi>ℏ</mi><mi>c</mi><mo form="postfix" stretchy="false">)</mo><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">d=(g_{\rm YM}^2\mathcal E/(\hbar c))^{1/2}</annotation></semantics></math>.
+The same positive tuple norm at derivative order l contains the summand
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>c</mi><mrow><mi>−</mi><mn>2</mn></mrow></msup><mo form="postfix" stretchy="false">∥</mo><msup><mi>D</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>l</mi><mo form="postfix" stretchy="false">)</mo></mrow></msup><msub><mi>F</mi><mrow><mi>t</mi><mi>i</mi></mrow></msub><msubsup><mo form="postfix" stretchy="false">∥</mo><mn>2</mn><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">c^{-2}\|D^{(l)}F_{ti}\|_2^2</annotation></semantics></math>;
+hence the electric subtuple is bounded by c times that norm. H9 supplies
+its bound
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>l</mi></msub><mi>d</mi><msup><mi>S</mi><mrow><mi>−</mi><mi>l</mi><mi>/</mi><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">R_ldS^{-l/2}</annotation></semantics></math>,
+producing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>e</mi><mi>l</mi><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mo form="postfix" stretchy="false">)</mo></mrow></msubsup><mo>=</mo><mi>c</mi><msub><mi>R</mi><mi>l</mi></msub><mi>d</mi><msup><mi>S</mi><mrow><mi>−</mi><mi>l</mi><mi>/</mi><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">e_l^{(2)}=cR_ldS^{-l/2}</annotation></semantics></math>.
+Applying the proved covariant Morrey–Sobolev inequality to the electric
+tuple gives</p>
+<div class="equation" id="eq-HP-43"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><msup><mi>D</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>l</mi><mo form="postfix" stretchy="false">)</mo></mrow></msup><mi>E</mi><msub><mo form="postfix" stretchy="false">∥</mo><mi>∞</mi></msub><mo>≤</mo><msub><mi>C</mi><mi>M</mi></msub><msub><mi>C</mi><mi>S</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>c</mi><msub><mi>R</mi><mrow><mi>l</mi><mo>+</mo><mn>1</mn></mrow></msub><mi>d</mi><msup><mi>S</mi><mrow><mi>−</mi><mo form="prefix" stretchy="false">(</mo><mi>l</mi><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn></mrow></msup><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mi>c</mi><msub><mi>R</mi><mrow><mi>l</mi><mo>+</mo><mn>2</mn></mrow></msub><mi>d</mi><msup><mi>S</mi><mrow><mi>−</mi><mo form="prefix" stretchy="false">(</mo><mi>l</mi><mo>+</mo><mn>2</mn><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn></mrow></msup><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\|D^{(l)}E\|_\infty
+\le C_MC_S
+ (cR_{l+1}dS^{-(l+1)/2})^{1/2}
+ (cR_{l+2}dS^{-(l+2)/2})^{1/2}.
+\tag{HP.43}
+</annotation></semantics></math></div><span class="eq-number">(HP.43)</span></div>
+<p>This is precisely the stated
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>e</mi><mi>l</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>∞</mi><mo form="postfix" stretchy="false">)</mo></mrow></msubsup><annotation encoding="application/x-tex">e_l^{(\infty)}</annotation></semantics></math>,
+including its c and S powers.</p>
+<h3 id="exercise-8.-a-finite-gaussian-energy-identity">Exercise 8. A
+finite Gaussian energy identity</h3>
+<p>Verify the weighted identity at m=1 without replacing S by an
+infinite heat endpoint.</p>
+<p><strong>Solution.</strong> The exact derivative relation gives</p>
+<div class="equation" id="eq-HP-44"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>s</mi></mrow></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mi>s</mi><mspace width="0.167em"></mspace><msub><mi>a</mi><mn>2</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>s</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msub><mi>a</mi><mn>2</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>s</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>−</mo><mi>s</mi><mspace width="0.167em"></mspace><msub><mi>a</mi><mn>3</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>s</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\frac d{ds}\left(\tfrac12s\,a_2(s)^2\right)
+=\tfrac12a_2(s)^2-s\,a_3(s)^2.
+\tag{HP.44}
+</annotation></semantics></math></div><span class="eq-number">(HP.44)</span></div>
+<p>Integrate from zero to the original S. The lower endpoint is zero
+because the Gaussian datum is regular. The result is</p>
+<div class="equation" id="eq-HP-45"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mi>S</mi><mspace width="0.167em"></mspace><msub><mi>a</mi><mn>2</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><msubsup><mo>∫</mo><mn>0</mn><mi>S</mi></msubsup><mi>s</mi><mspace width="0.167em"></mspace><msub><mi>a</mi><mn>3</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>s</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>s</mi><mo>=</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msubsup><mo>∫</mo><mn>0</mn><mi>S</mi></msubsup><msub><mi>a</mi><mn>2</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>s</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>s</mi><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\tfrac12S\,a_2(S)^2+\int_0^S s\,a_3(s)^2\,ds
+=\tfrac12\int_0^S a_2(s)^2\,ds,
+\tag{HP.45}
+</annotation></semantics></math></div><span class="eq-number">(HP.45)</span></div>
+<p>namely
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msub><mi>U</mi><mn>1</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><msub><mi>V</mi><mn>1</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msub><mi>V</mi><mn>0</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\tfrac12U_1(S)^2+V_1(S)^2=\tfrac12V_0(S)^2</annotation></semantics></math>.
+All quantities are the full norms of the original connection, with the
+same L, epsilon and trace factor. This checks the finite weighted
+identity itself, not only its asymptotic order.</p>
+<h2 id="from-these-bounds-to-the-remaining-evolution-argument">12. From
+these bounds to the remaining evolution argument</h2>
+<p>The endpoint potential and its physical derivative now have explicit
+bounds of every required order on the existing physical interval. These
+bounds use the constructed heat flow, the proved conserved physical
+energy and the exact gauge map. The original reference connection and
+the finite heat endpoint have remained fixed throughout.</p>
+<p>The complete fixed-time heat-curvature estimates are now proved in <a href="classical-fixed-time-estimates.html">Gauss law, heat curvature and
+fixed-time estimates</a>. The wave estimates that determine a uniform
+physical lifespan, and the final physical continuation argument, are
+subsequent parts of Lesson 9.</p>
+</main><footer>Geometry and states in Yang–Mills theory · Mathematical content: CC0 1.0.</footer></body></html>

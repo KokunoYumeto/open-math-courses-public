@@ -51,13 +51,13 @@ The proofs use these precise contracts:
 | SH02-MD-DIMENSION | Finite cohomological amplitude of ordinary direct image and closed-support sections on finite-dimensional manifolds |
 | SH02-CA-INTERVAL | Ordinary cohomology of a constant sheaf with arbitrary coefficient module on a nonempty compact interval |
 
-These are linked through specialization,
-normal geometry, conic transport,
-microlocalization,
-manifold duality,
-open prerequisite contracts,
-exceptional adjunctions, and
-convex cohomology. The Hom bound is needed: boundedness
+These are linked through [specialization](../../sheaf-proof-readings/SH02-specialization.html),
+[normal geometry](../../sheaf-proof-readings/SH02-normal-geometry.html), [conic transport](../../sheaf-proof-readings/SH02-conic-descent.html),
+[microlocalization](../../sheaf-proof-readings/SH02-microlocalization.html),
+[manifold duality](../../sheaf-proof-readings/SH02-manifold-duality.html),
+[open prerequisite contracts](../../sheaf-proof-readings/SH02-open-prerequisites.html),
+[exceptional adjunctions](../../sheaf-proof-readings/SH02-exceptional-operations.html), and
+[convex cohomology](../../sheaf-proof-readings/SH02-convex-acyclicity.html). The Hom bound is needed: boundedness
 of the two arguments alone is not a formal reason for their derived Hom
 to be bounded in an arbitrary sheaf category.
 

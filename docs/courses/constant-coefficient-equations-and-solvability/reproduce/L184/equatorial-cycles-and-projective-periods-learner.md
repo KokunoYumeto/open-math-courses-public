@@ -6,7 +6,7 @@ A deformed affine equator and a projective normal tube are different geometric o
 
 Basic references are Atiyah, Bott and Gårding [A, B] for the classical contour method, and Hatcher [H] for finite-chain homology. The preceding [Rational top forms detect cycles in a hypersurface complement](../../AN02-L182.html) and [Finite covers and normal circles in projective complements](../../AN02-L183.html) prove the two general projective ingredients. [Tangent cones that permit an imaginary push](../../AN02-L118.html) supplies the compact zero-free deformation and whole-sphere extension. The complete proof below gives the remaining geometric and affine-fiber arguments.
 
-The [full angular-contour and polynomial-continuation reading](angular-contours-and-polynomial-continuation.md) supplies the analytic argument and its exact constants. Its general analytic-wavefront, homogeneous angular Fourier and wavefront-operation prerequisites remain explicitly planned. The component conclusion here retains those hypotheses; the proved distributional boundary limit does not replace them.
+The [full angular-contour and polynomial-continuation reading](angular-contours-and-polynomial-continuation.md) supplies the analytic argument and its exact constants. The complete all-integer parity-sensitive angular Fourier identity is proved in [Angular distributions and their full Fourier transforms](../../AN02-L185.html#4-the-angular-fourier-identity-on-the-whole-frequency-space), Theorem 4.1, with arbitrary angular distributions and the full frequency origin retained. The general analytic-wavefront and wavefront-operation prerequisites remain explicitly planned. The component conclusion here retains the remaining analytic hypotheses.
 
 ## 1. The two factors in the comparison
 

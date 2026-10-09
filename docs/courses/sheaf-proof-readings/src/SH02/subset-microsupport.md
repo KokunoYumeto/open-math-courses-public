@@ -1,6 +1,6 @@
 # SH02-SUB-UNIT — Reading a subset through its sheaf
 
-Working programme reading. The arguments use the precise prerequisite contracts listed below. Full mathematical review and proof closure of those dependencies remain unfinished.
+The arguments use the coefficient, geometric and derived-operation hypotheses listed below. Each estimate identifies the support or restriction map that supplies it.
 
 A subset records where a coefficient can live. Microsupport records which directions make its local extension problem fail. The distinction between a closed restriction and extension by zero from an open set therefore matters even when their ordinary closures agree. We first establish a geometric estimate valid for arbitrary open and closed sets, and then use exact sequences to compute examples whose boundaries meet or disappear.
 
@@ -28,7 +28,7 @@ We use the following explicit dependencies.
 - `SH02-NG-CONE-SEQUENCES` identifies the pair normal cone $C(A,B)$ with limits $c_n(a_n-b_n)$, where $a_n\in A$, $b_n\in B$, both tend to the base point, and $c_n\to+\infty$. `SH02-NG-CONE-CONSEQUENCES` proves locality and $C(B,A)=-C(A,B)$.
 - Localization, exactness of filtered colimits, closed pushforward, inverse image of constant sheaves, and proper base change have their usual derived sheaf meanings. The elementary convex acyclicity used in the crossing calculation is the constant-coefficient specialization of `SH02-CA-CONSTANT`, whose proof is not given in this lesson; its precise content needed here is $R\Gamma(D;k)\simeq k$ for a nonempty convex locally closed subset of a finite-dimensional real vector space, compatibly with restrictions between such sets.
 
-The corresponding lessons are [directional tests](microsupport-tests.md), [directional topology](cone-topology.md), [normal geometry](normal-geometry.md), and [convex acyclicity](convex-acyclicity.md).
+The corresponding lessons are [directional tests](../../SH02-microsupport-tests.html), [directional topology](../../SH02-cone-topology.html), [normal geometry](../../SH02-normal-geometry.html), and [convex acyclicity](../../SH02-convex-acyclicity.html).
 
 For $D\subset E$ the polar and antipode are
 

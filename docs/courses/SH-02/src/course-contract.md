@@ -1,15 +1,8 @@
-# SH02-COURSE-CONTRACT — How to use this course draft
+# SH02-COURSE-CONTRACT — How to use this course
 
 Local identifier: `SH02-COURSE-CONTRACT`.
 
-This course develops sheaf operations as tools for studying directions of
-propagation. Its writing order starts with conic objects and kernel operations;
-the eventual learner order follows the dependency graph in the course index.
-The intended audience already knows abelian and derived categories, sheaves
-on topological spaces, basic manifold topology and cotangent bundles. Exact
-open prerequisites are linked in the prerequisite lesson. Further prerequisites
-remain explicitly named when the available open statement does not supply
-the required generality or proof.
+This course develops sheaf operations as tools for studying directions of propagation. The course index gives a reading order from the foundations through Fourier kernels, specialization and microsupport. The intended audience already knows abelian and derived categories, sheaves on topological spaces, basic manifold topology and cotangent bundles. The prerequisite lessons state and prove the precise results needed below; each use retains the input ranges and geometric hypotheses of its prerequisite.
 
 The course covers the microlocal theory of sheaves: the Fourier–Sato transformation, specialization and
 microlocalization, the micro-support and its functorial properties, and microlocal categories. This is the
@@ -45,7 +38,7 @@ antipodal map, the order of product orientations and the degree shifts of
 Fourier–Sato operations are all part of their definitions. Local calculations
 must return to these conventions before being used in a composition.
 
-Each lesson separates statements proved there, exact imports, conditional proofs whose inputs remain open, and outstanding source obligations.
+Each lesson states its hypotheses and either proves its result directly or links the precise prerequisite argument. The research routes distinguish the theorems developed here from later applications requiring additional analytic or categorical input.
 
 Examples and exercises are newly designed. Their solutions show the algebra
 and topology needed to check the formulas. The protected expression and
@@ -53,6 +46,4 @@ organization of source examples do not enter this course. Detected source
 misprints or false assertions receive a visible correction and an explicit
 mathematical reason.
 
-This directory is an exchange package for the existing reader. It does not
-provide another website. Its stable `SH02-...` identifiers are local course
-identifiers and have not been registered as official Stacks tags.
+The stable `SH02-...` identifiers locate statements and proofs within this course. They are local identifiers, not official Stacks tags.

@@ -713,7 +713,7 @@ The following lessons prove the prerequisite results used here. The analytic and
 | Prerequisite lesson | Results used here |
 | --- | --- |
 | Analytic geometry for finite maps | Analytic coordinates, reduced components and differences, proper images, compact affine-analytic finiteness, and dimension and rank cuts |
-| Analytic closures of the original strata | Analytic conormal closures and the AP/PB parameter comparisons |
+| [Analytic closures of the original strata](../analytic-conormal-closures.html) | Analytic conormal closures and the AP/PB parameter comparisons |
 | [Compatible triangulation](../compatible-whitney-triangulation.html#SH02-COMPATIBLE-TRIANGULATION) | Analytic open simplices compatible with the marked compact pair and finite polynomial splitting |
 | [Supporting verifications for open prerequisites](../../sheaf-proof-readings/SH02-open-prerequisite-proofs.html) | Localization, proper base change and the section-restriction map; controlled lifts, tubes and flows |
 | Normal Morse data and change of coefficients | Ring-linear coefficient restriction, original real and normal-choice pairs, finite closed-cover maps, and field-perverse normal degrees |

@@ -22,7 +22,7 @@ The geometric theorem imposes no condition on coefficient modules. A bounded com
 
 ## Finite starting floor and proof route
 
-The analytic-difference input for the original labels is AC1 of the admitted analytic floor, at pinned revision f37860d6b90a04be6b9b7f7b8a4f6069e4d58ecf, exact repository path docs/courses/SH-02/src/analytic-conormal-closures.md, SHA256 436ff780b110ae31557533febf7e99c5b1db162dfcb403153dc21d5d3fb4c31d. Its AC1 full proof is lines 19–42; its PB4 scalar transfer is lines 320–334; its exact analytic/transitive selected-body floor is lines 344–366. In particular the Remmert–Stein finite-first extension induction and the scalar Cauchy/Goursat/Taylor convention are already retained at their actual hypotheses. This supplement does not assert a whole-file theorem for those providers.
+The analytic-difference input for the original labels is [AC1 of the analytic geometry lesson](../analytic-conormal-closures.html#AC1). Its complete proof includes the Remmert–Stein finite-first extension induction; PB4 supplies the scalar Cauchy, Goursat and Taylor convention. These inputs retain their stated analytic hypotheses.
 
 The real subanalytic floor is the complete finite-expression preparation proof in the immutable FCT source, followed by its arbitrary-set analytic cell theorem, Boolean/projection calculus, bounded-chart comparison, dimension/frontier proof and finite definable choice. The provider ranges below are full proof bodies, including the paragraphs between numbered equations. Preparation uses the two decreasing inductions on ambient dimension and the integer analytic-order bound; the cell and complement deductions occur afterwards. WP0 supplies finite polynomial splitting in the used Weierstrass proof from its own circle-count lemma and the admitted scalar calculus. No algebraic-closure-existence theorem is an additional floor.
 
@@ -455,18 +455,18 @@ Every open simplex of the subcomplex representing \(X\), and therefore every ope
 
 ## Exact proof-bearing bindings and scope boundary
 
-The geometric construction above and WP0 are independently authored CC0 text. The analytic cell/preparation and manifold mechanism are informed by Guillaume Valette, *On subanalytic geometry*, arXiv:2507.23622v1, and Marja Kankaanrinta, *A subanalytic triangulation theorem for real analytic orbifolds*, arXiv:1105.0209v2; the strict partition-coordinate colouring is Milnor's construction. The actual inputs are the complete internal proof bodies below. The specified ranges include full used arguments, not just statements or selected displayed equations. Imported source attributions are retained in the frozen originals.
+The geometric construction above and WP0 are independently authored CC0 text. The analytic cell/preparation and manifold mechanism are informed by Guillaume Valette, *On subanalytic geometry*, arXiv:2507.23622v1, and Marja Kankaanrinta, *A subanalytic triangulation theorem for real analytic orbifolds*, arXiv:1105.0209v2; the strict partition-coordinate colouring is Milnor's construction. The actual inputs are the complete internal proof bodies below. The specified ranges include full used arguments, not just statements or selected displayed equations. The referenced texts retain their source attributions and component licences.
 
-| Key | Exact repository source path | Pinned revision | SHA256 |
-| --- | --- | --- | --- |
-| FAG | docs/courses/SH-02/src/finite-map-analytic-geometry.md | 150df7c35c98463fd8f0d372cbc42edbb65efe33 | 5cf7ae109f5bf57337745347c3e09e5b41f1362632110e7c313bb354060a636b |
-| SH03 | docs/courses/sheaf-proof-readings/src/SH03/subanalytic-sets-and-limiting-tangent-directions.md | cecb8f47005cccf0fa742714d07d259304661666 | 0d11ea99975d747192ca5529c115af1ca86e974705b95fdf08137d9691c9778d |
-| FCT | docs/courses/analytic-finiteness-and-preparation/src/analytic-finiteness-for-preparation.md | cecb8f47005cccf0fa742714d07d259304661666 | bbbc86f44f47f5daa3df79488612f4a53a60a1aaa25387664e779d1439f10579 |
-| CHOICE | docs/courses/analytic-finiteness-and-preparation/src/curve-selection-and-lojasiewicz.md | cecb8f47005cccf0fa742714d07d259304661666 | f2da6215cbf13f83efeda82cbed1412c2d3c030cf193433eeeb869ed3632f437 |
-| WEIERSTRASS | docs/courses/analytic-finiteness-and-preparation/src/weierstrass-preparation-and-division.md | cecb8f47005cccf0fa742714d07d259304661666 | bac6b8013eec479cb148e62403129c5d3045f48e16ee6c703952bb57333690d5 |
-| SCALAR | docs/courses/foundations-of-von-neumann-algebras/src/cauchy-s-theorem-for-cycles-and-its-consequences.md | ff3eb3dc90e1a0519558d024d269379c38c7c326 | 2da4719329ad5d589037543a20b2f26d5d3b0b6cd186f3c7188c7bcf23cee1ad |
-| AC | docs/courses/SH-02/src/analytic-conormal-closures.md | f37860d6b90a04be6b9b7f7b8a4f6069e4d58ecf | 436ff780b110ae31557533febf7e99c5b1db162dfcb403153dc21d5d3fb4c31d |
-| NMC | docs/courses/SH-02/src/normal-morse-coefficients.md | f37860d6b90a04be6b9b7f7b8a4f6069e4d58ecf | 393cfcda52c64555319454769b2d674b1512db04234fefb08c993c52c1fff705 |
+| Key | Exact repository source path |
+| --- | --- |
+| FAG | docs/courses/SH-02/src/finite-map-analytic-geometry.md |
+| SH03 | docs/courses/sheaf-proof-readings/src/SH03/subanalytic-sets-and-limiting-tangent-directions.md |
+| FCT | docs/courses/analytic-finiteness-and-preparation/src/analytic-finiteness-for-preparation.md |
+| CHOICE | docs/courses/analytic-finiteness-and-preparation/src/curve-selection-and-lojasiewicz.md |
+| WEIERSTRASS | docs/courses/analytic-finiteness-and-preparation/src/weierstrass-preparation-and-division.md |
+| SCALAR | docs/courses/foundations-of-von-neumann-algebras/src/cauchy-s-theorem-for-cycles-and-its-consequences.md |
+| AC | docs/courses/SH-02/src/analytic-conormal-closures.md |
+| NMC | docs/courses/SH-02/src/normal-morse-coefficients.md |
 
 | Consumer / used mechanism | Complete pinned proof body |
 | --- | --- |

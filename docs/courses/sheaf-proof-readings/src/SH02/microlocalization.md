@@ -1,6 +1,6 @@
 # Covector tests of normal limits
 
-Independently expressed programme text is dedicated under CC0 1.0 Universal. This lesson constructs microlocalization, its directional tests, recovery maps and operation comparisons. The source account below compares these arguments with Kashiwara and Schapira, *Microlocal Study of Sheaves*, Astérisque 128 (1985), and identifies the separate orientation and adjunction calculations used here. The exact identification of the two transformed vertical arrows is proved in [Following the microlocal comparison maps](microlocal-endpoint-propagation.md), SH02-MEP-SUPPORT and SH02-MEP-TRACE. The stated prerequisite boundaries remain part of the mathematical claims.
+Independently expressed programme text is dedicated under CC0 1.0 Universal. This lesson constructs microlocalization, its directional tests, recovery maps and operation comparisons. The source account below compares these arguments with Kashiwara and Schapira, *Microlocal Study of Sheaves*, Astérisque 128 (1985), and identifies the separate orientation and adjunction calculations used here. The exact identification of the two transformed vertical arrows is proved in [Following the microlocal comparison maps](../../SH02-microlocal-endpoint-propagation.html), SH02-MEP-SUPPORT and SH02-MEP-TRACE. The stated prerequisite boundaries remain part of the mathematical claims.
 
 ## SH02-MIC-SOURCES — Tests, recovery maps and operation squares
 
@@ -45,7 +45,7 @@ The following contracts are needed, at the stated generality.
 | SH02-FF-BICONIC, SH02-FF-PRODUCT | Fourier exchange with independent scaling in two vector bundles | sibling functoriality proof |
 | SH02-MIC-TRACE-EXCHANGE | Compatibility of Fourier operation exchange with the particular forget-support and relative-trace comparison maps, specified below | full proof in SH02-MEP-SUPPORT, SH02-MEP-TRACE and SH02-MEP-MATE-UNTWIST, relative to the finite operation cut |
 
-The labels in this table are local dependency aliases; unresolved aliases remain explicit dependencies. No unbounded version is asserted.
+The labels in this table identify the prerequisite results used in the proof. No unbounded version is asserted.
 
 ## SH02-MIC-DEFINITION — The transform after specialization
 

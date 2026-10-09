@@ -935,8 +935,8 @@ caloric-temporal gauge on every prescribed finite heat
 interval. These constructions supply the auxiliary
 connection needed for the physical Yang–Mills analysis.
 
-The estimates that control physical-time evolution by
-the initial physical data, and the general global
-physical continuation argument, remain the next parts
-of Lesson 9. The auxiliary heat existence theorem proved
-here is not counted as that physical conclusion.
+The ordinary smoothing estimates and explicit physical-time
+bounds for the endpoint potential are now proved in
+[Ordinary heat smoothing and physical-time bounds](../classical-potential-estimates.html).
+The remaining heat-curvature and wave estimates and the general
+physical continuation argument are subsequent parts of Lesson 9.

@@ -8,11 +8,11 @@ The same boundary distinction has several consequences. It controls which sheave
 
 Except in the explicitly field-valued failure example and differential-form calculation, $k$ is a commutative unital ring of finite global dimension. Categories are $D^+(k_X)$ unless a bounded complex is specified. All locally compact spaces are Hausdorff. Manifolds have finite dimension, are countable at infinity, and have no boundary unless the text explicitly uses a compact manifold as a closed subset of its double. The orientation complex is $\omega_X=o_X[\dim X]$. Every tensor product and internal Hom is derived.
 
-The operations, comparisons and support conventions are those of exceptional operations, especially SH02-EX-ADJOINT, SH02-EX-COMPOSITION, SH02-EX-BASECHANGE and SH02-EX-INTERNAL. Ordinary direct image remains $Rf_*$, whereas integration along a nonproper map is $Rf_!$. We use localization, proper-support base change, and the bounded-below projection formula at their stated finite-dimensional map bounds. The orientation and normalized trace are SH02-MD-SUBMERSION and SH02-MD-TRACE in manifold duality. The finite-dimensional kernel formalism is SH02-KER-004 through SH02-KER-008 in kernel calculus.
+The operations, comparisons and support conventions are those of [exceptional operations](../../sheaf-proof-readings/SH02-exceptional-operations.html), especially SH02-EX-ADJOINT, SH02-EX-COMPOSITION, SH02-EX-BASECHANGE and SH02-EX-INTERNAL. Ordinary direct image remains $Rf_*$, whereas integration along a nonproper map is $Rf_!$. We use localization, proper-support base change, and the bounded-below projection formula at their stated finite-dimensional map bounds. The orientation and normalized trace are SH02-MD-SUBMERSION and SH02-MD-TRACE in [manifold duality](../../sheaf-proof-readings/SH02-manifold-duality.html). The finite-dimensional kernel formalism is SH02-KER-004 through SH02-KER-008 in [kernel calculus](../../sheaf-proof-readings/SH02-kernel-calculus.html).
 
 ### SH02-CTA-IMP-TRIANGULATION — Finite compatible triangulations
 
-A compact real semialgebraic set, together with finitely many semialgebraic subsets, admits a finite compatible triangulation. This is a triangulation theorem, not a consequence of finite stalk dimension, and its exact external-source match remains open. The sheaf consequence needed here follows from a finite filtration by open simplices: constant extension sheaves on these simplices have the local stabilization and perfectness property of SH02-CB-SYSTEMS, by the convex calculations in SH02-CB-CONVEX; finite localization triangles preserve that property. Thus $k_U$ for a semialgebraic open subset of a compact manifold is cohomologically constructible. This implication does not claim arbitrary open subsets have that property.
+A compact real semialgebraic set, together with finitely many semialgebraic subsets, admits a finite compatible triangulation. The finite models below derive this triangulation from the compatible subanalytic construction. The sheaf consequence needed here follows from a finite filtration by open simplices: constant extension sheaves on these simplices have the local stabilization and perfectness property of SH02-CB-SYSTEMS, by the convex calculations in SH02-CB-CONVEX; finite localization triangles preserve that property. Thus $k_U$ for a semialgebraic open subset of a compact manifold is cohomologically constructible. This implication does not claim arbitrary open subsets have that property.
 
 ### SH02-CTA-IMP-DERHAM — Differential forms and compact supports
 
@@ -20,7 +20,60 @@ The smooth de Rham complex resolves the constant complex sheaf; its terms, also 
 
 ### SH02-CTA-IMP-POLYHEDRA — A finite pair with a local system
 
-We use finite triangulability of a mapping torus of a piecewise-linear map, compatible Euclidean triangulation of an embedded finite polyhedron, and cellular computation of cohomology with a rank-one local system. No sheaf-theoretic conclusion is hidden in this contract. Its exact external-source match remains open; the neighborhood and orientation construction needed after those inputs is given in SH02-CTA-ORIENTATION-OBSTRUCTION.
+We use finite triangulability of a mapping torus of a piecewise-linear map, compatible Euclidean triangulation of an embedded finite polyhedron, and cellular computation of cohomology with a rank-one local system. The finite models below construct the needed triangulations and identify cellular differentials with the actual connecting maps. The neighborhood and orientation construction then follows in SH02-CTA-ORIENTATION-OBSTRUCTION.
+
+<a id="SH02-CTA-FINITE-TOPOLOGY"></a>
+
+### Finite models for the topological inputs
+
+The [compatible-triangulation construction](../compatible-whitney-triangulation.html#TC3), together with its [ambient globalization](../compatible-whitney-triangulation.html#TC4), applies to an arbitrary locally finite family of locally subanalytic subsets of a real analytic manifold. For finitely many semialgebraic subsets of a compact set, use their polynomial equalities and strict inequalities as the labels in Euclidean space. Compactness meets only finitely many simplices in the resulting locally finite complex. Compatibility therefore gives a finite triangulation of the compact set and all its labels. This proves the geometric input in SH02-CTA-IMP-TRIANGULATION; the finite simplex filtration in that paragraph supplies its sheaf consequence.
+
+For the mapping-torus input, let \(P\subset\mathbb R^d\) be a finite linear polyhedron and let \(f:P\to P\) be piecewise linear. Its graph is a finite union of linear simplices and is semialgebraic. Put \(a(t)=t(1-t)\) and define
+
+\[
+ T(x,t)=\begin{pmatrix}
+ a(t)x\\(1-t)x+t f(x)\\a(t)\\a(t)(2t-1)
+ \end{pmatrix}.
+\]
+
+This is the map CTA-TOP1.
+
+The image of the compact semialgebraic set \(P\times[0,1]\) is compact and semialgebraic, by the proved finite projection calculus used in TC3. If \(0<t<1\), the last two coordinates recover \(t\), and the first recovers \(x\). At the endpoints they give precisely \(T(x,1)=T(f(x),0)\). These are exactly the equivalence classes defining the mapping torus, including all points of a possibly noninjective fibre of \(f\) at the top. The induced continuous bijection from that compact quotient to the Hausdorff image is a homeomorphism: images of closed subsets are compact and hence closed. The finite compatible triangulation of this image therefore triangulates the mapping torus. Include the image of any specified finite subpolyhedral trajectory among the labels to triangulate the pair. In particular, represent the degree-two circle map by the piecewise-linear map of polygonal circles that wraps twice, and retain its fixed base vertex. Its base-point trajectory is the circle used in SH02-CTA-ORIENTATION-OBSTRUCTION. This argument requires no infinite subdivision or injectivity of the circle map.
+
+An embedded finite linear polyhedron also admits the required compatible ambient triangulation. Enclose it in the interior of a cube. For every simplex choose affine equations for its affine hull and affine extensions of its facet inequalities. The finite collection of their hyperplanes, together with the cube's facets, cuts the cube into a finite complex of convex polytopes; each original simplex is a union of its faces. Subdivide this polytopal complex by chains of faces, using the barycenter of every face. The subdivisions agree on intersections and include the embedded polyhedron as a subcomplex. Extend to all Euclidean space through successive homothetic cubical shells: the subdivided boundary cells and their scaled copies bound convex prism-shaped cells, whose ordered staircase subdivisions agree on faces. Only finitely many shells meet a compact set. This gives a locally finite ambient triangulation. One barycentric subdivision makes the specified subcomplex full, since a chain whose face barycenters belong to the subcomplex is a chain entirely within it.
+
+Finally, cellular cochains with a local system follow from the same finite simplex construction. Trivialize the system on each closed cell after pulling back along its characteristic map. The relative cohomology of a cell and its boundary is its coefficient module in the cell's degree and zero in other degrees, by the relative interval calculation and ordered products. Filter a finite pair by its relative skeleta. The connecting maps for successive triples are the oriented face-incidence maps, with parallel transport along the attaching paths. This identifies the cellular differential with the actual connecting morphism. The finite filtration's spectral sequence is concentrated in one row, so there are no further differentials or extension choices in each resulting cohomological degree. Equivalently, the usual subdivision and prism homotopies compare this complex with simplicial cochains; parallel transport along each simplex makes those homotopies valid for local coefficients as well. The resulting finite cellular complex therefore computes the pair's cohomology, not just its Euler characteristic. Applied to the sign local system below, lifting the attaching word gives exactly its displayed twisted differential. These arguments allow arbitrary coefficient modules; rank one is imposed only in that example.
+
+
+<a id="SH02-CTA-DERHAM-INPUTS"></a>
+
+### The differential-form inputs
+
+The smooth partition construction in [OF2](../ordinary-involutivity-floor.html#OF2) applies to the standing Hausdorff, countable-at-infinity manifolds. Its locally finite bump functions, divided by their positive locally finite sum, give a smooth partition subordinate to any open cover after refinement. The referenced partition component retains its attribution and licence as stated there.
+
+For completeness, the local de Rham calculation is explicit. On a ball centered at zero, a smooth form of positive degree has the following radial homotopy, denoted CTA-DR1. Write \(v=(v_1,\ldots,v_{p-1})\) for the tuple of tangent vectors.
+
+\[
+ \begin{aligned}
+ &(h\alpha)_x(v)\\
+ &\quad=\int_0^1 t^{p-1}
+   \alpha_{tx}(x,v)\,dt.
+ \end{aligned}
+\]
+
+Differentiate the coefficient functions under this integral. The product rule and the alternating formula for the exterior derivative give the integral of the derivative of the pullback by radial scaling. The fundamental theorem of calculus therefore gives
+
+\[
+ dh+hd=\operatorname{id}-c_0^*.
+ \tag{CTA-DR2}
+\]
+
+Here \(c_0\) is the constant map to the center; its pullback is zero on positive-degree forms and sends a function to its value at the center; set \(h=0\) on functions. The factor in CTA-DR1 is integrable and smooth at zero, so no punctured-ball argument is involved. Thus closed positive-degree forms are locally exact, and a function with zero differential is locally constant. This proves that the smooth de Rham complex resolves the constant sheaf with complex coefficients.
+
+Every sheaf of smooth forms is a module over smooth functions. A section of its restriction to a compact set has local representatives near each point. Choose finitely many relatively compact chart neighborhoods with these representatives, and a smooth partition whose sum is one on a neighborhood of the compact set and whose corresponding supports lie in the respective chart neighborhoods. Multiply each representative by its partition function and extend by zero. Their finite sum has the prescribed germ at every point of the compact set, since every representative occurring there has that germ. Its support is compact. This proves the c-soft extension property used to compute compactly supported derived sections. Tensoring with the orientation local system preserves the argument, since its transition functions are locally constant and cutoffs commute with them. The finite de Rham resolution and these c-soft terms therefore compute the required compact-support cohomology at the exact manifold dimension bound. This argument does not claim that arbitrary sheaves are c-soft.
+
+On an oriented coordinate chart the integral of a compactly supported total derivative is zero, by the one-variable fundamental theorem of calculus in that coordinate. Integrate the other coordinates afterwards. Interchanging the orders is justified directly by rectangular Riemann sums on one compact containing the support: uniform continuity makes their errors tend to zero, independently of the order of summation. This proves the iterated-integral formula for the smooth compactly supported coefficient functions used here. To obtain Stokes on the manifold, choose a partition on a neighborhood of the compact support and sum the chart identities for each partitioned form. The extra derivative terms cancel because the sum of the partition functions is one near the support. Coordinate changes use the ordinary determinant change-of-variables formula and the orientation sign. This is precisely the compactly supported Stokes identity and iterated integration used in the line-trace and global-trace calculations below; no boundary term at infinity occurs.
+
 
 ## SH02-CTA-LINE-TRACE — Fixing an integration sign on one line
 
@@ -643,6 +696,6 @@ Here an orientation means one of the two generators of the integral orientation 
 
 ## SH02-CTA-ANTECEDENTS — Antecedents and further work
 
-The cone, incidence, residue, trace and support questions treated here come from the conic and Fourier–Sato theory of Kashiwara and Schapira; see M. Kashiwara and P. Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), Chapters 1–2. The residue discussion goes back to Birger Iversen. The course's open prerequisite contracts state the Stacks project foundations actually used.
+The cone, incidence, residue, trace and support questions treated here come from the conic and Fourier–Sato theory of Kashiwara and Schapira; see M. Kashiwara and P. Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), Chapters 1–2. The residue discussion goes back to Birger Iversen. The course's [open prerequisite contracts](../../sheaf-proof-readings/SH02-open-prerequisites.html) state the Stacks project foundations actually used.
 
 Three research directions follow from the calculations. One can seek geometric row-difference criteria for other compact incidence correspondences, retaining the evaluation map on the diagonal. One can study how the gluing class in a quadratic transform changes in a family whose null space jumps. One can classify support comparisons by the orientation-twisted fiber complex rather than a list of constant-coefficient Betti numbers. These are questions for further work, not additional theorems asserted here.

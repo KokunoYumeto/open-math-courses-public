@@ -1,0 +1,1867 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mollification, stress cutoffs and the energy coefficient — Incompressible flow</title><link rel="stylesheet" href="reader.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script>
+<script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Incompressible flow</a><a href="src/mollification-stress-cutoffs-and-energy.md">Editable lesson</a><span class="unlinked">Sources and authorship</span></nav></header><main id="main"><nav aria-label="Lesson sequence"><a href="NS-FLUID-23.html">Previous lesson</a></nav><article class="lesson"><h1 id="mollification-stress-cutoffs-and-the-energy-coefficient">Mollification, stress cutoffs and the energy coefficient</h1>
+<p><a href="NS-FLUID-23.html">Lesson 23</a>
+gave the complete finite velocity and stress correction.
+This chapter constructs the amplitudes used by that correction.
+It keeps the original mollified equation, builds every stress
+cutoff, and proves the energy coefficient's smoothness,
+positivity and full derivative bounds, including at zero.</p>
+<p>The original force, viscosity, volume, energy integrals and
+amplitude prefactor stay explicit. The rational coefficient
+functionals and their exact constant are from
+<a href="NS-FLUID-21.html">lesson 21</a>,
+BG1–BG32. The intermittent fields are from
+<a href="NS-FLUID-22.html">lesson 22</a>.
+IC and IK labels refer to the full residual and kernel proofs
+of lesson 23. SC labels below identify the mollification and
+stress partition; AB labels identify the complete amplitudes.</p>
+<p>The human source is Tristan Buckmaster and Vlad Vicol,
+<a href="https://arxiv.org/abs/1709.10033v4"><em>Nonuniqueness of weak solutions to the Navier–Stokes equation</em>,
+arXiv:1709.10033v4</a>.
+Its original author TeX was read at 1–286, 674–785,
+833–1103 and 1398–1531 for the parameter definitions,
+induction, mollification, cutoffs and energy comparison.
+This is independently written exposition. Source formula
+corrections are identified explicitly and proved by exact
+comparison; they do not imply a verdict on the entire paper.</p>
+<p>Five solved exercises compute an actual shear commutator,
+the geometry of every cutoff overlap, a construction for
+every original volume, the exact smoothing loss at zero,
+and the complete resulting physical energy error. The
+infinite iteration requires further velocity and residual
+estimates; the finite results here do not assume them.</p>
+<h2 id="sc1-complete-mollified-equation-and-original-viscosity">SC1. Complete mollified equation and original viscosity</h2>
+<p>Let the original smooth periodic fields on the cubic torus
+of period <span class="math" data-tex="\(L\)">\(L\)</span> solve IC1 with the same <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>.
+Use nonnegative, even, smooth compactly supported original
+Friedrichs kernels <span class="math" data-tex="\(\phi\)">\(\phi\)</span> in space and <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> in
+time, each with integral one, and retain</p>
+<span class="math math-display" data-tex="\[
+K_\ell(y,s)=\ell^{-4}\phi(y/\ell)\varphi(s/\ell),
+\qquad \mathcal M_\ell h(x,t)
+=\int_{\mathbb R^3\times\mathbb R}
+K_\ell(y,s)h(x-y,t-s)\,dy\,ds.
+\tag{SC1}
+\]">\[
+K_\ell(y,s)=\ell^{-4}\phi(y/\ell)\varphi(s/\ell),
+\qquad \mathcal M_\ell h(x,t)
+=\int_{\mathbb R^3\times\mathbb R}
+K_\ell(y,s)h(x-y,t-s)\,dy\,ds.
+\tag{SC1}
+\]</span>
+<p>The spatial field in the integrand is its original periodic
+extension. Times are restricted to those for which the entire
+kernel support lies in the interval on which the original
+equation is known. This imposes no unproved extension across
+a time endpoint. Put</p>
+<span class="math math-display" data-tex="\[
+u_\ell=\mathcal M_\ell u,\quad
+S_\ell=\mathcal M_\ell S,\quad f_\ell=\mathcal M_\ell f,
+\quad D=u_\ell\otimes u_\ell-\mathcal M_\ell(u\otimes u),
+\quad D^\circ=D-\tfrac13\operatorname{tr}D\,I .
+\tag{SC2}
+\]">\[
+u_\ell=\mathcal M_\ell u,\quad
+S_\ell=\mathcal M_\ell S,\quad f_\ell=\mathcal M_\ell f,
+\quad D=u_\ell\otimes u_\ell-\mathcal M_\ell(u\otimes u),
+\quad D^\circ=D-\tfrac13\operatorname{tr}D\,I .
+\tag{SC2}
+\]</span>
+<p>Differentiating the actual compactly supported integral
+commutes with each derivative. Linearity preserves divergence,
+symmetry and trace. The complete resulting equation is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_tu_\ell+\operatorname{div}(u_\ell\otimes u_\ell)
++\nabla p_\ell-\nu\Delta u_\ell
+&amp;=f_\ell+\operatorname{div}(S_\ell+D^\circ),\\
+p_\ell&amp;=\mathcal M_\ell p-\tfrac13\operatorname{tr}D,
+\qquad\operatorname{div}u_\ell=0 .
+\end{aligned}
+\tag{SC3}
+\]">\[
+\begin{aligned}
+\partial_tu_\ell+\operatorname{div}(u_\ell\otimes u_\ell)
++\nabla p_\ell-\nu\Delta u_\ell
+&amp;=f_\ell+\operatorname{div}(S_\ell+D^\circ),\\
+p_\ell&amp;=\mathcal M_\ell p-\tfrac13\operatorname{tr}D,
+\qquad\operatorname{div}u_\ell=0 .
+\end{aligned}
+\tag{SC3}
+\]</span>
+<p>Indeed the equation with pressure <span class="math" data-tex="\(\mathcal M_\ell p\)">\(\mathcal M_\ell p\)</span>
+has the full tensor <span class="math" data-tex="\(D\)">\(D\)</span> on its right side. Removing its
+trace subtracts exactly <span class="math" data-tex="\(\nabla\operatorname{tr}D/3\)">\(\nabla\operatorname{tr}D/3\)</span>
+from both sides, proving SC3 and its sign. For the source's
+unforced equation <span class="math" data-tex="\(f=f_\ell=0\)">\(f=f_\ell=0\)</span>. For a general force the
+receiver is the actual <span class="math" data-tex="\(f_\ell\)">\(f_\ell\)</span>, which is not silently
+identified with the original <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p>The source's displayed equation at line 690 replaces <span class="math" data-tex="\(\nu\)">\(\nu\)</span>
+by one, whereas its original equations at 174 and 248 retain
+<span class="math" data-tex="\(\nu\)">\(\nu\)</span>. Its pressure at 697 subtracts the full
+<span class="math" data-tex="\(\operatorname{tr}D\)">\(\operatorname{tr}D\)</span>, rather than one third. With the
+same displayed trace-free tensor, the exact residual of
+those two printed choices is</p>
+<span class="math math-display" data-tex="\[
+-(1-\nu)\Delta u_\ell
+-\frac23\nabla\operatorname{tr}D .
+\tag{SC4}
+\]">\[
+-(1-\nu)\Delta u_\ell
+-\frac23\nabla\operatorname{tr}D .
+\tag{SC4}
+\]</span>
+<p>This follows by subtracting SC3 term by term. The corrected
+equation SC3 retains both contributions and the original
+viscosity. It is a local formula correction; no conclusion
+about the whole source construction follows from the typo.</p>
+<p>There is also a stronger complete commutator bound. Let
+<span class="math" data-tex="\(h=(y,s)\)">\(h=(y,s)\)</span>, write <span class="math" data-tex="\(u_h=u(x-y,t-s)\)">\(u_h=u(x-y,t-s)\)</span>, and keep the
+full four-variable gradient <span class="math" data-tex="\(D_{x,t}u\)">\(D_{x,t}u\)</span>. Direct expansion
+of both copies of the probability integral gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D&amp;=-\frac12\int\!\int K_\ell(h)K_\ell(h&#x27;)
+(u_h-u_{h&#x27;})\otimes(u_h-u_{h&#x27;})\,dh\,dh&#x27;,\\
+\|D^\circ\|_\infty&amp;\leq\|D\|_\infty
+\leq\ell^2 \mathfrak m_2\|D_{x,t}u\|_\infty^2,\\
+\mathfrak m_2&amp;=\int_{\mathbb R^3}|y|^2\phi(y)\,dy
++\int_{\mathbb R}s^2\varphi(s)\,ds .
+\end{aligned}
+\tag{SC5}
+\]">\[
+\begin{aligned}
+D&amp;=-\frac12\int\!\int K_\ell(h)K_\ell(h&#x27;)
+(u_h-u_{h&#x27;})\otimes(u_h-u_{h&#x27;})\,dh\,dh&#x27;,\\
+\|D^\circ\|_\infty&amp;\leq\|D\|_\infty
+\leq\ell^2 \mathfrak m_2\|D_{x,t}u\|_\infty^2,\\
+\mathfrak m_2&amp;=\int_{\mathbb R^3}|y|^2\phi(y)\,dy
++\int_{\mathbb R}s^2\varphi(s)\,ds .
+\end{aligned}
+\tag{SC5}
+\]</span>
+<p>The fundamental theorem along the full original space-time
+segment bounds the increment by
+<span class="math" data-tex="\(\|D_{x,t}u\|_\infty|h-h&#x27;|\)">\(\|D_{x,t}u\|_\infty|h-h&#x27;|\)</span>.
+The Frobenius norm of its tensor square is its vector norm
+squared. Evenness makes both kernel first moments zero, so
+the complete double second moment is <span class="math" data-tex="\(2\ell^2\mathfrak m_2\)">\(2\ell^2\mathfrak m_2\)</span>.
+This cancels the one half in SC5. Trace removal is an
+orthogonal contraction. All time and spatial derivative
+contributions remain in the four-variable gradient.</p>
+<h2 id="sc2-a-specified-smooth-squared-partition-with-only-adjacent-overlap">SC2. A specified smooth squared partition with only adjacent overlap</h2>
+<p>The source permits choosing its auxiliary cutoff functions.
+Here is one explicit choice satisfying its required supports.
+Use the smooth function <span class="math" data-tex="\(b\)">\(b\)</span> already proved in IK2 and set</p>
+<span class="math math-display" data-tex="\[
+\vartheta(t)=b((t+\tfrac12)(1-t)),\qquad
+A(t)=\sum_{j\in\mathbb Z}\vartheta(t-j)^2,
+\qquad
+\widetilde\chi(y)=
+\frac{\vartheta(\log_4y)}{\sqrt{A(\log_4y)}}
+\quad(y&gt;0).
+\tag{SC6}
+\]">\[
+\vartheta(t)=b((t+\tfrac12)(1-t)),\qquad
+A(t)=\sum_{j\in\mathbb Z}\vartheta(t-j)^2,
+\qquad
+\widetilde\chi(y)=
+\frac{\vartheta(\log_4y)}{\sqrt{A(\log_4y)}}
+\quad(y&gt;0).
+\tag{SC6}
+\]</span>
+<p>The summands are nonzero only when <span class="math" data-tex="\(-1/2&lt;t-j&lt;1\)">\(-1/2&lt;t-j&lt;1\)</span>,
+so the sum is locally finite and smooth. It is positive:
+for noninteger <span class="math" data-tex="\(t\)">\(t\)</span>, take <span class="math" data-tex="\(j=\lfloor t\rfloor\)">\(j=\lfloor t\rfloor\)</span>;
+for integer <span class="math" data-tex="\(t\)">\(t\)</span>, take <span class="math" data-tex="\(j=t\)">\(j=t\)</span>. In either case the
+argument lies strictly in the indicated interval.
+Reindexing gives <span class="math" data-tex="\(A(t+1)=A(t)\)">\(A(t+1)=A(t)\)</span>. On a compact period
+this continuous positive function has a positive minimum.
+Thus its reciprocal square root is smooth with every
+finite derivative bounded.</p>
+<p>Extend <span class="math" data-tex="\(\widetilde\chi\)">\(\widetilde\chi\)</span> by zero outside
+<span class="math" data-tex="\((1/2,4)\)">\((1/2,4)\)</span>, and define on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span></p>
+<span class="math math-display" data-tex="\[
+\widetilde\chi_0(y)=
+\begin{cases}1,&amp;0\leq y\leq2,\\
+\widetilde\chi(y),&amp;y&gt;2,
+\end{cases}
+\qquad \widetilde\chi_i(y)=\widetilde\chi(4^{-i}y)
+\quad(i\geq1).
+\tag{SC7}
+\]">\[
+\widetilde\chi_0(y)=
+\begin{cases}1,&amp;0\leq y\leq2,\\
+\widetilde\chi(y),&amp;y&gt;2,
+\end{cases}
+\qquad \widetilde\chi_i(y)=\widetilde\chi(4^{-i}y)
+\quad(i\geq1).
+\tag{SC7}
+\]</span>
+<p>The zero extensions at <span class="math" data-tex="\(1/2\)">\(1/2\)</span> and <span class="math" data-tex="\(4\)">\(4\)</span> are smooth
+because <span class="math" data-tex="\(b\)">\(b\)</span> and every derivative vanish at the support
+boundary. To check the junction at two, put <span class="math" data-tex="\(t=\log_4y\)">\(t=\log_4y\)</span>.
+For <span class="math" data-tex="\(t\leq1/2\)">\(t\leq1/2\)</span> near <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, the only nonzero
+summand of <span class="math" data-tex="\(A(t)\)">\(A(t)\)</span> is <span class="math" data-tex="\(\vartheta(t)^2\)">\(\vartheta(t)^2\)</span>.
+For <span class="math" data-tex="\(t&gt;1/2\)">\(t&gt;1/2\)</span> near it, the additional term
+<span class="math" data-tex="\(\vartheta(t-1)^2\)">\(\vartheta(t-1)^2\)</span> is flat at <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, while
+<span class="math" data-tex="\(\vartheta(t)\)">\(\vartheta(t)\)</span> stays positive. Hence
+<span class="math" data-tex="\(\widetilde\chi(y)\)">\(\widetilde\chi(y)\)</span> agrees to every derivative with
+one at <span class="math" data-tex="\(y=2\)">\(y=2\)</span>. SC7 is therefore smooth, with
+<span class="math" data-tex="\(0\leq\widetilde\chi_i\leq1\)">\(0\leq\widetilde\chi_i\leq1\)</span>.</p>
+<p>For all <span class="math" data-tex="\(y&gt;0\)">\(y&gt;0\)</span>, periodicity of <span class="math" data-tex="\(A\)">\(A\)</span> gives
+<span class="math" data-tex="\(\sum_{j\in\mathbb Z}\widetilde\chi(4^{-j}y)^2=1\)">\(\sum_{j\in\mathbb Z}\widetilde\chi(4^{-j}y)^2=1\)</span>.
+If <span class="math" data-tex="\(y\leq2\)">\(y\leq2\)</span>, all terms <span class="math" data-tex="\(j\geq1\)">\(j\geq1\)</span> vanish.
+If <span class="math" data-tex="\(y&gt;2\)">\(y&gt;2\)</span>, all terms <span class="math" data-tex="\(j\leq-1\)">\(j\leq-1\)</span> vanish. Replacing
+the nonpositive-index sum by the actual SC7 function proves</p>
+<span class="math math-display" data-tex="\[
+\widetilde\chi_0(y)^2+
+\sum_{i\geq1}\widetilde\chi_i(y)^2=1,
+\quad
+\operatorname{supp}\widetilde\chi_i
+\subseteq[4^i/2,4^{i+1}] (i\geq1),
+\quad
+\widetilde\chi_i\widetilde\chi_j=0\quad(|i-j|\geq2).
+\tag{SC8}
+\]">\[
+\widetilde\chi_0(y)^2+
+\sum_{i\geq1}\widetilde\chi_i(y)^2=1,
+\quad
+\operatorname{supp}\widetilde\chi_i
+\subseteq[4^i/2,4^{i+1}] (i\geq1),
+\quad
+\widetilde\chi_i\widetilde\chi_j=0\quad(|i-j|\geq2).
+\tag{SC8}
+\]</span>
+<p>The last assertion follows from disjoint interval interiors;
+the boundary values vanish as well. For index zero its
+support ends at four, while the support of index two begins
+at eight. This explicit choice satisfies the source's looser
+allowed intervals <span class="math" data-tex="\([0,4]\)">\([0,4]\)</span> and <span class="math" data-tex="\([1/4,4]\)">\([1/4,4]\)</span>.</p>
+<h2 id="sc3-exact-support-norm-and-high-index-energy-costs">SC3. Exact support, norm and high-index energy costs</h2>
+<p>Retain the original source parameters without deleting its
+amplitude prefactor:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\lambda_q=a^{b^q},\quad
+\delta_{q+1}=\lambda_1^{3\beta_{\rm reg}}
+\lambda_{q+1}^{-2\beta_{\rm reg}},\quad
+d=\lambda_q^{-\varepsilon_R}\delta_{q+1},\quad B=100d,
+\\ y(x,t)=\sqrt{1+|S_\ell(x,t)|^2/B^2},
+\quad\chi_i=\widetilde\chi_i(y).
+\end{gathered}
+\tag{SC9}
+\]">\[
+\begin{gathered}
+\lambda_q=a^{b^q},\quad
+\delta_{q+1}=\lambda_1^{3\beta_{\rm reg}}
+\lambda_{q+1}^{-2\beta_{\rm reg}},\quad
+d=\lambda_q^{-\varepsilon_R}\delta_{q+1},\quad B=100d,
+\\ y(x,t)=\sqrt{1+|S_\ell(x,t)|^2/B^2},
+\quad\chi_i=\widetilde\chi_i(y).
+\end{gathered}
+\tag{SC9}
+\]</span>
+<p>The subscript on <span class="math" data-tex="\(\beta_{\rm reg}\)">\(\beta_{\rm reg}\)</span> distinguishes this
+source regularity exponent from the physical frequency
+<span class="math" data-tex="\(\beta=\varkappa\sigma N_\Lambda\)">\(\beta=\varkappa\sigma N_\Lambda\)</span> retained in lesson23.
+Their exact roles and original values are preserved.</p>
+<p>Let <span class="math" data-tex="\(V=L^3\)">\(V=L^3\)</span>, <span class="math" data-tex="\(J(t)=\|S_\ell(\cdot,t)\|_1\)">\(J(t)=\|S_\ell(\cdot,t)\|_1\)</span>,
+and <span class="math" data-tex="\(Y=\sqrt{1+\|S_\ell\|_\infty^2/B^2}\)">\(Y=\sqrt{1+\|S_\ell\|_\infty^2/B^2}\)</span>.
+For <span class="math" data-tex="\(i\geq1\)">\(i\geq1\)</span>, nonzero <span class="math" data-tex="\(\chi_i\)">\(\chi_i\)</span> requires
+<span class="math" data-tex="\(y&gt;4^i/2\)">\(y&gt;4^i/2\)</span>, hence</p>
+<span class="math math-display" data-tex="\[
+|S_\ell|&gt;B\sqrt{4^{2i}/4-1}
+\geq\frac{\sqrt3}{4}B4^i,
+\qquad
+\|\chi_i\|_p\leq
+\left(\frac{4J(t)}{\sqrt3 B}\right)^{1/p}4^{-i/p}
+\quad(1\leq p&lt;\infty).
+\tag{SC10}
+\]">\[
+|S_\ell|&gt;B\sqrt{4^{2i}/4-1}
+\geq\frac{\sqrt3}{4}B4^i,
+\qquad
+\|\chi_i\|_p\leq
+\left(\frac{4J(t)}{\sqrt3 B}\right)^{1/p}4^{-i/p}
+\quad(1\leq p&lt;\infty).
+\tag{SC10}
+\]</span>
+<p>The second square-root bound uses <span class="math" data-tex="\(4^{-2i}\leq1/16\)">\(4^{-2i}\leq1/16\)</span>.
+Chebyshev bounds the support measure by the displayed
+quantity. Since <span class="math" data-tex="\(|\chi_i|^p\leq1\)">\(|\chi_i|^p\leq1\)</span> on that support,
+integration proves every finite <span class="math" data-tex="\(p\)">\(p\)</span>; at infinity the
+bound is one. The exact finite upper index</p>
+<span class="math math-display" data-tex="\[
+i_* =\left\lceil\log_4(2Y)\right\rceil,
+\qquad\chi_i=0\quad(i\geq i_*),
+\qquad4^{i_*}&lt;8Y
+\tag{SC11}
+\]">\[
+i_* =\left\lceil\log_4(2Y)\right\rceil,
+\qquad\chi_i=0\quad(i\geq i_*),
+\qquad4^{i_*}&lt;8Y
+\tag{SC11}
+\]</span>
+<p>follows from the same support lower endpoint and its zero
+boundary value. The ceiling is at least one because <span class="math" data-tex="\(Y\geq1\)">\(Y\geq1\)</span>.
+The finite family <span class="math" data-tex="\(0\leq i\leq i_*\)">\(0\leq i\leq i_*\)</span> therefore includes
+every contribution, even though its last member is zero.</p>
+<p>Whenever a positive-index cutoff is nonzero, <span class="math" data-tex="\(y&gt;2\)">\(y&gt;2\)</span>.
+On its support <span class="math" data-tex="\(4^i&lt;2y\)">\(4^i&lt;2y\)</span>, and
+<span class="math" data-tex="\(y\leq(2/\sqrt3)|S_\ell|/B\)">\(y\leq(2/\sqrt3)|S_\ell|/B\)</span>.
+Multiplying by every actual squared cutoff and using SC8 gives
+the pointwise and integrated bounds</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{i\geq1}4^i\chi_i^2
+&amp;\leq\frac4{\sqrt3 B}|S_\ell|,\\
+\sum_{i\geq1}\rho_i\int\chi_i^2
+&amp;\leq\frac{4^{c_0}}{25\sqrt3}J(t),
+\qquad\rho_i=d4^{i+c_0},\\
+I_0(t):=\int\chi_0^2
+&amp;\geq V-\frac{J(t)}{\sqrt3 B}.
+\end{aligned}
+\tag{SC12}
+\]">\[
+\begin{aligned}
+\sum_{i\geq1}4^i\chi_i^2
+&amp;\leq\frac4{\sqrt3 B}|S_\ell|,\\
+\sum_{i\geq1}\rho_i\int\chi_i^2
+&amp;\leq\frac{4^{c_0}}{25\sqrt3}J(t),
+\qquad\rho_i=d4^{i+c_0},\\
+I_0(t):=\int\chi_0^2
+&amp;\geq V-\frac{J(t)}{\sqrt3 B}.
+\end{aligned}
+\tag{SC12}
+\]</span>
+<p>The second line substitutes the full source <span class="math" data-tex="\(\rho_i\)">\(\rho_i\)</span>.
+For the last, <span class="math" data-tex="\(\chi_0=1\)">\(\chi_0=1\)</span> whenever
+<span class="math" data-tex="\(|S_\ell|\leq\sqrt3 B\)">\(|S_\ell|\leq\sqrt3 B\)</span>; Chebyshev bounds the
+complement's measure. In the source's actual induction,
+convolution contraction gives <span class="math" data-tex="\(J(t)\leq d\)">\(J(t)\leq d\)</span>. Thus
+<span class="math" data-tex="\(I_0\geq V-1/(100\sqrt3)\)">\(I_0\geq V-1/(100\sqrt3)\)</span>; in particular the original
+<span class="math" data-tex="\(V=(2\pi)^3\)">\(V=(2\pi)^3\)</span> satisfies <span class="math" data-tex="\(I_0\geq V/2&gt;0\)">\(I_0\geq V/2&gt;0\)</span>.
+For a smaller original volume the displayed full bound is
+retained, and the latter half-volume conclusion is used only
+when <span class="math" data-tex="\(V\geq1/(50\sqrt3)\)">\(V\geq1/(50\sqrt3)\)</span>.</p>
+<h2 id="sc4-globally-defined-positive-index-amplitudes">SC4. Globally defined positive-index amplitudes</h2>
+<p>For either of the two rotated rational families of BG30,
+retain its actual trace-free linear coefficient functionals
+<span class="math" data-tex="\(\mathcal L_\zeta\)">\(\mathcal L_\zeta\)</span>, of norm <span class="math" data-tex="\(D_0\)">\(D_0\)</span>, so that
+<span class="math" data-tex="\(c_\zeta(\rho I-S)=\rho/4-\mathcal L_\zeta(S)\)">\(c_\zeta(\rho I-S)=\rho/4-\mathcal L_\zeta(S)\)</span>.
+Choose the concrete integer</p>
+<span class="math math-display" data-tex="\[
+c_0=\max\{1,\lceil\log_4(3200D_0)\rceil\}.
+\tag{SC13}
+\]">\[
+c_0=\max\{1,\lceil\log_4(3200D_0)\rceil\}.
+\tag{SC13}
+\]</span>
+<p>On the closure of the support of <span class="math" data-tex="\(\chi_i\)">\(\chi_i\)</span>, <span class="math" data-tex="\(i\geq1\)">\(i\geq1\)</span>,
+SC8 and SC9 give <span class="math" data-tex="\(|S_\ell|&lt;400d4^i\)">\(|S_\ell|&lt;400d4^i\)</span>.
+Consequently <span class="math" data-tex="\(D_0|S_\ell|\leq\rho_i/8\)">\(D_0|S_\ell|\leq\rho_i/8\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+c_{\zeta,i}=\rho_i/4-\mathcal L_\zeta(S_\ell),\qquad
+\rho_i/8\leq c_{\zeta,i}\leq3\rho_i/8
+\quad\hbox{on that support}.
+\tag{SC14}
+\]">\[
+c_{\zeta,i}=\rho_i/4-\mathcal L_\zeta(S_\ell),\qquad
+\rho_i/8\leq c_{\zeta,i}\leq3\rho_i/8
+\quad\hbox{on that support}.
+\tag{SC14}
+\]</span>
+<p>Define the actual function on the whole original torus by</p>
+<span class="math math-display" data-tex="\[
+a_{\zeta,i}=
+\begin{cases}
+\chi_i\sqrt{c_{\zeta,i}},&amp;c_{\zeta,i}&gt;\rho_i/16,\\
+0,&amp;c_{\zeta,i}\leq\rho_i/16.
+\end{cases}
+\tag{SC15}
+\]">\[
+a_{\zeta,i}=
+\begin{cases}
+\chi_i\sqrt{c_{\zeta,i}},&amp;c_{\zeta,i}&gt;\rho_i/16,\\
+0,&amp;c_{\zeta,i}\leq\rho_i/16.
+\end{cases}
+\tag{SC15}
+\]</span>
+<p>This definition has no square root of a negative quantity.
+Near the boundary <span class="math" data-tex="\(c_{\zeta,i}=\rho_i/16\)">\(c_{\zeta,i}=\rho_i/16\)</span>, the
+strict margin in SC14 makes <span class="math" data-tex="\(\chi_i\)">\(\chi_i\)</span> identically
+zero in a neighborhood. The two pieces therefore join
+smoothly, including all derivatives. On the actual cutoff
+support it is exactly the source's
+<span class="math" data-tex="\(\rho_i^{1/2}\chi_i\gamma_\zeta(I-S_\ell/\rho_i)\)">\(\rho_i^{1/2}\chi_i\gamma_\zeta(I-S_\ell/\rho_i)\)</span>,
+by the original linear coefficient and its positive square
+root. Opposite amplitudes agree. BG7 gives the complete map</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{\xi\in\Lambda_i^+}a_{\xi,i}^2(I-\xi\otimes\xi)
+&amp;=\chi_i^2(\rho_i I-S_\ell),\\
+\|a_{\zeta,i}\|_\infty&amp;\leq\sqrt{3\rho_i/8},\\
+\|a_{\zeta,i}\|_2&amp;\leq\sqrt{3\rho_i/8}
+\left(\frac{4J(t)}{\sqrt3 B}\right)^{1/2}2^{-i}.
+\end{aligned}
+\tag{SC16}
+\]">\[
+\begin{aligned}
+\sum_{\xi\in\Lambda_i^+}a_{\xi,i}^2(I-\xi\otimes\xi)
+&amp;=\chi_i^2(\rho_i I-S_\ell),\\
+\|a_{\zeta,i}\|_\infty&amp;\leq\sqrt{3\rho_i/8},\\
+\|a_{\zeta,i}\|_2&amp;\leq\sqrt{3\rho_i/8}
+\left(\frac{4J(t)}{\sqrt3 B}\right)^{1/2}2^{-i}.
+\end{aligned}
+\tag{SC16}
+\]</span>
+<p>All original factors in <span class="math" data-tex="\(\rho_i\)">\(\rho_i\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> are
+retained. At every point only adjacent cutoff indices can
+interact, so the two distinct rational families may be
+assigned by index parity without identifying their directions.
+This supplies positive-index amplitudes. The low-index
+energy amplitude is the next separate construction.</p>
+<h2 id="sc5-the-exact-energy-volume-comparison">SC5. The exact energy-volume comparison</h2>
+<p>Keep the source's actual integrals and define its full
+excess before time smoothing by</p>
+<span class="math math-display" data-tex="\[
+\mathfrak e(t)=e(t)-\int|u_q|^2
+-3\sum_{i\geq1}\rho_i\int\chi_i^2
+-\frac{\delta_{q+2}}2,
+\qquad E(t)=\max\{\mathfrak e(t),0\}.
+\tag{SC17}
+\]">\[
+\mathfrak e(t)=e(t)-\int|u_q|^2
+-3\sum_{i\geq1}\rho_i\int\chi_i^2
+-\frac{\delta_{q+2}}2,
+\qquad E(t)=\max\{\mathfrak e(t),0\}.
+\tag{SC17}
+\]</span>
+<p>The source coefficient at 844 and the coefficient that
+solves the original average-energy equation have the exact
+relationship</p>
+<span class="math math-display" data-tex="\[
+\rho_{\rm src}=\frac{E}{3VI_0},\qquad
+3I_0\rho_{\rm src}=\frac EV,\qquad
+\rho_{\rm energy}=\frac{E}{3I_0}=V\rho_{\rm src},
+\qquad3I_0\rho_{\rm energy}=E .
+\tag{SC18}
+\]">\[
+\rho_{\rm src}=\frac{E}{3VI_0},\qquad
+3I_0\rho_{\rm src}=\frac EV,\qquad
+\rho_{\rm energy}=\frac{E}{3I_0}=V\rho_{\rm src},
+\qquad3I_0\rho_{\rm energy}=E .
+\tag{SC18}
+\]</span>
+<p>Here <span class="math" data-tex="\(I_0&gt;0\)">\(I_0&gt;0\)</span> is proved in SC12 on the original source
+torus. Multiplication proves every equality, and uniqueness
+of <span class="math" data-tex="\(\rho_{\rm energy}\)">\(\rho_{\rm energy}\)</span> follows by division by the
+positive <span class="math" data-tex="\(3I_0\)">\(3I_0\)</span>. This is the original energy integral
+equation, without replacing the volume measure by an average.
+The source identity at 1454 uses <span class="math" data-tex="\(E\)">\(E\)</span>, whereas its
+definition at 844 produces <span class="math" data-tex="\(E/V\)">\(E/V\)</span>. Their exact difference
+is <span class="math" data-tex="\((V^{-1}-1)E\)">\((V^{-1}-1)E\)</span>.</p>
+<p>For example, take <span class="math" data-tex="\(S_\ell=u_q=0\)">\(S_\ell=u_q=0\)</span> and constant positive
+<span class="math" data-tex="\(E\)">\(E\)</span>. Then <span class="math" data-tex="\(\chi_0=1\)">\(\chi_0=1\)</span>, <span class="math" data-tex="\(I_0=V\)">\(I_0=V\)</span>, and the
+printed coefficient is <span class="math" data-tex="\(E/(3V^2)\)">\(E/(3V^2)\)</span>. Its actual prescribed
+principal energy is <span class="math" data-tex="\(E/V\)">\(E/V\)</span>. Since the source's torus
+has <span class="math" data-tex="\(V=(2\pi)^3\ne1\)">\(V=(2\pi)^3\ne1\)</span>, this is an explicit nonzero
+discrepancy. The comparison does not change the original
+source statement or attribute the correction to its authors.</p>
+<p>The source time smoothing has an exact corresponding map:</p>
+<span class="math math-display" data-tex="\[
+\rho_{{\rm energy},0}
+:=\bigl(\sqrt{\rho_{\rm energy}}*_t\varphi_\ell\bigr)^2
+=V\bigl(\sqrt{\rho_{\rm src}}*_t\varphi_\ell\bigr)^2
+=V\rho_{{\rm src},0}.
+\tag{SC19}
+\]">\[
+\rho_{{\rm energy},0}
+:=\bigl(\sqrt{\rho_{\rm energy}}*_t\varphi_\ell\bigr)^2
+=V\bigl(\sqrt{\rho_{\rm src}}*_t\varphi_\ell\bigr)^2
+=V\rho_{{\rm src},0}.
+\tag{SC19}
+\]</span>
+<p>Positivity and the constant original volume allow
+<span class="math" data-tex="\(\sqrt V\)">\(\sqrt V\)</span> to pass through the actual time integral;
+squaring retains its complete factor <span class="math" data-tex="\(V\)">\(V\)</span>. Every
+subsequent amplitude ratio, derivative and energy estimate
+must receive this full correction. The required low-index
+smoothness, support and quantitative bounds must still be
+derived from the original induction before the full iteration
+is concluded.</p>
+<h2 id="sc6-every-original-cutoff-derivative-and-its-full-stress-scale">SC6. Every original cutoff derivative and its full stress scale</h2>
+<p>The derivatives below are full ordered tensors; no repeated
+index multiplicity is omitted. Write <span class="math" data-tex="\(\mathcal P_m\)">\(\mathcal P_m\)</span> for
+the set of partitions of <span class="math" data-tex="\(\{1,\ldots,m\}\)">\(\{1,\ldots,m\}\)</span> into nonempty
+blocks, and <span class="math" data-tex="\(\mathcal P_m^{\leq2}\)">\(\mathcal P_m^{\leq2}\)</span> for those with block
+sizes one or two. Define the finite constants</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+q_j&amp;=\left|\prod_{a=0}^{j-1}(\tfrac12-a)\right|,
+\qquad
+T_j=\max\{\|\widetilde\chi^{(j)}\|_\infty,
+\|\widetilde\chi_0^{(j)}\|_\infty\},\\
+H_k&amp;=\sum_{\sigma\in\mathcal P_k}
+4^{|\sigma|}T_{|\sigma|}\prod_{C\in\sigma}q_{|C|},\\
+C_m&amp;=\sum_{\pi\in\mathcal P_m^{\leq2}}2^{|\pi|}H_{|\pi|}
+\quad(m,k,j\geq1).
+\end{aligned}
+\tag{SC20}
+\]">\[
+\begin{aligned}
+q_j&amp;=\left|\prod_{a=0}^{j-1}(\tfrac12-a)\right|,
+\qquad
+T_j=\max\{\|\widetilde\chi^{(j)}\|_\infty,
+\|\widetilde\chi_0^{(j)}\|_\infty\},\\
+H_k&amp;=\sum_{\sigma\in\mathcal P_k}
+4^{|\sigma|}T_{|\sigma|}\prod_{C\in\sigma}q_{|C|},\\
+C_m&amp;=\sum_{\pi\in\mathcal P_m^{\leq2}}2^{|\pi|}H_{|\pi|}
+\quad(m,k,j\geq1).
+\end{aligned}
+\tag{SC20}
+\]</span>
+<p>The supremum norms are of the explicitly constructed compact
+cutoffs SC6–SC7. They are finite by the proved smoothness.
+These constants retain every finite partition contribution.</p>
+<p>For a matrix <span class="math" data-tex="\(Z\)">\(Z\)</span> in its original nine real coordinates
+put <span class="math" data-tex="\(r=1+|Z|^2\)">\(r=1+|Z|^2\)</span> and
+<span class="math" data-tex="\(h_i(r)=\widetilde\chi_i(\sqrt r)\)">\(h_i(r)=\widetilde\chi_i(\sqrt r)\)</span>. The complete
+one-variable chain rule gives</p>
+<span class="math math-display" data-tex="\[
+h_i^{(k)}(r)=\sum_{\sigma\in\mathcal P_k}
+\widetilde\chi_i^{(|\sigma|)}(\sqrt r)
+\prod_{C\in\sigma}
+\left[\prod_{a=0}^{|C|-1}(\tfrac12-a)
+r^{1/2-|C|}\right].
+\tag{SC21}
+\]">\[
+h_i^{(k)}(r)=\sum_{\sigma\in\mathcal P_k}
+\widetilde\chi_i^{(|\sigma|)}(\sqrt r)
+\prod_{C\in\sigma}
+\left[\prod_{a=0}^{|C|-1}(\tfrac12-a)
+r^{1/2-|C|}\right].
+\tag{SC21}
+\]</span>
+<p>To prove this rule, differentiate the partition expression:
+a derivative hitting the outer factor inserts the new index
+as a singleton block, while a derivative hitting one of the
+inner factors inserts it into that block. Every partition
+of the enlarged index set appears exactly once, according
+to the unique block containing the new index. The order-one
+case is the ordinary chain rule, so induction proves SC21.</p>
+<p>For <span class="math" data-tex="\(i\geq1\)">\(i\geq1\)</span> its outer derivative is exactly
+<span class="math" data-tex="\(4^{-i|\sigma|}\widetilde\chi^{(|\sigma|)}
+(4^{-i}\sqrt r)\)">\(4^{-i|\sigma|}\widetilde\chi^{(|\sigma|)}
+(4^{-i}\sqrt r)\)</span>. When it is nonzero,
+<span class="math" data-tex="\(4^{-i}\sqrt r\leq4\)">\(4^{-i}\sqrt r\leq4\)</span>. For <span class="math" data-tex="\(i=0\)">\(i=0\)</span>, every positive
+derivative is supported on <span class="math" data-tex="\(2\leq\sqrt r\leq4\)">\(2\leq\sqrt r\leq4\)</span>.
+SC21 consequently gives
+<span class="math" data-tex="\(|h_i^{(k)}(r)|\leq H_k r^{-k}\)">\(|h_i^{(k)}(r)|\leq H_k r^{-k}\)</span> for every index,
+including outside its derivative support where the terms
+are zero.</p>
+<p>For original matrix directions <span class="math" data-tex="\(U_1,\ldots,U_m\)">\(U_1,\ldots,U_m\)</span>,
+the only nonzero derivatives of <span class="math" data-tex="\(1+|Z|^2\)">\(1+|Z|^2\)</span> are
+<span class="math" data-tex="\(2Z\cdot U_j\)">\(2Z\cdot U_j\)</span> and <span class="math" data-tex="\(2U_j\cdot U_l\)">\(2U_j\cdot U_l\)</span>.
+The same partition proof gives the exact complete expression</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D_Z^m[h_i(1+|Z|^2)](U_1,\ldots,U_m)
+=\sum_{\pi\in\mathcal P_m^{\leq2}}
+h_i^{(|\pi|)}(r)
+&amp;\prod_{\{j\}\in\pi}(2Z\cdot U_j)\\
+{}
+&amp;\prod_{\{j,l\}\in\pi}(2U_j\cdot U_l).
+\end{aligned}
+\tag{SC22}
+\]">\[
+\begin{aligned}
+D_Z^m[h_i(1+|Z|^2)](U_1,\ldots,U_m)
+=\sum_{\pi\in\mathcal P_m^{\leq2}}
+h_i^{(|\pi|)}(r)
+&amp;\prod_{\{j\}\in\pi}(2Z\cdot U_j)\\
+{}
+&amp;\prod_{\{j,l\}\in\pi}(2U_j\cdot U_l).
+\end{aligned}
+\tag{SC22}
+\]</span>
+<p>All dot products here are the original Frobenius products.
+If a partition has <span class="math" data-tex="\(n_1\)">\(n_1\)</span> singleton and <span class="math" data-tex="\(n_2\)">\(n_2\)</span>
+doubleton blocks, then <span class="math" data-tex="\(m=n_1+2n_2\)">\(m=n_1+2n_2\)</span>.
+Cauchy–Schwarz and <span class="math" data-tex="\(|Z|\leq\sqrt r\)">\(|Z|\leq\sqrt r\)</span> bound its
+power by <span class="math" data-tex="\(r^{-n_1-n_2}r^{n_1/2}=r^{-m/2}\)">\(r^{-n_1-n_2}r^{n_1/2}=r^{-m/2}\)</span>.
+Substituting the actual <span class="math" data-tex="\(Z=S/B\)">\(Z=S/B\)</span> thus proves</p>
+<span class="math math-display" data-tex="\[
+\|D_S^m[\widetilde\chi_i(\sqrt{1+|S|^2/B^2})]\|_{\rm op}
+\leq\frac{C_m}{(B^2+|S|^2)^{m/2}}
+\leq C_m B^{-m} .
+\tag{SC23}
+\]">\[
+\|D_S^m[\widetilde\chi_i(\sqrt{1+|S|^2/B^2})]\|_{\rm op}
+\leq\frac{C_m}{(B^2+|S|^2)^{m/2}}
+\leq C_m B^{-m} .
+\tag{SC23}
+\]</span>
+<p>The first bound retains the full original stress dependence;
+the second supplies a uniform estimate where the stress
+may vanish. Restricting these exact formulas to symmetric
+trace-free matrices preserves them.</p>
+<p>Now let <span class="math" data-tex="\(\mathcal K(y,s)=\phi(y)\varphi(s)\)">\(\mathcal K(y,s)=\phi(y)\varphi(s)\)</span> and
+<span class="math" data-tex="\(M_j=\|D^{j-1}\mathcal K\|_1\)">\(M_j=\|D^{j-1}\mathcal K\|_1\)</span>, with <span class="math" data-tex="\(M_1=1\)">\(M_1=1\)</span>.
+Move the first <span class="math" data-tex="\(j-1\)">\(j-1\)</span> derivatives in SC1 onto its kernel
+and leave the last on the original <span class="math" data-tex="\(S\)">\(S\)</span>. The complete
+tensor convolution and its original scaling give
+<span class="math" data-tex="\(\|D_{x,t}^j S_\ell\|_\infty
+\leq M_j\ell^{1-j}\|D_{x,t}S\|_\infty\)">\(\|D_{x,t}^j S_\ell\|_\infty
+\leq M_j\ell^{1-j}\|D_{x,t}S\|_\infty\)</span>.
+Applying the proved partition chain rule to the composed
+cutoff and SC23 therefore yields the full derivative cost</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|D_{x,t}^N\chi_i\|_\infty
+&amp;\leq\sum_{\pi\in\mathcal P_N}
+C_{|\pi|}B^{-|\pi|}
+\prod_{C\in\pi}\|D_{x,t}^{|C|}S_\ell\|_\infty\\
+&amp;\leq\ell^{-N}\sum_{\pi\in\mathcal P_N}
+C_{|\pi|}\left(\frac{\ell\|D_{x,t}S\|_\infty}{B}
+\right)^{|\pi|}\prod_{C\in\pi}M_{|C|} .
+\end{aligned}
+\tag{SC24}
+\]">\[
+\begin{aligned}
+\|D_{x,t}^N\chi_i\|_\infty
+&amp;\leq\sum_{\pi\in\mathcal P_N}
+C_{|\pi|}B^{-|\pi|}
+\prod_{C\in\pi}\|D_{x,t}^{|C|}S_\ell\|_\infty\\
+&amp;\leq\ell^{-N}\sum_{\pi\in\mathcal P_N}
+C_{|\pi|}\left(\frac{\ell\|D_{x,t}S\|_\infty}{B}
+\right)^{|\pi|}\prod_{C\in\pi}M_{|C|} .
+\end{aligned}
+\tag{SC24}
+\]</span>
+<p>For each partition, the input tensor indices occupy disjoint
+blocks. Squaring and summing their full componentwise bound
+factors into the product of their squared tensor norms.
+The triangle inequality over partitions proves the displayed
+full tensor norm, rather than merely its value on a repeated
+direction.</p>
+<p>In the original induction <span class="math" data-tex="\(\ell=\lambda_q^{-20}\)">\(\ell=\lambda_q^{-20}\)</span>
+and <span class="math" data-tex="\(\|D_{x,t}S\|_\infty\leq\lambda_q^{10}\)">\(\|D_{x,t}S\|_\infty\leq\lambda_q^{10}\)</span>.
+The actual ratio in SC24 obeys</p>
+<span class="math math-display" data-tex="\[
+\frac{\ell\|D_{x,t}S\|_\infty}{B}
+\leq\frac1{100}\lambda_1^{-3\beta_{\rm reg}}
+\lambda_q^{-10+\varepsilon_R+2\beta_{\rm reg}b}
+\leq\frac1{100}\lambda_1^{-3\beta_{\rm reg}}
+\lambda_q^{-97/10}
+\leq\frac1{100}.
+\tag{SC25}
+\]">\[
+\frac{\ell\|D_{x,t}S\|_\infty}{B}
+\leq\frac1{100}\lambda_1^{-3\beta_{\rm reg}}
+\lambda_q^{-10+\varepsilon_R+2\beta_{\rm reg}b}
+\leq\frac1{100}\lambda_1^{-3\beta_{\rm reg}}
+\lambda_q^{-97/10}
+\leq\frac1{100}.
+\tag{SC25}
+\]</span>
+<p>The middle step uses the original restrictions
+<span class="math" data-tex="\(0&lt;\varepsilon_R\leq1/4\)">\(0&lt;\varepsilon_R\leq1/4\)</span> and
+<span class="math" data-tex="\(\beta_{\rm reg}b\leq1/40\)">\(\beta_{\rm reg}b\leq1/40\)</span>; the last uses
+<span class="math" data-tex="\(a\geq1\)">\(a\geq1\)</span>. Thus SC24 proves the source's final
+<span class="math" data-tex="\(\ell^{-N}\)">\(\ell^{-N}\)</span> cutoff scale, with the fully specified
+coefficient <span class="math" data-tex="\(\sum_{\pi}C_{|\pi|}100^{-|\pi|}
+\prod_C M_{|C|}\)">\(\sum_{\pi}C_{|\pi|}100^{-|\pi|}
+\prod_C M_{|C|}\)</span>, while its stronger preceding expression
+retains the actual ratio and the original prefactor
+<span class="math" data-tex="\(\lambda_1^{3\beta_{\rm reg}}\)">\(\lambda_1^{3\beta_{\rm reg}}\)</span>.
+The source intermediate lines 977–984 do not retain these
+inverse stress scales. SC21–SC25 supply their complete
+receiving calculation; they do not presume the corresponding
+amplitude or low-index estimates, which require the next
+product and energy arguments.</p>
+<h2 id="ab1-all-high-index-derivatives-with-their-actual-amplitude">AB1. All high-index derivatives with their actual amplitude</h2>
+<p>Use the constructed positive-index coefficient SC15,
+the constants <span class="math" data-tex="\(C_m,M_j,q_j\)">\(C_m,M_j,q_j\)</span> of SC20–SC25, and let
+<span class="math" data-tex="\(\mathcal P_0=\{\varnothing\}\)">\(\mathcal P_0=\{\varnothing\}\)</span>.
+For <span class="math" data-tex="\(j\geq1\)">\(j\geq1\)</span> define the finite polynomials</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+W&amp;=4^{c_0}/50,\qquad
+V_j(z)=\sum_{\pi\in\mathcal P_j}
+C_{|\pi|}(Wz)^{|\pi|}\prod_{E\in\pi}M_{|E|},
+\quad V_0(z)=1,\\
+U_j(z)&amp;=\sum_{\pi\in\mathcal P_j}
+q_{|\pi|}8^{|\pi|-1/2}(D_0z)^{|\pi|}
+\prod_{E\in\pi}M_{|E|},
+\quad U_0(z)=\sqrt{3/8},\\
+P_N(z)&amp;=\sum_{j=0}^N\binom Nj V_j(z)U_{N-j}(z),
+\qquad z_i=\frac{\ell\|D_{x,t}S_q\|_\infty}{\rho_i}.
+\end{aligned}
+\tag{AB1}
+\]">\[
+\begin{aligned}
+W&amp;=4^{c_0}/50,\qquad
+V_j(z)=\sum_{\pi\in\mathcal P_j}
+C_{|\pi|}(Wz)^{|\pi|}\prod_{E\in\pi}M_{|E|},
+\quad V_0(z)=1,\\
+U_j(z)&amp;=\sum_{\pi\in\mathcal P_j}
+q_{|\pi|}8^{|\pi|-1/2}(D_0z)^{|\pi|}
+\prod_{E\in\pi}M_{|E|},
+\quad U_0(z)=\sqrt{3/8},\\
+P_N(z)&amp;=\sum_{j=0}^N\binom Nj V_j(z)U_{N-j}(z),
+\qquad z_i=\frac{\ell\|D_{x,t}S_q\|_\infty}{\rho_i}.
+\end{aligned}
+\tag{AB1}
+\]</span>
+<p>All coefficients are nonnegative and specified by the earlier
+finite kernel integrals and partition sums.</p>
+<p>On the support of every derivative of <span class="math" data-tex="\(\chi_i\)">\(\chi_i\)</span>,
+<span class="math" data-tex="\(\sqrt{B^2+|S_\ell|^2}\geq B4^i/2\)">\(\sqrt{B^2+|S_\ell|^2}\geq B4^i/2\)</span>.
+Thus SC23 bounds its order-<span class="math" data-tex="\(m\)">\(m\)</span> matrix derivative by
+<span class="math" data-tex="\(C_m(W/\rho_i)^m\)">\(C_m(W/\rho_i)^m\)</span>, since
+<span class="math" data-tex="\(2/(B4^i)=4^{c_0}/(50\rho_i)\)">\(2/(B4^i)=4^{c_0}/(50\rho_i)\)</span>.
+Repeating the complete space-time chain rule SC24, with
+these factors retained, proves
+<span class="math" data-tex="\(\|D_{x,t}^j\chi_i\|_\infty\leq\ell^{-j}V_j(z_i)\)">\(\|D_{x,t}^j\chi_i\|_\infty\leq\ell^{-j}V_j(z_i)\)</span>.
+The estimate applies on the full closed support; all its
+derivatives vanish outside that support.</p>
+<p>In the positive region the original affine coefficient
+<span class="math" data-tex="\(c_{\zeta,i}=\rho_i/4-\mathcal L_\zeta(S_\ell)\)">\(c_{\zeta,i}=\rho_i/4-\mathcal L_\zeta(S_\ell)\)</span>
+has, for every nonempty ordered index list <span class="math" data-tex="\(J\)">\(J\)</span>, the exact
+derivative <span class="math" data-tex="\(-\mathcal L_\zeta(\partial_JS_\ell)\)">\(-\mathcal L_\zeta(\partial_JS_\ell)\)</span>.
+The full chain and product rules are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_J a_{\zeta,i}
+=\sum_{E\subseteq J}(\partial_E\chi_i)
+\sum_{\pi\in\mathcal P(J\setminus E)}
+\left[\prod_{r=0}^{|\pi|-1}(\tfrac12-r)\right]
+c_{\zeta,i}^{1/2-|\pi|}
+\prod_{F\in\pi}\bigl[-\mathcal L_\zeta(\partial_FS_\ell)\bigr].
+\end{aligned}
+\tag{AB2}
+\]">\[
+\begin{aligned}
+\partial_J a_{\zeta,i}
+=\sum_{E\subseteq J}(\partial_E\chi_i)
+\sum_{\pi\in\mathcal P(J\setminus E)}
+\left[\prod_{r=0}^{|\pi|-1}(\tfrac12-r)\right]
+c_{\zeta,i}^{1/2-|\pi|}
+\prod_{F\in\pi}\bigl[-\mathcal L_\zeta(\partial_FS_\ell)\bigr].
+\end{aligned}
+\tag{AB2}
+\]</span>
+<p>Here a subset means a subset of the positions in the ordered
+list, even when coordinate indices repeat. The empty partition
+has empty product one and gives <span class="math" data-tex="\(\sqrt{c_{\zeta,i}}\)">\(\sqrt{c_{\zeta,i}}\)</span>.
+The partition induction in SC21 proves the inner formula,
+and the product rule proves every subset contribution.
+Outside the positive region the amplitude is identically
+zero near its piecewise boundary, by SC14–SC15, so the
+formula supplies the global derivative with the zero extension.</p>
+<p>The actual bounds <span class="math" data-tex="\(\rho_i/8\leq c_{\zeta,i}\leq3\rho_i/8\)">\(\rho_i/8\leq c_{\zeta,i}\leq3\rho_i/8\)</span>
+and the complete mollifier derivative estimate in SC24 give</p>
+<span class="math math-display" data-tex="\[
+\|D_{x,t}^N a_{\zeta,i}\|_\infty
+\leq\sqrt{\rho_i}\,\ell^{-N}P_N(z_i).
+\tag{AB3}
+\]">\[
+\|D_{x,t}^N a_{\zeta,i}\|_\infty
+\leq\sqrt{\rho_i}\,\ell^{-N}P_N(z_i).
+\tag{AB3}
+\]</span>
+<p>For a nonempty partition, its original <span class="math" data-tex="\(|\pi|\)">\(|\pi|\)</span> factors
+of <span class="math" data-tex="\(\|D S_q\|_\infty\)">\(\|D S_q\|_\infty\)</span> multiply
+<span class="math" data-tex="\(\ell^{|\pi|-N}\)">\(\ell^{|\pi|-N}\)</span>; the derivative of the square root
+contributes <span class="math" data-tex="\(\rho_i^{1/2-|\pi|}8^{|\pi|-1/2}\)">\(\rho_i^{1/2-|\pi|}8^{|\pi|-1/2}\)</span>.
+This gives exactly <span class="math" data-tex="\(U_j\)">\(U_j\)</span>. The empty case uses the upper
+bound <span class="math" data-tex="\(\sqrt{3\rho_i/8}\)">\(\sqrt{3\rho_i/8}\)</span>, not the lower bound.
+The full tensor triangle inequality and the number
+<span class="math" data-tex="\(\binom Nj\)">\(\binom Nj\)</span> of derivative subsets give AB3.</p>
+<p>For <span class="math" data-tex="\(N\geq1\)">\(N\geq1\)</span>, every monomial in <span class="math" data-tex="\(P_N\)">\(P_N\)</span> has positive
+degree. In the original source parameters,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0\leq z_i
+&amp;\leq4^{-i-c_0}\lambda_1^{-3\beta_{\rm reg}}
+\lambda_q^{-10+\varepsilon_R+2\beta_{\rm reg}b}
+\leq1,\\
+P_N(z_i)&amp;\leq z_iP_N(1),\\
+\|D_{x,t}^Na_{\zeta,i}\|_\infty
+&amp;\leq P_N(1)\frac{\ell^{1-N}\|D_{x,t}S_q\|_\infty}
+{\sqrt{\rho_i}}\\
+&amp;\leq P_N(1)\ell^{-N}\,2^{-i-c_0}
+\lambda_1^{-3\beta_{\rm reg}/2}
+\lambda_q^{-10+\varepsilon_R/2+\beta_{\rm reg}b}
+\leq P_N(1)\ell^{-N}.
+\end{aligned}
+\tag{AB4}
+\]">\[
+\begin{aligned}
+0\leq z_i
+&amp;\leq4^{-i-c_0}\lambda_1^{-3\beta_{\rm reg}}
+\lambda_q^{-10+\varepsilon_R+2\beta_{\rm reg}b}
+\leq1,\\
+P_N(z_i)&amp;\leq z_iP_N(1),\\
+\|D_{x,t}^Na_{\zeta,i}\|_\infty
+&amp;\leq P_N(1)\frac{\ell^{1-N}\|D_{x,t}S_q\|_\infty}
+{\sqrt{\rho_i}}\\
+&amp;\leq P_N(1)\ell^{-N}\,2^{-i-c_0}
+\lambda_1^{-3\beta_{\rm reg}/2}
+\lambda_q^{-10+\varepsilon_R/2+\beta_{\rm reg}b}
+\leq P_N(1)\ell^{-N}.
+\end{aligned}
+\tag{AB4}
+\]</span>
+<p>The exponent in the penultimate line is at most
+<span class="math" data-tex="\(-197/20\)">\(-197/20\)</span>. Thus the original source's high-index
+<span class="math" data-tex="\(\ell^{-N}\)">\(\ell^{-N}\)</span> derivative bound follows from the full
+formula, while AB3–AB4 retain its stronger index and source
+amplitude factors. The zeroth derivative is the separate
+actual bound SC16; it is not obtained by deleting those factors.</p>
+<h2 id="ab2-actual-energy-excess-and-its-time-variation">AB2. Actual energy excess and its time variation</h2>
+<p>Keep the source's smooth nonnegative <span class="math" data-tex="\(e\)">\(e\)</span>, the original
+<span class="math" data-tex="\(u_q,S_q\)">\(u_q,S_q\)</span>, and its induction</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0\leq D(t):=e(t)-\int|u_q|^2\leq\delta,
+\qquad\delta=\delta_{q+1},\quad\delta&#x27;=\delta_{q+2},\\
+D(t)\leq\delta/100\ \Longrightarrow\
+u_q(\cdot,t)=S_q(\cdot,t)=0,\\
+\|u_q\|_{C^1_{x,t}}\leq\lambda_q^4,
+\quad\|S_q\|_{C^1_{x,t}}\leq\lambda_q^{10},
+\quad\|S_q\|_{L^\infty_tL^1_x}\leq d.
+\end{gathered}
+\tag{AB5}
+\]">\[
+\begin{gathered}
+0\leq D(t):=e(t)-\int|u_q|^2\leq\delta,
+\qquad\delta=\delta_{q+1},\quad\delta&#x27;=\delta_{q+2},\\
+D(t)\leq\delta/100\ \Longrightarrow\
+u_q(\cdot,t)=S_q(\cdot,t)=0,\\
+\|u_q\|_{C^1_{x,t}}\leq\lambda_q^4,
+\quad\|S_q\|_{C^1_{x,t}}\leq\lambda_q^{10},
+\quad\|S_q\|_{L^\infty_tL^1_x}\leq d.
+\end{gathered}
+\tag{AB5}
+\]</span>
+<p>All integrals use the actual <span class="math" data-tex="\(V=L^3\)">\(V=L^3\)</span>. Let
+<span class="math" data-tex="\(M_e\)">\(M_e\)</span> bound both <span class="math" data-tex="\(\|e\|_\infty\)">\(\|e\|_\infty\)</span> and
+<span class="math" data-tex="\(\|e&#x27;\|_\infty\)">\(\|e&#x27;\|_\infty\)</span>. Work on times whose full mollifier
+windows and the windows used to define the following energy
+coefficients lie inside the interval of this induction.
+In particular distance at least <span class="math" data-tex="\(2R_t\ell\)">\(2R_t\ell\)</span> from its
+endpoints suffices, where
+<span class="math" data-tex="\(R_t=\sup\{|s|:s\in\operatorname{supp}\varphi\}\)">\(R_t=\sup\{|s|:s\in\operatorname{supp}\varphi\}\)</span>.
+No values outside that interval are invented.</p>
+<p>Define the complete high-index contribution and constants</p>
+<span class="math math-display" data-tex="\[
+H(t)=3\sum_{i\geq1}\rho_i\int\chi_i^2,
+\qquad C_H=\frac{3\,4^{c_0}}{25\sqrt3},
+\qquad C_T=\frac{3\,4^{c_0}T_1}{25}.
+\tag{AB6}
+\]">\[
+H(t)=3\sum_{i\geq1}\rho_i\int\chi_i^2,
+\qquad C_H=\frac{3\,4^{c_0}}{25\sqrt3},
+\qquad C_T=\frac{3\,4^{c_0}T_1}{25}.
+\tag{AB6}
+\]</span>
+<p>SC12 gives <span class="math" data-tex="\(0\leq H\leq C_Hd\)">\(0\leq H\leq C_Hd\)</span>.
+There is an exact pointwise derivative estimate without a
+factor counting all cutoffs. Set
+<span class="math" data-tex="\(F(y)=\sum_{i\geq1}4^i\widetilde\chi_i(y)^2\)">\(F(y)=\sum_{i\geq1}4^i\widetilde\chi_i(y)^2\)</span>.
+At each point at most two positive indices can contribute,
+by the support intervals SC8. Each differentiated term is
+exactly <span class="math" data-tex="\(2\widetilde\chi(4^{-i}y)
+\widetilde\chi&#x27;(4^{-i}y)\)">\(2\widetilde\chi(4^{-i}y)
+\widetilde\chi&#x27;(4^{-i}y)\)</span>, so <span class="math" data-tex="\(|F&#x27;(y)|\leq4T_1\)">\(|F&#x27;(y)|\leq4T_1\)</span>.
+Also <span class="math" data-tex="\(|\partial_ty|\leq|\partial_tS_\ell|/B\)">\(|\partial_ty|\leq|\partial_tS_\ell|/B\)</span>.
+Differentiating the actual finite sum proves</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|D&#x27;|&amp;\leq L_D:=M_e+2V\lambda_q^8,\\
+|H&#x27;|&amp;\leq C_T V\lambda_q^{10},\\
+|I_0&#x27;|&amp;\leq\frac{2T_1 V\lambda_q^{10}}B,
+\qquad V/2\leq I_0\leq V.
+\end{aligned}
+\tag{AB7}
+\]">\[
+\begin{aligned}
+|D&#x27;|&amp;\leq L_D:=M_e+2V\lambda_q^8,\\
+|H&#x27;|&amp;\leq C_T V\lambda_q^{10},\\
+|I_0&#x27;|&amp;\leq\frac{2T_1 V\lambda_q^{10}}B,
+\qquad V/2\leq I_0\leq V.
+\end{aligned}
+\tag{AB7}
+\]</span>
+<p>The last lower bound uses the original source volume, or
+the explicit volume range in SC12. The first line is the
+complete derivative of the velocity square, and the second
+uses <span class="math" data-tex="\(3d4^{c_0}\cdot4T_1/B=C_T\)">\(3d4^{c_0}\cdot4T_1/B=C_T\)</span>.
+For the third, differentiate <span class="math" data-tex="\(\int\chi_0^2\)">\(\int\chi_0^2\)</span>, retaining
+both factors and the full stress denominator.</p>
+<p>Use the corrected, actually constructed energy coefficient</p>
+<span class="math math-display" data-tex="\[
+E=(D-H-\delta&#x27;/2)_+,\qquad
+\rho=\frac{E}{3I_0},\qquad
+b_0=\sqrt\rho*_t\varphi_\ell,
+\qquad\rho_0=b_0^2 .
+\tag{AB8}
+\]">\[
+E=(D-H-\delta&#x27;/2)_+,\qquad
+\rho=\frac{E}{3I_0},\qquad
+b_0=\sqrt\rho*_t\varphi_\ell,
+\qquad\rho_0=b_0^2 .
+\tag{AB8}
+\]</span>
+<p>The notation <span class="math" data-tex="\(s_+=\max\{s,0\}\)">\(s_+=\max\{s,0\}\)</span> defines the positive
+part. It is 1-Lipschitz, since considering the signs of two
+real numbers gives <span class="math" data-tex="\(|s_+-t_+|\leq|s-t|\)">\(|s_+-t_+|\leq|s-t|\)</span>.
+In particular <span class="math" data-tex="\(0\leq E\leq D\leq\delta\)">\(0\leq E\leq D\leq\delta\)</span>,
+<span class="math" data-tex="\(0\leq\rho\leq2\delta/(3V)\)">\(0\leq\rho\leq2\delta/(3V)\)</span>, and the quotient
+identity with AB7 proves the Lipschitz constant</p>
+<span class="math math-display" data-tex="\[
+L_\rho=
+\frac{2}{3V}(M_e+2V\lambda_q^8+C_TV\lambda_q^{10})
++\frac{8T_1\delta}{3VB}\lambda_q^{10} .
+\tag{AB9}
+\]">\[
+L_\rho=
+\frac{2}{3V}(M_e+2V\lambda_q^8+C_TV\lambda_q^{10})
++\frac{8T_1\delta}{3VB}\lambda_q^{10} .
+\tag{AB9}
+\]</span>
+<p>Indeed for two times, subtract the quotients, use
+<span class="math" data-tex="\(I_0^{-1}\leq2/V\)">\(I_0^{-1}\leq2/V\)</span> for the numerator difference, and
+<span class="math" data-tex="\((I_0(t)I_0(s))^{-1}\leq4/V^2\)">\((I_0(t)I_0(s))^{-1}\leq4/V^2\)</span> with <span class="math" data-tex="\(E\leq\delta\)">\(E\leq\delta\)</span>
+for the denominator difference. This proves AB9 even where
+the positive part is not differentiable.</p>
+<p>Convolution of the bounded continuous <span class="math" data-tex="\(\sqrt\rho\)">\(\sqrt\rho\)</span>
+with the specified smooth compactly supported kernel is
+smooth: each derivative is the absolutely integrable
+derivative of that kernel. For
+<span class="math" data-tex="\(\sigma_N=\|\varphi^{(N)}\|_1\)">\(\sigma_N=\|\varphi^{(N)}\|_1\)</span>, <span class="math" data-tex="\(\sigma_0=1\)">\(\sigma_0=1\)</span>,
+the full bounds are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0\leq b_0&amp;\leq\sqrt{2\delta/(3V)},\qquad
+\|b_0^{(N)}\|_\infty
+\leq\sigma_N\ell^{-N}\sqrt{2\delta/(3V)},\\
+|\rho_0(t)-\rho(t)|&amp;\leq R_t\ell L_\rho,\\
+\|\rho_0^{(N)}\|_\infty
+&amp;\leq\frac{2\delta}{3V}\ell^{-N}R_N,
+\qquad R_N=\sum_{j=0}^N\binom Nj\sigma_j\sigma_{N-j}.
+\end{aligned}
+\tag{AB10}
+\]">\[
+\begin{aligned}
+0\leq b_0&amp;\leq\sqrt{2\delta/(3V)},\qquad
+\|b_0^{(N)}\|_\infty
+\leq\sigma_N\ell^{-N}\sqrt{2\delta/(3V)},\\
+|\rho_0(t)-\rho(t)|&amp;\leq R_t\ell L_\rho,\\
+\|\rho_0^{(N)}\|_\infty
+&amp;\leq\frac{2\delta}{3V}\ell^{-N}R_N,
+\qquad R_N=\sum_{j=0}^N\binom Nj\sigma_j\sigma_{N-j}.
+\end{aligned}
+\tag{AB10}
+\]</span>
+<p>For the middle line, every value of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> in the
+actual averaging window lies between
+<span class="math" data-tex="\(\max\{\rho(t)-R_t\ell L_\rho,0\}\)">\(\max\{\rho(t)-R_t\ell L_\rho,0\}\)</span> and
+<span class="math" data-tex="\(\rho(t)+R_t\ell L_\rho\)">\(\rho(t)+R_t\ell L_\rho\)</span>.
+Their square roots bound the average defining <span class="math" data-tex="\(b_0\)">\(b_0\)</span>;
+squaring the nonnegative inequalities gives the result.
+This avoids losing a square root of the time scale.
+The final line is the full differentiated product <span class="math" data-tex="\(b_0b_0\)">\(b_0b_0\)</span>.</p>
+<p>Every inverse stress factor remains in AB9. For comparison
+with the original source scale, its full formula implies</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R_t\ell L_\rho
+&amp;\leq R_t\left[
+\frac{2M_e}{3V}\lambda_q^{-20}
++\frac43\lambda_q^{-12}
++\frac{2C_T}{3}\lambda_q^{-10}
++\frac{2T_1}{75V}\lambda_q^{-10+\varepsilon_R}
+\right]\\
+&amp;\leq C_\rho\lambda_q^{-39/4},\qquad
+C_\rho=R_t\left[\frac{2M_e}{3V}+\frac43
++\frac{2C_T}{3}+\frac{2T_1}{75V}\right],\\
+\frac{R_t\ell L_\rho}{\delta&#x27;}
+&amp;\leq C_\rho\lambda_1^{-3\beta_{\rm reg}}
+\lambda_q^{-39/4+2\beta_{\rm reg}b^2}
+\leq C_\rho\lambda_1^{-3\beta_{\rm reg}}
+\lambda_q^{-7/4}.
+\end{aligned}
+\tag{AB11}
+\]">\[
+\begin{aligned}
+R_t\ell L_\rho
+&amp;\leq R_t\left[
+\frac{2M_e}{3V}\lambda_q^{-20}
++\frac43\lambda_q^{-12}
++\frac{2C_T}{3}\lambda_q^{-10}
++\frac{2T_1}{75V}\lambda_q^{-10+\varepsilon_R}
+\right]\\
+&amp;\leq C_\rho\lambda_q^{-39/4},\qquad
+C_\rho=R_t\left[\frac{2M_e}{3V}+\frac43
++\frac{2C_T}{3}+\frac{2T_1}{75V}\right],\\
+\frac{R_t\ell L_\rho}{\delta&#x27;}
+&amp;\leq C_\rho\lambda_1^{-3\beta_{\rm reg}}
+\lambda_q^{-39/4+2\beta_{\rm reg}b^2}
+\leq C_\rho\lambda_1^{-3\beta_{\rm reg}}
+\lambda_q^{-7/4}.
+\end{aligned}
+\tag{AB11}
+\]</span>
+<p>Here <span class="math" data-tex="\(\delta/B=\lambda_q^{\varepsilon_R}/100\)">\(\delta/B=\lambda_q^{\varepsilon_R}/100\)</span>
+is substituted exactly. The last step uses the original
+<span class="math" data-tex="\(\beta_{\rm reg}b^2\leq4\)">\(\beta_{\rm reg}b^2\leq4\)</span>, and the previous one
+uses <span class="math" data-tex="\(\varepsilon_R\leq1/4\)">\(\varepsilon_R\leq1/4\)</span>. Thus the actual corrected
+error is quantitatively smaller than the next energy level
+as <span class="math" data-tex="\(\lambda_q\)">\(\lambda_q\)</span> grows, with every original prefactor
+still displayed. An unsupported sharper time exponent is
+not needed for this comparison.</p>
+<h2 id="ab3-constructed-thresholds-positivity-and-the-zero-set">AB3. Constructed thresholds, positivity and the zero set</h2>
+<p>All constants in this section are those already specified.
+Choose the original base integer <span class="math" data-tex="\(a\)">\(a\)</span>, still a multiple
+of the actual <span class="math" data-tex="\(N_\Lambda\)">\(N_\Lambda\)</span>, at least</p>
+<span class="math math-display" data-tex="\[
+\max\left\{
+2,
+(800C_H)^{1/\varepsilon_R},
+400^{1/(2\beta_{\rm reg}b(b-1))},
+[400R_t(M_e+2V)]^{20/239},
+[960000D_0V\sqrt{15}]^{1/\varepsilon_R}
+\right\}.
+\tag{AB12}
+\]">\[
+\max\left\{
+2,
+(800C_H)^{1/\varepsilon_R},
+400^{1/(2\beta_{\rm reg}b(b-1))},
+[400R_t(M_e+2V)]^{20/239},
+[960000D_0V\sqrt{15}]^{1/\varepsilon_R}
+\right\}.
+\tag{AB12}
+\]</span>
+<p>Such an integer is explicitly obtained by rounding this
+finite maximum upward to a multiple of <span class="math" data-tex="\(N_\Lambda\)">\(N_\Lambda\)</span>.
+The original source has <span class="math" data-tex="\(b&gt;1\)">\(b&gt;1\)</span> and
+<span class="math" data-tex="\(\beta_{\rm reg},\varepsilon_R&gt;0\)">\(\beta_{\rm reg},\varepsilon_R&gt;0\)</span>, so each power
+is defined. Because <span class="math" data-tex="\(\lambda_q\geq a\)">\(\lambda_q\geq a\)</span>, these choices give</p>
+<span class="math math-display" data-tex="\[
+H\leq\delta/800,\qquad\delta&#x27;/2\leq\delta/800,
+\qquad2R_t\ell L_D\leq\delta/200,
+\qquad120000V\sqrt{15}\lambda_q^{-\varepsilon_R}
+\leq1/(8D_0).
+\tag{AB13}
+\]">\[
+H\leq\delta/800,\qquad\delta&#x27;/2\leq\delta/800,
+\qquad2R_t\ell L_D\leq\delta/200,
+\qquad120000V\sqrt{15}\lambda_q^{-\varepsilon_R}
+\leq1/(8D_0).
+\tag{AB13}
+\]</span>
+<p>The second follows from the exact quotient
+<span class="math" data-tex="\(\delta&#x27;/\delta=\lambda_q^{-2\beta_{\rm reg}b(b-1)}\)">\(\delta&#x27;/\delta=\lambda_q^{-2\beta_{\rm reg}b(b-1)}\)</span>.
+For the third, <span class="math" data-tex="\(\delta\geq\lambda_q^{-2\beta_{\rm reg}b}\)">\(\delta\geq\lambda_q^{-2\beta_{\rm reg}b}\)</span>
+and <span class="math" data-tex="\(2\beta_{\rm reg}b\leq1/20\)">\(2\beta_{\rm reg}b\leq1/20\)</span> bound its left
+side divided by <span class="math" data-tex="\(\delta\)">\(\delta\)</span> by
+<span class="math" data-tex="\(2R_t(M_e+2V)\lambda_q^{-239/20}\)">\(2R_t(M_e+2V)\lambda_q^{-239/20}\)</span>.
+The other two statements substitute SC12 and the corresponding
+terms of AB12 directly.</p>
+<p>If either <span class="math" data-tex="\(u_\ell\)">\(u_\ell\)</span> or <span class="math" data-tex="\(S_\ell\)">\(S_\ell\)</span> is nonzero anywhere at time <span class="math" data-tex="\(t\)">\(t\)</span>, then
+the original convolution has a time <span class="math" data-tex="\(\tau\)">\(\tau\)</span> with
+<span class="math" data-tex="\(|\tau-t|\leq R_t\ell\)">\(|\tau-t|\leq R_t\ell\)</span> at which at least one of <span class="math" data-tex="\(u_q(\cdot,\tau),S_q(\cdot,\tau)\)">\(u_q(\cdot,\tau),S_q(\cdot,\tau)\)</span>
+is not identically zero. Otherwise its entire integrand is
+zero. The original implication AB5 gives
+<span class="math" data-tex="\(D(\tau)&gt;\delta/100\)">\(D(\tau)&gt;\delta/100\)</span>. For every <span class="math" data-tex="\(s\)">\(s\)</span> in the
+time-averaging window of <span class="math" data-tex="\(t\)">\(t\)</span>, AB7 and AB13 therefore give
+<span class="math" data-tex="\(D(s)&gt;\delta/200\)">\(D(s)&gt;\delta/200\)</span>, then
+<span class="math" data-tex="\(E(s)&gt;\delta/400\)">\(E(s)&gt;\delta/400\)</span>. Since <span class="math" data-tex="\(I_0(s)\leq V\)">\(I_0(s)\leq V\)</span>,
+averaging the positive square roots proves the actual lower
+bound and coefficient-domain estimate</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(u_\ell,S_\ell)(\cdot,t)\not\equiv(0,0)\quad\Longrightarrow\quad
+\rho_0(t)\geq\delta/(1200V),\\
+\frac{|S_\ell(x,t)|}{\rho_0(t)}
+\leq120000V\sqrt{15}\lambda_q^{-\varepsilon_R}
+\leq\frac1{8D_0}\qquad(x\in\operatorname{supp}\chi_0).
+\end{gathered}
+\tag{AB14}
+\]">\[
+\begin{gathered}
+(u_\ell,S_\ell)(\cdot,t)\not\equiv(0,0)\quad\Longrightarrow\quad
+\rho_0(t)\geq\delta/(1200V),\\
+\frac{|S_\ell(x,t)|}{\rho_0(t)}
+\leq120000V\sqrt{15}\lambda_q^{-\varepsilon_R}
+\leq\frac1{8D_0}\qquad(x\in\operatorname{supp}\chi_0).
+\end{gathered}
+\tag{AB14}
+\]</span>
+<p>In the second line the nonzero-stress case uses
+<span class="math" data-tex="\(y\leq4\)">\(y\leq4\)</span>, hence <span class="math" data-tex="\(|S_\ell|\leq B\sqrt{15}\)">\(|S_\ell|\leq B\sqrt{15}\)</span>.
+If the stress is identically zero and <span class="math" data-tex="\(\rho_0&gt;0\)">\(\rho_0&gt;0\)</span>,
+the ratio is zero. When both vanish, the ratio is assigned
+zero only as the explicitly justified extension used below.</p>
+<p>Specify the original allowed time mollifier by
+<span class="math" data-tex="\(\varphi(s)=b(1-s^2)/\int_{-1}^1 b(1-r^2)\,dr\)">\(\varphi(s)=b(1-s^2)/\int_{-1}^1 b(1-r^2)\,dr\)</span>,
+using the already proved bump IK2. Its support has the source's
+width two, it is even, has integral one, and is positive on
+<span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span>; thus <span class="math" data-tex="\(R_t=1\)">\(R_t=1\)</span> for this actual choice.
+The displayed formulas retain <span class="math" data-tex="\(R_t\)">\(R_t\)</span> so their window
+contributions remain identifiable. If <span class="math" data-tex="\(\rho_0(t)=0\)">\(\rho_0(t)=0\)</span>,
+then the integral defining <span class="math" data-tex="\(b_0(t)\)">\(b_0(t)\)</span> is zero. Positivity
+and continuity imply <span class="math" data-tex="\(\rho(s)=E(s)=0\)">\(\rho(s)=E(s)=0\)</span> at every interior
+time in that window. AB13 gives
+<span class="math" data-tex="\(D(s)\leq H(s)+\delta&#x27;/2\leq\delta/400\)">\(D(s)\leq H(s)+\delta&#x27;/2\leq\delta/400\)</span>.
+AB5 then gives <span class="math" data-tex="\(u_q=S_q=0\)">\(u_q=S_q=0\)</span> throughout the open window.
+Consequently <span class="math" data-tex="\(u_\ell(\cdot,t)=S_\ell(\cdot,t)=0\)">\(u_\ell(\cdot,t)=S_\ell(\cdot,t)=0\)</span>.
+Moreover every kernel derivative is supported in that same
+closed window and vanishes at its boundary, so convolution
+against the zero interior proves that every space-time
+derivative of these two mollified fields vanishes at <span class="math" data-tex="\(t\)">\(t\)</span>.
+The same argument applied to <span class="math" data-tex="\(b_0\)">\(b_0\)</span> shows</p>
+<span class="math math-display" data-tex="\[
+\rho_0(t)=0\quad\Longrightarrow\quad
+D_{x,t}^{J}u_\ell(\cdot,t)=D_{x,t}^{J}S_\ell(\cdot,t)=0,
+\qquad b_0^{(N)}(t)=0
+\quad\hbox{for all }J,N\geq0.
+\tag{AB15}
+\]">\[
+\rho_0(t)=0\quad\Longrightarrow\quad
+D_{x,t}^{J}u_\ell(\cdot,t)=D_{x,t}^{J}S_\ell(\cdot,t)=0,
+\qquad b_0^{(N)}(t)=0
+\quad\hbox{for all }J,N\geq0.
+\tag{AB15}
+\]</span>
+<p>Here <span class="math" data-tex="\(J\)">\(J\)</span> ranges over finite ordered derivative lists.
+No division by <span class="math" data-tex="\(\rho_0\)">\(\rho_0\)</span> occurs in this zero-set proof.</p>
+<h2 id="ab4-smooth-low-index-amplitudes-and-the-complete-tensor-map">AB4. Smooth low-index amplitudes and the complete tensor map</h2>
+<p>On the open set <span class="math" data-tex="\(\rho_0&lt;\delta/(1200V)\)">\(\rho_0&lt;\delta/(1200V)\)</span>, the
+contrapositive of AB14 gives <span class="math" data-tex="\(u_\ell=S_\ell=0\)">\(u_\ell=S_\ell=0\)</span> and hence
+<span class="math" data-tex="\(\chi_0=1\)">\(\chi_0=1\)</span>. The coefficient on this set is the explicit
+smooth function <span class="math" data-tex="\(b_0/2\)">\(b_0/2\)</span>. On
+<span class="math" data-tex="\(\rho_0&gt;\delta/(2400V)\)">\(\rho_0&gt;\delta/(2400V)\)</span>, use
+<span class="math" data-tex="\(c_{\zeta,0}=\rho_0/4-\mathcal L_\zeta(S_\ell)\)">\(c_{\zeta,0}=\rho_0/4-\mathcal L_\zeta(S_\ell)\)</span>
+and the smooth zero extension</p>
+<span class="math math-display" data-tex="\[
+a_{\zeta,0}=
+\begin{cases}
+\chi_0\sqrt{c_{\zeta,0}},&amp;c_{\zeta,0}&gt;\rho_0/16,\\
+0,&amp;c_{\zeta,0}\leq\rho_0/16.
+\end{cases}
+\tag{AB16}
+\]">\[
+a_{\zeta,0}=
+\begin{cases}
+\chi_0\sqrt{c_{\zeta,0}},&amp;c_{\zeta,0}&gt;\rho_0/16,\\
+0,&amp;c_{\zeta,0}\leq\rho_0/16.
+\end{cases}
+\tag{AB16}
+\]</span>
+<p>On the actual cutoff support AB14 gives
+<span class="math" data-tex="\(\rho_0/8\leq c_{\zeta,0}\leq3\rho_0/8\)">\(\rho_0/8\leq c_{\zeta,0}\leq3\rho_0/8\)</span>,
+so the piecewise boundary has a neighborhood where
+<span class="math" data-tex="\(\chi_0=0\)">\(\chi_0=0\)</span>, exactly as in SC15. On the overlap of the
+two time regions, <span class="math" data-tex="\(S_\ell=0\)">\(S_\ell=0\)</span> and <span class="math" data-tex="\(\chi_0=1\)">\(\chi_0=1\)</span>,
+so AB16 is exactly <span class="math" data-tex="\(\sqrt{\rho_0}/2=b_0/2\)">\(\sqrt{\rho_0}/2=b_0/2\)</span>.
+These explicit matching functions define a globally smooth
+amplitude in space and time, including every zero of the
+energy coefficient. They are the source's intended formula
+with the corrected full-volume <span class="math" data-tex="\(\rho_0\)">\(\rho_0\)</span>, rather than
+an assumed smooth quotient at zero.</p>
+<p>The original linear tensor decomposition proves, including
+the zero set, the exact identities</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{\xi\in\Lambda_0^+}a_{\xi,0}^2(I-\xi\otimes\xi)
+&amp;=\chi_0^2(\rho_0 I-S_\ell),\\
+\sum_{i\geq0}\sum_{\xi\in\Lambda_i^+}
+a_{\xi,i}^2(I-\xi\otimes\xi)
+&amp;=\left(\sum_{i\geq0}\rho_i\chi_i^2\right)I-S_\ell .
+\end{aligned}
+\tag{AB17}
+\]">\[
+\begin{aligned}
+\sum_{\xi\in\Lambda_0^+}a_{\xi,0}^2(I-\xi\otimes\xi)
+&amp;=\chi_0^2(\rho_0 I-S_\ell),\\
+\sum_{i\geq0}\sum_{\xi\in\Lambda_i^+}
+a_{\xi,i}^2(I-\xi\otimes\xi)
+&amp;=\left(\sum_{i\geq0}\rho_i\chi_i^2\right)I-S_\ell .
+\end{aligned}
+\tag{AB17}
+\]</span>
+<p>The second line sums SC16 and the first line, then uses
+the full squared partition SC8. No high-index term or
+stress contribution is absorbed into the low coefficient.</p>
+<h2 id="ab5-full-low-index-derivative-costs">AB5. Full low-index derivative costs</h2>
+<p>The zeroth-order amplitude bound is
+<span class="math" data-tex="\(\|a_{\zeta,0}\|_\infty\leq\sqrt{\delta/(4V)}\)">\(\|a_{\zeta,0}\|_\infty\leq\sqrt{\delta/(4V)}\)</span>
+on the high time region and
+<span class="math" data-tex="\(\|b_0/2\|_\infty\leq\sqrt{\delta/(6V)}\)">\(\|b_0/2\|_\infty\leq\sqrt{\delta/(6V)}\)</span>
+on the low time region. The former larger bound therefore
+holds globally. For <span class="math" data-tex="\(N\geq1\)">\(N\geq1\)</span> set</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+K_0&amp;=1,\qquad
+K_j=\sum_{\pi\in\mathcal P_j}C_{|\pi|}100^{-|\pi|}
+\prod_{E\in\pi}M_{|E|},\\
+Z_j&amp;=R_j/(6V)+D_0M_j\ell\lambda_q^{10}/\delta,\\
+G_0&amp;=1/(2\sqrt V),\qquad
+G_j=\sum_{\pi\in\mathcal P_j}
+q_{|\pi|}(19200V)^{|\pi|-1/2}
+\prod_{E\in\pi}Z_{|E|},\\
+A_N&amp;=\max\left\{
+\tfrac12\sigma_N\sqrt{2/(3V)},
+\sum_{j=0}^N\binom Nj K_jG_{N-j}\right\}.
+\end{aligned}
+\tag{AB18}
+\]">\[
+\begin{aligned}
+K_0&amp;=1,\qquad
+K_j=\sum_{\pi\in\mathcal P_j}C_{|\pi|}100^{-|\pi|}
+\prod_{E\in\pi}M_{|E|},\\
+Z_j&amp;=R_j/(6V)+D_0M_j\ell\lambda_q^{10}/\delta,\\
+G_0&amp;=1/(2\sqrt V),\qquad
+G_j=\sum_{\pi\in\mathcal P_j}
+q_{|\pi|}(19200V)^{|\pi|-1/2}
+\prod_{E\in\pi}Z_{|E|},\\
+A_N&amp;=\max\left\{
+\tfrac12\sigma_N\sqrt{2/(3V)},
+\sum_{j=0}^N\binom Nj K_jG_{N-j}\right\}.
+\end{aligned}
+\tag{AB18}
+\]</span>
+<p>All symbols here have been explicitly defined. In the high
+time region on the cutoff support,
+<span class="math" data-tex="\(c_{\zeta,0}\geq\delta/(19200V)\)">\(c_{\zeta,0}\geq\delta/(19200V)\)</span>, and the complete
+time-space derivative obeys</p>
+<span class="math math-display" data-tex="\[
+D_{x,t}^j c_{\zeta,0}
+=\tfrac14D_{x,t}^j\rho_0-\mathcal L_\zeta(D_{x,t}^jS_\ell),
+\qquad
+\|D_{x,t}^j c_{\zeta,0}\|_\infty
+\leq\delta\ell^{-j}Z_j .
+\tag{AB19}
+\]">\[
+D_{x,t}^j c_{\zeta,0}
+=\tfrac14D_{x,t}^j\rho_0-\mathcal L_\zeta(D_{x,t}^jS_\ell),
+\qquad
+\|D_{x,t}^j c_{\zeta,0}\|_\infty
+\leq\delta\ell^{-j}Z_j .
+\tag{AB19}
+\]</span>
+<p>In its first term only the component with all indices equal
+to time can be nonzero, and AB10 gives its full value bound.
+Apply the entire square-root partition formula AB2 with
+this original derivative, including both contributions in
+each block. The lower bound for nonempty partitions gives
+<span class="math" data-tex="\(\sqrt\delta\ell^{-j}G_j\)">\(\sqrt\delta\ell^{-j}G_j\)</span>; the empty partition uses
+the actual upper bound and gives <span class="math" data-tex="\(\sqrt\delta G_0\)">\(\sqrt\delta G_0\)</span>.
+SC24–SC25 give <span class="math" data-tex="\(\|D^j\chi_0\|_\infty\leq K_j\ell^{-j}\)">\(\|D^j\chi_0\|_\infty\leq K_j\ell^{-j}\)</span>.
+Leibniz then proves</p>
+<span class="math math-display" data-tex="\[
+\|D_{x,t}^Na_{\zeta,0}\|_\infty
+\leq A_N\sqrt\delta\,\ell^{-N}.
+\tag{AB20}
+\]">\[
+\|D_{x,t}^Na_{\zeta,0}\|_\infty
+\leq A_N\sqrt\delta\,\ell^{-N}.
+\tag{AB20}
+\]</span>
+<p>In the low time region, the first term of the maximum
+follows directly from <span class="math" data-tex="\(a_{\zeta,0}=b_0/2\)">\(a_{\zeta,0}=b_0/2\)</span> and AB10.
+The two formulas agree on their overlap, so these bounds
+cover every point without differentiating a time indicator.</p>
+<p>The actual ratio in <span class="math" data-tex="\(Z_j\)">\(Z_j\)</span> is at most
+<span class="math" data-tex="\(\lambda_1^{-3\beta_{\rm reg}}
+\lambda_q^{-10+2\beta_{\rm reg}b}\leq1\)">\(\lambda_1^{-3\beta_{\rm reg}}
+\lambda_q^{-10+2\beta_{\rm reg}b}\leq1\)</span>.
+Replacing that ratio by its proved bound one gives constants
+<span class="math" data-tex="\(\overline Z_j,\overline G_j,\overline A_N\)">\(\overline Z_j,\overline G_j,\overline A_N\)</span>
+independent of <span class="math" data-tex="\(q,a,\delta\)">\(q,a,\delta\)</span>, without changing AB18–AB20.
+There is no global assumption <span class="math" data-tex="\(\delta\leq1\)">\(\delta\leq1\)</span>: the original
+prefactor can make its initial value larger. Instead, if
+<span class="math" data-tex="\(\delta&lt;100M_e\)">\(\delta&lt;100M_e\)</span>, AB20 gives
+<span class="math" data-tex="\(\|D^Na_{\zeta,0}\|_\infty
+\leq10\overline A_N\sqrt{M_e}\ell^{-N}\)">\(\|D^Na_{\zeta,0}\|_\infty
+\leq10\overline A_N\sqrt{M_e}\ell^{-N}\)</span>.
+If <span class="math" data-tex="\(\delta\geq100M_e\)">\(\delta\geq100M_e\)</span>, then
+<span class="math" data-tex="\(D\leq e\leq M_e\leq\delta/100\)">\(D\leq e\leq M_e\leq\delta/100\)</span>, so AB5 forces
+<span class="math" data-tex="\(u_q=S_q=0\)">\(u_q=S_q=0\)</span> throughout the original interval. In this
+case <span class="math" data-tex="\(I_0=V,H=0\)">\(I_0=V,H=0\)</span>, and
+<span class="math" data-tex="\(\rho=(e-\delta&#x27;/2)_+/(3V)\leq M_e/(3V)\)">\(\rho=(e-\delta&#x27;/2)_+/(3V)\leq M_e/(3V)\)</span>.
+The direct convolution and <span class="math" data-tex="\(a_{\zeta,0}=b_0/2\)">\(a_{\zeta,0}=b_0/2\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\|D_{x,t}^Na_{\zeta,0}\|_\infty
+\leq\sqrt{M_e}\ell^{-N}
+\max\{10\overline A_N,\sigma_N/(2\sqrt{3V})\}.
+\tag{AB21}
+\]">\[
+\|D_{x,t}^Na_{\zeta,0}\|_\infty
+\leq\sqrt{M_e}\ell^{-N}
+\max\{10\overline A_N,\sigma_N/(2\sqrt{3V})\}.
+\tag{AB21}
+\]</span>
+<p>This proves the uniform low-index derivative scale from the
+actual energy and stress hypotheses, while AB18–AB20 retain
+the stronger original amplitude-dependent version. Together
+with AB3–AB4 and SC16, the full source amplitudes now have
+constructed definitions, precise zero sets and complete
+derivative costs. Their substitution into the entire velocity,
+pressure, energy and residual estimates is the next calculation.</p>
+<h2 id="ab6-the-zeroth-term-and-the-source-s-full-norm">AB6. The zeroth term and the source's full norm</h2>
+<p>The source defines its <span class="math" data-tex="\(C^N_{x,t}\)">\(C^N_{x,t}\)</span> norm as the sum of the
+supremum norms of all multiindex derivatives of order at most
+<span class="math" data-tex="\(N\)">\(N\)</span>. The preceding bounds concern each full ordered tensor.
+The omitted zeroth term must also be bounded before receiving
+that norm. For <span class="math" data-tex="\(q\geq0\)">\(q\geq0\)</span>, the exact original parameters give
+<span class="math" data-tex="\(\lambda_1\leq\lambda_q^b\)">\(\lambda_1\leq\lambda_q^b\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\delta=\lambda_1^{3\beta_{\rm reg}}
+\lambda_q^{-2\beta_{\rm reg}b}
+\leq\lambda_q^{\beta_{\rm reg}b}
+\leq\lambda_q^{1/40},\qquad
+B\leq100\lambda_q^{1/40}.
+\tag{AB22}
+\]">\[
+\delta=\lambda_1^{3\beta_{\rm reg}}
+\lambda_q^{-2\beta_{\rm reg}b}
+\leq\lambda_q^{\beta_{\rm reg}b}
+\leq\lambda_q^{1/40},\qquad
+B\leq100\lambda_q^{1/40}.
+\tag{AB22}
+\]</span>
+<p>This keeps the prefactor and proves a bound for it; it does
+not replace the original <span class="math" data-tex="\(\delta\)">\(\delta\)</span> by a new definition.
+For a nonzero high-index amplitude, <span class="math" data-tex="\(4^i&lt;2y\)">\(4^i&lt;2y\)</span>, hence</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\rho_i&amp;&lt;\frac{4^{c_0}}{50}\sqrt{B^2+|S_\ell|^2}
+\leq\frac{4^{c_0}\sqrt{10001}}{50}\lambda_q^{10},\\
+\|a_{\zeta,i}\|_\infty&amp;\leq C_*\lambda_q^5,
+\qquad C_*=
+\left(\frac{3\,4^{c_0}\sqrt{10001}}{400}\right)^{1/2},\\
+\|a_{\zeta,i}\|_{C^N_{x,t}}
+&amp;\leq\ell^{-N}\left[C_*+
+\sum_{j=1}^N\binom{j+3}{3}P_j(1)\right]
+\quad(i\geq1,\ N\geq1).
+\end{aligned}
+\tag{AB23}
+\]">\[
+\begin{aligned}
+\rho_i&amp;&lt;\frac{4^{c_0}}{50}\sqrt{B^2+|S_\ell|^2}
+\leq\frac{4^{c_0}\sqrt{10001}}{50}\lambda_q^{10},\\
+\|a_{\zeta,i}\|_\infty&amp;\leq C_*\lambda_q^5,
+\qquad C_*=
+\left(\frac{3\,4^{c_0}\sqrt{10001}}{400}\right)^{1/2},\\
+\|a_{\zeta,i}\|_{C^N_{x,t}}
+&amp;\leq\ell^{-N}\left[C_*+
+\sum_{j=1}^N\binom{j+3}{3}P_j(1)\right]
+\quad(i\geq1,\ N\geq1).
+\end{aligned}
+\tag{AB23}
+\]</span>
+<p>If the amplitude is zero everywhere the same bound holds.
+The stress estimate is the original convolution bound
+<span class="math" data-tex="\(\|S_\ell\|_\infty\leq\lambda_q^{10}\)">\(\|S_\ell\|_\infty\leq\lambda_q^{10}\)</span>.
+There are <span class="math" data-tex="\(\binom{j+3}{3}\)">\(\binom{j+3}{3}\)</span> four-variable multiindices
+of order <span class="math" data-tex="\(j\)">\(j\)</span>: their exponents are exactly the ways to
+place three dividers among <span class="math" data-tex="\(j+3\)">\(j+3\)</span> positions. Every component supremum is bounded by the supremum of
+the full ordered tensor norm. Summing these separate suprema
+therefore costs this full number of multiindices. Their
+maxima may occur at different points, so a square-root count
+is not asserted. Apply AB4 to each order. Finally
+<span class="math" data-tex="\(\lambda_q^5\leq\ell^{-N}\)">\(\lambda_q^5\leq\ell^{-N}\)</span> and
+<span class="math" data-tex="\(\ell^{-j}\leq\ell^{-N}\)">\(\ell^{-j}\leq\ell^{-N}\)</span> for <span class="math" data-tex="\(1\leq j\leq N\)">\(1\leq j\leq N\)</span>.
+This proves the complete last line.</p>
+<p>At index zero, AB20 and the two cases leading to AB21 also
+give <span class="math" data-tex="\(\|a_{\zeta,0}\|_\infty\leq5\sqrt{M_e/V}\)">\(\|a_{\zeta,0}\|_\infty\leq5\sqrt{M_e/V}\)</span>.
+Indeed the first case uses <span class="math" data-tex="\(\delta&lt;100M_e\)">\(\delta&lt;100M_e\)</span> in the
+global bound <span class="math" data-tex="\(\sqrt{\delta/(4V)}\)">\(\sqrt{\delta/(4V)}\)</span>, and the other
+uses <span class="math" data-tex="\(b_0/2\leq\sqrt{M_e/(12V)}\)">\(b_0/2\leq\sqrt{M_e/(12V)}\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|a_{\zeta,0}\|_{C^N_{x,t}}
+\leq\sqrt{M_e}\,\ell^{-N}\left[
+\frac5{\sqrt V}+\sum_{j=1}^N\binom{j+3}{3}
+\max\{10\overline A_j,\sigma_j/(2\sqrt{3V})\}
+\right] \quad(N\geq1).
+\end{aligned}
+\tag{AB24}
+\]">\[
+\begin{aligned}
+\|a_{\zeta,0}\|_{C^N_{x,t}}
+\leq\sqrt{M_e}\,\ell^{-N}\left[
+\frac5{\sqrt V}+\sum_{j=1}^N\binom{j+3}{3}
+\max\{10\overline A_j,\sigma_j/(2\sqrt{3V})\}
+\right] \quad(N\geq1).
+\end{aligned}
+\tag{AB24}
+\]</span>
+<p>If <span class="math" data-tex="\(M_e=0\)">\(M_e=0\)</span>, AB5 forces <span class="math" data-tex="\(u_q=S_q=0\)">\(u_q=S_q=0\)</span>, and every
+amplitude vanishes, including the high indices. Thus the
+displayed conclusion covers that endpoint as well. AB23–AB24
+receive the source's actual norm definition at line 267;
+they do not omit its zeroth derivative or use an unproved
+uniform upper bound of one for <span class="math" data-tex="\(\delta\)">\(\delta\)</span>.</p>
+<h2 id="the-actual-cutoffs-and-their-smoothing">The actual cutoffs and their smoothing</h2>
+<p><img src="assets/NS-FLUID-24/original-stress-cutoff-partition-D73EAA3E473AC60C87DE51194443D16683B29EAB978120A9E1F68E34F7640CAA.png" alt="The specified squared cutoffs and their complete energy weight" class="course-figure" width="1870" height="1360" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-stress-cutoff-partition" data-asset-sha256="D73EAA3E473AC60C87DE51194443D16683B29EAB978120A9E1F68E34F7640CAA"></p>
+<p>The top curves evaluate the exact functions SC6–SC8, with
+the original cutoff argument on a logarithmic axis. Their
+squares sum to one. The lower plot shows the complete
+positive-index energy weight and the proved bound SC12.
+EX3–EX5 compute each transition's angle and full derivative.
+The plotted curves are numerical samples of those explicit
+functions; the proofs do not depend on the samples.</p>
+<p><img src="assets/NS-FLUID-24/original-energy-square-root-smoothing-F9C962F40663FA0EB4B401245069594D2950C2CCDBEAE0A8CE490C33F20F4E67.png" alt="The actual square-root smoothing and its first-order loss at zero" class="course-figure" width="2040" height="951" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-energy-square-root-smoothing" data-asset-sha256="F9C962F40663FA0EB4B401245069594D2950C2CCDBEAE0A8CE490C33F20F4E67"></p>
+<p>The left plot uses the actual coefficient and kernel of
+EX9–EX11, at the stated time scale. The variance identity
+places the squared smoothed square root below the smoothed
+coefficient. At zero, EX11 gives the exact linear law shown
+on the right. Its displayed coefficient is computed by
+numerical quadrature. Both figures can be regenerated from
+the <a href="assets/original-stress-cutoff-maps.py">complete figure source</a>.</p>
+<p>Human comparison for both figures: Buckmaster–Vicol,
+arXiv:1709.10033v4, stress cutoffs and energy-amplitude
+smoothing. The stated definitions and proofs are complete
+in this chapter. No novelty or independent review is claimed.</p>
+<h2 id="five-exercises-with-complete-solutions">Five exercises with complete solutions</h2>
+<h3 id="exercise-1-compute-the-full-mollified-shear-stress-and-pressure">Exercise 1. Compute the full mollified shear stress and pressure</h3>
+<p>On the original torus of period <span class="math" data-tex="\(L\)">\(L\)</span>, take
+<span class="math" data-tex="\(u(x)=\sin(kx_2)e_1\)">\(u(x)=\sin(kx_2)e_1\)</span>, <span class="math" data-tex="\(k=2\pi n/L\)">\(k=2\pi n/L\)</span>, where
+<span class="math" data-tex="\(n\)">\(n\)</span> is a positive integer. Let <span class="math" data-tex="\(S=0,p=0\)">\(S=0,p=0\)</span> and
+<span class="math" data-tex="\(f=\nu k^2u\)">\(f=\nu k^2u\)</span>. Compute the actual SC2 commutator and
+check its complete pressure map, without replacing the
+spatial integral by an average.</p>
+<p><strong>Solution.</strong> The divergence and convective term of this
+shear vanish, and <span class="math" data-tex="\(-\nu\Delta u=\nu k^2u=f\)">\(-\nu\Delta u=\nu k^2u=f\)</span>, so
+it satisfies the original equation. Define the actual real
+kernel multipliers</p>
+<span class="math math-display" data-tex="\[
+m_j=\int_{\mathbb R^3}\phi(y)\cos(jk\ell y_2)\,dy
+\quad(j=1,2),\qquad
+d(x_2)=\frac{m_1^2-1}{2}
++\frac{m_2-m_1^2}{2}\cos(2kx_2).
+\tag{EX1}
+\]">\[
+m_j=\int_{\mathbb R^3}\phi(y)\cos(jk\ell y_2)\,dy
+\quad(j=1,2),\qquad
+d(x_2)=\frac{m_1^2-1}{2}
++\frac{m_2-m_1^2}{2}\cos(2kx_2).
+\tag{EX1}
+\]</span>
+<p>Evenness of the kernel makes the sine multiplier vanish.
+The time integral is one because the field is stationary.
+Thus <span class="math" data-tex="\(u_\ell=m_1\sin(kx_2)e_1\)">\(u_\ell=m_1\sin(kx_2)e_1\)</span>, while
+<span class="math" data-tex="\(\mathcal M_\ell(u\otimes u)
+=\tfrac12(1-m_2\cos(2kx_2))e_1\otimes e_1\)">\(\mathcal M_\ell(u\otimes u)
+=\tfrac12(1-m_2\cos(2kx_2))e_1\otimes e_1\)</span>.
+Subtracting proves every term in</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D&amp;=d\,e_1\otimes e_1,&amp;
+D^\circ&amp;=d(e_1\otimes e_1-I/3),&amp; p_\ell&amp;=-d/3,\\
+\operatorname{div}D^\circ&amp;=-\nabla d/3,&amp;
+\int_{\mathbb T_L^3}d&amp;=V(m_1^2-1)/2,&amp;
+f_\ell&amp;=\nu k^2u_\ell.
+\end{aligned}
+\tag{EX2}
+\]">\[
+\begin{aligned}
+D&amp;=d\,e_1\otimes e_1,&amp;
+D^\circ&amp;=d(e_1\otimes e_1-I/3),&amp; p_\ell&amp;=-d/3,\\
+\operatorname{div}D^\circ&amp;=-\nabla d/3,&amp;
+\int_{\mathbb T_L^3}d&amp;=V(m_1^2-1)/2,&amp;
+f_\ell&amp;=\nu k^2u_\ell.
+\end{aligned}
+\tag{EX2}
+\]</span>
+<p>The first tensor part has zero divergence because <span class="math" data-tex="\(d\)">\(d\)</span>
+depends on <span class="math" data-tex="\(x_2\)">\(x_2\)</span>, while its tensor direction is <span class="math" data-tex="\(e_1\)">\(e_1\)</span>.
+The viscous and force terms cancel exactly, leaving
+<span class="math" data-tex="\(\nabla p_\ell=\operatorname{div}D^\circ\)">\(\nabla p_\ell=\operatorname{div}D^\circ\)</span>.
+This verifies the original SC3 sign and the factor one third
+for a nonconstant explicit tensor. SC5 also gives
+<span class="math" data-tex="\(d(x_2)\leq0\)">\(d(x_2)\leq0\)</span> pointwise. In particular the exact
+multiplier inequality
+<span class="math" data-tex="\(m_1^2-1+|m_2-m_1^2|\leq0\)">\(m_1^2-1+|m_2-m_1^2|\leq0\)</span> follows by taking the
+maximum of EX1 over the original periodic coordinate; all
+phases are attained because <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. The covariance
+identity proves this inequality for the actual mollifier,
+without an additional hypothesis on its Fourier transform.</p>
+<h3 id="exercise-2-resolve-every-cutoff-overlap-by-its-exact-angle">Exercise 2. Resolve every cutoff overlap by its exact angle</h3>
+<p>Show that each two-cutoff transition has a smooth angle,
+and compute its full derivative cost and the derivative of
+the actual energy tensor coefficient.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(t=\log_4y\)">\(t=\log_4y\)</span>. For
+<span class="math" data-tex="\(j+1/2&lt;t&lt;j+1\)">\(j+1/2&lt;t&lt;j+1\)</span>, where <span class="math" data-tex="\(j\geq0\)">\(j\geq0\)</span>, the only
+nonzero cutoffs are those with indices <span class="math" data-tex="\(j,j+1\)">\(j,j+1\)</span>.
+For <span class="math" data-tex="\(j=0\)">\(j=0\)</span>, this is exactly the portion <span class="math" data-tex="\(2&lt;y&lt;4\)">\(2&lt;y&lt;4\)</span>
+of the exceptional cutoff definition SC7. Set</p>
+<span class="math math-display" data-tex="\[
+A_j(t)=\vartheta(t-j),\quad B_j(t)=\vartheta(t-j-1),
+\quad\alpha_j(t)=\arctan\frac{B_j(t)}{A_j(t)},\qquad
+\alpha_j&#x27;(t)=\frac{A_jB_j&#x27;-B_jA_j&#x27;}{A_j^2+B_j^2}.
+\tag{EX3}
+\]">\[
+A_j(t)=\vartheta(t-j),\quad B_j(t)=\vartheta(t-j-1),
+\quad\alpha_j(t)=\arctan\frac{B_j(t)}{A_j(t)},\qquad
+\alpha_j&#x27;(t)=\frac{A_jB_j&#x27;-B_jA_j&#x27;}{A_j^2+B_j^2}.
+\tag{EX3}
+\]</span>
+<p>Both functions are positive on the open transition interval,
+so the displayed angle is smooth. At its left endpoint
+<span class="math" data-tex="\(B_j\)">\(B_j\)</span> is flat and <span class="math" data-tex="\(A_j\)">\(A_j\)</span> positive, giving the
+smooth extension <span class="math" data-tex="\(\alpha_j=0\)">\(\alpha_j=0\)</span>. At the right endpoint
+<span class="math" data-tex="\(A_j\)">\(A_j\)</span> is flat and <span class="math" data-tex="\(B_j\)">\(B_j\)</span> positive; the identity
+<span class="math" data-tex="\(\alpha_j=\pi/2-\arctan(A_j/B_j)\)">\(\alpha_j=\pi/2-\arctan(A_j/B_j)\)</span> gives the
+smooth extension <span class="math" data-tex="\(\alpha_j=\pi/2\)">\(\alpha_j=\pi/2\)</span>. SC6 then gives
+<span class="math" data-tex="\(\widetilde\chi_j=\cos\alpha_j\)">\(\widetilde\chi_j=\cos\alpha_j\)</span> and
+<span class="math" data-tex="\(\widetilde\chi_{j+1}=\sin\alpha_j\)">\(\widetilde\chi_{j+1}=\sin\alpha_j\)</span> throughout
+this interval, with all derivatives agreeing at its ends.</p>
+<p>For a physical coordinate <span class="math" data-tex="\(z_a\)">\(z_a\)</span>, spatial or temporal,
+the original stress map gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_a t&amp;=
+\frac{S_\ell: \partial_aS_\ell}
+{(B^2+|S_\ell|^2)\log4},\\
+\sum_i\chi_i\partial_a\chi_i&amp;=0,\qquad
+\sum_i(\partial_a\chi_i)(\partial_b\chi_i)
+=(\alpha_j&#x27;(t))^2(\partial_a t)(\partial_b t).
+\end{aligned}
+\tag{EX4}
+\]">\[
+\begin{aligned}
+\partial_a t&amp;=
+\frac{S_\ell: \partial_aS_\ell}
+{(B^2+|S_\ell|^2)\log4},\\
+\sum_i\chi_i\partial_a\chi_i&amp;=0,\qquad
+\sum_i(\partial_a\chi_i)(\partial_b\chi_i)
+=(\alpha_j&#x27;(t))^2(\partial_a t)(\partial_b t).
+\end{aligned}
+\tag{EX4}
+\]</span>
+<p>The first formula differentiates
+<span class="math" data-tex="\(t=\tfrac12\log(1+|S_\ell|^2/B^2)/\log4\)">\(t=\tfrac12\log(1+|S_\ell|^2/B^2)/\log4\)</span>,
+retaining its full denominator. Differentiating sine and
+cosine proves both sums. Where a single cutoff is active it
+is identically one, and both sums of derivatives vanish.
+The flat endpoint extensions make these statements global.</p>
+<p>Let <span class="math" data-tex="\(R(x,t)=\sum_i\rho_i(t)\chi_i(x,t)^2\)">\(R(x,t)=\sum_i\rho_i(t)\chi_i(x,t)^2\)</span>, with
+the original constant high coefficients and the constructed
+low coefficient. On each transition its exact derivative is</p>
+<span class="math math-display" data-tex="\[
+\partial_a R=
+\cos^2\alpha_j\,\partial_a\rho_j
++\sin^2\alpha_j\,\partial_a\rho_{j+1}
++(\rho_{j+1}-\rho_j)\sin(2\alpha_j)
+\alpha_j&#x27;(t)\partial_a t.
+\tag{EX5}
+\]">\[
+\partial_a R=
+\cos^2\alpha_j\,\partial_a\rho_j
++\sin^2\alpha_j\,\partial_a\rho_{j+1}
++(\rho_{j+1}-\rho_j)\sin(2\alpha_j)
+\alpha_j&#x27;(t)\partial_a t.
+\tag{EX5}
+\]</span>
+<p>Here the symbol <span class="math" data-tex="\(t\)">\(t\)</span> within <span class="math" data-tex="\(\alpha_j(t)\)">\(\alpha_j(t)\)</span> is the
+logarithmic cutoff coordinate just defined; physical time
+is one of the <span class="math" data-tex="\(z_a\)">\(z_a\)</span>. Only <span class="math" data-tex="\(\partial_a\rho_0\)">\(\partial_a\rho_0\)</span>
+can be nonzero, and only when <span class="math" data-tex="\(z_a\)">\(z_a\)</span> is physical time.
+The product rule applied to
+<span class="math" data-tex="\(R=\rho_j\cos^2\alpha_j+\rho_{j+1}\sin^2\alpha_j\)">\(R=\rho_j\cos^2\alpha_j+\rho_{j+1}\sin^2\alpha_j\)</span>
+proves EX5. This computes the exact relation between the
+partition cancellation and the derivative of the actual
+coefficient; the nonconstant low-energy term remains.</p>
+<h3 id="exercise-3-retain-an-arbitrary-original-volume">Exercise 3. Retain an arbitrary original volume</h3>
+<p>SC12 gives the half-volume bound directly on the source
+torus. Construct a specified cutoff scale that proves it
+for any fixed <span class="math" data-tex="\(V=L^3&gt;0\)">\(V=L^3&gt;0\)</span>, and determine all changed
+energy and positivity constants.</p>
+<p><strong>Solution.</strong> This is a new permitted choice of auxiliary
+cutoff scale, with the original physical volume retained.
+Set</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C=\max\{100,2/(\sqrt3 V)\},\quad B_C=Cd,\quad
+\\ c_C=\max\{1,\lceil\log_4(32CD_0)\rceil\},\quad
+\rho_{i,C}=d4^{i+c_C}\quad(i\geq1).
+\end{gathered}
+\tag{EX6}
+\]">\[
+\begin{gathered}
+C=\max\{100,2/(\sqrt3 V)\},\quad B_C=Cd,\quad
+\\ c_C=\max\{1,\lceil\log_4(32CD_0)\rceil\},\quad
+\rho_{i,C}=d4^{i+c_C}\quad(i\geq1).
+\end{gathered}
+\tag{EX6}
+\]</span>
+<p>Use exactly SC6–SC8 with
+<span class="math" data-tex="\(y_C=\sqrt{1+|S_\ell|^2/B_C^2}\)">\(y_C=\sqrt{1+|S_\ell|^2/B_C^2}\)</span>. The proofs of
+SC10–SC12, with the complete original factor now <span class="math" data-tex="\(B_C\)">\(B_C\)</span>,
+give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+I_{0,C}&amp;\geq V-1/(\sqrt3 C)\geq V/2,\\
+H_C&amp;=3\sum_{i\geq1}\rho_{i,C}\int\chi_{i,C}^2
+\leq C_{H,C}d,&amp; C_{H,C}&amp;=\frac{12\,4^{c_C}}{\sqrt3 C},\\
+|H_C&#x27;|&amp;\leq C_{T,C}V\lambda_q^{10},&amp;
+C_{T,C}&amp;=\frac{12\,4^{c_C}T_1}{C},\\
+\rho_C&amp;=\frac{(D-H_C-\delta&#x27;/2)_+}{3I_{0,C}}.
+\end{aligned}
+\tag{EX7}
+\]">\[
+\begin{aligned}
+I_{0,C}&amp;\geq V-1/(\sqrt3 C)\geq V/2,\\
+H_C&amp;=3\sum_{i\geq1}\rho_{i,C}\int\chi_{i,C}^2
+\leq C_{H,C}d,&amp; C_{H,C}&amp;=\frac{12\,4^{c_C}}{\sqrt3 C},\\
+|H_C&#x27;|&amp;\leq C_{T,C}V\lambda_q^{10},&amp;
+C_{T,C}&amp;=\frac{12\,4^{c_C}T_1}{C},\\
+\rho_C&amp;=\frac{(D-H_C-\delta&#x27;/2)_+}{3I_{0,C}}.
+\end{aligned}
+\tag{EX7}
+\]</span>
+<p>In detail <span class="math" data-tex="\(\sum_{i\geq1}4^i\chi_{i,C}^2
+\leq4|S_\ell|/(\sqrt3 B_C)\)">\(\sum_{i\geq1}4^i\chi_{i,C}^2
+\leq4|S_\ell|/(\sqrt3 B_C)\)</span>, and multiplication by
+<span class="math" data-tex="\(3d4^{c_C}\)">\(3d4^{c_C}\)</span>, then integration, gives the second line.
+The derivative of the complete sum <span class="math" data-tex="\(F\)">\(F\)</span> still has norm
+at most <span class="math" data-tex="\(4T_1\)">\(4T_1\)</span>; multiplication by
+<span class="math" data-tex="\(3d4^{c_C}/B_C\)">\(3d4^{c_C}/B_C\)</span> gives the third. The high-index
+support bound is <span class="math" data-tex="\(|S_\ell|&lt;4Cd4^i\)">\(|S_\ell|&lt;4Cd4^i\)</span>, so EX6 gives
+<span class="math" data-tex="\(D_0|S_\ell|\leq\rho_{i,C}/8\)">\(D_0|S_\ell|\leq\rho_{i,C}/8\)</span>. The full square-root
+construction and tensor identity therefore hold unchanged
+with these stated coefficients.</p>
+<p>For the low coefficient, the exact counterpart of AB9 and
+the last parameter threshold are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L_{\rho,C}&amp;=\frac2{3V}
+(M_e+2V\lambda_q^8+C_{T,C}V\lambda_q^{10})
++\frac{8T_1\delta}{3VCd}\lambda_q^{10},\\
+a&amp;\geq(9600CD_0V\sqrt{15})^{1/\varepsilon_R}.
+\end{aligned}
+\tag{EX8}
+\]">\[
+\begin{aligned}
+L_{\rho,C}&amp;=\frac2{3V}
+(M_e+2V\lambda_q^8+C_{T,C}V\lambda_q^{10})
++\frac{8T_1\delta}{3VCd}\lambda_q^{10},\\
+a&amp;\geq(9600CD_0V\sqrt{15})^{1/\varepsilon_R}.
+\end{aligned}
+\tag{EX8}
+\]</span>
+<p>The other thresholds in AB12 are retained with <span class="math" data-tex="\(C_H\)">\(C_H\)</span>
+replaced by <span class="math" data-tex="\(C_{H,C}\)">\(C_{H,C}\)</span>. Its positivity argument still
+gives <span class="math" data-tex="\(\rho_{0,C}\geq\delta/(1200V)\)">\(\rho_{0,C}\geq\delta/(1200V)\)</span> when either
+mollified field is nonzero. On the low cutoff support
+<span class="math" data-tex="\(|S_\ell|\leq Cd\sqrt{15}\)">\(|S_\ell|\leq Cd\sqrt{15}\)</span>, hence
+<span class="math" data-tex="\(|S_\ell|/\rho_{0,C}\leq1200VC\sqrt{15}
+\lambda_q^{-\varepsilon_R}\leq1/(8D_0)\)">\(|S_\ell|/\rho_{0,C}\leq1200VC\sqrt{15}
+\lambda_q^{-\varepsilon_R}\leq1/(8D_0)\)</span>, exactly
+by EX8. The quotient-difference proof of AB9 gives the first
+line of EX8 with every denominator retained. All thresholds
+are finite for every fixed positive original volume. At the
+source volume <span class="math" data-tex="\((2\pi)^3\)">\((2\pi)^3\)</span>, <span class="math" data-tex="\(C=100,c_C=c_0\)">\(C=100,c_C=c_0\)</span>, and
+every formula reduces to its original earlier counterpart.</p>
+<h3 id="exercise-4-find-the-precise-smoothing-loss-at-and-away-from-zero">Exercise 4. Find the precise smoothing loss at and away from zero</h3>
+<p>Compute the difference between smoothing the energy
+coefficient and squaring its smoothed square root. Prove
+a second-order bound on intervals of strict positivity,
+and test whether that order holds at an actual zero.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(M_t\rho=\rho*_t\varphi_\ell\)">\(M_t\rho=\rho*_t\varphi_\ell\)</span>.
+Expanding the full double integral gives the exact identity</p>
+<span class="math math-display" data-tex="\[
+M_t\rho(t)-\rho_0(t)
+=\frac12\int\!\int\varphi_\ell(s)\varphi_\ell(r)
+\bigl(\sqrt{\rho(t-s)}-\sqrt{\rho(t-r)}\bigr)^2\,ds\,dr.
+\tag{EX9}
+\]">\[
+M_t\rho(t)-\rho_0(t)
+=\frac12\int\!\int\varphi_\ell(s)\varphi_\ell(r)
+\bigl(\sqrt{\rho(t-s)}-\sqrt{\rho(t-r)}\bigr)^2\,ds\,dr.
+\tag{EX9}
+\]</span>
+<p>Each square term integrates to <span class="math" data-tex="\(M_t\rho\)">\(M_t\rho\)</span>; the cross
+term is <span class="math" data-tex="\(\rho_0\)">\(\rho_0\)</span>. The original kernel has mass one,
+so no volume or time-scale factor is missing. In particular
+the difference is nonnegative.</p>
+<p>On an entire averaging window where <span class="math" data-tex="\(\rho\geq m&gt;0\)">\(\rho\geq m&gt;0\)</span>
+and <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is <span class="math" data-tex="\(C^2\)">\(C^2\)</span>, put
+<span class="math" data-tex="\(\mu_2=\int s^2\varphi(s)\,ds\)">\(\mu_2=\int s^2\varphi(s)\,ds\)</span>,
+<span class="math" data-tex="\(L_1=\sup|\rho&#x27;|\)">\(L_1=\sup|\rho&#x27;|\)</span>, <span class="math" data-tex="\(L_2=\sup|\rho&#x27;&#x27;|\)">\(L_2=\sup|\rho&#x27;&#x27;|\)</span>,
+with the suprema on that same interval. Taylor's formula
+with integral remainder, followed by evenness, gives
+<span class="math" data-tex="\(|M_t\rho(t)-\rho(t)|\leq\ell^2\mu_2 L_2/2\)">\(|M_t\rho(t)-\rho(t)|\leq\ell^2\mu_2 L_2/2\)</span>.
+The derivative of the square root has norm at most
+<span class="math" data-tex="\(L_1/(2\sqrt m)\)">\(L_1/(2\sqrt m)\)</span>. The double second moment is
+<span class="math" data-tex="\(2\ell^2\mu_2\)">\(2\ell^2\mu_2\)</span>. Substituting its full value in EX9
+therefore proves</p>
+<span class="math math-display" data-tex="\[
+0\leq M_t\rho-\rho_0\leq
+\frac{\ell^2\mu_2L_1^2}{4m},\qquad
+|\rho_0(t)-\rho(t)|\leq
+\ell^2\mu_2\left(\frac{L_2}{2}+\frac{L_1^2}{4m}\right).
+\tag{EX10}
+\]">\[
+0\leq M_t\rho-\rho_0\leq
+\frac{\ell^2\mu_2L_1^2}{4m},\qquad
+|\rho_0(t)-\rho(t)|\leq
+\ell^2\mu_2\left(\frac{L_2}{2}+\frac{L_1^2}{4m}\right).
+\tag{EX10}
+\]</span>
+<p>No lower bound at a zero was used or asserted.</p>
+<p>For the actual Lipschitz coefficient <span class="math" data-tex="\(\rho(t)=t_+\)">\(\rho(t)=t_+\)</span>
+on the averaging window about zero, the same prescribed
+positive kernel yields</p>
+<span class="math math-display" data-tex="\[
+\rho_0(0)=\ell\left(\int_0^1\sqrt{s}\,\varphi(s)\,ds\right)^2&gt;0.
+\tag{EX11}
+\]">\[
+\rho_0(0)=\ell\left(\int_0^1\sqrt{s}\,\varphi(s)\,ds\right)^2&gt;0.
+\tag{EX11}
+\]</span>
+<p>This follows by substituting <span class="math" data-tex="\(r=\ell s\)">\(r=\ell s\)</span> in
+<span class="math" data-tex="\(\int\sqrt{(-r)_+}\varphi_\ell(r)\,dr\)">\(\int\sqrt{(-r)_+}\varphi_\ell(r)\,dr\)</span> and using
+evenness. The displayed positive coefficient is independent
+of <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, so there can be no uniform second-order
+bound over such Lipschitz coefficients. This local example
+is precisely the positive-part form of AB8: with <span class="math" data-tex="\(u_q=S_q=0\)">\(u_q=S_q=0\)</span>
+and <span class="math" data-tex="\(e(t)=\delta&#x27;/2+3Vt\)">\(e(t)=\delta&#x27;/2+3Vt\)</span> on a sufficiently small
+interval about zero, its original formula gives
+<span class="math" data-tex="\(I_0=V,H=0,\rho=t_+\)">\(I_0=V,H=0,\rho=t_+\)</span>. The interval can be chosen so
+that <span class="math" data-tex="\(0&lt;e&lt;\delta/100\)">\(0&lt;e&lt;\delta/100\)</span>, since AB13 implies
+<span class="math" data-tex="\(\delta&#x27;/2\leq\delta/800\)">\(\delta&#x27;/2\leq\delta/800\)</span>; hence all zero-field
+energy and implication conditions hold there. Smooth
+nonnegative extensions outside a smaller closed interval
+can be obtained with the explicitly constructed bump, but
+the averaging here uses only that stated interior interval.
+Thus AB10's first-order bound addresses an actual feature
+of the coefficient, rather than a deficiency in its proof.</p>
+<h3 id="exercise-5-receive-the-coefficient-in-the-full-physical-energy">Exercise 5. Receive the coefficient in the full physical energy</h3>
+<p>Use all the constructed amplitudes in the complete
+correction <span class="math" data-tex="\(w=w^{(p)}+w^{(c)}+z\)">\(w=w^{(p)}+w^{(c)}+z\)</span> of lesson 23, with
+old velocity <span class="math" data-tex="\(u_\ell\)">\(u_\ell\)</span>. Derive the exact difference
+between <span class="math" data-tex="\(e\)">\(e\)</span> and the resulting velocity-square integral,
+including every mollification, mean and cross term.</p>
+<p><strong>Solution.</strong> Index a positive pair by <span class="math" data-tex="\((i,\xi)\)">\((i,\xi)\)</span>,
+put <span class="math" data-tex="\(A_{i,\xi}=a_{i,\xi}^2\)">\(A_{i,\xi}=a_{i,\xi}^2\)</span> and
+<span class="math" data-tex="\(\phi_{i,\xi}=\eta_{i,\xi}^2-1\)">\(\phi_{i,\xi}=\eta_{i,\xi}^2-1\)</span>. Use the full
+ordered nonopposite tensor and scalar <span class="math" data-tex="\(Q_O\)">\(Q_O\)</span> from
+OS1–OS3. If the same family direction recurs at distinct
+nonadjacent indices, its two amplitudes have zero product
+by SC8. Adjacent indices have distinct rational families.
+Thus only the actual same-index opposite pairs contribute
+to the principal tensor; its trace and AB17 give</p>
+<span class="math math-display" data-tex="\[
+\int|w^{(p)}|^2
+=3\sum_{i\geq0}\rho_i\int\chi_i^2
++2\sum_{i,\xi\in\Lambda_i^+}\int A_{i,\xi}\phi_{i,\xi}
++2\int Q_O.
+\tag{EX12}
+\]">\[
+\int|w^{(p)}|^2
+=3\sum_{i\geq0}\rho_i\int\chi_i^2
++2\sum_{i,\xi\in\Lambda_i^+}\int A_{i,\xi}\phi_{i,\xi}
++2\int Q_O.
+\tag{EX12}
+\]</span>
+<p>All sums are finite by SC11. Taking the trace of
+<span class="math" data-tex="\(\sum_\xi A_{i,\xi}(I-\xi\otimes\xi)
+=\chi_i^2(\rho_iI-S_\ell)\)">\(\sum_\xi A_{i,\xi}(I-\xi\otimes\xi)
+=\chi_i^2(\rho_iI-S_\ell)\)</span> proves
+<span class="math" data-tex="\(2\sum_\xi A_{i,\xi}=3\rho_i\chi_i^2\)">\(2\sum_\xi A_{i,\xi}=3\rho_i\chi_i^2\)</span>, since
+<span class="math" data-tex="\(S_\ell\)">\(S_\ell\)</span> is trace-free. The centered terms retain the
+same factor two; the full nonopposite trace is <span class="math" data-tex="\(2Q_O\)">\(2Q_O\)</span>.
+This proves EX12 with the original physical integral.</p>
+<p>Set <span class="math" data-tex="\(X=D-H-\delta&#x27;/2\)">\(X=D-H-\delta&#x27;/2\)</span> and
+<span class="math" data-tex="\(\Delta_{\rm moll}=\int|u_q|^2-\int|u_\ell|^2\)">\(\Delta_{\rm moll}=\int|u_q|^2-\int|u_\ell|^2\)</span>.
+The positive-part identity <span class="math" data-tex="\(X-X_+=\min\{X,0\}\)">\(X-X_+=\min\{X,0\}\)</span>
+and <span class="math" data-tex="\(3I_0\rho=X_+\)">\(3I_0\rho=X_+\)</span> first give
+<span class="math" data-tex="\(D-H-3I_0\rho_0=\delta&#x27;/2+\min\{X,0\}
+                         +3I_0(\rho-\rho_0)\)">\(D-H-3I_0\rho_0=\delta&#x27;/2+\min\{X,0\}
+                         +3I_0(\rho-\rho_0)\)</span>.
+Expanding the complete square now proves</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+e-\int|u_\ell+w|^2
+={}&amp;\delta&#x27;/2+\min\{X,0\}+3I_0(\rho-\rho_0)
++\Delta_{\rm moll}\\
+&amp;-2\sum_{i,\xi\in\Lambda_i^+}\int A_{i,\xi}\phi_{i,\xi}
+-2\int Q_O-2\int u_\ell\cdot w\\
+&amp;-2\int w^{(p)}\cdot w^{(c)}-2\int w^{(p)}\cdot z
+-\int|w^{(c)}|^2-2\int w^{(c)}\cdot z-\int|z|^2.
+\end{aligned}
+\tag{EX13}
+\]">\[
+\begin{aligned}
+e-\int|u_\ell+w|^2
+={}&amp;\delta&#x27;/2+\min\{X,0\}+3I_0(\rho-\rho_0)
++\Delta_{\rm moll}\\
+&amp;-2\sum_{i,\xi\in\Lambda_i^+}\int A_{i,\xi}\phi_{i,\xi}
+-2\int Q_O-2\int u_\ell\cdot w\\
+&amp;-2\int w^{(p)}\cdot w^{(c)}-2\int w^{(p)}\cdot z
+-\int|w^{(c)}|^2-2\int w^{(c)}\cdot z-\int|z|^2.
+\end{aligned}
+\tag{EX13}
+\]</span>
+<p>For a complete quantitative receiver, define the actual
+first moment <span class="math" data-tex="\(\mathfrak m_1=\int|(y,s)|\mathcal K(y,s)\,dy\,ds\)">\(\mathfrak m_1=\int|(y,s)|\mathcal K(y,s)\,dy\,ds\)</span>.
+The fundamental theorem on the original space-time segment
+gives <span class="math" data-tex="\(\|u_q-u_\ell\|_\infty
+\leq\ell\mathfrak m_1\|D_{x,t}u_q\|_\infty\)">\(\|u_q-u_\ell\|_\infty
+\leq\ell\mathfrak m_1\|D_{x,t}u_q\|_\infty\)</span>.
+Both velocity suprema are at most <span class="math" data-tex="\(\lambda_q^4\)">\(\lambda_q^4\)</span>.
+Factoring the difference of squares proves
+<span class="math" data-tex="\( |\Delta_{\rm moll}|\leq2V\ell\mathfrak m_1\lambda_q^8\)">\( |\Delta_{\rm moll}|\leq2V\ell\mathfrak m_1\lambda_q^8\)</span>.
+Together with AB10, Cauchy–Schwarz and EX13 this yields</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\left|e-\int|u_\ell+w|^2-\delta&#x27;/2-\min\{X,0\}\right|
+\\ \begin{aligned}\leq{}&amp;3VR_t\ell L_\rho+2V\ell\mathfrak m_1\lambda_q^8\\
+&amp;+2\sum_{i,\xi\in\Lambda_i^+}\left|\int A_{i,\xi}\phi_{i,\xi}\right|
++2\left|\int Q_O\right|+2\|u_\ell\|_2\|w\|_2\\
+&amp;+2\|w^{(p)}\|_2\|w^{(c)}\|_2+2\|w^{(p)}\|_2\|z\|_2
+\\ &amp;+\|w^{(c)}\|_2^2+2\|w^{(c)}\|_2\|z\|_2+\|z\|_2^2.
+\end{aligned}\end{gathered}
+\tag{EX14}
+\]">\[
+\begin{gathered}
+\left|e-\int|u_\ell+w|^2-\delta&#x27;/2-\min\{X,0\}\right|
+\\ \begin{aligned}\leq{}&amp;3VR_t\ell L_\rho+2V\ell\mathfrak m_1\lambda_q^8\\
+&amp;+2\sum_{i,\xi\in\Lambda_i^+}\left|\int A_{i,\xi}\phi_{i,\xi}\right|
++2\left|\int Q_O\right|+2\|u_\ell\|_2\|w\|_2\\
+&amp;+2\|w^{(p)}\|_2\|w^{(c)}\|_2+2\|w^{(p)}\|_2\|z\|_2
+\\ &amp;+\|w^{(c)}\|_2^2+2\|w^{(c)}\|_2\|z\|_2+\|z\|_2^2.
+\end{aligned}\end{gathered}
+\tag{EX14}
+\]</span>
+<p>The centered and nonopposite integrals have the complete
+frequency-gap bounds of lesson 23, EX14–EX15, applied to
+these very amplitudes; AB2–AB24 provide all their derivatives.
+EX14 is a full finite estimate, not an assertion that its
+right side already closes the infinite iteration. In
+particular the old-velocity cross term and the case
+<span class="math" data-tex="\(X&lt;0\)">\(X&lt;0\)</span> have not been discarded. The next velocity and
+residual calculation must receive each displayed term.</p>
+<h2 id="receiving-the-full-iteration">Receiving the full iteration</h2>
+<p>The actual amplitudes now have complete support, tensor,
+smoothness and derivative proofs. EX13–EX14 receive them
+in the full energy identity. The next calculation must
+bound every actual velocity, corrector and original stress
+term, then prove the parameter inequalities and the complete
+infinite construction. In particular the old-velocity cross
+term and the low-energy case remain visible.</p>
+<p>The separate Albritton–Brué–Colombo, Alpöge–Buckmaster,
+OpenAI and workbench constructions retain their own original
+equations, domains, forcing and regularity requirements.</p>
+</article><nav aria-label="Lesson sequence"><a href="NS-FLUID-23.html">Previous lesson</a></nav></main><footer>Mathematical text: CC0 1.0. Cited works and reader software retain their respective terms.</footer></body></html>

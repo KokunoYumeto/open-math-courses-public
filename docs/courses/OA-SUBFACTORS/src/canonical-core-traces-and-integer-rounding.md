@@ -4,7 +4,7 @@ Deleting a finite matrix factor from a core changes the Jones projection and enl
 
 We prove the multiplier for both canonical algebras, identify their centers as actual operator algebras, and give the full integer-rounding estimate when the relevant central projections commute with the tested unitaries. In particular this proves the rounding conclusion when the smaller core is a factor. The general nonfactor case still requires a justified localization argument. [Full support from a factorial larger core](larger-factor-central-balancing.md), Theorem 58.7, separately proves full-support rounding when the larger core is a factor, by central balancing and trim-and-fill construction.
 
-The preceding lessons supply [relative tensor absorption](relative-tensor-absorption.md), [realization of a prescribed finite core complement](transporting-a-core-through-a-tensor-factor.md), [finite bounded bases](finite-bases-and-positive-index.md), and [the Jones-projection tail inclusions](tail-inclusions.md). We reuse Lemmas 1.3 and 1.5, Theorems 5.2 and 5.5, Corollary 5.4, and Theorem 6.2 of Traces on von Neumann algebras: corner centers, finite trace factorization, projection comparison, and normal trace extension from a full corner. Type II projection halving is Proposition 13.3 of Projections and types of von Neumann algebras. Positive densities on the abelian center use the tracial \(L^1\) identification declared in lesson 3. These general prerequisites are not proved in this lesson.
+The preceding lessons supply [relative tensor absorption](relative-tensor-absorption.md), [realization of a prescribed finite core complement](transporting-a-core-through-a-tensor-factor.md), [finite bounded bases](finite-bases-and-positive-index.md), and [the Jones-projection tail inclusions](tail-inclusions.md). Lemma 52.2 and Proposition 52.2a below prove the full-corner centers, normal canonical expectation and normal trace extension from a full corner at their actual domains. Projection comparison and type II projection halving use [Projections and types of von Neumann algebras](../../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html), including Proposition 13.3. Finite central trace factorization and positive densities on the abelian center remain the tracial \(L^1\) prerequisites declared in lesson 3; their use in the later rounding argument is separate from the canonical expectation proved here.
 
 ## Why the core square is nondegenerate
 
@@ -66,7 +66,7 @@ On \(H=L^2(M,\tau)\), let \(e=e_R^M\) and put
 \tag{52.3}
 \]
 
-By the nondegenerate commuting-square construction, \(\mathcal A\) is the canonical copy of \(\langle N,e_S^N\rangle\). Here is also the direct corner information needed below.
+Proposition 52.2a below identifies \(\mathcal A\) normally with \(\langle N,e_S^N\rangle\) by physical reduction. We first prove the corner information and full central support that this identification uses.
 
 **Lemma 52.2 — center and finite-projection trace conventions.** The projection \(e\) has full central support in both algebras, and
 
@@ -114,6 +114,257 @@ Normal trace extension from the full corners gives the scalar traces. The restri
 For finite-trace \(q\), \(z\mapsto\operatorname{Tr}_{\mathcal C}(qz)\) is a normal positive functional on the abelian center. Its density relative to the faithful \(\nu_{\mathcal C}\) gives (52.7). Equality and inequalities of these densities can be tested against all positive central \(z\). Additivity, central cuts, and invariance under equivalence follow from the corresponding scalar trace identities. \(\square\)
 
 For \(z\in Z(S)\) outside \(Z(R)\), its lift to \(Z(\mathcal A)\) consequently cannot be replaced by \(J_Mz^*J_M\). The latter operator has no reason to belong to \(\mathcal A\) or have the required \(e\)-corner.
+
+## The canonical expectation is a physical reduction
+
+The expected canonical pair can be constructed directly from the common bounded basis, including when the core has a center. We use the common basis of Lemma 52.1 and the full corners and full central support proved in Lemma 52.2. The full-corner trace construction needed here is included below; the same finite-partial-sum argument is also [Lemma 1.2a, BC1–BC4](projection-and-basic-construction.md). The finite physical expectations and their tracial Hilbert projections are proved in [M1–M9](finite-traces-and-jones-projections.md). The expectation will be the composition of an actual physical compression and a normal inverse map.
+
+**Proposition 52.2a — the normal expected canonical core pair.** Let \(N\subsetneq M\) be a finite-index inclusion of II₁ factors with normalized physical trace \(\tau\). Let \(S\subset R\) be its inherited-trace core for any ordinary tunnel, as in Lemma 52.1. On \(H=L^2(M,\tau)\), put
+
+\[
+ e=e_R^M,\qquad p=e_N^M,\qquad K=pH=L^2(N,\tau),
+ \qquad \mathcal A=\langle N,e\rangle\subset\mathcal B=\langle M,e\rangle.
+ \tag{52.7a}
+\]
+
+There is a normal faithful conditional expectation
+
+\[
+ E_{\mathcal A}:\mathcal B\longrightarrow\mathcal A,
+ \qquad E_{\mathcal A}|_M=E_N,
+ \qquad \operatorname{Tr}_{\mathcal A}(E_{\mathcal A}(T))
+       =\operatorname{Tr}_{\mathcal B}(T)\quad(T\in\mathcal B_+).
+ \tag{52.7b}
+\]
+
+The canonical traces are the faithful normal semifinite traces normalized on the full corners by
+\(\operatorname{Tr}_{\mathcal A}(se)=\tau(s)\) and
+\(\operatorname{Tr}_{\mathcal B}(re)=\tau(r)\).
+The expectation is unital and completely positive, fixes \(\mathcal A\), and is \(\mathcal A\)-bimodular. It satisfies
+
+\[
+ E_{\mathcal A}(re)=E_S(r)e\qquad(r\in R).
+ \tag{52.7c}
+\]
+
+No factoriality of \(S\) or \(R\), separability, sigma-finiteness of the canonical algebras, or finite ambient index \([M:R]\) is required. The reducing projection \(p\) belongs to \(\mathcal A'\subset B(H)\); its membership in \(\mathcal A\) or \(\mathcal B\) is neither assumed nor needed.
+
+**Proof.** Lemma 52.1 gives \(E_N|_R=E_S\). As orthogonal projections on the physical tracial Hilbert space,
+
+\[
+ pe=e_S^M=ep,\qquad e|_K=e_S^N.
+ \tag{52.7d}
+\]
+
+Indeed \(E_NE_R=E_S\), since \(S\subset R\); taking Hilbert-space adjoints gives the other order. The left copy of \(N\) reduces \(K\), so \(p\) commutes with both generators \(N,e\) of \(\mathcal A\). Thus restriction defines a unital normal *-homomorphism
+
+\[
+ \Phi:\mathcal A\longrightarrow B(K),\qquad
+ \Phi(a)=pap|_K,
+ \qquad \Phi(n)=n,\quad \Phi(e)=e_S^N.
+ \tag{52.7e}
+\]
+
+Its range is contained in
+\(\mathcal A_{\mathrm{std}}=\langle N,e_S^N\rangle\) on \(K\): compress the ultraweakly dense spanning algebra \(NeN\) from Lemma 52.2. On the full corner, the same lemma gives
+
+\[
+ e\mathcal A e=Se,\qquad \Phi(se)=se_S^N.
+ \tag{52.7f}
+\]
+
+The latter map is faithful: \(se_S^N\widehat1=\widehat s\). The kernel of the normal homomorphism \(\Phi\) is an ultraweakly closed two-sided ideal, hence \(z\mathcal A\) for a central projection \(z\). If \(\Phi(z)=0\), then \(\Phi(ze)=0\); faithfulness on \(e\mathcal A e\) gives \(ze=0\). Since \(e\) has full central support in \(\mathcal A\), \(z=0\). Therefore \(\Phi\) is faithful.
+
+Its image is a von Neumann algebra. To retain the topological point explicitly, faithfulness makes \(\Phi\) isometric, and normality makes its map on the ultraweakly compact unit ball of \(\mathcal A\) continuous. Its image is the entire unit ball of its range and is ultraweakly compact, hence closed. The weak closure of the range has the same unit ball, by the unit-ball density form of the bicommutant theorem. Thus the range is weakly closed. It contains the left \(N\) and \(e_S^N\), and is therefore exactly \(\mathcal A_{\mathrm{std}}\).
+
+The inverse is normal as well. For a bounded increasing positive net \(b_\alpha\uparrow b\) in \(\mathcal A_{\mathrm{std}}\), let \(a=\sup_\alpha\Phi^{-1}(b_\alpha)\) in \(\mathcal A\). Normality of \(\Phi\) gives \(\Phi(a)=b\), so
+\(\Phi^{-1}(b)=\sup_\alpha\Phi^{-1}(b_\alpha)\).
+This proves normality without a countability assumption.
+
+We next prove that compression of every operator in \(\mathcal B\) lands in this range. Define the normal UCP compression
+
+\[
+ C:\mathcal B\longrightarrow B(K),\qquad C(T)=pTp|_K.
+ \tag{52.7g}
+\]
+
+For \(r\in R\) and \(n\in N\), (52.7d) and physical expectation bimodularity give
+
+\[
+ C(re)\widehat n
+ =\widehat{E_N(rE_S(n))}
+ =\widehat{E_S(r)E_S(n)}.
+\]
+
+Consequently \(C(re)=E_S(r)e_S^N\). Let \(a_1,\ldots,a_t\in R\) be the finite common partial right basis of Lemma 52.1. For any \(x,y\in M\), its right expansion and its adjoint expansion give
+
+\[
+ x=\sum_i n_i a_i^*,\quad n_i=E_N(xa_i)\in N,
+ \qquad y=\sum_j a_j m_j,\quad m_j=E_N(a_j^*y)\in N.
+\]
+
+Every \(a_i\) commutes with \(e\), since left multiplication by \(R\) reduces \(L^2(R)\). Hence, writing \(r_{ij}=a_i^*a_j\in R\),
+
+\[
+ xey=\sum_{i,j} n_i r_{ij}e m_j,\qquad
+ C(xey)=\sum_{i,j}n_i E_S(r_{ij})e_S^N m_j
+          \in\mathcal A_{\mathrm{std}}.
+ \tag{52.7h}
+\]
+
+These are finite sums of bounded operators. The spanning algebra \(MeM\) is ultraweakly dense in \(\mathcal B\), by the basic-construction ideal argument used in Lemma 52.2. This remains true at infinite \([M:R]\): its range contains \(M\widehat1\), dense in \(H\), and its contractive approximate identity converges strongly to one. Since \(C\) is normal and \(\mathcal A_{\mathrm{std}}\) is ultraweakly closed, (52.7h) proves
+\(C(\mathcal B)\subset\mathcal A_{\mathrm{std}}\).
+
+We can therefore define the actual expectation by
+
+\[
+ \boxed{\ E_{\mathcal A}=\Phi^{-1}\circ C:
+                  \mathcal B\longrightarrow\mathcal A.\ }
+ \tag{52.7i}
+\]
+
+Both maps have the displayed actual operator domains. The normal *-isomorphism \(\Phi^{-1}\) and the normal compression \(C\) make the composite normal and UCP. For \(a\in\mathcal A\), \(C(a)=\Phi(a)\), so it fixes \(\mathcal A\). Because \(p\) commutes with \(\mathcal A\),
+\(C(aTb)=\Phi(a)C(T)\Phi(b)\); this proves bimodularity directly. For \(x\in M\), compression on \(K\) is its physical expectation:
+\(C(x)\widehat n=\widehat{E_N(x)n}\).
+Since \(\Phi\) fixes the left \(N\), the restriction is exactly \(E_N\). The formula for \(C(re)\) also proves (52.7c).
+
+We first construct the full-corner traces used in (52.7b). Let \(\mathcal C\) be a von Neumann algebra with full central support projection \(e\), whose corner \(e\mathcal C e\) carries a faithful normal finite trace \(t\). Choose a maximal family of partial isometries \(v_i\in\mathcal C e\) with \(v_i^*v_i\le e\) and mutually orthogonal finals \(q_i=v_iv_i^*\). Then \(\sum_iq_i=1\). Otherwise the nonzero remainder \(q\) has \(e\mathcal C q\ne0\): if this corner were zero, \(q\mathcal C e\mathcal C=0\), contradicting full central support of \(e\). The adjoint of the polar partial isometry of a nonzero element in \(e\mathcal C q\) would extend the family. All sums mean nets of finite partial sums, and the family can have any cardinality.
+
+For \(a\in\mathcal C_+\), define
+
+\[
+ \operatorname{Tr}_{\mathcal C}(a)
+       =\sup_{F\text{ finite}}\sum_{i\in F}t(v_i^*av_i).
+ \tag{52.7j.1}
+\]
+
+Additivity and positive homogeneity hold term by term. For a bounded increasing positive net \(a_\alpha\uparrow a\), normality of each corner functional and commutation of the two scalar suprema give
+\(\operatorname{Tr}_{\mathcal C}(a)=\sup_\alpha\operatorname{Tr}_{\mathcal C}(a_\alpha)\).
+To check traciality for \(x\in\mathcal C\), put \(z_{ji}=v_j^*xv_i\in e\mathcal C e\). Insert the increasing sums of the \(q_j\) between \(x^*\) and \(x\), and use normality of \(t\). This gives
+
+\[
+\begin{aligned}
+ \operatorname{Tr}_{\mathcal C}(x^*x)
+  &=\sum_{i,j}t(z_{ji}^*z_{ji})\\
+  &=\sum_{j,i}t(z_{ji}z_{ji}^*)
+   =\operatorname{Tr}_{\mathcal C}(xx^*).
+\end{aligned}
+ \tag{52.7j.2}
+\]
+
+All double sums have nonnegative terms, so reordering requires no countability or finite-value assumption. Thus this is a normal trace weight. If its value on \(a\ge0\) is zero, faithfulness of \(t\) gives \(a^{1/2}v_i=0\) for every \(i\); their final sum is one, so \(a=0\).
+
+For \(a\in(e\mathcal C e)_+\), the operators \(a^{1/2}v_i\) lie in the corner. Corner traciality gives
+\(t(v_i^*av_i)=t(a^{1/2}q_i a^{1/2})\), and normality of \(t\) gives \(\operatorname{Tr}_{\mathcal C}(a)=t(a)\). In particular, for finite \(F\),
+
+\[
+ \operatorname{Tr}_{\mathcal C}(q_F)
+   =\sum_{i\in F}t(v_i^*v_i)\le |F|t(e)<\infty,
+ \qquad q_F=\sum_{i\in F}q_i.
+ \tag{52.7j.3}
+\]
+
+For every bounded \(a\ge0\), the positive operators \(a^{1/2}q_Fa^{1/2}\) increase to \(a\), and their traces equal those of \(q_Faq_F\), which are at most \(\|a\|\operatorname{Tr}_{\mathcal C}(q_F)<\infty\). This proves semifiniteness in its supremum formulation. Finally, every normal trace weight \(T\) restricting to \(t\) on the corner satisfies
+
+\[
+ T(a)=\sum_iT(a^{1/2}q_i a^{1/2})
+      =\sum_iT(v_i^*av_i)=\sum_i t(v_i^*av_i).
+ \tag{52.7j.4}
+\]
+
+It is therefore the weight (52.7j.1). This proves uniqueness and independence of the chosen family. Apply this complete construction to \(e\mathcal A e=Se\) with \(t(se)=\tau_S(s)\), and to \(e\mathcal B e=Re\) with \(t(re)=\tau_R(r)\), to obtain the two canonical faithful normal semifinite traces. The restriction of the latter trace to \(\mathcal A\) is also the former trace: a family with finals summing to one chosen in \(\mathcal A e\) can be used in \(\mathcal B e\), and its diagonal corner values on \(\mathcal A\) agree. This proves the restriction identity without assuming the desired expectation.
+
+It remains to prove that the expectation preserves these entire traces. Choose such a family \(v_i\in\mathcal A e\),
+
+\[
+ v_i^*v_i\le e,\qquad q_i=v_iv_i^*\text{ mutually orthogonal},
+ \qquad\sum_i q_i=1.
+\]
+
+For finite \(F\), \(q_F=\sum_{i\in F}q_i\) has finite trace, at most \(|F|\), in either canonical algebra. The same family also lies in \(\mathcal B e\) and its final sum is still one. Thus the proved formula (52.7j.1) applies to both canonical algebras with this same family.
+
+For \(T\in\mathcal B_+\), the full corner \(e\mathcal B e=Re\) gives unique \(r_i\in R_+\) such that
+\(v_i^*Tv_i=r_ie\).
+Bimodularity and (52.7c) imply
+\(v_i^*E_{\mathcal A}(T)v_i=E_S(r_i)e\).
+The two full-corner trace formulas now read
+
+\[
+\begin{aligned}
+ \operatorname{Tr}_{\mathcal B}(T)
+    &=\sup_{F\text{ finite}}\sum_{i\in F}\tau_R(r_i),\\
+ \operatorname{Tr}_{\mathcal A}(E_{\mathcal A}(T))
+    &=\sup_{F\text{ finite}}\sum_{i\in F}\tau_S(E_S(r_i)).
+\end{aligned}
+ \tag{52.7j}
+\]
+
+Every summand agrees because the inherited physical expectation \(E_S:R\to S\) preserves \(\tau\). Their suprema agree, including the value infinity. These formulas concern nets of finite **scalar sums**. One need not, and does not, claim that \(q_FTq_F\) is increasing. The normal trace formula instead uses the increasing positive net \(T^{1/2}q_FT^{1/2}\), as proved above. This proves (52.7b) for the whole positive cone. If \(E_{\mathcal A}(T)=0\) for \(T\ge0\), trace preservation and faithfulness of \(\operatorname{Tr}_{\mathcal B}\) give \(T=0\). Thus the expectation is faithful. \(\square\)
+
+The full-corner center comparison used in Lemma 52.2 has an equally direct form. For \(c\in Z(e\mathcal C e)\), define
+\(z=\sum_i v_i c v_i^*\).
+The terms have orthogonal final supports, so their finite sums are bounded by \(\|c\|\) and converge strongly and strong-adjointly. For \(x\in\mathcal C\), the matrix coefficient \(v_i^*xv_j\) lies in \(e\mathcal C e\), and hence commutes with \(c\). The identities
+\(v_i^*zxv_j=c(v_i^*xv_j)=(v_i^*xv_j)c=v_i^*xzv_j\)
+show that \(z\) commutes with every \(x\), since the \(q_i\) sum to one. Moreover \(ev_i\in e\mathcal C e\), so
+\(eze=\sum_i c\,eq_i e=c\).
+A central operator with zero \(e\)-corner annihilates \(e\), and fullness makes it zero. Thus compression \(Z(\mathcal C)\to Z(e\mathcal C e)\) has this bounded inverse and is a *-isomorphism. Compression is normal, and its inverse preserves bounded increasing suprema by the order argument used for \(\Phi^{-1}\), so both maps are normal. This proves the full-corner center comparison.
+
+The proof uses only the finite common basis, the physical commuting expectations and the full corners. It therefore applies also to any finite commuting square having that same common basis, and to the higher actual core squares with their finite common bases. It provides the normal expected pair needed before the relative Følner criterion and the finite expected-tower construction are applied.
+
+### A concrete nonfactor canonical square
+
+Let \(P\) be any II₁ factor, let \(n,r\ge2\), and use normalized matrix traces. In
+\(M=P\bar\otimes\operatorname{Mat}_n\bar\otimes\operatorname{Mat}_r\), set
+
+\[
+\begin{aligned}
+ N&=P\bar\otimes\operatorname{Mat}_n\bar\otimes1_r,&
+ R&=P\bar\otimes D_n\bar\otimes\operatorname{Mat}_r,\\
+ S&=P\bar\otimes D_n\bar\otimes1_r,
+\end{aligned}
+ \tag{52.7k}
+\]
+
+where \(D_n\) is the diagonal algebra. This is an actual nondegenerate commuting square with a common finite basis: the elements
+\(\sqrt r\,1_P\otimes1_n\otimes E_{ab}\)
+are a right basis for both \(M/N\) and \(R/S\).
+It is used here as a canonical-square example. Its presentation does not assert an ordinary-tunnel core realization for arbitrary \(P\).
+
+Suppressing the standard \(P\)-Hilbert factor, identify
+\(L^2(\operatorname{Mat}_n)\) with its left row coordinate and right column coordinate. The projection onto \(D_n\) is the sum of the coordinate projections onto \(E_{jj}\). Thus
+
+\[
+ \mathcal A\cong P\bar\otimes\bigoplus_{j=1}^n\operatorname{Mat}_n,
+ \qquad
+ \mathcal B\cong P\bar\otimes\bigoplus_{j=1}^n
+       (\operatorname{Mat}_n\otimes\operatorname{Mat}_r).
+ \tag{52.7l}
+\]
+
+Indeed the left \(\operatorname{Mat}_n\) and the projection onto \(D_n\) generate exactly
+\(\operatorname{Mat}_n\otimes D_n^{\mathrm{op}}\); adding the left \(\operatorname{Mat}_r\) gives the larger algebra. Both centers therefore contain the genuine \(D_n\). On each column summand, \(e\) is \(E_{jj}\) in \(\mathcal A\) and \(E_{jj}\otimes1_r\) in \(\mathcal B\). The expectation and canonical traces are
+
+\[
+\begin{aligned}
+ E_{\mathcal A}&=\mathrm{id}_P\otimes
+           \bigoplus_{j=1}^n(\mathrm{id}_{\operatorname{Mat}_n}\otimes\mathrm{tr}_r),\\
+ \operatorname{Tr}_{\mathcal A}&=\tau_P\otimes
+                      \frac1n\sum_{j=1}^n\operatorname{Tr}_n,\\
+ \operatorname{Tr}_{\mathcal B}&=\tau_P\otimes
+                      \frac1{nr}\sum_{j=1}^n\operatorname{Tr}_{nr}.
+\end{aligned}
+ \tag{52.7m}
+\]
+
+These normalizations give both traces of \(e\) equal to one, and both traces of the full unit equal to \(n\). They agree on every \(\mathcal A\)-element embedded by tensoring with \(1_r\). The physical algebra \(M\) is represented by the same left operator on each column summand, so the restriction of this blockwise expectation is the original physical \(E_N\).
+
+In this example \(p=1\otimes1\otimes e_{\mathbb C}^{\operatorname{Mat}_r}\) reduces \(\mathcal A\). For \(r\ge2\), it does not belong to \(\mathcal B\). If it did, restriction to one column summand followed by normal state slices on \(P\) and the left \(\operatorname{Mat}_n\) would put \(e_{\mathbb C}\) in the left \(\operatorname{Mat}_r\)-algebra. A nonzero left \(\operatorname{Mat}_r\)-projection on \(L^2(\operatorname{Mat}_r)\) has rank a positive multiple of \(r\), whereas \(e_{\mathbb C}\) has rank one. The construction above uses this genuine external reduction, rather than a corner projection presumed to lie in the canonical algebras.
+
+![The physical reduction and the full-corner trace comparison](figures/normal-core-extension-v28.png)
+
+*Figure 52.2a.* The top row gives the actual operator domains in (52.7a), (52.7e), (52.7g) and (52.7i). The blue projection \(p\) is a reduction in \(\mathcal A'\); \(e\) belongs to both canonical algebras and has full central support. The middle row records \(e\mathcal A e=Se\), \(e\mathcal B e=Re\) and the physical expectation \(E_S\), which prove the two full trace values in (52.7j). The lower row gives the nonfactor square (52.7k)–(52.7m) at \(n=2,r=3\): each small block has trace coefficient \(1/2\), each large block \(1/6\), and the two ranks of \(e\) are one and three. Boxes and arrows describe algebras and maps, not metric geometry or trace-sized areas. [Reproducible figure source](figures/normal-core-extension-v28.py).
+
+The human context is Sorin Popa, [*Classification of amenable subfactors of type II*](https://doi.org/10.1007/BF02392646), *Acta Mathematica* 172 (1994), 163–255, Example 2.3.3(a), for the canonical core representation. The explicit normal compression and full-corner trace argument above uses the earlier programme proofs at their stated domains. This proposition and diagram are dedicated to CC0 1.0.
 
 ## The old and new constructions inside one tensor model
 

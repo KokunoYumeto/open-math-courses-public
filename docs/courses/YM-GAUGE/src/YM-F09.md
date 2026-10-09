@@ -2185,3 +2185,37 @@ dynamic Gaussian calculation (HD.31)–(HD.35), retaining its
 curvature, Gauss expression and physical energy factors.
 The estimates for physical-time evolution and the general
 physical global argument remain in progress.
+
+
+## 16. Ordinary smoothing and endpoint bounds in physical time
+
+[Ordinary heat smoothing and physical-time bounds](../classical-potential-estimates.html)
+proves every ordered ordinary smoothing estimate for the original
+DeTurck potential. It then uses the exact endpoint gauge and
+conserved physical energy to construct explicit polynomials
+bounding the endpoint potential during physical evolution.
+Equations (HP.1)–(HP.28) retain all derivative placements,
+component factors, physical units and the finite heat endpoint.
+
+The complete Gaussian calculation (HP.29)–(HP.34), its figure,
+and eight fully solved exercises display the norms and their
+finite weighted energy identities. The remaining heat-curvature
+and wave estimates and the physical global continuation proof
+remain in progress.
+
+
+## 17. Gauss law and the complete fixed-time heat estimates
+
+[Gauss law, heat curvature and fixed-time estimates](../classical-fixed-time-estimates.html)
+proves the improved temporal heat-curvature bound from the
+original Gauss zero datum, then constructs every ordinary
+derivative estimate by backward integration from the actual
+heat endpoint. The complete physical derivative calculation
+retains all four terms, including the temporal connection.
+
+Equations (HT.1)–(HT.53) supply the fixed-time bounds used
+by the physical evolution argument. The exact Gaussian
+comparison and the extension retaining a nonzero initial
+Gauss datum are (HT.54)–(HT.59); eight solved exercises
+follow. The remaining wave estimates, physical continuation
+and main exercise set are still in progress.

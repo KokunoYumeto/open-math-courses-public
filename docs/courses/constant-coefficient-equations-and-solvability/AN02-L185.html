@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Angular distributions and their full Fourier transforms</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L184.html">Previous lesson</a> · <a href="#2-test-frequency-before-pairing-direction">The formula</a> · <a href="#complete-proof">Complete proof</a> · <a href="#5-complete-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="angular-distributions-and-their-full-fourier-transforms">Angular distributions and their full Fourier transforms</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>An angular Fourier formula is useful only if its integral has a precise meaning. An angular distribution cannot be multiplied pointwise by a delta distribution. Instead, test the frequency variable first. The resulting hyperplane average is a smooth function of direction, so the angular distribution can act on it.</p>
+<p>Basic references are <span class="unlinked">Homogeneous extensions and angular moments</span>, <span class="unlinked">Finite parts of singular powers</span>, <span class="unlinked">Complex powers at a boundary</span>, and <span class="unlinked">Schwartz functions and Fourier inversion</span>. Their exact extension, finite-part and Fourier proofs are the prerequisites. The <a href="AN02-L185.html#complete-proof">complete proof</a> proves the remaining hyperplane-average argument and the identity on all Schwartz tests.</p>
+<h2 id="1-two-radial-directions-determine-the-constant">1. Two radial directions determine the constant</h2>
+<p>Suppose <span class="math" data-index="0" data-tex="\(u\)">\(u\)</span> is a tempered distribution in <span class="math" data-index="1" data-tex="\(n\)">\(n\)</span> variables, homogeneous of degree <span class="math" data-index="2" data-tex="\(-n-k\)">\(-n-k\)</span>, where <span class="math" data-index="3" data-tex="\(k\)">\(k\)</span> is any integer. Assume</p>
+<span class="math math-display" id="learner-eq-1" data-index="4" data-tex="\[
+ u(-x)=(-1)^{k+1}u(x).
+ \tag{1}
+\]">\[
+ u(-x)=(-1)^{k+1}u(x).
+ \tag{1}
+\]</span>
+<p>Write <span class="math" data-index="5" data-tex="\(T\)">\(T\)</span> for its angular distribution on the unit sphere. For ordinary homogeneous functions, <span class="math" data-index="6" data-tex="\(T\)">\(T\)</span> is integration against the restriction of <span class="math" data-index="7" data-tex="\(u\)">\(u\)</span>, with the usual Euclidean surface measure.</p>
+<p>The extension theorem fixes the value at the origin:</p>
+<span class="math math-display" id="learner-eq-2" data-index="8" data-tex="\[
+ \langle u,\psi\rangle
+   =\frac12T\left(\omega\longmapsto
+                       \langle P_k(r),\psi(r\omega)\rangle\right),
+ \qquad
+ P_k=
+ \begin{cases}
+  \operatorname{pf}(r^{-k-1}),&amp;k\geq0,\\
+  r^{-k-1},&amp;k&lt;0.
+ \end{cases}
+ \tag{2}
+\]">\[
+ \langle u,\psi\rangle
+   =\frac12T\left(\omega\longmapsto
+                       \langle P_k(r),\psi(r\omega)\rangle\right),
+ \qquad
+ P_k=
+ \begin{cases}
+  \operatorname{pf}(r^{-k-1}),&amp;k\geq0,\\
+  r^{-k-1},&amp;k&lt;0.
+ \end{cases}
+ \tag{2}
+\]</span>
+<p>The radial line runs in both directions. The negative half has one parity sign from <span class="math" data-index="9" data-tex="\(P_k\)">\(P_k\)</span> and the same sign from <span class="math" data-index="10" data-tex="\(T\)">\(T\)</span>. They cancel. Thus the full line counts every positive radial contribution twice, and (2) must contain <span class="math" data-index="11" data-tex="\(1/2\)">\(1/2\)</span>.</p>
+<p>With <span class="math" data-index="12" data-tex="\(\widehat\phi(\xi)=\int e^{-ix\cdot\xi}\phi(x)\,dx\)">\(\widehat\phi(\xi)=\int e^{-ix\cdot\xi}\phi(x)\,dx\)</span>, the normalized line transform is</p>
+<span class="math math-display" id="learner-eq-3" data-index="13" data-tex="\[
+ \widehat P_k=2\pi i^{-1-k}\sigma_k,\qquad
+ \sigma_k(t)=
+ \begin{cases}
+  \dfrac{\operatorname{sgn}(t)t^k}{2k!},&amp;k\geq0,\\
+  \delta_0^{(-k-1)}(t),&amp;k&lt;0.
+ \end{cases}
+ \tag{3}
+\]">\[
+ \widehat P_k=2\pi i^{-1-k}\sigma_k,\qquad
+ \sigma_k(t)=
+ \begin{cases}
+  \dfrac{\operatorname{sgn}(t)t^k}{2k!},&amp;k\geq0,\\
+  \delta_0^{(-k-1)}(t),&amp;k&lt;0.
+ \end{cases}
+ \tag{3}
+\]</span>
+<p>Combining the radial half with the line constant <span class="math" data-index="14" data-tex="\(2\pi\)">\(2\pi\)</span> gives the sphere constant <span class="math" data-index="15" data-tex="\(\pi\)">\(\pi\)</span>.</p>
+<h2 id="2-test-frequency-before-pairing-direction">2. Test frequency before pairing direction</h2>
+<p>For a Schwartz test <span class="math" data-index="16" data-tex="\(\phi\)">\(\phi\)</span>, its hyperplane average is</p>
+<span class="math math-display" id="learner-eq-4" data-index="17" data-tex="\[
+ \mathcal R_\omega\phi(t)
+       =\int_{\omega^\perp}\phi(t\omega+y)\,dy .
+ \tag{4}
+\]">\[
+ \mathcal R_\omega\phi(t)
+       =\int_{\omega^\perp}\phi(t\omega+y)\,dy .
+ \tag{4}
+\]</span>
+<p>All its derivatives in <span class="math" data-index="18" data-tex="\(t\)">\(t\)</span> and <span class="math" data-index="19" data-tex="\(\omega\)">\(\omega\)</span> decrease rapidly in <span class="math" data-index="20" data-tex="\(t\)">\(t\)</span>. Indeed, angular differentiation adds only finitely many powers of <span class="math" data-index="21" data-tex="\(|y|+|t|\)">\(|y|+|t|\)</span>, and the Schwartz decay absorbs them. The complete proof gives the uniform estimates.</p>
+<p>Consequently</p>
+<span class="math math-display" id="learner-eq-5" data-index="22" data-tex="\[
+ J_{k,\phi}(\omega)=
+                  \langle\sigma_k,\mathcal R_\omega\phi\rangle
+ \tag{5}
+\]">\[
+ J_{k,\phi}(\omega)=
+                  \langle\sigma_k,\mathcal R_\omega\phi\rangle
+ \tag{5}
+\]</span>
+<p>is a smooth sphere function. The full angular transform is</p>
+<span class="math math-display" id="learner-eq-6" data-index="23" data-tex="\[
+ \boxed{\ \langle\widehat u,\phi\rangle
+                  =\pi i^{-1-k}T(J_{k,\phi})\ }.
+ \tag{6}
+\]">\[
+ \boxed{\ \langle\widehat u,\phi\rangle
+                  =\pi i^{-1-k}T(J_{k,\phi})\ }.
+ \tag{6}
+\]</span>
+<p>This defines a distribution on the entire frequency space. In the abbreviated integral notation,</p>
+<span class="math math-display" id="learner-eq-7" data-index="24" data-tex="\[
+ \widehat u(\xi)=\pi i^{-1-k}
+          \int_{S^{n-1}}u(\omega)\sigma_k(\omega\cdot\xi)\,dS(\omega).
+ \tag{7}
+\]">\[
+ \widehat u(\xi)=\pi i^{-1-k}
+          \int_{S^{n-1}}u(\omega)\sigma_k(\omega\cdot\xi)\,dS(\omega).
+ \tag{7}
+\]</span>
+<p>Equation (6) specifies exactly what (7) means.</p>
+<p>The reason is the Fourier slice identity</p>
+<span class="math math-display" id="learner-eq-8" data-index="25" data-tex="\[
+ \widehat{\mathcal R_\omega\phi}(r)=\widehat\phi(r\omega).
+ \tag{8}
+\]">\[
+ \widehat{\mathcal R_\omega\phi}(r)=\widehat\phi(r\omega).
+ \tag{8}
+\]</span>
+<p>Substitute (8) into (2), apply the one-dimensional transpose in (3), and obtain (6). Every singular radial pairing is against a line Schwartz test; every angular pairing is against a smooth sphere test.</p>
+<figure><img class="course-figure" loading="lazy" width="2040" height="816" src="reproduce/L185/figures/Gaussian-hyperplane-test-and-origin-pairing.png" alt="A two-dimensional Gaussian test and its exact hyperplane average, with delta evaluation at zero." /><figcaption class="native"><a href="reproduce/L185/figures/Gaussian-hyperplane-test-and-origin-pairing.png">Open full-size PNG</a> · <a href="reproduce/L185/figures/Gaussian-hyperplane-test-and-origin-pairing.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 1. For the frequency test <span class="math" data-index="26" data-tex="\(e^{-|\xi|^2}\)">\(e^{-|\xi|^2}\)</span> in dimension two, every unit direction has hyperplane average <span class="math" data-index="27" data-tex="\(\sqrt{\pi}e^{-t^2}\)">\(\sqrt{\pi}e^{-t^2}\)</span>. The illustrated slice has <span class="math" data-index="28" data-tex="\(\omega=(3/5,4/5)\)">\(\omega=(3/5,4/5)\)</span> and <span class="math" data-index="29" data-tex="\(t=4/5\)">\(t=4/5\)</span>. Pairing with <span class="math" data-index="30" data-tex="\(\sigma_{-1},\sigma_0,\sigma_1\)">\(\sigma_{-1},\sigma_0,\sigma_1\)</span> gives <span class="math" data-index="31" data-tex="\(\sqrt{\pi},0,\sqrt{\pi}/2\)">\(\sqrt{\pi},0,\sqrt{\pi}/2\)</span>, respectively. The source and exact coordinate description are included. See complete-proof Lemma 3.1 and Solution 3.</em></p>
+<p>For <span class="math" data-index="32" data-tex="\(k&lt;0\)">\(k&lt;0\)</span>, (5) is the derivative</p>
+<span class="math math-display" id="learner-eq-9" data-index="33" data-tex="\[
+ J_{k,\phi}(\omega)
+       =(-1)^{-k-1}
+           \partial_t^{-k-1}\mathcal R_\omega\phi(0).
+ \tag{9}
+\]">\[
+ J_{k,\phi}(\omega)
+       =(-1)^{-k-1}
+           \partial_t^{-k-1}\mathcal R_\omega\phi(0).
+ \tag{9}
+\]</span>
+<p>Those evaluations retain the delta derivatives in frequency. They cannot be recovered by looking only at nonzero frequency points.</p>
+<h2 id="3-four-worked-examples">3. Four worked examples</h2>
+<h3 id="example-1-an-odd-principal-value">Example 1: an odd principal value.</h3>
+<p>In dimension one, let <span class="math" data-index="34" data-tex="\(u=\operatorname{pv}(1/x)\)">\(u=\operatorname{pv}(1/x)\)</span>. Its degree is <span class="math" data-index="35" data-tex="\(-1\)">\(-1\)</span>, so <span class="math" data-index="36" data-tex="\(k=0\)">\(k=0\)</span>, and its parity is odd. The angular values on <span class="math" data-index="37" data-tex="\(S^0=\{-1,1\}\)">\(S^0=\{-1,1\}\)</span> are <span class="math" data-index="38" data-tex="\(T=\delta_1-\delta_{-1}\)">\(T=\delta_1-\delta_{-1}\)</span>. In (7),</p>
+<span class="math math-display" data-index="39" data-tex="\[
+ \int_{S^0}u(\omega)\sigma_0(\omega\xi)\,dS(\omega)
+ =\frac12\operatorname{sgn}\xi
+   -\frac12\operatorname{sgn}(-\xi)
+ =\operatorname{sgn}\xi .
+\]">\[
+ \int_{S^0}u(\omega)\sigma_0(\omega\xi)\,dS(\omega)
+ =\frac12\operatorname{sgn}\xi
+   -\frac12\operatorname{sgn}(-\xi)
+ =\operatorname{sgn}\xi .
+\]</span>
+<p>Since <span class="math" data-index="40" data-tex="\(i^{-1}=-i\)">\(i^{-1}=-i\)</span>, the full transform is <span class="math" data-index="41" data-tex="\(-i\pi\operatorname{sgn}\xi\)">\(-i\pi\operatorname{sgn}\xi\)</span>. There is no additional point term.</p>
+<h3 id="example-2-an-even-finite-part">Example 2: an even finite part.</h3>
+<p>Let <span class="math" data-index="42" data-tex="\(u=\operatorname{pf}(1/x^2)=-\partial_x\operatorname{pv}(1/x)\)">\(u=\operatorname{pf}(1/x^2)=-\partial_x\operatorname{pv}(1/x)\)</span>. Here <span class="math" data-index="43" data-tex="\(k=1\)">\(k=1\)</span> and <span class="math" data-index="44" data-tex="\(T=\delta_1+\delta_{-1}\)">\(T=\delta_1+\delta_{-1}\)</span>. Because <span class="math" data-index="45" data-tex="\(\sigma_1(t)=|t|/2\)">\(\sigma_1(t)=|t|/2\)</span>, the angular sum is <span class="math" data-index="46" data-tex="\(|\xi|\)">\(|\xi|\)</span>. The phase <span class="math" data-index="47" data-tex="\(i^{-2}=-1\)">\(i^{-2}=-1\)</span> gives</p>
+<span class="math math-display" data-index="48" data-tex="\[
+ \widehat u=-\pi|\xi|.
+\]">\[
+ \widehat u=-\pi|\xi|.
+\]</span>
+<p>Its Gaussian pairing is <span class="math" data-index="49" data-tex="\(-\pi/b\)">\(-\pi/b\)</span> on <span class="math" data-index="50" data-tex="\(e^{-b\xi^2}\)">\(e^{-b\xi^2}\)</span>, <span class="math" data-index="51" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>, because <span class="math" data-index="52" data-tex="\(\int_{\mathbb R}|\xi|e^{-b\xi^2}\,d\xi=1/b\)">\(\int_{\mathbb R}|\xi|e^{-b\xi^2}\,d\xi=1/b\)</span>.</p>
+<h3 id="example-3-a-line-source-and-a-frequency-point-derivative">Example 3: a line source and a frequency point derivative.</h3>
+<p>In <span class="math" data-index="53" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, take <span class="math" data-index="54" data-tex="\(u=x_1^2\delta_0(x_2)\)">\(u=x_1^2\delta_0(x_2)\)</span>, meaning</p>
+<span class="math math-display" data-index="55" data-tex="\[
+ u(\psi)=\int_{\mathbb R}s^2\psi(s,0)\,ds .
+\]">\[
+ u(\psi)=\int_{\mathbb R}s^2\psi(s,0)\,ds .
+\]</span>
+<p>Its degree is <span class="math" data-index="56" data-tex="\(1\)">\(1\)</span>, so <span class="math" data-index="57" data-tex="\(k=-3\)">\(k=-3\)</span>, and <span class="math" data-index="58" data-tex="\(T=\delta_{e_1}+\delta_{-e_1}\)">\(T=\delta_{e_1}+\delta_{-e_1}\)</span>. In (7), <span class="math" data-index="59" data-tex="\(\sigma_{-3}=\delta_0&#x27;&#x27;\)">\(\sigma_{-3}=\delta_0&#x27;&#x27;\)</span>; the two antipodal contributions are equal. Thus</p>
+<span class="math math-display" data-index="60" data-tex="\[
+ \widehat u=-2\pi\delta_0&#x27;&#x27;(\xi_1),
+\]">\[
+ \widehat u=-2\pi\delta_0&#x27;&#x27;(\xi_1),
+\]</span>
+<p>with the constant distribution in the transverse variable <span class="math" data-index="61" data-tex="\(\xi_2\)">\(\xi_2\)</span>. On <span class="math" data-index="62" data-tex="\(\phi(\xi)=e^{-a\xi_1^2-b\xi_2^2}\)">\(\phi(\xi)=e^{-a\xi_1^2-b\xi_2^2}\)</span>, <span class="math" data-index="63" data-tex="\(a,b&gt;0\)">\(a,b&gt;0\)</span>, this gives <span class="math" data-index="64" data-tex="\(4\pi a\sqrt{\pi/b}\)">\(4\pi a\sqrt{\pi/b}\)</span>. Its support is the line <span class="math" data-index="65" data-tex="\(\xi_1=0\)">\(\xi_1=0\)</span>, including the frequency origin.</p>
+<figure><img class="course-figure" loading="lazy" width="2040" height="901" src="reproduce/L185/figures/antipodal-line-source-and-full-spectrum.png" alt="The exact tilted cubic line source with antipodal angular signs and its transverse frequency delta derivative." /><figcaption class="native"><a href="reproduce/L185/figures/antipodal-line-source-and-full-spectrum.png">Open full-size PNG</a> · <a href="reproduce/L185/figures/antipodal-line-source-and-full-spectrum.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 2. The support diagram shows the tilted cubic source of Exercise 4: <span class="math" data-index="66" data-tex="\(u(\psi)=\int_{\mathbb R}s^3\psi(sv)\,ds\)">\(u(\psi)=\int_{\mathbb R}s^3\psi(sv)\,ds\)</span>, <span class="math" data-index="67" data-tex="\(v=(3/5,4/5)\)">\(v=(3/5,4/5)\)</span>, with angular distribution <span class="math" data-index="68" data-tex="\(\delta_v-\delta_{-v}\)">\(\delta_v-\delta_{-v}\)</span>. Its whole spectrum is <span class="math" data-index="69" data-tex="\(-2\pi i\delta_0&#x27;&#x27;&#x27;(v\cdot\xi)\)">\(-2\pi i\delta_0&#x27;&#x27;&#x27;(v\cdot\xi)\)</span>, with constant transverse coordinate <span class="math" data-index="70" data-tex="\(w=(-4/5,3/5)\)">\(w=(-4/5,3/5)\)</span>, and support <span class="math" data-index="71" data-tex="\(v\cdot\xi=0\)">\(v\cdot\xi=0\)</span>. The plotted lines show supports; the formulas specify the distributional amplitudes. See complete-proof Theorem 4.1 and Solution 4.</em></p>
+<h3 id="example-4-a-radial-source-in-three-dimensions">Example 4: a radial source in three dimensions.</h3>
+<p>For <span class="math" data-index="72" data-tex="\(u(x)=|x|^{-2}\)">\(u(x)=|x|^{-2}\)</span>, the degree is <span class="math" data-index="73" data-tex="\(-2\)">\(-2\)</span>, hence <span class="math" data-index="74" data-tex="\(k=-1\)">\(k=-1\)</span>. Its angular density is one and <span class="math" data-index="75" data-tex="\(\sigma_{-1}=\delta_0\)">\(\sigma_{-1}=\delta_0\)</span>. Rotate <span class="math" data-index="76" data-tex="\(\xi\ne0\)">\(\xi\ne0\)</span> to the third axis and use the sphere latitude measure <span class="math" data-index="77" data-tex="\(dS=d\theta\,ds\)">\(dS=d\theta\,ds\)</span>, <span class="math" data-index="78" data-tex="\(s=\omega_3\)">\(s=\omega_3\)</span>. Then</p>
+<span class="math math-display" data-index="79" data-tex="\[
+ \int_{S^2}\delta_0(\omega\cdot\xi)\,dS(\omega)
+ =\int_0^{2\pi}\int_{-1}^1\delta_0(|\xi|s)\,ds\,d\theta
+ =\frac{2\pi}{|\xi|}.
+\]">\[
+ \int_{S^2}\delta_0(\omega\cdot\xi)\,dS(\omega)
+ =\int_0^{2\pi}\int_{-1}^1\delta_0(|\xi|s)\,ds\,d\theta
+ =\frac{2\pi}{|\xi|}.
+\]</span>
+<p>Therefore <span class="math" data-index="80" data-tex="\(\widehat u=2\pi^2/|\xi|\)">\(\widehat u=2\pi^2/|\xi|\)</span>. Both sides are whole distributions: the physical <span class="math" data-index="81" data-tex="\(r^{-2}\)">\(r^{-2}\)</span> and frequency <span class="math" data-index="82" data-tex="\(r^{-1}\)">\(r^{-1}\)</span> are locally integrable in dimension three. In the latter degree there is no homogeneous point-supported ambiguity. On <span class="math" data-index="83" data-tex="\(e^{-b|\xi|^2}\)">\(e^{-b|\xi|^2}\)</span>, the transform has value <span class="math" data-index="84" data-tex="\(4\pi^3/b\)">\(4\pi^3/b\)</span>.</p>
+<h2 id="4-exercises-100-points">4. Exercises, 100 points</h2>
+<ol>
+<li><strong>The radial half, 10 points.</strong> In dimension one, compute (7) for <span class="math" data-index="85" data-tex="\(u=1\)">\(u=1\)</span>. Give its degree, <span class="math" data-index="86" data-tex="\(k\)">\(k\)</span>, angular distribution and full Fourier transform. Explain the error caused by removing <span class="math" data-index="87" data-tex="\(1/2\)">\(1/2\)</span> from the radial formula.</li>
+<li><strong>A third-order finite part, 12 points.</strong> Find the full transform of <span class="math" data-index="88" data-tex="\(u=\operatorname{pf}(1/x^3)\)">\(u=\operatorname{pf}(1/x^3)\)</span>. Evaluate it on <span class="math" data-index="89" data-tex="\(\phi(\xi)=\xi e^{-b\xi^2}\)">\(\phi(\xi)=\xi e^{-b\xi^2}\)</span>, <span class="math" data-index="90" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>, including its complex phase.</li>
+<li><strong>Three Gaussian tests, 12 points.</strong> For <span class="math" data-index="91" data-tex="\(\phi(\xi)=e^{-b|\xi|^2}\)">\(\phi(\xi)=e^{-b|\xi|^2}\)</span> in dimension <span class="math" data-index="92" data-tex="\(n\)">\(n\)</span>, derive <span class="math" data-index="93" data-tex="\(\mathcal R_\omega\phi(t)\)">\(\mathcal R_\omega\phi(t)\)</span>. Compute <span class="math" data-index="94" data-tex="\(J_{k,\phi}\)">\(J_{k,\phi}\)</span> and <span class="math" data-index="95" data-tex="\(\widehat u(\phi)\)">\(\widehat u(\phi)\)</span> for <span class="math" data-index="96" data-tex="\(k=-1,0,1\)">\(k=-1,0,1\)</span>, with arbitrary angular <span class="math" data-index="97" data-tex="\(T\)">\(T\)</span> of the required parity. Retain <span class="math" data-index="98" data-tex="\(T(1)\)">\(T(1)\)</span> where appropriate.</li>
+<li><strong>A tilted odd line source, 14 points.</strong> Let <span class="math" data-index="99" data-tex="\(v=(3/5,4/5)\)">\(v=(3/5,4/5)\)</span> and define <span class="math" data-index="100" data-tex="\(u(\psi)=\int_{\mathbb R}s^3\psi(sv)\,ds\)">\(u(\psi)=\int_{\mathbb R}s^3\psi(sv)\,ds\)</span>. Compute its angular distribution, degree, exponent <span class="math" data-index="101" data-tex="\(k\)">\(k\)</span>, full transform, support and exact action on a Schwartz test by a hyperplane-average derivative.</li>
+<li><strong>Why parity is required, 12 points.</strong> Use the origin delta in dimension one to disprove the same theorem with no parity hypothesis. Then describe all degree-<span class="math" data-index="102" data-tex="\(-1\)">\(-1\)</span> homogeneous extensions of the punctured function <span class="math" data-index="103" data-tex="\(1/x\)">\(1/x\)</span>, and explain why odd parity selects one.</li>
+<li><strong>Continuous dependence on angular data, 12 points.</strong> Let <span class="math" data-index="104" data-tex="\(T_j\)">\(T_j\)</span> and <span class="math" data-index="105" data-tex="\(T\)">\(T\)</span> have the required parity for a fixed <span class="math" data-index="106" data-tex="\(k\)">\(k\)</span>. Prove that weak convergence on smooth sphere tests implies weak convergence of both <span class="math" data-index="107" data-tex="\(u_j\)">\(u_j\)</span> and <span class="math" data-index="108" data-tex="\(\widehat u_j\)">\(\widehat u_j\)</span> on Schwartz tests. Prove the corresponding assertion for strong convergence, with the strong topologies stated explicitly.</li>
+<li><strong>Radial kernels in every dimension, 14 points.</strong> For <span class="math" data-index="109" data-tex="\(n\geq2\)">\(n\geq2\)</span>, compute the whole transform of <span class="math" data-index="110" data-tex="\(u(x)=|x|^{1-n}\)">\(u(x)=|x|^{1-n}\)</span>, expressing the constant using the area of <span class="math" data-index="111" data-tex="\(S^{n-2}\)">\(S^{n-2}\)</span>. Give the constants in dimensions two, three and four. Explain why equality away from zero in this example determines the whole transform.</li>
+<li><strong>Degree, parity and contact terms, 14 points.</strong> Derive the Fourier scaling identity directly from tests and show that the transform in (6) has degree <span class="math" data-index="112" data-tex="\(k\)">\(k\)</span> and parity <span class="math" data-index="113" data-tex="\((-1)^{k+1}\)">\((-1)^{k+1}\)</span>. For <span class="math" data-index="114" data-tex="\(k\geq0\)">\(k\geq0\)</span>, identify the only possible point-supported ambiguity of a degree-<span class="math" data-index="115" data-tex="\(-n-k\)">\(-n-k\)</span> physical extension and show why (1) eliminates it. For <span class="math" data-index="116" data-tex="\(k&lt;0\)">\(k&lt;0\)</span>, explain how point terms can nevertheless occur in frequency.</li>
+</ol>
+<h2 id="5-complete-solutions">5. Complete solutions</h2>
+<h3 id="solution-1">Solution 1</h3>
+<p>The constant function has degree zero. With <span class="math" data-index="117" data-tex="\(n=1\)">\(n=1\)</span>, <span class="math" data-index="118" data-tex="\(-1-k=0\)">\(-1-k=0\)</span> gives <span class="math" data-index="119" data-tex="\(k=-1\)">\(k=-1\)</span>, and its parity is even, as required. Both sphere values are one, so <span class="math" data-index="120" data-tex="\(T=\delta_1+\delta_{-1}\)">\(T=\delta_1+\delta_{-1}\)</span>. The kernel is <span class="math" data-index="121" data-tex="\(\sigma_{-1}=\delta_0\)">\(\sigma_{-1}=\delta_0\)</span> and the phase is <span class="math" data-index="122" data-tex="\(i^0=1\)">\(i^0=1\)</span>. Reflection of a delta is unchanged, so the angular sum is <span class="math" data-index="123" data-tex="\(2\delta_0(\xi)\)">\(2\delta_0(\xi)\)</span>. Equation (7) gives</p>
+<span class="math math-display" data-index="124" data-tex="\[
+ \widehat1=2\pi\delta_0.
+\]">\[
+ \widehat1=2\pi\delta_0.
+\]</span>
+<p>This agrees with the transposed one-dimensional inversion theorem. Removing <span class="math" data-index="125" data-tex="\(1/2\)">\(1/2\)</span> from (2) doubles the physical distribution before transformation, hence would incorrectly give <span class="math" data-index="126" data-tex="\(4\pi\delta_0\)">\(4\pi\delta_0\)</span>. The two points of <span class="math" data-index="127" data-tex="\(S^0\)">\(S^0\)</span> each have measure one; no normalized probability sphere measure is being used.</p>
+<h3 id="solution-2">Solution 2</h3>
+<p>Its degree is <span class="math" data-index="128" data-tex="\(-3\)">\(-3\)</span>, so <span class="math" data-index="129" data-tex="\(k=2\)">\(k=2\)</span>, and its parity is odd. Its angular distribution is <span class="math" data-index="130" data-tex="\(\delta_1-\delta_{-1}\)">\(\delta_1-\delta_{-1}\)</span>. Since <span class="math" data-index="131" data-tex="\(\sigma_2(t)=\operatorname{sgn}(t)t^2/4\)">\(\sigma_2(t)=\operatorname{sgn}(t)t^2/4\)</span>, the signed antipodal sum is <span class="math" data-index="132" data-tex="\(\operatorname{sgn}(\xi)\xi^2/2\)">\(\operatorname{sgn}(\xi)\xi^2/2\)</span>. The phase <span class="math" data-index="133" data-tex="\(i^{-3}=i\)">\(i^{-3}=i\)</span> gives</p>
+<span class="math math-display" data-index="134" data-tex="\[
+ \widehat{\operatorname{pf}(1/x^3)}
+             =\frac{i\pi}{2}\xi^2\operatorname{sgn}\xi .
+\]">\[
+ \widehat{\operatorname{pf}(1/x^3)}
+             =\frac{i\pi}{2}\xi^2\operatorname{sgn}\xi .
+\]</span>
+<p>The derivative normalization gives the same answer: <span class="math" data-index="135" data-tex="\(\operatorname{pf}(1/x^3)=\frac12\partial_x^2\operatorname{pv}(1/x)\)">\(\operatorname{pf}(1/x^3)=\frac12\partial_x^2\operatorname{pv}(1/x)\)</span>, so its transform is <span class="math" data-index="136" data-tex="\(\frac12(i\xi)^2(-i\pi\operatorname{sgn}\xi)\)">\(\frac12(i\xi)^2(-i\pi\operatorname{sgn}\xi)\)</span>.</p>
+<p>Pairing with <span class="math" data-index="137" data-tex="\(\xi e^{-b\xi^2}\)">\(\xi e^{-b\xi^2}\)</span> gives</p>
+<span class="math math-display" data-index="138" data-tex="\[
+ \frac{i\pi}{2}\int_{\mathbb R}|\xi|^3e^{-b\xi^2}\,d\xi
+ =\frac{i\pi}{2b^2}.
+\]">\[
+ \frac{i\pi}{2}\int_{\mathbb R}|\xi|^3e^{-b\xi^2}\,d\xi
+ =\frac{i\pi}{2b^2}.
+\]</span>
+<p>For the integral, use twice the positive half-line and put <span class="math" data-index="139" data-tex="\(s=b\xi^2\)">\(s=b\xi^2\)</span>:
+<span class="math" data-index="140" data-tex="\(\int_0^\infty \xi^3e^{-b\xi^2}\,d\xi=(2b^2)^{-1}\int_0^\infty se^{-s}\,ds=(2b^2)^{-1}\)">\(\int_0^\infty \xi^3e^{-b\xi^2}\,d\xi=(2b^2)^{-1}\int_0^\infty se^{-s}\,ds=(2b^2)^{-1}\)</span>.
+Integration by parts gives the last integral one. This retains both the positive imaginary phase and the factorial <span class="math" data-index="141" data-tex="\(2!\)">\(2!\)</span>.</p>
+<h3 id="solution-3">Solution 3</h3>
+<p>An orthogonal frame writes <span class="math" data-index="142" data-tex="\(|t\omega+y|^2=t^2+|y|^2\)">\(|t\omega+y|^2=t^2+|y|^2\)</span>. The exact Gaussian mass in <span class="unlinked">F</span>, Section 3, and Fubini give</p>
+<span class="math math-display" data-index="143" data-tex="\[
+ \mathcal R_\omega\phi(t)
+     =A_b e^{-bt^2},\qquad
+ A_b=(\pi/b)^{(n-1)/2}.
+\]">\[
+ \mathcal R_\omega\phi(t)
+     =A_b e^{-bt^2},\qquad
+ A_b=(\pi/b)^{(n-1)/2}.
+\]</span>
+<p>For <span class="math" data-index="144" data-tex="\(n=1\)">\(n=1\)</span>, the exponent is zero and this also gives the two line restrictions correctly.</p>
+<p>For <span class="math" data-index="145" data-tex="\(k=-1\)">\(k=-1\)</span>, evaluate at zero: <span class="math" data-index="146" data-tex="\(J_{-1,\phi}=A_b\)">\(J_{-1,\phi}=A_b\)</span>, and (6) gives <span class="math" data-index="147" data-tex="\(\widehat u(\phi)=\pi A_bT(1)\)">\(\widehat u(\phi)=\pi A_bT(1)\)</span>.</p>
+<p>For <span class="math" data-index="148" data-tex="\(k=0\)">\(k=0\)</span>, <span class="math" data-index="149" data-tex="\(\sigma_0=\operatorname{sgn}(t)/2\)">\(\sigma_0=\operatorname{sgn}(t)/2\)</span> is odd and the Gaussian is even, so its absolutely convergent pairing is zero. Thus <span class="math" data-index="150" data-tex="\(J_{0,\phi}=0\)">\(J_{0,\phi}=0\)</span> and <span class="math" data-index="151" data-tex="\(\widehat u(\phi)=0\)">\(\widehat u(\phi)=0\)</span>, even before applying <span class="math" data-index="152" data-tex="\(T\)">\(T\)</span>.</p>
+<p>For <span class="math" data-index="153" data-tex="\(k=1\)">\(k=1\)</span>, <span class="math" data-index="154" data-tex="\(\sigma_1=|t|/2\)">\(\sigma_1=|t|/2\)</span>. The substitution <span class="math" data-index="155" data-tex="\(s=bt^2\)">\(s=bt^2\)</span> gives <span class="math" data-index="156" data-tex="\(\int_{\mathbb R}|t|e^{-bt^2}\,dt=1/b\)">\(\int_{\mathbb R}|t|e^{-bt^2}\,dt=1/b\)</span>. Hence <span class="math" data-index="157" data-tex="\(J_{1,\phi}=A_b/(2b)\)">\(J_{1,\phi}=A_b/(2b)\)</span>. The phase <span class="math" data-index="158" data-tex="\(i^{-2}=-1\)">\(i^{-2}=-1\)</span> gives</p>
+<span class="math math-display" data-index="159" data-tex="\[
+ \widehat u(\phi)=-\frac{\pi A_b}{2b}T(1).
+\]">\[
+ \widehat u(\phi)=-\frac{\pi A_b}{2b}T(1).
+\]</span>
+<p>The allowed angular data in this case are even; that condition does not force <span class="math" data-index="160" data-tex="\(T(1)\)">\(T(1)\)</span> to vanish.</p>
+<h3 id="solution-4">Solution 4</h3>
+<p>Put <span class="math" data-index="161" data-tex="\(w=(-4/5,3/5)\)">\(w=(-4/5,3/5)\)</span>; the matrix with columns <span class="math" data-index="162" data-tex="\(v,w\)">\(v,w\)</span> is orthogonal with determinant one. The angular distribution is <span class="math" data-index="163" data-tex="\(T=\delta_v-\delta_{-v}\)">\(T=\delta_v-\delta_{-v}\)</span>: on positive radii its first point gives <span class="math" data-index="164" data-tex="\(s^3\psi(sv)\)">\(s^3\psi(sv)\)</span>, and its negative point gives the negative signed half-line. The source degree is <span class="math" data-index="165" data-tex="\(3-1=2\)">\(3-1=2\)</span>, because one integration variable contributes one inverse power under dilation. Thus <span class="math" data-index="166" data-tex="\(-2-k=2\)">\(-2-k=2\)</span>, giving <span class="math" data-index="167" data-tex="\(k=-4\)">\(k=-4\)</span>, whose required parity is odd.</p>
+<p>Here <span class="math" data-index="168" data-tex="\(\sigma_{-4}=\delta_0&#x27;&#x27;&#x27;\)">\(\sigma_{-4}=\delta_0&#x27;&#x27;&#x27;\)</span> and <span class="math" data-index="169" data-tex="\(i^{-1-k}=i^3=-i\)">\(i^{-1-k}=i^3=-i\)</span>. As a distribution, reflection of the scalar argument gives <span class="math" data-index="170" data-tex="\(\delta_0&#x27;&#x27;&#x27;(-t)=-\delta_0&#x27;&#x27;&#x27;(t)\)">\(\delta_0&#x27;&#x27;&#x27;(-t)=-\delta_0&#x27;&#x27;&#x27;(t)\)</span>. The angular difference therefore gives <span class="math" data-index="171" data-tex="\(2\delta_0&#x27;&#x27;&#x27;(v\cdot\xi)\)">\(2\delta_0&#x27;&#x27;&#x27;(v\cdot\xi)\)</span>. The full transform is</p>
+<span class="math math-display" data-index="172" data-tex="\[
+ \widehat u=-2\pi i\,\delta_0&#x27;&#x27;&#x27;(v\cdot\xi).
+\]">\[
+ \widehat u=-2\pi i\,\delta_0&#x27;&#x27;&#x27;(v\cdot\xi).
+\]</span>
+<p>In the coordinates <span class="math" data-index="173" data-tex="\(\xi=tv+aw\)">\(\xi=tv+aw\)</span>, this is the third delta derivative in <span class="math" data-index="174" data-tex="\(t\)">\(t\)</span>, tensored with the constant distribution in <span class="math" data-index="175" data-tex="\(a\)">\(a\)</span>. It has support <span class="math" data-index="176" data-tex="\(v\cdot\xi=0\)">\(v\cdot\xi=0\)</span>, the line spanned by <span class="math" data-index="177" data-tex="\(w\)">\(w\)</span>; no frequency points on that line are removed.</p>
+<p>For <span class="math" data-index="178" data-tex="\(\phi\in\mathcal S(\mathbb R^2)\)">\(\phi\in\mathcal S(\mathbb R^2)\)</span>, define</p>
+<span class="math math-display" data-index="179" data-tex="\[
+ R_v\phi(t)=\int_{\mathbb R}\phi(tv+aw)\,da .
+\]">\[
+ R_v\phi(t)=\int_{\mathbb R}\phi(tv+aw)\,da .
+\]</span>
+<p>The test action is</p>
+<span class="math math-display" data-index="180" data-tex="\[
+ \widehat u(\phi)
+    =-2\pi i\,(-1)^3(R_v\phi)&#x27;&#x27;&#x27;(0)
+    =2\pi i\,(R_v\phi)&#x27;&#x27;&#x27;(0).
+\]">\[
+ \widehat u(\phi)
+    =-2\pi i\,(-1)^3(R_v\phi)&#x27;&#x27;&#x27;(0)
+    =2\pi i\,(R_v\phi)&#x27;&#x27;&#x27;(0).
+\]</span>
+<p>Its derivative exists and is an absolutely convergent integral of the third directional derivative, by the estimates in the complete proof. The determinant one leaves both measures and the coefficient unchanged.</p>
+<h3 id="solution-5">Solution 5</h3>
+<p>The distribution <span class="math" data-index="181" data-tex="\(\delta_0\)">\(\delta_0\)</span> has degree <span class="math" data-index="182" data-tex="\(-1\)">\(-1\)</span> in dimension one: <span class="math" data-index="183" data-tex="\(D_t\delta_0=t^{-1}\delta_0\)">\(D_t\delta_0=t^{-1}\delta_0\)</span>. Its punctured restriction is zero, so its angular distribution is zero. With no parity requirement, <span class="math" data-index="184" data-tex="\(k=0\)">\(k=0\)</span> would fit its degree and the proposed right side would be zero, whereas <span class="math" data-index="185" data-tex="\(\widehat{\delta_0}=1\)">\(\widehat{\delta_0}=1\)</span>. This is a whole-distribution counterexample.</p>
+<p>Any two homogeneous degree-<span class="math" data-index="186" data-tex="\(-1\)">\(-1\)</span> extensions of <span class="math" data-index="187" data-tex="\(1/x\)">\(1/x\)</span> differ by a distribution supported at zero. The point-jet theorem writes that difference as a finite sum of delta derivatives; degree <span class="math" data-index="188" data-tex="\(-1\)">\(-1\)</span> leaves only a multiple of <span class="math" data-index="189" data-tex="\(\delta_0\)">\(\delta_0\)</span>. Thus all such extensions are</p>
+<span class="math math-display" data-index="190" data-tex="\[
+ \operatorname{pv}\frac1x+c\delta_0 .
+\]">\[
+ \operatorname{pv}\frac1x+c\delta_0 .
+\]</span>
+<p>The principal value is odd and <span class="math" data-index="191" data-tex="\(\delta_0\)">\(\delta_0\)</span> is even. Odd parity therefore forces <span class="math" data-index="192" data-tex="\(c=0\)">\(c=0\)</span>. Their transforms without parity would differ by the constant <span class="math" data-index="193" data-tex="\(c\)">\(c\)</span>, which is also invisible to the punctured angular data.</p>
+<h3 id="solution-6">Solution 6</h3>
+<p>Weak convergence on the sphere means <span class="math" data-index="194" data-tex="\(T_j(h)\to T(h)\)">\(T_j(h)\to T(h)\)</span> for every smooth sphere function <span class="math" data-index="195" data-tex="\(h\)">\(h\)</span>. For a fixed Schwartz <span class="math" data-index="196" data-tex="\(\psi\)">\(\psi\)</span>, the radial pairing in (2) is one smooth sphere function, by Proposition 1.1 of the complete proof. Applying weak convergence gives <span class="math" data-index="197" data-tex="\(u_j(\psi)\to u(\psi)\)">\(u_j(\psi)\to u(\psi)\)</span>. For a fixed Schwartz <span class="math" data-index="198" data-tex="\(\phi\)">\(\phi\)</span>, (5) is another smooth sphere function; (6) gives <span class="math" data-index="199" data-tex="\(\widehat u_j(\phi)\to\widehat u(\phi)\)">\(\widehat u_j(\phi)\to\widehat u(\phi)\)</span>.</p>
+<p>For the strong sphere dual topology, convergence means uniform convergence on every bounded subset of <span class="math" data-index="200" data-tex="\(C^\infty(S^{n-1})\)">\(C^\infty(S^{n-1})\)</span>. A subset is bounded when each sphere derivative seminorm is bounded on it. Strong convergence in <span class="math" data-index="201" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span> means uniform convergence on every Schwartz-test subset bounded in all Schwartz seminorms.</p>
+<p>If <span class="math" data-index="202" data-tex="\(B\subset\mathcal S\)">\(B\subset\mathcal S\)</span> is bounded, the radial estimates (7) in the complete proof make the sphere tests in (2), for <span class="math" data-index="203" data-tex="\(\psi\in B\)">\(\psi\in B\)</span>, a bounded smooth sphere set. Strong convergence of <span class="math" data-index="204" data-tex="\(T_j-T\)">\(T_j-T\)</span> is uniform on that image, so <span class="math" data-index="205" data-tex="\(u_j-u\)">\(u_j-u\)</span> converges uniformly on <span class="math" data-index="206" data-tex="\(B\)">\(B\)</span>. The Radon estimates give the same assertion for the image <span class="math" data-index="207" data-tex="\(\{J_{k,\phi}:\phi\in B\}\)">\(\{J_{k,\phi}:\phi\in B\}\)</span>; (6) gives uniform convergence of <span class="math" data-index="208" data-tex="\(\widehat u_j-\widehat u\)">\(\widehat u_j-\widehat u\)</span>. This proves the strong assertion directly. It does not identify this topology with a topology having a fixed wavefront bound.</p>
+<h3 id="solution-7">Solution 7</h3>
+<p>The degree is <span class="math" data-index="209" data-tex="\(1-n=-n-(-1)\)">\(1-n=-n-(-1)\)</span>, so <span class="math" data-index="210" data-tex="\(k=-1\)">\(k=-1\)</span>. The parity is even, the angular density is one, and the multiplier in (7) is <span class="math" data-index="211" data-tex="\(\pi\)">\(\pi\)</span>. For <span class="math" data-index="212" data-tex="\(\xi\ne0\)">\(\xi\ne0\)</span>, rotate to <span class="math" data-index="213" data-tex="\(\xi=|\xi|e_n\)">\(\xi=|\xi|e_n\)</span>. Write <span class="math" data-index="214" data-tex="\(s=\omega_n\)">\(s=\omega_n\)</span>. The sphere latitude formula gives</p>
+<span class="math math-display" data-index="215" data-tex="\[
+ dS=(1-s^2)^{(n-3)/2}\,ds\,dS_{n-2}.
+\]">\[
+ dS=(1-s^2)^{(n-3)/2}\,ds\,dS_{n-2}.
+\]</span>
+<p>For <span class="math" data-index="216" data-tex="\(n=2\)">\(n=2\)</span>, <span class="math" data-index="217" data-tex="\(S^0\)">\(S^0\)</span> has its two-point counting measure, so this formula includes both semicircles. The delta sets <span class="math" data-index="218" data-tex="\(s=0\)">\(s=0\)</span>, where the weight is one, and its scalar substitution gives</p>
+<span class="math math-display" data-index="219" data-tex="\[
+ \int_{S^{n-1}}\delta_0(\omega\cdot\xi)\,dS
+       =\frac{|S^{n-2}|}{|\xi|}.
+\]">\[
+ \int_{S^{n-1}}\delta_0(\omega\cdot\xi)\,dS
+       =\frac{|S^{n-2}|}{|\xi|}.
+\]</span>
+<p>Thus</p>
+<span class="math math-display" data-index="220" data-tex="\[
+ \widehat{|x|^{1-n}}
+       =\frac{\pi|S^{n-2}|}{|\xi|}.
+\]">\[
+ \widehat{|x|^{1-n}}
+       =\frac{\pi|S^{n-2}|}{|\xi|}.
+\]</span>
+<p>The sphere areas <span class="math" data-index="221" data-tex="\(2,2\pi,4\pi\)">\(2,2\pi,4\pi\)</span> in dimensions zero, one and two give constants <span class="math" data-index="222" data-tex="\(2\pi,2\pi^2,4\pi^2\)">\(2\pi,2\pi^2,4\pi^2\)</span> for <span class="math" data-index="223" data-tex="\(n=2,3,4\)">\(n=2,3,4\)</span>, respectively.</p>
+<p>The physical radial density is locally integrable: its polar exponent is <span class="math" data-index="224" data-tex="\((1-n)+(n-1)=0\)">\((1-n)+(n-1)=0\)</span>. The proposed frequency density <span class="math" data-index="225" data-tex="\(r^{-1}\)">\(r^{-1}\)</span> is also locally integrable for <span class="math" data-index="226" data-tex="\(n\geq2\)">\(n\geq2\)</span>, since its polar exponent is <span class="math" data-index="227" data-tex="\(n-2\)">\(n-2\)</span>. Both define homogeneous tempered distributions; the frequency degree is <span class="math" data-index="228" data-tex="\(-1\)">\(-1\)</span>. Their difference, after the calculation away from zero, is a homogeneous point-supported distribution of degree <span class="math" data-index="229" data-tex="\(-1\)">\(-1\)</span>. A point jet in dimension <span class="math" data-index="230" data-tex="\(n\)">\(n\)</span> has degree <span class="math" data-index="231" data-tex="\(-n-j\)">\(-n-j\)</span> for <span class="math" data-index="232" data-tex="\(j\geq0\)">\(j\geq0\)</span>, which cannot be <span class="math" data-index="233" data-tex="\(-1\)">\(-1\)</span> for <span class="math" data-index="234" data-tex="\(n\geq2\)">\(n\geq2\)</span>. The point-jet theorem therefore makes the difference zero. This supplies the whole equality, not just its punctured version.</p>
+<h3 id="solution-8">Solution 8</h3>
+<p>In the Fourier integral, substitute <span class="math" data-index="235" data-tex="\(\xi=t\eta\)">\(\xi=t\eta\)</span> to obtain <span class="math" data-index="236" data-tex="\(\widehat\phi(x/t)=t^n\widehat{(\phi(t\,\cdot))}(x)\)">\(\widehat\phi(x/t)=t^n\widehat{(\phi(t\,\cdot))}(x)\)</span>. The definitions then give</p>
+<span class="math math-display" data-index="237" data-tex="\[
+ \mathcal F(D_tu)(\phi)
+  =t^{-n}u(\widehat\phi(\,\cdot/t))
+  =\widehat u(\phi(t\,\cdot))
+  =t^{-n}D_{1/t}\widehat u(\phi).
+\]">\[
+ \mathcal F(D_tu)(\phi)
+  =t^{-n}u(\widehat\phi(\,\cdot/t))
+  =\widehat u(\phi(t\,\cdot))
+  =t^{-n}D_{1/t}\widehat u(\phi).
+\]</span>
+<p>If <span class="math" data-index="238" data-tex="\(D_tu=t^{-n-k}u\)">\(D_tu=t^{-n-k}u\)</span>, then <span class="math" data-index="239" data-tex="\(D_{1/t}\widehat u=t^{-k}\widehat u\)">\(D_{1/t}\widehat u=t^{-k}\widehat u\)</span>. Set <span class="math" data-index="240" data-tex="\(s=1/t\)">\(s=1/t\)</span> to obtain <span class="math" data-index="241" data-tex="\(D_s\widehat u=s^k\widehat u\)">\(D_s\widehat u=s^k\widehat u\)</span>. Reflection commutes with Fourier transformation by the same change of variables, so <span class="math" data-index="242" data-tex="\(\widehat u\)">\(\widehat u\)</span> has parity <span class="math" data-index="243" data-tex="\((-1)^{k+1}\)">\((-1)^{k+1}\)</span>.</p>
+<p>For <span class="math" data-index="244" data-tex="\(k\geq0\)">\(k\geq0\)</span>, a point-supported difference of two physical homogeneous extensions has degree <span class="math" data-index="245" data-tex="\(-n-k\)">\(-n-k\)</span>. The point-jet theorem and independence of the jets leave exactly linear combinations of <span class="math" data-index="246" data-tex="\(\partial^\alpha\delta_0\)">\(\partial^\alpha\delta_0\)</span>, <span class="math" data-index="247" data-tex="\(|\alpha|=k\)">\(|\alpha|=k\)</span>. Each has parity <span class="math" data-index="248" data-tex="\((-1)^k\)">\((-1)^k\)</span>, opposite to (1), so a difference satisfying (1) is zero.</p>
+<p>For <span class="math" data-index="249" data-tex="\(k&lt;0\)">\(k&lt;0\)</span>, the physical degree is greater than <span class="math" data-index="250" data-tex="\(-n\)">\(-n\)</span>, so no point jet has the required physical degree. Nevertheless the radial line distribution <span class="math" data-index="251" data-tex="\(P_k=r^{-k-1}\)">\(P_k=r^{-k-1}\)</span> is a polynomial, and its full Fourier transform is the delta derivative in (3). For example, in dimension one <span class="math" data-index="252" data-tex="\(u=x^j\)">\(u=x^j\)</span> has <span class="math" data-index="253" data-tex="\(k=-j-1\)">\(k=-j-1\)</span> and transform <span class="math" data-index="254" data-tex="\(2\pi i^j\delta_0^{(j)}\)">\(2\pi i^j\delta_0^{(j)}\)</span>. Uniqueness of the physical extension is compatible with a spectrum concentrated entirely at the origin. It is precisely why the full test identity is needed.</p>
+<h2 id="references">References</h2>
+<p><span class="unlinked">H</span> <span class="unlinked">Homogeneous extensions and angular moments</span>, Theorems 1.2, 3.1 and 5.1; its angular foundations give the sphere measure and point-jet theorem.</p>
+<p><span class="unlinked">P</span> <span class="unlinked">Finite parts of singular powers</span>, Proposition 5.1.</p>
+<p><span class="unlinked">B</span> <span class="unlinked">Complex powers at a boundary</span>, Theorem 2.1 and Corollary 3.2.</p>
+<p><span class="unlinked">F</span> <span class="unlinked">Schwartz functions and Fourier inversion</span>, Sections 1–5.</p>
+<p>Original exposition, examples and solutions are CC0. The linked proofs retain their own CC0 notices and provenance. General analytic-wavefront operation theorems are additional prerequisites for microlocal conclusions beyond the Fourier identity proved here.</p>
+<h2 id="complete-proof">Complete proof</h2>
+<p>A homogeneous distribution can have a singular angular part and a singular radial part. Its Fourier transform must retain both. In particular, negative radial exponents can produce derivatives of a delta distribution in frequency; omitting the frequency origin would lose those terms.</p>
+<p>This chapter proves the angular Fourier formula for every integer exponent, in every dimension, with arbitrary distributional angular data. Its meaning is an exact pairing with Schwartz tests. The proof keeps the sphere measure, the factor one half from the two radial directions, and the phase of the one-dimensional Fourier transform.</p>
+<p>Basic references are the preceding chapters <span class="unlinked">Homogeneous extensions and angular moments</span>, <span class="unlinked">Finite parts of singular powers</span>, <span class="unlinked">Complex powers at a boundary</span>, and <span class="unlinked">Schwartz functions and Fourier inversion</span>. Theorems 1.2, 3.1 and 5.1 of <span class="unlinked">H</span> give the angular representation and the unique parity-preserving homogeneous extension. Proposition 5.1 of <span class="unlinked">P</span> fixes the symmetric finite parts. Theorem 2.1 and Corollary 3.2 of <span class="unlinked">B</span> give their boundary and Fourier normalization. Sections 1–5 of <span class="unlinked">F</span> supply Schwartz seminorms, compact-test density and the transposed Fourier identities. We reuse those exact proofs and prove the remaining Radon-transform argument here.</p>
+<h2 id="1-the-radial-extension-already-fixes-the-origin">1. The radial extension already fixes the origin</h2>
+<p>We use complex-linear distributional pairings, without conjugation, and the conventions</p>
+<span class="math math-display" id="proof-eq-1" data-index="255" data-tex="\[
+ \widehat\phi(\xi)=\int_{\mathbb R^n}e^{-ix\cdot\xi}\phi(x)\,dx,
+ \qquad
+ \langle\widehat u,\phi\rangle=\langle u,\widehat\phi\rangle.
+ \tag{1}
+\]">\[
+ \widehat\phi(\xi)=\int_{\mathbb R^n}e^{-ix\cdot\xi}\phi(x)\,dx,
+ \qquad
+ \langle\widehat u,\phi\rangle=\langle u,\widehat\phi\rangle.
+ \tag{1}
+\]</span>
+<p>Let <span class="math" data-index="256" data-tex="\(n\geq1\)">\(n\geq1\)</span>, <span class="math" data-index="257" data-tex="\(k\in\mathbb Z\)">\(k\in\mathbb Z\)</span>, and suppose <span class="math" data-index="258" data-tex="\(u\in\mathcal S&#x27;(\mathbb R^n)\)">\(u\in\mathcal S&#x27;(\mathbb R^n)\)</span> is homogeneous of degree <span class="math" data-index="259" data-tex="\(-n-k\)">\(-n-k\)</span> and has parity</p>
+<span class="math math-display" id="proof-eq-2" data-index="260" data-tex="\[
+ u(-x)=(-1)^{k+1}u(x).
+ \tag{2}
+\]">\[
+ u(-x)=(-1)^{k+1}u(x).
+ \tag{2}
+\]</span>
+<p>The equality of distributions in (2) uses reflection of the test. For <span class="math" data-index="261" data-tex="\(n=1\)">\(n=1\)</span>, the unit sphere <span class="math" data-index="262" data-tex="\(S^0\)">\(S^0\)</span> has its counting measure, with mass one at each of its two points.</p>
+<p>The angular representation in <span class="unlinked">H</span>, Theorem 1.2, gives a unique distribution <span class="math" data-index="263" data-tex="\(T\)">\(T\)</span> on <span class="math" data-index="264" data-tex="\(S^{n-1}\)">\(S^{n-1}\)</span> such that, for tests supported away from zero,</p>
+<span class="math math-display" id="proof-eq-3" data-index="265" data-tex="\[
+ \langle u,\psi\rangle
+ =T\left(\omega\longmapsto
+            \int_0^\infty r^{-k-1}\psi(r\omega)\,dr\right).
+ \tag{3}
+\]">\[
+ \langle u,\psi\rangle
+ =T\left(\omega\longmapsto
+            \int_0^\infty r^{-k-1}\psi(r\omega)\,dr\right).
+ \tag{3}
+\]</span>
+<p>If <span class="math" data-index="266" data-tex="\(u(r\omega)=r^{-n-k}g(\omega)\)">\(u(r\omega)=r^{-n-k}g(\omega)\)</span> is an ordinary function, then <span class="math" data-index="267" data-tex="\(T(h)=\int_{S^{n-1}}g(\omega)h(\omega)\,dS(\omega)\)">\(T(h)=\int_{S^{n-1}}g(\omega)h(\omega)\,dS(\omega)\)</span>. Thus <span class="math" data-index="268" data-tex="\(T\)">\(T\)</span> includes the usual, unnormalized Euclidean sphere measure. Reflection of (3) and uniqueness give</p>
+<span class="math math-display" id="proof-eq-4" data-index="269" data-tex="\[
+ T(h(-\,\cdot))=(-1)^{k+1}T(h).
+ \tag{4}
+\]">\[
+ T(h(-\,\cdot))=(-1)^{k+1}T(h).
+ \tag{4}
+\]</span>
+<p>Define the tempered distribution on the real radial line</p>
+<span class="math math-display" id="proof-eq-5" data-index="270" data-tex="\[
+ P_k(r)=
+ \begin{cases}
+  \operatorname{pf}(r^{-k-1}),&amp;k\geq0,\\
+  r^{-k-1},&amp;k&lt;0,
+ \end{cases}
+ \qquad
+ \operatorname{pf}(r^{-k-1})
+       =\dfrac{(-1)^k}{k!}\partial_r^k
+                         \operatorname{pv}\dfrac1r .
+ \tag{5}
+\]">\[
+ P_k(r)=
+ \begin{cases}
+  \operatorname{pf}(r^{-k-1}),&amp;k\geq0,\\
+  r^{-k-1},&amp;k&lt;0,
+ \end{cases}
+ \qquad
+ \operatorname{pf}(r^{-k-1})
+       =\dfrac{(-1)^k}{k!}\partial_r^k
+                         \operatorname{pv}\dfrac1r .
+ \tag{5}
+\]</span>
+<p>The finite part in (5) is the symmetric finite part of <span class="unlinked">P</span>, Proposition 5.1; it is not a one-sided finite part with an independently chosen contact term.</p>
+<p><strong>Proposition 1.1.</strong> On every Schwartz test,</p>
+<span class="math math-display" id="proof-eq-6" data-index="271" data-tex="\[
+ \langle u,\psi\rangle
+ =\frac12 T\left(\omega\longmapsto
+                  \langle P_k(r),\psi(r\omega)\rangle\right).
+ \tag{6}
+\]">\[
+ \langle u,\psi\rangle
+ =\frac12 T\left(\omega\longmapsto
+                  \langle P_k(r),\psi(r\omega)\rangle\right).
+ \tag{6}
+\]</span>
+<p>The right side is a continuous tempered distribution for every angular <span class="math" data-index="272" data-tex="\(T\)">\(T\)</span> satisfying (4).</p>
+<p><strong>Proof.</strong> Formula (6) on compact smooth tests is exactly <span class="unlinked">H</span>, Theorem 5.1, with its integer <span class="math" data-index="273" data-tex="\(\ell=-k-1\)">\(\ell=-k-1\)</span>. That theorem proves both existence and uniqueness at the origin: when <span class="math" data-index="274" data-tex="\(k\geq0\)">\(k\geq0\)</span>, opposite parity annihilates the degree-<span class="math" data-index="275" data-tex="\(k\)">\(k\)</span> angular moments and eliminates every order-<span class="math" data-index="276" data-tex="\(k\)">\(k\)</span> point jet. When <span class="math" data-index="277" data-tex="\(k&lt;0\)">\(k&lt;0\)</span>, the degree <span class="math" data-index="278" data-tex="\(-n-k\)">\(-n-k\)</span> is nonresonant, and Theorem 3.1 gives uniqueness.</p>
+<p>We verify the passage to Schwartz tests. In any compact sphere-coordinate chart, differentiation of <span class="math" data-index="279" data-tex="\(\psi(r\omega)\)">\(\psi(r\omega)\)</span> with respect to <span class="math" data-index="280" data-tex="\(r\)">\(r\)</span> and the angular coordinates gives a finite sum of derivatives of <span class="math" data-index="281" data-tex="\(\psi\)">\(\psi\)</span>, multiplied by polynomials in <span class="math" data-index="282" data-tex="\(r\)">\(r\)</span> whose degrees are at most the angular derivative order. Derivatives of the chart coefficients are bounded on the compact chart. Consequently, for all nonnegative integers <span class="math" data-index="283" data-tex="\(M,a,b\)">\(M,a,b\)</span>, every line Schwartz seminorm of every angular derivative of order at most <span class="math" data-index="284" data-tex="\(b\)">\(b\)</span> is bounded by a finite sum of seminorms</p>
+<span class="math math-display" id="proof-eq-7" data-index="285" data-tex="\[
+ \sup_x(1+|x|)^{M+b}|\partial^\gamma\psi(x)|,
+ \qquad |\gamma|\leq a+b.
+ \tag{7}
+\]">\[
+ \sup_x(1+|x|)^{M+b}|\partial^\gamma\psi(x)|,
+ \qquad |\gamma|\leq a+b.
+ \tag{7}
+\]</span>
+<p>A finite sphere-chart cover suffices. For <span class="math" data-index="286" data-tex="\(S^0\)">\(S^0\)</span>, this is just the two restrictions <span class="math" data-index="287" data-tex="\(\psi(r)\)">\(\psi(r)\)</span> and <span class="math" data-index="288" data-tex="\(\psi(-r)\)">\(\psi(-r)\)</span>.</p>
+<p>The tempered bound for <span class="math" data-index="289" data-tex="\(P_k\)">\(P_k\)</span> therefore makes the angular function in (6) smooth, with every sphere seminorm bounded by finitely many Schwartz seminorms of <span class="math" data-index="290" data-tex="\(\psi\)">\(\psi\)</span>. To justify each angular derivative, take its difference quotient in a slightly larger compact chart. The fundamental theorem expresses the remainder as an integral of the next derivative. On a bounded <span class="math" data-index="291" data-tex="\(r\)">\(r\)</span>-interval that remainder tends uniformly to zero with every fixed derivative, by uniform continuity. Outside that interval, (7) with one additional Schwartz weight makes the requested weighted seminorm uniformly small as the interval grows. This proves convergence in every line Schwartz seminorm. Applying the continuous functional <span class="math" data-index="292" data-tex="\(P_k\)">\(P_k\)</span> gives the asserted derivative. Iteration covers every order.</p>
+<p>The angular distribution <span class="math" data-index="293" data-tex="\(T\)">\(T\)</span> has a bound by finitely many sphere derivatives. Combining it with (7) proves continuity of the right side on <span class="math" data-index="294" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>. It agrees with <span class="math" data-index="295" data-tex="\(u\)">\(u\)</span> on compact smooth tests. Those tests are dense in <span class="math" data-index="296" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>, by <span class="unlinked">F</span>, Section 1, so the two continuous functionals agree everywhere. <span class="math" data-index="297" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The factor <span class="math" data-index="298" data-tex="\(1/2\)">\(1/2\)</span> is essential. On the punctured space, substitute <span class="math" data-index="299" data-tex="\(r=-s\)">\(r=-s\)</span> on the negative half-line. The parity of <span class="math" data-index="300" data-tex="\(P_k\)">\(P_k\)</span> is <span class="math" data-index="301" data-tex="\((-1)^{k+1}\)">\((-1)^{k+1}\)</span>, and (4) supplies the same sign from the angular distribution. Their product is one, so the negative radial half contributes exactly the positive half. Formula (6) divides this double count by two.</p>
+<h2 id="2-the-complete-one-dimensional-transform">2. The complete one-dimensional transform</h2>
+<p>Put</p>
+<span class="math math-display" id="proof-eq-8" data-index="302" data-tex="\[
+ \sigma_k(t)=
+ \begin{cases}
+  \dfrac{\operatorname{sgn}(t)t^k}{2k!},&amp;k\geq0,\\[4pt]
+  \delta_0^{(-k-1)}(t),&amp;k&lt;0.
+ \end{cases}
+ \tag{8}
+\]">\[
+ \sigma_k(t)=
+ \begin{cases}
+  \dfrac{\operatorname{sgn}(t)t^k}{2k!},&amp;k\geq0,\\[4pt]
+  \delta_0^{(-k-1)}(t),&amp;k&lt;0.
+ \end{cases}
+ \tag{8}
+\]</span>
+<p>For negative <span class="math" data-index="303" data-tex="\(k\)">\(k\)</span>, the right side is a delta derivative on the entire line, not a function defined only away from zero.</p>
+<p><strong>Proposition 2.1.</strong> With the convention (1) in dimension one,</p>
+<span class="math math-display" id="proof-eq-9" data-index="304" data-tex="\[
+ \widehat P_k=2\pi i^{-1-k}\sigma_k
+                    \quad\hbox{in }\mathcal S&#x27;(\mathbb R).
+ \tag{9}
+\]">\[
+ \widehat P_k=2\pi i^{-1-k}\sigma_k
+                    \quad\hbox{in }\mathcal S&#x27;(\mathbb R).
+ \tag{9}
+\]</span>
+<p><strong>Proof.</strong> The exact boundary formulas in <span class="unlinked">B</span>, Theorem 2.1, give</p>
+<span class="math math-display" id="proof-eq-10" data-index="305" data-tex="\[
+ \frac12\left((r+i0)^{-1}+(r-i0)^{-1}\right)
+                    =\operatorname{pv}\frac1r .
+ \tag{10}
+\]">\[
+ \frac12\left((r+i0)^{-1}+(r-i0)^{-1}\right)
+                    =\operatorname{pv}\frac1r .
+ \tag{10}
+\]</span>
+<p>Its Corollary 3.2 gives the transforms of those two boundary values as <span class="math" data-index="306" data-tex="\(-2\pi iH(t)\)">\(-2\pi iH(t)\)</span> and <span class="math" data-index="307" data-tex="\(2\pi iH(-t)\)">\(2\pi iH(-t)\)</span>, respectively. Here <span class="math" data-index="308" data-tex="\(H\)">\(H\)</span> is the Heaviside distribution. Therefore</p>
+<span class="math math-display" id="proof-eq-11" data-index="309" data-tex="\[
+ \mathcal F\left(\operatorname{pv}\frac1r\right)
+  =\pi i\bigl(H(-t)-H(t)\bigr)
+  =-i\pi\operatorname{sgn}(t).
+ \tag{11}
+\]">\[
+ \mathcal F\left(\operatorname{pv}\frac1r\right)
+  =\pi i\bigl(H(-t)-H(t)\bigr)
+  =-i\pi\operatorname{sgn}(t).
+ \tag{11}
+\]</span>
+<p>All these equalities hold on Schwartz tests, including tests meeting zero.</p>
+<p>For <span class="math" data-index="310" data-tex="\(k\geq0\)">\(k\geq0\)</span>, transform the derivative formula (5), using <span class="unlinked">F</span>, Section 5:</p>
+<span class="math math-display" id="proof-eq-12" data-index="311" data-tex="\[
+ \widehat P_k
+ =\frac{(-1)^k}{k!}(it)^k(-i\pi\operatorname{sgn}t)
+ =\frac{\pi i^{-1-k}}{k!}t^k\operatorname{sgn}t.
+ \tag{12}
+\]">\[
+ \widehat P_k
+ =\frac{(-1)^k}{k!}(it)^k(-i\pi\operatorname{sgn}t)
+ =\frac{\pi i^{-1-k}}{k!}t^k\operatorname{sgn}t.
+ \tag{12}
+\]</span>
+<p>The last phase identity follows from <span class="math" data-index="312" data-tex="\((-1)^k i^k=i^{-k}\)">\((-1)^k i^k=i^{-k}\)</span>. Equations (8) and (12) give (9).</p>
+<p>For <span class="math" data-index="313" data-tex="\(k&lt;0\)">\(k&lt;0\)</span>, set <span class="math" data-index="314" data-tex="\(j=-k-1\geq0\)">\(j=-k-1\geq0\)</span>. The same Fourier foundation proves <span class="math" data-index="315" data-tex="\(\mathcal F1=2\pi\delta_0\)">\(\mathcal F1=2\pi\delta_0\)</span> and <span class="math" data-index="316" data-tex="\(\mathcal F(r v)=i\partial_t\mathcal Fv\)">\(\mathcal F(r v)=i\partial_t\mathcal Fv\)</span>. Applying it <span class="math" data-index="317" data-tex="\(j\)">\(j\)</span> times gives</p>
+<span class="math math-display" id="proof-eq-13" data-index="318" data-tex="\[
+ \mathcal F(r^j)=2\pi i^j\delta_0^{(j)}.
+ \tag{13}
+\]">\[
+ \mathcal F(r^j)=2\pi i^j\delta_0^{(j)}.
+ \tag{13}
+\]</span>
+<p>This is again (9), with <span class="math" data-index="319" data-tex="\(j=-k-1\)">\(j=-k-1\)</span>. Every integer is covered. <span class="math" data-index="320" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-hyperplane-averages-are-smooth-angular-tests">3. Hyperplane averages are smooth angular tests</h2>
+<p>For a unit vector <span class="math" data-index="321" data-tex="\(\omega\)">\(\omega\)</span> and <span class="math" data-index="322" data-tex="\(\phi\in\mathcal S(\mathbb R^n)\)">\(\phi\in\mathcal S(\mathbb R^n)\)</span>, define its hyperplane average</p>
+<span class="math math-display" id="proof-eq-14" data-index="323" data-tex="\[
+ \mathcal R_\omega\phi(t)
+ =\int_{\omega^\perp}\phi(t\omega+y)\,dy ,
+ \tag{14}
+\]">\[
+ \mathcal R_\omega\phi(t)
+ =\int_{\omega^\perp}\phi(t\omega+y)\,dy ,
+ \tag{14}
+\]</span>
+<p>where <span class="math" data-index="324" data-tex="\(dy\)">\(dy\)</span> is the Euclidean measure on <span class="math" data-index="325" data-tex="\(\omega^\perp\)">\(\omega^\perp\)</span>. When <span class="math" data-index="326" data-tex="\(n=1\)">\(n=1\)</span>, the zero-dimensional integral has its single-point mass one, so <span class="math" data-index="327" data-tex="\(\mathcal R_\omega\phi(t)=\phi(t\omega)\)">\(\mathcal R_\omega\phi(t)=\phi(t\omega)\)</span>.</p>
+<p><strong>Lemma 3.1.</strong> The map <span class="math" data-index="328" data-tex="\(\omega\mapsto\mathcal R_\omega\phi\)">\(\omega\mapsto\mathcal R_\omega\phi\)</span> is a smooth sphere-valued family of line Schwartz functions. Every seminorm of this family is bounded by finitely many Schwartz seminorms of <span class="math" data-index="329" data-tex="\(\phi\)">\(\phi\)</span>. Its one-dimensional Fourier transform satisfies</p>
+<span class="math math-display" id="proof-eq-15" data-index="330" data-tex="\[
+ \widehat{\mathcal R_\omega\phi}(r)=\widehat\phi(r\omega).
+ \tag{15}
+\]">\[
+ \widehat{\mathcal R_\omega\phi}(r)=\widehat\phi(r\omega).
+ \tag{15}
+\]</span>
+<p><strong>Proof.</strong> Near any fixed unit vector, choose a smooth orthonormal frame for its perpendicular plane. One construction projects a fixed independent set of <span class="math" data-index="331" data-tex="\(n-1\)">\(n-1\)</span> vectors onto the nearby perpendicular planes and applies Gram–Schmidt. Independence persists on a smaller neighborhood, and all divisions and positive square roots are of positive smooth functions there. Appending <span class="math" data-index="332" data-tex="\(\omega\)">\(\omega\)</span> gives a smooth orthogonal matrix <span class="math" data-index="333" data-tex="\(Q_\omega\)">\(Q_\omega\)</span>. In that chart,</p>
+<span class="math math-display" id="proof-eq-16" data-index="334" data-tex="\[
+ \mathcal R_\omega\phi(t)
+    =\int_{\mathbb R^{n-1}}\phi(Q_\omega(y,t))\,dy .
+ \tag{16}
+\]">\[
+ \mathcal R_\omega\phi(t)
+    =\int_{\mathbb R^{n-1}}\phi(Q_\omega(y,t))\,dy .
+ \tag{16}
+\]</span>
+<p>Orthogonality gives <span class="math" data-index="335" data-tex="\(|Q_\omega(y,t)|=\sqrt{|y|^2+t^2}\)">\(|Q_\omega(y,t)|=\sqrt{|y|^2+t^2}\)</span>. Any angular derivative of order <span class="math" data-index="336" data-tex="\(b\)">\(b\)</span> and <span class="math" data-index="337" data-tex="\(t\)">\(t\)</span>-derivative of order <span class="math" data-index="338" data-tex="\(a\)">\(a\)</span> of the integrand is a finite sum bounded by</p>
+<span class="math math-display" id="proof-eq-17" data-index="339" data-tex="\[
+ C(1+|y|+|t|)^b
+        \max_{|\gamma|\leq a+b}
+              |\partial^\gamma\phi(Q_\omega(y,t))|,
+ \tag{17}
+\]">\[
+ C(1+|y|+|t|)^b
+        \max_{|\gamma|\leq a+b}
+              |\partial^\gamma\phi(Q_\omega(y,t))|,
+ \tag{17}
+\]</span>
+<p>uniformly on a smaller compact chart. Choose a Schwartz weight <span class="math" data-index="340" data-tex="\(M\)">\(M\)</span> and use</p>
+<span class="math math-display" id="proof-eq-18" data-index="341" data-tex="\[
+ 1+\sqrt{|y|^2+t^2}\ \geq\
+                  2^{-1/2}(1+|y|+|t|).
+ \tag{18}
+\]">\[
+ 1+\sqrt{|y|^2+t^2}\ \geq\
+                  2^{-1/2}(1+|y|+|t|).
+ \tag{18}
+\]</span>
+<p>For <span class="math" data-index="342" data-tex="\(L=M-b&gt;n-1\)">\(L=M-b&gt;n-1\)</span>, the absolute derivative integral is bounded by a constant times a finite Schwartz seminorm of <span class="math" data-index="343" data-tex="\(\phi\)">\(\phi\)</span>, multiplied by</p>
+<span class="math math-display" id="proof-eq-19" data-index="344" data-tex="\[
+ \int_{\mathbb R^{n-1}}(1+|t|+|y|)^{-L}\,dy
+       =C_L(1+|t|)^{n-1-L}.
+ \tag{19}
+\]">\[
+ \int_{\mathbb R^{n-1}}(1+|t|+|y|)^{-L}\,dy
+       =C_L(1+|t|)^{n-1-L}.
+ \tag{19}
+\]</span>
+<p>The equality follows from <span class="math" data-index="345" data-tex="\(y=(1+|t|)z\)">\(y=(1+|t|)z\)</span>; the constant is finite because <span class="math" data-index="346" data-tex="\(L&gt;n-1\)">\(L&gt;n-1\)</span>. Finiteness can also be checked by shells: the region <span class="math" data-index="347" data-tex="\(2^j\leq|z|&lt;2^{j+1}\)">\(2^j\leq|z|&lt;2^{j+1}\)</span> has volume at most <span class="math" data-index="348" data-tex="\(C2^{j(n-1)}\)">\(C2^{j(n-1)}\)</span>, while the integrand is at most <span class="math" data-index="349" data-tex="\(2^{-jL}\)">\(2^{-jL}\)</span>, giving a convergent geometric series. Choosing <span class="math" data-index="350" data-tex="\(M&gt;b+n-1+N\)">\(M&gt;b+n-1+N\)</span> proves every requested weight <span class="math" data-index="351" data-tex="\((1+|t|)^N\)">\((1+|t|)^N\)</span>.</p>
+<p>The same majorants justify differentiation under the integral. More explicitly, the fundamental-theorem remainder for each parameter difference quotient is bounded by (17) with one additional derivative and a sufficiently larger weight. On <span class="math" data-index="352" data-tex="\(|t|+|y|\leq R\)">\(|t|+|y|\leq R\)</span>, uniform continuity gives uniform convergence with every fixed derivative. On its complement, one additional weight beyond the integrable bound (19) makes the weighted integral tail uniformly tend to zero as <span class="math" data-index="353" data-tex="\(R\)">\(R\)</span> grows. This proves convergence of the quotient in every line Schwartz seminorm. Repeating proves smoothness with values in the line Schwartz space. A finite compact chart cover proves the global assertion. The case <span class="math" data-index="354" data-tex="\(n=1\)">\(n=1\)</span> is immediate.</p>
+<p>Finally <span class="math" data-index="355" data-tex="\(\phi\)">\(\phi\)</span> is absolutely integrable, and (16) with the orthogonal change of variables <span class="math" data-index="356" data-tex="\(\xi=Q_\omega(y,t)\)">\(\xi=Q_\omega(y,t)\)</span> gives</p>
+<span class="math math-display" id="proof-eq-20" data-index="357" data-tex="\[
+ \int_{\mathbb R}e^{-irt}\mathcal R_\omega\phi(t)\,dt
+       =\int_{\mathbb R^n}e^{-ir\omega\cdot\xi}\phi(\xi)\,d\xi .
+ \tag{20}
+\]">\[
+ \int_{\mathbb R}e^{-irt}\mathcal R_\omega\phi(t)\,dt
+       =\int_{\mathbb R^n}e^{-ir\omega\cdot\xi}\phi(\xi)\,d\xi .
+ \tag{20}
+\]</span>
+<p>Fubini and this measure-preserving substitution are valid for the absolute integrand <span class="math" data-index="358" data-tex="\(|\phi|\)">\(|\phi|\)</span>. This proves (15). <span class="math" data-index="359" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, the function</p>
+<span class="math math-display" id="proof-eq-21" data-index="360" data-tex="\[
+ J_{k,\phi}(\omega)
+        =\langle\sigma_k(t),\mathcal R_\omega\phi(t)\rangle
+ \tag{21}
+\]">\[
+ J_{k,\phi}(\omega)
+        =\langle\sigma_k(t),\mathcal R_\omega\phi(t)\rangle
+ \tag{21}
+\]</span>
+<p>is smooth, and every sphere seminorm is bounded by finitely many Schwartz seminorms of <span class="math" data-index="361" data-tex="\(\phi\)">\(\phi\)</span>. For <span class="math" data-index="362" data-tex="\(k\geq0\)">\(k\geq0\)</span> this uses the polynomial growth of the locally integrable function in (8); for <span class="math" data-index="363" data-tex="\(k&lt;0\)">\(k&lt;0\)</span> it is evaluation of a fixed derivative of (14) at zero. No multiplication of arbitrary angular distributions is used in defining (21).</p>
+<h2 id="4-the-angular-fourier-identity-on-the-whole-frequency-space">4. The angular Fourier identity on the whole frequency space</h2>
+<p><strong>Theorem 4.1.</strong> Under (2), with the angular distribution <span class="math" data-index="364" data-tex="\(T\)">\(T\)</span> of (3),</p>
+<span class="math math-display" id="proof-eq-22" data-index="365" data-tex="\[
+ \langle\widehat u,\phi\rangle
+       =\pi i^{-1-k}\,T(J_{k,\phi}),
+          \qquad \phi\in\mathcal S(\mathbb R^n).
+ \tag{22}
+\]">\[
+ \langle\widehat u,\phi\rangle
+       =\pi i^{-1-k}\,T(J_{k,\phi}),
+          \qquad \phi\in\mathcal S(\mathbb R^n).
+ \tag{22}
+\]</span>
+<p>Equivalently,</p>
+<span class="math math-display" id="proof-eq-23" data-index="366" data-tex="\[
+ \widehat u(\xi)
+  =\pi i^{-1-k}
+        \int_{S^{n-1}}u(\omega)\,
+                         \sigma_k(\omega\cdot\xi)\,dS(\omega).
+ \tag{23}
+\]">\[
+ \widehat u(\xi)
+  =\pi i^{-1-k}
+        \int_{S^{n-1}}u(\omega)\,
+                         \sigma_k(\omega\cdot\xi)\,dS(\omega).
+ \tag{23}
+\]</span>
+<p>The integral in (23) means exactly the test pairing (21)–(22). It is a tempered distribution on all of <span class="math" data-index="367" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, including its origin.</p>
+<p><strong>Proof.</strong> Apply (6) to the Schwartz function <span class="math" data-index="368" data-tex="\(\widehat\phi\)">\(\widehat\phi\)</span>, then use (15) and the one-dimensional distributional Fourier transpose:</p>
+<span class="math math-display" id="proof-eq-24" data-index="369" data-tex="\[
+ \begin{aligned}
+ \langle\widehat u,\phi\rangle
+ &amp;=\frac12 T\left(\omega\longmapsto
+                    \langle P_k(r),\widehat\phi(r\omega)\rangle\right)\\
+ &amp;=\frac12 T\left(\omega\longmapsto
+           \langle P_k,\widehat{\mathcal R_\omega\phi}\rangle\right)\\
+ &amp;=\frac12 T\left(\omega\longmapsto
+                     \langle\widehat P_k,\mathcal R_\omega\phi\rangle\right)\\
+ &amp;=\pi i^{-1-k}T(J_{k,\phi}).
+ \end{aligned}
+ \tag{24}
+\]">\[
+ \begin{aligned}
+ \langle\widehat u,\phi\rangle
+ &amp;=\frac12 T\left(\omega\longmapsto
+                    \langle P_k(r),\widehat\phi(r\omega)\rangle\right)\\
+ &amp;=\frac12 T\left(\omega\longmapsto
+           \langle P_k,\widehat{\mathcal R_\omega\phi}\rangle\right)\\
+ &amp;=\frac12 T\left(\omega\longmapsto
+                     \langle\widehat P_k,\mathcal R_\omega\phi\rangle\right)\\
+ &amp;=\pi i^{-1-k}T(J_{k,\phi}).
+ \end{aligned}
+ \tag{24}
+\]</span>
+<p>Proposition 1.1 and Lemma 3.1 show that every angular function in these lines is smooth, with the requisite finite seminorm bounds. Proposition 2.1 supplies the last equality with its exact phase. These are equalities of test pairings, so there is no unproved interchange of two singular distributions. The bounds after (21) also directly prove tempered continuity of the last line. <span class="math" data-index="370" data-tex="\(\square\)">\(\square\)</span></p>
+<p>When <span class="math" data-index="371" data-tex="\(T\)">\(T\)</span> has a smooth density, (22) is the ordinary sphere pairing of that density with the distribution <span class="math" data-index="372" data-tex="\(\sigma_k(\omega\cdot\xi)\)">\(\sigma_k(\omega\cdot\xi)\)</span>, tested first in <span class="math" data-index="373" data-tex="\(\xi\)">\(\xi\)</span>. For arbitrary <span class="math" data-index="374" data-tex="\(T\)">\(T\)</span>, (21) is the corresponding smooth angular test and remains the definition. General wavefront estimates for sphere restriction, distribution products and projection integration are additional assertions. The identity (22) itself has been proved without assuming those estimates or analytic Euler regularity.</p>
+<p><strong>Proposition 4.2 (continuity and scaling).</strong> For fixed <span class="math" data-index="375" data-tex="\(k\)">\(k\)</span>, the maps from angular distributions satisfying (4) to <span class="math" data-index="376" data-tex="\(u\)">\(u\)</span> and to <span class="math" data-index="377" data-tex="\(\widehat u\)">\(\widehat u\)</span> are continuous for both weak and strong distribution topologies. The Fourier transform is homogeneous of degree <span class="math" data-index="378" data-tex="\(k\)">\(k\)</span> and has the same reflection parity as <span class="math" data-index="379" data-tex="\(u\)">\(u\)</span>.</p>
+<p><strong>Proof.</strong> Weak convergence is convergence after pairing with each smooth angular test. Formula (6) uses one such test for each <span class="math" data-index="380" data-tex="\(\psi\)">\(\psi\)</span>, and (22) uses one for each <span class="math" data-index="381" data-tex="\(\phi\)">\(\phi\)</span>, so both preserve weak convergence.</p>
+<p>The strong dual topology uses seminorms <span class="math" data-index="382" data-tex="\(\sup_{\psi\in B}|u(\psi)|\)">\(\sup_{\psi\in B}|u(\psi)|\)</span> over bounded Schwartz-test sets, and the corresponding seminorms over bounded smooth sphere-test sets. Estimates (7) and those after (21) send every bounded Schwartz set to a set bounded in every smooth sphere seminorm. Transposition therefore bounds each output strong seminorm by one input strong seminorm, proving strong continuity.</p>
+<p>For scaling, write <span class="math" data-index="383" data-tex="\(D_tu(\psi)=t^{-n}u(\psi(\,\cdot/t))\)">\(D_tu(\psi)=t^{-n}u(\psi(\,\cdot/t))\)</span>. The Fourier test substitution gives</p>
+<span class="math math-display" id="proof-eq-25" data-index="384" data-tex="\[
+ \mathcal F(D_tu)=t^{-n}D_{1/t}\widehat u.
+ \tag{25}
+\]">\[
+ \mathcal F(D_tu)=t^{-n}D_{1/t}\widehat u.
+ \tag{25}
+\]</span>
+<p>Combine this with <span class="math" data-index="385" data-tex="\(D_tu=t^{-n-k}u\)">\(D_tu=t^{-n-k}u\)</span>; setting <span class="math" data-index="386" data-tex="\(s=1/t\)">\(s=1/t\)</span> gives <span class="math" data-index="387" data-tex="\(D_s\widehat u=s^k\widehat u\)">\(D_s\widehat u=s^k\widehat u\)</span>. Reflection commutes with Fourier transformation by <span class="unlinked">F</span>, Section 5, so (2) gives the same parity for <span class="math" data-index="388" data-tex="\(\widehat u\)">\(\widehat u\)</span>. <span class="math" data-index="389" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Opposite parity is a real hypothesis. In dimension one, <span class="math" data-index="390" data-tex="\(\delta_0\)">\(\delta_0\)</span> is homogeneous of degree <span class="math" data-index="391" data-tex="\(-1\)">\(-1\)</span>, but its angular distribution is zero and its transform is the nonzero constant one. It has even parity, whereas <span class="math" data-index="392" data-tex="\(k=0\)">\(k=0\)</span> requires odd parity. Dropping parity from Theorem 4.1 would therefore give a false identity.</p>
+<h2 id="references-2">References</h2>
+<p><span class="unlinked">H</span> <span class="unlinked">Homogeneous extensions and angular moments</span>, Theorems 1.2, 3.1 and 5.1, with the angular foundations linked there.</p>
+<p><span class="unlinked">P</span> <span class="unlinked">Finite parts of singular powers</span>, Proposition 5.1 and its complete proof.</p>
+<p><span class="unlinked">B</span> <span class="unlinked">Complex powers at a boundary</span>, Theorem 2.1 and Corollary 3.2, with the normalized boundary proof preceding them.</p>
+<p><span class="unlinked">F</span> <span class="unlinked">Schwartz functions and Fourier inversion</span>, Sections 1–5, including compact-test density and all transposed identities.</p>
+<p>The linked programme proofs retain their original provenance and CC0 notices. This chapter's Radon-transform argument and exposition are original CC0 text. General analytic-wavefront estimates remain additional mathematical prerequisites.</p>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/angular-distributions-and-full-fourier-transforms.md" download>Download the complete lesson source</a>. Original proof exposition, examples, solutions and diagrams use CC0 1.0. Linked prerequisite proofs and the font retain their stated terms.</p><ul><li><a href="reproduce/L185/angular-distributions-and-full-Fourier-transforms-formal.md" download>angular-distributions-and-full-Fourier-transforms-formal.md</a></li><li><a href="reproduce/L185/angular-distributions-and-full-Fourier-transforms-learner.md" download>angular-distributions-and-full-Fourier-transforms-learner.md</a></li><li><span class="unlinked">angular-Fourier-check-and-figures.py</span></li><li><a href="reproduce/L185/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L185/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li><li><a href="reproduce/L185/README-reproduce.md" download>README-reproduce.md</a></li><li><a href="reproduce/L185/figures/antipodal-line-source-and-full-spectrum.png" download>figures/antipodal-line-source-and-full-spectrum.png</a></li><li><a href="reproduce/L185/figures/antipodal-line-source-and-full-spectrum.svg" download>figures/antipodal-line-source-and-full-spectrum.svg</a></li><li><a href="reproduce/L185/figures/exact-geometry.json" download>figures/exact-geometry.json</a></li><li><a href="reproduce/L185/figures/Gaussian-hyperplane-test-and-origin-pairing.png" download>figures/Gaussian-hyperplane-test-and-origin-pairing.png</a></li><li><a href="reproduce/L185/figures/Gaussian-hyperplane-test-and-origin-pairing.svg" download>figures/Gaussian-hyperplane-test-and-origin-pairing.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

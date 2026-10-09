@@ -4,7 +4,7 @@
 
 [The arbitrary weak-coefficient theorem](../weak-coefficients.html#WC0) proves the same finite holomorphic equality for every bounded weakly complex-constructible complex over every commutative ring. Its [direct original-ring proof](../weak-coefficients.html#WC6) includes infinitely generated and nonperfect stalks. The perfect-stalk proofs and scalar-change statements below remain useful at their specified scope.
 
-Self-checked by the writing AI. The finite-map proof below works at the full coefficient-ring and constructibility scope of FH1. It uses an explicit finite conormal-image argument, actual supported tests, the integer Morse filtration and residue-field detection. The analytic, normal-Morse, field-perverse and controlled-Morse inputs are stated in [the geometric prerequisites](#SH02-FH-INPUTS) and developed in the four lessons linked there, relative to their exact external theorem statements. This supplies the primary finite-map argument for `SH02-MO-HOLOMORPHIC-IMPORT` in microsupport operations.
+Self-checked by the writing AI. The finite-map proof below works at the full coefficient-ring and constructibility scope of FH1. It uses an explicit finite conormal-image argument, actual supported tests, the integer Morse filtration and residue-field detection. The analytic, normal-Morse, field-perverse and controlled-Morse inputs are stated in [the geometric prerequisites](#SH02-FH-INPUTS) and developed in the four lessons linked there, relative to their exact external theorem statements. This supplies the primary finite-map argument for `SH02-MO-HOLOMORPHIC-IMPORT` in [microsupport operations](../../sheaf-proof-readings/SH02-microsupport-operations.html).
 
 Let $k$ be a commutative ring with identity and finite global dimension. A complex-constructible complex means a bounded complex whose cohomology is locally constant on a locally finite complex analytic stratification and whose stalks are perfect over $k$. Perfection means representability by a bounded complex of finite projective modules. It does not mean that those modules are free, or that their cohomology is a vector space. Complex manifolds have finite dimension and are Hausdorff and countable at infinity.
 
@@ -82,7 +82,7 @@ g^{-1}Rf_*A\longrightarrow Rf'_*g'^{-1}A
 \tag{FH5}
 $$
 
-is an isomorphism. Indeed, at $x'$, FH3 identifies both sides with $\bigoplus_{f(y)=g(x')}A_y$. The map restricts a representative germ to that same tuple and is the identity under these identifications. This also proves its compatibility with successive changes of base and with identity squares. Exactness of inverse image to constant-ring spaces is the coefficient convention in the prerequisite proofs.
+is an isomorphism. Indeed, at $x'$, FH3 identifies both sides with $\bigoplus_{f(y)=g(x')}A_y$. The map restricts a representative germ to that same tuple and is the identity under these identifications. This also proves its compatibility with successive changes of base and with identity squares. Exactness of inverse image to constant-ring spaces is the coefficient convention in [the prerequisite proofs](../../sheaf-proof-readings/SH02-open-prerequisite-proofs.html).
 
 ## SH02-FH-LOCAL-SUPPORT — A support test splits over the fibre
 
@@ -202,7 +202,7 @@ $$
 R\Gamma_c(\sigma;P)\simeq P[-d].
 $$
 
-This is the compactly supported orientation calculation for $\mathbb R^d$ in manifold duality; its comparison with coefficients is induced by tensoring the same orientation generator. Thus the assertion holds on each open simplex. The open-closed localization triangle at every skeletal step gives a triangle of compactly supported cohomology complexes. The projection comparison with coefficients is natural for its three maps. Finite sums and cones preserve perfection, and derived tensor preserves these triangles, so induction proves perfection and the comparison for $R\Gamma_c(K;A)$. Compactness identifies this with ordinary cohomology. Repeat the argument for $L$ and take the fibre of the restriction $R\Gamma(K;A)\to R\Gamma(L;A)$. This gives FH16 with its actual restriction map. $\square$
+This is the compactly supported orientation calculation for $\mathbb R^d$ in [manifold duality](../../sheaf-proof-readings/SH02-manifold-duality.html); its comparison with coefficients is induced by tensoring the same orientation generator. Thus the assertion holds on each open simplex. The open-closed localization triangle at every skeletal step gives a triangle of compactly supported cohomology complexes. The projection comparison with coefficients is natural for its three maps. Finite sums and cones preserve perfection, and derived tensor preserves these triangles, so induction proves perfection and the comparison for $R\Gamma_c(K;A)$. Compactness identifies this with ordinary cohomology. Repeat the argument for $L$ and take the fibre of the restriction $R\Gamma(K;A)\to R\Gamma(L;A)$. This gives FH16 with its actual restriction map. $\square$
 
 No triangulation-existence theorem is hidden in this lemma: the compatible finite triangulation is a hypothesis. Applying it to a normal slice or a Milnor pair still requires that such a pair exists and computes the desired sheaf-theoretic datum. In particular it does not justify interchanging tensor with an arbitrary infinite nearby-cycle limit.
 
@@ -212,8 +212,8 @@ The main proof below uses supported real tests and finite sums. The stronger cri
 
 - Analytic geometry for finite maps supplies compatible strata, finite analytic images and closed conormals.
 - Normal Morse data and change of coefficients supplies the finite normal pairs, their stabilization and the coefficient comparison.
-- [Perverse degrees and normal Morse complexes](perverse-normal-morse-inputs.md#SH02-PNM-UNIT) supplies the field-perverse degree and normal-Morse exactness.
-- [An isolated holomorphic test and its Morse filtration](isolated-holomorphic-morse-tests.md#SH02-IHM-UNIT) supplies the controlled cluster, actual relative filtration and positive integer count.
+- [Perverse degrees and normal Morse complexes](../perverse-normal-morse-inputs.html#sh02-pnm-unit-perverse-degrees-and-normal-morse-complexes) supplies the field-perverse degree and normal-Morse exactness.
+- [An isolated holomorphic test and its Morse filtration](../isolated-holomorphic-morse-tests.html#sh02-ihm-unit-an-isolated-holomorphic-test-and-its-morse-filtration) supplies the controlled cluster, actual relative filtration and positive integer count.
 
 For the primary proof, use these inputs with the [finite conormal-image argument](#SH02-FH-CONORMAL-IMAGE), [quadratic test construction](#SH02-FH-HOLOMORPHIC-TEST), [field argument](#SH02-FH-FIELD-FINITE) and [coefficient recovery](#SH02-FH-RING-FINITE). The [full critical-support route](#SH02-FH-GEOMETRIC-CONTRACT) is a separate, stronger direction; The [general nearby-cycle proof](../general-nearby-cycle-models.html) supplies FH13; The [critical-support proof](../general-critical-support.html) supplies FH14 separately. Neither is needed for FH30.
 
@@ -537,7 +537,7 @@ This is FH23 with values in $\mathbb Z$, and proves more than its Euler-characte
 
 For a sign check take $P=K_{\mathbb C}[1]$ and $g(z)=z^2$. The negative region of $\operatorname{Re}g$ has two local components. Its relative complex with the disc is $K[-1]$, and the shift $[1]$ gives the local test $K$ in degree zero. The complex intersection with the zero section has multiplicity one. A point sheaf with a constant test also gives a degree-zero vector space and intersection multiplicity one. These checks include a zero pulled-back covector and agree with the stated normalization.
 
-The construction of the controlled pair and perturbation is supplied by [the isolated-test lesson](isolated-holomorphic-morse-tests.md#SH02-IHM-BOUNDARY) at the precise scope stated above. A genericity statement alone would not prove FH55, and a field-valued trace would not prove the integer equality. This deduction explicitly records both distinctions.
+The construction of the controlled pair and perturbation is supplied by [the isolated-test lesson](../isolated-holomorphic-morse-tests.html#sh02-ihm-boundary-from-a-local-test-to-one-compact-cluster) at the precise scope stated above. A genericity statement alone would not prove FH55, and a field-valued trace would not prove the integer equality. This deduction explicitly records both distinctions.
 
 ## SH02-FH-FIELD-FINITE — Reverse inclusion from isolated source tests
 
@@ -764,7 +764,7 @@ $$
 
 where $J$ is the complex structure. This is complex linear, has real part $\eta$, and commutes with pullback by a holomorphic differential. There is no sign reversal in this identification.
 
-The proper-image estimate in microsupport operations gives the inclusion from left to right in FH1. For the other inclusion take $(x,\eta)$ on its right side and choose $y\in f^{-1}(x)$ with $(y,df_y^t\eta)\in\operatorname{SS}(G)$. Choose holomorphic coordinates near $x$ and the affine holomorphic function $\ell$ with $d\ell_x=\theta$ from FH15. Shrink the target neighborhood and restrict $f$ to its full inverse image; this is still finite and proper.
+The proper-image estimate in [microsupport operations](../../sheaf-proof-readings/SH02-microsupport-operations.html) gives the inclusion from left to right in FH1. For the other inclusion take $(x,\eta)$ on its right side and choose $y\in f^{-1}(x)$ with $(y,df_y^t\eta)\in\operatorname{SS}(G)$. Choose holomorphic coordinates near $x$ and the affine holomorphic function $\ell$ with $d\ell_x=\theta$ from FH15. Shrink the target neighborhood and restrict $f$ to its full inverse image; this is still finite and proper.
 
 The ring version of FH14 applied to $\ell\circ f$ gives
 
@@ -806,10 +806,10 @@ Its cone is $k^{m-1}$ in degree zero with the convention FH8: subtract the first
 
 **Solution.** The perfect complex $[\mathbb Z\xrightarrow{2}\mathbb Z]$ is nonzero, while its tensor with $\mathbb Q$ is acyclic. Tensoring with $\mathbb F_2$ detects it. The argument uses residue fields at all primes, with a prime chosen for the particular perfect datum.
 
-## SH02-FH-ANTECEDENTS — Attribution and unresolved proof boundary
+## SH02-FH-ANTECEDENTS — Attribution and the two proof routes
 
 The finite holomorphic equality goes back to Kashiwara's work on systems of microdifferential equations; the micro-support form used here belongs to the theory of M. Kashiwara and P. Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985). The finite-fibre, localization, cycle-comparison and coefficient-reduction arguments are proved here.
 
-The analytic antecedent used to locate the remaining precise theorem is David B. Massey, [*A Little Microlocal Morse Theory*, arXiv:math/0006185v2](https://arxiv.org/abs/math/0006185v2), Corollary 4.15. It is stated over a principal ideal domain, so its field specialization has the required coefficient scope for FH14. Its proof depends on a perverse critical-support theorem and a visible-conormal description.
+An analytic antecedent for the critical-support theorem is David B. Massey, [*A Little Microlocal Morse Theory*, arXiv:math/0006185v2](https://arxiv.org/abs/math/0006185v2), Corollary 4.15. It is stated over a principal ideal domain, so its field specialization has the required coefficient scope for FH14. Its proof depends on a perverse critical-support theorem and a visible-conormal description.
 
 The primary finite-map proof is FH30. Its analytic, normal-Morse, field-perverse and controlled stratified Morse inputs are supplied by the four lessons linked in [the geometric prerequisites](#SH02-FH-INPUTS), relative to their exact external theorem statements. The finite image geometry, symmetric-Hessian test, finite constructibility and perverse exactness, integer filtration deduction, direct support comparison and residue-field recovery are supplied explicitly. The earlier FH14 route remains an alternative using the [proved critical-support theorem](../general-critical-support.html). The [general nearby-cycle proof](../general-nearby-cycle-models.html) supplies FH13 independently; FH13–FH14 do not lie on the primary proof chain.

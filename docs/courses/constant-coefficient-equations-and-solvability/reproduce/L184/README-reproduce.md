@@ -1,6 +1,6 @@
 # Equatorial cycles and projective periods
 
-The main formal chapter proves the exact affine/projective tube comparison, center factor two, positive normal coefficient one, affine scalar-fiber splitting and logarithm argument. The learner has four examples and eight fully solved exercises totaling 100 points. The accompanying analytic reading retains every mathematical expression and solved exercise in the original authored tangent/contour/polynomial-continuation proof body. Its general analytic-wavefront, homogeneous angular Fourier and wavefront-operation prerequisites retain their explicitly planned status.
+The main formal chapter proves the exact affine/projective tube comparison, center factor two, positive normal coefficient one, affine scalar-fiber splitting and logarithm argument. The learner has four examples and eight fully solved exercises totaling 100 points. The accompanying analytic reading retains every mathematical expression and solved exercise in the original authored tangent/contour/polynomial-continuation proof body. Its all-integer angular Fourier identity is supplied by the complete linked angular-distribution chapter. General analytic-wavefront and wavefront-operation prerequisites remain explicitly planned.
 
 Run with Python 3, NumPy, mpmath and Matplotlib:
 

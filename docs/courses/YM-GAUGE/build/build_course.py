@@ -327,6 +327,12 @@ def build():
     from figures_f09_dynamic import build as build_f09_dynamic_figure
     build_f09_dynamic_figure()
     render(COURSE/"src/YM-F09-dynamic-heat.md","Global heat flow and the time component","classical-dynamic-heat.html")
+    from figures_f09_potential import build as build_f09_potential_figure
+    build_f09_potential_figure()
+    render(COURSE/"src/YM-F09-potential-estimates.md","Ordinary heat smoothing and physical-time bounds","classical-potential-estimates.html")
+    from figures_f09_fixedtime import build as build_f09_fixedtime_figure
+    build_f09_fixedtime_figure()
+    render(COURSE/"src/YM-F09-fixed-time-estimates.md","Gauss law, heat curvature and fixed-time estimates","classical-fixed-time-estimates.html")
     course=json.loads((COURSE/"course.json").read_text(encoding="utf-8"))
     for unit in course["units"]:
         if unit["status"]=="available":

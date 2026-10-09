@@ -404,7 +404,7 @@ C_0(G)\rtimes_{\mathrm{lt}}G\cong\mathcal K(L^2(G)),
 \tag{5.7}
 \]
 
-via multiplication and left translation. We state (5.7) with the precise reference [Blackadar, Operator Algebras]. Its nondiscrete case is proved later in *Induced algebras and Green’s imprimitivity theorem*, using the subgroup \(\{e\}\). The discrete matrix-unit proof above is not a proof of that case.
+via multiplication and left translation. Equation (5.7), also discussed in [Blackadar, Operator Algebras], is proved for arbitrary locally compact Hausdorff groups in [Lesson 7, equations (7.40)–(7.41)](KT-CP-07.md#translation-gives-compact-operators-for-every-group), from [Green imprimitivity, Theorem 7.4](KT-CP-07.md#completion-in-the-full-crossed-product-norms), using the subgroup \(\{e\}\). The discrete matrix-unit proof above is not a proof of that case.
 
 **Proposition 5.5 (semidirect products).** Let \(N,H\) be locally compact Hausdorff groups and \(\theta\) a jointly continuous action of \(H\) by automorphisms of \(N\). If \(\beta_h\) is the induced action on \(C^*(N)\), characterized on canonical group multipliers by \(\beta_h(v_n)=v_{\theta_h(n)}\), then
 
@@ -457,7 +457,7 @@ The group representation correspondence, group approximate identity in a nondege
 
 The multiplier idealizer, strict topology, strict extension of nondegenerate homomorphisms, and \(\mathcal L(E)=M(\mathcal K(E))\) are assumed under the preparatory topic *Compact operators, multipliers and the strict topology*; the source statements used here are [Blackadar, Operator Algebras]. Strict continuity of the extension on bounded sets follows by testing on the dense products \(\pi(a)b\): strict convergence \(m_\lambda\to m\) makes \(\pi((m_\lambda-m)a)b\to0\), and uniform boundedness extends this to every \(b\); the right products follow by taking adjoints. For the maximal tensor product's commuting-representation characterization, [Theorem 1.1](../../OA-FOUND-REMAINDER/src/tensor-norms-and-independent-systems.md#1-recovering-the-two-actions) proves nonunital recovery of both commuting actions, and [Propositions 2.1–2.2](../../OA-FOUND-REMAINDER/src/tensor-norms-and-independent-systems.md#2-two-norms-from-two-kinds-of-representation) prove the maximal norm and its universal property. These arguments require neither units nor separability; the essential-subspace paragraph includes degenerate representations. Blackadar, II.9.2.1–II.9.2.3, remains further reading.
 
-Finally, (5.7) for nondiscrete groups is stated from [Blackadar, Operator Algebras]. Its proof by Green's theorem is deferred to *Induced algebras and Green’s imprimitivity theorem*. General reduced-crossed-product arguments, amenability comparisons, expectations, simplicity, and duality belong to later lessons.
+Finally, (5.7) for nondiscrete groups is a forward application of [Lesson 7, equations (7.40)–(7.41)](KT-CP-07.md#translation-gives-compact-operators-for-every-group), whose full proof uses [Green's Theorem 7.4](KT-CP-07.md#completion-in-the-full-crossed-product-norms); [Blackadar, Operator Algebras] gives the literature reference. That forward application is not an input to the universal construction proved here. General reduced-crossed-product arguments, amenability comparisons, expectations, simplicity, and duality belong to later lessons.
 
 ## References
 

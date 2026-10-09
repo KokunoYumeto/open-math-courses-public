@@ -553,7 +553,7 @@ The simple-root coordinates of a commutator vanish, so (7.1) is an additive grou
 
 On \(S_\nu=N((t))t^\nu\), the expression \(\chi_\mu(n)\), normalized to zero at \(t^\nu\), descends to a function \(\chi_\mu^\nu\) exactly when \(\mu+\nu\) is dominant. Indeed the simple-root coordinate of the stabilizer is \(t^{\langle\alpha_i,\nu\rangle}O\); conjugation by \(t^\mu\) multiplies it by \(t^{\langle\alpha_i,\mu\rangle}\). Residue is identically zero on that ideal exactly when \(\langle\alpha_i,\mu+\nu\rangle\geq0\). If the inequality fails, its \(t^{-1}\) coefficient can be nonzero, so descent fails. Coordinates for nonsimple roots do not affect the character. This proves the descent criterion.
 
-Appendix E proves the nondominant-conductor branch, the upper degree bound, the top-degree component criterion and every highest-slice case. Appendix F proves the general top-character obstruction for conductor \(-\nu\), including its dominant simple-Levi projections and component-basis comparison. Appendix G constructs the actual relevant Whittaker strata, residue evaluation and finite Hecke coefficient comparisons. The general geometric Casselman–Shalika cohomology statement additionally requires lower-degree concentration and the full multiplicity comparison: For dominant \(\lambda\) and for \(\mu,\nu\) such that \(\mu+\nu\) is dominant,
+Appendix E proves the nondominant-conductor branch, the upper degree bound, the top-degree component criterion and every highest-slice case. Appendix F proves the general top-character obstruction for conductor \(-\nu\), including its dominant simple-Levi projections and component-basis comparison. Appendix G constructs the actual relevant Whittaker strata, residue evaluation and finite Hecke coefficient comparisons. Theorems P.9.1.1–P.10.1.1 prove the general geometric Casselman–Shalika cohomology statement, including lower-degree concentration and the full multiplicity comparison: For dominant \(\lambda\) and for \(\mu,\nu\) such that \(\mu+\nu\) is dominant,
 
 \[
 H_c^r\left(\mathrm{Gr}^{\leq\lambda}\cap S_\nu,
@@ -571,7 +571,7 @@ H_c^r\left(\mathrm{Gr}^{\leq\lambda}\cap S_\nu,
 
 The displayed isomorphism concerns geometric coefficient spaces; it does not assign a Weil twist to its right side. For example \(E[d]\) on \(\mathbf A^d\) has compact cohomology \(E(-d)[-d]\), so omission of the twist would change its Frobenius trace.
 
-Formula (7.2) is [Frenkel–Gaitsgory–Vilonen, Whittaker patterns in the geometry of moduli spaces of bundles on curves, Theorem 1, equation (1.7)](https://arxiv.org/pdf/math/9907133v5). The support is the **closed** Schubert variety. With \(\mu=0\) and dominant \(\nu\), the right side is one-dimensional only for \(\nu=\lambda\), and otherwise zero. Thus the complex has its surviving group in degree \(h_\lambda\), or is zero. In derived notation the nonzero geometric complex is \(E[-h_\lambda]\). This negative shift is consistent with the cohomological convention in §1.
+The complete proof of (7.2), with its raw Tate twist and actual Weil operator, is in Theorems P.9.1.1–P.10.1.1. The free [Frenkel–Gaitsgory–Vilonen, Whittaker patterns in the geometry of moduli spaces of bundles on curves, Theorem 1, equation (1.7)](https://arxiv.org/pdf/math/9907133v5) states the formula in its original notation. The support is the **closed** Schubert variety. With \(\mu=0\) and dominant \(\nu\), the right side is one-dimensional only for \(\nu=\lambda\), and otherwise zero. Thus the complex has its surviving group in degree \(h_\lambda\), or is zero. In derived notation the nonzero geometric complex is \(E[-h_\lambda]\). This negative shift is consistent with the cohomological convention in §1.
 
 There is also a categorical version. Its characteristic-zero incarnation requires exponential D-modules rather than ordinary complex local systems. On complex \(\mathbf A^1\), a rank-one local system is constant because the line is simply connected; it cannot provide the nontrivial additive character needed for Whittaker equivariance.
 
@@ -3111,7 +3111,7 @@ The root group is additive. Thus the full moving defect stratum is \(B_{\mathbf 
 
 ## Appendix O. Meromorphic unipotent actions and boundary characters
 
-Throughout this argument \(X=\mathbf P^1_\kappa\), initially over an algebraically closed field. Keep the original split group \(G\), its actual torus \(T\), every central character map and the entire compactified datum of Appendices J–M. Put \(N=U\), write \(h_\alpha\) for the positive root height, and fix \(y\) outside the defects and outside the zeros of the nonzero maps \(\omega_i:\mathcal L_{\alpha_i}\to\Omega_X\). A coordinate \(u\) vanishes at \(y\). All moduli assertions below concern arbitrary parameter algebras. For character sheaves assume \(\operatorname{char}\kappa=p>0\), \(\ell\ne p\), and finite \(E/\mathbf Q_\ell\) containing the values of the specified nontrivial additive character \(\psi\). Half-Tate normalizations are those of Appendix L. In an arithmetic form keep the actual Weil descent; geometric semisimplicity will not assert semisimplicity of arbitrary Frobenius operators.
+Throughout this argument \(X=\mathbf P^1_\kappa\), initially over an algebraically closed field. Keep the original split group \(G\), its actual torus \(T\), every central character map and the entire compactified datum of Appendices J–M. For compactifications retain their hypothesis that the derived group is simply connected. The full compactification transfer to arbitrary \(G\) is a separate requirement; it is not supplied by the slice comparison alone. Put \(N=U\), write \(h_\alpha\) for the positive root height, and fix \(y\) outside the defects and outside the zeros of the nonzero maps \(\omega_i:\mathcal L_{\alpha_i}\to\Omega_X\). A coordinate \(u\) vanishes at \(y\). All moduli assertions below concern arbitrary parameter algebras. For character sheaves assume \(\operatorname{char}\kappa=p>0\), \(\ell\ne p\), and finite \(E/\mathbf Q_\ell\) containing the values of the specified nontrivial additive character \(\psi\). Half-Tate normalizations are those of Appendix L. In an arithmetic form keep the actual Weil descent; geometric semisimplicity will not assert semisimplicity of arbitrary Frobenius operators.
 
 The algebraic completion inputs are proved in Completion, Theorems 3.1–3.2. Affine additive descent and the root-height universal lifting are proved in Appendix L; the full framed actual G-schemes and detecting-line reconstruction are in Appendix M. The coefficient operations, smooth comparison and localization are proved in Lesson 5, Appendices P–Q, and compactified perverse descent is Appendix N. The free [Whittaker patterns, §6.2](https://arxiv.org/abs/math/9907133v5) supplies the geometric context; the all-base gluing, group action and boundary proofs below supply the assertions used here.
 
@@ -3370,11 +3370,292 @@ The vector group \(J_7/K_{4,15}\) has four coefficients per simple root and none
 
 At a defect \(\alpha_1^\vee x\) the new degrees are \(0,-3,-3\), using the actual \(A_2\) Cartan pairings \(2,-1,1\). The first stabilizer interval now contains \(u^{-1}\); equivalently the first new differential has a pole of order two at \(x\). Theorem O.4.1.1 supplies its scalar root line with nontrivial residue character. Both boundary restrictions are zero. Normality can also be read from (O.9.2): a simple coefficient of order \(11\) multiplied by a pole coefficient of order \(-4\) has order \(7\), exactly the long-root threshold. The argument preserves the original \(SL_3\) torus and its full center \(\mu_3\), including the nonreduced center in characteristic three.
 
+## Appendix P. Hecke generation, Whittaker extensions and full cohomology
+
+This continuation keeps geometric finite \(E/\mathbf Q_\ell\) coefficients, the actual quotient enhancements of Appendices L–O, the original group and torus, and actual Weil maps. Until Theorem P.10.1.1, assume that the derived group is simply connected, as in J–M. The last proof transfers the local cohomology calculation to every original split connected reductive group; it does not assert a global compactification equivalence for that group. Geometric Ext vanishing is not an assertion of semisimplicity for arbitrary Frobenius operators.
+
+Fix distinct marked points \(I=\{x_1,\ldots,x_s\}\) on \(X=\mathbf P^1\), and the zero-conductor background \(\mathcal T_0\) of O.8. For original dominant cocharacters \(\boldsymbol\mu=(\mu_i)\), put \(\mathcal T_{\boldsymbol\mu}=\mathcal T_0(-\sum_i\mu_i x_i)\). The background differentials induce the actual regular differentials on these root lines. Work in the meromorphic decoration functor with poles at \(I\), always using its finite regular compactification charts, finite bundle bounds and full frame nerves. Write \(\Psi_{\boldsymbol\mu}\) for the genuine evaluation generator, \(\Delta_{\boldsymbol\mu}\) and \(\nabla_{\boldsymbol\mu}\) for its actual extensions, and \(\Pi_{\boldsymbol\mu}\) for their perverse image. All are extended by their closed inclusions in a common sufficiently large regular chart when necessary. A chart for \(\boldsymbol\tau\) contains the one for \(\boldsymbol\mu\) when every \(\tau_i-\mu_i\) is a nonnegative integral coroot combination: multiply every weight map by its prescribed divisor section. The central inverse maps have divisor zero. The full finite-generator divisibility equations of K.5, or the section-coordinate equations of I.1–I.3, make this inclusion closed on every parameter ring. Within a fixed central component a sufficiently large integral multiple of \(2\rho^\vee\) provides a common dominant bound for finitely many such charts. Thus every construction below takes place on actual finite-type quotient charts; no enhancement of the whole meromorphic ind-stack is being assumed.
+
+The genuine rigid and tensor inputs are proved in Convolution and rigidity, Lemma B.1.1.1 and Theorem B.2.1.1 and Identifying the dual group, Lemmas B.3.1.1–B.3.2.1 and Theorem B.4.1.1. Appendices G–O provide the actual schemes, local coefficient bounds, perverse operations and character restrictions used in these proofs. The free [Whittaker patterns, §§5.4–7](https://arxiv.org/abs/math/9907133v5) supplies the mathematical context. The closed correspondence, filtration, original-lattice transfer and full proofs of the assertions used here are given below.
+
+### P.1. Intermediate extension detects all degree-one extensions
+
+**Lemma P.1.1.1.** Let \(j:\mathcal U\hookrightarrow\mathcal Y\) be an open immersion of the finite-type quotient charts in Appendix N, and let \(S_1,S_2\) be perverse sheaves on \(\mathcal U\). The restriction map on Yoneda extensions is injective:
+\[
+ \operatorname{Ext}^1_{\operatorname{Perv}(\mathcal Y)}
+       (j_{!*}S_2,j_{!*}S_1)
+ \longrightarrow
+ \operatorname{Ext}^1_{\operatorname{Perv}(\mathcal U)}(S_2,S_1).
+\tag{P.1.1}
+\]
+In particular every geometric Whittaker intermediate extension of a genuine rank-one evaluation generator has zero self-\(\operatorname{Ext}^1\).
+
+**Proof.** A perverse sheaf \(P\) is the intermediate extension of its open restriction precisely when it has no subobject and no quotient supported in the complement. Here is the full argument. The canonical adjunction maps
+\[
+ {}^pH^0(j_!j^*P)\longrightarrow P
+ \longrightarrow{}^pH^0(Rj_*j^*P)
+\tag{P.1.2}
+\]
+are identities after open restriction. The cokernel of the first and kernel of the second are therefore supported in the complement. If \(P\) has neither kind of boundary object, the first map is surjective and the second injective. Its image inside the last term is exactly the image of their composite, which defines \(j_{!*}j^*P\). Conversely that image has no boundary subobject or quotient, by open adjunction, as proved in N.4.
+
+Restriction is fully faithful on these intermediate extensions. A morphism on \(\mathcal U\) induces a morphism between the two canonical image constructions, giving existence. If a morphism between intermediate extensions restricts to zero, its image is a boundary subobject of the target, and hence zero; this gives uniqueness. These statements use the actual adjunction maps on full frame nerves and therefore descend to the quotient charts.
+
+Consider an extension \(0\to A\to P\to B\to0\), with \(A=j_{!*}S_1\) and \(B=j_{!*}S_2\). It too has neither boundary subobjects nor boundary quotients. Indeed a boundary subobject of \(P\) maps to a boundary subobject of \(B\), which is zero, and then lies in \(A\), where it is zero. A map from \(P\) to a boundary quotient is zero on \(A\); it factors through \(B\), which has no such quotient, and is zero. Consequently \(P=j_{!*}j^*P\). If its restricted extension is split, \(j^*P=S_1\oplus S_2\) with the given inclusion and projection. The image construction commutes with finite direct sums, and its full faithfulness identifies the inclusion and projection upstairs with those of \(j_{!*}S_1\oplus j_{!*}S_2\). Thus the original extension splits. This proves injectivity.
+
+For the last assertion, the genuine evaluation generator \(\Psi=e^*\mathcal L_\psi[d](d/2)\) has actual derived self-Hom complex \(E\), by L.3 and the rank-one inverse tensor evaluation. Thus its derived degree-one self-Hom is zero. Yoneda degree-one extensions in the perverse heart equal these derived degree-one maps: an extension gives its triangle; conversely the perverse cohomology sequence of a triangle \(A\to P\to B\to A[1]\), with \(A,B\) in the heart, places \(P\) in the heart and supplies the corresponding short exact sequence. These constructions are inverse and preserve the zero class. Applying (P.1.1) gives the asserted vanishing on every bounded closure, and extension by its closed inclusion gives the same assertion in a larger ambient chart. No degree-two or higher restriction-injectivity assertion has been made. In a Weil category Frobenius can still create degree-one extensions of its multiplicity modules, so the conclusion is explicitly geometric. ∎
+
+### P.2. Sharp closed Hecke bounds and actual duality
+
+**Theorem P.2.1.1.** Let \(A_\lambda=I_\lambda(d_\lambda/2)\) be a normalized simple Satake kernel and \(\lambda^*=-w_0\lambda\). For dominant \(\eta\), its Hecke image of \(\Pi_\eta\) is defined on the regular source chart for \(\tau=\eta+\lambda^*\) by a proper correspondence. Its normalized duality comparison is
+\[
+ D\mathsf H_{A_\lambda}(\Pi_\eta^\psi)
+   \simeq\mathsf H_{A_\lambda}(\Pi_\eta^{\psi^{-1}}).
+\tag{P.2.1}
+\]
+The same statement holds at the distinct marked points, with all bounds componentwise.
+
+**Proof.** First sharpen the absolute pole bound of H.1. In a geometric highest-weight module \(W_\chi\), every weight is \(\chi\) minus a nonnegative root combination. Since \(\lambda\) is dominant, every weight exponent is at most \(p_\chi=\langle\chi,\lambda\rangle\). Consequently every lattice in the actual Schubert closure satisfies
+\[
+ t^{p_\chi}W_\chi[[t]]\ \subset\ W_\chi(\mathcal E').
+\tag{P.2.2}
+\]
+On the open orbit this follows on every parameter ring from its integral left and right frames and the diagonal exponents. In a finite lattice Grassmannian the assertion is a closed incidence condition, given by vanishing of the map from that fixed submodule to the universal quotient. It therefore holds on the scheme-theoretic Schubert closure. This argument allows a negative central exponent and does not replace the closure by its geometric points.
+
+Apply this to every highest-map generator and to both generators for every invertible central character. Transport of a regular decoration for \(\mathcal T_\eta\) through the inverse modification, whose type is \(\lambda^*\) by H.1, becomes regular for \(\mathcal T_\tau\). Polynomial relations are preserved by the actual punctured isomorphism; the central inverse equations are preserved too. Conversely, start with a bounded regular source chart \(S\) for \(\mathcal T_\tau\). The whole modification scheme \(W\to S\) is projective by H.1–H.2. Its transported target decoration has the finite meromorphic bounds of H.2. In its finite section coordinates, being regular for \(\mathcal T_\eta\) is the vanishing of all polar coefficients of all generators. Thus the locus \(W_\eta\subset W\) is closed, including the central inverse equations, and its projection \(l\) to \(S\) is proper.
+
+Viewed from the target regular compactification, \(W_\eta\) is the open part of the full inverse Schubert fibration where the transported source lies in \(S\). The sharp bound just proved supplies source regularity everywhere; the remaining source degree bounds and primitivity at the chosen frame point are open conditions. The finite image over \(S\) is covered by finitely many target bundle and section charts, so all the comparisons can be made on those charts. Choose a common frame point away from the marked points. On its actual frame schemes, the target Schubert fibration is étale locally a product with \(Z_{\lambda^*}\). H.3's chain-inversion comparison identifies the left vertical kernel with the normalized right vertical kernel \(A_{\lambda^*}\). That kernel is self-dual, by the normalized simple IC duality in Lesson 7.
+
+On this product the coefficient is \(\Pi_\eta\boxtimes A_{\lambda^*}\). Actual external duality sends it to \(D\Pi_\eta\boxtimes A_{\lambda^*}\). Duality for an open restriction preserves this comparison on \(W_\eta\); duality for its closed inclusion and its proper projection preserves it in the image on \(S\). L.4 and N.4 identify \(D\Pi_\eta^\psi\) with \(\Pi_\eta^{\psi^{-1}}\). This proves (P.2.1) without assuming cleanness of \(\Pi_\eta\). The common smooth frame normalization \([r](r/2)\) occurs on both sides and cancels. Ordinary descent along the finite disc-frame group adds no dimension shift, by H.3. Its actual overlap cocycles identify these product comparisons, including the evaluation and trace maps. At several distinct points use the product of their disc-frame fibrations and impose the finitely many polar equations at each point. Properness, inversion and the same external duality then prove the stated componentwise version. ∎
+
+### P.3. Generation from the clean basic object
+
+**Theorem P.3.1.1.** For \(\boldsymbol\lambda\) dominant, with kernels at the distinct marked points,
+\[
+ \mathsf H_{\boldsymbol A_{\boldsymbol\lambda}}\Pi_{\boldsymbol0}
+       \simeq\Pi_{\boldsymbol\lambda^*}.
+\tag{P.3.1}
+\]
+This is the actual intermediate-extension identification, with its unit on the open stratum.
+
+**Proof.** O.8 gives \(\Pi_{\boldsymbol0}=\Delta_{\boldsymbol0}=\nabla_{\boldsymbol0}\). By Theorem P.2.1.1 its Hecke image \(K\) is a proper image on the source chart for \(\boldsymbol\lambda^*\). Meromorphic gluing at the common frame point \(y\) commutes with modification at the disjoint \(x_i\). The source and target evaluation cocycles use the same background differential away from the marks. Therefore the correspondence, its vertical kernels and its actual proper image carry the twisted meromorphic action of O.2–O.5. On every irrelevant whole fixed-divisor fibre \(K\) is zero. On every relevant fibre its cohomology is locally constant.
+
+All relevant divisors are supported at the marks, by O.6. Their saturated labels \(\boldsymbol\mu\) satisfy \(\lambda_i^*-\mu_i\in Q^\vee_+\), and relevance is exactly dominance of each \(\mu_i\). There are finitely many such labels. Source nilpotents or nonflat zero schemes remain in the compactification; the preceding assertion classifies the geometric support of the complex on its full atlas.
+
+On the whole genuine fibre \(\mathcal B_{\boldsymbol\mu}\), the actual local-disc calculation G.4–G.5 identifies the restriction with
+\[
+ \Psi_{\boldsymbol\mu}\otimes
+ \bigotimes_i C_{\lambda_i,\mu_i,-\mu_i}(D_i)[h_{-\mu_i}],
+ \qquad D_i=(d_{\lambda_i}-h_{\mu_i})/2.
+\tag{P.3.2}
+\]
+Here \(C\) uses raw IC. Target boundary terms vanish by the already proved cleanness of \(\Pi_{\boldsymbol0}\). The tensor comparison is the actual compact Künneth comparison for the independent local modifications, with the sum of their residue functions; it is obtained in the common disc frames before descent. G.6 puts each coefficient in degrees at most zero, strictly below zero unless \(\mu_i=\lambda_i^*\), and identifies the entire extremal coefficient with its unit \(E\).
+
+The differential in a chosen local coordinate can introduce invertible simple-root factors. These do not require surjectivity of \(T(A[[t]])\to T_{\rm ad}(A[[t]])\). The simple roots form the full character basis of \(T_{\rm ad}\), so their units give an actual adjoint-torus element. Its conjugation action on the original \(G\) descends along the fppf central presentation; it fixes the original torus cocharacters and every central map, and scales the root groups on all parameter rings. It preserves Schubert supports and their equivariant IC units. Thus it identifies this character complex with the one in G.6, even in bad characteristic. No fractional cocharacter or reduced center is introduced.
+
+The perverse upper test on the finite relevant support now gives \(K\in{}^pD^{\le0}\), with strict ordinary boundary bounds at every label different from \(\boldsymbol\lambda^*\). The dimensions used are those of the whole fixed fibres, \(d_{\boldsymbol\mu}=d_{\boldsymbol0}+\sum_i h_{\mu_i}\); the vanished moving-divisor directions add no support dimension. Applying Theorem P.2.1.1 and the same argument with inverse character gives \(K\in{}^pD^{\ge0}\) and strict exceptional boundary bounds. Thus \(K\) is perverse and has neither a boundary subobject nor a boundary quotient. Its restriction on the top fibre is exactly \(\Psi_{\boldsymbol\lambda^*}\), by the extremal unit comparison. Lemma P.1.1.1's intermediate-extension characterization supplies (P.3.1), uniquely with that open unit. The comparisons were actual Weil maps; uniqueness preserves them. The proof concerns fixed distinct marked points and does not assert a collision or Ran comparison. ∎
+
+![The sharp lattice bound, closed polar equations and actual duality give the clean basic Hecke generator](assets/sharp-hecke-clean-generation.png)
+
+Theorems P.2.1.1–P.3.1.1 prove the closed proper comparison and both strict boundary bounds with actual units. The compactification hypotheses are retained. Editable SVG source.
+
+### P.4. Rigid adjunction and the coherent module action
+
+**Theorem P.4.1.1.** The finite Hecke functors have both adjoints \(\mathsf H_{A^\vee}\), with the actual units, counits and triangle identities. If \(I\) denotes the covariant inverse-kernel functor and
+\[
+ \Phi(B)=\mathsf H_{I(B)}\Pi_{\boldsymbol0},
+\tag{P.4.1}
+\]
+then \(\Phi(A_{\boldsymbol\mu})=\Pi_{\boldsymbol\mu}\) and
+\[
+ \mathsf H_A\Phi(B)\simeq\Phi(B*I(A)).
+\tag{P.4.2}
+\]
+All comparisons are coherent on common bounded charts.
+
+**Proof.** H.3 constructs \(\mathsf H_A\mathsf H_B=\mathsf H_{A*B}\) by the actual proper image on the common chain of bundles. For several distinct points the same construction is the product chain. Forgetting the independent intermediate bundles in either order gives the same projection formula and proper base-change map. The unit, associator and their coherence diagrams are consequently the ones already proved on that chain.
+
+Lesson 7 B.2 proves rigidity of the genuine Satake category, and Lesson 11 B.4 identifies it with \(\operatorname{Rep}_E(\check G)\). Apply the action to its coevaluation \(\mathbf1\to A^\vee*A\) and evaluation \(A*A^\vee\to\mathbf1\). With H.3's unit and composition these are respectively the unit and counit for \(\mathsf H_{A^\vee}\dashv\mathsf H_A\). The two rigid triangle identities become the adjunction triangles, because all four maps are images of those same diagrams. The other evaluation and coevaluation give \(\mathsf H_A\dashv\mathsf H_{A^\vee}\). This establishes adjunction on actual degree-one derived Hom as well as degree-zero maps, without an assumption that every Hecke functor is t-exact on the ambient category.
+
+The inverse-kernel functor is covariant and reverses convolution: \(I(B*C)=I(C)*I(B)\), with \(I^2=1\), by chain reversal in Lesson 7 B.1. On a normalized simple \(A_\lambda\), actual normalized duality identifies \(A_\lambda^\vee=I(A_\lambda)=A_{\lambda^*}\). For a coefficient multiplicity space \(M\), contragredience replaces \(M\) by \(M^*\), whereas covariant inversion does not. This distinction is needed in (P.4.2). Formula (P.3.1) gives \(\Phi(A_{\boldsymbol\mu})=\Pi_{\boldsymbol\mu}\). Moreover
+\(I(B*I(A))=A*I(B)\); applying H.3 proves (P.4.2). Its coherence is again the common-chain coherence. Thus this is a Satake module action, not an unconstructed intrinsic convolution of Whittaker sheaves. ∎
+
+### P.5. The full central character and representation absorption
+
+**Lemma P.5.1.1.** For \(R=\check G^I\), a simple \(V_{\boldsymbol\sigma}\) has trivial character of the full center exactly when each \(\sigma_i\) belongs to the original coroot lattice \(Q^\vee\). Every such simple is a direct summand of \(V_{\boldsymbol\lambda}\otimes V_{\boldsymbol\lambda}^*\) for some original dominant \(\boldsymbol\lambda\). The labels not in that lattice lie in components disjoint from \(\Pi_{\boldsymbol0}\).
+
+**Proof.** The full diagonalizable center has character group \(X_*(T)/Q^\vee\), by the pinned root-datum construction in AG-RG-05. Every weight of a simple differs from its highest weight by an integral root combination; therefore its central character is the class of that highest weight, with precisely the stated triviality condition. This uses the entire quotient, including its finite part.
+
+The representation assertion is the already proved complete argument in Lesson 11 B.3.1.1–B.3.2.1. Its precise inputs are the root-lattice zero-weight lemma proved by rank-one lowering and the Weyl-alternant multiplicity calculation for a sufficiently deep dominant weight. The first gives \(V_\sigma[0]\ne0\); the second gives a nonzero map \(V_\sigma\to\operatorname{End}(V_\lambda)\) with \(\lambda\) in the original character lattice of \(\check G\), not the weight lattice of a substituted cover. Simplicity makes that map injective, and the characteristic-zero complete reducibility proved in the earlier RT-LIE programme splits it. Apply that proof independently in each factor of \(R\) and take the external tensor of the embeddings and splittings. This gives the asserted summand for the product. For a torus the only center-trivial simple is the unit, and the assertion is its unit embedding.
+
+For the last assertion use the actual abelianization \(C=G/G_{\rm der}\). Since the derived group is simply connected, its torus cocharacter lattice is \(Q^\vee\), and the central quotient presentation gives
+\(X_*(C)=X_*(T)/Q^\vee\). A meromorphic decoration induces the specified \(C\)-bundle isomorphism off the marks. Its relative loop index at each \(x_i\) is locally constant. One direct check uses every character of this split torus: the difference of the two finite lattice lengths in a sufficiently large truncation is the integer valuation, and the ranks of the finite projective lattice quotients are locally constant on the parameter scheme. Their character-additive integers give the torus cocharacter index. Nilpotent Laurent units remain in the lattice functor and do not alter these ranks. The indices are therefore open and closed component conditions in our full finite charts. The index of \(\Pi_{\boldsymbol\sigma}\) is the image of each \(\sigma_i\), while that of \(\Pi_{\boldsymbol0}\) is zero. Disjoint open and closed supports have zero derived Hom: restriction to the components splits the sheaf category as their product. Hence every degree-one extension between these objects is zero when any index differs. ∎
+
+### P.6. Geometric semisimplicity
+
+**Theorem P.6.1.1.** Let \(\mathcal W_I^\psi\) be the Serre category generated by the \(\Pi_{\boldsymbol\mu}^\psi\) on our finite bounded charts. Every object is a finite direct sum of these simples, with geometric finite-dimensional coefficient spaces.
+
+**Proof.** The objects are simple: their genuine rank-one generators are simple by L.3, and the intermediate-extension characterization preserves simplicity. By Lemma P.1.1.1 their self-\(\operatorname{Ext}^1\) is zero. Using Theorem P.3.1.1 and the adjunction of Theorem P.4.1.1 gives
+\[
+ \operatorname{Ext}^1(\Pi_{\boldsymbol\mu},\Pi_{\boldsymbol\nu})
+ =\operatorname{Ext}^1(\Pi_{\boldsymbol0},
+              \mathsf H_{A_{\boldsymbol\mu}}\Pi_{\boldsymbol\nu}).
+\tag{P.6.1}
+\]
+The equality means the actual derived Hom in degree one, which equals heart Yoneda Ext as proved in Lemma P.1.1.1. Formula (P.4.2), the genuine Satake equivalence and complete reducibility express the right-hand Hecke object as a finite sum of \(\Pi_{\boldsymbol\sigma}\), with the multiplicities in \(V_{\boldsymbol\nu}\otimes V_{\boldsymbol\mu}^*\). Thus it suffices to kill \(\operatorname{Ext}^1(\Pi_{\boldsymbol0},\Pi_{\boldsymbol\sigma})\).
+
+It is zero on different central components by Lemma P.5.1.1. On the zero component that lemma makes \(\Pi_{\boldsymbol\sigma}\) a direct summand of \(\mathsf H_{A_{\boldsymbol\lambda}}\Pi_{\boldsymbol\lambda}\), since the corresponding representation is \(V_{\boldsymbol\lambda}\otimes V_{\boldsymbol\lambda}^*\). But
+\[
+ \operatorname{Ext}^1(\Pi_{\boldsymbol0},
+             \mathsf H_{A_{\boldsymbol\lambda}}\Pi_{\boldsymbol\lambda})
+ =\operatorname{Ext}^1(\Pi_{\boldsymbol\lambda},\Pi_{\boldsymbol\lambda})=0
+\tag{P.6.2}
+\]
+by the other rigid adjunction and Theorem P.3.1.1. Ext is additive on finite direct summands, so the desired group is zero. Every pair of simples therefore has zero degree-one extension. Induction on the finite length of an object in the generated Serre category splits each successive extension. This proves the theorem. Arbitrary Weil multiplicity spaces may still have a Jordan block; no semisimplicity assertion about those operators follows from this geometric proof. ∎
+
+### P.7. An actual finite filtration for the standard extensions
+
+**Theorem P.7.1.1.** Both \(\Delta_{\boldsymbol\nu}\) and \(\nabla_{\boldsymbol\nu}\) belong to \(\mathcal W_I\). This assertion is proved with actual perverse subobjects and quotients.
+
+**Proof.** Induct on the nonnegative integer \(H(\boldsymbol\nu)=\sum_i\langle2\rho,\nu_i\rangle\). If it is zero, dominance makes every simple-root pairing zero. The induced differentials have zero conductor, so O.8 gives \(\Delta_{\boldsymbol\nu}=\Pi_{\boldsymbol\nu}=\nabla_{\boldsymbol\nu}\). Central cocharacters are included in this base case.
+
+For a positive value, N.3 makes \(\Delta_{\boldsymbol\nu}\) perverse. Its canonical map onto \(\Pi_{\boldsymbol\nu}\) is surjective by the no-boundary-quotient characterization in Lemma P.1.1.1. Let \(K\) be its actual perverse kernel. It is supported in the boundary and carries the twisted meromorphic action, because the canonical map and perverse truncations preserve the smooth action cocycle, as in O.7. That theorem makes its restriction zero on every irrelevant fibre and locally constant of character type on every relevant fibre. The latter have finitely many labels \(\boldsymbol\mu\), with \(\nu_i-\mu_i\in Q^\vee_+\). A proper boundary label has
+\[
+ H(\boldsymbol\mu)=H(\boldsymbol\nu)-2\sum_{i,j}m_{i,j}
+                 <H(\boldsymbol\nu),
+ \qquad \nu_i-\mu_i=\sum_jm_{i,j}\alpha_j^\vee.
+\tag{P.7.1}
+\]
+The equality follows from \(\langle2\rho,\alpha_j^\vee\rangle=2\), already proved in N.5. The induction hypothesis therefore puts all lower standards \(\Delta_{\boldsymbol\mu}\) in \(\mathcal W_I\).
+
+Here is the needed finite-support argument. Let \(F\) be any boundary perverse object with the same finite relevant support and twisted action. Choose the union of its maximal relevant strata; this is open in its closed support, and on it \(F\) is a sum of \(\Psi_{\boldsymbol\mu}\otimes M_{\boldsymbol\mu}\), by the whole-orbit classification O.5. Closed-support perverse descent and open restriction make these restrictions perverse, so the spaces \(M_{\boldsymbol\mu}\) occur in degree zero there. Locally closed adjunction gives an actual map
+\[
+ \bigoplus_{\text{maximal }\boldsymbol\mu}
+       \Delta_{\boldsymbol\mu}\otimes M_{\boldsymbol\mu}\longrightarrow F
+\tag{P.7.2}
+\]
+whose restriction there is the identity. The domain is perverse by N.3 and its closed inclusion, and belongs to \(\mathcal W_I\) by induction. Its perverse image belongs to that Serre category. Its perverse cokernel has strictly fewer relevant strata in its support. The adjunction map is compatible with the character cocycle; hence the cokernel is again twisted equivariant and O.5 applies to it. Induction on the finite number of support strata puts this cokernel in \(\mathcal W_I\). The short exact sequence with the actual image then puts \(F\) in \(\mathcal W_I\).
+
+All strata and closed inclusions used in this argument are the full fixed-divisor subfunctors of K.5 in a common finite chart. Even if a nilpotent family does not factor through a stratum, its geometric stalks are among the retained points of that chart; zero outside the finite relevant support is conservative on the full atlas. No parameter is replaced by its point set. The locally closed extension in (P.7.2) is the standard extension on its regular compactification followed by the closed inclusion, since the actual divisor multiplication identifies that regular subfunctor; both descriptions have the same extension-by-zero adjunction.
+
+Apply this finite-support argument to \(K\). The exact sequence \(0\to K\to\Delta_{\boldsymbol\nu}\to\Pi_{\boldsymbol\nu}\to0\) proves the assertion for \(\Delta\). Intrinsic duality replaces the character by its inverse and exchanges the two extensions; the same argument applies to that character. Thus it proves the assertion for \(\nabla\) as well. In particular this step supplies an actual finite filtration and does not infer membership from a Grothendieck-group equality. ∎
+
+### P.8. Marked cleanness and the geometric Whittaker category
+
+**Theorem P.8.1.1.** For every original dominant marked tuple,
+\[
+ \Delta_{\boldsymbol\mu}\simeq\Pi_{\boldsymbol\mu}
+              \simeq\nabla_{\boldsymbol\mu}.
+\tag{P.8.1}
+\]
+Moreover \(\Phi\) is an exact geometric \(E\)-linear equivalence from the genuine Satake category at the distinct marked points to \(\mathcal W_I\), with the module comparison (P.4.2).
+
+**Proof.** Theorem P.7.1.1 and geometric semisimplicity split the canonical surjection \(\Delta_{\boldsymbol\mu}\to\Pi_{\boldsymbol\mu}\). Write its kernel as a complementary direct summand. Its support lies in the boundary. But \(\Delta\) is extension by zero and has zero ordinary boundary restriction, so the complementary summand has zero restriction there too. It is zero: its support was there, and geometric stalks of the actual frame atlas are conservative. Thus the canonical surjection is an isomorphism. Applying actual duality gives the other canonical isomorphism. The maps themselves were defined with the actual adjunctions, so this conclusion preserves Weil structures, even though the splitting used to prove it was geometric.
+
+The genuine Satake category and \(\mathcal W_I\) are semisimple. Their simples are respectively \(A_{\boldsymbol\mu}\) and \(\Pi_{\boldsymbol\mu}\), and Theorem P.3.1.1–Theorem P.4.1.1 send one to the other. The endomorphisms of each \(\Pi\) are exactly \(E\) by Lemma P.1.1.1's open full faithfulness and L.3's rank-one self-Hom. Distinct simples have zero Hom. The functor sends a scalar to that same scalar by its open unit. It is therefore fully faithful on finite sums, and every object of \(\mathcal W_I\) is such a sum. This proves essential surjectivity and exactness, with the coherent module comparison already constructed.
+
+The conclusion also covers every finite bounded character-perverse object whose support has these finite relevant strata: once all standards are available, the actual image/cokernel induction in Theorem P.7.1.1 puts it in the same Serre category. The assertion is geometric and concerns fixed distinct marks. Neither a moving-point factorization equivalence nor a half-twisted derived or Ran equivalence has been constructed here. ∎
+
+### P.9. Full concentration and the tensor multiplicity
+
+**Theorem P.9.1.1.** Let \(\lambda,\mu\) be original dominant cocharacters, and let \(\eta=\mu+\nu\) be dominant. For the actual descended conductor character and raw IC, put \(D=(d_\lambda+h_\nu)/2\). Then
+\[
+ R\Gamma_c(Z_\lambda\cap S_\nu,
+          I_\lambda\otimes(\chi_\mu^\nu)^*\mathcal L_\psi)
+ \simeq \operatorname{Hom}_{\check G}
+          (V_\lambda\otimes V_\mu,V_\eta)(-D)[-h_\nu].
+\tag{P.9.1}
+\]
+In particular all other degrees vanish. For split finite-field data the raw operator on the displayed degree is \(q^D\operatorname{id}\), with no Jordan part. If \(\mu\) is not dominant, the entire complex is zero whenever the character is defined.
+
+**Proof.** Theorem P.8.1.1 and its module comparison give the actual geometric finite decomposition
+\[
+ \mathsf H_{A_\lambda}\Pi_\eta
+ =\bigoplus_\sigma\Pi_\sigma\otimes
+        \operatorname{Hom}_{\check G}(V_\lambda\otimes V_\sigma,V_\eta).
+\tag{P.9.2}
+\]
+Indeed the corresponding representation is \(V_\eta\otimes V_\lambda^*\), and rigid evaluation identifies its \(V_\sigma\) multiplicity with the stated Hom. This identification follows from the actual module and rigid maps, rather than a numerical character calculation.
+
+Restrict to the whole fibre \(\mathcal B_\mu\). Cleanness (P.8.1) kills the restriction of every summand except \(\sigma=\mu\); that remaining restriction is \(\Psi_\mu\) times the displayed Hom space in degree zero. On the other hand G.4–G.5, now with the clean target \(\Pi_\eta\), identify precisely this restriction with
+\(\Psi_\mu\otimes C_{\lambda\mu\nu}(D)[h_\nu]\).
+Target boundary terms vanish by cleanness. The rank-one inverse tensor and the unit in L.3 cancel \(\Psi_\mu\). This gives
+\(C_{\lambda\mu\nu}(D)[h_\nu]=\operatorname{Hom}(V_\lambda\otimes V_\mu,V_\eta)[0]\), which is (P.9.1), including its raw signs and twist.
+
+Nonempty slices have integral \(D\) by the root-lattice dimension calculation in Lesson 5. For finite-field data E.5 identifies the actual operator on the surviving top raw group with \(q^D\operatorname{id}\) through its trace-oriented character-zero component lines. Since every other group has now vanished, this supplies the whole Weil statement and shows that the normalized multiplicity space has identity operator. No inference from a trace or a purity weight is involved. E.3 already kills the entire complex for nondominant \(\mu\), independently of this comparison. For several distinct marks use the tensor of (P.9.1): the degrees and twists add, and the multiplicity is the \(\check G^I\) Hom. This asserts no collision limit. ∎
+
+### P.10. Transfer to the full original group
+
+**Theorem P.10.1.1.** The local concentration and multiplicity formula (P.9.1) holds for every original split connected reductive \(G\), with its full lattices and center, in every geometric characteristic different from \(\ell\). The actual Weil comparison is unchanged.
+
+**Proof.** Use the smooth central torus cover \(q:\widetilde G=G_{\rm sc}\rtimes T\to G\) of H.4. It has simply connected derived group. For a nonempty slice put \(\delta=\lambda-\nu\in Q^\vee\), let \(\delta_{\rm sc}\) be its unique lift, and take
+\[
+ \widetilde\lambda=(0,\lambda),\quad
+ \widetilde\mu=(0,\mu),\quad
+ \widetilde\nu=(-\delta_{\rm sc},\lambda),\quad
+ \widetilde\eta=(-\delta_{\rm sc},\mu+\lambda).
+\tag{P.10.1}
+\]
+Their images are the prescribed original labels; every root pairing is the original one, so dominance and the numbers \(d_\lambda,h_\nu,D\) are unchanged. H.7 gives the actual nilpotent closed slice comparison, the equality of descended functions, and the IC, compact-coefficient and Weil comparisons on all parameter bases. Apply Theorem P.9.1.1 to these lifted labels. It remains to compare the actual representation Hom spaces.
+
+Here is that root-datum comparison. In \(\widetilde R=\check{\widetilde G}\), the subtorus \(T_R\) with cocharacter lattice
+\(q^*X^*(T)\subset P\oplus X^*(T)\)
+is primitive, since H.4 gives its free quotient \(P\). It contains all coroots of \(\widetilde R\), namely \((\alpha_{\rm sc},\alpha)=q^*\alpha\), hence their saturation, the torus of \(\widetilde R_{\rm der}\). The inverse image in \(\widetilde R\) of the image of \(T_R\) in its abelianization is a connected normal reductive subgroup \(R\) with maximal torus \(T_R\) and derived subgroup \(\widetilde R_{\rm der}\). This follows directly from the reductive central presentation of AG-RG-05: it is the quotient of the derived factor times that subtorus by their actual central intersection. Restriction of a root \((\alpha^\vee_{\rm sc},0)\) of \(\widetilde R\) is the original \(\alpha^\vee\), while its coroot is \(q^*\alpha\). Thus its pinned root datum is exactly the original dual datum, and the programme classification identifies \(R=\check G\).
+
+Restriction of a simple \(\widetilde R\)-module to \(R\) is simple with highest weight its image under \(q_*\): it has the same full derived factor and its remaining central torus acts by scalars. The map \(R\times Z(\widetilde R)\to\widetilde R\) is fppf surjective by that same central presentation. The difference
+\[
+ \widetilde\lambda+\widetilde\mu-\widetilde\eta
+                  =(\delta_{\rm sc},0)
+\tag{P.10.2}
+\]
+is in the full root lattice of \(\widetilde R\). Consequently source and target of our tensor Hom have the same character of its entire center. Every \(R\)-equivariant map then commutes with that center and, by the fppf product, is \(\widetilde R\)-equivariant. Restriction therefore gives the actual isomorphism
+\[
+ \operatorname{Hom}_{\widetilde R}
+ (V_{\widetilde\lambda}\otimes V_{\widetilde\mu},V_{\widetilde\eta})
+ \simeq\operatorname{Hom}_{\check G}(V_\lambda\otimes V_\mu,V_\eta).
+\tag{P.10.3}
+\]
+This proves (P.9.1) for nonempty slices, with the full original center retained. In particular the canonical lift \((0,\nu)\) must not replace the adjusted lift in (P.10.1).
+
+For completeness an empty slice also has zero claimed multiplicity. If \(V_\eta\) occurs in \(V_\mu\otimes V_\lambda\), a highest tensor vector has nonzero projection to the highest-weight line of \(V_\mu\). To prove this, decompose its first factor by weight and choose the smallest positive height below \(\mu\) occurring, if the top projection were zero. Applying each simple raising operator, the components one height higher receive no contribution from raising the second factor, since those first-factor components were absent. Thus every coefficient in that first-factor weight is killed by all simple raisings. In an irreducible highest-weight module such a vector is a highest vector and is confined to weight \(\mu\), by the earlier RT-LIE highest-weight proof. This contradicts the chosen positive height. A nonzero top projection therefore supplies weight \(\eta-\mu=\nu\) in \(V_\lambda\). The genuine Satake weight functor, already proved in Lesson 11 B.4, identifies that weight space with the untwisted top cohomology of \(Z_\lambda\cap S_\nu\); it is zero when the slice is empty. Hence the tensor multiplicity is zero. Nondominant \(\mu\) is handled for the original group directly by E.3.
+
+This transfer uses the actual nilpotent slice immersion and coefficient invariance proved in H.6–H.7; it does not reduce the moduli functor or its center. It transfers the local formula and its Frobenius. A global compactification or global Whittaker-category transfer for arbitrary \(G\) is a distinct assertion and is not claimed here. ∎
+
+![Rigid adjunction and central absorption kill extensions; the actual filtration yields cleanness and the complete cohomology multiplicity](assets/whittaker-extension-multiplicity.png)
+
+Theorems P.6.1.1–P.10.1.1 give the extension, filtration, cleanness and full cohomology arguments. Exercises P.11.1–P.11.2 check the raw shifts, operators and adjusted central lift. Editable SVG source.
+
+### P.11. Exercises
+
+**Exercise P.11.1 (medium).** For the original group \(SL_2\), write \(V_m\) for the dual \(PGL_2\)-module of highest weight \(m\alpha^\vee\), \(m\ge0\). Compute every local Whittaker group with \(\lambda=m\alpha^\vee\), \(\mu=n\alpha^\vee\), and \(\eta=e\alpha^\vee\). Give the actual Frobenius operators for \(m=n=1\).
+
+**Solution.** The rank-one highest-weight proof gives weights \(m,m-1,\ldots,-m\), each once, in coroot units. Multiplying the two finite geometric sums and comparing coefficients gives
+\[
+ V_m\otimes V_n=\bigoplus_{e=|m-n|}^{m+n}V_e.
+\tag{P.11.1}
+\]
+Indeed at weight \(r\) the product counts pairs in \([-m,m]\times[-n,n]\) with sum \(r\). For \(r\ge0\) that count equals the number of integers \(e\) in the displayed interval with \(e\ge r\); symmetry treats negative \(r\). Complete reducibility and the triangular highest characters prove the claimed direct sum, with multiplicity one. The cocharacters and tensor summands remain those of the original dual \(PGL_2\); a half-coroot summand has not been admitted.
+
+Here \(\nu=(e-n)\alpha^\vee\), \(h_\nu=2(e-n)\), \(d_\lambda=2m\) and \(D=m+e-n\). Theorem P.9.1.1–Theorem P.10.1.1 give precisely one group
+\(H_c^{2(e-n)}=E(-(m+e-n))\)
+when \(|m-n|\le e\le m+n\), and zero in every degree otherwise. For \(m=n=1\), the labels \(e=0,1,2\) give respectively \(H^{-2}=E\), \(H^0=E(-1)\), \(H^2=E(-2)\), with operators \(1,q,q^2\). Negative cohomological degree is possible because raw IC is already shifted. These are full operators, not just their traces.
+
+**Exercise P.11.2 (advanced).** Take the original \(PGL_2\), let \(\omega^\vee\) be its fundamental cocharacter, and set \(\lambda=\mu=\omega^\vee\), \(\eta=0\). Determine the adjusted cover labels and compare the local group with the dual \(SL_2\) tensor product.
+
+**Solution.** Here \(\nu=-\omega^\vee\) and \(\delta=2\omega^\vee=\alpha^\vee\). The actual labels are
+\[
+ \widetilde\nu=(-\alpha^\vee_{\rm sc},\omega^\vee),\qquad
+ \widetilde\eta=(-\alpha^\vee_{\rm sc},2\omega^\vee).
+\tag{P.11.2}
+\]
+The source semidirect abelianization index of the slice is \(\omega^\vee\), the same as that of \(\widetilde\lambda\). The unadjusted lift \((0,-\omega^\vee)\) has the wrong index and gives an empty source intersection. The tensor difference with the adjusted lift is \((\alpha^\vee_{\rm sc},0)\), in the source-dual root lattice, as required by (P.10.2).
+
+The original dual is \(SL_2\); its standard two-dimensional module satisfies \(V\otimes V=\operatorname{Sym}^2V\oplus\bigwedge^2V\), by the actual symmetrizer and antisymmetrizer over characteristic-zero \(E\). The second summand is its unit and occurs once. On the covering dual it is the corresponding central determinant character, whose restriction is the unit; replacing the adjusted target by a canonical zero lift would lose precisely this character. The extremal slice is a point, \(d_\lambda=1\), \(h_\nu=-1\), and \(D=0\). Thus its raw complex is \(E[1]\), its only group is \(H^{-1}=E\), and Frobenius is the identity. This also illustrates that the smooth central cover and its adjusted labels work in characteristic two, retaining the nonreduced \(\mu_2\) in the simply connected central presentation. ∎
+
 ## 11. What this lesson does not prove
 
-Theorem 2.0 proves the actual plane-origin and exceptional-line supported comparisons, including their coefficient-system and Frobenius compatibility. Proposition 2.1 and §4 consequently prove the quadratic-cone étale IC and the Frobenius-compatible exceptional-curve splitting. The \(GL_2\) indicator product follows from lattice-chain counts and the bounded proper-fibre trace calculation, and the torus case is proved directly. General geometric IC stalk and costalk parity over every algebraically closed ground field with \(\ell\) invertible is proved in Identifying the dual group, Appendices C–D. Appendix A proves the actual scalar-Frobenius operator on all IC weight spaces and the canonical normalized symmetric tensor Weil lift. Appendix B proves the actual compact-support trace identity, the full spherical Satake algebra isomorphism, and the convolution identity for normalized IC traces. Appendix C proves split Tate Frobenius on every IC stalk and costalk. Appendix D proves the full orbit-indicator formula and identifies every graded IC stalk multiplicity with the polynomial (6.2). Appendix E proves geometric character vanishing, every nondominant-conductor case of (7.2), its upper-degree bound and zero-character top-component criterion, the actual top Frobenius scalar, and every highest-slice case. Appendix F proves the general last-residue top obstruction and its complete lowest-slice case. Appendix G constructs the relevant global strata and evaluation, their geometric self-maps, the actual finite Hecke chart and normalized coefficient comparisons, and its strict relevant-stratum bound. Appendix H constructs both projective modification projections, coherent Hecke transport on meromorphic decoration families, and a smooth central-torus reduction with actual Schubert, slice, coefficient and Weil comparisons. Appendix I proves actual finite section and polynomial decoration schemes, their arbitrary-base-change comparisons and closed pole transitions, and the open sheaf-injection/parameter-flat-quotient condition. Appendix J constructs the full finite highest-line algebra, its affine flag cone and actual flag-torsor open, finite equations for the entire datum, and canonical all-root saturation on geometric curve points. Appendix K constructs the full fixed-bundle injection parameter scheme, the actual projective auxiliary torus quotient and relative fixed-defect strata with every higher divisibility equation on arbitrary parameter rings. Appendix L constructs the genuine-stratum finite jet presentations, their entire unipotent quotient stacks and explicit dimensions, actual cohomology and self-extensions, and intrinsic normalized stratum duality. Appendix M constructs the separated compactified global jet schemes and actual quotient stack presentations, and proves that the entire genuine-reduction open immersion is representable and affine. Appendix N proves actual rational affine perverse exactness, compactified quotient perverse/duality descent, strict intermediate-extension boundary inequalities and the complete defect-stratum dimensions. Appendix O constructs the actual all-base meromorphic unipotent action and full homogeneous fibres and stabilizers, classifies both boundary restrictions by the residue character, proves finite relevant support, and establishes basic zero-conductor cleanness.
+Theorem 2.0 proves the actual plane-origin and exceptional-line supported comparisons, including their coefficient-system and Frobenius compatibility. Proposition 2.1 and §4 consequently prove the quadratic-cone étale IC and the Frobenius-compatible exceptional-curve splitting. The \(GL_2\) indicator product follows from lattice-chain counts and the bounded proper-fibre trace calculation, and the torus case is proved directly. General geometric IC stalk and costalk parity over every algebraically closed ground field with \(\ell\) invertible is proved in Identifying the dual group, Appendices C–D. Appendix A proves the actual scalar-Frobenius operator on all IC weight spaces and the canonical normalized symmetric tensor Weil lift. Appendix B proves the actual compact-support trace identity, the full spherical Satake algebra isomorphism, and the convolution identity for normalized IC traces. Appendix C proves split Tate Frobenius on every IC stalk and costalk. Appendix D proves the full orbit-indicator formula and identifies every graded IC stalk multiplicity with the polynomial (6.2). Appendix E proves geometric character vanishing, every nondominant-conductor case of (7.2), its upper-degree bound and zero-character top-component criterion, the actual top Frobenius scalar, and every highest-slice case. Appendix F proves the general last-residue top obstruction and its complete lowest-slice case. Appendix G constructs the relevant global strata and evaluation, their geometric self-maps, the actual finite Hecke chart and normalized coefficient comparisons, and its strict relevant-stratum bound. Appendix H constructs both projective modification projections, coherent Hecke transport on meromorphic decoration families, and a smooth central-torus reduction with actual Schubert, slice, coefficient and Weil comparisons. Appendix I proves actual finite section and polynomial decoration schemes, their arbitrary-base-change comparisons and closed pole transitions, and the open sheaf-injection/parameter-flat-quotient condition. Appendix J constructs the full finite highest-line algebra, its affine flag cone and actual flag-torsor open, finite equations for the entire datum, and canonical all-root saturation on geometric curve points. Appendix K constructs the full fixed-bundle injection parameter scheme, the actual projective auxiliary torus quotient and relative fixed-defect strata with every higher divisibility equation on arbitrary parameter rings. Appendix L constructs the genuine-stratum finite jet presentations, their entire unipotent quotient stacks and explicit dimensions, actual cohomology and self-extensions, and intrinsic normalized stratum duality. Appendix M constructs the separated compactified global jet schemes and actual quotient stack presentations, and proves that the entire genuine-reduction open immersion is representable and affine. Appendix N proves actual rational affine perverse exactness, compactified quotient perverse/duality descent, strict intermediate-extension boundary inequalities and the complete defect-stratum dimensions. Appendix O constructs the actual all-base meromorphic unipotent action and full homogeneous fibres and stabilizers, classifies both boundary restrictions by the residue character, proves finite relevant support, and establishes basic zero-conductor cleanness. Appendix P proves sharp closed Hecke transport and duality, basic generation, rigid adjunction, geometric semisimplicity, an actual finite standard filtration and marked cleanness/category. It proves full local Whittaker concentration and tensor multiplicities and transfers that local formula to every original split connected reductive group.
 
-The algebraic character transition (6.11) is proved for every dual root datum and lattice in §§6.1–6.3. Appendix D proves the general stalk identity (6.3) in the arithmetic setting of §1. The compactified global jet presentations and affine genuine-open embeddings in Appendix M extend the fixed-bundle construction in the stated simply-connected-derived, regular setting. The actual rational coefficient perverse-image theorem and strict ordinary/exceptional intermediate-extension bounds are proved in Appendix N. The actual meromorphic action and full relevant/irrelevant boundary restrictions are proved in Appendix O, together with basic zero-conductor cleanness. General-conductor multiplicities, Hecke semisimplicity and full cleanness remain necessary. Genuine-stratum duality is constructed in Appendix L. The relative defect strata have their exact scheme equations; a nilpotent family may cross them and remains in the ambient compactification. Lower-degree concentration and the general tensor-multiplicity comparison in the Whittaker cohomology theorem (7.2), the derived D-module factorization equivalence (7.4), and the arithmetic Fargues–Scholze equivalence remain to be proved. Their statements have the displayed hypotheses and free locators. They are not used in the proofs of the rank-one or torus calculations. A full Ran-category construction and a six-functor theory on \(\mathrm{Bun}_G\) also remain unfinished.
+The algebraic character transition (6.11) is proved for every dual root datum and lattice in §§6.1–6.3. Appendix D proves the general stalk identity (6.3) in the arithmetic setting of §1. The compactified global jet presentations and affine genuine-open embeddings in Appendix M extend the fixed-bundle construction in the stated simply-connected-derived, regular setting. The actual rational coefficient perverse-image theorem and strict ordinary/exceptional intermediate-extension bounds are proved in Appendix N. The actual meromorphic action and full relevant/irrelevant boundary restrictions are proved in Appendix O, together with basic zero-conductor cleanness. Appendix P proves Hecke semisimplicity and cleanness for the dominant fixed-marked twists of the zero-conductor background, in the simply-connected-derived compactification setting. A general differential conductor and a global compactification/category transfer to arbitrary derived group retain separate requirements. Genuine-stratum duality is constructed in Appendix L. The relative defect strata have their exact scheme equations; a nilpotent family may cross them and remains in the ambient compactification. The full local Whittaker cohomology theorem (7.2), including all degrees and the original-group tensor multiplicity with its actual Weil operator, is proved in Appendix P. The derived D-module factorization equivalence (7.4) and the arithmetic Fargues–Scholze equivalence remain to be proved. Their statements have the displayed hypotheses and free locators. They are not used in the proofs of the rank-one or torus calculations. A full Ran-category construction and a six-functor theory on \(\mathrm{Bun}_G\) also remain unfinished.
 
 ## References
 

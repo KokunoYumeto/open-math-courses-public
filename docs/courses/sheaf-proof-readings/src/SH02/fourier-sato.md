@@ -315,7 +315,7 @@ The foundational comparison is with SHV, Theorem 4.5.3 (proper-support base chan
 
 ## SH02-FS-OPEN — Exact continuation boundary
 
-The comparison formulas FS4, cone formulas FS7–FS8, kernel lemma FS9, equivalence and square FS12, and section formulas FS13–FS14 have proofs in this draft relative to the named operation and conic-contraction prerequisites. They are not yet or formally verified.
+The comparison formulas FS4, cone formulas FS7–FS8, kernel lemma FS9, equivalence and square FS12, and section formulas FS13–FS14 have proofs in this draft relative to the named operation and conic-contraction prerequisites. Each comparison uses the specified kernel map and retains the hypotheses of those prerequisites.
 
 ### SH02-FS-DUALITY-OPEN — Historical pointer to the duality proofs
 

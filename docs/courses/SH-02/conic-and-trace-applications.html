@@ -1,22 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Boundary conditions, incidence operators, and trace identities · Microlocal sheaves</title>
-<meta name="description" content="A lesson of the course Microlocal sheaves. Draft, written by AI; English only for now.">
-<meta name="color-scheme" content="light dark">
-<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-02/conic-and-trace-applications.html">
-<link rel="stylesheet" href="../../assets/site.css">
+<meta content="A lesson of the course Microlocal sheaves. Draft, written by AI; English only for now." name="description"/>
+<meta content="light dark" name="color-scheme"/>
+<link href="https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-02/conic-and-trace-applications.html" rel="canonical"/>
+<link href="../../assets/site.css" rel="stylesheet"/>
 <script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
-<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
-<link rel="stylesheet" href="reader.css">
+<script defer="" id="MathJax-script" src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link href="reader.css" rel="stylesheet"/>
 </head>
 <body class="no-math">
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><div class="header-inner">
 <a class="brand" href="../../">Open Mathematics Courses</a>
-<nav class="primary-nav" aria-label="Main">
+<nav aria-label="Main" class="primary-nav">
 <a href="../../#catalogue">Courses</a>
 <span class="unlinked">Licensing</span>
 <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
@@ -24,8 +25,8 @@
 <p class="lang-note">English only for now</p>
 </div></header>
 <main id="main">
-<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Microlocal sheaves</a> <span aria-hidden="true">›</span> <span>Boundary conditions, incidence operators, and trace identities</span></nav>
-<aside class="notice" aria-label="About this lesson">
+<nav aria-label="Breadcrumb" class="crumbs"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Microlocal sheaves</a> <span aria-hidden="true">›</span> <span>Boundary conditions, incidence operators, and trace identities</span></nav>
+<aside aria-label="About this lesson" class="notice">
 <p>Written by AI in Codex.</p>
 <p class="small">English only for now</p>
 </aside>
@@ -37,11 +38,180 @@
 <p>Except in the explicitly field-valued failure example and differential-form calculation, <span class="math" data-tex="$k$">$k$</span> is a commutative unital ring of finite global dimension. Categories are <span class="math" data-tex="$D^+(k_X)$">$D^+(k_X)$</span> unless a bounded complex is specified. All locally compact spaces are Hausdorff. Manifolds have finite dimension, are countable at infinity, and have no boundary unless the text explicitly uses a compact manifold as a closed subset of its double. The orientation complex is <span class="math" data-tex="$\omega_X=o_X[\dim X]$">$\omega_X=o_X[\dim X]$</span>. Every tensor product and internal Hom is derived.</p>
 <p>The operations, comparisons and support conventions are those of <a href="../sheaf-proof-readings/SH02-exceptional-operations.html">exceptional operations</a>, especially SH02-EX-ADJOINT, SH02-EX-COMPOSITION, SH02-EX-BASECHANGE and SH02-EX-INTERNAL. Ordinary direct image remains <span class="math" data-tex="$Rf_*$">$Rf_*$</span>, whereas integration along a nonproper map is <span class="math" data-tex="$Rf_!$">$Rf_!$</span>. We use localization, proper-support base change, and the bounded-below projection formula at their stated finite-dimensional map bounds. The orientation and normalized trace are SH02-MD-SUBMERSION and SH02-MD-TRACE in <a href="../sheaf-proof-readings/SH02-manifold-duality.html">manifold duality</a>. The finite-dimensional kernel formalism is SH02-KER-004 through SH02-KER-008 in <a href="../sheaf-proof-readings/SH02-kernel-calculus.html">kernel calculus</a>.</p>
 <h3 id="sh02-cta-imp-triangulation-finite-compatible-triangulations">SH02-CTA-IMP-TRIANGULATION — Finite compatible triangulations</h3>
-<p>A compact real semialgebraic set, together with finitely many semialgebraic subsets, admits a finite compatible triangulation. This is a triangulation theorem, not a consequence of finite stalk dimension, and its exact external-source match remains open. The sheaf consequence needed here follows from a finite filtration by open simplices: constant extension sheaves on these simplices have the local stabilization and perfectness property of SH02-CB-SYSTEMS, by the convex calculations in SH02-CB-CONVEX; finite localization triangles preserve that property. Thus <span class="math" data-tex="$k_U$">$k_U$</span> for a semialgebraic open subset of a compact manifold is cohomologically constructible. This implication does not claim arbitrary open subsets have that property.</p>
+<p>A compact real semialgebraic set, together with finitely many semialgebraic subsets, admits a finite compatible triangulation. The finite models below derive this triangulation from the compatible subanalytic construction. The sheaf consequence needed here follows from a finite filtration by open simplices: constant extension sheaves on these simplices have the local stabilization and perfectness property of SH02-CB-SYSTEMS, by the convex calculations in SH02-CB-CONVEX; finite localization triangles preserve that property. Thus<span class="math" data-tex="$k_U$">$k_U$</span> for a semialgebraic open subset of a compact manifold is cohomologically constructible. This implication does not claim arbitrary open subsets have that property.</p>
 <h3 id="sh02-cta-imp-derham-differential-forms-and-compact-supports">SH02-CTA-IMP-DERHAM — Differential forms and compact supports</h3>
 <p>The smooth de Rham complex resolves the constant complex sheaf; its terms, also after tensoring by the orientation local system, are acyclic for compact supports; smooth partitions of unity subordinate to coordinate covers exist; integration obeys Stokes' theorem for compactly supported forms and the iterated-integral formula. These are the same SH-01 analytic prerequisites used by SH02-MD-DENSITIES.</p>
 <h3 id="sh02-cta-imp-polyhedra-a-finite-pair-with-a-local-system">SH02-CTA-IMP-POLYHEDRA — A finite pair with a local system</h3>
-<p>We use finite triangulability of a mapping torus of a piecewise-linear map, compatible Euclidean triangulation of an embedded finite polyhedron, and cellular computation of cohomology with a rank-one local system. No sheaf-theoretic conclusion is hidden in this contract. Its exact external-source match remains open; the neighborhood and orientation construction needed after those inputs is given in SH02-CTA-ORIENTATION-OBSTRUCTION.</p>
+<p>We use finite triangulability of a mapping torus of a piecewise-linear map, compatible Euclidean triangulation of an embedded finite polyhedron, and cellular computation of cohomology with a rank-one local system. The finite models below construct the needed triangulations and identify cellular differentials with the actual connecting maps. The neighborhood and orientation construction then follows in SH02-CTA-ORIENTATION-OBSTRUCTION.</p>
+<p><a id="SH02-CTA-FINITE-TOPOLOGY"></a></p>
+<h3 id="finite-models-for-the-topological-inputs">Finite models for the
+topological inputs</h3>
+<p>The <a href="compatible-whitney-triangulation.html#TC3">compatible-triangulation
+construction</a>, together with its <a href="compatible-whitney-triangulation.html#TC4">ambient
+globalization</a>, applies to an arbitrary locally finite family of
+locally subanalytic subsets of a real analytic manifold. For finitely
+many semialgebraic subsets of a compact set, use their polynomial
+equalities and strict inequalities as the labels in Euclidean space.
+Compactness meets only finitely many simplices in the resulting locally
+finite complex. Compatibility therefore gives a finite triangulation of
+the compact set and all its labels. This proves the geometric input in
+SH02-CTA-IMP-TRIANGULATION; the finite simplex filtration in that
+paragraph supplies its sheaf consequence.</p>
+<p>For the mapping-torus input, let
+<span class="math" data-tex="$P\subset\mathbb R^d$">$P\subset\mathbb R^d$</span>
+be a finite linear polyhedron and let
+<span class="math" data-tex="$f:P\to P$">$f:P\to P$</span> be piecewise
+linear. Its graph is a finite union of linear simplices and is
+semialgebraic. Put
+<span class="math" data-tex="$a(t)=t(1-t)$">$a(t)=t(1-t)$</span> and
+define</p>
+<p><span class="math" data-tex="$$
+ T(x,t)=\begin{pmatrix}
+ a(t)x\\(1-t)x+t f(x)\\a(t)\\a(t)(2t-1)
+ \end{pmatrix}.
+$$">$$
+ T(x,t)=\begin{pmatrix}
+ a(t)x\\(1-t)x+t f(x)\\a(t)\\a(t)(2t-1)
+ \end{pmatrix}.
+$$</span></p>
+<p>This is the map CTA-TOP1.</p>
+<p>The image of the compact semialgebraic set
+<span class="math" data-tex="$P\times[0,1]$">$P\times[0,1]$</span> is
+compact and semialgebraic, by the proved finite projection calculus used
+in TC3. If
+<span class="math" data-tex="$0&lt;t&lt;1$">$0&lt;t&lt;1$</span>, the
+last two coordinates recover
+<span class="math" data-tex="$t$">$t$</span>, and the first recovers
+<span class="math" data-tex="$x$">$x$</span>. At the endpoints they give
+precisely
+<span class="math" data-tex="$T(x,1)=T(f(x),0)$">$T(x,1)=T(f(x),0)$</span>.
+These are exactly the equivalence classes defining the mapping torus,
+including all points of a possibly noninjective fibre of
+<span class="math" data-tex="$f$">$f$</span> at the top. The induced
+continuous bijection from that compact quotient to the Hausdorff image
+is a homeomorphism: images of closed subsets are compact and hence
+closed. The finite compatible triangulation of this image therefore
+triangulates the mapping torus. Include the image of any specified
+finite subpolyhedral trajectory among the labels to triangulate the
+pair. In particular, represent the degree-two circle map by the
+piecewise-linear map of polygonal circles that wraps twice, and retain
+its fixed base vertex. Its base-point trajectory is the circle used in
+SH02-CTA-ORIENTATION-OBSTRUCTION. This argument requires no infinite
+subdivision or injectivity of the circle map.</p>
+<p>An embedded finite linear polyhedron also admits the required
+compatible ambient triangulation. Enclose it in the interior of a cube.
+For every simplex choose affine equations for its affine hull and affine
+extensions of its facet inequalities. The finite collection of their
+hyperplanes, together with the cube’s facets, cuts the cube into a
+finite complex of convex polytopes; each original simplex is a union of
+its faces. Subdivide this polytopal complex by chains of faces, using
+the barycenter of every face. The subdivisions agree on intersections
+and include the embedded polyhedron as a subcomplex. Extend to all
+Euclidean space through successive homothetic cubical shells: the
+subdivided boundary cells and their scaled copies bound convex
+prism-shaped cells, whose ordered staircase subdivisions agree on faces.
+Only finitely many shells meet a compact set. This gives a locally
+finite ambient triangulation. One barycentric subdivision makes the
+specified subcomplex full, since a chain whose face barycenters belong
+to the subcomplex is a chain entirely within it.</p>
+<p>Finally, cellular cochains with a local system follow from the same
+finite simplex construction. Trivialize the system on each closed cell
+after pulling back along its characteristic map. The relative cohomology
+of a cell and its boundary is its coefficient module in the cell’s
+degree and zero in other degrees, by the relative interval calculation
+and ordered products. Filter a finite pair by its relative skeleta. The
+connecting maps for successive triples are the oriented face-incidence
+maps, with parallel transport along the attaching paths. This identifies
+the cellular differential with the actual connecting morphism. The
+finite filtration’s spectral sequence is concentrated in one row, so
+there are no further differentials or extension choices in each
+resulting cohomological degree. Equivalently, the usual subdivision and
+prism homotopies compare this complex with simplicial cochains; parallel
+transport along each simplex makes those homotopies valid for local
+coefficients as well. The resulting finite cellular complex therefore
+computes the pair’s cohomology, not just its Euler characteristic.
+Applied to the sign local system below, lifting the attaching word gives
+exactly its displayed twisted differential. These arguments allow
+arbitrary coefficient modules; rank one is imposed only in that
+example.</p>
+<p><a id="SH02-CTA-DERHAM-INPUTS"></a></p>
+<h3 id="the-differential-form-inputs">The differential-form inputs</h3>
+<p>The smooth partition construction in <a href="ordinary-involutivity-floor.html#OF2">OF2</a> applies to the
+standing Hausdorff, countable-at-infinity manifolds. Its locally finite
+bump functions, divided by their positive locally finite sum, give a
+smooth partition subordinate to any open cover after refinement. The
+referenced partition component retains its attribution and licence as
+stated there.</p>
+<p>For completeness, the local de Rham calculation is explicit. On a
+ball centered at zero, a smooth form of positive degree has the
+following radial homotopy, denoted CTA-DR1. Write
+<span class="math" data-tex="$v=(v_1,\ldots,v_{p-1})$">$v=(v_1,\ldots,v_{p-1})$</span>
+for the tuple of tangent vectors.</p>
+<p><span class="math" data-tex="$$
+ \begin{aligned}
+ &amp;(h\alpha)_x(v)\\
+ &amp;\quad=\int_0^1 t^{p-1}
+   \alpha_{tx}(x,v)\,dt.
+ \end{aligned}
+$$">$$
+ \begin{aligned}
+ &amp;(h\alpha)_x(v)\\
+ &amp;\quad=\int_0^1 t^{p-1}
+   \alpha_{tx}(x,v)\,dt.
+ \end{aligned}
+$$</span></p>
+<p>Differentiate the coefficient functions under this integral. The
+product rule and the alternating formula for the exterior derivative
+give the integral of the derivative of the pullback by radial scaling.
+The fundamental theorem of calculus therefore gives</p>
+<p><span class="math" data-tex="$$
+ dh+hd=\operatorname{id}-c_0^*.
+ \tag{CTA-DR2}
+$$">$$
+ dh+hd=\operatorname{id}-c_0^*.
+ \tag{CTA-DR2}
+$$</span></p>
+<p>Here <span class="math" data-tex="$c_0$">$c_0$</span> is the constant
+map to the center; its pullback is zero on positive-degree forms and
+sends a function to its value at the center; set
+<span class="math" data-tex="$h=0$">$h=0$</span> on functions. The
+factor in CTA-DR1 is integrable and smooth at zero, so no punctured-ball
+argument is involved. Thus closed positive-degree forms are locally
+exact, and a function with zero differential is locally constant. This
+proves that the smooth de Rham complex resolves the constant sheaf with
+complex coefficients.</p>
+<p>Every sheaf of smooth forms is a module over smooth functions. A
+section of its restriction to a compact set has local representatives
+near each point. Choose finitely many relatively compact chart
+neighborhoods with these representatives, and a smooth partition whose
+sum is one on a neighborhood of the compact set and whose corresponding
+supports lie in the respective chart neighborhoods. Multiply each
+representative by its partition function and extend by zero. Their
+finite sum has the prescribed germ at every point of the compact set,
+since every representative occurring there has that germ. Its support is
+compact. This proves the c-soft extension property used to compute
+compactly supported derived sections. Tensoring with the orientation
+local system preserves the argument, since its transition functions are
+locally constant and cutoffs commute with them. The finite de Rham
+resolution and these c-soft terms therefore compute the required
+compact-support cohomology at the exact manifold dimension bound. This
+argument does not claim that arbitrary sheaves are c-soft.</p>
+<p>On an oriented coordinate chart the integral of a compactly supported
+total derivative is zero, by the one-variable fundamental theorem of
+calculus in that coordinate. Integrate the other coordinates afterwards.
+Interchanging the orders is justified directly by rectangular Riemann
+sums on one compact containing the support: uniform continuity makes
+their errors tend to zero, independently of the order of summation. This
+proves the iterated-integral formula for the smooth compactly supported
+coefficient functions used here. To obtain Stokes on the manifold,
+choose a partition on a neighborhood of the compact support and sum the
+chart identities for each partitioned form. The extra derivative terms
+cancel because the sum of the partition functions is one near the
+support. Coordinate changes use the ordinary determinant
+change-of-variables formula and the orientation sign. This is precisely
+the compactly supported Stokes identity and iterated integration used in
+the line-trace and global-trace calculations below; no boundary term at
+infinity occurs.</p>
 <h2 id="sh02-cta-line-trace-fixing-an-integration-sign-on-one-line">SH02-CTA-LINE-TRACE — Fixing an integration sign on one line</h2>
 <p>The trace of an orientation complex is normalized locally. A short resolution makes its comparison with integration of differential forms explicit, including the coefficient map from integers to complex numbers.</p>
 <p>Choose real numbers <span class="math" data-tex="$a&lt;b$">$a&lt;b$</span>, and write <span class="math" data-tex="$L=(-\infty,b]$">$L=(-\infty,b]$</span>, <span class="math" data-tex="$R=[a,\infty)$">$R=[a,\infty)$</span> and <span class="math" data-tex="$J=[a,b]$">$J=[a,b]$</span>. On the increasing oriented line consider the complex</p>
@@ -59,24 +229,24 @@ $$</span>
 <span class="math math-display" data-tex="$$
 \phi^0(s,t)=(1-\rho)s+\rho t,
 \qquad
-\phi^1(u)=u\rho&#x27;(x)\,dx.
+\phi^1(u)=u\rho'(x)\,dx.
 $$">$$
 \phi^0(s,t)=(1-\rho)s+\rho t,
 \qquad
-\phi^1(u)=u\rho&#x27;(x)\,dx.
+\phi^1(u)=u\rho'(x)\,dx.
 $$</span>
-<p>Each product is extended by zero where the original closed-support sheaf is absent. The factor <span class="math" data-tex="$1-\rho$">$1-\rho$</span> vanishes on a neighborhood of the right endpoint of <span class="math" data-tex="$L$">$L$</span>, the factor <span class="math" data-tex="$\rho$">$\rho$</span> vanishes near the left endpoint of <span class="math" data-tex="$R$">$R$</span>, and <span class="math" data-tex="$\rho&#x27;$">$\rho&#x27;$</span> vanishes near both endpoints of <span class="math" data-tex="$J$">$J$</span>. Thus these are smooth extensions and define sheaf morphisms on arbitrary open subsets, including those crossing endpoints. Local constancy of <span class="math" data-tex="$s,t$">$s,t$</span> gives</p>
+<p>Each product is extended by zero where the original closed-support sheaf is absent. The factor <span class="math" data-tex="$1-\rho$">$1-\rho$</span> vanishes on a neighborhood of the right endpoint of <span class="math" data-tex="$L$">$L$</span>, the factor <span class="math" data-tex="$\rho$">$\rho$</span> vanishes near the left endpoint of <span class="math" data-tex="$R$">$R$</span>, and <span class="math" data-tex="$\rho'$">$\rho'$</span> vanishes near both endpoints of <span class="math" data-tex="$J$">$J$</span>. Thus these are smooth extensions and define sheaf morphisms on arbitrary open subsets, including those crossing endpoints. Local constancy of <span class="math" data-tex="$s,t$">$s,t$</span> gives</p>
 <span class="math math-display" data-tex="$$
-d\phi^0(s,t)=(t-s)\rho&#x27;\,dx=\phi^1d_K(s,t).
+d\phi^0(s,t)=(t-s)\rho'\,dx=\phi^1d_K(s,t).
 $$">$$
-d\phi^0(s,t)=(t-s)\rho&#x27;\,dx=\phi^1d_K(s,t).
+d\phi^0(s,t)=(t-s)\rho'\,dx=\phi^1d_K(s,t).
 $$</span>
 <p>The diagonal integer section <span class="math" data-tex="$m$">$m$</span> maps to the constant function <span class="math" data-tex="$m$">$m$</span>. Hence the map induced on degree-zero cohomology is precisely the specified embedding <span class="math" data-tex="$\mathbb Z\to\mathbb C$">$\mathbb Z\to\mathbb C$</span>.</p>
-<p>The two closed rays have zero compactly supported cohomology over <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span>: their one-point compactifications are compact intervals, and the relative cohomology of an interval and the added endpoint is zero by the constant interval calculation. The compact interval <span class="math" data-tex="$J$">$J$</span> has compact cohomology <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span> in degree zero. The terms of <span class="math" data-tex="$K$">$K$</span> are therefore acyclic for compactly supported sections, and its bounded complex of compactly supported sections computes <span class="math" data-tex="$R\Gamma_c(\mathbb R;\mathbb Z)$">$R\Gamma_c(\mathbb R;\mathbb Z)$</span> by the bounded hypercohomology argument. That complex has only one nonzero term, <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span> in degree one: a nonzero constant section on either ray cannot have compact support. Its generator maps to <span class="math" data-tex="$\rho&#x27;\,dx$">$\rho&#x27;\,dx$</span>, and</p>
+<p>The two closed rays have zero compactly supported cohomology over <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span>: their one-point compactifications are compact intervals, and the relative cohomology of an interval and the added endpoint is zero by the constant interval calculation. The compact interval <span class="math" data-tex="$J$">$J$</span> has compact cohomology <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span> in degree zero. The terms of <span class="math" data-tex="$K$">$K$</span> are therefore acyclic for compactly supported sections, and its bounded complex of compactly supported sections computes <span class="math" data-tex="$R\Gamma_c(\mathbb R;\mathbb Z)$">$R\Gamma_c(\mathbb R;\mathbb Z)$</span> by the bounded hypercohomology argument. That complex has only one nonzero term, <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span> in degree one: a nonzero constant section on either ray cannot have compact support. Its generator maps to <span class="math" data-tex="$\rho'\,dx$">$\rho'\,dx$</span>, and</p>
 <span class="math math-display" data-tex="$$
-\int_{\mathbb R}\rho&#x27;(x)\,dx=1.
+\int_{\mathbb R}\rho'(x)\,dx=1.
 $$">$$
-\int_{\mathbb R}\rho&#x27;(x)\,dx=1.
+\int_{\mathbb R}\rho'(x)\,dx=1.
 $$</span>
 <p>The normalization can be recorded by the commuting diagram</p>
 <span class="math math-display" data-tex="$$
@@ -100,7 +270,7 @@ H_c^1(\mathbb R;\mathbb Z)&amp;\xrightarrow{\sim}&amp;H^1\Gamma_c(K)\\
 \mathbb C&amp;\xrightarrow{\mathrm{id}}&amp;\mathbb C.
 \end{array}
 $$</span>
-<p>The increasing-coordinate compact-support generator used in SH02-MD-EUCLIDEAN is the same endpoint-difference class. Its abstract trace is also <span class="math" data-tex="$1$">$1$</span>. This proves equality of the abstract and analytic maps after extension of scalars to <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>. If the differential of <span class="math" data-tex="$K$">$K$</span> is replaced by <span class="math" data-tex="$s-t$">$s-t$</span>, the chain map uses <span class="math" data-tex="$-\rho&#x27;\,dx$">$-\rho&#x27;\,dx$</span> and the coordinate generator changes by the same sign. A convention must be changed consistently on both sides.</p>
+<p>The increasing-coordinate compact-support generator used in SH02-MD-EUCLIDEAN is the same endpoint-difference class. Its abstract trace is also <span class="math" data-tex="$1$">$1$</span>. This proves equality of the abstract and analytic maps after extension of scalars to <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>. If the differential of <span class="math" data-tex="$K$">$K$</span> is replaced by <span class="math" data-tex="$s-t$">$s-t$</span>, the chain map uses <span class="math" data-tex="$-\rho'\,dx$">$-\rho'\,dx$</span> and the coordinate generator changes by the same sign. A convention must be changed consistently on both sides.</p>
 <h2 id="sh02-cta-form-trace-from-a-coordinate-generator-to-a-manifold">SH02-CTA-FORM-TRACE — From a coordinate generator to a manifold</h2>
 <p>Let <span class="math" data-tex="$X$">$X$</span> be a smooth <span class="math" data-tex="$n$">$n$</span>-manifold, with no orientability assumption. The de Rham resolution identifies compactly supported cohomology of <span class="math" data-tex="$o_X^{\mathbb C}$">$o_X^{\mathbb C}$</span> with cohomology of compactly supported smooth forms twisted by the complex orientation line. Under this identification the trace</p>
 <span class="math math-display" data-tex="$$
@@ -112,10 +282,10 @@ $$</span>
 <p>The exact analytic prerequisites are SH02-CTA-IMP-DERHAM; their role is isolated in the coordinate and partition-of-unity steps below.</p>
 <p>On <span class="math" data-tex="$\mathbb R^n$">$\mathbb R^n$</span> take the ordered external product of the one-dimensional generators from SH02-CTA-LINE-TRACE. Its form representative is</p>
 <span class="math math-display" data-tex="$$
-\rho_1&#x27;(x_1)\cdots\rho_n&#x27;(x_n)
+\rho_1'(x_1)\cdots\rho_n'(x_n)
 \,dx_1\wedge\cdots\wedge dx_n.
 $$">$$
-\rho_1&#x27;(x_1)\cdots\rho_n&#x27;(x_n)
+\rho_1'(x_1)\cdots\rho_n'(x_n)
 \,dx_1\wedge\cdots\wedge dx_n.
 $$</span>
 <p>Its integral is <span class="math" data-tex="$1$">$1$</span>, and ordered composition of the normalized sheaf traces also gives <span class="math" data-tex="$1$">$1$</span>. The compact-support group in top degree is a free rank-one module with this generator by SH02-MD-EUCLIDEAN; thus the two functionals agree on the whole group of a coordinate ball. The ordering of the coordinates is part of this comparison. A coordinate change of negative orientation changes the local orientation generator and the form orientation by the same sign, so the statement glues for the orientation-twisted complex.</p>
@@ -179,7 +349,7 @@ R\Gamma(X\setminus Z;o_X)
 \longrightarrow R\Gamma\bigl(Y;g_Z^{-1}(o_X|_{X\setminus Z})\bigr)
 \xrightarrow{\sim}R\Gamma(Y;o_Y).
 $$</span>
-<p>Its degree-<span class="math" data-tex="$(n-1)$">$(n-1)$</span> map is the pullback used below. Exact inverse image and the derived adjunction define it for arbitrary closed <span class="math" data-tex="$Z$">$Z$</span>; no finiteness of <span class="math" data-tex="$Z$">$Z$</span> is required. If <span class="math" data-tex="$Z\subset Z&#x27;$">$Z\subset Z&#x27;$</span> and both avoid <span class="math" data-tex="$g(Y)$">$g(Y)$</span>, adjunction naturality identifies pullback after restriction with the same map to <span class="math" data-tex="$Y$">$Y$</span>. The assumptions on the two cohomology groups of <span class="math" data-tex="$X$">$X$</span> are used to obtain the singleton residue classes, not to define this pullback.</p>
+<p>Its degree-<span class="math" data-tex="$(n-1)$">$(n-1)$</span> map is the pullback used below. Exact inverse image and the derived adjunction define it for arbitrary closed <span class="math" data-tex="$Z$">$Z$</span>; no finiteness of <span class="math" data-tex="$Z$">$Z$</span> is required. If <span class="math" data-tex="$Z\subset Z'$">$Z\subset Z'$</span> and both avoid <span class="math" data-tex="$g(Y)$">$g(Y)$</span>, adjunction naturality identifies pullback after restriction with the same map to <span class="math" data-tex="$Y$">$Y$</span>. The assumptions on the two cohomology groups of <span class="math" data-tex="$X$">$X$</span> are used to obtain the singleton residue classes, not to define this pullback.</p>
 <p>For <span class="math" data-tex="$x\notin g(Y)$">$x\notin g(Y)$</span> define</p>
 <span class="math math-display" data-tex="$$
 \operatorname{ind}_x(g)=\int_Y g^{-1}e_x.
@@ -559,7 +729,7 @@ $$</span>
 <li>Each row and column is a nonempty open <span class="math" data-tex="$d$">$d$</span>-cell and is cohomologically constructible as an extension sheaf in its ambient compact manifold.</li>
 <li>Locally in each parameter, a homeomorphism of the ambient product that fixes that parameter trivializes the pair consisting of the fibre and its open cell.</li>
 <li>Every pair of rows, and every pair of columns, admits a finite compatible triangulation in its compact ambient manifold. In particular the tensor products of either row sheaf with the Verdier dual of the other have perfect global cohomology, by the finite cellular complex.</li>
-<li>For distinct parameters <span class="math" data-tex="$p,p&#x27;$">$p,p&#x27;$</span>, the closed subset <span class="math" data-tex="$U_p\setminus U_{p&#x27;}$">$U_p\setminus U_{p&#x27;}$</span> of <span class="math" data-tex="$U_p$">$U_p$</span> is nonempty and has constant-complex cohomology <span class="math" data-tex="$k$">$k$</span> in degree zero; the analogous assertion holds for columns.</li>
+<li>For distinct parameters <span class="math" data-tex="$p,p'$">$p,p'$</span>, the closed subset <span class="math" data-tex="$U_p\setminus U_{p'}$">$U_p\setminus U_{p'}$</span> of <span class="math" data-tex="$U_p$">$U_p$</span> is nonempty and has constant-complex cohomology <span class="math" data-tex="$k$">$k$</span> in degree zero; the analogous assertion holds for columns.</li>
 </ol>
 <p>Then the operator</p>
 <span class="math math-display" data-tex="$$
@@ -581,25 +751,25 @@ $$">$$
 L=Rj_*k_\Omega\otimes p^{-1}\omega_P.
 $$</span>
 <p>Indeed, locally over <span class="math" data-tex="$Q$">$Q$</span> the pair is constant, so SH02-CB-EXTERNAL-HOM applies to its cohomologically constructible column in the <span class="math" data-tex="$P$">$P$</span> variable and to the arbitrary bounded-below coefficient <span class="math" data-tex="$G$">$G$</span>. It identifies internal Hom with tensoring by this kernel. These comparisons are the canonical evaluation comparisons and therefore agree on overlaps. Compactness of the projections identifies <span class="math" data-tex="$*$">$*$</span> and <span class="math" data-tex="$!$">$!$</span> at this step.</p>
-<p>For fixed <span class="math" data-tex="$p,p&#x27;$">$p,p&#x27;$</span>, the stalk of the composite kernel is</p>
+<p>For fixed <span class="math" data-tex="$p,p'$">$p,p'$</span>, the stalk of the composite kernel is</p>
 <span class="math math-display" data-tex="$$
-R\Gamma\bigl(Q;k_{U_p}\otimes D_Q k_{U_{p&#x27;}}\bigr).
+R\Gamma\bigl(Q;k_{U_p}\otimes D_Q k_{U_{p'}}\bigr).
 $$">$$
-R\Gamma\bigl(Q;k_{U_p}\otimes D_Q k_{U_{p&#x27;}}\bigr).
+R\Gamma\bigl(Q;k_{U_p}\otimes D_Q k_{U_{p'}}\bigr).
 $$</span>
-<p>The orientation shifts from <span class="math" data-tex="$\omega_P$">$\omega_P$</span> and <span class="math" data-tex="$\omega_Q$">$\omega_Q$</span> cancel in the chosen oriented identifications; equivalently retain their orientation lines throughout and use the trace pairing on the diagonal. Proper-support base change justifies the stalk calculation, and local triviality of the pair over <span class="math" data-tex="$P$">$P$</span> justifies restriction of <span class="math" data-tex="$Rj_*k_\Omega$">$Rj_*k_\Omega$</span> to a row. Compact-support duality and tensor–Hom adjunction identify the dual of the displayed complex with <span class="math" data-tex="$R\Gamma(U_p;k_{U_{p&#x27;}})$">$R\Gamma(U_p;k_{U_{p&#x27;}})$</span>. The displayed complex is perfect by the finite compatible triangulation hypothesis, so algebraic biduality identifies it with</p>
+<p>The orientation shifts from <span class="math" data-tex="$\omega_P$">$\omega_P$</span> and <span class="math" data-tex="$\omega_Q$">$\omega_Q$</span> cancel in the chosen oriented identifications; equivalently retain their orientation lines throughout and use the trace pairing on the diagonal. Proper-support base change justifies the stalk calculation, and local triviality of the pair over <span class="math" data-tex="$P$">$P$</span> justifies restriction of <span class="math" data-tex="$Rj_*k_\Omega$">$Rj_*k_\Omega$</span> to a row. Compact-support duality and tensor–Hom adjunction identify the dual of the displayed complex with <span class="math" data-tex="$R\Gamma(U_p;k_{U_{p'}})$">$R\Gamma(U_p;k_{U_{p'}})$</span>. The displayed complex is perfect by the finite compatible triangulation hypothesis, so algebraic biduality identifies it with</p>
 <span class="math math-display" data-tex="$$
-R\operatorname{Hom}_k\bigl(R\Gamma(U_p;k_{U_{p&#x27;}}),k\bigr).
+R\operatorname{Hom}_k\bigl(R\Gamma(U_p;k_{U_{p'}}),k\bigr).
 $$">$$
-R\operatorname{Hom}_k\bigl(R\Gamma(U_p;k_{U_{p&#x27;}}),k\bigr).
+R\operatorname{Hom}_k\bigl(R\Gamma(U_p;k_{U_{p'}}),k\bigr).
 $$</span>
-<p>For <span class="math" data-tex="$p=p&#x27;$">$p=p&#x27;$</span>, the inner complex is <span class="math" data-tex="$R\Gamma(U_p;k)=k$">$R\Gamma(U_p;k)=k$</span>. For <span class="math" data-tex="$p\ne p&#x27;$">$p\ne p&#x27;$</span>, localization on <span class="math" data-tex="$U_p$">$U_p$</span> gives the triangle</p>
+<p>For <span class="math" data-tex="$p=p'$">$p=p'$</span>, the inner complex is <span class="math" data-tex="$R\Gamma(U_p;k)=k$">$R\Gamma(U_p;k)=k$</span>. For <span class="math" data-tex="$p\ne p'$">$p\ne p'$</span>, localization on <span class="math" data-tex="$U_p$">$U_p$</span> gives the triangle</p>
 <span class="math math-display" data-tex="$$
-R\Gamma(U_p;k_{U_{p&#x27;}})\longrightarrow R\Gamma(U_p;k)
-\longrightarrow R\Gamma(U_p\setminus U_{p&#x27;};k)\longrightarrow.
+R\Gamma(U_p;k_{U_{p'}})\longrightarrow R\Gamma(U_p;k)
+\longrightarrow R\Gamma(U_p\setminus U_{p'};k)\longrightarrow.
 $$">$$
-R\Gamma(U_p;k_{U_{p&#x27;}})\longrightarrow R\Gamma(U_p;k)
-\longrightarrow R\Gamma(U_p\setminus U_{p&#x27;};k)\longrightarrow.
+R\Gamma(U_p;k_{U_{p'}})\longrightarrow R\Gamma(U_p;k)
+\longrightarrow R\Gamma(U_p\setminus U_{p'};k)\longrightarrow.
 $$</span>
 <p>The last arrow before the connecting map is pullback of the constant class. Both its source and target are canonically <span class="math" data-tex="$k$">$k$</span> by the hypotheses, and it sends <span class="math" data-tex="$1$">$1$</span> to <span class="math" data-tex="$1$">$1$</span>. Hence the first term is zero. The composite kernel is therefore supported on the diagonal. The adjunction unit is the kernel map <span class="math" data-tex="$k_{\Delta_P}\to L\circ k_\Omega$">$k_{\Delta_P}\to L\circ k_\Omega$</span>; its restriction at <span class="math" data-tex="$(p,p)$">$(p,p)$</span> corresponds under the preceding adjunctions to the identity of <span class="math" data-tex="$k_{U_p}$">$k_{U_p}$</span>. It sends <span class="math" data-tex="$1$">$1$</span> to <span class="math" data-tex="$1$">$1$</span>, so it is an isomorphism at every diagonal stalk as well. This proves the first composite identity as a morphism, including its normalization. Repeating the argument with columns proves the other composite identity. Kernel composition now proves both functor identities on all of <span class="math" data-tex="$D^+$">$D^+$</span>; it is not an argument restricted to point sheaves or finite-rank inputs.</p>
 <p>The argument also works in dimension zero. Orientations may be retained as local systems instead of trivialized, provided the row/column trace identifications in the displayed kernel calculation are supplied. The two applications below have the needed orientations.</p>
@@ -613,7 +783,7 @@ $$</span>
 <p>First suppose <span class="math" data-tex="$-1&lt;c&lt;1$">$-1&lt;c&lt;1$</span>. Its rows and columns are equal-radius open spherical caps. They are open <span class="math" data-tex="$d$">$d$</span>-balls, vary by rotations, and have a smooth boundary. Two caps and their boundaries are semialgebraic and admit a finite compatible triangulation by SH02-CTA-IMP-TRIANGULATION. Local charts reduce their extension sheaves to the open halfspace calculation in SH02-CB-CONVEX, so they satisfy the constructibility hypothesis of SH02-CTA-INCIDENCE-CRITERION.</p>
 <p>We verify the difference hypothesis uniformly for <span class="math" data-tex="$d\ge1$">$d\ge1$</span>. Write <span class="math" data-tex="$U,V$">$U,V$</span> for two distinct equal-radius caps. Neither can properly contain the other: they have the same spherical volume, and a strict containment of round caps would have a difference with nonempty interior. Thus <span class="math" data-tex="$U\setminus V$">$U\setminus V$</span> is nonempty. If some point <span class="math" data-tex="$z\in\partial V$">$z\in\partial V$</span> lies outside <span class="math" data-tex="$U$">$U$</span>, stereographic projection from <span class="math" data-tex="$z$">$z$</span> sends <span class="math" data-tex="$V$">$V$</span> to an open affine halfspace. It sends <span class="math" data-tex="$U$">$U$</span> to an open ball when <span class="math" data-tex="$z\notin\overline U$">$z\notin\overline U$</span>, and to an open affine halfspace when <span class="math" data-tex="$z\in\partial U$">$z\in\partial U$</span>. The image of <span class="math" data-tex="$U\setminus V$">$U\setminus V$</span> is therefore the intersection of that convex open set with a closed halfspace. It is convex, and its constant-complex cohomology is canonically <span class="math" data-tex="$k$">$k$</span> by SH02-CA-CONSTANT.</p>
 <p>Otherwise <span class="math" data-tex="$\partial V\subset U$">$\partial V\subset U$</span>. The connected closed ball <span class="math" data-tex="$S^d\setminus U$">$S^d\setminus U$</span> avoids <span class="math" data-tex="$\partial V$">$\partial V$</span>. It lies either inside <span class="math" data-tex="$V$">$V$</span> or in <span class="math" data-tex="$S^d\setminus\overline V$">$S^d\setminus\overline V$</span>, the two components of that complement. The latter possibility would imply a strict inclusion <span class="math" data-tex="$V\subset U$">$V\subset U$</span>, already excluded. Hence <span class="math" data-tex="$S^d\setminus U\subset V$">$S^d\setminus U\subset V$</span>, and <span class="math" data-tex="$U\setminus V=S^d\setminus V$">$U\setminus V=S^d\setminus V$</span> is a closed ball. It again has constant cohomology <span class="math" data-tex="$k$">$k$</span>. In dimension zero every cap is the singleton consisting of its centre, and distinct rows have singleton difference.</p>
-<p>At <span class="math" data-tex="$c=-1$">$c=-1$</span>, a row is <span class="math" data-tex="$U_u=S^d\setminus\{-u\}$">$U_u=S^d\setminus\{-u\}$</span>, again an open <span class="math" data-tex="$d$">$d$</span>-cell. For distinct centres, <span class="math" data-tex="$U_u\setminus U_{u&#x27;}=\{-u&#x27;\}$">$U_u\setminus U_{u&#x27;}=\{-u&#x27;\}$</span>, whose constant-complex cohomology is canonically <span class="math" data-tex="$k$">$k$</span>. Rotations still trivialize the pairs, and finite triangulations compatible with two points supply the constructibility and perfectness conditions. This includes <span class="math" data-tex="$d=0$">$d=0$</span>. The criterion therefore applies in both variables for the entire range <span class="math" data-tex="$-1\le c&lt;1$">$-1\le c&lt;1$</span>. At <span class="math" data-tex="$c\ge1$">$c\ge1$</span> the kernel is zero, whereas at <span class="math" data-tex="$c&lt;-1$">$c&lt;-1$</span> it is the constant kernel and factors through global cohomology; for a nonzero coefficient ring these excluded values do not satisfy the same conclusion.</p>
+<p>At <span class="math" data-tex="$c=-1$">$c=-1$</span>, a row is <span class="math" data-tex="$U_u=S^d\setminus\{-u\}$">$U_u=S^d\setminus\{-u\}$</span>, again an open <span class="math" data-tex="$d$">$d$</span>-cell. For distinct centres, <span class="math" data-tex="$U_u\setminus U_{u'}=\{-u'\}$">$U_u\setminus U_{u'}=\{-u'\}$</span>, whose constant-complex cohomology is canonically <span class="math" data-tex="$k$">$k$</span>. Rotations still trivialize the pairs, and finite triangulations compatible with two points supply the constructibility and perfectness conditions. This includes <span class="math" data-tex="$d=0$">$d=0$</span>. The criterion therefore applies in both variables for the entire range <span class="math" data-tex="$-1\le c&lt;1$">$-1\le c&lt;1$</span>. At <span class="math" data-tex="$c\ge1$">$c\ge1$</span> the kernel is zero, whereas at <span class="math" data-tex="$c&lt;-1$">$c&lt;-1$</span> it is the constant kernel and factors through global cohomology; for a nonzero coefficient ring these excluded values do not satisfy the same conclusion.</p>
 <h2 id="sh02-cta-grassmann-oriented-complements-and-a-determinant-contraction">SH02-CTA-GRASSMANN — Oriented complements and a determinant contraction</h2>
 <p>Let <span class="math" data-tex="$W$">$W$</span> be an oriented real vector space of dimension <span class="math" data-tex="$n$">$n$</span>, and <span class="math" data-tex="$1\le m\le n$">$1\le m\le n$</span>. Let <span class="math" data-tex="$P$">$P$</span> parametrize oriented <span class="math" data-tex="$m$">$m$</span>-planes and <span class="math" data-tex="$Q$">$Q$</span> oriented <span class="math" data-tex="$(n-m)$">$(n-m)$</span>-planes. Define <span class="math" data-tex="$\Omega$">$\Omega$</span> to consist of pairs <span class="math" data-tex="$(A,B)$">$(A,B)$</span> with <span class="math" data-tex="$W=A\oplus B$">$W=A\oplus B$</span> and with the ordered direct-sum orientation agreeing with that of <span class="math" data-tex="$W$">$W$</span>. Both Grassmannians are compact manifolds of dimension <span class="math" data-tex="$d=m(n-m)$">$d=m(n-m)$</span>. Their orientations are canonical from the oriented tautological plane and its oriented quotient: the tangent space is <span class="math" data-tex="$\operatorname{Hom}(A,W/A)$">$\operatorname{Hom}(A,W/A)$</span>, whose determinant orientation is unchanged by orientation-preserving changes of bases. Local lifts to the oriented linear group trivialize the pairs of each Grassmannian and its complement chart.</p>
 <p>Fix one oriented plane <span class="math" data-tex="$A_0$">$A_0$</span> and choose its positively oriented complement <span class="math" data-tex="$B_0$">$B_0$</span>. Each element of its row is the graph of a unique linear map <span class="math" data-tex="$T:B_0\to A_0$">$T:B_0\to A_0$</span>, with the orientation transported from <span class="math" data-tex="$B_0$">$B_0$</span>. Thus the row is the affine space <span class="math" data-tex="$\operatorname{Hom}(B_0,A_0)$">$\operatorname{Hom}(B_0,A_0)$</span>. The analogous description holds for columns, with the order sign <span class="math" data-tex="$(-1)^{m(n-m)}$">$(-1)^{m(n-m)}$</span> included when the two summands are exchanged. Reversing that sign merely selects the opposite orientation chart.</p>
@@ -649,11 +819,9 @@ $$</span>
 <h2 id="sh02-cta-antecedents-antecedents-and-further-work">SH02-CTA-ANTECEDENTS — Antecedents and further work</h2>
 <p>The cone, incidence, residue, trace and support questions treated here come from the conic and Fourier–Sato theory of Kashiwara and Schapira; see M. Kashiwara and P. Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf"><em>Microlocal study of sheaves</em></a>, Astérisque 128 (1985), Chapters 1–2. The residue discussion goes back to Birger Iversen. The course's <a href="../sheaf-proof-readings/SH02-open-prerequisites.html">open prerequisite contracts</a> state the Stacks project foundations actually used.</p>
 <p>Three research directions follow from the calculations. One can seek geometric row-difference criteria for other compact incidence correspondences, retaining the evaluation map on the diagonal. One can study how the gluing class in a quadratic transform changes in a family whose null space jumps. One can classify support comparisons by the orientation-twisted fiber complex rather than a list of constant-coefficient Betti numbers. These are questions for further work, not additional theorems asserted here.</p>
-
 </article>
-
-<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
-<p class="small source-link"><a href="src/conic-and-trace-applications.md" download>Editable Markdown source of this lesson</a></p>
+<nav aria-label="Lessons" class="pager"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a download="" href="src/conic-and-trace-applications.md">Editable Markdown source of this lesson</a></p>
 </main>
 <footer class="site-footer">
 <p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>

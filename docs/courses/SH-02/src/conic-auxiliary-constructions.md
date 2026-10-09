@@ -6,9 +6,9 @@ This supplement supplies geometric constructions and the specified sheaf maps us
 
 For the sheaf statements, let \(k\) be a commutative unital ring of finite global dimension. All spaces called locally compact are Hausdorff. Let \(\tau:E\to B\) be a real vector bundle of fixed finite rank \(n\) over an arbitrary locally compact base, and write \(\pi:E^*\to B\) for its dual. No compactness, countability, manifold condition or finite-dimensionality is imposed on \(B\). Complexes have bounded-below cohomology, with no upper bound, constructibility condition or finite-generation assumption on stalks.
 
-Use the Fourier functor \(T_E\), its negative-pairing convention and its positive-support ordinary-image presentation from SH02-FS-SETUP and SH02-FS-COMPARE. Use the region formula FS13 in SH02-FS-SECTIONS, and the canonical restriction and interval-unit isomorphisms proved in SH02-CON-RESTRICTION and SH02-CON-CYLINDER. The latter proof uses the closed-exhaustion comparison, Milnor calculation and noncompact-strip case in SH02-EXH-COMPARISON, SH02-EXH-MILNOR and SH02-EXH-STRIPS.
+Use the Fourier functor \(T_E\), its negative-pairing convention and its positive-support ordinary-image presentation from [SH02-FS-SETUP and SH02-FS-COMPARE](../../sheaf-proof-readings/SH02-fourier-sato.html). Use the region formula FS13 in [SH02-FS-SECTIONS](../../sheaf-proof-readings/SH02-fourier-sato.html), and the canonical restriction and interval-unit isomorphisms proved in [SH02-CON-RESTRICTION and SH02-CON-CYLINDER](../../sheaf-proof-readings/SH02-conic-descent.html). The latter proof uses the closed-exhaustion comparison, Milnor calculation and noncompact-strip case in [SH02-EXH-COMPARISON, SH02-EXH-MILNOR and SH02-EXH-STRIPS](../../sheaf-proof-readings/SH02-closed-exhaustion.html).
 
-The ordinary sheaf operations used below are exact inverse image, derived direct image and sections, adjunction, composition, localization, and stalk detection. Their comparison maps are fixed by SH02-IMP-ADJUNCTION, SH02-IMP-BASECHANGE-MORPHISM, SH02-IMP-LOCALIZATION and SH02-IMP-HOM-PULLBACK, with the adjunction verifications in the prerequisite proofs. The construction of a comparison alone never supplies its invertibility; the required ordinary base change is proved below. The Fourier results retain their separately specified proper-support and orientation dependencies.
+The ordinary sheaf operations used below are exact inverse image, derived direct image and sections, adjunction, composition, localization, and stalk detection. Their comparison maps are fixed by [SH02-IMP-ADJUNCTION, SH02-IMP-BASECHANGE-MORPHISM, SH02-IMP-LOCALIZATION and SH02-IMP-HOM-PULLBACK](../../sheaf-proof-readings/SH02-open-prerequisites.html), with the adjunction verifications in [the prerequisite proofs](../../sheaf-proof-readings/SH02-open-prerequisite-proofs.html). The construction of a comparison alone never supplies its invertibility; the required ordinary base change is proved below. The Fourier results retain their separately specified proper-support and orientation dependencies.
 
 For a locally closed \(A\subset Y\), let \(k_A^Y\) denote the constant sheaf extended by zero in \(Y\). Write
 
@@ -342,7 +342,7 @@ R\gamma^\vee_*\,(j^\vee)^{-1}T_E(Rj_*\gamma^{-1}F)
 \tag{CAX8}
 \]
 
-The object \(Rj_*\gamma^{-1}F\) is the conic extension by ordinary direct image. This theorem supplies the ordinary comparison in [SH02-CTA-RADIAL](conic-and-trace-applications.md), retaining that particular extension operation.
+The object \(Rj_*\gamma^{-1}F\) is the conic extension by ordinary direct image. This theorem supplies the ordinary comparison in [SH02-CTA-RADIAL](../conic-and-trace-applications.html), retaining that particular extension operation.
 
 **Proof.** The input extension is conic by transport through ordinary direct image in SH02-CON-FUNCTORS, applied to the equivariant open inclusion. The maps \(j_!\) are exact, so the exceptional-definedness condition of that theorem is satisfied; no condition on \(B\) is added.
 

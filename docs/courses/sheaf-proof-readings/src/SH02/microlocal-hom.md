@@ -95,7 +95,7 @@ The subscript means tensor with the constant sheaf of the indicated locally clos
 
 ### SH02-MH-RECOVERY — Zero direction and punctured directions
 
-Use the exact recoveries of [SH02-MIC-ZERO](microlocalization.md#SH02-MIC-ZERO). Thus ordinary recovery is the no-cut Fourier map followed by the specialization support counit. In codimension \(c\), compact recovery is \((-1)^c\) times the specified zero-cone FS14 map, followed by the inverse specialization restriction unit. There are natural identifications
+Use the exact recoveries of [SH02-MIC-ZERO](../../SH02-microlocalization.html#SH02-MIC-ZERO). Thus ordinary recovery is the no-cut Fourier map followed by the specialization support counit. In codimension \(c\), compact recovery is \((-1)^c\) times the specified zero-cone FS14 map, followed by the inverse specialization restriction unit. There are natural identifications
 \[
 s^{-1}\mu_MF\simeq R\pi_*\mu_MF\simeq i^!F,
 \qquad s^!\mu_MF\simeq R\pi_!\mu_MF\simeq i^{-1}F\otimes\omega_{M/X}.
@@ -756,7 +756,7 @@ Finally SH02-MH-HOM-RECOVERY identifies directional composition after forgetting
 R\mathcal Hom(F_1,F_2)\otimes R\mathcal Hom(F_2,F_3)
 \longrightarrow R\mathcal Hom(F_1,F_3).
 \]
-To verify the arrow, use the zero-section recovery of each Hom kernel. The graph evaluation MH30 becomes ordinary evaluation on the diagonal, and transitivity identifies its remaining exceptional counit with the ordinary composition counit. This is the same kernel calculation used for the unit and associativity. SH02-MH-RECOVERY fixes each individual zero-section recovery and its trace map. The [product-recovery supplement](microlocal-hom-product-recovery.md#SH02-MHPR-NORMALIZATION) proves the additional comparison for the actual MIC19 map and selected REC6/REC16 recoveries. Its C5 and C12 product squares, followed by the typed S8/S14 paste through MH30, identify the ordinary and compact recovered composition maps. The result remains relative to the individually stated prerequisite contracts.
+To verify the arrow, use the zero-section recovery of each Hom kernel. The graph evaluation MH30 becomes ordinary evaluation on the diagonal, and transitivity identifies its remaining exceptional counit with the ordinary composition counit. This is the same kernel calculation used for the unit and associativity. SH02-MH-RECOVERY fixes each individual zero-section recovery and its trace map. The [product-recovery supplement](../../SH02-microlocal-hom-product-recovery.html#SH02-MHPR-NORMALIZATION) proves the additional comparison for the actual MIC19 map and selected REC6/REC16 recoveries. Its C5 and C12 product squares, followed by the typed S8/S14 paste through MH30, identify the ordinary and compact recovered composition maps. The result remains relative to the individually stated prerequisite contracts.
 
 ## SH02-MH-KERNEL-COMPOSITION — Integrating an intermediate covector
 
@@ -883,7 +883,7 @@ Explain where the antipode enters.
 
 <a id="sh02-mh-routes-what-remains-to-audit-and-what-comes-next"></a>
 
-## SH02-MH-ROUTES — What remains open and what comes next
+## SH02-MH-ROUTES — Further applications and mathematical sources
 
 The lesson contains the graph and diagonal definitions, recoveries, submanifold and cone-topology tests, all four graph squares, all four graph-elimination comparisons, transport of two arguments, the external tensor map, the established external Hom maps, graph and kernel composition, units, associativity, and solved coefficient, orientation, and stabilization tests. These constructions feed the later study of localized categories and microsupport functorial estimates: the support of \(\mathsf M_X(A,B)\) restricts where a morphism can survive after localization, and MH34 describes how such restrictions behave under convolution.
 

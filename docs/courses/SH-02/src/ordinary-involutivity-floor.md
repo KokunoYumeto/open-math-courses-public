@@ -2,7 +2,7 @@
 
 # Ordinary geometry at the bounded involutivity scope
 
-This independently authored supplement is dedicated to CC0 1.0 Universal. It closes the exact ordinary differential-topology and real-analysis floor left in the frozen IC1–IC9 handoff, without modifying that handoff. Referenced source bodies retain their actual licenses: DG-FND local-tools Sections 0–2 declare independently written CC0 exposition, while its explicitly attributed Section 3 and marked completions retain CC BY-SA 4.0. Those referenced texts are not relicensed by this supplement.
+This independently authored supplement is dedicated to CC0 1.0 Universal. It proves the ordinary differential-topology and real-analysis inputs used by IC1–IC9. Referenced source bodies retain their actual licenses: DG-FND local-tools Sections 0–2 declare independently written CC0 exposition, while its explicitly attributed Section 3 and marked completions retain CC BY-SA 4.0. Those referenced texts are not relicensed by this supplement.
 
 The scope is finite-dimensional Hausdorff countable-at-infinity smooth manifolds, smooth embedded closed submanifolds (locally closed ones after an open ambient restriction), finite-rank smooth real vector bundles, and C1 local test functions on Euclidean charts. No analytic partition of unity or analytic tubular neighbourhood is asserted; the auxiliary topology of an analytic deformation may use the underlying smooth manifold exactly as normal-geometry.md:15 permits. A countable union of compact subsets gives a countable chart cover: cover each compact subset by finitely many charts. The rational-ball bases in these countably many charts give a countable basis. This verifies the second-countability premise of the admitted bodies rather than changing the manifold convention.
 
@@ -177,11 +177,11 @@ The supplied microsupport-tests.md:14,476 attributes the distance/front mechanis
 
 ## OF7. Scope of the closure
 
-The previous frozen report's ordinary floor is discharged at its actual smooth/C1 bounded I1/I2/I15 uses by these admitted full bodies and the new finite arguments. The result does not assert analytic partitions or analytic tubular maps, metric completeness or a complete geodesic flow, uniform radii on a noncompact base, a general unbounded sheaf theorem, or closure of unrelated course units. The frozen IC1–IC9 statements, parent Fourier/MI comparison bodies, MC13a/b, and countable-exhaustion corrections remain unchanged.
+These arguments supply the smooth and C1 geometric inputs used in the bounded I1/I2/I15 proofs. The result does not assert analytic partitions or analytic tubular maps, metric completeness or a complete geodesic flow, uniform radii on a noncompact base, a general unbounded sheaf theorem, or closure of unrelated course units. The sheaf-theoretic deductions also use the stated Fourier comparisons, MC13a/b and countable-exhaustion results.
 
-One unused declaration is kept separate from this closure. asymptotic-estimates.md:39 lists a proper smooth embedding of a countable-at-infinity manifold into a finite-dimensional Euclidean space. Its actual proof use is line 626, in the later small-image theorem (AE.49–AE.54). The I1/I15 route uses the AE body through line 568, with the boundary blowup written directly in local coordinates; that route never invokes the embedding. A full proper-embedding provider therefore remains an obligation for that later theorem, outside this supplement's bounded dependency route. A declared import list alone is not evidence that this theorem was used or proved.
+One unused declaration is kept separate from this closure. asymptotic-estimates.md:39 lists a proper smooth embedding of a countable-at-infinity manifold into a finite-dimensional Euclidean space. Its actual proof use is line 626, in the later small-image theorem (AE.49–AE.54). The I1/I15 route uses the AE body through line 568, with the boundary blowup written directly in local coordinates; that route never invokes the embedding. The separate proper Euclidean embedding lesson proves that later theorem's embedding input and transports its cotangent and compact-support comparisons. A declared import list alone is not evidence that this theorem was used or proved.
 
-This is a mathematical proof audit from exact written bodies; no formal checker or independent human certification is claimed. No unresolved ordinary geometric/analytic inference remains in these used ranges. The [IC1–IC9 route](../involutivity-foundations.html#SH02-INVOLUTIVITY-FOUNDATIONS) uses these proofs while preserving its separately checked sheaf, Fourier and derived-operation contracts. All licenses, hashes and inclusive ranges are listed in the binding table below.
+The local-coordinate, distance and angular arguments above supply the ordinary geometric steps used here. The [IC1–IC9 route](../involutivity-foundations.html#SH02-INVOLUTIVITY-FOUNDATIONS) uses these proofs while preserving its separately checked sheaf, Fourier and derived-operation contracts. The table below identifies the corresponding source sections and component licences.
 
 The admitted analytic source itself credits Jiří Lebl, [Basic Analysis, free version 6.3](https://www.jirka.org/ra/), as a construction source, and Gerald Teschl, [Ordinary Differential Equations and Dynamical Systems, free preliminary version](https://www.mat.univie.ac.at/~gerald/ftp/book-ode/ode.pdf), for mathematical comparison; its independently written proofs are the actual providers used here. The admitted partition component is explicitly attributed to Holger Brenner and the Wikiversity contributors, [Lecture 22, revision 1052940](https://de.wikiversity.org/w/index.php?oldid=1052940), through the [complete English edition v2026.09.01-complete](https://github.com/KokunoYumeto/brenner-differentialgeometrie-en/releases/tag/v2026.09.01-complete), and retains [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). The new tubular figure illustrates OF5's independently written proof; its partition input is this attributed component. No human-source image or book was downloaded or reproduced for this supplement.
 
@@ -196,10 +196,10 @@ This finite supplement proves the Euclidean geometry used to turn a covector exc
 
 The audited sources are frozen at commit `17e99c7e7fd7f0c92bc256317a57e52a46084d67` of `KokunoYumeto/open-math-courses`.
 
-| Frozen source | SHA-256 | Geometry audited |
-|---|---|---|
-| `docs/courses/sheaf-proof-readings/src/SH02/microsupport-operations.md` | `5f68121b74984b6a6cad0eb4f104f0ceb7e51255a8153c5f1cabebe2dfa1796a` | lines 237–298: (MO11), cone choice, directional caps, opposite cap; lines 302–340: (MO14), cone refinement and the bound (MO15 implicit in lines 332–336). Lines 46–63 supply the no-cancellation context. |
-| `docs/courses/sheaf-proof-readings/src/SH02/microsupport-tests.md` | `fee430cf9ebbafb6faf5073e74ae91d14ba687f80acc4baab3f296c4f5039ba3` | lines 98–116: sublevel germ and cofinality; lines 482–530: nearest-point differential, rounded boundary, compact truncated tubes; lines 589–658: compact directional localization and halfspace cofinality. Lines 1–98, 446–481 and 531–588 provide the precise conventions and neighboring contracts used below. |
+| Frozen source | Geometry audited |
+| --- | --- |
+| `docs/courses/sheaf-proof-readings/src/SH02/microsupport-operations.md` | lines 237–298: (MO11), cone choice, directional caps, opposite cap; lines 302–340: (MO14), cone refinement and the bound (MO15 implicit in lines 332–336). Lines 46–63 supply the no-cancellation context. |
+| `docs/courses/sheaf-proof-readings/src/SH02/microsupport-tests.md` | lines 98–116: sublevel germ and cofinality; lines 482–530: nearest-point differential, rounded boundary, compact truncated tubes; lines 589–658: compact directional localization and halfspace cofinality. Lines 1–98, 446–481 and 531–588 provide the precise conventions and neighboring contracts used below. |
 
 The exact subset-normal convention is the already supplied displacement criterion in `subset-microsupport.md`, lines 45–151, from the same commit, SHA-256 `3902c3481c5aabac3f0bd4902ae00e97ade02d342f55844485fc7f683d37f0de`. Whenever that criterion is used below it is stated explicitly. No sheaf theorem follows merely from the geometry here; the localization and propagation maps retain their separately audited contracts.
 
@@ -739,16 +739,16 @@ The actual angular, distance and directional-neighborhood claims in the indicate
 
 ## Exact ordinary-floor source bindings
 
-| Source at revision `17e99c7e7fd7f0c92bc256317a57e52a46084d67` | Inclusive used lines | Raw SHA-256 | Retained component terms |
-|---|---|---|---|
-| local-tools-for-bundles-and-transport.md | 1–11, 13–134, 137–170, 174–222, 245–396, 469–475 | `d1d6644b8df928b7baac5cddfc11b64fbd069b208111c68cb7f78761bed7901e` | Sections 0--2 independently written CC0; attributed Brenner Section 3 and marked completions CC BY-SA 4.0; human-source prose/images not relicensed. |
-| implicit-maps-U070.md | 1–95, 149–150 | `2ead6579a3291900c866e9c1511c8dcdf71f8ccfc0d02b1c25ddb81510acb955` | CC0 programme proof selection/apparatus; rights and selection history separately bound. |
-| RIGHTS.md | 1–9 | `ba546be2a5f6fbf18395b9ee34429a853cf9a617cc6e6a182330483a29c58076` | actual programme CC0 dedication and third-party rights exclusions retained |
-| U070_SELECTION_HISTORY.md | 1–5 | `46bb22eeadb8faa51d4f607cad742bcb6b92aa2bf94495195eeec05cdc5c96ec` | actual programme CC0 dedication and third-party rights exclusions retained |
-| normal-geometry.md | 13–15, 546–637 | `756c5ee5464e111dd56ecded7954051d240091a403148f3ef086c5af84e64b4b` | Retains original source dedication/provenance from frozen \(SOURCE_BINDINGS.json\). |
-| microsupport-operations.md | 46–63, 237–298, 302–340 | `5f68121b74984b6a6cad0eb4f104f0ceb7e51255a8153c5f1cabebe2dfa1796a` | Retains original source dedication/provenance from frozen \(SOURCE_BINDINGS.json\). |
-| microsupport-tests.md | 14–14, 98–116, 446–658 | `fee430cf9ebbafb6faf5073e74ae91d14ba687f80acc4baab3f296c4f5039ba3` | Retains original source dedication/provenance from frozen \(SOURCE_BINDINGS.json\). |
-| subset-microsupport.md | 45–151 | `3902c3481c5aabac3f0bd4902ae00e97ade02d342f55844485fc7f683d37f0de` | Retains original source dedication/provenance from frozen \(SOURCE_BINDINGS.json\). |
-| asymptotic-estimates.md | 7–75, 350–568, 604–626 | `6be321313f013a6ca44f8b5c8cbb13a238ed5d07036c8695818d5d1ea67bce96` | Retains original source dedication/provenance from frozen \(SOURCE_BINDINGS.json\). |
+| Source at revision `17e99c7e7fd7f0c92bc256317a57e52a46084d67` | Inclusive used lines | Retained component terms |
+| --- | --- | --- |
+| local-tools-for-bundles-and-transport.md | 1–11, 13–134, 137–170, 174–222, 245–396, 469–475 | Sections 0--2 independently written CC0; attributed Brenner Section 3 and marked completions CC BY-SA 4.0; human-source prose/images not relicensed. |
+| implicit-maps-U070.md | 1–95, 149–150 | CC0 programme proof selection/apparatus; rights and selection history separately bound. |
+| RIGHTS.md | 1–9 | actual programme CC0 dedication and third-party rights exclusions retained |
+| U070_SELECTION_HISTORY.md | 1–5 | actual programme CC0 dedication and third-party rights exclusions retained |
+| normal-geometry.md | 13–15, 546–637 | Retains original source dedication/provenance from frozen \(SOURCE_BINDINGS.json\). |
+| microsupport-operations.md | 46–63, 237–298, 302–340 | Retains original source dedication/provenance from frozen \(SOURCE_BINDINGS.json\). |
+| microsupport-tests.md | 14–14, 98–116, 446–658 | Retains original source dedication/provenance from frozen \(SOURCE_BINDINGS.json\). |
+| subset-microsupport.md | 45–151 | Retains original source dedication/provenance from frozen \(SOURCE_BINDINGS.json\). |
+| asymptotic-estimates.md | 7–75, 350–568, 604–626 | Retains original source dedication/provenance from frozen \(SOURCE_BINDINGS.json\). |
 
 The attributed Brenner/Wikiversity Section 3 and its marked completions retain CC BY-SA 4.0. Their independently verified references and licence notice remain at the pinned source. The new OF and EA arguments and all new figures are dedicated to CC0 1.0; no antecedent is relicensed.
