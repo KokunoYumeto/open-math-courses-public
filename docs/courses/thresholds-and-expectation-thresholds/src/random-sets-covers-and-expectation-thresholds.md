@@ -2,9 +2,9 @@
 
 *Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
-Fix a graph \(H\), and let the random graph \(G(n,p)\) on the vertex set \([n]=\{1,\dots,n\}\) contain each possible edge independently with probability \(p\). How large must \(p\) be for \(G(n,p)\) to contain a copy of \(H\) with probability at least \(\frac12\)? There is an easy lower bound. If some subgraph \(F\) of \(H\) has fewer than \(\frac12\) copies in expectation, then \(F\), and with it \(H\), appears with probability less than \(\frac12\). The least \(p\) at which no subgraph is excluded in this way is the *expectation threshold* \(p_{\mathrm E}(n,H)\). In 2006 Kahn and Kalai conjectured that this first-moment obstruction is the only one up to a logarithmic factor: the containment threshold \(p_{\mathrm c}(n,H)\) is at most \(Kp_{\mathrm E}(n,H)\log n\) for a universal constant \(K\), whatever the graph \(H\) [KK]. This course presents the proof of the conjecture by OpenAI (2026) [OpenAI-KK2], in the sharper form \(p_{\mathrm c}(n,H)\le2048\,\mathrm e^{50}p_{\mathrm E}(n,H)\,(1+\log_2e(H))\).
+Fix a graph \(H\), and let the random graph \(G(n,p)\) on the vertex set \([n]=\{1,\dots,n\}\) contain each possible edge independently with probability \(p\). How large must \(p\) be for \(G(n,p)\) to contain a copy of \(H\) with probability at least \(\frac12\)? There is an easy lower bound. If some subgraph \(F\) of \(H\) has fewer than \(\frac12\) copies in expectation, then \(F\), and with it \(H\), appears with probability less than \(\frac12\). The least \(p\) at which no subgraph is excluded in this way is the *expectation threshold* \(p_{\mathrm E}(n,H)\). In 2006 Kahn and Kalai conjectured that this first-moment obstruction is the only one up to a logarithmic factor: the containment threshold \(p_{\mathrm c}(n,H)\) is at most \(Kp_{\mathrm E}(n,H)\log n\) for a universal constant \(K\), whatever the graph \(H\) [KK]. This course presents the proof of the conjecture by OpenAI (2026) [OpenAI-KK2], in the sharper form \(p_{\mathrm c}(n,H)\le2048\,\mathrm e^{50}p_{\mathrm E}(n,H)\,(1+\log_2e(H))\), and three further results of OpenAI on expectation thresholds: integral and fractional expectation thresholds agree up to a constant factor, Talagrand's discrete convexity conjecture holds, and every graph splits into a bounded number of pieces that appear at a constant multiple of its integral expectation threshold.
 
-This lesson sets up the language: random subsets of a finite set, increasing families and their thresholds, covers and expectation thresholds, the counting of copies of graphs, and the example of perfect matchings, which shows that a logarithmic factor cannot be avoided. Section 5 states the theorem and describes the proof given in the three lessons that follow.
+This lesson sets up the language: random subsets of a finite set, increasing families and their thresholds, covers and expectation thresholds, the counting of copies of graphs, and the example of perfect matchings, which shows that a logarithmic factor cannot be avoided. Section 5 states the second Kahn–Kalai conjecture and describes the plan of the course.
 
 Throughout, \(\log\) is the natural logarithm, \(\log_2\) the logarithm to base \(2\), and \(\mathrm e\) the base of the natural logarithm.
 
@@ -28,23 +28,29 @@ By continuity and Lemma 1.1, a nontrivial increasing family has a unique number 
 
 ## 2. Covers and expectation thresholds
 
-Let \(\mathcal F\) be a nontrivial increasing family on \(X\). A *cover* of \(\mathcal F\) is a family \(\mathcal G\subseteq2^X\) such that every \(A\in\mathcal F\) contains some \(S\in\mathcal G\); its *cost* at density \(p\) is \(c_p(\mathcal G)=\sum_{S\in\mathcal G}p^{|S|}\). A *fractional cover* is a function \(w\colon2^X\to[0,\infty)\) with \(\sum_{S\subseteq A}w(S)\ge1\) for every \(A\in\mathcal F\); its cost is \(c_p(w)=\sum_Sw(S)p^{|S|}\). A cover \(\mathcal G\) is the same as the fractional cover \(w=\mathbf 1_{\mathcal G}\), with the same cost.
+Let \(\mathcal F\) be a nontrivial increasing family on \(X\). A *cover* of \(\mathcal F\) is a family \(\mathcal G\subseteq2^X\) such that every \(A\in\mathcal F\) contains some \(S\in\mathcal G\); its *cost* at density \(p\) is \(c_p(\mathcal G)=\sum_{S\in\mathcal G}p^{|S|}\). A *fractional cover* is a function \(g\colon2^X\to[0,\infty)\) with \(\sum_{S\subseteq A}g(S)\ge1\) for every \(A\in\mathcal F\); its cost is \(c_p(g)=\sum_Sg(S)p^{|S|}\). A cover \(\mathcal G\) is the same as the fractional cover \(g=\mathbf 1_{\mathcal G}\), with the same cost.
 
-**Lemma 2.1** (first-moment bound). For every fractional cover \(w\) and every \(p\), \(\mu_p(\mathcal F)\le c_p(w)\). For a cover \(\mathcal G\), \(c_p(\mathcal G)\) is the expected number of members of \(\mathcal G\) contained in \(W\sim\mu_p\).
+**Lemma 2.1** (first-moment bound). For every fractional cover \(g\) and every \(p\), \(\mu_p(\mathcal F)\le c_p(g)\). For a cover \(\mathcal G\), \(c_p(\mathcal G)\) is the expected number of members of \(\mathcal G\) contained in \(W\sim\mu_p\).
 
-**Proof.** If \(W\in\mathcal F\) then \(\sum_{S\subseteq W}w(S)\ge1\). So \(\mathbf 1\{W\in\mathcal F\}\le\sum_Sw(S)\mathbf 1\{S\subseteq W\}\); take expectations, using \(\mathbb P(S\subseteq W)=p^{|S|}\). \(\square\)
+**Proof.** If \(W\in\mathcal F\) then \(\sum_{S\subseteq W}g(S)\ge1\). So \(\mathbf 1\{W\in\mathcal F\}\le\sum_Sg(S)\mathbf 1\{S\subseteq W\}\); take expectations, using \(\mathbb P(S\subseteq W)=p^{|S|}\). \(\square\)
 
 The *expectation threshold* and the *fractional expectation threshold* of \(\mathcal F\) are
 \[
-q(\mathcal F)=\sup\{p\in[0,1]:c_p(\mathcal G)\le\tfrac12\text{ for some cover }\mathcal G\},\qquad q_f(\mathcal F)=\sup\{p\in[0,1]:c_p(w)\le\tfrac12\text{ for some fractional cover }w\}.
+q(\mathcal F)=\sup\{p\in[0,1]:c_p(\mathcal G)\le\tfrac12\text{ for some cover }\mathcal G\},\qquad q_f(\mathcal F)=\sup\{p\in[0,1]:c_p(g)\le\tfrac12\text{ for some fractional cover }g\}.
 \]
 Both sets contain \(p=0\): the family \(\mathcal F\) is a cover of itself, and \(c_0(\mathcal F)=0\) because \(\varnothing\notin\mathcal F\). Costs are nondecreasing in \(p\), so both sets are intervals starting at \(0\); Exercise 6.4 shows that they are closed.
 
 **Proposition 2.2.** \(q(\mathcal F)\le q_f(\mathcal F)\le p_{\mathrm c}(\mathcal F)\).
 
-**Proof.** Every cover is a fractional cover with the same cost, which gives the first inequality. If \(c_p(w)\le\frac12\) for a fractional cover \(w\), Lemma 2.1 gives \(\mu_p(\mathcal F)\le\frac12\), so \(p\le p_{\mathrm c}(\mathcal F)\) by Lemma 1.1. \(\square\)
+**Proof.** Every cover is a fractional cover with the same cost, which gives the first inequality. If \(c_p(g)\le\frac12\) for a fractional cover \(g\), Lemma 2.1 gives \(\mu_p(\mathcal F)\le\frac12\), so \(p\le p_{\mathrm c}(\mathcal F)\) by Lemma 1.1. \(\square\)
 
-The *Kahn–Kalai conjecture* in its abstract form asserted that \(p_{\mathrm c}(\mathcal F)\le Kq(\mathcal F)\log\ell(\mathcal F)\) for a universal constant \(K\), where \(\ell(\mathcal F)\) is the maximum of \(2\) and the largest size of a minimal member of \(\mathcal F\) [KK]. Talagrand introduced the fractional version. Frankston, Kahn, Narayanan and Park proved \(p_{\mathrm c}(\mathcal F)\le Kq_f(\mathcal F)\log\ell(\mathcal F)\) [FKNP], and Park and Pham proved the abstract conjecture itself [PP]. These theorems are background and are not used in this course.
+Upper bounds for the expectation thresholds come from *spread* random members of \(\mathcal F\):
+
+**Proposition 2.3** (spread members). Let \(\sigma>0\), and let \(A\) be a random member of \(\mathcal F\) such that \(\mathbb P(J\subseteq A)\le\sigma^{|J|}\) for every nonempty \(J\subseteq X\). Then \(q(\mathcal F)\le q_f(\mathcal F)\le\sigma\).
+
+**Proof.** Let \(g\) be a fractional cover with \(c_p(g)\le\frac12\). Since \(A\in\mathcal F\), \(\sum_{S\subseteq A}g(S)\ge1\); taking expectations, \(1\le\sum_Sg(S)\,\mathbb P(S\subseteq A)\le\sum_Sg(S)\,\sigma^{|S|}\), where the term \(S=\varnothing\) is \(g(\varnothing)\) on both sides. If \(p\ge\sigma\), the right side is at most \(c_p(g)\le\frac12\), a contradiction. So \(p<\sigma\), and \(q_f(\mathcal F)\le\sigma\). \(\square\)
+
+The *Kahn–Kalai conjecture* in its abstract form asserted that \(p_{\mathrm c}(\mathcal F)\le Kq(\mathcal F)\log\ell(\mathcal F)\) for a universal constant \(K\), where \(\ell(\mathcal F)\) is the maximum of \(2\) and the largest size of a minimal member of \(\mathcal F\) [KK]. Talagrand introduced the fractional version [Tal]. Frankston, Kahn, Narayanan and Park proved \(p_{\mathrm c}(\mathcal F)\le Kq_f(\mathcal F)\log\ell(\mathcal F)\) [FKNP], and Park and Pham proved the abstract conjecture itself [PP]. These theorems are background and are not used in this course.
 
 ## 3. Copies of graphs
 
@@ -126,11 +132,17 @@ because \(\frac{\log x}x\) decreases for \(x\ge\mathrm e\).
 
 A graph containing a perfect matching on \([n]\) has no isolated vertex, so \(\mathbb P(N(G(n,p'),\mathrm{PM}_n)>0)<\frac12\) for \(p'=p\), and by Lemma 1.1 for every \(p'\le p\). Since the infimum defining \(p_{\mathrm c}(n,\mathrm{PM}_n)\) is attained (Lemma 3.2), \(p_{\mathrm c}(n,\mathrm{PM}_n)>p\). \(\square\)
 
-Together, Propositions 4.2 and 4.3 give
+The logarithm persists even if \(p_{\mathrm E}\) is replaced by the larger thresholds of Proposition 3.3:
+
+**Proposition 4.4.** For every even \(n\ge2\), \(q(\mathcal F_{\mathrm{PM}_n})\le q_f(\mathcal F_{\mathrm{PM}_n})\le\mathrm e^2/n\).
+
+**Proof.** Let \(A\) be a uniformly random perfect matching on \([n]\), a random member of \(\mathcal F_{\mathrm{PM}_n}\). A nonempty set \(J\) of edges lies in \(A\) only if \(J\) is a matching, say with \(j\) edges, and then \(\mathbb P(J\subseteq A)=1/((n-1)(n-3)\cdots(n-2j+1))\), the number of perfect matchings of the other \(n-2j\) vertices divided by the number of all perfect matchings. The product of all \(n/2\) factors \(n-1,n-3,\dots,1\) is \(n!/(2^{n/2}(n/2)!)\ge(n/\mathrm e)^n/(2^{n/2}(n/2)^{n/2})=(n/\mathrm e^2)^{n/2}\), by Lemma 4.1 with \(m=n\) and \((n/2)!\le(n/2)^{n/2}\). The \(j\) largest factors have geometric mean at least the geometric mean of all of them, so \(\mathbb P(J\subseteq A)\le(\mathrm e^2/n)^j\). Proposition 2.3 gives the claim. \(\square\)
+
+Together, Propositions 3.3, 4.2, 4.3 and 4.4 give, for even \(n\ge16\),
 \[
-\frac{p_{\mathrm c}(n,\mathrm{PM}_n)}{p_{\mathrm E}(n,\mathrm{PM}_n)}>\frac{\log n}{3\mathrm e^2}\qquad(n\text{ even},\ n\ge16):
+\frac{p_{\mathrm c}(n,\mathrm{PM}_n)}{p_{\mathrm E}(n,\mathrm{PM}_n)}\ge\frac{p_{\mathrm c}(n,\mathrm{PM}_n)}{q_f(\mathcal F_{\mathrm{PM}_n})}>\frac{\log n}{3\mathrm e^2}:
 \]
-a comparison of the two thresholds valid for all graphs must allow a logarithmic factor. Corollary 3.2 of [The second Kahn–Kalai conjecture](the-second-kahn-kalai-conjecture.md) shows that \(p_{\mathrm c}(n,\mathrm{PM}_n)\) is of order \(\frac{\log n}n\); Erdős and Rényi determined its asymptotic value \(\frac{\log n}n\) in 1966.
+a comparison of the containment threshold with any of the three expectation thresholds, valid for all graphs, must allow a logarithmic factor. Corollary 3.2 of [The second Kahn–Kalai conjecture](the-second-kahn-kalai-conjecture.md) shows that \(p_{\mathrm c}(n,\mathrm{PM}_n)\) is of order \(\frac{\log n}n\); Erdős and Rényi determined its asymptotic value \(\frac{\log n}n\) in 1966.
 
 ## 5. The second Kahn–Kalai conjecture
 
@@ -142,11 +154,17 @@ and consequently \(p_{\mathrm c}(n,H)\le6144\,\mathrm e^{50}\,p_{\mathrm E}(n,H)
 
 The constant is enormous but universal: the graph \(H\) may depend on \(n\) in any way. The proof is Theorem 3.1 of [The second Kahn–Kalai conjecture](the-second-kahn-kalai-conjecture.md). Before it, Mossel, Niles-Weed, Sun and Zadik obtained a single logarithm for a modified expectation threshold [MNSZ-1], Dubroff, Kahn and Park proved \(p_{\mathrm c}(n,H)=O(p_{\mathrm E}(n,H)\log^3n)\) [DKP], and Tran reduced the loss to \(O(\log^2(2e(H)))\) [Tran].
 
-The proof has three parts, one per lesson.
+The proof of Theorem 5.1 has three parts, one per lesson.
 
 1. [Resampling a spread family](resampling-a-spread-family.md). A probability law on subsets of \(X\) is *\(a\)-spread* if it gives mass at most \(a^{|J|}\) to the sets containing any given nonempty set \(J\). One random set \(W\) of density \(\rho=\mathrm e^{50}a\) typically allows a set drawn from such a law to be traded for a *fragment*, the part outside \(W\) of a related set, of at most half the size; the fragments are again nearly spread. This step is the planted posterior sampling of Mossel, Niles-Weed, Sun and Zadik [MNSZ-2].
 2. [Covering a probability tree](covering-a-probability-tree.md). The trade is made simultaneously at every node of a tree of successive extensions, whose labels are disjoint along each branch and whose sizes grow by a factor of at least \(16\) from level to level. Disjointness controls the dependence created by reusing one random set at all levels, and about \(\log_2\) of the largest label size rounds place a whole branch inside the union of the random sets.
 3. [The second Kahn–Kalai conjecture](the-second-kahn-kalai-conjecture.md). For a graph \(H\), maximizing a ratio over subgraphs, as in Tran's construction [Tran], gives a chain of subgraphs whose conditional extensions are \(128\,p_{\mathrm E}(n,H)\)-spread; the tree of all histories of this chain has copies of \(H\) as branch unions.
+
+The remaining lessons treat the two expectation thresholds of Section 2 and the integral threshold of graphs.
+
+4. [Integral and fractional expectation thresholds](integral-and-fractional-expectation-thresholds.md) proves Talagrand's conjecture \(q_f(\mathcal F)\le25\cdot512^4\,q(\mathcal F)\) through a multiscale selector estimate.
+5. [The discrete convexity conjecture](the-discrete-convexity-conjecture.md) proves that if \(\mu_p(\mathcal D)\ge1-2^{-75}\), the sets not covered by \(2^{75}\) members of \(\mathcal D\) form a \(p\)-small family, and a version with two unions at density \(p/(50\cdot512^4)\).
+6. [Embedding sparse graphs in random graphs](embedding-sparse-graphs-in-random-graphs.md) and [Graph decompositions at the expectation threshold](graph-decompositions-at-the-expectation-threshold.md) prove that every graph splits into a bounded number of pieces, each appearing in \(G(n,p)\) once \(p\) is a constant multiple of the integral expectation threshold of the whole graph.
 
 ## 6. Exercises
 
@@ -156,19 +174,19 @@ The proof has three parts, one per lesson.
 
 **Exercise 6.3** (easy). Show that \(p_{\mathrm E}(n,K_3)=\bigl(3/(n)_3\bigr)^{1/3}\) for every \(n\ge3\).
 
-**Exercise 6.4** (medium). Show that the suprema defining \(q(\mathcal F)\) and \(q_f(\mathcal F)\) are attained. For \(q_f\), show first that replacing a fractional cover \(w\) by \(\min\{w,1\}\) gives a fractional cover of no larger cost.
+**Exercise 6.4** (medium). Show that the suprema defining \(q(\mathcal F)\) and \(q_f(\mathcal F)\) are attained. For \(q_f\), show first that replacing a fractional cover \(g\) by \(\min\{g,1\}\) gives a fractional cover of no larger cost.
 
 **Exercise 6.5** (medium). Let \(H\) have \(h\ge1\) edges, at most \(n\) vertices and no isolated vertices, let \(q=p_{\mathrm E}(n,H)\), and let \(\mathbf H\) be a uniformly random copy of \(H\) on \([n]\). Show that \(\mathbb P(J\subseteq\mathbf H)\le2\binom h{|J|}q^{|J|}\le(2\mathrm ehq)^{|J|}\) for every nonempty \(J\subseteq X\).
 
 ## 7. Solutions
 
-**6.1.** The cover \(\{S_0\}\) costs \(p^s\), so \(q(\mathcal F)\ge2^{-1/s}\). Every fractional cover \(w\) satisfies \(\sum_{S\subseteq S_0}w(S)\ge1\) because \(S_0\in\mathcal F\), so \(c_p(w)\ge\sum_{S\subseteq S_0}w(S)p^{|S|}\ge p^s\); a cost at most \(\frac12\) forces \(p\le2^{-1/s}\), so \(q_f(\mathcal F)\le2^{-1/s}\). Finally \(\mu_p(\mathcal F)=p^s\) equals \(\frac12\) at \(p=2^{-1/s}\). Proposition 2.2 gives the chain of equalities.
+**6.1.** The cover \(\{S_0\}\) costs \(p^s\), so \(q(\mathcal F)\ge2^{-1/s}\). Every fractional cover \(g\) satisfies \(\sum_{S\subseteq S_0}g(S)\ge1\) because \(S_0\in\mathcal F\), so \(c_p(g)\ge\sum_{S\subseteq S_0}g(S)p^{|S|}\ge p^s\); a cost at most \(\frac12\) forces \(p\le2^{-1/s}\), so \(q_f(\mathcal F)\le2^{-1/s}\). Finally \(\mu_p(\mathcal F)=p^s\) equals \(\frac12\) at \(p=2^{-1/s}\). Proposition 2.2 gives the chain of equalities.
 
 **6.2.** Each singleton \(\{x\}\) lies in \(\mathcal F\), and the only sets contained in it are \(\varnothing\) and \(\{x\}\). A cover containing \(\varnothing\) costs at least \(1\); otherwise it contains every singleton and costs at least \(Np\). The cover by all singletons costs exactly \(Np\), so \(q(\mathcal F)=\frac1{2N}\). Next \(\mu_p(\mathcal F)=1-(1-p)^N\), which equals \(\frac12\) at \(p=1-2^{-1/N}\). Since \(1-\mathrm e^{-y}\le y\) with \(y=\frac{\log2}N\), \(p_{\mathrm c}(\mathcal F)\le\frac{\log2}N=2\log2\cdot q(\mathcal F)\).
 
 **6.3.** The nonempty edge subsets of \(K_3\) are an edge, a path with two edges and the triangle, with \(M=\binom n2\), \((n)_3/2\) and \((n)_3/6\) respectively, by Lemma 3.1(1). By Lemma 3.2(2), \(p_{\mathrm E}(n,K_3)\) is the largest of \((n(n-1))^{-1}\), \(((n)_3)^{-1/2}\) and \((3/(n)_3)^{1/3}\). Write \(t=(n)_3\ge6\). Then \((3/t)^{1/3}\ge t^{-1/2}\) because \(9t\ge1\), and \((3/t)^{1/3}\ge(n(n-1))^{-1}\) because \(3n^3(n-1)^3\ge t=n(n-1)(n-2)\).
 
-**6.4.** There are finitely many covers, and each cost is a continuous nondecreasing function of \(p\); so \(\{p:\min_{\mathcal G}c_p(\mathcal G)\le\frac12\}\) is closed and \(q(\mathcal F)\) belongs to it. For a fractional cover \(w\) and \(A\in\mathcal F\): if \(w(S)\ge1\) for some \(S\subseteq A\), then \(\min\{w,1\}\) gives \(S\) weight \(1\); otherwise \(\min\{w,1\}=w\) on the subsets of \(A\). In both cases \(\sum_{S\subseteq A}\min\{w(S),1\}\ge1\), and the cost does not increase. The fractional covers with values in \([0,1]\) form a compact set \(K\subseteq[0,1]^{2^X}\), and \((p,w)\mapsto c_p(w)\) is continuous. Hence \(\{p:\min_{w\in K}c_p(w)\le\frac12\}\) is closed, and by the first observation it is the set defining \(q_f(\mathcal F)\).
+**6.4.** There are finitely many covers, and each cost is a continuous nondecreasing function of \(p\); so \(\{p:\min_{\mathcal G}c_p(\mathcal G)\le\frac12\}\) is closed and \(q(\mathcal F)\) belongs to it. For a fractional cover \(g\) and \(A\in\mathcal F\): if \(g(S)\ge1\) for some \(S\subseteq A\), then \(\min\{g,1\}\) gives \(S\) weight \(1\); otherwise \(\min\{g,1\}=g\) on the subsets of \(A\). In both cases \(\sum_{S\subseteq A}\min\{g(S),1\}\ge1\), and the cost does not increase. The fractional covers with values in \([0,1]\) form a compact set \(K\subseteq[0,1]^{2^X}\), and \((p,g)\mapsto c_p(g)\) is continuous. Hence \(\{p:\min_{g\in K}c_p(g)\le\frac12\}\) is closed, and by the first observation it is the set defining \(q_f(\mathcal F)\).
 
 **6.5.** If \(J\) is not a copy of a subset of \(E(H)\), the probability is \(0\). Otherwise \(J\) is a copy of a nonempty \(S\subseteq E(H)\) with \(|S|=|J|=j\), and by Lemma 3.1(3), \(\mathbb P(J\subseteq\mathbf H)=M(H,S)/M(S)\). The copies of \(S\) in \(H\) are \(j\)-element subsets of \(E(H)\), so \(M(H,S)\le\binom hj\), and \(M(S)\ge\frac12q^{-j}\) by Lemma 3.2(2). Finally \(2\binom hj\le2\frac{h^j}{j!}\le2\bigl(\frac{\mathrm eh}j\bigr)^j\le(2\mathrm eh)^j\), using \(j!\ge(j/\mathrm e)^j\).
 
@@ -178,6 +196,7 @@ The proof has three parts, one per lesson.
 - [KK] J. Kahn and G. Kalai, *Thresholds and expectation thresholds*, Combinatorics, Probability and Computing 16 (2007), 495–502. https://arxiv.org/abs/math/0603218
 - [FKNP] K. Frankston, J. Kahn, B. Narayanan and J. Park, *Thresholds versus fractional expectation-thresholds*, Annals of Mathematics 194 (2021), 475–495. https://arxiv.org/abs/1910.13433
 - [PP] J. Park and H. T. Pham, *A proof of the Kahn–Kalai conjecture*, Journal of the American Mathematical Society 37 (2024), 235–243. https://arxiv.org/abs/2203.17207
+- [Tal] M. Talagrand, *Are many small sets explicitly small?*, Proceedings of STOC 2010, 13–36. https://michel.talagrand.net/preprints/small.pdf
 - [MNSZ-1] E. Mossel, J. Niles-Weed, N. Sun and I. Zadik, *On the second Kahn–Kalai conjecture*, 2022. https://arxiv.org/abs/2209.03326
 - [MNSZ-2] E. Mossel, J. Niles-Weed, N. Sun and I. Zadik, *A second moment proof of the spread lemma*, 2022; published as *A Bayesian proof of the spread lemma*, Random Structures & Algorithms 66 (2025). https://arxiv.org/abs/2209.11347
 - [DKP] Q. Dubroff, J. Kahn and J. Park, *On the "second" Kahn–Kalai conjecture*, 2025. https://arxiv.org/abs/2508.14269

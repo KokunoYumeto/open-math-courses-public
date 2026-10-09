@@ -564,6 +564,8 @@ Condition 3 excludes empty fibers, disconnected fibers, and higher integral coho
 
 ## SH02-MD-DENSITIES — Differential-form normalization and bounds for derived Hom
 
+[The top orientation class on a connected manifold](../../../SH-02/connected-top-orientation-trace.html) proves that the top-degree trace over the complex field is an isomorphism for every nonempty connected manifold in the standing scope. Its algebraic dual is the degree-zero constant-section identity from M35, so finite-dimensional cohomology is not required.
+
 Local identifier: `SH02-MD-DENSITIES`.
 
 Suppose $X$ is a smooth $n$-manifold and $k=\mathbb C$. The de Rham resolution, an explicit SH-01 prerequisite, identifies $o_X$ with the complex of smooth forms tensored with $o_X$. Its terms are c-soft, so

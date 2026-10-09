@@ -242,6 +242,8 @@ Under those hypotheses, an equality of transformations such as (SXP.10) gives an
 
 ## SH02-SXP-STATUS — Exact scope of this proof
 
+[Modern proper base change and arbitrary stable coefficients](../general-basechange-and-tensor.html#SH02-GBT-6) supplies the general proper/open zigzag, its common compactification refinement and actual mate pasting. The classical resolution comparison above fixes the same maps in its stated bounded-below range.
+
 The theorem supplies the previously separate compatibility of composition of two proper direct images with the two corresponding cartesian base-change squares. It applies to all continuous maps of locally compact Hausdorff spaces and all classical bounded-below complexes over an arbitrary commutative ring. It matches the mixed clause of SH02-FF-IMP-COMPOSE-LCH together with the previously established composition and fixed-map base-change results.
 
 The proof of this compatibility is the classical argument above. [Compact supports, covariant Verdier duality and modern composition](../modern-proper-support-construction.html) proves the composition construction used by SH02-SIX-COMPOSE. [Bounded section recognition](../bounded-section-recognition.html) proves the comparison with the all-module classical category, using its injective mapping complexes and telescope. The classical compactification and proper-base-change inputs retain their exact Stacks dependencies. The mathematical argument and its exposition are original course text; the cited Stacks results are mathematical references, and no source text or PDF is included.

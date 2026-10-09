@@ -21,9 +21,13 @@ state its group, dimension, metric, coupling conventions and boundaries.
 The sequence has eighteen units. [Fields, coordinates and physical
 quantities](../fields-coordinates-quantities.html),
 [Electromagnetism and gauge freedom](../electromagnetism-gauge-freedom.html),
-[Symmetry through matrices](../symmetry-through-matrices.html), and
-[Lie groups and Lie algebras](../lie-groups-and-lie-algebras.html)
-are complete, each with eight solved exercises. The remaining fourteen
+[Symmetry through matrices](../symmetry-through-matrices.html),
+[Lie groups and Lie algebras](../lie-groups-and-lie-algebras.html),
+[Covariant derivatives and curvature](../covariant-derivatives-and-curvature.html),
+[Bundles, parallel transport and holonomy](../bundles-transport-holonomy.html),
+[The Yang–Mills action and field equations](../action-and-field-equations.html), and
+[Constraints, initial data and energy](../constraints-initial-data-energy.html)
+are complete, each with eight solved exercises. The remaining ten
 units are being written.
 The four earlier standalone texts remain accessible separately, with their
 original proofs and dependencies.
@@ -152,8 +156,9 @@ later units. Exact statements, hypotheses, proofs and current editions must
 be checked before a component is adopted. This plan does not label an
 unread provider as a completed prerequisite.
 
-The next writing task is Unit 1, followed by the elementary electromagnetic
-example in Unit 2. These are independent of the previous workbench family.
+The next writing task is Unit 9: local and global classical evolution.
+Units 1–8 provide its calculus, symmetry, geometry, field equations and energy estimates.
+The general sequence remains independent of the previous workbench family.
 The later lessons will build from suitable existing components and complete
 the missing connections, preserving full mathematical statements and proofs.
 

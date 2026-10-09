@@ -171,7 +171,7 @@ This completes all lifting assertions of [Richard 2015, Proposition 2.3.1], incl
 
 **Corollary 2.4 (A partial-isometry lift after zero padding).** Let \(q:A\to B\) be a unital surjective *-homomorphism, and let \(u\in M_n(B)\) be unitary. Then \(\operatorname{diag}(u,0_n)\) has a partial-isometry lift in \(M_{2n}(A)\).
 
-*Proof.* Proposition 2.3 gives a lift \(c\) with \(\|c\|=\|u\|=1\). Set
+*Proof.* Proposition 2.3 gives a lift \(c\) with \(\|c\|=\|u\|\leq1\). This includes the zero quotient, where \(u=0\) and the zero lift may be chosen. Only contractivity of this lift is needed. Set
 
 \[
 v=\begin{pmatrix}

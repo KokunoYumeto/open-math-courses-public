@@ -181,6 +181,8 @@ finite-generation or upper-boundedness assertion was used. $\square$
 
 ## SH02-CON-DEFINITION — Which orbit topology is meant?
 
+[Operations on orbits with their induced topology](../../../SH-02/conic-induced-operations.html) develops the stronger induced-orbit condition at the original coefficient and boundedness cuts. It gives explicit counterexamples for ordinary and proper-support images, internal Hom with bounded first input, exceptional inverse image at finite map dimension, and bounded derived tensor and external product. Ordinary inverse image and the embedded-ray vector-bundle conclusions retain their stronger induced statements.
+
 For a subset $Z\subset X$, restriction in this unit means
 $F|_Z=i_Z^{-1}F$, where the subset has its induced topology. For a general
 action this must be distinguished from pullback along an orbit parameter.

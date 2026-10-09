@@ -4,7 +4,7 @@ Adding two vectors pushes a function on a product back to the original vector sp
 
 *Lesson text: CC0. Human-source references appear below.*
 
-Learn first Constructible functions and Euler integration, especially its bounded realizations with prescribed closed support, proper-on-support pushforward, compact Euler integration and duality. Perfect operations and finite microlocal coefficients supplies the finite supported coefficient complexes. We use the ordinary finite tensor Künneth comparison and the point-costalk comparison from those lessons and their stated sheaf-operation prerequisites. For the geometric input, use Subanalytic triangulations on analytic manifolds. The arguments below use compatible finite triangulations on compact sets, closed/open localization, and the constant-sheaf comparison on locally contractible spaces.
+Learn first [Constructible functions and Euler integration](constructible-functions-and-euler-integration.md#integration-with-compact-closed-support), especially its bounded realizations with prescribed closed support, proper-on-support pushforward, compact Euler integration and duality. [Perfect operations and finite microlocal coefficients](../../sheaf-proof-readings/src/SH03/perfect-operations-and-finite-microlocal-coefficients.md#compact-and-relatively-compact-cohomology) supplies the finite supported coefficient complexes. For the point-costalk comparison we use [a constructible factor in a product](../../sheaf-proof-readings/src/SH02/cohomological-biduality.md#sh02-cb-external-hom--a-constructible-factor-in-a-product), through the explicit evaluation and adjunction argument below. For the geometric input, use [Subanalytic triangulations on analytic manifolds](../../subanalytic-triangulations-on-analytic-manifolds/src/subanalytic-triangulations-on-analytic-manifolds.md). The arguments below use compatible finite triangulations on compact sets, closed/open localization, and the constant-sheaf comparison on locally contractible spaces.
 
 ## Addition is proper on the relevant support
 
@@ -240,7 +240,7 @@ This identity includes different affine spans and point factors.
 
 Denote Verdier duality on functions by \(D_E\). Its value at \(x\) is the Euler characteristic of the point costalk of any realization. The preceding duality theorem gives \(D_E^2=1\), and preserves compact closed support.
 
-For two realizations, the compact-section Künneth comparison on sufficiently small product neighborhoods gives the point-costalk comparison
+For two realizations, the point-costalk comparison and its Euler-characteristic consequence are
 
 \[
  \begin{aligned}
@@ -252,12 +252,34 @@ For two realizations, the compact-section Künneth comparison on sufficiently sm
  \qquad\text{(17)}
 \]
 
-Here is a local-support verification of the first line. Take relatively compact subanalytic coordinate balls \(U\) about \(x\) and \(V\) about \(y\). The complement of \((x,y)\) in their product is the union
-\(((U\setminus\{x\})\times V)\cup(U\times(V\setminus\{y\}))\).
-The two-open-set Mayer–Vietoris triangle and support localization identify point-supported sections with the total fibre of the square obtained by restricting in each factor. Finite constructible Künneth identifies that square with the tensor product of the two restriction arrows
-\(R\Gamma(U;F)\to R\Gamma(U\setminus\{x\};F)\) and
-\(R\Gamma(V;G)\to R\Gamma(V\setminus\{y\};G)\).
-Over the field \(k\), taking these two finite mapping fibres gives the tensor product of their fibres. By support localization and excision these fibres are \(i_x^!F\) and \(i_y^!G\), respectively. This proves the displayed natural comparison. The compact-section version agrees with it because the maps from point supports to compact supports and then to small open neighborhoods are induced by the same inclusions of supports. All costalks are perfect. Taking Euler characteristics proves the second line; no identification of internal-Hom stalks with Hom of ordinary stalks is used.
+We prove the first line using the external-Hom comparison. Write \(p=q_Y:E\times E\to E\), and let \(\omega_E\) be the dualizing complex. The [projection formula](../../sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-projection--projection-with-arbitrary-coefficients) and exceptional adjunction give
+
+\[
+ p^!R\mathcal Hom(G,\omega_E)
+ \simeq R\mathcal Hom(p^{-1}G,p^!\omega_E).
+\]
+
+Indeed, test against a bounded-below object \(A\). Tensor–Hom adjunction and \(Rp_!\dashv p^!\) turn maps from \(A\) to the right-hand side into maps from \(Rp_!(A\otimes^L p^{-1}G)\) to \(\omega_E\). Projection identifies this source with \(Rp_!A\otimes^L G\). Applying the same two adjunctions in reverse gives maps from \(A\) to the left-hand side. These identifications commute with open restriction, so they identify the internal-Hom objects and their evaluation maps. Exceptional composition identifies \(p^!\omega_E\) with \(\omega_{E\times E}\).
+
+Tensor–Hom adjunction followed by the external-Hom theorem now gives
+
+\[
+ \begin{aligned}
+ D_{E\times E}(F\boxtimes^L G)
+ &\simeq R\mathcal Hom(q_X^{-1}F,p^!D_EG)\\
+ &\simeq D_EF\boxtimes^L D_EG.
+ \end{aligned}
+\]
+
+Its hypotheses hold: the finite constructible object \(F\) is cohomologically constructible, and \(D_EG\) is bounded. Take the ordinary stalk at \((x,y)\). Perfect point duality identifies this comparison with
+
+\[
+ \bigl(i_{(x,y)}^!(F\boxtimes^L G)\bigr)^\vee
+ \simeq (i_x^!F)^\vee\otimes_k^L(i_y^!G)^\vee,
+ \qquad P^\vee=R\operatorname{Hom}_k(P,k).
+\]
+
+Every point costalk here is perfect. Finite-complex tensor duality and biduality therefore give the first line of (17). The comparison is natural: the adjunctions, projection and external-Hom map all use their evaluation and trace maps, so their composite fixes the map as well as the objects. Taking Euler characteristics gives the second line of (17).
 
 The realization has compact closed coefficient support, so the natural comparison \(Rs_!\to Rs_*\) is an isomorphism on it. The dual-sections map
 \(D_E Rs_!Q\to Rs_*D_{E\times E}Q\) is an isomorphism for the constructible perfect object \(Q=F\boxtimes^L G\). Duality has the same closed support, by its locality and biduality, so the last proper image is again \(Rs_!\). Applying (17) gives

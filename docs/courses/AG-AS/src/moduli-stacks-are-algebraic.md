@@ -1,6 +1,6 @@
 # Moduli stacks are algebraic
 
-*Source proofs by the Stacks Project authors, as distributed in the AI Integrated Stacks Project. Source copyright: Copyright (C) 2005 -- 2025 Johan de Jong. This modified course edition is published by the Open Math Courses project, `KokunoYumeto/open-math-courses`. Writing, adaptation and integration: GPT-6.1 Sol (OpenAI), Codex, Ultra, October 2026. Permission is granted to copy, distribute and modify this modified chapter under the GNU Free Documentation License, Version 1.2 or any later version, with no Invariant Sections, Front-Cover Texts or Back-Cover Texts. Eligible independently written additions retain their CC0 1.0 dedication. Self-checked by the writing AI. The [complete licence](../licenses/GFDL-1.2.txt) accompanies this edition.*
+*Source proofs by the Stacks Project authors, as distributed in the AI Integrated Stacks Project. Source copyright: Copyright (C) 2005 -- 2025 Johan de Jong. This modified course edition is published by the Open Math Courses project, `KokunoYumeto/open-math-courses`. Writing, adaptation and integration: GPT-6.1 Sol (OpenAI), Codex, Ultra, October 2026. Independent replacement proofs and integration: GPT-6 Astra (OpenAI), Codex, Ultra, October 2026. Permission is granted to copy, distribute and modify this modified chapter under the GNU Free Documentation License, Version 1.2 or any later version, with no Invariant Sections, Front-Cover Texts or Back-Cover Texts. Eligible independently written additions retain their CC0 1.0 dedication. Self-checked by the writing AI. The [complete licence](../licenses/GFDL-1.2.txt) accompanies this edition.*
 
 A coherent sheaf can move on a space which is neither proper nor flat over the base. Its moduli problem is nevertheless algebraic if the sheaf itself is flat over the parameter space and has proper support. Quotients and closed subschemes then inherit algebraic coordinates from this stack. Line bundles require a further distinction: their stack remembers scalar automorphisms, whereas the Picard sheaf removes them by descent.
 
@@ -931,166 +931,260 @@ The projective-space pseudo-coherence criterion and sequential approximation in 
 
 #### A.12.1 Henselian limits and compatible finite complexes
 
-The following arguments adapt the human Stacks Project treatment in more-algebra.tex. Source correspondence and the exact lower prerequisites are retained in the accompanying record.
+We begin with the algebra of a countable tower. Nilpotent errors can be corrected at each level, and compatible finite direct summands then pass to the inverse limit. The mathematical sources for these two results are the Stacks Project, *More on Algebra*, `lemma-limit-henselian` and `lemma-lim-finite-projective-gives-finite-projective`. We retain both the henselian lifting argument and an explicit construction with idempotent matrices.
 
 #### Lemma. Henselian pairs from locally nilpotent inverse systems
- Let $A = \varprojlim A_n$ where $(A_n)$ is an inverse system of rings whose transition maps are surjective and have locally nilpotent kernels. Then $(A, I_n)$ is a henselian pair, where $I_n = \operatorname{Ker}(A \to A_n)$.
 
-**Proof.** Fix $n$. Let $a \in A$ be an element which maps to $1$ in $A_n$. By Algebra, Lemma [Nilpotent thickenings and local algebra](#native-algebra-lemma-locally-nilpotent-unit) we see that $a$ maps to a unit in $A_m$ for all $m \geq n$. Hence $a$ is a unit in $A$. Thus by Algebra, Lemma [Containment in the Jacobson radical](#native-algebra-lemma-contained-in-radical) the ideal $I_n$ is contained in the Jacobson radical of $A$. Let $f \in A[T]$ be a monic polynomial and let $\overline{f} = g_nh_n$ be a factorization of $\overline{f} = f \bmod I_n$ with $g_n, h_n \in A_n[T]$ monic generating the unit ideal in $A_n[T]$. By Lemma [Henselian rings and nilpotent thickenings](#native-more-algebra-lemma-locally-nilpotent-henselian) we can successively lift this factorization to $f \bmod I_m = g_m h_m$ with $g_m, h_m$ monic in $A_m[T]$ for all $m \geq n$. At each step we have to verify that our lifts $g_m, h_m$ generate the unit ideal in $A_n[T]$; this follows from the corresponding fact for $g_n, h_n$ and the fact that $\operatorname{Spec}(A_n[T]) = \operatorname{Spec}(A_m[T])$ because the kernel of $A_m \to A_n$ is locally nilpotent. As $A = \varprojlim A_m$ this finishes the proof. $\square$
+Suppose that
+
+$$\cdots\longrightarrow A_3\longrightarrow A_2\longrightarrow A_1$$
+
+is a sequence of surjective ring homomorphisms with locally nilpotent kernels. Set $A=\varprojlim_n A_n$ and $I_n=\ker(A\to A_n)$. For every $n$, the pair $(A,I_n)$ is henselian: $I_n\subseteq\operatorname{Jac}(A)$, and each factorization of a monic polynomial modulo $I_n$ into two coprime monic factors lifts to $A$.
+
+**Proof.** Projection $A\to A_n$ is onto: starting with one element at level $n$, choose successive lifts at all higher levels and use its images at lower levels. A finite composite of the transition maps also has locally nilpotent kernel. For induction, let $x\in A_m$ have zero image in $A_n$. Its image in $A_{m-1}$ is nilpotent by the shorter-composite case, so some power $x^r$ belongs to $\ker(A_m\to A_{m-1})$. A further power is zero by the transition-kernel hypothesis.
+
+If $a\in A$ has image $1$ in $A_n$, its image in every $A_m$ for $m\geq n$ is $1$ plus a nilpotent element. Its inverse there is a finite geometric sum. These inverses agree under transition maps because inverses are unique, so define an inverse of $a$ in $A$. The [Jacobson-radical criterion](#native-algebra-lemma-contained-in-radical) now gives $I_n\subseteq\operatorname{Jac}(A)$.
+
+Here is the factorization calculation used at each transition. Let $R\to\bar R=R/J$ have locally nilpotent kernel, and suppose a monic $f\in R[T]$ reduces to $\bar g\bar h$, with $\bar g,\bar h$ monic and coprime of degrees $d,e$. Choose monic lifts $g,h$ of those degrees. The coefficient homomorphism
+
+$$R[T]_{<d}\oplus R[T]_{<e}\longrightarrow R[T]_{<d+e},
+\qquad (u,v)\longmapsto hu+gv$$
+
+has invertible determinant. To see this, reduce modulo $J$. In $\bar R[T]/(\bar g)$, multiplication by $\bar h$ is invertible by the Bezout identity. Given a polynomial of degree less than $d+e$, this determines its unique remainder $u$ of degree less than $d$; division by the monic $\bar g$ then determines $v$ of degree less than $e$. Thus the reduced matrix is invertible. Since every element of $J$ is nilpotent, a unit modulo $J$ is a unit in $R$, so its determinant lifts to a unit.
+
+The finitely many coefficients of $f-gh$ generate a nilpotent ideal $N\subseteq J$. Solve
+
+$$hu+gv=f-gh$$
+
+by the displayed inverse matrix. Its solutions have coefficients in $N$. Replacing $(g,h)$ by $(g+u,h+v)$ changes the error to $-uv$, whose coefficients lie in $N^2$. The new factors are still monic of degrees $d,e$, still reduce to $\bar g,\bar h$, and their coefficient matrix remains invertible. Repetition replaces $N^r$ by $N^{2r}$, so ends with an exact factorization. The ideal generated by finitely many nilpotent elements is nilpotent: if the generators have exponents $r_i$, products of more than $\sum_i(r_i-1)$ generators vanish. This explains why no uniform nilpotence of $J$ is needed.
+
+The lifted factors are coprime. Lift a Bezout identity for $\bar g,\bar h$; its error is a polynomial with finitely many nilpotent coefficients, hence is nilpotent. The resulting element $1+$ error is invertible in $R[T]$, giving a Bezout identity after multiplication by its inverse. The same calculation includes a degree-zero factor, which is the monic constant $1$.
+
+Now start with the given factorization over $A_n$. Apply this calculation successively to $A_{m+1}\to A_m$. At each level the factors are monic, coprime and reduce to those already chosen. Their degrees stay fixed; take inverse limits of their finitely many coefficients. This produces monic $g,h\in A[T]$ whose product is $f$, since that identity holds in every $A_m$. They lift the prescribed factors. This is exactly the required henselian property. $\square$
 
 #### Lemma. Compatible finite projectives over an inverse limit
- Let $A = \varprojlim A_n$ be a limit of an inverse system $(A_n)$ of rings. Suppose given $A_n$-modules $M_n$ and $A_{n + 1}$-module maps $M_{n + 1} \to M_n$. Assume
 
-1.  the transition maps $A_{n + 1} \to A_n$ are surjective with locally nilpotent kernels,
+Use the same tower and ring $A$. Suppose $M_n$ is a finite flat $A_n$-module, the transition map $M_{n+1}\to M_n$ is $A_{n+1}$-linear, and its induced map
 
-2.  $M_1$ is a finite projective $A_1$-module,
+$$M_{n+1}\otimes_{A_{n+1}}A_n\longrightarrow M_n$$
 
-3.  $M_n$ is a finite flat $A_n$-module, and
+is an isomorphism. If $M_1$ is finite projective, then $M=\varprojlim_n M_n$ is a finite projective $A$-module. Moreover, the projection induces an isomorphism
 
-4.  the maps induce isomorphisms $M_{n + 1} \otimes_{A_{n + 1}} A_n \to M_n$.
+$$M\otimes_A A_n\longrightarrow M_n$$
 
-Then $M = \varprojlim M_n$ is a finite projective $A$-module and $M \otimes_A A_n \to M_n$ is an isomorphism for all $n$.
+for every $n$.
 
-**Proof.** By Lemma [Henselian pairs from locally nilpotent inverse systems](#native-more-algebra-lemma-limit-henselian) the pair $(A, \operatorname{Ker}(A \to A_1))$ is henselian. By Lemma [Lifting projective, locally free modules and finite algebras](#native-more-algebra-lemma-lift-finite-projective-module) we can choose a finite projective $A$-module $P$ and an isomorphism $P \otimes_A A_1 \to M_1$. Since $P$ is projective, we can successively lift the $A$-module map $P \to M_1$ to $A$-module maps $P \to M_2$, $P \to M_3$, and so on. Thus we obtain a map $$P \longrightarrow M$$ Since $P$ is finite projective, we can write $A^{\oplus m} = P \oplus Q$ for some $m \geq 0$ and $A$-module $Q$. Since $A = \varprojlim A_n$ we conclude that $P = \varprojlim P \otimes_A A_n$. Hence, in order to show that the displayed $A$-module map is an isomorphism, it suffices to show that the maps $P \otimes_A A_n \to M_n$ are isomorphisms. From Lemma [Lifting projective and locally free modules](#native-more-algebra-lemma-lift-projective) we see that $M_n$ is a finite projective module. By Lemma [Projective, locally free modules and finite algebras](#native-more-algebra-lemma-isomorphic-finite-projective-lifts) the maps $P \otimes_A A_n \to M_n$ are isomorphisms. $\square$
+**Proof.** First, every $M_n$ is finite projective. The kernel of $A_n\to A_1$ is locally nilpotent, so its closed immersion of spectra is a homeomorphism and corresponding residue fields agree. The rank of the finite flat module $M_n$ therefore equals the rank of $M_1$ on the same topological space. It is locally constant. Every prime localization is free by the [finite-flat local theorem](artin-axioms.md#native-algebra-lemma-finite-flat-local). Condition (8) of the complete [finite-projective criterion](artin-axioms.md#native-algebra-lemma-finite-projective) now implies that $M_n$ is finite projective. This argument uses neither Noetherianity nor finite presentation as an extra hypothesis.
 
-#### Lemma. Pseudo-coherence under a nilpotent reduction
- Let $R' \to R$ be a surjective ring map whose kernel is a nilpotent ideal. Let $K' \in D(R')$ and set $K = K' \otimes_{R'}^\mathbf{L} R$. Then $K$ is pseudo-coherent if and only if $K'$ is pseudo-coherent.
+We need one comparison fact. If $P,Q$ are finite projective over a ring $R$, $J\subseteq\operatorname{Jac}(R)$, and $u:P\to Q$ is an isomorphism modulo $J$, then $u$ is an isomorphism. Its finite cokernel vanishes by [Nakayama's lemma](artin-axioms.md#native-algebra-lemma-nak), so $u$ is onto. Split it using projectivity of $Q$. Its kernel is now a finite direct summand of $P$; reduction of that splitting shows the kernel has zero quotient modulo $J$. Nakayama applies to the kernel too, so it is zero.
 
-**Proof.** One direction follows from Lemma [Pullback of pseudo-coherent complexes and coherent sheaves](#native-more-algebra-lemma-pull-pseudo-coherent). For the other direction, assume $K$ is pseudo-coherent. Then by Lemma [Pseudo-coherent complexes and coherent sheaves](#native-more-algebra-lemma-pseudo-coherent) we can represent $K$ by a bounded above complex $E^\bullet$ of finite free $R$-modules. By Lemma [Lifting projective, locally free modules and derived categories](#native-more-algebra-lemma-lift-complex-projectives) we can represent $K'$ by a bounded above complex $P^\bullet$ of projective $R'$-modules such that $P^n \otimes_{R'} R = E^n$. By Nakayama's lemma we see that $P^n$ is finite free and we conclude that $K'$ is pseudo-coherent as well. $\square$
+By the preceding lemma, $(A,I_1)$ is henselian. The [lifting theorem for finite projective modules over henselian pairs](#native-more-algebra-lemma-lift-finite-projective-module) gives a finite projective $A$-module $P$ and an identification $P/I_1P\simeq M_1$. For this particular tower there is also the following direct construction of that lift, which proves the existence step without assuming the lifting theorem.
 
-#### Lemma. Lifting a complex after adjoining free summands
- Let $R$ be a ring. Let $I \subset R$ be an ideal. Let $E^\bullet$ be a complex of $R/I$-modules. Let $K$ be an object of $D(R)$. Assume that
+Choose an idempotent $E_1\in\operatorname{Mat}_r(A_1)$ whose image is $M_1$. Idempotent matrices lift across each transition. Indeed, choose a matrix $E$ lifting an idempotent modulo a locally nilpotent ideal $J$. The entries of $E^2-E$ generate a nilpotent ideal $N$. Replacing $E$ by $3E^2-2E^3$ preserves its reduction, and
 
-1.  $E^\bullet$ is a bounded above complex of finite stably free $R/I$-modules,
+$$\begin{aligned}
+&(3E^2-2E^3)^2-(3E^2-2E^3)\\
+&\qquad=(E^2-E)^2(4E^2-4E-3).
+\end{aligned}$$
 
-2.  $K \otimes_R^\mathbf{L} R/I$ is represented by $E^\bullet$ in $D(R/I)$,
+All factors are polynomials in the same matrix, so this identity is valid for matrices. It squares the ideal containing the error. Iterating finitely many times therefore yields an idempotent with the required reduction. Choose compatible lifts $E_n$ of $E_1$ in this way. Their limit $E\in\operatorname{Mat}_r(A)$ is idempotent, and $P=E A^r$ is finite projective with $P\otimes_A A_1\simeq M_1$.
 
-3.  $K^\bullet$ is pseudo-coherent, and
+The maps $M_{n+1}\to M_n$ are onto, by the stipulated tensor identifications. Starting with $P\to M_1$, projectivity of $P$ over $A$ gives compatible $A$-linear lifts $P\to M_n$ for all $n$. Each factors through an $A_n$-linear homomorphism
 
-4.  every element of $1 + I$ is invertible.
+$$u_n:P\otimes_A A_n\longrightarrow M_n.$$
 
-Then there exists a bounded above complex $P^\bullet$ of finite stably free $R$-modules representing $K$ in $D(R)$ such that $P^\bullet \otimes_R R/I$ is isomorphic to $E^\bullet$. Moreover, if $E^i$ is free, then $P^i$ is free.
+Its reduction to $A_1$ is the fixed isomorphism. Both modules are finite projective over $A_n$, and $\ker(A_n\to A_1)$ is locally nilpotent, hence lies in the Jacobson radical. The comparison fact proves that every $u_n$ is an isomorphism. These isomorphisms respect the transition maps by construction.
 
-**Proof.** We apply Lemma [Lifting derived categories](#native-more-algebra-lemma-lift-complex) using the class $\mathcal{P}$ of all finite stably free $R$-modules. Property (1) of the lemma is immediate. Property (2) follows from Lemma [Projective and locally free modules](#native-more-algebra-lemma-exact-category-stably-free). Property (3) follows from Nakayama's lemma (Algebra, Lemma [Nakayama's lemma](#native-algebra-lemma-nak)). Property (4) follows from the fact that we can lift finite stably free $R/I$-modules to finite stably free $R$-modules, see Lemma [Lifting projective and locally free modules](#native-more-algebra-lemma-lift-stably-free). Part (5) holds because a pseudo-coherent complex can be represented by a bounded above complex of finite free $R$-modules. The final assertion of the lemma follows from Lemma [Projective, locally free modules and finite algebras](#native-more-algebra-lemma-isomorphic-finite-projective-lifts). $\square$
+Finally, $P\simeq\varprojlim_n(P\otimes_A A_n)$. This follows directly from $P=E A^r$: the inverse limit of the images of the compatible idempotents $E_n$ is the image of $E$ on $\varprojlim A_n^r=A^r$. Thus $P\to\varprojlim M_n$ is an isomorphism, and its reductions are exactly the maps $u_n$. This proves both finite projectivity and the asserted canonical base-change maps. $\square$
 
-#### Lemma. Pseudo-coherent inverse limits
- Let $A = \varprojlim A_n$ be a limit of an inverse system $(A_n)$ of rings. Suppose given $K_n \in D(A_n)$ and maps $K_{n + 1} \to K_n$ in $D(A_{n + 1})$. Assume
+#### Lemma. Pseudo-coherence across a nilpotent quotient
 
-1.  the transition maps $A_{n + 1} \to A_n$ are surjective with locally nilpotent kernels,
+Suppose $R'\twoheadrightarrow R$ has nilpotent kernel $J$, and put $K=K'\otimes_{R'}^{\mathbf L}R$ for $K'\in D(R')$. Pseudo-coherence of $K'$ is equivalent to pseudo-coherence of $K$.
 
-2.  either all $K_n$ are pseudo-coherent or there exists an integer $n_0$ such that $K_{n_0}$ is pseudo-coherent and the kernels of $A_{n + 1} \to A_n$ are nilpotent ideals for $n \geq n_0$,
+**Proof.** A bounded above finite free model remains such a model after derived base change, proving one implication. Conversely, take a bounded above finite free complex $E$ representing $K$. The [projective complex lifting lemma](#native-more-algebra-lemma-lift-complex-projectives) supplies a projective complex $P$ representing $K'$ and an identification $P/JP\cong E$ of complexes.
 
-3.  the maps induce isomorphisms $K_{n + 1} \otimes_{A_{n + 1}}^\mathbf{L} A_n \to K_n$.
+Fix a degree and lift a basis of $E^i$ to a map $(R')^r\to P^i$. Its cokernel $C$ satisfies $C=JC$. If $J^N=0$, repeated substitution gives $C=J^NC=0$; this argument does not require $C$ to be finitely generated. The resulting surjection splits because $P^i$ is projective. Its kernel $T$ has $T/JT=0$, since reduction of the split sequence is exact and the chosen basis map is an isomorphism. The same nilpotence argument gives $T=0$. Thus $P^i\cong(R')^r$ in every degree. This is the required finite free model. $\square$
 
-Then $K = R\varprojlim K_n$ is a pseudo-coherent object of $D(A)$ and $K \otimes_A^\mathbf{L} A_n \to K_n$ is an isomorphism for all $n$.
+#### Lemma. Lifting a prescribed stably free complex
 
-**Proof.** By assumption we can find a bounded above complex of finite free $A_1$-modules $P_1^\bullet$ representing $K_1$, see Definition [Pseudo-coherent complexes](#native-more-algebra-definition-pseudo-coherent). By Lemma [Pseudo-coherence under a nilpotent reduction](#native-more-algebra-lemma-check-pseudo-coherent-modulo-nilpotent) we conclude that $K_n$ is pseudo-coherent for all $n$. Then by Lemma [Lifting a complex after adjoining free summands](#native-more-algebra-lemma-lift-complex-stably-frees) we can, by induction on $n > 1$, find complexes $P_n^\bullet$ of finite free $A_n$-modules representing $K_n$ and maps $P_n^\bullet \to P_{n - 1}^\bullet$ representing the maps $K_n \to K_{n - 1}$ inducing isomorphisms (!) of complexes $P_n^\bullet \otimes_{A_n} A_{n - 1} \to P_{n - 1}^\bullet$. Thus $K = R\varprojlim K_n$ is represented by $P^\bullet = \varprojlim P_n^\bullet$, see Lemma [Modules](#native-more-algebra-lemma-compute-rlim-modules) and Remark [Uniqueness in the lifting construction](#native-more-algebra-remark-how-unique). Since $P_n^i$ is a finite free $A_n$-module for each $n$ and $A = \varprojlim A_n$ we see that $P^i$ is finite free of the same rank as $P_1^i$ for each $i$. This means that $K$ is pseudo-coherent. It also follows that $K \otimes_A^\mathbf{L} A_n$ is represented by $P^\bullet \otimes_A A_n = P_n^\bullet$ which proves the final assertion. $\square$
+Let $I\subset R$ satisfy $1+I\subset R^\times$. Suppose $K\in D(R)$ is pseudo-coherent and a chosen identification of $K\otimes_R^{\mathbf L}R/I$ with $E$ is given, where $E$ is bounded above with finite stably free terms. There is a bounded above complex $P$ of finite stably free $R$-modules representing $K$, together with a chain isomorphism $P/IP\cong E$ inducing the chosen derived identification. Whenever $E^i$ is free, $P^i$ can be taken free as well.
 
-#### Lemma. Perfect inverse limits
+**Proof.** Apply [the general complex lifting construction](#native-more-algebra-lemma-lift-complex) to finite stably free modules. They are projective; their split two-out-of-three property is proved [below](#native-more-algebra-lemma-exact-category-stably-free). A map between them that becomes surjective modulo $I$ is surjective: its finite cokernel vanishes by [Nakayama's lemma](artin-axioms.md#native-algebra-lemma-nak), since $I\subset\operatorname{Jac}(R)$. Each term of $E$ lifts by [the matrix construction](#native-more-algebra-lemma-lift-stably-free). Finally, pseudo-coherence provides a bounded above finite free model for $K$. These facts verify all five hypotheses of that construction, including its compatibility with the prescribed identification.
 
-*Source credit:* the original source citation Bhatt-Algebraize (Lemma 4.2)
+If $E^i\cong(R/I)^r$, lift this basis to $R^r\to P^i$. Nakayama makes the map surjective. Splitting off the projective target leaves a finite kernel whose reduction is zero. A second application of Nakayama kills that kernel. Hence the map is an isomorphism. This also proves directly the [comparison of finite projective lifts](#native-more-algebra-lemma-isomorphic-finite-projective-lifts) used here. $\square$
 
-Let $A = \varprojlim A_n$ be a limit of an inverse system $(A_n)$ of rings. Suppose given $K_n \in D(A_n)$ and maps $K_{n + 1} \to K_n$ in $D(A_{n + 1})$. Assume
+#### Lemma. Pseudo-coherent complexes in a nilpotent inverse system
 
-1.  the transition maps $A_{n + 1} \to A_n$ are surjective with locally nilpotent kernels,
+Consider a countable tower of rings $A_{n+1}\twoheadrightarrow A_n$ with locally nilpotent kernels, and write $A=\varprojlim_n A_n$. Let $K_n\in D(A_n)$ and let $u_n:K_{n+1}\to K_n$ be a morphism in $D(A_{n+1})$ whose adjoint is an isomorphism
+$$K_{n+1}\otimes_{A_{n+1}}^{\mathbf L}A_n\xrightarrow{\sim}K_n.$$
+Assume either that every $K_n$ is pseudo-coherent, or that some $K_{n_0}$ is pseudo-coherent and every kernel $\ker(A_{n+1}\to A_n)$ with $n\geq n_0$ is nilpotent. Then $K=R\varprojlim_n K_n$ is pseudo-coherent over $A$, and every projection induces an isomorphism
+$$K\otimes_A^{\mathbf L}A_n\xrightarrow{\sim}K_n.$$
 
-2.  either all $K_n$ are perfect or there exists an integer $n_0$ such that $K_{n_0}$ is perfect and the kernels $A_{n + 1} \to A_n$ are nilpotent for $n \geq n_0$, and
+**Proof.** In the second case, derived base change from $K_{n_0}$ gives pseudo-coherence at the earlier indices. Repeated application of [nilpotent reduction](#native-more-algebra-lemma-check-pseudo-coherent-modulo-nilpotent) gives it at all later indices. Thus in either case all the $K_n$ are pseudo-coherent.
 
-3.  the maps induce isomorphisms $K_{n + 1} \otimes_{A_{n + 1}}^\mathbf{L} A_n \to K_n$.
+Choose a bounded above finite free model $P_1$ for $K_1$. Inductively apply [stably free complex lifting](#native-more-algebra-lemma-lift-complex-stably-frees), using the given comparison with $P_n$ to lift $K_{n+1}$. A nil ideal lies in the Jacobson radical: for $x$ in it, the finite geometric series in $-x$ inverts $1+x$. The lifting lemma therefore applies and gives a finite free complex $P_{n+1}$, an identification
+$$P_{n+1}\otimes_{A_{n+1}}A_n\cong P_n,$$
+and a transition representing $u_n$. The construction respects the chosen derived identification, so these transitions form a strict tower representing the given system. A common upper bound works for all the complexes: a finite projective term whose reduction is zero vanishes by Nakayama.
 
-Then $K = R\varprojlim K_n$ is a perfect object of $D(A)$ and $K \otimes_A^\mathbf{L} A_n \to K_n$ is an isomorphism for all $n$.
+For each degree $i$, choose a basis of $P_1^i$ and successively lift that basis to $P_{n+1}^i$. The basis map is an isomorphism by the split-kernel argument in the lifting lemma. Thus the bases are compatible, not merely of equal rank. If their size is $r_i$, they identify the degree-$i$ tower with $(A_n^{r_i})_n$. Consequently
+$$P^i:=\varprojlim_n P_n^i\cong A^{r_i},\qquad P^i\otimes_A A_n\cong P_n^i.$$
+These identifications commute with the differentials. The zero-ring case gives zero complexes and satisfies the same conclusion.
 
-**Proof.** We already know that $K$ is pseudo-coherent and that $K \otimes_A^\mathbf{L} A_n \to K_n$ is an isomorphism for all $n$ by Lemma [Pseudo-coherent inverse limits](#native-more-algebra-lemma-rlim-pseudo-coherent-gives-pseudo-coherent). Consider a surjective map $A \to \kappa$ whose kernel is a maximal ideal $\mathfrak m$. Any element of $A$ which maps to a unit in $A_1$ is a unit in $A$ by Algebra, Lemma [Nilpotent thickenings and local algebra](#native-algebra-lemma-locally-nilpotent-unit) and hence $\operatorname{Ker}(A \to A_1)$ is contained in the Jacobson radical of $A$ by Algebra, Lemma [Containment in the Jacobson radical](#native-algebra-lemma-contained-in-radical). Hence $A \to \kappa$ factors as $A \to A_1 \to \kappa$. Hence $$K \otimes_A^\mathbf{L} \kappa =
-K \otimes_A^\mathbf{L} A_1 \otimes_{A_1}^\mathbf{L} \kappa =
-K_1 \otimes_{A_1}^\mathbf{L} \kappa$$ Note that $K_1$ is perfect by assumption (2). Hence $K_1$ has finite tor dimension by Lemma [Perfect complexes](#native-more-algebra-lemma-perfect). Thus there exist $a, b \in \mathbf{Z}$ such that $H^i(K \otimes_A^\mathbf{L} \kappa) = 0$ for all $i \not \in [a, b]$. By Lemma [Perfect complexes](#native-more-algebra-lemma-check-perfect-pointwise) we conclude that $K$ is perfect. $\square$
+All termwise transitions are surjective. The [derived inverse-limit calculation](#native-more-algebra-lemma-compute-rlim-modules) therefore identifies the ordinary termwise limit $P=\varprojlim P_n$ with the derived limit. The [choice comparison](#native-more-algebra-remark-how-unique) identifies its isomorphism class with $R\varprojlim K_n$ and respects the projection maps. Since $P$ is bounded above and finite free in each degree, it is a pseudo-coherent model and is $K$-flat. Hence derived tensoring with $A_n$ is computed by the actual complex $P\otimes_A A_n=P_n$. This is the asserted canonical base-change morphism. $\square$
 
-#### Lemma. Modules and tensor products and direct sums
- Let $A, A', B, B', C, C', D, D', I, M', M, N, \varphi$ be as in Lemma [Modules and tensor products and direct sums](#native-more-algebra-lemma-relative-module-over-fibre-product). If $N$ finite over $D$ and $M'$ finite over $C'$, then $N' = N \times_{\varphi, M} M'$ is finite over $D'$.
+#### Lemma. Perfect complexes in a nilpotent inverse system
 
-**Proof.** Recall that $D' \to D \times_C C'$ is surjective by Lemma [Modules and tensor products and direct sums](#native-more-algebra-lemma-module-over-fibre-product-bis). Observe that $N' = N \times_{\varphi, M} M'$ is a module over $D \times_C C'$. We can apply Lemma [Modules and tensor products and direct sums](#native-more-algebra-lemma-finite-module-over-fibre-product) to the data $C, C', D, D', IC', M', M, N, \varphi$ to see that $N' = N \times_{\varphi, M} M'$ is finite over $D \times_C C'$. Thus it is finite over $D'$. $\square$
+*Source credit:* Bhatt-Algebraize, Lemma 4.2, as cited in the source chapter.
 
-#### Lemma. Relative flat modules over a ring fibre product
- With $A, A', B, B', C, C', D, D', I$ as in Situation [Modules and tensor products and direct sums](#native-more-algebra-situation-relative-module-over-fibre-product).
+Let $A=\varprojlim_n A_n$ for a countable tower of surjections with locally nilpotent kernels. Suppose $K_n\in D(A_n)$ and $u_n:K_{n+1}\to K_n$ in $D(A_{n+1})$ induce isomorphisms $K_{n+1}\otimes_{A_{n+1}}^{\mathbf L}A_n\cong K_n$. Assume either that all $K_n$ are perfect, or that $K_{n_0}$ is perfect for some $n_0$ and the transition kernels are nilpotent from that index onward. Then $R\varprojlim_n K_n$ is perfect over $A$, with the preceding base-change isomorphisms at every index.
 
-1.  Let $(N, M', \varphi)$ be an object of $\text{Mod}_D \times_{\text{Mod}_C} \text{Mod}_{C'}$. If $M'$ is flat over $A'$ and $N$ is flat over $B$, then $N' = N \times_{\varphi, M} M'$ is flat over $B'$.
+**Proof.** Perfect complexes are pseudo-coherent, so the previous lemma gives a pseudo-coherent limit $K$ and all its base changes. Also $K_1$ is perfect: in the second case it is the derived base change of $K_{n_0}$. Choose a bounded finite projective model of $K_1$, supported in degrees $[a,b]$.
 
-2.  If $L'$ is a $D'$-module flat over $B'$, then $L' = (L \otimes_{D'} D) \times_{(L \otimes_{D'} C)} (L \otimes_{D'} C')$.
+By the [inverse-system ring lemma](#native-more-algebra-lemma-limit-henselian), the projection $A\to A_1$ is surjective and its kernel is contained in $\operatorname{Jac}(A)$. Explicitly, an element that is a unit in $A_1$ is a unit in every $A_n$; its inverses are compatible and give its inverse in $A$. Thus every maximal residue field $\kappa$ of $A$ is an $A_1$-algebra. Associativity and the established base change give
+$$K\otimes_A^{\mathbf L}\kappa\cong
+(K\otimes_A^{\mathbf L}A_1)\otimes_{A_1}^{\mathbf L}\kappa\cong
+K_1\otimes_{A_1}^{\mathbf L}\kappa.$$
+The right side has zero cohomology outside the same interval $[a,b]$, independently of the maximal ideal. The [residue-field criterion](#native-more-algebra-lemma-check-perfect-pointwise) now makes $K$ perfect of Tor amplitude in $[a,b]$. The base-change assertions were already proved. $\square$
 
-3.  The category of $D'$-modules flat over $B'$ is equivalent to the categories of objects $(N, M', \varphi)$ of $\text{Mod}_D \times_{\text{Mod}_C} \text{Mod}_{C'}$ with $N$ flat over $B$ and $M'$ flat over $A'$.
+#### Lemma. Finite generation under relative patching
 
-**Proof.** Part (1) follows from part (1) of Lemma [Flatness and modules](#native-more-algebra-lemma-flat-module-over-fibre-product).
+Use the [relative fibre-product setup](#native-more-algebra-situation-relative-module-over-fibre-product): $B'=B\times_A A'$, the map $A'\to A$ is onto, and $D,C',C$ are obtained from a $B'$-algebra $D'$ by the indicated base changes. For a compatible triple $(N,M',\varphi)$, put $M=M'/IM'$ and $N'=N\times_M M'$. If $N$ is finite over $D$ and $M'$ is finite over $C'$, then $N'$ is finite over $D'$.
 
-Part (2) follows from part (2) of Lemma [Flatness and modules](#native-more-algebra-lemma-flat-module-over-fibre-product) using that $L' \otimes_{D'} D = L' \otimes_{B'} B$, $L' \otimes_{D'} C' = L' \otimes_{B'} A'$, and $L' \otimes_{D'} C = L' \otimes_{B'} A$, see discussion in Situation [Modules and tensor products and direct sums](#native-more-algebra-situation-relative-module-over-fibre-product).
+**Proof.** Let $T=D\times_C C'$. The comparison $D'\to T$ is surjective by [the unit-map calculation](#native-more-algebra-lemma-module-over-fibre-product-bis), applied to the $B'$-module $D'$. The map $C'\to C$ is onto with kernel $IC'$. Thus [finite generation for a ring fibre product](#native-more-algebra-lemma-finite-module-over-fibre-product), applied to $D\to C\leftarrow C'$, gives finitely many $T$-generators of $N'$. Lift their coefficients along $D'\twoheadrightarrow T$. The same elements then generate $N'$ over $D'$. This argument requires surjectivity of the comparison, not its injectivity. $\square$
 
-Part (3) is an immediate consequence of (1) and (2). $\square$
+#### Lemma. Relative flatness and reconstruction
 
-#### Lemma. Finite presentation under flat module patching
- Let $A, A', B, B', C, C', D, D', I, M', M, N, \varphi$ be as in Lemma [Modules and tensor products and direct sums](#native-more-algebra-lemma-relative-module-over-fibre-product). If
+In the same setup the following assertions hold.
 
-1.  $N$ is finitely presented over $D$ and flat over $B$,
+1. If a compatible triple has $N$ flat over $B$ and $M'$ flat over $A'$, its patched module $N'=N\times_M M'$ is flat over $B'$.
+2. For every $D'$-module $L'$ flat over $B'$, the natural map is an isomorphism
+$$L'\xrightarrow{\sim}(L'\otimes_{D'}D)
+\times_{L'\otimes_{D'}C}(L'\otimes_{D'}C').$$
+3. Base change and patching give inverse equivalences between $D'$-modules flat over $B'$ and compatible triples flat over $B$ and $A'$, respectively.
 
-2.  $M'$ finitely presented over $C'$ and flat over $A'$, and
+**Proof.** Forget the extra algebra actions. The resulting triple lies over $B\to A\leftarrow A'$, and [flat module patching](#native-more-algebra-lemma-flat-module-over-fibre-product) proves 1. For 2, associativity identifies the three base changes of $L'$ with $L'\otimes_{B'}B$, $L'\otimes_{B'}A$, and $L'\otimes_{B'}A'$. Tensor the exact sequence
+$$0\longrightarrow B'\longrightarrow B\oplus A'\longrightarrow A\longrightarrow0$$
+with the flat $B'$-module $L'$. Its kernel identifies exactly the displayed fibre product, and the resulting isomorphism is $D'$-linear. Finally, base change preserves flatness, the [relative counit](#native-more-algebra-lemma-relative-module-over-fibre-product) recovers each given triple, and 2 recovers each flat $L'$. These maps are natural in homomorphisms and respect the extra algebra actions, proving the equivalence in 3. $\square$
 
-3.  the ring map $B' \to D'$ factors as $B' \to D'' \to D'$ with $B' \to D''$ flat and $D'' \to D'$ of finite presentation,
+#### Lemma. Finite presentation under relative flat patching
 
-then $N' = N \times_M M'$ is finitely presented over $D'$.
+Continue with the same notation. Suppose $N$ is finitely presented over $D$ and flat over $B$, while $M'$ is finitely presented over $C'$ and flat over $A'$. Assume that $B'\to D'$ has a factorization
+$$B'\longrightarrow D''\longrightarrow D'$$
+whose first map is flat and whose second map is of finite presentation. Then $N'=N\times_M M'$ is finitely presented over $D'$.
 
-**Proof.** Choose a surjection $D''' = D''[x_1, \ldots, x_n] \to D'$ with finitely generated kernel $J$. By Algebra, Lemma [Finite presentation and finite algebras](#native-algebra-lemma-finite-finitely-presented-extension) it suffices to show that $N'$ is finitely presented as a $D'''$-module. Moreover, $D''' \otimes_{B'} B \to D' \otimes_{B'} B = D$ and $D''' \otimes_{B'} A' \to D' \otimes_{B'} A' = C'$ are surjections whose kernels are generated by the image of $J$, hence $N$ is a finitely presented $D''' \otimes_{B'} B$-module and $M'$ is a finitely presented $D''' \otimes_{B'} A'$-module by Algebra, Lemma [Finite presentation and finite algebras](#native-algebra-lemma-finite-finitely-presented-extension) again. Thus we may replace $D'$ by $D'''$ and $D$ by $D''' \otimes_{B'} B$, etc. Since $D'''$ is flat over $B'$, it follows that we may assume that $B' \to D'$ is flat.
+**Proof.** First reduce to a flat algebra over $B'$. A finite presentation of $D'$ over $D''$ gives a surjection
+$$R=D''[x_1,\ldots,x_s]\twoheadrightarrow D'$$
+with finitely generated kernel $H$. This is a finite and finitely presented ring map, and $R$ is flat over $B'$. After tensoring with $B$ or $A'$, the resulting surjections onto $D$ and $C'$ still have kernels generated by the images of the finitely many generators of $H$. The [finite-algebra presentation lemma](#native-algebra-lemma-finite-finitely-presented-extension) therefore makes $N$ and $M'$ finitely presented over $R\otimes_{B'}B$ and $R\otimes_{B'}A'$. Their flatness over $B$ and $A'$ is unchanged. Their comparison after tensoring with $A$ is the same comparison of modules, with the algebra action restricted along $R\otimes_{B'}A\to C$. Consequently the patched module is still the same underlying $N'$. If it is finitely presented over $R$, the same finite-algebra lemma makes it finitely presented over $D'$. We may therefore replace the algebra square by its $R$-version and assume $D'$ flat over $B'$.
 
-Assume $B' \to D'$ is flat. By Lemma [Modules and tensor products and direct sums](#native-more-algebra-lemma-relative-finite-module-over-fibre-product) the module $N'$ is finite over $D'$. Choose a surjection $(D')^{\oplus n} \to N'$ with kernel $K'$. By base change we obtain maps $D^{\oplus n} \to N$, $(C')^{\oplus n} \to M'$, and $C^{\oplus n} \to M$ with kernels $K_D$, $K_{C'}$, and $K_C$. There is a canonical map $$K' \longrightarrow K_D \times_{K_C} K_{C'}$$ On the other hand, since $N' = N \times_M M'$ and $D' = D \times_C C'$ (by Lemma [Flatness and modules](#native-more-algebra-lemma-flat-module-over-fibre-product); applied to the flat $B'$-module $D'$) there is also a canonical map $K_D \times_{K_C} K_{C'} \to K'$ inverse to the displayed arrow. Hence the displayed map is an isomorphism. By Algebra, Lemma [Commutative algebra](#native-algebra-lemma-extension) the modules $K_D$ and $K_{C'}$ are finite. We conclude from Lemma [Modules and tensor products and direct sums](#native-more-algebra-lemma-relative-finite-module-over-fibre-product) that $K'$ is a finite $D'$-module provided that $K_D \to K_C$ and $K_{C'} \to K_C$ induce isomorphisms $K_D \otimes_B A = K_C = K_{C'} \otimes_{A'} A$. This is true because the flatness assumptions implies the sequences $$0 \to K_D \to D^{\oplus n} \to N \to 0
-\quad\text{and}\quad
-0 \to K_{C'} \to (C')^{\oplus n} \to M' \to 0$$ stay exact upon tensoring, see Algebra, Lemma [Tor vanishing for a flat module](#native-algebra-lemma-flat-tor-zero). $\square$
+By the finite-generation lemma, choose a surjection $(D')^t\to N'$ and denote its kernel by $K'$. Base change gives surjections $D^t\to N$, $(C')^t\to M'$, and $C^t\to M$, with kernels $K_D,K_{C'},K_C$. Flat reconstruction applied to the $B'$-module $D'$ gives $D'\cong D\times_C C'$. Together with the definition of $N'$, this identifies the kernels by
+$$K'\cong K_D\times_{K_C}K_{C'}.$$
+Indeed, a vector over $D'$ is exactly a pair of vectors over $D,C'$ with equal image over $C$, and its image in $N'$ is zero exactly when both component images vanish.
+
+Finite presentation of $N$ and $M'$ makes $K_D$ and $K_{C'}$ finite, by [the exact-sequence finiteness lemma](#native-algebra-lemma-extension). Moreover, flatness of the quotients makes
+$$0\to K_D\to D^t\to N\to0,\qquad
+0\to K_{C'}\to(C')^t\to M'\to0$$
+remain exact on tensoring over $B$ and $A'$ with $A$; see [flat-quotient tensor exactness](#native-algebra-lemma-flat-tor-zero). Thus
+$$K_D\otimes_B A\cong K_C\cong K_{C'}\otimes_{A'}A.$$
+The finite-generation patching lemma now applies to this kernel triple and makes $K'$ finite over $D'$. The chosen finite free surjection onto $N'$ therefore has finitely generated kernel, proving finite presentation. $\square$
 
 #### A.12.2 Koszul representatives and support-preserving perfect approximation
 
-The following arguments adapt the human Stacks Project treatment in perfect.tex. Source correspondence and the exact lower prerequisites are retained in the accompanying record.
+The algebraic device used here is a finite free complex whose augmentation becomes an equivalence on a prescribed open subset. Its dual complexes recover localization. Keeping track of their differentials will give a specified comparison with Čech cochains, including the signs needed for a complex of coefficients.
 
 #### Situation. A complex and a finite principal-open cover
- Here $A$ is a ring and $f_1, \ldots, f_r$ is a sequence of elements of $A$. We set $X = \operatorname{Spec}(A)$ and $U = D(f_1) \cup \ldots \cup D(f_r) \subset X$. We denote $\mathcal{U} : U = \bigcup_{i = 1, \ldots, r} D(f_i)$ the given open covering of $U$.
+
+Fix a commutative ring $A$, elements $f_1,\ldots,f_r\in A$, and the ordered cover
+$$X=\operatorname{Spec}(A),\qquad U=\bigcup_{i=1}^r D(f_i),\qquad
+\mathcal U=(D(f_1),\ldots,D(f_r)).$$
+Write $V=A^{\oplus r}$ with ordered basis $v_1,\ldots,v_r$. For $e\geq1$ define a cochain complex $K_e$ by
+$$K_e^{-m}=\bigwedge^m V\quad(0\leq m\leq r),$$
+with zero terms in the other degrees, and differential
+$$d_K(v_{i_1}\wedge\cdots\wedge v_{i_m})
+=\sum_{j=1}^m(-1)^{j-1}f_{i_j}^{e}
+v_{i_1}\wedge\cdots\wedge\widehat{v_{i_j}}\wedge\cdots\wedge v_{i_m}.$$
+Each pair of deleted indices occurs twice with opposite signs, so $d_K^2=0$. Define
+$$I_e^a=K_e^{a-1}\quad(a\leq0),\qquad I_e^a=0\quad(a>0),
+\qquad d_I^a=-d_K^{a-1}\ (a<0),\qquad d_I^0=0.$$
+The augmentation $\epsilon_e:I_e\to A[0]$ sends $v_i\in I_e^0$ to $f_i^e$. It is a chain map since $d_K^2=0$. With the usual cochain cone convention, $\operatorname{Cone}(\epsilon_e)$ identifies with $K_e$: its differential is $-d_I=d_K$ below degree $-1$, and the last differential is $\epsilon_e$. Consequently
+$$I_e\xrightarrow{\epsilon_e}A\longrightarrow K_e\longrightarrow I_e[1]$$
+is a distinguished triangle. If $J_e=(f_1^e,\ldots,f_r^e)$, its cohomology sequence gives
+$$0\longrightarrow H^{-1}(K_e)\longrightarrow H^0(I_e)
+\longrightarrow J_e\longrightarrow0,
+\qquad H^a(I_e)=H^{a-1}(K_e)\quad(a<0).$$
+
+More generally, replacing a sequence $(a_i)$ by $(a_i b_i)$ gives a chain map from its Koszul complex to that for $(a_i)$: on a basis wedge indexed by a set $S$, multiply by $\prod_{i\in S}b_i$. In the differential term which deletes $i$, both orders of composition have coefficient $a_i\prod_{j\in S}b_j$. This also defines the map of the $I$-complexes and commutes with their augmentations. In particular the maps
+$$I_{e+1}\longrightarrow I_e,\qquad K_{e+1}\longrightarrow K_e$$
+multiply the wedge indexed by $S$ by $\prod_{i\in S}f_i$; the map on $K_e^0=A$ is the identity. They therefore form compatible inverse systems of the displayed triangles.
+
+The complexes $I_e,K_e$ are bounded and finite free. On $D(f_i)$, exterior multiplication by $f_i^{-e}v_i$ is a contracting homotopy for $K_e$, because contraction by the sequence $(f_j^e)$ satisfies
+$$d_K(v_i\wedge w)+v_i\wedge d_K(w)=f_i^e w.$$
+Thus $K_e|_U$ is acyclic, and $\epsilon_e|_U$ is a quasi-isomorphism. These statements include an empty cover: when $r=0$, take $U=\varnothing$, $I_e=0$, and $K_e=A$.
 
 #### Lemma. The alternating Čech complex
- In Situation [A complex and a finite principal-open cover](#native-perfect-situation-complex). Let $M$ be an $A$-module and denote $\mathcal{F}$ the associated $\mathcal{O}_X$-module. Then there is a canonical isomorphism of complexes $$\Psi : \mathop{\operatorname{colim}}_e \operatorname{Hom}_A(I^\bullet(f_1^e, \ldots, f_r^e), M)
-\longrightarrow
-\check{\mathcal{C}}_{alt}^\bullet(\mathcal{U}, \mathcal{F})$$ functorial in $M$ where the differentials on the $\operatorname{Hom}$-complex are the contragredients of the differentials on $I^\bullet(f_1^e, \ldots, f_r^e)$.
 
-**Proof.** Recall that the alternating Čech complex is the subcomplex of the usual Čech complex given by alternating cochains, see Cohomology, Section [Sheaf cohomology](#context-cohomology-section-alternating-cech). As usual we view a $p$-cochain in $\check{\mathcal{C}}_{alt}^\bullet(\mathcal{U}, \mathcal{F})$ as an alternating function $s$ on $\{1, \ldots, r\}^{p + 1}$ whose value $s_{i_0\ldots i_p}$ at $(i_0, \ldots, i_p)$ lies in $M_{f_{i_0}\ldots f_{i_p}} = \mathcal{F}(U_{i_0\ldots i_p})$. On the other hand, a $p$-cochain $t$ in $\operatorname{Hom}^\bullet(I^\bullet(f_1^e, \ldots, f_r^e), M)$ is a map $t : \wedge^{p + 1}(A^{\oplus r}) \to M$. Write $[i] \in A^{\oplus r}$ for the $i$th basis element and write $$[i_0, \ldots, i_p] = [i_0] \wedge \ldots \wedge [i_p]
-\in \wedge^{p + 1}(A^{\oplus r})$$ For $t$ as above we set $$\Psi(t)_{i_0 \ldots i_p} =
-(-1)^p \frac{t([i_0, \ldots, i_p])}{f_{i_0}^e\ldots f_{i_p}^e}$$ It is clear that $\Psi(t)$ is an alternating cochain. The rule above is compatible with the transition maps of the system as the transition map $$I^\bullet(f_1^e, \ldots, f_r^e) \leftarrow
-I^\bullet(f_1^{e + 1}, \ldots, f_r^{e + 1}),$$ of ([Perfect complexes](#context-perfect-equation-system)) sends $[i_0, \ldots, i_p]$ to $f_{i_0}\ldots f_{i_p}[i_0, \ldots, i_p]$. It is clear from the description of the localizations $M_{f_{i_0} \ldots f_{i_p}}$ in Algebra, Lemma [Localization as a filtered colimit](#native-algebra-lemma-localization-colimit) that the rule $\Psi$ defines an isomorphism of cochain modules in degree $p$ in the colimit. To finish the proof we have to show that the map is compatible with differentials. To see this, for $t$ as above we compute $$\begin{aligned}
-d(\Psi(t))_{i_0 \ldots i_{p + 1}}
-& =
-\sum\nolimits_{j = 0}^{p + 1} (-1)^j
-\Psi(t)_{i_0\ldots \hat i_j \ldots i_{p + 1}} \\
-& =
-(-1)^p
-\sum\nolimits_{j = 0}^{p + 1} (-1)^j t([i_0 \ldots \hat i_j \ldots i_{p + 1}])
-(f_{i_0} \ldots \hat f_{i_j} \ldots f_{i_p})^{-e}
-\end{aligned}$$ Recall that the differentials on $I^\bullet(f_1^e, \ldots, f_r^e)$ are the negative of the differentials on $K^\bullet(f_1, \ldots, f_r)$. Thus $$\begin{aligned}
-\Psi(d(t))_{i_0 \ldots i_{p + 1}} & =
-(-1)^{p + 1}
-d(t)([i_0, \ldots, i_{p + 1}]) (f_{i_0} \ldots f_{i_{p + 1}})^{-e} \\
-& =
-(-1)^{p + 1}
-t(d([i_0, \ldots, i_{p + 1}])) (f_{i_0} \ldots f_{i_{p + 1}})^{-e} \\
-& =
-(-1)^{p + 1}
-t(-\sum\nolimits_{j = 0}^{p + 1}
-(-1)^j f_{i_j}^e [i_0, \ldots, \hat i_j, \ldots i_{p + 1}])
-(f_{i_0} \ldots f_{i_{p + 1}})^{-e} \\
-& =
--(-1)^{p + 1}
-\sum\nolimits_{j = 0}^{p + 1}
-(-1)^j t([i_0, \ldots, \hat i_j, \ldots i_{p + 1}])
-(f_{i_0} \ldots \hat f_{i_j} \ldots f_{i_p})^{-e}
-\end{aligned}$$ The two formulas agree concluding the proof. $\square$
+For an $A$-module $M$, let $\widetilde M$ denote its associated sheaf. Give
+$$C_e^p(M)=\operatorname{Hom}_A(I_e^{-p},M)\quad(0\leq p<r)$$
+the contragredient differential $d_1(t)=t\circ d_I$, and set its other terms to zero. Precomposition with $I_{e+1}\to I_e$ defines a direct system. There is a natural chain isomorphism
+$$\Psi:\mathop{\operatorname{colim}}_{e\geq1} C_e^\bullet(M)
+\xrightarrow{\ \sim\ }
+\check{\mathcal C}_{\mathrm{alt}}^\bullet(\mathcal U,\widetilde M).$$
+Here the differential on $C_e^\bullet(M)$ is exactly the contragredient one just specified; the total Hom differential used in the next lemma has an additional degree sign.
+
+**Proof.** An alternating cochain of degree $p$ is determined by its values on increasing tuples $S=(i_0<\cdots<i_p)$, with value in $M_{f_S}$, where $f_S=\prod_{k=0}^p f_{i_k}$. Values on permuted tuples are obtained by the permutation sign, and values on repeated indices are required to vanish. The latter condition is part of the definition even in characteristic two. Its differential is
+$$ (d_{\check C}s)_{i_0\ldots i_{p+1}}
+=\sum_{j=0}^{p+1}(-1)^j
+s_{i_0\ldots\widehat{i_j}\ldots i_{p+1}},$$
+with each term restricted to the common intersection.
+
+Put $v_S=v_{i_0}\wedge\cdots\wedge v_{i_p}$. The comparison is specified by
+$$\Psi_p(t)_S=(-1)^p\frac{t(v_S)}{f_S^e},\qquad t\in C_e^p(M).$$
+The transition from exponent $e$ to $e+1$ multiplies $t(v_S)$ by $f_S$, leaving this fraction unchanged. For each increasing $S$, the resulting colimit is $M_{f_S}$ by [localization as a filtered colimit](#native-algebra-lemma-localization-colimit). There are finitely many such $S$, so these identifications together prove bijectivity in degree $p$. This argument also covers $f_S=0$ and arbitrary zero divisors; it uses localization, not cancellation in $M$.
+
+To verify the differential, take an increasing tuple $T=(i_0<\cdots<i_{p+1})$. Using $d_I=-d_K$ gives
+$$\begin{aligned}
+\Psi_{p+1}(d_1t)_T
+&=\frac{(-1)^{p+1}}{\prod_{k=0}^{p+1}f_{i_k}^e}
+\left(-\sum_{j=0}^{p+1}(-1)^j f_{i_j}^e
+t(v_{T\setminus i_j})\right)\\
+&=\sum_{j=0}^{p+1}(-1)^j(-1)^p
+\frac{t(v_{T\setminus i_j})}
+{\prod_{\substack{0\leq k\leq p+1\\k\ne j}}f_{i_k}^e}
+=(d_{\check C}\Psi_p(t))_T.
+\end{aligned}$$
+The fractions are compared after localization at the full product. The omitted-factor denominator ranges over all $p+2$ indices except $j$, including the last index whenever it is not omitted. This corrects the truncated denominator in the corresponding computation of the source treatment. All operations commute with module homomorphisms, proving naturality. $\square$
 
 #### Lemma. The Čech double complex
 
-In Situation [A complex and a finite principal-open cover](#native-perfect-situation-complex). Let $M^\bullet$ be a complex of $A$-modules and denote $\mathcal{F}^\bullet$ the associated complex of $\mathcal{O}_X$-modules. Then there is a canonical isomorphism of complexes $$\mathop{\operatorname{colim}}_e \operatorname{Hom}^\bullet(I^\bullet(f_1^e, \ldots, f_r^e), M^\bullet)
-\longrightarrow
-\text{Tot}(\check{\mathcal{C}}_{alt}^\bullet(\mathcal{U}, \mathcal{F}^\bullet))$$ functorial in $M^\bullet$.
+For any cochain complex $M^\bullet$ of $A$-modules, including an unbounded one, there is a natural isomorphism
+$$\Phi:\mathop{\operatorname{colim}}_{e\geq1}
+\operatorname{Hom}^\bullet_A(I_e,M^\bullet)
+\xrightarrow{\ \sim\ }
+\operatorname{Tot}\check{\mathcal C}_{\mathrm{alt}}^\bullet
+(\mathcal U,\widetilde{M^\bullet}).$$
+The Hom differential on a map of total degree $n$ is $d_Mt-(-1)^ntd_I$. On a Čech term of bidegree $(p,q)$ the total differential is $d_{\check C}+(-1)^p d_M$.
 
-**Proof.** Consider the double complex $F^{\bullet, \bullet}$ with terms $F^{p, q} = \mathcal{C}_{alt}^p(\mathcal{U}, \mathcal{F}^q)$ discussed in Cohomology, Section [Sheaf cohomology and derived categories](#context-cohomology-section-cech-cohomology-of-complexes). Consider the double complex $G^{\bullet, \bullet}$ with terms $G^{p, q} = \mathop{\operatorname{colim}}_e \operatorname{Hom}_A(I^{-p}(f_1^e, \ldots, f_r^e), M^q)$ and differentials given by functoriality (without the intervention of signs). The maps $\psi^{p, q} : G^{p, q} \to F^{p, q}$ constructed in the proof of Lemma [The alternating Čech complex](#native-perfect-lemma-alternating-cech-complex) are isomorphisms and compatible with the differentials $d_1$ (by the lemma) and $d_2$ (this is clear). However, the differentials $d$ on the complexes on the left and right hand side of the arrow in the lemma have different signs. Namely, for $g \in G^{p, q}$ is given by $$d(g) =  d_2(g) - (-1)^{p + q} d_1(g)$$ (see More on Algebra, Section [Derived Hom, Ext and derived categories](#context-more-algebra-section-hom-complexes)) and the differential for $f \in F^{p, q}$ is given by $$d(f) = d_1(f) + (-1)^p d_2(f)$$ Thus we can fix the signs by multiplying $\psi^{p, q}$ by $(-1)^{pq + p(p - 1)/2}$. $\square$
+**Proof.** Use bidegrees
+$$G^{p,q}=\mathop{\operatorname{colim}}_e
+\operatorname{Hom}_A(I_e^{-p},M^q),\qquad
+F^{p,q}=\check{\mathcal C}_{\mathrm{alt}}^p(\mathcal U,\widetilde{M^q}).$$
+The maps $\Psi_{p,q}:G^{p,q}\to F^{p,q}$ from the preceding lemma commute both with the unsigned horizontal differential $d_1$ and the vertical differential $d_2$ induced by $d_M$. The two unsigned differentials commute. Their total signs are different:
+$$D_G=d_2-(-1)^{p+q}d_1,\qquad D_F=d_1+(-1)^p d_2.$$
+Define
+$$c_{p,q}=(-1)^{pq+p(p+1)/2},\qquad
+\Phi_{p,q}=c_{p,q}\Psi_{p,q}.$$
+The needed chain-map equations follow from
+$$c_{p,q+1}=(-1)^p c_{p,q},\qquad
+c_{p+1,q}=(-1)^{p+q+1}c_{p,q}.$$
+The first equality matches the vertical terms of $D_F\Phi$ and $\Phi D_G$. For the horizontal terms, multiplying the second equality by the coefficient $-(-1)^{p+q}$ in $D_G$ yields $c_{p,q}$, the coefficient in $D_F\Phi$. Thus $\Phi$ is a chain map. It is bijective in each bidegree, and $0\leq p<r$ is a fixed finite interval. Every total degree therefore uses a finite sum, even for unbounded $M^\bullet$; taking that sum commutes with the colimit. This proves the asserted isomorphism and its naturality.
+
+Equivalently, the complete formula on a wedge is
+$$\Phi_{p,q}(t)_S
+=(-1)^{pq+p(p-1)/2}\frac{t(v_S)}{f_S^e}.$$
+Indeed, incorporating the factor $(-1)^p$ already in $\Psi$ changes the exponent $pq+p(p+1)/2$ by $p$; the resulting exponent differs from the one displayed here by $2p$.
+
+**Sign correction.** The proof of `lemma-alternating-cech-complex-complex` in the source `perfect.tex` uses the exponent $pq+p(p-1)/2$ as a multiplier of $\Psi_{p,q}$. Under its displayed differential conventions, that multiplier is incorrect: it is the coefficient of the raw fraction in the last formula, whereas the multiplier of $\Psi$ is $c_{p,q}$. To see the failure concretely, take $A=\mathbf Q$, $r=2$, $f_1=f_2=1$, and $M^\bullet=\mathbf Q[0]$. For $t(v_1)=0$, $t(v_2)=1$, one has $d_I(v_1\wedge v_2)=v_1-v_2$ and
+$$D_G(t)(v_1\wedge v_2)=1,\qquad d_{\check C}(0,1)=1.$$
+The erroneous multiplier at $(p,q)=(1,0)$ is $+1$, so its composition with $\Psi_{1,0}$ sends the first value to $-1$. The corrected multiplier is $-1$, giving $+1$ and restoring the chain-map identity. The theorem holds with the corrected comparison above. $\square$
 
 #### Lemma. Čech computation of derived cohomology
  In Situation [A complex and a finite principal-open cover](#native-perfect-situation-complex). Let $\mathcal{F}^\bullet$ be a complex of quasi-coherent $\mathcal{O}_X$-modules. Then there is a canonical isomorphism $$\text{Tot}(\check{\mathcal{C}}_{alt}^\bullet(\mathcal{U}, \mathcal{F}^\bullet))
@@ -2777,19 +2871,17 @@ then $f_i$ is a closed immersion for some $i \geq 0$.
 **Proof.** If $x$ is a unit in $R$, then its image is clearly a unit in $R/I$. It remains to prove the converse. Assume the image of $y \in R$ in $R/I$ is the inverse of the image of $x$. Then $xy = 1 - z$ for some $z \in I$. This means that $1\equiv z$ modulo $xR$. Since $z$ lies in the locally nilpotent ideal $I$, we have $z^N = 0$ for some sufficiently large $N$. It follows that $1 = 1^N \equiv z^N = 0$ modulo $xR$. In other words, $x$ divides $1$ and is hence a unit. $\square$
 
 #### Lemma. Containment in the Jacobson radical
- Let $R$ be a ring with Jacobson radical $\text{rad}(R)$. Let $I \subset R$ be an ideal. The following are equivalent
 
-1.  $I \subset \text{rad}(R)$, and
+For an ideal $I\subset R$, the following conditions are equivalent:
 
-2.  every element of $1 + I$ is a unit in $R$.
+1. $I\subset\operatorname{Jac}(R)$.
+2. Every element of $1+I$ is invertible in $R$.
 
-In this case every element of $R$ which maps to a unit of $R/I$ is a unit.
+When these hold, an element which is invertible modulo $I$ is already invertible in $R$.
 
-**Proof.** If $f \in \text{rad}(R)$, then $f \in \mathfrak m$ for all maximal ideals $\mathfrak m$ of $R$. Hence $1 + f \not \in \mathfrak m$ for all maximal ideals $\mathfrak m$ of $R$. Thus the closed subset $V(1 + f)$ of $\operatorname{Spec}(R)$ is empty. This implies that $1 + f$ is a unit, see Lemma [The Zariski topology on an affine spectrum](#native-algebra-lemma-zariski-topology).
+**Proof.** If $a$ belongs to every maximal ideal, $1+a$ belongs to none: otherwise subtraction would put $1$ in that maximal ideal. An element in no maximal ideal generates the unit ideal and is a unit. This proves (1)$\Rightarrow$(2).
 
-Conversely, assume that $1 + f$ is a unit for all $f \in I$. If $\mathfrak m$ is a maximal ideal and $I \not \subset \mathfrak m$, then $I + \mathfrak m = R$. Hence $1 = f + g$ for some $g \in \mathfrak m$ and $f \in I$. Then $g = 1 + (-f)$ is not a unit, contradiction.
-
-For the final statement let $f \in R$ map to a unit in $R/I$. Then we can find $g \in R$ mapping to the multiplicative inverse of $f \bmod I$. Then $fg = 1 \bmod I$. Hence $fg$ is a unit of $R$ by (2) which implies that $f$ is a unit. $\square$
+If (1) fails, choose a maximal ideal $\mathfrak m$ with $I\not\subset\mathfrak m$. Then $I+\mathfrak m=R$, so some $a\in I$ satisfies $1-a\in\mathfrak m$. The element $1-a\in1+I$ is not a unit, contradicting (2). Finally, if $f$ is a unit modulo $I$, choose $g$ with $fg=1+a$, $a\in I$. The latter is a unit by (2), and $g(fg)^{-1}$ is an inverse of $f$. ∎
 
 #### Lemma. Nakayama's lemma
 
@@ -2830,64 +2922,84 @@ By Lemma [Containment in the Jacobson radical](#native-algebra-lemma-contained-i
 
 Part (9) holds because if $M = IM$ then $M = I^nM$ for all $n \geq 0$ and $I$ being nilpotent means $I^n = 0$ for some $n \gg 0$. Parts (10), (11), and (12) follow from (9) by the arguments used above. $\square$
 
-#### Lemma. Finite presentation and finite algebras
- Let $R \to S$ be a finite and finitely presented ring map. Let $M$ be an $S$-module. Then $M$ is finitely presented as an $R$-module if and only if $M$ is finitely presented as an $S$-module.
+#### Lemma. Module presentations across a finite presented algebra
 
-**Proof.** One of the implications follows from Lemma [Finite presentation and finite algebras](#native-algebra-lemma-finitely-presented-over-subring). To see the other assume that $M$ is finitely presented as an $S$-module. Pick a presentation $$S^{\oplus m} \longrightarrow
-S^{\oplus n} \longrightarrow
-M \longrightarrow 0$$ As $S$ is finite as an $R$-module, the kernel of $S^{\oplus n} \to M$ is a finite $R$-module. Thus from Lemma [Commutative algebra](#native-algebra-lemma-extension) we see that it suffices to prove that $S$ is finitely presented as an $R$-module.
+Suppose $R\to S$ is finite as a module map and finitely presented as a ring map. For every $S$-module $M$, finite presentation over $R$ is equivalent to finite presentation over $S$.
 
-Pick $y_1, \ldots, y_n \in S$ such that $y_1, \ldots, y_n$ generate $S$ as an $R$-module. By Lemma [Criteria for integral extensions](#native-algebra-lemma-characterize-integral-element) each $y_i$ is integral over $R$. Choose monic polynomials $P_i(x) \in R[x]$ with $P_i(y_i) = 0$. Consider the ring $$S' = R[x_1, \ldots, x_n]/(P_1(x_1), \ldots, P_n(x_n))$$ Then we see that $S$ is of finite presentation as an $S'$-algebra by Lemma [Composition of finite-type ring maps](#native-algebra-lemma-compose-finite-type). Since $S' \to S$ is surjective, the kernel $J = \operatorname{Ker}(S' \to S)$ is finitely generated as an ideal by Lemma [Finite presentation and finite algebras](#native-algebra-lemma-finite-presentation-independent). Hence $J$ is a finite $S'$-module (immediate from the definitions). Thus $S = \operatorname{Coker}(J \to S')$ is of finite presentation as an $S'$-module by Lemma [Commutative algebra](#native-algebra-lemma-extension). Hence, arguing as in the first paragraph, it suffices to show that $S'$ is of finite presentation as an $R$-module. Actually, $S'$ is free as an $R$-module with basis the monomials $x_1^{e_1} \ldots x_n^{e_n}$ for $0 \leq e_i < \deg(P_i)$. Namely, write $R \to S'$ as the composition $$R \to R[x_1]/(P_1(x_1)) \to R[x_1, x_2]/(P_1(x_1), P_2(x_2)) \to
-\ldots \to S'$$ This shows that the $i$th ring in this sequence is free as a module over the $(i - 1)$st one with basis $1, x_i, \ldots, x_i^{\deg(P_i) - 1}$. The result follows easily from this by induction. Some details omitted. $\square$
+**Proof.** First suppose $M$ is finitely presented over $R$. Choose $R$-generators $m_1,\ldots,m_r$ with finitely many generating $R$-linear relations, and choose $R$-module generators $s_1,\ldots,s_t$ of $S$. In addition to those relations, impose on $S^r$ the finitely many relations describing the action of each $s_j$ on each $m_i$ in terms of the $m_k$. They present $M$ over $S$. Indeed, expand any coefficient in $S$ as an $R$-linear combination of the $s_j$; the action relations then reduce every vector to an $R$-linear combination of the chosen generators. A vector in the kernel now reduces to one of the original $R$-relations. This proves the first implication and makes explicit the relevant restriction-of-scalars argument.
 
-#### Lemma. Commutative algebra
- Let $R$ be a ring. Let $$0 \to M_1 \to M_2 \to M_3 \to 0$$ be a short exact sequence of $R$-modules.
+For the converse we first show that $S$ is finitely presented as an $R$-module. Choose $R$-module generators $y_1,\ldots,y_n$ of $S$. Each is integral over $R$: represent multiplication by $y_i$ on a finite generating list of $S$ by a matrix over $R$; its characteristic polynomial, by the adjugate identity, annihilates all those generators and hence annihilates $1\in S$. Choose a monic annihilating polynomial $P_i$ of positive degree $d_i$, and form
+$$T=R[x_1,\ldots,x_n]/(P_1(x_1),\ldots,P_n(x_n))\twoheadrightarrow S.$$
+Successive division by the monic polynomials gives a basis of $T$ over $R$ consisting of
+$$x_1^{e_1}\cdots x_n^{e_n},\qquad 0\leq e_i<d_i.$$
+For one variable, division gives both existence and uniqueness of a remainder of degree less than $d_i$, over any coefficient ring. Applying that statement one variable at a time proves the displayed basis and shows that $T$ is finite free over $R$.
 
-1.  If $M_1$ and $M_3$ are finite $R$-modules, then $M_2$ is a finite $R$-module.
+The kernel of $T\to S$ is finitely generated. Here is the finite-presentation change of generators used in this step. Write $S=R[z_1,\ldots,z_q]/(g_1,\ldots,g_u)$. Express every $z_j$ in $S$ as a polynomial $a_j(y)$, and every $y_i$ as a polynomial $b_i(z)$. Then the kernel of $R[x_1,\ldots,x_n]\to S$ is generated by the finitely many polynomials
+$$g_j(a_1(x),\ldots,a_q(x)),\qquad
+x_i-b_i(a_1(x),\ldots,a_q(x)).$$
+To check this, the assignments $z_j\mapsto a_j(x)$ and $x_i\mapsto b_i(z)$ give inverse homomorphisms between the quotient by these relations and $S$. This makes the [finite-presentation change-of-generators step](#native-algebra-lemma-finite-presentation-independent) explicit. Passing to $T$ leaves a finitely generated kernel $H$. Since $T$ is finite over $R$, a finite set of ideal generators of $H$ also gives finitely many $R$-module generators after multiplication by the finite basis of $T$. The exact sequence $H\to T\to S\to0$ now presents $S$ as an $R$-module.
 
-2.  If $M_1$ and $M_3$ are finitely presented $R$-modules, then $M_2$ is a finitely presented $R$-module.
+Finally, let $M$ have a finite presentation over $S$. In a surjection $S^r\to M$, the kernel is finite over $S$, and hence finite over $R$. The module $S^r$ is finitely presented over $R$ by the preceding paragraph. The [exact-sequence finiteness lemma](#native-algebra-lemma-extension) makes the quotient $M$ finitely presented over $R$, as required. $\square$
 
-3.  If $M_2$ is a finite $R$-module, then $M_3$ is a finite $R$-module.
+#### Lemma. Finiteness in short exact sequences
 
-4.  If $M_2$ is a finitely presented $R$-module and $M_1$ is a finite $R$-module, then $M_3$ is a finitely presented $R$-module.
+Consider an exact sequence of modules over an arbitrary ring $R$:
 
-5.  If $M_3$ is a finitely presented $R$-module and $M_2$ is a finite $R$-module, then $M_1$ is a finite $R$-module.
+$$0\longrightarrow M_1\longrightarrow M_2\longrightarrow M_3\longrightarrow0.$$
 
-**Proof.** Proof of (1). If $x_1, \ldots, x_n$ are generators of $M_1$ and $y_1, \ldots, y_m \in M_2$ are elements whose images in $M_3$ are generators of $M_3$, then $x_1, \ldots, x_n, y_1, \ldots, y_m$ generate $M_2$.
+The following implications hold:
 
-Part (3) is immediate from the definition.
+1. Finite generation of $M_1$ and $M_3$ implies finite generation of $M_2$.
+2. Finite presentation of $M_1$ and $M_3$ implies finite presentation of $M_2$.
+3. A finitely generated $M_2$ has finitely generated quotient $M_3$.
+4. If $M_2$ is finitely presented and $M_1$ is finitely generated, then $M_3$ is finitely presented.
+5. If $M_3$ is finitely presented and $M_2$ is finitely generated, then $M_1$ is finitely generated.
 
-Proof of (5). Assume $M_3$ is finitely presented and $M_2$ finite. Choose a presentation $$R^{\oplus m} \to R^{\oplus n} \to M_3 \to 0$$ By Lemma [Extending a morphism after finite denominators are cleared](#native-algebra-lemma-lift-map) there exists a map $R^{\oplus n} \to M_2$ such that the solid diagram $$\begin{gathered}\begin{matrix}\phantom{X} & R^{\oplus m} & R^{\oplus n} & M_3 & 0 \\ 0 & M_1 & M_2 & M_3 & 0\end{matrix} \\[6pt] \begin{aligned}R^{\oplus m} & \longrightarrow R^{\oplus n} \\ R^{\oplus m} & \cdots\!\!\rightarrow M_1 \\ R^{\oplus n} & \longrightarrow M_3 \\ R^{\oplus n} & \longrightarrow M_2 \\ M_3 & \longrightarrow 0 \\ M_3 & \xrightarrow{\text{id}} M_3 \\ 0 & \longrightarrow M_1 \\ M_1 & \longrightarrow M_2 \\ M_2 & \longrightarrow M_3 \\ M_3 & \longrightarrow 0\end{aligned}\end{gathered}$$ commutes. This produces the dotted arrow. By the snake lemma (Lemma [The snake lemma](#native-algebra-lemma-snake)) we see that we get an isomorphism $$\operatorname{Coker}(R^{\oplus m} \to M_1)
-\cong
-\operatorname{Coker}(R^{\oplus n} \to M_2)$$ In particular we conclude that $\operatorname{Coker}(R^{\oplus m} \to M_1)$ is a finite $R$-module. Since $\operatorname{Im}(R^{\oplus m} \to M_1)$ is finite by (3), we see that $M_1$ is finite by part (1).
+**Proof.** For (1), use generators of $M_1$ together with lifts of generators of $M_3$. Their span contains the kernel and maps onto the quotient, so it is all of $M_2$. For (3), take the images of a generating set.
 
-Proof of (4). Assume $M_2$ is finitely presented and $M_1$ is finite. Choose a presentation $R^{\oplus m} \to R^{\oplus n} \to M_2 \to 0$. Choose a surjection $R^{\oplus k} \to M_1$. By Lemma [Extending a morphism after finite denominators are cleared](#native-algebra-lemma-lift-map) there exists a factorization $R^{\oplus k} \to R^{\oplus n} \to M_2$ of the composition $R^{\oplus k} \to M_1 \to M_2$. Then $R^{\oplus k + m} \to R^{\oplus n} \to M_3 \to 0$ is a presentation.
+To prove (5), take a finite presentation $R^a\xrightarrow{d}R^b\to M_3\to0$ and lift the basis of $R^b$ to $M_2$. Write $v:R^b\to M_2$ for the resulting map. The image of $vd$ lies in $M_1$, giving $w:R^a\to M_1$. There is a canonical isomorphism
 
-Proof of (2). Assume that $M_1$ and $M_3$ are finitely presented. The argument in the proof of part (1) produces a commutative diagram $$\begin{gathered}\begin{matrix}0 & R^{\oplus n} & R^{\oplus n + m} & R^{\oplus m} & 0 \\ 0 & M_1 & M_2 & M_3 & 0\end{matrix} \\[6pt] \begin{aligned}0 & \longrightarrow R^{\oplus n} \\ R^{\oplus n} & \longrightarrow M_1 \\ R^{\oplus n} & \longrightarrow R^{\oplus n + m} \\ R^{\oplus n + m} & \longrightarrow M_2 \\ R^{\oplus n + m} & \longrightarrow R^{\oplus m} \\ R^{\oplus m} & \longrightarrow M_3 \\ R^{\oplus m} & \longrightarrow 0 \\ 0 & \longrightarrow M_1 \\ M_1 & \longrightarrow M_2 \\ M_2 & \longrightarrow M_3 \\ M_3 & \longrightarrow 0\end{aligned}\end{gathered}$$ with surjective vertical arrows. By the snake lemma we obtain a short exact sequence $$0 \to \operatorname{Ker}(R^{\oplus n} \to M_1) \to
-\operatorname{Ker}(R^{\oplus n + m} \to M_2) \to
-\operatorname{Ker}(R^{\oplus m} \to M_3) \to 0$$ By part (5) we see that the outer two modules are finite. Hence the middle one is finite too. By (4) we see that $M_2$ is of finite presentation. $\square$
+$$M_1/\operatorname{im}(w)\ \cong\ M_2/\operatorname{im}(v).$$
+
+Indeed, every element of $M_2$ differs from an element of $\operatorname{im}(v)$ by one of $M_1$, since $R^b\to M_3$ is onto. If $v(x)$ belongs to $M_1$, then $x\in\operatorname{im}(d)$, so the intersection $M_1\cap\operatorname{im}(v)$ equals $\operatorname{im}(w)$. The right-hand quotient is finite by (3), and $\operatorname{im}(w)$ is finite because $R^a$ is. Applying (1) proves (5). This is the explicit kernel-and-cokernel calculation underlying the snake-lemma argument.
+
+For (4), start with $R^a\to R^b\to M_2\to0$. Lift a finite generating list of $M_1$ to $R^b$. The original $a$ relation vectors together with these finitely many lifts generate the kernel of $R^b\to M_3$, and therefore give a finite presentation of $M_3$.
+
+For (2), choose finite free modules $F_1,F_3$ surjecting onto $M_1,M_3$, and lift the basis of $F_3$ to $M_2$. This gives a surjection $F_1\oplus F_3\to M_2$. If $K_1,K_2,K_3$ are the kernels of these three surjections, projection onto $F_3$ gives
+
+$$0\longrightarrow K_1\longrightarrow K_2\longrightarrow K_3\longrightarrow0.$$
+
+Surjectivity on the right follows by correcting a lift of an element of $K_3$ with an element of $F_1$. Part (5) makes $K_1$ and $K_3$ finite, since the corresponding quotients are finitely presented. Part (1) then makes $K_2$ finite, which is precisely a finite set of relations for the chosen finite free cover of $M_2$. ∎
 
 #### Lemma. Tor vanishing for a flat module
 
-Suppose that $R$ is a ring, that $0\to M''\to M'\to M\to0$ is a short exact sequence, and that $N$ is an $R$-module. If $M$ is flat then $N \otimes_R M'' \to N \otimes_R M'$ is injective, i.e., the sequence $$0 \to N \otimes_R M'' \to N \otimes_R M' \to N \otimes_R M \to 0$$ is a short exact sequence.
+Let $0\to M''\xrightarrow{i}M'\xrightarrow{p}M\to0$ be exact over a ring $R$, and assume $M$ is flat. For every $R$-module $N$, tensoring gives an exact sequence
 
-**Proof.** Let $R^{(I)} \to N$ be a surjection from a free module onto $N$ with kernel $K$. The result follows from the snake lemma applied to the following diagram $$\begin{matrix}
- & & 0 & & 0 & & 0 & & \\
- & & \uparrow & & \uparrow & & \uparrow & & \\
- & & M''\otimes_R N & \to & M' \otimes_R N & \to & M \otimes_R N & \to & 0 \\
- & & \uparrow & & \uparrow & & \uparrow & & \\
-0 & \to & (M'')^{(I)} & \to & (M')^{(I)} & \to & M^{(I)} & \to & 0 \\
- & & \uparrow & & \uparrow & & \uparrow & & \\
- & & M''\otimes_R K & \to & M' \otimes_R K & \to & M \otimes_R K & \to & 0 \\
- & & & & & & \uparrow & & \\
- & & & & & & 0 & &
-\end{matrix}$$ with exact rows and columns. The middle row is exact because tensoring with the free module $R^{(I)}$ is exact. $\square$
+$$0\longrightarrow N\otimes_RM''\longrightarrow N\otimes_RM'
+\longrightarrow N\otimes_RM\longrightarrow0.$$
+
+No finiteness hypothesis is imposed on any of the modules.
+
+**Proof.** Tensor products are right exact, so only the first injection needs proof. Choose a free module $F$ surjecting onto $N$, with kernel $K$. Given $z\in M''\otimes_RN$ mapping to zero, lift it to $\widetilde z\in M''\otimes_RF$. Its image in $M'\otimes_RF$ comes from an element $y\in M'\otimes_RK$, because it becomes zero after passing to $N$.
+
+The image of $y$ in $M\otimes_RK$ maps to zero in $M\otimes_RF$: it agrees there with the image of $\widetilde z$, which is zero after applying $p$. Flatness of $M$ makes $M\otimes_RK\to M\otimes_RF$ injective. Therefore $y$ has zero image in $M\otimes_RK$. By right exactness there is $w\in M''\otimes_RK$ mapping to $y$.
+
+In $M''\otimes_RF$, the difference between $\widetilde z$ and the image of $w$ becomes zero in $M'\otimes_RF$. Tensoring with the free module $F$ preserves the injection $i$, so that difference is zero. Passing to $M''\otimes_RN$ kills the image of $w$, and gives $z=0$. This is the free-presentation diagram chase; it remains valid for an infinite free basis. ∎
 
 #### Lemma. Localization as a filtered colimit
 
-Let $R$ be a ring. Let $S \subset R$ be a multiplicative subset. Let $M$ be an $R$-module. Then $$S^{-1}M = \mathop{\operatorname{colim}}_{f \in S} M_f$$ where the preorder on $S$ is given by $f \geq f' \Leftrightarrow f = f'f''$ for some $f'' \in R$ in which case the map $M_{f'} \to M_f$ is given by $m/(f')^e \mapsto m(f'')^e/f^e$.
+For a multiplicative subset $U\subset R$ and an $R$-module $M$,
 
-**Proof.** Omitted. Hint: Use the universal property of Lemma [Proper morphisms and modules](#native-algebra-lemma-universal-property-localization-module). $\square$
+$$U^{-1}M\cong\mathop{\operatorname{colim}}_{f\in U}M_f.$$
+
+Use the divisibility preorder: $f'\preceq f$ when $f=f'h$ for some $h\in R$. The transition homomorphism is
+
+$$M_{f'}\longrightarrow M_f,\qquad
+\frac{m}{(f')^e}\longmapsto\frac{h^em}{f^e}.$$
+
+**Proof.** In $R_f$, the element $f'$ is a unit, with inverse $h/f$. Thus the universal property of localization defines the displayed map. It is independent of the chosen $h$ and respects compositions, because in each case it is the unique extension of $M\to M_f$ for which $f'$ becomes invertible. The product of two elements of $U$ is an upper bound, so the preorder is directed.
+
+Every fraction $m/u\in U^{-1}M$ comes from $M_u$. If $m/f^e$ maps to zero, some $u\in U$ kills $m$. At the later stage $M_{fu}$, the element $u$ is invertible, so the representative is zero there. These two facts prove surjectivity and injectivity of the colimit map. They also cover $0\in U$, when the localization is zero. ∎
 
 #### Lemma. The Artin--Tate lemma (Artin-Tate)
  Let $R$ be a Noetherian ring. Let $S$ be a finitely generated $R$-algebra. If $T \subset S$ is an $R$-subalgebra such that $S$ is finitely generated as a $T$-module, then $T$ is of finite type over $R$.
@@ -2911,28 +3023,43 @@ Let $R$ be a ring. Let $S \subset R$ be a multiplicative subset. Let $M$ be an $
 (\sum r_j^it_i,\ 1 - \sum r_it_i,\ t_it_j - \sum r_{ij}^k t_k)$$ as an $R$-algebra which proves (2). $\square$
 
 #### Lemma. Composition of finite-type ring maps
- The notions finite type and finite presentation have the following permanence properties.
 
-1.  A composition of ring maps of finite type is of finite type.
+Finite type and finite presentation satisfy these four rules:
 
-2.  A composition of ring maps of finite presentation is of finite presentation.
+1. Two successive finite type homomorphisms have finite type composite.
+2. Two successive finitely presented homomorphisms have finitely presented composite.
+3. In $R\to S'\to S$, finite type of $S$ over $R$ implies finite type over $S'$.
+4. In the same diagram, if $S$ is finitely presented over $R$ and $S'$ is of finite type over $R$, then $S$ is finitely presented over $S'$.
 
-3.  Given $R \to S' \to S$ with $R \to S$ of finite type, then $S' \to S$ is of finite type.
+**Proof.** For (1), join a finite list of algebra generators for the first map to a list for the second. For (3), the original $R$-algebra generators also generate over $S'$.
 
-4.  Given $R \to S' \to S$, with $R \to S$ of finite presentation, and $R \to S'$ of finite type, then $S' \to S$ is of finite presentation.
+For (2), write $S=R[x_1,\ldots,x_a]/(f_1,\ldots,f_b)$ and $T=S[y_1,\ldots,y_c]/(g_1,\ldots,g_d)$. Lift each coefficient of each $g_j$ to a polynomial in the $x_i$, producing $\widetilde g_j\in R[x,y]$. Then
 
-**Proof.** We only prove the last assertion. Write $S = R[x_1, \ldots, x_n]/(f_1, \ldots, f_m)$ and $S' = R[y_1, \ldots, y_a]/I$. Say that the class $\bar y_i$ of $y_i$ maps to $h_i \bmod (f_1, \ldots, f_m)$ in $S$. Then it is clear that $S = S'[x_1, \ldots, x_n]/(f_1, \ldots, f_m,
-h_1 - \bar y_1, \ldots, h_a - \bar y_a)$. $\square$
+$$T\cong R[x,y]/(f_1,\ldots,f_b,\widetilde g_1,\ldots,\widetilde g_d),$$
+
+which is a finite presentation over $R$.
+
+For (4), choose $S=R[x]/(f_1,\ldots,f_b)$ and $S'=R[y_1,\ldots,y_c]/I$, with finite lists $x,y$. Represent the image of $\bar y_j$ in $S$ by $h_j(x)\in R[x]$. The given homomorphism induces
+
+$$S\cong S'[x]/(f_1,\ldots,f_b,\ h_1(x)-\bar y_1,\ldots,h_c(x)-\bar y_c).$$
+
+To verify this presentation, the displayed relations force every coefficient from $S'$ to have its prescribed expression in the $x_i$. Relations from $I$ already vanish in $S$, so impose no additional relations beyond $(f_1,\ldots,f_b)$ after that substitution. The resulting maps in both directions fix $R$, all $x_i$, and all $\bar y_j$. They are inverse, proving the assertion without a finite-generation assumption on $I$. ∎
 
 #### Lemma. Product decompositions from disjoint closed subsets
 
-Let $R$ be a ring. For each $U \subset \operatorname{Spec}(R)$ which is open and closed there exists a unique idempotent $e \in R$ such that $U = D(e)$. This induces a 1-1 correspondence between open and closed subsets $U \subset \operatorname{Spec}(R)$ and idempotents $e \in R$.
+For every ring $R$, the assignment $e\mapsto D(e)$ bijects its idempotents with the clopen subsets of $\operatorname{Spec}(R)$. In particular, each such subset is represented by one and only one idempotent.
 
-**Proof.** Let $U \subset \operatorname{Spec}(R)$ be open and closed. Since $U$ is closed it is quasi-compact by Lemma [Quasi-compactness of an affine spectrum](#native-algebra-lemma-quasi-compact), and similarly for its complement. Write $U = \bigcup_{i = 1}^n D(f_i)$ as a finite union of standard opens. Similarly, write $\operatorname{Spec}(R) \setminus U = \bigcup_{j = 1}^m D(g_j)$ as a finite union of standard opens. Since $\emptyset =
-D(f_i) \cap D(g_j) = D(f_i g_j)$ we see that $f_i g_j$ is nilpotent by Lemma [The Zariski topology on an affine spectrum](#native-algebra-lemma-zariski-topology). Let $I = (f_1, \ldots, f_n) \subset R$ and let $J = (g_1, \ldots, g_m) \subset R$. Note that $V(J)$ equals $U$, that $V(I)$ equals the complement of $U$, so $\operatorname{Spec}(R) = V(I) \amalg V(J)$. By the remark on nilpotency above, we see that $(IJ)^N = (0)$ for some sufficiently large integer $N$. Since $\bigcup D(f_i) \cup \bigcup D(g_j) = \operatorname{Spec}(R)$ we see that $I + J = R$, see Lemma [The Zariski topology on an affine spectrum](#native-algebra-lemma-zariski-topology). By raising this equation to the $2N$th power we conclude that $I^N + J^N = R$. Write $1 = x + y$ with $x \in I^N$ and $y \in J^N$. Then $0 = xy = x(1 - x)$ as $I^N J^N = (0)$. Thus $x = x^2$ is idempotent and contained in $I^N \subset I$. The idempotent $y = 1 - x$ is contained in $J^N \subset J$. This shows that the idempotent $x$ maps to $1$ in every residue field $\kappa(\mathfrak p)$ for $\mathfrak p \in V(J)$ and that $x$ maps to $0$ in $\kappa(\mathfrak p)$ for every $\mathfrak p \in V(I)$.
+**Proof using nilpotent correction.** *Spectra of rings*, Lemma 5.1 and Theorem 5.2 prove this at the stated scope. They construct an element with residue value $1$ on the chosen subset and $0$ on its complement, then correct its nilpotent idempotency error. Only that error must be nilpotent; no nilpotence assumption on the whole nilradical is made.
 
-To see uniqueness suppose that $e_1, e_2$ are distinct idempotents in $R$. We have to show there exists a prime $\mathfrak p$ such that $e_1 \in \mathfrak p$ and $e_2 \not \in \mathfrak p$, or conversely. Write $e_i' = 1 - e_i$. If $e_1 \not = e_2$, then $0 \not = e_1 - e_2  = e_1(e_2 + e_2') - (e_1 + e_1')e_2
-= e_1 e_2' - e_1' e_2$. Hence either the idempotent $e_1 e_2' \not = 0$ or $e_1' e_2 \not = 0$. A nonzero idempotent is not nilpotent, and hence we find a prime $\mathfrak p$ such that either $e_1e_2' \not \in \mathfrak p$ or $e_1'e_2 \not \in \mathfrak p$, by Lemma [The Zariski topology on an affine spectrum](#native-algebra-lemma-zariski-topology). It is easy to see this gives the desired prime. $\square$
+**Proof using finite principal-open covers.** A clopen subset $U$ and its complement are quasi-compact. Choose finite lists with
+
+$$U=\bigcup_iD(f_i),\qquad U^c=\bigcup_jD(g_j),$$
+
+and write $I=(f_i)$ and $J=(g_j)$. These opens cover the spectrum, so $I+J=R$. Each $f_ig_j$ lies in every prime, hence is nilpotent. There are only finitely many such generators of $IJ$, so $(IJ)^N=0$ for some $N\geq1$: if their individual nilpotence exponents are $r_1,\ldots,r_t$, any product of more than $\sum(r_i-1)$ generators vanishes. The binomial expansion of $(I+J)^{2N-1}$ gives $I^N+J^N=R$.
+
+Choose $e\in I^N$ and $h\in J^N$ with $e+h=1$. Since $eh=0$, the element $e$ is idempotent. On $U=V(J)$ its residue is $1$, and on $U^c=V(I)$ its residue is $0$. Hence $D(e)=U$.
+
+Finally, every idempotent has residue value either $0$ or $1$ at each prime, so $D(e)$ and $D(1-e)$ are complementary opens. If $D(e)=D(e')$, both $e(1-e')$ and $e'(1-e)$ have zero image at every prime. They are nilpotent idempotents, hence zero, and therefore $e=ee'=e'$. The empty covers and the zero ring cause no exceptions. ∎
 
 #### Lemma. Characterizations of Dedekind domains
 
@@ -2951,96 +3078,36 @@ Writing $(x) = \mathfrak p_1 \ldots \mathfrak p_r$ anew with $\mathfrak p_1 \sub
 The equivalence of (2) and (3) follows from Lemmas [Local algebra](#native-algebra-lemma-normality-is-local) and [Characterizations of discrete valuation rings](#native-algebra-lemma-characterize-dvr). Assume (2) and (3) are satisfied. The unit ideal is the empty product. Let $I \subset R$ be a nonzero proper ideal. We will construct a factorization of $I$. If $I$ is prime, then there is nothing to prove. If not, pick $I \subset \mathfrak p$ with $\mathfrak p \subset R$ maximal. Let $J = \{x \in R \mid x \mathfrak p \subset I\}$. We claim $J \mathfrak p = I$. It suffices to check this after localization at the maximal ideals $\mathfrak m$ of $R$ (the formation of $J$ commutes with localization and we use Lemma [Detecting a zero module by localization](#native-algebra-lemma-characterize-zero-local)). Then either $\mathfrak p R_\mathfrak m = R_\mathfrak m$ and the result is clear, or $\mathfrak p R_\mathfrak m = \mathfrak m R_\mathfrak m$. In the last case $\mathfrak p R_\mathfrak m = (\pi)$ and the case where $\mathfrak p$ is principal is immediate. By Noetherian induction the ideal $J$ has a factorization and we obtain the desired factorization of $I$. We omit the proof of uniqueness of the factorization. $\square$
 
 #### Lemma. The Zariski topology on an affine spectrum
- Let $R$ be a ring.
 
-1.  The spectrum of a ring $R$ is empty if and only if $R$ is the zero ring.
+Let $R$ be any ring. For a subset $T\subseteq R$, write $V(T)$ for its common vanishing locus in $\operatorname{Spec}(R)$ and $D(f)$ for the complement of $V(f)$.
 
-2.  Every nonzero ring has a maximal ideal.
+1. The spectrum is empty precisely for the zero ring.
+2. A nonzero ring has a maximal ideal.
+3. A nonzero ring has a minimal prime.
+4. Given an ideal $I\subseteq\mathfrak p$ with $\mathfrak p$ prime, there is a prime $\mathfrak q$ minimal over $I$ with $\mathfrak q\subseteq\mathfrak p$.
+5. For any subset $T$, one has $V(T)=V((T))$, where $(T)$ is its generated ideal.
+6. Taking a radical does not change a vanishing locus: $V(I)=V(\sqrt I)$.
+7. The radical has the description $\sqrt I=\bigcap_{\mathfrak p\supseteq I}\mathfrak p$, with the empty intersection interpreted as $R$.
+8. The equality $V(I)=\varnothing$ is equivalent to $I=R$.
+9. For ideals $I,J$, one has $V(I)\cup V(J)=V(I\cap J)$.
+10. For any family $(I_a)_{a\in A}$, one has $\bigcap_aV(I_a)=V(\bigcup_a I_a)$.
+11. The sets $D(f)$ and $V(f)$ form a disjoint partition of $\operatorname{Spec}(R)$.
+12. The open set $D(f)$ is empty precisely when $f$ is nilpotent.
+13. Multiplication by a unit does not change a principal open: $D(uf)=D(f)$ for $u\in R^\times$.
+14. If $\mathfrak p\notin V(I)$, some $f\in R$ satisfies $\mathfrak p\in D(f)$ and $D(f)\cap V(I)=\varnothing$.
+15. Principal opens satisfy $D(fg)=D(f)\cap D(g)$.
+16. For any family $(f_i)_{i\in J}$, its union $\bigcup_iD(f_i)$ is the complement of $V(\{f_i:i\in J\})$.
+17. If $D(f)=\operatorname{Spec}(R)$, then $f$ is invertible.
 
-3.  Every nonzero ring has a minimal prime ideal.
+**Proof.** The three underlying prime-ideal arguments are written in full in *Spectra of rings*: Lemma 1.1 and Theorem 1.2 prove maximal-ideal existence and the radical intersection formula, while Lemma 4.2 proves the minimal-prime assertion inside a prescribed prime. The first argument applies Zorn's lemma to ideals avoiding a multiplicative set. The second applies it with reversed inclusion to primes between $I$ and $\mathfrak p$, proving that a descending-chain intersection is still prime. These results hold for arbitrary rings. They give (2), (4), and (7) directly. A maximal ideal is prime, so (2) followed by (4) gives (3). Since primes are proper, the zero ring has none; (2) gives the converse in (1).
 
-4.  Given an ideal $I \subset R$ and a prime ideal $I \subset \mathfrak p$ there exists a prime $I \subset \mathfrak q \subset \mathfrak p$ such that $\mathfrak q$ is minimal over $I$.
+We record all the topological deductions to specify exactly how these algebraic results are used. Containment of $T$ in a prime is equivalent to containment of $(T)$, which proves (5). A prime containing $I$ contains every element whose power belongs to $I$; hence it contains $\sqrt I$, proving (6). For (8), a proper $I$ is contained in a maximal ideal, by applying (2) to $R/I$, whereas no prime contains the unit ideal.
 
-5.  If $T \subset R$, and if $(T)$ is the ideal generated by $T$ in $R$, then $V((T)) = V(T)$.
+If a prime contains $I$ or $J$, it contains $I\cap J$. Conversely, if it contains $I\cap J$, it contains $IJ$. If some $a\in I$ lies outside that prime, the products $ab$ for all $b\in J$ force all of $J$ into the prime. This proves (9). A prime contains every $I_a$ exactly when it contains their union, proving (10), also for an empty family.
 
-6.  If $I$ is an ideal and $\sqrt{I}$ is its radical, see basic notion ([Commutative algebra](#context-algebra-item-radical-ideal)), then $V(I) = V(\sqrt{I})$.
+Part (11) is the definition of $D(f)$. For (12), emptiness means that $f$ lies in every prime, which by (7) for $I=0$ is equivalent to nilpotence. A prime contains $uf$ exactly when it contains $f$ if $u$ is a unit, giving (13). To prove (14), choose $f\in I\setminus\mathfrak p$. It avoids $\mathfrak p$, while every point of $V(I)$ contains it. This gives the claimed neighborhood and disjointness.
 
-7.  Given an ideal $I$ of $R$ we have $\sqrt{I} =
-    \bigcap_{I \subset \mathfrak p} \mathfrak p$.
-
-8.  If $I$ is an ideal then $V(I) = \emptyset$ if and only if $I$ is the unit ideal.
-
-9.  If $I$, $J$ are ideals of $R$ then $V(I) \cup V(J) =
-    V(I \cap J)$.
-
-10. If $(I_a)_{a\in A}$ is a set of ideals of $R$ then $\bigcap_{a\in A} V(I_a) = V(\bigcup_{a\in A} I_a)$.
-
-11. If $f \in R$, then $D(f) \amalg V(f) = \operatorname{Spec}(R)$.
-
-12. If $f \in R$ then $D(f) = \emptyset$ if and only if $f$ is nilpotent.
-
-13. If $f = u f'$ for some unit $u \in R$, then $D(f) = D(f')$.
-
-14. If $I \subset R$ is an ideal, and $\mathfrak p$ is a prime of $R$ with $\mathfrak p \not\in V(I)$, then there exists an $f \in R$ such that $\mathfrak p \in D(f)$, and $D(f) \cap V(I) = \emptyset$.
-
-15. If $f, g \in R$, then $D(fg) = D(f) \cap D(g)$.
-
-16. If $f_i \in R$ for $i \in I$, then $\bigcup_{i\in I} D(f_i)$ is the complement of $V(\{f_i \}_{i\in I})$ in $\operatorname{Spec}(R)$.
-
-17. If $f \in R$ and $D(f) = \operatorname{Spec}(R)$, then $f$ is a unit.
-
-**Proof.** We address each part in the corresponding item below.
-
-1.  This is a direct consequence of (2) or (3).
-
-2.  Let $\mathfrak{A}$ be the set of all proper ideals of $R$. This set is ordered by inclusion and is non-empty, since $(0) \in \mathfrak{A}$ is a proper ideal. Let $A$ be a totally ordered subset of $\mathfrak A$. Then $\bigcup_{I \in A} I$ is in fact an ideal. Since $1 \notin I$ for all $I \in A$, the union does not contain $1$ and thus is proper. Hence $\bigcup_{I \in A} I$ is in $\mathfrak{A}$ and is an upper bound for the set $A$. Thus by Zorn's lemma $\mathfrak{A}$ has a maximal element, which is the sought-after maximal ideal.
-
-3.  Since $R$ is nonzero, it contains a maximal ideal which is a prime ideal. Thus the set $\mathfrak{A}$ of all prime ideals of $R$ is nonempty. $\mathfrak{A}$ is ordered by reverse-inclusion. Let $A$ be a totally ordered subset of $\mathfrak{A}$. It's pretty clear that $J = \bigcap_{I \in A} I$ is in fact an ideal. Not so clear, however, is that it is prime. Let $xy \in J$. Then $xy \in I$ for all $I \in A$. Now let $B = \{I \in A | y \in I\}$. Let $K
-    = \bigcap_{I \in B} I$. Since $A$ is totally ordered, either $K = J$ (and we're done, since then $y \in J$) or $K \supset J$ and for all $I \in A$ such that $I$ is properly contained in $K$, we have $y \notin I$. But that means that for all those $I, x \in I$, since they are prime. Hence $x \in J$. In either case, $J$ is prime as desired. Hence by Zorn's lemma we get a maximal element which in this case is a minimal prime ideal.
-
-4.  This is the same exact argument as (3) except you only consider prime ideals contained in $\mathfrak{p}$ and containing $I$.
-
-5.  $(T)$ is the smallest ideal containing $T$. Hence if $T \subset I$, some ideal, then $(T) \subset I$ as well. Hence if $I \in V(T)$, then $I \in V((T))$ as well. The other inclusion is obvious.
-
-6.  Since $I \subset \sqrt{I}, V(\sqrt{I}) \subset V(I)$. Now let $\mathfrak{p} \in V(I)$. Let $x \in \sqrt{I}$. Then $x^n \in I$ for some $n$. Hence $x^n \in \mathfrak{p}$. But since $\mathfrak{p}$ is prime, a boring induction argument gets you that $x \in \mathfrak{p}$. Hence $\sqrt{I} \subset
-    \mathfrak{p}$ and $\mathfrak{p} \in V(\sqrt{I})$.
-
-7.  Let $f \in R \setminus \sqrt{I}$. Then $f^n \notin I$ for all $n$. Hence $S = \{1, f, f^2, \ldots\}$ is a multiplicative subset, not containing $0$. Take a prime ideal $\bar{\mathfrak{p}} \subset S^{-1}R$ containing $S^{-1}I$. Then the pull-back $\mathfrak{p}$ in $R$ of $\bar{\mathfrak{p}}$ is a prime ideal containing $I$ that does not intersect $S$. This shows that $\bigcap_{I \subset
-    \mathfrak p} \mathfrak p \subset \sqrt{I}$. Now if $a \in \sqrt{I}$, then $a^n
-    \in I$ for some $n$. Hence if $I \subset \mathfrak{p}$, then $a^n \in
-    \mathfrak{p}$. But since $\mathfrak{p}$ is prime, we have $a \in \mathfrak{p}$. Thus the equality is shown.
-
-8.  $I$ is not the unit ideal if and only if $I$ is contained in some maximal ideal (to see this, apply (2) to the ring $R/I$) which is therefore prime.
-
-9.  If $\mathfrak{p} \in V(I) \cup V(J)$, then $I \subset \mathfrak{p}$ or $J
-    \subset \mathfrak{p}$ which means that $I \cap J \subset \mathfrak{p}$. Now if $I \cap J \subset \mathfrak{p}$, then $IJ \subset \mathfrak{p}$ and hence either $I \subset \mathfrak{p}$ or $J \subset \mathfrak{p}$, since $\mathfrak{p}$ is prime.
-
-10. $\mathfrak{p} \in \bigcap_{a \in A} V(I_a) \Leftrightarrow
-    I_a \subset \mathfrak{p}, \forall a \in A \Leftrightarrow
-    \mathfrak{p} \in V(\bigcup_{a\in A} I_a)$
-
-11. If $\mathfrak{p}$ is a prime ideal and $f \in R$, then either $f \in
-    \mathfrak{p}$ or $f \notin \mathfrak{p}$ (strictly) which is what the disjoint union says.
-
-12. If $a \in R$ is nilpotent, then $a^n = 0$ for some $n$. Hence $a^n \in
-    \mathfrak{p}$ for any prime ideal. Thus $a \in \mathfrak{p}$ as can be shown by induction and $D(a) = \emptyset$. Now, as shown in (7), if $a \in R$ is not nilpotent, then there is a prime ideal that does not contain it.
-
-13. $f \in \mathfrak{p} \Leftrightarrow uf \in \mathfrak{p}$, since $u$ is invertible.
-
-14. If $\mathfrak{p} \notin V(I)$, then $\exists f \in I \setminus
-    \mathfrak{p}$. Then $f \notin \mathfrak{p}$ so $\mathfrak{p} \in D(f)$. Also if $\mathfrak{q} \in D(f)$, then $f \notin \mathfrak{q}$ and thus $I$ is not contained in $\mathfrak{q}$. Thus $D(f) \cap V(I) = \emptyset$.
-
-15. If $fg \in \mathfrak{p}$, then $f \in \mathfrak{p}$ or $g \in
-    \mathfrak{p}$. Hence if $f \notin \mathfrak{p}$ and $g \notin \mathfrak{p}$, then $fg \notin \mathfrak{p}$. Since $\mathfrak{p}$ is an ideal, if $fg \notin
-    \mathfrak{p}$, then $f \notin \mathfrak{p}$ and $g \notin \mathfrak{p}$.
-
-16. $\mathfrak{p} \in \bigcup_{i \in I} D(f_i) \Leftrightarrow \exists i \in
-    I, f_i \notin \mathfrak{p} \Leftrightarrow \mathfrak{p} \in \operatorname{Spec}(R)
-    \setminus V(\{f_i\}_{i \in I})$
-
-17. If $D(f) = \operatorname{Spec}(R)$, then $V(f) = \emptyset$ and hence $fR = R$, so $f$ is a unit.
-
-$\square$
+A prime avoids $fg$ exactly when it avoids both factors; this proves (15). It lies outside $\bigcup_iD(f_i)$ exactly when it contains every $f_i$, proving (16). Finally, (17) says $V((f))$ is empty. Part (8) then gives $(f)=R$, so $f$ is a unit. These identities agree with the full topology proof in *Spectra of rings*, Proposition 2.1. ∎
 
 #### Lemma. Lifting étale morphisms
 
@@ -3223,16 +3290,18 @@ Let $R$ be a ring. Let $I \subset R$ be a nilpotent ideal. Let $\overline{P}$ be
 
 #### Lemma. A left inverse for a matrix
 
-Let $R$ be a ring. Let $n \geq m$. Let $A$ be an $n \times m$ matrix with coefficients in $R$. Let $J \subset R$ be the ideal generated by the $m \times m$ minors of $A$.
+Let $A$ be an $n\times m$ matrix over a ring $R$, with $n\geq m$, and let $J$ be the ideal of its maximal minors. Then:
 
-1.  For any $f \in J$ there exists a $m \times n$ matrix $B$ such that $BA = f 1_{m \times m}$.
+1. Every $f\in J$ admits an $m\times n$ matrix $B$ with $BA=fI_m$.
+2. Conversely, such an identity implies $f^m\in J$.
 
-2.  If $f \in R$ and $BA = f 1_{m \times m}$ for some $m \times n$ matrix $B$, then $f^m \in J$.
+**Proof.** For each set $E$ of $m$ row indices, let $p_E:R^n\to R^m$ be the coordinate projection in increasing index order. Put $A_E=p_EA$. The adjugate identity gives
+$$\operatorname{adj}(A_E)p_EA=(\det A_E)I_m.$$
+Write $f=\sum_E c_E\det A_E$. Then $B=\sum_E c_E\operatorname{adj}(A_E)p_E$ has the property in (1).
 
-**Proof.** For $I \subset \{1, \ldots, n\}$ with $|I| = m$, we denote by $E_I$ the $m \times n$ matrix of the projection $$R^{\oplus n} = \bigoplus\nolimits_{i \in \{1, \ldots, n\}} R
-\longrightarrow \bigoplus\nolimits_{i \in I} R$$ and set $A_I = E_I A$, i.e., $A_I$ is the $m \times m$ matrix whose rows are the rows of $A$ with indices in $I$. Let $B_I$ be the adjugate (transpose of cofactor) matrix to $A_I$, i.e., such that $A_I B_I = B_I A_I = \det(A_I) 1_{m \times m}$. The $m \times m$ minors of $A$ are the determinants $\det A_I$ for all the $I \subset \{1, \ldots, n\}$ with $|I| = m$. If $f \in J$ then we can write $f = \sum c_I \det(A_I)$ for some $c_I \in R$. Set $B = \sum c_I B_I E_I$ to see that (1) holds.
-
-If $f 1_{m \times m} = BA$ then by the Cauchy-Binet formula ([Commutative algebra](#context-algebra-item-cauchy-binet)) we have $f^m = \sum b_I \det(A_I)$ where $b_I$ is the determinant of the $m \times m$ matrix whose columns are the columns of $B$ with indices in $I$. $\square$
+For (2), take determinants in $BA=fI_m$ and use [Cauchy–Binet](artin-axioms.md#context-algebra-item-cauchy-binet):
+$$f^m=\det(BA)=\sum_E\det(B^E)\det(A_E),$$
+where $B^E$ selects the columns with indices in $E$. This lies in $J$. If $m=0$, the empty minor is $1$, so $J=R$; the empty matrices and the convention $f^0=1$ make both assertions valid. ∎
 
 #### Lemma. Detecting a zero module by localization
  Let $R$ be a ring.
@@ -3295,68 +3364,69 @@ Proof of (3). Let $H$ be the homology of the sequence, i.e., $H = \operatorname{
 
 Parts (4) and (5) are special cases of (3). Part (6) follows formally on combining (4) and (5). $\square$
 
-#### Lemma. Flatness
- Let $M$ be an $R$-module. The following are equivalent:
+#### Lemma. The ideal tests for flatness
 
-1.  
+For any module $M$ over a ring $R$, the following four conditions are equivalent:
 
-    $M$ is flat over $R$.
+1. The tensor functor $-\otimes_RM$ is exact, that is, $M$ is flat.
+2. Tensoring any inclusion of $R$-modules with $M$ gives an injection.
+3. Multiplication $I\otimes_RM\to M$ is injective for every ideal $I$ of $R$.
+4. The same assertion holds for every finitely generated ideal.
 
-2.  
+**Proof.** Exactness implies preservation of inclusions; applying that to ideals gives 3 and then 4. Conversely, preservation of inclusions together with right exactness of tensor gives exactness. In detail, for an exact sequence $N_1\to N_2\to N_3$, put $K=\ker(N_2\to N_3)$ and $Q=\operatorname{im}(N_2\to N_3)$. Tensoring $N_1\twoheadrightarrow K$ is onto. Right exactness identifies the kernel of $N_2\otimes_RM\to Q\otimes_RM$ with the image of $K\otimes_RM$, and injectivity of $Q\otimes_RM\to N_3\otimes_RM$ leaves that kernel unchanged. Thus condition 2 implies condition 1, including exactness in the middle of an arbitrary sequence.
 
-    for every injection of $R$-modules $N \subset N'$ the map $N \otimes_R M \to N'\otimes_R M$ is injective.
+It remains to derive 2 from 4. Every ideal is the directed union of its finitely generated subideals, and tensor commutes with that union. If an element of $I\otimes_RM$ maps to zero in $M$, represent it using finitely many coefficients from $I$ and let $J$ be their generated ideal. The representative in $J\otimes_RM$ maps to zero and vanishes by 4. This proves 3 for arbitrary $I$.
 
-3.   for every ideal $I \subset R$ the map $I \otimes_R M \to R \otimes_R M = M$ is injective.
+Next we prove that $G\otimes_RM\to M^n$ is injective for every submodule $G\subset R^n$. Induct on $n$, the cases $n=0,1$ being immediate and condition 3, respectively. Let $G_0=G\cap(R\oplus0^{n-1})$ and let $G_1$ be the image of $G$ in $R^{n-1}$. Tensoring $G_0\to G\to G_1\to0$ gives a right exact sequence. An element of $G\otimes_RM$ killed in $M^n$ has zero image in $G_1\otimes_RM$ by induction. Lift it from $G_0\otimes_RM$. Its image in the first coordinate of $M^n$ is zero, and the ideal case for $G_0$ makes that lift zero. This proves the induction step.
 
-4.   for every finitely generated ideal $I \subset R$ the map $I \otimes_R M \to R \otimes_R M = M$ is injective.
+Finally, let $K\subset N$ and let $z\in K\otimes_RM$ die in $N\otimes_RM$. Choose a finite submodule $K_0\subset K$ containing a representative $z_0$ of $z$. The finite submodules of $N$ containing $K_0$ form a directed system with union $N$. The equality of the image of $z_0$ to zero in its tensor colimit already holds at a finite stage $N_0$; equivalently, the finitely many tensor relations witnessing that equality involve only a finite submodule. We need only prove injectivity for $K_0\subset N_0$.
 
-**Proof.** The implications ([the indicated step](#native-algebra-item-flat)) implies ([the indicated step](#native-algebra-item-injective)) implies ([the indicated step](#native-algebra-item-f-ideal)) implies ([the indicated step](#native-algebra-item-ffg-ideal)) are all trivial. Thus we prove ([the indicated step](#native-algebra-item-ffg-ideal)) implies ([the indicated step](#native-algebra-item-flat)). Suppose that $N_1 \to N_2 \to N_3$ is exact. Let $K = \operatorname{Ker}(N_2 \to N_3)$ and $Q = \operatorname{Im}(N_2 \to N_3)$. Then we get maps $$N_1 \otimes_R M \to
-K \otimes_R M \to
-N_2 \otimes_R M \to
-Q \otimes_R M \to
-N_3 \otimes_R M$$ Observe that the first and third arrows are surjective. Thus if we show that the second and fourth arrows are injective, then we are done[^1]. Hence it suffices to show that $- \otimes_R M$ transforms injective $R$-module maps into injective $R$-module maps.
+Take a finite free surjection $R^n\to N_0$, let $L$ be its kernel, and let $L'$ be the inverse image of $K_0$. The result for submodules of $R^n$ embeds $L\otimes_RM$ and $L'\otimes_RM$ compatibly into $M^n$. Right exactness identifies the required map with
+$$\frac{L'\otimes_RM}{L\otimes_RM}
+\longrightarrow\frac{M^n}{L\otimes_RM}.$$
+This is injective because its numerator on the left is a submodule of the numerator on the right and both quotients use the same embedded submodule. Thus $z_0=0$, and then $z=0$. All four conditions are equivalent, without a Noetherian or module-finiteness assumption. $\square$
 
-Assume $K \to N$ is an injective $R$-module map and let $x \in \operatorname{Ker}(K \otimes_R M \to N \otimes_R M)$. We have to show that $x$ is zero. The $R$-module $K$ is the union of its finite $R$-submodules; hence, $K \otimes_R M$ is the colimit of $R$-modules of the form $K_i \otimes_R M$ where $K_i$ runs over all finite $R$-submodules of $K$ (because tensor product commutes with colimits). Thus, for some $i$ our $x$ comes from an element $x_i \in K_i \otimes_R M$. Thus we may assume that $K$ is a finite $R$-module. Assume this. We regard the injection $K \to N$ as an inclusion, so that $K \subset N$.
+#### Remark. The first Tor group of a quotient
 
-The $R$-module $N$ is the union of its finite $R$-submodules that contain $K$. Hence, $N \otimes_R M$ is the colimit of $R$-modules of the form $N_i \otimes_R M$ where $N_i$ runs over all finite $R$-submodules of $N$ that contain $K$ (again since tensor product commutes with colimits). Notice that this is a colimit over a directed system (since the sum of two finite submodules of $N$ is again finite). Hence, (by Lemma [Commutative algebra (uncovered prerequisite)](#uncovered-algebra-lemma-zero-directed-limit)) the element $x \in K \otimes_R M$ maps to zero in at least one of these $R$-modules $N_i \otimes_R M$ (since $x$ maps to zero in $N \otimes_R M$). Thus we may assume $N$ is a finite $R$-module.
-
-Assume $N$ is a finite $R$-module. Write $N = R^{\oplus n}/L$ and $K = L'/L$ for some $L \subset L' \subset R^{\oplus n}$. For any $R$-submodule $G \subset R^{\oplus n}$, we have a canonical map $G \otimes_R M \to M^{\oplus n}$ obtained by composing $G \otimes_R M \to R^n \otimes_R M = M^{\oplus n}$. It suffices to prove that $L \otimes_R M \to M^{\oplus n}$ and $L' \otimes_R M \to M^{\oplus n}$ are injective. Namely, if so, then we see that $K \otimes_R M = L' \otimes_R M/L \otimes_R M \to M^{\oplus n}/L \otimes_R M$ is injective too[^2].
-
-Thus it suffices to show that $L \otimes_R M \to M^{\oplus n}$ is injective when $L \subset R^{\oplus n}$ is an $R$-submodule. We do this by induction on $n$. The base case $n = 1$ we handle below. For the induction step assume $n > 1$ and set $L' = L \cap R \oplus 0^{\oplus n - 1}$. Then $L'' = L/L'$ is a submodule of $R^{\oplus n - 1}$. We obtain a diagram $$\begin{gathered}\begin{matrix}\phantom{X} & L' \otimes_R M & L \otimes_R M & L'' \otimes_R M & 0 \\ 0 & M & M^{\oplus n} & M^{\oplus n - 1} & 0\end{matrix} \\[6pt] \begin{aligned}L' \otimes_R M & \longrightarrow L \otimes_R M \\ L' \otimes_R M & \longrightarrow M \\ L \otimes_R M & \longrightarrow L'' \otimes_R M \\ L \otimes_R M & \longrightarrow M^{\oplus n} \\ L'' \otimes_R M & \longrightarrow 0 \\ L'' \otimes_R M & \longrightarrow M^{\oplus n - 1} \\ 0 & \longrightarrow M \\ M & \longrightarrow M^{\oplus n} \\ M^{\oplus n} & \longrightarrow M^{\oplus n - 1} \\ M^{\oplus n - 1} & \longrightarrow 0\end{aligned}\end{gathered}$$ By induction hypothesis and the base case the left and right vertical arrows are injective. The rows are exact. It follows that the middle vertical arrow is injective too.
-
-The base case of the induction above is when $L \subset R$ is an ideal. In other words, we have to show that $I \otimes_R M \to M$ is injective for any ideal $I$ of $R$. We know this is true when $I$ is finitely generated. However, $I = \bigcup I_\alpha$ is the union of the finitely generated ideals $I_\alpha$ contained in it. In other words, $I = \mathop{\operatorname{colim}} I_\alpha$. Since $\otimes$ commutes with colimits we see that $I \otimes_R M = \mathop{\operatorname{colim}} I_\alpha \otimes_R M$ and since all the morphisms $I_\alpha \otimes_R M \to M$ are injective by assumption, the same is true for $I \otimes_R M \to M$. $\square$
-
-#### Remark. Tor for a quotient by an ideal
-
-The proof of Lemma [Criteria for flatness (uncovered prerequisite)](#uncovered-algebra-lemma-characterize-flat) actually shows that $$\text{Tor}_1^R(M, R/I)
-=
-\operatorname{Ker}(I \otimes_R M \to M).$$
+For an ideal $I\subset R$ and an arbitrary $R$-module $M$, there is a natural identification
+$$\operatorname{Tor}_1^R(M,R/I)\cong\ker(I\otimes_RM\longrightarrow M),$$
+where the map on the right is multiplication. Apply the long exact Tor sequence to $0\to I\to R\to R/I\to0$. The term $\operatorname{Tor}_1^R(M,R)$ is zero because $R$ is free, so the next Tor term injects into $M\otimes_RI$ with image exactly the displayed kernel. Symmetry of tensor identifies this with $I\otimes_RM$, and the construction is natural in both the ideal inclusion and the module.
 
 #### Lemma. A reformulation of the local algebraic condition
 
-Let $R$ be a ring. Let $I \subset R$ be an ideal. Let $M$ be an $R$-module. If $M/IM$ is flat over $R/I$ and $\text{Tor}_1^R(R/I, M) = 0$ then
+Let $I$ be any ideal of $R$ and let $M$ be any $R$-module. Suppose $M/IM$ is flat over $R/I$ and $\operatorname{Tor}_1^R(R/I,M)=0$. Then:
 
-1.  $M/I^nM$ is flat over $R/I^n$ for all $n \geq 1$, and
+1. The module $M/I^nM$ is flat over $R/I^n$ for every $n\geq1$.
+2. If $I^mN=0$ for some $m\geq0$, then $\operatorname{Tor}_1^R(N,M)=0$.
 
-2.  for any module $N$ which is annihilated by $I^m$ for some $m \geq 0$ we have $\text{Tor}_1^R(N, M) = 0$.
+In particular, a nilpotent $I$ makes $M$ flat over $R$.
 
-In particular, if $I$ is nilpotent, then $M$ is flat over $R$.
+**Proof.** First take a module $N$ killed by $I$, and choose a free presentation over $R/I$ with an arbitrary basis set $E$:
 
-**Proof.** Assume $M/IM$ is flat over $R/I$ and $\text{Tor}_1^R(R/I, M) = 0$. Let $N$ be an $R/I$-module. Choose a set $\Lambda$ and a short exact sequence $$0 \to K \to \bigoplus\nolimits_{\lambda \in \Lambda} R/I \to N \to 0$$ By the long exact sequence of $\text{Tor}$ and the vanishing of $\text{Tor}_1^R(R/I, M)$ we get $$0 \to \text{Tor}_1^R(N, M) \to K \otimes_R M \to
-(\bigoplus\nolimits_{\lambda \in \Lambda} R/I) \otimes_R M \to N \otimes_R M \to 0$$ But since $K$, $\bigoplus_{\lambda \in \Lambda} R/I$, and $N$ are all annihilated by $I$ we see that $$\begin{aligned}
-K \otimes_R M & = K \otimes_{R/I} M/IM, \\
-(\bigoplus\nolimits_{\lambda \in \Lambda} R/I) \otimes_R M & =
-(\bigoplus\nolimits_{\lambda \in \Lambda} R/I) \otimes_{R/I} M/IM, \\
-N \otimes_R M & = N \otimes_{R/I} M/IM.
-\end{aligned}$$ As $M/IM$ is flat over $R/I$ we conclude that $$0 \to K \otimes_{R/I} M/IM \to
-(\bigoplus\nolimits_{\lambda \in \Lambda} R/I) \otimes_{R/I} M/IM \to
-N \otimes_{R/I} M/IM \to 0$$ is exact. Combining this with the above we conclude that $\text{Tor}_1^R(N, M) = 0$ for any $R$-module $N$ annihilated by $I$.
+$$0\longrightarrow Q\longrightarrow(R/I)^{(E)}\longrightarrow N\longrightarrow0.$$
 
-Let us prove (2) by induction on $m$. The case $m = 1$ was done in the previous paragraph. For $N$ annihilated by $I^m$ for $m > 1$ we may choose an exact sequence $0 \to N' \to N \to N'' \to 0$ with $N'$ and $N''$ annihilated by $I^{m - 1}$. For example one can take $N' = IN$ and $N'' = N/IN$. Then the exact sequence $$\text{Tor}_1^R(N', M) \to
-\text{Tor}_1^R(N, M) \to
-\text{Tor}_1^R(N'', M)$$ and induction prove the vanishing we want.
+Tor commutes with direct sums in this argument, as is seen by taking the direct sum of free resolutions. The assumed Tor vanishing therefore gives an injection
 
-Finally, we prove (1). Given $n \geq 1$ we have to show that $M/I^nM$ is flat over $R/I^n$. In other words, we have to show that the functor $N \mapsto N \otimes_{R/I^n} M/I^nM$ is exact on the category of $R$-modules $N$ annihilated by $I^n$. However, for such $N$ we have $N \otimes_{R/I^n} M/I^nM = N \otimes_R M$. By the vanishing of $\text{Tor}_1$ in (2) we see that the functor $N \mapsto N \otimes_R M$ is exact on the category of $N$ annihilated by some power of $I$ and we conclude. $\square$
+$$\operatorname{Tor}_1^R(N,M)\longrightarrow Q\otimes_R M$$
+
+whose image is the kernel of $Q\otimes_R M\to(R/I)^{(E)}\otimes_R M$. Both modules before tensoring are annihilated by $I$, so this map is their tensor product over $R/I$ with $M/IM$. Flatness over $R/I$ makes it injective. Hence $\operatorname{Tor}_1^R(N,M)=0$.
+
+Induct on $m$ for (2). For $m=0$, the hypothesis says $N=0$, and the case $m=1$ was just proved. For $m>1$, use
+
+$$0\longrightarrow IN\longrightarrow N\longrightarrow N/IN\longrightarrow0.$$
+
+Here $I^{m-1}(IN)=0$, while $N/IN$ is killed by $I$. The two outside terms of
+
+$$\operatorname{Tor}_1^R(IN,M)\longrightarrow\operatorname{Tor}_1^R(N,M)
+\longrightarrow\operatorname{Tor}_1^R(N/IN,M)$$
+
+vanish by induction, proving (2).
+
+For (1), consider an injection of $R/I^n$-modules. Its cokernel is killed by $I^n$, so (2) shows that tensoring this injection over $R$ with $M$ remains injective. For any such module $N$ there is a canonical equality
+
+$$N\otimes_R M\simeq N\otimes_{R/I^n}(M/I^nM).$$
+
+Thus the latter tensor functor preserves injections and is exact, proving flatness over $R/I^n$. If $I$ is nilpotent, choose $n$ with $I^n=0$ and apply (1). No Noetherian or finite-generation hypotheses enter this proof. ∎
 
 #### Lemma. Criteria for integral extensions
 
@@ -3919,168 +3989,241 @@ H^n(F^\bullet) \to H^n(K^\bullet) \to H^n(C^\bullet) \to \ldots$$ shows that $H^
 H^n(F^\bullet) \cong H^n(K^\bullet) \to H^n(C^\bullet) \to \ldots$$ In other words, we see that the cokernel of $H^{n - 1}(F^\bullet) \to
 H^{n - 1}(K^\bullet)$ is a finite $R$-module, say generated by the classes of $\xi_1, \ldots, \xi_r \in \operatorname{Ker}(K^{n - 1} \to K^n)$. Then we replace $F^{n - 1}$ by $F^{n - 1} \oplus R^{\oplus r}$ where the basis elements in the free summand map to zero in $F^n$ and to $\xi_i$ in $K^{n - 1}$. This finishes the proof of the induction step. $\square$
 
-#### Lemma. Lifting projective, locally free modules and derived categories
- Let $R$ be a ring. Let $I \subset R$ be an ideal. Let $E^\bullet$ be a complex of $R/I$-modules. Let $K$ be an object of $D(R)$. Assume that
+#### Lemma. Lifting a projective complex through a nilpotent ideal
 
-1.  $E^\bullet$ is a bounded above complex of projective $R/I$-modules,
+Let $I\subset R$ be nilpotent. Given $K\in D(R)$ and a bounded above complex $E$ of projective $R/I$-modules representing $K\otimes_R^{\mathbf L}R/I$, one can represent $K$ by a bounded above projective complex $P$ with a chain isomorphism $P/IP\cong E$. The isomorphism may realize a specified identification in the derived category.
 
-2.  $K \otimes_R^\mathbf{L} R/I$ is represented by $E^\bullet$ in $D(R/I)$, and
+**Proof.** Use the next lemma with the class of all projective $R$-modules. This class is closed under finite sums and split complements. If a map becomes surjective modulo $I$, its cokernel $C$ satisfies $C=IC=I^NC=0$ for $I^N=0$, without any finite generation assumption.
 
-3.  $I$ is a nilpotent ideal.
+Projectives of arbitrary rank lift through $I$. Indeed, write one as the image of an idempotent $\bar e$ on a free $R/I$-module. Lift the free module and then lift $\bar e$ by lifting the images of its basis vectors, obtaining an endomorphism $e$ of a free $R$-module $F$. The defect $e^2-e$ maps $F$ into $IF$, so its $N$th power vanishes. The replacement $e\mapsto3e^2-2e^3$ satisfies
+$$ (3e^2-2e^3)^2-(3e^2-2e^3)
+=(e^2-e)^2(4e^2-4e-3). $$
+After finitely many repetitions the defect is zero. All factors commute because they are polynomials in $e$; the argument also applies to infinite free modules. The image of the resulting idempotent is projective and has the prescribed reduction.
 
-Then there exists a bounded above complex $P^\bullet$ of projective $R$-modules representing $K$ in $D(R)$ such that $P^\bullet \otimes_R R/I$ is isomorphic to $E^\bullet$.
+It remains to obtain a bounded above projective model for $K$. If $E$ vanishes above $b$, the [nilpotent filtration argument](#native-more-algebra-lemma-check-tor-dimension-modulo-nilpotent), with the one-sided bound $(-\infty,b]$, shows $K\in D^{\leq b}(R)$. Such an object has a bounded above free resolution: start with a free module mapping onto its highest cohomology and continue downward, killing the successive cohomology of the comparison cone by free covers. No finiteness is asserted in this construction. This verifies the final hypothesis of the general lifting lemma and proves the claim. $\square$
 
-**Proof.** We apply Lemma [Lifting derived categories](#native-more-algebra-lemma-lift-complex) using the class $\mathcal{P}$ of all projective $R$-modules. Properties (1) and (2) of the lemma are immediate. Property (3) follows from Nakayama's lemma (Algebra, Lemma [Nakayama's lemma](#native-algebra-lemma-nak)). Property (4) follows from the fact that we can lift projective $R/I$-modules to projective $R$-modules, see Algebra, Lemma [Lifting a finite projective module](#native-algebra-lemma-lift-projective-module). To see that (5) holds it suffices to show that $K$ is in $D^{-}(R)$. Since we are given that $K \otimes_R^\mathbf{L} R/I$ is in $D^{-}(R/I)$ because $E^\bullet$ is bounded above, this follows from Lemma [Derived tensor products, Tor amplitude and dimension and codimension](#native-more-algebra-lemma-check-tor-dimension-modulo-nilpotent). $\square$
+#### Lemma. Lifting complexes in a class of projectives
 
-#### Lemma. Lifting derived categories
- Let $R$ be a ring. Let $I \subset R$ be an ideal. Let $\mathcal{P}$ be a class of $R$-modules. Let $K \in D(R)$ and let $E^\bullet$ be a complex of $R/I$-modules representing $K \otimes_R^\mathbf{L} R/I$. Assume
+Fix an ideal $I\subset R$ and a class $\mathcal P$ of $R$-modules with these properties:
 
-1.  each $P \in \mathcal{P}$ is a projective $R$-module,
+1. Every member of $\mathcal P$ is projective.
+2. If $P_1\in\mathcal P$, then $P_1\oplus P_2\in\mathcal P$ exactly when $P_2\in\mathcal P$. In particular the class is closed under finite sums and under split complements whose other summand belongs to the class.
+3. A map between members of $\mathcal P$ is surjective whenever its reduction modulo $I$ is surjective.
 
-2.  $P_1 \in \mathcal{P}$ and $P_1 \oplus P_2 \in \mathcal{P}$ if and only if $P_1, P_2 \in \mathcal{P}$,
+Suppose $K\in D(R)$ has a bounded above model with terms in $\mathcal P$, and $E$ is a bounded above model for $K\otimes_R^{\mathbf L}R/I$ whose terms are reductions of modules in $\mathcal P$. Then $K$ has a bounded above model $P$ with terms in $\mathcal P$ and $P/IP\cong E$ as complexes. A prescribed derived identification can be retained.
 
-3.  if $f : P_1 \to P_2$, $P_1, P_2 \in \mathcal{P}$ is surjective modulo $I$, then $f$ is surjective,
+**Proof.** We first prove the split-injection assertion needed in the construction. Suppose $f:P_1\to P_2$ reduces to a split injection with cokernel $P_3/IP_3$, all three modules belonging to $\mathcal P$. Projectivity of $P_2$ lifts the reduced quotient map to $g:P_2\to P_3$. Property 3 makes $g$ surjective, so choose a splitting $P_2=Q\oplus P_3$. Property 2 gives $Q\in\mathcal P$. Although $gf$ need not vanish, the composite $h:P_1\to P_2\to Q$ reduces to an isomorphism. It is surjective by property 3 and splits, giving $P_1=T\oplus Q$ with $T\in\mathcal P$. Reduction gives $T/IT=0$. Since $0\in\mathcal P$, property 3 applied to $0\to T$ forces $T=0$. Thus $h$ is invertible and $h^{-1}\operatorname{pr}_Q$ is a retraction of $f$. Its split complement lies in $\mathcal P$ by property 2.
 
-4.  $E^\bullet$ is bounded above and $E^i$ is of the form $P/IP$ for $P \in \mathcal{P}$, and
+Now choose a bounded above $\mathcal P$-model $Q$ of $K$. The terms of $E$ are projective over $R/I$, so the given derived isomorphism is represented by a quasi-isomorphism $\delta:E\to Q/IQ$. Form
+$$ C=\operatorname{Cone}(\delta),\qquad
+C^j=(Q^j/IQ^j)\oplus E^{j+1},\qquad
+d_C(q,e)=(d_Qq+\delta e,-d_Ee). $$
+This complex is acyclic. Its terms are reductions of modules in $\mathcal P$. The [acyclic lifting lemma](#native-more-algebra-lemma-lift-acyclic-complex) gives a bounded above acyclic lift $B$ with terms in $\mathcal P$ and $B/IB=C$.
 
-5.  $K$ can be represented by a bounded above complex whose terms are in $\mathcal{P}$.
+The inclusion $Q/IQ\to C$ lifts to a chain map $v:Q\to B$. Here is the chain-map lifting argument. The surjection $B\to C$ has acyclic kernel $L$, since both complexes are acyclic. Starting in the highest degree of $Q$, choose lifts of the component maps. At each next degree, the failure of the chain-map equation is a map into $Z^{j+1}(L)$. Acyclicity gives a surjection $L^j\to Z^{j+1}(L)$; projectivity of $Q^j$ lifts this failure, and subtracting that lift corrects the component. Downward induction constructs $v$.
 
-Then there exists a bounded above complex $P^\bullet$ whose terms are in $\mathcal{P}$ with $P^\bullet/IP^\bullet$ isomorphic to $E^\bullet$ and representing $K$ in $D(R)$.
+Modulo $I$, each $v^j$ is the split inclusion into $(Q^j/IQ^j)\oplus E^{j+1}$. The split-injection assertion therefore applies in every degree. Put $D=\operatorname{coker}(v)$ and $P=D[-1]$. Its terms belong to $\mathcal P$, it is bounded above, and reduction of the degreewise split sequence gives $P/IP=E$. The connecting morphism of $0\to Q\to B\to D\to0$ identifies $P$ with $Q$ in the derived category because $B$ is acyclic. Reducing this connecting morphism gives $\delta$, with the usual cone and shift signs; equivalently choose the common connecting sign so that the triangle is $E\xrightarrow{\delta}Q/IQ\to C\to E[1]$. Thus it realizes the originally prescribed identification. $\square$
 
-**Proof.** By assumption (5) we can represent $K$ by a bounded above complex $K^\bullet$ whose terms are in $\mathcal{P}$. Then $K \otimes_R^\mathbf{L} R/I$ is represented by $K^\bullet/IK^\bullet$. Since $E^\bullet$ is a bounded above complex of projective $R/I$-modules by (4), we can choose a quasi-isomorphism $\delta : E^\bullet \to K^\bullet/IK^\bullet$ (Derived Categories, Lemma [Derived Hom, Ext and projective and locally free modules](#native-derived-lemma-morphisms-from-projective-complex)). Let $C^\bullet$ be cone on $\delta$ (Derived Categories, Definition [The cone of a complex morphism](#native-derived-definition-cone)). The module $C^i$ is the direct sum $K^i/IK^i \oplus E^{i + 1}$ hence is of the form $P/IP$ for some $P \in \mathcal{P}$ as (2) says in particular that $\mathcal{P}$ is preserved under taking sums. Since $C^\bullet$ is acyclic, we can apply Lemma [Lifting derived categories](#native-more-algebra-lemma-lift-acyclic-complex) and find a acyclic lift $A^\bullet$ of $C^\bullet$. The complex $A^\bullet$ is bounded above and has terms in $\mathcal{P}$. In $$\begin{gathered}\begin{matrix}K^\bullet & A^\bullet \\ K^\bullet/IK^\bullet & C^\bullet & E^\bullet[1]\end{matrix} \\[6pt] \begin{aligned}K^\bullet & \cdots\!\!\rightarrow A^\bullet \\ K^\bullet & \longrightarrow K^\bullet/IK^\bullet \\ A^\bullet & \longrightarrow C^\bullet \\ K^\bullet/IK^\bullet & \longrightarrow C^\bullet \\ C^\bullet & \longrightarrow E^\bullet[1]\end{aligned}\end{gathered}$$ we can find the dotted arrow making the diagram commute by Derived Categories, Lemma [Projective and locally free modules](#native-derived-lemma-morphisms-lift-projective). We will show below that it follows from (1), (2), (3) that $K^i \to A^i$ is the inclusion of a direct summand for every $i$. By property (2) we see that $P^i = \operatorname{Coker}(K^i \to A^i)$ is in $\mathcal{P}$. Thus we can take $P^\bullet = \operatorname{Coker}(K^\bullet \to A^\bullet)[-1]$ to conclude.
+#### Lemma. Stable freeness in a split exact sequence
 
-To finish the proof we have to show the following: Let $f : P_1 \to P_2$, $P_1, P_2 \in \mathcal{P}$ and $P_1/IP_1 \to P_2/IP_2$ is split injective with cokernel of the form $P_3/IP_3$ for some $P_3 \in \mathcal{P}$, then $f$ is split injective. Write $E_i = P_i/IP_i$. Then $E_2 = E_1 \oplus E_3$. Since $P_2$ is projective we can choose a map $g : P_2 \to P_3$ lifting the map $E_2 \to E_3$. By condition (3) the map $g$ is surjective, hence split as $P_3$ is projective. Set $P_1' = \operatorname{Ker}(g)$ and choose a splitting $P_2 = P'_1 \oplus P_3$. Then $P'_1 \in \mathcal{P}$ by (2). We do not know that $g \circ f = 0$, but we can consider the map $$P_1 \xrightarrow{f} P_2 \xrightarrow{projection} P'_1$$ The composition modulo $I$ is an isomorphism. Since $P'_1$ is projective we can split $P_1 = T \oplus P'_1$. If $T = 0$, then we are done, because then $P_2 \to P'_1$ is a splitting of $f$. We see that $T \in \mathcal{P}$ by (2). Calculating modulo $I$ we see that $T/IT = 0$. Since $0 \in \mathcal{P}$ (as the summand of any $P$ in $\mathcal{P}$) we see the map $0 \to T$ is surjective and we conclude that $T = 0$ as desired. $\square$
+In a short exact sequence $0\to U\to V\to W\to0$ of finite projective modules, stable freeness of any two terms implies stable freeness of the remaining term.
 
-#### Lemma. Projective and locally free modules
+**Proof.** Split the sequence, so $V\cong U\oplus W$. If $U\oplus R^r$ and $W\oplus R^s$ are free, their direct sum proves that $V$ is stably free. If $U$ and $V$ are stably free, choose $r,s$ so that $U\oplus R^r$ and $V\oplus R^s$ are free. Then
+$$W\oplus(U\oplus R^r)\oplus R^s
+\cong(V\oplus R^s)\oplus R^r$$
+exhibits stable freeness of $W$, because the summand added to $W$ is finite free. Interchanging $U$ and $W$ proves the third case. $\square$
 
-Let $R$ be a ring. Let $0 \to P' \to P \to P'' \to 0$ be a short exact sequence of finite projective $R$-modules. If $2$ out of $3$ of these modules are stably free, then so is the third.
+#### Lemma. Lifting a finite stably free module
 
-**Proof.** Since the modules are projective, the sequence is split. Thus we can choose an isomorphism $P = P' \oplus P''$. If $P' \oplus R^{\oplus n}$ and $P'' \oplus R^{\oplus m}$ are free, then we see that $P \oplus R^{\oplus n + m}$ is free. Suppose that $P'$ and $P$ are stably free, say $P \oplus R^{\oplus n}$ is free and $P' \oplus R^{\oplus m}$ is free. Then $$P'' \oplus (P' \oplus R^{\oplus m}) \oplus R^{\oplus n} =
-(P'' \oplus P') \oplus R^{\oplus m} \oplus R^{\oplus n} =
-(P \oplus R^{\oplus n}) \oplus R^{\oplus m}$$ is free. Thus $P''$ is stably free. By symmetry we get the last of the three cases. $\square$
+For $I\subset\operatorname{Jac}(R)$, every finite stably free $R/I$-module $E$ is the reduction of a finite stably free $R$-module.
 
-#### Lemma. Lifting projective and locally free modules
- Let $R$ be a ring. Let $I \subset R$ be an ideal. Assume that every element of $1 + I$ is a unit (in other words $I$ is contained in the Jacobson radical of $R$). For every finite stably free $R/I$-module $E$ there exists a finite stably free $R$-module $M$ such that $M/IM \cong E$.
+**Proof.** Choose an isomorphism $E\oplus(R/I)^r\cong(R/I)^s$. Lift the projection onto $(R/I)^r$ and its section to matrices $q:R^s\to R^r$ and $j:R^r\to R^s$. The determinant of $qj$ belongs to $1+I$, hence is invertible. Replacing $j$ by $j(qj)^{-1}$ makes it a section of $q$. Therefore
+$$R^s\cong\ker(q)\oplus R^r.$$
+This split decomposition remains exact after reduction; its first summand reduces to $E$. Thus $\ker(q)$ is the desired finite stably free lift. $\square$
 
-**Proof.** Choose a $n$ and $m$ and an isomorphism $E \oplus (R/I)^{\oplus n} \cong (R/I)^{\oplus m}$. Choose $R$-linear maps $\varphi : R^{\oplus m} \to R^{\oplus n}$ and $\psi : R^{\oplus n} \to R^{\oplus m}$ lifting the projection $(R/I)^{\oplus m} \to (R/I)^{\oplus n}$ and injection $(R/I)^{\oplus n} \to (R/I)^{\oplus m}$. Then $\varphi \circ \psi : R^{\oplus n} \to R^{\oplus n}$ reduces to the identity modulo $I$. Thus the determinant of this map is invertible by our assumption on $I$. Hence $P = \operatorname{Ker}(\varphi)$ is stably free and lifts $E$. $\square$
+#### Definition. Pseudo-coherence conventions
 
-#### Definition. Pseudo-coherent complexes
- Let $R$ be a ring. Denote $D(R)$ its derived category. Let $m \in \mathbf{Z}$.
+For an integer $m$ and $K\in D(R)$, the term *$m$-pseudo-coherent* means that a bounded finite free complex $F$ admits a morphism $F\to K$ which induces bijections on cohomology in degrees greater than $m$ and a surjection in degree $m$.
 
-1.  An object $K^\bullet$ of $D(R)$ is *$m$-pseudo-coherent* if there exists a bounded complex $E^\bullet$ of finite free $R$-modules and a morphism $\alpha : E^\bullet \to K^\bullet$ such that $H^i(\alpha)$ is an isomorphism for $i > m$ and $H^m(\alpha)$ is surjective.
+We call $K$ *pseudo-coherent* when it admits a finite free model bounded above; the model need not be bounded below. For a module $M$, the phrases *$m$-pseudo-coherent* and *pseudo-coherent* apply these respective definitions to $M[0]$. This meaning of a pseudo-coherent module differs from the convention in Bourbaki-CA.
 
-2.  An object $K^\bullet$ of $D(R)$ is *pseudo-coherent* if it is quasi-isomorphic to a bounded above complex of finite free $R$-modules.
+#### Lemma. Derived limits of modules over a ring tower
 
-3.  An $R$-module $M$ is called *$m$-pseudo-coherent* if $M[0]$ is an $m$-pseudo-coherent object of $D(R)$.
+Let $(A_n)$ be a countable inverse system of rings and $A=\varprojlim A_n$. A module system consists of $A_n$-modules $M_n$ and compatible transition maps $f_{n+1}:M_{n+1}\to M_n$. On the category $\mathcal T=\textit{Mod}(\mathbf N,(A_n))$, the inverse-limit functor has an unbounded right derived functor
+$$R\varprojlim:D(\mathcal T)\longrightarrow D(A).$$
+Its following properties hold.
 
-4.  An $R$-module $M$ is called *pseudo-coherent*[^1] if $M[0]$ is a pseudo-coherent object of $D(R)$.
+1. For a module system, $R^p\varprojlim M_n=0$ when $p>1$.
+2. Its derived limit is computed by the two-term complex, in degrees $0,1$,
+$$\prod_{n\geq1}M_n\xrightarrow{\Delta}\prod_{n\geq1}M_n,
+\qquad \Delta(x)_n=x_n-f_{n+1}(x_{n+1}).$$
+3. A Mittag-Leffler system has $R^1\varprojlim M_n=0$.
+4. Every complex of module systems is quasi-isomorphic to a complex of systems acyclic for the inverse-limit functor.
+5. For such a complex, its ordinary degreewise inverse limit represents its derived inverse limit.
 
-#### Lemma. Modules
+**Proof.** The [abelian-group calculation](#native-more-algebra-lemma-compute-rlim) below gives a full two-column construction. It works in the present category as follows. For a system $M$, form
+$$B(M)_n=\bigoplus_{j=1}^nM_j,\qquad C(M)_n=\bigoplus_{j=1}^{n-1}M_j,$$
+where $A_n$ acts on $M_j$ through $A_n\to A_j$ and the transitions discard the last summand. Send $M_n$ to the tuple of its images in all the $M_j$. The difference map $B(M)_n\to C(M)_n$ has components $x_j-f_{j+1}(x_{j+1})$. It is onto, with precisely that embedded copy of $M_n$ as kernel. Hence
+$$0\longrightarrow M\longrightarrow B(M)\longrightarrow C(M)\longrightarrow0$$
+is a functorial exact sequence in $\mathcal T$. Both $B(M)$ and $C(M)$ have surjective transitions. Their limits identify with $\prod_jM_j$, and the induced map is $\Delta$.
 
-In the situation above. The functor $\varprojlim : \textit{Mod}(\mathbf{N}, (A_n)) \to \text{Mod}_A$ has a right derived functor $$R\varprojlim :
-D(\textit{Mod}(\mathbf{N}, (A_n)))
-\longrightarrow
-D(A)$$ As usual we set $R^p\varprojlim(K) = H^p(R\varprojlim(K))$. Moreover, we have
+All these constructions are $A$-linear. Finite sums defining $B,C$ are exact, as are products of modules. The proof below shows directly that $\Delta$ is onto on Mittag-Leffler systems; this proves their acyclicity and gives a length-one acyclic resolution of every system. For an arbitrary, possibly unbounded, complex $X$, totalize $B(X)\to C(X)$. Its degree-$p$ term is $B(X^p)\oplus C(X^{p-1})$, and the augmentation from $X$ is a quasi-isomorphism. Exactness is checked in the two horizontal columns, so no infinite-diagonal convergence is needed. Each term has surjective transitions. Taking limits gives
+$$R\varprojlim X\cong
+\operatorname{Cone}\!\left(\prod_n X_n\xrightarrow{\Delta}\prod_n X_n\right)[-1].$$
+This construction preserves quasi-isomorphisms because products are exact. The acyclic-resolution argument in the next proof verifies that it is the right derived functor on the whole derived category. If every $X^p$ is already acyclic for the limit, the difference maps are onto degree by degree. Their kernel complex is $\varprojlim X_n$, and the displayed cone shifted by $-1$ is quasi-isomorphic to that kernel. This proves all five assertions, including the unbounded versions. $\square$
 
-1.  for any $(M_n)$ in $\textit{Mod}(\mathbf{N}, (A_n))$ we have $R^p\varprojlim M_n = 0$ for $p > 1$,
+#### Remark. Choices of a strict inverse system
 
-2.  the object $R\varprojlim M_n$ of $D(\text{Mod}_A)$ is represented by the complex $$\prod M_n \to \prod M_n,\quad
-    (x_n) \mapsto (x_n - f_{n + 1}(x_{n + 1}))$$ sitting in degrees $0$ and $1$,
+Suppose a system $(K_n,u_n)$ is given in the derived categories, and choose a strict complex system representing it as in [the strictification construction](#native-more-algebra-lemma-lift-to-system-complexes). The preceding calculation places its derived limit in the triangle
+$$R\varprojlim K_n\longrightarrow\prod_n K_n
+\xrightarrow{1-\mathrm{shift}}\prod_n K_n
+\longrightarrow(R\varprojlim K_n)[1].$$
+Changing the strict model leaves the morphism $1-\mathrm{shift}$ unchanged in $D(A)$ up to the given identifications. The corresponding cones are isomorphic, so the resulting limit has an isomorphism class independent of those choices. This does not assert a unique isomorphism between arbitrary choices of cones. A comparison of the triangles can be chosen to commute with the maps to the product, hence with each projection.
 
-3.  if $(M_n)$ is ML, then $R^1\varprojlim M_n = 0$, i.e., $(M_n)$ is right acyclic for $\varprojlim$,
+Since products of modules are exact, cohomology commutes with these products. The long exact sequence of the triangle identifies its adjacent kernel and cokernel with the two derived-limit groups, giving, for every integer $p$, the canonical short exact sequence
+$$0\longrightarrow R^1\varprojlim H^{p-1}(K_n)
+\longrightarrow H^p(R\varprojlim K_n)
+\longrightarrow\varprojlim H^p(K_n)\longrightarrow0.$$
+This argument may equally be applied directly to the defining triangle for a derived limit; it does not require a unique strict model.
 
-4.  every $K^\bullet \in D(\textit{Mod}(\mathbf{N}, (A_n)))$ is quasi-isomorphic to a complex whose terms are right acyclic for $\varprojlim$, and
+#### Lemma. Perfectness and finite Tor amplitude
 
-5.  if each $K^p = (K^p_n)$ is right acyclic for $\varprojlim$, i.e., of $R^1\varprojlim_n K^p_n = 0$, then $R\varprojlim K$ is represented by the complex whose term in degree $p$ is $\varprojlim_n K_n^p$.
+An object $K\in D(R)$ is perfect precisely when it is pseudo-coherent and has finite Tor dimension. If its Tor amplitude is contained in $[a,b]$, it admits a finite projective model supported in that same interval.
 
-**Proof.** The proof of this is word for word the same as the proof of Lemma [Computation of a derived inverse limit](#native-more-algebra-lemma-compute-rlim). $\square$
+**Proof.** A bounded finite projective model computes derived tensor products by ordinary tensor products, so it has finite Tor amplitude. It also gives a bounded above finite free model: in the highest degree choose a finite projective complement making that term free, add the contractible two-term identity complex on the complement in that degree and the preceding degree, and continue downward. Each degree is changed only finitely many times. This proves pseudo-coherence.
 
-#### Remark. Uniqueness in the lifting construction
+Conversely, take a bounded above finite free model $F$ for $K$. If its highest nonzero term lies above $b$, vanishing of the highest cohomology makes the preceding differential onto that projective term. Split it and remove the resulting contractible pair. Repeating finitely many times gives a bounded above model, still denoted $F$, of finite projectives with $F^i=0$ for $i>b$.
 
-With assumptions as in Lemma [Lifting derived categories](#native-more-algebra-lemma-lift-to-system-complexes). A priori there are many isomorphism classes of objects $M$ of $D(\textit{Mod}(\mathbf{N}, (A_n)))$ which give rise to the system $(K_n, \varphi_n)$ of the lemma. For each such $M$ we can consider the complex $R\varprojlim M \in D(A)$ where $A = \varprojlim A_n$. By Lemma [Modules and derived categories](#native-more-algebra-lemma-distinguished-triangle-rlim-modules) we see that $R\varprojlim M$ is a derived limit of the inverse system $(K_n)$ of $D(A)$. Hence we see that the isomorphism class of $R\varprojlim M$ in $D(A)$ is independent of the choices made in constructing $M$. In particular, we may apply results on $R\varprojlim$ proved in this section to derived limits of inverse systems in $D(A)$. For example, for every $p \in \mathbf{Z}$ there is a canonical short exact sequence $$0 \to R^1\varprojlim H^{p - 1}(K_n) \to H^p(R\varprojlim K_n) \to \varprojlim H^p(K_n) \to 0$$ because we may apply Lemma [Modules and derived categories](#native-more-algebra-lemma-distinguished-triangle-rlim-modules) to $M$. This can also been seen directly, without invoking the existence of $M$, by applying the argument of the proof of Lemma [Modules and derived categories](#native-more-algebra-lemma-distinguished-triangle-rlim-modules) to the (defining) distinguished triangle $R\varprojlim K_n \to \prod K_n \to \prod K_n \to (R\varprojlim K_n)[1]$ of the derived limit.
+Set $E=\tau_{\geq a}F$. Its degree-$a$ term is $Q=\operatorname{coker}(F^{a-1}\to F^a)$, and the other nonzero terms are finite projective. The module $Q$ is finitely presented. The lower tail of $F$ resolves $Q$, since $H^i(F)=0$ for $i<a$. For any module $N$ this resolution gives
+$$\operatorname{Tor}_1^R(Q,N)=H^{a-1}(F\otimes_R N)=0.$$
+Thus $Q$ is flat; this is the explicit last-term argument behind [the flat truncation lemma](#native-more-algebra-lemma-last-one-flat). A finitely presented flat module is finite projective by the [complete finite-projectivity criterion](artin-axioms.md#native-algebra-lemma-finite-projective). Therefore $E$ is the required model in degrees $[a,b]$. If $a>b$, the prescribed amplitude is empty and $K=0$. $\square$
 
-#### Lemma. Perfect complexes
- Let $K^\bullet$ be an object of $D(R)$. The following are equivalent
+#### Lemma. Testing perfect amplitude on residue fields
 
-1.  $K^\bullet$ is perfect, and
+Fix integers $a,b$ and a pseudo-coherent $K\in D(R)$. The following conditions are equivalent:
 
-2.  $K^\bullet$ is pseudo-coherent and has finite tor dimension.
+1. $K$ is perfect with Tor amplitude contained in $[a,b]$.
+2. For every prime $\mathfrak p$, the cohomology of $K\otimes_R^{\mathbf L}\kappa(\mathfrak p)$ vanishes outside $[a,b]$.
+3. The same vanishing holds for every maximal ideal.
 
-If (1) and (2) hold and $K^\bullet$ has tor-amplitude in $[a, b]$, then $K^\bullet$ is quasi-isomorphic to a complex $E^\bullet$ of finite projective $R$-modules with $E^i = 0$ for $i \not \in [a, b]$.
+**Proof.** Tensoring a finite projective model in $[a,b]$ proves $1\Rightarrow2$, and restricting to maximal ideals proves $2\Rightarrow3$.
 
-**Proof.** It is clear that (1) implies (2), see Lemmas [Pseudo-coherent complexes and coherent sheaves](#native-more-algebra-lemma-pseudo-coherent) and [Derived tensor products and Tor amplitude](#native-more-algebra-lemma-tor-amplitude). Assume (2) holds and that $K^\bullet$ has tor-amplitude in $[a, b]$. In particular, $H^i(K^\bullet) = 0$ for $i > b$. Choose a complex $F^\bullet$ of finite free $R$-modules with $F^i = 0$ for $i > b$ and a quasi-isomorphism $F^\bullet \to K^\bullet$ (Lemma [Pseudo-coherent complexes and coherent sheaves](#native-more-algebra-lemma-pseudo-coherent)). Set $E^\bullet = \tau_{\geq a}F^\bullet$. Note that $E^i$ is finite free except $E^a$ which is a finitely presented $R$-module. By Lemma [Flatness](#native-more-algebra-lemma-last-one-flat) $E^a$ is flat. Hence by Algebra, Lemma [Characterizations of finite projective modules](#native-algebra-lemma-finite-projective) we see that $E^a$ is finite projective. $\square$
+Assume 3. For $i\notin[a,b]$, apply [the local splitting lemma](#native-more-algebra-lemma-cut-complex-in-two) at each maximal ideal. It gives $H^i(K)_{\mathfrak m}=0$. A module all of whose maximal localizations vanish is zero: a nonzero element has a proper annihilator contained in some maximal ideal, and cannot vanish in that localization. Thus $H^i(K)=0$ for every such $i$. If $a>b$, this already gives $K=0$.
 
-#### Lemma. Perfect complexes
+For $a\leq b$, remove the finitely many acyclic top terms of a finite free model as in the preceding lemma, obtaining a bounded above finite projective model $F$ with top degree at most $b$. Put $Q=\operatorname{coker}(F^{a-1}\to F^a)$. This module is finitely presented, and its projective resolution is the lower tail of $F$. At a maximal ideal $\mathfrak m$, therefore,
+$$\operatorname{Tor}_1^{R_{\mathfrak m}}(Q_{\mathfrak m},\kappa(\mathfrak m))
+=H^{a-1}(F\otimes_R\kappa(\mathfrak m))=0.$$
+To see explicitly that $Q_{\mathfrak m}$ is free, choose lifts of a basis of its residue space. They give a surjection from a finite free module by Nakayama. The kernel is finite because $Q_{\mathfrak m}$ is finitely presented. Tensoring the exact sequence with the residue field, using the displayed Tor vanishing and the chosen basis, makes that kernel's reduction zero. Nakayama kills the kernel, proving freeness.
 
-Let $R$ be a ring. Let $a, b \in \mathbf{Z}$. Let $K^\bullet$ be a pseudo-coherent complex of $R$-modules. The following are equivalent
+Finite presentation extends this freeness to a principal neighborhood of each maximal ideal: lift the finite matrices for the isomorphism and its inverse and invert the finitely many denominators and relation errors. These neighborhoods cover $\operatorname{Spec}(R)$, since every prime lies below a maximal ideal. Thus the local splitting argument yields local perfect models with the asserted bounds. Equivalently, the [finite-projectivity criterion](artin-axioms.md#native-algebra-lemma-finite-projective) makes $Q$ globally finite projective. Consequently $\tau_{\geq a}F$ is a global finite projective model in $[a,b]$, proving 1 and giving the local-to-global step explicitly. $\square$
 
-1.  $K^\bullet$ is perfect with tor amplitude in $[a, b]$,
+#### Lemma. The relative patching adjunction
 
-2.  for every prime $\mathfrak p$ we have $H^i(K^\bullet \otimes_R^{\mathbf{L}} \kappa(\mathfrak p)) = 0$ for all $i \not \in [a, b]$, and
+In the [relative setup](#native-more-algebra-situation-relative-module-over-fibre-product), the base-change functor from $D'$-modules to compatible triples over $D\to C\leftarrow C'$ has right adjoint
+$$F(N,M',\varphi)=N\times_{\varphi,M}M',\qquad M=M'/IM'.$$
+The counit is an isomorphism: for $N'=F(N,M',\varphi)$ the canonical maps give
+$$N'\otimes_{D'}D\cong N,\qquad N'\otimes_{D'}C'\cong M'.$$
+Thus base change after patching is naturally isomorphic to the identity on the category of compatible triples.
 
-3.  for every maximal ideal $\mathfrak m$ we have $H^i(K^\bullet \otimes_R^{\mathbf{L}} \kappa(\mathfrak m)) = 0$ for all $i \not \in [a, b]$.
+**Proof.** The adjunction is the [ring-diagram adjunction](#native-more-algebra-lemma-modules), applied to the outer square $D'\to C'$, $D\to C$. For the counit, first forget the $D,C'$ actions and apply the [absolute reconstruction lemma](#native-more-algebra-lemma-module-over-fibre-product). Associativity gives
+$$N'\otimes_{D'}D=N'\otimes_{B'}B,\qquad
+N'\otimes_{D'}C'=N'\otimes_{B'}A'.$$
+The absolute counit identifies these modules with $N$ and $M'$. Its formulas are the projections of compatible pairs, so they are respectively $D$-linear and $C'$-linear and preserve the gluing isomorphism. No assertion that $D'$ itself is a fibre product is needed. $\square$
 
-**Proof.** We omit the proof of the implications (1) $\Rightarrow$ (2) $\Rightarrow$ (3). Assume (3). Let $i \in \mathbf{Z}$ with $i \not \in [a, b]$. By Lemma [Derived categories](#native-more-algebra-lemma-cut-complex-in-two) we see that the assumption implies that $H^i(K^\bullet)_{\mathfrak m} = 0$ for all maximal ideals of $R$. Hence $H^i(K^\bullet) = 0$, see Algebra, Lemma [Detecting a zero module by localization](#native-algebra-lemma-characterize-zero-local). Moreover, Lemma [Derived categories](#native-more-algebra-lemma-cut-complex-in-two) now also implies that for every maximal ideal $\mathfrak m$ there exists an element $f \in R$, $f \not \in \mathfrak m$ such that $K^\bullet \otimes_R R_f$ is perfect with tor amplitude in $[a, b]$. Hence we conclude by appealing to Lemmas [Perfect complexes](#native-more-algebra-lemma-glue-perfect) and [Derived tensor products and Tor amplitude](#native-more-algebra-lemma-glue-tor-amplitude). $\square$
+#### Lemma. The comparison map for an arbitrary module
 
-#### Lemma. Modules and tensor products and direct sums
- In Situation [Modules and tensor products and direct sums](#native-more-algebra-situation-relative-module-over-fibre-product) the functor ([the displayed identity](#native-more-algebra-equation-relative-functor)) has a right adjoint, namely the functor $$F : (N, M', \varphi) \longmapsto N \times_{\varphi, M} M'$$ where $M = M'/IM'$. Moreover, the composition of $F$ with ([the displayed identity](#native-more-algebra-equation-relative-functor)) is the identity functor on $\text{Mod}_D \times_{\text{Mod}_C} \text{Mod}_{C'}$. In other words, setting $N' = N \times_{\varphi, M} M'$ we have $N' \otimes_{D'} D = N$ and $N' \otimes_{D'} C' = M'$.
+Let $B'=B\times_A A'$ with $A'\twoheadrightarrow A$. For every $B'$-module $L'$, the adjunction unit
+$$L'\longrightarrow(L'\otimes_{B'}B)
+\times_{L'\otimes_{B'}A}(L'\otimes_{B'}A')$$
+is onto. It need not be injective.
 
-**Proof.** The adjointness statement follows from the more general Lemma [Module compatibility in a ring diagram](#native-more-algebra-lemma-modules). The final assertion follows from the corresponding assertion of Lemma [Modules and tensor products and direct sums](#native-more-algebra-lemma-module-over-fibre-product) because $N' \otimes_{D'} D = N' \otimes_{D'} D' \otimes_{B'} B = N' \otimes_{B'} B$ and $N' \otimes_{D'} C' = N' \otimes_{D'} D' \otimes_{B'} A' = N' \otimes_{B'} A'$. $\square$
+**Proof.** Write $J=\ker(B'\to B)$ and $I=\ker(A'\to A)$, so $J\cong I$ under the second projection. The first component is $L'/JL'$. Given a compatible pair, choose $l\in L'$ with the prescribed first component and subtract its image. The remaining pair has the form $(0,z)$, with $z$ in the kernel of $L'\otimes_{B'}A'\to L'\otimes_{B'}A$. Right exactness makes $z$ a finite sum of tensors $l_\nu\otimes i_\nu$, $i_\nu\in I$. If $j_\nu\in J$ corresponds to $i_\nu$, the element $\sum j_\nu l_\nu$ maps to $(0,z)$. This proves surjectivity.
 
-#### Lemma. Modules and tensor products and direct sums
- In the situation of Lemma [Modules and tensor products and direct sums](#native-more-algebra-lemma-module-over-fibre-product) for a $B'$-module $L'$ the adjunction map $$L' \longrightarrow 
-(L' \otimes_{B'} B) \times_{(L' \otimes_{B'} A)} (L' \otimes_{B'} A')$$ is surjective but in general not injective.
+For the failure of injectivity, let $k$ be a field and take
+$$B'=k[x,y]/(xy),\quad B=B'/(y),\quad A'=B'/(x),
+\quad A=B'/(x,y),\quad L'=B'/(x-y).$$
+The ring square is cartesian. The module $L'$ is $k[t]/(t^2)$, with $x$ and $y$ both represented by $t$. Tensoring with either $B$ or $A'$ gives $k$, and tensoring with $A$ also gives $k$. The comparison is therefore $k[t]/(t^2)\to k\times_k k=k$, which kills the nonzero class $t$. $\square$
 
-**Proof.** As in the proof of Lemma [Modules and tensor products and direct sums](#native-more-algebra-lemma-module-over-fibre-product) let $J \subset B'$ be the kernel of the map $B' \to B$. Then $L' \otimes_{B'} B = L'/JL'$. Hence to prove surjectivity it suffices to show that elements of the form $(0, z)$ of the fibre product are in the image of the map of the lemma. The kernel of the map $L' \otimes_{B'} A' \to L' \otimes_{B'} A$ is the image of $L' \otimes_{B'} I \to L' \otimes_{B'} A'$. Since the map $J \to I$ induced by $B' \to A'$ is an isomorphism the composition $$L' \otimes_{B'} J \to L' \to
-(L' \otimes_{B'} B) \times_{(L' \otimes_{B'} A)} (L' \otimes_{B'} A')$$ induces a surjection of $L' \otimes_{B'} J$ onto the set of elements of the form $(0, z)$. To see the map is not injective in general we present a simple example. Namely, take a field $k$, set $B' = k[x, y]/(xy)$, $A' = B'/(x)$, $B = B'/(y)$, $A = B'/(x, y)$ and $L' = B'/(x - y)$. In that case the class of $x$ in $L'$ is nonzero but is mapped to zero under the displayed arrow. $\square$
+#### Lemma. Finite generation for an absolute fibre product
 
-#### Lemma. Modules and tensor products and direct sums
+For $B'=B\times_A A'$ with $A'\twoheadrightarrow A$, let $(N,M',\varphi)$ be a compatible triple and $P=N\times_M M'$, where $M=M'/IM'$. If $N$ and $M'$ are finite over $B$ and $A'$, respectively, then $P$ is finite over $B'$.
 
-Let $A, A', B, B', I, M, M', N, \varphi$ be as in Lemma [Modules and tensor products and direct sums](#native-more-algebra-lemma-module-over-fibre-product). If $N$ finite over $B$ and $M'$ finite over $A'$, then $N' = N \times_{\varphi, M} M'$ is finite over $B'$.
+**Proof.** The [absolute reconstruction lemma](#native-more-algebra-lemma-module-over-fibre-product) gives $P/JP=N$ and $P\otimes_{B'}A'=M'$. Lift a finite generating list of $N$ to $u_1,\ldots,u_r\in P$. The images of $P$ generate $M'$ over $A'$; express a finite generating list of $M'$ in terms of such images and collect the finitely many elements $v_1,\ldots,v_s\in P$ that occur. Their second components generate $M'$.
 
-**Proof.** We will use the results of Lemma [Modules and tensor products and direct sums](#native-more-algebra-lemma-module-over-fibre-product) without further mention. Choose generators $y_1, \ldots, y_r$ of $N$ over $B$ and generators $x_1, \ldots, x_s$ of $M'$ over $A'$. Using that $N = N' \otimes_{B'} B$ and $B' \to B$ is surjective we can find $u_1, \ldots, u_r \in N'$ mapping to $y_1, \ldots, y_r$ in $N$. Using that $M' = N' \otimes_{B'} A'$ we can find $v_1, \ldots, v_t \in N'$ such that $x_i = \sum v_j \otimes a'_{ij}$ for some $a'_{ij} \in A'$. In particular we see that the images $\overline{v}_j \in M'$ of the $v_j$ generate $M'$ over $A'$. We claim that $u_1, \ldots, u_r, v_1, \ldots, v_t$ generate $N'$ as a $B'$-module. Namely, pick $\xi \in N'$. We first choose $b'_1, \ldots, b'_r \in B'$ such that $\xi$ and $\sum b'_i u_i$ map to the same element of $N$. This is possible because $B' \to B$ is surjective and $y_1, \ldots, y_r$ generate $N$ over $B$. The difference $\xi - \sum b'_i u_i$ is of the form $(0, \theta)$ for some $\theta$ in $IM'$. Say $\theta$ is $\sum t_j\overline{v}_j$ with $t_j \in I$. As $J = \operatorname{Ker}(B' \to B)$ maps isomorphically to $I$ we can choose $s_j \in J \subset B'$ mapping to $t_j$. Because $N' = N \times_{\varphi, M} M'$ it follows that $\xi = \sum b'_i u_i + \sum s_j v_j$ as desired. $\square$
+Given $p\in P$, subtract a $B'$-linear combination of the $u_i$ to kill its first component, lifting the necessary coefficients from $B$ to $B'$. The remainder is $(0,m')$ with $m'\in IM'$. Express $m'=\sum i_j\bar v_j$ with $i_j\in I$, where $\bar v_j$ is the second component of $v_j$. Lift $i_j$ along $J\cong I$ to $j_j\in J$. Then $(0,m')=\sum j_jv_j$. Hence the combined list of the $u_i$ and $v_j$ generates $P$. $\square$
 
-#### Situation. Modules and tensor products and direct sums
+#### Situation. A base change of a fibre-product square
 
-Let $A, A', B, B', I$ be as in Situation [Modules and tensor products and direct sums](#native-more-algebra-situation-module-over-fibre-product). Let $B' \to D'$ be a ring map. Set $D = D' \otimes_{B'} B$, $C' = D' \otimes_{B'} A'$, and $C = D' \otimes_{B'} A$. This leads to a big commutative diagram $$\begin{gathered}\begin{matrix}C & \phantom{X} & \phantom{X} & C' \\ \phantom{X} & A & A' \\ \phantom{X} & B & B' \\ D & \phantom{X} & \phantom{X} & D'\end{matrix} \\[6pt] \begin{aligned}C' & \longrightarrow C \\ A & \longrightarrow C \\ A' & \longrightarrow A \\ A' & \longrightarrow C' \\ B & \longrightarrow A \\ B & \longrightarrow D \\ B' & \longrightarrow B \\ B' & \longrightarrow A' \\ B' & \longrightarrow D' \\ D & \longrightarrow C \\ D' & \longrightarrow D \\ D' & \longrightarrow C'\end{aligned}\end{gathered}$$ of rings. Observe that we do **not** assume that the map $D' \to D \times_C C'$ is an isomorphism[^2]. In this situation we have the functor 
+Start with ring maps $B\to A\leftarrow A'$ with $A'\to A$ onto and kernel $I$. Put $B'=B\times_A A'$ and let $B'\to D'$ be any ring map. Define
+$$D=D'\otimes_{B'}B,\qquad C'=D'\otimes_{B'}A',
+\qquad C=D'\otimes_{B'}A.$$
+The base square and its image under tensoring with $D'$ are the commutative squares
+$$\begin{array}{ccc} B'&\longrightarrow&A'\\
+\downarrow&&\downarrow\\ B&\longrightarrow&A\end{array}
+\qquad\longrightarrow\qquad
+\begin{array}{ccc} D'&\longrightarrow&C'\\
+\downarrow&&\downarrow\\ D&\longrightarrow&C.\end{array}$$
+The comparison $D'\to D\times_C C'$ is always surjective, by [the module comparison lemma](#native-more-algebra-lemma-module-over-fibre-product-bis), but an isomorphism is not part of the assumptions. Also $C=C'\otimes_{A'}A=C'/IC'$.
 
-$$\text{Mod}_{D'} \longrightarrow
-\text{Mod}_D \times_{\text{Mod}_C} \text{Mod}_{C'},\quad
-L' \longmapsto (L' \otimes_{D'} D, L' \otimes_{D'} C', can)$$ analogous to ([Derived tensor products and Tor amplitude](#context-more-algebra-equation-functor)). Note that $L' \otimes_{D'} D = L \otimes_{D'} (D' \otimes_{B'} B) = L \otimes_{B'} B$ and similarly $L' \otimes_{D'} C' = L \otimes_{D'} (D' \otimes_{B'} A') = L \otimes_{B'} A'$ hence the diagram $$\begin{gathered}\begin{matrix}\text{Mod}_{D'} & \text{Mod}_D \times_{\text{Mod}_C} \text{Mod}_{C'} \\ \text{Mod}_{B'} & \text{Mod}_B \times_{\text{Mod}_A} \text{Mod}_{A'}\end{matrix} \\[6pt] \begin{aligned}\text{Mod}_{D'} & \longrightarrow \text{Mod}_D \times_{\text{Mod}_C} \text{Mod}_{C'} \\ \text{Mod}_{D'} & \longrightarrow \text{Mod}_{B'} \\ \text{Mod}_D \times_{\text{Mod}_C} \text{Mod}_{C'} & \longrightarrow \text{Mod}_B \times_{\text{Mod}_A} \text{Mod}_{A'} \\ \text{Mod}_{B'} & \longrightarrow \text{Mod}_B \times_{\text{Mod}_A} \text{Mod}_{A'}\end{aligned}\end{gathered}$$ is commutative. In the following we will write $(N, M', \varphi)$ for an object of $\text{Mod}_D \times_{\text{Mod}_C} \text{Mod}_{C'}$, i.e., $N$ is a $D$-module, $M'$ is an $C'$-module and $\varphi : N \otimes_B A \to M' \otimes_{A'} A$ is an isomorphism of $C$-modules. However, it is often more convenient think of $\varphi$ as a $D$-linear map $\varphi : N \to M'/IM'$ which induces an isomorphism $N \otimes_B A \to M' \otimes_{A'} A = M'/IM'$.
+Base change defines the functor
+$$\text{Mod}_{D'}\longrightarrow
+\text{Mod}_D\times_{\text{Mod}_C}\text{Mod}_{C'},\qquad
+L'\longmapsto(L'\otimes_{D'}D,L'\otimes_{D'}C',\mathrm{can}).$$
+For each $L'$, associativity identifies these two components with $L'\otimes_{B'}B$ and $L'\otimes_{B'}A'$; the common further base change is $L'\otimes_{B'}A$. Thus forgetting the extra algebra actions commutes with this functor and the corresponding base-change functor for the original square.
 
-#### Lemma. Flatness and modules
+A compatible triple consists of a $D$-module $N$, a $C'$-module $M'$, and a $C$-linear isomorphism
+$$\varphi:N\otimes_B A\xrightarrow{\sim}M'\otimes_{A'}A=M'/IM'.$$
+We also denote by $\varphi$ its composite with $N\to N\otimes_B A$. This composite is $D$-linear, and its extension of scalars to $A$ is the specified isomorphism. The module $N\times_M M'$ carries the componentwise $D'$-action.
 
-With $A, A', B, B', I$ as in Situation [Modules and tensor products and direct sums](#native-more-algebra-situation-module-over-fibre-product).
+#### Lemma. Flat modules patch across a fibre-product square
 
-1.  Let $(N, M', \varphi)$ be an object of $\text{Mod}_B \times_{\text{Mod}_A} \text{Mod}_{A'}$. If $M'$ is flat over $A'$ and $N$ is flat over $B$, then $N' = N \times_{\varphi, M} M'$ is flat over $B'$.
+Let $B'=B\times_A A'$ with $A'\twoheadrightarrow A$. If a compatible triple $(N,M',\varphi)$ has $N$ flat over $B$ and $M'$ flat over $A'$, then $P=N\times_M M'$ is flat over $B'$. Conversely, every flat $B'$-module is naturally the fibre product of its base changes to $B$ and $A'$ over their common base change to $A$. These constructions give an equivalence between flat $B'$-modules and compatible pairs of flat modules.
 
-2.  If $L'$ is a flat $B'$-module, then $L' = (L \otimes_{B'} B) \times_{(L \otimes_{B'} A)} (L \otimes_{B'} A')$.
+**Proof.** Put $R=B'$ and $J=\ker(R\to B)$, identified with $I=\ker(A'\to A)$. The [absolute reconstruction lemma](#native-more-algebra-lemma-module-over-fibre-product) gives $P/JP=N$ and $P\otimes_R A'=M'$. Since $J$ is also the $A'$-module $I$, associativity gives
+$$J\otimes_RP\cong I\otimes_{A'}M'.$$
+The latter module injects into $M'$ by flatness. The multiplication map $J\otimes_RP\to P$ is therefore injective, because its composite with $P\to M'$ is that injection. Hence [the quotient Tor formula](#native-algebra-remark-tor-ring-mod-ideal) gives $\operatorname{Tor}_1^R(R/J,P)=0$. Together with flatness of $P/JP$ over $R/J=B$, [the quotient-flatness lemma](#native-algebra-lemma-what-does-it-mean) implies
+$$\operatorname{Tor}_1^R(T,P)=0\quad\text{for every }T\text{ annihilated by }J.$$
 
-3.  The category of flat $B'$-modules is equivalent to the full subcategory of $\text{Mod}_B \times_{\text{Mod}_A} \text{Mod}_{A'}$ consisting of triples $(N, M', \varphi)$ with $N$ flat over $B$ and $M'$ flat over $A'$.
+We check [the ideal criterion for flatness](#native-algebra-lemma-flat). Let $\mathfrak b\subset R$ and suppose an element of $\mathfrak b\otimes_RP$ maps to zero in $P$. The module $\mathfrak b/(\mathfrak b\cap J)$ embeds as an ideal of $B$. Tensoring this embedding with the flat $B$-module $N$ shows that our element maps to zero in $(\mathfrak b/(\mathfrak b\cap J))\otimes_RP$. Right exactness therefore lifts it from $(\mathfrak b\cap J)\otimes_RP$. It suffices to prove injectivity for ideals contained in $J$.
 
-**Proof.** In the proof we will use Lemma [Modules and tensor products and direct sums](#native-more-algebra-lemma-module-over-fibre-product) without further mention.
+Suppose now $\mathfrak b\subset J$. Inside $J=I$, let $\widetilde{\mathfrak b}=A'\mathfrak b$ be its $A'$-span. It is again an ideal of $R$, and $J(\widetilde{\mathfrak b}/\mathfrak b)=0$: a product $j(a'b)$ equals $(ja')b$, with $ja'\in I=J\subset R$ and $b\in\mathfrak b$. The displayed Tor vanishing applied to this quotient shows that
+$$\mathfrak b\otimes_RP\longrightarrow\widetilde{\mathfrak b}\otimes_RP$$
+is injective. On the other hand,
+$$\widetilde{\mathfrak b}\otimes_RP
+\cong\widetilde{\mathfrak b}\otimes_{A'}M'\longrightarrow M'$$
+is injective because $\widetilde{\mathfrak b}$ is an ideal of $A'$ and $M'$ is flat. The composite identifies with multiplication followed by $P\to M'$. Hence $\mathfrak b\otimes_RP\to P$ is injective. This proves flatness for every ideal, with no finiteness or nilpotence assumption.
 
-Proof of (1). Set $J = \operatorname{Ker}(B' \to B)$. This is an ideal of $B'$ mapping isomorphically to $I = \operatorname{Ker}(A' \to A)$. Let $\mathfrak b' \subset B'$ be an ideal. We have to show that $\mathfrak b' \otimes_{B'} N' \to N'$ is injective, see Algebra, Lemma [Flatness](#native-algebra-lemma-flat). We know that $$\mathfrak b'/(\mathfrak b' \cap J) \otimes_{B'} N' =
-\mathfrak b'/(\mathfrak b' \cap J) \otimes_B N \to N$$ is injective as $N$ is flat over $B$. As $\mathfrak b' \cap J \to \mathfrak b' \to
-\mathfrak b'/(\mathfrak b' \cap J) \to 0$ is exact, we conclude that it suffices to show that $(\mathfrak b' \cap J) \otimes_{B'} N' \to N'$ is injective. Thus we may assume that $\mathfrak b' \subset J$. Next, since $J \to I$ is an isomorphism we have $$J \otimes_{B'} N' =
-I \otimes_{A'} A' \otimes_{B'} N' =
-I \otimes_{A'} M'$$ which maps injectively into $M'$ as $M'$ is a flat $A'$-module. Hence $J \otimes_{B'} N' \to N'$ is injective and we conclude that $\text{Tor}_1^{B'}(B'/J, N') = 0$, see Algebra, Remark [Tor for a quotient by an ideal](#native-algebra-remark-tor-ring-mod-ideal). Thus we may apply Algebra, Lemma [A reformulation of the local algebraic condition](#native-algebra-lemma-what-does-it-mean) to $N'$ over $B'$ and the ideal $J$. Going back to our ideal $\mathfrak b' \subset J$, let $\mathfrak b' \subset \mathfrak b'' \subset J$ be the smallest ideal whose image in $I$ is an $A'$-submodule of $I$. In other words, we have $\mathfrak b'' = A' \mathfrak b'$ if we view $J = I$ as $A'$-module. Then $\mathfrak b''/\mathfrak b'$ is killed by $J$ and we get a short exact sequence $$0 \to \mathfrak b' \otimes_{B'} N' \to
-\mathfrak b'' \otimes_{B'} N' \to
-\mathfrak b''/\mathfrak b' \otimes_{B'} N' \to 0$$ by the vanishing of $\text{Tor}_1^{B'}(\mathfrak b''/\mathfrak b', N')$ we get from the application of the lemma. Thus we may replace $\mathfrak b'$ by $\mathfrak b''$. In particular we may assume $\mathfrak b'$ is an $A'$-module and maps to an ideal of $A'$. Then $$\mathfrak b' \otimes_{B'} N' =
-\mathfrak b' \otimes_{A'} A' \otimes_{B'} N' =
-\mathfrak b' \otimes_{A'} M'$$ This tensor product maps injectively into $M'$ by our assumption that $M'$ is flat over $A'$. We conclude that $\mathfrak b' \otimes_{B'} N' \to N' \to M'$ is injective and hence the first map is injective as desired.
+For a flat $R$-module $L'$, tensoring $0\to R\to B\oplus A'\to A\to0$ gives its claimed reconstruction. Base changes of a flat module remain flat; the absolute counit recovers each compatible triple. Naturality of the unit and counit then gives the stated equivalence, including morphisms. $\square$
 
-Proof of (2). This follows by tensoring the short exact sequence $0 \to B' \to B \oplus A' \to A \to 0$ with $L'$ over $B'$.
+#### Lemma. Derived Hom from a bounded above projective complex
 
-Proof of (3). Immediate consequence of (1) and (2). $\square$
+Consider complexes $P^\bullet,L^\bullet$ over a ring $R$. Assume that every $P^a$ is projective and that $P^a=0$ for all sufficiently large $a$. Under these hypotheses the ordinary Hom complex computes derived Hom:
+$$R\operatorname{Hom}_R(P^\bullet,L^\bullet)
+\cong\operatorname{Hom}_R^\bullet(P^\bullet,L^\bullet)
+\quad\text{in }D(R).$$
+No finite generation of the projectives and no lower bound on either complex are required. Our conventions are
+$$\operatorname{Hom}_R^n(P,L)=\prod_{a\in\mathbf Z}
+\operatorname{Hom}_R(P^a,L^{a+n}),\qquad
+d(t)=d_Lt-(-1)^ntd_P.$$
 
-#### Lemma. Derived Hom, Ext and projective and locally free modules
+**Proof.** We first show that $\operatorname{Hom}^\bullet_R(P,C)$ is acyclic whenever $C$ is acyclic. Choose $b$ with $P^a=0$ for $a>b$. If $u:P\to C$ is a chain map, construct maps $h^a:P^a\to C^{a-1}$ downward in $a$, starting with zero above $b$, so that
+$$u^a=d_C^{a-1}h^a+h^{a+1}d_P^a.$$
+Suppose $h^{a+1}$ and the higher maps have been chosen. The chain-map equation and the already satisfied equation in degree $a+1$ give
+$$d_C^a\bigl(u^a-h^{a+1}d_P^a\bigr)=0.$$
+The displayed difference thus maps $P^a$ into $Z^a(C)$. Acyclicity makes $C^{a-1}\to Z^a(C)$ surjective, and projectivity of $P^a$ supplies the lift $h^a$. This induction requires no last degree below. It produces a homotopy from $u$ to zero on the entire complex.
 
-Let $R$ be a ring. Let $P^\bullet$ be a bounded above complex of projective $R$-modules. Let $L^\bullet$ be a complex of $R$-modules. Then $R\operatorname{Hom}_R(P^\bullet, L^\bullet)$ is represented by the complex $\operatorname{Hom}^\bullet(P^\bullet, L^\bullet)$.
+The same argument applies to every shift $C[n]$. More explicitly, a degree-$n$ cocycle $t$ in the Hom complex is a chain map $P\to C[n]$, where $d_{C[n]}=(-1)^nd_C$. A homotopy $h^a:P^a\to C^{a+n-1}$ for this chain map gives
+$$t=(-1)^nd_Ch+h d_P
+=d_{\operatorname{Hom}}\bigl((-1)^n h\bigr).$$
+Every Hom cocycle is therefore a boundary.
 
-**Proof.** By ([Sheaf cohomology and derived Hom and Ext](#context-more-algebra-equation-cohomology-hom-complex)) and Derived Categories, Lemma [Derived Hom, Ext and projective and locally free modules](#native-derived-lemma-morphisms-from-projective-complex) the cohomology groups of the complex are "correct". Hence if we choose a quasi-isomorphism $L^\bullet \to I^\bullet$ with $I^\bullet$ a K-injective complex of $R$-modules then the induced map $$\operatorname{Hom}^\bullet(P^\bullet, L^\bullet)
-\longrightarrow
-\operatorname{Hom}^\bullet(P^\bullet, I^\bullet)$$ is a quasi-isomorphism. As the right hand side is our definition of $R\operatorname{Hom}_R(P^\bullet, L^\bullet)$ we win. $\square$
+Choose a K-injective resolution $L\to J$. Its cone is acyclic. Applying $\operatorname{Hom}^\bullet_R(P,-)$ commutes with the cone construction, so the result just proved implies that
+$$\operatorname{Hom}^\bullet_R(P,L)\longrightarrow
+\operatorname{Hom}^\bullet_R(P,J)$$
+is a quasi-isomorphism. The target is a representative of $R\operatorname{Hom}_R(P,L)$, which proves the claim. The comparison is the one induced by the resolution, hence is natural in the derived category. In particular its cohomology identifies with the actual derived morphisms:
+$$H^n\operatorname{Hom}^\bullet_R(P,L)
+\cong\operatorname{Hom}_{D(R)}(P,L[n]).$$
+For completeness, degree-zero Hom cocycles are chain maps and its boundaries are null-homotopic maps. Maps into the K-injective complex $J[n]$ compute morphisms in $D(R)$, while the preceding quasi-isomorphism identifies their homotopy classes with those calculated from $L[n]$. This gives the stated identification, not merely equality of the sizes of the cohomology groups. $\square$
 
 #### Lemma. Pseudo-coherent complexes and coherent sheaves
 
@@ -4181,49 +4324,51 @@ Let $R$ be a ring. Let $K^\bullet$ be a complex of $R$-modules. Let $m \in \math
 Proof of (2). Choose a bounded complex $E^\bullet$ of finite projective $R$-modules and a map $\alpha : E^\bullet \to K^\bullet$ which induces an isomorphism on cohomology in degrees $> m$ and a surjection in degree $m$. As in the proof of (1) we can reduce to the case that $E^i = 0$ for $i > m + 1$. Then we see that $H^{m + 1}(K^\bullet) \cong
 H^{m + 1}(E^\bullet) = \operatorname{Coker}(E^m \to E^{m + 1})$ which is of finite presentation. $\square$
 
-#### Lemma. Derived tensor products, Tor amplitude and dimension and codimension
- Let $R' \to R$ be a surjective ring map whose kernel is a nilpotent ideal. Let $K' \in D(R')$ and set $K = K' \otimes_{R'}^\mathbf{L} R$. Let $a, b \in \mathbf{Z}$. Then $K$ has tor amplitude in $[a, b]$ if and only if $K'$ does.
+#### Lemma. Tor bounds across a nilpotent quotient
 
-**Proof.** One direction follows from Lemma [Pullback of derived tensor products and Tor amplitude](#native-more-algebra-lemma-pull-tor-amplitude). For the other, assume $K$ has tor amplitude in $[a, b]$ and let $M'$ be an $R'$-module. We have to show that $K' \otimes_{R'}^\mathbf{L} M'$ has nonzero cohomology only for degrees contained in the interval $[a, b]$.
+Let $R'\twoheadrightarrow R$ have kernel $I$ with $I^N=0$, and let $K=K'\otimes_{R'}^{\mathbf L}R$ for $K'\in D(R')$. For integers $a,b$, the Tor amplitude of $K'$ is contained in $[a,b]$ if and only if that of $K$ is. The same argument detects an upper Tor bound $(-\infty,b]$.
 
-Let $I = \operatorname{Ker}(R' \to R)$. Then $I^n = 0$ for some $n$. If $IM' = 0$, then we can view $M'$ as an $R$-module and argue as follows $$K' \otimes_{R'}^\mathbf{L} M' =
-K' \otimes_{R'}^\mathbf{L} (R \otimes_R^\mathbf{L} M') =
-(K' \otimes_{R'}^\mathbf{L} R) \otimes_R^\mathbf{L} M' =
-K \otimes_R^\mathbf{L} M'$$ which has nonvanishing cohomology only in the interval $[a, b]$ by assumption on $K$. If $I^{t + 1}M' = 0$, then we consider the short exact sequence $$0 \to IM' \to M' \to M'/IM' \to 0$$ By induction on $t$ we have that both $K' \otimes_{R'}^\mathbf{L} IM'$ and $K' \otimes_{R'}^\mathbf{L} M'/IM'$ have nonzero cohomology only for degrees in the interval $[a, b]$. Then the distinguished triangle $$K' \otimes_{R'}^\mathbf{L} IM' \to
-K' \otimes_{R'}^\mathbf{L} M' \to
-K' \otimes_{R'}^\mathbf{L} M'/IM' \to
-(K' \otimes_{R'}^\mathbf{L} IM')[1]$$ proves the same is true for $K' \otimes_{R'}^\mathbf{L} M'$ as desired. $\square$
+**Proof.** Base change preserves either asserted bound by associativity of derived tensor products. Conversely, assume the bound for $K$. If an $R'$-module $V$ is annihilated by $I$, then
+$$K'\otimes_{R'}^{\mathbf L}V
+\cong(K'\otimes_{R'}^{\mathbf L}R)\otimes_R^{\mathbf L}V
+\cong K\otimes_R^{\mathbf L}V,$$
+so it satisfies the bound. For an arbitrary $R'$-module $M$, use the finite filtration
+$$M\supset IM\supset I^2M\supset\cdots\supset I^NM=0.$$
+Each quotient is annihilated by $I$. The short exact sequences of the filtration become distinguished triangles after tensoring with $K'$, and their long exact cohomology sequences propagate the same bound to $M$. This proves both the finite interval and the one-sided assertion. In particular, if $K$ has a bounded above projective model ending in degree $b$, it has upper Tor bound $b$; taking $M=R'$ then gives $K'\in D^{\leq b}(R')$. $\square$
 
-#### Lemma. Lifting derived categories
- Let $R$ be a ring. Let $I \subset R$ be an ideal. Let $\mathcal{P}$ be a class of $R$-modules. Assume
+#### Lemma. Lifting an acyclic projective complex
 
-1.  each $P \in \mathcal{P}$ is a projective $R$-module,
+Let $I\subset R$. Suppose a class $\mathcal P$ consists of projective modules, is closed under taking a split complement when both the ambient module and the other summand belong to $\mathcal P$, and has the following surjectivity property: maps between members that are onto modulo $I$ are onto. Any bounded above acyclic complex $E$ whose terms are reductions of members of $\mathcal P$ has a bounded above acyclic lift with terms in $\mathcal P$.
 
-2.  if $P_1 \in \mathcal{P}$ and $P_1 \oplus P_2 \in \mathcal{P}$, then $P_2 \in \mathcal{P}$, and
+**Proof.** Choose $b$ above the nonzero terms of $E$ and work downward. The zero module belongs to $\mathcal P$ by the complement property. Start with the zero tail above $b$. Suppose the terms from degree $n$ upward have been lifted, their reduction identified with $E$, and the lifted tail is exact in degrees greater than $n$.
 
-3.  if $f : P_1 \to P_2$, $P_1, P_2 \in \mathcal{P}$ is surjective modulo $I$, then $f$ is surjective.
+Split from the top downward. Projectivity gives decompositions
+$$P^j\cong Z^j\oplus Z^{j+1},\qquad
+d^j(z,w)=(w,0),$$
+where $Z^j=\ker(d^j)$ and each $Z^j$ belongs to $\mathcal P$ by the complement property. These splittings show, in particular, that $Z^n/IZ^n$ is the cycle module of $E$ in degree $n$. Choose $Q\in\mathcal P$ with $Q/IQ\cong E^{n-1}$. Projectivity of $Q$ lifts the differential onto these cycles to a map $Q\to Z^n$. Its reduction is onto because $E$ is acyclic. The surjectivity property makes it onto over $R$ as well. Since $Z^n$ is projective, it splits; its kernel is in $\mathcal P$. Taking $P^{n-1}=Q$ extends the lifted complex and makes it exact in degree $n$.
 
-Then given any bounded above acyclic complex $E^\bullet$ whose terms are of the form $P/IP$ for $P \in \mathcal{P}$ there exists a bounded above acyclic complex $P^\bullet$ whose terms are in $\mathcal{P}$ lifting $E^\bullet$.
+Induction defines every term and differential, with no lower bound required. Each fixed degree becomes exact when the next lower term is added, so the resulting complex is acyclic and reduces to $E$ as claimed. $\square$
 
-**Proof.** Say $E^i = 0$ for $i > b$. Assume given $n$ and a morphism of complexes $$\begin{gathered}\begin{matrix}\phantom{X} & \phantom{X} & P^n & P^{n + 1} & \ldots & P^b & 0 & \ldots \\ \ldots & E^{n - 1} & E^n & E^{n + 1} & \ldots & E^b & 0 & \ldots\end{matrix} \\[6pt] \begin{aligned}P^n & \longrightarrow P^{n + 1} \\ P^n & \longrightarrow E^n \\ P^{n + 1} & \longrightarrow \ldots \\ P^{n + 1} & \longrightarrow E^{n + 1} \\ \ldots & \longrightarrow P^b \\ P^b & \longrightarrow 0 \\ P^b & \longrightarrow E^b \\ 0 & \longrightarrow \ldots \\ 0 & \longrightarrow 0 \\ \ldots & \longrightarrow E^{n - 1} \\ E^{n - 1} & \longrightarrow E^n \\ E^n & \longrightarrow E^{n + 1} \\ E^{n + 1} & \longrightarrow \ldots \\ \ldots & \longrightarrow E^b \\ E^b & \longrightarrow 0 \\ 0 & \longrightarrow \ldots\end{aligned}\end{gathered}$$ with $P^i \in \mathcal{P}$, with $P^n \to P^{n + 1} \to \ldots \to P^b$ acyclic in degrees $\geq n + 1$, and with vertical maps inducing isomorphisms $P^i/IP^i \to E^i$. In this situation one can inductively choose isomorphisms $P^i = Z^i \oplus Z^{i + 1}$ such that the maps $P^i \to P^{i + 1}$ are given by $Z^i \oplus Z^{i + 1} \to Z^{i + 1} \to Z^{i + 1} \oplus Z^{i + 2}$. By property (2) and arguing inductively we see that $Z^i \in \mathcal{P}$. Choose $P^{n - 1} \in \mathcal{P}$ and an isomorphism $P^{n - 1}/IP^{n - 1} \to E^{n - 1}$. Since $P^{n - 1}$ is projective and since $Z^n/IZ^n = \operatorname{Im}(E^{n - 1} \to E^n)$, we can lift the map $P^{n - 1} \to E^{n - 1} \to E^n$ to a map $P^{n - 1} \to Z^n$. By property (3) the map $P^{n - 1} \to Z^n$ is surjective. Thus we obtain an extension of the diagram by adding $P^{n - 1}$ and the maps just constructed to the left of $P^n$. Since a diagram of the desired form exists for $n > b$ we conclude by induction on $n$. $\square$
+#### Lemma. A two-column model for derived inverse limits
 
-#### Lemma. Computation of a derived inverse limit
+For countable systems of abelian groups, $\varprojlim:\textit{Ab}(\mathbf N)\to\textit{Ab}$ has a right derived functor on the unbounded derived category. For a system $(M_n,f_{n+1})$, its derived limit is the complex
+$$\prod_n M_n\xrightarrow{\Delta}\prod_n M_n,
+\qquad\Delta(x)_n=x_n-f_{n+1}(x_{n+1}),$$
+in degrees $0,1$. Thus its higher derived limits vanish in degrees greater than one. A Mittag-Leffler system has zero first derived limit. Moreover, every complex of systems admits a quasi-isomorphism to a complex of limit-acyclic systems, and on any such complex the derived limit is the ordinary degreewise limit.
 
-The functor $\varprojlim : \textit{Ab}(\mathbf{N}) \to \textit{Ab}$ has a right derived functor 
+**Proof.** Products of abelian groups are exact. Therefore the kernel and cokernel of $\Delta$ form a cohomological delta functor, whose degree-zero functor is $\varprojlim$ and whose other nonzero possible degree is one. We check both its effaceability and the Mittag-Leffler assertion explicitly.
 
-$$R\varprojlim : D(\textit{Ab}(\mathbf{N})) \longrightarrow D(\textit{Ab})$$ As usual we set $R^p\varprojlim(K) = H^p(R\varprojlim(K))$. Moreover, we have
+If the transitions are onto, $\Delta(x)=y$ can be solved recursively: choose $x_1$ and then lift $x_n-y_n$ to $x_{n+1}$. For a general Mittag-Leffler system, let $S_m$ be the nonempty set of tuples $(x_1,\ldots,x_m)$ satisfying the first $m-1$ equations. Fix $n$. For $m\geq n$, the possible final coordinate $x_n$ in the image of $S_m\to S_n$ is a coset of $\operatorname{im}(M_m\to M_n)$; it determines all earlier coordinates. The images are nested. Once their subgroups stabilize, the nonempty nested cosets are equal. Thus $(S_m)$ is a Mittag-Leffler system of nonempty sets.
 
-1.  for any $(A_n)$ in $\textit{Ab}(\mathbf{N})$ we have $R^p\varprojlim A_n = 0$ for $p > 1$,
+Such a countable system has a compatible element. Indeed, replace each set by the eventual image of the later sets. These eventual images are nonempty, and the transition between two consecutive eventual images is onto: represent a chosen element at a sufficiently late index where the two relevant images have both stabilized. Then choose lifts recursively. Applying this to the $S_m$ solves every equation, so $\Delta$ is onto for every Mittag-Leffler system.
 
-2.  the object $R\varprojlim A_n$ of $D(\textit{Ab})$ is represented by the complex $$\prod A_n \to \prod A_n,\quad (x_n) \mapsto (x_n - f_{n + 1}(x_{n + 1}))$$ sitting in degrees $0$ and $1$,
+Embed an arbitrary system $M$ into the system $B(M)_n=\bigoplus_{j\leq n}M_j$ by the tuple of transition images; use projection transitions on $B(M)$. Its degree-one group vanishes by the surjective case. Hence the delta functor is effaceable and computes the right derived functors of $\varprojlim$. The natural quotient system is $C(M)_n=\bigoplus_{j<n}M_j$, with quotient map given by the differences $x_j-f_{j+1}(x_{j+1})$. Both $B(M)$ and $C(M)$ are acyclic, and taking limits of this length-one resolution gives exactly $\Delta$.
 
-3.  if $(A_n)$ is ML, then $R^1\varprojlim A_n = 0$, i.e., $(A_n)$ is right acyclic for $\varprojlim$,
+For an unbounded complex $X$ of systems, the same resolution is functorial and exact in each degree. Its two-column total complex $T(X)$, with terms
+$$T(X)^p=B(X^p)\oplus C(X^{p-1}),$$
+receives a quasi-isomorphism from $X$ and consists of acyclic systems. Its limit is the difference cone shifted by $-1$. The two-column width is finite, and products are exact, so this cone construction preserves all quasi-isomorphisms, including unbounded ones.
 
-4.  every $K^\bullet \in D(\textit{Ab}(\mathbf{N}))$ is quasi-isomorphic to a complex whose terms are right acyclic for $\varprojlim$, and
-
-5.  if each $K^p = (K^p_n)$ is right acyclic for $\varprojlim$, i.e., if $R^1\varprojlim_n K^p_n = 0$, then $R\varprojlim K$ is represented by the complex whose term in degree $p$ is $\varprojlim_n K_n^p$.
-
-**Proof.** Let $(A_n)$ be an arbitrary inverse system. Let $(B_n)$ be the inverse system with $$B_n = A_n \oplus A_{n - 1} \oplus \ldots \oplus A_1$$ and transition maps given by projections. Let $A_n \to B_n$ be given by $(1, f_n, f_{n - 1} \circ f_n, \ldots, f_2 \circ \ldots \circ f_n)$ where $f_i : A_i \to A_{i - 1}$ are the transition maps. In this way we see that every inverse system is a subobject of a ML system (Homology, Section [The geometric construction](#context-homology-section-inverse-systems)). It follows from Derived Categories, Lemma [Triangulated categories (uncovered prerequisite)](#uncovered-derived-lemma-subcategory-right-acyclics) using Homology, Lemma [The geometric construction (uncovered prerequisite)](#uncovered-homology-lemma-mittag-leffler) that every ML system is right acyclic for $\varprojlim$, i.e., (3) holds. This already implies that $R\varprojlim$ is defined on $D^+(\textit{Ab}(\mathbf{N}))$, see Derived Categories, Proposition [Triangulated categories (uncovered prerequisite)](#uncovered-derived-proposition-enough-acyclics). Set $C_n = A_{n - 1} \oplus \ldots \oplus A_1$ for $n > 1$ and $C_1 = 0$ with transition maps given by projections as well. Then there is a short exact sequence of inverse systems $0 \to (A_n) \to (B_n) \to (C_n) \to 0$ where $B_n \to C_n$ is given by $(x_i) \mapsto (x_i - f_{i + 1}(x_{i + 1}))$. Since $(C_n)$ is ML as well, we conclude that (2) holds (by proposition reference above) which also implies (1). Finally, this implies by Derived Categories, Lemma [Derived categories (uncovered prerequisite)](#uncovered-derived-lemma-unbounded-right-derived) that $R\varprojlim$ is in fact defined on all of $D(\textit{Ab}(\mathbf{N}))$. In fact, the proof of Derived Categories, Lemma [Derived categories (uncovered prerequisite)](#uncovered-derived-lemma-unbounded-right-derived) proceeds by proving assertions (4) and (5). $\square$
+For completeness, the identification with the total right derived functor can also be checked on a homotopically injective resolution. Choose one with injective terms in the category of systems. An injective system is a retract of its embedding into $B(M)$, hence is limit-acyclic. The limit of this resolution is therefore quasi-isomorphic to its difference cone. The quasi-isomorphism invariance just proved identifies that cone with the one for $X$. This is the usual [unbounded derived-functor construction](#uncovered-derived-lemma-unbounded-right-derived); the finite two-column resolution here also proves the two acyclic-complex assertions directly. In particular, whenever $R^1\varprojlim X^p=0$ degreewise, the difference map is degreewise onto, and its kernel complex $\varprojlim X_n$ is quasi-isomorphic to the shifted cone. $\square$
 
 #### Lemma. Lifting derived categories
 
@@ -4262,14 +4407,25 @@ Let $R$ be a ring. Let $K^\bullet$ be a bounded above complex of flat $R$-module
 
 **Proof.** As $K^\bullet$ is a bounded above complex of flat modules we see that $K^\bullet \otimes_R M = K^\bullet \otimes_R^{\mathbf{L}} M$. Hence for every $R$-module $M$ the sequence $$K^{a - 2} \otimes_R M \to K^{a - 1} \otimes_R M \to K^a \otimes_R M$$ is exact in the middle. Since $K^{a - 2} \to K^{a - 1} \to K^a \to \operatorname{Coker}(d_K^{a - 1}) \to 0$ is a flat resolution this implies that $\text{Tor}_1^R(\operatorname{Coker}(d_K^{a - 1}), M) = 0$ for all $R$-modules $M$. This means that $\operatorname{Coker}(d_K^{a - 1})$ is flat, see Algebra, Lemma [Criteria for flatness (uncovered prerequisite)](#uncovered-algebra-lemma-characterize-flat). $\square$
 
-#### Lemma. Derived categories
- Let $R$ be a ring. Let $\mathfrak p \subset R$ be a prime ideal. Let $i \in \mathbf{Z}$. Let $K^\bullet$ be a pseudo-coherent complex of $R$-modules such that $H^i(K^\bullet \otimes_R^{\mathbf{L}} \kappa(\mathfrak p)) = 0$. Then there exists an $f \in R$, $f \not \in \mathfrak p$ and a canonical direct sum decomposition $$K^\bullet \otimes_R R_f =
-\tau_{\geq i + 1}(K^\bullet \otimes_R R_f) \oplus
-\tau_{\leq i - 1}(K^\bullet \otimes_R R_f)$$ in $D(R_f)$ with $\tau_{\geq i + 1}(K^\bullet \otimes_R R_f)$ a perfect complex with tor-amplitude in $[i + 1, \infty]$.
+#### Lemma. Splitting a pseudo-coherent complex at a vanishing fibre degree
 
-**Proof.** This is an often used special case of Lemma [Derived categories](#native-more-algebra-lemma-better-cut-complex-in-two). A direct proof is as follows. We may assume that $K^\bullet$ is a bounded above complex of finite free $R$-modules. Let us inspect what is happening in degree $i$: $$\ldots \to K^{i - 2} \to R^{\oplus l}
-\to R^{\oplus m} \to R^{\oplus n} \to K^{i + 2} \to \ldots$$ Let $A$ be the $m \times l$ matrix corresponding to $K^{i - 1} \to K^i$ and let $B$ be the $n \times m$ matrix corresponding to $K^i \to K^{i + 1}$. The assumption is that $A \bmod \mathfrak p$ has rank $r$ and that $B \bmod \mathfrak p$ has rank $m - r$. In other words, there is some $r \times r$ minor $a$ of $A$ which is not in $\mathfrak p$ and there is some $(m - r) \times (m - r)$-minor $b$ of $B$ which is not in $\mathfrak p$. Set $f = ab$. Then after inverting $f$ we can find direct sum decompositions $K^{i - 1} = R^{\oplus l - r} \oplus R^{\oplus r}$, $K^i = R^{\oplus r} \oplus R^{\oplus m - r}$, $K^{i + 1} = R^{\oplus m - r} \oplus R^{\oplus n - m + r}$ such that the module map $K^{i - 1} \to K^i$ kills of $R^{\oplus l - r}$ and induces an isomorphism of $R^{\oplus r}$ onto the corresponding summand of $K^i$ and such that the module map $K^i \to K^{i + 1}$ kills of $R^{\oplus r}$ and induces an isomorphism of $R^{\oplus m - r}$ onto the corresponding summand of $K^{i + 1}$. Thus $K^\bullet$ becomes quasi-isomorphic to $$\ldots \to K^{i - 2} \to R^{\oplus l - r}
-\to 0 \to R^{\oplus n - m + r} \to K^{i + 2} \to \ldots$$ and everything is clear. $\square$
+Let $K\in D(R)$ be pseudo-coherent, let $\mathfrak p\in\operatorname{Spec}(R)$, and suppose $H^i(K\otimes_R^{\mathbf L}\kappa(\mathfrak p))=0$. There is $f\notin\mathfrak p$ such that, for $K_f=K\otimes_RR_f$, the truncation maps give a canonical splitting
+$$K_f\cong\tau_{\geq i+1}K_f\oplus\tau_{\leq i-1}K_f.$$
+The upper summand is perfect and has Tor amplitude contained in $[i+1,\infty)$.
+
+**Proof.** This is the one-degree case of [the more general cutting lemma](#native-more-algebra-lemma-better-cut-complex-in-two); we give the direct matrix proof. Choose a bounded above finite free model $F$. Around degree $i$ its differentials are
+$$R^l\xrightarrow{U}R^m\xrightarrow{V}R^n,\qquad VU=0.$$
+Over $\kappa(\mathfrak p)$ let $r=\operatorname{rank}(U)$. Fibre exactness gives $\operatorname{rank}(V)=m-r$. Invert an $r$-minor of $U$ nonzero at $\mathfrak p$; a zero-size minor means $1$. Row and column operations then make
+$$U=\begin{pmatrix}1_r&0\\0&U_0\end{pmatrix}.$$
+The relation $VU=0$ makes the first $r$ columns of $V$ zero. Its remaining columns have rank $m-r$ at $\mathfrak p$. Invert a corresponding maximal minor, and perform row operations to make that remaining matrix $\binom{1_{m-r}}0$. Now $VU=0$ forces $U_0=0$. The finitely many localizations used can be combined into one $R_f$ with $f\notin\mathfrak p$.
+
+These operations exhibit two contractible identity complexes, of ranks $r$ and $m-r$, respectively in degrees $(i-1,i)$ and $(i,i+1)$. The neighboring differentials respect their complements because consecutive differentials compose to zero. Removing the two identity complexes leaves
+$$\cdots\longrightarrow F^{i-2}_f\longrightarrow R_f^{l-r}
+\longrightarrow0\longrightarrow R_f^{n-m+r}
+\longrightarrow F^{i+2}_f\longrightarrow\cdots.$$
+It splits into its lower and upper complexes, representing the stated truncations. The upper one is a bounded finite free complex supported in degrees at least $i+1$, proving the perfectness and amplitude assertion.
+
+To check canonicity, denote these truncations by $L=\tau_{\leq i-1}K_f$ and $U'=\tau_{\geq i+1}K_f$. The upper summand has a projective model in degrees at least $i+1$, while $L$ has a model ending in degree $i-1$. Hence $\operatorname{Hom}(U',L)=\operatorname{Hom}(U',L[1])=0$, by computing maps with that projective model. The truncation triangle $L\to K_f\to U'\to L[1]$ therefore has a unique splitting compatible with its maps. This identifies the decomposition independently of the matrix choices. $\square$
 
 #### Lemma. Perfect complexes
  Let $R$ be a ring. Let $f_1, \ldots, f_r \in R$ be elements which generate the unit ideal. Let $K^\bullet$ be a complex of $R$-modules. If for each $i$ the complex $K^\bullet \otimes_R R_{f_i}$ is perfect, then $K^\bullet$ is perfect.
@@ -4285,53 +4441,52 @@ H^i(K^\bullet) \otimes_R R_{f_i} = H^i(K^\bullet \otimes_R R_{f_i}).$$ and simil
 H^i(K^\bullet \otimes_R^{\mathbf{L}} M) \otimes_R R_{f_i} =
 H^i(K^\bullet \otimes_R R_{f_i} \otimes_{R_{f_i}}^{\mathbf{L}} M_{f_i}).$$ Hence the result follows from the fact that an $R$-module $N$ is zero if and only if $N_{f_i}$ is zero for each $i$, see Algebra, Lemma [A finite cover by affine localizations](#native-algebra-lemma-cover). $\square$
 
-#### Lemma. Module compatibility in a ring diagram
- Given a commutative diagram of rings $$\begin{gathered}\begin{matrix}R & R' \\ B & B'\end{matrix} \\[6pt] \begin{aligned}R' & \longrightarrow R \\ B & \longrightarrow R \\ B' & \longrightarrow R' \\ B' & \longrightarrow B\end{aligned}\end{gathered}$$ the functor ([Modules](#context-more-algebra-equation-modules)) has a right adjoint, namely the functor $$F : (N, M', \varphi) \longmapsto N \times_\varphi M'$$ (see proof for elucidation).
+#### Lemma. The module adjunction for a commutative square
 
-**Proof.** Given an object $(N, M', \varphi)$ of the category $\text{Mod}_B \times_{\text{Mod}_R} \text{Mod}_{R'}$ we set $$N \times_\varphi M' = \{(n, m') \in N \times M' \mid
-\varphi(n \otimes 1) = m' \otimes 1\text{ in }M' \otimes_{R'} R\}$$ viewed as a $B'$-module. The adjointness statement is that for a $B'$-module $L'$ and a triple $(N, M', \varphi)$ we have $$\operatorname{Hom}_{B'}(L', N \times_\varphi M') =
-\operatorname{Hom}_B(L' \otimes_{B'} B, N)
-\times_{\operatorname{Hom}_R(L' \otimes_{B'} R, M' \otimes_{R'} R)}
-\operatorname{Hom}_{R'}(L' \otimes_{B'} R', M')$$ By Algebra, Lemma [Tensor products and direct sums (uncovered prerequisite)](#uncovered-algebra-lemma-adjoint-tensor-restrict) the right hand side is equal to $$\operatorname{Hom}_{B'}(L', N) \times_{\operatorname{Hom}_{B'}(L', M' \otimes_{R'} R)} \operatorname{Hom}_{B'}(L', M')$$ Thus it is clear that for a pair $(g, f')$ of elements of this fibre product we get an $B'$-linear map $L' \to N \times_\varphi M'$, $l' \mapsto (g(l'), f'(l'))$. Conversely, given a $B'$ linear map $g' : L' \to N \times_\varphi M'$ we can set $g$ equal to the composition $L' \to N \times_\varphi M' \to N$ and $f'$ equal to the composition $L' \to N \times_\varphi M' \to M'$. These constructions are mutually inverse to each other and define the desired isomorphism. $\square$
+Consider any commutative ring square
+$$\begin{array}{ccc}B'&\longrightarrow&R'\\
+\downarrow&&\downarrow\\ B&\longrightarrow&R.\end{array}$$
+No surjectivity or cartesian hypothesis is imposed. Base change sends $L'\in\text{Mod}_{B'}$ to the pair $L'\otimes_{B'}B$, $L'\otimes_{B'}R'$ with their canonical identification after tensoring with $R$. Its right adjoint sends a compatible triple $(N,M',\varphi)$ to
+$$F(N,M',\varphi)=\{(n,m')\in N\oplus M':
+\varphi(n\otimes1)=m'\otimes1\text{ in }M'\otimes_{R'}R\},$$
+with the componentwise $B'$-action. Here $\varphi:N\otimes_BR\xrightarrow{\sim}M'\otimes_{R'}R$ is part of the triple.
 
-#### Lemma. Modules and tensor products and direct sums
- In Situation [Modules and tensor products and direct sums](#native-more-algebra-situation-module-over-fibre-product) the functor ([Derived tensor products and Tor amplitude](#context-more-algebra-equation-functor)) has a right adjoint, namely the functor $$F : (N, M', \varphi) \longmapsto N \times_{\varphi, M} M'$$ where $M = M'/IM'$. Moreover, the composition of $F$ with ([Derived tensor products and Tor amplitude](#context-more-algebra-equation-functor)) is the identity functor on $\text{Mod}_B \times_{\text{Mod}_A} \text{Mod}_{A'}$. In other words, setting $N' = N \times_{\varphi, M} M'$ we have $N' \otimes_{B'} B = N$ and $N' \otimes_{B'} A' = M'$.
+**Proof.** A map $L'\to F(N,M',\varphi)$ is precisely a pair of $B'$-linear maps to $N$ and $M'$ whose images in $M'\otimes_{R'}R$ agree. A $B'$-linear map $g:L'\to N$ extends uniquely to the $B$-linear map $l\otimes b\mapsto b\,g(l)$; conversely such an extension restricts by $l\mapsto l\otimes1$. Apply the same construction with $R'$ and with $R$. These mutually inverse, natural operations give
+$$\begin{aligned}
+\operatorname{Hom}_{B'}(L',F(N,M',\varphi))
+\cong{}&\operatorname{Hom}_B(L'\otimes_{B'}B,N)\\
+&\times_{\operatorname{Hom}_R(L'\otimes_{B'}R,M'\otimes_{R'}R)}
+\operatorname{Hom}_{R'}(L'\otimes_{B'}R',M').
+\end{aligned}$$
+The map from the first Hom set to the common Hom set uses $\varphi$. The fibre product on the right is exactly the morphism set of compatible triples, proving the adjunction. $\square$
 
-**Proof.** The adjointness statement follows from the more general Lemma [Module compatibility in a ring diagram](#native-more-algebra-lemma-modules). To prove the final assertion, recall that $B' = B \times_A A'$ and $N' = N \times_{\varphi, M} M'$ and extend these equalities to $$\begin{gathered}\begin{matrix}A & A' & I \\ B & B' & J\end{matrix} \\[6pt] \begin{aligned}A' & \longrightarrow A \\ I & \longrightarrow A' \\ B & \longrightarrow A \\ B' & \longrightarrow B \\ B' & \longrightarrow A' \\ J & \longrightarrow B' \\ J & \longrightarrow I\end{aligned}\end{gathered}
-\quad\text{and}\quad
-\begin{gathered}\begin{matrix}M & M' & K \\ N & N' & L\end{matrix} \\[6pt] \begin{aligned}M' & \longrightarrow M \\ K & \longrightarrow M' \\ N & \xrightarrow{\varphi} M \\ N' & \longrightarrow N \\ N' & \longrightarrow M' \\ L & \longrightarrow N' \\ L & \longrightarrow K\end{aligned}\end{gathered}$$ where $I, J, K, L$ are the kernels of the horizontal maps of the original diagrams. We present the proof as a sequence of observations:
+#### Lemma. Recovering the two modules from their patched module
 
-1.  $K = IM'$ (see statement lemma),
+Let $B'=B\times_A A'$ with $A'\twoheadrightarrow A$ and kernel $I$. Suppose $N$ is a $B$-module, $M'$ is an $A'$-module, and $\varphi:N\otimes_BA\xrightarrow{\sim}M'/IM'$ is an isomorphism. Write $M=M'/IM'$ and
+$$P=N\times_M M'=\{(n,m'): \varphi(n\otimes1)=\bar m'\}.$$
+This construction is right adjoint to base change, and its counit gives canonical isomorphisms
+$$P\otimes_{B'}B\cong N,\qquad P\otimes_{B'}A'\cong M'.$$
+In particular, patching followed by base change recovers the entire compatible triple, naturally.
 
-2.  $B' \to B$ is surjective with kernel $J$ and $J \to I$ is bijective,
+**Proof.** The preceding adjunction applies to this square. We prove its counit assertions directly. Set $J=\ker(B'\to B)$ and $L=\ker(P\to N)$. The second projections identify $J$ with $I$ and $L$ with $IM'$. Both first projections $B'\to B$ and $P\to N$ are onto, since $A'\to A$ and $M'\to M$ are onto.
 
-3.  $N' \to N$ is surjective with kernel $L$ and $L \to K$ is bijective,
+The image of $P\to M'$ generates $M'$ as an $A'$-module. To verify this without a finiteness assumption, take $m'\in M'$. Its image in $M=N\otimes_BA$ is a finite $A$-linear combination of images of elements of $N$. Lift each coefficient to $A'$ and each of those elements of $N$ to a compatible pair in $P$. Subtract the resulting combination of second components from $m'$. The remainder belongs to $IM'$, and therefore is itself the second component of an element $(0,m'')\in L\subset P$. This proves the generation assertion.
 
-4.  $JN' \subset L$,
+Clearly $JP\subset L$. Conversely, write an element of $IM'$ as a finite sum of second components of elements of $P$ with coefficients in $I$, using the generation just proved. Lift those coefficients through $J\cong I$. This expresses the corresponding element of $L$ as an element of $JP$. Hence $L=JP$, and
+$$P\otimes_{B'}B=P/JP=P/L\cong N.$$
 
-5.  $\operatorname{Im}(N \to M)$ generates $M$ as an $A$-module (because $N \otimes_B A = M$),
+The second projection induces a surjection $\gamma:P\otimes_{B'}A'\to M'$. Let $T=P\otimes_{B'}A'$. Its reduction modulo $I$ is
+$$T/IT=P\otimes_{B'}A=(P/JP)\otimes_BA\cong M.$$
+Under this identification, the composite $T\xrightarrow{\gamma}M'\to M$ is the quotient map. Thus every element of $\ker\gamma$ lies in $IT$. A typical element of $IT$ is a sum of $p\otimes ia'$ with $i\in I$, $a'\in A'$. Since $ia'\in I$ corresponds to some $j\in J$, the tensor relation rewrites this term as $jp\otimes1$. Consequently every element of $IT$ has the form $l\otimes1$ for an $l\in L$. Its image under $\gamma$ is the second component of $l$, and $L\to IM'$ is injective. If that image is zero then $l=0$. Therefore $\gamma$ is injective as well. The two isomorphisms are induced by projections, so they preserve $\varphi$ and are natural. $\square$
 
-6.  $\operatorname{Im}(N' \to M')$ generates $M'$ as an $A'$-module (because it holds modulo $K$ and $L$ maps isomorphically to $K$),
+#### Situation. A ring fibre product with a surjective side
 
-7.  $JN' = L$ (because $L \cong K = I M'$ is generated by images of elements $x n'$ with $x \in I$ and $n' \in N'$ by the previous statement),
-
-8.  $N' \otimes_{B'} B = N$ (because $N = N'/L$, $B = B'/J$, and the previous statement),
-
-9.  there is a map $\gamma : N' \otimes_{B'} A' \to M'$,
-
-10. $\gamma$ is surjective (see above),
-
-11. the kernel of the composition $N' \otimes_{B'} A' \to M' \to M$ is generated by elements $l \otimes 1$ and $n' \otimes x$ with $l \in K$, $n' \in N'$, $x \in I$ (because $M = N \otimes_B A$ by assumption and because $N' \to N$ and $A' \to A$ are surjective with kernels $L$ and $I$),
-
-12. any element of $N' \otimes_{B'} A'$ in the submodule generated by the elements $l \otimes 1$ and $n' \otimes x$ with $l \in L$, $n' \in N'$, $x \in I$ can be written as $l \otimes 1$ for some $l \in L$ (because $J$ maps isomorphically to $I$ we see that $n' \otimes x = n'x \otimes 1$ in $N' \otimes_{B'} A'$; similarly $x n' \otimes a' = n' \otimes xa' = n'(xa') \otimes 1$ in $N' \otimes_{B'} A'$ when $n' \in N'$, $x \in J$ and $a' \in A'$; since we have seen that $JN' = L$ this proves the assertion),
-
-13. the kernel of $\gamma$ is zero (because by (10) and (11) any element of the kernel is of the form $l \otimes 1$ with $l \in L$ which is mapped to $l \in K \subset M'$ by $\gamma$).
-
-This finishes the proof. $\square$
-
-#### Situation. Modules and tensor products and direct sums
-
-In the following we will consider ring maps $$\begin{gathered}\begin{matrix}B & A & A'\end{matrix} \\[6pt] \begin{aligned}B & \longrightarrow A \\ A' & \longrightarrow A\end{aligned}\end{gathered}$$ where we assume $A' \to A$ is surjective with kernel $I$. In this situation we set $B' = B \times_A A'$ to obtain a cartesian square $$\begin{gathered}\begin{matrix}A & A' \\ B & B'\end{matrix} \\[6pt] \begin{aligned}A' & \longrightarrow A \\ B & \longrightarrow A \\ B' & \longrightarrow B \\ B' & \longrightarrow A'\end{aligned}\end{gathered}$$
+Given $B\to A$ and a surjection $A'\to A$ with kernel $I$, define
+$$B'=B\times_A A'=\{(b,a'):\text{the images of }b,a'\text{ in }A\text{ agree}\}.$$
+The projections form the cartesian square
+$$\begin{array}{ccc}B'&\longrightarrow&A'\\
+\downarrow&&\downarrow\\B&\longrightarrow&A.\end{array}$$
+The projection $B'\to B$ is onto, and its kernel is the copy $J=\{(0,i):i\in I\}$ of $I$. A compatible module triple over this square consists of a $B$-module $N$, an $A'$-module $M'$, and an isomorphism $N\otimes_BA\cong M'\otimes_{A'}A$. No flatness, finiteness, or nilpotence is included in this setup.
 
 #### Lemma. Derived commutative algebra
  Let $$(A^{-2}_n \to A^{-1}_n \to A^0_n \to A^1_n)$$ be an inverse system of complexes of abelian groups and denote $A^{-2} \to A^{-1} \to A^0 \to A^1$ its limit. Denote $(H_n^{-1})$, $(H_n^0)$ the inverse systems of cohomologies, and denote $H^{-1}$, $H^0$ the cohomologies of $A^{-2} \to A^{-1} \to A^0 \to A^1$. If
@@ -19610,3 +19765,5 @@ The [complete GNU Free Documentation License 1.2](../licenses/GFDL-1.2.txt) acco
 **Source edition.** *The Stacks Project*, by the Stacks Project authors, with its human-source copyright notice above; distributed in the *AI Integrated Stacks Project*, 2026 edition at revision `565b10e987aba5969b21145a0833f42d69f96790` (30 September 2026). The source publisher is the Stacks Project; the fork distribution and its separately credited AI changes are identified by the pinned repository and its [retained source provenance](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/PROVENANCE.md). The [source application notice](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/introduction.tex) supplies the licence grant, and [the pinned transparent source](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/tree/565b10e987aba5969b21145a0833f42d69f96790) preserves the incorporated source files and their prior network locations.
 
 **Modified course edition.** *Algebraic spaces and stacks — Moduli stacks are algebraic*, October 2026, published by the Open Math Courses project, `KokunoYumeto/open-math-courses`. Adapted and integrated by GPT-6.1 Sol (OpenAI), Codex, Ultra, 5–6 October 2026. The course integrates strong coherent existence, its cohomological and algebraic-space support, polarized proper schemes and all proper flat curve spaces of dimension at most one. It corrects source scope/type errors and supplies the marked return comparisons. Reader display repairs preserve the complete formulas and proofs. Source authorship is retained; no AI copyright holder or human endorsement is asserted. The detailed source loci, exact edition and concrete corrections remain in this chapter. Original eligible expression is additionally dedicated to CC0; the complete inseparable modified chapter retains GFDL 1.2-or-later for component export.
+
+**Independent mathematical expression.** The component record delimits the CC0 1.0 passages and preserves their writing credits. These passages treat inverse systems, module patching, complexes, Koszul and Čech comparisons, and the supporting algebraic arguments. The 9 supporting algebra proofs recorded there reuse the complete independently written treatment in [Artin’s axioms](artin-axioms.md). The retained source expression elsewhere in this chapter keeps the GNU FDL terms stated above.

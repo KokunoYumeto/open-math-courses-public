@@ -14,6 +14,7 @@ for unit in data['units']:
         '--to=html5','--mathjax',str(source)],text=True,encoding='utf-8')
     content=content.replace('src="../assets/','src="assets/')
     content=content.replace('href="../checks/','href="checks/')
+    content=content.replace('href="../sources/','href="sources/')
     for other in data['units']:
         content=content.replace('href="'+Path(other['source']).name,'href="'+other['reader'])
     old=reader.read_text(encoding='utf-8')

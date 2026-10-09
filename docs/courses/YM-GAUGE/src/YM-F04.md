@@ -1714,7 +1714,7 @@ independently written CC0 teaching material with the identified
 component reuse and scholarly credit. No research novelty or
 independent human review is claimed.
 
-The next lesson uses this group and Lie-algebra language to develop
+The [next lesson](../covariant-derivatives-and-curvature.html) uses this group and Lie-algebra language to develop
 covariant derivatives and curvature. We will derive their full
 transformation laws and see how the commutator terms calculated here
 enter the field strength of a nonabelian connection.

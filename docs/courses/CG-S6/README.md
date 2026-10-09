@@ -12,7 +12,11 @@ Continue with [lesson 5: The cusp and the compact threefold](CG-S6-05.html). Its
 
 Continue with [lesson 6: Integral monodromy and the fundamental group](CG-S6-06.html). Its [editable source](src/integral-monodromy-and-fundamental-group.md) computes every integral matrix and exterior-power lattice, proves the complete based attachment maps, and derives triviality of the full fundamental group. An explicit integral dictionary compares Engel's marking, with every reversed meridian and circle term. Four solved exercises include actual additional free affine fillings and their cyclic groups.
 
-The [series map](series.json) retains the full remaining assignment. Six lessons are available. Integral homology and sphere recognition, canonical sections, deformation, the vanishing calculation and the remaining background continue as lessons 7–11. Source reading and proof acceptance have separate records.
+[Lesson 8](CG-S6-08.html) now proves the complete canonical divisor and graded anticanonical ring, retaining all finite characters, ramification factors and multiple fibres. Its degree-two sections recover the original fibration. Four exercises have complete solutions.
+
+[Lesson 9](CG-S6-09.html) constructs the proper parameter family, calculates its nonzero deformation class and classifies all parameter identifications. The middle family permits every integer shift; the full finite and cusp calculation permits exactly the even shifts. All maps and four solved exercises are included.
+
+The [series map](series.json) retains the full remaining assignment. Lessons 1–6, 8 and 9 are available. The analytic lessons 8–9 can be read while the exact topology providers for lesson 7 are completed. Integral homology and sphere recognition, the vanishing calculation and the remaining background remain assigned as lessons 7, 10 and 11. Source reading and proof acceptance have separate records.
 
 - [Course and result metadata](course.json)
 - Finite-quotient calculations
@@ -21,12 +25,14 @@ The [series map](series.json) retains the full remaining assignment. Six lessons
 - [Global-period and cubic calculations](checks/verify_global_periods.py)
 - [Cusp, resolved-fibre and section calculations](checks/verify_cusp_geometry.py)
 - [Integral monodromy and group calculations](checks/verify_integral_monodromy.py)
+- [Canonical ring and recovered fibration](checks/verify_canonical_ring.py)
+- [Period deformation and all parameter identifications](checks/verify_period_deformation.py)
 - Source identities and attribution
 - Complete current source and offline reader
 
 New mathematical exposition and diagrams are dedicated under CC0-1.0. Bundled rendering software and fonts retain their own notices in `assets/mathjax/`. Current authoring provenance: GPT-6 Astra (OpenAI), Codex, Ultra, 9 October 2026. Independent review is not claimed.
 
-Run `python rebuild_course.py` with SymPy installed and Pandoc on PATH to reproduce all six exact checkers, regenerate the diagrams and readers and rebuild the complete offline download. For individual operations, run the checkers above or `python rebuild_reader.py`. Each SVG figure is its editable source. Open `index.html` in the extracted archive to read offline; all equation-rendering assets and fonts are included.
+Run `python rebuild_course.py` with SymPy installed and Pandoc on PATH to reproduce all eight exact checkers, regenerate the diagrams and readers and rebuild the complete offline download. For individual operations, run the checkers above or `python rebuild_reader.py`. Each SVG figure is its editable source. Open `index.html` in the extracted archive to read offline; all equation-rendering assets and fonts are included.
 
 Linked prerequisite courses are separate providers. The fourth lesson includes its reproducible drawing program in `checks/draw_period_quotient.py`.
 

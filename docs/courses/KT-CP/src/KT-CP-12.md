@@ -1,6 +1,6 @@
 # Exterior equivalence and Connes's construction of the Thom map
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Tensor-norm proof-provider reconciliation by GPT-6 Astra (OpenAI), Ultra. Self-checked; independent review is separate. Public domain (CC0).*
 
 A projection can move under an action even though its K-class cannot move along a continuous orbit. We first replace it by a smooth projection, then compensate for its motion with a unitary cocycle. The resulting action fixes the projection. Its scalar suspension class can then be transported back to the original crossed product.
 
@@ -212,7 +212,7 @@ B\rtimes_{\gamma^B,w\otimes1}G
  \cong (A\rtimes_{\gamma,w}G)\otimes\mathcal K(L^2(G)).
 \tag{12B.13}
 \]
-For full norms this follows from commuting representations of the coefficient factors: the trivial compact factor commutes with all group unitaries in (12B.3), and tensoring any twisted pair with a representation of the compacts supplies the inverse correspondence. The maximal tensor norm with compacts equals the spatial norm, proved by finite matrix corners and their approximate identity in the Hilbert-module tensor prerequisite. For reduced norms apply (12B.5) to \(\rho_0\otimes1\) and interchange the two Hilbert-space tensor factors; the regular coefficient and group formulas become those for \(A\), tensored with the identity. Faithful localization supplies the same norm conclusion for arbitrary Hilbert-space dimension. Combining (12B.13) with (12B.8)–(12B.12) proves both lines of (12B.10). ∎
+For full norms this follows from commuting representations of the coefficient factors: the trivial compact factor commutes with all group unitaries in (12B.3), and tensoring any twisted pair with a representation of the compacts supplies the inverse correspondence. The maximal tensor norm with compacts equals the spatial norm by [Example 3.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-APPROX/completely-positive-finite-models.html#3-finite-models-that-we-can-see) and [Theorem 4.3, with Lemmas 4.1 and 4.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-APPROX/completely-positive-finite-models.html#4-why-matrix-models-control-tensor-norms) in Completely positive finite models. The compression maps use the net of all finite-dimensional subspaces, so the proof covers arbitrary Hilbert spaces and nonunital coefficient algebras. The Hilbert-module tensor prerequisite supplies the separate compact-endomorphism identification in Theorem 5.1. For reduced norms apply (12B.5) to \(\rho_0\otimes1\) and interchange the two Hilbert-space tensor factors; the regular coefficient and group formulas become those for \(A\), tensored with the identity. Faithful localization supplies the same norm conclusion for arbitrary Hilbert-space dimension. Combining (12B.13) with (12B.8)–(12B.12) proves both lines of (12B.10). ∎
 
 The theorem explains the stabilization principle without treating a nonsplit normal-subgroup extension as an ordinary quotient action. Green's \((G,N)\)-twisted formulation is another formulation, with separate topological data; it is not defined by assuming a continuous section of \(G\to G/N\).
 

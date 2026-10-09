@@ -1,7 +1,7 @@
 """Original mathematical figure and reproducible source, CC0-1.0.
 
 Plots finite coordinate projections of an infinite c0 GNS model; the proof is
-GNS_FOUNDATION_PROOF.md, Section 8. All constants originate in exact powers of 2.
+OA-FLOW-GNS, Section 8. All constants originate in exact powers of 2.
 """
 from pathlib import Path
 from fractions import Fraction
@@ -85,7 +85,7 @@ ax.text(.5,.02,r"$N_\omega=0,\quad \|\Omega\|=1$",
 fig.suptitle("A cyclic vector obtained from local units",
              fontsize=22, x=.48, y=.99)
 fig.text(.5,.005,
-         "Exact infinite model: GNS_FOUNDATION_PROOF.md, Section 8. "
+         "Exact infinite model: OA-FLOW-GNS, Section 8. "
          "Finite projections and samples are labelled explicitly. Original figure: CC0.",
          ha="center", fontsize=10, color="#435364")
 fig.tight_layout(rect=(0,.035,1,.94),w_pad=2.6)

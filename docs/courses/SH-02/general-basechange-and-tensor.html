@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Modern proper base change and arbitrary stable coefficients · SH-02</title>
+<meta content="Modern proper base change and arbitrary stable coefficients. Complete proof with the actual normalized maps." name="description"/>
+<meta content="light dark" name="color-scheme"/>
+<link href="../../assets/site.css" rel="stylesheet"/>
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script defer="" id="MathJax-script" src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link href="reader.css" rel="stylesheet"/>
+<style>@media(max-width:600px){article.lesson .ihm-wide{font-size:.62em}article.lesson .ihm-unlabelled-wide{font-size:.55em}}</style><style>article.lesson picture img{display:block;width:100%;height:auto}@media(max-width:600px){article.lesson .math[data-tex^="$$"]{font-size:.72em}}</style></head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav aria-label="Main" class="primary-nav">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav aria-label="Breadcrumb" class="crumbs"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Microlocal sheaves</a> <span aria-hidden="true">›</span> <span>Modern proper base change and arbitrary stable coefficients</span></nav>
+<aside aria-label="About this lesson" class="notice">
+<p>Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson"><h1 id="modern-proper-base-change-and-arbitrary-stable-coefficients">Modern
+proper base change and arbitrary stable coefficients</h1>
+<p>This lesson supplies the general base-change and tensor steps after
+<a href="modern-proper-support-construction.html">compact supports and
+covariant Verdier duality</a>. All spaces are locally compact Hausdorff.
+A stable coefficient category has all small colimits; wherever actual
+coefficient-valued sheaves are used, it also has all small limits.
+Presentability, constructibility, boundedness, finite cohomological
+dimension and a countable exhaustion are not required.</p>
+<p><em>Written by GPT-6.1 Sol (OpenAI). Self-checked by the writing AI.
+CC0 1.0.</em></p>
+<p>The mathematical sources are Jacob Lurie’s <em>Higher Topos
+Theory</em>, Sections 7.3.1–7.3.4, and Marco Volpe’s published <em>The
+six operations in topology</em>, Sections 2.2, 5.2–5.3 and Propositions
+6.9, 6.13 and 6.14. The argument below includes the nonabelian
+proper-map proof and its coefficient extension. The classical bounded
+comparison in the preceding lessons remains a separate step.</p>
+<h2 id="SH02-GBT-0">SH02-GBT-0 — Models and the maps to be proved</h2>
+<p>Write
+<span class="math" data-tex="$\mathcal A_T=\operatorname{Shv}(T;\mathrm{Sp})$">$\mathcal A_T=\operatorname{Shv}(T;\mathrm{Sp})$</span>.
+These are sheaves for ordinary covering sieves. No hypercompletion is
+performed. The elementary ambient models used here are presheaf
+infinity-categories, accessible left exact localization for an
+infinity-topos, the Yoneda and Kan extension universal properties, and
+the tensor of cocomplete stable infinity-categories. For the last model
+its defining property is</p>
+<p><span class="math" data-tex="$$
+ \operatorname{Fun}^L(B\otimes C,E)
+ \simeq\operatorname{Fun}^{L,L}(B\times C,E).
+ \tag{GBT.1}
+$$">$$
+ \operatorname{Fun}^L(B\otimes C,E)
+ \simeq\operatorname{Fun}^{L,L}(B\times C,E).
+ \tag{GBT.1}
+$$</span></p>
+<p>All colimits here are in a fixed universe. A larger universe
+accommodates a coefficient category that is not presentable. Superscript
+<span class="math" data-tex="$L$">$L$</span> means that all these
+colimits are preserved. Presheaf localization, cofinality and the
+compact-object Ind model are basic categorical models; this lesson does
+not claim to rebuild their entire simplicial-set foundations.</p>
+<p>For any cocomplete stable
+<span class="math" data-tex="$E$">$E$</span>, put
+<span class="math" data-tex="$\mathscr S_T(E)=\mathcal A_T\otimes E$">$\mathscr S_T(E)=\mathcal A_T\otimes E$</span>.
+When <span class="math" data-tex="$E$">$E$</span> is bicomplete, GBT-4
+will identify this with actual
+<span class="math" data-tex="$E$">$E$</span>-valued sheaves. Defining
+<span class="math" data-tex="$\mathscr S_T(E)$">$\mathscr S_T(E)$</span>
+even when <span class="math" data-tex="$E$">$E$</span> is not complete
+is necessary: a tensor
+<span class="math" data-tex="$C\otimes D$">$C\otimes D$</span> of
+bicomplete categories need not itself be bicomplete.</p>
+<p>Use a Cartesian square with fixed labels</p>
+<p><span class="math" data-tex="$$
+\begin{array}{ccc}
+ X'&amp;\xrightarrow{q'}&amp;X\\
+ p'\downarrow&amp;&amp;\downarrow p\\
+ Y'&amp;\xrightarrow q&amp;Y.
+\end{array}
+\tag{GBT.2}
+$$">$$
+\begin{array}{ccc}
+ X'&amp;\xrightarrow{q'}&amp;X\\
+ p'\downarrow&amp;&amp;\downarrow p\\
+ Y'&amp;\xrightarrow q&amp;Y.
+\end{array}
+\tag{GBT.2}
+$$</span></p>
+<p>For ordinary direct image, the proper base-change map is the mate</p>
+<p><span class="math" data-tex="$$
+\begin{gathered}
+q^*p_*F\longrightarrow q^*p_*q'_*q'^*F\\
+\simeq q^*q_*p'_*q'^*F\\
+\longrightarrow p'_*q'^*F.
+\end{gathered}
+\tag{GBT.3}
+$$">$$
+\begin{gathered}
+q^*p_*F\longrightarrow q^*p_*q'_*q'^*F\\
+\simeq q^*q_*p'_*q'^*F\\
+\longrightarrow p'_*q'^*F.
+\end{gathered}
+\tag{GBT.3}
+$$</span></p>
+<p>The arrows are the unit for
+<span class="math" data-tex="$q'^*\dashv q'_*$">$q'^*\dashv q'_*$</span>
+and the counit for
+<span class="math" data-tex="$q^*\dashv q_*$">$q^*\dashv q_*$</span>. We
+prove invertibility of this particular map when
+<span class="math" data-tex="$p$">$p$</span> is proper. For arbitrary
+<span class="math" data-tex="$p$">$p$</span>, the proper-support map
+will be constructed from these proper mates and the open-extension
+mates. Arbitrary choices of equivalences would not establish the
+required theorem on maps.</p>
+<h2 id="SH02-GBT-1">SH02-GBT-1 — Compact models with nonstable
+coefficients</h2>
+<p>The compact-presentation argument SH02-SXM-1–2 needs only
+completeness, filtered colimits and their commutation with finite
+limits. Stability enters later, when support fibres are changed into
+cofibres. Consequently the compact argument also applies to spaces and
+to every infinity-topos
+<span class="math" data-tex="$E$">$E$</span>.</p>
+<p>Here are its precise formulas, with terminal object
+<span class="math" data-tex="$1$">$1$</span>:</p>
+<p><span class="math" data-tex="$$
+\begin{gathered}
+H_F(K)=\operatorname*{colim}_{U\supset K}F(U),\\
+F_H(U)=\operatorname*{lim}_{K\subset U}H(K).
+\end{gathered}
+\tag{GBT.4}
+$$">$$
+\begin{gathered}
+H_F(K)=\operatorname*{colim}_{U\supset K}F(U),\\
+F_H(U)=\operatorname*{lim}_{K\subset U}H(K).
+\end{gathered}
+\tag{GBT.4}
+$$</span></p>
+<p>The compact functor has
+<span class="math" data-tex="$H(\varnothing)=1$">$H(\varnothing)=1$</span>,
+has the pullback square
+<span class="math" data-tex="$H(K\cup L)=H(K)\times_{H(K\cap L)}H(L)$">$H(K\cup L)=H(K)\times_{H(K\cap L)}H(L)$</span>,
+and satisfies
+<span class="math" data-tex="$H(K)=\operatorname{colim}_{K\Subset L}H(L)$">$H(K)=\operatorname{colim}_{K\Subset L}H(L)$</span>.
+Neighborhoods are ordered by shrinking, and
+<span class="math" data-tex="$K\Subset L$">$K\Subset L$</span> means
+that the interior of the compact
+<span class="math" data-tex="$L$">$L$</span> contains
+<span class="math" data-tex="$K$">$K$</span>.</p>
+<p>For clarity, the proof continues to work without a zero object. A
+finite open cover of a compact set admits a finite compact shrinking.
+For two compacts, neighborhoods of their union are refined by unions of
+their neighborhoods; neighborhoods of their intersection are refined by
+intersections of such neighborhoods. For the second assertion, separate
+the disjoint compact sets
+<span class="math" data-tex="$K\setminus W$">$K\setminus W$</span> and
+<span class="math" data-tex="$L\setminus W$">$L\setminus W$</span>, for
+an open
+<span class="math" data-tex="$W\supset K\cap L$">$W\supset K\cap L$</span>,
+and adjoin <span class="math" data-tex="$W$">$W$</span> to both
+separating neighborhoods. Filtered colimits can therefore be moved
+through the single finite descent pullback. Induction gives finite
+compact descent; a compact subcover gives arbitrary covering descent for
+the second formula in (GBT.4).</p>
+<p>The inverse maps have explicit cones. A sheaf maps to its limit of
+compact restrictions. Conversely that limit maps to
+<span class="math" data-tex="$F(V)$">$F(V)$</span> by projection to
+<span class="math" data-tex="$H_F(\overline V)$">$H_F(\overline V)$</span>
+whenever
+<span class="math" data-tex="$\overline V\subset U$">$\overline V\subset U$</span>,
+then restriction to <span class="math" data-tex="$V$">$V$</span>; these
+relatively compact opens cover
+<span class="math" data-tex="$U$">$U$</span>, so descent gives the
+inverse. For a compact functor, projection gives
+<span class="math" data-tex="$\operatorname{colim}_{U\supset K}F_H(U)\to H(K)$">$\operatorname{colim}_{U\supset K}F_H(U)\to H(K)$</span>.
+Its inverse comes from
+<span class="math" data-tex="$H(L)\to F_H(\operatorname{Int}L)$">$H(L)\to F_H(\operatorname{Int}L)$</span>
+for <span class="math" data-tex="$K\Subset L$">$K\Subset L$</span>.
+Insertion of a smaller compact neighborhood checks both identities on
+the original restriction cones. The refinement posets are filtered and
+contractible. This gives coherent maps, not an interchange of an
+arbitrary infinite limit with a filtered colimit.</p>
+<p>There is a useful combined version. On the poset consisting of the
+open and compact subsets of
+<span class="math" data-tex="$T$">$T$</span>, let
+<span class="math" data-tex="$\theta F$">$\theta F$</span> have open
+values <span class="math" data-tex="$F(U)$">$F(U)$</span> and compact
+values <span class="math" data-tex="$H_F(K)$">$H_F(K)$</span>, with
+their restriction maps. Formula (GBT.4) and its two inverse cones say
+simultaneously that
+<span class="math" data-tex="$\theta F$">$\theta F$</span> is the left
+Kan extension from opens and the right Kan extension from compacts. An
+open that is also compact has the same value in the two descriptions.
+This combined model will fix the adjunction in the next proof.</p>
+<p>An infinity-topos satisfies the exactness assumption: realize it as
+an accessible left exact localization of a space-valued presheaf
+category. Filtered colimits of spaces commute with finite limits,
+presheaf operations are pointwise, and the localization preserves finite
+limits. This also shows why the argument applies before
+hypercompletion.</p>
+<h2 id="SH02-GBT-2">SH02-GBT-2 — Compact global sections and closed
+subspaces</h2>
+<p>We first prove properness of
+<span class="math" data-tex="$\Gamma:\operatorname{Shv}(T)\to\mathcal S$">$\Gamma:\operatorname{Shv}(T)\to\mathcal S$</span>
+for compact Hausdorff <span class="math" data-tex="$T$">$T$</span>.
+Properness means that after any two successive base changes of
+infinity-topoi, the push-pull mate is invertible.</p>
+<p>The base-change model is
+<span class="math" data-tex="$\operatorname{Shv}(T;E)=\operatorname{Shv}(T)\times_{\mathcal S}E$">$\operatorname{Shv}(T;E)=\operatorname{Shv}(T)\times_{\mathcal S}E$</span>
+for any infinity-topos <span class="math" data-tex="$E$">$E$</span>.
+Here is the model’s justification. Write
+<span class="math" data-tex="$E$">$E$</span> as a left exact
+localization of
+<span class="math" data-tex="$\mathcal P(D)$">$\mathcal P(D)$</span>,
+with <span class="math" data-tex="$D$">$D$</span> a small category with
+finite limits. In
+<span class="math" data-tex="$\mathcal P(\mathcal U(T)\times D)$">$\mathcal P(\mathcal U(T)\times D)$</span>,
+impose covering descent in the
+<span class="math" data-tex="$T$">$T$</span> direction and the
+localization in the <span class="math" data-tex="$D$">$D$</span>
+direction. Their common local objects are exactly
+<span class="math" data-tex="$E$">$E$</span>-valued sheaves. To
+construct the common localization, choose a regular
+<span class="math" data-tex="$\kappa$">$\kappa$</span> for which both
+reflector endofunctors preserve
+<span class="math" data-tex="$\kappa$">$\kappa$</span>-filtered
+colimits, alternate their reflectors through
+<span class="math" data-tex="$\kappa$">$\kappa$</span> steps, and take
+colimits at limit stages. The shifted subsequences are cofinal, so the
+final object is local for both reflectors. Left exactness persists at
+each step, including the filtered colimits at limit stages. The
+universal maps into common local objects show that this is a left exact
+accessible localization. Geometric morphisms into it are pairs of
+geometric morphisms into
+<span class="math" data-tex="$\operatorname{Shv}(T)$">$\operatorname{Shv}(T)$</span>
+and <span class="math" data-tex="$E$">$E$</span>: on presheaf
+generators, the corresponding inverse-image functor sends a pair to the
+product of its two images. It is left exact; products preserve colimits
+separately in an infinity-topos, so it descends through both sets of
+relations. Conversely, restriction to the two axes recovers this pair,
+because each paired generator is the product of the two axis generators.
+Yoneda extension determines all objects and transformations. This proves
+the product universal property, including its maps. This is the explicit
+model behind HTT 7.3.3.9.</p>
+<p>Let
+<span class="math" data-tex="$a^*:E\rightleftarrows E':a_*$">$a^*:E\rightleftarrows E':a_*$</span>
+be a geometric adjunction. In compact models, postcomposition with
+<span class="math" data-tex="$a^*$">$a^*$</span> preserves compact
+sheaves, since it preserves finite limits and filtered colimits. Its
+transport to open sheaves is left adjoint to postcomposition with
+<span class="math" data-tex="$a_*$">$a_*$</span>. To check this last
+claim without assuming that
+<span class="math" data-tex="$a_*$">$a_*$</span> preserves filtered
+colimits, use the combined model of GBT-1:</p>
+<p><span class="math" data-tex="$$
+\begin{aligned}
+ \operatorname{Map}_{\mathcal U}(F,a_*F')
+ &amp;\simeq\operatorname{Map}_{\mathcal K\cup\mathcal U}(\theta F,a_*\theta F')\\
+ &amp;\simeq\operatorname{Map}_{\mathcal K\cup\mathcal U}(a^*\theta F,\theta F')\\
+ &amp;\simeq\operatorname{Map}_{\mathcal K}(a^*H_F,H_{F'}).
+\end{aligned}
+\tag{GBT.5}
+$$">$$
+\begin{aligned}
+ \operatorname{Map}_{\mathcal U}(F,a_*F')
+ &amp;\simeq\operatorname{Map}_{\mathcal K\cup\mathcal U}(\theta F,a_*\theta F')\\
+ &amp;\simeq\operatorname{Map}_{\mathcal K\cup\mathcal U}(a^*\theta F,\theta F')\\
+ &amp;\simeq\operatorname{Map}_{\mathcal K}(a^*H_F,H_{F'}).
+\end{aligned}
+\tag{GBT.5}
+$$</span></p>
+<p>The first equivalence uses left Kan extension from opens; the last
+uses right Kan extension from compacts. The middle equivalence is the
+pointwise adjunction. Thus it preserves the actual unit and counit.
+Since <span class="math" data-tex="$T$">$T$</span> is both compact and
+open, evaluation at <span class="math" data-tex="$T$">$T$</span>
+commutes with this left adjoint:</p>
+<p><span class="math" data-tex="$$
+ a^*\Gamma F\simeq\Gamma\widetilde a^*F.
+ \tag{GBT.6}
+$$">$$
+ a^*\Gamma F\simeq\Gamma\widetilde a^*F.
+ \tag{GBT.6}
+$$</span></p>
+<p>By (GBT.5), this equivalence is the push-pull mate, not merely an
+equivalence of its two objects. Applying the product model successively
+to <span class="math" data-tex="$E$">$E$</span> and
+<span class="math" data-tex="$E'$">$E'$</span> proves the
+required universal properness of compact global sections.</p>
+<p>Closed inclusions supply the second elementary proper map. For an
+open subterminal object <span class="math" data-tex="$u$">$u$</span> in
+an infinity-topos <span class="math" data-tex="$B$">$B$</span>, the
+complementary closed subtopos consists of objects
+<span class="math" data-tex="$Z$">$Z$</span> with
+<span class="math" data-tex="$Z\times u\to u$">$Z\times u\to u$</span>
+an equivalence. Its inverse-image localization forces
+<span class="math" data-tex="$u$">$u$</span> to become initial. Every
+left exact inverse image preserves this condition. Under
+<span class="math" data-tex="$a^*:B\to B'$">$a^*:B\to B'$</span>,
+the closed subtopos pulls back to the one complementary to
+<span class="math" data-tex="$a^*u$">$a^*u$</span>; the inverse image on
+closed objects is the restriction of
+<span class="math" data-tex="$a^*$">$a^*$</span>. Its square with the
+fully faithful inclusions therefore commutes, and its mate is an
+equivalence. The universal property of localization proves that this is
+a pullback of infinity-topoi. Repeating a base change proves properness
+of a closed inclusion.</p>
+<p>For an actual closed
+<span class="math" data-tex="$Z\subset T$">$Z\subset T$</span> this is
+<span class="math" data-tex="$\operatorname{Shv}(Z)$">$\operatorname{Shv}(Z)$</span>.
+Indeed direct image is
+<span class="math" data-tex="$F(V\cap Z)$">$F(V\cap Z)$</span> and is
+terminal off <span class="math" data-tex="$Z$">$Z$</span>. Conversely,
+if a sheaf is terminal off <span class="math" data-tex="$Z$">$Z$</span>,
+its values on two opens with the same intersection with
+<span class="math" data-tex="$Z$">$Z$</span> agree: cover either by
+their intersection and its complement of
+<span class="math" data-tex="$Z$">$Z$</span>. For a covering of an open
+of <span class="math" data-tex="$Z$">$Z$</span>, choose ambient open
+extensions and add the complement of
+<span class="math" data-tex="$Z$">$Z$</span>. Descent proves that these
+values define a sheaf on <span class="math" data-tex="$Z$">$Z$</span>
+and recover the original sheaf. This establishes the topological
+closed-subspace model used above.</p>
+<h2 id="SH02-GBT-3">SH02-GBT-3 — Nonabelian proper base change</h2>
+<p>We need one further compatibility of models: for a locally compact
+Hausdorff <span class="math" data-tex="$T$">$T$</span>,</p>
+<p><span class="math" data-tex="$$
+ \operatorname{Shv}(T\times W)
+ \simeq\operatorname{Shv}(T)\times_{\mathcal S}\operatorname{Shv}(W).
+ \tag{GBT.7}
+$$">$$
+ \operatorname{Shv}(T\times W)
+ \simeq\operatorname{Shv}(T)\times_{\mathcal S}\operatorname{Shv}(W).
+ \tag{GBT.7}
+$$</span></p>
+<p>Here is the compactness check in the locale model. The coproduct of
+the two open-set locales is generated by formal rectangles
+<span class="math" data-tex="$U\otimes V$">$U\otimes V$</span>. Send
+these to <span class="math" data-tex="$U\times V$">$U\times V$</span>,
+and send an open
+<span class="math" data-tex="$O\subset T\times W$">$O\subset T\times W$</span>
+back to the union of all formal rectangles lying in
+<span class="math" data-tex="$O$">$O$</span>. To show that these are
+inverse, suppose
+<span class="math" data-tex="$U\times V\subset\bigcup_iU_i\times V_i$">$U\times V\subset\bigcup_iU_i\times V_i$</span>.
+Cover <span class="math" data-tex="$U$">$U$</span> by interiors of
+compact <span class="math" data-tex="$K\subset U$">$K\subset U$</span>.
+For each <span class="math" data-tex="$v\in V$">$v\in V$</span>,
+finitely many
+<span class="math" data-tex="$U_i\times V_i$">$U_i\times V_i$</span>
+cover
+<span class="math" data-tex="$K\times\{v\}$">$K\times\{v\}$</span>;
+intersect their <span class="math" data-tex="$V_i$">$V_i$</span>’s to
+obtain an open <span class="math" data-tex="$V_v$">$V_v$</span>
+containing <span class="math" data-tex="$v$">$v$</span>. The relations
+for finite unions give
+<span class="math" data-tex="$\operatorname{Int}K\otimes V_v\leq\bigvee_i U_i\otimes V_i$">$\operatorname{Int}K\otimes V_v\leq\bigvee_i U_i\otimes V_i$</span>.
+Taking unions in <span class="math" data-tex="$v$">$v$</span> and then
+in <span class="math" data-tex="$K$">$K$</span> proves the asserted
+rectangle relation. Every open is a union of rectangles, so the two
+locale maps are inverse. The basic equivalence between locales and
+0-localic infinity-topoi transfers this to (GBT.7). The inclusion of
+these topoi preserves limits, as the right adjoint of their
+localization. This is the full compactness argument in HTT 7.3.1.11.</p>
+<p>Now take a proper
+<span class="math" data-tex="$p:X\to Y$">$p:X\to Y$</span>. Embed
+<span class="math" data-tex="$X$">$X$</span> as an open subspace of its
+one-point compactification
+<span class="math" data-tex="$\overline X$">$\overline X$</span>, using
+<span class="math" data-tex="$X$">$X$</span> itself when it is compact.
+The graph
+<span class="math" data-tex="$e:X\hookrightarrow\overline X\times Y$">$e:X\hookrightarrow\overline X\times Y$</span>
+is closed. At a boundary point of
+<span class="math" data-tex="$\overline X$">$\overline X$</span>, take a
+relatively compact neighborhood of the proposed
+<span class="math" data-tex="$y$">$y$</span>; its closed inverse image
+under <span class="math" data-tex="$p$">$p$</span> is compact in
+<span class="math" data-tex="$X$">$X$</span>. A neighborhood of the
+boundary point disjoint from that compact gives a product neighborhood
+disjoint from the graph. At an ordinary point, the closed-graph argument
+uses the Hausdorffness of <span class="math" data-tex="$Y$">$Y$</span>.
+Thus <span class="math" data-tex="$p=\pi_Ye$">$p=\pi_Ye$</span> with
+<span class="math" data-tex="$e$">$e$</span> closed and
+<span class="math" data-tex="$\overline X$">$\overline X$</span> compact
+Hausdorff.</p>
+<p>By (GBT.7),
+<span class="math" data-tex="$(\pi_Y)_*$">$(\pi_Y)_*$</span> is a base
+change of compact global sections, which is proper by GBT-2. The closed
+inclusion is proper by the same lemma. Proper geometric morphisms are
+stable under composition and base change: insert the two defining
+Cartesian rectangles and compose their invertible mates; cancellation of
+each intermediate unit and counit proves the mate for the composite.
+Consequently <span class="math" data-tex="$p_*$">$p_*$</span> is proper
+as a geometric morphism.</p>
+<p>For the topological square (GBT.2), the induced square of
+infinity-topoi is also Cartesian. Factor it through
+<span class="math" data-tex="$\overline X\times Y'\to\overline X\times Y$">$\overline X\times Y'\to\overline X\times Y$</span>.
+This intermediate square is Cartesian by (GBT.7) and the product
+universal property; its upper closed-subspace square is Cartesian by
+GBT-2. Pasting gives the claimed Cartesian square. Properness now
+applies to it. We have proved that (GBT.3) is invertible for
+<strong>space-valued covering sheaves</strong>, without a truncation or
+hypercompleteness assumption. This proves the exact assertion of HTT
+7.3.1.18, including the properness steps on which its short printed
+proof depends.</p>
+<h2 id="SH02-GBT-4">SH02-GBT-4 — The coefficient equivalence, including
+nonpresentable coefficients</h2>
+<p>We establish the equivalence</p>
+<p><span class="math" data-tex="$$
+ \eta_T:\mathcal A_T\otimes C\xrightarrow{\sim}\operatorname{Shv}(T;C)
+ \tag{GBT.8}
+$$">$$
+ \eta_T:\mathcal A_T\otimes C\xrightarrow{\sim}\operatorname{Shv}(T;C)
+ \tag{GBT.8}
+$$</span></p>
+<p>for every stable bicomplete
+<span class="math" data-tex="$C$">$C$</span>, with no adjoint functor
+theorem applied to <span class="math" data-tex="$C$">$C$</span>. First
+let <span class="math" data-tex="$D_T$">$D_T$</span> be spectral
+functors on compact subsets that satisfy the empty-value and
+finite-union descent conditions, without requiring compact-neighborhood
+continuity. This is a compactly generated stable category. Here is a
+concrete verification rather than an identification with all left exact
+functors on a poset. In the spectral presheaf category let
+<span class="math" data-tex="$h_K$">$h_K$</span> be the spectral Yoneda
+generator. Impose the compact relations</p>
+<p><span class="math" data-tex="$$
+ \begin{gathered}
+ h_\varnothing=0,\\
+ h_K\amalg_{h_{K\cap L}}h_L\longrightarrow h_{K\cup L}.
+ \end{gathered}
+ \tag{GBT.9}
+$$">$$
+ \begin{gathered}
+ h_\varnothing=0,\\
+ h_K\amalg_{h_{K\cap L}}h_L\longrightarrow h_{K\cup L}.
+ \end{gathered}
+ \tag{GBT.9}
+$$</span></p>
+<p>The cofibres of these arrows are compact. The corresponding exact
+presheaf localization has local objects precisely
+<span class="math" data-tex="$D_T$">$D_T$</span>. Its inclusion
+preserves filtered colimits, since its conditions are finite limits, and
+preserves finite colimits by stability; it thus preserves all colimits.
+The localized <span class="math" data-tex="$h_K$">$h_K$</span>’s are
+compact and generate: mapping out of them is evaluation at
+<span class="math" data-tex="$K$">$K$</span>, so a functor annihilated
+by all of them is zero. This proves compact generation using only the
+stated presheaf-localization model.</p>
+<p>There is a colimit-preserving retraction from
+<span class="math" data-tex="$D_T$">$D_T$</span> onto continuous compact
+sheaves:</p>
+<p><span class="math" data-tex="$$
+ (\phi H)(K)=\operatorname*{colim}_{K\Subset L}H(L).
+ \tag{GBT.10}
+$$">$$
+ (\phi H)(K)=\operatorname*{colim}_{K\Subset L}H(L).
+ \tag{GBT.10}
+$$</span></p>
+<p>Continuity follows by inserting an intermediate compact neighborhood
+into <span class="math" data-tex="$K\Subset L$">$K\Subset L$</span>: it
+can be chosen between <span class="math" data-tex="$K$">$K$</span> and
+the interior of <span class="math" data-tex="$L$">$L$</span>. The posets
+of all such intermediate choices are filtered under shrinking. Thus the
+iterated colimit in (GBT.10) is the same colimit. Finite union descent
+follows by taking the finite descent squares of
+<span class="math" data-tex="$H$">$H$</span> over neighborhoods of
+<span class="math" data-tex="$K,L$">$K,L$</span>: their unions and
+intersections are cofinal neighborhoods of
+<span class="math" data-tex="$K\cup L,K\cap L$">$K\cup L,K\cap L$</span>,
+by GBT-1. Filtered exactness gives the resulting pullback square. The
+empty value follows by shrinking to the empty compact. Formula (GBT.10)
+is the identity on continuous compact sheaves. It preserves all
+colimits: these are pointwise in both compact categories, since stable
+colimits preserve finite pullbacks and commute with the continuity
+colimits. Hence
+<span class="math" data-tex="$\mathcal A_T$">$\mathcal A_T$</span>, by
+(GBT.4), is a retract of
+<span class="math" data-tex="$D_T$">$D_T$</span> in cocomplete stable
+categories.</p>
+<p>A compactly generated stable category is dualizable in (GBT.1).
+Explicitly, if
+<span class="math" data-tex="$D=\operatorname{Ind}(D^\omega)$">$D=\operatorname{Ind}(D^\omega)$</span>,
+its dual is
+<span class="math" data-tex="$\operatorname{Ind}((D^\omega)^{\mathrm{op}})$">$\operatorname{Ind}((D^\omega)^{\mathrm{op}})$</span>;
+evaluation on compact pairs is their mapping spectrum. The coevaluation
+is the identity bimodule. The coend Yoneda identity says that evaluation
+followed by this identity bimodule recovers each compact object, and
+then every object, since compacts generate by colimits. This checks both
+triangle identities. Here the dual retract can be constructed
+explicitly. For
+<span class="math" data-tex="$i:A\to D$">$i:A\to D$</span>,
+<span class="math" data-tex="$r:D\to A$">$r:D\to A$</span> with
+<span class="math" data-tex="$ri=\operatorname{id}_A$">$ri=\operatorname{id}_A$</span>,
+take
+<span class="math" data-tex="$B=\operatorname{Fun}^L(A,\mathrm{Sp})$">$B=\operatorname{Fun}^L(A,\mathrm{Sp})$</span>.
+Precomposition gives
+<span class="math" data-tex="$r^*:B\to D^\vee$">$r^*:B\to D^\vee$</span>
+and
+<span class="math" data-tex="$i^*:D^\vee\to B$">$i^*:D^\vee\to B$</span>,
+with
+<span class="math" data-tex="$i^*r^*=\operatorname{id}_B$">$i^*r^*=\operatorname{id}_B$</span>;
+these maps preserve pointwise colimits. Evaluation on
+<span class="math" data-tex="$B\otimes A$">$B\otimes A$</span> is the
+restriction of evaluation on
+<span class="math" data-tex="$D^\vee\otimes D$">$D^\vee\otimes D$</span>,
+since
+<span class="math" data-tex="$(Q\circ r)(i a)=Q(a)$">$(Q\circ r)(i a)=Q(a)$</span>.
+Apply <span class="math" data-tex="$r\otimes i^*$">$r\otimes i^*$</span>
+to the coevaluation for <span class="math" data-tex="$D$">$D$</span> to
+obtain the one for <span class="math" data-tex="$A$">$A$</span>. Moving
+<span class="math" data-tex="$i,r$">$i,r$</span> across evaluation is
+precisely precomposition; the two triangle composites reduce to those of
+<span class="math" data-tex="$D$">$D$</span> and to
+<span class="math" data-tex="$ri=1$">$ri=1$</span>. Thus these actual
+functor categories supply the dual without a separate existence
+assumption for an idempotent splitting. In particular
+<span class="math" data-tex="$\mathcal A_T$">$\mathcal A_T$</span> is
+dualizable.</p>
+<p>Its dual is
+<span class="math" data-tex="$\operatorname{CoShv}(T;\mathrm{Sp})$">$\operatorname{CoShv}(T;\mathrm{Sp})$</span>.
+Indeed a spectral cosheaf is the same thing as a colimit-preserving
+functor from
+<span class="math" data-tex="$\operatorname{Shv}(T)$">$\operatorname{Shv}(T)$</span>
+to spectra: extend its values on open representables by Yoneda colimits;
+the cosheaf condition is exactly the requirement that covering-sieve
+arrows are inverted. Stabilization makes this equivalently a
+colimit-preserving functor from
+<span class="math" data-tex="$\mathcal A_T$">$\mathcal A_T$</span> to
+spectra. The same argument with values in any cocomplete stable
+<span class="math" data-tex="$C$">$C$</span> gives</p>
+<p><span class="math" data-tex="$$
+\begin{gathered}
+\mathcal A_T^\vee\otimes C\\
+\simeq\operatorname{Fun}^L(\mathcal A_T,C)\\
+\simeq\operatorname{CoShv}(T;C).
+\end{gathered}
+\tag{GBT.11}
+$$">$$
+\begin{gathered}
+\mathcal A_T^\vee\otimes C\\
+\simeq\operatorname{Fun}^L(\mathcal A_T,C)\\
+\simeq\operatorname{CoShv}(T;C).
+\end{gathered}
+\tag{GBT.11}
+$$</span></p>
+<p>The first equivalence follows from the duality’s two triangle
+identities: an element of the tensor gives its evaluated functor, and
+coevaluation gives the inverse. This argument uses cocompleteness of
+<span class="math" data-tex="$C$">$C$</span>, not presentability.</p>
+<p>Finally transport (GBT.11) through the covariant Verdier equivalences
+<span class="math" data-tex="$\mathbb V_T^{\mathrm{Sp}}$">$\mathbb V_T^{\mathrm{Sp}}$</span>
+and <span class="math" data-tex="$\mathbb V_T^C$">$\mathbb V_T^C$</span>
+proved in SH02-SXM-3–5. This gives (GBT.8) and specifies it on a
+spectral sheaf <span class="math" data-tex="$F$">$F$</span> and a
+coefficient <span class="math" data-tex="$M$">$M$</span>:</p>
+<p><span class="math" data-tex="$$
+ \eta_T(F\otimes M)
+ = (\mathbb V_T^C)^{-1}\bigl(M\circ\mathbb V_T^{\mathrm{Sp}}F\bigr),
+ \tag{GBT.12}
+$$">$$
+ \eta_T(F\otimes M)
+ = (\mathbb V_T^C)^{-1}\bigl(M\circ\mathbb V_T^{\mathrm{Sp}}F\bigr),
+ \tag{GBT.12}
+$$</span></p>
+<p>where
+<span class="math" data-tex="$M:\mathrm{Sp}\to C$">$M:\mathrm{Sp}\to C$</span>
+is the colimit-preserving functor with
+<span class="math" data-tex="$M(\mathbb S)=M$">$M(\mathbb S)=M$</span>.
+Colimits of these pure tensors determine the functor and all its
+transformations. This proves Volpe 5.15–5.16 at the required coefficient
+scope; it does not silently make a nonpresentable
+<span class="math" data-tex="$C$">$C$</span> presentable.</p>
+<h2 id="SH02-GBT-5">SH02-GBT-5 — Coefficient compatibility and stable
+proper base change</h2>
+<p>For cosheaves, direct image is precomposition with inverse image on
+opens. It commutes with postcomposition by
+<span class="math" data-tex="$M:\mathrm{Sp}\to C$">$M:\mathrm{Sp}\to C$</span>.
+For proper <span class="math" data-tex="$p$">$p$</span>, the
+support-fibre comparison
+<span class="math" data-tex="$\mathbb V_Yp_*F\simeq p_*^{\mathrm{co}}\mathbb V_XF$">$\mathbb V_Yp_*F\simeq p_*^{\mathrm{co}}\mathbb V_XF$</span>
+is the actual support map of SH02-SXM-7. Compact preimages are cofinal
+supports, so it is invertible. Combining it with (GBT.12) proves</p>
+<p><span class="math" data-tex="$$
+ \eta_Y(p_*^{\mathrm{Sp}}\otimes C)
+ \simeq p_*^C\eta_X.
+ \tag{GBT.13}
+$$">$$
+ \eta_Y(p_*^{\mathrm{Sp}}\otimes C)
+ \simeq p_*^C\eta_X.
+ \tag{GBT.13}
+$$</span></p>
+<p>Proper spectral pushforward is colimit preserving: in compact models
+it is
+<span class="math" data-tex="$\phi(K\mapsto H(p^{-1}K))$">$\phi(K\mapsto H(p^{-1}K))$</span>.
+To see that this is the open pushforward’s compact model, an open
+<span class="math" data-tex="$W\supset p^{-1}K$">$W\supset p^{-1}K$</span>
+contains <span class="math" data-tex="$p^{-1}V$">$p^{-1}V$</span> for
+some neighborhood
+<span class="math" data-tex="$V\supset K$">$V\supset K$</span>: the
+proper map is closed, so take
+<span class="math" data-tex="$V=Y\setminus p(X\setminus W)$">$V=Y\setminus p(X\setminus W)$</span>,
+then shrink relatively compactly. All choices have common smaller
+neighborhoods. Precomposition and
+<span class="math" data-tex="$\phi$">$\phi$</span> preserve filtered
+colimits and finite limits; stability gives all colimits. The same proof
+works for every stable bicomplete coefficient category.</p>
+<p>The spectral adjunction
+<span class="math" data-tex="$p^*\dashv p_*$">$p^*\dashv p_*$</span> can
+therefore be tensored with <span class="math" data-tex="$C$">$C$</span>,
+including its unit and counit. Equation (GBT.13) identifies the right
+adjoint with actual pushforward; it identifies the left adjoint with
+actual pullback, by the mapping-space uniqueness of adjoints. For an
+open <span class="math" data-tex="$j$">$j$</span>, support excision
+gives
+<span class="math" data-tex="$\mathbb V j^*\simeq j^*\mathbb V$">$\mathbb V j^*\simeq j^*\mathbb V$</span>,
+so restriction also commutes with
+<span class="math" data-tex="$\eta$">$\eta$</span>. Its left adjoint
+<span class="math" data-tex="$j_!$">$j_!$</span> consequently commutes
+with <span class="math" data-tex="$\eta$">$\eta$</span>, with its unit
+fixed. Factor any continuous map as an open followed by a proper map, as
+in SH02-SXM-7. Composition of the pullback adjunctions and the
+proper-support formula
+<span class="math" data-tex="$f_!=p_*j_!$">$f_!=p_*j_!$</span> now
+give</p>
+<p><span class="math" data-tex="$$
+ f_C^*\simeq f_{\mathrm{Sp}}^*\otimes C,
+ \qquad f_!^C\simeq f_!^{\mathrm{Sp}}\otimes C
+ \tag{GBT.14}
+$$">$$
+ f_C^*\simeq f_{\mathrm{Sp}}^*\otimes C,
+ \qquad f_!^C\simeq f_!^{\mathrm{Sp}}\otimes C
+ \tag{GBT.14}
+$$</span></p>
+<p>under <span class="math" data-tex="$\eta$">$\eta$</span>. This proves
+the relevant content of Volpe 5.19, 5.21–5.22 and 6.7, including the
+maps of the adjunctions.</p>
+<p>This also supplies the exceptional adjoint in the nonpresentable
+case. Apply the pullback construction to the stable bicomplete category
+<span class="math" data-tex="$C^{\mathrm{op}}$">$C^{\mathrm{op}}$</span>.
+On cosheaves, direct image is
+<span class="math" data-tex="$(f_*^{C^{\mathrm{op}}})^{\mathrm{op}}$">$(f_*^{C^{\mathrm{op}}})^{\mathrm{op}}$</span>,
+left adjoint to
+<span class="math" data-tex="$(f_{C^{\mathrm{op}}}^*)^{\mathrm{op}}$">$(f_{C^{\mathrm{op}}}^*)^{\mathrm{op}}$</span>:
+this is the opposite of the ordinary pullback/direct-image adjunction.
+Transport through
+<span class="math" data-tex="$\mathbb V$">$\mathbb V$</span> gives</p>
+<p><span class="math" data-tex="$$
+ f^!= (\mathbb V_X^C)^{-1}
+       (f_{C^{\mathrm{op}}}^*)^{\mathrm{op}}\mathbb V_Y^C,
+ \qquad f_!\dashv f^!.
+$$">$$
+ f^!= (\mathbb V_X^C)^{-1}
+       (f_{C^{\mathrm{op}}}^*)^{\mathrm{op}}\mathbb V_Y^C,
+ \qquad f_!\dashv f^!.
+$$</span></p>
+<p>The actual direct image on cosheaves is colimit preserving. Its
+transported left adjoint is exactly the previously defined
+proper-support operation. Thus exceptional adjoint existence here
+follows from the explicit opposite pullback, and does not appeal to an
+adjoint functor theorem on
+<span class="math" data-tex="$C$">$C$</span>.</p>
+<p>For spectra, use the compact spectral model</p>
+<p><span class="math" data-tex="$$
+ \operatorname{Shv}(T;\mathrm{Sp})
+ \simeq\operatorname{Fun}^{\mathrm{lex}}
+       ((\mathrm{Sp}^\omega)^{\mathrm{op}},\operatorname{Shv}(T)).
+ \tag{GBT.15}
+$$">$$
+ \operatorname{Shv}(T;\mathrm{Sp})
+ \simeq\operatorname{Fun}^{\mathrm{lex}}
+       ((\mathrm{Sp}^\omega)^{\mathrm{op}},\operatorname{Shv}(T)).
+ \tag{GBT.15}
+$$</span></p>
+<p>This is the compact-object model of spectrum objects in an
+infinity-topos: finite spectral colimits become finite limits in the
+opposite compact category, and the sphere and its suspensions specify
+the usual loop-spectrum data. Ind extension reconstructs the spectrum;
+applying it on each open commutes with covering limits. The right
+adjoint <span class="math" data-tex="$h_*$">$h_*$</span> is
+postcomposition with space-sheaf
+<span class="math" data-tex="$h_*$">$h_*$</span>. Space-sheaf
+<span class="math" data-tex="$h^*$">$h^*$</span> is left exact, so its
+postcomposition preserves the finite-limit condition too. Pointwise
+units and counits restrict to this full functor category; thus
+postcomposition is the actual spectral adjunction. Apply this to every
+functor and every arrow in (GBT.3). GBT-3 proves that the resulting
+spectral mate is invertible.</p>
+<p><a id="GBT-PROPER-MATE"></a></p>
+<p>To transport this particular mate, use the two
+<strong>proper</strong> adjunctions. Write
+<span class="math" data-tex="$\delta:p'^*q^*\simeq q'^*p^*$">$\delta:p'^*q^*\simeq q'^*p^*$</span>
+for the commuting pullback comparison. The equivalent formula for the
+spectral mate at <span class="math" data-tex="$F$">$F$</span> is</p>
+<p><span class="math" data-tex="$$
+\begin{aligned}
+ q^*p_*F
+ &amp;\xrightarrow{\eta^{p'}}p'_*p'^*q^*p_*F\\
+ &amp;\xrightarrow{p'_*\delta}p'_*q'^*p^*p_*F\\
+ &amp;\xrightarrow{p'_*q'^*\epsilon^p}p'_*q'^*F.
+\end{aligned}
+\tag{GBT.15a}
+$$">$$
+\begin{aligned}
+ q^*p_*F
+ &amp;\xrightarrow{\eta^{p'}}p'_*p'^*q^*p_*F\\
+ &amp;\xrightarrow{p'_*\delta}p'_*q'^*p^*p_*F\\
+ &amp;\xrightarrow{p'_*q'^*\epsilon^p}p'_*q'^*F.
+\end{aligned}
+\tag{GBT.15a}
+$$</span></p>
+<p>Here is the map comparison with (GBT.3). The right-adjoint comparison
+<span class="math" data-tex="$\delta^R:p_*q'_*\simeq q_*p'_*$">$\delta^R:p_*q'_*\simeq q_*p'_*$</span>
+is the transpose of
+<span class="math" data-tex="$\delta$">$\delta$</span>. For an object
+<span class="math" data-tex="$G$">$G$</span>, its explicit defining
+composite inserts the unit of
+<span class="math" data-tex="$p'^*q^*\dashv q_*p'_*$">$p'^*q^*\dashv q_*p'_*$</span>,
+applies
+<span class="math" data-tex="$q_*p'_*\delta$">$q_*p'_*\delta$</span>,
+and then applies the counit of
+<span class="math" data-tex="$q'^*p^*\dashv p_*q'_*$">$q'^*p^*\dashv p_*q'_*$</span>.
+The composite unit first inserts
+<span class="math" data-tex="$\eta^q$">$\eta^q$</span>, then
+<span class="math" data-tex="$q_*\eta^{p'}q^*$">$q_*\eta^{p'}q^*$</span>;
+the composite counit first applies
+<span class="math" data-tex="$q'^*\epsilon^pq'_*$">$q'^*\epsilon^pq'_*$</span>,
+then
+<span class="math" data-tex="$\epsilon^{q'}$">$\epsilon^{q'}$</span>.
+Substitute this expression for
+<span class="math" data-tex="$\delta^R$">$\delta^R$</span> in (GBT.3),
+between its
+<span class="math" data-tex="$q'$">$q'$</span>-unit and
+<span class="math" data-tex="$q$">$q$</span>-counit. Naturality moves
+those two outside structural maps next to their corresponding inside
+maps. The <span class="math" data-tex="$q$">$q$</span>-unit–counit pair
+cancels by the triangle identity; the
+<span class="math" data-tex="$q'$">$q'$</span>-unit–counit
+pair cancels by its triangle identity. The remaining three maps are
+precisely (GBT.15a).</p>
+<p>All six functors in (GBT.15a) preserve colimits: pullbacks do so, and
+<span class="math" data-tex="$p,p'$">$p,p'$</span> are proper,
+so their pushforwards do so by the compact proof above. Their
+adjunctions, <span class="math" data-tex="$\delta$">$\delta$</span> and
+(GBT.15a) can therefore be tensored with
+<span class="math" data-tex="$C$">$C$</span>. Equations
+(GBT.13)–(GBT.14) identify them with the actual coefficient pullbacks
+and proper pushforwards. The same transpose calculation identifies the
+transported map with (GBT.3) in coefficient-valued sheaves. This proves
+<strong>general stable bicomplete proper base change</strong>, including
+nonpresentable coefficients. The argument never tensors an arbitrary
+<span class="math" data-tex="$q_*$">$q_*$</span> or
+<span class="math" data-tex="$q'_*$">$q'_*$</span>. Tensoring
+(GBT.15a) with any cocomplete stable
+<span class="math" data-tex="$E$">$E$</span> also gives proper base
+change on
+<span class="math" data-tex="$\mathscr S_T(E)$">$\mathscr S_T(E)$</span>,
+without asserting the existence of actual
+<span class="math" data-tex="$E$">$E$</span>-valued sheaves when
+<span class="math" data-tex="$E$">$E$</span> is not complete.</p>
+<h2 id="SH02-GBT-6">SH02-GBT-6 — The full proper-support base-change
+map</h2>
+<p>For an open Cartesian square, the map
+<span class="math" data-tex="$j'_!q'^*\to\bar q^*j_!$">$j'_!q'^*\to\bar q^*j_!$</span>
+is adjoint to the restriction identity
+<span class="math" data-tex="$j'^*\bar q^*j_!=q'^*j^*j_!\simeq q'^*$">$j'^*\bar q^*j_!=q'^*j^*j_!\simeq q'^*$</span>.
+For space-valued sheaves it is invertible on each open representable:
+inverse image takes the open represented by
+<span class="math" data-tex="$V$">$V$</span> to the open represented by
+its preimage, and open extension is the same representable considered in
+the ambient space. Such representables generate by colimits.
+Stabilization and (GBT.14) give the same assertion with arbitrary stable
+bicomplete coefficients, and on
+<span class="math" data-tex="$\mathscr S(E)$">$\mathscr S(E)$</span>.
+This proves the needed open case of Volpe 3.27 without introducing a
+hypothesis of hypercompleteness.</p>
+<p>Now in (GBT.2) let <span class="math" data-tex="$p$">$p$</span> be
+arbitrary and choose <span class="math" data-tex="$p=rj$">$p=rj$</span>,
+with
+<span class="math" data-tex="$j:X\hookrightarrow\overline X$">$j:X\hookrightarrow\overline X$</span>
+open and
+<span class="math" data-tex="$r:\overline X\to Y$">$r:\overline X\to Y$</span>
+proper. Pull back this factorization. The two arrows in</p>
+<p><span class="math" data-tex="$$
+ q^*r_*j_!F\longrightarrow r'_*\bar q^*j_!F
+ \longleftarrow r'_*j'_!q'^*F
+ \tag{GBT.16}
+$$">$$
+ q^*r_*j_!F\longrightarrow r'_*\bar q^*j_!F
+ \longleftarrow r'_*j'_!q'^*F
+ \tag{GBT.16}
+$$</span></p>
+<p>are respectively the proper mate of GBT-5 and the open-extension mate
+above. Both are invertible. Define
+<span class="math" data-tex="$\beta_p$">$\beta_p$</span> by the first
+arrow followed by the inverse of the second:</p>
+<p><span class="math" data-tex="$$
+ \beta_p:q^*p_!\xrightarrow{\sim}p'_!q'^*.
+ \tag{GBT.17}
+$$">$$
+ \beta_p:q^*p_!\xrightarrow{\sim}p'_!q'^*.
+ \tag{GBT.17}
+$$</span></p>
+<p>The proper-support composition equivalences of SH02-SXM-6–7 identify
+the ends of (GBT.16). A common refinement is concrete: take the closure
+of the diagonal copy of <span class="math" data-tex="$X$">$X$</span> in
+<span class="math" data-tex="$\overline X_1\times_Y\overline X_2$">$\overline X_1\times_Y\overline X_2$</span>.
+The two projections are proper. Its inverse image of either open copy of
+<span class="math" data-tex="$X$">$X$</span> is exactly that diagonal
+copy: on this open it is the closed graph of the other embedding, so
+taking the closure adds no points there. Thus it is a compactification
+with proper maps to both models. Pull back this diagram as well. Units
+and counits compose, their intermediate pairs cancel by the triangle
+identities, and the common support construction fixes the composition
+maps. Naturality of those units and counits makes the refinement squares
+commute; consequently the two zigzags give the same map. The same
+calculation proves pasting in successive Cartesian squares. In
+particular this is the map of Volpe 6.9, with its normalization
+compatible with the existing six-operation pasting lesson. Where the
+exceptional adjoints are used, transposition gives
+<span class="math" data-tex="$p^!q_*\simeq q'_*p'^!$">$p^!q_*\simeq q'_*p'^!$</span>;
+it is the transpose of (GBT.17).</p>
+<h2 id="SH02-GBT-7">SH02-GBT-7 — External products at the full
+coefficient scope</h2>
+<p>The rectangle product gives</p>
+<p><span class="math" data-tex="$$
+ \mathcal A_X\otimes\mathcal A_Y\simeq\mathcal A_{X\times Y}.
+ \tag{GBT.18}
+$$">$$
+ \mathcal A_X\otimes\mathcal A_Y\simeq\mathcal A_{X\times Y}.
+ \tag{GBT.18}
+$$</span></p>
+<p>To verify the model, first use the space-sheaf tensor, which is the
+presheaf category on pairs of opens localized at the covering relations
+in both variables. The product model of GBT-2 identifies it with the
+product of infinity-topoi. GBT-3’s rectangle argument identifies that
+product with
+<span class="math" data-tex="$\operatorname{Shv}(X\times Y)$">$\operatorname{Shv}(X\times Y)$</span>.
+Stabilizing gives (GBT.18), since
+<span class="math" data-tex="$\mathrm{Sp}\otimes\mathrm{Sp}\simeq\mathrm{Sp}$">$\mathrm{Sp}\otimes\mathrm{Sp}\simeq\mathrm{Sp}$</span>.
+This is Volpe 2.32 with its local compactness check supplied.</p>
+<p>For maps
+<span class="math" data-tex="$f:X\to X_1$">$f:X\to X_1$</span>,
+<span class="math" data-tex="$g:Y\to Y_1$">$g:Y\to Y_1$</span>, the
+pullback comparison
+<span class="math" data-tex="$f^*\boxtimes g^*\simeq(f\times g)^*$">$f^*\boxtimes g^*\simeq(f\times g)^*$</span>
+follows on rectangles from
+<span class="math" data-tex="$(f\times g)^{-1}(U\times V)=f^{-1}U\times g^{-1}V$">$(f\times g)^{-1}(U\times V)=f^{-1}U\times g^{-1}V$</span>.
+Both sides preserve colimits, so generators determine this comparison
+and its maps. Coefficient tensoring gives</p>
+<p><span class="math" data-tex="$$
+\begin{gathered}
+\operatorname{Shv}(X;C)\otimes\operatorname{Shv}(Y;D)\\
+\simeq\mathscr S_{X\times Y}(C\otimes D).
+\end{gathered}
+\tag{GBT.19}
+$$">$$
+\begin{gathered}
+\operatorname{Shv}(X;C)\otimes\operatorname{Shv}(Y;D)\\
+\simeq\mathscr S_{X\times Y}(C\otimes D).
+\end{gathered}
+\tag{GBT.19}
+$$</span></p>
+<p>For two open maps,
+<span class="math" data-tex="$f_!\boxtimes g_!$">$f_!\boxtimes g_!$</span>
+is left adjoint to
+<span class="math" data-tex="$f^*\boxtimes g^*$">$f^*\boxtimes g^*$</span>;
+tensor the two units and counits to verify this adjunction. Uniqueness
+of this adjoint and the rectangle comparison identify it with
+<span class="math" data-tex="$(f\times g)_!$">$(f\times g)_!$</span>.
+For two proper maps use instead the adjunction
+<span class="math" data-tex="$f^*\boxtimes g^*\dashv f_*\boxtimes g_*$">$f^*\boxtimes g^*\dashv f_*\boxtimes g_*$</span>,
+whose functors are all colimit preserving by GBT-5. Its right adjoint is
+<span class="math" data-tex="$(f\times g)_*$">$(f\times g)_*$</span>.
+For arbitrary maps write
+<span class="math" data-tex="$f=rj$">$f=rj$</span>,
+<span class="math" data-tex="$g=sk$">$g=sk$</span>. Then
+<span class="math" data-tex="$f\times g=(r\times s)(j\times k)$">$f\times g=(r\times s)(j\times k)$</span>,
+with its first map proper and second open. The two cases and the proved
+composition identification give</p>
+<p><span class="math" data-tex="$$
+ f_!\boxtimes g_!\simeq(f\times g)_!
+ \quad\text{on }\mathscr S_{X\times Y}(C\otimes D).
+ \tag{GBT.20}
+$$">$$
+ f_!\boxtimes g_!\simeq(f\times g)_!
+ \quad\text{on }\mathscr S_{X\times Y}(C\otimes D).
+ \tag{GBT.20}
+$$</span></p>
+<p>All right-hand functors on this tensor model are defined by the
+spectral functor tensored with
+<span class="math" data-tex="$C\otimes D$">$C\otimes D$</span>. We have
+proved the exact broad assertion of Volpe 6.13, retaining its target
+even when <span class="math" data-tex="$C\otimes D$">$C\otimes D$</span>
+is not bicomplete. No finite rank or perfect tensor factor was used.</p>
+<h2 id="SH02-GBT-8">SH02-GBT-8 — Projection and its normalized map</h2>
+<p>For
+<span class="math" data-tex="$F\in\operatorname{Shv}(X;C)$">$F\in\operatorname{Shv}(X;C)$</span>
+and
+<span class="math" data-tex="$G\in\operatorname{Shv}(Y;D)$">$G\in\operatorname{Shv}(Y;D)$</span>,
+their external product lies in
+<span class="math" data-tex="$\mathscr S_{X\times Y}(C\otimes D)$">$\mathscr S_{X\times Y}(C\otimes D)$</span>.
+Define the tensor on a single space by diagonal pullback. Consider the
+actual graph square</p>
+<p><span class="math" data-tex="$$
+\begin{array}{ccc}
+ X&amp;\xrightarrow{\Gamma_f}&amp;X\times Y\\
+ f\downarrow&amp;&amp;\downarrow f\times\operatorname{id}_Y\\
+ Y&amp;\xrightarrow{\Delta_Y}&amp;Y\times Y.
+\end{array}
+\tag{GBT.21}
+$$">$$
+\begin{array}{ccc}
+ X&amp;\xrightarrow{\Gamma_f}&amp;X\times Y\\
+ f\downarrow&amp;&amp;\downarrow f\times\operatorname{id}_Y\\
+ Y&amp;\xrightarrow{\Delta_Y}&amp;Y\times Y.
+\end{array}
+\tag{GBT.21}
+$$</span></p>
+<figure style="margin:1.2em 0">
+<picture>
+<source media="(max-width: 600px)" srcset="figures/graph-projection-mobile.svg"/>
+<img alt="The Cartesian graph square and the actual base-change mate used to prove projection." src="figures/graph-projection.svg" style="width:100%;height:auto"/>
+</picture>
+<figcaption>
+The four spaces and maps are exactly those of (GBT.21). The lower arrow
+is the particular base-change mate applied in (GBT.22). The portrait
+version arranges that same arrow vertically. The drawing is schematic,
+with no metric or geometric scale asserted. Proof: SH02-GBT-8; human
+mathematical sources: Lurie HTT 7.3.1.18 and Volpe’s published
+Propositions 6.9, 6.13 and 6.14.
+</figcaption>
+</figure>
+<p>The <a href="figures/draw_graph_diagram.py">reproducible figure
+source</a> retains both arrangements and their map specification.</p>
+<p>It is Cartesian: a pair
+<span class="math" data-tex="$(x,y)$">$(x,y)$</span> over
+<span class="math" data-tex="$(y,y)$">$(y,y)$</span> has
+<span class="math" data-tex="$f(x)=y$">$f(x)=y$</span>, so it is
+precisely the graph. Apply GBT-6 on the coefficient model
+<span class="math" data-tex="$\mathscr S(C\otimes D)$">$\mathscr S(C\otimes D)$</span>,
+and GBT-7 to
+<span class="math" data-tex="$f\times\operatorname{id}$">$f\times\operatorname{id}$</span>.
+This gives the following composite of specified equivalences:</p>
+<p><span class="math" data-tex="$$
+\begin{aligned}
+ f_!F\otimes G
+ &amp;=\Delta_Y^*(f_!F\boxtimes G)\\
+ &amp;\simeq\Delta_Y^*(f\times\operatorname{id})_!(F\boxtimes G)\\
+ &amp;\xrightarrow{\ \beta\ }f_!\Gamma_f^*(F\boxtimes G)\\
+ &amp;\simeq f_!(F\otimes f^*G).
+\end{aligned}
+\tag{GBT.22}
+$$">$$
+\begin{aligned}
+ f_!F\otimes G
+ &amp;=\Delta_Y^*(f_!F\boxtimes G)\\
+ &amp;\simeq\Delta_Y^*(f\times\operatorname{id})_!(F\boxtimes G)\\
+ &amp;\xrightarrow{\ \beta\ }f_!\Gamma_f^*(F\boxtimes G)\\
+ &amp;\simeq f_!(F\otimes f^*G).
+\end{aligned}
+\tag{GBT.22}
+$$</span></p>
+<p>The last comparison is the rectangle pullback identity followed by
+diagonal pullback. The projection map in the original course has the
+direction of this composite:
+<span class="math" data-tex="$\alpha_f:f_!F\otimes G\to f_!(F\otimes f^*G)$">$\alpha_f:f_!F\otimes G\to f_!(F\otimes f^*G)$</span>.
+For a proper map its transpose under
+<span class="math" data-tex="$f^*\dashv f_*$">$f^*\dashv f_*$</span> is
+<span class="math" data-tex="$f^*f_*F\otimes f^*G\to F\otimes f^*G$">$f^*f_*F\otimes f^*G\to F\otimes f^*G$</span>,
+the counit tensored with the identity. This follows by transposing the
+proper mate and the right-adjoint external-product comparison in
+(GBT.22); the intermediate unit and counit cancel. For an open map, take
+open representables in both variables: both sides are the representable
+intersection in the ambient space and the arrow is its identity. Colimit
+extension verifies all objects. These are exactly multiplication of a
+supported section by the pulled-back coefficient section. Factoring a
+general <span class="math" data-tex="$f$">$f$</span> as proper after
+open, the mate cancellation and composition from GBT-6 give their
+composite, hence the same supported multiplication map. Thus (GBT.22) is
+the normalized map of the original course’s (SB.12), not its opposite.
+The proof establishes Volpe 6.14 with arbitrary stable bicomplete
+<span class="math" data-tex="$C,D$">$C,D$</span>, on objects and
+maps.</p>
+<p>If <span class="math" data-tex="$C=D$">$C=D$</span> has a symmetric
+monoidal tensor preserving colimits separately, its multiplication
+<span class="math" data-tex="$\mu:C\otimes C\to C$">$\mu:C\otimes C\to C$</span>
+takes this formula to the ordinary
+<span class="math" data-tex="$C$">$C$</span>-valued projection formula.
+The comparison <span class="math" data-tex="$\eta$">$\eta$</span>,
+pullback and proper support commute with coefficient multiplication, by
+(GBT.12)–(GBT.14), so applying
+<span class="math" data-tex="$\mu$">$\mu$</span> preserves the displayed
+map.</p>
+<p><a id="GBT-HOM"></a></p>
+<p>For a closed coefficient tensor, we first construct the
+sheafification used in its adjunction, including when
+<span class="math" data-tex="$C$">$C$</span> is not presentable. For an
+open <span class="math" data-tex="$U\subset T$">$U\subset T$</span>, let
+<span class="math" data-tex="$j_U:U\hookrightarrow T$">$j_U:U\hookrightarrow T$</span>,
+let <span class="math" data-tex="$a_U:U\to *$">$a_U:U\to *$</span>, and
+put</p>
+<p><span class="math" data-tex="$$
+\begin{gathered}
+Q_U(M)=j_{U!}a_U^*M,\\
+\operatorname{Map}(Q_U(M),F)\\
+\simeq\operatorname{Map}_C(M,F(U)).
+\end{gathered}
+\tag{GBT.22a}
+$$">$$
+\begin{gathered}
+Q_U(M)=j_{U!}a_U^*M,\\
+\operatorname{Map}(Q_U(M),F)\\
+\simeq\operatorname{Map}_C(M,F(U)).
+\end{gathered}
+\tag{GBT.22a}
+$$</span></p>
+<p>The equality is the composite of the actual open and ordinary
+adjunctions from GBT-5. Every
+<span class="math" data-tex="$C$">$C$</span>-valued presheaf has its
+coend Yoneda presentation by the presheaves
+<span class="math" data-tex="$y_U\otimes M$">$y_U\otimes M$</span>.
+Extend
+<span class="math" data-tex="$y_U\otimes M\mapsto Q_U(M)$">$y_U\otimes M\mapsto Q_U(M)$</span>
+by that presentation to a colimit-preserving functor
+<span class="math" data-tex="$L_C$">$L_C$</span> from presheaves to
+sheaves. Mapping its defining coend into a sheaf
+<span class="math" data-tex="$F$">$F$</span>, and using (GBT.22a), gives
+exactly the presheaf mapping space into the underlying presheaf of
+<span class="math" data-tex="$F$">$F$</span>. Thus
+<span class="math" data-tex="$L_C\dashv i_C$">$L_C\dashv i_C$</span>,
+where <span class="math" data-tex="$i_C$">$i_C$</span> is the full
+inclusion. Its counit is invertible by full faithfulness. This
+constructs sheafification without an adjoint functor theorem on
+<span class="math" data-tex="$C$">$C$</span>.</p>
+<p>The open base-change and rectangle pullback comparisons give
+<span class="math" data-tex="$Q_U(M)\otimes Q_V(N)\simeq Q_{U\cap V}(M\otimes N)$">$Q_U(M)\otimes Q_V(N)\simeq Q_{U\cap V}(M\otimes N)$</span>.
+It is the identity on the constant coefficients over the intersection,
+extended by zero. Extend this actual comparison by colimits separately
+in the two presheaf variables. The Yoneda presentation then gives
+<span class="math" data-tex="$L_C(P\otimes_{\rm pt}Q)\simeq L_CP\otimes L_CQ$">$L_C(P\otimes_{\rm pt}Q)\simeq L_CP\otimes L_CQ$</span>,
+including its maps. Here
+<span class="math" data-tex="$\otimes_{\rm pt}$">$\otimes_{\rm pt}$</span>
+is pointwise presheaf tensor and the tensor on sheaves is the diagonal
+tensor already defined above. In particular the localization identifies
+that tensor with sheafified pointwise tensor.</p>
+<p>For sheaves <span class="math" data-tex="$F,G$">$F,G$</span>, define
+internal Hom on an open <span class="math" data-tex="$U$">$U$</span> by
+the end of the coefficient internal Homs of their presheaf restrictions
+to opens in <span class="math" data-tex="$U$">$U$</span>. Completeness
+supplies the end. A covering of
+<span class="math" data-tex="$U$">$U$</span> can be imposed in its
+target entries <span class="math" data-tex="$G(V)$">$G(V)$</span>;
+target descent and commutation of limits make this end satisfy covering
+descent. It is therefore a sheaf. The presheaf tensor–Hom adjunction
+followed by
+<span class="math" data-tex="$L_C\dashv i_C$">$L_C\dashv i_C$</span> and
+the preceding tensor comparison proves its actual sheaf tensor–Hom
+adjunction. Use the exceptional adjoint
+<span class="math" data-tex="$f^!$">$f^!$</span> constructed in GBT-5.
+For a test sheaf <span class="math" data-tex="$A$">$A$</span>,
+adjunction and (GBT.22) give</p>
+<p><span class="math" data-tex="$$
+\begin{gathered}
+\operatorname{Map}(A,f_*\underline{\operatorname{Hom}}_X(F,f^!G))\\
+\simeq\operatorname{Map}(F\otimes f^*A,f^!G)\\
+\simeq\operatorname{Map}(f_!F\otimes A,G)\\
+\simeq\operatorname{Map}(A,\underline{\operatorname{Hom}}_Y(f_!F,G)).
+\end{gathered}
+\tag{GBT.23}
+$$">$$
+\begin{gathered}
+\operatorname{Map}(A,f_*\underline{\operatorname{Hom}}_X(F,f^!G))\\
+\simeq\operatorname{Map}(F\otimes f^*A,f^!G)\\
+\simeq\operatorname{Map}(f_!F\otimes A,G)\\
+\simeq\operatorname{Map}(A,\underline{\operatorname{Hom}}_Y(f_!F,G)).
+\end{gathered}
+\tag{GBT.23}
+$$</span></p>
+<p>Likewise, testing on <span class="math" data-tex="$E$">$E$</span> and
+moving <span class="math" data-tex="$f_!$">$f_!$</span> through the
+tensor gives</p>
+<p><span class="math" data-tex="$$
+ f^!\underline{\operatorname{Hom}}_Y(G,H)
+ \simeq\underline{\operatorname{Hom}}_X(f^*G,f^!H).
+ \tag{GBT.24}
+$$">$$
+ f^!\underline{\operatorname{Hom}}_Y(G,H)
+ \simeq\underline{\operatorname{Hom}}_X(f^*G,f^!H).
+ \tag{GBT.24}
+$$</span></p>
+<p>Yoneda makes these identities of the actual transposed maps. The
+internal Hom assertions require the stated closed tensor; neither that
+requirement nor existence of
+<span class="math" data-tex="$f^!$">$f^!$</span> is inferred merely from
+a colimit-preserving functor on a nonpresentable category.</p>
+<h2 id="SH02-GBT-9">SH02-GBT-9 — Reading and specialization</h2>
+<p>The proof has three independent mechanisms. Compact restriction makes
+compact global sections commute with inverse image. The closed graph
+then proves nonabelian proper base change. Spectral stabilization and
+the covariant-Verdier coefficient equivalence transfer its actual mate
+to general coefficients. Finally the graph square (GBT.21) turns
+external products and base change into the projection formula.</p>
+<p>For the original course, take
+<span class="math" data-tex="$C=D_\infty(k)$">$C=D_\infty(k)$</span>.
+The <a href="derived-module-coefficients.html">derived module
+coefficient proof</a> provides the symmetric monoidal comparison with
+<span class="math" data-tex="$Hk$">$Hk$</span>-modules. The <a href="bounded-section-recognition.html">bounded section recognition
+proof</a> identifies the sectionwise uniformly bounded-below image, and
+the existing classical proper-support comparison identifies
+<span class="math" data-tex="$f_!$">$f_!$</span> there. Tensor formulas
+restrict to arbitrary <span class="math" data-tex="$D^+$">$D^+$</span>
+coefficients under the course’s finite global dimension hypothesis on
+<span class="math" data-tex="$k$">$k$</span>, which supplies a uniform
+lower bound for their derived tensor. The general modern theorem above
+does not require that ring hypothesis. No equivalence with all unbounded
+classical sheaf complexes is asserted. The separate hypothesis that
+<span class="math" data-tex="$f_!$">$f_!$</span> has cohomological
+dimension at most <span class="math" data-tex="$r$">$r$</span> on
+<strong>all</strong> module sheaves is retained when restricting the
+exceptional adjoint to <span class="math" data-tex="$D^+$">$D^+$</span>.
+Testing on each free open sheaf gives the uniform section lower bound
+<span class="math" data-tex="$a-r$">$a-r$</span> for
+<span class="math" data-tex="$f^!B$">$f^!B$</span> when
+<span class="math" data-tex="$B\in D^{\geq a}$">$B\in D^{\geq a}$</span>;
+bounded recognition then gives
+<span class="math" data-tex="$f^!D^{\geq a}\subset D^{\geq a-r}$">$f^!D^{\geq a}\subset D^{\geq a-r}$</span>.
+General modern adjoint existence is not substituted for that bounded
+classical argument.</p>
+<p><strong>Worked check.</strong> For the discrete space
+<span class="math" data-tex="$I=\mathbb N$">$I=\mathbb N$</span> and
+<span class="math" data-tex="$a:I\to *$">$a:I\to *$</span>, compact
+subsets are precisely finite subsets. For a family
+<span class="math" data-tex="$(M_i)$">$(M_i)$</span> in a stable
+bicomplete coefficient category,</p>
+<p><span class="math" data-tex="$$
+ a_!(M_i)=\bigoplus_iM_i,\qquad a_*(M_i)=\prod_iM_i.
+$$">$$
+ a_!(M_i)=\bigoplus_iM_i,\qquad a_*(M_i)=\prod_iM_i.
+$$</span></p>
+<p>For any coefficient <span class="math" data-tex="$G$">$G$</span>,
+(GBT.22) is the colimit-distributivity map
+<span class="math" data-tex="$(\bigoplus_iM_i)\otimes G\to\bigoplus_i(M_i\otimes G)$">$(\bigoplus_iM_i)\otimes G\to\bigoplus_i(M_i\otimes G)$</span>:
+its restriction to the <span class="math" data-tex="$i$">$i$</span>-th
+summand is the identity on
+<span class="math" data-tex="$M_i\otimes G$">$M_i\otimes G$</span>. It
+is invertible because the coefficient tensor preserves colimits
+separately. This checks the projection map for a nonproper map and
+arbitrary coefficients.</p>
+<p>The properness step for unrestricted direct image cannot be skipped.
+For spectral families
+<span class="math" data-tex="$F_n(i)=\mathbb S$">$F_n(i)=\mathbb S$</span>
+when <span class="math" data-tex="$i\leq n$">$i\leq n$</span> and zero
+otherwise,
+<span class="math" data-tex="$\operatorname{colim}_n a_*F_n=\bigoplus_i\mathbb S$">$\operatorname{colim}_n a_*F_n=\bigoplus_i\mathbb S$</span>,
+whereas
+<span class="math" data-tex="$a_*\operatorname{colim}_nF_n=\prod_i\mathbb S$">$a_*\operatorname{colim}_nF_n=\prod_i\mathbb S$</span>.
+On <span class="math" data-tex="$\pi_0$">$\pi_0$</span> the comparison
+is the proper inclusion
+<span class="math" data-tex="$\bigoplus_i\mathbb Z\to\prod_i\mathbb Z$">$\bigoplus_i\mathbb Z\to\prod_i\mathbb Z$</span>.
+Thus the filtered-colimit assertion used for a proper
+<span class="math" data-tex="$p_*$">$p_*$</span> is visibly false for
+this nonproper <span class="math" data-tex="$a_*$">$a_*$</span>, while
+proper-support projection still holds.</p>
+<p><strong>Human-source locators.</strong> Jacob Lurie, <a href="https://www.math.ias.edu/~lurie/papers/HTT.pdf"><em>Higher Topos
+Theory</em></a>, 7.3.1.1–7.3.1.6 (the mate and properness), 7.3.1.11 and
+7.3.3.9 (product models), 7.3.2.10–7.3.2.12 (closed subspaces),
+7.3.4.9–7.3.4.11 (compact models and proper global sections), and
+7.3.1.16–7.3.1.18 (nonabelian proper base change). The selected proof
+bodies occupy PDF pages 768–774, 779–787 and 789–794; printed page
+numbers are 18 lower. The author-hosted edition retains the book’s 2009
+publication identity.</p>
+<p>Marco Volpe, <a href="https://doi.org/10.1112/topo.70050"><em>The six
+operations in topology</em>, published version</a>, <em>Journal of
+Topology</em> <strong>18</strong> (2025), e70050; <a href="https://epub.uni-regensburg.de/78207/">institutional published
+copy</a>. Selected proof locators: 2.17–2.25 and 2.32 (coefficient and
+rectangle models), 3.27–3.28 (open mates and graph projection),
+5.13–5.22 (compact regularization, dualizability and coefficient
+compatibility), and 6.7, 6.9, 6.13–6.14. The selected pages are 14–19,
+33–35, 45–51 and 54–56. The published article is CC BY 4.0. These
+mathematical sources receive scholarly attribution; this independently
+written lesson and its figure sources are dedicated to <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0
+1.0</a>.</p>
+</article>
+<nav aria-label="Lessons" class="pager"><span class="pager-prev"><a href="perverse-normal-morse-inputs.html" rel="prev">← SH02-PNM-UNIT — Perverse degrees and normal Morse complexes</a></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a download="" href="src/general-basechange-and-tensor.md">Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/SH-02">Repository</a></nav>
+</footer>
+</body>
+</html>

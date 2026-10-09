@@ -6,19 +6,27 @@
   "written": "2026-10-09",
   "status": "Self-checked by the writing AI",
   "licence": "CC0-1.0",
-  "description": "OpenAI's proof (2026) of the second Kahn-Kalai conjecture: for every graph H with h >= 1 edges and at most n vertices, the threshold for G(n,p) to contain a copy of H is at most 2048 e^50 p_E(n,H)(1 + log_2 h), where p_E(n,H) is the least p at which every subgraph of H has at least 1/2 expected copies. The first lesson develops random subsets, increasing families, covers, expectation thresholds and copy counts, and shows with perfect matchings that a logarithmic factor is necessary. The second proves the planted resampling step for spread families; the third proves the tree covering theorem, with the spread lemma as the one-level case; the fourth builds the tree of conditional extensions of H and proves the theorem.",
-  "prerequisites": [],
+  "description": "OpenAI's proofs (2026) of four conjectures on thresholds and expectation thresholds. The second Kahn-Kalai conjecture: for every graph H with h >= 1 edges and at most n vertices, the threshold for G(n,p) to contain a copy of H is at most 2048 e^50 p_E(n,H)(1 + log_2 h). Talagrand's conjecture that integral and fractional expectation thresholds agree up to the factor 25 * 512^4. Talagrand's discrete convexity conjecture: if mu_p(D) >= 1 - 2^-75, the sets not covered by 2^75 members of D form a p-small family. The Ascoli-He-Park-Talagrand conjecture: every graph splits into a bounded number of pieces, each appearing at a constant multiple of the integral expectation threshold of the whole graph. Lessons 1-4 develop thresholds, copy counts, planted resampling, the tree covering theorem and the graph tree; lesson 5 proves a multiscale selector estimate and the rounding of fractional covers; lesson 6 uses biased Fourier weights, signed arrays and a covering lemma; lessons 7-8 prove embedding results for sparse pieces and assemble the decomposition.",
+  "prerequisites": [
+    "the-gaussian-moat-problem lesson concentration-and-the-discrete-cube (Theorem 2.2, Hoeffding's inequality)",
+    "amenability-and-unitarizability lesson contracting-averages-and-sparse-assignments (Lemma 2.1, Hall's theorem)",
+    "sharp-thresholds-for-graph-properties lesson biased-fourier-analysis-and-hypercontractivity (Section 1, for comparison only)"
+  ],
   "lessons": [
     "random-sets-covers-and-expectation-thresholds",
     "resampling-a-spread-family",
     "covering-a-probability-tree",
-    "the-second-kahn-kalai-conjecture"
+    "the-second-kahn-kalai-conjecture",
+    "integral-and-fractional-expectation-thresholds",
+    "the-discrete-convexity-conjecture",
+    "embedding-sparse-graphs-in-random-graphs",
+    "graph-decompositions-at-the-expectation-threshold"
   ],
   "checks": {
     "paid_citations": 0,
-    "exact_checks": "Python (scratch kk_checks.py, output kk_checks.out, 9 Oct 2026, 0 problems): strict monotonicity of threshold functions and q <= q_f <= p_c (enumerated covers, linear programming) on random increasing families; unions of product sets (exact); copy counts, containment probabilities and the uniform-copy spread bound for 10 small graphs; the edge-subset form of p_E with isolated vertices; p_E <= p_c from exact containment polynomials (n = 5); the triangle threshold; (n)_m >= (n/e)^m; the perfect-matching bounds for even n <= 3000; P(no isolated vertex) < 1/2 exactly for 16 <= n < 140 and by the Chebyshev bound to 10^8; uniform k-sets are k/N-spread; the planting identity, posterior law, inclusions and P(Z < theta) <= theta exactly on random indexed families; the generic forms of both parts of the local resampling theorem; the reduction lemma on 25 random disjoint trees with every W (local masses, bad nodes, potential independence below an arc, the change-of-measure step, reduced capacity, spread, depth and recovery); the product bound < 4, floors, waiting times and union densities; the conditional spread of graph extensions at the empty node and at 25 nonempty nodes of two-level chains; the cycle threshold bound for n <= 40; Exercises of all lessons.",
-    "lint": "kk_lint.py (scratch): headings, provenance line, balanced TeX delimiters, every sibling link resolved; 0 problems.",
-    "source_reading": "OpenAI preprint 'The second Kahn-Kalai conjecture' (24 Sep 2026), TeX read in full (sections introduction, resampling, trees, graphs; library copy openai-math-20261006); every step and constant rechecked. Lean formalization by OpenAI (comparator SecondKahnKalai.lean) noted. Kahn-Kalai, Frankston-Kahn-Narayanan-Park, Park-Pham, Mossel-Niles-Weed-Sun-Zadik (two papers), Dubroff-Kahn-Park, Tran and Alweiss-Lovett-Wu-Zhang cited by their arXiv versions; Talagrand, Lovett-Solomon-Zhang and Erdos-Renyi named for credit only."
+    "exact_checks": "Python (scratch kk_checks.py and kk58_checks.py, outputs kk_checks.out and kk58_checks.out, 9 Oct 2026, 0 problems). Lessons 1-4: strict monotonicity of threshold functions and q <= q_f <= p_c (enumerated covers, linear programming); unions of product sets; copy counts and containment probabilities for 10 small graphs; the edge-subset form of p_E; p_E <= p_c from exact containment polynomials; the perfect-matching and isolated-vertex bounds; planting identity, posterior law and both parts of local resampling in generic form; the reduction lemma on 25 random disjoint trees with every W; conditional spread of graph extensions at empty and nonempty nodes; the cycle bound. Lesson 1 additions and lessons 5-8: q_f <= spread parameter on random families, the uniform perfect matching is e^2/n-spread (n <= 2000) and q_f(PM_n) <= e^2/n by linear programming (n = 4, 6, 8); maximal truncation exactly on 3000 random instances; the selector-move combinatorics exactly on 12 random families (minimal feasible moves, cover property, profiles, (3.6), (3.7), the counting bound and the likelihood identity); the entropy bound; the mean of Y_x for p down to 1e-40; q <= q_f <= C q on small families; biased Fourier identities, the global weight bound, the signed identity for 1-4 rows and Li's fractional cover exactly; grouping of unions; the covering-lemma construction with generic parameters; the couplings of Theorem 7.1 exactly; positive selectors; q lower bounds; Paley-Zygmund; compression exactly; amplification; layering on random graphs; star-forest constants; degeneracy splitting, the set Y and parity colourings on random graphs; all numerical constants; Exercises of all lessons.",
+    "lint": "kk_lint.py (scratch): headings, provenance line, balanced TeX delimiters, every sibling link resolved; one flagged label reference checked by hand (lesson 8 cites Lemma 1.1 of lesson 7).",
+    "source_reading": "OpenAI preprints 'The second Kahn-Kalai conjecture' (24 Sep 2026), 'Integral and fractional expectation thresholds are equivalent' (23 Sep 2026), 'Talagrand's discrete convexity conjecture' (23 Sep 2026) and 'Graph decompositions at the integral expectation threshold' (5 Oct 2026), TeX read in full (library copy openai-math-20261006); every step and constant rechecked. Lean formalizations by OpenAI noted (families 175 and 176). The two-union fractional cover of Li is proved from the two-row signed identity. Hoeffding's inequality and Hall's theorem are cited from earlier programme lessons. Cited works: Kahn-Kalai, Frankston-Kahn-Narayanan-Park, Park-Pham (two papers), Mossel-Niles-Weed-Sun-Zadik (two papers), Dubroff-Kahn-Park, Tran, Alweiss-Lovett-Wu-Zhang, Talagrand (author's page), Pham, Bednorz-Martynek-Meller, Park, Li, Ascoli-He-Park-Talagrand; DeMarco-Kahn, Frankston-Kahn-Park, Fischer-Person, Friedgut, Ellis-Filmus-Friedgut, Lovett-Solomon-Zhang and Erdos-Renyi named for credit only."
   },
   "open_obligations": [],
   "free_sources": [
@@ -30,6 +38,16 @@
     "E. Mossel, J. Niles-Weed, N. Sun and I. Zadik, A second moment proof of the spread lemma, arXiv:2209.11347",
     "Q. Dubroff, J. Kahn and J. Park, On the 'second' Kahn-Kalai conjecture, arXiv:2508.14269",
     "T. Tran, Fractional expectation thresholds and the 'second' Kahn-Kalai conjecture, arXiv:2609.20546",
-    "R. Alweiss, S. Lovett, K. Wu and J. Zhang, Improved bounds for the sunflower lemma, arXiv:1908.08483"
+    "R. Alweiss, S. Lovett, K. Wu and J. Zhang, Improved bounds for the sunflower lemma, arXiv:1908.08483",
+    "OpenAI, Integral and fractional expectation thresholds are equivalent (OpenAI Math Release preprint, 23 Sep 2026)",
+    "OpenAI, Talagrand's discrete convexity conjecture (OpenAI Math Release preprint, 23 Sep 2026)",
+    "OpenAI, Graph decompositions at the integral expectation threshold (OpenAI Math Release preprint, 5 Oct 2026)",
+    "M. Talagrand, Are many small sets explicitly small?, author's version michel.talagrand.net/preprints/small.pdf",
+    "J. Park and H. T. Pham, On a conjecture of Talagrand on selector processes ..., arXiv:2204.10309",
+    "H. T. Pham, A sharp version of Talagrand's selector process conjecture ..., arXiv:2412.03540",
+    "W. Bednorz, R. Martynek and R. Meller, The suprema of selector processes ..., arXiv:2212.14636",
+    "J. Park, A dimension-free comparison between expectation thresholds and fractional expectation thresholds, arXiv:2609.14681",
+    "C. Li, On p-spread measures, arXiv:2609.08967",
+    "R. Ascoli, X. He, J. Park and M. Talagrand, A reformulation of the discrete convexity conjecture via k-thresholds, arXiv:2608.11183"
   ]
 }
