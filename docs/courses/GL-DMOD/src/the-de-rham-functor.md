@@ -2,6 +2,8 @@
 
 *Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
+*Citation, navigation and notation corrections by GPT-6 Astra (OpenAI), Ultra, October 2026; the mathematical statements, proofs and solutions are preserved.*
+
 A connection gives a differential on forms with coefficients. Its horizontal sections are the first part of that complex, but a singular differential system can also contribute higher cohomology. The de Rham functor retains the whole complex. We compute it at a puncture, prove its compatibility with proper direct images, and distinguish the information retained by ordinary sheaves from the information lost at an irregular boundary.
 
 Our algebraic varieties are smooth and separated, with pure dimension $d_X$, over a field of characteristic zero. Analytic assertions use $k=\mathbb C$. Modules are left $\mathcal D_X$-modules, quasi-coherent over $\mathcal O_X$. Write $\mathbb D_X$ for D-module duality and $\mathbf D_X$ for Verdier duality on $X^{an}$. The map operations have the conventions of Adjunctions, base change and the projection formula; their preservation of holonomicity was proved in Preservation of holonomicity and minimal extensions. Cohomological shifts satisfy $\mathcal H^q(K[r])=\mathcal H^{q+r}(K)$.
@@ -319,7 +321,7 @@ This is the de Rham form of the comparison between algebraic and analytic direct
 
 The analytic theorems used here have the following exact form.
 
-**Kashiwara's constructibility and perversity theorem, stated.** If $M$ is holonomic on a complex manifold of dimension $d$, then $R\mathcal Hom_{\mathcal D}(M,\mathcal O)[d]$ is a constructible perverse complex. See M. Kashiwara and P. Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), §§9.2 and 9.5. For algebraic holonomic modules their analytic de Rham and solution complexes are constructible with respect to an algebraic stratification. Exact holonomic duality and (1.8) give
+**Kashiwara's constructibility and perversity theorem, stated.** If $M$ is holonomic on a complex manifold of dimension $d$, then $R\mathcal Hom_{\mathcal D}(M,\mathcal O)[d]$ is a constructible perverse complex. See C. Schnell, [*D-modules*, pp. 122–123](https://www.math.stonybrook.edu/~cschnell/pdf/notes/d-modules.pdf#page=122), Example 24.9, Definition 24.10 and Example 24.11; regularity is not required. For the algebraic constructibility assertion, see J. Bernstein, [Lecture 5, Section 3, Main Theorem C(a)](https://www.math.columbia.edu/~khovanov/resources/Bernstein-dmod.pdf#page=29), printed p. 37 (PDF p. 29), with proof on printed pp. 39–40. For algebraic holonomic modules their analytic de Rham and solution complexes are constructible with respect to an algebraic stratification. Exact holonomic duality and (1.8) give
 \[
 \operatorname{DR}_X(M)\in\operatorname{Perv}(X^{an}).
 \tag{4.1}
@@ -340,7 +342,7 @@ For instance, on the line $\mathbb C[1]$ has a point stalk in degree $-1$ and po
 \simeq \mathbf D_X\operatorname{DR}_X(M).
 \tag{4.3}
 \]
-For this statement see V. Ginzburg, [*Lectures on D-modules*](https://math.berkeley.edu/~nadler/ginzburg.dmodules.pdf), on duality for holonomic modules. Here $\mathbf D_XK=R\mathcal Hom_{\mathbb C}(K,\mathbb C[2d_X])$ uses the canonical complex orientation. Verdier duality is developed in [Microlocal sheaves](https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-02/).
+For this analytic Verdier-duality comparison see Schnell, [Example 24.9, pp. 122–123](https://www.math.stonybrook.edu/~cschnell/pdf/notes/d-modules.pdf#page=122); for the algebraic holonomic case see Bernstein, [Main Theorem C(a), printed pp. 37 and 39–40](https://www.math.columbia.edu/~khovanov/resources/Bernstein-dmod.pdf#page=29). Here $\mathbf D_XK=R\mathcal Hom_{\mathbb C}(K,\mathbb C[2d_X])$ uses the canonical complex orientation. Verdier duality is developed in [Microlocal sheaves](https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-02/).
 
 **Inverse-image compatibility, stated with its hypothesis.** For every morphism of smooth algebraic varieties and every *regular holonomic* complex $N$,
 \[
@@ -348,15 +350,15 @@ For this statement see V. Ginzburg, [*Lectures on D-modules*](https://math.berke
 \simeq (f^{an})^!\operatorname{DR}_Y(N).
 \tag{4.4}
 \]
-This is part of the Riemann–Hilbert correspondence for regular holonomic complexes, which gives both direct-image and both inverse-image comparisons; see M. Kashiwara and P. Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), §9.2. For an arbitrary coherent module with non-characteristic $f$, Cauchy–Kowalevski–Kashiwara gives the more restricted comparison
+This is part of the Riemann–Hilbert correspondence for regular holonomic complexes, which gives both direct-image and both inverse-image comparisons; see Bernstein, [Lecture 5, Section 3, Main Theorem C(b), printed p. 37](https://www.math.columbia.edu/~khovanov/resources/Bernstein-dmod.pdf#page=29), for the four algebraic regular-holonomic operations. For an arbitrary coherent module with non-characteristic $f$, Cauchy–Kowalevski–Kashiwara gives the more restricted comparison
 \[
 \operatorname{DR}_X(Lf^*N)
 \simeq (f^{an})^{-1}\operatorname{DR}_Y(N)[d_X-d_Y].
 \tag{4.5}
 \]
-See Proposition 4.7.6 and Kashiwara–Schapira, Theorem 11.3.5, the latter expressed using unshifted solutions. Since $f^!=Lf^*[d_X-d_Y]$, (4.5) has total shift $2(d_X-d_Y)$ when written for $f^!$. For smooth $f$ this matches the oriented real relative dimension in sheaf $f^!$. Formula (4.4) at an arbitrary characteristic embedding cannot be inferred from (4.5) by dropping non-characteristicness.
+See P. Schapira, [*An introduction to D-modules*, version 7, March 2020](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/Dmod.pdf#page=32), Theorem 2.3.10 on p. 32 (non-characteristic duality) and Theorem 2.4.1 on pp. 33–34 (unshifted solution comparison). Apply the solution comparison to the dual module, use the non-characteristic duality isomorphism and (1.8), and insert the source and target normalization shifts; this gives exactly (4.5). Since $f^!=Lf^*[d_X-d_Y]$, (4.5) has total shift $2(d_X-d_Y)$ when written for $f^!$. For smooth $f$ this matches the oriented real relative dimension in sheaf $f^!$. Formula (4.4) at an arbitrary characteristic embedding cannot be inferred from (4.5) by dropping non-characteristicness.
 
-Regular singularities and the full Riemann–Hilbert correspondence are the subjects of the next two lessons. The analytic constructibility proof belongs to analytic sheaf theory, specifically Kashiwara–Schapira, Chapter XI. None of these stated analytic theorems is substituted for the proper direct-image proof in Section 3.
+Regular singularities and the full Riemann–Hilbert correspondence are the subjects of the next two lessons. The analytic constructibility and perversity results have the full holonomic scope stated above; their cited formulation is Schnell, pp. 122–123, and their internal proof dependency remains analytic sheaf theory. None of these stated analytic theorems is substituted for the proper direct-image proof in Section 3.
 
 ## 5. Algebraic cohomology and an exponential warning
 
@@ -454,7 +456,7 @@ dh_i+h_i d=1.
 \]
 This is the pole-layer operator \((\operatorname{Res}_i-nI)^{-1}\iota_i\) for the trivial connection, whose residue is zero. The negative sign is retained. No analytic power series or residue classification is assumed.
 
-Every finite added-pole quotient is consequently acyclic. The short exact sequence of complexes shows that each finite inclusion is a quasi-isomorphism. Induction on the sum of N_i makes \(F_0^\bullet\to F_N^\bullet\) a quasi-isomorphism for every finite multi-index, including all crossings and all existing other-coordinate poles.
+Every finite added-pole quotient is consequently acyclic. The short exact sequence of complexes shows that each finite inclusion is a quasi-isomorphism. Induction on the sum of \(N_i\) makes \(F_0^\bullet\to F_N^\bullet\) a quasi-isomorphism for every finite multi-index, including all crossings and all existing other-coordinate poles.
 
 The filtered union of these complexes is \(\mathcal M^\bullet\). Once all boundary coordinates are units, logarithmic and ordinary meromorphic forms have the same basis module. Filtered colimits are exact on stalks and commute with cohomology. Passing to the union proves the asserted quasi-isomorphism. Away from \(D\) it is the identity. \(\square\)
 
@@ -464,7 +466,7 @@ The open immersion \(j\) is affine. To prove this even on an affine neighbourhoo
 \[
 \mathcal A=\bigcup_{n\geq0}\mathcal O_P(nD).
 \]
-This is a quasi-coherent algebra. On a neighbourhood with boundary equation \(q\) it is \(\mathcal O_P[1/q]\); its relative spectrum is locally the distinguished open \(D\)(\(q\)). These identifications agree in the common rational-function algebra, so \(\operatorname{Spec}_P\mathcal A=U\). On any affine \(W\), the affine sheaf/module equivalence, Theorem 1.2 identifies \(\mathcal A|_W\) with its section algebra \(B\). Its relative spectrum over \(W\) is \(\operatorname{Spec}B\): on a distinguished open \(D\)(f) the algebra is B_f, so these affine pieces glue to that spectrum. This proves affineness of \(j\) for every affine base open.
+This is a quasi-coherent algebra. On a neighbourhood with boundary equation \(q\) it is \(\mathcal O_P[1/q]\); its relative spectrum is locally the distinguished open \(D\)(\(q\)). These identifications agree in the common rational-function algebra, so \(\operatorname{Spec}_P\mathcal A=U\). On any affine \(W\), the affine sheaf/module equivalence, Theorem 1.2 identifies \(\mathcal A|_W\) with its section algebra \(B\). Its relative spectrum over \(W\) is \(\operatorname{Spec}B\): on a distinguished open \(D\)(f) the algebra is \(B_f\), so these affine pieces glue to that spectrum. This proves affineness of \(j\) for every affine base open.
 
 Localization of Kähler differentials gives, degree by degree and with the same differential,
 \[
@@ -485,7 +487,7 @@ These identifications are the ordinary restriction/direct-image comparisons. Tog
 
 For a smooth Hausdorff second-countable manifold \(M\), here is the needed partition argument. Choose a countable cover by relatively compact coordinate balls. Recursively enlarge finite unions of their compact closures to compacts \(K_n\), with \(K_n\subset\operatorname{int}K_{n+1}\) and union \(M\): cover each previous compact by finitely many relatively compact coordinate balls and include the next ball from the countable cover. Put \(K_0\) and \(K_{-1}\) empty.
 
-For an arbitrary open cover, the compact band \(K_n\setminus\operatorname{int}K_{n-1}\) has a finite cover by smaller coordinate balls whose concentric larger closed balls lie in assigned cover members, inside \(\operatorname{int}K_{n+1}\), and outside K_{\(n\)-2}. The bands miss K_{\(n\)-2}, so such choices exist. The larger balls are locally finite: a neighbourhood inside \(K_N\) misses all those for \(n\) at least \(N\)+2. A bump positive on each smaller ball, with compact support in its larger ball, extends smoothly by zero. One explicit bump is \(e^{-1/s^2}\) for \(s=r^2-|x-a|^2>0\), zero otherwise. All its derivatives and their difference quotients tend to zero at s=0, because the exponential dominates every polynomial in 1/s. Normalize these bumps by their positive locally finite sum. This proves a smooth subordinate partition on \(M\), including local finiteness and valid support extension. For a finite cover, group the functions assigned to the same member. Each grouped sum is smooth, and its support is contained in the locally finite union of their closed supports. That union is closed: near any point only finitely many supports occur, and the complement of their union is open. It remains inside the assigned member, so grouping supplies the pairs and finite indexed partitions used below.
+For an arbitrary open cover, the compact band \(K_n\setminus\operatorname{int}K_{n-1}\) has a finite cover by smaller coordinate balls whose concentric larger closed balls lie in assigned cover members, inside \(\operatorname{int}K_{n+1}\), and outside \(K_{n-2}\). The bands miss \(K_{n-2}\), so such choices exist. The larger balls are locally finite: a neighbourhood inside \(K_N\) misses all those for \(n\) at least \(N\)+2. A bump positive on each smaller ball, with compact support in its larger ball, extends smoothly by zero. One explicit bump is \(e^{-1/s^2}\) for \(s=r^2-|x-a|^2>0\), zero otherwise. All its derivatives and their difference quotients tend to zero at s=0, because the exponential dominates every polynomial in 1/s. Normalize these bumps by their positive locally finite sum. This proves a smooth subordinate partition on \(M\), including local finiteness and valid support extension. For a finite cover, group the functions assigned to the same member. Each grouped sum is smooth, and its support is contained in the locally finite union of their closed supports. That union is closed: near any point only finitely many supports occur, and the complement of their union is open. It remains inside the assigned member, so grouping supplies the pairs and finite indexed partitions used below.
 
 With \(\mathcal S=\mathcal C^\infty_M(\mathbf C)\), global sections of \(\mathcal S\)-modules are exact: multiply local lifts by the partition functions, extend by zero, and sum. The sheaf-injective theorem, Theorem 5.4 supplies an injective \(\mathcal S\)-module resolution. Its forgetful functor to complex sheaves preserves injectives, since its left adjoint \(\mathcal S\otimes_{\mathbf C}-\) is exact on stalks. This resolution proves that every \(\mathcal S\)-module is acyclic for sections, on \(M\) and on every open subset.
 
@@ -529,7 +531,7 @@ Thus write the resulting form as \(\sum_{n\in\mathbf Z^k}z^n v_n\), with nonnega
 h_n=\frac1{n_i}\iota_i.
 \tag{5.3l}
 \]
-Contraction removes \(e_i\) at its increasing position a with sign \((-1)^{a-1}\), so \(\iota_i(e_j\wedge\,\cdot)+e_j\wedge\iota_i=\delta_{ij}\). This gives \(dh_n+h_nd=1\). Its coefficient norm is at most one for this fixed exterior basis. Therefore it preserves normal convergence on every compact subpolydisc and preserves every finite lower pole bound. Set h_0=0. With \(p_w\) evaluation at \(w\)=0, \(i_w\) insertion of \(w\)-independent forms, and h_N the normal coefficient contraction, the total homotopy is \(h=(-1)^pH_w+i_wh_Np_w\). Substitution gives an actual contraction onto
+Contraction removes \(e_i\) at its increasing position a with sign \((-1)^{a-1}\), so \(\iota_i(e_j\wedge\,\cdot)+e_j\wedge\iota_i=\delta_{ij}\). This gives \(dh_n+h_nd=1\). Its coefficient norm is at most one for this fixed exterior basis. Therefore it preserves normal convergence on every compact subpolydisc and preserves every finite lower pole bound. Set \(h_0=0\). With \(p_w\) evaluation at \(w\)=0, \(i_w\) insertion of \(w\)-independent forms, and \(h_N\) the normal coefficient contraction, the total homotopy is \(h=(-1)^pH_w+i_wh_Np_w\). Substitution gives an actual contraction onto
 \[
 K_A^\bullet=\bigwedge^\bullet\mathbf C^k,\qquad d=0,
 \tag{5.3m}
@@ -606,7 +608,7 @@ For an increasing index set \(I=\{i_1<\cdots<i_p\}\), the residual form \(v_I e_
 =(2\pi i)^p v_I.
 \tag{5.3s}
 \]
-The empty product is one. Thus the actual natural comparison on the residual complex (5.3m) is a degreewise isomorphism. All exterior signs agree with the positive cube boundary: its j_a face has factor \((-1)^{a-1}\), and upper minus lower coefficients cancel for constants. Iterated one-variable integration proves the chain identity directly.
+The empty product is one. Thus the actual natural comparison on the residual complex (5.3m) is a degreewise isomorphism. All exterior signs agree with the positive cube boundary: its \(j_a\) face has factor \((-1)^{a-1}\), and upper minus lower coefficients cancel for constants. Iterated one-variable integration proves the chain identity directly.
 
 On the full meromorphic source, if \(\mathcal I\) is this actual cube-period chain map, the contraction already proved gives
 \[
@@ -674,7 +676,7 @@ Every smooth affine finite-type complex \(U\) has a smooth projective SNC compac
 
 the proper-pair comparison above now proves the canonical comparison for every such affine \(U\). We next show that these canonical affine comparisons give (5.3a) for every smooth separated finite-type \(X\), without imposing a global quasi-projective hypothesis.
 
-Choose a finite affine cover \(X=\bigcup_{\nu=1}^r U_\nu\). Each finite intersection \(U_I\) is affine: it is the inverse image of the closed diagonal under the product of the corresponding affine opens, and a closed subscheme of an affine scheme is affine. It is smooth as an open of \(X\). Each U_I therefore has the just-proved comparison.
+Choose a finite affine cover \(X=\bigcup_{\nu=1}^r U_\nu\). Each finite intersection \(U_I\) is affine: it is the inverse image of the closed diagonal under the product of the corresponding affine opens, and a closed subscheme of an affine scheme is affine. It is smooth as an open of \(X\). Each \(U_I\) therefore has the just-proved comparison.
 
 The algebraic ordered Čech/form complex is
 \[
@@ -701,7 +703,7 @@ It computes \(R\Gamma(X^{\mathrm{an}},\mathbf C)\). Here is an explicit augmenta
 \]
 with each term extended by zero where needed. Its support lies inside the corresponding cover member. Alternating deletion gives \(\delta h+h\delta=1\), because all extra terms cancel and \(\sum_\nu\chi_\nu=1\). Thus the augmentation from global smooth forms has exact Čech rows; finite filtration by form degree proves it is a quasi-isomorphism. Formula (5.3j) identifies those global smooth forms with actual constant-sheaf derived sections.
 
-Restriction of algebraic forms to smooth analytic forms gives an actual map of double complexes from (5.3y) to (5.3z), commuting with both differentials and all restrictions. On the column for each U_I it is the canonical comparison already proved in the proper-pair comparison above, represented on the algebraic side by global forms because U_I is affine. It is consequently a quasi-isomorphism on every such column.
+Restriction of algebraic forms to smooth analytic forms gives an actual map of double complexes from (5.3y) to (5.3z), commuting with both differentials and all restrictions. On the column for each \(U_I\) it is the canonical comparison already proved in the proper-pair comparison above, represented on the algebraic side by global forms because \(U_I\) is affine. It is consequently a quasi-isomorphism on every such column.
 
 Filter the mapping cone of the total map by the finite Čech degree. Its graded pieces are those acyclic column cones, so induction along this finite filtration makes its full total cone acyclic. The total map is a quasi-isomorphism. Through the proved natural Čech augmentations it is exactly \(\gamma_X\) of the canonical-map construction above, since every local component is restriction of the same algebraic form. This proves (5.3a) for all smooth separated finite-type \(X\).
 
@@ -773,8 +775,11 @@ The analytic Cauchy–Kowalevski–Kashiwara theorem, constructibility and perve
 
 ## References
 
-- M. Kashiwara and P. Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), §§9.2, 9.5 and 10.2: constructibility and perversity of solution complexes, and non-characteristic systems.
-- V. Ginzburg, [*Lectures on D-modules*](https://math.berkeley.edu/~nadler/ginzburg.dmodules.pdf): de Rham and solution functors, holonomic duality and the comparison theorems.
+- C. Schnell, [*D-modules*](https://www.math.stonybrook.edu/~cschnell/pdf/notes/d-modules.pdf), Lecture 24, pp. 122–123, Example 24.9, Definition 24.10 and Example 24.11: general holonomic duality and perversity.
+- J. Bernstein, [D-module lectures](https://www.math.columbia.edu/~khovanov/resources/Bernstein-dmod.pdf), Lecture 5, Section 3, Main Theorem C(a)–(b), printed pp. 37–40 (PDF pp. 29–32): algebraic constructibility, Verdier duality and regular-holonomic operation comparisons.
+- P. Schapira, [*An introduction to D-modules*](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/Dmod.pdf), version 7, March 2020, Theorems 2.3.10 and 2.4.1, pp. 32–34: non-characteristic duality and the unshifted Cauchy–Kowalevski–Kashiwara comparison.
+- M. Kashiwara and P. Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), §§9.2 and 9.5: background on the regular-holonomic Riemann–Hilbert setting and perverse sheaves; not the source used above for the arbitrary-holonomic assertions.
+- V. Ginzburg, [*Lectures on D-modules*](https://math.berkeley.edu/~nadler/ginzburg.dmodules.pdf): de Rham and solution functors, relative Spencer complexes and algebraic D-module duality; analytic Verdier compatibility is cited separately above.
 - Bhatt–Blickle–Lyubeznik–Singh–Zhang, [*Applications of perverse sheaves in commutative algebra*](https://arxiv.org/abs/2308.03155), Section 2, theorem labeled “RH,” parts (1)–(3): the regular holonomic correspondence and normalization.
 - Frenkel, [*Lectures on the Langlands program and conformal field theory*](https://arxiv.org/abs/hep-th/0512172), Sections 3.4–3.6: systems, Euler examples and the two functor conventions.
 - Grothendieck, [*On the de Rham cohomology of algebraic varieties*](https://pmihes.centre-mersenne.org/articles/10.1007/BF02684807/), Theorems 1 and 1′, pp. 95–96.

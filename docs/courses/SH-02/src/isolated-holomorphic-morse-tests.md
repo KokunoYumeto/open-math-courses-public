@@ -21,6 +21,10 @@ Maxim–Schürmann, Corollary 4.14, equation (94), pp. 65–66, identifies IHM1 
 
 These references specify mathematical inputs. They do not grant a right to redistribute their source text, and the results on which they depend are not proved here. In particular the existence of the stratification, the isotopy and controlled-boundary results, and the analytic intersection theory retain their separate dependency identities.
 
+<a id="SH02-IHM-CHARACTERISTIC-VALUES"></a>
+
+The [characteristic-value theorem](../characteristic-values-from-analytic-cells.html#CV0) supplies the geometric discreteness statement for radial value avoidance when the cotangent set is closed, conic, subanalytic and isotropic, and the radius is proper on its base support. Its [singular-incidence argument](../characteristic-values-from-analytic-cells.html#CV2) includes zero covectors and retains the exact properness hypothesis.
+
 ## SH02-IHM-BOUNDARY — From a local test to one compact cluster
 
 Here is why the boundary argument applies. Away from $y$, the differential of $g$ is nonzero on every stratum. A supported test in this differential direction therefore vanishes by the constructible conormal estimate. The local comparison in equation (94) identifies this same test with the shifted vanishing-cycle stalk, so those stalks vanish away from $y$. Thus their support is either empty or isolated at $y$. When it contains $y$, this verifies the literal hypothesis of Massey's Lemma 5.2. No theorem identifying the full nonisolated critical support is used in this verification.

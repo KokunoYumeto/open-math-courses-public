@@ -10,6 +10,7 @@ import json
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-varying-crossed-products-two-stabilizers-20261009-v1"
 from matplotlib.patches import FancyBboxPatch, Rectangle
 
 D = Path(__file__).resolve().parent
@@ -152,6 +153,6 @@ ax.text(7.5,.86,r"$Z(P)\cong\mathbb{C}^3,\qquad L^\infty(\{A,B\},\nu)\longrighta
 ax.text(7.5,.31,"Each operator square is a full B(H) corner. The two base weights change the Hilbert norms, while the displayed algebras stay the same.",
         ha="center",fontsize=11.5,color=muted)
 fig.savefig(D/"two-stabilizers.png",dpi=180)
-fig.savefig(D/"two-stabilizers.svg")
+fig.savefig(D/"two-stabilizers.svg", metadata={"Date": None})
 plt.close(fig)
 print(json.dumps(data["rational_checks"]))

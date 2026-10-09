@@ -1,0 +1,1991 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Original vorticity mass and a regularity interval — Incompressible flow</title><link rel="stylesheet" href="reader.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script>
+<script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Incompressible flow</a><a href="src/original-vorticity-mass-and-a-regularity-interval.md">Editable lesson</a><span class="unlinked">Sources and authorship</span></nav></header><main id="main"><nav aria-label="Lesson sequence"><a href="NS-FLUID-16.html">Previous lesson</a></nav><article class="lesson"><h1 id="original-vorticity-mass-and-a-regularity-interval">Original vorticity mass and a regularity interval</h1>
+<p>The preceding lesson found an earlier frequency component
+whose velocity amplitude is large. We now recover an integral
+of the original vorticity on a physical ball and preserve it
+through a definite interval on which the velocity and its
+derivatives have quantitative bounds.</p>
+<p>First, the complete inverse-curl kernel controls the exterior
+contribution using the original velocity norm. Then a time
+selected from the nonlinear gradient energy starts an explicit
+regularity interval. Every heat cutoff term, Newton boundary
+field and point mass remains in the proof. A smaller actual
+interval supplies the coefficients needed by the finite
+Gaussian estimate, while keeping the same original mass.</p>
+<p>Read <a href="NS-FLUID-16.html">Iterated backpropagation and total speed</a>
+for the earlier frequency operation,
+<a href="NS-FLUID-12.html">Global nonlinear energy and total speed</a>
+for the energy inputs, and
+<a href="NS-FLUID-14.html">Interior vorticity bounds on an actual annulus</a>
+for the complete local heat and Newton maps.
+The precise Gaussian receiving hypothesis is in
+<a href="NS-FLUID-10.html">Critical velocity tails and weighted heat estimates</a>,
+equation (4.7) and Section 6.</p>
+<p>The human comparison is Terence Tao,
+<a href="https://arxiv.org/abs/1908.04958v2"><em>Quantitative bounds for critically bounded solutions to the
+Navier–Stokes equations</em>, version 2</a>,
+original author article.tex 423–512 and 1254–1290.
+The argument below retains the original viscosity and
+coordinates. It proves the mass and regularity inputs;
+the full weighted error absorption and general large
+critical-velocity endpoint remain further arguments.</p>
+<h2 id="1-the-original-curl-to-frequency-kernel">1. The original curl-to-frequency kernel</h2>
+<p>Use the original smooth source-class, unforced solution on
+<span class="math" data-tex="\([t_0-T,t_0]\times\mathbb R^3\)">\([t_0-T,t_0]\times\mathbb R^3\)</span>, with original viscosity
+<span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, pressure <span class="math" data-tex="\(p(t,x)\)">\(p(t,x)\)</span>, and bound
+<span class="math" data-tex="\(\sup_t\|u(t)\|_3\leq U\)">\(\sup_t\|u(t)\|_3\leq U\)</span>, with the full equation</p>
+<span class="math math-display" data-tex="\[
+\partial_tu+(u\cdot\nabla)u+\nabla p=\nu\Delta u,\qquad
+\operatorname{div}u=0
+\]">\[
+\partial_tu+(u\cdot\nabla)u+\nabla p=\nu\Delta u,\qquad
+\operatorname{div}u=0
+\]</span>
+<p>throughout the calculation. Keep the exact cutoff
+<span class="math" data-tex="\(\phi\)">\(\phi\)</span> and symbol <span class="math" data-tex="\(p(\xi)=\phi(\xi)-\phi(2\xi)\)">\(p(\xi)=\phi(\xi)-\phi(2\xi)\)</span>
+of NS-FLUID-12. The Fourier convention remains
+<span class="math" data-tex="\(\widehat f(\xi)=\int f(x)e^{-2\pi i\xi\cdot x}\,dx\)">\(\widehat f(\xi)=\int f(x)e^{-2\pi i\xi\cdot x}\,dx\)</span>.
+The symbol is supported in <span class="math" data-tex="\(1/4\leq|\xi|\leq1\)">\(1/4\leq|\xi|\leq1\)</span>;
+<span class="math" data-tex="\(\phi=1\)">\(\phi=1\)</span> on the ball of radius <span class="math" data-tex="\(1/2\)">\(1/2\)</span> and vanishes
+outside the ball of radius one. Define the original
+<span class="math" data-tex="\(\omega=\nabla\times u\)">\(\omega=\nabla\times u\)</span>.</p>
+<p>For <span class="math" data-tex="\(1\leq i,\ell\leq3\)">\(1\leq i,\ell\leq3\)</span>, define the complete multiplier
+and its inverse transform</p>
+<span class="math math-display" data-tex="\[
+k_{i\ell}(\xi)=
+\frac{p(\xi)}{4\pi^2|\xi|^2}
+\sum_{j=1}^3 2\pi i\,\varepsilon_{ij\ell}\xi_j,
+\qquad K_{i\ell}=\mathcal F^{-1}k_{i\ell}.
+\tag{1.1}
+\]">\[
+k_{i\ell}(\xi)=
+\frac{p(\xi)}{4\pi^2|\xi|^2}
+\sum_{j=1}^3 2\pi i\,\varepsilon_{ij\ell}\xi_j,
+\qquad K_{i\ell}=\mathcal F^{-1}k_{i\ell}.
+\tag{1.1}
+\]</span>
+<p>The value at zero is defined to be zero. This is a smooth
+compactly supported multiplier, since it vanishes throughout
+a neighborhood of zero. Every <span class="math" data-tex="\(K_{i\ell}\)">\(K_{i\ell}\)</span> is Schwartz,
+by repeated integration by parts in its actual compact
+Fourier support. All nine entries, including zero diagonal
+entries, are retained.</p>
+<p>The exact identity <span class="math" data-tex="\(\nabla\times\omega
+=\nabla\operatorname{div}u-\Delta u=-\Delta u\)">\(\nabla\times\omega
+=\nabla\operatorname{div}u-\Delta u=-\Delta u\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+P_Nu_i(x)=\sum_{\ell=1}^3
+\int_{\mathbb R^3}K_{i\ell,N}(x-y)\omega_\ell(y)\,dy,
+\qquad K_{i\ell,N}(z)=N^2K_{i\ell}(Nz).
+\tag{1.2}
+\]">\[
+P_Nu_i(x)=\sum_{\ell=1}^3
+\int_{\mathbb R^3}K_{i\ell,N}(x-y)\omega_\ell(y)\,dy,
+\qquad K_{i\ell,N}(z)=N^2K_{i\ell}(Nz).
+\tag{1.2}
+\]</span>
+<p>Indeed on nonzero frequencies the two curls contribute
+<span class="math" data-tex="\(-(2\pi)^2\xi\times(\xi\times\widehat u)
+=4\pi^2|\xi|^2\widehat u\)">\(-(2\pi)^2\xi\times(\xi\times\widehat u)
+=4\pi^2|\xi|^2\widehat u\)</span>, because
+<span class="math" data-tex="\(\xi\cdot\widehat u=0\)">\(\xi\cdot\widehat u=0\)</span>. Multiplication by the complete
+symbol in (1.1) therefore gives exactly <span class="math" data-tex="\(p(\xi/N)\widehat u\)">\(p(\xi/N)\widehat u\)</span>.
+At zero both sides are zero after that symbol. The
+source-class <span class="math" data-tex="\(L^2\)">\(L^2\)</span> hypotheses justify the identity by
+Parseval and convolution; no harmonic field is lost.</p>
+<p>Write <span class="math" data-tex="\(w(z)=(1+|z|)^{20}\)">\(w(z)=(1+|z|)^{20}\)</span>, and define finite constants</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C_K=\left(\sum_{i,\ell}\|K_{i\ell}\|_2^2\right)^{1/2},
+\qquad C_\nabla=\|\nabla\phi\|_\infty,\\
+T_K=\sum_{i,\ell,j}\|w\,\partial_jK_{i\ell}\|_{3/2}
++\frac32C_\nabla\sum_{i,\ell}\|wK_{i\ell}\|_{3/2}.
+\end{gathered} \tag{1.3}
+\]">\[
+\begin{gathered}
+C_K=\left(\sum_{i,\ell}\|K_{i\ell}\|_2^2\right)^{1/2},
+\qquad C_\nabla=\|\nabla\phi\|_\infty,\\
+T_K=\sum_{i,\ell,j}\|w\,\partial_jK_{i\ell}\|_{3/2}
++\frac32C_\nabla\sum_{i,\ell}\|wK_{i\ell}\|_{3/2}.
+\end{gathered} \tag{1.3}
+\]</span>
+<p>The sums and integrals are part of the definitions; their
+values are not absorbed into an unspecified factor.
+Finiteness follows from the proved Schwartz decay.
+The original Fourier matrix has squared Frobenius norm
+<span class="math" data-tex="\(|p(\xi)|^2/(2\pi^2|\xi|^2)\)">\(|p(\xi)|^2/(2\pi^2|\xi|^2)\)</span>, because the full
+cross-product matrix has squared norm <span class="math" data-tex="\(2|\xi|^2\)">\(2|\xi|^2\)</span>.
+Thus Parseval proves the exact positive identity</p>
+<span class="math math-display" data-tex="\[
+C_K^2=\frac1{2\pi^2}
+\int_{\mathbb R^3}\frac{|p(\xi)|^2}{|\xi|^2}\,d\xi&gt;0.
+\tag{1.4}
+\]">\[
+C_K^2=\frac1{2\pi^2}
+\int_{\mathbb R^3}\frac{|p(\xi)|^2}{|\xi|^2}\,d\xi&gt;0.
+\tag{1.4}
+\]</span>
+<p>The multiplier is nonzero, so at least one derivative
+kernel also is nonzero and <span class="math" data-tex="\(T_K&gt;0\)">\(T_K&gt;0\)</span>.</p>
+<h2 id="2-local-vorticity-and-the-full-exterior-term">2. Local vorticity and the full exterior term</h2>
+<p>Fix an actual center <span class="math" data-tex="\(x_*\)">\(x_*\)</span>, a physical frequency <span class="math" data-tex="\(N&gt;0\)">\(N&gt;0\)</span>,
+and a dimensionless radius <span class="math" data-tex="\(R\geq1\)">\(R\geq1\)</span>. Use exactly</p>
+<span class="math math-display" data-tex="\[
+\chi(y)=\phi\!\left(\frac{N(y-x_*)}{2R}\right).
+\tag{2.1}
+\]">\[
+\chi(y)=\phi\!\left(\frac{N(y-x_*)}{2R}\right).
+\tag{2.1}
+\]</span>
+<p>It equals one on <span class="math" data-tex="\(B(x_*,R/N)\)">\(B(x_*,R/N)\)</span>, is supported in
+<span class="math" data-tex="\(\overline B(x_*,2R/N)\)">\(\overline B(x_*,2R/N)\)</span>, and
+<span class="math" data-tex="\(|\nabla\chi|\leq NC_\nabla/(2R)\)">\(|\nabla\chi|\leq NC_\nabla/(2R)\)</span>.
+Its derivative support lies in the actual intervening annulus.
+No domain is recentered in the working formula.</p>
+<p>Split (1.2) into its <span class="math" data-tex="\(\chi\omega\)">\(\chi\omega\)</span> and
+<span class="math" data-tex="\((1-\chi)\omega\)">\((1-\chi)\omega\)</span> contributions. For the first part,
+the vector Cauchy–Schwarz inequality and the full Jacobian
+give</p>
+<span class="math math-display" data-tex="\[
+\left|\int K_N(x_*-y)\chi(y)\omega(y)\,dy\right|
+\leq C_K N^{1/2}
+\|\omega\|_{L^2(B(x_*,2R/N))}.
+\tag{2.2}
+\]">\[
+\left|\int K_N(x_*-y)\chi(y)\omega(y)\,dy\right|
+\leq C_K N^{1/2}
+\|\omega\|_{L^2(B(x_*,2R/N))}.
+\tag{2.2}
+\]</span>
+<p>Here the Frobenius <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm of the original matrix
+kernel is exactly <span class="math" data-tex="\(N^{1/2}C_K\)">\(N^{1/2}C_K\)</span>. The cutoff obeys
+<span class="math" data-tex="\(0\leq\chi\leq1\)">\(0\leq\chi\leq1\)</span>, as does the original <span class="math" data-tex="\(\phi\)">\(\phi\)</span>.</p>
+<p>For each row let
+<span class="math" data-tex="\(A_i(y)=(1-\chi(y))K_{i\cdot,N}(x_*-y)\)">\(A_i(y)=(1-\chi(y))K_{i\cdot,N}(x_*-y)\)</span>.
+The complete integration by parts is</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\sum_\ell\int (1-\chi)K_{i\ell,N}(x_*-y)\omega_\ell(y)\,dy
+&amp;=\int(\nabla_y\times A_i)(y)\cdot u(y)\,dy,\\
+\nabla_y\times A_i
+&amp;=(1-\chi)\nabla_y\times
+[K_{i\cdot,N}(x_*-y)]
+-\nabla\chi\times K_{i\cdot,N}(x_*-y).
+\end{split} \tag{2.3}
+\]">\[
+\begin{split}
+\sum_\ell\int (1-\chi)K_{i\ell,N}(x_*-y)\omega_\ell(y)\,dy
+&amp;=\int(\nabla_y\times A_i)(y)\cdot u(y)\,dy,\\
+\nabla_y\times A_i
+&amp;=(1-\chi)\nabla_y\times
+[K_{i\cdot,N}(x_*-y)]
+-\nabla\chi\times K_{i\cdot,N}(x_*-y).
+\end{split} \tag{2.3}
+\]</span>
+<p>The sign from differentiation of <span class="math" data-tex="\(x_*-y\)">\(x_*-y\)</span> remains
+inside <span class="math" data-tex="\(\nabla_y\)">\(\nabla_y\)</span>; the second displayed term has its
+negative sign. Both terms are present. To justify the
+identity with its noncompact row, multiply it first by
+a compact cutoff tending to one. The additional derivative
+of that cutoff is paired with <span class="math" data-tex="\(u\in L^3\)">\(u\in L^3\)</span> and a Schwartz
+kernel in <span class="math" data-tex="\(L^{3/2}\)">\(L^{3/2}\)</span>; its norm tends to zero on the
+escaping annulus. The other terms converge by Hölder
+or the source-class <span class="math" data-tex="\(L^2\)">\(L^2\)</span> pairing. This proves (2.3)
+without a boundary term at infinity.</p>
+<p>Every derivative term in the first curl is supported
+where <span class="math" data-tex="\(N|x_*-y|\geq R\)">\(N|x_*-y|\geq R\)</span>. Changing only the integration
+variable in its norm gives</p>
+<span class="math math-display" data-tex="\[
+\|{\bf1}_{N|x_*-y|\geq R}
+\partial_jK_{i\ell,N}(x_*-y)\|_{3/2}
+\leq N(1+R)^{-20}\|w\,\partial_jK_{i\ell}\|_{3/2}.
+\]">\[
+\|{\bf1}_{N|x_*-y|\geq R}
+\partial_jK_{i\ell,N}(x_*-y)\|_{3/2}
+\leq N(1+R)^{-20}\|w\,\partial_jK_{i\ell}\|_{3/2}.
+\]</span>
+<p>The undifferentiated kernel has <span class="math" data-tex="\(L^{3/2}\)">\(L^{3/2}\)</span> scale <span class="math" data-tex="\(N^0\)">\(N^0\)</span>.
+Its cutoff-gradient term is at most
+<span class="math" data-tex="\(N C_\nabla(2R)^{-1}(1+R)^{-20}\|wK_{i\ell}\|_{3/2}\)">\(N C_\nabla(2R)^{-1}(1+R)^{-20}\|wK_{i\ell}\|_{3/2}\)</span>.
+For each row and entry at most three derivative indices
+occur in the curl bound. Summing all indices and using
+<span class="math" data-tex="\(R^{-1}\leq1\)">\(R^{-1}\leq1\)</span> proves, with precisely (1.3),</p>
+<span class="math math-display" data-tex="\[
+|P_Nu(x_*)|
+\leq C_KN^{1/2}\|\omega\|_{L^2(B(x_*,2R/N))}
++T_KUN(1+R)^{-20}.
+\tag{2.4}
+\]">\[
+|P_Nu(x_*)|
+\leq C_KN^{1/2}\|\omega\|_{L^2(B(x_*,2R/N))}
++T_KUN(1+R)^{-20}.
+\tag{2.4}
+\]</span>
+<p>This is the exact needed comparison with the original
+local vorticity. Its exterior estimate uses the original
+velocity bound after a complete integration by parts;
+it assumes no unproved global vorticity maximum.</p>
+<p><img src="assets/NS-FLUID-17/original-vorticity-mass-cutoff-9A843836C8A3C3B7802BB046E85FDE3578F525884BFF2E09237D38DF53CD855A.png" alt="The original core, derivative annulus and exact physical cutoff profile" class="course-figure" width="2550" height="1020" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-vorticity-mass-cutoff" data-asset-sha256="9A843836C8A3C3B7802BB046E85FDE3578F525884BFF2E09237D38DF53CD855A"></p>
+<p>Figure 1. Left: the exact section <span class="math" data-tex="\(x_3=0\)">\(x_3=0\)</span> of three-dimensional
+balls for <span class="math" data-tex="\(x_0=(0,0,0)\)">\(x_0=(0,0,0)\)</span>, <span class="math" data-tex="\(x_*=(1,0,0)\)">\(x_*=(1,0,0)\)</span>, <span class="math" data-tex="\(R=2,N=4\)">\(R=2,N=4\)</span>.
+The cutoff equals one through radius <span class="math" data-tex="\(R/N=1/2\)">\(R/N=1/2\)</span> and vanishes
+at and beyond radius <span class="math" data-tex="\(2R/N=1\)">\(2R/N=1\)</span>. Its derivative is supported
+in the intervening annulus. The outer ball about <span class="math" data-tex="\(x_0\)">\(x_0\)</span>
+has radius <span class="math" data-tex="\(2=|x_*-x_0|+2R/N\)">\(2=|x_*-x_0|+2R/N\)</span>, showing the full triangle
+inclusion. Right panels: the original radial cutoff
+<span class="math" data-tex="\(\phi(Nr/(2R))\)">\(\phi(Nr/(2R))\)</span> and its signed radial derivative, evaluated
+from the exact smooth bump formula in NS-FLUID-12 (3.1).
+The numbers illustrate the exact cutoff and support geometry;
+they are not evaluations of the analytic radius selected in
+(3.1), and no fluid solution is sampled.
+Complete proof: (2.1)–(2.4), (3.3). Human comparison:
+Tao, article.tex 1254–1290.
+<a href="assets/original-vorticity-mass-cutoff.py">Reproducible figure source</a>.</p>
+<h2 id="3-vorticity-mass-on-an-actual-time-interval">3. Vorticity mass on an actual time interval</h2>
+<p>Retain the original one-step constants <span class="math" data-tex="\(b,D_u,d,\eta,D,L\)">\(b,D_u,d,\eta,D,L\)</span>
+and the quantitative iteration constants <span class="math" data-tex="\(B,\beta,\gamma,\rho,\Lambda\)">\(B,\beta,\gamma,\rho,\Lambda\)</span>
+from NS-FLUID-16. Suppose its input at <span class="math" data-tex="\((t_0,x_0,N_0)\)">\((t_0,x_0,N_0)\)</span>
+and scale <span class="math" data-tex="\(S\)">\(S\)</span> is satisfied. Take its actual earlier
+output <span class="math" data-tex="\((t_*,x_*,N)\)">\((t_*,x_*,N)\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+q=\sqrt d\,\eta^3,\qquad
+R=\max\{1,(4T_KU/b)^{1/20}\},\\
+h=\min\{b/(4D_u),\gamma q^2/2\}&gt;0,\qquad
+I=[t_*,t_*+hN^{-2}].
+\end{gathered} \tag{3.1}
+\]">\[
+\begin{gathered}
+q=\sqrt d\,\eta^3,\qquad
+R=\max\{1,(4T_KU/b)^{1/20}\},\\
+h=\min\{b/(4D_u),\gamma q^2/2\}&gt;0,\qquad
+I=[t_*,t_*+hN^{-2}].
+\end{gathered} \tag{3.1}
+\]</span>
+<p>The notation <span class="math" data-tex="\(q\)">\(q\)</span> records the complete lower frequency
+coefficient; it does not discard its original factors.
+All constants are chosen from quantities already proved
+finite and positive. The original derivative bound
+<span class="math" data-tex="\(|\partial_tP_Nu|\leq D_uN^3\)">\(|\partial_tP_Nu|\leq D_uN^3\)</span> and the unchanged
+target amplitude at <span class="math" data-tex="\(t_*\)">\(t_*\)</span> give</p>
+<span class="math math-display" data-tex="\[
+|P_Nu(t,x_*)|\geq bN-D_uhN
+\geq 3bN/4\qquad(t\in I).
+\]">\[
+|P_Nu(t,x_*)|\geq bN-D_uhN
+\geq 3bN/4\qquad(t\in I).
+\]</span>
+<p>The interval lies in the original equation domain:
+<span class="math" data-tex="\(N\geq qS^{-1/2}\)">\(N\geq qS^{-1/2}\)</span> implies
+<span class="math" data-tex="\(hN^{-2}\leq hS/q^2\leq\gamma S/2\)">\(hN^{-2}\leq hS/q^2\leq\gamma S/2\)</span>, while
+<span class="math" data-tex="\(t_*\leq t_0-\gamma S\)">\(t_*\leq t_0-\gamma S\)</span>. Its other endpoint is
+<span class="math" data-tex="\(t_*\geq t_0-S\)">\(t_*\geq t_0-S\)</span>. Also <span class="math" data-tex="\(N\leq\beta S^{-1/2}\)">\(N\leq\beta S^{-1/2}\)</span>,
+so its actual length obeys</p>
+<span class="math math-display" data-tex="\[
+I\subset[t_0-S,t_0-\gamma S/2],\qquad
+|I|=hN^{-2}\geq hS/\beta^2 .
+\tag{3.2}
+\]">\[
+I\subset[t_0-S,t_0-\gamma S/2],\qquad
+|I|=hN^{-2}\geq hS/\beta^2 .
+\tag{3.2}
+\]</span>
+<p>By the chosen <span class="math" data-tex="\(R\)">\(R\)</span>,
+<span class="math" data-tex="\(T_KU(1+R)^{-20}\leq b/4\)">\(T_KU(1+R)^{-20}\leq b/4\)</span>.
+Inserting the persisted amplitude into (2.4) leaves
+<span class="math" data-tex="\(C_KN^{1/2}\|\omega(t)\|_{2,B(x_*,2R/N)}
+\geq bN/2\)">\(C_KN^{1/2}\|\omega(t)\|_{2,B(x_*,2R/N)}
+\geq bN/2\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\int_{B(x_*,2R/N)}|\omega(t,y)|^2\,dy
+\geq\frac{b^2}{4C_K^2}N,\\
+\int_{B(x_0,(LB+2R/q)\sqrt S)}|\omega(t,y)|^2\,dy
+\geq\frac{b^2q}{4C_K^2}S^{-1/2}
+\qquad(t\in I).
+\end{gathered} \tag{3.3}
+\]">\[
+\begin{gathered}
+\int_{B(x_*,2R/N)}|\omega(t,y)|^2\,dy
+\geq\frac{b^2}{4C_K^2}N,\\
+\int_{B(x_0,(LB+2R/q)\sqrt S)}|\omega(t,y)|^2\,dy
+\geq\frac{b^2q}{4C_K^2}S^{-1/2}
+\qquad(t\in I).
+\end{gathered} \tag{3.3}
+\]</span>
+<p>For the second statement use the original displacement
+<span class="math" data-tex="\(|x_*-x_0|\leq LB\sqrt S\)">\(|x_*-x_0|\leq LB\sqrt S\)</span>, the lower frequency
+<span class="math" data-tex="\(N\geq qS^{-1/2}\)">\(N\geq qS^{-1/2}\)</span>, and the triangle inequality.
+These give the complete inclusion of the first physical
+ball in the second. Every center and radius remains explicit.
+The lower bound concerns the original vorticity, at every
+time in the actual positive-length interval <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<h2 id="4-integrated-mass-and-physical-scales">4. Integrated mass and physical scales</h2>
+<p>Integrating the second inequality in (3.3), and retaining
+the original time-length bound, gives</p>
+<span class="math math-display" data-tex="\[
+\int_I\int_{B(x_0,(LB+2R/q)\sqrt S)}
+|\omega(t,y)|^2\,dy\,dt
+\geq\frac{b^2qh}{4C_K^2\beta^2}\sqrt S .
+\tag{4.1}
+\]">\[
+\int_I\int_{B(x_0,(LB+2R/q)\sqrt S)}
+|\omega(t,y)|^2\,dy\,dt
+\geq\frac{b^2qh}{4C_K^2\beta^2}\sqrt S .
+\tag{4.1}
+\]</span>
+<p>Any restriction to a smaller closed subinterval preserves
+the pointwise-in-time bound (3.3); its integrated version
+retains that subinterval's actual length. No regularity
+interval with additional coefficient bounds is assumed.</p>
+<p>Under the full original parabolic map
+<span class="math" data-tex="\(u^\lambda(t,x)=\lambda u(\lambda^2t,\lambda x)\)">\(u^\lambda(t,x)=\lambda u(\lambda^2t,\lambda x)\)</span>,
+<span class="math" data-tex="\(p^\lambda(t,x)=\lambda^2p(\lambda^2t,\lambda x)\)">\(p^\lambda(t,x)=\lambda^2p(\lambda^2t,\lambda x)\)</span>,
+the viscosity, <span class="math" data-tex="\(U,b\)">\(U,b\)</span>, and all the constants above remain
+unchanged. The original curl is
+<span class="math" data-tex="\(\omega^\lambda(t,x)=\lambda^2\omega(\lambda^2t,\lambda x)\)">\(\omega^\lambda(t,x)=\lambda^2\omega(\lambda^2t,\lambda x)\)</span>.
+Every original center and radius is divided by <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>,
+every time by <span class="math" data-tex="\(\lambda^2\)">\(\lambda^2\)</span>, and <span class="math" data-tex="\(N\)">\(N\)</span> is multiplied by
+<span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. The local original curl integral has factor
+<span class="math" data-tex="\(\lambda^4\lambda^{-3}=\lambda\)">\(\lambda^4\lambda^{-3}=\lambda\)</span>, matching <span class="math" data-tex="\(N\)">\(N\)</span> and
+<span class="math" data-tex="\(S^{-1/2}\)">\(S^{-1/2}\)</span>. The integrated original space-time mass has
+factor <span class="math" data-tex="\(\lambda^4\lambda^{-3}\lambda^{-2}=\lambda^{-1}\)">\(\lambda^4\lambda^{-3}\lambda^{-2}=\lambda^{-1}\)</span>,
+matching <span class="math" data-tex="\(\sqrt S\)">\(\sqrt S\)</span>. The explicit cutoff (2.1), both
+terms of (2.3), and the exterior factor <span class="math" data-tex="\(NR/N=R\)">\(NR/N=R\)</span>
+transform with exactly these original factors.</p>
+<h3 id="4-1-stronger-persistence-constants">4.1. Stronger persistence constants</h3>
+<p>NS-FLUID-16 Exercise 1 proves the entire iterated theorem
+with <span class="math" data-tex="\(B_{\rm full},\beta_{\rm full},\gamma_{\rm full},
+\Lambda_{\rm full}\)">\(B_{\rm full},\beta_{\rm full},\gamma_{\rm full},
+\Lambda_{\rm full}\)</span>, and the same <span class="math" data-tex="\(d,\eta,\rho,b\)">\(d,\eta,\rho,b\)</span>.
+The proof above therefore applies by direct insertion of
+these established constants into (3.1)–(4.1).
+Keep <span class="math" data-tex="\(q,R,C_K,T_K\)">\(q,R,C_K,T_K\)</span> unchanged and set
+<span class="math" data-tex="\(h_{\rm full}=\min\{b/(4D_u),\gamma_{\rm full}q^2/2\}\)">\(h_{\rm full}=\min\{b/(4D_u),\gamma_{\rm full}q^2/2\}\)</span>.
+It is at least <span class="math" data-tex="\(h\)">\(h\)</span>, since
+<span class="math" data-tex="\(\gamma_{\rm full}\geq\gamma\)">\(\gamma_{\rm full}\geq\gamma\)</span>.
+The uniform receiving radius coefficient is
+<span class="math" data-tex="\(LB_{\rm full}+2R/q\leq LB+2R/q\)">\(LB_{\rm full}+2R/q\leq LB+2R/q\)</span>.
+The actual interval-length lower coefficient is
+<span class="math" data-tex="\(h_{\rm full}/\beta_{\rm full}^2\geq h/\beta^2\)">\(h_{\rm full}/\beta_{\rm full}^2\geq h/\beta^2\)</span>.
+The pointwise original-mass coefficient is unchanged,
+and the integrated lower coefficient in (4.1) can only
+increase. Each statement follows from the proved formulas,
+with no assertion that two independently selected earlier
+points or actual time intervals coincide.</p>
+<h2 id="5-the-original-equation-and-earlier-heat-field">5. The original equation and earlier heat field</h2>
+<p>Keep the smooth source-class solution</p>
+<span class="math math-display" data-tex="\[
+\partial_tu+(u\cdot\nabla)u+\nabla p=\nu\Delta u,\qquad
+\operatorname{div}u=0,\qquad \nu&gt;0
+\tag{5.1}
+\]">\[
+\partial_tu+(u\cdot\nabla)u+\nabla p=\nu\Delta u,\qquad
+\operatorname{div}u=0,\qquad \nu&gt;0
+\tag{5.1}
+\]</span>
+<p>on <span class="math" data-tex="\([t_0-T,t_0]\times\mathbb R^3\)">\([t_0-T,t_0]\times\mathbb R^3\)</span>, with
+<span class="math" data-tex="\(\sup_t\|u(t)\|_3\leq U\)">\(\sup_t\|u(t)\|_3\leq U\)</span>. Spatial derivatives of the solution
+belong to <span class="math" data-tex="\(L^\infty_tL^2_x\)">\(L^\infty_tL^2_x\)</span>, as in the source class used in the
+preceding proofs. Their auxiliary norms justify differentiation
+and integrations; their values do not enter the constants below.
+This receiving theorem concerns this unforced equation. The
+original force in a different equation would have to enter its
+energy and curl identities.</p>
+<p>Use the actual interval from 3.1,</p>
+<span class="math math-display" data-tex="\[
+I=[a,a+\ell],\qquad a=t_*,\qquad \ell=hN^{-2}&gt;0.
+\tag{5.2}
+\]">\[
+I=[a,a+\ell],\qquad a=t_*,\qquad \ell=hN^{-2}&gt;0.
+\tag{5.2}
+\]</span>
+<p>3.2 proves <span class="math" data-tex="\(a\geq t_0-S\)">\(a\geq t_0-S\)</span>, <span class="math" data-tex="\(a+\ell\leq t_0-\gamma S/2\)">\(a+\ell\leq t_0-\gamma S/2\)</span>,
+<span class="math" data-tex="\(\ell\leq\gamma S/2\leq S/4\)">\(\ell\leq\gamma S/2\leq S/4\)</span>, and
+<span class="math" data-tex="\(S\leq T/32\)">\(S\leq T/32\)</span>. Consequently <span class="math" data-tex="\(t_b=a-\ell\)">\(t_b=a-\ell\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+t_b\geq t_0-5S/4\geq t_0-5T/128&gt;t_0-T.
+\tag{5.3}
+\]">\[
+t_b\geq t_0-5S/4\geq t_0-5T/128&gt;t_0-T.
+\tag{5.3}
+\]</span>
+<p>The whole earlier heat interval <span class="math" data-tex="\([a-\ell,a+\ell]\)">\([a-\ell,a+\ell]\)</span> lies in
+the original equation domain. Define the actual fields</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H_s(x)=(4\pi s)^{-3/2}e^{-|x|^2/(4s)},\qquad
+v(t)=H_{\nu(t-t_b)}*u(t_b),\\
+\qquad w=u-v,\qquad
+z=\nabla\times w,\quad \omega=\nabla\times u.
+\end{gathered}
+\tag{5.4}
+\]">\[
+\begin{gathered}
+H_s(x)=(4\pi s)^{-3/2}e^{-|x|^2/(4s)},\qquad
+v(t)=H_{\nu(t-t_b)}*u(t_b),\\
+\qquad w=u-v,\qquad
+z=\nabla\times w,\quad \omega=\nabla\times u.
+\end{gathered}
+\tag{5.4}
+\]</span>
+<p>There is no change of viscosity, coordinates, pressure or unknown.
+If <span class="math" data-tex="\(U=0\)">\(U=0\)</span>, the original velocity vanishes everywhere by smoothness,
+so its vorticity is zero. The positive frequency amplitude used
+in 3.1 therefore ensures <span class="math" data-tex="\(U&gt;0\)">\(U&gt;0\)</span> in this application.</p>
+<h2 id="6-energy-constants-and-the-selected-time">6. Energy constants and the selected time</h2>
+<p>Use full ordered derivative tensors with Euclidean magnitude.
+For <span class="math" data-tex="\(p\geq3\)">\(p\geq3\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+\frac1{r_p}=\frac23+\frac1p,\qquad
+C_{m,p}=\|\nabla^mH_1\|_{r_p},\qquad
+S_3=4\sqrt3.
+\tag{6.1}
+\]">\[
+\frac1{r_p}=\frac23+\frac1p,\qquad
+C_{m,p}=\|\nabla^mH_1\|_{r_p},\qquad
+S_3=4\sqrt3.
+\tag{6.1}
+\]</span>
+<p>The vector and tensor Sobolev bound
+<span class="math" data-tex="\(\|g\|_6\leq S_3\|\nabla g\|_2\)">\(\|g\|_6\leq S_3\|\nabla g\|_2\)</span> is proved in the earlier
+strong-solution foundation. It applies to full derivative tensors
+by applying the scalar inequality to their magnitude, using
+<span class="math" data-tex="\(|\nabla|g||\leq|\nabla g|\)">\(|\nabla|g||\leq|\nabla g|\)</span>, and approximation at zeros.
+Young's inequality for convolution gives, throughout <span class="math" data-tex="\(I\)">\(I\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|v\|_6\leq V_6:=C_{0,6}U(\nu\ell)^{-1/4},\qquad
+\|\nabla v\|_3\leq V_{13}:=C_{1,3}U(\nu\ell)^{-1/2},\\
+|\nabla^jv|\leq V_j:=C_{j,\infty}U(\nu\ell)^{-(j+1)/2}
+\quad(j=0,1,2).
+\end{gathered}
+\tag{6.2}
+\]">\[
+\begin{gathered}
+\|v\|_6\leq V_6:=C_{0,6}U(\nu\ell)^{-1/4},\qquad
+\|\nabla v\|_3\leq V_{13}:=C_{1,3}U(\nu\ell)^{-1/2},\\
+|\nabla^jv|\leq V_j:=C_{j,\infty}U(\nu\ell)^{-(j+1)/2}
+\quad(j=0,1,2).
+\end{gathered}
+\tag{6.2}
+\]</span>
+<p>The elapsed heat time is at least <span class="math" data-tex="\(\ell\)">\(\ell\)</span>; this is the entire
+reason these bounds are uniform down to the left end of <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p>For clarity, the full projected heat-kernel constant in
+NS-FLUID-12 is</p>
+<span class="math math-display" data-tex="\[
+\kappa_0=\sum_{i,j,k=1}^3
+\left(\delta_{ij}\|\partial_kH_1\|_{6/5}
++\frac43\|\partial_i\partial_j\partial_kH_1\|_{6/5}\right).
+\tag{6.3}
+\]">\[
+\kappa_0=\sum_{i,j,k=1}^3
+\left(\delta_{ij}\|\partial_kH_1\|_{6/5}
++\frac43\|\partial_i\partial_j\partial_kH_1\|_{6/5}\right).
+\tag{6.3}
+\]</span>
+<p>It comes from the exact projected divergence kernel
+<span class="math" data-tex="\(\delta_{ij}\partial_kH_s+
+\int_s^\infty\partial_i\partial_j\partial_kH_\sigma\,d\sigma\)">\(\delta_{ij}\partial_kH_s+
+\int_s^\infty\partial_i\partial_j\partial_kH_\sigma\,d\sigma\)</span>;
+the latter integral contributes <span class="math" data-tex="\(4s^{-3/4}/3\)">\(4s^{-3/4}/3\)</span> after taking
+its <span class="math" data-tex="\(L^{6/5}\)">\(L^{6/5}\)</span> norm. No projection or low frequency is omitted.
+The proved nonlinear energy and gradient bounds give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sup_I\|w(t)\|_2\leq W_0:=
+4\kappa_0\nu^{-3/4}U^2(2\ell)^{1/4},\\
+M:=C_MU^4\nu^{-5/2}\sqrt\ell,\qquad
+C_M=16\sqrt2\,\kappa_0^2+
+18C_{0,6}^2(\sqrt2-1),\\
+\int_a^{a+\ell}\|\nabla w(t)\|_2^2\,dt\leq M.
+\end{gathered}
+\tag{6.4}
+\]">\[
+\begin{gathered}
+\sup_I\|w(t)\|_2\leq W_0:=
+4\kappa_0\nu^{-3/4}U^2(2\ell)^{1/4},\\
+M:=C_MU^4\nu^{-5/2}\sqrt\ell,\qquad
+C_M=16\sqrt2\,\kappa_0^2+
+18C_{0,6}^2(\sqrt2-1),\\
+\int_a^{a+\ell}\|\nabla w(t)\|_2^2\,dt\leq M.
+\end{gathered}
+\tag{6.4}
+\]</span>
+<p>In particular the earlier heat time and its factor <span class="math" data-tex="\(2\ell\)">\(2\ell\)</span>
+are retained in the <span class="math" data-tex="\(W_0\)">\(W_0\)</span> term. One can also read 6.4 directly
+from the complete inequality</p>
+<span class="math math-display" data-tex="\[
+\int_a^{a+\ell}\|\nabla w\|_2^2
+\leq \frac{\|w(a)\|_2^2}{\nu}
++18C_{0,6}^2U^4\nu^{-5/2}
+\big(\sqrt{2\ell}-\sqrt\ell\big).
+\tag{6.5}
+\]">\[
+\int_a^{a+\ell}\|\nabla w\|_2^2
+\leq \frac{\|w(a)\|_2^2}{\nu}
++18C_{0,6}^2U^4\nu^{-5/2}
+\big(\sqrt{2\ell}-\sqrt\ell\big).
+\tag{6.5}
+\]</span>
+<p>Put <span class="math" data-tex="\(E(t)=\|\nabla w(t)\|_2^2/2\)">\(E(t)=\|\nabla w(t)\|_2^2/2\)</span>, and define</p>
+<span class="math math-display" data-tex="\[
+E_*=\frac{4M}{\ell}&gt;0.
+\tag{6.6}
+\]">\[
+E_*=\frac{4M}{\ell}&gt;0.
+\tag{6.6}
+\]</span>
+<p>Integration over <span class="math" data-tex="\([a,a+\ell/4]\)">\([a,a+\ell/4]\)</span> gives a time
+<span class="math" data-tex="\(s_{\rm start}\in[a,a+\ell/4]\)">\(s_{\rm start}\in[a,a+\ell/4]\)</span> with</p>
+<span class="math math-display" data-tex="\[
+E(s_{\rm start})\leq\frac{2M}{\ell}=\frac{E_*}{2}.
+\tag{6.7}
+\]">\[
+E(s_{\rm start})\leq\frac{2M}{\ell}=\frac{E_*}{2}.
+\tag{6.7}
+\]</span>
+<p>Indeed the average of <span class="math" data-tex="\(E\)">\(E\)</span> over that interval is at most
+<span class="math" data-tex="\(2M/\ell\)">\(2M/\ell\)</span>. Continuity supplies a point at or below the
+average, including the case of equality. The initial norm of
+the full velocity has not been bounded in <span class="math" data-tex="\(H^1\)">\(H^1\)</span> using only
+its <span class="math" data-tex="\(L^3\)">\(L^3\)</span> norm; it is the actual nonlinear part whose
+gradient energy has been averaged.</p>
+<h2 id="7-the-gradient-energy-inequality">7. The gradient-energy inequality</h2>
+<p>Write <span class="math" data-tex="\(D(t)=\|\nabla^2w(t)\|_2\)">\(D(t)=\|\nabla^2w(t)\|_2\)</span>. The complete equation for
+the actual nonlinear part is</p>
+<span class="math math-display" data-tex="\[
+w_t-\nu\Delta w=-\operatorname{div}(u\otimes u)-\nabla p.
+\tag{7.1}
+\]">\[
+w_t-\nu\Delta w=-\operatorname{div}(u\otimes u)-\nabla p.
+\tag{7.1}
+\]</span>
+<p>Pair it with <span class="math" data-tex="\(-\Delta w\)">\(-\Delta w\)</span>. Solenoidality makes the pressure
+pairing zero: <span class="math" data-tex="\(\langle\nabla p,\Delta w\rangle
+=-\langle p,\Delta\operatorname{div}w\rangle=0\)">\(\langle\nabla p,\Delta w\rangle
+=-\langle p,\Delta\operatorname{div}w\rangle=0\)</span>.
+This is also the exact orthogonal Leray pairing on the
+source <span class="math" data-tex="\(L^2\)">\(L^2\)</span> class. Integration by parts or its Fourier
+version gives <span class="math" data-tex="\(\|\Delta w\|_2=\|\nabla^2w\|_2\)">\(\|\Delta w\|_2=\|\nabla^2w\|_2\)</span>.
+Thus</p>
+<span class="math math-display" data-tex="\[
+E&#x27;(t)+\nu D(t)^2
+=\int_{\mathbb R^3}\Delta w\cdot
+\operatorname{div}(u\otimes u)\,dx.
+\tag{7.2}
+\]">\[
+E&#x27;(t)+\nu D(t)^2
+=\int_{\mathbb R^3}\Delta w\cdot
+\operatorname{div}(u\otimes u)\,dx.
+\tag{7.2}
+\]</span>
+<p>All derivatives in the convective term remain:
+<span class="math" data-tex="\(\operatorname{div}(u\otimes u)=(u\cdot\nabla)u\)">\(\operatorname{div}(u\otimes u)=(u\cdot\nabla)u\)</span>,
+because its additional <span class="math" data-tex="\(u\,\operatorname{div}u\)">\(u\,\operatorname{div}u\)</span> is
+exactly zero. Pointwise tensor Cauchy–Schwarz and Hölder give</p>
+<span class="math math-display" data-tex="\[
+\|\operatorname{div}(u\otimes u)\|_2
+\leq \|u\|_6\|\nabla u\|_3
+\leq A(E)\left(V_{13}+\sqrt{S_3}(2E)^{1/4}D^{1/2}\right),
+\quad A(E)=V_6+S_3\sqrt{2E}.
+\tag{7.3}
+\]">\[
+\|\operatorname{div}(u\otimes u)\|_2
+\leq \|u\|_6\|\nabla u\|_3
+\leq A(E)\left(V_{13}+\sqrt{S_3}(2E)^{1/4}D^{1/2}\right),
+\quad A(E)=V_6+S_3\sqrt{2E}.
+\tag{7.3}
+\]</span>
+<p>Here <span class="math" data-tex="\(\|\nabla w\|_3^2\leq
+\|\nabla w\|_2\|\nabla w\|_6
+\leq \sqrt{2E}S_3D\)">\(\|\nabla w\|_3^2\leq
+\|\nabla w\|_2\|\nabla w\|_6
+\leq \sqrt{2E}S_3D\)</span>; the bound for <span class="math" data-tex="\(\|w\|_6\)">\(\|w\|_6\)</span> uses
+the same original Sobolev inequality.</p>
+<p>For any nonnegative <span class="math" data-tex="\(A,E,D\)">\(A,E,D\)</span>, two separate exact Young
+bounds are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+AV_{13}D&amp;\leq\frac{\nu}{4}D^2+\frac{A^2V_{13}^2}{\nu},\\
+A\sqrt{S_3}(2E)^{1/4}D^{3/2}
+&amp;\leq\frac{\nu}{4}D^2+\frac{27S_3^2A^4E}{2\nu^3}.
+\end{aligned}
+\tag{7.4}
+\]">\[
+\begin{aligned}
+AV_{13}D&amp;\leq\frac{\nu}{4}D^2+\frac{A^2V_{13}^2}{\nu},\\
+A\sqrt{S_3}(2E)^{1/4}D^{3/2}
+&amp;\leq\frac{\nu}{4}D^2+\frac{27S_3^2A^4E}{2\nu^3}.
+\end{aligned}
+\tag{7.4}
+\]</span>
+<p>For the second, write <span class="math" data-tex="\(c=A\sqrt{S_3}(2E)^{1/4}\)">\(c=A\sqrt{S_3}(2E)^{1/4}\)</span> and
+maximize <span class="math" data-tex="\(c y^3-\nu y^4/4\)">\(c y^3-\nu y^4/4\)</span> over <span class="math" data-tex="\(y=\sqrt D\geq0\)">\(y=\sqrt D\geq0\)</span>.
+Its positive maximum is at <span class="math" data-tex="\(y=3c/\nu\)">\(y=3c/\nu\)</span> and equals
+<span class="math" data-tex="\(27c^4/(4\nu^3)\)">\(27c^4/(4\nu^3)\)</span>; substituting <span class="math" data-tex="\(c^4=2ES_3^2A^4\)">\(c^4=2ES_3^2A^4\)</span>
+proves every coefficient. Therefore</p>
+<span class="math math-display" data-tex="\[
+E&#x27;+\frac{\nu}{2}D^2\leq Q(E),\qquad
+Q(E)=\frac{(V_6+S_3\sqrt{2E})^2V_{13}^2}{\nu}
++\frac{27S_3^2(V_6+S_3\sqrt{2E})^4E}{2\nu^3}.
+\tag{7.5}
+\]">\[
+E&#x27;+\frac{\nu}{2}D^2\leq Q(E),\qquad
+Q(E)=\frac{(V_6+S_3\sqrt{2E})^2V_{13}^2}{\nu}
++\frac{27S_3^2(V_6+S_3\sqrt{2E})^4E}{2\nu^3}.
+\tag{7.5}
+\]</span>
+<p>This full increasing function retains its linear heat term,
+all mixed heat/nonlinear contributions, and all powers of
+the original viscosity. We do not replace it by an unspecified
+polynomial or discard its mixed summands.</p>
+<h2 id="8-a-definite-interval-and-its-velocity-norm">8. A definite interval and its velocity norm</h2>
+<p>Define, from the established inputs,</p>
+<span class="math math-display" data-tex="\[
+Q_*=Q(E_*),\qquad
+\delta=\min\left\{\frac{\ell}{2},\frac{E_*}{4Q_*}\right\}&gt;0,
+\qquad J=[s_{\rm start},s_{\rm start}+\delta].
+\tag{8.1}
+\]">\[
+Q_*=Q(E_*),\qquad
+\delta=\min\left\{\frac{\ell}{2},\frac{E_*}{4Q_*}\right\}&gt;0,
+\qquad J=[s_{\rm start},s_{\rm start}+\delta].
+\tag{8.1}
+\]</span>
+<p>Since <span class="math" data-tex="\(s_{\rm start}\leq a+\ell/4\)">\(s_{\rm start}\leq a+\ell/4\)</span>, the right endpoint of <span class="math" data-tex="\(J\)">\(J\)</span>
+is at most <span class="math" data-tex="\(a+3\ell/4\)">\(a+3\ell/4\)</span>. In particular <span class="math" data-tex="\(J\subset I\)">\(J\subset I\)</span>.
+Suppose there were a first time in <span class="math" data-tex="\(J\)">\(J\)</span> with <span class="math" data-tex="\(E=E_*\)">\(E=E_*\)</span>.
+Before that time <span class="math" data-tex="\(Q(E)\leq Q_*\)">\(Q(E)\leq Q_*\)</span>; integration of 7.5
+and 6.7 would give</p>
+<span class="math math-display" data-tex="\[
+E(t)\leq E_*/2+Q_*(t-s_{\rm start})\leq3E_*/4&lt;E_*,
+\tag{8.2}
+\]">\[
+E(t)\leq E_*/2+Q_*(t-s_{\rm start})\leq3E_*/4&lt;E_*,
+\tag{8.2}
+\]</span>
+<p>a contradiction. Continuity proves 8.2 throughout <span class="math" data-tex="\(J\)">\(J\)</span>.
+Integrating the same inequality with its dissipation retained
+then gives</p>
+<span class="math math-display" data-tex="\[
+\sup_J\|\nabla w\|_2^2\leq P^2:=2E_*,
+\qquad
+\int_J\|\nabla^2w\|_2^2\,dt\leq
+D_2^2:=\frac{3E_*}{2\nu}.
+\tag{8.3}
+\]">\[
+\sup_J\|\nabla w\|_2^2\leq P^2:=2E_*,
+\qquad
+\int_J\|\nabla^2w\|_2^2\,dt\leq
+D_2^2:=\frac{3E_*}{2\nu}.
+\tag{8.3}
+\]</span>
+<p>For the second bound, <span class="math" data-tex="\(E(s_{\rm start})+\delta Q_*\leq3E_*/4\)">\(E(s_{\rm start})+\delta Q_*\leq3E_*/4\)</span>
+and the final <span class="math" data-tex="\(E\)">\(E\)</span> is nonnegative.</p>
+<p>The exact Fourier splitting estimate used here is</p>
+<span class="math math-display" data-tex="\[
+\|w\|_\infty^4\leq
+\frac4{\pi^4}\|\nabla w\|_2^2\|\nabla^2w\|_2^2.
+\tag{8.4}
+\]">\[
+\|w\|_\infty^4\leq
+\frac4{\pi^4}\|\nabla w\|_2^2\|\nabla^2w\|_2^2.
+\tag{8.4}
+\]</span>
+<p>To verify the constant, keep the convention
+<span class="math" data-tex="\(\widehat w(\xi)=\int w(x)e^{-2\pi i x\cdot\xi}\,dx\)">\(\widehat w(\xi)=\int w(x)e^{-2\pi i x\cdot\xi}\,dx\)</span>.
+For any frequency radius <span class="math" data-tex="\(R&gt;0\)">\(R&gt;0\)</span>, Cauchy–Schwarz on the
+inside and outside gives</p>
+<span class="math math-display" data-tex="\[
+\int|\widehat w|
+\leq\sqrt{\frac R\pi}\|\nabla w\|_2
++\frac1{2\pi^{3/2}\sqrt R}\|\nabla^2w\|_2.
+\tag{8.5}
+\]">\[
+\int|\widehat w|
+\leq\sqrt{\frac R\pi}\|\nabla w\|_2
++\frac1{2\pi^{3/2}\sqrt R}\|\nabla^2w\|_2.
+\tag{8.5}
+\]</span>
+<p>The two squared kernel integrals are respectively
+<span class="math" data-tex="\(\int_{|\xi|\leq R}(2\pi|\xi|)^{-2}d\xi=R/\pi\)">\(\int_{|\xi|\leq R}(2\pi|\xi|)^{-2}d\xi=R/\pi\)</span>
+and
+<span class="math" data-tex="\(\int_{|\xi|&gt;R}(2\pi|\xi|)^{-4}d\xi
+=1/(4\pi^3R)\)">\(\int_{|\xi|&gt;R}(2\pi|\xi|)^{-4}d\xi
+=1/(4\pi^3R)\)</span>.
+Taking <span class="math" data-tex="\(R=\|\nabla^2w\|_2/(2\pi\|\nabla w\|_2)\)">\(R=\|\nabla^2w\|_2/(2\pi\|\nabla w\|_2)\)</span>
+gives 8.4. If either derivative norm is zero, the
+source <span class="math" data-tex="\(L^2\)">\(L^2\)</span> field is zero, which supplies the same
+bound without division by zero. Fourier inversion follows
+from the resulting <span class="math" data-tex="\(L^1\)">\(L^1\)</span> Fourier norm and approximation.
+Consequently</p>
+<span class="math math-display" data-tex="\[
+\|u\|_{L^4(J;L^\infty(\mathbb R^3))}
+\leq {\cal V}:=
+\left(\frac{4P^2D_2^2}{\pi^4}\right)^{1/4}
++\delta^{1/4}V_0.
+\tag{8.6}
+\]">\[
+\|u\|_{L^4(J;L^\infty(\mathbb R^3))}
+\leq {\cal V}:=
+\left(\frac{4P^2D_2^2}{\pi^4}\right)^{1/4}
++\delta^{1/4}V_0.
+\tag{8.6}
+\]</span>
+<p>Also <span class="math" data-tex="\(\|z(t)\|_2\leq P\)">\(\|z(t)\|_2\leq P\)</span>. To check the exact curl norm,
+Parseval gives
+<span class="math" data-tex="\(\|\nabla w\|_2^2=\|\nabla\times w\|_2^2+
+\|\operatorname{div}w\|_2^2\)">\(\|\nabla w\|_2^2=\|\nabla\times w\|_2^2+
+\|\operatorname{div}w\|_2^2\)</span>; the last term is zero.</p>
+<h2 id="9-the-complete-local-heat-iteration">9. The complete local heat iteration</h2>
+<p>For each actual spatial center <span class="math" data-tex="\(x\in\mathbb R^3\)">\(x\in\mathbb R^3\)</span>, independently
+choose the following physical balls and times:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\rho=\sqrt{\nu\delta},\quad \epsilon=\rho/32,\quad
+\tau=\delta/16,\quad R_k=\rho-2k\epsilon,\quad
+B_k=B(x,R_k),\\
+s_k=s_{\rm start}+k\tau\quad(0\leq k\leq10).
+\end{gathered}
+\tag{9.1}
+\]">\[
+\begin{gathered}
+\rho=\sqrt{\nu\delta},\quad \epsilon=\rho/32,\quad
+\tau=\delta/16,\quad R_k=\rho-2k\epsilon,\quad
+B_k=B(x,R_k),\\
+s_k=s_{\rm start}+k\tau\quad(0\leq k\leq10).
+\end{gathered}
+\tag{9.1}
+\]</span>
+<p>Keep exactly the transition <span class="math" data-tex="\(j\)">\(j\)</span> of NS-FLUID-13 (6.2):
+it is zero on <span class="math" data-tex="\((-\infty,0]\)">\((-\infty,0]\)</span>, one on <span class="math" data-tex="\([1,\infty)\)">\([1,\infty)\)</span>,
+and <span class="math" data-tex="\(1-\theta((r+1)/2)\)">\(1-\theta((r+1)/2)\)</span> for <span class="math" data-tex="\(0&lt;r&lt;1\)">\(0&lt;r&lt;1\)</span>, with
+the original even cutoff <span class="math" data-tex="\(\theta\)">\(\theta\)</span> from NS-FLUID-11 (4.7).
+Write <span class="math" data-tex="\(b_1=\|j&#x27;\|_\infty\)">\(b_1=\|j&#x27;\|_\infty\)</span>, <span class="math" data-tex="\(b_2=\|j&#x27;&#x27;\|_\infty\)">\(b_2=\|j&#x27;&#x27;\|_\infty\)</span>.
+No new cutoff is substituted for these source-defined
+functions. For <span class="math" data-tex="\(1\leq k\leq9\)">\(1\leq k\leq9\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\psi_k(y)=j((R_{k-1}-|y-x|)/\epsilon),\quad
+\chi_k(t)=j((t-s_{k-1})/\tau),\quad \Psi_k=\chi_k\psi_k,\\
+L_1=b_1/\epsilon,\quad
+L_2=b_2/\epsilon^2+2b_1/(\epsilon R_{10}),\quad
+L_t=b_1/\tau,\qquad R_{10}=3\rho/8.
+\end{gathered}
+\tag{9.2}
+\]">\[
+\begin{gathered}
+\psi_k(y)=j((R_{k-1}-|y-x|)/\epsilon),\quad
+\chi_k(t)=j((t-s_{k-1})/\tau),\quad \Psi_k=\chi_k\psi_k,\\
+L_1=b_1/\epsilon,\quad
+L_2=b_2/\epsilon^2+2b_1/(\epsilon R_{10}),\quad
+L_t=b_1/\tau,\qquad R_{10}=3\rho/8.
+\end{gathered}
+\tag{9.2}
+\]</span>
+<p>These bounds retain the radial curvature term.
+The full spatial Hessian norm and Laplacian are at most
+<span class="math" data-tex="\(L_2\)">\(L_2\)</span>, and the gradient is at most <span class="math" data-tex="\(L_1\)">\(L_1\)</span>.
+The derivative support lies at distance at least
+<span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> from <span class="math" data-tex="\(B_k\)">\(B_k\)</span>, since the cutoff is already
+one on the larger ball of radius <span class="math" data-tex="\(R_k+\epsilon\)">\(R_k+\epsilon\)</span>.
+Time derivatives are at most <span class="math" data-tex="\(L_t\)">\(L_t\)</span>, and
+<span class="math" data-tex="\(\Psi_k=1\)">\(\Psi_k=1\)</span> on <span class="math" data-tex="\([s_k,s_{\rm start}+\delta]\times B_k\)">\([s_k,s_{\rm start}+\delta]\times B_k\)</span>.</p>
+<p>Every ball is in the original space. 6.2, 8.3 and 8.6
+are global, so they supply the following bound with the
+same constant for every center:</p>
+<span class="math math-display" data-tex="\[
+\sup_J\|\omega(t)\|_{L^2(B_0)}
+\leq X_0:=P+\sqrt{2v_3\rho^3}\,V_1,\qquad v_3=4\pi/3.
+\tag{9.3}
+\]">\[
+\sup_J\|\omega(t)\|_{L^2(B_0)}
+\leq X_0:=P+\sqrt{2v_3\rho^3}\,V_1,\qquad v_3=4\pi/3.
+\tag{9.3}
+\]</span>
+<p>Here <span class="math" data-tex="\(\omega=z+\nabla\times v\)">\(\omega=z+\nabla\times v\)</span> and
+<span class="math" data-tex="\(|\nabla\times v|\leq\sqrt2|\nabla v|\)">\(|\nabla\times v|\leq\sqrt2|\nabla v|\)</span>.
+This proves the required input without an annulus,
+a global <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm for the heat vorticity depending on
+initial energy, or an assumed maximum of <span class="math" data-tex="\(\omega\)">\(\omega\)</span>.</p>
+<p>For completeness the full localized original equation is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(\partial_t-\nu\Delta)(\Psi_k\omega)
+={}&amp;\nabla\times(\Psi_k(u\times\omega))
+-2\nu\sum_j\partial_j((\partial_j\Psi_k)\omega)\\
+&amp;+(\partial_t\Psi_k+\nu\Delta\Psi_k)\omega
+-\nabla\Psi_k\times(u\times\omega).
+\end{aligned}
+\tag{9.4}
+\]">\[
+\begin{aligned}
+(\partial_t-\nu\Delta)(\Psi_k\omega)
+={}&amp;\nabla\times(\Psi_k(u\times\omega))
+-2\nu\sum_j\partial_j((\partial_j\Psi_k)\omega)\\
+&amp;+(\partial_t\Psi_k+\nu\Delta\Psi_k)\omega
+-\nabla\Psi_k\times(u\times\omega).
+\end{aligned}
+\tag{9.4}
+\]</span>
+<p>It follows by the curl equation and the full product rule;
+the negative cutoff-gradient cross term is retained.
+The initial field at <span class="math" data-tex="\(s_{k-1}\)">\(s_{k-1}\)</span> is zero. Its heat
+representation is therefore the integral of all four
+right-hand terms, with the spatial derivatives acting
+on the full original Gaussian.</p>
+<p>Use exponents</p>
+<span class="math math-display" data-tex="\[
+(p_0,p_1,p_2,p_3,p_4,p_5,p_6)
+=(2,12/5,3,4,6,12,\infty),\quad
+K_0=\|H_1\|_{12/11},\quad
+K_1=\sum_j\|\partial_jH_1\|_{12/11}.
+\tag{9.5}
+\]">\[
+(p_0,p_1,p_2,p_3,p_4,p_5,p_6)
+=(2,12/5,3,4,6,12,\infty),\quad
+K_0=\|H_1\|_{12/11},\quad
+K_1=\sum_j\|\partial_jH_1\|_{12/11}.
+\tag{9.5}
+\]</span>
+<p>Every reciprocal step is <span class="math" data-tex="\(1/12\)">\(1/12\)</span>. Young's spatial
+inequality uses <span class="math" data-tex="\(12/11\)">\(12/11\)</span>, giving time factors
+<span class="math" data-tex="\((\nu r)^{-1/8}\)">\((\nu r)^{-1/8}\)</span> and <span class="math" data-tex="\((\nu r)^{-5/8}\)">\((\nu r)^{-5/8}\)</span>.
+Pairing the velocity with Hölder exponent <span class="math" data-tex="\(4/3\)">\(4/3\)</span> in
+time uses exactly</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|r^{-5/8}\|_{L^{4/3}(0,\delta)}
+=6^{3/4}\delta^{1/8},\qquad
+\|r^{-1/8}\|_{L^{4/3}(0,\delta)}
+=(6/5)^{3/4}\delta^{5/8},\\
+\int_0^\delta r^{-5/8}\,dr=\frac83\delta^{3/8},\qquad
+\int_0^\delta r^{-1/8}\,dr=\frac87\delta^{7/8}.
+\end{gathered}
+\tag{9.6}
+\]">\[
+\begin{gathered}
+\|r^{-5/8}\|_{L^{4/3}(0,\delta)}
+=6^{3/4}\delta^{1/8},\qquad
+\|r^{-1/8}\|_{L^{4/3}(0,\delta)}
+=(6/5)^{3/4}\delta^{5/8},\\
+\int_0^\delta r^{-5/8}\,dr=\frac83\delta^{3/8},\qquad
+\int_0^\delta r^{-1/8}\,dr=\frac87\delta^{7/8}.
+\end{gathered}
+\tag{9.6}
+\]</span>
+<p>For the full vector curl,
+<span class="math" data-tex="\(\nabla\times(H*F)=\sum_je_j\times(\partial_jH*F)\)">\(\nabla\times(H*F)=\sum_je_j\times(\partial_jH*F)\)</span>,
+whose norm is bounded by the defined sum of derivative
+kernel norms, without dropping any component.
+Thus each of the four terms of 9.4 is bounded in
+<span class="math" data-tex="\(L^\infty_tL^{p_k}_x\)">\(L^\infty_tL^{p_k}_x\)</span> by its respective summand in</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C={}&amp;6^{3/4}K_1\nu^{-5/8}\delta^{1/8}{\cal V}
++\frac{16}3K_1\nu^{3/8}L_1\delta^{3/8}\\
+&amp;+\frac87K_0\nu^{-1/8}(L_t+\nu L_2)\delta^{7/8}
++(6/5)^{3/4}K_0\nu^{-1/8}L_1\delta^{5/8}{\cal V}.
+\end{aligned}
+\tag{9.7}
+\]">\[
+\begin{aligned}
+C={}&amp;6^{3/4}K_1\nu^{-5/8}\delta^{1/8}{\cal V}
++\frac{16}3K_1\nu^{3/8}L_1\delta^{3/8}\\
+&amp;+\frac87K_0\nu^{-1/8}(L_t+\nu L_2)\delta^{7/8}
++(6/5)^{3/4}K_0\nu^{-1/8}L_1\delta^{5/8}{\cal V}.
+\end{aligned}
+\tag{9.7}
+\]</span>
+<p>The preceding norm of <span class="math" data-tex="\(\omega\)">\(\omega\)</span> on <span class="math" data-tex="\(B_{k-1}\)">\(B_{k-1}\)</span> is the
+only vorticity input. Induction from 9.3 proves</p>
+<span class="math math-display" data-tex="\[
+X_k=C^kX_0,\qquad
+\sup_{[s_k,s_{\rm start}+\delta]}
+\|\omega(t)\|_{L^{p_k}(B_k)}\leq X_k
+\quad(1\leq k\leq6).
+\tag{9.8}
+\]">\[
+X_k=C^kX_0,\qquad
+\sup_{[s_k,s_{\rm start}+\delta]}
+\|\omega(t)\|_{L^{p_k}(B_k)}\leq X_k
+\quad(1\leq k\leq6).
+\tag{9.8}
+\]</span>
+<p>All six spatial gains and all time integrals are explicit.
+In particular <span class="math" data-tex="\(X_6\)">\(X_6\)</span> bounds the original vorticity maximum
+on the sixth ball and time interval.</p>
+<h2 id="10-continuity-and-the-full-newton-map">10. Continuity and the full Newton map</h2>
+<p>Set <span class="math" data-tex="\(\alpha=1/4\)">\(\alpha=1/4\)</span>, and define the Gaussian constants</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+J_0=2^{1-\alpha}\|H_1\|_1^{1-\alpha}\|\nabla H_1\|_1^\alpha,\\
+J_1=\sum_j2^{1-\alpha}\|\partial_jH_1\|_1^{1-\alpha}
+\|\nabla\partial_jH_1\|_1^\alpha.
+\end{gathered}
+\tag{10.1}
+\]">\[
+\begin{gathered}
+J_0=2^{1-\alpha}\|H_1\|_1^{1-\alpha}\|\nabla H_1\|_1^\alpha,\\
+J_1=\sum_j2^{1-\alpha}\|\partial_jH_1\|_1^{1-\alpha}
+\|\nabla\partial_jH_1\|_1^\alpha.
+\end{gathered}
+\tag{10.1}
+\]</span>
+<p>For any integrable differentiable kernel <span class="math" data-tex="\(K\)">\(K\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|K(\cdot+y)-K\|_1
+\leq \min(2\|K\|_1,|y|\|\nabla K\|_1)
+\leq(2\|K\|_1)^{1-\alpha}\|\nabla K\|_1^\alpha|y|^\alpha.
+\tag{10.2}
+\]">\[
+\|K(\cdot+y)-K\|_1
+\leq \min(2\|K\|_1,|y|\|\nabla K\|_1)
+\leq(2\|K\|_1)^{1-\alpha}\|\nabla K\|_1^\alpha|y|^\alpha.
+\tag{10.2}
+\]</span>
+<p>The first inequality follows from the triangle inequality
+and the fundamental theorem along a segment. The second
+follows by considering the smaller of its two arguments.
+The powers of original heat time for 10.1 are again
+<span class="math" data-tex="\((\nu r)^{-1/8}\)">\((\nu r)^{-1/8}\)</span> and <span class="math" data-tex="\((\nu r)^{-5/8}\)">\((\nu r)^{-5/8}\)</span>.
+Define the full coefficient</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C_H={}&amp;6^{3/4}J_1\nu^{-5/8}\delta^{1/8}{\cal V}
++\frac{16}3J_1\nu^{3/8}L_1\delta^{3/8}\\
+&amp;+\frac87J_0\nu^{-1/8}(L_t+\nu L_2)\delta^{7/8}
++(6/5)^{3/4}J_0\nu^{-1/8}L_1\delta^{5/8}{\cal V},
+\qquad H_7=C_HX_6.
+\end{aligned}
+\tag{10.3}
+\]">\[
+\begin{aligned}
+C_H={}&amp;6^{3/4}J_1\nu^{-5/8}\delta^{1/8}{\cal V}
++\frac{16}3J_1\nu^{3/8}L_1\delta^{3/8}\\
+&amp;+\frac87J_0\nu^{-1/8}(L_t+\nu L_2)\delta^{7/8}
++(6/5)^{3/4}J_0\nu^{-1/8}L_1\delta^{5/8}{\cal V},
+\qquad H_7=C_HX_6.
+\end{aligned}
+\tag{10.3}
+\]</span>
+<p>Apply 9.4 for <span class="math" data-tex="\(k=7\)">\(k=7\)</span>, now using the proved <span class="math" data-tex="\(X_6\)">\(X_6\)</span>.
+10.2 and the four integrals 9.6 prove</p>
+<span class="math math-display" data-tex="\[
+\|\Psi_7\omega(t)\|_\infty\leq X_6,\qquad
+[\Psi_7\omega(t)]_{C^\alpha(\mathbb R^3)}\leq H_7
+\quad(s_6\leq t\leq s_{\rm start}+\delta).
+\tag{10.4}
+\]">\[
+\|\Psi_7\omega(t)\|_\infty\leq X_6,\qquad
+[\Psi_7\omega(t)]_{C^\alpha(\mathbb R^3)}\leq H_7
+\quad(s_6\leq t\leq s_{\rm start}+\delta).
+\tag{10.4}
+\]</span>
+<p>The maximum uses the actual support inside <span class="math" data-tex="\(B_6\)">\(B_6\)</span>;
+it is not inferred from a seminorm. For <span class="math" data-tex="\(t\geq s_7\)">\(t\geq s_7\)</span>,
+this compact field is the original vorticity on <span class="math" data-tex="\(B_7\)">\(B_7\)</span>.</p>
+<p>Let <span class="math" data-tex="\(N_{\rm Newt}(y)=1/(4\pi|y|)\)">\(N_{\rm Newt}(y)=1/(4\pi|y|)\)</span>.
+The actual compact field <span class="math" data-tex="\(\psi_8w\)">\(\psi_8w\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\psi_8w={}&amp;\nabla\times N_{\rm Newt}*(\psi_8z)
++\nabla\times N_{\rm Newt}*(\nabla\psi_8\times w)\\
+&amp;-\nabla N_{\rm Newt}*(\nabla\psi_8\cdot w).
+\end{aligned}
+\tag{10.5}
+\]">\[
+\begin{aligned}
+\psi_8w={}&amp;\nabla\times N_{\rm Newt}*(\psi_8z)
++\nabla\times N_{\rm Newt}*(\nabla\psi_8\times w)\\
+&amp;-\nabla N_{\rm Newt}*(\nabla\psi_8\cdot w).
+\end{aligned}
+\tag{10.5}
+\]</span>
+<p>This follows from
+<span class="math" data-tex="\(\nabla\times\nabla\times X-\nabla\operatorname{div}X
+=-\Delta X\)">\(\nabla\times\nabla\times X-\nabla\operatorname{div}X
+=-\Delta X\)</span> and <span class="math" data-tex="\(-\Delta N_{\rm Newt}=\delta_0\)">\(-\Delta N_{\rm Newt}=\delta_0\)</span>,
+with both product derivatives included. Fourier verification
+away from zero, together with the compact <span class="math" data-tex="\(L^2\)">\(L^2\)</span> field,
+rules out an additional polynomial field.
+For <span class="math" data-tex="\(t\geq s_7\)">\(t\geq s_7\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+Z_\infty=X_6+\sqrt2V_1,\qquad Z_2=P,\qquad
+Z_\alpha=H_7+\sqrt2V_2\epsilon^{1-\alpha}.
+\tag{10.6}
+\]">\[
+Z_\infty=X_6+\sqrt2V_1,\qquad Z_2=P,\qquad
+Z_\alpha=H_7+\sqrt2V_2\epsilon^{1-\alpha}.
+\tag{10.6}
+\]</span>
+<p>These bound <span class="math" data-tex="\(z\)">\(z\)</span>, <span class="math" data-tex="\(\psi_8z\)">\(\psi_8z\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, and its
+local increments from points in <span class="math" data-tex="\(B_8\)">\(B_8\)</span> by distances
+less than <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. The entire segment is inside
+<span class="math" data-tex="\(B_7\)">\(B_7\)</span>, and <span class="math" data-tex="\(\psi_8=1\)">\(\psi_8=1\)</span> at both such points, because
+its plateau extends to radius <span class="math" data-tex="\(R_8+\epsilon\)">\(R_8+\epsilon\)</span>.</p>
+<p>The full kernel magnitude is <span class="math" data-tex="\(1/(4\pi|y|^2)\)">\(1/(4\pi|y|^2)\)</span>.
+Its integral inside radius <span class="math" data-tex="\(2\rho\)">\(2\rho\)</span> is <span class="math" data-tex="\(2\rho\)">\(2\rho\)</span>,
+and its exterior squared integral from radius <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>
+is <span class="math" data-tex="\(1/(4\pi r)\)">\(1/(4\pi r)\)</span>. Hence the first term in 10.5
+is bounded both by <span class="math" data-tex="\(2\rho Z_\infty\)">\(2\rho Z_\infty\)</span> and by</p>
+<span class="math math-display" data-tex="\[
+\inf_{r&gt;0}\left(rZ_\infty+
+\frac{Z_2}{2\sqrt{\pi r}}\right)
+=\frac3{(4\sqrt\pi)^{2/3}}Z_\infty^{1/3}Z_2^{2/3}.
+\tag{10.7}
+\]">\[
+\inf_{r&gt;0}\left(rZ_\infty+
+\frac{Z_2}{2\sqrt{\pi r}}\right)
+=\frac3{(4\sqrt\pi)^{2/3}}Z_\infty^{1/3}Z_2^{2/3}.
+\tag{10.7}
+\]</span>
+<p>The positive minimizer is
+<span class="math" data-tex="\((Z_2/(4\sqrt\pi Z_\infty))^{2/3}\)">\((Z_2/(4\sqrt\pi Z_\infty))^{2/3}\)</span>; if either
+norm vanishes the convolution is zero. Each of the
+two boundary terms is bounded by
+<span class="math" data-tex="\(L_1W_0/(2\sqrt{\pi\epsilon})\)">\(L_1W_0/(2\sqrt{\pi\epsilon})\)</span>, since its support
+is at distance at least <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. Thus on <span class="math" data-tex="\(B_8\)">\(B_8\)</span></p>
+<span class="math math-display" data-tex="\[
+W_{\rm loc}=
+\min\left\{2\rho Z_\infty,
+\frac3{(4\sqrt\pi)^{2/3}}Z_\infty^{1/3}Z_2^{2/3}\right\}
++\frac{L_1W_0}{\sqrt{\pi\epsilon}}
+\tag{10.8}
+\]">\[
+W_{\rm loc}=
+\min\left\{2\rho Z_\infty,
+\frac3{(4\sqrt\pi)^{2/3}}Z_\infty^{1/3}Z_2^{2/3}\right\}
++\frac{L_1W_0}{\sqrt{\pi\epsilon}}
+\tag{10.8}
+\]</span>
+<p>bounds <span class="math" data-tex="\(|w|\)">\(|w|\)</span>.</p>
+<p>For its gradient, keep the entire Newton distribution</p>
+<span class="math math-display" data-tex="\[
+\partial_i\partial_jN_{\rm Newt}
+=\operatorname{pv}\frac{3y_iy_j-\delta_{ij}|y|^2}{4\pi|y|^5}
+-\frac{\delta_{ij}}3\delta_0.
+\tag{10.9}
+\]">\[
+\partial_i\partial_jN_{\rm Newt}
+=\operatorname{pv}\frac{3y_iy_j-\delta_{ij}|y|^2}{4\pi|y|^5}
+-\frac{\delta_{ij}}3\delta_0.
+\tag{10.9}
+\]</span>
+<p>The point mass follows by integrating outside a small
+ball; its inner boundary integral is
+<span class="math" data-tex="\(-(4\pi)^{-1}\int_{\mathbb S^2}\vartheta_i\vartheta_j\,dS
+=-\delta_{ij}/3\)">\(-(4\pi)^{-1}\int_{\mathbb S^2}\vartheta_i\vartheta_j\,dS
+=-\delta_{ij}/3\)</span>. The same angular identity gives
+zero average for the principal-value kernel. Its full
+Euclidean tensor norm is <span class="math" data-tex="\(\sqrt6/(4\pi|y|^3)\)">\(\sqrt6/(4\pi|y|^3)\)</span>.
+Subtract <span class="math" data-tex="\(z(x)\)">\(z(x)\)</span> in the inner ball of radius <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>
+and use 10.6; integrate its radial factor to obtain
+<span class="math" data-tex="\(\sqrt6 Z_\alpha\epsilon^\alpha/\alpha\)">\(\sqrt6 Z_\alpha\epsilon^\alpha/\alpha\)</span>.
+Between radii <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> and <span class="math" data-tex="\(2\rho\)">\(2\rho\)</span> the contribution
+is <span class="math" data-tex="\(\sqrt6Z_\infty\log(2\rho/\epsilon)\)">\(\sqrt6Z_\infty\log(2\rho/\epsilon)\)</span>.
+The point mass contributes at most <span class="math" data-tex="\(\sqrt2Z_\infty/3\)">\(\sqrt2Z_\infty/3\)</span>
+to the full derivative of the curl.
+Finally the exterior squared Hessian integral equals
+<span class="math" data-tex="\(1/(2\pi\epsilon^3)\)">\(1/(2\pi\epsilon^3)\)</span>; the two boundary fields
+together therefore cost
+<span class="math" data-tex="\(\sqrt{2/\pi}L_1W_0\epsilon^{-3/2}\)">\(\sqrt{2/\pi}L_1W_0\epsilon^{-3/2}\)</span>.
+All terms give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G_{\rm loc}=
+\frac{\sqrt6}{\alpha}\epsilon^\alpha Z_\alpha
++\left(\sqrt6\log\frac{2\rho}{\epsilon}+\frac{\sqrt2}3\right)Z_\infty
++\sqrt{\frac2\pi}L_1W_0\epsilon^{-3/2},\\
+U_\infty=W_{\rm loc}+V_0,\qquad G_u=G_{\rm loc}+V_1.
+\end{gathered}
+\tag{10.10}
+\]">\[
+\begin{gathered}
+G_{\rm loc}=
+\frac{\sqrt6}{\alpha}\epsilon^\alpha Z_\alpha
++\left(\sqrt6\log\frac{2\rho}{\epsilon}+\frac{\sqrt2}3\right)Z_\infty
++\sqrt{\frac2\pi}L_1W_0\epsilon^{-3/2},\\
+U_\infty=W_{\rm loc}+V_0,\qquad G_u=G_{\rm loc}+V_1.
+\end{gathered}
+\tag{10.10}
+\]</span>
+<p>They bound <span class="math" data-tex="\(|u|\)">\(|u|\)</span> and <span class="math" data-tex="\(|\nabla u|\)">\(|\nabla u|\)</span> on
+<span class="math" data-tex="\([s_7,s_{\rm start}+\delta]\times B_8\)">\([s_7,s_{\rm start}+\delta]\times B_8\)</span>.
+Every actual center has the same constants. Evaluating
+at its center proves these bounds on all of <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>.
+This establishes the precise whole-space receiving map
+from the earlier local result, with its boundary fields
+and point mass retained.</p>
+<h2 id="11-the-original-vorticity-gradient">11. The original vorticity gradient</h2>
+<p>The ninth cutoff has support in <span class="math" data-tex="\(B_8\)">\(B_8\)</span>, where 10.10 is
+proved. The full compact velocity <span class="math" data-tex="\(V=\psi_9u\)">\(V=\psi_9u\)</span> has
+maximum <span class="math" data-tex="\(U_\infty\)">\(U_\infty\)</span> and derivative maximum
+<span class="math" data-tex="\(L_1U_\infty+G_u\)">\(L_1U_\infty+G_u\)</span>. The segment and minimum argument
+of 10.2 proves
+<span class="math" data-tex="\([V]_{C^\alpha}\leq
+(2U_\infty)^{1-\alpha}(L_1U_\infty+G_u)^\alpha\)">\([V]_{C^\alpha}\leq
+(2U_\infty)^{1-\alpha}(L_1U_\infty+G_u)^\alpha\)</span>.
+For <span class="math" data-tex="\(t\geq s_8\)">\(t\geq s_8\)</span>, <span class="math" data-tex="\(\Psi_7\omega=\omega\)">\(\Psi_7\omega=\omega\)</span> on this
+support, so the complete product differences give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A_{\rm nl}=U_\infty H_7+
+(2U_\infty)^{1-\alpha}(L_1U_\infty+G_u)^\alpha X_6,\\
+A_{\rm cut}=L_1H_7+(2L_1)^{1-\alpha}L_2^\alpha X_6,\\
+J_{2,\alpha}=\sum_j\||x|^\alpha\nabla\partial_jH_1\|_1,
+\qquad J_\nabla=\|\nabla H_1\|_1.
+\end{gathered}
+\tag{11.1}
+\]">\[
+\begin{gathered}
+A_{\rm nl}=U_\infty H_7+
+(2U_\infty)^{1-\alpha}(L_1U_\infty+G_u)^\alpha X_6,\\
+A_{\rm cut}=L_1H_7+(2L_1)^{1-\alpha}L_2^\alpha X_6,\\
+J_{2,\alpha}=\sum_j\||x|^\alpha\nabla\partial_jH_1\|_1,
+\qquad J_\nabla=\|\nabla H_1\|_1.
+\end{gathered}
+\tag{11.1}
+\]</span>
+<p>The first two quantities bound respectively the global
+Hölder seminorms of <span class="math" data-tex="\(\Psi_9(u\times\omega)\)">\(\Psi_9(u\times\omega)\)</span> and
+<span class="math" data-tex="\((\partial_j\Psi_9)\omega\)">\((\partial_j\Psi_9)\omega\)</span>. Both factors in each
+product difference have been included.</p>
+<p>Differentiate the full 9.4 for <span class="math" data-tex="\(k=9\)">\(k=9\)</span>.
+Every second Gaussian derivative integrates to zero;
+subtracting the evaluation value of its input therefore
+bounds it by its full <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-moment. Its time
+factor <span class="math" data-tex="\((\nu r)^{-1+\alpha/2}\)">\((\nu r)^{-1+\alpha/2}\)</span> integrates to
+<span class="math" data-tex="\((2/\alpha)\nu^{-1+\alpha/2}\delta^{\alpha/2}\)">\((2/\alpha)\nu^{-1+\alpha/2}\delta^{\alpha/2}\)</span>.
+The two remaining source terms use one Gaussian
+gradient, whose time integral is
+<span class="math" data-tex="\(2J_\nabla\nu^{-1/2}\sqrt\delta\)">\(2J_\nabla\nu^{-1/2}\sqrt\delta\)</span>.
+The resulting bound is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+G_\omega={}&amp;\frac2\alpha J_{2,\alpha}
+\nu^{-1+\alpha/2}\delta^{\alpha/2}
+(A_{\rm nl}+2\nu A_{\rm cut})\\
+&amp;+2J_\nabla\nu^{-1/2}\sqrt\delta
+(L_t+\nu L_2+L_1U_\infty)X_6.
+\end{aligned}
+\tag{11.2}
+\]">\[
+\begin{aligned}
+G_\omega={}&amp;\frac2\alpha J_{2,\alpha}
+\nu^{-1+\alpha/2}\delta^{\alpha/2}
+(A_{\rm nl}+2\nu A_{\rm cut})\\
+&amp;+2J_\nabla\nu^{-1/2}\sqrt\delta
+(L_t+\nu L_2+L_1U_\infty)X_6.
+\end{aligned}
+\tag{11.2}
+\]</span>
+<p>One can justify differentiation by first cutting off
+a positive upper time gap and then applying dominated
+convergence with the displayed integrable powers.
+The initial cutoff field is zero. On <span class="math" data-tex="\(B_9\)">\(B_9\)</span> at times
+at least <span class="math" data-tex="\(s_9\)">\(s_9\)</span>, the cutoff is identically one, so
+the estimated derivative is the original derivative
+<span class="math" data-tex="\(\nabla\omega\)">\(\nabla\omega\)</span>, not a cutoff replacement.
+Taking all actual centers proves</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|u|\leq U_\infty,\quad|\nabla u|\leq G_u,\quad
+|\omega|\leq X_6,\quad|\nabla\omega|\leq G_\omega\\
+\text{on }\ 
+J_{\rm reg}\times\mathbb R^3,\qquad
+J_{\rm reg}=[s_{\rm start}+9\delta/16,s_{\rm start}+\delta].
+\end{gathered}
+\tag{11.3}
+\]">\[
+\begin{gathered}
+|u|\leq U_\infty,\quad|\nabla u|\leq G_u,\quad
+|\omega|\leq X_6,\quad|\nabla\omega|\leq G_\omega\\
+\text{on }\ 
+J_{\rm reg}\times\mathbb R^3,\qquad
+J_{\rm reg}=[s_{\rm start}+9\delta/16,s_{\rm start}+\delta].
+\end{gathered}
+\tag{11.3}
+\]</span>
+<p>The length is exactly <span class="math" data-tex="\(7\delta/16&gt;0\)">\(7\delta/16&gt;0\)</span>. All displayed
+constants depend only on <span class="math" data-tex="\(U,\nu,\ell\)">\(U,\nu,\ell\)</span>, the fixed
+Gaussian norms and the fixed cutoff, not on auxiliary
+high derivatives or the selected time and center.</p>
+<h2 id="12-a-cylinder-for-the-finite-gaussian-estimate">12. A cylinder for the finite Gaussian estimate</h2>
+<p>Let <span class="math" data-tex="\(C_0\geq2\)">\(C_0\geq2\)</span> be the desired finite weighted-estimate
+parameter, and define</p>
+<span class="math math-display" data-tex="\[
+T&#x27;=\min\left\{\frac{7\delta}{32},
+\frac{\nu}{4C_0U_\infty^2},
+\frac1{2C_0G_u}\right\}&gt;0,\qquad
+t&#x27;=s_{\rm start}+\delta,\qquad I&#x27;=[t&#x27;-T&#x27;,t&#x27;].
+\tag{12.1}
+\]">\[
+T&#x27;=\min\left\{\frac{7\delta}{32},
+\frac{\nu}{4C_0U_\infty^2},
+\frac1{2C_0G_u}\right\}&gt;0,\qquad
+t&#x27;=s_{\rm start}+\delta,\qquad I&#x27;=[t&#x27;-T&#x27;,t&#x27;].
+\tag{12.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(U_\infty,G_u&gt;0\)">\(U_\infty,G_u&gt;0\)</span>, since 6.2 includes positive
+Gaussian norm bounds and <span class="math" data-tex="\(U&gt;0\)">\(U&gt;0\)</span>. The left endpoint
+of <span class="math" data-tex="\(I&#x27;\)">\(I&#x27;\)</span> is at least <span class="math" data-tex="\(s_{\rm start}+25\delta/32\)">\(s_{\rm start}+25\delta/32\)</span>,
+which is later than the start of <span class="math" data-tex="\(J_{\rm reg}\)">\(J_{\rm reg}\)</span>.
+Consequently all 11.3 bounds hold throughout <span class="math" data-tex="\(I&#x27;\)">\(I&#x27;\)</span>.
+The choices retain an explicit margin:</p>
+<span class="math math-display" data-tex="\[
+|u|\leq\frac12\sqrt{\frac{\nu}{C_0T&#x27;}},\qquad
+|\nabla u|\leq\frac1{2C_0T&#x27;}.
+\tag{12.2}
+\]">\[
+|u|\leq\frac12\sqrt{\frac{\nu}{C_0T&#x27;}},\qquad
+|\nabla u|\leq\frac1{2C_0T&#x27;}.
+\tag{12.2}
+\]</span>
+<p>For any actual spatial center <span class="math" data-tex="\(x_c\)">\(x_c\)</span>, define the
+time-reversed original vorticity</p>
+<span class="math math-display" data-tex="\[
+{\cal U}(s,y)=\omega(t&#x27;-s,x_c+y),\qquad 0\leq s\leq T&#x27;.
+\tag{12.3}
+\]">\[
+{\cal U}(s,y)=\omega(t&#x27;-s,x_c+y),\qquad 0\leq s\leq T&#x27;.
+\tag{12.3}
+\]</span>
+<p>The original vorticity equation gives exactly</p>
+<span class="math math-display" data-tex="\[
+(\partial_s+\nu\Delta_y){\cal U}
+=u(t&#x27;-s,x_c+y)\cdot\nabla_y{\cal U}
+-{\cal U}\cdot\nabla u(t&#x27;-s,x_c+y).
+\tag{12.4}
+\]">\[
+(\partial_s+\nu\Delta_y){\cal U}
+=u(t&#x27;-s,x_c+y)\cdot\nabla_y{\cal U}
+-{\cal U}\cdot\nabla u(t&#x27;-s,x_c+y).
+\tag{12.4}
+\]</span>
+<p>Both signs follow by reversing the original time derivative.
+Hence 12.2 proves</p>
+<span class="math math-display" data-tex="\[
+|(\partial_s+\nu\Delta_y){\cal U}|
+\leq \frac1{2C_0T&#x27;}|{\cal U}|
++\frac12\sqrt{\frac{\nu}{C_0T&#x27;}}|\nabla_y{\cal U}|.
+\tag{12.5}
+\]">\[
+|(\partial_s+\nu\Delta_y){\cal U}|
+\leq \frac1{2C_0T&#x27;}|{\cal U}|
++\frac12\sqrt{\frac{\nu}{C_0T&#x27;}}|\nabla_y{\cal U}|.
+\tag{12.5}
+\]</span>
+<p>This is stronger than the zero-residual coefficient
+hypothesis in NS-FLUID-10 (4.7) and Exercise 1, with
+its original viscosity. It holds on every finite
+spatial ball. For example the finite Gaussian estimate
+can take <span class="math" data-tex="\(r=\sqrt{4000\nu T&#x27;}\)">\(r=\sqrt{4000\nu T&#x27;}\)</span>, or any larger
+physical radius; its auxiliary parameters may be
+<span class="math" data-tex="\(\tau_G=T&#x27;/2000\)">\(\tau_G=T&#x27;/2000\)</span>, <span class="math" data-tex="\(\varepsilon_G=T&#x27;/4000\)">\(\varepsilon_G=T&#x27;/4000\)</span>.
+They obey <span class="math" data-tex="\(0&lt;\varepsilon_G\leq\tau_G&lt;T&#x27;/1000\)">\(0&lt;\varepsilon_G\leq\tau_G&lt;T&#x27;/1000\)</span>
+and the required radius inequality. This proves
+admissibility of the original cylinder; a later
+off-center mass application must still retain the
+actual Gaussian and all its boundary costs.</p>
+<h2 id="13-the-same-original-mass-and-its-time-scale">13. The same original mass and its time scale</h2>
+<p>No new frequency point, ball or vorticity has been
+selected during 5.1–12.5. 3.3 therefore applies at
+every time of <span class="math" data-tex="\(I&#x27;\)">\(I&#x27;\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\int_{B(x_*,2R/N)}|\omega(t,x)|^2\,dx
+\geq\frac{b^2N}{4C_K^2},\\
+\int_{B(x_0,(LB+2R/q)\sqrt S)}|\omega(t,x)|^2\,dx
+\geq\frac{b^2q}{4C_K^2}S^{-1/2},\\
+\int_{I&#x27;}\int_{B(x_0,(LB+2R/q)\sqrt S)}
+|\omega|^2\,dx\,dt
+\geq\frac{b^2qT&#x27;}{4C_K^2}S^{-1/2}.
+\end{gathered}
+\tag{13.1}
+\]">\[
+\begin{gathered}
+\int_{B(x_*,2R/N)}|\omega(t,x)|^2\,dx
+\geq\frac{b^2N}{4C_K^2},\\
+\int_{B(x_0,(LB+2R/q)\sqrt S)}|\omega(t,x)|^2\,dx
+\geq\frac{b^2q}{4C_K^2}S^{-1/2},\\
+\int_{I&#x27;}\int_{B(x_0,(LB+2R/q)\sqrt S)}
+|\omega|^2\,dx\,dt
+\geq\frac{b^2qT&#x27;}{4C_K^2}S^{-1/2}.
+\end{gathered}
+\tag{13.1}
+\]</span>
+<p>All letters <span class="math" data-tex="\(b,C_K,R,q,L,B,S,N,x_*,x_0\)">\(b,C_K,R,q,L,B,S,N,x_*,x_0\)</span> are exactly
+the constants and points of 3.1–4.1. The pointwise
+mass survives restriction unchanged; the time integral
+uses the new actual length <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span>.</p>
+<p>This length is quantitatively proportional to the
+original <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, not just positive for an individual
+solution. To prove that fact without replacing the
+original fields, set the following scalar coefficients:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+e=4C_MU^4\nu^{-5/2},\quad
+a_6=C_{0,6}U\nu^{-1/4}+S_3\sqrt{2e},\quad
+b_{13}=C_{1,3}U\nu^{-1/2},\\
+q_E=a_6^2b_{13}^2/\nu+
+27S_3^2a_6^4e/(2\nu^3),\qquad
+d_E=\min\{1/2,e/(4q_E)\}.
+\end{gathered}
+\tag{13.2}
+\]">\[
+\begin{gathered}
+e=4C_MU^4\nu^{-5/2},\quad
+a_6=C_{0,6}U\nu^{-1/4}+S_3\sqrt{2e},\quad
+b_{13}=C_{1,3}U\nu^{-1/2},\\
+q_E=a_6^2b_{13}^2/\nu+
+27S_3^2a_6^4e/(2\nu^3),\qquad
+d_E=\min\{1/2,e/(4q_E)\}.
+\end{gathered}
+\tag{13.2}
+\]</span>
+<p>Direct substitution in the complete 6.2–8.1 gives</p>
+<span class="math math-display" data-tex="\[
+E_*=e\ell^{-1/2},\quad Q_*=q_E\ell^{-3/2},
+\quad\delta=d_E\ell.
+\tag{13.3}
+\]">\[
+E_*=e\ell^{-1/2},\quad Q_*=q_E\ell^{-3/2},
+\quad\delta=d_E\ell.
+\tag{13.3}
+\]</span>
+<p>Every mixed term in <span class="math" data-tex="\(a_6^2\)">\(a_6^2\)</span> and <span class="math" data-tex="\(a_6^4\)">\(a_6^4\)</span> remains
+in these formulas.</p>
+<p>The remaining constants have the following exact
+powers of the original interval length; the factors
+left after removing these powers depend only on <span class="math" data-tex="\(U,\nu\)">\(U,\nu\)</span>
+and the fixed kernels and cutoff:</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c}
+\text{quantity}&amp;\text{power of }\ell\\ \hline
+W_0&amp;1/4\\
+P,\ D_2&amp;-1/4\\
+V_j&amp;-(j+1)/2\\
+{\cal V}&amp;-1/4\\
+\rho,\epsilon&amp;1/2\\
+L_1&amp;-1/2\\
+L_2,L_t&amp;-1\\
+X_0&amp;-1/4\\
+C,C_H&amp;-1/8\\
+X_6&amp;-1\\
+H_7&amp;-9/8\\
+Z_\infty,Z_2,Z_\alpha&amp;-1,\ -1/4,\ -9/8\\
+U_\infty,G_u,G_\omega&amp;-1/2,\ -1,\ -3/2 .
+\end{array}
+\tag{13.4}
+\]">\[
+\begin{array}{c|c}
+\text{quantity}&amp;\text{power of }\ell\\ \hline
+W_0&amp;1/4\\
+P,\ D_2&amp;-1/4\\
+V_j&amp;-(j+1)/2\\
+{\cal V}&amp;-1/4\\
+\rho,\epsilon&amp;1/2\\
+L_1&amp;-1/2\\
+L_2,L_t&amp;-1\\
+X_0&amp;-1/4\\
+C,C_H&amp;-1/8\\
+X_6&amp;-1\\
+H_7&amp;-9/8\\
+Z_\infty,Z_2,Z_\alpha&amp;-1,\ -1/4,\ -9/8\\
+U_\infty,G_u,G_\omega&amp;-1/2,\ -1,\ -3/2 .
+\end{array}
+\tag{13.4}
+\]</span>
+<p>Each sum is homogeneous: for example the four
+terms of <span class="math" data-tex="\(C\)">\(C\)</span> have powers
+<span class="math" data-tex="\(1/8-1/4=-1/8\)">\(1/8-1/4=-1/8\)</span>,
+<span class="math" data-tex="\(-1/2+3/8=-1/8\)">\(-1/2+3/8=-1/8\)</span>,
+<span class="math" data-tex="\(-1+7/8=-1/8\)">\(-1+7/8=-1/8\)</span>, and
+<span class="math" data-tex="\(-1/2+5/8-1/4=-1/8\)">\(-1/2+5/8-1/4=-1/8\)</span>.
+In the Newton minimum, the first term has power
+<span class="math" data-tex="\(1/2-1=-1/2\)">\(1/2-1=-1/2\)</span> and the second has
+<span class="math" data-tex="\(-1/3-1/6=-1/2\)">\(-1/3-1/6=-1/2\)</span>; its boundary term has
+<span class="math" data-tex="\(-1/2+1/4-1/4=-1/2\)">\(-1/2+1/4-1/4=-1/2\)</span>.
+The logarithm is exactly <span class="math" data-tex="\(\log64\)">\(\log64\)</span>, independent of
+<span class="math" data-tex="\(\ell\)">\(\ell\)</span>. 11.1 gives powers <span class="math" data-tex="\(-13/8\)">\(-13/8\)</span> for
+<span class="math" data-tex="\(A_{\rm nl}\)">\(A_{\rm nl}\)</span> and <span class="math" data-tex="\(A_{\rm cut}\)">\(A_{\rm cut}\)</span>; the first
+term of 11.2 then has <span class="math" data-tex="\(-13/8+1/8=-3/2\)">\(-13/8+1/8=-3/2\)</span>,
+and the second has <span class="math" data-tex="\(1/2-1-1=-3/2\)">\(1/2-1-1=-3/2\)</span>.
+These computations verify all dependent sums and
+the sole minimum in the table.</p>
+<p>In particular <span class="math" data-tex="\(u_c=\sqrt\ell U_\infty\)">\(u_c=\sqrt\ell U_\infty\)</span> and
+<span class="math" data-tex="\(g_c=\ell G_u\)">\(g_c=\ell G_u\)</span> are the exact positive coefficients
+obtained by 9.1–10.10 and are independent of <span class="math" data-tex="\(\ell\)">\(\ell\)</span>.
+Define</p>
+<span class="math math-display" data-tex="\[
+\vartheta(U,\nu,C_0)=
+\min\left\{\frac{7d_E}{32},\frac{\nu}{4C_0u_c^2},
+\frac1{2C_0g_c}\right\}&gt;0.
+\tag{13.5}
+\]">\[
+\vartheta(U,\nu,C_0)=
+\min\left\{\frac{7d_E}{32},\frac{\nu}{4C_0u_c^2},
+\frac1{2C_0g_c}\right\}&gt;0.
+\tag{13.5}
+\]</span>
+<p>Then the exact length and its comparison with the
+original frequency scale are</p>
+<span class="math math-display" data-tex="\[
+T&#x27;=\vartheta\ell=\vartheta hN^{-2}
+\geq\frac{\vartheta h}{\beta^2}S,\qquad
+\int_{I&#x27;}\int_{B(x_0,(LB+2R/q)\sqrt S)}|\omega|^2
+\geq\frac{b^2q\vartheta h}{4C_K^2\beta^2}\sqrt S.
+\tag{13.6}
+\]">\[
+T&#x27;=\vartheta\ell=\vartheta hN^{-2}
+\geq\frac{\vartheta h}{\beta^2}S,\qquad
+\int_{I&#x27;}\int_{B(x_0,(LB+2R/q)\sqrt S)}|\omega|^2
+\geq\frac{b^2q\vartheta h}{4C_K^2\beta^2}\sqrt S.
+\tag{13.6}
+\]</span>
+<p>Thus the later mass argument has both a genuine
+regularity cylinder and an explicit surviving mass
+at the original scale.</p>
+<p>The regularity construction has a further scope that does
+not require the frequency event. For any actual
+<span class="math" data-tex="\([a-\ell,a+\ell]\)">\([a-\ell,a+\ell]\)</span> contained in the original smooth
+equation domain, with <span class="math" data-tex="\(\ell&gt;0\)">\(\ell&gt;0\)</span> and the same bound <span class="math" data-tex="\(U&gt;0\)">\(U&gt;0\)</span>,
+5.4–12.5 construct</p>
+<span class="math math-display" data-tex="\[
+I&#x27;\subset[a,a+\ell],\qquad
+|I&#x27;|=\vartheta(U,\nu,C_0)\ell,
+\tag{13.7}
+\]">\[
+I&#x27;\subset[a,a+\ell],\qquad
+|I&#x27;|=\vartheta(U,\nu,C_0)\ell,
+\tag{13.7}
+\]</span>
+<p>with all four regularity bounds and the Gaussian
+coefficient inequality. The proof is exact: 5.3 was
+used only to verify the inclusion of that earlier
+heat interval; once inclusion is given by its actual
+endpoints, every line 5.4–12.5 applies to the same
+fields and constants. The frequency hypothesis was
+used subsequently only for the mass bounds 13.1
+and 13.6. Thus 13.7 is a proved general receiving
+statement for time intervals of the original
+critically bounded solution. It neither supplies
+positive vorticity mass without an amplitude input
+nor extends a solution beyond its given domain.</p>
+<p><img src="assets/NS-FLUID-17/quantitative-regularity-interval-EC414759E45CF0C309CAB7EAB0F474A5E70BEDEF87D613B242699AFCDDAD513B.png" alt="Energy comparison and exact receiving time domains" class="course-figure" width="2295" height="884" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="quantitative-regularity-interval" data-asset-sha256="EC414759E45CF0C309CAB7EAB0F474A5E70BEDEF87D613B242699AFCDDAD513B"></p>
+<p><strong>Figure 2.</strong> The left panel shows the proved upper comparison
+<span class="math" data-tex="\(E_*(1/2+\sigma/4)\)">\(E_*(1/2+\sigma/4)\)</span>, with
+<span class="math" data-tex="\(\sigma=(t-s_{\rm start})/\delta\)">\(\sigma=(t-s_{\rm start})/\delta\)</span>, and the strict gap to
+the proposed first crossing at <span class="math" data-tex="\(E_*\)">\(E_*\)</span> (8.1–8.2).
+It is a comparison function, not a sampled solution energy.
+The right panel shows the exact nested time regions in
+11.3–12.1. The orange segment is the largest possible
+receiving interval permitted by <span class="math" data-tex="\(7\delta/32\)">\(7\delta/32\)</span>; the actual
+interval can be shorter because 12.1 retains both
+coefficient constraints. These plotted ratios describe
+the original intervals and do not replace the equation
+or its physical parameters. Reproducible sources:
+<a href="assets/quantitative-regularity-interval.py">Python figure source</a> and SVG supplied with the course.</p>
+<h2 id="14-five-solved-exercises">14. Five solved exercises</h2>
+<h3 id="exercise-1-divide-the-amplitude-budget-and-choose-the-duration">Exercise 1: divide the amplitude budget and choose the duration</h3>
+<p>Instead of assigning a quarter of the original amplitude
+to both the exterior term and its time variation, choose
+<span class="math" data-tex="\(0&lt;\varepsilon&lt;1\)">\(0&lt;\varepsilon&lt;1\)</span> and <span class="math" data-tex="\(0&lt;\theta&lt;1-\varepsilon\)">\(0&lt;\theta&lt;1-\varepsilon\)</span>.
+Give the exact radius, duration and surviving mass.
+For fixed <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, maximize the resulting
+coefficient in the integrated mass bound.</p>
+<p><strong>Solution.</strong> Keep every original frequency and physical
+constant from Sections 1–4, and put</p>
+<span class="math math-display" data-tex="\[
+R_\varepsilon=\max\left\{1,
+\left(\frac{T_KU}{\varepsilon b}\right)^{1/20}\right\},
+\qquad
+h_\theta=\min\left\{\frac{\theta b}{D_u},
+\frac{\gamma q^2}{2}\right\}.
+\tag{14.1}
+\]">\[
+R_\varepsilon=\max\left\{1,
+\left(\frac{T_KU}{\varepsilon b}\right)^{1/20}\right\},
+\qquad
+h_\theta=\min\left\{\frac{\theta b}{D_u},
+\frac{\gamma q^2}{2}\right\}.
+\tag{14.1}
+\]</span>
+<p>The complete exterior term is at most
+<span class="math" data-tex="\(\varepsilon bN\)">\(\varepsilon bN\)</span>, since
+<span class="math" data-tex="\((1+R_\varepsilon)^{20}\geq T_KU/(\varepsilon b)\)">\((1+R_\varepsilon)^{20}\geq T_KU/(\varepsilon b)\)</span>.
+The actual derivative bound gives</p>
+<span class="math math-display" data-tex="\[
+|P_Nu(t,x_*)|\geq(1-\theta)bN
+\quad(t_*\leq t\leq t_*+h_\theta N^{-2}).
+\tag{14.2}
+\]">\[
+|P_Nu(t,x_*)|\geq(1-\theta)bN
+\quad(t_*\leq t\leq t_*+h_\theta N^{-2}).
+\tag{14.2}
+\]</span>
+<p>The time interval is inside the same original domain,
+because <span class="math" data-tex="\(h_\theta\leq\gamma q^2/2\)">\(h_\theta\leq\gamma q^2/2\)</span>. Subtracting the
+entire exterior contribution in (2.4), and squaring
+the resulting nonnegative inequality, proves</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\int_{B(x_*,2R_\varepsilon/N)}|\omega(t,x)|^2\,dx
+\geq \frac{(1-\theta-\varepsilon)^2b^2}{C_K^2}N,\\
+\int_{B(x_0,(LB+2R_\varepsilon/q)\sqrt S)}|\omega(t,x)|^2\,dx
+\geq \frac{(1-\theta-\varepsilon)^2b^2q}{C_K^2}S^{-1/2}.
+\end{gathered}
+\tag{14.3}
+\]">\[
+\begin{gathered}
+\int_{B(x_*,2R_\varepsilon/N)}|\omega(t,x)|^2\,dx
+\geq \frac{(1-\theta-\varepsilon)^2b^2}{C_K^2}N,\\
+\int_{B(x_0,(LB+2R_\varepsilon/q)\sqrt S)}|\omega(t,x)|^2\,dx
+\geq \frac{(1-\theta-\varepsilon)^2b^2q}{C_K^2}S^{-1/2}.
+\end{gathered}
+\tag{14.3}
+\]</span>
+<p>Sections 5–13 apply on this actual interval of length
+<span class="math" data-tex="\(\ell_\theta=h_\theta N^{-2}\)">\(\ell_\theta=h_\theta N^{-2}\)</span>. Their coefficient
+<span class="math" data-tex="\(\vartheta(U,\nu,C_0)\)">\(\vartheta(U,\nu,C_0)\)</span> is independent of that length.
+The integrated mass on its regular receiving interval
+therefore has the full lower bound</p>
+<span class="math math-display" data-tex="\[
+\frac{b^2q\vartheta}{C_K^2\beta^2}
+h_\theta(1-\theta-\varepsilon)^2\sqrt S.
+\tag{14.4}
+\]">\[
+\frac{b^2q\vartheta}{C_K^2\beta^2}
+h_\theta(1-\theta-\varepsilon)^2\sqrt S.
+\tag{14.4}
+\]</span>
+<p>The receiving spatial radius is independent of <span class="math" data-tex="\(\theta\)">\(\theta\)</span>.
+Write <span class="math" data-tex="\(a_\varepsilon=1-\varepsilon\)">\(a_\varepsilon=1-\varepsilon\)</span> and
+<span class="math" data-tex="\(\theta_c=D_u\gamma q^2/(2b)&gt;0\)">\(\theta_c=D_u\gamma q^2/(2b)&gt;0\)</span>. The factor to maximize
+is</p>
+<span class="math math-display" data-tex="\[
+\frac b{D_u}\min(\theta,\theta_c)(a_\varepsilon-\theta)^2,
+\qquad 0&lt;\theta&lt;a_\varepsilon.
+\tag{14.5}
+\]">\[
+\frac b{D_u}\min(\theta,\theta_c)(a_\varepsilon-\theta)^2,
+\qquad 0&lt;\theta&lt;a_\varepsilon.
+\tag{14.5}
+\]</span>
+<p>On the uncapped part its derivative, without the
+positive factor <span class="math" data-tex="\(b/D_u\)">\(b/D_u\)</span>, is
+<span class="math" data-tex="\((a_\varepsilon-\theta)(a_\varepsilon-3\theta)\)">\((a_\varepsilon-\theta)(a_\varepsilon-3\theta)\)</span>.
+It is positive up to <span class="math" data-tex="\(a_\varepsilon/3\)">\(a_\varepsilon/3\)</span>, and negative
+after that point. On the capped part the derivative
+is <span class="math" data-tex="\(-2\theta_c(a_\varepsilon-\theta)&lt;0\)">\(-2\theta_c(a_\varepsilon-\theta)&lt;0\)</span>.
+The two expressions agree at <span class="math" data-tex="\(\theta_c\)">\(\theta_c\)</span>, when that
+point lies in the allowed interval. Thus an actual
+maximizer in the allowed open interval is</p>
+<span class="math math-display" data-tex="\[
+\theta_{\rm opt}=\min\{(1-\varepsilon)/3,\theta_c\}.
+\tag{14.6}
+\]">\[
+\theta_{\rm opt}=\min\{(1-\varepsilon)/3,\theta_c\}.
+\tag{14.6}
+\]</span>
+<p>This proves optimality within the specified allocation
+family, with its original time cap retained. It makes
+no claim about other cutoff functions or receiving
+arguments. Inserting <span class="math" data-tex="\(\varepsilon=\theta=1/4\)">\(\varepsilon=\theta=1/4\)</span>
+recovers every original quarter-budget formula.</p>
+<h3 id="exercise-2-vary-the-energy-threshold-without-assuming-regularity">Exercise 2: vary the energy threshold without assuming regularity</h3>
+<p>Let <span class="math" data-tex="\(K=2M/\ell\)">\(K=2M/\ell\)</span>, the proved upper bound for the
+selected initial energy, and choose any <span class="math" data-tex="\(\kappa&gt;1\)">\(\kappa&gt;1\)</span>.
+Construct a positive interval using the cap <span class="math" data-tex="\(\kappa K\)">\(\kappa K\)</span>.
+Propagate its energy and dissipation bounds through
+the full regularity argument.</p>
+<p><strong>Solution.</strong> Use the same increasing function <span class="math" data-tex="\(Q\)">\(Q\)</span>
+from (7.5), with the same actual earlier heat field.
+Define</p>
+<span class="math math-display" data-tex="\[
+E_\kappa=\kappa K,\qquad
+\delta_\kappa=\min\left\{\frac\ell2,
+\frac{(\kappa-1)K}{2Q(E_\kappa)}\right\}&gt;0.
+\tag{14.7}
+\]">\[
+E_\kappa=\kappa K,\qquad
+\delta_\kappa=\min\left\{\frac\ell2,
+\frac{(\kappa-1)K}{2Q(E_\kappa)}\right\}&gt;0.
+\tag{14.7}
+\]</span>
+<p>Before a first cap crossing, integration of the
+complete gradient-energy inequality gives</p>
+<span class="math math-display" data-tex="\[
+E(t)\leq K+Q(E_\kappa)(t-s_{\rm start})
+\leq\frac{\kappa+1}{2}K&lt;\kappa K.
+\tag{14.8}
+\]">\[
+E(t)\leq K+Q(E_\kappa)(t-s_{\rm start})
+\leq\frac{\kappa+1}{2}K&lt;\kappa K.
+\tag{14.8}
+\]</span>
+<p>Continuity excludes that crossing, so the bound holds
+throughout <span class="math" data-tex="\([s_{\rm start},s_{\rm start}+\delta_\kappa]\)">\([s_{\rm start},s_{\rm start}+\delta_\kappa]\)</span>.
+Keeping dissipation in the same integral gives</p>
+<span class="math math-display" data-tex="\[
+\sup\|\nabla w\|_2^2\leq P_\kappa^2:=2\kappa K,\qquad
+\int\|\nabla^2w\|_2^2\,dt
+\leq D_{2,\kappa}^2:=\frac{(\kappa+1)K}{\nu}.
+\tag{14.9}
+\]">\[
+\sup\|\nabla w\|_2^2\leq P_\kappa^2:=2\kappa K,\qquad
+\int\|\nabla^2w\|_2^2\,dt
+\leq D_{2,\kappa}^2:=\frac{(\kappa+1)K}{\nu}.
+\tag{14.9}
+\]</span>
+<p>The earlier time selection is unchanged, so this
+interval is still inside <span class="math" data-tex="\([a,a+\ell]\)">\([a,a+\ell]\)</span>.
+Use exactly</p>
+<span class="math math-display" data-tex="\[
+{\cal V}_\kappa=
+\left(\frac{4P_\kappa^2D_{2,\kappa}^2}{\pi^4}\right)^{1/4}
++\delta_\kappa^{1/4}V_0,\qquad
+\rho_\kappa=\sqrt{\nu\delta_\kappa}.
+\tag{14.10}
+\]">\[
+{\cal V}_\kappa=
+\left(\frac{4P_\kappa^2D_{2,\kappa}^2}{\pi^4}\right)^{1/4}
++\delta_\kappa^{1/4}V_0,\qquad
+\rho_\kappa=\sqrt{\nu\delta_\kappa}.
+\tag{14.10}
+\]</span>
+<p>Now substitute <span class="math" data-tex="\(\delta_\kappa,P_\kappa,D_{2,\kappa},
+{\cal V}_\kappa,\rho_\kappa\)">\(\delta_\kappa,P_\kappa,D_{2,\kappa},
+{\cal V}_\kappa,\rho_\kappa\)</span> into every formula of
+Sections 9–12, retaining <span class="math" data-tex="\(W_0,V_j,\nu,b_1,b_2\)">\(W_0,V_j,\nu,b_1,b_2\)</span>.
+This is an exact application of those proved estimates:
+their inputs are precisely the energy, velocity-time
+norm, global <span class="math" data-tex="\(L^2\)">\(L^2\)</span> nonlinear norm and original heat
+bounds just established. It supplies all six heat
+steps, Hölder constants, both Newton boundary terms,
+the point mass, <span class="math" data-tex="\(U_{\infty,\kappa},G_{u,\kappa}\)">\(U_{\infty,\kappa},G_{u,\kappa}\)</span> and
+<span class="math" data-tex="\(G_{\omega,\kappa}\)">\(G_{\omega,\kappa}\)</span>.
+The final actual duration is</p>
+<span class="math math-display" data-tex="\[
+T&#x27;_\kappa=\min\left\{\frac{7\delta_\kappa}{32},
+\frac{\nu}{4C_0U_{\infty,\kappa}^2},
+\frac1{2C_0G_{u,\kappa}}\right\}&gt;0.
+\tag{14.11}
+\]">\[
+T&#x27;_\kappa=\min\left\{\frac{7\delta_\kappa}{32},
+\frac{\nu}{4C_0U_{\infty,\kappa}^2},
+\frac1{2C_0G_{u,\kappa}}\right\}&gt;0.
+\tag{14.11}
+\]</span>
+<p>Every original mass bound survives on this subinterval.
+For <span class="math" data-tex="\(\kappa=2\)">\(\kappa=2\)</span>, <span class="math" data-tex="\(E_\kappa=E_*\)">\(E_\kappa=E_*\)</span>,
+<span class="math" data-tex="\(\delta_\kappa=\delta\)">\(\delta_\kappa=\delta\)</span>, <span class="math" data-tex="\(P_\kappa=P\)">\(P_\kappa=P\)</span> and
+<span class="math" data-tex="\(D_{2,\kappa}=D_2\)">\(D_{2,\kappa}=D_2\)</span>, so this is the complete original
+construction as one member of a proved family.
+No particular <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is asserted to maximize
+the final duration; its complete dependence is retained.</p>
+<h3 id="exercise-3-use-a-shorter-earlier-heat-interval">Exercise 3: use a shorter earlier heat interval</h3>
+<p>Suppose the actual equation domain contains
+<span class="math" data-tex="\([a-c\ell,a+\ell]\)">\([a-c\ell,a+\ell]\)</span>, where <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>. Redo the heat
+and energy inputs with <span class="math" data-tex="\(t_b=a-c\ell\)">\(t_b=a-c\ell\)</span>, without
+replacing the original solution or viscosity.</p>
+<p><strong>Solution.</strong> The actual heat elapsed time ranges
+from <span class="math" data-tex="\(c\ell\)">\(c\ell\)</span> to <span class="math" data-tex="\((c+1)\ell\)">\((c+1)\ell\)</span>. Therefore the full
+original Gaussian estimates are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+W_{0,c}=4\kappa_0\nu^{-3/4}U^2((c+1)\ell)^{1/4},\\
+V_{6,c}=C_{0,6}U(\nu c\ell)^{-1/4},\quad
+V_{13,c}=C_{1,3}U(\nu c\ell)^{-1/2},\\
+V_{j,c}=C_{j,\infty}U(\nu c\ell)^{-(j+1)/2}
+\quad(j=0,1,2).
+\end{gathered}
+\tag{14.12}
+\]">\[
+\begin{gathered}
+W_{0,c}=4\kappa_0\nu^{-3/4}U^2((c+1)\ell)^{1/4},\\
+V_{6,c}=C_{0,6}U(\nu c\ell)^{-1/4},\quad
+V_{13,c}=C_{1,3}U(\nu c\ell)^{-1/2},\\
+V_{j,c}=C_{j,\infty}U(\nu c\ell)^{-(j+1)/2}
+\quad(j=0,1,2).
+\end{gathered}
+\tag{14.12}
+\]</span>
+<p>The complete energy estimate, including both actual
+time endpoints, is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_a^{a+\ell}\|\nabla w\|_2^2\,dt
+&amp;\leq \frac{W_{0,c}^2}{\nu}
++18C_{0,6}^2U^4\nu^{-5/2}
+\big(\sqrt{(c+1)\ell}-\sqrt{c\ell}\big)\\
+&amp;=M_c:=\left[
+16\kappa_0^2\sqrt{c+1}
++18C_{0,6}^2(\sqrt{c+1}-\sqrt c)\right]
+U^4\nu^{-5/2}\sqrt\ell.
+\end{aligned}
+\tag{14.13}
+\]">\[
+\begin{aligned}
+\int_a^{a+\ell}\|\nabla w\|_2^2\,dt
+&amp;\leq \frac{W_{0,c}^2}{\nu}
++18C_{0,6}^2U^4\nu^{-5/2}
+\big(\sqrt{(c+1)\ell}-\sqrt{c\ell}\big)\\
+&amp;=M_c:=\left[
+16\kappa_0^2\sqrt{c+1}
++18C_{0,6}^2(\sqrt{c+1}-\sqrt c)\right]
+U^4\nu^{-5/2}\sqrt\ell.
+\end{aligned}
+\tag{14.13}
+\]</span>
+<p>The right side is positive and finite for every
+fixed <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>. Average it over the same first quarter,
+set <span class="math" data-tex="\(E_{*,c}=4M_c/\ell\)">\(E_{*,c}=4M_c/\ell\)</span>, and use the complete</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Q_c(E)=
+\frac{(V_{6,c}+S_3\sqrt{2E})^2V_{13,c}^2}{\nu}
++\frac{27S_3^2(V_{6,c}+S_3\sqrt{2E})^4E}{2\nu^3},\\
+\quad
+\delta_c=\min\{\ell/2,E_{*,c}/(4Q_c(E_{*,c}))\}.
+\end{gathered}
+\tag{14.14}
+\]">\[
+\begin{gathered}
+Q_c(E)=
+\frac{(V_{6,c}+S_3\sqrt{2E})^2V_{13,c}^2}{\nu}
++\frac{27S_3^2(V_{6,c}+S_3\sqrt{2E})^4E}{2\nu^3},\\
+\quad
+\delta_c=\min\{\ell/2,E_{*,c}/(4Q_c(E_{*,c}))\}.
+\end{gathered}
+\tag{14.14}
+\]</span>
+<p>The same strict crossing proof supplies the actual
+energy and dissipation inputs. Sections 9–12 receive
+them with <span class="math" data-tex="\(W_{0,c},V_{j,c}\)">\(W_{0,c},V_{j,c}\)</span>, including every
+boundary and heat term. Each length degree in (13.4)
+is unchanged because <span class="math" data-tex="\(c\)">\(c\)</span> is fixed and dimensionless;
+the actual final length is
+<span class="math" data-tex="\(\vartheta_c(U,\nu,C_0)\ell&gt;0\)">\(\vartheta_c(U,\nu,C_0)\ell&gt;0\)</span>.
+For <span class="math" data-tex="\(c=1\)">\(c=1\)</span>, (14.12)–(14.14) recover every constant
+in Section 6. No bound uniform as <span class="math" data-tex="\(c\)">\(c\)</span> tends to zero
+is claimed: the displayed original heat factors
+retain that dependence.</p>
+<h3 id="exercise-4-transport-the-original-frequency-grid-and-all-physical-bounds">Exercise 4: transport the original frequency grid and all physical bounds</h3>
+<p>For <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>, give the exact parabolic map for
+the proof, including its frequency grid, nonlinear
+energy and final receiving interval.</p>
+<p><strong>Solution.</strong> Keep</p>
+<span class="math math-display" data-tex="\[
+u^\lambda(t,x)=\lambda u(\lambda^2t,\lambda x),\qquad
+p^\lambda(t,x)=\lambda^2p(\lambda^2t,\lambda x).
+\tag{14.15}
+\]">\[
+u^\lambda(t,x)=\lambda u(\lambda^2t,\lambda x),\qquad
+p^\lambda(t,x)=\lambda^2p(\lambda^2t,\lambda x).
+\tag{14.15}
+\]</span>
+<p>Every term in the original momentum equation acquires
+<span class="math" data-tex="\(\lambda^3\)">\(\lambda^3\)</span>; divergence acquires <span class="math" data-tex="\(\lambda^2\)">\(\lambda^2\)</span>,
+so the viscosity remains exactly <span class="math" data-tex="\(\nu\)">\(\nu\)</span>.
+The global <span class="math" data-tex="\(L^3\)">\(L^3\)</span> norm remains <span class="math" data-tex="\(U\)">\(U\)</span>, and the original
+vorticity is <span class="math" data-tex="\(\omega^\lambda=\lambda^2
+\omega(\lambda^2t,\lambda x)\)">\(\omega^\lambda=\lambda^2
+\omega(\lambda^2t,\lambda x)\)</span>.
+The heat kernel identity
+<span class="math" data-tex="\(H_{\nu t}(x)=\lambda^3H_{\nu\lambda^2t}(\lambda x)\)">\(H_{\nu t}(x)=\lambda^3H_{\nu\lambda^2t}(\lambda x)\)</span>
+and a spatial change of variables give</p>
+<span class="math math-display" data-tex="\[
+v^\lambda(t,x)=\lambda v(\lambda^2t,\lambda x),
+\qquad w^\lambda(t,x)=\lambda w(\lambda^2t,\lambda x).
+\tag{14.16}
+\]">\[
+v^\lambda(t,x)=\lambda v(\lambda^2t,\lambda x),
+\qquad w^\lambda(t,x)=\lambda w(\lambda^2t,\lambda x).
+\tag{14.16}
+\]</span>
+<p>The earlier heat start is divided by <span class="math" data-tex="\(\lambda^2\)">\(\lambda^2\)</span>.
+Parseval or a direct spatial substitution then gives</p>
+<span class="math math-display" data-tex="\[
+E^\lambda(t)=\lambda E(\lambda^2t),\qquad
+\|\nabla^2w^\lambda(t)\|_2^2
+=\lambda^3\|\nabla^2w(\lambda^2t)\|_2^2.
+\tag{14.17}
+\]">\[
+E^\lambda(t)=\lambda E(\lambda^2t),\qquad
+\|\nabla^2w^\lambda(t)\|_2^2
+=\lambda^3\|\nabla^2w(\lambda^2t)\|_2^2.
+\tag{14.17}
+\]</span>
+<p>Every term of the complete gradient-energy
+inequality has factor <span class="math" data-tex="\(\lambda^3\)">\(\lambda^3\)</span>.
+In particular <span class="math" data-tex="\(E_*^\lambda=\lambda E_*\)">\(E_*^\lambda=\lambda E_*\)</span>,
+<span class="math" data-tex="\(Q_*^\lambda=\lambda^3Q_*\)">\(Q_*^\lambda=\lambda^3Q_*\)</span>,
+<span class="math" data-tex="\(\delta^\lambda=\lambda^{-2}\delta\)">\(\delta^\lambda=\lambda^{-2}\delta\)</span>, and the
+selected starting time is divided by <span class="math" data-tex="\(\lambda^2\)">\(\lambda^2\)</span>.
+The exact powers in (13.4) give</p>
+<span class="math math-display" data-tex="\[
+U_\infty^\lambda=\lambda U_\infty,\quad
+G_u^\lambda=\lambda^2G_u,\quad
+X_6^\lambda=\lambda^2X_6,\quad
+G_\omega^\lambda=\lambda^3G_\omega,\quad
+(T&#x27;)^\lambda=\lambda^{-2}T&#x27;.
+\tag{14.18}
+\]">\[
+U_\infty^\lambda=\lambda U_\infty,\quad
+G_u^\lambda=\lambda^2G_u,\quad
+X_6^\lambda=\lambda^2X_6,\quad
+G_\omega^\lambda=\lambda^3G_\omega,\quad
+(T&#x27;)^\lambda=\lambda^{-2}T&#x27;.
+\tag{14.18}
+\]</span>
+<p>Both coefficient margins in (12.2) transform with
+their respective original velocity and gradient powers.</p>
+<p>The Fourier transform of the scaled velocity is
+<span class="math" data-tex="\(\widehat{u^\lambda}(t,\xi)=
+\lambda^{-2}\widehat u(\lambda^2t,\xi/\lambda)\)">\(\widehat{u^\lambda}(t,\xi)=
+\lambda^{-2}\widehat u(\lambda^2t,\xi/\lambda)\)</span>.
+Consequently the exact projection identity is</p>
+<span class="math math-display" data-tex="\[
+P_{\lambda N}u^\lambda(t,x)
+=\lambda(P_Nu)(\lambda^2t,\lambda x).
+\tag{14.19}
+\]">\[
+P_{\lambda N}u^\lambda(t,x)
+=\lambda(P_Nu)(\lambda^2t,\lambda x).
+\tag{14.19}
+\]</span>
+<p>The grid <span class="math" data-tex="\(2^{\mathbb Z}\)">\(2^{\mathbb Z}\)</span> therefore transports to
+<span class="math" data-tex="\(\lambda2^{\mathbb Z}\)">\(\lambda2^{\mathbb Z}\)</span>, whose neighboring ratio
+remains two. It equals the original grid precisely
+when <span class="math" data-tex="\(\lambda\in2^{\mathbb Z}\)">\(\lambda\in2^{\mathbb Z}\)</span>: equality implies
+<span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, the image of <span class="math" data-tex="\(1\)">\(1\)</span>, belongs to the
+original grid, and a dyadic <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> shifts its
+integer index. For arbitrary positive <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>
+one must keep the transported grid in any statement
+requiring a dyadic frequency. The kernel identities
+themselves hold at every positive <span class="math" data-tex="\(N\)">\(N\)</span>.
+Finally the original local vorticity mass scales by
+<span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, and its time integral by <span class="math" data-tex="\(\lambda^{-1}\)">\(\lambda^{-1}\)</span>,
+which are exactly the factors on both sides of
+(3.3), (4.1) and (13.6).</p>
+<h3 id="exercise-5-retain-the-receiving-center-and-the-entire-gaussian">Exercise 5: retain the receiving center and the entire Gaussian</h3>
+<p>On the actual interval <span class="math" data-tex="\(I&#x27;=[t&#x27;-T&#x27;,t&#x27;]\)">\(I&#x27;=[t&#x27;-T&#x27;,t&#x27;]\)</span>, suppose the
+original mass bound is written on its proved ball as</p>
+<span class="math math-display" data-tex="\[
+\int_{B(x_0,L_0)}|\omega(t,y)|^2\,dy\geq E_0&gt;0.
+\tag{14.20}
+\]">\[
+\int_{B(x_0,L_0)}|\omega(t,y)|^2\,dy\geq E_0&gt;0.
+\tag{14.20}
+\]</span>
+<p>Take any receiving center <span class="math" data-tex="\(x_c\)">\(x_c\)</span>, and set
+<span class="math" data-tex="\(D=|x_c-x_0|\)">\(D=|x_c-x_0|\)</span>. Determine the smallest allowed
+finite Gaussian radius, and give a lower bound for
+the weighted mass integral over the later half of
+the reversed time interval.</p>
+<p><strong>Solution.</strong> For open Euclidean balls with positive
+<span class="math" data-tex="\(L_0\)">\(L_0\)</span>, the exact containment condition is</p>
+<span class="math math-display" data-tex="\[
+B(x_0,L_0)\subset B(x_c,r/2)
+\quad\Longleftrightarrow\quad r/2\geq D+L_0.
+\tag{14.21}
+\]">\[
+B(x_0,L_0)\subset B(x_c,r/2)
+\quad\Longleftrightarrow\quad r/2\geq D+L_0.
+\tag{14.21}
+\]</span>
+<p>Sufficiency follows from the triangle inequality,
+with strict inequality for points inside the first
+ball even when its radii meet at equality.
+For necessity, if <span class="math" data-tex="\(D&gt;0\)">\(D&gt;0\)</span> take points approaching
+the boundary along the ray from <span class="math" data-tex="\(x_c\)">\(x_c\)</span> through
+<span class="math" data-tex="\(x_0\)">\(x_0\)</span>; their distances from <span class="math" data-tex="\(x_c\)">\(x_c\)</span> approach
+<span class="math" data-tex="\(D+L_0\)">\(D+L_0\)</span>. If <span class="math" data-tex="\(D=0\)">\(D=0\)</span>, any radial ray has that
+property. If <span class="math" data-tex="\(r/2&lt;D+L_0\)">\(r/2&lt;D+L_0\)</span>, some interior point
+is outside the receiving ball.
+Together with the actual finite Gaussian radius
+condition this gives</p>
+<span class="math math-display" data-tex="\[
+r_{\min}=\max\{\sqrt{4000\nu T&#x27;},\,2(D+L_0)\}.
+\tag{14.22}
+\]">\[
+r_{\min}=\max\{\sqrt{4000\nu T&#x27;},\,2(D+L_0)\}.
+\tag{14.22}
+\]</span>
+<p>Keep the original reversed field
+<span class="math" data-tex="\({\cal U}(s,x)=\omega(t&#x27;-s,x_c+x)\)">\({\cal U}(s,x)=\omega(t&#x27;-s,x_c+x)\)</span> and define</p>
+<span class="math math-display" data-tex="\[
+Z=\frac1{T&#x27;}\int_{T&#x27;/2}^{T&#x27;}\int_{|x|&lt;r/2}
+|{\cal U}(s,x)|^2e^{-|x|^2/(4\nu s)}\,dx\,ds.
+\tag{14.23}
+\]">\[
+Z=\frac1{T&#x27;}\int_{T&#x27;/2}^{T&#x27;}\int_{|x|&lt;r/2}
+|{\cal U}(s,x)|^2e^{-|x|^2/(4\nu s)}\,dx\,ds.
+\tag{14.23}
+\]</span>
+<p>For <span class="math" data-tex="\(y\in B(x_0,L_0)\)">\(y\in B(x_0,L_0)\)</span>, the receiving coordinate is
+<span class="math" data-tex="\(x=y-x_c\)">\(x=y-x_c\)</span> and has magnitude less than <span class="math" data-tex="\(D+L_0\)">\(D+L_0\)</span>.
+The original mass bound holds at <span class="math" data-tex="\(t&#x27;-s\)">\(t&#x27;-s\)</span>.
+Restrict the spatial integral to this actual ball,
+then integrate its Gaussian lower bound:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Z&amp;\geq\frac{E_0}{T&#x27;}\int_{T&#x27;/2}^{T&#x27;}
+e^{-(D+L_0)^2/(4\nu s)}\,ds\\
+&amp;\geq\frac{E_0}{2}
+e^{-(D^2+2DL_0+L_0^2)/(2\nu T&#x27;)}.
+\end{aligned}
+\tag{14.24}
+\]">\[
+\begin{aligned}
+Z&amp;\geq\frac{E_0}{T&#x27;}\int_{T&#x27;/2}^{T&#x27;}
+e^{-(D+L_0)^2/(4\nu s)}\,ds\\
+&amp;\geq\frac{E_0}{2}
+e^{-(D^2+2DL_0+L_0^2)/(2\nu T&#x27;)}.
+\end{aligned}
+\tag{14.24}
+\]</span>
+<p>The last step uses <span class="math" data-tex="\(s\geq T&#x27;/2\)">\(s\geq T&#x27;/2\)</span> and keeps the
+entire square, including the mixed term and core radius.
+For the proved receiver of Section 13 take exactly
+<span class="math" data-tex="\(L_0=(LB+2R/q)\sqrt S\)">\(L_0=(LB+2R/q)\sqrt S\)</span> and
+<span class="math" data-tex="\(E_0=b^2qS^{-1/2}/(4C_K^2)\)">\(E_0=b^2qS^{-1/2}/(4C_K^2)\)</span>.
+This positive Gaussian mass and (14.22) meet two
+actual receiving requirements. Absorption of the
+finite estimate's full exterior error is a further
+calculation; no smaller negative exponent is
+inferred from the mass bound alone.</p>
+<h2 id="15-sources-and-the-next-receiving-argument">15. Sources and the next receiving argument</h2>
+<p>The author-source comparison is Terence Tao,
+<a href="https://arxiv.org/abs/1908.04958v2"><em>Quantitative bounds for critically bounded solutions to the
+Navier–Stokes equations</em>, arXiv:1908.04958v2</a>,
+original article.tex 423–512 and 1254–1290.
+The first passage selects an epoch of regularity;
+the second connects an earlier frequency to vorticity mass.
+Sections 1–13 give full proofs of the original-viscosity
+receiving maps used here. In the source's two Duhamel
+norm displays at lines 484 and 488, the velocity
+inside integration over <span class="math" data-tex="\(t&#x27;\)">\(t&#x27;\)</span> must be evaluated
+at <span class="math" data-tex="\(t&#x27;\)">\(t&#x27;\)</span>. The full localized heat equation in
+Section 9 retains that integration time.</p>
+<p>The regularity construction also applies to every
+actual interval with its preceding equal-length
+heat interval inside the equation domain. Positive
+mass retains its separate proved frequency input.
+Exercise 3 extends the regularity construction to
+each positive earlier heat-length ratio, with all
+original constants displayed.</p>
+<p>The next argument must insert the actual Gaussian
+mass, radius and time interval into the complete
+finite weighted estimate and absorb its full exterior
+error. The later annular propagation, original
+vorticity-to-velocity conversion and shell sum must
+then be proved on their exact domains. These are
+needed before the general large critical-velocity
+endpoint can be concluded.</p>
+</article><nav aria-label="Lesson sequence"><a href="NS-FLUID-16.html">Previous lesson</a></nav></main><footer>Mathematical text: CC0 1.0. Cited works and reader software retain their respective terms.</footer></body></html>

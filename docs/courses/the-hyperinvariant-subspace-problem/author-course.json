@@ -1,0 +1,35 @@
+{
+  "schema": "claude-bridge-course/v1",
+  "id": "the-hyperinvariant-subspace-problem",
+  "title": "The hyperinvariant subspace problem",
+  "author": "Claude Opus 5.5 (Anthropic)",
+  "written": "2026-10-09",
+  "status": "Self-checked by the writing AI",
+  "licence": "CC0-1.0",
+  "description": "OpenAI's negative answer (2026) to the hyperinvariant subspace problem: every infinite-dimensional separable complex Hilbert space carries a nonzero operator S with ||S^n||^(1/n) -> 0 whose commutant is a proper, weakly closed, unital, transitive algebra; so S has no hyperinvariant subspace other than 0 and the whole space, and the transitive algebra problem has a negative answer too. The first lesson proves Domar's theorem that a bilateral weighted shift whose logarithmic weights are regular and decay at a quadratic rate has only the tails as invariant subspaces (convex minorants, support separation), for l^2 and in Domar's one-sided form. The second builds a measurable field of such shifts over the 2-adic integers with the odometer, proves that operators commuting with the scalar multipliers are fields of operators, and proves ||S^n|| <= exp(-10 floor((n+1)^2/4)). The third constructs a contraction commuting with S that moves every tail one step backward along the odometer, using opposite logarithmic drifts at the two ends of the fibres, and proves transitivity by a strict-descent argument on a probability space. It also lists the invariant subspaces of S and the multipliers and shows that finitely many polar conjugates of |S| generate an atomic algebra while all of them generate a diffuse one.",
+  "prerequisites": [
+    "foundations-of-von-neumann-algebras lessons hilbert-spaces-and-compact-operators (Theorems 2.2 and 2.3, projection and Riesz-Frechet theorems; Theorem 4.1, orthonormal bases; Theorem 5.1, compact operators; Theorem 9.1, multiplication operators), the-double-commutant-theorem (Proposition 2.1 and Definition 2.3; Section 9, the uniqueness lemma for measures and the product of probability spaces), the-spectral-theorem-for-bounded-self-adjoint-operators (Lemma 1.1, Theorem 3.1)",
+    "harmonic-analysis-on-locally-compact-groups lesson measure-and-hilbert-space-tools (Theorems 2.1 and 2.2, monotone convergence, Fatou and dominated convergence; Theorem 3.2, completeness of L^2)",
+    "function-algebras-and-approximation lesson the-stone-weierstrass-theorem-for-functions-vanishing-at-infinity (Section 14, Weierstrass approximation)"
+  ],
+  "lessons": [
+    "weighted-shifts-whose-invariant-subspaces-are-tails",
+    "measurable-fields-of-weighted-shifts",
+    "a-transitive-commutant"
+  ],
+  "checks": {
+    "paid_citations": 0,
+    "exact_checks": "Python (scratch hyp_checks.py, 9 Oct 2026; output hyp_checks.out, 0 problems): odometer residue formula (1.2) and nesting (1.1) of the second lesson on 33 points and levels m < 15; Proposition 3.1 there (increments >= c, 0 <= a_k - c(k+1) <= 4D k^(1/3), a_j >= c d(j), central weights) for |j| < 4095 on 33 points, including points with long runs of ones; convexity/concavity of log w and Lemma 4.1(2) of the first lesson for the fibre weights; log w_(-n)/n^2 = 5.6 at n = 4000 (> log 3); window minima of d equal floor((n+1)^2/4) for n < 80 and the fibre power bound for n < 25; Lemmas 1.2 and 2.1 of the third lesson (both drift inequalities, the closed formulas for log b_n and log b_(-q) and their decay bounds) and the commutation identity (2.1) there for |j| < 4092 on 33 points; Lemma 3.1 of the first lesson (contact indices of the lower convex hull) on 200 random obstacles; Exercise 6.3 of the first lesson (weights of J T* J) on a truncation; Proposition 6.2(1) of the third lesson (the tuple of weights on each slice is a function of one residue) for |j| < 70.",
+    "lint": "hyp_lint.py (scratch): headings, provenance line, balanced TeX delimiters, every course: link and anchor resolved in the repository clone, every sibling link and anchor resolved; flagged label references checked by hand (they refer to other lessons or to [OAI-C]).",
+    "source_reading": "OpenAI preprint 'Backward intertwiners and a transitive commutant' (27 Sep 2026) TeX read in full: introduction, criterion, domar-proof, weights, intertwiner, subspaces, conclusion, companion-refs (library copy openai-math-20261006). Companion 'Invariant-projection counterexamples for every irrational rotation' (27 Sep 2026): 00-introduction (Lemmas 1.2 and 1.3, Corollary 1.4) and 02-fields (Lemma 3.1 and the projection-field lemmas) read. Domar, Math. Scand. 49 (1981) 133-144 (free PDF from the journal, local copy hyperinvariant_20261009/domar_1981_math_scand_49_133.pdf, sha256 6fd4d6a4...): pages 133-136 (Theorems 1-3, statement of Theorem 2 with the one-sided condition) and 140-144 (Section 3, Theorem 5 and its proof) read from page images; the one-sided form of Theorem 5.1 and Step 3 of Proposition 4.2 follow it. Lean scope page lean/docs/293.md read."
+  },
+  "open_obligations": [
+    "OpenAI, Invariant-projection counterexamples for every irrational rotation (27 Sep 2026), Theorem 1.1: for every irrational theta there is a continuous f: T -> [0,1] with f^(-1)(0) = {1} and integral of log f = -infinity such that U f(V) has no nontrivial invariant projection in the irrational rotation factor R_theta (answering a question of Zhu, Fang and Shi); the quasinilpotence corollary at the end of its Section 5, the measurable-weight theorem of Section 4, and the product-model appendix (atomic and diffuse polar-conjugate algebras, Brown measure delta_0). Needs the group-measure-space representation of R_theta, equidistribution of irrational rotations, coupling constructions and the trace-preserving transfer from measurable to continuous weights. Not treated; owner Claude.",
+    "Domar, Math. Scand. 49 (1981), Theorem 2 for l^p(w), 1 <= p < infinity, p != 2, and for c_0(w) (Theorem 5.1 of the first lesson is its case p = 2; the proof transfers with the dualities (l^p)* = l^q and c_0* = l^1, which are not proved here). Not treated; owner Claude."
+  ],
+  "free_sources": [
+    "OpenAI, Backward intertwiners and a transitive commutant (OpenAI Math Release preprint, 27 Sep 2026)",
+    "OpenAI, Invariant-projection counterexamples for every irrational rotation (OpenAI Math Release preprint, 27 Sep 2026)",
+    "Domar, Translation invariant subspaces of weighted l^p and L^p spaces, Math. Scand. 49 (1981) 133-144 (free at the journal site)"
+  ]
+}

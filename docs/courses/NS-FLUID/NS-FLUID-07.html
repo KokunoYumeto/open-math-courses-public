@@ -1,0 +1,1460 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Critical mild solutions — Incompressible flow</title><link rel="stylesheet" href="reader.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script>
+<script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Incompressible flow</a><a href="src/critical-mild-solutions.md">Editable lesson</a><span class="unlinked">Sources and authorship</span></nav></header><main id="main"><nav aria-label="Lesson sequence"><a href="NS-FLUID-06.html">Previous lesson</a><a href="NS-FLUID-08.html">Next lesson</a></nav><article class="lesson"><h1 id="critical-mild-solutions">Critical mild solutions</h1>
+<p>A small time interval need not make the initial velocity small. It can,
+however, make a time integral of its heat evolution small. That distinction
+allows a contraction argument at the half-derivative threshold.</p>
+<p>We work with the original equation</p>
+<span class="math math-display" data-tex="\[
+u_t+\operatorname{div}(u\otimes u)+\nabla p=\nu\Delta u+f,
+\qquad\operatorname{div}u=0,\qquad\nu&gt;0.
+\tag{1.0}
+\]">\[
+u_t+\operatorname{div}(u\otimes u)+\nabla p=\nu\Delta u+f,
+\qquad\operatorname{div}u=0,\qquad\nu&gt;0.
+\tag{1.0}
+\]</span>
+<p>The domain is <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span> or the rectangular periodic box
+<span class="math" data-tex="\(Q=\prod_j(\mathbb R/L_j\mathbb Z)\)">\(Q=\prod_j(\mathbb R/L_j\mathbb Z)\)</span>, with every <span class="math" data-tex="\(L_j&gt;0\)">\(L_j&gt;0\)</span>.
+The original Fourier factors, physical measure and Leray projection are
+those in <a href="NS-FLUID-02.html">Pressure and the divergence-free projection</a>.
+In particular <span class="math" data-tex="\(P(0)=I\)">\(P(0)=I\)</span> on the box. All Sobolev norms below include
+all vector components; matrix norms use the Frobenius norm.</p>
+<p><strong>Local theorem.</strong> For each divergence-free <span class="math" data-tex="\(u_0\in H^{1/2}\)">\(u_0\in H^{1/2}\)</span> and
+original force <span class="math" data-tex="\(f=f_a+f_b\)">\(f=f_a+f_b\)</span>, with
+<span class="math" data-tex="\(f_a\in L^1_{\rm loc}H^{1/2}\)">\(f_a\in L^1_{\rm loc}H^{1/2}\)</span> and
+<span class="math" data-tex="\(f_b\in L^2_{\rm loc}H^{-1/2}\)">\(f_b\in L^2_{\rm loc}H^{-1/2}\)</span>, there is a unique local solution
+in <span class="math" data-tex="\(CH^{1/2}\cap L^2H^{3/2}\)">\(CH^{1/2}\cap L^2H^{3/2}\)</span>. It solves the full equation with
+the pressure constructed in Section 6, has the energy equality, and
+agrees with every energy weak solution with the same data and force.
+Section 7 gives stability and the exact maximal continuation criterion.</p>
+<p>Section 8 also constructs solutions for all whole-space homogeneous
+<span class="math" data-tex="\(\dot H^{1/2}\)">\(\dot H^{1/2}\)</span> data with the stated homogeneous force classes,
+including a quantitative small-data global theorem. These fields need
+not have finite kinetic energy; the finite-energy intersection and its
+receiving map are proved explicitly. Section 9 proves the periodic
+global result while retaining arbitrary velocity and force means.
+Five solved exercises include a source correction, an exact original
+forced flow, and the full scaling calculation.</p>
+<h2 id="1-exact-full-weight-convolution-on-the-whole-space">1. Exact full-weight convolution on the whole space</h2>
+<p>Write</p>
+<span class="math math-display" data-tex="\[
+W(\xi)=1+4\pi^2|\xi|^2,\qquad
+J(\xi)=\int_{\mathbb R^3}
+\frac{d\eta}{W(\eta)W(\xi-\eta)}.
+\tag{C1}
+\]">\[
+W(\xi)=1+4\pi^2|\xi|^2,\qquad
+J(\xi)=\int_{\mathbb R^3}
+\frac{d\eta}{W(\eta)W(\xi-\eta)}.
+\tag{C1}
+\]</span>
+<p>For positive numbers <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, direct integration proves</p>
+<span class="math math-display" data-tex="\[
+\frac1{AB}=\int_0^1\frac{dt}{((1-t)A+tB)^2}.
+\tag{C2}
+\]">\[
+\frac1{AB}=\int_0^1\frac{dt}{((1-t)A+tB)^2}.
+\tag{C2}
+\]</span>
+<p>For <span class="math" data-tex="\(A=B\)">\(A=B\)</span> both sides equal <span class="math" data-tex="\(A^{-2}\)">\(A^{-2}\)</span>; otherwise evaluate the elementary
+antiderivative. Tonelli applies to the nonnegative integrand. Completing
+the square without changing the original Fourier weights gives</p>
+<span class="math math-display" data-tex="\[
+(1-t)W(\eta)+tW(\xi-\eta)
+=1+4\pi^2|\eta-t\xi|^2
++4\pi^2t(1-t)|\xi|^2.
+\tag{C3}
+\]">\[
+(1-t)W(\eta)+tW(\xi-\eta)
+=1+4\pi^2|\eta-t\xi|^2
++4\pi^2t(1-t)|\xi|^2.
+\tag{C3}
+\]</span>
+<p>The substitution <span class="math" data-tex="\(z=2\pi(\eta-t\xi)\)">\(z=2\pi(\eta-t\xi)\)</span> retains Jacobian <span class="math" data-tex="\((2\pi)^{-3}\)">\((2\pi)^{-3}\)</span>.
+For <span class="math" data-tex="\(M&gt;0\)">\(M&gt;0\)</span>, polar coordinates and <span class="math" data-tex="\(r=M\tan\theta\)">\(r=M\tan\theta\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R^3}\frac{dz}{(M^2+|z|^2)^2}
+=4\pi\int_0^\infty\frac{r^2\,dr}{(M^2+r^2)^2}
+=\frac{4\pi}{M}\int_0^{\pi/2}\sin^2\theta\,d\theta
+=\frac{\pi^2}{M}.
+\tag{C4}
+\]">\[
+\int_{\mathbb R^3}\frac{dz}{(M^2+|z|^2)^2}
+=4\pi\int_0^\infty\frac{r^2\,dr}{(M^2+r^2)^2}
+=\frac{4\pi}{M}\int_0^{\pi/2}\sin^2\theta\,d\theta
+=\frac{\pi^2}{M}.
+\tag{C4}
+\]</span>
+<p>Consequently, with <span class="math" data-tex="\(a=2\pi|\xi|\)">\(a=2\pi|\xi|\)</span>,</p>
+<span class="math math-display" data-tex="\[
+J(\xi)=\frac1{8\pi}\int_0^1
+\frac{dt}{\sqrt{1+a^2t(1-t)}}
+=\begin{cases}
+\displaystyle\frac{\arctan(a/2)}{4\pi a},&amp;a&gt;0,\\
+\displaystyle\frac1{8\pi},&amp;a=0.
+\end{cases}
+\tag{C5}
+\]">\[
+J(\xi)=\frac1{8\pi}\int_0^1
+\frac{dt}{\sqrt{1+a^2t(1-t)}}
+=\begin{cases}
+\displaystyle\frac{\arctan(a/2)}{4\pi a},&amp;a&gt;0,\\
+\displaystyle\frac1{8\pi},&amp;a=0.
+\end{cases}
+\tag{C5}
+\]</span>
+<p>To evaluate the last integral set <span class="math" data-tex="\(t=(1+s)/2\)">\(t=(1+s)/2\)</span>. The even integral is
+<span class="math" data-tex="\(\int_0^1(1+a^2/4-a^2s^2/4)^{-1/2}ds\)">\(\int_0^1(1+a^2/4-a^2s^2/4)^{-1/2}ds\)</span>, which equals
+<span class="math" data-tex="\(2a^{-1}\arcsin(a/\sqrt{4+a^2})=2a^{-1}\arctan(a/2)\)">\(2a^{-1}\arcsin(a/\sqrt{4+a^2})=2a^{-1}\arctan(a/2)\)</span>.
+This also gives the value at zero by its limit. Every low-frequency
+contribution remains present in C5.</p>
+<p>A convenient nonsharp bound is</p>
+<span class="math math-display" data-tex="\[
+\sup_\xi\sqrt{W(\xi)}J(\xi)\leq\frac14.
+\tag{C6}
+\]">\[
+\sup_\xi\sqrt{W(\xi)}J(\xi)\leq\frac14.
+\tag{C6}
+\]</span>
+<p>Indeed when <span class="math" data-tex="\(0\leq a\leq1\)">\(0\leq a\leq1\)</span>, C5's integral is at most one, so the
+product is at most <span class="math" data-tex="\(\sqrt2/(8\pi)&lt;1/4\)">\(\sqrt2/(8\pi)&lt;1/4\)</span>. When <span class="math" data-tex="\(a\geq1\)">\(a\geq1\)</span>,
+<span class="math" data-tex="\(\arctan(a/2)\leq\pi/2\)">\(\arctan(a/2)\leq\pi/2\)</span>, and the product is at most
+<span class="math" data-tex="\(\sqrt{1+a^2}/(8a)\leq\sqrt2/8&lt;1/4\)">\(\sqrt{1+a^2}/(8a)\leq\sqrt2/8&lt;1/4\)</span>. The exact kernel C5 is
+retained; C6 makes no claim about an optimal product constant.</p>
+<p>For Schwartz <span class="math" data-tex="\(f,g\)">\(f,g\)</span>, weighted Cauchy–Schwarz in the convolution gives</p>
+<span class="math math-display" data-tex="\[
+|\widehat{fg}(\xi)|^2\leq J(\xi)
+\int W(\eta)W(\xi-\eta)
+|\widehat f(\eta)|^2|\widehat g(\xi-\eta)|^2d\eta.
+\tag{C7}
+\]">\[
+|\widehat{fg}(\xi)|^2\leq J(\xi)
+\int W(\eta)W(\xi-\eta)
+|\widehat f(\eta)|^2|\widehat g(\xi-\eta)|^2d\eta.
+\tag{C7}
+\]</span>
+<p>Multiply by <span class="math" data-tex="\(\sqrt W\)">\(\sqrt W\)</span>, use C6, integrate and apply Tonelli. The
+resulting two integrals separate under
+<span class="math" data-tex="\((\eta,\xi)\mapsto(\eta,\xi-\eta)\)">\((\eta,\xi)\mapsto(\eta,\xi-\eta)\)</span>, with Jacobian one:</p>
+<span class="math math-display" data-tex="\[
+\|fg\|_{H^{1/2}(\mathbb R^3)}
+\leq\frac12\|f\|_{H^1}\|g\|_{H^1}.
+\tag{C8}
+\]">\[
+\|fg\|_{H^{1/2}(\mathbb R^3)}
+\leq\frac12\|f\|_{H^1}\|g\|_{H^1}.
+\tag{C8}
+\]</span>
+<p>The extension to <span class="math" data-tex="\(H^1\)">\(H^1\)</span> is the actual product. Smooth approximations converge
+in <span class="math" data-tex="\(H^1\)">\(H^1\)</span> and hence in <span class="math" data-tex="\(L^4\)">\(L^4\)</span> by the already proved <span class="math" data-tex="\(H^1\)">\(H^1\)</span> interpolation. Their
+products converge in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> by Hölder, while C8 makes them Cauchy in <span class="math" data-tex="\(H^{1/2}\)">\(H^{1/2}\)</span>.
+The two limits therefore agree as distributions. Summing componentwise
+proves the identical bound for the Frobenius norm of <span class="math" data-tex="\(u\otimes v\)">\(u\otimes v\)</span>, with
+the full vector <span class="math" data-tex="\(H^1\)">\(H^1\)</span> norms and no extra dimension factor.</p>
+<p>For comparison, the original homogeneous weights give the exact kernel</p>
+<span class="math math-display" data-tex="\[
+\int\frac{d\eta}{|\eta|^2|\xi-\eta|^2}
+=\frac{\pi^3}{|\xi|}\quad(\xi\ne0).
+\tag{C9}
+\]">\[
+\int\frac{d\eta}{|\eta|^2|\xi-\eta|^2}
+=\frac{\pi^3}{|\xi|}\quad(\xi\ne0).
+\tag{C9}
+\]</span>
+<p>Use C2, complete the same square without the constant term, apply C4
+with <span class="math" data-tex="\(M=\sqrt{t(1-t)}|\xi|\)">\(M=\sqrt{t(1-t)}|\xi|\)</span>, and integrate
+<span class="math" data-tex="\(\int_0^1(t(1-t))^{-1/2}dt=\pi\)">\(\int_0^1(t(1-t))^{-1/2}dt=\pi\)</span> by <span class="math" data-tex="\(t=\sin^2\theta\)">\(t=\sin^2\theta\)</span>.
+The exceptional frequency <span class="math" data-tex="\(0\)">\(0\)</span> has Lebesgue measure zero. The corresponding
+Schwartz estimate, retaining all Fourier factors, is</p>
+<span class="math math-display" data-tex="\[
+\|fg\|_{\dot H^{1/2}}^2
+\leq\frac{(2\pi)\pi^3}{(2\pi)^4}
+\|f\|_{\dot H^1}^2\|g\|_{\dot H^1}^2
+=\frac18\|f\|_{\dot H^1}^2\|g\|_{\dot H^1}^2.
+\tag{C10}
+\]">\[
+\|fg\|_{\dot H^{1/2}}^2
+\leq\frac{(2\pi)\pi^3}{(2\pi)^4}
+\|f\|_{\dot H^1}^2\|g\|_{\dot H^1}^2
+=\frac18\|f\|_{\dot H^1}^2\|g\|_{\dot H^1}^2.
+\tag{C10}
+\]</span>
+<p>This is a separate exact comparison; it does not replace C1–C8 or discard
+the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> part of the original fields. Section 8 specifies the complete homogeneous data class and its
+distributional realization before constructing its solutions.</p>
+<h2 id="2-arbitrary-periodic-lengths-including-the-constant-mode">2. Arbitrary periodic lengths, including the constant mode</h2>
+<p>Let <span class="math" data-tex="\(Q\)">\(Q\)</span> have lengths <span class="math" data-tex="\(L_1,L_2,L_3\)">\(L_1,L_2,L_3\)</span>, volume <span class="math" data-tex="\(V=L_1L_2L_3\)">\(V=L_1L_2L_3\)</span>, frequencies
+<span class="math" data-tex="\(\kappa_k=(k_j/L_j)_j\)">\(\kappa_k=(k_j/L_j)_j\)</span>, and weights <span class="math" data-tex="\(W_k=1+4\pi^2|\kappa_k|^2\)">\(W_k=1+4\pi^2|\kappa_k|^2\)</span>.
+Put</p>
+<span class="math math-display" data-tex="\[
+d^2=\sum_{j=1}^3\frac1{4L_j^2},\qquad
+A=2(1+4\pi^2d^2),\qquad
+S_k=\sum_{\ell\in\mathbb Z^3}\frac1{W_\ell W_{k-\ell}}.
+\tag{C11}
+\]">\[
+d^2=\sum_{j=1}^3\frac1{4L_j^2},\qquad
+A=2(1+4\pi^2d^2),\qquad
+S_k=\sum_{\ell\in\mathbb Z^3}\frac1{W_\ell W_{k-\ell}}.
+\tag{C11}
+\]</span>
+<p>Tile frequency space by the cells centered at <span class="math" data-tex="\(\kappa_\ell\)">\(\kappa_\ell\)</span> with side
+lengths <span class="math" data-tex="\(1/L_j\)">\(1/L_j\)</span>. Each has volume <span class="math" data-tex="\(1/V\)">\(1/V\)</span>. At
+<span class="math" data-tex="\(\eta=\kappa_\ell+r\)">\(\eta=\kappa_\ell+r\)</span> in that cell, <span class="math" data-tex="\(|r|\leq d\)">\(|r|\leq d\)</span> and</p>
+<span class="math math-display" data-tex="\[
+W(\eta)\leq A W_\ell,\qquad
+W(\kappa_k-\eta)\leq A W_{k-\ell}.
+\tag{C12}
+\]">\[
+W(\eta)\leq A W_\ell,\qquad
+W(\kappa_k-\eta)\leq A W_{k-\ell}.
+\tag{C12}
+\]</span>
+<p>For example the first follows from
+<span class="math" data-tex="\(|\kappa_\ell+r|^2\leq2|\kappa_\ell|^2+2d^2\)">\(|\kappa_\ell+r|^2\leq2|\kappa_\ell|^2+2d^2\)</span>
+and expanding <span class="math" data-tex="\(AW_\ell\)">\(AW_\ell\)</span>. All additional terms in that expansion are
+nonnegative. Therefore integration on every cell and summation yield</p>
+<span class="math math-display" data-tex="\[
+\frac{S_k}{V}\leq A^2J(\kappa_k),\qquad
+\sup_k\frac{\sqrt{W_k}S_k}{V}\leq\frac{A^2}{4}.
+\tag{C13}
+\]">\[
+\frac{S_k}{V}\leq A^2J(\kappa_k),\qquad
+\sup_k\frac{\sqrt{W_k}S_k}{V}\leq\frac{A^2}{4}.
+\tag{C13}
+\]</span>
+<p>This proves convergence of the lattice convolution at every <span class="math" data-tex="\(k\)">\(k\)</span>, including
+<span class="math" data-tex="\(k=0\)">\(k=0\)</span>. Weighted Cauchy–Schwarz in the product coefficient, followed by
+Parseval with its actual factor <span class="math" data-tex="\(V\)">\(V\)</span>, now gives</p>
+<span class="math math-display" data-tex="\[
+\|fg\|_{H^{1/2}(Q)}
+\leq M_Q\|f\|_{H^1(Q)}\|g\|_{H^1(Q)},\qquad
+M_Q=A/2=1+\pi^2\sum_jL_j^{-2}.
+\tag{C14}
+\]">\[
+\|fg\|_{H^{1/2}(Q)}
+\leq M_Q\|f\|_{H^1(Q)}\|g\|_{H^1(Q)},\qquad
+M_Q=A/2=1+\pi^2\sum_jL_j^{-2}.
+\tag{C14}
+\]</span>
+<p>Indeed the squared output is bounded by
+<span class="math" data-tex="\(V\sup_k(\sqrt{W_k}S_k)\)">\(V\sup_k(\sqrt{W_k}S_k)\)</span> times the product of the two coefficient sums;
+each input norm squared is <span class="math" data-tex="\(V\)">\(V\)</span> times its sum. C13 supplies exactly the
+coefficient <span class="math" data-tex="\(M_Q^2\)">\(M_Q^2\)</span>. Smooth approximation identifies the product as above.
+No periodic mean is subtracted, and all terms <span class="math" data-tex="\(\ell=0\)">\(\ell=0\)</span> or <span class="math" data-tex="\(k-\ell=0\)">\(k-\ell=0\)</span> are included.</p>
+<h2 id="3-the-receiving-nonlinear-operator">3. The receiving nonlinear operator</h2>
+<p>Set <span class="math" data-tex="\(M_{\mathbb R^3}=1/2\)">\(M_{\mathbb R^3}=1/2\)</span> and <span class="math" data-tex="\(M_Q\)">\(M_Q\)</span> as in C14. The original matrix divergence has
+symbol <span class="math" data-tex="\(2\pi i\xi_j\)">\(2\pi i\xi_j\)</span>, or <span class="math" data-tex="\(2\pi i(\kappa_k)_j\)">\(2\pi i(\kappa_k)_j\)</span>. Because <span class="math" data-tex="\(P\)">\(P\)</span> is an
+orthogonal projection and <span class="math" data-tex="\(4\pi^2|\xi|^2\leq W(\xi)\)">\(4\pi^2|\xi|^2\leq W(\xi)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|P\operatorname{div}(u\otimes v)\|_{H^{-1/2}}
+\leq\|u\otimes v\|_{H^{1/2}}
+\leq M_\Omega\|u\|_{H^1}\|v\|_{H^1}.
+\tag{C15}
+\]">\[
+\|P\operatorname{div}(u\otimes v)\|_{H^{-1/2}}
+\leq\|u\otimes v\|_{H^{1/2}}
+\leq M_\Omega\|u\|_{H^1}\|v\|_{H^1}.
+\tag{C15}
+\]</span>
+<p>The tensor convention is <span class="math" data-tex="\((u\otimes v)_{ij}=u_i v_j\)">\((u\otimes v)_{ij}=u_i v_j\)</span>. Cauchy–Schwarz over <span class="math" data-tex="\(j\)">\(j\)</span>
+proves the first multiplier bound, and <span class="math" data-tex="\(P\)">\(P\)</span> cannot increase it. At periodic
+frequency <span class="math" data-tex="\(0\)">\(0\)</span> the divergence coefficient is zero; <span class="math" data-tex="\(P(0)=I\)">\(P(0)=I\)</span> is still retained.
+In time, Hölder gives the complete bilinear map</p>
+<span class="math math-display" data-tex="\[
+\|P\operatorname{div}(u\otimes v)\|_{L^2(0,T;H^{-1/2})}
+\leq M_\Omega\|u\|_{L^4(0,T;H^1)}
+\|v\|_{L^4(0,T;H^1)}.
+\tag{C16}
+\]">\[
+\|P\operatorname{div}(u\otimes v)\|_{L^2(0,T;H^{-1/2})}
+\leq M_\Omega\|u\|_{L^4(0,T;H^1)}
+\|v\|_{L^4(0,T;H^1)}.
+\tag{C16}
+\]</span>
+<h2 id="4-exact-heat-estimates-at-the-half-derivative">4. Exact heat estimates at the half derivative</h2>
+<p>Let <span class="math" data-tex="\(s=1/2\)">\(s=1/2\)</span>, <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+X_T=C([0,T];H^s)\cap L^2(0,T;H^{s+1}),
+\qquad Z_T=L^4(0,T;H^1),\\
+\|v\|_{X_T}^2=\sup_t\|v(t)\|_{H^s}^2
++\int_0^T\|v\|_{H^{s+1}}^2dt.
+\end{gathered}
+\tag{C17}
+\]">\[
+\begin{gathered}
+X_T=C([0,T];H^s)\cap L^2(0,T;H^{s+1}),
+\qquad Z_T=L^4(0,T;H^1),\\
+\|v\|_{X_T}^2=\sup_t\|v(t)\|_{H^s}^2
++\int_0^T\|v\|_{H^{s+1}}^2dt.
+\end{gathered}
+\tag{C17}
+\]</span>
+<p>The full weights obey <span class="math" data-tex="\(W^{s+1}=W^s+4\pi^2|\xi|^2W^s\)">\(W^{s+1}=W^s+4\pi^2|\xi|^2W^s\)</span>, including
+frequency <span class="math" data-tex="\(0\)">\(0\)</span>. The same identity holds termwise on <span class="math" data-tex="\(Q\)">\(Q\)</span>. Spectral
+Cauchy–Schwarz and then time integration give</p>
+<span class="math math-display" data-tex="\[
+\|v\|_{Z_T}^4\leq
+\sup_t\|v(t)\|_{H^{1/2}}^2
+\int_0^T\|v\|_{H^{3/2}}^2dt,
+\qquad\|v\|_{Z_T}\leq\|v\|_{X_T}/\sqrt2.
+\tag{C18}
+\]">\[
+\|v\|_{Z_T}^4\leq
+\sup_t\|v(t)\|_{H^{1/2}}^2
+\int_0^T\|v\|_{H^{3/2}}^2dt,
+\qquad\|v\|_{Z_T}\leq\|v\|_{X_T}/\sqrt2.
+\tag{C18}
+\]</span>
+<p>The last step uses <span class="math" data-tex="\(AB\leq(A^2+B^2)/2\)">\(AB\leq(A^2+B^2)/2\)</span> for the two nonnegative norm components.</p>
+<p>The unforced heat orbit satisfies</p>
+<span class="math math-display" data-tex="\[
+\|S_\nu(\cdot)a\|_{X_T}
+\leq C_0(T,\nu)\|a\|_{H^s},\qquad
+C_0(T,\nu)=\sqrt{1+T+(2\nu)^{-1}}.
+\tag{C19}
+\]">\[
+\|S_\nu(\cdot)a\|_{X_T}
+\leq C_0(T,\nu)\|a\|_{H^s},\qquad
+C_0(T,\nu)=\sqrt{1+T+(2\nu)^{-1}}.
+\tag{C19}
+\]</span>
+<p>The supremum is a contraction. In the time integral separate the exact
+multiplier <span class="math" data-tex="\((1+4\pi^2r^2)e^{-8\pi^2\nu r^2t}\)">\((1+4\pi^2r^2)e^{-8\pi^2\nu r^2t}\)</span> into its constant and derivative
+terms. Their integrals are bounded respectively by <span class="math" data-tex="\(T\)">\(T\)</span> and
+<span class="math" data-tex="\(1/(2\nu)\)">\(1/(2\nu)\)</span>, with the derivative term zero at <span class="math" data-tex="\(r=0\)">\(r=0\)</span>. This proves C19 without removing that
+constant mode. Dominated convergence proves the strong initial trace.</p>
+<p>For zero data and forcing <span class="math" data-tex="\(h\in L^2(0,T;H^{s-1})\)">\(h\in L^2(0,T;H^{s-1})\)</span>, Fourier truncation and the
+weighted energy identity give, with <span class="math" data-tex="\(E=\|v\|_{H^s}^2\)">\(E=\|v\|_{H^s}^2\)</span>, <span class="math" data-tex="\(D=\|\nabla v\|_{H^s}^2\)">\(D=\|\nabla v\|_{H^s}^2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+E&#x27;+2\nu D\leq2\|h\|_{H^{s-1}}\sqrt{E+D}
+\leq\nu(E+D)+\nu^{-1}\|h\|_{H^{s-1}}^2.
+\tag{C20}
+\]">\[
+E&#x27;+2\nu D\leq2\|h\|_{H^{s-1}}\sqrt{E+D}
+\leq\nu(E+D)+\nu^{-1}\|h\|_{H^{s-1}}^2.
+\tag{C20}
+\]</span>
+<p>Thus <span class="math" data-tex="\(E_{\rm sup}\leq e^{\nu T}\nu^{-1}\|h\|_{L^2H^{s-1}}^2\)">\(E_{\rm sup}\leq e^{\nu T}\nu^{-1}\|h\|_{L^2H^{s-1}}^2\)</span>.
+Integrating C20 yields
+<span class="math" data-tex="\(\int D\leq T E_{\rm sup}+\nu^{-2}\|h\|_{L^2H^{s-1}}^2\)">\(\int D\leq T E_{\rm sup}+\nu^{-2}\|h\|_{L^2H^{s-1}}^2\)</span>.
+Adding the retained integral of <span class="math" data-tex="\(E\)">\(E\)</span> proves</p>
+<span class="math math-display" data-tex="\[
+\left\|\int_0^tS_\nu(t-r)h(r)dr\right\|_{X_T}
+\leq C_f(T,\nu)\|h\|_{L^2H^{s-1}},\qquad
+C_f(T,\nu)^2=\frac{(1+2T)e^{\nu T}}{\nu}+\frac1{\nu^2}.
+\tag{C21}
+\]">\[
+\left\|\int_0^tS_\nu(t-r)h(r)dr\right\|_{X_T}
+\leq C_f(T,\nu)\|h\|_{L^2H^{s-1}},\qquad
+C_f(T,\nu)^2=\frac{(1+2T)e^{\nu T}}{\nu}+\frac1{\nu^2}.
+\tag{C21}
+\]</span>
+<p>Construct first by bounded Fourier cutoffs. Applying C21 to differences
+makes them Cauchy in <span class="math" data-tex="\(X_T\)">\(X_T\)</span>; hence their limit has the claimed continuous
+trace and satisfies the original Fourier integral equation. The bound
+passes to that limit. This also proves uniqueness of the linear solution.</p>
+<p>For <span class="math" data-tex="\(g\in L^1H^s\)">\(g\in L^1H^s\)</span>, the corresponding bound is
+<span class="math" data-tex="\(C_0(T,\nu)\|g\|_{L^1H^s}\)">\(C_0(T,\nu)\|g\|_{L^1H^s}\)</span>.
+To prove it, first take smooth time functions, apply Minkowski to the
+time-shifted heat orbits, and use C19 uniformly for intervals of length
+at most <span class="math" data-tex="\(T\)">\(T\)</span>. Approximation in <span class="math" data-tex="\(L^1H^s\)">\(L^1H^s\)</span> and the same estimate give the general
+continuous <span class="math" data-tex="\(X_T\)">\(X_T\)</span> solution. All occurrences of <span class="math" data-tex="\(P\)">\(P\)</span> may be inserted because
+it is a contraction on every original weighted space.</p>
+<h2 id="5-local-construction-in-the-full-inhomogeneous-data-class">5. Local construction in the full inhomogeneous data class</h2>
+<p>Take divergence-free <span class="math" data-tex="\(a\in H^{1/2}\)">\(a\in H^{1/2}\)</span> and the actual original force
+<span class="math" data-tex="\(f=f_a+f_b\)">\(f=f_a+f_b\)</span>, with <span class="math" data-tex="\(f_a\in L^1_{\rm loc}H^{1/2}\)">\(f_a\in L^1_{\rm loc}H^{1/2}\)</span> and
+<span class="math" data-tex="\(f_b\in L^2_{\rm loc}H^{-1/2}\)">\(f_b\in L^2_{\rm loc}H^{-1/2}\)</span>. It need
+not be divergence free. Put</p>
+<span class="math math-display" data-tex="\[
+w(t)=S_\nu(t)a+\int_0^tS_\nu(t-r)Pf(r)dr,\qquad
+B(u,v)(t)=-\int_0^tS_\nu(t-r)P\operatorname{div}(u\otimes v)(r)dr.
+\tag{C22}
+\]">\[
+w(t)=S_\nu(t)a+\int_0^tS_\nu(t-r)Pf(r)dr,\qquad
+B(u,v)(t)=-\int_0^tS_\nu(t-r)P\operatorname{div}(u\otimes v)(r)dr.
+\tag{C22}
+\]</span>
+<p>C16–C21 give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|B(u,v)\|_{X_T}\leq C_f(T,\nu)M_\Omega\|u\|_{Z_T}\|v\|_{Z_T},\\
+\|B(u,v)\|_{Z_T}\leq K_T\|u\|_{Z_T}\|v\|_{Z_T},
+\qquad K_T=C_f(T,\nu)M_\Omega/\sqrt2.
+\end{gathered}
+\tag{C23}
+\]">\[
+\begin{gathered}
+\|B(u,v)\|_{X_T}\leq C_f(T,\nu)M_\Omega\|u\|_{Z_T}\|v\|_{Z_T},\\
+\|B(u,v)\|_{Z_T}\leq K_T\|u\|_{Z_T}\|v\|_{Z_T},
+\qquad K_T=C_f(T,\nu)M_\Omega/\sqrt2.
+\end{gathered}
+\tag{C23}
+\]</span>
+<p>Fix a compact force interval <span class="math" data-tex="\([0,T_c]\)">\([0,T_c]\)</span>. Its constants bound those for
+all <span class="math" data-tex="\(T\leq T_c\)">\(T\leq T_c\)</span>. The initial heat orbit is in <span class="math" data-tex="\(Z_{T_c}\)">\(Z_{T_c}\)</span>, by
+C18–C19, so its <span class="math" data-tex="\(Z_T\)">\(Z_T\)</span> norm tends to zero by absolute continuity of
+its fourth-power integral. The two original force contributions tend
+to zero in <span class="math" data-tex="\(X_T\)">\(X_T\)</span>, hence <span class="math" data-tex="\(Z_T\)">\(Z_T\)</span>, by C19 and C21 with constants
+bounded at <span class="math" data-tex="\(T_c\)">\(T_c\)</span>. Consequently a positive <span class="math" data-tex="\(T\)">\(T\)</span> exists with
+<span class="math" data-tex="\(\lambda=\|w\|_{Z_T}\leq1/(8K_{T_c})\)">\(\lambda=\|w\|_{Z_T}\leq1/(8K_{T_c})\)</span>.</p>
+<p>On the closed ball <span class="math" data-tex="\(\|u\|_{Z_T}\leq2\lambda\)">\(\|u\|_{Z_T}\leq2\lambda\)</span>, the map
+<span class="math" data-tex="\(u\mapsto w+B(u,u)\)">\(u\mapsto w+B(u,u)\)</span> maps the ball into itself: its norm is at most
+<span class="math" data-tex="\(\lambda+4K_{T_c}\lambda^2\leq3\lambda/2\)">\(\lambda+4K_{T_c}\lambda^2\leq3\lambda/2\)</span>.
+Its difference bound is at most <span class="math" data-tex="\(4K_{T_c}\lambda\leq1/2\)">\(4K_{T_c}\lambda\leq1/2\)</span> times
+the input difference. Iteration is Cauchy by the geometric series of
+consecutive differences; completeness of <span class="math" data-tex="\(Z_T\)">\(Z_T\)</span> gives a fixed point.
+If <span class="math" data-tex="\(\lambda=0\)">\(\lambda=0\)</span>, the zero ball already gives the fixed point.
+By C22–C23 that point belongs to <span class="math" data-tex="\(X_T\)">\(X_T\)</span>, with initial value <span class="math" data-tex="\(a\)">\(a\)</span>
+and the original projected equation.</p>
+<p>Uniqueness holds in <span class="math" data-tex="\(X_T\)">\(X_T\)</span>, beyond the contraction ball. Two <span class="math" data-tex="\(X_T\)">\(X_T\)</span> solutions
+belong to <span class="math" data-tex="\(Z_T\)">\(Z_T\)</span> by C18. Partition the finite interval so that the sum of
+their two <span class="math" data-tex="\(Z\)">\(Z\)</span> norms on each piece is less than <span class="math" data-tex="\(1/(2K_{T_c})\)">\(1/(2K_{T_c})\)</span>; such a finite
+partition exists by absolute continuity of the sum of their fourth-power
+integrals. On the first piece their initial difference is zero, and
+C23 forces equality. At each endpoint continuity gives equal next
+initial values. The semigroup law splits C22 exactly at that endpoint,
+so induction gives equality on every piece.</p>
+<h2 id="6-original-pressure-energy-and-comparison">6. Original pressure, energy and comparison</h2>
+<p>The force has not been replaced by its projection. The missing component
+is exactly the pressure gradient. Put <span class="math" data-tex="\(M=u\otimes u\)">\(M=u\otimes u\)</span>.
+By C8, C14 and C18, <span class="math" data-tex="\(M\in L^2H^{1/2}\)">\(M\in L^2H^{1/2}\)</span>. On the whole space define</p>
+<span class="math math-display" data-tex="\[
+\widehat p_N(\xi)=-\sum_{i,j}\frac{\xi_i\xi_j}{|\xi|^2}
+\widehat M_{ij}(\xi),\qquad \xi\ne0,
+\quad
+\widehat p_f(\xi)=-\frac{i\xi\cdot\widehat f(\xi)}{2\pi|\xi|^2}.
+\tag{6.1}
+\]">\[
+\widehat p_N(\xi)=-\sum_{i,j}\frac{\xi_i\xi_j}{|\xi|^2}
+\widehat M_{ij}(\xi),\qquad \xi\ne0,
+\quad
+\widehat p_f(\xi)=-\frac{i\xi\cdot\widehat f(\xi)}{2\pi|\xi|^2}.
+\tag{6.1}
+\]</span>
+<p>The value assigned to the first multiplier at zero does not change its
+Lebesgue integral. Its matrix contraction has norm at most one, so
+<span class="math" data-tex="\(p_N\in L^2H^{1/2}\)">\(p_N\in L^2H^{1/2}\)</span>. For the force term, use any original cutoff
+radius <span class="math" data-tex="\(\Lambda&gt;0\)">\(\Lambda&gt;0\)</span>. Its Fourier expression on <span class="math" data-tex="\(0&lt;|\xi|\leq\Lambda\)">\(0&lt;|\xi|\leq\Lambda\)</span>
+is integrable by Cauchy–Schwarz against the <span class="math" data-tex="\(H^{-1}\)">\(H^{-1}\)</span> norm:</p>
+<span class="math math-display" data-tex="\[
+\int_{|\xi|\leq\Lambda}
+\frac{|\widehat f(\xi)|}{2\pi|\xi|}\,d\xi
+\leq \|f\|_{H^{-1}}
+\left[\int_{|\xi|\leq\Lambda}
+\frac{1+4\pi^2|\xi|^2}{4\pi^2|\xi|^2}\,d\xi\right]^{1/2}.
+\tag{6.2}
+\]">\[
+\int_{|\xi|\leq\Lambda}
+\frac{|\widehat f(\xi)|}{2\pi|\xi|}\,d\xi
+\leq \|f\|_{H^{-1}}
+\left[\int_{|\xi|\leq\Lambda}
+\frac{1+4\pi^2|\xi|^2}{4\pi^2|\xi|^2}\,d\xi\right]^{1/2}.
+\tag{6.2}
+\]</span>
+<p>The integral in brackets is <span class="math" data-tex="\(\Lambda/\pi+4\pi\Lambda^3/3\)">\(\Lambda/\pi+4\pi\Lambda^3/3\)</span>. On the remaining region, the
+multiplier squared divided by the <span class="math" data-tex="\(H^{-1}\)">\(H^{-1}\)</span> input weight is bounded
+by <span class="math" data-tex="\(1+(4\pi^2\Lambda^2)^{-1}\)">\(1+(4\pi^2\Lambda^2)^{-1}\)</span>. Thus the high part is in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>.
+Both force summands belong locally in time to <span class="math" data-tex="\(L^1H^{-1}\)">\(L^1H^{-1}\)</span>, so
+these formulas define a space-time distribution. They are the full
+force-pressure construction of the whole-space weak-solution chapter.</p>
+<p>On the box take <span class="math" data-tex="\(p_0=0\)">\(p_0=0\)</span>, and at every <span class="math" data-tex="\(k\ne0\)">\(k\ne0\)</span> take</p>
+<span class="math math-display" data-tex="\[
+(p_N)_k=-\sum_{i,j}\frac{(\kappa_k)_i(\kappa_k)_j}{|\kappa_k|^2}
+(u_i u_j)_k,\qquad
+(p_f)_k=-\frac{i\kappa_k\cdot f_k}{2\pi|\kappa_k|^2}.
+\tag{6.3}
+\]">\[
+(p_N)_k=-\sum_{i,j}\frac{(\kappa_k)_i(\kappa_k)_j}{|\kappa_k|^2}
+(u_i u_j)_k,\qquad
+(p_f)_k=-\frac{i\kappa_k\cdot f_k}{2\pi|\kappa_k|^2}.
+\tag{6.3}
+\]</span>
+<p>These are distributions by the spectral gap and the original Sobolev
+weights. Direct multiplication proves
+<span class="math" data-tex="\(\nabla(p_N+p_f)=(I-P)(f-\operatorname{div}M)\)">\(\nabla(p_N+p_f)=(I-P)(f-\operatorname{div}M)\)</span> on both domains.
+Consequently C22 solves (1.0) with <span class="math" data-tex="\(p=p_N+p_f\)">\(p=p_N+p_f\)</span>. On the box the
+zero coefficient of the equation is exactly</p>
+<span class="math math-display" data-tex="\[
+u_0(t)=u_0(0)+\int_0^t f_0(r)\,dr.
+\tag{6.4}
+\]">\[
+u_0(t)=u_0(0)+\int_0^t f_0(r)\,dr.
+\tag{6.4}
+\]</span>
+<p>Here subscripts zero denote Fourier coefficients, not the initial datum.
+No force mean has been transferred into a nonperiodic pressure.</p>
+<p>The velocity lies in <span class="math" data-tex="\(CL^2\cap L^2H^1\)">\(CL^2\cap L^2H^1\)</span>. Also
+<span class="math" data-tex="\(u\in L^4H^1\subset L^4L^4\)">\(u\in L^4H^1\subset L^4L^4\)</span>, by the previously proved
+<span class="math" data-tex="\(H^1\)">\(H^1\)</span>-to-<span class="math" data-tex="\(L^4\)">\(L^4\)</span> interpolation. Hence <span class="math" data-tex="\(M\in L^2L^2\)">\(M\in L^2L^2\)</span>.
+Test the projected equation with the bounded Fourier cutoff <span class="math" data-tex="\(E_Ku\)">\(E_Ku\)</span>,
+or equivalently test the cutoff equation with itself. The resulting
+curves are absolutely continuous in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. All limits in their
+integrated norm identity are explicit: endpoints converge in <span class="math" data-tex="\(CL^2\)">\(CL^2\)</span>,
+gradients in <span class="math" data-tex="\(L^2L^2\)">\(L^2L^2\)</span>, the nonlinear pairing by
+<span class="math" data-tex="\(M\in L^2L^2\)">\(M\in L^2L^2\)</span> and gradient convergence, the <span class="math" data-tex="\(f_a\)">\(f_a\)</span> pairing by
+<span class="math" data-tex="\(L^1L^2\)">\(L^1L^2\)</span> against <span class="math" data-tex="\(CL^2\)">\(CL^2\)</span>, and the <span class="math" data-tex="\(f_b\)">\(f_b\)</span> pairing by
+<span class="math" data-tex="\(L^2H^{-1}\)">\(L^2H^{-1}\)</span> against <span class="math" data-tex="\(L^2H^1\)">\(L^2H^1\)</span>.</p>
+<p>At almost every time <span class="math" data-tex="\(u\in H^1\)">\(u\in H^1\)</span>. The nonlinear energy integral
+vanishes there. On the box integrate the divergence of
+<span class="math" data-tex="\(u|u|^2/2\)">\(u|u|^2/2\)</span>. On the whole space first use smooth divergence-free
+Fourier approximations and a cutoff <span class="math" data-tex="\(\chi(x/R)\)">\(\chi(x/R)\)</span>; the boundary
+error is bounded by <span class="math" data-tex="\(C R^{-1}\|u\|_3^3\)">\(C R^{-1}\|u\|_3^3\)</span>, which tends to zero.
+The integral <span class="math" data-tex="\(\int u_i u_j\partial_j u_i\)">\(\int u_i u_j\partial_j u_i\)</span> passes through the
+<span class="math" data-tex="\(H^1\)">\(H^1\)</span> approximation by <span class="math" data-tex="\(L^4,L^4,L^2\)">\(L^4,L^4,L^2\)</span> Hölder. Therefore</p>
+<span class="math math-display" data-tex="\[
+\frac12\|u(t)\|_2^2+\nu\int_s^t\|\nabla u\|_2^2dr
+=\frac12\|u(s)\|_2^2+\int_s^t\langle f,u\rangle dr
+\quad(0\leq s\leq t).
+\tag{6.5}
+\]">\[
+\frac12\|u(t)\|_2^2+\nu\int_s^t\|\nabla u\|_2^2dr
+=\frac12\|u(s)\|_2^2+\int_s^t\langle f,u\rangle dr
+\quad(0\leq s\leq t).
+\tag{6.5}
+\]</span>
+<p>This gives the full energy weak class, with equality at all starts and
+endings, for the constructed finite-energy solution.</p>
+<p>We also prove comparison with every energy weak solution <span class="math" data-tex="\(U\)">\(U\)</span>, whose
+force <span class="math" data-tex="\(F\)">\(F\)</span> may lie in <span class="math" data-tex="\(L^1L^2+L^2H^{-1}\)">\(L^1L^2+L^2H^{-1}\)</span>. The cutoff cross-test
+argument of the preceding chapter applies with the following exact
+convergence estimates at the present lower regularity. The reference
+derivative has the decomposition</p>
+<span class="math math-display" data-tex="\[
+u_t=Pf_a+b,\qquad
+b=\nu\Delta u+Pf_b-P\operatorname{div}(u\otimes u)
+\in L^2H^{-1/2}.
+\tag{6.6}
+\]">\[
+u_t=Pf_a+b,\qquad
+b=\nu\Delta u+Pf_b-P\operatorname{div}(u\otimes u)
+\in L^2H^{-1/2}.
+\tag{6.6}
+\]</span>
+<p>The weak velocity is absolutely continuous in <span class="math" data-tex="\(H^{-m}\)">\(H^{-m}\)</span>, <span class="math" data-tex="\(m&gt;5/2\)">\(m&gt;5/2\)</span>,
+as proved there. Thus it can be paired by the dual product rule with
+<span class="math" data-tex="\(E_Ku\)">\(E_Ku\)</span>. The derivative errors tend to zero by <span class="math" data-tex="\(U\in L^\infty L^2\)">\(U\in L^\infty L^2\)</span>
+against <span class="math" data-tex="\(E_KPf_a-Pf_a\in L^1L^2\)">\(E_KPf_a-Pf_a\in L^1L^2\)</span>, and
+<span class="math" data-tex="\(U\in L^2H^{1/2}\)">\(U\in L^2H^{1/2}\)</span> against <span class="math" data-tex="\(E_Kb-b\in L^2H^{-1/2}\)">\(E_Kb-b\in L^2H^{-1/2}\)</span>.
+The weak quadratic tensor lies in <span class="math" data-tex="\(L^{4/3}L^2\)">\(L^{4/3}L^2\)</span>; the reference cutoff
+error tends to zero in <span class="math" data-tex="\(L^4H^1\)">\(L^4H^1\)</span>. These are dual time exponents.
+Diffusion errors use <span class="math" data-tex="\(L^2H^1\)">\(L^2H^1\)</span>. Force errors use <span class="math" data-tex="\(CL^2\)">\(CL^2\)</span> and
+<span class="math" data-tex="\(L^2H^1\)">\(L^2H^1\)</span>. Endpoints use the all-time <span class="math" data-tex="\(L^2\)">\(L^2\)</span> bound on <span class="math" data-tex="\(U\)">\(U\)</span> and
+the reference's <span class="math" data-tex="\(CL^2\)">\(CL^2\)</span> convergence. We obtain at every <span class="math" data-tex="\(s,t\)">\(s,t\)</span></p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(U(t),u(t))-(U(s),u(s))\\
+&amp;=\int_s^t\left[\langle u_r,U\rangle
++\int U_iU_j\partial_j u_i
+-\nu\int\nabla U : \nabla u+\langle F,u\rangle\right]dr.
+\end{aligned}
+\tag{6.7}
+\]">\[
+\begin{aligned}
+&amp;(U(t),u(t))-(U(s),u(s))\\
+&amp;=\int_s^t\left[\langle u_r,U\rangle
++\int U_iU_j\partial_j u_i
+-\nu\int\nabla U : \nabla u+\langle F,u\rangle\right]dr.
+\end{aligned}
+\tag{6.7}
+\]</span>
+<p>The derivative pairing uses exactly the two summands in (6.6).</p>
+<p>Put <span class="math" data-tex="\(z=U-u\)">\(z=U-u\)</span>. At almost every time both fields are in <span class="math" data-tex="\(H^1\)">\(H^1\)</span>.
+The cancellation <span class="math" data-tex="\(\int z\cdot\nabla|u|^2=0\)">\(\int z\cdot\nabla|u|^2=0\)</span> is justified by
+<span class="math" data-tex="\(z\in L^3\)">\(z\in L^3\)</span> and <span class="math" data-tex="\(u\nabla u\in L^{3/2}\)">\(u\nabla u\in L^{3/2}\)</span>. Smooth <span class="math" data-tex="\(H^1\)">\(H^1\)</span>
+approximation passes these products; the whole-space cutoff error is
+at most <span class="math" data-tex="\(C R^{-1}\|z\|_3\|u\|_3^2\)">\(C R^{-1}\|z\|_3\|u\|_3^2\)</span>. All time integrals exist:
+<span class="math" data-tex="\(z\otimes z\in L^{4/3}L^2\)">\(z\otimes z\in L^{4/3}L^2\)</span>, <span class="math" data-tex="\(\nabla u\in L^4L^2\)">\(\nabla u\in L^4L^2\)</span>, and
+<span class="math" data-tex="\(u\in L^4L^6,z\in L^4L^3,\nabla z\in L^2L^2\)">\(u\in L^4L^6,z\in L^4L^3,\nabla z\in L^2L^2\)</span>.
+Subtracting (6.7) from the two energy relations, with the full force
+terms kept, therefore gives</p>
+<span class="math math-display" data-tex="\[
+\frac12\|z(t)\|_2^2+\nu\int_s^t\|\nabla z\|_2^2
+\leq\frac12\|z(s)\|_2^2
++\int_s^t\int u_i z_j\partial_jz_i
++\int_s^t\langle F-f,z\rangle.
+\tag{6.8}
+\]">\[
+\frac12\|z(t)\|_2^2+\nu\int_s^t\|\nabla z\|_2^2
+\leq\frac12\|z(s)\|_2^2
++\int_s^t\int u_i z_j\partial_jz_i
++\int_s^t\langle F-f,z\rangle.
+\tag{6.8}
+\]</span>
+<p>Its starting times are zero and the weak solution's permitted energy
+starts; every later ending time is allowed. The exact estimates (4.6)–(4.12)
+of <a href="NS-FLUID-06.html">Velocity bounds and uniqueness</a>
+now apply with <span class="math" data-tex="\(q=6,p=4\)">\(q=6,p=4\)</span>: their coefficient is integrable because
+<span class="math" data-tex="\(u\in L^4H^1\subset L^4L^6\)">\(u\in L^4H^1\subset L^4L^6\)</span>. Those estimates were proved solely
+from this relative-energy inequality. In particular equal original data
+and forces give <span class="math" data-tex="\(U=u\)">\(U=u\)</span> at every time. This proves uniqueness against
+the full energy class for the force class of the local theorem.</p>
+<h2 id="7-stability-and-maximal-continuation">7. Stability and maximal continuation</h2>
+<p>Write <span class="math" data-tex="\(L_T=M_\Omega C_f(T,\nu)\)">\(L_T=M_\Omega C_f(T,\nu)\)</span>, so <span class="math" data-tex="\(K_T=L_T/\sqrt2\)">\(K_T=L_T/\sqrt2\)</span>.
+For two constructed solutions <span class="math" data-tex="\(u,v\)">\(u,v\)</span>, let <span class="math" data-tex="\(w_u,w_v\)">\(w_u,w_v\)</span> denote their
+full linear inputs in C22, including both original force summands.
+Set <span class="math" data-tex="\(R=\|u\|_{Z_T}+\|v\|_{Z_T}\)">\(R=\|u\|_{Z_T}+\|v\|_{Z_T}\)</span>. If <span class="math" data-tex="\(K_TR&lt;1\)">\(K_TR&lt;1\)</span>, subtraction
+of the integral equations and C23 prove</p>
+<span class="math math-display" data-tex="\[
+\|u-v\|_{Z_T}\leq
+\frac{\|w_u-w_v\|_{Z_T}}{1-K_TR},\qquad
+\|u-v\|_{X_T}\leq
+\frac{\|w_u-w_v\|_{X_T}}{1-K_TR}.
+\tag{7.1}
+\]">\[
+\|u-v\|_{Z_T}\leq
+\frac{\|w_u-w_v\|_{Z_T}}{1-K_TR},\qquad
+\|u-v\|_{X_T}\leq
+\frac{\|w_u-w_v\|_{X_T}}{1-K_TR}.
+\tag{7.1}
+\]</span>
+<p>For the second estimate use
+<span class="math" data-tex="\(\|u-v\|_X\leq\|w_u-w_v\|_X+L_TR\|u-v\|_Z\)">\(\|u-v\|_X\leq\|w_u-w_v\|_X+L_TR\|u-v\|_Z\)</span>
+and C18. The entire linear-input difference is bounded by</p>
+<span class="math math-display" data-tex="\[
+C_0(T,\nu)\bigl(\|u(0)-v(0)\|_{H^{1/2}}
++\|f_a-g_a\|_{L^1H^{1/2}}\bigr)
++C_f(T,\nu)\|f_b-g_b\|_{L^2H^{-1/2}}.
+\tag{7.2}
+\]">\[
+C_0(T,\nu)\bigl(\|u(0)-v(0)\|_{H^{1/2}}
++\|f_a-g_a\|_{L^1H^{1/2}}\bigr)
++C_f(T,\nu)\|f_b-g_b\|_{L^2H^{-1/2}}.
+\tag{7.2}
+\]</span>
+<p>No initial trace has been discarded. Finite partitions as in Section 5
+extend stability along every existing compact interval. More explicitly,
+choose pieces on which <span class="math" data-tex="\(K_TR\leq1/2\)">\(K_TR\leq1/2\)</span>, using a common larger-interval
+constant. If <span class="math" data-tex="\(e_j\)">\(e_j\)</span> bounds the difference in <span class="math" data-tex="\(X\)">\(X\)</span> on piece <span class="math" data-tex="\(j\)">\(j\)</span>,
+then (7.1)–(7.2) give
+<span class="math" data-tex="\(e_j\leq2C_0e_{j-1}+2C_0A_j+2C_fB_j\)">\(e_j\leq2C_0e_{j-1}+2C_0A_j+2C_fB_j\)</span>, with the initial-data
+norm in place of <span class="math" data-tex="\(e_0\)">\(e_0\)</span>. Here <span class="math" data-tex="\(A_j,B_j\)">\(A_j,B_j\)</span> are the actual force
+difference norms on that piece. Iterating this finite recurrence proves
+continuous dependence. Such a common partition can be chosen before
+constructing the perturbed solution. Require the reference solution's
+<span class="math" data-tex="\(Z\)">\(Z\)</span> norm on each piece to be at most <span class="math" data-tex="\(1/(32K_T)\)">\(1/(32K_T)\)</span>. Its linear
+input there is <span class="math" data-tex="\(w=u-B(u,u)\)">\(w=u-B(u,u)\)</span>, so
+<span class="math" data-tex="\(\|w\|_Z\leq(1/32+1/1024)/K_T&lt;1/(16K_T)\)">\(\|w\|_Z\leq(1/32+1/1024)/K_T&lt;1/(16K_T)\)</span>.
+For nearby data, this puts the base linear input below <span class="math" data-tex="\(1/(16K_T)\)">\(1/(16K_T)\)</span>; small perturbations in (7.2) leave it below
+<span class="math" data-tex="\(1/(8K_T)\)">\(1/(8K_T)\)</span>, so the same contraction interval works. The constructed perturbed norm
+is at most <span class="math" data-tex="\(1/(4K_T)\)">\(1/(4K_T)\)</span>, and the sum with the reference norm is
+at most <span class="math" data-tex="\(9/(32K_T)&lt;1/(2K_T)\)">\(9/(32K_T)&lt;1/(2K_T)\)</span>, as required in (7.1).
+The finite recurrence controls the next initial discrepancy; choosing
+the original data and force discrepancies sufficiently small keeps
+every one of the finitely many linear perturbations below
+<span class="math" data-tex="\(1/(16K_T)\)">\(1/(16K_T)\)</span>. Repeating over
+the finite partition proves existence on each prescribed compact
+subinterval for sufficiently nearby data as well.</p>
+<p>Local solutions glue uniquely because their initial traces agree and
+the integral splits exactly by the heat semigroup law. Let <span class="math" data-tex="\(T_*\)">\(T_*\)</span>
+be the supremum of their intervals, and suppose the original force is
+given on <span class="math" data-tex="\([0,T_0)\)">\([0,T_0)\)</span>. If <span class="math" data-tex="\(T_*&lt;T_0\)">\(T_*&lt;T_0\)</span> and
+<span class="math" data-tex="\(\int_0^{T_*}\|u\|_{H^1}^4dt&lt;\infty\)">\(\int_0^{T_*}\|u\|_{H^1}^4dt&lt;\infty\)</span>, then C16 places the
+entire nonlinear force in <span class="math" data-tex="\(L^2(0,T_*;H^{-1/2})\)">\(L^2(0,T_*;H^{-1/2})\)</span>.
+C19–C22 extend its Duhamel expression continuously to <span class="math" data-tex="\(T_*\)">\(T_*\)</span> in
+<span class="math" data-tex="\(H^{1/2}\)">\(H^{1/2}\)</span>, and in <span class="math" data-tex="\(L^2H^{3/2}\)">\(L^2H^{3/2}\)</span>, with the unchanged force.
+Starting the local construction at this actual terminal value extends
+the solution past <span class="math" data-tex="\(T_*\)">\(T_*\)</span>, a contradiction. Thus an interior finite
+maximal endpoint must satisfy</p>
+<span class="math math-display" data-tex="\[
+\int_0^{T_*}\|u(t)\|_{H^1}^4dt=\infty.
+\tag{7.3}
+\]">\[
+\int_0^{T_*}\|u(t)\|_{H^1}^4dt=\infty.
+\tag{7.3}
+\]</span>
+<p>This proof does not assert that an arbitrary bounded critical norm
+alone supplies a uniform lifespan.</p>
+<p>If the actual force belongs to the stronger class
+<span class="math" data-tex="\(L^1_{\rm loc}H^1+L^2_{\rm loc}L^2\)">\(L^1_{\rm loc}H^1+L^2_{\rm loc}L^2\)</span>, then this critical solution
+is an <span class="math" data-tex="\(H^1\)">\(H^1\)</span> strong solution after each positive time. To prove it,
+choose an almost-everywhere time <span class="math" data-tex="\(a\)">\(a\)</span> with <span class="math" data-tex="\(u(a)\in H^{3/2}\subset H^1\)">\(u(a)\in H^{3/2}\subset H^1\)</span>.
+Start the <span class="math" data-tex="\(H^1\)">\(H^1\)</span> solution constructed in <a href="NS-FLUID-05.html">Strong solutions and continuation</a> there. It also lies in
+the current critical class on its compact intervals, so uniqueness makes
+it equal to <span class="math" data-tex="\(u\)">\(u\)</span>. The latter has finite <span class="math" data-tex="\(L^4L^6\)">\(L^4L^6\)</span> norm on each
+compact critical interval. The already proved nonendpoint criterion
+therefore continues the <span class="math" data-tex="\(H^1\)">\(H^1\)</span> solution across every earlier proposed
+endpoint. Choosing <span class="math" data-tex="\(a\)">\(a\)</span> below any given positive time proves the claim.
+This extra regularity has been stated with its actual force hypothesis.</p>
+<h2 id="8-the-full-homogeneous-whole-space-construction">8. The full homogeneous whole-space construction</h2>
+<p>We now specify the homogeneous spaces without hiding a polynomial or
+constant ambiguity. Put <span class="math" data-tex="\(a(\xi)=2\pi|\xi|\)">\(a(\xi)=2\pi|\xi|\)</span>. For
+<span class="math" data-tex="\(s=-1/2,1/2,1\)">\(s=-1/2,1/2,1\)</span>, an element of <span class="math" data-tex="\(\dot H^s(\mathbb R^3)\)">\(\dot H^s(\mathbb R^3)\)</span> is the
+tempered distribution whose Fourier transform is a measurable function
+<span class="math" data-tex="\(F\)">\(F\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\|F\|_{\dot H^s}^2=\int a(\xi)^{2s}|F(\xi)|^2d\xi&lt;\infty.
+\tag{8.1}
+\]">\[
+\|F\|_{\dot H^s}^2=\int a(\xi)^{2s}|F(\xi)|^2d\xi&lt;\infty.
+\tag{8.1}
+\]</span>
+<p>This realization is well defined: for every Schwartz test <span class="math" data-tex="\(\phi\)">\(\phi\)</span>,
+Cauchy–Schwarz bounds its pairing by the norm in (8.1) times
+<span class="math" data-tex="\((\int a^{-2s}|\phi|^2)^{1/2}\)">\((\int a^{-2s}|\phi|^2)^{1/2}\)</span>. Near zero this last integral is
+finite precisely for <span class="math" data-tex="\(s&lt;3/2\)">\(s&lt;3/2\)</span>; at infinity Schwartz decay applies.
+It also proves continuous inclusion into tempered distributions and
+uniqueness of the realization. In particular no delta mass at frequency
+zero, and hence no nonzero polynomial velocity, is added to this space.</p>
+<p>These spaces are complete because their Fourier weighted <span class="math" data-tex="\(L^2\)">\(L^2\)</span>
+spaces are complete. Smooth Fourier functions supported in compact
+annuli are dense: truncate the two frequency tails in the weighted
+integral, then approximate on the remaining annulus by smooth functions.
+Their inverse transforms are Schwartz and vanish in frequency near zero.
+Thus (8.1) also proves the exact identification with the source's
+completion of that test class. The divergence-free subspace is the
+closed condition <span class="math" data-tex="\(\xi\cdot F(\xi)=0\)">\(\xi\cdot F(\xi)=0\)</span> almost everywhere.</p>
+<p>For <span class="math" data-tex="\(\dot H^1\)">\(\dot H^1\)</span>, this realization is an actual <span class="math" data-tex="\(L^6\)">\(L^6\)</span> function.
+Indeed the homogeneous Sobolev inequality already proved in the
+strong-solution chapter makes the annular approximations Cauchy in
+<span class="math" data-tex="\(L^6\)">\(L^6\)</span>. Their <span class="math" data-tex="\(L^6\)">\(L^6\)</span> distributional limit agrees with the Fourier
+limit, and
+<span class="math" data-tex="\(\|v\|_6\leq(4/\sqrt3)\|v\|_{\dot H^1}\)">\(\|v\|_6\leq(4/\sqrt3)\|v\|_{\dot H^1}\)</span>.
+Consequently C10 extends to the actual product of any two
+<span class="math" data-tex="\(\dot H^1\)">\(\dot H^1\)</span> fields: their products converge in <span class="math" data-tex="\(L^3\)">\(L^3\)</span>, while C10
+makes them converge in <span class="math" data-tex="\(\dot H^{1/2}\)">\(\dot H^{1/2}\)</span>, and the two distributional
+limits coincide. The tensor version follows by summing components.
+The original divergence and projection therefore satisfy</p>
+<span class="math math-display" data-tex="\[
+\|P\operatorname{div}(u\otimes v)\|_{\dot H^{-1/2}}
+\leq\|u\otimes v\|_{\dot H^{1/2}}
+\leq M_*\|u\|_{\dot H^1}\|v\|_{\dot H^1},
+\qquad M_*=\frac1{2\sqrt2}.
+\tag{8.2}
+\]">\[
+\|P\operatorname{div}(u\otimes v)\|_{\dot H^{-1/2}}
+\leq\|u\otimes v\|_{\dot H^{1/2}}
+\leq M_*\|u\|_{\dot H^1}\|v\|_{\dot H^1},
+\qquad M_*=\frac1{2\sqrt2}.
+\tag{8.2}
+\]</span>
+<p>The first bound retains the exact multiplier <span class="math" data-tex="\(a^{-1}\)">\(a^{-1}\)</span> in the squared
+output norm and the factor <span class="math" data-tex="\(a^2\)">\(a^2\)</span> from the original divergence.</p>
+<p>Define the solution space by requiring both
+<span class="math" data-tex="\(u\in C([0,T];\dot H^{1/2})\)">\(u\in C([0,T];\dot H^{1/2})\)</span> and
+<span class="math" data-tex="\(\int_0^T\int a^3|\widehat u|^2&lt;\infty\)">\(\int_0^T\int a^3|\widehat u|^2&lt;\infty\)</span>. The latter measures
+the same distribution already specified by the former; it introduces
+no separate quotient at the exponent <span class="math" data-tex="\(3/2\)">\(3/2\)</span>. Write</p>
+<span class="math math-display" data-tex="\[
+\|u\|_{\dot X_T}^2=
+\sup_t\int a|\widehat u(t)|^2+
+\int_0^T\int a^3|\widehat u|^2,
+\qquad \dot Z_T=L^4(0,T;\dot H^1).
+\tag{8.3}
+\]">\[
+\|u\|_{\dot X_T}^2=
+\sup_t\int a|\widehat u(t)|^2+
+\int_0^T\int a^3|\widehat u|^2,
+\qquad \dot Z_T=L^4(0,T;\dot H^1).
+\tag{8.3}
+\]</span>
+<p>Completeness follows from completeness of the two weighted integrals:
+the limits agree on every compact frequency annulus, where their
+weights are bounded above and below, and these annuli cover all
+nonzero frequencies. The first component fixes the distribution at
+zero. Spectral and time Cauchy–Schwarz again give
+<span class="math" data-tex="\(\|u\|_{\dot Z_T}\leq\|u\|_{\dot X_T}/\sqrt2\)">\(\|u\|_{\dot Z_T}\leq\|u\|_{\dot X_T}/\sqrt2\)</span>.</p>
+<p>Retaining <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, the heat estimates now have constants independent
+of the time interval, including <span class="math" data-tex="\(T=\infty\)">\(T=\infty\)</span>, where continuity is required at every finite time:</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\|S_\nu(\cdot)b\|_{\dot X_T}&amp;\leq A_\nu\|b\|_{\dot H^{1/2}},
+&amp;A_\nu&amp;=\sqrt{1+(2\nu)^{-1}},\\
+\left\|\int_0^t S_\nu(t-r)h(r)dr\right\|_{\dot X_T}
+&amp;\leq B_\nu\|h\|_{L^2\dot H^{-1/2}},
+&amp;B_\nu&amp;=\sqrt{\nu^{-1}+\nu^{-2}}.
+\end{split}
+\tag{8.4}
+\]">\[
+\begin{split}
+\|S_\nu(\cdot)b\|_{\dot X_T}&amp;\leq A_\nu\|b\|_{\dot H^{1/2}},
+&amp;A_\nu&amp;=\sqrt{1+(2\nu)^{-1}},\\
+\left\|\int_0^t S_\nu(t-r)h(r)dr\right\|_{\dot X_T}
+&amp;\leq B_\nu\|h\|_{L^2\dot H^{-1/2}},
+&amp;B_\nu&amp;=\sqrt{\nu^{-1}+\nu^{-2}}.
+\end{split}
+\tag{8.4}
+\]</span>
+<p>For the first, integrate the original multiplier:
+<span class="math" data-tex="\(\int_0^T a^3e^{-2\nu a^2t}dt
+ =a(1-e^{-2\nu a^2T})/(2\nu)\)">\(\int_0^T a^3e^{-2\nu a^2t}dt
+ =a(1-e^{-2\nu a^2T})/(2\nu)\)</span>.
+For the second, set <span class="math" data-tex="\(E=\|v\|_{\dot H^{1/2}}^2\)">\(E=\|v\|_{\dot H^{1/2}}^2\)</span> and
+<span class="math" data-tex="\(D=\int a^3|\widehat v|^2\)">\(D=\int a^3|\widehat v|^2\)</span>. The exact energy pairing gives</p>
+<span class="math math-display" data-tex="\[
+E&#x27;+2\nu D\leq2\|h\|_{\dot H^{-1/2}}\sqrt D
+\leq\nu D+\nu^{-1}\|h\|_{\dot H^{-1/2}}^2.
+\tag{8.5}
+\]">\[
+E&#x27;+2\nu D\leq2\|h\|_{\dot H^{-1/2}}\sqrt D
+\leq\nu D+\nu^{-1}\|h\|_{\dot H^{-1/2}}^2.
+\tag{8.5}
+\]</span>
+<p>With zero data, the supremum of <span class="math" data-tex="\(E\)">\(E\)</span> is at most <span class="math" data-tex="\(\nu^{-1}\|h\|^2\)">\(\nu^{-1}\|h\|^2\)</span>
+and the integral of <span class="math" data-tex="\(D\)">\(D\)</span> at most <span class="math" data-tex="\(\nu^{-2}\|h\|^2\)">\(\nu^{-2}\|h\|^2\)</span>. Approximate
+by compact frequency annuli and integrable smooth time functions;
+these same estimates on differences give convergence in <span class="math" data-tex="\(\dot X_T\)">\(\dot X_T\)</span>
+and the exact continuous trace. The Fourier equation passes on every
+annulus and then as a tempered distribution by (8.1). This constructs
+the linear operator rather than assuming its existence.
+The <span class="math" data-tex="\(L^1\dot H^{1/2}\)">\(L^1\dot H^{1/2}\)</span> force bound is <span class="math" data-tex="\(A_\nu\)">\(A_\nu\)</span> times that norm,
+by time-shifted (8.4), Minkowski and approximation as in Section 4.</p>
+<p>The local theorem therefore holds for every divergence-free
+<span class="math" data-tex="\(b\in\dot H^{1/2}\)">\(b\in\dot H^{1/2}\)</span> and actual force</p>
+<span class="math math-display" data-tex="\[
+f=f_a+f_b,\qquad f_a\in L^1_{\rm loc}\dot H^{1/2},\quad
+f_b\in L^2_{\rm loc}\dot H^{-1/2}.
+\tag{8.6}
+\]">\[
+f=f_a+f_b,\qquad f_a\in L^1_{\rm loc}\dot H^{1/2},\quad
+f_b\in L^2_{\rm loc}\dot H^{-1/2}.
+\tag{8.6}
+\]</span>
+<p>Here is the complete contraction bound. Define <span class="math" data-tex="\(w\)">\(w\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> by C22 on these
+spaces. Then</p>
+<span class="math math-display" data-tex="\[
+\|B(u,v)\|_{\dot X_T}\leq B_\nu M_*\|u\|_{\dot Z_T}\|v\|_{\dot Z_T},
+\qquad
+\|B(u,v)\|_{\dot Z_T}\leq K_*\|u\|_{\dot Z_T}\|v\|_{\dot Z_T},
+\quad K_*=B_\nu/4.
+\tag{8.7}
+\]">\[
+\|B(u,v)\|_{\dot X_T}\leq B_\nu M_*\|u\|_{\dot Z_T}\|v\|_{\dot Z_T},
+\qquad
+\|B(u,v)\|_{\dot Z_T}\leq K_*\|u\|_{\dot Z_T}\|v\|_{\dot Z_T},
+\quad K_*=B_\nu/4.
+\tag{8.7}
+\]</span>
+<p>The free heat orbit has an integrable fourth power in <span class="math" data-tex="\(\dot Z\)">\(\dot Z\)</span>
+on any fixed interval by (8.4), so its restricted norm tends to zero
+as the interval shrinks. Both force contributions tend to zero by
+their actual norms in (8.6). Choose <span class="math" data-tex="\(\|w\|_{\dot Z_T}\leq1/(8K_*)\)">\(\|w\|_{\dot Z_T}\leq1/(8K_*)\)</span>.
+Exactly the ball, geometric iteration and finite-partition uniqueness
+proof of Section 5, with the constants in (8.7), now apply. They prove
+existence and uniqueness in the entire <span class="math" data-tex="\(\dot X_T\)">\(\dot X_T\)</span> class. Repeating
+the explicit subtraction in (7.1) proves stability there. The terminal
+Duhamel argument proves that an interior finite maximal endpoint must
+have <span class="math" data-tex="\(\int_0^{T_*}\|u\|_{\dot H^1}^4=\infty\)">\(\int_0^{T_*}\|u\|_{\dot H^1}^4=\infty\)</span>.</p>
+<p>There is also a quantitative global theorem. If the original force
+summands in (8.6) have finite norms on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\Lambda_*=
+\frac{A_\nu}{\sqrt2}
+\bigl(\|b\|_{\dot H^{1/2}}+\|f_a\|_{L^1\dot H^{1/2}}\bigr)
++\frac{B_\nu}{\sqrt2}\|f_b\|_{L^2\dot H^{-1/2}}.
+\tag{8.8}
+\]">\[
+\Lambda_*=
+\frac{A_\nu}{\sqrt2}
+\bigl(\|b\|_{\dot H^{1/2}}+\|f_a\|_{L^1\dot H^{1/2}}\bigr)
++\frac{B_\nu}{\sqrt2}\|f_b\|_{L^2\dot H^{-1/2}}.
+\tag{8.8}
+\]</span>
+<p>If <span class="math" data-tex="\(\Lambda_*\leq1/(8K_*)\)">\(\Lambda_*\leq1/(8K_*)\)</span>, the same contraction is on
+<span class="math" data-tex="\(\dot Z_\infty\)">\(\dot Z_\infty\)</span>, giving one solution on the entire half-line with</p>
+<span class="math math-display" data-tex="\[
+\|u\|_{\dot Z_\infty}\leq2\Lambda_*,\qquad
+\|u\|_{\dot X_\infty}
+\leq\sqrt2\Lambda_*+4B_\nu M_*\Lambda_*^2.
+\tag{8.9}
+\]">\[
+\|u\|_{\dot Z_\infty}\leq2\Lambda_*,\qquad
+\|u\|_{\dot X_\infty}
+\leq\sqrt2\Lambda_*+4B_\nu M_*\Lambda_*^2.
+\tag{8.9}
+\]</span>
+<p>The norm bound for <span class="math" data-tex="\(w\)">\(w\)</span> used here is exactly <span class="math" data-tex="\(\sqrt2\Lambda_*\)">\(\sqrt2\Lambda_*\)</span>.
+Uniqueness on every finite interval proves global uniqueness among
+solutions locally in the stated class, even if a comparison solution
+was not assumed small or globally bounded. These thresholds are
+explicit sufficient bounds, with no optimality claim.</p>
+<p>The pressure for (8.6) needs an additional low-frequency step because
+these forces need not belong to the inhomogeneous force class.
+The nonlinear pressure in (6.1) still belongs to
+<span class="math" data-tex="\(L^2\dot H^{1/2}\)">\(L^2\dot H^{1/2}\)</span>, by (8.2). For each force summand with Fourier
+function <span class="math" data-tex="\(F\)">\(F\)</span>, put <span class="math" data-tex="\(m_F(\xi)=-i\xi\cdot F/(2\pi|\xi|^2)\)">\(m_F(\xi)=-i\xi\cdot F/(2\pi|\xi|^2)\)</span>.
+Choose an even real smooth <span class="math" data-tex="\(\chi_\Lambda\)">\(\chi_\Lambda\)</span> equal to one near zero
+and supported in <span class="math" data-tex="\(|\xi|&lt;2\Lambda\)">\(|\xi|&lt;2\Lambda\)</span>, with <span class="math" data-tex="\(\Lambda&gt;0\)">\(\Lambda&gt;0\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\langle\widehat p_F,\phi\rangle
+=\int m_F(\xi)
+[\phi(\xi)-\chi_\Lambda(\xi)\phi(0)]\,d\xi.
+\tag{8.10}
+\]">\[
+\langle\widehat p_F,\phi\rangle
+=\int m_F(\xi)
+[\phi(\xi)-\chi_\Lambda(\xi)\phi(0)]\,d\xi.
+\tag{8.10}
+\]</span>
+<p>Near zero the bracket is bounded by a test-dependent constant times
+<span class="math" data-tex="\(|\xi|\)">\(|\xi|\)</span>, so its product with <span class="math" data-tex="\(m_F\)">\(m_F\)</span> is bounded by a constant times
+<span class="math" data-tex="\(|F|\)">\(|F|\)</span>. This is integrable for both <span class="math" data-tex="\(s=1/2\)">\(s=1/2\)</span> and <span class="math" data-tex="\(s=-1/2\)">\(s=-1/2\)</span>
+by (8.1). Away from zero, weighted Cauchy–Schwarz and Schwartz decay
+prove convergence and continuity in the test topology. The same bounds
+are continuous in the two force norms, so their time integrals define
+the pressure distribution. This is a specified potential, not an
+omission of its low-frequency part.</p>
+<p>Testing its derivative replaces <span class="math" data-tex="\(\phi\)">\(\phi\)</span> by <span class="math" data-tex="\(2\pi i\xi_j\phi\)">\(2\pi i\xi_j\phi\)</span>,
+whose value at zero is zero. It follows exactly that
+<span class="math" data-tex="\(2\pi i\xi_j\widehat p_F=\xi_j(\xi\cdot F)/|\xi|^2\)">\(2\pi i\xi_j\widehat p_F=\xi_j(\xi\cdot F)/|\xi|^2\)</span>.
+Thus <span class="math" data-tex="\(\nabla p_F=(I-P)f\)">\(\nabla p_F=(I-P)f\)</span>, and the constructed solution solves the
+original full equation. Replacing <span class="math" data-tex="\(\chi_\Lambda\)">\(\chi_\Lambda\)</span> by another
+permitted cutoff changes (8.10) by
+<span class="math" data-tex="\(-\phi(0)\int m_F(\chi_\Lambda-\widetilde\chi)\)">\(-\phi(0)\int m_F(\chi_\Lambda-\widetilde\chi)\)</span>; this integral
+is finite because the difference vanishes near zero. The change is
+exactly a multiple of <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span>, hence a spatially constant pressure,
+whose gradient is zero. This proves the entire gauge comparison.</p>
+<p>Finally retain the finite-energy intersection. Suppose the same data
+and force also satisfy the inhomogeneous local theorem. Its solution
+lies in <span class="math" data-tex="\(\dot X\)">\(\dot X\)</span>, since <span class="math" data-tex="\(a\leq\sqrt{1+a^2}\)">\(a\leq\sqrt{1+a^2}\)</span> and
+<span class="math" data-tex="\(a^3\leq(1+a^2)^{3/2}\)">\(a^3\leq(1+a^2)^{3/2}\)</span>. The Fourier equation identifies it with
+the homogeneous solution by uniqueness. Both pressure formulas have
+the same gradient; where (6.1) is integrable at zero their difference
+is the explicit spatial constant just computed.</p>
+<p>If the homogeneous solution is global, the finite-energy one is also
+global. To prove this without losing its <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm, write the actual
+finite-energy force as <span class="math" data-tex="\(F_a+F_b\in L^1_{\rm loc}L^2+L^2_{\rm loc}H^{-1}\)">\(F_a+F_b\in L^1_{\rm loc}L^2+L^2_{\rm loc}H^{-1}\)</span>.
+For any <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, (6.5) gives, with <span class="math" data-tex="\(Y=\|u\|_2^2\)">\(Y=\|u\|_2^2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+Y&#x27;+\nu\|\nabla u\|_2^2
+\leq(\nu+\|F_a\|_2/\eta)Y
++\eta\|F_a\|_2+\nu^{-1}\|F_b\|_{H^{-1}}^2.
+\tag{8.11}
+\]">\[
+Y&#x27;+\nu\|\nabla u\|_2^2
+\leq(\nu+\|F_a\|_2/\eta)Y
++\eta\|F_a\|_2+\nu^{-1}\|F_b\|_{H^{-1}}^2.
+\tag{8.11}
+\]</span>
+<p>This follows from <span class="math" data-tex="\(2\|F_a\|_2\sqrt Y\leq\|F_a\|_2(Y/\eta+\eta)\)">\(2\|F_a\|_2\sqrt Y\leq\|F_a\|_2(Y/\eta+\eta)\)</span>
+and</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+2\|F_b\|_{H^{-1}}\sqrt{Y+\|\nabla u\|_2^2}
+&amp;\leq\nu(Y+\|\nabla u\|_2^2)\\
+&amp;\quad+\nu^{-1}\|F_b\|_{H^{-1}}^2.
+\end{split}
+\]">\[
+\begin{split}
+2\|F_b\|_{H^{-1}}\sqrt{Y+\|\nabla u\|_2^2}
+&amp;\leq\nu(Y+\|\nabla u\|_2^2)\\
+&amp;\quad+\nu^{-1}\|F_b\|_{H^{-1}}^2.
+\end{split}
+\]</span>
+<p>The integrating factor bounds <span class="math" data-tex="\(Y\)">\(Y\)</span> uniformly before any proposed finite
+endpoint. Moreover
+<span class="math" data-tex="\(\|u\|_{H^1}^4\leq2Y^2+2\|u\|_{\dot H^1}^4\)">\(\|u\|_{H^1}^4\leq2Y^2+2\|u\|_{\dot H^1}^4\)</span>.
+The second term is integrable on that interval by the global homogeneous
+solution. This contradicts (7.3). The full <span class="math" data-tex="\(L^2\)">\(L^2\)</span> contribution and all
+original forces therefore persist globally. The homogeneous theorem
+also remains valid for data outside this intersection; no finite-energy
+assertion has been added for those data.</p>
+<h2 id="9-periodic-global-solutions-with-arbitrary-means">9. Periodic global solutions with arbitrary means</h2>
+<p>The periodic mean can be arbitrarily large, and can change under its
+original force. Denote actual spatial averages by bars and define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+m(t)=\overline{u_0}+\int_0^t\overline f(r)dr,
+\qquad c(t)=\int_0^t m(r)dr,\\
+w(y,t)=u(y+c(t),t)-m(t),\\
+g(y,t)=f(y+c(t),t)-\overline f(t).
+\end{gathered}
+\tag{9.1}
+\]">\[
+\begin{gathered}
+m(t)=\overline{u_0}+\int_0^t\overline f(r)dr,
+\qquad c(t)=\int_0^t m(r)dr,\\
+w(y,t)=u(y+c(t),t)-m(t),\\
+g(y,t)=f(y+c(t),t)-\overline f(t).
+\end{gathered}
+\tag{9.1}
+\]</span>
+<p>The mean force is locally integrable for the inhomogeneous force class:
+its coefficient is bounded by <span class="math" data-tex="\(V^{-1/2}\)">\(V^{-1/2}\)</span> times either force norm,
+and an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> time function is <span class="math" data-tex="\(L^1\)">\(L^1\)</span> on compact intervals. Thus <span class="math" data-tex="\(m\)">\(m\)</span> is absolutely
+continuous and <span class="math" data-tex="\(c\)">\(c\)</span> is continuously differentiable there.</p>
+<p>With <span class="math" data-tex="\(q(y,t)=p(y+c(t),t)\)">\(q(y,t)=p(y+c(t),t)\)</span>, the exact transformed equation is</p>
+<span class="math math-display" data-tex="\[
+w_t+\operatorname{div}(w\otimes w)+\nabla q=\nu\Delta w+g,
+\qquad \overline w=\overline g=0.
+\tag{9.2}
+\]">\[
+w_t+\operatorname{div}(w\otimes w)+\nabla q=\nu\Delta w+g,
+\qquad \overline w=\overline g=0.
+\tag{9.2}
+\]</span>
+<p>Indeed the inverse is <span class="math" data-tex="\(u(x,t)=m(t)+w(x-c(t),t)\)">\(u(x,t)=m(t)+w(x-c(t),t)\)</span>: its time
+derivative contributes <span class="math" data-tex="\(m&#x27;+w_t-m\cdot\nabla w\)">\(m&#x27;+w_t-m\cdot\nabla w\)</span>, while its
+nonlinear derivative contributes <span class="math" data-tex="\(m\cdot\nabla w+(w\cdot\nabla)w\)">\(m\cdot\nabla w+(w\cdot\nabla)w\)</span>.
+The transport terms cancel and <span class="math" data-tex="\(m&#x27;=\overline f\)">\(m&#x27;=\overline f\)</span> restores the full
+force. The inverse pressure is <span class="math" data-tex="\(p(x,t)=q(x-c(t),t)\)">\(p(x,t)=q(x-c(t),t)\)</span>.
+These identities also hold for the solution classes here: change
+variables in smooth periodic space-time tests, use <span class="math" data-tex="\(c&#x27;=m\)">\(c&#x27;=m\)</span>, and
+integrate the locally integrable <span class="math" data-tex="\(m&#x27;\)">\(m&#x27;\)</span> term. Approximation of the
+time tests proves the distributional chain rule at exactly this
+regularity. The construction has an explicit inverse and retains the
+actual mean equation; it does not replace the original velocity.</p>
+<p>For <span class="math" data-tex="\(k\ne0\)">\(k\ne0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+w_k(t)=e^{2\pi i\kappa_k\cdot c(t)}u_k(t),\qquad
+g_k(t)=e^{2\pi i\kappa_k\cdot c(t)}f_k(t).
+\tag{9.3}
+\]">\[
+w_k(t)=e^{2\pi i\kappa_k\cdot c(t)}u_k(t),\qquad
+g_k(t)=e^{2\pi i\kappa_k\cdot c(t)}f_k(t).
+\tag{9.3}
+\]</span>
+<p>The zero coefficients in (9.1) are retained separately as <span class="math" data-tex="\(m\)">\(m\)</span> and
+<span class="math" data-tex="\(\overline f\)">\(\overline f\)</span>. All weights, periods and <span class="math" data-tex="\(V\)">\(V\)</span> remain unchanged.
+On mean-zero fields put
+<span class="math" data-tex="\(\|h\|_{\dot H^s(Q)}^2=V\sum_{k\ne0}(2\pi|\kappa_k|)^{2s}|h_k|^2\)">\(\|h\|_{\dot H^s(Q)}^2=V\sum_{k\ne0}(2\pi|\kappa_k|)^{2s}|h_k|^2\)</span>.
+Let <span class="math" data-tex="\(a_*=2\pi/\max_jL_j&gt;0\)">\(a_*=2\pi/\max_jL_j&gt;0\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\|h\|_{H^1}\leq\sqrt{1+a_*^{-2}}\|h\|_{\dot H^1},\qquad
+\|P\operatorname{div}(h\otimes v)\|_{\dot H^{-1/2}}
+\leq M_Q^*\|h\|_{\dot H^1}\|v\|_{\dot H^1},
+\quad M_Q^*=M_Q(1+a_*^{-2}).
+\tag{9.4}
+\]">\[
+\|h\|_{H^1}\leq\sqrt{1+a_*^{-2}}\|h\|_{\dot H^1},\qquad
+\|P\operatorname{div}(h\otimes v)\|_{\dot H^{-1/2}}
+\leq M_Q^*\|h\|_{\dot H^1}\|v\|_{\dot H^1},
+\quad M_Q^*=M_Q(1+a_*^{-2}).
+\tag{9.4}
+\]</span>
+<p>The first follows term by term. For the second, sum the squared
+divergence multiplier over <span class="math" data-tex="\(k\ne0\)">\(k\ne0\)</span>; it is bounded by
+<span class="math" data-tex="\(\|h\otimes v\|_{H^{1/2}}^2\)">\(\|h\otimes v\|_{H^{1/2}}^2\)</span>. Use C14 and the first bound
+for each input. The tensor may have a nonzero constant coefficient;
+its original divergence has zero coefficient there, exactly as used
+in this calculation.</p>
+<p>The homogeneous heat estimates (8.4) hold for this lattice sum with
+the same <span class="math" data-tex="\(A_\nu,B_\nu\)">\(A_\nu,B_\nu\)</span>, including the original V. Define
+<span class="math" data-tex="\(K_Q^*=B_\nu M_Q^*/\sqrt2\)">\(K_Q^*=B_\nu M_Q^*/\sqrt2\)</span>. Decompose the actual force into
+its original two summands and set
+<span class="math" data-tex="\(g_a(y,t)=f_a(y+c(t),t)-\overline{f_a}(t)\)">\(g_a(y,t)=f_a(y+c(t),t)-\overline{f_a}(t)\)</span>, and likewise <span class="math" data-tex="\(g_b\)">\(g_b\)</span>.
+Translations preserve every displayed norm by (9.3). If</p>
+<span class="math math-display" data-tex="\[
+\Lambda_Q=
+\frac{A_\nu}{\sqrt2}
+(\|u_0-\overline{u_0}\|_{\dot H^{1/2}(Q)}
++\|g_a\|_{L^1(0,\infty;\dot H^{1/2}(Q))})
++\frac{B_\nu}{\sqrt2}
+\|g_b\|_{L^2(0,\infty;\dot H^{-1/2}(Q))}
+\leq\frac1{8K_Q^*},
+\tag{9.5}
+\]">\[
+\Lambda_Q=
+\frac{A_\nu}{\sqrt2}
+(\|u_0-\overline{u_0}\|_{\dot H^{1/2}(Q)}
++\|g_a\|_{L^1(0,\infty;\dot H^{1/2}(Q))})
++\frac{B_\nu}{\sqrt2}
+\|g_b\|_{L^2(0,\infty;\dot H^{-1/2}(Q))}
+\leq\frac1{8K_Q^*},
+\tag{9.5}
+\]</span>
+<p>the same complete contraction and partition proof gives a global <span class="math" data-tex="\(w\)">\(w\)</span>
+in the homogeneous class, with <span class="math" data-tex="\(\|w\|_{\dot Z_\infty}\leq2\Lambda_Q\)">\(\|w\|_{\dot Z_\infty}\leq2\Lambda_Q\)</span>.
+Formula (9.1) then gives a global solution of the original full equation.
+The spectral gap converts the fluctuation's homogeneous norms into
+the full inhomogeneous norms on each compact time interval, since
+<span class="math" data-tex="\(1+a_k^2\leq(1+a_*^{-2})a_k^2\)">\(1+a_k^2\leq(1+a_*^{-2})a_k^2\)</span> for <span class="math" data-tex="\(k\ne0\)">\(k\ne0\)</span>.
+The remaining constant field <span class="math" data-tex="\(m\)">\(m\)</span> contributes its actual
+<span class="math" data-tex="\(V|m(t)|^2\)">\(V|m(t)|^2\)</span> to each squared spatial Sobolev norm and is bounded
+on every such interval. Consequently the original <span class="math" data-tex="\(u\)">\(u\)</span> lies locally in
+<span class="math" data-tex="\(CH^{1/2}\cap L^2H^{3/2}\)">\(CH^{1/2}\cap L^2H^{3/2}\)</span>, with the full energy and comparison
+properties already proved. No smallness or boundedness at infinite
+time is required of <span class="math" data-tex="\(m\)">\(m\)</span>; only the stated local integrability of its
+original force is used. This proves the periodic small-fluctuation
+global theorem with all original mean data restored.</p>
+<h2 id="10-five-exercises-with-solutions">10. Five exercises with solutions</h2>
+<h3 id="exercise-1-critical-scaling-and-the-full-inhomogeneous-norm">Exercise 1: critical scaling and the full inhomogeneous norm</h3>
+<p>For the original scaling
+<span class="math" data-tex="\(u_R(x,t)=R^{-1}u(x/R,t/R^2)\)">\(u_R(x,t)=R^{-1}u(x/R,t/R^2)\)</span>, <span class="math" data-tex="\(R&gt;0\)">\(R&gt;0\)</span>, compute both
+half-derivative norms and the two homogeneous force norms.</p>
+<p><strong>Solution.</strong> The spatial Fourier transform is
+<span class="math" data-tex="\(\widehat u_R(\xi,t)=R^2\widehat u(R\xi,t/R^2)\)">\(\widehat u_R(\xi,t)=R^2\widehat u(R\xi,t/R^2)\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\|u_R(t)\|_{\dot H^s}^2
+=R^{1-2s}\|u(t/R^2)\|_{\dot H^s}^2,
+\qquad
+\|u_R(t)\|_{H^{1/2}}^2
+=\int\sqrt{R^2+4\pi^2|\eta|^2}
+|\widehat u(\eta,t/R^2)|^2d\eta.
+\tag{10.1}
+\]">\[
+\|u_R(t)\|_{\dot H^s}^2
+=R^{1-2s}\|u(t/R^2)\|_{\dot H^s}^2,
+\qquad
+\|u_R(t)\|_{H^{1/2}}^2
+=\int\sqrt{R^2+4\pi^2|\eta|^2}
+|\widehat u(\eta,t/R^2)|^2d\eta.
+\tag{10.1}
+\]</span>
+<p>The homogeneous half-derivative norm is invariant. The full norm has
+the displayed retained low-frequency contribution, and is not invariant.
+The <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm squared is multiplied by <span class="math" data-tex="\(R\)">\(R\)</span>.
+Changing time as well shows that both
+<span class="math" data-tex="\(\sup_t\|u\|_{\dot H^{1/2}}\)">\(\sup_t\|u\|_{\dot H^{1/2}}\)</span> and
+<span class="math" data-tex="\(\|u\|_{L^2\dot H^{3/2}}\)">\(\|u\|_{L^2\dot H^{3/2}}\)</span>, and also <span class="math" data-tex="\(\|u\|_{\dot Z}\)">\(\|u\|_{\dot Z}\)</span>,
+are invariant on the corresponding intervals <span class="math" data-tex="\([0,T]\)">\([0,T]\)</span> and <span class="math" data-tex="\([0,R^2T]\)">\([0,R^2T]\)</span>.</p>
+<p>The full pressure and force are
+<span class="math" data-tex="\(p_R=R^{-2}p(x/R,t/R^2)\)">\(p_R=R^{-2}p(x/R,t/R^2)\)</span> and
+<span class="math" data-tex="\(f_R=R^{-3}f(x/R,t/R^2)\)">\(f_R=R^{-3}f(x/R,t/R^2)\)</span>. Their factors follow by differentiating
+each term of the original equation, as in the preceding chapter;
+the original viscosity remains <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. The force Fourier transform
+is <span class="math" data-tex="\(\widehat f_R(\xi,t)=\widehat f(R\xi,t/R^2)\)">\(\widehat f_R(\xi,t)=\widehat f(R\xi,t/R^2)\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\|f_R(t)\|_{\dot H^s}^2
+=R^{-3-2s}\|f(t/R^2)\|_{\dot H^s}^2.
+\tag{10.2}
+\]">\[
+\|f_R(t)\|_{\dot H^s}^2
+=R^{-3-2s}\|f(t/R^2)\|_{\dot H^s}^2.
+\tag{10.2}
+\]</span>
+<p>For <span class="math" data-tex="\(s=1/2\)">\(s=1/2\)</span> the norm factor is <span class="math" data-tex="\(R^{-2}\)">\(R^{-2}\)</span>, cancelled by the
+<span class="math" data-tex="\(R^2\)">\(R^2\)</span> time factor in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>. For <span class="math" data-tex="\(s=-1/2\)">\(s=-1/2\)</span> it is <span class="math" data-tex="\(R^{-1}\)">\(R^{-1}\)</span>,
+cancelled by the factor <span class="math" data-tex="\(R\)">\(R\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> time. Thus both force norms in (8.8)
+are invariant. The map has the inverse with factor <span class="math" data-tex="\(1/R\)">\(1/R\)</span>, so
+none of these computations replaces the original fields.</p>
+<h3 id="exercise-2-a-pressure-whose-raw-fourier-formula-is-not-integrable">Exercise 2: a pressure whose raw Fourier formula is not integrable</h3>
+<p>Show why the low-frequency subtraction in (8.10) can actually be needed.</p>
+<p><strong>Solution.</strong> With <span class="math" data-tex="\(r=|\xi|\)">\(r=|\xi|\)</span>, define the original force transform</p>
+<span class="math math-display" data-tex="\[
+F(\xi)=i\frac{\xi}{r}\,
+\frac{\mathbf1_{0&lt;r&lt;1/2}}{r^2[\log(e/r)]^{3/4}}.
+\tag{10.3}
+\]">\[
+F(\xi)=i\frac{\xi}{r}\,
+\frac{\mathbf1_{0&lt;r&lt;1/2}}{r^2[\log(e/r)]^{3/4}}.
+\tag{10.3}
+\]</span>
+<p>It has the conjugate symmetry of a real distribution. Direct polar
+integration gives</p>
+<span class="math math-display" data-tex="\[
+\|F\|_{\dot H^{1/2}}^2
+=8\pi^2\int_0^{1/2}\frac{dr}{r[\log(e/r)]^{3/2}}
+=\frac{16\pi^2}{\sqrt{\log(2e)}}&lt;\infty.
+\tag{10.4}
+\]">\[
+\|F\|_{\dot H^{1/2}}^2
+=8\pi^2\int_0^{1/2}\frac{dr}{r[\log(e/r)]^{3/2}}
+=\frac{16\pi^2}{\sqrt{\log(2e)}}&lt;\infty.
+\tag{10.4}
+\]</span>
+<p>Here the change of variable is <span class="math" data-tex="\(s=\log(e/r)\)">\(s=\log(e/r)\)</span>, with
+<span class="math" data-tex="\(ds=-dr/r\)">\(ds=-dr/r\)</span>. The raw pressure expression is</p>
+<span class="math math-display" data-tex="\[
+m_F(\xi)=\frac{\mathbf1_{0&lt;r&lt;1/2}}
+{2\pi r^3[\log(e/r)]^{3/4}}.
+\tag{10.5}
+\]">\[
+m_F(\xi)=\frac{\mathbf1_{0&lt;r&lt;1/2}}
+{2\pi r^3[\log(e/r)]^{3/4}}.
+\tag{10.5}
+\]</span>
+<p>Its integral near zero diverges because
+<span class="math" data-tex="\(\int_{\log(2e)}^\infty s^{-3/4}ds=\infty\)">\(\int_{\log(2e)}^\infty s^{-3/4}ds=\infty\)</span>.
+Formula (8.10) nevertheless defines its potential: its test subtraction
+contributes the precise factor <span class="math" data-tex="\(O(r)\)">\(O(r)\)</span>, making the integral finite as
+proved there. The force is longitudinal, so <span class="math" data-tex="\(PF=0\)">\(PF=0\)</span>. If
+<span class="math" data-tex="\(f(x,t)=\gamma(t)\mathcal F^{-1}F(x)\)">\(f(x,t)=\gamma(t)\mathcal F^{-1}F(x)\)</span>, with a smooth compactly
+supported time function <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, then <span class="math" data-tex="\(u=0\)">\(u=0\)</span> and
+<span class="math" data-tex="\(p=\gamma p_F\)">\(p=\gamma p_F\)</span> solve the original equation exactly:
+<span class="math" data-tex="\(\nabla p=f\)">\(\nabla p=f\)</span>. This is an actual nonzero original force and pressure,
+even though its projected velocity equation has zero right side.
+The construction retains the missing potential explicitly.</p>
+<h3 id="exercise-3-an-invariant-shear-family-with-arbitrary-mean-acceleration">Exercise 3: an invariant shear family with arbitrary mean acceleration</h3>
+<p>Construct a periodic global flow with an arbitrary mean acceleration,
+and determine whether its shear amplitude must be small.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(m\)">\(m\)</span> be any locally absolutely continuous vector function,
+<span class="math" data-tex="\(c(t)=\int_0^t m(s)ds\)">\(c(t)=\int_0^t m(s)ds\)</span>, and let <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(G\)">\(G\)</span> be periodic scalar
+functions of <span class="math" data-tex="\(y_2\)">\(y_2\)</span> with period <span class="math" data-tex="\(L_2\)">\(L_2\)</span>, zero spatial mean, satisfying
+<span class="math" data-tex="\(H_t=\nu H_{22}+G\)">\(H_t=\nu H_{22}+G\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+u(x,t)&amp;=m(t)+e_1H(x_2-c_2(t),t),\qquad p=0,\\
+f(x,t)&amp;=m&#x27;(t)+e_1G(x_2-c_2(t),t).
+\end{split}
+\tag{10.6}
+\]">\[
+\begin{split}
+u(x,t)&amp;=m(t)+e_1H(x_2-c_2(t),t),\qquad p=0,\\
+f(x,t)&amp;=m&#x27;(t)+e_1G(x_2-c_2(t),t).
+\end{split}
+\tag{10.6}
+\]</span>
+<p>The field is divergence free. Its nonlinear term is exactly
+<span class="math" data-tex="\(m_2 e_1H_2\)">\(m_2 e_1H_2\)</span>; the time derivative contributes <span class="math" data-tex="\(-m_2e_1H_2\)">\(-m_2e_1H_2\)</span>,
+and the remaining equation is the stated scalar heat equation together
+with the original mean force. For initial Fourier coefficients <span class="math" data-tex="\(h_n\)">\(h_n\)</span>,
+the full solution of that scalar equation is</p>
+<span class="math math-display" data-tex="\[
+H_n(t)=e^{-\nu b_n^2t}h_n+
+\int_0^t e^{-\nu b_n^2(t-r)}G_n(r)dr,
+\qquad b_n=2\pi n/L_2,
+\quad n\ne0,
+\tag{10.7}
+\]">\[
+H_n(t)=e^{-\nu b_n^2t}h_n+
+\int_0^t e^{-\nu b_n^2(t-r)}G_n(r)dr,
+\qquad b_n=2\pi n/L_2,
+\quad n\ne0,
+\tag{10.7}
+\]</span>
+<p>with <span class="math" data-tex="\(H_0=G_0=0\)">\(H_0=G_0=0\)</span>. The original three-dimensional norms use <span class="math" data-tex="\(V\)">\(V\)</span>
+times these coefficient sums. Thus the linear estimates already proved
+give global solutions on every compact interval for all data and
+forcing in the stated critical spaces; no smallness is needed within
+this invariant family. The result is a consequence of its exact
+nonlinear cancellation, not an assertion for general large data.</p>
+<p>In particular, for arbitrary <span class="math" data-tex="\(\alpha\in\mathbb R\)">\(\alpha\in\mathbb R\)</span>,
+<span class="math" data-tex="\(b=2\pi/L_2\)">\(b=2\pi/L_2\)</span>, and constant vectors <span class="math" data-tex="\(m_0,F_0\)">\(m_0,F_0\)</span>, take</p>
+<span class="math math-display" data-tex="\[
+m(t)=m_0+tF_0,\quad c(t)=tm_0+\tfrac12t^2F_0,
+\quad H(y_2,t)=\alpha e^{-\nu b^2t}\sin(by_2),\quad G=0.
+\tag{10.8}
+\]">\[
+m(t)=m_0+tF_0,\quad c(t)=tm_0+\tfrac12t^2F_0,
+\quad H(y_2,t)=\alpha e^{-\nu b^2t}\sin(by_2),\quad G=0.
+\tag{10.8}
+\]</span>
+<p>The exact full force is <span class="math" data-tex="\(F_0\)">\(F_0\)</span>. Its energy and dissipation are</p>
+<span class="math math-display" data-tex="\[
+\frac12\int_Q|u|^2=\frac V2|m(t)|^2
++\frac{V\alpha^2}{4}e^{-2\nu b^2t},
+\qquad
+\int_Q|\nabla u|^2=\frac{V\alpha^2b^2}{2}e^{-2\nu b^2t}.
+\tag{10.9}
+\]">\[
+\frac12\int_Q|u|^2=\frac V2|m(t)|^2
++\frac{V\alpha^2}{4}e^{-2\nu b^2t},
+\qquad
+\int_Q|\nabla u|^2=\frac{V\alpha^2b^2}{2}e^{-2\nu b^2t}.
+\tag{10.9}
+\]</span>
+<p>Their balance is exactly (6.5), since the force work is
+<span class="math" data-tex="\(V F_0\cdot m(t)\)">\(V F_0\cdot m(t)\)</span>. The initial fluctuation has squared
+<span class="math" data-tex="\(\dot H^{1/2}\)">\(\dot H^{1/2}\)</span> norm <span class="math" data-tex="\(Vb\alpha^2/2\)">\(Vb\alpha^2/2\)</span>. All lengths, mean
+components, force factors and viscosity remain in the formulas.</p>
+<h3 id="exercise-4-the-initial-trace-in-an-original-source-estimate">Exercise 4: the initial trace in an original source estimate</h3>
+<p>Monniaux's original author TeX, arXiv:math/0511213v1, defines a norm
+<span class="math" data-tex="\(\mathcal E_T\)">\(\mathcal E_T\)</span> whose first term is
+<span class="math" data-tex="\(\sup_{0&lt;t&lt;T}\|A^{1/4}u(t)\|_2\)">\(\sup_{0&lt;t&lt;T}\|A^{1/4}u(t)\|_2\)</span>, where <span class="math" data-tex="\(A\)">\(A\)</span> is the Stokes operator.
+In the proof of Theorem <code>mildsolutions</code>, line 232, it then bounds the
+heat orbit of a smooth datum by
+<span class="math" data-tex="\(cT^{3/4}\|Au_{0,\varepsilon}\|_2\)">\(cT^{3/4}\|Au_{0,\varepsilon}\|_2\)</span> in that entire norm and sends
+<span class="math" data-tex="\(T\downarrow0\)">\(T\downarrow0\)</span>. Test this precise estimate.</p>
+<p><strong>Solution.</strong> Work on the source's allowed domain <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>,
+with its original viscosity one. Its Stokes form is
+<span class="math" data-tex="\(\int\nabla u : \nabla v\)">\(\int\nabla u : \nabla v\)</span> on divergence-free <span class="math" data-tex="\(H^1\)">\(H^1\)</span>.
+Fourier transformation shows that its operator is <span class="math" data-tex="\(A=-\Delta\)">\(A=-\Delta\)</span>
+on <span class="math" data-tex="\(H^2_\sigma\)">\(H^2_\sigma\)</span>: membership in its operator domain is precisely
+<span class="math" data-tex="\(4\pi^2|\xi|^2\widehat u\in L^2\)">\(4\pi^2|\xi|^2\widehat u\in L^2\)</span>, besides the original <span class="math" data-tex="\(H^1\)">\(H^1\)</span>
+condition, and these together are equivalent to <span class="math" data-tex="\(H^2\)">\(H^2\)</span>. Conversely any
+such <span class="math" data-tex="\(H^2\)">\(H^2\)</span> field represents the form by integration and Parseval.
+Its spectral quarter power therefore has multiplier
+<span class="math" data-tex="\((4\pi^2|\xi|^2)^{1/4}\)">\((4\pi^2|\xi|^2)^{1/4}\)</span>.</p>
+<p>The exact domain comparison is
+<span class="math" data-tex="\(D(A^{1/4})=H^{1/2}_\sigma\)">\(D(A^{1/4})=H^{1/2}_\sigma\)</span>. The graph norm squared has weight
+<span class="math" data-tex="\(1+2\pi|\xi|\)">\(1+2\pi|\xi|\)</span>, whereas our full norm has weight
+<span class="math" data-tex="\(\sqrt{1+4\pi^2|\xi|^2}\)">\(\sqrt{1+4\pi^2|\xi|^2}\)</span>. The inequalities</p>
+<span class="math math-display" data-tex="\[
+\sqrt{1+a^2}\leq1+a\leq\sqrt2\sqrt{1+a^2}\quad(a\geq0)
+\tag{10.10}
+\]">\[
+\sqrt{1+a^2}\leq1+a\leq\sqrt2\sqrt{1+a^2}\quad(a\geq0)
+\tag{10.10}
+\]</span>
+<p>prove the exact identity map and its norm bounds, with both original
+weights retained.</p>
+<p>Take the real Schwartz datum</p>
+<span class="math math-display" data-tex="\[
+b(x)=\nabla\times(0,0,e^{-\pi|x|^2})
+=(-2\pi x_2,2\pi x_1,0)e^{-\pi|x|^2},\qquad
+\widehat b(\xi)=2\pi i(\xi_2,-\xi_1,0)e^{-\pi|\xi|^2}.
+\tag{10.11}
+\]">\[
+b(x)=\nabla\times(0,0,e^{-\pi|x|^2})
+=(-2\pi x_2,2\pi x_1,0)e^{-\pi|x|^2},\qquad
+\widehat b(\xi)=2\pi i(\xi_2,-\xi_1,0)e^{-\pi|\xi|^2}.
+\tag{10.11}
+\]</span>
+<p>It is nonzero, divergence free and in <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span>. With
+<span class="math" data-tex="\(\beta(t)=e^{-tA}b\)">\(\beta(t)=e^{-tA}b\)</span>, polar integration gives</p>
+<span class="math math-display" data-tex="\[
+\|A^{1/4}\beta(t)\|_2^2
+=\frac{64\pi^4}{3(2\pi+8\pi^2t)^3}
+=\frac{8\pi}{3}(1+4\pi t)^{-3},\qquad
+\|Ab\|_2^2=\frac{35\pi^3}{\sqrt2}.
+\tag{10.12}
+\]">\[
+\|A^{1/4}\beta(t)\|_2^2
+=\frac{64\pi^4}{3(2\pi+8\pi^2t)^3}
+=\frac{8\pi}{3}(1+4\pi t)^{-3},\qquad
+\|Ab\|_2^2=\frac{35\pi^3}{\sqrt2}.
+\tag{10.12}
+\]</span>
+<p>For the first integral, the angular integral of
+<span class="math" data-tex="\((\xi_1^2+\xi_2^2)/|\xi|^2\)">\((\xi_1^2+\xi_2^2)/|\xi|^2\)</span> is <span class="math" data-tex="\(8\pi/3\)">\(8\pi/3\)</span>, and
+<span class="math" data-tex="\(\int_0^\infty r^5e^{-Br^2}dr=B^{-3}\)">\(\int_0^\infty r^5e^{-Br^2}dr=B^{-3}\)</span>.
+For the second use
+<span class="math" data-tex="\(\int_0^\infty r^8e^{-Br^2}dr=105\sqrt\pi/(32B^{9/2})\)">\(\int_0^\infty r^8e^{-Br^2}dr=105\sqrt\pi/(32B^{9/2})\)</span>
+at <span class="math" data-tex="\(B=2\pi\)">\(B=2\pi\)</span>, obtained by four integrations by parts from the
+Gaussian integral. These steps retain every derivative factor.
+Consequently, for every <span class="math" data-tex="\(T&gt;0\)">\(T&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|\beta\|_{\mathcal E_T}
+\geq\sup_{0&lt;t&lt;T}\|A^{1/4}\beta(t)\|_2=\sqrt{8\pi/3}&gt;0.
+\tag{10.13}
+\]">\[
+\|\beta\|_{\mathcal E_T}
+\geq\sup_{0&lt;t&lt;T}\|A^{1/4}\beta(t)\|_2=\sqrt{8\pi/3}&gt;0.
+\tag{10.13}
+\]</span>
+<p>The source heat curve does belong to <span class="math" data-tex="\(\mathcal E_T\)">\(\mathcal E_T\)</span>: its Schwartz
+data make <span class="math" data-tex="\(A^{1/2}\beta\)">\(A^{1/2}\beta\)</span> and <span class="math" data-tex="\(A^{5/4}\beta\)">\(A^{5/4}\beta\)</span> bounded up to
+zero, while the extra factors <span class="math" data-tex="\(t^{1/4}\)">\(t^{1/4}\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span> in that norm are
+bounded on every finite interval. It is continuous in the graph
+domain and differentiable for positive times, directly by its Fourier
+formula. Thus this is an example in the source's actual class.
+No finite constant <span class="math" data-tex="\(c\)">\(c\)</span> independent of <span class="math" data-tex="\(T\)">\(T\)</span> makes its printed bound valid.
+Sections 4–5 and 8 give the replacement small-time contraction in <span class="math" data-tex="\(Z\)">\(Z\)</span>
+and <span class="math" data-tex="\(\dot Z\)">\(\dot Z\)</span>, retaining the trace in <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(\dot X\)">\(\dot X\)</span>.
+This corrects that displayed step; it does not reject the source's
+general existence theorem on arbitrary domains.</p>
+<p>There is a further defect in the literal source space on this domain:
+its displayed norm omits the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> part of <span class="math" data-tex="\(D(A^{1/4})\)">\(D(A^{1/4})\)</span>, and is not
+complete on that stated set. Here is a full Cauchy-sequence test.
+Choose <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span> and a smooth <span class="math" data-tex="\(0\leq\chi\leq1\)">\(0\leq\chi\leq1\)</span>, equal to
+one on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> and zero on <span class="math" data-tex="\([2,\infty)\)">\([2,\infty)\)</span>, and set</p>
+<span class="math math-display" data-tex="\[
+F(\xi)=|\xi|^{-7/4}\chi(|\xi|/\rho)P(\xi)e_1,\qquad
+F_n(\xi)=[1-\chi(n|\xi|/\rho)]F(\xi).
+\tag{10.14}
+\]">\[
+F(\xi)=|\xi|^{-7/4}\chi(|\xi|/\rho)P(\xi)e_1,\qquad
+F_n(\xi)=[1-\chi(n|\xi|/\rho)]F(\xi).
+\tag{10.14}
+\]</span>
+<p>Each <span class="math" data-tex="\(F_n\)">\(F_n\)</span> is a smooth compactly supported annular function, with
+real even conjugate symmetry and zero divergence. Its inverse <span class="math" data-tex="\(b_n\)">\(b_n\)</span>
+is therefore real, Schwartz and in <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span>. The angular integral
+<span class="math" data-tex="\(\int_{S^2}|P(\theta)e_1|^2d\theta=8\pi/3\)">\(\int_{S^2}|P(\theta)e_1|^2d\theta=8\pi/3\)</span> follows from
+<span class="math" data-tex="\(|P(\theta)e_1|^2=1-\theta_1^2\)">\(|P(\theta)e_1|^2=1-\theta_1^2\)</span>.
+Near zero the radial integral for <span class="math" data-tex="\(F\)">\(F\)</span>'s <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm is a positive
+multiple of <span class="math" data-tex="\(\int_0^\rho r^{-3/2}dr\)">\(\int_0^\rho r^{-3/2}dr\)</span>, which diverges, whereas
+its <span class="math" data-tex="\(\dot H^{1/2}\)">\(\dot H^{1/2}\)</span> norm uses <span class="math" data-tex="\(\int_0^\rho r^{-1/2}dr\)">\(\int_0^\rho r^{-1/2}dr\)</span>,
+which converges. Dominated convergence proves
+<span class="math" data-tex="\(F_n\to F\)">\(F_n\to F\)</span> in the latter weighted space.</p>
+<p>For every datum <span class="math" data-tex="\(d\)">\(d\)</span> in that homogeneous space, the three heat-orbit
+terms of the displayed source norm obey</p>
+<span class="math math-display" data-tex="\[
+\|e^{-tA}d\|_{\mathcal E_T}
+\leq\bigl[1+(4e)^{-1/4}+e^{-1}\bigr]\|d\|_{\dot H^{1/2}},
+\tag{10.15}
+\]">\[
+\|e^{-tA}d\|_{\mathcal E_T}
+\leq\bigl[1+(4e)^{-1/4}+e^{-1}\bigr]\|d\|_{\dot H^{1/2}},
+\tag{10.15}
+\]</span>
+<p>where the expression on the left means precisely the three seminorm
+expressions, without asserting membership in the source's smaller set.
+The first multiplier is at most one; the second is bounded by
+<span class="math" data-tex="\(\sup_{z\geq0}z^{1/4}e^{-z}=(4e)^{-1/4}\)">\(\sup_{z\geq0}z^{1/4}e^{-z}=(4e)^{-1/4}\)</span>; the third by
+<span class="math" data-tex="\(\sup_{z\geq0}ze^{-z}=e^{-1}\)">\(\sup_{z\geq0}ze^{-z}=e^{-1}\)</span>. These follow by differentiating
+the two scalar functions. Thus <span class="math" data-tex="\(e^{-tA}b_n\)">\(e^{-tA}b_n\)</span> is Cauchy in the
+source norm, and every term of the sequence is in its stated space.</p>
+<p>If it converged to an element of that space, the first seminorm and
+continuity at zero would make <span class="math" data-tex="\(b_n\)">\(b_n\)</span> converge in <span class="math" data-tex="\(\dot H^{1/2}\)">\(\dot H^{1/2}\)</span>
+to its initial value. Uniqueness of the distributional limit in (8.1)
+forces that value to have Fourier transform <span class="math" data-tex="\(F\)">\(F\)</span>. But <span class="math" data-tex="\(F\)">\(F\)</span> is not <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, whereas
+the source requires an initial value in <span class="math" data-tex="\(D(A^{1/4})\subset L^2\)">\(D(A^{1/4})\subset L^2\)</span>.
+This is a contradiction. Our inhomogeneous <span class="math" data-tex="\(X\)">\(X\)</span> space retains the <span class="math" data-tex="\(L^2\)">\(L^2\)</span>
+weight explicitly; the separate homogeneous construction specifies its
+larger distributional data space before proving completeness. Neither
+construction silently identifies these two data classes.</p>
+<h3 id="exercise-5-the-exact-norm-that-does-become-small">Exercise 5: the exact norm that does become small</h3>
+<p>For the same <span class="math" data-tex="\(b\)">\(b\)</span>, now retaining any original <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, compute
+<span class="math" data-tex="\(\|S_\nu(\cdot)b\|_{Z_T}\)">\(\|S_\nu(\cdot)b\|_{Z_T}\)</span> exactly.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(s(t)=1+4\pi\nu t\)">\(s(t)=1+4\pi\nu t\)</span>. The same angular integral
+as above and the Gaussian radial integrals yield</p>
+<span class="math math-display" data-tex="\[
+\|S_\nu(t)b\|_2^2=\frac\pi{\sqrt2}s(t)^{-5/2},\qquad
+\|\nabla S_\nu(t)b\|_2^2=\frac{5\pi^2}{\sqrt2}s(t)^{-7/2}.
+\tag{10.16}
+\]">\[
+\|S_\nu(t)b\|_2^2=\frac\pi{\sqrt2}s(t)^{-5/2},\qquad
+\|\nabla S_\nu(t)b\|_2^2=\frac{5\pi^2}{\sqrt2}s(t)^{-7/2}.
+\tag{10.16}
+\]</span>
+<p>The radial identities used are
+<span class="math" data-tex="\(\int_0^\infty r^4e^{-Br^2}dr=3\sqrt\pi/(8B^{5/2})\)">\(\int_0^\infty r^4e^{-Br^2}dr=3\sqrt\pi/(8B^{5/2})\)</span>
+and <span class="math" data-tex="\(\int_0^\infty r^6e^{-Br^2}dr=15\sqrt\pi/(16B^{7/2})\)">\(\int_0^\infty r^6e^{-Br^2}dr=15\sqrt\pi/(16B^{7/2})\)</span>.
+Squaring the sum of the two original squared norms retains its cross
+term. Integrating with <span class="math" data-tex="\(ds=4\pi\nu dt\)">\(ds=4\pi\nu dt\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\|S_\nu(\cdot)b\|_{Z_T}^4
+={}&amp;\frac{\pi}{32\nu}(1-s(T)^{-4})
++\frac{\pi^2}{4\nu}(1-s(T)^{-5})\\
+&amp;+\frac{25\pi^3}{48\nu}(1-s(T)^{-6}).
+\end{split}
+\tag{10.17}
+\]">\[
+\begin{split}
+\|S_\nu(\cdot)b\|_{Z_T}^4
+={}&amp;\frac{\pi}{32\nu}(1-s(T)^{-4})
++\frac{\pi^2}{4\nu}(1-s(T)^{-5})\\
+&amp;+\frac{25\pi^3}{48\nu}(1-s(T)^{-6}).
+\end{split}
+\tag{10.17}
+\]</span>
+<p>Every term tends to zero as <span class="math" data-tex="\(T\)">\(T\)</span> decreases to zero. More precisely,
+division by <span class="math" data-tex="\(T\)">\(T\)</span> tends to
+<span class="math" data-tex="\(\|b\|_{H^1}^4=(\pi+5\pi^2)^2/2\)">\(\|b\|_{H^1}^4=(\pi+5\pi^2)^2/2\)</span>, by continuity of
+the integrand. The homogeneous <span class="math" data-tex="\(\dot Z_T\)">\(\dot Z_T\)</span> fourth power is the
+last term alone, because it measures only the original derivative
+norm. Formula (10.17) keeps the full <span class="math" data-tex="\(L^2\)">\(L^2\)</span> term and its cross contribution
+when the inhomogeneous norm is used.</p>
+<p><img src="assets/NS-FLUID-07/critical-heat-trace-67B8D595E1704DE5C7F90EB7E994CF13ACA1E93AEE377CA45B3C368364A1BB7F.png" alt="Exact retained heat trace and vanishing time-integrated critical contraction norm" class="course-figure" width="1980" height="810" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="critical-heat-trace" data-asset-sha256="67B8D595E1704DE5C7F90EB7E994CF13ACA1E93AEE377CA45B3C368364A1BB7F"></p>
+<p>Both panels use the exact datum in (10.11) and the source's original
+viscosity <span class="math" data-tex="\(\nu=1\)">\(\nu=1\)</span>. The left panel is the exact supremum in (10.13),
+which is a lower bound for the source's entire norm. The right panel is
+the fourth root of the complete three-term expression (10.17), including
+the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> term and its cross contribution. The curves are exact formulas
+sampled for display; they are not numerical evidence for the existence
+theorem. <a href="assets/critical-heat-trace.py">Reproduce the figure</a>.</p>
+<h2 id="11-sources-and-scope">11. Sources and scope</h2>
+<p>H. Fujita and T. Kato, <em>On the Navier–Stokes initial value problem I</em>,
+<em>Archive for Rational Mechanics and Analysis</em> 16 (1964), 269–315,
+is the historical reference identified in the original author sources
+below. Its original author text was not read here. The proofs in this
+chapter are supplied independently and with their complete constants.</p>
+<p>Sylvie Monniaux, <a href="https://arxiv.org/abs/math/0511213v1"><em>Navier–Stokes equations in arbitrary domains:
+the Fujita–Kato scheme</em>, arXiv:math/0511213v1</a>,
+was read in its complete original TeX. Section 3 defines the source
+<span class="math" data-tex="\(\mathcal E_T\)">\(\mathcal E_T\)</span> space and gives the estimate corrected in Exercise 4.
+The source operator and domain are compared exactly on <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>
+there. Our whole-space and rectangular-periodic constructions do not
+claim the general arbitrary-domain theorem as a consequence.</p>
+<p>D. Q. Khai and N. M. Tri, <a href="https://arxiv.org/abs/1601.01726v1"><em>On the initial value problem for the
+Navier–Stokes equations with the initial datum in critical Sobolev and
+Besov spaces</em>, arXiv:1601.01726v1</a>,
+was read in the original TeX at lines 73–98 and 210–483. That reading
+covers the original unforced viscosity-one equation, the definition by
+completion away from frequency zero, heat and fixed-point preliminaries,
+and the first product arguments. Section 8 above proves the exact
+Hilbert-space realization of the relevant source definition. We do not
+import its general Besov or non-Hilbert theorems, nor claim to have read
+their later proofs. Our product bound is proved directly from its full
+Fourier convolution integral.</p>
+<p>The forced and mean-retaining statements here are stated in their actual
+spaces. A small-data global theorem and the exact large shear family
+do not give a global theorem for arbitrary three-dimensional data.
+The vorticity criterion and general large <span class="math" data-tex="\(L^\infty_tL^3_x\)">\(L^\infty_tL^3_x\)</span>
+endpoint remain separate parts of the series. The later lessons then
+develop the human, Alpöge–Buckmaster, OpenAI and workbench constructions.</p>
+</article><nav aria-label="Lesson sequence"><a href="NS-FLUID-06.html">Previous lesson</a><a href="NS-FLUID-08.html">Next lesson</a></nav></main><footer>Mathematical text: CC0 1.0. Cited works and reader software retain their respective terms.</footer></body></html>

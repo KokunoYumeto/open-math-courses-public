@@ -1,0 +1,1010 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fields, coordinates and physical quantities</title><link rel="stylesheet" href="reader.css"></head><body><nav><a href="index.html">Course contents</a><a href="src/YM-F01.md">Lesson source</a><span class="unlinked">Source and reader download</span></nav><main><h1 id="fields-coordinates-and-physical-quantities">Fields, coordinates
+and physical quantities</h1>
+<p>Lesson YM-F01 · Geometry and states in Yang–Mills theory</p>
+<p>A temperature map assigns a temperature to each place. A wind map
+assigns both a speed and a direction. If either map changes, time
+becomes one of its inputs. These are examples of fields.</p>
+<p>The first task in reading a field theory is to identify its fields:
+what their inputs are, what kind of values they take, and what those
+values mean. The next task is to distinguish the field from the equation
+it is supposed to satisfy. We will do both with explicit examples.</p>
+<p>By the end of this lesson you will be able to specify a scalar or
+vector field, keep track of its units, differentiate it, change its
+Cartesian coordinates, and solve a first evolution equation from its
+initial data. The final example also gives a precise instance of
+propagation and a local conservation law.</p>
+<aside aria-label="Contents" class="contents"><strong>In this lesson</strong><ol><li><a href="#preparation-and-notation">Preparation and notation</a></li><li><a href="#reading-a-field-at-a-point">Reading a field at a point</a></li><li><a href="#units-are-part-of-the-formula">Units are part of the
+formula</a></li><li><a href="#differentiating-a-field">Differentiating a field</a></li><li><a href="#a-coordinate-change-changes-the-description">A coordinate
+change changes the description</a></li><li><a href="#an-evolution-equation-and-its-initial-data">An evolution
+equation and its initial data</a></li><li><a href="#a-conservation-law-keeps-its-boundary-flux">A conservation
+law keeps its boundary flux</a></li><li><a href="#exercises-with-complete-solutions">Exercises with complete
+solutions</a></li><li><a href="#the-next-step">The next step</a></li></ol></aside><h2 id="preparation-and-notation">1. Preparation and notation</h2>
+<p>We use real numbers, arithmetic with triples, and elementary
+one-variable calculus: derivatives of polynomials, exponentials, sine
+and cosine, the one-variable chain rule, and substitution in definite
+integrals. In particular, we use the product rule and the fundamental
+theorem of calculus: if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+has a continuous derivative on an interval, then</p>
+<div class="equation" id="eq-F1-1"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>b</mi><mo form="postfix" stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>a</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msubsup><mo>∫</mo><mi>a</mi><mi>b</mi></msubsup><msup><mi>f</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>s</mi><mo form="postfix" stretchy="false">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>s</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ f(b)-f(a)=\int_a^b f'(s)\,ds.
+ \tag{F1.1}
+</annotation></semantics></math></div><span class="eq-number">(F1.1)</span></div>
+<p>We will derive the multivariable differentiation and transport
+formulas used below. You do not need prior knowledge of gauge theory,
+bundles, Hilbert spaces or quantum mechanics.</p>
+<p>Write a point of Cartesian space as</p>
+<div class="equation" id="eq-F1-2"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>x</mi><mn>1</mn></msup><mo>,</mo><msup><mi>x</mi><mn>2</mn></msup><mo>,</mo><msup><mi>x</mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ x=(x^1,x^2,x^3)\in\mathbb R^3.
+ \tag{F1.2}
+</annotation></semantics></math></div><span class="eq-number">(F1.2)</span></div>
+<p>The superscripts label the three coordinates; they are not powers. We
+write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mn>1</mn></msup><msup><mi>x</mi><mn>1</mn></msup><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>x</mi><mn>1</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">x^1x^1=(x^1)^2</annotation></semantics></math>
+when a square is intended. A spacetime point in this lesson is a pair
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(t,x)</annotation></semantics></math>.
+We keep time and the three spatial coordinates separate. This notation
+does not yet choose a spacetime metric or make any claim about
+relativistic dynamics.</p>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>
+be an open interval of time and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ω</mi><annotation encoding="application/x-tex">\Omega</annotation></semantics></math>
+be an open subset of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup><annotation encoding="application/x-tex">\mathbb R^3</annotation></semantics></math>.
+A real scalar field is a function</p>
+<div class="equation" id="eq-F1-3"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>:</mo><mi>I</mi><mo>×</mo><mi mathvariant="normal">Ω</mi><mo>→</mo><mi mathvariant="double-struck">ℝ</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ u:I\times\Omega\longrightarrow\mathbb R.
+ \tag{F1.3}
+</annotation></semantics></math></div><span class="eq-number">(F1.3)</span></div>
+<p>A spatial vector field in these Cartesian coordinates is a
+function</p>
+<div class="equation" id="eq-F1-4"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>:</mo><mi>I</mi><mo>×</mo><mi mathvariant="normal">Ω</mi><mo>→</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup><mo>,</mo><mspace width="2.0em"></mspace><mi>V</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><msup><mi>V</mi><mn>1</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><msup><mi>V</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><msup><mi>V</mi><mn>3</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ V:I\times\Omega\longrightarrow\mathbb R^3,\qquad
+ V(t,x)=\bigl(V^1(t,x),V^2(t,x),V^3(t,x)\bigr).
+ \tag{F1.4}
+</annotation></semantics></math></div><span class="eq-number">(F1.4)</span></div>
+<p>For physical quantities, the real numbers in these formulas are
+numerical values in specified units. A temperature and a mass density
+can both be represented by real-valued functions, but they are different
+physical quantities. Their units and meanings belong to the
+specification.</p>
+<p>Not every triple in a field theory is a spatial vector. Three
+chemical concentrations, for example, form three scalar fields. A
+spatial rotation rotates the components of a velocity vector; it does
+not turn one chemical species into another. We will make this
+distinction concrete in Section 5.</p>
+<h2 id="reading-a-field-at-a-point">2. Reading a field at a point</h2>
+<p>Choose constants
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>,
+each independent of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>.
+The field</p>
+<div class="equation" id="eq-F1-5"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>ω</mi><msup><mi>x</mi><mn>2</mn></msup><mo>,</mo><mspace width="0.222em"></mspace><mi>ω</mi><msup><mi>x</mi><mn>1</mn></msup><mo>,</mo><mspace width="0.222em"></mspace><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">
+ V(t,x)=(-\omega x^2,\ \omega x^1,\ 0)
+ \tag{F1.5}
+</annotation></semantics></math></div><span class="eq-number">(F1.5)</span></div>
+<p>assigns a vector to every point. It is independent of time, so it is
+stationary. It varies with position when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\omega\ne0</annotation></semantics></math>;
+when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\omega=0</annotation></semantics></math>,
+it is the zero field. For any
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r&gt;0</annotation></semantics></math>,</p>
+<div class="equation" id="eq-F1-6"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>ω</mi><mi>r</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>V</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>r</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>ω</mi><mi>r</mi><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>V</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ V(t,(r,0,0))=(0,\omega r,0),\qquad
+ V(t,(0,r,0))=(-\omega r,0,0),\qquad
+ V(t,(0,0,r))=(0,0,0).
+ \tag{F1.6}
+</annotation></semantics></math></div><span class="eq-number">(F1.6)</span></div>
+<p>These values describe rotation around the third coordinate axis when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+is interpreted as a velocity field.</p>
+<p>That interpretation can be checked using a path. Fix
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r&gt;0</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mn>0</mn></msub><mo>∈</mo><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">z_0\in\mathbb R</annotation></semantics></math>,
+and define</p>
+<div class="equation" id="eq-F1-7"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><mi>r</mi><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>ω</mi><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="0.222em"></mspace><mi>r</mi><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>ω</mi><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="0.222em"></mspace><msub><mi>z</mi><mn>0</mn></msub><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ x(t)=\bigl(r\cos(\omega t),\ r\sin(\omega t),\ z_0\bigr).
+ \tag{F1.7}
+</annotation></semantics></math></div><span class="eq-number">(F1.7)</span></div>
+<p>Differentiation gives</p>
+<div class="equation" id="eq-F1-8"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><mo>−</mo><mi>ω</mi><mi>r</mi><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>ω</mi><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="0.222em"></mspace><mi>ω</mi><mi>r</mi><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>ω</mi><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="0.222em"></mspace><mn>0</mn><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo><mo>=</mo><mi>V</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \frac{dx}{dt}
+ =\bigl(-\omega r\sin(\omega t),\
+         \omega r\cos(\omega t),\ 0\bigr)
+ =V(t,x(t)).
+ \tag{F1.8}
+</annotation></semantics></math></div><span class="eq-number">(F1.8)</span></div>
+<p>Thus this path is a trajectory of the velocity field; it travels
+around a circle when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\omega\ne0</annotation></semantics></math>
+and stays at one point when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\omega=0</annotation></semantics></math>.
+The field is the rule assigning velocities everywhere; the trajectory is
+one path that follows that rule.</p>
+<p>Here is a scalar field that can change with time, defined on all of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℝ</mi><mo>×</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">\mathbb R\times\mathbb R^3</annotation></semantics></math>.
+Choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mn>0</mn></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">U_0&gt;0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℓ</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\ell&gt;0</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>∈</mo><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">v\in\mathbb R</annotation></semantics></math>,
+and set</p>
+<div class="equation" id="eq-F1-9"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>U</mi><mn>0</mn></msub><mrow><mi mathvariant="normal">exp</mi><mo>⁡</mo></mrow><mspace width="-0.167em"></mspace><mrow><mo form="prefix" stretchy="true">[</mo><mi>−</mi><mfrac><mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>x</mi><mn>1</mn></msup><mo>−</mo><mi>v</mi><mi>t</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>x</mi><mn>3</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup></mrow><msup><mi>ℓ</mi><mn>2</mn></msup></mfrac><mo form="postfix" stretchy="true">]</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ u(t,x)=U_0
+ \exp\!\left[
+   -\frac{(x^1-vt)^2+(x^2)^2+(x^3)^2}{\ell^2}
+ \right].
+ \tag{F1.9}
+</annotation></semantics></math></div><span class="eq-number">(F1.9)</span></div>
+<p>Its maximum value is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mn>0</mn></msub><annotation encoding="application/x-tex">U_0</annotation></semantics></math>,
+attained exactly at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mi>t</mi><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(vt,0,0)</annotation></semantics></math>,
+because the sum of the three squares is nonnegative and vanishes exactly
+there. The field is positive at every point. It becomes small far from
+its centre, but its support is all of space. Decay and compact support
+are different properties.</p>
+<figure>
+<div aria-label="Scrollable mathematical diagram" class="diagram" tabindex="0"><img alt="Two scalar-field snapshots and characteristic paths." src="figures/f01-transport.svg"/></div>
+<figcaption aria-hidden="true">Two scalar-field snapshots and
+characteristic paths.</figcaption>
+</figure>
+<p><em>Figure 1. The scalar-field slice
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><msup><mi>x</mi><mn>3</mn></msup><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x^2=x^3=0</annotation></semantics></math>
+from (F1.9), with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mn>0</mn></msub><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">U_0=2</annotation></semantics></math>
+concentration units,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℓ</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\ell=1</annotation></semantics></math>
+metre and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">v=0.5</annotation></semantics></math>
+metres per second, at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">t=2</annotation></semantics></math>
+seconds. The second panel shows sample paths
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mn>1</mn></msup><mo>=</mo><msup><mi>ξ</mi><mn>1</mn></msup><mo>+</mo><mi>v</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">x^1=\xi^1+vt</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><msup><mi>x</mi><mn>3</mn></msup><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x^2=x^3=0</annotation></semantics></math>.
+Each curve is a one-dimensional slice or a spacetime path, not a picture
+of all three spatial coordinates. Sections 4 and 6 prove the stated
+transport law. The figure source retains the numerical values and
+units.</em></p>
+<h2 id="units-are-part-of-the-formula">3. Units are part of the
+formula</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="sans-serif">𝖫</mi><annotation encoding="application/x-tex">\mathsf L</annotation></semantics></math>
+denote the dimension of length and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="sans-serif">𝖳</mi><annotation encoding="application/x-tex">\mathsf T</annotation></semantics></math>
+the dimension of time. Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="sans-serif">𝖴</mi><annotation encoding="application/x-tex">\mathsf U</annotation></semantics></math>
+denote the dimension of the scalar quantity
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>;
+its physical interpretation can be chosen separately. For (F1.9) to be
+meaningful, the dimensions are</p>
+<div class="equation" id="eq-F1-10"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><msup><mi>x</mi><mi>i</mi></msup><mo form="postfix" stretchy="false">]</mo><mo>=</mo><mi mathvariant="sans-serif">𝖫</mi><mo>,</mo><mspace width="1.0em"></mspace><mo form="prefix" stretchy="false">[</mo><mi>t</mi><mo form="postfix" stretchy="false">]</mo><mo>=</mo><mi mathvariant="sans-serif">𝖳</mi><mo>,</mo><mspace width="1.0em"></mspace><mo form="prefix" stretchy="false">[</mo><mi>v</mi><mo form="postfix" stretchy="false">]</mo><mo>=</mo><mi mathvariant="sans-serif">𝖫</mi><msup><mi mathvariant="sans-serif">𝖳</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo>,</mo><mspace width="1.0em"></mspace><mo form="prefix" stretchy="false">[</mo><mi>ℓ</mi><mo form="postfix" stretchy="false">]</mo><mo>=</mo><mi mathvariant="sans-serif">𝖫</mi><mo>,</mo><mspace width="1.0em"></mspace><mo form="prefix" stretchy="false">[</mo><msub><mi>U</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">]</mo><mo>=</mo><mo form="prefix" stretchy="false">[</mo><mi>u</mi><mo form="postfix" stretchy="false">]</mo><mo>=</mo><mi mathvariant="sans-serif">𝖴</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ [x^i]=\mathsf L,\quad [t]=\mathsf T,\quad
+ [v]=\mathsf L\mathsf T^{-1},\quad
+ [\ell]=\mathsf L,\quad [U_0]=[u]=\mathsf U.
+ \tag{F1.10}
+</annotation></semantics></math></div><span class="eq-number">(F1.10)</span></div>
+<p>The two terms in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mn>1</mn></msup><mo>−</mo><mi>v</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">x^1-vt</annotation></semantics></math>
+then have the same dimension. Its square and the other two squares have
+dimension
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="sans-serif">𝖫</mi><mn>2</mn></msup><annotation encoding="application/x-tex">\mathsf L^2</annotation></semantics></math>.
+Division by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℓ</mi><mn>2</mn></msup><annotation encoding="application/x-tex">\ell^2</annotation></semantics></math>
+makes the exponent dimensionless, as required by the exponential
+function.</p>
+<p>Likewise, the argument
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\omega t</annotation></semantics></math>
+of the sine and cosine in (F1.7) must be dimensionless. Consequently</p>
+<div class="equation" id="eq-F1-11"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mi>ω</mi><mo form="postfix" stretchy="false">]</mo><mo>=</mo><msup><mi mathvariant="sans-serif">𝖳</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mo form="prefix" stretchy="false">[</mo><msup><mi>V</mi><mi>i</mi></msup><mo form="postfix" stretchy="false">]</mo><mo>=</mo><mi mathvariant="sans-serif">𝖫</mi><msup><mi mathvariant="sans-serif">𝖳</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ [\omega]=\mathsf T^{-1},\qquad [V^i]=\mathsf L\mathsf T^{-1}.
+ \tag{F1.11}
+</annotation></semantics></math></div><span class="eq-number">(F1.11)</span></div>
+<p>Changing the length unit from metres to centimetres changes numerical
+values, not the physical quantity. For example,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.5</mn><annotation encoding="application/x-tex">0.5</annotation></semantics></math>
+metres per second is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>50</mn><annotation encoding="application/x-tex">50</annotation></semantics></math>
+centimetres per second. In (F1.9) the numerical values of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mn>1</mn></msup><mo>,</mo><msup><mi>x</mi><mn>2</mn></msup><mo>,</mo><msup><mi>x</mi><mn>3</mn></msup><mo>,</mo><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">x^1,x^2,x^3,\ell</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+must all change consistently. Changing only
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℓ</mi><annotation encoding="application/x-tex">\ell</annotation></semantics></math>
+would define a different profile.</p>
+<p>A derivative is a limit of a quotient. Its dimension therefore
+includes the dimension of the variable in the denominator:</p>
+<div class="equation" id="eq-F1-12"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><msub><mi>∂</mi><mi>t</mi></msub><mi>u</mi><mo form="postfix" stretchy="false">]</mo><mo>=</mo><mi mathvariant="sans-serif">𝖴</mi><msup><mi mathvariant="sans-serif">𝖳</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mo form="prefix" stretchy="false">[</mo><msub><mi>∂</mi><mi>i</mi></msub><mi>u</mi><mo form="postfix" stretchy="false">]</mo><mo>=</mo><mi mathvariant="sans-serif">𝖴</mi><msup><mi mathvariant="sans-serif">𝖫</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mo form="prefix" stretchy="false">[</mo><mi>v</mi><msub><mi>∂</mi><mn>1</mn></msub><mi>u</mi><mo form="postfix" stretchy="false">]</mo><mo>=</mo><mi mathvariant="sans-serif">𝖴</mi><msup><mi mathvariant="sans-serif">𝖳</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ [\partial_tu]=\mathsf U\mathsf T^{-1},\qquad
+ [\partial_i u]=\mathsf U\mathsf L^{-1},\qquad
+ [v\partial_1u]=\mathsf U\mathsf T^{-1}.
+ \tag{F1.12}
+</annotation></semantics></math></div><span class="eq-number">(F1.12)</span></div>
+<p>The last two time-rate dimensions match, so an equation such as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>t</mi></msub><mi>u</mi><mo>+</mo><mi>v</mi><msub><mi>∂</mi><mn>1</mn></msub><mi>u</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\partial_tu+v\partial_1u=0</annotation></semantics></math>
+is dimensionally consistent. Dimensional consistency is a necessary
+check; it does not establish an equation. We will verify this particular
+equation by differentiation.</p>
+<p>For comparison,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>t</mi></msub><mi>u</mi><mo>+</mo><msub><mi>∂</mi><mn>1</mn></msub><mi>u</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\partial_tu+\partial_1u=0</annotation></semantics></math>,
+as written in independently specified time and length units, adds unlike
+quantities. A coefficient with the dimension of speed is missing. We do
+not conceal it by setting a speed equal to the number one.</p>
+<h2 id="differentiating-a-field">4. Differentiating a field</h2>
+<p>Write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mn>1</mn></msub><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">e_1=(1,0,0)</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mn>2</mn></msub><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">e_2=(0,1,0)</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mn>3</mn></msub><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">e_3=(0,0,1)</annotation></semantics></math>.
+A spatial partial derivative changes one coordinate while holding the
+others and time fixed:</p>
+<div class="equation" id="eq-F1-13"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>i</mi></msub><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><munder><mi mathvariant="normal">lim</mi><mrow><mi>h</mi><mo>→</mo><mn>0</mn></mrow></munder><mfrac><mrow><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo>+</mo><mi>h</mi><msub><mi>e</mi><mi>i</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>−</mo><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo></mrow><mi>h</mi></mfrac><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>∂</mi><mi>t</mi></msub><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><munder><mi mathvariant="normal">lim</mi><mrow><mi>h</mi><mo>→</mo><mn>0</mn></mrow></munder><mfrac><mrow><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>+</mo><mi>h</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>−</mo><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo></mrow><mi>h</mi></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \partial_i u(t,x)=
+ \lim_{h\to0}\frac{u(t,x+he_i)-u(t,x)}{h},\qquad
+ \partial_tu(t,x)=
+ \lim_{h\to0}\frac{u(t+h,x)-u(t,x)}{h}.
+ \tag{F1.13}
+</annotation></semantics></math></div><span class="eq-number">(F1.13)</span></div>
+<p>The increments in the two limits have different units. The
+open-domain assumption ensures that sufficiently small increments remain
+in the domain. The notation
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mn>1</mn></msup><annotation encoding="application/x-tex">C^1</annotation></semantics></math>
+means that these first partial derivatives exist and are continuous.</p>
+<p>The spatial gradient is the vector of spatial derivatives in the
+specified Cartesian coordinates:</p>
+<div class="equation" id="eq-F1-14"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><mi>u</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>∂</mi><mn>1</mn></msub><mi>u</mi><mo>,</mo><msub><mi>∂</mi><mn>2</mn></msub><mi>u</mi><mo>,</mo><msub><mi>∂</mi><mn>3</mn></msub><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \nabla u=(\partial_1u,\partial_2u,\partial_3u).
+ \tag{F1.14}
+</annotation></semantics></math></div><span class="eq-number">(F1.14)</span></div>
+<p>To differentiate a vector field, differentiate each component. The
+matrix of its spatial derivatives has entries</p>
+<div class="equation" id="eq-F1-15"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>D</mi><mi>x</mi></msub><mi>V</mi><msup><mo form="postfix" stretchy="false">)</mo><mi>i</mi></msup><msub><mrow></mrow><mi>j</mi></msub><mo>=</mo><msub><mi>∂</mi><mi>j</mi></msub><msup><mi>V</mi><mi>i</mi></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ (D_xV)^i{}_j=\partial_jV^i.
+ \tag{F1.15}
+</annotation></semantics></math></div><span class="eq-number">(F1.15)</span></div>
+<p>The output component is indexed by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>;
+the differentiated input coordinate is indexed by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>.
+For the rotating field (F1.5),</p>
+<div class="equation" id="eq-F1-16"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>x</mi></msub><mi>V</mi><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>ω</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>ω</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>∂</mi><mi>t</mi></msub><mi>V</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ D_xV=
+ \begin{pmatrix}
+  0&amp;-\omega&amp;0\\
+  \omega&amp;0&amp;0\\
+  0&amp;0&amp;0
+ \end{pmatrix},
+ \qquad \partial_tV=(0,0,0).
+ \tag{F1.16}
+</annotation></semantics></math></div><span class="eq-number">(F1.16)</span></div>
+<h3 id="proposition-4.1.-the-derivative-seen-along-a-path">Proposition
+4.1. The derivative seen along a path</h3>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>∈</mo><msup><mi>C</mi><mn>1</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo>×</mo><mi mathvariant="normal">Ω</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">u\in C^1(I\times\Omega)</annotation></semantics></math>,
+and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>:</mo><mi>I</mi><mo>→</mo><mi mathvariant="normal">Ω</mi></mrow><annotation encoding="application/x-tex">x:I\to\Omega</annotation></semantics></math>
+be a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mn>1</mn></msup><annotation encoding="application/x-tex">C^1</annotation></semantics></math>
+path. Then</p>
+<div class="equation" id="eq-F1-17"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>∂</mi><mi>t</mi></msub><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>+</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mn>3</mn></munderover><mfrac><mrow><mi>d</mi><msup><mi>x</mi><mi>i</mi></msup></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mspace width="0.167em"></mspace><msub><mi>∂</mi><mi>i</mi></msub><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \frac{d}{dt}u(t,x(t))
+ =\partial_tu(t,x(t))
+  +\sum_{i=1}^{3}\frac{dx^i}{dt}(t)\,
+      \partial_i u(t,x(t)).
+ \tag{F1.17}
+</annotation></semantics></math></div><span class="eq-number">(F1.17)</span></div>
+<p><strong>Proof.</strong> We first justify the linear approximation
+needed in this formula. Set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><msup><mi>x</mi><mn>1</mn></msup><mo>,</mo><msup><mi>x</mi><mn>2</mn></msup><mo>,</mo><msup><mi>x</mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y=(t,x^1,x^2,x^3)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>h</mi><mn>0</mn></msup><mo>,</mo><msup><mi>h</mi><mn>1</mn></msup><mo>,</mo><msup><mi>h</mi><mn>2</mn></msup><mo>,</mo><msup><mi>h</mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">h=(h^0,h^1,h^2,h^3)</annotation></semantics></math>.
+For sufficiently small
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>,
+all coordinate segments below lie in the domain. Change one coordinate
+at a time. The fundamental theorem of calculus gives the exact
+identity</p>
+<div class="equation" id="eq-F1-18"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>+</mo><mi>h</mi><mo form="postfix" stretchy="false">)</mo><mo>−</mo><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>μ</mi><mo>=</mo><mn>0</mn></mrow><mn>3</mn></munderover><msup><mi>h</mi><mi>μ</mi></msup><msubsup><mo>∫</mo><mn>0</mn><mn>1</mn></msubsup><msub><mi>∂</mi><mi>μ</mi></msub><mi>u</mi><mspace width="-0.167em"></mspace><mrow><mo form="prefix" stretchy="true">(</mo><mi>y</mi><mo>+</mo><munder><mo>∑</mo><mrow><mi>ν</mi><mo>&lt;</mo><mi>μ</mi></mrow></munder><msup><mi>h</mi><mi>ν</mi></msup><msub><mi>e</mi><mi>ν</mi></msub><mo>+</mo><mi>s</mi><msup><mi>h</mi><mi>μ</mi></msup><msub><mi>e</mi><mi>μ</mi></msub><mo form="postfix" stretchy="true">)</mo></mrow><mspace width="0.167em"></mspace><mi>d</mi><mi>s</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>∂</mi><mn>0</mn></msub><mo>=</mo><msub><mi>∂</mi><mi>t</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ u(y+h)-u(y)
+ =\sum_{\mu=0}^{3}h^\mu
+   \int_0^1
+   \partial_\mu u\!\left(
+      y+\sum_{\nu&lt;\mu}h^\nu e_\nu+s h^\mu e_\mu
+   \right)\,ds,
+ \qquad \partial_0=\partial_t.
+ \tag{F1.18}
+</annotation></semantics></math></div><span class="eq-number">(F1.18)</span></div>
+<p>Here the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>e</mi><mi>μ</mi></msub><annotation encoding="application/x-tex">e_\mu</annotation></semantics></math>
+are the four coordinate basis vectors, and the empty sum is zero.
+Continuity of the four derivatives shows that each integrand approaches
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>μ</mi></msub><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\partial_\mu u(y)</annotation></semantics></math>,
+uniformly for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>s</mi><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0\le s\le1</annotation></semantics></math>,
+as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">h\to0</annotation></semantics></math>.
+Subtracting
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∑</mo><mi>μ</mi></msub><msup><mi>h</mi><mi>μ</mi></msup><msub><mi>∂</mi><mi>μ</mi></msub><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\sum_\mu h^\mu\partial_\mu u(y)</annotation></semantics></math>,
+the absolute remainder is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∑</mo><mi>μ</mi></msub><mo form="prefix" stretchy="false">|</mo><msup><mi>h</mi><mi>μ</mi></msup><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">\sum_\mu|h^\mu|</annotation></semantics></math>
+times a quantity tending to zero. Thus the remainder divided by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∑</mo><mi>μ</mi></msub><mo form="prefix" stretchy="false">|</mo><msup><mi>h</mi><mi>μ</mi></msup><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">\sum_\mu|h^\mu|</annotation></semantics></math>
+tends to zero. This assertion concerns coordinate numbers in fixed
+units.</p>
+<p>Now take the increments</p>
+<div class="equation" id="eq-F1-19"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>h</mi><mn>0</mn></msup><mo>=</mo><mi>δ</mi><mo>,</mo><mspace width="2.0em"></mspace><msup><mi>h</mi><mi>i</mi></msup><mo>=</mo><msup><mi>x</mi><mi>i</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>+</mo><mi>δ</mi><mo form="postfix" stretchy="false">)</mo><mo>−</mo><msup><mi>x</mi><mi>i</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>δ</mi><mspace width="0.167em"></mspace><mfrac><mrow><mi>d</mi><msup><mi>x</mi><mi>i</mi></msup></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mi>o</mi><mo form="prefix" stretchy="false">(</mo><mi>δ</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ h^0=\delta,\qquad
+ h^i=x^i(t+\delta)-x^i(t)
+     =\delta\,\frac{dx^i}{dt}(t)+o(\delta).
+ \tag{F1.19}
+</annotation></semantics></math></div><span class="eq-number">(F1.19)</span></div>
+<p>Here
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>o</mi><mo form="prefix" stretchy="false">(</mo><mi>δ</mi><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mi>δ</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">o(\delta)/\delta\to0</annotation></semantics></math>.
+The sum of the absolute increments is bounded by a constant times
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>δ</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|\delta|</annotation></semantics></math>
+near zero, so the preceding remainder divided by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+tends to zero. Divide (F1.18) by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>,
+let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\delta\to0</annotation></semantics></math>,
+and obtain (F1.17).
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>At a fixed point, the path has zero velocity and (F1.17) becomes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>t</mi></msub><mi>u</mi></mrow><annotation encoding="application/x-tex">\partial_tu</annotation></semantics></math>.
+A moving observer has the additional three spatial terms. These
+derivatives answer different questions.</p>
+<h3 id="worked-example-the-moving-profile">Worked example: the moving
+profile</h3>
+<p>For (F1.9), the one-variable exponential rule and its polynomial
+argument give</p>
+<div class="equation" id="eq-F1-20"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>∂</mi><mi>t</mi></msub><mi>u</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mfrac><mrow><mn>2</mn><mi>v</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>x</mi><mn>1</mn></msup><mo>−</mo><mi>v</mi><mi>t</mi><mo form="postfix" stretchy="false">)</mo></mrow><msup><mi>ℓ</mi><mn>2</mn></msup></mfrac><mspace width="0.167em"></mspace><mi>u</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>∂</mi><mn>1</mn></msub><mi>u</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>−</mi><mfrac><mrow><mn>2</mn><mo form="prefix" stretchy="false">(</mo><msup><mi>x</mi><mn>1</mn></msup><mo>−</mo><mi>v</mi><mi>t</mi><mo form="postfix" stretchy="false">)</mo></mrow><msup><mi>ℓ</mi><mn>2</mn></msup></mfrac><mspace width="0.167em"></mspace><mi>u</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>∂</mi><mn>2</mn></msub><mi>u</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>−</mi><mfrac><mrow><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup></mrow><msup><mi>ℓ</mi><mn>2</mn></msup></mfrac><mspace width="0.167em"></mspace><mi>u</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>∂</mi><mn>3</mn></msub><mi>u</mi><mo>=</mo><mi>−</mi><mfrac><mrow><mn>2</mn><msup><mi>x</mi><mn>3</mn></msup></mrow><msup><mi>ℓ</mi><mn>2</mn></msup></mfrac><mspace width="0.167em"></mspace><mi>u</mi><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+ \begin{aligned}
+ \partial_tu&amp;=\frac{2v(x^1-vt)}{\ell^2}\,u,\\
+ \partial_1u&amp;=-\frac{2(x^1-vt)}{\ell^2}\,u,\\
+ \partial_2u&amp;=-\frac{2x^2}{\ell^2}\,u,\qquad
+ \partial_3u=-\frac{2x^3}{\ell^2}\,u.
+ \end{aligned}
+ \tag{F1.20}
+</annotation></semantics></math></div><span class="eq-number">(F1.20)</span></div>
+<p>Every parameter in the original field is retained in these
+expressions. Adding the first line to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+times the second proves</p>
+<div class="equation" id="eq-F1-21"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>t</mi></msub><mi>u</mi><mo>+</mo><mi>v</mi><msub><mi>∂</mi><mn>1</mn></msub><mi>u</mi><mo>=</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \partial_tu+v\partial_1u=0.
+ \tag{F1.21}
+</annotation></semantics></math></div><span class="eq-number">(F1.21)</span></div>
+<p>On the path
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>ξ</mi><mn>1</mn></msup><mo>+</mo><mi>v</mi><mi>t</mi><mo>,</mo><msup><mi>ξ</mi><mn>2</mn></msup><mo>,</mo><msup><mi>ξ</mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x(t)=(\xi^1+vt,\xi^2,\xi^3)</annotation></semantics></math>,
+Proposition 4.1 says that the derivative of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">u(t,x(t))</annotation></semantics></math>
+is zero. Direct substitution also gives its value:</p>
+<div class="equation" id="eq-F1-22"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><msup><mi>ξ</mi><mn>1</mn></msup><mo>+</mo><mi>v</mi><mi>t</mi><mo>,</mo><msup><mi>ξ</mi><mn>2</mn></msup><mo>,</mo><msup><mi>ξ</mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>U</mi><mn>0</mn></msub><mrow><mi mathvariant="normal">exp</mi><mo>⁡</mo></mrow><mspace width="-0.167em"></mspace><mrow><mo form="prefix" stretchy="true">[</mo><mi>−</mi><mfrac><mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>ξ</mi><mn>1</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>ξ</mi><mn>2</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>ξ</mi><mn>3</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup></mrow><msup><mi>ℓ</mi><mn>2</mn></msup></mfrac><mo form="postfix" stretchy="true">]</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ u(t,\xi^1+vt,\xi^2,\xi^3)
+ =U_0\exp\!\left[
+   -\frac{(\xi^1)^2+(\xi^2)^2+(\xi^3)^2}{\ell^2}
+ \right].
+ \tag{F1.22}
+</annotation></semantics></math></div><span class="eq-number">(F1.22)</span></div>
+<p>The field generally changes at a fixed spatial point while remaining
+constant along these moving paths. When
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">v=0</annotation></semantics></math>,
+the entire profile is stationary.</p>
+<h2 id="a-coordinate-change-changes-the-description">5. A coordinate
+change changes the description</h2>
+<p>Consider a new Cartesian coordinate system given by</p>
+<div class="equation" id="eq-F1-23"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mo>′</mo></msup><msup><mi></mi><mn>1</mn></msup><mo>=</mo><mi>−</mi><msup><mi>x</mi><mn>2</mn></msup><mo>,</mo><mspace width="2.0em"></mspace><msup><mi>x</mi><mo>′</mo></msup><msup><mi></mi><mn>2</mn></msup><mo>=</mo><msup><mi>x</mi><mn>1</mn></msup><mo>,</mo><mspace width="2.0em"></mspace><msup><mi>x</mi><mo>′</mo></msup><msup><mi></mi><mn>3</mn></msup><mo>=</mo><msup><mi>x</mi><mn>3</mn></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ x'^1=-x^2,\qquad x'^2=x^1,\qquad x'^3=x^3.
+ \tag{F1.23}
+</annotation></semantics></math></div><span class="eq-number">(F1.23)</span></div>
+<p>The inverse relations are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mn>1</mn></msup><mo>=</mo><msup><mi>x</mi><mo>′</mo></msup><msup><mi></mi><mn>2</mn></msup><mo>,</mo><mspace width="0.222em"></mspace><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><mi>−</mi><msup><mi>x</mi><mo>′</mo></msup><msup><mi></mi><mn>1</mn></msup><mo>,</mo><mspace width="0.222em"></mspace><msup><mi>x</mi><mn>3</mn></msup><mo>=</mo><msup><mi>x</mi><mo>′</mo></msup><msup><mi></mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">x^1=x'^2,\ x^2=-x'^1,\ x^3=x'^3</annotation></semantics></math>.
+This is a rotation of the coordinate values by a right angle in the
+first two coordinates. Time is unchanged.</p>
+<p>A scalar assigns the same value to the same point in either
+coordinate system. Its new coordinate function is therefore</p>
+<div class="equation" id="eq-F1-24"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>u</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><msup><mi>x</mi><mo>′</mo></msup><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><msup><mi>x</mi><mo>′</mo></msup><msup><mi></mi><mn>2</mn></msup><mo>,</mo><mi>−</mi><msup><mi>x</mi><mo>′</mo></msup><msup><mi></mi><mn>1</mn></msup><mo>,</mo><msup><mi>x</mi><mo>′</mo></msup><msup><mi></mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ u'(t,x')=u(t,x'^2,-x'^1,x'^3).
+ \tag{F1.24}
+</annotation></semantics></math></div><span class="eq-number">(F1.24)</span></div>
+<p>For a spatial vector, the components change too:</p>
+<div class="equation" id="eq-F1-25"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msup><mi>V</mi><mo>′</mo></msup><msup><mi></mi><mn>1</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><msup><mi>x</mi><mo>′</mo></msup><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>−</mi><msup><mi>V</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><msup><mi>x</mi><mo>′</mo></msup><msup><mi></mi><mn>2</mn></msup><mo>,</mo><mi>−</mi><msup><mi>x</mi><mo>′</mo></msup><msup><mi></mi><mn>1</mn></msup><mo>,</mo><msup><mi>x</mi><mo>′</mo></msup><msup><mi></mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msup><mi>V</mi><mo>′</mo></msup><msup><mi></mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><msup><mi>x</mi><mo>′</mo></msup><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msup><mi>V</mi><mn>1</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><msup><mi>x</mi><mo>′</mo></msup><msup><mi></mi><mn>2</mn></msup><mo>,</mo><mi>−</mi><msup><mi>x</mi><mo>′</mo></msup><msup><mi></mi><mn>1</mn></msup><mo>,</mo><msup><mi>x</mi><mo>′</mo></msup><msup><mi></mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msup><mi>V</mi><mo>′</mo></msup><msup><mi></mi><mn>3</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><msup><mi>x</mi><mo>′</mo></msup><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msup><mi>V</mi><mn>3</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><msup><mi>x</mi><mo>′</mo></msup><msup><mi></mi><mn>2</mn></msup><mo>,</mo><mi>−</mi><msup><mi>x</mi><mo>′</mo></msup><msup><mi></mi><mn>1</mn></msup><mo>,</mo><msup><mi>x</mi><mo>′</mo></msup><msup><mi></mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+ \begin{aligned}
+ V'^1(t,x')&amp;=-V^2(t,x'^2,-x'^1,x'^3),\\
+ V'^2(t,x')&amp;= V^1(t,x'^2,-x'^1,x'^3),\\
+ V'^3(t,x')&amp;= V^3(t,x'^2,-x'^1,x'^3).
+ \end{aligned}
+ \tag{F1.25}
+</annotation></semantics></math></div><span class="eq-number">(F1.25)</span></div>
+<p>One way to establish this law is to use a vector tangent to a path.
+Differentiate all three equations in (F1.23). If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><msup><mi>x</mi><mi>i</mi></msup><mi>/</mi><mi>d</mi><mi>t</mi><mo>=</mo><msup><mi>V</mi><mi>i</mi></msup></mrow><annotation encoding="application/x-tex">dx^i/dt=V^i</annotation></semantics></math>,
+the resulting derivatives of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mo>′</mo></msup><msup><mi></mi><mi>i</mi></msup></mrow><annotation encoding="application/x-tex">x'^i</annotation></semantics></math>
+are exactly (F1.25). Because the coordinate change is linear, the same
+component rule applies to every vector.</p>
+<p>For example, a spatially constant velocity
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>V</mi><mn>0</mn></msub><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(V_0,0,0)</annotation></semantics></math>
+has new components
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><msub><mi>V</mi><mn>0</mn></msub><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0,V_0,0)</annotation></semantics></math>.
+Its squared speed is unchanged:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>V</mi><mn>0</mn><mn>2</mn></msubsup><mo>+</mo><mn>0</mn><mo>+</mo><mn>0</mn><mo>=</mo><mn>0</mn><mo>+</mo><msubsup><mi>V</mi><mn>0</mn><mn>2</mn></msubsup><mo>+</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">V_0^2+0+0=0+V_0^2+0</annotation></semantics></math>.
+More generally, (F1.25) gives the identity</p>
+<div class="equation" id="eq-F1-26"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>V</mi><mo>′</mo></msup><msup><mi></mi><mn>1</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>V</mi><mo>′</mo></msup><msup><mi></mi><mn>2</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>V</mi><mo>′</mo></msup><msup><mi></mi><mn>3</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>V</mi><mn>1</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>V</mi><mn>2</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>V</mi><mn>3</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">
+ (V'^1)^2+(V'^2)^2+(V'^3)^2
+ =(V^1)^2+(V^2)^2+(V^3)^2
+ \tag{F1.26}
+</annotation></semantics></math></div><span class="eq-number">(F1.26)</span></div>
+<p>when the two sides are evaluated at the corresponding
+coordinates.</p>
+<p>Applying (F1.17), or the coordinate difference quotients directly, to
+(F1.24) yields</p>
+<div class="equation" id="eq-F1-27"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>∂</mi><mn>1</mn><mo>′</mo></msubsup><msup><mi>u</mi><mo>′</mo></msup><mo>=</mo><mi>−</mi><msub><mi>∂</mi><mn>2</mn></msub><mi>u</mi><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>∂</mi><mn>2</mn><mo>′</mo></msubsup><msup><mi>u</mi><mo>′</mo></msup><mo>=</mo><msub><mi>∂</mi><mn>1</mn></msub><mi>u</mi><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>∂</mi><mn>3</mn><mo>′</mo></msubsup><msup><mi>u</mi><mo>′</mo></msup><mo>=</mo><msub><mi>∂</mi><mn>3</mn></msub><mi>u</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \partial'_1u'=-\partial_2u,\qquad
+ \partial'_2u'=\partial_1u,\qquad
+ \partial'_3u'=\partial_3u.
+ \tag{F1.27}
+</annotation></semantics></math></div><span class="eq-number">(F1.27)</span></div>
+<p>Thus the gradient transforms by the same component rule as a spatial
+vector under this Cartesian rotation. For a general coordinate change,
+one must distinguish differentials, metrics and gradients; that
+geometrical development comes later.</p>
+<p>If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>,</mo><msub><mi>c</mi><mn>2</mn></msub><mo>,</mo><msub><mi>c</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">c_1,c_2,c_3</annotation></semantics></math>
+are three scalar concentrations, each instead follows (F1.24)
+separately. There is no minus sign or interchange of the species
+labels:</p>
+<div class="equation" id="eq-F1-28"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>c</mi><mi>a</mi><mo>′</mo></msubsup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><msup><mi>x</mi><mo>′</mo></msup><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>c</mi><mi>a</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><msup><mi>x</mi><mo>′</mo></msup><msup><mi></mi><mn>2</mn></msup><mo>,</mo><mi>−</mi><msup><mi>x</mi><mo>′</mo></msup><msup><mi></mi><mn>1</mn></msup><mo>,</mo><msup><mi>x</mi><mo>′</mo></msup><msup><mi></mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>a</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ c'_a(t,x')=c_a(t,x'^2,-x'^1,x'^3),\qquad a=1,2,3.
+ \tag{F1.28}
+</annotation></semantics></math></div><span class="eq-number">(F1.28)</span></div>
+<p>This is why the number of components does not determine their
+meaning. The transformation rule is part of the field’s definition.</p>
+<h2 id="an-evolution-equation-and-its-initial-data">6. An evolution
+equation and its initial data</h2>
+<p>An equation imposes a relation on a field and its derivatives. An
+initial condition specifies the field at a chosen starting time. They
+are separate pieces of information.</p>
+<p>For example, fixing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>∈</mo><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">v\in\mathbb R</annotation></semantics></math>,
+the transport problem is</p>
+<div class="equation" id="eq-F1-29"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>t</mi></msub><mi>u</mi><mo>+</mo><mi>v</mi><msub><mi>∂</mi><mn>1</mn></msub><mi>u</mi><mo>=</mo><mn>0</mn><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">on </mtext><mspace width="0.333em"></mspace></mrow><mi mathvariant="double-struck">ℝ</mi><mo>×</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup><mo>,</mo><mspace width="2.0em"></mspace><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \partial_tu+v\partial_1u=0
+       \quad\hbox{on }\mathbb R\times\mathbb R^3,
+ \qquad
+ u(0,x)=f(x).
+ \tag{F1.29}
+</annotation></semantics></math></div><span class="eq-number">(F1.29)</span></div>
+<p>The function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup><mo>→</mo><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">f:\mathbb R^3\to\mathbb R</annotation></semantics></math>
+is prescribed. We can solve the entire problem, including uniqueness,
+using the path derivative already proved.</p>
+<h3 id="theorem-6.1.-the-complete-c1-transport-solution">Theorem 6.1.
+The complete
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mn>1</mn></msup><annotation encoding="application/x-tex">C^1</annotation></semantics></math>
+transport solution</h3>
+<p>For each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>∈</mo><msup><mi>C</mi><mn>1</mn></msup><mo form="prefix" stretchy="false">(</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f\in C^1(\mathbb R^3)</annotation></semantics></math>,
+the unique
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mn>1</mn></msup><annotation encoding="application/x-tex">C^1</annotation></semantics></math>
+solution of (F1.29) is</p>
+<div class="equation" id="eq-F1-30"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><msup><mi>x</mi><mn>1</mn></msup><mo>,</mo><msup><mi>x</mi><mn>2</mn></msup><mo>,</mo><msup><mi>x</mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>x</mi><mn>1</mn></msup><mo>−</mo><mi>v</mi><mi>t</mi><mo>,</mo><msup><mi>x</mi><mn>2</mn></msup><mo>,</mo><msup><mi>x</mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ u(t,x^1,x^2,x^3)
+ =f(x^1-vt,x^2,x^3).
+ \tag{F1.30}
+</annotation></semantics></math></div><span class="eq-number">(F1.30)</span></div>
+<p><strong>Proof.</strong> This formula defines a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mn>1</mn></msup><annotation encoding="application/x-tex">C^1</annotation></semantics></math>
+function for every real time. Differentiation gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>t</mi></msub><mi>u</mi><mo>=</mo><mi>−</mi><mi>v</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>∂</mi><mn>1</mn></msub><mi>f</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>x</mi><mn>1</mn></msup><mo>−</mo><mi>v</mi><mi>t</mi><mo>,</mo><msup><mi>x</mi><mn>2</mn></msup><mo>,</mo><msup><mi>x</mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\partial_tu=-v(\partial_1 f)(x^1-vt,x^2,x^3)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mn>1</mn></msub><mi>u</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>∂</mi><mn>1</mn></msub><mi>f</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>x</mi><mn>1</mn></msup><mo>−</mo><mi>v</mi><mi>t</mi><mo>,</mo><msup><mi>x</mi><mn>2</mn></msup><mo>,</mo><msup><mi>x</mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\partial_1u=(\partial_1 f)(x^1-vt,x^2,x^3)</annotation></semantics></math>;
+their stated sum vanishes. At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math>
+the formula equals
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math>.
+Thus a solution exists.</p>
+<p>For uniqueness, let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>
+be any
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mn>1</mn></msup><annotation encoding="application/x-tex">C^1</annotation></semantics></math>
+solution, and fix
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(t,x)</annotation></semantics></math>.
+Follow the path, parametrized by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>,</p>
+<div class="equation" id="eq-F1-31"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo form="prefix" stretchy="false">(</mo><mi>s</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><msup><mi>x</mi><mn>1</mn></msup><mo>−</mo><mi>v</mi><mi>t</mi><mo>+</mo><mi>v</mi><mi>s</mi><mo>,</mo><mspace width="0.222em"></mspace><msup><mi>x</mi><mn>2</mn></msup><mo>,</mo><mspace width="0.222em"></mspace><msup><mi>x</mi><mn>3</mn></msup><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \gamma(s)=\bigl(x^1-vt+vs,\ x^2,\ x^3\bigr).
+ \tag{F1.31}
+</annotation></semantics></math></div><span class="eq-number">(F1.31)</span></div>
+<p>For each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>,
+Proposition 4.1 and the equation for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>
+give</p>
+<div class="equation" id="eq-F1-32"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>s</mi></mrow></mfrac><mi>w</mi><mo form="prefix" stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>γ</mi><mo form="prefix" stretchy="false">(</mo><mi>s</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>∂</mi><mi>t</mi></msub><mi>w</mi><mo>+</mo><mi>v</mi><msub><mi>∂</mi><mn>1</mn></msub><mi>w</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>γ</mi><mo form="prefix" stretchy="false">(</mo><mi>s</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \frac{d}{ds}w(s,\gamma(s))
+ =(\partial_tw+v\partial_1w)(s,\gamma(s))=0.
+ \tag{F1.32}
+</annotation></semantics></math></div><span class="eq-number">(F1.32)</span></div>
+<p>Integrating from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">s=0</annotation></semantics></math>
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">s=t</annotation></semantics></math>,
+with the same identity valid for negative
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>,
+gives</p>
+<div class="equation"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>w</mi><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><msup><mi>x</mi><mn>1</mn></msup><mo>−</mo><mi>v</mi><mi>t</mi><mo>,</mo><msup><mi>x</mi><mn>2</mn></msup><mo>,</mo><msup><mi>x</mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>x</mi><mn>1</mn></msup><mo>−</mo><mi>v</mi><mi>t</mi><mo>,</mo><msup><mi>x</mi><mn>2</mn></msup><mo>,</mo><msup><mi>x</mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ w(t,x)=w(0,x^1-vt,x^2,x^3)=f(x^1-vt,x^2,x^3).
+</annotation></semantics></math></div></div>
+<p>This is (F1.30).
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>The value at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(t,x)</annotation></semantics></math>
+is determined by the single initial point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>x</mi><mn>1</mn></msup><mo>−</mo><mi>v</mi><mi>t</mi><mo>,</mo><msup><mi>x</mi><mn>2</mn></msup><mo>,</mo><msup><mi>x</mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x^1-vt,x^2,x^3)</annotation></semantics></math>.
+No other initial point enters this formula. That is the
+domain-of-dependence statement for this equation. Other evolution
+equations have different domains of dependence. We have not derived a
+universal propagation speed for physical fields.</p>
+<p>The moving profile (F1.9) is exactly this solution with</p>
+<div class="equation" id="eq-F1-33"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>U</mi><mn>0</mn></msub><mrow><mi mathvariant="normal">exp</mi><mo>⁡</mo></mrow><mspace width="-0.167em"></mspace><mrow><mo form="prefix" stretchy="true">[</mo><mi>−</mi><mfrac><mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>x</mi><mn>1</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>x</mi><mn>3</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup></mrow><msup><mi>ℓ</mi><mn>2</mn></msup></mfrac><mo form="postfix" stretchy="true">]</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ f(x)=U_0\exp\!\left[
+   -\frac{(x^1)^2+(x^2)^2+(x^3)^2}{\ell^2}
+ \right].
+ \tag{F1.33}
+</annotation></semantics></math></div><span class="eq-number">(F1.33)</span></div>
+<p>It is one choice of initial data, not the only possible solution.</p>
+<h3 id="corollary-6.2.-support-and-dependence-on-initial-data">Corollary
+6.2. Support and dependence on initial data</h3>
+<p>Define the support of a continuous function as the closure of the set
+where it is nonzero. Then the solution in (F1.30) satisfies</p>
+<div class="equation" id="eq-F1-34"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">supp</mi><mo>⁡</mo></mrow><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>⋅</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mspace width="0.167em"></mspace><mi>y</mi><mo>+</mo><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mi>t</mi><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>y</mi><mo>∈</mo><mrow><mi mathvariant="normal">supp</mi><mo>⁡</mo></mrow><mi>f</mi><mspace width="0.167em"></mspace><mo form="postfix" stretchy="false">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \operatorname{supp}u(t,\cdot)
+ =\{\,y+(vt,0,0):y\in\operatorname{supp}f\,\}.
+ \tag{F1.34}
+</annotation></semantics></math></div><span class="eq-number">(F1.34)</span></div>
+<p>For two bounded initial functions
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><msub><mi>f</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">f_1,f_2</annotation></semantics></math>
+of class
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mn>1</mn></msup><annotation encoding="application/x-tex">C^1</annotation></semantics></math>,
+their solutions satisfy the exact equality</p>
+<div class="equation" id="eq-F1-35"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mi mathvariant="normal">sup</mi><mrow><mi>x</mi><mo>∈</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup></mrow></munder><mo form="prefix" stretchy="false">|</mo><msub><mi>u</mi><mn>1</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>−</mo><msub><mi>u</mi><mn>2</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">|</mo><mo>=</mo><munder><mi mathvariant="normal">sup</mi><mrow><mi>y</mi><mo>∈</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup></mrow></munder><mo form="prefix" stretchy="false">|</mo><msub><mi>f</mi><mn>1</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo>−</mo><msub><mi>f</mi><mn>2</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">|</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \sup_{x\in\mathbb R^3}|u_1(t,x)-u_2(t,x)|
+ =\sup_{y\in\mathbb R^3}|f_1(y)-f_2(y)|.
+ \tag{F1.35}
+</annotation></semantics></math></div><span class="eq-number">(F1.35)</span></div>
+<p><strong>Proof.</strong> The map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>↦</mo><mi>x</mi><mo>−</mo><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mi>t</mi><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x\mapsto x-(vt,0,0)</annotation></semantics></math>
+is a bijection with a continuous inverse. Formula (F1.30) identifies the
+nonzero set with the translated nonzero set of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>;
+the bijection takes closures to closures, proving (F1.34). For (F1.35),
+substitute
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mi>x</mi><mo>−</mo><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mi>t</mi><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y=x-(vt,0,0)</annotation></semantics></math>.
+As
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+ranges over all of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup><annotation encoding="application/x-tex">\mathbb R^3</annotation></semantics></math>,
+so does
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>;
+hence the two suprema are taken over the same set of values.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>Existence, uniqueness and continuous dependence are the three
+features usually meant by well-posedness once the function spaces and
+time interval have been specified. Here existence and uniqueness hold in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mn>1</mn></msup><annotation encoding="application/x-tex">C^1</annotation></semantics></math>.
+For bounded
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mn>1</mn></msup><annotation encoding="application/x-tex">C^1</annotation></semantics></math>
+data, the solution at each time depends continuously on the data in the
+supremum norm, with the exact estimate (F1.35), uniformly over all real
+times. Later equations require substantially more analysis.</p>
+<h2 id="a-conservation-law-keeps-its-boundary-flux">7. A conservation
+law keeps its boundary flux</h2>
+<p>For a real
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mn>1</mn></msup><annotation encoding="application/x-tex">C^1</annotation></semantics></math>
+solution of (F1.29), define</p>
+<div class="equation" id="eq-F1-36"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup></mrow><mn>2</mn></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mi>J</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mrow><mi>v</mi><mspace width="0.167em"></mspace><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup></mrow><mn>2</mn></mfrac><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="true">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \rho(t,x)=\frac{u(t,x)^2}{2},\qquad
+ J(t,x)=\left(\frac{v\,u(t,x)^2}{2},0,0\right).
+ \tag{F1.36}
+</annotation></semantics></math></div><span class="eq-number">(F1.36)</span></div>
+<p>These are a mathematical density and its flux for this transport
+equation. Calling them the physical energy of another theory would
+require that theory’s action and physical interpretation, which have not
+been specified here.</p>
+<p>The product rule and (F1.29) prove</p>
+<div class="equation" id="eq-F1-37"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>t</mi></msub><mi>ρ</mi><mo>+</mo><msub><mi>∂</mi><mn>1</mn></msub><msup><mi>J</mi><mn>1</mn></msup><mo>+</mo><msub><mi>∂</mi><mn>2</mn></msub><msup><mi>J</mi><mn>2</mn></msup><mo>+</mo><msub><mi>∂</mi><mn>3</mn></msub><msup><mi>J</mi><mn>3</mn></msup><mo>=</mo><mi>u</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>∂</mi><mi>t</mi></msub><mi>u</mi><mo>+</mo><mi>v</mi><msub><mi>∂</mi><mn>1</mn></msub><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \partial_t\rho+\partial_1J^1+\partial_2J^2+\partial_3J^3
+ =u(\partial_tu+v\partial_1u)=0.
+ \tag{F1.37}
+</annotation></semantics></math></div><span class="eq-number">(F1.37)</span></div>
+<p>The divergence of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>
+is the sum of its three indicated spatial derivatives. No spatial
+coordinate is omitted from this definition; the last two components
+happen to vanish in this example.</p>
+<p>Let</p>
+<div class="equation" id="eq-F1-38"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>=</mo><mo form="prefix" stretchy="false">[</mo><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><msub><mi>b</mi><mn>1</mn></msub><mo form="postfix" stretchy="false">]</mo><mo>×</mo><mo form="prefix" stretchy="false">[</mo><msub><mi>a</mi><mn>2</mn></msub><mo>,</mo><msub><mi>b</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">]</mo><mo>×</mo><mo form="prefix" stretchy="false">[</mo><msub><mi>a</mi><mn>3</mn></msub><mo>,</mo><msub><mi>b</mi><mn>3</mn></msub><mo form="postfix" stretchy="false">]</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>a</mi><mi>i</mi></msub><mo>&lt;</mo><msub><mi>b</mi><mi>i</mi></msub><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>Q</mi><mi>B</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msubsup><mo>∫</mo><msub><mi>a</mi><mn>3</mn></msub><msub><mi>b</mi><mn>3</mn></msub></msubsup><msubsup><mo>∫</mo><msub><mi>a</mi><mn>2</mn></msub><msub><mi>b</mi><mn>2</mn></msub></msubsup><msubsup><mo>∫</mo><msub><mi>a</mi><mn>1</mn></msub><msub><mi>b</mi><mn>1</mn></msub></msubsup><mi>ρ</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mspace width="0.167em"></mspace><mi>d</mi><msup><mi>x</mi><mn>1</mn></msup><mspace width="0.167em"></mspace><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>d</mi><msup><mi>x</mi><mn>3</mn></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ B=[a_1,b_1]\times[a_2,b_2]\times[a_3,b_3],
+ \qquad a_i&lt;b_i,
+ \qquad
+ Q_B(t)=\int_{a_3}^{b_3}\int_{a_2}^{b_2}
+                 \int_{a_1}^{b_1}\rho(t,x)\,dx^1\,dx^2\,dx^3.
+ \tag{F1.38}
+</annotation></semantics></math></div><span class="eq-number">(F1.38)</span></div>
+<h3 id="proposition-7.1.-the-exact-flux-through-a-fixed-box">Proposition
+7.1. The exact flux through a fixed box</h3>
+<p>For the density in (F1.36),</p>
+<div class="equation" id="eq-F1-39"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mfrac><mrow><mi>d</mi><msub><mi>Q</mi><mi>B</mi></msub></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>−</mi><msubsup><mo>∫</mo><msub><mi>a</mi><mn>3</mn></msub><msub><mi>b</mi><mn>3</mn></msub></msubsup><msubsup><mo>∫</mo><msub><mi>a</mi><mn>2</mn></msub><msub><mi>b</mi><mn>2</mn></msub></msubsup><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">[</mo><msup><mi>J</mi><mn>1</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><msup><mi>x</mi><mn>2</mn></msup><mo>,</mo><msup><mi>x</mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo><mo>−</mo><msup><mi>J</mi><mn>1</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><msup><mi>x</mi><mn>2</mn></msup><mo>,</mo><msup><mi>x</mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">]</mo><mspace width="0.167em"></mspace><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>d</mi><msup><mi>x</mi><mn>3</mn></msup></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mspace width="1.0em"></mspace><mo>−</mo><msubsup><mo>∫</mo><msub><mi>a</mi><mn>3</mn></msub><msub><mi>b</mi><mn>3</mn></msub></msubsup><msubsup><mo>∫</mo><msub><mi>a</mi><mn>1</mn></msub><msub><mi>b</mi><mn>1</mn></msub></msubsup><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">[</mo><msup><mi>J</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><msup><mi>x</mi><mn>1</mn></msup><mo>,</mo><msub><mi>b</mi><mn>2</mn></msub><mo>,</mo><msup><mi>x</mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo><mo>−</mo><msup><mi>J</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><msup><mi>x</mi><mn>1</mn></msup><mo>,</mo><msub><mi>a</mi><mn>2</mn></msub><mo>,</mo><msup><mi>x</mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">]</mo><mspace width="0.167em"></mspace><mi>d</mi><msup><mi>x</mi><mn>1</mn></msup><mspace width="0.167em"></mspace><mi>d</mi><msup><mi>x</mi><mn>3</mn></msup></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mspace width="1.0em"></mspace><mo>−</mo><msubsup><mo>∫</mo><msub><mi>a</mi><mn>2</mn></msub><msub><mi>b</mi><mn>2</mn></msub></msubsup><msubsup><mo>∫</mo><msub><mi>a</mi><mn>1</mn></msub><msub><mi>b</mi><mn>1</mn></msub></msubsup><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">[</mo><msup><mi>J</mi><mn>3</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><msup><mi>x</mi><mn>1</mn></msup><mo>,</mo><msup><mi>x</mi><mn>2</mn></msup><mo>,</mo><msub><mi>b</mi><mn>3</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>−</mo><msup><mi>J</mi><mn>3</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><msup><mi>x</mi><mn>1</mn></msup><mo>,</mo><msup><mi>x</mi><mn>2</mn></msup><mo>,</mo><msub><mi>a</mi><mn>3</mn></msub><mo form="postfix" stretchy="false">)</mo><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">]</mo><mspace width="0.167em"></mspace><mi>d</mi><msup><mi>x</mi><mn>1</mn></msup><mspace width="0.167em"></mspace><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>−</mi><mfrac><mi>v</mi><mn>2</mn></mfrac><msubsup><mo>∫</mo><msub><mi>a</mi><mn>3</mn></msub><msub><mi>b</mi><mn>3</mn></msub></msubsup><msubsup><mo>∫</mo><msub><mi>a</mi><mn>2</mn></msub><msub><mi>b</mi><mn>2</mn></msub></msubsup><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">[</mo><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><msup><mi>x</mi><mn>2</mn></msup><mo>,</mo><msup><mi>x</mi><mn>3</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>−</mo><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><msup><mi>x</mi><mn>2</mn></msup><mo>,</mo><msup><mi>x</mi><mn>3</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">]</mo><mspace width="0.167em"></mspace><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>d</mi><msup><mi>x</mi><mn>3</mn></msup><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+ \begin{aligned}
+ \frac{dQ_B}{dt}
+ &amp;=-\int_{a_3}^{b_3}\int_{a_2}^{b_2}
+      \bigl[J^1(t,b_1,x^2,x^3)
+            -J^1(t,a_1,x^2,x^3)\bigr]\,dx^2\,dx^3\\
+ &amp;\quad-\int_{a_3}^{b_3}\int_{a_1}^{b_1}
+      \bigl[J^2(t,x^1,b_2,x^3)
+            -J^2(t,x^1,a_2,x^3)\bigr]\,dx^1\,dx^3\\
+ &amp;\quad-\int_{a_2}^{b_2}\int_{a_1}^{b_1}
+      \bigl[J^3(t,x^1,x^2,b_3)
+            -J^3(t,x^1,x^2,a_3)\bigr]\,dx^1\,dx^2\\
+ &amp;=-\frac v2\int_{a_3}^{b_3}\int_{a_2}^{b_2}
+      \bigl[u(t,b_1,x^2,x^3)^2
+            -u(t,a_1,x^2,x^3)^2\bigr]\,dx^2\,dx^3.
+ \end{aligned}
+ \tag{F1.39}
+</annotation></semantics></math></div><span class="eq-number">(F1.39)</span></div>
+<p><strong>Proof.</strong> On a compact time interval and the compact
+box,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>t</mi></msub><mi>ρ</mi></mrow><annotation encoding="application/x-tex">\partial_t\rho</annotation></semantics></math>
+is continuous and uniformly continuous. Apply (F1.1) to the time
+difference quotient of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ρ</mi><annotation encoding="application/x-tex">\rho</annotation></semantics></math>.
+Its difference from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>t</mi></msub><mi>ρ</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\partial_t\rho(t,x)</annotation></semantics></math>
+tends to zero uniformly in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>.
+The integral of that difference is bounded by the box volume times this
+uniform bound. We may therefore differentiate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Q</mi><mi>B</mi></msub><annotation encoding="application/x-tex">Q_B</annotation></semantics></math>
+under its integral.</p>
+<p>Substitute (F1.37). For each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>i</mi></msub><msup><mi>J</mi><mi>i</mi></msup></mrow><annotation encoding="application/x-tex">\partial_iJ^i</annotation></semantics></math>,
+integrate first in the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>-th
+coordinate and apply (F1.1). This gives the three face-pair integrals in
+(F1.39). The signs record outgoing minus incoming flux for each
+coordinate direction. Finally substitute
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>J</mi><mn>1</mn></msup><mo>=</mo><mi>v</mi><msup><mi>u</mi><mn>2</mn></msup><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">J^1=vu^2/2</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>J</mi><mn>2</mn></msup><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">J^2=0</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>J</mi><mn>3</mn></msup><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">J^3=0</annotation></semantics></math>.
+The second and third face-pair terms are zero for that stated reason.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>The order of integration used here is valid for a continuous function
+on a finite box. To see why, choose a fine rectangular grid. Uniform
+continuity makes the variation of the integrand on each small box less
+than a number
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ε</mi><annotation encoding="application/x-tex">\varepsilon</annotation></semantics></math>
+that tends to zero with the grid size. Every order of iterated
+integration differs from the same finite sum of sampled values times
+small-box volumes by at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ε</mi><annotation encoding="application/x-tex">\varepsilon</annotation></semantics></math>
+times the large-box volume. Letting the grid size tend to zero shows
+that all orders have the same value.</p>
+<p>A local conservation equation does not say that the amount inside
+every fixed box is constant. Material can cross its boundary. The
+boundary term in (F1.39) is part of the result.</p>
+<p>For a continuous nonnegative function, its whole-space integral can
+be defined as the limit of its integrals over expanding cubes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>R</mi><mo>,</mo><mi>R</mi><msup><mo form="postfix" stretchy="false">]</mo><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">[-R,R]^3</annotation></semantics></math>
+as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">R\to\infty</annotation></semantics></math>.
+These integrals increase with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>;
+the limit may be infinite. When the whole-space integral of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>f</mi><mn>2</mn></msup><annotation encoding="application/x-tex">f^2</annotation></semantics></math>
+is finite, the amount over the whole space is constant:</p>
+<div class="equation" id="eq-F1-40"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∫</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup></msub><mfrac><mrow><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup></mrow><mn>2</mn></mfrac><mspace width="0.167em"></mspace><msup><mi>d</mi><mn>3</mn></msup><mi>x</mi><mo>=</mo><msub><mo>∫</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup></msub><mfrac><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup></mrow><mn>2</mn></mfrac><mspace width="0.167em"></mspace><msup><mi>d</mi><mn>3</mn></msup><mi>y</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \int_{\mathbb R^3}\frac{u(t,x)^2}{2}\,d^3x
+ =\int_{\mathbb R^3}\frac{f(y)^2}{2}\,d^3y.
+ \tag{F1.40}
+</annotation></semantics></math></div><span class="eq-number">(F1.40)</span></div>
+<p>To prove this, first integrate over the finite cube
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>R</mi><mo>,</mo><mi>R</mi><msup><mo form="postfix" stretchy="false">]</mo><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">[-R,R]^3</annotation></semantics></math>.
+Substitute
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>y</mi><mn>1</mn></msup><mo>=</mo><msup><mi>x</mi><mn>1</mn></msup><mo>−</mo><mi>v</mi><mi>t</mi><mo>,</mo><mspace width="0.222em"></mspace><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>,</mo><mspace width="0.222em"></mspace><msup><mi>y</mi><mn>3</mn></msup><mo>=</mo><msup><mi>x</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">y^1=x^1-vt,\ y^2=x^2,\ y^3=x^3</annotation></semantics></math>.
+Each one-dimensional substitution has derivative one. The transformed
+domain is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>R</mi><mo>−</mo><mi>v</mi><mi>t</mi><mo>,</mo><mi>R</mi><mo>−</mo><mi>v</mi><mi>t</mi><mo form="postfix" stretchy="false">]</mo><mo>×</mo><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>R</mi><mo>,</mo><mi>R</mi><mo form="postfix" stretchy="false">]</mo><mo>×</mo><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>R</mi><mo>,</mo><mi>R</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[-R-vt,R-vt]\times[-R,R]\times[-R,R]</annotation></semantics></math>,
+and the integrand is exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">f(y)^2/2</annotation></semantics></math>.
+If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mo form="prefix" stretchy="false">|</mo><mi>v</mi><mi>t</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">a=|vt|</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>&gt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">R&gt;a</annotation></semantics></math>,
+this domain contains
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>R</mi><mo>+</mo><mi>a</mi><mo>,</mo><mi>R</mi><mo>−</mo><mi>a</mi><msup><mo form="postfix" stretchy="false">]</mo><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">[-R+a,R-a]^3</annotation></semantics></math>
+and is contained in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>R</mi><mo>−</mo><mi>a</mi><mo>,</mo><mi>R</mi><mo>+</mo><mi>a</mi><msup><mo form="postfix" stretchy="false">]</mo><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">[-R-a,R+a]^3</annotation></semantics></math>.
+Nonnegativity therefore bounds its integral between the integrals over
+those two cubes. Both bounds tend to the same whole-space integral as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">R\to\infty</annotation></semantics></math>.
+Taking the limit proves (F1.40); the assumed integrability makes it
+finite.</p>
+<p>For example, compactly supported continuous
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+is bounded on its compact support and vanishes outside a finite box, so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>f</mi><mn>2</mn></msup><annotation encoding="application/x-tex">f^2</annotation></semantics></math>
+is integrable. Formula (F1.40) therefore applies to such initial
+data.</p>
+<h2 id="exercises-with-complete-solutions">8. Exercises with complete
+solutions</h2>
+<p>Try each exercise before reading its solution. The exercises use only
+the definitions and arguments in this lesson.</p>
+<h3 id="exercise-1.-a-field-a-path-and-an-equation">Exercise 1. A field,
+a path and an equation</h3>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>,</mo><mi>b</mi><mo>,</mo><mi>c</mi><mo>∈</mo><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">a,b,c\in\mathbb R</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>∈</mo><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">\omega\in\mathbb R</annotation></semantics></math>.
+Verify that</p>
+<div class="equation" id="eq-F1-41"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><mi>a</mi><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>ω</mi><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>−</mo><mi>b</mi><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>ω</mi><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="0.222em"></mspace><mi>a</mi><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>ω</mi><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mi>b</mi><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>ω</mi><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="0.222em"></mspace><mi>c</mi><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">
+ x(t)=
+ \bigl(a\cos(\omega t)-b\sin(\omega t),\
+       a\sin(\omega t)+b\cos(\omega t),\ c\bigr)
+ \tag{F1.41}
+</annotation></semantics></math></div><span class="eq-number">(F1.41)</span></div>
+<p>follows the field (F1.5) and starts at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo>,</mo><mi>c</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(a,b,c)</annotation></semantics></math>.
+Show that its distance from the third axis is constant.</p>
+<p><strong>Solution.</strong> At zero time, cosine is one and sine is
+zero. Differentiation gives</p>
+<div class="equation"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mover><mi>x</mi><mo accent="true">̇</mo></mover><mn>1</mn></msup><mo>=</mo><mi>−</mi><mi>ω</mi><mo form="prefix" stretchy="false">(</mo><mi>a</mi><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>ω</mi><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mi>b</mi><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>ω</mi><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>−</mi><mi>ω</mi><msup><mi>x</mi><mn>2</mn></msup><mo>,</mo><mspace width="1.0em"></mspace><msup><mover><mi>x</mi><mo accent="true">̇</mo></mover><mn>2</mn></msup><mo>=</mo><mi>ω</mi><mo form="prefix" stretchy="false">(</mo><mi>a</mi><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>ω</mi><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>−</mo><mi>b</mi><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>ω</mi><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>ω</mi><msup><mi>x</mi><mn>1</mn></msup><mo>,</mo><mspace width="1.0em"></mspace><msup><mover><mi>x</mi><mo accent="true">̇</mo></mover><mn>3</mn></msup><mo>=</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \dot x^1=-\omega(a\sin(\omega t)+b\cos(\omega t))=-\omega x^2,
+ \quad
+ \dot x^2=\omega(a\cos(\omega t)-b\sin(\omega t))=\omega x^1,
+ \quad \dot x^3=0.
+</annotation></semantics></math></div></div>
+<p>These are the three components of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">V(t,x(t))</annotation></semantics></math>.
+Expanding both squares gives</p>
+<div class="equation"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>x</mi><mn>1</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><msup><mi>a</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><msup><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>ω</mi><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>+</mo><msup><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>ω</mi><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><msup><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>ω</mi><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>+</mo><msup><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>ω</mi><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>−</mo><mn>2</mn><mi>a</mi><mi>b</mi><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>ω</mi><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>ω</mi><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mn>2</mn><mi>a</mi><mi>b</mi><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>ω</mi><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>ω</mi><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ (x^1(t))^2+(x^2(t))^2
+ =a^2(\cos^2(\omega t)+\sin^2(\omega t))
+ +b^2(\sin^2(\omega t)+\cos^2(\omega t))
+ -2ab\sin(\omega t)\cos(\omega t)
+ +2ab\sin(\omega t)\cos(\omega t)=a^2+b^2.
+</annotation></semantics></math></div></div>
+<p>The distance from the axis is consequently
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msqrt><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></msqrt><annotation encoding="application/x-tex">\sqrt{a^2+b^2}</annotation></semantics></math>.</p>
+<h3 id="exercise-2.-restore-the-units">Exercise 2. Restore the
+units</h3>
+<p>Suppose a field is written as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>=</mo><msub><mi>U</mi><mn>0</mn></msub><msup><mi>e</mi><mrow><mi>−</mi><mi>q</mi></mrow></msup></mrow><annotation encoding="application/x-tex">u=U_0 e^{-q}</annotation></semantics></math>.
+Find the dimensional defects in the proposed expression
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>x</mi><mn>1</mn></msup><mo>−</mo><mi>t</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>x</mi><mn>3</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">q=((x^1-t)^2+(x^2)^2+(x^3)^2)/\ell</annotation></semantics></math>,
+and give a dimensionally consistent expression using a speed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+and a length
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℓ</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\ell&gt;0</annotation></semantics></math>.</p>
+<p><strong>Solution.</strong> Length and time cannot be subtracted as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mn>1</mn></msup><mo>−</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">x^1-t</annotation></semantics></math>.
+Replace
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+there by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">vt</annotation></semantics></math>,
+whose dimension is length. The numerator then has dimension length
+squared. Dividing by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℓ</mi><annotation encoding="application/x-tex">\ell</annotation></semantics></math>
+leaves a length, whereas the exponential needs a dimensionless argument.
+The expression</p>
+<div class="equation"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>x</mi><mn>1</mn></msup><mo>−</mo><mi>v</mi><mi>t</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>x</mi><mn>3</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup></mrow><msup><mi>ℓ</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">
+ q=\frac{(x^1-vt)^2+(x^2)^2+(x^3)^2}{\ell^2}
+</annotation></semantics></math></div></div>
+<p>has the required dimension. This repairs the units; the equation the
+field satisfies still needs to be checked, as in Section 4.</p>
+<h3 id="exercise-3.-what-does-a-moving-observer-measure">Exercise 3.
+What does a moving observer measure?</h3>
+<p>For (F1.9), take a path
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>w</mi><mi>t</mi><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x(t)=(wt,0,0)</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>
+is another constant speed. Calculate the measured value and its
+derivative. For which
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>
+is this value constant for all
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>?</p>
+<p><strong>Solution.</strong> Substitution gives</p>
+<div class="equation"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>w</mi><mi>t</mi><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>U</mi><mn>0</mn></msub><msup><mi>e</mi><mrow><mi>−</mi><mo form="prefix" stretchy="false">(</mo><mi>w</mi><mo>−</mo><mi>v</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><msup><mi>t</mi><mn>2</mn></msup><mi>/</mi><msup><mi>ℓ</mi><mn>2</mn></msup></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mfrac><mi>d</mi><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>w</mi><mi>t</mi><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>−</mi><mfrac><mrow><mn>2</mn><mo form="prefix" stretchy="false">(</mo><mi>w</mi><mo>−</mo><mi>v</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mi>t</mi></mrow><msup><mi>ℓ</mi><mn>2</mn></msup></mfrac><mspace width="0.167em"></mspace><msub><mi>U</mi><mn>0</mn></msub><msup><mi>e</mi><mrow><mi>−</mi><mo form="prefix" stretchy="false">(</mo><mi>w</mi><mo>−</mo><mi>v</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><msup><mi>t</mi><mn>2</mn></msup><mi>/</mi><msup><mi>ℓ</mi><mn>2</mn></msup></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ u(t,wt,0,0)=U_0e^{-(w-v)^2t^2/\ell^2},\qquad
+ \frac d{dt}u(t,wt,0,0)
+ =-\frac{2(w-v)^2t}{\ell^2}\,
+        U_0e^{-(w-v)^2t^2/\ell^2}.
+</annotation></semantics></math></div></div>
+<p>If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">w=v</annotation></semantics></math>,
+the value is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mn>0</mn></msub><annotation encoding="application/x-tex">U_0</annotation></semantics></math>
+at every time. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>≠</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">w\ne v</annotation></semantics></math>,
+the value at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mn>0</mn></msub><annotation encoding="application/x-tex">U_0</annotation></semantics></math>,
+whereas its value at any nonzero time is strictly smaller. Thus it is
+constant exactly when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">w=v</annotation></semantics></math>.
+Proposition 4.1 gives the same derivative as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>t</mi></msub><mi>u</mi><mo>+</mo><mi>w</mi><msub><mi>∂</mi><mn>1</mn></msub><mi>u</mi></mrow><annotation encoding="application/x-tex">\partial_tu+w\partial_1u</annotation></semantics></math>.</p>
+<h3 id="exercise-4.-rotate-coordinates-without-changing-the-scalar">Exercise
+4. Rotate coordinates without changing the scalar</h3>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>A</mi><mn>0</mn></msub><mo>+</mo><mi>α</mi><msup><mi>x</mi><mn>1</mn></msup><mo>+</mo><mn>2</mn><mi>α</mi><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">u(t,x)=A_0+\alpha x^1+2\alpha x^2</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><msub><mi>A</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">]</mo><mo>=</mo><mi mathvariant="sans-serif">𝖴</mi></mrow><annotation encoding="application/x-tex">[A_0]=\mathsf U</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mi>α</mi><mo form="postfix" stretchy="false">]</mo><mo>=</mo><mi mathvariant="sans-serif">𝖴</mi><msup><mi mathvariant="sans-serif">𝖫</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">[\alpha]=\mathsf U\mathsf L^{-1}</annotation></semantics></math>.
+Find
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>u</mi><mo>′</mo></msup><annotation encoding="application/x-tex">u'</annotation></semantics></math>
+under (F1.23) and verify the gradient transformation.</p>
+<p><strong>Solution.</strong> The inverse coordinate formulas give</p>
+<div class="equation"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>u</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><msup><mi>x</mi><mo>′</mo></msup><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>A</mi><mn>0</mn></msub><mo>+</mo><mi>α</mi><msup><mi>x</mi><mo>′</mo></msup><msup><mi></mi><mn>2</mn></msup><mo>−</mo><mn>2</mn><mi>α</mi><msup><mi>x</mi><mo>′</mo></msup><msup><mi></mi><mn>1</mn></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ u'(t,x')=A_0+\alpha x'^2-2\alpha x'^1.
+</annotation></semantics></math></div></div>
+<p>The original gradient is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>α</mi><mo>,</mo><mn>2</mn><mi>α</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\alpha,2\alpha,0)</annotation></semantics></math>;
+the new gradient is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mn>2</mn><mi>α</mi><mo>,</mo><mi>α</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-2\alpha,\alpha,0)</annotation></semantics></math>,
+precisely the transformation in (F1.27). At any pair of corresponding
+points, substitution gives the same scalar value. The field’s coordinate
+formula has changed; its value at a specified point has not.</p>
+<h3 id="exercise-5.-which-equation-does-the-translated-field-satisfy">Exercise
+5. Which equation does the translated field satisfy?</h3>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>∈</mo><msup><mi>C</mi><mn>1</mn></msup><mo form="prefix" stretchy="false">(</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f\in C^1(\mathbb R^3)</annotation></semantics></math>
+and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>a</mi><mn>1</mn></msup><mo>,</mo><msup><mi>a</mi><mn>2</mn></msup><mo>,</mo><msup><mi>a</mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a=(a^1,a^2,a^3)</annotation></semantics></math>
+be a constant velocity. Define
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>x</mi><mn>1</mn></msup><mo>−</mo><msup><mi>a</mi><mn>1</mn></msup><mi>t</mi><mo>,</mo><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><msup><mi>a</mi><mn>2</mn></msup><mi>t</mi><mo>,</mo><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><msup><mi>a</mi><mn>3</mn></msup><mi>t</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">u(t,x)=f(x^1-a^1t,x^2-a^2t,x^3-a^3t)</annotation></semantics></math>.
+Write its equation and prove uniqueness with its initial data.</p>
+<p><strong>Solution.</strong> Componentwise differentiation gives</p>
+<div class="equation"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>t</mi></msub><mi>u</mi><mo>=</mo><mi>−</mi><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mn>3</mn></munderover><msup><mi>a</mi><mi>i</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>∂</mi><mi>i</mi></msub><mi>f</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>−</mo><mi>a</mi><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>∂</mi><mi>i</mi></msub><mi>u</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>∂</mi><mi>i</mi></msub><mi>f</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>−</mo><mi>a</mi><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \partial_tu=-\sum_{i=1}^3 a^i(\partial_i f)(x-at),
+ \qquad
+ \partial_i u=(\partial_i f)(x-at).
+</annotation></semantics></math></div></div>
+<p>Consequently
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>t</mi></msub><mi>u</mi><mo>+</mo><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mn>3</mn></msubsup><msup><mi>a</mi><mi>i</mi></msup><msub><mi>∂</mi><mi>i</mi></msub><mi>u</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\partial_tu+\sum_{i=1}^3a^i\partial_i u=0</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">u(0,x)=f(x)</annotation></semantics></math>.
+For any other
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mn>1</mn></msup><annotation encoding="application/x-tex">C^1</annotation></semantics></math>
+solution
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>,
+the path
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>↦</mo><mi>x</mi><mo>−</mo><mi>a</mi><mi>t</mi><mo>+</mo><mi>a</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">s\mapsto x-at+as</annotation></semantics></math>
+has derivative
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>.
+Proposition 4.1 shows that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo form="prefix" stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>x</mi><mo>−</mo><mi>a</mi><mi>t</mi><mo>+</mo><mi>a</mi><mi>s</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">w(s,x-at+as)</annotation></semantics></math>
+has zero derivative. Integrating from zero to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>−</mo><mi>a</mi><mi>t</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">w(t,x)=f(x-at)</annotation></semantics></math>,
+establishing uniqueness. No component of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+was omitted.</p>
+<h3 id="exercise-6.-the-support-moves-it-need-not-spread">Exercise 6.
+The support moves; it need not spread</h3>
+<p>Suppose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>∈</mo><msup><mi>C</mi><mn>1</mn></msup><mo form="prefix" stretchy="false">(</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f\in C^1(\mathbb R^3)</annotation></semantics></math>
+has support contained in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><msub><mi>b</mi><mn>1</mn></msub><mo form="postfix" stretchy="false">]</mo><mo>×</mo><mo form="prefix" stretchy="false">[</mo><msub><mi>a</mi><mn>2</mn></msub><mo>,</mo><msub><mi>b</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">]</mo><mo>×</mo><mo form="prefix" stretchy="false">[</mo><msub><mi>a</mi><mn>3</mn></msub><mo>,</mo><msub><mi>b</mi><mn>3</mn></msub><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[a_1,b_1]\times[a_2,b_2]\times[a_3,b_3]</annotation></semantics></math>.
+Give the corresponding support containment at time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+for (F1.29). Does the Gaussian in (F1.33) satisfy this hypothesis for
+any finite box?</p>
+<p><strong>Solution.</strong> Formula (F1.34) gives</p>
+<div class="equation"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">supp</mi><mo>⁡</mo></mrow><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>⋅</mi><mo form="postfix" stretchy="false">)</mo><mo>⊆</mo><mo form="prefix" stretchy="false">[</mo><msub><mi>a</mi><mn>1</mn></msub><mo>+</mo><mi>v</mi><mi>t</mi><mo>,</mo><msub><mi>b</mi><mn>1</mn></msub><mo>+</mo><mi>v</mi><mi>t</mi><mo form="postfix" stretchy="false">]</mo><mo>×</mo><mo form="prefix" stretchy="false">[</mo><msub><mi>a</mi><mn>2</mn></msub><mo>,</mo><msub><mi>b</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">]</mo><mo>×</mo><mo form="prefix" stretchy="false">[</mo><msub><mi>a</mi><mn>3</mn></msub><mo>,</mo><msub><mi>b</mi><mn>3</mn></msub><mo form="postfix" stretchy="false">]</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \operatorname{supp}u(t,\cdot)
+ \subseteq[a_1+vt,b_1+vt]\times[a_2,b_2]\times[a_3,b_3].
+</annotation></semantics></math></div></div>
+<p>This is a translated box. The theorem gives equality with the
+translated actual support, not necessarily with the whole box:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+may vanish on part of it. The Gaussian is strictly positive at every
+point, so its support is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup><annotation encoding="application/x-tex">\mathbb R^3</annotation></semantics></math>.
+It cannot fit inside any finite box.</p>
+<h3 id="exercise-7.-a-local-conservation-law-with-nonzero-boundary-flux">Exercise
+7. A local conservation law with nonzero boundary flux</h3>
+<p>Take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>α</mi><msup><mi>x</mi><mn>1</mn></msup></mrow><annotation encoding="application/x-tex">f(x)=\alpha x^1</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\alpha\ne0</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">v&gt;0</annotation></semantics></math>,
+so that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>α</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>x</mi><mn>1</mn></msup><mo>−</mo><mi>v</mi><mi>t</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">u(t,x)=\alpha(x^1-vt)</annotation></semantics></math>.
+For the fixed box
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>L</mi><mo form="postfix" stretchy="false">]</mo><mo>×</mo><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>B</mi><mo form="postfix" stretchy="false">]</mo><mo>×</mo><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>C</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0,L]\times[0,B]\times[0,C]</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>,</mo><mi>B</mi><mo>,</mo><mi>C</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">L,B,C&gt;0</annotation></semantics></math>,
+calculate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>B</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Q_B(t)</annotation></semantics></math>
+directly and verify (F1.39). The symbol
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Q</mi><mi>B</mi></msub><annotation encoding="application/x-tex">Q_B</annotation></semantics></math>
+denotes the box integral; the length
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+is its second side length.</p>
+<p><strong>Solution.</strong> Direct integration yields</p>
+<div class="equation"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>B</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mfrac><mrow><msup><mi>α</mi><mn>2</mn></msup><mi>B</mi><mi>C</mi></mrow><mn>2</mn></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><msup><mi>L</mi><mn>3</mn></msup><mn>3</mn></mfrac><mo>−</mo><mi>v</mi><mi>t</mi><msup><mi>L</mi><mn>2</mn></msup><mo>+</mo><msup><mi>v</mi><mn>2</mn></msup><msup><mi>t</mi><mn>2</mn></msup><mi>L</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mfrac><mrow><mi>d</mi><msub><mi>Q</mi><mi>B</mi></msub></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><msup><mi>α</mi><mn>2</mn></msup><mi>B</mi><mi>C</mi></mrow><mn>2</mn></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>−</mi><mi>v</mi><msup><mi>L</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><msup><mi>v</mi><mn>2</mn></msup><mi>t</mi><mi>L</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ Q_B(t)=\frac{\alpha^2BC}{2}
+ \left(\frac{L^3}{3}-vtL^2+v^2t^2L\right),
+ \qquad
+ \frac{dQ_B}{dt}=\frac{\alpha^2BC}{2}
+                 \left(-vL^2+2v^2tL\right).
+</annotation></semantics></math></div></div>
+<p>The boundary formula gives</p>
+<div class="equation"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mfrac><mrow><mi>v</mi><mi>B</mi><mi>C</mi></mrow><mn>2</mn></mfrac><mrow><mo form="prefix" stretchy="true">[</mo><msup><mi>α</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>L</mi><mo>−</mo><mi>v</mi><mi>t</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>−</mo><msup><mi>α</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>v</mi><mi>t</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo form="postfix" stretchy="true">]</mo></mrow><mo>=</mo><mfrac><mrow><msup><mi>α</mi><mn>2</mn></msup><mi>B</mi><mi>C</mi></mrow><mn>2</mn></mfrac><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>v</mi><msup><mi>L</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><msup><mi>v</mi><mn>2</mn></msup><mi>t</mi><mi>L</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+ -\frac{vBC}{2}
+ \left[\alpha^2(L-vt)^2-\alpha^2(-vt)^2\right]
+ =\frac{\alpha^2BC}{2}(-vL^2+2v^2tL),
+</annotation></semantics></math></div></div>
+<p>which is the same derivative. The four faces normal to the second and
+third coordinate directions contribute zero because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>J</mi><mn>2</mn></msup><mo>=</mo><msup><mi>J</mi><mn>3</mn></msup><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">J^2=J^3=0</annotation></semantics></math>.
+This initial field is not square-integrable over all of space, so
+(F1.40) does not assert a finite conserved whole-space quantity for it.
+Indeed, on the box
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo form="postfix" stretchy="false">]</mo><mo>×</mo><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>R</mi><mo>,</mo><mi>R</mi><mo form="postfix" stretchy="false">]</mo><mo>×</mo><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>R</mi><mo>,</mo><mi>R</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[1,2]\times[-R,R]\times[-R,R]</annotation></semantics></math>,
+its initial square is at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>α</mi><mn>2</mn></msup><annotation encoding="application/x-tex">\alpha^2</annotation></semantics></math>,
+and the integral is at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><msup><mi>α</mi><mn>2</mn></msup><msup><mi>R</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">4\alpha^2R^2</annotation></semantics></math>,
+which tends to infinity.</p>
+<h3 id="exercise-8.-an-equation-alone-does-not-choose-its-solution">Exercise
+8. An equation alone does not choose its solution</h3>
+<p>Exhibit two different
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mn>1</mn></msup><annotation encoding="application/x-tex">C^1</annotation></semantics></math>
+solutions of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>t</mi></msub><mi>u</mi><mo>+</mo><mi>v</mi><msub><mi>∂</mi><mn>1</mn></msub><mi>u</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\partial_tu+v\partial_1u=0</annotation></semantics></math>.
+Explain how Theorem 6.1 is consistent with their coexistence.</p>
+<p><strong>Solution.</strong> The fields
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mn>1</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">u_1(t,x)=0</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mn>2</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>U</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">u_2(t,x)=U_0</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mn>0</mn></msub><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">U_0\ne0</annotation></semantics></math>,
+both have zero time and spatial derivatives. They satisfy the equation
+but have different initial data, respectively zero and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mn>0</mn></msub><annotation encoding="application/x-tex">U_0</annotation></semantics></math>.
+The uniqueness statement fixes both the equation and the initial
+function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>;
+it does not say that an equation without specified data has only one
+solution.</p>
+<h2 id="the-next-step">9. The next step</h2>
+<p>We now have a working language for fields, coordinate descriptions,
+derivatives, equations, initial conditions and boundary flux. The <a href="electromagnetism-gauge-freedom.html">next lesson</a> introduces
+electric and magnetic fields and their potentials. It will calculate
+exactly how different potentials can describe the same electromagnetic
+fields.</p>
+<p>This lesson is independently written elementary exposition. Its
+derivations use the stated one-variable calculus preparation, not a
+special research construction. The transport equation is an explicit
+teaching example; it is not asserted to be a Yang–Mills equation or a
+quantum field theory.</p>
+<p>The <a href="curriculum.html">general course plan</a> gives the later
+progression. The precise proof and authorship record is in <span class="unlinked">the course provenance</span>.</p>
+</main><footer>Geometry and states in Yang–Mills theory · Mathematical content: CC0 1.0.</footer></body></html>

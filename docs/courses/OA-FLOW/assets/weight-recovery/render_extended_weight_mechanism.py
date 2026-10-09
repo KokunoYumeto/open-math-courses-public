@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-weight-recovery-extended-weight-20261009-v1"
 
 D = Path(__file__).resolve().parent
 (D / "assets").mkdir(exist_ok=True)
@@ -84,7 +85,7 @@ ax.text(.5, -.29, r"$R_{\alpha_f}(\xi)=\xi C^{1/2},\quad C=D^{-1/2}BD^{-1/2}$"
         transform=ax.transAxes, ha="center", va="top", fontsize=11)
 
 fig.savefig(D / "assets" / "extended-weight-mechanism.png", dpi=170, bbox_inches="tight")
-fig.savefig(D / "assets" / "extended-weight-mechanism.svg", bbox_inches="tight")
+fig.savefig(D / "assets" / "extended-weight-mechanism.svg", bbox_inches="tight", metadata={"Date": None})
 plt.close(fig)
 (D / "extended-weight-figure-numerics.json").write_text(json.dumps({
     "scope":"Finite plotted samples of the fully proved infinite diagonal example; exact 2x2 formulas are in the caption",

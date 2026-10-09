@@ -1,0 +1,1485 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Moving annuli and localized vorticity energy — Incompressible flow</title><link rel="stylesheet" href="reader.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script>
+<script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Incompressible flow</a><a href="src/moving-annuli-and-localized-vorticity-energy.md">Editable lesson</a><span class="unlinked">Sources and authorship</span></nav></header><main id="main"><nav aria-label="Lesson sequence"><a href="NS-FLUID-10.html">Previous lesson</a><a href="NS-FLUID-12.html">Next lesson</a></nav><article class="lesson"><h1 id="moving-annuli-and-localized-vorticity-energy">Moving annuli and localized vorticity energy</h1>
+<p>Vorticity can enter a region through transport, diffusion and stretching.
+A local energy estimate must account for all three. This lesson follows
+an annulus whose boundaries move inward, computes every boundary term,
+and proves an estimate for the vorticity left inside it.</p>
+<p>The setting comes from Terence Tao's quantitative study of critically
+bounded Navier–Stokes solutions. We give a complete finite energy
+calculation, including the weighted Sobolev inequality and the local
+curl inverse it needs. The force and the original viscosity remain
+explicit. This calculation supplies part of an annular regularity
+argument; pointwise regularity and the general large-<span class="math" data-tex="\(L^3\)">\(L^3\)</span> endpoint
+require further arguments.</p>
+<p>Read the earlier lessons on strong solutions, the curl inverse and
+weighted heat estimates first. We use Hölder's inequality, Fubini,
+Parseval and approximation in Sobolev spaces. The less familiar
+weighted inequality is proved below.</p>
+<h2 id="1-the-original-flow-and-the-moving-region">1. The original flow and the moving region</h2>
+<p>On a finite interval <span class="math" data-tex="\(J=[t_1,t_2]\)">\(J=[t_1,t_2]\)</span>, consider a smooth solution
+on <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>, in the original coordinates:</p>
+<span class="math math-display" data-tex="\[
+\partial_tu+(u\cdot\nabla)u+\nabla p=\nu\Delta u+f,
+\qquad \operatorname{div}u=0,\qquad \nu&gt;0.
+\tag{1.1}
+\]">\[
+\partial_tu+(u\cdot\nabla)u+\nabla p=\nu\Delta u+f,
+\qquad \operatorname{div}u=0,\qquad \nu&gt;0.
+\tag{1.1}
+\]</span>
+<p>Let the solution also be defined at an earlier time <span class="math" data-tex="\(t_b&lt;t_1\)">\(t_b&lt;t_1\)</span>,
+with <span class="math" data-tex="\(u(t_b)\in H^1\)">\(u(t_b)\in H^1\)</span>, and keep its actual heat evolution:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+v(t)=e^{\nu(t-t_b)\Delta}u(t_b),\qquad
+w=u-v,\qquad \ell=\nabla\times v,\qquad z=\nabla\times w,\\
+\nabla\times u=\ell+z,\qquad
+\partial_tv=\nu\Delta v,\qquad \operatorname{div}v
+=\operatorname{div}w=0 .
+\end{gathered}
+\tag{1.2}
+\]">\[
+\begin{gathered}
+v(t)=e^{\nu(t-t_b)\Delta}u(t_b),\qquad
+w=u-v,\qquad \ell=\nabla\times v,\qquad z=\nabla\times w,\\
+\nabla\times u=\ell+z,\qquad
+\partial_tv=\nu\Delta v,\qquad \operatorname{div}v
+=\operatorname{div}w=0 .
+\end{gathered}
+\tag{1.2}
+\]</span>
+<p>When a global norm or time integral is used below, it is required
+to be finite. In particular (3.3) uses <span class="math" data-tex="\(w\in L^2(J;H^1)\)">\(w\in L^2(J;H^1)\)</span>;
+Section 6 states the complete additional energy budget. The local
+identities themselves only need smoothness near the moving support.</p>
+<p>The pressure disappears on taking the curl because the curl of its
+gradient is zero. Subtracting the heat equation for <span class="math" data-tex="\(\ell\)">\(\ell\)</span> gives
+every term of the equation for <span class="math" data-tex="\(z\)">\(z\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_tz-\nu\Delta z={}&amp;-(u\cdot\nabla)z-(u\cdot\nabla)\ell
++(z\cdot\nabla)w+(z\cdot\nabla)v\\
+&amp;+(\ell\cdot\nabla)w+(\ell\cdot\nabla)v+\nabla\times f .
+\end{aligned}
+\tag{1.3}
+\]">\[
+\begin{aligned}
+\partial_tz-\nu\Delta z={}&amp;-(u\cdot\nabla)z-(u\cdot\nabla)\ell
++(z\cdot\nabla)w+(z\cdot\nabla)v\\
+&amp;+(\ell\cdot\nabla)w+(\ell\cdot\nabla)v+\nabla\times f .
+\end{aligned}
+\tag{1.3}
+\]</span>
+<p>Let <span class="math" data-tex="\(A,h,B\)">\(A,h,B\)</span> be positive with <span class="math" data-tex="\(h\leq A\)">\(h\leq A\)</span> and <span class="math" data-tex="\(B\geq16A\)">\(B\geq16A\)</span>.
+Choose <span class="math" data-tex="\(a_0\in[A,2A]\)">\(a_0\in[A,2A]\)</span>, <span class="math" data-tex="\(b_0\in[B/2,B]\)">\(b_0\in[B/2,B]\)</span>, and an absolutely
+continuous, nondecreasing function <span class="math" data-tex="\(q:J\to[0,A]\)">\(q:J\to[0,A]\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a(t)=a_0+q(t),\qquad b(t)=b_0-q(t),\qquad r=|x|,\\
+\eta(t,x)=\max\{\min\{h,r-a(t),b(t)-r\},0\},\\
+I_a=\mathbf1_{\{a&lt;r&lt;a+h\}},\qquad
+I_b=\mathbf1_{\{b-h&lt;r&lt;b\}} .
+\end{gathered}
+\tag{1.4}
+\]">\[
+\begin{gathered}
+a(t)=a_0+q(t),\qquad b(t)=b_0-q(t),\qquad r=|x|,\\
+\eta(t,x)=\max\{\min\{h,r-a(t),b(t)-r\},0\},\\
+I_a=\mathbf1_{\{a&lt;r&lt;a+h\}},\qquad
+I_b=\mathbf1_{\{b-h&lt;r&lt;b\}} .
+\end{gathered}
+\tag{1.4}
+\]</span>
+<p>The two ramps are disjoint: <span class="math" data-tex="\(a\geq h\)">\(a\geq h\)</span> and
+<span class="math" data-tex="\(b-a\geq B/2-4A\geq4h\)">\(b-a\geq B/2-4A\geq4h\)</span>. The function <span class="math" data-tex="\(\eta\)">\(\eta\)</span> rises linearly
+from zero to <span class="math" data-tex="\(h\)">\(h\)</span>, stays equal to <span class="math" data-tex="\(h\)">\(h\)</span>, then falls linearly to zero.
+Neither its height nor the width of a ramp is rescaled to one.</p>
+<h2 id="2-every-volume-and-sphere-contribution">2. Every volume and sphere contribution</h2>
+<p>At almost every time and away from the four corner spheres,</p>
+<span class="math math-display" data-tex="\[
+\eta_r=I_a-I_b,\qquad
+\eta_t=-q&#x27;(I_a+I_b),\qquad
+|\nabla\eta|=I_a+I_b .
+\tag{2.1}
+\]">\[
+\eta_r=I_a-I_b,\qquad
+\eta_t=-q&#x27;(I_a+I_b),\qquad
+|\nabla\eta|=I_a+I_b .
+\tag{2.1}
+\]</span>
+<p>The radial representation</p>
+<span class="math math-display" data-tex="\[
+\eta=(r-a)_+-(r-a-h)_+-(r-b+h)_++(r-b)_+
+\tag{2.2}
+\]">\[
+\eta=(r-a)_+-(r-a-h)_+-(r-b+h)_++(r-b)_+
+\tag{2.2}
+\]</span>
+<p>also gives the complete distributional Laplacian:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Delta\eta={}&amp;\frac2r(I_a-I_b)
++\delta(r-a)-\delta(r-a-h)\\
+&amp;-\delta(r-b+h)+\delta(r-b).
+\end{aligned}
+\tag{2.3}
+\]">\[
+\begin{aligned}
+\Delta\eta={}&amp;\frac2r(I_a-I_b)
++\delta(r-a)-\delta(r-a-h)\\
+&amp;-\delta(r-b+h)+\delta(r-b).
+\end{aligned}
+\tag{2.3}
+\]</span>
+<p>Here the measure <span class="math" data-tex="\(\delta(r-c)\,dx\)">\(\delta(r-c)\,dx\)</span> is exactly surface measure
+on the sphere of radius <span class="math" data-tex="\(c\)">\(c\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\langle\delta(r-c),\phi\rangle
+=c^2\int_{\mathbb S^2}\phi(c\vartheta)\,d\vartheta
+=\int_{|x|=c}\phi(x)\,dS(x).
+\tag{2.4}
+\]">\[
+\langle\delta(r-c),\phi\rangle
+=c^2\int_{\mathbb S^2}\phi(c\vartheta)\,d\vartheta
+=\int_{|x|=c}\phi(x)\,dS(x).
+\tag{2.4}
+\]</span>
+<p>There is no contribution at the origin, since <span class="math" data-tex="\(\eta\)">\(\eta\)</span> vanishes
+on a neighborhood of it. Define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E=\frac12\int\eta|z|^2\,dx,\qquad
+D=\int\eta|\nabla z|^2\,dx,\qquad
+R=\int_{\{0&lt;\eta&lt;h\}}|z|^2\,dx,\\
+Y_2=\frac{q&#x27;}2R,\qquad
+S_c(z)=\int_{|x|=c}|z|^2\,dS,\\
+Y_3=\nu\int\frac{|z|^2}{r}(I_a-I_b)\,dx
++\frac\nu2\bigl[S_a-S_{a+h}-S_{b-h}+S_b\bigr],\\
+Y_4=\frac12\int |z|^2u\cdot\nabla\eta\,dx .
+\end{gathered}
+\tag{2.5}
+\]">\[
+\begin{gathered}
+E=\frac12\int\eta|z|^2\,dx,\qquad
+D=\int\eta|\nabla z|^2\,dx,\qquad
+R=\int_{\{0&lt;\eta&lt;h\}}|z|^2\,dx,\\
+Y_2=\frac{q&#x27;}2R,\qquad
+S_c(z)=\int_{|x|=c}|z|^2\,dS,\\
+Y_3=\nu\int\frac{|z|^2}{r}(I_a-I_b)\,dx
++\frac\nu2\bigl[S_a-S_{a+h}-S_{b-h}+S_b\bigr],\\
+Y_4=\frac12\int |z|^2u\cdot\nabla\eta\,dx .
+\end{gathered}
+\tag{2.5}
+\]</span>
+<p>All unmarked spatial integrals in this lesson use the original
+volume measure <span class="math" data-tex="\(dx\)">\(dx\)</span>. Pairing (1.3) with <span class="math" data-tex="\(\eta z\)">\(\eta z\)</span> yields</p>
+<span class="math math-display" data-tex="\[
+E&#x27;+\nu D+Y_2=Y_3+Y_4+T_5+T_6+T_7+T_8+T_9+F_\eta,
+\tag{2.6}
+\]">\[
+E&#x27;+\nu D+Y_2=Y_3+Y_4+T_5+T_6+T_7+T_8+T_9+F_\eta,
+\tag{2.6}
+\]</span>
+<p>where the remaining terms are exactly</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T_5&amp;=-\int\eta z\cdot(u\cdot\nabla)\ell,&amp;
+T_6&amp;=\int\eta z\cdot(z\cdot\nabla)w,\\
+T_7&amp;=\int\eta z\cdot(z\cdot\nabla)v,&amp;
+T_8&amp;=\int\eta z\cdot(\ell\cdot\nabla)w,\\
+T_9&amp;=\int\eta z\cdot(\ell\cdot\nabla)v,&amp;
+F_\eta&amp;=\int\eta z\cdot(\nabla\times f).
+\end{aligned}
+\tag{2.7}
+\]">\[
+\begin{aligned}
+T_5&amp;=-\int\eta z\cdot(u\cdot\nabla)\ell,&amp;
+T_6&amp;=\int\eta z\cdot(z\cdot\nabla)w,\\
+T_7&amp;=\int\eta z\cdot(z\cdot\nabla)v,&amp;
+T_8&amp;=\int\eta z\cdot(\ell\cdot\nabla)w,\\
+T_9&amp;=\int\eta z\cdot(\ell\cdot\nabla)v,&amp;
+F_\eta&amp;=\int\eta z\cdot(\nabla\times f).
+\end{aligned}
+\tag{2.7}
+\]</span>
+<p>For completeness, the diffusion calculation is</p>
+<span class="math math-display" data-tex="\[
+\nu\int\eta z\cdot\Delta z
+=-\nu\int\eta|\nabla z|^2
+-\frac\nu2\int\nabla\eta\cdot\nabla|z|^2
+=-\nu D+\frac\nu2\langle\Delta\eta,|z|^2\rangle .
+\tag{2.8}
+\]">\[
+\nu\int\eta z\cdot\Delta z
+=-\nu\int\eta|\nabla z|^2
+-\frac\nu2\int\nabla\eta\cdot\nabla|z|^2
+=-\nu D+\frac\nu2\langle\Delta\eta,|z|^2\rangle .
+\tag{2.8}
+\]</span>
+<p>Solenoidal transport contributes <span class="math" data-tex="\(Y_4\)">\(Y_4\)</span>. Differentiating the cutoff
+in the energy contributes <span class="math" data-tex="\(-Y_2\)">\(-Y_2\)</span>. The other six pairings are
+precisely (2.7). One can first convolve the spatial tent with a
+smooth compact kernel. Its gradients converge boundedly almost
+everywhere, and its second derivatives converge as measures.
+Pairing against the smooth field and taking the limit proves
+(2.6). Absolute continuity of <span class="math" data-tex="\(q\)">\(q\)</span> proves the time chain rule
+almost everywhere and then its integrated form. In particular,
+both endpoint energies are present in the integrated identity.</p>
+<h2 id="3-one-choice-of-radii-for-the-whole-interval">3. One choice of radii for the whole interval</h2>
+<p>Temporarily choose <span class="math" data-tex="\(a_0,b_0\)">\(a_0,b_0\)</span> independently and uniformly from their
+specified intervals, while keeping <span class="math" data-tex="\(q,u,v,z\)">\(q,u,v,z\)</span> fixed. Set</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal S_a(t)&amp;=[A+q,2A+q+h]\subset[A,4A],\\
+\mathcal S_b(t)&amp;=[B/2-q-h,B-q]\subset[3B/8,B].
+\end{aligned}
+\tag{3.1}
+\]">\[
+\begin{aligned}
+\mathcal S_a(t)&amp;=[A+q,2A+q+h]\subset[A,4A],\\
+\mathcal S_b(t)&amp;=[B/2-q-h,B-q]\subset[3B/8,B].
+\end{aligned}
+\tag{3.1}
+\]</span>
+<p>These intervals are disjoint. At a fixed radius, the probabilities
+of belonging to the inner and outer ramps are at most <span class="math" data-tex="\(h/A\)">\(h/A\)</span>
+and <span class="math" data-tex="\(2h/B\)">\(2h/B\)</span>, respectively. Integration of a sphere's radius
+recovers volume integration by (2.4). Thus the triangle inequality
+in the complete expression (2.5) gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E|Y_3(t)|\leq{}&amp;
+\nu\left(\frac1A+\frac h{A^2}\right)
+\int_{|x|\in\mathcal S_a(t)}|z|^2\,dx\\
+&amp;+\nu\left(\frac2B+\frac{16h}{3B^2}\right)
+\int_{|x|\in\mathcal S_b(t)}|z|^2\,dx\\
+\leq{}&amp;\frac{2\nu}{A}\|z(t)\|_2^2.
+\end{aligned}
+\tag{3.2}
+\]">\[
+\begin{aligned}
+\mathbb E|Y_3(t)|\leq{}&amp;
+\nu\left(\frac1A+\frac h{A^2}\right)
+\int_{|x|\in\mathcal S_a(t)}|z|^2\,dx\\
+&amp;+\nu\left(\frac2B+\frac{16h}{3B^2}\right)
+\int_{|x|\in\mathcal S_b(t)}|z|^2\,dx\\
+\leq{}&amp;\frac{2\nu}{A}\|z(t)\|_2^2.
+\end{aligned}
+\tag{3.2}
+\]</span>
+<p>Indeed each inner sphere has density <span class="math" data-tex="\(1/A\)">\(1/A\)</span> and coefficient
+<span class="math" data-tex="\(\nu/2\)">\(\nu/2\)</span>, and each outer sphere has density <span class="math" data-tex="\(2/B\)">\(2/B\)</span>.
+For the volume terms use <span class="math" data-tex="\(r\geq A\)">\(r\geq A\)</span> or <span class="math" data-tex="\(r\geq3B/8\)">\(r\geq3B/8\)</span> on the
+corresponding ramp. Both coefficients are at most <span class="math" data-tex="\(2\nu/A\)">\(2\nu/A\)</span>;
+the disjoint supports give the last line without an extra factor two.</p>
+<p>Tonelli's theorem now chooses one pair <span class="math" data-tex="\(a_0,b_0\)">\(a_0,b_0\)</span>, fixed throughout
+<span class="math" data-tex="\(J\)">\(J\)</span>, for which</p>
+<span class="math math-display" data-tex="\[
+\int_J|Y_3(t)|\,dt\leq\frac{2\nu}{A}\mathcal M,\qquad
+\mathcal M=\int_J\|z(t)\|_2^2\,dt.
+\tag{3.3}
+\]">\[
+\int_J|Y_3(t)|\,dt\leq\frac{2\nu}{A}\mathcal M,\qquad
+\mathcal M=\int_J\|z(t)\|_2^2\,dt.
+\tag{3.3}
+\]</span>
+<p>To see that a pair exists, otherwise the nonnegative integrated
+quantity would be strictly larger than its stated upper bound
+almost everywhere, and its expectation would also be larger.
+For solenoidal <span class="math" data-tex="\(w\in H^1\)">\(w\in H^1\)</span>, Parseval and
+<span class="math" data-tex="\(\xi\cdot\widehat w=0\)">\(\xi\cdot\widehat w=0\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\|\nabla\times w\|_2^2=\|\nabla w\|_2^2 .
+\tag{3.4}
+\]">\[
+\|\nabla\times w\|_2^2=\|\nabla w\|_2^2 .
+\tag{3.4}
+\]</span>
+<p>The same equality holds on the original rectangular periodic box,
+where the zero mode contributes zero to both sides. The mean of
+<span class="math" data-tex="\(w\)">\(w\)</span> remains part of its undifferentiated norms below.</p>
+<p>The rate <span class="math" data-tex="\(A^{-1}\)">\(A^{-1}\)</span> in (3.3) suffices for a flux budget
+<span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> whenever <span class="math" data-tex="\(A\geq2\nu\mathcal M/\varepsilon\)">\(A\geq2\nu\mathcal M/\varepsilon\)</span>,
+provided the original geometry and total displacement also meet
+(1.4). Exercise 1 proves why the stronger generic rate <span class="math" data-tex="\(hA^{-2}\)">\(hA^{-2}\)</span>
+cannot be substituted into the absolute average.</p>
+<h2 id="4-the-weighted-sobolev-inequality">4. The weighted Sobolev inequality</h2>
+<p>Fix <span class="math" data-tex="\(t\)">\(t\)</span>, hence <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, and let <span class="math" data-tex="\(Z\)">\(Z\)</span> be any smooth vector field
+on the closed annulus. We will prove</p>
+<span class="math math-display" data-tex="\[
+\left(\int\eta|Z|^4\,dx\right)^{1/2}
+\leq C_\eta\left[
+\int\eta|\nabla Z|^2\,dx
++h^{-2}\int\eta|Z|^2\,dx\right].
+\tag{4.1}
+\]">\[
+\left(\int\eta|Z|^4\,dx\right)^{1/2}
+\leq C_\eta\left[
+\int\eta|\nabla Z|^2\,dx
++h^{-2}\int\eta|Z|^2\,dx\right].
+\tag{4.1}
+\]</span>
+<p>The constant specified below is independent of <span class="math" data-tex="\(a,b,h\)">\(a,b,h\)</span> and the
+number of components. Write <span class="math" data-tex="\(D_Z=\int\eta|\nabla Z|^2\)">\(D_Z=\int\eta|\nabla Z|^2\)</span> and
+<span class="math" data-tex="\(H_Z=\int\eta|Z|^2\)">\(H_Z=\int\eta|Z|^2\)</span>.</p>
+<h3 id="4-1-the-unweighted-inequalities-used-in-the-proof">4.1. The unweighted inequalities used in the proof</h3>
+<p>For nonnegative functions <span class="math" data-tex="\(G_j\)">\(G_j\)</span> omitting coordinate <span class="math" data-tex="\(j\)">\(j\)</span>,
+repeated Hölder gives</p>
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R^n}\prod_{j=1}^n
+G_j(x_1,\ldots,\widehat{x_j},\ldots,x_n)^{1/(n-1)}\,dx
+\leq\prod_{j=1}^n
+\left(\int_{\mathbb R^{n-1}}G_j\right)^{1/(n-1)} .
+\tag{4.2}
+\]">\[
+\int_{\mathbb R^n}\prod_{j=1}^n
+G_j(x_1,\ldots,\widehat{x_j},\ldots,x_n)^{1/(n-1)}\,dx
+\leq\prod_{j=1}^n
+\left(\int_{\mathbb R^{n-1}}G_j\right)^{1/(n-1)} .
+\tag{4.2}
+\]</span>
+<p>Here is the full induction. For <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, (4.2) is Fubini.
+Integrate <span class="math" data-tex="\(x_n\)">\(x_n\)</span> first and apply Hölder with <span class="math" data-tex="\(n-1\)">\(n-1\)</span> equal
+exponents to the factors with <span class="math" data-tex="\(j&lt;n\)">\(j&lt;n\)</span>. Put
+<span class="math" data-tex="\(H_j=\int G_j\,dx_n\)">\(H_j=\int G_j\,dx_n\)</span>. In the remaining <span class="math" data-tex="\(n-1\)">\(n-1\)</span> variables,
+separate <span class="math" data-tex="\(G_n^{1/(n-1)}\)">\(G_n^{1/(n-1)}\)</span> by Hölder with exponents <span class="math" data-tex="\(n-1\)">\(n-1\)</span>
+and <span class="math" data-tex="\((n-1)/(n-2)\)">\((n-1)/(n-2)\)</span>. Apply the induction hypothesis to the
+product of <span class="math" data-tex="\(H_j^{1/(n-2)}\)">\(H_j^{1/(n-2)}\)</span>. Raising that result to
+<span class="math" data-tex="\((n-2)/(n-1)\)">\((n-2)/(n-1)\)</span> gives each exponent in (4.2). Truncation and
+monotone convergence cover infinite integrals.</p>
+<p>For compact <span class="math" data-tex="\(C^1\)">\(C^1\)</span> scalar <span class="math" data-tex="\(g\)">\(g\)</span>, the fundamental theorem of
+calculus gives
+<span class="math" data-tex="\(|g(x)|\leq\int_{\mathbb R}|\partial_jg|\,dx_j\)">\(|g(x)|\leq\int_{\mathbb R}|\partial_jg|\,dx_j\)</span> in each
+coordinate. Substituting these functions into (4.2) gives</p>
+<span class="math math-display" data-tex="\[
+\|g\|_{n/(n-1)}
+\leq\prod_{j=1}^n\|\partial_jg\|_1^{1/n}
+\leq\sum_{j=1}^n\|\partial_jg\|_1
+\leq\sqrt n\,\|\nabla g\|_1 .
+\tag{4.3}
+\]">\[
+\|g\|_{n/(n-1)}
+\leq\prod_{j=1}^n\|\partial_jg\|_1^{1/n}
+\leq\sum_{j=1}^n\|\partial_jg\|_1
+\leq\sqrt n\,\|\nabla g\|_1 .
+\tag{4.3}
+\]</span>
+<p>Apply (4.3) to the power of the norm of a compact smooth vector
+field <span class="math" data-tex="\(F\)">\(F\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+\alpha=\frac{2(n-1)}{n-2},\qquad p=\frac{2n}{n-2}.
+\tag{4.4}
+\]">\[
+\alpha=\frac{2(n-1)}{n-2},\qquad p=\frac{2n}{n-2}.
+\tag{4.4}
+\]</span>
+<p>Smooth approximations to the norm and dominated convergence justify
+the chain rule, giving</p>
+<span class="math math-display" data-tex="\[
+\|F\|_p^\alpha
+\leq\sqrt n\,\alpha
+\int|F|^{n/(n-2)}|\nabla F|
+\leq\sqrt n\,\alpha\,
+\|F\|_p^{n/(n-2)}\|\nabla F\|_2.
+\tag{4.5}
+\]">\[
+\|F\|_p^\alpha
+\leq\sqrt n\,\alpha
+\int|F|^{n/(n-2)}|\nabla F|
+\leq\sqrt n\,\alpha\,
+\|F\|_p^{n/(n-2)}\|\nabla F\|_2.
+\tag{4.5}
+\]</span>
+<p>If the norm vanishes the conclusion is immediate; otherwise divide
+by its positive power. Approximation extends the result to compact
+<span class="math" data-tex="\(H^1\)">\(H^1\)</span> fields. In the two dimensions we need, safe constants are</p>
+<span class="math math-display" data-tex="\[
+\|F\|_{L^6(\mathbb R^3)}\leq S_3\|\nabla F\|_2,
+\quad S_3=4\sqrt3;\qquad
+\|F\|_{L^4(\mathbb R^4)}\leq S_4\|\nabla F\|_2,
+\quad S_4=6 .
+\tag{4.6}
+\]">\[
+\|F\|_{L^6(\mathbb R^3)}\leq S_3\|\nabla F\|_2,
+\quad S_3=4\sqrt3;\qquad
+\|F\|_{L^4(\mathbb R^4)}\leq S_4\|\nabla F\|_2,
+\quad S_4=6 .
+\tag{4.6}
+\]</span>
+<h3 id="4-2-lifting-each-boundary-layer-to-four-dimensions">4.2. Lifting each boundary layer to four dimensions</h3>
+<p>Use the following fixed smooth functions:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathfrak b(s)=
+\begin{cases}e^{-1/s},&amp;s&gt;0,\\0,&amp;s\leq0,\end{cases}\\
+\chi(s)=\frac{\mathfrak b(1-s)}
+{\mathfrak b(1-s)+\mathfrak b(s-1/4)},\qquad
+\theta(s)=\chi(s^2),\qquad
+\beta_1=\|\theta&#x27;\|_\infty .
+\end{gathered}
+\tag{4.7}
+\]">\[
+\begin{gathered}
+\mathfrak b(s)=
+\begin{cases}e^{-1/s},&amp;s&gt;0,\\0,&amp;s\leq0,\end{cases}\\
+\chi(s)=\frac{\mathfrak b(1-s)}
+{\mathfrak b(1-s)+\mathfrak b(s-1/4)},\qquad
+\theta(s)=\chi(s^2),\qquad
+\beta_1=\|\theta&#x27;\|_\infty .
+\end{gathered}
+\tag{4.7}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\theta=1\)">\(\theta=1\)</span> on <span class="math" data-tex="\([-1/2,1/2]\)">\([-1/2,1/2]\)</span> and vanishes outside
+<span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span>. On the annulus let</p>
+<span class="math math-display" data-tex="\[
+\theta_i=\theta((r-a)/h),\qquad
+\theta_o=\theta((b-r)/h),\qquad
+\theta_m=1-\theta_i-\theta_o,\qquad Z_e=\theta_e Z .
+\tag{4.8}
+\]">\[
+\theta_i=\theta((r-a)/h),\qquad
+\theta_o=\theta((b-r)/h),\qquad
+\theta_m=1-\theta_i-\theta_o,\qquad Z_e=\theta_e Z .
+\tag{4.8}
+\]</span>
+<p>The edge supports are disjoint. The middle field vanishes near both
+boundaries and has <span class="math" data-tex="\(h/2\leq\eta\leq h\)">\(h/2\leq\eta\leq h\)</span> on its support.
+Partition the sphere into six smooth pieces:</p>
+<span class="math math-display" data-tex="\[
+\psi_{j,\sigma}(\vartheta)=
+\frac{\mathfrak b(\sigma\vartheta_j-1/2)}
+{\displaystyle\sum_{k=1}^3\sum_{\tau=\pm1}
+\mathfrak b(\tau\vartheta_k-1/2)},
+\quad j=1,2,3,\quad \sigma=\pm1,\qquad
+M_\theta=\max_{j,\sigma}\|\nabla_{\mathbb S^2}\psi_{j,\sigma}\|_\infty .
+\tag{4.9}
+\]">\[
+\psi_{j,\sigma}(\vartheta)=
+\frac{\mathfrak b(\sigma\vartheta_j-1/2)}
+{\displaystyle\sum_{k=1}^3\sum_{\tau=\pm1}
+\mathfrak b(\tau\vartheta_k-1/2)},
+\quad j=1,2,3,\quad \sigma=\pm1,\qquad
+M_\theta=\max_{j,\sigma}\|\nabla_{\mathbb S^2}\psi_{j,\sigma}\|_\infty .
+\tag{4.9}
+\]</span>
+<p>Their sum is one. The denominator is positive because some
+<span class="math" data-tex="\(|\vartheta_j|\geq1/\sqrt3&gt;1/2\)">\(|\vartheta_j|\geq1/\sqrt3&gt;1/2\)</span>, so <span class="math" data-tex="\(M_\theta\)">\(M_\theta\)</span> is finite
+by compactness. Each function is flat where its cap ends.</p>
+<p>For an inner cap use two original tangent coordinates <span class="math" data-tex="\(y\)">\(y\)</span> and
+the distance <span class="math" data-tex="\(s\)">\(s\)</span> from the inner boundary:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+x=(a+s)\vartheta(y),\qquad 0&lt;s&lt;h,\\
+\vartheta_{\text{other coordinates}}=y/a,\qquad
+\vartheta_j=\sigma\sqrt{1-|y|^2/a^2},\qquad
+|\vartheta_j|&gt;1/2 .
+\end{gathered}
+\tag{4.10}
+\]">\[
+\begin{gathered}
+x=(a+s)\vartheta(y),\qquad 0&lt;s&lt;h,\\
+\vartheta_{\text{other coordinates}}=y/a,\qquad
+\vartheta_j=\sigma\sqrt{1-|y|^2/a^2},\qquad
+|\vartheta_j|&gt;1/2 .
+\end{gathered}
+\tag{4.10}
+\]</span>
+<p>Direct differentiation gives the exact Jacobian and metric:</p>
+<span class="math math-display" data-tex="\[
+J_i=\frac{(a+s)^2}{a^2|\vartheta_j|},\qquad
+|dx|^2=ds^2+\frac{(a+s)^2}{a^2}
+\left(|dy|^2+\frac{(y\cdot dy)^2}{a^2-|y|^2}\right).
+\tag{4.11}
+\]">\[
+J_i=\frac{(a+s)^2}{a^2|\vartheta_j|},\qquad
+|dx|^2=ds^2+\frac{(a+s)^2}{a^2}
+\left(|dy|^2+\frac{(y\cdot dy)^2}{a^2-|y|^2}\right).
+\tag{4.11}
+\]</span>
+<p>The outer chart uses <span class="math" data-tex="\(x=(b-s)\vartheta(y)\)">\(x=(b-s)\vartheta(y)\)</span>, with <span class="math" data-tex="\(b\)">\(b\)</span> in place
+of <span class="math" data-tex="\(a\)">\(a\)</span> in the angular coordinates. In both charts,
+<span class="math" data-tex="\(1/4\leq J\leq8\)">\(1/4\leq J\leq8\)</span>, and the operator norm of the coordinate
+derivative is at most <span class="math" data-tex="\(4\)">\(4\)</span>: use <span class="math" data-tex="\(a\geq h\)">\(a\geq h\)</span>, <span class="math" data-tex="\(b\geq5h\)">\(b\geq5h\)</span>,
+and <span class="math" data-tex="\(|\vartheta_j|\geq1/2\)">\(|\vartheta_j|\geq1/2\)</span>. Also <span class="math" data-tex="\(\eta=s\)">\(\eta=s\)</span> on each edge.</p>
+<p>Pull a cap field <span class="math" data-tex="\(V=\psi_{j,\sigma}Z_i\)">\(V=\psi_{j,\sigma}Z_i\)</span> or
+<span class="math" data-tex="\(\psi_{j,\sigma}Z_o\)">\(\psi_{j,\sigma}Z_o\)</span> back to <span class="math" data-tex="\(F(y,s)\)">\(F(y,s)\)</span>, extend it by zero
+across its flat cap and <span class="math" data-tex="\(s=h\)">\(s=h\)</span> boundaries, and set</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G(y,z_1,z_2)=F(y,\sqrt{z_1^2+z_2^2}),\\
+\int_{\mathbb R^4}|G|^4=2\pi\int s|F|^4\,dy\,ds,\\
+\int_{\mathbb R^4}|\nabla G|^2
+=2\pi\int s\bigl(|\nabla_yF|^2+|F_s|^2\bigr)\,dy\,ds .
+\end{gathered}
+\tag{4.12}
+\]">\[
+\begin{gathered}
+G(y,z_1,z_2)=F(y,\sqrt{z_1^2+z_2^2}),\\
+\int_{\mathbb R^4}|G|^4=2\pi\int s|F|^4\,dy\,ds,\\
+\int_{\mathbb R^4}|\nabla G|^2
+=2\pi\int s\bigl(|\nabla_yF|^2+|F_s|^2\bigr)\,dy\,ds .
+\end{gathered}
+\tag{4.12}
+\]</span>
+<p>These identities are polar integration in the last two coordinates.
+The lift is locally Lipschitz even if <span class="math" data-tex="\(F_s(y,0)\ne0\)">\(F_s(y,0)\ne0\)</span>. It is a
+compact <span class="math" data-tex="\(H^1\)">\(H^1\)</span> field; the formulas follow off the axis and then
+by monotone limits. Convolution approximation permits (4.6).
+The Jacobian and derivative bounds therefore prove</p>
+<span class="math math-display" data-tex="\[
+\left(\int\eta|V|^4\right)^{1/2}
+\leq C_{\rm chart}\int\eta|\nabla V|^2,\qquad
+C_{\rm chart}=256\sqrt\pi\,S_4^2 .
+\tag{4.13}
+\]">\[
+\left(\int\eta|V|^4\right)^{1/2}
+\leq C_{\rm chart}\int\eta|\nabla V|^2,\qquad
+C_{\rm chart}=256\sqrt\pi\,S_4^2 .
+\tag{4.13}
+\]</span>
+<p>Every factor can be checked directly: the comparison on the left
+costs <span class="math" data-tex="\(\sqrt{8/(2\pi)}\)">\(\sqrt{8/(2\pi)}\)</span>; the four-dimensional inequality costs
+<span class="math" data-tex="\(S_4^2\)">\(S_4^2\)</span>; (4.12) contributes <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>; and the gradient comparison
+costs at most <span class="math" data-tex="\(16/(1/4)=64\)">\(16/(1/4)=64\)</span>. Their product is the stated constant.</p>
+<p><img src="assets/NS-FLUID-11/weighted-boundary-lift-79A71ED99100A2DDA3DDA6BA8F7D67D3AB57CD75776CF6B5A26E210095DC26AE.png" alt="Exact physical boundary-cap section and radial section of the four-dimensional lift" class="course-figure" width="2125" height="986" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="weighted-boundary-lift" data-asset-sha256="79A71ED99100A2DDA3DDA6BA8F7D67D3AB57CD75776CF6B5A26E210095DC26AE"></p>
+<p>The left panel is the exact <span class="math" data-tex="\(x_2=0\)">\(x_2=0\)</span> section of (4.10) for the
+positive third-coordinate cap, <span class="math" data-tex="\(a=2,h=1\)">\(a=2,h=1\)</span>, and
+<span class="math" data-tex="\(-1.5\leq y_1\leq1.5\)">\(-1.5\leq y_1\leq1.5\)</span>. The right panel is the <span class="math" data-tex="\(y=(0,0)\)">\(y=(0,0)\)</span>
+section of the four-dimensional domain in (4.12). Equal colors
+mean equal distance <span class="math" data-tex="\(s\)">\(s\)</span>; a physical distance becomes a radius
+in the last two lift coordinates. Polar integration supplies the
+factor <span class="math" data-tex="\(2\pi s\)">\(2\pi s\)</span>. These are coordinate sections, not solution plots.</p>
+<h3 id="4-3-joining-the-edges-and-the-middle">4.3. Joining the edges and the middle</h3>
+<p>The sum of the cap gradient energies for both edges is bounded by</p>
+<span class="math math-display" data-tex="\[
+\sum_{e=i,o}\sum_{j,\sigma}
+\int\eta|\nabla(\psi_{j,\sigma}Z_e)|^2
+\leq3D_Z+3(6M_\theta^2+\beta_1^2)h^{-2}H_Z .
+\tag{4.14}
+\]">\[
+\sum_{e=i,o}\sum_{j,\sigma}
+\int\eta|\nabla(\psi_{j,\sigma}Z_e)|^2
+\leq3D_Z+3(6M_\theta^2+\beta_1^2)h^{-2}H_Z .
+\tag{4.14}
+\]</span>
+<p>To prove this, expand the derivative into its three terms and use
+the three-term square inequality. The sums of the squared partition
+functions are at most one, their squared gradients sum to at most
+<span class="math" data-tex="\(6M_\theta^2/h^2\)">\(6M_\theta^2/h^2\)</span>, and the edge cutoff derivatives have disjoint
+supports and are bounded by <span class="math" data-tex="\(\beta_1/h\)">\(\beta_1/h\)</span>. This proves every term
+on the right.</p>
+<p>For each edge, the inequality
+<span class="math" data-tex="\(|\sum_{j=1}^6V_j|^4\leq6^3\sum_j|V_j|^4\)">\(|\sum_{j=1}^6V_j|^4\leq6^3\sum_j|V_j|^4\)</span>, followed by the
+square-root triangle inequality, bounds its weighted <span class="math" data-tex="\(L^4\)">\(L^4\)</span> norm
+squared by <span class="math" data-tex="\(6^{3/2}C_{\rm chart}\)">\(6^{3/2}C_{\rm chart}\)</span> times its cap gradient sum.</p>
+<p>Extend <span class="math" data-tex="\(Z_m\)">\(Z_m\)</span> by zero into <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>. Interpolation and (4.6)
+give</p>
+<span class="math math-display" data-tex="\[
+\|Z_m\|_4^2
+\leq S_3^{3/2}\|Z_m\|_2^{1/2}\|\nabla Z_m\|_2^{3/2}.
+\tag{4.15}
+\]">\[
+\|Z_m\|_4^2
+\leq S_3^{3/2}\|Z_m\|_2^{1/2}\|\nabla Z_m\|_2^{3/2}.
+\tag{4.15}
+\]</span>
+<p>Using <span class="math" data-tex="\(h/2\leq\eta\leq h\)">\(h/2\leq\eta\leq h\)</span> on the support and the weighted
+arithmetic–geometric mean inequality yields</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\left(\int\eta|Z_m|^4\right)^{1/2}
+&amp;\leq2S_3^{3/2}\left[
+\int\eta|\nabla Z_m|^2+h^{-2}\int\eta|Z_m|^2\right],\\
+\int\eta|\nabla Z_m|^2
+&amp;\leq2D_Z+2\beta_1^2h^{-2}H_Z .
+\end{aligned}
+\tag{4.16}
+\]">\[
+\begin{aligned}
+\left(\int\eta|Z_m|^4\right)^{1/2}
+&amp;\leq2S_3^{3/2}\left[
+\int\eta|\nabla Z_m|^2+h^{-2}\int\eta|Z_m|^2\right],\\
+\int\eta|\nabla Z_m|^2
+&amp;\leq2D_Z+2\beta_1^2h^{-2}H_Z .
+\end{aligned}
+\tag{4.16}
+\]</span>
+<p>For example, the first line before arithmetic–geometric mean is
+<span class="math" data-tex="\(2S_3^{3/2}(h^{-2}H_{Z_m})^{1/4}D_{Z_m}^{3/4}\)">\(2S_3^{3/2}(h^{-2}H_{Z_m})^{1/4}D_{Z_m}^{3/4}\)</span>.
+The derivative of <span class="math" data-tex="\(\theta_m\)">\(\theta_m\)</span> has the same bound as one edge
+derivative because their supports are disjoint. This proves the
+second line.</p>
+<p>Finally apply Minkowski to <span class="math" data-tex="\(Z_i+Z_o+Z_m\)">\(Z_i+Z_o+Z_m\)</span>, and Cauchy–Schwarz
+to the resulting sum of three norms. Equations (4.13)–(4.16) prove
+(4.1) with the explicit choice</p>
+<span class="math math-display" data-tex="\[
+C_\eta=3\left[
+6^{3/2}C_{\rm chart}\,3(1+6M_\theta^2+\beta_1^2)
++2S_3^{3/2}(3+2\beta_1^2)\right].
+\tag{4.17}
+\]">\[
+C_\eta=3\left[
+6^{3/2}C_{\rm chart}\,3(1+6M_\theta^2+\beta_1^2)
++2S_3^{3/2}(3+2\beta_1^2)\right].
+\tag{4.17}
+\]</span>
+<p>The proof retains both boundary layers, the plateau and every vector
+component. It does not impose a zero boundary value on the original
+field <span class="math" data-tex="\(Z\)">\(Z\)</span>.</p>
+<h2 id="5-estimating-stretching-without-losing-the-harmonic-part">5. Estimating stretching without losing the harmonic part</h2>
+<p>The difficult term in (2.7) is <span class="math" data-tex="\(T_6\)">\(T_6\)</span>. The curl <span class="math" data-tex="\(z\)">\(z\)</span> determines
+a local part of <span class="math" data-tex="\(w\)">\(w\)</span>; a harmonic remainder still contributes to
+its gradient. We estimate both.</p>
+<h3 id="5-1-the-exact-local-curl-inverse">5.1. The exact local curl inverse</h3>
+<p>Let <span class="math" data-tex="\(B_*=B(x_*,r_*)\)">\(B_*=B(x_*,r_*)\)</span> with <span class="math" data-tex="\(10B_*\)">\(10B_*\)</span> inside the annulus, where
+<span class="math" data-tex="\(kB_*\)">\(kB_*\)</span> means the concentric ball with radius <span class="math" data-tex="\(kr_*\)">\(kr_*\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+\psi(x)=\theta\!\left(\frac{|x-x_*|}{4r_*}\right),\qquad
+A_*=-\Delta^{-1}\nabla\times(\psi z),\qquad H=w-A_* .
+\tag{5.1}
+\]">\[
+\psi(x)=\theta\!\left(\frac{|x-x_*|}{4r_*}\right),\qquad
+A_*=-\Delta^{-1}\nabla\times(\psi z),\qquad H=w-A_* .
+\tag{5.1}
+\]</span>
+<p>The cutoff equals one on <span class="math" data-tex="\(2B_*\)">\(2B_*\)</span> and is supported in <span class="math" data-tex="\(4B_*\)">\(4B_*\)</span>.
+For the Fourier convention of the preceding lessons, its full symbol is</p>
+<span class="math math-display" data-tex="\[
+\widehat A_*(\xi)
+=\frac{i\,\xi\times\widehat{\psi z}(\xi)}
+{2\pi|\xi|^2},\qquad \xi\ne0 .
+\tag{5.2}
+\]">\[
+\widehat A_*(\xi)
+=\frac{i\,\xi\times\widehat{\psi z}(\xi)}
+{2\pi|\xi|^2},\qquad \xi\ne0 .
+\tag{5.2}
+\]</span>
+<p>Parseval gives the following two bounds:</p>
+<span class="math math-display" data-tex="\[
+\|\nabla A_*\|_2\leq\|\psi z\|_2,\qquad
+\|A_*\|_6\leq S_3\|\psi z\|_2 .
+\tag{5.3}
+\]">\[
+\|\nabla A_*\|_2\leq\|\psi z\|_2,\qquad
+\|A_*\|_6\leq S_3\|\psi z\|_2 .
+\tag{5.3}
+\]</span>
+<p>Indeed the square of the full gradient symbol is
+<span class="math" data-tex="\(|\xi\times\widehat{\psi z}|^2/|\xi|^2\)">\(|\xi\times\widehat{\psi z}|^2/|\xi|^2\)</span>, bounded by
+<span class="math" data-tex="\(|\widehat{\psi z}|^2\)">\(|\widehat{\psi z}|^2\)</span>. For smooth compact input, (5.2) is
+square integrable near zero and at infinity. Thus <span class="math" data-tex="\(A_*\in H^1\)">\(A_*\in H^1\)</span>,
+and cutoff approximation followed by (4.6) proves the second bound.
+This also specifies the inverse without an arbitrary additive constant.</p>
+<p>Since <span class="math" data-tex="\(\Delta w=-\nabla\times z\)">\(\Delta w=-\nabla\times z\)</span>, the field <span class="math" data-tex="\(H\)">\(H\)</span> is harmonic
+on <span class="math" data-tex="\(2B_*\)">\(2B_*\)</span>. Define a radial probability kernel and its constant:</p>
+<span class="math math-display" data-tex="\[
+\mu(x)=\frac{\theta(|x|)}{\int_{\mathbb R^3}\theta(|y|)\,dy},
+\qquad \kappa=\|\nabla\mu\|_2,\qquad v_3=\frac{4\pi}3 .
+\tag{5.4}
+\]">\[
+\mu(x)=\frac{\theta(|x|)}{\int_{\mathbb R^3}\theta(|y|)\,dy},
+\qquad \kappa=\|\nabla\mu\|_2,\qquad v_3=\frac{4\pi}3 .
+\tag{5.4}
+\]</span>
+<p>The mean-value property gives <span class="math" data-tex="\(H=\mu_{r_*}*H\)">\(H=\mu_{r_*}*H\)</span> on <span class="math" data-tex="\(B_*\)">\(B_*\)</span>,
+where <span class="math" data-tex="\(\mu_{r_*}(y)=r_*^{-3}\mu(y/r_*)\)">\(\mu_{r_*}(y)=r_*^{-3}\mu(y/r_*)\)</span>. To prove the property,
+differentiate the spherical mean in its radius and apply the
+divergence theorem to <span class="math" data-tex="\(\Delta H=0\)">\(\Delta H=0\)</span>. The mean is constant and
+equals the center value as the radius tends to zero. Integration
+against the radial probability kernel then proves the convolution
+identity. Differentiating that identity and applying Cauchy–Schwarz
+proves</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\nabla H\|_{L^\infty(B_*)}
+&amp;\leq\kappa r_*^{-5/2}\|H\|_{L^2(2B_*)}\\
+&amp;\leq\kappa r_*^{-5/2}\|w\|_{L^2(2B_*)}
++2\kappa v_3^{1/3}S_3r_*^{-3/2}\|z\|_{L^2(4B_*)}.
+\end{aligned}
+\tag{5.5}
+\]">\[
+\begin{aligned}
+\|\nabla H\|_{L^\infty(B_*)}
+&amp;\leq\kappa r_*^{-5/2}\|H\|_{L^2(2B_*)}\\
+&amp;\leq\kappa r_*^{-5/2}\|w\|_{L^2(2B_*)}
++2\kappa v_3^{1/3}S_3r_*^{-3/2}\|z\|_{L^2(4B_*)}.
+\end{aligned}
+\tag{5.5}
+\]</span>
+<p>The second term uses (5.3) and
+<span class="math" data-tex="\(|2B_*|^{1/3}=2v_3^{1/3}r_*\)">\(|2B_*|^{1/3}=2v_3^{1/3}r_*\)</span>. Put
+<span class="math" data-tex="\(a_*=\|z\|_{L^2(4B_*)}\)">\(a_*=\|z\|_{L^2(4B_*)}\)</span>, <span class="math" data-tex="\(b_*=\|z\|_{L^4(4B_*)}\)">\(b_*=\|z\|_{L^4(4B_*)}\)</span> and
+<span class="math" data-tex="\(W_*=\|w\|_{L^2(2B_*)}\)">\(W_*=\|w\|_{L^2(2B_*)}\)</span>. Hölder for <span class="math" data-tex="\(A_*\)">\(A_*\)</span> and (5.5)
+for <span class="math" data-tex="\(H\)">\(H\)</span> give the complete local estimate</p>
+<span class="math math-display" data-tex="\[
+\int_{B_*}|z|^2|\nabla w|
+\leq C_La_*b_*^2+\kappa r_*^{-5/2}a_*^2W_*,
+\qquad C_L=1+16\kappa v_3^{5/6}S_3 .
+\tag{5.6}
+\]">\[
+\int_{B_*}|z|^2|\nabla w|
+\leq C_La_*b_*^2+\kappa r_*^{-5/2}a_*^2W_*,
+\qquad C_L=1+16\kappa v_3^{5/6}S_3 .
+\tag{5.6}
+\]</span>
+<p>For the last part of (5.5), use
+<span class="math" data-tex="\(a_*^2\leq|4B_*|^{1/2}b_*^2
+=8v_3^{1/2}r_*^{3/2}b_*^2\)">\(a_*^2\leq|4B_*|^{1/2}b_*^2
+=8v_3^{1/2}r_*^{3/2}b_*^2\)</span>.
+Multiplication by <span class="math" data-tex="\(2\kappa v_3^{1/3}S_3r_*^{-3/2}a_*\)">\(2\kappa v_3^{1/3}S_3r_*^{-3/2}a_*\)</span>
+gives the additional constant in (5.6). No harmonic term is discarded.</p>
+<h3 id="5-2-a-cover-with-a-proved-overlap-bound">5.2. A cover with a proved overlap bound</h3>
+<p>Set <span class="math" data-tex="\(K=1000\)">\(K=1000\)</span> and <span class="math" data-tex="\(\rho(x)=\eta(x)/K\)">\(\rho(x)=\eta(x)/K\)</span>. This function is
+<span class="math" data-tex="\(1/K\)">\(1/K\)</span>-Lipschitz. Choose a maximal disjoint family</p>
+<span class="math math-display" data-tex="\[
+b_j=B(x_j,\rho(x_j)/5),\qquad
+B_j=5b_j,\qquad r_j=\rho(x_j).
+\tag{5.7}
+\]">\[
+b_j=B(x_j,\rho(x_j)/5),\qquad
+B_j=5b_j,\qquad r_j=\rho(x_j).
+\tag{5.7}
+\]</span>
+<p>The maximal principle gives such a family. It is countable because
+each disjoint open ball contains a distinct rational point.
+If two candidate small balls intersect, the Lipschitz inequality gives</p>
+<span class="math math-display" data-tex="\[
+|\rho(x)-\rho(y)|\leq\frac{\rho(x)+\rho(y)}{5K}.
+\tag{5.8}
+\]">\[
+|\rho(x)-\rho(y)|\leq\frac{\rho(x)+\rho(y)}{5K}.
+\tag{5.8}
+\]</span>
+<p>Their radii therefore have ratio at most
+<span class="math" data-tex="\((5K+1)/(5K-1)&lt;2\)">\((5K+1)/(5K-1)&lt;2\)</span>. Any candidate not in the maximal family
+meets a selected one; (5.8) places its center in that selected
+<span class="math" data-tex="\(B_j\)">\(B_j\)</span>. The <span class="math" data-tex="\(B_j\)">\(B_j\)</span> thus cover the annulus.</p>
+<p>On <span class="math" data-tex="\(10B_j\)">\(10B_j\)</span>, Lipschitz continuity gives</p>
+<span class="math math-display" data-tex="\[
+(K-10)r_j\leq\eta(x)\leq(K+10)r_j .
+\tag{5.9}
+\]">\[
+(K-10)r_j\leq\eta(x)\leq(K+10)r_j .
+\tag{5.9}
+\]</span>
+<p>Consequently these balls stay inside the annulus. If a point <span class="math" data-tex="\(x\)">\(x\)</span>
+lies in <span class="math" data-tex="\(10B_j\)">\(10B_j\)</span>, the corresponding disjoint <span class="math" data-tex="\(b_j\)">\(b_j\)</span> has radius
+at least <span class="math" data-tex="\(\eta(x)/(5(K+10))\)">\(\eta(x)/(5(K+10))\)</span>. Every such <span class="math" data-tex="\(b_j\)">\(b_j\)</span> is contained
+in the ball about <span class="math" data-tex="\(x\)">\(x\)</span> of radius
+<span class="math" data-tex="\((10+1/5)\eta(x)/(K-10)\)">\((10+1/5)\eta(x)/(K-10)\)</span>. Comparing volumes gives the uniform
+overlap bound</p>
+<span class="math math-display" data-tex="\[
+M=\left\lceil\left(51\frac{K+10}{K-10}\right)^3\right\rceil .
+\tag{5.10}
+\]">\[
+M=\left\lceil\left(51\frac{K+10}{K-10}\right)^3\right\rceil .
+\tag{5.10}
+\]</span>
+<p>In particular, the sharper comparison on <span class="math" data-tex="\(4B_j\)">\(4B_j\)</span> yields</p>
+<span class="math math-display" data-tex="\[
+\sum_jr_j\int_{4B_j}|z|^p
+\leq\frac{M}{K-4}\int\eta|z|^p,\qquad p=2,4.
+\tag{5.11}
+\]">\[
+\sum_jr_j\int_{4B_j}|z|^p
+\leq\frac{M}{K-4}\int\eta|z|^p,\qquad p=2,4.
+\tag{5.11}
+\]</span>
+<p>This proves the cover and all overlap information used below.</p>
+<h3 id="5-3-summing-both-parts-of-the-local-estimate">5.3. Summing both parts of the local estimate</h3>
+<p>Since <span class="math" data-tex="\(\eta\leq(K+1)r_j\)">\(\eta\leq(K+1)r_j\)</span> on <span class="math" data-tex="\(B_j\)">\(B_j\)</span>, use (5.6) and the cover
+to bound <span class="math" data-tex="\(|T_6|\)">\(|T_6|\)</span> by <span class="math" data-tex="\((K+1)\)">\((K+1)\)</span> times the sum of <span class="math" data-tex="\(r_j\)">\(r_j\)</span> times
+its right side. For the principal part, Cauchy–Schwarz in <span class="math" data-tex="\(j\)">\(j\)</span>
+and (5.11) give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_jr_j\alpha_j\beta_j^2
+&amp;\leq\left(\sum_jr_j\alpha_j^2\right)^{1/2}
+\left(\sum_jr_j\beta_j^4\right)^{1/2}\\
+&amp;\leq\frac{M}{K-4}(2E)^{1/2}
+\left(\int\eta|z|^4\right)^{1/2}.
+\end{aligned}
+\tag{5.12}
+\]">\[
+\begin{aligned}
+\sum_jr_j\alpha_j\beta_j^2
+&amp;\leq\left(\sum_jr_j\alpha_j^2\right)^{1/2}
+\left(\sum_jr_j\beta_j^4\right)^{1/2}\\
+&amp;\leq\frac{M}{K-4}(2E)^{1/2}
+\left(\int\eta|z|^4\right)^{1/2}.
+\end{aligned}
+\tag{5.12}
+\]</span>
+<p>Here <span class="math" data-tex="\(\alpha_j=\|z\|_{L^2(4B_j)}\)">\(\alpha_j=\|z\|_{L^2(4B_j)}\)</span> and
+<span class="math" data-tex="\(\beta_j=\|z\|_{L^4(4B_j)}\)">\(\beta_j=\|z\|_{L^4(4B_j)}\)</span> are the two norms in (5.6).
+Apply (4.1) to the last factor.</p>
+<p>For the harmonic part, write <span class="math" data-tex="\(W_j=\|w\|_{L^2(2B_j)}\)">\(W_j=\|w\|_{L^2(2B_j)}\)</span> and
+split the balls at <span class="math" data-tex="\(r_j=h/(2K)\)">\(r_j=h/(2K)\)</span>.
+On larger balls use <span class="math" data-tex="\(W_j\leq W=\|w\|_2\)">\(W_j\leq W=\|w\|_2\)</span>, with the norm over
+the whole original domain, and</p>
+<span class="math math-display" data-tex="\[
+r_j^{-3/2}\alpha_j^2W_j
+\leq W(2K/h)^{5/2}r_j\alpha_j^2 .
+\tag{5.13}
+\]">\[
+r_j^{-3/2}\alpha_j^2W_j
+\leq W(2K/h)^{5/2}r_j\alpha_j^2 .
+\tag{5.13}
+\]</span>
+<p>On smaller balls, (5.9) with <span class="math" data-tex="\(4\)">\(4\)</span> in place of <span class="math" data-tex="\(10\)">\(10\)</span> gives
+<span class="math" data-tex="\(\eta\leq(K+4)r_j&lt;h\)">\(\eta\leq(K+4)r_j&lt;h\)</span> throughout <span class="math" data-tex="\(4B_j\)">\(4B_j\)</span>. These balls lie
+in the ramps. The bound</p>
+<span class="math math-display" data-tex="\[
+W_j\leq\sqrt{8v_3}\,r_j^{3/2}\|w\|_\infty
+\tag{5.14}
+\]">\[
+W_j\leq\sqrt{8v_3}\,r_j^{3/2}\|w\|_\infty
+\tag{5.14}
+\]</span>
+<p>and the overlap estimate control their sum by <span class="math" data-tex="\(R\)">\(R\)</span>.
+We have proved the full stretching estimate</p>
+<span class="math math-display" data-tex="\[
+|T_6|\leq C_1\sqrt E\,D+2C_1h^{-2}E^{3/2}
++C_2Wh^{-5/2}E+C_3\|w\|_\infty R,
+\tag{5.15}
+\]">\[
+|T_6|\leq C_1\sqrt E\,D+2C_1h^{-2}E^{3/2}
++C_2Wh^{-5/2}E+C_3\|w\|_\infty R,
+\tag{5.15}
+\]</span>
+<p>with all constants specified:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C_1=\frac{\sqrt2M(K+1)}{K-4}C_LC_\eta,\qquad
+C_2=\frac{2\kappa M(K+1)}{K-4}(2K)^{5/2},\\
+C_3=\kappa M(K+1)\sqrt{8v_3}.
+\end{gathered}
+\tag{5.16}
+\]">\[
+\begin{gathered}
+C_1=\frac{\sqrt2M(K+1)}{K-4}C_LC_\eta,\qquad
+C_2=\frac{2\kappa M(K+1)}{K-4}(2K)^{5/2},\\
+C_3=\kappa M(K+1)\sqrt{8v_3}.
+\end{gathered}
+\tag{5.16}
+\]</span>
+<p>The maximum in (5.14)–(5.15) may be taken on the fixed enclosing
+annulus <span class="math" data-tex="\(A\leq|x|\leq B\)">\(A\leq|x|\leq B\)</span>: every ball used is inside it.</p>
+<h2 id="6-the-full-force-and-the-energy-budget">6. The full force and the energy budget</h2>
+<p>Let all the following norms be taken on the support of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>,
+or on the fixed enclosing annulus if a bound independent of the
+radii is needed:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+U_3=\|u\|_3,\quad L_6=\|\nabla\ell\|_6,\quad
+L_0=\|\ell\|_\infty,\quad L_3=\|\ell\|_3,\\
+V_6=\|\nabla v\|_6,\quad V_1=\|\nabla v\|_\infty,\quad
+G=\|\nabla w\|_2 .
+\end{gathered}
+\tag{6.1}
+\]">\[
+\begin{gathered}
+U_3=\|u\|_3,\quad L_6=\|\nabla\ell\|_6,\quad
+L_0=\|\ell\|_\infty,\quad L_3=\|\ell\|_3,\\
+V_6=\|\nabla v\|_6,\quad V_1=\|\nabla v\|_\infty,\quad
+G=\|\nabla w\|_2 .
+\end{gathered}
+\tag{6.1}
+\]</span>
+<p>For positive constants <span class="math" data-tex="\(\lambda_5,\lambda_8,\lambda_9\)">\(\lambda_5,\lambda_8,\lambda_9\)</span>, all the
+remaining cross terms obey</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|T_5|&amp;\leq\lambda_5E+\frac{h}{2\lambda_5}U_3^2L_6^2,&amp;
+|T_7|&amp;\leq2V_1E,\\
+|T_8|&amp;\leq\lambda_8E+\frac{h}{2\lambda_8}L_0^2G^2,&amp;
+|T_9|&amp;\leq\lambda_9E+\frac{h}{2\lambda_9}L_3^2V_6^2 .
+\end{aligned}
+\tag{6.2}
+\]">\[
+\begin{aligned}
+|T_5|&amp;\leq\lambda_5E+\frac{h}{2\lambda_5}U_3^2L_6^2,&amp;
+|T_7|&amp;\leq2V_1E,\\
+|T_8|&amp;\leq\lambda_8E+\frac{h}{2\lambda_8}L_0^2G^2,&amp;
+|T_9|&amp;\leq\lambda_9E+\frac{h}{2\lambda_9}L_3^2V_6^2 .
+\end{aligned}
+\tag{6.2}
+\]</span>
+<p>For instance Cauchy–Schwarz, <span class="math" data-tex="\(\eta\leq h\)">\(\eta\leq h\)</span>, and Hölder give
+<span class="math" data-tex="\(|T_5|\leq\sqrt{2hE}\,U_3L_6\)">\(|T_5|\leq\sqrt{2hE}\,U_3L_6\)</span>.
+The nonnegative square
+<span class="math" data-tex="\((\sqrt{\lambda_5E}-\sqrt{h/(2\lambda_5)}U_3L_6)^2\)">\((\sqrt{\lambda_5E}-\sqrt{h/(2\lambda_5)}U_3L_6)^2\)</span>
+proves its bound. The same calculation with <span class="math" data-tex="\(L_0G\)">\(L_0G\)</span> or <span class="math" data-tex="\(L_3V_6\)">\(L_3V_6\)</span>
+proves the other mixed bounds; <span class="math" data-tex="\(T_7\)">\(T_7\)</span> uses the gradient maximum.</p>
+<p>Keep the original admissible force as a sum</p>
+<span class="math math-display" data-tex="\[
+f=f_a+f_b,\qquad
+f_a\in L^1(J;H^1),\qquad f_b\in L^2(J;L^2),\qquad
+A_f=\|\nabla\times f_a\|_2,\quad B_f=\|f_b\|_2 .
+\tag{6.3}
+\]">\[
+f=f_a+f_b,\qquad
+f_a\in L^1(J;H^1),\qquad f_b\in L^2(J;L^2),\qquad
+A_f=\|\nabla\times f_a\|_2,\quad B_f=\|f_b\|_2 .
+\tag{6.3}
+\]</span>
+<p>For <span class="math" data-tex="\(f_b\)">\(f_b\)</span>, the exact distributional pairing is</p>
+<span class="math math-display" data-tex="\[
+\int\eta z\cdot(\nabla\times f_b)
+=\int f_b\cdot\bigl[\eta\nabla\times z+\nabla\eta\times z\bigr].
+\tag{6.4}
+\]">\[
+\int\eta z\cdot(\nabla\times f_b)
+=\int f_b\cdot\bigl[\eta\nabla\times z+\nabla\eta\times z\bigr].
+\tag{6.4}
+\]</span>
+<p>There is no boundary term because <span class="math" data-tex="\(\eta z\)">\(\eta z\)</span> is compactly supported.
+The first term is at most <span class="math" data-tex="\(\sqrt{2h}\,B_f\sqrt D\)">\(\sqrt{2h}\,B_f\sqrt D\)</span>, using
+<span class="math" data-tex="\(|\nabla\times z|^2\leq2|\nabla z|^2\)">\(|\nabla\times z|^2\leq2|\nabla z|^2\)</span> and <span class="math" data-tex="\(\eta^2\leq h\eta\)">\(\eta^2\leq h\eta\)</span>.
+The second is at most <span class="math" data-tex="\(B_f\sqrt R\)">\(B_f\sqrt R\)</span>. For <span class="math" data-tex="\(f_a\)">\(f_a\)</span>, direct pairing
+gives <span class="math" data-tex="\(\sqrt{2h}\,A_f\sqrt E\)">\(\sqrt{2h}\,A_f\sqrt E\)</span>. Approximation in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>
+justifies (6.4) for the stated <span class="math" data-tex="\(f_b\)">\(f_b\)</span>; the bounded cutoff gradient
+keeps its two terms continuous. No square integrability in time
+of either force curl has been assumed.</p>
+<p>Choose <span class="math" data-tex="\(\gamma&gt;0\)">\(\gamma&gt;0\)</span> and <span class="math" data-tex="\(c\geq8(C_3+1)\)">\(c\geq8(C_3+1)\)</span>, and use the actual speed</p>
+<span class="math math-display" data-tex="\[
+q&#x27;=c\bigl(\gamma+\|u\|_\infty+\|v\|_\infty\bigr),
+\tag{6.5}
+\]">\[
+q&#x27;=c\bigl(\gamma+\|u\|_\infty+\|v\|_\infty\bigr),
+\tag{6.5}
+\]</span>
+<p>with both maxima on the fixed enclosing annulus. Integrate this
+equation with a specified <span class="math" data-tex="\(q(t_1)\geq0\)">\(q(t_1)\geq0\)</span>, and check that the
+result stays at most <span class="math" data-tex="\(A\)">\(A\)</span>. This is a geometric constraint on the
+actual interval. The constants and time interval may not be altered
+silently to make it hold.</p>
+<p>Since <span class="math" data-tex="\(\|w\|_\infty\leq\|u\|_\infty+\|v\|_\infty\)">\(\|w\|_\infty\leq\|u\|_\infty+\|v\|_\infty\)</span>, (6.5)
+gives</p>
+<span class="math math-display" data-tex="\[
+|Y_4|+C_3\|w\|_\infty R\leq\frac12Y_2 .
+\tag{6.6}
+\]">\[
+|Y_4|+C_3\|w\|_\infty R\leq\frac12Y_2 .
+\tag{6.6}
+\]</span>
+<p>The force contributions are controlled by the following exact
+Young inequalities, with any fixed <span class="math" data-tex="\(\sigma&gt;0\)">\(\sigma&gt;0\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sqrt{2h}\,B_f\sqrt D
+&amp;\leq\frac\nu4D+\frac{2h}{\nu}B_f^2,\\
+B_f\sqrt R&amp;\leq\frac14Y_2+\frac2{q&#x27;}B_f^2,\\
+\sqrt{2h}\,A_f\sqrt E
+&amp;\leq\frac{A_f}{\sigma}E+\frac{h\sigma}2A_f .
+\end{aligned}
+\tag{6.7}
+\]">\[
+\begin{aligned}
+\sqrt{2h}\,B_f\sqrt D
+&amp;\leq\frac\nu4D+\frac{2h}{\nu}B_f^2,\\
+B_f\sqrt R&amp;\leq\frac14Y_2+\frac2{q&#x27;}B_f^2,\\
+\sqrt{2h}\,A_f\sqrt E
+&amp;\leq\frac{A_f}{\sigma}E+\frac{h\sigma}2A_f .
+\end{aligned}
+\tag{6.7}
+\]</span>
+<p>Completing a square proves each line. The last line uses only
+the prescribed <span class="math" data-tex="\(L^1\)">\(L^1\)</span> time norm of <span class="math" data-tex="\(A_f\)">\(A_f\)</span>.</p>
+<p>Set</p>
+<span class="math math-display" data-tex="\[
+E_*=\left(\frac{\nu}{4C_1}\right)^2.
+\tag{6.8}
+\]">\[
+E_*=\left(\frac{\nu}{4C_1}\right)^2.
+\tag{6.8}
+\]</span>
+<p>As long as <span class="math" data-tex="\(E\leq E_*\)">\(E\leq E_*\)</span>, the first term of (5.15) costs at most
+<span class="math" data-tex="\(\nu D/4\)">\(\nu D/4\)</span>, and its second costs at most <span class="math" data-tex="\(\nu E/(2h^2)\)">\(\nu E/(2h^2)\)</span>.
+Insert every bound into (2.6). The result is</p>
+<span class="math math-display" data-tex="\[
+E&#x27;+\frac\nu2D+\frac14Y_2
+\leq\mathfrak a(t)E+|Y_3(t)|+\mathfrak d(t),
+\tag{6.9}
+\]">\[
+E&#x27;+\frac\nu2D+\frac14Y_2
+\leq\mathfrak a(t)E+|Y_3(t)|+\mathfrak d(t),
+\tag{6.9}
+\]</span>
+<p>where no coefficient is suppressed:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathfrak a={}&amp;\lambda_5+\lambda_8+\lambda_9+2V_1
++C_2Wh^{-5/2}+\frac\nu{2h^2}+\frac{A_f}{\sigma},\\
+\mathfrak d={}&amp;\frac{hU_3^2L_6^2}{2\lambda_5}
++\frac{hL_0^2G^2}{2\lambda_8}
++\frac{hL_3^2V_6^2}{2\lambda_9}\\
+&amp;+\left(\frac{2h}{\nu}+\frac2{q&#x27;}\right)B_f^2
++\frac{h\sigma}2A_f .
+\end{aligned}
+\tag{6.10}
+\]">\[
+\begin{aligned}
+\mathfrak a={}&amp;\lambda_5+\lambda_8+\lambda_9+2V_1
++C_2Wh^{-5/2}+\frac\nu{2h^2}+\frac{A_f}{\sigma},\\
+\mathfrak d={}&amp;\frac{hU_3^2L_6^2}{2\lambda_5}
++\frac{hL_0^2G^2}{2\lambda_8}
++\frac{hL_3^2V_6^2}{2\lambda_9}\\
+&amp;+\left(\frac{2h}{\nu}+\frac2{q&#x27;}\right)B_f^2
++\frac{h\sigma}2A_f .
+\end{aligned}
+\tag{6.10}
+\]</span>
+<p>For integrable coefficients, multiplication by the integrating
+factor proves, up to a possible first crossing of <span class="math" data-tex="\(E_*\)">\(E_*\)</span>,</p>
+<span class="math math-display" data-tex="\[
+E(t)\leq
+e^{\int_{t_1}^t\mathfrak a}
+\left[
+E(t_1)+\int_{t_1}^t e^{-\int_{t_1}^s\mathfrak a}
+(|Y_3(s)|+\mathfrak d(s))\,ds
+\right].
+\tag{6.11}
+\]">\[
+E(t)\leq
+e^{\int_{t_1}^t\mathfrak a}
+\left[
+E(t_1)+\int_{t_1}^t e^{-\int_{t_1}^s\mathfrak a}
+(|Y_3(s)|+\mathfrak d(s))\,ds
+\right].
+\tag{6.11}
+\]</span>
+<p>If the calculated right side is strictly below <span class="math" data-tex="\(E_*\)">\(E_*\)</span> throughout
+the interval, continuity rules out a first crossing: at that time
+(6.11) would give a strict smaller value than <span class="math" data-tex="\(E_*\)">\(E_*\)</span>.
+Exercise 4 supplies a single, radius-independent numerical test,
+selects the pair in (3.3), and proves the integrated dissipation
+and surviving-annulus bounds.</p>
+<p>On a rectangular periodic box the proof applies inside an injective
+ball with outer radius <span class="math" data-tex="\(B\)">\(B\)</span> smaller than half the shortest period.
+Use its Euclidean coordinates in the charts and local curl inverse.
+The source field is the actual lifted periodic field on that ball;
+the cutoff product in (5.1) extends by zero to <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>.
+The global <span class="math" data-tex="\(W\)">\(W\)</span> and force norms in (6.3) remain the original
+periodic norms, including the velocity mean. No global Euclidean
+cutoff is imposed on the periodic flow.</p>
+<h2 id="7-comparison-with-the-original-argument">7. Comparison with the original argument</h2>
+<p>The source is Terence Tao, <em>Quantitative bounds for critically
+bounded solutions to the Navier–Stokes equations</em>,
+<a href="https://arxiv.org/abs/1908.04958v2">arXiv:1908.04958v2</a>,
+original author file <em>article.tex</em>, the annular regularity argument
+at lines 660–894. The source uses unforced flow with unit viscosity.
+Our <span class="math" data-tex="\(v,w,\ell,z\)">\(v,w,\ell,z\)</span> correspond respectively to its linear velocity,
+nonlinear velocity, linear vorticity and nonlinear vorticity.</p>
+<p>Several local steps need visible correction when used in this lesson:</p>
+<ul>
+<li>The displayed dissipation <span class="math" data-tex="\(Y_1\)">\(Y_1\)</span> at line 712 omits its cutoff.
+Equation (2.8) proves that the term is <span class="math" data-tex="\(\int\eta|\nabla z|^2\)">\(\int\eta|\nabla z|^2\)</span>.</li>
+<li>The sphere contributions at line 737 display <span class="math" data-tex="\(|z|\)">\(|z|\)</span>, whereas
+the energy calculation gives <span class="math" data-tex="\(|z|^2\)">\(|z|^2\)</span>. Equations (2.3)–(2.5)
+retain the full measures and their four signs.</li>
+<li>Lines 739–743 use an absolute average at the scale <span class="math" data-tex="\(h/r^2\)">\(h/r^2\)</span>.
+Exercise 1 disproves this as a generic analytic estimate.
+Equations (3.2)–(3.3) prove a weaker sufficient absolute bound;
+Exercise 2 proves the exact signed smooth-average map separately.</li>
+<li>The stretching calculation at lines 773–845 uses a local curl
+inverse and a weighted cover. Sections 4–5 supply full independent
+proofs, including the harmonic remainder, explicit cover and
+all summation constants. An absolute upper bound, rather than
+a positive comparability assertion for signed stretching, is used.</li>
+</ul>
+<p>These are corrections of particular displayed or analytic steps.
+The counterexample in Exercise 1 is not asserted to be the nonlinear
+vorticity of an unforced source trajectory. It does not disprove the
+source's endpoint theorem.</p>
+<p>The energy estimate just proved also does not establish pointwise
+regularity at the initial time from an <span class="math" data-tex="\(H^1\)">\(H^1\)</span> bound. A later heat
+iteration must keep its positive time margin and all forcing terms.
+The actual total speed in (6.5), the initial energy and the heat
+field norms in (6.10) must be estimated for the intended trajectory.
+No bound on them is inferred solely from a bounded <span class="math" data-tex="\(L^3\)">\(L^3\)</span> norm here.</p>
+<h2 id="8-exercises-with-complete-solutions">8. Exercises with complete solutions</h2>
+<h3 id="exercise-1-the-absolute-average-cannot-cancel-signed-peaks">Exercise 1: the absolute average cannot cancel signed peaks</h3>
+<p>Take <span class="math" data-tex="\(q=0\)">\(q=0\)</span>, <span class="math" data-tex="\(0&lt;h&lt;A/10\)">\(0&lt;h&lt;A/10\)</span>, <span class="math" data-tex="\(B\geq16A\)">\(B\geq16A\)</span>,
+<span class="math" data-tex="\(r_0=3A/2\)">\(r_0=3A/2\)</span>, and <span class="math" data-tex="\(0&lt;\delta&lt;h/4\)">\(0&lt;\delta&lt;h/4\)</span>. Let <span class="math" data-tex="\(c\)">\(c\)</span> be nonzero
+and smooth with compact support in <span class="math" data-tex="\((r_0,r_0+\delta)\)">\((r_0,r_0+\delta)\)</span>.
+Show that the smooth solenoidal field</p>
+<span class="math math-display" data-tex="\[
+z(x)=c(|x|)(e_3\times x),\qquad
+\mathcal G(r)=\int_{|x|=r}|z|^2\,dS
+=\frac{8\pi}3c(r)^2r^4
+\tag{8.1}
+\]">\[
+z(x)=c(|x|)(e_3\times x),\qquad
+\mathcal G(r)=\int_{|x|=r}|z|^2\,dS
+=\frac{8\pi}3c(r)^2r^4
+\tag{8.1}
+\]</span>
+<p>prevents a uniform bound of <span class="math" data-tex="\(\mathbb E|Y_3|\)">\(\mathbb E|Y_3|\)</span> by a constant
+times <span class="math" data-tex="\(\nu h\int |z|^2/r^2\)">\(\nu h\int |z|^2/r^2\)</span>.</p>
+<p><strong>Solution.</strong> The radial gradient of <span class="math" data-tex="\(c\)">\(c\)</span> is perpendicular to
+<span class="math" data-tex="\(e_3\times x\)">\(e_3\times x\)</span>, and this linear vector field has zero divergence.
+The support avoids the origin, so the extended field is smooth and
+solenoidal everywhere. Integrating
+<span class="math" data-tex="\(1-\vartheta_3^2\)">\(1-\vartheta_3^2\)</span> over the unit sphere gives <span class="math" data-tex="\(8\pi/3\)">\(8\pi/3\)</span>;
+including the vector's factor <span class="math" data-tex="\(r^2\)">\(r^2\)</span> and the surface factor <span class="math" data-tex="\(r^2\)">\(r^2\)</span>
+proves (8.1).</p>
+<p>For <span class="math" data-tex="\(a_0\in(r_0,r_0+\delta)\)">\(a_0\in(r_0,r_0+\delta)\)</span>, the sphere at <span class="math" data-tex="\(a_0+h\)">\(a_0+h\)</span>
+misses the field, as do both outer spheres. The inner volume
+contribution is nonnegative. Thus (2.5) gives
+<span class="math" data-tex="\(Y_3\geq\nu\mathcal G(a_0)/2\)">\(Y_3\geq\nu\mathcal G(a_0)/2\)</span>. Average over this subset of
+the uniform inner-radius law to obtain</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E|Y_3|
+&amp;\geq\frac{\nu}{2A}\int\mathcal G(r)\,dr
+=\frac{\nu}{2A}\|z\|_2^2,\\
+\nu h\int\frac{|z|^2}{r^2}
+&amp;\leq\frac{4\nu h}{9A^2}\|z\|_2^2 .
+\end{aligned}
+\tag{8.2}
+\]">\[
+\begin{aligned}
+\mathbb E|Y_3|
+&amp;\geq\frac{\nu}{2A}\int\mathcal G(r)\,dr
+=\frac{\nu}{2A}\|z\|_2^2,\\
+\nu h\int\frac{|z|^2}{r^2}
+&amp;\leq\frac{4\nu h}{9A^2}\|z\|_2^2 .
+\end{aligned}
+\tag{8.2}
+\]</span>
+<p>The ratio is at least <span class="math" data-tex="\(9A/(8h)\)">\(9A/(8h)\)</span>, which is unbounded. This is
+an exact analytic test of the averaging assertion.
+It uses a smooth solenoidal field, with no claim about its occurrence
+in the source's unforced dynamics.</p>
+<p><img src="assets/NS-FLUID-11/moving-annulus-flux-A1F54AC30638C73D219B78D6FA6902758457D06846911D72DEE357D0B672D3CC.png" alt="Signed inner-sphere heat flux and exact toroidal radial density" class="course-figure" width="2080" height="880" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="moving-annulus-flux" data-asset-sha256="A1F54AC30638C73D219B78D6FA6902758457D06846911D72DEE357D0B672D3CC"></p>
+<p>The figure samples (2.5) and (8.1) with
+<span class="math" data-tex="\(\nu=1,A=20,h=1,r_0=30,\delta=1/10\)">\(\nu=1,A=20,h=1,r_0=30,\delta=1/10\)</span>.
+Here <span class="math" data-tex="\(c(r)=\exp[-\delta^2/((r-r_0)(r_0+\delta-r))]\)">\(c(r)=\exp[-\delta^2/((r-r_0)(r_0+\delta-r))]\)</span> in
+the displayed open shell and is zero elsewhere. Both signed peaks
+are retained. Numerical quadrature draws only the volume contribution;
+the proof of (8.2) does not depend on the plot.</p>
+<h3 id="exercise-2-the-exact-signed-averaging-map">Exercise 2: the exact signed averaging map</h3>
+<p>Average the same original tents against a smooth probability density.
+Derive all derivatives of the average and prove a bound at the scale
+<span class="math" data-tex="\(h/r^2\)">\(h/r^2\)</span> for its signed heat term.</p>
+<p><strong>Solution.</strong> Use <span class="math" data-tex="\(\mathfrak b\)">\(\mathfrak b\)</span> from (4.7), and define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\varrho(s)=Z_\varrho^{-1}\mathfrak b(s-1)\mathfrak b(2-s),
+\qquad Z_\varrho=\int_1^2\mathfrak b(s-1)\mathfrak b(2-s)\,ds&gt;0,\\
+P_\varrho=\|\varrho\|_\infty,\qquad
+D_\varrho=\|\varrho&#x27;\|_\infty,\\
+p_a(s)=A^{-1}\varrho(s/A),\qquad
+p_b(s)=2B^{-1}\varrho(2s/B),\\
+\bar\eta(t,x)=\iint\eta_{a_0,b_0}(t,x)
+p_a(a_0)p_b(b_0)\,da_0\,db_0 .
+\end{gathered}
+\tag{8.3}
+\]">\[
+\begin{gathered}
+\varrho(s)=Z_\varrho^{-1}\mathfrak b(s-1)\mathfrak b(2-s),
+\qquad Z_\varrho=\int_1^2\mathfrak b(s-1)\mathfrak b(2-s)\,ds&gt;0,\\
+P_\varrho=\|\varrho\|_\infty,\qquad
+D_\varrho=\|\varrho&#x27;\|_\infty,\\
+p_a(s)=A^{-1}\varrho(s/A),\qquad
+p_b(s)=2B^{-1}\varrho(2s/B),\\
+\bar\eta(t,x)=\iint\eta_{a_0,b_0}(t,x)
+p_a(a_0)p_b(b_0)\,da_0\,db_0 .
+\end{gathered}
+\tag{8.3}
+\]</span>
+<p>Both parameter densities integrate to one and have the required
+supports. Fubini gives the exact linear map
+<span class="math" data-tex="\(E_{\bar\eta}=\mathbb E E_\eta\)">\(E_{\bar\eta}=\mathbb E E_\eta\)</span>, as well as the same averaging
+identity for every signed term of (2.6). Define</p>
+<span class="math math-display" data-tex="\[
+d_a(t,r)=\int_{r-q-h}^{r-q}p_a(s)\,ds,\qquad
+d_b(t,r)=\int_{r+q}^{r+q+h}p_b(s)\,ds .
+\tag{8.4}
+\]">\[
+d_a(t,r)=\int_{r-q-h}^{r-q}p_a(s)\,ds,\qquad
+d_b(t,r)=\int_{r+q}^{r+q+h}p_b(s)\,ds .
+\tag{8.4}
+\]</span>
+<p>These nonnegative functions are supported in the disjoint intervals
+<span class="math" data-tex="\(\mathcal S_a,\mathcal S_b\)">\(\mathcal S_a,\mathcal S_b\)</span> of (3.1). Differentiation gives
+all first derivatives and the full Laplacian:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\bar\eta_r=d_a-d_b,\qquad
+\bar\eta_t=-q&#x27;(d_a+d_b),\qquad
+|\nabla\bar\eta|=d_a+d_b,\\
+\Delta\bar\eta=
+p_a(r-q)-p_a(r-q-h)-p_b(r+q+h)+p_b(r+q)
++\frac2r(d_a-d_b).
+\end{gathered}
+\tag{8.5}
+\]">\[
+\begin{gathered}
+\bar\eta_r=d_a-d_b,\qquad
+\bar\eta_t=-q&#x27;(d_a+d_b),\qquad
+|\nabla\bar\eta|=d_a+d_b,\\
+\Delta\bar\eta=
+p_a(r-q)-p_a(r-q-h)-p_b(r+q+h)+p_b(r+q)
++\frac2r(d_a-d_b).
+\end{gathered}
+\tag{8.5}
+\]</span>
+<p>The density differences are bounded by <span class="math" data-tex="\(hD_\varrho/A^2\)">\(hD_\varrho/A^2\)</span>
+and <span class="math" data-tex="\(4hD_\varrho/B^2\)">\(4hD_\varrho/B^2\)</span>. The two <span class="math" data-tex="\(d\)">\(d\)</span>'s are bounded by
+<span class="math" data-tex="\(hP_\varrho/A\)">\(hP_\varrho/A\)</span> and <span class="math" data-tex="\(2hP_\varrho/B\)">\(2hP_\varrho/B\)</span>. Since <span class="math" data-tex="\(r\leq4A\)">\(r\leq4A\)</span>
+on the first support and <span class="math" data-tex="\(r\leq B\)">\(r\leq B\)</span> on the second, it follows that</p>
+<span class="math math-display" data-tex="\[
+|\Delta\bar\eta|
+\leq C_\varrho\frac h{r^2}
+\mathbf1_{\mathcal S_a(t)\cup\mathcal S_b(t)}(r),
+\qquad C_\varrho=16D_\varrho+8P_\varrho .
+\tag{8.6}
+\]">\[
+|\Delta\bar\eta|
+\leq C_\varrho\frac h{r^2}
+\mathbf1_{\mathcal S_a(t)\cup\mathcal S_b(t)}(r),
+\qquad C_\varrho=16D_\varrho+8P_\varrho .
+\tag{8.6}
+\]</span>
+<p>The inner coefficient is at most <span class="math" data-tex="\(16D_\varrho+8P_\varrho\)">\(16D_\varrho+8P_\varrho\)</span>;
+the outer one is at most <span class="math" data-tex="\(4D_\varrho+4P_\varrho\)">\(4D_\varrho+4P_\varrho\)</span>.
+Equation (8.6) controls <span class="math" data-tex="\(|\mathbb E Y_3|\)">\(|\mathbb E Y_3|\)</span>, with this smooth
+law. It does not control <span class="math" data-tex="\(\mathbb E|Y_3|\)">\(\mathbb E|Y_3|\)</span>.</p>
+<p>For the full energy map, suppose <span class="math" data-tex="\(q&#x27;\geq V+v_0\)">\(q&#x27;\geq V+v_0\)</span>, where <span class="math" data-tex="\(V\)">\(V\)</span>
+bounds <span class="math" data-tex="\(|u|\)">\(|u|\)</span> on these supports and <span class="math" data-tex="\(v_0\geq0\)">\(v_0\geq0\)</span>.
+With <span class="math" data-tex="\(e_r=x/|x|\)">\(e_r=x/|x|\)</span>, transport and recession combine as</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;-\frac12\int|z|^2
+[(q&#x27;-u\cdot e_r)d_a+(q&#x27;+u\cdot e_r)d_b]\\
+&amp;\hspace{25mm}\leq-\frac{v_0}2\int|z|^2|\nabla\bar\eta|.
+\end{aligned}
+\tag{8.7}
+\]">\[
+\begin{aligned}
+&amp;-\frac12\int|z|^2
+[(q&#x27;-u\cdot e_r)d_a+(q&#x27;+u\cdot e_r)d_b]\\
+&amp;\hspace{25mm}\leq-\frac{v_0}2\int|z|^2|\nabla\bar\eta|.
+\end{aligned}
+\tag{8.7}
+\]</span>
+<p>Let <span class="math" data-tex="\(Q_{\bar\eta}\)">\(Q_{\bar\eta}\)</span> be the sum of all six pairings in (2.7)
+with <span class="math" data-tex="\(\bar\eta\)">\(\bar\eta\)</span> replacing <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. Equations (2.6) and
+(8.6)–(8.7) prove</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+E_{\bar\eta}&#x27;
++\nu\int\bar\eta|\nabla z|^2
++\frac{v_0}2\int|z|^2|\nabla\bar\eta|
+\leq{}&amp;\frac{\nu C_\varrho h}2
+\int_{|x|\in\mathcal S_a\cup\mathcal S_b}
+\frac{|z|^2}{|x|^2}\,dx+Q_{\bar\eta}.
+\end{aligned}
+\tag{8.8}
+\]">\[
+\begin{aligned}
+E_{\bar\eta}&#x27;
++\nu\int\bar\eta|\nabla z|^2
++\frac{v_0}2\int|z|^2|\nabla\bar\eta|
+\leq{}&amp;\frac{\nu C_\varrho h}2
+\int_{|x|\in\mathcal S_a\cup\mathcal S_b}
+\frac{|z|^2}{|x|^2}\,dx+Q_{\bar\eta}.
+\end{aligned}
+\tag{8.8}
+\]</span>
+<p>This exact map retains the six pairings. The weighted inequality
+of Section 4 was proved for the original tent and is not asserted
+for <span class="math" data-tex="\(\bar\eta\)">\(\bar\eta\)</span>. Our closed finite energy estimate in Section 6
+uses the original tent and the weaker absolute average (3.3).
+Both maps preserve the common plateau used in Exercise 4.</p>
+<h3 id="exercise-3-checking-the-radius-budget-in-the-source-variables">Exercise 3: checking the radius budget in the source variables</h3>
+<p>In the source's unit-viscosity notation let
+<span class="math" data-tex="\(h=A_6\)">\(h=A_6\)</span>, <span class="math" data-tex="\(A=A_6^{-8}R_{\rm src}\)">\(A=A_6^{-8}R_{\rm src}\)</span>, and
+<span class="math" data-tex="\(R_{\rm src}\geq A_6^{100}R_0\)">\(R_{\rm src}\geq A_6^{100}R_0\)</span>, with <span class="math" data-tex="\(A_6\geq1\)">\(A_6\geq1\)</span> and
+<span class="math" data-tex="\(R_0\geq1\)">\(R_0\geq1\)</span>. Suppose the actual global integral obeys
+<span class="math" data-tex="\(\mathcal M\leq C_M A_{\rm vel}^4\)">\(\mathcal M\leq C_M A_{\rm vel}^4\)</span>.
+Determine the exact comparison needed for (3.3) to be at most
+<span class="math" data-tex="\(A_6^{-10}\)">\(A_6^{-10}\)</span>.</p>
+<p><strong>Solution.</strong> Substitute all powers without replacing the actual
+radius:</p>
+<span class="math math-display" data-tex="\[
+\frac{2\mathcal M}{A}
+=\frac{2A_6^8\mathcal M}{R_{\rm src}}
+\leq\frac{2C_M A_{\rm vel}^4}{A_6^{92}R_0}.
+\tag{8.9}
+\]">\[
+\frac{2\mathcal M}{A}
+=\frac{2A_6^8\mathcal M}{R_{\rm src}}
+\leq\frac{2C_M A_{\rm vel}^4}{A_6^{92}R_0}.
+\tag{8.9}
+\]</span>
+<p>This is at most <span class="math" data-tex="\(A_6^{-10}\)">\(A_6^{-10}\)</span> whenever
+<span class="math" data-tex="\(2C_M A_{\rm vel}^4\leq A_6^{82}R_0\)">\(2C_M A_{\rm vel}^4\leq A_6^{82}R_0\)</span>.
+Also <span class="math" data-tex="\(A\geq A_6^{92}R_0\geq h\)">\(A\geq A_6^{92}R_0\geq h\)</span>, so the inner geometric
+requirement is preserved. The outer radius and integrated speed
+must still meet their original requirements. The exercise proves
+this numerical implication; it does not assert the input estimate
+for a trajectory without its own proof.</p>
+<h3 id="exercise-4-a-radius-independent-test-and-its-surviving-region">Exercise 4: a radius-independent test and its surviving region</h3>
+<p>Give a finite test that uses (3.3) to select one radius pair and then
+controls its weighted energy on the whole interval.</p>
+<p><strong>Solution.</strong> Take nonnegative integrable bounds
+<span class="math" data-tex="\(\bar{\mathfrak a}\geq\mathfrak a\)">\(\bar{\mathfrak a}\geq\mathfrak a\)</span> and
+<span class="math" data-tex="\(\bar{\mathfrak d}\geq\mathfrak d\)">\(\bar{\mathfrak d}\geq\mathfrak d\)</span>, using the fixed enclosing
+annulus in (6.1). Let the speed (6.5) have total displacement
+compatible with (1.4), and put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal A=\int_J\bar{\mathfrak a},\qquad
+\mathcal D=\int_J\bar{\mathfrak d},\qquad
+H_0=\frac h2\int_{\{A\leq|x|\leq B\}}|z(t_1,x)|^2\,dx,\\
+\mathcal Q=e^{\mathcal A}
+\left(H_0+\frac{2\nu\mathcal M}{A}+\mathcal D\right).
+\end{gathered}
+\tag{8.10}
+\]">\[
+\begin{gathered}
+\mathcal A=\int_J\bar{\mathfrak a},\qquad
+\mathcal D=\int_J\bar{\mathfrak d},\qquad
+H_0=\frac h2\int_{\{A\leq|x|\leq B\}}|z(t_1,x)|^2\,dx,\\
+\mathcal Q=e^{\mathcal A}
+\left(H_0+\frac{2\nu\mathcal M}{A}+\mathcal D\right).
+\end{gathered}
+\tag{8.10}
+\]</span>
+<p>When the calculated number satisfies <span class="math" data-tex="\(\mathcal Q&lt;E_*\)">\(\mathcal Q&lt;E_*\)</span>,
+choose the single pair provided by (3.3). Every initial weighted
+energy is at most <span class="math" data-tex="\(H_0\)">\(H_0\)</span>. The right side of (6.11) is then at
+most <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span>, since <span class="math" data-tex="\(\mathfrak a\geq0\)">\(\mathfrak a\geq0\)</span>.
+In particular the initial energy is below <span class="math" data-tex="\(E_*\)">\(E_*\)</span>. The first
+crossing argument after (6.11) proves <span class="math" data-tex="\(E(t)\leq\mathcal Q\)">\(E(t)\leq\mathcal Q\)</span>
+for all <span class="math" data-tex="\(t\in J\)">\(t\in J\)</span>.</p>
+<p>Integrate (6.9), use the nonnegativity of <span class="math" data-tex="\(E(t_2)\)">\(E(t_2)\)</span>, and bound
+the coefficient term by <span class="math" data-tex="\(\mathcal Q\mathcal A\)">\(\mathcal Q\mathcal A\)</span>. For the same
+pair this gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac\nu2\int_JD+\frac14\int_JY_2
+\leq H_0+\mathcal Q\mathcal A+\frac{2\nu\mathcal M}{A}
++\mathcal D,\\
+\int_{\{2A+q+h\leq|x|\leq B/2-q-h\}}|z(t,x)|^2\,dx
+\leq\frac{2\mathcal Q}{h}.
+\end{gathered}
+\tag{8.11}
+\]">\[
+\begin{gathered}
+\frac\nu2\int_JD+\frac14\int_JY_2
+\leq H_0+\mathcal Q\mathcal A+\frac{2\nu\mathcal M}{A}
++\mathcal D,\\
+\int_{\{2A+q+h\leq|x|\leq B/2-q-h\}}|z(t,x)|^2\,dx
+\leq\frac{2\mathcal Q}{h}.
+\end{gathered}
+\tag{8.11}
+\]</span>
+<p>For the second line, every allowed original tent is exactly <span class="math" data-tex="\(h\)">\(h\)</span>
+on the displayed shell, so its enstrophy there is bounded by <span class="math" data-tex="\(2E/h\)">\(2E/h\)</span>.
+The shell is nonempty: its width is at least
+<span class="math" data-tex="\(B/2-2A-2q-2h\geq2A&gt;0\)">\(B/2-2A-2q-2h\geq2A&gt;0\)</span>.
+The smooth average in Exercise 2 also equals <span class="math" data-tex="\(h\)">\(h\)</span> there.
+This proves both the finite budget and its exact receiving region.</p>
+<h3 id="exercise-5-the-complete-physical-zoom">Exercise 5: the complete physical zoom</h3>
+<p>Fix a spatial factor <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span> and change coordinates by
+<span class="math" data-tex="\(x=x_*+\lambda y\)">\(x=x_*+\lambda y\)</span>, <span class="math" data-tex="\(t=t_*+\lambda^2\tau\)">\(t=t_*+\lambda^2\tau\)</span>.
+State the maps of all energy, ramp and flux quantities, keeping the
+original viscosity. The annulus is centered at <span class="math" data-tex="\(x_*\)">\(x_*\)</span> before the
+change of coordinates.</p>
+<p><strong>Solution.</strong> Every field on the right below is evaluated at the
+displayed original coordinates. The exact flow map is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u_\lambda=\lambda u,\quad v_\lambda=\lambda v,\quad
+w_\lambda=\lambda w,\quad z_\lambda=\lambda^2z,\quad
+\ell_\lambda=\lambda^2\ell,\\
+p_\lambda=\lambda^2p,\quad f_\lambda=\lambda^3f,\quad
+\nu_\lambda=\nu,\\
+a_\lambda=a/\lambda,\quad b_\lambda=b/\lambda,\quad
+h_\lambda=h/\lambda,\quad A_\lambda=A/\lambda,\quad
+B_\lambda=B/\lambda,\\
+q_\lambda(\tau)=q(t_*+\lambda^2\tau)/\lambda,\qquad
+q_\lambda&#x27;=\lambda q&#x27;,\qquad \eta_\lambda=\eta/\lambda .
+\end{gathered}
+\tag{8.12}
+\]">\[
+\begin{gathered}
+u_\lambda=\lambda u,\quad v_\lambda=\lambda v,\quad
+w_\lambda=\lambda w,\quad z_\lambda=\lambda^2z,\quad
+\ell_\lambda=\lambda^2\ell,\\
+p_\lambda=\lambda^2p,\quad f_\lambda=\lambda^3f,\quad
+\nu_\lambda=\nu,\\
+a_\lambda=a/\lambda,\quad b_\lambda=b/\lambda,\quad
+h_\lambda=h/\lambda,\quad A_\lambda=A/\lambda,\quad
+B_\lambda=B/\lambda,\\
+q_\lambda(\tau)=q(t_*+\lambda^2\tau)/\lambda,\qquad
+q_\lambda&#x27;=\lambda q&#x27;,\qquad \eta_\lambda=\eta/\lambda .
+\end{gathered}
+\tag{8.12}
+\]</span>
+<p>The original earlier heat time transforms by the same time map,
+so <span class="math" data-tex="\(v_\lambda\)">\(v_\lambda\)</span> remains the actual corresponding heat evolution.
+Substituting (8.12) into (1.1)–(1.3) multiplies each term by
+<span class="math" data-tex="\(\lambda^3\)">\(\lambda^3\)</span> or, in the curl equation, by <span class="math" data-tex="\(\lambda^4\)">\(\lambda^4\)</span>.
+The volume and surface measures give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E_\lambda=E,\qquad
+D_\lambda=\lambda^2D,\qquad R_\lambda=\lambda R,\qquad
+(Y_2)_\lambda=\lambda^2Y_2,\qquad
+(Y_3)_\lambda=\lambda^2Y_3,\\
+(\Delta_y\eta_\lambda)=\lambda(\Delta_x\eta),\qquad
+dS_y=\lambda^{-2}dS_x,\qquad
+\mathcal M_\lambda=\lambda^{-1}\mathcal M,\\
+\frac{2\nu\mathcal M_\lambda}{A_\lambda}
+=\frac{2\nu\mathcal M}{A},\qquad (E_*)_\lambda=E_* .
+\end{gathered}
+\tag{8.13}
+\]">\[
+\begin{gathered}
+E_\lambda=E,\qquad
+D_\lambda=\lambda^2D,\qquad R_\lambda=\lambda R,\qquad
+(Y_2)_\lambda=\lambda^2Y_2,\qquad
+(Y_3)_\lambda=\lambda^2Y_3,\\
+(\Delta_y\eta_\lambda)=\lambda(\Delta_x\eta),\qquad
+dS_y=\lambda^{-2}dS_x,\qquad
+\mathcal M_\lambda=\lambda^{-1}\mathcal M,\\
+\frac{2\nu\mathcal M_\lambda}{A_\lambda}
+=\frac{2\nu\mathcal M}{A},\qquad (E_*)_\lambda=E_* .
+\end{gathered}
+\tag{8.13}
+\]</span>
+<p>For instance the three factors in the weighted energy scale as
+<span class="math" data-tex="\(\lambda^{-1}\)">\(\lambda^{-1}\)</span>, <span class="math" data-tex="\(\lambda^4\)">\(\lambda^4\)</span>, and <span class="math" data-tex="\(\lambda^{-3}\)">\(\lambda^{-3}\)</span>;
+their product is one. The gradient of <span class="math" data-tex="\(z_\lambda\)">\(z_\lambda\)</span> has factor
+<span class="math" data-tex="\(\lambda^3\)">\(\lambda^3\)</span>, proving the dissipation factor. Each sphere
+contribution has factor <span class="math" data-tex="\(\lambda^4\lambda^{-2}=\lambda^2\)">\(\lambda^4\lambda^{-2}=\lambda^2\)</span>,
+matching the radial volume contribution to <span class="math" data-tex="\(Y_3\)">\(Y_3\)</span>.
+The Laplacian statement is an equality of pulled-back distributions;
+it includes the delta measures, since
+<span class="math" data-tex="\(\delta(\lambda r-c)=\lambda^{-1}\delta(r-c/\lambda)\)">\(\delta(\lambda r-c)=\lambda^{-1}\delta(r-c/\lambda)\)</span>.
+Multiplication by <span class="math" data-tex="\(d\tau=\lambda^{-2}dt\)">\(d\tau=\lambda^{-2}dt\)</span> leaves the integrated
+dissipation, recession and flux unchanged. The speed law retains
+its coefficient <span class="math" data-tex="\(c\)">\(c\)</span> with <span class="math" data-tex="\(\gamma_\lambda=\lambda\gamma\)">\(\gamma_\lambda=\lambda\gamma\)</span>.
+No viscosity, force or endpoint factor has been removed.</p>
+<h2 id="9-reading-and-proof-connections">9. Reading and proof connections</h2>
+<p>The preceding proof uses the physical curl and Fourier conventions of
+<a href="NS-FLUID-02.html">Pressure and the divergence-free projection</a>,
+the full force classes from
+<a href="NS-FLUID-05.html">Strong solutions and continuation</a>,
+and the explicit cutoff and physical heat scaling in
+<a href="NS-FLUID-10.html">Critical velocity tails and weighted heat estimates</a>.</p>
+<p>The human source for the annular strategy is
+<a href="https://arxiv.org/abs/1908.04958v2">Terence Tao, arXiv:1908.04958v2</a>,
+annular regularity proof, original author TeX lines 660–894.
+Sections 2–6 and Exercises 1–5 contain the complete arguments
+asserted here, including the specified corrections and connecting
+maps. This exposition does not claim novelty for the general
+localization strategy, Sobolev inequalities or curl inversion.</p>
+</article><nav aria-label="Lesson sequence"><a href="NS-FLUID-10.html">Previous lesson</a><a href="NS-FLUID-12.html">Next lesson</a></nav></main><footer>Mathematical text: CC0 1.0. Cited works and reader software retain their respective terms.</footer></body></html>

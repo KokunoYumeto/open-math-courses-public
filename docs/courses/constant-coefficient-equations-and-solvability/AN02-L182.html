@@ -1,0 +1,1090 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Rational top forms detect cycles in a hypersurface complement</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L181.html">Previous lesson</a> · <a href="#1-the-theorem-and-what-its-coefficients-mean">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#5-complete-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="rational-top-forms-detect-cycles-in-a-hypersurface-complement">Rational top forms detect cycles in a hypersurface complement</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Suppose a finite cycle lies in the region where a polynomial is nonzero. Can rational differential forms tell whether that cycle bounds? The answer is yes in the complex top degree, with rational or complex coefficients. The result also says something stronger: every smooth cohomology class in that degree has a rational representative.</p>
+<p>The basic references are Hörmander [H] for weighted Cauchy–Riemann equations, Sard [S] for critical values and Grothendieck [G] for the broader algebraic de Rham comparison. The complete proof following this introduction gives a direct route for a polynomial complement. It uses the exact internal integration theorem in <a href="AN02-L116.html#cd6-integration-and-smooth-continuous-comparison">When zero smooth periods mean that a cycle bounds</a>, the written semialgebraic projection proof in <a href="AN02-L018.html#algebraic-inequalities-survive-projection">Symbols at infinity</a>, and <a href="AN02-L125.html#mh0-statement-coefficients-and-boundary-cases">Ordinary finite-chain Morse handles</a>. All needed analytic steps are proved in the formal argument, including the higher-degree estimate and local smoothness.</p>
+<h2 id="1-the-theorem-and-what-its-coefficients-mean">1. The theorem and what its coefficients mean</h2>
+<p>Let <span class="math" data-index="0" data-tex="\(d\geq1\)">\(d\geq1\)</span>, let <span class="math" data-index="1" data-tex="\(f\)">\(f\)</span> be a nonzero complex polynomial on <span class="math" data-index="2" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span>, and set</p>
+<span class="math math-display" id="learner-eq-1" data-index="3" data-tex="\[
+ V=\{z:f(z)\ne0\}.
+ \tag{1}
+\]">\[
+ V=\{z:f(z)\ne0\}.
+ \tag{1}
+\]</span>
+<p>The polynomial may have repeated factors or a singular zero set. A rational top form on <span class="math" data-index="4" data-tex="\(V\)">\(V\)</span> has the shape</p>
+<span class="math math-display" id="learner-eq-2" data-index="5" data-tex="\[
+ \eta=\frac{p(z)}{f(z)^k}\,dz_1\wedge\cdots\wedge dz_d,
+       \qquad p\in\mathbb C[z],\quad k\geq0.
+ \tag{2}
+\]">\[
+ \eta=\frac{p(z)}{f(z)^k}\,dz_1\wedge\cdots\wedge dz_d,
+       \qquad p\in\mathbb C[z],\quad k\geq0.
+ \tag{2}
+\]</span>
+<p>Its poles lie outside <span class="math" data-index="6" data-tex="\(V\)">\(V\)</span>, so it is holomorphic there. It is closed: its antiholomorphic derivative is zero, and the holomorphic exterior derivative has degree <span class="math" data-index="7" data-tex="\(d+1\)">\(d+1\)</span>, which vanishes in complex dimension <span class="math" data-index="8" data-tex="\(d\)">\(d\)</span>.</p>
+<p><strong>The result.</strong> Every class of closed smooth complex <span class="math" data-index="9" data-tex="\(d\)">\(d\)</span>-forms on <span class="math" data-index="10" data-tex="\(V\)">\(V\)</span>, modulo smooth exact forms, has a representative (2). A finite smooth <span class="math" data-index="11" data-tex="\(d\)">\(d\)</span>-cycle is zero in ordinary homology over <span class="math" data-index="12" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, or over <span class="math" data-index="13" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, exactly when every period <span class="math" data-index="14" data-tex="\(\int_c\eta\)">\(\int_c\eta\)</span> vanishes.</p>
+<p>Ordinary chains here are finite sums of singular simplices. The result concerns that chain theory. Its rational-coefficient conclusion does not imply vanishing of integral torsion. The exact faithful coefficient change from rational to complex homology is part of the previously proved integration theorem.</p>
+<p>There is a projective version. Let <span class="math" data-index="15" data-tex="\(F\)">\(F\)</span> be homogeneous of degree <span class="math" data-index="16" data-tex="\(m\geq1\)">\(m\geq1\)</span>, let <span class="math" data-index="17" data-tex="\(L\)">\(L\)</span> be a nonzero linear form, and remove both divisors from <span class="math" data-index="18" data-tex="\(\mathbb P^d\)">\(\mathbb P^d\)</span>. In coordinates <span class="math" data-index="19" data-tex="\(Z_0=L,Z_1,\ldots,Z_d\)">\(Z_0=L,Z_1,\ldots,Z_d\)</span>, define</p>
+<span class="math math-display" id="learner-eq-3" data-index="20" data-tex="\[
+ \omega=\sum_{j=0}^{d}(-1)^jZ_j\,
+       dZ_0\wedge\cdots\wedge\widehat{dZ_j}
+                             \wedge\cdots\wedge dZ_d.
+ \tag{3}
+\]">\[
+ \omega=\sum_{j=0}^{d}(-1)^jZ_j\,
+       dZ_0\wedge\cdots\wedge\widehat{dZ_j}
+                             \wedge\cdots\wedge dZ_d.
+ \tag{3}
+\]</span>
+<p>The homogeneous family</p>
+<span class="math math-display" id="learner-eq-4" data-index="21" data-tex="\[
+ \frac{P\omega}{F^kL^s},\qquad
+ k,s\geq1,\qquad \deg P=mk+s-d-1
+ \tag{4}
+\]">\[
+ \frac{P\omega}{F^kL^s},\qquad
+ k,s\geq1,\qquad \deg P=mk+s-d-1
+ \tag{4}
+\]</span>
+<p>has the same spanning and detection properties on
+<span class="math" data-index="22" data-tex="\(\mathbb P^d\setminus\{FL=0\}\)">\(\mathbb P^d\setminus\{FL=0\}\)</span>.
+The two exponents are positive. A specific form may nevertheless have a removable pole, because its numerator can cancel a factor.</p>
+<h2 id="2-four-steps-that-turn-approximation-into-a-basis">2. Four steps that turn approximation into a basis</h2>
+<p>The missing divisor is moved to infinity by the graph</p>
+<span class="math math-display" id="learner-eq-5" data-index="23" data-tex="\[
+ M=\{(z,w):f(z)w=1\}\subset\mathbb C^{d+1},
+ \qquad \iota(z)=(z,1/f(z)).
+ \tag{5}
+\]">\[
+ M=\{(z,w):f(z)w=1\}\subset\mathbb C^{d+1},
+ \qquad \iota(z)=(z,1/f(z)).
+ \tag{5}
+\]</span>
+<p>This is a closed smooth complex manifold, even when <span class="math" data-index="24" data-tex="\(\{f=0\}\)">\(\{f=0\}\)</span> is singular: on <span class="math" data-index="25" data-tex="\(M\)">\(M\)</span>, the derivative of <span class="math" data-index="26" data-tex="\(fw-1\)">\(fw-1\)</span> with respect to <span class="math" data-index="27" data-tex="\(w\)">\(w\)</span> is <span class="math" data-index="28" data-tex="\(f\ne0\)">\(f\ne0\)</span>. Projection onto <span class="math" data-index="29" data-tex="\(z\)">\(z\)</span> is the inverse of <span class="math" data-index="30" data-tex="\(\iota\)">\(\iota\)</span>.</p>
+<p>First, the weighted Cauchy–Riemann estimate is proved in every positive form degree. In degree <span class="math" data-index="31" data-tex="\(q\)">\(q\)</span>, the curvature term acts on a coordinate wedge by a sum of <span class="math" data-index="32" data-tex="\(q\)">\(q\)</span> Levi eigenvalues. A weight with all those eigenvalues at least one gives</p>
+<span class="math math-display" id="learner-eq-6" data-index="33" data-tex="\[
+ q\|v\|_\phi^2
+       \leq\|\bar\partial_\phi^*v\|_\phi^2+
+                    \|\bar\partial v\|_\phi^2.
+ \tag{6}
+\]">\[
+ q\|v\|_\phi^2
+       \leq\|\bar\partial_\phi^*v\|_\phi^2+
+                    \|\bar\partial v\|_\phi^2.
+ \tag{6}
+\]</span>
+<p>An adaptive radial weight makes any given smooth datum square integrable. The Hilbert argument gives a solution, and a local elliptic bootstrap proves that its minimal solution is smooth.</p>
+<p>Second, smooth solutions transfer from the ambient affine space to <span class="math" data-index="34" data-tex="\(M\)">\(M\)</span>. A cutoff extends a closed form from <span class="math" data-index="35" data-tex="\(V\)">\(V\)</span> to an ambient form <span class="math" data-index="36" data-tex="\(h\)">\(h\)</span> that is closed near <span class="math" data-index="37" data-tex="\(M\)">\(M\)</span>. If <span class="math" data-index="38" data-tex="\(G=fw-1\)">\(G=fw-1\)</span>, solve successively</p>
+<span class="math math-display" id="learner-eq-7" data-index="39" data-tex="\[
+ \bar\partial v=\frac{\bar\partial h}{G},\qquad
+ \bar\partial u=h-Gv.
+ \tag{7}
+\]">\[
+ \bar\partial v=\frac{\bar\partial h}{G},\qquad
+ \bar\partial u=h-Gv.
+ \tag{7}
+\]</span>
+<p>Both right sides are smooth global closed forms of the appropriate degrees. Pulling back the second equation gives the desired solution on <span class="math" data-index="40" data-tex="\(V\)">\(V\)</span>. This removes the positive antiholomorphic degrees of a closed smooth top form, one at a time, and leaves a holomorphic top form in the same class.</p>
+<p>Third, every holomorphic coefficient <span class="math" data-index="41" data-tex="\(g\)">\(g\)</span> on <span class="math" data-index="42" data-tex="\(V\)">\(V\)</span> extends to an entire function <span class="math" data-index="43" data-tex="\(H(z,w)\)">\(H(z,w)\)</span>. Apply the same cutoff and the scalar equation to construct <span class="math" data-index="44" data-tex="\(H=h-Gv\)">\(H=h-Gv\)</span>. Entire Taylor polynomials approximate <span class="math" data-index="45" data-tex="\(H\)">\(H\)</span> on compact sets. On <span class="math" data-index="46" data-tex="\(M\)">\(M\)</span>, their monomials become</p>
+<span class="math math-display" id="learner-eq-8" data-index="47" data-tex="\[
+ z^\alpha w^j=\frac{z^\alpha}{f(z)^j}.
+ \tag{8}
+\]">\[
+ z^\alpha w^j=\frac{z^\alpha}{f(z)^j}.
+ \tag{8}
+\]</span>
+<p>Thus rational coefficients approximate every holomorphic coefficient on compact sets, with derivatives when desired.</p>
+<p>Fourth, the graph has finite-dimensional ordinary homology. A generic squared distance <span class="math" data-index="48" data-tex="\(|x-a|^2\)">\(|x-a|^2\)</span> on <span class="math" data-index="49" data-tex="\(M\)">\(M\)</span> is a proper strictly plurisubharmonic Morse function. Its critical-point equations are polynomial; the regular-value argument makes their solution set discrete; semialgebraic projection makes a discrete such set finite. The finite-chain handle theorem then gives finite-dimensional homology, with no groups above degree <span class="math" data-index="50" data-tex="\(d\)">\(d\)</span>.</p>
+<p>The distinction between approximation and exact spanning matters. Choose a finite cycle basis and holomorphic forms with identity period matrix. Approximate their coefficients so well that the rational period matrix <span class="math" data-index="51" data-tex="\(P\)">\(P\)</span> satisfies <span class="math" data-index="52" data-tex="\(\|P-I\|_\infty&lt;1/2\)">\(\|P-I\|_\infty&lt;1/2\)</span>. It is invertible. Those finitely many rational-form classes therefore form an exact basis of cohomology. The proof does not replace a rational representative by an infinite series of rational forms.</p>
+<h2 id="3-four-worked-examples">3. Four worked examples</h2>
+<h3 id="example-1-the-punctured-line-and-its-orientation">Example 1. The punctured line and its orientation</h3>
+<p>Take <span class="math" data-index="53" data-tex="\(d=1\)">\(d=1\)</span>, <span class="math" data-index="54" data-tex="\(f(z)=z\)">\(f(z)=z\)</span>, so <span class="math" data-index="55" data-tex="\(V=\mathbb C^*\)">\(V=\mathbb C^*\)</span>. Write <span class="math" data-index="56" data-tex="\(z=re^{i\theta}\)">\(z=re^{i\theta}\)</span>. The expression <span class="math" data-index="57" data-tex="\(d\theta\)">\(d\theta\)</span> is a global smooth one-form even though a single real-valued angle is not global:</p>
+<span class="math math-display" id="learner-eq-9" data-index="58" data-tex="\[
+ d\theta=\frac{x\,dy-y\,dx}{x^2+y^2},\qquad
+ \frac{dz}{z}=d\log r+i\,d\theta.
+ \tag{9}
+\]">\[
+ d\theta=\frac{x\,dy-y\,dx}{x^2+y^2},\qquad
+ \frac{dz}{z}=d\log r+i\,d\theta.
+ \tag{9}
+\]</span>
+<p>Therefore</p>
+<span class="math math-display" id="learner-eq-10" data-index="59" data-tex="\[
+ \frac{d\theta}{2\pi}
+       -\frac{dz}{2\pi i z}=\frac{i}{2\pi}d\log r
+ \tag{10}
+\]">\[
+ \frac{d\theta}{2\pi}
+       -\frac{dz}{2\pi i z}=\frac{i}{2\pi}d\log r
+ \tag{10}
+\]</span>
+<p>is exact. The smooth angular class has the rational representative <span class="math" data-index="60" data-tex="\(dz/(2\pi i z)\)">\(dz/(2\pi i z)\)</span>.</p>
+<p>Orient the unit circle by increasing <span class="math" data-index="61" data-tex="\(\theta\)">\(\theta\)</span>, from <span class="math" data-index="62" data-tex="\(0\)">\(0\)</span> to <span class="math" data-index="63" data-tex="\(2\pi\)">\(2\pi\)</span>. Then</p>
+<span class="math math-display" id="learner-eq-11" data-index="64" data-tex="\[
+ \int_{|z|=1}\frac{dz}{2\pi iz}
+   =\frac1{2\pi i}\int_0^{2\pi}i\,d\theta=1.
+ \tag{11}
+\]">\[
+ \int_{|z|=1}\frac{dz}{2\pi iz}
+   =\frac1{2\pi i}\int_0^{2\pi}i\,d\theta=1.
+ \tag{11}
+\]</span>
+<p>The homotopy</p>
+<span class="math math-display" id="learner-eq-12" data-index="65" data-tex="\[
+ z\longmapsto\bigl((1-t)|z|+t\bigr)\frac{z}{|z|},
+             \qquad0\leq t\leq1,
+ \tag{12}
+\]">\[
+ z\longmapsto\bigl((1-t)|z|+t\bigr)\frac{z}{|z|},
+             \qquad0\leq t\leq1,
+ \tag{12}
+\]</span>
+<p>stays in <span class="math" data-index="66" data-tex="\(\mathbb C^*\)">\(\mathbb C^*\)</span>, fixes the unit circle and retracts onto it. The written singular-homology calculation of the circle gives a one-dimensional <span class="math" data-index="67" data-tex="\(H_1\)">\(H_1\)</span>, so the nonzero period identifies a basis of its dual cohomology. Reversing the orientation changes the period to <span class="math" data-index="68" data-tex="\(-1\)">\(-1\)</span>.</p>
+<figure><img class="course-figure" loading="lazy" width="2015" height="1116" src="reproduce/L182/figures/inverse-circle-projections.png" alt="The z and w projections of the same oriented circle in the graph zw=1." /><figcaption class="native"><a href="reproduce/L182/figures/inverse-circle-projections.png">Open full-size PNG</a> · <a href="reproduce/L182/figures/inverse-circle-projections.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 1. The exact cycle is <span class="math" data-index="69" data-tex="\(\theta\mapsto(e^{i\theta},e^{-i\theta})\)">\(\theta\mapsto(e^{i\theta},e^{-i\theta})\)</span> in <span class="math" data-index="70" data-tex="\(M=\{zw=1\}\)">\(M=\{zw=1\}\)</span>, oriented by increasing <span class="math" data-index="71" data-tex="\(\theta\)">\(\theta\)</span>. The two panels show its complex coordinate projections, rather than all four real ambient coordinates. Equal colors mark the same graph point. The <span class="math" data-index="72" data-tex="\(z\)">\(z\)</span> projection goes counterclockwise and the <span class="math" data-index="73" data-tex="\(w\)">\(w\)</span> projection clockwise; the form is <span class="math" data-index="74" data-tex="\(w\,dz\)">\(w\,dz\)</span>, whose period is <span class="math" data-index="75" data-tex="\(2\pi i\)">\(2\pi i\)</span>, with the orientation of the parameter cycle. Equations (5), (9)–(11) and formal Proposition 5.1 give the exact graph and period mechanism. Original figure, CC0-1.0; classical method context [H].</em></p>
+<h3 id="example-2-an-essential-singularity-still-admits-rational-approximation">Example 2. An essential singularity still admits rational approximation</h3>
+<p>On the same complement, let <span class="math" data-index="76" data-tex="\(g(z)=e^{1/z}\)">\(g(z)=e^{1/z}\)</span>. The ambient entire extension is explicit:</p>
+<span class="math math-display" id="learner-eq-13" data-index="77" data-tex="\[
+ H(z,w)=e^w,\qquad H(z,1/z)=g(z).
+ \tag{13}
+\]">\[
+ H(z,w)=e^w,\qquad H(z,1/z)=g(z).
+ \tag{13}
+\]</span>
+<p>The entire Taylor polynomial restricts to</p>
+<span class="math math-display" id="learner-eq-14" data-index="78" data-tex="\[
+ r_N(z)=\sum_{j=0}^{N}\frac{1}{j!z^j}.
+ \tag{14}
+\]">\[
+ r_N(z)=\sum_{j=0}^{N}\frac{1}{j!z^j}.
+ \tag{14}
+\]</span>
+<p>On any compact annulus <span class="math" data-index="79" data-tex="\(a\leq|z|\leq b\)">\(a\leq|z|\leq b\)</span>, <span class="math" data-index="80" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, the tail satisfies</p>
+<span class="math math-display" id="learner-eq-15" data-index="81" data-tex="\[
+ |g(z)-r_N(z)|
+ \leq\sum_{j=N+1}^{\infty}\frac{a^{-j}}{j!}
+ \leq e^{1/a}\frac{a^{-N-1}}{(N+1)!}.
+ \tag{15}
+\]">\[
+ |g(z)-r_N(z)|
+ \leq\sum_{j=N+1}^{\infty}\frac{a^{-j}}{j!}
+ \leq e^{1/a}\frac{a^{-N-1}}{(N+1)!}.
+ \tag{15}
+\]</span>
+<p>For the last inequality write <span class="math" data-index="82" data-tex="\(j=N+1+\ell\)">\(j=N+1+\ell\)</span> and use
+<span class="math" data-index="83" data-tex="\((N+1+\ell)!\geq(N+1)!\ell!\)">\((N+1+\ell)!\geq(N+1)!\ell!\)</span>.
+The right side tends to zero for fixed <span class="math" data-index="84" data-tex="\(a\)">\(a\)</span>, without requiring control at <span class="math" data-index="85" data-tex="\(z=0\)">\(z=0\)</span>.</p>
+<p>The period on the positively oriented unit circle is exactly</p>
+<span class="math math-display" id="learner-eq-16" data-index="86" data-tex="\[
+ \int_{|z|=1} e^{1/z}\,dz=2\pi i.
+ \tag{16}
+\]">\[
+ \int_{|z|=1} e^{1/z}\,dz=2\pi i.
+ \tag{16}
+\]</span>
+<p>Indeed the Laurent series converges uniformly on that circle, so it can be integrated term by term. The term <span class="math" data-index="87" data-tex="\(j=1\)">\(j=1\)</span> has period <span class="math" data-index="88" data-tex="\(2\pi i\)">\(2\pi i\)</span>; every other term has period zero by the parameter integral of <span class="math" data-index="89" data-tex="\(i e^{i(1-j)\theta}\)">\(i e^{i(1-j)\theta}\)</span>. Already every partial sum with <span class="math" data-index="90" data-tex="\(N\geq1\)">\(N\geq1\)</span> has this exact period, although none equals the full holomorphic function.</p>
+<h3 id="example-3-repeated-factors-change-denominators-but-not-the-space">Example 3. Repeated factors change denominators but not the space</h3>
+<p>Take <span class="math" data-index="91" data-tex="\(f(z)=z^m\)">\(f(z)=z^m\)</span>, <span class="math" data-index="92" data-tex="\(m\geq1\)">\(m\geq1\)</span>. The complement is still <span class="math" data-index="93" data-tex="\(\mathbb C^*\)">\(\mathbb C^*\)</span>, while the closed graph is now</p>
+<span class="math math-display" id="learner-eq-17" data-index="94" data-tex="\[
+ M_m=\{z^m w=1\}.
+ \tag{17}
+\]">\[
+ M_m=\{z^m w=1\}.
+ \tag{17}
+\]</span>
+<p>It is smooth because <span class="math" data-index="95" data-tex="\(\partial(z^m w-1)/\partial w=z^m\ne0\)">\(\partial(z^m w-1)/\partial w=z^m\ne0\)</span> on the graph. The basic period form belongs to the allowed family:</p>
+<span class="math math-display" id="learner-eq-18" data-index="96" data-tex="\[
+ \frac{dz}{z}=\frac{z^{m-1}}{f(z)}\,dz .
+ \tag{18}
+\]">\[
+ \frac{dz}{z}=\frac{z^{m-1}}{f(z)}\,dz .
+ \tag{18}
+\]</span>
+<p>Likewise every negative Laurent monomial is represented with powers of this repeated denominator:</p>
+<span class="math math-display" id="learner-eq-19" data-index="97" data-tex="\[
+ z^{-j}=\frac{z^{(m-1)j}}{f(z)^j},\qquad j\geq0.
+ \tag{19}
+\]">\[
+ z^{-j}=\frac{z^{(m-1)j}}{f(z)^j},\qquad j\geq0.
+ \tag{19}
+\]</span>
+<p>The extension of the preceding example can be taken as</p>
+<span class="math math-display" id="learner-eq-20" data-index="98" data-tex="\[
+ H(z,w)=\exp(z^{m-1}w),
+ \tag{20}
+\]">\[
+ H(z,w)=\exp(z^{m-1}w),
+ \tag{20}
+\]</span>
+<p>which is entire and restricts to <span class="math" data-index="99" data-tex="\(e^{1/z}\)">\(e^{1/z}\)</span>. Its Taylor monomials give exactly (19). The graph argument uses smoothness of the graph, which follows from nonvanishing of <span class="math" data-index="100" data-tex="\(f\)">\(f\)</span> there; it imposes no reduced-divisor assumption.</p>
+<h3 id="example-4-a-squared-distance-with-exactly-two-critical-points">Example 4. A squared distance with exactly two critical points</h3>
+<p>On <span class="math" data-index="101" data-tex="\(M=\{zw=1\}\)">\(M=\{zw=1\}\)</span>, choose the real ambient center <span class="math" data-index="102" data-tex="\(a=(1/2,0)\in\mathbb C^2\)">\(a=(1/2,0)\in\mathbb C^2\)</span>. In its global chart <span class="math" data-index="103" data-tex="\(z=re^{i\theta}\)">\(z=re^{i\theta}\)</span>, <span class="math" data-index="104" data-tex="\(w=r^{-1}e^{-i\theta}\)">\(w=r^{-1}e^{-i\theta}\)</span>, the squared distance is</p>
+<span class="math math-display" id="learner-eq-21" data-index="105" data-tex="\[
+ \rho=r^2+r^{-2}-r\cos\theta+\tfrac14.
+ \tag{21}
+\]">\[
+ \rho=r^2+r^{-2}-r\cos\theta+\tfrac14.
+ \tag{21}
+\]</span>
+<p>It tends to infinity as <span class="math" data-index="106" data-tex="\(r\downarrow0\)">\(r\downarrow0\)</span> or <span class="math" data-index="107" data-tex="\(r\uparrow\infty\)">\(r\uparrow\infty\)</span>, hence is proper on the graph. Its Levi form in the <span class="math" data-index="108" data-tex="\(z\)">\(z\)</span> chart is <span class="math" data-index="109" data-tex="\(1+|(-1/z^2)|^2&gt;0\)">\(1+|(-1/z^2)|^2&gt;0\)</span>.</p>
+<p>The angular critical equation is <span class="math" data-index="110" data-tex="\(\rho_\theta=r\sin\theta=0\)">\(\rho_\theta=r\sin\theta=0\)</span>. As <span class="math" data-index="111" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, the only possibilities on the circle are <span class="math" data-index="112" data-tex="\(\theta=0\)">\(\theta=0\)</span> and <span class="math" data-index="113" data-tex="\(\theta=\pi\)">\(\theta=\pi\)</span>. The radial equation is</p>
+<span class="math math-display" id="learner-eq-22" data-index="114" data-tex="\[
+ r-r^{-3}=\tfrac12\cos\theta .
+ \tag{22}
+\]">\[
+ r-r^{-3}=\tfrac12\cos\theta .
+ \tag{22}
+\]</span>
+<p>The function on the left has derivative <span class="math" data-index="115" data-tex="\(1+3r^{-4}&gt;0\)">\(1+3r^{-4}&gt;0\)</span>, with limits <span class="math" data-index="116" data-tex="\(-\infty\)">\(-\infty\)</span> and <span class="math" data-index="117" data-tex="\(+\infty\)">\(+\infty\)</span>. There is exactly one positive root for each of the two angles. They satisfy</p>
+<span class="math math-display" id="learner-eq-23" data-index="118" data-tex="\[
+ r_+^4-\tfrac12r_+^3-1=0,\quad 1&lt;r_+&lt;\tfrac54,
+ \qquad
+ r_-^4+\tfrac12r_-^3-1=0,\quad \tfrac45&lt;r_-&lt;\tfrac9{10}.
+ \tag{23}
+\]">\[
+ r_+^4-\tfrac12r_+^3-1=0,\quad 1&lt;r_+&lt;\tfrac54,
+ \qquad
+ r_-^4+\tfrac12r_-^3-1=0,\quad \tfrac45&lt;r_-&lt;\tfrac9{10}.
+ \tag{23}
+\]</span>
+<p>The bounds follow by inserting the endpoints into the strictly increasing function in (22). Numerically the roots are <span class="math" data-index="119" data-tex="\(r_+\approx1.15278\)">\(r_+\approx1.15278\)</span> and <span class="math" data-index="120" data-tex="\(r_-\approx0.89498\)">\(r_-\approx0.89498\)</span>; those decimal labels illustrate the exact equations, rather than defining the roots.</p>
+<p>At either critical point the mixed Hessian entry is zero and</p>
+<span class="math math-display" id="learner-eq-24" data-index="121" data-tex="\[
+ \rho_{rr}=2+6r^{-4}&gt;0,\qquad
+ \rho_{\theta\theta}=r\cos\theta .
+ \tag{24}
+\]">\[
+ \rho_{rr}=2+6r^{-4}&gt;0,\qquad
+ \rho_{\theta\theta}=r\cos\theta .
+ \tag{24}
+\]</span>
+<p>The point at <span class="math" data-index="122" data-tex="\(\theta=0\)">\(\theta=0\)</span> has index zero, and the point at <span class="math" data-index="123" data-tex="\(\theta=\pi\)">\(\theta=\pi\)</span> has index one. The radial profile at the latter point has a minimum, but the full two-variable height has a negative angular direction; this is why it is a saddle.</p>
+<p>The finite-chain handle argument gives at most one degree-one generator. The nonzero period in Example 1 gives at least one. Thus the ordinary <span class="math" data-index="124" data-tex="\(H_1\)">\(H_1\)</span> has dimension exactly one, consistent with the explicit radial retraction (12). The handle argument does not simply add generators from arbitrary critical levels: the exact sequences account for possible cancellation.</p>
+<figure><img class="course-figure" loading="lazy" width="1944" height="900" src="reproduce/L182/figures/finite-morse-critical-points.png" alt="The two radial height profiles of the exact squared distance on zw=1, with its minimum and saddle." /><figcaption class="native"><a href="reproduce/L182/figures/finite-morse-critical-points.png">Open full-size PNG</a> · <a href="reproduce/L182/figures/finite-morse-critical-points.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 2. The curves are the exact profiles of (21) at <span class="math" data-index="125" data-tex="\(\theta=0\)">\(\theta=0\)</span> and <span class="math" data-index="126" data-tex="\(\theta=\pi\)">\(\theta=\pi\)</span>; the shaded interval is the exact range of the height as <span class="math" data-index="127" data-tex="\(\theta\)">\(\theta\)</span> varies at fixed <span class="math" data-index="128" data-tex="\(r\)">\(r\)</span>. This is a plot in the chart <span class="math" data-index="129" data-tex="\(z=re^{i\theta}\)">\(z=re^{i\theta}\)</span>, not an ambient embedding of <span class="math" data-index="130" data-tex="\(M\)">\(M\)</span>. Critical labels use the unique positive roots in (23), with the indices computed from (24). The saddle has a positive radial Hessian and negative angular Hessian. Formal Proposition 6.3 and Corollary 6.4 explain how this example models the generic finite-critical-point argument. Original figure, CC0-1.0; classical critical-value method context [S].</em></p>
+<h2 id="4-exercises-100-points">4. Exercises, 100 points</h2>
+<ol>
+<li><strong>The sharp Gaussian degree constant, 10 points.</strong> For <span class="math" data-index="131" data-tex="\(\phi(Z)=|Z|^2\)">\(\phi(Z)=|Z|^2\)</span> on <span class="math" data-index="132" data-tex="\(\mathbb C^D\)">\(\mathbb C^D\)</span> and <span class="math" data-index="133" data-tex="\(1\leq q\leq D\)">\(1\leq q\leq D\)</span>, take <span class="math" data-index="134" data-tex="\(a=d\bar Z_1\wedge\cdots\wedge d\bar Z_q\)">\(a=d\bar Z_1\wedge\cdots\wedge d\bar Z_q\)</span>. Construct a polynomial <span class="math" data-index="135" data-tex="\((0,q-1)\)">\((0,q-1)\)</span>-form <span class="math" data-index="136" data-tex="\(u\)">\(u\)</span> with <span class="math" data-index="137" data-tex="\(\bar\partial u=a\)">\(\bar\partial u=a\)</span> and <span class="math" data-index="138" data-tex="\(\|u\|_\phi^2=\|a\|_\phi^2/q\)">\(\|u\|_\phi^2=\|a\|_\phi^2/q\)</span>. Explain why no solution has a smaller weighted norm.</li>
+<li><strong>Curvature on actual wedges, 12 points.</strong> Verify the sign of <span class="math" data-index="139" data-tex="\(c_2^*(d\bar Z_1\wedge d\bar Z_2)\)">\(c_2^*(d\bar Z_1\wedge d\bar Z_2)\)</span>. For a diagonal Levi matrix with eigenvalues <span class="math" data-index="140" data-tex="\(2,3,5\)">\(2,3,5\)</span>, compute the three curvature eigenvalues in degree two. Explain the general sum-of-eigenvalues rule and its degree-<span class="math" data-index="141" data-tex="\(q\)">\(q\)</span> lower bound.</li>
+<li><strong>Smoothness before restriction, 14 points.</strong> Explain why an arbitrary <span class="math" data-index="142" data-tex="\(L^2_{\mathrm{loc}}\)">\(L^2_{\mathrm{loc}}\)</span> ambient form cannot simply be restricted to <span class="math" data-index="143" data-tex="\(M\)">\(M\)</span>. Derive the elliptic equation for the minimal solution in formal Theorem 1.2. In four real dimensions, how many steps from <span class="math" data-index="144" data-tex="\(L^2_{\mathrm{loc}}\)">\(L^2_{\mathrm{loc}}\)</span> in the written one-order bootstrap suffice to guarantee a <span class="math" data-index="145" data-tex="\(C^2\)">\(C^2\)</span> representative?</li>
+<li><strong>The top-degree endpoint of graph transfer, 12 points.</strong> For a closed <span class="math" data-index="146" data-tex="\((0,d)\)">\((0,d)\)</span>-form <span class="math" data-index="147" data-tex="\(a\)">\(a\)</span> on <span class="math" data-index="148" data-tex="\(V\)">\(V\)</span>, identify the degrees of <span class="math" data-index="149" data-tex="\(h\)">\(h\)</span>, <span class="math" data-index="150" data-tex="\(\bar\partial h/G\)">\(\bar\partial h/G\)</span>, <span class="math" data-index="151" data-tex="\(v\)">\(v\)</span>, <span class="math" data-index="152" data-tex="\(h-Gv\)">\(h-Gv\)</span> and <span class="math" data-index="153" data-tex="\(u\)">\(u\)</span> in (7). Prove that the quotient is smooth and closed and that the final pullback solves <span class="math" data-index="154" data-tex="\(\bar\partial b=a\)">\(\bar\partial b=a\)</span>.</li>
+<li><strong>Why critical images are small, 12 points.</strong> In the equal-dimensional critical-value proof, derive the total covering-volume bound from the number of grid cubes and the thin-box estimate. Apply the statement to <span class="math" data-index="155" data-tex="\(F(x,y)=(x^2,y)\)">\(F(x,y)=(x^2,y)\)</span>; distinguish the critical set from its image, and explain why the result does not claim that either set is finite.</li>
+<li><strong>Why the algebraic critical points are finite, 10 points.</strong> Prove that a discrete semialgebraic subset of <span class="math" data-index="156" data-tex="\(\mathbb R^s\)">\(\mathbb R^s\)</span> is finite using coordinate projections. Explain which two facts establish those hypotheses for the set (37), and why discreteness alone would be insufficient.</li>
+<li><strong>An exact rational period basis, 16 points.</strong> Explain why the error in (45) produces an invertible period matrix. For</li>
+</ol>
+<span class="math math-display" id="learner-eq-25" data-index="157" data-tex="\[
+ P=\begin{pmatrix}1&amp;1/5\\1/5&amp;1\end{pmatrix},
+ \qquad b=\begin{pmatrix}2\\-1\end{pmatrix},
+ \tag{25}
+\]">\[
+ P=\begin{pmatrix}1&amp;1/5\\1/5&amp;1\end{pmatrix},
+ \qquad b=\begin{pmatrix}2\\-1\end{pmatrix},
+ \tag{25}
+\]</span>
+<p>compute the rational-form coefficients with period vector <span class="math" data-index="158" data-tex="\(b\)">\(b\)</span>. If their denominators are <span class="math" data-index="159" data-tex="\(f^2\)">\(f^2\)</span> and <span class="math" data-index="160" data-tex="\(f^5\)">\(f^5\)</span>, combine the result into one denominator. Explain precisely where finite-dimensionality enters.
+8. <strong>Positive projective pole orders, 14 points.</strong> In <span class="math" data-index="161" data-tex="\(\mathbb P^2\)">\(\mathbb P^2\)</span>, take <span class="math" data-index="162" data-tex="\(L=Z_0\)">\(L=Z_0\)</span>, any nonzero cubic <span class="math" data-index="163" data-tex="\(F\)">\(F\)</span>, and the affine polynomial form <span class="math" data-index="164" data-tex="\((z_1^2+z_2)\,dz_1\wedge dz_2\)">\((z_1^2+z_2)\,dz_1\wedge dz_2\)</span>, initially with denominator exponent zero. Construct (4) with <span class="math" data-index="165" data-tex="\(k,s\geq1\)">\(k,s\geq1\)</span>, verify its homogeneous degree and its affine restriction, and explain why this representation also works if <span class="math" data-index="166" data-tex="\(F\)">\(F\)</span> has repeated factors.</p>
+<h2 id="5-complete-solutions">5. Complete solutions</h2>
+<h3 id="solution-1">Solution 1</h3>
+<p>Put <span class="math" data-index="167" data-tex="\(a=d\bar Z_1\wedge\cdots\wedge d\bar Z_q\)">\(a=d\bar Z_1\wedge\cdots\wedge d\bar Z_q\)</span> and</p>
+<span class="math math-display" id="learner-eq-26" data-index="168" data-tex="\[
+ u=\frac1q\sum_{j=1}^q(-1)^{j-1}\bar Z_j\,
+       d\bar Z_1\wedge\cdots\wedge\widehat{d\bar Z_j}
+                                     \wedge\cdots\wedge d\bar Z_q .
+ \tag{26}
+\]">\[
+ u=\frac1q\sum_{j=1}^q(-1)^{j-1}\bar Z_j\,
+       d\bar Z_1\wedge\cdots\wedge\widehat{d\bar Z_j}
+                                     \wedge\cdots\wedge d\bar Z_q .
+ \tag{26}
+\]</span>
+<p>Differentiating each coefficient inserts <span class="math" data-index="169" data-tex="\(d\bar Z_j\)">\(d\bar Z_j\)</span> in front of the omitted-index wedge. Moving it past <span class="math" data-index="170" data-tex="\(j-1\)">\(j-1\)</span> indices cancels the displayed sign. Each summand contributes <span class="math" data-index="171" data-tex="\(a/q\)">\(a/q\)</span>, so <span class="math" data-index="172" data-tex="\(\bar\partial u=a\)">\(\bar\partial u=a\)</span>. <strong>4 points.</strong></p>
+<p>Distinct omitted-index wedges are orthogonal in the stipulated coefficient norm. The product Gaussian integral is <span class="math" data-index="173" data-tex="\(\|a\|_\phi^2=\pi^D\)">\(\|a\|_\phi^2=\pi^D\)</span>, while
+<span class="math" data-index="174" data-tex="\(\int_{\mathbb C^D}|Z_j|^2e^{-|Z|^2}dV=\pi^D\)">\(\int_{\mathbb C^D}|Z_j|^2e^{-|Z|^2}dV=\pi^D\)</span>.
+The latter follows in that coordinate from
+<span class="math" data-index="175" data-tex="\(2\pi\int_0^\infty r^3e^{-r^2}dr=\pi\)">\(2\pi\int_0^\infty r^3e^{-r^2}dr=\pi\)</span>;
+the other coordinates contribute <span class="math" data-index="176" data-tex="\(\pi^{D-1}\)">\(\pi^{D-1}\)</span>. Thus</p>
+<span class="math math-display" id="learner-eq-27" data-index="177" data-tex="\[
+ \|u\|_\phi^2=q^{-2}\sum_{j=1}^q\pi^D=\pi^D/q .
+ \tag{27}
+\]">\[
+ \|u\|_\phi^2=q^{-2}\sum_{j=1}^q\pi^D=\pi^D/q .
+ \tag{27}
+\]</span>
+<p><strong>3 points.</strong></p>
+<p>For the Gaussian, <span class="math" data-index="178" data-tex="\(T^*a=\sum_j\bar Z_jc_j^*a=qu\)">\(T^*a=\sum_j\bar Z_jc_j^*a=qu\)</span>, since <span class="math" data-index="179" data-tex="\(\partial_ja=0\)">\(\partial_ja=0\)</span>. The constant form <span class="math" data-index="180" data-tex="\(a\)">\(a\)</span> belongs to the weighted adjoint domain: both it and <span class="math" data-index="181" data-tex="\(T^*a\)">\(T^*a\)</span> have finite Gaussian norm. Hence <span class="math" data-index="182" data-tex="\(u=q^{-1}T^*a\)">\(u=q^{-1}T^*a\)</span> is orthogonal to <span class="math" data-index="183" data-tex="\(\ker T\)">\(\ker T\)</span>. Any other weighted-square-integrable solution is <span class="math" data-index="184" data-tex="\(u+h\)">\(u+h\)</span>, with <span class="math" data-index="185" data-tex="\(Th=0\)">\(Th=0\)</span>, so its squared norm is <span class="math" data-index="186" data-tex="\(\|u\|_\phi^2+\|h\|_\phi^2\geq\|u\|_\phi^2\)">\(\|u\|_\phi^2+\|h\|_\phi^2\geq\|u\|_\phi^2\)</span>. Solutions of infinite weighted norm cannot improve that bound. The constant <span class="math" data-index="187" data-tex="\(1/q\)">\(1/q\)</span> is attained. <strong>3 points.</strong></p>
+<h3 id="solution-2">Solution 2</h3>
+<p>Deleting the second index passes the contraction over the first wedge factor:</p>
+<span class="math math-display" id="learner-eq-28" data-index="188" data-tex="\[
+ c_2^*(d\bar Z_1\wedge d\bar Z_2)=-d\bar Z_1.
+ \tag{28}
+\]">\[
+ c_2^*(d\bar Z_1\wedge d\bar Z_2)=-d\bar Z_1.
+ \tag{28}
+\]</span>
+<p>Inserting it again gives <span class="math" data-index="189" data-tex="\(c_2(-d\bar Z_1)=d\bar Z_1\wedge d\bar Z_2\)">\(c_2(-d\bar Z_1)=d\bar Z_1\wedge d\bar Z_2\)</span>. Thus <span class="math" data-index="190" data-tex="\(c_2c_2^*\)">\(c_2c_2^*\)</span> is <span class="math" data-index="191" data-tex="\(+I\)">\(+I\)</span> on this wedge, despite the intermediate minus sign. <strong>3 points.</strong></p>
+<p>The degree-two basis consists of indices <span class="math" data-index="192" data-tex="\(12,13,23\)">\(12,13,23\)</span>. The diagonal curvature <span class="math" data-index="193" data-tex="\(\sum_j\lambda_jc_jc_j^*\)">\(\sum_j\lambda_jc_jc_j^*\)</span> therefore has eigenvalues</p>
+<span class="math math-display" id="learner-eq-29" data-index="194" data-tex="\[
+ 2+3=5,\qquad2+5=7,\qquad3+5=8.
+ \tag{29}
+\]">\[
+ 2+3=5,\qquad2+5=7,\qquad3+5=8.
+ \tag{29}
+\]</span>
+<p><strong>3 points.</strong> Each <span class="math" data-index="195" data-tex="\(c_jc_j^*\)">\(c_jc_j^*\)</span> keeps a wedge containing <span class="math" data-index="196" data-tex="\(j\)">\(j\)</span> and kills one missing <span class="math" data-index="197" data-tex="\(j\)">\(j\)</span>. For a degree-<span class="math" data-index="198" data-tex="\(q\)">\(q\)</span> wedge this sums exactly its <span class="math" data-index="199" data-tex="\(q\)">\(q\)</span> selected eigenvalues. Unitary diagonalization preserves the coefficient inner product, so this determines the general Hermitian curvature spectrum at a point. <strong>4 points.</strong> If all eigenvalues are at least <span class="math" data-index="200" data-tex="\(\kappa&gt;0\)">\(\kappa&gt;0\)</span>, every selected sum is at least <span class="math" data-index="201" data-tex="\(q\kappa\)">\(q\kappa\)</span>. Here that lower bound is <span class="math" data-index="202" data-tex="\(4\)">\(4\)</span>, while the exact smallest degree-two curvature eigenvalue is <span class="math" data-index="203" data-tex="\(5\)">\(5\)</span>. <strong>2 points.</strong></p>
+<h3 id="solution-3">Solution 3</h3>
+<p>An <span class="math" data-index="204" data-tex="\(L^2_{\mathrm{loc}}\)">\(L^2_{\mathrm{loc}}\)</span> coefficient is specified only up to changes on sets of ambient measure zero. The graph <span class="math" data-index="205" data-tex="\(M\)">\(M\)</span> has real codimension two and ambient measure zero, so its point values are not determined by that equivalence class. A plain restriction is therefore undefined without additional regularity or a proved trace statement. <strong>3 points.</strong></p>
+<p>For the minimal Hilbert solution <span class="math" data-index="206" data-tex="\(u\)">\(u\)</span>, orthogonality to <span class="math" data-index="207" data-tex="\(\ker T_{q-1}\)">\(\ker T_{q-1}\)</span> implies <span class="math" data-index="208" data-tex="\(T_{q-2}^*u=0\)">\(T_{q-2}^*u=0\)</span>, because the lower range is contained in that kernel. Together with <span class="math" data-index="209" data-tex="\(T_{q-1}u=a\)">\(T_{q-1}u=a\)</span>, this yields</p>
+<span class="math math-display" id="learner-eq-30" data-index="210" data-tex="\[
+ (T_{q-2}T_{q-2}^*+T_{q-1}^*T_{q-1})u=T_{q-1}^*a .
+ \tag{30}
+\]">\[
+ (T_{q-2}T_{q-2}^*+T_{q-1}^*T_{q-1})u=T_{q-1}^*a .
+ \tag{30}
+\]</span>
+<p>For <span class="math" data-index="211" data-tex="\(q=1\)">\(q=1\)</span> the first product is absent. Expanding the left side gives</p>
+<span class="math math-display" id="learner-eq-31" data-index="212" data-tex="\[
+ -\tfrac14\Delta u+\sum_j\phi_j\bar\partial_ju+
+       \sum_{j,k}\phi_{k\bar j}c_jc_k^*u=T_{q-1}^*a .
+ \tag{31}
+\]">\[
+ -\tfrac14\Delta u+\sum_j\phi_j\bar\partial_ju+
+       \sum_{j,k}\phi_{k\bar j}c_jc_k^*u=T_{q-1}^*a .
+ \tag{31}
+\]</span>
+<p>The right side and all coefficients are smooth. <strong>5 points.</strong></p>
+<p>With a compact cutoff, the first-order terms initially belong to <span class="math" data-index="213" data-tex="\(H^{-1}\)">\(H^{-1}\)</span>. The Fourier estimate for <span class="math" data-index="214" data-tex="\(\Delta\)">\(\Delta\)</span> gives one gain, from <span class="math" data-index="215" data-tex="\(L^2=H^0\)">\(L^2=H^0\)</span> to <span class="math" data-index="216" data-tex="\(H^1\)">\(H^1\)</span>; repeating with nested cutoffs gains one integer order at each step. <strong>3 points.</strong> In real dimension four, <span class="math" data-index="217" data-tex="\(H^s\)">\(H^s\)</span> gives continuous derivatives through order two when <span class="math" data-index="218" data-tex="\(s&gt;2+4/2=4\)">\(s&gt;2+4/2=4\)</span>. Five steps reach <span class="math" data-index="219" data-tex="\(H^5_{\mathrm{loc}}\)">\(H^5_{\mathrm{loc}}\)</span>, which suffices for <span class="math" data-index="220" data-tex="\(C^2\)">\(C^2\)</span>. Continuing to arbitrarily high orders proves smoothness, after which ordinary pullback is legitimate. <strong>3 points.</strong></p>
+<h3 id="solution-4">Solution 4</h3>
+<p>The degrees are respectively <span class="math" data-index="221" data-tex="\(d,d+1,d,d,d-1\)">\(d,d+1,d,d,d-1\)</span>. The ambient dimension is <span class="math" data-index="222" data-tex="\(d+1\)">\(d+1\)</span>, so the first right side has its permitted top antiholomorphic degree. The second equation uses degree <span class="math" data-index="223" data-tex="\(d\)">\(d\)</span>; neither equation is beyond the available theorem. <strong>3 points.</strong></p>
+<p>Near <span class="math" data-index="224" data-tex="\(f=0\)">\(f=0\)</span> at a finite ambient point, <span class="math" data-index="225" data-tex="\(G\)">\(G\)</span> is close to <span class="math" data-index="226" data-tex="\(-1\)">\(-1\)</span>, and the cutoff in (22) is zero on a neighborhood. Hence <span class="math" data-index="227" data-tex="\(h\)">\(h\)</span> extends smoothly by zero. Near <span class="math" data-index="228" data-tex="\(M\)">\(M\)</span>, the cutoff is one, so <span class="math" data-index="229" data-tex="\(\bar\partial h=\pi^*\bar\partial a=0\)">\(\bar\partial h=\pi^*\bar\partial a=0\)</span> on a neighborhood. Therefore <span class="math" data-index="230" data-tex="\(\bar\partial h/G\)">\(\bar\partial h/G\)</span> extends smoothly by zero through <span class="math" data-index="231" data-tex="\(M\)">\(M\)</span>. Off <span class="math" data-index="232" data-tex="\(M\)">\(M\)</span> it is closed because <span class="math" data-index="233" data-tex="\(G\)">\(G\)</span> is holomorphic and <span class="math" data-index="234" data-tex="\(\bar\partial^2=0\)">\(\bar\partial^2=0\)</span>; near <span class="math" data-index="235" data-tex="\(M\)">\(M\)</span> it is zero. <strong>4 points.</strong></p>
+<p>Solve <span class="math" data-index="236" data-tex="\(\bar\partial v=\bar\partial h/G\)">\(\bar\partial v=\bar\partial h/G\)</span>. Then <span class="math" data-index="237" data-tex="\(H=h-Gv\)">\(H=h-Gv\)</span> is closed, so solve <span class="math" data-index="238" data-tex="\(\bar\partial u=H\)">\(\bar\partial u=H\)</span>. Both solutions are smooth by the proved ambient theorem. The holomorphic pullback commutes with <span class="math" data-index="239" data-tex="\(\bar\partial\)">\(\bar\partial\)</span>, while <span class="math" data-index="240" data-tex="\(\iota^*h=a\)">\(\iota^*h=a\)</span> and <span class="math" data-index="241" data-tex="\(G\circ\iota=0\)">\(G\circ\iota=0\)</span>. Thus</p>
+<span class="math math-display" id="learner-eq-32" data-index="242" data-tex="\[
+ \bar\partial(\iota^*u)=\iota^*(h-Gv)=a .
+ \tag{32}
+\]">\[
+ \bar\partial(\iota^*u)=\iota^*(h-Gv)=a .
+ \tag{32}
+\]</span>
+<p><strong>5 points.</strong></p>
+<h3 id="solution-5">Solution 5</h3>
+<p>On a fixed compact domain set, there are at most <span class="math" data-index="243" data-tex="\(C_Q\delta^{-N}\)">\(C_Q\delta^{-N}\)</span> cubes of side <span class="math" data-index="244" data-tex="\(\delta\)">\(\delta\)</span>. At a singular derivative the linear image has rank at most <span class="math" data-index="245" data-tex="\(N-1\)">\(N-1\)</span>. Uniform continuity of the derivative makes the nonlinear remainder at most <span class="math" data-index="246" data-tex="\(C_N\varepsilon\delta\)">\(C_N\varepsilon\delta\)</span>, so each image fits in a box of volume at most
+<span class="math" data-index="247" data-tex="\(C_N(B+\varepsilon)^{N-1}\varepsilon\delta^N\)">\(C_N(B+\varepsilon)^{N-1}\varepsilon\delta^N\)</span>.
+The sum is therefore at most</p>
+<span class="math math-display" id="learner-eq-33" data-index="248" data-tex="\[
+ C_QC_N(B+\varepsilon)^{N-1}\varepsilon .
+ \tag{33}
+\]">\[
+ C_QC_N(B+\varepsilon)^{N-1}\varepsilon .
+ \tag{33}
+\]</span>
+<p>The grid scale cancels. Letting <span class="math" data-index="249" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> decrease to zero gives outer measure zero; compact exhaustion covers the entire open domain. <strong>7 points.</strong></p>
+<p>For <span class="math" data-index="250" data-tex="\(F(x,y)=(x^2,y)\)">\(F(x,y)=(x^2,y)\)</span>, the derivative is <span class="math" data-index="251" data-tex="\(\operatorname{diag}(2x,1)\)">\(\operatorname{diag}(2x,1)\)</span>. Its critical set is <span class="math" data-index="252" data-tex="\(\{x=0\}\)">\(\{x=0\}\)</span>, and its critical image is <span class="math" data-index="253" data-tex="\(\{(0,y):y\in\mathbb R\}\)">\(\{(0,y):y\in\mathbb R\}\)</span>. That image has two-dimensional measure zero but infinitely many points. <strong>3 points.</strong> The critical-value statement gives a measure conclusion about images. It does not make the domain critical set discrete or finite. In Proposition 6.3, choosing a regular center separately makes the relevant preimages discrete, and their polynomial equations then give finiteness. <strong>2 points.</strong></p>
+<h3 id="solution-6">Solution 6</h3>
+<p>Every point of a discrete subset has a ball from the countable rational basis meeting the subset in that point alone. Assigning the first such ball injects the subset into a countable set. Its coordinate projections are thus countable. Semialgebraic projection makes each projection semialgebraic. A one-dimensional semialgebraic set is constant on the intervals between the finitely many real roots of its defining nonzero polynomials; hence it is a finite union of intervals and points. Countability excludes every nonempty interval. Each coordinate projection is finite, so the original subset lies in their finite Cartesian product and is finite. <strong>6 points.</strong></p>
+<p>For (37), polynomial equations give semialgebraicity. A regular value of the normal-parameter map makes each solution isolated by the inverse function theorem; the graph chart has the actual ambient subspace topology, so this is discreteness of the polynomial solution set itself. <strong>3 points.</strong> The set <span class="math" data-index="254" data-tex="\(\{1/n:n\geq1\}\subset\mathbb R\)">\(\{1/n:n\geq1\}\subset\mathbb R\)</span> is discrete and infinite; its accumulation point zero is outside it. Thus discreteness alone is insufficient. It is not semialgebraic, by the preceding one-dimensional conclusion. <strong>1 point.</strong></p>
+<h3 id="solution-7">Solution 7</h3>
+<p>For each basis cycle, (42) bounds the period error by <span class="math" data-index="255" data-tex="\(B_{c_i}\varepsilon\)">\(B_{c_i}\varepsilon\)</span>. With (45) this is less than <span class="math" data-index="256" data-tex="\(1/(2r)\)">\(1/(2r)\)</span>. The row-sum error norm is consequently less than <span class="math" data-index="257" data-tex="\(1/2\)">\(1/2\)</span>. If <span class="math" data-index="258" data-tex="\(Pv=0\)">\(Pv=0\)</span>, then <span class="math" data-index="259" data-tex="\(v=(I-P)v\)">\(v=(I-P)v\)</span>, and the norm inequality forces <span class="math" data-index="260" data-tex="\(v=0\)">\(v=0\)</span>. Thus the finite square matrix is invertible. <strong>5 points.</strong></p>
+<p>In the example,</p>
+<span class="math math-display" id="learner-eq-34" data-index="261" data-tex="\[
+ P^{-1}=
+ \begin{pmatrix}25/24&amp;-5/24\\-5/24&amp;25/24\end{pmatrix},
+ \qquad
+ P^{-1}b=\begin{pmatrix}55/24\\-35/24\end{pmatrix}.
+ \tag{34}
+\]">\[
+ P^{-1}=
+ \begin{pmatrix}25/24&amp;-5/24\\-5/24&amp;25/24\end{pmatrix},
+ \qquad
+ P^{-1}b=\begin{pmatrix}55/24\\-35/24\end{pmatrix}.
+ \tag{34}
+\]</span>
+<p>One can verify both equations by direct multiplication; the determinant is <span class="math" data-index="262" data-tex="\(1-1/25=24/25\)">\(1-1/25=24/25\)</span>. The coefficients of the two rational-form classes are therefore <span class="math" data-index="263" data-tex="\(55/24\)">\(55/24\)</span> and <span class="math" data-index="264" data-tex="\(-35/24\)">\(-35/24\)</span>. <strong>4 points.</strong></p>
+<p>If their numerators are <span class="math" data-index="265" data-tex="\(p_1,p_2\)">\(p_1,p_2\)</span> and their denominator powers are two and five, the combined representative is</p>
+<span class="math math-display" id="learner-eq-35" data-index="266" data-tex="\[
+ \left(\frac{55}{24}\frac{p_1}{f^2}
+          -\frac{35}{24}\frac{p_2}{f^5}\right)
+          dz_1\wedge\cdots\wedge dz_d
+ =\frac{55p_1f^3-35p_2}{24f^5}\,
+          dz_1\wedge\cdots\wedge dz_d .
+ \tag{35}
+\]">\[
+ \left(\frac{55}{24}\frac{p_1}{f^2}
+          -\frac{35}{24}\frac{p_2}{f^5}\right)
+          dz_1\wedge\cdots\wedge dz_d
+ =\frac{55p_1f^3-35p_2}{24f^5}\,
+          dz_1\wedge\cdots\wedge dz_d .
+ \tag{35}
+\]</span>
+<p><strong>3 points.</strong> Finite-dimensionality gives a finite cycle basis, its finite union of compact simplex images, and a finite square period matrix. Approximation then produces finitely many exact independent classes. Without that step, density does not establish algebraic spanning: polynomials approximate the entire function <span class="math" data-index="267" data-tex="\(e^z\)">\(e^z\)</span> on compact subsets of <span class="math" data-index="268" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, yet no finite linear combination of polynomials equals <span class="math" data-index="269" data-tex="\(e^z\)">\(e^z\)</span>, since all sufficiently high derivatives of a polynomial vanish. The finite period matrix, rather than coefficient approximation alone, establishes the cohomological assertion. <strong>4 points.</strong></p>
+<h3 id="solution-8">Solution 8</h3>
+<p>Start with <span class="math" data-index="270" data-tex="\(p=z_1^2+z_2\)">\(p=z_1^2+z_2\)</span> and <span class="math" data-index="271" data-tex="\(k=0\)">\(k=0\)</span>. Replace it by <span class="math" data-index="272" data-tex="\(k=1\)">\(k=1\)</span> and numerator <span class="math" data-index="273" data-tex="\(pf\)">\(pf\)</span>, where <span class="math" data-index="274" data-tex="\(f=F(1,z_1,z_2)\)">\(f=F(1,z_1,z_2)\)</span>. Choose homogenizing degree <span class="math" data-index="275" data-tex="\(D_0=5\)">\(D_0=5\)</span>. Since <span class="math" data-index="276" data-tex="\(m=3\)">\(m=3\)</span> and <span class="math" data-index="277" data-tex="\(d=2\)">\(d=2\)</span>, formula (52) gives <span class="math" data-index="278" data-tex="\(s=5-3+2+1=5\)">\(s=5-3+2+1=5\)</span>. A suitable homogeneous numerator is</p>
+<span class="math math-display" id="learner-eq-36" data-index="279" data-tex="\[
+ P(Z)=(Z_1^2+Z_0Z_2)F(Z).
+ \tag{36}
+\]">\[
+ P(Z)=(Z_1^2+Z_0Z_2)F(Z).
+ \tag{36}
+\]</span>
+<p>It has degree <span class="math" data-index="280" data-tex="\(2+3=5\)">\(2+3=5\)</span>, exactly
+<span class="math" data-index="281" data-tex="\(mk+s-d-1=3+5-2-1=5\)">\(mk+s-d-1=3+5-2-1=5\)</span>.
+<strong>5 points.</strong></p>
+<p>The projective form is</p>
+<span class="math math-display" id="learner-eq-37" data-index="282" data-tex="\[
+ \frac{(Z_1^2+Z_0Z_2)F\,\omega}{FZ_0^5}
+        =\frac{(Z_1^2+Z_0Z_2)\omega}{Z_0^5}
+ \tag{37}
+\]">\[
+ \frac{(Z_1^2+Z_0Z_2)F\,\omega}{FZ_0^5}
+        =\frac{(Z_1^2+Z_0Z_2)\omega}{Z_0^5}
+ \tag{37}
+\]</span>
+<p>on the complement. Its total homogeneous weight is <span class="math" data-index="283" data-tex="\(5+3-3-5=0\)">\(5+3-3-5=0\)</span>, since <span class="math" data-index="284" data-tex="\(\omega\)">\(\omega\)</span> has weight three, and it is horizontal as a multiple of the Euler-contracted volume form. <strong>4 points.</strong> On the section <span class="math" data-index="285" data-tex="\(Z_0=1\)">\(Z_0=1\)</span>, <span class="math" data-index="286" data-tex="\(\omega=dz_1\wedge dz_2\)">\(\omega=dz_1\wedge dz_2\)</span>, and (37) becomes exactly the given affine form. Both stipulated denominator exponents are positive, although the <span class="math" data-index="287" data-tex="\(F\)">\(F\)</span> pole cancels. <strong>3 points.</strong> Cancellation only uses that <span class="math" data-index="288" data-tex="\(F\ne0\)">\(F\ne0\)</span> on this complement; no factorization or simple-zero hypothesis is required. The same calculation therefore works for repeated factors and even when the affine degree of <span class="math" data-index="289" data-tex="\(f\)">\(f\)</span> is less than three. <strong>2 points.</strong></p>
+<h2 id="6-the-next-geometric-application">6. The next geometric application</h2>
+<p>The complete proof below gives the all-degree smooth Cauchy–Riemann estimate, graph transfer, holomorphic representatives, entire extension, finite-dimensionality and exact rational spanning. Each step retains the hypotheses needed by the next one. In particular the finite period matrix turns compact approximation into an exact cohomological basis.</p>
+<p>The exact rational spanning theorem can be combined with a normal-tube injection, once the specified cycle has actually been identified with that tube. The affine/projective cycle, orientation, sign and multiplicity must be established in that application. This lesson supplies the rational-form step and preserves that separate geometric obligation.</p>
+<h2 id="references">References</h2>
+<p>[H] Lars Hörmander, <em><span class="math" data-index="290" data-tex="\(L^2\)">\(L^2\)</span> estimates and existence theorems for the <span class="math" data-index="291" data-tex="\(\bar\partial\)">\(\bar\partial\)</span> operator</em>, Acta Mathematica <strong>113</strong> (1965), 89–152. <a href="https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/5989-11511_2006_Article_BF02391775.pdf">Primary article</a>, <a href="https://www.mathnet.ru/eng/mat389">journal record</a>.</p>
+<p>[S] Arthur Sard, <em>The measure of the critical values of differentiable maps</em>, Bulletin of the American Mathematical Society <strong>48</strong> (1942), 883–890. <a href="https://webhomes.maths.ed.ac.uk/~v1ranick/papers/sard.pdf">Original article</a>.</p>
+<p>[G] Alexander Grothendieck, <em>On the de Rham cohomology of algebraic varieties</em>, Publications Mathématiques de l'IHÉS <strong>29</strong> (1966), 95–103. <a href="https://www.numdam.org/item/PMIHES_1966__29__95_0.pdf">Primary article</a>. The broader comparison is historical context; the exact top-degree argument used here is fully supplied.</p>
+<p>Original lesson prose and figures are CC0-1.0. The linked historical articles retain their own rights and are not reproduced.</p>
+<h2 id="complete-proof">Complete proof</h2>
+<p>Let <span class="math" data-index="292" data-tex="\(f\)">\(f\)</span> be a nonzero complex polynomial on <span class="math" data-index="293" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span>, <span class="math" data-index="294" data-tex="\(d\geq1\)">\(d\geq1\)</span>, and put <span class="math" data-index="295" data-tex="\(V=\{f\ne0\}\)">\(V=\{f\ne0\}\)</span>. The zero set that has been removed can be singular, reducible or defined with repeated factors. We prove that the forms</p>
+<span class="math math-display" id="proof-eq-1" data-index="296" data-tex="\[
+ \frac{p(z)}{f(z)^k}\,dz_1\wedge\cdots\wedge dz_d,
+ \qquad p\in\mathbb C[z_1,\ldots,z_d],\quad k\geq0,
+ \tag{1}
+\]">\[
+ \frac{p(z)}{f(z)^k}\,dz_1\wedge\cdots\wedge dz_d,
+ \qquad p\in\mathbb C[z_1,\ldots,z_d],\quad k\geq0,
+ \tag{1}
+\]</span>
+<p>span the smooth complex de Rham group <span class="math" data-index="297" data-tex="\(H^d_{\mathrm{dR}}(V;\mathbb C)\)">\(H^d_{\mathrm{dR}}(V;\mathbb C)\)</span>. Their periods detect ordinary finite-cycle homology in degree <span class="math" data-index="298" data-tex="\(d\)">\(d\)</span>, over <span class="math" data-index="299" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> and over <span class="math" data-index="300" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. The proof includes the finite-dimensionality needed to pass from approximation to spanning.</p>
+<p>Basic historical references are Hörmander's weighted Cauchy–Riemann existence theorem [H], Sard's critical-value theorem [S] and Grothendieck's algebraic de Rham comparison [G]. Here we give a direct top-degree proof for this particular affine complement. The all-degree weighted estimate and its smoothness argument are proved below. The exact previously written inputs are Hilbert representation in <a href="AN02-L043.html#a-representing-vector-in-hilbert-space">Lebesgue duality and Fourier functionals, Lemma 1.1</a>, Fourier inversion and the Schwartz Plancherel formula in <a href="prerequisites/prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation, §§1–2</a>, semialgebraic projection in <a href="AN02-L018.html#algebraic-inequalities-survive-projection">Symbols at infinity, Lemma 2.1</a>, the finite-chain handle theorem in <a href="AN02-L125.html#mh0-statement-coefficients-and-boundary-cases">Ordinary finite-chain Morse handles</a>, and the actual integration comparison in <a href="AN02-L116.html#cd6-integration-and-smooth-continuous-comparison">When zero smooth periods mean that a cycle bounds</a>. Those are exact statement inputs, with their lower foundations retained. We do not use a general algebraic de Rham theorem as an unproved premise.</p>
+<h2 id="1-a-smooth-global-cauchy-riemann-solution-in-every-positive-degree">1. A smooth global Cauchy–Riemann solution in every positive degree</h2>
+<p>On <span class="math" data-index="301" data-tex="\(\mathbb C^D\)">\(\mathbb C^D\)</span>, let <span class="math" data-index="302" data-tex="\(E_q\)">\(E_q\)</span> be the coefficient space of <span class="math" data-index="303" data-tex="\((0,q)\)">\((0,q)\)</span>-forms. The wedges <span class="math" data-index="304" data-tex="\(d\bar Z_{i_1}\wedge\cdots\wedge d\bar Z_{i_q}\)">\(d\bar Z_{i_1}\wedge\cdots\wedge d\bar Z_{i_q}\)</span>, with increasing indices, are orthonormal by convention. Let <span class="math" data-index="305" data-tex="\(c_j\)">\(c_j\)</span> denote exterior multiplication by <span class="math" data-index="306" data-tex="\(d\bar Z_j\)">\(d\bar Z_j\)</span>, and let <span class="math" data-index="307" data-tex="\(c_j^*\)">\(c_j^*\)</span> be its coefficient adjoint. Direct insertion and deletion of an index give</p>
+<span class="math math-display" id="proof-eq-2" data-index="308" data-tex="\[
+ c_jc_k+c_kc_j=0,\qquad
+ c_j^*c_k^*+c_k^*c_j^*=0,\qquad
+ c_jc_k^*+c_k^*c_j=\delta_{jk}I.
+ \tag{2}
+\]">\[
+ c_jc_k+c_kc_j=0,\qquad
+ c_j^*c_k^*+c_k^*c_j^*=0,\qquad
+ c_jc_k^*+c_k^*c_j=\delta_{jk}I.
+ \tag{2}
+\]</span>
+<p>Indeed, two different insertions or deletions change sign when their order is swapped. For equal indices, a wedge either contains that index or does not; exactly one of deletion followed by insertion and insertion followed by deletion restores it.</p>
+<p><strong>Lemma 1.1.</strong> For any smooth finite coefficient vector <span class="math" data-index="309" data-tex="\(a\)">\(a\)</span> on <span class="math" data-index="310" data-tex="\(\mathbb C^D\)">\(\mathbb C^D\)</span>, there is a smooth real weight <span class="math" data-index="311" data-tex="\(\phi\)">\(\phi\)</span> such that its Levi matrix is at least <span class="math" data-index="312" data-tex="\(I\)">\(I\)</span> and <span class="math" data-index="313" data-tex="\(\int|a|^2e^{-\phi}dV&lt;\infty\)">\(\int|a|^2e^{-\phi}dV&lt;\infty\)</span>.</p>
+<p><strong>Proof.</strong> Set <span class="math" data-index="314" data-tex="\(A_j=\{j\leq|Z|^2\leq j+1\}\)">\(A_j=\{j\leq|Z|^2\leq j+1\}\)</span> and</p>
+<span class="math math-display" data-index="315" data-tex="\[
+ K_j=\log\!\left(2^{j+1}(1+\sup_{A_j}|a|^2)
+                                 (1+\operatorname{vol}A_j)\right).
+\]">\[
+ K_j=\log\!\left(2^{j+1}(1+\sup_{A_j}|a|^2)
+                                 (1+\operatorname{vol}A_j)\right).
+\]</span>
+<p>These numbers are finite and positive. Choose a smooth convex nonnegative <span class="math" data-index="316" data-tex="\(b\)">\(b\)</span>, zero for <span class="math" data-index="317" data-tex="\(t\leq0\)">\(t\leq0\)</span>, with <span class="math" data-index="318" data-tex="\(b(1)&gt;0\)">\(b(1)&gt;0\)</span>. One explicit choice has <span class="math" data-index="319" data-tex="\(b&#x27;&#x27;(t)=e^{-1/t}\)">\(b&#x27;&#x27;(t)=e^{-1/t}\)</span> for <span class="math" data-index="320" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, zero otherwise, and <span class="math" data-index="321" data-tex="\(b(0)=b&#x27;(0)=0\)">\(b(0)=b&#x27;(0)=0\)</span>. Choose <span class="math" data-index="322" data-tex="\(C\geq K_0\)">\(C\geq K_0\)</span> and <span class="math" data-index="323" data-tex="\(c_j\geq0\)">\(c_j\geq0\)</span> with <span class="math" data-index="324" data-tex="\(c_jb(1)\geq K_{j+1}\)">\(c_jb(1)\geq K_{j+1}\)</span>. The locally finite smooth sum</p>
+<span class="math math-display" id="proof-eq-3" data-index="325" data-tex="\[
+ h(t)=C+t+\sum_{j=0}^{\infty}c_jb(t-j),\qquad
+ \phi(Z)=h(|Z|^2)
+ \tag{3}
+\]">\[
+ h(t)=C+t+\sum_{j=0}^{\infty}c_jb(t-j),\qquad
+ \phi(Z)=h(|Z|^2)
+ \tag{3}
+\]</span>
+<p>has <span class="math" data-index="326" data-tex="\(h&#x27;\geq1\)">\(h&#x27;\geq1\)</span> and <span class="math" data-index="327" data-tex="\(h&#x27;&#x27;\geq0\)">\(h&#x27;&#x27;\geq0\)</span>. Its Levi form is</p>
+<span class="math math-display" id="proof-eq-4" data-index="328" data-tex="\[
+ \mathcal L_\phi(\eta)
+ =h&#x27;(|Z|^2)|\eta|^2+h&#x27;&#x27;(|Z|^2)|\bar Z\cdot\eta|^2
+ \geq|\eta|^2 .
+ \tag{4}
+\]">\[
+ \mathcal L_\phi(\eta)
+ =h&#x27;(|Z|^2)|\eta|^2+h&#x27;&#x27;(|Z|^2)|\bar Z\cdot\eta|^2
+ \geq|\eta|^2 .
+ \tag{4}
+\]</span>
+<p>On <span class="math" data-index="329" data-tex="\(A_0\)">\(A_0\)</span>, <span class="math" data-index="330" data-tex="\(\phi\geq K_0\)">\(\phi\geq K_0\)</span>; on <span class="math" data-index="331" data-tex="\(A_j\)">\(A_j\)</span>, <span class="math" data-index="332" data-tex="\(j\geq1\)">\(j\geq1\)</span>, the summand with index <span class="math" data-index="333" data-tex="\(j-1\)">\(j-1\)</span> gives <span class="math" data-index="334" data-tex="\(\phi\geq K_j\)">\(\phi\geq K_j\)</span>. Thus the weighted integral over <span class="math" data-index="335" data-tex="\(A_j\)">\(A_j\)</span> is at most <span class="math" data-index="336" data-tex="\(2^{-j-1}\)">\(2^{-j-1}\)</span>. Summing proves the assertion. Annular boundary spheres have measure zero. <span class="math" data-index="337" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 1.2.</strong> Suppose <span class="math" data-index="338" data-tex="\(\phi\)">\(\phi\)</span> is smooth and real on <span class="math" data-index="339" data-tex="\(\mathbb C^D\)">\(\mathbb C^D\)</span>, with Levi matrix at least <span class="math" data-index="340" data-tex="\(I\)">\(I\)</span>. If <span class="math" data-index="341" data-tex="\(a\)">\(a\)</span> is a smooth <span class="math" data-index="342" data-tex="\(\bar\partial\)">\(\bar\partial\)</span>-closed <span class="math" data-index="343" data-tex="\((0,q)\)">\((0,q)\)</span>-form, <span class="math" data-index="344" data-tex="\(1\leq q\leq D\)">\(1\leq q\leq D\)</span>, and</p>
+<span class="math math-display" data-index="345" data-tex="\[
+ \|a\|_\phi^2=\int |a|^2e^{-\phi}dV&lt;\infty ,
+\]">\[
+ \|a\|_\phi^2=\int |a|^2e^{-\phi}dV&lt;\infty ,
+\]</span>
+<p>there is a smooth <span class="math" data-index="346" data-tex="\((0,q-1)\)">\((0,q-1)\)</span>-form <span class="math" data-index="347" data-tex="\(u\)">\(u\)</span> such that</p>
+<span class="math math-display" id="proof-eq-5" data-index="348" data-tex="\[
+ \bar\partial u=a,\qquad
+ \|u\|_\phi\leq q^{-1/2}\|a\|_\phi.
+ \tag{5}
+\]">\[
+ \bar\partial u=a,\qquad
+ \|u\|_\phi\leq q^{-1/2}\|a\|_\phi.
+ \tag{5}
+\]</span>
+<p>In particular every smooth closed form in a positive degree on the entire affine space has a smooth global solution, without a growth assumption: apply Lemma 1.1 to choose its weight.</p>
+<p><strong>Proof of the estimate.</strong> Put <span class="math" data-index="349" data-tex="\(H_q=L^2(e^{-\phi}dV;E_q)\)">\(H_q=L^2(e^{-\phi}dV;E_q)\)</span>, with inner products linear in the first entry. The maximal distributional operator <span class="math" data-index="350" data-tex="\(T_q:H_q\to H_{q+1}\)">\(T_q:H_q\to H_{q+1}\)</span> is <span class="math" data-index="351" data-tex="\(\bar\partial\)">\(\bar\partial\)</span>; its domain consists of the vectors whose indicated distributional derivative belongs to <span class="math" data-index="352" data-tex="\(H_{q+1}\)">\(H_{q+1}\)</span>. The top operator <span class="math" data-index="353" data-tex="\(T_D\)">\(T_D\)</span> is zero. Each operator is closed, because weighted norm convergence implies local square-integrable convergence and hence distributional convergence. Its domain contains compact smooth forms and is dense.</p>
+<p>Write <span class="math" data-index="354" data-tex="\(\partial_j=\partial/\partial Z_j\)">\(\partial_j=\partial/\partial Z_j\)</span>, <span class="math" data-index="355" data-tex="\(\bar\partial_j=\partial/\partial\bar Z_j\)">\(\bar\partial_j=\partial/\partial\bar Z_j\)</span>, and <span class="math" data-index="356" data-tex="\(\delta_j=\partial_j-\phi_j\)">\(\delta_j=\partial_j-\phi_j\)</span>. Weighted integration by parts gives the formal adjoint and the commutator</p>
+<span class="math math-display" id="proof-eq-6" data-index="357" data-tex="\[
+ T=\sum_jc_j\bar\partial_j,\qquad
+ T^*=-\sum_kc_k^*\delta_k,\qquad
+ [\delta_k,\bar\partial_j]=\phi_{k\bar j}.
+ \tag{6}
+\]">\[
+ T=\sum_jc_j\bar\partial_j,\qquad
+ T^*=-\sum_kc_k^*\delta_k,\qquad
+ [\delta_k,\bar\partial_j]=\phi_{k\bar j}.
+ \tag{6}
+\]</span>
+<p>Expanding both products and using (2) therefore gives, on every degree,</p>
+<span class="math math-display" id="proof-eq-7" data-index="358" data-tex="\[
+ TT^*+T^*T
+ =-\sum_j\delta_j\bar\partial_j
+       +\sum_{j,k}\phi_{k\bar j}c_jc_k^*.
+ \tag{7}
+\]">\[
+ TT^*+T^*T
+ =-\sum_j\delta_j\bar\partial_j
+       +\sum_{j,k}\phi_{k\bar j}c_jc_k^*.
+ \tag{7}
+\]</span>
+<p>For a compact smooth <span class="math" data-index="359" data-tex="\((0,q)\)">\((0,q)\)</span>-form <span class="math" data-index="360" data-tex="\(v\)">\(v\)</span>, pair (7) with <span class="math" data-index="361" data-tex="\(v\)">\(v\)</span>. Integration by parts in the first term yields</p>
+<span class="math math-display" id="proof-eq-8" data-index="362" data-tex="\[
+ \|T_{q-1}^*v\|_\phi^2+\|T_qv\|_\phi^2
+ =\sum_{j,I}\|\bar\partial_jv_I\|_\phi^2
+   +\int\left\langle
+        \sum_{j,k}\phi_{k\bar j}c_jc_k^*v,v
+                 \right\rangle e^{-\phi}dV .
+ \tag{8}
+\]">\[
+ \|T_{q-1}^*v\|_\phi^2+\|T_qv\|_\phi^2
+ =\sum_{j,I}\|\bar\partial_jv_I\|_\phi^2
+   +\int\left\langle
+        \sum_{j,k}\phi_{k\bar j}c_jc_k^*v,v
+                 \right\rangle e^{-\phi}dV .
+ \tag{8}
+\]</span>
+<p>At each point a unitary change of coefficient basis diagonalizes the Hermitian Levi matrix. In that basis the last operator is <span class="math" data-index="363" data-tex="\(\sum_j\lambda_jc_jc_j^*\)">\(\sum_j\lambda_jc_jc_j^*\)</span>. On the wedge indexed by <span class="math" data-index="364" data-tex="\(I\)">\(I\)</span> it has eigenvalue <span class="math" data-index="365" data-tex="\(\sum_{j\in I}\lambda_j\)">\(\sum_{j\in I}\lambda_j\)</span>: the operator <span class="math" data-index="366" data-tex="\(c_jc_j^*\)">\(c_jc_j^*\)</span> keeps the wedge precisely when <span class="math" data-index="367" data-tex="\(j\in I\)">\(j\in I\)</span>. Since all <span class="math" data-index="368" data-tex="\(\lambda_j\geq1\)">\(\lambda_j\geq1\)</span>, (8) implies</p>
+<span class="math math-display" id="proof-eq-9" data-index="369" data-tex="\[
+ q\|v\|_\phi^2
+       \leq\|T_{q-1}^*v\|_\phi^2+\|T_qv\|_\phi^2.
+ \tag{9}
+\]">\[
+ q\|v\|_\phi^2
+       \leq\|T_{q-1}^*v\|_\phi^2+\|T_qv\|_\phi^2.
+ \tag{9}
+\]</span>
+<p>The pointwise diagonalization is only an algebraic evaluation of the curvature term; no derivatives of a chosen eigenbasis enter the identity.</p>
+<p>We justify the adjoint domain and the passage to it. Compact smooth forms are a graph core for a maximal <span class="math" data-index="370" data-tex="\(T_j\)">\(T_j\)</span>. First multiply by a cutoff <span class="math" data-index="371" data-tex="\(\chi_R(Z)=\chi(Z/R)\)">\(\chi_R(Z)=\chi(Z/R)\)</span>, equal to one near zero. The product rule adds exterior multiplication by <span class="math" data-index="372" data-tex="\(\bar\partial\chi_R\)">\(\bar\partial\chi_R\)</span>, whose operator norm is <span class="math" data-index="373" data-tex="\(O(R^{-1})\)">\(O(R^{-1})\)</span>. Dominated convergence handles the old derivative. On the resulting fixed compact support, mollification commutes with the constant-coefficient <span class="math" data-index="374" data-tex="\(T_j\)">\(T_j\)</span>; the smooth weight is bounded above and below by positive constants there. Local convolution convergence in ordinary <span class="math" data-index="375" data-tex="\(L^2\)">\(L^2\)</span> thus gives convergence in both weighted graph norms. This proves the core assertion.</p>
+<p>It follows directly from the definition of a Hilbert adjoint and that core assertion that <span class="math" data-index="376" data-tex="\(v\in\operatorname{Dom}T_{q-1}^*\)">\(v\in\operatorname{Dom}T_{q-1}^*\)</span> precisely when the distribution <span class="math" data-index="377" data-tex="\(-\sum c_j^*\delta_jv\)">\(-\sum c_j^*\delta_jv\)</span> belongs to <span class="math" data-index="378" data-tex="\(H_{q-1}\)">\(H_{q-1}\)</span>. One direction follows by testing compact smooth forms. In the other direction integration by parts on those tests extends to all of <span class="math" data-index="379" data-tex="\(\operatorname{Dom}T_{q-1}\)">\(\operatorname{Dom}T_{q-1}\)</span> by its graph core, so it is the bounded adjoint pairing. Smooth positive weights allow ordinary distributional tests to be converted into weighted ones by multiplication by <span class="math" data-index="380" data-tex="\(e^\phi\)">\(e^\phi\)</span> on their compact support.</p>
+<p>Now take <span class="math" data-index="381" data-tex="\(v\)">\(v\)</span> in the joint domain of <span class="math" data-index="382" data-tex="\(T_{q-1}^*\)">\(T_{q-1}^*\)</span> and <span class="math" data-index="383" data-tex="\(T_q\)">\(T_q\)</span>. The same cutoffs give convergence in all three norms. For the adjoint the added term is <span class="math" data-index="384" data-tex="\(-\sum c_j^*(\partial_j\chi_R)v\)">\(-\sum c_j^*(\partial_j\chi_R)v\)</span>, again <span class="math" data-index="385" data-tex="\(O(R^{-1})\|v\|_\phi\)">\(O(R^{-1})\|v\|_\phi\)</span>. After cutoff, mollification commutes with every derivative. Its only adjoint error consists of the finite coefficient brackets</p>
+<span class="math math-display" id="proof-eq-10" data-index="386" data-tex="\[
+ \phi_j(v_I*\rho_\varepsilon)
+                      -(\phi_jv_I)*\rho_\varepsilon.
+ \tag{10}
+\]">\[
+ \phi_j(v_I*\rho_\varepsilon)
+                      -(\phi_jv_I)*\rho_\varepsilon.
+ \tag{10}
+\]</span>
+<p>On the fixed compact neighborhood their ordinary <span class="math" data-index="387" data-tex="\(L^2\)">\(L^2\)</span> norms are bounded by <span class="math" data-index="388" data-tex="\(\omega_{\phi_j}(\varepsilon)\|v_I\|_2\)">\(\omega_{\phi_j}(\varepsilon)\|v_I\|_2\)</span>, where <span class="math" data-index="389" data-tex="\(\omega\)">\(\omega\)</span> is the coefficient's modulus of continuity. To see the bound, write the bracket as the integral of
+<span class="math" data-index="390" data-tex="\((\phi_j(Z)-\phi_j(Z-h))v_I(Z-h)\rho_\varepsilon(h)\)">\((\phi_j(Z)-\phi_j(Z-h))v_I(Z-h)\rho_\varepsilon(h)\)</span>
+and apply the integral triangle inequality and translation invariance. Thus all errors go to zero. Weighted comparability on that neighborhood gives a compact smooth joint graph core. Passing (9) to this core limit proves it on the full joint domain.</p>
+<p><strong>Proof of existence.</strong> Set <span class="math" data-index="391" data-tex="\(T=T_{q-1}\)">\(T=T_{q-1}\)</span>, <span class="math" data-index="392" data-tex="\(S=T_q\)">\(S=T_q\)</span>, and <span class="math" data-index="393" data-tex="\(N=\ker S\subset H_q\)">\(N=\ker S\subset H_q\)</span>. The kernel is closed, and <span class="math" data-index="394" data-tex="\(\operatorname{Ran}T\subset N\)">\(\operatorname{Ran}T\subset N\)</span> since distributional mixed derivatives commute. Take <span class="math" data-index="395" data-tex="\(v\in\operatorname{Dom}T^*\)">\(v\in\operatorname{Dom}T^*\)</span> and decompose <span class="math" data-index="396" data-tex="\(v=v_N+v_\perp\)">\(v=v_N+v_\perp\)</span> by orthogonal projection onto <span class="math" data-index="397" data-tex="\(N\)">\(N\)</span>. For every <span class="math" data-index="398" data-tex="\(b\in\operatorname{Dom}T\)">\(b\in\operatorname{Dom}T\)</span>, <span class="math" data-index="399" data-tex="\(Tb\in N\)">\(Tb\in N\)</span>, so <span class="math" data-index="400" data-tex="\((Tb,v_\perp)_\phi=0\)">\((Tb,v_\perp)_\phi=0\)</span>. By the definition of adjoint, <span class="math" data-index="401" data-tex="\(v_\perp\in\operatorname{Dom}T^*\)">\(v_\perp\in\operatorname{Dom}T^*\)</span> with <span class="math" data-index="402" data-tex="\(T^*v_\perp=0\)">\(T^*v_\perp=0\)</span>. Consequently <span class="math" data-index="403" data-tex="\(v_N\)">\(v_N\)</span> belongs to the joint domain, <span class="math" data-index="404" data-tex="\(Sv_N=0\)">\(Sv_N=0\)</span>, and <span class="math" data-index="405" data-tex="\(T^*v_N=T^*v\)">\(T^*v_N=T^*v\)</span>. Estimate (9) gives</p>
+<span class="math math-display" id="proof-eq-11" data-index="406" data-tex="\[
+ \sqrt q\,\|v_N\|_\phi\leq\|T^*v\|_\phi.
+ \tag{11}
+\]">\[
+ \sqrt q\,\|v_N\|_\phi\leq\|T^*v\|_\phi.
+ \tag{11}
+\]</span>
+<p>Because <span class="math" data-index="407" data-tex="\(a\in N\)">\(a\in N\)</span>, the functional</p>
+<span class="math math-display" id="proof-eq-12" data-index="408" data-tex="\[
+ \Lambda(T^*v)=(v,a)_\phi
+ \tag{12}
+\]">\[
+ \Lambda(T^*v)=(v,a)_\phi
+ \tag{12}
+\]</span>
+<p>is well defined on <span class="math" data-index="409" data-tex="\(\operatorname{Ran}T^*\)">\(\operatorname{Ran}T^*\)</span> and bounded by <span class="math" data-index="410" data-tex="\(q^{-1/2}\|a\|_\phi\)">\(q^{-1/2}\|a\|_\phi\)</span>. Indeed (11) bounds its absolute value, and the same bound makes it zero whenever <span class="math" data-index="411" data-tex="\(T^*v=0\)">\(T^*v=0\)</span>. Extend to the closure of that range and use the proved Hilbert representation theorem there. It gives <span class="math" data-index="412" data-tex="\(u\in\overline{\operatorname{Ran}T^*}\)">\(u\in\overline{\operatorname{Ran}T^*}\)</span> of the norm in (5), with</p>
+<span class="math math-display" id="proof-eq-13" data-index="413" data-tex="\[
+ (T^*v,u)_\phi=(v,a)_\phi .
+ \tag{13}
+\]">\[
+ (T^*v,u)_\phi=(v,a)_\phi .
+ \tag{13}
+\]</span>
+<p>Compact smooth testing says <span class="math" data-index="414" data-tex="\(\bar\partial u=a\)">\(\bar\partial u=a\)</span> as distributions. Since <span class="math" data-index="415" data-tex="\(a\in H_q\)">\(a\in H_q\)</span>, <span class="math" data-index="416" data-tex="\(u\)">\(u\)</span> belongs to the maximal domain of <span class="math" data-index="417" data-tex="\(T\)">\(T\)</span>, so this is the asserted Hilbert equation as well.</p>
+<p>It remains essential to prove that the chosen <span class="math" data-index="418" data-tex="\(u\)">\(u\)</span> is smooth. The construction in the range closure makes <span class="math" data-index="419" data-tex="\(u\perp\ker T\)">\(u\perp\ker T\)</span>. For <span class="math" data-index="420" data-tex="\(q\geq2\)">\(q\geq2\)</span>, the range of <span class="math" data-index="421" data-tex="\(T_{q-2}\)">\(T_{q-2}\)</span> lies in <span class="math" data-index="422" data-tex="\(\ker T\)">\(\ker T\)</span>, so <span class="math" data-index="423" data-tex="\(T_{q-2}^*u=0\)">\(T_{q-2}^*u=0\)</span>, including as distributions. For <span class="math" data-index="424" data-tex="\(q=1\)">\(q=1\)</span> there is no lower-degree operator. Thus in both cases the distributional equation is</p>
+<span class="math math-display" id="proof-eq-14" data-index="425" data-tex="\[
+ \square_{q-1}u=T_{q-1}^*a,\qquad
+ \square_{q-1}=T_{q-2}T_{q-2}^*+T_{q-1}^*T_{q-1}.
+ \tag{14}
+\]">\[
+ \square_{q-1}u=T_{q-1}^*a,\qquad
+ \square_{q-1}=T_{q-2}T_{q-2}^*+T_{q-1}^*T_{q-1}.
+ \tag{14}
+\]</span>
+<p>The absent first product for <span class="math" data-index="426" data-tex="\(q=1\)">\(q=1\)</span> is zero. By (7), this is a smooth-coefficient elliptic system with scalar principal part <span class="math" data-index="427" data-tex="\(-\tfrac14\Delta\)">\(-\tfrac14\Delta\)</span>. Section 2 proves explicitly that a locally square-integrable solution of (14), with its smooth right side, is smooth. It applies to <span class="math" data-index="428" data-tex="\(u\)">\(u\)</span>, completing (5). <span class="math" data-index="429" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-local-regularity-used-in-the-solution">2. The local regularity used in the solution</h2>
+<p>Here <span class="math" data-index="430" data-tex="\(\Delta\)">\(\Delta\)</span> is the real Laplacian in <span class="math" data-index="431" data-tex="\(n=2D\)">\(n=2D\)</span> coordinates. For clarity we prove the precise elementary elliptic fact needed above.</p>
+<p><strong>Lemma 2.1.</strong> If a finite coefficient vector <span class="math" data-index="432" data-tex="\(u\)">\(u\)</span> is locally square integrable and satisfies</p>
+<span class="math math-display" id="proof-eq-15" data-index="433" data-tex="\[
+ \Delta u=\sum_{\ell=1}^n A_\ell(x)\partial_{x_\ell}u
+                       +B(x)u+h(x)
+ \tag{15}
+\]">\[
+ \Delta u=\sum_{\ell=1}^n A_\ell(x)\partial_{x_\ell}u
+                       +B(x)u+h(x)
+ \tag{15}
+\]</span>
+<p>as distributions, where the matrices <span class="math" data-index="434" data-tex="\(A_\ell,B\)">\(A_\ell,B\)</span> and vector <span class="math" data-index="435" data-tex="\(h\)">\(h\)</span> are smooth, then <span class="math" data-index="436" data-tex="\(u\)">\(u\)</span> has a smooth representative.</p>
+<p><strong>Proof.</strong> Use the Fourier convention <span class="math" data-index="437" data-tex="\(\widehat v(\xi)=\int e^{-ix\cdot\xi}v(x)\,dx\)">\(\widehat v(\xi)=\int e^{-ix\cdot\xi}v(x)\,dx\)</span>. The written Schwartz inversion and Plancherel formulas give
+<span class="math" data-index="438" data-tex="\(\|\widehat v\|_2=(2\pi)^{n/2}\|v\|_2\)">\(\|\widehat v\|_2=(2\pi)^{n/2}\|v\|_2\)</span>.
+They extend to all <span class="math" data-index="439" data-tex="\(L^2\)">\(L^2\)</span>: compact cutoffs followed by convolution approximate an <span class="math" data-index="440" data-tex="\(L^2\)">\(L^2\)</span> function by compact smooth functions, which belong to the Schwartz space. For the convolution step, translation continuity holds first for finite linear combinations of bounded-box indicators, by the measure of their translated symmetric differences, and then for all <span class="math" data-index="441" data-tex="\(L^2\)">\(L^2\)</span> by approximation and the translation isometry. The ordinary Lebesgue approximation of measurable finite-measure sets by finite unions of boxes gives that first dense class. The integral triangle inequality now proves convolution convergence. The Plancherel isometry extends by completion, and its range is all <span class="math" data-index="442" data-tex="\(L^2\)">\(L^2\)</span>, since its range already contains every Schwartz function by inversion. This also retains the distributional differentiation identity.</p>
+<p>For an integer <span class="math" data-index="443" data-tex="\(s\)">\(s\)</span>, define <span class="math" data-index="444" data-tex="\(H^s\)">\(H^s\)</span> by the Fourier weight <span class="math" data-index="445" data-tex="\((1+|\xi|^2)^{s/2}\)">\((1+|\xi|^2)^{s/2}\)</span>, with norm</p>
+<span class="math math-display" id="proof-eq-16" data-index="446" data-tex="\[
+ \|v\|_{H^s}^2=(2\pi)^{-n}
+       \int(1+|\xi|^2)^s|\widehat v(\xi)|^2\,d\xi.
+ \tag{16}
+\]">\[
+ \|v\|_{H^s}^2=(2\pi)^{-n}
+       \int(1+|\xi|^2)^s|\widehat v(\xi)|^2\,d\xi.
+ \tag{16}
+\]</span>
+<p>For negative <span class="math" data-index="447" data-tex="\(s\)">\(s\)</span> this definition uses tempered distributions with the indicated weighted function transform. In particular <span class="math" data-index="448" data-tex="\(H^{-1}\)">\(H^{-1}\)</span> is the dual of <span class="math" data-index="449" data-tex="\(H^1\)">\(H^1\)</span> under the <span class="math" data-index="450" data-tex="\(L^2\)">\(L^2\)</span> pairing. To verify the dual assertion, apply Cauchy–Schwarz with the reciprocal weights in (16); conversely Riesz representation after multiplying the transform by its <span class="math" data-index="451" data-tex="\(H^1\)">\(H^1\)</span> weight gives every bounded functional by a transform with the reciprocal weight. This uses the same proved Hilbert representation theorem.</p>
+<p>For each nonnegative integer <span class="math" data-index="452" data-tex="\(s\)">\(s\)</span>, expansion of <span class="math" data-index="453" data-tex="\((1+\sum\xi_\ell^2)^s\)">\((1+\sum\xi_\ell^2)^s\)</span> and Plancherel show that (16) is equivalent to the finite sum of the <span class="math" data-index="454" data-tex="\(L^2\)">\(L^2\)</span> derivative norms through order <span class="math" data-index="455" data-tex="\(s\)">\(s\)</span>. This holds first on Schwartz functions and then on their <span class="math" data-index="456" data-tex="\(H^s\)">\(H^s\)</span> completion. The completion is exactly the Fourier-weighted space in (16): truncate a weighted-square-integrable transform on larger balls, approximate the truncated transform by compact smooth functions in the locally comparable weighted norm, and use Schwartz inversion. Those inverse transforms are Schwartz functions, dense in (16). Smooth compact multipliers are therefore bounded on <span class="math" data-index="457" data-tex="\(H^s\)">\(H^s\)</span> by the finite Leibniz rule, and on <span class="math" data-index="458" data-tex="\(H^{-1}\)">\(H^{-1}\)</span> by the dual assertion. A derivative maps <span class="math" data-index="459" data-tex="\(H^s\)">\(H^s\)</span> to <span class="math" data-index="460" data-tex="\(H^{s-1}\)">\(H^{s-1}\)</span>, since <span class="math" data-index="461" data-tex="\(|\xi_\ell|\leq(1+|\xi|^2)^{1/2}\)">\(|\xi_\ell|\leq(1+|\xi|^2)^{1/2}\)</span>.</p>
+<p>If <span class="math" data-index="462" data-tex="\(v\in L^2\)">\(v\in L^2\)</span> and <span class="math" data-index="463" data-tex="\(\Delta v\in H^r\)">\(\Delta v\in H^r\)</span>, for an integer <span class="math" data-index="464" data-tex="\(r\geq-1\)">\(r\geq-1\)</span>, then</p>
+<span class="math math-display" id="proof-eq-17" data-index="465" data-tex="\[
+ \|v\|_{H^{r+2}}\leq
+       C_r\bigl(\|\Delta v\|_{H^r}+\|v\|_2\bigr).
+ \tag{17}
+\]">\[
+ \|v\|_{H^{r+2}}\leq
+       C_r\bigl(\|\Delta v\|_{H^r}+\|v\|_2\bigr).
+ \tag{17}
+\]</span>
+<p>Indeed the transform of <span class="math" data-index="466" data-tex="\(\Delta v\)">\(\Delta v\)</span> is <span class="math" data-index="467" data-tex="\(-|\xi|^2\widehat v\)">\(-|\xi|^2\widehat v\)</span>. On <span class="math" data-index="468" data-tex="\(|\xi|\geq1\)">\(|\xi|\geq1\)</span>, the weight <span class="math" data-index="469" data-tex="\((1+|\xi|^2)^{r+2}\)">\((1+|\xi|^2)^{r+2}\)</span> is bounded by a constant times <span class="math" data-index="470" data-tex="\((1+|\xi|^2)^r|\xi|^4\)">\((1+|\xi|^2)^r|\xi|^4\)</span>. On <span class="math" data-index="471" data-tex="\(|\xi|\leq1\)">\(|\xi|\leq1\)</span> it is bounded, so the <span class="math" data-index="472" data-tex="\(L^2\)">\(L^2\)</span> norm supplies the remaining part. This proves (17) directly for the distributions in question.</p>
+<p>Suppose <span class="math" data-index="473" data-tex="\(u\)">\(u\)</span> is locally in <span class="math" data-index="474" data-tex="\(H^s\)">\(H^s\)</span> for a nonnegative integer <span class="math" data-index="475" data-tex="\(s\)">\(s\)</span>. Fix any compactly supported smooth <span class="math" data-index="476" data-tex="\(\chi\)">\(\chi\)</span> in a coordinate neighborhood, and choose a second cutoff <span class="math" data-index="477" data-tex="\(\eta=1\)">\(\eta=1\)</span> on a neighborhood of its support. In (15) replace <span class="math" data-index="478" data-tex="\(u\)">\(u\)</span> by <span class="math" data-index="479" data-tex="\(\eta u\)">\(\eta u\)</span> when multiplying by <span class="math" data-index="480" data-tex="\(\chi\)">\(\chi\)</span>. The right side, after this multiplication, belongs to <span class="math" data-index="481" data-tex="\(H^{s-1}\)">\(H^{s-1}\)</span>, by the multiplier and derivative facts just proved. The identity</p>
+<span class="math math-display" id="proof-eq-18" data-index="482" data-tex="\[
+ \Delta(\chi u)=\chi\Delta u+
+            2\sum_\ell(\partial_{x_\ell}\chi)\partial_{x_\ell}u
+                         +(\Delta\chi)u
+ \tag{18}
+\]">\[
+ \Delta(\chi u)=\chi\Delta u+
+            2\sum_\ell(\partial_{x_\ell}\chi)\partial_{x_\ell}u
+                         +(\Delta\chi)u
+ \tag{18}
+\]</span>
+<p>has the same property. The smooth term <span class="math" data-index="483" data-tex="\(\chi h\)">\(\chi h\)</span> belongs to every such space. Since <span class="math" data-index="484" data-tex="\(\chi u\in L^2\)">\(\chi u\in L^2\)</span>, (17) with <span class="math" data-index="485" data-tex="\(r=s-1\)">\(r=s-1\)</span> gives <span class="math" data-index="486" data-tex="\(\chi u\in H^{s+1}\)">\(\chi u\in H^{s+1}\)</span>. Starting with <span class="math" data-index="487" data-tex="\(s=0\)">\(s=0\)</span>, this proves local membership in every integer Sobolev space.</p>
+<p>Finally take <span class="math" data-index="488" data-tex="\(v=\chi u\in H^s\)">\(v=\chi u\in H^s\)</span>, with <span class="math" data-index="489" data-tex="\(s&gt;k+n/2\)">\(s&gt;k+n/2\)</span>. Cauchy–Schwarz gives</p>
+<span class="math math-display" id="proof-eq-19" data-index="490" data-tex="\[
+ \int|\xi|^k|\widehat v(\xi)|\,d\xi
+ \leq
+ \left(\int|\xi|^{2k}(1+|\xi|^2)^{-s}d\xi\right)^{1/2}
+            (2\pi)^{n/2}\|v\|_{H^s}&lt;\infty .
+ \tag{19}
+\]">\[
+ \int|\xi|^k|\widehat v(\xi)|\,d\xi
+ \leq
+ \left(\int|\xi|^{2k}(1+|\xi|^2)^{-s}d\xi\right)^{1/2}
+            (2\pi)^{n/2}\|v\|_{H^s}&lt;\infty .
+ \tag{19}
+\]</span>
+<p>The integrability follows near infinity from <span class="math" data-index="491" data-tex="\(2k-2s&lt;-n\)">\(2k-2s&lt;-n\)</span> and near zero from <span class="math" data-index="492" data-tex="\(k\geq0\)">\(k\geq0\)</span>. Fourier inversion of the integrable differentiated transforms, by dominated convergence, gives continuous derivatives through order <span class="math" data-index="493" data-tex="\(k\)">\(k\)</span>; these representatives agree with the distributional derivatives. Arbitrarily large <span class="math" data-index="494" data-tex="\(s\)">\(s\)</span> and <span class="math" data-index="495" data-tex="\(k\)">\(k\)</span> give a smooth representative. Local representatives agree on overlaps because they represent the same distribution. This proves the lemma. <span class="math" data-index="496" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For (14), (7) reads explicitly</p>
+<span class="math math-display" id="proof-eq-20" data-index="497" data-tex="\[
+ \square_{q-1}u
+ =-\tfrac14\Delta u+\sum_j\phi_j\bar\partial_ju+
+       \left(\sum_{j,k}\phi_{k\bar j}c_jc_k^*\right)u .
+ \tag{20}
+\]">\[
+ \square_{q-1}u
+ =-\tfrac14\Delta u+\sum_j\phi_j\bar\partial_ju+
+       \left(\sum_{j,k}\phi_{k\bar j}c_jc_k^*\right)u .
+ \tag{20}
+\]</span>
+<p>The matrix term is taken in degree <span class="math" data-index="498" data-tex="\(q-1\)">\(q-1\)</span>. Rearranging (14) gives (15), with smooth right side <span class="math" data-index="499" data-tex="\(-4T_{q-1}^*a\)">\(-4T_{q-1}^*a\)</span> and smooth first- and zero-order coefficients. The factor <span class="math" data-index="500" data-tex="\(1/4\)">\(1/4\)</span> comes from <span class="math" data-index="501" data-tex="\(\partial_j\bar\partial_j=(\partial_{x_j}^2+\partial_{y_j}^2)/4\)">\(\partial_j\bar\partial_j=(\partial_{x_j}^2+\partial_{y_j}^2)/4\)</span>.</p>
+<h2 id="3-solving-on-the-complement-by-using-a-closed-graph">3. Solving on the complement by using a closed graph</h2>
+<p>Set <span class="math" data-index="502" data-tex="\(D=d+1\)">\(D=d+1\)</span> and</p>
+<span class="math math-display" id="proof-eq-21" data-index="503" data-tex="\[
+ G(z,w)=f(z)w-1,\qquad
+ M=\{G=0\}\subset\mathbb C^{d+1},\qquad
+ \iota(z)=(z,1/f(z)).
+ \tag{21}
+\]">\[
+ G(z,w)=f(z)w-1,\qquad
+ M=\{G=0\}\subset\mathbb C^{d+1},\qquad
+ \iota(z)=(z,1/f(z)).
+ \tag{21}
+\]</span>
+<p>The restriction of <span class="math" data-index="504" data-tex="\(\pi(z,w)=z\)">\(\pi(z,w)=z\)</span> to <span class="math" data-index="505" data-tex="\(M\)">\(M\)</span> is the holomorphic inverse of <span class="math" data-index="506" data-tex="\(\iota\)">\(\iota\)</span>. The graph is closed, and it is smooth because <span class="math" data-index="507" data-tex="\(\partial G/\partial w=f(z)\ne0\)">\(\partial G/\partial w=f(z)\ne0\)</span> on it. These facts concern <span class="math" data-index="508" data-tex="\(M\)">\(M\)</span>, not smoothness of the removed zero set of <span class="math" data-index="509" data-tex="\(f\)">\(f\)</span>.</p>
+<p><strong>Theorem 3.1.</strong> Every smooth closed <span class="math" data-index="510" data-tex="\((0,q)\)">\((0,q)\)</span>-form <span class="math" data-index="511" data-tex="\(a\)">\(a\)</span> on <span class="math" data-index="512" data-tex="\(V\)">\(V\)</span>, <span class="math" data-index="513" data-tex="\(1\leq q\leq d\)">\(1\leq q\leq d\)</span>, is <span class="math" data-index="514" data-tex="\(\bar\partial b\)">\(\bar\partial b\)</span> for a smooth <span class="math" data-index="515" data-tex="\((0,q-1)\)">\((0,q-1)\)</span>-form <span class="math" data-index="516" data-tex="\(b\)">\(b\)</span> on <span class="math" data-index="517" data-tex="\(V\)">\(V\)</span>.</p>
+<p><strong>Proof.</strong> Choose a smooth cutoff <span class="math" data-index="518" data-tex="\(\chi_0:[0,\infty)\to[0,1]\)">\(\chi_0:[0,\infty)\to[0,1]\)</span>, equal to one near zero and zero on <span class="math" data-index="519" data-tex="\([1,\infty)\)">\([1,\infty)\)</span>. On <span class="math" data-index="520" data-tex="\(V\times\mathbb C\)">\(V\times\mathbb C\)</span> put</p>
+<span class="math math-display" id="proof-eq-22" data-index="521" data-tex="\[
+ h=\chi_0\!\left(\frac{|G|^2}{|f|^2}\right)\pi^*a ,
+ \tag{22}
+\]">\[
+ h=\chi_0\!\left(\frac{|G|^2}{|f|^2}\right)\pi^*a ,
+ \tag{22}
+\]</span>
+<p>and extend it by zero where <span class="math" data-index="522" data-tex="\(f=0\)">\(f=0\)</span>. This is a smooth global ambient form. Near a finite point with <span class="math" data-index="523" data-tex="\(f=0\)">\(f=0\)</span>, <span class="math" data-index="524" data-tex="\(G\)">\(G\)</span> is close to <span class="math" data-index="525" data-tex="\(-1\)">\(-1\)</span>; the quotient in the cutoff is greater than one on a whole neighborhood, so the form there is identically zero. No bound on <span class="math" data-index="526" data-tex="\(a\)">\(a\)</span> near the missing divisor is required.</p>
+<p>Near each point of <span class="math" data-index="527" data-tex="\(M\)">\(M\)</span>, the cutoff is one. There <span class="math" data-index="528" data-tex="\(\bar\partial h=\pi^*\bar\partial a=0\)">\(\bar\partial h=\pi^*\bar\partial a=0\)</span>. Consequently</p>
+<span class="math math-display" id="proof-eq-23" data-index="529" data-tex="\[
+ A=G^{-1}\bar\partial h
+ \tag{23}
+\]">\[
+ A=G^{-1}\bar\partial h
+ \tag{23}
+\]</span>
+<p>extends by zero across <span class="math" data-index="530" data-tex="\(M\)">\(M\)</span> to a smooth ambient <span class="math" data-index="531" data-tex="\((0,q+1)\)">\((0,q+1)\)</span>-form. It is closed: off <span class="math" data-index="532" data-tex="\(M\)">\(M\)</span>, holomorphy of <span class="math" data-index="533" data-tex="\(G\)">\(G\)</span> and <span class="math" data-index="534" data-tex="\(\bar\partial^2=0\)">\(\bar\partial^2=0\)</span> give <span class="math" data-index="535" data-tex="\(\bar\partial A=0\)">\(\bar\partial A=0\)</span>; near <span class="math" data-index="536" data-tex="\(M\)">\(M\)</span> it vanishes. Since <span class="math" data-index="537" data-tex="\(q+1\leq d+1\)">\(q+1\leq d+1\)</span>, Theorem 1.2 with a weight from Lemma 1.1 gives a smooth ambient <span class="math" data-index="538" data-tex="\((0,q)\)">\((0,q)\)</span>-form <span class="math" data-index="539" data-tex="\(v\)">\(v\)</span> with <span class="math" data-index="540" data-tex="\(\bar\partial v=A\)">\(\bar\partial v=A\)</span>.</p>
+<p>The smooth form <span class="math" data-index="541" data-tex="\(H=h-Gv\)">\(H=h-Gv\)</span> is closed. A second use of that theorem gives a smooth ambient <span class="math" data-index="542" data-tex="\((0,q-1)\)">\((0,q-1)\)</span>-form <span class="math" data-index="543" data-tex="\(u\)">\(u\)</span> with <span class="math" data-index="544" data-tex="\(\bar\partial u=H\)">\(\bar\partial u=H\)</span>. Pullback by the holomorphic map <span class="math" data-index="545" data-tex="\(\iota\)">\(\iota\)</span> is defined for these smooth forms and commutes with <span class="math" data-index="546" data-tex="\(\bar\partial\)">\(\bar\partial\)</span>, as follows coefficientwise from the ordinary chain rule. Since <span class="math" data-index="547" data-tex="\(G\circ\iota=0\)">\(G\circ\iota=0\)</span> and <span class="math" data-index="548" data-tex="\(\iota^*h=a\)">\(\iota^*h=a\)</span>, it follows that</p>
+<span class="math math-display" id="proof-eq-24" data-index="549" data-tex="\[
+ \bar\partial(\iota^*u)=\iota^*H=a .
+ \tag{24}
+\]">\[
+ \bar\partial(\iota^*u)=\iota^*H=a .
+ \tag{24}
+\]</span>
+<p>Thus <span class="math" data-index="550" data-tex="\(b=\iota^*u\)">\(b=\iota^*u\)</span> is the required smooth solution. In the endpoint <span class="math" data-index="551" data-tex="\(q=d\)">\(q=d\)</span>, (23) has ambient degree <span class="math" data-index="552" data-tex="\(d+1\)">\(d+1\)</span>, exactly the top permitted degree of Theorem 1.2. <span class="math" data-index="553" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-closed-smooth-top-forms-have-holomorphic-representatives">4. Closed smooth top forms have holomorphic representatives</h2>
+<p><strong>Proposition 4.1.</strong> Every closed smooth complex <span class="math" data-index="554" data-tex="\(d\)">\(d\)</span>-form <span class="math" data-index="555" data-tex="\(\alpha\)">\(\alpha\)</span> on <span class="math" data-index="556" data-tex="\(V\)">\(V\)</span> is cohomologous to a holomorphic <span class="math" data-index="557" data-tex="\(d\)">\(d\)</span>-form.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-index="558" data-tex="\(\alpha=\sum_{p+q=d}\alpha^{p,q}\)">\(\alpha=\sum_{p+q=d}\alpha^{p,q}\)</span> by type. If a nonzero component has largest antiholomorphic degree <span class="math" data-index="559" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>, closure of <span class="math" data-index="560" data-tex="\(\alpha\)">\(\alpha\)</span> in type <span class="math" data-index="561" data-tex="\((p,q+1)\)">\((p,q+1)\)</span> says
+<span class="math" data-index="562" data-tex="\(\bar\partial\alpha^{p,q}=0\)">\(\bar\partial\alpha^{p,q}=0\)</span>, because a component in degree <span class="math" data-index="563" data-tex="\(q+1\)">\(q+1\)</span> is absent. Use the global coordinate wedges to write</p>
+<span class="math math-display" data-index="564" data-tex="\[
+ \alpha^{p,q}=\sum_{|I|=p}dz_I\wedge a_I .
+\]">\[
+ \alpha^{p,q}=\sum_{|I|=p}dz_I\wedge a_I .
+\]</span>
+<p>Each <span class="math" data-index="565" data-tex="\(a_I\)">\(a_I\)</span> is a closed <span class="math" data-index="566" data-tex="\((0,q)\)">\((0,q)\)</span>-form: the identity
+<span class="math" data-index="567" data-tex="\(\bar\partial(dz_I\wedge a_I)=(-1)^p dz_I\wedge\bar\partial a_I\)">\(\bar\partial(dz_I\wedge a_I)=(-1)^p dz_I\wedge\bar\partial a_I\)</span>
+and linear independence of the <span class="math" data-index="568" data-tex="\(dz_I\)">\(dz_I\)</span> give this conclusion. Theorem 3.1 gives smooth <span class="math" data-index="569" data-tex="\(b_I\)">\(b_I\)</span> with <span class="math" data-index="570" data-tex="\(\bar\partial b_I=a_I\)">\(\bar\partial b_I=a_I\)</span>. Put</p>
+<span class="math math-display" id="proof-eq-25" data-index="571" data-tex="\[
+ \beta^{p,q-1}=(-1)^p\sum_{|I|=p}dz_I\wedge b_I .
+ \tag{25}
+\]">\[
+ \beta^{p,q-1}=(-1)^p\sum_{|I|=p}dz_I\wedge b_I .
+ \tag{25}
+\]</span>
+<p>Then <span class="math" data-index="572" data-tex="\(\bar\partial\beta^{p,q-1}=\alpha^{p,q}\)">\(\bar\partial\beta^{p,q-1}=\alpha^{p,q}\)</span>. Subtract <span class="math" data-index="573" data-tex="\(d\beta^{p,q-1}\)">\(d\beta^{p,q-1}\)</span> from <span class="math" data-index="574" data-tex="\(\alpha\)">\(\alpha\)</span>. Its component with antiholomorphic degree <span class="math" data-index="575" data-tex="\(q\)">\(q\)</span> disappears, and the only other type changed is <span class="math" data-index="576" data-tex="\((p+1,q-1)\)">\((p+1,q-1)\)</span>. Closure is retained.</p>
+<p>Repeat from <span class="math" data-index="577" data-tex="\(q=d\)">\(q=d\)</span> down to <span class="math" data-index="578" data-tex="\(q=1\)">\(q=1\)</span>, skipping zero components. There are at most <span class="math" data-index="579" data-tex="\(d\)">\(d\)</span> steps. The resulting closed form <span class="math" data-index="580" data-tex="\(\gamma\)">\(\gamma\)</span> has type <span class="math" data-index="581" data-tex="\((d,0)\)">\((d,0)\)</span>, so</p>
+<span class="math math-display" id="proof-eq-26" data-index="582" data-tex="\[
+ \gamma=g(z)\,dz_1\wedge\cdots\wedge dz_d,\qquad
+ \bar\partial g=0,\qquad
+ \alpha-\gamma=d\beta
+ \tag{26}
+\]">\[
+ \gamma=g(z)\,dz_1\wedge\cdots\wedge dz_d,\qquad
+ \bar\partial g=0,\qquad
+ \alpha-\gamma=d\beta
+ \tag{26}
+\]</span>
+<p>for the finite sum <span class="math" data-index="583" data-tex="\(\beta\)">\(\beta\)</span> of the chosen primitives. A smooth function with all Cauchy–Riemann derivatives zero is holomorphic: apply the one-variable Cauchy formula successively on polydiscs. Thus <span class="math" data-index="584" data-tex="\(\gamma\)">\(\gamma\)</span> is holomorphic. Stokes shows that <span class="math" data-index="585" data-tex="\(\alpha\)">\(\alpha\)</span> and <span class="math" data-index="586" data-tex="\(\gamma\)">\(\gamma\)</span> have the same period on every finite smooth cycle. <span class="math" data-index="587" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-entire-extension-and-rational-approximation">5. Entire extension and rational approximation</h2>
+<p><strong>Proposition 5.1.</strong> Every holomorphic function <span class="math" data-index="588" data-tex="\(g\)">\(g\)</span> on <span class="math" data-index="589" data-tex="\(V\)">\(V\)</span> is the restriction, under <span class="math" data-index="590" data-tex="\(\iota\)">\(\iota\)</span>, of an entire function on <span class="math" data-index="591" data-tex="\(\mathbb C^{d+1}\)">\(\mathbb C^{d+1}\)</span>. Consequently it can be approximated uniformly on each compact subset of <span class="math" data-index="592" data-tex="\(V\)">\(V\)</span> by <span class="math" data-index="593" data-tex="\(\mathbb C[z,1/f]\)">\(\mathbb C[z,1/f]\)</span>, also with every fixed finite number of derivatives.</p>
+<p><strong>Proof.</strong> Form the smooth ambient function</p>
+<span class="math math-display" id="proof-eq-27" data-index="594" data-tex="\[
+ h(z,w)=\chi_0\!\left(\frac{|G(z,w)|^2}{|f(z)|^2}\right)g(z),
+ \tag{27}
+\]">\[
+ h(z,w)=\chi_0\!\left(\frac{|G(z,w)|^2}{|f(z)|^2}\right)g(z),
+ \tag{27}
+\]</span>
+<p>extended by zero where <span class="math" data-index="595" data-tex="\(f=0\)">\(f=0\)</span>, exactly as in (22). It is holomorphic near <span class="math" data-index="596" data-tex="\(M\)">\(M\)</span>. Therefore <span class="math" data-index="597" data-tex="\(A=G^{-1}\bar\partial h\)">\(A=G^{-1}\bar\partial h\)</span> is a smooth closed ambient <span class="math" data-index="598" data-tex="\((0,1)\)">\((0,1)\)</span>-form, zero near <span class="math" data-index="599" data-tex="\(M\)">\(M\)</span>. Lemma 1.1 and Theorem 1.2 give a smooth scalar <span class="math" data-index="600" data-tex="\(v\)">\(v\)</span> with <span class="math" data-index="601" data-tex="\(\bar\partial v=A\)">\(\bar\partial v=A\)</span>. The function</p>
+<span class="math math-display" id="proof-eq-28" data-index="602" data-tex="\[
+ H=h-Gv
+ \tag{28}
+\]">\[
+ H=h-Gv
+ \tag{28}
+\]</span>
+<p>is smooth and <span class="math" data-index="603" data-tex="\(\bar\partial\)">\(\bar\partial\)</span>-closed on the entire ambient affine space, hence entire. Its ordinary smooth restriction to <span class="math" data-index="604" data-tex="\(M\)">\(M\)</span> is <span class="math" data-index="605" data-tex="\(h|_M\)">\(h|_M\)</span>, since <span class="math" data-index="606" data-tex="\(G|_M=0\)">\(G|_M=0\)</span>. Thus <span class="math" data-index="607" data-tex="\(H\circ\iota=g\)">\(H\circ\iota=g\)</span>.</p>
+<p>For compact <span class="math" data-index="608" data-tex="\(K\subset V\)">\(K\subset V\)</span>, <span class="math" data-index="609" data-tex="\(\iota(K)\)">\(\iota(K)\)</span> is compact. Put it inside a polydisc of coordinate radius <span class="math" data-index="610" data-tex="\(r&lt;R\)">\(r&lt;R\)</span>. The repeated Cauchy estimate bounds the Taylor coefficients of <span class="math" data-index="611" data-tex="\(H\)">\(H\)</span> by <span class="math" data-index="612" data-tex="\(M_RR^{-|\nu|}\)">\(M_RR^{-|\nu|}\)</span>, and</p>
+<span class="math math-display" id="proof-eq-29" data-index="613" data-tex="\[
+ \sum_{\nu\in\mathbb N^{d+1}}(r/R)^{|\nu|}
+                      =(1-r/R)^{-d-1}&lt;\infty .
+ \tag{29}
+\]">\[
+ \sum_{\nu\in\mathbb N^{d+1}}(r/R)^{|\nu|}
+                      =(1-r/R)^{-d-1}&lt;\infty .
+ \tag{29}
+\]</span>
+<p>The tails of its entire Taylor polynomials therefore tend uniformly to zero there. Differentiated series have the same property on strictly smaller polydiscs, by the same bound with the finite polynomial factors in <span class="math" data-index="614" data-tex="\(\nu\)">\(\nu\)</span>.</p>
+<p>Restricting an ambient polynomial to <span class="math" data-index="615" data-tex="\(w=1/f(z)\)">\(w=1/f(z)\)</span> gives an element of <span class="math" data-index="616" data-tex="\(\mathbb C[z,1/f]\)">\(\mathbb C[z,1/f]\)</span>. Its finitely many denominators can be cleared to the form <span class="math" data-index="617" data-tex="\(p/f^k\)">\(p/f^k\)</span>. For derivative approximation, first choose a compact neighborhood of <span class="math" data-index="618" data-tex="\(K\)">\(K\)</span> still inside <span class="math" data-index="619" data-tex="\(V\)">\(V\)</span>, perform the ambient approximation on its graph, and use the finite chain rule and bounded derivatives of <span class="math" data-index="620" data-tex="\(\iota\)">\(\iota\)</span> on that neighborhood. This proves all the claims. <span class="math" data-index="621" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-why-the-graph-has-finite-dimensional-ordinary-homology">6. Why the graph has finite-dimensional ordinary homology</h2>
+<p>Approximation will yield spanning only after we prove finite-dimensionality. We construct a proper strictly plurisubharmonic Morse function with finitely many critical points on <span class="math" data-index="622" data-tex="\(M\)">\(M\)</span>.</p>
+<p><strong>Lemma 6.1 (equal-dimensional critical values).</strong> For a <span class="math" data-index="623" data-tex="\(C^1\)">\(C^1\)</span> map <span class="math" data-index="624" data-tex="\(F:O\to\mathbb R^N\)">\(F:O\to\mathbb R^N\)</span>, where <span class="math" data-index="625" data-tex="\(O\subset\mathbb R^N\)">\(O\subset\mathbb R^N\)</span> is open and <span class="math" data-index="626" data-tex="\(N\geq1\)">\(N\geq1\)</span>, the images of points with singular derivative have Lebesgue measure zero.</p>
+<p><strong>Proof.</strong> Fix a compact set <span class="math" data-index="627" data-tex="\(Q\subset O\)">\(Q\subset O\)</span>, and a larger compact neighborhood still in <span class="math" data-index="628" data-tex="\(O\)">\(O\)</span>. There the derivative has bound <span class="math" data-index="629" data-tex="\(B\)">\(B\)</span> and is uniformly continuous. Given <span class="math" data-index="630" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, choose a grid size <span class="math" data-index="631" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> so small that derivatives at distance at most <span class="math" data-index="632" data-tex="\(\sqrt N\,\delta\)">\(\sqrt N\,\delta\)</span> differ by at most <span class="math" data-index="633" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, and every grid cube meeting <span class="math" data-index="634" data-tex="\(Q\)">\(Q\)</span> stays in that neighborhood. There are at most <span class="math" data-index="635" data-tex="\(C_Q\delta^{-N}\)">\(C_Q\delta^{-N}\)</span> such cubes.</p>
+<p>For a cube meeting the critical set in <span class="math" data-index="636" data-tex="\(Q\)">\(Q\)</span>, choose a critical point <span class="math" data-index="637" data-tex="\(c\)">\(c\)</span> in that intersection. The integral first-order remainder along segments gives, for <span class="math" data-index="638" data-tex="\(x\)">\(x\)</span> in the cube,</p>
+<span class="math math-display" id="proof-eq-30" data-index="639" data-tex="\[
+ F(x)=F(c)+DF(c)(x-c)+R(x),\qquad
+                     |R(x)|\leq\varepsilon\sqrt N\,\delta .
+ \tag{30}
+\]">\[
+ F(x)=F(c)+DF(c)(x-c)+R(x),\qquad
+                     |R(x)|\leq\varepsilon\sqrt N\,\delta .
+ \tag{30}
+\]</span>
+<p>The linear image lies in a subspace of dimension at most <span class="math" data-index="640" data-tex="\(N-1\)">\(N-1\)</span> and has radius at most <span class="math" data-index="641" data-tex="\(B\sqrt N\,\delta\)">\(B\sqrt N\,\delta\)</span>. Enlarge that subspace to an <span class="math" data-index="642" data-tex="\((N-1)\)">\((N-1)\)</span>-plane if necessary. After an orthogonal change of target coordinates, (30) places the image inside a rectangular box whose first <span class="math" data-index="643" data-tex="\(N-1\)">\(N-1\)</span> side lengths are at most <span class="math" data-index="644" data-tex="\(C_N(B+\varepsilon)\delta\)">\(C_N(B+\varepsilon)\delta\)</span>, and last side length at most <span class="math" data-index="645" data-tex="\(C_N\varepsilon\delta\)">\(C_N\varepsilon\delta\)</span>. Its volume is at most</p>
+<span class="math math-display" id="proof-eq-31" data-index="646" data-tex="\[
+ C_N(B+\varepsilon)^{N-1}\varepsilon\,\delta^N .
+ \tag{31}
+\]">\[
+ C_N(B+\varepsilon)^{N-1}\varepsilon\,\delta^N .
+ \tag{31}
+\]</span>
+<p>This argument also covers <span class="math" data-index="647" data-tex="\(N=1\)">\(N=1\)</span>, when the first product is empty. Summing over the cubes bounds the outer measure of the critical image from <span class="math" data-index="648" data-tex="\(Q\)">\(Q\)</span> by <span class="math" data-index="649" data-tex="\(C_QC_N(B+\varepsilon)^{N-1}\varepsilon\)">\(C_QC_N(B+\varepsilon)^{N-1}\varepsilon\)</span>. Let <span class="math" data-index="650" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. A countable compact exhaustion of <span class="math" data-index="651" data-tex="\(O\)">\(O\)</span> proves the assertion. In particular regular values exist; their complement cannot contain an open ball of positive measure. This is the equal-dimensional case of Sard's theorem, with its proof given here. <span class="math" data-index="652" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 6.2.</strong> A discrete semialgebraic subset of a Euclidean space is finite.</p>
+<p><strong>Proof.</strong> A discrete subset is countable: for each point choose a ball from the countable rational-center rational-radius basis that meets the subset in that point alone, and choose the first such ball in a fixed enumeration. This is an injection into that basis.</p>
+<p>By the exact semialgebraic projection theorem cited above, each coordinate projection of the subset is semialgebraic. It is also countable. A semialgebraic subset of the real line is a finite union of points and intervals. Indeed, use the finite polynomials in its Boolean description, omit identically zero polynomials after recording their signs, and divide the line at their finitely many real roots. Every polynomial has constant nonzero sign on each intervening interval, so membership is constant there; the endpoints are finitely many single points. A countable such set contains no nonempty interval and is therefore finite.</p>
+<p>Each coordinate projection is thus finite, and the original subset lies in the finite Cartesian product of those projections. It is finite. <span class="math" data-index="653" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 6.3.</strong> There is a center <span class="math" data-index="654" data-tex="\(a\in\mathbb C^{d+1}\)">\(a\in\mathbb C^{d+1}\)</span> such that</p>
+<span class="math math-display" id="proof-eq-32" data-index="655" data-tex="\[
+ \rho_a(x)=|x-a|^2\quad(x\in M)
+ \tag{32}
+\]">\[
+ \rho_a(x)=|x-a|^2\quad(x\in M)
+ \tag{32}
+\]</span>
+<p>is proper, bounded below, strictly plurisubharmonic and Morse, and has finitely many critical points.</p>
+<p><strong>Proof.</strong> Write the ambient affine space as <span class="math" data-index="656" data-tex="\(\mathbb R^N\)">\(\mathbb R^N\)</span>, <span class="math" data-index="657" data-tex="\(N=2d+2\)">\(N=2d+2\)</span>, and <span class="math" data-index="658" data-tex="\(g_1=\operatorname{Re}G\)">\(g_1=\operatorname{Re}G\)</span>, <span class="math" data-index="659" data-tex="\(g_2=\operatorname{Im}G\)">\(g_2=\operatorname{Im}G\)</span>. These are real polynomials. Their gradients <span class="math" data-index="660" data-tex="\(n_1=\nabla g_1,n_2=\nabla g_2\)">\(n_1=\nabla g_1,n_2=\nabla g_2\)</span> are independent at every point of <span class="math" data-index="661" data-tex="\(M\)">\(M\)</span>: the complex derivative <span class="math" data-index="662" data-tex="\(\partial G/\partial w=f\ne0\)">\(\partial G/\partial w=f\ne0\)</span> has real rank two. They span the normal space to <span class="math" data-index="663" data-tex="\(M\)">\(M\)</span>.</p>
+<p>In the global real coordinates supplied by <span class="math" data-index="664" data-tex="\(\iota:V\to M\)">\(\iota:V\to M\)</span>, consider the map on the open subset <span class="math" data-index="665" data-tex="\(V\times\mathbb R^2\)">\(V\times\mathbb R^2\)</span> of <span class="math" data-index="666" data-tex="\(\mathbb R^N\)">\(\mathbb R^N\)</span>,</p>
+<span class="math math-display" id="proof-eq-33" data-index="667" data-tex="\[
+ \Phi(x,\lambda)=x-\lambda_1n_1(x)-\lambda_2n_2(x).
+ \tag{33}
+\]">\[
+ \Phi(x,\lambda)=x-\lambda_1n_1(x)-\lambda_2n_2(x).
+ \tag{33}
+\]</span>
+<p>Here <span class="math" data-index="668" data-tex="\(x\in M\)">\(x\in M\)</span> is evaluated using those coordinates. The domain and target have the same real dimension <span class="math" data-index="669" data-tex="\(N\)">\(N\)</span>. Lemma 6.1 gives a regular value <span class="math" data-index="670" data-tex="\(a\)">\(a\)</span>.</p>
+<p>A point <span class="math" data-index="671" data-tex="\(x\in M\)">\(x\in M\)</span> is critical for <span class="math" data-index="672" data-tex="\(\rho_a|_M\)">\(\rho_a|_M\)</span> precisely when</p>
+<span class="math math-display" id="proof-eq-34" data-index="673" data-tex="\[
+ x-a=\lambda_1n_1(x)+\lambda_2n_2(x)
+ \tag{34}
+\]">\[
+ x-a=\lambda_1n_1(x)+\lambda_2n_2(x)
+ \tag{34}
+\]</span>
+<p>for a unique <span class="math" data-index="674" data-tex="\(\lambda\)">\(\lambda\)</span>. This is exactly <span class="math" data-index="675" data-tex="\(\Phi(x,\lambda)=a\)">\(\Phi(x,\lambda)=a\)</span>. Set
+<span class="math" data-index="676" data-tex="\(A=I-\sum_j\lambda_j\operatorname{Hess}g_j(x)\)">\(A=I-\sum_j\lambda_j\operatorname{Hess}g_j(x)\)</span>.
+For tangent vectors <span class="math" data-index="677" data-tex="\(v,t\in T_xM\)">\(v,t\in T_xM\)</span>, the restricted Hessian of <span class="math" data-index="678" data-tex="\(\rho_a\)">\(\rho_a\)</span> is</p>
+<span class="math math-display" id="proof-eq-35" data-index="679" data-tex="\[
+ B_x(v,t)=2\,v\cdot At .
+ \tag{35}
+\]">\[
+ B_x(v,t)=2\,v\cdot At .
+ \tag{35}
+\]</span>
+<p>To verify it, differentiate a curve in <span class="math" data-index="680" data-tex="\(M\)">\(M\)</span> twice: <span class="math" data-index="681" data-tex="\(n_j\cdot x&#x27;&#x27;=-v\cdot(\operatorname{Hess}g_j)v\)">\(n_j\cdot x&#x27;&#x27;=-v\cdot(\operatorname{Hess}g_j)v\)</span>, and insert (34) into
+<span class="math" data-index="682" data-tex="\(\rho_a&#x27;&#x27;=2|v|^2+2(x-a)\cdot x&#x27;&#x27;\)">\(\rho_a&#x27;&#x27;=2|v|^2+2(x-a)\cdot x&#x27;&#x27;\)</span>.
+This gives (35) on the diagonal, and polarization gives the bilinear formula.</p>
+<p>The differential of (33) at a critical pair is</p>
+<span class="math math-display" id="proof-eq-36" data-index="683" data-tex="\[
+ D\Phi(v,\mu)=Av-\mu_1n_1-\mu_2n_2 .
+ \tag{36}
+\]">\[
+ D\Phi(v,\mu)=Av-\mu_1n_1-\mu_2n_2 .
+ \tag{36}
+\]</span>
+<p>Project onto <span class="math" data-index="684" data-tex="\(T_xM\)">\(T_xM\)</span>. The result is the tangent operator <span class="math" data-index="685" data-tex="\(P_TAv\)">\(P_TAv\)</span>, one-half the Hessian (35). If that operator is invertible, its tangent output first determines <span class="math" data-index="686" data-tex="\(v\)">\(v\)</span>, and independence of the normals then determines <span class="math" data-index="687" data-tex="\(\mu\)">\(\mu\)</span> from the normal output; thus (36) is invertible. Conversely a nonzero vector in the tangent kernel gives <span class="math" data-index="688" data-tex="\(Av\)">\(Av\)</span> normal, and unique <span class="math" data-index="689" data-tex="\(\mu\)">\(\mu\)</span> then makes (36) zero. Hence (36) is invertible exactly when (35) is nonsingular. The chosen regular value makes every critical point Morse.</p>
+<p>The actual critical pairs form the real polynomial solution set</p>
+<span class="math math-display" id="proof-eq-37" data-index="690" data-tex="\[
+ S_a=\left\{(x,\lambda):
+       g_1(x)=g_2(x)=0,\ 
+       x-a=\lambda_1\nabla g_1(x)+\lambda_2\nabla g_2(x)
+                         \right\}\subset\mathbb R^{N+2}.
+ \tag{37}
+\]">\[
+ S_a=\left\{(x,\lambda):
+       g_1(x)=g_2(x)=0,\ 
+       x-a=\lambda_1\nabla g_1(x)+\lambda_2\nabla g_2(x)
+                         \right\}\subset\mathbb R^{N+2}.
+ \tag{37}
+\]</span>
+<p>Every solution lies in <span class="math" data-index="691" data-tex="\(M\)">\(M\)</span>, and <span class="math" data-index="692" data-tex="\(\lambda\)">\(\lambda\)</span> is unique. Because <span class="math" data-index="693" data-tex="\(a\)">\(a\)</span> is regular in (33), the inverse function theorem makes each preimage isolated in the smooth coordinates <span class="math" data-index="694" data-tex="\(M\times\mathbb R^2\)">\(M\times\mathbb R^2\)</span>. Those coordinates give the subspace topology of the set in (37), so <span class="math" data-index="695" data-tex="\(S_a\)">\(S_a\)</span> is discrete as a subset of the ambient Euclidean space. It is semialgebraic by its displayed equations. Lemma 6.2 shows that it is finite, and hence the critical points are finite.</p>
+<p>Since <span class="math" data-index="696" data-tex="\(M\)">\(M\)</span> is closed in the ambient Euclidean space, the intersection of <span class="math" data-index="697" data-tex="\(M\)">\(M\)</span> with a closed ball centered at <span class="math" data-index="698" data-tex="\(a\)">\(a\)</span> is compact. This proves properness of (32); its lower bound is zero. Under <span class="math" data-index="699" data-tex="\(\iota\)">\(\iota\)</span>, the function is</p>
+<span class="math math-display" id="proof-eq-38" data-index="700" data-tex="\[
+ \rho_a(z)=\sum_{j=1}^d|z_j-a_j|^2
+                         +|1/f(z)-a_{d+1}|^2 .
+ \tag{38}
+\]">\[
+ \rho_a(z)=\sum_{j=1}^d|z_j-a_j|^2
+                         +|1/f(z)-a_{d+1}|^2 .
+ \tag{38}
+\]</span>
+<p>All the functions inside the squared norms are holomorphic. Its Levi form on a complex tangent vector <span class="math" data-index="701" data-tex="\(v\)">\(v\)</span> is</p>
+<span class="math math-display" id="proof-eq-39" data-index="702" data-tex="\[
+ \mathcal L_{\rho_a}(v)
+       =|v|^2+|d(1/f)_z(v)|^2\geq|v|^2&gt;0
+                                      \quad(v\ne0).
+ \tag{39}
+\]">\[
+ \mathcal L_{\rho_a}(v)
+       =|v|^2+|d(1/f)_z(v)|^2\geq|v|^2&gt;0
+                                      \quad(v\ne0).
+ \tag{39}
+\]</span>
+<p>It is therefore strictly plurisubharmonic. No smoothness or square-free hypothesis on <span class="math" data-index="703" data-tex="\(f\)">\(f\)</span> has entered. <span class="math" data-index="704" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 6.4.</strong> All ordinary groups <span class="math" data-index="705" data-tex="\(H_j(V;\mathbb C)\)">\(H_j(V;\mathbb C)\)</span> and <span class="math" data-index="706" data-tex="\(H_j(V;\mathbb Q)\)">\(H_j(V;\mathbb Q)\)</span> are finite dimensional, and they vanish for <span class="math" data-index="707" data-tex="\(j&gt;d\)">\(j&gt;d\)</span>.</p>
+<p><strong>Proof.</strong> At a critical point the real Hessian <span class="math" data-index="708" data-tex="\(B\)">\(B\)</span> of a strictly plurisubharmonic function satisfies</p>
+<span class="math math-display" id="proof-eq-40" data-index="709" data-tex="\[
+ B(v,v)+B(Jv,Jv)=4\mathcal L_\rho(v)&gt;0 .
+ \tag{40}
+\]">\[
+ B(v,v)+B(Jv,Jv)=4\mathcal L_\rho(v)&gt;0 .
+ \tag{40}
+\]</span>
+<p>This follows by expanding the Wirtinger derivatives at the critical point, where the Hessian is coordinate invariant. If the negative eigenspace <span class="math" data-index="710" data-tex="\(W\)">\(W\)</span> had real dimension <span class="math" data-index="711" data-tex="\(r&gt;d\)">\(r&gt;d\)</span>, then <span class="math" data-index="712" data-tex="\(\dim(W\cap JW)\geq2r-2d&gt;0\)">\(\dim(W\cap JW)\geq2r-2d&gt;0\)</span>. Choose <span class="math" data-index="713" data-tex="\(0\ne v=Jw\in W\cap JW\)">\(0\ne v=Jw\in W\cap JW\)</span>, with <span class="math" data-index="714" data-tex="\(w\in W\)">\(w\in W\)</span>; then <span class="math" data-index="715" data-tex="\(Jv=-w\in W\)">\(Jv=-w\in W\)</span>. Both terms on the left of (40) would be negative, a contradiction. All Morse indices are thus at most <span class="math" data-index="716" data-tex="\(d\)">\(d\)</span>.</p>
+<p>Apply the cited full finite-chain Morse handle theorem to (32). Begin with an empty regular sublevel below its lower bound and cross the finitely many critical values using its actual open sublevels <span class="math" data-index="717" data-tex="\(W_i\)">\(W_i\)</span>. Each relative group <span class="math" data-index="718" data-tex="\(H_j(W_i,W_{i-1};k)\)">\(H_j(W_i,W_{i-1};k)\)</span>, <span class="math" data-index="719" data-tex="\(k=\mathbb C\)">\(k=\mathbb C\)</span> or <span class="math" data-index="720" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, is a finite direct sum of copies of <span class="math" data-index="721" data-tex="\(k\)">\(k\)</span>, one for each crossed point of index <span class="math" data-index="722" data-tex="\(j\)">\(j\)</span>. The exact pair segment</p>
+<span class="math math-display" id="proof-eq-41" data-index="723" data-tex="\[
+ H_j(W_{i-1};k)\longrightarrow H_j(W_i;k)
+                   \longrightarrow H_j(W_i,W_{i-1};k)
+ \tag{41}
+\]">\[
+ H_j(W_{i-1};k)\longrightarrow H_j(W_i;k)
+                   \longrightarrow H_j(W_i,W_{i-1};k)
+ \tag{41}
+\]</span>
+<p>proves finite-dimensionality by induction: the kernel of the second arrow is an image of a finite-dimensional space, and its image lies in a finite-dimensional relative group. In fact
+<span class="math" data-index="724" data-tex="\(\dim H_j(W_i;k)\leq\dim H_j(W_{i-1};k)+
+\dim H_j(W_i,W_{i-1};k)\)">\(\dim H_j(W_i;k)\leq\dim H_j(W_{i-1};k)+
+\dim H_j(W_i,W_{i-1};k)\)</span>.
+Above degree <span class="math" data-index="725" data-tex="\(d\)">\(d\)</span>, the outer groups in (41) are zero and the new absolute group is zero.</p>
+<p>Choose a regular level above every critical value. Beyond it every relative group is zero; the adjacent pair sequences, including the relative group in degree <span class="math" data-index="726" data-tex="\(j+1\)">\(j+1\)</span>, make all later stage maps isomorphisms. Every finite chain has compact image and belongs to one stage of the increasing open cover. Every finite bounding relation likewise belongs to some later stage. Thus the actual direct-limit comparison proved in the cited handle theorem's passage to the whole manifold identifies <span class="math" data-index="727" data-tex="\(H_j(M;k)\)">\(H_j(M;k)\)</span> with that one finite-dimensional stage group. This is ordinary homology, with finite chains; no locally finite-chain or compact-support conclusion is being inferred. The diffeomorphism <span class="math" data-index="728" data-tex="\(V\cong M\)">\(V\cong M\)</span> proves the corollary. <span class="math" data-index="729" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-rational-spanning-and-the-exact-period-test">7. Rational spanning and the exact period test</h2>
+<p><strong>Theorem 7.1.</strong> The forms (1) span <span class="math" data-index="730" data-tex="\(H^d_{\mathrm{dR}}(V;\mathbb C)\)">\(H^d_{\mathrm{dR}}(V;\mathbb C)\)</span>. A finite smooth <span class="math" data-index="731" data-tex="\(d\)">\(d\)</span>-cycle <span class="math" data-index="732" data-tex="\(c\)">\(c\)</span> with complex coefficients is zero in ordinary homology if and only if all the periods of (1) on <span class="math" data-index="733" data-tex="\(c\)">\(c\)</span> vanish. The same assertion holds for rational cycles in <span class="math" data-index="734" data-tex="\(H_d(V;\mathbb Q)\)">\(H_d(V;\mathbb Q)\)</span>.</p>
+<p><strong>Proof of detection.</strong> A holomorphic top form has the unique expression <span class="math" data-index="735" data-tex="\(g(z)\,dz_1\wedge\cdots\wedge dz_d\)">\(g(z)\,dz_1\wedge\cdots\wedge dz_d\)</span>. For any fixed finite smooth cycle <span class="math" data-index="736" data-tex="\(c=\sum_\sigma c_\sigma\sigma\)">\(c=\sum_\sigma c_\sigma\sigma\)</span>, the simplex images form a compact set <span class="math" data-index="737" data-tex="\(K\subset V\)">\(K\subset V\)</span>, and</p>
+<span class="math math-display" id="proof-eq-42" data-index="738" data-tex="\[
+ B_c=\sum_\sigma|c_\sigma|\int_{\Delta^d}
+       \left|\sigma^*(dz_1\wedge\cdots\wedge dz_d)\right|&lt;\infty .
+ \tag{42}
+\]">\[
+ B_c=\sum_\sigma|c_\sigma|\int_{\Delta^d}
+       \left|\sigma^*(dz_1\wedge\cdots\wedge dz_d)\right|&lt;\infty .
+ \tag{42}
+\]</span>
+<p>The absolute value here is that of the coefficient of the oriented real parameter volume. Smooth simplex maps on their compact domains have bounded derivatives, so the integral is finite. Proposition 5.1 approximates <span class="math" data-index="739" data-tex="\(g\)">\(g\)</span> uniformly on <span class="math" data-index="740" data-tex="\(K\)">\(K\)</span> by coefficients <span class="math" data-index="741" data-tex="\(p/f^k\)">\(p/f^k\)</span>, and the difference of the two periods is bounded by <span class="math" data-index="742" data-tex="\(B_c\)">\(B_c\)</span> times the uniform error.</p>
+<p>Thus vanishing of all rational periods implies vanishing of all holomorphic top-form periods. Proposition 4.1 then gives vanishing against every closed smooth complex <span class="math" data-index="743" data-tex="\(d\)">\(d\)</span>-form. The integration/de Rham detection theorem cited above gives a finite smooth bounding chain over <span class="math" data-index="744" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Conversely such a boundary has zero rational periods by Stokes: every form (1) is holomorphic and closed, its possible poles lying outside <span class="math" data-index="745" data-tex="\(V\)">\(V\)</span>.</p>
+<p>For a rational cycle, the exact faithful rational-coefficient comparison in that lesson gives</p>
+<span class="math math-display" id="proof-eq-43" data-index="746" data-tex="\[
+ H_d(V;\mathbb Q)\otimes_{\mathbb Q}\mathbb C
+                       \cong H_d(V;\mathbb C),
+ \tag{43}
+\]">\[
+ H_d(V;\mathbb Q)\otimes_{\mathbb Q}\mathbb C
+                       \cong H_d(V;\mathbb C),
+ \tag{43}
+\]</span>
+<p>and injection of <span class="math" data-index="747" data-tex="\(h\mapsto h\otimes1\)">\(h\mapsto h\otimes1\)</span>. Complex vanishing of the rational class therefore implies rational vanishing, with a finite smooth rational bounding chain by the same smooth/continuous comparison. The converse again follows by Stokes. No integral torsion conclusion is asserted.</p>
+<p><strong>Proof of spanning.</strong> By Corollary 6.4, <span class="math" data-index="748" data-tex="\(r=\dim_\mathbb C H_d(V;\mathbb C)\)">\(r=\dim_\mathbb C H_d(V;\mathbb C)\)</span> is finite. The cited integration isomorphism, combined with its algebraic cochain-dual argument, identifies</p>
+<span class="math math-display" id="proof-eq-44" data-index="749" data-tex="\[
+ H^d_{\mathrm{dR}}(V;\mathbb C)
+               \cong\operatorname{Hom}_\mathbb C(H_d(V;\mathbb C),\mathbb C)
+ \tag{44}
+\]">\[
+ H^d_{\mathrm{dR}}(V;\mathbb C)
+               \cong\operatorname{Hom}_\mathbb C(H_d(V;\mathbb C),\mathbb C)
+ \tag{44}
+\]</span>
+<p>via actual integration. If <span class="math" data-index="750" data-tex="\(r=0\)">\(r=0\)</span>, there is no nonzero class to span. Suppose <span class="math" data-index="751" data-tex="\(r\geq1\)">\(r\geq1\)</span>. Choose a basis represented by finite smooth cycles <span class="math" data-index="752" data-tex="\(c_1,\ldots,c_r\)">\(c_1,\ldots,c_r\)</span>, using the proved smooth/continuous homology comparison. The dual coordinate functionals in (44) give closed smooth forms <span class="math" data-index="753" data-tex="\(\alpha_1,\ldots,\alpha_r\)">\(\alpha_1,\ldots,\alpha_r\)</span> with
+<span class="math" data-index="754" data-tex="\(\int_{c_i}\alpha_j=\delta_{ij}\)">\(\int_{c_i}\alpha_j=\delta_{ij}\)</span>.
+Proposition 4.1 replaces them by holomorphic top forms
+<span class="math" data-index="755" data-tex="\(\gamma_j=g_j\,dz_1\wedge\cdots\wedge dz_d\)">\(\gamma_j=g_j\,dz_1\wedge\cdots\wedge dz_d\)</span>
+with exactly the same periods.</p>
+<p>Take the compact union <span class="math" data-index="756" data-tex="\(K\)">\(K\)</span> of all the chosen simplex images, and let <span class="math" data-index="757" data-tex="\(B=\max_i B_{c_i}\)">\(B=\max_i B_{c_i}\)</span>, using (42). Approximate every <span class="math" data-index="758" data-tex="\(g_j\)">\(g_j\)</span> on <span class="math" data-index="759" data-tex="\(K\)">\(K\)</span> by a rational coefficient <span class="math" data-index="760" data-tex="\(r_j=p_j/f^{k_j}\)">\(r_j=p_j/f^{k_j}\)</span>, with error less than</p>
+<span class="math math-display" id="proof-eq-45" data-index="761" data-tex="\[
+ \varepsilon=\frac{1}{2r(1+B)} .
+ \tag{45}
+\]">\[
+ \varepsilon=\frac{1}{2r(1+B)} .
+ \tag{45}
+\]</span>
+<p>The period matrix</p>
+<span class="math math-display" id="proof-eq-46" data-index="762" data-tex="\[
+ P_{ij}=\int_{c_i} r_j\,dz_1\wedge\cdots\wedge dz_d
+ \tag{46}
+\]">\[
+ P_{ij}=\int_{c_i} r_j\,dz_1\wedge\cdots\wedge dz_d
+ \tag{46}
+\]</span>
+<p>satisfies <span class="math" data-index="763" data-tex="\(|P_{ij}-\delta_{ij}|&lt;1/(2r)\)">\(|P_{ij}-\delta_{ij}|&lt;1/(2r)\)</span>, and hence
+<span class="math" data-index="764" data-tex="\(\|P-I\|_\infty&lt;1/2\)">\(\|P-I\|_\infty&lt;1/2\)</span>
+in the row-sum matrix norm. It is invertible: if <span class="math" data-index="765" data-tex="\(Pv=0\)">\(Pv=0\)</span> for a nonzero column vector <span class="math" data-index="766" data-tex="\(v\)">\(v\)</span>, then
+<span class="math" data-index="767" data-tex="\(\|v\|_\infty=\|(I-P)v\|_\infty&lt;\tfrac12\|v\|_\infty\)">\(\|v\|_\infty=\|(I-P)v\|_\infty&lt;\tfrac12\|v\|_\infty\)</span>,
+a contradiction. Injectivity of a square finite-dimensional matrix gives surjectivity as well.</p>
+<p>The <span class="math" data-index="768" data-tex="\(r\)">\(r\)</span> rational-form classes therefore have independent period columns and are a basis under (44). Every class is a finite complex linear combination of them. That finite combination itself has a common denominator <span class="math" data-index="769" data-tex="\(f^K\)">\(f^K\)</span>, with polynomial numerator, so every class has a representative of the single form (1). This establishes exact cohomological spanning, not merely density in a space of coefficients. <span class="math" data-index="770" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="8-the-projective-homogeneous-family-with-positive-pole-exponents">8. The projective homogeneous family, with positive pole exponents</h2>
+<p>Let <span class="math" data-index="771" data-tex="\(F\)">\(F\)</span> be a nonzero homogeneous polynomial of degree <span class="math" data-index="772" data-tex="\(m\geq1\)">\(m\geq1\)</span> on <span class="math" data-index="773" data-tex="\(\mathbb C^{d+1}\)">\(\mathbb C^{d+1}\)</span>, let <span class="math" data-index="774" data-tex="\(L\)">\(L\)</span> be a nonzero linear form, and put</p>
+<span class="math math-display" id="proof-eq-47" data-index="775" data-tex="\[
+ V_{\mathrm{pr}}=\mathbb P^d\setminus\{FL=0\}.
+ \tag{47}
+\]">\[
+ V_{\mathrm{pr}}=\mathbb P^d\setminus\{FL=0\}.
+ \tag{47}
+\]</span>
+<p>Choose linear coordinates <span class="math" data-index="776" data-tex="\(Z_0=L,Z_1,\ldots,Z_d\)">\(Z_0=L,Z_1,\ldots,Z_d\)</span>. This complement lies entirely in the chart <span class="math" data-index="777" data-tex="\(Z_0\ne0\)">\(Z_0\ne0\)</span>, identified with <span class="math" data-index="778" data-tex="\(V=\{f\ne0\}\)">\(V=\{f\ne0\}\)</span> in <span class="math" data-index="779" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span>, where <span class="math" data-index="780" data-tex="\(z_j=Z_j/Z_0\)">\(z_j=Z_j/Z_0\)</span> and <span class="math" data-index="781" data-tex="\(f(z)=F(1,z)\)">\(f(z)=F(1,z)\)</span>. The polynomial <span class="math" data-index="782" data-tex="\(f\)">\(f\)</span> is nonzero, although its degree can be smaller than <span class="math" data-index="783" data-tex="\(m\)">\(m\)</span> and it can be constant.</p>
+<p>Set</p>
+<span class="math math-display" id="proof-eq-48" data-index="784" data-tex="\[
+ \omega=\sum_{j=0}^d(-1)^j Z_j\,
+          dZ_0\wedge\cdots\wedge\widehat{dZ_j}
+                              \wedge\cdots\wedge dZ_d.
+ \tag{48}
+\]">\[
+ \omega=\sum_{j=0}^d(-1)^j Z_j\,
+          dZ_0\wedge\cdots\wedge\widehat{dZ_j}
+                              \wedge\cdots\wedge dZ_d.
+ \tag{48}
+\]</span>
+<p>For positive integers <span class="math" data-index="785" data-tex="\(k,s\)">\(k,s\)</span> and a homogeneous polynomial <span class="math" data-index="786" data-tex="\(P\)">\(P\)</span> with</p>
+<span class="math math-display" id="proof-eq-49" data-index="787" data-tex="\[
+ \deg P=mk+s-d-1,
+ \tag{49}
+\]">\[
+ \deg P=mk+s-d-1,
+ \tag{49}
+\]</span>
+<p>the form <span class="math" data-index="788" data-tex="\(P\omega/(F^kL^s)\)">\(P\omega/(F^kL^s)\)</span> is horizontal for the scalar action and invariant under it. Horizontality follows because <span class="math" data-index="789" data-tex="\(\omega\)">\(\omega\)</span> is the contraction of the ambient volume form with the Euler vector field; contracting it with that field again is zero. The weight of <span class="math" data-index="790" data-tex="\(\omega\)">\(\omega\)</span> under <span class="math" data-index="791" data-tex="\(Z\mapsto tZ\)">\(Z\mapsto tZ\)</span> is <span class="math" data-index="792" data-tex="\(d+1\)">\(d+1\)</span>, so (49) makes the total weight zero. Consequently this is a well-defined holomorphic top form on (47). More explicitly the pullback to the section <span class="math" data-index="793" data-tex="\(Z_0=1\)">\(Z_0=1\)</span> is</p>
+<span class="math math-display" id="proof-eq-50" data-index="794" data-tex="\[
+ \frac{P(1,z)}{f(z)^k}\,dz_1\wedge\cdots\wedge dz_d .
+ \tag{50}
+\]">\[
+ \frac{P(1,z)}{f(z)^k}\,dz_1\wedge\cdots\wedge dz_d .
+ \tag{50}
+\]</span>
+<p>The section identifies the complement with one affine chart, and weight-zero horizontality proves equality under its scalar representatives.</p>
+<p><strong>Corollary 8.1.</strong> The forms</p>
+<span class="math math-display" id="proof-eq-51" data-index="795" data-tex="\[
+ \frac{P\omega}{F^kL^s},
+ \qquad k,s\geq1,\qquad\deg P=mk+s-d-1
+ \tag{51}
+\]">\[
+ \frac{P\omega}{F^kL^s},
+ \qquad k,s\geq1,\qquad\deg P=mk+s-d-1
+ \tag{51}
+\]</span>
+<p>span <span class="math" data-index="796" data-tex="\(H^d_{\mathrm{dR}}(V_{\mathrm{pr}};\mathbb C)\)">\(H^d_{\mathrm{dR}}(V_{\mathrm{pr}};\mathbb C)\)</span> and detect ordinary finite <span class="math" data-index="797" data-tex="\(d\)">\(d\)</span>-cycle homology over <span class="math" data-index="798" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> and <span class="math" data-index="799" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, with the given chart identification and orientations.</p>
+<p><strong>Proof.</strong> Every form (51) restricts to one in (1). Conversely start with a nonzero polynomial numerator <span class="math" data-index="800" data-tex="\(p\)">\(p\)</span> in (1). If <span class="math" data-index="801" data-tex="\(k=0\)">\(k=0\)</span>, replace it by <span class="math" data-index="802" data-tex="\(k=1\)">\(k=1\)</span> and numerator <span class="math" data-index="803" data-tex="\(pf\)">\(pf\)</span>; this does not change the form. Choose an integer <span class="math" data-index="804" data-tex="\(D_0\geq\deg p\)">\(D_0\geq\deg p\)</span> so large that</p>
+<span class="math math-display" id="proof-eq-52" data-index="805" data-tex="\[
+ s=D_0-mk+d+1\geq1.
+ \tag{52}
+\]">\[
+ s=D_0-mk+d+1\geq1.
+ \tag{52}
+\]</span>
+<p>Its homogenization</p>
+<span class="math math-display" id="proof-eq-53" data-index="806" data-tex="\[
+ P(Z)=Z_0^{D_0}p(Z_1/Z_0,\ldots,Z_d/Z_0)
+ \tag{53}
+\]">\[
+ P(Z)=Z_0^{D_0}p(Z_1/Z_0,\ldots,Z_d/Z_0)
+ \tag{53}
+\]</span>
+<p>is a homogeneous polynomial of degree <span class="math" data-index="807" data-tex="\(D_0\)">\(D_0\)</span>, satisfies (49), and gives precisely the initial form in (50). The zero form is immediate. Thus the two families have the same affine representatives, and Theorem 7.1 applies. This covers singular and repeated <span class="math" data-index="808" data-tex="\(F\)">\(F\)</span>, including a factor equal to <span class="math" data-index="809" data-tex="\(L\)">\(L\)</span>. The exponents in (51) are positive even if a particular form has removable poles. <span class="math" data-index="810" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="references-2">References</h2>
+<p>[H] Lars Hörmander, <em><span class="math" data-index="811" data-tex="\(L^2\)">\(L^2\)</span> estimates and existence theorems for the <span class="math" data-index="812" data-tex="\(\bar\partial\)">\(\bar\partial\)</span> operator</em>, Acta Mathematica <strong>113</strong> (1965), 89–152. <a href="https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/5989-11511_2006_Article_BF02391775.pdf">Primary article</a>, <a href="https://www.mathnet.ru/eng/mat389">journal bibliographic record</a>. The weighted Hilbert method is the classical source; §§1–3 give the precise smooth all-degree proof consumed here.</p>
+<p>[S] Arthur Sard, <em>The measure of the critical values of differentiable maps</em>, Bulletin of the American Mathematical Society <strong>48</strong> (1942), 883–890. <a href="https://webhomes.maths.ed.ac.uk/~v1ranick/papers/sard.pdf">Original article</a>. Lemma 6.1 proves the equal-dimensional <span class="math" data-index="813" data-tex="\(C^1\)">\(C^1\)</span> case needed for the finite-dimensional normal-parameter map.</p>
+<p>[G] Alexander Grothendieck, <em>On the de Rham cohomology of algebraic varieties</em>, Publications Mathématiques de l'IHÉS <strong>29</strong> (1966), 95–103. <a href="https://www.numdam.org/item/PMIHES_1966__29__95_0.pdf">Primary article</a>. It establishes the broader algebraic comparison. The present argument proves the stated top-degree conclusion for a principal polynomial complement directly, with its exact internal topology inputs; it does not prove that broader theorem.</p>
+<p>All original prose and mathematical figures accompanying this exposition are CC0-1.0. The linked historical articles retain their own rights and are not reproduced. The proof detects ordinary rational or complex cycles; it does not detect integral torsion. Applying Corollary 8.1 to a specified affine cycle still requires the actual affine/projective comparison, including the chosen tube orientation, sign and multiplicity. Rational-form spanning alone does not identify that geometric cycle or prove a component-constancy statement.</p>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/rational-top-forms-detect-cycles-in-a-hypersurface-complement.md" download>Download the complete lesson source</a>. Original proof, examples, solutions and figures use CC0 1.0. The font retains its own terms.</p><ul><li><a href="reproduce/L182/rational-top-forms-formal.md" download>rational-top-forms-formal.md</a></li><li><a href="reproduce/L182/rational-top-forms-learner.md" download>rational-top-forms-learner.md</a></li><li><span class="unlinked">rational-top-forms-check-and-figures.py</span></li><li><a href="reproduce/L182/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L182/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li><li><a href="reproduce/L182/README-reproduce.md" download>README-reproduce.md</a></li><li><a href="reproduce/L182/figures/exact-geometry.json" download>figures/exact-geometry.json</a></li><li><a href="reproduce/L182/figures/finite-morse-critical-points.png" download>figures/finite-morse-critical-points.png</a></li><li><a href="reproduce/L182/figures/finite-morse-critical-points.svg" download>figures/finite-morse-critical-points.svg</a></li><li><a href="reproduce/L182/figures/inverse-circle-projections.png" download>figures/inverse-circle-projections.png</a></li><li><a href="reproduce/L182/figures/inverse-circle-projections.svg" download>figures/inverse-circle-projections.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

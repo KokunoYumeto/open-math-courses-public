@@ -1,6 +1,6 @@
 # Transverse measures of foliations
 
-*Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), September–October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 ## Introduction
 
@@ -361,7 +361,7 @@ For a standard Borel base \(X\), the same argument reduces to the usual integral
 
 ### Maps and pullback presentations
 
-The pairs in Proposition 5.9 contain more information than the numerical set of leaves. Their maps must respect that information. Here is a precise category in which pushforward is defined. It also explains what must be checked before interpreting an assertion about a “Borel map of leaf spaces.”
+A measure on the leaf space is evaluated on countable presentations, rather than arbitrary subsets of the set of leaves. A map must therefore carry target presentations back to source presentations. We use the following intrinsic criterion, which includes every ordinary Borel map between standard Borel spaces.
 
 **Definition 5.10 (a presentation Borel map).** Let \((Q_i,\mathcal B_i)\) be spaces with the collection axiom of Proposition 5.9. A set map \(h:Q_1\to Q_2\) is presentation Borel if, for every \((Y,p)\in\mathcal B_2\), the set
 
@@ -808,11 +808,11 @@ An infinite multiplicity must not be hidden by claiming that \(\sum_j\nu_{1_{s(Y
 Identity and composition agree with the full theorem as well: the canonical Borel identification \(h^*(k^*Y)\simeq(kh)^*Y\) gives the same presentation measure, and (5.17.12) therefore gives \((kh)_*=k_*h_*\). This also proves choice independence and transversal independence of the resulting full measure. \(\square\)
 
 
-### The undefined native map interface
+### Which leaf maps admit a pushforward
 
-In [Connes], Section 2, page 9, the definition specifies when a countable-fibre map from a standard Borel space to the leaf set is Borel. The following abstract theory specifies compatible presentations and additive invariant measures. The last sentence asserts pushforward for a Borel map between leaf spaces, but gives neither a criterion for that map nor a formula for the image. Its earlier definition cannot be applied directly: a leaf quotient need not be standard Borel, and a leaf map need not have countable fibres.
+*Reference:* Section 2 of [Connes] defines countable Borel presentations but states leaf-space functoriality without defining its inter-leaf-space map criterion. Definition 5.10 specifies the criterion used here; Theorem 5.20 proves that merely requiring a Borel incidence graph cannot extend the established image rule.
 
-Theorem 5.16 supplies a precise map category, and Theorem 5.17 identifies its full image with the proper construction in [Connes 1979]. The latter source's introduction mentions measurable-functor images without stating a properness hypothesis. Its operative construction in Section III is explicitly for proper homomorphisms. These facts support the precise interpretation proved here; they do not identify the undefined phrase in the survey with that interpretation.
+Theorems 5.16–5.17 identify a proper principal groupoid lift with the full presentation image of Theorem 5.11. The lift and its properness are explicit hypotheses, and the image is evaluated on every target presentation.
 
 Example 5.13 disproves the inference from a weak Borel graph to the standard-pullback formula. It does not prove that no target measure whatsoever can be assigned to that map: the abstract axioms permit the zero measure. The next calculation makes that distinction concrete.
 
@@ -1000,7 +1000,7 @@ The historical survey does not define its term “Borel map” between leaf spac
 
 ### Pushforward after deleting invariant null sectors
 
-This supplement supplies a measure-dependent enlargement of the existing presentation pushforward, and a finite-measure obstruction to enlarging its domain further by the same method. It concerns principal countable equal-leaf relations and module one. It does not identify the unspecified historical Borel-map interface, include holonomy isotropy, or settle the historical map assertion. Historical sources supply context; the prerequisites established above are Theorems 5.4, 5.6–5.7, Proposition 5.9 and Theorems 5.11, 5.16–5.17.
+Invariant null sectors give a measure-dependent enlargement of the presentation pushforward. The following construction concerns principal countable equal-leaf relations and module one. The full-arrow constructions later in this section retain isotropy separately.
 
 #### 5.21.1. Objects, sectors and nullity
 
@@ -1166,11 +1166,11 @@ The boundary is sharp for adding finite mass on the bad component. For \(\epsilo
 
 **Figure 5.22.** All source measures shown are finite geometric transverse Radon measures on the same compact disjoint union of foliated tori. The positive measure difference has total variation norm \(\epsilon\). At \(\epsilon=0\) collapse is essentially presentation Borel and has point image mass one. At every \(\epsilon>0\) the finite invariant aperiodic bad component violates the normalized-cutoff criterion by the exact mass-transport identity (BP.12). No output for \(\epsilon>0\) or universal finite-Radon impossibility is asserted. [Editable SVG](../figures/borel-finite-radon-boundary.svg); reproducible source [draw_boundary.py](../reproduction/borel-null-sector-boundary/draw_boundary.py). Human historical context is the same as Figure 5.21. Original explanatory geometry/captions are CC0; DejaVu glyphs retain the complete notice in [component terms](../reproduction/borel-null-sector-boundary/COMPONENT-TERMS.md) and [complete DejaVu notice](../reproduction/borel-null-sector-boundary/FONT-NOTICE.txt).
 
-#### 5.21.7. Exact advance and historical residual
+#### 5.21.7. The scope of null-sector pushforward
 
 The new interface is a measured principal leaf object, a weak Borel graph, a simultaneous almost-everywhere normalized action cutoff, and the full image (BP.5)–(BP.8). Theorem 5.21 makes the null-sector restriction exact; Theorem 5.22 is the needed covariance preventing composition from silently reintroducing a deleted positive sector; Theorem 5.23 gives actual identities, composition and equality of arrows off invariant null sectors. The compact disjoint-torus example proves that this domain strictly contains globally presentation Borel maps. Theorem 5.24 and the \(\epsilon\) example supply a finite geometric obstruction within that domain, without the nonsemifinite intermediate measure of BO.5. They do not reproduce BO.5's stronger universal-extension contradiction on a different domain.
 
-The original 1982 Section 2 specifies presentations and abstract measure axioms but leaves the inter-leaf-space Borel map and its determining image rule unspecified. The 1979 Section III proper-homomorphism construction has explicit properness, module and measure conditions. Neither source passage identifies its historical map criterion with this new measure-dependent null-sector category. In particular the survey says a map gives an image for every measure; our arrow criterion depends on the measure. An irrational bad sector can be ignored by one measure and obstruct another finite Radon measure on the same compact foliation. Accordingly the historical map assertion remains unresolved. The remaining gap is a historically identified map class, its output rule and permitted measure/composition domain, including holonomy isotropy if the original interface requires it. This supplement does not identify that historical interface.
+For the specified null-sector maps, Theorems 5.21–5.23 give the complete image and composition rule. This permits deleting invariant null sectors for that source measure. It does not extend the rule to every weakly Borel leaf map, as the finite aperiodic obstruction demonstrates.
 
 Human historical context: Alain Connes, *A survey of foliations and operator algebras*, Section 2, author-hosted edition https://alainconnes.org/wp-content/uploads/foliationsfine.pdf; Alain Connes, *Sur la théorie non commutative de l'intégration*, IHÉS \(P\)/79/301, printed III.3.7 Definition 6 and III.3.10–11 image/Proposition 9, https://omeka.ihes.fr/files/original/f1e66a7f4de4523e6937af152ff16092.pdf. The [reproduction instructions](../reproduction/borel-null-sector-boundary/README.md) and [component terms](../reproduction/borel-null-sector-boundary/COMPONENT-TERMS.md) accompany both figures.
 
@@ -1752,7 +1752,7 @@ For \(m=2,n=3,s=2,t=4\), the factors are \(4\), \(3/4\) and \(3\). There are eig
 
 **Figure 5.25.** The upper diagram types \(\eta:b\to F(a)\), \(P\eta:P(b)\to PF(a)\), \(\rho:c\to P(b)\), and their actual composite \(\alpha=P\eta\,\rho\). The numerical panels use \(m=2,n=3,s=2,t=4\) from (5.31.3)–(5.31.5). All displayed supports are complete supports of those cutoffs, although the groups themselves remain infinite. The four intermediate cyclic labels are retained at each composite integer; each contributes \(1/8\). Their sum is \(1/2\), and six labels give mass three. These are abstract one-unit groupoids; no automatic holonomy-germ realisation is asserted. The mass-transport and functoriality proofs are (5.30.3)–(5.30.11). [Editable SVG](../figures/full-groupoid-composition.svg) · [Reproduction source](../reproduction/full-groupoid-composition/draw_composition.py) · [Reproduction instructions](../reproduction/full-groupoid-composition/README.md) · [Font and software terms](../reproduction/full-groupoid-composition/COMPONENT-TERMS.md).
 
-This supplies a full-countable-groupoid counting-image theorem, including identities, natural isomorphisms, composition, covariance and an automatic properness domain. The proper functor and unit measure are specified objects with actual arrow data. It does not identify the historical undefined category of arbitrary Borel leaf-space maps, nor extend every such coarse map to this category. In particular the ambiguity of Theorems 5.28–5.29 remains: equal coarse maps can have different full-arrow images. The historical unrestricted map statement remains unfinished.
+The full-countable-groupoid counting image has identities, natural-isomorphism invariance, composition and covariance on its stated properness domain. Its input includes the actual functor and its isotropy action. Equal coarse leaf maps can have different full-arrow images, as Theorems 5.28–5.29 show; a coarse map alone does not determine those images.
 
 ### Forgetting arrows changes the integration theory
 
@@ -1928,20 +1928,17 @@ Finally, if \(G\) is principal then \(k=1\) and equality holds for every \(\lamb
 
 Further reading: Connes, [*Sur la théorie non commutative de l'intégration* (author-hosted edition)](https://alainconnes.org/wp-content/uploads/ThNonComm.pdf), Section 4, Definition 6 and Propositions 7 and 9, pp. 24–27; [IHÉS P/79/301](https://omeka.ihes.fr/files/original/f1e66a7f4de4523e6937af152ff16092.pdf), III.3, Definition 6 and Proposition 9, printed pp. III.3.7 and III.3.10–11.
 
-The 1982 survey defines countable Borel presentations over the leaf set, then states functoriality for a Borel map of leaf spaces without giving a map criterion in that paragraph. The earlier source's proper functors do not silently identify that criterion: \(\varepsilon\) above induces the identity leaf map but changes the measure when finite nontrivial isotropy is retained, and may not be proper at all when isotropy is infinite. Principalization is a groupoid equivalence only when \(G\) is principal, since then every transporter is unique; nontrivial isotropy already prevents faithfulness. Thus the missing historical map category cannot be supplied merely by calling full holonomy groupoids desingularizations of the same underlying set.
+The forgetting functor induces the identity coarse leaf map but changes the measure when finite nontrivial isotropy is retained. With infinite isotropy it need not be proper. Principalization is a groupoid equivalence precisely in the principal case: unique transporters give full faithfulness, while nontrivial isotropy prevents it.
 
-The remaining question is which intrinsic class of coarse leaf maps, and which compatibility with these presentation objects, the unqualified survey sentence intends. Definition 5.10 and Proposition 5.12 specify the representable-pullback category; Theorems 5.19–5.20 rule out the weak graph interpretation; Theorems 5.25–5.31 supply the full-arrow proper category. The complete comparison above proves why the last category does not automatically answer the first question. It establishes neither an unrestricted coarse pushforward nor local finiteness of such an image. The historical statement therefore remains unresolved at its original map-category interface.
+Definition 5.10 gives the intrinsic pullback category and its full image formula. Theorems 5.19–5.20 exclude the weak incidence-graph extension. Theorems 5.25–5.31 give a different category whose arrows include proper full-groupoid functors. Forgetting that arrow data cannot identify the two image rules. Local finiteness is an additional property, rather than an automatic consequence of either image theorem.
 
 
 ### Why the cited image rule does not extend to all measurable functors
 
-There is a further distinction in the historical map question. The operative
-image construction in [Connes 1979], Section III, Definition 6 and Proposition
-9, uses proper measurable groupoid homomorphisms and compatible modules.
-Its introductory reference to measurable functors cannot be used to remove
-properness. The following obstruction tests the full functor category, retains
-every arrow and compares complete target functionals. It does not impose a
-definition on the survey's unspecified Borel map between leaf spaces.
+Properness is essential to the full-arrow image construction. The following
+obstruction tests whether that rule can extend to all strict Borel groupoid
+functors, retaining every arrow and comparing complete target functionals.
+It proves that identities and composition prohibit such an extension.
 
 **Theorem 5.34 (no image extension to all measurable functors).** Regard
 countable discrete groups as standard Borel groupoids with one unit and module
@@ -2130,7 +2127,7 @@ to the same 1979 work through reference [95]. That passage still supplies
 no general map criterion or image formula. The proper homomorphism category
 of the cited 1979 construction is explicit; the identification of that
 category, a module/correspondence category, or a specified principal
-presentation category with the survey's term remains to be justified.
+presentation category with the survey's term is not asserted here.
 One cannot resolve it merely by calling every coarse quotient map a
 measurable functor, or by forgetting isotropy, or by retaining only
 semifinite measures without changing the morphisms.

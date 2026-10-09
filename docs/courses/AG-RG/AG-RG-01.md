@@ -145,11 +145,53 @@ The filtration is central in $U$, and each $T$-action on a quotient is linear. A
 
 **Lemma 2.1.** If $G$ is smooth connected affine over an algebraically closed field $k$, its maximal smooth connected solvable subgroups are conjugate, and $G/B$ is complete for each such subgroup $B$.
 
-**Proof.** Let \(B\) be a smooth connected solvable subgroup of largest dimension. Its line-stabilizer representation can be enlarged by a faithful representation. A \(B\)-stable full flag beginning with the detecting line then has stabilizer exactly \(B\): a flag stabilizer is contained in the detecting line's stabilizer, while \(B\) fixes every member of the flag. In a faithful representation every full-flag stabilizer has solvable reduced identity component, since it lies in an upper triangular group. Its dimension is consequently at most \(\dim B\). Thus the orbit of our flag has minimum possible dimension.
+**Proof.** We first construct the flag scheme and its equivariant projective embedding from earlier proved results. Let \(V\) be a finite-dimensional \(G\)-representation of dimension \(n\). We use the quotient convention for Grassmannians and projective spaces. In the product
+\[
+ P=\prod_{i=1}^{n-1}\operatorname{Gr}_{n-i}(V)
+\]
+the universal quotient \(V\otimes\mathcal O_P\twoheadrightarrow Q_i\) has locally free kernel \(F_i\) of rank \(i\). These universal bundles, their arbitrary-base-change property and the Grassmannian charts are proved in AG-HP, *Grassmannians*, Theorem 1.1. Impose the vanishing of each composite
+\[
+ F_i\longrightarrow V\otimes\mathcal O_P\longrightarrow Q_{i+1},
+              \qquad 1\le i<n-1.
+\]
+In local bundle frames this means that all entries of a finite matrix vanish. Changing either frame multiplies by invertible matrices, so the generated ideals agree on overlaps. They define a closed subscheme \(\operatorname{Fl}(V)\subset P\).
 
-An orbit is locally closed by the earlier programme orbit theorem. For a smooth connected acting group it is irreducible. Its complement in its closure is a proper closed invariant subset of strictly smaller dimension. Every orbit in that complement has strictly smaller dimension than the original orbit. Our minimum-dimension orbit can therefore have no boundary. It is closed in the projective flag variety and hence proper, by [AG-RG-S01, Lemma 7.A and Corollary 7.B](AG-RG-S01.html#projective-properness). Its scheme stabilizer is \(B\), so the orbit theorem identifies it with \(G/B\).
+For every test scheme \(S\), these equations say exactly that \(F_i\subset F_{i+1}\). The resulting surjection \(Q_i\twoheadrightarrow Q_{i+1}\) splits locally, since its target is locally free. Its kernel \(F_{i+1}/F_i\) is consequently locally free of rank one. With \(F_0=0\) and \(F_n=V\otimes\mathcal O_S\), a point of this incidence scheme is therefore a full flag of locally direct-summand subbundles. Conversely such a flag gives the indicated locally free quotients and satisfies every equation. Thus the construction represents full flags over arbitrary test schemes, including nonreduced schemes. For \(n=0\) or \(n=1\), the empty product and the flag scheme are the point \(\operatorname{Spec}k\).
 
-For any other maximal smooth connected solvable subgroup \(B'\), the fixed-point theorem proved above supplies a fixed point \(gB\) for the action of \(B'\) on \(G/B\). The stabilizer condition says \(g^{-1}B'g\subset B\). Maximality of \(B'\) forces equality, and conjugation transfers properness to \(G/B'\). This completes the proof using only results actually written in this lesson or in the earlier orbit lesson. For additional reading, compare the freely accessible [Milne author draft, v2.00](https://www.jmilne.org/math/CourseNotes/iAG200.pdf), Theorem 4.19, with the detecting-line construction proved above. $\square$
+AG-HP, *Grassmannians*, Theorem 2.1 proves the closed Plücker embedding
+\[
+ \operatorname{Gr}_{n-i}(V)\hookrightarrow
+                       \mathbf P(\bigwedge^{n-i}V)
+\]
+by its complete minor-chart calculation. Products of these closed immersions are closed immersions: on affine charts a quotient map stays surjective after tensoring, and a composite of surjective maps is surjective. Factor the product map into base changes of its individual closed immersions. Iterating the Segre embedding proved in AG-MO, *Very ample invertible sheaves, Segre and Veronese embeddings*, Theorem 3.1 (and its bundle form, Lemma 5.2), gives a closed immersion
+\[
+ \operatorname{Fl}(V)\hookrightarrow\mathbf P(W),\qquad
+ W=\bigotimes_{i=1}^{n-1}\bigwedge^{n-i}V.
+\]
+For an empty product put \(W=k\). The incidence equations, exterior quotients and tensor product of quotient lines are all natural under automorphisms of \(V\). Hence the flag scheme is \(G\)-stable and this embedding is equivariant for the linear representation on \(W\). In particular its restriction to any torus is a linear projective action. This proves both projectivity and the precise equivariance required later in the rank-one lesson. S01 Lemma 7.A and Corollary 7.B prove that this projective flag scheme is proper.
+
+Choose a smooth connected solvable subgroup \(B\) of largest dimension. Such a subgroup exists: the trivial group is one candidate and every candidate has integer dimension at most \(\dim G\). The detecting-line construction above provides a representation and a line whose schematic stabilizer is \(B\). Add a faithful representation as a direct summand and retain that line in the first summand, obtaining a faithful \(V\). Apply the triangularization proved above to the quotient by this line and lift the resulting flag. We obtain a \(B\)-stable full flag \(x\) beginning with the detecting line. Its schematic stabilizer \(G_x\) is exactly \(B\): preserving the flag implies preserving that line, whereas every \(B\)-point over every test algebra preserves the full flag.
+
+For any full flag \(y\in\operatorname{Fl}(V)(k)\), its stabilizer \(G_y\) lies in an upper triangular group, since \(V\) is faithful. Its reduced identity subgroup \((G_y)_{\mathrm{red}}^0\) is smooth over the perfect field \(k\), by AG-GS, *Group schemes over a field*, Proposition 4.1 and the complete perfect-field proof in *Lie algebras and smoothness*, Theorem 5.1. It is connected and solvable, so its dimension is at most \(\dim B\). Reduction does not change dimension, and translations identify the finitely many components of an algebraic group; consequently
+\[
+ \dim G_y=\dim (G_y)_{\mathrm{red}}^0\le\dim B.
+\]
+The exact orbit-dimension formula of AG-GS, *Group schemes over a field*, Theorem 7.11, gives
+\[
+ \dim(G\cdot y)=\dim G-\dim G_y
+                       \ge\dim G-\dim B=\dim(G\cdot x).
+\]
+Thus \(G\cdot x\) has minimum dimension among all these orbits; this calculation includes nonreduced stabilizers.
+
+We apply the reduced orbit argument to \(\operatorname{Fl}(V)_{\mathrm{red}}\). The action restricts to this reduction: S08 Lemma G.4.1 makes \(G\times\operatorname{Fl}(V)_{\mathrm{red}}\) reduced, so nilpotent defining functions pull back to zero. The reduced orbit \(O=G\cdot x\) is locally closed. Its closure is irreducible, because smooth connected \(G\) is irreducible, as proved in S08, Section G.4. The boundary argument of S08 Theorem G.4.2 shows that any nonempty boundary is a closed invariant subset of strictly smaller dimension. Such a boundary has a \(k\)-point, by the earlier Nullstellensatz. Its orbit lies in the boundary and has smaller dimension than \(O\), contradicting the preceding inequality. Therefore \(O\) has closed underlying image in \(\operatorname{Fl}(V)\).
+
+We also retain the full scheme structure. AG-GS, *Group schemes over a field*, Theorem 7.13, using the separately proved quotient theorem in *Quotients and torsors*, Theorem 11.1b, gives the orbit immersion
+\[
+             G/B\longrightarrow\operatorname{Fl}(V)
+\]
+and the fppf \(B\)-torsor \(G\to G/B\). The quotient is reduced: on an affine chart its functions inject under faithfully flat pullback into functions on a reduced open subscheme of the smooth \(G\), so it has no nonzero nilpotents. An immersion from a reduced scheme with closed underlying image identifies that scheme with the reduced closed subscheme on its image. Indeed, on an open neighborhood where the immersion is closed its defining ideal is radical; it agrees there with the radical ideal defining the reduced closed image, and outside the image the ideal is the unit ideal. These descriptions glue. Thus this orbit immersion is a closed immersion. Composing with the embedding above realizes \(G/B\) as a closed subvariety of \(\mathbf P(W)\), with its linear \(G\)-action. It is projective and hence complete.
+
+Now let \(B'\) be any maximal smooth connected solvable subgroup. The fixed-point theorem proved above applies to its action on the nonempty complete variety \(G/B\), giving a \(B'\)-fixed \(k\)-point. The fppf torsor fibre above this point is nonempty and of finite type over the algebraically closed field, so the Nullstellensatz supplies a lift \(g\in G(k)\). The schematic stabilizer of \(gB\) is \(gBg^{-1}\). Fixedness consequently gives \(g^{-1}B'g\subset B\) as subgroup schemes. Maximality of \(B'\) forces equality, because \(gBg^{-1}\) is smooth, connected and solvable. Conjugation identifies \(G/B'\) with \(G/B\), transferring projectivity and completeness. This proves the assertion. For additional reading, compare the freely accessible [Milne author draft, v2.00](https://www.jmilne.org/math/CourseNotes/iAG200.pdf), Theorem 4.19; the complete argument used here is the one just given. $\square$
 
 **Lemma 2.D (the no-torus criterion).** A smooth connected affine group \(H\) over an algebraically closed field is unipotent if it has no nontrivial torus. Consequently any such \(H\) which is not unipotent has a positive-dimensional maximal torus.
 

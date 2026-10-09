@@ -1,0 +1,46 @@
+{
+  "schema": "claude-bridge-course/v1",
+  "id": "isomorphisms-of-free-group-factors",
+  "title": "Isomorphisms of free group factors",
+  "author": "Claude Opus 5.5 (Anthropic)",
+  "written": "2026-10-09",
+  "status": "Self-checked by the writing AI",
+  "licence": "CC0-1.0",
+  "description": "OpenAI's theorem (2026) that the free group factors L(F_n), 2 <= n < infinity, are all isomorphic. Part one proves OpenAI's rank step L(F_n) = L(F_{n+1}) for n >= 3: free independence in tracial von Neumann algebras, freely generating Haar tuples, a bounded logarithm of the extra generator and a norm bound for free sums that does not depend on the number of summands; trace-preserving polynomial flows (a cocycle on the free group, a formal derivation whose trace vanishes at time zero, global unitary solutions, moment invariance through analyticity, normal automorphisms with displacement bounds); a small cocycle with a prescribed word value (free prefixes, Catalan moments, a limit law without an atom at zero, cutoff inversion); and the generating limit with adaptive error budgets. Part two proves Voiculescu's corner formula p L(F_n) p = L(F_{4n-3}) for a projection of trace one half and deduces L(F_2) = L(F_3): distributions of normal elements and Haar generators, the semicircle law, a freeness criterion on the full Fock space, free semicircular families and their vacuum trace, 2x2 matrices with semicircular and circular entries that are free from matrices over the other variables, the polar decomposition of a circular element (a Haar unitary free from a quarter-circular modulus), and the corner computation. Part three extends the corner formula to every projection of trace 1/k, p L(F_n) p = L(F_{1+k^2(n-1)}), with k x k semicircular matrices and conjugation by several free Haar unitaries, and deduces that every corner of L(F_2) of rational trace and every M_m(C) (x) L(F_2) is isomorphic to L(F_2): every positive rational number lies in the fundamental group of L(F_2).",
+  "prerequisites": [
+    "generators-of-ii1-factors lesson haar-unitaries-freeness-and-ultraproducts (Definition 2.1 Haar unitaries, Lemma 2.3 equivalence of projections of equal trace, Corollary 2.4 Haar unitaries of corners and projections of every trace)",
+    "injective-factors lesson classification-of-injective-factors (Section 5, Theorem 5.2: L(Gamma) is a II_1 factor for ICC Gamma)",
+    "foundations-of-von-neumann-algebras lessons the-double-commutant-theorem (Theorem 4.4; Lemma 7.1 and Proposition 7.2, polar decomposition inside a von Neumann algebra), kaplansky-s-density-theorem-and-its-consequences (Theorem 7.1), the-spectral-theorem-for-bounded-self-adjoint-operators (Lemma 1.1, Corollary 1.2, Proposition 2.1, Theorems 3.1 and 8.1), cauchy-s-theorem-for-cycles-and-its-consequences (Lemma 0.1, Banach-valued Riemann integrals)",
+    "traces-and-noncommutative-integration lesson integration-for-a-trace-the-commutation-theorem-and-applications (Theorem 9.1, trace-preserving conditional expectation)",
+    "function-algebras-and-approximation lesson the-stone-weierstrass-theorem-for-functions-vanishing-at-infinity (Section 10, complex Stone-Weierstrass; Corollary 14.3, Weierstrass approximation)",
+    "core course C10 Real Analysis I (Lebl, Basic Analysis I, Theorem 4.3.2, Taylor's theorem)"
+  ],
+  "lessons": [
+    "free-independence-and-haar-tuples",
+    "trace-preserving-polynomial-flows",
+    "a-small-cocycle-with-a-prescribed-word-value",
+    "absorbing-a-free-generator",
+    "semicircular-elements-on-the-full-fock-space",
+    "matrices-with-semicircular-and-circular-entries",
+    "polar-decomposition-of-a-circular-element",
+    "corners-of-free-group-factors",
+    "corners-of-rational-trace"
+  ],
+  "checks": {
+    "paid_citations": 0,
+    "exact_checks": "Python (scratch ffg_checks.py, 9 Oct 2026; output ffg_checks.out, 0 problems): Lemma 1.2 of the small-cocycle lesson (D_{w_m} = T_m h computed letter by letter on reduced words in F_3, m = 1..5, h with four support points); Lemma 1.1 there (3,000 random reduced words in P_1..P_m, m = 2, 4, 6, all with nontrivial images in F_3); Lemma 2.3 there (brute-force tau(Q_m^r) for m <= 4, r <= 3: top term equals Cat_r m(m-1)...(m-r+1) in every case; Exercise 5.2 values m+1 and (m+1)(2m+1)); Lemma 3.1 there (Lambda(x^r) = Cat_r for r <= 6 by Simpson's rule, error < 1e-6); Exercise 7.1 of the flow lesson (cocycle of x1 x2 x1^-1). Python with scipy (scratch ffg_checks2.py, output ffg_checks2.out, 0 problems), full Fock space over C^5 truncated at depth 6 (exact for words of degree <= 6): semicircle moments of s(e) and free moments (Exercise 5.2 of the Fock lesson); Theorem 2.1 of the matrices lesson (moments of X are Catalan; 30 alternating products of centred polynomials in X and centred random elements of M_2(polynomials in s_5) have |psi| < 1e-15, a non-alternating control is 2.79); Proposition 3.1 there (phi(gamma^k) = 0, phi((gamma* gamma)^r) = Cat_r); Exercise 4.1 there (1/4); Lemma 4.1(2) of the Fock lesson on random vectors (error < 1e-14). Python with scipy (scratch ffg_checks3.py, output ffg_checks3.out, 0 problems), full Fock space over C^10 truncated at depth 4 (exact for words of length <= 8): Theorem 1.1 of the rational corners lesson for k = 3 (moments of the 3x3 semicircular matrix are the Catalan numbers up to order 8; 120 alternating products of centred polynomials in X and centred random elements of M_3(polynomials of degree <= 2 in s_10) have |psi| < 1e-15; a control is 30.6).",
+    "lint": "ffg_lint.py (scratch): headings, provenance line, balanced TeX delimiters, every course: link and anchor resolved in the repository clone, every sibling link and anchor resolved; flagged label references checked by hand (they refer to other lessons or to [OAI], [D]).",
+    "source_reading": "OpenAI preprint TeX read in full: main.tex and sections preliminaries, flow, cocycle, generation, amplification, entropy-dimensions (library copy openai-math-20261006). Ricard-Xu arXiv math/0505302 Section 2 read for the attribution of Lemma 4.1 of the first lesson; Dykema arXiv funct-an/9211012 Theorem 2.4, the remark before it and Corollary 4.2 read; Speicher arXiv 1908.08125 (library copy oa_similarity_20261008/speicher) sections on free group factors and on the compression of free group factors read: its proof of L(F_2)_{1/2} = L(F_5) uses random matrices for the freeness of the matrix model and refers to random matrices or cumulants for the polar decomposition; this course proves both with a Fock-space criterion instead (matrices lesson Theorem 2.1, polar decomposition lesson Theorem 3.1). Voiculescu arXiv math/0105096 abstract and theorem list read."
+  },
+  "open_obligations": [
+    "OpenAI, An isomorphism of the free group factors (23 Sep 2026), Corollary 6.1: all interpolated free group factors L(F_r), 1 < r <= infinity, isomorphic, with fundamental group R_{>0}. Needs the interpolated free group factors and the Dykema-Radulescu dichotomy (Dykema 1994 Corollary 4.2 for finite r; Radulescu, Invent. Math. 115 (1994), Corollary 4.7 for r = infinity, no free copy found). Not treated.",
+    "OpenAI, same preprint, Section 7, Corollary 7.1 on free entropy dimensions (delta, delta_0, delta^*, delta^star of finite self-adjoint generating tuples of L(F_2) take every integer value n >= 2): needs Voiculescu's free entropy dimensions, the semicircular computations and the Mineyev-Shlyakhtenko theorem. Not treated."
+  ],
+  "free_sources": [
+    "OpenAI, An isomorphism of the free group factors (OpenAI Math Release preprint, 23 Sep 2026)",
+    "Ricard-Xu, Khintchine type inequalities for reduced free products and applications (arXiv math/0505302)",
+    "Voiculescu, Cyclomorphy (arXiv math/0105096)",
+    "Dykema, Interpolated free group factors (arXiv funct-an/9211012)",
+    "Speicher, Lecture notes on Free probability theory (arXiv 1908.08125)"
+  ]
+}

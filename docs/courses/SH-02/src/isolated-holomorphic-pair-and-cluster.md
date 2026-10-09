@@ -1,6 +1,8 @@
 # The original isolated holomorphic pair, its whole cluster and integer count
 
-This independently authored proof is dedicated to CC0 1.0. It supplies E07-GENERAL-ISOLATED and the E10/E13 perturbation, continuation and filtration used by IHM1–IHM11 and FH30/FH55–FH56. Exact used proof bodies, component terms and the retained starting floor are recorded in the binding table below. This proves the stated implications at that floor; it asserts no completion of the course, its broader E14 import, or unrelated provider statements.
+*Written by GPT-6.1 Sol (OpenAI). Self-checked by the writing AI. CC0 1.0.*
+
+An isolated holomorphic critical point can split into several Morse points. The comparison below keeps the original ball and fibre, follows the entire cluster under perturbation, and counts its contributions with their complex orientations. The count is an integer before a coefficient field is chosen.
 
 <a id="IH0"></a>
 
@@ -545,17 +547,19 @@ The intersection integers are nonnegative and strictly positive at nonempty isol
 
 <a id="IH23"></a>
 
-## IH23. Original consumers and genuine retained floor
+<a id="ih23.-original-consumers-and-genuine-retained-floor"></a>
 
-IH1–IH9 supply E07-GENERAL-ISOLATED for the original ball/fibre with all bounded weak abelian coefficients and its conservative arbitrary-ring extension. IH10–IH14 prove E10, including the count equality. IH3 and IH15–IH19 prove E13's whole-cluster radial/complex-level/parameter continuation and finite single-level restriction calculation, including the empty test. IH20–IH22 preserve IHM8–IHM11's orientation, shift, original filtration direction and every-field integer deduction used by FH30/FH55–FH56.
+## IH23. Application to the finite-map theorem
 
-The genuinely used floor consists of the exact selected analytic conormal/reduced analytic geometry/finite proper-image/rank/compact affine-analytic finiteness bodies; full TC and its selected preparation/cell floor; CTU/CL/CF and the retained ordinary local differential/analysis floor; localization, proper base change, bounded weak local-system evaluation and integral Euclidean orientation; the full NMC original-pair/normal-choice comparisons; and, only for IH22, the field-perverse degree theorem. The binding table retains the selected full proof scopes, exact revisions and bytes; imported components retain their own terms.
+IH1–IH9 identify the original ball/fibre pair with the supported test for all bounded weak abelian coefficients and its ring-linear extension. IH10–IH14 give the perturbation and its integer count. IH3 and IH15–IH19 compare the whole cluster through radial, complex-value and parameter boundaries, including an empty test. IH20–IH22 give the orientation, shift and increasing filtration used in [the isolated Morse calculation](../isolated-holomorphic-morse-tests.html#SH02-IHM-FULL-ISOLATED-PROOF) and the finite-map formulas FH30/FH55–FH56.
 
-This isolated route does not consume general SH03 E14 singular-form uniformization/resolution/curve selection, AE626 proper smooth embedding, isolated vanishing-cycle-support comparison, or the full nonisolated critical-support theorem. Their broader original obligations keep their identities. This bypass does not narrow them.
+The prerequisite proofs are listed below. Analytic conormal geometry and compatible triangulation control the marked sets; controlled lifts and flows compare the actual pairs. Localization, proper base change, interval evaluation and the Euclidean orientation generator determine their cohomology maps. The perverse normal-degree theorem is used only in IH22.
+
+The hypothesis here is an isolated stratified critical point. The general singular-form characteristic-value theorem, the nonisolated critical-support theorem and the stronger isolated-vanishing-cycle-support theorem retain their broader statements; the present construction does not establish those different hypotheses.
 
 FH30's original ring of finite global dimension and perfect stalks still uses its original finite perfect pair/scalar model, perverse-cohomology reduction and derived residue-field detection. The present proof supplies its isolated geometric/field step; it neither adds perverse theory over every ring nor replaces those separate scalar/algebraic steps. IH0–IH21 themselves impose no perfection.
 
-Human antecedents are [Massey, *A Little Microlocal Morse Theory*, version 2](https://arxiv.org/abs/math/0006185v2), Theorem 1.1 and its cluster discussion, and [Maxim–Schürmann, *Constructible sheaf complexes in complex geometry and applications*, June 2, 2021](https://people.math.wisc.edu/~lmaxim/handbook.pdf), Theorem 3.12 and Corollary 4.14. They identify the original claims. Protected prose and images are not adapted or reproduced here. The new argument is independently expressed through the bound internal bodies and explicit constructions above.
+Human antecedents are [Massey, *A Little Microlocal Morse Theory*, version 2](https://arxiv.org/abs/math/0006185v2), Theorem 1.1 and its cluster discussion, and [Maxim–Schürmann, *Constructible sheaf complexes in complex geometry and applications*, June 2, 2021](https://people.math.wisc.edu/~lmaxim/handbook.pdf), Theorem 3.12 and Corollary 4.14. These give the isolated-cluster and normal-factor results with which the calculation can be compared.
 
 <a id="IHA1"></a>
 
@@ -696,30 +700,30 @@ Here \(\eta=1/80<|v|/4\), \(R=3/32>|v|+\eta\), and \(R+|v|=5/32<\delta=1/5\). On
 
 The two plotted fibres are roots of their displayed cubics; their positions use numerical root samples. Their exact cardinality is three: the finite scalar polynomial-splitting proof WP0 gives three roots counted with multiplicity, and \(v\) is outside the critical values, so they are distinct. If a root had \(|z|\ge1\), the equation \(z^3/3-sz/16=v\) would imply \(|z|^3/3\le |z|/16+1/16\), impossible there since the difference is positive at \(1\) and has positive derivative thereafter. They all lie in the original ball. The original conormal intersection is \(dg_0=z^2=0\), of integer multiplicity two, realized by the two perturbed Morse points as in IH14/IHA3.
 
-For the perverse constant sheaf \(K[1]\), over any field, both original normal quotients are \(K\) in degree zero; IH22 gives dimension two. The right panel records \(F_1=R\Gamma(B_2,B_1)\), then \(F_2=R\Gamma(B_2,B_0)\), so the higher critical level exits first. The [reproducible CC0 figure source](../figures/draw_isolated_cluster.py) produces this wide figure and a [stacked mobile arrangement](../figures/isolated-cubic-cluster-mobile.svg) from the same exact objects. Both layouts were rendered, visually inspected and reproduced byte for byte in two runs. Numerical root positions are samples; the exact cardinalities and boundary inequalities are proved in this caption. The proof locators are IH3, IH14–IH17 and IH21–IH22; the human antecedents are the isolated-cluster and normal-factor sources identified in IH23.
+For the perverse constant sheaf \(K[1]\), over any field, both original normal quotients are \(K\) in degree zero; IH22 gives dimension two. The right panel records \(F_1=R\Gamma(B_2,B_1)\), then \(F_2=R\Gamma(B_2,B_0)\), so the higher critical level exits first. The [reproducible CC0 figure source](../figures/draw_isolated_cluster.py) produces this wide figure and a [stacked mobile arrangement](../figures/isolated-cubic-cluster-mobile.svg) from the same exact objects. Numerical root positions are samples; the exact cardinalities and boundary inequalities are proved in this caption. The proof locators are IH3, IH14–IH17 and IH21–IH22; the human antecedents are the isolated-cluster and normal-factor sources identified in IH23.
 
 <a id="IH-PROVIDERS"></a>
 
-## Exact used bodies and component terms
+<a id="exact-used-bodies-and-component-terms"></a>
 
-The following are the complete selected proof bodies used at the retained floor, rather than whole-chapter certificates. Each link fixes the source revision and its first used line. The source and range hashes preserve the exact edition association. Their hypotheses are the ones stated in IH0 and IH23, with the field-perverse input used only in IH22. Preparation and the ordinary elementary analytic, algebraic and sheaf foundations retain their exact subordinate bodies in the linked providers.
+## Prerequisite proofs
 
-| Provider and complete selected lines | Use in this proof | Raw source SHA-256 |
-| --- | --- | --- |
-| FAG, 31–234, 969–1090, 1128–1264, 1268–1597 | HC analytic coordinates, components and reduced differences, finite-first proper images, compact affine-analytic finiteness and dimension/rank cuts | `5cf7ae109f5bf57337745347c3e09e5b41f1362632110e7c313bb354060a636b` |
-| AC, 19–76, 198–251, 253–414 | Original analytic conormal closure and full AP/PB parameter and analytic floor | `5442db34cbca5a984aa077c2919ea2f7028930379c162ee9d398c4d8e8d0e82e` |
-| TC, 1–387 | Full compatible triangulation of the actual original compact marked analytic sets and its WP0 completion | `5ba2baf6d3b6df0bc0b20143af8d91a20ef2cc80d1e409bf6b1916a9ca9ee33f` |
-| PRP, 1–524, 826–1308 | Actual localization, compact germ and proper base-change mate, section restriction and bounded-below spectral sequence; full WT/CF/CL/CTU/SCF | `62b1ee88301496567ab58995b93b3955e1d5b8ce932c00b1d6bc1d1de855ae16` |
-| NMC, 7–52, 92–1461, 2388–2460, 2689–2828 | Exact coefficient restriction, full original real-pair and normal-choice comparison, actual finite closed-cover maps and every-field perverse degrees | `d576058d09ef60c7e59be4a366c864f82fb4c03ebe4a02ce0c9610c5d55ceb55` |
-| MD, 136–205 | Actual integral Euclidean orientation generator, coordinate-sign action and locally defined orientation line; use the module calculation and exact coefficient comparison, without importing a coefficient global-dimension premise into IH0–IH21. | `5625444e38b2035a28eb4e5c798eb9d24603c84a7e2938534ffc5c1375acc9a6` |
-| WPD, 12–203 | Full preparation, division, Noetherian analytic germs and WP0 scalar splitting | `bac6b8013eec479cb148e62403129c5d3045f48e16ee6c703952bb57333690d5` |
-| SCALAR, 39–97, 150–199, 203–289 | Full selected scalar integration, Cauchy/Goursat, Taylor, Morera and identity bodies | `2da4719329ad5d589037543a20b2f26d5d3b0b6cd186f3c7188c7bcf23cee1ad` |
-| SCV, 121–154 | SCV4.2 bounded removal and connected analytic complement used for symmetric finite-cover polynomials | `de4aa46860c869686e497f6ef9c836f25159386608e4036154483b9ec3bfbbfe` |
-| COHERENCE, 15–84 | Full selected coherent ideal/local quotient and finite presentation bodies | `e817b7953e0c305c9157ac2af8d62f8aa258b92f619866c398ef68bad1ed66a0` |
-| NULLSTELLENSATZ, 54–152 | Full selected analytic local parametrization and reduced-ideal Nullstellensatz | `e4eef6e095d15855d6c9fb57507fc26e4b6e498f9716f1816955458c6896ecc5` |
-| NOETHERIAN, 15–244 | Full selected finite-module/Hilbert-basis/radical/length/Artinian/Artin–Rees bodies | `94b3cd74c201f9ac1daf33aa90ca4218263559884e56ee47c0ad98d82187b771` |
-| HILBERT-SAMUEL, 13–245 | Full selected Hilbert–Serre and Samuel polynomial, induced-filtration leading coefficient proof | `092f27a8ab526c6d8da6db86278ad5945ca11c20d3bac03e416e569b3182dad2` |
+The following lessons prove the prerequisite results used here. The analytic and geometric proofs are coefficient-independent; interval, support and orientation calculations use the coefficient ranges specified in those lessons. IH22 alone uses the field-perverse degree theorem.
 
-The new IH/IHA argument and figure source are CC0 1.0 independent expression. The internal programme bodies retain their stated CC0 attributions; mixed-source differential foundations retain the component terms recorded by CTU/SCF, including their attributed CC BY-SA material where used. No protected human prose or image is copied or relicensed by this supplement. The original full integral coefficient-comparison proof is also retained at raw SHA-256 `41c511fd5567e5be26112b6d206baa19cb216068037030536bf399c871face85`, lines 7–109: it verifies the natural arbitrary-module comparison of the integral Euclidean generator. Thus the orientation calculation in IH20 does not acquire a finite-global-dimension or flatness hypothesis from a broader exceptional-operation contract.
+| Prerequisite lesson | Results used here |
+| --- | --- |
+| Analytic geometry for finite maps | Analytic coordinates, reduced components and differences, proper images, compact affine-analytic finiteness, and dimension and rank cuts |
+| Analytic closures of the original strata | Analytic conormal closures and the AP/PB parameter comparisons |
+| [Compatible triangulation](../compatible-whitney-triangulation.html#SH02-COMPATIBLE-TRIANGULATION) | Analytic open simplices compatible with the marked compact pair and finite polynomial splitting |
+| [Supporting verifications for open prerequisites](../../sheaf-proof-readings/SH02-open-prerequisite-proofs.html) | Localization, proper base change and the section-restriction map; controlled lifts, tubes and flows |
+| Normal Morse data and change of coefficients | Ring-linear coefficient restriction, original real and normal-choice pairs, finite closed-cover maps, and field-perverse normal degrees |
+| [Local orientations, dimension and integration](../../sheaf-proof-readings/SH02-manifold-duality.html) | The integral Euclidean generator, its coordinate-sign action and natural module-coefficient comparison |
+| [Weierstrass preparation and division](../../analytic-finiteness-and-preparation/weierstrass-preparation-and-division.html) | Convergent preparation and division, analytic Noetherianity and finite scalar polynomial splitting |
+| [Cauchy's theorem for cycles and its consequences](../../foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html) | Scalar integration, Goursat, Cauchy, Taylor, Morera and the identity theorem |
+| [Holomorphic functions of several variables](../../complex-analytic-spaces-and-coherent-sheaves/holomorphic-functions-of-several-variables.html) | Bounded removal and the connected analytic complement used in IHA1 |
+| [Cartan coherence and complex spaces](../../complex-analytic-spaces-and-coherent-sheaves/cartans-coherence-theorem-and-complex-spaces.html) | Coherent ideals, local quotients and their finite presentations |
+| [Analytic germs, local parametrization and the Nullstellensatz](../../complex-analytic-spaces-and-coherent-sheaves/analytic-germs-local-parametrization-and-the-nullstellensatz.html) | Reduced analytic ideals and the analytic Nullstellensatz |
+| [Noetherian and Artinian rings](../../AG-CA/noetherian-and-artinian-rings.html) | Finite modules, Hilbert basis, length, Artin–Rees and its induced filtration |
+| [Graded modules and Hilbert–Samuel functions](../../AG-CA/graded-modules-and-hilbert-samuel-functions.html) | Hilbert–Serre and Hilbert–Samuel polynomials and their leading coefficients |
 
-The original [isolated-test consumer](../isolated-holomorphic-morse-tests.html#SH02-IHM-FULL-ISOLATED-PROOF) and [finite-holomorphic-map consumer](../finite-holomorphic-microsupport.html#SH02-FH-FULL-ISOLATED-PROOF) preserve their original formulas and source antecedents. This supplement supplies the isolated geometric step at its exact floor. Broader nonisolated and general singular-form alternatives retain their original scope.
+The orientation calculation in IH20 uses the natural module-coefficient comparison of the integral Euclidean generator; no finite-global-dimension or flatness assumption is added to IH0–IH21. The [isolated-test lesson](../isolated-holomorphic-morse-tests.html#SH02-IHM-FULL-ISOLATED-PROOF) and the [finite-holomorphic-map lesson](../finite-holomorphic-microsupport.html#SH02-FH-FULL-ISOLATED-PROOF) apply the comparison with their stated scalar and perverse hypotheses.

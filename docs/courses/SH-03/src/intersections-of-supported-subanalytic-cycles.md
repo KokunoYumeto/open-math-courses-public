@@ -4,7 +4,7 @@ An intersection starts as a cup product with support. Its degree measures codime
 
 *Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources retain their named credit and their own terms.*
 
-Use Subanalytic chains and closed cycle supports, Supports, products and proper images of chains and The dualizing resolution by subanalytic chains for the supported-cycle identity, product signs, proper traces and coefficient resolution. The finite filtered reconstruction in The dualizing complex from oriented simplices will also identify the reverse trace map. The support operation and its maps are proved in closed-support adjunction and exceptional composition. We also use constant-complex acyclicity on convex sets, the integral orientation-square pairing and the counit defining trace. Each application below keeps its support and coefficient hypotheses.
+Use [Subanalytic chains and closed cycle supports](subanalytic-chains-and-closed-cycle-supports.md), [Supports, products and proper images of chains](supports-products-and-proper-images-of-chains.md) and [The dualizing resolution by subanalytic chains](the-dualizing-resolution-by-subanalytic-chains.md) for the supported-cycle identity, product signs, proper traces and coefficient resolution. The finite filtered reconstruction in [The dualizing complex from oriented simplices](../../constructibility-and-oriented-duality/src/the-dualizing-complex-from-oriented-simplices.md) will also identify the reverse trace map. The support operation and its maps are proved in [closed-support adjunction](../../sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-embedding--open-closed-and-locally-closed-inclusions) and [exceptional composition](../../sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-composition--composition-restriction-and-change-of-base). We also use [constant-complex acyclicity on convex sets](../../sheaf-proof-readings/src/SH02/convex-acyclicity.md#sh02-ca-constant--constant-coefficients), the [integral orientation-square pairing](../../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-orientation-line--orientation-as-a-local-system) and the counit defining trace. Each application below keeps its support and coefficient hypotheses.
 
 The chain framework comes from M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §§1.3–1.6. The orientation and dualizing identities are treated by P. Schapira, [*An Introduction to Sheaves on Grothendieck Topologies*](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf#page=106), §§4.6–4.7 and §5.1. The construction below derives the supported cup, its coefficient twist and exchange sign, and the precise trace comparison from these operations and the preceding programme proofs.
 
@@ -154,7 +154,7 @@ Let \(D=\omega_K\otimes i^{-1}L\). The dimension bound puts \(D\) in degrees at 
  H^{-d}R\Gamma(K;D)=\Gamma(K;H^{-d}D).
 \]
 
-The closed-cycle identification, with finite locally free coefficients, identifies this last sheaf of sections with \(\Gamma_K(X;\mathcal Z_d(L))\). This proves the second equality in (10) through an actual truncation map. It does not interchange global sections and the colimit of chain carriers.
+The [closed-cycle identification](subanalytic-chains-and-closed-cycle-supports.md#closed-supports-define-cycles), with finite locally free coefficients, identifies this last sheaf of sections with \(\Gamma_K(X;\mathcal Z_d(L))\). This proves the second equality in (10) through an actual truncation map. It does not interchange global sections and the colimit of chain carriers.
 
 If \(\dim K<d\), the dualizing bound is stronger and the group in (10) is zero. Equivalently a nonzero pure \(d\)-cycle cannot have smaller-dimensional support. If \(d<0\), the dimension condition \(\dim K\leq d\) forces \(K\) to be empty and the product is zero.
 
@@ -249,7 +249,7 @@ Each closed simplex is compact and contractible; the constant-convex acyclicity 
  \qquad\text{(19)}
 \]
 
-Apply the finite pure-filtration reconstruction to the complex
+Apply the [finite pure-filtration reconstruction](../../constructibility-and-oriented-duality/src/the-dualizing-complex-from-oriented-simplices.md#reconstruct-from-a-finite-pure-support-filtration) to the complex
 \(\Gamma_c I\). Its pure complex is \(\Gamma_c B\), with the same incidence differential. This computes \(R\Gamma_c(U;\omega_U)\), including the reconstruction map: the construction uses
 \(G^k=P^kI^k\cap d^{-1}P^{k+1}I^{k+1}\) and the roofs
 \(I\leftarrow G\to B\). Compact sections preserve this intersection. The lowest layer edge maps identify the compact classes in (19) with \(\Gamma_c B^k\); the finite lifting proof then makes both compact-section arrows quasi-isomorphisms. Each \(B^k\) is compact-section acyclic by the closed-simplex calculation, so these are also the derived compact-section comparisons.
@@ -280,7 +280,7 @@ Thus \(\psi\phi\) is determined by an ordinary morphism of the orientation sheaf
 
 This argument uses the actual finite filtered roofs and the vertex trace. It applies directly over the standing ring \(A\), without a comparison through differential forms or an unproved change-of-coefficients sign rule.
 
-The same normalization determines the transverse coordinate computations below. In an ordered normal coordinate line the local degree-one generator is the endpoint-difference class. External products of these generators give the ordered normal class. Pairing that class with a tangent orientation is positive precisely when the normal coordinates followed by the tangent coordinates give the ambient orientation. The ordered compact-support generator and trace composition prove this rule one coordinate at a time. The orientation-square factors have degree zero, so the only exchange sign comes from the normal cohomological degrees. At a zero-dimensional intersection the remaining trace is the identity on its coefficient. These rules interpret the wedge notation in the exercises over every standing coefficient ring.
+The same normalization determines the transverse coordinate computations below. In an ordered normal coordinate line the local degree-one generator is the endpoint-difference class. External products of these generators give the ordered normal class. Pairing that class with a tangent orientation is positive precisely when the normal coordinates followed by the tangent coordinates give the ambient orientation. The [ordered compact-support generator](../../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-euclidean--the-compact-support-generator) and trace composition prove this rule one coordinate at a time. The orientation-square factors have degree zero, so the only exchange sign comes from the normal cohomological degrees. At a zero-dimensional intersection the remaining trace is the identity on its coefficient. These rules interpret the wedge notation in the exercises over every standing coefficient ring.
 
 ## Exercises with complete solutions
 
@@ -354,7 +354,7 @@ Its closed carrier is a closed locally finite zero-dimensional subanalytic set, 
 
 If only finitely many \(a_m\) are nonzero, the actual output support is compact and its integral is their finite sum. If infinitely many are nonzero, its support is noncompact. The chain sheaf admits these locally finite weights, but the map to the point in (14) is defined on compact sections. It cannot collapse this infinite carrier properly. Alternating weights supply no algebraic convergence or compact-support map; neither an infinite sum in \(A\) nor a summation prescription is part of (13). Thus they do not define that scalar intersection number.
 
-On a nonorientable manifold, two constant input coefficient lines do not by themselves give the global pairing \(A\otimes A\simeq o\). Compactness alone would not supply the missing coefficient identification.
+On a manifold whose coefficient orientation line is nontrivial, two constant input coefficient lines cannot give the global pairing \(A\otimes A\simeq o\). Nonorientability alone is not enough for this obstruction: in characteristic two, every integral orientation transition sign becomes the identity, so the coefficient orientation line is canonically constant. Compactness alone does not supply a missing coefficient identification.
 
 ### An excess self-intersection can be nonzero
 

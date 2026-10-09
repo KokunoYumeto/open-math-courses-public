@@ -13,6 +13,7 @@ for unit in data['units']:
     content=subprocess.check_output(['pandoc','--from=markdown+tex_math_single_backslash+header_attributes',
         '--to=html5','--mathjax',str(source)],text=True,encoding='utf-8')
     content=content.replace('src="../assets/','src="assets/')
+    content=content.replace('href="../checks/','href="checks/')
     for other in data['units']:
         content=content.replace('href="'+Path(other['source']).name,'href="'+other['reader'])
     old=reader.read_text(encoding='utf-8')

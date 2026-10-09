@@ -4,9 +4,9 @@ A conormal generator and a sheaf characteristic cycle have different coefficient
 
 *Course text, proofs, examples and solutions: CC0 1.0. Human sources retain their own rights.*
 
-Read Lagrangian cycles and proper cotangent images for the supported cycle coefficient, and Pulling back Lagrangian cycles through a graph for the normalized point, zero section and closed conormal. The normal-chart proof for conormal pullback fixes the actual Thom units and embedding traces. Intersections of supported subanalytic cycles supplies the ordered supported cup and point trace. Continuous sections and supported cycle intersections supplies the section unit and its coefficient map. The coefficient maps in these prerequisites fix the signs used below.
+Read [Lagrangian cycles and proper cotangent images](lagrangian-cycles-and-proper-cotangent-images.md#the-orientation-coefficient-fixes-the-dimension) for the supported cycle coefficient, and [Pulling back Lagrangian cycles through a graph](pulling-back-lagrangian-cycles-through-a-graph.md#supported-inverse-images-and-fundamental-cycles) for the normalized point, zero section and closed conormal. The [normal-chart proof for conormal pullback](transverse-pullback-of-normalized-conormal-cycles.md#the-coefficient-and-normalization-in-the-normal-chart) fixes the actual Thom units and embedding traces. [Intersections of supported subanalytic cycles](intersections-of-supported-subanalytic-cycles.md#the-actual-cup-product-retains-both-supports) supplies the ordered supported cup and point trace. [Continuous sections and supported cycle intersections](continuous-sections-and-supported-cycle-intersections.md#a-continuous-section-supplies-a-supported-unit) supplies the section unit and its coefficient map. The coefficient maps in these prerequisites fix the signs used below.
 
-The index applications use Differential sections and proper-below Euler indices, including its full-support compactness and ordinary-versus-compact conventions. This lesson gives the coordinate realization of those maps; it does not replace their finiteness proofs.
+The index applications use [Differential sections and proper-below Euler indices](differential-sections-and-proper-below-euler-indices.md), including its full-support compactness and ordinary-versus-compact conventions. This lesson gives the coordinate realization of those maps; it does not replace their finiteness proofs.
 
 ## Cotangent orientation and the relative sign line
 
@@ -54,7 +54,7 @@ The actual relative dualizing comparison gives
  \qquad\text{(4)}
 \]
 
-The shifted inverse pairings in (4) are those fixed by the relative trace. For a smooth \(n\)-dimensional carrier \(Z\), its supported degree-zero \(E\)-coefficient is therefore represented by
+The shifted inverse pairing in the second map of (4) moves \(B[-n]\) past \(E\), whose orientation generator has degree \(-n\), before evaluating the adjacent inverse fibre factors. Its graded symmetry contributes \((-1)^{n^2}=(-1)^n\). This is the ordered cancellation fixed in the first prerequisite. For a smooth \(n\)-dimensional carrier \(Z\), the resulting supported degree-zero \(E\)-coefficient is represented by
 
 \[
  \operatorname{or}_Z\otimes_A B|_Z.
@@ -72,9 +72,9 @@ Here is the local dictionary for (5). Trivialize \(B\) by \(b=\operatorname{sgn}
  \qquad\text{(6)}
 \]
 
-then the positive normal Thom class with coefficient \(o\) corresponds to the cycle coefficient \(\operatorname{sgn}(\theta|_Z)\otimes b\).
+then the positive normal Thom class with coefficient \(o\) corresponds to the cycle coefficient \((-1)^n\operatorname{sgn}(\theta|_Z)\otimes b\).
 
-**Proof.** In product coordinates \((r,z)\) with \(Z=\{r=0\}\), the closed embedding costalk has normal coefficient \(\operatorname{or}_r[-n]\). Its ordered pairing with the ambient dualizing coefficient cancels the normal factor, leaving \(\operatorname{or}_Z[n]\). The normal point trace sends its positive generator to one. Under the cycle comparison (4), this is precisely the normal-first rule (6), with the remaining coefficient \(b\). This is the coordinate Thom and trace calculation already used in the normal-chart conormal proof. A positive change of either frame preserves the generators; a negative change reverses both sides of the corresponding orientation pairing. Thus the rule determines the actual local comparison and glues. \(\square\)
+**Proof.** In product coordinates \((r,z)\) with \(Z=\{r=0\}\), the closed embedding costalk has normal coefficient \(\operatorname{or}_r[-n]\). Its pairing with the ambient dualizing coefficient uses normal-then-tangent order and leaves \(\operatorname{or}_Z[n]\); the positive normal point trace has value one. To apply this to \(E\), first use its specified comparison with \(\omega_M\otimes B[-n]\) in (4). The crossing of the inverse fibre line and the base dualizing line contributes \((-1)^n\), so the normal-first orientation rule (6) must retain that factor. A frame reversal changes the paired orientation generators together, and the shifted cancellation depends only on the dimension. Consequently this dictionary gives the actual comparison on every chart and glues. \(\square\)
 
 The forms in this dictionary record orientations, not differential-form representatives for sheaf cohomology. The supported classes are the Thom classes defined by the embedding counit.
 
@@ -101,12 +101,12 @@ Its parameter order will be \((\zeta,t)\). The normalized cycle
 \[
  [T_Y^*X]
  \quad\longleftrightarrow\quad
- (-1)^n\operatorname{sgn}(d\zeta\wedge dt)
+ \operatorname{sgn}(d\zeta\wedge dt)
        \otimes\operatorname{sgn}(d\zeta\wedge d\tau).
  \qquad\text{(9)}
 \]
 
-**Proof of the normalization.** The normal-chart calculation specifies the morphism defining \(i_*[T_Y^*Y]\). The normalized tangent zero cycle is \((-1)^\ell\) times the positive zero-point Thom unit in the \(\tau\) variables. This scalar comes from the graph inverse coefficient for \(Y\to\mathrm{pt}\): its comparison with the geometric fibre trace is \((-1)^\ell\), as proved by the negative-Fourier-cut calculation in the relative coefficient theorem. The closed embedding then supplies the positive normal trace in the \(u\) variables, preserving that tangent scalar.
+**Proof of the normalization.** The [normal-chart calculation](transverse-pullback-of-normalized-conormal-cycles.md#the-coefficient-and-normalization-in-the-normal-chart) specifies the morphism defining \(i_*[T_Y^*Y]\). The normalized tangent zero cycle is \((-1)^\ell\) times the positive zero-point Thom unit in the \(\tau\) variables. This scalar comes from the graph inverse coefficient for \(Y\to\mathrm{pt}\): its comparison with the geometric fibre trace is \((-1)^\ell\), as proved by the negative-Fourier-cut calculation in the [relative coefficient theorem](transverse-pullback-of-normalized-conormal-cycles.md#the-graph-coefficient-and-the-relative-fibre-trace). The closed embedding then supplies the positive normal trace in the \(u\) variables, preserving that tangent scalar.
 
 Keep the tangent-first product order temporarily. The normal cochain orientation is \(d\tau\wedge du\), and the base coefficient orientation is \(dt\wedge du\). Changing both to the normal-first base order in (7) contributes \((-1)^{c\ell}\) twice. Thus the normalized supported class is \((-1)^\ell\) times the positive normal Thom class in \((u,\tau)\), with coefficient \(\operatorname{sgn}(du\wedge dt)\). The two frame exchanges cancel; the graph scalar remains.
 
@@ -120,9 +120,9 @@ Apply (6). The complete wedge calculation is
  \qquad\text{(10)}
 \]
 
-The positive normal Thom class alone therefore has tangent coefficient \((-1)^c\operatorname{sgn}(d\zeta\wedge dt)\). Multiplying by the prescribed tangent scalar gives \((-1)^{c+\ell}=(-1)^n\), with the remaining fibre coefficient \(b=\operatorname{sgn}(d\zeta\wedge d\tau)\). This is (9). Each factor has been obtained from its specified map before passing to orientations. \(\square\)
+The normal-first wedge in (10) contributes \((-1)^c\). The cycle comparison adds \((-1)^n\) by the dictionary above, and the prescribed tangent zero-section scalar is \((-1)^\ell\). Their product is \((-1)^{c+n+\ell}=1\). The remaining fibre coefficient is \(b=\operatorname{sgn}(d\zeta\wedge d\tau)\), proving (9). The graph scalar, normal Thom orientation and shifted cancellation have each been retained before passing to the final coefficient. \(\square\)
 
-At \(c=0\), the normalized zero cycle is \((-1)^n\) times the base-oriented zero section with its fibre coefficient. It differs in odd dimension from the positive section unit (12). At \(c=n\), the tangent dimension is zero and (9) is the full point conormal with tangent orientation \((-1)^n\operatorname{sgn}(d\xi)\), still tensored with \(\operatorname{sgn}(d\xi)\). These two endpoint calibrations will respectively give graph intersection \((-1)^{n+q}\) and \(+1\).
+At \(c=0\), the normalized zero cycle has the positive base parameter orientation with its fibre coefficient. At \(c=n\), the full point conormal has the positive fibre parameter orientation, with the same fibre coefficient. These are the positive horizontal and vertical generators used in the one-dimensional ray calculation. The positive section unit (12), when written through the same \(E\)-to-cycle comparison, instead has the factor \((-1)^n\) in (13). These endpoint calibrations give graph intersection \((-1)^{n+q}\) and \(+1\), respectively.
 
 **Why the formula is intrinsic.** On \(Y\), the derivative of an adapted coordinate change has the form
 
@@ -137,7 +137,7 @@ The conormal change is \(\zeta'=C^{-t}\zeta\), together with \(t'=t'(t)\). Its p
 \(\operatorname{sgn}\det C\,\operatorname{sgn}\det T\).
 The full cotangent-fibre coefficient in (9) changes by this same sign, since the base Jacobian has determinant \(\det C\,\det T\). Their product is positive. The off-diagonal blocks and the \(t\)-dependence of \(C\) do not affect the determinants. Thus (9) glues without choosing an orientation of \(Y\) or \(X\).
 
-## A differential graph has the base orientation
+## A differential graph retains the coefficient-comparison sign
 
 Let \(\varphi:X\to\mathbb R\) be real analytic, let \(\sigma_\varphi=d\varphi\), and write \(L_\varphi=\sigma_\varphi(X)\). The graph is closed and analytic. Its projection to \(X\) is a diffeomorphism. Symmetry of second derivatives gives \(\sigma_\varphi^*\omega=0\), so it is Lagrangian, although it is generally not conic.
 
@@ -149,10 +149,10 @@ The section class is the unit
  \qquad\text{(12)}
 \]
 
-Use the dual-frame and \(\Omega\) comparisons above to write it as an orientation-valued \(n\)-cycle. Its coefficient is
+To use the same cycle coordinates for both inputs, identify \(P=B[n]\) with \(E=\pi^{-1}\operatorname{or}_X[n]\) by the positive dual-frame map \(b[n]\mapsto o[n]\), and then apply the \(E\)-to-cycle comparison (4). In these coordinates the section coefficient is
 
 \[
- \operatorname{sgn}(\pi|_{L_\varphi}^*dx)
+ (-1)^n\operatorname{sgn}(\pi|_{L_\varphi}^*dx)
         \otimes\operatorname{sgn}(d\xi).
  \qquad\text{(13)}
 \]
@@ -164,7 +164,7 @@ Use the dual-frame and \(\Omega\) comparisons above to write it as an orientatio
  \qquad\text{(14)}
 \]
 
-because every other term contains an additional base differential. The dictionary (6) gives (13). Across a chart reversal its tangent and fibre factors change by the same sign, so their tensor glues. \(\square\)
+because every other term contains an additional base differential. After the positive dual-frame map, this is the positive normal Thom class with coefficient \(o\). The dictionary (6), including its shifted cancellation factor \((-1)^n\), gives (13). Across a chart reversal its tangent and fibre factors change by the same sign, so their tensor glues. \(\square\)
 
 The underlying supported unit exists for every continuous section. In that generality one keeps the supported class and trace; one need not have a subanalytic graph cycle. Formula (13) is the cycle description when the graph is analytic. Neither description asserts that a nonconic graph is a section of the conic cycle sheaf \(\mathcal L_X\).
 
@@ -190,9 +190,9 @@ It uses the canonical integral square and the specified ambient orientation. Cho
 then the cycles with coefficients
 \(\operatorname{sgn}(\theta_i|_{Z_i})\otimes b\) have ordered local intersection number \(+1\). Here the sign of a nonzero top form means its integral orientation, subsequently extended to \(A\); it does not impose an order on the coefficient ring.
 
-**Proof from the actual cup.** Transversality permits local defining coordinates for the two submanifolds whose combined derivative is invertible. The inverse function theorem simultaneously makes them complementary coordinate planes. Normalize the chosen forms by positive scalars so \(\theta_1\wedge\theta_2\) represents \(\Omega\). For \(Z_1\), a normal-first Thom orientation is \(\nu_1=(-1)^n\theta_2\), since \(\nu_1\wedge\theta_1\) has ambient orientation. For \(Z_2\), it is \(\nu_2=\theta_1\).
+**Proof from the actual cup.** Transversality permits local defining coordinates for the two submanifolds whose combined derivative is invertible. The inverse function theorem simultaneously makes them complementary coordinate planes. Normalize the chosen forms by positive scalars so \(\theta_1\wedge\theta_2\) represents \(\Omega\). For \(Z_1\), a normal-first Thom orientation is \(\nu_1=(-1)^n\theta_2\), since \(\nu_1\wedge\theta_1\) has ambient orientation. For \(Z_2\), it is \(\nu_2=\theta_1\). Under the same \(E\)-to-cycle comparison, a cycle with either displayed positive tangent coefficient is \((-1)^n\) times its corresponding positive normal Thom class. The two scalar factors cancel in their ordered product.
 
-The ordered supported cup is the product of these normal Thom units. Its normal orientation is
+The remaining ordered product of the normal Thom units has normal orientation
 
 \[
  \nu_1\wedge\nu_2=(-1)^n\theta_2\wedge\theta_1
@@ -222,7 +222,7 @@ The columns are ordered first by \(Z_1\), then by \(Z_2\). Exchanging two blocks
 
 This agrees with the earlier codimension cup sign \((-1)^{n^2}\). It is not permissible to exchange the inputs silently in odd base dimension.
 
-For a section and a Lagrangian cycle, the cup in (15)–(18) is the orientation-valued form of the actual coefficient map \(P\otimes E\to\omega_M\). Indeed its first normal Thom unit is the unit in (12); its second is the cycle comparison (4); and (6) identifies their ordered evaluation with the two normal generators used in (17). The fibre square becomes the same \(\Omega\) coefficient in (15). Thus this coordinate convention computes the earlier section-intersection trace.
+For a section and a Lagrangian cycle, we now check that (15) is the pairing induced by the actual map \(P\otimes E\to\omega_M\) after the common cycle-coordinate comparison. This needs a normalization check because the comparison includes shifted lines. Work in a cotangent chart, take the zero-section unit, and take the full point conormal obtained from the positive closed point trace. Their actual cup has trace \(+1\): the section counit restricts the relative fibre dualizing object to its unit, leaving the positive base point trace, whose counit is the identity. In the cycle coordinates already proved, their ordered tangent frames are \((-1)^n dx\) and \(d\xi\); their determinant relative to \(\Omega\) is \((-1)^n(-1)^{n^2}=+1\). These Thom classes generate the two local rank-one support groups. Evaluating their product therefore fixes the scalar of the induced coefficient pairing to one, so it is exactly (15). Restriction and change of chart preserve the same counits and orientation square. Thus no residual shift sign is missing from (15)–(18), and their value is the earlier section-intersection trace.
 
 ## Only the restricted Hessian determines the Morse sign
 
@@ -258,7 +258,7 @@ The graph and conormal are transverse exactly when \(H_{tt}\) is nonsingular. If
 
 Expand along the \(u\)-rows with their identity \(u\)-columns. The expansion sign is \((-1)^{cn}\). In the remaining matrix, selecting the \(\zeta\)-identity block exchanges blocks of sizes \(c,\ell\), giving \((-1)^{c\ell}\); the remaining blocks are \(H_{tt}\) and \(I_\ell\). Since \(cn+c\ell=c^2+2c\ell\), this proves the determinant formula. It also proves the transversality criterion; equivalently a common tangent has \(u\)-component zero and \(t\)-component in \(\ker H_{tt}\).
 
-The graph has its parameter orientation by (13), while the conormal coefficient in (9) contributes \((-1)^n\). Multiplication with the determinant sign \((-1)^c\) in (22) gives \((-1)^{n+c}=(-1)^\ell\). The remaining determinant has sign \((-1)^q\), by diagonalizing the nonsingular real symmetric restricted Hessian. This proves (21) with the graph first. \(\square\)
+The conormal coefficient in (9) has its positive parameter orientation. The graph coefficient in (13) contributes \((-1)^n\). Multiplication with the determinant sign \((-1)^c\) in (22) gives \((-1)^{n+c}=(-1)^\ell\). The remaining determinant has sign \((-1)^q\), by diagonalizing the nonsingular real symmetric restricted Hessian. This proves (21) with the graph first. \(\square\)
 
 This proof allows arbitrary normal and mixed Hessian blocks. Nonsingularity of the full ambient Hessian is neither necessary nor sufficient for this graph-conormal transversality.
 
@@ -271,9 +271,9 @@ If, near \(x_0\), \(F=i_*L[s]\), where \(L\) is a rank-\(m\) local system on \(Y
  \qquad\text{(23)}
 \]
 
-For this characteristic-cycle statement take a characteristic-zero field and bounded real-constructible perfect coefficients. The constant-coefficient normalization gives the first equality after trivializing the local system on a small chart. Multiplying its coefficient by (21) yields \((-1)^{\ell+s}(-1)^{\ell+q}m=(-1)^{s+q}m\), giving the second equality. This calculation is local, so monodromy does not require a global trivialization of \(L\).
+For this characteristic-cycle statement take a characteristic-zero field and bounded real-constructible perfect coefficients. The [constant-coefficient normalization](transporting-characteristic-cycles-through-a-graph.md#globally-constant-finite-coefficients-fix-conormal-normalization) gives the first equality after trivializing the local system on a small chart. Multiplying its coefficient by (21) yields \((-1)^{\ell+s}(-1)^{\ell+q}m=(-1)^{s+q}m\), giving the second equality. This calculation is local, so monodromy does not require a global trivialization of \(L\).
 
-The orientation and cup calculations (1)–(22) themselves work over \(A\). To compare the field-valued index with cohomology, take Morse coordinates for \(\varphi|_Y\). For \(q>0\), its negative set in a small Morse ball retracts to \(S^{q-1}\). The support triangle is the fibre of the actual restriction from the ball's constant cochains to the negative set's cochains. This is the negative-space orientation line placed in cohomological degree \(q\); for \(q=1\), it is the fibre of the diagonal \(k\to k^2\), and for \(q=0\) the negative set is empty. The complete relative-sphere test identifies the same maps and stalk limit. Tensoring with \(L_{x_0}\) and shifting by \(s\) gives the closed test \(L_{x_0}[s-q]\), tensored with that orientation line. Its Euler sign is \((-1)^{q-s}m=(-1)^{q+s}m\), as in (23).
+The orientation and cup calculations (1)–(22) themselves work over \(A\). To compare the field-valued index with cohomology, take Morse coordinates for \(\varphi|_Y\). For \(q>0\), its negative set in a small Morse ball retracts to \(S^{q-1}\). The support triangle is the fibre of the actual restriction from the ball's constant cochains to the negative set's cochains. This is the negative-space orientation line placed in cohomological degree \(q\); for \(q=1\), it is the fibre of the diagonal \(k\to k^2\), and for \(q=0\) the negative set is empty. The complete [relative-sphere test](pure-test-degrees-and-strong-morse-inequalities.md) identifies the same maps and stalk limit. Tensoring with \(L_{x_0}\) and shifting by \(s\) gives the closed test \(L_{x_0}[s-q]\), tensored with that orientation line. Its Euler sign is \((-1)^{q-s}m=(-1)^{q+s}m\), as in (23).
 
 ## The coordinate presentation preserves the index formulas
 
@@ -336,9 +336,9 @@ Let \(X=\mathbb R^3\), \(Y=\{x_1=x_2=0\}\), and
 \(\varphi=x_1+2x_2-x_3^2/2\). Give the normalized conormal coefficient at the intersection, compute the graph-first local number and then reverse the two inputs.
 
 **Solution.** The carrier is \(x_1=x_2=\xi_3=0\), with parameters \((\xi_1,\xi_2,x_3)\). Here \(n=3,c=2,\ell=1\), so its coefficient is
-\(-\operatorname{sgn}(d\xi_1\wedge d\xi_2\wedge dx_3)\otimes
+\(\operatorname{sgn}(d\xi_1\wedge d\xi_2\wedge dx_3)\otimes
 \operatorname{sgn}(d\xi_1\wedge d\xi_2\wedge d\xi_3)\).
-The restricted critical point is \(x_3=0\), and the graph intersection is \(p=(0;1,2,0)\). The restricted Hessian is \((-1)\), so the intersection is transverse. Equation (22) gives raw determinant \(-1\), since \(c\) is even. Multiplying by the normalized coefficient \((-1)^n=-1\) gives graph-first number \(+1=(-1)^{\ell+q}\). Reversal contributes \((-1)^3=-1\), so the conormal-first number is \(-1\). If the second input were \(\operatorname{CC}(k_Y)=-[T_Y^*X]\), its graph-first number would instead be \(-1\), the degree-one Morse test.
+The restricted critical point is \(x_3=0\), and the graph intersection is \(p=(0;1,2,0)\). The restricted Hessian is \((-1)\), so the intersection is transverse. Equation (22) gives raw determinant \(-1\), since \(c\) is even. The conormal parameter coefficient is positive, while (13) gives graph coefficient \((-1)^n=-1\). Their product therefore gives graph-first number \(+1=(-1)^{\ell+q}\). Reversal contributes \((-1)^3=-1\), so the conormal-first number is \(-1\). If the second input were \(\operatorname{CC}(k_Y)=-[T_Y^*X]\), its graph-first number would instead be \(-1\), the degree-one Morse test.
 
 ### A chart reversal changes both factors
 
@@ -348,10 +348,10 @@ In coordinates \((u,t;\zeta,\tau)\) on \(T^*\mathbb R^2\), take \(Y=\{u=0\}\). E
 
 **Solution.** Initially the coefficient is
 \(\operatorname{sgn}(d\zeta\wedge dt)\otimes
-\operatorname{sgn}(d\zeta\wedge d\tau)\), because \((-1)^n=+1\).
+\operatorname{sgn}(d\zeta\wedge d\tau)\), as in (9).
 The dual variables are \(\zeta'=-\zeta,\ \tau'=\tau\). Hence both
 \(\operatorname{sgn}(d\zeta'\wedge dt')\) and
-\(\operatorname{sgn}(d\zeta'\wedge d\tau')\) are the negatives of their unprimed versions. Their tensor is unchanged. Equivalently the positive normal Thom wedge sign \((-1)^c=-1\) is multiplied by the tangent zero-section scalar \((-1)^\ell=-1\).
+\(\operatorname{sgn}(d\zeta'\wedge d\tau')\) are the negatives of their unprimed versions. Their tensor is unchanged. In the Thom calculation the wedge sign \((-1)^c=-1\), tangent zero-section scalar \((-1)^\ell=-1\), and shifted cancellation \((-1)^n=+1\) multiply to the same positive parameter coefficient.
 
 More generally (11) gives equal transition signs on the conormal tangent and fibre coefficient. They cancel on every adapted overlap, so the twisted coefficient glues without a global orientation. Dropping the fibre factor would leave a sign-changing local description on an orientation-reversing overlap.
 
@@ -381,7 +381,7 @@ Let \(X=\mathbb R^4\), with coordinates \((u,t_1,t_2,t_3)\), and \(Y=\{u=0\}\). 
 
 Compute the raw ordered tangent determinant and the normalized number. Then replace the entry \(-2\) by zero. Is the full ambient Hessian still nonsingular? Are the graph and conormal transverse?
 
-**Solution.** The restricted block has determinant \((-2)\cdot3\cdot5=-30\) and one negative eigenvalue. Since \(c=1\), (22) gives raw determinant \(+30\). The normalized conormal coefficient is \((-1)^n=+1\), so the number is \(+1=(-1)^{\ell+q}\). The sheaf cycle \(\operatorname{CC}(k_Y)=-[T_Y^*X]\) would have index \(-1\).
+**Solution.** The restricted block has determinant \((-2)\cdot3\cdot5=-30\) and one negative eigenvalue. Since \(c=1\), (22) gives raw determinant \(+30\). The normalized conormal has positive parameter coefficient, and the graph coefficient is \((-1)^n=+1\), so the number is \(+1=(-1)^{\ell+q}\). The sheaf cycle \(\operatorname{CC}(k_Y)=-[T_Y^*X]\) would have index \(-1\).
 
 After the replacement, the restricted block has kernel spanned by the \(t_1\)-vector. The full Hessian has determinant \(-15\): expand along its second row and then the remaining diagonal \(3,5\) block. It is nonsingular. Nevertheless (22) has zero determinant. Explicitly the graph tangent corresponding to \(\delta t_1=1,\delta u=\delta t_2=\delta t_3=0\) has base component \(\delta t_1=1\) and fibre component \(\delta\zeta=1,\delta\tau=0\). This is also a conormal tangent. Thus the intersection is not transverse, and (21) cannot assign a transverse sign by the ambient Hessian.
 
@@ -391,7 +391,7 @@ After the replacement, the restricted block has kernel spanned by the \(t_1\)-ve
 
 On \(T^*\mathbb R\), intersect an analytic section with the normalized full fibre over a point. Compute both orders over \(\mathbb Z\), and then extend the cycle coefficients to \(\mathbb Z/2\).
 
-**Solution.** The section orientation is \(dx\) and the fibre orientation is \(-d\xi\), each with the common coefficient \(\operatorname{sgn}(d\xi)\). Their ordered tangent orientation is \(dx\wedge(-d\xi)=d\xi\wedge dx=\Omega\), so the section-first number is \(+1\). The fibre-first number is \(-1\), by (19). Reduction modulo two sends both to \(1\). The equality after reduction does not change the integral normalization from which the two values came. This is a calculation of orientation-valued cycles; it does not enlarge the characteristic-zero hypotheses of the characteristic-cycle construction.
+**Solution.** In the common cycle coordinates the section orientation is \(-dx\) and the fibre orientation is \(d\xi\), each with coefficient \(\operatorname{sgn}(d\xi)\). Their ordered tangent orientation is \((-dx)\wedge d\xi=d\xi\wedge dx=\Omega\), so the section-first number is \(+1\). The fibre-first number is \(-1\), by (19). Reduction modulo two sends both to \(1\). The equality after reduction does not change the integral normalization from which the two values came. This is a calculation of orientation-valued cycles; it does not enlarge the characteristic-zero hypotheses of the characteristic-cycle construction.
 
 ### Ordinary, compact, stalk and costalk signs in one model
 
@@ -406,7 +406,7 @@ Ordinary cohomology is \(k^3[2]\), with Euler number \(+3\). Compact cohomology 
 
 ## References and further reading
 
-M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §2.2, printed p. 197, constructs the orientation-valued conormal generator. In the normal-first coordinates used above, that convention has coefficient \((-1)^c\). The graph-normalized generator in (9) includes the additional tangent zero-section factor \((-1)^\ell\), where \(\ell=\dim Y\) and \(c=\operatorname{codim}Y\). Thus it is \((-1)^\ell\) times that historical generator. Formula (23) supplies the corresponding sheaf coefficient; its product with (21) is the Morse sign \((-1)^{s+q}\).
+M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §2.2, printed p. 197, constructs the orientation-valued conormal generator. In the normal-first coordinates used above, that convention has coefficient \((-1)^c\). The programme generator (9), expressed through its fixed ordered cycle comparison, has positive parameter coefficient and is therefore \((-1)^c\) times that historical generator. Its calculation retains both the tangent zero-section scalar \((-1)^\ell\) and the shifted cancellation \((-1)^n\), with \(\ell=n-c\). Formula (23) supplies the corresponding sheaf coefficient; its product with (21) is the Morse sign \((-1)^{s+q}\).
 
 W. Schmid and K. Vilonen, [*Characteristic cycles of constructible sheaves*](https://people.math.harvard.edu/~schmid/articles/cycles.dvi), author version of the article published in *Inventiones Mathematicae* 124 (1996), 451–502, §2, give an oriented-base formulation. Comparing that formulation with (9) requires keeping both the tangent orientation and the fibre sign line; choosing only the base orientation does not determine the comparison.
 

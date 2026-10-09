@@ -13,6 +13,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-supported-intrinsic-core-20261009-v1"
 from matplotlib import font_manager
 from matplotlib.patches import Rectangle
 
@@ -124,7 +125,7 @@ def main():
              "Exact formulas: SCW.7.f–j and SCW.8.k–l.  The plots show scalar trace density on spectral intervals; the full operator domains remain in the proof.",
              fontsize=13, color=MUTED)
     fig.savefig(OUT / "support-and-coordinate.png", dpi=160)
-    fig.savefig(OUT / "support-and-coordinate.svg")
+    fig.savefig(OUT / "support-and-coordinate.svg", metadata={"Date": None})
     plt.close(fig)
 
     data = {

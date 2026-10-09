@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Symbolic itineraries and affine composition</title><link rel="stylesheet" href="reader.css"></head><body><a class="skip" href="#main">Skip to the lesson</a><header><a href="index.html">Discrete dynamics, coding and probability</a> · <a href="src/NT-COLLATZ-02.md">Lesson source</a></header><main id="main"><h1 id="symbolic-itineraries-and-affine-composition">Symbolic
+itineraries and affine composition</h1>
+<p><em>Written by GPT-6 Astra, Ultra reasoning, in Codex, October 2026.
+Self-checked by the writing AI. Original exposition, proofs and
+exercises: CC0 1.0.</em></p>
+<p>A rule with several branches has two records: the states it visits
+and the branches it uses. A <strong>symbolic itinerary</strong> records
+the second. Such a record is useful only when we know which itineraries
+can occur and how much of the original trajectory they determine.</p>
+<p>This lesson develops a concrete answer for affine branches. We first
+compose the branches exactly. We then impose the integer restrictions
+that turn a formal word into an actual orbit. For the shortcut Collatz
+map, a word of length
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+specifies exactly one residue class modulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mi>k</mi></msup><annotation encoding="application/x-tex">2^k</annotation></semantics></math>.
+This connects symbolic dynamics with congruence arithmetic and, at the
+end, with a finite probability experiment.</p>
+<p>We use integer arithmetic, induction, and the definitions of
+iteration from <a href="NT-COLLATZ-01.html">Return maps and exact changes
+of clock</a>. Congruence means that the difference of two integers is a
+multiple of the modulus. The division algorithm and the basic rules for
+fractions are assumed. No measure theory or conjecture about eventual
+convergence is needed. Terras and Everett are historical sources for
+finite parity coding. Laarhoven and de Weger discuss its graph-theoretic
+form; Inselmann uses the affine and concatenation identities in
+quantitative orbit estimates. Full references appear below.</p>
+<h2 id="a-word-is-not-yet-an-orbit">A word is not yet an orbit</h2>
+<p>Let a set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+be partitioned into disjoint sets
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>X</mi><mi>b</mi></msub><annotation encoding="application/x-tex">X_b</annotation></semantics></math>,
+indexed by symbols
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>.
+Suppose a map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>:</mo><mi>X</mi><mo>→</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">F:X\to X</annotation></semantics></math>
+uses the rule
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mi>b</mi></msub><annotation encoding="application/x-tex">f_b</annotation></semantics></math>
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>X</mi><mi>b</mi></msub><annotation encoding="application/x-tex">X_b</annotation></semantics></math>.
+The itinerary of a point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+begins with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mn>0</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>b</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">b_0,\ldots,b_{k-1}</annotation></semantics></math>
+precisely when</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>F</mi><mi>i</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>∈</mo><msub><mi>X</mi><msub><mi>b</mi><mi>i</mi></msub></msub><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>≤</mo><mi>i</mi><mo>&lt;</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+F^i(x)\in X_{b_i}\qquad(0\leq i&lt;k).
+</annotation></semantics></math></span></p>
+<p>The set of these starting points is the <strong>cylinder</strong> of
+the word. On this set, induction gives</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>F</mi><mi>k</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>f</mi><msub><mi>b</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub></msub><mo>∘</mo><mi>⋯</mi><mo>∘</mo><msub><mi>f</mi><msub><mi>b</mi><mn>0</mn></msub></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+F^k(x)=f_{b_{k-1}}\circ\cdots\circ f_{b_0}(x).
+</annotation></semantics></math></span></p>
+<p>The order matters: the earliest rule is on the right. The composition
+may make sense on a larger space, but it describes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>F</mi><mi>k</mi></msup><annotation encoding="application/x-tex">F^k</annotation></semantics></math>
+only on its cylinder. In particular, algebraically composing branches
+does not prove that the word is realizable.</p>
+<p>Our running example is</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>n</mi><mi>/</mi><mn>2</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>n</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> even</mtext></mrow><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>2</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>n</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> odd</mtext></mrow><mo>,</mo></mtd></mtr></mtable></mrow><mspace width="2.0em"></mspace><mi>n</mi><mo>∈</mo><msub><mi mathvariant="double-struck">ℕ</mi><mo>+</mo></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+T(n)=\begin{cases}n/2,&amp;n\text{ even},\\(3n+1)/2,&amp;n\text{ odd},\end{cases}
+\qquad n\in\mathbb N_+.
+</annotation></semantics></math></span></p>
+<p>The branches extend to affine maps on the rational numbers:</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>b</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><msup><mn>3</mn><mi>b</mi></msup><mi>x</mi><mo>+</mo><mi>b</mi></mrow><mn>2</mn></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mi>b</mi><mo>∈</mo><mo stretchy="false" form="prefix">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+f_b(x)=\frac{3^b x+b}{2},\qquad b\in\{0,1\}.
+</annotation></semantics></math></span></p>
+<p>For a binary word
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>b</mi><mn>0</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>b</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">w=(b_0,\ldots,b_{k-1})</annotation></semantics></math>,
+let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Φ</mi><mi>w</mi></msub><mo>=</mo><msub><mi>f</mi><msub><mi>b</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub></msub><mo>∘</mo><mi>⋯</mi><mo>∘</mo><msub><mi>f</mi><msub><mi>b</mi><mn>0</mn></msub></msub></mrow><annotation encoding="application/x-tex">\Phi_w=f_{b_{k-1}}\circ\cdots\circ f_{b_0}</annotation></semantics></math>,
+with the empty word giving the identity. The cylinder
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>w</mi></msub><mo>⊆</mo><msub><mi mathvariant="double-struck">ℕ</mi><mo>+</mo></msub></mrow><annotation encoding="application/x-tex">C_w\subseteq\mathbb N_+</annotation></semantics></math>
+consists of the starts whose first
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+parities are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>.</p>
+<h2 id="keeping-the-additive-term">Keeping the additive term</h2>
+<p>Put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>s</mi><mi>i</mi></msub><mo>=</mo><msub><mi>b</mi><mn>0</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>b</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">s_i=b_0+\cdots+b_{i-1}</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>s</mi><mn>0</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">s_0=0</annotation></semantics></math>,
+and define</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>w</mi></msub><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></munderover><msub><mi>b</mi><mi>i</mi></msub><msup><mn>2</mn><mi>i</mi></msup><msup><mn>3</mn><mrow><msub><mi>s</mi><mi>k</mi></msub><mo>−</mo><msub><mi>s</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+A_w=\sum_{i=0}^{k-1} b_i2^i3^{s_k-s_{i+1}}.
+</annotation></semantics></math></span></p>
+<p>Every exponent is nonnegative, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>w</mi></msub><annotation encoding="application/x-tex">A_w</annotation></semantics></math>
+is a nonnegative integer. An empty sum is zero.</p>
+<p><strong>Theorem 1 (Affine formula).</strong> For every binary word of
+length
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+and every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mi mathvariant="double-struck">ℚ</mi></mrow><annotation encoding="application/x-tex">x\in\mathbb Q</annotation></semantics></math>,</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Φ</mi><mi>w</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><msup><mn>3</mn><msub><mi>s</mi><mi>k</mi></msub></msup><mi>x</mi><mo>+</mo><msub><mi>A</mi><mi>w</mi></msub></mrow><msup><mn>2</mn><mi>k</mi></msup></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\Phi_w(x)=\frac{3^{s_k}x+A_w}{2^k}.
+</annotation></semantics></math></span></p>
+<p>In particular, this equals
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>T</mi><mi>k</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">T^k(n)</annotation></semantics></math>
+when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>∈</mo><msub><mi>C</mi><mi>w</mi></msub></mrow><annotation encoding="application/x-tex">n\in C_w</annotation></semantics></math>.</p>
+<p><strong>Proof.</strong> For the empty word the numerator is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>.
+Appending a bit
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
+to a
+length-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+word changes the affine expression to</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>b</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi mathvariant="normal">Φ</mi><mi>w</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><msup><mn>3</mn><mrow><msub><mi>s</mi><mi>k</mi></msub><mo>+</mo><mi>b</mi></mrow></msup><mi>x</mi><mo>+</mo><msup><mn>3</mn><mi>b</mi></msup><msub><mi>A</mi><mi>w</mi></msub><mo>+</mo><mi>b</mi><msup><mn>2</mn><mi>k</mi></msup></mrow><msup><mn>2</mn><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msup></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+f_b(\Phi_w(x))
+=\frac{3^{s_k+b}x+3^b A_w+b2^k}{2^{k+1}}.
+</annotation></semantics></math></span></p>
+<p>In the proposed sum for the new numerator, each old term acquires a
+factor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>3</mn><mi>b</mi></msup><annotation encoding="application/x-tex">3^b</annotation></semantics></math>,
+and the new last term is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><msup><mn>2</mn><mi>k</mi></msup></mrow><annotation encoding="application/x-tex">b2^k</annotation></semantics></math>.
+This proves the formula by induction. The cylinder identity from the
+preceding section gives its application to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>.
+∎</p>
+<p>The coefficient of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+alone is not the iterate. The term
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>w</mi></msub><annotation encoding="application/x-tex">A_w</annotation></semantics></math>
+records every addition along the way. For instance, repeated use of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mn>1</mn></msub><annotation encoding="application/x-tex">f_1</annotation></semantics></math>
+gives</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Φ</mi><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><msup><mn>3</mn><mi>k</mi></msup><mi>x</mi><mo>+</mo><mo stretchy="false" form="prefix">(</mo><msup><mn>3</mn><mi>k</mi></msup><mo>−</mo><msup><mn>2</mn><mi>k</mi></msup><mo stretchy="false" form="postfix">)</mo></mrow><msup><mn>2</mn><mi>k</mi></msup></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\Phi_{(1,\ldots,1)}(x)=\frac{3^k x+(3^k-2^k)}{2^k}.
+</annotation></semantics></math></span></p>
+<p>Indeed, the recurrence in the proof gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mn>3</mn><msub><mi>A</mi><mi>k</mi></msub><mo>+</mo><msup><mn>2</mn><mi>k</mi></msup></mrow><annotation encoding="application/x-tex">A_{k+1}=3A_k+2^k</annotation></semantics></math>,
+and substitution verifies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>k</mi></msub><mo>=</mo><msup><mn>3</mn><mi>k</mi></msup><mo>−</mo><msup><mn>2</mn><mi>k</mi></msup></mrow><annotation encoding="application/x-tex">A_k=3^k-2^k</annotation></semantics></math>,
+starting from zero. Both terms matter even before any question of
+asymptotic estimates arises.</p>
+<h2 id="joining-two-blocks">Joining two blocks</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+have lengths
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>,
+and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo stretchy="false" form="prefix">(</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">s(u)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo stretchy="false" form="prefix">(</mo><mi>v</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">s(v)</annotation></semantics></math>
+denote their numbers of ones. Write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">uv</annotation></semantics></math>
+for chronological concatenation: first follow
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>,
+then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>.</p>
+<p><strong>Proposition 2 (Composition coordinates).</strong></p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>s</mi><mo stretchy="false" form="prefix">(</mo><mi>u</mi><mi>v</mi><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>s</mi><mo stretchy="false" form="prefix">(</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>s</mi><mo stretchy="false" form="prefix">(</mo><mi>v</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>A</mi><mrow><mi>u</mi><mi>v</mi></mrow></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msup><mn>3</mn><mrow><mi>s</mi><mo stretchy="false" form="prefix">(</mo><mi>v</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><msub><mi>A</mi><mi>u</mi></msub><mo>+</mo><msup><mn>2</mn><mi>a</mi></msup><msub><mi>A</mi><mi>v</mi></msub><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi mathvariant="normal">Φ</mi><mrow><mi>u</mi><mi>v</mi></mrow></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msub><mi mathvariant="normal">Φ</mi><mi>v</mi></msub><mo>∘</mo><msub><mi mathvariant="normal">Φ</mi><mi>u</mi></msub><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+s(uv)&amp;=s(u)+s(v),\\
+A_{uv}&amp;=3^{s(v)}A_u+2^a A_v,\\
+\Phi_{uv}&amp;=\Phi_v\circ\Phi_u.
+\end{aligned}
+</annotation></semantics></math></span></p>
+<p>The realized cylinders satisfy</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mrow><mi>u</mi><mi>v</mi></mrow></msub><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>n</mi><mo>∈</mo><msub><mi>C</mi><mi>u</mi></msub><mo>:</mo><msup><mi>T</mi><mi>a</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>∈</mo><msub><mi>C</mi><mi>v</mi></msub><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+C_{uv}=\{n\in C_u:T^a(n)\in C_v\}.
+</annotation></semantics></math></span></p>
+<p><strong>Proof.</strong> Counts add. Substituting the affine formula
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>
+into the one for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+gives</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Φ</mi><mi>v</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi mathvariant="normal">Φ</mi><mi>u</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><msup><mn>3</mn><mrow><mi>s</mi><mo stretchy="false" form="prefix">(</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>s</mi><mo stretchy="false" form="prefix">(</mo><mi>v</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mi>x</mi><mo>+</mo><msup><mn>3</mn><mrow><mi>s</mi><mo stretchy="false" form="prefix">(</mo><mi>v</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><msub><mi>A</mi><mi>u</mi></msub><mo>+</mo><msup><mn>2</mn><mi>a</mi></msup><msub><mi>A</mi><mi>v</mi></msub></mrow><msup><mn>2</mn><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow></msup></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\Phi_v(\Phi_u(x))
+=\frac{3^{s(u)+s(v)}x+3^{s(v)}A_u+2^a A_v}{2^{a+b}}.
+</annotation></semantics></math></span></p>
+<p>The cylinder statement follows by separating the parity tests before
+and after time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>.
+This also proves that the algebraic composition acts on exactly the
+required starts when it is used as an orbit formula. ∎</p>
+<p>One can store these coordinates in an integer matrix:</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>M</mi><mi>w</mi></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msup><mn>3</mn><mrow><mi>s</mi><mo stretchy="false" form="prefix">(</mo><mi>w</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>A</mi><mi>w</mi></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><msup><mn>2</mn><mrow><mo stretchy="false" form="prefix">|</mo><mi>w</mi><mo stretchy="false" form="prefix">|</mo></mrow></msup></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>M</mi><mrow><mi>u</mi><mi>v</mi></mrow></msub><mo>=</mo><msub><mi>M</mi><mi>v</mi></msub><msub><mi>M</mi><mi>u</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+M_w=\begin{pmatrix}3^{s(w)}&amp;A_w\\0&amp;2^{|w|}\end{pmatrix},
+\qquad M_{uv}=M_v M_u.
+</annotation></semantics></math></span></p>
+<p>To read the associated rational map, apply the matrix to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(x,1)</annotation></semantics></math>
+and divide the first coordinate by the second. Its denominator is
+positive. Matrix multiplication explains the composition law; the
+cylinder still supplies its integer domain.</p>
+<p>Another exact coordinate is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mi>w</mi></msub><mo>=</mo><msub><mi>A</mi><mi>w</mi></msub><mi>/</mi><mo stretchy="false" form="prefix">(</mo><msup><mn>2</mn><mrow><mo stretchy="false" form="prefix">|</mo><mi>w</mi><mo stretchy="false" form="prefix">|</mo></mrow></msup><msup><mn>3</mn><mrow><mi>s</mi><mo stretchy="false" form="prefix">(</mo><mi>w</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">r_w=A_w/(2^{|w|}3^{s(w)})</annotation></semantics></math>.
+Retaining the length and count makes this a reversible change of
+coordinates:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>w</mi></msub><mo>=</mo><msup><mn>2</mn><mrow><mo stretchy="false" form="prefix">|</mo><mi>w</mi><mo stretchy="false" form="prefix">|</mo></mrow></msup><msup><mn>3</mn><mrow><mi>s</mi><mo stretchy="false" form="prefix">(</mo><mi>w</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><msub><mi>r</mi><mi>w</mi></msub></mrow><annotation encoding="application/x-tex">A_w=2^{|w|}3^{s(w)}r_w</annotation></semantics></math>.
+Dividing the numerator formula by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow></msup><msup><mn>3</mn><mrow><mi>s</mi><mo stretchy="false" form="prefix">(</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>s</mi><mo stretchy="false" form="prefix">(</mo><mi>v</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup></mrow><annotation encoding="application/x-tex">2^{a+b}3^{s(u)+s(v)}</annotation></semantics></math>
+gives</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mrow><mi>u</mi><mi>v</mi></mrow></msub><mo>=</mo><msup><mn>2</mn><mrow><mi>−</mi><mi>b</mi></mrow></msup><msub><mi>r</mi><mi>u</mi></msub><mo>+</mo><msup><mn>3</mn><mrow><mi>−</mi><mi>s</mi><mo stretchy="false" form="prefix">(</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><msub><mi>r</mi><mi>v</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+r_{uv}=2^{-b}r_u+3^{-s(u)}r_v.
+</annotation></semantics></math></span></p>
+<p>Neither term may be dropped. This identity describes the same
+composition using rational rather than integer coordinates.</p>
+<h2 id="the-arithmetic-domain-of-a-word">The arithmetic domain of a
+word</h2>
+<p>We now prove that every finite binary word occurs, and identify all
+its starting integers. For this proof only, extend
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+to nonnegative integers by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">T(0)=0</annotation></semantics></math>.
+This lets us use the representative 0 of a residue class without
+changing any positive orbit.</p>
+<p><strong>Lemma 3 (Lifting a finite itinerary).</strong> If nonnegative
+integers
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">m,n</annotation></semantics></math>
+satisfy
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mi>m</mi><mo>=</mo><msup><mn>2</mn><mi>k</mi></msup><mi>t</mi></mrow><annotation encoding="application/x-tex">n-m=2^k t</annotation></semantics></math>
+for an integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>,
+their first
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+parities agree. If that common word has prefix counts
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>s</mi><mi>i</mi></msub><annotation encoding="application/x-tex">s_i</annotation></semantics></math>,
+then</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>T</mi><mi>i</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><msup><mi>T</mi><mi>i</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mn>3</mn><msub><mi>s</mi><mi>i</mi></msub></msup><msup><mn>2</mn><mrow><mi>k</mi><mo>−</mo><mi>i</mi></mrow></msup><mi>t</mi><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+T^i(n)-T^i(m)=3^{s_i}2^{k-i}t\qquad(0\leq i\leq k).
+</annotation></semantics></math></span></p>
+<p><strong>Proof.</strong> At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">i=0</annotation></semantics></math>
+the difference is the assumed multiple of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mi>k</mi></msup><annotation encoding="application/x-tex">2^k</annotation></semantics></math>.
+Suppose the formula holds at an index
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>&lt;</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">i&lt;k</annotation></semantics></math>.
+The difference is even, so the two current states have the same parity
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>b</mi><mi>i</mi></msub><annotation encoding="application/x-tex">b_i</annotation></semantics></math>.
+Subtracting their branch formulas cancels the additive term and divides
+their difference by 2 after multiplication by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>3</mn><msub><mi>b</mi><mi>i</mi></msub></msup><annotation encoding="application/x-tex">3^{b_i}</annotation></semantics></math>.
+This proves the next formula and the next shared parity test. Induction
+completes the proof. ∎</p>
+<p><strong>Theorem 4 (Words and residue classes).</strong> For each
+length-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+binary word
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>,
+there is a unique
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>c</mi><mi>w</mi></msub><annotation encoding="application/x-tex">c_w</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><msub><mi>c</mi><mi>w</mi></msub><mo>&lt;</mo><msup><mn>2</mn><mi>k</mi></msup></mrow><annotation encoding="application/x-tex">0\leq c_w&lt;2^k</annotation></semantics></math>
+such that</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>w</mi></msub><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>n</mi><mo>∈</mo><msub><mi mathvariant="double-struck">ℕ</mi><mo>+</mo></msub><mo>:</mo><mi>n</mi><mo>≡</mo><msub><mi>c</mi><mi>w</mi></msub><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mspace width="0.222em"></mspace><msup><mn>2</mn><mi>k</mi></msup><mo stretchy="false" form="postfix">)</mo></mrow><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+C_w=\{n\in\mathbb N_+:n\equiv c_w\pmod{2^k}\}.
+</annotation></semantics></math></span></p>
+<p>Below we write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><msub><mi>c</mi><mi>w</mi></msub></mrow><annotation encoding="application/x-tex">r=c_w</annotation></semantics></math>
+when a single cylinder is fixed.</p>
+<p><strong>Proof.</strong> The empty word corresponds to the only class
+modulo 1. Suppose the
+length-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+words correspond bijectively to the classes modulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mi>k</mi></msup><annotation encoding="application/x-tex">2^k</annotation></semantics></math>.
+A class represented by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+has exactly two lifts modulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">2^{k+1}</annotation></semantics></math>,
+represented by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>+</mo><msup><mn>2</mn><mi>k</mi></msup></mrow><annotation encoding="application/x-tex">r+2^k</annotation></semantics></math>.
+Lemma 3 says that both have the same first
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+bits. Their states at time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+differ by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>3</mn><msub><mi>s</mi><mi>k</mi></msub></msup><annotation encoding="application/x-tex">3^{s_k}</annotation></semantics></math>,
+which is odd. Exactly one therefore has next bit 0, and exactly one has
+next bit 1. This proves existence and uniqueness for each extended word.
+Lemma 3 also shows that every integer in a chosen lifted class has that
+itinerary. Conversely, an integer with the extended itinerary must be in
+its prefix class and then in the uniquely specified lift. The induction
+proves the statement. Every class has a positive representative,
+including the class represented by zero. ∎</p>
+<p>For a fixed word, write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+for its representative,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mi>s</mi><mo stretchy="false" form="prefix">(</mo><mi>w</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">s=s(w)</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><msub><mi>A</mi><mi>w</mi></msub></mrow><annotation encoding="application/x-tex">A=A_w</annotation></semantics></math>.
+On its cylinder,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>T</mi><mi>k</mi></msup><annotation encoding="application/x-tex">T^k</annotation></semantics></math>
+is an injective map onto the arithmetic progression</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">{</mo><mfrac><mrow><msup><mn>3</mn><mi>s</mi></msup><mi>r</mi><mo>+</mo><mi>A</mi></mrow><msup><mn>2</mn><mi>k</mi></msup></mfrac><mo>+</mo><msup><mn>3</mn><mi>s</mi></msup><mi>t</mi><mo>:</mo><mi>t</mi><mo>∈</mo><mi mathvariant="double-struck">ℤ</mi><mo>,</mo><mspace width="0.222em"></mspace><mi>r</mi><mo>+</mo><msup><mn>2</mn><mi>k</mi></msup><mi>t</mi><mo>&gt;</mo><mn>0</mn><mo stretchy="true" form="postfix">}</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\left\{\frac{3^s r+A}{2^k}+3^s t:
+t\in\mathbb Z,\ r+2^k t&gt;0\right\}.
+</annotation></semantics></math></span></p>
+<p>Its inverse on that image is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>↦</mo><mo stretchy="false" form="prefix">(</mo><msup><mn>2</mn><mi>k</mi></msup><mi>y</mi><mo>−</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><msup><mn>3</mn><mi>s</mi></msup></mrow><annotation encoding="application/x-tex">y\mapsto(2^k y-A)/3^s</annotation></semantics></math>.
+The formula follows by substituting
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mi>r</mi><mo>+</mo><msup><mn>2</mn><mi>k</mi></msup><mi>t</mi></mrow><annotation encoding="application/x-tex">n=r+2^k t</annotation></semantics></math>
+into Theorem 1. It proves both directions: every allowed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+gives a cylinder point and its image, and the displayed inverse returns
+that point. Thus a word does not identify a single positive start. It
+identifies a congruence class; the additional integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+locates the start within that class.</p>
+<h2 id="an-actual-concatenation">An actual concatenation</h2>
+<p>Consider the shortcut trajectory</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>37</mn><mo>→</mo><mn>56</mn><mo>→</mo><mn>28</mn><mo>→</mo><mn>14</mn><mo>→</mo><mn>7</mn><mo>→</mo><mn>11</mn><mo>→</mo><mn>17</mn><mo>→</mo><mn>26</mn><mo>→</mo><mn>13</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+37\to56\to28\to14\to7\to11\to17\to26\to13.
+</annotation></semantics></math></span></p>
+<p>The first block has word
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">u=(1,0,0,0,1)</annotation></semantics></math>,
+length 5 and two odd steps. The next has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">v=(1,1,0)</annotation></semantics></math>,
+length 3 and two odd steps. Directly from the sum in Theorem 1,</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>u</mi></msub><mo>=</mo><mn>3</mn><mo>+</mo><mn>16</mn><mo>=</mo><mn>19</mn><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>A</mi><mi>v</mi></msub><mo>=</mo><mn>3</mn><mo>+</mo><mn>2</mn><mo>=</mo><mn>5</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+A_u=3+16=19,\qquad A_v=3+2=5.
+</annotation></semantics></math></span></p>
+<p>Consequently</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mrow><mi>u</mi><mi>v</mi></mrow></msub><mo>=</mo><mn>9</mn><mo>⋅</mo><mn>19</mn><mo>+</mo><mn>32</mn><mo>⋅</mo><mn>5</mn><mo>=</mo><mn>331</mn><mo>,</mo></mrow><annotation encoding="application/x-tex">
+A_{uv}=9\cdot19+32\cdot5=331,
+</annotation></semantics></math></span></p>
+<p>and</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mn>9</mn><mo>⋅</mo><mn>37</mn><mo>+</mo><mn>19</mn></mrow><mn>32</mn></mfrac><mo>=</mo><mn>11</mn><mo>,</mo><mspace width="2.0em"></mspace><mfrac><mrow><mn>9</mn><mo>⋅</mo><mn>11</mn><mo>+</mo><mn>5</mn></mrow><mn>8</mn></mfrac><mo>=</mo><mn>13</mn><mo>,</mo><mspace width="2.0em"></mspace><mfrac><mrow><mn>81</mn><mo>⋅</mo><mn>37</mn><mo>+</mo><mn>331</mn></mrow><mn>256</mn></mfrac><mo>=</mo><mn>13</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\frac{9\cdot37+19}{32}=11,
+\qquad \frac{9\cdot11+5}{8}=13,
+\qquad \frac{81\cdot37+331}{256}=13.
+</annotation></semantics></math></span></p>
+<p>Here
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>C</mi><mi>u</mi></msub><annotation encoding="application/x-tex">C_u</annotation></semantics></math>
+is the class 5 modulo 32,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>C</mi><mi>v</mi></msub><annotation encoding="application/x-tex">C_v</annotation></semantics></math>
+the class 3 modulo 8, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>C</mi><mrow><mi>u</mi><mi>v</mi></mrow></msub><annotation encoding="application/x-tex">C_{uv}</annotation></semantics></math>
+the class 37 modulo 256. This last description follows from Theorem 4
+because the displayed trajectory realizes that word. The two separate
+congruence tests are compatible only after the second is imposed on the
+landing value 11, not on the original start 37.</p>
+<p>There is also a time coordinate. One shortcut step uses one ordinary
+step at an even state and two at an odd state. Hence a block of length
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>
+ones consumes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>+</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">k+s</annotation></semantics></math>
+ordinary steps. This follows by adding the costs at each step. For the
+example, the first block costs 7 ordinary steps, the second costs 5, and
+the combined block costs 12. The identity
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo>+</mo><mi>s</mi><mo stretchy="false" form="prefix">(</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo>+</mo><mi>s</mi><mo stretchy="false" form="prefix">(</mo><mi>v</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>s</mi><mo stretchy="false" form="prefix">(</mo><mi>u</mi><mi>v</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(a+s(u))+(b+s(v))=(a+b)+s(uv)</annotation></semantics></math>
+expresses the compatibility of time with concatenation.</p>
+<h2 id="a-finite-probability-law-from-an-exact-bijection">A finite
+probability law from an exact bijection</h2>
+<p>Choose a starting integer uniformly from any
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mi>k</mi></msup><annotation encoding="application/x-tex">2^k</annotation></semantics></math>
+consecutive positive integers. Each residue class modulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mi>k</mi></msup><annotation encoding="application/x-tex">2^k</annotation></semantics></math>
+occurs once, so Theorem 4 implies that each
+length-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+word has probability
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mrow><mi>−</mi><mi>k</mi></mrow></msup><annotation encoding="application/x-tex">2^{-k}</annotation></semantics></math>.
+In particular, specifying any
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+of the bits leaves exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mrow><mi>k</mi><mo>−</mo><mi>j</mi></mrow></msup><annotation encoding="application/x-tex">2^{k-j}</annotation></semantics></math>
+words, so that specification has probability
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mrow><mi>−</mi><mi>j</mi></mrow></msup><annotation encoding="application/x-tex">2^{-j}</annotation></semantics></math>.
+This proves that the first
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+bits in this experiment are independent fair bits.</p>
+<p>The probability of exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>
+odd steps is therefore</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><mi>−</mi><mi>k</mi></mrow></msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac linethickness="0"><mi>k</mi><mi>h</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>≤</mo><mi>h</mi><mo>≤</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+2^{-k}\binom{k}{h}\qquad(0\leq h\leq k),
+</annotation></semantics></math></span></p>
+<p>because choosing the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>
+positions of the ones specifies the word. This is an exact counting
+theorem for the stated finite experiment.</p>
+<p>For a uniform start in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>X</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{1,\ldots,X\}</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+is any positive integer, each word count differs from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mi>/</mi><msup><mn>2</mn><mi>k</mi></msup></mrow><annotation encoding="application/x-tex">X/2^k</annotation></semantics></math>
+by at most 1: divide the interval into complete blocks of length
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mi>k</mi></msup><annotation encoding="application/x-tex">2^k</annotation></semantics></math>
+and one incomplete block. Consequently</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>∑</mo><mrow><mi>w</mi><mo>∈</mo><mo stretchy="false" form="prefix">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><msup><mo stretchy="false" form="postfix">}</mo><mi>k</mi></msup></mrow></munder><mrow><mo stretchy="true" form="prefix">|</mo><mi mathvariant="double-struck">ℙ</mi><mo stretchy="false" form="prefix">(</mo><mtext mathvariant="normal">word</mtext><mo>=</mo><mi>w</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><msup><mn>2</mn><mrow><mi>−</mi><mi>k</mi></mrow></msup><mo stretchy="true" form="postfix">|</mo></mrow><mo>≤</mo><mfrac><msup><mn>2</mn><mi>k</mi></msup><mi>X</mi></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\sum_{w\in\{0,1\}^k}
+\left|\mathbb P(\text{word}=w)-2^{-k}\right|
+\leq\frac{2^k}{X}.
+</annotation></semantics></math></span></p>
+<p>The dependence on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+is essential. This bound tends to zero for fixed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+grows, and more generally whenever
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>k</mi></msup><mi>/</mi><mi>X</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">2^k/X\to0</annotation></semantics></math>.
+It does not provide a small error for an arbitrarily long itinerary at a
+fixed cutoff. The next lesson studies explicitly how sampling measures
+enter such statements.</p>
+<h2 id="exercises-with-solutions">Exercises with solutions</h2>
+<p><strong>Exercise 1.</strong> Find the cylinder and affine formula for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">w=(1,0,1)</annotation></semantics></math>.</p>
+<p><strong>Solution.</strong> The prefix counts are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">0,1,1,2</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>w</mi></msub><mo>=</mo><mn>3</mn><mo>+</mo><mn>4</mn><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">A_w=3+4=7</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Φ</mi><mi>w</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>9</mn><mi>x</mi><mo>+</mo><mn>7</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>8</mn></mrow><annotation encoding="application/x-tex">\Phi_w(x)=(9x+7)/8</annotation></semantics></math>.
+The start 1 has trajectory
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">1,2,1,2</annotation></semantics></math>,
+hence realizes the word. Theorem 4 gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>w</mi></msub><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mn>1</mn><mo>+</mo><mn>8</mn><mi>t</mi><mo>:</mo><mi>t</mi><mo>≥</mo><mn>0</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">C_w=\{1+8t:t\geq0\}</annotation></semantics></math>.
+The landing points are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>+</mo><mn>9</mn><mi>t</mi></mrow><annotation encoding="application/x-tex">2+9t</annotation></semantics></math>,
+and the inverse there is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>8</mn><mi>y</mi><mo>−</mo><mn>7</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>9</mn></mrow><annotation encoding="application/x-tex">(8y-7)/9</annotation></semantics></math>.</p>
+<p><strong>Exercise 2.</strong> Reverse the two blocks in the worked
+example. Compute the formal composition and decide whether 37 realizes
+the reversed word.</p>
+<p><strong>Solution.</strong> Reversal gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mrow><mi>v</mi><mi>u</mi></mrow></msub><mo>=</mo><mn>9</mn><mo>⋅</mo><mn>5</mn><mo>+</mo><mn>8</mn><mo>⋅</mo><mn>19</mn><mo>=</mo><mn>197</mn></mrow><annotation encoding="application/x-tex">A_{vu}=9\cdot5+8\cdot19=197</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Φ</mi><mrow><mi>v</mi><mi>u</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>81</mn><mi>x</mi><mo>+</mo><mn>197</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>256</mn></mrow><annotation encoding="application/x-tex">\Phi_{vu}(x)=(81x+197)/256</annotation></semantics></math>.
+The word begins with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">1,1,0</annotation></semantics></math>,
+whereas 37 begins with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">1,0,0</annotation></semantics></math>;
+thus 37 is not in its cylinder. Applying the rational formula at 37 is
+not computing its eighth iterate. The different numerators also show
+directly that the two affine block maps do not commute.</p>
+<p><strong>Exercise 3.</strong> A
+length-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+word with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>
+ones contains a periodic point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>,
+returning after these
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+shortcut steps. Derive its value. Is the resulting rational number
+automatically a positive periodic point?</p>
+<p><strong>Solution.</strong> The equation
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>T</mi><mi>k</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">T^k(n)=n</annotation></semantics></math>
+gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msup><mn>2</mn><mi>k</mi></msup><mo>−</mo><msup><mn>3</mn><mi>s</mi></msup><mo stretchy="false" form="postfix">)</mo><mi>n</mi><mo>=</mo><msub><mi>A</mi><mi>w</mi></msub></mrow><annotation encoding="application/x-tex">(2^k-3^s)n=A_w</annotation></semantics></math>.
+For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k\geq1</annotation></semantics></math>,
+the coefficient cannot vanish: when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">s=0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>3</mn><mi>s</mi></msup><mo>=</mo><mn>1</mn><mo>&lt;</mo><msup><mn>2</mn><mi>k</mi></msup></mrow><annotation encoding="application/x-tex">3^s=1&lt;2^k</annotation></semantics></math>;
+when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">s\geq1</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>3</mn><mi>s</mi></msup><annotation encoding="application/x-tex">3^s</annotation></semantics></math>
+is odd and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mi>k</mi></msup><annotation encoding="application/x-tex">2^k</annotation></semantics></math>
+is even. Thus the only candidate is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><msub><mi>A</mi><mi>w</mi></msub><mi>/</mi><mo stretchy="false" form="prefix">(</mo><msup><mn>2</mn><mi>k</mi></msup><mo>−</mo><msup><mn>3</mn><mi>s</mi></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">n=A_w/(2^k-3^s)</annotation></semantics></math>.
+It must still be a positive integer in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>C</mi><mi>w</mi></msub><annotation encoding="application/x-tex">C_w</annotation></semantics></math>.
+These checks are sufficient as well, because Theorem 1 then computes the
+actual iterate. The word
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(0)</annotation></semantics></math>
+gives only 0, outside the positive domain. The word
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,0)</annotation></semantics></math>
+gives 1 and realizes its two-step shortcut cycle. No assertion of least
+period follows without checking earlier returns.</p>
+<p><strong>Exercise 4.</strong> For a uniform start among 32 consecutive
+positive integers, what is the probability that the first five bits have
+exactly two ones? What if the start is uniform in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mn>1000</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{1,\ldots,1000\}</annotation></semantics></math>?</p>
+<p><strong>Solution.</strong> The first probability is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mfrac linethickness="0"><mn>5</mn><mn>2</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mi>/</mi><mn>32</mn><mo>=</mo><mn>5</mn><mi>/</mi><mn>16</mn></mrow><annotation encoding="application/x-tex">\binom52/32=5/16</annotation></semantics></math>.
+For the second experiment, each of the ten words in question has count
+within 1 of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1000</mn><mi>/</mi><mn>32</mn></mrow><annotation encoding="application/x-tex">1000/32</annotation></semantics></math>.
+Summing those ten count errors gives a probability within
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn><mi>/</mi><mn>1000</mn></mrow><annotation encoding="application/x-tex">10/1000</annotation></semantics></math>
+of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mi>/</mi><mn>16</mn></mrow><annotation encoding="application/x-tex">5/16</annotation></semantics></math>.
+This follows from the cylinder counts without assuming an infinite
+random orbit.</p>
+<h2 id="what-carries-forward">What carries forward</h2>
+<p>The composition of branches belongs to elementary algebra. The
+cylinder calculation belongs to arithmetic. The probability law comes
+from counting those cylinders under a specified distribution of starts.
+These are three connected arguments, not three interchangeable
+descriptions. Keeping them separate lets us ask the right question when
+we change the map or the sampling rule: which compositions remain valid,
+which words are realized, and how much weight does each cylinder
+carry?</p>
+<p>Continue with <a href="NT-COLLATZ-03.html">Pushforward measures and
+logarithmic sampling</a>. The exact coordinates developed here will
+remain useful whenever successive orbit segments are joined.</p>
+<h2 id="references">References</h2>
+<p>Thijs Laarhoven and Benne de Weger, <em>The Collatz conjecture and De
+Bruijn graphs</em>, <a
+href="https://arxiv.org/abs/1209.3495v1">arXiv:1209.3495v1</a>, §2.
+Finite parity encoding and the corresponding modular graphs.</p>
+<p>Manuel Inselmann, <em>An Approximation of the Collatz Map and a Lower
+Bound for its Average Total Stopping Time</em>, <a
+href="https://arxiv.org/abs/2402.03276v3">arXiv:2402.03276v3</a>, §§1.2
+and 2. Parity counts, affine remainder and concatenation in orbit
+estimates.</p>
+<p>Riho Terras, <em>A stopping time problem on the positive
+integers</em>, Acta Arithmetica <strong>30</strong> (1976), 241–252. <a
+href="https://doi.org/10.4064/aa-30-3-241-252">DOI:
+10.4064/aa-30-3-241-252</a>.</p>
+<p>C. J. Everett, <em>Iteration of the number-theoretic function
+f(2n)=n, f(2n+1)=3n+2</em>, Advances in Mathematics <strong>25</strong>
+(1977), 42–45. <a
+href="https://doi.org/10.1016/0001-8708(77)90087-1">DOI:
+10.1016/0001-8708(77)90087-1</a>.</p>
+<nav aria-label="Lesson sequence"><p><a href="NT-COLLATZ-01.html">Previous: Return maps and exact changes of clock</a><br><a href="NT-COLLATZ-03.html">Next: Pushforward measures and logarithmic sampling</a></p></nav></main><footer>Original mathematical exposition and illustrations: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>. References retain their own authorship and terms.</footer></body></html>

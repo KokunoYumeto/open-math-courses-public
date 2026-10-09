@@ -69,6 +69,47 @@ E=\sum_{j=0}^r E_j(y)\otimes D_t^j\delta_0(t)
 \]
 for a finite \(r\), with distributional coefficients \(E_j\) in the tangential variables. The coefficients are unique. Finiteness is local; the distribution need not have a globally bounded order.
 
+### Hyperplane proof and derivative convention
+
+The needed expansion is proved in Jets, supported distributions and local operators, Theorem 3.1, together with its local form immediately after the proof. That reading includes the vanishing-jet argument used in the proof as Theorem 1.1. The current AN-01 edition of the same theorem supplies a second programme route. The bundled reading remains available in this course's download. Its convention uses ordinary derivatives; the following comparison fixes the factors of \(i\) and the localization needed here.
+
+Let \(E\in\mathcal D'(\Omega)\), where \(\Omega\) is open in \(\mathbb R^{n-1}_y\times\mathbb R_t\), and suppose its support is contained in \(t=0\). Around a point of that plane choose relatively compact product neighborhoods \(V\Subset U\Subset\Omega\), and a smooth compactly supported function \(\chi\) on \(\Omega\) equal to one on a neighborhood of \(\overline V\). The formula
+\[
+T(\varphi)=E\bigl(\chi\varphi|_\Omega\bigr)
+\]
+defines the extension of \(\chi E\) to a compactly supported distribution \(T\in\mathcal E'(\mathbb R^n)\). Multiplication by \(\chi\) sends smooth functions continuously into tests on one fixed compact set. Continuity of \(E\) on that test space bounds the pairing by finitely many derivative seminorms, hence by derivatives through some finite order \(r\). The support of \(T\) is still contained in the plane. Thus the provider theorem applies with one normal variable and \(n-1\) tangential variables.
+
+In the provider's notation it gives tangential distributions \(H_j\in\mathcal E'(\mathbb R^{n-1})\) satisfying
+\[
+T(\varphi)=\sum_{j=0}^{r}
+H_j\bigl(\partial_t^j\varphi(\cdot,0)\bigr).
+\]
+The provider orders its variables as normal then tangential. Exchanging the two blocks means composing each test function with the coordinate permutation; its absolute Jacobian is one. These are ordinary, ungraded tensor products of distributions, so this exchange introduces no sign.
+
+For a one-variable test \(h\), the convention of this lesson gives
+\[
+\langle D_t^j\delta_0,h\rangle
+=(-i)^j(-1)^j h^{(j)}(0)
+=i^j h^{(j)}(0).
+\]
+Consequently set \(E_j=i^{-j}H_j\), and restrict these distributions to the tangential part of \(V\). For a test \(\varphi\) supported in \(V\), the preceding two identities give
+\[
+E(\varphi)=T(\varphi)
+=\sum_{j=0}^{r}
+\langle E_j(y)\otimes D_t^j\delta_0(t),\varphi(y,t)\rangle.
+\]
+This proves the asserted expansion with precisely this lesson's convention. No global order bound on \(E\) has been imposed.
+
+For completeness, uniqueness is also visible directly in these coordinates. Choose a compact smooth \(\theta\) in the normal interval of \(V\), equal to one near zero. For each \(0\leq\ell\leq r\), the continuous linear map
+\[
+\mathcal D(V_y)\longrightarrow\mathcal D(V),\qquad
+\psi\longmapsto\psi(y)\frac{t^\ell}{\ell!}\theta(t)
+\]
+has normal trace of order \(j\) equal to \(\psi\) when \(j=\ell\) and zero otherwise. Continuity follows from the product rule on every fixed compact test-support set. Substitution in the expansion recovers \(i^\ell E_\ell(\psi)\), so every coefficient is determined. Representations of different finite lengths are compared by adding zero coefficients. The same test argument proves that choices of \(\chi\) give identical coefficient restrictions on smaller common neighborhoods. If \(n=1\), the tangential space is a point and these coefficients are scalars, with the same calculation.
+
+Finally, the cutoff is used only to obtain the representation. We do **not** assert that \(P(D)(\chi E)=\delta_0\) on the whole space: differentiating \(\chi\) would add terms. In the minimality argument below the original equation \(P(D)E=\delta_0\) is used only on \(V\), where \(\chi=1\). All coefficient comparisons therefore hold on that same neighborhood.
+
+
 **Proof of minimality.** Fix a nonzero normal to \(W\) and choose orthonormal coordinates with that normal in the \(t\)-direction. Since \(W\subset\{t=0\}\), write locally near the origin
 \[
 P(D)=\sum_{k=0}^d a_k(D_y)D_t^k,
@@ -200,3 +241,5 @@ Surjectivity implies that this vanishes for all \(\xi\) precisely when \(Av\) is
 - [Ehrenpreis] Leon Ehrenpreis, *Solution of some problems of division. I. Division by a polynomial of derivation*, American Journal of Mathematics **76** (1954), 883–903.
 
 *Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Self-checked by the writing AI. Public domain (CC0).*
+
+*Hyperplane proof-provider connection and derivative-convention comparison by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the contributing AI. CC0-1.0.*

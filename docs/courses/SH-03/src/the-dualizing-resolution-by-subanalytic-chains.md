@@ -4,7 +4,7 @@ A cycle germ below the dimension of its ambient manifold can be swept along a ha
 
 *Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources retain their named credit and their own terms.*
 
-Subanalytic chains and closed cycle supports constructs the complex and its canonical orientation map. Supports, products and proper images of chains proves chain-stalk flatness, proper pushforward, boundary compatibility and ordered products. Its proofs retain arbitrary coefficients. The geometry below uses subanalytic set calculus and the compatible triangulation theorem. The algebraic steps will use the proved flat-quotient, Tor and tensor-comparison maps at their points of application.
+[Subanalytic chains and closed cycle supports](subanalytic-chains-and-closed-cycle-supports.md#the-boundary-comes-from-the-frontier-triangle) constructs the complex and its canonical orientation map. [Supports, products and proper images of chains](supports-products-and-proper-images-of-chains.md) proves chain-stalk flatness, proper pushforward, boundary compatibility and ordered products. Its proofs retain arbitrary coefficients. The geometry below uses [subanalytic set calculus](../../sheaf-proof-readings/src/SH03/subanalytic-sets-and-limiting-tangent-directions.md#a-local-class-with-controlled-boundaries) and the [compatible triangulation theorem](../../sheaf-proof-readings/src/SH03/subanalytic-sets-and-limiting-tangent-directions.md#compatible-triangulations-on-arbitrary-analytic-manifolds). The algebraic steps will use the proved flat-quotient, Tor and tensor-comparison maps at their points of application.
 
 M. Kashiwara's [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §§1.3–1.6, defines subanalytic chains without a compact-support requirement and states the chain resolution and its coefficient form. We prove the local exactness by a proper transverse projection and a signed half-ray sweep, then derive the coefficient statement from flat cycle sheaves.
 
@@ -32,7 +32,7 @@ The complex is concentrated in degrees \([-n,0]\), and the top cycles are the or
 The map in (2) is the canonical map already constructed from oriented top-dimensional pieces. To prove it is a quasi-isomorphism, it suffices to show that every germ in \(\mathcal Z_p\) is a boundary for
 \(0\leq p<n\). The degree \(p=0\) is included: every zero-chain is a cycle, since its outgoing boundary is zero.
 
-Choose such a germ \(\alpha_x\). The closed-cycle presentation gives a representative on a closed subanalytic carrier after shrinking around \(x\). A germ of a section of the kernel sheaf is represented by an actual cycle on a neighborhood: first choose a chain section, and then shrink until its boundary is zero. The supported-cycle identity then represents that cycle on a closed \(S\) of dimension at most \(p\). In (3) and the local construction that follows, \(X\) denotes this open neighborhood, not the original whole manifold. We have a section
+Choose such a germ \(\alpha_x\). The [closed-cycle presentation](subanalytic-chains-and-closed-cycle-supports.md#closed-supports-define-cycles) gives a representative on a closed subanalytic carrier after shrinking around \(x\). A germ of a section of the kernel sheaf is represented by an actual cycle on a neighborhood: first choose a chain section, and then shrink until its boundary is zero. The supported-cycle identity then represents that cycle on a closed \(S\) of dimension at most \(p\). In (3) and the local construction that follows, \(X\) denotes this open neighborhood, not the original whole manifold. We have a section
 
 \[
  \alpha\in H^{-p}(S;\omega_S)
@@ -126,7 +126,7 @@ Place the half-ray factor **first** and form
  \qquad\text{(11)}
 \]
 
-Use the ordered product boundary rule (17), with the ray of geometric degree one placed first. The product \([0]\boxtimes\alpha\) equals \(i_*\alpha\): the point orientation contributes the degree-zero unit, and the product trace is the closed-embedding trace of \(i\). Thus \(\partial\alpha=0\) gives
+Use the [ordered product boundary rule (17)](supports-products-and-proper-images-of-chains.md#products-retain-the-geometric-and-cohomological-order), with the ray of geometric degree one placed first. The product \([0]\boxtimes\alpha\) equals \(i_*\alpha\): the point orientation contributes the degree-zero unit, and the product trace is the closed-embedding trace of \(i\). Thus \(\partial\alpha=0\) gives
 
 \[
  \partial\gamma
@@ -159,7 +159,7 @@ Thus the proper-chain operation from the preceding lesson applies to \(\gamma\).
  \qquad\text{(14)}
 \]
 
-The first equality uses the proper trace and boundary compatibility (12). For the last equality, \(i\) is a closed embedding and is proper on \(S\); the restriction of \(\varphi\) to its image \(i(S)\) is the identity onto the closed \(S\), hence proper. These are the actual support hypotheses for composing the two chain pushforwards. Their normalized traces compose to the identity trace of \(\varphi i=\mathrm{id}_X\). No factor is exchanged and no extra sign is introduced.
+The first equality uses the [proper trace and boundary compatibility (12)](supports-products-and-proper-images-of-chains.md#proper-support-makes-the-trace-into-a-chain-map). For the last equality, \(i\) is a closed embedding and is proper on \(S\); the restriction of \(\varphi\) to its image \(i(S)\) is the identity onto the closed \(S\), hence proper. These are the actual support hypotheses for composing the two chain pushforwards. Their normalized traces compose to the identity trace of \(\varphi i=\mathrm{id}_X\). No factor is exchanged and no extra sign is introduced.
 
 We have produced a primitive of each lower cycle germ after a suitable shrink. It depends on the carrier and the chosen coordinates. This is a proof of stalkwise exactness, with no assertion of a single global contracting operator or a compactly supported primitive.
 
@@ -185,7 +185,7 @@ When \(n=0\), \(X\) is discrete locally, \(\mathcal C_0=A_X\), and (15) is the i
 
 ## Flat cycles preserve coefficient kernels
 
-Each \(\mathcal C_p\) is flat by the finite-free stalk presentation. That proof uses only the chain presentation, not the local exactness being proved here. The new local exactness now gives, for \(1\leq p\leq n\),
+Each \(\mathcal C_p\) is flat by the [finite-free stalk presentation](supports-products-and-proper-images-of-chains.md#finite-subdivisions-make-chain-stalks-flat). That proof uses only the chain presentation, not the local exactness being proved here. The new local exactness now gives, for \(1\leq p\leq n\),
 
 \[
  0\longrightarrow\mathcal Z_p
@@ -197,7 +197,7 @@ Each \(\mathcal C_p\) is flat by the finite-free stalk presentation. That proof 
 
 The final map lands in cycles because \(\partial^2=0\), and is surjective because \(p-1<n\). Thus (16) includes \(p=n\).
 
-**Proof of flatness.** Work at an arbitrary stalk and test against an arbitrary \(A\)-module \(M\). The base module \((\mathcal Z_0)_x=(\mathcal C_0)_x\) is flat. Assuming \((\mathcal Z_{p-1})_x\) flat, the long exact Tor sequence and flatness criterion, Proposition 3.2 and Theorem 3.3, applied to (16), have the exact segment \(\operatorname{Tor}_2((\mathcal Z_{p-1})_x,M)\to\operatorname{Tor}_1((\mathcal Z_p)_x,M)\to\operatorname{Tor}_1((\mathcal C_p)_x,M)\). The outside groups vanish because their first inputs are flat. The middle group therefore vanishes for every \(M\), making \((\mathcal Z_p)_x\) flat. Induction reaches \(p=n\); degrees outside the range have zero sheaf. The stalk criterion for flatness, Lemma 1.2, proves sheaf flatness. No finite-generation or field hypothesis is used. \(\square\)
+**Proof of flatness.** Work at an arbitrary stalk and test against an arbitrary \(A\)-module \(M\). The base module \((\mathcal Z_0)_x=(\mathcal C_0)_x\) is flat. Assuming \((\mathcal Z_{p-1})_x\) flat, the [long exact Tor sequence and flatness criterion, Proposition 3.2 and Theorem 3.3](../../derived-categories-and-sheaf-operations/src/derived-tensor-products-and-tor-sheaves.md#3-tor-sheaves-and-the-flatness-criterion), applied to (16), have the exact segment \(\operatorname{Tor}_2((\mathcal Z_{p-1})_x,M)\to\operatorname{Tor}_1((\mathcal Z_p)_x,M)\to\operatorname{Tor}_1((\mathcal C_p)_x,M)\). The outside groups vanish because their first inputs are flat. The middle group therefore vanishes for every \(M\), making \((\mathcal Z_p)_x\) flat. Induction reaches \(p=n\); degrees outside the range have zero sheaf. The [stalk criterion for flatness, Lemma 1.2](../../derived-categories-and-sheaf-operations/src/flat-modules-and-k-flat-resolutions.md#1-flat-sheaves-and-exact-tensor-sequences), proves sheaf flatness. No finite-generation or field hypothesis is used. \(\square\)
 
 For any sheaf \(F\) of \(A\)-modules put \(\mathcal C_p(F)=\mathcal C_p\otimes_A F\) and \(\mathcal Z_p(F)=\mathcal Z_p\otimes_A F\). On every stalk, the term immediately before \((\mathcal Z_p)_x\otimes_A F_x\) in the tensor exact sequence is \(\operatorname{Tor}_1((\mathcal Z_{p-1})_x,F_x)\). It vanishes because the quotient \(\mathcal Z_{p-1}\) in (16) is flat. Thus tensor preserves the injection as well as the right-exact part, giving
 
@@ -229,13 +229,13 @@ For \(0\leq p<n\), the surjection in (17) in degree \(p+1\), together with (18),
  \qquad\text{(19)}
 \]
 
-The derived-tensor comparison uses bounded flat complexes. The orientation sheaf is locally free of rank one, and \(\mathcal C\) has only the flat terms in degrees \(-n,\ldots,0\). To see why such a bounded complex is K-flat, tensor it with an acyclic complex and filter by its finitely many chain degrees. Each associated quotient is the tensor with one flat sheaf in one degree and is acyclic; the finite filtration makes the total tensor acyclic. This is Lemma 2.3 of the K-flat construction. Consequently either displayed model computes \(\omega_X\otimes_A^L F\), and the tensor comparison for a quasi-isomorphism between K-flat models identifies the map in (19) with tensoring the canonical map (2).
+The derived-tensor comparison uses bounded flat complexes. The orientation sheaf is locally free of rank one, and \(\mathcal C\) has only the flat terms in degrees \(-n,\ldots,0\). To see why such a bounded complex is K-flat, tensor it with an acyclic complex and filter by its finitely many chain degrees. Each associated quotient is the tensor with one flat sheaf in one degree and is acyclic; the finite filtration makes the total tensor acyclic. This is [Lemma 2.3 of the K-flat construction](../../derived-categories-and-sheaf-operations/src/flat-modules-and-k-flat-resolutions.md#2-k-flat-complexes-and-their-closure-properties). Consequently either displayed model computes \(\omega_X\otimes_A^L F\), and the [tensor comparison for a quasi-isomorphism between K-flat models](../../derived-categories-and-sheaf-operations/src/derived-tensor-products-and-tor-sheaves.md#1-the-two-tensor-comparisons) identifies the map in (19) with tensoring the canonical map (2).
 
 For a bounded complex \(F^\bullet\), take total degree \(-p+q\) on \(\mathcal C_p\otimes_A F^q\), with differential \(c\otimes u\mapsto\partial c\otimes u+(-1)^p c\otimes d_Fu\). In each fixed coefficient degree, the sheaf case of (19) is a quasi-isomorphism. Filtering by the finitely many coefficient degrees and using the long exact cohomology sequence of successive filtration steps proves the total comparison. It is natural in coefficient chain maps and, by K-flatness, in their derived morphisms. This includes arbitrary bounded coefficients without a perfection assumption.
 
 ## What global sections compute
 
-The cutoff extension argument proves that every \(\mathcal C_p(F)\) is soft, even when \(F\) is arbitrary. It is in particular c-soft. On the locally compact, countable-at-infinity manifolds used here these sheaves are acyclic for both ordinary and compactly supported sections, by the soft-section acyclicity theorem. The chain complex is bounded, so its finite hypercohomology filtration has only the row of ordinary sections, or the row of compactly supported sections, of its terms: all higher derived sections of those terms vanish. Thus the two underived section complexes compute \(R\Gamma(X;\omega_X\otimes_A^L F)\) and \(R\Gamma_c(X;\omega_X\otimes_A^L F)\). Applying (19) gives
+The [cutoff extension argument](subanalytic-chains-and-closed-cycle-supports.md#cutting-chains-proves-softness) proves that every \(\mathcal C_p(F)\) is soft, even when \(F\) is arbitrary. It is in particular c-soft. On the locally compact, countable-at-infinity manifolds used here these sheaves are acyclic for both ordinary and compactly supported sections, by the [soft-section acyclicity theorem](../../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-found-soft--soft-resolution-foundation-contract). The chain complex is bounded, so its finite hypercohomology filtration has only the row of ordinary sections, or the row of compactly supported sections, of its terms: all higher derived sections of those terms vanish. Thus the two underived section complexes compute \(R\Gamma(X;\omega_X\otimes_A^L F)\) and \(R\Gamma_c(X;\omega_X\otimes_A^L F)\). Applying (19) gives
 
 \[
  \begin{aligned}

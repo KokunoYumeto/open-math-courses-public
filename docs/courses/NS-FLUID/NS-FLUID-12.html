@@ -1,0 +1,1084 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Global nonlinear energy and total speed — Incompressible flow</title><link rel="stylesheet" href="reader.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script>
+<script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Incompressible flow</a><a href="src/global-nonlinear-energy-and-total-speed.md">Editable lesson</a><span class="unlinked">Sources and authorship</span></nav></header><main id="main"><nav aria-label="Lesson sequence"><a href="NS-FLUID-11.html">Previous lesson</a><a href="NS-FLUID-13.html">Next lesson</a></nav><article class="lesson"><h1 id="global-nonlinear-energy-and-total-speed">Global nonlinear energy and total speed</h1>
+<p>A moving annulus must move far enough to keep ahead of the flow.
+The preceding lesson expressed that requirement as an integral of
+the maximum velocity. We now bound that integral from the actual
+<span class="math" data-tex="\(L^3\)">\(L^3\)</span> velocity bound and the original force.</p>
+<p>The proof has two parts. First, subtract the actual earlier heat
+evolution and bound the energy of what remains. Then sum its
+frequency components, keeping the low frequencies, all four tensor
+interactions and the Leray projection. The final estimate retains
+the viscosity and the original time interval.</p>
+<p>This develops the bounded-total-speed argument in Terence Tao's
+<a href="https://arxiv.org/abs/1908.04958v2">quantitative Navier–Stokes paper</a>.
+The full-force calculation and the source corrections are proved
+here. They supply inputs for annular regularity; the general
+large-<span class="math" data-tex="\(L^3\)">\(L^3\)</span> endpoint theorem is still a further argument.</p>
+<h2 id="1-the-actual-heat-field-and-the-nonlinear-part">1. The actual heat field and the nonlinear part</h2>
+<p>Let <span class="math" data-tex="\(t_b&lt;t_0&lt;t_2\)">\(t_b&lt;t_0&lt;t_2\)</span>, <span class="math" data-tex="\(I=[t_0,t_2]\)">\(I=[t_0,t_2]\)</span>, and <span class="math" data-tex="\(T=t_2-t_0&gt;0\)">\(T=t_2-t_0&gt;0\)</span>.
+On <span class="math" data-tex="\([t_b,t_2]\times\mathbb R^3\)">\([t_b,t_2]\times\mathbb R^3\)</span>, keep the original equation</p>
+<span class="math math-display" data-tex="\[
+\partial_tu+(u\cdot\nabla)u+\nabla p=\nu\Delta u+f,\qquad
+\operatorname{div}u=0,\qquad \nu&gt;0 .
+\tag{1.1}
+\]">\[
+\partial_tu+(u\cdot\nabla)u+\nabla p=\nu\Delta u+f,\qquad
+\operatorname{div}u=0,\qquad \nu&gt;0 .
+\tag{1.1}
+\]</span>
+<p>We work with the smooth source class: <span class="math" data-tex="\(u\)">\(u\)</span> and its spatial
+derivatives belong to <span class="math" data-tex="\(L^\infty_tL^2_x\)">\(L^\infty_tL^2_x\)</span>. These hypotheses
+justify the integrations and Fourier limits below. The resulting
+bounds do not depend on those auxiliary derivative norms.
+Let</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+U=\sup_{t_b\leq t\leq t_2}\|u(t)\|_3&lt;\infty,\qquad
+L=t_2-t_b,\\
+f=f_a+f_b,\qquad f_a\in L^1([t_b,t_2];H^1),\qquad
+f_b\in L^2([t_b,t_2];L^2),\\
+F_1=\int_{t_b}^{t_2}\|f(t)\|_2\,dt
+\leq\|f_a\|_{L^1L^2}+\sqrt L\,\|f_b\|_{L^2L^2}.
+\end{gathered}
+\tag{1.2}
+\]">\[
+\begin{gathered}
+U=\sup_{t_b\leq t\leq t_2}\|u(t)\|_3&lt;\infty,\qquad
+L=t_2-t_b,\\
+f=f_a+f_b,\qquad f_a\in L^1([t_b,t_2];H^1),\qquad
+f_b\in L^2([t_b,t_2];L^2),\\
+F_1=\int_{t_b}^{t_2}\|f(t)\|_2\,dt
+\leq\|f_a\|_{L^1L^2}+\sqrt L\,\|f_b\|_{L^2L^2}.
+\end{gathered}
+\tag{1.2}
+\]</span>
+<p>No force is removed from the equation. Define</p>
+<span class="math math-display" data-tex="\[
+v(t)=e^{\nu(t-t_b)\Delta}u(t_b),\qquad w=u-v .
+\tag{1.3}
+\]">\[
+v(t)=e^{\nu(t-t_b)\Delta}u(t_b),\qquad w=u-v .
+\tag{1.3}
+\]</span>
+<p>Then <span class="math" data-tex="\(w(t_b)=0\)">\(w(t_b)=0\)</span>, and the pressure projection from the earlier
+lessons gives its complete integral equation:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+w(t)={}&amp;-\int_{t_b}^t e^{\nu(t-s)\Delta}
+\mathbb P\operatorname{div}(u\otimes u)(s)\,ds\\
+&amp;+\int_{t_b}^t e^{\nu(t-s)\Delta}\mathbb P f(s)\,ds .
+\end{aligned}
+\tag{1.4}
+\]">\[
+\begin{aligned}
+w(t)={}&amp;-\int_{t_b}^t e^{\nu(t-s)\Delta}
+\mathbb P\operatorname{div}(u\otimes u)(s)\,ds\\
+&amp;+\int_{t_b}^t e^{\nu(t-s)\Delta}\mathbb P f(s)\,ds .
+\end{aligned}
+\tag{1.4}
+\]</span>
+<p>Here <span class="math" data-tex="\(\mathbb P\)">\(\mathbb P\)</span> is the original whole-space Leray projection,
+with symbol <span class="math" data-tex="\(\delta_{ij}-\xi_i\xi_j/|\xi|^2\)">\(\delta_{ij}-\xi_i\xi_j/|\xi|^2\)</span> off zero.
+The Fourier convention remains <span class="math" data-tex="\(e^{-2\pi i x\cdot\xi}\)">\(e^{-2\pi i x\cdot\xi}\)</span>.
+The heat kernel and the full tensor-to-vector kernel are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H_s(x)=(4\pi s)^{-3/2}e^{-|x|^2/(4s)},\\
+K_{ijk,s}(x)=\delta_{ij}\partial_kH_s(x)
++\int_s^\infty\partial_i\partial_j\partial_kH_\tau(x)\,d\tau .
+\end{gathered}
+\tag{1.5}
+\]">\[
+\begin{gathered}
+H_s(x)=(4\pi s)^{-3/2}e^{-|x|^2/(4s)},\\
+K_{ijk,s}(x)=\delta_{ij}\partial_kH_s(x)
++\int_s^\infty\partial_i\partial_j\partial_kH_\tau(x)\,d\tau .
+\end{gathered}
+\tag{1.5}
+\]</span>
+<p>Fourier transformation of the second line gives exactly</p>
+<span class="math math-display" data-tex="\[
+e^{-4\pi^2s|\xi|^2}
+\left(\delta_{ij}-\frac{\xi_i\xi_j}{|\xi|^2}\right)
+2\pi i\xi_k .
+\tag{1.6}
+\]">\[
+e^{-4\pi^2s|\xi|^2}
+\left(\delta_{ij}-\frac{\xi_i\xi_j}{|\xi|^2}\right)
+2\pi i\xi_k .
+\tag{1.6}
+\]</span>
+<p>For example, the three derivatives inside the integral contribute
+<span class="math" data-tex="\((2\pi i)^3\xi_i\xi_j\xi_k\)">\((2\pi i)^3\xi_i\xi_j\xi_k\)</span>, and time integration divides
+by <span class="math" data-tex="\(4\pi^2|\xi|^2\)">\(4\pi^2|\xi|^2\)</span>. This proves both the sign and the full
+projection factor.</p>
+<p>The integral in (1.5) converges in <span class="math" data-tex="\(L^{6/5}\)">\(L^{6/5}\)</span>. The exact Gaussian
+change of variables shows that one derivative has that norm
+proportional to <span class="math" data-tex="\(s^{-3/4}\)">\(s^{-3/4}\)</span>, and three derivatives to <span class="math" data-tex="\(s^{-7/4}\)">\(s^{-7/4}\)</span>.
+Thus define the finite constant</p>
+<span class="math math-display" data-tex="\[
+\kappa_0=\sum_{i,j,k=1}^3
+\left[
+\delta_{ij}\|\partial_kH_1\|_{6/5}
++\frac43\|\partial_i\partial_j\partial_kH_1\|_{6/5}
+\right].
+\tag{1.7}
+\]">\[
+\kappa_0=\sum_{i,j,k=1}^3
+\left[
+\delta_{ij}\|\partial_kH_1\|_{6/5}
++\frac43\|\partial_i\partial_j\partial_kH_1\|_{6/5}
+\right].
+\tag{1.7}
+\]</span>
+<p>Young's inequality bounds the <span class="math" data-tex="\(L^{3/2}\)">\(L^{3/2}\)</span>-to-<span class="math" data-tex="\(L^2\)">\(L^2\)</span> operator
+norm of (1.5) by <span class="math" data-tex="\(\kappa_0s^{-3/4}\)">\(\kappa_0s^{-3/4}\)</span>, with tensor Euclidean
+norms. The sum over all three indices is a safe component bound.
+Since <span class="math" data-tex="\(\|u\otimes u\|_{3/2}=\|u\|_3^2\)">\(\|u\otimes u\|_{3/2}=\|u\|_3^2\)</span>, (1.4) implies</p>
+<span class="math math-display" data-tex="\[
+\sup_{t_b\leq t\leq t_2}\|w(t)\|_2
+\leq W_0:=4\kappa_0\nu^{-3/4}U^2L^{1/4}+F_1 .
+\tag{1.8}
+\]">\[
+\sup_{t_b\leq t\leq t_2}\|w(t)\|_2
+\leq W_0:=4\kappa_0\nu^{-3/4}U^2L^{1/4}+F_1 .
+\tag{1.8}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(\int_{t_b}^t(t-s)^{-3/4}\,ds=4(t-t_b)^{1/4}\)">\(\int_{t_b}^t(t-s)^{-3/4}\,ds=4(t-t_b)^{1/4}\)</span>.
+For the force term, both the heat operator and <span class="math" data-tex="\(\mathbb P\)">\(\mathbb P\)</span>
+are <span class="math" data-tex="\(L^2\)">\(L^2\)</span> contractions. Also positivity and mass one of the
+heat kernel give</p>
+<span class="math math-display" data-tex="\[
+\|v(t)\|_3\leq U,\qquad \|w(t)\|_3\leq2U .
+\tag{1.9}
+\]">\[
+\|v(t)\|_3\leq U,\qquad \|w(t)\|_3\leq2U .
+\tag{1.9}
+\]</span>
+<p>The bound (1.8) does not require the value of <span class="math" data-tex="\(\|u(t_b)\|_2\)">\(\|u(t_b)\|_2\)</span>.
+It bounds the actual difference <span class="math" data-tex="\(u-v\)">\(u-v\)</span>, including its forced part.</p>
+<h2 id="2-the-full-nonlinear-energy-estimate">2. The full nonlinear energy estimate</h2>
+<p>For an integer <span class="math" data-tex="\(m\geq0\)">\(m\geq0\)</span> and <span class="math" data-tex="\(3\leq p\leq\infty\)">\(3\leq p\leq\infty\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\frac1{r_p}=\frac23+\frac1p,\qquad
+C_{m,p}=\|\nabla^mH_1\|_{r_p}.
+\tag{2.1}
+\]">\[
+\frac1{r_p}=\frac23+\frac1p,\qquad
+C_{m,p}=\|\nabla^mH_1\|_{r_p}.
+\tag{2.1}
+\]</span>
+<p>The derivative tensor contains every ordered spatial derivative.
+Gaussian differentiation and Young give</p>
+<span class="math math-display" data-tex="\[
+\|\nabla^mv(t)\|_p
+\leq C_{m,p}U
+[\nu(t-t_b)]^{-m/2-1/2+3/(2p)} .
+\tag{2.2}
+\]">\[
+\|\nabla^mv(t)\|_p
+\leq C_{m,p}U
+[\nu(t-t_b)]^{-m/2-1/2+3/(2p)} .
+\tag{2.2}
+\]</span>
+<p>All constants are specified integrals of Gaussian derivatives.
+In particular <span class="math" data-tex="\(C_{0,3}=1\)">\(C_{0,3}=1\)</span> and
+<span class="math" data-tex="\(C_{0,\infty}=1/(3\sqrt\pi)\)">\(C_{0,\infty}=1/(3\sqrt\pi)\)</span>; Exercise 1 verifies the latter.</p>
+<p>Since <span class="math" data-tex="\(w\)">\(w\)</span> is solenoidal, its energy identity is</p>
+<span class="math math-display" data-tex="\[
+\frac12\frac{d}{dt}\|w\|_2^2+\nu\|\nabla w\|_2^2
+=\int\nabla w : (u\otimes u-w\otimes w)\,dx
++\int w\cdot f\,dx .
+\tag{2.3}
+\]">\[
+\frac12\frac{d}{dt}\|w\|_2^2+\nu\|\nabla w\|_2^2
+=\int\nabla w : (u\otimes u-w\otimes w)\,dx
++\int w\cdot f\,dx .
+\tag{2.3}
+\]</span>
+<p>The pressure pairs to zero. The omitted pure <span class="math" data-tex="\(w\)">\(w\)</span> tensor has
+zero pairing because integration of
+<span class="math" data-tex="\((w\cdot\nabla)|w|^2/2\)">\((w\cdot\nabla)|w|^2/2\)</span> is zero. The exact remaining tensor is
+<span class="math" data-tex="\(v\otimes u+w\otimes v\)">\(v\otimes u+w\otimes v\)</span>; by (1.9) its <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm is
+at most <span class="math" data-tex="\(3U\|v\|_6\)">\(3U\|v\|_6\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\frac12\frac{d}{dt}\|w\|_2^2+\frac\nu2\|\nabla w\|_2^2
+\leq\frac{9U^2}{2\nu}\|v\|_6^2+W_0\|f\|_2 .
+\tag{2.4}
+\]">\[
+\frac12\frac{d}{dt}\|w\|_2^2+\frac\nu2\|\nabla w\|_2^2
+\leq\frac{9U^2}{2\nu}\|v\|_6^2+W_0\|f\|_2 .
+\tag{2.4}
+\]</span>
+<p>This uses the nonnegative square with factors
+<span class="math" data-tex="\(\sqrt\nu\|\nabla w\|_2\)">\(\sqrt\nu\|\nabla w\|_2\)</span> and <span class="math" data-tex="\(3U\|v\|_6/\sqrt\nu\)">\(3U\|v\|_6/\sqrt\nu\)</span>.
+For any <span class="math" data-tex="\(t_a&gt;t_b\)">\(t_a&gt;t_b\)</span>, integration retains both endpoint norms
+before discarding the nonnegative final norm in the upper-bound
+direction. Substituting (2.2) yields</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_{t_a}^{t_2}\|\nabla w\|_2^2\,dt\leq{}&amp;
+\frac{\|w(t_a)\|_2^2}{\nu}\\
+&amp;+\frac{18C_{0,6}^2U^4}{\nu^{5/2}}
+\left(\sqrt{t_2-t_b}-\sqrt{t_a-t_b}\right)
++\frac{2W_0}{\nu}\int_{t_a}^{t_2}\|f\|_2\,dt .
+\end{aligned}
+\tag{2.5}
+\]">\[
+\begin{aligned}
+\int_{t_a}^{t_2}\|\nabla w\|_2^2\,dt\leq{}&amp;
+\frac{\|w(t_a)\|_2^2}{\nu}\\
+&amp;+\frac{18C_{0,6}^2U^4}{\nu^{5/2}}
+\left(\sqrt{t_2-t_b}-\sqrt{t_a-t_b}\right)
++\frac{2W_0}{\nu}\int_{t_a}^{t_2}\|f\|_2\,dt .
+\end{aligned}
+\tag{2.5}
+\]</span>
+<p>The factor <span class="math" data-tex="\(18\)">\(18\)</span> includes the integral of
+<span class="math" data-tex="\((t-t_b)^{-1/2}\)">\((t-t_b)^{-1/2}\)</span>. The initial <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm is squared.
+In particular, its upper bound from (1.8) must also be squared.
+Spatial cutoff limits justify (2.3) in the stated source class:
+all velocity factors and their needed derivatives are integrable,
+and the annular errors tend to zero by their <span class="math" data-tex="\(L^2\)">\(L^2\)</span> tails.
+The force pairing is integrable by (1.8) and (1.2).</p>
+<p>For the total-speed estimate, set</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal M=\int_I\|\nabla w\|_2^2\,dt,\qquad
+H=\|v\|_{L^2(I;L^\infty)},\qquad
+F_I=\int_I\|f(t)\|_2\,dt,\\
+V=\frac{2U}{3\sqrt{\pi\nu}}
+\left(\sqrt{t_2-t_b}-\sqrt{t_0-t_b}\right).
+\end{gathered}
+\tag{2.6}
+\]">\[
+\begin{gathered}
+\mathcal M=\int_I\|\nabla w\|_2^2\,dt,\qquad
+H=\|v\|_{L^2(I;L^\infty)},\qquad
+F_I=\int_I\|f(t)\|_2\,dt,\\
+V=\frac{2U}{3\sqrt{\pi\nu}}
+\left(\sqrt{t_2-t_b}-\sqrt{t_0-t_b}\right).
+\end{gathered}
+\tag{2.6}
+\]</span>
+<p>Equation (2.5) bounds <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span>. The actual earlier heat
+time also gives</p>
+<span class="math math-display" data-tex="\[
+\int_I\|v\|_\infty\,dt\leq V,\qquad
+H\leq\frac{U}{3\sqrt{\pi\nu}}
+\left(\log\frac{t_2-t_b}{t_0-t_b}\right)^{1/2}.
+\tag{2.7}
+\]">\[
+\int_I\|v\|_\infty\,dt\leq V,\qquad
+H\leq\frac{U}{3\sqrt{\pi\nu}}
+\left(\log\frac{t_2-t_b}{t_0-t_b}\right)^{1/2}.
+\tag{2.7}
+\]</span>
+<p>The strictly positive gap <span class="math" data-tex="\(t_0-t_b\)">\(t_0-t_b\)</span> is retained in the logarithm.
+No bound at the initial heat time is inferred from it.</p>
+<h2 id="3-the-original-frequency-operators-and-their-kernels">3. The original frequency operators and their kernels</h2>
+<p>Fix any physical frequency <span class="math" data-tex="\(N_*&gt;0\)">\(N_*&gt;0\)</span>. All frequencies <span class="math" data-tex="\(M,N\)">\(M,N\)</span>
+below belong to <span class="math" data-tex="\(\{2^jN_*:j\in\mathbb Z\}\)">\(\{2^jN_*:j\in\mathbb Z\}\)</span>. The sum includes
+arbitrarily small positive frequencies. Use the explicit functions</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+b(s)=
+\begin{cases}e^{-1/s},&amp;s&gt;0,\\0,&amp;s\leq0,\end{cases}
+\qquad
+\chi(s)=\frac{b(1-s)}{b(1-s)+b(s-1/4)},\qquad
+\phi(\xi)=\chi(|\xi|^2),\\
+p(\xi)=\phi(\xi)-\phi(2\xi),\qquad
+\widetilde p(\xi)=\phi(\xi/2)-\phi(4\xi),\\
+P_{\leq N}=\phi(\xi/N)(D),\quad P_N=p(\xi/N)(D),\quad
+\widetilde P_N=\widetilde p(\xi/N)(D),\quad
+P_{&gt;N}=1-P_{\leq N}.
+\end{gathered}
+\tag{3.1}
+\]">\[
+\begin{gathered}
+b(s)=
+\begin{cases}e^{-1/s},&amp;s&gt;0,\\0,&amp;s\leq0,\end{cases}
+\qquad
+\chi(s)=\frac{b(1-s)}{b(1-s)+b(s-1/4)},\qquad
+\phi(\xi)=\chi(|\xi|^2),\\
+p(\xi)=\phi(\xi)-\phi(2\xi),\qquad
+\widetilde p(\xi)=\phi(\xi/2)-\phi(4\xi),\\
+P_{\leq N}=\phi(\xi/N)(D),\quad P_N=p(\xi/N)(D),\quad
+\widetilde P_N=\widetilde p(\xi/N)(D),\quad
+P_{&gt;N}=1-P_{\leq N}.
+\end{gathered}
+\tag{3.1}
+\]</span>
+<p>The denominator in <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is positive everywhere. Its radial
+profile decreases: where both denominator terms are positive the
+numerator decreases and the second term increases, so differentiating
+the quotient gives a nonpositive derivative. It follows that <span class="math" data-tex="\(p\)">\(p\)</span>
+is nonnegative and supported in <span class="math" data-tex="\(1/4\leq|\xi|\leq1\)">\(1/4\leq|\xi|\leq1\)</span>.
+At any nonzero frequency at most three of its dyadic supports meet.
+Finite telescoping gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{j=-J}^{K}P_{2^jN_*}
+=P_{\leq2^KN_*}-P_{\leq2^{-J-1}N_*}.
+\tag{3.2}
+\]">\[
+\sum_{j=-J}^{K}P_{2^jN_*}
+=P_{\leq2^KN_*}-P_{\leq2^{-J-1}N_*}.
+\tag{3.2}
+\]</span>
+<p>The multiplier tends to one at every <span class="math" data-tex="\(\xi\ne0\)">\(\xi\ne0\)</span> and is bounded
+by one. Parseval and dominated convergence prove the corresponding
+strong <span class="math" data-tex="\(L^2(\mathbb R^3)\)">\(L^2(\mathbb R^3)\)</span> limit. Moreover, <span class="math" data-tex="\(\widetilde p=1\)">\(\widetilde p=1\)</span>
+on the support of <span class="math" data-tex="\(p\)">\(p\)</span>, directly from the plateau and support of
+<span class="math" data-tex="\(\phi\)">\(\phi\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+P_N\widetilde P_N=P_N .
+\tag{3.3}
+\]">\[
+P_N\widetilde P_N=P_N .
+\tag{3.3}
+\]</span>
+<p>The whole-space theorem here has no nonzero constant in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>.
+A periodic version must retain its constant velocity mode separately;
+it is not obtained by discarding that mode from (3.2).</p>
+<p>Put <span class="math" data-tex="\(\Phi=\mathcal F^{-1}\phi\)">\(\Phi=\mathcal F^{-1}\phi\)</span> and
+<span class="math" data-tex="\(\widetilde\Phi=\mathcal F^{-1}\widetilde p\)">\(\widetilde\Phi=\mathcal F^{-1}\widetilde p\)</span>. Retain these
+finite kernel constants:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c_\phi=\|\Phi\|_{3/2},\qquad
+d_1=\|\widetilde\Phi\|_1,\quad
+d_{6/5}=\|\widetilde\Phi\|_{6/5},\quad
+d_2=\|\widetilde\Phi\|_2,\quad
+d_\infty=\|\widetilde\Phi\|_\infty,\\
+c_p=\|p\|_2,\qquad c_*=\frac{\pi^2}{4}.
+\end{gathered}
+\tag{3.4}
+\]">\[
+\begin{gathered}
+c_\phi=\|\Phi\|_{3/2},\qquad
+d_1=\|\widetilde\Phi\|_1,\quad
+d_{6/5}=\|\widetilde\Phi\|_{6/5},\quad
+d_2=\|\widetilde\Phi\|_2,\quad
+d_\infty=\|\widetilde\Phi\|_\infty,\\
+c_p=\|p\|_2,\qquad c_*=\frac{\pi^2}{4}.
+\end{gathered}
+\tag{3.4}
+\]</span>
+<p>Smooth compact Fourier support and integration by parts make
+<span class="math" data-tex="\(\Phi,\widetilde\Phi\)">\(\Phi,\widetilde\Phi\)</span> Schwartz functions. In particular all
+these integrals exist. Young's inequality applied to the exact
+kernel <span class="math" data-tex="\(N^3\widetilde\Phi(Nx)\)">\(N^3\widetilde\Phi(Nx)\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\|\widetilde P_NF\|_\infty
+\leq d_r N^{3(1-1/r)}\|F\|_{r&#x27;},
+\qquad r\in\{1,6/5,2,\infty\},\qquad \frac1r+\frac1{r&#x27;}=1 .
+\tag{3.5}
+\]">\[
+\|\widetilde P_NF\|_\infty
+\leq d_r N^{3(1-1/r)}\|F\|_{r&#x27;},
+\qquad r\in\{1,6/5,2,\infty\},\qquad \frac1r+\frac1{r&#x27;}=1 .
+\tag{3.5}
+\]</span>
+<p>This holds for the Euclidean norm of a scalar, vector or tensor
+field <span class="math" data-tex="\(F\)">\(F\)</span>, by the pointwise norm bound in the convolution integral.</p>
+<h3 id="3-1-the-full-heat-and-leray-kernels-on-an-annulus">3.1. The full heat and Leray kernels on an annulus</h3>
+<p>For <span class="math" data-tex="\(s\geq0\)">\(s\geq0\)</span>, define the fixed symbols and their actual kernels:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+m_0(\xi)=p(\xi),\qquad
+m_{ijk}(\xi)=2\pi i\xi_k p(\xi)
+\left(\delta_{ij}-\frac{\xi_i\xi_j}{|\xi|^2}\right),\\
+k_{0,s}=\mathcal F^{-1}(e^{-4\pi^2s|\xi|^2}m_0),\qquad
+k_{ijk,s}=\mathcal F^{-1}(e^{-4\pi^2s|\xi|^2}m_{ijk}),\\
+B(s)=\|k_{0,s}\|_{3/2},\qquad
+A(s)=\sum_{i,j,k=1}^3\|k_{ijk,s}\|_1,\\
+\mathcal B_0=\int_0^\infty B(s)\,ds,\qquad
+\mathcal K_0=\int_0^\infty A(s)\,ds .
+\end{gathered}
+\tag{3.6}
+\]">\[
+\begin{gathered}
+m_0(\xi)=p(\xi),\qquad
+m_{ijk}(\xi)=2\pi i\xi_k p(\xi)
+\left(\delta_{ij}-\frac{\xi_i\xi_j}{|\xi|^2}\right),\\
+k_{0,s}=\mathcal F^{-1}(e^{-4\pi^2s|\xi|^2}m_0),\qquad
+k_{ijk,s}=\mathcal F^{-1}(e^{-4\pi^2s|\xi|^2}m_{ijk}),\\
+B(s)=\|k_{0,s}\|_{3/2},\qquad
+A(s)=\sum_{i,j,k=1}^3\|k_{ijk,s}\|_1,\\
+\mathcal B_0=\int_0^\infty B(s)\,ds,\qquad
+\mathcal K_0=\int_0^\infty A(s)\,ds .
+\end{gathered}
+\tag{3.6}
+\]</span>
+<p>We now prove that both time integrals are finite. Let
+<span class="math" data-tex="\(\mathcal D_\xi=(1-\Delta_\xi/(4\pi^2))^2\)">\(\mathcal D_\xi=(1-\Delta_\xi/(4\pi^2))^2\)</span>.
+Twice integrating by parts in the inverse Fourier transform gives</p>
+<span class="math math-display" data-tex="\[
+|\mathcal F^{-1}m(x)|
+\leq(1+|x|^2)^{-2}\|\mathcal D_\xi m\|_1 .
+\tag{3.7}
+\]">\[
+|\mathcal F^{-1}m(x)|
+\leq(1+|x|^2)^{-2}\|\mathcal D_\xi m\|_1 .
+\tag{3.7}
+\]</span>
+<p>Each fixed symbol in (3.6) is smooth and compactly supported
+away from zero. Leibniz's rule gives uniquely specified coefficients
+<span class="math" data-tex="\(m_0^\sharp,\ldots,m_4^\sharp\)">\(m_0^\sharp,\ldots,m_4^\sharp\)</span> through the identity</p>
+<span class="math math-display" data-tex="\[
+e^{4\pi^2s|\xi|^2}
+\mathcal D_\xi(e^{-4\pi^2s|\xi|^2}m(\xi))
+=\sum_{n=0}^4s^n m_n^\sharp(\xi).
+\tag{3.8}
+\]">\[
+e^{4\pi^2s|\xi|^2}
+\mathcal D_\xi(e^{-4\pi^2s|\xi|^2}m(\xi))
+=\sum_{n=0}^4s^n m_n^\sharp(\xi).
+\tag{3.8}
+\]</span>
+<p>There are at most four derivatives, each producing at most one
+power of <span class="math" data-tex="\(s\)">\(s\)</span>. The coefficients remain smooth and supported in
+the same annulus. On that support <span class="math" data-tex="\(4\pi^2|\xi|^2\geq c_*\)">\(4\pi^2|\xi|^2\geq c_*\)</span>.
+Thus, for <span class="math" data-tex="\(r=1\)">\(r=1\)</span> or <span class="math" data-tex="\(3/2\)">\(3/2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\mathcal F^{-1}(e^{-4\pi^2s|\xi|^2}m)\|_r
+&amp;\leq J_r^{1/r}e^{-c_*s}
+\sum_{n=0}^4s^n\|m_n^\sharp\|_1,\\
+J_r&amp;=\int_{\mathbb R^3}(1+|x|^2)^{-2r}\,dx,\qquad
+J_1=\pi^2,\quad J_{3/2}=\pi^2/4 .
+\end{aligned}
+\tag{3.9}
+\]">\[
+\begin{aligned}
+\|\mathcal F^{-1}(e^{-4\pi^2s|\xi|^2}m)\|_r
+&amp;\leq J_r^{1/r}e^{-c_*s}
+\sum_{n=0}^4s^n\|m_n^\sharp\|_1,\\
+J_r&amp;=\int_{\mathbb R^3}(1+|x|^2)^{-2r}\,dx,\qquad
+J_1=\pi^2,\quad J_{3/2}=\pi^2/4 .
+\end{aligned}
+\tag{3.9}
+\]</span>
+<p>The radial integrals follow by polar coordinates and the substitution
+<span class="math" data-tex="\(r=\tan\theta\)">\(r=\tan\theta\)</span>. Integrating (3.9) in <span class="math" data-tex="\(s\)">\(s\)</span> gives the explicit
+finite upper bound</p>
+<span class="math math-display" data-tex="\[
+J_r^{1/r}\sum_{n=0}^4
+\frac{n!\,\|m_n^\sharp\|_1}{c_*^{n+1}}.
+\tag{3.10}
+\]">\[
+J_r^{1/r}\sum_{n=0}^4
+\frac{n!\,\|m_n^\sharp\|_1}{c_*^{n+1}}.
+\tag{3.10}
+\]</span>
+<p>For <span class="math" data-tex="\(\mathcal B_0\)">\(\mathcal B_0\)</span> use <span class="math" data-tex="\(m=m_0,r=3/2\)">\(m=m_0,r=3/2\)</span>; for
+<span class="math" data-tex="\(\mathcal K_0\)">\(\mathcal K_0\)</span>, sum the bound with <span class="math" data-tex="\(m=m_{ijk},r=1\)">\(m=m_{ijk},r=1\)</span>.
+This proves the constants used below without leaving a multiplier
+estimate unproved.</p>
+<p>At physical frequency <span class="math" data-tex="\(N\)">\(N\)</span> and physical time lag <span class="math" data-tex="\(\tau\)">\(\tau\)</span>,
+the kernels are <span class="math" data-tex="\(N^3k_{0,\nu\tau N^2}(Nx)\)">\(N^3k_{0,\nu\tau N^2}(Nx)\)</span> and
+<span class="math" data-tex="\(N^4k_{ijk,\nu\tau N^2}(Nx)\)">\(N^4k_{ijk,\nu\tau N^2}(Nx)\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|e^{\nu\tau\Delta}P_Ng\|_\infty
+&amp;\leq NB(\nu\tau N^2)\|g\|_3,\\
+\|e^{\nu\tau\Delta}P_N\mathbb P\operatorname{div}F\|_\infty
+&amp;\leq NA(\nu\tau N^2)\|F\|_\infty .
+\end{aligned}
+\tag{3.11}
+\]">\[
+\begin{aligned}
+\|e^{\nu\tau\Delta}P_Ng\|_\infty
+&amp;\leq NB(\nu\tau N^2)\|g\|_3,\\
+\|e^{\nu\tau\Delta}P_N\mathbb P\operatorname{div}F\|_\infty
+&amp;\leq NA(\nu\tau N^2)\|F\|_\infty .
+\end{aligned}
+\tag{3.11}
+\]</span>
+<p>For the force, a different bound is useful. Cauchy–Schwarz in
+Fourier space, the full projection's norm at most one, and
+<span class="math" data-tex="\(|\xi|\geq N/4\)">\(|\xi|\geq N/4\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\|e^{\nu\tau\Delta}P_N\mathbb P f\|_\infty
+\leq c_p N^{3/2}e^{-c_*\nu\tau N^2}\|f\|_2 .
+\tag{3.12}
+\]">\[
+\|e^{\nu\tau\Delta}P_N\mathbb P f\|_\infty
+\leq c_p N^{3/2}e^{-c_*\nu\tau N^2}\|f\|_2 .
+\tag{3.12}
+\]</span>
+<p>The kernels and these bounds retain every Leray component and
+the derivative factor <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>. The value of the projection
+at zero does not enter an annular operator.</p>
+<h2 id="4-the-two-receiving-frequency-sums">4. The two receiving frequency sums</h2>
+<p>Define the actual time-space norms</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a_M=\|P_Mw\|_{L^2(I;L^2)},\qquad
+L_N=\|P_{\leq N}w\|_{L^2(I;L^\infty)},\qquad
+H_N=\|P_{&gt;N}w\|_{L^2(I;L^2)},\\
+v_3=4\pi/3,\qquad g_*=(1-2^{-1/2})^{-1}.
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+a_M=\|P_Mw\|_{L^2(I;L^2)},\qquad
+L_N=\|P_{\leq N}w\|_{L^2(I;L^\infty)},\qquad
+H_N=\|P_{&gt;N}w\|_{L^2(I;L^2)},\\
+v_3=4\pi/3,\qquad g_*=(1-2^{-1/2})^{-1}.
+\end{gathered}
+\tag{4.1}
+\]</span>
+<p>Fourier Cauchy–Schwarz on <span class="math" data-tex="\(|\xi|\leq M\)">\(|\xi|\leq M\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\|P_Mw(t)\|_\infty
+\leq\sqrt{v_3}\,M^{3/2}\|P_Mw(t)\|_2 .
+\tag{4.2}
+\]">\[
+\|P_Mw(t)\|_\infty
+\leq\sqrt{v_3}\,M^{3/2}\|P_Mw(t)\|_2 .
+\tag{4.2}
+\]</span>
+<p>Minkowski, telescoping and the exact weighted Cauchy split then give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L_N^2
+&amp;\leq v_3\left(\sum_{M\leq N}M^{3/2}a_M\right)^2\\
+&amp;\leq v_3g_*N^{1/2}\sum_{M\leq N}M^{5/2}a_M^2 .
+\end{aligned}
+\tag{4.3}
+\]">\[
+\begin{aligned}
+L_N^2
+&amp;\leq v_3\left(\sum_{M\leq N}M^{3/2}a_M\right)^2\\
+&amp;\leq v_3g_*N^{1/2}\sum_{M\leq N}M^{5/2}a_M^2 .
+\end{aligned}
+\tag{4.3}
+\]</span>
+<p>The two Cauchy factors are <span class="math" data-tex="\(M^{1/4}\)">\(M^{1/4}\)</span> and <span class="math" data-tex="\(M^{5/4}a_M\)">\(M^{5/4}a_M\)</span>.
+The first squared sum is exactly <span class="math" data-tex="\(g_*N^{1/2}\)">\(g_*N^{1/2}\)</span>.
+For infinite sums first apply the finite inequality and then
+monotone convergence. Its finite right side, bounded below in
+(4.6), also proves that the low-frequency series converges in
+the stated time-space norm and agrees with its <span class="math" data-tex="\(L^2\)">\(L^2\)</span> limit.</p>
+<p>Multiply (4.3) by <span class="math" data-tex="\(N^{-1}\)">\(N^{-1}\)</span>, sum over <span class="math" data-tex="\(N\geq N_*\)">\(N\geq N_*\)</span>, and
+interchange nonnegative sums. For <span class="math" data-tex="\(M\geq N_*\)">\(M\geq N_*\)</span> the outer
+sum equals <span class="math" data-tex="\(g_*M^{-1/2}\)">\(g_*M^{-1/2}\)</span>; for <span class="math" data-tex="\(M&lt;N_*\)">\(M&lt;N_*\)</span> it equals
+<span class="math" data-tex="\(g_*N_*^{-1/2}\)">\(g_*N_*^{-1/2}\)</span>. Since <span class="math" data-tex="\(M^{5/2}N_*^{-1/2}\leq M^2\)">\(M^{5/2}N_*^{-1/2}\leq M^2\)</span>
+in the latter case, every low frequency is retained and</p>
+<span class="math math-display" data-tex="\[
+\sum_{N\geq N_*}N^{-1}L_N^2
+\leq v_3g_*^2\sum_M M^2a_M^2 .
+\tag{4.4}
+\]">\[
+\sum_{N\geq N_*}N^{-1}L_N^2
+\leq v_3g_*^2\sum_M M^2a_M^2 .
+\tag{4.4}
+\]</span>
+<p>For the high-frequency part, at most three <span class="math" data-tex="\(p_M\)">\(p_M\)</span> overlap at
+a nonzero frequency. Therefore
+<span class="math" data-tex="\((\sum_{M&gt;N}p_M)^2\leq3\sum_{M&gt;N}p_M^2\)">\((\sum_{M&gt;N}p_M)^2\leq3\sum_{M&gt;N}p_M^2\)</span>, and Parseval
+gives <span class="math" data-tex="\(H_N^2\leq3\sum_{M&gt;N}a_M^2\)">\(H_N^2\leq3\sum_{M&gt;N}a_M^2\)</span>.
+For <span class="math" data-tex="\(M=2^jN_*&gt;N_*\)">\(M=2^jN_*&gt;N_*\)</span> the exact finite geometric sum is
+<span class="math" data-tex="\(\sum_{N_*\leq N&lt;M}N^2=(M^2-N_*^2)/3\)">\(\sum_{N_*\leq N&lt;M}N^2=(M^2-N_*^2)/3\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\sum_{N\geq N_*}N^2H_N^2
+\leq\sum_{M&gt;N_*}(M^2-N_*^2)a_M^2
+\leq\sum_M M^2a_M^2 .
+\tag{4.5}
+\]">\[
+\sum_{N\geq N_*}N^2H_N^2
+\leq\sum_{M&gt;N_*}(M^2-N_*^2)a_M^2
+\leq\sum_M M^2a_M^2 .
+\tag{4.5}
+\]</span>
+<p>Finally <span class="math" data-tex="\(M\leq4|\xi|\)">\(M\leq4|\xi|\)</span> on the support of <span class="math" data-tex="\(p_M\)">\(p_M\)</span>, and
+<span class="math" data-tex="\(\sum_Mp_M^2\leq\sum_Mp_M=1\)">\(\sum_Mp_M^2\leq\sum_Mp_M=1\)</span>. Keeping the full gradient
+multiplier <span class="math" data-tex="\(2\pi i\xi\)">\(2\pi i\xi\)</span>, Parseval gives</p>
+<span class="math math-display" data-tex="\[
+\sum_M M^2a_M^2
+\leq16\int_I\int|\xi|^2|\widehat w(t,\xi)|^2\,d\xi\,dt
+=\frac4{\pi^2}\mathcal M .
+\tag{4.6}
+\]">\[
+\sum_M M^2a_M^2
+\leq16\int_I\int|\xi|^2|\widehat w(t,\xi)|^2\,d\xi\,dt
+=\frac4{\pi^2}\mathcal M .
+\tag{4.6}
+\]</span>
+<p>Equations (4.4)–(4.6) close both receiving sums with the original
+nonlinear gradient energy. No frequency contribution has been
+replaced by an assumed summability property.</p>
+<h2 id="5-all-four-tensor-interactions">5. All four tensor interactions</h2>
+<p>The complete tensor is</p>
+<span class="math math-display" data-tex="\[
+u\otimes u=v\otimes v+v\otimes w+w\otimes v+w\otimes w .
+\tag{5.1}
+\]">\[
+u\otimes u=v\otimes v+v\otimes w+w\otimes v+w\otimes w .
+\tag{5.1}
+\]</span>
+<p>Let <span class="math" data-tex="\(S_3=4\sqrt3\)">\(S_3=4\sqrt3\)</span>, the proved Sobolev constant from the
+preceding lesson. Its estimate gives
+<span class="math" data-tex="\(\|w\|_{L^2(I;L^6)}\leq S_3\sqrt{\mathcal M}\)">\(\|w\|_{L^2(I;L^6)}\leq S_3\sqrt{\mathcal M}\)</span>.
+The first three terms of (5.1), by (3.5) and Hölder, obey</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\widetilde P_N(v\otimes v)\|_{L^1(I;L^\infty)}
+&amp;\leq d_1H^2,\\
+\|\widetilde P_N(v\otimes w)\|_{L^1(I;L^\infty)}
++\|\widetilde P_N(w\otimes v)\|_{L^1(I;L^\infty)}
+&amp;\leq2d_{6/5}N^{1/2}HS_3\sqrt{\mathcal M}.
+\end{aligned}
+\tag{5.2}
+\]">\[
+\begin{aligned}
+\|\widetilde P_N(v\otimes v)\|_{L^1(I;L^\infty)}
+&amp;\leq d_1H^2,\\
+\|\widetilde P_N(v\otimes w)\|_{L^1(I;L^\infty)}
++\|\widetilde P_N(w\otimes v)\|_{L^1(I;L^\infty)}
+&amp;\leq2d_{6/5}N^{1/2}HS_3\sqrt{\mathcal M}.
+\end{aligned}
+\tag{5.2}
+\]</span>
+<p>The mixed input is in <span class="math" data-tex="\(L^1_tL^6_x\)">\(L^1_tL^6_x\)</span>, since it is bounded by
+the product of the actual <span class="math" data-tex="\(L^2_tL^\infty_x\)">\(L^2_tL^\infty_x\)</span> norm of <span class="math" data-tex="\(v\)">\(v\)</span>
+and <span class="math" data-tex="\(L^2_tL^6_x\)">\(L^2_tL^6_x\)</span> norm of <span class="math" data-tex="\(w\)">\(w\)</span>.</p>
+<p>For <span class="math" data-tex="\(w\otimes w\)">\(w\otimes w\)</span>, use the exact decomposition
+<span class="math" data-tex="\(w=P_{\leq N}w+P_{&gt;N}w\)">\(w=P_{\leq N}w+P_{&gt;N}w\)</span>. The low-low term, the two mixed
+terms and the high-high term have respective bounds</p>
+<span class="math math-display" data-tex="\[
+d_1L_N^2,\qquad
+2d_2N^{3/2}L_NH_N,\qquad
+d_\infty N^3H_N^2
+\tag{5.3}
+\]">\[
+d_1L_N^2,\qquad
+2d_2N^{3/2}L_NH_N,\qquad
+d_\infty N^3H_N^2
+\tag{5.3}
+\]</span>
+<p>after applying <span class="math" data-tex="\(\widetilde P_N\)">\(\widetilde P_N\)</span> and taking <span class="math" data-tex="\(L^1_tL^\infty_x\)">\(L^1_tL^\infty_x\)</span>.
+Their input spaces are <span class="math" data-tex="\(L^\infty_x,L^2_x,L^1_x\)">\(L^\infty_x,L^2_x,L^1_x\)</span>, respectively.
+The nonnegative square
+<span class="math" data-tex="\((L_N-N^{3/2}H_N)^2\)">\((L_N-N^{3/2}H_N)^2\)</span> therefore proves</p>
+<span class="math math-display" data-tex="\[
+\|\widetilde P_N(w\otimes w)\|_{L^1(I;L^\infty)}
+\leq(d_1+d_2)L_N^2+(d_\infty+d_2)N^3H_N^2 .
+\tag{5.4}
+\]">\[
+\|\widetilde P_N(w\otimes w)\|_{L^1(I;L^\infty)}
+\leq(d_1+d_2)L_N^2+(d_\infty+d_2)N^3H_N^2 .
+\tag{5.4}
+\]</span>
+<p>The full tensor is controlled by adding (5.2) and (5.4).
+In particular, the terms involving <span class="math" data-tex="\(v\)">\(v\)</span> remain when the left
+side is <span class="math" data-tex="\(\widetilde P_N(u\otimes u)\)">\(\widetilde P_N(u\otimes u)\)</span>.</p>
+<h2 id="6-the-complete-total-speed-estimate">6. The complete total-speed estimate</h2>
+<p>At the actual initial time <span class="math" data-tex="\(t_0\)">\(t_0\)</span>, the projected nonlinear field
+satisfies</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P_Nw(t)={}&amp;e^{\nu(t-t_0)\Delta}P_Nw(t_0)\\
+&amp;-\int_{t_0}^t e^{\nu(t-s)\Delta}P_N\mathbb P
+\operatorname{div}\widetilde P_N(u\otimes u)(s)\,ds\\
+&amp;+\int_{t_0}^t e^{\nu(t-s)\Delta}P_N\mathbb P f(s)\,ds .
+\end{aligned}
+\tag{6.1}
+\]">\[
+\begin{aligned}
+P_Nw(t)={}&amp;e^{\nu(t-t_0)\Delta}P_Nw(t_0)\\
+&amp;-\int_{t_0}^t e^{\nu(t-s)\Delta}P_N\mathbb P
+\operatorname{div}\widetilde P_N(u\otimes u)(s)\,ds\\
+&amp;+\int_{t_0}^t e^{\nu(t-s)\Delta}P_N\mathbb P f(s)\,ds .
+\end{aligned}
+\tag{6.1}
+\]</span>
+<p>The companion appears by (3.3). Apply (3.11)–(3.12), use
+Tonelli, and extend only nonnegative kernel integrals to infinity.
+Since <span class="math" data-tex="\(\|w(t_0)\|_3\leq2U\)">\(\|w(t_0)\|_3\leq2U\)</span>, this proves</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|P_Nw\|_{L^1(I;L^\infty)}
+\leq{}&amp;\frac{2U\mathcal B_0}{\nu N}
++\frac{\mathcal K_0}{\nu N}
+\|\widetilde P_N(u\otimes u)\|_{L^1(I;L^\infty)}\\
+&amp;+\frac{c_p}{c_*\nu}N^{-1/2}F_I .
+\end{aligned}
+\tag{6.2}
+\]">\[
+\begin{aligned}
+\|P_Nw\|_{L^1(I;L^\infty)}
+\leq{}&amp;\frac{2U\mathcal B_0}{\nu N}
++\frac{\mathcal K_0}{\nu N}
+\|\widetilde P_N(u\otimes u)\|_{L^1(I;L^\infty)}\\
+&amp;+\frac{c_p}{c_*\nu}N^{-1/2}F_I .
+\end{aligned}
+\tag{6.2}
+\]</span>
+<p>For each term the physical change in the kernel parameter is
+<span class="math" data-tex="\(ds_{\rm physical}=ds_{\rm kernel}/(\nu N^2)\)">\(ds_{\rm physical}=ds_{\rm kernel}/(\nu N^2)\)</span>.
+This accounts for the original viscosity and both frequency powers.</p>
+<p>The remaining low-frequency part is <span class="math" data-tex="\(P_{\leq N_*/2}w\)">\(P_{\leq N_*/2}w\)</span>.
+Its integrated maximum is at most <span class="math" data-tex="\(c_\phi N_*UT\)">\(c_\phi N_*UT\)</span>, by
+(1.9) and its exact convolution kernel. The full heat field
+contributes <span class="math" data-tex="\(V\)">\(V\)</span>. Sum (6.2) over <span class="math" data-tex="\(N\geq N_*\)">\(N\geq N_*\)</span>, insert
+(5.2) and (5.4), and use (4.4)–(4.6) together with
+<span class="math" data-tex="\(\sum_{N\geq N_*}N^{-1}=2/N_*\)">\(\sum_{N\geq N_*}N^{-1}=2/N_*\)</span> and
+<span class="math" data-tex="\(\sum_{N\geq N_*}N^{-1/2}=g_*N_*^{-1/2}\)">\(\sum_{N\geq N_*}N^{-1/2}=g_*N_*^{-1/2}\)</span>. The result is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_I\|u(t)\|_\infty\,dt\leq{}&amp;
+V+c_\phi N_*UT+\frac{4U\mathcal B_0}{\nu N_*}\\
+&amp;+\frac{\mathcal K_0}{\nu}
+\left[\frac{2d_1H^2}{N_*}
++2d_{6/5}S_3g_*N_*^{-1/2}H\sqrt{\mathcal M}\right.\\
+&amp;\left.\hspace{10mm}
++\frac4{\pi^2}
+\bigl((d_1+d_2)v_3g_*^2+d_\infty+d_2\bigr)\mathcal M
+\right]\\
+&amp;+\frac{c_pg_*}{c_*\nu}N_*^{-1/2}F_I .
+\end{aligned}
+\tag{6.3}
+\]">\[
+\begin{aligned}
+\int_I\|u(t)\|_\infty\,dt\leq{}&amp;
+V+c_\phi N_*UT+\frac{4U\mathcal B_0}{\nu N_*}\\
+&amp;+\frac{\mathcal K_0}{\nu}
+\left[\frac{2d_1H^2}{N_*}
++2d_{6/5}S_3g_*N_*^{-1/2}H\sqrt{\mathcal M}\right.\\
+&amp;\left.\hspace{10mm}
++\frac4{\pi^2}
+\bigl((d_1+d_2)v_3g_*^2+d_\infty+d_2\bigr)\mathcal M
+\right]\\
+&amp;+\frac{c_pg_*}{c_*\nu}N_*^{-1/2}F_I .
+\end{aligned}
+\tag{6.3}
+\]</span>
+<p>Every quantity on the right is bounded by (1.8), (2.5) and
+(2.7) in terms of the actual data. The full force remains in
+both the global energy and the last term.</p>
+<p>The infinite sum is justified as follows. Apply these estimates
+first to finite frequency sums. Equations (4.4)–(4.6) and the
+explicit geometric series give summable
+<span class="math" data-tex="\(L^1(I;L^\infty)\)">\(L^1(I;L^\infty)\)</span> bounds for all high-frequency components.
+Their series converges in that Banach space. Finite telescoping
+also converges to <span class="math" data-tex="\(w-P_{\leq N_*/2}w\)">\(w-P_{\leq N_*/2}w\)</span> in <span class="math" data-tex="\(L^2(I;L^2)\)">\(L^2(I;L^2)\)</span>,
+by Parseval and dominated convergence, since <span class="math" data-tex="\(w\)">\(w\)</span> is bounded
+in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Both limits agree as distributions and hence almost
+everywhere. The resulting field is the original <span class="math" data-tex="\(u\)">\(u\)</span>, proving
+(6.3) for its actual maximum norm.</p>
+<h2 id="7-what-the-source-comparison-establishes">7. What the source comparison establishes</h2>
+<p>The human source is Terence Tao,
+<em>Quantitative bounds for critically bounded solutions to the
+Navier–Stokes equations</em>,
+<a href="https://arxiv.org/abs/1908.04958v2">arXiv:1908.04958v2</a>,
+original author file <em>article.tex</em>, lines 310–420.
+Its bounded-total-speed assertion is for the unforced equation
+with unit viscosity. Its linear and nonlinear velocity fields
+are the actual <span class="math" data-tex="\(v,w\)">\(v,w\)</span> in (1.3).</p>
+<p>The following corrections enter the proof visibly:</p>
+<ul>
+<li>The intermediate energy bounds at lines 357 and 359 use
+<span class="math" data-tex="\(A^2\)">\(A^2\)</span> after an <span class="math" data-tex="\(O(A^2)\)">\(O(A^2)\)</span> bound for the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm.
+Equation (2.5) retains the squared norm. The source's final
+<span class="math" data-tex="\(A^4\)">\(A^4\)</span> energy bound is consistent with this correction.</li>
+<li>The display at lines 399–400 has the full <span class="math" data-tex="\(u\otimes u\)">\(u\otimes u\)</span>
+on its left but only the nonlinear terms on its right.
+Equations (5.1)–(5.4) retain all four terms. The source's
+subsequent estimate also includes a term for the linear interactions.</li>
+<li>The Cauchy–Schwarz display at lines 407–410 has a frequency
+power that fails even for a single nonzero dyadic term.
+Equations (4.3)–(4.6) supply the corrected powers and both
+complete receiving sums. The preceding weighted-heat lesson
+also constructs actual smooth solenoidal field tests.</li>
+</ul>
+<p>These are corrections of particular steps, with their receiving
+arguments proved. Exercise 2 recovers the stated <span class="math" data-tex="\(U^4\sqrt T\)">\(U^4\sqrt T\)</span>
+conclusion in the source case while retaining every original
+viscosity factor in the general calculation. No claim that the
+source's endpoint theorem is false follows from these local repairs.</p>
+<h2 id="8-exercises-with-complete-solutions">8. Exercises with complete solutions</h2>
+<h3 id="exercise-1-all-gaussian-powers-and-the-full-projection-kernel">Exercise 1: all Gaussian powers and the full projection kernel</h3>
+<p>Compute <span class="math" data-tex="\(\|H_s\|_{3/2}\)">\(\|H_s\|_{3/2}\)</span>, the derivative scaling used in (1.7),
+and the sign of the integral term in (1.5).</p>
+<p><strong>Solution.</strong> Gaussian integration gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|H_s\|_{3/2}
+&amp;=(4\pi s)^{-3/2}
+\left(\int_{\mathbb R^3}e^{-3|x|^2/(8s)}\,dx\right)^{2/3}\\
+&amp;=(4\pi s)^{-3/2}\frac{8\pi s}{3}
+=\frac1{3\sqrt\pi}\,s^{-1/2}.
+\end{aligned}
+\tag{8.1}
+\]">\[
+\begin{aligned}
+\|H_s\|_{3/2}
+&amp;=(4\pi s)^{-3/2}
+\left(\int_{\mathbb R^3}e^{-3|x|^2/(8s)}\,dx\right)^{2/3}\\
+&amp;=(4\pi s)^{-3/2}\frac{8\pi s}{3}
+=\frac1{3\sqrt\pi}\,s^{-1/2}.
+\end{aligned}
+\tag{8.1}
+\]</span>
+<p>For a full ordered derivative tensor, the exact change of variables
+<span class="math" data-tex="\(x=\sqrt{s}\,y\)">\(x=\sqrt{s}\,y\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\|\nabla^mH_s\|_r
+=s^{-m/2-(3/2)(1-1/r)}\|\nabla^mH_1\|_r .
+\tag{8.2}
+\]">\[
+\|\nabla^mH_s\|_r
+=s^{-m/2-(3/2)(1-1/r)}\|\nabla^mH_1\|_r .
+\tag{8.2}
+\]</span>
+<p>At <span class="math" data-tex="\(r=6/5\)">\(r=6/5\)</span>, the exponents for <span class="math" data-tex="\(m=1,3\)">\(m=1,3\)</span> are
+<span class="math" data-tex="\(-3/4,-7/4\)">\(-3/4,-7/4\)</span>. Integrating the latter power from <span class="math" data-tex="\(s\)">\(s\)</span> to
+infinity gives <span class="math" data-tex="\((4/3)s^{-3/4}\)">\((4/3)s^{-3/4}\)</span>, exactly the factor in (1.7).
+For the projection term, Fourier transformation gives</p>
+<span class="math math-display" data-tex="\[
+(2\pi i)^3\xi_i\xi_j\xi_k
+\int_s^\infty e^{-4\pi^2\tau|\xi|^2}\,d\tau
+=-2\pi i\,\frac{\xi_i\xi_j\xi_k}{|\xi|^2}
+e^{-4\pi^2s|\xi|^2}.
+\tag{8.3}
+\]">\[
+(2\pi i)^3\xi_i\xi_j\xi_k
+\int_s^\infty e^{-4\pi^2\tau|\xi|^2}\,d\tau
+=-2\pi i\,\frac{\xi_i\xi_j\xi_k}{|\xi|^2}
+e^{-4\pi^2s|\xi|^2}.
+\tag{8.3}
+\]</span>
+<p>Adding the first derivative term yields (1.6). The positive sign
+before the integral in physical space thus produces the negative
+projection component in Fourier space. Both descriptions specify
+the same full map.</p>
+<h3 id="exercise-2-recover-the-source-estimate-with-every-viscosity-factor">Exercise 2: recover the source estimate with every viscosity factor</h3>
+<p>Take <span class="math" data-tex="\(t_b=t_0-T\)">\(t_b=t_0-T\)</span>, <span class="math" data-tex="\(t_2=t_0+T\)">\(t_2=t_0+T\)</span>, and <span class="math" data-tex="\(f=0\)">\(f=0\)</span>. Use the
+actual frequency <span class="math" data-tex="\(N_*=(\nu T)^{-1/2}\)">\(N_*=(\nu T)^{-1/2}\)</span> in (6.3). Derive the
+complete bound before setting <span class="math" data-tex="\(\nu=1\)">\(\nu=1\)</span>.</p>
+<p><strong>Solution.</strong> The full original interval has length <span class="math" data-tex="\(2T\)">\(2T\)</span>.
+From (1.8) and (2.5), a safe constant is</p>
+<span class="math math-display" data-tex="\[
+C_M=16\sqrt2\,\kappa_0^2
++18C_{0,6}^2(\sqrt2-1),
+\qquad
+\mathcal M\leq C_M U^4\nu^{-5/2}\sqrt T .
+\tag{8.4}
+\]">\[
+C_M=16\sqrt2\,\kappa_0^2
++18C_{0,6}^2(\sqrt2-1),
+\qquad
+\mathcal M\leq C_M U^4\nu^{-5/2}\sqrt T .
+\tag{8.4}
+\]</span>
+<p>The first term uses <span class="math" data-tex="\(W_0^2/\nu\)">\(W_0^2/\nu\)</span>, including its factor
+<span class="math" data-tex="\((2T)^{1/2}\)">\((2T)^{1/2}\)</span>. The heat bounds are</p>
+<span class="math math-display" data-tex="\[
+H\leq\frac{U\sqrt{\log2}}{3\sqrt{\pi\nu}},\qquad
+V\leq\frac{2U(\sqrt2-1)\sqrt T}{3\sqrt{\pi\nu}} .
+\tag{8.5}
+\]">\[
+H\leq\frac{U\sqrt{\log2}}{3\sqrt{\pi\nu}},\qquad
+V\leq\frac{2U(\sqrt2-1)\sqrt T}{3\sqrt{\pi\nu}} .
+\tag{8.5}
+\]</span>
+<p>Substituting every term into (6.3) gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_I\|u\|_\infty\,dt\leq\sqrt T\bigg[&amp;
+\left(\frac{2(\sqrt2-1)}{3\sqrt\pi}
++c_\phi+4\mathcal B_0\right)\frac U{\sqrt\nu}\\
+&amp;+\frac{2\mathcal K_0d_1\log2}{9\pi}
+\frac{U^2}{\nu^{3/2}}\\
+&amp;+\frac{2\mathcal K_0d_{6/5}S_3g_*\sqrt{C_M\log2}}
+{3\sqrt\pi}\frac{U^3}{\nu^{5/2}}\\
+&amp;+\frac{4\mathcal K_0C_M}{\pi^2}
+\bigl((d_1+d_2)v_3g_*^2+d_\infty+d_2\bigr)
+\frac{U^4}{\nu^{7/2}}\bigg].
+\end{aligned}
+\tag{8.6}
+\]">\[
+\begin{aligned}
+\int_I\|u\|_\infty\,dt\leq\sqrt T\bigg[&amp;
+\left(\frac{2(\sqrt2-1)}{3\sqrt\pi}
++c_\phi+4\mathcal B_0\right)\frac U{\sqrt\nu}\\
+&amp;+\frac{2\mathcal K_0d_1\log2}{9\pi}
+\frac{U^2}{\nu^{3/2}}\\
+&amp;+\frac{2\mathcal K_0d_{6/5}S_3g_*\sqrt{C_M\log2}}
+{3\sqrt\pi}\frac{U^3}{\nu^{5/2}}\\
+&amp;+\frac{4\mathcal K_0C_M}{\pi^2}
+\bigl((d_1+d_2)v_3g_*^2+d_\infty+d_2\bigr)
+\frac{U^4}{\nu^{7/2}}\bigg].
+\end{aligned}
+\tag{8.6}
+\]</span>
+<p>For example, the mixed term contains
+<span class="math" data-tex="\(\nu^{-1}(\nu T)^{1/4}\nu^{-1/2}
+ \nu^{-5/4}T^{1/4}=\nu^{-5/2}\sqrt T\)">\(\nu^{-1}(\nu T)^{1/4}\nu^{-1/2}
+ \nu^{-5/4}T^{1/4}=\nu^{-5/2}\sqrt T\)</span>.
+This checks the third line without suppressing a physical parameter.
+When <span class="math" data-tex="\(\nu=1\)">\(\nu=1\)</span> and <span class="math" data-tex="\(U\geq1\)">\(U\geq1\)</span>, the sum is at most
+<span class="math" data-tex="\(C U^4\sqrt T\)">\(C U^4\sqrt T\)</span>, with <span class="math" data-tex="\(C\)">\(C\)</span> equal to the sum of the four
+displayed coefficients. That proves the source-scale conclusion.
+For nonzero force, use (6.3) and the complete (1.8), (2.5);
+its force terms remain.</p>
+<h3 id="exercise-3-frequency-supports-and-the-exact-summation-correction">Exercise 3: frequency supports and the exact summation correction</h3>
+<p>Verify that the companion symbol in (3.1) equals one on the
+support of <span class="math" data-tex="\(p\)">\(p\)</span>. Show that replacing <span class="math" data-tex="\(M^{5/2}\)">\(M^{5/2}\)</span> by <span class="math" data-tex="\(M^2\)">\(M^2\)</span>
+in the second line of (4.3), with its other powers unchanged,
+cannot give a uniform bound. Explain why the corrected sum includes
+frequencies below <span class="math" data-tex="\(N_*\)">\(N_*\)</span>.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(1/4\leq|\xi|\leq1\)">\(1/4\leq|\xi|\leq1\)</span>, then
+<span class="math" data-tex="\(\phi(\xi/2)=1\)">\(\phi(\xi/2)=1\)</span> and <span class="math" data-tex="\(\phi(4\xi)=0\)">\(\phi(4\xi)=0\)</span>, including the
+endpoints by continuity. Thus <span class="math" data-tex="\(\widetilde p=1\)">\(\widetilde p=1\)</span> there.
+For the incorrect numerical Cauchy assertion, take the single
+nonzero entry <span class="math" data-tex="\(a_N=1\)">\(a_N=1\)</span>. It would require</p>
+<span class="math math-display" data-tex="\[
+N^3\leq C N^{5/2}
+\tag{8.7}
+\]">\[
+N^3\leq C N^{5/2}
+\tag{8.7}
+\]</span>
+<p>for arbitrarily large dyadic <span class="math" data-tex="\(N\)">\(N\)</span>, which is impossible with
+fixed <span class="math" data-tex="\(C\)">\(C\)</span>. The correct split is
+<span class="math" data-tex="\(M^{3/2}a_M=M^{1/4}(M^{5/4}a_M)\)">\(M^{3/2}a_M=M^{1/4}(M^{5/4}a_M)\)</span>; both receiving
+geometric sums were evaluated in Section 4.</p>
+<p>In particular the low-frequency part of the outer sum gives
+<span class="math" data-tex="\(M^{5/2}N_*^{-1/2}\)">\(M^{5/2}N_*^{-1/2}\)</span>. It obeys</p>
+<span class="math math-display" data-tex="\[
+M^{5/2}N_*^{-1/2}\leq M^2\qquad(0&lt;M&lt;N_*).
+\tag{8.8}
+\]">\[
+M^{5/2}N_*^{-1/2}\leq M^2\qquad(0&lt;M&lt;N_*).
+\tag{8.8}
+\]</span>
+<p>It is bounded and retained, rather than set to zero. The following
+figure shows the exact radial symbols for one physical example.</p>
+<p><img src="assets/NS-FLUID-12/total-speed-frequency-supports-0107667B05095F13106E4F214FA8EAC9C5E1452E826A82523AAF3D19B7946EFF.png" alt="Exact radial frequency symbols and their companion plateaus" class="course-figure" width="2125" height="884" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="total-speed-frequency-supports" data-asset-sha256="0107667B05095F13106E4F214FA8EAC9C5E1452E826A82523AAF3D19B7946EFF"></p>
+<p>Here <span class="math" data-tex="\(N_*=1\)">\(N_*=1\)</span>, and the colored curves show <span class="math" data-tex="\(p(\xi/N)\)">\(p(\xi/N)\)</span> for
+<span class="math" data-tex="\(N=1/2,1,2,4\)">\(N=1/2,1,2,4\)</span>. The second panel shows <span class="math" data-tex="\(p(\xi/2)\)">\(p(\xi/2)\)</span> and
+<span class="math" data-tex="\(\widetilde p(\xi/2)\)">\(\widetilde p(\xi/2)\)</span>; the latter is exactly one on the former's
+support. The horizontal variable is the original <span class="math" data-tex="\(|\xi|\)">\(|\xi|\)</span>.
+These are sampled values of the specified smooth functions in
+(3.1), with no solution field simulated. Equations (3.2)–(3.3)
+prove the identities independently of the plot.</p>
+<h3 id="exercise-4-the-actual-boundary-displacement">Exercise 4: the actual boundary displacement</h3>
+<p>For the preceding lesson's annulus, retain the speed law
+<span class="math" data-tex="\(q&#x27;=c(\gamma+\|u\|_\infty+\|v\|_\infty)\)">\(q&#x27;=c(\gamma+\|u\|_\infty+\|v\|_\infty)\)</span>, with
+<span class="math" data-tex="\(c\geq8(C_3+1)\)">\(c\geq8(C_3+1)\)</span> and <span class="math" data-tex="\(\gamma&gt;0\)">\(\gamma&gt;0\)</span>. Give a sufficient
+condition for its original displacement restriction <span class="math" data-tex="\(q\leq A\)">\(q\leq A\)</span>
+on <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> denote the entire right side
+of (6.3), with (1.8), (2.5) and (2.7) supplying its actual
+input bounds. Global maxima bound the maxima on the fixed
+enclosing annulus used in the preceding lesson. Integrating gives</p>
+<span class="math math-display" data-tex="\[
+q(t_2)-q(t_0)\leq c(\gamma T+\mathcal S+V).
+\tag{8.9}
+\]">\[
+q(t_2)-q(t_0)\leq c(\gamma T+\mathcal S+V).
+\tag{8.9}
+\]</span>
+<p>Thus the explicit condition</p>
+<span class="math math-display" data-tex="\[
+0\leq q(t_0),\qquad
+q(t_0)+c(\gamma T+\mathcal S+V)\leq A
+\tag{8.10}
+\]">\[
+0\leq q(t_0),\qquad
+q(t_0)+c(\gamma T+\mathcal S+V)\leq A
+\tag{8.10}
+\]</span>
+<p>proves <span class="math" data-tex="\(0\leq q(t)\leq A\)">\(0\leq q(t)\leq A\)</span> for every <span class="math" data-tex="\(t\in I\)">\(t\in I\)</span>, by
+monotonicity. If the annulus has yet to be chosen, compute this
+bound before its radius selection. The number is independent
+of those radii, so one may choose the minimum inner-radius
+parameter to exceed it. The original height and outer-radius
+inequalities still have to be satisfied. This is an actual
+input to the annular estimate, with its force contributions retained.</p>
+<h3 id="exercise-5-the-full-physical-zoom-of-the-speed-estimate">Exercise 5: the full physical zoom of the speed estimate</h3>
+<p>Let <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span> and change coordinates by
+<span class="math" data-tex="\(x=x_*+\lambda y\)">\(x=x_*+\lambda y\)</span>, <span class="math" data-tex="\(t=t_*+\lambda^2\tau\)">\(t=t_*+\lambda^2\tau\)</span>, with
+<span class="math" data-tex="\(u_\lambda=\lambda u\)">\(u_\lambda=\lambda u\)</span>, <span class="math" data-tex="\(p_\lambda=\lambda^2p\)">\(p_\lambda=\lambda^2p\)</span>,
+<span class="math" data-tex="\(f_\lambda=\lambda^3f\)">\(f_\lambda=\lambda^3f\)</span>. Keep <span class="math" data-tex="\(\nu_\lambda=\nu\)">\(\nu_\lambda=\nu\)</span>.
+Verify the transformation of every term in (6.3).</p>
+<p><strong>Solution.</strong> The actual earlier heat time follows the same time
+map, so <span class="math" data-tex="\(v_\lambda=\lambda v\)">\(v_\lambda=\lambda v\)</span> and <span class="math" data-tex="\(w_\lambda=\lambda w\)">\(w_\lambda=\lambda w\)</span>.
+All quantities on the right below refer to corresponding original
+intervals. Direct changes of variables give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+U_\lambda=U,\qquad T_\lambda=T/\lambda^2,\qquad
+(N_*)_\lambda=\lambda N_*,\\
+(F_I)_\lambda=\lambda^{-1/2}F_I,\qquad
+H_\lambda=H,\qquad
+\mathcal M_\lambda=\lambda^{-1}\mathcal M,\qquad
+V_\lambda=\lambda^{-1}V,\\
+\int_{I_\lambda}\|u_\lambda\|_\infty\,d\tau
+=\lambda^{-1}\int_I\|u\|_\infty\,dt .
+\end{gathered}
+\tag{8.11}
+\]">\[
+\begin{gathered}
+U_\lambda=U,\qquad T_\lambda=T/\lambda^2,\qquad
+(N_*)_\lambda=\lambda N_*,\\
+(F_I)_\lambda=\lambda^{-1/2}F_I,\qquad
+H_\lambda=H,\qquad
+\mathcal M_\lambda=\lambda^{-1}\mathcal M,\qquad
+V_\lambda=\lambda^{-1}V,\\
+\int_{I_\lambda}\|u_\lambda\|_\infty\,d\tau
+=\lambda^{-1}\int_I\|u\|_\infty\,dt .
+\end{gathered}
+\tag{8.11}
+\]</span>
+<p>The force has spatial <span class="math" data-tex="\(L^2\)">\(L^2\)</span> factor <span class="math" data-tex="\(\lambda^{3/2}\)">\(\lambda^{3/2}\)</span> and
+time factor <span class="math" data-tex="\(\lambda^{-2}\)">\(\lambda^{-2}\)</span>, proving its displayed exponent.
+For <span class="math" data-tex="\(H\)">\(H\)</span>, the maximum velocity contributes <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and
+the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> time norm contributes <span class="math" data-tex="\(\lambda^{-1}\)">\(\lambda^{-1}\)</span>.
+For <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span>, the gradient has factor <span class="math" data-tex="\(\lambda^2\)">\(\lambda^2\)</span>,
+the squared spatial integral has factor <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, and time
+integration contributes <span class="math" data-tex="\(\lambda^{-2}\)">\(\lambda^{-2}\)</span>.</p>
+<p>The low term <span class="math" data-tex="\(N_*UT\)">\(N_*UT\)</span>, the initial term <span class="math" data-tex="\(U/(\nu N_*)\)">\(U/(\nu N_*)\)</span>,
+and the linear tensor term <span class="math" data-tex="\(H^2/(\nu N_*)\)">\(H^2/(\nu N_*)\)</span> all acquire
+<span class="math" data-tex="\(\lambda^{-1}\)">\(\lambda^{-1}\)</span>. The mixed term and the force term have
+respectively the factors</p>
+<span class="math math-display" data-tex="\[
+\lambda^{-1/2}\lambda^{-1/2}=\lambda^{-1},
+\qquad
+\lambda^{-1/2}\lambda^{-1/2}=\lambda^{-1}.
+\tag{8.12}
+\]">\[
+\lambda^{-1/2}\lambda^{-1/2}=\lambda^{-1},
+\qquad
+\lambda^{-1/2}\lambda^{-1/2}=\lambda^{-1}.
+\tag{8.12}
+\]</span>
+<p>The remaining energy term acquires the factor from
+<span class="math" data-tex="\(\mathcal M_\lambda\)">\(\mathcal M_\lambda\)</span>. Kernel constants are unchanged because
+the fixed symbol is evaluated at the corresponding ratio <span class="math" data-tex="\(\xi/N\)">\(\xi/N\)</span>;
+the physical kernel itself retains its exact factors from (3.11).
+Every term in (6.3) therefore transforms in the same way as its
+left side. This proves the full map while preserving the original
+viscosity and force.</p>
+<h2 id="9-reading-and-proof-connections">9. Reading and proof connections</h2>
+<p>The pressure and Fourier conventions are proved in
+<a href="NS-FLUID-02.html">Pressure and the divergence-free projection</a>.
+The complete force classes and energy justifications connect to
+<a href="NS-FLUID-05.html">Strong solutions and continuation</a>.
+The frequency corrections and actual field tests are in
+<a href="NS-FLUID-10.html">Critical velocity tails and weighted heat estimates</a>,
+Exercises 4–5. The receiving geometry, harmonic terms and energy
+budget are proved in
+<a href="NS-FLUID-11.html">Moving annuli and localized vorticity energy</a>.</p>
+<p>The original human argument is
+<a href="https://arxiv.org/abs/1908.04958v2">Tao, arXiv:1908.04958v2</a>,
+the bounded-total-speed proof in the basic estimates section,
+<em>article.tex</em> lines 310–420. This lesson contains the complete
+proof of its stated full-force estimate, with the visible repairs
+in Section 7. It does not claim novelty for the energy or
+frequency-decomposition strategy.</p>
+</article><nav aria-label="Lesson sequence"><a href="NS-FLUID-11.html">Previous lesson</a><a href="NS-FLUID-13.html">Next lesson</a></nav></main><footer>Mathematical text: CC0 1.0. Cited works and reader software retain their respective terms.</footer></body></html>

@@ -1,6 +1,6 @@
 # SH02-SIX-BRIDGE — Proper supports and the bounded classical comparison
 
-Status: independently authored English draft, with exact imports by reference.
+This lesson compares actual classical proper supports with the modern compact-support construction, retaining the coefficient and category ranges below.
 
 The purpose of this lesson is to identify a modern six-operations theorem with the classical operations used in this course. It also supplies the compact-support argument needed for that identification. All spaces are locally compact Hausdorff, all maps are continuous, and $k$ is an arbitrary commutative ring unless a tensor statement explicitly imposes finite global dimension. There are no rank, constructibility, countability, or dimension assumptions on the spaces. We use cohomological grading.
 
@@ -97,7 +97,7 @@ Let
 
 These are sheaves satisfying ordinary covering descent; hyperdescent is not imposed on the entire ambient category. Objectwise module structures identify this category with modules over the constant discrete ring object $k_X$ in spectral sheaves: the forgetful functor from module spectra creates limits, so the sheaf condition on a module object is the sheaf condition on its underlying spectrum, with its action maps retained.
 
-The exact bounded recognition import is [*Derived Algebraic Geometry VIII*, Proposition 2.1.8](https://www.math.ias.edu/~lurie/papers/DAG-VIII.pdf), in the November 5, 2011 version. Its hypotheses are a 1-localic infinity-topos and a discrete commutative ring sheaf. The topological open-set site has those properties. Its heart is the ordinary category of $k_X$-module sheaves, as identified in Remark 2.1.5. The statement is on page 32 and its proof, including the injective calculation, is on pages 33–35.
+[Bounded section recognition from injective mapping complexes](../../../SH-02/bounded-section-recognition.html) proves the exact bounded recognition used here. Its mathematical antecedent is [*Derived Algebraic Geometry VIII*, Proposition 2.1.8](https://www.math.ias.edu/~lurie/papers/DAG-VIII.pdf), in the November 5, 2011 version. Its hypotheses are a 1-localic infinity-topos and a discrete commutative ring sheaf. The topological open-set site has those properties. Its heart is the ordinary category of $k_X$-module sheaves, as identified in Remark 2.1.5. The statement is on page 32 and its proof, including the injective calculation, is on pages 33–35.
 
 In our grading it gives a fully faithful comparison
 
@@ -142,7 +142,7 @@ The tensor is obtained by sheafifying the coefficientwise derived tensor. Inputs
 
 ## SH02-SIX-IMPORT — Which six-operations formulas transfer
 
-Use Volpe's operations on $\mathcal S_k(X)$. Lemmas 6.2, 6.3 and 6.5 identify their proper direct image along a compactification with $p_*j_!$. Combining (SB.2) and (SB.5) gives the natural identification
+The [compact-support construction and its composition maps](../../../SH-02/modern-proper-support-construction.html) give the operations compared with Volpe below. Use those operations on $\mathcal S_k(X)$. Lemmas 6.2, 6.3 and 6.5 identify their proper direct image along a compactification with $p_*j_!$. Combining (SB.2) and (SB.5) gives the natural identification
 
 \[
 T_Y Rf_!K\simeq f_!T_XK.
@@ -249,6 +249,6 @@ The unique adjoint identification preserving its counit identifies it with the c
 
 The original compact gluing, soft-sheaf, compactification, and coefficient-matching arguments above are course text. Volpe's proofs are imported by reference. The published paper's first-page license link and institutional record specify [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Its arXiv v3 has an arXiv distribution license; the institutional published version is the identified licensed version. No published PDF, source prose, diagrams, or extracted text is included in this lesson. Identified human adaptations retain their applicable terms, separately from the CC0 dedication of independently authored programme text.
 
-The bounded recognition and coefficient equivalence are exact mathematical imports from the cited Lurie statements; this lesson does not identify an adaptation license for their exposition. Their infinity-categorical prerequisites remain explicit: module spectra and their sheaf t-structure, bounded derived recognition, and the symmetric monoidal coefficient equivalence. Volpe's composition proof uses covariant Verdier duality (Theorem 5.10); its base-change proof reduces to proper base change for sheaves of spaces; its projection proof uses the external-product theorem. These imported proofs have been inspected at those steps, rather than treated as a heading-level replacement for a foundation course. Complete proofs of these imported results, including the results they rely on, are not established in these lessons.
+The [bounded recognition proof](../../../SH-02/bounded-section-recognition.html) and [coefficient comparison](../../../SH-02/derived-module-coefficients.html) supply the respective actual topological all-module and algebraic statements. Their independently written CC0 proofs use the ambient categorical models specified in those lessons, with the cited Lurie results as mathematical antecedents. Their infinity-categorical prerequisites remain explicit: module spectra and their sheaf t-structure, bounded derived recognition, and the symmetric monoidal coefficient equivalence. Volpe's composition proof uses covariant Verdier duality (Theorem 5.10); its base-change proof reduces to proper base change for sheaves of spaces; its projection proof uses the external-product theorem. These imported proofs have been inspected at those steps, rather than treated as a heading-level replacement for a foundation course. The [compact-presentation and covariant-duality proof](../../../SH-02/modern-proper-support-construction.html#SH02-SXM-2) supplies the full compact-support composition construction. General nonabelian proper base change and the arbitrary-coefficient external-product theorem retain their separately specified categorical foundations; the full bounded classical maps and coefficient ranges above are preserved.
 
 The formulas in this lesson supply precise candidates for `SH02-EX-IMP-SOFT`, `SH02-EX-IMP-FIBRES`, `SH02-EX-IMP-COMPOSE`, and `SH02-EX-IMP-BC`.

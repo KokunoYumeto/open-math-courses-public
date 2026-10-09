@@ -1,0 +1,39 @@
+{
+  "schema": "claude-bridge-course/v1",
+  "id": "thompsons-group-f-and-amenability",
+  "title": "Thompson's group F and amenability",
+  "author": "Claude Opus 5.5 (Anthropic)",
+  "written": "2026-10-09",
+  "status": "Self-checked by the writing AI",
+  "licence": "CC0-1.0",
+  "description": "OpenAI's proof (2026) that Thompson's group F is not amenable, answering Geoghegan's 1979 question. The first lesson develops F as the group of piecewise linear homeomorphisms of [0,1] with dyadic breakpoints and slopes in 2^Z: dyadic partitions, normalized restrictions with (T_I)_J = T_(I.J), images of fine uniform partitions, elements moving one separated pair of internal dyadic intervals affinely onto another, and covariance of restrictions. The second constructs an explicit Lipschitz map f of the closed unit ball of L^2([0,1];R^2) into its unit sphere with ||f(x) - x|| >= 1/2 (the Hilbert-space case of a theorem of Benyamini and Sternfeld), through a curve with a bounded, uniformly separated tail, a tube of fixed radius around it and rotations carrying tangents to directions. The third colors dyadic partitions recursively with f, compares averaged correlations of colors by exact covariance, and proves one uniform positive lower bound for the relative boundaries of all finite subsets of F under one explicit finite set; with the Folner criterion, F is not amenable.",
+  "prerequisites": [
+    "OA-ERGODIC lesson means-folner-sets-and-regular-representations (Section 1, amenability by invariant means; Theorem 3.1, a countable discrete group is amenable exactly when it has a Folner sequence; Theorem 2.1 in a remark)",
+    "core course Algebraic Topology (D60), Lecture 30, Theorem 30.1 (Brouwer's fixed-point theorem; used only in remarks of the second lesson)",
+    "real analysis: the mean value theorem and the Bolzano-Weierstrass theorem"
+  ],
+  "lessons": [
+    "thompsons-group-f-and-dyadic-partitions",
+    "a-lipschitz-map-of-the-hilbert-ball-that-moves-every-point",
+    "thompsons-group-f-is-not-amenable"
+  ],
+  "checks": {
+    "paid_citations": 0,
+    "exact_checks": "Python, exact rational arithmetic (scratch thf_checks.py, output thf_checks.out, 9 Oct 2026, 0 problems): closure of F under composition and inverses and Lemma 1.2 on 200 random pairs of words in A, B; Lemma 2.4(c) on 1400 instances and formula (5.1) for n < 8 of the first lesson; Lemma 3.1 there on 60 random elements; Exercise 6.2 there (A T^(n) is a dyadic partition exactly for n = 0 and n >= 2, checked for n <= 8); the transport construction of Lemma 4.1 on 80 random pairs of separated pairs and Lemma 4.2 on 80 instances; for D = 2, 3 and r = 3 with a toy map f on the unit ball of R^3: Exercise 6.1 of the third lesson (p(T^(n)) = f^floor(n/r)(0)) for n <= 12, Lemma 3.2 on 36 and Lemma 3.3 on 16 instances, and that the only non-separated pairs of the family are parent-descendant pairs; the equality case of Lemma 1.2 (Exercise 6.2 of the third lesson) on 40 random finite subsets of F; inequality (4.4) on 600 random and adversarial configurations (largest lhs - rhs = -0.85). Python, numpy (scratch thf_ball_checks.py, output thf_ball_checks.out, 0 problems; L^2([0,1];R^2) discretized by 6000 midpoints): the speed formula of Lemma 2.2(a) and the derivative against finite differences; inf speed = 1/8, sup speed = 0.191 <= 1/4; sampled Lipschitz constants 0.30 for gamma' (claim <= 1) and 1.38 for u (claim <= 16); <u,v> >= 0; the sinc formula; sigma(1/16) = 1/128 on a grid from the exact closed form; the tangent estimate (2.2); R_t orthogonal with R_t u = v; Lemma 3.1(d) (foot points) on 25 random tube points by direct minimization; Steps 3-5 of the proof of Theorem 5.1 on 180 random tube points in all six cases (min ||G|| = 0.745 rho >= rho/4; every displacement >= 1/2; G(x) = x for ||x|| >= 1/2).",
+    "lint": "thf_lint.py (scratch): headings, provenance line, balanced TeX delimiters, every course: link and anchor resolved in the repository clone, every sibling link and anchor resolved; the flagged label references were checked by hand (they refer to the first lesson, to the Folner lesson of OA-ERGODIC and to the companion preprints).",
+    "source_reading": "OpenAI preprint 'Thompson's group F is nonamenable' (23 Sep 2026), TeX read in full: introduction, finite-proof, consequences and the appendix auxiliary (library copy openai-math-20261006). Companion preprints 'Unitarizability implies amenability for countable groups' (23 Sep 2026; abstract, introduction and Theorem 1.1) and 'Nonuniqueness of percolation on nonamenable quasi-transitive graphs' (24 Sep 2026; Theorem 1.1 and Corollary 1.2) read for the statements cited in Remark 4 of the third lesson. Guba, 'Amenability problem for Thompson's group F: state of the art', arXiv 2305.07113 (TeX source, local copy thompson_group_f_20261009/guba_2305.07113.src, sha256 84602161...): Section 1 (history, Brin-Squier, Chou, Geoghegan's question, finite presentation, Ol'shanskii-Sapir) read. Cannon-Floyd-Parry (e-periodica) could not be downloaded (bot verification page) and is not cited. Benyamini-Sternfeld, Folner and Kakutani are cited for their theorems as described in the OpenAI preprint and standard usage; their texts were not read. Lean scope page lean/docs/248.md of the OpenAI release read: the formalization proves that F has no positive normalized left-invariant mean, without an explicit boundary constant or generating set. Remark 4 of the third lesson links the proof of the unitarizability theorem in the course amenability-and-unitarizability (commit ddc5be4c)."
+  },
+  "open_obligations": [
+    "OpenAI, Nonuniqueness of percolation on nonamenable quasi-transitive graphs (24 Sep 2026), Theorem 1.1 and Corollary 1.2: p_c < p_(2->2) <= p_u for Bernoulli bond percolation on every Cayley graph of F with respect to a finite symmetric generating set, infinitely many infinite clusters for each p in (p_c, p_u) (Remark 4 of the third lesson). Needs Bernoulli percolation foundations. Not treated; owner Claude.",
+    "Structure of F cited but not proved in the course: generation by A and B and the finite presentation <x_0, x_1 | ...> with normal forms, the theorem of Brin and Squier that F has no free subgroup of rank two, and Chou's theorem that F is not elementary amenable (Remark 3 of the third lesson, cited from Guba's survey). Not treated; owner Claude.",
+    "Benyamini-Sternfeld for every infinite-dimensional normed space (the sphere is Lipschitz contractible; the ball has a Lipschitz self-map with displacement bounded below), cited in Section 6 of the second lesson; only the Hilbert space L^2([0,1];R^2) is treated. Not treated; owner Claude."
+  ],
+  "free_sources": [
+    "OpenAI, Thompson's group F is nonamenable (OpenAI Math Release preprint, 23 Sep 2026)",
+    "OpenAI, Unitarizability implies amenability for countable groups (OpenAI Math Release preprint, 23 Sep 2026)",
+    "OpenAI, Nonuniqueness of percolation on nonamenable quasi-transitive graphs (OpenAI Math Release preprint, 24 Sep 2026)",
+    "Guba, Amenability problem for Thompson's group F: state of the art (arXiv 2305.07113)",
+    "Benyamini-Sternfeld, Proc. Amer. Math. Soc. 88 (1983) 439-445 (free in the AMS archive)",
+    "Folner, Math. Scand. 3 (1955) 243-254 (free at the journal site)"
+  ]
+}

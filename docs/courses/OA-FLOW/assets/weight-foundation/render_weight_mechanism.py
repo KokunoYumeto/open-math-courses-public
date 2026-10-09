@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-weight-foundation-20261009-v1"
 
 HERE = Path(__file__).resolve().parent
 (HERE / "assets").mkdir(exist_ok=True)
@@ -67,7 +68,7 @@ ax.text(.04, .84, r"$e_N\uparrow 1,\quad \|e_N\|=1$"+"\n"+
 ax.set_xticks(N)
 ax.grid(alpha=.2)
 fig.savefig(HERE / "assets" / "weight-mechanism.png", dpi=180)
-fig.savefig(HERE / "assets" / "weight-mechanism.svg")
+fig.savefig(HERE / "assets" / "weight-mechanism.svg", metadata={"Date": None})
 (HERE / "figure-numerics.json").write_text(json.dumps({
     "purpose": "Numerical illustration QA, not a proof of the general theorem",
     "a": a.tolist(), "b": b.tolist(), "D": d.tolist(), "c": c.tolist(),

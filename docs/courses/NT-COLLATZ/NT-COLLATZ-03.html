@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pushforward measures and logarithmic sampling</title><link rel="stylesheet" href="reader.css"></head><body><a class="skip" href="#main">Skip to the lesson</a><header><a href="index.html">Discrete dynamics, coding and probability</a> · <a href="src/NT-COLLATZ-03.md">Lesson source</a></header><main id="main"><h1 id="pushforward-measures-and-logarithmic-sampling">Pushforward
+measures and logarithmic sampling</h1>
+<p><em>Written by GPT-6 Astra, Ultra reasoning, in Codex, October 2026.
+Self-checked by the writing AI. Original exposition, proofs and
+exercises: CC0 1.0.</em></p>
+<p>When several inputs have the same output, changing coordinates also
+changes how frequently the outputs are seen. A uniform choice of inputs
+need not produce a uniform choice of outputs. This elementary fact
+becomes important when a statement concerns “most” starting points of a
+dynamical system.</p>
+<p>We develop the rule for transporting probability through a map, prove
+a quantitative comparison principle, and apply both to the odd-part
+projection of positive integers. Uniform sampling and logarithmic
+sampling behave differently under this projection. An exact calculation
+will explain that difference and transfer upper and lower logarithmic
+densities without assuming that a density limit exists.</p>
+<p>We assume finite sums, inequalities, elementary limits, and the
+integral of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">1/t</annotation></semantics></math>.
+A short section explains the only infinite-sum rearrangement needed
+later. <a href="NT-COLLATZ-01.html">Return maps and exact changes of
+clock</a>, Lemma 1, proves the unique factorization
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><msup><mn>2</mn><mi>a</mi></msup><mi>m</mi></mrow><annotation encoding="application/x-tex">n=2^a m</annotation></semantics></math>
+used here. Basic references for the application are Tao’s treatment of
+logarithmic sampling and Syracuse iteration, and Terras’s treatment of
+density for the shortened map. All transport and density comparisons
+used in this lesson are proved below.</p>
+<h2 id="counting-entire-fibres">Counting entire fibres</h2>
+<p>On a finite or countable set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>,
+a probability mass function is a function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi><mo>:</mo><mi>X</mi><mo>→</mo><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">\mu:X\to[0,1]</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∑</mo><mrow><mi>x</mi><mo>∈</mo><mi>X</mi></mrow></msub><mi>μ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\sum_{x\in X}\mu(x)=1</annotation></semantics></math>.
+The probability of a subset
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mo>∑</mo><mrow><mi>x</mi><mo>∈</mo><mi>E</mi></mrow></msub><mi>μ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mu(E)=\sum_{x\in E}\mu(x)</annotation></semantics></math>.
+For nonnegative terms, the sum over any countable set means the supremum
+of the sums over its finite subsets.</p>
+<p>If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>X</mi><mo>→</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">f:X\to Y</annotation></semantics></math>,
+define the <strong>pushforward</strong> by</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>f</mi><mo>*</mo></msub><mi>μ</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munder><mo>∑</mo><mrow><mi>x</mi><mo>:</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>y</mi></mrow></munder><mi>μ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+(f_*\mu)(y)=\sum_{x:f(x)=y}\mu(x).
+</annotation></semantics></math></span></p>
+<p>Thus all the mass in the fibre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo stretchy="false" form="prefix">(</mo><mo stretchy="false" form="prefix">{</mo><mi>y</mi><mo stretchy="false" form="postfix">}</mo><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f^{-1}(\{y\})</annotation></semantics></math>
+is assigned to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>.
+The fibres partition
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>,
+so the total mass remains 1, and</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>f</mi><mo>*</mo></msub><mi>μ</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>μ</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+(f_*\mu)(E)=\mu(f^{-1}(E)).
+</annotation></semantics></math></span></p>
+<p>Here is the justification for regrouping a countable nonnegative sum.
+Each finite collection of terms from finitely many fibres is a finite
+subset of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>,
+so its sum is at most the total sum on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>.
+Conversely, any finite subset of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+meets finitely many fibres and is included in the corresponding fibre
+sums. Taking suprema in both directions proves equality. This reasoning
+also applies to nonnegative sums indexed by pairs.</p>
+<p>A summable signed mass function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math>
+satisfies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∑</mo><mi>x</mi></msub><mo stretchy="false" form="prefix">|</mo><mi>λ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mo>&lt;</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">\sum_x|\lambda(x)|&lt;\infty</annotation></semantics></math>.
+Its positive and negative parts,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>λ</mi><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\max(\lambda,0)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>−</mi><mi>λ</mi><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\max(-\lambda,0)</annotation></semantics></math>,
+are nonnegative summable functions. Subtracting their separately valid
+regroupings justifies every signed regrouping below.</p>
+<p><strong>Proposition 1 (Composition and contraction).</strong> For
+maps
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>X</mi><mo>→</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">f:X\to Y</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo>:</mo><mi>Y</mi><mo>→</mo><mi>Z</mi></mrow><annotation encoding="application/x-tex">g:Y\to Z</annotation></semantics></math>,</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>g</mi><mo>∘</mo><mi>f</mi><msub><mo stretchy="false" form="postfix">)</mo><mo>*</mo></msub><mi>λ</mi><mo>=</mo><msub><mi>g</mi><mo>*</mo></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>f</mi><mo>*</mo></msub><mi>λ</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mo stretchy="false" form="postfix">∥</mo><msub><mi>f</mi><mo>*</mo></msub><mi>λ</mi><msub><mo stretchy="false" form="postfix">∥</mo><mn>1</mn></msub><mo>≤</mo><mo stretchy="false" form="postfix">∥</mo><mi>λ</mi><msub><mo stretchy="false" form="postfix">∥</mo><mn>1</mn></msub><mo>,</mo><mspace width="1.0em"></mspace><mo stretchy="false" form="postfix">∥</mo><mi>λ</mi><msub><mo stretchy="false" form="postfix">∥</mo><mn>1</mn></msub><mo>=</mo><munder><mo>∑</mo><mi>x</mi></munder><mo stretchy="false" form="prefix">|</mo><mi>λ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+(g\circ f)_*\lambda=g_*(f_*\lambda),\qquad
+\|f_*\lambda\|_1\leq\|\lambda\|_1,
+\quad\|\lambda\|_1=\sum_x|\lambda(x)|.
+</annotation></semantics></math></span></p>
+<p><strong>Proof.</strong> The fibre of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo>∘</mo><mi>f</mi></mrow><annotation encoding="application/x-tex">g\circ f</annotation></semantics></math>
+over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+is the disjoint union of the fibres of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+over all
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>z</mi></mrow><annotation encoding="application/x-tex">g(y)=z</annotation></semantics></math>.
+The regrouping just proved gives composition. For contraction, apply the
+triangle inequality in each fibre and then sum:</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>∑</mo><mi>y</mi></munder><mrow><mo stretchy="true" form="prefix">|</mo><munder><mo>∑</mo><mrow><mi>x</mi><mo>:</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>y</mi></mrow></munder><mi>λ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">|</mo></mrow><mo>≤</mo><munder><mo>∑</mo><mi>y</mi></munder><munder><mo>∑</mo><mrow><mi>x</mi><mo>:</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>y</mi></mrow></munder><mo stretchy="false" form="prefix">|</mo><mi>λ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mo>=</mo><munder><mo>∑</mo><mi>x</mi></munder><mo stretchy="false" form="prefix">|</mo><mi>λ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\sum_y\left|\sum_{x:f(x)=y}\lambda(x)\right|
+\leq\sum_y\sum_{x:f(x)=y}|\lambda(x)|
+=\sum_x|\lambda(x)|.
+</annotation></semantics></math></span></p>
+<p>All sums on the right are finite in total. ∎</p>
+<p>In particular, applying the same map to two probability laws cannot
+increase their
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℓ</mi><mn>1</mn></msup><annotation encoding="application/x-tex">\ell^1</annotation></semantics></math>
+distance. This statement concerns the entire distribution, not just one
+event.</p>
+<h2 id="two-ways-to-measure-the-difference-between-laws">Two ways to
+measure the difference between laws</h2>
+<p>For probabilities
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi><mo>,</mo><mi>ν</mi></mrow><annotation encoding="application/x-tex">\mu,\nu</annotation></semantics></math>
+on the same countable set, put</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo stretchy="false" form="prefix">(</mo><mi>μ</mi><mo>,</mo><mi>ν</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munder><mi mathvariant="normal">sup</mi><mrow><mi>E</mi><mo>⊆</mo><mi>X</mi></mrow></munder><mo stretchy="false" form="prefix">|</mo><mi>μ</mi><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>ν</mi><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+d(\mu,\nu)=\sup_{E\subseteq X}|\mu(E)-\nu(E)|.
+</annotation></semantics></math></span></p>
+<p><strong>Lemma 2 (Event distance).</strong></p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo stretchy="false" form="prefix">(</mo><mi>μ</mi><mo>,</mo><mi>ν</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><munder><mo>∑</mo><mi>x</mi></munder><mo stretchy="false" form="prefix">|</mo><mi>μ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>ν</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+d(\mu,\nu)=\frac12\sum_x|\mu(x)-\nu(x)|.
+</annotation></semantics></math></span></p>
+<p><strong>Proof.</strong> Write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mi>μ</mi><mo>−</mo><mi>ν</mi></mrow><annotation encoding="application/x-tex">\lambda=\mu-\nu</annotation></semantics></math>.
+Its total mass is zero, so the sum of its positive terms equals the
+absolute value of the sum of its negative terms; call the common value
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>.
+Every event sum lies between
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>P</mi></mrow><annotation encoding="application/x-tex">-P</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>.
+Taking
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>x</mi><mo>:</mo><mi>λ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>&gt;</mo><mn>0</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">E=\{x:\lambda(x)&gt;0\}</annotation></semantics></math>
+attains
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>,
+whereas
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="postfix">∥</mo><mi>λ</mi><msub><mo stretchy="false" form="postfix">∥</mo><mn>1</mn></msub><mo>=</mo><mn>2</mn><mi>P</mi></mrow><annotation encoding="application/x-tex">\|\lambda\|_1=2P</annotation></semantics></math>.
+∎</p>
+<p>We keep both quantities explicit. In particular, Tao’s
+total-variation convention in equation (1.9) of his paper is the full
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℓ</mi><mn>1</mn></msup><annotation encoding="application/x-tex">\ell^1</annotation></semantics></math>
+sum; the event distance here is half that sum. No estimate below relies
+on silently changing this factor.</p>
+<h2 id="a-projection-that-does-not-preserve-uniform-sampling">A
+projection that does not preserve uniform sampling</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">𝒪</mi><annotation encoding="application/x-tex">\mathcal O</annotation></semantics></math>
+denote the positive odd integers. The odd-part map is</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mo>:</mo><msub><mi mathvariant="double-struck">ℕ</mi><mo>+</mo></msub><mo>→</mo><mi mathvariant="script">𝒪</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>π</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>n</mi><mi>/</mi><msup><mn>2</mn><mrow><msub><mi>ν</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\pi:\mathbb N_+\to\mathcal O,\qquad
+\pi(n)=n/2^{\nu_2(n)}.
+</annotation></semantics></math></span></p>
+<p>Its fibre at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>∈</mo><mi mathvariant="script">𝒪</mi></mrow><annotation encoding="application/x-tex">m\in\mathcal O</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mi>m</mi><mo>,</mo><mn>2</mn><mi>m</mi><mo>,</mo><mn>4</mn><mi>m</mi><mo>,</mo><mi>…</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{m,2m,4m,\ldots\}</annotation></semantics></math>.
+For a uniform start among
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">1,\ldots,8</annotation></semantics></math>,
+these fibres have sizes 4, 2, 1 and 1 at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>5</mn><mo>,</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">m=1,3,5,7</annotation></semantics></math>,
+respectively. The output probabilities are therefore
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>2</mn><mo>,</mo><mn>1</mn><mi>/</mi><mn>4</mn><mo>,</mo><mn>1</mn><mi>/</mi><mn>8</mn><mo>,</mo><mn>1</mn><mi>/</mi><mn>8</mn></mrow><annotation encoding="application/x-tex">1/2,1/4,1/8,1/8</annotation></semantics></math>,
+not four equal weights.</p>
+<p>This discrepancy does not disappear uniformly over events as the
+cutoff grows. Put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><mn>4</mn><mi>M</mi></mrow><annotation encoding="application/x-tex">X=4M</annotation></semantics></math>
+and take the event</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>X</mi></msub><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>m</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> odd</mtext></mrow><mo>:</mo><mi>X</mi><mi>/</mi><mn>2</mn><mo>&lt;</mo><mi>m</mi><mo>≤</mo><mi>X</mi><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+E_X=\{m\text{ odd}:X/2&lt;m\leq X\}.
+</annotation></semantics></math></span></p>
+<p>There are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+such odd integers. Each has just one preimage up to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>,
+so the odd part of a uniform start assigns
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>X</mi></msub><annotation encoding="application/x-tex">E_X</annotation></semantics></math>
+probability
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">1/4</annotation></semantics></math>.
+Uniform sampling among the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>M</mi></mrow><annotation encoding="application/x-tex">2M</annotation></semantics></math>
+odd integers up to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+assigns it probability
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/2</annotation></semantics></math>.
+Their event distance is at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">1/4</annotation></semantics></math>
+for every positive integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>.
+This identifies the precise sampling obstruction rather than merely
+noting that two formulas differ.</p>
+<h2 id="logarithmic-weights">Logarithmic weights</h2>
+<p>For an integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">X\geq1</annotation></semantics></math>,
+set</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><mi>X</mi></munderover><mfrac><mn>1</mn><mi>n</mi></mfrac><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>H</mi><mi>o</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munder><mo>∑</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mrow><mn>1</mn><mo>≤</mo><mi>m</mi><mo>≤</mo><mi>X</mi></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mrow><mi>m</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> odd</mtext></mrow></mrow></mtd></mtr></mtable></munder><mfrac><mn>1</mn><mi>m</mi></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>H</mi><mi>o</mi></msub><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+H(X)=\sum_{n=1}^X\frac1n,\qquad
+H_o(X)=\sum_{\substack{1\leq m\leq X\\m\text{ odd}}}\frac1m,
+\qquad H(0)=H_o(0)=0.
+</annotation></semantics></math></span></p>
+<p>The <strong>logarithmic law</strong> and its relative odd version
+are</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ρ</mi><mi>X</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mi>n</mi><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>≤</mo><mi>n</mi><mo>≤</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>ρ</mi><mi>X</mi><mi>o</mi></msubsup><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mi>m</mi><msub><mi>H</mi><mi>o</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mo>≤</mo><mi>X</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> odd</mtext></mrow><mo stretchy="false" form="postfix">)</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\rho_X(n)=\frac1{nH(X)}\quad(1\leq n\leq X),
+\qquad
+\rho_X^o(m)=\frac1{mH_o(X)}\quad(m\leq X\text{ odd}),
+</annotation></semantics></math></span></p>
+<p>and zero elsewhere. These are probability laws because their
+denominators are exactly the sums of their weights.</p>
+<p>The decreasing function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">1/t</annotation></semantics></math>
+gives</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mn>1</mn><mo>+</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>X</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\log(X+1)\leq H(X)\leq1+\log X.
+</annotation></semantics></math></span></p>
+<p>For the first inequality compare
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">1/n</annotation></semantics></math>
+with the integral over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mi>n</mi><mo>,</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[n,n+1]</annotation></semantics></math>.
+For the second, separate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n=1</annotation></semantics></math>
+and compare
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">1/n</annotation></semantics></math>
+with the integral over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>,</mo><mi>n</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[n-1,n]</annotation></semantics></math>.
+Separating even terms gives the exact identity</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mi>o</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mo stretchy="false" form="prefix">⌊</mo><mi>X</mi><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">⌋</mo><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+H_o(X)=H(X)-\frac12H(\lfloor X/2\rfloor).
+</annotation></semantics></math></span></p>
+<p>It follows that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>X</mi><mo>+</mo><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">H(X)=\log X+O(1)</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mi>o</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>X</mi><mo>+</mo><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">H_o(X)=\tfrac12\log X+O(1)</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mi>o</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>→</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">H_o(X)/H(X)\to1/2</annotation></semantics></math>.
+Here
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math>
+means bounded in absolute value by a constant independent of
+sufficiently large
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>.</p>
+<p>The reason for considering reciprocal weights is visible on a single
+fibre: replacing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>a</mi></msup><mi>m</mi></mrow><annotation encoding="application/x-tex">2^a m</annotation></semantics></math>
+multiplies its weight by exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mrow><mi>−</mi><mi>a</mi></mrow></msup><annotation encoding="application/x-tex">2^{-a}</annotation></semantics></math>.
+Summing these weights is a geometric-series calculation.</p>
+<h2 id="exact-comparison-at-a-finite-cutoff">Exact comparison at a
+finite cutoff</h2>
+<p>For each odd
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>≤</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">m\leq X</annotation></semantics></math>,
+let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>j</mi><mi>m</mi></msub><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">j_m\geq0</annotation></semantics></math>
+be the unique integer such that</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><msub><mi>j</mi><mi>m</mi></msub></msup><mi>m</mi><mo>≤</mo><mi>X</mi><mo>&lt;</mo><msup><mn>2</mn><mrow><msub><mi>j</mi><mi>m</mi></msub><mo>+</mo><mn>1</mn></mrow></msup><mi>m</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+2^{j_m}m\leq X&lt;2^{j_m+1}m.
+</annotation></semantics></math></span></p>
+<p>The fibre mass is</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>π</mi><mo>*</mo></msub><msub><mi>ρ</mi><mi>X</mi></msub><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><mn>1</mn><mo>+</mo><mn>1</mn><mi>/</mi><mn>2</mn><mo>+</mo><mi>⋯</mi><mo>+</mo><msup><mn>2</mn><mrow><mi>−</mi><msub><mi>j</mi><mi>m</mi></msub></mrow></msup></mrow><mrow><mi>m</mi><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>2</mn><mo>−</mo><msup><mn>2</mn><mrow><mi>−</mi><msub><mi>j</mi><mi>m</mi></msub></mrow></msup></mrow><mrow><mi>m</mi><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+(\pi_*\rho_X)(m)
+=\frac{1+1/2+\cdots+2^{-j_m}}{mH(X)}
+=\frac{2-2^{-j_m}}{mH(X)}.
+</annotation></semantics></math></span></p>
+<p>The finite geometric sum follows by subtracting half the sum from the
+sum itself. The term
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mrow><mi>−</mi><msub><mi>j</mi><mi>m</mi></msub></mrow></msup><annotation encoding="application/x-tex">2^{-j_m}</annotation></semantics></math>
+records the cutoff; we retain it throughout the comparison.</p>
+<p><strong>Theorem 3 (Logarithmic sampling through odd parts).</strong>
+For every integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">X\geq1</annotation></semantics></math>,</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>π</mi><mo>*</mo></msub><msub><mi>ρ</mi><mi>X</mi></msub><mo>,</mo><msubsup><mi>ρ</mi><mi>X</mi><mi>o</mi></msubsup><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mfrac><mrow><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mo stretchy="false" form="prefix">⌊</mo><mi>X</mi><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">⌋</mo><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+d(\pi_*\rho_X,\rho_X^o)
+\leq\frac{H(X)-H(\lfloor X/2\rfloor)}{H(X)}.
+</annotation></semantics></math></span></p>
+<p>Consequently
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="postfix">∥</mo><msub><mi>π</mi><mo>*</mo></msub><msub><mi>ρ</mi><mi>X</mi></msub><mo>−</mo><msubsup><mi>ρ</mi><mi>X</mi><mi>o</mi></msubsup><msub><mo stretchy="false" form="postfix">∥</mo><mn>1</mn></msub><mo>=</mo><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mi>/</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\|\pi_*\rho_X-\rho_X^o\|_1=O(1/\log X)</annotation></semantics></math>
+as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">X\to\infty</annotation></semantics></math>.</p>
+<p><strong>Proof.</strong> For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>⊆</mo><mi mathvariant="script">𝒪</mi></mrow><annotation encoding="application/x-tex">E\subseteq\mathcal O</annotation></semantics></math>,
+define</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mi>E</mi></msub><mo>=</mo><munder><mo>∑</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mrow><mi>m</mi><mo>≤</mo><mi>X</mi></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mrow><mi>m</mi><mo>∈</mo><mi>E</mi></mrow></mtd></mtr></mtable></munder><mfrac><mn>1</mn><mi>m</mi></mfrac><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>D</mi><mi>E</mi></msub><mo>=</mo><munder><mo>∑</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mrow><mi>m</mi><mo>≤</mo><mi>X</mi></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mrow><mi>m</mi><mo>∈</mo><mi>E</mi></mrow></mtd></mtr></mtable></munder><mfrac><msup><mn>2</mn><mrow><mi>−</mi><msub><mi>j</mi><mi>m</mi></msub></mrow></msup><mi>m</mi></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mi>D</mi><mo>=</mo><msub><mi>D</mi><mi mathvariant="script">𝒪</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+B_E=\sum_{\substack{m\leq X\\m\in E}}\frac1m,
+\qquad D_E=\sum_{\substack{m\leq X\\m\in E}}\frac{2^{-j_m}}m,
+\qquad D=D_{\mathcal O}.
+</annotation></semantics></math></span></p>
+<p>Summing the exact fibre weights before division by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">H(X)</annotation></semantics></math>
+yields</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>2</mn><msub><mi>H</mi><mi>o</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>D</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+H(X)=2H_o(X)-D.
+</annotation></semantics></math></span></p>
+<p>Combining this with the even-term identity gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>=</mo><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mo stretchy="false" form="prefix">⌊</mo><mi>X</mi><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">⌋</mo><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">D=H(X)-H(\lfloor X/2\rfloor)</annotation></semantics></math>.
+Set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>=</mo><msub><mi>B</mi><mi>E</mi></msub><mi>/</mi><msub><mi>H</mi><mi>o</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">q=B_E/H_o(X)</annotation></semantics></math>,
+which lies in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[0,1]</annotation></semantics></math>.
+Then</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>π</mi><mo>*</mo></msub><msub><mi>ρ</mi><mi>X</mi></msub><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><msubsup><mi>ρ</mi><mi>X</mi><mi>o</mi></msubsup><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><mn>2</mn><msub><mi>B</mi><mi>E</mi></msub><mo>−</mo><msub><mi>D</mi><mi>E</mi></msub></mrow><mrow><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mo>−</mo><mi>q</mi><mo>=</mo><mfrac><mrow><mi>q</mi><mi>D</mi><mo>−</mo><msub><mi>D</mi><mi>E</mi></msub></mrow><mrow><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+(\pi_*\rho_X)(E)-\rho_X^o(E)
+=\frac{2B_E-D_E}{H(X)}-q
+=\frac{qD-D_E}{H(X)}.
+</annotation></semantics></math></span></p>
+<p>Both
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">qD</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>D</mi><mi>E</mi></msub><annotation encoding="application/x-tex">D_E</annotation></semantics></math>
+lie in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mi>D</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[0,D]</annotation></semantics></math>,
+so the absolute difference is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mi>/</mi><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">D/H(X)</annotation></semantics></math>,
+uniformly over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>.
+Taking the supremum proves the displayed bound.</p>
+<p>The numerator stays bounded. More precisely, with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>=</mo><mo stretchy="false" form="prefix">⌊</mo><mi>X</mi><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">⌋</mo><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">M=\lfloor X/2\rfloor\geq1</annotation></semantics></math>,
+integral comparison on the tail gives</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mfrac><mrow><mi>X</mi><mo>+</mo><mn>1</mn></mrow><mrow><mi>M</mi><mo>+</mo><mn>1</mn></mrow></mfrac><mo>≤</mo><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>M</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mfrac><mi>X</mi><mi>M</mi></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\log\frac{X+1}{M+1}
+\leq H(X)-H(M)\leq\log\frac XM.
+</annotation></semantics></math></span></p>
+<p>Both bounds tend to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">\log2</annotation></semantics></math>.
+Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>≥</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">H(X)\geq\log(X+1)</annotation></semantics></math>,
+Lemma 2 proves the asserted
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℓ</mi><mn>1</mn></msup><annotation encoding="application/x-tex">\ell^1</annotation></semantics></math>
+rate. ∎</p>
+<p>Unlike the uniform-sampling example, the discrepancy now tends to
+zero for every event at once. The theorem quantifies the endpoint loss
+in summing truncated fibres.</p>
+<h2 id="density-without-assuming-a-limit">Density without assuming a
+limit</h2>
+<p>For a set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>⊆</mo><msub><mi mathvariant="double-struck">ℕ</mi><mo>+</mo></msub></mrow><annotation encoding="application/x-tex">B\subseteq\mathbb N_+</annotation></semantics></math>,
+define its upper and lower logarithmic densities by</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover><mi>δ</mi><mo accent="true">¯</mo></mover><mi mathvariant="normal">log</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>B</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munder><mi mathvariant="normal">limsup</mi><mrow><mi>X</mi><mo>→</mo><mi>∞</mi></mrow></munder><msub><mi>ρ</mi><mi>X</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>B</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><munder><mi>δ</mi><mo accent="true">_</mo></munder><mi mathvariant="normal">log</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>B</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munder><mi mathvariant="normal">liminf</mi><mrow><mi>X</mi><mo>→</mo><mi>∞</mi></mrow></munder><msub><mi>ρ</mi><mi>X</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>B</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\overline\delta_{\log}(B)=\limsup_{X\to\infty}\rho_X(B),
+\qquad
+\underline\delta_{\log}(B)=\liminf_{X\to\infty}\rho_X(B).
+</annotation></semantics></math></span></p>
+<p>For a bounded sequence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>u</mi><mi>X</mi></msub><annotation encoding="application/x-tex">u_X</annotation></semantics></math>,
+the upper limit is the limit of the decreasing tail suprema
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">sup</mi><mo>&#8289;</mo></mrow><mrow><mi>X</mi><mo>≥</mo><mi>M</mi></mrow></msub><msub><mi>u</mi><mi>X</mi></msub></mrow><annotation encoding="application/x-tex">\sup_{X\geq M}u_X</annotation></semantics></math>;
+the lower limit is the limit of the increasing tail infima. These limits
+exist by completeness of the real numbers. When they agree, their common
+value is the logarithmic density. Relative odd densities use
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>ρ</mi><mi>X</mi><mi>o</mi></msubsup><annotation encoding="application/x-tex">\rho_X^o</annotation></semantics></math>
+in place of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ρ</mi><mi>X</mi></msub><annotation encoding="application/x-tex">\rho_X</annotation></semantics></math>.</p>
+<p><strong>Corollary 4.</strong> For every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>⊆</mo><mi mathvariant="script">𝒪</mi></mrow><annotation encoding="application/x-tex">E\subseteq\mathcal O</annotation></semantics></math>,
+the upper and lower logarithmic densities of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>π</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\pi^{-1}(E)</annotation></semantics></math>
+equal, respectively, the relative odd upper and lower logarithmic
+densities of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>.</p>
+<p><strong>Proof.</strong> Theorem 3 bounds
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>ρ</mi><mi>X</mi></msub><mo stretchy="false" form="prefix">(</mo><msup><mi>π</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>−</mo><msubsup><mi>ρ</mi><mi>X</mi><mi>o</mi></msubsup><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">|\rho_X(\pi^{-1}(E))-\rho_X^o(E)|</annotation></semantics></math>
+by a quantity tending to zero. If two bounded sequences differ by a term
+tending to zero, then for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\varepsilon&gt;0</annotation></semantics></math>
+their sufficiently late tail suprema and infima differ by at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ε</mi><annotation encoding="application/x-tex">\varepsilon</annotation></semantics></math>.
+Passing first to tail limits and then to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mo>↓</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\varepsilon\downarrow0</annotation></semantics></math>
+proves equality of both pairs. ∎</p>
+<p>Relative odd density has denominator
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mi>o</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">H_o(X)</annotation></semantics></math>,
+not
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">H(X)</annotation></semantics></math>.
+When the relative odd density is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>,
+the logarithmic density of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+as a subset of all integers is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">d/2</annotation></semantics></math>,
+since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ρ</mi><mi>X</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msubsup><mi>ρ</mi><mi>X</mi><mi>o</mi></msubsup><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo><msub><mi>H</mi><mi>o</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\rho_X(E)=\rho_X^o(E)H_o(X)/H(X)</annotation></semantics></math>.</p>
+<p>For a further exact check, fix
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a\geq0</annotation></semantics></math>.
+Substitution
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><msup><mn>2</mn><mi>a</mi></msup><mi>m</mi></mrow><annotation encoding="application/x-tex">n=2^a m</annotation></semantics></math>
+gives</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>∑</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mrow><mi>n</mi><mo>≤</mo><mi>X</mi></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mrow><msub><mi>ν</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>a</mi></mrow></mtd></mtr></mtable></munder><mfrac><mn>1</mn><mi>n</mi></mfrac><mo>=</mo><msup><mn>2</mn><mrow><mi>−</mi><mi>a</mi></mrow></msup><msub><mi>H</mi><mi>o</mi></msub><mo stretchy="false" form="prefix">(</mo><mo stretchy="false" form="prefix">⌊</mo><mi>X</mi><mi>/</mi><msup><mn>2</mn><mi>a</mi></msup><mo stretchy="false" form="postfix">⌋</mo><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\sum_{\substack{n\leq X\\\nu_2(n)=a}}\frac1n
+=2^{-a}H_o(\lfloor X/2^a\rfloor).
+</annotation></semantics></math></span></p>
+<p>Its logarithmic density is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mrow><mi>−</mi><mi>a</mi><mo>−</mo><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">2^{-a-1}</annotation></semantics></math>,
+by the harmonic estimates for fixed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>.
+The tail has the exact weight</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>∑</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mrow><mi>n</mi><mo>≤</mo><mi>X</mi></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mrow><msub><mi>ν</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>&gt;</mo><mi>A</mi></mrow></mtd></mtr></mtable></munder><mfrac><mn>1</mn><mi>n</mi></mfrac><mo>=</mo><msup><mn>2</mn><mrow><mi>−</mi><mi>A</mi><mo>−</mo><mn>1</mn></mrow></msup><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mo stretchy="false" form="prefix">⌊</mo><mi>X</mi><mi>/</mi><msup><mn>2</mn><mrow><mi>A</mi><mo>+</mo><mn>1</mn></mrow></msup><mo stretchy="false" form="postfix">⌋</mo><mo stretchy="false" form="postfix">)</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\sum_{\substack{n\leq X\\\nu_2(n)&gt;A}}\frac1n
+=2^{-A-1}H(\lfloor X/2^{A+1}\rfloor),
+</annotation></semantics></math></span></p>
+<p>because it consists of all multiples of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mrow><mi>A</mi><mo>+</mo><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">2^{A+1}</annotation></semantics></math>.
+After division by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">H(X)</annotation></semantics></math>,
+it is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mrow><mi>−</mi><mi>A</mi><mo>−</mo><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">2^{-A-1}</annotation></semantics></math>.
+Thus arbitrarily large initial powers of two can be controlled uniformly
+in the cutoff, without exchanging an infinite sum with a density
+limit.</p>
+<h2 id="applying-the-comparison-to-orbit-minima">Applying the comparison
+to orbit minima</h2>
+<p>In the preceding return-map lesson we proved</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi mathvariant="normal">min</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>S</mi><mi mathvariant="normal">min</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>π</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+C_{\min}(n)=S_{\min}(\pi(n)),
+</annotation></semantics></math></span></p>
+<p>where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>
+is the ordinary Collatz map and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+its odd-return map. For a fixed bound
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>,
+let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>K</mi></msub><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>m</mi><mo>∈</mo><mi mathvariant="script">𝒪</mi><mo>:</mo><msub><mi>S</mi><mi mathvariant="normal">min</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mi>K</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">E_K=\{m\in\mathcal O:S_{\min}(m)\leq K\}</annotation></semantics></math>.
+Then</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mi>n</mi><mo>:</mo><msub><mi>C</mi><mi mathvariant="normal">min</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mi>K</mi><mo stretchy="false" form="postfix">}</mo><mo>=</mo><msup><mi>π</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo stretchy="false" form="prefix">(</mo><msub><mi>E</mi><mi>K</mi></msub><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\{n:C_{\min}(n)\leq K\}=\pi^{-1}(E_K).
+</annotation></semantics></math></span></p>
+<p>Corollary 4 transfers the two upper densities and the two lower
+densities exactly. The dynamical identity identifies the event; Theorem
+3 supplies the probability comparison. This is why a change of clock
+alone was insufficient for a statement about “most” starting
+integers.</p>
+<h2 id="exercises-with-solutions">Exercises with solutions</h2>
+<p><strong>Exercise 1.</strong> A uniform point is chosen from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo>,</mo><mi>c</mi><mo>,</mo><mi>d</mi><mo>,</mo><mi>e</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{a,b,c,d,e\}</annotation></semantics></math>.
+A map sends
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>,</mo><mi>b</mi><mo>,</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">a,b,c</annotation></semantics></math>
+to 0 and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>,</mo><mi>e</mi></mrow><annotation encoding="application/x-tex">d,e</annotation></semantics></math>
+to 1. Compute the pushforward and its event distance from the uniform
+law on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{0,1\}</annotation></semantics></math>.</p>
+<p><strong>Solution.</strong> The fibre masses are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>/</mi><mn>5</mn></mrow><annotation encoding="application/x-tex">3/5</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>/</mi><mn>5</mn></mrow><annotation encoding="application/x-tex">2/5</annotation></semantics></math>.
+The pointwise differences from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>2</mn><mo>,</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/2,1/2</annotation></semantics></math>
+are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>10</mn><mo>,</mo><mi>−</mi><mn>1</mn><mi>/</mi><mn>10</mn></mrow><annotation encoding="application/x-tex">1/10,-1/10</annotation></semantics></math>;
+thus the event distance is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>10</mn></mrow><annotation encoding="application/x-tex">1/10</annotation></semantics></math>,
+and the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℓ</mi><mn>1</mn></msup><annotation encoding="application/x-tex">\ell^1</annotation></semantics></math>
+distance is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>5</mn></mrow><annotation encoding="application/x-tex">1/5</annotation></semantics></math>.</p>
+<p><strong>Exercise 2.</strong> For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">X=4</annotation></semantics></math>,
+compute both odd-part logarithmic laws and the bound in Theorem 3.</p>
+<p><strong>Solution.</strong> We have
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mn>4</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>25</mn><mi>/</mi><mn>12</mn></mrow><annotation encoding="application/x-tex">H(4)=25/12</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mi>o</mi></msub><mo stretchy="false" form="prefix">(</mo><mn>4</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>4</mn><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">H_o(4)=4/3</annotation></semantics></math>.
+The projected law on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mn>1</mn><mo>,</mo><mn>3</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{1,3\}</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>21</mn><mi>/</mi><mn>25</mn><mo>,</mo><mn>4</mn><mi>/</mi><mn>25</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(21/25,4/25)</annotation></semantics></math>,
+whereas the relative odd law is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mi>/</mi><mn>4</mn><mo>,</mo><mn>1</mn><mi>/</mi><mn>4</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(3/4,1/4)</annotation></semantics></math>.
+Their event distance is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9</mn><mi>/</mi><mn>100</mn></mrow><annotation encoding="application/x-tex">9/100</annotation></semantics></math>.
+The theorem’s upper bound is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mn>4</mn><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mn>4</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>7</mn><mi>/</mi><mn>25</mn></mrow><annotation encoding="application/x-tex">(H(4)-H(2))/H(4)=7/25</annotation></semantics></math>.
+It is an upper bound, not an equality claim.</p>
+<p><strong>Exercise 3.</strong> Suppose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mo>*</mo></msub><mi>μ</mi><mo>=</mo><msub><mi>f</mi><mo>*</mo></msub><mi>ν</mi></mrow><annotation encoding="application/x-tex">f_*\mu=f_*\nu</annotation></semantics></math>.
+Must
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi><mo>=</mo><mi>ν</mi></mrow><annotation encoding="application/x-tex">\mu=\nu</annotation></semantics></math>?
+Identify exactly the information lost for summable signed measures.</p>
+<p><strong>Solution.</strong> Not necessarily: two different point
+masses at points in the same fibre have equal pushforwards. In general
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mo>*</mo></msub><mi>λ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f_*\lambda=0</annotation></semantics></math>
+if and only if the sum of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math>
+on every fibre is zero, directly from the definition. Thus the kernel
+consists exactly of these fibrewise cancellations.</p>
+<p><strong>Exercise 4.</strong> Show that a set of relative odd
+logarithmic density 1 has logarithmic density
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/2</annotation></semantics></math>
+among all integers, while its full odd-part preimage has logarithmic
+density 1.</p>
+<p><strong>Solution.</strong> The first assertion follows by multiplying
+the relative odd probabilities by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mi>o</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>→</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">H_o(X)/H(X)\to1/2</annotation></semantics></math>.
+The second is Corollary 4. These sets differ: one retains only odd
+integers; the other includes every power-of-two multiple of each
+retained odd integer.</p>
+<h2 id="what-carries-forward">What carries forward</h2>
+<p>A deterministic map transports mass by summing over fibres. Once that
+mass is calculated, probability comparisons become inequalities between
+explicit sums. The lesson’s logarithmic example is useful because its
+fibre weights form a geometric series and the truncation error is
+controlled uniformly over events.</p>
+<p><a href="NT-COLLATZ-04.html">First passage and transport across
+scales</a> uses the same pushforward and contraction principles for a
+different map: the first point at which an orbit enters a target set.
+That map also forgets information, and its fibres will again identify
+exactly what is forgotten.</p>
+<h2 id="references">References</h2>
+<p>Terence Tao, <em>Almost all orbits of the Collatz map attain almost
+bounded values</em>, <a
+href="https://arxiv.org/abs/1909.03562v7">arXiv:1909.03562v7</a>,
+Definition 1.2, §1.2 and equation (1.9). These locate logarithmic
+sampling, the odd-part relation and the convention for probability
+distance.</p>
+<p>Riho Terras, <em>A stopping time problem on the positive
+integers</em>, Acta Arithmetica <strong>30</strong> (1976), 241–252. <a
+href="https://doi.org/10.4064/aa-30-3-241-252">DOI:
+10.4064/aa-30-3-241-252</a>. Historical context for density statements
+about the shortened iteration; no stopping-time theorem is assumed in
+this lesson.</p>
+<nav aria-label="Lesson sequence"><p><a href="NT-COLLATZ-02.html">Previous: Symbolic itineraries and affine composition</a><br><a href="NT-COLLATZ-04.html">Next: First passage and transport across scales</a></p></nav></main><footer>Original mathematical exposition and illustrations: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>. References retain their own authorship and terms.</footer></body></html>

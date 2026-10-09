@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-tracial-density-20261009-v1"
 from matplotlib.patches import FancyBboxPatch
 
 OUT = Path(__file__).resolve().parent / "assets"
@@ -88,7 +89,7 @@ fig.text(.055, .091, "Full domains decide semifiniteness: a density form is allo
 fig.text(.055, .053, "Exact proofs: TRACIAL_DENSITY_PROOF.md, TD-3/6/7. Free human context: Hiai (2020), pp.49–50.",
          fontsize=10.7, color=navy)
 for name in ["png", "svg"]:
-    fig.savefig(OUT / f"tracial-density.{name}", dpi=180, facecolor=fig.get_facecolor())
+    fig.savefig(OUT / f"tracial-density.{name}", dpi=180, facecolor=fig.get_facecolor(), **({"metadata": {"Date": None}} if name == "svg" else {}))
 plt.close(fig)
 
 # Finite sections verify the displayed identity exactly up to floating-point arithmetic.

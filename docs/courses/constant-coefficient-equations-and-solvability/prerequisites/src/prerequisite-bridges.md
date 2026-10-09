@@ -211,12 +211,30 @@ These are bijections with their original norms. In dimension zero the measure is
 For any finite exponents \(a,c\geq1\) and \(f\in L^a\cap L^c\), put
 \(f_j=1_{\{|x|_\infty\leq j,\ |f(x)|\leq j\}}f\).
 Dominated convergence of \(|f|^a\) and \(|f|^c\) proves convergence in both original norms. Each \(f_j\) is bounded and supported in its displayed coordinate cube. Fix the compact smooth nonnegative approximate identity \(\rho\), with \(\int\rho=1\), from Section 15.4 of the linked chapter. For
-\(\rho_\varepsilon(x)=\varepsilon^{-d}\rho(x/\varepsilon)\), its proved translation estimate is
+\(\rho_\varepsilon(x)=\varepsilon^{-d}\rho(x/\varepsilon)\), the following norm-integral estimate follows from the scalar proof below:
 \[
  \|\rho_\varepsilon*f_j-f_j\|_t
  \leq\int|\rho(z)|\,\|f_j(\,\cdot-\varepsilon z)-f_j\|_t\,dz
  \longrightarrow0,\qquad t=a,c.                                \tag{FL3}
 \]
+The completed-measure substitutions and Tonelli argument are proved in [Section 15.1](../banach-foundation-bridges.html#convergence-product-integration-and-the-full-linear-jacobian), the scalar Hölder inequality in [Section 15.2](../banach-foundation-bridges.html#holder-minkowski-and-all-young-endpoints), and translation continuity in [Section 15.3](../banach-foundation-bridges.html#completeness-and-compact-smooth-density). The original scaling identity is (LP13) in [Section 15.4](../banach-foundation-bridges.html#the-original-scaled-approximate-identity).
+
+**The full integral triangle estimate in (FL3).** Fix an original finite exponent \(t\geq1\), the actual \(f_j\), and \(\varepsilon>0\). Put \(h_z(x)=f_j(x-\varepsilon z)-f_j(x)\) and \(M_\varepsilon(x)=\int|\rho(z)||h_z(x)|\,dz\). These are the original translated differences and their nonnegative integral envelope. The joint integrand is measurable for completed Lebesgue measure: first take a Borel representative of the given \(f_j\) class. Its coordinate compositions are Borel. Changing that representative on a null set \(N\) changes the composed functions only on the inverse images of \(N\times\mathbb R^d\) under the identity product map and the invertible shear \((x,z)\mapsto(x-\varepsilon z,z)\). Its inverse is \((w,z)\mapsto(w+\varepsilon z,z)\), its full block determinant is one, and completed product integration and affine substitution make both inverse images null. Thus the calculation respects the original completed classes. For each fixed \(x\), the section in \(z\) is also measurable by the invertible affine substitution \(z\mapsto x-\varepsilon z\).
+
+The original truncation gives \(|f_j|\leq j\) and support in \(Q_j=[-j,j]^d\). Consequently \(0\leq M_\varepsilon\leq2j\|\rho\|_1\), with support contained in the actual compact set \(Q_j\cup(Q_j+\varepsilon\operatorname{supp}\rho)\). It follows that \(M_\varepsilon\in L^t\). At \(t=1\), nonnegative Tonelli gives \(\|M_\varepsilon\|_1=\int|\rho(z)|\|h_z\|_1\,dz\). If \(t>1\), apply the proved scalar Hölder inequality with its actual conjugate exponent \(t'=t/(t-1)\). The full power satisfies \(\|M_\varepsilon^{t-1}\|_{t'}=\|M_\varepsilon\|_t^{t-1}\), since \((t-1)t'=t\). Nonnegative Tonelli then gives
+\[
+ \begin{aligned}
+ \|M_\varepsilon\|_t^t
+ &=\int M_\varepsilon(x)^{t-1}
+              \left(\int|\rho(z)||h_z(x)|\,dz\right)dx\\
+ &=\int|\rho(z)|
+              \left(\int M_\varepsilon(x)^{t-1}|h_z(x)|\,dx\right)dz\\
+ &\leq\|M_\varepsilon\|_t^{t-1}
+                 \int|\rho(z)|\|h_z\|_t\,dz.
+ \end{aligned}\tag{FL3a}
+\]
+The last integral is finite, because translation is an isometry and \(\|h_z\|_t\leq2\|f_j\|_t\). If \(\|M_\varepsilon\|_t>0\), division by its displayed positive power proves the integral triangle bound. If that norm is zero, the same bound is immediate without division. The exact difference formula (LP13), with both original scaling Jacobians retained, gives \(|\rho_\varepsilon*f_j-f_j|\leq M_\varepsilon\). Combining these two inequalities proves exactly (FL3), rather than replacing it by the weaker power-integral bound (LP14). Translation continuity makes \(\|h_z\|_t\to0\) for each fixed \(z\), and its original bound \(2|\rho(z)|\|f_j\|_t\) is integrable. Its dependence on \(z\) is continuous by that same translation theorem and the reverse norm inequality. Dominated convergence therefore proves the limit in (FL3) for each of the original exponents \(a,c\), without an infinite-dimensional integration theorem.
+
 Its bound \(2|\rho(z)|\|f_j\|_t\) is integrable. Choose a positive \(\varepsilon_j<1/j\) making both errors at most \(1/j\). Then \(v_j=\rho_{\varepsilon_j}*f_j\) is compact smooth and tends to \(f\) in both norms. Differentiating this absolutely convergent convolution proves smoothness, and its support is contained in the sum of the two original compact supports. This constructs a single approximation, rather than assuming that two independently chosen approximations coincide.
 
 Apply this with \(a=1,c=2\). The ordinary Fourier and inverse integrals satisfy
@@ -259,3 +277,5 @@ This proves the actual adjoint \(T_b^*=T_{\overline b}\). It uses the constructe
 
 - [Melrose] Richard Melrose, *Differential Analysis*, MIT 18.155 lecture notes, 2004, [MIT OpenCourseWare lecture notes](https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/pages/lecture-notes/).
 - [Beezer] Robert Beezer, *A First Course in Linear Algebra*, [author's source repository](https://github.com/rbeezer/fcla).
+
+*Scalar integral-bound proof integrated from the existing AN-03 programme proof by GPT-6 Astra (OpenAI), Ultra, October 2026. CC0-1.0.*

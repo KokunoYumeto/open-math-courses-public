@@ -1,0 +1,1253 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Vorticity, strain and continuation — Incompressible flow</title><link rel="stylesheet" href="reader.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script>
+<script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Incompressible flow</a><a href="src/vorticity-strain-and-continuation.md">Editable lesson</a><span class="unlinked">Sources and authorship</span></nav></header><main id="main"><nav aria-label="Lesson sequence"><a href="NS-FLUID-07.html">Previous lesson</a><a href="NS-FLUID-09.html">Next lesson</a></nav><article class="lesson"><h1 id="vorticity-strain-and-continuation">Vorticity, strain and continuation</h1>
+<p>Vorticity measures local rotation. Strain measures stretching and contraction.
+Both come from the same velocity gradient, but they retain different parts of
+that matrix. This lesson constructs their exact connecting maps, proves the
+enstrophy identity, and uses it to decide when the strong solution can continue.
+The force and the original positive viscosity remain in every estimate.</p>
+<p>The middle strain eigenvalue enters through a spatial integral identity. That
+identity does not prescribe the vorticity direction at each point. A compact
+forced flow at the end of the lesson shows the difference explicitly.</p>
+<h2 id="1-original-equation-and-solution-class">1. Original equation and solution class</h2>
+<p>Let <span class="math" data-tex="\(\Omega=\mathbb R^3\)">\(\Omega=\mathbb R^3\)</span> or let</p>
+<span class="math math-display" data-tex="\[
+Q=\prod_{j=1}^3(\mathbb R/L_j\mathbb Z),\qquad
+L_j&gt;0,\qquad V=L_1L_2L_3.
+\tag{1.1}
+\]">\[
+Q=\prod_{j=1}^3(\mathbb R/L_j\mathbb Z),\qquad
+L_j&gt;0,\qquad V=L_1L_2L_3.
+\tag{1.1}
+\]</span>
+<p>All integrals use the original Lebesgue measure, including the volume
+<span class="math" data-tex="\(V\)">\(V\)</span> on <span class="math" data-tex="\(Q\)">\(Q\)</span>. We use the solution constructed in
+<a href="NS-FLUID-05.html">Strong solutions and continuation</a>:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u_t+(u\cdot\nabla)u+\nabla p=\nu\Delta u+f,
+\qquad \operatorname{div}u=0,\qquad \nu&gt;0,\\
+u(0)=u^0\in H^1_\sigma(\Omega),\qquad f=f_a+f_b,\\
+f_a\in L^1_{\rm loc}([0,T_f);H^1),\qquad
+f_b\in L^2_{\rm loc}([0,T_f);L^2).
+\end{gathered}
+\tag{1.2}
+\]">\[
+\begin{gathered}
+u_t+(u\cdot\nabla)u+\nabla p=\nu\Delta u+f,
+\qquad \operatorname{div}u=0,\qquad \nu&gt;0,\\
+u(0)=u^0\in H^1_\sigma(\Omega),\qquad f=f_a+f_b,\\
+f_a\in L^1_{\rm loc}([0,T_f);H^1),\qquad
+f_b\in L^2_{\rm loc}([0,T_f);L^2).
+\end{gathered}
+\tag{1.2}
+\]</span>
+<p>The maximal solution interval is <span class="math" data-tex="\([0,T_*)\)">\([0,T_*)\)</span>, with <span class="math" data-tex="\(T_*\leq T_f\)">\(T_*\leq T_f\)</span>.
+On each compact subinterval it satisfies</p>
+<span class="math math-display" data-tex="\[
+u\in C H^1_\sigma\cap L^2 H^2_\sigma.
+\tag{1.3}
+\]">\[
+u\in C H^1_\sigma\cap L^2 H^2_\sigma.
+\tag{1.3}
+\]</span>
+<p>Here and below a time norm is over the interval under discussion. A finite
+endpoint <span class="math" data-tex="\(T_*&lt;T_f\)">\(T_*&lt;T_f\)</span> requires an unbounded <span class="math" data-tex="\(H^1\)">\(H^1\)</span> norm, by the complete
+construction and continuation proof in that chapter. In particular the force
+is prescribed beyond any endpoint to which our continuation assertion applies.</p>
+<p>Write the original gradient, symmetric part and skew part as</p>
+<span class="math math-display" data-tex="\[
+G_{ij}=\partial_j u_i,\qquad S=\tfrac12(G+G^{\mathsf T}),
+\qquad W=\tfrac12(G-G^{\mathsf T}),\qquad \omega=\nabla\times u.
+\tag{1.4}
+\]">\[
+G_{ij}=\partial_j u_i,\qquad S=\tfrac12(G+G^{\mathsf T}),
+\qquad W=\tfrac12(G-G^{\mathsf T}),\qquad \omega=\nabla\times u.
+\tag{1.4}
+\]</span>
+<p>Matrix norms are Frobenius norms, and matrix pairings sum all entries.
+Thus <span class="math" data-tex="\(\operatorname{tr}S=0\)">\(\operatorname{tr}S=0\)</span>, and direct component calculation gives</p>
+<span class="math math-display" data-tex="\[
+Wz=\tfrac12\omega\times z,\qquad
+W^2=\tfrac14(\omega\otimes\omega-|\omega|^2I_3),\qquad W\omega=0.
+\tag{1.5}
+\]">\[
+Wz=\tfrac12\omega\times z,\qquad
+W^2=\tfrac14(\omega\otimes\omega-|\omega|^2I_3),\qquad W\omega=0.
+\tag{1.5}
+\]</span>
+<p>For example <span class="math" data-tex="\(W_{12}=-\omega_3/2\)">\(W_{12}=-\omega_3/2\)</span>, <span class="math" data-tex="\(W_{23}=-\omega_1/2\)">\(W_{23}=-\omega_1/2\)</span>, and
+<span class="math" data-tex="\(W_{31}=-\omega_2/2\)">\(W_{31}=-\omega_2/2\)</span>; the other entries follow by skew symmetry.
+The vector identity <span class="math" data-tex="\(\omega\times(\omega\times z)
+=\omega(\omega\cdot z)-|\omega|^2z\)">\(\omega\times(\omega\times z)
+=\omega(\omega\cdot z)-|\omega|^2z\)</span> proves the square formula.</p>
+<p>We will use the already proved Sobolev constants</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\delta_\Omega=\begin{cases}0,&amp;\Omega=\mathbb R^3,\\1,&amp;\Omega=Q,\end{cases}
+\qquad
+C_\Omega=\begin{cases}
+4/\sqrt3,&amp;\Omega=\mathbb R^3,\\
+(4/\sqrt3)\sqrt{27}\sqrt{1+\sum_jL_j^{-2}},&amp;\Omega=Q,
+\end{cases}\\
+\|h\|_6\leq C_\Omega
+(\|\nabla h\|_2^2+\delta_\Omega\|h\|_2^2)^{1/2}.
+\end{gathered}
+\tag{1.6}
+\]">\[
+\begin{gathered}
+\delta_\Omega=\begin{cases}0,&amp;\Omega=\mathbb R^3,\\1,&amp;\Omega=Q,\end{cases}
+\qquad
+C_\Omega=\begin{cases}
+4/\sqrt3,&amp;\Omega=\mathbb R^3,\\
+(4/\sqrt3)\sqrt{27}\sqrt{1+\sum_jL_j^{-2}},&amp;\Omega=Q,
+\end{cases}\\
+\|h\|_6\leq C_\Omega
+(\|\nabla h\|_2^2+\delta_\Omega\|h\|_2^2)^{1/2}.
+\end{gathered}
+\tag{1.6}
+\]</span>
+<p>The inequality holds for scalar, vector and matrix fields with these same
+constants. The periodic lower-order term is retained; the whole-space
+gradient inequality is the stronger inequality proved in the preceding
+chapters, applied to the same original field.</p>
+<h2 id="2-exact-reconstruction-and-the-strain-constraint">2. Exact reconstruction and the strain constraint</h2>
+<p>Our whole-space Fourier transform has kernel <span class="math" data-tex="\(e^{-2\pi i x\cdot\xi}\)">\(e^{-2\pi i x\cdot\xi}\)</span>.
+On <span class="math" data-tex="\(Q\)">\(Q\)</span>, put <span class="math" data-tex="\(\kappa_k=(k_1/L_1,k_2/L_2,k_3/L_3)\)">\(\kappa_k=(k_1/L_1,k_2/L_2,k_3/L_3)\)</span>, and use
+coefficients <span class="math" data-tex="\(u_k=V^{-1}\int_Q u(x)e^{-2\pi i\kappa_k\cdot x}\,dx\)">\(u_k=V^{-1}\int_Q u(x)e^{-2\pi i\kappa_k\cdot x}\,dx\)</span>.
+For every nonzero frequency, solenoidality and the curl formula give</p>
+<span class="math math-display" data-tex="\[
+\widehat\omega=2\pi i\xi\times\widehat u,
+\qquad
+\widehat u=\frac{i\xi\times\widehat\omega}{2\pi|\xi|^2}.
+\tag{2.1}
+\]">\[
+\widehat\omega=2\pi i\xi\times\widehat u,
+\qquad
+\widehat u=\frac{i\xi\times\widehat\omega}{2\pi|\xi|^2}.
+\tag{2.1}
+\]</span>
+<p>The second identity follows by taking <span class="math" data-tex="\(\xi\times\)">\(\xi\times\)</span> of the first and
+using <span class="math" data-tex="\(\xi\cdot\widehat u=0\)">\(\xi\cdot\widehat u=0\)</span>. The identical formulas hold with
+<span class="math" data-tex="\(\xi,\widehat u,\widehat\omega\)">\(\xi,\widehat u,\widehat\omega\)</span> replaced by
+<span class="math" data-tex="\(\kappa_k,u_k,\omega_k\)">\(\kappa_k,u_k,\omega_k\)</span> for <span class="math" data-tex="\(k\ne0\)">\(k\ne0\)</span>.</p>
+<p>The derivative coefficients at zero vanish. On the periodic domain the
+missing velocity coefficient is exactly</p>
+<span class="math math-display" data-tex="\[
+u_0(t)=u_0(0)+\int_0^t f_0(s)\,ds.
+\tag{2.2}
+\]">\[
+u_0(t)=u_0(0)+\int_0^t f_0(s)\,ds.
+\tag{2.2}
+\]</span>
+<p>This follows by integrating (1.2), since the transport, pressure and
+Laplacian terms have zero integral. On <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>, an additional
+distribution supported at frequency zero would be a polynomial velocity;
+no nonzero such polynomial belongs to the specified <span class="math" data-tex="\(L^2\)">\(L^2\)</span> class.</p>
+<p>Parseval and <span class="math" data-tex="\(|\xi\times\widehat u|^2=|\xi|^2|\widehat u|^2\)">\(|\xi\times\widehat u|^2=|\xi|^2|\widehat u|^2\)</span>
+therefore give the exact identities</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Y:=\|\omega\|_2^2&amp;=\|G\|_2^2=2\|S\|_2^2=2\|W\|_2^2,\\
+D:=\|\nabla\omega\|_2^2&amp;=\|\Delta u\|_2^2=2\|\nabla S\|_2^2.
+\end{aligned}
+\tag{2.3}
+\]">\[
+\begin{aligned}
+Y:=\|\omega\|_2^2&amp;=\|G\|_2^2=2\|S\|_2^2=2\|W\|_2^2,\\
+D:=\|\nabla\omega\|_2^2&amp;=\|\Delta u\|_2^2=2\|\nabla S\|_2^2.
+\end{aligned}
+\tag{2.3}
+\]</span>
+<p>To check the factor for <span class="math" data-tex="\(S\)">\(S\)</span>, its Fourier matrix is
+<span class="math" data-tex="\(\pi i(\widehat u\otimes\xi+\xi\otimes\widehat u)\)">\(\pi i(\widehat u\otimes\xi+\xi\otimes\widehat u)\)</span>.
+The two summands have zero Frobenius cross term and equal squared norm
+<span class="math" data-tex="\(|\xi|^2|\widehat u|^2\)">\(|\xi|^2|\widehat u|^2\)</span>. Multiplication by <span class="math" data-tex="\(2\pi|\xi|\)">\(2\pi|\xi|\)</span>
+proves the derivative version. On <span class="math" data-tex="\(Q\)">\(Q\)</span> all these integrals become
+<span class="math" data-tex="\(V\sum_k\)">\(V\sum_k\)</span>; that factor occurs on both sides and is not changed.</p>
+<p>There is also an exact reconstruction from a candidate strain matrix. Let
+<span class="math" data-tex="\(T\)">\(T\)</span> be a symmetric matrix-valued <span class="math" data-tex="\(L^2\)">\(L^2\)</span> field. For <span class="math" data-tex="\(\xi\ne0\)">\(\xi\ne0\)</span> define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+r=|\xi|,\qquad P_\xi=I_3-\frac{\xi\otimes\xi}{r^2},
+\qquad v=P_\xi\widehat T\xi,\\
+\widehat{\Pi T}=\frac{\xi\otimes v+v\otimes\xi}{r^2},
+\qquad \widehat{u_T}=\frac{-i v}{\pi r^2}.
+\end{gathered}
+\tag{2.4}
+\]">\[
+\begin{gathered}
+r=|\xi|,\qquad P_\xi=I_3-\frac{\xi\otimes\xi}{r^2},
+\qquad v=P_\xi\widehat T\xi,\\
+\widehat{\Pi T}=\frac{\xi\otimes v+v\otimes\xi}{r^2},
+\qquad \widehat{u_T}=\frac{-i v}{\pi r^2}.
+\end{gathered}
+\tag{2.4}
+\]</span>
+<p>The matrix <span class="math" data-tex="\(\widehat{\Pi T}\)">\(\widehat{\Pi T}\)</span> is symmetric and has trace zero because
+<span class="math" data-tex="\(\xi\cdot v=0\)">\(\xi\cdot v=0\)</span>. It satisfies <span class="math" data-tex="\((\widehat{\Pi T})\xi=v\)">\((\widehat{\Pi T})\xi=v\)</span>, so
+<span class="math" data-tex="\(\Pi^2=\Pi\)">\(\Pi^2=\Pi\)</span>. For any <span class="math" data-tex="\(w\perp\xi\)">\(w\perp\xi\)</span>, its error is orthogonal to
+<span class="math" data-tex="\(\xi\otimes w+w\otimes\xi\)">\(\xi\otimes w+w\otimes\xi\)</span>: indeed the Frobenius pairing is</p>
+<span class="math math-display" data-tex="\[
+2\big((\widehat T-\widehat{\Pi T})\xi\big)\cdot\overline w
+=2\big((I_3-P_\xi)\widehat T\xi\big)\cdot\overline w=0.
+\tag{2.5}
+\]">\[
+2\big((\widehat T-\widehat{\Pi T})\xi\big)\cdot\overline w
+=2\big((I_3-P_\xi)\widehat T\xi\big)\cdot\overline w=0.
+\tag{2.5}
+\]</span>
+<p>Consequently <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> is the orthogonal projection onto the strain range,
+and</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\widehat{\Pi T}|^2=2|v|^2/r^2,\qquad
+4\pi^2r^2|\widehat{u_T}|^2=2|\widehat{\Pi T}|^2,\\
+\operatorname{div}u_T=0,\qquad
+\operatorname{sym}\nabla u_T=\Pi T,\\
+\|T\|_2^2=\|\Pi T\|_2^2+\|T-\Pi T\|_2^2.
+\end{gathered}
+\tag{2.6}
+\]">\[
+\begin{gathered}
+|\widehat{\Pi T}|^2=2|v|^2/r^2,\qquad
+4\pi^2r^2|\widehat{u_T}|^2=2|\widehat{\Pi T}|^2,\\
+\operatorname{div}u_T=0,\qquad
+\operatorname{sym}\nabla u_T=\Pi T,\\
+\|T\|_2^2=\|\Pi T\|_2^2+\|T-\Pi T\|_2^2.
+\end{gathered}
+\tag{2.6}
+\]</span>
+<p>The gradient convention in the middle line is (1.4).</p>
+<p>On <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>, (2.4) defines an actual tempered distribution:
+near zero its size is bounded by <span class="math" data-tex="\(|\widehat T|/(\pi r)\)">\(|\widehat T|/(\pi r)\)</span>, and
+<span class="math" data-tex="\(r^{-1}\)">\(r^{-1}\)</span> is locally square integrable in three dimensions. At high
+frequency its pairing with a Schwartz function is integrable by
+Cauchy–Schwarz. Cutting off to compact frequency annuli gives a Cauchy
+sequence in the gradient norm and hence, by (1.6), in <span class="math" data-tex="\(L^6\)">\(L^6\)</span>.
+Its <span class="math" data-tex="\(L^6\)">\(L^6\)</span> limit is the same distribution. Thus the target of
+<span class="math" data-tex="\(T\mapsto u_T\)">\(T\mapsto u_T\)</span> is the actual <span class="math" data-tex="\(L^6\)">\(L^6\)</span> realization of
+<span class="math" data-tex="\(\dot H^1_\sigma\)">\(\dot H^1_\sigma\)</span>, with norm squared <span class="math" data-tex="\(2\|\Pi T\|_2^2\)">\(2\|\Pi T\|_2^2\)</span>.
+It belongs to <span class="math" data-tex="\(H^1_\sigma\)">\(H^1_\sigma\)</span> precisely when</p>
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R^3}\frac{|P_\xi\widehat T(\xi)\xi|^2}
+{\pi^2|\xi|^4}\,d\xi&lt;\infty.
+\tag{2.7}
+\]">\[
+\int_{\mathbb R^3}\frac{|P_\xi\widehat T(\xi)\xi|^2}
+{\pi^2|\xi|^4}\,d\xi&lt;\infty.
+\tag{2.7}
+\]</span>
+<p>This condition retains the original velocity's low frequencies.</p>
+<p>On <span class="math" data-tex="\(Q\)">\(Q\)</span>, use the same formulas at <span class="math" data-tex="\(\kappa_k\ne0\)">\(\kappa_k\ne0\)</span>, put
+<span class="math" data-tex="\((\Pi T)_0=0\)">\((\Pi T)_0=0\)</span>, and choose <span class="math" data-tex="\((u_T)_0=0\)">\((u_T)_0=0\)</span> for this reconstruction.
+The positive gap <span class="math" data-tex="\(\min_{k\ne0}|\kappa_k|&gt;0\)">\(\min_{k\ne0}|\kappa_k|&gt;0\)</span> and (2.6) imply
+<span class="math" data-tex="\(u_T\in H^1_\sigma(Q)\)">\(u_T\in H^1_\sigma(Q)\)</span>. Adding the actual mean (2.2) recovers the
+original velocity. The constant strain error is retained in
+<span class="math" data-tex="\(\|T-\Pi T\|_2^2\)">\(\|T-\Pi T\|_2^2\)</span>, including its factor <span class="math" data-tex="\(V\)">\(V\)</span>.</p>
+<p>For completeness, the strain range has an exact differential description:</p>
+<span class="math math-display" data-tex="\[
+\operatorname{tr}T=0,\qquad
+-\Delta T+2\operatorname{sym}\nabla\operatorname{div}T=0.
+\tag{2.8}
+\]">\[
+\operatorname{tr}T=0,\qquad
+-\Delta T+2\operatorname{sym}\nabla\operatorname{div}T=0.
+\tag{2.8}
+\]</span>
+<p>Here <span class="math" data-tex="\((\operatorname{div}T)_i=\sum_j\partial_jT_{ij}\)">\((\operatorname{div}T)_i=\sum_j\partial_jT_{ij}\)</span>.
+At nonzero frequency the second equation is
+<span class="math" data-tex="\(r^2\widehat T=\xi\otimes(\widehat T\xi)
++(\widehat T\xi)\otimes\xi\)">\(r^2\widehat T=\xi\otimes(\widehat T\xi)
++(\widehat T\xi)\otimes\xi\)</span>.
+Taking its trace gives <span class="math" data-tex="\(\xi\cdot\widehat T\xi=0\)">\(\xi\cdot\widehat T\xi=0\)</span>, and then the
+equation is exactly <span class="math" data-tex="\(\widehat T=\widehat{\Pi T}\)">\(\widehat T=\widehat{\Pi T}\)</span>.
+Conversely (2.4) has trace zero and satisfies that equation.
+On <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span> this proves the equivalence in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>; on <span class="math" data-tex="\(Q\)">\(Q\)</span>
+one must also require <span class="math" data-tex="\(T_0=0\)">\(T_0=0\)</span>. Exercise 3 identifies the missing
+constant matrices if that last condition is omitted. Equations (2.4)–(2.8)
+give the reconstruction, its error, and all its kernels and ranges.</p>
+<h2 id="3-full-strain-equation-and-pressure-pairing">3. Full strain equation and pressure pairing</h2>
+<p>Differentiate the original momentum equation using (1.4). The product rule
+gives <span class="math" data-tex="\(\partial_j(u_k\partial_k u_i)
+=u_k\partial_kG_{ij}+G_{ik}G_{kj}\)">\(\partial_j(u_k\partial_k u_i)
+=u_k\partial_kG_{ij}+G_{ik}G_{kj}\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+G_t+(u\cdot\nabla)G+G^2+\operatorname{Hess}p
+=\nu\Delta G+\nabla f.
+\tag{3.1}
+\]">\[
+G_t+(u\cdot\nabla)G+G^2+\operatorname{Hess}p
+=\nu\Delta G+\nabla f.
+\tag{3.1}
+\]</span>
+<p>The symmetric part of <span class="math" data-tex="\(G^2\)">\(G^2\)</span> is <span class="math" data-tex="\(S^2+W^2\)">\(S^2+W^2\)</span>, since
+<span class="math" data-tex="\(SW+WS\)">\(SW+WS\)</span> is skew symmetric. Substituting (1.5) proves</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+S_t+(u\cdot\nabla)S+S^2
++\tfrac14\omega\otimes\omega-\tfrac14|\omega|^2I_3
++\operatorname{Hess}p
+=\nu\Delta S+\operatorname{sym}\nabla f.
+\end{aligned}
+\tag{3.2}
+\]">\[
+\begin{aligned}
+S_t+(u\cdot\nabla)S+S^2
++\tfrac14\omega\otimes\omega-\tfrac14|\omega|^2I_3
++\operatorname{Hess}p
+=\nu\Delta S+\operatorname{sym}\nabla f.
+\end{aligned}
+\tag{3.2}
+\]</span>
+<p>Taking the trace recovers the original pressure equation:</p>
+<span class="math math-display" data-tex="\[
+-\Delta p=\operatorname{tr}(G^2)-\operatorname{div}f
+=|S|^2-\tfrac12|\omega|^2-\operatorname{div}f.
+\tag{3.3}
+\]">\[
+-\Delta p=\operatorname{tr}(G^2)-\operatorname{div}f
+=|S|^2-\tfrac12|\omega|^2-\operatorname{div}f.
+\tag{3.3}
+\]</span>
+<p>Taking curl in (1.2), or taking the skew part of (3.1) component by
+component, gives</p>
+<span class="math math-display" data-tex="\[
+\omega_t+(u\cdot\nabla)\omega-S\omega
+=\nu\Delta\omega+\nabla\times f.
+\tag{3.4}
+\]">\[
+\omega_t+(u\cdot\nabla)\omega-S\omega
+=\nu\Delta\omega+\nabla\times f.
+\tag{3.4}
+\]</span>
+<p>These identities hold distributionally at the solution regularity (1.3).</p>
+<p>The pressure is the potential already reconstructed in the previous lessons.
+In particular it has a nonlinear part <span class="math" data-tex="\(p_N\)">\(p_N\)</span> and a force part <span class="math" data-tex="\(p_F\)">\(p_F\)</span>,
+with</p>
+<span class="math math-display" data-tex="\[
+\widehat p_N(\xi)
+=-\sum_{i,j}\frac{\xi_i\xi_j}{|\xi|^2}
+\widehat{u_i u_j}(\xi),\qquad
+\nabla p_F=(I_3-P)f.
+\tag{3.5}
+\]">\[
+\widehat p_N(\xi)
+=-\sum_{i,j}\frac{\xi_i\xi_j}{|\xi|^2}
+\widehat{u_i u_j}(\xi),\qquad
+\nabla p_F=(I_3-P)f.
+\tag{3.5}
+\]</span>
+<p>On <span class="math" data-tex="\(Q\)">\(Q\)</span> the nonzero modes use <span class="math" data-tex="\(\kappa_k\)">\(\kappa_k\)</span>, the pressure mean is
+chosen zero, and <span class="math" data-tex="\(P_0=I_3\)">\(P_0=I_3\)</span>; thus no mean force is assigned to pressure.
+On <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span> the distributional low-frequency potential is the
+one in <a href="NS-FLUID-02.html">Pressure and the divergence-free projection</a>.</p>
+<p>At an <span class="math" data-tex="\(H^2\)">\(H^2\)</span> time, <span class="math" data-tex="\(u\otimes u\in H^2\)">\(u\otimes u\in H^2\)</span>. To verify this claim,
+use <span class="math" data-tex="\(u\in L^\infty\)">\(u\in L^\infty\)</span>, <span class="math" data-tex="\(\nabla u\in L^4\)">\(\nabla u\in L^4\)</span>, and
+<span class="math" data-tex="\(\nabla^2u\in L^2\)">\(\nabla^2u\in L^2\)</span>: every second product derivative is a sum of
+<span class="math" data-tex="\(u_i\partial_{jk}u_l\)">\(u_i\partial_{jk}u_l\)</span>, <span class="math" data-tex="\(\partial_j u_i\partial_k u_l\)">\(\partial_j u_i\partial_k u_l\)</span>, and
+the corresponding terms with the factors reversed. These belong to
+<span class="math" data-tex="\(L^2\)">\(L^2\)</span>; the undifferentiated and first derivatives do also. The
+previous chapters prove the required embeddings. The multiplier in
+(3.5) is bounded, so <span class="math" data-tex="\(p_N\in H^2\)">\(p_N\in H^2\)</span>.</p>
+<p>For <span class="math" data-tex="\(f_b\in L^2\)">\(f_b\in L^2\)</span>, however, (3.5) gives only
+<span class="math" data-tex="\(\nabla p_{F,b}\in L^2\)">\(\nabla p_{F,b}\in L^2\)</span> and
+<span class="math" data-tex="\(\operatorname{Hess}p_{F,b}\in H^{-1}\)">\(\operatorname{Hess}p_{F,b}\in H^{-1}\)</span>. That is enough. Since
+<span class="math" data-tex="\(\operatorname{div}S=\Delta u/2\)">\(\operatorname{div}S=\Delta u/2\)</span>, the exact dual pairing is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle\operatorname{Hess}p_{F,b},S\rangle_{H^{-1},H^1}
+&amp;=-\tfrac12((I_3-P)f_b,\Delta u)=0,\\
+2\langle\operatorname{sym}\nabla f_b,S\rangle_{H^{-1},H^1}
+&amp;=(f_b,-\Delta u).
+\end{aligned}
+\tag{3.6}
+\]">\[
+\begin{aligned}
+\langle\operatorname{Hess}p_{F,b},S\rangle_{H^{-1},H^1}
+&amp;=-\tfrac12((I_3-P)f_b,\Delta u)=0,\\
+2\langle\operatorname{sym}\nabla f_b,S\rangle_{H^{-1},H^1}
+&amp;=(f_b,-\Delta u).
+\end{aligned}
+\tag{3.6}
+\]</span>
+<p>The first equality vanishes by the orthogonality of the gradient and
+solenoidal Fourier ranges, not by assuming an extra derivative of the force.
+For <span class="math" data-tex="\(f_a\in H^1\)">\(f_a\in H^1\)</span> the same statements have ordinary <span class="math" data-tex="\(L^2\)">\(L^2\)</span> matrix
+pairings. The nonlinear pressure has zero pairing with <span class="math" data-tex="\(S\)">\(S\)</span> by the same
+integration by parts and orthogonality. All time pairings are legitimate:
+<span class="math" data-tex="\(f_a\)">\(f_a\)</span> is integrable in <span class="math" data-tex="\(H^1\)">\(H^1\)</span>, <span class="math" data-tex="\(S\)">\(S\)</span> is continuous in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>,
+and <span class="math" data-tex="\(f_b\)">\(f_b\)</span> and <span class="math" data-tex="\(S\)">\(S\)</span> have the dual square-integrable classes just used.</p>
+<p>There are two specific source corrections. In Evan Miller's
+<a href="https://arxiv.org/abs/1710.05569v4">middle-eigenvalue paper, version 4</a>,
+the forced strain display immediately before Definition <code>ExtForce</code>
+(author TeX lines 557–558) prints a plus sign before
+<span class="math" data-tex="\(|\omega|^2I_3/4\)">\(|\omega|^2I_3/4\)</span>. Its earlier equation <code>NavierStrain</code> and its mild
+strain formula have the sign consistent with (3.2). The incorrect display
+differs from (3.2) by <span class="math" data-tex="\(|\omega|^2I_3/2\)">\(|\omega|^2I_3/2\)</span>, whose trace is
+<span class="math" data-tex="\(3|\omega|^2/2\)">\(3|\omega|^2/2\)</span>. Exercise 5 gives an actual compact forced solution
+on which this difference is nonzero.</p>
+<p>In the proof <code>Strn</code>, author TeX lines 692–696 claim that the pressure Hessian
+is <span class="math" data-tex="\(L^2\)">\(L^2\)</span> under the allowed <span class="math" data-tex="\(L^2\)">\(L^2\)</span> force assumption. Exercise 4
+gives a source-class solution for which it is not. Formula (3.6) supplies
+the needed orthogonality in the correct dual spaces and preserves the
+enstrophy argument. Miller writes the gradient as <span class="math" data-tex="\(G^{\mathsf T}\)">\(G^{\mathsf T}\)</span>:
+his symmetric part is exactly <span class="math" data-tex="\(S\)">\(S\)</span>, and his antisymmetric part is
+<span class="math" data-tex="\(-W\)">\(-W\)</span>. Transposition preserves the trace, Frobenius norm and symmetric
+square contribution, so this convention difference does not change either
+correction.</p>
+<h2 id="4-enstrophy-and-the-cubic-integral-identity">4. Enstrophy and the cubic integral identity</h2>
+<p>Pair (3.4) with <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. The transport term vanishes by
+<span class="math" data-tex="\(\operatorname{div}u=0\)">\(\operatorname{div}u=0\)</span>. On the whole space a cutoff at radius
+<span class="math" data-tex="\(R\)">\(R\)</span> bounds its boundary error by
+<span class="math" data-tex="\(C R^{-1}\|u\|_\infty\|\omega\|_2^2\)">\(C R^{-1}\|u\|_\infty\|\omega\|_2^2\)</span>, which tends to zero.
+Curl is self-adjoint under the integral pairing, and
+<span class="math" data-tex="\(\nabla\times\omega=-\Delta u\)">\(\nabla\times\omega=-\Delta u\)</span>. Thus the full identity is</p>
+<span class="math math-display" data-tex="\[
+\frac12Y&#x27;+\nu D
+=I_\omega+(\nabla\times f_a,\omega)+(f_b,-\Delta u),
+\qquad I_\omega=\int_\Omega\omega\cdot S\omega\,dx.
+\tag{4.1}
+\]">\[
+\frac12Y&#x27;+\nu D
+=I_\omega+(\nabla\times f_a,\omega)+(f_b,-\Delta u),
+\qquad I_\omega=\int_\Omega\omega\cdot S\omega\,dx.
+\tag{4.1}
+\]</span>
+<p>There is no differentiation of <span class="math" data-tex="\(f_b\)">\(f_b\)</span> in its final pairing.</p>
+<p>Here is the time justification for the actual solution (1.3). Subtract
+the proved <span class="math" data-tex="\(L^2\)">\(L^2\)</span> energy identity from the full <span class="math" data-tex="\(H^1\)">\(H^1\)</span> energy
+identity in the strong-solution chapter. Their difference is the gradient
+energy identity, with the same two force summands. The spatial nonlinear
+identity leading to (4.1) follows by solenoidal <span class="math" data-tex="\(H^2\)">\(H^2\)</span> approximation.
+At almost every time <span class="math" data-tex="\(u\)">\(u\)</span> is bounded and <span class="math" data-tex="\(\omega\in H^1\cap L^4\)">\(\omega\in H^1\cap L^4\)</span>.
+On a compact time interval, the transport pairing is integrable from
+<span class="math" data-tex="\(u\in L^2L^\infty\)">\(u\in L^2L^\infty\)</span>, <span class="math" data-tex="\(\nabla\omega\in L^2L^2\)">\(\nabla\omega\in L^2L^2\)</span>, and
+<span class="math" data-tex="\(\omega\in L^\infty L^2\)">\(\omega\in L^\infty L^2\)</span>. The stretching term is integrable since</p>
+<span class="math math-display" data-tex="\[
+|I_\omega|\leq\|S\|_2\|\omega\|_4^2,
+\qquad
+\|\omega\|_4^2\leq
+C_\Omega^{3/2}\|\omega\|_2^{1/2}
+(\|\nabla\omega\|_2^2+\delta_\Omega\|\omega\|_2^2)^{3/4}.
+\tag{4.2}
+\]">\[
+|I_\omega|\leq\|S\|_2\|\omega\|_4^2,
+\qquad
+\|\omega\|_4^2\leq
+C_\Omega^{3/2}\|\omega\|_2^{1/2}
+(\|\nabla\omega\|_2^2+\delta_\Omega\|\omega\|_2^2)^{3/4}.
+\tag{4.2}
+\]</span>
+<p>The last time factor is integrable by Hölder on a finite interval.
+Both force pairings in (4.1) are integrable in their stated classes.
+Consequently <span class="math" data-tex="\(Y\)">\(Y\)</span> is absolutely continuous on every compact solution
+interval, and (4.1) integrates between every pair of its endpoints.</p>
+<p>The cubic identity requires the spatial strain constraint; it is not an
+identity for three arbitrary matrix fields. For a smooth solenoidal field
+write repeated indices as sums from 1 to 3. Successive integrations by
+parts give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+J:=\int\operatorname{tr}(G^3)
+&amp;=\int(\partial_j u_i)(\partial_k u_j)(\partial_i u_k)\\
+&amp;=-\int u_i(\partial_k u_j)(\partial_j\partial_i u_k)\\
+&amp;=\int u_i(\partial_i\partial_k u_j)(\partial_j u_k)\\
+&amp;=\tfrac12\int u_i\partial_i
+\big((\partial_k u_j)(\partial_j u_k)\big)=0.
+\end{aligned}
+\tag{4.3}
+\]">\[
+\begin{aligned}
+J:=\int\operatorname{tr}(G^3)
+&amp;=\int(\partial_j u_i)(\partial_k u_j)(\partial_i u_k)\\
+&amp;=-\int u_i(\partial_k u_j)(\partial_j\partial_i u_k)\\
+&amp;=\int u_i(\partial_i\partial_k u_j)(\partial_j u_k)\\
+&amp;=\tfrac12\int u_i\partial_i
+\big((\partial_k u_j)(\partial_j u_k)\big)=0.
+\end{aligned}
+\tag{4.3}
+\]</span>
+<p>The first integration has no term from <span class="math" data-tex="\(\partial_j\partial_k u_j\)">\(\partial_j\partial_k u_j\)</span>;
+the second has no term from <span class="math" data-tex="\(\partial_i u_i\)">\(\partial_i u_i\)</span>. In the penultimate
+step, interchanging the dummy indices <span class="math" data-tex="\(j,k\)">\(j,k\)</span> shows that the two
+product-rule terms have the same integral. The last integral is zero by
+solenoidality. Whole-space cutoff errors are bounded by a constant times
+<span class="math" data-tex="\(R^{-1}\|u\|_\infty\|G\|_2^2\)">\(R^{-1}\|u\|_\infty\|G\|_2^2\)</span>. The remaining terms are bounded
+by <span class="math" data-tex="\(\|u\|_\infty\|G\|_2\|\nabla G\|_2\)">\(\|u\|_\infty\|G\|_2\|\nabla G\|_2\)</span>. Approximation in
+<span class="math" data-tex="\(H^2\)">\(H^2\)</span> gives convergence of <span class="math" data-tex="\(G\)">\(G\)</span> in <span class="math" data-tex="\(L^3\)">\(L^3\)</span> and proves (4.3)
+for every field needed in (4.1).</p>
+<p>Expansion of the trace, using symmetry and skew symmetry, gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{tr}(G^3)
+=\operatorname{tr}(S^3)+3\operatorname{tr}(SW^2)
+=\operatorname{tr}(S^3)+\tfrac34\omega\cdot S\omega.
+\tag{4.4}
+\]">\[
+\operatorname{tr}(G^3)
+=\operatorname{tr}(S^3)+3\operatorname{tr}(SW^2)
+=\operatorname{tr}(S^3)+\tfrac34\omega\cdot S\omega.
+\tag{4.4}
+\]</span>
+<p>Terms with an odd single skew factor have zero trace; <span class="math" data-tex="\(\operatorname{tr}W^3=0\)">\(\operatorname{tr}W^3=0\)</span>.
+The <span class="math" data-tex="\(-|\omega|^2I_3/4\)">\(-|\omega|^2I_3/4\)</span> contribution in (1.5) has zero pairing
+with <span class="math" data-tex="\(S\)">\(S\)</span> because <span class="math" data-tex="\(\operatorname{tr}S=0\)">\(\operatorname{tr}S=0\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\lambda_1\leq\lambda_2\leq\lambda_3\)">\(\lambda_1\leq\lambda_2\leq\lambda_3\)</span> be the eigenvalues
+of <span class="math" data-tex="\(S\)">\(S\)</span>, counted with multiplicity. Their sum is zero, and expanding
+<span class="math" data-tex="\((\lambda_1+\lambda_2+\lambda_3)^3\)">\((\lambda_1+\lambda_2+\lambda_3)^3\)</span>, or substituting
+<span class="math" data-tex="\(\lambda_3=-\lambda_1-\lambda_2\)">\(\lambda_3=-\lambda_1-\lambda_2\)</span>, proves
+<span class="math" data-tex="\(\operatorname{tr}(S^3)=3\det S\)">\(\operatorname{tr}(S^3)=3\det S\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+I_\omega=-\frac43\int_\Omega\operatorname{tr}(S^3),dx
+=-4\int_\Omega\det S\,dx,
+\tag{4.5}
+\]">\[
+I_\omega=-\frac43\int_\Omega\operatorname{tr}(S^3),dx
+=-4\int_\Omega\det S\,dx,
+\tag{4.5}
+\]</span>
+<p>and (4.1) is equivalently</p>
+<span class="math math-display" data-tex="\[
+\frac12Y&#x27;+\nu D
+=-4\int_\Omega\det S\,dx
++(\nabla\times f_a,\omega)+(f_b,-\Delta u).
+\tag{4.6}
+\]">\[
+\frac12Y&#x27;+\nu D
+=-4\int_\Omega\det S\,dx
++(\nabla\times f_a,\omega)+(f_b,-\Delta u).
+\tag{4.6}
+\]</span>
+<p>Both representations retain every force contribution and the original
+dissipation. In particular, a growing enstrophy in a forced flow need
+not come from a positive stretching integral.</p>
+<h2 id="5-three-continuation-criteria">5. Three continuation criteria</h2>
+<p>The trace constraint improves an elementary matrix estimate. If <span class="math" data-tex="\(S\)">\(S\)</span>
+is symmetric with trace zero, then</p>
+<span class="math math-display" data-tex="\[
+\|S\|_{\rm op}\leq\sqrt{\frac23}|S|.
+\tag{5.1}
+\]">\[
+\|S\|_{\rm op}\leq\sqrt{\frac23}|S|.
+\tag{5.1}
+\]</span>
+<p>Indeed, for each eigenvalue <span class="math" data-tex="\(\lambda_i\)">\(\lambda_i\)</span>, the other two sum to
+<span class="math" data-tex="\(-\lambda_i\)">\(-\lambda_i\)</span>, so the sum of their squares is at least
+<span class="math" data-tex="\(\lambda_i^2/2\)">\(\lambda_i^2/2\)</span>. Hence <span class="math" data-tex="\(|S|^2\geq3\lambda_i^2/2\)">\(|S|^2\geq3\lambda_i^2/2\)</span>.
+The matrix with eigenvalues <span class="math" data-tex="\((2c,-c,-c)\)">\((2c,-c,-c)\)</span> attains this algebraic
+constant. This is a sharp matrix inequality; no sharpness claim for a
+whole-flow continuation threshold follows from that observation.</p>
+<p>From (2.3), (5.1), and Cauchy–Schwarz,</p>
+<span class="math math-display" data-tex="\[
+|I_\omega|\leq\sqrt{\frac23}\|\omega\|_\infty
+\|\omega\|_2\|S\|_2
+=\frac1{\sqrt3}\|\omega\|_\infty Y.
+\tag{5.2}
+\]">\[
+|I_\omega|\leq\sqrt{\frac23}\|\omega\|_\infty
+\|\omega\|_2\|S\|_2
+=\frac1{\sqrt3}\|\omega\|_\infty Y.
+\tag{5.2}
+\]</span>
+<p>This retains a factor lost by estimating the operator norm with the full
+matrix norm without using its zero trace.</p>
+<p>For a second criterion, define the actual directional stretching by</p>
+<span class="math math-display" data-tex="\[
+\alpha(x,t)=
+\begin{cases}
+\omega\cdot S\omega/|\omega|^2,&amp;\omega\ne0,\\
+0,&amp;\omega=0.
+\end{cases}
+\qquad h(t)=\|\alpha(\cdot,t)_+\|_\infty.
+\tag{5.3}
+\]">\[
+\alpha(x,t)=
+\begin{cases}
+\omega\cdot S\omega/|\omega|^2,&amp;\omega\ne0,\\
+0,&amp;\omega=0.
+\end{cases}
+\qquad h(t)=\|\alpha(\cdot,t)_+\|_\infty.
+\tag{5.3}
+\]</span>
+<p>Here <span class="math" data-tex="\(r_+=\max(r,0)\)">\(r_+=\max(r,0)\)</span>. Since
+<span class="math" data-tex="\(I_\omega=\int\alpha|\omega|^2\)">\(I_\omega=\int\alpha|\omega|^2\)</span>, we have <span class="math" data-tex="\(I_\omega\leq hY\)">\(I_\omega\leq hY\)</span>.
+The Rayleigh quotient also gives <span class="math" data-tex="\(\alpha\leq\lambda_3\)">\(\alpha\leq\lambda_3\)</span> where
+<span class="math" data-tex="\(\omega\ne0\)">\(\omega\ne0\)</span>; hence <span class="math" data-tex="\(h\leq\|\lambda_3{}_+\|_\infty\)">\(h\leq\|\lambda_3{}_+\|_\infty\)</span>.</p>
+<p>For the third criterion use (4.5). If <span class="math" data-tex="\(\lambda_2\geq0\)">\(\lambda_2\geq0\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+-\det S=\tfrac12\lambda_2|S|^2-\lambda_2^3.
+\tag{5.4}
+\]">\[
+-\det S=\tfrac12\lambda_2|S|^2-\lambda_2^3.
+\tag{5.4}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(-2\lambda_1\lambda_3=|S|^2-2\lambda_2^2\)">\(-2\lambda_1\lambda_3=|S|^2-2\lambda_2^2\)</span>, by the
+zero trace. If <span class="math" data-tex="\(\lambda_2&lt;0\)">\(\lambda_2&lt;0\)</span>, the two lowest eigenvalues are
+negative and the highest is positive, so <span class="math" data-tex="\(-\det S\leq0\)">\(-\det S\leq0\)</span>.
+Consequently the full remainder has the useful bound</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+-4\det S&amp;\leq 2\lambda_2{}_+|S|^2-4(\lambda_2{}_+)^3,\\
+I_\omega&amp;\leq 2\int_\Omega\lambda_2{}_+|S|^2
+-4\int_\Omega(\lambda_2{}_+)^3
+\leq\|\lambda_2{}_+\|_\infty Y.
+\end{aligned}
+\tag{5.5}
+\]">\[
+\begin{aligned}
+-4\det S&amp;\leq 2\lambda_2{}_+|S|^2-4(\lambda_2{}_+)^3,\\
+I_\omega&amp;\leq 2\int_\Omega\lambda_2{}_+|S|^2
+-4\int_\Omega(\lambda_2{}_+)^3
+\leq\|\lambda_2{}_+\|_\infty Y.
+\end{aligned}
+\tag{5.5}
+\]</span>
+<p>All terms before the last upper bound are kept in (4.6) and (5.5).
+The upper bound permits the continuation estimate; it does not assert
+that the negative cubic term vanishes.</p>
+<p>Put</p>
+<span class="math math-display" data-tex="\[
+a(t)=\|\nabla\times f_a(t)\|_2,\qquad b(t)=\|f_b(t)\|_2,
+\qquad \eta&gt;0.
+\tag{5.6}
+\]">\[
+a(t)=\|\nabla\times f_a(t)\|_2,\qquad b(t)=\|f_b(t)\|_2,
+\qquad \eta&gt;0.
+\tag{5.6}
+\]</span>
+<p>Let <span class="math" data-tex="\(k(t)\)">\(k(t)\)</span> be any one of
+<span class="math" data-tex="\(\|\omega\|_\infty/\sqrt3\)">\(\|\omega\|_\infty/\sqrt3\)</span>, <span class="math" data-tex="\(h(t)\)">\(h(t)\)</span>, or
+<span class="math" data-tex="\(\|\lambda_2{}_+\|_\infty\)">\(\|\lambda_2{}_+\|_\infty\)</span>. The proved upper bound is
+<span class="math" data-tex="\(I_\omega\leq kY\)">\(I_\omega\leq kY\)</span>. The two exact scalar inequalities</p>
+<span class="math math-display" data-tex="\[
+2a\sqrt Y\leq a(Y/\eta+\eta),\qquad
+2b\sqrt D\leq\nu D+\nu^{-1}b^2
+\tag{5.7}
+\]">\[
+2a\sqrt Y\leq a(Y/\eta+\eta),\qquad
+2b\sqrt D\leq\nu D+\nu^{-1}b^2
+\tag{5.7}
+\]</span>
+<p>then give</p>
+<span class="math math-display" data-tex="\[
+Y&#x27;+\nu D\leq K Y+R,
+\qquad K=2k+a/\eta,\qquad R=\eta a+\nu^{-1}b^2.
+\tag{5.8}
+\]">\[
+Y&#x27;+\nu D\leq K Y+R,
+\qquad K=2k+a/\eta,\qquad R=\eta a+\nu^{-1}b^2.
+\tag{5.8}
+\]</span>
+<p>If <span class="math" data-tex="\(H(t)=\int_0^tK(s)\,ds\)">\(H(t)=\int_0^tK(s)\,ds\)</span>, multiplication by <span class="math" data-tex="\(e^{-H}\)">\(e^{-H}\)</span>
+and integration prove</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Y(t)&amp;\leq e^{H(t)}\left[Y(0)+\int_0^t e^{-H(s)}R(s)\,ds\right],\\
+\nu\int_0^t e^{-H(s)}D(s)\,ds
+&amp;\leq Y(0)+\int_0^t e^{-H(s)}R(s)\,ds.
+\end{aligned}
+\tag{5.9}
+\]">\[
+\begin{aligned}
+Y(t)&amp;\leq e^{H(t)}\left[Y(0)+\int_0^t e^{-H(s)}R(s)\,ds\right],\\
+\nu\int_0^t e^{-H(s)}D(s)\,ds
+&amp;\leq Y(0)+\int_0^t e^{-H(s)}R(s)\,ds.
+\end{aligned}
+\tag{5.9}
+\]</span>
+<p>The second line follows from the same integrated inequality by retaining
+the nonnegative terminal term before discarding it.</p>
+<p>If <span class="math" data-tex="\(T_*&lt;T_f\)">\(T_*&lt;T_f\)</span> and any one of</p>
+<span class="math math-display" data-tex="\[
+\int_0^{T_*}\|\omega(t)\|_\infty\,dt,\qquad
+\int_0^{T_*}h(t)\,dt,\qquad
+\int_0^{T_*}\|\lambda_2(t)_+\|_\infty\,dt
+\tag{5.10}
+\]">\[
+\int_0^{T_*}\|\omega(t)\|_\infty\,dt,\qquad
+\int_0^{T_*}h(t)\,dt,\qquad
+\int_0^{T_*}\|\lambda_2(t)_+\|_\infty\,dt
+\tag{5.10}
+\]</span>
+<p>is finite, (5.9) bounds <span class="math" data-tex="\(Y\)">\(Y\)</span> up to that endpoint. The original
+<span class="math" data-tex="\(L^2\)">\(L^2\)</span> energy estimate also stays finite for the force in (1.2).
+By (2.3) this bounds the full <span class="math" data-tex="\(H^1\)">\(H^1\)</span> norm and contradicts its
+continuation alternative. Thus each integral in (5.10) must be infinite
+at such a finite maximal endpoint. One may start these estimates at any
+earlier time of the strong solution instead of zero.</p>
+<p>These are viscous theorems for (1.2). The proof uses <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span> in
+(5.7) and the viscous <span class="math" data-tex="\(H^1\)">\(H^1\)</span> continuation theorem. Setting <span class="math" data-tex="\(\nu=0\)">\(\nu=0\)</span>
+does not prove the Euler theorem of Beale, Kato and Majda. That theorem
+requires a separate high-regularity continuation argument. No pointwise
+bound of the strain by the pointwise vorticity has been assumed here:
+the exact connections used are (2.3), (4.5) and the proved integral bounds.</p>
+<h2 id="6-mixed-norms-and-finite-sums">6. Mixed norms and finite sums</h2>
+<p>We can weaken the uniform spatial bound by allowing a time-space norm.
+There are two versions. In the vorticity version decompose the actual
+vector field as <span class="math" data-tex="\(\omega=\sum_{j=1}^m z_j\)">\(\omega=\sum_{j=1}^m z_j\)</span>, and set
+<span class="math" data-tex="\(d=2/\sqrt3\)">\(d=2/\sqrt3\)</span>. In the middle-eigenvalue version decompose the actual
+scalar function as <span class="math" data-tex="\(\lambda_2{}_+=\sum_{j=1}^m z_j\)">\(\lambda_2{}_+=\sum_{j=1}^m z_j\)</span>, and set
+<span class="math" data-tex="\(d=2\)">\(d=2\)</span>. Summands need not be positive, divergence-free, or solutions
+of any equation; this is a decomposition used only inside the exact
+stretching integral.</p>
+<p>For each summand choose</p>
+<span class="math math-display" data-tex="\[
+\frac32&lt;q_j\leq\infty,\qquad
+\frac2{p_j}+\frac3{q_j}=2,
+\qquad k_j(t)=\|z_j(t)\|_{q_j},
+\qquad k_j\in L^{p_j}(0,T_*).
+\tag{6.1}
+\]">\[
+\frac32&lt;q_j\leq\infty,\qquad
+\frac2{p_j}+\frac3{q_j}=2,
+\qquad k_j(t)=\|z_j(t)\|_{q_j},
+\qquad k_j\in L^{p_j}(0,T_*).
+\tag{6.1}
+\]</span>
+<p>For a finite <span class="math" data-tex="\(q=q_j\)">\(q=q_j\)</span>, let</p>
+<span class="math math-display" data-tex="\[
+\theta=\frac3{2q}\in(0,1),\qquad
+r_q=\frac{2q}{q-1},\qquad p=\frac1{1-\theta}.
+\tag{6.2}
+\]">\[
+\theta=\frac3{2q}\in(0,1),\qquad
+r_q=\frac{2q}{q-1},\qquad p=\frac1{1-\theta}.
+\tag{6.2}
+\]</span>
+<p>Hölder interpolation between <span class="math" data-tex="\(L^2\)">\(L^2\)</span> and <span class="math" data-tex="\(L^6\)">\(L^6\)</span> gives
+<span class="math" data-tex="\(\|F\|_{r_q}\leq\|F\|_2^{1-\theta}\|F\|_6^\theta\)">\(\|F\|_{r_q}\leq\|F\|_2^{1-\theta}\|F\|_6^\theta\)</span>:
+raise to the <span class="math" data-tex="\(r_q\)">\(r_q\)</span> power and apply Hölder with reciprocal exponents
+<span class="math" data-tex="\((1-\theta)r_q/2\)">\((1-\theta)r_q/2\)</span> and <span class="math" data-tex="\(\theta r_q/6\)">\(\theta r_q/6\)</span>, whose sum is one.
+Using (1.6) and (2.3) gives, with <span class="math" data-tex="\(E=D+\delta_\Omega Y\)">\(E=D+\delta_\Omega Y\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\omega\|_{r_q}&amp;\leq C_\Omega^\theta
+Y^{(1-\theta)/2}E^{\theta/2},\\
+\|S\|_{r_q}&amp;\leq\frac{C_\Omega^\theta}{\sqrt2}
+Y^{(1-\theta)/2}E^{\theta/2}.
+\end{aligned}
+\tag{6.3}
+\]">\[
+\begin{aligned}
+\|\omega\|_{r_q}&amp;\leq C_\Omega^\theta
+Y^{(1-\theta)/2}E^{\theta/2},\\
+\|S\|_{r_q}&amp;\leq\frac{C_\Omega^\theta}{\sqrt2}
+Y^{(1-\theta)/2}E^{\theta/2}.
+\end{aligned}
+\tag{6.3}
+\]</span>
+<p>For the vector version, substitute one copy of <span class="math" data-tex="\(\omega=\sum_jz_j\)">\(\omega=\sum_jz_j\)</span>
+in <span class="math" data-tex="\(I_\omega\)">\(I_\omega\)</span>, apply (5.1), and then Hölder with exponents
+<span class="math" data-tex="\(q,r_q,r_q\)">\(q,r_q,r_q\)</span>. For the scalar version use
+<span class="math" data-tex="\(I_\omega\leq2\int\lambda_2{}_+|S|^2\)">\(I_\omega\leq2\int\lambda_2{}_+|S|^2\)</span> and the same exponents.
+In both cases twice the stretching contribution of a finite summand is
+bounded by</p>
+<span class="math math-display" data-tex="\[
+c_jY^{1-\theta_j}(D+\delta_\Omega Y)^{\theta_j},
+\qquad c_j=d C_\Omega^{2\theta_j}k_j.
+\tag{6.4}
+\]">\[
+c_jY^{1-\theta_j}(D+\delta_\Omega Y)^{\theta_j},
+\qquad c_j=d C_\Omega^{2\theta_j}k_j.
+\tag{6.4}
+\]</span>
+<p>The <span class="math" data-tex="\(q_j=\infty\)">\(q_j=\infty\)</span> summand instead contributes at most <span class="math" data-tex="\(d k_jY\)">\(d k_jY\)</span>.</p>
+<p>All absorption constants can be kept explicit. For <span class="math" data-tex="\(0&lt;\theta&lt;1\)">\(0&lt;\theta&lt;1\)</span>
+and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, maximization of <span class="math" data-tex="\(c x^\theta-\varepsilon x\)">\(c x^\theta-\varepsilon x\)</span>
+over <span class="math" data-tex="\(x\geq0\)">\(x\geq0\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+B_\theta(\varepsilon)
+=(1-\theta)\theta^{\theta/(1-\theta)}
+\varepsilon^{-\theta/(1-\theta)},
+\qquad
+cY^{1-\theta}D^\theta
+\leq\varepsilon D+B_\theta(\varepsilon)c^{1/(1-\theta)}Y.
+\tag{6.5}
+\]">\[
+B_\theta(\varepsilon)
+=(1-\theta)\theta^{\theta/(1-\theta)}
+\varepsilon^{-\theta/(1-\theta)},
+\qquad
+cY^{1-\theta}D^\theta
+\leq\varepsilon D+B_\theta(\varepsilon)c^{1/(1-\theta)}Y.
+\tag{6.5}
+\]</span>
+<p>For <span class="math" data-tex="\(c,Y&gt;0\)">\(c,Y&gt;0\)</span> the maximum occurs at
+<span class="math" data-tex="\(x=(\theta c/\varepsilon)^{1/(1-\theta)}\)">\(x=(\theta c/\varepsilon)^{1/(1-\theta)}\)</span> after putting
+<span class="math" data-tex="\(x=D/Y\)">\(x=D/Y\)</span>. The cases <span class="math" data-tex="\(cY=0\)">\(cY=0\)</span> follow directly or by continuity.
+Also <span class="math" data-tex="\((D+\delta_\Omega Y)^\theta\leq
+D^\theta+\delta_\Omega Y^\theta\)">\((D+\delta_\Omega Y)^\theta\leq
+D^\theta+\delta_\Omega Y^\theta\)</span>, by concavity and
+<span class="math" data-tex="\(\delta_\Omega\in\{0,1\}\)">\(\delta_\Omega\in\{0,1\}\)</span>.</p>
+<p>Let <span class="math" data-tex="\(N\)">\(N\)</span> be the number of finite <span class="math" data-tex="\(q_j\)">\(q_j\)</span>, and choose
+<span class="math" data-tex="\(\varepsilon=\nu/(2\max(N,1))\)">\(\varepsilon=\nu/(2\max(N,1))\)</span>. The sum of the absorbed
+terms in (6.5) is at most <span class="math" data-tex="\(\nu D/2\)">\(\nu D/2\)</span>. This time use
+<span class="math" data-tex="\(2b\sqrt D\leq(\nu/2)D+2b^2/\nu\)">\(2b\sqrt D\leq(\nu/2)D+2b^2/\nu\)</span> for the force. Equation
+(4.1) then proves</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Y&#x27;+\nu D\leq K Y+R,\qquad R=\eta a+2\nu^{-1}b^2,\\
+K=\frac a\eta+
+\sum_{q_j&lt;\infty}
+\left[\delta_\Omega c_j+B_{\theta_j}(\varepsilon)c_j^{p_j}\right]
++\sum_{q_j=\infty}d k_j.
+\end{gathered}
+\tag{6.6}
+\]">\[
+\begin{gathered}
+Y&#x27;+\nu D\leq K Y+R,\qquad R=\eta a+2\nu^{-1}b^2,\\
+K=\frac a\eta+
+\sum_{q_j&lt;\infty}
+\left[\delta_\Omega c_j+B_{\theta_j}(\varepsilon)c_j^{p_j}\right]
++\sum_{q_j=\infty}d k_j.
+\end{gathered}
+\tag{6.6}
+\]</span>
+<p>If <span class="math" data-tex="\(N=0\)">\(N=0\)</span>, the unused dissipation is nonnegative and the same
+inequality follows by discarding it. For finite <span class="math" data-tex="\(T_*\)">\(T_*\)</span>, the assumed
+<span class="math" data-tex="\(L^{p_j}\)">\(L^{p_j}\)</span> membership also implies <span class="math" data-tex="\(L^1\)">\(L^1\)</span> membership by Hölder;
+the <span class="math" data-tex="\(\infty\)">\(\infty\)</span>-space summands have <span class="math" data-tex="\(p_j=1\)">\(p_j=1\)</span>. Thus <span class="math" data-tex="\(K,R\)">\(K,R\)</span>
+are integrable. Formula (5.9), with these <span class="math" data-tex="\(K,R\)">\(K,R\)</span>, proves continuation.
+This proves the finite-sum criterion with every constant, original domain,
+viscosity and force contribution retained.</p>
+<p>At the spatial endpoint there is a proved smallness variant. Let the actual
+observable, either <span class="math" data-tex="\(\omega\)">\(\omega\)</span> or <span class="math" data-tex="\(\lambda_2{}_+\)">\(\lambda_2{}_+\)</span>, be
+<span class="math" data-tex="\(z+g\)">\(z+g\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+z\in L^\infty(0,T_*;L^{3/2}),\quad
+g\in L^1(0,T_*;L^\infty),\quad
+\operatorname*{ess\,sup}_{t&lt;T_*}\|z(t)\|_{3/2}
+\leq\frac{\nu}{2d C_\Omega^2}.
+\tag{6.7}
+\]">\[
+z\in L^\infty(0,T_*;L^{3/2}),\quad
+g\in L^1(0,T_*;L^\infty),\quad
+\operatorname*{ess\,sup}_{t&lt;T_*}\|z(t)\|_{3/2}
+\leq\frac{\nu}{2d C_\Omega^2}.
+\tag{6.7}
+\]</span>
+<p>Now (6.3) uses <span class="math" data-tex="\(r_q=6\)">\(r_q=6\)</span>, <span class="math" data-tex="\(\theta=1\)">\(\theta=1\)</span>. Twice the first stretching
+contribution is at most
+<span class="math" data-tex="\(d C_\Omega^2\|z\|_{3/2}(D+\delta_\Omega Y)\)">\(d C_\Omega^2\|z\|_{3/2}(D+\delta_\Omega Y)\)</span>.
+Absorb at most <span class="math" data-tex="\(\nu D/2\)">\(\nu D/2\)</span>, retain its lower-order contribution,
+and use the force estimate from (6.6). This gives (6.6) with</p>
+<span class="math math-display" data-tex="\[
+K=\delta_\Omega\nu/2+d\|g\|_\infty+a/\eta,
+\qquad R=\eta a+2\nu^{-1}b^2.
+\tag{6.8}
+\]">\[
+K=\delta_\Omega\nu/2+d\|g\|_\infty+a/\eta,
+\qquad R=\eta a+2\nu^{-1}b^2.
+\tag{6.8}
+\]</span>
+<p>Again (5.9) proves continuation. In particular one may choose an integrable
+threshold <span class="math" data-tex="\(H(t)\geq0\)">\(H(t)\geq0\)</span>, put
+<span class="math" data-tex="\(z=\omega\,1_{|\omega|&gt;H(t)}\)">\(z=\omega\,1_{|\omega|&gt;H(t)}\)</span>,
+<span class="math" data-tex="\(g=\omega\,1_{|\omega|\leq H(t)}\)">\(g=\omega\,1_{|\omega|\leq H(t)}\)</span>, or use the corresponding
+decomposition of <span class="math" data-tex="\(\lambda_2{}_+\)">\(\lambda_2{}_+\)</span>. The small-tail hypothesis is
+exactly (6.7), while <span class="math" data-tex="\(\|g(t)\|_\infty\leq H(t)\)">\(\|g(t)\|_\infty\leq H(t)\)</span>.
+No assertion about an arbitrary large <span class="math" data-tex="\(L^\infty L^{3/2}\)">\(L^\infty L^{3/2}\)</span> observable
+is being substituted for this proved endpoint statement.</p>
+<h2 id="7-five-exercises-with-complete-solutions">7. Five exercises with complete solutions</h2>
+<h3 id="exercise-1-the-critical-exponents-of-the-actual-observables">Exercise 1: the critical exponents of the actual observables</h3>
+<p>For <span class="math" data-tex="\(R&gt;0\)">\(R&gt;0\)</span>, send <span class="math" data-tex="\((x,t)\)">\((x,t)\)</span> to <span class="math" data-tex="\((x/R,t/R^2)\)">\((x/R,t/R^2)\)</span>, and define</p>
+<span class="math math-display" data-tex="\[
+u_R(x,t)=R^{-1}u(x/R,t/R^2),\quad
+p_R(x,t)=R^{-2}p(x/R,t/R^2),\quad
+f_R(x,t)=R^{-3}f(x/R,t/R^2).
+\tag{7.1}
+\]">\[
+u_R(x,t)=R^{-1}u(x/R,t/R^2),\quad
+p_R(x,t)=R^{-2}p(x/R,t/R^2),\quad
+f_R(x,t)=R^{-3}f(x/R,t/R^2).
+\tag{7.1}
+\]</span>
+<p>Find the exact maps on all quantities used in the continuation estimates.</p>
+<p><strong>Solution.</strong> The time derivative, convection, pressure gradient and
+viscous Laplacian each acquire <span class="math" data-tex="\(R^{-3}\)">\(R^{-3}\)</span>, so (1.2) holds with the
+same <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, on the mapped interval and domain. On the box the
+new lengths are <span class="math" data-tex="\(RL_j\)">\(RL_j\)</span>, its volume is <span class="math" data-tex="\(R^3V\)">\(R^3V\)</span>, and its velocity
+mean is <span class="math" data-tex="\(R^{-1}u_0(t/R^2)\)">\(R^{-1}u_0(t/R^2)\)</span>. The strain, vorticity, eigenvalues and
+directional stretching acquire <span class="math" data-tex="\(R^{-2}\)">\(R^{-2}\)</span>:</p>
+<span class="math math-display" data-tex="\[
+(S_R,\omega_R,\lambda_{j,R},\alpha_R)(x,t)
+=R^{-2}(S,\omega,\lambda_j,\alpha)(x/R,t/R^2).
+\tag{7.2}
+\]">\[
+(S_R,\omega_R,\lambda_{j,R},\alpha_R)(x,t)
+=R^{-2}(S,\omega,\lambda_j,\alpha)(x/R,t/R^2).
+\tag{7.2}
+\]</span>
+<p>The eigenvalue ordering is preserved because <span class="math" data-tex="\(R^{-2}&gt;0\)">\(R^{-2}&gt;0\)</span>; the zero
+case in (5.3) maps to itself. Thus each observable has mixed norm</p>
+<span class="math math-display" data-tex="\[
+\|z_R\|_{L^p(0,R^2T;L^q(R\Omega))}
+=R^{2/p+3/q-2}\|z\|_{L^p(0,T;L^q(\Omega))}.
+\tag{7.3}
+\]">\[
+\|z_R\|_{L^p(0,R^2T;L^q(R\Omega))}
+=R^{2/p+3/q-2}\|z\|_{L^p(0,T;L^q(\Omega))}.
+\tag{7.3}
+\]</span>
+<p>The usual zero reciprocal is used for an infinite exponent. This proves
+the exponent relation in (6.1) directly from the original fields.
+Furthermore</p>
+<span class="math math-display" data-tex="\[
+Y_R(t)=R^{-1}Y(t/R^2),\quad
+D_R(t)=R^{-3}D(t/R^2),\quad
+I_{\omega_R}(t)=R^{-3}I_\omega(t/R^2).
+\tag{7.4}
+\]">\[
+Y_R(t)=R^{-1}Y(t/R^2),\quad
+D_R(t)=R^{-3}D(t/R^2),\quad
+I_{\omega_R}(t)=R^{-3}I_\omega(t/R^2).
+\tag{7.4}
+\]</span>
+<p>The time derivative of <span class="math" data-tex="\(Y_R\)">\(Y_R\)</span> has factor <span class="math" data-tex="\(R^{-3}\)">\(R^{-3}\)</span>. The two force
+pairings have that factor too: curl of <span class="math" data-tex="\(f_{a,R}\)">\(f_{a,R}\)</span> has <span class="math" data-tex="\(R^{-4}\)">\(R^{-4}\)</span>,
+vorticity has <span class="math" data-tex="\(R^{-2}\)">\(R^{-2}\)</span>, and spatial measure has <span class="math" data-tex="\(R^3\)">\(R^3\)</span>;
+<span class="math" data-tex="\(f_{b,R}\)">\(f_{b,R}\)</span> and <span class="math" data-tex="\(-\Delta u_R\)">\(-\Delta u_R\)</span> each have <span class="math" data-tex="\(R^{-3}\)">\(R^{-3}\)</span>.
+Thus every term of (4.1) transforms identically. The original mean and
+lower-order norm terms remain as specified, not as derivatives of a
+rescaled mean-zero replacement.</p>
+<h3 id="exercise-2-an-exact-forced-helical-wave">Exercise 2: an exact forced helical wave</h3>
+<p>On the original box take <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, <span class="math" data-tex="\(k=2\pi n/L_3\)">\(k=2\pi n/L_3\)</span>, a real
+smooth function <span class="math" data-tex="\(A(t)\)">\(A(t)\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+e(x_3)=(\cos(kx_3),-\sin(kx_3),0),\qquad u=A(t)e.
+\tag{7.5}
+\]">\[
+e(x_3)=(\cos(kx_3),-\sin(kx_3),0),\qquad u=A(t)e.
+\tag{7.5}
+\]</span>
+<p>Find the pressure, force, strain eigenvalues and complete enstrophy balance.</p>
+<p><strong>Solution.</strong> The field has zero mean and zero divergence. Its third
+component is zero and its first two components depend only on <span class="math" data-tex="\(x_3\)">\(x_3\)</span>,
+so <span class="math" data-tex="\((u\cdot\nabla)u=0\)">\((u\cdot\nabla)u=0\)</span>. Direct differentiation gives
+<span class="math" data-tex="\(\nabla\times u=ku\)">\(\nabla\times u=ku\)</span> and <span class="math" data-tex="\(\Delta u=-k^2u\)">\(\Delta u=-k^2u\)</span>. Hence the exact
+solution has</p>
+<span class="math math-display" data-tex="\[
+p=0,\qquad f=(A&#x27;+\nu k^2A)e.
+\tag{7.6}
+\]">\[
+p=0,\qquad f=(A&#x27;+\nu k^2A)e.
+\tag{7.6}
+\]</span>
+<p>Its symmetric gradient is</p>
+<span class="math math-display" data-tex="\[
+S=\frac{-kA}{2}
+\begin{pmatrix}
+0&amp;0&amp;\sin(kx_3)\\0&amp;0&amp;\cos(kx_3)\\
+\sin(kx_3)&amp;\cos(kx_3)&amp;0
+\end{pmatrix}.
+\tag{7.7}
+\]">\[
+S=\frac{-kA}{2}
+\begin{pmatrix}
+0&amp;0&amp;\sin(kx_3)\\0&amp;0&amp;\cos(kx_3)\\
+\sin(kx_3)&amp;\cos(kx_3)&amp;0
+\end{pmatrix}.
+\tag{7.7}
+\]</span>
+<p>The vector <span class="math" data-tex="\(e\)">\(e\)</span> is in its zero eigenspace, and the remaining two
+eigenvalues are <span class="math" data-tex="\(\pm|kA|/2\)">\(\pm|kA|/2\)</span>. Thus <span class="math" data-tex="\(\lambda_2=0\)">\(\lambda_2=0\)</span>,
+<span class="math" data-tex="\(S\omega=0\)">\(S\omega=0\)</span>, <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span>, and <span class="math" data-tex="\(\det S=0\)">\(\det S=0\)</span>.
+The actual norms and force work are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|u\|_2^2=VA^2,\qquad Y=Vk^2A^2,\qquad D=Vk^4A^2,\\
+(f,-\Delta u)=Vk^2A(A&#x27;+\nu k^2A).
+\end{gathered}
+\tag{7.8}
+\]">\[
+\begin{gathered}
+\|u\|_2^2=VA^2,\qquad Y=Vk^2A^2,\qquad D=Vk^4A^2,\\
+(f,-\Delta u)=Vk^2A(A&#x27;+\nu k^2A).
+\end{gathered}
+\tag{7.8}
+\]</span>
+<p>Substitution gives <span class="math" data-tex="\(Y&#x27;/2+\nu D=Vk^2AA&#x27;+\nu Vk^4A^2\)">\(Y&#x27;/2+\nu D=Vk^2AA&#x27;+\nu Vk^4A^2\)</span>,
+exactly (4.1) with zero stretching. Likewise the kinetic energy balance
+is <span class="math" data-tex="\(VAA&#x27;+\nu Vk^2A^2=(f,u)\)">\(VAA&#x27;+\nu Vk^2A^2=(f,u)\)</span>. The amplitude can grow because
+the prescribed force supplies work. The wave is not evidence that force
+work disappears from the strain criterion.</p>
+<h3 id="exercise-3-the-periodic-strain-defect-at-zero-frequency">Exercise 3: the periodic strain defect at zero frequency</h3>
+<p>Suppose a symmetric <span class="math" data-tex="\(L^2(Q)\)">\(L^2(Q)\)</span> tensor satisfies (2.8). Describe its
+relation to the strain of a periodic velocity without assuming its mean
+vanishes.</p>
+<p><strong>Solution.</strong> Every nonzero coefficient lies in the range of (2.4),
+by the proof of (2.8). Its constant coefficient <span class="math" data-tex="\(T_0\)">\(T_0\)</span> is symmetric
+and trace-free but otherwise arbitrary. Formula (2.4), with zero velocity
+mean, constructs <span class="math" data-tex="\(u_T\in H^1_\sigma(Q)\)">\(u_T\in H^1_\sigma(Q)\)</span> with</p>
+<span class="math math-display" data-tex="\[
+T=\operatorname{sym}\nabla u_T+T_0,\qquad
+\|T\|_2^2=\tfrac12\|\nabla u_T\|_2^2+V|T_0|^2.
+\tag{7.9}
+\]">\[
+T=\operatorname{sym}\nabla u_T+T_0,\qquad
+\|T\|_2^2=\tfrac12\|\nabla u_T\|_2^2+V|T_0|^2.
+\tag{7.9}
+\]</span>
+<p>An integral of a periodic derivative is zero, so <span class="math" data-tex="\(T_0\ne0\)">\(T_0\ne0\)</span> cannot
+be the strain of any periodic velocity. The map sending <span class="math" data-tex="\(T\)">\(T\)</span> to
+<span class="math" data-tex="\(T_0\)">\(T_0\)</span> is onto the five-dimensional space of real symmetric trace-free
+constant matrices: each such constant tensor satisfies (2.8). Its kernel
+is precisely the periodic strain range. The inclusion of constant tensors
+splits this map, and (7.9) proves the orthogonal direct sum. The velocity
+kernel is separately the three-dimensional space of constant vectors;
+adding (2.2) supplies the actual original-flow mean. These two constant
+spaces have different maps and dimensions, all explicitly retained.</p>
+<h3 id="exercise-4-a-force-with-a-non-square-integrable-pressure-hessian">Exercise 4: a force with a non-square-integrable pressure Hessian</h3>
+<p>On <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>, define a real scalar distribution <span class="math" data-tex="\(\phi\)">\(\phi\)</span> by</p>
+<span class="math math-display" data-tex="\[
+\widehat\phi(\xi)=1_{|\xi|\geq1}|\xi|^{-3}.
+\tag{7.10}
+\]">\[
+\widehat\phi(\xi)=1_{|\xi|\geq1}|\xi|^{-3}.
+\tag{7.10}
+\]</span>
+<p>Take a nonzero real <span class="math" data-tex="\(\gamma\in C_c^\infty(0,T)\)">\(\gamma\in C_c^\infty(0,T)\)</span>. Verify that
+<span class="math" data-tex="\(u=0\)">\(u=0\)</span>, <span class="math" data-tex="\(p=\gamma(t)\phi\)">\(p=\gamma(t)\phi\)</span>,
+<span class="math" data-tex="\(f=\gamma(t)\nabla\phi\)">\(f=\gamma(t)\nabla\phi\)</span> is an actual solution in the source force
+class, and compute the relevant pressure regularity.</p>
+<p><strong>Solution.</strong> The transform in (7.10) is real and even, so its inverse
+distribution is real. Radial integration and the original Fourier factors
+give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\phi\|_2^2&amp;=4\pi\int_1^\infty r^{-4}\,dr=4\pi/3,\\
+\|\nabla\phi\|_2^2&amp;=16\pi^3\int_1^\infty r^{-2}\,dr=16\pi^3,\\
+\|\operatorname{Hess}\phi\|_2^2
+&amp;=64\pi^5\int_1^\infty 1\,dr=\infty.
+\end{aligned}
+\tag{7.11}
+\]">\[
+\begin{aligned}
+\|\phi\|_2^2&amp;=4\pi\int_1^\infty r^{-4}\,dr=4\pi/3,\\
+\|\nabla\phi\|_2^2&amp;=16\pi^3\int_1^\infty r^{-2}\,dr=16\pi^3,\\
+\|\operatorname{Hess}\phi\|_2^2
+&amp;=64\pi^5\int_1^\infty 1\,dr=\infty.
+\end{aligned}
+\tag{7.11}
+\]</span>
+<p>The last norm is the Frobenius norm, using
+<span class="math" data-tex="\(\sum_{ij}\xi_i^2\xi_j^2=|\xi|^4\)">\(\sum_{ij}\xi_i^2\xi_j^2=|\xi|^4\)</span>. With the full
+<span class="math" data-tex="\(H^{-1}\)">\(H^{-1}\)</span> weight its squared norm is instead</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\operatorname{Hess}\phi\|_{H^{-1}}^2
+&amp;=64\pi^5\int_1^\infty\frac{dr}{1+4\pi^2r^2}\\
+&amp;=32\pi^4\big(\pi/2-\arctan(2\pi)\big)&lt;\infty.
+\end{aligned}
+\tag{7.12}
+\]">\[
+\begin{aligned}
+\|\operatorname{Hess}\phi\|_{H^{-1}}^2
+&amp;=64\pi^5\int_1^\infty\frac{dr}{1+4\pi^2r^2}\\
+&amp;=32\pi^4\big(\pi/2-\arctan(2\pi)\big)&lt;\infty.
+\end{aligned}
+\tag{7.12}
+\]</span>
+<p>The force belongs to <span class="math" data-tex="\(L^2_tL^2_x\)">\(L^2_tL^2_x\)</span>. Since <span class="math" data-tex="\(\nabla p=f\)">\(\nabla p=f\)</span>, the
+original momentum equation holds with zero velocity for every <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>.
+The pressure formula (3.3) is exactly <span class="math" data-tex="\(-\Delta p=-\operatorname{div}f\)">\(-\Delta p=-\operatorname{div}f\)</span>;
+there is no low-frequency ambiguity because (7.10) vanishes near zero.
+The mild velocity equation also holds: its integrand <span class="math" data-tex="\(-\nabla p+f\)">\(-\nabla p+f\)</span>
+is identically zero. At every time when <span class="math" data-tex="\(\gamma\ne0\)">\(\gamma\ne0\)</span>, the pressure
+Hessian fails to be <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. In particular setting <span class="math" data-tex="\(\nu=1\)">\(\nu=1\)</span> gives
+a solution in Definition <code>ExtForce</code> of the cited source. The correct
+<span class="math" data-tex="\(H^{-1},H^1\)">\(H^{-1},H^1\)</span> pairing (3.6) remains valid. In the full strain equation
+the pressure Hessian and symmetric force gradient cancel as distributions.</p>
+<h3 id="exercise-5-zero-total-stretching-without-middle-eigenvector-alignment">Exercise 5: zero total stretching without middle-eigenvector alignment</h3>
+<p>Construct a compact smooth forced flow for which both integrals in (4.5)
+vanish, but vorticity is aligned with the largest strain eigenvalue on one
+open ball and the smallest on another.</p>
+<p><strong>Solution.</strong> Keep arbitrary constants <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, <span class="math" data-tex="\(\ell&gt;0\)">\(\ell&gt;0\)</span>, and
+<span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+M=a\begin{pmatrix}-3&amp;-1/2&amp;0\\1/2&amp;1&amp;0\\0&amp;0&amp;2\end{pmatrix},
+\quad S_M=a\operatorname{diag}(-3,1,2),\quad x_+=(3\ell,0,0).
+\tag{7.13}
+\]">\[
+M=a\begin{pmatrix}-3&amp;-1/2&amp;0\\1/2&amp;1&amp;0\\0&amp;0&amp;2\end{pmatrix},
+\quad S_M=a\operatorname{diag}(-3,1,2),\quad x_+=(3\ell,0,0).
+\tag{7.13}
+\]</span>
+<p>Define an exact smooth cutoff by</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+b(s)=\begin{cases}e^{-1/s},&amp;s&gt;0,\\0,&amp;s\leq0,\end{cases}
+\qquad
+\chi(s)=\frac{b(1-s)}{b(1-s)+b(s-1/4)},\\
+A(y)=-\tfrac13\chi(|y|^2/\ell^2)\,y\times(My),
+\qquad v=\nabla\times A.
+\end{gathered}
+\tag{7.14}
+\]">\[
+\begin{gathered}
+b(s)=\begin{cases}e^{-1/s},&amp;s&gt;0,\\0,&amp;s\leq0,\end{cases}
+\qquad
+\chi(s)=\frac{b(1-s)}{b(1-s)+b(s-1/4)},\\
+A(y)=-\tfrac13\chi(|y|^2/\ell^2)\,y\times(My),
+\qquad v=\nabla\times A.
+\end{gathered}
+\tag{7.14}
+\]</span>
+<p>The denominator is positive for every real <span class="math" data-tex="\(s\)">\(s\)</span>. All derivatives of
+<span class="math" data-tex="\(b\)">\(b\)</span> vanish at zero from either side: for <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, each derivative
+is a polynomial in <span class="math" data-tex="\(s^{-1}\)">\(s^{-1}\)</span> times <span class="math" data-tex="\(e^{-1/s}\)">\(e^{-1/s}\)</span>, which tends to
+zero. Hence <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is smooth, is one for <span class="math" data-tex="\(s\leq1/4\)">\(s\leq1/4\)</span>, and is
+zero for <span class="math" data-tex="\(s\geq1\)">\(s\geq1\)</span>. Since <span class="math" data-tex="\(\operatorname{tr}M=0\)">\(\operatorname{tr}M=0\)</span>, the vector
+identity for curl of a cross product gives
+<span class="math" data-tex="\(\nabla\times(y\times My)=-3My\)">\(\nabla\times(y\times My)=-3My\)</span>. Thus
+<span class="math" data-tex="\(v=My\)">\(v=My\)</span> on <span class="math" data-tex="\(|y|&lt;\ell/2\)">\(|y|&lt;\ell/2\)</span>, and <span class="math" data-tex="\(v\)">\(v\)</span> is supported in
+<span class="math" data-tex="\(|y|\leq\ell\)">\(|y|\leq\ell\)</span>.</p>
+<p>Here are the full transition formulas, to keep the annular force visible.
+Let <span class="math" data-tex="\(r^2=|y|^2\)">\(r^2=|y|^2\)</span>, <span class="math" data-tex="\(s=r^2/\ell^2\)">\(s=r^2/\ell^2\)</span>, <span class="math" data-tex="\(q=y\cdot My\)">\(q=y\cdot My\)</span>, and
+<span class="math" data-tex="\(B=r^2My-qy\)">\(B=r^2My-qy\)</span>. Primes below are derivatives of <span class="math" data-tex="\(\chi\)">\(\chi\)</span> at <span class="math" data-tex="\(s\)">\(s\)</span>.
+The product and vector triple-product rules give</p>
+<span class="math math-display" data-tex="\[
+v=\chi My+\frac{2\chi&#x27;}{3\ell^2}B,
+\qquad
+\partial_jB=2y_jMy+r^2Me_j-2(S_My)_j y-qe_j.
+\tag{7.15}
+\]">\[
+v=\chi My+\frac{2\chi&#x27;}{3\ell^2}B,
+\qquad
+\partial_jB=2y_jMy+r^2Me_j-2(S_My)_j y-qe_j.
+\tag{7.15}
+\]</span>
+<p>Consequently every gradient column and the complete Laplacian are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(G_v)e_j={}&amp;\chi Me_j+\frac{2\chi&#x27;y_j}{\ell^2}My
++\frac{4\chi&#x27;&#x27;y_j}{3\ell^4}B
++\frac{2\chi&#x27;}{3\ell^2}\partial_jB,\\
+\Delta v={}&amp;\frac{10\chi&#x27;+4s\chi&#x27;&#x27;}{\ell^2}My\\
+&amp;+\frac2{3\ell^2}
+\left[\chi&#x27;(10My-4S_My)
++\frac{18\chi&#x27;&#x27;+4s\chi&#x27;&#x27;&#x27;}{\ell^2}B\right].
+\end{aligned}
+\tag{7.16}
+\]">\[
+\begin{aligned}
+(G_v)e_j={}&amp;\chi Me_j+\frac{2\chi&#x27;y_j}{\ell^2}My
++\frac{4\chi&#x27;&#x27;y_j}{3\ell^4}B
++\frac{2\chi&#x27;}{3\ell^2}\partial_jB,\\
+\Delta v={}&amp;\frac{10\chi&#x27;+4s\chi&#x27;&#x27;}{\ell^2}My\\
+&amp;+\frac2{3\ell^2}
+\left[\chi&#x27;(10My-4S_My)
++\frac{18\chi&#x27;&#x27;+4s\chi&#x27;&#x27;&#x27;}{\ell^2}B\right].
+\end{aligned}
+\tag{7.16}
+\]</span>
+<p>To verify the last coefficients, note that <span class="math" data-tex="\(\Delta B=10My-4S_My\)">\(\Delta B=10My-4S_My\)</span>
+and <span class="math" data-tex="\(y\cdot\nabla B=3B\)">\(y\cdot\nabla B=3B\)</span>; apply the Laplacian product rule to
+both terms of (7.15). These formulas include the entire transition region.</p>
+<p>Now put <span class="math" data-tex="\(y_+=x-x_+\)">\(y_+=x-x_+\)</span>, <span class="math" data-tex="\(y_-=-x-x_+\)">\(y_-=-x-x_+\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+u(x)=v(y_+)+v(y_-),\qquad p=0.
+\tag{7.17}
+\]">\[
+u(x)=v(y_+)+v(y_-),\qquad p=0.
+\tag{7.17}
+\]</span>
+<p>This is the curl of <span class="math" data-tex="\(A(y_+)-A(y_-)\)">\(A(y_+)-A(y_-)\)</span>; the minus sign compensates
+for the derivative of <span class="math" data-tex="\(y_-\)">\(y_-\)</span>. It is therefore divergence-free.
+Its two support balls, centered at <span class="math" data-tex="\(x_+\)">\(x_+\)</span> and <span class="math" data-tex="\(-x_+\)">\(-x_+\)</span>, are
+disjoint. It is even in <span class="math" data-tex="\(x\)">\(x\)</span>, so <span class="math" data-tex="\(G,S,\omega\)">\(G,S,\omega\)</span> are odd. In
+particular <span class="math" data-tex="\(\det S\)">\(\det S\)</span> and <span class="math" data-tex="\(\omega\cdot S\omega\)">\(\omega\cdot S\omega\)</span> are odd
+integrable functions and each has integral zero.</p>
+<p>On the ball of radius <span class="math" data-tex="\(\ell/2\)">\(\ell/2\)</span> about <span class="math" data-tex="\(x_+\)">\(x_+\)</span>, the exact data are</p>
+<span class="math math-display" data-tex="\[
+G=M,\quad S=S_M,\quad \omega=ae_3,\quad
+(\lambda_1,\lambda_2,\lambda_3)=(-3a,a,2a),\quad \alpha=2a.
+\tag{7.18}
+\]">\[
+G=M,\quad S=S_M,\quad \omega=ae_3,\quad
+(\lambda_1,\lambda_2,\lambda_3)=(-3a,a,2a),\quad \alpha=2a.
+\tag{7.18}
+\]</span>
+<p>On the corresponding ball about <span class="math" data-tex="\(-x_+\)">\(-x_+\)</span>, they are</p>
+<span class="math math-display" data-tex="\[
+G=-M,\quad S=-S_M,\quad \omega=-ae_3,\quad
+(\lambda_1,\lambda_2,\lambda_3)=(-2a,-a,3a),\quad \alpha=-2a.
+\tag{7.19}
+\]">\[
+G=-M,\quad S=-S_M,\quad \omega=-ae_3,\quad
+(\lambda_1,\lambda_2,\lambda_3)=(-2a,-a,3a),\quad \alpha=-2a.
+\tag{7.19}
+\]</span>
+<p>The middle eigenspace is <span class="math" data-tex="\(\mathbb Re_2\)">\(\mathbb Re_2\)</span> in both balls. Vorticity
+is along <span class="math" data-tex="\(e_3\)">\(e_3\)</span>, the largest eigenspace in (7.18) and the smallest
+in (7.19). The disagreement occurs on open sets of positive volume.</p>
+<p>To make this an actual stationary solution of the original viscous equation,
+use the full compact smooth force</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f(x)={}&amp;G_v(y_+)v(y_+)-G_v(y_-)v(y_-)\\
+&amp;-\nu\big(\Delta v(y_+)+\Delta v(y_-)\big).
+\end{aligned}
+\tag{7.20}
+\]">\[
+\begin{aligned}
+f(x)={}&amp;G_v(y_+)v(y_+)-G_v(y_-)v(y_-)\\
+&amp;-\nu\big(\Delta v(y_+)+\Delta v(y_-)\big).
+\end{aligned}
+\tag{7.20}
+\]</span>
+<p>The two supports are disjoint, so there are no omitted cross-products.
+The chain rule gives <span class="math" data-tex="\(G_u=G_v(y_+)-G_v(y_-)\)">\(G_u=G_v(y_+)-G_v(y_-)\)</span> and
+<span class="math" data-tex="\(\Delta u=\Delta v(y_+)+\Delta v(y_-)\)">\(\Delta u=\Delta v(y_+)+\Delta v(y_-)\)</span>. Equations
+(7.15)–(7.16) then verify exactly that
+<span class="math" data-tex="\(f=(u\cdot\nabla)u-\nu\Delta u\)">\(f=(u\cdot\nabla)u-\nu\Delta u\)</span>, including the annuli.
+This force is in both classes in (1.2) on every finite time interval.
+Integration gives <span class="math" data-tex="\((f,u)=\nu\|\nabla u\|_2^2\)">\((f,u)=\nu\|\nabla u\|_2^2\)</span> and
+<span class="math" data-tex="\((f,-\Delta u)=\nu D\)">\((f,-\Delta u)=\nu D\)</span>: the transport contribution to the latter
+is <span class="math" data-tex="\(-I_\omega=0\)">\(-I_\omega=0\)</span>, by (4.1) or its proved spatial identity.
+Thus both full energy balances agree with stationarity.</p>
+<p><img src="assets/NS-FLUID-08/strain-alignment-counterexample-5BF6C3347D427373B24DFA979362E3E06852B81AA9357E9FF8E2F4392B341F75.png" alt="Exact support sections and strain eigenspaces of the compact parity example" class="course-figure" width="2376" height="936" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="strain-alignment-counterexample" data-asset-sha256="5BF6C3347D427373B24DFA979362E3E06852B81AA9357E9FF8E2F4392B341F75"></p>
+<p>The figure takes <span class="math" data-tex="\(a=\ell=1\)">\(a=\ell=1\)</span>. The left panel is the exact
+<span class="math" data-tex="\(x_2=0\)">\(x_2=0\)</span> section of the two support balls and their affine inner balls;
+the other panels show the exact spectra in (7.18)–(7.19), with each
+eigenvalue labelled by its original coordinate direction. It depicts
+neither an approximate solution nor a numerical proof of cancellation:
+the cancellation is the parity calculation above. The original figure
+source is included in the course download.</p>
+<p>This example refutes a pointwise alignment inference from zero total
+stretching. It does not refute an independently measured statistical
+tendency. The alignment discussion following <code>VortStretch</code> in Miller's
+version 4 is therefore read with that precise limitation. The source
+integral identity itself is retained and proved in (4.3)–(4.5).
+For the other source correction in Section 3, set <span class="math" data-tex="\(\nu=1\)">\(\nu=1\)</span> in this
+same solution: the incorrect forced strain display has residual
+<span class="math" data-tex="\(|\omega|^2I_3/2=a^2I_3/2\)">\(|\omega|^2I_3/2=a^2I_3/2\)</span> on both inner balls. This verifies the
+sign correction on an actual smooth compact source-class solution.</p>
+<h2 id="8-sources-and-the-next-questions">8. Sources and the next questions</h2>
+<p>Evan Miller's <a href="https://arxiv.org/abs/1710.05569v4">middle-eigenvalue paper, arXiv:1710.05569v4</a>
+provides the strain constraint, isometries, enstrophy identity and
+middle-eigenvalue criterion compared here. The exact source locators are
+<code>StrainSpace</code>, <code>TensorIsometry</code>, <code>Strn</code>, <code>DET2</code>, <code>EigenBound</code> and <code>RegCrit</code>.
+Sections 2–6 give independent proofs on the original whole space and arbitrary
+rectangular periodic boxes, with the full force of (1.2). The source-specific
+corrections and examples are identified in Sections 3 and 7 rather than
+silently substituted into the author's text.</p>
+<p>Miller's <a href="https://arxiv.org/abs/2007.02023v1">Navier–Stokes regularity criteria in sum spaces, arXiv:2007.02023v1</a>,
+particularly <code>StrainSumSpace</code>, <code>EigenEndpoint</code> and <code>VortSumSpace</code>, is the
+primary-source comparison for Section 6. Its introduction credits Jiří
+Neustupa and Patrick Penel with the earlier middle-eigenvalue criterion.
+The two-summand and small-tail arguments there motivate the finite-sum
+calculation here. Our vector estimate also retains the trace-free matrix
+gain (5.1); the source's Cauchy–Schwarz step in <code>VortSumSpace</code> retains
+only the strain–vorticity isometry. We make no novelty claim for these
+elementary consequences.</p>
+<p>The historical Euler reference is J. T. Beale, T. Kato and A. Majda,
+“Remarks on the breakdown of smooth solutions for the 3-D Euler equations,”
+<em>Communications in Mathematical Physics</em> <strong>94</strong> (1984), 61–66. That original
+paper has not been used as a read proof here. The cited Miller source and
+Terence Tao's <a href="https://arxiv.org/abs/1108.1165v4">localization paper, arXiv:1108.1165v4</a>
+supply the historical routing references. The Euler theorem, the general
+large velocity <span class="math" data-tex="\(L^\infty_tL^3_x\)">\(L^\infty_tL^3_x\)</span> endpoint, and the later forced-flow
+constructions require their own complete arguments. The present chapter
+proves exactly the viscous criteria and source corrections stated above.</p>
+</article><nav aria-label="Lesson sequence"><a href="NS-FLUID-07.html">Previous lesson</a><a href="NS-FLUID-09.html">Next lesson</a></nav></main><footer>Mathematical text: CC0 1.0. Cited works and reader software retain their respective terms.</footer></body></html>

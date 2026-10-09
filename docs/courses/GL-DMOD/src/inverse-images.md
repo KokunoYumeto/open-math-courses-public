@@ -2,7 +2,7 @@
 
 *Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
-*Source and dependency reconciliation and full algebraic non-characteristic proofs, including central specialization and characteristic equality, by GPT-6 Astra (OpenAI), Ultra, October 2026. Original examples and complete solutions retained.*
+*Source and dependency reconciliation and full algebraic and analytic non-characteristic proofs, including central specialization, uniform analytic filtrations and characteristic equality, by GPT-6 Astra (OpenAI), Ultra, October 2026. Original examples and complete solutions retained.*
 
 The fiber of the point module at its own supporting point is zero as an ordinary tensor product. Its derived fiber is one-dimensional. This is the first reason inverse image of differential equations must be derived. A second issue is coherence: restricting the regular differential-operator module to a point leaves infinitely many derivative directions. Smooth maps and non-characteristic maps provide useful situations where these problems are controlled.
 
@@ -401,7 +401,7 @@ For a closed embedding this says that characteristic covectors contain no nonzer
 
 For the analytic statement, see Pierre Schapira, [*An introduction to D-modules*, draft v7, March 2020](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/Dmod.pdf): Definition 2.3.1 and Theorem 2.3.7, pages 28–31, give the condition, coherence, concentration in degree zero and characteristic containment. Remark 2.3.8 on page 30 states the stronger equality (6.2), referring its proof to Kashiwara. Definition 3.1.10 and Lemma 3.1.11, page 54, give the cotangent-kernel and finite-projection comparison. Schapira's $f_D^{-1}$ is the unshifted $Lf^*$ here, not $f^!$.
 
-The algebraic statement, including equality (6.2), is Schnell, [*D-modules*, Theorem 16.5](https://www.math.stonybrook.edu/~cschnell/pdf/notes/d-modules.pdf), pages 79–83. Its proof supplies coherence and vanishing but leaves an additional filtration argument for the general equality. The smooth equality was proved in Section 3. Lemmas 6.1–6.2 and Proposition 6.3 below supply the general algebraic finite-projection comparison, coherence, vanishing and containment. Lemma 6.4 and Theorem 6.5 below complete the full algebraic equality by a Rees-torsion argument and the earlier involutivity theorem. The full analytic proof remains a separate obligation.
+The algebraic statement, including equality (6.2), is Schnell, [*D-modules*, Theorem 16.5](https://www.math.stonybrook.edu/~cschnell/pdf/notes/d-modules.pdf), pages 79–83. Its proof supplies coherence and vanishing but leaves an additional filtration argument for the general equality. The smooth equality was proved in Section 3. Lemmas 6.1–6.2 and Proposition 6.3 below supply the general algebraic finite-projection comparison, coherence, vanishing and containment. Lemma 6.4 and Theorem 6.5 below complete the full algebraic equality by a Rees-torsion argument and the earlier involutivity theorem. Lemmas 6.6 and Theorem 6.7 below supply the additional analytic coherence and support arguments, proving the full analytic theorem as well.
 
 At the origin of a line, the polynomial connection is non-characteristic and $\delta_0$ is characteristic. Their Koszul computations show the corresponding presence or absence of higher pullback cohomology. For $m>1$, $f_m$ is characteristic at zero for $Q_\lambda$, whose characteristic support includes the whole cotangent fiber there. Nevertheless its flatness eliminates higher Tor in Section 5. Non-characteristic is a sufficient condition, and its failure does not force higher cohomology in every example.
 
@@ -485,7 +485,7 @@ X\xrightarrow{\ i=(1,f)\ }X\times Y
 
 The smooth theorem proves all three conclusions, including equality of characteristic supports, for $p^*M$. Along the graph, its covectors have the form $(0,\eta)$ with $\eta\in\operatorname{Ch}(M)$. Restriction to the graph sends this covector to $df^*\eta$. Therefore the graph is non-characteristic for $p^*M$ exactly when (6.1) holds. Apply the closed-embedding result and the canonical composition isomorphism $Lf^*\simeq Li^*Lp^*$. The resulting support projection is $f_d f_\pi^{-1}$, giving (6.4) with the original source and target. $\square$
 
-Surjectivity in (6.6) alone does not establish equality of supports. The following central-specialization argument supplies the missing reverse inclusion, using the already-proved involutivity theorem. The analytic theorem retains its full statement and exact external source; this algebraic argument is not being declared an analytic coherence proof.
+Surjectivity in (6.6) alone does not establish equality of supports. The following central-specialization argument supplies the missing reverse inclusion, using the already-proved involutivity theorem. The analytic theorem retains its full statement and exact external source; its separate common-neighborhood coherence proof is supplied in Lemma 6.6 and Theorem 6.7.
 
 ### Lemma 6.4. Central specialization without strictness
 
@@ -603,7 +603,170 @@ Both sides are viewed in $\operatorname{Spec}(S/(t))=T^*X$. The second equality 
 
 For a smooth closed embedding of arbitrary codimension, use the successive hypersurfaces in Proposition 6.3. That proof already establishes the non-characteristic condition at every stage using containment alone. Apply (6.17) at each stage. Composing the coordinate restrictions and cotangent projections gives equality for the original embedding, with precisely its original pulled-back characteristic support. Finally factor any $f$ into its graph and the smooth projection as in (6.7). The smooth equality in Theorem 3.1 and the closed-embedding equality just proved compose to (6.2); the graph non-characteristic comparison and the derived-composition map were verified in Proposition 6.3. These are local support equalities, so they agree on overlaps and give the global assertion. Coherence and higher-Tor vanishing are already supplied by Proposition 6.3. $\square$
 
-This closes the algebraic theorem without replacing its equality by containment, and without restricting $M$ to a holonomic module or $f$ to an embedding. The full analytic theorem remains an assigned proof obligation: the algebraic tangent-ring construction has not by itself supplied the analytic coherent-filtration input.
+This closes the algebraic theorem without replacing its equality by containment, and without restricting $M$ to a holonomic module or $f$ to an embedding. The analytic tangent-ring construction additionally needs common-neighborhood coherence, proved next rather than inferred from algebraic stalk Noetherianity.
+
+### Lemma 6.6. Analytic parameters and uniform tangent operators
+
+Let \(U\) be a coordinate neighborhood in a complex manifold, with coordinates \(z_1,\ldots,z_m\). Choose any subset \(I\) of the coordinate directions, including the empty subset, and let \(\mathcal A_I\) consist of finite sums of holomorphic-coefficient monomials in the derivatives \(\partial_{z_i}\), \(i\in I\). Give it the derivative-order filtration. Then:
+
+1. \(\mathcal A_I\) is left and right coherent. Finite operator matrices have locally finitely generated kernels and images, and their images in filtered finite free modules have good induced filtrations, on one base neighborhood for all orders.
+2. Suppose a filtered \(\mathcal A_I\)-module \(V\) is bounded below and exhaustive, with coherent holomorphic filtration pieces and a finite-presentation graded module over \(\mathcal O_U[\xi_i:i\in I]\). If \(t\) is a coordinate annihilated by the chosen derivatives, the image filtration on \(V/tV\) is good. On \(t=0\), if \(I\) consists of all remaining coordinate directions, this is a coherent analytic differential-operator module.
+3. A holomorphic coordinate projection is flat on structure-sheaf stalks. It has the exact smooth pullback and characteristic-support formula of Theorem 3.1.
+
+**Proof of the analytic algebra input.** The necessary uniform results for the full operator sheaf are proved in the analytic local-resolution theorem, Lemmas 3.0c.1–3.0c.4. Here is why the argument permits the parameters and the number of symbol variables needed here.
+
+At a coordinate point take any \(r\geq0\), not necessarily \(r=m\), and put
+
+\[
+\begin{aligned}
+H&=\mathbb C\{z_1,\ldots,z_m\},&
+R&=H[u_1,\ldots,u_r]_{(\mathfrak m_H,u)},\\
+B&=\mathbb C\{z_1,\ldots,z_m,u_1,\ldots,u_r\},&
+C&=H[[u_1,\ldots,u_r]].
+\end{aligned}
+\tag{6.18}
+\]
+
+The convergent rings are Noetherian by the preparation-and-division induction proved in that lesson. Polynomial extension and localization make \(R\) Noetherian. With \(J=(u_1,\ldots,u_r)\), both \(R/J^a\) and \(B/J^a\) equal \(H[u]/J^a\). For \(B\), Taylor expansion in \(u\) proves this: finitely many coefficient germs have a common neighborhood, and the remainder is a sum of degree-\(a\) monomials times convergent germs. For \(R\), a denominator has a unit constant \(u\)-coefficient in \(H\), and its truncated inverse is a finite geometric series. Thus both \(J\)-adic completions are \(C\).
+
+The Noetherian completion theorem used and linked in Lemma 3.0c.1 makes \(C\) faithfully flat over both local rings. For an injection of \(R\)-modules, tensor first with \(B\) and then with \(C\). Flatness over \(R\) kills the resulting kernel, flatness over \(B\) identifies it with the tensor of the first kernel, and faithfulness over \(B\) kills that first kernel. This proves flatness of \(B\) over \(R\). Faithfulness follows by applying faithful flatness of \(C/R\) to a module killed by \(B\). These arguments apply to arbitrary modules, not just finite ones. When \(r=0\), they reduce to the identity. Also \(R\) is flat over \(H\), being a localization of a polynomial algebra. Hence \(B\) is flat over \(H\).
+
+**One neighborhood for symbols and operators.** Set \(r=|I|\) in (6.18). A homogeneous matrix over \(\mathcal O_U[\xi_I]\) has a finite homogeneous kernel at the base stalk. Represent its generators nearby and pass to the corresponding analytic matrix at the zero section of \(U\times\mathbb C^r\). The flat comparison just proved and Oka coherence identify its analytic kernel there. The quotient by the chosen generators is coherent with zero stalk, so it vanishes on a product neighborhood.
+
+This analytic vanishing detects the polynomial kernel at every nearby base point. Indeed, a finite graded polynomial module \(Q\) that vanished at the maximal ideal \((\mathfrak m,\xi_I)\) would be killed by a polynomial outside that ideal. Every homogeneous component of that annihilator kills \(Q\); its constant component is a unit. Thus \(Q=0\). Faithful flatness at the zero section followed by this detection proves that the same finite list generates the polynomial kernel in all degrees. This is the proof of Lemma 3.0c.3 with the independent counts \(m,r\); it involves no shrinking indexed by degree.
+
+The finite PBW expression for \(\mathcal A_I\) has symbol ring \(\mathcal O_U[\xi_I]\). Its commutators with coefficients lower order, and its chosen coordinate derivatives commute. These are exactly the operator properties used in the uniform image-and-relation proof, Lemma 3.0c.4. More explicitly, for a finite matrix \(\phi:F\to F'\), choose stalk image generators \(g_j\) whose symbols generate its induced symbol module; let \(\psi:G\to F'\) send a shifted free basis to them. Descending order gives strictness at the base stalk. Choose finite matrices \(u:F\to G\) and \(v:G\to F\) with \(\psi u=\phi\) and \(\phi v=\psi\). For each homogeneous symbol relation \(\lambda_a\) of degree \(k_a\), lift it and subtract an element of \(G_{k_a-1}\) with the same \(\psi\)-image. The resulting \(r_a\) satisfies
+
+\[
+\psi(r_a)=0,\qquad \sigma(r_a)=\lambda_a.
+\tag{6.19}
+\]
+
+There are finitely many identities and order bounds to represent. The uniform symbol result makes the \(\lambda_a\) generate nearby. Subtracting the corresponding combinations of \(r_a\) lowers order, so proves both nearby strictness and generation of \(\ker\psi\). For \(w\in\ker\phi\), the identity
+
+\[
+w=v\,u(w)+(1-vu)w
+\tag{6.20}
+\]
+
+expresses it using \(v(r_a)\) and the finitely many \((1-vu)(e_j)\). These elements really lie in \(\ker\phi\), by the two matrix identities. This proves the kernel assertion and good induced image filtration. It proves coherence, and formal transposition gives the right-module version. Derivatives in \(I\) differentiating the holomorphic coefficients cause only the already-accounted-for lower-order terms; no derivative in a missing direction is required.
+
+**Good quotient filtration.** Lift a finite homogeneous generating list for \(\operatorname{gr}V\) to obtain a shifted free surjection \(F_0\to V\). Order reduction proves that it is strict on a neighborhood. The graded kernel of this map is finite: the polynomial symbol sheaf is coherent by the uniform matrix-kernel result, and \(\operatorname{gr}V\) has finite presentation. Lift its finitely many homogeneous relations. At the base point subtract lower-order preimages of their images to obtain actual relations, exactly as in (6.19). Represent those finitely many equations nearby. The same descending-order argument shows that they generate \(K=\ker(F_0\to V)\) there, with its induced filtration.
+
+Since \(t\) commutes with \(\mathcal A_I\), the preimage of \(tV\) in \(F_0\) is \(K+tF_0\). It is the image of one finite operator matrix. Part 1 gives this submodule a good induced filtration, and its quotient is precisely the image filtration on \(V/tV\). The quotient symbols are finite over \(\mathcal O_U[\xi_I]/(t)\), with coherent holomorphic degree pieces. When \(I\) is all the tangent directions, \(\mathcal A_I/t\mathcal A_I\) is the differential-operator sheaf of \(t=0\). This proves part 2. In particular it supplies a sheaf-level good filtration; stalk Noetherianity alone was not substituted for that assertion.
+
+**Coordinate projections.** For \(p:U\times W\to U\), the stalk inclusion is \(H\to B\) in (6.18), after translating the chosen point to the origin. It is flat by the first argument. Thus the filtration pieces of \(p^*M\) are the actual pullbacks of those of \(M\), and
+
+\[
+\operatorname{gr}(p^*M)
+=\mathcal O_{U\times W}\otimes_{p^{-1}\mathcal O_U}
+ p^{-1}\operatorname{gr}M,\qquad
+\xi_W\operatorname{gr}(p^*M)=0.
+\tag{6.21}
+\]
+
+Coherent holomorphic pieces, a finite symbol presentation, and part 1 give coherence of the pulled-back operator module. The same flatness kills higher pullback Tor.
+
+For precision about the support, a finite graded symbol module near \(y\) has a finite polynomial presentation. At a complex covector \((y,\eta)\), its analytified cokernel is nonzero exactly when its presentation matrix, evaluated at \(y,\eta\), is not surjective. This follows from Nakayama in the analytic local ring. The same rank test in \(H[\xi]_{(\mathfrak m_y,\xi-\eta)}\) gives the identical condition. In (6.21) this test is unchanged in the base cotangent directions and the new symbols act as zero. Its analytic support is therefore exactly \((y,w;\eta,0)\) with \((y,\eta)\in\operatorname{Ch}(M)\). This proves part 3. A holomorphic submersion is locally such a projection, so the result holds for all smooth analytic maps. \(\square\)
+
+### Theorem 6.7. Full analytic non-characteristic pullback
+
+Let \(f:X\to Y\) be any holomorphic map between complex manifolds, and \(M\) any coherent left analytic \(\mathcal D_Y\)-module. If (6.1) holds, then
+
+\[
+\begin{aligned}
+\mathcal H^j(Lf^*M)&=0 &&(j\ne0),\\
+\mathcal H^0(Lf^*M)&=f^*M
+ &&\text{is coherent over }\mathcal D_X,\\
+\operatorname{Ch}(f^*M)
+ &=f_d\bigl(f_\pi^{-1}\operatorname{Ch}(M)\bigr).
+\end{aligned}
+\tag{6.22}
+\]
+
+There is no holonomicity, regularity, properness, or algebraicity hypothesis. Characteristic supports here are subsets of the analytic cotangent bundles. The shifted convention remains \(f^!=Lf^*[d_X-d_Y]\); its nonzero degree is consequently \(d_Y-d_X\), not generally zero.
+
+**Proof for an analytic hypersurface.** Write \(X=\{t=0\}\), with holomorphic coordinates \((x_1,\ldots,x_n,t)\) on \(Y\). The earlier analytic coherence theorem gives a good filtration \(F\) of \(M\) on one neighborhood. Let \(E=\operatorname{gr}_F M\), a finite-presentation homogeneous module over \(\mathcal O_Y[\xi,\tau]\).
+
+At a point \(y\in X\), non-characteristicity excludes every nonzero point of the normal \(\tau\)-axis from the symbol support. The rank test in Lemma 6.6 identifies that analytic statement with the corresponding support test for the polynomial module over the local coefficient ring \(H=\mathcal O_{Y,y}\). The homogeneous ideal \(\operatorname{Ann}E_y\), restricted to the axis over the residue field \(\mathbb C\), therefore has zero set contained in the origin. An ideal in \(\mathbb C[\tau]\) with that property contains a power of \(\tau\). A homogeneous lift supplies
+
+\[
+q(\xi,\tau)\in\operatorname{Ann}E_y
+\quad\text{with a unit pure }\tau^d\text{ coefficient}.
+\tag{6.23}
+\]
+
+Represent its finitely many coefficients and its equations on a finite list of symbol generators nearby. They hold on one smaller neighborhood. Normalize the unit coefficient there. Thus \(q\) is a monic polynomial in \(\tau\) annihilating the sheaf \(E\), not just its closed fiber. If \(d=0\), it is a unit and \(M=0\) nearby by bounded-below exhaustiveness; all claims follow.
+
+Let \(\mathcal T\) be the tangent-operator algebra generated by holomorphic functions and the \(\partial_{x_j}\). For \(d>0\), monic division makes \(E\) finite over \(\mathcal S=\mathcal O_Y[\xi]\), with finite presentation on the same neighborhood. To see the latter explicitly, factor the symbol action through \(\mathcal S[\tau]/(q)\), a finite free \(\mathcal S\)-module. A finite presentation over \(\mathcal S[\tau]\) remains finite over this quotient. Multiplying each of its finitely many relation generators by \(1,\tau,\ldots,\tau^{d-1}\), and reducing by \(q\), presents its relation module over \(\mathcal S\). Use the original degree shifts and the homogeneous monic relation throughout. Thus \(F\) is a good \(\mathcal T\)-filtration with the finite-presentation hypothesis of Lemma 6.6.
+
+Multiplication by \(t\) on \(M\) is injective. The full proof of Lemma 6.2 applies with holomorphic coefficients: the analytic cyclic submodule generated by \(u\) with \(tu=0\) is coherent; its characteristic support lies in that of \(M\); and the same axis test supplies an annihilating operator \(P\) with invertible pure normal leading coefficient \(a\). The commutator identity is still
+
+\[
+\operatorname{ad}_t^{\,d}(P)=(-1)^d d!a.
+\tag{6.24}
+\]
+
+Every commutator kills \(u\), so \(u=0\). The submodule and support assertions used here hold analytically: finite presentations and the uniform image result give good induced filtrations, their graded exact sequences give support inclusion, and the stalk good-filtration comparison of the characteristic-variety lesson identifies this support with that of the cyclic quotient filtration. The coefficient ring being convergent rather than polynomial changes none of those finite filtered-ring identities.
+
+Part 2 of Lemma 6.6 now makes \(N=M/tM\), with its image filtration, a coherent \(\mathcal D_X\)-module on a neighborhood. The two-term normal Koszul resolution has injective multiplication by \(t\) on \(M\), so \(Li^*M=N\) in degree zero. Its graded quotient has the actual map (6.6) over \((\mathcal O_Y/(t))[\xi]\); it does not acquire a normal-symbol action.
+
+#### Equality, not only containment
+
+At each base stalk write
+
+\[
+A=\mathcal T_y,\qquad S=H[\xi],\qquad
+\operatorname{gr}\mathcal D_{Y,y}=S[\tau].
+\tag{6.25}
+\]
+
+The Rees ring of \(A\) is left Noetherian. Indeed it is generated by \(H,h,h\partial_{x_j}\); auxiliary degree in the last generators gives associated graded \(H[h,\zeta]\), a Noetherian polynomial ring. Leading-symbol lifting with decreasing auxiliary degree proves the assertion. The filtration of \(M_y\) is good over \(A\) by (6.23), and the same holds for the quotient filtration by Lemma 6.6. Centrality of \(t\) in \(A\) and its injectivity on \(M_y\) have just been proved.
+
+There are no vertical irreducible characteristic components. The full Noetherian rational-symbol involutivity theorem applies to the analytic operator stalk: it is filtered Noetherian by PBW and descending order, \(H[\xi,\tau]\) is commutative Noetherian over \(\mathbb Q\), the commutator lowers order by one, and \(M_y\) has a good filtration. That theorem proves involutivity separately for each minimal support prime \(\mathfrak p\). If \(t\in\mathfrak p\), then repeated brackets with \(t\) of the monic \(q\in\mathfrak p\) give
+
+\[
+(-1)^d\partial_\tau^d q=(-1)^d d!\in\mathfrak p,
+\tag{6.26}
+\]
+
+a contradiction. Since the support is finite over \(S\), its image is \(\operatorname{Supp}_S E_y\). Every irreducible component of this image is the image of a full component; the projection preserves \(t\). Hence the image has no component contained in \(t=0\) either.
+
+All hypotheses of the abstract central-specialization Lemma 6.4 are now verified at this analytic stalk. That lemma is a filtered-ring assertion, not a claim about algebraic varieties, and gives
+
+\[
+\operatorname{Supp}_{S}\operatorname{gr}N_y
+=\operatorname{Supp}_{S}E_y\cap V(t).
+\tag{6.27}
+\]
+
+This use retains its exact cancellation of Rees torsion and does not assume strict multiplication by \(t\).
+
+It remains to interpret (6.27) as the analytic equality, rather than leave an algebraic spectrum in place of the cotangent bundle. At every \(y\in X\) and every tangent covector \(\xi_0\), the finite-presentation rank test from Lemma 6.6 identifies the left side at \((\mathfrak m_y,\xi-\xi_0)\) with \((y,\xi_0)\in\operatorname{Ch}_X N\). On the right, the finite algebra \(S[\tau]/(q)\) shows that this prime belongs to the projected support exactly when there is a point of the full support above it. The residue field of such a point is a finite extension of \(\mathbb C\), hence \(\mathbb C\); it specifies an actual normal covector \(\tau_0\). Nakayama, or the same presentation-matrix rank test, identifies it with \((y,\xi_0,\tau_0)\in\operatorname{Ch}_Y M\). The converse is immediate by localization. Thus (6.27) is precisely
+
+\[
+\operatorname{Ch}_X(M/tM)
+=\operatorname{pr}_{\xi}
+   \bigl(\operatorname{Ch}_Y(M)\cap\{t=0\}\bigr)
+\tag{6.28}
+\]
+
+as analytic cotangent sets. Every complex covector is tested, not only the zero section. The monic equation also bounds all possible \(\tau\) over compact sets of \((y,\xi)\), so this projection of the closed analytic support is locally proper and has closed image. No properness assumption on the original hypersurface map or on a later \(f\) is used to supply the finite cotangent projection.
+
+#### Every closed embedding and every holomorphic map
+
+For a smooth analytic embedding, choose holomorphic normal coordinates \(t_1,\ldots,t_c\). At the chosen point its first normal line is contained in the full conormal space, so it is non-characteristic. The monic construction extends that condition to a neighborhood for the first restriction. After restricting, (6.28) says that every new characteristic covector lifts to an old one. If the new covector is normal to the remaining embedding, its lift belongs to the full original conormal space. Condition (6.1) makes it zero. This proves the hypothesis for the next restriction; shrink once at each of the finitely many stages. The Koszul and chain-rule composition of Section 2 uses only PBW structure-sheaf flatness and transfer multiplication, which hold for the holomorphic coordinates as well. It identifies the resulting degree-zero coherent module with \(Li^*M\). Successive cotangent projections compose to the original \(i_d i_\pi^{-1}\), proving (6.22) for the embedding.
+
+Finally use the holomorphic graph factorization \(f=p\circ i\) in (6.7). Lemma 6.6 proves the exact smooth pullback and its characteristic equality for the projection \(p:X\times Y\to Y\). Its characteristic covectors along the graph are \((0,\eta)\), and pullback to the graph sends them to \(df^*\eta\). The graph is therefore non-characteristic exactly under (6.1). Apply the analytic embedding result and the canonical transfer composition
+
+\[
+Li^*Lp^*M\simeq Lf^*M.
+\tag{6.29}
+\]
+
+All identifications are the actual tensor, multiplication and chain-rule maps, so the local results agree on overlaps. They give coherence, concentration, and the full equality for the original holomorphic map. \(\square\)
+
+The algebraic proof in Theorem 6.5 and the analytic proof in Theorem 6.7 now establish the entire non-characteristic statement (6.2). Their common Rees lemma controls a possible failure of strictness; the analytic argument additionally supplies common-neighborhood coherence, holomorphic projection flatness, and the conversion of stalk support to analytic cotangent support.
 
 ## 7. Exercises with complete solutions
 
@@ -663,7 +826,7 @@ with all other groups zero. Over a point every finite complex of vector spaces i
 
 ## References and proof boundary
 
-The chain-rule module structure, pullback of connections, derived transfer composition, smooth coherence and holonomicity, the Koszul formula, all point and projection examples, and the full ramified Euler pullback are proved here. All six exercises have complete solutions, with the fifth using its explicitly assigned later preservation theorem. The algebraic coherence, higher-Tor vanishing and characteristic containment for every non-characteristic map are proved in Proposition 6.3. Theorem 6.5 proves the full algebraic characteristic equality (6.2), using Lemma 6.4 to account exactly for non-strict filtration torsion. The full analytic proof remains an explicit obligation with its exact external statement. Exercise 7.5 now uses the internal preservation Theorem 2.1 in the later lesson, with its proof inputs identified above. Exact prerequisite identities and proof boundaries distinguish these states.
+The chain-rule module structure, pullback of connections, derived transfer composition, smooth coherence and holonomicity, the Koszul formula, all point and projection examples, and the full ramified Euler pullback are proved here. All six exercises have complete solutions, with the fifth using its explicitly assigned later preservation theorem. The algebraic coherence, higher-Tor vanishing and characteristic containment for every non-characteristic map are proved in Proposition 6.3. Theorem 6.5 proves the full algebraic characteristic equality (6.2), using Lemma 6.4 to account exactly for non-strict filtration torsion. Lemma 6.6 proves the required uniform analytic tangent-operator and projection-flatness statements, and Theorem 6.7 proves coherence, concentration and characteristic equality for every non-characteristic holomorphic map and coherent analytic differential-operator module. Exercise 7.5 now uses the internal preservation Theorem 2.1 in the later lesson, with its proof inputs identified above. Exact prerequisite identities and proof boundaries distinguish these states.
 
 Beilinson–Drinfeld, [*Quantization of Hitchin's integrable system and Hecke eigensheaves*](https://math.uchicago.edu/~drinfeld/langlands/QuantizationHitchin.pdf), Section 7.2.8, treats ordinary left-module pullback and its relation with the differential-form formalism. The analytic non-characteristic reference is Schapira's *An introduction to D-modules*, draft v7, March 2020, Theorem 2.3.7 and Remark 2.3.8, with the conventions specified in Section 6. Kashiwara–Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), §10.2, concerns a different result: a conditional normal-cone bound for induced systems and a regular-holonomic corollary. It is not the source of the general non-characteristic theorem or of the numbering 11.2.11–11.2.12.
 

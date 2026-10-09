@@ -71,7 +71,7 @@ W^*(x)=W^*\bigl(\Phi(A),\Phi(B)\bigr)=\Phi\bigl(M_2(N)\bigr)=M .
 \]
 Conversely, if \(M=W^*(x)\), then \(M=W^*(\operatorname{Re}x,\operatorname{Im}x)\). \(\square\)
 
-The preprint [OpenAI-Gen] also draws consequences that combine Theorem 5.1 with further results: with Willig's direct-integral reduction and the type I and properly infinite cases of Pearcy and Wogen, single generation of every von Neumann algebra with separable predual; with the generator invariant of Dykema, Sinclair, Smith and White [DSSW], the vanishing of that invariant for every II₁ factor with separable predual; and with Voiculescu's free entropy dimension, two generating tuples of a free group factor on which this dimension differs.
+The preprint [OpenAI-Gen] also draws consequences that combine Theorem 5.1 with further results. The [next lesson](the-generator-problem.md) proves the first of them: with the properly infinite case of Wogen and Willig's direct-integral reduction, every von Neumann algebra with separable predual is singly generated. The [lesson after it](the-generator-invariant.md) proves the second: the generator invariant of Dykema, Sinclair, Smith and White [DSSW] vanishes for every II₁ factor with separable predual. The third uses Voiculescu's free entropy dimension: two generating tuples of a free group factor on which this dimension differs.
 
 ## 6. Exercises
 

@@ -929,7 +929,7 @@ The sum is finite by the finite-jet Cartan coset calculation of Lesson 1. It is 
  =\mathcal S(f).
 \tag{B.2.3}
 \]
-This is Lesson 1's normalized coefficient formula. Lemma B.0.1.1 identifies this sum with the finite-field semi-infinite sum used in Lesson 12 (5.2).
+This is Lesson 1's normalized coefficient formula. Lemma B.0.1.1 identifies this sum with the finite-field semi-infinite sum used in (5.2).
 
 For spherical \(f,h\), expand \(T_fT_h\) using the two finite sums. Regroup the products \(gzK\). The coefficient of a fixed coset \(yK\) is \(\sum_{gK}f(g)h(g^{-1}y)\), precisely the convolution with \(\operatorname{vol}K=1\). Bi-\(K\)-invariance makes each representative change harmless. Hence \(T_fT_h=T_{f*h}\), and their scalars give \(\mathcal S(f*h)=\mathcal S(f)\mathcal S(h)\).
 
@@ -2118,7 +2118,7 @@ The source and target root coordinates and conjugation powers agree. In particul
 
 ## Appendix I. Finite bounded decoration schemes and parameter-flat quotients
 
-Here \(R\Gamma\) denotes derived Zariski sections of the indicated algebraic vector bundle. We construct bounded spaces of actual representation maps and polynomial tensor relations, retaining nonflat changes of parameter ring and central inverse maps. The free [Whittaker patterns, §§2.1–2.2](https://arxiv.org/abs/math/9907133v5) describes the global decoration problem. The affine cohomology, projective coherent finiteness and universally exact two-term replacement needed below are fully proved in Constructible complexes on algebraic varieties, §§W.2, W.4 and U.1. The full highest-line generation, affine flag cone and saturation/defect constructions remain further parts of the auxiliary compactification.
+Here \(R\Gamma\) denotes derived Zariski sections of the indicated algebraic vector bundle. We construct bounded spaces of actual representation maps and polynomial tensor relations, retaining nonflat changes of parameter ring and central inverse maps. The free [Whittaker patterns, §§2.1–2.2](https://arxiv.org/abs/math/9907133v5) describes the global decoration problem. The affine cohomology, projective coherent finiteness and universally exact two-term replacement needed below are fully proved in Constructible complexes on algebraic varieties, §§W.2, W.4 and U.1. Appendices J–K construct the full highest-line algebra, its affine flag cone, the projective fixed-bundle torus quotient and exact relative defect strata; the required global stack and boundary constructions remain further parts of the auxiliary compactification.
 
 ### I.1. An actual finite two-term section scheme
 
@@ -2253,11 +2253,1128 @@ Over the dual numbers, take \(c=1,e=\epsilon\). The actual maps are
 Exercise I.4.2 solves every coefficient equation, retaining the actual tensor unit and inverse maps on all parameter rings. The lower-pole-bound scheme is the closed subscheme \(e=0\), including its scheme structure. Editable SVG source.
 
 
+## Appendix J. The full highest-line cone and geometric saturation
+
+Let \(k\) be a field of arbitrary characteristic and \(G/k\) a pinned split reductive group with simply connected derived group. Theorem H.4.1.1 provides the required auxiliary group for every original root datum, preserving the original central labels and Weil comparisons. We use the actual root charts in Root data, Weyl chambers and the Bruhat decomposition, §§5 and 8, the smooth projective flag scheme and its charts in Automorphisms, forms and parabolic subgroups, Theorems 1.1 and 7.1, and the abelianization in Pinnings and the classification of split reductive groups, §10. The codimension-one extension theorem is proved in Discrete valuation rings, normal rings and Serre's criterion, Theorem 3.3. The cohomology and eventual-vanishing arguments are proved in Constructible complexes on algebraic varieties, §§W.2–W.4; descent of closed immersions is proved in Affine descent, Zariski Main and recognition of spaces, Corollary A3.2.
+
+The free [Geometric Eisenstein series, §§1.1–1.2](https://arxiv.org/abs/math/9912097v2) describes the full Plücker and defect constructions. The proofs below construct the entire algebra and all its finite equations, including central inverses and arbitrary parameter rings. Appendix K constructs the full fixed-bundle torus quotient and exact relative defect strata on arbitrary parameter rings.
+
+### J.1. A finite multisection algebra, without a multiplication-surjectivity assumption
+
+**Proposition J.1.1.1.** Let \(Y\) be projective over a field and let \(A_1,\ldots,A_r\) be globally generated invertible sheaves. The entire multisection algebra
+\[
+ B_0=\bigoplus_{\mathbf n\in\mathbf N^r}
+ H^0(Y,A_1^{n_1}\otimes\cdots\otimes A_r^{n_r})
+\tag{J.1.1}
+\]
+is finite as a module over the image of
+\(S=\operatorname{Sym}_k(\bigoplus_i H^0(Y,A_i))\), with its natural multigrading. In particular it is a finitely presented algebra. This assertion does not assert that its degree-one spaces generate it as an algebra.
+
+**Proof.** If \(r=0\), the assertion is projective coherent finiteness in degree zero. Otherwise put \(E=\bigoplus_i A_i\) and form the projective bundle \(p:W=\operatorname{Proj}_Y\operatorname{Sym}E\to Y\), with the quotient convention. On every trivializing affine chart the standard projective-space Čech calculation gives
+\(p_*\mathcal O_W(n)=\operatorname{Sym}^n E\) for \(n\ge0\). The identifications on overlaps are the actual changes of variables in the symmetric algebra. The global evaluation \(H^0(Y,E)\otimes\mathcal O_Y\twoheadrightarrow E\) embeds this relative Proj in \(Y\times\mathbf P(H^0(Y,E)^\vee)\); hence \(W\) is projective over \(k\). Thus
+\[
+ \bigoplus_{n\ge0}H^0(W,\mathcal O_W(n))=B_0
+\tag{J.1.2}
+\]
+as algebras, where the right side is temporarily graded by total degree. The decomposition of \(\operatorname{Sym}^n(\bigoplus A_i)\) has one summand for each \(\sum n_i=n\); it uses monomials, with no division by factorials.
+
+Global generation of \(E\) makes \(\mathcal O_W(1)\) globally generated by \(H^0(Y,E)\). It defines \(f:W\to P=\mathbf P(H^0(Y,E)^\vee)\), with \(f^*\mathcal O_P(1)=\mathcal O_W(1)\). This map is projective: its graph is closed in \(W\times P\), since \(P\) is separated, and projection from that product is projective. Projective coherent finiteness in W.4 makes \(F=f_*\mathcal O_W\) coherent. On an affine open of \(P\), that assertion is precisely finiteness of degree-zero cohomology for the projective inverse image. The ordinary projection formula here follows by trivializing \(\mathcal O_P(n)\) on affine opens, so
+\(H^0(W,\mathcal O_W(n))=H^0(P,F(n))\).
+
+The graded module \(\bigoplus_{n\ge0}H^0(P,F(n))\) is finite over the homogeneous polynomial ring of \(P\). Indeed W.4 constructs a finite quotient \(Q=\bigoplus_j\mathcal O_P(-a_j)\twoheadrightarrow F\), with coherent kernel \(K\). For all sufficiently large \(n\), the proved eventual vanishing gives \(H^1(P,K(n))=0\). Hence \(H^0(P,Q(n))\to H^0(P,F(n))\) is surjective in those degrees. The nonnegative-degree tails of the finitely many shifted polynomial modules of \(Q\) are finite polynomial modules: every monomial above their starting degree is a multiple of one of the finitely many monomials in that degree. Add bases of the finitely many lower-degree spaces \(H^0(P,F(n))\), which are finite by W.4. Their images and those tail generators generate the entire module. The action is exactly the map from \(S\) in the statement.
+
+Decomposing these finitely many total-degree generators into their finitely many multihomogeneous components gives multihomogeneous generators too. Finite module generation implies finite algebra generation. The polynomial-ring Noetherian proof in W.4 makes the kernel of a polynomial presentation finitely generated. This proves both claims, in every characteristic. ∎
+
+### J.2. Fundamental flag line bundles and an ample product
+
+**Proposition J.2.1.1.** Write \(T\subset B\), \(N=\operatorname{rad}_u B\), and \(Y=G/B\). Let \(C=X^*(G/G_{\rm der})\). Restriction to the maximal torus of the simply connected derived group gives an exact sequence of free lattices
+\(0\to C\to X^*(T)\to P\to0\), where \(P\) is its weight lattice. To see exactness, \(T\cap G_{\rm der}\) is its split maximal torus, the quotient is the torus of the proved abelianization, and dualizing that split-torus quotient gives the character sequence. Choose lifts \(\omega_i\in X^*(T)\) of the fundamental weights and a basis of \(C\). Then
+\[
+ X^*(T)=\bigoplus_i\mathbf Z\omega_i\oplus C,
+ \qquad X^*(T)^+=\bigoplus_i\mathbf N\omega_i\oplus C.
+\tag{J.2.1}
+\]
+No quotient of the original central lattice is taken.
+
+For a character \(\lambda\), put \(A_\lambda=G\times^B k_{-\lambda}\). Its tensor identifications are induced by multiplication of characters. For dominant \(\lambda\), this bundle is globally generated. For \(\rho=\sum_i\omega_i\), a positive power of \(A_\rho\) is very ample if there are roots. For a torus \(Y\) is a point.
+
+**Proof.** The earlier flag theorem makes \(Y\) smooth, projective and geometrically integral. Its finitely many Weyl translates of the opposite root chart cover every Bruhat cell, by the actual closed-root-chart construction in Theorem 7.1. These are affine polynomial charts. Their polynomial rings are normal by the content and factorization argument, so the flag scheme is normal over every field extension. The opposite big cell is \(U^-B/B\simeq\mathbf A^{|\Phi^+|}\). Its root-product lift to \(G\) gives an actual frame \(\sigma_\lambda\) of \(A_\lambda\). The codimension-one components of its complement are the opposite cells indexed by the simple reflections: the Bruhat dimensions are \(|\Phi^+|-\ell(w)\), and the only elements of length one are those reflections.
+
+At the generic point of the component indexed by \(i\), use the open minimal-parabolic chart
+\(U_i^-\times P_i/B\simeq U_i^-\times\mathbf P^1\).
+Here \(U_i^-\) has the negative roots other than \(-\alpha_i\). The cocharacter open-cell product \(U_i^-\times P_i\to G\), proved in the earlier relative flag theorem, gives this chart after its right \(B\)-quotient. The ordered root-product coordinates put the omitted \(-\alpha_i\) last. Thus on its affine \(z\)-chart the frame is exactly the frame from the rank-one matrix \(\left(\begin{smallmatrix}1&0\\z&1\end{smallmatrix}\right)\). The rank-one construction identifies \(P_i/B\) with \(\mathbf P^1\), and the character \(-\lambda\) gives \(\mathcal O(m_i)\), where \(m_i=\langle\lambda,\alpha_i^\vee\rangle\). In the second coordinate \(w=z^{-1}\), its first frame is \(w^{m_i}\) times the second frame. Consequently
+\[
+ \operatorname{ord}_{D_i}(\sigma_\lambda)
+ =\langle\lambda,\alpha_i^\vee\rangle.
+\tag{J.2.2}
+\]
+There are no other possible poles: the section was a frame on the big cell. If \(\lambda\) is dominant, all these integers are nonnegative. Normality of the smooth flag scheme and the actual codimension-one intersection theorem extend the section over every affine trivialization. It is a nonzero global section. Translation makes the evaluation of all global sections surjective at every geometric point; finite coherent cohomology makes that evaluation a finite map of coherent sheaves, and Nakayama kills its cokernel. Field base change of \(H^0\) here is the flat tensor of its finite affine-cover equalizer, so the argument also proves global generation over the original split field.
+
+For \(\rho\), every order in (J.2.2) is one. The nonvanishing locus of \(\sigma_\rho\) is precisely the affine big cell. Finitely many geometric translates of this section cover \(Y\) by such affine nonvanishing loci. They and their chart coordinates are defined over a finite extension of \(k\). On each chart take finitely many algebra generators. A chart function extends after multiplication by a sufficiently large power of its defining section: on a finite affine cover it is a localization fraction, and finitely many denominators can be cleared. These local extensions agree, since \(Y\) is integral and they agree on their dense nonvanishing locus. Raise all the finitely many exponents to one \(M\). The sections \(s_j^M\) and the extended coordinate functions multiplied by \(s_j^{M-m}\) define a map to projective space. On \(s_j^M\ne0\), their coordinate ratios generate the entire coordinate ring of that affine chart, so that restricted map is a closed immersion. The source is projective, so its image is closed; these charts together with the complement of the image prove that the whole map is a closed immersion. Thus \(A_\rho^M\) is very ample. The complete linear system of that same power is a closed immersion as well, by the same chart argument with the additional sections. Flat field base change identifies its section space. Descent of a closed immersion through the finite field extension is the affine ideal descent of the earlier faithfully flat descent lesson. Hence a positive power is very ample over \(k\) too.
+
+Finally a central character extends to \(G\); its homogeneous line bundle is trivial as an ordinary line bundle, with that specified \(G\)-linearization. Also \(H^0(Y,\mathcal O_Y)=k\): projective finiteness makes it a finite-dimensional domain, hence a field; evaluation at the split base point embeds that field in \(k\) and is the identity on \(k\). These assertions include the empty-root case. ∎
+
+### J.3. The entire cone, its units and its actual open flag torsor
+
+**Theorem J.3.1.1.** Set \(W_\lambda=H^0(Y,A_\lambda)^\vee\) for dominant \(\lambda\). Dual evaluation at the split base point gives a specified \(B\)-stable line of character \(\lambda\) in this module. These are geometric representations of the original group, distinct from the dual-group coefficient modules denoted by \(V_\lambda\) earlier. This fixes the geometric Weyl-module convention; the modules need not be simple in positive characteristic. Multiplication of sections gives actual maps
+\(\Delta_{\lambda,\mu}:W_{\lambda+\mu}\to W_\lambda\otimes W_\mu\).
+All associativity and unit diagrams are the duals of ordinary multiplication diagrams.
+
+The full graded algebra and its affine cone are
+\[
+ B_G=\bigoplus_{\lambda\in X^*(T)^+}H^0(Y,A_\lambda),
+ \qquad \mathcal C_G=\operatorname{Spec}B_G.
+\tag{J.3.1}
+\]
+This algebra is finitely presented. Its central homogeneous generators \(u^c\), \(c\in C\), retain the actual equations \(u^cu^{-c}=1\). On every algebra, the open subscheme where each fundamental-degree vector is unimodular is exactly \(G/N\), with its full stabilizers and parameter nilpotents.
+
+**Proof.** The chosen central character trivializations give
+\(B_G=B_0\otimes_k k[C]\), with \(A_i=A_{\omega_i}\) in (J.1.1). The preceding two proofs give finite presentation, and \(k[C]\) is the Laurent polynomial algebra on the actual chosen central basis. Its inverse equations are identities of functions.
+
+For the open subscheme form the frame torsor
+\[
+ Q=\operatorname{Spec}_Y\left(\bigoplus_{\lambda\in X^*(T)}A_\lambda\right).
+\tag{J.3.2}
+\]
+Locally it is the spectrum of the Laurent polynomial algebra on the basis (J.2.1). Its points are nonzero dual frames of those line bundles, with their tensor identifications. The map \(G\to Q\) sends the fixed frames at the base point to their translates. After a faithfully flat lift of a point of \(Y\), arbitrary such frames differ by a unique point of \(T\), because the chosen characters are a lattice basis. The stabilizer of all the frames is precisely \(N\) as a group scheme: in \(B\), every basis character must equal one, which is exactly the kernel of \(B\to T\). Thus \(Q=G/N\) on the entire fppf functor, rather than only on field points.
+
+There are no negative fundamental degrees in \(\Gamma(Q,\mathcal O_Q)\). Indeed, if \(\langle\lambda,\alpha_i^\vee\rangle<0\), restrict a section of \(A_\lambda\) to every translate of \(P_i/B\simeq\mathbf P^1\). Its degree there is negative, so the elementary two-chart calculation gives no section. These curves pass through every geometric point, whence the original section is zero. Direct sums commute with the finite affine-cover equalizer. Therefore \(\Gamma(Q,\mathcal O_Q)=B_G\), and evaluation defines \(Q\to\mathcal C_G\).
+
+Take sections \(s_i\in H^0(Y,A_i)\) and put \(F=\prod_i s_i\). If their common nonvanishing locus \(U\) is nonempty, it is affine. In fact \(F\) is a section of \(A_\rho\); a very ample power embeds \(Y\) in projective space, and \(U\) is the intersection with the affine complement of the hyperplane defined by \(F^M\). On \(U\), the \(s_i\) trivialize their line bundles. Clearing a power of \(F\), as in the preceding proof, extends every section on \(U\) of any \(A_\lambda\). Adding enough multiples of \(\rho\) makes all its fundamental coordinates nonnegative. Hence the actual graded localization satisfies
+\[
+ B_G[F^{-1}]=\Gamma(U,\mathcal O_U)[s_1^{\pm1},\ldots,s_r^{\pm1}]
+ \otimes_k k[C]=\Gamma(Q|_U,\mathcal O_Q).
+\tag{J.3.3}
+\]
+The symbols on the right indicate the trivialized homogeneous frame coordinates; their coefficients are the ordinary degree-zero functions. Equality is by extension and restriction of sections, so it is an equality of algebras. The localization inverts each \(s_i\), since its inverse is \((\prod_{j\ne i}s_j)/F\).
+
+Choose finite bases of the fundamental section spaces. Their simultaneous nonvanishing principal opens cover exactly the locus where each fundamental-degree functional is unimodular. On each such open (J.3.3) identifies the evaluation map with an isomorphism. These isomorphisms agree by their restriction maps and glue. For a torus the product is empty, \(Y\) is a point and the cone itself is \(T\). This proves the asserted open immersion and its full functor of points. No normalization, reduction, or removal of central directions was used. ∎
+
+### J.4. Finite equations for the full highest-line datum
+
+**Theorem J.4.1.1.** For a \(G\)-bundle \(\mathcal E\) and a \(T\)-bundle \(\mathcal T\) on \(\mathbf P^1_R\), with \(R\) Noetherian, consider every dominant-weight map
+\(\kappa^\lambda:\mathcal L_{\mathcal T}^\lambda\to(W_\lambda)_{\mathcal E}\), with the unit map, every central inverse map, and all equations
+\[
+ \kappa^\lambda\otimes\kappa^\mu
+ =\Delta_{\lambda,\mu}\kappa^{\lambda+\mu}.
+\tag{J.4.1}
+\]
+The entire regular datum is represented over this family by an affine finitely presented relation scheme. Requiring injection with finitely presented parameter-flat quotient is a finitely presented open condition. The same assertions hold for bounded meromorphic data away from a fixed point; their closed pole transitions give the entire meromorphic datum. These assertions hold on every parameter algebra, including nonflat and nilpotent ones.
+
+**Proof.** A map \(\kappa^\lambda\) is exactly a functional
+\((B_G)_\lambda{}_{\mathcal E}\otimes\mathcal L_{\mathcal T}^\lambda\to\mathcal O\). The equations (J.4.1), including the unit, are precisely multiplicativity of these functionals. Thus the entire collection is an algebra map from the actual sheaf algebra
+\(\bigoplus_\lambda (B_G)_\lambda{}_{\mathcal E}\otimes\mathcal L_{\mathcal T}^\lambda\) to \(\mathcal O\).
+
+Choose finitely many homogeneous algebra generators in (J.3.1). Enlarge their spaces to the whole finite-dimensional homogeneous spaces in their degrees, and include all fundamental degrees and a basis of central characters with its negatives. Work first with a polynomial algebra in the noncentral generator spaces tensored with the Laurent algebra \(k[C]\). This gives a finite \(G\)-equivariant presentation. Its relation ideal is finitely generated; converting the central Laurent generators to pairs of variables adds the stated tensor-unit equations. Decompose ideal generators into homogeneous components and take their finite-dimensional \(G\)-stable spans. These spans are finite: an actual coaction on a polynomial is a finite sum; its coefficient span is a finite-dimensional stable submodule by coassociativity. Fixed homogeneous components here are finite-dimensional, since each noncentral generator has a positive total fundamental degree and the Laurent central monomial is fixed by its total central degree. Thus there are finitely many actual equivariant polynomial relations. The central relations are included as the actual tensor-unit equations.
+
+Evaluating those finitely many spaces and relations in the given bundles is exactly Proposition I.2.1.1. Its universal sections recover the entire algebra map, and hence every \(\kappa^\lambda\), uniquely. This is an equivalence of functors on all algebras, not an identification of reduced points. For meromorphic maps the same argument takes place in \(\mathcal O(*x)\); a finite generator family has one finite tuple of pole bounds, and the finite relation list can be cleared there. Proposition I.2.1.1 supplies the actual closed transitions. No uniform bound for infinitely many independent generators is needed, since those generators have now been proved finite.
+
+It remains to show that the full injection condition is finite. On a geometric curve fibre, if the fundamental maps are not identically zero, their evaluation functionals on its function field are nonzero. For \(\lambda=\sum_i n_i\omega_i+c\), select a fundamental section whose evaluation is nonzero for each \(n_i>0\). Its product, multiplied by the central unit \(u^c\), has nonzero evaluation. Hence the entire \(\lambda\)-degree functional is nonzero. This uses only multiplication and the field property, with no surjectivity assertion for any Cartan multiplication. Conversely the full condition includes the fundamental maps. Theorem I.3.1.1 identifies their finite geometric-nonzero open locus with universal sheaf injection and finitely presented parameter-flat quotient. The same argument then applies to every recovered weight. Over Noetherian bases these quotients are coherent.
+
+Finally, at a point of the curve, the full datum is a genuine flag reduction with its torus framing exactly when all the fundamental vectors are unimodular: Theorem J.3.1.1 identifies that actual open with \(G/N\). For regular data, the locus of parameters where this holds everywhere on the proper curve is open, since the finite fundamental zero schemes are closed and their proper projections are closed. This distinguishes the genuine reduction open from the compactified, generically nonzero open. ∎
+
+![The full multisection algebra and central units give finite equations for the entire highest-line datum](assets/full-highest-line-flag-cone.png)
+
+Propositions J.1.1.1–J.2.1.1 and Theorems J.3.1.1–J.4.1.1 construct the entire algebra and actual parameter functor. The localization is an equality of coordinate algebras for the torus frame torsor. Editable SVG source.
+
+### J.5. Canonical all-root saturation on geometric curve points
+
+**Theorem J.5.1.1.** Let \(K\) be algebraically closed, let \(X/K\) be a smooth projective connected curve, and let \((\mathcal E,\mathcal T,\kappa)\) be regular full highest-line data with all maps generically nonzero. There is a unique effective coroot-valued divisor
+\[
+ D=\sum_{x\in X}\sum_i m_{i,x}\alpha_i^\vee[x],
+ \qquad m_{i,x}\ge0,
+\tag{J.5.1}
+\]
+such that replacing \(\mathcal T\) by \(\mathcal T(D)\) makes every highest-line map a subbundle map. Its fundamental line at \(i\) is twisted by \(\sum_xm_{i,x}[x]\); all central lines and their actual inverse maps are unchanged. The maps yield a unique saturated \(B\)-reduction of \(\mathcal E\).
+
+**Proof.** On the function field, the fundamental maps are nonzero, so Theorem J.3.1.1 gives a point of the actual \(G/N\)-bundle and hence of its \(G/B\)-bundle. The latter is projective. At every local DVR of the smooth curve its valuative extension is unique. A morphism from that local ring into this finitely presented flag bundle spreads to an open neighbourhood by clearing its finitely many coordinate denominators; uniqueness on the common generic point and separatedness glue these extensions. Thus the generic flag extends to one \(B\)-reduction on all of \(X\).
+
+At a point \(x\), trivialize the source torus line bundles and the torus lines of this reduction over its DVR, using frames for the basis (J.2.1). Their tensor identifications provide compatible frames for all weights. Dual evaluation, which is surjective by Proposition J.2.1.1, makes the highest line of the reduction a primitive submodule of \((W_\lambda)_{\mathcal E}\). Write its primitive vector as \(v_\lambda\). On the fraction field the original map has the form \(a_\lambda v_\lambda\), with \(a_\lambda\ne0\). The Cartan maps on these specified highest vectors give
+\(\Delta_{\lambda,\mu}v_{\lambda+\mu}=v_\lambda\otimes v_\mu\), because they are dual to evaluating a product at the same flag. Therefore (J.4.1) gives \(a_{\lambda+\mu}=a_\lambda a_\mu\), and the central inverse equation gives \(a_ca_{-c}=1\).
+
+Primitivity and regularity force \(a_\lambda\) into the DVR: a coordinate of \(v_\lambda\) is a unit and its product with \(a_\lambda\) is regular. Thus the central \(a_c\) are units and
+\[
+ v_x(a_\lambda)=\sum_i n_i m_{i,x},
+ \qquad m_{i,x}=v_x(a_{\omega_i})\ge0
+ \quad(\lambda=\sum_i n_i\omega_i+c).
+\tag{J.5.2}
+\]
+Only finitely many of these fundamental orders are nonzero: each nonzero regular vector section on a proper curve has a finite zero locus. Its order is the minimum of its coordinate valuations, so the numbers are intrinsic and independent of every chosen frame.
+
+The source line of weight \(\lambda\) in \(\mathcal T(D)\) is the old line twisted by the divisor with multiplicities \(\langle\lambda,D\rangle\). Locally its generator is \(t^{-\sum n_im_{i,x}}\) times the old generator. The resulting map is consequently a unit times the primitive \(v_\lambda\). All tensor and inverse equations remain equalities of maps. These saturated maps lie in the actual \(G/N\) open and recover the same extended flag. Conversely a subbundle map must have zero residual order at each DVR, so any divisor with this property has exactly the multiplicities in (J.5.2). This proves uniqueness.
+
+This is a geometric-point saturation theorem. It does not assert that saturation commutes with arbitrary nilpotent parameter changes. The actual finite parameter schemes of Theorem J.4.1.1 retain those changes; relative fixed-defect strata need their own scheme construction. ∎
+
+![Primitive saturated lines and their exact valuation orders determine the complete coroot-valued defect divisor](assets/all-root-saturation-divisor.png)
+
+Theorem J.5.1.1 determines every geometric-point defect and its saturated flag. The rank-two example is realized by a fixed flag in the trivial bundle, with fundamental sources \(\mathcal O(-2[-1])\) and \(\mathcal O(-[-1]-3[1])\), central unit maps, and the canonical divisor sections. The points are schematic positions on \(\mathbf P^1\); all labels and orders are exact. Editable SVG source.
+
+### J.6. Exercises
+
+**Exercise J.6.1 (advanced).** For \(SL_2\), compute the whole affine flag cone and its maps in characteristic two, and saturate a pair of binary forms defining \(\mathcal O(-d)\to\mathcal O^2\) on \(\mathbf P^1\).
+
+**Solution.** The flag scheme is \(\mathbf P^1\), the fundamental line is \(\mathcal O(1)\), and its entire section ring is \(k[x,y]\). Thus \(\mathcal C_{SL_2}=\mathbf A^2\), with open \(SL_2/N=\mathbf A^2\setminus\{0\}\). On every algebra, a primitive column \((a,b)\) extends to a determinant-one matrix by choosing \(c,d\) with \(ad-bc=1\); its stabilizer is the actual upper unitriangular group. The degree-\(n\) map has coordinates \(a^{n-j}b^j\), \(0\le j\le n\), in the basis dual to the monomial basis of \(H^0(\mathcal O(n))\). These are divided-symmetric coordinates, not a divided factorial formula. In degree two its Cartan map into the tensor square is the symmetric matrix
+\[
+ \begin{pmatrix}a^2&ab\\ab&b^2\end{pmatrix},
+\tag{J.6.1}
+\]
+including in characteristic two. There is no factor of two in the mixed coordinate. The primitive dual-number column \((1,\epsilon)\), \(\epsilon^2=0\), therefore gives mixed coordinate \(\epsilon\), which must be retained.
+
+For a nonzero pair of degree-\(d\) binary forms \((f,g)\), take their homogeneous greatest common factor \(h\) of degree \(e\), including the case that one form is zero. The residual pair has no common zero on \(\mathbf P^1\). Hence the unique defect is \(\operatorname{div}(h)\alpha^\vee\), and the saturated source is \(\mathcal O(-d+e)\). The full compactified parameter scheme is \(H^0(\mathcal O(d))^2\setminus\{0\}\); its scalar quotient is \(\mathbf P^{2d+1}\). The genuine-reduction open is the locus with \(e=0\). This computes the complete rank-one quotient, not merely the highest-degree maps.
+
+**Exercise J.6.2 (medium).** Compute the full cone for \(GL_2\), preserving determinant inverses, and identify its defect coroot.
+
+**Solution.** Put \(\omega=e_1\), \(\delta=e_1+e_2\). Every dominant weight is uniquely \(n\omega+b\delta\), with \(n\ge0\), \(b\in\mathbf Z\). The fundamental line is again \(\mathcal O(1)\), and the determinant character gives the canonically trivial underlying line with its actual linearization. Therefore
+\[
+ B_{GL_2}=k[x,y,z,z^{-1}],\qquad
+ \mathcal C_{GL_2}=\mathbf A^2\times\mathbf G_m.
+\tag{J.6.2}
+\]
+The coordinates of the entire weight map are \(z^b x^{n-j}y^j\). The open consists of primitive columns and a unit \(z\). Choose a second column whose determinant with the first is \(z\); this is a \(GL_2\)-matrix on every algebra, with the exact unitriangular stabilizer. In particular \((x,y,z)=(1,\epsilon,1+\epsilon)\) is a genuine dual-number point, with inverse \(z^{-1}=1-\epsilon\), also in characteristic two. The coroot is \(\alpha^\vee=(1,-1)\); it pairs to one with \(\omega\) and to zero with \(\delta\). A zero of order \(e\) twists the first fundamental source by \(e[x]\), leaves the determinant line unchanged, and has defect \(e(1,-1)[x]\). This retains the full determinant character and its inverse, rather than an adjoint or reduced substitute.
+
+## Appendix K. The full fixed-bundle compactification and relative defect strata
+
+Let \(R\) be Noetherian, \(X=\mathbf P^1_R\), and \(G\) be split with simply connected derived group, as in Appendix J. Fix the actual \(G\)- and \(T\)-bundles. We construct the full regular highest-line parameter scheme, its entire auxiliary torus quotient and the relative fixed-defect strata on every parameter algebra. The geometric modules remain \(W_\lambda\), distinct from the dual-group coefficient modules \(V_\lambda\).
+
+The cohomology and denominator arguments are proved in Constructible complexes on algebraic varieties, §§W.2–W.4, with their finite two-term application in Proposition I.1.1.1. Finite algebra descent and the proper quasi-finite theorem are proved in Affine descent, Zariski Main and recognition of spaces, Lemmas A1.2–A1.3, Corollaries A3.2 and D7.3. The full highest-line algebra, its flag open and all-weight equations are proved in Appendix J. The free [Geometric Eisenstein series, §1.2](https://arxiv.org/abs/math/9912097v2) describes the corresponding compactification and saturation problem; each construction needed here is proved below.
+
+### K.1. Detecting an entire section at finitely many reduced points
+
+**Proposition K.1.1.1.** Let \(\mathcal V_1,\ldots,\mathcal V_s\) be finitely many vector bundles on \(X\). After a finite faithfully flat extension of the ground field, there is a divisor \(D\) consisting of finitely many distinct constant sections in the affine \(t\)-chart such that restriction gives closed immersions
+\[
+ \mathscr S(\mathcal V_j)\longrightarrow
+ \mathbb A\bigl(\Gamma(D,\mathcal V_j|_D)\bigr)
+ \quad(1\le j\le s).
+\tag{K.1.1}
+\]
+These are closed immersions on arbitrary parameter algebras, not merely injections on reduced points.
+
+**Proof.** Eventual global generation applied to \(\mathcal V_j^\vee\) gives a finite free surjection
+\(\mathcal O(-a_j)^{b_j}\twoheadrightarrow\mathcal V_j^\vee\).
+It splits locally because its target is locally free. Dualizing gives a universally injective map
+\(\mathcal V_j\hookrightarrow\mathcal O(a_j)^{b_j}\).
+Choose \(N>\max_j a_j\), with \(N>0\). If the field has fewer than \(N\) affine points, a finite field extension supplies them; an infinite field already does. Take \(N\) distinct constant affine points for \(D\). Its divisor line is \(\mathcal O(N)\). On every algebra \(A\), a section of \(\mathcal V_j\) restricting to zero on \(D_A\) lies in \(H^0(X_A,\mathcal V_j(-D))\), which injects into \(H^0(X_A,\mathcal O(a_j-N))^{b_j}=0\), by the two-chart monomial calculation. Thus the restriction is universally injective as a map of section functors.
+
+Make its scheme assertion explicit. Proposition I.1.1.1 gives the section scheme from \([P^0\xrightarrow dP^1]\). Projection of its explicit kernel construction to the section module on the affine \(t\)-chart, followed by evaluation at the \(N\) points, gives an actual linear map \(j:P^0\to J=\Gamma(D,\mathcal V|_D)\). This module is finite projective. On every residue field the map \((d,j):P^0\to P^1\oplus J\) is injective: a vector in its kernel is the global section whose restrictions were just proved to detect it. Therefore the finite cokernel of the dual map
+\((P^1)^\vee\oplus J^\vee\to(P^0)^\vee\) has zero residue fibres. Nakayama kills every maximal localization, so that dual map is surjective. Consequently
+\[
+ \operatorname{Sym}J^\vee\twoheadrightarrow
+ \operatorname{Sym}(P^0)^\vee/(d^\vee(P^1)^\vee).
+\tag{K.1.2}
+\]
+This is exactly the coordinate map of (K.1.1), proving closedness and all its base changes. The divisor is reduced and finite étale over the parameter base. Replacing it by one thick jet would not justify the next finite-morphism argument: restriction of scalars along a nonreduced finite scheme need not preserve finiteness. ∎
+
+### K.2. The central-isomorphism torsors
+
+**Proposition K.2.1.1.** For each basis character \(c\) of the actual central lattice \(C\), let
+\(\mathcal M_c=\mathcal L_{\mathcal T}^{-c}\otimes (W_c)_{\mathcal E}\).
+The two central highest-line maps, with their tensor-unit equation, are exactly a nowhere-vanishing section of \(\mathcal M_c\) and its actual inverse. There is an open and closed part \(S_0\subset\operatorname{Spec}R\) on which every \(\mathcal M_c\) has degree zero on geometric fibres. The complete regular datum is empty off \(S_0\). On \(S_0\), each \(\mathcal M_c\) is the pullback of an invertible parameter module, and its isomorphism scheme is the actual frame \(\mathbf G_m\)-torsor of that module. Their product is a torsor under the central coordinate torus.
+
+**Proof.** A line bundle on a geometric projective line is \(\mathcal O(d)\). Here is the elementary input: a rational section gives a divisor, every finite point divisor is the divisor of its monic polynomial plus its degree at infinity, and the polynomial quotient moves that divisor to \(d[\infty]\). The two-chart computation then gives \(h^0-h^1=d+1\), with \(h^0=\max(d+1,0)\) and \(h^1=\max(-d-1,0)\). The finite projective complex of Proposition I.1.1.1 computes these fibres. Its Euler characteristic is the difference of its two finite projective ranks, which is locally constant. Thus the degree-zero conditions define the claimed open and closed part.
+
+On that part, the differential \(P^0\to P^1\) is surjective on every residue field, since all the \(H^1\) vanish. Its finite cokernel is zero by Nakayama. Since \(P^1\) is projective, its kernel \(P\) is finite projective, of rank one. The actual arbitrary-base-change comparison gives \(H^0(X_A,\mathcal M_{c,A})=P\otimes_R A\). Evaluation \(\mathcal O_X\otimes_RP\to\mathcal M_c\) is an isomorphism: on every geometric curve fibre it evaluates the constant section of the trivial line, so its finite coherent cokernel vanishes by Nakayama at every curve point. A surjection between two invertible modules is an isomorphism on their local frames. A nowhere-vanishing section is consequently a frame of \(P\) on every algebra; its dual is its uniquely specified inverse. Off the degree-zero part, the central inverse equation would give an isomorphism of lines of different degree on a geometric fibre, which is impossible. This proves every asserted functor and retains the entire central tensor unit. ∎
+
+### K.3. A finite morphism to fundamental section parameters
+
+**Theorem K.3.1.1.** Fix actual central isomorphisms, after the faithfully flat frame torsor of Proposition K.2.1.1 if necessary. Let \(\mathscr D\) be the affine scheme of all regular highest-line maps and relations, before imposing geometric generic nonzero, and let
+\[
+ \mathscr A=\prod_i\mathscr S\bigl(
+ \mathcal L_{\mathcal T}^{-\omega_i}\otimes
+ (W_{\omega_i})_{\mathcal E}\bigr).
+\tag{K.3.1}
+\]
+The morphism \(\mathscr D\to\mathscr A\) forgetting the extra homogeneous generators is finite. Its inverse image of the simultaneous geometrically-nonzero locus \(\mathscr A^+\) is precisely the full compactified injection/parameter-flat-quotient scheme \(\mathscr D^+\).
+
+**Proof.** Proposition J.1.1.1 makes \(B_0\) a finite module over the image of the polynomial algebra of the fundamental section spaces. With the full central Laurent algebra this says that the cone map to the fundamental vector spaces and central units is finite. Descent through the given bundles gives the corresponding finite morphism of cone bundles on \(X\); fixing the actual central isomorphisms is a base change of this map, not their omission.
+
+Take the entire finite homogeneous generator list from Theorem J.4.1.1 and apply Proposition K.1.1.1 simultaneously to their associated map bundles. Over \(\mathscr A\), evaluate the fixed fundamental sections at its divisor of distinct constant points. The product of the pullbacks of the finite cone morphism at those points is a finite scheme \(Z\to\mathscr A\): each point is a copy of the parameter base, and products of finite algebras are finite tensor algebras. The extra homogeneous coordinates of \(Z\) place it as a closed subscheme of the product of their finite evaluation spaces. Restriction of all extra sections embeds their section schemes as closed subschemes of those evaluation spaces, by (K.1.2). The full polynomial relations cut out another closed subscheme. Hence the induced map \(\mathscr D\to Z\) is a closed immersion: both coordinate maps are restrictions from that same evaluation affine space, and the coordinate map for the source is already surjective. A closed subscheme of a finite affine scheme is finite. This proves the assertion after the finite field extension used to choose the points; finite module/algebra descent proves it over the original base as well.
+
+Finally Theorem J.4.1.1 proves on every parameter algebra that the fundamental generic-nonzero conditions imply those for every dominant map, with all central inverses included. Theorem I.3.1.1 identifies them with universal injection and finitely presented parameter-flat quotient. Thus \(\mathscr D^+\) is exactly the indicated inverse image, and its map to \(\mathscr A^+\) remains finite. ∎
+
+### K.4. The full torus quotient is projective
+
+**Theorem K.4.1.1.** Let \(\overline{\mathscr D}=\mathscr D^+/T\), where \(T\) acts by multiplying every map by its weight character, including the central unit maps. This quotient is represented by a scheme projective over \(S_0\), and by the empty scheme over its complement. The map from genuine reductions, whose fundamental sections have no zeros on the curve, is an open immersion into this scheme. Every assertion is on the full parameter functor, including nilpotents.
+
+**Proof.** The character basis (J.2.1) splits the acting torus into the \(r\) independent fundamental scalars and the central coordinate torus. Quotienting the latter consumes exactly the frame torsor of Proposition K.2.1.1. Thus first choose those frames faithfully flatly, as in Theorem K.3.1.1, and form the remaining quotient. No central character of the original group has been discarded; its line isomorphism and inverse equation were imposed before this descent.
+
+Write each fundamental section scheme as
+\(\operatorname{Spec}\operatorname{Sym}(P_i^0)^\vee/(d_i^\vee(P_i^1)^\vee)\).
+Its geometrically-nonzero open consists exactly of the kernel vectors whose coordinates generate the unit ideal on the parameter base. Such a vector is a frame of a rank-one locally direct summand of \(P_i^0\). The quotient by its actual scalar \(\mathbf G_m\)-action is therefore
+\[
+ P_i=\operatorname{Proj}_R
+ \bigl(\operatorname{Sym}(P_i^0)^\vee/
+ (d_i^\vee(P_i^1)^\vee)\bigr).
+\tag{K.4.1}
+\]
+This identification follows on all tests by choosing a local frame of the tautological line, with the linear equations saying \(d_i=0\). Each \(P_i\) is a closed subscheme of the relative projective space of the finite projective module \(P_i^0\). Thus \(P=\prod_iP_i\) is projective, and \(\mathscr A^+\to P\) is the actual \((\mathbf G_m)^r\)-frame torsor.
+
+The finite map \(\mathscr D^+\to\mathscr A^+\) is equivariant. Its finite algebra and multiplication descend through this torsor, by effective affine module/algebra descent, to a finite scheme \(\overline{\mathscr D}\to P\). The two inverse pullbacks identify it with the quotient on every fppf test, so no unproved geometric quotient is being assumed. The initial central frame descent gives the same finite scheme over the original \(P\): changing central frames acts equivariantly on the higher generators and leaves the fundamental parameter spaces unchanged. Finiteness and its descent datum are preserved. In rank zero, the product \(P\) is the base and the cone is the central torus itself, so the quotient is just \(S_0\).
+
+For completeness a finite scheme over this projective \(P\) is projective over \(R\). A finite map is separated and universally closed: its diagonal is the multiplication quotient of finite algebras, and integrality plus lying-over makes the image of each closed ideal locus closed after every base change. It is therefore proper. Pull back the Segre very ample line of \(P\). Its finitely many homogeneous coordinate nonvanishing opens have affine finite inverse images and cover \(\overline{\mathscr D}\). Take finitely many algebra generators on each such inverse image. Powers of the defining section extend each generator globally: on a finite affine cover, clear its localization denominators; multiply by a common further power to kill the finitely many differences on overlaps. This is the actual denominator-clearing proof of W.4, valid even if that section is a zero-divisor. Raise all these powers to one degree and include the powers of the original covering sections. Their coordinate ratios generate each affine inverse-image algebra. The resulting morphism to a finite projective space is a closed immersion on the corresponding target charts. It is proper, so its image is closed; those charts and the complement of its image prove that it is a closed immersion globally. Thus the pulled-back line has a very ample power and the source is projective over \(R\).
+
+The genuine-reduction condition is that every fundamental map is a subbundle map at every curve point. Its complement is the proper projection of their finite closed zero schemes on \(X\). It is therefore open before the quotient, and its invariant open descends through the same torsors. Theorem J.3.1.1 identifies it with the actual flag reduction and torus-framing datum. This proves the stated open immersion. ∎
+
+![The full central and fundamental frame torsors yield the projective auxiliary torus quotient on every parameter ring](assets/full-torus-compactification.png)
+
+Propositions K.1.1.1–K.2.1.1 and Theorems K.3.1.1–K.4.1.1 construct the finite map and the actual quotient. Distinct reduced sampling points are essential for the finite product-of-values step. Editable SVG source.
+
+### K.5. Relative fixed-defect strata retain their own scheme equations
+
+**Theorem K.5.1.1.** For each tuple \(\mathbf d=(d_i)\) of nonnegative integers there is a locally closed subfunctor \(\mathscr D^+_{\mathbf d}\) of the full compactified injection scheme, defined on arbitrary parameter algebras. Its points have effective relative Cartier divisors \(D_i\), finite flat of degree \(d_i\), as the exact fundamental zero schemes; every homogeneous generator of weight \(\lambda=\sum_i n_i\omega_i+c\) is divisible by the canonical divisor section for \(\sum_i n_iD_i\). Dividing gives an actual saturated reduction for the twisted torus bundle
+\(\mathcal T(\sum_i\alpha_i^\vee D_i)\), with its central lines unchanged. Multiplication by these sections gives the inverse construction. The strata partition geometric points and preserve their specified nilpotent subfunctors; a general nilpotent family need not factor through one stratum.
+
+**Proof.** For a fundamental map, let \(Z_i\) be the scheme cut out by all its local vector coordinates. Its fibres are finite, since its section is geometrically generically nonzero. It is closed in the proper curve, so it is proper and quasi-finite over the parameter scheme; Corollary D7.3 of Affine descent, Zariski Main and recognition of spaces makes it finite; that corollary is the proper quasi-finite consequence of its finite-completion proof. Thus its coordinate pushforward \(Q_i\) is a finite presented parameter module, and formation of that finite algebra commutes with every base change.
+
+Choose a finite presentation of \(Q_i\) on each parameter affine chart. The condition that \(Q_i\) become locally free of rank \(d_i\) is an actual locally closed scheme condition:
+\(\operatorname{Fitt}_{d_i}(Q_i)\) must be the unit ideal and \(\operatorname{Fitt}_{d_i-1}(Q_i)\) must be zero. Here \(\operatorname{Fitt}_{-1}=0\). To check the assertion, on an open where a presentation minor of size \(n-d_i\) is invertible, row and column operations isolate that identity block. The remaining presentation has \(d_i\) rows. The minors defining the next Fitting ideal are exactly the entries of the remaining matrix. Their vanishing makes the quotient free of rank \(d_i\). Conversely a free quotient has precisely these two ideals. Both ideals are generated by the stated finite minors and commute with arbitrary scalar extension. Their open and closed equations therefore represent the asserted flattening locus on every algebra. The preceding equivalence with the module functor also proves independence of the chosen presentation and gluing on chart overlaps, by Yoneda; no separate Fitting-invariance theorem is being assumed.
+
+On this locus, \(Z_i\) is an effective relative Cartier divisor. Its ideal \(I_i\) is parameter-flat, since both \(\mathcal O_X\) and \(\mathcal O_{Z_i}\) are. On every geometric curve fibre the coordinate ideal is \((t^{m_i})\) in its local DVR. Lift that one generator at a curve point. Nakayama gives a local surjection from \(\mathcal O_X\) to \(I_i\); the parameter-flatness of \(I_i\) makes its kernel reduce injectively, and its reduced map is the DVR isomorphism onto \((t^{m_i})\). The finite kernel vanishes by Nakayama. Thus \(I_i\) is invertible locally. Its inclusion in \(\mathcal O_X\) is multiplication by a non-zero-divisor. Parameter-flatness of its quotient preserves that injection after every base change. This is the relative Cartier assertion, with the exact zero ideal rather than just its support.
+
+These divisors have their usual projective parameter spaces on \(\mathbf P^1\), including nonreduced tests. One can verify this directly without an unproved Hilbert scheme. Away from a constant point missing a fibre divisor, the divisor lies in \(\mathbf A^1\). Multiplication by \(t\) on its finite free degree-\(d\) algebra has a monic characteristic polynomial \(q\). Cayley–Hamilton gives a surjection \(A[t]/(q)\to\mathcal O_D\). On every residue field its defining ideal is generated by a monic degree-\(d\) polynomial, which is the same characteristic polynomial; hence that map is a fibre isomorphism. A surjection between finite locally free modules of rank \(d\) is an isomorphism. The coefficients of \(q\), homogenized and taken up to a unit, give the point of \(\mathbf P^d\). Such charts cover faithfully flatly: a finite extension of the ground field with more than \(d\) projective points supplies a missing constant point over every fibre. The local polynomials agree by their exact ideal, so glue. Conversely, a primitive homogeneous degree-\(d\) polynomial has these same charts where its value at the omitted point is a unit; its monic affine equation gives a finite free degree-\(d\) Cartier divisor there. This proves the divisor functor and its universal divisor on all rings. Degree zero means the empty divisor.
+
+It remains essential to impose the higher-generator equations, rather than infer them from geometric points. On the finite flat zero-divisor locus just constructed, form \(D_\lambda=\sum_i n_iD_i\) for every member of the entire finite generator list. Restriction of its map to \(D_\lambda\) must vanish. This is a closed scheme condition: the divisor is finite locally free and the restriction bundle has finite projective sections, so its actual universal restriction vector has finitely many linear coordinate equations. Its vanishing is exactly divisibility by the canonical section of \(D_\lambda\), since the Cartier sheaf sequence is universally exact. Impose these finitely many closed conditions. Their result is \(\mathscr D^+_{\mathbf d}\), locally closed in the original full scheme.
+
+Division now yields all the regular saturated generator maps. The fundamental ones have coordinate ideal the unit ideal: locally divide all coordinates by the generator of their exact common ideal \(I_i\). Every polynomial relation is homogeneous in the full weight lattice. Multiplying its divided expression by the canonical section for its total nonnegative fundamental divisor gives the original zero relation. That section is a non-zero-divisor after every base change, so the divided relation is zero as an actual map. Central relations have divisor zero and are the unchanged inverse equations. Thus these divided generators recover the entire regular highest-line algebra map, and all fundamental vectors are unimodular at every curve point. Theorem J.3.1.1 gives an actual saturated flag and torus-framing datum.
+
+Conversely, any such saturated datum for \(\mathcal T(\sum\alpha_i^\vee D_i)\), multiplied by the canonical sections, has fundamental coordinate ideals exactly \(I_i\), finite flat zero schemes of the given degrees, and satisfies every higher divisibility equation. Multiplication is universally injective, so division is its unique inverse, including all nilpotents and isomorphisms of bundles. This establishes the equivalence of the stated full subfunctors. Scaling by any weight character preserves the exact zero ideals and every divisibility equation. These strata are therefore invariant under the entire acting torus. Their open and closed ideals descend on the frame-torsor charts used in Theorem K.4.1.1, giving actual locally closed subschemes of the projective quotient as well. Theorem J.5.1.1 shows that every geometric point lies in the unique degree tuple supplied by its canonical saturation. A nilpotent family may have a nonflat zero scheme or fail a higher divisibility equation; it is retained in the ambient scheme and is not silently reduced into one of these strata. ∎
+
+### K.6. Exercises
+
+**Exercise K.6.1 (advanced).** For the finite scheme \(Z=\operatorname{Spec}k[u]/u^2\), compare its restriction-of-scalars functors along two reduced points and along \(\operatorname{Spec}k[\epsilon]/\epsilon^2\). Explain why reduced sampling was needed in Theorem K.3.1.1, including characteristic two.
+
+**Solution.** Along \(k\times k\), an \(A\)-point is two elements \(u_1,u_2\in A\) with \(u_i^2=0\). Its entire coordinate algebra is \(k[u_1,u_2]/(u_1^2,u_2^2)\), a finite four-dimensional algebra with basis \(1,u_1,u_2,u_1u_2\). Along the dual numbers, the image of \(u\) is \(a+b\epsilon\), and its square is \(a^2+2ab\epsilon\). Thus the entire scheme is
+\[
+ \operatorname{Spec}k[a,b]/(a^2,2ab).
+\tag{K.6.1}
+\]
+Its reduced scheme is the affine \(b\)-line, in every characteristic. In characteristic two the mixed equation disappears, and its algebra is \(k[a,b]/a^2\), still infinite-dimensional. Thus restriction of scalars of a finite morphism along a finite nonreduced scheme need not be finite. Theorem K.3.1.1 instead uses a product of copies of the base, together with actual closed-immersion restrictions for every whole section; both ingredients were necessary.
+
+**Exercise K.6.2 (medium).** In the \(SL_2\) compactification take the family \(\mathcal O(-1)\to\mathcal O^2\) with homogeneous coordinates \((T,aS)\) over \(k[a]\), where \(t=T/S\). Compute its exact zero scheme and degree-zero and degree-one defect strata. Test \(a=\epsilon\) over the dual numbers and explain why saturation cannot be inferred from its geometric fibre.
+
+**Solution.** The map is generically nonzero on every geometric curve fibre, so is a point of the ambient injection/parameter-flat-quotient scheme. At infinity its first homogeneous coordinate is a unit in the source frame. On the finite chart its coordinate ideal is exactly \((t,a)\). Therefore its entire zero scheme and finite pushforward are
+\[
+ Z=\operatorname{Spec}k[a,t]/(t,a),\qquad Q=k[a]/(a).
+\tag{K.6.2}
+\]
+The Fitting ideals are \(\operatorname{Fitt}_0(Q)=(a)\) and \(\operatorname{Fitt}_1(Q)=k[a]\). Degree zero is the open \(a\ne0\); degree one is the exact closed subscheme \(a=0\). There are no other strata for this family. On \(a=0\), the defect is \(\alpha^\vee[0]\), the source twists to \(\mathcal O\), and division by \(t\) gives the primitive saturated pair \((1,0)\).
+
+For \(A=k[\epsilon]/\epsilon^2\) and \(a=\epsilon\), the zero algebra is \(A/(\epsilon)\). It is not flat over \(A\): tensoring the injection \((\epsilon)\hookrightarrow A\) with \(A/(\epsilon)\) sends its nonzero generator to zero. This point factors through neither \(a\ne0\) nor \(a=0\), though its geometric fibre lies on the degree-one boundary. The attempted division \((t,\epsilon)/t\) has second coordinate \(\epsilon/t\), which is not regular at zero. The actual nilpotent family remains in the full compactification; it is not assigned the saturated map of its reduced fibre. The calculation is valid also in characteristic two. For \(GL_2\) with determinant map one the same family retains that central unit and has the coroot defect \((1,-1)[0]\).
+
+![The exact nilpotent family (t,epsilon) crosses the degree-zero and degree-one defect strata and cannot be saturated by its reduced fibre](assets/nilpotent-defect-strata.png)
+
+Theorem K.5.1.1 imposes every higher divisibility equation as a scheme condition. Exercise K.6.2 computes the entire zero algebra and its two Fitting loci; the nilpotent point remains in the ambient projective compactification. Editable SVG source.
+
+## Appendix L. Finite jet presentations and intrinsic duality of genuine strata
+
+Let \(G\) be the actual split group, \(T\subset B\), and \(N\) its positive unipotent subgroup. Work on \(X=\mathbf P^1_\kappa\), choose \(y\in X(\kappa)\), and fix a \(T\)-bundle \(\mathcal T\). Its root line bundles and twisted unipotent group are
+\[
+ \mathcal L_\alpha=\mathcal T\times^T \kappa_\alpha
+       \simeq\mathcal O(d_\alpha),\qquad
+ U=\mathcal T\times^T N,\qquad n=|\Phi^+|.
+\tag{L.1.1}
+\]
+The ground field is \(\kappa\); the jet level \(k\) below is an integer. The integers \(d_\alpha\) add on roots whose sums are roots. An integral basis of the original \(X^*(T)\), with all its central characters, specifies the bundle. A \(B\)-bundle with its \(T\)-quotient identified with \(\mathcal T\) is exactly a \(U\)-torsor, by twisting the fixed split \(T\subset B\) frame. The finite-jet construction below includes arbitrary parameter algebras and their nilpotents.
+
+Ordered root coordinates are proved in Root data, Weyl chambers and the Bruhat decomposition, §§5–8. The exact additive descent argument is Affine descent, Zariski Main and recognition of spaces, Lemma A1.1; the two-chart cohomology is Constructible complexes on algebraic varieties, §§W.1–W.3. We use the actual scheme smooth normalization, biduality, dual exchanges and affine-line unit of Lesson 5, Theorems P.2.4.1, P.3.2.1, P.3.3.1 and Lemma Q.1.2.1. The site nerve comparison is proved in Hypercoverings, Theorems 3.3–4.1. The free [Whittaker patterns, §§3.1–3.2 and 6.1](https://arxiv.org/abs/math/9907133v5) describes the finite-jet and self-extension problem; all constructions used here are proved below.
+
+### L.1. The entire framed torsor functor is an affine tower
+
+**Proposition L.1.1.1.** Let \(k\geq1\) be an integer strictly greater than every \(d_\alpha\), and put \(D_k=k y\). The functor of \(U\)-torsors on \(X_A\), together with a specified trivialization on \(D_{k,A}\), has no automorphisms and is represented by a smooth affine scheme \(M_k\). It is a tower of torsors for the vector spaces
+\[
+ H^1(X,\mathcal L_\alpha(-k y)),\qquad
+ \dim M_k=m_k=\sum_{\alpha>0}(k-d_\alpha-1).
+\tag{L.1.2}
+\]
+Each tower torsor is trivial over its affine predecessor. Thus \(M_k\simeq\mathbf A^{m_k}\), with a choice of such trivializations. Its representing universal torsor and the functor comparison hold on every \(\kappa\)-algebra, not just on geometric points.
+
+**Proof.** First make the kernel of a level frame precise. Ordered root products identify the underlying \(X\)-scheme of \(U\) with the product of its root line bundles. Replace each root coordinate line by \(\mathcal L_\alpha(-k y)\). In each root multiplication polynomial substitute \(\sigma^k x_\alpha\) for the old coordinate, where \(\sigma\) is the local equation of \(y\), and divide the resulting output coordinate by \(\sigma^k\). A nonlinear monomial of total degree \(r\geq2\) has the remaining factor \(\sigma^{k(r-1)}\). Hence all these new multiplication and inverse formulas are regular and glue by the root line tensor identifications. They define a smooth affine group scheme \(U^{(k)}\) over \(X\), with ordered root lines \(\mathcal L_\alpha(-k y)\), and a homomorphism \(U^{(k)}\to U\).
+
+On the flat site of \(X_A\) this homomorphism is injective and its image consists exactly of the sections equal to the unit on \(D_{k,A}\). Indeed \(\sigma^k\) stays a nonzerodivisor after every such flat pullback, so a coordinate vanishing modulo \(\sigma^k\) divides uniquely by it. This is not an assertion that the group-scheme homomorphism remains injective on a test scheme supported at \(y\); that different assertion would be false. The small flat site, where torsors and their trivializing covers are defined, gives the stated kernel on every parameter algebra \(A\).
+
+A framed \(U\)-torsor can be trivialized locally on this site by frames extending its prescribed frame on \(D_k\). To see existence, first take a trivializing flat cover, then choose affine subcovers with root line frames. Every ordered root coordinate of the difference on \(D_k\) lifts to the affine covering ring. Multiplying by that lifted \(U\)-element corrects the trivialization. The corrected transition functions belong to the preceding kernel. Conversely extending a \(U^{(k)}\)-torsor to \(U\) gives its canonical \(D_k\)-frame. These operations and their isomorphisms are inverse.
+
+Filter \(U^{(k)}\) by root height, successively retaining roots of height at most \(h\). The last retained height is central; its kernel is the vector-group bundle
+\(\bigoplus_{\operatorname{ht}(\alpha)=h}\mathcal L_\alpha(-k y)\).
+The ordered root projection is surjective on sections over any affine chart: lift the earlier coordinates and set the new ones to zero. No Chevalley coefficient is inverted.
+
+Here are the torsor calculations used in the induction. A vector-bundle torsor over an affine base is trivial. Its faithfully flat additive transition cocycle is a boundary in the augmented Amitsur complex of its module. Exactness follows by tensoring with the faithfully flat covering algebra, applying the multiplication retraction to the first factor as a contracting homotopy, and descending vanishing by faithful flatness. This is also the actual proof of Lemma A1.1 in *Affine descent, Zariski Main and recognition of spaces*. Central root induction therefore trivializes every torsor for each truncated group on an affine chart.
+
+For the two standard affine charts of \(\mathbf P^1_A\), a line of degree \(e<0\) has no sections and has the two-chart cohomology
+\[
+ H^0(\mathbf P^1_A,\mathcal O(e))=0,\qquad
+ H^1(\mathbf P^1_A,\mathcal O(e))
+       =A^{\,\max(-e-1,0)}.
+\tag{L.1.3}
+\]
+Explicitly, use the overlap coordinate \(t\) and the frame whose other-chart sections have coefficients in \(t^e A[t^{-1}]\). The quotient of \(A[t,t^{-1}]\) by \(A[t]+t^e A[t^{-1}]\) has the monomial basis \(t^{e+1},\ldots,t^{-1}\); its intersection is zero. Both chart rings and their intersection are affine, so the affine-module contraction and the two-chart derived comparison in GL-PERV W.1–W.3 prove that these calculations compute the actual groups. They commute with every algebra change. No higher Čech obstruction is present.
+
+Suppose a truncated torsor over \(X_A\) has been given. It is trivial on the two charts by the affine argument. Lift its overlap transition through the next ordered root projection and glue with the inverse transition in the other direction. This constructs an actual lift to the next group; on a two-chart cover there is no additional triple equation. Two such lifts with their specified quotient identification differ by a torsor for the central vector bundle. Their isomorphism classes form its \(H^1\), by subtracting their central transitions; their automorphisms are its \(H^0\). Formula (L.1.3), with \(e=d_\alpha-k<0\), makes those automorphisms zero and gives the displayed finite vector space of lifts.
+
+Start with the trivial group. At each induction stage the previous torsor functor is represented by an affine scheme carrying its universal torsor. Apply the preceding transition lift over that scheme. It supplies a universal lift, and adding the finite monomial representatives in (L.1.3) represents all its lifts by the indicated vector-space torsor. No automorphism of the quotient is lost: induction has already made its automorphism group zero. The same calculation kills the automorphisms at this stage. The affine vector torsor is trivial by the affine argument. Thus the resulting representing scheme is affine space, with its entire universal family and all its arrows. Root height terminates after finitely many steps. Adding the dimensions gives (L.1.2). This proves the proposition, including arbitrary-base functoriality. ∎
+
+### L.2. The genuine bundle stack and every level change
+
+**Theorem L.2.1.1.** Let \(H_k=\Gamma(D_k,U|_{D_k})\). It is a smooth split unipotent group of dimension \(kn\), with underlying scheme \(\mathbf A^{kn}\). Changing the specified frame gives an actual action on \(M_k\), and
+\[
+ \operatorname{Bun}_U(X)=[M_k/H_k],\qquad
+ d:=\dim\operatorname{Bun}_U
+       =m_k-kn=-\sum_{\alpha>0}(d_\alpha+1).
+\tag{L.2.1}
+\]
+The atlas is an \(H_k\)-torsor over the stack, not an assertion that its action on \(M_k\) has trivial stabilizers. For \(k\geq1\), forgetting the last jet gives \(M_{k+1}\to M_k\), a torsor for a vector group of dimension \(n\). All the quotient presentations identify the same torsor groupoid. The construction extends locally over every Noetherian family of \(T\)-bundles on \(\mathbf P^1\), with arbitrary changes of its parameter algebra.
+
+**Proof.** Near \(y\), choose the full actual \(T\)-frame. Ordered root coordinates in \(A[t]/t^k\) represent \(H_k\), with precisely \(k\) coefficients per root. Their height filtration has additive kernels of these finite coefficient spaces, which proves the group assertions in every characteristic.
+
+Every \(U\)-torsor over \(X_A\) has a frame on \(D_{k,A}\). The latter is affine, its restricted root lines have the chosen frames, and the central induction in Proposition L.1.1.1 trivializes its torsors. The scheme of choices is the \(H_k\)-torsor of frames. Changing a frame in the universal family of \(M_k\) gives a new framed family and hence, by its representing property, an action morphism \(H_k\times M_k\to M_k\). The same representing property makes the identity and action-composition equations actual equations of morphisms.
+
+More generally an object of \([M_k/H_k](S)\) is an \(H_k\)-torsor over \(S\) and an equivariant map to \(M_k\). Its pulled-back universal \(U\)-torsor descends with its maps, by flat torsor descent, and forgetting its frame gives a \(U\)-torsor on \(X_S\). Conversely the frame torsor of any \(U\)-torsor has its natural equivariant map to \(M_k\). After its flat cover both constructions are the same framed family, so descent proves that they are inverse on objects and on all isomorphisms. Thus the claimed equality is an equality of stacks, including their automorphism groups.
+
+The kernel of \(H_{k+1}\to H_k\) consists of root coordinates divisible by \(t^k\) modulo \(t^{k+1}\). Products of two such coordinates vanish, since \(2k\geq k+1\). It is consequently the vector group
+\(\Gamma(y,\operatorname{Lie}(U)\otimes\mathcal O(-k y)|_y)\)
+of dimension \(n\). A frame on \(D_k\) lifts to one on \(D_{k+1}\): first trivialize the torsor on this affine thickening, then lift the correcting ordered root coordinates. Its choices are exactly that kernel. Since the original \(k\)-framed torsor has no automorphisms, they represent \(M_{k+1}\to M_k\) as its vector-group torsor. Over the affine \(M_k\) it is trivial. Forgetting a frame and applying torsor descent commutes with each level change, giving the same quotient stack.
+
+For a Noetherian parameter ring \(R\), each line of a \(T\)-bundle has locally constant fibre degree, by the Euler complex in I.1. On an open-and-closed constant-degree part, a line \(\mathcal L\) of degree \(e\) is \(\mathcal O(e)\otimes p^*P\) for a parameter line \(P\): apply K.2's degree-zero evaluation proof to \(\mathcal L(-e)\). Apply this to an integral basis of \(X^*(T)\), retaining its entire lattice. Locally on \(\operatorname{Spec}R\) all the finitely many parameter lines have frames. The \(T\)-bundle is then the pullback of the bundle associated with the corresponding actual cocharacter of degrees. The preceding root-coordinate construction works over that base, with free coefficient spaces in (L.1.3). Globally they are the corresponding finite locally free modules and their affine towers. The constructions commute on overlaps by their representing torsor functors and therefore glue. A uniform \(k\) exists on each quasi-compact constant-degree part.
+
+The smooth atlas has relative dimension \(kn\), and its source has dimension \(m_k\); subtraction gives (L.2.1). This is independent of \(k\), as is also checked by the \(n\)-dimensional level increment. If there are no roots, every construction is the point stack and the sums are zero. Central characters were never discarded or replaced by a finite central quotient. ∎
+
+### L.3. Actual cohomology and rank-one self-extensions
+
+**Theorem L.3.1.1.** Over an algebraically closed field with \(\ell\) invertible, let \(E/\mathbf Q_\ell\) be finite. The augmentation unit gives
+\[
+ E\xrightarrow{\ \sim\ }
+ R\Gamma(\operatorname{Bun}_U(\mathbf P^1),E).
+\tag{L.3.1}
+\]
+The same assertion holds integrally for the constant complete coefficient ring and at every finite reduction. For a rank-one lisse line \(\mathcal L\) on this stack and any integer shift \(s\) and invertible Tate twist \(r\),
+\[
+ R\operatorname{Hom}(\mathcal L[s](r),\mathcal L[s](r))=E.
+\tag{L.3.2}
+\]
+Both comparisons retain actual composition, the identity and, when all data descend to a finite field, Frobenius. In particular every positive derived self-extension group is zero.
+
+**Proof.** The atlas nerve is \(M_k\times H_k^p\) in degree \(p\). Its underlying scheme is affine space of dimension \(m_k+pkn\). Every face pulls its constant coefficient identity to the same identity. Iterating the actual ordinary affine-line unit of Lesson5 Lemma Q.1.2.1 identifies the cohomology of each nerve level with the coefficient ring in degree zero, integrally and at every reduction; all positive groups vanish.
+
+For completeness the nerve computes the stack cohomology used here. On the smooth site of the quotient, the atlas sheaf is an epimorphism: its pullback to a smooth test scheme is the smooth \(H_k\)-torsor of frames, which has étale local sections. The augmented free nerve complex is exact. Locally choose a lift to the atlas and insert it as first vertex; deleting that vertex gives the identity and all other face terms cancel in pairs. Apply an injective coefficient resolution and take the first-quadrant double complex of sections over the nerve. The horizontal augmentation is then a quasi-isomorphism; each total degree involves finitely many terms. This is precisely the finite-cone and comparison proof of *Hypercoverings*, Theorems3.3–4.1, applied to this site. The vertical calculation is the actual scheme cohomology just proved. Hence its totalization computes the required cohomology without replacing the quotient by its set of points.
+
+It remains the augmented complex with one coefficient-ring term in every nonnegative degree. Its degree-\(p\) differential is multiplication by
+\(\sum_{i=0}^{p+1}(-1)^i\): zero for even \(p\), the identity for odd \(p\). Its cohomology is the ring in degree zero and zero otherwise; its generator is the augmentation of \(1\). This proves the actual unit comparison. Applying it at each finite coefficient level gives the same transition identities; the constant inverse tower has surjective maps and no degree-one-limit term. Completion and the actual rationalization preserve the displayed unit. Over a finite field that unit is defined over the field, so Frobenius acts on its coefficient generator as the identity.
+
+The evaluation \(\mathcal L^\vee\otimes\mathcal L\to E\) is an actual isomorphism of lisse lines, with its unit and equivariance. Rank-one internal Hom and the cancelling shifts and twists identify the derived self-mapping complex with the preceding constant cohomology. Its composition is multiplication of constant endomorphisms, and its generator is the identity. This proves (L.3.2), including the specified operators.
+
+If a shifted rank-one line is perverse, its perverse Yoneda self-\(\operatorname{Ext}^1\) is its degree-one derived self-mapping group: a short exact sequence gives its connecting map, and the cone of such a map gives the inverse construction by the heart truncation sequence. Thus it is zero. Induction on length splits every finite perverse extension whose factors are this one line. This last assertion concerns that stratum and those factors; it supplies no claim yet about extensions across different compactified strata. ∎
+
+### L.4. Intrinsic normalized duality on the finite quotient
+
+**Theorem L.4.1.1.** Use the bounded cartesian constructible enhancement of the actual atlas nerve. Perverse normalization and structural duality on \(\operatorname{Bun}_U\) are independent of the sufficiently large jet level. If \(q_k:M_k\to\operatorname{Bun}_U\), put \(q_k^\dagger=q_k^*[kn](kn/2)\), using the fixed half-Tate normalization. The intrinsic duality is determined by
+\[
+ q_k^\dagger\mathbb D_{\operatorname{Bun}_U}K
+     =\mathbb D_{M_k}q_k^\dagger K.
+\tag{L.4.1}
+\]
+It has the actual evaluation and biduality maps and retains finite coefficient comparisons and Frobenius. For a descended evaluation \(e:\operatorname{Bun}_U\to\mathbf A^1\), set
+\(\Psi=e^*\mathcal L_\psi[d](d/2)\), where \(d\) is (L.2.1). Then \(\Psi\) is simple perverse and
+\[
+ \mathbb D\Psi=e^*\mathcal L_{\psi^{-1}}[d](d/2).
+\tag{L.4.2}
+\]
+The sign of the additive character changes; it must not be erased when invoking duality.
+
+**Proof.** Describe the enhancement and descent comparisons explicitly. A cartesian object is its constructible complexes on the nerve, their pullback identifications, and the coherent face-composition identifications. The corresponding derived mapping complex is the totalized nerve of scheme mapping complexes. Uniform boundedness is tested on the atlas; perverse bounds are tested after the smooth normalization. This construction uses the actual scheme coefficient categories of Lesson5 M–P, rather than an equivalence with bounded complexes in a prescribed abelian heart.
+
+Every face map between successive nerve levels is smooth of relative dimension \(kn\). The actual scheme dual exchange of Lesson5 Theorem P.3.3.1 and smooth normalization P.2.4.1 give, for such a map \(f\) of dimension \(h\),
+\[
+ \mathbb D f^*[h](h/2)
+       =f^*[h](h/2)\mathbb D .
+\tag{L.4.3}
+\]
+Indeed \(\mathbb D f^*=f^!\mathbb D\), with \(f^!=f^*[2h](h)\), and dualizing the added shift and twist subtracts \(h,h/2\). Apply (L.4.3) to the normalized complexes in every nerve degree. Dualize each descent isomorphism and invert it to restore its direction. The coherent composition equations remain the same equations: the scheme comparisons were constructed from the same trace counits and evaluation and have coherent transitivity. The degeneracy identifications are the inverse consequences of these face equations and the identity section, so they are retained as well. Thus the dual complexes descend in this enhancement and satisfy (L.4.1).
+
+Equivalently its unnormalized atlas complex is
+\(\mathbb D_{M_k}(q_k^*K)[-2kn](-kn)\).
+This explains why ordinary scheme duality of the unnormalized pullback would give the wrong shift. The scheme double-evaluation maps commute with the same descent identifications and therefore descend to the actual intrinsic double evaluation. They are isomorphisms on the conservative atlas by P.3.2.1. Tensor evaluation and its graded signs, as well as their finite reductions and Weil maps, descend in the same way.
+
+To check independence, use the common frame atlas with both a \(D_k\)-frame and a \(D_l\)-frame. It is the fibre product \(M_k\times_{\operatorname{Bun}_U}M_l\), a smooth \(H_l\)-torsor over \(M_k\) and a smooth \(H_k\)-torsor over \(M_l\). It is a scheme: the second-frame torsor of the universal family on the affine \(M_k\) is trivial by the central affine argument. Both comparisons with its scheme duality are exactly (L.4.3), and their normalized shifts are \(kn+ln\) in either order. Scheme transitivity therefore identifies the two descended dualities, evaluations and their nerve coherences. The same common smooth atlas identifies the perverse bounds. No assumption about a globally free action was used.
+
+The normalized pullback of \(\Psi\) is
+\((e q_k)^*\mathcal L_\psi[m_k](m_k/2)\).
+It is a rank-one lisse perverse line on the connected smooth affine space \(M_k\). Such a line is simple: at a proper smooth closed support of positive codimension its ordinary and exceptional restrictions have strictly negative and positive perverse degrees, respectively; the scheme smooth orientation and closed localization exclude a subobject or quotient there. On a dense smooth open, rank one excludes a proper nonzero lisse subobject. Stratifying any proposed support finishes the argument, as in G.3. Since normalized atlas pullback is exact and conservative for these perverse bounds, the descended object is simple.
+
+Scheme smooth duality sends that normalized line to
+\((e q_k)^*\mathcal L_{\psi^{-1}}[m_k](m_k/2)\).
+Its evaluation uses the actual multiplication pairing \(\mathcal L_{\psi^{-1}}\otimes\mathcal L_\psi=E\) of E.1.1.1, not an identification of the two character lines. Descent gives (L.4.2) with the same pairing, half twist, positive trace orientation and Frobenius. This proves the theorem. It constructs intrinsic stratum duality; ordinary and exceptional restrictions from a compactification still require their own geometric bounds. ∎
+
+![The actual finite-jet frame towers, quotient dimensions and normalized duality of genuine unipotent bundle strata](assets/genuine-stratum-jet-tower.png)
+
+Proposition L.1.1.1 and Theorems L.2.1.1–L.4.1.1 construct the framed schemes, their exact quotient stacks and the intrinsic duality. The negative dimension of \(B\mathbf G_a\) records its smooth automorphisms. Editable SVG source.
+
+### L.5. Exercises
+
+**Exercise L.5.1 (medium).** Take \(SL_2\) with the trivial \(T\)-bundle. Compute the entire level-one presentation, its stack dimension, constant cohomology and normalized duality. Explain the negative shift.
+
+**Solution.** There is one root line \(\mathcal O\). At \(k=1\) its framed line is \(\mathcal O(-1)\), with \(H^0=H^1=0\) by (L.1.3). Thus \(M_1=\operatorname{Spec}\kappa\), \(H_1=\mathbf G_a\), and the entire torsor stack is \(B\mathbf G_a\), of dimension \(0-1=-1\). This is the groupoid of trivial additive bundles and their additive automorphisms on every affine parameter ring, rather than a point scheme. Its nerve terms are \(\mathbf A^p\); the alternating constant cochain complex gives \(R\Gamma(B\mathbf G_a,E)=E\), with its identity operator. The zero-evaluation normalized perverse line is \(E[-1](-1/2)\). Pulling it to the point and applying \(q^\dagger=[1](1/2)\) gives \(E\) in degree zero. Its structural dualizing line is \(E[-2](-1)\); tensor duality therefore takes \(E[-1](-1/2)\) to itself with the actual pairing. The negative shift records the smooth additive automorphisms; replacing the stack by its point set would lose it.
+
+**Exercise L.5.2 (advanced).** For \(GL_3\), take the full torus bundle with coordinate line degrees \((-2,0,0)\). Compute the level-one and level-two dimensions. Give a smaller quotient presentation of its genuine unipotent bundle stack and its scheme-theoretic stabilizer when the first extension class is a dual-number nilpotent.
+
+**Solution.** The three positive root lines have degrees \(-2,0,-2\). Hence \(m_1=2+0+2=4\), \(\dim H_1=3\), \(m_2=3+1+3=7\), and \(\dim H_2=6\); both stack dimensions are one. \(H_1\) is the actual upper unitriangular group, including its central multiplication term, not its abelianization. Forgetting the last jet is a three-dimensional vector torsor.
+
+For a smaller presentation, trivialize on the two standard charts and successively normalize the upper entries \(x,y,z\). The \(x,z\) root lines \(\mathcal O(-2)\) each retain exactly their \(t^{-1}\) class; the \(y\) line \(\mathcal O\) has no \(H^1\). Every transition reduces to
+\[
+ n(a,b)=
+ \begin{pmatrix}
+ 1&a/t&b/t\\0&1&0\\0&0&1
+ \end{pmatrix}.
+\tag{L.5.1}
+\]
+The remaining equal global and local \(y\)-changes are a constant \(c\). Conjugating by \(u_{23}(c)\) takes \(n(a,b)\) to \(n(a,b-ac)\), by actual matrix multiplication. Conversely a gauge arrow between two normalized transitions has zero \(x\)-change, since \(\mathcal O(-2)\) has no global section; its \(y\)-change is exactly that constant. Its \(z\)-equation then gives \(b'=b-ac\) and no further arrow, since the \(z\) line also has no global section. Thus the entire groupoid is
+\[
+ [\mathbf A^2_{a,b}/\mathbf G_{a,c}],
+       \qquad c:(a,b)\longmapsto(a,b-ac).
+\tag{L.5.2}
+\]
+It has trivial stabilizer over \(a\) invertible and additive stabilizer over \(a=0\). More precisely over any parameter algebra its stabilizer is the group scheme \(\operatorname{Spec}A[c]/(ac)\). For \(A=\kappa[\epsilon]/(\epsilon^2)\), \(a=\epsilon\), this is \(A[c]/(\epsilon c)\); it is not flat over \(A\). Indeed the nonzero polynomial class of \(c\) modulo \(\epsilon\) tensors with the generator of \((\epsilon)\), but its image under multiplication into \(A[c]/(\epsilon c)\) is zero. Flatness would preserve that injection. The actual quotient stack and the smooth finite-jet atlas retain this nilpotent stabilizer; neither replacing \(a\) by its reduced fibre nor declaring the frame-group action free is valid. All matrix computations, including their minus sign, remain valid in characteristic two.
+
+![The exact GL3 unipotent stabilizer ac=0 and its nonflat dual-number fibre remain in the smooth finite-jet quotient presentation](assets/nilpotent-unipotent-stabilizer.png)
+
+Exercise L.5.2 computes the entire action \(c:(a,b)\mapsto(a,b-ac)\), its scheme-theoretic stabilizers and the two jet levels. The smooth frame atlas retains the nonflat stabilizer \(A[c]/(\epsilon c)\); its action is not assumed free. Editable SVG source.
+
+## Appendix M. Compactified global jet schemes and the affine genuine open
+
+Write \(X=\mathbf P^1_\kappa\), with homogeneous coordinates \(S,T\), \(y=[1:0]\), and \(u=T/S\) near \(y\). A jet level \(k\) is a positive integer and \(D_k=k y\). We work with the regular compactification for split \(G\) with simply connected derived group, as in Appendix J, retaining the full original central torus. The following construction uses the diagonal sequence and finite Grassmannians to prove the needed framed bundle schemes directly.
+
+The exact cohomology inputs are Constructible complexes on algebraic varieties, §§W.1–W.4 and Appendix I. The finite Grassmannian is constructed in Roots and reductive groups of rank one, Lemma 5.A. We use Affine descent, Zariski Main and recognition of spaces, Lemmas A1.1–A1.3 and Corollary A3.2. The subgroup-detecting line is proved in Tori, maximal tori and their conjugacy, §2. Its full schematic orbit and actual fppf quotient torsor are Group schemes over a field, Theorem 7.13 and Quotients and torsors, Theorem 11.1b. These earlier programme proofs include nonreduced test schemes. The free [Whittaker patterns, §3.3](https://arxiv.org/abs/math/9907133v5) supplies the geometric setting; the bounded scheme charts and affine-open argument are proved here.
+
+### M.1. The universal two-term presentation on the projective line
+
+**Proposition M.1.1.1.** Let \(R\) be Noetherian and \(\mathcal E\) a vector bundle on \(X_R\). Assume \(H^1(X_{\bar s},\mathcal E_{\bar s}(-1))=0\) on every geometric parameter fibre. There are finite locally free parameter modules
+\[
+ P=p_*\mathcal E,\qquad Q=p_*\mathcal E(-1)
+\]
+whose formation commutes with every parameter algebra change, and a canonical sequence
+\[
+ 0\longrightarrow\mathcal O(-1)\otimes Q
+   \xrightarrow{\,T i-S j\,}\mathcal O\otimes P
+   \longrightarrow\mathcal E\longrightarrow0,
+ \quad i=S\cdot:Q\to P,\quad j=T\cdot:Q\to P.
+\tag{M.1.1}
+\]
+If \(\mathcal E\) has rank \(r\) and degree \(e\), then \(e\geq0\), \(\operatorname{rk}Q=e\) and \(\operatorname{rk}P=e+r\). The sequence is universally exact.
+
+**Proof.** Multiplication by \(S\) gives \(0\to\mathcal E(-1)\to\mathcal E\to\mathcal E|_y\to0\). Its first arrow is injective even after a parameter change, because \(S\) is universally regular on the curve and \(\mathcal E\) is locally free. Fibre cohomology and the two-chart vanishing in degrees at least two show \(H^1(\mathcal E_{\bar s})=0\) as well. For each of the two bundles use I.1's actual finite projective complex \([P^0\to P^1]\). Its finite differential cokernel has zero geometric fibres and is therefore zero by Nakayama. The differential splits, since \(P^1\) is projective. Its kernel is finite projective, and its tensor by any \(R\)-algebra is the kernel of that same split differential. This proves the asserted parameter and cohomology comparisons.
+
+On \(X_R\times_R X_R\) the diagonal has equation \(S_1T_2-T_1S_2\), and the sequence
+\[
+ 0\to\mathcal O(-1,-1)\to\mathcal O\to\mathcal O_\Delta\to0
+\tag{M.1.2}
+\]
+is universally exact. On each product chart the equation is either a monic coordinate difference or its equivalent homogeneous frame expression; it cuts out exactly the diagonal and is a nonzerodivisor on every coefficient ring. Tensor by the first pullback of \(\mathcal E\) and take cohomology along the first factor. The preceding zero \(H^1\) terms and universally split finite complexes give precisely (M.1.1). The sign follows from the displayed diagonal equation: its two multiplication maps are \(T i-S j\). Its last map is evaluation. In particular \(\mathcal E\) is generated by \(P\), and the sequence remains exact after every parameter change.
+
+On a connected parameter part write \(q=\operatorname{rk}Q\) and \(p=\operatorname{rk}P\). Taking ranks in the sequence gives \(p-q=r\). Taking determinants gives \(\det\mathcal E=\mathcal O(q)\otimes p^*(\det P\otimes(\det Q)^{-1})\). Thus its geometric fibre degree is \(q\). This proves the rank and degree formulas without needing a splitting theorem or a separate vector-bundle Riemann–Roch assertion. ∎
+
+### M.2. An explicit separated scheme of framed vector bundles
+
+**Theorem M.2.1.1.** Fix integers \(r\geq1,e\geq0,k\geq1\), and let
+\(J=(\kappa[u]/u^k)^r\), viewed as a \(kr\)-dimensional vector space with endomorphism \(u\). The groupoid of rank-\(r\), degree-\(e\) vector bundles \(\mathcal E\) on \(X_A\), with a specified isomorphism \(\mathcal E|_{D_{k,A}}\simeq J_A\), satisfying
+
+1. \(H^1(\mathcal E_{\bar s}(-1))=0\);
+2. \(H^0(\mathcal E_{\bar s}(-k))=0\),
+
+on every geometric parameter fibre, is represented by a separated finite-type scheme \(Z_{r,e,k}\), on every parameter algebra \(A\). Empty Grassmannian ranks give the empty scheme. It has no framed automorphisms.
+
+**Proof.** In the product of subbundle Grassmannians
+\(\operatorname{Gr}(e+r,J)\times\operatorname{Gr}(e,J)\),
+let \(P,Q\subset J\) be the universal subbundles. Impose the closed incidence equations
+\[
+ Q\subset P,\qquad uQ\subset P.
+\tag{M.2.1}
+\]
+They are the zero maps \(Q\to J/P\) and \(Q\xrightarrow uJ\to J/P\), so their scheme equations are finite matrix entries and impose the assertions on all rings. Let \(i:Q\to P\) be inclusion and \(j:Q\to P\) be \(u\) followed by inclusion into \(P\). Form the universal map \(T i-S j\) on the projective line.
+
+Require it to have rank \(e\) everywhere on every curve fibre. This is open in the parameter scheme: its failure locus is the closed locus of its \(e\)-minors in the proper curve, whose projection is closed. For \(e=0\) there is no failure locus. On this open the map is a subbundle map. Indeed at any point an \(e\)-minor is a unit; row and column operations split off its invertible block, and leave a locally free quotient of rank \(r\). Denote that quotient by \(\mathcal E\). It is a vector bundle and the sequence is universally split on those local frames.
+
+The natural map \(P\otimes_\kappa\kappa[u]/u^k\to J\) kills the relation \(u i(q)-j(q)\), so gives \(\mathcal E|_{D_k}\to J\). Require this to be an isomorphism. This is a further open condition, either by its determinant in finite local frames or by the proper finite projection of its failure locus on \(D_k\). It specifies the entire jet frame, including its nonreduced coefficients. These conditions define \(Z_{r,e,k}\) as an open in a closed incidence scheme in the projective Grassmannian product; hence it is separated and of finite type.
+
+The sequence now computes \(H^0(\mathcal E)=P\), \(H^1(\mathcal E)=0\), \(H^0(\mathcal E(-1))=Q\), and \(H^1(\mathcal E(-1))=0\), universally: \(H^0(\mathcal O(-1))=H^1(\mathcal O(-1))=0\), and \(H^1(\mathcal O(-2))\) is the single two-chart monomial class. The natural section corresponding to \(q\in Q\) is the class of \(i(q)\) on \(S\ne0\), and the class of \(j(q)\) in the \(T\)-frame on \(T\ne0\); the relation \(T i-S j\) identifies them. This also checks the indicated \(Q\) comparison and its sign. Multiplication by \(S,T\) gives the original \(i,j\). Their jet restrictions are exactly the original inclusions \(Q,P\subset J\). In particular the section restriction \(P\to J\) is injective with locally free cokernel, so \(H^0(\mathcal E(-k))=0\) on every base change.
+
+Conversely a framed bundle as in the theorem has the sequence of Proposition M.1.1.1. Its section restrictions \(P\to J_A\) and \(Q\to J_A\), using the fixed \(S\)-frames on the jet, are injective with locally free cokernels. To justify the scheme statement, work first over a Noetherian model. On geometric fibres the first restriction is injective by condition2; the second is injective too, since multiplication by \(S\) embeds its sections into the first. The dual maps have finite cokernels with zero fibres, so Nakayama makes them surjective. Their locally free targets make these surjections split locally. Thus the restrictions define the actual Grassmannian subbundles. Their ranks are \(e+r,e\) by Proposition M.1.1.1. Multiplication by \(T\) at the jet is exactly \(u\), giving (M.2.1). The canonical sequence and the original jet isomorphism give exactly the open conditions above, and reconstruct the bundle and its frame.
+
+These constructions are inverse on morphisms. A framed automorphism induces the identity on the injective section subbundles \(P,Q\subset J_A\), and hence the identity on their evaluation quotient. Thus no automorphisms are omitted. For an arbitrary \(A\), descend the finite presentation of the bundle, its frame and all these maps to a finitely generated coefficient ring. The two fibre vanishing conditions define opens there by the finite complexes of I.1: zero cokernel for \(H^1\), and split injectivity for the actual finite restriction map. Their preimages contain all of \(\operatorname{Spec}A\). Restrict to them and apply the preceding universally exact construction. It gives the same comparison after tensor by \(A\). This proves the whole functor assertion on arbitrary parameter rings. ∎
+
+### M.3. Framed actual \(G\)-bundles are separated schemes
+
+**Theorem M.3.1.1.** Choose a faithful closed representation \(\rho:G\hookrightarrow GL(V)\). There is a finite \(GL(V)\)-module \(W\) and a line \(\ell\subset W\) whose full schematic stabilizer is \(G\). Let \(\chi\in X^*(G)\) be its line character. Fix degrees \(\delta_V,\delta_\chi\), and a twist \(a\) with \(e=\delta_V+a\dim V\geq0\). Impose the two conditions of Theorem M.2.1.1 on \(E_V(a)\) and on \(E_\chi(-\delta_\chi)\). Actual \(G\)-bundles of these degrees with a specified full \(G\)-frame on \(D_k\) are then represented by a separated finite-type scheme. All assertions concern the entire torsor and its isomorphisms on arbitrary parameter algebras.
+
+**Proof.** Here the faithful representation and detecting line are concrete finite data. A finite-dimensional Hopf subcomodule of \(\kappa[G]\) containing algebra generators gives the faithful closed representation: evaluation at the identity expresses each generator as a matrix coefficient, so the coordinate algebra map from the general linear group is surjective. For the closed \(G\subset GL(V)\), choose a finite regular \(GL(V)\)-submodule containing generators of its ideal and intersect it with that ideal. Its stabilizer is \(G\) on every test algebra, because preserving that subspace preserves the ideal it generates, and evaluating a preserved right translate at the identity gives precisely membership in \(G\). The determinant line of that subspace has the same schematic stabilizer. This is the line construction proved in AG-RG-01 §2.
+
+The full orbit theorem gives a locally closed immersion
+\[
+ O=GL(V)/G\hookrightarrow\mathbf P_{\rm lines}(W),
+\tag{M.3.1}
+\]
+with its original scheme structure, and \(GL(V)\to O\) is its actual fppf \(G\)-torsor. We use *Group schemes over a field*, Theorem7.13, and *Quotients and torsors*, Theorem11.1b, whose scheme and torsor proofs include nonreduced test schemes. Thus a reduction of the frame torsor of a vector bundle \(E_V\) to \(G\) is exactly a line subbundle \(F\subset E_W\) whose corresponding projective section factors through the associated orbit \(O\). Pull back the displayed \(G\)-torsor to reconstruct the reduction; extension to \(GL(V)\) is the inverse. Its associated character line is \(F\), with its natural inclusion in \(E_W\).
+
+Over the product \(Z_{\dim V,e,k}\times Z_{1,0,k}\) take the first universal bundle and untwist it by \(\mathcal O(-a)\), and take the second and twist it by \(\mathcal O(\delta_\chi)\). These are \(E_V,F\) with their entire \(D_k\)-frames. The finite section scheme of I.1 represents maps \(F\to E_W\) as a finite-type affine scheme over this Noetherian base. Associated \(W\)-bundles exist by affine frame descent, and are vector bundles; no statement that \(W\) is a symmetric power in the geometric characteristic is required. Impose the closed jet equation that this map is the inclusion of the fixed line \(\ell\) under the two specified frames.
+
+Require the map to be a subbundle everywhere. Its rank-one failure locus is closed on the proper curve, giving an open parameter condition by projection. On that open it defines a projective line section. Require that section to lie in the closure of the orbit and avoid its boundary. The first condition is closed: the invariant projective orbit closure has finitely many homogeneous defining equations. Their finite-dimensional degree pieces are \(GL(V)\)-stable; evaluating their associated bundle maps on the line gives the actual finite polynomial zero conditions of I.2. They enforce factorization as a scheme morphism, including nilpotents. The second condition is open: pull back the closed projective boundary and remove its proper closed projection to the parameter base. These two conditions are exactly factorization through the locally closed orbit, on every parameter algebra.
+
+The resulting locally closed subscheme of the finite affine map scheme is separated and of finite type. It recovers the full \(G\)-reduction by (M.3.1). Its jet equation says that the specified \(GL(V)\)-frame actually belongs to the reduction over \(D_k\); the specified frame of \(F\) is precisely its induced \(\ell\)-frame. Thus it gives the specified \(G\)-frame, with no extra line-frame choice. Conversely a \(G\)-framed bundle gives these two framed bundles, their orbit line and the jet equation. The constructions are inverse, including their isomorphisms. A framed automorphism is already the identity on \(E_V\) by Theorem M.2.1.1, and \(\rho\) is a closed embedding, so it is the identity on the \(G\)-torsor. This proves the scheme assertion. ∎
+
+### M.4. Uniform bounds from the complete geometric defect
+
+**Proposition M.4.1.1.** Fix the actual \(T\)-bundle \(\mathcal T\) and nonnegative integers \(b_i\), one per simple coroot. Let regular compactified data have geometric fundamental zero-divisor lengths \(m_i\leq b_i\). For any fixed finite \(G\)-module \(V\) with weight multiset \(\Xi\), all the line degrees in a \(B\)-filtration of \(E_V\) lie between
+\[
+ L_V=\min_{\xi\in\Xi}
+ \left(\deg\mathcal L_\xi+
+       \sum_i\min(0,b_i\langle\xi,\alpha_i^\vee\rangle)\right),
+\qquad
+ U_V=\max_{\xi\in\Xi}
+ \left(\deg\mathcal L_\xi+
+       \sum_i\max(0,b_i\langle\xi,\alpha_i^\vee\rangle)\right).
+\tag{M.4.1}
+\]
+Consequently \(a\geq\max(0,-L_V)\) and \(k>a+U_V\) ensure the two framed-bundle conditions on \(E_V(a)\). The full determinant and detecting-line degrees are fixed by the entire central maps. The condition \(m_i\leq b_i\) is an actual open condition in the compactified parameter scheme, and does not require a nilpotent family to factor through one fixed-defect stratum.
+
+**Proof.** On a geometric curve, J.5 supplies the unique saturated \(B\)-reduction with torus bundle \(\mathcal T(D)\), where \(D=\sum_i\alpha_i^\vee D_i\), \(\deg D_i=m_i\). This is a geometric-fibre argument, exactly where J.5 applies. For a \(T\)-weight \(\xi\), its line degree is
+\(\deg\mathcal L_\xi+\sum_i m_i\langle\xi,\alpha_i^\vee\rangle\).
+Taking the minimum and maximum on the finite integer box \(0\leq m_i\leq b_i\) gives (M.4.1).
+
+The required \(B\)-filtration of a representation is explicit in every characteristic. Its split \(T\)-coaction decomposes it into its weight spaces. In the polynomial coaction of a positive root \(u_\alpha(z)\), the coefficient of \(z^j\) sends a weight \(\xi\) into \(\xi+j\alpha\), by conjugating with \(T\); the \(j=0\) coefficient is the identity. Order the finite weights by a linear functional positive on every positive root. Successive spans of the highest remaining weight spaces are \(B\)-stable, and refine each equal-weight block by any basis flag, since \(N\) has no degree-zero off-identity action there. This gives successive line quotients with the stated weights, and hence the associated filtration of the actual bundle.
+
+For the twist \(E_V(a-1)\), each quotient line has degree at least \(-1\), so its \(H^1\) vanishes by the two-chart calculation. The long exact sequences give \(H^1(E_V(a-1))=0\). For \(E_V(a-k)\), every quotient line has negative degree, so \(H^0=0\) by the same calculation and exact sequences. These are precisely the two conditions of Theorem M.2.1.1 for \(E_V(a)\). The sums of the representation weights give \(\det V\in X^*(G)\), which pairs to zero with all coroots. The detecting line character also pairs to zero with all coroots. Thus their degrees are respectively \(\deg\mathcal L_{\det V}\) and \(\deg\mathcal L_\chi\), and are fixed by the actual central inverse-map equations. No adjoint torus or rational lattice is substituted.
+
+Finally each fundamental zero scheme is finite over the parameter scheme, as proved in K.5. Its finite algebra has a finite module presentation. The condition that its geometric fibre dimension is at most \(b_i\) is the open locus where the corresponding presentation matrix has rank at least the number of generators minus \(b_i\). It is the union of its indicated minor opens; if that number is nonpositive it is the whole base. The same minor description commutes with arbitrary parameter algebra change. Intersect the finitely many such opens. This describes the bound on the entire ambient family even if its finite zero algebra is nonflat, as in K.6.2. The preceding geometric fibre bounds imply the framed chart conditions, which themselves are opens proved by finite complexes. Nothing here divides a nilpotent family by a geometric defect divisor. ∎
+
+### M.5. The full compactified \(N\)-jet chart is a separated scheme
+
+**Theorem M.5.1.1.** In the regular compactification for fixed \(\mathcal T\), let \(\overline{\mathcal B}_{b,y}^{\mathcal T}\) be the open substack with all fundamental zero lengths at most \(b_i\) and all fundamental maps primitive at \(y\). For a sufficiently large positive jet level \(k\) it has a presentation
+\[
+ \overline{\mathcal B}_{b,y}^{\mathcal T}
+      =[\,\overline M_{b,y,k}^{\mathcal T}/N_k\,],
+       \qquad N_k=N(\kappa[u]/u^k),
+\tag{M.5.1}
+\]
+where \(\overline M_{b,y,k}^{\mathcal T}\) is a separated finite-type scheme. Its entire genuine open is exactly the framed scheme \(M_k\) of L.1. All parameter nilpotents and all stabilizers belong to this presentation. These opens cover the full compactification after passage to an algebraic closure; the construction and the open immersion descend over the field of definition.
+
+**Proof.** Choose \(V,\ell\subset W\) as in Theorem M.3.1.1. Use the finite degree bounds of Proposition M.4.1.1 to choose \(a,k\) for \(E_V\), and increase \(k\) if needed for the fixed-degree detecting line and for L.1's negative-root frame condition. Every geometric object in the stated bound then lies in the actual \(G\)-framed scheme of Theorem M.3.1.1. The fixed \(T\)-bundle has a chosen frame over the jet. Its entire character basis fixes every source line frame there, including the central characters and their inverses.
+
+Over that Noetherian \(G\)-framed scheme, the universal \(G\)-bundle and fixed \(\mathcal T\) define the finite highest-line section scheme of I.1–I.2 and J.4. Its finite generators and relations represent the complete datum, not just the fundamental maps. The geometric generic-nonzero open gives universal sheaf injection and finitely presented parameter-flat quotients by I.3; impose that open. The length bounds are the opens of Proposition M.4.1.1. Impose the finitely many closed jet equations
+\[
+ \kappa_{\lambda}|_{D_k}=v_\lambda
+\tag{M.5.2}
+\]
+for a finite homogeneous generator list of the full highest-line algebra, including the central inverse generators, in the specified \(G\)- and \(T\)-frames. Here \(v_\lambda\) is the standard highest vector. The polynomial relations recover (M.5.2) for every weight. The finite restriction maps are actual maps on jet modules, so these are closed scheme equations by I.2.
+
+This constructs \(\overline M_{b,y,k}^{\mathcal T}\) as an open of a closed subscheme in a finite-type affine scheme over the separated \(G\)-framed base. Thus it is a separated finite-type scheme. The chosen jet equations guarantee primitivity at \(y\). Conversely any primitive-at-\(y\) compactified datum has the full \(G/N\) open along the jet by J.3–J.4, giving its genuine \(N\)-reduction there with the chosen \(T\)-frame. The compatible \(G\)-frames are the torsor of \(N_k\)-frames of this reduction. It has sections locally on the parameter base; in fact on an affine base the ordered central root argument trivializes its unipotent jet torsor. Choosing such a section gives exactly the object of the constructed scheme and equations (M.5.2).
+
+Changing that frame gives the \(N_k\)-action on the scheme. The schematic stabilizer of all standard highest vectors is exactly \(N\), by J.3's actual torus frame construction of \(G/N\). The same is therefore true on every jet algebra. The constructions from an \(N_k\)-torsor with its equivariant map to \(\overline M\), and from a compactified datum to its compatible frame torsor, are inverse by flat torsor descent, including every isomorphism. This proves (M.5.1) and does not declare the action globally free. Its atlas is smooth of relative dimension \(k|\Phi^+|\).
+
+On the genuine locus there is an actual \(N^{\mathcal T}\)-torsor on the entire curve. The compatible jet frame is precisely its \(D_k\)-frame, and L.1 represents that whole groupoid by \(M_k\). Conversely every such framed genuine torsor lies in the constructed chart: its defect is zero and the uniform bounds included zero. Thus its open pullback is the entire \(M_k\), rather than a selected affine subopen.
+
+At a geometric point only finitely many fundamental zeros occur, so their lengths have finite bounds \(b_i\), and some point \(y\) of \(\mathbf P^1\) lies outside their supports over the algebraic closure. The corresponding opens cover. Each has the smooth scheme atlas above. Representability on scheme tests follows directly: pull back the primitive and length opens, then their compatible jet frame torsor, which is an affine \(N_k\)-torsor over that open test scheme by affine descent. Thus these atlases are representable, and their quotient presentations construct the required locally finite-type algebraic stack. Overlaps represent exactly the same torsor-and-map groupoid, so glue with its existing descent. A finite extension makes any needed chosen \(y\) rational, and the constructions preserve their field-of-definition maps and descent. This proves the stated full chart result. ∎
+
+![Full jet incidence reconstructs the vector bundle and actual G-reduction, then the complete compactified highest-line chart](assets/compactified-jet-incidence.png)
+
+Propositions M.1.1.1 and M.4.1.1, and Theorems M.2.1.1, M.3.1.1 and M.5.1.1 identify the section subbundles, their exact two-term relation, the schematic orbit reduction and the full compactified jet equations. Geometric defect provides uniform bounds; all scheme equations retain arbitrary parameter nilpotents. Editable SVG source.
+
+### M.6. The genuine open immersion is affine
+
+**Theorem M.6.1.1.** For the full regular compactification with fixed \(\mathcal T\), the genuine-reduction open immersion
+\[
+ j:\operatorname{Bun}_{N^{\mathcal T}}(X)
+       \hookrightarrow\overline{\operatorname{Bun}}_N^{\mathcal T}(X)
+\tag{M.6.1}
+\]
+is representable and affine. It retains the full datum on arbitrary parameter schemes.
+
+**Proof.** Representability as an open immersion is already explicit in the finite highest-line equations: all fundamental maps must be subbundles at every point of the curve. Their failure is the proper projection of the finitely many closed zero loci. Its complement is open on every parameter scheme, and J.3 identifies its entire datum with the genuine reduction, including its inverse central maps. This is an open subfunctor, not a reduced-point condition.
+
+Pull back \(j\) to an atlas \(\overline M_{b,y,k}^{\mathcal T}\) of Theorem M.5.1.1. Its source is the full affine scheme \(M_k\) of L.1; its target is separated. An open immersion from an affine scheme \(U\) into a separated scheme \(Z\) is affine. Indeed for any affine open \(V\subset Z\), the intersection \(U\cap V\) is the inverse image of the closed diagonal in the affine product \(U\times V\), and hence is affine. This is the affine-test definition of an affine morphism. Therefore the pulled-back open immersion is affine.
+
+For any scheme test \(S\to\overline{\operatorname{Bun}}_N^{\mathcal T}\), first restrict to the primitive-at-\(y\), bounded-length open cover just constructed. The compatible jet-frame torsor is a faithfully flat affine cover of this test open. After that cover the pullback of \(j\) is a base change of \(M_k\hookrightarrow\overline M\), and is affine. Corollary A3.2 of *Affine descent, Zariski Main and recognition of spaces* descends affineness of this existing open scheme morphism. Affineness is local on target opens, so it holds on all of \(S\). If the point choices were made over a field extension, the same fpqc descent applies before the final conclusion over the original field. This proves representable affineness on every test.
+
+Every bound and atlas was defined on the entire section and jet schemes. A nonflat zero algebra can cross fixed-defect strata while remaining in those bound opens. Its family and every nilpotent automorphism are therefore retained in the argument. The theorem proves the affine geometric input; the perverse direct-image and compactified boundary estimates still require their coefficient and stratification arguments. ∎
+
+![The closed diagonal of the separated compactified jet scheme makes its whole affine genuine open an affine morphism, which descends through the actual N-jet torsor](assets/separated-affine-genuine-open.png)
+
+Theorem M.6.1.1 proves affineness on every test scheme through the closed-diagonal intersection and affine descent. Exercise M.7.2 shows exactly why separatedness is required. The quotient presentation retains full stabilizer schemes. Editable SVG source.
+
+### M.7. Exercises
+
+**Exercise M.7.1 (medium).** For a degree-\(d\) line bundle, twist by \(\mathcal O(-d)\). Compute its entire level-\(k\) framed parameter scheme and a dual-number frame. Compare with the unframed torus component.
+
+**Solution.** The twisted bundle has degree zero, so \(e=0,r=1\). The two-term presentation has \(Q=0\) and \(P\) a line in \(J=A[u]/u^k\). Its jet evaluation is an isomorphism precisely when a local generator of \(P\) is a unit of \(J\), equivalently when its constant coefficient is a unit of \(A\). Normalize that coefficient to one by the unique parameter scalar. The entire scheme is
+\[
+ Z_{1,0,k}=\mathbf A^{k-1},\qquad
+ f(u)=1+c_1u+\cdots+c_{k-1}u^{k-1}.
+\tag{M.7.1}
+\]
+Its coordinates survive on every algebra. For \(A=\kappa[\epsilon]/\epsilon^2\) and \(k\geq2\), \(f(u)=1+\epsilon u\) is a nonconstant jet frame with inverse \(1-\epsilon u\). This is valid also in characteristic two. In general the inverse is the finite geometric series in \(f-1\), whose \(k\)-th power vanishes because it is divisible by \(u^k\). Forgetting the jet frame gives the degree-\(d\) component \(B\mathbf G_m\) of the actual torus-bundle stack: its full frame group is \((A[u]/u^k)^\times\), not merely its constant or reduced units. This example retains the entire central torus and explains the necessary nonreduced jet equations.
+
+**Exercise M.7.2 (advanced).** Explain why separatedness cannot be omitted from the affine-open argument. Glue two copies of \(\mathbf A^2_\kappa\) along their common punctured plane \(W=\mathbf A^2\setminus\{0\}\), by the identity. Test the open immersion of the first affine copy.
+
+**Solution.** The glued object is a scheme by ordinary open gluing. Pulling that open immersion back to the second affine copy gives \(W\). This is not affine. Indeed its two-chart cover \(D(x)\cup D(y)\) gives
+\[
+ \Gamma(W,\mathcal O)
+   =\kappa[x,y]_x\cap\kappa[x,y]_y
+   =\kappa[x,y]
+\tag{M.7.2}
+\]
+inside \(\kappa[x^{\pm1},y^{\pm1}]\). A Laurent polynomial in the first ring has no negative \(y\)-exponent, and one in the second has no negative \(x\)-exponent; their intersection therefore has neither. If \(W\) were affine, its canonical map to the spectrum of this section ring would be an isomorphism. That map is the usual inclusion into \(\mathbf A^2\), whose image omits the origin, a contradiction. Thus the open immersion from an affine scheme is not affine in this example. The glued scheme is not separated: otherwise its two affine opens would have affine intersection by the closed-diagonal argument just contradicted. In Theorem M.6.1.1 the explicit separated compactified jet scheme is what makes that argument valid.
+
+## Appendix N. Actual rational affine images and strict compactified boundary bounds
+
+Work geometrically over an algebraically closed field \(\kappa\), with \(\ell\ne\operatorname{char}\kappa\), and a finite coefficient field \(E/\mathbf Q_\ell\). Write \(O\) for its valuation ring, \(\pi\) for a uniformizer, and \(F=O/\pi\). In the arithmetic setting every functor and comparison retains actual Weil descent. Geometric stalk and support tests use geometric cohomology.
+
+The finite affine support theorem and its strict-local proof are Cohomological dimension and the Künneth formula, Theorem 6.2 and §§2–6. The exact integral truncation construction is Affine morphisms, Artin vanishing and perverse cohomology, Lemma 4.2. Its rational coefficient hypotheses are supplied by Lesson 5, Theorems N.4.3.1, O.2.1.1, O.2.2.2, P.2.4.1, P.3.2.1 and P.3.3.1, and Lemma Q.1.1.1, with the finite stratal perfect models of its §M.5. Those proofs construct the actual global models, nonproper image finiteness, reduction and rationalization, exceptional comparisons, smooth orientation and structural duality. Appendices K–M supply the full defect subfunctors and finite-jet quotient charts used below. The free [Whittaker patterns, §6.2](https://arxiv.org/abs/math/9907133v5) provides the geometric application; the coefficient and boundary arguments are proved here.
+
+### N.1. An actual upper integral model
+
+**Proposition N.1.1.1.** Let \(Y/\kappa\) be separated of finite type. Every \(K\in{}^pD^{\le0}(Y,E)\) has an integral constructible derived model \(L\in{}^pD^{\le0}(Y,O)\), and its actual derived reduction \(L_1=L\otimes_O^LF\) is upper perverse over \(F\). Integral self-duality is not an assumption.
+
+**Proof.** A global integral derived model \(L_0\) exists by Lesson5 Theorem N.4.3.1; it is a constructible complex, not an asserted global locally free lattice. All the required closed/open operations preserve integral constructibility: open and closed restriction and extension by zero are proved in M.6 and N.4.1.1, ordinary image in O.2.1.1, and supported exceptional restriction in O.2.2.2. Their rational comparisons are the actual coefficient maps. Smooth orientation and its coefficient comparisons are P.2.4.1. Thus every operation and rational comparison required in the finite gluing construction exists here.
+
+For clarity perform that construction. On a dense smooth open union \(a:V\hookrightarrow Y\) where the cohomology of \(L_0\) is lisse, cut \(a^*L_0\) in ordinary degree \(-s\) on each component of dimension \(s\). Call its upper truncation \(V_0\). With \(c:C\hookrightarrow Y\) the complementary closed subset, form
+\[
+ a_!V_0\longrightarrow L_0\longrightarrow L'_0,
+ \qquad
+ C_0={}^p\tau_C^{\le0}c^!L'_0,\qquad
+ c_*C_0\longrightarrow L'_0\longrightarrow B.
+\tag{N.1.1}
+\]
+The closed truncation is constructed by induction on dimension. The octahedron gives triangles \(L\to L_0\to B\) and \(a_!V_0\to L\to c_*C_0\). Hence \(a^*L=V_0\), \(c^*L=C_0\), whereas \(a^*B\) is above its shifted cut and \(c^!B\) is the positive closed truncation. The stalk support test makes \(L\) upper. The open/closed lower tests make \(B\) lower of perverse degree at least one.
+
+Here is the orthogonality which identifies a genuine truncation. For an upper \(A\) and a lower \(B'\) of degree at least one, apply \(\operatorname{Hom}(-,B')\) to \(a_!a^*A\to A\to c_*c^*A\). The outer morphism groups are respectively the open shifted ordinary group and the closed inductive group, both zero. Thus the middle group is zero. Repeating the construction on the smaller closed subset terminates. Finite constructibility of each operation allows its adapted stratification to be refined during this induction. The upper condition is exactly the ordinary stalk support condition, so the resulting upper part is independent of that refinement; its orthogonal lower part and its truncation are then determined as well. This is the proved integral gluing argument, with all its operation hypotheses now supplied.
+
+Flat rationalization commutes with \(a^*,a_!,c^*,c^!\), including the actual exceptional comparison O.2.2.2. It therefore carries the constructed triangle to an upper/lower rational truncation triangle. Its uniqueness gives \(L[1/\pi]={}^p\tau^{\le0}K=K\).
+
+Finally the derived coefficient triangle is
+\[
+ L\xrightarrow{\pi}L\longrightarrow L_1\longrightarrow L[1].
+\tag{N.1.2}
+\]
+The upper part contains \(L[1]\) and is extension closed, so \(L_1\) is upper when viewed as an integral complex. Its stalk support test is the same over \(F\); hence it is upper over that finite field too. The adjacent-degree Tor term in derived reduction is retained. This proves the assertion. ∎
+
+### N.2. The rational affine support bound and affine-open exactness
+
+**Theorem N.2.1.1.** For an affine finite-type morphism \(f:X\to Y\) of separated finite-type \(\kappa\)-schemes,
+\[
+ Rf_*({}^pD^{\le0}(X,E))\subset{}^pD^{\le0}(Y,E),
+ \qquad
+ Rf_!({}^pD^{\ge0}(X,E))\subset{}^pD^{\ge0}(Y,E).
+\tag{N.2.1}
+\]
+For an affine open immersion \(a\), both \(a_!\) and \(Ra_*\) are t-exact, and hence exact on the perverse hearts. These are actual coefficient functors and maps.
+
+**Proof.** First take finite-field coefficients \(F\). The finite relative Artin theorem gives, for an ordinary constructible sheaf \(H\),
+\[
+ \dim\operatorname{Supp} R^qf_*H
+       \le \dim\operatorname{Supp}H-q.
+\tag{N.2.2}
+\]
+This is Theorem6.2 of the stated earlier étale lesson, not a geometric-fibre formula. Its proof calculates a stalk on \(X\times_Y\operatorname{Spec}\mathcal O^{\mathrm{sh}}_{Y,\bar y}\). If \(\operatorname{trdeg}_\kappa\kappa(y)=b\) and \(\dim\operatorname{Supp}H\le d\), its affine finite models over the embedded separably closed field have support dimension at most \(d-b\). The affine dimension theorem and continuity make their cohomology zero for \(q>d-b\). This is exactly the asserted support drop. No nonproper direct-image stalk is replaced by cohomology of the geometric fibre.
+
+For an upper finite complex \(C\), its ordinary layer \(\mathcal H^bC[-b]\) has support dimension at most \(-b\). Equation (N.2.2) bounds the degree-\(n=q+b\) cohomology of the image layer by \(-b-q=-n\). The upper support condition is extension closed: the middle cohomology support in a triangle lies in the union of the two outer supports. The finite ordinary truncation tower therefore makes \(Rf_*C\) upper.
+
+Now take a rational upper \(K\) and the upper model \(L\) of Proposition N.1.1.1. Actual \(M=Rf_*L\) is integral constructible by Lesson5 Theorem O.2.1.1, and its actual first reduction is \(Rf_*L_1\). The preceding finite argument makes that reduction upper. At a geometric point over a point of closure dimension \(b\), the long exact sequence of the coefficient triangle gives
+\[
+ H^n(M_{\bar y})/\pi
+       \hookrightarrow H^n((M_1)_{\bar y})=0
+       \qquad(n>-b).
+\tag{N.2.3}
+\]
+The integral stalk complex here has finite \(O\)-cohomology by the actual stratal perfect models of Lesson5 M.5. Thus Nakayama forces \(H^n(M_{\bar y})=0\) in those degrees. Explicitly if finite generators express \(M'=\pi M'\), their relation matrix \(I-\pi A\) has unit determinant, and its adjugate kills every generator. This checks every support point, not only closed points. It follows that \(M\) is upper. Its rationalization is the actual \(Rf_*K\) by O.2.1.1, proving the first inclusion in (N.2.1).
+
+Rational field duality reverses the perverse inequalities; its actual exchange is \(D_YRf_!=Rf_*D_X\), proved in Lesson5 P.3.3.1. Applying the first inclusion to \(D_XK\) proves the second. All these comparisons include their units and counits, so no objectwise replacement functor was used.
+
+For an open immersion, restriction \(a^*\) is t-exact by the same support/costalk tests. Its left adjoint \(a_!\) preserves the upper part, and its right adjoint \(Ra_*\) preserves the lower part: for example orthogonality computes \(\operatorname{Hom}(A,Ra_*B)=\operatorname{Hom}(a^*A,B)=0\) for upper \(A\) and positive lower \(B\). Affineness supplies the other two inequalities in (N.2.1). Thus both functors are t-exact. The perverse long exact sequence of the image of a short exact sequence has only degree zero, proving exactness on hearts. No absence of boundary stalks follows from exactness alone. ∎
+
+### N.3. Exact extension on the actual compactified jet quotients
+
+**Theorem N.3.1.1.** The representable affine genuine open \(j\) of M.6 has t-exact actual rational \(j_!,Rj_*\) on every bounded compactified chart and compatibly on their overlaps. The perverse and duality normalizations are defined on their whole quotient presentations, including all parameter nilpotents and stabilizers. In particular both extensions of the genuine rank-one character sheaf \(\Psi=e^*\mathcal L_\psi[d_0](d_0/2)\) of L.4 are perverse.
+
+**Proof.** Write a bounded chart as \(\mathcal Y=[Z/N_k]\), with \(Z=\overline M_{b,y,k}\) from M.5, and set \(r=k|\Phi^+|\). The full genuine pullback \(U=M_k\) is the affine open in \(Z\) of M.6. The smooth atlas \(q:Z\to\mathcal Y\) has relative dimension \(r\), with its actual nerve \(Z\times N_k^p\). Use the normalization
+\[
+ q^\dagger=q^*[r](r/2).
+\tag{N.3.1}
+\]
+The half Tate line means the same chosen arithmetic square root as in §1 and Appendix L; geometrically it is an invertible scalar line. Neither it nor a normalization changes the unipotent stabilizer schemes.
+
+Here are the required descent facts at this exact scope. A sheaf object on the quotient is the enhanced Cartesian system on that atlas nerve, with its action/unit/cocycle and their higher coherences. Smooth normalized pullback is t-exact on schemes. For its upper inequality, a smooth relative dimension \(r'\) pullback raises every support dimension by \(r'\), while shift \([r']\) lowers its degree by \(r'\), giving exactly the same support bound. Its lower inequality follows by actual smooth orientation and duality, Lesson5 P.2.4.1 and P.3.3.1. The two projections of the frame relation are smooth of the same relative dimension; hence the descent isomorphism is preserved by perverse truncation. The truncated objects and their maps satisfy the cocycle by uniqueness of the truncation triangle. Orthogonality and the triangles can be checked on the conservative atlas. This constructs the perverse structure on the Cartesian category.
+
+Intrinsic duality is constructed by the same actual smooth comparison used in L.4, now on the finite-type scheme \(Z\) and its nerve rather than only a genuine affine tower. The equality \(q^\dagger D_\mathcal Y=D_Zq^\dagger\) is the smooth orientation formula with its evaluation and trace maps. The face and degeneracy coherences are the transitivity and adjunction coherences of P.2.4.1/P.3.3.1. Applying them to the actual nerve gives descent for duality and its bidual evaluation. Every scheme level has actual field duality by P.3.2.1. Thus the duality comparison, not just a dual object, descends.
+
+Extension by zero commutes with restriction on every atlas square. Actual ordinary image for the open commutes with the smooth squares of the nerve by Lesson5 Lemma Q.1.1.1; its smooth base-change comparison preserves the restriction unit. Consequently the scheme functors \(a_!,Ra_*\), for \(a:U\hookrightarrow Z\), give Cartesian enhanced systems on the target nerve. Their adjunctions descend: maps into and out of them are the levelwise adjunction maps, compatible with all nerve maps. These are therefore the actual quotient \(j_!,Rj_*\), and
+\[
+ q^\dagger j_!K=a_!q_U^\dagger K,\qquad
+ q^\dagger Rj_*K=Ra_*q_U^\dagger K.
+\tag{N.3.2}
+\]
+Both are perverse by Theorem N.2.1.1; atlas conservativity proves their t-exactness on the quotient.
+
+For different levels, point choices or degree bounds, the common double-frame atlas is an actual scheme: over either chart the second compatible frame functor is its unipotent jet torsor, represented by an affine scheme by affine descent. Its two projections are smooth. The same smooth comparisons and adjunction maps identify the two constructions there; their unit/cocycle gives their agreement on the stack overlap. The bounded opens cover M.5's whole regular compactification. Thus the statements are compatible on all these opens. All constructions used the original group actions on entire schemes; a nilpotent family crossing degree strata remains in the ambient chart. Finally L.4 proves that the displayed genuine \(\Psi\) is perverse with its actual dimension and character; applying the established t-exact functors proves the last assertion. ∎
+
+![The actual integral model, finite affine support drop and finite-stalk Nakayama prove rational affine exactness and its smooth quotient descent](assets/affine-perverse-coefficient.png)
+
+Proposition N.1.1.1 and Theorems N.2.1.1–N.3.1.1 keep the derived reduction, strict-local image stalks, actual finite integral cohomology and normalized frame-atlas comparisons. Editable SVG source.
+
+### N.4. Strict ordinary and exceptional boundary inequalities
+
+**Theorem N.4.1.1.** Let \(j:\mathcal U\hookrightarrow\mathcal Y\) be the genuine open of a bounded chart, let \(L\) be perverse on \(\mathcal U\), and set
+\[
+ P=j_{!*}L=\operatorname{im}_{\operatorname{Perv}(\mathcal Y)}
+                    (j_!L\longrightarrow Rj_*L).
+\tag{N.4.1}
+\]
+For the closed complement \(i:\mathcal C\hookrightarrow\mathcal Y\),
+\[
+ i^*P\in{}^pD^{\le-1}(\mathcal C,E),
+       \qquad i^!P\in{}^pD^{\ge1}(\mathcal C,E).
+\tag{N.4.2}
+\]
+In particular on a smooth boundary stratum \(s:\mathcal S\hookrightarrow\mathcal Y\) of an adapted stratification, of stack dimension \(d_\mathcal S\), the actual ordinary cohomology bounds are
+\[
+ \mathcal H^n(s^*P)=0\quad(n\ge-d_\mathcal S),\qquad
+ \mathcal H^n(s^!P)=0\quad(n\le-d_\mathcal S).
+\tag{N.4.3}
+\]
+These are strict bounds. The theorem does not assert that either restriction is zero in every degree.
+
+**Proof.** Exactness in Theorem N.3.1.1 makes (N.4.1) an image between perverse objects. It restricts to \(L\). It has no nonzero quotient supported in \(\mathcal C\): such a quotient would receive a nonzero map from \(j_!L\), whereas \(\operatorname{Hom}(j_!L,i_*A)=\operatorname{Hom}(L,j^*i_*A)=0\). It has no nonzero subobject supported there, since any such map would compose into \(Rj_*L\), and \(\operatorname{Hom}(i_*A,Rj_*L)=0\) by the other open adjunction.
+
+Closed restriction \(i^*\) preserves the upper perverse part, and \(i^!\) preserves the lower part, by the closed/open gluing tests. Hence \(i^*P\) is upper and \(i^!P\) lower. If \({}^pH^0i^*P\ne0\), the canonical projection to this heart object and the adjunction give a nonzero map \(P\to i_*{}^pH^0i^*P\). Its image is a nonzero supported quotient of \(P\), a contradiction. Dually a nonzero \({}^pH^0i^!P\) maps into \(P\) by its inclusion and the adjunction, producing a forbidden supported subobject. Thus their degree-zero perverse cohomologies vanish, proving (N.4.2).
+
+One can check the numerical bounds without guessing a stack shift. On an atlas of relative dimension \(r\), the preimage \(S\) of \(\mathcal S\) has dimension \(d_\mathcal S+r\), and its two restrictions of \(q^\dagger P\) are the smooth-normalized pullbacks of the displayed restrictions. On an adapted smooth scheme stratum the upper strict bound permits only ordinary degrees \(m\le-(d_\mathcal S+r)-1\); the lower bound permits only \(m\ge1-(d_\mathcal S+r)\). The ordinary cohomology degree of the unnormalized stratum object is \(n=m+r\), by (N.3.1). These are exactly \(n\le-d_\mathcal S-1\) and \(n\ge1-d_\mathcal S\). Smooth conservative pullback detects the vanishings. This proves (N.4.3), including negative-dimensional strata.
+
+The construction and adjunction maps are compatible with duality. In particular duality interchanges these ordinary and exceptional inequalities and sends \(j_{!*}L\) to \(j_{!*}D_\mathcal UL\). It follows either by taking the dual of the image in the field perverse heart or by its no-supported-subobject/quotient characterization. The actual evaluation maps from Theorem N.3.1.1 retain their Weil descent. ∎
+
+### N.5. The actual dimensions of complete defect strata
+
+**Proposition N.5.1.1.** For the actual fixed \(T\)-bundle on \(\mathbf P^1\), put \(d_\alpha=\deg\mathcal L_\alpha\) and
+\[
+ d_0=-\sum_{\alpha>0}(d_\alpha+1).
+\]
+Let the exact fundamental defect degrees be \(m_i\ge0\), and put \(m=\sum_i m_i\). The full fixed-degree defect stratum, with moving divisors, is smooth of dimension \(d_0-m\). Its fibre at a specified entire tuple of divisors is smooth of dimension \(d_0-2m\). Central degrees are unchanged. These are the actual locally closed subfunctors of K.5; arbitrary ambient families are not forced into them.
+
+**Proof.** Theorem K.5.1.1 proves the full divisor-and-saturated-datum description on every test algebra. The divisor base is \(\prod_i\mathbf P^{m_i}\), with its actual universal Cartier divisors, so is smooth of dimension \(m\). Over it the stratum is exactly the genuine torsor stack for
+\(\mathcal T'=\mathcal T(\sum_i\alpha_i^\vee D_i)\).
+The degree of its root line is
+\[
+ d'_\alpha=d_\alpha+\sum_i
+                         \langle\alpha,\alpha_i^\vee\rangle m_i.
+\tag{N.5.1}
+\]
+For every simple coroot, \(\sum_{\alpha>0}\langle\alpha,\alpha_i^\vee\rangle=2\). Indeed the simple reflection permutes the positive roots other than \(\alpha_i\), so it sends their sum \(2\rho\) to \(2\rho-2\alpha_i\); comparing with its reflection formula gives that equality.
+
+Appendix L.1–L.2 supplies the relative smooth torsor atlas on this entire divisor base. To see the dimension and smoothness directly, cover the base by actual character line frames and choose one uniform sufficiently large jet level. The root frame lines have constant degrees \(d'_\alpha-k<0\). Their two-chart \(H^1\) modules are finite projective of ranks \(k-d'_\alpha-1\), with arbitrary-base comparison. Central height lifting gives successive torsors under their vector bundles. Thus the framed scheme is smooth over the divisor base, of relative dimension \(\sum_{\alpha>0}(k-d'_\alpha-1)\), and the smooth jet frame group has dimension \(k|\Phi^+|\). Subtracting yields the relative stack dimension
+\[
+ -\sum_{\alpha>0}(d'_\alpha+1)=d_0-2m.
+\tag{N.5.2}
+\]
+The frame torsor arguments and their overlaps are exactly those of L.2; they require no free action. Adding the smooth divisor-base dimension \(m\) gives \(d_0-m\), and fixing its full point gives (N.5.2). Divisors which meet the current chosen jet point use a different point chart, available over a finite field extension and descended as in M.5. Smoothness and the dimension agree on the common frame atlases.
+
+Every central character pairs to zero with the coroots, so all its divisor contributions vanish. This is an equality in the original character lattice. K.5's higher divisibility equations and exact finite flat zero ideals define these particular subfunctors with their nilpotents. Ambient nonflat zero families or failures of a higher divisibility equation remain outside this stratum and inside M.5's compactification. Smooth degree strata partition geometric points; before applying (N.4.3) on a whole such stratum, one must establish that it is adapted to the complex in question. The full Whittaker equivariance argument supplying that assertion is still a separate step. ∎
+
+![Strict intermediate-extension boundary bounds and exact moving versus fixed divisor dimensions include the full SL2 additive stabilizers](assets/defect-boundary-stack-dimensions.png)
+
+Theorem N.4.1.1 proves the strict inequalities on adapted strata. Proposition N.5.1.1 and Exercise N.6.2 compute complete defect dimensions with the divisor parameter and actual stabilizers. The moving degree-one SL2 stratum has dimension zero; its fixed divisor fibre has dimension minus one. Editable SVG source.
+
+### N.6. Exercises
+
+**Exercise N.6.1 (medium).** Show that affine-open exactness does not itself prove cleanness. Take \(a:\mathbf G_m\hookrightarrow\mathbf A^1\), with geometric rational coefficients. Compute the boundary stalk of \(Ra_*E[1]\), compare it with \(a_!E[1]\), and repeat with a nontrivial finite Kummer rank-one local system.
+
+**Solution.** Write \(R\) for the strict henselian local DVR of \(\mathbf A^1\) at zero and \(K=\operatorname{Frac}R\). It is algebraic over \(\kappa(t)\), so the field-extension bound in the earlier étale lesson, Lemma2.3, gives \(\operatorname{cd}_\ell(K)\le1\). Every unit of \(R\) has an \(\ell^n\)-th root by Hensel's lemma: its residue has a root in \(\kappa\), and the derivative is a unit. Thus valuation identifies \(K^\times/(K^\times)^{\ell^n}\) with \(\mathbf Z/\ell^n\). The Kummer sequence gives \(H^1(K,\mathbf Z/\ell^n)=\mathbf Z/\ell^n(-1)\); degree zero is the constant module, and higher degrees vanish by that field bound. Finite coefficient comparison, followed by the surjective inverse systems in these two degrees and actual rationalization of Lesson5 O.2.1.1, gives \(E\) in degree zero and \(E(-1)\) in degree one. This is the strict-local higher-image stalk, not a fibre formula. After shift \([1]\), the boundary of \(Ra_*E[1]\) is
+\[
+ H^{-1}=E,\qquad H^0=E(-1).
+\tag{N.6.1}
+\]
+The boundary stalk of \(a_!E[1]\) is zero by extension by zero. Thus the canonical map cannot be an isomorphism, although both objects are perverse by Theorem N.2.1.1. Their intermediate extension is \(E_{\mathbf A^1}[1]\), whose boundary stalk is \(E\) in degree \(-1\) and costalk is \(E(-1)\) in degree \(1\). These satisfy precisely the strict inequalities (N.4.3) for the dimension-zero stratum.
+
+For a nontrivial Kummer character choose an integer \(h>1\) prime to both \(\operatorname{char}\kappa\) and \(\ell\), the cover \(p:z\mapsto z^h\), and a coefficient field containing the chosen nontrivial character. On the strict puncture the cover is the field extension obtained by the Eisenstein equation \(z^h-t=0\). Its normalization is a strict henselian DVR with uniformizer \(z\) and the same residue field, so the preceding calculation again gives just \(E,E(-1)\). Every deck transformation acts trivially on these groups: it fixes the constant module, and replaces \(z\) by \(\zeta z\), which has the same Kummer valuation class because the unit \(\zeta\) has every required \(\ell^n\)-th root. Exact finite pushforward identifies \(R\Gamma(K,p_*E)\) with the cohomology of that extension. The nontrivial character idempotent \(h^{-1}\sum_g\chi(g)^{-1}g\) annihilates both trivial deck modules. Its summand is precisely the chosen rank-one local system \(L\), so its actual boundary complex is zero. This proves the local-system calculation without assuming a general analytic comparison. The cone of \(a_!L[1]\to Ra_*L[1]\) is the closed pushforward of that zero boundary restriction. Hence it is clean. In the constant case the cone is nonzero. The contrast proves exactly the need for a character boundary argument beyond affineness.
+
+**Exercise N.6.2 (advanced).** Let \(G=SL_2\), with its full torus line \(\mathcal L=\mathcal O(-1)\). Compute all complete degree-\(m\) defect strata, including their parameter line, stabilizers and dimensions. Compare a moving degree-one defect with a fixed point defect.
+
+**Solution.** The positive root line is \(\mathcal L^2=\mathcal O(-2)\). With no defect, \(H^1(\mathcal O(-2))=\kappa\) and \(H^0(\mathcal O(-2))=0\), so the genuine stack is \(\mathbf A^1\), of dimension \(d_0=1\). For a degree-\(m\) defect divisor the torus line is \(\mathcal O(-1)(D)\). The full divisor base is \(\mathbf P^m\). Its universal divisor line is
+\[
+ \mathcal O(D)=\mathcal O_{\mathbf P^1}(m)
+                      \boxtimes\mathcal O_{\mathbf P^m}(1),
+\tag{N.6.2}
+\]
+because the tautological homogeneous polynomial is a section of exactly that line. The new positive root line is therefore
+\(\mathcal O_{\mathbf P^1}(2m-2)\boxtimes\mathcal O_{\mathbf P^m}(2)\).
+For \(m\ge1\) its \(H^1\) is zero, and its \(H^0\) vector bundle on the parameter base is
+\[
+ V_m=H^0(\mathbf P^1,\mathcal O(2m-2))
+                         \otimes\mathcal O_{\mathbf P^m}(2),
+                  \qquad\operatorname{rk}V_m=2m-1.
+\tag{N.6.3}
+\]
+The root group is additive. Thus the full moving defect stratum is \(B_{\mathbf P^m}V_m\), with its entire vector-group stabilizers, of dimension \(m-(2m-1)=1-m\). At a specified divisor, choosing a basis of its parameter line identifies its fibre with \(B\mathbf G_a^{2m-1}\), of dimension \(1-2m\). These formulas hold on nilpotent parameter algebras because the universal divisor sequence and its two-chart cohomology are universally exact. For \(m=1\) the moving stack has dimension zero, whereas the fixed-point fibre is \(B\mathbf G_a\), of dimension minus one. Omitting the divisor parameter or treating that stabilizer as a point would give the wrong boundary dimension. The original torus line and its character are retained throughout.
+
+## Appendix O. Meromorphic unipotent actions and boundary characters
+
+Throughout this argument \(X=\mathbf P^1_\kappa\), initially over an algebraically closed field. Keep the original split group \(G\), its actual torus \(T\), every central character map and the entire compactified datum of Appendices J–M. Put \(N=U\), write \(h_\alpha\) for the positive root height, and fix \(y\) outside the defects and outside the zeros of the nonzero maps \(\omega_i:\mathcal L_{\alpha_i}\to\Omega_X\). A coordinate \(u\) vanishes at \(y\). All moduli assertions below concern arbitrary parameter algebras. For character sheaves assume \(\operatorname{char}\kappa=p>0\), \(\ell\ne p\), and finite \(E/\mathbf Q_\ell\) containing the values of the specified nontrivial additive character \(\psi\). Half-Tate normalizations are those of Appendix L. In an arithmetic form keep the actual Weil descent; geometric semisimplicity will not assert semisimplicity of arbitrary Frobenius operators.
+
+The algebraic completion inputs are proved in Completion, Theorems 3.1–3.2. Affine additive descent and the root-height universal lifting are proved in Appendix L; the full framed actual G-schemes and detecting-line reconstruction are in Appendix M. The coefficient operations, smooth comparison and localization are proved in Lesson 5, Appendices P–Q, and compactified perverse descent is Appendix N. The free [Whittaker patterns, §6.2](https://arxiv.org/abs/math/9907133v5) supplies the geometric context; the all-base gluing, group action and boundary proofs below supply the assertions used here.
+
+### O.1. Anisotropic root frames and finite groups
+
+**Proposition O.1.1.1.** On a bounded compactified chart there are integers \(m,k\) with the following properties. Define
+\[
+ H_m(A)=\delta_mN(A[[u]]),\quad
+ K_{m,k}(A)=\delta_m\ker\bigl(N(A[[u]])\to N(A[u]/u^k)\bigr),
+ \quad a_\alpha=k-mh_\alpha,
+\tag{O.1.1}
+\]
+where \(\delta_m\) multiplies the root coordinate for \(\alpha\) by \(u^{-mh_\alpha}\). Then \(K_{m,k}\) is normal in \(H_m\), lies in \(N(A[[u]])\), and
+\[
+ H=H_m/K_{m,k}\simeq N(\kappa[u]/u^k)
+\tag{O.1.2}
+\]
+is a smooth split unipotent group of dimension \(kn\), where \(n=|\Phi^+|\). Partial \(K_{m,k}\)-frames give a separated finite-type compactified scheme \(\widehat{\overline M}\). Its genuine open \(\widehat M\) is smooth affine of dimension
+\[
+ \dim\widehat M=\sum_{\alpha>0}(a_\alpha-d_\alpha-1).
+\tag{O.1.3}
+\]
+The regular frame group \(B=N(\kappa[[u]])/K_{m,k}\) is a closed smooth subgroup of \(H\), of dimension \(\sum_\alpha a_\alpha\), and the full compactified chart is \([\widehat{\overline M}/B]\).
+
+**Proof.** The root-coordinate multiplication and inverse polynomials are homogeneous for the root lattice. A nonlinear monomial contributing to root \(\gamma\) has roots summing to \(\gamma\), hence heights summing to \(h_\gamma\). This proves that \(\delta_m\) is an automorphism over \(\kappa((u))\), directly from the defining polynomials, in every characteristic. It uses no fractional cocharacter of \(T\). Transporting the ordinary jet kernel proves normality and (O.1.2). Choose \(m\) large enough that \(d'_\alpha+1\ge-mh_\alpha\) for every root degree occurring in the bounded complete defects. Choose \(k\) still larger, so
+\[
+ s=\min_\alpha a_\alpha\ge1,\qquad
+ 2s\ge\max_\alpha a_\alpha,\qquad
+ a_\alpha>d'_\alpha
+\tag{O.1.4}
+\]
+and \(s\) exceeds the framed-bundle bounds of M.3–M.5. We may also require any finite jet depth needed in the next proof. These are finitely many inequalities; increasing \(k\) satisfies them.
+
+Ordered coordinates identify \(K_{m,k}\) with the root coefficients divisible by \(u^{a_\alpha}\). Inside \(H\), \(B\) is given by vanishing of coefficients of degrees below \(mh_\alpha\) after applying \(\delta_m^{-1}\); this is a closed subgroup with precisely \(a_\alpha\) remaining coefficients per root. Let \(J_s=N(u^s\kappa[[u]])\). In \(J_s/K_{m,k}\) every nonlinear coordinate monomial vanishes, since its order is at least \(2s\ge a_\gamma\). Thus this quotient is the actual vector group of root coefficients of degrees \(s,\ldots,a_\alpha-1\), of rank \(\sum_\alpha(a_\alpha-s)\).
+
+By M.5 the full level-\(s\) chart \(\overline M_s\) is a separated finite-type scheme. Above its universal reduction near \(y\), partial \(K_{m,k}\)-frames lifting its specified level-\(s\) frame form a torsor for \(J_s/K_{m,k}\). Such lifts exist fppf locally: a split unipotent torsor on an affine formal neighborhood is trivial by the central root-height induction and the vanishing of quasi-coherent \(H^1\) on affines proved in L.1; finite root coordinates lift through successive truncations. Affine descent represents this vector-group torsor by an affine morphism over \(\overline M_s\). It is separated and finite type. A partial frame includes the full level-\(s\) \(G\)-frame, so M.3 kills all automorphisms, not only their geometric points. Forgetting the partial frame is a full \(B\)-torsor, giving the asserted quotient, with every stabilizer retained.
+
+For the genuine open repeat L.1 with root lines \(\mathcal L_\alpha(-a_\alpha y)\). Multiplication extends across \(y\): a monomial with \(r\) factors has excess order
+\[
+ \sum_{j=1}^r a_{\alpha_j}-a_\gamma=(r-1)k\ge0.
+\tag{O.1.5}
+\]
+On the small flat site its torsors are exactly the \(N\)-torsors with partial \(K_{m,k}\)-frame. The inclusion is an inclusion on flat tests; no inclusion on arbitrary tests supported at \(y\) is being claimed. At each central height the two-chart calculation is \(H^0(\mathcal L_\alpha(-a_\alpha y))=0\), with \(H^1\) free of rank \(a_\alpha-d_\alpha-1\). The universal lifting and affine vector-torsor induction in L.1 applies unchanged, including arbitrary base change. It supplies the affine tower, its universal torsor, and zero automorphisms. This proves (O.1.3). ∎
+
+### O.2. Algebraic gluing and the actual meromorphic action
+
+**Theorem O.2.1.1.** There is a natural left action of the finite group \(H\) on the whole scheme \(\widehat{\overline M}\). It preserves the genuine open and the entire complete defect subfunctors. In formal frames its convention is
+\[
+ \phi\longmapsto n\phi,\qquad g\longmapsto ng,
+\tag{O.2.1}
+\]
+where \(\phi\) maps the framed bundle to the standard bundle and \(g\) is its transition from the outside trivialization to that frame. The action keeps every central map and every higher divisibility equation.
+
+**Proof.** We first prove the bounded lattice gluing used here. Let \(A_0\) be Noetherian, \(R=A_0[u]\), \(\widehat R=A_0[[u]]\), and let \(E\) be a finite projective \(R\)-module. Given a formal frame \(\phi\) and a meromorphic matrix \(v\) with determinant one, choose \(b\) bounding the poles of \(v\) and \(v^{-1}\). The desired new lattice is
+\[
+ \Lambda=\phi^{-1}v^{-1}\widehat R^r,\qquad
+ u^b\widehat E\subset\Lambda\subset u^{-b}\widehat E.
+\tag{O.2.2}
+\]
+The quotient \(Q=u^{-b}E/u^bE\) is finite over \(A_0\) and has the identical formal quotient. Let \(P=\Lambda/u^b\widehat E\subset Q\), and define \(E'\) as its preimage in \(u^{-b}E\). Noetherianity makes \(E'\) finitely presented. The proved completion exactness and flatness in AG-CA, Completion, Theorems 3.1–3.2, give
+\[
+ E'\otimes_R\widehat R=\Lambda,\qquad E'[1/u]=E[1/u].
+\tag{O.2.3}
+\]
+The map \(R\to\widehat R\times R[1/u]\) is faithfully flat. Flatness is the completion theorem and localization. A prime containing \(u\) is covered by completion: completion of its finite quotient \(R/\mathfrak p\), on which \(u=0\), is that quotient itself. A prime not containing \(u\) is covered by localization. These nonzero residue fibres prove faithfulness. Both pullbacks of \(E'\) are finite locally free; flatness descends by the faithful-flat Tor test. For completeness, a finitely presented flat module over the local ring \(R_{\mathfrak p}\) is free: lift a residue basis to a surjection from a finite free module; its finite kernel has zero residue by flatness, hence is zero by Nakayama. Thus \(E'\) is a vector bundle. The preimage construction also proves uniqueness of the algebraic bundle and of maps with these two specified restrictions.
+
+We need universal base change, not merely Noetherian existence. Near a prime containing \(u\), choose bases of \(E'\) and \(u^{-b}E\). The determinant of their inclusion has, in completion, the form \(u^{br}\) times a unit, by (O.2.2) and \(\det v=1\). The equality of the quotients modulo \(u^{br}\) implies algebraic divisibility by \(u^{br}\). Its remaining factor is a unit near that prime, since its reduction modulo \(u\) is a unit there. Thus, after shrinking, the determinant is \(u^{br}\) times a unit. For any \(A_0\)-module \(M\), multiplication by \(u\) is injective on \(M[u]\) and on its localizations. The adjugate identity therefore makes the tensor of the inclusion injective. Away from \(u=0\) it is already an isomorphism. Source and target are \(A_0\)-flat, so their cokernel \(C\) is \(A_0\)-flat by the Tor exact sequence. It is finite over \(A_0\), since \(u^{2b}C=0\). Consequently
+\[
+ 0\longrightarrow E'\longrightarrow u^{-b}E\longrightarrow C\longrightarrow0
+\tag{O.2.4}
+\]
+remains exact after every \(A_0\to A\). The same is true of its finite-jet preimage description. This constructs the lattice over arbitrary \(A\) and proves the required base-change comparison without assuming \(A[u]\to A[[u]]\) flat for every \(A\).
+
+Apply this to \(v=\rho(n)\), for the faithful representation in M.3. Its determinant is one: the character \(\det\rho|_N\) is trivial on each root \(\mathbf G_a\), since an invertible polynomial over the ground field is constant, and these root groups generate \(N\). Choose the pole bound also for the finite detecting module \(W\), its line, and the finite highest-line generators of J. Polynomial root representatives of elements of \(H\) have uniformly bounded negative orders, independently of their positive jet coefficients. Indeed every matrix entry is a finite sum of root monomials of bounded total height, and each negative order is bounded by \(m\) times that height. The inverse has the same property. Increase \(s\) in (O.1.4) beyond twice these pole bounds. The preimage lattice then uses only finite jets already present in the partial frame.
+
+Patch the detecting line and its tensor maps together with \(E_V\). Maps patch algebraically: inside \(\widehat R[1/u]\) one has \(\widehat R\cap R[1/u]=R\), as comparison of Laurent coefficients shows. The same intersection holds for finite projective modules by writing them as direct summands of finite free modules. An outside map compatible with a regular formal map therefore extends uniquely. Applying this to the finite tensor maps makes the patched \(W\) the bundle associated to the patched \(GL(V)\)-frame torsor; the detecting line is its patched subbundle. On the outside and on completion they satisfy the full schematic \(GL(V)/G\) orbit condition. The faithfully flat cover just proved detects all equations and the nonvanishing conditions, so the algebraic patched data satisfy that condition too. M.3 therefore reconstructs the actual \(G\)-torsor, not a torsor for a reduced or adjoint substitute. Relations hold on that cover and hence hold algebraically. The standard highest vectors are fixed by \(N\); hence their source maps are unchanged in the new formal frame, and are primitive at \(y\). On the outside nothing changed. Their full zero ideals, quotient flatness where imposed, and higher divisibility equations consequently remain the same. Central character maps are unchanged because \(N\) acts trivially in every central character. These are schematic identities.
+
+All these data are finite: a finite-type framed bundle, finitely many polynomial jet coefficients, and finite detecting maps. They descend to a finitely generated, hence Noetherian, parameter algebra. A compatible full formal \(N\)-frame exists over that model by the affine unipotent-torsor argument of Proposition O.1.1.1; a prescribed finite frame can be corrected by lifting its root coefficients. There is no assertion that arbitrary infinite coefficients descend. Only the finite lattice quotient is used, and (O.2.4) compares every subsequent base change.
+
+Finally, replacing the formal lift \(\phi\) by \(t\phi\), \(t\in K_{m,k}\), changes the new frame by \(ntn^{-1}\in K_{m,k}\subset N(A[[u]])\). This gives an isomorphic new bundle and the identical partial frame. Replacing \(n\) by the same coset has the same effect. Thus the construction is independent of its choices. The products of formal frames give \(n_2(n_1\phi)=(n_2n_1)\phi\); uniqueness of the algebraic patch gives the action law and its identity, over every base. Naturality and representability make it an actual scheme action. ∎
+
+### O.3. Whole homogeneous fibres and their full isotropy
+
+**Theorem O.3.1.1.** Fix a complete geometric defect divisor \(D=(D_i)\) away from \(y\), and put \(\mathcal T'=\mathcal T(\sum_i\alpha_i^\vee D_i)\). Increase \(m\) as necessary for the bounded degrees \(d'_\alpha\). The entire partially framed fibre over \(D\), including arbitrary parameter rings over that fixed divisor, is
+\[
+ \widehat M_D=H/O_D,\qquad
+ O_D=H_m\cap \Gamma(X-y,N^{\mathcal T'}).
+\tag{O.3.1}
+\]
+The map \(H\to\widehat M_D\) is an \(O_D\)-torsor. Its full stabilizer \(O_D\) is smooth connected split unipotent of dimension
+\[
+ o_D=\sum_{\alpha>0}(d'_\alpha+mh_\alpha+1).
+\tag{O.3.2}
+\]
+It embeds as a closed subgroup of \(H\). No infinitesimal stabilizer is discarded.
+
+**Proof.** The full saturation and division of K.5 identifies this fibre with genuine \(N^{\mathcal T'}\)-torsors carrying the transported partial frame. Both standard affine charts have trivial such torsors, by central root-height induction and affine quasi-coherent \(H^1=0\). A specified finite frame at \(y\) can be matched by lifting finite root coefficients on its affine chart. Their transition is therefore a Laurent element of \(N\), with outside gauges on the right and regular frame-preserving gauges on the left.
+
+Choose degree-compatible line bases for \(\mathcal T'\). In these bases outside root sections are \(u^{d'_\alpha}A[u^{-1}]\). A different inherited formal \(T'\)-frame multiplies each root coordinate by a compatible formal unit. Such changes preserve every pole and \(a_\alpha\) threshold, and conjugate all descriptions below; the residue character uses the correspondingly transformed differential. Degree bases are therefore coordinates, not a replacement of the given \(T'\)-frame.
+
+Normalize the transition by increasing height. At a central height, its Laurent coefficients outside the interval
+\[
+ d'_\alpha+1,\ldots,a_\alpha-1
+\tag{O.3.3}
+\]
+are removed by the outside and the \(K_{m,k}\) gauges. These two coefficient submodules have zero intersection because \(a_\alpha>d'_\alpha\). Root commutator corrections have larger height and are handled at the next step. The algorithm uses coefficient subtraction and the root polynomials, with no division; it works over every \(A\), including rings with nilpotents. Every normalized root coordinate has order at least \(-mh_\alpha\), so the representative lies in \(H_m\). This proves transitivity of the finite \(H\)-action on the full functor.
+
+At the trivial torsor a stabilizing transition is an outside section, up to \(K_{m,k}\). Its root coefficients are exactly
+\[
+ u^{-mh_\alpha},u^{-mh_\alpha+1},\ldots,u^{d'_\alpha}.
+\tag{O.3.4}
+\]
+The coefficients give an affine space of dimension (O.3.2). Multiplication and inversion stay in these intervals because both degree and height are additive in each root monomial. Successive height kernels are vector groups. Its image in the finite quotient is closed: in degree bases it is given by the missing coefficient equations, and in any other formal frame by their invertible finite linear transformations. Its intersection with \(K_{m,k}\) is the trivial group functor, because every root coefficient would have order both at most \(d'_\alpha\) and at least \(a_\alpha\).
+
+Two representatives \(g_1,g_2\in H_m\) describe the same partial framed torsor precisely when \(g_2=kg_1o\) with \(k\in K_{m,k}\) and an outside gauge \(o\). Normality puts the resulting outside factor in \(H_m\), hence in \(O_D\). Conversely every such factor supplies the full isomorphism. Thus the functor is exactly the right quotient in (O.3.1), with its full torsor of representatives. This also proves the torsor assertion and smoothness. The dimension is \(kn-o_D=\sum_\alpha(a_\alpha-d'_\alpha-1)\); after quotient by \(B\) it is \(-\sum_\alpha(d'_\alpha+1)\), exactly N.5's fixed-divisor dimension. The argument proves the whole fixed-divisor functor; it does not force an ambient nonflat zero family into that functor. ∎
+
+![The actual left modification, finite root thresholds, full SL3 stabilizer and surviving coefficients determine the homogeneous frame scheme](assets/meromorphic-root-frame-action.png)
+
+Proposition O.1.1.1 and Theorems O.2.1.1–O.3.1.1 construct the schemes and action over all parameter algebras. Exercise O.9.2 checks the displayed SL3 coefficient ranges, group law and dimensions, including characteristics two and three. Editable SVG source.
+
+### O.4. The residue character and the conductor obstruction
+
+**Theorem O.4.1.1.** Define
+\[
+ \chi(n)=\sum_i\operatorname{Res}_y(\omega_{i,y}n_{\alpha_i}),
+ \qquad n\in H_m.
+\tag{O.4.1}
+\]
+It factors through the finite group \(H\). Let \(\eta_x=\sum_j m_{j,x}\alpha_j^\vee\) be the full defect at \(x\), and \(c_{i,x}=\operatorname{ord}_x\omega_i\). For sufficiently large \(m\), uniformly on the bounded chart,
+\[
+ \chi|_{O_D}=0
+ \quad\Longleftrightarrow\quad
+ c_{i,x}-\langle\alpha_i,\eta_x\rangle\ge0
+ \quad\hbox{for all }i,x.
+\tag{O.4.2}
+\]
+If an inequality fails, there is a root \(\mathbf G_a\subset O_D\) on which \(\chi\) is a nonzero linear map.
+
+**Proof.** Height-one coordinates add under the root multiplication polynomials. Thus they define a group map to the simple-root additive groups, including in small characteristic. We do not identify this quotient with the full abelianization. The residue in (O.4.1) uses only the finite negative coefficients down to \(-m\); it vanishes on \(K_{m,k}\), whose simple-root threshold is positive. Hence it defines an algebraic additive character of \(H\).
+
+The original \(\omega_i\) extends to a meromorphic differential-valued map
+\(\omega'_i:\mathcal L'_{\alpha_i}\dashrightarrow\Omega_X\).
+The source enlargement by the divisor gives its order
+\(c_{i,x}-\langle\alpha_i,\eta_x\rangle\). At \(y\) it agrees with the original differential in the transported source frame. If every order is nonnegative, \(\omega'_i\) is regular. For an outside root section \(\gamma_i\), \(\omega'_i\gamma_i\) is then a rational differential with its only possible pole at \(y\), so its residue there is zero. This residue assertion is elementary on \(\mathbf P^1\): partial fractions give the residues at finite points; substituting \(z=u^{-1}\), with \(dz=-u^{-2}du\), makes the residue at infinity their negative sum. The coefficient identity applies over arbitrary parameter rings as well. It proves the forward vanishing on the entire stabilizer, not just on points.
+
+If \(\omega'_i\) has a pole of order \(r>0\) at \(x\ne y\), choose the outside root section whose local coefficient is \(-a^{-1}t^{r-1}\) modulo \(t^r\), where \(a t^{-r}dt\) is the leading differential, and whose jets vanish through the pole orders at all other poles. Polynomial Chinese remainders on \(X-y=\mathbf A^1\) provide this section of degree less than the sum \(R_i\) of these pole orders. Its residue at \(x\) is \(-1\), its other finite residues are zero, and therefore its residue at \(y\) is \(1\). In a degree basis its pole bound at \(y\) is at most \(R_i-1-d'_{\alpha_i}\). Choose \(m\ge R_i-1-d'_{\alpha_i}\). The section belongs to \(O_D\), and its scalar multiples give the required root \(\mathbf G_a\), with character \(t\mapsto t\).
+
+The degrees \(d'_\alpha\) and the pole-order sums are uniformly bounded by the fixed fundamental bounds \(b_i\): a pole order is at most the positive part of \(\langle\alpha_i,\eta_x\rangle\), since \(c_{i,x}\ge0\). Their sums are bounded by the sum of the positive Cartan entries times those bounds. Thus one \(m\) works for every geometric divisor in the chart. For a fixed divisor, the zero-character identity is an identity of polynomial maps and persists on all parameter algebras. Conditions on ambient moving divisors retain their full equations; no test on geometric points replaces their moduli functor. ∎
+
+### O.5. Character-equivariant perverse sheaves on the fibres
+
+**Theorem O.5.1.1.** Give \(\widehat M_D\) the left \(H\)-action above. If the character in (O.4.2) is nontrivial on \(O_D\), every \((H,\chi^*\mathcal L_\psi)\)-equivariant constructible complex on this fibre is zero. If it is trivial, \(\chi^*\mathcal L_\psi\) descends to a rank-one local system \(\mathscr L_D\) on \(H/O_D\), and its character-equivariant geometric perverse sheaves are exactly
+\[
+ \mathscr L_D[\dim\widehat M_D](\dim\widehat M_D/2)\otimes_E V,
+\tag{O.5.1}
+\]
+with \(V\) a finite-dimensional \(E\)-vector space. On the full quotient fibre the normalized generator is
+\[
+ \Psi_D=e_{\mathcal T',\omega'}^*\mathcal L_\psi[d_D](d_D/2),
+ \qquad d_D=-\sum_{\alpha>0}(d'_\alpha+1).
+\tag{O.5.2}
+\]
+
+**Proof.** Pull equivariance back along a stabilizer root line at the trivial framed torsor. Its action on that point is constant, so the pullback stalk complex \(V^\bullet\) is isomorphic to \(\mathcal L_\psi(c t)\otimes V^\bullet\), with \(c\ne0\). The Artin–Schreier cover \(z^p-z=ct\) is connected: over \(\kappa(t)\) this equation has no solution, since a pole of \(f^p-f\) has order divisible by \(p\), whereas \(ct\) has a simple pole at infinity. The nontrivial character sheaf therefore has a monodromy value different from one. On each nonzero finite stalk cohomology group the proposed isomorphism would identify the trivial monodromy with that scalar. Their difference is invertible in \(E\); hence every group is zero. Transitivity of \(H\) and conservative geometric stalks make the whole complex zero.
+
+If \(\chi|_{O_D}=0\), its additive multiplicativity supplies descent for \(\chi^*\mathcal L_\psi\) along the actual \(O_D\)-torsor \(H\to H/O_D\). Tensoring with its inverse turns twisted equivariance into ordinary equivariance. Pull an ordinarily equivariant complex back to \(H\) along the orbit map; equivariance identifies it with the constant complex of its stalk at the base point. Smooth descent consequently makes all its cohomology sheaves locally constant. For a perverse complex on the smooth homogeneous scheme this means a local system shifted by its dimension: this follows from the ordinary support and dual support bounds on a smooth stratum, as in N.4.
+
+The descent isomorphism for a constant local system is a locally constant invertible matrix on \(O_D\times H\). Both factors are geometrically connected, so that matrix is constant. The identity section and the descent unit force it to be the identity. Thus its only datum is \(V\), and every linear map of such data descends. This proves (O.5.1), including geometric semisimplicity of this local perverse category. It asserts no description of an arbitrary equivariant derived category.
+
+When (O.4.2) holds, \(\omega'\) is regular and the evaluation cocycle is defined. Its change under \(n\) is exactly \(\chi(n)\): take the simple-root Čech coordinate, apply \(\omega'_i\), and use the coefficient-of-\(u^{-1}du\) trace of G.2 and L.1. The descended rank-one system is therefore the stated evaluation system, with its unit at the trivial torsor. Descent through the whole regular frame group \(B\), with normalized pullback \([\dim B](\dim B/2)\), changes the dimension to \(d_D\), giving (O.5.2).
+
+In a Weil form all the maps just used are defined with their actual descent. \(V\) carries the resulting Frobenius operator, and Frobenius may permute conjugate divisor fibres. An arbitrary such operator may have Jordan blocks. The assertion of semisimplicity is geometric; no arithmetic splitting has been inferred. Higher root groups and all schematic stabilizers have participated in the torsor descent. ∎
+
+### O.6. Finitely many relevant geometric divisors
+
+**Proposition O.6.1.1.** Call \(D\) relevant when (O.4.2) holds. Its geometric support is contained in the finite set \(C\) of zeros of the \(\omega_i\), and only finitely many relevant geometric divisors occur. In particular, if every \(\omega_i\) is an isomorphism, the only relevant divisor is zero.
+
+**Proof.** Write \(2\rho=\sum_{\alpha>0}\alpha=\sum_i r_i\alpha_i\), with positive integral \(r_i\). For a defect \(\eta_x=\sum_jm_{j,x}\alpha_j^\vee\), the simple-reflection identity proved in N.5 gives
+\[
+ 2\sum_jm_{j,x}
+ =\langle2\rho,\eta_x\rangle
+ =\sum_i r_i\langle\alpha_i,\eta_x\rangle.
+\tag{O.6.1}
+\]
+Outside \(C\), all \(c_{i,x}=0\). Relevance would make every pairing on the right nonpositive, while a nonzero positive-coroot defect makes the left positive. Thus there is no defect there. At each \(x\in C\), relevance bounds
+\[
+ 2\sum_jm_{j,x}\le\sum_i r_i c_{i,x}.
+\tag{O.6.2}
+\]
+There are finitely many tuples of nonnegative integers satisfying this bound, and finitely many \(x\). These are inequalities in the original root and coroot lattices; central characters pair to zero and have not been removed. If \(C\) is empty they force \(D=0\). Finiteness concerns geometric support of sheaves. It neither removes infinitesimal divisor parameters from the compactification nor replaces K.5's full subfunctors by their point sets. ∎
+
+### O.7. Both ordinary and exceptional boundary restrictions
+
+**Theorem O.7.1.1.** Let \(j\) be the genuine open and \(\Psi=e^*\mathcal L_\psi[d_0](d_0/2)\). Each of \(j_!\Psi,Rj_*\Psi,j_{!*}\Psi\) has zero ordinary and exceptional restriction to every irrelevant complete fixed-divisor fibre. On a relevant fibre every perverse cohomology object of either restriction is a finite sum of \(\Psi_D\). All ordinary cohomology sheaves of the corresponding normalized frame restrictions are locally constant on that whole fibre. In particular, for \(P=j_{!*}\Psi\),
+\[
+ H^q(s_D^*P)=0\quad(q\ge-d_D),\qquad
+ H^q(s_D^!P)=0\quad(q\le-d_D).
+\tag{O.7.1}
+\]
+These are strict bounds, not a claim of general-conductor cleanness.
+
+**Proof.** On the genuine frame scheme the evaluation satisfies \(e(nz)=e(z)+\chi(n)\), by the same simple-root coefficient trace used in Theorem O.5.1.1. It gives twisted \(H\)-equivariance with its actual unit and multiplication cocycle. The compactified action of Theorem O.2.1.1 preserves the open and each full defect functor. Its action map is smooth: the isomorphism \((n,z)\mapsto(n,nz)\) of \(H\times\widehat{\overline M}\) identifies it with projection. Smooth base change for the actual images and exceptional operations in Lesson5 Q.1, and tensoring by the invertible rank-one character system, therefore transport this equivariance to both extensions. N.3 makes them perverse, so their canonical map and its perverse image carry the same equivariance.
+
+Restrict along the invariant whole fixed-divisor fibre. Smooth base change in the action square gives twisted equivariance of both ordinary and exceptional restrictions. Apply Theorem O.5.1.1. For an irrelevant divisor the stabilizer root line kills the entire complex, hence both restrictions vanish. For a relevant divisor, the orbit pullback makes all cohomology local systems; perverse cohomology has exactly the form (O.5.1). Full \(B\)-descent gives the finite sums of (O.5.2), with their actual Frobenius data.
+
+The intermediate extension has no subobject or quotient supported in the closed boundary. N.4 therefore puts its ordinary boundary restriction in perverse degrees at most \(-1\) and its exceptional boundary restriction in degrees at least \(1\). These inequalities persist on locally closed fixed-divisor strata, by ordinary upper and exceptional lower perverse restriction. Their cohomology is locally constant by the preceding homogeneous calculation. On a smooth stack of dimension \(d_D\), translating the perverse shift gives precisely (O.7.1). Equivalently, on a smooth frame atlas of relative dimension \(r\), use the scheme dimension \(d_D+r\) and normalized pullback \([r]\); the two \(r\)'s cancel. This checks the sign even when \(d_D\) is negative.
+
+The bounded charts cover geometric points, using a different \(y\) when necessary. The actual smooth comparisons on common frame atlases identify the restriction statements, so they hold intrinsically. If a moving degree stratum has only irrelevant geometric divisors, conservative geometric stalks on its entire atlas show that both restrictions there are zero. More generally any nonzero boundary support lies over the finite set of relevant divisors of Proposition O.6.1.1. This is a statement about constructible sheaf support on the full moduli space; all ambient nilpotents and nonflat families remain in that space. On a relevant fibre the finite multiplicity spaces and their degrees have not been computed. Their possible nonzero values are exactly why the strict bounds alone do not prove cleanness for general conductors. ∎
+
+### O.8. Cleanness at zero conductor
+
+**Theorem O.8.1.1.** If every map \(\omega_i:\mathcal L_{\alpha_i}\to\Omega_X\) is an isomorphism, the canonical maps are isomorphisms
+\[
+ j_!\Psi\ \xrightarrow{\ \sim\ }\ j_{!*}\Psi\
+ \xrightarrow{\ \sim\ }\ Rj_*\Psi.
+\tag{O.8.1}
+\]
+Both ordinary and exceptional restrictions to the whole boundary are zero. The isomorphisms retain the actual Weil structures and normalized duality.
+
+**Proof.** Every nonzero complete defect is irrelevant by Proposition O.6.1.1. Theorem O.7.1.1 kills the ordinary restriction of \(Rj_*\Psi\) at all its boundary geometric points, on conservative full frame atlases. Hence its entire closed boundary restriction is zero. The open-closed localization triangle for \(Q=Rj_*\Psi\) is
+\[
+ j_!j^*Q\longrightarrow Q\longrightarrow i_*i^*Q\longrightarrow.
+\tag{O.8.2}
+\]
+The third term is zero and \(j^*Q=\Psi\); its first arrow is the canonical \(j_!\Psi\to Rj_*\Psi\). Thus it is an isomorphism, and its perverse image is the same object. The exceptional vanishing was already proved pointwise in Theorem O.7.1.1 and follows also by adjunction. All triangles, units, equivariance and comparisons are the actual ones, so the isomorphism is Weil-compatible. Applying the intrinsic duality of L.4 interchanges the extensions and replaces \(\psi\) by \(\psi^{-1}\), giving the same normalized dual isomorphism.
+
+This hypothesis is realizable without changing the group: \(2\rho^\vee=\sum_{\alpha>0}\alpha^\vee\) is an integral cocharacter of the original \(T\); induce its \(T\)-bundle from \(\mathcal O(-1)\). Its simple-root lines are \(\mathcal O(-2)\), since \(\langle\alpha_i,2\rho^\vee\rangle=2\), and can be identified with \(\Omega_{\mathbf P^1}\). The last pairing follows by the same simple-reflection proof as N.5, on the coroot system. No use of the possibly nonintegral \(\rho^\vee\) or adjoint replacement is required. Arbitrary allowed central factors and their specified character maps are retained. If \(G\) is a torus, there are no defects, the genuine and compactified fixed-\(T\) datum coincide, and (O.8.1) is the identity. ∎
+
+![Residue character inequalities classify relevant and irrelevant fibres, including the two SL2 conductor patterns and zero-conductor cleanness](assets/conductor-boundary-character.png)
+
+Theorems O.4.1.1–O.5.1.1 and O.7.1.1 classify both restrictions; Theorem O.8.1.1 proves the canonical clean extension at zero conductor. Exercise O.9.1 distinguishes the actual SL2 divisor patterns. Relevant-fibre multiplicities remain to be computed. Editable SVG source.
+
+### O.9. Exercises
+
+**Exercise O.9.1 (medium).** For \(SL_2\) take the actual torus line \(\mathcal L=\mathcal O(-r)\), \(r\ge1\), and a nonzero map \(\omega:\mathcal L^2\to\Omega_X\). Classify the relevant geometric divisors. Compare \(r=1\) with \(r=2\) when \(\omega\) has either a double zero or two simple zeros.
+
+**Solution.** The map is a nonzero section of \(\mathcal O(2r-2)\); let its zero multiplicities be \(c_x\). A defect \(\eta_x=m_x\alpha^\vee\) has pairing \(\langle\alpha,\eta_x\rangle=2m_x\). Thus precisely
+\[
+ D=\sum_xm_xx,\qquad 0\le m_x\le\lfloor c_x/2\rfloor
+\tag{O.9.1}
+\]
+are relevant. This proves finiteness directly with the actual \(SL_2\) coroot, including its factor two. At \(r=1\) there are no zeros, so the basic sheaf is clean by Theorem O.8.1.1. At \(r=2\), a double zero at \(x\) allows \(D=0\) and \(D=x\); two simple zeros allow only \(D=0\). In the latter case Theorem O.7.1.1 and the localization proof give cleanness even though the original map has zeros.
+
+In the double-zero case the nonzero relevant fibre has new root line \(\mathcal O(-2)\), hence fixed-divisor stack dimension \(1\), while the original genuine dimension is \(3\). Its character generator is nonzero. The intermediate-extension restrictions, if nonzero, can occur only in ordinary degrees at most \(-2\) and exceptional degrees at least \(2\), by (O.7.1). This calculation does not assert that those multiplicities are nonzero or that general cleanness fails; determining them requires the subsequent Hecke argument.
+
+**Exercise O.9.2 (advanced).** Work with \(SL_3\), including characteristics two and three, and the actual diagonal torus bundle \(\mathcal O(-2)\oplus\mathcal O\oplus\mathcal O(2)\). Take \(m=4,k=15\). Compute \(H,B,O_0,\widehat M\), the partial-frame vector quotient, and the character obstruction for a defect \(\alpha_1^\vee x\).
+
+**Solution.** The root heights are \(1,1,2\), and the root degrees are \(-2,-2,-4\). The thresholds are \(11,11,7\); \(s=7\), so \(2s=14\ge11\). In upper-unitriangular coordinates
+\[
+ (a,b,c)(a',b',c')=(a+a',b+b',c+c'+ab').
+\tag{O.9.2}
+\]
+No factor two or three is inverted. The pole ranges of \(H_m\) begin at \(-4,-4,-8\). Its finite quotient has dimension \(45\). The regular frame group has dimension \(11+11+7=29\). The full stabilizer \(O_0\) has \(a,b\) exponents \(-4,-3,-2\), and \(c\) exponents \(-8,-7,-6,-5,-4\), hence dimension \(11\). The product \(ab'\) stays in the latter interval, which verifies the group condition explicitly. The homogeneous frame scheme has dimension \(45-11=34\), agreeing with \(12+12+10\) from (O.1.3). Its quotient stack has dimension \(34-29=5\).
+
+The vector group \(J_7/K_{4,15}\) has four coefficients per simple root and none for the long root, hence rank eight. The ordinary level-seven genuine scheme has dimension \(8+8+10=26\); its partial-frame vector torsor has dimension \(34\), as required. Identify the two simple-root lines with \(\Omega_X\). The character is the sum of their \(u^{-1}du\) coefficients. Those coefficients are absent from \(O_0\), so its character is zero.
+
+At a defect \(\alpha_1^\vee x\) the new degrees are \(0,-3,-3\), using the actual \(A_2\) Cartan pairings \(2,-1,1\). The first stabilizer interval now contains \(u^{-1}\); equivalently the first new differential has a pole of order two at \(x\). Theorem O.4.1.1 supplies its scalar root line with nontrivial residue character. Both boundary restrictions are zero. Normality can also be read from (O.9.2): a simple coefficient of order \(11\) multiplied by a pole coefficient of order \(-4\) has order \(7\), exactly the long-root threshold. The argument preserves the original \(SL_3\) torus and its full center \(\mu_3\), including the nonreduced center in characteristic three.
+
 ## 11. What this lesson does not prove
 
-Theorem 2.0 proves the actual plane-origin and exceptional-line supported comparisons, including their coefficient-system and Frobenius compatibility. Proposition 2.1 and §4 consequently prove the quadratic-cone étale IC and the Frobenius-compatible exceptional-curve splitting. The \(GL_2\) indicator product follows from lattice-chain counts and the bounded proper-fibre trace calculation, and the torus case is proved directly. General geometric IC stalk and costalk parity over every algebraically closed ground field with \(\ell\) invertible is proved in Identifying the dual group, Appendices C–D. Appendix A proves the actual scalar-Frobenius operator on all IC weight spaces and the canonical normalized symmetric tensor Weil lift. Appendix B proves the actual compact-support trace identity, the full spherical Satake algebra isomorphism, and the convolution identity for normalized IC traces. Appendix C proves split Tate Frobenius on every IC stalk and costalk. Appendix D proves the full orbit-indicator formula and identifies every graded IC stalk multiplicity with the polynomial (6.2). Appendix E proves geometric character vanishing, every nondominant-conductor case of (7.2), its upper-degree bound and zero-character top-component criterion, the actual top Frobenius scalar, and every highest-slice case. Appendix F proves the general last-residue top obstruction and its complete lowest-slice case. Appendix G constructs the relevant global strata and evaluation, their geometric self-maps, the actual finite Hecke chart and normalized coefficient comparisons, and its strict relevant-stratum bound. Appendix H constructs both projective modification projections, coherent Hecke transport on meromorphic decoration families, and a smooth central-torus reduction with actual Schubert, slice, coefficient and Weil comparisons. Appendix I proves actual finite section and polynomial decoration schemes, their arbitrary-base-change comparisons and closed pole transitions, and the open sheaf-injection/parameter-flat-quotient condition.
+Theorem 2.0 proves the actual plane-origin and exceptional-line supported comparisons, including their coefficient-system and Frobenius compatibility. Proposition 2.1 and §4 consequently prove the quadratic-cone étale IC and the Frobenius-compatible exceptional-curve splitting. The \(GL_2\) indicator product follows from lattice-chain counts and the bounded proper-fibre trace calculation, and the torus case is proved directly. General geometric IC stalk and costalk parity over every algebraically closed ground field with \(\ell\) invertible is proved in Identifying the dual group, Appendices C–D. Appendix A proves the actual scalar-Frobenius operator on all IC weight spaces and the canonical normalized symmetric tensor Weil lift. Appendix B proves the actual compact-support trace identity, the full spherical Satake algebra isomorphism, and the convolution identity for normalized IC traces. Appendix C proves split Tate Frobenius on every IC stalk and costalk. Appendix D proves the full orbit-indicator formula and identifies every graded IC stalk multiplicity with the polynomial (6.2). Appendix E proves geometric character vanishing, every nondominant-conductor case of (7.2), its upper-degree bound and zero-character top-component criterion, the actual top Frobenius scalar, and every highest-slice case. Appendix F proves the general last-residue top obstruction and its complete lowest-slice case. Appendix G constructs the relevant global strata and evaluation, their geometric self-maps, the actual finite Hecke chart and normalized coefficient comparisons, and its strict relevant-stratum bound. Appendix H constructs both projective modification projections, coherent Hecke transport on meromorphic decoration families, and a smooth central-torus reduction with actual Schubert, slice, coefficient and Weil comparisons. Appendix I proves actual finite section and polynomial decoration schemes, their arbitrary-base-change comparisons and closed pole transitions, and the open sheaf-injection/parameter-flat-quotient condition. Appendix J constructs the full finite highest-line algebra, its affine flag cone and actual flag-torsor open, finite equations for the entire datum, and canonical all-root saturation on geometric curve points. Appendix K constructs the full fixed-bundle injection parameter scheme, the actual projective auxiliary torus quotient and relative fixed-defect strata with every higher divisibility equation on arbitrary parameter rings. Appendix L constructs the genuine-stratum finite jet presentations, their entire unipotent quotient stacks and explicit dimensions, actual cohomology and self-extensions, and intrinsic normalized stratum duality. Appendix M constructs the separated compactified global jet schemes and actual quotient stack presentations, and proves that the entire genuine-reduction open immersion is representable and affine. Appendix N proves actual rational affine perverse exactness, compactified quotient perverse/duality descent, strict intermediate-extension boundary inequalities and the complete defect-stratum dimensions. Appendix O constructs the actual all-base meromorphic unipotent action and full homogeneous fibres and stabilizers, classifies both boundary restrictions by the residue character, proves finite relevant support, and establishes basic zero-conductor cleanness.
 
-The algebraic character transition (6.11) is proved for every dual root datum and lattice in §§6.1–6.3. Appendix D proves the general stalk identity (6.3) in the arithmetic setting of §1. Generation of the full highest-line and tensor datum by a finite representation family, the affine flag-cone construction, saturation and all defect strata, intrinsic duality and the ordinary/exceptional boundary bounds are still required to complete the algebraic auxiliary compactification. Lower-degree concentration and the general tensor-multiplicity comparison in the Whittaker cohomology theorem (7.2), the derived D-module factorization equivalence (7.4), and the arithmetic Fargues–Scholze equivalence remain to be proved. Their statements have the displayed hypotheses and free locators. They are not used in the proofs of the rank-one or torus calculations. A full Ran-category construction and a six-functor theory on \(\mathrm{Bun}_G\) also remain unfinished.
+The algebraic character transition (6.11) is proved for every dual root datum and lattice in §§6.1–6.3. Appendix D proves the general stalk identity (6.3) in the arithmetic setting of §1. The compactified global jet presentations and affine genuine-open embeddings in Appendix M extend the fixed-bundle construction in the stated simply-connected-derived, regular setting. The actual rational coefficient perverse-image theorem and strict ordinary/exceptional intermediate-extension bounds are proved in Appendix N. The actual meromorphic action and full relevant/irrelevant boundary restrictions are proved in Appendix O, together with basic zero-conductor cleanness. General-conductor multiplicities, Hecke semisimplicity and full cleanness remain necessary. Genuine-stratum duality is constructed in Appendix L. The relative defect strata have their exact scheme equations; a nilpotent family may cross them and remains in the ambient compactification. Lower-degree concentration and the general tensor-multiplicity comparison in the Whittaker cohomology theorem (7.2), the derived D-module factorization equivalence (7.4), and the arithmetic Fargues–Scholze equivalence remain to be proved. Their statements have the displayed hypotheses and free locators. They are not used in the proofs of the rank-one or torus calculations. A full Ran-category construction and a six-functor theory on \(\mathrm{Bun}_G\) also remain unfinished.
 
 ## References
 

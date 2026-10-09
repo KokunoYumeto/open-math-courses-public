@@ -1,0 +1,7 @@
+# Flat-label family index and disk calibration
+
+Original proof expression, figure, arithmetic and generator code are CC0 1.0, to the extent of rights held. The complete proofs are in Section11BL, FBC.1–9 and Exercises289–290. No externally authored mathematical text or image is incorporated. Connes, A survey of foliations and operator algebras, Section8, supplies historical context for the graph-Dirac problem.
+
+Run `python -B check_whole_base_flat_label.py --output-dir generated` with Python3. It generates the editable SVG and exact arithmetic JSON using only the standard library. Then run `node inspect_whole_base_flat_label.cjs generated` with locally installed Playwright and Chromium to render the PNG. Optional PLAYWRIGHT_MODULE and CHROME_EXECUTABLE environment variables select existing installations. No runtime, library or font is bundled; system fonts are not embedded in the SVG. The original CC0 expression does not change the terms of separately installed software.
+
+The arithmetic checks68 basis inputs without an artificial boundary truncation, three rational unitary samples and27 local cocycle identities. These finite checks do not prove the infinite graph domains, topological nontriviality, additive order two or complete family homotopy; the written arguments do. The disk comparison does not assert compatibility across closure models, compact-frame descent or a physical normal sum.

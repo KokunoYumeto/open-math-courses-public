@@ -1,0 +1,547 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Amenable regular products and prescribed inner kernels · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-TG.html">Previous lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-ARP.md">Lesson source</a></nav><h1 id="OA-FLOW.ARP.SETTING"><span id="OA-FLOW.ARP.THEOREM"></span>Amenable regular products and prescribed inner kernels</h1>
+<p><em>Original exposition, proofs and diagram: CC0-1.0 to the extent of rights held. Cited publications and existing components retain their own terms. Figure and reproducible source: <span class="unlinked">component terms</span>.</em></p>
+<p>The regular product constructed in <a href="OA-FLOW-TRP.html">Twisted regular products and prescribed inner kernels</a> is approximately finite-dimensional whenever its prescribed normal subgroup is amenable. The ambient countable group can be nonamenable, and every normalized compatible scalar pair is allowed. We identify the actual tensor base with its diagonal and finite-support flips, verify the twisted regular representation, remove the relation cocycle by compatible finite-stage primitives, and construct increasing finite-dimensional algebras in the same product. Each comparison retains the original trace and the full ambient-group action, including its characteristic phases.</p>
+<p>The finite-subgroup, trace, Fourier, factor, inner-kernel and characteristic-pair arguments of that lesson remain the inputs to this construction. The site set here is <span class="math" data-tex="\(G\times\mathbb N_{&gt;0}\)">\(G\times\mathbb N_{&gt;0}\)</span>. The separate <a href="OA-FLOW-NB.html">Bernoulli construction</a> uses the site set <span class="math" data-tex="\(G\)">\(G\)</span> and every <span class="math" data-tex="\(0&lt;\lambda\leq1\)">\(0&lt;\lambda\leq1\)</span>. The arbitrary nonamenable-normal-subgroup realization problem remains a separate question. The present argument is tracial and asserts no type-III branch.</p>
+<p><a id="arp-setting"></a></p>
+<h2 id="1-the-exact-regular-product-and-the-theorem">1. The exact regular product and the theorem</h2>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be countable discrete, let <span class="math" data-tex="\(N\triangleleft G\)">\(N\triangleleft G\)</span> be infinite and amenable, and let <span class="math" data-tex="\((\lambda,\mu)\)">\((\lambda,\mu)\)</span> be a normalized compatible pair. In the convention of <a href="OA-FLOW-CPP.html#cp-compatible">compatible lifts</a>, the functions <span class="math" data-tex="\(\mu:N^2\to\mathbb T\)">\(\mu:N^2\to\mathbb T\)</span> and <span class="math" data-tex="\(\lambda:N\times G\to\mathbb T\)">\(\lambda:N\times G\to\mathbb T\)</span> satisfy all five identities</p>
+<p><span class="math math-display" data-tex="\[
+\begin{aligned}
+\mu(a,b)\mu(ab,c)&amp;=\mu(a,bc)\mu(b,c),\\
+\lambda(a,gh)&amp;=\lambda(a,g)\lambda(g^{-1}ag,h),\\
+\frac{\lambda(a,g)\lambda(b,g)}{\lambda(ab,g)}
+ &amp;=\frac{\mu(g^{-1}ag,g^{-1}bg)}{\mu(a,b)},\\
+\lambda(m,n)&amp;=\frac{\mu(n,n^{-1}mn)}{\mu(m,n)},\\
+\mu(e,a)=\mu(a,e)&amp;=\lambda(e,g)=\lambda(a,e)=1.
+\end{aligned}\tag{ARP0}
+\]">\[
+\begin{aligned}
+\mu(a,b)\mu(ab,c)&amp;=\mu(a,bc)\mu(b,c),\\
+\lambda(a,gh)&amp;=\lambda(a,g)\lambda(g^{-1}ag,h),\\
+\frac{\lambda(a,g)\lambda(b,g)}{\lambda(ab,g)}
+ &amp;=\frac{\mu(g^{-1}ag,g^{-1}bg)}{\mu(a,b)},\\
+\lambda(m,n)&amp;=\frac{\mu(n,n^{-1}mn)}{\mu(m,n)},\\
+\mu(e,a)=\mu(a,e)&amp;=\lambda(e,g)=\lambda(a,e)=1.
+\end{aligned}\tag{ARP0}
+\]</span></p>
+<p>Write <span class="math" data-tex="\(I=G\times\mathbb N_{&gt;0}\)">\(I=G\times\mathbb N_{&gt;0}\)</span>. At each site use <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span> with its normalized trace. Let <span class="math" data-tex="\((P,\tau)\)">\((P,\tau)\)</span> and <span class="math" data-tex="\(\beta\)">\(\beta\)</span> be the represented tensor factor and the left site action constructed in TRP Section 8: an observable at <span class="math" data-tex="\((h,j)\)">\((h,j)\)</span> moves to <span class="math" data-tex="\((gh,j)\)">\((gh,j)\)</span>.</p>
+<p>Let <span class="math" data-tex="\(M_\mu\)">\(M_\mu\)</span> be the concrete regular product of TRP Sections 2–4, with original implementing unitaries <span class="math" data-tex="\(L_n\)">\(L_n\)</span>, and let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> be the <span class="math" data-tex="\(G\)">\(G\)</span>-action of Sections 5–6. Thus</p>
+<p><span class="math math-display" data-tex="\[
+L_nL_m=\mu(n,m)L_{nm},\qquad
+L_n\pi(a)L_n^*=\pi(\beta_n(a)),
+\tag{A1}
+\]">\[
+L_nL_m=\mu(n,m)L_{nm},\qquad
+L_n\pi(a)L_n^*=\pi(\beta_n(a)),
+\tag{A1}
+\]</span></p>
+<p><span class="math math-display" data-tex="\[
+\alpha_g(\pi(a))=\pi(\beta_g(a)),\qquad
+\alpha_g(L_n)=\lambda(gng^{-1},g)L_{gng^{-1}}.
+\tag{A2}
+\]">\[
+\alpha_g(\pi(a))=\pi(\beta_g(a)),\qquad
+\alpha_g(L_n)=\lambda(gng^{-1},g)L_{gng^{-1}}.
+\tag{A2}
+\]</span></p>
+<p><strong>Theorem.</strong> There are increasing unital finite-dimensional star algebras <span class="math" data-tex="\(A_k\subset M_\mu\)">\(A_k\subset M_\mu\)</span> such that</p>
+<p><span class="math math-display" data-tex="\[
+M_\mu=\left(\bigcup_k A_k\right)''.
+\tag{A3}
+\]">\[
+M_\mu=\left(\bigcup_k A_k\right)''.
+\tag{A3}
+\]</span></p>
+<p>Consequently this actual regular construction realizes <span class="math" data-tex="\([\lambda,\mu]\)">\([\lambda,\mu]\)</span> on an AFD <span class="math" data-tex="\(\mathrm{II}_1\)">\(\mathrm{II}_1\)</span> factor, with inner kernel exactly <span class="math" data-tex="\(N\)">\(N\)</span>. No amenability hypothesis is imposed on <span class="math" data-tex="\(G\)">\(G\)</span>. The proof also works for finite <span class="math" data-tex="\(N\)">\(N\)</span>; TRP Section 9 gives its direct finite-subgroup proof. The proof of the theorem is completed in Section 7 below.</p>
+<p>TRP Section 3 supplies the faithful normal tracial state <span class="math" data-tex="\(\tau_\mu\)">\(\tau_\mu\)</span>, Section 6 proves factoriality and the entire inner kernel from the outer action, and Section 8 proves that <span class="math" data-tex="\(P\)">\(P\)</span> is infinite-dimensional and every <span class="math" data-tex="\(\beta_g\)">\(\beta_g\)</span>, <span class="math" data-tex="\(g\ne e\)">\(g\ne e\)</span>, is outer. The new conclusion needed here is (A3).</p>
+<p>Our measured input is <a href="../OA-ERGODIC/reader/invariant-means-on-measured-relations.html">Invariant means on measured relations</a>, Proposition 2.1, Theorem 6.1 and Corollary 6.2: the principal orbit relation of a countable amenable Borel nonsingular action has, on one invariant conull Borel unit space, an increasing exhaustion by Borel equivalence relations with a uniform finite class-size bound at each stage. Every orbit endpoint pair on that common space is captured. The retained foundations are standard Borel injection and one-to-one Borel images, Radon–Nikodym theory and change of variables, <span class="math" data-tex="\(L^\infty/L^1\)">\(L^\infty/L^1\)</span> duality, Hahn–Banach, weak-star compactness, Tonelli and finite-measure continuity. We also retain elementary countable product probability, cylinder conditional expectations, monotone-class density and dominated convergence. Section 8 gives the exact proof locators and their roles.</p>
+<p>The direct finite-pattern argument of Section 7 requires neither dyadic balancing and coding nor a general crossed-product AFD theorem or factor-classification theorem. A uniform bound on finite relation-class sizes alone does not make its diagonal algebra finite-dimensional.</p>
+<p><span id="OA-FLOW.ARP.DIAGONAL-FLIPS"></span><a id="arp-diagonal-flips"></a></p>
+<h2 id="2-the-tensor-diagonal-and-finite-support-flips">2. The tensor diagonal and finite-support flips</h2>
+<p>Put <span class="math" data-tex="\(X=\{0,1\}^I\)">\(X=\{0,1\}^I\)</span> with fair product probability <span class="math" data-tex="\(p\)">\(p\)</span>. After enumerating <span class="math" data-tex="\(I\)">\(I\)</span>, this is compact metrizable with its product Borel structure, hence standard Borel. Each point has measure zero: specifying its first <span class="math" data-tex="\(q\)">\(q\)</span> bits has probability <span class="math" data-tex="\(2^{-q}\)">\(2^{-q}\)</span>. Let</p>
+<p><span class="math math-display" data-tex="\[
+F=\bigoplus_{i\in I}\mathbb Z/2\mathbb Z.
+\tag{A4}
+\]">\[
+F=\bigoplus_{i\in I}\mathbb Z/2\mathbb Z.
+\tag{A4}
+\]</span></p>
+<p>An element <span class="math" data-tex="\(f\in F\)">\(f\in F\)</span> is a finitely supported bit function, with coordinatewise addition modulo two. It acts on <span class="math" data-tex="\(X\)">\(X\)</span> by <span class="math" data-tex="\(x\mapsto f+x\)">\(x\mapsto f+x\)</span>. Its tensor flip <span class="math" data-tex="\(s_f\)">\(s_f\)</span> uses <span class="math" data-tex="\(\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}\)">\(\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}\)</span> at a site where <span class="math" data-tex="\(f_i=1\)">\(f_i=1\)</span>, and the identity at every other site. Different-site flips commute, <span class="math" data-tex="\(s_fs_k=s_{f+k}\)">\(s_fs_k=s_{f+k}\)</span>, and <span class="math" data-tex="\(s_f^*=s_f\)">\(s_f^*=s_f\)</span>.</p>
+<p>At a finite site set <span class="math" data-tex="\(E\)">\(E\)</span>, the diagonal matrices are functions of <span class="math" data-tex="\(x|_E\)">\(x|_E\)</span>. Every matrix in its local algebra has a unique expression</p>
+<p><span class="math math-display" data-tex="\[
+a=\sum_{f\in F_E}d_f s_f,\qquad
+F_E=\{f:\operatorname{supp}f\subset E\},
+\tag{A5}
+\]">\[
+a=\sum_{f\in F_E}d_f s_f,\qquad
+F_E=\{f:\operatorname{supp}f\subset E\},
+\tag{A5}
+\]</span></p>
+<p>with each <span class="math" data-tex="\(d_f\)">\(d_f\)</span> a diagonal function of <span class="math" data-tex="\(x|_E\)">\(x|_E\)</span>. For existence, index the standard matrix basis by binary words <span class="math" data-tex="\(u,v\)">\(u,v\)</span> on <span class="math" data-tex="\(E\)">\(E\)</span>. The matrix unit is <span class="math" data-tex="\(e_{u,v}=\mathbf1_{\{x|_E=u\}}s_{u+v}\)">\(e_{u,v}=\mathbf1_{\{x|_E=u\}}s_{u+v}\)</span>, since the flip takes column <span class="math" data-tex="\(v\)">\(v\)</span> to row <span class="math" data-tex="\(u\)">\(u\)</span>. These matrix units span the local algebra. Uniqueness follows from their distinct flip diagonals, or from the trace computation</p>
+<p><span class="math math-display" data-tex="\[
+\tau((d_f s_f)^*d'_k s_k)
+=\mathbf1_{\{f=k\}}\int_X\overline{d_f(x)}d'_f(x)\,dp(x).
+\tag{A6}
+\]">\[
+\tau((d_f s_f)^*d'_k s_k)
+=\mathbf1_{\{f=k\}}\int_X\overline{d_f(x)}d'_f(x)\,dp(x).
+\tag{A6}
+\]</span></p>
+<p>A nonzero flip has no diagonal matrix entry, so <span class="math" data-tex="\(\tau(d s_f)=0\)">\(\tau(d s_f)=0\)</span> when <span class="math" data-tex="\(f\ne0\)">\(f\ne0\)</span>; for <span class="math" data-tex="\(f=0\)">\(f=0\)</span> the trace is the uniform bit average. When <span class="math" data-tex="\(f=k\)">\(f=k\)</span>, move <span class="math" data-tex="\(s_f\)">\(s_f\)</span> through the trace and use <span class="math" data-tex="\(s_f^2=1\)">\(s_f^2=1\)</span>. This proves (A6).</p>
+<p>The weak closure <span class="math" data-tex="\(D\)">\(D\)</span> of the local diagonals in <span class="math" data-tex="\(P\)">\(P\)</span> is the represented copy of <span class="math" data-tex="\(L^\infty(X,p)\)">\(L^\infty(X,p)\)</span>, with trace integral. Here are the completion details. Cylinder functions have dense span in <span class="math" data-tex="\(L^2(X,p)\)">\(L^2(X,p)\)</span>: the sets whose indicators belong to that closure form a monotone class containing the cylinder algebra. Bounded measurable functions therefore have uniformly bounded cylinder conditional-expectation approximants converging in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, and strongly in their multiplication representation. Applying (A6) to every finite flip yields the unitary</p>
+<p><span class="math math-display" data-tex="\[
+L^2(P,\tau)\cong\bigoplus_{f\in F}L^2(X,p),
+\qquad d s_f\longmapsto d\text{ in component }f.
+\tag{A7}
+\]">\[
+L^2(P,\tau)\cong\bigoplus_{f\in F}L^2(X,p),
+\qquad d s_f\longmapsto d\text{ in component }f.
+\tag{A7}
+\]</span></p>
+<p>Its range is dense because it contains a cylinder function in each component. A local diagonal <span class="math" data-tex="\(d\)">\(d\)</span> acts there by multiplication by <span class="math" data-tex="\(d\)">\(d\)</span> on every component. The identical-copy multiplication representation of <span class="math" data-tex="\(L^\infty(X,p)\)">\(L^\infty(X,p)\)</span> is faithful and normal. Its norm is the essential supremum, tested on the component <span class="math" data-tex="\(f=0\)">\(f=0\)</span>; its vector coefficient functions belong to <span class="math" data-tex="\(L^1(X,p)\)">\(L^1(X,p)\)</span>, by Cauchy–Schwarz and summation over components. Its represented bounded balls are weakly compact by <span class="math" data-tex="\(L^\infty/L^1\)">\(L^\infty/L^1\)</span> weak-star compactness, and hence weakly closed. The bounded approximation lemma in TRP Section 1 makes its full image a von Neumann algebra.</p>
+<p>The uniformly bounded cylinder expectations converge strongly to every bounded multiplication operator. Indeed <span class="math" data-tex="\(L^2\)">\(L^2\)</span> convergence implies convergence in measure, and integration against the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> density of any squared vector gives strong convergence. Sum over components, using the square-summable tail and the uniform bound. Thus every bounded measurable function belongs to <span class="math" data-tex="\(D\)">\(D\)</span>, while the weakly closed full multiplication image contains <span class="math" data-tex="\(D\)">\(D\)</span>. This proves the exact diagonal identification.</p>
+<p>Both generators lie in the actual <span class="math" data-tex="\(P\)">\(P\)</span>, and (A5) gives</p>
+<p><span class="math math-display" data-tex="\[
+P=(D\cup\{s_f:f\in F\})'',\qquad
+s_fd s_f^*(x)=d(f+x).
+\tag{A8}
+\]">\[
+P=(D\cup\{s_f:f\in F\})'',\qquad
+s_fd s_f^*(x)=d(f+x).
+\tag{A8}
+\]</span></p>
+<p>For <span class="math" data-tex="\(n\in N\)">\(n\in N\)</span>, set <span class="math" data-tex="\((n.x)_i=x_{n^{-1}i}\)">\((n.x)_i=x_{n^{-1}i}\)</span>, where <span class="math" data-tex="\(n.(h,j)=(nh,j)\)">\(n.(h,j)=(nh,j)\)</span>, and <span class="math" data-tex="\((n.f)_i=f_{n^{-1}i}\)">\((n.f)_i=f_{n^{-1}i}\)</span>. The constructed <span class="math" data-tex="\(\beta_n\)">\(\beta_n\)</span> satisfies</p>
+<p><span class="math math-display" data-tex="\[
+\beta_n(d)(x)=d(n^{-1}.x),\qquad
+\beta_n(s_f)=s_{n.f}.
+\tag{A9}
+\]">\[
+\beta_n(d)(x)=d(n^{-1}.x),\qquad
+\beta_n(s_f)=s_{n.f}.
+\tag{A9}
+\]</span></p>
+<p>These formulas hold at every tensor site and pass to <span class="math" data-tex="\(D\)">\(D\)</span> and <span class="math" data-tex="\(P\)">\(P\)</span> by normality. All site permutations and flips preserve <span class="math" data-tex="\(p\)">\(p\)</span>, because they preserve every finite-cylinder probability.</p>
+<p><span id="OA-FLOW.ARP.AMENABLE-FREE-ACTION"></span><a id="arp-amenable-free-action"></a></p>
+<h2 id="3-a-free-amenable-action-on-the-actual-sites">3. A free amenable action on the actual sites</h2>
+<p>Use the semidirect product</p>
+<p><span class="math math-display" data-tex="\[
+\Gamma=F\rtimes N,\qquad
+(f,n)(k,m)=(f+n.k,nm),\qquad
+(f,n).x=f+n.x.
+\tag{A10}
+\]">\[
+\Gamma=F\rtimes N,\qquad
+(f,n)(k,m)=(f+n.k,nm),\qquad
+(f,n).x=f+n.x.
+\tag{A10}
+\]</span></p>
+<p>The inverse of <span class="math" data-tex="\((f,n)\)">\((f,n)\)</span> is <span class="math" data-tex="\((n^{-1}.f,n^{-1})\)">\((n^{-1}.f,n^{-1})\)</span>, since addition in <span class="math" data-tex="\(F\)">\(F\)</span> is modulo two. The product law proves the action identity directly. The group is countable, the action is Borel and probability preserving, and <span class="math" data-tex="\(q:\Gamma\to N\)">\(q:\Gamma\to N\)</span>, <span class="math" data-tex="\(q(f,n)=n\)">\(q(f,n)=n\)</span>, is a homomorphism.</p>
+<p><strong>Amenability.</strong> Enumerate <span class="math" data-tex="\(I\)">\(I\)</span> and average uniformly on the finite subgroup of flips supported at its first <span class="math" data-tex="\(j\)">\(j\)</span> sites. Choose an ultrafilter containing every tail of <span class="math" data-tex="\(\mathbb N_{&gt;0}\)">\(\mathbb N_{&gt;0}\)</span>, and take the pointwise scalar limit of those averages. Interval bisection gives the limit of every bounded real sequence; real and imaginary parts give the complex limit. Finite sums, positivity and the unit pass to that limit. Every fixed flip belongs to every sufficiently late finite subgroup, where its translation permutes the averaging set. The resulting mean <span class="math" data-tex="\(m_F\)">\(m_F\)</span> on <span class="math" data-tex="\(\ell^\infty(F)\)">\(\ell^\infty(F)\)</span> is left invariant.</p>
+<p>Let <span class="math" data-tex="\(m_N\)">\(m_N\)</span> be a left-invariant mean expressing the amenability of <span class="math" data-tex="\(N\)">\(N\)</span>. For bounded <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, set</p>
+<p><span class="math math-display" data-tex="\[
+A\Phi(n)=m_F\bigl(f\mapsto\Phi((0,n)(f,e))\bigr),
+\qquad m_\Gamma(\Phi)=m_N(A\Phi).
+\tag{A11}
+\]">\[
+A\Phi(n)=m_F\bigl(f\mapsto\Phi((0,n)(f,e))\bigr),
+\qquad m_\Gamma(\Phi)=m_N(A\Phi).
+\tag{A11}
+\]</span></p>
+<p>This is a positive normalized linear functional. For <span class="math" data-tex="\(t=(k,m)\)">\(t=(k,m)\)</span>,</p>
+<p><span class="math math-display" data-tex="\[
+t(0,n)(f,e)=(0,mn)((mn)^{-1}.k+f,e).
+\tag{A12}
+\]">\[
+t(0,n)(f,e)=(0,mn)((mn)^{-1}.k+f,e).
+\tag{A12}
+\]</span></p>
+<p>The inner mean removes the fixed <span class="math" data-tex="\(F\)">\(F\)</span>-translation, giving <span class="math" data-tex="\(A(\Phi\circ L_t)(n)=A\Phi(mn)\)">\(A(\Phi\circ L_t)(n)=A\Phi(mn)\)</span>, where <span class="math" data-tex="\(L_t\)">\(L_t\)</span> denotes left multiplication by <span class="math" data-tex="\(t\)">\(t\)</span>. The outer mean removes that <span class="math" data-tex="\(N\)">\(N\)</span>-translation. Thus <span class="math" data-tex="\(m_\Gamma\)">\(m_\Gamma\)</span> is left invariant. This proof of amenability requires no invariance of <span class="math" data-tex="\(m_F\)">\(m_F\)</span> under the <span class="math" data-tex="\(N\)">\(N\)</span>-automorphisms.</p>
+<p><strong>Freeness.</strong> If <span class="math" data-tex="\((f,e)\)">\((f,e)\)</span> fixes <span class="math" data-tex="\(x\)">\(x\)</span>, then <span class="math" data-tex="\(f+x=x\)">\(f+x=x\)</span>, so <span class="math" data-tex="\(f=0\)">\(f=0\)</span>. If <span class="math" data-tex="\(n\ne e\)">\(n\ne e\)</span>, choose infinitely many levels <span class="math" data-tex="\(j\)">\(j\)</span> outside the second-coordinate projection of the finite set <span class="math" data-tex="\(\operatorname{supp}f\subset G\times\mathbb N_{&gt;0}\)">\(\operatorname{supp}f\subset G\times\mathbb N_{&gt;0}\)</span>. A fixed point of <span class="math" data-tex="\((f,n)\)">\((f,n)\)</span> must satisfy</p>
+<p><span class="math math-display" data-tex="\[
+x_{(e,j)}=x_{(n^{-1},j)}.
+\tag{A13}
+\]">\[
+x_{(e,j)}=x_{(n^{-1},j)}.
+\tag{A13}
+\]</span></p>
+<p>The two sites are distinct. Different <span class="math" data-tex="\(j\)">\(j\)</span>'s give disjoint pairs, so any <span class="math" data-tex="\(r\)">\(r\)</span> such equalities have probability <span class="math" data-tex="\(2^{-r}\)">\(2^{-r}\)</span>. The fixed-point set therefore has measure zero. This covers finite-order and infinite-order <span class="math" data-tex="\(n\)">\(n\)</span>. Remove the fixed-point sets of all nonidentity elements of the countable group <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. Their union is Borel and null; its complement <span class="math" data-tex="\(X_0\)">\(X_0\)</span> is <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>-invariant. It is also <span class="math" data-tex="\(G\)">\(G\)</span>-invariant, since the <span class="math" data-tex="\(G\)">\(G\)</span> site action conjugates <span class="math" data-tex="\((f,n)\)">\((f,n)\)</span> to <span class="math" data-tex="\((g.f,gng^{-1})\)">\((g.f,gng^{-1})\)</span>, which belongs to <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> because <span class="math" data-tex="\(N\)">\(N\)</span> is normal.</p>
+<p>The action is also ergodic, although the finite-relation exhaustion does not require this. A <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>-invariant function in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> is <span class="math" data-tex="\(F\)">\(F\)</span>-invariant. Its conditional expectation onto a finite bit set commutes with every flip of those bits, and is therefore constant on that finite binary cube. Cylinder density makes these expectations converge to the original function, which must be constant. Invariant indicators consequently have measure zero or one.</p>
+<p><span id="OA-FLOW.ARP.REGULAR-IDENTIFICATION"></span><a id="arp-regular-identification"></a></p>
+<h2 id="4-the-same-regular-algebra-trace-and-full-group-action">4. The same regular algebra, trace and full group action</h2>
+<p>Suppress <span class="math" data-tex="\(\pi\)">\(\pi\)</span> on the tensor-base generators and set</p>
+<p><span class="math math-display" data-tex="\[
+u_{(f,n)}=s_fL_n,\qquad
+\widetilde\mu((f,n),(k,m))=\mu(n,m).
+\tag{A14}
+\]">\[
+u_{(f,n)}=s_fL_n,\qquad
+\widetilde\mu((f,n),(k,m))=\mu(n,m).
+\tag{A14}
+\]</span></p>
+<p>Equations (A1) and (A9) give</p>
+<p><span class="math math-display" data-tex="\[
+u_hu_k=\widetilde\mu(h,k)u_{hk},\qquad
+u_hd u_h^*(x)=d(h^{-1}.x).
+\tag{A15}
+\]">\[
+u_hu_k=\widetilde\mu(h,k)u_{hk},\qquad
+u_hd u_h^*(x)=d(h^{-1}.x).
+\tag{A15}
+\]</span></p>
+<p>The normalized cocycle <span class="math" data-tex="\(\widetilde\mu\)">\(\widetilde\mu\)</span> is the pullback of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> along <span class="math" data-tex="\(q\)">\(q\)</span>. The actual trace satisfies</p>
+<p><span class="math math-display" data-tex="\[
+\tau_\mu(d u_{(f,n)})
+=\mathbf1_{\{n=e\}}\mathbf1_{\{f=0\}}\int_Xd\,dp.
+\tag{A16}
+\]">\[
+\tau_\mu(d u_{(f,n)})
+=\mathbf1_{\{n=e\}}\mathbf1_{\{f=0\}}\int_Xd\,dp.
+\tag{A16}
+\]</span></p>
+<p>For <span class="math" data-tex="\(n\ne e\)">\(n\ne e\)</span>, use the original identity Fourier coefficient; for <span class="math" data-tex="\(n=e\)">\(n=e\)</span>, use the local flip trace (A6), extended normally to <span class="math" data-tex="\(D\)">\(D\)</span>. Distinct <span class="math" data-tex="\(h\)">\(h\)</span>-monomials are therefore orthogonal, with squared norm <span class="math" data-tex="\(\|d\|_2^2\)">\(\|d\|_2^2\)</span>.</p>
+<p>Apply (A7) at every <span class="math" data-tex="\(N\)">\(N\)</span>-coordinate of the coefficient Hilbert space in TRP Section 2. This gives an onto unitary from the same trace GNS space onto</p>
+<p><span class="math math-display" data-tex="\[
+\mathcal K=\ell^2(\Gamma,L^2(X,p)),\qquad
+\sum_{f,n}d_{f,n}s_f[n]\longmapsto(d_{f,n})_{(f,n)}.
+\tag{A17}
+\]">\[
+\mathcal K=\ell^2(\Gamma,L^2(X,p)),\qquad
+\sum_{f,n}d_{f,n}s_f[n]\longmapsto(d_{f,n})_{(f,n)}.
+\tag{A17}
+\]</span></p>
+<p>In these coefficient coordinates the left generators are</p>
+<p><span class="math math-display" data-tex="\[
+(M_d\xi)(k,x)=d(x)\xi(k,x),\qquad
+(U_h\xi)(k,x)=\widetilde\mu(h,h^{-1}k)
+\xi(h^{-1}k,h^{-1}.x).
+\tag{A18}
+\]">\[
+(M_d\xi)(k,x)=d(x)\xi(k,x),\qquad
+(U_h\xi)(k,x)=\widetilde\mu(h,h^{-1}k)
+\xi(h^{-1}k,h^{-1}.x).
+\tag{A18}
+\]</span></p>
+<p>They are bounded, <span class="math" data-tex="\(U_h\)">\(U_h\)</span> is unitary, and (A15) verifies their product and adjoint laws on dense finite monomials. Thus (A17) intertwines their actual bounded extensions. The generated algebra is exactly the original <span class="math" data-tex="\(M_\mu\)">\(M_\mu\)</span>: it contains <span class="math" data-tex="\(D,s_f,L_n\)">\(D,s_f,L_n\)</span>, which generate <span class="math" data-tex="\(P\)">\(P\)</span> and the original group implementers by (A8), and every displayed generator already lies in <span class="math" data-tex="\(M_\mu\)">\(M_\mu\)</span>. The vacuum is the constant function one in component <span class="math" data-tex="\(e\)">\(e\)</span>; (A16) identifies the original faithful normal trace.</p>
+<p>Put <span class="math" data-tex="\(R=\{(y,x)\in X_0^2:y=h.x\text{ for some }h\in\Gamma\}\)">\(R=\{(y,x)\in X_0^2:y=h.x\text{ for some }h\in\Gamma\}\)</span>. Freeness gives a unique label <span class="math" data-tex="\(h_{(y,x)}\)">\(h_{(y,x)}\)</span>. It is Borel: each label level set is the Borel graph of that label, and these graphs are countable and disjoint. Give <span class="math" data-tex="\(R\)">\(R\)</span> source counting measure</p>
+<p><span class="math math-display" data-tex="\[
+\nu(A)=\int_{X_0}\sum_{y\sim x}\mathbf1_A(y,x)\,dp(x).
+\tag{A19}
+\]">\[
+\nu(A)=\int_{X_0}\sum_{y\sim x}\mathbf1_A(y,x)\,dp(x).
+\tag{A19}
+\]</span></p>
+<p>Because every group element preserves <span class="math" data-tex="\(p\)">\(p\)</span>, source and range counting measures agree. The endpoint-coordinate unitary is</p>
+<p><span class="math math-display" data-tex="\[
+(T\xi)(y,x)=\xi(h_{(y,x)},y),\qquad
+\mathcal K\cong L^2(R,\nu).
+\tag{A20}
+\]">\[
+(T\xi)(y,x)=\xi(h_{(y,x)},y),\qquad
+\mathcal K\cong L^2(R,\nu).
+\tag{A20}
+\]</span></p>
+<p>Its squared norm is <span class="math" data-tex="\(\sum_h\int_X|\xi(h,h.x)|^2\,dp(x)=\sum_h\int_X|\xi(h,y)|^2\,dp(y)\)">\(\sum_h\int_X|\xi(h,h.x)|^2\,dp(x)=\sum_h\int_X|\xi(h,y)|^2\,dp(y)\)</span>. Its inverse is <span class="math" data-tex="\(\xi(h,y)=\zeta(y,h^{-1}.y)\)">\(\xi(h,y)=\zeta(y,h^{-1}.y)\)</span>, proving surjectivity.</p>
+<p>For composable relation points put</p>
+<p><span class="math math-display" data-tex="\[
+\omega(z,y,x)=\widetilde\mu(h_{(z,y)},h_{(y,x)}).
+\tag{A21}
+\]">\[
+\omega(z,y,x)=\widetilde\mu(h_{(z,y)},h_{(y,x)}).
+\tag{A21}
+\]</span></p>
+<p>Endpoint uniqueness gives <span class="math" data-tex="\(h_{(z,y)}h_{(y,x)}=h_{(z,x)}\)">\(h_{(z,y)}h_{(y,x)}=h_{(z,x)}\)</span>; the multiplier identity therefore gives</p>
+<p><span class="math math-display" data-tex="\[
+\omega(w,z,y)\omega(w,y,x)
+=\omega(w,z,x)\omega(z,y,x).
+\tag{A22}
+\]">\[
+\omega(w,z,y)\omega(w,y,x)
+=\omega(w,z,x)\omega(z,y,x).
+\tag{A22}
+\]</span></p>
+<p>It is normalized whenever adjacent points coincide. Transporting (A18), diagonal functions multiply the range coordinate and</p>
+<p><span class="math math-display" data-tex="\[
+(U_h^\omega\zeta)(z,x)
+=\omega(z,h^{-1}.z,x)\zeta(h^{-1}.z,x).
+\tag{A23}
+\]">\[
+(U_h^\omega\zeta)(z,x)
+=\omega(z,h^{-1}.z,x)\zeta(h^{-1}.z,x).
+\tag{A23}
+\]</span></p>
+<p>For a kernel <span class="math" data-tex="\(a\)">\(a\)</span> supported on a finite union of partial-bijection graphs, its left action is</p>
+<p><span class="math math-display" data-tex="\[
+(\Lambda_\omega(a)\zeta)(z,x)
+=\sum_{y\sim x}a(z,y)\omega(z,y,x)\zeta(y,x).
+\tag{A24}
+\]">\[
+(\Lambda_\omega(a)\zeta)(z,x)
+=\sum_{y\sim x}a(z,y)\omega(z,y,x)\zeta(y,x).
+\tag{A24}
+\]</span></p>
+<p>Equation (A23) is the one-graph case. The vacuum becomes the indicator of the diagonal of <span class="math" data-tex="\(R\)">\(R\)</span>. These formulas identify the precise trace and twisted regular representation.</p>
+<p>The full <span class="math" data-tex="\(G\)">\(G\)</span>-equivariance retains the <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-phase. Define <span class="math" data-tex="\(\theta_g(f,n)=(g.f,gng^{-1})\)">\(\theta_g(f,n)=(g.f,gng^{-1})\)</span>. By (A2),</p>
+<p><span class="math math-display" data-tex="\[
+\alpha_g(d)=d\circ g^{-1},\qquad
+\alpha_g(u_h)=\lambda(gq(h)g^{-1},g)u_{\theta_g(h)}.
+\tag{A25}
+\]">\[
+\alpha_g(d)=d\circ g^{-1},\qquad
+\alpha_g(u_h)=\lambda(gq(h)g^{-1},g)u_{\theta_g(h)}.
+\tag{A25}
+\]</span></p>
+<p>The coefficient-space unitary is</p>
+<p><span class="math math-display" data-tex="\[
+(C_g\xi)(h,y)=\lambda(q(h),g)
+\xi(\theta_g^{-1}(h),g^{-1}.y).
+\tag{A26}
+\]">\[
+(C_g\xi)(h,y)=\lambda(q(h),g)
+\xi(\theta_g^{-1}(h),g^{-1}.y).
+\tag{A26}
+\]</span></p>
+<p>On the dense algebra vacuum orbit it agrees with the original trace-preserving action unitary. Equation (A16), or invariance of <span class="math" data-tex="\(p\)">\(p\)</span>, proves unitarity. In relation coordinates it is</p>
+<p><span class="math math-display" data-tex="\[
+(C_g^R\zeta)(y,x)=\lambda(q(h_{(y,x)}),g)
+\zeta(g^{-1}.y,g^{-1}.x).
+\tag{A27}
+\]">\[
+(C_g^R\zeta)(y,x)=\lambda(q(h_{(y,x)}),g)
+\zeta(g^{-1}.y,g^{-1}.x).
+\tag{A27}
+\]</span></p>
+<p>Thus both the characteristic convention and the complete group action are retained.</p>
+<p><span id="OA-FLOW.ARP.COMPATIBLE-PRIMITIVE"></span><a id="arp-compatible-primitive"></a></p>
+<h2 id="5-finite-relations-and-a-compatible-primitive">5. Finite relations and a compatible primitive</h2>
+<p>Apply the measured-relation theorem from Section 1 to this <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>-action. All its hypotheses have been supplied: <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is countable amenable, <span class="math" data-tex="\(X\)">\(X\)</span> is standard probability, and the maps are Borel probability-preserving bijections. It gives a <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>-invariant conull Borel set <span class="math" data-tex="\(E\subset X_0\)">\(E\subset X_0\)</span> and increasing finite Borel relations <span class="math" data-tex="\(H_k\)">\(H_k\)</span> on <span class="math" data-tex="\(E\)">\(E\)</span>, with class-size bound <span class="math" data-tex="\(K_k\)">\(K_k\)</span>, whose union is <span class="math" data-tex="\(R|_E\)">\(R|_E\)</span>.</p>
+<p>Replace <span class="math" data-tex="\(E\)">\(E\)</span> by <span class="math" data-tex="\(\bigcap_{g\in G}g.E\)">\(\bigcap_{g\in G}g.E\)</span>. This is Borel and conull, and is both <span class="math" data-tex="\(G\)">\(G\)</span>-invariant and <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>-invariant because <span class="math" data-tex="\(G\)">\(G\)</span> normalizes <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. Restrict every <span class="math" data-tex="\(H_k\)">\(H_k\)</span> to that set. The restrictions retain the bounds <span class="math" data-tex="\(K_k\)">\(K_k\)</span>, nesting and every <span class="math" data-tex="\(R\)">\(R\)</span>-pair. Hereafter <span class="math" data-tex="\(R\)">\(R\)</span> denotes this restriction. Discarding the invariant null set changes neither the represented operators nor their traces: its source-counting and range-counting subsets are null. Adjoin <span class="math" data-tex="\(H_0\)">\(H_0\)</span> equal to the diagonal if needed.</p>
+<p>Choose a Borel injection <span class="math" data-tex="\(t:E\to[0,1]\)">\(t:E\to[0,1]\)</span>. Let <span class="math" data-tex="\(r_k(x)\)">\(r_k(x)\)</span> be the <span class="math" data-tex="\(t\)">\(t\)</span>-least point of the finite <span class="math" data-tex="\(H_k\)">\(H_k\)</span>-class of <span class="math" data-tex="\(x\)">\(x\)</span>. This choice is Borel using the stated Borel foundations: enumerate the countable <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>-labels, test which label points belong to the class, and take the least <span class="math" data-tex="\(t\)">\(t\)</span>-value among that finite set. The first label attaining it is specified by countably many Borel comparisons. The chosen point is constant on its <span class="math" data-tex="\(H_k\)">\(H_k\)</span>-class.</p>
+<p>On <span class="math" data-tex="\(H_k\)">\(H_k\)</span> define</p>
+<p><span class="math math-display" data-tex="\[
+c_k(y,x)=\omega(y,x,r_k(x)).
+\tag{A28}
+\]">\[
+c_k(y,x)=\omega(y,x,r_k(x)).
+\tag{A28}
+\]</span></p>
+<p>For <span class="math" data-tex="\(z\mathrel{H_k}y\mathrel{H_k}x\)">\(z\mathrel{H_k}y\mathrel{H_k}x\)</span>, the three representatives agree. Applying (A22) to <span class="math" data-tex="\((z,y,x,r_k(x))\)">\((z,y,x,r_k(x))\)</span> proves</p>
+<p><span class="math math-display" data-tex="\[
+\frac{c_k(z,y)c_k(y,x)}{c_k(z,x)}=\omega(z,y,x).
+\tag{A29}
+\]">\[
+\frac{c_k(z,y)c_k(y,x)}{c_k(z,x)}=\omega(z,y,x).
+\tag{A29}
+\]</span></p>
+<p>Each <span class="math" data-tex="\(c_k\)">\(c_k\)</span> is normalized on the diagonal. The independently chosen <span class="math" data-tex="\(c_k\)">\(c_k\)</span>'s need not agree on preceding stages; we now construct compatible primitives.</p>
+<p>Suppose <span class="math" data-tex="\(b_k\)">\(b_k\)</span> is a normalized primitive on <span class="math" data-tex="\(H_k\)">\(H_k\)</span>, starting with <span class="math" data-tex="\(b_0=1\)">\(b_0=1\)</span> on the diagonal. On <span class="math" data-tex="\(H_k\)">\(H_k\)</span> let <span class="math" data-tex="\(d_k=b_k/c_{k+1}\)">\(d_k=b_k/c_{k+1}\)</span>. The two primitive equations imply</p>
+<p><span class="math math-display" data-tex="\[
+d_k(z,y)d_k(y,x)=d_k(z,x).
+\tag{A30}
+\]">\[
+d_k(z,y)d_k(y,x)=d_k(z,x).
+\tag{A30}
+\]</span></p>
+<p>Set <span class="math" data-tex="\(a_k(y)=d_k(y,r_k(y))\)">\(a_k(y)=d_k(y,r_k(y))\)</span> for <span class="math" data-tex="\(y\in E\)">\(y\in E\)</span>. Equation (A30) gives <span class="math" data-tex="\(d_k(y,x)=a_k(y)/a_k(x)\)">\(d_k(y,x)=a_k(y)/a_k(x)\)</span> on <span class="math" data-tex="\(H_k\)">\(H_k\)</span>. On all of <span class="math" data-tex="\(H_{k+1}\)">\(H_{k+1}\)</span> put</p>
+<p><span class="math math-display" data-tex="\[
+b_{k+1}(y,x)=c_{k+1}(y,x)\frac{a_k(y)}{a_k(x)}.
+\tag{A31}
+\]">\[
+b_{k+1}(y,x)=c_{k+1}(y,x)\frac{a_k(y)}{a_k(x)}.
+\tag{A31}
+\]</span></p>
+<p>This is Borel and normalized. It remains a primitive because the extra ratio has trivial coboundary, and it agrees exactly with <span class="math" data-tex="\(b_k\)">\(b_k\)</span> on <span class="math" data-tex="\(H_k\)">\(H_k\)</span>. Their union is a single Borel function <span class="math" data-tex="\(b:R\to\mathbb T\)">\(b:R\to\mathbb T\)</span>, with <span class="math" data-tex="\(b(x,x)=1\)">\(b(x,x)=1\)</span>, satisfying</p>
+<p><span class="math math-display" data-tex="\[
+\omega(z,y,x)=\frac{b(z,y)b(y,x)}{b(z,x)}.
+\tag{A32}
+\]">\[
+\omega(z,y,x)=\frac{b(z,y)b(y,x)}{b(z,x)}.
+\tag{A32}
+\]</span></p>
+<p>Every composable triple belongs to some <span class="math" data-tex="\(H_k\)">\(H_k\)</span>: its two adjacent pairs belong to a common sufficiently late stage, and that stage is transitive. Thus (A32) holds for every triple on the chosen common domain. This proves the global primitive, including compatibility and all conull quantifiers.</p>
+<p><span id="OA-FLOW.ARP.UNTWISTING"></span><a id="arp-untwisting"></a></p>
+<h2 id="6-the-regular-intertwiner-and-its-sign">6. The regular intertwiner and its sign</h2>
+<p>Define the unitary <span class="math" data-tex="\((B\zeta)(y,x)=b(y,x)\zeta(y,x)\)">\((B\zeta)(y,x)=b(y,x)\zeta(y,x)\)</span> on <span class="math" data-tex="\(L^2(R,\nu)\)">\(L^2(R,\nu)\)</span>. It fixes the trace vacuum because <span class="math" data-tex="\(b(x,x)=1\)">\(b(x,x)=1\)</span>. Substitution in (A24) gives</p>
+<p><span class="math math-display" data-tex="\[
+\begin{aligned}
+(B\Lambda_\omega(a)B^*\zeta)(z,x)
+&amp;=\sum_y a(z,y)\frac{b(z,x)}{b(y,x)}
+\omega(z,y,x)\zeta(y,x)\\
+&amp;=\sum_y a(z,y)b(z,y)\zeta(y,x).
+\end{aligned}
+\tag{A33}
+\]">\[
+\begin{aligned}
+(B\Lambda_\omega(a)B^*\zeta)(z,x)
+&amp;=\sum_y a(z,y)\frac{b(z,x)}{b(y,x)}
+\omega(z,y,x)\zeta(y,x)\\
+&amp;=\sum_y a(z,y)b(z,y)\zeta(y,x).
+\end{aligned}
+\tag{A33}
+\]</span></p>
+<p>Thus <span class="math" data-tex="\(B\)">\(B\)</span> sends a twisted kernel <span class="math" data-tex="\(a\)">\(a\)</span> to the ordinary kernel <span class="math" data-tex="\(ab\)">\(ab\)</span>. Multiplication by <span class="math" data-tex="\(b\)">\(b\)</span>, rather than its inverse, is the Hilbert-space intertwiner for (A32) and (A24).</p>
+<p>Let <span class="math" data-tex="\((V_h\zeta)(y,x)=\zeta(h^{-1}.y,x)\)">\((V_h\zeta)(y,x)=\zeta(h^{-1}.y,x)\)</span> be the ordinary group graph operator. Then</p>
+<p><span class="math math-display" data-tex="\[
+BU_h^\omega B^*=M_{b_h}V_h,\qquad
+b_h(y)=b(y,h^{-1}.y).
+\tag{A34}
+\]">\[
+BU_h^\omega B^*=M_{b_h}V_h,\qquad
+b_h(y)=b(y,h^{-1}.y).
+\tag{A34}
+\]</span></p>
+<p>The diagonal is fixed by <span class="math" data-tex="\(B\)">\(B\)</span>, and each <span class="math" data-tex="\(b_h\)">\(b_h\)</span> is a bounded measurable unit-modulus diagonal function. The conjugated algebra is exactly</p>
+<p><span class="math math-display" data-tex="\[
+Q=(L^\infty(E,p)\cup\{V_h:h\in\Gamma\})''.
+\tag{A35}
+\]">\[
+Q=(L^\infty(E,p)\cup\{V_h:h\in\Gamma\})''.
+\tag{A35}
+\]</span></p>
+<p>For the reverse inclusion, <span class="math" data-tex="\(V_h=M_{\overline{b_h}}(M_{b_h}V_h)\)">\(V_h=M_{\overline{b_h}}(M_{b_h}V_h)\)</span>, so all graph generators remain available. Unitary conjugation gives a normal faithful trace-preserving isomorphism from the original <span class="math" data-tex="\(M_\mu\)">\(M_\mu\)</span> onto <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p>The primitive need not be <span class="math" data-tex="\(G\)">\(G\)</span>-invariant. The transported <span class="math" data-tex="\(G\)">\(G\)</span>-action is implemented exactly by</p>
+<p><span class="math math-display" data-tex="\[
+(Z_g\zeta)(y,x)=b(y,x)\lambda(q(h_{(y,x)}),g)
+\overline{b(g^{-1}.y,g^{-1}.x)}
+\zeta(g^{-1}.y,g^{-1}.x).
+\tag{A36}
+\]">\[
+(Z_g\zeta)(y,x)=b(y,x)\lambda(q(h_{(y,x)}),g)
+\overline{b(g^{-1}.y,g^{-1}.x)}
+\zeta(g^{-1}.y,g^{-1}.x).
+\tag{A36}
+\]</span></p>
+<p>This is <span class="math" data-tex="\(BC_g^RB^*\)">\(BC_g^RB^*\)</span>. It fixes the vacuum and preserves <span class="math" data-tex="\(Q\)">\(Q\)</span> because it transports the original action. An equivariant primitive is unnecessary. The original implementers for <span class="math" data-tex="\(N\)">\(N\)</span> are still the transported <span class="math" data-tex="\(u_{(0,n)}\)">\(u_{(0,n)}\)</span>, and (A25) retains their characteristic phases exactly.</p>
+<p><span id="OA-FLOW.ARP.FINITE-PATTERNS"></span><a id="arp-finite-patterns"></a></p>
+<h2 id="7-increasing-finite-dimensional-algebras-from-finite-patterns">7. Increasing finite-dimensional algebras from finite patterns</h2>
+<p>We prove (A3) inside <span class="math" data-tex="\(Q\)">\(Q\)</span>. A bounded finite relation <span class="math" data-tex="\(H_k\)">\(H_k\)</span> does not by itself yield a finite-dimensional von Neumann algebra, since its transversal can carry a diffuse function algebra. Finite patterns on that transversal give the required finite-dimensional subalgebras.</p>
+<p>Every Borel partial orbit bijection <span class="math" data-tex="\(\psi:D\to E'\)">\(\psi:D\to E'\)</span> has an ordinary partial graph operator <span class="math" data-tex="\(V_\psi\in Q\)">\(V_\psi\in Q\)</span>. Its action moves the first relation coordinate from <span class="math" data-tex="\(\psi^{-1}.y\)">\(\psi^{-1}.y\)</span> to <span class="math" data-tex="\(y\)">\(y\)</span> on <span class="math" data-tex="\(E'\)">\(E'\)</span>, and is zero off <span class="math" data-tex="\(E'\)">\(E'\)</span>. Partition <span class="math" data-tex="\(D\)">\(D\)</span> by the unique <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>-label of <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. The pieces <span class="math" data-tex="\(D_h\)">\(D_h\)</span> have disjoint images <span class="math" data-tex="\(h.D_h\)">\(h.D_h\)</span>, and</p>
+<p><span class="math math-display" data-tex="\[
+V_\psi=\sum_{h\in\Gamma}V_h M_{\mathbf1_{D_h}}.
+\tag{A37}
+\]">\[
+V_\psi=\sum_{h\in\Gamma}V_h M_{\mathbf1_{D_h}}.
+\tag{A37}
+\]</span></p>
+<p>Every finite partial sum has norm at most one, since its domains and ranges are both disjoint and it is a partial isometry. The squared norm of its omitted action on a vector is the sum of that vector's squared masses on the omitted domain pieces, which tends to zero. The sum converges strongly, proving <span class="math" data-tex="\(V_\psi\in Q\)">\(V_\psi\in Q\)</span>. These maps are nonsingular because each is a countable disjoint union of restrictions of <span class="math" data-tex="\(p\)">\(p\)</span>-preserving group maps. No density factor enters the first-coordinate counting action.</p>
+<p>Sort each <span class="math" data-tex="\(H_k\)">\(H_k\)</span>-class by <span class="math" data-tex="\(t\)">\(t\)</span>. For <span class="math" data-tex="\(d\leq K_k\)">\(d\leq K_k\)</span>, let <span class="math" data-tex="\(T_{k,d}\)">\(T_{k,d}\)</span> be its least points with class size <span class="math" data-tex="\(d\)">\(d\)</span>, and let <span class="math" data-tex="\(\theta_a:T_{k,d}\to E\)">\(\theta_a:T_{k,d}\to E\)</span>, <span class="math" data-tex="\(0\leq a&lt;d\)">\(0\leq a&lt;d\)</span>, select its <span class="math" data-tex="\(a\)">\(a\)</span>-th point, with <span class="math" data-tex="\(\theta_0\)">\(\theta_0\)</span> the identity. Class size and rank are Borel by the same finite enumeration argument used for <span class="math" data-tex="\(r_k\)">\(r_k\)</span>. Each <span class="math" data-tex="\(\theta_a\)">\(\theta_a\)</span> is a Borel injection whose inverse on its image is <span class="math" data-tex="\(r_k\)">\(r_k\)</span>; the images partition the class-size-<span class="math" data-tex="\(d\)">\(d\)</span> part. For Borel <span class="math" data-tex="\(C\subset T_{k,d}\)">\(C\subset T_{k,d}\)</span>, the transports <span class="math" data-tex="\(\theta_a\theta_b^{-1}\)">\(\theta_a\theta_b^{-1}\)</span> on <span class="math" data-tex="\(\theta_b(C)\)">\(\theta_b(C)\)</span> have graphs in <span class="math" data-tex="\(H_k\)">\(H_k\)</span> and lie in <span class="math" data-tex="\(Q\)">\(Q\)</span> by (A37). Denote their operators by <span class="math" data-tex="\(e_{ab}^C\)">\(e_{ab}^C\)</span>. First-coordinate counting gives</p>
+<p><span class="math math-display" data-tex="\[
+e_{ab}^C e_{cl}^C=\mathbf1_{\{b=c\}}e_{al}^C,
+\qquad (e_{ab}^C)^*=e_{ba}^C,
+\qquad\sum_a e_{aa}^C=M_{\mathbf1_{[C]_{H_k}}}.
+\tag{A38}
+\]">\[
+e_{ab}^C e_{cl}^C=\mathbf1_{\{b=c\}}e_{al}^C,
+\qquad (e_{ab}^C)^*=e_{ba}^C,
+\qquad\sum_a e_{aa}^C=M_{\mathbf1_{[C]_{H_k}}}.
+\tag{A38}
+\]</span></p>
+<p>Disjoint transversal pieces have orthogonal operator supports. If <span class="math" data-tex="\(C\)">\(C\)</span> has positive measure, all these matrix units are nonzero: the sheets are nonsingular, and a nonzero sheet projection acts nontrivially on the diagonal vacuum. Their scalar span is a copy of <span class="math" data-tex="\(M_d(\mathbb C)\)">\(M_d(\mathbb C)\)</span>. Null pieces give zero operators, since their countable orbit saturations are null.</p>
+<p><strong>Finite-pattern lemma.</strong> Fix <span class="math" data-tex="\(H_k\)">\(H_k\)</span>, finitely many Borel sets <span class="math" data-tex="\(B_1,\ldots,B_r\)">\(B_1,\ldots,B_r\)</span>, and partial orbit bijections <span class="math" data-tex="\(\psi_1,\ldots,\psi_s\)">\(\psi_1,\ldots,\psi_s\)</span> whose graphs lie in <span class="math" data-tex="\(H_k\)">\(H_k\)</span>. For <span class="math" data-tex="\(z\in T_{k,d}\)">\(z\in T_{k,d}\)</span>, record:</p>
+<ol>
+<li>for every <span class="math" data-tex="\(a,i\)">\(a,i\)</span>, whether <span class="math" data-tex="\(\theta_a(z)\in B_i\)">\(\theta_a(z)\in B_i\)</span>;</li>
+<li>for every <span class="math" data-tex="\(a,j\)">\(a,j\)</span>, whether <span class="math" data-tex="\(\psi_j\)">\(\psi_j\)</span> is defined at <span class="math" data-tex="\(\theta_a(z)\)">\(\theta_a(z)\)</span> and, if so, its unique target rank <span class="math" data-tex="\(c\)">\(c\)</span>, where <span class="math" data-tex="\(\psi_j(\theta_a(z))=\theta_c(z)\)">\(\psi_j(\theta_a(z))=\theta_c(z)\)</span>.</li>
+</ol>
+<p>There are finitely many records: <span class="math" data-tex="\(d\)">\(d\)</span> is bounded, membership is binary, and each map target is one of <span class="math" data-tex="\(d\)">\(d\)</span> ranks or is undefined. Each record is Borel. Partition each <span class="math" data-tex="\(T_{k,d}\)">\(T_{k,d}\)</span> into its finitely many pattern sets <span class="math" data-tex="\(C\)">\(C\)</span> and take the scalar spans of all <span class="math" data-tex="\(e_{ab}^C\)">\(e_{ab}^C\)</span>. This yields a unital finite-dimensional algebra</p>
+<p><span class="math math-display" data-tex="\[
+\mathcal A(H_k;\text{patterns})\cong
+\bigoplus_{d,C\text{ nonnull}}M_d(\mathbb C).
+\tag{A39}
+\]">\[
+\mathcal A(H_k;\text{patterns})\cong
+\bigoplus_{d,C\text{ nonnull}}M_d(\mathbb C).
+\tag{A39}
+\]</span></p>
+<p>It is a star algebra by (A38), and is weakly closed: finitely many vector coefficient functionals separating a basis reconstruct its coordinates and preserve each weak limit. Every specified diagonal projection is a sum of diagonal <span class="math" data-tex="\(e_{aa}^C\)">\(e_{aa}^C\)</span>. Each specified <span class="math" data-tex="\(V_{\psi_j}\)">\(V_{\psi_j}\)</span> is the sum of the <span class="math" data-tex="\(e_{ca}^C\)">\(e_{ca}^C\)</span> prescribed by its record. This is a finite sum because patterns and ranks are finite. The lemma therefore gives exact containment of every specified projection and partial graph operator.</p>
+<p>Enumerate <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> as <span class="math" data-tex="\(h_1,h_2,\ldots\)">\(h_1,h_2,\ldots\)</span>, and enumerate a countable cylinder algebra generating the Borel sets of <span class="math" data-tex="\(X\)">\(X\)</span> as <span class="math" data-tex="\(B_1,B_2,\ldots\)">\(B_1,B_2,\ldots\)</span>. Restrict the sets to <span class="math" data-tex="\(E\)">\(E\)</span>. For each <span class="math" data-tex="\(k\)">\(k\)</span>, let</p>
+<p><span class="math math-display" data-tex="\[
+D_{j,k}=\{x\in E:(h_j.x,x)\in H_k\},\qquad
+\psi_{j,k}=h_j|_{D_{j,k}}.
+\tag{A40}
+\]">\[
+D_{j,k}=\{x\in E:(h_j.x,x)\in H_k\},\qquad
+\psi_{j,k}=h_j|_{D_{j,k}}.
+\tag{A40}
+\]</span></p>
+<p>They are Borel partial bijections with graphs in <span class="math" data-tex="\(H_k\)">\(H_k\)</span>. For fixed <span class="math" data-tex="\(j\)">\(j\)</span>, the sets <span class="math" data-tex="\(D_{j,k}\)">\(D_{j,k}\)</span> increase to <span class="math" data-tex="\(E\)">\(E\)</span>, since every orbit pair on <span class="math" data-tex="\(E\)">\(E\)</span> belongs to some <span class="math" data-tex="\(H_k\)">\(H_k\)</span>.</p>
+<p>Start with <span class="math" data-tex="\(A_0=\mathbb C1\)">\(A_0=\mathbb C1\)</span>. At stage <span class="math" data-tex="\(k\)">\(k\)</span>, apply the finite-pattern lemma to <span class="math" data-tex="\(H_k\)">\(H_k\)</span>, the sets <span class="math" data-tex="\(B_1,\ldots,B_k\)">\(B_1,\ldots,B_k\)</span>, the maps <span class="math" data-tex="\(\psi_{1,k},\ldots,\psi_{k,k}\)">\(\psi_{1,k},\ldots,\psi_{k,k}\)</span>, and every partial map underlying a matrix unit in the chosen finite matrix-unit basis of <span class="math" data-tex="\(A_{k-1}\)">\(A_{k-1}\)</span>. Those old maps have graphs in <span class="math" data-tex="\(H_{k-1}\subset H_k\)">\(H_{k-1}\subset H_k\)</span>, and there are finitely many. Let <span class="math" data-tex="\(A_k\)">\(A_k\)</span> be the full pattern algebra (A39). Then</p>
+<p><span class="math math-display" data-tex="\[
+A_{k-1}\subset A_k,\qquad
+M_{\mathbf1_{B_j}}\in A_k\ (j\leq k),\qquad
+V_{h_j}M_{\mathbf1_{D_{j,k}}}\in A_k\ (j\leq k).
+\tag{A41}
+\]">\[
+A_{k-1}\subset A_k,\qquad
+M_{\mathbf1_{B_j}}\in A_k\ (j\leq k),\qquad
+V_{h_j}M_{\mathbf1_{D_{j,k}}}\in A_k\ (j\leq k).
+\tag{A41}
+\]</span></p>
+<p>Every old matrix unit belongs exactly, since its underlying map was included in the pattern record. Thus the inclusion uses no approximation or change of phase, even when old classes have different sizes or merge. Every <span class="math" data-tex="\(A_k\)">\(A_k\)</span> is unital and finite-dimensional.</p>
+<p>Put <span class="math" data-tex="\(Q_0=(\bigcup_k A_k)''\)">\(Q_0=(\bigcup_k A_k)''\)</span>. It contains the full diagonal. Indeed it contains every generating cylinder projection, and the measurable sets whose projections lie in <span class="math" data-tex="\(Q_0\)">\(Q_0\)</span> form a sigma algebra by complements, finite unions and strong limits of increasing unions. Bounded simple approximation then gives all of <span class="math" data-tex="\(L^\infty(E,p)\)">\(L^\infty(E,p)\)</span>, modulo null sets. For fixed <span class="math" data-tex="\(j\)">\(j\)</span>, dominated convergence in (A19) gives <span class="math" data-tex="\(M_{\mathbf1_{D_{j,k}}}\to1\)">\(M_{\mathbf1_{D_{j,k}}}\to1\)</span> strongly. Equation (A41) therefore places <span class="math" data-tex="\(V_{h_j}\)">\(V_{h_j}\)</span> in <span class="math" data-tex="\(Q_0\)">\(Q_0\)</span> by a strong limit. All generators in (A35) belong to <span class="math" data-tex="\(Q_0\)">\(Q_0\)</span>, so <span class="math" data-tex="\(Q_0=Q\)">\(Q_0=Q\)</span>.</p>
+<p>Finally pull these algebras back through the explicit unitaries (A17), (A20) and <span class="math" data-tex="\(B\)">\(B\)</span>. Their inverse images are increasing unital finite-dimensional algebras in the same original <span class="math" data-tex="\(M_\mu\)">\(M_\mu\)</span>, and generate it. This proves (A3). The earlier factor, trace, infinite-dimensionality, exact-kernel and characteristic-pair arguments now prove the theorem of Section 1 at the stated measure and operator foundations. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="OA-FLOW.ARP.PREREQUISITES-SOURCES"></span><a id="arp-prerequisites-sources"></a></p>
+<h2 id="8-illustration-prerequisites-and-sources">8. Illustration, prerequisites and sources</h2>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="The actual flip action, compatible primitive and finite-pattern exhaustion" src="assets/amenable-regular-product/afd-amenable-regular-product.svg" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p><em>Figure. Proof schematic for (A10), (A13), (A28)–(A34) and (A38)–(A41). The site pairs are the actual independent coordinates <span class="math" data-tex="\((e,j),(n^{-1},j)\)">\((e,j),(n^{-1},j)\)</span>, with <span class="math" data-tex="\(n\ne e\)">\(n\ne e\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span> outside the flipped levels, namely the second-coordinate projection of <span class="math" data-tex="\(\operatorname{supp}f\)">\(\operatorname{supp}f\)</span>. Each equality has probability <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. This is not a geometric ordering of <span class="math" data-tex="\(G\)">\(G\)</span>. The cocycle panel gives the exact primitive and multiplication-by-<span class="math" data-tex="\(b\)">\(b\)</span> convention. The matrix panel gives an exact four-sheet example and the general block formula; it does not assert that every <span class="math" data-tex="\(H_k\)">\(H_k\)</span>-class has four points. Each arrow is labelled by its map or inclusion. The diagram and its reproducible source are original.</em></p>
+<table>
+<thead>
+<tr>
+<th>Prerequisite</th>
+<th>Exact proof locator and use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compatible scalar pairs</td>
+<td><a href="OA-FLOW-CPP.html#cp-compatible">CPP Section 1</a>, (CP1), and <a href="OA-FLOW-TRP.html#trp-setting">TRP Section 1</a>, (TR1): all five identities, including inner compatibility, in the convention (ARP0).</td>
+</tr>
+<tr>
+<td>Bounded completion and ultrafilter limits</td>
+<td><a href="OA-FLOW-TRP.html#trp-setting">TRP Section 1</a>: bounded approximation, weak compactness, trace GNS realization and interval-bisection ultrafilter proof. These support Sections 2–4 here. Its Hilbert, continuous-calculus, normality, support and polar-decomposition inputs are listed in <a href="OA-FLOW-TRP.html#trp-input-boundary">TRP Section 12</a>.</td>
+</tr>
+<tr>
+<td>Concrete regular product and trace</td>
+<td><a href="OA-FLOW-TRP.html#trp-two-actions">TRP Sections 2–4</a>: both bounded multiplication actions, faithful normal trace, normal expectation and Fourier uniqueness. They identify the same represented <span class="math" data-tex="\(M_\mu\)">\(M_\mu\)</span>, rather than an abstract substitute.</td>
+</tr>
+<tr>
+<td>Full ambient action and inner kernel</td>
+<td><a href="OA-FLOW-TRP.html#trp-symmetry">TRP Sections 5–6</a>: the exact <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-phase, factor proof, entire inner kernel and characteristic pair.</td>
+</tr>
+<tr>
+<td>Actual tensor base and outerness</td>
+<td><a href="OA-FLOW-TRP.html#trp-bernoulli">TRP Section 8</a>: the represented fair tracial tensor on <span class="math" data-tex="\(G\times\mathbb N_{&gt;0}\)">\(G\times\mathbb N_{&gt;0}\)</span>, its infinite-dimensional factor property and the outer left <span class="math" data-tex="\(G\)">\(G\)</span>-action.</td>
+</tr>
+<tr>
+<td>Countable product probability</td>
+<td>Fair product measure, finite cylinder expectations, monotone-class density, dominated convergence and completion modulo null sets are retained elementary measure foundations. Sections 2–3 give the diagonal and freeness deductions using them.</td>
+</tr>
+<tr>
+<td>Standard Borel injection and images</td>
+<td><a href="../NCG-FOLIATIONS/companions/polish-spaces-and-standard-borel-spaces.html#a-encode-an-image-and-recover-its-parameter">Borel models, measurable inversion and Polish group quotients</a>, Sections 3–5, especially the one-to-one image theorem and standard Borel models. Finite selectors and ranks here are explicitly computed from the given countable action.</td>
+</tr>
+<tr>
+<td>Amenable action to finite relations</td>
+<td><a href="../OA-ERGODIC/reader/invariant-means-on-measured-relations.html#2-means-from-amenable-groups-and-finite-classes">Invariant means on measured relations</a>, Proposition 2.1; <a href="../OA-ERGODIC/reader/invariant-means-on-measured-relations.html#6-increasing-finite-relations">Theorem 6.1 and Corollary 6.2</a>, with the density, weighted-patch, residual-covering, tail-intersection and null-saturation proofs in Sections 1–6. The output is one invariant conull domain and every endpoint pair, with bounded finite stages.</td>
+</tr>
+<tr>
+<td>Mean approximation and scalar layers</td>
+<td><a href="../OA-ERGODIC/reader/means-folner-sets-and-regular-representations.html">Means, Følner sets, and regular representations</a>, Sections 1–3: the Reiter and layer arguments used by the measured-relation proof.</td>
+</tr>
+<tr>
+<td>Retained measured foundations</td>
+<td>Standard Borel one-to-one images; sigma-finite Radon–Nikodym theory, change of variables and chain rule; <span class="math" data-tex="\(L^\infty/L^1\)">\(L^\infty/L^1\)</span> duality and Hahn–Banach separation; Banach–Alaoglu and product weak-star compactness; Tonelli, finite-measure continuity and countable nonsingular null saturation. These are the entry foundations of the measured proof.</td>
+</tr>
+</tbody>
+</table>
+<p>Masamichi Takesaki, <em>Theory of Operator Algebras III</em>, XVII.3 Exercise 5, printed pp.293–294, motivates the prescribed-kernel regular-product question. The amenable-to-finite-relation theorem is due to Alain Connes, Jacob Feldman and Benjamin Weiss. The diagonal/flip identification, compatible-primitive construction and finite-pattern exhaustion used here have been proved above. No crossed-product AFD theorem, factor classification or dyadic conversion is used.</p>
+<p>For this actual regular recipe the amenable branch is now proved for infinite as well as finite <span class="math" data-tex="\(N\)">\(N\)</span>. TRP Section 10's <span class="math" data-tex="\(F_2\)">\(F_2\)</span> obstruction remains valid for the nonamenable regular recipe, and does not rule out every possible different AFD realization. An arbitrary nonamenable-<span class="math" data-tex="\(N\)">\(N\)</span> realization theorem, factor uniqueness, action classification and a type-III branch remain outside the result.</p>
+<p>[Takesaki] Masamichi Takesaki, <em>Theory of Operator Algebras III</em>, Encyclopaedia of Mathematical Sciences 127, Springer, 2003. <a href="https://doi.org/10.1007/978-3-662-10453-8">Publisher record</a>.</p>
+<p>[Connes–Feldman–Weiss] Alain Connes, Jacob Feldman and Benjamin Weiss, “An amenable equivalence relation is generated by a single transformation,” <em>Ergodic Theory and Dynamical Systems</em> 1 (1981), 431–450. <a href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/B3AB853E37B8B8C77565C2AABC7E47F1/S014338570000136Xa.pdf/an-amenable-equivalence-relation-is-generated-by-a-single-transformation.pdf">Freely readable full paper</a>; <a href="https://doi.org/10.1017/S014338570000136X">publisher record</a>.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-TG.html">Previous lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-ARP.md">Lesson source</a></nav></main></body></html>

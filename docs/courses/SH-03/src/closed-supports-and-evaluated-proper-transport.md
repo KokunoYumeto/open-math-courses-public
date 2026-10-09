@@ -4,7 +4,7 @@ The characteristic class follows an identity through exceptional restriction, or
 
 *Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources retain their named credit and their own terms.*
 
-The argument has three stages. First, closed direct image detects equality of two restriction comparisons. Second, tensor evaluation identifies the adjunction map that carries an endomorphism to its proper image. Finally, a graph factorization combines those comparisons and retains the closed support of the evaluated class. We use the identity, product evaluation and diagonal construction, the trace-normalized exceptional composition, and proper-support base change with its actual section map. The graph assembly below applies these maps explicitly; Proper characteristic classes and the compact index develops its compact-index consequence.
+The argument has three stages. First, closed direct image detects equality of two restriction comparisons. Second, tensor evaluation identifies the adjunction map that carries an endomorphism to its proper image. Finally, a graph factorization combines those comparisons and retains the closed support of the evaluated class. We use the [identity, product evaluation and diagonal construction](../../analytic-boundaries-and-constructible-traces/src/constructible-traces-and-local-euler-indices.md#the-identity-and-the-evaluated-tensor), the [trace-normalized exceptional composition](../../sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-composition--composition-restriction-and-change-of-base), and [proper-support base change with its actual section map](../../sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-basechange-bridge--a-finite-dimensional-base-change-proof). The interval examples use [constant-section acyclicity](../../sheaf-proof-readings/src/SH02/convex-acyclicity.md#sh02-ca-constant--constant-coefficients) and the [compact-support interval generator](../../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-euclidean--the-compact-support-generator). The graph assembly below applies these maps explicitly; [Proper characteristic classes and the compact index](proper-characteristic-classes-and-the-compact-index.md#the-supported-trace-transports-the-characteristic-class) develops its compact-index consequence.
 
 ## Name both adjunctions before composing their maps
 
@@ -16,7 +16,7 @@ For a map $f:Y\to X$, abbreviate
  L_f=Rf_!,\qquad S_f=Rf_*.
 \]
 
-The natural transformation $\pi_f:L_f\to S_f$ is the derived inclusion of properly supported sections into all sections. Its support-erasure proof (EX.36)–(EX.37a) checks compatibility with composition and base change on the same section maps. Thus its naturality is a statement about a specified transformation, not a choice of an isomorphism on objects with proper support. Write the adjunction maps as follows:
+The natural transformation $\pi_f:L_f\to S_f$ is the derived inclusion of properly supported sections into all sections. Its [support-erasure proof (EX.36)–(EX.37a)](../../sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-support-erasure--forgetting-support-and-checking-the-resulting-maps) checks compatibility with composition and base change on the same section maps. Thus its naturality is a statement about a specified transformation, not a choice of an isomorphism on objects with proper support. Write the adjunction maps as follows:
 
 | Adjunction | Unit | Counit |
 |---|---|---|
@@ -44,7 +44,7 @@ For a closed embedding $i$, $L_i=S_i=i_*$ and $i^{-1}i_*\simeq\mathrm{id}$. Its 
  \qquad\text{(2)}
 \]
 
-Indeed $\beta_{i,A}=i^{-1}t_{i,A}$ under $i^{-1}i_*i^!A\simeq i^!A$. Applying $i_*$ and using naturality of the ordinary unit gives (2). Conversely, applying $i^{-1}$ to (2) recovers this formula, because the unit restricts to the identity on the closed image. The [closed-support identity $i_*i^!A=R\Gamma_ZA$](../sheaf-proof-readings/SH02-exceptional-operations.html#SH02-EX-EMBEDDING) identifies $t_{i,A}$ with forgetting that closed support. Since $i_*$ is exact and fully faithful, including on the bounded-below derived category, it detects equality of these maps.
+Indeed $\beta_{i,A}=i^{-1}t_{i,A}$ under $i^{-1}i_*i^!A\simeq i^!A$. Applying $i_*$ and using naturality of the ordinary unit gives (2). Conversely, applying $i^{-1}$ to (2) recovers this formula, because the unit restricts to the identity on the closed image. The [closed-support identity $i_*i^!A=R\Gamma_ZA$](../../sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-embedding--open-closed-and-locally-closed-inclusions) identifies $t_{i,A}$ with forgetting that closed support. Since $i_*$ is exact and fully faithful, including on the bounded-below derived category, it detects equality of these maps.
 
 ## A composite closed embedding keeps the ordinary counit
 
@@ -216,7 +216,7 @@ g^{-1}L_fg'_*D
 \xrightarrow{L_{f'}b_{g',D}}L_{f'}D.
 \]
 
-This is the closed-horizontal case of the mixed exchange identity (EX.37a). It can be checked before deriving: both sides pull a properly supported section to the fibre-product square and evaluate it at its pulled-back germ. Since the horizontal inclusions are closed, their proper and ordinary direct images coincide. The finite proper-support model and its pullback compute base change and composition using those same maps, so the equality survives derivation. No support is erased in either vertical direction.
+This is the closed-horizontal case of [the mixed exchange identity (EX.37a)](../../sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-support-erasure--forgetting-support-and-checking-the-resulting-maps). It can be checked before deriving: both sides pull a properly supported section to the fibre-product square and evaluate it at its pulled-back germ. Since the horizontal inclusions are closed, their proper and ordinary direct images coincide. The finite proper-support model and its pullback compute base change and composition using those same maps, so the equality survives derivation. No support is erased in either vertical direction.
 
 The left side of (15) has transpose $B_G$, by the ordinary triangular identity. The transpose of the right side, with $D=g'^{-1}G$, is
 
@@ -284,7 +284,7 @@ The first map is the inverse projection-formula comparison. The second uses the 
 
 **Proof.** Tensor–Hom adjunction identifies maps from $S_fH$ into $R\mathcal Hom(L_fG,F)$ with pairings from $L_fG\otimes S_fH$ to $F$, using the stated symmetry. Define $v$ as the curry of (18). Evaluating that curry returns (18) by the tensor–Hom triangular identity.
 
-To prove that this actual map is invertible, test against any $C\in D^+(k_X)$. The ordinary adjunction, tensor–Hom adjunction, exceptional adjunction and projection formula (EX.11) give
+To prove that this actual map is invertible, test against any $C\in D^+(k_X)$. The ordinary adjunction, tensor–Hom adjunction, exceptional adjunction and [projection formula (EX.11)](../../sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-projection--projection-with-arbitrary-coefficients) give
 
 \[
 \begin{aligned}
@@ -297,7 +297,7 @@ To prove that this actual map is invertible, test against any $C\in D^+(k_X)$. T
 \end{aligned}
 \]
 
-All tensors lie in $D^+$ because $C$ is bounded below and $G,L_fG$ are bounded. The two represented Hom objects also lie in $D^+$. Tracking the counits through this chain gives the ordinary $b_H$, then evaluation and the exceptional $t_F$ in (18); exchanging the displayed tensor factors uses exactly its graded symmetry. Hence this natural bijection is induced by $v$, not another map between its objects. Yoneda proves that $v$ is an isomorphism. The finite-resolution calculation (EX.20a) and evaluated comparison (EX.22) give the same normalization on every open set. $\square$
+All tensors lie in $D^+$ because $C$ is bounded below and $G,L_fG$ are bounded. The two represented Hom objects also lie in $D^+$. Tracking the counits through this chain gives the ordinary $b_H$, then evaluation and the exceptional $t_F$ in (18); exchanging the displayed tensor factors uses exactly its graded symmetry. Hence this natural bijection is induced by $v$, not another map between its objects. Yoneda proves that $v$ is an isomorphism. The [finite-resolution calculation (EX.20a) and evaluated comparison (EX.22)](../../sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-internal--internal-adjunction-and-its-tensor-structure) give the same normalization on every open set. $\square$
 
 The bounded first input is retained throughout this proof. An arbitrary bounded-below $G$ can have internal Hom unbounded below: on a point, $G=\bigoplus_{n\ge0}k[-n]$ and $F=k$ have dual cohomology in every degree $-n$. The present argument does not use an unbounded proper-image construction to enlarge its stated domain.
 
@@ -311,7 +311,7 @@ For its later geometric application, take $f:Y\to X$ real analytic between real 
  P=L_fG\simeq S_fG
 \]
 
-is bounded constructible by the proper perfect-image theorem for analytic maps. Analyticity is used in this constructibility conclusion; it is not a consequence of assuming only that the two underlying manifolds are analytic. The unit $u_G:G\to f^!P$ induces
+is bounded constructible by the [proper perfect-image theorem for analytic maps](../../sheaf-proof-readings/src/SH03/perfect-coefficients-on-compact-fibres.md#proper-direct-image-with-perfect-stalks). Analyticity is used in this constructibility conclusion; it is not a consequence of assuming only that the two underlying manifolds are analytic. The unit $u_G:G\to f^!P$ induces
 
 \[
  R\mathcal Hom(G,G)\longrightarrow R\mathcal Hom(G,f^!P).
@@ -362,7 +362,7 @@ Indeed the fibre-product condition for $(x,y)$ and $z\in X$ is $(x,f(y))=(z,z)$.
 
 We now apply these two placements to their actual product objects. This completes the graph comparison rather than only identifying the square of spaces.
 
-Assume the analytic proper-support hypotheses just stated, and put $Z=\operatorname{supp}(G)$, $E=D_YG$, $P=L_fG\simeq S_fG$, $Q=D_XP$, $A=G\boxtimes E$ and $\mathscr K=P\boxtimes E$. The constructible duality theorem makes $E,Q$ bounded constructible. The supports of $E$ and $R\mathcal Hom(G,G)$ lie in $Z$, because these objects vanish on every open set where $G$ does. Thus support forgetting is invertible on them. The same holds for $f_1$ on $A$ and for $f_2$ on $\mathscr K$: their supports lie respectively in $Z\times Z$ and $\operatorname{supp}(P)\times Z$, where the relevant maps are restrictions of the proper product maps $f|_Z\times\mathrm{id}$ and $\mathrm{id}\times f|_Z$.
+Assume the analytic proper-support hypotheses just stated, and put $Z=\operatorname{supp}(G)$, $E=D_YG$, $P=L_fG\simeq S_fG$, $Q=D_XP$, $A=G\boxtimes E$ and $\mathscr K=P\boxtimes E$. The [constructible duality theorem](../../sheaf-proof-readings/src/SH03/constructible-costalks-and-verdier-duality.md#the-evaluation-map-is-biduality) makes $E,Q$ bounded constructible. The supports of $E$ and $R\mathcal Hom(G,G)$ lie in $Z$, because these objects vanish on every open set where $G$ does. Thus support forgetting is invertible on them. The same holds for $f_1$ on $A$ and for $f_2$ on $\mathscr K$: their supports lie respectively in $Z\times Z$ and $\operatorname{supp}(P)\times Z$, where the relevant maps are restrictions of the proper product maps $f|_Z\times\mathrm{id}$ and $\mathrm{id}\times f|_Z$.
 
 Internal adjunction with target $\omega_X$ defines proper duality as the actual map $d=v_E\pi_{f,E}:L_fE\xrightarrow{\sim}Q$, using $f^!\omega_X=\omega_Y$. Projection and proper-support base change give
 
@@ -403,13 +403,13 @@ L_f\beta_{\gamma,\mathscr K}
 
 Naturality of $\beta$ with respect to $\sigma_2$ changes the middle factor to $\beta_{\delta_X,P\boxtimes Q}$ and gives exactly the asserted equation. Thus both substantive cells of the graph diagram are the closed comparisons already proved above.
 
-It remains to identify $\alpha$ on endomorphisms. For a bounded constructible $B$ on a manifold $W$, let $\theta_B:R\mathcal Hom(B,B)\xrightarrow{\sim}\delta_W^!(B\boxtimes D_WB)$ be the inverse of the evaluated diagonal identification. Let $\rho:S_fR\mathcal Hom(G,G)\to R\mathcal Hom(P,P)$ be postcomposition with $u_G$ followed by (17), the endomorphism comparison used in (19). We claim
+It remains to identify $\alpha$ on endomorphisms. For a bounded constructible $B$ on a manifold $W$, let $\theta_B:R\mathcal Hom(B,B)\xrightarrow{\sim}\delta_W^!(B\boxtimes D_WB)$ be the inverse of the [evaluated diagonal identification](../../analytic-boundaries-and-constructible-traces/src/constructible-traces-and-local-euler-indices.md#the-identity-and-the-evaluated-tensor). Let $\rho:S_fR\mathcal Hom(G,G)\to R\mathcal Hom(P,P)$ be postcomposition with $u_G$ followed by (17), the endomorphism comparison used in (19). We claim
 
 \[
 \alpha L_f\theta_G=\theta_P\rho\,\pi_{f,R\mathcal Hom(G,G)}.
 \]
 
-To verify the claim, write $p_Y,p_X$ for the projections of $X\times Y$. The actual external-Hom evaluation, with the constructible factor on $Y$, and exceptional inverse image of Hom (EX.26) give
+To verify the claim, write $p_Y,p_X$ for the projections of $X\times Y$. The actual [external-Hom evaluation](../../sheaf-proof-readings/src/SH02/cohomological-biduality.md#sh02-cb-external-hom--a-constructible-factor-in-a-product), with the constructible factor on $Y$, and [exceptional inverse image of Hom (EX.26)](../../sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-hom--exceptional-inverse-image-of-internal-hom) give
 
 \[
 \mathscr K\simeq R\mathcal Hom(p_Y^{-1}G,p_X^!P),
@@ -419,7 +419,7 @@ To verify the claim, write $p_Y,p_X$ for the projections of $X\times Y$. The act
 
 Under the corresponding identification $f_1^!\mathscr K\simeq f^!P\boxtimes E$, the candidate $u_G\boxtimes1_E$ has adjunction transpose $(t_P L_fu_G)\boxtimes1_E=\mathrm{id}_{\mathscr K}$. Uniqueness of the transpose makes it exactly $U$. Thus $\delta_Y^!U$ is postcomposition with $u_G$, including its evaluation normalization.
 
-For the rest of $\alpha$, exceptional exchange and support forgetting, (EX.39), identify $c$ with the ordinary exceptional base-change isomorphism in this supported situation: $\gamma^!\mathscr K$ is supported on $Z$ by the displayed Hom formula, and $f_2$ is proper on $\operatorname{supp}(\mathscr K)$. Both comparisons have the same closed-counit transpose. If $q_1,q_2:X\times X\to X$ are the target projections, proper-support base change and exceptional composition give $L_{f_2}p_Y^{-1}G=q_2^{-1}P$ and $f_2^!q_1^!P=p_X^!P$. Internal adjunction for $f_2$ therefore gives
+For the rest of $\alpha$, [exceptional exchange and support forgetting, (EX.39)](../../sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-support-erasure--forgetting-support-and-checking-the-resulting-maps), identify $c$ with the ordinary exceptional base-change isomorphism in this supported situation: $\gamma^!\mathscr K$ is supported on $Z$ by the displayed Hom formula, and $f_2$ is proper on $\operatorname{supp}(\mathscr K)$. Both comparisons have the same closed-counit transpose. If $q_1,q_2:X\times X\to X$ are the target projections, proper-support base change and exceptional composition give $L_{f_2}p_Y^{-1}G=q_2^{-1}P$ and $f_2^!q_1^!P=p_X^!P$. Internal adjunction for $f_2$ therefore gives
 
 \[
 S_{f_2}\mathscr K
@@ -458,7 +458,7 @@ This follows directly by restricting $\sigma_2$ to the cartesian graph. Its eval
 t_{\omega_X}L_f\operatorname{tr}_G\,m=\operatorname{tr}_P.
 \]
 
-Here the two possible orders of proper projection require a genuine comparison. Let $\widetilde v_E:L_fE\to R\mathcal Hom(S_fG,\omega_X)$ be the curry of projection on $E$, the ordinary counit on $G$, evaluation and trace. The evaluated support-forgetting identity (EX.41) says
+Here the two possible orders of proper projection require a genuine comparison. Let $\widetilde v_E:L_fE\to R\mathcal Hom(S_fG,\omega_X)$ be the curry of projection on $E$, the ordinary counit on $G$, evaluation and trace. The [evaluated support-forgetting identity (EX.41)](../../sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-hom-support-compatibility--evaluation-when-either-support-is-forgotten) says
 
 \[
 R\mathcal Hom(\pi_{f,G},\omega_X)\,\widetilde v_E
@@ -579,7 +579,7 @@ Here $f$ is analytic and proper on $Z=\operatorname{supp}(G)$, as in the graph a
 \xrightarrow{\sim}\operatorname{Hom}(V,A).
 \]
 
-Thus a map from such $V$ has one and only one supported lift. Merely knowing that a map from $k_X$ restricts to zero outside $S$ would not prove this uniqueness. This is the supported-source construction of the characteristic class.
+Thus a map from such $V$ has one and only one supported lift. Merely knowing that a map from $k_X$ restricts to zero outside $S$ would not prove this uniqueness. This is the [supported-source construction of the characteristic class](../../analytic-boundaries-and-constructible-traces/src/constructible-traces-and-local-euler-indices.md#the-characteristic-class-has-closed-support).
 
 The object $T_Z$ is supported on $Z$. Properness there identifies $S_fT_Z\simeq L_fT_Z$, and the composite
 
@@ -600,10 +600,10 @@ Likewise $L_fR\mathcal Hom(G,G)$ is supported on $S$, so the two paths of the ev
 f_\#C(G)=C(P)\quad\text{in }H_S^0(X;\omega_X),
 \]
 
-where the class of $P$ is enlarged from $\operatorname{supp}(P)\subset S$ to $S$. The image $S$ need not equal the output support. This proves the support map and its compatibility with the actual evaluated identity, rather than only equality after forgetting support. For a point target and compact $Z$, the compact index calculation identifies this trace with the finite coefficient supertrace.
+where the class of $P$ is enlarged from $\operatorname{supp}(P)\subset S$ to $S$. The image $S$ need not equal the output support. This proves the support map and its compatibility with the actual evaluated identity, rather than only equality after forgetting support. For a point target and compact $Z$, the [compact index calculation](proper-characteristic-classes-and-the-compact-index.md#compact-support-gives-an-integer-index) identifies this trace with the finite coefficient supertrace.
 
 ## Sources and mathematical credit
 
-Pierre Schapira, [*An Introduction to Sheaves on Grothendieck Topologies*](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf), the freely available edition dated 01/08/2026, gives exceptional composition and internal exceptional adjunction in §4.6, especially Corollary 4.6.2 and Proposition 4.6.6 (pp. 95–96). Propositions 4.6.7–4.6.8 (pp. 96–97) treat closed support and the diagonal Hom formula; §4.7 (pp. 97–98) introduces the dualizing object. These results are the human mathematical sources for the operations used here.
+Pierre Schapira, [*An Introduction to Sheaves on Grothendieck Topologies*](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf#page=95), the freely available edition dated 01/08/2026, gives exceptional composition and internal exceptional adjunction in §4.6, especially Corollary 4.6.2 and Proposition 4.6.6 (pp. 95–96). Propositions 4.6.7–4.6.8 (pp. 96–97) treat closed support and the diagonal Hom formula; §4.7 (pp. 97–98) introduces the dualizing object. These results are the human mathematical sources for the operations used here.
 
 The closed-comparison cancellations, explicit evaluated graph diagram, supported-source lifting argument and six worked exercises are developed here from the named programme proofs of those operations. The internal-Hom bijection keeps the first input bounded and the target bounded below. Proper constructibility additionally uses the stated analytic-map and support hypotheses. Source statements about adjunction objects alone do not replace these comparisons of the actual maps.

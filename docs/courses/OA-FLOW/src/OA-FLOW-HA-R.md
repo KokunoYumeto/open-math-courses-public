@@ -4,7 +4,7 @@
 
 The Hilbert space is arbitrary. Inner products are linear in the first variable. The inputs are [CI-1–3](OA-FLOW-CI.md#oa-flow.ci.1), [BD-1–4](OA-FLOW-BD.md#oa-flow.bd.1), their exact spectral inputs, and only the closed-form representation proved in [FF-4](OA-FLOW-FF.md#oa-flow.ff.5). In particular the Fourier and modular parts of those later applications are not inputs here. The earlier Hilbert facts are [SF-0](OA-FLOW-SF.md#oa-flow.shared-foundations.sf-0) and [SB-0](OA-FLOW-SF.md#OA-FLOW.SF.SB0); the full spectral-domain proof is [SB-1–SB-6](OA-FLOW-SF.md#OA-FLOW.SF.SB1). Scalar spectral convergence uses [SC-04–05](OA-FLOW-SC.md#sc-04).
 
-A free human development route is [Boey's institutional thesis, Definitions 4.1/4.3 and Lemmas 4.6–4.10, printed pp.25–31](https://uwspace.uwaterloo.ca/bitstreams/245c2a41-48ee-4c8d-ad38-95a8353dc3d1/download#page=31). The proof below supplies the graph-core, closed-range-support, cutoff membership and full-domain arguments needed by the modular application. 
+A free human development route is [Boey's institutional thesis, Definitions 4.1/4.3 and Lemmas 4.6–4.10, printed pp.25–31](https://dspacemainprd01.lib.uwaterloo.ca/server/api/core/bitstreams/245c2a41-48ee-4c8d-ad38-95a8353dc3d1/content#page=31). The proof below supplies the graph-core, closed-range-support, cutoff membership and full-domain arguments needed by the modular application. 
 
 <a id="oa-flow.ha-r.1"></a>
 

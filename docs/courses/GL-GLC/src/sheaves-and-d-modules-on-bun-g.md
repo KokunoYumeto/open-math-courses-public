@@ -4931,6 +4931,1425 @@ Nonetheless \(L\) is the tautological \(\mathcal D_L\)-module and
 
 For a middle occurrence of this line in two kernels, the local expression for (RH.17) is the same evaluation \(Q_L\otimes_{\mathcal D_L}P_L\to\mathcal D\). It is invariant under the just-checked transition. If three kernels are composed, the two middle evaluations contract independent inverse pairs, so both parenthesizations give the same operator multiplication. The example verifies both the gluing obstruction to a guessed connection and the valid Morita cancellation that the half twist requires.
 
+### 3.59. A coefficient functor into the full spherical category
+
+For §§3.59–3.62 the ground and coefficient field is \(\mathbf C\). Fix a connected reductive complex group \(G\), its torus and Borel, and the cycle pinning in Identifying the dual group, §8.6. The particular ordinary Satake equivalence used here is
+
+\[
+ s:\operatorname{Rep}^{\mathrm{fd}}_{\mathbf C}(\widehat G)
+   \xrightarrow{\sim}\operatorname{Sat}_G(\mathbf C),
+ \qquad s(V_\lambda)=IC_\lambda .
+ \tag{SH.1}
+\]
+
+This is the actual symmetric tensor equivalence of that lesson's Theorem 8.3, with the component-adjusted fusion symmetry. It is not a derived equivalence. Its matching complete proofs are Convolution and rigidity, §§1–9, Fusion and the commutativity constraint, §§1–7, Tannakian categories, §§1–8 and Theorem 10.1, and The fibre functor and the Tannakian group, §§1–9. They construct the finite correspondence, normalized torsor coefficient, proper image, actual evaluation maps, both triangles, moving-point exchange, weight tensor maps, and the reconstructed group on every test algebra. Identifying the dual group, §§7–8, then identifies the integral root datum and removes every finite-stage unipotent kernel by the proved IC self-extension vanishing. These are the earlier proofs supplying (SH.1).
+
+Write \(\mathcal S_{\rm amb}\) for the ambient spherical DG category, retaining all derived equivariance and mapping complexes, rather than deriving its perverse heart. On finite Schubert supports, its classical model uses the full finite-jet equivariant derived category. The actual free-frame quotients, acyclicity estimates and comparisons are proved in Equivariant perverse sheaves and perverse sheaves on stacks, Appendix B, Theorem B.9; its first action isomorphism and cocycle alone describe only the heart. The DG Hom models and the extra equivariant unit morphisms are specified in Derived Satake, §§1–2. In particular the ambient t-structure gives
+
+\[
+ H^n\operatorname{RHom}_{\mathcal S_{\rm amb}}(A,B)=0
+ \quad(n<0,\ A,B\in\operatorname{Sat}_G).
+ \tag{SH.2}
+\]
+
+There is no vanishing assertion for positive degrees.
+
+**Lemma.** Let \(\mathcal A\) be a small semisimple abelian \(\mathbf C\)-linear category and \(j:\mathcal A\to\mathcal C^\heartsuit\) a \(\mathbf C\)-linear additive functor into the heart of a stable DG category. It extends to an exact DG functor \(D^b_{\rm dg}(\mathcal A)\to\mathcal C\). A supplied monoidal heart functor extends monoidally when the target product is exact in both variables. A specified symmetric coefficient constraint and its relations also extend; a symmetry on the whole target is not required.
+
+**Proof.** Let \(\mathcal H\) be the full ordinary heart subcategory on the objects \(jA\). In the full DG model on those objects replace a mapping complex \(K\) by its good nonpositive truncation: retain \(K^n\) for \(n<0\), use \(\ker(d:K^0\to K^1)\) for degree zero, and use zero for positive degrees. Composition restricts, by its graded Leibniz identity. Projection to degree-zero cohomology gives a DG functor
+
+\[
+ q:\mathcal H_-\longrightarrow\mathcal H,\qquad
+ \operatorname{RHom}_{\mathcal H_-}(jA,jB)
+   =\tau_{\le0}\operatorname{RHom}_{\mathcal C}(jA,jB).
+ \tag{SH.3}
+\]
+
+It is a quasi-isomorphism on every mapping complex, since the negative cohomology vanishes by heart orthogonality. It is onto the indicated objects. Compose the given ordinary \(j:\mathcal A\to\mathcal H\) with an enhanced inverse of \(q\), and then with the actual inclusion \(\mathcal H_-\to\mathcal C\).
+
+Here an enhanced inverse retains its units, counits and coherent composition. One construction uses the graph bimodule of \(q\) and representable modules. Restriction and tensor extension along that bimodule have evaluation maps which are quasi-isomorphisms on representables by (SH.3). In their augmented composition bar, insertion of the identity contracts the augmentation. Its evaluations therefore give the two inverse comparisons on representables and on their finite sums, cones and retracts. This constructs the needed inverse with its data, not an inverse selected only on the triangulated homotopy category.
+
+The tensor maps restrict to \(\mathcal H_-\), because products of nonpositive degrees are nonpositive and products of degree-zero cycles are cycles. The supplied associators and unitors restrict with their homotopies. The chosen coefficient exchange can be lifted along \(q\) with its relations: a difference of degree-zero composites representing the same heart map is a boundary and has a degree-minus-one homotopy; the next obstruction lies in degree-minus-one cohomology, and successive obstructions in successively lower cohomology. They all vanish. The same calculation applies in every tensor arity, since each coefficient product remains in the indicated heart. Each component of the mapping space with specified degree-zero class is contractible. Thus the naturality, associativity, unit, double-exchange and hexagon diagrams and their higher compatibilities lift coherently. Their images are the specified coefficient maps in the target, without a target-wide symmetry assertion.
+
+Extend this enhanced functor to finite twisted complexes. It retains the differential arrows and their homotopies; representatives of a heart differential are not incorrectly assumed to compose to zero as chain maps. Explicitly a relation which is zero in \(H^0\) has its degree-minus-one homotopy, and (SH.2) kills each subsequent obstruction. Functoriality of the DG construction retains this data for maps between complexes as well.
+
+Semisimplicity identifies these finite twisted complexes with the bounded derived category. For a bounded coefficient complex choose splittings
+
+\[
+ Z^i=B^i\oplus H^i,\qquad
+ A^i=Z^i\oplus W^i,\qquad
+ d:W^i\xrightarrow{\sim}B^{i+1}.
+ \tag{SH.4}
+\]
+
+It is the sum of its zero-differential cohomology terms and these two-term isomorphism complexes. The latter contract by the inverse of \(d\). Every bounded acyclic complex is consequently contractible, and every quasi-isomorphism is a homotopy equivalence by the same calculation on its cone. Localization adds no mapping information to this finite pretriangulated model. Its idempotents split in the finite cohomology description. The target functor therefore descends to the stated bounded derived category.
+
+On coefficient complexes the tensor differential and exchange are
+
+\[
+ d(x\otimes y)=dx\otimes y+(-1)^{|x|}x\otimes dy,
+ \qquad
+ c(x\otimes y)=(-1)^{|x||y|}c_{\mathcal A}(x\otimes y).
+ \tag{SH.5}
+\]
+
+Expanding \(d^2\) cancels the mixed terms. Associativity uses the same ordered triple degrees; the chain symmetry and hexagons use the identities \(p(q+r)=pq+pr\) and \((p+q)r=pr+qr\) modulo two. Exactness in each target variable extends the supplied heart tensor maps over the finite cones. This proves the lemma and every indicated coefficient relation. ∎
+
+Apply the lemma to (SH.1) and the actual convolution product. Convolution on the ambient derived category is the proper endpoint image of the torsor-descended external product. On a finite frame model all arrows are pullback, external tensor, descent and proper direct image. They are exact DG functors. Three- and four-step correspondences identify the actual associator and its pentagon, as in the earlier convolution proof; the same resolution maps retain the derived morphisms. The lemma therefore constructs
+
+\[
+ S_{\rm fin}:D^b_{\rm dg}
+      \bigl(\operatorname{Rep}^{\mathrm{fd}}_{\mathbf C}(\widehat G)\bigr)
+       \longrightarrow\mathcal S_{\rm amb}.
+ \tag{SH.6}
+\]
+
+Its products, duality maps and coefficient exchanges are the actual chosen Satake maps. Use the ordinary presentable spherical category, with its full derived equivariant descent, as the target of this finite functor. It admits colimits; this does not define it to be the ind-category of its IC objects. The finite functor extends continuously:
+
+\[
+ S:\operatorname{Ind}D^b_{\rm dg}
+      \bigl(\operatorname{Rep}^{\mathrm{fd}}_{\mathbf C}(\widehat G)\bigr)
+       \longrightarrow\mathcal S_{\rm amb},
+ \qquad S(\mathop{\rm colim}_i V_i)=
+                    \mathop{\rm colim}_i S_{\rm fin}(V_i).
+ \tag{SH.7}
+\]
+
+The representable bar just used gives this extension independently of the presentation. On finite coefficients the tensor comparisons are already constructed; separate continuity extends them through the common double colimit. This does not say that the ICs become compact after equivariance, nor identify ordinary and renormalized spherical categories. All higher ambient morphisms remain present.
+
+### 3.60. Actual regular D-module coefficients and fusion shifts
+
+The coefficients in (SH.6) have a genuine regular D-module realization. For a singular finite support \(Z\), embed an affine open in a smooth ambient \(W\) and use regular holonomic D-modules supported on \(Z\). The actual RH equivalence on \(W\) restricts to sheaves supported on \(Z\): restrictions to the complementary open commute with RH, and each vanishes exactly when the other does. Thus all mapping complexes and attaching maps are retained. Smooth ambient comparisons are the projection/graph equivalences of Kashiwara's equivalence and singular spaces, Theorem 5.1 and §5. Their local proof applies Kashiwara to a smooth graph containing \(Z\), never to \(Z\) as a smooth scheme. Direct-image composition gives the comparisons for three or four ambients; the actual RH comparisons preserve them. On affine overlaps they glue with those units and counits. This is the supported regular theory, rather than the operator ring of a singular coordinate algebra.
+
+The same construction on the finite-jet action nerve retains the full derived equivariance. On each of its finite chart/ambient models use the complete general RH equivalence and all its actual four-map comparisons, proved in the RH lesson's §1. Their composition data compare the entire nerve. Take the coherent limit as in (RH.7)–(RH.9), then ind-extend the finite coefficients when required. No equivalence of hearts is being used to reconstruct that ambient limit. Denote the resulting actual coefficient by \(S_D(V)\).
+
+For a smooth map \(f\) of relative dimension \(e\), the perverse-normalized sheaf pullback \(f^*[e]\) is its extraordinary pullback \(f^![-e]\). Accordingly the operator normalization is
+
+\[
+ f^![-e]\quad\longleftrightarrow\quad f^{\mathrm{an},*}[e].
+ \tag{SH.8}
+\]
+
+In a finite convolution frame both maps have relative dimension \(e_n=n\dim G\). Apply (SH.8) to the two sides of the torsor descent formula (2.1) in the convolution lesson. The two \([-e_n]\) shifts cancel; the actual smooth RH comparison has the same \((2\pi i)^{-e_n}\) on both sides in the specified flat frames, so that coefficient cancels as well. The descended D-module is therefore the actual twisted external coefficient with no unexplained jet shift. Proper image compares by the RH trace map, including its residue normalization. This proves that the operator convolution and its actual associators on these coefficients realize (SH.6), not merely that the two products have equal dimensions.
+
+For an ordered tuple of coefficient heart objects \(P_1,\ldots,P_r\), the fusion lesson constructs a proper moving chain and its actual endpoint coefficient
+
+\[
+ \mathcal F_r(P_1,\ldots,P_r)
+    =Rm_{r*}(\mathcal A_r[r])
+    =j_{r!*}\bigl((P_1\boxtimes\cdots\boxtimes P_r)
+                             \boxtimes\mathbf C_{U_r}[r]\bigr).
+ \tag{SH.9}
+\]
+
+This is valid on every smooth complex curve after its proved full-coordinate descent. The family is universally locally acyclic over the ordered-point base. The proof uses the proper stratified-product construction, retains all attaching maps, and moves the actual proper image through the punctured-disc cover and special restriction. It does not assume a general nearby-cycle t-exactness theorem.
+
+Let a partial diagonal have \(b\) distinct blocks, let \(c=r-b\), and convolve the labels within each block in their specified order. The actual collapse of intermediate bundles and proper composition give
+
+\[
+ i^*\mathcal F_r[-c]\simeq
+      \mathcal F_b(P_{\mathrm{block}\,1},\ldots,
+                                      P_{\mathrm{block}\,b}).
+ \tag{SH.10}
+\]
+
+The shifts can also be read directly: the total source normalization is \([r]\), while the \(b\)-point family has \([b]\). Universal local acyclicity gives \(i^!\mathcal F_r=i^*\mathcal F_r[-2c]\), with the complex orientation of the normal parameter directions. Hence the actual D-module comparison is
+
+\[
+ i^!\mathcal F_{r,D}[c]\simeq
+      \mathcal F_{b,D}(S_D(V_{\mathrm{block}\,1}),\ldots).
+ \tag{SH.11}
+\]
+
+At a fixed \(r\)-tuple the normalization is \(i_{\vec x}^!\mathcal F_{r,D}[r]\). For the full diagonal followed by a point restriction, (SH.11) composes to precisely that normalization, since \((r-1)+1=r\). These are the actual inverse-transfer maps, with the RH comparison constants of §3.55 retained, not raw flat-frame identities.
+
+On the distinct-point locus the coefficient permutation is the external-product exchange and the identity on the **one** base factor \(\mathbf C_{U_r}[r]\). It does not exchange \(r\) separately shifted base factors. On homogeneous components use
+
+\[
+ e(\lambda)=\langle2\rho,\lambda\rangle\bmod2,\qquad
+ c'_{P,Q}=(-1)^{e(P)e(Q)}c_{P,Q}.
+ \tag{SH.12}
+\]
+
+The fusion lesson proves that \(e\) is a component homomorphism and that ordinary cohomology on each component has that parity. Thus \(c'\) is the constraint in (SH.1). Its scalar is extended to the whole fusion family before restriction. Products of these scalars give the permutation maps in every arity. Their two hexagons and double exchange follow from bilinearity of \(ef\); their associators are the actual partial-collapse comparisons (SH.10). Adding coefficient cochain shifts uses the further Koszul factor in (SH.5).
+
+The finite coefficient functors in every arity are complex-linear and additive on the semisimple tuple category. Their values in (SH.9) are perverse. Apply the proof of the lemma to their ordinary functors into the full perverse heart on the moving target; full faithfulness of those tuple functors is not required. The natural comparison maps (SH.10), after their indicated shifts, are maps between perverse values. Their negative Hom cohomology vanishes, so the same nonpositive truncation constructs their entire coherent DG relations. Finite twisted complexes and then colimits extend them. Consequently these fusion coefficients, all collision comparisons, exchanges and unit maps are constructed for the DG coefficient category of (SH.7). Their ambient higher morphisms have not been discarded.
+
+### 3.61. The resulting complex coefficient Hecke functors
+
+Let \(X\) be a smooth projective complex curve and \(Y=\operatorname{Bun}_G(X)\), with every genus and every component retained. Let \(\mathcal H_{X^r}\) be the endpoint Hecke stack: a source bundle, a target bundle, ordered marked sections, and an identification away from their graphs. For bounded coefficient supports the finite moving construction above bounds this correspondence, while the intermediate bundles belong to its proper chain resolution. Write
+
+\[
+ h_{\rm in}:\mathcal H_{X^r}\longrightarrow Y,\qquad
+ h_{\rm out}:\mathcal H_{X^r}\longrightarrow Y\times X^r .
+ \tag{SH.13}
+\]
+
+The bounded \(h_{\rm out}\) is projective. To check it over a smooth bundle chart, reverse the endpoint description and trivialize the target bundle on a sufficiently deep finite divisor. The source modifications have the inverse bounded types. The finite endpoint is the closed stable-lattice locus in the Plücker Grassmannian construction of the fusion lesson. A common finite bound and a product of its Plücker line bundles give an equivariant relatively ample line. Its finite-jet linearization descends through the target divisor-frame torsor; relative projectivity is therefore preserved on the bundle chart. The bounded chain is an iterated associated projective support and maps properly to this endpoint. Its maps preserve the fixed off-divisor identification. The construction and closed equations are retained after every parameter base change. This uses the full scheme constructions, including nilpotent parameter rings, rather than only the classification of geometric loop cosets.
+
+We need the full unbounded correspondence calculus, including singular finite supports. Here is the extension that is used below.
+
+**Projective correspondence lemma.** Let \(B\) be smooth, separated and of finite type. Let \(f:Z\to B\) be projective, with \(Z\) allowed to be singular. Define the full D-module category of \(Z\) by supported modules in a smooth ambient, with the projection/graph comparisons of Theorem 5.1 cited in §3.60. Direct image \(f_*\) preserves colimits. For a smooth finite-type \(B'\) and any map \(g:B'\to B\), its actual base-change comparison is
+
+\[
+ g^!f_*Q\simeq f'_*g_Z^!Q,\qquad
+ Z'=Z\times_BB',
+ \tag{SH.14}
+\]
+
+for every unbounded \(Q\). The projection formula with \(\otimes^!\) holds for unbounded inputs. These maps retain composition, localization, and ordered transfer evaluation; no smoothness of \(Z'\) is inferred.
+
+**Proof.** The bounded smooth-variety proofs, including the maps themselves, are Adjunctions, base change and the projection formula, §§1–3, Theorems 2.1 and 3.1. We give the additional steps.
+
+First work with a map of smooth finite-type schemes. Factor it into its closed graph followed by a product projection. Closed graph direct image is tensor with the backward transfer, flat on its right operator side. The projection uses its finite relative Spencer complex. Over an affine target, a finite affine intersection cover computes every quasi-coherent coefficient column before totalizing the finite Spencer and Čech directions. Each column operation preserves colimits. The differential may be a differential operator; it is retained between these computed columns, rather than treated as a structure-sheaf-linear map. This defines the full unbounded direct image, proves continuity, and gives a cohomological amplitude bound independent of the input.
+
+Inverse transfer is computed by a finite structure Koszul resolution on the closed graph and flat pullback on the projection, with the chain-rule operator action and dimension shift. It too is continuous with an input-independent finite amplitude. The bounded comparison maps consequently extend to all inputs without interchanging an infinite product and a sum: in any selected output degree, choose an input window larger than the two amplitude bounds. The truncation triangles identify that output cohomology with the cohomology computed from the bounded window. The bounded comparison is an isomorphism there. The same argument in every degree proves the unbounded comparison.
+
+The closed part of base change uses the localization triangle. Its local complement computation is a finite Čech complex of principal localizations. The normal Koszul complex on a term where a normal coordinate is invertible contracts by that coordinate's inverse. On a supported cohomology module the Kashiwara inverse is exact; the finite normal complex and the preceding window argument give the same assertion for an unbounded supported complex. Thus the actual map is still the localization augmentation followed by the signed normal counit of equations (1.5a)–(1.5g) of the cited lesson. Product base change uses the same external tensor and finite Spencer–Čech permutation maps. Their compositions are precisely the bounded maps in every output degree, so they retain all multiple-square coherences.
+
+For the projection formula, retain the graph against the diagonal as in equations (3.4)–(3.5) of that lesson. Resolve both unbounded inputs by semifree operator complexes; their underlying structure modules are flat on smooth affine charts. Derived exterior tensor and diagonal inverse transfer therefore give the actual derived tensor product, with its total differential and Koszul signs. The base-change map just established and the external Spencer–Čech comparison give the same graph computation on these complexes. All sums and realizations in either input are preserved by these operations. This proves the formula with two unbounded inputs, including the shift \([-d_B]\); the unit remains \(\omega_B=\mathcal O_B[d_B]\).
+
+Now embed \(Z\) over \(B\) in \(E=B\times\mathbf P^N\). Regard \(Q\) as its actual supported object \(\widetilde Q\) on the smooth \(E\), and define \(f_*Q=\pi_*\widetilde Q\). The supported ambient comparisons also apply unboundedly: locally lift the coordinate functions of a second ambient to the first one and use the smooth graph containing \(Z\), as in Theorem 5.1. On supported cohomology modules its normal Kashiwara inverse is exact; finite normal transfer and the window argument above retain its derived unit and counit on an arbitrary complex. Common product ambients then give the same triple and fourfold comparisons.
+
+The other ambient is \(E'=B'\times\mathbf P^N\), which is smooth. Apply the already proved smooth-square comparison to the projective projection \(\pi\) and \(g\). The inverse transfer of \(\widetilde Q\) is supported on the possibly singular \(Z'\): outside \(Z'\) it is inverse transfer of zero, as its open restrictions show. By the supported ambient definition it represents \(g_Z^!Q\). This proves (SH.14), with no smooth transfer formula on \(Z'\). The common ambient comparisons identify different projective embeddings and their maps. The same graph–diagonal calculation on supported objects proves the projection formula there.
+
+Finally, for a representable projective correspondence over a stack, apply this construction on every smooth finite-type affine target chart. Formula (SH.14) supplies its transitions. On chart refinements and their higher nerves they are the same composed transfer tensors, localization maps and evaluations. They therefore define a coherent descent object. Colimits are computed chartwise; conservative chart restrictions prove continuity of the descended functor. No interchange of the entire infinite chart limit with an ind-category has been used. This proves the lemma. ∎
+
+We describe the coefficient kernel on the actual common frame diagram. Let \(u:U\to Y\) be a smooth affine source bundle chart, and write \(\mathcal H_U\) for its base change. The finite divisor-frame torsor over \(U\times X^r\), pulled to the bounded moving Grassmannian, gives two smooth maps
+
+\[
+ U\times\operatorname{Gr}^{\rm bd}_{G,X^r}
+       \xleftarrow{\ p\ } A_U
+       \xrightarrow{\ q\ }\mathcal H_U .
+\]
+
+For the order-\(n\) thickening of the degree-\(r\) marked divisor, both have relative dimension \(e_{n,r}=nr\dim G\). In a local curve coordinate its defining monic polynomial has degree \(nr\), so its quotient is finite free of rank \(nr\) over every parameter ring, including repeated sections and nilpotents. Smoothness of \(G\) makes the corresponding divisor-frame group smooth of that dimension by its infinitesimal lifting criterion. Choose the same sufficient jet level for the two maps. The map \(p\) forgets the divisor frame; \(q\) uses it to identify the modification with one of the input bundle. Define \(K_{\vec V}\) by the torsor descent
+
+\[
+ q^!K_{\vec V,U}
+       \simeq p^!\bigl(\omega_U\boxtimes\mathcal F_{r,D}
+                              (S_D(V_1),\ldots,S_D(V_r))\bigr).
+ \tag{SH.15}
+\]
+
+Here \(\omega_U=\mathcal O_U[d_U]\) is the D-module dualizing object, the unit for \(\otimes^!\). Equivalently, apply \([-e_{n,r}]\) on both sides to obtain the normalized torsor formula of (SH.8). The formula includes the source-chart factor; a bare vertical IC is not its replacement. It does not assume that a divisor-frame torsor varying with the marked points is globally a product over \(U\).
+
+These expressions descend to an actual kernel. The spherical coefficient action gives the descent datum along the actual \(q\)-torsor nerve. A change of curve parameter uses the normalized full-coordinate structure constructed in fusion §6. Both have their specified cocycles, commute with each other in the semidirect coordinate action, and preserve the proper moving-chain maps. A smooth change of bundle chart pulls \(\omega_U\) to its dualizing object and pulls the common frame diagram to the corresponding one. On a common chart refinement the formulas are consequently the same pulled external coefficient and evaluation maps. Their transitions include every nerve relation, as in (RH.9). They glue (SH.15), preserving both finite-support enlargements and deeper jet levels.
+
+Define the coefficient Hecke functor on the full unbounded D-module category by
+
+\[
+ \mathsf H^r_{\vec V}(M)
+      =(h_{\rm out})_{\mathrm{dR},*}
+                  \bigl(h_{\rm in}^!M\otimes^!K_{\vec V}\bigr).
+ \tag{SH.16}
+\]
+
+All input degrees are retained. Put \(M_U=u^!M\), with the actual bundle-chart inverse transfer. On the common frame diagram the product formula is
+
+\[
+ q^!\bigl(h_{\rm in,U}^!M_U\otimes^!K_{\vec V,U}\bigr)
+                \simeq p^!(M_U\boxtimes\mathcal F_{r,D}).
+ \tag{SH.17}
+\]
+
+Indeed the two maps from \(A_U\) to \(U\) are equal. Thus \(q^!h_{\rm in,U}^!M_U=p^!\operatorname{pr}_U^!M_U\). Actual \(!\)-inverse transfer preserves \(!\)-tensor, by the same diagonal/graph comparison proved in the lemma. Apply it to (SH.15). In the product model, \(\operatorname{pr}_U^!M_U\) is external tensor with the dualizing object of the other factor. That object is the unit for \(!\)-tensor there, while \(\omega_U\) is the unit on the first factor. Their evaluation leaves \(M_U\boxtimes\mathcal F_{r,D}\), proving (SH.17). The normalized functor \(q^![-e_{n,r}]\) by itself is not asserted to be monoidal. In the full operator complexes these are the same transfer tensor, finite Spencer differential and evaluation identities as in §§1.10–1.12 and §§3.48–3.51; the calculation puts no bound on \(M\). It is not an RH comparison for a nonregular \(M\).
+
+For a bounded coefficient support, the projective correspondence lemma proves continuity in \(M\), with actual inverse transfer, base change and projection formula on singular supports. For an arbitrary coefficient, (SH.16) means the colimit of these bounded-support functors along its finite-coefficient presentation, as in (SH.7). This definition retains every arrow in that presentation; it does not assert continuity of a star direct image on an unbounded ind-proper correspondence. Continuity in \(M\) and the coefficient follows from the common double colimit. On chart overlaps, the lemma's actual base-change and transfer composition maps give the transitions of (SH.17). An infinite chart family is kept as the descent family; no uniform bound on its components or compactness of \(M\) is inferred.
+
+The unit normalization is especially useful. For \(r\) trivial labels the moving chain is the marked-point base, its endpoint is the identity-bundle section, and its coefficient is \(\mathcal O_{X^r}\). Consequently
+
+\[
+ \mathsf H^r_{\mathbf1,\ldots,\mathbf1}(M)
+       =M\boxtimes\mathcal O_{X^r}
+       =p_Y^!M[-r].
+ \tag{SH.18}
+\]
+
+There is no extra product of jet shifts. At a fixed marked tuple use the inverse-transfer normalization of (SH.11), giving the identity functor for these unit labels.
+
+We prove the composition and fusion relations for (SH.16). Composing two bounded modifications retains the intermediate bundle. On a common finite frame chart, the two coefficient factors and their proper chain image are exactly the twisted external product and convolution coefficient of §3.60. The source pullbacks of \(M\) are the same in both routes. Projection formula and proper composition identify the iterated (SH.16) with its single proper chain image. Collapsing the intermediate bundle gives the actual tensor map \(S_D(V)\star S_D(W)\simeq S_D(V\otimes W)\). Three modifications give the actual associator, and four modifications give its pentagon, since both routes are composition on the same four-step correspondence with the same operator transfer tensors. The identity correspondence gives both unit triangles.
+
+For distinct marked points, formal divisor gluing identifies independent modifications and their coefficients. Along a partial diagonal the same collapse on each collision block gives (SH.11), with shift \(r-b\). Proper base change identifies this normalized inverse transfer of (SH.16) with the \(b\)-point action whose block labels are tensor products. These are finite correspondence identities on the entire operator coefficient complexes; (SH.17) keeps an arbitrary unbounded \(M\) as the unchanged first factor. The three- and four-step correspondences show that repeated collisions give the same maps in every grouping. Permutations use the chosen family exchange (SH.12), with its one base factor and the additional coefficient cochain signs. This constructs the complex classical-coefficient fusion Hecke action and all these relations on the full unbounded \(D\)-module category.
+
+Finally use the actual normalized global root \(L=\mathcal L_{\kappa,i}\) already proved in §§2.2–2.8. Let \(\mathcal T_{Y\times X^r}\) untwist the pullback of that line from \(Y\), and let \(\mathcal T_Y\) be its source version. Define
+
+\[
+ \mathsf H^{r,L}_{\vec V}
+     =\mathcal T_{Y\times X^r}^{-1}
+                       \mathsf H^r_{\vec V}\mathcal T_Y.
+ \tag{SH.19}
+\]
+
+This is an actual transported half-twist action. In a composable correspondence the two middle lines come from the same intermediate bundle. Their operator factors cancel by (RH.17) before pushforward. Its Morita triangles and every multiple cancellation preserve the unit, composition, partial-diagonal and permutation relations just proved. All genus and component dependence lies in the actual global line already constructed, so no new simply connected hypothesis is introduced.
+
+The construction has precise remaining boundaries. It does not prove derived tempered Satake, identify its coefficient functor with a separately normalized factorization equivalence, or extend the complex RH argument to an arbitrary characteristic-zero ground field. It also does not yet construct the full \(D\)-module-valued unital Ran coefficient category and the spectral coefficient functor used for the regular Hecke algebra. The actual classical coefficient functors and finite-tuple fusion relations above are inputs to that further construction. No assertion about the projector's nilpotent image, nilpotent regularity, or the independent microlocal support comparison follows merely from their existence.
+
+
+
+![Complex coefficient fusion, actual projective correspondence and full unbounded Hecke action](figures/complex-fusion-hecke.svg)
+
+**Figure 3.18.** The coefficient functor retains the full ambient spherical mapping complexes (SH.6)–(SH.7). Collision uses the exact inverse-transfer shift (SH.11). The common divisor-frame diagram defines the kernel with its source dualizing factor (SH.15), and evaluates it on every unbounded input by (SH.17). The projective correspondence lemma (SH.14) supplies its actual base-change and projection maps on singular supports. Units and transported half twists are (SH.18)–(SH.19). The diagram is a schematic of these proved maps; it does not identify ordinary and renormalized spherical categories or construct the further spectral Ran functor. The matching complete programme proofs are linked in §§3.59–3.61. For the classical geometric construction, see I. Mirković and K. Vilonen, [*Geometric Langlands duality and representations of algebraic groups over commutative rings*, free corrected preprint v5](https://arxiv.org/abs/math/0401222v5). The proofs above and those earlier programme proofs establish the results used here.
+
+### 3.62. Three normalization checks
+
+**Exercise 3.AZ.** Give a spherical example in which (SH.6) fails to be fully faithful on higher shifts although its heart functor is an equivalence.
+
+**Solution 3.AZ.** Take \(G=\mathbf G_m\) and its unit at the zero coweight. The coefficient heart is finite supported integer-graded vector spaces. Choose complements to boundaries inside cycles and to cycles inside each term; (SH.4) makes every bounded coefficient complex the sum of its cohomology terms and contractible complexes. Thus
+
+\[
+ \operatorname{Hom}_{D^b\operatorname{Rep}(\widehat{\mathbf G}_m)}
+                  (\mathbf1,\mathbf1[2])=0 .
+ \tag{SH.20}
+\]
+
+The full ambient spherical category instead has the classifying-space unit. Derived Satake, §§2–3.1, proves its actual endomorphism algebra by the closed-unit embedding and compatible frame/bar models. Substitution \(g(t)\mapsto g(st)\) contracts the jet kernel compatibly with every nerve face and degeneracy; constant loops give its section. The unit algebra is therefore \(R\Gamma(B\mathbf G_m,\mathbf C)\). The circle universal bundle and its finite projective models give
+
+\[
+ H^*(B\mathbf G_m,\mathbf C)=\mathbf C[c],\qquad |c|=2 .
+ \tag{SH.21}
+\]
+
+Its generator is normalized by \(c=-c_1(\gamma)\), evaluating to one on the complex-oriented projective line. The finite projective cell filtration has one cell in each even degree; its Gysin sequence multiplies consecutive even groups by this class, so the powers give precisely this polynomial ring and no odd groups. Thus the ambient degree-two unit morphism is nonzero, whereas (SH.20) is zero. The actual coefficient functor does not become a full derived equivalence by ind-extension. This example retains equivariance: the extra class vanishes after forgetting to the point, which is why computing only the underlying point Hom would miss it.
+
+**Exercise 3.BA.** For \(G=GL_2\) and the standard minuscule coefficient \(P=IC_{(1,0)}\), compute the exchange on both convolution summands and then on the two coefficient shifts \(P[1],P[1]\).
+
+**Solution 3.BA.** The actual two-step surface is the \(\mathbf F_2\) cone resolution. Its exceptional section has normal line \(\mathcal O(-2)\). The two maps from and to its central point have composite \(-2\); dividing the second by \(-2\) gives a retraction. The remaining strict-boundary summand is the largest IC. This is the explicit proof in convolution §10:
+
+\[
+ P\star P=IC_{(2,0)}\oplus IC_{(1,1)}.
+ \tag{SH.22}
+\]
+
+Its cohomology basis has \(v_-\) in degree \(-1\) and \(v_+\) in degree \(1\). Raw geometric exchange is \(-\mathrm{flip}\). On the largest IC it has scalar \(-1\): that IC contains \(v_-\otimes v_-\), and all three symmetric tensor vectors are its cohomology. On the central point IC it has scalar \(+1\), with antisymmetric cohomology line. The component parity is one, so (SH.12) reverses those two scalars. The actual ordinary Satake exchange on the summands is therefore \(+1,-1\), respectively.
+
+Each generator of the further coefficient shift \([1]\) has cochain degree \(-1\) relative to its heart coefficient. Equation (SH.5) contributes one more minus sign, separately from the component correction. On the shifted summands the scalars are
+
+\[
+ c'_{P[1],P[1]}:\quad -1\ \text{on }IC_{(2,0)}[2],
+       \qquad +1\ \text{on }IC_{(1,1)}[2].
+ \tag{SH.23}
+\]
+
+The total-cohomology degrees \(-1,1\) used to determine the raw geometric heart map are not the coefficient cochain degree used in this last shift calculation. Keeping those two gradings separate explains both signs. The unit has component and coefficient degree zero and retains its identity map.
+
+**Exercise 3.BB.** Normalize a three-point coefficient family first along \(x_1=x_2\), then along the full diagonal, and finally at a point. Compare that route with direct point restriction, on both sheaves and D-modules.
+
+**Solution 3.BB.** The three-point family carries its one base normalization \([3]\). The first collision has codimension one and changes it to the two-point family by ordinary restriction and shift \([-1]\). The next collision changes the two-point family to the one-point spread by another \([-1]\); restricting that spread to a selected point uses \([-1]\) again. Thus the route uses total shift \([-3]\) with its ordinary sheaf restriction. The block labels are \((P_1\star P_2)\star P_3\). Direct restriction to the selected three-tuple also uses \([-3]\).
+
+On operators each step is the actual extraordinary inverse transfer and shift \([1]\), by (SH.11). The three normal parameter directions compose to codimension three:
+
+\[
+ i_{\vec x}^!\mathcal F_{3,D}[3]
+     \simeq S_D\bigl((V_1\otimes V_2)\otimes V_3\bigr).
+ \tag{SH.24}
+\]
+
+Universal local acyclicity changes the sheaf extraordinary restriction to ordinary restriction with shift \([-6]\); adding \([3]\) gives the same \([-3]\) as above. In the other association the label is \(V_1\otimes(V_2\otimes V_3)\). Both maps are the proper image of the same three-step chain with its ordered external coefficient. Proper composition and the actual convolution associator identify them, as proved in fusion equation (3.7). The four-step chain gives the pentagon. This calculation keeps every normal shift and applies the actual inverse-transfer comparison; its individual flat-frame period coefficients are not silently replaced by identities.
+
+### 3.63. The parameter dualizing normalization
+
+The ground and coefficient field in §§3.63–3.67 is \(\mathbf C\). Keep every connected reductive \(G\), genus and bundle component from §§3.59–3.62. Put
+
+\[
+ \mathcal C=\operatorname{Ind}D^b_{\rm dg}
+              \operatorname{Rep}^{\rm fd}_{\mathbf C}(\widehat G),
+ \qquad
+ \mathcal R=\mathcal C_{\operatorname{Ran}}^{\rm dr},
+ \qquad
+ \mathcal M=\operatorname{Dmod}(Y),\quad Y=\operatorname{Bun}_G(X).
+ \tag{RA.1}
+\]
+
+Here \(\mathcal R\) is the full category of (RN.7)–(RN.13), with every finite-set function, empty set, operator complex and localization morphism. It is rigid by (KG.19)–(KG.23). The coefficient category has compact unit and dualizable compacts: its finite complexes split as (SH.4), their duals reverse cochain degrees and take representation duals, and the two evaluation triangles hold with the complex tensor signs. Its ind-category is generated by these finite objects. Thus it satisfies the hypotheses used to construct \(\mathcal R\).
+
+We now construct an actual action of this category, rather than an action only of its point coefficients. The finite-tuple functor (SH.16) has unit \(M\boxtimes\mathcal O_{X^I}\). Full D-module parameter calculus instead has unit \(\omega_{X^I}\). Define the normalized family
+
+\[
+ \widehat{\mathsf H}_I(\vec V;M)
+       =\mathsf H_I(\vec V;M)[|I|],
+ \qquad
+ \widehat{\mathsf H}_{\emptyset}(M)=M .
+ \tag{RA.2}
+\]
+
+The empty family uses the identity correspondence and its dualizing kernel. The structural maps in (RA.2) use the actual parameter dualizing comparisons, with their density and complex shift signs. One must not replace them by the permutation of \(|I|\) shifted vector-space generators alone.
+
+For a collision of an \(r\)-point family into \(b\) blocks, (SH.11) and the full correspondence proof give
+
+\[
+ i^!\widehat{\mathsf H}_{r}(\vec V;M)
+   \simeq
+ \widehat{\mathsf H}_{b}
+       \left(\bigotimes_{\rm block}\vec V;M\right),
+ \qquad
+ \widehat{\mathsf H}_{I}(\mathbf1,\ldots,\mathbf1;M)
+       \simeq M\boxtimes\omega_{X^I}.
+ \tag{RA.3}
+\]
+
+Indeed \(i^!\mathsf H_r[r]=\mathsf H_b[-(r-b)+r]=\mathsf H_b[b]\). For the second identity, (SH.18) shifts \(M\boxtimes\mathcal O_{X^I}\) by \([|I|]\). Both statements concern every unbounded \(M\). They use the actual inverse-transfer and proper base-change maps, not an RH comparison on \(M\).
+
+We record the parameter permutation sign. In right-operator conventions the dualizing object of a smooth \(d\)-fold is its top density \(\Omega[d]\). For ordered curve coordinates \(x_1,\ldots,x_r\), use the density \(dx_1\wedge\cdots\wedge dx_r\). A permutation \(\sigma\) changes this frame by \(\operatorname{sgn}\sigma\). Its inverse-transfer density ratio contributes that same sign; the permutation of the \(r\) degree-minus-one suspension factors contributes another \(\operatorname{sgn}\sigma\). Their product is one. Side change to left modules uses the same contracted density in source and target, preserving this comparison. Consequently the parameter factor in (RA.3) has precisely its dualizing-unit permutation, with no extra permutation sign. The coefficient exchange remains the component correction (SH.12) and the coefficient cochain Koszul sign (SH.5). This computation includes unit labels; it would fail if one kept just the suspension-factor flip and omitted the density ratio.
+
+To explain empty label fibres, consider a tuple containing a unit at one of the marked points. On the moving chain its unit coefficient is supported on the identity modification. Removing that step identifies the coefficient-supported chain with the shorter chain and its extra freely marked point. The proper endpoint image makes this identification on the entire operator coefficient. With (RA.2) the extra point contributes its dualizing object. The maps are the actual coefficient unit evaluation and inverse-transfer product comparison. They continue to hold when that extra point coincides with another marked point: the identity modification still does nothing, and its coefficient remains the actual unit section. This does not classify an infinitesimal Grassmannian by its reduced geometric points.
+
+More generally let \(\alpha:I_1\to I_2\) be any function, and let
+\(\Delta_\alpha:X^{I_2}\to X^{I_1}\) be its coordinate map. Tensor the coefficients over its fibres, inserting \(\mathbf1\) in each empty fibre. Then
+
+\[
+ (\operatorname{id}_Y\times\Delta_\alpha)^!
+        \widehat{\mathsf H}_{I_1}(\vec V;M)
+ \simeq
+        \widehat{\mathsf H}_{I_2}
+               (\operatorname{mult}^{\alpha}\vec V;M).
+ \tag{RA.4}
+\]
+
+Factor \(\alpha\) as its surjection to its image followed by inclusion in \(I_2\). The coordinate map first forgets the unused coordinates, then repeats the coordinates of each fibre. The latter part is (RA.3); the former is the just-proved unit-label insertion, with its freely varying parameter dualizing factors. Permutations supply arbitrary orderings. This proves (RA.4) for every function, including maps from the empty set.
+
+These are coherent maps, not just objectwise isomorphisms. Two successive functions tensor the same original labels over the fibres of their composite; an inserted empty-fibre unit is evaluated by the same unit triangle. Their common moving chain collapses the same intermediate bundles. All inverse transfers and proper images compose on that chain by the projective correspondence lemma. The coefficient associativity, unit and exchange maps have the entire enhanced relations proved in §3.59. Their extensions through finite complexes and colimits retain those relations. For an arbitrary arrow string, use the ordered uncollapsed chain and the same transfer tensor; faces compose its consecutive arrows and degeneracies insert their identity tensors. Transfer composition and its evaluation give the simplicial identities on these actual complexes. Thus longer strings retain their higher comparisons. This proves the coherent finite-set family used below.
+
+### 3.64. The action with full D-module coefficients
+
+Let \(\psi:I\to J\). Denote its coordinate map by
+\(\Delta_\psi:X^J\to X^I\), and put
+
+\[
+ \begin{aligned}
+ B_\psi(\vec V;M)
+   &=(\operatorname{id}_Y\times\Delta_\psi)^!
+                    \widehat{\mathsf H}_I(\vec V;M),\\
+ p_{Y,J}&:Y\times X^J\to Y,\qquad
+ p_{X,J}:Y\times X^J\to X^J .
+ \end{aligned}
+ \tag{RA.5}
+\]
+
+The output projection is \(p_{Y,J}\). Define the stage operation by
+
+\[
+ \Phi_\psi(\vec V,N;M)
+   =(p_{Y,J})_*
+          \left(B_\psi(\vec V;M)
+                    \otimes^!p_{X,J}^!N\right),
+ \qquad N\in\operatorname{Dmod}(X^J).
+ \tag{RA.6}
+\]
+
+This uses the full unbounded category of parameter coefficients. No holonomicity, regularity, boundedness or external-product decomposition of \(N\) is required.
+
+Every functor in (RA.6) exists on these full categories. The coordinate inverse image is the actual finite-transfer construction of §3.61. Pullback of \(N\) along the stack projection is defined on all smooth affine charts by inverse transfer and strong descent. The projection \(p_{Y,J}\) is representable projective since \(X^J\) is projective. The projective correspondence lemma proves its continuous unbounded direct image and the required base-change and projection maps, including singular finite coefficient supports. Tensor product is derived. For coefficients of arbitrary support, the finite-support Hecke functors are first constructed and then extended through their actual coefficient colimits as in (SH.7); no continuity of an unbounded ind-proper star image is assumed. These observations show joint continuity in \(\vec V,N,M\).
+
+They also define an exact enhanced functor on the entire tensor-product stage
+\(\mathcal A_\psi=\mathcal C^{\otimes I}\otimes\operatorname{Dmod}(X^J)\).
+The multi-object free module bar (EP.1) presents that stage by its compact representables, which are exterior tensors of finite coefficient complexes and compact operator complexes. Applying (RA.6) to those complexes and their actual maps, then to the bar, gives its continuous extension. It is independent of a presentation by the representable augmentation contraction. In particular this is not a functor defined only on a set of simple coefficients.
+
+We prove that these stage functors respect every transition in (RN.8). Take
+\[
+ \alpha:I_1\to I_2,\quad \beta:J_2\to J_1,\quad
+ \psi_1=\beta\psi_2\alpha,
+ \qquad
+ b=\operatorname{id}_Y\times\Delta_\beta .
+ \tag{RA.7}
+\]
+
+Coordinate inverse images compose contravariantly. Applying (RA.4) and then composing the coordinate maps gives
+
+\[
+ b^!B_{\psi_2}
+       (\operatorname{mult}^{\alpha}\vec V;M)
+          \simeq B_{\psi_1}(\vec V;M).
+ \tag{RA.8}
+\]
+
+The map \(\Delta_\beta\) is the projective projection followed by a closed diagonal of (RN.5), even when \(\beta\) is not surjective. The square with \(p_{X,J_1}\) and \(p_{X,J_2}\) gives actual full base change
+
+\[
+ p_{X,J_2}^!(\Delta_\beta)_*N
+        \simeq b_*p_{X,J_1}^!N .
+ \tag{RA.9}
+\]
+
+Check this square on each smooth affine bundle chart; it is the projective comparison (SH.14) with input \(N\). Its coherent chart comparisons glue the displayed map. No quasi-compactness of \(Y\), or common bound on all its charts, is needed.
+
+The projection formula and proper composition now yield the whole transition map:
+
+\[
+ \begin{aligned}
+ &\Phi_{\psi_2}
+       (\operatorname{mult}^{\alpha}\vec V,
+                        (\Delta_\beta)_*N;M)\\
+ &\quad\simeq
+ (p_{Y,J_2})_*
+       \left(B_{\psi_2}\otimes^!b_*p_{X,J_1}^!N\right)\\
+ &\quad\simeq
+ (p_{Y,J_2})_*b_*
+       \left(b^!B_{\psi_2}\otimes^!p_{X,J_1}^!N\right)\\
+ &\quad\simeq
+ (p_{Y,J_1})_*
+       \left(B_{\psi_1}\otimes^!p_{X,J_1}^!N\right)
+   =\Phi_{\psi_1}(\vec V,N;M).
+ \end{aligned}
+ \tag{RA.10}
+\]
+
+In this calculation \(B_{\psi_2}\) has the coefficient of (RA.8). Every comparison is the actual operator transfer, tensor and evaluation map from the preceding proofs. There is no scalar replacement of the direct image of \(N\).
+
+For a string of transitions the two routes use the same composite \(\alpha\), the same composite \(\beta\), and the same uncollapsed coefficient chain. Equations (RA.8)–(RA.10) use the coherent family maps of §3.63, transfer composition and projection evaluation. On semifree coefficient resolutions their augmented bars have the same inner faces, outer evaluation faces and identity degeneracies. Thus their higher string comparisons are retained too. The argument first applies to finite coefficient objects and full \(N,M\); continuity extends it to every coefficient object. This proves the compatible enhanced stage family.
+
+The target category of continuous endofunctors is presentable. To see this here, use compact generation of \(\mathcal M\) proved in §§1.13–1.15 and a small DG category \(E\) of its compact generators. The free bar identifies \(\mathcal M\) with right \(E\)-modules. A continuous endofunctor is specified by the images of the representables, as a DG functor \(E\to\operatorname{Mod}_E\). Such a functor is an \(E\)-\(E\) bimodule. Its value on a general module is the corresponding balanced tensor bar; the representable augmentation proves both constructions inverse, including natural transformations and higher homotopies. Bimodule categories are full module categories, hence presentable. Applying the full colimit property proved in (RN.11)–(RN.13) to (RA.10) therefore constructs
+
+\[
+ \Phi:\mathcal R
+     \longrightarrow\operatorname{End}_{\rm cont}(\mathcal M),
+ \qquad
+ \Phi(\operatorname{ins}_\psi(\vec V\otimes N))(M)
+       =\Phi_\psi(\vec V,N;M).
+ \tag{RA.11}
+\]
+
+Equivalently, apply that colimit property after tensoring every stage with \(\mathcal M\); tensor of presentable categories preserves colimits. The resulting action is continuous in both variables. We have constructed it on all stage morphisms and localization edges, not merely on their objects.
+
+### 3.65. Composition, dual adjunctions and the global half twist
+
+We prove the monoidal relation for the constructed functor. For two stages put
+
+\[
+ A_t=\operatorname{ins}_{\psi_t}(\vec V_t\otimes N_t),\qquad
+ A_1\circledast A_2
+  =\operatorname{ins}_{\psi_1\sqcup\psi_2}
+       ((\vec V_1\boxtimes\vec V_2)\otimes(N_1\boxtimes N_2)).
+ \tag{RA.12}
+\]
+
+This is disjoint union of the label and parameter sets, followed by exterior product of the parameter modules. It is not multiplication of two modules on the same \(X^J\) followed by a separate integration at that stage.
+
+First take finite coefficient objects, retaining arbitrary \(N_1,N_2,M\). Apply (RA.6) twice. Before taking endpoint images its two steps are the correspondence of a chain
+\[
+ E_0\xrightarrow{I_2}E_1\xrightarrow{I_1}E_2,
+ \qquad \text{parameters }X^{J_1}\times X^{J_2}.
+ \tag{RA.13}
+\]
+
+Pull the inner proper image through the outer inverse transfer using (SH.14). Pull its parameter module through the same Cartesian square, and use the projection formula to put both parameter modules on the chain. Their tensor is the inverse image of \(N_1\boxtimes N_2\). Proper composition, first in the intermediate bundle and then in the projective parameter factors, replaces the iterated image by the endpoint image of this chain. These are comparisons of the actual full operator complexes; both arbitrary parameter modules remain in the calculation.
+
+The coefficient on that chain is the composed finite-support coefficient kernel of §3.61. The normalized family of its disjoint blocks has shift \([|I_1|+|I_2|]\), equal to the sum of their two shifts in (RA.2). The inverse-transfer product comparison identifies its density with the density of the product parameter space. There is no repeated copy of a parameter-space unit: the two parameter blocks are distinct before restriction. Restricting by \(\Delta_{\psi_1}\times\Delta_{\psi_2}\) produces the coordinate restrictions in (RA.12). The actual coefficient block exchange of §3.59 identifies the ordered chain \(I_2,I_1\) with the coefficient of \(I_1\sqcup I_2\). It includes the component-adjusted exchange and the cochain signs, and the parameter comparison is the dualizing comparison of §3.63. Thus the preceding calculation gives
+
+\[
+ \begin{aligned}
+ \Phi(A_1)\Phi(A_2)(M)
+  &\simeq(p_{Y,J_1\sqcup J_2})_*
+    \left(B_{\psi_1\sqcup\psi_2}
+               (\vec V_1\boxtimes\vec V_2;M)
+         \otimes^!p_{X,J_1\sqcup J_2}^!(N_1\boxtimes N_2)\right)\\
+  &=\Phi(A_1\circledast A_2)(M).
+ \end{aligned}
+ \tag{RA.14}
+\]
+
+The full unbounded input comparison in (SH.14) proves this calculation without a cohomological bound on any input. Coefficient colimits then extend it to arbitrary coefficient objects; all displayed operations are jointly continuous. Exterior compact generators and their bar presentations extend it from exterior stage inputs to every object of each stage tensor product.
+
+For three inputs both parenthesizations of (RA.14) use the uncollapsed chain \(I_3,I_2,I_1\), the same three parameter modules and the same block permutation to \(I_1,I_2,I_3\). On that chain, inverse transfers compose by balanced tensor, proper images compose by their augmented transfer bars, and tensor evaluation is the same evaluation before any pushforward. Their associativity maps agree by the bar face identities. The coefficient associativity and block-exchange relations agree by the enhanced relations of §3.59. For four inputs this identifies the five routes around the pentagon with that same four-step transfer and coefficient comparison. For an arbitrary string it identifies each face with contraction of its adjacent steps; inserting an identity step gives the degeneracy, whose evaluation triangle supplies the simplicial identities. Hence these are the coherent monoidal comparisons, including all higher strings.
+
+They commute with transitions (RA.10). Indeed the combined transition has the disjoint unions of the two \(\alpha\)'s and the two \(\beta\)'s. Both routes pull back and push forward the same chain and parameter modules, and evaluate the same transfer tensors. This proves compatibility on each generator of the stage localization relations and on its coherent strings. The full colimit construction in (RN.11)–(RN.13) and joint continuity consequently extend (RA.14) to every pair of objects of \(\mathcal R\).
+
+At the empty stage the output projection is the identity of \(Y\), the Hecke kernel is its unit, and the inverse image of the scalar unit is \(\omega_Y\). Therefore
+
+\[
+ \begin{gathered}
+ \Phi(\mathbf1_{\mathcal R})=\operatorname{Id}_{\mathcal M},
+ \\
+ \mathcal R\otimes\mathcal M\longrightarrow\mathcal M,\quad
+ (A,M)\longmapsto\Phi(A)(M),\\
+ \quad\text{is a continuous unital module action}.
+ \end{gathered}
+ \tag{RA.15}
+\]
+
+Removing this empty step in (RA.13) is the transfer evaluation triangle and the coefficient unit triangle. It proves both unit constraints and their compatibility with associativity. The symmetric coefficient exchange supplies an exchange map between the two composites in the image of \(\Phi\). No symmetry of the whole category of continuous endofunctors under composition is being asserted.
+
+Rigidity supplies a useful full adjunction. If \(A\) is compact in \(\mathcal R\), use its actual dual, evaluation and coevaluation from §3.53 and apply the action to their maps. For a map \(\Phi(A)M\to T\), insert coevaluation into \(M\), then apply that map after \(\Phi(A^\vee)\). Conversely, apply \(\Phi(A)\) to a map \(M\to\Phi(A^\vee)T\), then evaluate. The two module triangles and the two duality triangles prove these constructions inverse, on the mapping complexes and their homotopies. Thus
+
+\[
+ \operatorname{RHom}_{\mathcal M}(\Phi(A)M,T)
+   \simeq
+ \operatorname{RHom}_{\mathcal M}(M,\Phi(A^\vee)T),
+ \qquad
+ \Phi(A)\dashv\Phi(A^\vee).
+ \tag{RA.16}
+\]
+
+Both functors are continuous by construction. If \(M\) is compact, the right side of (RA.16) preserves colimits in \(T\); hence \(\Phi(A)M\) is compact. This proves preservation of compacts for every compact Ran coefficient, including compact nonholonomic parameter modules. It does not require arbitrary inverse images of coherent operator modules to be coherent.
+
+Let \(\mathcal M_L\) be the global half-twisted category of §3.56 and \(\mathcal T_Y:\mathcal M_L\to\mathcal M\) its actual operator Morita equivalence. Define
+
+\[
+ \Phi^L(A)=\mathcal T_Y^{-1}\Phi(A)\mathcal T_Y .
+ \tag{RA.17}
+\]
+
+The middle \(\mathcal T_Y\mathcal T_Y^{-1}\) in two successive factors cancels by the actual \(P\)-\(Q\) tensor evaluation (RH.17), before taking endpoint images. The same evaluation identifies each longer factor with the same transported chain. Unit, multiplication, transition and duality comparisons in (RA.15)–(RA.16) are therefore transported with all coherences. This proves the continuous unital full Ran action on the normalized global half twist, on every genus and bundle component. No flat connection on the half-root line is chosen.
+
+This action admits arbitrary derived scalar parameters. If \(A\) is a commutative DG \(\mathbf C\)-algebra, write
+
+\[
+ \mathcal R_A=\mathcal R\otimes_{\mathbf C}\operatorname{Mod}_A,
+ \qquad
+ \mathcal M_{L,A}=\mathcal M_L\otimes_{\mathbf C}\operatorname{Mod}_A,
+ \qquad
+ \Phi^L_A:\mathcal R_A\otimes_{\operatorname{Mod}_A}
+                    \mathcal M_{L,A}\longrightarrow\mathcal M_{L,A}.
+ \tag{RA.18}
+\]
+
+On free \(A\)-modules use (RA.17) tensored with \(A\), and on arbitrary \(A\)-modules use the full free-module bar of (KF.1) and (EP.1). Its augmentation contracts by inserting the first unit. The tensor and transfer maps of the action are \(\mathbf C\)-linear, so their scalar extensions define the maps of this bar, with its \(A\)-module faces and total differential. This constructs (RA.18) on the entire derived module categories. Units, composition maps and their higher relations are scalar extensions of the same bar maps; the augmentation contraction proves independence of free presentations. No flatness, finite dimensionality or cohomological bound on \(A\) is used. This extends the scalar parameters of the proved complex geometry; it does not change the geometric ground field to an arbitrary characteristic-zero field.
+
+### 3.66. The actual universal enhanced Ran Hecke category
+
+The action just proved lets us apply the regular-algebra construction to an actual geometric module category. Set
+
+\[
+ \mathcal B=\mathcal R\otimes\mathcal R,\qquad
+ \mathcal N=\mathcal M_L\otimes\mathcal R,\qquad
+ (A\boxtimes B)\star(M\boxtimes C)
+       =\Phi^L(A)M\boxtimes(B\circledast C).
+ \tag{RA.19}
+\]
+
+Exterior generators and the full free bar extend this formula to the entire categories. The two actions commute because they occur in the two separate factors, and (RA.15) supplies the first action's actual module relations. Denote multiplication of \(\mathcal R\) by \(\mu\), and its continuous right adjoint from §3.42 by \(r\). By (KG.23) its actual regular algebra is
+
+\[
+ R_{\mathcal R}=r(\mathbf1)
+     \simeq\int^{B\in\mathcal R^c}B^\vee\boxtimes B,
+ \qquad
+ \mathcal H_{\rm univ}
+       =\operatorname{Fun}^{\rm L}_{\mathcal B}(\mathcal R,\mathcal N)
+       \simeq\operatorname{Mod}_{R_{\mathcal R}}(\mathcal N).
+ \tag{RA.20}
+\]
+
+All hypotheses of (EP.6)–(EP.8) are now specified: the actual full rigid category \(\mathcal R\), its regular commutative algebra, the actual geometric first action, and the regular second action. In particular (RA.20) defines a presentable category of full enhanced module functors. The coend is over the entire compact DG category, including finite cones, retracts and localization morphisms.
+
+For clarity, its induction and forgetful maps are
+
+\[
+ U(F)=F(\mathbf1),\qquad
+ L(n)(B)=r(B)\star n,\qquad
+ UL(n)=R_{\mathcal R}\star n,
+ \qquad L\dashv U.
+ \tag{RA.21}
+\]
+
+The adjunction maps are the unit and counit of \(\mu\dashv r\), under precomposition, as proved explicitly in (EP.7). Its monad multiplies the regular algebra by the lax multiplication whose mate is the multiplication of the two counits. The module equivalence in (RA.20) uses the realized free action bar of (EP.8); its augmentation contracts after \(U\), by the first unit insertion. Since \(U\) preserves colimits and is conservative, that contraction proves the equivalence on every object, all morphisms and all action homotopies.
+
+If \(c_i\) are compact generators of \(\mathcal M_L\) and \(B_j\) compact generators of \(\mathcal R\), then
+
+\[
+ \begin{gathered}
+ \operatorname{RHom}_{\mathcal H_{\rm univ}}
+             (L(c_i\boxtimes B_j),F)
+     \simeq
+ \operatorname{RHom}_{\mathcal N}(c_i\boxtimes B_j,U(F)),\\
+ \{L(c_i\boxtimes B_j)\}_{i,j}
+       \text{ compactly generates }\mathcal H_{\rm univ}.
+ \end{gathered}
+ \tag{RA.22}
+\]
+
+Indeed exterior compact generators compactly generate \(\mathcal N\) by the multi-object tensor bar. Continuity of \(U\) proves compactness of the left-hand sources. Vanishing of all displayed mapping complexes forces \(U(F)=0\), then \(F=0\) by conservativity. This tests every unbounded object. One cannot discard all the \(B_j\)'s and use only the unit without proving that the unit generates \(\mathcal R\).
+
+The balancing map (EP.5) supplies, with tensor-compatible higher relations,
+
+\[
+ \Phi^L(A)\star_{\rm first}U(F)
+      \simeq A\star_{\rm second}U(F).
+ \tag{RA.23}
+\]
+
+Thus (RA.20) is an actual universal enhanced Ran Hecke category. Its second factor is \(\mathcal R\) with its regular action. To obtain the geometric spectral category one must still construct its continuous symmetric monoidal coefficient functor to the appropriate local-systems category and prove the required base-change and image comparisons. Neither (RA.20) nor its free induction is asserted to be an idempotent Beilinson projector. Nilpotent regularity, the projector's singular-support image, the independent microlocal support comparison and derived tempered Satake remain unproved here. The full action of §§3.63–3.66 has complex geometric ground field; its extension to arbitrary characteristic-zero geometric ground fields also remains required.
+
+The finite-set description and the Hecke family formula also appear in [Arinkin, Gaitsgory, Kazhdan, Raskin, Rozenblyum and Varshavsky, *The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*, free preprint v2](https://arxiv.org/abs/2010.01906v2), §§11.1 and 15.1.
+
+![Figure3.19. Every finite-set transition, the full operator-valued Ran Hecke action and its dual adjunction.](figures/full-unital-ran-action.svg)
+
+*Figure3.19.* The upper panel gives the dualizing family normalization (RA.2)–(RA.4). The finite-set square records the opposite direction of \(\beta\) and the exact repeated-coordinate map of Solution3.BC. The action panel projects to \(Y=\operatorname{Bun}_G(X)\), keeps every full parameter module, and shows the proper transition (RA.10). The lower panels give compact dual adjunction, actual half-twist transport and the universal enhanced category. The diagrams are schematic; the shifts, map domains and category factors are exact. Proofs are in §§3.63–3.66, and Solutions3.BC–3.BE test forgotten coordinates, the graded triangles and nonholonomic inputs.
+
+### 3.67. Unused coordinates, point adjunctions and nonholonomic coefficients
+
+**Exercise 3.BC.** Take \(I_1=\{u,v\}\), \(J_1=\{a,b,c\}\), with \(\psi_1(u)=\psi_1(v)=a\). Take \(I_2=\{w\}\), \(J_2=\{d,e\}\), with \(\psi_2(w)=d\). Let \(\alpha(u)=\alpha(v)=w\) and \(\beta(d)=\beta(e)=a\). Write the coordinate transition and family comparison, including both unused source coordinates. Then take \(X=\mathbf P^1_{\mathbf C}\) and \(N=\mathcal D_{X^3}\); calculate its transition coefficient.
+
+**Solution 3.BC.** The label identity is \(\psi_1=\beta\psi_2\alpha\), and the coordinate map is
+
+\[
+ \Delta_\beta:X^3\to X^2,\qquad
+ (x_a,x_b,x_c)\longmapsto(x_a,x_a),
+ \qquad
+ \Delta_\beta=i_{\rm diag}\circ\operatorname{pr}_a.
+ \tag{RA.24}
+\]
+
+The coordinates \(b,c\) are unused, while the target coordinates \(d,e\) coincide. Write \(F=\widehat{\mathsf H}_{\{w\}}(V_u\otimes V_v;M)\). The \(e\)-coordinate has a unit label, so \(B_{\psi_2}=F\boxtimes\omega_{X_e}\). On \(Y\times X^2\) this is \((\operatorname{id}_Y\times\operatorname{pr}_d)^!F\). Since the diagonal is a section of that projection, composition of actual inverse transfers gives
+\(i_{\rm diag}^!(F\boxtimes\omega_{X_e})=F\), for every full \(F\). Pullback through \(\operatorname{pr}_a\) then gives
+
+\[
+ b^!B_{\psi_2}=F\boxtimes\omega_{X_b}\boxtimes\omega_{X_c}
+                  =B_{\psi_1}.
+ \tag{RA.25}
+\]
+
+There is no further diagonal shift: it has already been absorbed by (RA.2). For the specified \(N\), the product PBW identification gives
+\(\mathcal D_{X^3}=\mathcal D_{X_a}\boxtimes\mathcal D_{X_b}\boxtimes\mathcal D_{X_c}\).
+Equation (GD.9), or its one-form Čech calculation, gives
+\((p_X)_*\mathcal D_X=\mathbf C[-1]\).
+The two forgotten factors therefore give
+
+\[
+ (\operatorname{pr}_a)_*N=\mathcal D_{X_a}[-2],
+ \qquad
+ (\Delta_\beta)_*N=(i_{\rm diag})_*\mathcal D_X[-2].
+ \tag{RA.26}
+\]
+
+These are operator modules, not their fibres. Substituting (RA.25) and (RA.26) into (RA.10) verifies the two action formulas agree, with the shift \([-2]\). The order filtration has characteristic support \(T^*X^3\) of dimension six; \(N\) is therefore nonholonomic on the three-dimensional base. For arbitrary \(N\), the same transition holds by full base change and projection formula, without assuming this exterior-product calculation.
+
+**Exercise 3.BD.** Let \(G=\mathbf G_m\), let \(V_n\) be the dual-torus character of weight \(n\), and let \(x\in X(\mathbf C)\). Insert \(A_{n,p}=V_n\otimes\delta_x[p]\) at the identity one-label stage. Identify its action and its right adjoint. Check both triangle signs when \(p\) is odd.
+
+**Solution 3.BD.** Write \(i_x:Y\to Y\times X\). Proper projection and the projection formula for the closed point give
+\(\Phi(A_{n,p})M=i_x^!\widehat{\mathsf H}_1(V_n;M)[p]\).
+The one-point restriction normalization (RA.2) identifies the unshifted expression with the fixed-point Hecke operator \(\mathsf H_{n,x}\). The point module is self-dual by proper coherent duality from the point; the character dual has weight \(-n\). Hence
+
+\[
+ A_{n,p}^{\vee}=A_{-n,-p},\qquad
+ \Phi(A_{n,p})=\mathsf H_{n,x}[p],\qquad
+ \mathsf H_{n,x}[p]\dashv\mathsf H_{-n,x}[-p].
+ \tag{RA.27}
+\]
+
+Here the unshifted torus coefficient is supported on its actual coweight modification, whose inverse modification has weight \(-n\). Composing them contracts the common intermediate bundle to the identity chain, so its two unshifted coefficient evaluations satisfy the two unit triangles. For the additional shift take generators \(e,e^\vee\) of degrees \(-p,p\). Coevaluation is \(1\mapsto e\otimes e^\vee\); reversed evaluation is \((-1)^p\), and its preceding exchange contributes \((-1)^p\). Each triangle has product \((-1)^{2p}=1\), including odd \(p\), exactly as in (KG.24). Transport by \(\mathcal T_Y\) gives the same actual adjunction on the global half twist.
+
+**Exercise 3.BE.** At the stage \(\emptyset\to\{j\}\), with \(X=\mathbf P^1_{\mathbf C}\), compute the action of \(N=\mathcal D_X\), \(N=\omega_X\) and \(N=\mathbf k_X\). Explain why replacing every full parameter coefficient by a rank-one constant sheaf changes the action.
+
+**Solution 3.BE.** The empty coefficient family is \(M\), and its coordinate inverse image is \(p_{Y,\{j\}}^!M\). The full projective product comparison consequently gives
+
+\[
+ \begin{aligned}
+ \Phi_{\emptyset\to\{j\}}(N;M)&=M\otimes_{\mathbf C}(p_X)_*N,\\
+ \Phi_{\emptyset\to\{j\}}(\mathcal D_X;M)&=M[-1],\\
+ \Phi_{\emptyset\to\{j\}}(\omega_X;M)&=M[2]\oplus M,\\
+ \Phi_{\emptyset\to\{j\}}(\mathbf k_X;M)&=M\oplus M[-2].
+ \end{aligned}
+ \tag{RA.28}
+\]
+
+For the first line, use \(p_{Y}^!M=M\boxtimes\omega_X\) and \(p_X^!N=\omega_Y\boxtimes N\); their !-tensor is \(M\boxtimes N\) because both dualizing factors are the tensor units. Proper product pushforward integrates just \(N\). The remaining lines are (GD.7) and (GD.9), whose Čech representatives are the constant class and \(dt/t\), with the stated normalized shifts. The operator module \(\mathcal D_X\) is compact and nonholonomic, with full cotangent characteristic support. It gives a single shift rather than either of the two constant/dualizing cohomology sums. Finally the actual diagram arrow from \(\emptyset\to\{j\}\) to \(\emptyset\to\emptyset\) has \(\beta:\emptyset\to\{j\}\), so its coordinate pushforward is \(N\mapsto(p_X)_*N\). It identifies (RA.28) with the scalar empty-stage action. This checks the empty-label transition itself, not just a calculation of its dimensions.
+
+### 3.68. The tautological de Rham spectral coefficient
+
+In §§3.68–3.72 the geometric and coefficient field is \(\mathbf C\). Keep the full categories \(\mathcal C,\mathcal R,\mathcal M_L\) of (RA.1) and (RA.17). We use the tensor-functor definition of the derived de Rham local-systems prestack. For a connective commutative DG \(\mathbf C\)-algebra \(A\), put
+
+\[
+ \begin{gathered}
+ \mathcal D_A(X)=\operatorname{Dmod}(X)\otimes_{\mathbf C}\operatorname{Mod}_A,\\
+ \mathcal Z=\operatorname{LocSys}^{\rm dR}_{\widehat G}(X),\qquad
+ \mathcal Z(A)=
+   \left(\operatorname{Fun}^{\otimes,{\rm L},\,{\rm right}\ t{\rm\text{-}exact}}
+        (\mathcal C,\mathcal D_A(X))\right)^{\simeq}.
+ \end{gathered}
+ \tag{SPC.1}
+\]
+
+The superscript \(\simeq\) means the entire maximal infinity-groupoid, not the set of isomorphism classes. A point includes its coherent tensor maps, unit, symmetry and higher relations. The target uses !-tensor with unit \(\omega_X\otimes_{\mathbf C}A\). Right \(t\)-exact means that the functor carries connective objects of the standard representation \(t\)-structure to connective objects of the D-module \(t\)-structure with derived \(A\)-coefficients. No representability or finite-type theorem for \(\mathcal Z\) is used below.
+
+The definition supplies a tautological functor for every point \(z\in\mathcal Z(A)\), and a canonical comparison for every arrow \((A,z)\to(B,z')\) of affine points:
+
+\[
+ E_z:\mathcal C\longrightarrow\mathcal D_A(X),\qquad
+ E_{z'}(V)\simeq E_z(V)\otimes_A^L B.
+ \tag{SPC.2}
+\]
+
+Here \(z'\) is the specified pullback point, including the specified path to that pullback. A path of tensor functors gives a path of the corresponding coefficient functors; every higher path is retained. Thus (SPC.2) is defined by evaluation on a groupoid, not by choosing one representative of each point.
+
+For a finite label set \(I\), let \(E_z^I\) be its exterior family with all tensor products over \(A\). The full exterior operator comparison (RN.9), followed by the scalar module bar of (KF.1), places it in \(\mathcal D_A(X^I)\). If \(\alpha:I_1\to I_2\), its coordinate inverse transfer gives
+
+\[
+ \Delta_\alpha^!E_z^{I_1}(\vec V)
+      \simeq E_z^{I_2}(\operatorname{mult}^{\alpha}\vec V),
+ \qquad E_z^\emptyset(\mathbf1)=A.
+ \tag{SPC.3}
+\]
+
+To prove this, first take a surjection \(\alpha\). Its diagonal inverse image is precisely the definition of !-tensor of the factors in each fibre. The coherent tensor map of \(E_z\) therefore identifies those factors with \(E_z\) of their representation tensor. For an inclusion, coordinate pullback adds the dualizing unit at each unused coordinate; its coefficient is \(E_z(\mathbf1)=\omega_X\otimes A\). Factor any function as the surjection to its image followed by inclusion, and use permutations to order its fibres. The operator unit comparison includes the density and suspension signs of §3.63. This proves (SPC.3) for every function, including empty label fibres and maps from the empty set. The associativity, symmetry and unit constraints of the specified tensor functor, composed with the actual inverse-transfer comparisons, identify the maps for composites. On longer strings the ordered exterior tensor and its successive diagonal evaluations give the same bar faces and identity degeneracies. Their tensor and transfer identities give all higher comparisons.
+
+This construction does not use a Riemann–Hilbert comparison on the full coefficient category. In particular an arbitrary parameter module will remain an operator module in the spectral operation.
+
+### 3.69. The full spectral Ran functor and derived base change
+
+Let \(\psi:I\to J\), let \(N\in\operatorname{Dmod}(X^J)\), and write \(N_A=N\otimes_{\mathbf C}A\). Define
+
+\[
+ F_{z,\psi}(\vec V,N)=
+   (p_{X^J})_*
+       \left(\Delta_\psi^!E_z^I(\vec V)\otimes_A^!N_A\right)
+       \in\operatorname{Mod}_A,\qquad p_{X^J}:X^J\to\mathrm{pt}.
+ \tag{SPC.4}
+\]
+
+The inverse image and !-tensor are the actual full operator operations; the latter tensor is relative to \(A\). The structure map is projective. The projective correspondence lemma (SH.14) constructs its direct image, base-change and projection formula on arbitrary unbounded operator complexes. Scalar extension by \(A\) is the derived module bar of (KF.1): on a semifree \(A\)-presentation use those same \(\mathbf C\)-linear transfer maps, then realize. Its unit insertion contracts the augmentation. Consequently (SPC.4) is an enhanced functor on the full stage \(\mathcal C^{\otimes I}\otimes\operatorname{Dmod}(X^J)\), continuous in both inputs.
+
+For a transition \(\alpha:I_1\to I_2\), \(\beta:J_2\to J_1\), \(\psi_1=\beta\psi_2\alpha\), equation (SPC.3) supplies
+
+\[
+ \Delta_\beta^!\Delta_{\psi_2}^!
+          E_z^{I_2}(\operatorname{mult}^{\alpha}\vec V)
+       \simeq\Delta_{\psi_1}^!E_z^{I_1}(\vec V).
+ \tag{SPC.5}
+\]
+
+Put \(Q=\Delta_{\psi_2}^!E_z^{I_2}(\operatorname{mult}^{\alpha}\vec V)\). Since \(\Delta_\beta\) is a projective projection followed by a closed diagonal, the full projection formula and proper composition give
+
+\[
+ \begin{aligned}
+ F_{z,\psi_2}(\operatorname{mult}^{\alpha}\vec V,(\Delta_\beta)_*N)
+    &=(p_{X^{J_2}})_*
+            \left(Q\otimes_A^!(\Delta_\beta)_*N_A\right)\\
+    &\simeq(p_{X^{J_2}})_*(\Delta_\beta)_*
+            \left(\Delta_\beta^!Q\otimes_A^!N_A\right)\\
+    &\simeq(p_{X^{J_1}})_*
+            \left(\Delta_{\psi_1}^!E_z^{I_1}(\vec V)
+                                 \otimes_A^!N_A\right).
+ \end{aligned}
+ \tag{SPC.6}
+\]
+
+Each displayed map is the actual transfer evaluation or projection map. Two successive transitions use the same composite \(\alpha\), composite \(\beta\), diagonal tensor map and proper image. The corresponding augmented transfer bars have the same faces, identity degeneracies and evaluation augmentations. This proves compatibility for coherent strings. The full Ran localization construction of (RN.11)–(RN.13) therefore supplies
+
+\[
+ F_z:\mathcal R\longrightarrow\operatorname{Mod}_A,\qquad
+ F_z(\operatorname{ins}_\psi(\vec V\otimes N))
+      =F_{z,\psi}(\vec V,N).
+ \tag{SPC.7}
+\]
+
+It respects every localization edge and higher relation; it is not just a rule on inserted objects.
+
+We next prove that \(F_z\) is symmetric monoidal. Disjoint union gives the exterior product of two coefficients \(E_z^I\) and two parameter modules. The two normalized parameter units are the exterior factors of the single product dualizing unit. Proper Fubini then identifies the direct image of that exterior product with the derived \(A\)-tensor of the two direct images:
+
+\[
+ F_z(B_1\circledast B_2)
+        \simeq F_z(B_1)\otimes_A^L F_z(B_2),\qquad
+ F_z(\mathbf1_{\mathcal R})=A.
+ \tag{SPC.8}
+\]
+
+Here is the full unbounded product comparison. Choose finite affine covers of the two projective products of curves. The relative Spencer direction has finite length, and each Čech direction has finite length. On exterior affine terms the transfer comparison is the balanced tensor of the two transfer tensors, with the complex Koszul sign. Tensoring the two finite Čech–Spencer complexes gives their product total complex. Finite horizontal lengths mean that only finitely many horizontal degrees enter a given total degree; no convergence of an infinite first-quadrant spectral sequence is used. Resolve the remaining \(A\)-module inputs by their semifree bars. Derived \(A\)-tensor and direct image preserve their realizations, so the affine comparison extends to every unbounded input. The proper product comparison is exactly its global augmentation. This proves the first map in (SPC.8). At the empty stage the structure map is the identity point and the unit is \(A\), proving the second.
+
+Associativity, symmetry and the unit maps in (SPC.8) are those of the same exterior coefficient and transfer tensor before image. For three and four blocks every route contracts the same ordered product tensor. The associativity pentagon and exchange hexagons are the tensor relations of \(E_z\) and the complex tensor relations of the transfers. Higher strings are the augmented bar strings with their identity degeneracies. Compatibility with (SPC.6) follows from that same product transfer evaluation. Joint continuity and the full Ran colimit extend these comparisons to all objects of \(\mathcal R\). This proves the asserted symmetric monoidal functor.
+
+For an arbitrary morphism of affine spectral points \((A,z)\to(B,z')\), use (SPC.2) in (SPC.4). The Spencer, finite Čech and derived module bars yield the actual comparison
+
+\[
+ F_z(T)\otimes_A^L B\simeq F_{z'}(T),\qquad T\in\mathcal R.
+ \tag{SPC.9}
+\]
+
+All tensor products in this argument are derived. A semifree presentation over \(A\) supplies the map even when \(B\) is not flat. Finite horizontal lengths let scalar extension pass through the finite transfer directions; the bar realization supplies every remaining unbounded input degree. Two scalar maps give the same composed tensor bar, and paths of points give the same evaluated paths. Thus (SPC.9) has the entire coherent affine-point comparison, without a flatness or boundedness assumption on the map.
+
+The same construction has an \(A\)-linear extension on \(\mathcal R\otimes\operatorname{Mod}_A\): on exterior generators it sends \(T\otimes Q\) to \(F_z(T)\otimes_A^LQ\). Resolve an arbitrary object by the exterior generator bar and realize this rule. Its unit insertion contracts the augmentation, and the balanced tensor identities give its maps and all bar relations. The two orders of applying that bar and the scalar bar \(A\to B\) have the same bisimplicial realization. Hence (SPC.9) also holds for the entire \(A\)-linear extension and its actual pulled-back objects; it does not replace a derived fibre by its degree-zero quotient.
+
+If \(T\) is compact in \(\mathcal R\), it is dualizable by (KG.22). Applying the strong symmetric monoidal functor (SPC.8) to its two evaluation triangles shows that \(F_z(T)\) is dualizable over \(A\). This implies it is compact: its mapping complex is
+\(\operatorname{RHom}_A(A,F_z(T)^\vee\otimes_A-)\), which preserves colimits since the unit \(A\) is compact. A compact \(A\)-module is a retract of a finite semifree module by the module bar and compact factorization through its finite cell stages. Therefore
+
+\[
+ T\in\mathcal R^c\quad\Longrightarrow\quad
+ F_z(T)\in\operatorname{Perf}(A),\qquad
+ F_z(T^\vee)=F_z(T)^\vee.
+ \tag{SPC.10}
+\]
+
+The argument includes compact nonholonomic parameter modules. It does not assume their geometric fibres have finite-dimensional underlying operator modules.
+
+### 3.70. Gluing the actual spectral coefficient functor
+
+Quasicoherent complexes on a prestack are coherent Cartesian families over its derived affine points. The index is the opposite of affine schemes over \(\mathcal Z\). Throughout, an arrow of points labelled by algebras \(A\to B\) means the scheme arrow \(\operatorname{Spec}B\to\operatorname{Spec}A\) and its specified spectral path. Thus in the present case
+
+\[
+ \operatorname{QCoh}(\mathcal Z)
+       =\lim_{(A,z)\in(\operatorname{Aff}/\mathcal Z)^{\rm op}}
+                        \operatorname{Mod}_A,\qquad
+ \mathsf{Loc}(T)_z=F_z(T).
+ \tag{SPC.11}
+\]
+
+The transition functor in this diagram is derived scalar extension. The limit includes every morphism of affine points and every higher path. Formula (SPC.9) and its coherent comparisons consequently make the right-hand expression an object of that limit, for every \(T\), and make its mapping-complex and higher functorial maps Cartesian too. The tensor maps (SPC.8) are Cartesian by their transfer construction. They therefore glue to
+
+\[
+ \mathsf{Loc}:\mathcal R\longrightarrow
+          \operatorname{QCoh}(\mathcal Z)
+     \quad\text{continuous symmetric monoidal},\qquad
+ \mathsf{Loc}(\mathbf1)=\mathcal O_{\mathcal Z}.
+ \tag{SPC.12}
+\]
+
+Continuity can be checked directly on Cartesian families: their colimits are the pointwise module colimits, because every transition is derived tensor and preserves colimits. Each \(F_z\) preserves colimits, so the glued family does too. Similarly the symmetric tensor and unit are pointwise tensor and unit, with their coherent comparisons. A family of equivalences is an equivalence in the limit, proving the tensor comparisons of (SPC.12). No algebraicity theorem for \(\mathcal Z\), or interchange of an ind-completion and a limit over its points, enters this construction.
+
+We will use a categorical limit comparison for full compactly generated categories. If \(\mathcal P=\operatorname{Mod}_E\), where \(E\) is its small compact-generator DG category, its presentable dual is \(\operatorname{Mod}_{E^{\rm op}}\). Evaluation is balanced tensor over \(E\); coevaluation is its regular bimodule. On representables both duality triangles are the representable tensor augmentation. Its unit insertion contracts the entire augmented bar. Realization extends this to all objects, morphisms and higher maps, proving both triangles on the full unbounded module categories. Hence tensor by \(\mathcal P\) has both adjoints, given by tensor by its dual, and preserves limits as well as colimits. Applying this proved comparison to the full compactly generated \(\mathcal R\) and \(\mathcal M_L\) gives
+
+\[
+ \begin{aligned}
+ \mathcal R\otimes\operatorname{QCoh}(\mathcal Z)
+       &\simeq\lim_{(A,z)}(\mathcal R\otimes\operatorname{Mod}_A),\\
+ \mathcal M_L\otimes\operatorname{QCoh}(\mathcal Z)
+       &\simeq\lim_{(A,z)}\mathcal M_{L,A}.
+ \end{aligned}
+ \tag{SPC.13}
+\]
+
+These are comparisons of full presentable categories using their actual duals. They do not commute a bounded coherent or perverse ind-completion through a prestack limit. In particular a Cartesian family of operator-valued spectral coefficients retains every affine point and its higher descent data.
+
+The continuous limit in (SPC.11) may equivalently be constructed as the Cartesian coherent section category. One chooses a common accessibility cardinal for the small affine-point diagram in the chosen larger universe. Lax coherent sections are the section module category obtained from the free path bar on that diagram. Requiring each transition's cone to vanish defines its Cartesian subcategory. This is an accessible condition: each cone is an accessible functor, and zero objects form an accessible subcategory; the set of transition conditions admits the same enlarged cardinal. Pointwise colimits remain Cartesian since the transition functors preserve colimits. An accessible category with these colimits is presentable, and its full enhanced section maps supply the limit. This also explains why pointwise colimits in the Cartesian-family description agree with its continuous category limit. Higher sections are represented by the same augmented path bar, so the construction does not replace the affine-point infinity-category by its homotopy category.
+
+The accessibility assertion can be seen from presentations, rather than inferred from a finite diagram. Enlarge the regular cardinal to dominate the sizes of the diagram, its path simplices, its algebra presentations and the functors' accessibility bounds. A section is a filtered union of presentations of that size. To approximate a Cartesian section, enlarge a presentation successively to include the images of its generators under each transition, inverse maps for the specified transition equivalences, and homotopies for the two inverse identities. Repeat for every higher simplex and relation. Each step adds fewer generators and relations than the chosen enlarged bound; a regular enlargement bounds the union of this sequence as well. The resulting presentations are Cartesian, their maps retain the chosen homotopies, and their filtered union is the original section. The same enlargement for a set of maps and homotopies gives the mapping version. Thus the Cartesian sections form an accessible full category. Together with the already proved pointwise colimits this is the definition of presentability. This argument proves presentability and the limit comparison; it does not assert compact generation of global quasicoherent complexes or compactness of their unit.
+
+### 3.71. The actual enhanced spectral category and its affine generators
+
+Use the proved geometric first action (RA.17) and the actual spectral functor (SPC.12) to set
+
+\[
+ \begin{gathered}
+ \mathcal B=\mathcal R\otimes\mathcal R,\qquad
+ \mathcal N_{\mathcal Z}
+       =\mathcal M_L\otimes\operatorname{QCoh}(\mathcal Z),\\
+ (T\boxtimes S)\star(M\boxtimes Q)
+       =\Phi^L(T)M\boxtimes(\mathsf{Loc}(S)\otimes Q),\\
+ \mathfrak R_{\mathcal Z}
+       =(\operatorname{Id}_{\mathcal R}\otimes\mathsf{Loc})(R_{\mathcal R})
+       \in\mathcal R\otimes\operatorname{QCoh}(\mathcal Z).
+ \end{gathered}
+ \tag{SPC.14}
+\]
+
+The full tensor bar extends the exterior action to all objects and morphisms. The two factors act separately, so they commute with coherent comparisons. The algebra is commutative since \(R_{\mathcal R}\) is the actual commutative regular algebra (KG.23) and \(\mathsf{Loc}\) is symmetric monoidal. Thus all geometric and spectral inputs of the module construction (EP.6)–(EP.8) have now been supplied:
+
+\[
+ \mathcal H_{\mathcal Z}
+   =\operatorname{Fun}^{\rm L}_{\mathcal B}
+                 (\mathcal R,\mathcal N_{\mathcal Z})
+   \simeq\operatorname{Mod}_{\mathfrak R_{\mathcal Z}}
+                 (\mathcal N_{\mathcal Z}).
+ \tag{SPC.15}
+\]
+
+The right-hand expression means modules for the action of this algebra on \(\mathcal N_{\mathcal Z}\). It does not require an object of \(\mathcal N_{\mathcal Z}\) to be a sheaf in an ordinary abelian heart.
+
+Let \(r\) be the continuous right adjoint of the multiplication of \(\mathcal R\). Its induction and forgetful functors are
+
+\[
+ U_{\mathcal Z}(F)=F(\mathbf1),\qquad
+ L_{\mathcal Z}(n)(T)=r(T)\star n,\qquad
+ L_{\mathcal Z}\dashv U_{\mathcal Z},\qquad
+ U_{\mathcal Z}L_{\mathcal Z}(n)=\mathfrak R_{\mathcal Z}\star n.
+ \tag{SPC.16}
+\]
+
+The full adjunction is (EP.7), whose transformation maps insert the unit and evaluate the counit of multiplication and its right adjoint. Their two triangles prove the inverse maps on the whole mapping complexes and higher transformations. Its monad multiplication is the regular algebra multiplication, because both are the mate of the multiplication of the same counits. The split augmented free action bar of (EP.8) identifies its entire module category with (SPC.15). Its contraction after \(U_{\mathcal Z}\) and the conservativity of \(U_{\mathcal Z}\) prove the equivalence for every unbounded object and coherent action. The forgetful \(U_{\mathcal Z}\) preserves colimits, since the underlying action-module colimits are the underlying colimits.
+
+The regular balancing map (EP.5), now with its actual second coefficient functor, gives the full eigen-comparison
+
+\[
+ \Phi^L(T)\star_{\rm first}U_{\mathcal Z}(F)
+       \simeq\mathsf{Loc}(T)\star_{\rm coeff}U_{\mathcal Z}(F),
+ \qquad T\in\mathcal R.
+ \tag{SPC.17}
+\]
+
+These maps have the tensor, unit, symmetry and higher relations of the balanced module functor. The coefficient on the right is the actual full spectral complex (SPC.4), with arbitrary parameter modules.
+
+For a point \(z\in\mathcal Z(A)\), denote the corresponding categories and algebra by
+\(\mathcal N_z=\mathcal M_{L,A}\), \(\mathfrak R_z=(\operatorname{Id}\otimes F_z)(R_{\mathcal R})\), and \(\mathcal H_z=\operatorname{Mod}_{\mathfrak R_z}(\mathcal N_z)\). Compose induction with free \(A\)-coefficients:
+
+\[
+ \begin{gathered}
+ s_A(M)=M\otimes_{\mathbf C}A,\qquad
+ P_z^{\rm enh}=L_zs_A,\qquad J_z=v_AU_z,\\
+ \operatorname{RHom}_{\mathcal H_z}(P_z^{\rm enh}c,F)
+        \simeq\operatorname{RHom}_{\mathcal M_L}(c,J_zF),\\
+ \{P_z^{\rm enh}c_i\}_i
+       \text{ compactly generates }\mathcal H_z
+       \quad(c_i\text{ compact generators of }\mathcal M_L).
+ \end{gathered}
+ \tag{SPC.18}
+\]
+
+Here \(v_A\) forgets the \(A\)-module action. Its full adjunction with \(s_A\) is the free \(A\)-module bar, including all differential and homotopy maps. It preserves colimits and is conservative: colimits of modules are underlying colimits, and an action on a zero underlying object is zero. The same properties hold for \(U_z\) by its constructed action bar. The displayed adjunction proves compactness of each free enhanced source, because \(J_z\) is continuous. Vanishing of all those mapping complexes forces \(J_zF=0\), then \(F=0\), proving generation of the full category. No finiteness or flatness of \(A\) is assumed.
+
+For a morphism of affine points \((A,z)\to(B,z')\), (SPC.9) identifies the scalar extension of the regular algebra with \(\mathfrak R_{z'}\). It gives
+
+\[
+ \mathcal H_z\otimes_{\operatorname{Mod}_A}\operatorname{Mod}_B
+       \simeq\mathcal H_{z'},\qquad
+ (P_z^{\rm enh}c)\otimes_A^L B=P_{z'}^{\rm enh}c.
+ \tag{SPC.19}
+\]
+
+We prove the full category comparison. Its functor is the scalar extension of the regular action maps and their free action bars. The generators in (SPC.18) go to the indicated generators of the target. For two such sources its mapping comparison reduces by the free adjunction to
+\(\operatorname{RHom}_{\mathcal M_{L,A}}
+(c_i\otimes A,\mathfrak R_z\star(c_j\otimes A))\).
+The continuous mapping functor out of the compact \(c_i\) commutes with scalar extension by the same free coefficient bar as (KF.1), including the induced \(A\)-action. The right-hand source therefore becomes exactly the analogous mapping complex over \(B\), using (SPC.9). These are the canonical comparison maps; their composition is the same regular-algebra multiplication and transfer evaluation. The multi-object module bar now identifies the scalar extension with the full target: it is fully faithful on its compact generating DG category, and both categories are the full module categories generated by those images. The representable augmentation contraction proves the inverse on arbitrary modules and higher maps. This proves (SPC.19) for an arbitrary DG algebra map, including nonflat maps.
+
+Equations (SPC.13), (SPC.14) and (SPC.19) also identify the global category with its entire Cartesian affine-point family:
+
+\[
+ \mathcal H_{\mathcal Z}
+       \simeq\lim_{(A,z)\in(\operatorname{Aff}/\mathcal Z)^{\rm op}}\mathcal H_z.
+ \tag{SPC.20}
+\]
+
+Indeed (SPC.13) identifies the underlying objects with full Cartesian \(\mathcal M_{L,A}\)-families. The action of the regular algebra restricts to its action at each point, by (SPC.9). Giving its module multiplication, unit, and their coherent homotopies in the limit is precisely giving their Cartesian maps and homotopies at every affine point. The same statement for maps of modules gives the entire mapping complexes. Conversely those coherent maps define the global action by that limit comparison. This proves (SPC.20) without commuting an ind-completion through a point diagram.
+
+Finally let \(s_{\mathcal Z}(c)=c\boxtimes\mathcal O_{\mathcal Z}\), and let \(s_{\mathcal Z}^R\) be its right adjoint. The global enhanced induction has the actual adjunction
+
+\[
+ P_{\mathcal Z}^{\rm enh}=L_{\mathcal Z}s_{\mathcal Z}
+       \dashv J_{\mathcal Z}=s_{\mathcal Z}^RU_{\mathcal Z}.
+ \tag{SPC.21}
+\]
+
+One can construct this right adjoint on the compact-generator module model of \(\mathcal M_L\). An object of \(\mathcal N_{\mathcal Z}\) is an \(E\)-module in quasicoherent complexes; apply
+\(\Gamma(\mathcal Z,-)=\operatorname{RHom}_{\operatorname{QCoh}(\mathcal Z)}
+(\mathcal O_{\mathcal Z},-)\)
+to its coefficients. Its \(E\)-action is induced by the adjunction mate
+\(W\otimes\Gamma(Q)\to\Gamma(W\otimes Q)\).
+For a representable \(c_i\), mapping from \(c_i\boxtimes\mathcal O_{\mathcal Z}\) is exactly \(\Gamma\) of that coefficient. The full representable bar extends this comparison to every source object: both sides send its colimits to mapping limits. This constructs \(s_{\mathcal Z}^R\), its unit and counit, and their actual adjunction triangles. Composing with (SPC.16) proves (SPC.21).
+
+The affine result (SPC.18) does not prove that this global \(J_{\mathcal Z}\) is continuous or conservative: those properties would require additional global assertions about \(\mathcal O_{\mathcal Z}\) and global sections. Nor does free enhanced induction prove idempotence or full faithfulness of an ordinary spectral projector. The comparison of the transported Ran regular algebra with the spectral diagonal, the resulting localization and projector-image theorems, nilpotent singular-support image and regularity, and the required global generation remain to be proved. Derived tempered Satake and the arbitrary characteristic-zero geometric ground-field extension also remain required.
+
+![The full spectral stage at a derived affine point, its proper Ran transition, a nonflat scalar fibre, Cartesian quasicoherent gluing and the enhanced spectral regular algebra.](figures/spectral-coefficient-gluing.svg)
+
+**Figure 3.20.** The five panels give the actual maps of (SPC.1)–(SPC.21). The parameter in the second panel is an arbitrary full operator module; the third panel displays the complete cohomology degrees of the nonflat fibre in Solution3.BH. The fourth panel indexes the opposite of affine schemes over the prestack and includes every affine-point morphism and higher path. In the last panel \(\Gamma_{\mathcal Z}\) means the right adjoint on operator-valued coefficient modules constructed after (SPC.21). The compact generation statement is affine; continuity of that global right adjoint and the nilpotent projector image are not claimed. Further reading is the free AGKRRV preprint cited below.
+
+### 3.72. Full operator parameters and a nonflat derived fibre
+
+**Exercise 3.BF.** Use the finite-set square of Solution3.BC, put \(X=\mathbf P^1_{\mathbf C}\), and take the trivial dual-torus local system with coefficients in a connective DG algebra \(A\). Put \(V_u=V_p\), \(V_v=V_q\), and \(N=\mathcal D_{X^3}\). Calculate the spectral value on both sides of that transition.
+
+**Solution 3.BF.** The trivial coefficient functor sends every character to \(\omega_X\otimes A\), with the unit's tensor comparisons; exterior products consequently give the dualizing unit on every parameter product. Thus (SPC.4) retains \(N_A\) itself. Proper product pushforward and (GD.9) give
+
+\[
+ F_{z,\psi_1}(V_p\boxtimes V_q,\mathcal D_{X^3})=A[-3].
+ \tag{SPC.22}
+\]
+
+On the second stage the combined coefficient is \(V_{p+q}\), and the unused \(e\)-coordinate has a unit. Its restricted exterior coefficient is again the full dualizing unit on \(X^2\). Equation (RA.26) gives the transition module
+\((i_{\rm diag})_*\mathcal D_X[-2]\), so
+
+\[
+ F_{z,\psi_2}(V_{p+q},(\Delta_\beta)_*\mathcal D_{X^3})
+     =(p_X)_*\mathcal D_X[-2]\otimes_{\mathbf C}A=A[-3].
+ \tag{SPC.23}
+\]
+
+The comparison is proper composition through the actual diagonal and forgotten coordinates, not an identification just of dimensions. The full nonholonomic input is compact, and its result \(A[-3]\) is perfect, as predicted by (SPC.10).
+
+**Exercise 3.BG.** Let \(G=\mathbf G_m\), and let a dual-torus spectral point \(z\) be given by a flat line bundle \(E_A\) on \(X\) with derived \(A\)-coefficients, locally free of rank one over \(\mathcal O_X\otimes A\). For \(x\in X(\mathbf C)\), compute the spectral coefficient of \(A_{n,p}=V_n\otimes\delta_x[p]\), its dual, and the corresponding enhanced eigen-comparison.
+
+**Solution 3.BG.** First construct the stated point. A finite-dimensional dual-torus representation is the finite sum of its weight spaces. Send its weight-\(n\) summand to the flat line power \(E_A^{\otimes n}\), with dual powers for negative \(n\), and use line multiplication for the tensor maps. Weight decompositions identify tensor products with the sums of these maps; line associativity, exchange and inverse evaluation give their unit, symmetry and dual relations. The representation module bar extends this rule continuously to \(\mathcal C\). In the right-D-module convention its normalized character coefficient is
+\((E_A^{\otimes n}\otimes_{\mathcal O_X}\Omega_X^1)[1]\).
+Local freeness and the shift by \([1]\) make this functor right \(t\)-exact, including derived connective \(A\)-coefficients. It is consequently an actual point of (SPC.1).
+
+Along the closed point the inverse-transfer tensor is the derived quotient by the local coordinate, shifted by \([-1]\), and contracts the right density factor. Local freeness identifies this quotient with the actual derived fibre \(E_{A,x}^{\otimes n}\); the normalization \([1]\) cancels the transfer shift. Proper point pushforward and projection formula in (SPC.4) therefore give
+
+\[
+ F_z(A_{n,p})=E_{A,x}^{\otimes n}[p],\qquad
+ F_z(A_{n,p}^{\vee})=E_{A,x}^{\otimes(-n)}[-p]
+                      =F_z(A_{n,p})^\vee.
+ \tag{SPC.24}
+\]
+
+Its evaluation contracts the line and its inverse, and coevaluation inserts their identity. For homogeneous shift generators of degrees \(-p,p\), reversed evaluation and the preceding exchange each have sign \((-1)^p\). Their product in both triangles is \(+1\), exactly as in (RA.27). Formula (SPC.17), or its affine restriction, now reads
+
+\[
+ \mathsf H_{n,x}^L[p](U_zF)
+       \simeq U_zF\otimes_A^L E_{A,x}^{\otimes n}[p].
+ \tag{SPC.25}
+\]
+
+Both sides have the same full coefficient shift, and the coherent comparison includes those same tensor signs. At \(n=p=0\) it is the module unit map. This is the actual affine spectral eigen-comparison on every unbounded underlying object.
+
+**Exercise 3.BH.** Let \(A=\mathbf C[\epsilon]/(\epsilon^2)\), \(B=A/(\epsilon)=\mathbf C\), and let \(z\) be the trivial dual-torus spectral point. Extend \(F_z\) \(A\)-linearly to \(\mathcal R\otimes\operatorname{Mod}_A\), and take \(T=\mathbf1_{\mathcal R}\otimes B\). Compute its spectral coefficient after derived base change to \(B\), and compare it with ordinary tensor.
+
+**Solution 3.BH.** The \(A\)-linear extension uses the free coefficient bar and satisfies
+
+\[
+ F_z^A(\mathbf1_{\mathcal R}\otimes Q)=Q,\qquad
+ F_z^A(T)\otimes_A^L B=B\otimes_A^L B.
+ \tag{SPC.26}
+\]
+
+A free \(A\)-resolution of \(B\) has one copy of \(A\) in every degree \(0,-1,-2,\ldots\), with all negative differentials multiplication by \(\epsilon\) and the degree-zero augmentation the quotient to \(B\). It is a complex because \(\epsilon^2=0\). The kernel and image of multiplication by \(\epsilon\) are both \(\epsilon A\), so it is exact in every negative degree, and its augmentation gives degree-zero cohomology \(B\). Tensoring this semifree bounded-above resolution with \(B\) makes all differentials zero. Consequently
+
+\[
+ B\otimes_A^L B\simeq\bigoplus_{r\ge0}B[r],\qquad
+ H^{-r}(B\otimes_A^L B)=B\quad(r\ge0).
+ \tag{SPC.27}
+\]
+
+The pulled-back object is
+\(\mathbf1_{\mathcal R}\otimes(B\otimes_A^L B)\) in the full \(B\)-linear Ran category. Its coefficient under the pulled-back trivial point is the same complex by the \(B\)-linear version of (SPC.26), which checks the actual comparison (SPC.9). Ordinary tensor would give only
+
+\[
+ B\otimes_A B=B
+ \tag{SPC.28}
+\]
+
+and would lose every negative cohomology group. Thus even empty labels require the entire derived module bar for nonflat scalar maps. There is no contradiction with (SPC.10): the inserted \(A\)-module \(B\) in this exercise is not perfect over \(A\), as its nonzero derived fibre in every negative degree demonstrates.
+
+Further reading: [Arinkin, Gaitsgory, Kazhdan, Raskin, Rozenblyum and Varshavsky, *The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), §6.1 for the de Rham tensor-functor definition and §12.6 for the enhanced spectral construction. The full-parameter transition, derived fibre, Cartesian gluing and adjunction proofs used here are (SPC.1)–(SPC.28).
+
+### 3.73. The full operator-valued universal property of Ran
+
+Keep the complex-field categories of (RA.1), and put \(\mathcal D=\operatorname{Dmod}(X)\). All tensor functors below preserve colimits and have their entire coherent strong symmetric monoidal structure. We first prove the actual categorical self-duality used to recover a coefficient from all its parameter tests:
+
+\[
+ \begin{gathered}
+ \operatorname{ev}_{\mathcal D}(Q,N)
+     =p_*(Q\otimes^!N),\qquad
+ \operatorname{coev}_{\mathcal D}(\mathbf C)
+     =\Delta_*\omega_X\in\operatorname{Dmod}(X^2),\\
+ \mathcal D\simeq\mathcal D^\vee,\qquad
+ \mathcal A\otimes\mathcal D
+     \simeq\operatorname{Fun}^{\rm L}(\mathcal D,\mathcal A).
+ \end{gathered}
+ \tag{SDG.1}
+\]
+
+Here \(\mathcal A\) can be any presentable symmetric monoidal DG category whose tensor preserves colimits in each variable. The tensor-product identification with the full product operator category is (RN.9); the evaluations are full continuous functors by (SH.14). To check the first triangle, identify the endofunctor determined by a full product kernel \(K\) with
+
+\[
+ M\longmapsto(p_1)_*(K\otimes^!p_2^!M).
+ \tag{SDG.2}
+\]
+
+On an exterior kernel \(Q\boxtimes N\), proper product Fubini and the unit \(\omega_X\) identify this with \(Q\otimes_{\mathbf C}p_*(N\otimes^!M)\), precisely the evaluation–coevaluation composite. Exterior generators and their full module bar extend the identification to every kernel and mapping complex. For \(K=\Delta_*\omega_X\), the actual proper projection formula gives
+
+\[
+ \begin{aligned}
+ (p_1)_*(\Delta_*\omega_X\otimes^!p_2^!M)
+   &\simeq(p_1)_*\Delta_*
+                (\omega_X\otimes^!\Delta^!p_2^!M)\\
+   &\simeq M .
+ \end{aligned}
+ \tag{SDG.3}
+\]
+
+The second line is the composite-map identity \(p_1\Delta=p_2\Delta=\mathrm{id}_X\) and the !-tensor unit. It is an identity of the actual full transfer functors; it includes unbounded inputs and all their maps. Exchanging the two coordinates proves the other triangle. These triangles give the categorical dual and the last equivalence in (SDG.1): its forward functor evaluates against the second factor, and its inverse tensors with coevaluation and then evaluates the given functor on the first factor. The same two triangles prove that these are inverse on entire mapping complexes and higher maps. No finiteness of a nonholonomic object's underlying vector space enters this duality.
+
+We claim the following universal property of the *actual* full Ran category:
+
+\[
+ \operatorname{Fun}^{\otimes,{\rm L}}(\mathcal R,\mathcal A)
+   \simeq
+ \operatorname{Fun}^{\otimes,{\rm L}}
+       (\mathcal C,\mathcal A\otimes\mathcal D).
+ \tag{SDG.4}
+\]
+
+For an operator-valued coefficient functor \(E\) on the right, use the full stage formula
+
+\[
+ F_{E,\psi}(\vec V,N)
+    =(\operatorname{Id}_{\mathcal A}\otimes p_{X^J,*})
+           (\Delta_\psi^!E^I(\vec V)\otimes^!N),
+ \qquad \psi:I\to J.
+ \tag{SDG.5}
+\]
+
+The operator operations here are tensored with \(\mathcal A\); the tensor bar defines the formula on its whole presentable coefficient category. The proof of (SPC.3)–(SPC.8) applies to these actual functors: arbitrary functions multiply their coefficient fibres or insert the dualizing unit, the opposite parameter arrow is carried by proper projection formula, and disjoint unions use full proper product Fubini. The transfer compositions, tensor constraints and identity bar degeneracies give all higher comparisons. None of these proofs uses a special property of \(\operatorname{Mod}_A\); they use the continuous operator functors tensored with the coefficient category. The full Ran colimit (RN.11)–(RN.13) therefore produces the left-hand functor.
+
+Conversely, let \(F:\mathcal R\to\mathcal A\) be a continuous strong symmetric monoidal functor. On the singleton stage restrict it to
+
+\[
+ G_V(N)=F(\operatorname{ins}_{\mathrm{id}_{\{1\}}}(V\otimes N)),
+ \qquad E_F(V)\in\mathcal A\otimes\mathcal D
+       \text{ represents }G_V\text{ under (SDG.1).}
+ \tag{SDG.6}
+\]
+
+This constructs the entire continuous functor \(E_F\), not merely its values on finite-dimensional representations. The inverse in (SDG.1) supplies its maps and all their higher homotopies, naturally in \(V\).
+
+We now recover its tensor maps. Let \(c:\{1,2\}\to\{1\}\) be the fold. There are actual structural equivalences in the Ran category
+
+\[
+ \operatorname{ins}_{\mathrm{id}_{\{1\}}}(V\otimes W\otimes N)
+ \simeq \operatorname{ins}_c((V\boxtimes W)\otimes N)
+ \simeq \operatorname{ins}_{\mathrm{id}_{\{1,2\}}}
+                 ((V\boxtimes W)\otimes\Delta_*N).
+ \tag{SDG.7}
+\]
+
+The first is the coefficient fold \(\alpha=c,\beta=\mathrm{id}\); the second is the parameter fold \(\alpha=\mathrm{id},\beta=c\), with \(\beta\) pointing opposite to the parameter-stage direction. On exterior parameter objects \(N_1\boxtimes N_2\), monoidality of \(F\) identifies its two-point stage with \(G_V(N_1)\otimes_{\mathcal A}G_W(N_2)\). The full exterior module bar (RN.9) extends that equality to every parameter object of \(\operatorname{Dmod}(X^2)\), including the actual \(\Delta_*N\) in (SDG.7). Apply proper projection formula to (SDG.5). The resulting identity on every \(N\) is represented, by the full faithful comparison (SDG.1), by
+
+\[
+ E_F(V\otimes W)\simeq E_F(V)\otimes^!E_F(W).
+ \tag{SDG.8}
+\]
+
+These are the actual representing maps. An equality only on holonomic parameters or ordinary stalks would not recover them.
+
+The empty coefficient-label transition, followed by the structural map \(X\to\mathrm{pt}\), gives
+
+\[
+ \operatorname{ins}_{\mathrm{id}_{\{1\}}}(\mathbf1\otimes N)
+   \simeq\operatorname{ins}_{\emptyset\to\{1\}}
+                      (\mathbf C\otimes N)
+   \simeq\mathbf1_{\mathcal R}\otimes_{\mathbf C}p_*N.
+ \tag{SDG.9}
+\]
+
+After applying \(F\), (SDG.1) consequently represents this singleton parameter functor by
+\(E_F(\mathbf1)=\mathbf1_{\mathcal A}\boxtimes\omega_X\).
+Thus (SDG.8) has the specified strong unit map too.
+
+For associativity, expand (SDG.7) on three label and coordinate copies. The two successive folds have the same composite function, and the two diagonal transfers have the same small diagonal. The coherent Ran composition maps identify them before evaluation. Applying the representing equivalence (SDG.1) gives the associativity relation for (SDG.8). Four copies give its pentagon. Parameter and coefficient permutations give its exchange and symmetry relations, with the density and suspension normalization of §3.63. Empty fibres give its unit relations. The same argument on each longer function string and each bar simplex retains all higher comparisons. This proves the strong symmetric monoidal \(E_F\).
+
+Finally any stage reduces by its coefficient function \(\alpha=\psi\) to
+
+\[
+ \operatorname{ins}_{\psi}(\vec V\otimes N)
+    \simeq
+ \operatorname{ins}_{\mathrm{id}_J}
+          ((\operatorname{mult}^{\psi}\vec V)\otimes N).
+ \tag{SDG.10}
+\]
+
+On exterior parameters at the right-hand stage, monoidality splits the functor into the singleton tests just reconstructed. The full exterior bar then extends this to arbitrary \(N\), yielding exactly (SDG.5). These comparisons respect all original finite-set transitions, by their common folds and transfers; hence they extend to the actual enhanced Ran colimit and its localization morphisms. Conversely reconstructing \(E\) from (SDG.5) is the evaluation–coevaluation triangle of (SDG.1). Naturality and the full bar prove the same two inverse comparisons for transformations and higher paths. This proves (SDG.4).
+
+### 3.74. The regular algebra encodes entire spectral path spaces
+
+Let \(A\) be a connective commutative DG algebra and let \(z,w\in\mathcal Z(A)\) be the actual points of (SPC.1). Transport the Ran regular algebra and multiply its two \(A\)-coefficient factors:
+
+\[
+ \begin{gathered}
+ D_{z,w}
+   =\operatorname{mult}_A
+          (F_z\otimes F_w)(R_{\mathcal R})\in\operatorname{CAlg}_A,\\
+ D_{z,w}\simeq
+     \int^{T\in\mathcal R^c}F_z(T)^\vee\otimes_A^L F_w(T).
+ \end{gathered}
+ \tag{SDG.11}
+\]
+
+The second line follows from the actual entire compact-DG-category coend (KG.23), continuity of both coefficient functors, and their monoidal dual comparison (SPC.10). It includes the coend's higher bar faces and degeneracies; it is not a sum over representatives of inserted objects. Its multiplication is the one constructed for the regular algebra: two terms use the coefficient exchange and then the term for \(T\circledast S\); its unit is the term for \(\mathbf1\).
+
+For every connective commutative DG \(A\)-algebra \(B\), all tensor comparisons in (SPC.9) yield
+
+\[
+ D_{z,w}\otimes_A^L B\simeq D_{z_B,w_B}.
+ \tag{SDG.12}
+\]
+
+Indeed duality of the finite perfect \(F_z(T)\) commutes with derived scalar extension, by the evaluation–coevaluation triangles; arbitrary derived tensor then commutes with the coend realization. On each bar simplex these are the same tensor maps, so the comparison includes the algebra multiplication, unit and every higher relation. No flatness of \(A\to B\) is used.
+
+We prove the full natural-transformation meaning of this algebra:
+
+\[
+ \operatorname{Map}_{\operatorname{CAlg}_B}
+       (D_{z_B,w_B},B)
+    \simeq
+ \operatorname{Isom}^{\otimes}
+       (F_{w_B},F_{z_B}).
+ \tag{SDG.13}
+\]
+
+For a compact \(T\), perfect duality identifies a map
+\(F_{z_B}(T)^\vee\otimes_B F_{w_B}(T)\to B\)
+with a map \(F_{w_B}(T)\to F_{z_B}(T)\). This fixes the orientation: the algebra's first, dual factor is the *target* of the corresponding transformation. Maps from the full coend are precisely coherently natural such maps on the compact DG category. This is its defining universal property on mapping spaces: applying \(\operatorname{Map}(-,B)\) turns its realization into the complete limit of the bar mapping spaces. The unit condition is the transformation at \(\mathbf1\); its multiplication condition is
+
+\[
+ \eta_{T\circledast S}
+   =\eta_T\otimes_B\eta_S
+ \quad\text{under the given monoidal comparisons}.
+ \tag{SDG.14}
+\]
+
+The regular algebra's associative, symmetric and higher multiplication maps impose exactly the corresponding coherent tensor relations. One may compute those algebra mapping spaces by the augmented free commutative-algebra resolution: in each degree its faces multiply or apply the algebra action, its degeneracies insert the free unit, and the augmentation is split by unit insertion. Thus its total mapping space retains the multiplication homotopies and all their iterated compatibility; it does not replace a commutative DG algebra map by a map of its degree-zero cohomology rings. The same bar comparison proves that these assignments are inverse as spaces with all higher paths.
+
+Such a tensor transformation is automatically invertible. For a dualizable compact \(T\), construct the inverse to \(\eta_T:F_{w_B}(T)\to F_{z_B}(T)\) by
+
+\[
+ \begin{aligned}
+ F_{z_B}(T)&\longrightarrow
+ F_{w_B}(T)\otimes_B F_{w_B}(T^\vee)\otimes_B F_{z_B}(T)\\
+ &\xrightarrow{\mathrm{id}\otimes\eta_{T^\vee}\otimes\mathrm{id}}
+ F_{w_B}(T)\otimes_B F_{z_B}(T^\vee)\otimes_B F_{z_B}(T)\\
+ &\longrightarrow F_{w_B}(T).
+ \end{aligned}
+ \tag{SDG.15}
+\]
+
+The outside maps are source coevaluation and target evaluation in the ordered dual–object convention. Equivalently, the last map uses the transported Ran evaluation with its required exchange. Naturality for evaluation and coevaluation, tensor compatibility (SDG.14), and the transformation's unit map reduce each composite with \(\eta_T\) to the corresponding duality triangle. They therefore give both identity composites, with the complex exchange signs. All objects of \(\mathcal R\) are generated from the compact DG category by the full representable bar. Both coefficient functors preserve its realization, so this inverse extends naturally to every unbounded object and all maps. Higher inverse comparisons follow from those same triangles. This proves the asserted isomorphism space, rather than a space of possibly noninvertible natural transformations.
+
+Apply the entire universal comparison (SDG.4) with \(\mathcal A=\operatorname{Mod}_B\). The actual coefficient functor associated to a point is precisely (SPC.4). Thus
+
+\[
+ \begin{aligned}
+ \operatorname{Map}_{\operatorname{CAlg}_A}(D_{z,w},B)
+   &\simeq\operatorname{Isom}^{\otimes}(E_{w_B},E_{z_B})\\
+   &\simeq\operatorname{Path}_{\mathcal Z(B)}(w_B,z_B).
+ \end{aligned}
+ \tag{SDG.16}
+\]
+
+The second line is the defining maximal infinity-groupoid in (SPC.1). It retains right \(t\)-exact objects, their tensor isomorphisms and every higher path. Every map used in the first line is the scalar coend comparison, its tensor-dual mate or the full universal representing comparison; consequently it is natural in \(B\), in the points and in their coherent paths.
+
+This identifies the *entire derived point-pair path functor* of the actual de Rham prestack. It does not yet prove that \(D_{z,w}\) is connective, or that its spectrum is an affine scheme in the connective derived-affine convention. Identifying the algebra (SDG.11) with the quasicoherent direct image of the diagonal unit requires that further geometry and its derived base-change proof. Nor does (SDG.16) by itself prove a tensor-product equivalence for global quasicoherent categories, a continuous fully faithful localization right adjoint, global enhanced generation, the ordinary projector or its nilpotent image and regularity. Those assertions remain required.
+
+![The full operator self-duality kernel, recovery of the tensor coefficient from all Ran parameters, the regular coend representing derived tensor paths, and the projective-line torus derived fibre.](figures/spectral-paths.svg)
+
+**Figure 3.21.** Panels1–3 give the actual full-category maps of (SDG.1)–(SDG.16). The first panel distinguishes the dualizing coevaluation kernel from its incorrectly shifted constant replacement. In the third, the first dual coefficient is the target of the tensor isomorphism. Panel4 is the complete worked derived fibre of Solution3.BK, including its degree-two paths. Panel5 records which general diagonal, localization and nilpotent-image assertions still need proofs. The source reading is the free AGKRRV preprint cited below.
+
+### 3.75. The kernel shift, enriched naturality and a derived diagonal fibre
+
+**Exercise 3.BI.** Replace the coevaluation kernel in (SDG.1) by \(\Delta_*\mathbf k_X\). Compute its endofunctor on an arbitrary full D-module \(M\), and compare it with the correct kernel on \(M=\mathcal D_X\).
+
+**Solution 3.BI.** On the curve, (GD.3) gives \(\mathbf k_X=\omega_X[-2]\). The same actual proper projection and composite-map calculation as (SDG.3) gives
+
+\[
+ \begin{aligned}
+ (p_1)_*(\Delta_*\mathbf k_X\otimes^!p_2^!M)
+   &\simeq\mathbf k_X\otimes^!M=M[-2],\\
+ (p_1)_*(\Delta_*\omega_X\otimes^!p_2^!M)
+   &\simeq M .
+ \end{aligned}
+ \tag{SDG.17}
+\]
+
+In particular the first kernel gives \(\mathcal D_X[-2]\), whereas coevaluation must give \(\mathcal D_X\). The calculation holds for every unbounded \(M\), including this nonholonomic compact operator module. The two kernels differ by an actual dimension shift; agreement on their ordinary support would not detect the error.
+
+**Exercise 3.BJ.** In the coefficient field \(\mathbf C\), a rule on the shifted units of \(\mathcal R\) multiplies the value of \(\mathbf1[r]\) by \(a^r\), where \(a\in\mathbf C^\times\). Its degree-zero maps and tensor products look compatible. Determine whether this can be an enriched tensor transformation with identity unit map.
+
+**Solution 3.BJ.** The shifted identity supplies a closed homogeneous morphism
+
+\[
+ f_r\in\operatorname{Hom}_{\mathcal R}^{\,r}
+                   (\mathbf1[r],\mathbf1).
+ \tag{SDG.18}
+\]
+
+Both coefficient functors carry it to the canonical degree-\(r\) morphism \(\mathbf C[r]\to\mathbf C\). Enriched naturality therefore requires
+
+\[
+ \eta_{\mathbf1}\,F(f_r)
+       =F(f_r)\,\eta_{\mathbf1[r]},
+ \qquad 1=a^r.
+ \tag{SDG.19}
+\]
+
+There is no interchange sign here: the transformation has degree zero. Taking \(r=1\) gives \(a=1\), and then all the equations hold. In contrast, the ordinary degree-zero category of shifted vector lines has no nonzero map between different shifts; the grading-dilation rule would pass that weaker naturality test. This explains why the compact *DG* coend and its enriched bar in (SDG.11) cannot be replaced by a coend over ordinary isomorphism classes and degree-zero maps.
+
+**Exercise 3.BK.** Let \(X=\mathbf P^1_{\mathbf C}\), let \(\widehat G=\mathbf G_m\), and let \(z\) be the trivial normalized coefficient functor. Determine \(D_{z,z}\). For the connective DG algebra
+\(B=\mathbf C[\delta]/(\delta^2)\), with \(|\delta|=-2\) and zero differential, compute the components and positive homotopy groups of the corresponding spectral path space.
+
+**Solution 3.BK.** A finite representation of \(\mathbf G_m\) is the finite sum of its weight spaces: in its coaction write \(v\mapsto\sum_n v_n\otimes t^n\). Coassociativity and uniqueness of Laurent coefficients give the coaction \(v_n\mapsto v_n\otimes t^n\), and the counit gives \(v=\sum_n v_n\). Thus the regular coefficient coend has one generator for each weight, with multiplication adding weights; it is \(\mathbf C[u,u^{-1}]\). Under the two trivial coefficient functors its regular algebra in \(\operatorname{Dmod}(X)\) is
+\(\omega_X\otimes_{\mathbf C}\mathbf C[u,u^{-1}]\).
+The target-category version of the duality and coend argument (SDG.13) identifies its maps to the unit with invertible endomorphisms of \(\omega_X\), with all their homotopies. It consequently gives
+
+\[
+ \operatorname{Map}_{\operatorname{CAlg}_{\mathbf C}}(D_{z,z},B')
+   \simeq
+ \operatorname{GL}_1\!
+       \left(\operatorname{RHom}_{\operatorname{Dmod}_{B'}(X)}
+                    (\omega_X\otimes B',\omega_X\otimes B')\right).
+ \tag{SDG.20}
+\]
+
+For this particular constant coefficient construction the same proof works for every commutative DG \(B'\), including a nonconnective one: the constant tensor functor and its derived scalar bar are still defined, and no \(t\)-exactness condition is used in the algebra mapping calculation. For connective \(B'\) these functors are the actual spectral point pullbacks of (SDG.16). Testing all DG target algebras in (SDG.20) will let us identify the algebra itself, rather than infer it only from ordinary points.
+
+Here is a full multiplicative model of the endomorphism complex over \(\mathbf C\). The normalized unit becomes the trivial connection after right-density side change; its Spencer Hom is the de Rham complex. Use the charts \(U=\mathbf A^1_t\), \(V=\mathbf A^1_s\), \(s=t^{-1}\), and \(W=U\cap V=\mathbf G_m\). Their affine ordered Čech–de Rham total complex has terms
+
+\[
+ \begin{gathered}
+ C^0=\mathbf C[t]\oplus\mathbf C[s],\\
+ C^1=\mathbf C[t]\,dt\oplus\mathbf C[s]\,ds
+                         \oplus\mathbf C[t,t^{-1}],\\
+ C^2=\mathbf C[t,t^{-1}]\,dt,\\
+ d^0(f_U,f_V)=(df_U,df_V,f_V-f_U),\qquad
+ d^1(\alpha_U,\alpha_V,h)=\alpha_V-\alpha_U-dh .
+ \end{gathered}
+ \tag{SDG.21}
+\]
+
+All forms and functions in differences are restricted to \(W\). The displayed differentials compose to zero. Degree-zero cycles are equal constants. For a degree-one cycle, integrate each polynomial form to \(f_U,f_V\); this is possible in characteristic zero. The cycle equation then says that \(h-f_V+f_U\) is constant. Adjust the constant of one primitive to obtain exactly that cycle as \(d^0(f_U,f_V)\). Thus \(H^1=0\). In degree two, forms from \(U\) have exponents at least zero, and forms from \(V\), using \(ds=-t^{-2}dt\), have exponents at most \(-2\). Derivatives of Laurent functions have zero residue and span all monomials other than \(t^{-1}dt\). The quotient is consequently the single residue class
+
+\[
+ H^0(C^\bullet)=\mathbf C,\qquad
+ H^1(C^\bullet)=0,\qquad
+ H^2(C^\bullet)=\mathbf C\eta,\qquad
+ \eta=[dt/t].
+ \tag{SDG.22}
+\]
+
+The complex has its ordered Čech cup product with form exchange sign
+\((-1)^{rq}\), where \(r\) is the first factor's de Rham degree and \(q\) the second factor's Čech degree. Restrictions, associative form multiplication and that sign make it an associative DG algebra: the two parts of the total differential obey the graded Leibniz identity, and both association routes restrict the same three factors to the same intersection. This is the endomorphism cup product. Indeed the coordinate Spencer diagonal sends a tangent generator to its two primitive factors; its exterior extension, with the same Koszul sign, commutes with the Spencer differential by the operator Leibniz rule. Applying Hom gives the form product locally. Ordered Čech composition gives exactly the product just described on global derived maps.
+
+Choose \(dt/t\) as an actual degree-two cocycle. Its square is zero already in this total complex, whose terms stop in degree two. Sending \(1\) to the actual constant unit and the degree-two generator to this cocycle therefore gives a unital associative DG algebra quasi-isomorphism
+
+\[
+ \mathbf C[\eta]/(\eta^2)\longrightarrow C^\bullet,\qquad
+ |\eta|=2.
+ \tag{SDG.23}
+\]
+
+This proves the multiplicative model as well as its cohomology; an equality just of dimensions would not identify invertible endomorphisms. The full finite Spencer–Čech scalar comparison of (SPC.9) extends this model by derived tensor to every \(B'\). Thus its scalar form is \(B'\oplus B'[-2]\), with square-zero second summand.
+
+An invertible endomorphism is a unit \(u\) in the first summand together with a degree-zero element \(q\) in the second. Multiplication by the coherent inverse of \(u\) identifies this space naturally with
+
+\[
+ \operatorname{GL}_1(B')\times
+                 \operatorname{Map}_{\operatorname{Mod}_{\mathbf C}}
+                                   (\mathbf C[2],B').
+ \tag{SDG.24}
+\]
+
+Both factors include their full higher mapping spaces; invertibility restricts the components of the first without discarding any of its higher homotopies. The first factor is represented by the free degree-zero Laurent generator, and the second by a free degree-\(-2\) commutative generator. By (SDG.20) for all DG \(B'\) and the algebraic Yoneda comparison, we have the actual algebra
+
+\[
+ D_{z,z}\simeq
+ \mathbf C[u,u^{-1}]\otimes_{\mathbf C}
+                          \operatorname{Sym}_{\mathbf C}(\mathbf C[2]).
+ \tag{SDG.25}
+\]
+
+This particular diagonal algebra is connective. It does not prove the corresponding general-group connectivity and diagonal-pushforward theorem.
+
+For the algebra \(B\) in the exercise, the degree-zero unit in
+\(B[\eta]/(\eta^2)\) is \(u+q\delta\eta\), where \(u\in\mathbf C^\times\) and \(q\in\mathbf C\). Their multiplication and all integer character values are
+
+\[
+ \begin{gathered}
+ (u+q\delta\eta)(u'+q'\delta\eta)
+      =uu'+(uq'+qu')\delta\eta,\\
+ (u+q\delta\eta)^n=u^n+n u^{n-1}q\delta\eta,\qquad n\in\mathbf Z .
+ \end{gathered}
+ \tag{SDG.26}
+\]
+
+The square of \(\delta\eta\) is zero; the inverse formula gives the displayed equality for negative \(n\) too. Dividing \(q\) by \(u\) identifies the component group with the product of the multiplicative and additive groups. Above a fixed component, the higher homotopy groups are the negative cohomology of the endomorphism complex. Its only negative degree is \(-2\), coming from \(\delta\) in the first summand. Therefore
+
+\[
+ \begin{gathered}
+ \pi_0\operatorname{Path}_{\mathcal Z(B)}(z_B,z_B)
+        =\mathbf C^\times\times\mathbf C,\\
+ \pi_2\operatorname{Path}_{\mathcal Z(B)}(z_B,z_B)=\mathbf C,\qquad
+ \pi_i=0\quad(i\ge1,\ i\ne2).
+ \end{gathered}
+ \tag{SDG.27}
+\]
+
+For \(B'=\mathbf C\), in contrast, the path space has only the ordinary units \(\mathbf C^\times\) and no positive homotopy groups. The extra degree-\(-2\) diagonal coordinate and the degree-two paths of the derived coefficient test are therefore invisible if one tests only ordinary field-valued points.
+
+Free further reading for the regular-algebra/path argument is [Arinkin, Gaitsgory, Kazhdan, Raskin, Rozenblyum and Varshavsky, *The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), §12.3. The full operator pairing and universal reconstruction used here are (SDG.1)–(SDG.10); the entire coend, derived scalar and path-space comparisons are (SDG.11)–(SDG.16); the three complete solutions are (SDG.17)–(SDG.27).
+
 ## 4. Betti, constructible, and tempered categories
 
 Now suppose \(k=\mathbb C\), and choose a coefficient field \(E\) of characteristic zero. The **large Betti** category consists of complexes of \(E\)-sheaves on the analytic stack, with no finite-dimensional stalk requirement. Its automorphic subcategory is

@@ -1,6 +1,6 @@
 # The index theorem for measured foliations
 
-*Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), September–October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 ## Introduction
 
@@ -1294,7 +1294,7 @@ The dual of the unrestricted regional \(H^1(I_u)\) behaves differently. The cons
 
 Similarly, global \(L^2\) output retains orthogonality of the distinct plaque intervals. On any one leaf the \(L^2\) operator is a direct sum of the plaque rank-one operators; its norm is their supremum, not their sum. Here those individual norms are \(\chi_Nc_\eta\delta(u)^{-1/2}\). It is precisely the nonlocal global negative norm and its shared constant Fourier mode that collect the unit masses in (NP.12). The argument must not be described as an \(L^2\) direct-sum failure.
 
-The product-chart hypotheses are specified, but the historical plaque Sobolev boundary convention remains unidentified. Thus the historical plaque norm interface remains open. The present proof provides a further complete, typed obstruction and a positive-kernel test, not a universal claim about every possible norm carrying the label \(H^{-1}\).
+The proposition concerns its three explicitly defined negative-output completions and the specified product chart. It gives a typed positive-kernel obstruction; it is not a universal claim about every possible negative-order plaque norm.
 
 ![Disjoint physical plaques and the proved negative-output operator bounds](../figures/kt-plaque-negative-output.png)
 
@@ -1469,7 +1469,7 @@ The equality follows from the rank-one norm formula and \(\sup\chi=1\), not from
 
 The unrestricted regional \(H^1(I)\) dual also differs: its constant test one has norm one and gives value one on \(g_\varepsilon\). Its output norm is at least one, so it does not satisfy the vanishing local bound (QB.13). Positivity is a statement about the underlying convolution/\(L^2\) element, not an order on operators between unequal Sobolev spaces.
 
-Each kernel support is compact inside the fixed chart, but there is no **single common compact subchart** containing all supports with a positive buffer from \(x=0\). Any proposed historical hypothesis imposing such a uniform buffer, or measuring the output on a prescribed larger chart, must be checked separately. This proof does not assert that the original source omits every such hypothesis; the exact historical source interface requires separate reconciliation. The historical plaque comparison remains unresolved until its actual local norm and admissible support/chart premises are established and reconciled.
+Each kernel support is compact inside the fixed chart, but no single compact subchart contains all supports with a positive buffer from \(x=0\). A prescribed common buffer would exclude this family. Measuring the output on a prescribed larger chart is likewise a different hypothesis, rather than the quotient norm used in this proposition.
 
 ![Exact quotient duality and the single-plaque negative-output boundary mechanism](../figures/kt-plaque-negative-output-boundary.png)
 
@@ -1525,14 +1525,97 @@ The signed local input and output spaces are
 
 The negative input is an interior distribution, because compact tests are dense in \(\mathsf S_u^s\). The negative output can retain boundary functionals annihilating all compact tests; it must not be silently identified with a quotient in which those functionals are discarded. An actual compact interior kernel has a specified output functional, defined by its physical pairing and an interior cutoff, rather than by an arbitrary boundary extension.
 
-**Theorem 6.8i (all-orders physical two-realization estimate).** Fix any real orders \(r,r'\). For every distinguished open set \(\Omega\), let \(P=(P_u)\) be a plaque kernel family whose full kernel is supported in a compact subset of \(T\times T\times U\), with the usual \(C^{\infty,0}\) parameter dependence and its natural bounded action
-\(\mathsf I_u^r(E)\to\mathsf O_u^{r'}(F)\), and put
+For a compact interior plaque kernel family, define its local norm by
 
 \[
 M_{r,r'}(P)=\sup_{u\in U}
 \|P_u\|_{\mathsf I_u^r(E),\mathsf O_u^{r'}(F)}.
 \tag{PJ.4}
 \]
+
+The natural action in this norm uses the physical kernel pairing. Positive inputs may have boundary values; negative outputs are evaluated on the entire maximal positive space. The following lemma proves that this is a finite norm for every compact pseudodifferential kernel at the permitted orders.
+
+**Lemma 6.8h.1 (compact kernels in the physical boundary spaces).** Let \(P\in\Psi_c^a(\Omega;E,F)\), with full kernel supported in a compact subset of \(T\times T\times U\). If \(r,r'\in\mathbb R\) and \(r'\le r-a\), then
+
+\[
+M_{r,r'}(P)<\infty.
+\]
+
+The bound proving finiteness may depend on the individual kernel, its support and its chart. No regularity of the omitted plaque boundary is required.
+
+**Proof.** The input, output and transverse projections of the kernel support are compact. Choose real coordinate cutoffs \(\chi_{\rm in},\chi_{\rm out}\), compactly supported inside the plaque coordinate domain and equal to one near the respective projections. Consider transverse parameters in a compact neighbourhood of the transverse projection; the kernel is zero outside that projection. Write \(d\nu_u=w_u(t)\,dt\) and use the fixed isometric bundle embeddings \(j_u\) preceding (54). For either bundle and either interior cutoff define
+
+\[
+L_{\chi,u}v=\widetilde{\chi w_u^{1/2}j_uv},
+\qquad
+T_{\chi,u}h=\chi w_u^{-1/2}j_u^*(h|_T).
+\]
+
+The tilde denotes zero extension after multiplication by the interior cutoff. At every integer \(k\ge0\), these are bounded maps
+
+\[
+L_{\chi,u}:\mathsf M_u^k\longrightarrow H^k(\mathbb R^p;\mathbb C^N),
+\qquad
+T_{\chi,u}:H^k(\mathbb R^p;\mathbb C^N)\longrightarrow\mathsf S_u^k,
+\]
+
+uniformly on the compact transverse parameter set. To verify this, cover the compact cutoff support by finitely many frames. The metric, its inverse, density, embedding, connection and their required leafwise derivatives have uniform bounds there; the density is bounded away from zero. Covariant jets are triangular combinations of ordinary derivatives, with leading coefficient the identity, and the inverse triangular formulas have the same bounded-coefficient property. The product rule therefore compares both displayed norms. The localized weak section has support strictly inside the plaque, so testing its zero extension introduces no boundary distribution. For the second map, approximation of \(h\) in full-space \(H^k\) by smooth sections, followed by the cutoff and reconstruction, gives compact smooth plaque sections converging in the physical jet norm. The output belongs to the minimal space \(\mathsf S_u^k\). Interpolation between \(k\) and \(k+1\), using (PJ.2) and Lemma 6.7, proves the same maps at every real \(s\ge0\). This does not equate the fractional minimal and maximal spaces.
+
+For a real cutoff, \(L_{\chi,u}\) and \(T_{\chi,u}\) are adjoints under the Euclidean and physical \(L^2\) pivots. At negative order define
+
+\[
+L_{\chi,u}^{-s}=(T_{\chi,u}^{s})^\times:
+(\mathsf S_u^s)^\times\longrightarrow H^{-s}(\mathbb R^p),
+\qquad
+T_{\chi,u}^{-s}=(L_{\chi,u}^{s})^\times:
+H^{-s}(\mathbb R^p)\longrightarrow(\mathsf M_u^s)^\times.
+\]
+
+Their bounds are the positive-order bounds. Thus, with the positive maps just proved, we have uniformly bounded maps
+
+\[
+L_{\chi,u}^{r}:\mathsf I_u^r\longrightarrow H^r(\mathbb R^p),
+\qquad
+T_{\chi,u}^{r}:H^r(\mathbb R^p)\longrightarrow\mathsf O_u^r
+\quad(r\in\mathbb R).
+\]
+
+The first negative map is the interior distribution localized by the cutoff. The second is a specified functional on every \(v\in\mathsf M_u^s\), obtained by pairing the Euclidean distribution against \(L_{\chi,u}^sv\). It retains the physical boundary pairing; it is not merely a distribution specified modulo boundary functionals.
+
+Let \(Q_u\) be the full-space matrix operator obtained from the compact kernel by the bundle embeddings and density conjugation. Since both kernel coordinates have compact interior support, extension of the kernel by zero requires no extension of the plaque chart across its boundary. On compact tests, if \(K_u(t,t')\) is the physical kernel, its matrix kernel is
+
+\[
+Q_u(t,t')=w_u(t)^{1/2}j_{F,u}(t)K_u(t,t')
+j_{E,u}(t')^*w_u(t')^{1/2}.
+\]
+
+Smooth compact coefficient multiplication preserves order \(a\). Lemma 6.1 therefore gives a uniform bound \(H^r\to H^{r-a}\). More explicitly, a compact left symbol satisfies
+
+\[
+\|\widehat q_u(\eta-\xi,\xi)\|
+\le C_N\langle\eta-\xi\rangle^{-N}\langle\xi\rangle^a.
+\]
+
+The Fourier kernel of \(\langle D\rangle^{r-a}Q_u\langle D\rangle^{-r}\) is bounded by \(C'_N\langle\eta-\xi\rangle^{-N+|r-a|}\). Choose \(N>p+|r-a|\); both Schur integrals are finite. Input cutoffs have bounded action at all real Fourier orders by the product rule, duality and interpolation, and smooth remainder kernels have rapid Fourier decay. Sum the finite symbol presentation. Its seminorms are uniformly bounded on the compact transverse parameter set by the stipulated \(C^{\infty,0}\) regularity. Finally, \(H^{r-a}\to H^{r'}\) has norm at most one when \(r'\le r-a\), so \(C_Q=\sup_u\|Q_u\|_{H^r,H^{r'}}<\infty\).
+
+The exact natural plaque action is
+
+\[
+P_u=T_{\chi_{\rm out},u}^{r'}Q_uL_{\chi_{\rm in},u}^{r}:
+\mathsf I_u^r(E)\longrightarrow\mathsf O_u^{r'}(F).
+\]
+
+At nonnegative input order this is the interior-cutoff kernel action on a maximal section, so compact tests need not be dense in that maximal space. At negative input order compact tests are dense in \((\mathsf S_u^s)^\times\): the \(L^2\) pivot has dense image because \(\mathsf S_u^s\to L^2\) is injective, and compact smooth sections are dense in \(L^2\). The kernel identity therefore extends by continuity. At negative output order the adjoint formula verifies the identity by pairing against every maximal positive test. Consequently
+
+\[
+M_{r,r'}(P)\le
+\sup_u\|T_{\chi_{\rm out},u}^{r'}\|\,C_Q\,
+\sup_u\|L_{\chi_{\rm in},u}^{r}\|<\infty.
+\]
+
+These are bounds for one compact kernel support. Their deterioration as that support approaches the omitted boundary does not affect the support-independent lift estimate below. Finite chart presentations are treated component by component. \(\square\)
+
+**Theorem 6.8i (all-orders physical two-realization estimate).** Fix any real orders \(r,r'\). For every distinguished open set \(\Omega\), let \(P=(P_u)\) have compact interior kernel support and finite local norm (PJ.4). In particular this includes every \(P\in\Psi_c^a(\Omega;E,F)\) when \(r'\le r-a\).
 
 Then its usual lifted operator satisfies
 
@@ -1542,7 +1625,7 @@ Then its usual lifted operator satisfies
 \tag{PJ.5}
 \]
 
-The constant depends only on the fixed global geometric and spectral data and the orders. It is independent of the distinguished chart, its coordinates, the individual compact kernel support, and the number of lifted plaques. Each kernel must have compact interior support; no common compact support set for the class of kernels is required. Smoothing kernels always have the indicated bounded action for each fixed compact support. Compact pseudodifferential kernels are included whenever (PJ.4) is finite; an infinite right-hand side imposes no boundedness claim. Finite chart sums satisfy the sum of their bounds. The estimate applies to the Hausdorff holonomy-cover fibres even when the full arrow space is non-Hausdorff.
+The constant depends only on the fixed global geometric and spectral data and the orders. It is independent of the distinguished chart, its coordinates, the individual compact kernel support, and the number of lifted plaques. Each kernel must have compact interior support; no common compact support set for the class of kernels is required. Smoothing kernels have finite local norm at every pair of orders; Lemma 6.8h.1 proves finiteness for compact pseudodifferential kernels at every permitted pair of real orders. Finite chart sums satisfy the sum of their bounds. The estimate applies to the Hausdorff holonomy-cover fibres even when the full arrow space is non-Hausdorff.
 
 **Proof.** We first establish the global norm comparison, the interpolation direct-sum rule and the exact restriction and extension maps. We then factor the actual kernel through those maps.
 
@@ -1717,11 +1800,13 @@ which is impossible for all sufficiently small positive \(\varepsilon\). Every i
 
 The conclusion excludes every proposed order-one realization obtained by completing compact tests if that one realization is to be used in both inequalities (NC.1). It does not exclude unrestricted regional \(H^1(I)\), in which compact tests are not dense: the constant belongs to that space, and the endpoint estimate (NC.3) cannot extend from compact tests to it. It does not exclude the two realizations (PJ.3). Nor does it assert that the historically unspecified plaque norm is a compact-test completion.
 
-Theorem 6.8i proves the unrestricted all-orders lift for an explicit physical input/output convention. Proposition 6.8j excludes an entire alternative class of conventions. Neither identifies the local norm denoted by \(\|P_u\|_{s,s'}\) in Proposition 6(a) of [Connes 1979]. Its global spectral definition is explicit in the source, but the separate plaque domain and boundary realization are not specified in the cited passage. The present results therefore do not turn that historical notation into an unqualified estimate with one silently chosen plaque space. The protected-chart full-coordinate estimate in Theorem 6.8c remains valid for its own stated hypotheses.
+The physical two-realization convention proves an all-orders comparison for arbitrary distinguished charts and individually compact kernel supports. It makes the two boundary roles explicit. The compact-core and interpolation obstructions show why substituting one plaque scale on both sides can fail.
+
+*Reference:* Proposition 6(a) of [Connes 1979] does not specify its local plaque realization. The estimate proved here uses (PJ.3); no claim that this is the author's unprinted convention is needed or made.
 
 ![The all-orders physical restriction–block–extension factorization and the boundary mode and compact-core obstruction.](../figures/plaque-physical-two-realizations.png)
 
-**Figure 6.8f.** Theorem 6.8i and Proposition 6.8j. Panel A shows the exact factorization (PJ.10), with contractive outer maps in the physical \(J\) norms; only the final conversion to the spectral \(W\) norms contributes \(b_{r'}a_r\). Its lower rows specify the positive and negative domains from (PJ.3) and (PJ.9). Panel B marks three actual support intervals \((\varepsilon,2\varepsilon)\), the regional boundary functional \(b_0\), and its nonzero global extension. Profiles are unit-height schematics of support, not the true \(\varepsilon^{-1}\) amplitudes. Panel C plots the proved upper bound \(C_{10}C_{01}\sqrt{2\varepsilon}\) for the displayed illustrative choice \(C_{10}C_{01}=1\), and the proved global lower bound \(1/2\); the crossing is at \(\varepsilon=1/8\). These are bounds, not computed spectra. The [full-size SVG](../figures/plaque-physical-two-realizations.svg), [complete generator](../reproduction/plaque-physical-two-realizations/draw_physical_plaque.py) and [reproduction instructions and component terms](../reproduction/plaque-physical-two-realizations/README.md) accompany the figure. Exercises 34–36 develop the completion, boundary and norm-class arguments.
+**Figure 6.8f.** Lemma 6.8h.1, Theorem 6.8i and Proposition 6.8j. The lemma supplies the finite physical local norm for compact pseudodifferential kernels at the permitted real orders. Panel A shows the exact factorization (PJ.10), with contractive outer maps in the physical \(J\) norms; only the final conversion to the spectral \(W\) norms contributes \(b_{r'}a_r\). Its lower rows specify the positive and negative domains from (PJ.3) and (PJ.9). Panel B marks three actual support intervals \((\varepsilon,2\varepsilon)\), the regional boundary functional \(b_0\), and its nonzero global extension. Profiles are unit-height schematics of support, not the true \(\varepsilon^{-1}\) amplitudes. Panel C plots the proved upper bound \(C_{10}C_{01}\sqrt{2\varepsilon}\) for the displayed illustrative choice \(C_{10}C_{01}=1\), and the proved global lower bound \(1/2\); the crossing is at \(\varepsilon=1/8\). These are bounds, not computed spectra. The [full-size SVG](../figures/plaque-physical-two-realizations.svg), [complete generator](../reproduction/plaque-physical-two-realizations/draw_physical_plaque.py) and [reproduction instructions and component terms](../reproduction/plaque-physical-two-realizations/README.md) accompany the figure. Exercises 34–36 develop the completion, boundary and norm-class arguments.
 
 ### Why one interpolating plaque scale cannot serve both roles
 
@@ -3952,6 +4037,17 @@ The denominator is positive. For any finite \(K\), the right side is positive, w
 The fixed input \(g\) has compact support in the middle of \(I\). The output \(f_\varepsilon\) is supported in \([\varepsilon,1-\varepsilon]\), and is identically one on \([2\varepsilon,1-2\varepsilon]\). Its flat endpoint behavior makes it smooth after zero extension for each \(\varepsilon\). The resulting rank-one kernel is compactly supported and smooth on the actual pair groupoid. Smoothing kernels belong to every finite pseudodifferential order class. The closure of the union of these output supports meets the omitted endpoints of \(I\), so they are not confined to any prescribed compact interior subchart (3 points).
 
 A common positive buffer prevents the sequence \(\varepsilon\downarrow0\) used here and permits support-dependent cutoff bounds. Theorem 6.8i instead retains all individual compact supports but uses distinct positive input and output realizations. The forced interpolation restriction goes into its maximal half-order input; it does not bound the different minimal half-order output norm. Replacing that latter norm by the former would be precisely the invalid common-scale step (2 points). The total is 8 points.
+
+**Exercise 40 (12 points).** On \(I=(0,1)\) with its ordinary metric and density, let \(\chi\in C_c^\infty(I)\) be real and let
+
+\[
+P=\chi\langle D\rangle^a\chi,\qquad
+\langle D\rangle^a\text{ the Fourier multiplier }(1+|\xi|^2)^{a/2}.
+\]
+
+Prove finite physical plaque norm \(M_{r,r'}(P)\) whenever \(r'\le r-a\), including both negative-order boundary realizations. Explain which constants can depend on \(\chi\) and which constant in the lifted estimate cannot.
+
+**Solution.** The multiplier maps \(H^r(\mathbb R)\) isometrically to \(H^{r-a}(\mathbb R)\); the inclusion into \(H^{r'}\) is contractive. Multiplication by \(\chi\) is bounded at every real order by the integer product rule, interpolation and duality (3 points). At nonnegative order, localization maps the maximal plaque space to full-space Sobolev space and reconstruction maps full-space Sobolev space to the minimal plaque space. Compact support and smooth approximation prove the latter minimal-domain assertion (3 points). At order \(-s<0\), the adjoints give the actual maps \((\mathsf S_I^s)^\times\to H^{-s}(\mathbb R)\) and \(H^{-s}(\mathbb R)\to(\mathsf M_I^s)^\times\). The second pairs against every maximal positive test and retains the prescribed boundary functional; it is not an arbitrary extension of the interior output (3 points). The factorization in Lemma 6.8h.1 proves finiteness. The cutoff-map constants may depend on derivatives and support of this individual \(\chi\). The constant \(b_{r'}a_r\) converting the completed physical global norms to the fixed spectral norms in Theorem 6.8i depends only on that global data and the two orders, even when different kernels approach the plaque boundary (3 points). Total: 12 points.
 
 ## References
 

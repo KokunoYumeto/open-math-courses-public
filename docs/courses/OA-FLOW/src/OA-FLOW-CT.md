@@ -64,4 +64,4 @@ are normal, mutually inverse, unital star homomorphisms. Multiplication follows 
 
 The argument proves the stated corner and matrix invariance from the earlier proofs linked above. The earlier NC/CR/MC lessons supply the natural-cone construction. The following TS lesson proves the specific type III1 spectral passage; the full homogeneity theorem and general S/Gamma intersection identity remain separate.
 
-The free comparison provider for the projection step is [Nelson, Math 209: von Neumann Algebras, Lemma 5.2.9 and Proposition 5.2.13, printed 51](https://users.math.msu.edu/users/banelson/teaching/209/209_notes.pdf). Its role is comparison with the complete local PC proof; no external projection theorem is used in place of that proof.
+The free comparison provider for the projection step is [Nelson, Math 209: von Neumann Algebras, Lemma 5.2.9 and Proposition 5.2.13, printed 49–51](https://users.math.msu.edu/users/banelson/teaching/209/209_notes.pdf). Its role is comparison with the complete local PC proof; no external projection theorem is used in place of that proof.

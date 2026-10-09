@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Iterated backpropagation and total speed — Incompressible flow</title><link rel="stylesheet" href="reader.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script>
+<script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Incompressible flow</a><a href="src/iterated-backpropagation-and-total-speed.md">Editable lesson</a><span class="unlinked">Sources and authorship</span></nav></header><main id="main"><nav aria-label="Lesson sequence"><a href="NS-FLUID-15.html">Previous lesson</a><a href="NS-FLUID-17.html">Next lesson</a></nav><article class="lesson"><h1 id="iterated-backpropagation-and-total-speed">Iterated backpropagation and total speed</h1>
+<p>The preceding lesson found one earlier frequency component.
+We now repeat that operation and prove quantitative bounds
+for an earlier point at a prescribed physical time scale.
+The proof keeps the original viscosity, pressure, spatial
+center, frequency, time interval and amplitude.</p>
+<p>The central step adds short, disjoint intervals on which
+the actual velocity must remain large. Their total contribution
+is bounded by the full total-speed estimate. This controls
+the sum of the spatial steps and forces an earlier frequency
+in an explicit range. The final estimates depend on the
+critical velocity bound and the original parameters.</p>
+<p>Read <a href="NS-FLUID-15.html">Frequency backpropagation with the original parameters</a>
+for the one-step operation and
+<a href="NS-FLUID-12.html">Global nonlinear energy and total speed</a>
+for the complete total-speed coefficient.
+The human comparison is Terence Tao,
+<a href="https://arxiv.org/abs/1908.04958v2"><em>Quantitative bounds for critically bounded solutions to
+the Navier–Stokes equations</em>, version 2</a>,
+original author article.tex 284–294 and 614–658.
+Section 6 proves the exact map to its stated time separation,
+including an explicit finite choice of the hierarchy exponent.
+The subsequent weighted heat argument is still needed for
+the general large critical-velocity endpoint.</p>
+<h2 id="1-the-original-inputs-and-complete-total-speed">1. The original inputs and complete total speed</h2>
+<p>Retain the original smooth source-class solution</p>
+<span class="math math-display" data-tex="\[
+\partial_tu+(u\cdot\nabla)u+\nabla p=\nu\Delta u,\qquad
+\operatorname{div}u=0,\qquad \nu&gt;0,\qquad
+\sup_{[t_0-T,t_0]}\|u(t)\|_3\leq U&lt;\infty
+\tag{1.1}
+\]">\[
+\partial_tu+(u\cdot\nabla)u+\nabla p=\nu\Delta u,\qquad
+\operatorname{div}u=0,\qquad \nu&gt;0,\qquad
+\sup_{[t_0-T,t_0]}\|u(t)\|_3\leq U&lt;\infty
+\tag{1.1}
+\]</span>
+<p>on <span class="math" data-tex="\([t_0-T,t_0]\times\mathbb R^3\)">\([t_0-T,t_0]\times\mathbb R^3\)</span>, with <span class="math" data-tex="\(T&gt;0\)">\(T&gt;0\)</span>.
+The smooth source class is that of NS-FLUID-12: <span class="math" data-tex="\(u\)">\(u\)</span> and its
+spatial derivatives lie in <span class="math" data-tex="\(L^\infty_tL^2_x\)">\(L^\infty_tL^2_x\)</span>. Sobolev embedding
+therefore gives a finite uniform spatial maximum, used below only
+to prove termination. The force is zero, as required by the
+one-step operation; the forced total-speed estimate alone does
+not supply a forced backpropagation theorem.</p>
+<p>Keep the Fourier convention, <span class="math" data-tex="\(\phi,p(\xi),P_N\)">\(\phi,p(\xi),P_N\)</span>, and all original
+positive constants of NS-FLUID-15. The pressure <span class="math" data-tex="\(p(t,x)\)">\(p(t,x)\)</span> and
+the Fourier symbol <span class="math" data-tex="\(p(\xi)\)">\(p(\xi)\)</span> are distinguished by their domains.
+In particular <span class="math" data-tex="\(C_P=\|\mathcal F^{-1}p(\xi)\|_1&gt;0\)">\(C_P=\|\mathcal F^{-1}p(\xi)\|_1&gt;0\)</span>,
+<span class="math" data-tex="\(0&lt;b\leq b_0\)">\(0&lt;b\leq b_0\)</span>, <span class="math" data-tex="\(0&lt;\eta\leq1/256\)">\(0&lt;\eta\leq1/256\)</span>, <span class="math" data-tex="\(d=b\eta^6/D_u&gt;0\)">\(d=b\eta^6/D_u&gt;0\)</span>,
+<span class="math" data-tex="\(D\geq4d\)">\(D\geq4d\)</span>, and <span class="math" data-tex="\(L&gt;0\)">\(L&gt;0\)</span>. Those constants retain their full
+dependence on the original <span class="math" data-tex="\(U,\nu\)">\(U,\nu\)</span> and the fixed cutoff.</p>
+<p>Define the four actual coefficients from NS-FLUID-12 (8.4)–(8.6):</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C_M=16\sqrt2\,\kappa_0^2+
+18C_{0,6}^2(\sqrt2-1),\\
+s_1=\frac{2(\sqrt2-1)}{3\sqrt\pi}
++c_\phi+4\mathcal B_0,\qquad
+s_2=\frac{2\mathcal K_0d_1\log2}{9\pi},\\
+s_3=\frac{2\mathcal K_0d_{6/5}S_3g_*\sqrt{C_M\log2}}
+{3\sqrt\pi},\\
+s_4=\frac{4\mathcal K_0C_M}{\pi^2}
+\bigl((d_1+d_2)v_3g_*^2+d_\infty+d_2\bigr),\\
+\mathscr S(U,\nu)=s_1\frac U{\sqrt\nu}
++s_2\frac{U^2}{\nu^{3/2}}
++s_3\frac{U^3}{\nu^{5/2}}
++s_4\frac{U^4}{\nu^{7/2}} .
+\end{gathered} \tag{1.2}
+\]">\[
+\begin{gathered}
+C_M=16\sqrt2\,\kappa_0^2+
+18C_{0,6}^2(\sqrt2-1),\\
+s_1=\frac{2(\sqrt2-1)}{3\sqrt\pi}
++c_\phi+4\mathcal B_0,\qquad
+s_2=\frac{2\mathcal K_0d_1\log2}{9\pi},\\
+s_3=\frac{2\mathcal K_0d_{6/5}S_3g_*\sqrt{C_M\log2}}
+{3\sqrt\pi},\\
+s_4=\frac{4\mathcal K_0C_M}{\pi^2}
+\bigl((d_1+d_2)v_3g_*^2+d_\infty+d_2\bigr),\\
+\mathscr S(U,\nu)=s_1\frac U{\sqrt\nu}
++s_2\frac{U^2}{\nu^{3/2}}
++s_3\frac{U^3}{\nu^{5/2}}
++s_4\frac{U^4}{\nu^{7/2}} .
+\end{gathered} \tag{1.2}
+\]</span>
+<p>All symbols on the right are the complete finite kernel and
+Sobolev constants defined and proved in NS-FLUID-12. In particular
+the subscripted <span class="math" data-tex="\(d_r\)">\(d_r\)</span> are its companion-kernel constants; the
+unsubscripted <span class="math" data-tex="\(d\)">\(d\)</span> is the positive time-gap constant of NS-FLUID-15.
+There is no discarded viscosity factor or unspecified new constant.</p>
+<p>For every actual <span class="math" data-tex="\(0&lt;S\leq T/2\)">\(0&lt;S\leq T/2\)</span>, apply that proved estimate on
+the earlier interval <span class="math" data-tex="\([t_0-2S,t_0]\)">\([t_0-2S,t_0]\)</span>, with heat starting time
+<span class="math" data-tex="\(t_0-2S\)">\(t_0-2S\)</span> and receiving interval <span class="math" data-tex="\([t_0-S,t_0]\)">\([t_0-S,t_0]\)</span>. This is a
+restriction of the original solution, not a change of coordinates.
+Its critical norm is at most the original <span class="math" data-tex="\(U\)">\(U\)</span>. The proof of
+NS-FLUID-12 uses only that upper bound; each coefficient is
+nonnegative. It gives</p>
+<span class="math math-display" data-tex="\[
+\int_{t_0-S}^{t_0}\|u(t)\|_\infty\,dt
+\leq\mathscr S(U,\nu)\sqrt S .
+\tag{1.3}
+\]">\[
+\int_{t_0-S}^{t_0}\|u(t)\|_\infty\,dt
+\leq\mathscr S(U,\nu)\sqrt S .
+\tag{1.3}
+\]</span>
+<p>Thus the complete total speed is available on every receiving
+interval below, with the required preceding heat interval inside
+the original domain.</p>
+<h2 id="2-an-earlier-point-with-explicit-bounds">2. An earlier point with explicit bounds</h2>
+<p>If <span class="math" data-tex="\(U=0\)">\(U=0\)</span>, then <span class="math" data-tex="\(u=0\)">\(u=0\)</span> and no positive target amplitude occurs.
+Assume <span class="math" data-tex="\(U&gt;0\)">\(U&gt;0\)</span>, retain any <span class="math" data-tex="\(0&lt;b\leq b_0\)">\(0&lt;b\leq b_0\)</span>, and set</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+B=\frac{4C_P(1+\eta^{-3})\mathscr S(U,\nu)}{bd},\\
+\beta=\max\{DB,\sqrt{2d}\,\eta^3\},\qquad
+\Lambda=\max\{2D,4\beta^2\},\\
+\rho=\frac{d\eta^6}{8D},\qquad
+\gamma=\frac{d\eta^6}{\beta^2}.
+\end{gathered} \tag{2.1}
+\]">\[
+\begin{gathered}
+B=\frac{4C_P(1+\eta^{-3})\mathscr S(U,\nu)}{bd},\\
+\beta=\max\{DB,\sqrt{2d}\,\eta^3\},\qquad
+\Lambda=\max\{2D,4\beta^2\},\\
+\rho=\frac{d\eta^6}{8D},\qquad
+\gamma=\frac{d\eta^6}{\beta^2}.
+\end{gathered} \tag{2.1}
+\]</span>
+<p>Every constant is finite and positive, and the choices are
+sequential. Directly <span class="math" data-tex="\(0&lt;\rho\leq1/32\)">\(0&lt;\rho\leq1/32\)</span> because <span class="math" data-tex="\(D\geq4d\)">\(D\geq4d\)</span>
+and <span class="math" data-tex="\(\eta\leq1\)">\(\eta\leq1\)</span>. Also <span class="math" data-tex="\(0&lt;\gamma\leq1/2\)">\(0&lt;\gamma\leq1/2\)</span>, by the second
+entry in the maximum defining <span class="math" data-tex="\(\beta\)">\(\beta\)</span>.</p>
+<p>Suppose</p>
+<span class="math math-display" data-tex="\[
+|P_{N_0}u(t_0,x_0)|\geq bN_0,\qquad
+\Lambda N_0^{-2}\leq S\leq\rho T .
+\]">\[
+|P_{N_0}u(t_0,x_0)|\geq bN_0,\qquad
+\Lambda N_0^{-2}\leq S\leq\rho T .
+\]</span>
+<p>We prove that an actual dyadic frequency <span class="math" data-tex="\(N_i\in N_0\,2^{\mathbb Z}\)">\(N_i\in N_0\,2^{\mathbb Z}\)</span>
+and an earlier point satisfy</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+t_0-S\leq t_i\leq t_0-\gamma S,\qquad
+\sqrt d\,\eta^3 S^{-1/2}\leq N_i\leq\beta S^{-1/2},\\
+|x_i-x_0|\leq LB\sqrt S,\qquad
+|P_{N_i}u(t_i,x_i)|\geq bN_i .
+\end{gathered} \tag{2.2}
+\]">\[
+\begin{gathered}
+t_0-S\leq t_i\leq t_0-\gamma S,\qquad
+\sqrt d\,\eta^3 S^{-1/2}\leq N_i\leq\beta S^{-1/2},\\
+|x_i-x_0|\leq LB\sqrt S,\qquad
+|P_{N_i}u(t_i,x_i)|\geq bN_i .
+\end{gathered} \tag{2.2}
+\]</span>
+<p>All bounds depend only on the original <span class="math" data-tex="\(U,\nu,b\)">\(U,\nu,b\)</span> and the fixed
+cutoff. The auxiliary smooth maximum is absent from (2.1)–(2.2).
+The original amplitude is retained.</p>
+<h2 id="3-crossing-the-actual-receiving-time">3. Crossing the actual receiving time</h2>
+<p>The nonempty interval for <span class="math" data-tex="\(S\)">\(S\)</span> implies</p>
+<span class="math math-display" data-tex="\[
+N_0^2\geq\frac{\Lambda}{\rho T}
+\geq\frac{2D}{\rho T}\geq\frac{64D}{T}.
+\]">\[
+N_0^2\geq\frac{\Lambda}{\rho T}
+\geq\frac{2D}{\rho T}\geq\frac{64D}{T}.
+\]</span>
+<p>In particular the initial point satisfies the one-step threshold.
+Iterate NS-FLUID-15 (2.6) while <span class="math" data-tex="\(t_j\geq t_0-T/2\)">\(t_j\geq t_0-T/2\)</span> and
+<span class="math" data-tex="\(N_j\geq2\sqrt{D/T}\)">\(N_j\geq2\sqrt{D/T}\)</span>. The already proved operation supplies
+each next point. For every step,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|P_{N_j}u(t_j,x_j)|\geq bN_j,\qquad
+\eta^3N_{j-1}\leq N_j\leq\eta^{-3}N_{j-1},\\
+dN_{j-1}^{-2}\leq t_{j-1}-t_j\leq DN_{j-1}^{-2},
+\qquad |x_j-x_{j-1}|\leq L/N_{j-1}.
+\end{gathered} \tag{3.1}
+\]">\[
+\begin{gathered}
+|P_{N_j}u(t_j,x_j)|\geq bN_j,\qquad
+\eta^3N_{j-1}\leq N_j\leq\eta^{-3}N_{j-1},\\
+dN_{j-1}^{-2}\leq t_{j-1}-t_j\leq DN_{j-1}^{-2},
+\qquad |x_j-x_{j-1}|\leq L/N_{j-1}.
+\end{gathered} \tag{3.1}
+\]</span>
+<p>Here all frequencies remain in the single original dyadic lattice.</p>
+<p>For completeness, let <span class="math" data-tex="\(V=\sup_{[t_0-T,t_0]}\|u(t)\|_\infty\)">\(V=\sup_{[t_0-T,t_0]}\|u(t)\|_\infty\)</span>.
+Every selected frequency obeys <span class="math" data-tex="\(N_j\leq C_PV/b\)">\(N_j\leq C_PV/b\)</span>.
+The positive amplitude gives <span class="math" data-tex="\(V&gt;0\)">\(V&gt;0\)</span>, and hence every step
+decreases time by at least <span class="math" data-tex="\(d(b/(C_PV))^2&gt;0\)">\(d(b/(C_PV))^2&gt;0\)</span>.
+Each step begins at time at least <span class="math" data-tex="\(t_0-T/2\)">\(t_0-T/2\)</span> and lasts at most
+<span class="math" data-tex="\(T/4\)">\(T/4\)</span>. Thus every selected time is at least <span class="math" data-tex="\(t_0-3T/4\)">\(t_0-3T/4\)</span>.
+An infinite chain would contradict these two facts, so it stops
+at some finite <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. At that point either
+<span class="math" data-tex="\(t_n&lt;t_0-T/2\)">\(t_n&lt;t_0-T/2\)</span> or <span class="math" data-tex="\(N_n&lt;2\sqrt{D/T}\)">\(N_n&lt;2\sqrt{D/T}\)</span>.</p>
+<p>In the latter case the incoming frequency comparison gives
+<span class="math" data-tex="\(N_{n-1}\leq\eta^{-3}N_n&lt;2\eta^{-3}\sqrt{D/T}\)">\(N_{n-1}\leq\eta^{-3}N_n&lt;2\eta^{-3}\sqrt{D/T}\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+t_0-t_n\geq t_{n-1}-t_n
+\geq dN_{n-1}^{-2}
+&gt;\frac{d\eta^6T}{4D}=2\rho T .
+\tag{3.2}
+\]">\[
+t_0-t_n\geq t_{n-1}-t_n
+\geq dN_{n-1}^{-2}
+&gt;\frac{d\eta^6T}{4D}=2\rho T .
+\tag{3.2}
+\]</span>
+<p>In the former case <span class="math" data-tex="\(t_0-t_n&gt;T/2\geq2\rho T\)">\(t_0-t_n&gt;T/2\geq2\rho T\)</span>.
+Both cases therefore put the stopping point strictly before
+<span class="math" data-tex="\(t_0-S\)">\(t_0-S\)</span>. This is the exact dimensional and ordered inequality
+needed for the crossing; no reversed comparison is used.</p>
+<p>The first step has
+<span class="math" data-tex="\(t_0-t_1\leq DN_0^{-2}\leq S/2\)">\(t_0-t_1\leq DN_0^{-2}\leq S/2\)</span>.
+Let <span class="math" data-tex="\(m\)">\(m\)</span> be the largest index with <span class="math" data-tex="\(t_m\geq t_0-S\)">\(t_m\geq t_0-S\)</span>.
+Strictly decreasing times now give</p>
+<span class="math math-display" data-tex="\[
+1\leq m\leq n-1,\qquad
+t_m\geq t_0-S&gt;t_{m+1},\qquad
+D\sum_{j=0}^mN_j^{-2}
+\geq t_0-t_{m+1}&gt;S .
+\tag{3.3}
+\]">\[
+1\leq m\leq n-1,\qquad
+t_m\geq t_0-S&gt;t_{m+1},\qquad
+D\sum_{j=0}^mN_j^{-2}
+\geq t_0-t_{m+1}&gt;S .
+\tag{3.3}
+\]</span>
+<p>This proves the complete crossing and the lower sum of squared
+inverse frequencies in the original time variable.</p>
+<h2 id="4-disjoint-intervals-control-the-total-displacement">4. Disjoint intervals control the total displacement</h2>
+<p>For each <span class="math" data-tex="\(j=0,\ldots,m-1\)">\(j=0,\ldots,m-1\)</span>, keep the actual fixed point <span class="math" data-tex="\(x_j\)">\(x_j\)</span>
+and define</p>
+<span class="math math-display" data-tex="\[
+J_j=[t_j-\tfrac d2N_j^{-2},t_j].
+\]">\[
+J_j=[t_j-\tfrac d2N_j^{-2},t_j].
+\]</span>
+<p>The derivative estimate proved in NS-FLUID-15 is
+<span class="math" data-tex="\(|\partial_tP_{N_j}u|\leq D_uN_j^3\)">\(|\partial_tP_{N_j}u|\leq D_uN_j^3\)</span>.
+The fundamental theorem of calculus on <span class="math" data-tex="\(J_j\)">\(J_j\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+|P_{N_j}u(t,x_j)|
+\geq bN_j-\frac{D_ud}{2}N_j
+=b(1-\eta^6/2)N_j\geq\frac b2N_j .
+\tag{4.1}
+\]">\[
+|P_{N_j}u(t,x_j)|
+\geq bN_j-\frac{D_ud}{2}N_j
+=b(1-\eta^6/2)N_j\geq\frac b2N_j .
+\tag{4.1}
+\]</span>
+<p>The lower step bound in (3.1) puts each <span class="math" data-tex="\(J_j\)">\(J_j\)</span> strictly inside
+<span class="math" data-tex="\([t_{j+1},t_j]\)">\([t_{j+1},t_j]\)</span> except possibly at its top endpoint. Their
+interiors are pairwise disjoint, and all are contained in
+<span class="math" data-tex="\([t_m,t_0]\subset[t_0-S,t_0]\)">\([t_m,t_0]\subset[t_0-S,t_0]\)</span>. In particular the argument
+uses only intervals where both the derivative estimate and
+(1.3) have already been proved.</p>
+<p>The original projection kernel has scaled <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm <span class="math" data-tex="\(C_P\)">\(C_P\)</span>.
+Hence <span class="math" data-tex="\(\|u(t)\|_\infty\geq bN_j/(2C_P)\)">\(\|u(t)\|_\infty\geq bN_j/(2C_P)\)</span> on <span class="math" data-tex="\(J_j\)">\(J_j\)</span>.
+Adding the integrals over the disjoint intervals and using
+(1.3) gives</p>
+<span class="math math-display" data-tex="\[
+\frac{bd}{4C_P}\sum_{j=0}^{m-1}N_j^{-1}
+\leq\int_{t_0-S}^{t_0}\|u(t)\|_\infty\,dt
+\leq\mathscr S(U,\nu)\sqrt S .
+\tag{4.2}
+\]">\[
+\frac{bd}{4C_P}\sum_{j=0}^{m-1}N_j^{-1}
+\leq\int_{t_0-S}^{t_0}\|u(t)\|_\infty\,dt
+\leq\mathscr S(U,\nu)\sqrt S .
+\tag{4.2}
+\]</span>
+<p>The last frequency satisfies
+<span class="math" data-tex="\(N_m^{-1}\leq\eta^{-3}N_{m-1}^{-1}\)">\(N_m^{-1}\leq\eta^{-3}N_{m-1}^{-1}\)</span>.
+Since <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span>, it follows that</p>
+<span class="math math-display" data-tex="\[
+\sum_{j=0}^mN_j^{-1}\leq B\sqrt S,\qquad
+|x_i-x_0|\leq L\sum_{j=0}^{i-1}N_j^{-1}
+\leq LB\sqrt S\quad(1\leq i\leq m).
+\tag{4.3}
+\]">\[
+\sum_{j=0}^mN_j^{-1}\leq B\sqrt S,\qquad
+|x_i-x_0|\leq L\sum_{j=0}^{i-1}N_j^{-1}
+\leq LB\sqrt S\quad(1\leq i\leq m).
+\tag{4.3}
+\]</span>
+<p>This replaces the auxiliary smooth-maximum displacement estimate
+by a bound in the original critical norm, viscosity and amplitude.
+Every spatial step and every persistence interval has been kept.</p>
+<p><img src="assets/NS-FLUID-16/iterated-frequency-backpropagation-85B36A7A48144AF42373902B434509D068823E6FBCC6F421BB8664064126689A.png" alt="Disjoint original time intervals and the exact finite sum that selects an earlier frequency" class="course-figure" width="2380" height="1190" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="iterated-frequency-backpropagation" data-asset-sha256="85B36A7A48144AF42373902B434509D068823E6FBCC6F421BB8664064126689A"></p>
+<p>Figure 1. The left panel displays a geometric example with
+<span class="math" data-tex="\(t_0=1,S=1/4,d=1,D=4\)">\(t_0=1,S=1/4,d=1,D=4\)</span>, frequencies <span class="math" data-tex="\(8,4,4,2\)">\(8,4,4,2\)</span>, and steps
+of length <span class="math" data-tex="\(2/N_j^2\)">\(2/N_j^2\)</span>. The crossing is
+<span class="math" data-tex="\(t_2=27/32\geq3/4&gt;23/32=t_3\)">\(t_2=27/32\geq3/4&gt;23/32=t_3\)</span>, so <span class="math" data-tex="\(m=2\)">\(m=2\)</span>.
+The two retained persistence intervals have lengths <span class="math" data-tex="\(1/128\)">\(1/128\)</span>
+and <span class="math" data-tex="\(1/32\)">\(1/32\)</span> and satisfy exactly the containment in (4.1)–(4.2).
+Only the three steps up to the crossing are shown.
+These values illustrate interval geometry; they are not evaluations
+of the PDE constants in NS-FLUID-15 or (2.1), and are not claimed
+to meet the theorem's scale-selection hypotheses.
+The right panel uses the same original frequencies:
+<span class="math" data-tex="\(r_0=1/8,r_1=r_2=1/4\)">\(r_0=1/8,r_1=r_2=1/4\)</span>. The three exact blue areas total
+<span class="math" data-tex="\(9/64\)">\(9/64\)</span>, and the surrounding rectangle has area
+<span class="math" data-tex="\((1/4)(5/8)=5/32\)">\((1/4)(5/8)=5/32\)</span>. This depicts the complete finite inequality
+used in (5.1), with no sampled fluid solution.
+Human source comparison: Tao, article.tex 632–647.
+<a href="assets/iterated-frequency-backpropagation.py">Reproducible figure source</a>.</p>
+<h2 id="5-selecting-an-earlier-physical-frequency">5. Selecting an earlier physical frequency</h2>
+<p>Put <span class="math" data-tex="\(r_j=N_j^{-1}\)">\(r_j=N_j^{-1}\)</span>. Combining (3.3) and (4.3),</p>
+<span class="math math-display" data-tex="\[
+\frac S D&lt;\sum_{j=0}^m r_j^2
+\leq\left(\max_{0\leq j\leq m}r_j\right)
+\sum_{j=0}^m r_j
+\leq\left(\max_{0\leq j\leq m}r_j\right)B\sqrt S.
+\]">\[
+\frac S D&lt;\sum_{j=0}^m r_j^2
+\leq\left(\max_{0\leq j\leq m}r_j\right)
+\sum_{j=0}^m r_j
+\leq\left(\max_{0\leq j\leq m}r_j\right)B\sqrt S.
+\]</span>
+<p>Thus some index <span class="math" data-tex="\(i\)">\(i\)</span> has
+<span class="math" data-tex="\(r_i&gt;\sqrt S/(DB)\geq\sqrt S/\beta\)">\(r_i&gt;\sqrt S/(DB)\geq\sqrt S/\beta\)</span>.
+The original scale condition gives
+<span class="math" data-tex="\(r_0\leq\sqrt S/(2\beta)\)">\(r_0\leq\sqrt S/(2\beta)\)</span>, so this index cannot be zero.
+Take <span class="math" data-tex="\(1\leq i\leq m\)">\(1\leq i\leq m\)</span>. Then <span class="math" data-tex="\(N_i&lt;\beta S^{-1/2}\)">\(N_i&lt;\beta S^{-1/2}\)</span>.
+The incoming step gives the other two bounds:</p>
+<span class="math math-display" data-tex="\[
+S\geq t_0-t_i\geq t_{i-1}-t_i
+\geq dN_{i-1}^{-2}
+\geq d\eta^6N_i^{-2}
+&gt;\frac{d\eta^6}{\beta^2}S=\gamma S .
+\tag{5.1}
+\]">\[
+S\geq t_0-t_i\geq t_{i-1}-t_i
+\geq dN_{i-1}^{-2}
+\geq d\eta^6N_i^{-2}
+&gt;\frac{d\eta^6}{\beta^2}S=\gamma S .
+\tag{5.1}
+\]</span>
+<p>The non-strict version yields
+<span class="math" data-tex="\(N_i\geq\sqrt d\,\eta^3S^{-1/2}\)">\(N_i\geq\sqrt d\,\eta^3S^{-1/2}\)</span>; the strict final comparison
+implies the required non-strict time separation.
+Equations (3.1) and (4.3) supply the amplitude and displacement.
+This proves every assertion of (2.2), with no auxiliary
+solution-dependent maximum in its constants.</p>
+<h2 id="6-recovering-the-exact-source-time-separation">6. Recovering the exact source time separation</h2>
+<p>We next prove the map to the source's unit-viscosity equation and
+its actual <span class="math" data-tex="\(A_{\rm src}\geq2\)">\(A_{\rm src}\geq2\)</span>. This comparison does not replace
+(1.1)–(5.1). Use exactly the constants
+<span class="math" data-tex="\(a_\Delta,\zeta,e_0,c_0,\mathcal L(C),\mathcal D(C)\)">\(a_\Delta,\zeta,e_0,c_0,\mathcal L(C),\mathcal D(C)\)</span>
+of NS-FLUID-15 (7.1)–(7.4). For <span class="math" data-tex="\(C\geq16\)">\(C\geq16\)</span> obeying those
+selection inequalities, set <span class="math" data-tex="\(b=A_{\rm src}^{-C}\)">\(b=A_{\rm src}^{-C}\)</span>.
+Their proved bounds are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\eta^{-1}&lt;\zeta A_{\rm src}^{2C+3},\qquad
+e_0A_{\rm src}^{-13C-20}\leq d\leq1/a_\Delta,\\
+D\leq\mathcal D(C)A_{\rm src}^{12C+19},\qquad
+L\leq\mathcal L(C)A_{\rm src}^{3C+4}.
+\end{gathered} \tag{6.1}
+\]">\[
+\begin{gathered}
+\eta^{-1}&lt;\zeta A_{\rm src}^{2C+3},\qquad
+e_0A_{\rm src}^{-13C-20}\leq d\leq1/a_\Delta,\\
+D\leq\mathcal D(C)A_{\rm src}^{12C+19},\qquad
+L\leq\mathcal L(C)A_{\rm src}^{3C+4}.
+\end{gathered} \tag{6.1}
+\]</span>
+<p>All comparisons retain the actual definitions before estimating them.
+Put <span class="math" data-tex="\(s_0=s_1+s_2+s_3+s_4&gt;0\)">\(s_0=s_1+s_2+s_3+s_4&gt;0\)</span>; (1.2) gives
+<span class="math" data-tex="\(\mathscr S(A_{\rm src},1)\leq s_0A_{\rm src}^4\)">\(\mathscr S(A_{\rm src},1)\leq s_0A_{\rm src}^4\)</span>.
+Define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+b_*=\frac{8C_Ps_0\zeta^3}{e_0},\qquad
+j_*=\sqrt{e_0}\,\zeta^{-3},\\
+\mathcal B(C)=\max\{\mathcal D(C)b_*,\sqrt{2/a_\Delta}\},\\
+\mathcal A(C)=\max\{2\mathcal D(C),4\mathcal B(C)^2\},\\
+\mathcal R(C)=\frac{e_0}{8\zeta^6\mathcal D(C)},\qquad
+\mathcal G(C)=\frac{e_0}{\zeta^6\mathcal B(C)^2}.
+\end{gathered} \tag{6.2}
+\]">\[
+\begin{gathered}
+b_*=\frac{8C_Ps_0\zeta^3}{e_0},\qquad
+j_*=\sqrt{e_0}\,\zeta^{-3},\\
+\mathcal B(C)=\max\{\mathcal D(C)b_*,\sqrt{2/a_\Delta}\},\\
+\mathcal A(C)=\max\{2\mathcal D(C),4\mathcal B(C)^2\},\\
+\mathcal R(C)=\frac{e_0}{8\zeta^6\mathcal D(C)},\qquad
+\mathcal G(C)=\frac{e_0}{\zeta^6\mathcal B(C)^2}.
+\end{gathered} \tag{6.2}
+\]</span>
+<p>These are new comparison constants; <span class="math" data-tex="\(\mathcal B(C)\)">\(\mathcal B(C)\)</span> is not
+the physical <span class="math" data-tex="\(B\)">\(B\)</span> in (2.1), and <span class="math" data-tex="\(\mathcal A(C)\)">\(\mathcal A(C)\)</span> is not
+the source bound <span class="math" data-tex="\(A_{\rm src}\)">\(A_{\rm src}\)</span>.</p>
+<p>Since <span class="math" data-tex="\(1+\eta^{-3}\leq2\eta^{-3}\)">\(1+\eta^{-3}\leq2\eta^{-3}\)</span>, substitution of every
+factor into (2.1) gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+B\leq b_*A_{\rm src}^{20C+33},\qquad
+\beta\leq\mathcal B(C)A_{\rm src}^{32C+52},\\
+\Lambda\leq\mathcal A(C)A_{\rm src}^{64C+104},\qquad
+\rho\geq\mathcal R(C)A_{\rm src}^{-37C-57},\\
+\gamma\geq\mathcal G(C)A_{\rm src}^{-89C-142},\qquad
+\sqrt d\,\eta^3\geq j_*A_{\rm src}^{-25C/2-19},\\
+LB\leq\mathcal L(C)b_*A_{\rm src}^{23C+37}.
+\end{gathered} \tag{6.3}
+\]">\[
+\begin{gathered}
+B\leq b_*A_{\rm src}^{20C+33},\qquad
+\beta\leq\mathcal B(C)A_{\rm src}^{32C+52},\\
+\Lambda\leq\mathcal A(C)A_{\rm src}^{64C+104},\qquad
+\rho\geq\mathcal R(C)A_{\rm src}^{-37C-57},\\
+\gamma\geq\mathcal G(C)A_{\rm src}^{-89C-142},\qquad
+\sqrt d\,\eta^3\geq j_*A_{\rm src}^{-25C/2-19},\\
+LB\leq\mathcal L(C)b_*A_{\rm src}^{23C+37}.
+\end{gathered} \tag{6.3}
+\]</span>
+<p>For the first exponent, the four contributions are <span class="math" data-tex="\(6C+9\)">\(6C+9\)</span>
+from <span class="math" data-tex="\(\eta^{-3}\)">\(\eta^{-3}\)</span>, <span class="math" data-tex="\(4\)">\(4\)</span> from total speed, <span class="math" data-tex="\(C\)">\(C\)</span> from <span class="math" data-tex="\(b^{-1}\)">\(b^{-1}\)</span>,
+and <span class="math" data-tex="\(13C+20\)">\(13C+20\)</span> from <span class="math" data-tex="\(d^{-1}\)">\(d^{-1}\)</span>. They sum to <span class="math" data-tex="\(20C+33\)">\(20C+33\)</span>.
+The second entry of <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is bounded by <span class="math" data-tex="\(\sqrt{2/a_\Delta}\)">\(\sqrt{2/a_\Delta}\)</span>.
+The lower product <span class="math" data-tex="\(d\eta^6\)">\(d\eta^6\)</span> has coefficient <span class="math" data-tex="\(e_0\zeta^{-6}\)">\(e_0\zeta^{-6}\)</span>
+and exponent <span class="math" data-tex="\(-25C-38\)">\(-25C-38\)</span>. Division by <span class="math" data-tex="\(8D\)">\(8D\)</span> gives the stated
+<span class="math" data-tex="\(\rho\)">\(\rho\)</span> bound; division by <span class="math" data-tex="\(\beta^2\)">\(\beta^2\)</span> gives the stated
+<span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> bound. This accounts for all original factors.</p>
+<p>Choose the smallest integer <span class="math" data-tex="\(C_\dagger\geq16\)">\(C_\dagger\geq16\)</span> satisfying
+NS-FLUID-15 (7.4) and all six inequalities</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C^3\geq89C+142+\log_2^+(1/\mathcal G(C)),\\
+C^3\geq32C+52+\log_2^+\mathcal B(C),\\
+C^3\geq25C/2+19+\log_2^+(1/j_*),\\
+C^4\geq64C+104+\log_2^+\mathcal A(C),\\
+C^4\geq37C+57+\log_2^+(1/\mathcal R(C)),\\
+C^4\geq23C+37+\log_2^+(\mathcal L(C)b_*).
+\end{gathered} \tag{6.4}
+\]">\[
+\begin{gathered}
+C^3\geq89C+142+\log_2^+(1/\mathcal G(C)),\\
+C^3\geq32C+52+\log_2^+\mathcal B(C),\\
+C^3\geq25C/2+19+\log_2^+(1/j_*),\\
+C^4\geq64C+104+\log_2^+\mathcal A(C),\\
+C^4\geq37C+57+\log_2^+(1/\mathcal R(C)),\\
+C^4\geq23C+37+\log_2^+(\mathcal L(C)b_*).
+\end{gathered} \tag{6.4}
+\]</span>
+<p>As before <span class="math" data-tex="\(\log_2^+x=\max\{0,\log_2x\}\)">\(\log_2^+x=\max\{0,\log_2x\}\)</span>.
+This is a terminating integer selection, not an assumption.
+Here is a complete growth bound. The proof in NS-FLUID-15 gives
+<span class="math" data-tex="\(\mathcal L(C)\leq\mathcal L(1)C^{1/40}\)">\(\mathcal L(C)\leq\mathcal L(1)C^{1/40}\)</span> and
+<span class="math" data-tex="\(\mathcal D(C)\leq D_*C\)">\(\mathcal D(C)\leq D_*C\)</span>, where</p>
+<span class="math math-display" data-tex="\[
+D_*=\max\{4/a_\Delta,\,
+(4\zeta^6/c)(301/20+\log\mathcal M(1))\}.
+\]">\[
+D_*=\max\{4/a_\Delta,\,
+(4\zeta^6/c)(301/20+\log\mathcal M(1))\}.
+\]</span>
+<p>Therefore, with
+<span class="math" data-tex="\(B_*=\max\{D_*b_*,\sqrt{2/a_\Delta}\}\)">\(B_*=\max\{D_*b_*,\sqrt{2/a_\Delta}\}\)</span> and
+<span class="math" data-tex="\(A_*=\max\{2D_*,4B_*^2\}\)">\(A_*=\max\{2D_*,4B_*^2\}\)</span>, we have</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal B(C)\leq B_*C,\quad
+\mathcal A(C)\leq A_*C^2,\quad
+1/\mathcal R(C)\leq(8\zeta^6D_*/e_0)C,\\
+1/\mathcal G(C)\leq(\zeta^6B_*^2/e_0)C^2,\quad
+\mathcal L(C)b_*\leq\mathcal L(1)b_*C^{1/40}.
+\end{gathered} \tag{6.5}
+\]">\[
+\begin{gathered}
+\mathcal B(C)\leq B_*C,\quad
+\mathcal A(C)\leq A_*C^2,\quad
+1/\mathcal R(C)\leq(8\zeta^6D_*/e_0)C,\\
+1/\mathcal G(C)\leq(\zeta^6B_*^2/e_0)C^2,\quad
+\mathcal L(C)b_*\leq\mathcal L(1)b_*C^{1/40}.
+\end{gathered} \tag{6.5}
+\]</span>
+<p>The positive logarithm of each right side is at most its constant
+positive logarithm plus a fixed multiple of <span class="math" data-tex="\(\log_2 C\)">\(\log_2 C\)</span>.
+For <span class="math" data-tex="\(C\geq1\)">\(C\geq1\)</span>, <span class="math" data-tex="\(\log_2C\leq2C\)">\(\log_2C\leq2C\)</span>.
+Thus all right sides of (6.4), and those of the prior selection,
+are bounded by explicit affine functions of <span class="math" data-tex="\(C\)">\(C\)</span>. Their cubes
+and fourth powers dominate for all sufficiently large integers;
+the earlier first affine condition is itself eventually true.
+This proves nonemptiness and finite termination of the selection.
+One may enlarge the source's unspecified sufficiently large
+hierarchy exponent to this actual integer.</p>
+<p>Use the original source notation <span class="math" data-tex="\(A_j=A_{\rm src}^{C_\dagger^j}\)">\(A_j=A_{\rm src}^{C_\dagger^j}\)</span>.
+For <span class="math" data-tex="\(A_{\rm src}\geq2\)">\(A_{\rm src}\geq2\)</span>, every fixed positive coefficient <span class="math" data-tex="\(q\)">\(q\)</span>
+is bounded above by <span class="math" data-tex="\(A_{\rm src}^{\log_2^+q}\)">\(A_{\rm src}^{\log_2^+q}\)</span>.
+Its reciprocal version gives the corresponding lower bounds.
+Equations (6.3)–(6.4) therefore prove</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Lambda\leq A_4,\qquad \rho\geq A_4^{-1},\qquad
+\gamma\geq A_3^{-1},\\
+\beta\leq A_3,\qquad
+\sqrt d\,\eta^3\geq A_3^{-1},\qquad LB\leq A_4.
+\end{gathered} \tag{6.6}
+\]">\[
+\begin{gathered}
+\Lambda\leq A_4,\qquad \rho\geq A_4^{-1},\qquad
+\gamma\geq A_3^{-1},\\
+\beta\leq A_3,\qquad
+\sqrt d\,\eta^3\geq A_3^{-1},\qquad LB\leq A_4.
+\end{gathered} \tag{6.6}
+\]</span>
+<p>Suppose the source interval <span class="math" data-tex="\(A_4N_0^{-2}\leq S\leq A_4^{-1}T\)">\(A_4N_0^{-2}\leq S\leq A_4^{-1}T\)</span>
+is nonempty and its original amplitude is
+<span class="math" data-tex="\(|P_{N_0}u(t_0,x_0)|\geq A_1^{-1}N_0\)">\(|P_{N_0}u(t_0,x_0)|\geq A_1^{-1}N_0\)</span>.
+The prior selection ensures <span class="math" data-tex="\(b=A_1^{-1}\leq b_0\)">\(b=A_1^{-1}\leq b_0\)</span>.
+By (6.6) this is an input to the already proved theorem (2.2).
+Its actual output satisfies</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+t_0-S\leq t_i\leq t_0-A_3^{-1}S,\qquad
+A_3^{-1}S^{-1/2}\leq N_i\leq A_3S^{-1/2},\\
+|x_i-x_0|\leq A_4\sqrt S,\qquad
+|P_{N_i}u(t_i,x_i)|\geq A_1^{-1}N_i .
+\end{gathered} \tag{6.7}
+\]">\[
+\begin{gathered}
+t_0-S\leq t_i\leq t_0-A_3^{-1}S,\qquad
+A_3^{-1}S^{-1/2}\leq N_i\leq A_3S^{-1/2},\\
+|x_i-x_0|\leq A_4\sqrt S,\qquad
+|P_{N_i}u(t_i,x_i)|\geq A_1^{-1}N_i .
+\end{gathered} \tag{6.7}
+\]</span>
+<p>This proves the original stated time separation, with explicit
+frequency and displacement bounds. It also proves that the
+coarser printed <span class="math" data-tex="\(A_3^{-6}S\)">\(A_3^{-6}S\)</span> calculation is not a reason to
+stop at a weaker time conclusion: the preceding full one-step
+constants have polynomial dependence on <span class="math" data-tex="\(A_{\rm src}\)">\(A_{\rm src}\)</span> with
+exponents affine in the selected <span class="math" data-tex="\(C_\dagger\)">\(C_\dagger\)</span>, which fits
+inside the actual cubic hierarchy. The exact map is (6.1)–(6.7).</p>
+<h2 id="7-every-original-physical-scale">7. Every original physical scale</h2>
+<p>For <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>, keep
+<span class="math" data-tex="\(u^\lambda(t,x)=\lambda u(\lambda^2t,\lambda x)\)">\(u^\lambda(t,x)=\lambda u(\lambda^2t,\lambda x)\)</span> and
+<span class="math" data-tex="\(p^\lambda(t,x)=\lambda^2p(\lambda^2t,\lambda x)\)">\(p^\lambda(t,x)=\lambda^2p(\lambda^2t,\lambda x)\)</span>.
+Direct differentiation retains the same viscosity <span class="math" data-tex="\(\nu\)">\(\nu\)</span>.
+The critical bound <span class="math" data-tex="\(U\)">\(U\)</span> and every constant in (1.2), (2.1)
+are unchanged. The original physical data map as</p>
+<span class="math math-display" data-tex="\[
+T^\lambda=T/\lambda^2,\quad S^\lambda=S/\lambda^2,\quad
+t_j^\lambda=t_j/\lambda^2,\quad
+x_j^\lambda=x_j/\lambda,\quad N_j^\lambda=\lambda N_j.
+\tag{7.1}
+\]">\[
+T^\lambda=T/\lambda^2,\quad S^\lambda=S/\lambda^2,\quad
+t_j^\lambda=t_j/\lambda^2,\quad
+x_j^\lambda=x_j/\lambda,\quad N_j^\lambda=\lambda N_j.
+\tag{7.1}
+\]</span>
+<p>The full Fourier substitution gives
+<span class="math" data-tex="\(P_{\lambda N}u^\lambda(t,x)
+=\lambda(P_Nu)(\lambda^2t,\lambda x)\)">\(P_{\lambda N}u^\lambda(t,x)
+=\lambda(P_Nu)(\lambda^2t,\lambda x)\)</span>.
+Every target and earlier amplitude thus has factor <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>.
+The receiving time bounds have factor <span class="math" data-tex="\(\lambda^{-2}\)">\(\lambda^{-2}\)</span>,
+frequency bounds factor <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, and displacement bound
+factor <span class="math" data-tex="\(\lambda^{-1}\)">\(\lambda^{-1}\)</span>. Each persistence interval maps with
+its exact endpoints. Substitution in the total-speed integral
+gives factor <span class="math" data-tex="\(\lambda^{-1}\)">\(\lambda^{-1}\)</span>, exactly the factor of <span class="math" data-tex="\(\sqrt S\)">\(\sqrt S\)</span>.
+The one-step kernels retain both invariants <span class="math" data-tex="\(\nu\tau N^2\)">\(\nu\tau N^2\)</span>
+and <span class="math" data-tex="\(N\,\mathrm{distance}\)">\(N\,\mathrm{distance}\)</span>. This proves the full physical
+comparison without changing the working coordinates of (1.1).</p>
+<h2 id="8-five-solved-exercises">8. Five solved exercises</h2>
+<h3 id="exercise-1-use-the-full-persistence-interval">Exercise 1: use the full persistence interval</h3>
+<p>For the same actual chain, replace the half-length interval
+in Section 4 by</p>
+<span class="math math-display" data-tex="\[
+J_j^\theta=[t_j-\theta dN_j^{-2},t_j],\qquad 0&lt;\theta\leq1.
+\]">\[
+J_j^\theta=[t_j-\theta dN_j^{-2},t_j],\qquad 0&lt;\theta\leq1.
+\]</span>
+<p>Prove the exact amplitude and total-speed bounds. Choose the
+best permitted <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, and propagate the resulting constant
+through every conclusion of the theorem.</p>
+<p><strong>Solution.</strong> The complete original derivative estimate gives</p>
+<span class="math math-display" data-tex="\[
+|P_{N_j}u(t,x_j)|\geq
+b(1-\theta\eta^6)N_j\quad(t\in J_j^\theta).
+\tag{8.1}
+\]">\[
+|P_{N_j}u(t,x_j)|\geq
+b(1-\theta\eta^6)N_j\quad(t\in J_j^\theta).
+\tag{8.1}
+\]</span>
+<p>Since the actual next gap is at least <span class="math" data-tex="\(dN_j^{-2}\)">\(dN_j^{-2}\)</span>,
+these intervals remain contained in their separate time steps.
+They may share endpoints when <span class="math" data-tex="\(\theta=1\)">\(\theta=1\)</span>, but those have
+zero Lebesgue measure. The projection-kernel bound and
+their exact lengths give</p>
+<span class="math math-display" data-tex="\[
+\frac{bd}{C_P}\theta(1-\theta\eta^6)
+\sum_{j=0}^{m-1}N_j^{-1}
+\leq \mathscr S(U,\nu)\sqrt S.
+\tag{8.2}
+\]">\[
+\frac{bd}{C_P}\theta(1-\theta\eta^6)
+\sum_{j=0}^{m-1}N_j^{-1}
+\leq \mathscr S(U,\nu)\sqrt S.
+\tag{8.2}
+\]</span>
+<p>The derivative of <span class="math" data-tex="\(\theta(1-\theta\eta^6)\)">\(\theta(1-\theta\eta^6)\)</span> is
+<span class="math" data-tex="\(1-2\theta\eta^6&gt;0\)">\(1-2\theta\eta^6&gt;0\)</span> for <span class="math" data-tex="\(0&lt;\theta\leq1\)">\(0&lt;\theta\leq1\)</span>, since
+<span class="math" data-tex="\(\eta\leq1/256\)">\(\eta\leq1/256\)</span>. Thus <span class="math" data-tex="\(\theta=1\)">\(\theta=1\)</span> gives the largest
+coefficient among these permitted intervals.</p>
+<p>Define the actual improved constants</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+B_{\rm full}=
+\frac{C_P(1+\eta^{-3})\mathscr S(U,\nu)}
+{bd(1-\eta^6)}
+=\frac{B}{4(1-\eta^6)},\\
+\beta_{\rm full}=\max\{DB_{\rm full},\sqrt{2d}\eta^3\},
+\quad\Lambda_{\rm full}=\max\{2D,4\beta_{\rm full}^2\},\\
+\gamma_{\rm full}=d\eta^6/\beta_{\rm full}^2 .
+\end{gathered} \tag{8.3}
+\]">\[
+\begin{gathered}
+B_{\rm full}=
+\frac{C_P(1+\eta^{-3})\mathscr S(U,\nu)}
+{bd(1-\eta^6)}
+=\frac{B}{4(1-\eta^6)},\\
+\beta_{\rm full}=\max\{DB_{\rm full},\sqrt{2d}\eta^3\},
+\quad\Lambda_{\rm full}=\max\{2D,4\beta_{\rm full}^2\},\\
+\gamma_{\rm full}=d\eta^6/\beta_{\rm full}^2 .
+\end{gathered} \tag{8.3}
+\]</span>
+<p>Retain the original <span class="math" data-tex="\(\rho=d\eta^6/(8D)\)">\(\rho=d\eta^6/(8D)\)</span>. The finite-chain
+crossing uses only <span class="math" data-tex="\(\Lambda_{\rm full}\geq2D\)">\(\Lambda_{\rm full}\geq2D\)</span> and
+<span class="math" data-tex="\(S\leq\rho T\)">\(S\leq\rho T\)</span>, so Section 3 applies unchanged.
+Equation (8.2) with <span class="math" data-tex="\(\theta=1\)">\(\theta=1\)</span>, followed by the same final
+frequency comparison, gives the complete sum bound
+<span class="math" data-tex="\(\sum_{j=0}^mN_j^{-1}\leq B_{\rm full}\sqrt S\)">\(\sum_{j=0}^mN_j^{-1}\leq B_{\rm full}\sqrt S\)</span>.
+The full finite sum argument of Section 5 then yields</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+t_0-S\leq t_i\leq t_0-\gamma_{\rm full}S,\qquad
+\sqrt d\,\eta^3S^{-1/2}\leq N_i
+\leq\beta_{\rm full}S^{-1/2},\\
+|x_i-x_0|\leq LB_{\rm full}\sqrt S,\qquad
+|P_{N_i}u(t_i,x_i)|\geq bN_i
+\end{gathered} \tag{8.4}
+\]">\[
+\begin{gathered}
+t_0-S\leq t_i\leq t_0-\gamma_{\rm full}S,\qquad
+\sqrt d\,\eta^3S^{-1/2}\leq N_i
+\leq\beta_{\rm full}S^{-1/2},\\
+|x_i-x_0|\leq LB_{\rm full}\sqrt S,\qquad
+|P_{N_i}u(t_i,x_i)|\geq bN_i
+\end{gathered} \tag{8.4}
+\]</span>
+<p>whenever <span class="math" data-tex="\(\Lambda_{\rm full}N_0^{-2}\leq S\leq\rho T\)">\(\Lambda_{\rm full}N_0^{-2}\leq S\leq\rho T\)</span>.
+This proves the entire receiving theorem with the new constants.
+Moreover <span class="math" data-tex="\(B_{\rm full}&lt;B\)">\(B_{\rm full}&lt;B\)</span>, <span class="math" data-tex="\(\beta_{\rm full}\leq\beta\)">\(\beta_{\rm full}\leq\beta\)</span>,
+<span class="math" data-tex="\(\Lambda_{\rm full}\leq\Lambda\)">\(\Lambda_{\rm full}\leq\Lambda\)</span>, and
+<span class="math" data-tex="\(\gamma_{\rm full}\geq\gamma\)">\(\gamma_{\rm full}\geq\gamma\)</span>. The lower frequency bound,
+original amplitude, viscosity and terminal time allowance
+remain exactly the same. The source comparisons in Section 6
+therefore continue to hold, and their full original bounds
+are retained.</p>
+<h3 id="exercise-2-retain-all-earlier-frequencies-selected-by-the-sum">Exercise 2: retain all earlier frequencies selected by the sum</h3>
+<p>Prove a quantitative statement about the entire set of indices
+with sufficiently large reciprocal frequency, rather than
+choosing only one maximum. Keep its actual time, spatial and
+amplitude information.</p>
+<p><strong>Solution.</strong> Use the original constants of Section 2 and put</p>
+<span class="math math-display" data-tex="\[
+r_j=N_j^{-1},\quad
+a=\frac{\sqrt S}{2DB},\qquad
+\mathcal G=\{j\in\{0,\ldots,m\}:r_j&gt;a\}.
+\]">\[
+r_j=N_j^{-1},\quad
+a=\frac{\sqrt S}{2DB},\qquad
+\mathcal G=\{j\in\{0,\ldots,m\}:r_j&gt;a\}.
+\]</span>
+<p>For the complementary indices,
+<span class="math" data-tex="\(\sum_{j\notin\mathcal G}r_j^2
+\leq a\sum_{j=0}^mr_j\leq S/(2D)\)">\(\sum_{j\notin\mathcal G}r_j^2
+\leq a\sum_{j=0}^mr_j\leq S/(2D)\)</span>.
+Subtract this from the complete strict lower bound
+<span class="math" data-tex="\(\sum_{j=0}^mr_j^2&gt;S/D\)">\(\sum_{j=0}^mr_j^2&gt;S/D\)</span>. It gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{j\in\mathcal G}N_j^{-2}&gt;\frac{S}{2D}.
+\tag{8.5}
+\]">\[
+\sum_{j\in\mathcal G}N_j^{-2}&gt;\frac{S}{2D}.
+\tag{8.5}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> is nonempty. The original scale condition
+implies <span class="math" data-tex="\(r_0\leq\sqrt S/(2\beta)\leq a\)">\(r_0\leq\sqrt S/(2\beta)\leq a\)</span>, so
+every index in <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> is at least one.
+For each of them the incoming gap and frequency comparison give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+t_0-S\leq t_j&lt;
+t_0-\frac{d\eta^6}{4D^2B^2}S,\qquad
+\sqrt d\,\eta^3S^{-1/2}\leq N_j&lt;2DBS^{-1/2},\\
+|x_j-x_0|\leq LB\sqrt S,\qquad
+|P_{N_j}u(t_j,x_j)|\geq bN_j .
+\end{gathered} \tag{8.6}
+\]">\[
+\begin{gathered}
+t_0-S\leq t_j&lt;
+t_0-\frac{d\eta^6}{4D^2B^2}S,\qquad
+\sqrt d\,\eta^3S^{-1/2}\leq N_j&lt;2DBS^{-1/2},\\
+|x_j-x_0|\leq LB\sqrt S,\qquad
+|P_{N_j}u(t_j,x_j)|\geq bN_j .
+\end{gathered} \tag{8.6}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(r_j&gt;a\)">\(r_j&gt;a\)</span> makes the actual time gap exceed
+<span class="math" data-tex="\(d\eta^6a^2\)">\(d\eta^6a^2\)</span>; all the other conclusions were proved for
+every <span class="math" data-tex="\(1\leq j\leq m\)">\(1\leq j\leq m\)</span>. This preserves a positive lower
+sum of reciprocal-frequency squares over a set of actual
+earlier points, with all their receiving data.
+It asserts no lower bound on the number of distinct spatial
+points: selected points may share a spatial coordinate.</p>
+<h3 id="exercise-3-when-does-the-receiving-time-interval-exist">Exercise 3: when does the receiving time interval exist?</h3>
+<p>Give an exact condition for the interval of permitted <span class="math" data-tex="\(S\)">\(S\)</span>'s
+to be nonempty. Deduce the original one-step threshold without
+assuming it separately. Compare the result for the improved
+constant in Exercise 1.</p>
+<p><strong>Solution.</strong> All quantities are positive. The exact equivalence is</p>
+<span class="math math-display" data-tex="\[
+[\Lambda N_0^{-2},\rho T]\ne\varnothing
+\quad\Longleftrightarrow\quad
+N_0^2\geq\frac{\Lambda}{\rho T}
+=\frac{8D\Lambda}{d\eta^6T}.
+\tag{8.7}
+\]">\[
+[\Lambda N_0^{-2},\rho T]\ne\varnothing
+\quad\Longleftrightarrow\quad
+N_0^2\geq\frac{\Lambda}{\rho T}
+=\frac{8D\Lambda}{d\eta^6T}.
+\tag{8.7}
+\]</span>
+<p>No change in the physical <span class="math" data-tex="\(N_0,T\)">\(N_0,T\)</span> is involved.
+Since <span class="math" data-tex="\(\Lambda\geq2D\)">\(\Lambda\geq2D\)</span> and <span class="math" data-tex="\(\rho\leq1/32\)">\(\rho\leq1/32\)</span>,
+this implies <span class="math" data-tex="\(N_0^2\geq64D/T\)">\(N_0^2\geq64D/T\)</span>, hence in particular
+<span class="math" data-tex="\(N_0\geq2\sqrt{D/T}\)">\(N_0\geq2\sqrt{D/T}\)</span>, the already proved operation's
+input condition. The factor 64 is not discarded.
+When the interval is empty the iterated assertion has no
+receiving time; it does not imply that the initial amplitude
+is impossible.</p>
+<p>For Exercise 1 the exact condition is
+<span class="math" data-tex="\(N_0^2\geq8D\Lambda_{\rm full}/(d\eta^6T)\)">\(N_0^2\geq8D\Lambda_{\rm full}/(d\eta^6T)\)</span>.
+It is no stronger than (8.7), and the same initial
+one-step threshold follows because
+<span class="math" data-tex="\(\Lambda_{\rm full}\geq2D\)">\(\Lambda_{\rm full}\geq2D\)</span>.
+This proves precisely how the stronger persistence estimate
+enlarges the admissible range of original frequencies and times.</p>
+<h3 id="exercise-4-reconstruct-the-source-s-positive-time-separation">Exercise 4: reconstruct the source's positive time separation</h3>
+<p>Starting from the actual original constants, recover the
+exponent <span class="math" data-tex="\(89C+142\)">\(89C+142\)</span> and its coefficient in the lower bound
+for <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. Prove why an estimate with that affine
+exponent can imply the source's cubic-hierarchy separation.</p>
+<p><strong>Solution.</strong> The full earlier comparison gives</p>
+<span class="math math-display" data-tex="\[
+d\eta^6\geq e_0\zeta^{-6}
+A_{\rm src}^{-25C-38},\qquad
+\beta^2\leq\mathcal B(C)^2
+A_{\rm src}^{64C+104}.
+\]">\[
+d\eta^6\geq e_0\zeta^{-6}
+A_{\rm src}^{-25C-38},\qquad
+\beta^2\leq\mathcal B(C)^2
+A_{\rm src}^{64C+104}.
+\]</span>
+<p>Divide the first expression by the second, retaining both
+coefficients and all powers:</p>
+<span class="math math-display" data-tex="\[
+\gamma\geq
+\frac{e_0}{\zeta^6\mathcal B(C)^2}
+A_{\rm src}^{-(25C+38)-(64C+104)}
+=\mathcal G(C)A_{\rm src}^{-89C-142}.
+\tag{8.8}
+\]">\[
+\gamma\geq
+\frac{e_0}{\zeta^6\mathcal B(C)^2}
+A_{\rm src}^{-(25C+38)-(64C+104)}
+=\mathcal G(C)A_{\rm src}^{-89C-142}.
+\tag{8.8}
+\]</span>
+<p>For <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span> and <span class="math" data-tex="\(A_{\rm src}\geq2\)">\(A_{\rm src}\geq2\)</span>,
+<span class="math" data-tex="\(q\geq A_{\rm src}^{-\log_2^+(1/q)}\)">\(q\geq A_{\rm src}^{-\log_2^+(1/q)}\)</span>.
+If <span class="math" data-tex="\(q\geq1\)">\(q\geq1\)</span> this follows from <span class="math" data-tex="\(q\geq1\)">\(q\geq1\)</span>;
+if <span class="math" data-tex="\(0&lt;q&lt;1\)">\(0&lt;q&lt;1\)</span>, raising <span class="math" data-tex="\(A_{\rm src}\geq2\)">\(A_{\rm src}\geq2\)</span> to the
+negative exponent gives
+<span class="math" data-tex="\(A_{\rm src}^{-\log_2(1/q)}\leq q\)">\(A_{\rm src}^{-\log_2(1/q)}\leq q\)</span>.
+Thus the first numerical inequality in (6.4) implies
+<span class="math" data-tex="\(\gamma\geq A_{\rm src}^{-C_\dagger^3}=A_3^{-1}\)">\(\gamma\geq A_{\rm src}^{-C_\dagger^3}=A_3^{-1}\)</span>.</p>
+<p>This is an actual finite choice: (6.5) gives
+<span class="math" data-tex="\(1/\mathcal G(C)\leq K C^2\)">\(1/\mathcal G(C)\leq K C^2\)</span>, with the complete
+<span class="math" data-tex="\(K=\zeta^6B_*^2/e_0&gt;0\)">\(K=\zeta^6B_*^2/e_0&gt;0\)</span>.
+Therefore
+<span class="math" data-tex="\(\log_2^+(1/\mathcal G(C))
+\leq\log_2^+K+2\log_2C\leq\log_2^+K+4C\)">\(\log_2^+(1/\mathcal G(C))
+\leq\log_2^+K+2\log_2C\leq\log_2^+K+4C\)</span>.
+The cubic dominates the resulting affine expression
+<span class="math" data-tex="\(93C+142+\log_2^+K\)">\(93C+142+\log_2^+K\)</span>.
+The other simultaneous conditions are proved to be eventual
+in Section 6, so the finite integer selection satisfies all
+of them. No unproved replacement of one hierarchy level by
+another is used.</p>
+<h3 id="exercise-5-a-moving-frame-and-the-critical-class">Exercise 5: a moving frame and the critical class</h3>
+<p>For a constant vector <span class="math" data-tex="\(v\in\mathbb R^3\)">\(v\in\mathbb R^3\)</span>, prove the exact
+Galilean map of the original equation and the earlier points.
+Determine whether a nonzero moving frame preserves the
+whole-space <span class="math" data-tex="\(L^3\)">\(L^3\)</span> hypothesis, and retain the displacement
+term that the moving frame introduces.</p>
+<p><strong>Solution.</strong> Define the actual fields</p>
+<span class="math math-display" data-tex="\[
+u^v(t,x)=u(t,x-vt)+v,\qquad
+p^v(t,x)=p(t,x-vt).
+\tag{8.9}
+\]">\[
+u^v(t,x)=u(t,x-vt)+v,\qquad
+p^v(t,x)=p(t,x-vt).
+\tag{8.9}
+\]</span>
+<p>The time derivative contributes
+<span class="math" data-tex="\(\partial_tu(t,x-vt)-v\cdot\nabla u(t,x-vt)\)">\(\partial_tu(t,x-vt)-v\cdot\nabla u(t,x-vt)\)</span>.
+The transport term is
+<span class="math" data-tex="\((u(t,x-vt)+v)\cdot\nabla u(t,x-vt)\)">\((u(t,x-vt)+v)\cdot\nabla u(t,x-vt)\)</span>.
+Their two <span class="math" data-tex="\(v\)">\(v\)</span>-terms cancel exactly. Pressure gradient,
+Laplacian and divergence are translated unchanged, so the
+original unforced equation holds with the same viscosity.</p>
+<p>Since the annular symbol vanishes at zero, its projection
+annihilates the constant vector. Translation commutes with
+the convolution kernel. Hence</p>
+<span class="math math-display" data-tex="\[
+P_Nu^v(t,x)=(P_Nu)(t,x-vt).
+\tag{8.10}
+\]">\[
+P_Nu^v(t,x)=(P_Nu)(t,x-vt).
+\tag{8.10}
+\]</span>
+<p>Every selected point maps to
+<span class="math" data-tex="\((t_j,x_j^v)=(t_j,x_j+vt_j)\)">\((t_j,x_j^v)=(t_j,x_j+vt_j)\)</span>, with unchanged frequency,
+time and projected amplitude. Its full displacement is</p>
+<span class="math math-display" data-tex="\[
+x_j^v-x_0^v=(x_j-x_0)+v(t_j-t_0),\qquad
+|x_j^v-x_0^v|\leq LB\sqrt S+|v|S .
+\tag{8.11}
+\]">\[
+x_j^v-x_0^v=(x_j-x_0)+v(t_j-t_0),\qquad
+|x_j^v-x_0^v|\leq LB\sqrt S+|v|S .
+\tag{8.11}
+\]</span>
+<p>The advective contribution is retained.</p>
+<p>If <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>, then for each time</p>
+<span class="math math-display" data-tex="\[
+|\{x:|u(t,x-vt)|&gt;|v|/2\}|
+\leq(2U/|v|)^3&lt;\infty .
+\tag{8.12}
+\]">\[
+|\{x:|u(t,x-vt)|&gt;|v|/2\}|
+\leq(2U/|v|)^3&lt;\infty .
+\tag{8.12}
+\]</span>
+<p>Its complement has infinite measure, and there
+<span class="math" data-tex="\(|u(t,x-vt)+v|\geq|v|/2\)">\(|u(t,x-vt)+v|\geq|v|/2\)</span>.
+Consequently <span class="math" data-tex="\(\|u^v(t)\|_3=\infty\)">\(\|u^v(t)\|_3=\infty\)</span>.
+The transformed solution therefore does not satisfy the
+original whole-space critical-norm hypothesis.
+Its fluctuation <span class="math" data-tex="\(u^v-v\)">\(u^v-v\)</span> has the unchanged <span class="math" data-tex="\(L^3\)">\(L^3\)</span> norm;
+in moving coordinates it is exactly the original field.
+Equations (8.9)–(8.12) prove the relation completely,
+including the class restriction and actual point map.
+They do not silently apply the theorem to an infinite
+critical norm.</p>
+<h2 id="9-source-comparison-and-the-next-argument">9. Source comparison and the next argument</h2>
+<p>The original proof at article.tex 624 uses <span class="math" data-tex="\(A_2\)">\(A_2\)</span> in the first
+time interval although its preceding step bound uses <span class="math" data-tex="\(A_3\)">\(A_3\)</span>.
+Equation (3.1) retains the actual <span class="math" data-tex="\(d,D\)">\(d,D\)</span> time constants.
+At 627 the displayed chain has an ill-ordered comparison and
+does not imply its stated stopping-time conclusion; (3.2)
+proves the complete positive bound with its physical <span class="math" data-tex="\(T\)">\(T\)</span>.
+At 629–630 the receiving center is the original <span class="math" data-tex="\(t_0\)">\(t_0\)</span>,
+and the crossing after the largest admissible index has
+<span class="math" data-tex="\(t_{m+1}&lt;t_0-S\)">\(t_{m+1}&lt;t_0-S\)</span>, as proved in (3.3).
+Equations (4.1)–(4.3) prove the disjoint interval and
+total-speed map with all constants. Equation (5.1) uses the
+actual incoming frequency comparison for the lower time bound.
+Finally (6.1)–(6.7) prove the stronger source-stated time
+separation after an explicit fixed hierarchy choice.</p>
+<p>These corrections preserve and establish the original iterated
+conclusion; they do not disprove it. The next argument connects the original vorticity mass,
+the full Gaussian factors, actual annular supports and shell
+multiplicities to the finite weighted heat estimates and the
+small annulus constructed earlier. Those receiving arguments
+are needed before claiming the general large critical-velocity
+endpoint. No novelty is asserted here.</p>
+<p>The mathematical text and original figure are dedicated
+to CC0 1.0. Cited author sources retain their respective terms.</p>
+</article><nav aria-label="Lesson sequence"><a href="NS-FLUID-15.html">Previous lesson</a><a href="NS-FLUID-17.html">Next lesson</a></nav></main><footer>Mathematical text: CC0 1.0. Cited works and reader software retain their respective terms.</footer></body></html>

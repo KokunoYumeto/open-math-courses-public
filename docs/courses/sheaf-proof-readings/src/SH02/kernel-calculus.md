@@ -2,7 +2,7 @@
 
 Course: SH-02. Unit: SH02-KER. Language: English.
 
-Programme draft. The proofs use the explicit prerequisite contracts below. Complete proofs and review of those foundational contracts remain unfinished.
+The prerequisite proofs below are supplied by [Finite resolutions and proper supports on locally compact spaces](../../../SH-02/finite-resolutions-and-proper-supports.html) and the compact-support and coefficient constructions it links. The kernel calculation retains the general locally compact spaces and full bounded-below test-object range stated here.
 
 Original text is dedicated under CC0 1.0 Universal. Linked materials retain their own licenses.
 
@@ -28,7 +28,7 @@ This unit has no manifold, orientation, noncharacteristic, constructibility, or 
 
 ## SH02-KER-002. The prerequisite contract
 
-The following imports state exactly what the proofs use. Listing an import is not a proof of it. The ordinary derived-category imports are matched to open Stacks material below; the full topological proper-support and duality imports remain dependencies of the course's foundational units.
+The following contracts specify the exact maps and bounds used by the calculation. [Finite resolutions and proper supports](../../../SH-02/finite-resolutions-and-proper-supports.html#LCH1) proves the general topological dimension criterion, coefficient transfer, fibre and product bounds, and exceptional adjunction. Its [derived algebra and projection proof](../../../SH-02/finite-resolutions-and-proper-supports.html#LCH4) supplies the bounded-kernel tensor–Hom adjunction and both actual mixed projection maps.
 
 ### SH02-KER-IMP-DER. Derived sheaf algebra
 
@@ -42,7 +42,7 @@ Sheaves admit the resolutions needed to construct derived tensor and internal Ho
  \simeq \operatorname{Hom}(C,Rf_*D).
 \]
 
-The constant-coefficient specializations of the Stacks Project's [flat resolutions and derived tensor product](https://stacks.math.columbia.edu/tag/06Y7), [derived pullback](https://stacks.math.columbia.edu/tag/06YI), and [internal derived Hom adjunction](https://stacks.math.columbia.edu/tag/08DJ) supply these algebraic constructions. They do not, by themselves, supply exceptional inverse image or proper-support base change. Course-level checking of the complete dependency chain remains an outstanding import obligation.
+The constant-coefficient specializations of the Stacks Project's [flat resolutions and derived tensor product](https://stacks.math.columbia.edu/tag/06Y7), [derived pullback](https://stacks.math.columbia.edu/tag/06YI), and [internal derived Hom adjunction](https://stacks.math.columbia.edu/tag/08DJ) supply these algebraic constructions. They do not, by themselves, supply exceptional inverse image or proper-support base change. For the actual bounded kernel and bounded-below test objects used here, [the derived-algebra proof](../../../SH-02/finite-resolutions-and-proper-supports.html#LCH4) gives the finite flat model, injective internal-Hom model and chain-level currying, retaining every product over an unbounded-above source.
 
 ### SH02-KER-IMP-GEOM. Compact supports and dimension
 
@@ -119,7 +119,7 @@ f^!:D^+(A_V)\longrightarrow D^+(A_U),
 \qquad Rf_!\dashv f^!.
 \]
 
-Its unit is \(\eta^f:\mathrm{id}\to f^!Rf_!\), and its counit is \(\epsilon^f:Rf_!f^!\to\mathrm{id}\). Their triangle identities and naturality are part of this adjunction. The construction of \(f^!\), including its passage from abelian-sheaf dimension to general \(A\)-coefficients, is an outstanding foundation owned by the appropriate course unit. We use neither a manifold formula for \(f^!\) nor a replacement of internal Hom by tensoring with a dual.
+Its unit is \(\eta^f:\mathrm{id}\to f^!Rf_!\), and its counit is \(\epsilon^f:Rf_!f^!\to\mathrm{id}\). Their triangle identities and naturality are part of this adjunction. The [exceptional-adjoint construction](../../../SH-02/finite-resolutions-and-proper-supports.html#LCH3) proves the construction of \(f^!\), including its passage from abelian-sheaf dimension to general \(A\)-coefficients, its differential signs and the trace-preserving comparison between resolution choices. We use neither a manifold formula for \(f^!\) nor a replacement of internal Hom by tensoring with a dual.
 
 ## SH02-KER-003. Bounds that make the operators well-defined
 
@@ -691,15 +691,7 @@ written course text is CC0. The linked human works retain their own
 terms, including the Stacks Project's
 [GFDL terms](https://github.com/stacks/stacks-project/blob/a04446e57ec1fbc252a871afcec7752fb2807b14/COPYING).
 
-The remaining foundational work is the full resolution and derived-algebra
-chain in SH02-KER-IMP-DER; the c-soft dimension criterion, compact-support
-spectral sequences and coefficient transfer in SH02-KER-IMP-GEOM; the
-bounded projection formula and topological base-change construction in
-SH02-KER-IMP-BCPF; and exceptional-adjoint existence in
-SH02-KER-IMP-DUAL. The projection-range argument supplies the mixed-range
-step from the bounded formula, not these underlying constructions.
-Separate source, expression and mathematical review of the complete
-dependency chain remains unfinished.
+[Finite resolutions and proper supports](../../../SH-02/finite-resolutions-and-proper-supports.html) supplies these foundational constructions at the full scope used here. Its resolution criterion and coefficient transfer prove the geometric contract; the actual compact-support comparison maps prove base change and composition; the finite integral model constructs the exceptional adjoint; and finite flat and injective models construct the coefficient algebra. Its two mixed projection maps are precisely the maps to which SH02-KER-PF-RANGE applies. The proofs retain arbitrary stalk modules, general finite-c-soft-dimension locally compact Hausdorff spaces, and globally bounded-below test objects.
 
 The spherical-kernel calculation, conic Fourier transformation, manifold
 duality, specialization, microlocalization, microlocal Hom, microsupport

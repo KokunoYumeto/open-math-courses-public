@@ -91,6 +91,7 @@ def render(source_path, title, output):
                 # The equation number becomes the reader's adjacent HTML label.
                 x["c"][1] = re.sub(r"\\tag\{[^}]+\}", "", x["c"][1])
                 x["c"][1] = re.sub(r"\{\\rm\s+([^{}]*)\}", lambda m: r"{\mathrm{" + m[1] + "}}", x["c"][1])
+                x["c"][1] = re.sub(r"\{\\cal\s+([^{}]*)\}", lambda m: r"{\mathcal{" + m[1] + "}}", x["c"][1])
                 x["c"][1] = x["c"][1].replace(r"\hbox", r"\text")
             elif x.get("t") == "Link":
                 if x["c"][-1][0].startswith("../") and not x["c"][-1][0].startswith("../figures/"):
@@ -115,7 +116,7 @@ def render(source_path, title, output):
         if record["display"]:
             parent = node.parent
             assert parent.name in ("p", "span")
-            assert all(child is node or (isinstance(child, str) and not child.strip()) for child in parent.contents)
+            assert all(child is node or (isinstance(child, str) and not child.strip()) for child in parent.contents), str(parent)[:700]
             eq = soup.new_tag("div", attrs={"class": "equation"})
             scrolling = soup.new_tag("div", attrs={"class": "equation-body", "tabindex": "0"})
             parent.replace_with(eq)
@@ -127,6 +128,9 @@ def render(source_path, title, output):
                 label = soup.new_tag("span", attrs={"class": "eq-number"})
                 label.string = "(" + tag[1] + ")"
                 eq.append(label)
+    for table in soup.find_all("table"):
+        wrapper=soup.new_tag("div", attrs={"style":"overflow-x:auto", "tabindex":"0", "aria-label":"Scrollable table"})
+        table.wrap(wrapper)
     for img in soup.find_all("img"):
         diagram = soup.new_tag("div", attrs={"class": "diagram", "tabindex": "0",
                                            "aria-label": "Scrollable mathematical diagram"})
@@ -138,7 +142,10 @@ def render(source_path, title, output):
         diagram.append(img)
     toc = '<aside class="contents" aria-label="Contents"><strong>In this lesson</strong><ol>'
     for h in soup.find_all("h2"):
-        toc += '<li><a href="#' + h["id"] + '">' + html.escape(re.sub(r"^\d+\.\s*", "", h.get_text())) + "</a></li>"
+        heading_copy = BeautifulSoup(str(h), "html.parser")
+        for annotation in heading_copy.find_all("annotation"):
+            annotation.decompose()
+        toc += '<li><a href="#' + h["id"] + '">' + html.escape(re.sub(r"^\d+\.\s*", "", heading_copy.get_text())) + "</a></li>"
     toc += "</ol></aside>"
     first_h2 = soup.find("h2")
     first_h2.insert_before(BeautifulSoup(toc, "html.parser"))
@@ -181,6 +188,88 @@ def profile_figure():
 </g></svg>"""
     (COURSE/"figures/profile-cutoff.svg").write_text(svg,encoding="utf-8",newline="\n")
 
+
+def carrier_figure():
+    svg="""<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="860" viewBox="0 0 1200 860" role="img" aria-labelledby="title desc">
+<title id="title">The exact pullback and the full parameter connection</title>
+<desc id="desc">The principal-bundle square sends p in P H to a p in L, and x in X to r H of x in D. Its vertical arrows are bundle projections. D has dimension 49, its base M has dimension 24 and its fibre G over K has dimension 25. The associated rank 24 bundle E D pulls back to W H and is the pullback of T M. The total parameter space Y has dimension 73. The lower panel lists the full connection and its parameter, mixed, spatial and zero time curvature components.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8Z" fill="#256773"/></marker></defs>
+<rect width="1200" height="860" rx="18" fill="#edf3f1"/>
+<g font-family="Arial,sans-serif" fill="#193d46">
+<text x="36" y="49" font-size="27" font-weight="bold">A nontrivial reduction with an explicit higher carrier</text>
+<text x="36" y="85" font-size="19">K = ρ(Sp(1)) ⊂ G = Spin(8) ⊂ L = F₄. Every arrow below is the specified map.</text>
+<rect x="44" y="118" width="690" height="326" rx="12" fill="#fffef9" stroke="#a4bdbe"/>
+<text x="131" y="171" font-size="28">P_H</text>
+<text x="582" y="171" font-size="28">L</text>
+<path d="M210 159 H535" stroke="#256773" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="330" y="145" font-size="20">p ↦ a_p</text>
+<path d="M160 191 V282" stroke="#256773" stroke-width="3" marker-end="url(#arrow)"/>
+<path d="M595 191 V282" stroke="#256773" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="127" y="322" font-size="27">X ≅ S⁶</text>
+<text x="533" y="322" font-size="27">D = L/K</text>
+<path d="M255 310 H500" stroke="#256773" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="345" y="293" font-size="22">r_H</text>
+<text x="81" y="382" font-size="22">P_H ≅ r_H*(L → D);  π_D r_H(x) = G.</text>
+<text x="81" y="420" font-size="18">The square is a pullback. Both vertical arrows are projections.</text>
+<rect x="758" y="118" width="398" height="326" rx="12" fill="#fff4df" stroke="#cfb179"/>
+<text x="785" y="163" font-size="23" font-weight="bold">Dimensions and ranks</text>
+<text x="785" y="207" font-size="22">D = L/K: 49</text>
+<text x="785" y="247" font-size="22">M = L/G: 24</text>
+<text x="785" y="287" font-size="22">Fibre G/K: 25</text>
+<text x="785" y="331" font-size="22">E_D ≅ π_D*TM: rank 24</text>
+<text x="785" y="371" font-size="22">r_H*E_D ≅ W_H</text>
+<text x="785" y="411" font-size="22">Y = Tot(E_D): 49 + 24 = 73</text>
+<rect x="44" y="472" width="1112" height="306" rx="12" fill="white" stroke="#a4bdbe"/>
+<text x="71" y="515" font-size="24" font-weight="bold">The connection on Y × ℝ¹˒³ includes every parameter direction</text>
+<text x="72" y="560" font-size="23">𝔅 = b_A dyᴬ + cᵢ dxⁱ,   𝔅₀ = 0,   cᵢ = φ(Cᵢ).</text>
+<text x="72" y="608" font-size="22">𝔉_AB = ∂_A b_B − ∂_B b_A + [b_A,b_B]</text>
+<text x="72" y="654" font-size="22">𝔉_Ai = ∂_A cᵢ + [b_A,cᵢ]</text>
+<text x="72" y="700" font-size="22">𝔉_ij = ∂ᵢcⱼ − ∂ⱼcᵢ + [cᵢ,cⱼ]</text>
+<text x="754" y="654" font-size="22">𝔉_A0 = 0;  𝔉_0i = 0</text>
+<text x="72" y="749" font-size="19">Outside the spatial support: mixed and spatial terms vanish; parameter curvature remains.</text>
+<text x="44" y="818" font-size="19">Proofs: Lesson 3, (3.27)–(3.43) and (3.44)–(3.50). Bundle dimensions are exact.</text>
+<text x="44" y="846" font-size="17">This diagram describes the bundle and connection; it makes no continuum spectral assertion.</text>
+</g></svg>"""
+    (COURSE/"figures/bundle-carrier.svg").write_text(svg,encoding="utf-8",newline="\n")
+
+def cauchy_figure():
+    svg="""<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="840" viewBox="0 0 1200 840" role="img" aria-labelledby="title desc">
+<title id="title">Support propagation and the exact backward-cone energy argument</title>
+<desc id="desc">Spatial coordinate projections. On the left, the support at future time s is contained in the radius R plus s ball, and more precisely in the points at distance at most s from the original closed support K. The shaded region is an allowed envelope, not an assertion that the field fills it. On the right, a backward cone has ball radius rho minus s, with zero initial energy on its base. Its derivative is minus the boundary integral of q dot n plus e. Since the absolute flux is at most e, zero energy persists. Physical time is t equals s over c.</desc>
+<defs><marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8Z" fill="#256773"/></marker></defs>
+<rect width="1200" height="840" rx="18" fill="#edf3f1"/>
+<g font-family="Arial,sans-serif" fill="#193d46">
+<text x="35" y="48" font-size="27" font-weight="bold">The same speed controls support and domain of dependence</text>
+<text x="35" y="86" font-size="19">Coordinate projections; axes have independent drawing scales. Time coordinate s = ct, c &gt; 0.</text>
+<rect x="28" y="112" width="554" height="410" rx="12" fill="#fffef9" stroke="#a4bdbe"/>
+<rect x="612" y="112" width="560" height="410" rx="12" fill="#fffef9" stroke="#a4bdbe"/>
+<text x="53" y="151" font-size="22" font-weight="bold">Allowed support envelope, s ≥ 0</text>
+<path d="M206 430 L406 430 L526 213 L86 213 Z" fill="#cce5df" stroke="#26776e" stroke-width="2"/>
+<path d="M61 430 H547 M306 454 V180" fill="none" stroke="#256773" stroke-width="2" marker-end="url(#arr)"/>
+<text x="543" y="456" font-size="20">x</text><text x="319" y="189" font-size="20">s</text>
+<text x="181" y="459" font-size="19">−R</text><text x="399" y="459" font-size="19">R</text>
+<text x="106" y="205" font-size="19">−R−s</text><text x="455" y="205" font-size="19">R+s</text>
+<text x="329" y="300" font-size="19">Possible support</text>
+<text x="65" y="492" font-size="18">Actual support ⊂ {x : dist(x,K) ≤ s},  K = supp C.</text>
+<text x="640" y="151" font-size="22" font-weight="bold">Backward cone with zero initial energy</text>
+<path d="M724 430 L1112 430 L994 233 L842 233 Z" fill="#fff0d3" stroke="#98652a" stroke-width="2"/>
+<path d="M666 430 H1140 M918 451 V178" fill="none" stroke="#256773" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M842 233 H994" stroke="#98652a" stroke-width="3"/>
+<text x="1128" y="456" font-size="20">x</text><text x="931" y="189" font-size="20">s</text>
+<text x="864" y="221" font-size="19">s = s₀ &lt; ρ</text>
+<text x="757" y="360" font-size="20">Ball B<tspan baseline-shift="sub" font-size="15">ρ−s</tspan><tspan baseline-shift="baseline">(x₀)</tspan></text>
+<text x="703" y="461" font-size="18">x₀−ρ</text><text x="903" y="461" font-size="18">x₀</text><text x="1083" y="461" font-size="18">x₀+ρ</text>
+<text x="651" y="492" font-size="18">Base energy = 0  ⇒  E = B = 0 in the cone.</text>
+<rect x="28" y="548" width="1144" height="174" rx="12" fill="white" stroke="#a4bdbe"/>
+<text x="52" y="588" font-size="23">e = ½(|E|² + |B|²),  q = −Σα Eᵅ × Bᵅ,  ∂ₛe + div q = 0.</text>
+<text x="52" y="627" font-size="22">I(s) = ∫<tspan baseline-shift="sub" font-size="16">B_(ρ−s)(x₀)</tspan><tspan baseline-shift="baseline"> e d³x;</tspan></text>
+<text x="433" y="627" font-size="22">I′(s) = −∫<tspan baseline-shift="sub" font-size="16">∂B_(ρ−s)(x₀)</tspan><tspan baseline-shift="baseline"> (q·n + e) dS ≤ 0.</tspan></text>
+<text x="52" y="682" font-size="22">The second boundary term comes from the radius derivative −1; |q·n| ≤ e.</text>
+<text x="35" y="766" font-size="20">A vanishes outside the support cone because ∂ₛA = E and A(0) = C.</text>
+<text x="35" y="805" font-size="19">Complete proof: Lesson YM-04, Theorem 6.1, equations (4.32)–(4.38). Physical distance: c|t|.</text>
+</g></svg>"""
+    (COURSE/"figures/cauchy-cones.svg").write_text(svg,encoding="utf-8",newline="\n")
+
 def short_page(title, body):
     return '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+html.escape(title)+'</title><link rel="stylesheet" href="reader.css"></head><body><nav><a href="index.html">Course contents</a><a href="../../downloads/yang-mills-geometry-and-states.zip">Download</a></nav><main><h1>'+html.escape(title)+'</h1>'+body+'</main><footer>Mathematical content: CC0 1.0.</footer></body></html>'
 
@@ -191,21 +280,35 @@ def build():
     # The first source and reader retain their delivered mathematics.
     figure()
     profile_figure()
+    carrier_figure()
+    cauchy_figure()
     source1, formulas1=render(COURSE/"src/YM-01.md","Quaternionic colour maps","quaternionic-colour-maps.html")
     source2, formulas2=render(COURSE/"src/YM-02.md","Compact-support profiles, curvature and source","compact-support-profiles.html")
+    source3, formulas3=render(COURSE/"src/YM-03.md","Bundle descent and the higher carrier","bundle-descent-higher-carrier.html")
+    source4, formulas4=render(COURSE/"src/YM-04.md","Local smooth Cauchy evolution and finite propagation","local-cauchy-evolution.html")
+    from figures_f01 import build as build_f01_figure
+    build_f01_figure()
+    sourcef1, formulasf1=render(COURSE/"src/YM-F01.md","Fields, coordinates and physical quantities","fields-coordinates-quantities.html")
+    from figures_f02 import build as build_f02_figure
+    build_f02_figure()
+    sourcef2, formulasf2=render(COURSE/"src/YM-F02.md","Electromagnetism and gauge freedom","electromagnetism-gauge-freedom.html")
+    from figures_f03 import build as build_f03_figure
+    build_f03_figure()
+    sourcef3, formulasf3=render(COURSE/"src/YM-F03.md","Symmetry through matrices","symmetry-through-matrices.html")
+    from figures_f04 import build as build_f04_figure
+    build_f04_figure()
+    sourcef4, formulasf4=render(COURSE/"src/YM-F04.md","Lie groups and Lie algebras","lie-groups-and-lie-algebras.html")
     course=json.loads((COURSE/"course.json").read_text(encoding="utf-8"))
-    course.update(available_lessons=2,solved_exercises=12)
-    course["units"][1].update(status="available",reader="compact-support-profiles.html",
-        source="src/YM-02.md",source_sha256=digest((COURSE/"src/YM-02.md").read_bytes()),
-        reader_sha256=digest((COURSE/"compact-support-profiles.html").read_bytes()),
-        solution_count=7,internal_proof_dependencies=[{"lesson":"YM-01",
-        "source_sha256":course["units"][0]["source_sha256"],
-        "locators":"Sections 1–2: quaternion algebra, bracket and matrix metric; Theorem 6.1: full 24-dimensional quadratic map, fibres and derivative ranks.",
-        "reader":"quaternionic-colour-maps.html"}],
-        prerequisite_scope="YM-01; smooth functions, differentiation and integration by parts. The cutoff, all specialized field calculations, conservation, energy and correction identities are proved here.")
-    for number in (6,7):
-        course["units"][number]["status"]="planned"
-        course["units"][number]["research_provider"]="Finite mathematical results available in PERIOD_COUPLING_AND_PHYSICAL_KERNELS.md, PK1–PK54; teaching treatment forthcoming. No interacting continuum limit is asserted."
+    for unit in course["units"]:
+        if unit["status"]=="available":
+            unit["source_sha256"]=digest((COURSE/unit["source"]).read_bytes())
+            unit["reader_sha256"]=digest((COURSE/unit["reader"]).read_bytes())
+    curriculum=json.loads((COURSE/"curriculum.json").read_text(encoding="utf-8"))
+    curriculum["units"]=course["units"]
+    writej(COURSE/"curriculum.json",curriculum)
+    for unit in course["retained_materials"]:
+        unit["source_sha256"]=digest((COURSE/unit["source"]).read_bytes())
+        unit["reader_sha256"]=digest((COURSE/unit["reader"]).read_bytes())
     writej(COURSE/"course.json",course)
     proof="https://github.com/KokunoYumeto/yang-mills-interacting-workbench/blob/c1f29f3e6dfeb20e4be5254ea4fac7578255eacc/yang-mills/continuations/20260930-s6-ns-moment-map-bridge/"
     provenance=json.loads((COURSE/"provenance.json").read_text(encoding="utf-8"))
@@ -215,17 +318,51 @@ def build():
         ("HIGHER_CARRIER_AND_EVOLUTION.md","HC14–HC20: initial acceleration, Gauss-preserving correction and exact residual")]:
         provenance["readings"].append({"lesson":"YM-02","url":proof+file,"locators":loc})
     provenance["proof_scope"]="YM-01 and YM-02 give complete specialized proofs, with YM-01's exact algebra and rank results used by YM-02. The later classical evolution and quantum continuum programme are not conclusions of these two lessons."
+    provenance["edition_date"]="2026-10-09"
+    provenance["readings"]=[x for x in provenance["readings"] if x.get("lesson")!="YM-03"]
+    base="https://github.com/KokunoYumeto/yang-mills-interacting-workbench/blob/f2f7adf7ab7d08963333f2595237f91f20b53f66/yang-mills/continuations/20260930-s6-ns-moment-map-bridge/"
+    provenance["readings"].extend([
+      {"lesson":"YM-03","url":base+"HIGHER_CARRIER_AND_EVOLUTION.md","locators":"HC1–HC13; full bundle and connection receiving maps"},
+      {"lesson":"YM-03","url":base+"sources/higher_rung/s6_higher_rung_24d_preprint.tex",
+       "locators":"ret:main; att:thm:stabilizer and tangent comparison; rettri:bundleclass, rettri:subgroup and rettri:forgetting",
+       "scope":"Exact named programme providers; not a recertification of the complete compact-complex construction"},
+      {"lesson":"YM-03","url":base+"SOURCE_PROVENANCE.md","locators":"Distinct originating, retained-source and later-derivation authorship"}])
+    provenance["proof_scope"]="Three lessons: complete specialized quaternion and profile proofs; exact bundle and connection receiving proofs with the named earlier programme providers for the source homotopy class and ordered-frame Lie geometry. Later classical evolution and quantum continuum results are not conclusions of these lessons."
+    provenance["readings"]=[x for x in provenance["readings"] if x.get("lesson")!="YM-04"]
+    provenance["readings"].append({"lesson":"YM-04",
+        "url":"https://github.com/KokunoYumeto/yang-mills-interacting-workbench/blob/485b61423c1f4e1805deb453c1b6b342b27842b6/yang-mills/continuations/20260930-s6-ns-moment-map-bridge/COMPACT_SUPPORT_CAUCHY_EVOLUTION.md",
+        "locators":"CE4–CE17 and CE18–CE23: original Cauchy data, constraints, moving-boundary flux, core comparison and complete physical energy",
+        "scope":"Complete new local analytical proofs are in YM-04 §§2–4. The source's application of Sung-Jin Oh's global theorem is retained with separate attribution; its entire global analysis is not claimed as supplied by this lesson."})
+    provenance["proof_scope"]="Four complete standalone treatments are retained at their original mathematical scope. Their earlier delivery does not select them for the foundations-first curriculum. The eighteen-unit general sequence is a teaching plan; no continuum quantum conclusion is claimed."
+    provenance["curriculum_selection"]="Authorship-neutral selection; no workbench result is currently selected for the main curriculum."
+    provenance["proof_scope"]="YM-F01 supplies complete elementary field, chain-rule, transport and flux derivations from stated one-variable calculus preparation, plus eight solved exercises. Four earlier standalone treatments retain their original mathematical scope. The remaining seventeen core units are planned."
+    provenance["foundations_lessons"]=[{
+        "lesson":"YM-F01","source":"src/YM-F01.md","reader":"fields-coordinates-quantities.html",
+        "origin":"Independent elementary exposition; no original research result or novelty claim.",
+        "proof_locators":["Proposition 4.1","Theorem 6.1","Corollary 6.2","Proposition 7.1","(F1.40)","Exercises 1–8"],
+        "preparation":"Real arithmetic and one-variable calculus, including product rule, elementary functions, substitution and the fundamental theorem of calculus.",
+        "external_mathematical_source_used":False,
+        "figure":{"source":"build/figures_f01.py","image":"figures/f01-transport.svg","meaning":"Exact Gaussian coordinate slice and sampled characteristic paths, with parameters and units displayed."},
+        "licence":"CC0-1.0"}]
+    provenance["foundations_lessons"].append(json.loads((COURSE/"src/YM-F02-provenance.json").read_text(encoding="utf-8")))
+    provenance["proof_scope"]="Two complete foundations lessons: elementary fields and transport, then electromagnetic vector identities, continuity and constraints, potential equations, gauge invariance and its star-shaped converse, exact global-domain example, wave equations and energy balance. Sixteen core units remain planned. Four retained treatments keep their earlier scope."
+    provenance["foundations_lessons"].append(json.loads((COURSE/"src/YM-F03-provenance.json").read_text(encoding="utf-8")))
+    provenance["proof_scope"]="Three complete foundations lessons: fields and calculus; electromagnetism and gauge freedom; complex arithmetic, matrix symmetry, unitary actions, frame changes and the exact global phase action on electromagnetic potentials. Fifteen core units remain planned. Four retained treatments keep their earlier scope."
+    provenance["foundations_lessons"].append(json.loads((COURSE/"src/YM-F04-provenance.json").read_text(encoding="utf-8")))
+    provenance["proof_scope"]="Four complete foundations lessons: fields and calculus; electromagnetism and gauge freedom; matrix symmetry and global phase actions; Lie groups and their algebras, explicit local charts, concrete SU(2)/SU(3) generators, the rotation double covering, connectedness, invariant metrics and representations. Fourteen core units remain planned. Four retained treatments keep their earlier scope."
     writej(COURSE/"provenance.json",provenance)
-    items=""
+    render(COURSE/"src/CURRICULUM.md","Yang–Mills theory: a route from the foundations","curriculum.html")
+    stages=[]
     for unit in course["units"]:
-        label=html.escape(unit["title"])
-        if unit.get("reader"):label='<a href="'+unit["reader"]+'">'+label+"</a>"
-        else:label+=" — forthcoming"
-        items+="<li>"+label+"</li>"
-    intro="<p>Follow the exact maps from quaternionic colour coordinates to gauge profiles, classical evolution and physical-state constructions. The course retains the constants, metric comparisons, source terms and domain information needed to connect these subjects.</p><p>The first two lessons are available with twelve fully solved exercises. They establish the full quadratic colour map, compact-support fields, curvature, source, energy and initial correction. The remaining lessons are being developed. The continuum gapless-state construction remains an open research aim.</p><p><a href=\"preparation.html\">Preparation and proof routes</a> · <a href=\"src/YM-01.md\">Lesson 1 source</a> · <a href=\"src/YM-02.md\">Lesson 2 source</a> · <a href=\"provenance.json\">Sources and authorship</a></p><ol>"+items+"</ol>"
+        if unit["stage"] not in stages: stages.append(unit["stage"])
+    sequence="".join("<li><strong>"+html.escape(stage)+"</strong>: "+html.escape("; ".join(u["title"] for u in course["units"] if u["stage"]==stage))+".</li>" for stage in stages)
+    intro="<p>Begin with fields, electromagnetism and symmetry. Build the geometry and classical dynamics, then the quantum foundations needed to understand Yang–Mills theory and its literature.</p><p>The course has eighteen units, with mathematical preparation introduced in stages. The first four full lessons are available; fourteen units remain to be written. Sources are selected for their relevance, reliability and teaching value. No research project determines the course’s answer or receives a reserved place.</p><h2>Start reading</h2><p><a href=\"fields-coordinates-quantities.html\">1. Fields, coordinates and physical quantities</a> — scalar and vector fields, units, derivatives, coordinate changes, initial data, an exactly solved transport equation, and eight exercises with full solutions.</p><p><a href=\"electromagnetism-gauge-freedom.html\">2. Electromagnetism and gauge freedom</a> — fields and sources, Maxwell equations, potentials, local and global gauge questions, waves, energy flux, and eight exercises with full solutions.</p><p><a href=\"symmetry-through-matrices.html\">3. Symmetry through matrices</a> — complex phases, matrix arithmetic, unitary actions, changing frames, electromagnetic covariance, global gauge classes, and eight exercises with full solutions.</p><p><a href=\"lie-groups-and-lie-algebras.html\">4. Lie groups and Lie algebras</a> — convergent matrix series, local coordinates, tangent generators, SU(2) and SU(3), rotation coverings, invariant inner products, and eight exercises with full solutions.</p><h2>The route through the subject</h2><ol>"+sequence+"</ol><p><a href=\"curriculum.html\">Read the lesson plan and learning outcomes</a> · <a href=\"preparation.html\">Preparation</a> · <a href=\"literature-map.json\">Initial literature map</a></p><p>The foundations-first sequence is being written. <a href=\"retained-materials.html\">Four earlier standalone treatments</a> remain accessible; their inclusion in this sequence has not been decided.</p>"
     (COURSE/"index.html").write_text(short_page(course["title"],intro),encoding="utf-8",newline="\n")
-    prep="<p>Lesson 1 uses real-coordinate arithmetic, complex matrix multiplication and differentiation of polynomial expressions. It constructs quaternionic algebra and proves every group-action, fibre and rank statement it uses.</p><p>Lesson 2 uses these exact Lesson 1 results together with smooth multivariable calculus and integration by parts. It proves existence of the cutoff and every specialized curvature, source, conservation, energy and correction identity. Its seven solved exercises retain the full cutoff region and physical constants.</p><p>Later lessons require additional geometry, analysis and operator theory. Each will supply complete specialized proofs or use an exact earlier lesson with matching hypotheses. Planned teaching units are not available proof providers.</p><p><a href=\"quaternionic-colour-maps.html\">Lesson 1: Quaternionic colour maps</a> · <a href=\"compact-support-profiles.html\">Lesson 2: Compact-support profiles, curvature and source</a>.</p>"
-    (COURSE/"preparation.html").write_text(short_page("Preparation and proof routes",prep),encoding="utf-8",newline="\n")
+    prep="<p>Start with basic algebra, elementary calculus and matrix arithmetic. The first lessons review fields, coordinates, derivatives, physical quantities and electromagnetism. Matrix groups and their Lie algebras follow, before connections and bundles.</p><p>Geometry, Fourier and Sobolev analysis, Hilbert spaces and quantum mechanics enter through staged prerequisite components. Their exact provider statements and proofs must match the receiving lesson. No workbench construction is an entry prerequisite.</p><p>The <a href=\"curriculum.html\">full plan</a> gives learning outcomes and the subject sequence. The first four lessons are complete; the other fourteen units are planned. Begin with <a href=\"fields-coordinates-quantities.html\">fields, coordinates and physical quantities</a>. Lesson 3 supplies the matrix and complex-number preparation and reuses the complete RT-LIE commutator argument with exact attribution. Lesson 4 constructs the local matrix-group charts and Lie-algebra maps, with exact comparisons to Etingof and the compact-group course. DG-FND and later analysis and representation-theory providers will be matched as needed.</p><p>The <a href=\"retained-materials.html\">earlier standalone texts</a> keep their own dependencies and original lesson numbers. Those numbers record their editions, not the new course order.</p>"
+    (COURSE/"preparation.html").write_text(short_page("Preparation",prep),encoding="utf-8",newline="\n")
+    olditems="".join('<li><a href="'+u["reader"]+'">'+html.escape(u["id"]+": "+u["title"])+'</a></li>' for u in course["retained_materials"])
+    oldbody="<p>These four existing texts remain available with their complete proofs, exercises and source references. They are retained materials, not the selected starting sequence. Earlier next-lesson remarks describe their original development order.</p><p>Any future reuse is assessed by the same criteria as other literature. No text has a reserved place in the course. See the <a href=\"curriculum.html\">general lesson plan</a>.</p><ol>"+olditems+"</ol>"
+    (COURSE/"retained-materials.html").write_text(short_page("Retained standalone material",oldbody),encoding="utf-8",newline="\n")
     downloads=COURSE.parents[1]/"downloads"
     downloads.mkdir(exist_ok=True,parents=True)
     with zipfile.ZipFile(downloads/"yang-mills-geometry-and-states.zip","w",zipfile.ZIP_DEFLATED) as archive:
@@ -239,8 +376,8 @@ def build():
             info.compress_type=zipfile.ZIP_DEFLATED
             archive.writestr(info,data)
         info=zipfile.ZipInfo("README.txt",date_time=(2026,10,8,0,0,0))
-        archive.writestr(info,"Open docs/courses/YM-GAUGE/index.html in a current browser. Both native MathML readers work offline. Rebuild with Python, BeautifulSoup4 and Pandoc: python docs/courses/YM-GAUGE/build/build_course.py. All mathematical text, exercises, solutions, figures and original builder source: CC0 1.0.\n")
-    print(json.dumps({"lesson1_formulas":len(formulas1),"lesson2_formulas":len(formulas2),"available_lessons":2,"solved_exercises":12}))
+        archive.writestr(info,"Open docs/courses/YM-GAUGE/index.html in a current browser. The first four foundations lessons and four retained native MathML readers work offline. Rebuild with Python, BeautifulSoup4, NumPy, Matplotlib and Pandoc: python docs/courses/YM-GAUGE/build/build_course.py. All mathematical text, exercises, solutions, figures and original builder source: CC0 1.0.\n")
+    print(json.dumps({"lesson1_formulas":len(formulas1),"lesson2_formulas":len(formulas2),"lesson3_formulas":len(formulas3),"lesson4_formulas":len(formulas4),"foundations1_formulas":len(formulasf1),"foundations2_formulas":len(formulasf2),"foundations3_formulas":len(formulasf3),"foundations4_formulas":len(formulasf4),"available_core_lessons":4,"available_lessons":8,"solved_exercises":60}))
 
 if __name__=="__main__":
     build()

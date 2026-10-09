@@ -30,7 +30,7 @@ For an integrable bounded element \(h\), write
 \tag{49.2}
 \]
 
-The trace norm, its dual pairing, and the semifinite trace ideal are the declared trace prerequisites. Their statements and proofs are in Traces on von Neumann algebras and Integration for a trace, Section 1. Finite-trace projections exist below every nonzero projection. Bounded integrable elements form a two-sided ideal, the trace is cyclic on this ideal, and their functionals are normal. The \(2\)-norm is \(\|a\|_2=\operatorname{Tr}(a^*a)^{1/2}\).
+The trace norm, its dual pairing, and the semifinite trace ideal are the declared trace prerequisites. Their statements and proofs are in Sections 2 and 7 of [Traces on von Neumann algebras](../../OA-FOUND-REMAINDER/reader/supplements/traces-on-von-neumann-algebras-part-a-def-v-2-1-to-def-v-2-17.html) and [Integration for a trace, Theorem 1.1](../../traces-and-noncommutative-integration/integration-for-a-trace-the-commutation-theorem-and-applications.html). Finite-trace projections exist below every nonzero projection. Bounded integrable elements form a two-sided ideal, the trace is cyclic on this ideal, and their functionals are normal. The \(2\)-norm is \(\|a\|_2=\operatorname{Tr}(a^*a)^{1/2}\).
 
 **Definition 49.1.** An *\(E\)-compatible \(M\)-hypertrace* is a state \(\varphi\) on \(\mathcal B\) satisfying
 
@@ -110,7 +110,7 @@ Consequently the bounded density \(b_0=E(b)\in\mathcal A_+\) satisfies
 \tag{49.8}
 \]
 
-**Proof.** The Day argument for a single algebra is Lemma 2.6 of Uniqueness of the injective II₁ factor. We give the relative version, retaining the extra expectation coordinate.
+**Proof.** The Day argument for a single algebra is Lemma 2.6 of [Uniqueness of the injective II₁ factor](../../injective-factors/uniqueness-of-the-injective-ii1-factor.html). We give the relative version, retaining the extra expectation coordinate.
 
 Let \(C\) be the convex set of normal states \(\omega_b\), where \(b\) is bounded, positive and has trace one. This set is weak\(^*\) dense in all states of \(\mathcal B\). To see this directly, take \(T=T^*\in\mathcal B\) and \(\lambda<\max\sigma(T)\). Its nonzero spectral projection \(r=1_{(\lambda,\infty)}(T)\) contains a nonzero finite-trace projection \(q\). Then \(b=q/\operatorname{Tr}(q)\) belongs to \(C\) and
 

@@ -1,8 +1,10 @@
-# Three clocks for one Collatz orbit
+# Return maps and exact changes of clock
 
 *Written by GPT-6 Astra, Ultra reasoning, in Codex, October 2026. Self-checked by the writing AI. Original exposition, exercises and diagram: CC0 1.0.*
 
-Starting with a positive integer, the Collatz rule halves an even number and replaces an odd number by three times that number plus one. For example, starting with 3 gives
+When studying an iterated rule, we need not record every step. We can record successive visits to a chosen set, keeping the times between visits. This produces a **return map**. The central questions are what the shorter record preserves, how to recover the original clock, and what is lost if the waiting times are discarded.
+
+We will prove the general return-clock formula, then work it out completely for a map on positive integers. The Collatz rule halves an even number and replaces an odd number by three times that number plus one. Starting with 3 gives
 
 \[
 3\longrightarrow10\longrightarrow5\longrightarrow16
@@ -11,9 +13,52 @@ Starting with a positive integer, the Collatz rule halves an even number and rep
 
 There are good reasons to record fewer of these steps. One can combine an odd step with the division by two that necessarily follows it. One can also record only the odd numbers. These choices produce different maps and different notions of elapsed time. They do not change the least value attained along the orbit.
 
-The purpose here is to prove those assertions precisely. The main result gives formulas converting all three clocks, identifies exactly which times correspond, and reconstructs every omitted state. This is useful whenever an argument about odd returns is transferred to the original Collatz iteration: a statement about the number of returns cannot simply be read as a statement about the number of original steps.
+This example makes the general distinction visible: counting returns is not the same as counting individual steps. We will identify the corresponding times, reconstruct every omitted state, and determine why the least value survives this particular change of record. The last property depends on the values inside the omitted blocks; it is not automatic for return maps.
 
 We assume induction, arithmetic of positive integers and the well-ordering principle: every nonempty set of positive integers has a least member. The divisibility facts needed below are proved here. No probability or assumption that Collatz orbits reach 1 is needed. Tao's *Almost all orbits of the Collatz map attain almost bounded values*, §1.2, is a reference for the three maps and the orbit-minimum identity. Terras's *A stopping time problem on the positive integers* is an earlier reference for the shortened iteration. The arguments below give the clock conversion in full, independently of any density theorem.
+
+## Recording visits instead of steps
+
+Let \(X\) be a set, let \(F:X\to X\), and choose a subset \(A\subseteq X\). Define \(F^0(x)=x\) and \(F^{j+1}(x)=F(F^j(x))\). For \(a\in A\), its **first positive return time** is
+
+\[
+\tau(a)=\min\{r\geq1:F^r(a)\in A\},
+\]
+
+when that set is nonempty. Suppose for this section that it is nonempty for every \(a\in A\). The **induced map** is then the well-defined map
+
+\[
+R:A\longrightarrow A,\qquad R(a)=F^{\tau(a)}(a).
+\]
+
+Fix \(a\in A\) and set
+
+\[
+\Theta_0=0,\qquad
+\Theta_j=\sum_{i=0}^{j-1}\tau(R^i(a)).
+\]
+
+**Theorem A (Return-clock formula).** For every \(j\geq0\),
+
+\[
+F^{\Theta_j}(a)=R^j(a).
+\]
+
+The map \(j\mapsto\Theta_j\) is a strictly increasing bijection from the nonnegative integers onto the times \(t\) for which \(F^t(a)\in A\). Its inverse counts the earlier visits to \(A\). Every time \(t\geq0\) has a unique representation
+
+\[
+t=\Theta_j+r,\qquad 0\leq r<\tau(R^j(a)),
+\]
+
+and at that time \(F^t(a)=F^r(R^j(a))\).
+
+**Proof.** The formula at \(j=0\) is the identity. If it holds at \(j\), then applying \(F^{\tau(R^j(a))}\) proves it at \(j+1\). The definition of first return excludes visits strictly between these two times. All return times are positive integers, so \(\Theta_j\geq j\). Thus the listed times increase without bound, and their half-open intervening intervals partition the nonnegative integers. This proves the claimed description of every visit, the unique representation of \(t\), and the state formula. Exactly \(j\) earlier visits precede \(\Theta_j\), giving the inverse. ∎
+
+This reconstruction uses the original rule \(F\). The abstract data \(R\) and \(\tau\) alone do not specify the intermediate states of a different, otherwise unknown system. Likewise, the assumption that every point of \(A\) returns must be justified in an application. It is not an assumption that every trajectory eventually enters any smaller target set.
+
+For a first example, let \(X=\{0,1,2,3,4,5\}\) and let \(F\) add 1 modulo 6. Choose \(A=\{0,2,5\}\). The induced orbit is \(0\to2\to5\to0\), and the return times at those points are \(2,3,1\). Its accumulated times are \(0,2,5,6,8,11,\ldots\), not \(0,1,2,3,\ldots\). Theorem A recovers the six-step original cycle from the three-return cycle.
+
+Even a minimum can be lost by recording visits. For the cycle \(4\to1\to7\to4\), recording only \(A=\{4,7\}\) changes the least recorded value from 1 to 4. Below we will prove that the even blocks in the Collatz example have a special property that prevents this loss.
 
 ## Odd parts and powers of two
 
@@ -102,7 +147,7 @@ The first odd state after \(m\) is \(u\). It occurs after exactly \(q+1\) ordina
 
 **Proof.** The ordinary first step produces \(2^q u\). Until the exponent becomes zero the number is even, so the rule divides it by 2. This proves the first formula successively for every displayed \(r\). It also proves that the intermediate states are even and the final one is odd. The shortcut first step produces \(2^{q-1}u\); the same argument proves the second formula. If \(q=1\), the shortcut map reaches \(u\) immediately, so there are no intermediate even shortcut states. ∎
 
-This is an example of an **induced map**. Given a map on a set and a chosen subset, its induced map sends a point of that subset to its next visit to the subset, whenever that visit exists. Here the subset is \(\mathcal O\). Lemma 2 proves both existence and the precise first-return time, for every odd starting point. Consequently \(S\) is the induced map of either \(C\) or \(T\) on \(\mathcal O\), with different return times.
+Here the subset in Theorem A is \(\mathcal O\). Lemma 2 proves existence and gives the precise first-return time for every odd starting point: \(q+1\) for \(C\), and \(q\) for \(T\). Consequently \(S\) is the induced map of either rule on \(\mathcal O\). We have verified the return hypothesis directly, without making any assertion about reaching 1.
 
 ## Exact conversion between the clocks
 
@@ -274,9 +319,13 @@ give the odd states \(7,11,17,13\) and valuations \(1,1,2\). Hence \(Q_j\), for 
 
 ## What carries forward
 
+Theorem A applies to any discrete system with the stated return property. The Collatz calculation supplies explicit formulas for its return times and intervening states. Its preservation of minima comes from a further inequality: each omitted even state is at least the following odd state. Separating these two arguments tells us what can be reused in a different system and what needs to be checked afresh.
+
 There are two different coordinate choices here. The factorization \(N=2^a m\) separates the initial halving prefix from the odd start. The sequence \((q_j)\) then records the durations between odd visits. Together with the odd states, these data reconstruct every step. For questions about the least value ever attained, the durations can be discarded; for questions about time they cannot.
 
 A further distinction will matter when starting integers are chosen at random. The projection \(\pi\) has infinitely many points in each fibre. The orbit identities proved here therefore do not, by themselves, identify the distribution of projected starting points. To transfer statements about “most” starting integers, one must also calculate the weight carried by those fibres. This is the reason to develop sampling alongside dynamics rather than treating a change of clock as an automatic change of probability law.
+
+Continue with [Symbolic itineraries and affine composition](NT-COLLATZ-02.md) to describe whole blocks of an orbit algebraically. [Pushforward measures and logarithmic sampling](NT-COLLATZ-03.md) instead follows the question of how changing coordinates changes a distribution.
 
 ## References
 

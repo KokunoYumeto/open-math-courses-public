@@ -1,6 +1,6 @@
 # Measure and Hilbert space tools for Haar integration
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. GPT-6 Astra (OpenAI), Ultra, reconciled the measurable-limit conventions and one-variable boundary and parameter proofs in Sections 2 and 6. Self-checked; independent AI review remains separate. Original exposition is public domain (CC0).*
 
 Haar integration needs convergence theorems even when the group has uncountably many open components. It also needs a precise meaning for a tensor product of Hilbert spaces. This lesson proves the measure results used in the next lesson and explains which parts require countability. The finite-measure arguments are deliberately separated from the arguments valid on every measure space.
 
@@ -37,6 +37,8 @@ The measure of \([a,b]\) is \(b-a\). An enlarged interval gives the upper bound.
 
 Fix a measure space \((X,\Sigma,\mu)\). A measurable real function is one for which \(\{f>t\}\in\Sigma\) for every real \(t\). Countable suprema and infima are measurable: use \(\{\sup_n f_n>t\}=\bigcup_n\{f_n>t\}\), and negate for infima. Limits are measurable because \(\liminf f_n=\sup_N\inf_{n\geq N}f_n\). Complex functions are measurable when their real and imaginary parts are.
 
+Here “almost everywhere” means outside a measurable null set. All functions integrated below are measurable for the specified sigma-algebra. A limit specified only almost everywhere has a measurable representative: on a measurable null set outside which convergence holds, set both the sequence and its limit equal to zero; the modified limit is a pointwise limit of measurable functions. On an incomplete measure space an arbitrary modification on a subset of a null set need not be measurable. Thus an assertion about the integral of a specified limit requires that limit to be measurable, or means its measurable representative.
+
 For a nonnegative simple function \(s=\sum_{j=1}^r a_j1_{E_j}\), with disjoint measurable \(E_j\) and \(a_j\geq0\), define \(\int s=\sum_j a_j\mu(E_j)\), with \(0\cdot\infty=0\). Refining two partitions proves independence of the presentation, monotonicity, and additivity for simple functions. For measurable \(f\geq0\), define
 \[
 \int f=\sup\{\int s:0\leq s\leq f,\ s\text{ simple}\}.
@@ -45,7 +47,7 @@ There are increasing simple \(s_n\to f\): truncate \(f\) at \(n\) and round down
 
 Countable additivity implies continuity from below: if \(E_n\uparrow E\), write \(E\) as the disjoint union of \(E_1,E_2\setminus E_1,\ldots\). Then \(\mu(E_n)\uparrow\mu(E)\). If \(\mu(E_1)<\infty\) and \(E_n\downarrow E\), apply this to \(E_1\setminus E_n\) to obtain continuity from above.
 
-**Theorem 2.1 (Monotone convergence).** If \(0\leq f_n\uparrow f\) almost everywhere, then \(\int f_n\uparrow\int f\).
+**Theorem 2.1 (Monotone convergence).** For nonnegative extended-real measurable functions \(f_n,f\), if \(f_n\uparrow f\) almost everywhere, then \(\int f_n\uparrow\int f\). A limit specified only almost everywhere is interpreted through the measurable representative just described.
 
 *Proof.* Discard one measurable null set to obtain pointwise inequalities; changing values there changes none of the integrals. Monotonicity gives \(\lim\int f_n\leq\int f\). For simple \(s\leq f\) and \(0<t<1\), the sets \(A_n=\{f_n\geq ts\}\) increase and cover \(\{s>0\}\). Consequently continuity from below on the finitely many level sets of \(s\) gives \(\int s1_{A_n}\uparrow\int s\). Since \(f_n\geq ts1_{A_n}\), the limit of their integrals is at least \(t\int s\). Let \(t\uparrow1\) and then take the supremum over \(s\). The same argument works when \(\int s=\infty\). \(\square\)
 
@@ -60,13 +62,15 @@ These identities justify defining the integral of an integrable real function as
 \[
 \int\liminf_n f_n\leq\liminf_n\int f_n.
 \]
-If complex measurable \(u_n\to u\) almost everywhere and \(|u_n|\leq g\) almost everywhere for one integrable \(g\geq0\), then \(u\) is integrable and \(\int|u_n-u|\to0\). In particular \(\int u_n\to\int u\).
+If complex measurable \(u_n\) converge almost everywhere to a measurable \(u\), and \(|u_n|\leq g\) almost everywhere for one integrable \(g\geq0\), then \(u\) is integrable and \(\int|u_n-u|\to0\). In particular \(\int u_n\to\int u\). If \(u\) was specified only off a measurable null set, the conclusion applies to its measurable representative; no completeness assumption on \(\mu\) is needed.
 
-*Proof.* The functions \(v_N=\inf_{n\geq N}f_n\) increase to the liminf, and \(\int v_N\leq\inf_{n\geq N}\int f_n\). Monotone convergence proves Fatou. For the second assertion, \(|u|\leq g\) almost everywhere. Fatou applied to the nonnegative functions \(2g-|u_n-u|\), whose limit is \(2g\), gives
+*Proof.* The functions \(v_N=\inf_{n\geq N}f_n\) increase to the liminf, and \(\int v_N\leq\inf_{n\geq N}\int f_n\). Monotone convergence proves Fatou. For the second assertion, \(|u|\leq g\) almost everywhere, so measurability makes \(u\) integrable. Take the union of the measurable exceptional null sets for convergence, the countably many bounds, and \(\{g=\infty\}\). Set \(u_n,u,g\) to zero on that union. Their integrals do not change, all bounds now hold pointwise, and no infinite subtraction occurs. Fatou applied to the nonnegative functions \(2g-|u_n-u|\), whose limit is \(2g\), gives
 \[
 2\int g\leq2\int g-\limsup_n\int|u_n-u|.
 \]
 All integrals here are finite, so the limsup is zero. The integral inequality proved above gives the last assertion. \(\square\)
+
+**Example (Why the representative convention matters).** Let \(X=\{a,b,c\}\), \(\Sigma=\{\varnothing,\{a,b\},\{c\},X\}\), \(\mu(\{a,b\})=0\), and \(\mu(\{c\})=1\). The measurable functions \(u_n=0\) converge almost everywhere to \(1_{\{a\}}\), and are dominated by zero. But \(1_{\{a\}}\) is not \(\Sigma\)-measurable, since \(\{a\}\notin\Sigma\). Its measurable representative is zero. Theorem 2.2 concerns that representative, not an undefined integral of the nonmeasurable function.
 
 **Example.** On an uncountable set with counting measure, an integrable function has countable support: for each positive integer \(n\), only finitely many points can have \(|f|>1/n\). Nevertheless the whole space is not sigma-finite. Theorems 2.1 and 2.2 remain valid. A later interchange of integrals will need a separate theorem; convergence alone does not supply it.
 
@@ -179,13 +183,34 @@ If \(\phi\in C^1([a,b])\) and \(h\) is continuous on an interval containing its 
  =\int_a^b h(\phi(t))\phi'(t)\,dt.
  \tag{6.1}
 \]
-In particular, the integral of a compactly supported continuous derivative on the real line is zero. Differentiating a parameter integral is valid when its difference quotients converge pointwise and have a common integrable bound.
+If \(H\in C^1(\mathbb R)\) and \(H'\) has compact support, then \(H\) is constant on each sufficiently far tail, with values \(H_-\) and \(H_+\), and
+\[
+\int_{\mathbb R}H'(t)\,dt=H_+-H_-.
+\]
+In particular the integral is zero when these constants agree, including when \(H\in C_c^1(\mathbb R)\). Compact support of \(H'\) alone does not imply zero.
+
+For the parameter assertion, let \(F(t,\cdot)\) be measurable and integrable for \(t\) in an open real interval about \(t_0\). Suppose the difference quotients
+\[
+q_h(x)=\frac{F(t_0+h,x)-F(t_0,x)}h
+\]
+converge almost everywhere as \(h\to0\) to a measurable \(D(x)\), and \(|q_h(x)|\leq g(x)\) almost everywhere for every sufficiently small nonzero \(h\), for one integrable \(g\). Then
+\[
+\left.\frac d{dt}\int F(t,x)\,d\mu(x)\right|_{t=t_0}
+=\int D(x)\,d\mu(x).
+\]
+A limit specified only almost everywhere uses its measurable representative as in Theorem 2.2.
 
 *Proof.* Recall the elementary differential facts involved. A continuous function on a compact interval attains its extrema. If its endpoints agree, either it is constant or one extremum occurs in the interior, where its derivative is zero: the left and right difference quotients have opposite weak signs. This is Rolle's theorem. Subtract the line joining the endpoint values to obtain the mean value theorem. The chain rule follows by substituting \(\phi(t+h)-\phi(t)=\phi'(t)h+o(h)\) into the corresponding first-order expansion of the outer function; differentiability makes the inner increment \(O(h)\).
 
 Uniform continuity makes the difference between the upper and lower step functions on a sufficiently fine partition arbitrarily small in integral; both bound \(h\). Their Lebesgue integrals are the same interval-length sums that define the Riemann integral. For \(H\), the mean value theorem on each partition interval expresses its increment as \(H'(\xi)\) times the interval length. Summing telescopes to \(H(b)-H(a)\); uniform continuity of \(H'\) makes the sums converge to its integral.
 
-Define \(A(v)=\int_{v_0}^v h(u)\,du\), with oriented integrals. The difference quotient of \(A\) is an interval average of \(h\), tending to \(h(v)\) by continuity. Thus \((A\circ\phi)'=(h\circ\phi)\phi'\). Apply the preceding identity to \(A\circ\phi\) to obtain (6.1). The zero-integral assertion follows by choosing endpoints outside the support. Finally apply dominated convergence, Theorem 2.2, to the difference quotients to justify the parameter derivative. ∎
+Define \(A(v)=\int_{v_0}^v h(u)\,du\), with oriented integrals. The difference quotient of \(A\) is an interval average of \(h\), tending to \(h(v)\) by continuity. Thus \((A\circ\phi)'=(h\circ\phi)\phi'\). Apply the preceding identity to \(A\circ\phi\) to obtain (6.1). These real-calculus proofs, including endpoint conventions, are supplied in [Real analysis on closed intervals, Theorems 8](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-GS/prerequisites/curated/human/elementary-analysis/real-analysis-on-closed-intervals.html#differentiation-and-finite-change), [12 and 13](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-GS/prerequisites/curated/human/elementary-analysis/real-analysis-on-closed-intervals.html#the-two-directions-of-the-fundamental-theorem).
+
+If \(H'=0\) outside \([a,b]\), the mean value theorem makes \(H\) constant on each exterior ray. Continuity identifies those constants with \(H(a)\) and \(H(b)\). The integral outside \([a,b]\) vanishes, so the formula above gives \(H_+-H_-\). For compactly supported \(H\), choose endpoints outside the support of \(H\), not just the support of \(H'\); both endpoint values are then zero.
+
+For the parameter assertion fix any sequence of nonzero \(h_n\to0\). The quotients are measurable, their limit has the stated measurable representative, and their countably many exceptional sets can be combined. Dominated convergence gives \(\int q_{h_n}\to\int D\). Linearity identifies \(\int q_{h_n}\) with the difference quotient of \(\int F(t,x)\,d\mu(x)\). Since this holds for every such sequence, it gives the derivative: if a real-parameter limit failed, a fixed error would permit choices \(0<|h_n|<1/n\) witnessing failure. This proves the parameter formula. ∎
+
+**Example (A derivative with integral one).** Set \(H(t)=0\) for \(t\leq0\), \(H(t)=3t^2-2t^3\) for \(0\leq t\leq1\), and \(H(t)=1\) for \(t\geq1\). The polynomial values and first derivatives match at both endpoints, so \(H\in C^1(\mathbb R)\). Its derivative is \(6t-6t^2\) on \([0,1]\) and zero outside, hence is continuous and compactly supported. Nevertheless its integral is \(H_+-H_-=1\).
 
 ## 7. Exercises with complete solutions
 

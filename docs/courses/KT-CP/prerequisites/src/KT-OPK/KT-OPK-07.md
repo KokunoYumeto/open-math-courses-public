@@ -1,10 +1,10 @@
 # The index map and the exact sequence at \(K_0\)
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Proof-provider reconciliation by GPT-6 Astra (OpenAI), Ultra. Self-checked by the writing AI. Public domain (CC0).*
 
 An invertible matrix in a quotient can fail to lift to an invertible matrix upstairs. Its inverse nevertheless allows a doubled lift. Conjugating a fixed scalar idempotent by that lift produces a class in the ideal's \(K_0\). This class measures the obstruction to an invertible lift after identity stabilization.
 
-We use [Invertibles, unitaries and \(K_1\)](KT-OPK-06.md), the normal form and half-exactness in [Nonunital algebras: unitization, relative classes and half-exactness](KT-OPK-04.md), and the stable idempotent and path-conjugation results of [Idempotents, projections and their equivalences](KT-OPK-01.md). The Fredholm results are those of *Fredholm operators and the stable index*: Theorem 1.1, Corollary 1.2, Theorem 3.2 and Corollary 3.3. Their convention is cokernel minus kernel; the connecting map below has the opposite sign.
+We use [Invertibles, unitaries and \(K_1\)](KT-OPK-06.md), the normal form and half-exactness in [Nonunital algebras: unitization, relative classes and half-exactness](KT-OPK-04.md), and the stable idempotent and path-conjugation results of [Idempotents, projections and their equivalences](KT-OPK-01.md). The Fredholm results are those of *Fredholm operators and the stable index*: [Theorem 1.1 and Corollary 1.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-FOUND-REMAINDER/reader/fredholm-operators-and-stable-index.html#1-invertibility-modulo-compact-operators) and [Theorem 3.2 and Corollary 3.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-FOUND-REMAINDER/reader/fredholm-operators-and-stable-index.html#3-what-is-continuous-and-what-can-jump). Their convention is cokernel minus kernel; the connecting map below has the opposite sign. The functional calculus used for normalized polar lifts, including commutation with the quotient and augmentation maps, is [C*-algebras, Theorem 5.1 and Corollary 5.4](../exact/foundations-of-von-neumann-algebras/50F1FFA37C83/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.md#OA-FND-CF-07).
 
 Let \(A\) be a complex Banach algebra, \(J\) a closed two-sided ideal and \(B=A/J\), with quotient \(\pi\) and inclusion \(\iota\). The C*-case uses *-homomorphisms. We always use the external unitizations and the unital surjection
 
@@ -20,7 +20,7 @@ Thus \(J^+\) embeds in \(A^+\) by \(j+\lambda1\mapsto j+\lambda1\), even if \(J\
 
 **Lemma 1.1 (lifting an identity component).** Every normalized invertible in the identity component of \(GL_n(B^+)\) has a normalized invertible lift in the identity component of \(GL_n(A^+)\).
 
-*Proof.* First normalize a path from 1 to the given invertible by dividing out its scalar image, as in the preceding lesson, Proposition 1.2; this preserves its endpoints. The exponential-component prerequisite, Recall 1.1 of *Invertible components and exponential laws*, writes an identity-component invertible as a product of exponentials. We can take the exponents in \(M_n(B)\): subdivide the normalized path so that each consecutive ratio is sufficiently close to 1, and take its logarithm. Each logarithm has scalar part zero. Lift these finitely many exponents entrywise to \(M_n(A)\). The product of their exponentials lifts the given invertible, is normalized and is connected to 1 by multiplying the paths \(\exp(t a)\) one factor at a time. In the normed local setting the same small-ratio logarithms and exponentials belong to the matrix algebra by holomorphic functional calculus; their paths are norm continuous. \(\square\)
+*Proof.* First normalize a path from 1 to the given invertible by dividing out its scalar image, as in [Lesson 6, Proposition 1.2](KT-OPK-06.md#1-a-definition-that-keeps-the-scalar-part-fixed); this preserves its endpoints. [Banach algebras, Proposition 7.1(2), (5)](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#OA-FND-BN-14), recalled in Recall 1.1 of *Invertible components and exponential laws*, writes an identity-component invertible as a product of exponentials. We can take the exponents in \(M_n(B)\): subdivide the normalized path so that each consecutive ratio is sufficiently close to 1, and take its logarithm. Each logarithm has scalar part zero. Lift these finitely many exponents entrywise to \(M_n(A)\). The product of their exponentials lifts the given invertible, is normalized and is connected to 1 by multiplying the paths \(\exp(t a)\) one factor at a time. In the normed local setting the same small-ratio logarithms and exponentials belong to the matrix algebra by holomorphic functional calculus; their paths are norm continuous. \(\square\)
 
 This is an endpoint lifting statement. The individual quotient invertible outside the identity component need not lift.
 
@@ -93,9 +93,9 @@ The passage from a group equality to a conjugator requires stabilization. We iso
 
 **Lemma 3.1 (identity and zero padding).** Let \(D\) be a unital Banach algebra in the stated setting. If idempotents \(e,f\) have equal classes in \(K_0(D)\), then, after adding the same identity and zero blocks to each, they are joined by an idempotent path in one finite matrix algebra over \(D\). Consequently a conjugator in its invertible identity component carries one padded idempotent to the other.
 
-*Proof.* In a group completion, \([e]=[f]\) means that a finite stable idempotent class \([c]\) satisfies \([e]+[c]=[f]+[c]\) in the monoid. Add the complementary idempotent \(1-c\) on both sides. Since \(c\oplus(1-c)\) is algebraically equivalent to an identity block, we get \([e]+[1_l]=[f]+[1_l]\) for some finite \(l\). The complementary-summand identity follows either from the identity-denominator proof in the third lesson or directly from the maps \(x\mapsto(cx,(1-c)x)\) and \((y,z)\mapsto y+z\).
+*Proof.* In a group completion, \([e]=[f]\) means that a finite stable idempotent class \([c]\) satisfies \([e]+[c]=[f]+[c]\) in the monoid. Add the complementary idempotent \(1-c\) on both sides. Since \(c\oplus(1-c)\) is algebraically equivalent to an identity block, we get \([e]+[1_l]=[f]+[1_l]\) for some finite \(l\). The complementary-summand identity follows either from the [identity-denominator proof (Lesson 3, Theorem 3.2)](KT-OPK-03.md#3-differences-complements-and-equality) or directly from the maps \(x\mapsto(cx,(1-c)x)\) and \((y,z)\mapsto y+z\).
 
-Thus \(e\oplus1_l\) and \(f\oplus1_l\) are algebraically equivalent after finite zero padding. The first lesson, §3, turns this equivalence into an idempotent homotopy after further zero padding. Its Theorem 2.4 transports that path by an invertible path starting at 1. The final invertible is the asserted conjugator. No cancellation hypothesis on the monoid has been used. \(\square\)
+Thus \(e\oplus1_l\) and \(f\oplus1_l\) are algebraically equivalent after finite zero padding. [Lesson 1, Theorem 3.1,](KT-OPK-01.md#3-why-an-extra-block-removes-the-difference) turns this equivalence into an idempotent homotopy after further zero padding. [Its Theorem 2.4 transports](KT-OPK-01.md#2-changing-coordinates-and-following-a-deformation) that path by an invertible path starting at 1. The final invertible is the asserted conjugator. No cancellation hypothesis on the monoid has been used. \(\square\)
 
 **Lemma 3.2 (removing the scalar conjugator).** Suppose \(e,P\in M_m(J^+)\) are idempotents with the same scalar matrix \(P\), where \(P\) itself is a scalar idempotent. If \(xPx^{-1}=e\), then \(a=\epsilon_J(x)\) commutes with \(P\), and \(y=xa^{-1}\) has scalar part 1 and still satisfies \(yPy^{-1}=e\).
 
@@ -140,7 +140,7 @@ Let \(x\in GL_{r+s}(J^+)\) conjugate \(P\) to this padded \(e\). Lemma 3.2 repla
 
 *At \(K_0(J)\): the easy inclusion.* The two idempotents in (2.1) are conjugate over \(A^+\). Their difference is zero there. Since \(K_0(A)\) is a subgroup of \(K_0(A^+)\), this says \(\iota_*\partial=0\).
 
-*At \(K_0(J)\): a kernel difference is a boundary.* By the fourth lesson's normal form, represent a class by \([e]-[P]\), where \(e\in M_m(J^+)\), \(P=\operatorname{diag}(1_r,0_{m-r})\) and \(\epsilon_J(e)=P\). Suppose its image in \(K_0(A)\) is zero. Thus \([e]=[P]\) over \(A^+\). Lemma 3.1 gives common identity and zero padding and a conjugator \(w\) in the invertible identity component over \(A^+\), with
+*At \(K_0(J)\): a kernel difference is a boundary.* By [Lesson 4, Theorem 1.1 (normal form)](KT-OPK-04.md#1-recording-the-scalar-part), represent a class by \([e]-[P]\), where \(e\in M_m(J^+)\), \(P=\operatorname{diag}(1_r,0_{m-r})\) and \(\epsilon_J(e)=P\). Suppose its image in \(K_0(A)\) is zero. Thus \([e]=[P]\) over \(A^+\). Lemma 3.1 gives common identity and zero padding and a conjugator \(w\) in the invertible identity component over \(A^+\), with
 
 \[
 e=wPw^{-1}.
@@ -171,7 +171,7 @@ The correcting matrix is on the right and commutes with \(P\). Consequently \(zP
 
 So \(z\) is a doubled lift for \(c\), and (2.1) gives \([e]-[P]=\partial[c]\). This proves \(\ker\iota_*=\operatorname{im}\partial\).
 
-*At \(K_0(A)\).* This is exactly the half-exactness theorem of the fourth lesson, Theorem 3.1. Its proof uses finite idempotent equivalences, identity complements and the elementary doubled lift, so it applies to the stated normed local setting as well. The preceding arguments use only those same finite-matrix facts and the logarithmic lifting of Lemma 1.1. This completes exactness in all the stated cases. \(\square\)
+*At \(K_0(A)\).* This is exactly [Lesson 4, Theorem 3.1 (half-exactness)](KT-OPK-04.md#3-lifting-a-stabilized-invertible-and-proving-half-exactness). Its proof uses finite idempotent equivalences, identity complements and the elementary doubled lift, so it applies to the stated normed local setting as well. The preceding arguments use only those same finite-matrix facts and the logarithmic lifting of Lemma 1.1. This completes exactness in all the stated cases. \(\square\)
 
 **Corollary 4.2 (split extensions).** If \(\pi\) has a bounded homomorphic section \(s:B\to A\), then \(\partial=0\), and
 
@@ -181,7 +181,7 @@ So \(z\) is a doubled lift for \(c\), and (2.1) gives \([e]-[P]=\partial[c]\). T
 \tag{4.5}
 \]
 
-is split exact. The corresponding split \(K_0\)-sequence is the fourth lesson's Theorem 4.1.
+is split exact. The corresponding split \(K_0\)-sequence is [Lesson 4, Theorem 4.1](KT-OPK-04.md#4-a-splitting-makes-the-entire-short-sequence-exact).
 
 *Proof.* The unital extension \(s^+\) lifts every normalized invertible, so (2.1) gives \(\partial=0\); also \(\pi_*s_*=1\). To prove injectivity on the left, suppose a normalized matrix over \(J^+\) becomes nullhomotopic over \(A^+\), after stabilization. Let \(h(t)\) be a normalized path from that matrix to 1. Then
 
@@ -237,7 +237,7 @@ To simplify the resulting difference in \(K_0(J)\), note that \(p\) belongs to \
 
 as asserted. \(\square\)
 
-For a unital extension and an ordinary unitary \(u\in M_n(B)\) with ordinary partial-isometry lift \(v\in M_n(A)\), apply this calculation directly with the ordinary units. Equivalently, replace \(v\) in the external unitization by \(v+(1_{\mathrm{ext}}-1_A)1_n\). The resulting defect projections are the same ordinary \(1_A-v^*v\) and \(1_A-vv^*\) in \(J\), and the two unitization conventions agree by the fourth and sixth lessons.
+For a unital extension and an ordinary unitary \(u\in M_n(B)\) with ordinary partial-isometry lift \(v\in M_n(A)\), apply this calculation directly with the ordinary units. Equivalently, replace \(v\) in the external unitization by \(v+(1_{\mathrm{ext}}-1_A)1_n\). The resulting defect projections are the same ordinary \(1_A-v^*v\) and \(1_A-vv^*\) in \(J\), and the two unitization conventions agree by [Lesson 4, Theorem 2.1](KT-OPK-04.md#2-unital-consistency-and-finite-direct-sums) and [Lesson 6, Proposition 1.2](KT-OPK-06.md#1-a-definition-that-keeps-the-scalar-part-fixed).
 
 A partial-isometry lift is an additional hypothesis in this proposition. Definition 2.1 works without it, by the elementary invertible lift.
 
@@ -261,7 +261,7 @@ has connecting map
 
 under the rank normalization \(K_0(\mathcal K(H))\cong\mathbb Z\), for every Fredholm \(T\), and for finite matrices by acting on \(H^n\). Thus \(\partial=-\kappa_*\) in the notation of the preceding lesson.
 
-*Proof.* The Fredholm prerequisite gives closed range and finite-dimensional defects. In the polar decomposition \(T=v|T|\), the projections \(1-v^*v\) and \(1-vv^*\) are precisely the kernel and cokernel projections, so they are finite rank. In the quotient, \(\pi(v)\) is unitary and \(\pi(|T|)\) is positive invertible, by its Corollary 1.2. The positive logarithm joins \(\pi(|T|)\) to 1, so \([\pi(T)]=[\pi(v)]\). Proposition 5.1 applies to \(v\). The fourth lesson identifies a finite-rank projection's class with its rank, giving (6.1). The proof uses no separability assumption. Changing the Fredholm lift by a compact operator leaves the index unchanged by the prerequisite's Corollary 3.3, in agreement with the lift independence already proved for \(\partial\). \(\square\)
+*Proof.* [The Fredholm prerequisite, Theorem 1.1 and Corollary 1.2, gives closed range and finite-dimensional defects.](https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-FOUND-REMAINDER/reader/fredholm-operators-and-stable-index.html#1-invertibility-modulo-compact-operators) In the polar decomposition \(T=v|T|\), the projections \(1-v^*v\) and \(1-vv^*\) are precisely the kernel and cokernel projections, so they are finite rank. In the quotient, \(\pi(v)\) is unitary and \(\pi(|T|)\) is positive invertible, by its Corollary 1.2. The positive logarithm joins \(\pi(|T|)\) to 1, so \([\pi(T)]=[\pi(v)]\). Proposition 5.1 applies to \(v\). [Lesson 4, Example 5.2, identifies a finite-rank projection's class with its rank](KT-OPK-04.md#5-when-projections-inside-the-algebra-suffice), giving (6.1). The proof uses no separability assumption. Changing the Fredholm lift by a compact operator leaves the index unchanged by [the prerequisite's Corollary 3.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-FOUND-REMAINDER/reader/fredholm-operators-and-stable-index.html#3-what-is-continuous-and-what-can-jump), in agreement with the lift independence already proved for \(\partial\). \(\square\)
 
 On \(\ell^2(\mathbb N_0)\), let \(S\varepsilon_j=\varepsilon_{j+1}\). Then \(S^*S=1\) and \(SS^*=1-p_0\), where \(p_0\) is rank one. Therefore
 
@@ -270,7 +270,7 @@ On \(\ell^2(\mathbb N_0)\), let \(S\varepsilon_j=\varepsilon_{j+1}\). Then \(S^*
 \tag{6.2}
 \]
 
-The preceding lesson proves \(K_1(B(H))=0\) and \(K_1(Q(H))\cong\mathbb Z\). Thus the quotient map on \(K_1\) is not surjective. In fact (6.1) and the preceding lesson's Calkin computation make this connecting map an isomorphism, with the sign in (6.2).
+[Lesson 6, Theorems 5.1 and 5.4, prove](KT-OPK-06.md#5-components-detected-by-spectra-winding-and-index) \(K_1(B(H))=0\) and \(K_1(Q(H))\cong\mathbb Z\). Thus the quotient map on \(K_1\) is not surjective. In fact (6.1) and the preceding lesson's Calkin computation make this connecting map an isomorphism, with the sign in (6.2).
 
 For any C*-algebra \(D\), define its cone and suspension by
 
@@ -289,7 +289,7 @@ Evaluation at 1 gives the exact cone extension
 \tag{6.4}
 \]
 
-Surjectivity follows by lifting \(d\) to the continuous function \(t\mapsto td\); this is a linear lift, not a claimed homomorphic section. The cone contracts through homomorphisms \(f(t)\mapsto f(st)\), so its \(K_0\) and \(K_1\) vanish by homotopy invariance. Theorem 4.1 consequently makes the cone boundary an isomorphism
+Surjectivity follows by lifting \(d\) to the continuous function \(t\mapsto td\); this is a linear lift, not a claimed homomorphic section. The cone contracts through homomorphisms \(f(t)\mapsto f(st)\), so its \(K_0\) and \(K_1\) vanish by homotopy invariance ([Lesson 3, Theorem 4.2](KT-OPK-03.md#4-changing-the-algebra) and [Lesson 6, Section 3](KT-OPK-06.md#3-functoriality-and-finite-matrix-properties)). For the possibly nonunital cone, extend its homotopy to the external unitization by fixing scalars. The resulting unital maps form a point-norm continuous homotopy, so Lesson 3, Theorem 4.2, gives the same induced map at both endpoints. These maps preserve the augmentation kernel; restricting to it gives homotopy invariance of the nonunital group. The extension of the zero map factors through the scalar algebra and is zero on that kernel. Theorem 4.1 consequently makes the cone boundary an isomorphism
 
 \[
 K_1(D)\xrightarrow{\ \cong\ }K_0(SD).

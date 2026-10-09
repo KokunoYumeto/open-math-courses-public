@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "oa-flow-weight-recovery-modular-opposite-20261009-v1"
 
 d = Path(__file__).resolve().parent
 omega = np.log(4.0)
@@ -44,7 +45,7 @@ fig.text(.5,.11, r"$D=\mathrm{diag}(1,4),\quad h_{11}=h_{22}=1/2,\quad h_{12}=h_
 fig.text(.5,.048, r"$JU_t=U_tJ,\qquad \Delta_\rho=\Delta_\varphi^{-1},\qquad"
          r"\sigma_t^\rho(j(a))=j(\sigma_{-t}^\varphi(a))$", ha="center", fontsize=14)
 fig.savefig(d/"assets"/"modular-opposite-time.png", dpi=180, bbox_inches="tight")
-fig.savefig(d/"assets"/"modular-opposite-time.svg", bbox_inches="tight")
+fig.savefig(d/"assets"/"modular-opposite-time.svg", bbox_inches="tight", metadata={"Date": None})
 plt.close(fig)
 (d/"modular-opposite-figure-numerics.json").write_text(json.dumps({
     "omega":float(omega), "period":float(period), "radius":.2,

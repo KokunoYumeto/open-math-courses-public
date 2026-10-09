@@ -1,12 +1,12 @@
 # Toeplitz operators and the index theorem on the circle
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), at Ultra. Independently authored CC0 lesson. Mathematical revisions by GPT-6 Astra (OpenAI), at Ultra. Consumer proof-provider reconciliation by GPT-6 Astra (OpenAI), Ultra. Self-check only; independent review is separate.*
 
-Multiplication by a nonvanishing function on a circle is invertible. Compressing it to nonnegative Fourier modes can lose finitely many directions. The resulting defect counts how often the function winds around zero. We will construct the quotient that makes this statement precise, compute its connecting map, and then determine the K-theory of the Toeplitz algebra.
+Multiplication by a nonvanishing function on a circle is invertible. Compressing it to nonnegative Fourier modes can lose finitely many directions. The resulting defect counts how often the function winds around zero. For a general circle extension, the integer relating winding to index must also be determined; the two-shift example below shows why. We will construct the quotient that makes this statement precise, compute its connecting map, and then determine the K-theory of the Toeplitz algebra.
 
-We use [the index-map lesson](KT-OPK-07.md), Theorems 2.2, 4.1 and 6.1 and Corollary 4.2, and [the suspension lesson](KT-OPK-08.md). The compact ideal has \(K_0=\mathbb Z\), normalized by rank, by [the nonunital lesson](KT-OPK-04.md), Example 5.2; its \(K_1=0\) follows from [the invertibles lesson](KT-OPK-06.md), Corollary 4.2 and the scalar computation. That lesson's Theorem 5.2 identifies circle \(K_1\) by determinant winding. [The Grothendieck-group lesson](KT-OPK-03.md), Example 5.5, gives \(K_0(C(S^1))=\mathbb Z[1]\).
+We use [the index-map lesson](KT-OPK-07.md#4-exactness-at-the-four-interior-groups), [Theorem 2.2](KT-OPK-07.md#2-the-idempotent-associated-to-a-doubled-lift), [Theorem 4.1 and Corollary 4.2](KT-OPK-07.md#4-exactness-at-the-four-interior-groups) and [Theorem 6.1](KT-OPK-07.md#6-the-fredholm-sign-and-a-cone-extension), and [the suspension lesson](KT-OPK-08.md#3-higher-groups-and-the-long-sequence). The compact ideal has \(K_0=\mathbb Z\), normalized by rank, by [the nonunital lesson](KT-OPK-04.md#5-when-projections-inside-the-algebra-suffice), [Example 5.2](KT-OPK-04.md#5-when-projections-inside-the-algebra-suffice); its \(K_1=0\) follows from [the invertibles lesson](KT-OPK-06.md#5-components-detected-by-spectra-winding-and-index), [Corollary 4.2](KT-OPK-06.md#4-realizing-an-invertible-path-at-a-late-stage) and [Theorem 5.1 applied to the scalar von Neumann algebra](KT-OPK-06.md#5-components-detected-by-spectra-winding-and-index). [That lesson's Theorem 5.2](KT-OPK-06.md#winding-detects-the-circle-group) identifies circle \(K_1\) by determinant winding. [The Grothendieck-group lesson](KT-OPK-03.md#5-calculations-dimensions-absorption-and-bundles), [Example 5.5](KT-OPK-03.md#5-calculations-dimensions-absorption-and-bundles), gives \(K_0(C(S^1))=\mathbb Z[1]\).
 
-For Fredholm theory we import Theorem 1.1, Theorem 3.2 and Corollary 3.3 of *Fredholm operators and the stable index* in OA-FOUND-REMAINDER: the parametrix criterion, finite defects, local constancy and compact-perturbation invariance. That lesson uses \(\kappa=\dim\ker T^*-\dim\ker T\). Here, as in Lesson 07, we use the opposite convention
+For Fredholm theory we import [Theorem 1.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-FOUND-REMAINDER/reader/fredholm-operators-and-stable-index.html#1-invertibility-modulo-compact-operators) and [Theorem 3.2 and Corollary 3.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-FOUND-REMAINDER/reader/fredholm-operators-and-stable-index.html#3-what-is-continuous-and-what-can-jump) of *Fredholm operators and the stable index* in OA-FOUND-REMAINDER: the parametrix criterion, finite defects, local constancy and compact-perturbation invariance. That lesson uses \(\kappa=\dim\ker T^*-\dim\ker T\). Here, as in Lesson 07, we use the opposite convention
 
 \[
 \operatorname{Ind}(T)=\dim\ker T-\dim\ker T^*=-\kappa(T).
@@ -24,6 +24,31 @@ H^2=\overline{\operatorname{span}}\{e_j:j\geq0\},
 \qquad P:L^2(\mathbb T)\longrightarrow H^2.
 \tag{1.1}
 \]
+
+**Fourier completeness and uniqueness.** The Fejér-kernel calculation in [Banach algebras, Lemma 13.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#OA-FND-BN-21) gives
+
+\[
+F_N(z)=\frac1{N+1}\left|\sum_{j=0}^N z^j\right|^2,
+\qquad \sigma_N h=F_N*h.
+\]
+
+The kernels are nonnegative with integral one, and their integrals outside any fixed neighborhood of 1 tend to zero. Splitting the convolution integral between that neighborhood and its complement proves \(\sigma_Nh\to h\) uniformly for every continuous \(h\): use uniform continuity on the first part and the bound \(2\|h\|_\infty\) on the second. Each \(\sigma_Nh\) is a trigonometric polynomial by the finite expansion of \(F_N\). Continuous functions are dense in both \(L^1\) and \(L^2\) of this compact circle by [Haar measure, Proposition 3.1(4)](https://kokunoyumeto.github.io/open-math-courses-public/courses/harmonic-analysis-on-locally-compact-groups/reader/haar-measure-on-locally-compact-groups.html#OA-FND-HM-02). Thus trigonometric polynomials are dense in \(L^2\). Direct integration makes the \(e_j\) orthonormal. The finite orthogonal projections converge to the identity by this density; their Pythagorean identities then give Parseval's identity and convergence of the Fourier series in \(L^2\).
+
+The continuous convergence statement alone does not establish uniqueness for integrable functions. The convolution bound in [Haar measure, Theorem 14.2(2)](https://kokunoyumeto.github.io/open-math-courses-public/courses/harmonic-analysis-on-locally-compact-groups/reader/haar-measure-on-locally-compact-groups.html#OA-FND-HM-12) makes \(\sigma_N\) a contraction on \(L^1\). For \(u\in L^1\) and continuous \(h\),
+
+\[
+\|\sigma_Nu-u\|_1
+\leq 2\|u-h\|_1+\|\sigma_Nh-h\|_1.
+\]
+
+First choose \(h\) with small \(L^1\) error, then use uniform convergence for that fixed \(h\); this proves \(\sigma_Nu\to u\) in \(L^1\). Expanding the finite kernel and integrating each term gives
+
+\[
+\sigma_Nu(z)=\sum_{|j|\leq N}
+\left(1-\frac{|j|}{N+1}\right)\widehat u(j)z^j.
+\]
+
+If every Fourier coefficient of \(u\) is zero, each of these polynomials is zero and the \(L^1\) limit forces \(u=0\) almost everywhere. This is the uniqueness statement used in the proof of Coburn's lemma.
 
 For \(f\in L^\infty(\mathbb T)\), multiplication \(M_f\) is bounded. Its **Toeplitz compression** is
 
@@ -54,7 +79,7 @@ T_fT_g-T_{fg}=-PM_f(1-P)M_g|_{H^2}\in\mathcal K.
 \tag{2.1}
 \]
 
-*Proof.* Insert \(P+(1-P)=1\) between the two multiplication operators. If \(g=z^q\) with \(q\geq0\), the right side is zero. If \(q=-r<0\), the range of \((1-P)M_g|_{H^2}\) is contained in the span of \(e_{-r},\ldots,e_{-1}\). Thus the right side has finite rank for trigonometric-polynomial \(g\), for every bounded \(f\). Approximate continuous \(g\) uniformly by such polynomials. The error on the right has norm at most \(\|f\|_\infty\|g-g_m\|_\infty\), so its limit is compact. This also proves the asserted result when both functions are continuous. Entrywise summation proves the matrix version. \(\square\)
+*Proof.* Insert \(P+(1-P)=1\) between the two multiplication operators. If \(g=z^q\) with \(q\geq0\), the right side is zero. If \(q=-r<0\), the range of \((1-P)M_g|_{H^2}\) is contained in the span of \(e_{-r},\ldots,e_{-1}\). Thus the right side has finite rank for trigonometric-polynomial \(g\), for every bounded \(f\). Using the uniform Fejér approximation proved in Section 1, approximate continuous \(g\) uniformly by such polynomials. The error on the right has norm at most \(\|f\|_\infty\|g-g_m\|_\infty\), so its limit is compact. This also proves the asserted result when both functions are continuous. Entrywise summation proves the matrix version. \(\square\)
 
 The operators
 
@@ -120,9 +145,9 @@ The compression map \(f\mapsto T_f\) is a bounded linear section. It is not mult
 
 *Proof.* If \(F\) is pointwise invertible, compactness of the circle makes its inverse continuous. The matrix version of (2.1) gives a parametrix \(T_{F^{-1}}\). Thus \(T_F\) is Fredholm by the imported criterion.
 
-For the converse, (2.5) embeds \(M_n(C(\mathbb T))\) faithfully as a unital C*-subalgebra of the Calkin algebra on \(H^2\otimes\mathbb C^n\), through \(F\mapsto\pi(T_F)\). Faithfulness follows entrywise from Lemma 2.2. A unital C*-subalgebra is inverse closed: if \(b\) is invertible in the ambient algebra, \(b^*b\) has a positive spectral gap; continuous functional calculus, or uniform polynomial approximation to its reciprocal on that spectral interval, puts \((b^*b)^{-1}b^*\) in the subalgebra. Therefore an invertible \(\pi(T_F)\) forces \(F\) invertible. This is equivalent to the stated determinant condition.
+For the converse, (2.5) embeds \(M_n(C(\mathbb T))\) faithfully as a unital C*-subalgebra of the Calkin algebra on \(H^2\otimes\mathbb C^n\), through \(F\mapsto\pi(T_F)\). Faithfulness follows entrywise from Lemma 2.2. [A unital C*-subalgebra is inverse closed (C*-algebras, Theorem 3.2)](../exact/foundations-of-von-neumann-algebras/50F1FFA37C83/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.md#OA-FND-CF-06): if \(b\) is invertible in the ambient algebra, \(b^*b\) has a positive spectral gap; continuous functional calculus, or uniform polynomial approximation to its reciprocal on that spectral interval, puts \((b^*b)^{-1}b^*\) in the subalgebra. Therefore an invertible \(\pi(T_F)\) forces \(F\) invertible. This is equivalent to the stated determinant condition.
 
-Let \(\partial\) denote the connecting map of (2.5). The inclusion \(\mathcal T\subset B(H^2)\) and the symbol embedding into the Calkin algebra give a morphism from (2.5) to the Calkin extension, with the identity on the compact ideal. Naturality and Lesson 07, Theorem 6.1, yield
+Let \(\partial\) denote the connecting map of (2.5). The inclusion \(\mathcal T\subset B(H^2)\) and the symbol embedding into the Calkin algebra give a morphism from (2.5) to the Calkin extension, with the identity on the compact ideal. Naturality and [Lesson 07, Theorem 6.1](KT-OPK-07.md#6-the-fredholm-sign-and-a-cone-extension), yield
 
 \[
 \partial[F]=\operatorname{Ind}(T_F)
@@ -138,7 +163,7 @@ In particular the isometry \(S\) lifts \(z\), so the partial-isometry formula gi
 \tag{3.3}
 \]
 
-Lesson 06, Theorem 5.2, identifies \(K_1(C(\mathbb T))\) with \(\mathbb Z\) by \([F]\mapsto\operatorname{wind}(\det F)\), taking \([z]\) to 1. Since \(\partial\) is a homomorphism, (3.3) determines it as minus that identification. Equations (3.2)–(3.3) prove (3.1) for every continuous invertible matrix symbol, without a differentiability hypothesis. \(\square\)
+[Lesson 06, Theorem 5.2](KT-OPK-06.md#winding-detects-the-circle-group), identifies \(K_1(C(\mathbb T))\) with \(\mathbb Z\) by \([F]\mapsto\operatorname{wind}(\det F)\), taking \([z]\) to 1. Since \(\partial\) is a homomorphism, (3.3) determines it as minus that identification. Equations (3.2)–(3.3) prove (3.1) for every continuous invertible matrix symbol, without a differentiability hypothesis. \(\square\)
 
 Continuity alone does not imply Fredholmness. For example \(T_0=0\) on the infinite-dimensional space \(H^2\) is not Fredholm. The nonvanishing hypothesis omitted in [E, Corollary 2.5.2] is necessary; the preceding theorem supplies the corrected exact criterion.
 
@@ -193,7 +218,7 @@ Define the character \(\chi=\operatorname{ev}_1\circ\sigma\) and its kernel
 
 **Corollary 4.2.** For \(j=0,1\), \(K_j(\mathcal T_0)=0\). The character \(\chi_*\) is the inverse of the scalar inclusion on these two groups.
 
-*Proof.* The extension \(0\to\mathcal T_0\to\mathcal T\xrightarrow{\chi}\mathbb C\to0\) does split, by the scalar inclusion. Lesson 07, Corollary 4.2, gives
+*Proof.* The extension \(0\to\mathcal T_0\to\mathcal T\xrightarrow{\chi}\mathbb C\to0\) does split, by the scalar inclusion. [Lesson 4, Theorem 4.1](KT-OPK-04.md#4-a-splitting-makes-the-entire-short-sequence-exact) for the degree-zero group and [Lesson 7, Corollary 4.2](KT-OPK-07.md#4-exactness-at-the-four-interior-groups) for the degree-one group give
 
 \[
 K_j(\mathcal T)\cong K_j(\mathcal T_0)\oplus K_j(\mathbb C),
@@ -227,7 +252,7 @@ This sign will matter when the next lesson introduces coefficient algebras.
 
 Index zero counts equal defects; it does not generally say that both defects vanish. The scalar Toeplitz structure supplies an additional argument.
 
-We first give the analytic fact needed below, with its proof. A vector \(a\in H^2\) with Fourier coefficients \(a_n\) defines the holomorphic function \(A(w)=\sum_{n\geq0}a_nw^n\) on the disk. Cauchy–Schwarz gives convergence there, and Parseval gives \(A(r\,\cdot)\to a\) in \(L^2(\mathbb T)\) as \(r\uparrow1\).
+We first give the analytic fact needed below, with its proof. The power-series and isolated-zero results used here are [Cauchy’s theorem, Lemma 3.1 and Theorems 3.2 and 3.7](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html#OA-FND-CT-03). A vector \(a\in H^2\) with Fourier coefficients \(a_n\) defines the holomorphic function \(A(w)=\sum_{n\geq0}a_nw^n\) on the disk. Cauchy–Schwarz gives convergence there, and Parseval gives \(A(r\,\cdot)\to a\) in \(L^2(\mathbb T)\) as \(r\uparrow1\).
 
 **Lemma 5.1 (boundary uniqueness).** A nonzero vector of \(H^2\) is nonzero almost everywhere on \(\mathbb T\).
 
@@ -245,9 +270,9 @@ give
 \tag{5.1}
 \]
 
-The identity for a linear factor follows by expanding \(\log(1-(a_j/r)e^{-i\theta})\): all nonconstant Fourier terms have mean zero. There is no zero at 0. The zero-free remaining factor admits a holomorphic logarithm on the disk, which justifies the harmonic mean identity.
+The identity for a linear factor follows by expanding \(\log(1-(a_j/r)e^{-i\theta})\): all nonconstant Fourier terms have mean zero. There is no zero at 0. The zero-free remaining factor admits a holomorphic logarithm on the disk, which justifies the harmonic mean identity. Here is the logarithm argument explicitly. The remaining factor, say \(H\), is zero-free on a slightly larger disk: isolated zeros and compactness give such a disk after the finitely many interior zeros are removed. By [Cauchy’s theorem, Theorem 2.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html#OA-FND-CT-02), \(H'/H\) has a holomorphic primitive \(L\) there. Differentiation gives \((e^{-L}H)'=0\); adjusting the constant in \(L\) therefore gives \(H=e^L\). The Cauchy mean formula for \(L\), followed by real parts, gives the asserted mean of \(\log|H|\).
 
-Write \(\log^+x=\max(\log x,0)\) and \(\log^-x=\max(-\log x,0)\). Since \(\log^+x\leq x^2\), the means of \(\log^+|G(r\,\cdot)|\) are bounded by its squared Hardy norm. Equation (5.1) gives a uniform bound for the means of \(\log^-|G(r\,\cdot)|\) as well. Choose radii tending to 1, avoiding the countably many radii of zeros, along which the \(L^2\) radial convergence has an almost-everywhere convergent subsequence. If the boundary vector vanished on a set of positive measure, the nonnegative functions \(\log^-|G(r\,\cdot)|\) would tend to infinity there. Fatou's lemma contradicts their uniform integral bound. Multiplication by \(z^k\) does not change the boundary zero set. \(\square\)
+Write \(\log^+x=\max(\log x,0)\) and \(\log^-x=\max(-\log x,0)\). Since \(\log^+x\leq x^2\), the means of \(\log^+|G(r\,\cdot)|\) are bounded by its squared Hardy norm. Equation (5.1) gives a uniform bound for the means of \(\log^-|G(r\,\cdot)|\) as well. Choose radii tending to 1, avoiding the countably many radii of zeros, along which the \(L^2\) radial convergence has an almost-everywhere convergent subsequence. The summable-subsequence argument in [Measure and Hilbert space tools, Theorem 3.2](../exact/harmonic-analysis-on-locally-compact-groups/A6D03E284155/measure-and-hilbert-space-tools.md#3-the-complete-spaces-of-integrable-functions) applies on this finite-measure circle: choose a subsequence whose errors relative to the boundary limit have summable \(L^2\) norms; their \(L^1\) norms are also summable by Cauchy–Schwarz, so their absolute sum is finite almost everywhere. If the boundary vector vanished on a set of positive measure, the nonnegative functions \(\log^-|G(r\,\cdot)|\) would tend to infinity there. [Fatou's lemma](../exact/harmonic-analysis-on-locally-compact-groups/A6D03E284155/measure-and-hilbert-space-tools.md#2-integration-and-convergence-without-countability-assumptions) contradicts their uniform integral bound. Multiplication by \(z^k\) does not change the boundary zero set. \(\square\)
 
 **Theorem 5.2 (Coburn's lemma).** If \(f\in L^\infty(\mathbb T)\) is not zero almost everywhere, at least one of \(T_f,T_f^*\) is injective. In particular this holds for every nonzero continuous scalar symbol. For the classical attribution and a broader Banach-space version, see [Karlovich, Theorem 1.1 and its historical discussion](https://arxiv.org/pdf/1708.01475).
 
@@ -266,13 +291,13 @@ z\,ad=\overline z\,\overline{cb}.
 \tag{5.3}
 \]
 
-Products of two \(H^2\) boundary vectors belong to \(L^1\) by Cauchy–Schwarz, and have only nonnegative Fourier coefficients. Indeed their analytic polynomial approximations converge in \(L^2\), hence their products converge in \(L^1\). The left side of (5.3) has only strictly positive frequencies; the right side has only strictly negative frequencies. Therefore all Fourier coefficients of their common \(L^1\) function vanish, so it is zero. The Fourier uniqueness used here follows, for example, by convolution with the Fejér kernels, which approximates every \(L^1\) function in \(L^1\).
+Products of two \(H^2\) boundary vectors belong to \(L^1\) by Cauchy–Schwarz, and have only nonnegative Fourier coefficients. Indeed their analytic polynomial approximations converge in \(L^2\), hence their products converge in \(L^1\). The left side of (5.3) has only strictly positive frequencies; the right side has only strictly negative frequencies. Therefore all Fourier coefficients of their common \(L^1\) function vanish, so it is zero. The Fourier uniqueness used here was proved in Section 1 by convolution with the Fejér kernels, which approximates every \(L^1\) function in \(L^1\).
 
-Let \(D\) be the holomorphic function associated to \(d\), as \(A\) is associated to \(a\). The analytic product \(AD\) has the coefficients of the zero boundary product \(ad\), so is identically zero. Since \(A\) is not identically zero, the identity theorem makes \(D=0\), so \(d=0\). The second equality in (5.2) is then \(\overline f\,b=0\). Lemma 5.1 says \(b\neq0\) almost everywhere, forcing \(f=0\) almost everywhere, a contradiction. \(\square\)
+Let \(D\) be the holomorphic function associated to \(d\), as \(A\) is associated to \(a\). The analytic product \(AD\) has the coefficients of the zero boundary product \(ad\), so is identically zero. Since \(A\) is not identically zero, [the identity theorem makes](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html#OA-FND-CT-03) \(D=0\), so \(d=0\). The second equality in (5.2) is then \(\overline f\,b=0\). Lemma 5.1 says \(b\neq0\) almost everywhere, forcing \(f=0\) almost everywhere, a contradiction. \(\square\)
 
 **Corollary 5.3.** If \(f\in C(\mathbb T)\) is nowhere zero and has winding zero, \(T_f\) is invertible.
 
-*Proof.* Theorem 3.1 gives closed range and equal finite dimensions of \(\ker T_f\) and \(\ker T_f^*\). Theorem 5.2 makes one of these spaces zero, hence both zero. The range is closed and has orthogonal complement \(\ker T_f^*=0\), so it is all of \(H^2\). The bounded inverse theorem completes the proof. \(\square\)
+*Proof.* Theorem 3.1 gives closed range and equal finite dimensions of \(\ker T_f\) and \(\ker T_f^*\). Theorem 5.2 makes one of these spaces zero, hence both zero. The range is closed and has orthogonal complement \(\ker T_f^*=0\), so it is all of \(H^2\). [The bounded inverse theorem](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-05) completes the proof. \(\square\)
 
 The scalar hypothesis matters. The matrix symbol \(F=\operatorname{diag}(z,z^{-1})\) is invertible with determinant 1, but \(T_F=\operatorname{diag}(S,S^*)\) has a one-dimensional kernel and cokernel. Its index is zero and it is not invertible. Thus Theorem 3.1 extends to matrices, while Corollary 5.3 does not extend merely by replacing winding with determinant winding.
 
@@ -283,6 +308,59 @@ On \(L^2(\mathbb R/2\pi\mathbb Z)\), let \(D_0=-i\,d/dx\). Its Fourier eigenvalu
 This agrees with *The local index formula*, NCG-LOCAL-INDEX, §§1–2, which uses \(D_\eta\), and with its Exercise 24: \(\operatorname{diag}(e^{2ix},e^{-5ix},1)\) has index 3. Its residue formula is not needed here.
 
 If one instead uses \(\mathbf1_{(0,\infty)}(D_0)\), the constant Fourier mode is removed. On \(H^2=\mathbb C e_0\oplus\overline{\operatorname{span}}\{e_j:j\geq1\}\), the two off-diagonal blocks of a bounded compression have finite rank. The remaining scalar block acts on a one-dimensional space and has index zero. Compact-perturbation invariance therefore gives the same index for the strictly positive compression. In particular \(e^{ix}\) misses its first positive mode and still has index \(-1\). Compressing to nonpositive rather than nonnegative frequencies changes the shift to a backward shift and reverses the winding sign.
+
+### The integer attached to a circle extension
+
+The Toeplitz extension has boundary coefficient \(-1\). A different algebra with the same circle quotient need not have that coefficient. This is the point at which an abstract index formula must retain information about its extension.
+
+**Proposition 6.1 (the extension coefficient).** Let \(H\) be an infinite-dimensional Hilbert space and let \(\mathcal E\subset B(H)\) be a unital C*-algebra containing \(\mathcal K(H)\), with a specified quotient isomorphism
+\(q:\mathcal E/\mathcal K(H)\cong C(S^1)\). There is a unique integer \(k\) such that every Fredholm \(T\in M_n(\mathcal E)\), with invertible symbol \(F=q_n(T)\), satisfies
+
+\[
+\operatorname{Ind}(T)=k\,\operatorname{Wind}(\det F).
+\tag{6.1}
+\]
+
+Here \(k\) is the index of any lift of the positive scalar coordinate \(z\).
+
+*Proof.* The coordinate class generates \(K_1(C(S^1))=\mathbb Z\), with a matrix class sent to its determinant winding by [Lesson 6, Theorem 5.2](KT-OPK-06.md#winding-detects-the-circle-group). The boundary homomorphism has target \(K_0(\mathcal K(H))=\mathbb Z\), normalized by rank, so it is multiplication by one unique integer \(k\). [Lesson 7, Theorem 6.1](KT-OPK-07.md#6-the-fredholm-sign-and-a-cone-extension), identifies that boundary with the Fredholm index of a lift, including our kernel-minus-cokernel sign. A lift of \(z\) exists by surjectivity and is Fredholm because its Calkin image is invertible. This proves its index is \(k\), independently of the lift. Applying the boundary to \([F]\) proves (6.1) for every matrix size. \(\square\)
+
+For a partial-isometry lift \(W\), put \(D_+=1-W^*W\) and \(D_-=1-WW^*\). The same formula is
+
+\[
+\begin{gathered}
+\operatorname{Tr}(D_+)-\operatorname{Tr}(D_-)\\
+=k\,\operatorname{Wind}(q(W)).
+\end{gathered}
+\tag{6.2}
+\]
+
+Its defect projections are compact and therefore finite rank. The multiplier belongs on the index side of the map from winding to index. A circle quotient alone does not permit reversal of (6.1) using an integer multiplier.
+
+**Example 6.2 (two shifts).** On \(H^2\oplus H^2\), put \(W=S\oplus S\) and
+\(\mathcal E=C^*(1,W,\mathcal K(H^2\oplus H^2))\). The Calkin image of \(W\) is unitary and has full circle spectrum. Indeed, for \(|\lambda|=1\), the unit Fourier blocks constructed below, placed in one summand and converging weakly to zero, are approximate eigenvectors for \(W\). Every compact operator sends these unit vectors to zero in norm. If \(W-\lambda\) had a Calkin inverse, a bounded lift of that inverse would force these approximate eigenvectors to have norm tending to zero, a contradiction. [Continuous functional calculus (C*-algebras, Theorem 5.1)](../exact/foundations-of-von-neumann-algebras/50F1FFA37C83/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.md#OA-FND-CF-07) for that unitary therefore identifies the quotient with \(C(S^1)\), sending \(q(W)\) to \(z\).
+
+For completeness, fix \(|\lambda|=1\) and, for each positive integer \(N\), set
+
+\[
+v_N=\frac1{\sqrt N}\sum_{j=N}^{2N-1}\lambda^{-(j-N)}e_j,
+\qquad w_N=(v_N,0).
+\]
+
+Orthogonality gives \(\|v_N\|=\|w_N\|=1\). For every \(h\in H^2\), Cauchy–Schwarz bounds \(|\langle v_N,h\rangle|\) by the norm of the Fourier tail of \(h\) starting at \(N\), which tends to zero. Hence \(w_N\) converges weakly to zero. All interior coefficients cancel in the difference:
+
+\[
+(S-\lambda)v_N=\frac{-\lambda e_N+\lambda^{-(N-1)}e_{2N}}{\sqrt N},
+\qquad \|(S-\lambda)v_N\|=\sqrt{2/N}.
+\]
+
+Finite-rank operators send this weakly null sequence to zero in norm; norm approximation by finite-rank operators proves the same for every compact operator. If the Calkin class of \(W-\lambda\) were invertible, a bounded representative \(R\) of its inverse would satisfy \(R(W-\lambda)=I+K\) for some compact \(K\). Applied to \(w_N\), the left side tends to zero and \(Kw_N\to0\), contradicting \(\|w_N\|=1\). The same vectors in the first summand work for \(S\oplus S^*\). Both Calkin images are unitary because their two defects have finite rank; their spectra lie on the unit circle and, by this argument, contain every point of it.
+
+But \(W\) is an isometry with a two-dimensional cokernel. Thus \(k=-2\), while \(\operatorname{Wind}(q(W))=1\). An equality \(\operatorname{Wind}(q(W))=n\operatorname{Ind}(W)\) would require \(1=-2n\), impossible for integer \(n\). The analogous algebra generated by \(S\oplus S^*\) and the compact operators has \(k=0\) and still has full circle quotient; its coordinate symbol has winding one and index zero. Both quotient-spectrum arguments are the same approximate-eigenvector argument.
+
+This also specifies the calibration needed in a topological form of Levinson's theorem. If an isometric wave operator lies in such an algebra and its cokernel is an \(N\)-dimensional bound-state space, then (6.1) gives \(-N=k\operatorname{Wind}(q(W))\). Identifying that wave operator, proving its membership and identifying its cokernel are separate analytic hypotheses. For a calibrated extension with \(k=-1\), the conclusion is \(\operatorname{Wind}(q(W))=N\).
+
+[Richard, Theorem 10.3.3] motivates this abstract comparison but places an integer multiplier in the reverse direction without an extension-index hypothesis. Example 6.2 shows why that reversal cannot hold for every circle extension. The correctly directed formula (6.1) retains full generality.
 
 ## 7. Exercises with complete solutions
 
@@ -318,3 +396,5 @@ Their difference is \(-k\), including at zero.
 - [E] Heath Emerson, *An Introduction to C*-Algebras and Noncommutative Geometry*, Birkhäuser, 2024, §§2.2 and 2.4–2.6. The continuous-symbol Fredholm statement in Corollary 2.5.2, p. 95, requires nonvanishing. Our proof includes continuous matrix symbols; §2.6's smooth trace formula is comparison material, not a prerequisite for (3.1).
 - [B] Bruce Blackadar, *K-Theory for Operator Algebras*, second edition, Cambridge University Press, 1998, §9.4.2(a)–(e), for the Toeplitz algebra and evaluation kernel. The coefficient-algebra homotopy and Bott argument in §9.4.2(f)–(g) belong to the next lesson. [Author's corrected second edition](https://www.bruceblackadar.com/Mathematics/book6.pdf).
 - [SS] Hermann Schulz-Baldes and Tom Stoiber, *Harmonic Analysis in Operator Algebras and its Applications to Index Theory and Topological Solid State Systems*, Springer, 2022, chapter *Duality for Toeplitz extensions*, §§*The smooth Toeplitz extension* and *Connecting maps of the smooth Toeplitz extension*. [Preprint](https://arxiv.org/abs/2206.07781). These treat general dynamical extensions and distinguish smooth, discrete and Wiener–Hopf maps. Their partial-isometry index is kernel minus cokernel, agreeing with (3.3). Their Connes–Thom, Takai and periodicity results are not used to prove the classical circle theorem here.
+
+- **[Richard]** S. Richard, *K-theory for C*-algebras, and beyond*, Spring Semester 2015, §10.3, especially Proposition 10.3.1 and Theorem 10.3.3, printed pp. 106–108. [Freely available lecture notes](https://www.math.nagoya-u.ac.jp/~richard/teaching/s2015/Kth.pdf#page=106). The extension multiplier is corrected and calibrated explicitly in Proposition 6.1 and Example 6.2 above.
