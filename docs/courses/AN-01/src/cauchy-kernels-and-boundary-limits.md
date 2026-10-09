@@ -4,7 +4,7 @@
 
 A small circle around a pole records a point source. A horizontal line approaching the real axis records a boundary distribution. We compute both effects, keeping the orientation, the factor of pi and the number of test derivatives explicit. Between these calculations we prove that a weak harmonic distribution is a smooth function, and use that result to connect weak Cauchy–Riemann equations with ordinary complex differentiability.
 
-The [boundary-flux lesson](boundary-flux-and-weak-identities.md) supplies its proved graph surface measure, divergence theorem, smooth cutoffs and pointwise-to-weak first-order theorem. The [included scalar calculus](../prerequisites/U011-free-foundations/metric-foundation-bridges.md), [finite algebra](../prerequisites/U011-free-foundations/stable-prerequisite-bridges.md) and [integration proofs](../prerequisites/U011-free-foundations/banach-foundation-bridges.md) supply the elementary calculus and measure results used below. More precise locations follow the solutions.
+The boundary-flux lesson supplies its proved graph surface measure, divergence theorem, smooth cutoffs and pointwise-to-weak first-order theorem. The [included scalar calculus](../prerequisites/U011-free-foundations/metric-foundation-bridges.md), [finite algebra](../prerequisites/U011-free-foundations/stable-prerequisite-bridges.md) and [integration proofs](../prerequisites/U011-free-foundations/banach-foundation-bridges.md) supply the elementary calculus and measure results used below. More precise locations follow the solutions.
 
 ## Test functions and local smoothing
 
@@ -561,7 +561,7 @@ In dimension one, the harmonic distribution lemma makes \(u\) a smooth function 
 
 The internal proof dependencies are the following included programme texts:
 
-- [Boundary flux and weak identities](boundary-flux-and-weak-identities.md): the graph lemma and cutoff construction in Section 1; Theorem 2.1 and Corollary 2.3 for surface measure, divergence and complex Green; Theorem 4.1 for the pointwise-to-weak equation. Its finite-corner Corollary 2.4 also covers half-disks when such contours are used in later lessons.
+- Boundary flux and weak identities: the graph lemma and cutoff construction in Section 1; Theorem 2.1 and Corollary 2.3 for surface measure, divergence and complex Green; Theorem 4.1 for the pointwise-to-weak equation. Its finite-corner Corollary 2.4 also covers half-disks when such contours are used in later lessons.
 - [Scalar calculus and Euclidean topology](../prerequisites/U011-free-foundations/metric-foundation-bridges.md#13-1-limits-with-all-original-scalar-and-coordinate-factors): Sections 12.1–12.9 and 13.1–13.5 supply the field, compactness, mean value theorem, derivatives and integrals; Sections 13.7–13.10 supply termwise differentiation, trigonometric functions, arctangent and smooth cutoffs.
 - [Complex scalars and finite algebra](../prerequisites/U011-free-foundations/stable-prerequisite-bridges.md#10-full-finite-linear-algebra-foundations): Sections 10.1–10.6 prove the scalar, finite-coordinate and norm identities used in those calculus proofs.
 - [Lebesgue integration and smoothing](../prerequisites/U011-free-foundations/banach-foundation-bridges.md#15-0-constructing-the-measure-without-importing-a-convergence-theorem): Sections 15.0–15.4 and 16.1–16.2 prove measure construction, convergence, Fubini, affine changes and measure uniqueness; Section 15.6 through (PC5) proves the disk-area identity. The distributional smoothing and harmonic regularity required here are proved explicitly above.

@@ -4,7 +4,7 @@ An elliptic boundary problem of order \(m>1\) can be reduced to a first-order pr
 
 This lesson proves that construction with the original bundles, Sobolev exponents, coefficient order, and factor order visible throughout. The normal order of a boundary operator is always distinguished from its total order. Lower-order discrepancies are recorded as compact maps, and the first-order interior operator keeps its target bundle \(F\) even though \(F\) is identified with \(E\) in a collar.
 
-The named prerequisites are [Stable modes and the algebra of boundary data](stable-boundary-models.md), [Composition in the mixed symbol calculus](mixed-symbol-composition.md), [Fredholm boundary problems with first-order Calderón defects](generalized-collar-fredholm.md), [Finite defects under perturbation](fredholm-stability.md), [Reducing first-order boundary data to a split trace](stable-reduction-boundary-data.md), and [Doubling a boundary problem and computing its index](split-doubling-boundary-index.md). We use \(D_t=-i\partial_t\), an inward collar coordinate \(t\geq0\), and complex bundles. Every displayed product acts from right to left.
+The named prerequisites are [Stable modes and the algebra of boundary data](stable-boundary-models.md), [Composition in the mixed symbol calculus](mixed-symbol-composition.md), [Fredholm boundary problems with first-order Calderón defects](generalized-collar-fredholm.md), Finite defects under perturbation, [Reducing first-order boundary data to a split trace](stable-reduction-boundary-data.md), and [Doubling a boundary problem and computing its index](split-doubling-boundary-index.md). We use \(D_t=-i\partial_t\), an inward collar coordinate \(t\geq0\), and complex bundles. Every displayed product acts from right to left.
 
 ## 1. The arbitrary-order problem and the reduction theorem
 
@@ -807,7 +807,7 @@ with the homotopy equalities supplied by (AR31), (AR33)–(AR40), and (AR51)–(
 
 ## 14. Reading notes and references
 
-The finite-dimensional Cayley identities, their noncommutative leading-matrix factorization, and the explicit stable lift are proved in [Stable modes and the algebra of boundary data](stable-boundary-models.md). The global approximation and compact composition steps use [Composition in the mixed symbol calculus](mixed-symbol-composition.md) and [Finite defects under perturbation](fredholm-stability.md). The first-order endpoint is treated in [Reducing first-order boundary data to a split trace](stable-reduction-boundary-data.md), and its closed-manifold realization is proved in [Doubling a boundary problem and computing its index](split-doubling-boundary-index.md).
+The finite-dimensional Cayley identities, their noncommutative leading-matrix factorization, and the explicit stable lift are proved in [Stable modes and the algebra of boundary data](stable-boundary-models.md). The global approximation and compact composition steps use [Composition in the mixed symbol calculus](mixed-symbol-composition.md) and Finite defects under perturbation. The first-order endpoint is treated in [Reducing first-order boundary data to a split trace](stable-reduction-boundary-data.md), and its closed-manifold realization is proved in [Doubling a boundary problem and computing its index](split-doubling-boundary-index.md).
 
 This is an independent teaching derivation. Its historical statement route is recorded separately from the proof, and exact correspondence to an original-author source remains open.
 

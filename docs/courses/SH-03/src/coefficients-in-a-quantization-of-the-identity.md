@@ -53,7 +53,7 @@ Here \(Ri_!=Ri_*=i_*\), since \(i\) is closed. The inverse image of the zero sec
 \simeq u_*\pi^{-1}\underline{R\operatorname{Hom}_k(A,B)}_S\).
 This identity can be checked on stalks. Applying \(R\varpi_{i!}\) yields \(j_*\pi^{-1}\underline{R\operatorname{Hom}_k(A,B)}_S\), because \(\varpi_i u=j\) is closed. Substitution in the preceding comparison proves the claimed calculation. The common orientation was canceled in the first comparison, so no codimension shift remains.
 
-These maps also determine the normalization in (1). MH12 is built from pulled-back evaluation and its adjoint. After the common orientation is removed, it carries \(A\to B[r]\) to the corresponding constant sheaf arrow on \(S\). MH13 is built from evaluation and the ordinary direct-image counit, so for this closed embedding it carries that arrow to its image under \(i_*\). Their composite is therefore the actual coefficient arrow furnished by \(A\mapsto A_S\). Taking a stalk at \(p\) and using the [point-localized morphism theorem MC.4](../../sheaf-proof-readings/src/SH02/microlocal-categories.md#sh02-mc-point--the-complete-morphism-group-at-one-point) identifies its degree \(r\) with
+These maps also determine the normalization in (1). MH12 is built from pulled-back evaluation and its adjoint. After the common orientation is removed, it carries \(A\to B[r]\) to the corresponding constant sheaf arrow on \(S\). MH13 is built from evaluation and the ordinary direct-image counit, so for this closed embedding it carries that arrow to its image under \(i_*\). Their composite is therefore the actual coefficient arrow furnished by \(A\mapsto A_S\). Taking a stalk at \(p\) and using the point-localized morphism theorem MC.4 identifies its degree \(r\) with
 \(H^rR\operatorname{Hom}_k(A,B)=\operatorname{Hom}_{D^b(k)}(A,B[r])\).
 This proves (1) with identities and composition, since the identified map comes from the stated functor. Both the conormal calculation and MC.4 include zero covectors.
 
@@ -131,7 +131,7 @@ R=R\mathcal Hom(M_X,-).
 \qquad\text{(8)}
 \]
 
-It must first be checked in the bounded categories being used. If \(M\) has cohomology in \([a,b]\) and \(F\) in \([c,d]\), [M43–M44, bounded Hom for arbitrary inputs](../../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-bounded-hom--boundedness-for-arbitrary-bounded-inputs), place (8) in \([c-b,d-a+3n+g+1]\) on an \(n\)-manifold. This bound allows arbitrary coefficient modules. Finite global dimension also keeps tensor products bounded.
+It must first be checked in the bounded categories being used. If \(M\) has cohomology in \([a,b]\) and \(F\) in \([c,d]\), M43–M44, bounded Hom for arbitrary inputs, place (8) in \([c-b,d-a+3n+g+1]\) on an \(n\)-manifold. This bound allows arbitrary coefficient modules. Finite global dimension also keeps tensor products bounded.
 
 The [noncharacteristic tensor and Hom estimates MO21–MO22](../../sheaf-proof-readings/src/SH02/microsupport-operations.md#sh02-mo-diagonal--tensor-and-hom-on-one-manifold) give
 

@@ -333,6 +333,15 @@ def build():
     from figures_f09_fixedtime import build as build_f09_fixedtime_figure
     build_f09_fixedtime_figure()
     render(COURSE/"src/YM-F09-fixed-time-estimates.md","Gauss law, heat curvature and fixed-time estimates","classical-fixed-time-estimates.html")
+    from figures_f09_wave import build as build_f09_wave_figure
+    build_f09_wave_figure()
+    render(COURSE/"src/YM-F09-wave-estimates.md","Wave energy, dispersion and null forms","classical-wave-estimates.html")
+    from figures_f09_tension import build as build_f09_tension_figure
+    build_f09_tension_figure()
+    render(COURSE/"src/YM-F09-tension-null-structure.md","Tension, spatial decomposition and the nonlinear wave equation","classical-tension-null-structure.html")
+    from figures_f09_curlfree import build as build_f09_curlfree_figure
+    build_f09_curlfree_figure()
+    render(COURSE/"src/YM-F09-curlfree-backward-heat.md","Curl-free interaction and backward heat bounds","classical-curlfree-backward-heat.html")
     course=json.loads((COURSE/"course.json").read_text(encoding="utf-8"))
     for unit in course["units"]:
         if unit["status"]=="available":

@@ -6,7 +6,7 @@ The course develops several ways to extract information from a vector bundle or 
 
 ## Build a bundle and give its classes a meaning
 
-Begin with [Vector bundles and their constructions](DG-CHAR-01.html), then [Grassmannians and classifying maps](DG-CHAR-03.html). These chapters explain local triviality, metrics, pullbacks, complements and classification. In the [Thom and Euler chapter](DG-CHAR-06.html), a local fibre orientation becomes a global relative cohomology class. Its chain, product, excision and coefficient proofs also supply the homological tools used later.
+Begin with Vector bundles and their constructions, then [Grassmannians and classifying maps](DG-CHAR-03.html). These chapters explain local triviality, metrics, pullbacks, complements and classification. In the [Thom and Euler chapter](DG-CHAR-06.html), a local fibre orientation becomes a global relative cohomology class. Its chain, product, excision and coefficient proofs also supply the homological tools used later.
 
 The [Gysin and projective-splitting chapter](DG-CHAR-08.html) calculates the projective-fibre cohomology and proves the injectivity of flag pullback. Then [Steenrod squares and Stiefel–Whitney classes](DG-CHAR-05.html) constructs the operations and classes. At this point a real characteristic-class computation has a proved definition and product rule.
 

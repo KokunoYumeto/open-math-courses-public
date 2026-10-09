@@ -36,7 +36,7 @@ There is also an earlier **constant-strength antecedent**: Hörmander, *The Anal
 The equation in that antecedent has a specific interpretation. The finite-dimensional weaker-operator representation is
 \(P(x,D)=P_0(D)+\sum_{\nu=1}^r c_\nu(x)P_\nu(D)\), with \(P_0\) the frozen operator, \(P_\nu\) weaker than \(P_0\), and continuous \(c_\nu\) vanishing at the frozen point. Define \(PEf=P_0Ef+\sum_\nu c_\nu P_\nu Ef\). Each \(P_\nu Ef\), including \(P_0Ef\), belongs to \(L^2\) by the stated operator bounds; after shrinking the neighborhood, its product with \(c_\nu\) is an \(L^2\) function. This is the interpretation in the first remark following Theorem 13.2.1, not multiplication of arbitrary distributions by continuous coefficients.
 
-The proofs below establish the fundamental solution, the local Hölder multiplier bound, the perturbation argument, the distance-weighted estimate, and the Lipschitz commutator. The Banach-space geometric-series argument is also available in Section 3 of [Finite defects under perturbation](fredholm-stability.md); we recall its short application where it is needed.
+The proofs below establish the fundamental solution, the local Hölder multiplier bound, the perturbation argument, the distance-weighted estimate, and the Lipschitz commutator. The Banach-space geometric-series argument is also available in Section 3 of Finite defects under perturbation; we recall its short application where it is needed.
 
 ## 2. A frozen solver without a restriction on dimension or order
 

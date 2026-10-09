@@ -4,7 +4,7 @@ A first-order elliptic boundary problem can be turned into an operator on a clos
 
 This lesson proves all three parts. It also resolves a possible factor-of-two ambiguity: the geometric double built here has a zero-index complementary half, so its index equals the boundary index. A one-half formula belongs to a different doubled datum whose complementary half has the same index as the original problem.
 
-The named prerequisites are [Stable modes and the algebra of boundary data](stable-boundary-models.md), [Fredholm boundary problems with first-order Calderón defects](generalized-collar-fredholm.md), [Finite defects under perturbation](fredholm-stability.md), and [Symbols, finite defects, and the index on a closed manifold](global-elliptic-symbol-index.md). We use \(D_t=-i\partial_t\), inward collar coordinates, and Hermitian inner products linear in the first entry. Matrix factors retain their displayed order.
+The named prerequisites are [Stable modes and the algebra of boundary data](stable-boundary-models.md), [Fredholm boundary problems with first-order Calderón defects](generalized-collar-fredholm.md), Finite defects under perturbation, and [Symbols, finite defects, and the index on a closed manifold](global-elliptic-symbol-index.md). We use \(D_t=-i\partial_t\), inward collar coordinates, and Hermitian inner products linear in the first entry. Matrix factors retain their displayed order.
 
 ## 1. The split first-order model
 

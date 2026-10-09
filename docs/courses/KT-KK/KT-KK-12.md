@@ -1040,7 +1040,7 @@ Let \(v\in KK_h(C(\mathbb T),Cl_1)\) be the usual odd Hardy cycle, with Hilbert-
 \[
  \operatorname{index}(PUP:P(H\oplus H)\to P(H\oplus H))=-1:
 \]
-the compression is the unilateral shift, with zero kernel and one-dimensional cokernel. This detects \(v\ne0\) for the **full** KK homotopy relation: [Lesson 10](KT-KK-10.html), Theorem 6.2, identifies this index with a product of two separable-source odd classes, and its Theorem 2.3 proves the comparison with whole module homotopies in this separable-source, sigma-unital-coefficient scope. The scalar index is nonzero by [Lesson 07](KT-KK-07.html), Theorems 2.2 and 3.2, and its transfer to full interval homotopy is [Lesson 10](KT-KK-10.html), Corollary 2.4. Only the separable circle source and scalar or finite Clifford coefficients enter this detector.
+the compression is the unilateral shift, with zero kernel and one-dimensional cokernel. This detects \(v\ne0\) for the **full** KK homotopy relation: [Lesson 10](KT-KK-10.html), Theorem 6.2, identifies this index with a product of two separable-source odd classes, and its Theorem 2.3 proves the comparison with whole module homotopies in this separable-source, sigma-unital-coefficient scope. The scalar index is nonzero by Lesson 07, Theorems 2.2 and 3.2, and its transfer to full interval homotopy is [Lesson 10](KT-KK-10.html), Corollary 2.4. Only the separable circle source and scalar or finite Clifford coefficients enter this detector.
 
 Pullback of (CB.18) through (CB.19) is literally the simultaneous suspension of this cycle:
 \[

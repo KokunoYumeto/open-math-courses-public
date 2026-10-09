@@ -334,4 +334,4 @@ It is continuous, equals one on \([\varepsilon,1-\varepsilon]\), and vanishes of
 
 The bounded-integral convention and the continuous-spectrum construction are classical; compare M. Takesaki, *Theory of Operator Algebras II*, §X.2, printed pp.265–266, and the construction preceding Lemma X.4.14, printed p.306. The theorem proved here concerns a continuous measured model. It makes no assertion that this chosen space is proper or that all of its bounded orbit averages are continuous.
 
-Original exposition, proofs as expressed here, and diagrams are dedicated under CC0-1.0 to the extent of rights held. The accompanying figure uses DejaVu Sans and its mathematical font; the [DejaVu font terms](../assets/measure-models/continuous/LICENSE_DEJAVU.txt) remain applicable.
+Original exposition, proofs as expressed here, and diagrams are dedicated under CC0-1.0 to the extent of rights held. The accompanying figure uses DejaVu Sans and its mathematical font; the DejaVu font terms remain applicable.

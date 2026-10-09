@@ -755,7 +755,7 @@ Choose any nonzero \(\phi\in C_c^\infty(\mathbb R^n)\) and set \(K_\phi=\operato
  \tag{5.5}
 \]
 are proper PSH and satisfy \(p_3=p_1+p_2\), including at their zeros.
-Regard the two smooth compact functions as finite complex measures. The exact [measure-indicator theorem](../AN02-L142.html#MI1) gives the imaginary-growth bounds for \(p_1,p_3\) and identifies their indicators. The compact-distribution convolution support theorem, Theorem 3.1 in [Convex supports and convolution cancellation](../prerequisites/convex-supports-and-convolution-cancellation.html), gives
+Regard the two smooth compact functions as finite complex measures. The exact [measure-indicator theorem](../AN02-L142.html#MI1) gives the imaginary-growth bounds for \(p_1,p_3\) and identifies their indicators. The compact-distribution convolution support theorem, Theorem 3.1 in Convex supports and convolution cancellation, gives
 \[
  H_1=H_{K_\phi}+H_{K_-},\qquad
  H_3=H_{K_\phi}+H_{K_v}.

@@ -158,7 +158,7 @@ Q\begin{pmatrix}A&B\\ C&D\end{pmatrix}
 
 Thus the rank-one averages generate \(B(K_+)\oplus B(K_-)\), rather than all \(B(K)\) when both spaces are nonzero.
 
-For infinite isotropy there is no normalized finite sum in (4.1). The finite-isotropy theorem keeps its exact range. [Borel group measures and isotropy topologies](borel-group-measures-and-isotropy-topologies.md), Sections 4–6, supplies the standard range-fibre Haar product and its section-change density. [Averaged coefficients and isotropy commutants](averaged-coefficients-and-isotropy-commutants.md#6-general-square-integrable-fields), Theorem 6.1, supplies the global countable coefficient family at its stated standard Borel, square-integrability and regular-commutant inputs. Those separate proofs are needed for the general supported construction.
+For infinite isotropy there is no normalized finite sum in (4.1). The finite-isotropy theorem keeps its exact range. Borel group measures and isotropy topologies, Sections 4–6, supplies the standard range-fibre Haar product and its section-change density. [Averaged coefficients and isotropy commutants](averaged-coefficients-and-isotropy-commutants.md#6-general-square-integrable-fields), Theorem 6.1, supplies the global countable coefficient family at its stated standard Borel, square-integrability and regular-commutant inputs. Those separate proofs are needed for the general supported construction.
 
 ## 5. Exercises with solutions
 

@@ -1,1 +1,1 @@
-window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],tags:'ams'},options:{enableMenu:false},chtml:{fontURL:'assets/mathjax/output/chtml/fonts/woff-v2'}};
+window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],tags:'ams'},options:{enableMenu:false},chtml:{fontURL:'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2'}};

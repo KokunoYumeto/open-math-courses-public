@@ -13,7 +13,7 @@ This lesson proves the Hilbert-space facts that the operator-algebra lessons use
 - Hilbert tensor products;
 - multiplication operators on a \(\sigma\)-finite measure space, which form an algebra equal to its own commutant.
 
-It builds on [Hahn–Banach, Baire and the basic theorems on Banach spaces](hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.md), cited as *the first lesson*.
+It builds on Hahn–Banach, Baire and the basic theorems on Banach spaces, cited as *the first lesson*.
 
 ## Conventions
 

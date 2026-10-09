@@ -4,7 +4,7 @@
 
 A root datum determines a pinned split reductive group, but it does not remove the geometry of its subgroups or the possibility of descent. This lesson treats both. Parabolic subgroups provide the geometry needed to move Borel pairs; the pinned isomorphism theorem then determines all automorphisms; torsors record how these local descriptions descend.
 
-Throughout, a reductive group over a scheme is smooth and affine, with connected reductive geometric fibres. A split group has a constant root datum and trivial root lines. Statements with one fixed datum are made on the corresponding open and closed part of the base. We use the preceding lessons on maximal tori, torus centralizers, root groups and the pinned isomorphism theorem. The supporting descent results are the supporting lessons [Faithfully flat descent](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-RG/prerequisites.html#prerequisite-ag-dfg-02) and [Quotients and torsors](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-GS/AG-GS-04.html): effective descent of affine schemes and group laws, and the classification of torsors by nonabelian first cohomology. We give the group-specific arguments here.
+Throughout, a reductive group over a scheme is smooth and affine, with connected reductive geometric fibres. A split group has a constant root datum and trivial root lines. Statements with one fixed datum are made on the corresponding open and closed part of the base. We use the preceding lessons on maximal tori, torus centralizers, root groups and the pinned isomorphism theorem. The supporting descent results are the supporting lessons Faithfully flat descent and [Quotients and torsors](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-GS/AG-GS-04.html): effective descent of affine schemes and group laws, and the classification of torsors by nonabelian first cohomology. We give the group-specific arguments here.
 
 ## 1. Parabolic subgroups over a field
 
@@ -331,7 +331,7 @@ The identities hold over every ring, including characteristic two.
 
 **Solution.** A torus automorphism is an invertible integral change of its character basis, so the representing scheme is the disjoint union of copies of the base indexed by $\operatorname{GL}_r(\mathbf Z)$. For $r\geq2$ it has infinitely many components, since the matrices $\left(\begin{smallmatrix}1&m\\0&1\end{smallmatrix}\right)$ are distinct. On $\operatorname{GL}_2$, centrality of the determinant factor proves that (3.2) is a homomorphism. Its determinant is $\det(g)^{-1}$, so applying it twice returns $g$. On scalar matrices it sends $zI$ to $z^{-1}I$, whereas every inner automorphism fixes them. Thus it is a nontrivial outer automorphism arising from the central lattice direction.
 
-The [course prerequisite guide](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-RG/prerequisites.html) records the exact supporting statements, their full proof routes, and the hypotheses needed in their applications.
+The course prerequisite guide records the exact supporting statements, their full proof routes, and the hypotheses needed in their applications.
 
 ## References and exact prerequisite proofs
 

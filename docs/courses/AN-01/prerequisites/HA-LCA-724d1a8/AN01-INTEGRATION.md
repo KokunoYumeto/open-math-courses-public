@@ -6,6 +6,6 @@ For AN-01 U056, 192 required proof blocks across 21 readings were actually read 
 
 The general formula retains its representative, continuity, integrability and measure-normalization hypotheses. The one-dimensional proof and all solved problems in AN-01 U056 remain independent.
 
-[Read Poisson summation](src/the-poisson-summation-formula.html#ha-lca-11-theorem-1-1) · [Provider contents](index.html) · [Component licences](LICENCES.html)
+[Read Poisson summation](src/the-poisson-summation-formula.html#ha-lca-11-theorem-1-1) · [Provider contents](index.html) · Component licences
 
 Fremlin's original source packages with his licence, editable lesson sources and MathJax software/font notices are retained. The CC0 dedication of original AN-01 exposition does not relicense these components.

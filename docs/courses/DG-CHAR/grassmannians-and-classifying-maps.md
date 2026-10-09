@@ -4,7 +4,7 @@
 
 The finite stabilization theorem replaces an abstract bundle on a compact base by a continuously moving subspace of one fixed vector space. A Grassmannian records that moving subspace. Passing to infinitely many coordinates makes this construction work for every paracompact Hausdorff base, and homotopies of the resulting maps describe bundle isomorphisms.
 
-Learn first [Vector bundles and their constructions](vector-bundles-and-their-constructions.md), especially its partition of unity and complement theorems. We use elementary matrix calculus and the operator norm on Euclidean or Hermitian spaces. Hatcher's freely readable *Vector Bundles and K-Theory* [H], Section 1.2, gives the paracompact classification argument. His *Algebraic Topology* [AT], Section 1.3 and Appendix A, supplies accessible covering-space and CW-space comparisons. The arguments needed here are proved below.
+Learn first Vector bundles and their constructions, especially its partition of unity and complement theorems. We use elementary matrix calculus and the operator norm on Euclidean or Hermitian spaces. Hatcher's freely readable *Vector Bundles and K-Theory* [H], Section 1.2, gives the paracompact classification argument. His *Algebraic Topology* [AT], Section 1.3 and Appendix A, supplies accessible covering-space and CW-space comparisons. The arguments needed here are proved below.
 
 ## 1. Subspaces as projections and graphs
 
@@ -14,7 +14,7 @@ The Grassmannian \(G_r(\mathbb F^N)\) is the space of rank \(r\) orthogonal proj
 P=A(A^*A)^{-1}A^*.
 \]
 
-The positive-Gram and projection calculations are proved in [Section 4 of the preceding lesson](vector-bundles-and-their-constructions.md#4-metrics-projections-and-complements), with \(H=I\). They apply over both fields.
+The positive-Gram and projection calculations are proved in Section 4 of the preceding lesson, with \(H=I\). They apply over both fields.
 
 The expression is unchanged when \(A\) is replaced by \(AC\) with \(C\) invertible. It identifies this definition with the quotient of the space of independent \(r\)-frames by change of basis: local graph coordinates below give continuous local sections of the quotient, while the displayed projection formula gives continuity in the other direction.
 

@@ -8,7 +8,7 @@ In a product foliation, an operator kernel is a matrix on each plaque, varying c
 
 We begin with paths and local transport, then build kernels and their representations. Product charts and open subsets explain the local structure. Finally we handle non-Hausdorff arrow spaces, where chart-supported functions replace globally continuous compactly supported functions.
 
-Prerequisites are foliation charts, covering spaces, bounded operators, compact operators, and C*-completion. [Transverse measures of foliations](transverse-measures-of-foliations.md) explains the measures that can later pair with this algebra. General groupoid convolution and regular representations are treated in Square-integrable representations and random operators. No transverse measure is needed for the construction here.
+Prerequisites are foliation charts, covering spaces, bounded operators, compact operators, and C*-completion. Transverse measures of foliations explains the measures that can later pair with this algebra. General groupoid convolution and regular representations are treated in Square-integrable representations and random operators. No transverse measure is needed for the construction here.
 
 Basic references are [Winkelnkemper], [Connes 1979], and [Connes]. Our notation \(C_r^*(V,F)\) specifies the regular-representation completion throughout.
 

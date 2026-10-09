@@ -2,7 +2,7 @@
 
 CG-S6 · Lesson 7 · Working chapter
 
-**This chapter is unfinished.** The integral calculations, homotopy argument and two completed smooth companions are available for reading. The remaining foundational comparisons, full handle and Whitney argument, and smooth sphere-group calculation are still being written. Section 10 identifies their exact use. This chapter is included to expose the mathematical dependency of lesson 10; it is not counted as a completed lesson.
+**This chapter is unfinished.** The integral calculations and homotopy-equivalence argument now have their included duality, descent, CW, Hurewicz and path-fibre proofs. The cancellation and stable-framing companions are also available. The full handle and Whitney argument and smooth sphere-group calculation are still being written. Section 10 identifies their exact use. This chapter is included to expose the mathematical dependency of lesson 10; it is not counted as a completed lesson.
 
 We retain the compact threefold \(f:X\to B=\mathbb P^1\) of lesson 5, with its original periods, affine translations and cusp action. Lesson 6 proves \(\pi_1(X)=1\). Here we calculate integral cohomology through the actual specialization maps. In particular, a rational rank calculation will not stand in for an integral lattice calculation.
 
@@ -16,6 +16,8 @@ q=uw+6\gamma\delta,\qquad
 \]
 
 Products of covectors denote exterior products in the displayed order. The original lattice is \(\Lambda=\mathbb Z\langle\widehat\gamma,\widehat u,\widehat w,\widehat\delta\rangle\). The deck matrices \(A_j\), cohomological matrices \(T_j=(A_j^{-1})^{\mathsf t}\), cusp matrices \(M_0=(A_1A_2)^{-1}\), \(T_0=(T_1T_2)^{-1}\), and based meridians remain precisely those of lesson 6.
+
+The included [integral duality companion](integral-duality-and-the-specialization-lattices.md) proves compact-support Poincaré duality, finite generation, the full integral pairing and the exact covering comparison. Its singular-chain prerequisites are included as well. These are the integral foundations used in Sections 1–2 and 7 below.
 
 ## 1. Integral cohomology of the two finite central surfaces {#finite-cohomology}
 
@@ -259,7 +261,20 @@ The downstairs \(H^1\)-\(H^3\) pairing is unimodular, and pullback multiplies ev
 \]
 
 Thus \(r_1=1,r_2=2\). The class \(\eta_2\) descends by (2.2), whereas
-\(\eta_2 b=-2\operatorname{vol}\) is not divisible by four. If \(b\) descended too, its pairing with \(\eta_2\) upstairs would be divisible by the covering degree. Therefore \(b\) generates the nonzero cokernel at order four. Finally pullback of the top orientation class is multiplication by \(m_j\), giving the degree-four column of (2.1). Degree zero is the identity since both spaces are connected. ∎
+\(\eta_2 b=-2\operatorname{vol}\) is not divisible by four. If \(b\) descended too, its pairing with \(\eta_2\) upstairs would be divisible by the covering degree. Therefore \(b\) generates the nonzero cokernel at order four.
+
+<span id="full-degree-three-lattice"></span>
+The full image can now be specified. The [duality companion](integral-duality-and-the-specialization-lattices.md#duality-covering), equations (4.2)–(4.10), proves that an invariant integral class descends exactly when its pairing with every descended complementary class is divisible by the actual covering degree. For \(x=rb+sc_j\), its pairings with \(m_j\gamma,\eta_j\) are \((3s,-3r)\) at order three and \((4s,-2r)\) at order four. Thus
+
+\[
+L_1^3=\mathbb Z b\oplus\mathbb Z c_1,\qquad
+L_2^3=\mathbb Z(2b)\oplus\mathbb Z c_2.
+\tag{2.14a}
+\]
+
+This proves sufficiency for both displayed degree-three generators, as well as the index and the missing coset. Pullback scales their downstairs pairing matrices by \(3\) and \(4\), respectively, exactly as in (2.14).
+
+ Finally pullback of the top orientation class is multiplication by \(m_j\), giving the degree-four column of (2.1). Degree zero is the identity since both spaces are connected. ∎
 
 These are the actual specialization maps of \(f\). The equivariant radial trivialization in lesson 3 retracts the full finite filling onto \(S_j\). Its restriction from a punctured fibre is the precise covering \(\pi_j\), under the fixed marking. Thus no additional identification of an abstract lattice with a geometric stalk is being assumed.
 
@@ -869,7 +884,7 @@ h_n:\pi_n(Y)\longrightarrow H_n(Y;\mathbb Z),\qquad
 [a]\longmapsto a_*[S^n]
 \tag{9.1}
 \]
-is an isomorphism and its lower reduced integral homology vanishes. The complete coherent-simplex proof is in the existing frame-obstruction companion, Lemma E.1; the precise source and checked version are identified in the prerequisite references. Its hypotheses concern the actual homotopy groups, not a rational substitute.
+is an isomorphism and its lower reduced integral homology vanishes. The complete coherent-simplex proof, including both inverse maps, is in the included [CW and Hurewicz companion](cw-models-and-the-first-hurewicz-map.md#hurewicz-theorem), Theorem 4.1. Its source comparison and exact checked version are recorded there. Its hypotheses concern the actual homotopy groups, not a rational substitute.
 
 **Theorem 9.1.** There is a degree-one map \(g:S^6\to X\) which is a homotopy equivalence.
 
@@ -888,24 +903,49 @@ E_g=\{(s,\lambda):s\in S^6,\ \lambda(0)=g(s)\},
 p(s,\lambda)=\lambda(1).
 \tag{9.3}
 \]
-Contracting a path towards its initial point retracts \(E_g\) onto \(S^6\); under this retraction \(p\) represents \(g\). The path-fibration lifting construction and its exact homotopy sequence are proved in the existing homotopy-fibre companion. Let \(K=p^{-1}(x_*)\). The exact sequence shows that \(K\) is connected and simply connected, since \(\pi_1(S^6)=\pi_1(X)=\pi_2(X)=0\).
+Contracting a path towards its initial point retracts \(E_g\) onto \(S^6\); under this retraction \(p\) represents \(g\). The included [path-fibre companion](path-fibres-and-integral-homotopy-equivalences.md#path-lifting), Section 1, proves the lifting formula and exact homotopy sequence.
+
+For the cellular filtration we use the actual CW comparison from the [CW companion](cw-models-and-the-first-hurewicz-map.md#cw-manifolds):
+\(\alpha:T_X\to X\), \(\beta:X\to T_X\), with \(\alpha\beta=1_X\) and \(\beta\alpha\simeq1_{T_X}\). Keep (9.3), and define the comparison
+
+\[
+\begin{aligned}
+\bar g&=\beta g:S^6\to T_X,&
+\bar E&=E_{\bar g},&
+\bar p(s,\lambda)&=\lambda(1),\\
+J:\bar E&\longrightarrow E_g,&
+J(s,\lambda)&=(s,\alpha\circ\lambda),&
+pJ&=\alpha\bar p.
+\end{aligned}
+\tag{9.3a}
+\]
+
+The path starts at \(\bar g(s)\), so its image starts at \(\alpha\beta g(s)=g(s)\), exactly as required. Both total spaces retract onto the same \(S^6\), and \(J\) commutes with these retractions. The base \(T_X\) is now an actual simply connected CW complex; \(\pi_2(T_X)=0\), and \(\bar p\) is an integral homology isomorphism in every degree because \(\bar g=\beta g\) is. Let \(K=\bar p^{-1}(t_*)\) over a vertex \(t_*\). The exact sequence and the explicit path-component argument of the path-fibre companion, Theorem 5.1, show that \(K\) is path connected and simply connected.
 
 Suppose a positive homotopy group of \(K\) were nonzero and let \(n\geq2\) be its first degree. Hurewicz would give
 \(H_i(K)=0\) for \(0<i<n\) and \(H_n(K)\ne0\).
-In the integral Serre homology spectral sequence of (9.3), the base is simply connected, so its coefficient systems are constant. In total degree \(n\), the only possibly nonzero terms are
+In the integral Serre homology spectral sequence of the fibration over \(T_X\) in (9.3a), the base is simply connected, so its coefficient systems are constant. In total degree \(n\), the only possibly nonzero terms are
 \[
-E_2^{0,n}=H_n(K),\qquad E_2^{n,0}=H_n(X).
+E_2^{0,n}=H_n(K),\qquad E_2^{n,0}=H_n(T_X).
 \tag{9.4}
 \]
 The only differential which could enter the first is
 \(d_{n+1}:E_{n+1}^{n+1,0}\to E_{n+1}^{0,n}\);
 earlier sources involve the vanishing groups \(H_i(K)\), \(0<i<n\).
 Surjectivity of
-\(p_*:H_{n+1}(E_g)\to H_{n+1}(X)\), already proved from (9.2), makes this transgression zero. Indeed the edge image lies in its kernel, and the edge image is the whole bottom-row group. No differential leaves column zero.
+\(\bar p_*:H_{n+1}(\bar E)\to H_{n+1}(T_X)\), already proved from (9.2) and (9.3a), makes this transgression zero. Indeed the edge image lies in its kernel, and the edge image is the whole bottom-row group. No differential leaves column zero.
 
-Thus \(H_n(K)\) survives as the first filtration subgroup of \(H_n(E_g)\). The homology edge map \(p_*:H_n(E_g)\to H_n(X)\) kills that subgroup, since the map to the base factors through the bottom row. But \(p_*\) is injective, also by (9.2). Hence \(H_n(K)=0\), a contradiction. All homotopy groups of \(K\) therefore vanish. The homotopy sequence of (9.3) makes \(g\) an isomorphism on every homotopy group.
+Thus \(H_n(K)\) survives as the first filtration subgroup of \(H_n(\bar E)\). The homology edge map \(\bar p_*:H_n(\bar E)\to H_n(T_X)\) kills that subgroup, since the map to the base factors through the bottom row. But \(\bar p_*\) is injective, also by (9.2) and (9.3a). Hence \(H_n(K)=0\), a contradiction. All homotopy groups of \(K\) therefore vanish. The homotopy sequence of (9.3a) makes \(\bar g\) an isomorphism on every homotopy group; composition with \(\alpha\) gives the same statement for the original \(g\). The full filtered-chain proof and both actual homology edges used here are in the included [path-fibre companion](path-fibres-and-integral-homotopy-equivalences.md#serre-homology), Sections 2–3.
 
-Finally \(X\), being a smooth compact manifold, has CW homotopy type. The CW Whitehead argument in the homotopy-fibre companion now supplies an actual homotopy inverse. Explicitly, replace the map between CW models by a cellular one. Its mapping cylinder is a CW pair whose relative homotopy groups all vanish. Extend a homotopy compressing its identity into the domain one cell at a time: the obstruction on each cell boundary is precisely the corresponding zero relative homotopy class, and homotopy extension keeps the earlier skeleton fixed. The weak topology pastes these extensions. This gives a deformation retraction of the cylinder onto the domain; its other retraction is onto the codomain. Their compositions are the required inverse and homotopies. Transporting them through the CW models yields a homotopy inverse to the original \(g\). ∎
+The same companion's [CW compression argument](path-fibres-and-integral-homotopy-equivalences.md#cw-inverses), Section 4, now gives an actual inverse \(\bar h:T_X\to S^6\) to \(\bar g\). It proves surjectivity and injectivity on homotopy classes from every CW domain by relative disk compression, then uses the domains \(T_X\) and \(S^6\) to construct both inverse homotopies. Thus the original inverse is
+
+\[
+h_X=\bar h\beta:X\to S^6,\qquad
+h_Xg\simeq1_{S^6},\qquad gh_X\simeq1_X.
+\tag{9.5}
+\]
+
+The second identity uses \(g=\alpha\bar g\), then \(\bar g\bar h\simeq1_{T_X}\), then the exact identity \(\alpha\beta=1_X\). The first uses \(\bar h\bar g\simeq1_{S^6}\). This completes both required comparisons. ∎
 
 This construction specifies the morphism to be recognized: \(g\) represents the orientation generator under the actual degree-six Hurewicz isomorphism. Its existence follows after the full integral and fundamental-group calculations, rather than being presumed from a matching Euler characteristic.
 
@@ -944,7 +984,7 @@ H_5(C)=\mathbb Z^2/\mathbb Z(1,1)\simeq\mathbb Z,
 \]
 The relative boundary homomorphism sends the first and second standard generators in (10.2) to their actual boundary sphere classes in \(C\). In the quotient in (10.3) these are opposite generators. Thus each inclusion \(\partial D_i\hookrightarrow C\) induces an isomorphism on \(H_5\), and also on \(H_0\); all other homology groups on both sides vanish.
 
-Both spaces are simply connected and have CW homotopy type. The same path-fibre argument as in Section 9 turns these homology isomorphisms into homotopy equivalences: a first nonzero homotopy group of the fibre would survive as a subgroup of the kernel of an injective homology edge map. That is impossible, and relative CW compression supplies the inverse. Hence both actual boundary inclusions are homotopy equivalences, proving the assertion. ∎
+Both spaces are simply connected. The included [CW companion](cw-models-and-the-first-hurewicz-map.md#cw-manifolds) proves their CW homotopy type: its formula (2.6) treats the actual punctured cobordism, keeping the original disk radii. The included [path-fibre companion](path-fibres-and-integral-homotopy-equivalences.md#integral-comparison), Theorem 5.1, turns these homology isomorphisms into homotopy equivalences. Surjectivity of the degree-\(n+1\) edge first kills the only possible incoming transgression; injectivity in degree \(n\) then excludes a first nonzero fibre group. Its equation (5.12) constructs both original inverse maps through the specified CW comparison of \(C\), retaining the opposite signs of the two boundary generators. Hence both actual boundary inclusions are homotopy equivalences, proving the assertion. ∎
 
 The smooth \(h\)-cobordism theorem, in its dimension range \(\dim C\geq6\), identifies this \(C\) with \(S^5\times[0,1]\), relative to one boundary. Adding the two original coordinate discs then describes \(X\) as
 \[
@@ -973,7 +1013,7 @@ It is obtained by lifting the original tangent clutching map to \(SU(4)\), using
 \]
 Thus \(g^*TX\oplus\mathbf1_{\mathbb R}\) is trivial, and pulling back by the homotopy inverse gives a stable framing of the original \(TX\oplus\mathbf1_{\mathbb R}\). Its rank-six Euler class has not disappeared. A stable framing alone does not compute a framed bordism class or prove \(\Theta_6=0\).
 
-**Status of the classical prerequisite.** The local integral and homotopy arguments above are written out. The cancellation and stable-framing companions are written and checked locally. A full proof provider for the remaining handle and Whitney steps and for the calculation of the smooth sphere group is still being completed for this lesson. The original-author Benedetti TeX read for this purpose gives the \(h\)-cobordism statement and a discussion of its proof, and explicitly says that it does not give the whole proof. That discussion is not recorded as complete prerequisite coverage. The present source remains a working lesson until this and the other marked foundational references have been closed.
+**Status of the classical prerequisite.** The local integral and homotopy arguments above are written out. The cancellation and stable-framing companions are written and checked locally. The integral duality and covering-lattice companion closes the integer duality prerequisite; the CW and Hurewicz companion closes the explicit manifold-model and first-Hurewicz prerequisites. The path-fibre companion now closes the integer homology-to-homotopy comparison and constructs both inverse homotopies for the original maps. A full proof provider for the remaining handle and Whitney steps and for the calculation of the smooth sphere group is still being completed for this lesson. The original-author Benedetti TeX read for this purpose gives the \(h\)-cobordism statement and a discussion of its proof, and explicitly says that it does not give the whole proof. That discussion is not recorded as complete prerequisite coverage. The present source remains a working lesson until this and the other marked foundational references have been closed.
 
 ## 11. Four worked exercises {#solved-exercises}
 

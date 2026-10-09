@@ -4,7 +4,7 @@
 
 Pulling back a cohomology sheaf and computing cohomology on the pulled-back family are different operations. Flat change of the base makes them agree. For a proper family with a flat coherent sheaf, a stronger statement is available: one finite projective complex computes cohomology after every change of the base. Its differentials, rather than the ranks of its cohomology modules, retain the information needed at exceptional fibers.
 
-We use [affine cohomology and quasi-coherent direct images](affine-cohomology-and-serres-criterion.md), [proper cohomology finiteness](proper-morphisms-and-coherent-direct-images.md), and the flat-module results assigned to *Tor and flat modules* in *Commutative algebra for geometry*. For the initial derived construction we use *Sheaves of modules and their derived categories*, Sections 8–10: K-flat resolutions, derived tensor and the pullback–pushforward adjunction. The exact open adjunction proof is [Stacks, Tag 079W], with its derived-adjunction construction linked below. Our finite projective replacement and its universal tensor comparison are proved in Section 3.
+We use affine cohomology and quasi-coherent direct images, proper cohomology finiteness, and the flat-module results assigned to *Tor and flat modules* in *Commutative algebra for geometry*. For the initial derived construction we use *Sheaves of modules and their derived categories*, Sections 8–10: K-flat resolutions, derived tensor and the pullback–pushforward adjunction. The exact open adjunction proof is [Stacks, Tag 079W], with its derived-adjunction construction linked below. Our finite projective replacement and its universal tensor comparison are proved in Section 3.
 
 ## 1. Constructing the comparison
 

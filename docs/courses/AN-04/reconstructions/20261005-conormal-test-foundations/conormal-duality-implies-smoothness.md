@@ -2,7 +2,7 @@
 
 This is the complete smoothness argument of AN03-U034, *Global boundary operators, compressed wave fronts, and normal extension*, Section 7.1 and Sections 8.1–8.6 through (SP15). Original author credit: Codex, September 2026, CC0. Current prerequisite connections and the final identification of the supported representative: AN-04 course-writing task and OpenAI Codex, 5 October 2026, CC0.
 
-The [conormal amplitude and Besov proofs](conormal-amplitudes-and-test-spaces.md) supply (C2) and (C16). The [supported test spaces, approximation, full dual pairing and intrinsic trace](dual-conormal-distributions-and-jets.md) supply (GA1)–(GA2), (GD1)–(GD12) and their actual topologies. The full [Fourier Sobolev embedding](../20261005-restored-first-order-cauchy/spacetime-symbol-composition.md), [Hölder inequality](../20261005-cauchy-foundations/integration-and-duality.md) supply the elementary analytic entries. The exact interpolation identity (SP11) is also proved directly below.
+The [conormal amplitude and Besov proofs](conormal-amplitudes-and-test-spaces.md) supply (C2) and (C16). The supported test spaces, approximation, full dual pairing and intrinsic trace supply (GA1)–(GA2), (GD1)–(GD12) and their actual topologies. The full [Fourier Sobolev embedding](../20261005-restored-first-order-cauchy/spacetime-symbol-composition.md), [Hölder inequality](../20261005-cauchy-foundations/integration-and-duality.md) supply the elementary analytic entries. The exact interpolation identity (SP11) is also proved directly below.
 
 The mathematical antecedent is the approved Hörmander III, 2007 eBook, Section 18.3. The same distribution is used throughout the argument.
 

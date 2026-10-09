@@ -2,7 +2,7 @@
 
 Curvature measures the failure of horizontal transport to commute. We derive its principal and associated forms, prove both Bianchi identities, and construct full and restricted holonomy as immersed Lie groups, including nonclosed holonomy. The chapter then develops intrinsic torsion, binary-form and tensor-product curvature spaces, and complete local connection equations. The final constructions produce actual analytic connections at regular and singular Poisson parameters.
 
-Read first [Connections and parallel transport](connections-and-parallel-transport.md), [Principal bundles and associated bundles](principal-bundles-and-associated-bundles.md), [Local tools for bundles and transport](local-tools-for-bundles-and-transport.md), and the exact earlier exterior-calculus and example proofs in [DG-CHAR-17](../supporting/DG-CHAR-8e0b5f71efec/src/DG-CHAR-17.md). Each part supplies its proofs and identifies its freely accessible human construction sources. The definitions and signs used in subsequent parts are fixed where they first appear.
+Read first [Connections and parallel transport](connections-and-parallel-transport.md), [Principal bundles and associated bundles](principal-bundles-and-associated-bundles.md), [Local tools for bundles and transport](local-tools-for-bundles-and-transport.md), and the exact earlier exterior-calculus and example proofs in DG-CHAR-17. Each part supplies its proofs and identifies its freely accessible human construction sources. The definitions and signs used in subsequent parts are fixed where they first appear.
 
 ## A. Exterior calculus and principal curvature
 

@@ -4,7 +4,7 @@
 
 A character remembers enough to recover a complex representation. It also tells us whether that representation can be written with real matrices, provided we ask the right question. Real character values alone do not suffice: the two-dimensional representation of the quaternion group is the basic counterexample.
 
-We use [Characters and the orthogonality relations](RT-FIN-02.md) and [The group algebra and Fourier analysis on a finite group](RT-FIN-03.md). Representations are finite-dimensional, \(G\) is finite, and the ground field is \(\mathbb C\) unless a real vector space is explicitly named. Inner products are linear in the first variable.
+We use Characters and the orthogonality relations and [The group algebra and Fourier analysis on a finite group](RT-FIN-03.md). Representations are finite-dimensional, \(G\) is finite, and the ground field is \(\mathbb C\) unless a real vector space is explicitly named. Inner products are linear in the first variable.
 
 ## 1. Operations on representations and their traces
 

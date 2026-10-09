@@ -4,7 +4,7 @@ A subgroup can be close enough to normal to admit convolution, yet fail to be no
 
 We first construct the algebra from finite coset counts. We then obtain its generators and both its time and arithmetic symmetries. The presentation also lets us prove that every bounded *-representation is controlled by the regular representation. The proof uses averaging over a compact group of phases.
 
-The prerequisites are discrete groups and cosets, bounded operators on Hilbert space, C*-algebras and states, finite Fourier analysis, inverse limits of finite sets, and integration against product probability measures on countable products of circles. Sections 7–8 also use the normalized valuation on \(\mathbb Q_p\), its valuation ring \(\mathbb Z_p\), and the restricted-product topology, as specified in [Milne ANT]. We prove the particular lattice and tree facts used here. Section 10 derives the general local-field modulus and compact valuation ring from the topological-field hypotheses, using the exact Haar and Radon results named there and the fundamental theorem of algebra. For the KMS step we use [Analytic elements and strip arguments](https://kokunoyumeto.github.io/open-math-courses-public/courses/analytic-elements-strips-and-kms/analytic-elements-and-strip-arguments.html), Theorem 10.3, with the sign and scale specified below. Basic references are [Bost–Connes] and [Connes–Marcolli].
+The prerequisites are discrete groups and cosets, bounded operators on Hilbert space, C*-algebras and states, finite Fourier analysis, inverse limits of finite sets, and integration against product probability measures on countable products of circles. Sections 7–8 also use the normalized valuation on \(\mathbb Q_p\), its valuation ring \(\mathbb Z_p\), and the restricted-product topology, as specified in [Milne ANT]. We prove the particular lattice and tree facts used here. Section 10 derives the general local-field modulus and compact valuation ring from the topological-field hypotheses, using the exact Haar and Radon results named there and the fundamental theorem of algebra. For the KMS step we use Analytic elements and strip arguments, Theorem 10.3, with the sign and scale specified below. Basic references are [Bost–Connes] and [Connes–Marcolli].
 
 *Written by GPT-6.1 Sol (OpenAI), September 2026, with Ultra reasoning effort. Self-checked by the writing AI. Public domain (CC0).*
 
@@ -392,7 +392,7 @@ where \(\mu(k)\) is the Möbius function. Thus the invariant cylinder functions 
 
 Averaging (6.1) over \(W\) sends \(t_{n,m,r}\) to \(\mu_n E_W(e(r))\mu_m^*\), which belongs to \(C^*(\mu_n)\). The averaging is contractive, and polynomials are dense, so its range is contained in this algebra. Every invariant element equals its average. The reverse inclusion follows because every \(\mu_n\) is fixed. This proves (6.2). \(\square\)
 
-The symmetry group is compact, but it acts nontrivially on the equilibrium states at low temperature. The distinction between fixing the time evolution and fixing each individual equilibrium state will matter in [Phase transition in the Bost–Connes system](phase-transition-in-the-bost-connes-system.md).
+The symmetry group is compact, but it acts nontrivially on the equilibrium states at low temperature. The distinction between fixing the time evolution and fixing each individual equilibrium state will matter in Phase transition in the Bost–Connes system.
 
 ## 7. The adelic realization of the symmetry
 
@@ -678,7 +678,7 @@ This geometry explains why the arithmetic dilation of a prime is independent of 
 
 The full affine group averages both integral translations and local units. Its compact-subgroup corner consequently retains the prime shifts, with no independent cyclotomic observables. We prove this for the full group C*-algebra, and also prove faithfulness of its regular corner. This avoids needing a general amenability theorem for this particular identification.
 
-First record the precise universal property of the shift algebra \(\mathcal T=C^*(\mu_n:n\ge1)\), whose faithful integer representation was proved in [Phase transition in the Bost–Connes system](phase-transition-in-the-bost-connes-system.md), Proposition 11.2.
+First record the precise universal property of the shift algebra \(\mathcal T=C^*(\mu_n:n\ge1)\), whose faithful integer representation was proved in Phase transition in the Bost–Connes system, Proposition 11.2.
 
 **Lemma 9.1 (The prime-shift universal property).** A family of isometries \(s_p\), one for each prime, satisfying
 

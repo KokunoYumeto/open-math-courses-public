@@ -4,7 +4,7 @@
 
 A fibre of a rank \(r\) vector bundle looks like \(\mathbb R^r\). Removing its origin leaves a relative cohomology class in degree \(r\). A Thom class joins these fibre classes into one global class. Multiplication by it transfers cohomology of the base into relative cohomology of the bundle. Pulling it back to the zero section gives the Euler class, which detects an obstruction to a nonzero section.
 
-Learn first [Vector bundles and their constructions](vector-bundles-and-their-constructions.md) and [Grassmannians and classifying maps](grassmannians-and-classifying-maps.md). The required singular-chain arguments are supplied here. We use elementary linear algebra and the definition of a free abelian group. The coefficient systems in this chapter are constant; local orientation coefficients will be introduced with the obstruction theory chapter. Hatcher's freely readable texts [AT] and [VB] give the singular-chain, Thom and Euler comparisons. The proof here works directly with the nonzero-vector pair, including the homological passage to arbitrary Hausdorff bases.
+Learn first Vector bundles and their constructions and [Grassmannians and classifying maps](grassmannians-and-classifying-maps.md). The required singular-chain arguments are supplied here. We use elementary linear algebra and the definition of a free abelian group. The coefficient systems in this chapter are constant; local orientation coefficients will be introduced with the obstruction theory chapter. Hatcher's freely readable texts [AT] and [VB] give the singular-chain, Thom and Euler comparisons. The proof here works directly with the nonzero-vector pair, including the homological passage to arbitrary Hausdorff bases.
 
 ## 1. Chains, pairs and homotopies
 

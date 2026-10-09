@@ -28,7 +28,7 @@ We use the following explicit dependencies.
 - `SH02-NG-CONE-SEQUENCES` identifies the pair normal cone $C(A,B)$ with limits $c_n(a_n-b_n)$, where $a_n\in A$, $b_n\in B$, both tend to the base point, and $c_n\to+\infty$. `SH02-NG-CONE-CONSEQUENCES` proves locality and $C(B,A)=-C(A,B)$.
 - Localization, exactness of filtered colimits, closed pushforward, inverse image of constant sheaves, and proper base change have their usual derived sheaf meanings. The elementary convex acyclicity used in the crossing calculation is the constant-coefficient specialization of `SH02-CA-CONSTANT`, whose proof is not given in this lesson; its precise content needed here is $R\Gamma(D;k)\simeq k$ for a nonempty convex locally closed subset of a finite-dimensional real vector space, compatibly with restrictions between such sets.
 
-The corresponding lessons are [directional tests](../../SH02-microsupport-tests.html), [directional topology](../../SH02-cone-topology.html), [normal geometry](../../SH02-normal-geometry.html), and [convex acyclicity](../../SH02-convex-acyclicity.html).
+The corresponding lessons are [directional tests](../../SH02-microsupport-tests.html), [directional topology](../../SH02-cone-topology.html), [normal geometry](../../SH02-normal-geometry.html), and convex acyclicity.
 
 For $D\subset E$ the polar and antipode are
 

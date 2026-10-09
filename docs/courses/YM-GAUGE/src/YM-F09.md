@@ -2199,8 +2199,9 @@ component factors, physical units and the finite heat endpoint.
 
 The complete Gaussian calculation (HP.29)–(HP.34), its figure,
 and eight fully solved exercises display the norms and their
-finite weighted energy identities. The remaining heat-curvature
-and wave estimates and the physical global continuation proof
+finite weighted energy identities. The fixed-time heat-curvature
+and linear wave estimates are supplied in the next two components.
+The nonlinear wave and physical global continuation argument
 remain in progress.
 
 
@@ -2217,5 +2218,68 @@ Equations (HT.1)–(HT.53) supply the fixed-time bounds used
 by the physical evolution argument. The exact Gaussian
 comparison and the extension retaining a nonzero initial
 Gauss datum are (HT.54)–(HT.59); eight solved exercises
-follow. The remaining wave estimates, physical continuation
-and main exercise set are still in progress.
+follow. The linear wave estimates are proved in the next component;
+the nonlinear wave estimates, physical continuation and main
+exercise set are still in progress.
+
+
+## 18. Wave energy, dispersion and the complete null-form estimate
+
+[Wave energy, dispersion and null forms](../classical-wave-estimates.html)
+proves the physical wave energy estimate, the fourth-power
+space-time estimate and all sign combinations of the spatial
+null-form bound. The direct Fourier calculations keep the
+original speed, coordinate, derivative tuples and every
+transform factor.
+
+Equations (HW.1)–(HW.38) include the exact source-coordinate
+and heat-weight maps, and a visible correction to a displayed
+forcing derivative in the source. The smooth half-wave
+(HW.39)–(HW.44) attains the fourth-power constant; its original
+profiles and Fourier support are illustrated. Eight exercises
+have complete solutions.
+
+The remaining physical argument inserts the actual nonlinear
+Yang–Mills wave equations and estimates their forcing and
+boundary gauge terms before proving global continuation.
+Those estimates and the main lesson's exercise set remain
+required for this unit to be complete.
+
+
+## 19. Tension, exact spatial decomposition and temporal connection
+
+[Tension, spatial decomposition and the nonlinear wave equation](../classical-tension-null-structure.html)
+derives the actual tension heat equation and proves bounds at every
+covariant spatial derivative order. It constructs the exact Hodge
+projections and antisymmetric potential, then proves the map to the
+spatial null forms and its receiving estimate.
+
+Equations NX.33–NX.42 also bound the physical time derivative of
+the temporal connection at every spatial order. Every finite heat
+endpoint, logarithmic term and physical speed factor is retained.
+A source sign correction is identified beside the proved identity.
+Eight exercises have complete solutions, and the exact projection
+and scalar heat maximum are illustrated.
+
+The remaining nonlinear interactions, boundary gauge estimates,
+closed global continuation and main lesson exercises remain
+required before this unit is complete.
+
+
+## 20. Curl-free interaction and complete backward heat inputs
+
+[Curl-free interaction and backward heat bounds](../classical-curlfree-backward-heat.html)
+constructs the original Newton-gradient kernel and estimates the full
+curl-free product. Its complete backward heat argument then bounds
+the low-order quantities appearing in that product, using every
+term of the original heat equation and the actual receiving wave norms.
+
+Equations CF.1–CF.36 retain the physical speed, finite heat endpoints,
+matrix order and mixed-norm order. The chapter includes the exact
+ball-average proof of the needed Morrey inequality, an actual Gaussian
+projection example, eight fully solved exercises and an inspected
+figure of the finite kernels.
+
+The remaining nonlinear interactions, boundary gauge estimates and
+closed physical-time continuation argument are still required, along
+with the main lesson exercises, before this unit is complete.

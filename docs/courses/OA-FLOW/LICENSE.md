@@ -6,7 +6,7 @@ The historical L34 and L35 documents and retained historical components, includi
 
 The historical components are selected modified versions with different descriptive titles where appropriate; the component record preserves the original titles, exact earlier source identities and grant history. Attribution is to the OA-FLOW course project, with AI-assisted drafting in Codex; no natural person’s name or unverified human review is asserted.
 
-The component record retains the exact prior grants and their provenance. The recorded historical-clearance flag is not a withdrawal of the open grant. Separately licensed rendered typography retains the [DejaVu notice](assets/notices/LICENSE_DEJAVU.txt). MathJax is bundled under its [license](assets/mathjax/LICENSE) and [font notices](assets/mathjax/FONT-LICENSES.txt). External papers and prerequisite pages retain their own terms and are linked, not republished as project expression.
+The component record retains the exact prior grants and their provenance. The recorded historical-clearance flag is not a withdrawal of the open grant. Separately licensed rendered typography retains the DejaVu notice. MathJax is bundled under its license and font notices. External papers and prerequisite pages retain their own terms and are linked, not republished as project expression.
 
 The current lessons CF, GNS, SF, L24, L25, L34, L35, L138, L157, L158 and L159 have CC0 original expression. The new GNS illustration and reproduction code are original CC0 expression; rendered DejaVu glyph designs and external dependencies retain their separately supplied terms.
 

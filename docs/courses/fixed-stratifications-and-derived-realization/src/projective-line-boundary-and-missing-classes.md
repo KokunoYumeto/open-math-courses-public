@@ -110,8 +110,8 @@ Let \(A=k[t,t^{-1}]\), the monodromy ring of \(\mathbb C^*\). For any injective 
 
 Valery A. Lunts and Olaf M. Schnürer, [*Categories of constructible sheaves*, arXiv:2601.05477v1](https://arxiv.org/abs/2601.05477v1), 9 January 2026, Remark 6.12 (p. 31), identifies the failure for the two-stratum projective line. Theorem 5.25 and Theorem 6.10 give the realization and boundary criteria. Remark 6.12 does not supply the one-arrow resolution, the explicit missing cone object or the two solved calculations; those arguments are written out in this reading.
 
-The text, checks, exercises, solutions and reader code are dedicated under CC0. The results and the route of the proofs are those of Lunts–Schnürer, credited above; the wording, the expanded calculations and the exercises are written independently. The [source and dependency notes](../source-notes.html) identify the exact passages, changes and remaining prerequisites.
+The text, checks, exercises, solutions and reader code are dedicated under CC0. The results and the route of the proofs are those of Lunts–Schnürer, credited above; the wording, the expanded calculations and the exercises are written independently. The source and dependency notes identify the exact passages, changes and remaining prerequisites.
 
 Sheaf adjunctions, derived truncations and the usual local-coefficient cohomology of disks and circles and constant-coefficient cohomology of the two-sphere remain prerequisites. Lunts–Schnürer supplies the realization and boundary criteria and the projective-line failure example; the explicit resolution, missing cone object and solved calculations are given above. These readings do not supply a complete development of the underlying sheaf-theoretic and topological foundations.
 
-[Reading index](../index.html) · [Source and dependency notes](../source-notes.html) · [Reuse terms](../LICENSE.txt) · Provenance
+[Reading index](../index.html) · Source and dependency notes · [Reuse terms](../LICENSE.txt) · Provenance

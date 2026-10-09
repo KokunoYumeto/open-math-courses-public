@@ -35,7 +35,7 @@ The linked analytic prerequisites give the actual earlier proofs of
 measure and Fourier facts, dyadic estimates and ordinary operator
 calculus. Each retains its own author and licence notices.
 
-The [tangent lesson](../20261004-free-tangent-zoom/tangent-zoom-and-quadratic-models.md)
+The tangent lesson
 and its [Gaussian-symbol identification](../20261004-free-tangent-zoom/prerequisites/gaussian-symbol-line.md)
 now complete the tangent comparison, including every Gaussian rank and the
 nonlinear coordinate law. Their exact prerequisite edition is included.

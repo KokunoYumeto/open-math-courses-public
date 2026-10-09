@@ -236,7 +236,7 @@ Used in NT-CFT-22.
 
 For a finite group over the complex numbers, each irreducible occurs in the regular representation with multiplicity its dimension. The proof uses the regular trace and the preceding character orthogonality.
 
-[Read the supplied programme proof](https://kokunoyumeto.github.io/open-math-courses-public/courses/RT-FIN/characters-and-the-orthogonality-relations.html#theorem-3-2). The exact published source and proof locators are recorded in the [RT-FIN proof crosswalk](https://kokunoyumeto.github.io/open-math-courses-public/courses/RT-FIN/proof-crosswalk.html).
+Read the supplied programme proof. The exact published source and proof locators are recorded in the [RT-FIN proof crosswalk](https://kokunoyumeto.github.io/open-math-courses-public/courses/RT-FIN/proof-crosswalk.html).
 
 Used in NT-CFT-21.
 

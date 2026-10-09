@@ -4,7 +4,7 @@
 
 A Weyl symbol lives on phase space, while its operator acts on a Hilbert space. To compare their traces, we first identify every Hilbert–Schmidt kernel and its exact Fourier factor. A trace-class operator with an integrable Weyl symbol then has a phase-space trace, even when its kernel has no continuous diagonal. Finally, a finite list of weighted symbol derivatives gives a concrete trace-class test. The integer \(n+1\) is forced by the oscillator spectrum in \(n\) configuration variables; no index formula is needed for these results.
 
-The needed course lessons are [Symbols, operators and Sobolev scales](euclidean-symbol-calculus.md) for the Fourier convention \(D=-i\partial\), Weyl quantization, Plancherel and symbolic composition, and [Traces that survive passage to cohomology](traces-and-complexes.md) for Hilbert–Schmidt operators, trace-class products, polar factorization and matrix traces. We prove the additional kernel, diagonal and weighted-derivative steps here. This lesson concerns the original matrix symbol on \(\mathbb R^{2n}_{x,\xi}\); the analytic index integral requires further arguments.
+The needed course lessons are [Symbols, operators and Sobolev scales](euclidean-symbol-calculus.md) for the Fourier convention \(D=-i\partial\), Weyl quantization, Plancherel and symbolic composition, and Traces that survive passage to cohomology for Hilbert–Schmidt operators, trace-class products, polar factorization and matrix traces. We prove the additional kernel, diagonal and weighted-derivative steps here. This lesson concerns the original matrix symbol on \(\mathbb R^{2n}_{x,\xi}\); the analytic index integral requires further arguments.
 
 ## 1. Hilbert–Schmidt maps and their complete kernels
 
@@ -453,7 +453,7 @@ The shell count is bounded above and below by positive multiples of \((1+r)^{n-1
 
 ## 12. Antecedent
 
-The proofs above are the course's direct trace and finite-derivative calculations; the exterior index coefficient and its boundary reduction belong to the subsequent index-formula lessons. The additional differentiation, integration, rectangular-kernel and oscillator-domain inputs are proved in Section 13. The earlier Hilbert–Schmidt and trace-ideal proofs are in [Traces that survive passage to cohomology](traces-and-complexes.md).
+The proofs above are the course's direct trace and finite-derivative calculations; the exterior index coefficient and its boundary reduction belong to the subsequent index-formula lessons. The additional differentiation, integration, rectangular-kernel and oscillator-domain inputs are proved in Section 13. The earlier Hilbert–Schmidt and trace-ideal proofs are in Traces that survive passage to cohomology.
 
 ## 13. Complete differentiation and integral inputs
 

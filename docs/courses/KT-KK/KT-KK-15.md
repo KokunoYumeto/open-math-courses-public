@@ -83,7 +83,7 @@ They are therefore the whole Hilbert space. Their inverse resolvents are adjoint
  \tag{CI.7}
 \]
 
-Here the local symbol and Sobolev arguments are the actual proofs in [*Unbounded Kasparov modules and spectral triples*, Lemmas 4.2a–4.2b](KT-KK-11.html#4-spectral-triples-and-the-circle). In a chart, invert the first-order principal symbol for large frequency, multiply that inverse by a cutoff equal to one near \(\operatorname{supp}\chi\), and quantize it. The proved composition expansion gives the identity near that support modulo an operator of order minus one. Both the inverse and this remainder map \(L^2\) to \(H^1\). Insert a second cutoff equal to one near the first; its commutator with \(P\) is order zero. The Sobolev bounds in that lemma give (CI.7). A finite chart partition gives the displayed estimate for the entire support. It applies to maximal-domain vectors by the compactly supported graph approximation already established, or by the same distributional parametrix identity.
+Here the local symbol and Sobolev arguments are the actual proofs in *Unbounded Kasparov modules and spectral triples*, Lemmas 4.2a–4.2b. In a chart, invert the first-order principal symbol for large frequency, multiply that inverse by a cutoff equal to one near \(\operatorname{supp}\chi\), and quantize it. The proved composition expansion gives the identity near that support modulo an operator of order minus one. Both the inverse and this remainder map \(L^2\) to \(H^1\). Insert a second cutoff equal to one near the first; its commutator with \(P\) is order zero. The Sobolev bounds in that lemma give (CI.7). A finite chart partition gives the displayed estimate for the entire support. It applies to maximal-domain vectors by the compactly supported graph approximation already established, or by the same distributional parametrix identity.
 
 Apply (CI.7) to \(u=(D\pm i)^{-1}v\). The inverse resolvent has norm at most one, and \(D(D\pm i)^{-1}\) is bounded, so bounded subsets of \(L^2\) are carried by \(\chi(D\pm i)^{-1}\) into a bounded \(H^1\) set with fixed compact support. The compact Sobolev inclusion, proved by the finite chart/Fourier-truncation argument in the same earlier lemma, makes this operator compact. Approximate an arbitrary \(f\in C_0(Y)\) uniformly by compactly supported smooth functions; such approximation follows by scalar truncation, a finite chart partition and ordinary convolution in each chart. The uniform resolvent bound passes compactness to the limit and proves (CI.2). \(\square\)
 
@@ -113,7 +113,7 @@ Smooth scalar multiplication preserves this domain and
  \tag{CI.10}
 \]
 
-This commutator is bounded. Smooth functions are uniformly dense in \(C(M)\), by the finite chart convolution argument. The Hilbert space \(L^2(M,S)\) is separable, by finite bundle charts and the countable Fourier dense families in their coordinate boxes, so it is a countably generated Hilbert \(\mathbb C\)-module. [The Baaj–Julg bounded-transform proof, Theorem 2.2 of the earlier lesson](KT-KK-11.html#2-the-bounded-transform), now proves that
+This commutator is bounded. Smooth functions are uniformly dense in \(C(M)\), by the finite chart convolution argument. The Hilbert space \(L^2(M,S)\) is separable, by finite bundle charts and the countable Fourier dense families in their coordinate boxes, so it is a countably generated Hilbert \(\mathbb C\)-module. The Baaj–Julg bounded-transform proof, Theorem 2.2 of the earlier lesson, now proves that
 
 \[
  \big(L^2(M,S),\text{multiplication},
@@ -462,7 +462,7 @@ Together with (CI.37), this is an actual cycle homotopy to the Gaussian spinor D
 
 ## 7. Elliptic cycles and quantization of the relative symbol
 
-**Proposition CI.9 (the full source action and symbol homotopies).** Let \(P:E^+\to E^-\) be a classical elliptic pseudodifferential operator of order zero on a closed manifold. Using the composition, adjoint, Sobolev and parametrix proofs in [*Unbounded Kasparov modules and spectral triples*, Lemmas 4.2a–4.2b](KT-KK-11.html#4-spectral-triples-and-the-circle), its normalized symbol defines
+**Proposition CI.9 (the full source action and symbol homotopies).** Let \(P:E^+\to E^-\) be a classical elliptic pseudodifferential operator of order zero on a closed manifold. Using the composition, adjoint, Sobolev and parametrix proofs in *Unbounded Kasparov modules and spectral triples*, Lemmas 4.2a–4.2b, its normalized symbol defines
 \[
  [P]\in KK(C(M),\mathbb C),\qquad
  [\![\sigma_P]\!]\in KK(C(M),C_0(T^*M)).

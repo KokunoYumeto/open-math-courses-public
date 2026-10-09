@@ -120,7 +120,7 @@ The value \(+\infty\) is allowed. A finite endpoint \(\gamma_u(c(u))\) is a cut 
 
 **Theorem B.1 (the cut-point alternatives).** Each ray minimizes exactly for \(0\leq t\leq c(u)\), with the upper endpoint omitted only when infinite. The values \(c(u)\) have a common positive lower bound. Two distinct minimizing segments from \(p\) to the same point cannot continue to minimize past that point. At a finite cut time either the exponential differential is singular or there is a second minimizing segment. At every time \(0<t<c(u)\) the segment is the unique minimizer and the exponential differential is nonsingular.
 
-**Proof.** [Hopf–Rinow B.2](completeness-and-the-hopf-rinow-theorem.md#theorem-b-2) supplies the global exponential and minimizing segments between all endpoints. [Hopf–Rinow A.1](completeness-and-the-hopf-rinow-theorem.md#lemma-a-1) supplies one positive normal radius at \(p\) within which the radial segments minimize. This radius works for every \(u\).
+**Proof.** Hopf–Rinow B.2 supplies the global exponential and minimizing segments between all endpoints. Hopf–Rinow A.1 supplies one positive normal radius at \(p\) within which the radial segments minimize. This radius works for every \(u\).
 
 If the equality in (B.1) holds at \(t\), it holds at every \(s\leq t\). Indeed,
 \[
@@ -129,7 +129,7 @@ t=d(p,\gamma_u(t))
 \]
 Both inequalities must be equalities. Distance is continuous by [Riemannian connections A.2](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-2), so the set of such times is closed. This proves the assertion about its interval and finite endpoint.
 
-Suppose two distinct minimizers arrive at \(q\). Their terminal unit velocities differ: if equal, backwards uniqueness for the geodesic equation, [Geodesics A.1](geodesics-normal-coordinates-and-curvature.md#theorem-a-1), identifies both entire segments. Following the first segment and then the continuation of the second creates a corner. If that continuation minimized past \(q\), the broken path would have the same minimizing length. [Hopf–Rinow A.3](completeness-and-the-hopf-rinow-theorem.md#lemma-a-3) excludes a corner in such a path, a contradiction. Thus neither segment continues minimizing.
+Suppose two distinct minimizers arrive at \(q\). Their terminal unit velocities differ: if equal, backwards uniqueness for the geodesic equation, [Geodesics A.1](geodesics-normal-coordinates-and-curvature.md#theorem-a-1), identifies both entire segments. Following the first segment and then the continuation of the second creates a corner. If that continuation minimized past \(q\), the broken path would have the same minimizing length. Hopf–Rinow A.3 excludes a corner in such a path, a contradiction. Thus neither segment continues minimizing.
 
 At an interior time \(t<c(u)\), another minimizer would contradict this conclusion by considering a slightly longer still minimizing radial segment. A singular exponential differential there gives a conjugate time by [Jacobi fields B.2](jacobi-fields-conjugate-points-and-the-morse-index-theorem.md#theorem-b-2), and [Jacobi fields F.1](jacobi-fields-conjugate-points-and-the-morse-index-theorem.md#theorem-f-1) would then shorten that longer segment. Hence the interior assertions hold.
 
@@ -172,7 +172,7 @@ is a diffeomorphism. The cut locus is closed, \(D_p\) is homeomorphic to \(\math
 
 **Proof.** Define \(a(u)=1/c(u)\), setting \(a(u)=0\) at infinite cut time. By B.2 it is continuous; by the uniform lower bound in B.1 it is bounded. For a nonzero vector \(v=ru\), membership in \(D_p\) is the strict inequality \(ra(u)<1\), so \(D_p\) is open away from zero. The common normal ball makes it open at zero as well.
 
-Every point has a minimizing radial segment by [Hopf–Rinow B.2](completeness-and-the-hopf-rinow-theorem.md#theorem-b-2). Its length \(r\) satisfies \(r\leq c(u)\). If its endpoint is not a cut point then the inequality is strict, so it lies in the image in (B.2). Conversely a point reached before a cut time cannot also be a cut point: a cut representation would be a minimizer of the same length; it either is the same radial segment, contradicting the strict inequality, or is a second one, contrary to B.1. That theorem also proves injectivity of (B.2) and nonsingularity away from zero. At zero use [Geodesics B.1](geodesics-normal-coordinates-and-curvature.md#theorem-b-1). Local smooth inverses from [Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion) therefore glue to the global inverse. In particular the complement of the cut locus is open.
+Every point has a minimizing radial segment by Hopf–Rinow B.2. Its length \(r\) satisfies \(r\leq c(u)\). If its endpoint is not a cut point then the inequality is strict, so it lies in the image in (B.2). Conversely a point reached before a cut time cannot also be a cut point: a cut representation would be a minimizer of the same length; it either is the same radial segment, contradicting the strict inequality, or is a second one, contrary to B.1. That theorem also proves injectivity of (B.2) and nonsingularity away from zero. At zero use [Geodesics B.1](geodesics-normal-coordinates-and-curvature.md#theorem-b-1). Local smooth inverses from [Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion) therefore glue to the global inverse. In particular the complement of the cut locus is open.
 
 Identify \(T_pM\) with \(\mathbb R^n\) by an orthonormal basis. The maps
 \[
@@ -203,9 +203,9 @@ d_h(v,z)\geq|v-z|.
 \]
 An \(h\)-Cauchy sequence is consequently Euclidean Cauchy, and converges to some \(v\). On a fixed small closed Euclidean ball about \(v\), smoothness bounds \(h_z(w,w)\leq A^2|w|^2\) for one finite \(A\). The straight segment from a sufficiently late sequence point to \(v\) lies in that ball and has \(h\)-length at most \(A\) times its Euclidean length. Thus the sequence converges also in \(d_h\). This proves completeness.
 
-The exponential is a local isometry by the definition of \(h\). [Hopf–Rinow E.4](completeness-and-the-hopf-rinow-theorem.md#corollary-e-4) makes it a surjective smooth covering. If \(M\) is simply connected, [Flat connections D.3](flat-connections-and-infinitesimal-holonomy.md#theorem-d-3) implies that a connected cover has one sheet: its fundamental-group subgroup is a subgroup of the trivial group, and the universal cover in [Flat connections D.2](flat-connections-and-infinitesimal-holonomy.md#theorem-d-2) is then the base itself. A bijective smooth covering is a diffeomorphism.
+The exponential is a local isometry by the definition of \(h\). Hopf–Rinow E.4 makes it a surjective smooth covering. If \(M\) is simply connected, [Flat connections D.3](flat-connections-and-infinitesimal-holonomy.md#theorem-d-3) implies that a connected cover has one sheet: its fundamental-group subgroup is a subgroup of the trivial group, and the universal cover in [Flat connections D.2](flat-connections-and-infinitesimal-holonomy.md#theorem-d-2) is then the base itself. A bijective smooth covering is a diffeomorphism.
 
-Apply this at either endpoint. Any geodesic on \([0,1]\) from \(p\) to \(q\) equals \(t\mapsto\exp_p(tv)\) by [Geodesics A.1](geodesics-normal-coordinates-and-curvature.md#theorem-a-1). The unique inverse vector \(v=\exp_p^{-1}q\) proves uniqueness. [Hopf–Rinow B.2](completeness-and-the-hopf-rinow-theorem.md#theorem-b-2) supplies a minimizing segment, so this unique geodesic is minimizing. □
+Apply this at either endpoint. Any geodesic on \([0,1]\) from \(p\) to \(q\) equals \(t\mapsto\exp_p(tv)\) by [Geodesics A.1](geodesics-normal-coordinates-and-curvature.md#theorem-a-1). The unique inverse vector \(v=\exp_p^{-1}q\) proves uniqueness. Hopf–Rinow B.2 supplies a minimizing segment, so this unique geodesic is minimizing. □
 
 A complete simply connected manifold with \(K\leq0\) is called a **Hadamard manifold**.
 
@@ -287,9 +287,9 @@ Choose a parallel orthonormal normal frame \(E_1,\ldots,E_{n-1}\), and put
 \end{aligned}
 \tag{D.2}
 \]
-The sine and cosine integrals are \(L/2\), as follows from their derivative identities in [Sectional curvature B.2](sectional-curvature-and-space-forms.md#lemma-b-2) and the fundamental theorem. Thus \(L\leq\pi/\sqrt{k}\). [Hopf–Rinow B.2](completeness-and-the-hopf-rinow-theorem.md#theorem-b-2) supplies such a minimizing segment for every pair of points, proving the diameter bound and compactness.
+The sine and cosine integrals are \(L/2\), as follows from their derivative identities in [Sectional curvature B.2](sectional-curvature-and-space-forms.md#lemma-b-2) and the fundamental theorem. Thus \(L\leq\pi/\sqrt{k}\). Hopf–Rinow B.2 supplies such a minimizing segment for every pair of points, proving the diameter bound and compactness.
 
-[Flat connections D.2](flat-connections-and-infinitesimal-holonomy.md#theorem-d-2) constructs the connected smooth universal cover \(\pi:\widetilde M\to M\). Give it the pullback metric. This is a Riemannian covering and is complete by [Hopf–Rinow E.4](completeness-and-the-hopf-rinow-theorem.md#corollary-e-4). A local isometry preserves the Levi-Civita connection by [Riemannian connections A.3](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-3). Apply that identity twice and subtract the bracket term in the curvature definition: it also preserves curvature, and taking its trace in corresponding orthonormal frames preserves Ricci. Thus (D.1) holds upstairs. The same diameter argument makes \(\widetilde M\) compact. The fibre over \(p\) is closed and discrete: it is the inverse image of the closed singleton \(\{p\}\), and every covering chart isolates each point of that fibre. A compact discrete space is finite, since the cover by its singleton open subsets has a finite subcover. By the explicit path-class and deck construction in [Flat connections D.2](flat-connections-and-infinitesimal-holonomy.md#theorem-d-2) this fibre is in bijection with \(\pi_1(M,p)\). Hence the fundamental group is finite. □
+[Flat connections D.2](flat-connections-and-infinitesimal-holonomy.md#theorem-d-2) constructs the connected smooth universal cover \(\pi:\widetilde M\to M\). Give it the pullback metric. This is a Riemannian covering and is complete by Hopf–Rinow E.4. A local isometry preserves the Levi-Civita connection by [Riemannian connections A.3](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-3). Apply that identity twice and subtract the bracket term in the curvature definition: it also preserves curvature, and taking its trace in corresponding orthonormal frames preserves Ricci. Thus (D.1) holds upstairs. The same diameter argument makes \(\widetilde M\) compact. The fibre over \(p\) is closed and discrete: it is the inverse image of the closed singleton \(\{p\}\), and every covering chart isolates each point of that fibre. A compact discrete space is finite, since the cover by its singleton open subsets has a finite subcover. By the explicit path-class and deck construction in [Flat connections D.2](flat-connections-and-infinitesimal-holonomy.md#theorem-d-2) this fibre is in bijection with \(\pi_1(M,p)\). Hence the fundamental group is finite. □
 
 **Theorem D.2 (equality along a longest permitted minimizing segment).** Under (D.1), if a minimizing unit-speed geodesic has length \(L=\pi/\sqrt{k}\), then every radial sectional curvature along it is exactly \(k\). Equivalently,
 \[
@@ -393,7 +393,7 @@ where a zero component contributes \(+\infty\). This proves (E.2) and the assert
 **Exercise E.2 (asphericity and all lifting prerequisites).** Prove that every complete manifold with \(K\leq0\), in particular every compact hyperbolic manifold, has \(\pi_j(M)=0\) for \(j\geq2\).
 
 **Solution.** [Flat connections D.2](flat-connections-and-infinitesimal-holonomy.md#theorem-d-2) supplies the smooth universal cover
-\(\pi:\widetilde M\to M\). The pullback metric is complete by [Hopf–Rinow E.4](completeness-and-the-hopf-rinow-theorem.md#corollary-e-4) and has the same sectional curvatures by [Riemannian connections A.3](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-3). It is simply connected by its construction. C.1 therefore identifies it diffeomorphically with a tangent space, by the exponential at any chosen point \(\widetilde p\).
+\(\pi:\widetilde M\to M\). The pullback metric is complete by Hopf–Rinow E.4 and has the same sectional curvatures by [Riemannian connections A.3](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-3). It is simply connected by its construction. C.1 therefore identifies it diffeomorphically with a tangent space, by the exponential at any chosen point \(\widetilde p\).
 
 We include the lifting step for arbitrary continuous maps. [Sectional curvature C.3](sectional-curvature-and-space-forms.md#lemma-c-3) proves that \(S^j\) is path connected and simply connected for \(j\geq2\), using based polygon approximation and an explicit stereographic contraction. Let \(f:(S^j,s_0)\to(M,p)\) be continuous. For \(s\in S^j\), choose a path \(\alpha\) from \(s_0\) to \(s\) and define \(\widetilde f(s)\) as the endpoint of the lift of \(f\circ\alpha\) beginning at \(\widetilde p\).
 
@@ -407,13 +407,13 @@ Use the global exponential inverse at \(\widetilde p\) to contract it:
 \exp_{\widetilde p}\!\left((1-t)\exp_{\widetilde p}^{-1}\widetilde f(s)\right).
 \tag{E.6}
 \]
-It is continuous, fixes the base point, starts at \(\widetilde f\), and ends at the constant \(\widetilde p\). Projection by \(\pi\) is a based null homotopy of \(f\). Since \(\pi_j\) consists of based homotopy classes of such sphere maps, every class is zero. A compact hyperbolic manifold is complete by [Hopf–Rinow B.3](completeness-and-the-hopf-rinow-theorem.md#corollary-b-3) and has \(K=-1\), so it satisfies the hypotheses. □
+It is continuous, fixes the base point, starts at \(\widetilde f\), and ends at the constant \(\widetilde p\). Projection by \(\pi\) is a based null homotopy of \(f\). Since \(\pi_j\) consists of based homotopy classes of such sphere maps, every class is zero. A compact hyperbolic manifold is complete by Hopf–Rinow B.3 and has \(K=-1\), so it satisfies the hypotheses. □
 
 ## F. Closed loops and positive curvature
 
 **Lemma F.1 (nearby loops and polygons).** On a compact Riemannian manifold there is a number \(\rho>0\) such that two continuous loops \(a,b:[0,1]\to M\) with \(d(a(t),b(t))<\rho\) are freely homotopic. Every continuous loop has a finite geodesic polygon in its free homotopy class. Loops of length less than a sufficiently small fixed positive number are null homotopic.
 
-**Proof.** [Hopf–Rinow A.1](completeness-and-the-hopf-rinow-theorem.md#lemma-a-1) gives a radius uniform over the compact set \(M\) in which the short minimizing vector from \(x\) to \(y\) is unique. Shrink the radius to \(\rho\). The map
+**Proof.** Hopf–Rinow A.1 gives a radius uniform over the compact set \(M\) in which the short minimizing vector from \(x\) to \(y\) is unique. Shrink the radius to \(\rho\). The map
 \[
 (x,v)\longmapsto (x,\exp_xv)
 \]
@@ -428,7 +428,7 @@ By uniform continuity choose a partition of the parameter interval so fine that 
 
 **Theorem F.2 (a shortest closed geodesic in a nontrivial class).** Every nontrivial free homotopy class of loops in a compact connected Riemannian manifold has a positive-length smooth closed geodesic shortest among its piecewise smooth representatives.
 
-**Proof.** Lemma F.1 supplies a polygon representative, and its last assertion bounds the Riemannian lengths of all piecewise smooth representatives in this class below by one positive number. Thus their infimum \(\ell\) satisfies \(0<\ell<\infty\). Take representatives whose Riemannian lengths decrease to \(\ell\). [Hopf–Rinow G.2](completeness-and-the-hopf-rinow-theorem.md#lemma-g-2) writes each as \(\beta(s(t))\), where \(s\) is continuous, nondecreasing and onto \([0,L]\), and \(\beta\) is \(1\)-Lipschitz; its metric length \(L\) is at most its Riemannian length. Replace it on \([0,1]\) by \(c_j(t)=\beta(Lt)\). This preserves its free class, through the explicit homotopy \(\beta((1-u)s(t)+uLt)\). The resulting loops have one common Lipschitz bound. [Hopf–Rinow G.3](completeness-and-the-hopf-rinow-theorem.md#lemma-g-3) gives a uniformly convergent subsequence with limit a Lipschitz loop \(c\), and proves, for metric length,
+**Proof.** Lemma F.1 supplies a polygon representative, and its last assertion bounds the Riemannian lengths of all piecewise smooth representatives in this class below by one positive number. Thus their infimum \(\ell\) satisfies \(0<\ell<\infty\). Take representatives whose Riemannian lengths decrease to \(\ell\). Hopf–Rinow G.2 writes each as \(\beta(s(t))\), where \(s\) is continuous, nondecreasing and onto \([0,L]\), and \(\beta\) is \(1\)-Lipschitz; its metric length \(L\) is at most its Riemannian length. Replace it on \([0,1]\) by \(c_j(t)=\beta(Lt)\). This preserves its free class, through the explicit homotopy \(\beta((1-u)s(t)+uLt)\). The resulting loops have one common Lipschitz bound. Hopf–Rinow G.3 gives a uniformly convergent subsequence with limit a Lipschitz loop \(c\), and proves, for metric length,
 \[
 L(c)\leq\liminf_j L(c_j)=\ell .
 \tag{F.2}
@@ -437,7 +437,7 @@ For all large \(j\), Lemma F.1 makes \(c\) freely homotopic to \(c_j\).
 
 Replace \(c\) by a sufficiently fine polygon as in F.1. Each segment has length the distance between its endpoints, at most the length of the corresponding part of \(c\). The resulting finite polygon lies in the same class and has length at most \(\ell\), hence exactly \(\ell\). Delete constant segments and parametrize it by arc length on \([0,\ell]\).
 
-This polygon has no corner, including at the identified endpoints. Indeed, take two very nearby points on opposite sides of any vertex, so that the intervening two segments lie in a convex normal neighbourhood from [Riemannian connections B.5](riemannian-connections-and-convex-neighbourhoods.md#theorem-b-5). If their unit tangents fail to agree, the corner obstruction of [Hopf–Rinow A.3](completeness-and-the-hopf-rinow-theorem.md#lemma-a-3) replaces these segments by a strictly shorter path in that neighbourhood. Both paths are homotopic with their endpoints fixed: the convex normal neighbourhood contracts paths between those endpoints by its short geodesics. The replacement is therefore in the original free class, contradicting minimality. All tangents agree. Uniqueness for the geodesic equation in [Geodesics A.1](geodesics-normal-coordinates-and-curvature.md#theorem-a-1) identifies successive segments with one smooth geodesic. It also identifies the final and initial germs, so the curve is smooth and periodic, not merely a geodesic segment with equal endpoint values. □
+This polygon has no corner, including at the identified endpoints. Indeed, take two very nearby points on opposite sides of any vertex, so that the intervening two segments lie in a convex normal neighbourhood from [Riemannian connections B.5](riemannian-connections-and-convex-neighbourhoods.md#theorem-b-5). If their unit tangents fail to agree, the corner obstruction of Hopf–Rinow A.3 replaces these segments by a strictly shorter path in that neighbourhood. Both paths are homotopic with their endpoints fixed: the convex normal neighbourhood contracts paths between those endpoints by its short geodesics. The replacement is therefore in the original free class, contradicting minimality. All tangents agree. Uniqueness for the geodesic equation in [Geodesics A.1](geodesics-normal-coordinates-and-curvature.md#theorem-a-1) identifies successive segments with one smooth geodesic. It also identifies the final and initial germs, so the curve is smooth and periodic, not merely a geodesic segment with equal endpoint values. □
 
 **Lemma F.3 (orthogonal parity and orientations).** If an orthogonal map \(A\) on a real \(d\)-dimensional inner-product space has no nonzero fixed vector, then \(\det A=(-1)^d\). Thus an orientation-preserving orthogonal map in odd dimension, or an orientation-reversing one in even dimension, has a nonzero fixed vector.
 
@@ -548,7 +548,7 @@ Thus \(F\) is continuous. If \(d(x,o)>R\), the reverse triangle inequality gives
 F(x)\geq(d(x,o)-R)^2.
 \tag{G.5}
 \]
-Its nonempty sublevel \(\{F\leq F(o)\}\) is closed and bounded, hence compact by [Hopf–Rinow B.2](completeness-and-the-hopf-rinow-theorem.md#theorem-b-2). A minimum there exists by [Local tools 0.1](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations) and is a global minimum.
+Its nonempty sublevel \(\{F\leq F(o)\}\) is closed and bounded, hence compact by Hopf–Rinow B.2. A minimum there exists by [Local tools 0.1](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations) and is a global minimum.
 
 For the constant-speed geodesic \(x_t\) from \(x_0\) to \(x_1\), C.2 gives
 \[
@@ -581,7 +581,7 @@ At a minimum the derivative is zero by one-variable differentiation along each c
 Q(x)=\sup_{z\in O}d(x,z)^2.
 \tag{G.8}
 \]
-This is finite. The distance-difference estimate in G.2 holds uniformly for \(z\in O\) and \(x,y\) in a bounded set, so taking suprema shows that \(Q\) is locally Lipschitz. Pick any \(z_0\in O\); then \(Q(x)\geq d(x,z_0)^2\). A nonempty sublevel is therefore compact by [Hopf–Rinow B.2](completeness-and-the-hopf-rinow-theorem.md#theorem-b-2), and continuity gives a minimum. Taking the supremum of the sharp convexity inequality from C.2 gives
+This is finite. The distance-difference estimate in G.2 holds uniformly for \(z\in O\) and \(x,y\) in a bounded set, so taking suprema shows that \(Q\) is locally Lipschitz. Pick any \(z_0\in O\); then \(Q(x)\geq d(x,z_0)^2\). A nonempty sublevel is therefore compact by Hopf–Rinow B.2, and continuity gives a minimum. Taking the supremum of the sharp convexity inequality from C.2 gives
 \[
 Q(x_t)\leq(1-t)Q(x_0)+tQ(x_1)
 -t(1-t)d(x_0,x_1)^2.
@@ -594,7 +594,7 @@ An isometry \(\phi\) has **constant displacement** if \(d(x,\phi x)\) is indepen
 
 **Lemma H.1 (deck displacement in a homogeneous cover).** Let \(M\) be a connected homogeneous Riemannian manifold. Every deck transformation of its universal Riemannian cover has constant displacement.
 
-**Proof.** Homogeneity implies completeness by [Hopf–Rinow B.3](completeness-and-the-hopf-rinow-theorem.md#corollary-b-3). Let \(\pi:\widetilde M\to M\) be the connected simply connected cover constructed in [Flat connections D.2](flat-connections-and-infinitesimal-holonomy.md#theorem-d-2), equipped with its pullback metric. It is complete by [Hopf–Rinow E.4](completeness-and-the-hopf-rinow-theorem.md#corollary-e-4). Its deck group \(\Gamma\), identified with \(\pi_1(M)\), is countable by [Curvature and holonomy C.4](curvature-and-holonomy-groups.md#lemma-c-4).
+**Proof.** Homogeneity implies completeness by Hopf–Rinow B.3. Let \(\pi:\widetilde M\to M\) be the connected simply connected cover constructed in [Flat connections D.2](flat-connections-and-infinitesimal-holonomy.md#theorem-d-2), equipped with its pullback metric. It is complete by Hopf–Rinow E.4. Its deck group \(\Gamma\), identified with \(\pi_1(M)\), is countable by [Curvature and holonomy C.4](curvature-and-holonomy-groups.md#lemma-c-4).
 
 Every isometry \(f\) of \(M\) lifts to an isometry \(F\) of \(\widetilde M\). To see this with prescribed value \(F(x)=y\), where \(\pi y=f(\pi x)\), use uniqueness of simply connected covers in [Flat connections D.3](flat-connections-and-infinitesimal-holonomy.md#theorem-d-3) on the two covering maps \(\pi\) and \(f\pi\), with the stated base points. It gives a diffeomorphism \(F\) with \(\pi F=f\pi\). Pulling back the metric through this identity proves that \(F\) is an isometry. It normalizes \(\Gamma\), since
 \[
@@ -646,7 +646,7 @@ Give the isometry group of a Hadamard manifold the topology of uniform convergen
 f(x)=\exp_q(A\log_p x).
 \tag{I.1}
 \]
-These pairs \((q,A)\) form an orthonormal-frame bundle after fixing an orthonormal basis of \(T_pM\). Its restriction over a compact set is compact by [Hopf–Rinow D.2](completeness-and-the-hopf-rinow-theorem.md#lemma-d-2).
+These pairs \((q,A)\) form an orthonormal-frame bundle after fixing an orthonormal basis of \(T_pM\). Its restriction over a compact set is compact by Hopf–Rinow D.2.
 
 Convergence of pairs in (I.1) gives smooth convergence on compact coordinate sets, hence uniform convergence on compact sets, by smoothness of the exponential and C.2. Conversely, evaluations at the finitely many points \(p,\exp_p e_1,\ldots,\exp_p e_n\) recover the pair continuously:
 \[
@@ -659,9 +659,9 @@ Suppose pairs of isometries \(f_i\) converge to \((q,A)\). Formula (I.1) defines
 \[
 d(p,x_i)=d(f_i p,y)
 \]
-is bounded. [Hopf–Rinow B.2](completeness-and-the-hopf-rinow-theorem.md#theorem-b-2) gives a convergent subsequence \(x_i\to x\), and uniform convergence on its compact containing ball gives \(f(x)=y\). It is injective by distance preservation. The inverse function theorem, applied to its isometric derivative, gives a smooth inverse. Thus \(f\) is an isometry. If all \(f_i\) lie in \(G\), closedness implies \(f\in G\). The pairs representing \(G\) are consequently closed in the frame bundle. Intersecting with its compact restriction over a compact set proves the evaluation assertion.
+is bounded. Hopf–Rinow B.2 gives a convergent subsequence \(x_i\to x\), and uniform convergence on its compact containing ball gives \(f(x)=y\). It is injective by distance preservation. The inverse function theorem, applied to its isometric derivative, gives a smooth inverse. Thus \(f\) is an isometry. If all \(f_i\) lie in \(G\), closedness implies \(f\in G\). The pairs representing \(G\) are consequently closed in the frame bundle. Intersecting with its compact restriction over a compact set proves the evaluation assertion.
 
-In particular \(H\) is compact. The derivative at \(p\) is an injective continuous group homomorphism with closed image in \(O(T_pM)\), and (I.1) is its continuous inverse onto \(H\). The closed-subgroup theorem proved in [Invariant connections A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1) gives this image its embedded Lie-group structure. Formula (I.1) shows that its action on \(M\) depends smoothly on its matrix coordinate.
+In particular \(H\) is compact. The derivative at \(p\) is an injective continuous group homomorphism with closed image in \(O(T_pM)\), and (I.1) is its continuous inverse onto \(H\). The closed-subgroup theorem proved in Invariant connections A.1 gives this image its embedded Lie-group structure. Formula (I.1) shows that its action on \(M\) depends smoothly on its matrix coordinate.
 
 For clarity, the isometry topology makes multiplication and inversion continuous. On a compact \(C\),
 \[
@@ -687,7 +687,7 @@ A\longmapsto (d g_p) A(d g_p)^{-1}
 \]
 between the two derivative representations, a smooth Lie-group isomorphism.
 
-The inclusion \(H\subset G_q\) is also an embedded smooth inclusion. In derivative coordinates at \(p\), formula (I.1) expresses \(d f_q\) smoothly as a function of \(A=d f_p\). Conversely, for isometries in that image, the same formula based at \(q\) expresses \(d f_p\) smoothly as a function of \(d f_q\). The image is compact and therefore closed, and the closed-subgroup theorem from [Invariant connections A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1) supplies its embedded structure. The two smooth formulas identify that structure with the one on \(H\). Equal dimension and [Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion) now make the inclusion open near the identity, hence open everywhere by translation. An open subgroup is a union of connected components: each coset is open, and a connected set cannot meet two disjoint cosets. A compact Lie group has finitely many components because components are open in a locally path-connected manifold and compactness gives a finite subcover. Since \(H\) and \(G_q\) have the same number of components, the inclusion must be equality. Equation (I.3) gives \(K=H\), proving maximality.
+The inclusion \(H\subset G_q\) is also an embedded smooth inclusion. In derivative coordinates at \(p\), formula (I.1) expresses \(d f_q\) smoothly as a function of \(A=d f_p\). Conversely, for isometries in that image, the same formula based at \(q\) expresses \(d f_p\) smoothly as a function of \(d f_q\). The image is compact and therefore closed, and the closed-subgroup theorem from Invariant connections A.1 supplies its embedded structure. The two smooth formulas identify that structure with the one on \(H\). Equal dimension and [Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion) now make the inclusion open near the identity, hence open everywhere by translation. An open subgroup is a union of connected components: each coset is open, and a connected set cannot meet two disjoint cosets. A compact Lie group has finitely many components because components are open in a locally path-connected manifold and compactness gives a finite subcover. Since \(H\) and \(G_q\) have the same number of components, the inclusion must be equality. Equation (I.3) gives \(K=H\), proving maximality.
 
 Conversely, any maximal compact \(K\) fixes a point \(q\) by G.3. Since \(G_q\) is compact and contains \(K\), maximality gives \(K=G_q\). Transitivity supplies its conjugacy to \(H\).
 

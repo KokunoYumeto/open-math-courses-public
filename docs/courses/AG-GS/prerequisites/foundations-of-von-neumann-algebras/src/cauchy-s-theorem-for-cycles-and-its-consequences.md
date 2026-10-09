@@ -11,7 +11,7 @@ This lesson proves the complex analysis that the operator-algebra lessons use. I
 - cycles that surround a compact set inside an open set;
 - the same theorems for functions with values in a Banach space.
 
-The lesson uses [Hahn–Banach separation and uniform boundedness](hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.md#oa-fnd-hb-02). Lemma 0.1 below proves the elementary real and Banach-valued integration facts required here: Riemann integration on intervals, the fundamental theorem and chain rule, rectangle interchange, and differentiation of parameter integrals. The later complex-analysis proofs require no other integration theorem.
+The lesson uses Hahn–Banach separation and uniform boundedness. Lemma 0.1 below proves the elementary real and Banach-valued integration facts required here: Riemann integration on intervals, the fundamental theorem and chain rule, rectangle interchange, and differentiation of parameter integrals. The later complex-analysis proofs require no other integration theorem.
 
 ## Conventions
 
@@ -71,7 +71,7 @@ gives the stated norm bound. In particular, a uniform change of size at most \(\
 \((P(t+h)-P(t))/h-F(t)\)
 is at most \(\sup_{s\text{ between }t,t+h}\|F(s)-F(t)\|\), which tends to zero. This also gives the endpoint derivatives. To prove the converse, first recall the scalar mean value theorem: a continuous real function on an interval attains its extrema; if its endpoint values agree and it is not constant, some extremum is interior and its derivative is zero, since the two one-sided difference quotients have opposite signs. This is Rolle's theorem. Subtracting the line joining the endpoints gives the mean value theorem. Thus a scalar function with zero derivative is constant.
 
-If \(G\) has continuous derivative \(F\), the function \(G-P\) has zero derivative. Compose it with each bounded linear functional on \(X\); in the complex case apply the real mean value theorem to both real and imaginary parts. These scalar functions are constant, and [Hahn–Banach separation, Corollary 2.3 of the first lesson](hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.md#oa-fnd-hb-02), shows that \(G-P\) itself is constant. This gives the converse fundamental theorem. For a differentiable real function \(\phi\), inserting
+If \(G\) has continuous derivative \(F\), the function \(G-P\) has zero derivative. Compose it with each bounded linear functional on \(X\); in the complex case apply the real mean value theorem to both real and imaginary parts. These scalar functions are constant, and Hahn–Banach separation, Corollary 2.3 of the first lesson, shows that \(G-P\) itself is constant. This gives the converse fundamental theorem. For a differentiable real function \(\phi\), inserting
 \(\phi(t+h)-\phi(t)=\phi'(t)h+o(|h|)\)
 into the differentiability expansion of \(G\) proves \((G\circ\phi)'=(G'\circ\phi)\phi'\). The same calculation with complex increments proves the chain rule for a holomorphic \(G\) along a differentiable complex path. Continuity of the displayed derivative permits the fundamental theorem on each path piece. Real substitution follows by applying this chain rule to the primitive \(P(u)=\int_{u_0}^uF(v)\,dv\). No monotonicity of \(\phi\) is needed for the oriented identity.
 

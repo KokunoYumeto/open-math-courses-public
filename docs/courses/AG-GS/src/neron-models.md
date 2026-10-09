@@ -783,7 +783,7 @@ We first work over an arbitrary DVR \(R\), without completeness, henselianity, e
 U\subset\mathcal A
 \]
 
-dense in every geometric component of both fibres. Its complement is the support of an effective horizontal Cartier divisor \(E\). In particular this chart is available before the ample-extension assertion below. We use the cube already proved in [Abelian varieties](abelian-varieties.md), Theorem 4.1 and Corollary 4.2. The square argument in Lemma 6.12 will be applied to a new line bundle, rather than only to \(\mathcal O(E)\).
+dense in every geometric component of both fibres. Its complement is the support of an effective horizontal Cartier divisor \(E\). In particular this chart is available before the ample-extension assertion below. We use the cube already proved in Abelian varieties, Theorem 4.1 and Corollary 4.2. The square argument in Lemma 6.12 will be applied to a new line bundle, rather than only to \(\mathcal O(E)\).
 
 #### Extending divisors and prescribing an affine nonvanishing open
 
@@ -817,7 +817,7 @@ is affine and geometrically fibre-dense.
 L_K^{\otimes am}\otimes\mathcal O_A(-E_K)
 \]
 
-has a nonzero section \(q\). Here is the elementary generation argument needed for this assertion. Push the coherent sheaf \(\mathcal O_A(-E_K)\) to the projective space of the embedding. On each standard affine chart choose finitely many module generators. A generator extends to a global twisted section after multiplication by a sufficiently high power of the chart coordinate. To verify extension, take a finite affine trivializing cover and clear its denominators; increase the exponent once more so that the finitely many differences on overlaps vanish. Raising the finitely many exponents to a common value yields global generators in all sufficiently high twists. This is the full argument of [Serre's theorems on projective schemes](../../AG-QC/src/serres-theorems-on-projective-schemes.md), Lemma 1.1 and Proposition 1.2, and uses no cohomological vanishing. The nonzero invertible sheaf thus has a nonzero global section in a high twist.
+has a nonzero section \(q\). Here is the elementary generation argument needed for this assertion. Push the coherent sheaf \(\mathcal O_A(-E_K)\) to the projective space of the embedding. On each standard affine chart choose finitely many module generators. A generator extends to a global twisted section after multiplication by a sufficiently high power of the chart coordinate. To verify extension, take a finite affine trivializing cover and clear its denominators; increase the exponent once more so that the finitely many differences on overlaps vanish. Raising the finitely many exponents to a common value yields global generators in all sufficiently high twists. This is the full argument of Serre's theorems on projective schemes, Lemma 1.1 and Proposition 1.2, and uses no cohomological vanishing. The nonzero invertible sheaf thus has a nonzero global section in a high twist.
 
 Set \(n=am\) and
 
@@ -946,7 +946,7 @@ Raynaud's ample-extension theorem for Néron models is recorded in Matthieu Roma
 
 Pierre Gabriel's *Généralités sur les groupes algébriques*, SGA 3, Exposé VI A, [corrected edition of 13 October 2024](https://webusers.imj-prg.fr/~patrick.polo/SGA3/Exp6A-13oct24.pdf), treats the identity component and its geometric irreducibility. The use above is over the separably closed residue field of the strict henselization, where the other smooth components also have rational points and are translates of the identity component.
 
-The exact earlier mathematical inputs are: this lesson's Lemma 3.1, Lemmas 6.11–6.14, Lemma 6.16 and Theorem 6.17; [Abelian varieties](abelian-varieties.md), Theorem 4.1 and Corollary 4.2; [Group schemes over a field](group-schemes-over-a-field.md), Theorems 2.2–2.3; and [Regular local rings](../../AG-CA/src/regular-local-rings.md), Proposition 1.3 and Theorem 5.3. The finite denominator, generation and immersion arguments have also been given above. The regular-local factoriality source was checked in The Stacks project authors' native text, read in the [AI Integrated Stacks Project](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-algebra.html#lemma-regular-local-UFD). These references identify established mathematical contributions; the exposition above is independently written.
+The exact earlier mathematical inputs are: this lesson's Lemma 3.1, Lemmas 6.11–6.14, Lemma 6.16 and Theorem 6.17; Abelian varieties, Theorem 4.1 and Corollary 4.2; [Group schemes over a field](group-schemes-over-a-field.md), Theorems 2.2–2.3; and [Regular local rings](../../AG-CA/src/regular-local-rings.md), Proposition 1.3 and Theorem 5.3. The finite denominator, generation and immersion arguments have also been given above. The regular-local factoriality source was checked in The Stacks project authors' native text, read in the [AI Integrated Stacks Project](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-algebra.html#lemma-regular-local-UFD). These references identify established mathematical contributions; the exposition above is independently written.
 
 ## 7. Torsion and the good-reduction criterion
 
@@ -1523,7 +1523,7 @@ The degree-\(2d\) construction equals \(u\), so this identity proves the group l
 
 **Corollary 8.17. Reduction to a Jacobian.** Every abelian variety over \(K\) is isogenous to a factor of the Jacobian of a smooth pointed curve of genus at least two.
 
-**Proof.** The zero-dimensional case is immediate. Apply 8.15–8.16 to obtain \(J\twoheadrightarrow A\). The proved Poincaré reducibility theorem over the given field supplies an abelian subvariety \(D\subset J\) mapping isogenously onto \(A\), and a complementary subvariety \(B\) with \(D\times B\to J\) an isogeny. Together with the reverse of \(D\to A\), this identifies \(J\) up to isogeny with \(A\times B\). The exact current proof provider is [Abelian varieties, Theorem6.20](abelian-varieties.md), with Theorem6.15 and Proposition6.18 supplying its dual and restriction maps; its actual hash and read scope are in the integration record. \(\square\)
+**Proof.** The zero-dimensional case is immediate. Apply 8.15–8.16 to obtain \(J\twoheadrightarrow A\). The proved Poincaré reducibility theorem over the given field supplies an abelian subvariety \(D\subset J\) mapping isogenously onto \(A\), and a complementary subvariety \(B\) with \(D\times B\to J\) an isogeny. Together with the reverse of \(D\to A\), this identifies \(J\) up to isogeny with \(A\times B\). The exact current proof provider is Abelian varieties, Theorem6.20, with Theorem6.15 and Proposition6.18 supplying its dual and restriction maps; its actual hash and read scope are in the integration record. \(\square\)
 
 **Lemma 8.18. The long weighted chains in the curve provider.** The native proof of `models-lemma-bound-wm` leaves two weighted-chain cases and the long fork case to the reader. The following supplies those cases, so the required bound is not imported with an unfinished exercise.
 

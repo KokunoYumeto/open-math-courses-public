@@ -412,7 +412,7 @@ The kernel condition in this proof can be checked directly on the maximal torus:
 
 **Solution.** An upper off-diagonal entry is a map $L\to\mathcal O$, so its line is $L^{-1}$; a lower entry is a map $\mathcal O\to L$, so its line is $L$. Composition gives $L^{-1}\otimes L\to\mathcal O$, the perfect pairing in Theorem 7.1. A pinning chooses a nowhere-vanishing section in the simple root line. It therefore requires $L^{-1}$, equivalently $L$, to be trivial. This illustrates the global hypothesis absent from the field case.
 
-The [course prerequisite guide](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-RG/prerequisites.html) records the exact supporting statements and which lessons are published or still planned.
+The course prerequisite guide records the exact supporting statements and which lessons are published or still planned.
 
 ## References and prerequisite proofs
 

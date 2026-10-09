@@ -54,10 +54,10 @@ The proofs use these precise contracts:
 These are linked through [specialization](../../sheaf-proof-readings/SH02-specialization.html),
 [normal geometry](../../sheaf-proof-readings/SH02-normal-geometry.html), [conic transport](../../sheaf-proof-readings/SH02-conic-descent.html),
 [microlocalization](../../sheaf-proof-readings/SH02-microlocalization.html),
-[manifold duality](../../sheaf-proof-readings/SH02-manifold-duality.html),
-[open prerequisite contracts](../../sheaf-proof-readings/SH02-open-prerequisites.html),
+manifold duality,
+open prerequisite contracts,
 [exceptional adjunctions](../../sheaf-proof-readings/SH02-exceptional-operations.html), and
-[convex cohomology](../../sheaf-proof-readings/SH02-convex-acyclicity.html). The Hom bound is needed: boundedness
+convex cohomology. The Hom bound is needed: boundedness
 of the two arguments alone is not a formal reason for their derived Hom
 to be bounded in an arbitrary sheaf category.
 

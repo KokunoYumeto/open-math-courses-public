@@ -4,7 +4,7 @@
 
 Character values need not be integers: the degree-three characters of \(A_5\) contain \((1\pm\sqrt5)/2\). They satisfy a stronger arithmetic condition than merely being complex numbers, however. They are algebraic integers. Combining that condition with character orthogonality forces irreducible degrees to divide the group order. Combining it with the triangle inequality rules out a prime-power conjugacy class in a nonabelian simple group. This is the character-theoretic step in Burnside's solvability theorem.
 
-We use [The group algebra and Fourier analysis on a finite group](RT-FIN-03.md), especially class sums and the scalar by which they act on an irreducible. Character orthogonality and the regular decomposition come from [Characters and the orthogonality relations](RT-FIN-02.md). All representations are finite-dimensional over \(\mathbb C\), and every irreducible has positive degree. Write \(n=|G|\), \(Z=Z(G)\), and \(d=\chi(1)\) for an irreducible character \(\chi\).
+We use [The group algebra and Fourier analysis on a finite group](RT-FIN-03.md), especially class sums and the scalar by which they act on an irreducible. Character orthogonality and the regular decomposition come from Characters and the orthogonality relations. All representations are finite-dimensional over \(\mathbb C\), and every irreducible has positive degree. Write \(n=|G|\), \(Z=Z(G)\), and \(d=\chi(1)\) for an irreducible character \(\chi\).
 
 ## 1. The arithmetic tool
 

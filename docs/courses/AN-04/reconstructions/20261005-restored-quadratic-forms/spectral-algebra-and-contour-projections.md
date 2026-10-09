@@ -425,5 +425,5 @@ treatment used by the main lesson. It is independently written;
 no book text or figure is reproduced. It supplies full arguments
 in addition to the main lesson's mathematical source citation.
 The [figure source](figures/draw_common_upper_contour.py) and
-[font notice](figures/notices/LICENSE_DEJAVU.txt) are retained.
+font notice are retained.
 The [proof map](proof-map.json) connects every earlier input.

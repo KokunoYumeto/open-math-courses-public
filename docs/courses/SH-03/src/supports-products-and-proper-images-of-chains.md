@@ -220,7 +220,7 @@ The passage to lowest classes also works over a ring. Put \(M=H^{-p}\omega_S\) a
  \qquad\text{(16)}
 \]
 
-On oriented smooth pieces this is the ordered product orientation, first the \(X\)-coordinates and then the \(Y\)-coordinates. Indeed the [ordered compact-support generators (M6)](../../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-euclidean--the-compact-support-generator), paired with their duals, make the [increasing-interval trace](../../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-trace--trace-orientation-of-ray-spheres-and-ordinary-descent) equal to \(+1\); iterating those traces gives precisely the counit defining (15). The coefficient factors \(F,G\) have degree zero. Their ordinary tensor product in (16) does not assume that either coefficient sheaf is flat.
+On oriented smooth pieces this is the ordered product orientation, first the \(X\)-coordinates and then the \(Y\)-coordinates. Indeed the ordered compact-support generators (M6), paired with their duals, make the increasing-interval trace equal to \(+1\); iterating those traces gives precisely the counit defining (15). The coefficient factors \(F,G\) have degree zero. Their ordinary tensor product in (16) does not assume that either coefficient sheaf is flat.
 
 For \(\alpha\) of geometric degree \(p\) and \(\beta\) of degree \(q\),
 

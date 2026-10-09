@@ -6,7 +6,7 @@ This chapter asks three different geometric questions. Can a tangent bundle have
 
 The first calculation identifies the tangent bundle of real projective space. We then use its inverse class to test normal rank, before returning to the stronger problem of constructing actual frames. The final part constructs fundamental classes and uses them to test boundaries. Every test has its own hypotheses and its own conclusion.
 
-We use singular homology and cohomology with coefficients in \(\mathbb F _2\), except in the explicit real algebras. A smooth manifold is Hausdorff and second countable. “Closed” means compact without boundary. The preceding [bundle chapter](DG-CHAR-01.html) proves metrics, complements and bundle constructions; the [Thom chapter](DG-CHAR-06.html) proves the chain, excision and Mayer–Vietoris facts used below. The [Gysin chapter](DG-CHAR-08.html) proves
+We use singular homology and cohomology with coefficients in \(\mathbb F _2\), except in the explicit real algebras. A smooth manifold is Hausdorff and second countable. “Closed” means compact without boundary. The preceding bundle chapter proves metrics, complements and bundle constructions; the [Thom chapter](DG-CHAR-06.html) proves the chain, excision and Mayer–Vietoris facts used below. The [Gysin chapter](DG-CHAR-08.html) proves
 \[
 H^*(\mathbb {RP}^{n};\mathbb F _2)=\mathbb F _2[a]/(a^{n+1}),\qquad a=w_1(\gamma).
 \]

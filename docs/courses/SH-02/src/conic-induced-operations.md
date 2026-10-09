@@ -24,7 +24,7 @@ For parameter-conic inputs, the actual equivariant-map proofs retain \(f^{-1},f^
 
 These are precise comparisons for the literal induced-orbit predicate, not an assertion of a newly verified printed erratum. The corrected action-parameter restriction condition in Corollary 3.7.3 is a separate issue handled in the conic-descent lesson.
 
-The image proofs use the actual proper-support fibre formula and the all-abelian one-dimensional cohomology bound proved in [Manifold duality](../../sheaf-proof-readings/SH02-manifold-duality.html). The exceptional example uses the actual exceptional adjunction of [Exceptional operations](../../sheaf-proof-readings/SH02-exceptional-operations.html), positive interval trace, and proper base change. The zero-dimensional transverse acyclicity is proved directly below. No finite rank or finite generation is imposed on the sheaves.
+The image proofs use the actual proper-support fibre formula and the all-abelian one-dimensional cohomology bound proved in Manifold duality. The exceptional example uses the actual exceptional adjunction of [Exceptional operations](../../sheaf-proof-readings/SH02-exceptional-operations.html), positive interval trace, and proper base change. The zero-dimensional transverse acyclicity is proved directly below. No finite rank or finite generation is imposed on the sheaves.
 
 <a id="IOR1"></a>
 
@@ -145,7 +145,7 @@ The source's finite-cohomological-dimension premise still holds because
 \(j_!\) has dimension zero, as checked above. Even if this premise is read
 as a bound on \(j_*\), that bound holds too: for every ambient open \(V\),
 \(j^{-1}V\) is an open one-manifold, so its ordinary sheaf cohomology
-vanishes above degree one by [the manifold dimension theorem](../../sheaf-proof-readings/SH02-manifold-duality.html#SH02-MD-DIMENSION).
+vanishes above degree one by the manifold dimension theorem.
 Thus \(R^qj_*=0\) for \(q>1\).
 Choose a small ambient product
 neighbourhood \(U\) of \(x=j(u_0)\) whose first-circle arc has length less than
@@ -295,8 +295,8 @@ fibre \(K\). On a compact zero-dimensional Hausdorff space, global
 sections of any sheaf are exact: local lifts of a section can be
 chosen on a finite disjoint clopen refinement and glued. Thus
 \(H^q(K;A)=0\) for \(q>0\) and every sheaf \(A\). Proper base change
-gives \(R^q\pi_*A=0\) for \(q>0\); the [dimension-one bound on the
-circle](../../sheaf-proof-readings/SH02-manifold-duality.html#SH02-MD-DIMENSION) then
+gives \(R^q\pi_*A=0\) for \(q>0\); the dimension-one bound on the
+circle then
 gives \(H^q(X;A)=0\) for \(q>1\). Since \(X\) is compact,
 \(Rf_!=R\Gamma(X;-)\), so its cohomological dimension is at most one.
 

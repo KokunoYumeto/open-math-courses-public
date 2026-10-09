@@ -6,7 +6,7 @@ The primary source is the reprint of Hörmander III, corrected second printing (
 
 Our convention is \(\iota_{H_a}\sigma=-da\), \(\{a,b\}=H_ab\). Hamiltonian fields are initially defined off the critical hypersurface, where \(\sigma\) is nondegenerate. Whenever we use a field on that hypersurface, we prove its smooth extension. All maps and flows are local germs, with neighborhoods shrunk for the finitely many required compositions.
 
-The [proof map](proof-map.json) gives exact current proof dependencies for every construction and solution. The earlier [flow and bundle companion F0–F2](../20261005-restored-submanifolds/flows-constant-rank-and-leaves.md) proves the smooth transverse and commuting-flow charts used here. The [differential-form companion F0–F2](../20261005-restored-phase-space/differential-forms-and-flow-pullbacks.md) and [phase-space lesson](../20261005-restored-phase-space/phase-space-and-generating-families.md) supply Cartan's formula, flow pullbacks and Hamiltonian commutator identities. The [smooth-descent lesson](../20261005-restored-smooth-descent/folds-reflections-and-uniform-descent.md) supplies division with all smooth parameters. These existing proofs are reused directly.
+The [proof map](proof-map.json) gives exact current proof dependencies for every construction and solution. The earlier [flow and bundle companion F0–F2](../20261005-restored-submanifolds/flows-constant-rank-and-leaves.md) proves the smooth transverse and commuting-flow charts used here. The differential-form companion F0–F2 and [phase-space lesson](../20261005-restored-phase-space/phase-space-and-generating-families.md) supply Cartan's formula, flow pullbacks and Hamiltonian commutator identities. The [smooth-descent lesson](../20261005-restored-smooth-descent/folds-reflections-and-uniform-descent.md) supplies division with all smooth parameters. These existing proofs are reused directly.
 
 ## 1. The two reflection lines identify the characteristic line
 
@@ -588,6 +588,6 @@ The simultaneous folded-form proofs are local on the stated ordinary or conic ne
 ## References and component notices
 
 - Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, reprint of the corrected second printing (1994), Theorems 21.4.4 and 21.4.10; printed 307–309 and 316–318, PDF 322–324 and 331–333. The exact edition used is recorded in [source provenance](source-provenance.json).
-- The original homogeneous-shift figure retains its embedded DejaVu font outlines under the [DejaVu notice](figures/notices/LICENSE_DEJAVU.txt).
+- The original homogeneous-shift figure retains its embedded DejaVu font outlines under the DejaVu notice.
 
 *Original lesson, exercises and coordinate artwork: GPT-6.1 Sol (OpenAI), Ultra, September 2026, CC0. Restoration, supporting details and exact programme prerequisite review: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. The cited book and linked prerequisite components retain their own rights; no book text or file is included in this reader.*

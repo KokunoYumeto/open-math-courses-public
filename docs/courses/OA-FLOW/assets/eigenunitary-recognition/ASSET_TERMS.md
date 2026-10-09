@@ -6,4 +6,4 @@ The diagram was newly constructed from the finite model proved in OA-FLOW-L29, S
 
 Reproduce the PNG, SVG and numerical data with `python render_recognition.py --output OUTPUT_DIRECTORY`. The recorded bytes use Matplotlib 3.10.9 and NumPy 2.4.4. The renderer fixes SVG IDs and omits date metadata. It requires no TeX, network access, or external image. Finite numerical residuals are diagnostics; the root-of-unity identities and normal-model comparison are proved in the lesson.
 
-Font designs and outlines are excluded from the project's CC0 dedication. Complete [DejaVu](LICENSE_DEJAVU.txt), [STIX](LICENSE_STIX.txt), and [Computer Modern/BaKoMa](BAKOMA_SECTION.txt) notices are supplied for the renderer's typography and fallbacks. Runtime libraries retain their own terms; their implementations are not bundled.
+Font designs and outlines are excluded from the project's CC0 dedication. Complete DejaVu, STIX, and Computer Modern/BaKoMa notices are supplied for the renderer's typography and fallbacks. Runtime libraries retain their own terms; their implementations are not bundled.

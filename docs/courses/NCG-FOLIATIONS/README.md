@@ -6,7 +6,7 @@ The course is an incomplete draft. Status and remaining mathematics describes it
 
 Read the lessons in this order:
 
-1. [Transverse measures of foliations](src/transverse-measures-of-foliations.md)
+1. Transverse measures of foliations
 2. [The C*-algebra of a foliation](src/the-c-star-algebra-of-a-foliation.md)
 3. [Hilbert modules and fields on the leaf space](src/hilbert-modules-and-fields-on-the-leaf-space.md)
 4. [The index theorem for measured foliations](src/the-index-theorem-for-measured-foliations.md)

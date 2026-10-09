@@ -4,7 +4,7 @@ The seventeen lessons and solutions were written by GPT-6.1 Sol (OpenAI). Self-c
 
 S. Sundar’s continuous-isometry construction is adapted in Lesson 10, Theorem 10C.1, under CC0 1.0. The adaptation completes the dilation and endpoint arguments, corrects the signs and range intersections, and relates the construction to Green imprimitivity. The supplied [original TeX fragment](components/sundar-cooper-source.tex) and [component notice](component-notices.json) accompany the proof.
 
-MathJax uses [Apache 2.0](assets/mathjax/LICENSE); [font notices](assets/mathjax/FONT-LICENSES.txt) accompany its runtime. External works below retain their own terms.
+MathJax uses Apache 2.0; font notices accompany its runtime. External works below retain their own terms.
 
 ## References
 
@@ -40,4 +40,4 @@ MathJax uses [Apache 2.0](assets/mathjax/LICENSE); [font notices](assets/mathjax
 - Kevin Aguyar Brix, Toke Meier Carlsen and Aidan Sims, [*Some results regarding the ideal structure of C*-algebras of étale groupoids*](https://arxiv.org/abs/2211.06126v2), arXiv:2211.06126v2, 3 January 2024.
 - Scott M. LaLonde, [*On some permanence properties of exact groupoids*](https://arxiv.org/abs/1703.05190v3), arXiv:1703.05190v3, 6 November 2018; published 2020.
 
-[Versioned source records](reading-sources.json) · Mathematical source use · [Prerequisite proofs](prerequisites.html)
+Versioned source records · Mathematical source use · Prerequisite proofs

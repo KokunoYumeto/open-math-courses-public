@@ -148,7 +148,7 @@ and the normalized vector lies in \(K_m\) whatever the signs of the \(g_i\). Whe
 
 ## How this supplies the geometric argument
 
-The analytic chain proved so far is: real division gives Noetherianity of convergent germs; the Rees algebra gives the Artin–Rees lemma; Artin–Rees and Nakayama give Krull's theorem and the closedness of submodules; closedness gives convergent solutions of formal linear systems; these give the finite Taylor family, whose normalization has a uniformly bounded order. The remaining sections build the cell induction on this input. They prove the preparation of functions built from restricted analytic functions and rational powers, the cell theorem, the complement theorem and convergent Puiseux expansions under the projective product definition. The [curve-selection and Łojasiewicz reading](../curve-selection-and-lojasiewicz.html) uses the cell theorem and the Puiseux expansions proved here.
+The analytic chain proved so far is: real division gives Noetherianity of convergent germs; the Rees algebra gives the Artin–Rees lemma; Artin–Rees and Nakayama give Krull's theorem and the closedness of submodules; closedness gives convergent solutions of formal linear systems; these give the finite Taylor family, whose normalization has a uniformly bounded order. The remaining sections build the cell induction on this input. They prove the preparation of functions built from restricted analytic functions and rational powers, the cell theorem, the complement theorem and convergent Puiseux expansions under the projective product definition. The curve-selection and Łojasiewicz reading uses the cell theorem and the Puiseux expansions proved here.
 
 ## A convergent split before restricting to a hyperbola
 
@@ -784,11 +784,11 @@ This is a power series in \(t\) with analytic coefficients.
 
 Choose one \(p\) for the finitely many cells. The radii \(\xi\) are globally subanalytic by their formulas. On a compact subset of \(C\) the base factors are bounded, and the geometric bounds of the uniform Taylor lemma give uniform convergence after decreasing the radius. \(\square\)
 
-The [curve-selection and Łojasiewicz reading](../curve-selection-and-lojasiewicz.html) uses the cell theorem, the complement theorem and the one-variable Puiseux theorem proved here.
+The curve-selection and Łojasiewicz reading uses the cell theorem, the complement theorem and the one-variable Puiseux theorem proved here.
 
 ## Dimension, fibrewise closure and the frontier
 
-The results below are those of §2.3 of Valette's notes cited at the head of this reading. In this section **definable** means globally subanalytic, in the projective product convention above. Closures and interiors are taken in the ambient Euclidean space, and the Boolean and projection calculus shows that they are definable. Besides that calculus, the proofs use the cell theorem, the bounded-chart comparison and [definable choice](../curve-selection-and-lojasiewicz.html#definable-choice). They use no resolution, uniformization or regular-locus theorem.
+The results below are those of §2.3 of Valette's notes cited at the head of this reading. In this section **definable** means globally subanalytic, in the projective product convention above. Closures and interiors are taken in the ambient Euclidean space, and the Boolean and projection calculus shows that they are definable. Besides that calculus, the proofs use the cell theorem, the bounded-chart comparison and definable choice. They use no resolution, uniformization or regular-locus theorem.
 
 Every cell of a cylindrical decomposition is an analytic manifold. Its dimension is the number of bands used to build it: a graph over a cell has the dimension of that cell, and a band over it has one more. If a cell has dimension \(k\), forgetting its graph coordinates maps it homeomorphically onto an open set \(V\subset\mathbb R^k\). The inverse \(\sigma:V\to\mathbb R^n\) is analytic, because each graph coordinate is an analytic function of the coordinates before it.
 

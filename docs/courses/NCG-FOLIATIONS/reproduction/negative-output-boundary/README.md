@@ -8,7 +8,7 @@ From this directory, install the versions in [requirements.txt](requirements.txt
 python draw_negative_output_boundary.py
 ```
 
-The complete portable generator registers all thirteen exact bundled DejaVu/STIX font binaries in `fonts/`; eleven are opened in the reference rendering. It writes `../../figures/kt-plaque-negative-output-boundary.png`, `../../figures/kt-plaque-negative-output-boundary.svg` and [figure-and-bounds.json](figure-and-bounds.json). The SVG uses glyph outlines and embeds the full [font notice](FONT-NOTICE.txt). Individual full notices remain in [fonts/LICENSE_DEJAVU.txt](fonts/LICENSE_DEJAVU.txt) and [fonts/LICENSE_STIX.txt](fonts/LICENSE_STIX.txt). Use the full-size figures to read fine labels on small screens.
+The complete portable generator registers all thirteen exact bundled DejaVu/STIX font binaries in `fonts/`; eleven are opened in the reference rendering. It writes `../../figures/kt-plaque-negative-output-boundary.png`, `../../figures/kt-plaque-negative-output-boundary.svg` and [figure-and-bounds.json](figure-and-bounds.json). The SVG uses glyph outlines and embeds the full [font notice](FONT-NOTICE.txt). Individual full notices remain in fonts/LICENSE_DEJAVU.txt and fonts/LICENSE_STIX.txt. Use the full-size figures to read fine labels on small screens.
 
 The reference runtime is Python 3.13.9, Matplotlib 3.10.9, NumPy 2.4.4 and Pillow 12.2.0. Reproduction is byte exact in that recorded runtime; another environment may produce different bytes with the same mathematics. Libraries and a Python runtime are not bundled.
 

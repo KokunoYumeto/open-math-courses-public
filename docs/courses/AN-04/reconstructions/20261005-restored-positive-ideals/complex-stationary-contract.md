@@ -2,7 +2,7 @@
 
 This is the complete original analytic companion for U028. It keeps the historical attribution to Hörmander I, Theorems 7.7.1 and 7.7.12. The freely readable comparisons are Melin–Sjöstrand's 1974 seminar exposition and Sjöstrand's 1982 holomorphic stationary-phase proof. Neither free comparison, by itself, proves the complete smooth parameter contract below. The proof here uses the exact smooth complex division and positive critical-value results already proved in U028, Sections 2–5; it does not reopen U026.
 
-The preserved nine-section proof has been checked for this restoration. The [contour and Gaussian foundations](contour-and-gaussian-foundations.md) add the finite matrix factorization, the exact deformation identity, the Gaussian branch and the residue-jet argument needed below. This revision is written in original words and notation. External primary PDFs are not redistributed here. [Source-use and rights record](source-provenance.json) distinguish the historical comparisons from the proof supplied here.
+The preserved nine-section proof has been checked for this restoration. The [contour and Gaussian foundations](contour-and-gaussian-foundations.md) add the finite matrix factorization, the exact deformation identity, the Gaussian branch and the residue-jet argument needed below. This revision is written in original words and notation. External primary PDFs are not redistributed here. Source-use and rights record distinguish the historical comparisons from the proof supplied here.
 
 ## 1. The exact contract
 
@@ -415,4 +415,4 @@ These are actual analytic contour deformations of the quadratic model. In the \(
  \tag{M7}
 \]
 
-The plotted curves use \(t=1,4,16\). They describe the full Gaussian model. A compact cutoff has the local expansion and rapid off-critical errors described after (M3), rather than the exact full-Gaussian integral. The [reproducible figure source](figures/draw_complex_stationary_models.py) retains every coordinate and coefficient; outlined glyphs retain the complete [DejaVu notice](figures/notices/LICENSE_DEJAVU.txt), [STIX notice](figures/notices/LICENSE_STIX.txt) and [BaKoMa notice](figures/notices/BAKOMA_SECTION.txt).
+The plotted curves use \(t=1,4,16\). They describe the full Gaussian model. A compact cutoff has the local expansion and rapid off-critical errors described after (M3), rather than the exact full-Gaussian integral. The [reproducible figure source](figures/draw_complex_stationary_models.py) retains every coordinate and coefficient; outlined glyphs retain the complete DejaVu notice, STIX notice and BaKoMa notice.

@@ -140,7 +140,7 @@ These are homeomorphisms with \(T_gT_h=T_{gh}\). The action is jointly continuou
 \(\|\alpha_{g_i^{-1}}(c)-\alpha_{g^{-1}}(c)\|+
  |x_i(\alpha_{g^{-1}}(c))-x(\alpha_{g^{-1}}(c))|\), which tends to zero.
 
-Let \(\mu\) be the Radon probability representing \(\varphi|_C\), as constructed in [HR2](OA-FLOW-HR.md#hr-02). It has full support: every nonempty open set contains a nonzero positive continuous function, whose integral is positive by faithfulness. The compact-model proof in [Theorem 4.1](../../OA-ERGODIC/reader/measurable-actions-and-compact-models.html#4-the-compact-space-and-its-nonsingular-measure) identifies the **whole** algebra \(D\) with \(L^\infty(X,\mu)\). Its application here can be seen directly. In the faithful normal GNS representation of \(\varphi|_D\), the subspace \(C\Omega_D\) is dense: a vector orthogonal to it defines a normal vector functional vanishing on \(C\), then on \(D\) by ultraweak density, and hence is zero. The map \(c\Omega_D\mapsto\widehat c\) extends to an onto unitary to \(L^2(X,\mu)\), since continuous functions are dense there. Continuous multiplication generates all bounded measurable multiplication, by the same theorem's regularity and monotone-class proof. We therefore obtain a normal isomorphism
+Let \(\mu\) be the Radon probability representing \(\varphi|_C\), as constructed in [HR2](OA-FLOW-HR.md#hr-02). It has full support: every nonempty open set contains a nonzero positive continuous function, whose integral is positive by faithfulness. The compact-model proof in Theorem 4.1 identifies the **whole** algebra \(D\) with \(L^\infty(X,\mu)\). Its application here can be seen directly. In the faithful normal GNS representation of \(\varphi|_D\), the subspace \(C\Omega_D\) is dense: a vector orthogonal to it defines a normal vector functional vanishing on \(C\), then on \(D\) by ultraweak density, and hence is zero. The map \(c\Omega_D\mapsto\widehat c\) extends to an onto unitary to \(L^2(X,\mu)\), since continuous functions are dense there. Continuous multiplication generates all bounded measurable multiplication, by the same theorem's regularity and monotone-class proof. We therefore obtain a normal isomorphism
 \[
  \rho:L^\infty(X,\mu)\longrightarrow D,
  \qquad \rho(\widehat c)=c,\qquad
@@ -576,12 +576,12 @@ We can work separately on each positive-measure \(X_d\), normalizing its finite 
 <a id="oa-flow.cstd.strict.cocycle"></a>
 ### From fixed-element transports to a strict unitary cocycle
 
-The [jointly measurable derivative construction](../../OA-ERGODIC/reader/measurable-actions-and-compact-models.html#1-a-jointly-measurable-derivative), Lemma 1.1, supplies a positive finite jointly Borel representative \(r(q,y)\) of \(d(T_q)_*\mu_d/d\mu_d\), for every fixed \(q\). Define the coordinate-identity base transport by
+The jointly measurable derivative construction, Lemma 1.1, supplies a positive finite jointly Borel representative \(r(q,y)\) of \(d(T_q)_*\mu_d/d\mu_d\), for every fixed \(q\). Define the coordinate-identity base transport by
 \[
  (W_q\eta)(y)=r(q,y)^{1/2}\eta(T_q^{-1}y).
  \tag{R8}
 \]
-The change-of-variables identity proves that \(W_q\) is unitary. The fixed-pair derivative chain rule gives \(W_qW_h=W_{qh}\) as operators. Coefficients are Borel by parameter integration on Borel vector representatives; their absolute integrability follows from Cauchy–Schwarz. The [measurable-unitary continuity proof](../../OA-ERGODIC/reader/measurable-actions-and-compact-models.html#2-why-measurable-unitary-representations-are-continuous), Lemma 2.1, therefore makes \(W\) strongly continuous. Its hypotheses hold because \(\mathcal H_d\) is separable and \(Q\) is locally compact with sigma-finite Haar measure. Restricting the base to a Borel dimension stratum does not require that stratum to be compact.
+The change-of-variables identity proves that \(W_q\) is unitary. The fixed-pair derivative chain rule gives \(W_qW_h=W_{qh}\) as operators. Coefficients are Borel by parameter integration on Borel vector representatives; their absolute integrability follows from Cauchy–Schwarz. The measurable-unitary continuity proof, Lemma 2.1, therefore makes \(W\) strongly continuous. Its hypotheses hold because \(\mathcal H_d\) is separable and \(Q\) is locally compact with sigma-finite Haar measure. Restricting the base to a Borel dimension stratum does not require that stratum to be compact.
 
 Both \(U_q\) and \(W_q\) implement the same automorphism of the scalar diagonal. Consequently
 \[

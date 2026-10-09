@@ -8,7 +8,7 @@ Peter Webb's [author prepublication draft](https://www-users.math.umn.edu/~webb/
 
 The full signed, integer Brauer theorem and its local induction argument are proved in Lesson 11. Sylow existence and the cyclotomic fixed-field fact are proved in Lesson 5. References, bibliography pages and HTTP success alone are not proof providers. The proof index links the exact course statements, arguments and earlier dependencies.
 
-[Source component identities](SOURCES.json) and [the 17-lesson source dispositions](source-dispositions.json) give versions, source hashes and the boundaries of reuse. Other references retain their own rights; none of the reference PDFs is redistributed here.
+Source component identities and the 17-lesson source dispositions give versions, source hashes and the boundaries of reuse. Other references retain their own rights; none of the reference PDFs is redistributed here.
 
 The mathematical reader uses MathJax 3.2.2, whose JavaScript is under the Apache License 2.0. Its fonts retain the upstream component terms, including SIL Open Font License 1.1. The shared site's `assets/mathjax/LICENSE` and `assets/mathjax/FONT-LICENSES.txt` retain those notices. The vendored Markdown renderer and this course's build wrapper are CC0; their source and a record of their origin and changes are included under `tools/`.
 

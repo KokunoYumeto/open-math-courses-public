@@ -1364,7 +1364,7 @@ Take \(u_j=(j+1)^{-1}\). Its squared sum is finite: for \(k\geq2\), \(k^{-2}\leq
 
 ## 6. Hilbert interfaces supplied by the same construction
 
-The spectral argument also supplies the Hilbert interfaces used by [Traces that survive passage to cohomology](traces-and-complexes.md). We give their arguments here with arbitrary Hilbert dimension, the same linear-first convention, and the exact closed-operator domains. For the orthonormal-basis construction we use the explicitly selected maximality axiom: a partially ordered set whose chains have upper bounds has a maximal element. This is the same foundational choice used in the metric and Hahn–Banach lessons.
+The spectral argument also supplies the Hilbert interfaces used by Traces that survive passage to cohomology. We give their arguments here with arbitrary Hilbert dimension, the same linear-first convention, and the exact closed-operator domains. For the orthonormal-basis construction we use the explicitly selected maximality axiom: a partially ordered set whose chains have upper bounds has a maximal element. This is the same foundational choice used in the metric and Hahn–Banach lessons.
 
 ### 6.1 Closed subspaces, arbitrary bases and bounded adjoints
 

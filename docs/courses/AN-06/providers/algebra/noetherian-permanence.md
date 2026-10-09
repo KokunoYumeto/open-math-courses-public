@@ -96,4 +96,4 @@ Finally, a field has only the zero ideal and the whole field, since an ideal con
 
 ## Further reading
 
-The Stacks Project authors, with the AI Integrated Stacks Project, [*Commutative Algebra*, Noetherian permanence, tag 00FN](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/algebra.tex#L6156), give the two-index chain argument. The [historical source excerpts and their licence](NOTICE.md) retain their own terms.
+The Stacks Project authors, with the AI Integrated Stacks Project, [*Commutative Algebra*, Noetherian permanence, tag 00FN](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/algebra.tex#L6156), give the two-index chain argument. The historical source excerpts and their licence retain their own terms.

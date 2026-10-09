@@ -4,7 +4,7 @@
 
 Oriented cobordism records when the difference between two closed manifolds is the boundary of a compact manifold. Its operations are disjoint union and Cartesian product. We construct the smooth collars and gluing needed for those definitions, track the boundary signs, and then use Pontryagin numbers to detect independent classes.
 
-The [bundle chapter](DG-CHAR-01.html) proves smooth partitions and metrics. The [manifold chapter](DG-CHAR-07.html), Lemma 3.1, gives full local-inverse and smooth-flow proofs. The [integer fundamental-class proof](DG-CHAR-09.html), Lemma 5.1, supplies the outward-oriented boundary identity. The [number chapter](DG-CHAR-11.html) proves exact integer Pontryagin boundary vanishing and general projective-product independence. All manifolds here are smooth, Hausdorff and second countable; closed means compact with empty boundary.
+The bundle chapter proves smooth partitions and metrics. The [manifold chapter](DG-CHAR-07.html), Lemma 3.1, gives full local-inverse and smooth-flow proofs. The [integer fundamental-class proof](DG-CHAR-09.html), Lemma 5.1, supplies the outward-oriented boundary identity. The [number chapter](DG-CHAR-11.html) proves exact integer Pontryagin boundary vanishing and general projective-product independence. All manifolds here are smooth, Hausdorff and second countable; closed means compact with empty boundary.
 
 ## 1. Boundary charts, orientations and smooth collars
 

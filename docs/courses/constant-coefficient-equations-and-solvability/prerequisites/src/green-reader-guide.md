@@ -1,6 +1,6 @@
 # Read and reproduce the restored Green provider
 
-The [current complete proof](../boundary-flux-and-weak-identities.html) constructs boundary graphs, a locally finite partition, compatible surface measure, signed indicator and product identities, finite planar corners, inside-only weak divergence and finite tagged partitions. The [earlier complete alternative](../boundary-flux-and-weak-identities-earlier.html) retains the inside-layer and nested-defect arguments. Each has all six complete exercise solutions.
+The current complete proof constructs boundary graphs, a locally finite partition, compatible surface measure, signed indicator and product identities, finite planar corners, inside-only weak divergence and finite tagged partitions. The [earlier complete alternative](../boundary-flux-and-weak-identities-earlier.html) retains the inside-layer and nested-defect arguments. Each has all six complete exercise solutions.
 
 ## Complete selected prerequisites and full alternatives
 
@@ -12,7 +12,7 @@ The selected measure component includes the full angular inverse and its endpoin
 
 ## Exact original downloads
 
-- [prerequisites/src/boundary-flux-and-weak-identities.md](../src/boundary-flux-and-weak-identities.md) — 41367 bytes; SHA256 `83E8C24E703F6FA71A04282133189498683565C1FAE55E0FCC1BB6FEF64C12CE`.
+- prerequisites/src/boundary-flux-and-weak-identities.md — 41367 bytes; SHA256 `83E8C24E703F6FA71A04282133189498683565C1FAE55E0FCC1BB6FEF64C12CE`.
 - [prerequisites/src/boundary-flux-and-weak-identities-earlier.md](../src/boundary-flux-and-weak-identities-earlier.md) — 24369 bytes; SHA256 `E228A967B85E300958C4E30E91F35DFAE29E019A2CA62CB2B5D58CF1C1B6C12A`.
 - [prerequisites/prerequisites/U011-free-foundations/metric-foundation-bridges.md](../prerequisites/U011-free-foundations/metric-foundation-bridges.md) — 81011 bytes; SHA256 `B5E1A5E95A8513AAD72E3FF8369740E0058A20B7B1B364131503D33C4B27D4E2`.
 - [prerequisites/prerequisites/U011-free-foundations/stable-prerequisite-bridges.md](../prerequisites/U011-free-foundations/stable-prerequisite-bridges.md) — 27874 bytes; SHA256 `E0D704B23B179BD2FD5A61618DB46E0C68D9F782C85F1904006FF16C55130D14`.

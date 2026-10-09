@@ -438,7 +438,7 @@ Hence (CHE20) cannot be an isomorphism above $Y$. The shift is essential. More e
 
 ## SH02-CHE-RANGE — The full input range and its unbounded proof
 
-The full intended tensor and internal Hom estimate allows two inputs in $D^+(k_X)$. The deductions in SH02-CHE-006 establish the bounded-input theorem. [SH02-UCE-SUM](../../SH02-unbounded-characteristic-estimates.html#SH02-UCE-SUM) supplies both estimates for arbitrary inputs in the classical unbounded category, with the same coefficient ring and manifold assumptions. Its restriction to two bounded-below inputs proves the full printed range, including a possibly unbounded-below Hom output. The proof uses uniform local tests, raw specialization and radial recovery; it does not require the unresolved Fourier comparison.
+The full intended tensor and internal Hom estimate allows two inputs in $D^+(k_X)$. The deductions in SH02-CHE-006 establish the bounded-input theorem. SH02-UCE-SUM supplies both estimates for arbitrary inputs in the classical unbounded category, with the same coefficient ring and manifold assumptions. Its restriction to two bounded-below inputs proves the full printed range, including a possibly unbounded-below Hom output. The proof uses uniform local tests, raw specialization and radial recovery; it does not require the unresolved Fourier comparison.
 
 The issue is substantial for internal Hom. Already at a point over a field, let $G=\bigoplus_{n\geq0}k[-n]$ and $F=k$. Both are bounded below, but
 
@@ -447,7 +447,7 @@ R\operatorname{Hom}(G,F)\simeq\prod_{n\geq0}k[n]
 \tag{CHE34}
 $$
 
-has nonzero cohomology in arbitrarily negative degrees. Thus membership of the two inputs in $D^+$ does not keep the Hom output in $D^+$. This calculation does not refute a correctly formulated unbounded microsupport estimate. It shows why a proof must specify that framework and justify the local tests and derived limit operations there. Degreewise truncation alone is insufficient: truncating a complex need not preserve its microsupport bound. Those steps are proved in [SH02-UCE-WINDOWS](../../SH02-unbounded-characteristic-estimates.html#SH02-UCE-WINDOWS), [SH02-UCE-TESTS](../../SH02-unbounded-characteristic-estimates.html#SH02-UCE-TESTS) and the subsequent geometric arguments. The finite windows extend natural functor comparisons; the support tests themselves are applied to the original complex on neighborhoods chosen uniformly in degree. 
+has nonzero cohomology in arbitrarily negative degrees. Thus membership of the two inputs in $D^+$ does not keep the Hom output in $D^+$. This calculation does not refute a correctly formulated unbounded microsupport estimate. It shows why a proof must specify that framework and justify the local tests and derived limit operations there. Degreewise truncation alone is insufficient: truncating a complex need not preserve its microsupport bound. Those steps are proved in SH02-UCE-WINDOWS, SH02-UCE-TESTS and the subsequent geometric arguments. The finite windows extend natural functor comparisons; the support tests themselves are applied to the original complex on neighborhoods chosen uniformly in degree. 
 
 ## SH02-CHE-REGULARITY — A $C^1$ chart can change an asymptotic sum
 

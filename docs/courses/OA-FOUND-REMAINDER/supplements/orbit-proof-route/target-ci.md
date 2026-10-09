@@ -3,7 +3,7 @@
 
 *CC0 1.0.*
 
-The scalar estimate uses the [rectangle boundary maximum proof](#CI.RECTANGLE.MAXIMUM) below. The [complex Hahn–Banach and dual-norm proofs](../../../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#oa-fnd-hb-02) and [closed-subspace quotient proof](../../../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#exercises) supply the stated Banach-space inputs; the [scalar Cauchy and power-series proofs](../../../foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html#oa-fnd-ct-02) supply the analytic inputs.
+The scalar estimate uses the [rectangle boundary maximum proof](#CI.RECTANGLE.MAXIMUM) below. The complex Hahn–Banach and dual-norm proofs and closed-subspace quotient proof supply the stated Banach-space inputs; the [scalar Cauchy and power-series proofs](../../../foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html#oa-fnd-ct-02) supply the analytic inputs.
 
 Interpolation arguments in modular theory act on two endpoint spaces at once. The
 endpoints need not be nested, reflexive, separable, or dense in one another. What

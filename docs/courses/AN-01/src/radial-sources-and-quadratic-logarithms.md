@@ -69,7 +69,7 @@ J(x)&=\operatorname{adj}(A)\nabla\log q_A(x)
 
 Indeed \(\operatorname{adj}(A)A=\det(A)I\), while
 \(\operatorname{div}(x/q_A)=2/q_A-(x\cdot\nabla q_A)/q_A^2=0\).
-The distribution \(L_A\log q_A\) is \(\operatorname{div}J\). Green's formula, proved in [Boundary flux and weak identities](boundary-flux-and-weak-identities.md), Corollary 2.2, gives
+The distribution \(L_A\log q_A\) is \(\operatorname{div}J\). Green's formula, proved in Boundary flux and weak identities, Corollary 2.2, gives
 \[
 -\int_{r>\varepsilon}J\cdot\nabla\phi\,dx
 =2\det(A)\int_0^{2\pi}
@@ -598,7 +598,7 @@ All three terms of (5.16) are needed for this identity. \(\square\)
 
 The following are exact earlier programme proofs used in this lesson. The supplied foundation files retain their own license notices.
 
-- [Boundary flux and weak identities](boundary-flux-and-weak-identities.md), Theorem 2.1 and Corollary 2.2: surface measure, divergence and Green identities on the punctured regions used here.
+- Boundary flux and weak identities, Theorem 2.1 and Corollary 2.2: surface measure, divergence and Green identities on the punctured regions used here.
 - [Point sources and complex Gaussian kernels](point-sources-and-complex-gaussian-kernels.md), Theorem 1.1, Lemma 2.1 and Theorem 3.1: full Newton sources and first weak gradients, real symmetric diagonalization, the matrix determinant branch and its semidefinite extension, and the complex Gaussian mass.
 - [Homogeneous extensions and angular moments](homogeneous-extensions-and-angular-moments.md), Lemma 1.1: the Euler characterization of homogeneity. The rotation-to-constant argument needed here is proved in Solution 4 above.
 - [Convolution as addition of supports](convolution-as-addition-of-supports.md), Theorem 1.1, Proposition 5.1 and Theorem 5.2: compact-support convolution, differentiation, local smoothing and convergence.

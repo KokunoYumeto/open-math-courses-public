@@ -6,7 +6,7 @@
 
 The derivative along an orbit arrow gives a concrete modular operator. Its spectrum can contain frequencies that disappear after restricting to a smaller positive-measure set. The asymptotic ratio set retains precisely the frequencies that survive every such restriction. We prove that, for an ergodic countable measured relation, it is the factor's intrinsic modular spectrum. This identifies the exact type III subtypes of our affine examples.
 
-Read [Relation kernels and modular coordinates](relation-kernels-and-modular-coordinates.md), especially Proposition 6.1, and [Diagonal expectations and invariant measures](diagonal-expectations-and-invariant-measures.md), especially Theorem 3.4. We use the maximal diagonal and factor criterion from [Orbits, stabilizers, and relation algebras](orbits-stabilizers-and-relation-algebras.md), Theorem 4.2 and Corollary 4.3. General action spectra and the flow of weights belong to the prerequisite course *Crossed products and duality*. The exact results needed here are:
+Read Relation kernels and modular coordinates, especially Proposition 6.1, and [Diagonal expectations and invariant measures](diagonal-expectations-and-invariant-measures.md), especially Theorem 3.4. We use the maximal diagonal and factor criterion from [Orbits, stabilizers, and relation algebras](orbits-stabilizers-and-relation-algebras.md), Theorem 4.2 and Corollary 4.3. General action spectra and the flow of weights belong to the prerequisite course *Crossed products and duality*. The exact results needed here are:
 
 | Prerequisite lesson | Result used |
 | --- | --- |

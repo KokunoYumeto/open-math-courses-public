@@ -1,6 +1,6 @@
 # Smooth-cocycle figure: terms and reproduction
 
-The original renderer, model data, caption and generated SVG/PNG are dedicated under **CC0 1.0**, to the extent of rights held. The renderer uses the unchanged [DejaVu fonts](../typeiii-zero-decomposition/DejaVuSans.ttf) and [font license](../typeiii-zero-decomposition/FONT-LICENSE.txt) already included in this course. Their original terms remain in force.
+The original renderer, model data, caption and generated SVG/PNG are dedicated under **CC0 1.0**, to the extent of rights held. The renderer uses the unchanged DejaVu fonts and font license already included in this course. Their original terms remain in force.
 
 The three roof lengths are 5/4, 1 and 3/2, with phase increments pi/4, pi/2 and -pi/3. The phase starts at -pi/4 on the preceding roof and is zero at the middle roof's lower endpoint. The graphs sample the exact flat interpolation in [SMC17–20](../../src/OA-FLOW-SMC.md#smc-4). The shaded intervals are constant neighborhoods. The derivative bounds are proved symbolic bounds, not numerical maxima inferred from the plot. Signed products are [SMC15](../../src/OA-FLOW-SMC.md#smc-3), and the norm remainder is SMC23–25.
 

@@ -33,7 +33,7 @@ The proof of this discrete theorem is given below using the following precise ge
 
 ## 1. The general imports and their exact scope
 
-The completed [bounded-topology foundations](bounded-topology-foundations.md), the [tracial-normality foundations](tracial-normality-foundations.md), and Lemmas 3A.1–3A.3 of [the bounded-topology lesson](../src/bounded-topology-and-tracial-representations.md) provide the concrete predual, positive-functional decomposition, global normality of fixed multiplication, faithful normal states for separable preduals, bounded spectral calculus, arbitrary projection joins and bounded monotone convergence. We use their full proofs at the recorded revisions.
+The completed [bounded-topology foundations](bounded-topology-foundations.md), the tracial-normality foundations, and Lemmas 3A.1–3A.3 of [the bounded-topology lesson](../src/bounded-topology-and-tracial-representations.md) provide the concrete predual, positive-functional decomposition, global normality of fixed multiplication, faithful normal states for separable preduals, bounded spectral calculus, arbitrary projection joins and bounded monotone convergence. We use their full proofs at the recorded revisions.
 
 The additional general weight, unbounded spectral and trace inputs are these.
 

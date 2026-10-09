@@ -6,7 +6,7 @@ A propagation theorem constrains existing singularities. A realization theorem c
 
 The primary antecedent is Hörmander, *The Analysis of Linear Partial Differential Operators III*, approved Springer 2007 edition, Theorem 24.5.4, printed pages 459–460. The exposition below supplies the complete-space argument, its smooth test families, the order calculation at changing sections, and the precise way propagation fills the target curve.
 
-The [finite broken-ray construction](../20261007-restored-prescribed-broken-rays/prescribed-broken-rays-preparation.html), single-direction profile, [general scalar propagation theorem](../20261009-general-scalar-boundary/scalar-boundary-propagation-through-general-glancing.html), and [generalized-flow proof](../20261007-restored-generalized-glancing/generalized-glancing-flow-preparation.html) are used with their full operators and actual traces. The [proof map](proof-map.json) pins the earlier arguments. Required Lebl proofs remain external; internal P514 closure of this export is not claimed.
+The [finite broken-ray construction](../20261007-restored-prescribed-broken-rays/prescribed-broken-rays-preparation.html), single-direction profile, [general scalar propagation theorem](../20261009-general-scalar-boundary/scalar-boundary-propagation-through-general-glancing.html), and [generalized-flow proof](../20261007-restored-generalized-glancing/generalized-glancing-flow-preparation.html) are used with their full operators and actual traces. The proof map pins the earlier arguments. Required Lebl proofs remain external; internal P514 closure of this export is not claimed.
 
 ## 1. The prescribed limit and the exact conclusion
 

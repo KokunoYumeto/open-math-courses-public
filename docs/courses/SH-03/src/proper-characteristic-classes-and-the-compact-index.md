@@ -494,7 +494,7 @@ Let $f:\mathbb R_t\times\mathbb R_y\to\mathbb R_t$ be projection and $G=k_{[0,1]
 
 **Solution.** The rectangle is compact, so $f$ is proper on its closed support despite being globally nonproper. Each nonempty closed-interval fibre has ordinary cohomology $k$ in degree zero; the constant-section comparison commutes with all restrictions. Thus $P=k_{[0,1]}$.
 
-For the open rectangle $U=(0,1)\times(-1,1)$, open internal duality gives $Dk_U=Rj_*k_U[2]$. Small neighborhoods intersect $U$ in [convex sets with their constant-section comparison](../../sheaf-proof-readings/src/SH02/convex-acyclicity.md#sh02-ca-constant--constant-coefficients), including at corners, so the actual constant-section maps identify $Rj_*k_U$ with the closed-rectangle constant sheaf. Constructible biduality therefore gives $E=D_YG=k_U[2]$. On the real-line target, the same interval duality gives $Q=k_{(0,1)}[1]$.
+For the open rectangle $U=(0,1)\times(-1,1)$, open internal duality gives $Dk_U=Rj_*k_U[2]$. Small neighborhoods intersect $U$ in convex sets with their constant-section comparison, including at corners, so the actual constant-section maps identify $Rj_*k_U$ with the closed-rectangle constant sheaf. Constructible biduality therefore gives $E=D_YG=k_U[2]$. On the real-line target, the same interval duality gives $Q=k_{(0,1)}[1]$.
 
 Compact cohomology of the open $y$-interval is $k[-1]$. Projection formula and proper-support base change consequently give $L_fE=k_{(0,1)}[2-1]=k_{(0,1)}[1]=Q$, matching the actual proper-duality map (3). The real dimensions two and one have already supplied all shifts.
 

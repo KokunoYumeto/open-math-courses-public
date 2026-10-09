@@ -365,7 +365,7 @@ of the point sheaf.
 
 All the summands of \(P_n^0\) and \(P_n^1\) are acyclic for sections on
 \(T_n\): points have exact sections, and closed constant intervals are
-acyclic by [the interval criterion and its constant-coefficient calculation](../../SH02-convex-acyclicity.html#SH02-CA-INTERVAL).
+acyclic by the interval criterion and its constant-coefficient calculation.
 Closed pushforward preserves that calculation. The sums are finite.
 On global sections, eliminating the edge variables reduces the cokernel
 of \(\delta_n\) to the cokernel of

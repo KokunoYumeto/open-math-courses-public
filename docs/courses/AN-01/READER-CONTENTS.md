@@ -14,7 +14,7 @@ All 72 authored lessons and their used prerequisite routes are self-checked by t
 - [Order, positivity and distributional limits](reader/AN01-U008.html)
 - [Local data and compatible products](reader/AN01-U009.html)
 - [Weak equations and classical functions](reader/AN01-U010.html)
-- [Boundary flux and weak identities](reader/AN01-U011.html)
+- Boundary flux and weak identities
 - [Lipschitz graphs and surface measures](reader/AN01-U012.html)
 - [Cauchy kernels and distributional boundary limits](reader/AN01-U013.html)
 - [Gluing holomorphic sides](reader/AN01-U014.html)
@@ -65,7 +65,7 @@ All 72 authored lessons and their used prerequisite routes are self-checked by t
 - [Sharp bounds for compact spectra](reader/AN01-U059.html)
 - [Cosine crossings and spectral-gap bounds](reader/AN01-U060.html)
 - [Compact factors and homogeneous equations](reader/AN01-U061.html)
-- [Fourier-Laplace slices and boundary poles](reader/AN01-U062.html)
+- Fourier-Laplace slices and boundary poles
 - [Gaussian norms and entire uncertainty](reader/AN01-U063.html)
 - [Quadratic transforms and tempered images](reader/AN01-U064.html)
 - [Quadratic phases and curved spectra](reader/AN01-U065.html)

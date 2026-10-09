@@ -4,7 +4,7 @@ Crossed products, induced representations and covariant localization; duality an
 
 Seventeen lessons develop the constructions with proofs, worked examples and 77 exercises with complete solutions. Begin with C*-dynamical systems and proceed through induction and duality to groupoid algebras and geometric index constructions.
 
-The [supporting readings](prerequisites.html) give the precise prerequisite proofs used by the course. The additional KK and E-theory assertions in Lessons 4, 12 and 17 are explicitly conditional on the bivariant prerequisites specified there.
+The supporting readings give the precise prerequisite proofs used by the course. The additional KK and E-theory assertions in Lessons 4, 12 and 17 are explicitly conditional on the bivariant prerequisites specified there.
 
 1. [C*-dynamical systems and full crossed products](KT-CP-01.html)
 2. [Reduced crossed products and Fell's absorption principle](KT-CP-02.html)

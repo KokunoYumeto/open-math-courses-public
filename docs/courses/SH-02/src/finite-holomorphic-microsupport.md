@@ -82,7 +82,7 @@ g^{-1}Rf_*A\longrightarrow Rf'_*g'^{-1}A
 \tag{FH5}
 $$
 
-is an isomorphism. Indeed, at $x'$, FH3 identifies both sides with $\bigoplus_{f(y)=g(x')}A_y$. The map restricts a representative germ to that same tuple and is the identity under these identifications. This also proves its compatibility with successive changes of base and with identity squares. Exactness of inverse image to constant-ring spaces is the coefficient convention in [the prerequisite proofs](../../sheaf-proof-readings/SH02-open-prerequisite-proofs.html).
+is an isomorphism. Indeed, at $x'$, FH3 identifies both sides with $\bigoplus_{f(y)=g(x')}A_y$. The map restricts a representative germ to that same tuple and is the identity under these identifications. This also proves its compatibility with successive changes of base and with identity squares. Exactness of inverse image to constant-ring spaces is the coefficient convention in the prerequisite proofs.
 
 ## SH02-FH-LOCAL-SUPPORT — A support test splits over the fibre
 
@@ -202,7 +202,7 @@ $$
 R\Gamma_c(\sigma;P)\simeq P[-d].
 $$
 
-This is the compactly supported orientation calculation for $\mathbb R^d$ in [manifold duality](../../sheaf-proof-readings/SH02-manifold-duality.html); its comparison with coefficients is induced by tensoring the same orientation generator. Thus the assertion holds on each open simplex. The open-closed localization triangle at every skeletal step gives a triangle of compactly supported cohomology complexes. The projection comparison with coefficients is natural for its three maps. Finite sums and cones preserve perfection, and derived tensor preserves these triangles, so induction proves perfection and the comparison for $R\Gamma_c(K;A)$. Compactness identifies this with ordinary cohomology. Repeat the argument for $L$ and take the fibre of the restriction $R\Gamma(K;A)\to R\Gamma(L;A)$. This gives FH16 with its actual restriction map. $\square$
+This is the compactly supported orientation calculation for $\mathbb R^d$ in manifold duality; its comparison with coefficients is induced by tensoring the same orientation generator. Thus the assertion holds on each open simplex. The open-closed localization triangle at every skeletal step gives a triangle of compactly supported cohomology complexes. The projection comparison with coefficients is natural for its three maps. Finite sums and cones preserve perfection, and derived tensor preserves these triangles, so induction proves perfection and the comparison for $R\Gamma_c(K;A)$. Compactness identifies this with ordinary cohomology. Repeat the argument for $L$ and take the fibre of the restriction $R\Gamma(K;A)\to R\Gamma(L;A)$. This gives FH16 with its actual restriction map. $\square$
 
 No triangulation-existence theorem is hidden in this lemma: the compatible finite triangulation is a hypothesis. Applying it to a normal slice or a Milnor pair still requires that such a pair exists and computes the desired sheaf-theoretic datum. In particular it does not justify interchanging tensor with an arbitrary infinite nearby-cycle limit.
 

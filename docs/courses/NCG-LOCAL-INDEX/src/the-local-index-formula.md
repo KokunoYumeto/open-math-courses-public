@@ -4,7 +4,7 @@
 
 An index is determined by finite-dimensional defects of an operator. A residue measures an asymptotic spectral coefficient. A local index theorem connects these two kinds of information. Before deriving that connection in general, we need to identify the Fredholm operator being counted and fix the sign and spectral variable in an example where both sides can be computed directly.
 
-Read [Spectral triples and dimension spectrum](../spectral-triples-and-dimension-spectrum.html) for the regularity and complex-power calculus, and [Singular values and the Dixmier trace](../singular-values-and-the-dixmier-trace.html) for logarithmic trace coefficients. We use the Fredholm parametrix criterion and norm stability of the index from [Finite defects under perturbation](../../elliptic-boundary-reduction/fredholm-stability.html#compact-errors-and-approximate-inverses). Section 6 specifies the cyclic differentials and their normalizations. Basic references are [Connes–Moscovici 1995], [Jaffe–Lesniewski–Osterwalder 1988], and [Carey–Phillips–Rennie–Sukochev 2006].
+Read [Spectral triples and dimension spectrum](../spectral-triples-and-dimension-spectrum.html) for the regularity and complex-power calculus, and [Singular values and the Dixmier trace](../singular-values-and-the-dixmier-trace.html) for logarithmic trace coefficients. We use the Fredholm parametrix criterion and norm stability of the index from Finite defects under perturbation. Section 6 specifies the cyclic differentials and their normalizations. Basic references are [Connes–Moscovici 1995], [Jaffe–Lesniewski–Osterwalder 1988], and [Carey–Phillips–Rennie–Sukochev 2006].
 
 ## 1. The positive spectral compression
 

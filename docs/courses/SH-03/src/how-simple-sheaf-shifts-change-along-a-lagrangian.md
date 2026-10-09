@@ -151,7 +151,7 @@ We calculate the raw support test instead of extrapolating a branch shift. Since
 Use the cofinal rectangles \(U_\epsilon=\{|x|<\epsilon,|y|<\epsilon^{3/2}\}\). In their negative part, the support of \(j^{-1}F\) is
 \(0<x<\epsilon\), \(-x^{3/2}\leq y<0\).
 It is closed relative to that negative open set, so its closed direct image computes \(R\Gamma(U_\epsilon\cap\{y<0\};j^{-1}F)\) by ordinary derived sections on this support. The substitution \(t=-y/x^{3/2}\) identifies it with
-\((0,\epsilon)\times(0,1]\), a nonempty locally closed convex product. The [constant-coefficient unit and restriction comparison](../../sheaf-proof-readings/src/SH02/convex-acyclicity.md#sh02-ca-constant--constant-coefficients) give ordinary cohomology \(k\) in degree zero and no other degree. Smaller rectangles restrict its constant generator to the same generator. Thus \((Rj_*j^{-1}F)_0\simeq k\) with this actual restriction comparison, and
+\((0,\epsilon)\times(0,1]\), a nonempty locally closed convex product. The constant-coefficient unit and restriction comparison give ordinary cohomology \(k\) in degree zero and no other degree. Smaller rectangles restrict its constant generator to the same generator. Thus \((Rj_*j^{-1}F)_0\simeq k\) with this actual restriction comparison, and
 
 \[
 C_y(F)\simeq k[-1].

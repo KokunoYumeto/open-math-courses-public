@@ -4,7 +4,7 @@
 
 In several variables a boundary can be approached through many imaginary directions. A proof along each fixed ray does not by itself prove that the same limit exists as the ray moves toward the edge of a cone. Convexity supplies a useful replacement: add one fixed interior direction to every approach, then use a test polynomial along that direction. The resulting integral has a bound independent of the approaching direction.
 
-We use [Cauchy kernels and distributional boundary limits](cauchy-kernels-and-boundary-limits.md) for the one-variable finite-test calculation and circle formula, and Gluing holomorphic sides for one-variable zero-boundary uniqueness. [Chakrabarti and Shafikov 2017], Introduction and §2.6, provides primary human context for distributional holomorphic boundaries and their relation to weak Cauchy–Riemann derivatives. We prove the convex-cone boundary theorem directly below. Entry prerequisites are ordinary convex geometry, multivariable calculus and dominated convergence.
+We use Cauchy kernels and distributional boundary limits for the one-variable finite-test calculation and circle formula, and Gluing holomorphic sides for one-variable zero-boundary uniqueness. [Chakrabarti and Shafikov 2017], Introduction and §2.6, provides primary human context for distributional holomorphic boundaries and their relation to weak Cauchy–Riemann derivatives. We prove the convex-cone boundary theorem directly below. Entry prerequisites are ordinary convex geometry, multivariable calculus and dominated convergence.
 
 Basic references are Chakrabarti and Shafikov’s paper cited below and Avi Zeff’s *Lecture 12: Pompeiu’s formula* (2026), for the complex integral identity.
 
@@ -217,7 +217,7 @@ By contrast, on the full half-space cone \(\{y_n>0\}\), the function \(1/z_n\) h
 ## References
 
 - [Debraj Chakrabarti and Rasul Shafikov, *Distributional boundary values of holomorphic functions on product domains*, Mathematische Zeitschrift 286 (2017), 1145–1171](https://math.sci.uwo.ca/~shafikov/papers/MathZ2017.pdf). The introduction and §2.6 discuss the boundary-current setting and its Cauchy–Riemann derivative relation. That theorem concerns generic corners and currents; the finite-test cone limit and uniqueness above have their own proofs.
-- [*Cauchy kernels and distributional boundary limits*](cauchy-kernels-and-boundary-limits.md), Theorem 3.1 and Corollary 4.2. The one-variable cancellation and normalized pole limits used here.
+- *Cauchy kernels and distributional boundary limits*, Theorem 3.1 and Corollary 4.2. The one-variable cancellation and normalized pole limits used here.
 - *Gluing holomorphic sides*, Corollary 3.3. The exact one-variable zero-boundary result used for \(Q\) in (3.2).
 - [Avi Zeff, *Lecture 12: Pompeiu’s formula*, March 6, 2026](https://math.berkeley.edu/~avizeff/complex_analysis_S26/lecture_12.html). The complex integral identity underlying the one-variable prerequisites.
 

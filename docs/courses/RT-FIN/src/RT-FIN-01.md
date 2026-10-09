@@ -377,7 +377,7 @@ For \(n=4\), this gives eigenvalues \(1,i,-1,-i\). In the order \(e_0,e_1,e_2,e_
 (1,-1,1,-1),\quad(1,i,-1,-i).
 \]
 
-This example prepares for “Fourier analysis on finite abelian groups,” which develops character orthogonality, inversion, and duality. Here the calculation serves to identify the irreducible pieces of a concrete representation. For arbitrary finite groups, [Characters and the orthogonality relations](RT-FIN-02.md) will provide numerical methods for finding multiplicities.
+This example prepares for “Fourier analysis on finite abelian groups,” which develops character orthogonality, inversion, and duality. Here the calculation serves to identify the irreducible pieces of a concrete representation. For arbitrary finite groups, Characters and the orthogonality relations will provide numerical methods for finding multiplicities.
 
 ## 6. Exercises with complete solutions
 

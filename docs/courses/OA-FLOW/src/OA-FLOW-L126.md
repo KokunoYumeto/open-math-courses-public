@@ -194,7 +194,7 @@ The mathematical antecedent is Takesaki, *Theory of Operator Algebras II*, Theor
 
 The second proof makes the tolerance explicit: $0<\varepsilon<1-1/\sqrt2$ and a strictly larger open-arc radius are needed when passing from a closed spectral estimate to an open arc. The two-radius formulation LC15–LC16 expresses the same distinction without an inverse-cosine constant.
 
-Original lesson exposition, model, figure, caption and renderer: CC0-1.0 to the extent of rights held. DejaVu glyph components retain the accompanying [font terms](../assets/compact-spectral-image-fixed-implementers/figure/FONT-LICENSE.txt).
+Original lesson exposition, model, figure, caption and renderer: CC0-1.0 to the extent of rights held. DejaVu glyph components retain the accompanying font terms.
 
 <a id="l126-figure"></a>
 ## A prescribed corner fixes the global phase
@@ -207,12 +207,12 @@ The selected projection is $e=E_{22}$ in the diagonal fixed algebra. At $t=\pi/2
 
 The full automorphism's spectrum is $\{1,i,-1,-i\}$; the small arc condition is imposed on the selected corner. All nine matrix-unit conjugation identities and $ue=e$ are checked symbolically in the renderer. LC0–LC3 contain the full arbitrary-algebra proof; the diagram is a finite example. The reader must not interpret pointwise implementer existence as a continuous choice of implementers over the group.
 
-The model and diagram accompany the complete proofs [LC0](#lc0), [LC1](#lc1), [LC2](#lc2), [LC3](#lc3) and [LC4](#lc4). [Renderer](../assets/compact-spectral-image-fixed-implementers/render_corner_lift.py), [exact model data](../assets/compact-spectral-image-fixed-implementers/figure/corner-lift-data.json), [editable SVG](../assets/compact-spectral-image-fixed-implementers/figure/corner-lift.svg) and [font terms](../assets/compact-spectral-image-fixed-implementers/figure/FONT-LICENSE.txt).
+The model and diagram accompany the complete proofs [LC0](#lc0), [LC1](#lc1), [LC2](#lc2), [LC3](#lc3) and [LC4](#lc4). [Renderer](../assets/compact-spectral-image-fixed-implementers/render_corner_lift.py), [exact model data](../assets/compact-spectral-image-fixed-implementers/figure/corner-lift-data.json), [editable SVG](../assets/compact-spectral-image-fixed-implementers/figure/corner-lift.svg) and font terms.
 
 <a id="historical-alternative"></a>
 ## A second proof through full-corner Connes equality
 
-We now prove the same conclusion by first transferring the trivial cyclic Connes spectrum from the chosen corner to the whole algebra. This route uses the full-corner theorem in [Cancel an inner subgroup, then detect the exact spectrum](OA-FLOW-L119.md#oa-flow.minfix.fullconnes), followed by the same innerness criterion and fixed small-spectrum theorem.
+We now prove the same conclusion by first transferring the trivial cyclic Connes spectrum from the chosen corner to the whole algebra. This route uses the full-corner theorem in Cancel an inner subgroup, then detect the exact spectrum, followed by the same innerness criterion and fixed small-spectrum theorem.
 
 For a centrally ergodic action, a time annihilating the Connes spectrum is not
 merely inner when the reduced spectrum is compact modulo the Connes spectrum.
@@ -482,7 +482,7 @@ z_M(e)=1.
 $$
 
 The full fixed-corner theorem from
-[Cancel an inner subgroup, then detect the exact spectrum](OA-FLOW-L119.md#oa-flow.minfix.fullconnes) now
+Cancel an inner subgroup, then detect the exact spectrum now
 gives
 
 <a id="equation-q22"></a>

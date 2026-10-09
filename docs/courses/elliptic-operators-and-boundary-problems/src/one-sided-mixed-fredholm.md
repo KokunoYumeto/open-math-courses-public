@@ -4,7 +4,7 @@
 
 A closed range with only finitely many null solutions forces a pseudodifferential symbol to be injective at high frequency. A range with only finitely many missing targets forces the separate surjective condition. The two need not coincide for a rectangular system. This lesson proves both directions, then carries every source and target weight through a mixed-order system. It ends with an example showing exactly why an adapted graph domain changes the conclusion.
 
-The required entry results are [Finite defects under perturbation](fredholm-stability.md), [From symbol estimates to operators on every Sobolev scale](euclidean-symbol-calculus.md), and [Symbols, finite defects, and the index on a closed manifold](global-elliptic-symbol-index.md). Their compactness, complete symbol composition, and order-changing maps are recalled at the points where they enter. We use \(D=-i\partial\), retain every matrix factor in its source-to-target order, and never identify distinct bundle fibers without the stated Hermitian metric.
+The required entry results are Finite defects under perturbation, [From symbol estimates to operators on every Sobolev scale](euclidean-symbol-calculus.md), and [Symbols, finite defects, and the index on a closed manifold](global-elliptic-symbol-index.md). Their compactness, complete symbol composition, and order-changing maps are recalled at the points where they enter. We use \(D=-i\partial\), retain every matrix factor in its source-to-target order, and never identify distinct bundle fibers without the stated Hermitian metric.
 
 ## 1. Objects and the four one-sided assertions
 

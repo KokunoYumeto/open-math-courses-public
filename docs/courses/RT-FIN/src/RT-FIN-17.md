@@ -4,7 +4,7 @@
 
 The geometry of a two-dimensional vector space gives two ways to build representations of its general linear group. Rational lines lead to principal series and the Steinberg representation. Multiplication in a quadratic field extension supplies an elliptic torus. Combining induction from that torus with induction from an additive subgroup produces the remaining representations. Character orthogonality turns a difference of representations into an actual irreducible representation.
 
-We construct every irreducible complex representation of \(G=\mathrm{GL}_2(\mathbf F_q)\), for every prime power \(q\), including even characteristic. We use character determination, orthogonality, completeness and the column relation from [Characters and the orthogonality relations](RT-FIN-02.md), Theorems 3.1–3.2 and 4.1 and Corollary 4.2. The induced-character formula, reciprocity and tensoring with a character are [Induced representations and Frobenius reciprocity](RT-FIN-06.md), formulas (3), (8), Theorem 3.1 and Proposition 4.1. Mackey's intertwining formula is [Mackey theory and Clifford's theorem](RT-FIN-07.md), Corollary 1.2. The final examples use the Frobenius–Schur indicator from [Tensor products, duals and real representations](RT-FIN-04.md), Theorems 2.1 and 3.1. Basic references are [Etingof et al.], [Gruson–Serganova], [Deligne–Lusztig 1976] and [Deligne–Lusztig 1982].
+We construct every irreducible complex representation of \(G=\mathrm{GL}_2(\mathbf F_q)\), for every prime power \(q\), including even characteristic. We use character determination, orthogonality, completeness and the column relation from Characters and the orthogonality relations, Theorems 3.1–3.2 and 4.1 and Corollary 4.2. The induced-character formula, reciprocity and tensoring with a character are [Induced representations and Frobenius reciprocity](RT-FIN-06.md), formulas (3), (8), Theorem 3.1 and Proposition 4.1. Mackey's intertwining formula is [Mackey theory and Clifford's theorem](RT-FIN-07.md), Corollary 1.2. The final examples use the Frobenius–Schur indicator from [Tensor products, duals and real representations](RT-FIN-04.md), Theorems 2.1 and 3.1. Basic references are [Etingof et al.], [Gruson–Serganova], [Deligne–Lusztig 1976] and [Deligne–Lusztig 1982].
 
 Representations are finite-dimensional over \(\mathbf C\). Write \(\widehat A\) for the complex linear characters of an abelian group \(A\), and use an inner product linear in the first variable. Set
 
@@ -378,7 +378,7 @@ Here \(H\) is trivial and \(E\) has order three. Its two nontrivial characters f
 | \(\mathrm{St}\) | \(2\) | \(0\) | \(-1\) |
 | \(\pi_\theta\) | \(1\) | \(-1\) | \(1\) |
 
-These are the trivial, standard and sign rows of the \(S_3\) table in [Characters and the orthogonality relations](RT-FIN-02.md), §5. They all have indicator one: sign and trivial are real lines, and the standard plane has indicator \((2+3\cdot2+2(-1))/6=1\), as in [Tensor products, duals and real representations](RT-FIN-04.md), Exercise 1. The sign row is cuspidal because the order-two group \(U\) acts nontrivially on it.
+These are the trivial, standard and sign rows of the \(S_3\) table in Characters and the orthogonality relations, §5. They all have indicator one: sign and trivial are real lines, and the standard plane has indicator \((2+3\cdot2+2(-1))/6=1\), as in [Tensor products, duals and real representations](RT-FIN-04.md), Exercise 1. The sign row is cuspidal because the order-two group \(U\) acts nontrivially on it.
 
 ### Eight classes: the case \(q=3\)
 

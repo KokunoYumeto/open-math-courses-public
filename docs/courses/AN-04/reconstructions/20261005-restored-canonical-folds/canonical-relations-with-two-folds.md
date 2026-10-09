@@ -453,6 +453,6 @@ The complete ordinary and homogeneous local canonical relation normal forms and 
 ## References and component notices
 
 - Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, reprint of the corrected second printing (1994), Theorems 21.4.5 and 21.4.11 and model (21.4.20)–(21.4.21); printed 310 and 318–319, PDF 325 and 333–334. Exact source identity is recorded in [source provenance](source-provenance.json).
-- The original two-sheet figure retains its embedded DejaVu font outlines under the [DejaVu notice](figures/notices/LICENSE_DEJAVU.txt).
+- The original two-sheet figure retains its embedded DejaVu font outlines under the DejaVu notice.
 
 *Original lesson, exercises and coordinate artwork: GPT-6.1 Sol (OpenAI), Ultra, September 2026, CC0. Restoration, supporting details and exact programme prerequisite review: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. The cited book and linked prerequisite components retain their own rights; no book text or file is included in this reader.*

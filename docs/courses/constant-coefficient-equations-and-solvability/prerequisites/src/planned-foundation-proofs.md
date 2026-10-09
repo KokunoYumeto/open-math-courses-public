@@ -275,7 +275,7 @@ Statement retained from [Uniqueness from the principal boundary symbol](../../sr
 
 ## Written support theorem kept separate
 
-The compact Fourier division and exponential-polynomial annihilator entries retain their individual proof statements. The compact polynomial singular-support hull identity is proved in [Locating singularities through logarithmic Fourier strips](../../AN02-L158.html#5-a-nonzero-polynomial-cannot-change-the-compact-singular-hull), Theorem 5.1. The ordinary differential support-hull equality is a separate assertion. The latter is proved in [Convex supports and convolution cancellation](../convex-supports-and-convolution-cancellation.html), Corollary 4.3, with the derivative convention adapted explicitly in AN-02.
+The compact Fourier division and exponential-polynomial annihilator entries retain their individual proof statements. The compact polynomial singular-support hull identity is proved in [Locating singularities through logarithmic Fourier strips](../../AN02-L158.html#5-a-nonzero-polynomial-cannot-change-the-compact-singular-hull), Theorem 5.1. The ordinary differential support-hull equality is a separate assertion. The latter is proved in Convex supports and convolution cancellation, Corollary 4.3, with the derivative convention adapted explicitly in AN-02.
 
 ## Smooth wavefront convolution
 

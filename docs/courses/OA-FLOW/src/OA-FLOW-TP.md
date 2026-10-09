@@ -156,7 +156,7 @@ is continuous, by \(L^2\) translation continuity, and
 Thus it is positive on an open set containing a rational \(d\). A positive part of \(E\) returns to \(E\) with the exact derivative \(\lambda^n\). This holds in every positive-measure reduction. All derivative values belong to the same discrete multiplicative group, so its closed ratio set is
 \(\{0\}\cup\lambda^{\mathbb Z}\).
 
-The [full measured fixed-corner and all-weight theorem](../../OA-ERGODIC/src/ratio-sets-and-intrinsic-modular-spectra.md#3-identification-with-the-factor-invariant-including-zero) identifies this ratio set with \(S(Q)\), including zero and the sigma-finite measure case. Its [one-scale affine example](../../OA-ERGODIC/src/measurable-actions-and-compact-models.md#4-the-compact-space-and-its-nonsingular-measure) contains the same construction. Hence \(Q\) is type \(\mathrm{III}_\lambda\).
+The [full measured fixed-corner and all-weight theorem](../../OA-ERGODIC/src/ratio-sets-and-intrinsic-modular-spectra.md#3-identification-with-the-factor-invariant-including-zero) identifies this ratio set with \(S(Q)\), including zero and the sigma-finite measure case. Its one-scale affine example contains the same construction. Hence \(Q\) is type \(\mathrm{III}_\lambda\).
 
 But \(p\notin T(P)\cap T(Q)=T(P\bar\otimes Q)\). Formula (TP12) rules out subtype \(\mathrm{III}_\lambda\) for the product. This produces a counterexample for every initial separable-predual type \(\mathrm{III}_0\) factor \(P\). The argument identifies \(Q\) as the stated affine crossed product; it makes no identification with the separately named Powers construction.
 

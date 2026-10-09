@@ -202,7 +202,7 @@ Q\otimes_k G_N\longrightarrow(f_!A_M)\otimes_k G_N\\
 
 The first endpoint computes \(Rf_!M\otimes_k^LN\) because \(Q\) is K-flat; its possibly infinite direct-sum tensor degrees are retained. The last endpoint computes the derived right side because \(A_M\) is finite K-flat, and its terms regroup as \((P_M^p\otimes_k f^{-1}G_N^i)\otimes_{\mathbb Z}L^q\), hence are c-soft. No flatness of \(f_!A_M\) was assumed.
 
-Both maps use the same multiplication of local coefficient sections with proper-supported sections, with the stated tensor symmetry when the order of factors is changed. They commute with differentials and resolution comparisons. On a common flat and c-soft replacement they give the identical chain map, so their derived classes are independent of choices, natural, and agree with the bounded comparison. The explicit truncation squares and lower estimates in [Composing sheaf operators through an intermediate space](../../sheaf-proof-readings/SH02-kernel-calculus.html#SH02-KER-PF-RANGE) now prove that these particular maps are isomorphisms in the two mixed ranges.
+Both maps use the same multiplication of local coefficient sections with proper-supported sections, with the stated tensor symmetry when the order of factors is changed. They commute with differentials and resolution comparisons. On a common flat and c-soft replacement they give the identical chain map, so their derived classes are independent of choices, natural, and agree with the bounded comparison. The explicit truncation squares and lower estimates in Composing sheaf operators through an intermediate space now prove that these particular maps are isomorphisms in the two mixed ranges.
 
 <a id="LCH5"></a>
 

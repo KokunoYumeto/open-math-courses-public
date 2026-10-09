@@ -18,7 +18,7 @@ Continue with [lesson 6: Integral monodromy and the fundamental group](CG-S6-06.
 
 [Lesson 11](CG-S6-11.html) proves the exact octonion and Nijenhuis calculations, the smooth integrability theorem, and the almost-complex sphere restriction. Six solved exercises and three complete characteristic-class prerequisite chapters are included.
 
-[Lesson 10](CG-S6-10.html) proves the exact non-normal-fibre correction, proper test family, full-fibre duality and base change, and global nonvanishing for every line-bundle twist. It includes three complete analytical companion chapters and six solved exercises. The [working lesson 7](CG-S6-07.html) makes its integral-topology dependency available; that chapter is explicitly unfinished. Its cancellation and stable-framing companions are also included.
+[Lesson 10](CG-S6-10.html) proves the exact non-normal-fibre correction, proper test family, full-fibre duality and base change, and global nonvanishing for every line-bundle twist. It includes three complete analytical companion chapters and six solved exercises. The [working lesson 7](CG-S6-07.html) makes its integral-topology dependency available; that chapter is explicitly unfinished. Its integral duality, exact affine descent, CW, Hurewicz, path-fibre, cancellation and stable-framing proofs are included as companions.
 
 The [series map](series.json) retains the full remaining assignment. Lessons 1–6 and 8–11 are available. The analytic lessons 8–9 can be read while the exact topology providers for lesson 7 are completed. The remaining foundational and smooth-recognition proofs remain assigned within lesson 7. Source reading and proof acceptance have separate records.
 
@@ -42,12 +42,15 @@ The [series map](series.json) retains the full remaining assignment. Lessons 1�
 - [Supported Morse cancellation](morse-cancellation-with-controlled-support.html)
 - [Stable framing and original tangent comparison](spin-six-and-the-framing-comparison.html)
 - [Integral line-bundle descent for the affine fillings](integral-line-bundle-descent-for-the-affine-fillings.html)
+- [Integral duality and complete covering lattices](integral-duality-and-the-specialization-lattices.html)
+- [Explicit CW models and the first Hurewicz theorem](cw-models-and-the-first-hurewicz-map.html)
+- [Path fibres and integral homotopy equivalences](path-fibres-and-integral-homotopy-equivalences.html)
 - Source identities and attribution
 - Complete current source and offline reader
 
 New mathematical exposition and diagrams are dedicated under CC0-1.0. Bundled rendering software and fonts retain their own notices in `assets/mathjax/`. Current authoring provenance: GPT-6 Astra (OpenAI), Codex, Ultra, 9 October 2026. Independent review is not claimed.
 
-Run `python rebuild_course.py` with SymPy, NumPy and Matplotlib installed and Pandoc on PATH to reproduce all seventeen exact checkers, regenerate the diagrams and readers and rebuild the complete offline download. For individual operations, run the checkers above or `python rebuild_reader.py`. Each SVG figure is its editable source. Open `index.html` in the extracted archive to read offline; all equation-rendering assets and fonts are included.
+Run `python rebuild_course.py` with SymPy, NumPy and Matplotlib installed and Pandoc on PATH to reproduce all twenty exact checkers, regenerate the diagrams and readers and rebuild the complete offline download. For individual operations, run the checkers above or `python rebuild_reader.py`. Each SVG figure is its editable source. Open `index.html` in the extracted archive to read offline; all equation-rendering assets and fonts are included.
 
 Linked prerequisite courses are separate providers. The fourth lesson includes its reproducible drawing program in `checks/draw_period_quotient.py`.
 

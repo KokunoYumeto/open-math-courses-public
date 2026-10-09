@@ -4,7 +4,7 @@
 
 A maximal torus describes a reductive group by diagonal symmetries. A regular semisimple element describes the same torus by one element: the torus is the identity component of its centralizer. This observation is useful in families, where the centralizer of a section is easier to specify than a choice of eigenvectors.
 
-We use the torus deformation and conjugacy arguments of [Tori, maximal tori and their conjugacy](AG-RG-01.md). The classical geometric input concerning Borel subgroups is used below to prove the centralizer theorem, rather than importing that theorem from a reference. All centralizers are scheme-theoretic. Over a field, a geometric assertion means an assertion after algebraic closure.
+We use the torus deformation and conjugacy arguments of Tori, maximal tori and their conjugacy. The classical geometric input concerning Borel subgroups is used below to prove the centralizer theorem, rather than importing that theorem from a reference. All centralizers are scheme-theoretic. Over a field, a geometric assertion means an assertion after algebraic closure.
 
 ## 1. The geometry behind the centralizer theorem
 
@@ -386,7 +386,7 @@ For a general smooth connected affine group over a field, a **Cartan subgroup** 
 
 **Solution.** If the roots are $a_i$, the discriminant is $\prod_{i<j}(a_i-a_j)^2$, a symmetric polynomial in them and thus a polynomial in the characteristic coefficients. It is nonzero precisely when all eigenvalues are distinct. A matrix with this property is diagonalizable, and Exercise 6.1 gives its torus centralizer. Conversely a semisimple matrix with repeated eigenvalues has larger centralizer, so is not regular semisimple. The polynomial does not vanish identically: choose distinct nonzero elements in the infinite algebraically closed field and take their diagonal matrix. Its nonvanishing locus in the irreducible variety $\operatorname{GL}_n$ is therefore open dense. No assertion that this locus has a rational point over every finite field is needed.
 
-The [course prerequisite guide](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-RG/prerequisites.html) records the exact supporting statements, their full proof routes, and the hypotheses needed in their applications.
+The course prerequisite guide records the exact supporting statements, their full proof routes, and the hypotheses needed in their applications.
 
 ## References
 

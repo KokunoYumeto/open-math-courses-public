@@ -4,7 +4,7 @@
 
 Formal functions recovers completed cohomology from infinitesimal neighborhoods. Grothendieck's existence theorem recovers the sheaves themselves. Over a complete Noetherian base, a compatible coherent sheaf on every thickening of a proper scheme comes from one coherent sheaf, and compatible morphisms come from unique algebraic morphisms.
 
-We use [formal functions](the-theorem-on-formal-functions.md), [Serre generation and vanishing](serres-theorems-on-projective-schemes.md), and proper coherence. The planned *Completion* lesson in *Commutative algebra for geometry* supplies Artin–Rees, Noetherianness and flatness of completion, and completeness of finite modules over a complete Noetherian ring. Chow's lemma belongs to the planned *Projective morphisms and Chow's lemma* lesson in *Morphisms of schemes*; its exact open proof was specified in our proper-coherence lesson.
+We use [formal functions](the-theorem-on-formal-functions.md), Serre generation and vanishing, and proper coherence. The planned *Completion* lesson in *Commutative algebra for geometry* supplies Artin–Rees, Noetherianness and flatness of completion, and completeness of finite modules over a complete Noetherian ring. Chow's lemma belongs to the planned *Projective morphisms and Chow's lemma* lesson in *Morphisms of schemes*; its exact open proof was specified in our proper-coherence lesson.
 
 ## 1. Compatible coherent systems
 

@@ -1,6 +1,6 @@
 # Tensor-period figure: terms and reproduction
 
-The original renderer, model data, caption and generated SVG/PNG are dedicated under **CC0 1.0**, to the extent of rights held. The renderer uses the unchanged [DejaVu fonts](../typeiii-zero-decomposition/DejaVuSans.ttf) and [font license](../typeiii-zero-decomposition/FONT-LICENSE.txt) already included in this course. Their original terms remain in force.
+The original renderer, model data, caption and generated SVG/PNG are dedicated under **CC0 1.0**, to the extent of rights held. The renderer uses the unchanged DejaVu fonts and font license already included in this course. Their original terms remain in force.
 
 The lattice window shows n=2(m+bk), with integer m,k,n and b=(sqrt(5)-1)/2. Irrationality proves that precisely k=0 and n=2m survive; the plot does not decide equality by floating-point rounding. With c=log(2), the circle map is z mapped to z squared, where z=exp(-i*pi*q/c) on the input circle of length 2c and the first-factor eigenunitary phase is held at 1. Other phases rotate the target. The two points q=0,c have the same squared character. The positive residual action on w is multiplication by exp(2*pi*i*s/c), with period c. The full normal fixed-center and Haar spectral-measure proof is [TP19–26](../../src/OA-FLOW-TP.md#tp-5); the factor example is [TP27–32](../../src/OA-FLOW-TP.md#tp-6). Its types are III0, III1/4 and III1/2. The finite lattice window and circle schematic illustrate these proved formulas.
 

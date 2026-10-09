@@ -4,7 +4,7 @@
 
 A node has a deformation \(xy=t\). The parameter \(t\) smooths its two branches, while deformations of the rest of a curve must glue around it. For proper nodal curves both parts of that gluing problem are unobstructed. Stability supplies a different ingredient: it removes vector fields, including those carried by a rational tail or bridge. Together these facts make the moduli of stable curves a smooth Deligne–Mumford stack.
 
-We use the algebraicity theorem for the full curve stack proved in [Lesson 8, Appendix A §A.8](moduli-stacks-are-algebraic.md), the arbitrary-base Deligne–Mumford criterion proved in [Lesson 6](quotient-and-dm-stacks.md), and the infinitesimal methods of [Lesson 7](artin-axioms.md). Ordinary curve cohomology, Riemann–Roch and degree of a line bundle are prerequisites. Section 9 specifies the other ordinary geometric and deformation inputs. None of the smoothness, stability or dimension results proved here is used as its own prerequisite.
+We use the algebraicity theorem for the full curve stack proved in Lesson 8, Appendix A §A.8, the arbitrary-base Deligne–Mumford criterion proved in [Lesson 6](quotient-and-dm-stacks.md), and the infinitesimal methods of Lesson 7. Ordinary curve cohomology, Riemann–Roch and degree of a line bundle are prerequisites. Section 9 specifies the other ordinary geometric and deformation inputs. None of the smoothness, stability or dimension results proved here is used as its own prerequisite.
 
 All stacks are over \(\operatorname{Spec}\mathbb Z\). A geometric fibre means base change to an algebraic closure of the residue field. The base of a family may be an arbitrary scheme. We use \(g\geq2\) whenever writing \(\mathcal M_g\) or \(\overline{\mathcal M}_g\).
 

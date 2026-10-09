@@ -17,7 +17,7 @@ Use \(B,B^*,R_j=2^j,A_j\) from [Endpoint spaces and flat energy shells](endpoint
 
 Only finitely many nonzero derivatives occur. A highest nonzero derivative is a nonzero constant, so (1) controls \(u\) itself in \(B^*\). In the scattering application \(p\) is real, simply characteristic and has no invariant direction. [Global polynomial resolvent estimates](global-polynomial-resolvent-estimates.md) then gives \(R_\pm:B\to X_p\).
 
-The support estimate uses one-variable factorization and Poincaré. The global criterion combines a uniformly local partition with summable shell bounds; the strength-ratio test uses a frequency cutoff with a square-integrable kernel. We use the strength \(\widetilde p\), weakness factor \(\kappa_p\), and invariant space \(\Lambda(p)\) defined in [Polynomial translations and regular energies](polynomial-translations-and-regular-energies.md#polynomial-properness).
+The support estimate uses one-variable factorization and Poincaré. The global criterion combines a uniformly local partition with summable shell bounds; the strength-ratio test uses a frequency cutoff with a square-integrable kernel. We use the strength \(\widetilde p\), weakness factor \(\kappa_p\), and invariant space \(\Lambda(p)\) defined in Polynomial translations and regular energies.
 
 [Approximation, convolution and integer Sobolev density](../providers/analysis/euclidean-approximation-and-convolution.md#mollification) proves the local mollification and oscillatory-integral limits used below. Fourier inversion, Plancherel and distributional differentiation are proved in [Measure and Fourier foundations](../providers/analysis/finite-derivative-l2.md#fourier-normalization). The finite-dimensional norm bounds and the equivalence of precompactness with subsequence compactness in a complete metric space are proved in [Compact Fredholm operators, elementary tools](../providers/analysis/compact-fredholm-families.md#fredholm-finite-tools). Section 4 gives the required weak Hilbert subsequence proof, including nonseparable spaces.
 
@@ -365,7 +365,7 @@ The continuous ratio \(|Q_\ell|/\widetilde p\) is bounded globally, so
 
 because \(R_j b(R_j/4)\leq8\int_{R_j/8}^{R_j/4}b(t)\,dt\) and these intervals have disjoint interiors. The early \(M_j\) are bounded by \(Cb(0)\). Theorem 3.1 proves (13).
 
-In particular, if \(p\) has no invariant direction, its strength tends to infinity by [Polynomial translations and regular energies](polynomial-translations-and-regular-energies.md). Thus \(Q=1\) satisfies (12), and a bounded potential controlled by any such \(b\) is short range. \(\square\)
+In particular, if \(p\) has no invariant direction, its strength tends to infinity by Polynomial translations and regular energies. Thus \(Q=1\) satisfies (12), and a bounded potential controlled by any such \(b\) is short range. \(\square\)
 
 This sufficient condition concerns bounded coefficients. The local characterization itself permits \(L^2_{\mathrm{loc}}\) coefficient singularities whenever its Hilbert-space compactness and dyadic bounds hold.
 

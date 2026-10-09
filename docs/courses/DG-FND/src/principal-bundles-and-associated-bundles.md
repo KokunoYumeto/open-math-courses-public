@@ -332,7 +332,7 @@ The tautological line has fibre the line \(\ell\) itself over \(\ell\). Its loca
 \bigl([z_0:z_1],\,\xi(z_0,z_1)\bigr).
 \tag{E.4}
 \]
-The relation \((z,\xi)a=(za,a^{-1}\xi)\) preserves the product \(\xi z\), proving it is well defined. In the two vector charts it is the identity on \(\xi\), so it is a smooth linear isomorphism. Its first Chern number, with the complex orientation of this base, is \(-1\); a complete curvature computation and integration proof is [DG-CHAR-17, Exercise V.4](../supporting/DG-CHAR-8e0b5f71efec/src/DG-CHAR-17.md). That earlier programme computation uses the same local spanning vector \((1,w)\), hence the same tautological bundle. □
+The relation \((z,\xi)a=(za,a^{-1}\xi)\) preserves the product \(\xi z\), proving it is well defined. In the two vector charts it is the identity on \(\xi\), so it is a smooth linear isomorphism. Its first Chern number, with the complex orientation of this base, is \(-1\); a complete curvature computation and integration proof is DG-CHAR-17, Exercise V.4. That earlier programme computation uses the same local spanning vector \((1,w)\), hence the same tautological bundle. □
 
 ## F. Exercises with complete solutions
 

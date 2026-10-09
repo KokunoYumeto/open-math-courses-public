@@ -11,7 +11,7 @@ domain and range. We also prove that the usual Sobolev realization at
 the largest order has dense, proper, nonclosed range.
 
 Read [Two-parameter Sobolev weights and conjugated operators](mixed-sobolev-mapping.md)
-for weighted Fourier norms, [Finite defects under perturbation](fredholm-stability.md)
+for weighted Fourier norms, Finite defects under perturbation
 for the closed-range Fredholm criteria, and
 [When finite defects force one-sided ellipticity](one-sided-mixed-fredholm.md)
 for the distinction between standard and adapted domain-range pairs.
@@ -671,7 +671,7 @@ Since differentiation multiplies the coefficients by \(k^{2r}\) or
 and every norm identity in (AH5)--(AH7) and (AH15)--(AH16). Their kernels
 and cokernels are zero and their ranges are the entire Banach target, so
 the index is zero in the definition of
-[the Fredholm lesson, (F1)](fredholm-stability.md#1-contracts-defects-and-closed-ranges).
+the Fredholm lesson, (F1).
 The power inequality preceding (AH11) follows from convexity of
 \(t\mapsto t^r\), or directly its nonnegative second derivative for
 \(r\geq2\) and equality for \(r=1\). Its continuous version uses
@@ -1191,7 +1191,7 @@ trace class and has exact trace and trace norm
  \tag{AE19}
 \]
 This agrees with the original trace-ideal definition
-[in the trace lesson, (T5)](traces-and-complexes.md#2-the-trace-ideal-from-paired-orthonormal-systems).
+in the trace lesson, (T5).
 Indeed, for finite paired orthonormal systems \((u_i),(v_i)\), expand
 in (AE11). The triangle inequality and finite Cauchy--Schwarz give
 \(\sum_i|\langle Qu_i,v_i\rangle|

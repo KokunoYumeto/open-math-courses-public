@@ -54,7 +54,7 @@ h_1(s+tv)\leq h(s)+(-t)q_h(-v)=q_h(s+tv)\leq p(s+tv).
 \]
 At \(t=0\), domination is the assumption on \(h\). This constructs a dominated extension to one larger subspace.
 
-Well-order the underlying set of \(V\), using Theorem 8.5 of [Hahn–Banach, Baire and the basic theorems on Banach spaces](../../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#oa-fnd-hb-09). Starting with \(g\) on \(D\), proceed along that well-order. At each successor step retain the current functional if the next vector already belongs to its domain; otherwise adjoin that vector by the construction above. At a limit step take the union of the preceding functionals. Their domains are nested subspaces and their values agree, so the union is well defined. Any two vectors in the union occur together in an earlier domain; hence the union is linear, and domination holds there for each vector. Transfinite recursion therefore gives a dominated extension whose domain contains every vector of \(V\). It is the required functional. \(\square\)
+Well-order the underlying set of \(V\), using Theorem 8.5 of Hahn–Banach, Baire and the basic theorems on Banach spaces. Starting with \(g\) on \(D\), proceed along that well-order. At each successor step retain the current functional if the next vector already belongs to its domain; otherwise adjoin that vector by the construction above. At a limit step take the union of the preceding functionals. Their domains are nested subspaces and their values agree, so the union is well defined. Any two vectors in the union occur together in an earlier domain; hence the union is linear, and domination holds there for each vector. Transfinite recursion therefore gives a dominated extension whose domain contains every vector of \(V\). It is the required functional. \(\square\)
 
 **Lemma 0.2 (Strict convex separation).** Let \(E\) be a Hausdorff locally convex real vector space. If \(C\subset E\) is nonempty compact convex and \(D\subset E\) is nonempty closed convex, with \(C\cap D=\varnothing\), then there are a continuous real linear functional \(\ell\) and \(d\in\mathbb R\) such that
 \[
@@ -62,7 +62,7 @@ Well-order the underlying set of \(V\), using Theorem 8.5 of [Hahn–Banach, Bai
 \quad(c\in C,\ y\in D).
 \]
 
-**Proof.** In a locally convex space, neighborhoods are described by finitely many continuous seminorm inequalities, as in Section 6 of [Hahn–Banach, Baire and the basic theorems on Banach spaces](../../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#oa-fnd-hb-06). Because \(D\) is closed and misses \(c\in C\), choose a continuous seminorm \(q_c\) with
+**Proof.** In a locally convex space, neighborhoods are described by finitely many continuous seminorm inequalities, as in Section 6 of Hahn–Banach, Baire and the basic theorems on Banach spaces. Because \(D\) is closed and misses \(c\in C\), choose a continuous seminorm \(q_c\) with
 \[
 c+\{x:q_c(x)<2\}\subseteq E\setminus D.
 \]

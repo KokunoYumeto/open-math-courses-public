@@ -7,6 +7,6 @@ Two readings explain when a fixed constructible heart retains ambient derived in
 
 The realization criteria and their proof route come from Lunts and Schnürer, *Categories of constructible sheaves*, arXiv:2601.05477v1. The text, the six solutions and the reader code are CC0. The source notes give exact theorem and page bindings, explain the expanded projective-line calculation and identify the remaining prerequisites.
 
-[Source and dependency notes](SOURCE-NOTES.md) · [Reuse terms](LICENSE.txt) · Provenance
+Source and dependency notes · [Reuse terms](LICENSE.txt) · Provenance
 
 The native MathML readers are fixed-stratification-realization.html and projective-line-boundary-and-missing-classes.html. With Python 3 and Pandoc, run python build/build_reader.py to rebuild them. Wide formulas scroll on small screens. These readings are selections from Constructible and perverse sheaves. Self-checked by the writing AI.

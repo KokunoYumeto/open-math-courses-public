@@ -1116,6 +1116,8 @@ temporal heat-curvature controls used by the physical
 continuation argument. The remaining step is a local
 physical-time analysis with the precise wave norms,
 including the boundary gauge terms and the wave forcing.
-The source's energy, Strichartz and null-form estimates
-and its nonlinear wave equations must still be supplied
-in the receiving course argument.
+[Wave energy, dispersion and null forms](../classical-wave-estimates.html)
+now proves the complete linear wave estimates, exact physical
+coordinate maps and all required Fourier constants. The remaining
+nonlinear Yang–Mills wave equations, boundary gauge bounds and
+physical continuation are the next parts of the argument.

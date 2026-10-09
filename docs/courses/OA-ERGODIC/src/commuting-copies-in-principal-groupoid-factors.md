@@ -37,7 +37,7 @@ dm_r=\delta(y,x)dm_s,\qquad
 \delta(z,x)=\delta(z,y)\delta(y,x),\quad \delta(x,x)=1.
 \tag{1.2}
 \]
-The transverse measure identity gives (1.2), with the source/range coordinates specified as above. This convention agrees with [Relation kernels and modular coordinates](relation-kernels-and-modular-coordinates.md). The derivative is positive and finite off the transverse exceptional set. In particular no invariant unit measure is assumed.
+The transverse measure identity gives (1.2), with the source/range coordinates specified as above. This convention agrees with Relation kernels and modular coordinates. The derivative is positive and finite off the transverse exceptional set. In particular no invariant unit measure is assumed.
 
 Let \(B=\operatorname{End}_\Lambda(H^0)\). Its elements are bounded measurable fields \(T_x\) on \(L^2([x],\rho_x)\) that agree under the regular identifications, modulo negligible sets. A Borel kernel \(b:R\to\mathbb C\) of finite uniform Schur bound gives such an element:
 \[

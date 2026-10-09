@@ -4,7 +4,7 @@ The coercive lift WSL removes a natural-dual source, including its boundary part
 
 The mathematical antecedent for the compressed operator and its boundary jets is Hörmander, *The Analysis of Linear Partial Differential Operators III*, approved Springer 2007 edition, ISBN 978-3-540-49938-1, Section 18.3, Lemma 18.3.4 and Theorem 18.3.5, printed pages 114–115. The complete programme proofs are [LB](../20261005-local-boundary-calculus/boundary-tests-and-lacunary-symbols.md), especially Lemma 4.4 and Theorem 5.1, and [SF](../20261007-restored-sharp-form/sharp-boundary-form-defect.md), especially its patched normal commutator and mixed localization lemma. We prove the new source reduction below, rather than attribute it to those statements without an argument.
 
-Independent exposition, exercises and illustration are **CC0-1.0**. The [proof map](proof-map.json) retains the exact earlier versions and explicitly external Lebl foundations. Internal P514 closure of this export is not claimed. The final section identifies the remaining boundary propagation obligation.
+Independent exposition, exercises and illustration are **CC0-1.0**. The proof map retains the exact earlier versions and explicitly external Lebl foundations. Internal P514 closure of this export is not claimed. The final section identifies the remaining boundary propagation obligation.
 
 ## 1. The source and operator classes
 

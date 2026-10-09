@@ -715,14 +715,14 @@ The following lessons prove the prerequisite results used here. The analytic and
 | Analytic geometry for finite maps | Analytic coordinates, reduced components and differences, proper images, compact affine-analytic finiteness, and dimension and rank cuts |
 | [Analytic closures of the original strata](../analytic-conormal-closures.html) | Analytic conormal closures and the AP/PB parameter comparisons |
 | [Compatible triangulation](../compatible-whitney-triangulation.html#SH02-COMPATIBLE-TRIANGULATION) | Analytic open simplices compatible with the marked compact pair and finite polynomial splitting |
-| [Supporting verifications for open prerequisites](../../sheaf-proof-readings/SH02-open-prerequisite-proofs.html) | Localization, proper base change and the section-restriction map; controlled lifts, tubes and flows |
+| Supporting verifications for open prerequisites | Localization, proper base change and the section-restriction map; controlled lifts, tubes and flows |
 | Normal Morse data and change of coefficients | Ring-linear coefficient restriction, original real and normal-choice pairs, finite closed-cover maps, and field-perverse normal degrees |
-| [Local orientations, dimension and integration](../../sheaf-proof-readings/SH02-manifold-duality.html) | The integral Euclidean generator, its coordinate-sign action and natural module-coefficient comparison |
+| Local orientations, dimension and integration | The integral Euclidean generator, its coordinate-sign action and natural module-coefficient comparison |
 | [Weierstrass preparation and division](../../analytic-finiteness-and-preparation/weierstrass-preparation-and-division.html) | Convergent preparation and division, analytic Noetherianity and finite scalar polynomial splitting |
 | [Cauchy's theorem for cycles and its consequences](../../foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html) | Scalar integration, Goursat, Cauchy, Taylor, Morera and the identity theorem |
-| [Holomorphic functions of several variables](../../complex-analytic-spaces-and-coherent-sheaves/holomorphic-functions-of-several-variables.html) | Bounded removal and the connected analytic complement used in IHA1 |
-| [Cartan coherence and complex spaces](../../complex-analytic-spaces-and-coherent-sheaves/cartans-coherence-theorem-and-complex-spaces.html) | Coherent ideals, local quotients and their finite presentations |
-| [Analytic germs, local parametrization and the Nullstellensatz](../../complex-analytic-spaces-and-coherent-sheaves/analytic-germs-local-parametrization-and-the-nullstellensatz.html) | Reduced analytic ideals and the analytic Nullstellensatz |
+| Holomorphic functions of several variables | Bounded removal and the connected analytic complement used in IHA1 |
+| Cartan coherence and complex spaces | Coherent ideals, local quotients and their finite presentations |
+| Analytic germs, local parametrization and the Nullstellensatz | Reduced analytic ideals and the analytic Nullstellensatz |
 | [Noetherian and Artinian rings](../../AG-CA/noetherian-and-artinian-rings.html) | Finite modules, Hilbert basis, length, Artin–Rees and its induced filtration |
 | [Graded modules and Hilbert–Samuel functions](../../AG-CA/graded-modules-and-hilbert-samuel-functions.html) | Hilbert–Serre and Hilbert–Samuel polynomials and their leading coefficients |
 

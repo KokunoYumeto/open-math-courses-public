@@ -2,7 +2,7 @@
 
 A constructible sheaf can change at a small set of points while remaining locally constant elsewhere. The change is not described by a list of stalks alone. We must also know how a section near a singular point restricts to each neighboring region. On an interval with one distinguished point, this produces a diagram of three modules. We will construct the sheaf from that diagram, calculate its cohomology and costalk, and extend the calculation to bounded complexes.
 
-The sheaf-operation prerequisites are proved in Sheaves of modules and their derived categories: stalkwise exactness in Theorem 2.1; exact open extension and its adjunction in Lemma 5.2 and Corollary 5.5; injective resolutions in Theorem 6.1; and the closed/open localization triangle and its signs in Corollary 13.2 and Lemma 13.3. The proof of Theorem 3 below derives the adjunctions it needs from these exact functors. The arbitrary-module interval-cohomology calculation is linked after Proposition 2.
+The sheaf-operation prerequisites are proved in [Sheaves of modules and their derived categories](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/derived-categories-and-sheaf-operations/src/sheaves-of-modules-and-their-derived-categories.md#sh-fnd-dc-02): stalkwise exactness in Theorem 2.1; [exact open extension and its adjunction](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/derived-categories-and-sheaf-operations/src/sheaves-of-modules-and-their-derived-categories.md#sh-fnd-dc-05) in Lemma 5.2 and Corollary 5.5; [injective resolutions](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/derived-categories-and-sheaf-operations/src/sheaves-of-modules-and-their-derived-categories.md#sh-fnd-dc-06) in Theorem 6.1; and the [closed/open localization triangle and its signs](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/derived-categories-and-sheaf-operations/src/sheaves-of-modules-and-their-derived-categories.md#sh-fnd-dc-13) in Corollary 13.2 and Lemma 13.3. The proof of Theorem 3 below derives the adjunctions it needs from these exact functors. The arbitrary-module interval-cohomology calculation is linked after Proposition 2.
 
 *Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
@@ -69,7 +69,7 @@ The closed half interval is contractible, and its constant-sheaf cohomology is \
 \(R\Gamma(I;j_{-!}L_{I_-})=0\).
 The right half interval gives the same statement for \(j_{+!}R_{I_+}\). Apply derived global sections to (2). Both open-piece terms vanish, and \(R\Gamma(I;i_*V)=V\), proving (3). \(\square\)
 
-The constant-sheaf interval calculation used here holds for arbitrary coefficient modules. The programme proof is compact-interval acyclicity and its constant-module argument, followed by homotopy invariance through a proper interval. Each open, closed or half-open interval used here contracts inside itself to a point. Evaluation at that point and the constant-section map have one composite equal to the identity by definition; homotopy invariance identifies the other composite with the identity induced by the interval contraction. This gives the ordinary cohomology identification, naturally in the module. Finite truncation triangles give the same assertion for a bounded coefficient complex. No compact-support cohomology of an open half interval has been substituted for ordinary cohomology on \(I\).
+The constant-sheaf interval calculation used here holds for arbitrary coefficient modules. The programme proof is [compact-interval acyclicity and its constant-module argument](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#compact-cohomology-of-constant-coefficients-on-boxes-constant-box-compact-cohomology), followed by [homotopy invariance through a proper interval](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#homotopy-invariance-from-a-proper-interval-proper-interval-homotopy). Each open, closed or half-open interval used here contracts inside itself to a point. Evaluation at that point and the constant-section map have one composite equal to the identity by definition; homotopy invariance identifies the other composite with the identity induced by the interval contraction. This gives the ordinary cohomology identification, naturally in the module. Finite truncation triangles give the same assertion for a bounded coefficient complex. No compact-support cohomology of an open half interval has been substituted for ordinary cohomology on \(I\).
 
 ## Bounded complexes of diagrams
 
@@ -116,7 +116,7 @@ The last map is the identity at the middle module. On the left and right it send
 
 Each of \(V,L,R\) has a projective resolution of length at most \(g\). The functors \(P_0,P_-,P_+\) are exact and carry projective modules to projective diagrams. Resolving the terms of (7), and taking the mapping cone of a lifted resolution map, gives a projective diagram resolution of \(E\) of length at most \(g+1\).
 
-For the adjunctions used next, choose a bounded-below injective resolution \(G\to J^\bullet\) in the category of all sheaves. If \(j:U\hookrightarrow I\) is open, exactness of \(j_!\) and its ordinary adjunction imply that \(J^n|_U\) is injective: the functor \(\operatorname{Hom}(-,J^n|_U)=\operatorname{Hom}(j_!(-),J^n)\) is exact. Restriction is exact too, so \(J^\bullet|_U\) resolves \(G|_U\). The constant-sheaf functor \(M\mapsto M_U\) is exact on stalks and is left adjoint to sections, by inverse-image adjunction for the map to a point. Consequently \(\Gamma(U;J^n|_U)\) is an injective \(k\)-module, and the complex of these modules computes \(R\Gamma(U;G|_U)\).
+For the adjunctions used next, choose a bounded-below injective resolution \(G\to J^\bullet\) in the category of all sheaves. If \(j:U\hookrightarrow I\) is open, exactness of \(j_!\) and its ordinary adjunction imply that \(J^n|_U\) is injective: the functor \(\operatorname{Hom}(-,J^n|_U)=\operatorname{Hom}(j_!(-),J^n)\) is exact. Restriction is exact too, so \(J^\bullet|_U\) resolves \(G|_U\). The constant-sheaf functor \(M\mapsto M_U\) is exact on stalks and is left adjoint to sections, by [inverse-image adjunction for the map to a point](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/derived-categories-and-sheaf-operations/src/sheaves-of-modules-and-their-derived-categories.md#sh-fnd-dc-04). Consequently \(\Gamma(U;J^n|_U)\) is an injective \(k\)-module, and the complex of these modules computes \(R\Gamma(U;G|_U)\).
 
 The ordinary adjunctions give an isomorphism of cochain complexes
 
@@ -126,7 +126,7 @@ The ordinary adjunctions give an isomorphism of cochain complexes
 \cong \operatorname{Hom}^{\bullet}_k(M,\Gamma(U;J^\bullet|_U)).
 \]
 
-Their naturality makes these isomorphisms commute with the differentials. Bounded-below complexes of injectives calculate derived Hom by Theorem 6.1 and Lemmas 6.2–6.3, so this proves the derived adjunction used here. Taking \(U=I\) and \(j=\mathrm{id}\) gives the constant-sheaf case. Taking either open half interval gives the extension-by-zero case. This argument requires no finiteness of the module; projectivity enters only in the next vanishing calculation.
+Their naturality makes these isomorphisms commute with the differentials. Bounded-below complexes of injectives calculate derived Hom by [Theorem 6.1 and Lemmas 6.2–6.3](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/derived-categories-and-sheaf-operations/src/sheaves-of-modules-and-their-derived-categories.md#sh-fnd-dc-06), so this proves the derived adjunction used here. Taking \(U=I\) and \(j=\mathrm{id}\) gives the constant-sheaf case. Taking either open half interval gives the extension-by-zero case. This argument requires no finiteness of the module; projectivity enters only in the next vanishing calculation.
 
 Next, these projective diagrams have no higher sheaf Ext into a weakly constructible sheaf \(G\). The sheaf associated to \(P_0(M)\) is the constant sheaf \(M_I\). Derived adjunction identifies its derived Hom into \(G\) with
 
@@ -146,7 +146,7 @@ This proof concerns the one-point interval decomposition. It does not assert the
 
 For a cochain map \(u:A^\bullet\to B^\bullet\), our cone has
 \(\operatorname{Cone}(u)^n=B^n\oplus A^{n+1}\) and differential
-\(d(b,a)=(d_Bb+u(a),-d_Aa)\). We use the connecting-arrow convention of Sheaves of modules and their derived categories. The fibre objects calculated below are cones shifted by \([-1]\); their cohomology degrees are independent of negating a triangle's connecting arrow.
+\(d(b,a)=(d_Bb+u(a),-d_Aa)\). We use the [connecting-arrow convention of Sheaves of modules and their derived categories](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/derived-categories-and-sheaf-operations/src/sheaves-of-modules-and-their-derived-categories.md#sh-fnd-dc-13). The fibre objects calculated below are cones shifted by \([-1]\); their cohomology degrees are independent of negating a triangle's connecting arrow.
 
 ## Stalks and costalks
 
@@ -199,7 +199,7 @@ Over a field, perfect simply means bounded with finite-dimensional cohomology. T
 
 ## One diagram from sections to a closed-layer correction
 
-Use this example throughout the diagram-to-heart route. Over \(\mathbb Z\), take
+Use this example throughout the [diagram-to-heart route](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/index.md#learner-route-from-a-diagram-to-a-heart-learner-route-from-a-diagram-to-a-heart). Over \(\mathbb Z\), take
 
 \[
  L=\mathbb Z,\qquad V=\mathbb Z^2,\qquad R=\mathbb Z,\qquad
@@ -221,7 +221,7 @@ Here and in the two directional models we identify the shifted cone with the dis
 \(\ell(x,y)=x-2y\) induces an isomorphism
 \(\operatorname{coker}\rho\to\mathbb Z\): it kills \((2,1)\), is onto, and its kernel is precisely \(\mathbb Z(2,1)\). Thus \(H^1K=\mathbb Z\).
 
-The directional tests are
+The [directional tests](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/directional-tests-at-a-constructible-boundary.md#the-fixed-diagrams-test-and-comparison-maps) are
 
 \[
  J_+=[\,V\xrightarrow{\,2q\,}\mathbb Z\,],\qquad
@@ -245,7 +245,7 @@ The ordinary smart lower cut of (B2) at zero is the subgroup \(\mathbb Zu\) in d
 
 ## The interval dictionary in the perverse construction
 
-After learning the abstract heart and the perverse stratum criterion, return to the same diagram. For the real perversity \(p(s)=-s\), the open-layer cutoff is \(-1\). Since \(E\) is in ordinary degree zero there, its lower open cut is zero. The full closed-layer calculation therefore takes \(G=E\), \(C=\tau^{\le0}i^!G=\mathbb Zu\), and uses the exceptional counit
+After learning the abstract heart and the perverse stratum criterion, return to the same diagram. For the real perversity \(p(s)=-s\), the open-layer cutoff is \(-1\). Since \(E\) is in ordinary degree zero there, its lower open cut is zero. The full [closed-layer calculation](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/perverse-support-costalks-and-truncation-triangles.md#calculate-the-origin-correction-before-the-induction) therefore takes \(G=E\), \(C=\tau^{\le0}i^!G=\mathbb Zu\), and uses the exceptional counit
 \(i_*\mathbb Zu\to E\), whose point map is \(z\mapsto(-2z,z)\).
 Its ordinary quotient is the sheaf \(B\) with diagram
 \(\mathbb Z\xleftarrow{\,2\,}\mathbb Z\xrightarrow{\,1\,}\mathbb Z\).

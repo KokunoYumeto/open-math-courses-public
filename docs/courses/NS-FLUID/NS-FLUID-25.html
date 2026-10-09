@@ -1,0 +1,2213 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The complete velocity step and periodic projection bounds — Incompressible flow</title><link rel="stylesheet" href="reader.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Incompressible flow</a><a href="src/the-complete-velocity-step.md">Editable lesson</a><span class="unlinked">Sources and authorship</span></nav></header><main id="main"><nav aria-label="Lesson sequence"><a href="NS-FLUID-24.html">Previous lesson</a><a href="NS-FLUID-26.html">Next lesson</a></nav><article class="lesson"><h1 id="the-complete-velocity-step-and-periodic-projection-bounds">The complete velocity step and periodic projection bounds</h1>
+<p><a href="NS-FLUID-24.html">Lesson 24</a> constructed the
+actual stress cutoffs and smooth energy amplitudes. This chapter proves
+the complete velocity estimates for those amplitudes: the principal
+energy, both small corrections, the full increment, spatial and time
+derivatives, and every source bound through three space-time derivatives.</p>
+<p>The proof retains the original physical period, every mean, the
+amplitude prefactor and all terms in each product derivative. It also
+constructs the periodic projection kernel, proves its complete
+finite-exponent bounds, and gives the smooth-input supremum estimate
+needed for the temporal correction.</p>
+<p>The original fields and their norms are in
+<a href="NS-FLUID-22.html">lesson 22</a>.
+The full residual and oscillatory kernel estimates are in
+<a href="NS-FLUID-23.html">lesson 23</a>.
+SC and AB labels refer to lesson 24; IK labels refer to lesson 23.
+VC labels below give the complete square-norm estimates; PL labels
+give the projection proof; VD labels give every derivative estimate.</p>
+<p>The human source is Tristan Buckmaster and Vlad Vicol,
+<a href="https://arxiv.org/abs/1709.10033v4"><em>Nonuniqueness of weak solutions to the Navier–Stokes equation</em>,
+arXiv:1709.10033v4</a>.
+Its original author TeX at 1041–1174 is the immediate comparison,
+with the parameter, field and amplitude definitions read in the preceding
+chapters. The exposition supplies the full calculations, including
+the original amplitude factor at the first step. This is author
+self-checked exposition; no independent review or novelty is claimed.</p>
+<p>Five solved exercises compute exact physical Fourier projections,
+optimize the kernel cancellation and smooth-input bounds, evaluate
+the actual projected fourth moment of one temporal pair, and retain
+the complete initial amplitude and its numerical tail. The stress
+and energy induction remain necessary for the infinite construction.</p>
+<h2 id="vc1-all-original-parameters-and-coefficient-costs">VC1. All original parameters and coefficient costs</h2>
+<p>Keep the original <span class="math" data-tex="\(L&gt;0\)">\(L&gt;0\)</span>, <span class="math" data-tex="\(V=L^3\)">\(V=L^3\)</span>, the rational
+families, their common integer <span class="math" data-tex="\(N_\Lambda\)">\(N_\Lambda\)</span>, and their
+positive angular separation <span class="math" data-tex="\(c_\Lambda\)">\(c_\Lambda\)</span>. In this proof
+use the source's allowed <span class="math" data-tex="\(b\in16\mathbb N\)">\(b\in16\mathbb N\)</span>, <span class="math" data-tex="\(b\geq512\)">\(b\geq512\)</span>,
+and its original restrictions
+<span class="math" data-tex="\(\beta_{\rm reg}b^2\leq4\)">\(\beta_{\rm reg}b^2\leq4\)</span>,
+<span class="math" data-tex="\(\beta_{\rm reg}b\leq1/40\)">\(\beta_{\rm reg}b\leq1/40\)</span>. In particular its
+explicit choice <span class="math" data-tex="\(b=512,\beta_{\rm reg}=2^{-16}\)">\(b=512,\beta_{\rm reg}=2^{-16}\)</span>
+satisfies these restrictions. Retain</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\lambda_q=a^{b^q},\quad \Lambda=\lambda_{q+1}=\lambda_q^b,
+\quad\delta=\lambda_1^{3\beta_{\rm reg}}
+\lambda_q^{-2\beta_{\rm reg}b},\quad
+\ell=\lambda_q^{-20},\\
+r=\Lambda^{3/4},\quad \sigma=\Lambda^{-15/16},\quad
+\mu=\Lambda^{5/4},\quad m=\Lambda\sigma=\Lambda^{1/16},\\
+\alpha=2\pi/L,\quad\varkappa=\alpha\Lambda,
+\quad\beta=\varkappa\sigma N_\Lambda
+=\alpha N_\Lambda\lambda_q^{b/16},
+\quad h=L/m.
+\end{gathered}
+\tag{VC1}
+\]">\[
+\begin{gathered}
+\lambda_q=a^{b^q},\quad \Lambda=\lambda_{q+1}=\lambda_q^b,
+\quad\delta=\lambda_1^{3\beta_{\rm reg}}
+\lambda_q^{-2\beta_{\rm reg}b},\quad
+\ell=\lambda_q^{-20},\\
+r=\Lambda^{3/4},\quad \sigma=\Lambda^{-15/16},\quad
+\mu=\Lambda^{5/4},\quad m=\Lambda\sigma=\Lambda^{1/16},\\
+\alpha=2\pi/L,\quad\varkappa=\alpha\Lambda,
+\quad\beta=\varkappa\sigma N_\Lambda
+=\alpha N_\Lambda\lambda_q^{b/16},
+\quad h=L/m.
+\end{gathered}
+\tag{VC1}
+\]</span>
+<p>The letter <span class="math" data-tex="\(\beta\)">\(\beta\)</span> in the last line is the physical
+intermittent frequency; it is distinct from the original
+regularity exponent. Since <span class="math" data-tex="\(a\)">\(a\)</span> is an integer multiple
+of <span class="math" data-tex="\(N_\Lambda\)">\(N_\Lambda\)</span> and <span class="math" data-tex="\(b\in16\mathbb N\)">\(b\in16\mathbb N\)</span>, both
+<span class="math" data-tex="\(r\)">\(r\)</span> and <span class="math" data-tex="\(m\)">\(m\)</span> are positive integers for every
+<span class="math" data-tex="\(q\geq0\)">\(q\geq0\)</span>; the exact period and covering conditions
+of lesson22 hold. Also <span class="math" data-tex="\(1&lt;\mu&lt;\Lambda^2\)">\(1&lt;\mu&lt;\Lambda^2\)</span>.</p>
+<p>Take the already constructed cutoffs and amplitudes of
+lesson24, on its actual interior time interval. For the
+source volume use its original <span class="math" data-tex="\(B=100d,c_0\)">\(B=100d,c_0\)</span> and AB12.
+The arbitrary-volume extension EX6–EX8 has its stated
+changed constants; the following proof is given with the
+original source constants, hence uses the volume range of
+SC12. For <span class="math" data-tex="\(j\geq1\)">\(j\geq1\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+K_0&amp;=\max\{C_*,5\sqrt{M_e/V}\},\\
+K_j&amp;=\max\left\{P_j(1),
+\sqrt{M_e}\max\{10\overline A_j,\sigma_j/(2\sqrt{3V})\}
+\right\},\\
+B_N&amp;=2K_0K_N+
+\sum_{j=1}^{N-1}\binom Nj K_jK_{N-j}\qquad(N\geq1).
+\end{aligned}
+\tag{VC2}
+\]">\[
+\begin{aligned}
+K_0&amp;=\max\{C_*,5\sqrt{M_e/V}\},\\
+K_j&amp;=\max\left\{P_j(1),
+\sqrt{M_e}\max\{10\overline A_j,\sigma_j/(2\sqrt{3V})\}
+\right\},\\
+B_N&amp;=2K_0K_N+
+\sum_{j=1}^{N-1}\binom Nj K_jK_{N-j}\qquad(N\geq1).
+\end{aligned}
+\tag{VC2}
+\]</span>
+<p>Here <span class="math" data-tex="\(C_*,P_j,\overline A_j,\sigma_j\)">\(C_*,P_j,\overline A_j,\sigma_j\)</span> have the
+complete definitions AB1, AB18–AB23. These new <span class="math" data-tex="\(K_j\)">\(K_j\)</span>
+are local constants of VC2, not the earlier cutoff constants
+in AB18. Their values are independent of <span class="math" data-tex="\(a,q\)">\(a,q\)</span>.
+The actual full ordered derivative bounds are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|a_{i,\zeta}\|_\infty&amp;\leq K_0\lambda_q^5,\qquad
+\|D_{x,t}^j a_{i,\zeta}\|_\infty\leq K_j\ell^{-j}
+\quad(j\geq1),\\
+\|D_{x,t}^N(a_{i,\zeta}a_{j,\zeta&#x27;})\|_\infty
+&amp;\leq B_N\lambda_q^5\ell^{-N}\quad(N\geq1).
+\end{aligned}
+\tag{VC3}
+\]">\[
+\begin{aligned}
+\|a_{i,\zeta}\|_\infty&amp;\leq K_0\lambda_q^5,\qquad
+\|D_{x,t}^j a_{i,\zeta}\|_\infty\leq K_j\ell^{-j}
+\quad(j\geq1),\\
+\|D_{x,t}^N(a_{i,\zeta}a_{j,\zeta&#x27;})\|_\infty
+&amp;\leq B_N\lambda_q^5\ell^{-N}\quad(N\geq1).
+\end{aligned}
+\tag{VC3}
+\]</span>
+<p>The first line follows from AB4, AB21 and AB23. For the
+second, apply the complete ordered product rule. The two
+terms with an undifferentiated factor contribute
+<span class="math" data-tex="\(2K_0K_N\lambda_q^5\ell^{-N}\)">\(2K_0K_N\lambda_q^5\ell^{-N}\)</span>. Every other term
+has cost <span class="math" data-tex="\(K_jK_{N-j}\ell^{-N}\)">\(K_jK_{N-j}\ell^{-N}\)</span>, with its full
+binomial multiplicity; use <span class="math" data-tex="\(1\leq\lambda_q^5\)">\(1\leq\lambda_q^5\)</span> only
+to give the common displayed bound. This proves VC3 for
+all indices, including identical ones and amplitudes that
+vanish. The actual unsummed derivative formula remains AB2.</p>
+<h2 id="vc2-the-number-of-actual-nonzero-indices-and-interacting-pairs">VC2. The number of actual nonzero indices and interacting pairs</h2>
+<p>SC11 gives the finite cutoff limit. Since
+<span class="math" data-tex="\(\delta\geq\lambda_q^{-2\beta_{\rm reg}b}\)">\(\delta\geq\lambda_q^{-2\beta_{\rm reg}b}\)</span>,
+the original stress bound and all original constants give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Y&amp;=\sqrt{1+\|S_\ell\|_\infty^2/(100d)^2}
+\leq1+\frac1{100}\lambda_1^{-3\beta_{\rm reg}}
+\lambda_q^{10+\varepsilon_R+2\beta_{\rm reg}b}
+\leq\frac{101}{100}\lambda_q^{103/10},\\
+i_*&amp;=\lceil\log_4(2Y)\rceil
+&lt;2+\frac{11}{\log4}\log\lambda_q
+\leq C_I\lambda_q,\qquad C_I=2+11/\log4.
+\end{aligned}
+\tag{VC4}
+\]">\[
+\begin{aligned}
+Y&amp;=\sqrt{1+\|S_\ell\|_\infty^2/(100d)^2}
+\leq1+\frac1{100}\lambda_1^{-3\beta_{\rm reg}}
+\lambda_q^{10+\varepsilon_R+2\beta_{\rm reg}b}
+\leq\frac{101}{100}\lambda_q^{103/10},\\
+i_*&amp;=\lceil\log_4(2Y)\rceil
+&lt;2+\frac{11}{\log4}\log\lambda_q
+\leq C_I\lambda_q,\qquad C_I=2+11/\log4.
+\end{aligned}
+\tag{VC4}
+\]</span>
+<p>The first inequality uses <span class="math" data-tex="\(\sqrt{1+x^2}\leq1+x\)">\(\sqrt{1+x^2}\leq1+x\)</span>
+for <span class="math" data-tex="\(x\geq0\)">\(x\geq0\)</span>. The source bounds give
+<span class="math" data-tex="\(\varepsilon_R+2\beta_{\rm reg}b\leq3/10\)">\(\varepsilon_R+2\beta_{\rm reg}b\leq3/10\)</span>.
+Next <span class="math" data-tex="\(2Y&lt;4\lambda_q^{11}\)">\(2Y&lt;4\lambda_q^{11}\)</span>; the ceiling is strictly
+less than its argument plus one. Finally
+<span class="math" data-tex="\(\log\lambda_q\leq\lambda_q\)">\(\log\lambda_q\leq\lambda_q\)</span>, and
+<span class="math" data-tex="\(2\leq2\lambda_q\)">\(2\leq2\lambda_q\)</span>. This proves every step of VC4.</p>
+<p>Each index has six positive directions and twelve signed
+directions in the explicit family. There are at most
+<span class="math" data-tex="\(6i_*\)">\(6i_*\)</span> positive pairs. In an ordered nonopposite
+interaction the two indices differ by at most one: all
+other amplitude products are identically zero by SC8,
+including their derivatives. Thus the number of ordered
+interactions is at most <span class="math" data-tex="\(3\cdot12^2 i_*=432i_*\)">\(3\cdot12^2 i_*=432i_*\)</span>.
+An absent index at an endpoint only decreases this count.
+Repeated physical directions in nonadjacent indices create
+no additional contribution because their actual products
+vanish identically.</p>
+<h2 id="vc3-the-complete-principal-energy-and-its-oscillatory-error">VC3. The complete principal energy and its oscillatory error</h2>
+<p>Let <span class="math" data-tex="\(I=(i,\zeta)\)">\(I=(i,\zeta)\)</span>, and let <span class="math" data-tex="\(\mathcal J^+\)">\(\mathcal J^+\)</span>
+be the actual positive-pair labels and <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>
+the ordered signed nonopposite interactions just specified.
+Use <span class="math" data-tex="\(A_I=a_I^2\)">\(A_I=a_I^2\)</span>, <span class="math" data-tex="\(\phi_I=\eta_I^2-1\)">\(\phi_I=\eta_I^2-1\)</span>, and
+the complete nonopposite scalar <span class="math" data-tex="\(Q_O\)">\(Q_O\)</span> of lesson23.
+Define</p>
+<span class="math math-display" data-tex="\[
+R_{\rm av}(t)=\sum_{i\geq0}\rho_i(t)\int\chi_i^2,
+\qquad K_{I,J}=\varkappa|\zeta+\zeta&#x27;|-2\sqrt3\,\beta r,
+\qquad s_{I,J}^2=(1-\zeta\cdot\zeta&#x27;)/2.
+\tag{VC5}
+\]">\[
+R_{\rm av}(t)=\sum_{i\geq0}\rho_i(t)\int\chi_i^2,
+\qquad K_{I,J}=\varkappa|\zeta+\zeta&#x27;|-2\sqrt3\,\beta r,
+\qquad s_{I,J}^2=(1-\zeta\cdot\zeta&#x27;)/2.
+\tag{VC5}
+\]</span>
+<p>These are the original physical integrals and frequencies.
+The full trace identity EX12 of lesson24 states
+<span class="math" data-tex="\(\|w^{(p)}\|_2^2=3R_{\rm av}
++2\sum_{I\in\mathcal J^+}\int A_I\phi_I+2\int Q_O\)">\(\|w^{(p)}\|_2^2=3R_{\rm av}
++2\sum_{I\in\mathcal J^+}\int A_I\phi_I+2\int Q_O\)</span>.
+Every signed pair and both oscillatory mean types remain.</p>
+<p>To avoid confusing the inverse-kernel constant with the
+stress-cutoff constant SC20, write <span class="math" data-tex="\(C_N^{\rm IK}\)">\(C_N^{\rm IK}\)</span>
+for the actual constant in IK15 and put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C_N^{\rm IK}=\frac1{8\pi}\int_{\mathbb R^3}
+|(1-\Delta_\xi)^2\mathcal A_N(\xi)|\,d\xi,
+\quad
+(\mathcal A_N)_J(\xi)=
+(-\mathrm i)^N\frac{\xi_J}{|\xi|^{2N}}
+[\chi(\xi/2)-\chi(\xi)],\\
+\mathcal T_N=C_N^{\rm IK}/(1-2^{-N}),
+\qquad \Psi_1=\|\eta_I^2-1\|_1\leq2V.
+\end{gathered}
+\tag{VC6}
+\]">\[
+\begin{gathered}
+C_N^{\rm IK}=\frac1{8\pi}\int_{\mathbb R^3}
+|(1-\Delta_\xi)^2\mathcal A_N(\xi)|\,d\xi,
+\quad
+(\mathcal A_N)_J(\xi)=
+(-\mathrm i)^N\frac{\xi_J}{|\xi|^{2N}}
+[\chi(\xi/2)-\chi(\xi)],\\
+\mathcal T_N=C_N^{\rm IK}/(1-2^{-N}),
+\qquad \Psi_1=\|\eta_I^2-1\|_1\leq2V.
+\end{gathered}
+\tag{VC6}
+\]</span>
+<p>Here <span class="math" data-tex="\(J\)">\(J\)</span> is a full ordered spatial list of length
+<span class="math" data-tex="\(N\)">\(N\)</span>, <span class="math" data-tex="\(\xi_J\)">\(\xi_J\)</span> is its coordinate product, and the
+norm is the full tensor Hilbert norm. The cutoff <span class="math" data-tex="\(\chi\)">\(\chi\)</span>
+is the explicitly defined frequency cutoff IK2, distinct
+from the stress partition. Its support makes this entire
+integral finite. The last norm is independent of <span class="math" data-tex="\(I,t\)">\(I,t\)</span>
+by the original integer torus covering and translation;
+the inequality uses <span class="math" data-tex="\(\|\eta_I\|_2^2=V\)">\(\|\eta_I\|_2^2=V\)</span>, retaining
+the original volume.</p>
+<p>The full gap estimate EX14 of lesson23 and its nonopposite
+receiver EX15 give the complete bound</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\big|\|w^{(p)}\|_2^2-3R_{\rm av}\big|
+\leq{}&amp;2\mathcal T_N(2/\beta)^N\Psi_1
+\sum_{I\in\mathcal J^+}\|D_x^N(a_I^2)\|_\infty\\
+&amp;+\mathcal T_N V\sum_{(I,J)\in\mathcal O}
+s_{I,J}^2(2/K_{I,J})^N
+\|D_x^N(a_Ia_J)\|_\infty
+=:{}&amp;\mathcal E_N(t).
+\end{aligned}
+\tag{VC7}
+\]">\[
+\begin{aligned}
+\big|\|w^{(p)}\|_2^2-3R_{\rm av}\big|
+\leq{}&amp;2\mathcal T_N(2/\beta)^N\Psi_1
+\sum_{I\in\mathcal J^+}\|D_x^N(a_I^2)\|_\infty\\
+&amp;+\mathcal T_N V\sum_{(I,J)\in\mathcal O}
+s_{I,J}^2(2/K_{I,J})^N
+\|D_x^N(a_Ia_J)\|_\infty
+=:{}&amp;\mathcal E_N(t).
+\end{aligned}
+\tag{VC7}
+\]</span>
+<p>For completeness, the centered factor has its actual
+frequency gap at least <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. In the nonopposite
+scalar term the original dot magnitude is exactly
+<span class="math" data-tex="\(s_{I,J}^2\)">\(s_{I,J}^2\)</span>, not an unspecified constant. The product
+of its two intermittent factors has <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm at
+most <span class="math" data-tex="\(V\)">\(V\)</span>, by their exact <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norms and
+Cauchy–Schwarz. Its scalar has the half ordered sum from
+OS3; multiplication by the factor two in the energy identity
+removes only that half. Thus both constants in VC7 are
+exact consequences of the earlier proved gap estimate.
+Pure spatial derivative norms are bounded by the complete
+space-time norms VC3.</p>
+<h2 id="vc4-an-explicit-universal-principal-velocity-bound">VC4. An explicit universal principal-velocity bound</h2>
+<p>Enlarge the already specified integer base <span class="math" data-tex="\(a\)">\(a\)</span>, retaining
+all AB12 thresholds, so that also
+<span class="math" data-tex="\(a\geq(10N_\Lambda/c_\Lambda)^{16/(3b)}\)">\(a\geq(10N_\Lambda/c_\Lambda)^{16/(3b)}\)</span>.
+Then the full original separation condition is
+<span class="math" data-tex="\(\sigma N_\Lambda r=N_\Lambda\Lambda^{-3/16}
+\leq c_\Lambda/10\)">\(\sigma N_\Lambda r=N_\Lambda\Lambda^{-3/16}
+\leq c_\Lambda/10\)</span>. Every actual nonopposite pair
+therefore has</p>
+<span class="math math-display" data-tex="\[
+K_{I,J}\geq2\varkappa c_\Lambda(1-\sqrt3/10)
+&gt;\varkappa c_\Lambda.
+\tag{VC8}
+\]">\[
+K_{I,J}\geq2\varkappa c_\Lambda(1-\sqrt3/10)
+&gt;\varkappa c_\Lambda.
+\tag{VC8}
+\]</span>
+<p>Indeed the rational-family separation gives
+<span class="math" data-tex="\(|\zeta+\zeta&#x27;|\geq2c_\Lambda\)">\(|\zeta+\zeta&#x27;|\geq2c_\Lambda\)</span>, and
+<span class="math" data-tex="\(\beta r=\varkappa\sigma N_\Lambda r\)">\(\beta r=\varkappa\sigma N_\Lambda r\)</span>.
+The last strict inequality follows from <span class="math" data-tex="\(\sqrt3&lt;5\)">\(\sqrt3&lt;5\)</span>.</p>
+<p>Use the actual first-order case of VC7, then VC3–VC4,
+<span class="math" data-tex="\(s_{I,J}^2\leq1\)">\(s_{I,J}^2\leq1\)</span> and <span class="math" data-tex="\(\Psi_1\leq2V\)">\(\Psi_1\leq2V\)</span>.
+The full resulting estimate is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal E_1
+&amp;\leq\mathcal T_1 V C_I B_1\left[
+\frac{48}{\alpha N_\Lambda}\lambda_q^{26-b/16}
++\frac{864}{\alpha c_\Lambda}\lambda_q^{26-b}
+\right]\\
+&amp;\leq C_{\rm vel}\lambda_q^{-6},\qquad
+C_{\rm vel}=\mathcal T_1 V C_I B_1
+\left[\frac{48}{\alpha N_\Lambda}
++\frac{864}{\alpha c_\Lambda}\right],\\
+\frac{\mathcal E_1}{\delta}
+&amp;\leq C_{\rm vel}\lambda_1^{-3\beta_{\rm reg}}
+\lambda_q^{-6+2\beta_{\rm reg}b}
+\leq C_{\rm vel}\lambda_q^{-119/20}.
+\end{aligned}
+\tag{VC9}
+\]">\[
+\begin{aligned}
+\mathcal E_1
+&amp;\leq\mathcal T_1 V C_I B_1\left[
+\frac{48}{\alpha N_\Lambda}\lambda_q^{26-b/16}
++\frac{864}{\alpha c_\Lambda}\lambda_q^{26-b}
+\right]\\
+&amp;\leq C_{\rm vel}\lambda_q^{-6},\qquad
+C_{\rm vel}=\mathcal T_1 V C_I B_1
+\left[\frac{48}{\alpha N_\Lambda}
++\frac{864}{\alpha c_\Lambda}\right],\\
+\frac{\mathcal E_1}{\delta}
+&amp;\leq C_{\rm vel}\lambda_1^{-3\beta_{\rm reg}}
+\lambda_q^{-6+2\beta_{\rm reg}b}
+\leq C_{\rm vel}\lambda_q^{-119/20}.
+\end{aligned}
+\tag{VC9}
+\]</span>
+<p>In the first centered term, the factors are
+<span class="math" data-tex="\(2\cdot2\cdot2\cdot6=48\)">\(2\cdot2\cdot2\cdot6=48\)</span>: the energy coefficient,
+the gap split, the bound for <span class="math" data-tex="\(\Psi_1/V\)">\(\Psi_1/V\)</span>, and the
+six positive directions. The nonopposite term has
+<span class="math" data-tex="\(2\cdot432=864\)">\(2\cdot432=864\)</span>. The power <span class="math" data-tex="\(26\)">\(26\)</span> is precisely
+<span class="math" data-tex="\(1+5+20\)">\(1+5+20\)</span>, from the index count, actual product amplitude
+and original derivative scale. Since <span class="math" data-tex="\(b\geq512\)">\(b\geq512\)</span>,
+the two exponents are at most <span class="math" data-tex="\(-6\)">\(-6\)</span> and <span class="math" data-tex="\(-486\)">\(-486\)</span>.
+The final comparison keeps the complete original <span class="math" data-tex="\(\delta\)">\(\delta\)</span>
+before using the proved bounds for its factors.</p>
+<p>All constants in <span class="math" data-tex="\(C_{\rm vel}\)">\(C_{\rm vel}\)</span> are already specified
+and independent of <span class="math" data-tex="\(a,q\)">\(a,q\)</span>. Add the finite threshold
+<span class="math" data-tex="\(a\geq C_{\rm vel}^{20/119}\)">\(a\geq C_{\rm vel}^{20/119}\)</span> to the preceding
+maximum and round upward to a multiple of <span class="math" data-tex="\(N_\Lambda\)">\(N_\Lambda\)</span>.
+This actually constructs parameters with
+<span class="math" data-tex="\(\mathcal E_1\leq\delta\)">\(\mathcal E_1\leq\delta\)</span> for every <span class="math" data-tex="\(q\geq0\)">\(q\geq0\)</span>.
+AB10 and AB13 also give
+<span class="math" data-tex="\(3R_{\rm av}=3\rho_0I_0+H\leq2\delta+\delta/800\)">\(3R_{\rm av}=3\rho_0I_0+H\leq2\delta+\delta/800\)</span>.
+The actual full principal velocity consequently obeys</p>
+<span class="math math-display" data-tex="\[
+\|w^{(p)}\|_2^2\leq\frac{2401}{800}\delta,
+\qquad
+\|w^{(p)}\|_2\leq\frac{49}{\sqrt{800}}\sqrt\delta
+&lt;2\sqrt\delta.
+\tag{VC10}
+\]">\[
+\|w^{(p)}\|_2^2\leq\frac{2401}{800}\delta,
+\qquad
+\|w^{(p)}\|_2\leq\frac{49}{\sqrt{800}}\sqrt\delta
+&lt;2\sqrt\delta.
+\tag{VC10}
+\]</span>
+<p>Thus the first original velocity estimate holds with the
+explicit universal choice <span class="math" data-tex="\(M=4\)">\(M=4\)</span> for these constructed
+families and parameters. No hidden dependence on the source
+energy profile is put into <span class="math" data-tex="\(M\)">\(M\)</span>; the finite lower
+threshold for <span class="math" data-tex="\(a\)">\(a\)</span> retains that dependence explicitly.
+This proves only the principal estimate at this point.</p>
+<h2 id="vc5-the-full-actual-curl-and-temporal-square-norm-costs">VC5. The full actual curl and temporal square-norm costs</h2>
+<p>For a scalar or finite tensor field <span class="math" data-tex="\(g\)">\(g\)</span>, define its
+actual mixed-derivative cell cost</p>
+<span class="math math-display" data-tex="\[
+\mathcal D_h(g)=\sum_{\epsilon\in\{0,1\}^3}
+h^{|\epsilon|}\|\partial^\epsilon g\|_2,
+\quad M_r=2r+1,\qquad
+Q_r=\left(\frac{2M^2+1}{3M}\right)^{3/2}.
+\tag{VC11}
+\]">\[
+\mathcal D_h(g)=\sum_{\epsilon\in\{0,1\}^3}
+h^{|\epsilon|}\|\partial^\epsilon g\|_2,
+\quad M_r=2r+1,\qquad
+Q_r=\left(\frac{2M^2+1}{3M}\right)^{3/2}.
+\tag{VC11}
+\]</span>
+<p>The mixed-cell inequality DC21 of lesson22 applies to these
+finite tensor fields as well: the fundamental theorem uses
+their Euclidean norm, and its triangle and integral
+inequalities hold for that norm. The periodic multiplier
+can likewise be vector-valued by using its pointwise norm
+in each cell integral. The multiplier's <span class="math" data-tex="\(L^2\)">\(L^2\)</span> factor
+still has the exact prefactor <span class="math" data-tex="\(V^{-1/2}\)">\(V^{-1/2}\)</span>.</p>
+<p>The actual fields <span class="math" data-tex="\(\eta_I,\nabla\eta_I,\eta_I^2\)">\(\eta_I,\nabla\eta_I,\eta_I^2\)</span>
+all have period <span class="math" data-tex="\(h\)">\(h\)</span> in each coordinate. Their exact
+norms from IB18 and lesson22's fourth-moment exercise are
+<span class="math" data-tex="\(\sqrt V\)">\(\sqrt V\)</span>, <span class="math" data-tex="\(\sqrt V\beta\sqrt{r(r+1)}\)">\(\sqrt V\beta\sqrt{r(r+1)}\)</span>,
+and <span class="math" data-tex="\(\sqrt V Q_r\)">\(\sqrt V Q_r\)</span>, respectively. Expand the entire
+gradient in the curl correction and use the actual
+<span class="math" data-tex="\(\varkappa^{-1}\)">\(\varkappa^{-1}\)</span>, not <span class="math" data-tex="\(\Lambda^{-1}\)">\(\Lambda^{-1}\)</span>.
+Since the amplitude and <span class="math" data-tex="\(\eta_I\)">\(\eta_I\)</span> are real and
+<span class="math" data-tex="\(|B_\zeta|=1\)">\(|B_\zeta|=1\)</span>,
+<span class="math" data-tex="\(|v\times B_\zeta|\leq|v|\)">\(|v\times B_\zeta|\leq|v|\)</span> for every real <span class="math" data-tex="\(v\)">\(v\)</span>.
+The full original correction bounds are therefore</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|w^{(c)}\|_2
+&amp;\leq\varkappa^{-1}\sum_{I\ {\rm signed}}
+\left[\mathcal D_h(\nabla a_I)
++\beta\sqrt{r(r+1)}\mathcal D_h(a_I)\right],\\
+\|z\|_2
+&amp;\leq\mu^{-1}Q_r\sum_{I\in\mathcal J^+}\mathcal D_h(a_I^2).
+\end{aligned}
+\tag{VC12}
+\]">\[
+\begin{aligned}
+\|w^{(c)}\|_2
+&amp;\leq\varkappa^{-1}\sum_{I\ {\rm signed}}
+\left[\mathcal D_h(\nabla a_I)
++\beta\sqrt{r(r+1)}\mathcal D_h(a_I)\right],\\
+\|z\|_2
+&amp;\leq\mu^{-1}Q_r\sum_{I\in\mathcal J^+}\mathcal D_h(a_I^2).
+\end{aligned}
+\tag{VC12}
+\]</span>
+<p>The first follows by applying DC21 separately to
+<span class="math" data-tex="\(\eta_I\nabla a_I\)">\(\eta_I\nabla a_I\)</span> and <span class="math" data-tex="\(a_I\nabla\eta_I\)">\(a_I\nabla\eta_I\)</span>.
+For the second, the full operator <span class="math" data-tex="\(\mathbb P\mathbb P_0\)">\(\mathbb P\mathbb P_0\)</span>
+is an orthogonal contraction on the actual periodic
+<span class="math" data-tex="\(L^2\)">\(L^2\)</span> space by lesson2. Apply it first to the complete
+sum defining <span class="math" data-tex="\(z\)">\(z\)</span>, then the triangle inequality and
+DC21 with <span class="math" data-tex="\(a_I^2\)">\(a_I^2\)</span> and <span class="math" data-tex="\(\eta_I^2\)">\(\eta_I^2\)</span>. The original
+positive-pair coefficient is <span class="math" data-tex="\(1/\mu\)">\(1/\mu\)</span>, and is not
+halved again. No projection claim at an unrestricted
+<span class="math" data-tex="\(L^1\)">\(L^1\)</span> or <span class="math" data-tex="\(L^\infty\)">\(L^\infty\)</span> endpoint has been used.</p>
+<p>There is also a complete finite moment formula for every
+spatial and time derivative of the squared field. For
+nonnegative integers <span class="math" data-tex="\(u,v\)">\(u,v\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T_{u,v}^2={}&amp;\frac{V\beta^{2(u+v)}\mu^{2v}}{M_r^6}
+\sum_{j,k,l=-(M_r-1)}^{M_r-1}
+(j^2+k^2+l^2)^u j^{2v}
+(M_r-|j|)^2(M_r-|k|)^2(M_r-|l|)^2,\\
+\|D_x^N\partial_t^Kz\|_2
+\leq{}&amp;\mu^{-1}\sum_{I\in\mathcal J^+}
+\sum_{u=0}^N\sum_{v=0}^K\binom Nu\binom Kv
+\|D_x^{N-u}\partial_t^{K-v}(a_I^2)\|_\infty T_{u,v}.
+\end{aligned}
+\tag{VC13}
+\]">\[
+\begin{aligned}
+T_{u,v}^2={}&amp;\frac{V\beta^{2(u+v)}\mu^{2v}}{M_r^6}
+\sum_{j,k,l=-(M_r-1)}^{M_r-1}
+(j^2+k^2+l^2)^u j^{2v}
+(M_r-|j|)^2(M_r-|k|)^2(M_r-|l|)^2,\\
+\|D_x^N\partial_t^Kz\|_2
+\leq{}&amp;\mu^{-1}\sum_{I\in\mathcal J^+}
+\sum_{u=0}^N\sum_{v=0}^K\binom Nu\binom Kv
+\|D_x^{N-u}\partial_t^{K-v}(a_I^2)\|_\infty T_{u,v}.
+\end{aligned}
+\tag{VC13}
+\]</span>
+<p>Powers with exponent zero have value one, including the
+zero mode. The actual Fourier coefficient of <span class="math" data-tex="\(\eta_I^2\)">\(\eta_I^2\)</span>
+at its frame index <span class="math" data-tex="\((j,k,l)\)">\((j,k,l)\)</span> is
+<span class="math" data-tex="\(M_r^{-3}(M_r-|j|)(M_r-|k|)(M_r-|l|)\)">\(M_r^{-3}(M_r-|j|)(M_r-|k|)(M_r-|l|)\)</span>, with its original
+time phase. The frame map is injective, has physical spatial
+length <span class="math" data-tex="\(\beta\sqrt{j^2+k^2+l^2}\)">\(\beta\sqrt{j^2+k^2+l^2}\)</span>, and time frequency
+<span class="math" data-tex="\(\beta\mu j\)">\(\beta\mu j\)</span>. Parseval, including the original volume,
+therefore proves
+<span class="math" data-tex="\(\|D_x^u\partial_t^v(\eta_I^2)\|_2=T_{u,v}\)">\(\|D_x^u\partial_t^v(\eta_I^2)\|_2=T_{u,v}\)</span>.
+The complete ordered product rule supplies both binomial
+counts in VC13, and the projection commutes with every
+derivative and contracts each tensor component in the
+summed <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm. In particular <span class="math" data-tex="\(T_{0,0}=\sqrt VQ_r\)">\(T_{0,0}=\sqrt VQ_r\)</span>,
+exactly matching VC12. No cross-family orthogonality has
+been assumed.</p>
+<p>Finally the original mollification difference from lesson24
+and the full increment identity give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|u_\ell+w-u_q\|_2
+\leq{}&amp;2\sqrt\delta+\sqrt V\ell\mathfrak m_1\lambda_q^4\\
+&amp;+\varkappa^{-1}\sum_{I\ {\rm signed}}
+[\mathcal D_h(\nabla a_I)
++\beta\sqrt{r(r+1)}\mathcal D_h(a_I)]
++\mu^{-1}Q_r\sum_{I\in\mathcal J^+}\mathcal D_h(a_I^2).
+\end{aligned}
+\tag{VC14}
+\]">\[
+\begin{aligned}
+\|u_\ell+w-u_q\|_2
+\leq{}&amp;2\sqrt\delta+\sqrt V\ell\mathfrak m_1\lambda_q^4\\
+&amp;+\varkappa^{-1}\sum_{I\ {\rm signed}}
+[\mathcal D_h(\nabla a_I)
++\beta\sqrt{r(r+1)}\mathcal D_h(a_I)]
++\mu^{-1}Q_r\sum_{I\in\mathcal J^+}\mathcal D_h(a_I^2).
+\end{aligned}
+\tag{VC14}
+\]</span>
+<p>Every quantity in this finite bound is constructed and has
+the explicit derivative bounds of lesson24. The next
+calculation is to sum their actual index costs and prove
+the complete small correction scale, then the original
+<span class="math" data-tex="\(W^{1,p}\)">\(W^{1,p}\)</span>, time, stress and iteration estimates.</p>
+<h2 id="vc6-sum-every-mixed-cell-cost-at-its-original-scale">VC6. Sum every mixed-cell cost at its original scale</h2>
+<p>All constants in VC2 are retained. Define the following
+finite polynomials with their complete binomial counts:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\tau_h&amp;=h/\ell=L\lambda_q^{20-b/16},\\
+U_0(z)&amp;=K_0+\sum_{j=1}^3\binom3j K_jz^j,\qquad
+U_1(z)=\sum_{j=0}^3\binom3j K_{j+1}z^j,\\
+U_2(z)&amp;=K_0^2+\sum_{j=1}^3\binom3j B_jz^j.
+\end{aligned}
+\tag{VC15}
+\]">\[
+\begin{aligned}
+\tau_h&amp;=h/\ell=L\lambda_q^{20-b/16},\\
+U_0(z)&amp;=K_0+\sum_{j=1}^3\binom3j K_jz^j,\qquad
+U_1(z)=\sum_{j=0}^3\binom3j K_{j+1}z^j,\\
+U_2(z)&amp;=K_0^2+\sum_{j=1}^3\binom3j B_jz^j.
+\end{aligned}
+\tag{VC15}
+\]</span>
+<p>There are exactly <span class="math" data-tex="\(\binom3j\)">\(\binom3j\)</span> spatial multiindices
+in <span class="math" data-tex="\(\{0,1\}^3\)">\(\{0,1\}^3\)</span> of order <span class="math" data-tex="\(j\)">\(j\)</span>. Each of their
+derivatives is a subarray of the corresponding full ordered
+tensor. VC3, including its original zeroth term, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal D_h(\nabla a_I)&amp;\leq\sqrt V\ell^{-1}U_1(\tau_h),\\
+\mathcal D_h(a_I)&amp;\leq\sqrt V
+\left[K_0\lambda_q^5+\sum_{j=1}^3\binom3j K_j\tau_h^j\right]
+\leq\sqrt V\lambda_q^5 U_0(\tau_h),\\
+\mathcal D_h(a_I^2)&amp;\leq\sqrt V
+\left[K_0^2\lambda_q^{10}
++\lambda_q^5\sum_{j=1}^3\binom3j B_j\tau_h^j\right]
+\leq\sqrt V\lambda_q^{10}U_2(\tau_h).
+\end{aligned}
+\tag{VC16}
+\]">\[
+\begin{aligned}
+\mathcal D_h(\nabla a_I)&amp;\leq\sqrt V\ell^{-1}U_1(\tau_h),\\
+\mathcal D_h(a_I)&amp;\leq\sqrt V
+\left[K_0\lambda_q^5+\sum_{j=1}^3\binom3j K_j\tau_h^j\right]
+\leq\sqrt V\lambda_q^5 U_0(\tau_h),\\
+\mathcal D_h(a_I^2)&amp;\leq\sqrt V
+\left[K_0^2\lambda_q^{10}
++\lambda_q^5\sum_{j=1}^3\binom3j B_j\tau_h^j\right]
+\leq\sqrt V\lambda_q^{10}U_2(\tau_h).
+\end{aligned}
+\tag{VC16}
+\]</span>
+<p>The factor <span class="math" data-tex="\(\sqrt V\)">\(\sqrt V\)</span> is the exact conversion of
+the actual supremum norm to a physical <span class="math" data-tex="\(L^2\)">\(L^2\)</span> bound.
+The first line uses <span class="math" data-tex="\(K_{j+1}\)">\(K_{j+1}\)</span>, because the gradient
+in its argument is an additional full derivative. No term
+with a repeated derivative is lost: each <span class="math" data-tex="\(\partial^\epsilon
+\nabla a_I\)">\(\partial^\epsilon
+\nabla a_I\)</span> is bounded by the full derivative tensor
+of order <span class="math" data-tex="\(|\epsilon|+1\)">\(|\epsilon|+1\)</span>. The last line uses the
+entire derivative of the original square, not the square
+of a derivative. This proves every displayed summand.</p>
+<p>Since <span class="math" data-tex="\(b\geq512\)">\(b\geq512\)</span>,
+<span class="math" data-tex="\(0&lt;\tau_h\leq L\lambda_q^{-12}\leq L\)">\(0&lt;\tau_h\leq L\lambda_q^{-12}\leq L\)</span>.
+All polynomial coefficients are nonnegative, so each
+<span class="math" data-tex="\(U_j(\tau_h)\leq U_j(L)\)">\(U_j(\tau_h)\leq U_j(L)\)</span>. Keeping first the
+actual argument and then substituting VC4 into VC12 gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|w^{(c)}\|_2
+&amp;\leq\frac{12C_I\sqrt V\lambda_q}{\varkappa}
+[\ell^{-1}U_1(\tau_h)
++\beta\sqrt{r(r+1)}\lambda_q^5 U_0(\tau_h)]\\
+&amp;\leq12C_I\sqrt V\left[
+\frac{U_1(L)}\alpha\lambda_q^{21-b}
++\sqrt2 N_\Lambda U_0(L)\lambda_q^{6-3b/16}\right],\\
+\|z\|_2
+&amp;\leq6C_I\sqrt V\mu^{-1}Q_r\lambda_q^{11}U_2(\tau_h)\\
+&amp;\leq6\cdot3^{3/2}C_I\sqrt V U_2(L)\lambda_q^{11-b/8}.
+\end{aligned}
+\tag{VC17}
+\]">\[
+\begin{aligned}
+\|w^{(c)}\|_2
+&amp;\leq\frac{12C_I\sqrt V\lambda_q}{\varkappa}
+[\ell^{-1}U_1(\tau_h)
++\beta\sqrt{r(r+1)}\lambda_q^5 U_0(\tau_h)]\\
+&amp;\leq12C_I\sqrt V\left[
+\frac{U_1(L)}\alpha\lambda_q^{21-b}
++\sqrt2 N_\Lambda U_0(L)\lambda_q^{6-3b/16}\right],\\
+\|z\|_2
+&amp;\leq6C_I\sqrt V\mu^{-1}Q_r\lambda_q^{11}U_2(\tau_h)\\
+&amp;\leq6\cdot3^{3/2}C_I\sqrt V U_2(L)\lambda_q^{11-b/8}.
+\end{aligned}
+\tag{VC17}
+\]</span>
+<p>The first count is the actual twelve signed labels per
+index and the second the six positive labels. For the
+curl term <span class="math" data-tex="\(\sqrt{r(r+1)}\leq\sqrt2r\)">\(\sqrt{r(r+1)}\leq\sqrt2r\)</span>, because
+the original integer <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>, and
+<span class="math" data-tex="\(\beta/\varkappa=\sigma N_\Lambda\)">\(\beta/\varkappa=\sigma N_\Lambda\)</span>.
+For the temporal term, <span class="math" data-tex="\(M_r=2r+1\leq3r\)">\(M_r=2r+1\leq3r\)</span> and
+<span class="math" data-tex="\((2M_r^2+1)/(3M_r)\leq M_r\)">\((2M_r^2+1)/(3M_r)\leq M_r\)</span>, hence
+<span class="math" data-tex="\(Q_r\leq3^{3/2}r^{3/2}\)">\(Q_r\leq3^{3/2}r^{3/2}\)</span>. Substituting the original
+values of <span class="math" data-tex="\(\sigma,r,\mu\)">\(\sigma,r,\mu\)</span> proves all three exponents
+in VC17. The earlier lines retain the exact square-root
+and fourth-moment factors before those bounds are used.</p>
+<h2 id="vc7-the-source-correction-scale-and-the-complete-velocity-increment">VC7. The source correction scale and the complete velocity increment</h2>
+<p>Let the source's full correction scale and the specified
+constant be</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F_q&amp;=r^{3/2}\ell^{-1}\mu^{-1}\sqrt\delta
+=\lambda_1^{3\beta_{\rm reg}/2}
+\lambda_q^{20-b/8-\beta_{\rm reg}b},\\
+C_{\rm corr}&amp;=12C_I\sqrt V
+[U_1(L)/\alpha+\sqrt2N_\Lambda U_0(L)]
++6\cdot3^{3/2}C_I\sqrt V U_2(L).
+\end{aligned}
+\tag{VC18}
+\]">\[
+\begin{aligned}
+F_q&amp;=r^{3/2}\ell^{-1}\mu^{-1}\sqrt\delta
+=\lambda_1^{3\beta_{\rm reg}/2}
+\lambda_q^{20-b/8-\beta_{\rm reg}b},\\
+C_{\rm corr}&amp;=12C_I\sqrt V
+[U_1(L)/\alpha+\sqrt2N_\Lambda U_0(L)]
++6\cdot3^{3/2}C_I\sqrt V U_2(L).
+\end{aligned}
+\tag{VC18}
+\]</span>
+<p>Divide each of the three original VC17 terms by the full
+first line of VC18. Their respective factors, before any
+bound for the regularity exponent, are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\lambda_1^{-3\beta_{\rm reg}/2}
+\lambda_q^{1-7b/8+\beta_{\rm reg}b},\qquad
+\lambda_1^{-3\beta_{\rm reg}/2}
+\lambda_q^{-14-b/16+\beta_{\rm reg}b},\qquad
+\lambda_1^{-3\beta_{\rm reg}/2}
+\lambda_q^{-9+\beta_{\rm reg}b},\\
+\|w^{(c)}\|_2+\|z\|_2
+\leq C_{\rm corr}F_q
+\lambda_1^{-3\beta_{\rm reg}/2}\lambda_q^{-359/40}
+\leq C_{\rm corr}r^{3/2}\ell^{-1}\mu^{-1}\sqrt\delta.
+\end{gathered}
+\tag{VC19}
+\]">\[
+\begin{gathered}
+\lambda_1^{-3\beta_{\rm reg}/2}
+\lambda_q^{1-7b/8+\beta_{\rm reg}b},\qquad
+\lambda_1^{-3\beta_{\rm reg}/2}
+\lambda_q^{-14-b/16+\beta_{\rm reg}b},\qquad
+\lambda_1^{-3\beta_{\rm reg}/2}
+\lambda_q^{-9+\beta_{\rm reg}b},\\
+\|w^{(c)}\|_2+\|z\|_2
+\leq C_{\rm corr}F_q
+\lambda_1^{-3\beta_{\rm reg}/2}\lambda_q^{-359/40}
+\leq C_{\rm corr}r^{3/2}\ell^{-1}\mu^{-1}\sqrt\delta.
+\end{gathered}
+\tag{VC19}
+\]</span>
+<p>The three exponents are at most <span class="math" data-tex="\(-17879/40\)">\(-17879/40\)</span>,
+<span class="math" data-tex="\(-1839/40\)">\(-1839/40\)</span> and <span class="math" data-tex="\(-359/40\)">\(-359/40\)</span>, respectively, using
+<span class="math" data-tex="\(b\geq512\)">\(b\geq512\)</span> and <span class="math" data-tex="\(\beta_{\rm reg}b\leq1/40\)">\(\beta_{\rm reg}b\leq1/40\)</span>.
+Each is therefore at most the last one. The original
+factor <span class="math" data-tex="\(\lambda_1^{-3\beta_{\rm reg}/2}\)">\(\lambda_1^{-3\beta_{\rm reg}/2}\)</span> is at
+most one and is retained in the stronger bound. This
+proves the source's full correction estimate at 1048–1049,
+with an explicit stronger power and a finite constant whose
+entire definition is in VC2 and VC15–VC18. It does not use
+the source's unjustified replacement of the initial
+<span class="math" data-tex="\(\delta\)">\(\delta\)</span> by a uniform upper bound of one.</p>
+<p>The original comparison with the increment scale and the
+mollification cost are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{\|w^{(c)}\|_2+\|z\|_2}{\sqrt\delta}
+&amp;\leq C_{\rm corr}\lambda_1^{-3\beta_{\rm reg}/2}
+\lambda_q^{20-b/8-359/40}
+\leq C_{\rm corr}\lambda_q^{-2119/40},\\
+\frac{\|u_\ell-u_q\|_2}{\sqrt\delta}
+&amp;\leq\sqrt V\mathfrak m_1\lambda_1^{-3\beta_{\rm reg}/2}
+\lambda_q^{-16+\beta_{\rm reg}b}
+\leq\sqrt V\mathfrak m_1\lambda_q^{-639/40}.
+\end{aligned}
+\tag{VC20}
+\]">\[
+\begin{aligned}
+\frac{\|w^{(c)}\|_2+\|z\|_2}{\sqrt\delta}
+&amp;\leq C_{\rm corr}\lambda_1^{-3\beta_{\rm reg}/2}
+\lambda_q^{20-b/8-359/40}
+\leq C_{\rm corr}\lambda_q^{-2119/40},\\
+\frac{\|u_\ell-u_q\|_2}{\sqrt\delta}
+&amp;\leq\sqrt V\mathfrak m_1\lambda_1^{-3\beta_{\rm reg}/2}
+\lambda_q^{-16+\beta_{\rm reg}b}
+\leq\sqrt V\mathfrak m_1\lambda_q^{-639/40}.
+\end{aligned}
+\tag{VC20}
+\]</span>
+<p>For the first line, substitute <span class="math" data-tex="\(F_q/\sqrt\delta
+=\lambda_q^{20-b/8}\)">\(F_q/\sqrt\delta
+=\lambda_q^{20-b/8}\)</span> in VC19. The second is the
+full space-time mollification bound already proved in
+lesson24, with its actual first moment. The two comparisons
+are exact before using the parameter inequalities.</p>
+<p>All constants are finite and independent of <span class="math" data-tex="\(a,q\)">\(a,q\)</span>.
+Enlarge the same original integer base, retaining every
+previous threshold, by requiring
+<span class="math" data-tex="\(a\geq(2C_{\rm corr})^{40/2119}\)">\(a\geq(2C_{\rm corr})^{40/2119}\)</span> and
+<span class="math" data-tex="\(a\geq(2\sqrt V\mathfrak m_1)^{40/639}\)">\(a\geq(2\sqrt V\mathfrak m_1)^{40/639}\)</span>, then
+round the full finite maximum upward to a multiple of
+<span class="math" data-tex="\(N_\Lambda\)">\(N_\Lambda\)</span>. VC20 proves that each displayed ratio
+is at most one half for every <span class="math" data-tex="\(q\geq0\)">\(q\geq0\)</span>. With the
+actual original new velocity <span class="math" data-tex="\(u_{q+1}=u_\ell+w\)">\(u_{q+1}=u_\ell+w\)</span>,
+the entire perturbation and increment satisfy</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|w\|_2&amp;\leq
+\left(\frac{49}{\sqrt{800}}+\frac12\right)\sqrt\delta
+&lt;\frac52\sqrt\delta
+\leq\frac{3M}{4}\sqrt\delta,\\
+\|u_{q+1}-u_q\|_2&amp;\leq
+\left(\frac{49}{\sqrt{800}}+1\right)\sqrt\delta
+&lt;3\sqrt\delta\leq M\sqrt\delta,
+\qquad M=4.
+\end{aligned}
+\tag{VC21}
+\]">\[
+\begin{aligned}
+\|w\|_2&amp;\leq
+\left(\frac{49}{\sqrt{800}}+\frac12\right)\sqrt\delta
+&lt;\frac52\sqrt\delta
+\leq\frac{3M}{4}\sqrt\delta,\\
+\|u_{q+1}-u_q\|_2&amp;\leq
+\left(\frac{49}{\sqrt{800}}+1\right)\sqrt\delta
+&lt;3\sqrt\delta\leq M\sqrt\delta,
+\qquad M=4.
+\end{aligned}
+\tag{VC21}
+\]</span>
+<p>The first uses all three actual parts of <span class="math" data-tex="\(w\)">\(w\)</span>; the
+second adds the retained original mollification difference.
+The strict inequalities use <span class="math" data-tex="\(49/\sqrt{800}&lt;2\)">\(49/\sqrt{800}&lt;2\)</span>,
+proved in VC10. Thus the principal, correction and full
+increment square-norm estimates at author TeX1046–1049 and
+1165–1166 all have complete receiving proofs. No conclusion
+about the remaining <span class="math" data-tex="\(W^{1,p}\)">\(W^{1,p}\)</span>, time, stress or
+infinite-iteration estimates is inferred from these
+square-norm estimates.</p>
+<h2 id="pl1-the-actual-operator-frequencies-and-tensor-norms">PL1. The actual operator, frequencies and tensor norms</h2>
+<p>Let <span class="math" data-tex="\(L&gt;0\)">\(L&gt;0\)</span>, <span class="math" data-tex="\(V=L^3\)">\(V=L^3\)</span>, <span class="math" data-tex="\(\alpha=2\pi/L\)">\(\alpha=2\pi/L\)</span>, and
+<span class="math" data-tex="\(\mathbb T_L^3=\mathbb R^3/(L\mathbb Z)^3\)">\(\mathbb T_L^3=\mathbb R^3/(L\mathbb Z)^3\)</span>.
+The distance <span class="math" data-tex="\(d(x,0)\)">\(d(x,0)\)</span> is the shortest Euclidean distance of a representative
+of <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(L\mathbb Z^3\)">\(L\mathbb Z^3\)</span>. For <span class="math" data-tex="\(k=\alpha n\)">\(k=\alpha n\)</span>, <span class="math" data-tex="\(n\in\mathbb Z^3\)">\(n\in\mathbb Z^3\)</span>, use</p>
+<span class="math math-display" data-tex="\[
+\widehat f(k)=V^{-1}\int_{\mathbb T_L^3}f(x)e^{-ik\cdot x}\,dx,
+\qquad
+m(k)=\frac{k\otimes k}{|k|^2}\ (k\ne0),\qquad m(0)=0.
+\tag{PL1}
+\]">\[
+\widehat f(k)=V^{-1}\int_{\mathbb T_L^3}f(x)e^{-ik\cdot x}\,dx,
+\qquad
+m(k)=\frac{k\otimes k}{|k|^2}\ (k\ne0),\qquad m(0)=0.
+\tag{PL1}
+\]</span>
+<p>The gradient projection <span class="math" data-tex="\(Q\)">\(Q\)</span>, the divergence-free projection <span class="math" data-tex="\(P\)">\(P\)</span>, and
+the removal of the mean <span class="math" data-tex="\(P_0\)">\(P_0\)</span> are</p>
+<span class="math math-display" data-tex="\[
+\widehat{Qf}(k)=m(k)\widehat f(k),\quad
+P=I-Q,\quad P_0f=f-\overline f,\quad
+\overline f=V^{-1}\int f,\quad Q=\nabla\Delta^{-1}\operatorname{div}.
+\tag{PL2}
+\]">\[
+\widehat{Qf}(k)=m(k)\widehat f(k),\quad
+P=I-Q,\quad P_0f=f-\overline f,\quad
+\overline f=V^{-1}\int f,\quad Q=\nabla\Delta^{-1}\operatorname{div}.
+\tag{PL2}
+\]</span>
+<p>The inverse Laplacian is zero on the constant mode and has multiplier
+<span class="math" data-tex="\(-|k|^{-2}\)">\(-|k|^{-2}\)</span> otherwise. The two factors of <span class="math" data-tex="\(i\)">\(i\)</span> give the positive symbol
+in PL1. These definitions are first made on smooth vector fields and then
+on <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Parseval, with its factor <span class="math" data-tex="\(V\)">\(V\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+\|Qf\|_2\leq\|f\|_2,\qquad
+\|Pf\|_2\leq\|f\|_2,\qquad
+\|PP_0f\|_2\leq\|f\|_2.
+\tag{PL3}
+\]">\[
+\|Qf\|_2\leq\|f\|_2,\qquad
+\|Pf\|_2\leq\|f\|_2,\qquad
+\|PP_0f\|_2\leq\|f\|_2.
+\tag{PL3}
+\]</span>
+<p>Indeed, at every nonzero frequency <span class="math" data-tex="\(m(k)\)">\(m(k)\)</span> and <span class="math" data-tex="\(I-m(k)\)">\(I-m(k)\)</span> are orthogonal
+projections, and the constant modes of these three operators are,
+respectively, zero, identity and zero.</p>
+<p>The same proof holds for fields in <span class="math" data-tex="\(\mathbb C^3\otimes E\)">\(\mathbb C^3\otimes E\)</span>, where <span class="math" data-tex="\(E\)">\(E\)</span> is
+any finite-dimensional Hilbert space: the multipliers act on the first
+factor and as the identity on <span class="math" data-tex="\(E\)">\(E\)</span>. All norms are the full Hilbert norm,
+integrated in the original spatial variables. The estimates below have
+constants independent of the dimension of <span class="math" data-tex="\(E\)">\(E\)</span>. This includes the full
+ordered derivative arrays used in the velocity construction.</p>
+<h2 id="pl2-construct-the-kernels-without-changing-the-torus">PL2. Construct the kernels without changing the torus</h2>
+<p>Set <span class="math" data-tex="\(b(s)=e^{-1/s}\)">\(b(s)=e^{-1/s}\)</span> for <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, and <span class="math" data-tex="\(b(s)=0\)">\(b(s)=0\)</span> for <span class="math" data-tex="\(s\leq0\)">\(s\leq0\)</span>. Use the
+actual cutoff and matrix function</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\chi(\xi)&amp;=\frac{b(4-|\xi|^2)}
+{b(4-|\xi|^2)+b(|\xi|^2-1)},\\
+\psi(\xi)&amp;=\chi(\xi)-\chi(2\xi),\qquad
+F(\xi)=\frac{\xi\otimes\xi}{|\xi|^2}\psi(\xi),\\
+\check F(y)&amp;=(2\pi)^{-3}\int_{\mathbb R^3}F(\xi)e^{i\xi\cdot y}\,d\xi .
+\end{aligned}
+\tag{PL4}
+\]">\[
+\begin{aligned}
+\chi(\xi)&amp;=\frac{b(4-|\xi|^2)}
+{b(4-|\xi|^2)+b(|\xi|^2-1)},\\
+\psi(\xi)&amp;=\chi(\xi)-\chi(2\xi),\qquad
+F(\xi)=\frac{\xi\otimes\xi}{|\xi|^2}\psi(\xi),\\
+\check F(y)&amp;=(2\pi)^{-3}\int_{\mathbb R^3}F(\xi)e^{i\xi\cdot y}\,d\xi .
+\end{aligned}
+\tag{PL4}
+\]</span>
+<p>The denominator is positive everywhere. The function <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is smooth,
+equals one on <span class="math" data-tex="\(|\xi|\leq1\)">\(|\xi|\leq1\)</span>, vanishes on <span class="math" data-tex="\(|\xi|\geq2\)">\(|\xi|\geq2\)</span>, and lies in
+<span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. The support of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> lies in <span class="math" data-tex="\(1/2\leq|\xi|\leq2\)">\(1/2\leq|\xi|\leq2\)</span>.
+Thus <span class="math" data-tex="\(F\)">\(F\)</span>, extended as zero near zero, is a smooth compactly supported
+matrix. Define the finite constants, with the full matrix and derivative
+tensor Hilbert–Schmidt norm,</p>
+<span class="math math-display" data-tex="\[
+A_s=(2\pi)^{-3}\int_{\mathbb R^3}
+\left|(1-\Delta_\xi)^3\big[(i\xi)^{\otimes s}F(\xi)\big]\right|_{\mathrm{HS}}
+\,d\xi,\quad s=0,1.
+\tag{PL5}
+\]">\[
+A_s=(2\pi)^{-3}\int_{\mathbb R^3}
+\left|(1-\Delta_\xi)^3\big[(i\xi)^{\otimes s}F(\xi)\big]\right|_{\mathrm{HS}}
+\,d\xi,\quad s=0,1.
+\tag{PL5}
+\]</span>
+<p>Integrating by parts three times, with no boundary term because the
+integrand is smooth and compactly supported, proves</p>
+<span class="math math-display" data-tex="\[
+|D_y^s\check F(y)|_{\mathrm{HS}}\leq A_s(1+|y|^2)^{-3}.
+\tag{PL6}
+\]">\[
+|D_y^s\check F(y)|_{\mathrm{HS}}\leq A_s(1+|y|^2)^{-3}.
+\tag{PL6}
+\]</span>
+<p>For <span class="math" data-tex="\(j=0,1,\ldots\)">\(j=0,1,\ldots\)</span>, let <span class="math" data-tex="\(R_j=\alpha2^j\)">\(R_j=\alpha2^j\)</span>, and periodize at the actual
+period:</p>
+<span class="math math-display" data-tex="\[
+K_j(x)=\sum_{n\in\mathbb Z^3}R_j^3\check F(R_j(x+Ln)).
+\tag{PL7}
+\]">\[
+K_j(x)=\sum_{n\in\mathbb Z^3}R_j^3\check F(R_j(x+Ln)).
+\tag{PL7}
+\]</span>
+<p>The series and its derivatives converge uniformly, since repeated
+integration by parts gives arbitrary polynomial decay. Substitution in
+the Fourier coefficient integral gives
+<span class="math" data-tex="\(\widehat K_j(k)=V^{-1}F(k/R_j)\)">\(\widehat K_j(k)=V^{-1}F(k/R_j)\)</span>. With convolution
+<span class="math" data-tex="\((K_j*f)(x)=\int_{\mathbb T_L^3}K_j(x-y)f(y)\,dy\)">\((K_j*f)(x)=\int_{\mathbb T_L^3}K_j(x-y)f(y)\,dy\)</span>, the multiplier is
+therefore exactly <span class="math" data-tex="\(F(k/R_j)\)">\(F(k/R_j)\)</span>: the factor <span class="math" data-tex="\(V\)">\(V\)</span> in the convolution rule
+cancels the displayed <span class="math" data-tex="\(V^{-1}\)">\(V^{-1}\)</span>. In particular, <span class="math" data-tex="\(\int K_j=0\)">\(\int K_j=0\)</span>.</p>
+<p>Let <span class="math" data-tex="\(Q_J f=\sum_{j=0}^J K_j*f\)">\(Q_J f=\sum_{j=0}^J K_j*f\)</span>. For a nonzero lattice frequency,
+<span class="math" data-tex="\(|k|\geq\alpha\)">\(|k|\geq\alpha\)</span>, so <span class="math" data-tex="\(\chi(2k/\alpha)=0\)">\(\chi(2k/\alpha)=0\)</span>. The sum telescopes:</p>
+<span class="math math-display" data-tex="\[
+\widehat{Q_Jf}(k)
+=m(k)\big[\chi(k/R_J)-\chi(2k/\alpha)\big]\widehat f(k)
+=m(k)\chi(k/R_J)\widehat f(k),\qquad k\ne0.
+\tag{PL8}
+\]">\[
+\widehat{Q_Jf}(k)
+=m(k)\big[\chi(k/R_J)-\chi(2k/\alpha)\big]\widehat f(k)
+=m(k)\chi(k/R_J)\widehat f(k),\qquad k\ne0.
+\tag{PL8}
+\]</span>
+<p>It is zero at <span class="math" data-tex="\(k=0\)">\(k=0\)</span>. Hence <span class="math" data-tex="\(\|Q_J\|_{2\to2}\leq1\)">\(\|Q_J\|_{2\to2}\leq1\)</span>, and dominated
+convergence in the original Parseval series proves <span class="math" data-tex="\(Q_Jf\to Qf\)">\(Q_Jf\to Qf\)</span> in
+<span class="math" data-tex="\(L^2\)">\(L^2\)</span>. No change of measure or rescaling of <span class="math" data-tex="\(f\)">\(f\)</span> has been made.</p>
+<h2 id="pl3-the-full-periodic-kernel-bounds">PL3. The full periodic kernel bounds</h2>
+<p>Write <span class="math" data-tex="\(c=1-\sqrt3/2&gt;0\)">\(c=1-\sqrt3/2&gt;0\)</span>. The integer shell
+<span class="math" data-tex="\(\{n:|n|_\infty=m\}\)">\(\{n:|n|_\infty=m\}\)</span> has <span class="math" data-tex="\(24m^2+2\)">\(24m^2+2\)</span> points, and <span class="math" data-tex="\(|n|\geq m\)">\(|n|\geq m\)</span> there.
+Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Z_6:=\sum_{n\ne0}|n|^{-6}
+&amp;\leq24\sum_{m=1}^\infty m^{-4}+2\sum_{m=1}^\infty m^{-6}
+\leq\frac{172}{5},\\
+D_s&amp;=\frac1{1-2^{-(3+s)}}+\frac1{1-2^{-(3-s)}},\\
+H_s&amp;=A_s\left[
+D_s+\frac{(2\pi)^{s-3}c^{-6}(172/5)(\sqrt3/2)^{3+s}}
+{1-2^{s-3}}\right],\qquad s=0,1.
+\end{aligned}
+\tag{PL9}
+\]">\[
+\begin{aligned}
+Z_6:=\sum_{n\ne0}|n|^{-6}
+&amp;\leq24\sum_{m=1}^\infty m^{-4}+2\sum_{m=1}^\infty m^{-6}
+\leq\frac{172}{5},\\
+D_s&amp;=\frac1{1-2^{-(3+s)}}+\frac1{1-2^{-(3-s)}},\\
+H_s&amp;=A_s\left[
+D_s+\frac{(2\pi)^{s-3}c^{-6}(172/5)(\sqrt3/2)^{3+s}}
+{1-2^{s-3}}\right],\qquad s=0,1.
+\end{aligned}
+\tag{PL9}
+\]</span>
+<p>For the numerical bound in the first line, compare the tails of the
+decreasing functions <span class="math" data-tex="\(x^{-4}\)">\(x^{-4}\)</span> and <span class="math" data-tex="\(x^{-6}\)">\(x^{-6}\)</span> with their integrals on
+<span class="math" data-tex="\([1,\infty)\)">\([1,\infty)\)</span>. This gives <span class="math" data-tex="\(24(1+1/3)+2(1+1/5)=172/5\)">\(24(1+1/3)+2(1+1/5)=172/5\)</span>.</p>
+<p>Choose the nearest representative <span class="math" data-tex="\(x\in[-L/2,L/2]^3\)">\(x\in[-L/2,L/2]^3\)</span>, and put
+<span class="math" data-tex="\(d=|x|&gt;0\)">\(d=|x|&gt;0\)</span>. For the <span class="math" data-tex="\(n=0\)">\(n=0\)</span> terms of PL7, enlarge the <span class="math" data-tex="\(j\)">\(j\)</span>-sum to all
+integers. Split at the last <span class="math" data-tex="\(j\)">\(j\)</span> with <span class="math" data-tex="\(R_jd\leq1\)">\(R_jd\leq1\)</span>. The lower sum is at
+most <span class="math" data-tex="\(d^{-3-s}/(1-2^{-(3+s)})\)">\(d^{-3-s}/(1-2^{-(3+s)})\)</span>; the upper sum, using
+<span class="math" data-tex="\((1+(R_jd)^2)^{-3}\leq(R_jd)^{-6}\)">\((1+(R_jd)^2)^{-3}\leq(R_jd)^{-6}\)</span>, is at most
+<span class="math" data-tex="\(d^{-3-s}/(1-2^{-(3-s)})\)">\(d^{-3-s}/(1-2^{-(3-s)})\)</span>. These are the two terms in <span class="math" data-tex="\(D_s\)">\(D_s\)</span>.</p>
+<p>For <span class="math" data-tex="\(n\ne0\)">\(n\ne0\)</span>,
+<span class="math" data-tex="\(|x+Ln|\geq L(|n|-\sqrt3/2)\geq cL|n|\)">\(|x+Ln|\geq L(|n|-\sqrt3/2)\geq cL|n|\)</span>. Apply the same high-frequency
+bound for every <span class="math" data-tex="\(j\geq0\)">\(j\geq0\)</span>, and sum
+<span class="math" data-tex="\(\sum_{j\geq0}R_j^{s-3}=\alpha^{s-3}/(1-2^{s-3})\)">\(\sum_{j\geq0}R_j^{s-3}=\alpha^{s-3}/(1-2^{s-3})\)</span>.
+The remaining lattice sum is at most <span class="math" data-tex="\(c^{-6}L^{-6}Z_6\)">\(c^{-6}L^{-6}Z_6\)</span>.
+Since <span class="math" data-tex="\(d\leq\sqrt3 L/2\)">\(d\leq\sqrt3 L/2\)</span>, its full physical factor satisfies</p>
+<span class="math math-display" data-tex="\[
+L^{-6}\alpha^{s-3}=(2\pi)^{s-3}L^{-3-s}
+\leq(2\pi)^{s-3}(\sqrt3/2)^{3+s}d^{-3-s}.
+\tag{PL10}
+\]">\[
+L^{-6}\alpha^{s-3}=(2\pi)^{s-3}L^{-3-s}
+\leq(2\pi)^{s-3}(\sqrt3/2)^{3+s}d^{-3-s}.
+\tag{PL10}
+\]</span>
+<p>This proves absolute convergence away from zero of
+<span class="math" data-tex="\(K(x)=\sum_{j\geq0}K_j(x)\)">\(K(x)=\sum_{j\geq0}K_j(x)\)</span>, including its first derivative, and proves</p>
+<span class="math math-display" data-tex="\[
+|K(x)|_{\mathrm{HS}}\leq H_0d(x,0)^{-3},\qquad
+|D K(x)|_{\mathrm{HS}}\leq H_1d(x,0)^{-4}.
+\tag{PL11}
+\]">\[
+|K(x)|_{\mathrm{HS}}\leq H_0d(x,0)^{-3},\qquad
+|D K(x)|_{\mathrm{HS}}\leq H_1d(x,0)^{-4}.
+\tag{PL11}
+\]</span>
+<p>The same bounds hold for the corresponding finite sums. If an <span class="math" data-tex="\(L^2\)">\(L^2\)</span>
+field <span class="math" data-tex="\(f\)">\(f\)</span> is supported a positive distance from an open set, dominated
+convergence in PL7–PL11 gives <span class="math" data-tex="\(Q_Jf(x)\to\int K(x-y)f(y)\,dy\)">\(Q_Jf(x)\to\int K(x-y)f(y)\,dy\)</span> on that
+set. The <span class="math" data-tex="\(L^2\)">\(L^2\)</span> convergence in PL8 identifies this integral with <span class="math" data-tex="\(Qf\)">\(Qf\)</span>
+almost everywhere there. Exhaustion by sets at positive distance proves
+this representation at almost every point outside the support. The
+kernel is being used only away from its singularity.</p>
+<h2 id="pl4-decompose-an-actual-integrable-field">PL4. Decompose an actual integrable field</h2>
+<p>Take <span class="math" data-tex="\(f\in L^1\cap L^2\)">\(f\in L^1\cap L^2\)</span> with values in <span class="math" data-tex="\(\mathbb C^3\otimes E\)">\(\mathbb C^3\otimes E\)</span>, and a
+number <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. If <span class="math" data-tex="\(t\leq V^{-1}\|f\|_1\)">\(t\leq V^{-1}\|f\|_1\)</span>, then any level set has measure
+at most <span class="math" data-tex="\(V\leq\|f\|_1/t\)">\(V\leq\|f\|_1/t\)</span>. It remains to treat <span class="math" data-tex="\(t&gt;V^{-1}\|f\|_1\)">\(t&gt;V^{-1}\|f\|_1\)</span>.</p>
+<p>Subdivide <span class="math" data-tex="\([0,L)^3\)">\([0,L)^3\)</span> into its half-open dyadic cubes. Select all maximal
+cubes <span class="math" data-tex="\(B\)">\(B\)</span> whose average of <span class="math" data-tex="\(|f|\)">\(|f|\)</span> exceeds <span class="math" data-tex="\(t\)">\(t\)</span>. They are disjoint.
+Their parents have averages at most <span class="math" data-tex="\(t\)">\(t\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+t&lt;|B|^{-1}\int_B|f|\leq8t,\qquad
+\sum_B|B|\leq\|f\|_1/t.
+\tag{PL12}
+\]">\[
+t&lt;|B|^{-1}\int_B|f|\leq8t,\qquad
+\sum_B|B|\leq\|f\|_1/t.
+\tag{PL12}
+\]</span>
+<p>We record why the pointwise conclusion outside these cubes is valid.
+For an integrable scalar function <span class="math" data-tex="\(h\)">\(h\)</span>, disjoint maximal cubes in each
+finite subdivision show</p>
+<span class="math math-display" data-tex="\[
+|\{\sup_n |B_n(x)|^{-1}\textstyle\int_{B_n(x)}|h|&gt;s\}|
+\leq\|h\|_1/s,\qquad s&gt;0.
+\]">\[
+|\{\sup_n |B_n(x)|^{-1}\textstyle\int_{B_n(x)}|h|&gt;s\}|
+\leq\|h\|_1/s,\qquad s&gt;0.
+\]</span>
+<p>Passing through increasing finite subdivisions proves the same assertion
+for all levels. For a continuous periodic function, the dyadic averages
+converge to its value, by uniform continuity. Continuous periodic functions
+are dense in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>: simple functions reduce this to measurable sets;
+inner and outer regularity give a compact subset and an open superset
+with arbitrarily small difference in volume; the continuous function
+<span class="math" data-tex="\(d(x,\mathbb T_L^3\setminus U)/(d(x,\mathbb T_L^3\setminus U)+d(x,C))\)">\(d(x,\mathbb T_L^3\setminus U)/(d(x,\mathbb T_L^3\setminus U)+d(x,C))\)</span>
+approximates the indicator of a nonempty compact <span class="math" data-tex="\(C\subset U\)">\(C\subset U\)</span>.
+An empty compact set uses the zero function; if <span class="math" data-tex="\(U\)">\(U\)</span> is the whole torus,
+use the constant one. The torus distances in the displayed formula
+are continuous, and the denominator is positive. Finite linear combinations
+finish the density proof.</p>
+<p>For continuous <span class="math" data-tex="\(h_0\)">\(h_0\)</span> approximating <span class="math" data-tex="\(h\)">\(h\)</span>, the limsup of the difference
+between a dyadic average of <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(h(x)\)">\(h(x)\)</span> is at most the dyadic maximal
+average of <span class="math" data-tex="\(|h-h_0|\)">\(|h-h_0|\)</span> plus <span class="math" data-tex="\(|h-h_0|(x)\)">\(|h-h_0|(x)\)</span>. The two level-set estimates are
+each at most <span class="math" data-tex="\(2\|h-h_0\|_1/\varepsilon\)">\(2\|h-h_0\|_1/\varepsilon\)</span> for threshold <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span>.
+Letting the approximation error tend to zero proves dyadic
+differentiation almost everywhere. Apply it to <span class="math" data-tex="\(|f|\)">\(|f|\)</span>. Outside the
+selected cubes, <span class="math" data-tex="\(|f|\leq t\)">\(|f|\leq t\)</span> almost everywhere.</p>
+<p>Set <span class="math" data-tex="\(f_B=|B|^{-1}\int_B f\)">\(f_B=|B|^{-1}\int_B f\)</span>, put <span class="math" data-tex="\(g=f\)">\(g=f\)</span> outside their union and <span class="math" data-tex="\(g=f_B\)">\(g=f_B\)</span>
+on each <span class="math" data-tex="\(B\)">\(B\)</span>, and put <span class="math" data-tex="\(b_B=(f-f_B)\mathbf1_B\)">\(b_B=(f-f_B)\mathbf1_B\)</span>, <span class="math" data-tex="\(b=f-g\)">\(b=f-g\)</span>.
+Jensen's inequality and disjointness give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|g|\leq8t,\quad \|g\|_1\leq\|f\|_1,\quad
+\|g\|_2^2\leq8t\|f\|_1,\\
+\int b_B=0,\quad \sum_B\|b_B\|_1\leq2\|f\|_1,\qquad
+b=\sum_Bb_B\quad\hbox{in }L^2.
+\end{gathered}
+\tag{PL13}
+\]">\[
+\begin{gathered}
+|g|\leq8t,\quad \|g\|_1\leq\|f\|_1,\quad
+\|g\|_2^2\leq8t\|f\|_1,\\
+\int b_B=0,\quad \sum_B\|b_B\|_1\leq2\|f\|_1,\qquad
+b=\sum_Bb_B\quad\hbox{in }L^2.
+\end{gathered}
+\tag{PL13}
+\]</span>
+<p>For the last assertion, <span class="math" data-tex="\(g\in L^2\)">\(g\in L^2\)</span> by the preceding bound, so <span class="math" data-tex="\(b\in L^2\)">\(b\in L^2\)</span>.
+The summands have disjoint supports and agree with <span class="math" data-tex="\(b\)">\(b\)</span> there; the
+squared norm of a tail tends to zero by integrability of <span class="math" data-tex="\(|b|^2\)">\(|b|^2\)</span>.</p>
+<h2 id="pl5-cancellation-gives-the-weak-estimate">PL5. Cancellation gives the weak estimate</h2>
+<p>If <span class="math" data-tex="\(B\)">\(B\)</span> has side length <span class="math" data-tex="\(\ell_B\)">\(\ell_B\)</span> and center <span class="math" data-tex="\(c_B\)">\(c_B\)</span>, enlarge it to the
+geodesic ball <span class="math" data-tex="\(B^*=\{x:d(x,c_B)&lt;2\sqrt3\ell_B\}\)">\(B^*=\{x:d(x,c_B)&lt;2\sqrt3\ell_B\}\)</span>. The image of an
+ordinary Euclidean ball covers <span class="math" data-tex="\(B^*\)">\(B^*\)</span>, hence</p>
+<span class="math math-display" data-tex="\[
+|B^*|\leq C_{\mathrm B}|B|,\qquad C_{\mathrm B}=32\pi\sqrt3.
+\tag{PL14}
+\]">\[
+|B^*|\leq C_{\mathrm B}|B|,\qquad C_{\mathrm B}=32\pi\sqrt3.
+\tag{PL14}
+\]</span>
+<p>This remains valid when the ball wraps around or covers the torus.
+For <span class="math" data-tex="\(x\notin B^*\)">\(x\notin B^*\)</span>, write <span class="math" data-tex="\(r=d(x,c_B)&gt;2\sqrt3\ell_B\)">\(r=d(x,c_B)&gt;2\sqrt3\ell_B\)</span>, ignoring the
+boundary of this ball, which has measure zero. For <span class="math" data-tex="\(y\in B\)">\(y\in B\)</span>, the
+straight segment from <span class="math" data-tex="\(c_B\)">\(c_B\)</span> to <span class="math" data-tex="\(y\)">\(y\)</span> in the original cube has length at
+most <span class="math" data-tex="\(\sqrt3\ell_B/2&lt;r/4\)">\(\sqrt3\ell_B/2&lt;r/4\)</span>. Along it the kernel argument has distance at
+least <span class="math" data-tex="\(3r/4\)">\(3r/4\)</span> from zero. PL11 and the zero integral in PL13 give</p>
+<span class="math math-display" data-tex="\[
+|Qb_B(x)|\leq H_1(4/3)^4r^{-4}
+\int_B|y-c_B|\,|b_B(y)|\,dy.
+\tag{PL15}
+\]">\[
+|Qb_B(x)|\leq H_1(4/3)^4r^{-4}
+\int_B|y-c_B|\,|b_B(y)|\,dy.
+\tag{PL15}
+\]</span>
+<p>The integral representation follows from PL11, since these points are
+separated from <span class="math" data-tex="\(B\)">\(B\)</span>. In nearest representatives centered at <span class="math" data-tex="\(c_B\)">\(c_B\)</span>,
+the integral of <span class="math" data-tex="\(r^{-4}\)">\(r^{-4}\)</span> over <span class="math" data-tex="\(r&gt;R\)">\(r&gt;R\)</span> on the torus is at most the
+Euclidean integral <span class="math" data-tex="\(4\pi\int_R^\infty r^{-2}\,dr=4\pi/R\)">\(4\pi\int_R^\infty r^{-2}\,dr=4\pi/R\)</span>.
+Use <span class="math" data-tex="\(R=2\sqrt3\ell_B\)">\(R=2\sqrt3\ell_B\)</span> and
+<span class="math" data-tex="\(|y-c_B|/R\leq1/4\)">\(|y-c_B|/R\leq1/4\)</span>. With
+<span class="math" data-tex="\(B_*=\pi H_1(4/3)^4\)">\(B_*=\pi H_1(4/3)^4\)</span>, this proves
+<span class="math" data-tex="\(\int_{\mathbb T_L^3\setminus B^*}|Qb_B|\leq B_*\|b_B\|_1\)">\(\int_{\mathbb T_L^3\setminus B^*}|Qb_B|\leq B_*\|b_B\|_1\)</span>.</p>
+<p>For finite sums this estimate can be summed outside the union of all
+<span class="math" data-tex="\(B^*\)">\(B^*\)</span>. The <span class="math" data-tex="\(L^2\)">\(L^2\)</span> convergence in PL13 and the contraction PL3 give
+an almost everywhere convergent subsequence of their projections.
+Fatou's lemma and PL13 then give
+<span class="math" data-tex="\(\int_{(\cup B^*)^c}|Qb|\leq2B_*\|f\|_1\)">\(\int_{(\cup B^*)^c}|Qb|\leq2B_*\|f\|_1\)</span>.
+On that complement, if <span class="math" data-tex="\(|Qf|&gt;t\)">\(|Qf|&gt;t\)</span>, then either <span class="math" data-tex="\(|Qg|&gt;t/2\)">\(|Qg|&gt;t/2\)</span> or
+<span class="math" data-tex="\(|Qb|&gt;t/2\)">\(|Qb|&gt;t/2\)</span>. The first set has measure at most
+<span class="math" data-tex="\(4t^{-2}\|g\|_2^2\leq32\|f\|_1/t\)">\(4t^{-2}\|g\|_2^2\leq32\|f\|_1/t\)</span>; the second at most
+<span class="math" data-tex="\(4B_*\|f\|_1/t\)">\(4B_*\|f\|_1/t\)</span>. Including the enlarged cubes proves the actual
+weak estimate</p>
+<span class="math math-display" data-tex="\[
+|\{|Qf|&gt;t\}|\leq A_{\mathrm w}\frac{\|f\|_1}{t},
+\qquad A_{\mathrm w}=32\pi\sqrt3+32+4\pi H_1(4/3)^4.
+\tag{PL16}
+\]">\[
+|\{|Qf|&gt;t\}|\leq A_{\mathrm w}\frac{\|f\|_1}{t},
+\qquad A_{\mathrm w}=32\pi\sqrt3+32+4\pi H_1(4/3)^4.
+\tag{PL16}
+\]</span>
+<p>This constant exceeds one and therefore includes the earlier case
+<span class="math" data-tex="\(t\leq V^{-1}\|f\|_1\)">\(t\leq V^{-1}\|f\|_1\)</span>. The reasoning used only Hilbert norms and
+matrix operator norms bounded by the three-dimensional Hilbert–Schmidt
+norms in PL5. It is uniform in <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<h2 id="pl6-prove-the-full-range-of-finite-exponents">PL6. Prove the full range of finite exponents</h2>
+<p>Let <span class="math" data-tex="\(1&lt;p&lt;2\)">\(1&lt;p&lt;2\)</span> and first take <span class="math" data-tex="\(f\in L^p\cap L^2\)">\(f\in L^p\cap L^2\)</span>.
+For each <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> split <span class="math" data-tex="\(f\)">\(f\)</span> into its parts on <span class="math" data-tex="\(|f|&gt;\eta t\)">\(|f|&gt;\eta t\)</span> and
+<span class="math" data-tex="\(|f|\leq\eta t\)">\(|f|\leq\eta t\)</span>, where <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>. The high part is in <span class="math" data-tex="\(L^1\cap L^2\)">\(L^1\cap L^2\)</span>;
+the low part is in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. PL16 for the first and PL3 for the second
+yield</p>
+<span class="math math-display" data-tex="\[
+|\{|Qf|&gt;t\}|
+\leq\frac{2A_{\mathrm w}}t\int_{|f|&gt;\eta t}|f|
++\frac4{t^2}\int_{|f|\leq\eta t}|f|^2.
+\]">\[
+|\{|Qf|&gt;t\}|
+\leq\frac{2A_{\mathrm w}}t\int_{|f|&gt;\eta t}|f|
++\frac4{t^2}\int_{|f|\leq\eta t}|f|^2.
+\]</span>
+<p>Multiply by <span class="math" data-tex="\(pt^{p-1}\)">\(pt^{p-1}\)</span>, integrate in <span class="math" data-tex="\(t\)">\(t\)</span>, and interchange the
+nonnegative integrals. The first inner integral runs from zero to
+<span class="math" data-tex="\(|f(x)|/\eta\)">\(|f(x)|/\eta\)</span>, and the second from that value to infinity. They give</p>
+<span class="math math-display" data-tex="\[
+\|Qf\|_p^p\leq
+\left[\frac{2pA_{\mathrm w}\eta^{1-p}}{p-1}
++\frac{4p\eta^{2-p}}{2-p}\right]\|f\|_p^p.
+\]">\[
+\|Qf\|_p^p\leq
+\left[\frac{2pA_{\mathrm w}\eta^{1-p}}{p-1}
++\frac{4p\eta^{2-p}}{2-p}\right]\|f\|_p^p.
+\]</span>
+<p>Both are finite for precisely the stated range. The derivative of the
+bracket is <span class="math" data-tex="\(2p\eta^{-p}(-A_{\mathrm w}+2\eta)\)">\(2p\eta^{-p}(-A_{\mathrm w}+2\eta)\)</span>, so its unique minimum
+is at <span class="math" data-tex="\(\eta=A_{\mathrm w}/2\)">\(\eta=A_{\mathrm w}/2\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+C_p=
+\begin{cases}
+2\left[\dfrac{pA_{\mathrm w}^{\,2-p}}{(p-1)(2-p)}\right]^{1/p},
+&amp;1&lt;p&lt;2,\\[2mm]
+1,                                       &amp;p=2,\\
+C_{p/(p-1)},                             &amp;2&lt;p&lt;\infty.
+\end{cases}
+\qquad \|Qf\|_p\leq C_p\|f\|_p .
+\tag{PL17}
+\]">\[
+C_p=
+\begin{cases}
+2\left[\dfrac{pA_{\mathrm w}^{\,2-p}}{(p-1)(2-p)}\right]^{1/p},
+&amp;1&lt;p&lt;2,\\[2mm]
+1,                                       &amp;p=2,\\
+C_{p/(p-1)},                             &amp;2&lt;p&lt;\infty.
+\end{cases}
+\qquad \|Qf\|_p\leq C_p\|f\|_p .
+\tag{PL17}
+\]</span>
+<p>For <span class="math" data-tex="\(p&gt;2\)">\(p&gt;2\)</span>, first take smooth <span class="math" data-tex="\(f\)">\(f\)</span>, so <span class="math" data-tex="\(Qf\)">\(Qf\)</span> is smooth by the rapid
+decay of its Fourier coefficients. In the ordinary physical integral
+pairing take <span class="math" data-tex="\(g=|Qf|^{p-2}Qf\)">\(g=|Qf|^{p-2}Qf\)</span>. This bounded field is in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> and
+<span class="math" data-tex="\(L^{p&#x27;}\)">\(L^{p&#x27;}\)</span>, where <span class="math" data-tex="\(p&#x27;=p/(p-1)&lt;2\)">\(p&#x27;=p/(p-1)&lt;2\)</span>. The symbol in PL1 is self-adjoint,
+so Parseval and the already proved estimate give</p>
+<span class="math math-display" data-tex="\[
+\|Qf\|_p^p=|\langle Qf,g\rangle|
+=|\langle f,Qg\rangle|
+\leq\|f\|_p C_{p&#x27;}\|g\|_{p&#x27;}
+=C_{p&#x27;}\|f\|_p\|Qf\|_p^{p-1}.
+\]">\[
+\|Qf\|_p^p=|\langle Qf,g\rangle|
+=|\langle f,Qg\rangle|
+\leq\|f\|_p C_{p&#x27;}\|g\|_{p&#x27;}
+=C_{p&#x27;}\|f\|_p\|Qf\|_p^{p-1}.
+\]</span>
+<p>The result is immediate if the last norm is zero; otherwise division
+proves PL17. Smooth periodic fields are dense in every finite <span class="math" data-tex="\(L^p\)">\(L^p\)</span>:
+the continuous approximation argument in PL4 applies to <span class="math" data-tex="\(|f|^p\)">\(|f|^p\)</span> after
+truncation, and convolution of a continuous periodic field with a smooth
+nonnegative approximate identity converges uniformly. Thus PL17 extends
+<span class="math" data-tex="\(Q\)">\(Q\)</span> uniquely to <span class="math" data-tex="\(L^p\)">\(L^p\)</span>. Fourier coefficients are continuous functionals
+on <span class="math" data-tex="\(L^p\)">\(L^p\)</span> on this finite-volume torus, so the extension retains exactly
+PL1, including the zero mode, and agrees with the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> definition.</p>
+<p>Jensen gives <span class="math" data-tex="\(\|\overline f\|_p\leq\|f\|_p\)">\(\|\overline f\|_p\leq\|f\|_p\)</span>.
+Since <span class="math" data-tex="\(Q\overline f=0\)">\(Q\overline f=0\)</span> and <span class="math" data-tex="\(\overline{Qf}=0\)">\(\overline{Qf}=0\)</span>, the exact maps and bounds
+are</p>
+<span class="math math-display" data-tex="\[
+PP_0f=f-Qf-\overline f,\qquad
+\|Pf\|_p\leq(1+C_p)\|f\|_p,\qquad
+\|PP_0f\|_p\leq(2+C_p)\|f\|_p .
+\tag{PL18}
+\]">\[
+PP_0f=f-Qf-\overline f,\qquad
+\|Pf\|_p\leq(1+C_p)\|f\|_p,\qquad
+\|PP_0f\|_p\leq(2+C_p)\|f\|_p .
+\tag{PL18}
+\]</span>
+<p>At <span class="math" data-tex="\(p=2\)">\(p=2\)</span> retain the sharper constants one in PL3. On a zero-mean input
+the last constant improves to <span class="math" data-tex="\(1+C_p\)">\(1+C_p\)</span>. The Fourier symbols also prove
+commutation with each spatial derivative and each time derivative of a
+smooth time-dependent field. Apply the dimension-independent proof to
+the entire ordered derivative array, not just to its individual entries.
+These assertions extend to distributional derivatives whenever both
+sides belong to the indicated <span class="math" data-tex="\(L^p\)">\(L^p\)</span> space.</p>
+<h2 id="pl7-a-smooth-input-supremum-estimate-with-every-frequency-retained">PL7. A smooth-input supremum estimate with every frequency retained</h2>
+<p>The elementary radial integrals are</p>
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R^3}(1+|y|^2)^{-3}\,dy=\pi^2/4,\qquad
+\int_{\mathbb R^3}|y|(1+|y|^2)^{-3}\,dy=\pi.
+\tag{PL19}
+\]">\[
+\int_{\mathbb R^3}(1+|y|^2)^{-3}\,dy=\pi^2/4,\qquad
+\int_{\mathbb R^3}|y|(1+|y|^2)^{-3}\,dy=\pi.
+\tag{PL19}
+\]</span>
+<p>For the first, substitute <span class="math" data-tex="\(r=\tan\theta\)">\(r=\tan\theta\)</span> in
+<span class="math" data-tex="\(4\pi\int_0^\infty r^2(1+r^2)^{-3}\,dr\)">\(4\pi\int_0^\infty r^2(1+r^2)^{-3}\,dr\)</span>, obtaining
+<span class="math" data-tex="\(4\pi\int_0^{\pi/2}\sin^2\theta\cos^2\theta\,d\theta=\pi^2/4\)">\(4\pi\int_0^{\pi/2}\sin^2\theta\cos^2\theta\,d\theta=\pi^2/4\)</span>.
+For the second put <span class="math" data-tex="\(u=r^2\)">\(u=r^2\)</span>, obtaining
+<span class="math" data-tex="\(2\pi\int_0^\infty u(1+u)^{-3}\,du=\pi\)">\(2\pi\int_0^\infty u(1+u)^{-3}\,du=\pi\)</span>.
+Periodization in PL7, followed by substitution on the entire original
+lattice tiling, now gives for a <span class="math" data-tex="\(C^1\)">\(C^1\)</span> periodic field</p>
+<span class="math math-display" data-tex="\[
+\|K_j*f\|_\infty\leq
+\min\left\{\frac{\pi^2 A_0}{4}\|f\|_\infty,\
+\frac{\pi A_0}{R_j}\|D_xf\|_\infty\right\}.
+\tag{PL20}
+\]">\[
+\|K_j*f\|_\infty\leq
+\min\left\{\frac{\pi^2 A_0}{4}\|f\|_\infty,\
+\frac{\pi A_0}{R_j}\|D_xf\|_\infty\right\}.
+\tag{PL20}
+\]</span>
+<p>The second estimate uses <span class="math" data-tex="\(\int K_j=0\)">\(\int K_j=0\)</span>: subtract <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span> inside the
+integral. The shortest torus distance between <span class="math" data-tex="\(x-y\)">\(x-y\)</span> and <span class="math" data-tex="\(x\)">\(x\)</span> is at
+most <span class="math" data-tex="\(|y+Ln|\)">\(|y+Ln|\)</span> in each term of PL7. The mean value bound along a shortest
+segment and PL19 then give exactly the second constant, with no missing
+power of <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p>The high-frequency series therefore converges uniformly for <span class="math" data-tex="\(C^1\)">\(C^1\)</span>
+inputs. Its sum agrees with <span class="math" data-tex="\(Qf\)">\(Qf\)</span> by PL8. For every integer <span class="math" data-tex="\(J\geq0\)">\(J\geq0\)</span>,
+sum the first estimate over <span class="math" data-tex="\(0\leq j\leq J\)">\(0\leq j\leq J\)</span> and the second over <span class="math" data-tex="\(j&gt;J\)">\(j&gt;J\)</span>.
+The exact latter sum is
+<span class="math" data-tex="\(\sum_{j&gt;J}R_j^{-1}=R_J^{-1}\)">\(\sum_{j&gt;J}R_j^{-1}=R_J^{-1}\)</span>. Writing <span class="math" data-tex="\(C_{\mathrm k}=\pi^2A_0/4\)">\(C_{\mathrm k}=\pi^2A_0/4\)</span>,
+we obtain</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|Qf\|_\infty
+&amp;\leq C_{\mathrm k}(J+1)\|f\|_\infty
++\frac{\pi A_0}{R_J}\|D_xf\|_\infty,\\
+\|PP_0f\|_\infty
+&amp;\leq[2+C_{\mathrm k}(J+1)]\|f\|_\infty
++\frac{\pi A_0}{R_J}\|D_xf\|_\infty .
+\end{aligned}
+\tag{PL21}
+\]">\[
+\begin{aligned}
+\|Qf\|_\infty
+&amp;\leq C_{\mathrm k}(J+1)\|f\|_\infty
++\frac{\pi A_0}{R_J}\|D_xf\|_\infty,\\
+\|PP_0f\|_\infty
+&amp;\leq[2+C_{\mathrm k}(J+1)]\|f\|_\infty
++\frac{\pi A_0}{R_J}\|D_xf\|_\infty .
+\end{aligned}
+\tag{PL21}
+\]</span>
+<p>The complete mean term in PL18 accounts for the two in the second line.
+These are estimates for the stated smooth inputs; no unrestricted
+<span class="math" data-tex="\(L^\infty\)">\(L^\infty\)</span> projection estimate is asserted. The same formulas apply
+to each full ordered mixed space-time derivative array by using its
+finite Hilbert space as <span class="math" data-tex="\(E\)">\(E\)</span>. Thus only one further spatial derivative,
+with its displayed reciprocal physical frequency, is required.</p>
+<p>The receiving velocity estimates retain <span class="math" data-tex="\(\Pi_p=2+C_p\)">\(\Pi_p=2+C_p\)</span> for finite
+<span class="math" data-tex="\(p\)">\(p\)</span>, the sharper orthogonal constant for <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, and the full PL21
+expression for smooth supremum norms. These proved maps can now be
+applied to the actual <span class="math" data-tex="\(a_I^2\eta_I^2\xi_I\)">\(a_I^2\eta_I^2\xi_I\)</span> in the temporal correction.</p>
+<h2 id="vd1-full-physical-scales-and-derivative-constants">VD1. Full physical scales and derivative constants</h2>
+<p>Write <span class="math" data-tex="\(X=\lambda_q\)">\(X=\lambda_q\)</span>, retaining the original variables through</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Lambda=X^b,\quad \ell=X^{-20},\quad
+r=\Lambda^{3/4},\quad \sigma=\Lambda^{-15/16},\quad
+\mu=\Lambda^{5/4},\quad M_r=2r+1,\\
+\alpha=2\pi/L,\quad \varkappa=\alpha\Lambda,\quad
+\beta=\alpha N_\Lambda\Lambda^{1/16},\quad
+G=\beta r=\alpha N_\Lambda\Lambda^{13/16},\quad
+T=\beta r\mu=\alpha N_\Lambda\Lambda^{33/16}.
+\end{gathered}
+\tag{VD1}
+\]">\[
+\begin{gathered}
+\Lambda=X^b,\quad \ell=X^{-20},\quad
+r=\Lambda^{3/4},\quad \sigma=\Lambda^{-15/16},\quad
+\mu=\Lambda^{5/4},\quad M_r=2r+1,\\
+\alpha=2\pi/L,\quad \varkappa=\alpha\Lambda,\quad
+\beta=\alpha N_\Lambda\Lambda^{1/16},\quad
+G=\beta r=\alpha N_\Lambda\Lambda^{13/16},\quad
+T=\beta r\mu=\alpha N_\Lambda\Lambda^{33/16}.
+\end{gathered}
+\tag{VD1}
+\]</span>
+<p>The amplitude prefactor
+<span class="math" data-tex="\(\delta=\lambda_1^{3\beta_{\rm reg}}X^{-2\beta_{\rm reg}b}\)">\(\delta=\lambda_1^{3\beta_{\rm reg}}X^{-2\beta_{\rm reg}b}\)</span>
+is retained in VC. Here use precisely its already proved consequences
+VC2–VC4:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|a_I\|_\infty\leq K_0X^5,\qquad
+\|D^j_{x,t}a_I\|_\infty\leq K_jX^{20j}\quad(j\geq1),\\
+\|a_I^2\|_\infty\leq K_0^2X^{10},\qquad
+\|D^j_{x,t}(a_I^2)\|_\infty\leq B_jX^{5+20j}\quad(j\geq1),\\
+\#\{I\text{ signed}\}\leq12C_IX,\qquad
+\#\{I\text{ positive}\}\leq6C_IX .
+\end{gathered}
+\tag{VD2}
+\]">\[
+\begin{gathered}
+\|a_I\|_\infty\leq K_0X^5,\qquad
+\|D^j_{x,t}a_I\|_\infty\leq K_jX^{20j}\quad(j\geq1),\\
+\|a_I^2\|_\infty\leq K_0^2X^{10},\qquad
+\|D^j_{x,t}(a_I^2)\|_\infty\leq B_jX^{5+20j}\quad(j\geq1),\\
+\#\{I\text{ signed}\}\leq12C_IX,\qquad
+\#\{I\text{ positive}\}\leq6C_IX .
+\end{gathered}
+\tag{VD2}
+\]</span>
+<p>All <span class="math" data-tex="\(K_j,B_j,C_I\)">\(K_j,B_j,C_I\)</span> have the explicit definitions in VC2–VC4.
+Let <span class="math" data-tex="\(c_{n,k}\)">\(c_{n,k}\)</span> denote exactly the finite derivative constants <span class="math" data-tex="\(C_{n,k}\)">\(C_{n,k}\)</span>
+in lesson 22, LD13–LD16. In particular <span class="math" data-tex="\(c_{0,0}=1\)">\(c_{0,0}=1\)</span>. Their full formula
+is</p>
+<span class="math math-display" data-tex="\[
+c_{n,k}=\sum_{\substack{\gamma_1,\gamma_2,\gamma_3\geq0\\|\gamma|=n}}
+\sqrt{\frac{n!}{\gamma_1!\gamma_2!\gamma_3!}}\,
+\mathcal B_{\gamma_1+k}\mathcal B_{\gamma_2}\mathcal B_{\gamma_3},
+\quad
+\mathcal B_0=1,\quad
+\mathcal B_j=\frac{(1+J_j)(2^{j+1}+1)}{\pi}\ (j\geq1).
+\tag{VD3}
+\]">\[
+c_{n,k}=\sum_{\substack{\gamma_1,\gamma_2,\gamma_3\geq0\\|\gamma|=n}}
+\sqrt{\frac{n!}{\gamma_1!\gamma_2!\gamma_3!}}\,
+\mathcal B_{\gamma_1+k}\mathcal B_{\gamma_2}\mathcal B_{\gamma_3},
+\quad
+\mathcal B_0=1,\quad
+\mathcal B_j=\frac{(1+J_j)(2^{j+1}+1)}{\pi}\ (j\geq1).
+\tag{VD3}
+\]</span>
+<p>Here <span class="math" data-tex="\(J_j\)">\(J_j\)</span> is the finite one-dimensional kernel integral explicitly
+constructed in LD5–LD11. The letter <span class="math" data-tex="\(\mathcal B_j\)">\(\mathcal B_j\)</span> denotes that
+derivative constant; it is distinct from the amplitude-square constant
+<span class="math" data-tex="\(B_j\)">\(B_j\)</span> in VD2.</p>
+<p>For <span class="math" data-tex="\(1&lt;p&lt;\infty\)">\(1&lt;p&lt;\infty\)</span>, put <span class="math" data-tex="\(e_p=3/2-3/p\)">\(e_p=3/2-3/p\)</span>, and retain the full original
+norm bound before taking a parameter-independent upper bound:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H_p&amp;=L^{3/p}
+\left[1+\frac{1-M_r^{1-p}}{p-1}\right]^{3/p}M_r^{e_p},\\
+h_p&amp;=L^{3/p}\left(\frac p{p-1}\right)^{3/p}
+\max\{2^{e_p},3^{e_p}\},\qquad H_p\leq h_pr^{e_p},\\
+\|D_x^n\partial_t^k\eta_I\|_p&amp;\leq c_{n,k}G^nT^kH_p .
+\end{aligned}
+\tag{VD4}
+\]">\[
+\begin{aligned}
+H_p&amp;=L^{3/p}
+\left[1+\frac{1-M_r^{1-p}}{p-1}\right]^{3/p}M_r^{e_p},\\
+h_p&amp;=L^{3/p}\left(\frac p{p-1}\right)^{3/p}
+\max\{2^{e_p},3^{e_p}\},\qquad H_p\leq h_pr^{e_p},\\
+\|D_x^n\partial_t^k\eta_I\|_p&amp;\leq c_{n,k}G^nT^kH_p .
+\end{aligned}
+\tag{VD4}
+\]</span>
+<p>The last line is the proved covering map and finite Fourier kernel
+estimate LD18–LD20. The middle line uses
+<span class="math" data-tex="\(2r\leq M_r\leq3r\)">\(2r\leq M_r\leq3r\)</span>, with both signs of <span class="math" data-tex="\(e_p\)">\(e_p\)</span> covered by the maximum.
+The finite-<span class="math" data-tex="\(r\)">\(r\)</span> numerator in the first line has not been removed from
+the definition of <span class="math" data-tex="\(H_p\)">\(H_p\)</span>.</p>
+<h2 id="vd2-expand-the-actual-finite-exponent-derivatives">VD2. Expand the actual finite-exponent derivatives</h2>
+<p>Use <span class="math" data-tex="\(\|v\|_{W^{1,p}}=\|v\|_p+\|D_xv\|_p\)">\(\|v\|_{W^{1,p}}=\|v\|_p+\|D_xv\|_p\)</span>, with the full ordered
+gradient norm. The actual fields are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+w^{(p)}&amp;=\sum_{I\text{ signed}}a_I\eta_IB_Ie^{i\varkappa\zeta_I\cdot x},\\
+w^{(c)}&amp;=\varkappa^{-1}\sum_{I\text{ signed}}
+\nabla(a_I\eta_I)\times B_Ie^{i\varkappa\zeta_I\cdot x},\\
+z&amp;=\mu^{-1}\sum_{I\text{ positive}}PP_0(a_I^2\eta_I^2\zeta_I).
+\end{aligned}
+\tag{VD5}
+\]">\[
+\begin{aligned}
+w^{(p)}&amp;=\sum_{I\text{ signed}}a_I\eta_IB_Ie^{i\varkappa\zeta_I\cdot x},\\
+w^{(c)}&amp;=\varkappa^{-1}\sum_{I\text{ signed}}
+\nabla(a_I\eta_I)\times B_Ie^{i\varkappa\zeta_I\cdot x},\\
+z&amp;=\mu^{-1}\sum_{I\text{ positive}}PP_0(a_I^2\eta_I^2\zeta_I).
+\end{aligned}
+\tag{VD5}
+\]</span>
+<p>The opposite labels share the real amplitude and intermittent factor.
+Every spatial or time derivative of those factors is real. For a real
+vector <span class="math" data-tex="\(v\)">\(v\)</span>, <span class="math" data-tex="\(|v\times B_I|\leq|v|\)">\(|v\times B_I|\leq|v|\)</span>, since
+<span class="math" data-tex="\(B_I=(A_I+iC_I)/\sqrt2\)">\(B_I=(A_I+iC_I)/\sqrt2\)</span>, with <span class="math" data-tex="\(A_I,C_I\)">\(A_I,C_I\)</span> orthonormal:
+the squared norm is
+<span class="math" data-tex="\((|v\times A_I|^2+|v\times C_I|^2)/2\leq|v|^2\)">\((|v\times A_I|^2+|v\times C_I|^2)/2\leq|v|^2\)</span>.
+The same inequality holds after summing all derivative-array entries.</p>
+<p>For an individual label abbreviate
+<span class="math" data-tex="\(a_0=K_0X^5\)">\(a_0=K_0X^5\)</span>, <span class="math" data-tex="\(a_1=K_1X^{20}\)">\(a_1=K_1X^{20}\)</span>, <span class="math" data-tex="\(a_2=K_2X^{40}\)">\(a_2=K_2X^{40}\)</span>.
+The entire product rule in VD5 and VD4 gives the following per-label
+bounds:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|a_I\eta_IB_Ie^{i\varkappa\zeta_I\cdot x}\|_{W^{1,p}}
+&amp;\leq H_p[a_0+a_1+a_0c_{1,0}G+\varkappa a_0],\\
+\|\varkappa^{-1}\nabla(a_I\eta_I)\times
+B_Ie^{i\varkappa\zeta_I\cdot x}\|_{W^{1,p}}
+&amp;\leq \varkappa^{-1}H_p[
+a_1+a_0c_{1,0}G+a_2+2a_1c_{1,0}G+a_0c_{2,0}G^2\\
+&amp;\hspace{43mm}+\varkappa a_1+\varkappa a_0c_{1,0}G],\\
+\|\mu^{-1}PP_0(a_I^2\eta_I^2\zeta_I)\|_{W^{1,p}}
+&amp;\leq\mu^{-1}\Pi_p H_{2p}^2[
+K_0^2X^{10}+B_1X^{25}+2K_0^2X^{10}c_{1,0}G],\\
+&amp;\qquad \Pi_p=2+C_p .
+\end{aligned}
+\tag{VD6}
+\]">\[
+\begin{aligned}
+\|a_I\eta_IB_Ie^{i\varkappa\zeta_I\cdot x}\|_{W^{1,p}}
+&amp;\leq H_p[a_0+a_1+a_0c_{1,0}G+\varkappa a_0],\\
+\|\varkappa^{-1}\nabla(a_I\eta_I)\times
+B_Ie^{i\varkappa\zeta_I\cdot x}\|_{W^{1,p}}
+&amp;\leq \varkappa^{-1}H_p[
+a_1+a_0c_{1,0}G+a_2+2a_1c_{1,0}G+a_0c_{2,0}G^2\\
+&amp;\hspace{43mm}+\varkappa a_1+\varkappa a_0c_{1,0}G],\\
+\|\mu^{-1}PP_0(a_I^2\eta_I^2\zeta_I)\|_{W^{1,p}}
+&amp;\leq\mu^{-1}\Pi_p H_{2p}^2[
+K_0^2X^{10}+B_1X^{25}+2K_0^2X^{10}c_{1,0}G],\\
+&amp;\qquad \Pi_p=2+C_p .
+\end{aligned}
+\tag{VD6}
+\]</span>
+<p>Here <span class="math" data-tex="\(C_p\)">\(C_p\)</span> is the actual constant PL17. PL18 is applied to the full
+spatial derivative array and commutes with the projection. Hölder uses
+the original <span class="math" data-tex="\(L^{2p}\)">\(L^{2p}\)</span> norms of both <span class="math" data-tex="\(\eta_I\)">\(\eta_I\)</span> and <span class="math" data-tex="\(\nabla\eta_I\)">\(\nabla\eta_I\)</span>.
+The three terms in the last bracket come respectively from the
+zeroth derivative, the derivative of <span class="math" data-tex="\(a_I^2\)">\(a_I^2\)</span>, and the two identical
+product-rule terms from <span class="math" data-tex="\(\nabla(\eta_I^2)\)">\(\nabla(\eta_I^2)\)</span>.
+In the middle bracket, its first two terms are the zeroth derivative;
+the next three differentiate <span class="math" data-tex="\(\nabla(a_I\eta_I)\)">\(\nabla(a_I\eta_I)\)</span>; the last two
+differentiate the physical carrier. Thus no derivative term is omitted.</p>
+<p>The carrier has no time dependence. The full time derivatives are
+bounded, per signed label, by</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\partial_t(a_I\eta_IB_Ie^{i\varkappa\zeta_I\cdot x})\|_p
+&amp;\leq H_p[a_1+a_0c_{0,1}T],\\
+\|\partial_t(\varkappa^{-1}\nabla(a_I\eta_I)\times
+B_Ie^{i\varkappa\zeta_I\cdot x})\|_p
+&amp;\leq\varkappa^{-1}H_p[
+a_2+a_1c_{0,1}T+a_1c_{1,0}G+a_0c_{1,1}GT].
+\end{aligned}
+\tag{VD7}
+\]">\[
+\begin{aligned}
+\|\partial_t(a_I\eta_IB_Ie^{i\varkappa\zeta_I\cdot x})\|_p
+&amp;\leq H_p[a_1+a_0c_{0,1}T],\\
+\|\partial_t(\varkappa^{-1}\nabla(a_I\eta_I)\times
+B_Ie^{i\varkappa\zeta_I\cdot x})\|_p
+&amp;\leq\varkappa^{-1}H_p[
+a_2+a_1c_{0,1}T+a_1c_{1,0}G+a_0c_{1,1}GT].
+\end{aligned}
+\tag{VD7}
+\]</span>
+<p>The four terms in the second line differentiate the two original
+factors and the original gradient in every possible way.</p>
+<h2 id="vd3-receive-every-term-in-the-source-scales">VD3. Receive every term in the source scales</h2>
+<p>To give fully specified constants, define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D_{p}^{(p)}&amp;=12C_Ih_p
+[K_0+K_1+\alpha N_\Lambda c_{1,0}K_0+\alpha K_0],\\
+D_{p}^{(c)}&amp;=\frac{12C_Ih_p}{\alpha}
+[K_1+\alpha N_\Lambda c_{1,0}K_0+K_2
++2\alpha N_\Lambda c_{1,0}K_1\\
+&amp;\hspace{30mm}+(\alpha N_\Lambda)^2c_{2,0}K_0
++\alpha K_1+\alpha^2N_\Lambda c_{1,0}K_0],\\
+D_p^{(z)}&amp;=6C_I\Pi_ph_{2p}^2
+[K_0^2+B_1+2\alpha N_\Lambda c_{1,0}K_0^2],\\
+E_p^{(p)}&amp;=12C_Ih_p[K_1+\alpha N_\Lambda c_{0,1}K_0],\\
+E_p^{(c)}&amp;=\frac{12C_Ih_p}{\alpha}
+[K_2+\alpha N_\Lambda(c_{0,1}+c_{1,0})K_1
++(\alpha N_\Lambda)^2c_{1,1}K_0].
+\end{aligned}
+\tag{VD8}
+\]">\[
+\begin{aligned}
+D_{p}^{(p)}&amp;=12C_Ih_p
+[K_0+K_1+\alpha N_\Lambda c_{1,0}K_0+\alpha K_0],\\
+D_{p}^{(c)}&amp;=\frac{12C_Ih_p}{\alpha}
+[K_1+\alpha N_\Lambda c_{1,0}K_0+K_2
++2\alpha N_\Lambda c_{1,0}K_1\\
+&amp;\hspace{30mm}+(\alpha N_\Lambda)^2c_{2,0}K_0
++\alpha K_1+\alpha^2N_\Lambda c_{1,0}K_0],\\
+D_p^{(z)}&amp;=6C_I\Pi_ph_{2p}^2
+[K_0^2+B_1+2\alpha N_\Lambda c_{1,0}K_0^2],\\
+E_p^{(p)}&amp;=12C_Ih_p[K_1+\alpha N_\Lambda c_{0,1}K_0],\\
+E_p^{(c)}&amp;=\frac{12C_Ih_p}{\alpha}
+[K_2+\alpha N_\Lambda(c_{0,1}+c_{1,0})K_1
++(\alpha N_\Lambda)^2c_{1,1}K_0].
+\end{aligned}
+\tag{VD8}
+\]</span>
+<p>They are finite and independent of <span class="math" data-tex="\(a,q\)">\(a,q\)</span>. To check the receiving
+powers without hiding a product, divide the four principal terms of
+VD6, after their label count, by <span class="math" data-tex="\(X^{40}\Lambda r^{e_p}\)">\(X^{40}\Lambda r^{e_p}\)</span>.
+After their displayed coefficients are removed the ratios are, in
+their original order,</p>
+<span class="math math-display" data-tex="\[
+X^{-34}\Lambda^{-1},\quad X^{-19}\Lambda^{-1},\quad
+X^{-34}\Lambda^{-3/16},\quad X^{-34}.
+\]">\[
+X^{-34}\Lambda^{-1},\quad X^{-19}\Lambda^{-1},\quad
+X^{-34}\Lambda^{-3/16},\quad X^{-34}.
+\]</span>
+<p>For the seven curl terms, in order, they are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+X^{-19}\Lambda^{-2},\quad X^{-34}\Lambda^{-19/16},\quad
+X\Lambda^{-2},\quad X^{-14}\Lambda^{-19/16},\\
+X^{-34}\Lambda^{-3/8},\quad X^{-19}\Lambda^{-1},\quad
+X^{-34}\Lambda^{-3/16}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+X^{-19}\Lambda^{-2},\quad X^{-34}\Lambda^{-19/16},\quad
+X\Lambda^{-2},\quad X^{-14}\Lambda^{-19/16},\\
+X^{-34}\Lambda^{-3/8},\quad X^{-19}\Lambda^{-1},\quad
+X^{-34}\Lambda^{-3/16}.
+\end{gathered}
+\]</span>
+<p>For the three temporal terms,
+<span class="math" data-tex="\(H_{2p}^2/r^{e_p}\leq h_{2p}^2r^{3/2}\)">\(H_{2p}^2/r^{e_p}\leq h_{2p}^2r^{3/2}\)</span>. Thus the full ratios are</p>
+<span class="math math-display" data-tex="\[
+X^{-29}\Lambda^{-9/8},\quad
+X^{-14}\Lambda^{-9/8},\quad
+X^{-29}\Lambda^{-5/16}.
+\]">\[
+X^{-29}\Lambda^{-9/8},\quad
+X^{-14}\Lambda^{-9/8},\quad
+X^{-29}\Lambda^{-5/16}.
+\]</span>
+<p>For VD7 divide by <span class="math" data-tex="\(X^{40}\Lambda^{33/16}r^{e_p}\)">\(X^{40}\Lambda^{33/16}r^{e_p}\)</span>.
+The principal ratios are <span class="math" data-tex="\(X^{-19}\Lambda^{-33/16},X^{-34}\)">\(X^{-19}\Lambda^{-33/16},X^{-34}\)</span>;
+the curl ratios are</p>
+<span class="math math-display" data-tex="\[
+X\Lambda^{-49/16},\quad X^{-19}\Lambda^{-1},\quad
+X^{-19}\Lambda^{-9/4},\quad X^{-34}\Lambda^{-3/16}.
+\]">\[
+X\Lambda^{-49/16},\quad X^{-19}\Lambda^{-1},\quad
+X^{-19}\Lambda^{-9/4},\quad X^{-34}\Lambda^{-3/16}.
+\]</span>
+<p>Since <span class="math" data-tex="\(X\geq2\)">\(X\geq2\)</span>, <span class="math" data-tex="\(\Lambda=X^b\)">\(\Lambda=X^b\)</span> and <span class="math" data-tex="\(b\geq512\)">\(b\geq512\)</span>, every one of these
+ratios is at most one. Multiplying back their complete coefficients
+in VD8 proves</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|w^{(p)}+w^{(c)}+z\|_{W^{1,p}}
+&amp;\leq(D_p^{(p)}+D_p^{(c)}+D_p^{(z)})
+\ell^{-2}\Lambda r^{3/2-3/p},\\
+\|\partial_tw^{(p)}\|_p+\|\partial_tw^{(c)}\|_p
+&amp;\leq(E_p^{(p)}+E_p^{(c)})
+\ell^{-2}\Lambda\sigma\mu r^{5/2-3/p}.
+\end{aligned}
+\tag{VD9}
+\]">\[
+\begin{aligned}
+\|w^{(p)}+w^{(c)}+z\|_{W^{1,p}}
+&amp;\leq(D_p^{(p)}+D_p^{(c)}+D_p^{(z)})
+\ell^{-2}\Lambda r^{3/2-3/p},\\
+\|\partial_tw^{(p)}\|_p+\|\partial_tw^{(c)}\|_p
+&amp;\leq(E_p^{(p)}+E_p^{(c)})
+\ell^{-2}\Lambda\sigma\mu r^{5/2-3/p}.
+\end{aligned}
+\tag{VD9}
+\]</span>
+<p>The second original scale is exactly
+<span class="math" data-tex="\(X^{40}\Lambda^{33/16}r^{e_p}\)">\(X^{40}\Lambda^{33/16}r^{e_p}\)</span>, by VD1. These are the full
+finite-exponent estimates in the source, with the original periods,
+all derivative terms and the actual temporal projection accounted for.</p>
+<h2 id="vd4-supremum-derivatives-from-the-original-finite-fourier-sums">VD4. Supremum derivatives from the original finite Fourier sums</h2>
+<p>Let <span class="math" data-tex="\(D^N=D_{x,t}^N\)">\(D^N=D_{x,t}^N\)</span> denote the full ordered tensor of derivatives in
+the four original coordinates. For the positive frame
+<span class="math" data-tex="\((\zeta,A,C)\)">\((\zeta,A,C)\)</span>, a term of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> with <span class="math" data-tex="\(J=(j,k,l)\in\{-r,\ldots,r\}^3\)">\(J=(j,k,l)\in\{-r,\ldots,r\}^3\)</span>
+has four-frequency</p>
+<span class="math math-display" data-tex="\[
+\Omega_J=(\beta(j\zeta+kA+lC),\beta\mu j),\qquad
+|\Omega_J|^2=\beta^2(j^2+k^2+l^2+\mu^2j^2).
+\tag{VD10}
+\]">\[
+\Omega_J=(\beta(j\zeta+kA+lC),\beta\mu j),\qquad
+|\Omega_J|^2=\beta^2(j^2+k^2+l^2+\mu^2j^2).
+\tag{VD10}
+\]</span>
+<p>Every coefficient is <span class="math" data-tex="\(M_r^{-3/2}\)">\(M_r^{-3/2}\)</span>. Thus the triangle inequality
+for the entire derivative tensor gives the exact finite-sum bounds</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|D^N\eta\|_\infty
+&amp;\leq M_r^{-3/2}\sum_J|\Omega_J|^N
+\leq M_r^{3/2}(2T)^N,\\
+\|D^N(\eta B_\zeta e^{i\varkappa\zeta\cdot x})\|_\infty
+&amp;\leq M_r^{-3/2}\sum_J|(\varkappa\zeta,0)+\Omega_J|^N
+\leq M_r^{3/2}d_0^N\Lambda^{33N/16},\\
+\|D^N((\nabla\eta\times B_\zeta)e^{i\varkappa\zeta\cdot x})\|_\infty
+&amp;\leq\sqrt3\,G M_r^{3/2}d_0^N\Lambda^{33N/16},
+\qquad d_0=\alpha(1+2N_\Lambda).
+\end{aligned}
+\tag{VD11}
+\]">\[
+\begin{aligned}
+\|D^N\eta\|_\infty
+&amp;\leq M_r^{-3/2}\sum_J|\Omega_J|^N
+\leq M_r^{3/2}(2T)^N,\\
+\|D^N(\eta B_\zeta e^{i\varkappa\zeta\cdot x})\|_\infty
+&amp;\leq M_r^{-3/2}\sum_J|(\varkappa\zeta,0)+\Omega_J|^N
+\leq M_r^{3/2}d_0^N\Lambda^{33N/16},\\
+\|D^N((\nabla\eta\times B_\zeta)e^{i\varkappa\zeta\cdot x})\|_\infty
+&amp;\leq\sqrt3\,G M_r^{3/2}d_0^N\Lambda^{33N/16},
+\qquad d_0=\alpha(1+2N_\Lambda).
+\end{aligned}
+\tag{VD11}
+\]</span>
+<p>Here <span class="math" data-tex="\(|\Omega_J|\leq\beta r\sqrt{3+\mu^2}\leq2T\)">\(|\Omega_J|\leq\beta r\sqrt{3+\mu^2}\leq2T\)</span>, since <span class="math" data-tex="\(\mu\geq1\)">\(\mu\geq1\)</span>.
+The spatial coefficient of <span class="math" data-tex="\(\nabla\eta\)">\(\nabla\eta\)</span> has norm at most <span class="math" data-tex="\(\sqrt3 G\)">\(\sqrt3 G\)</span>.
+The carrier adds its original <span class="math" data-tex="\(\varkappa\)">\(\varkappa\)</span>, and
+<span class="math" data-tex="\(\varkappa+2T\leq d_0\Lambda^{33/16}\)">\(\varkappa+2T\leq d_0\Lambda^{33/16}\)</span>.
+Negative labels have the same norms. The equalities for the frequencies
+in VD10 and the finite sums in VD11 precede all upper bounds.</p>
+<p>Set</p>
+<span class="math math-display" data-tex="\[
+P_N=\sum_{j=0}^N\binom NjK_jd_0^{N-j},\qquad
+F_N=\sum_{j=0}^N\binom NjK_{j+1}d_0^{N-j}.
+\tag{VD12}
+\]">\[
+P_N=\sum_{j=0}^N\binom NjK_jd_0^{N-j},\qquad
+F_N=\sum_{j=0}^N\binom NjK_{j+1}d_0^{N-j}.
+\tag{VD12}
+\]</span>
+<p>For this section these are the polynomials evaluated at the displayed
+physical constant <span class="math" data-tex="\(d_0\)">\(d_0\)</span>, distinct from the earlier amplitude
+polynomials of AB. The full product rule, VD2 and VD11 imply</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|D^Nw^{(p)}\|_\infty
+&amp;\leq12\,3^{3/2}C_IP_N X^6\Lambda^{9/8+33N/16},\\
+\|D^Nw^{(c)}\|_\infty
+&amp;\leq12\,3^{3/2}C_I
+\left[\frac{F_N}{\alpha}X^{21}\Lambda^{1/8+33N/16}
++\sqrt3N_\Lambda P_NX^6\Lambda^{15/16+33N/16}\right].
+\end{aligned}
+\tag{VD13}
+\]">\[
+\begin{aligned}
+\|D^Nw^{(p)}\|_\infty
+&amp;\leq12\,3^{3/2}C_IP_N X^6\Lambda^{9/8+33N/16},\\
+\|D^Nw^{(c)}\|_\infty
+&amp;\leq12\,3^{3/2}C_I
+\left[\frac{F_N}{\alpha}X^{21}\Lambda^{1/8+33N/16}
++\sqrt3N_\Lambda P_NX^6\Lambda^{15/16+33N/16}\right].
+\end{aligned}
+\tag{VD13}
+\]</span>
+<p>For the first line use
+<span class="math" data-tex="\(\|D^ja\|_\infty\leq K_jX^5X^{20j}\)">\(\|D^ja\|_\infty\leq K_jX^5X^{20j}\)</span> for all <span class="math" data-tex="\(j\geq0\)">\(j\geq0\)</span>, then
+<span class="math" data-tex="\(X^{20j}\leq\Lambda^{33j/16}\)">\(X^{20j}\leq\Lambda^{33j/16}\)</span>. For the first curl term retain the
+stronger original <span class="math" data-tex="\(\|D^j\nabla a\|_\infty\leq K_{j+1}X^{20(j+1)}\)">\(\|D^j\nabla a\|_\infty\leq K_{j+1}X^{20(j+1)}\)</span>.
+For the second use the last line of VD11. Summing over all labels
+and using <span class="math" data-tex="\(M_r^{3/2}\leq3^{3/2}\Lambda^{9/8}\)">\(M_r^{3/2}\leq3^{3/2}\Lambda^{9/8}\)</span> gives exactly VD13.
+In particular the extra gradient in the curl term remains spatial;
+it has not been replaced by a larger time derivative.</p>
+<h2 id="vd5-the-actual-temporal-correction-in-the-supremum-norm">VD5. The actual temporal correction in the supremum norm</h2>
+<p>The square <span class="math" data-tex="\(\eta^2\)">\(\eta^2\)</span> has Fourier coefficients</p>
+<span class="math math-display" data-tex="\[
+M_r^{-3}(M_r-|j|)(M_r-|k|)(M_r-|l|),
+\quad |j|,|k|,|l|\leq M_r-1=2r .
+\tag{VD14}
+\]">\[
+M_r^{-3}(M_r-|j|)(M_r-|k|)(M_r-|l|),
+\quad |j|,|k|,|l|\leq M_r-1=2r .
+\tag{VD14}
+\]</span>
+<p>They are nonnegative and sum to <span class="math" data-tex="\(M_r^3\)">\(M_r^3\)</span>; their four-frequencies have
+the same formula VD10 on this enlarged index range. Each has length at
+most <span class="math" data-tex="\(4T\)">\(4T\)</span> and spatial length at most <span class="math" data-tex="\(2\sqrt3G\)">\(2\sqrt3G\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\widetilde B_0=K_0^2,\qquad \widetilde B_j=B_j\quad(j\geq1),\\
+Z_N=\sum_{j=0}^N\binom Nj\widetilde B_j(4\alpha N_\Lambda)^{N-j},
+\qquad
+Z&#x27;_N=\sum_{j=0}^N\binom Nj B_{j+1}(4\alpha N_\Lambda)^{N-j}.
+\end{gathered}
+\tag{VD15}
+\]">\[
+\begin{gathered}
+\widetilde B_0=K_0^2,\qquad \widetilde B_j=B_j\quad(j\geq1),\\
+Z_N=\sum_{j=0}^N\binom Nj\widetilde B_j(4\alpha N_\Lambda)^{N-j},
+\qquad
+Z&#x27;_N=\sum_{j=0}^N\binom Nj B_{j+1}(4\alpha N_\Lambda)^{N-j}.
+\end{gathered}
+\tag{VD15}
+\]</span>
+<p>For <span class="math" data-tex="\(f_I=a_I^2\eta_I^2\zeta_I\)">\(f_I=a_I^2\eta_I^2\zeta_I\)</span>, the original product rule now gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|D^Nf_I\|_\infty
+&amp;\leq M_r^3 X^{10}\Lambda^{33N/16}Z_N,\\
+\|D_xD^Nf_I\|_\infty
+&amp;\leq M_r^3\Lambda^{33N/16}
+[X^{25}Z&#x27;_N+2\sqrt3G X^{10}Z_N].
+\end{aligned}
+\tag{VD16}
+\]">\[
+\begin{aligned}
+\|D^Nf_I\|_\infty
+&amp;\leq M_r^3 X^{10}\Lambda^{33N/16}Z_N,\\
+\|D_xD^Nf_I\|_\infty
+&amp;\leq M_r^3\Lambda^{33N/16}
+[X^{25}Z&#x27;_N+2\sqrt3G X^{10}Z_N].
+\end{aligned}
+\tag{VD16}
+\]</span>
+<p>Indeed the extra derivative on <span class="math" data-tex="\(a_I^2\)">\(a_I^2\)</span> uses
+<span class="math" data-tex="\(B_{j+1}X^{5+20(j+1)}\)">\(B_{j+1}X^{5+20(j+1)}\)</span>, and the extra derivative on the Fourier
+square uses its stated spatial length. This accounts for both terms
+of the second line.</p>
+<p>Choose <span class="math" data-tex="\(J=\lceil\log_2\Lambda\rceil\)">\(J=\lceil\log_2\Lambda\rceil\)</span> in PL21. Then
+<span class="math" data-tex="\(R_J=\alpha2^J\geq\varkappa\)">\(R_J=\alpha2^J\geq\varkappa\)</span> and <span class="math" data-tex="\(J+1\leq2+\log_2\Lambda\)">\(J+1\leq2+\log_2\Lambda\)</span>.
+Apply PL21 to the full derivative array in VD16, sum the positive
+labels and retain <span class="math" data-tex="\(\mu^{-1}\)">\(\mu^{-1}\)</span>. With <span class="math" data-tex="\(C_{\mathrm k}=\pi^2A_0/4\)">\(C_{\mathrm k}=\pi^2A_0/4\)</span>,
+the result before any logarithmic upper bound is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|D^Nz\|_\infty\leq162C_I\Lambda^{1+33N/16}
+\bigg\{&amp;
+X^{11}Z_N\left[2+C_{\mathrm k}(2+\log_2\Lambda)
++2\sqrt3\pi A_0N_\Lambda\Lambda^{-3/16}\right]\\
+&amp;+\frac{\pi A_0}{\alpha}X^{26}\Lambda^{-1}Z&#x27;_N\bigg\}.
+\end{aligned}
+\tag{VD17}
+\]">\[
+\begin{aligned}
+\|D^Nz\|_\infty\leq162C_I\Lambda^{1+33N/16}
+\bigg\{&amp;
+X^{11}Z_N\left[2+C_{\mathrm k}(2+\log_2\Lambda)
++2\sqrt3\pi A_0N_\Lambda\Lambda^{-3/16}\right]\\
+&amp;+\frac{\pi A_0}{\alpha}X^{26}\Lambda^{-1}Z&#x27;_N\bigg\}.
+\end{aligned}
+\tag{VD17}
+\]</span>
+<p>The factor <span class="math" data-tex="\(162=6\cdot27\)">\(162=6\cdot27\)</span> comes from the original positive-label
+count and <span class="math" data-tex="\(M_r^3\leq27r^3\)">\(M_r^3\leq27r^3\)</span>. The leading <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is precisely
+<span class="math" data-tex="\(r^3/\mu=\Lambda^{9/4-5/4}\)">\(r^3/\mu=\Lambda^{9/4-5/4}\)</span>. In the gradient term, the division by
+the original <span class="math" data-tex="\(\varkappa\)">\(\varkappa\)</span> has been retained.</p>
+<p>For <span class="math" data-tex="\(s\geq1\)">\(s\geq1\)</span>, differentiation of <span class="math" data-tex="\(s^{-1/8}\log s\)">\(s^{-1/8}\log s\)</span> shows its maximum
+is <span class="math" data-tex="\(8/e\)">\(8/e\)</span>, attained at <span class="math" data-tex="\(s=e^8\)">\(s=e^8\)</span>. Therefore
+<span class="math" data-tex="\(\log_2\Lambda\leq8\Lambda^{1/8}/(e\log2)\)">\(\log_2\Lambda\leq8\Lambda^{1/8}/(e\log2)\)</span>.
+Put</p>
+<span class="math math-display" data-tex="\[
+D_Z=2+2C_{\mathrm k}+2\sqrt3\pi A_0N_\Lambda
++\frac{8C_{\mathrm k}}{e\log2}.
+\tag{VD18}
+\]">\[
+D_Z=2+2C_{\mathrm k}+2\sqrt3\pi A_0N_\Lambda
++\frac{8C_{\mathrm k}}{e\log2}.
+\tag{VD18}
+\]</span>
+<p>Since <span class="math" data-tex="\(\Lambda\geq1\)">\(\Lambda\geq1\)</span>, every term of VD17 is received in the explicit
+bound</p>
+<span class="math math-display" data-tex="\[
+\|D^Nz\|_\infty\leq162C_I\left[
+D_ZZ_NX^{11}\Lambda^{9/8+33N/16}
++\frac{\pi A_0}{\alpha}Z&#x27;_NX^{26}\Lambda^{33N/16}\right].
+\tag{VD19}
+\]">\[
+\|D^Nz\|_\infty\leq162C_I\left[
+D_ZZ_NX^{11}\Lambda^{9/8+33N/16}
++\frac{\pi A_0}{\alpha}Z&#x27;_NX^{26}\Lambda^{33N/16}\right].
+\tag{VD19}
+\]</span>
+<p>This uses the proved smooth-input estimate, with its additional spatial
+derivative and reciprocal physical frequency. It does not apply a
+nonexistent unrestricted supremum projection bound.</p>
+<h2 id="vd6-construct-the-base-threshold-for-the-full-source-derivative-bound">VD6. Construct the base threshold for the full source derivative bound</h2>
+<p>Use the full norm
+<span class="math" data-tex="\(\|v\|_{C^N_{x,t}}=\sum_{|\gamma|\leq N}\|\partial^\gamma_{x,t}v\|_\infty\)">\(\|v\|_{C^N_{x,t}}=\sum_{|\gamma|\leq N}\|\partial^\gamma_{x,t}v\|_\infty\)</span>.
+There are <span class="math" data-tex="\(n_j=\binom{j+3}{3}\)">\(n_j=\binom{j+3}{3}\)</span> multiindices of order <span class="math" data-tex="\(j\)">\(j\)</span> in four
+coordinates. Each component derivative is bounded by the full ordered
+tensor norm, so the sum of their suprema is bounded by <span class="math" data-tex="\(n_j\)">\(n_j\)</span> times
+that norm. No square root is applied to this number of suprema.</p>
+<p>For <span class="math" data-tex="\(N=0,1,2,3\)">\(N=0,1,2,3\)</span>, define five finite constants</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+U_{N,1}&amp;=12\,3^{3/2}C_I\sum_{j=0}^N n_jP_j,&amp;
+U_{N,2}&amp;=\frac{12\,3^{3/2}C_I}{\alpha}\sum_{j=0}^N n_jF_j,\\
+U_{N,3}&amp;=12\,3^{3/2}\sqrt3C_IN_\Lambda\sum_{j=0}^N n_jP_j,&amp;
+U_{N,4}&amp;=162C_ID_Z\sum_{j=0}^N n_jZ_j,\\
+U_{N,5}&amp;=\frac{162C_I\pi A_0}{\alpha}\sum_{j=0}^N n_jZ&#x27;_j .
+\end{aligned}
+\tag{VD20}
+\]">\[
+\begin{aligned}
+U_{N,1}&amp;=12\,3^{3/2}C_I\sum_{j=0}^N n_jP_j,&amp;
+U_{N,2}&amp;=\frac{12\,3^{3/2}C_I}{\alpha}\sum_{j=0}^N n_jF_j,\\
+U_{N,3}&amp;=12\,3^{3/2}\sqrt3C_IN_\Lambda\sum_{j=0}^N n_jP_j,&amp;
+U_{N,4}&amp;=162C_ID_Z\sum_{j=0}^N n_jZ_j,\\
+U_{N,5}&amp;=\frac{162C_I\pi A_0}{\alpha}\sum_{j=0}^N n_jZ&#x27;_j .
+\end{aligned}
+\tag{VD20}
+\]</span>
+<p>In each of VD13 and VD19 the frequency exponent increases with
+derivative order. Bounding its <span class="math" data-tex="\(j\leq N\)">\(j\leq N\)</span> value by its <span class="math" data-tex="\(N\)">\(N\)</span> value
+and summing proves</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{\|w^{(p)}+w^{(c)}+z\|_{C^N_{x,t}}}
+{\Lambda^{(3+5N)/2}}
+&amp;\leq\sum_{s=1}^5U_{N,s}X^{-d_{N,s}},\\
+d_{N,1}&amp;=b(3/8+7N/16)-6,&amp;
+d_{N,2}&amp;=b(11/8+7N/16)-21,\\
+d_{N,3}&amp;=b(9/16+7N/16)-6,&amp;
+d_{N,4}&amp;=b(3/8+7N/16)-11,\\
+d_{N,5}&amp;=b(3/2+7N/16)-26 .
+\end{aligned}
+\tag{VD21}
+\]">\[
+\begin{aligned}
+\frac{\|w^{(p)}+w^{(c)}+z\|_{C^N_{x,t}}}
+{\Lambda^{(3+5N)/2}}
+&amp;\leq\sum_{s=1}^5U_{N,s}X^{-d_{N,s}},\\
+d_{N,1}&amp;=b(3/8+7N/16)-6,&amp;
+d_{N,2}&amp;=b(11/8+7N/16)-21,\\
+d_{N,3}&amp;=b(9/16+7N/16)-6,&amp;
+d_{N,4}&amp;=b(3/8+7N/16)-11,\\
+d_{N,5}&amp;=b(3/2+7N/16)-26 .
+\end{aligned}
+\tag{VD21}
+\]</span>
+<p>All five numbers are positive: they increase with <span class="math" data-tex="\(N,b\)">\(N,b\)</span>, and at
+<span class="math" data-tex="\(N=0,b=512\)">\(N=0,b=512\)</span> they are respectively <span class="math" data-tex="\(186,683,282,181,742\)">\(186,683,282,181,742\)</span>.
+Retain every preceding threshold on the same integer base <span class="math" data-tex="\(a\)">\(a\)</span> and
+add the finite twenty requirements</p>
+<span class="math math-display" data-tex="\[
+a\geq(10U_{N,s})^{1/d_{N,s}},
+\qquad N\in\{0,1,2,3\},\quad s\in\{1,2,3,4,5\}.
+\tag{VD22}
+\]">\[
+a\geq(10U_{N,s})^{1/d_{N,s}},
+\qquad N\in\{0,1,2,3\},\quad s\in\{1,2,3,4,5\}.
+\tag{VD22}
+\]</span>
+<p>Round their full maximum upward to a multiple of <span class="math" data-tex="\(N_\Lambda\)">\(N_\Lambda\)</span>.
+Because <span class="math" data-tex="\(X=\lambda_q\geq a\)">\(X=\lambda_q\geq a\)</span>, each summand in VD21 is at most <span class="math" data-tex="\(1/10\)">\(1/10\)</span>,
+for every <span class="math" data-tex="\(q\geq0\)">\(q\geq0\)</span>. Thus their sum is at most <span class="math" data-tex="\(1/2\)">\(1/2\)</span>.</p>
+<p>For completeness also retain the original mollified old velocity.
+The source hypothesis <span class="math" data-tex="\(\|u_q\|_{C^1_{x,t}}\leq X^4\)">\(\|u_q\|_{C^1_{x,t}}\leq X^4\)</span> and the original
+kernel derivative constants <span class="math" data-tex="\(\mathfrak M_j\)">\(\mathfrak M_j\)</span> from SC24 give</p>
+<span class="math math-display" data-tex="\[
+\|u_\ell\|_\infty\leq X^4,\qquad
+\|D^ju_\ell\|_\infty\leq\mathfrak M_j\ell^{1-j}X^4
+\quad(j\geq1).
+\tag{VD23}
+\]">\[
+\|u_\ell\|_\infty\leq X^4,\qquad
+\|D^ju_\ell\|_\infty\leq\mathfrak M_j\ell^{1-j}X^4
+\quad(j\geq1).
+\tag{VD23}
+\]</span>
+<p>One derivative is put on the original <span class="math" data-tex="\(u_q\)">\(u_q\)</span>, and all remaining
+derivatives on the actual space-time kernel; its <span class="math" data-tex="\(L^1\)">\(L^1\)</span> tensor norm
+is <span class="math" data-tex="\(\mathfrak M_j\ell^{1-j}\)">\(\mathfrak M_j\ell^{1-j}\)</span>. Consequently, for these four orders,
+let</p>
+<span class="math math-display" data-tex="\[
+U_N^{\rm old}=1+\sum_{j=1}^N n_j\mathfrak M_j,\qquad
+d_N^{\rm old}=\frac{b(3+5N)}2-4-20\max\{N-1,0\}&gt;0.
+\tag{VD24}
+\]">\[
+U_N^{\rm old}=1+\sum_{j=1}^N n_j\mathfrak M_j,\qquad
+d_N^{\rm old}=\frac{b(3+5N)}2-4-20\max\{N-1,0\}&gt;0.
+\tag{VD24}
+\]</span>
+<p>The full old norm divided by <span class="math" data-tex="\(\Lambda^{(3+5N)/2}\)">\(\Lambda^{(3+5N)/2}\)</span> is at most
+<span class="math" data-tex="\(U_N^{\rm old}X^{-d_N^{\rm old}}\)">\(U_N^{\rm old}X^{-d_N^{\rm old}}\)</span>. Add the four finite thresholds
+<span class="math" data-tex="\(a\geq(2U_N^{\rm old})^{1/d_N^{\rm old}}\)">\(a\geq(2U_N^{\rm old})^{1/d_N^{\rm old}}\)</span> to the same maximum.
+The actual constructed velocities then satisfy</p>
+<span class="math math-display" data-tex="\[
+\|w\|_{C^N_{x,t}}\leq\frac12\Lambda^{(3+5N)/2},\qquad
+\|u_{q+1}\|_{C^N_{x,t}}\leq\Lambda^{(3+5N)/2},
+\quad u_{q+1}=u_\ell+w,\quad 0\leq N\leq3.
+\tag{VD25}
+\]">\[
+\|w\|_{C^N_{x,t}}\leq\frac12\Lambda^{(3+5N)/2},\qquad
+\|u_{q+1}\|_{C^N_{x,t}}\leq\Lambda^{(3+5N)/2},
+\quad u_{q+1}=u_\ell+w,\quad 0\leq N\leq3.
+\tag{VD25}
+\]</span>
+<p>The complete <span class="math" data-tex="\(C^1\)">\(C^1\)</span> induction follows at <span class="math" data-tex="\(N=1\)">\(N=1\)</span>, with precisely the
+source power <span class="math" data-tex="\(\Lambda^4\)">\(\Lambda^4\)</span>. Together, VC21, VD9 and VD25 establish all
+the original finite velocity estimates used at this stage. The
+original stress and energy induction, convergence and nonuniqueness
+theorem still require their own complete calculations.</p>
+<h2 id="the-actual-kernel-geometry-and-velocity-thresholds">The actual kernel geometry and velocity thresholds</h2>
+<p><img src="assets/NS-FLUID-25/original-principal-velocity-bound-BC418D5FAB126C11E20730B80DE40069026934D97F686BF4D210C3BBCF9EC55B.png" alt="All coefficients in the principal velocity bound" class="course-figure" width="2015" height="1705" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-principal-velocity-bound" data-asset-sha256="BC418D5FAB126C11E20730B80DE40069026934D97F686BF4D210C3BBCF9EC55B"></p>
+<p>VC1–VC10 prove every arrow in this diagram. Both oscillatory means,
+the original volume and the full parameter prefactor enter the
+principal bound. The <a href="assets/original-principal-velocity-bound.py">figure source</a>
+retains its exact formulas.</p>
+<p><img src="assets/NS-FLUID-25/original-periodic-projection-cancellation-99DBE58FFECE27015EC86F0092BEB8621B3207BB473C52E154023443B172D459.png" alt="The original periodic cancellation geometry" class="course-figure" width="2100" height="1050" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-periodic-projection-cancellation" data-asset-sha256="99DBE58FFECE27015EC86F0092BEB8621B3207BB473C52E154023443B172D459"></p>
+<p>This is a central slice of the three-dimensional cube and enlarged
+ball in PL14–PL15, with the stated original period and coordinates.
+The kernel difference uses the actual zero integral of the local
+remainder. PL7–PL16 prove the full bound; EX4–EX6 optimize its
+enlargement without changing the underlying operator.</p>
+<p><img src="assets/NS-FLUID-25/original-velocity-derivative-margins-C1D2C57F23931C9435785D856AB452FF487208DB5F2C5BE1121820EEEA677DFD.png" alt="Every positive exponent in the complete derivative estimate" class="course-figure" width="1800" height="1050" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-velocity-derivative-margins" data-asset-sha256="C1D2C57F23931C9435785D856AB452FF487208DB5F2C5BE1121820EEEA677DFD"></p>
+<p>The twenty entries are the exact values in VD21 at the source choice
+<span class="math" data-tex="\(b=512\)">\(b=512\)</span>. Each controls its complete coefficient <span class="math" data-tex="\(U_{N,s}\)">\(U_{N,s}\)</span>.
+VD22 constructs one finite original base that receives all five
+terms for all four derivative orders. The
+<a href="assets/original-projection-and-velocity.py">complete reproducible source</a>
+generates the cancellation slice and this exact table.</p>
+<p>Human comparison for all three figures: Buckmaster–Vicol,
+arXiv:1709.10033v4, original velocity proposition. The complete
+receiving proofs are given in this chapter.</p>
+<h2 id="five-solved-exercises">Five solved exercises</h2>
+<h3 id="exercise-1-the-exact-projection-of-an-original-fourier-field">Exercise 1. The exact projection of an original Fourier field</h3>
+<p><strong>Problem.</strong> On the original <span class="math" data-tex="\(\mathbb T_L^3\)">\(\mathbb T_L^3\)</span>, take
+<span class="math" data-tex="\(k=2\pi n/L\ne0\)">\(k=2\pi n/L\ne0\)</span>, <span class="math" data-tex="\(n\in\mathbb Z^3\)">\(n\in\mathbb Z^3\)</span>, and real vectors <span class="math" data-tex="\(c,v,w\)">\(c,v,w\)</span>.
+Compute <span class="math" data-tex="\(Q,P,PP_0\)">\(Q,P,PP_0\)</span> on
+<span class="math" data-tex="\(f(x)=c+v\cos(k\cdot x)+w\sin(k\cdot x)\)">\(f(x)=c+v\cos(k\cdot x)+w\sin(k\cdot x)\)</span>.
+Keep its constant mode and all physical <span class="math" data-tex="\(L^2\)">\(L^2\)</span> factors.</p>
+<p><strong>Solution.</strong> Define
+<span class="math" data-tex="\(v_\parallel=k(k\cdot v)/|k|^2\)">\(v_\parallel=k(k\cdot v)/|k|^2\)</span>,
+<span class="math" data-tex="\(w_\parallel=k(k\cdot w)/|k|^2\)">\(w_\parallel=k(k\cdot w)/|k|^2\)</span>,
+<span class="math" data-tex="\(v_\perp=v-v_\parallel\)">\(v_\perp=v-v_\parallel\)</span>, <span class="math" data-tex="\(w_\perp=w-w_\parallel\)">\(w_\perp=w-w_\parallel\)</span>.
+The original Fourier coefficients are <span class="math" data-tex="\(c\)">\(c\)</span> at zero,
+<span class="math" data-tex="\((v-iw)/2\)">\((v-iw)/2\)</span> at <span class="math" data-tex="\(k\)">\(k\)</span>, and <span class="math" data-tex="\((v+iw)/2\)">\((v+iw)/2\)</span> at <span class="math" data-tex="\(-k\)">\(-k\)</span>.
+Applying PL1–PL2 to each gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Qf&amp;=v_\parallel\cos(k\cdot x)+w_\parallel\sin(k\cdot x),\\
+Pf&amp;=c+v_\perp\cos(k\cdot x)+w_\perp\sin(k\cdot x),\\
+PP_0f&amp;=v_\perp\cos(k\cdot x)+w_\perp\sin(k\cdot x).
+\end{aligned}
+\tag{EX1}
+\]">\[
+\begin{aligned}
+Qf&amp;=v_\parallel\cos(k\cdot x)+w_\parallel\sin(k\cdot x),\\
+Pf&amp;=c+v_\perp\cos(k\cdot x)+w_\perp\sin(k\cdot x),\\
+PP_0f&amp;=v_\perp\cos(k\cdot x)+w_\perp\sin(k\cdot x).
+\end{aligned}
+\tag{EX1}
+\]</span>
+<p>Each nonconstant phase has zero mean. Its squared sine and cosine
+integrals are both <span class="math" data-tex="\(V/2\)">\(V/2\)</span>, and the mixed integral is zero, by integrating
+the corresponding nonzero lattice exponentials. Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|Qf\|_2^2&amp;=\frac V2(|v_\parallel|^2+|w_\parallel|^2),\\
+\|Pf\|_2^2&amp;=V|c|^2+\frac V2(|v_\perp|^2+|w_\perp|^2),\\
+\|PP_0f\|_2^2&amp;=\frac V2(|v_\perp|^2+|w_\perp|^2).
+\end{aligned}
+\tag{EX2}
+\]">\[
+\begin{aligned}
+\|Qf\|_2^2&amp;=\frac V2(|v_\parallel|^2+|w_\parallel|^2),\\
+\|Pf\|_2^2&amp;=V|c|^2+\frac V2(|v_\perp|^2+|w_\perp|^2),\\
+\|PP_0f\|_2^2&amp;=\frac V2(|v_\perp|^2+|w_\perp|^2).
+\end{aligned}
+\tag{EX2}
+\]</span>
+<p>At each frequency the parallel and perpendicular parts are orthogonal;
+the constant phase is orthogonal to both nonconstant phases. Thus
+<span class="math" data-tex="\(\|f\|_2^2=\|Qf\|_2^2+\|Pf\|_2^2\)">\(\|f\|_2^2=\|Qf\|_2^2+\|Pf\|_2^2\)</span>, with exactly the original
+volume factor. The mean removal costs exactly <span class="math" data-tex="\(V|c|^2\)">\(V|c|^2\)</span> in this
+orthogonal identity.</p>
+<p>The actual scalar whose gradient equals <span class="math" data-tex="\(Qf\)">\(Qf\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\Delta^{-1}\operatorname{div}f
+=\frac{k\cdot v}{|k|^2}\sin(k\cdot x)
+-\frac{k\cdot w}{|k|^2}\cos(k\cdot x).
+\tag{EX3}
+\]">\[
+\Delta^{-1}\operatorname{div}f
+=\frac{k\cdot v}{|k|^2}\sin(k\cdot x)
+-\frac{k\cdot w}{|k|^2}\cos(k\cdot x).
+\tag{EX3}
+\]</span>
+<p>Differentiation proves EX1 directly and checks both signs in PL2.</p>
+<h3 id="exercise-2-optimize-the-enlargement-in-the-weak-estimate">Exercise 2. Optimize the enlargement in the weak estimate</h3>
+<p><strong>Problem.</strong> In PL5, replace the ball radius <span class="math" data-tex="\(2\sqrt3\ell_B\)">\(2\sqrt3\ell_B\)</span> by
+<span class="math" data-tex="\(\gamma\ell_B\)">\(\gamma\ell_B\)</span>, where <span class="math" data-tex="\(\gamma&gt;\sqrt3/2\)">\(\gamma&gt;\sqrt3/2\)</span>. Derive the resulting
+complete weak constant, and prove which enlargement minimizes it.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(h=\sqrt3/2\)">\(h=\sqrt3/2\)</span>. Every point of <span class="math" data-tex="\(B\)">\(B\)</span> is within
+<span class="math" data-tex="\(h\ell_B\)">\(h\ell_B\)</span> of its center. Outside the enlarged ball, the segment
+in the cancellation argument has kernel distance at least
+<span class="math" data-tex="\((1-h/\gamma)r\)">\((1-h/\gamma)r\)</span>. The enlarged volume is at most
+<span class="math" data-tex="\((4\pi/3)\gamma^3|B|\)">\((4\pi/3)\gamma^3|B|\)</span>, including when it wraps around the torus.
+The same radial integral as in PL5 gives</p>
+<span class="math math-display" data-tex="\[
+B(\gamma)=4\pi H_1\frac h\gamma(1-h/\gamma)^{-4}
+=\frac{4\pi H_1h\gamma^3}{(\gamma-h)^4},
+\qquad
+A(\gamma)=\frac{4\pi}3\gamma^3+32+4B(\gamma).
+\tag{EX4}
+\]">\[
+B(\gamma)=4\pi H_1\frac h\gamma(1-h/\gamma)^{-4}
+=\frac{4\pi H_1h\gamma^3}{(\gamma-h)^4},
+\qquad
+A(\gamma)=\frac{4\pi}3\gamma^3+32+4B(\gamma).
+\tag{EX4}
+\]</span>
+<p>The factor four multiplying <span class="math" data-tex="\(B(\gamma)\)">\(B(\gamma)\)</span> retains both
+<span class="math" data-tex="\(\sum\|b_B\|_1\leq2\|f\|_1\)">\(\sum\|b_B\|_1\leq2\|f\|_1\)</span> and the threshold <span class="math" data-tex="\(t/2\)">\(t/2\)</span>.
+At <span class="math" data-tex="\(\gamma=4h=2\sqrt3\)">\(\gamma=4h=2\sqrt3\)</span>, this is precisely <span class="math" data-tex="\(A_{\mathrm w}\)">\(A_{\mathrm w}\)</span> in PL16.</p>
+<p>Here <span class="math" data-tex="\(H_1&gt;0\)">\(H_1&gt;0\)</span>. Indeed <span class="math" data-tex="\(F\)">\(F\)</span> in PL4 is nonzero. If its inverse transform
+had zero first derivative everywhere, it would be constant, and its
+decay would make it zero, contradicting Fourier inversion. Therefore
+PL5–PL6 imply <span class="math" data-tex="\(A_1&gt;0\)">\(A_1&gt;0\)</span>, and PL9 implies <span class="math" data-tex="\(H_1&gt;0\)">\(H_1&gt;0\)</span>.
+Direct differentiation of the full constant gives</p>
+<span class="math math-display" data-tex="\[
+A&#x27;(\gamma)=4\pi\gamma^2
+\left[1-\frac{4H_1h(\gamma+3h)}{(\gamma-h)^5}\right].
+\tag{EX5}
+\]">\[
+A&#x27;(\gamma)=4\pi\gamma^2
+\left[1-\frac{4H_1h(\gamma+3h)}{(\gamma-h)^5}\right].
+\tag{EX5}
+\]</span>
+<p>The function <span class="math" data-tex="\(F_h(\gamma)=(\gamma-h)^5/(\gamma+3h)\)">\(F_h(\gamma)=(\gamma-h)^5/(\gamma+3h)\)</span> increases strictly
+from zero to infinity on <span class="math" data-tex="\((h,\infty)\)">\((h,\infty)\)</span>, since</p>
+<span class="math math-display" data-tex="\[
+F_h&#x27;(\gamma)=
+\frac{4(\gamma+4h)(\gamma-h)^4}{(\gamma+3h)^2}&gt;0.
+\tag{EX6}
+\]">\[
+F_h&#x27;(\gamma)=
+\frac{4(\gamma+4h)(\gamma-h)^4}{(\gamma+3h)^2}&gt;0.
+\tag{EX6}
+\]</span>
+<p>There is therefore one and only one <span class="math" data-tex="\(\gamma_*&gt;h\)">\(\gamma_*&gt;h\)</span> satisfying
+<span class="math" data-tex="\((\gamma_*-h)^5=4H_1h(\gamma_*+3h)\)">\((\gamma_*-h)^5=4H_1h(\gamma_*+3h)\)</span>.
+EX5 is negative below it and positive above it. The exact minimum
+of this full bound is <span class="math" data-tex="\(A(\gamma_*)\)">\(A(\gamma_*)\)</span>. Substituting this constant for
+<span class="math" data-tex="\(A_{\mathrm w}\)">\(A_{\mathrm w}\)</span> in the already proved layer-cake argument gives the
+corresponding stronger PL17 constant. This optimizes the displayed
+estimate, without claiming that it is the sharp operator norm.</p>
+<h3 id="exercise-3-choose-the-best-dyadic-split-for-a-smooth-input">Exercise 3. Choose the best dyadic split for a smooth input</h3>
+<p><strong>Problem.</strong> For a nonzero <span class="math" data-tex="\(C^1\)">\(C^1\)</span> input <span class="math" data-tex="\(f\)">\(f\)</span>, minimize the upper bound
+for <span class="math" data-tex="\(Qf\)">\(Qf\)</span> in PL21 over all integers <span class="math" data-tex="\(J\geq0\)">\(J\geq0\)</span>.
+Include constant inputs and all cases of equality between choices.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(u=\|f\|_\infty&gt;0\)">\(u=\|f\|_\infty&gt;0\)</span>, <span class="math" data-tex="\(v=\|D_xf\|_\infty\)">\(v=\|D_xf\|_\infty\)</span>,
+<span class="math" data-tex="\(c=C_{\mathrm k}=\pi^2A_0/4&gt;0\)">\(c=C_{\mathrm k}=\pi^2A_0/4&gt;0\)</span>, and <span class="math" data-tex="\(d=\pi A_0\)">\(d=\pi A_0\)</span>.
+The bound is</p>
+<span class="math math-display" data-tex="\[
+F(J)=cu(J+1)+\frac{dv}{\alpha}2^{-J},\qquad
+q=\frac{dv}{\alpha cu}=\frac{4v}{\pi\alpha u},
+\quad
+F(J+1)-F(J)=cu(1-q2^{-J-1}).
+\tag{EX7}
+\]">\[
+F(J)=cu(J+1)+\frac{dv}{\alpha}2^{-J},\qquad
+q=\frac{dv}{\alpha cu}=\frac{4v}{\pi\alpha u},
+\quad
+F(J+1)-F(J)=cu(1-q2^{-J-1}).
+\tag{EX7}
+\]</span>
+<p>If <span class="math" data-tex="\(v=0\)">\(v=0\)</span>, the field is constant on the connected torus, so <span class="math" data-tex="\(Qf=0\)">\(Qf=0\)</span>
+exactly by PL2. The displayed positive upper bound itself is minimized
+at <span class="math" data-tex="\(J=0\)">\(J=0\)</span>. If <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>, the first nonnegative difference occurs at</p>
+<span class="math math-display" data-tex="\[
+J_*=\max\{0,\lceil\log_2q\rceil-1\}.
+\tag{EX8}
+\]">\[
+J_*=\max\{0,\lceil\log_2q\rceil-1\}.
+\tag{EX8}
+\]</span>
+<p>All earlier differences are negative and all later differences are
+nonnegative, proving the minimum. If <span class="math" data-tex="\(q=2^{J_*+1}\)">\(q=2^{J_*+1}\)</span>, the minimum is
+attained at exactly <span class="math" data-tex="\(J_*\)">\(J_*\)</span> and <span class="math" data-tex="\(J_*+1\)">\(J_*+1\)</span>; otherwise it is attained only
+at <span class="math" data-tex="\(J_*\)">\(J_*\)</span>. This includes the boundary value <span class="math" data-tex="\(q=2\)">\(q=2\)</span>. When <span class="math" data-tex="\(0&lt;q&lt;2\)">\(0&lt;q&lt;2\)</span>
+the unique minimizer is zero. A zero input has zero output and every
+choice gives zero. For <span class="math" data-tex="\(PP_0f\)">\(PP_0f\)</span>, PL21 adds the <span class="math" data-tex="\(J\)">\(J\)</span>-independent
+term <span class="math" data-tex="\(2u\)">\(2u\)</span>, so the same choices minimize that upper bound.
+The period remains in <span class="math" data-tex="\(\alpha=2\pi/L\)">\(\alpha=2\pi/L\)</span>.</p>
+<h3 id="exercise-4-the-exact-projected-fourth-moment-of-one-temporal-pair">Exercise 4. The exact projected fourth moment of one temporal pair</h3>
+<p><strong>Problem.</strong> Keep one original positive intermittent frame and a
+constant real amplitude <span class="math" data-tex="\(a=A\)">\(a=A\)</span>. Compute the exact squared <span class="math" data-tex="\(L^2\)">\(L^2\)</span>
+norm of <span class="math" data-tex="\(z_A=\mu^{-1}PP_0(A^2\eta^2\zeta)\)">\(z_A=\mu^{-1}PP_0(A^2\eta^2\zeta)\)</span>, and the exact squared
+norm of its spatial gradient. Retain the zero mode and all multiplicities.
+This is a calculation of one actual field, without asserting that a
+single pair realizes the whole stress decomposition.</p>
+<p><strong>Solution.</strong> For the integer triple <span class="math" data-tex="\(J=(j,k,l)\)">\(J=(j,k,l)\)</span> in VD14, write</p>
+<span class="math math-display" data-tex="\[
+W_J=(M_r-|j|)^2(M_r-|k|)^2(M_r-|l|)^2,\qquad
+s_J=j^2+k^2+l^2.
+\]">\[
+W_J=(M_r-|j|)^2(M_r-|k|)^2(M_r-|l|)^2,\qquad
+s_J=j^2+k^2+l^2.
+\]</span>
+<p>The physical nonzero frequency is
+<span class="math" data-tex="\(\beta(j\zeta+kA_{\rm frame}+lC_{\rm frame})\)">\(\beta(j\zeta+kA_{\rm frame}+lC_{\rm frame})\)</span>, where
+<span class="math" data-tex="\(A_{\rm frame}\)">\(A_{\rm frame}\)</span> is the frame vector and is distinct from the scalar
+amplitude <span class="math" data-tex="\(A\)">\(A\)</span>. The original frame map is injective.
+For <span class="math" data-tex="\(J\ne0\)">\(J\ne0\)</span>, the squared norm of the projection of <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> is
+<span class="math" data-tex="\((k^2+l^2)/s_J\)">\((k^2+l^2)/s_J\)</span>. The zero mode is removed by <span class="math" data-tex="\(P_0\)">\(P_0\)</span>, and its
+unprojected coefficient in <span class="math" data-tex="\(\eta^2\)">\(\eta^2\)</span> is exactly one. Parseval gives</p>
+<span class="math math-display" data-tex="\[
+\|z_A\|_2^2
+=\frac{VA^4}{\mu^2M_r^6}
+\sum_{J\ne0}W_J\frac{k^2+l^2}{s_J}
+=\frac{2VA^4}{3\mu^2}(Q_r^2-1),
+\qquad Q_r^2=\left(\frac{2M_r^2+1}{3M_r}\right)^3.
+\tag{EX9}
+\]">\[
+\|z_A\|_2^2
+=\frac{VA^4}{\mu^2M_r^6}
+\sum_{J\ne0}W_J\frac{k^2+l^2}{s_J}
+=\frac{2VA^4}{3\mu^2}(Q_r^2-1),
+\qquad Q_r^2=\left(\frac{2M_r^2+1}{3M_r}\right)^3.
+\tag{EX9}
+\]</span>
+<p>To prove the second equality, symmetry under the three coordinate
+permutations makes the three sums with numerators <span class="math" data-tex="\(j^2,k^2,l^2\)">\(j^2,k^2,l^2\)</span>
+equal. Their sum is <span class="math" data-tex="\(\sum_{J\ne0}W_J\)">\(\sum_{J\ne0}W_J\)</span>. The numerator <span class="math" data-tex="\(k^2+l^2\)">\(k^2+l^2\)</span>
+therefore contributes exactly two thirds. The full sum divided by
+<span class="math" data-tex="\(M_r^6\)">\(M_r^6\)</span> is <span class="math" data-tex="\(Q_r^2\)">\(Q_r^2\)</span>, by VC13, and the removed zero term is one.
+No orthogonality between distinct frames has been used.</p>
+<p>For the gradient, multiply each term of the first sum by its original
+physical squared frequency <span class="math" data-tex="\(\beta^2s_J\)">\(\beta^2s_J\)</span>. This cancels only its
+displayed denominator. The exact one-dimensional sums are</p>
+<span class="math math-display" data-tex="\[
+\sum_{j=-(M_r-1)}^{M_r-1}(M_r-|j|)^2
+=\frac{M_r(2M_r^2+1)}3,\qquad
+\sum_jj^2(M_r-|j|)^2=\frac{M_r(M_r^4-1)}{15}.
+\tag{EX10}
+\]">\[
+\sum_{j=-(M_r-1)}^{M_r-1}(M_r-|j|)^2
+=\frac{M_r(2M_r^2+1)}3,\qquad
+\sum_jj^2(M_r-|j|)^2=\frac{M_r(M_r^4-1)}{15}.
+\tag{EX10}
+\]</span>
+<p>They follow by expanding <span class="math" data-tex="\(2\sum_{j=1}^{M_r-1}(M_r-j)^2\)">\(2\sum_{j=1}^{M_r-1}(M_r-j)^2\)</span> and
+<span class="math" data-tex="\(2\sum_{j=1}^{M_r-1}j^2(M_r-j)^2\)">\(2\sum_{j=1}^{M_r-1}j^2(M_r-j)^2\)</span>, retaining the zero term
+<span class="math" data-tex="\(M_r^2\)">\(M_r^2\)</span> in the first. Substituting the elementary power sums, or
+induction on <span class="math" data-tex="\(M_r\)">\(M_r\)</span> after taking consecutive differences, gives
+the displayed polynomials. Fubini in the two remaining indices yields</p>
+<span class="math math-display" data-tex="\[
+\|D_xz_A\|_2^2
+=\frac{2VA^4\beta^2}{135\mu^2M_r^3}
+(M_r^4-1)(2M_r^2+1)^2.
+\tag{EX11}
+\]">\[
+\|D_xz_A\|_2^2
+=\frac{2VA^4\beta^2}{135\mu^2M_r^3}
+(M_r^4-1)(2M_r^2+1)^2.
+\tag{EX11}
+\]</span>
+<p>Thus the actual projection and the removed mean improve the unprojected
+contraction estimate in a fully quantified case.</p>
+<h3 id="exercise-5-the-initial-amplitude-and-its-entire-numerical-tail">Exercise 5. The initial amplitude and its entire numerical tail</h3>
+<p><strong>Problem.</strong> For the source values <span class="math" data-tex="\(b=512\)">\(b=512\)</span>,
+<span class="math" data-tex="\(\beta_{\rm reg}=2^{-16}\)">\(\beta_{\rm reg}=2^{-16}\)</span>, retain
+<span class="math" data-tex="\(\lambda_q=a^{b^q}\)">\(\lambda_q=a^{b^q}\)</span> and
+<span class="math" data-tex="\(\delta_{q+1}=\lambda_1^{3\beta_{\rm reg}}
+\lambda_{q+1}^{-2\beta_{\rm reg}}\)">\(\delta_{q+1}=\lambda_1^{3\beta_{\rm reg}}
+\lambda_{q+1}^{-2\beta_{\rm reg}}\)</span>.
+Compute the initial value, each consecutive ratio, and an upper bound
+for the entire series of square roots. What happens to its tail as
+<span class="math" data-tex="\(a\)">\(a\)</span> grows?</p>
+<p><strong>Solution.</strong> With <span class="math" data-tex="\(\theta=\beta_{\rm reg}&gt;0\)">\(\theta=\beta_{\rm reg}&gt;0\)</span>, the full formulas are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\delta_{q+1}&amp;=a^{\theta(3b-2b^{q+1})},&amp;
+\sqrt{\delta_1}&amp;=a^{\theta b/2}=a^{1/256},\\
+\frac{\sqrt{\delta_{q+2}}}{\sqrt{\delta_{q+1}}}
+&amp;=a^{-\theta b^{q+1}(b-1)}
+\leq R:=a^{-\theta b(b-1)}=a^{-511/128}&lt;1 .
+\end{aligned}
+\tag{EX12}
+\]">\[
+\begin{aligned}
+\delta_{q+1}&amp;=a^{\theta(3b-2b^{q+1})},&amp;
+\sqrt{\delta_1}&amp;=a^{\theta b/2}=a^{1/256},\\
+\frac{\sqrt{\delta_{q+2}}}{\sqrt{\delta_{q+1}}}
+&amp;=a^{-\theta b^{q+1}(b-1)}
+\leq R:=a^{-\theta b(b-1)}=a^{-511/128}&lt;1 .
+\end{aligned}
+\tag{EX12}
+\]</span>
+<p>In particular <span class="math" data-tex="\(\delta_1=a^{1/128}&gt;1\)">\(\delta_1=a^{1/128}&gt;1\)</span>. The original prefactor therefore
+prevents a uniform assertion <span class="math" data-tex="\(\delta_{q+1}\leq1\)">\(\delta_{q+1}\leq1\)</span> starting at <span class="math" data-tex="\(q=0\)">\(q=0\)</span>.
+The exact ratio proves the convergent numerical-series bounds</p>
+<span class="math math-display" data-tex="\[
+\sum_{q=0}^\infty\sqrt{\delta_{q+1}}
+\leq\frac{a^{1/256}}{1-a^{-511/128}},\qquad
+\sum_{q=1}^\infty\sqrt{\delta_{q+1}}
+\leq\frac{a^{-1021/256}}{1-a^{-511/128}}.
+\tag{EX13}
+\]">\[
+\sum_{q=0}^\infty\sqrt{\delta_{q+1}}
+\leq\frac{a^{1/256}}{1-a^{-511/128}},\qquad
+\sum_{q=1}^\infty\sqrt{\delta_{q+1}}
+\leq\frac{a^{-1021/256}}{1-a^{-511/128}}.
+\tag{EX13}
+\]</span>
+<p>For the tail, use its actual first term
+<span class="math" data-tex="\(\sqrt{\delta_2}=a^{1/256}R=a^{-1021/256}\)">\(\sqrt{\delta_2}=a^{1/256}R=a^{-1021/256}\)</span>, and the same bound
+on each subsequent ratio. This tail tends to zero as <span class="math" data-tex="\(a\to\infty\)">\(a\to\infty\)</span>,
+although the first term tends to infinity. These are statements about
+the fully specified numerical sequence. Constructing a sequence of
+solutions realizing the entire iteration still requires the stress
+and energy induction; the calculation does not assume those steps.</p>
+<h2 id="the-next-equations-in-the-construction">The next equations in the construction</h2>
+<p>VC21 gives the full square-norm increment. VD9 gives the original
+spatial and time bounds, and VD25 proves the full velocity induction
+through three derivatives. The original stress and physical energy
+must now be estimated using every term of lesson 23 and the energy
+identity of lesson 24. Those estimates must precede the convergence
+and nonuniqueness argument.</p>
+<p>The separate Albritton–Brué–Colombo, Alpöge–Buckmaster, OpenAI and
+workbench constructions retain their original equations, domains,
+force and regularity requirements.</p>
+</article><nav aria-label="Lesson sequence"><a href="NS-FLUID-24.html">Previous lesson</a><a href="NS-FLUID-26.html">Next lesson</a></nav></main><footer>Mathematical text: CC0 1.0. Cited works and reader software retain their respective terms.</footer></body></html>

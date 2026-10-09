@@ -8,7 +8,7 @@ The same boundary distinction has several consequences. It controls which sheave
 
 Except in the explicitly field-valued failure example and differential-form calculation, $k$ is a commutative unital ring of finite global dimension. Categories are $D^+(k_X)$ unless a bounded complex is specified. All locally compact spaces are Hausdorff. Manifolds have finite dimension, are countable at infinity, and have no boundary unless the text explicitly uses a compact manifold as a closed subset of its double. The orientation complex is $\omega_X=o_X[\dim X]$. Every tensor product and internal Hom is derived.
 
-The operations, comparisons and support conventions are those of [exceptional operations](../../sheaf-proof-readings/SH02-exceptional-operations.html), especially SH02-EX-ADJOINT, SH02-EX-COMPOSITION, SH02-EX-BASECHANGE and SH02-EX-INTERNAL. Ordinary direct image remains $Rf_*$, whereas integration along a nonproper map is $Rf_!$. We use localization, proper-support base change, and the bounded-below projection formula at their stated finite-dimensional map bounds. The orientation and normalized trace are SH02-MD-SUBMERSION and SH02-MD-TRACE in [manifold duality](../../sheaf-proof-readings/SH02-manifold-duality.html). The finite-dimensional kernel formalism is SH02-KER-004 through SH02-KER-008 in [kernel calculus](../../sheaf-proof-readings/SH02-kernel-calculus.html).
+The operations, comparisons and support conventions are those of [exceptional operations](../../sheaf-proof-readings/SH02-exceptional-operations.html), especially SH02-EX-ADJOINT, SH02-EX-COMPOSITION, SH02-EX-BASECHANGE and SH02-EX-INTERNAL. Ordinary direct image remains $Rf_*$, whereas integration along a nonproper map is $Rf_!$. We use localization, proper-support base change, and the bounded-below projection formula at their stated finite-dimensional map bounds. The orientation and normalized trace are SH02-MD-SUBMERSION and SH02-MD-TRACE in manifold duality. The finite-dimensional kernel formalism is SH02-KER-004 through SH02-KER-008 in kernel calculus.
 
 ### SH02-CTA-IMP-TRIANGULATION — Finite compatible triangulations
 
@@ -49,7 +49,7 @@ Finally, cellular cochains with a local system follow from the same finite simpl
 
 ### The differential-form inputs
 
-The smooth partition construction in [OF2](../ordinary-involutivity-floor.html#OF2) applies to the standing Hausdorff, countable-at-infinity manifolds. Its locally finite bump functions, divided by their positive locally finite sum, give a smooth partition subordinate to any open cover after refinement. The referenced partition component retains its attribution and licence as stated there.
+The smooth partition construction in OF2 applies to the standing Hausdorff, countable-at-infinity manifolds. Its locally finite bump functions, divided by their positive locally finite sum, give a smooth partition subordinate to any open cover after refinement. The referenced partition component retains its attribution and licence as stated there.
 
 For completeness, the local de Rham calculation is explicit. On a ball centered at zero, a smooth form of positive degree has the following radial homotopy, denoted CTA-DR1. Write \(v=(v_1,\ldots,v_{p-1})\) for the tuple of tangent vectors.
 
@@ -696,6 +696,6 @@ Here an orientation means one of the two generators of the integral orientation 
 
 ## SH02-CTA-ANTECEDENTS — Antecedents and further work
 
-The cone, incidence, residue, trace and support questions treated here come from the conic and Fourier–Sato theory of Kashiwara and Schapira; see M. Kashiwara and P. Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), Chapters 1–2. The residue discussion goes back to Birger Iversen. The course's [open prerequisite contracts](../../sheaf-proof-readings/SH02-open-prerequisites.html) state the Stacks project foundations actually used.
+The cone, incidence, residue, trace and support questions treated here come from the conic and Fourier–Sato theory of Kashiwara and Schapira; see M. Kashiwara and P. Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), Chapters 1–2. The residue discussion goes back to Birger Iversen. The course's open prerequisite contracts state the Stacks project foundations actually used.
 
 Three research directions follow from the calculations. One can seek geometric row-difference criteria for other compact incidence correspondences, retaining the evaluation map on the diagonal. One can study how the gluing class in a quadratic transform changes in a family whose null space jumps. One can classify support comparisons by the orientation-twisted fiber complex rather than a list of constant-coefficient Betti numbers. These are questions for further work, not additional theorems asserted here.

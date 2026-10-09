@@ -598,7 +598,7 @@ The kernel-minus-cokernel boundary convention therefore gives
              =-[p_e]=-1\ne0\quad\text{in }K_0(J).
  \tag{BC.8}
 \]
-This is the ordinary finite-matrix boundary, proved for general extensions in Lesson07, Lemma3.1a, equations (E.1) and (E.4), with its finite-matrix antecedent in [Lemma2.0a](KT-KK-07.html#2-the-even-scalar-fredholm-picture). To see the formula in this very extension, the matrix
+This is the ordinary finite-matrix boundary, proved for general extensions in Lesson07, Lemma3.1a, equations (E.1) and (E.4), with its finite-matrix antecedent in Lemma2.0a. To see the formula in this very extension, the matrix
 \[
  Z=\begin{pmatrix}v&1-vv^*\\1-v^*v&-v^*\end{pmatrix}
  \tag{BC.9}

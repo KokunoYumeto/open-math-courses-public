@@ -4,7 +4,7 @@
 
 A proper morphism can collapse a connected curve, identify several points, or carry a field extension in its constants. Its algebra of functions distinguishes these phenomena. Stein factorization puts the functions into a finite intermediate scheme; the remaining map has geometrically connected fibers. The theorem on formal functions explains why: a disconnected fiber would supply a compatible idempotent on every infinitesimal neighborhood, and hence an idempotent in a completed local ring.
 
-We use [formal functions](the-theorem-on-formal-functions.md), [proper coherent direct images](proper-morphisms-and-coherent-direct-images.md), and [flat base change](base-change-and-the-grothendieck-complex.md). Relative Spec, its universal property and affine reconstruction are proved in the existing earlier *Affine morphisms, relative Spec, and finite morphisms*, Theorem 1.1 and Corollary 2.2. The earlier *Discrete valuation rings, normal rings and Serre's criterion* supplies normal rings; the proper birational application is proved here. Connected means nonempty throughout. Unless stated otherwise, the base is locally Noetherian.
+We use [formal functions](the-theorem-on-formal-functions.md), proper coherent direct images, and [flat base change](base-change-and-the-grothendieck-complex.md). Relative Spec, its universal property and affine reconstruction are proved in the existing earlier *Affine morphisms, relative Spec, and finite morphisms*, Theorem 1.1 and Corollary 2.2. The earlier *Discrete valuation rings, normal rings and Serre's criterion* supplies normal rings; the proper birational application is proved here. Connected means nonempty throughout. Unless stated otherwise, the base is locally Noetherian.
 
 ## 1. Connected components as idempotents
 

@@ -4,9 +4,9 @@ A real Lagrangian tangent plane need not be a complex tangent plane. Complex fib
 
 Let \(X\) be a complex analytic manifold of complex dimension \(n\), Hausdorff and countable at infinity. Put \(P=T^*X\), with its holomorphic cotangent structure. The corresponding real manifolds have dimensions \(2n\) and \(4n\). All statements are local on components of fixed dimension. There are no sheaf coefficients or derived shifts in this geometric lesson.
 
-We give the tangent, boundary and rank arguments explicitly. The subanalytic uniformization input is supplied by the [dimension-controlled proper uniformization proof](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/subanalytic-sets-and-limiting-tangent-directions.md#dimension-controlled-proper-uniformization). The analytic removal theorem remains a separately stated geometry prerequisite. The source account below credits the classical geometric mechanism and distinguishes its conventions from ours.
+We give the tangent, boundary and rank arguments explicitly. The subanalytic uniformization input is supplied by the dimension-controlled proper uniformization proof. The pure-dimensional analytic removal step is proved below from subanalytic dimension calculus and elementary holomorphic analysis. The source account below credits the classical geometric mechanism and distinguishes its conventions from ours.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Pure-dimensional analytic-removal proof added by GPT-6 Astra (OpenAI), Ultra, 9 October 2026. New original text is public domain (CC0).*
 
 ## Real covectors associated to holomorphic covectors
 
@@ -191,7 +191,7 @@ S'\cap\overline{R\setminus Z}
 
 All sets and closures in this step are restricted to a small ambient neighborhood where \(Z\) is defined and closed. The intersection in (17) is closed in \(S'\), so it suffices to rule out an open patch contained in it.
 
-Suppose such a patch exists and shrink \(S'\) to that patch. Let \(C=\overline{R\setminus Z}\). It is closed and subanalytic, of pure real dimension \(2n\), with \(R\setminus Z\) open dense in \(C\). The [dimension-controlled proper uniformization theorem](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/subanalytic-sets-and-limiting-tangent-directions.md#dimension-controlled-proper-uniformization) supplies a proper real analytic map from a real analytic manifold of the same dimension onto \(C\). Its exact statement is [Bierstone–Milman, Theorem 0.1](https://www.numdam.org/article/PMIHES_1988__67__5_0.pdf#page=2). The internal proof applies to closed subanalytic subsets of finite-dimensional real analytic manifolds that are Hausdorff and countable at infinity, including the open cotangent chart used here. It retains the function-resolution and dimension-theory inputs stated in that proof.
+Suppose such a patch exists and shrink \(S'\) to that patch. Let \(C=\overline{R\setminus Z}\). It is closed and subanalytic, of pure real dimension \(2n\), with \(R\setminus Z\) open dense in \(C\). The dimension-controlled proper uniformization theorem supplies a proper real analytic map from a real analytic manifold of the same dimension onto \(C\). Its exact statement is [Bierstone–Milman, Theorem 0.1](https://www.numdam.org/article/PMIHES_1988__67__5_0.pdf#page=2). The internal proof applies to closed subanalytic subsets of finite-dimensional real analytic manifolds that are Hausdorff and countable at infinity, including the open cotangent chart used here. It retains the function-resolution and dimension-theory inputs stated in that proof.
 
 We may arrange a proper surjection
 
@@ -249,11 +249,265 @@ The proof is local at every possible boundary patch, so (22) holds after every o
 
 ## The exact analytic removal step
 
-We use the following analytic removal prerequisite: a relatively closed subanalytic subset of a complex manifold is complex analytic if, on every open restriction, the points where its germ is not a complex submanifold have real dimension at least two less than that restriction. An exact formulation is [Peterzil–Starchenko, author manuscript, Corollary 4.2, PDF 11](https://math.haifa.ac.il/kobi/analytic.pdf#page=11). For a pure complex regular locus this is the small-boundary removal theorem associated with Shiffman. The full removal proof remains a complex-geometry prerequisite.
+The analytic removal criterion says that a relatively closed subanalytic subset of a complex manifold is complex analytic if, on every open restriction, the points where its germ is not a complex submanifold have real dimension at least two less than that restriction. An exact formulation is [Peterzil–Starchenko, author manuscript, Corollary 4.2, PDF 11](https://math.haifa.ac.il/kobi/analytic.pdf#page=11). For a pure complex regular locus this is the small-boundary theorem associated with Shiffman. The proof in the next section establishes this pure-dimensional case by constructing local holomorphic equations; the exceptional subset may be subanalytic without being complex analytic.
 
-Apply it to \(A\). By (6) its nonempty local restrictions have pure real dimension \(2n\). Every real regular point is complex regular by (11), so the complex singular points lie in \(D\). Equation (22) gives the required local dimension bound. Therefore \(A\) is complex analytic in \(U\).
+Apply the pure-dimensional theorem proved below to \(A\). By (6) its nonempty local restrictions have pure real dimension \(2n\). Every real regular point is complex regular by (11), so the complex singular points lie in \(D\). Equation (22) gives the required local dimension bound. Therefore \(A\) is complex analytic in \(U\).
 
 We have proved the complete application theorem: a relatively closed, locally complex-conic involutive set with a relatively closed positive-conic subanalytic real-isotropic bound is complex analytic. Its regular locus is complex Lagrangian of complex dimension \(n\). The extension step does not assume that \(D\) is itself complex analytic. The empty set is analytic; when \(n=0\), the ambient manifold is discrete and the conclusion holds directly, with no boundary argument needed.
+
+## Proof of removal across a subanalytic exceptional set
+
+The small-boundary theorem is classically associated with Shiffman. [Peterzil–Starchenko, Theorem 4.1 and Corollary 4.2](https://math.haifa.ac.il/kobi/analytic.pdf#page=10) state the subanalytic criterion and explain that attribution. We now prove the pure-dimensional case used above, beginning with scalar holomorphic extension and constructing local equations for the entire closed set.
+
+### The statement and its lower inputs
+
+**Theorem.** Let \(A\) be a relatively closed subanalytic subset of a complex manifold \(V\). Suppose that \(E\subset A\) is relatively closed and subanalytic, that
+
+\[
+R=A\setminus E
+\]
+
+is a complex submanifold of pure complex dimension \(d\), and that \(A=\overline R\), with closure taken in \(V\). For \(d\geq1\), assume, locally at every point,
+
+\[
+\dim_{\mathbb R}E\leq 2d-2.
+\tag{AR1}
+\]
+
+For \(d=0\), assume \(E=\varnothing\). Then \(A\) is a complex analytic subset of \(V\). No analyticity of \(E\) is assumed in positive dimension. Disconnected regular parts and branching over \(E\) are allowed.
+
+For this statement a submanifold need not be closed in all of \(V\); it is embedded and locally closed. Since \(E\) and \(A\) are closed, \(R\) is open in \(A\), so its complex-manifold charts describe the entire set \(A\) near each of its points. The case \(d=0\) is immediate: \(A=R\) is locally a point. Stating this case separately avoids an ambiguity in conventions for the dimension of the empty set. The empty set is also immediate. Work henceforth with \(d\geq1\).
+
+The subanalytic inputs are these precise forms of the existing programme calculus:
+
+1. Local finite Boolean, closure and bounded-projection calculus; dimension is preserved by definable homeomorphisms, does not increase under definable maps, and satisfies \(\dim\overline S=\dim S\) and \(\dim(\overline S\setminus S)<\dim S\) for nonempty subanalytic \(S\).
+2. A subanalytic set is a countable locally finite union of embedded real analytic manifold pieces; their dimensions are at most its dimension. In a compact bounded chart there is a finite such partition.
+
+The local subanalytic calculus and compatible analytic partitions supply these set-theoretic facts. The [dimension and frontier proofs](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/analytic-finiteness-and-preparation/src/analytic-finiteness-for-preparation.md#dimension-fibrewise-closure-and-the-frontier) give the stated dimension inequalities.
+
+For holomorphic functions we use the coordinate power-series expansion, identity theorem, Cauchy formula and the continuously differentiable Cauchy–Riemann characterization. Their proofs are in *Holomorphic functions of several variables*, Theorem 1.2, Theorem 2.1, Proposition 2.2 and Theorem 2.3. Locally uniform limits are holomorphic by the Cauchy formula, as also proved there in Theorem 3.1. The extension argument uses elementary Euclidean integration and smooth compactly supported bumps; it proves the special convolution convergence it needs directly.
+
+Here is also a direct proof of the inverse/implicit theorem used below. After translating and multiplying by the inverse derivative, write a holomorphic map with invertible derivative as \(G(z)=z+h(z)\), with \(h(0)=0\) and \(Dh(0)=0\). On a sufficiently small closed complex ball of radius \(r\), \(\|Dh\|\leq1/2\). Integration along segments gives \(|h(z)-h(z')|\leq|z-z'|/2\). For \(|y|<r/4\), iterate \(z_{j+1}=y-h(z_j)\) from \(z_0=0\). This stays in the closed ball, and successive differences shrink by a factor at most \(1/2\); their geometric sum proves convergence and uniqueness of the fixed point in the complete closed ball. The iterates are holomorphic in \(y\), and the same geometric bound makes their convergence uniform on smaller target balls. The limit is holomorphic by the Cauchy formula and satisfies \(G(z(y))=y\). The inequality also gives injectivity of \(G\) on the ball. This is a holomorphic local inverse. Applying it to \((g,z_2,\ldots,z_d)\), after relabeling a nonzero partial derivative of \(g\), proves the complex implicit theorem for one equation. No analytic-set extension result enters these coordinate arguments.
+
+### Two elementary consequences of dimension
+
+Put \(q=2d\). Call a subset of \(\mathbb R^q\) *thin* in this proof if it is contained in a countable union of \(C^1\) images of open subsets of \(\mathbb R^s\), with \(s\leq q-2\). A zero-dimensional domain means a point. The image maps need not be embeddings or have constant rank.
+
+**Ball covers.** If \(F\) is thin, then \(\mathcal H^{q-1}(F)=0\). Indeed, exhaust every parameter domain by compact cubes on which the map is Lipschitz. Subdividing an \(s\)-cube into cubes of side \(h\) gives \(O(h^{-s})\) image sets of diameter \(O(h)\). The sum of their \((q-1)\)-st powers is \(O(h^{q-1-s})\), which tends to zero. Countable subadditivity proves the assertion. In particular \(F\) has Lebesgue measure zero. For every compact subset of \(F\), every \(\delta>0\), and every ambient open neighborhood, there is a finite open ball cover inside that neighborhood, of radii \(r_i<\delta\), with \(\sum_i r_i^{q-1}<\delta\). Obtain a countable Hausdorff cover first, enlarge its radii by an arbitrarily small factor to make it open, and take a finite subcover of the compact set.
+
+**Connected complements.** If \(D\subset\mathbb R^q\) is an open convex ball and \(F\subset D\) is thin, then \(D\setminus F\) is path connected. For \(a\notin F\), every endpoint \(c\) whose segment \([a,c]\) meets \(F\) belongs to
+
+\[
+\{a+t(y-a):y\in F,\ t\geq1\}.
+\tag{AR2}
+\]
+
+Each parameterized piece of this set is a countable union of \(C^1\) images of dimension at most \(q-1\), after subdividing \([1,\infty)\) into bounded intervals. The same cube argument makes it Lebesgue null in \(\mathbb R^q\). Given \(a,b\in D\setminus F\), choose \(c\in D\) outside the two null sets (AR2). Convexity keeps \([a,c]\cup[c,b]\) in \(D\), and the choice keeps it disjoint from \(F\).
+
+### Bounded holomorphic functions extend across a thin closed set
+
+**Lemma.** Let \(D\subset\mathbb C^d\) be open, let \(F\subset D\) be relatively closed and thin, and let \(f\) be locally bounded on \(D\), holomorphic on \(D\setminus F\). Here local boundedness means boundedness on the complement of \(F\) near each point of \(D\). Then \(f\) extends uniquely to a holomorphic function on \(D\).
+
+**Proof.** Work in a relatively compact open part where \(|f|\leq M\), and extend it by zero on \(F\). This gives a locally bounded measurable function \(u\). Fix a smooth compactly supported test function \(\varphi\), and choose a compact neighborhood \(K\) of its support in this open part. Cover \(F\cap K\) by balls as above, with doubled balls still in the open part. Choose smooth functions \(0\leq\chi_i\leq1\), equal to one on the covering balls, supported on their doubles, and satisfying
+
+\[
+\int |\nabla\chi_i|\leq C_q r_i^{q-1}.
+\]
+
+Set \(\chi=1-\prod_i(1-\chi_i)\). It is one near \(F\cap K\), and
+
+\[
+\int |\nabla\chi|\leq C_q\delta,
+\qquad
+\operatorname{vol}(\operatorname{supp}\chi)
+\leq C_q\sum_i r_i^q\leq C_q\delta^2.
+\tag{AR3}
+\]
+
+The test function \((1-\chi)\varphi\) has compact support in \(D\setminus F\). Integration by parts there, where \(f\) is holomorphic, gives for each coordinate \(j\)
+
+\[
+\int u\,\partial_{\bar z_j}\varphi
+=\int u\chi\,\partial_{\bar z_j}\varphi
++\int u\varphi\,\partial_{\bar z_j}\chi.
+\]
+
+The absolute value is bounded by
+
+\[
+C_qM\bigl(\delta^2\|\nabla\varphi\|_\infty
++\delta\|\varphi\|_\infty\bigr),
+\]
+
+so it is zero on letting \(\delta\) tend to zero. Thus every distributional derivative \(\partial_{\bar z_j}u\) vanishes.
+
+For completeness this distributional conclusion has a holomorphic representative without an additional removability theorem. Choose a nonnegative smooth function \(\rho\) supported in the unit ball with integral one and set \(\rho_\epsilon(x)=\epsilon^{-q}\rho(x/\epsilon)\). Such a function is obtained by normalizing \(\exp[-1/(1-|x|^2)]\) on the unit ball and extending it by zero. Convolve \(u\) with \(\rho_\epsilon\) on successively smaller interior domains. Differentiation of the smooth compactly supported kernel under the integral makes \(u_\epsilon\) smooth. Testing the already proved distributional Cauchy–Riemann identity against translates of that kernel shows that every \(\partial_{\bar z_j}u_\epsilon\) is zero. Thus \(u_\epsilon\) is holomorphic and bounded by \(M\).
+
+Here local \(L^1\) convergence can be checked without a general convolution theorem. On a fixed compact set, cover the compact exceptional trace in a slightly larger neighborhood by finitely many balls of arbitrarily small total volume. Outside their union the compact set stays a positive distance from \(F\), and \(u=f\) is uniformly continuous on a compact neighborhood there. Consequently \(u_\epsilon\to u\) uniformly on that part. On the union of the balls the integral of \(|u_\epsilon-u|\) is at most \(2M\) times their volume. First choose the volume small and then \(\epsilon\) small. This proves \(u_\epsilon\to u\) in local \(L^1\).
+
+On a compact set \(K_0\) inside a larger compact polydisc region \(K_1\), the iterated holomorphic mean inequality gives
+
+\[
+\sup_{K_0}|u_\epsilon-u_\eta|
+\leq C_{K_0,K_1}\|u_\epsilon-u_\eta\|_{L^1(K_1)}.
+\tag{AR4}
+\]
+
+To get this inequality, choose a common small polydisc around every point of \(K_0\), contained in \(K_1\), and apply the mean inequality in each complex variable; it follows from the Cauchy formula by averaging the radii. Hence the convolutions converge locally uniformly to a holomorphic function, by the same Cauchy formula. The limit represents \(u\), and agrees with \(f\) on \(D\setminus F\), since two continuous functions equal almost everywhere on that open set agree everywhere. Such local representatives agree on overlaps, because \(D\setminus F\) is dense, and therefore glue. Density also proves uniqueness. \(\square\)
+
+### A projection that is proper near the point to be filled
+
+Fix \(p\in A\), take a coordinate ball in \(\mathbb C^N\), and put \(p=0\). If \(N=d\), the set \(R\) is open in the ambient manifold. In a small convex ball \(D\) about \(p\), the set \(E\) is thin, so \(D\setminus E\) is connected. Its intersection with \(A\) is open because it is \(R\cap D\), closed because \(A\) is closed, and nonempty because \(R\) is dense in \(A\). It is therefore all of \(D\setminus E\), whose closure is \(D\); closedness then gives \(D\subset A\). We may assume \(N>d\), and write \(k=N-d\).
+
+By closure invariance of subanalytic dimension, \(\dim_{\mathbb R}A=2d\) in a sufficiently small neighborhood of \(0\). Consider the lifted punctured set
+
+\[
+T=\{(r,u):0<r<\epsilon,\ |u|=1,\ ru\in A\}.
+\]
+
+It is subanalytic and is definably homeomorphic to \(A\cap\{0<|x|<\epsilon\}\). The link of limiting secant directions
+
+\[
+L=\{u:(0,u)\in\overline T\}
+\tag{AR5}
+\]
+
+is compact and subanalytic. The strict-frontier inequality, applied to \(T\), gives
+
+\[
+\dim_{\mathbb R}L\leq 2d-1.
+\tag{AR6}
+\]
+
+We claim that a surjective complex-linear map \(P:\mathbb C^N\to\mathbb C^d\) can be chosen with \(\ker P\cap L=\varnothing\), and with rank \(d\) at some point of every connected component of \(R\) in the coordinate ball.
+
+First partition \(L\) into its finitely many smooth pieces. In the space of all complex \(d\)-by-\(N\) matrices, of real dimension \(2dN\), the incidence condition \(Pu=0\) imposes \(2d\) independent real linear equations for each nonzero \(u\). Over a piece of dimension \(s\), its solution incidence is a smooth vector bundle of dimension \(2dN-2d+s\leq2dN-1\). Its projection to matrix space is Lebesgue null: use countably many smooth coordinate patches and the elementary cube estimate above. Thus some matrices avoid \(L\). The avoiding set is open, because \(L\) is compact. Surjective matrices are dense, since an appropriate maximal minor is a nonzero polynomial.
+
+The complex manifold \(R\) has countably many connected components. Select a point \(x_\nu\) in each. For every fixed complex tangent plane \(T_{x_\nu}R\), the condition that \(P\) restrict to an isomorphism there is the complement of the zero set of a nonzero polynomial in the entries of \(P\). It is open dense. Countably many such conditions can be imposed inside the nonempty open set just obtained: choose a closed ball inside it, then nested positive-radius closed balls, the \(\nu\)-th contained in the \(\nu\)-th open dense set and the preceding ball's interior, with diameters tending to zero. Their common point satisfies every condition. This elementary nested-ball argument supplies the required \(P\).
+
+Avoidance of \(L\) yields constants \(c>0\) and \(\epsilon_0>0\) such that
+
+\[
+|Px|\geq c|x|\qquad
+(x\in A,\ 0<|x|<\epsilon_0).
+\tag{AR7}
+\]
+
+Otherwise, choosing successively smaller neighborhoods of zero, there would be a sequence \(x_\nu\in A\setminus\{0\}\) with \(x_\nu\to0\) and \(|Px_\nu|/|x_\nu|\to0\). A convergent subsequence of its unit directions would lie in \(L\cap\ker P\), a contradiction.
+
+Complete \(z=Px\) to complex linear coordinates \((z,w)\in\mathbb C^d\times\mathbb C^k\). Choose a small fibre ball \(B=\{|w|<r\}\) and then a sufficiently small base ball \(D\) about zero. Require that the closed cylinder lies inside the original coordinate ball and the region where (AR7) holds. Norm equivalence and (AR7) imply \(|w|\leq C|z|\) on \(A\) there. By taking the base radius less than \(r/(2C)\), arrange
+
+\[
+A\cap(D\times\partial B)=\varnothing.
+\tag{AR8}
+\]
+
+Replace \(A\) by its intersection with \(D\times B\). The projection
+
+\[
+\pi:A\longrightarrow D
+\tag{AR9}
+\]
+
+is proper. For a compact \(K\subset D\), its preimage is a closed subset of the compact cylinder \(K\times\overline B\), and (AR8) keeps every limiting point in \(B\). No discreteness of the exceptional fibres has been assumed.
+
+### The exceptional values and the finite holomorphic covering
+
+Let
+
+\[
+C=\{x\in R:\operatorname{rank}_{\mathbb C}d(\pi|_R)_x<d\},
+\qquad F=\pi(E\cup C),
+\tag{AR10}
+\]
+
+with all sets restricted to the cylinder. The set \(C\) is closed in \(R\), so \(E\cup C\) is closed in \(A\). Properness of (AR9) makes \(F\) closed in \(D\). Here is the needed size estimate, without presuming that \(F\) or \(E\) is complex analytic.
+
+By (AR1) and the analytic partition theorem, \(E\) is covered by countably many smooth parameterized pieces of real dimension at most \(2d-2\). On a connected complex coordinate patch in any connected component of \(R\), the holomorphic determinant of \(d\pi\) is not identically zero. Indeed, the exterior form \(d\pi_1\wedge\cdots\wedge d\pi_d\) is nonzero at the chosen point of that component; the identity theorem, along overlapping charts, forbids its vanishing on any open patch.
+
+The zero set of a nonzero holomorphic function \(g\) on a connected coordinate domain is covered by countably many smooth complex hypersurface patches. To see the asserted covering, take a zero \(x\). Some Taylor coefficient is nonzero by the identity theorem; let its least order be \(m\geq1\). Choose a multi-index \(\alpha\) of order \(m-1\) for which a first derivative of \(\partial^\alpha g\) is nonzero at \(x\). Then
+
+\[
+\partial^\alpha g(x)=0,
+\qquad d(\partial^\alpha g)_x\ne0.
+\]
+
+The complex implicit function theorem makes the zero set of \(\partial^\alpha g\) a smooth complex hypersurface near \(x\). For each of the countably many \(\alpha\), the noncritical part of this zero set has a countable chart cover. These patches cover all zeros of \(g\). The patches need not lie in the zero set of \(g\); containment of its zeros in their union is the only assertion needed.
+
+Apply this observation to the determinant on countably many charts of \(R\). It shows that \(C\), and hence \(E\cup C\), is contained in countably many smooth parameterized pieces of real dimension at most \(2d-2\). Composing those parameterizations with the linear projection makes \(F\) thin in \(D\). It has empty interior, its complement is path connected, and the extension lemma applies to bounded holomorphic functions on that complement.
+
+On \(\pi^{-1}(D\setminus F)\), the complex inverse function theorem makes \(\pi\) a local biholomorphism. Properness makes each fibre finite: it is both compact and discrete. A proper local homeomorphism with finite fibres is a covering of its image. To check this explicitly over a fibre \(\{x_1,\ldots,x_m\}\), choose disjoint inverse-coordinate neighborhoods of these points. If no smaller base neighborhood excluded additional preimages outside them, a sequence of such preimages over base points converging to the chosen value would, by properness, have a limiting preimage outside their union. This contradicts the displayed complete fibre. Shrinking now gives an evenly covered neighborhood.
+
+The covering image is open and closed in \(D\setminus F\). It is nonempty: \(R\) is dense in \(A\), the noncritical points are dense in each component of \(R\), and their local images are open, so one such image meets \(D\setminus F\). Consequently the image is all of the connected set \(D\setminus F\). Its sheet number is a fixed finite integer \(m\geq1\).
+
+We also record the density that will be needed at exceptional fibres:
+
+\[
+A=\overline{\pi^{-1}(D\setminus F)}
+\quad\text{inside }D\times B.
+\tag{AR11}
+\]
+
+Indeed, an arbitrary neighborhood of a point of \(A\) meets \(R\); the noncritical points are dense in \(R\); near a noncritical point \(\pi\) is open; and a nonempty open base image meets \(D\setminus F\). This reasoning remains valid in every prescribed neighborhood, proving (AR11).
+
+### Equations that retain the complete fibre points
+
+Over an evenly covered neighborhood write the sheets as
+
+\[
+w=a_1(z),\ldots,a_m(z),\qquad a_i(z)\in B\subset\mathbb C^k.
+\]
+
+For an auxiliary vector \(\lambda=(\lambda_1,\ldots,\lambda_k)\), use the complex bilinear pairing \(\lambda\cdot w=\sum_j\lambda_jw_j\), and form
+
+\[
+Q(z,w,\lambda)
+=\prod_{i=1}^m\bigl(\lambda\cdot(w-a_i(z))\bigr).
+\tag{AR12}
+\]
+
+Permuting the sheets does not change this polynomial, so its coefficients as a polynomial in \((w,\lambda)\) are single-valued holomorphic functions on \(D\setminus F\). They are bounded there: \(m\) is fixed and every \(a_i\) lies in the fixed bounded ball \(B\). Extend every one of its finitely many coefficients by the preceding lemma. Denote the resulting polynomial, with coefficients holomorphic on \(D\), by \(\widetilde Q\).
+
+Expand only in \(\lambda\):
+
+\[
+\widetilde Q(z,w,\lambda)
+=\sum_{|\beta|=m}q_\beta(z,w)\lambda^\beta.
+\]
+
+The finitely many functions \(q_\beta\) are holomorphic on \(D\times\mathbb C^k\). Let
+
+\[
+Y=\{(z,w)\in D\times B:q_\beta(z,w)=0
+\text{ for every }\beta\}.
+\tag{AR13}
+\]
+
+This is a complex analytic subset. For \(z\notin F\), it is exactly the original fibre: a product of linear polynomials in \(\lambda\) vanishes identically precisely when one of its factors is the zero polynomial, because \(\mathbb C[\lambda_1,\ldots,\lambda_k]\) is an integral domain. Thus (AR12) is identically zero in \(\lambda\) precisely when \(w=a_i(z)\) for some \(i\). This is why we use the full vector pairing; separate coordinate root equations could add points made from coordinates belonging to different sheets.
+
+By (AR11), closedness of \(Y\), and equality over \(D\setminus F\), we have \(A\subset Y\). For the reverse inclusion fix \((z_0,w_0)\in Y\). Choose \(z_\nu\in D\setminus F\) tending to \(z_0\), enumerate each finite fibre arbitrarily as \(a_{1,\nu},\ldots,a_{m,\nu}\), and take a subsequence on which every coordinate of this finite tuple converges in \(\overline B\). Write its limit as \(b_1,\ldots,b_m\). Closedness of \(A\) and (AR8) give
+
+\[
+(z_0,b_i)\in A,\qquad b_i\in B.
+\]
+
+Continuity of the extended coefficients and the finite product gives the identity
+
+\[
+\widetilde Q(z_0,w,\lambda)
+=\prod_{i=1}^m\bigl(\lambda\cdot(w-b_i)\bigr).
+\tag{AR14}
+\]
+
+Since \((z_0,w_0)\in Y\), the left side is the zero polynomial in \(\lambda\). The integral-domain argument again yields \(w_0=b_i\) for some \(i\). Therefore \((z_0,w_0)\in A\), proving \(Y\subset A\).
+
+We have proved \(A=Y\) near the arbitrary point \(p\). This proves the theorem, including discreteness of the exceptional fibres as a consequence, not a premise. \(\square\)
+
+### Application to complex conicity
+
+Take \(A\) to be the closed subanalytic involutive set considered above, \(R\) its dense real regular part and \(E=D=A\setminus R\). Its earlier proof gives pure real dimension \(2n\), makes every tangent plane of \(R\) complex, and proves that \(R\) is a complex submanifold of dimension \(n\). Equation (22) gives \(\dim_{\mathbb R}D\leq2n-2\) on every local restriction, and the subanalytic regular-locus provider makes \(D\) closed and subanalytic. Thus the theorem above with \(d=n\) supplies exactly the final analyticity step. The conicity, involutivity and isotropic-bound hypotheses are exactly those used in the preceding argument.
+
+The theorem proved here is the pure-dimensional case used by this application. Peterzil–Starchenko's broader criterion also permits regular components of differing dimensions.
 
 ## Exercises with complete solutions
 
@@ -340,7 +594,7 @@ The omitted condition is isotropy: the whole \(T^*X\) has nonzero canonical form
 
 ## The geometric input for complex constructibility
 
-The result separates three mechanisms. Involutivity and a subanalytic isotropic bound recover real Lagrangian regularity. The two complex Euler directions make those regular tangent planes complex. Minimal complex hulls and involutive openness exclude a boundary of real codimension one; the exact analytic removal prerequisite then makes the whole set analytic. Applying this theorem to involutive microsupport will be one step in the complex constructibility criteria. The analytic conormal-cover and complex stratification arguments retain their own isotropy and geometry hypotheses.
+The result separates three mechanisms. Involutivity and a subanalytic isotropic bound recover real Lagrangian regularity. The two complex Euler directions make those regular tangent planes complex. Minimal complex hulls and involutive openness exclude a boundary of real codimension one; the proved small-boundary removal step then makes the whole set analytic. Applying this theorem to involutive microsupport will be one step in the complex constructibility criteria. The analytic conormal-cover and complex stratification arguments retain their own isotropy and geometry hypotheses.
 
 ## Sources, normalization and the boundary argument
 
@@ -348,8 +602,8 @@ The result separates three mechanisms. Involutivity and a subanalytic isotropic 
 
 **Conventions and local hypotheses.** The Astérisque convention at printed p. 151 identifies the real canonical form with twice the real part of the complex canonical form. Our explicitly defined covector map (1) identifies it with the real part itself, as checked in (2)–(4); the positive factor two is therefore not silently imported. The lesson also works in an ambient open subset with a relatively closed, locally complex-conic set. Its earlier real recovery theorem establishes subanalyticity and pure Lagrangian regularity before the complex argument. These hypotheses must be checked in the application; merely knowing positive real conicity does not supply the second Euler direction.
 
-**The uniformization input.** Edward Bierstone and Pierre D. Milman, [*Semianalytic and subanalytic sets*, Publications Mathématiques de l’IHÉS 67 (1988), 5–42](https://www.numdam.org/article/PMIHES_1988__67__5_0.pdf#page=2), Theorem 0.1, p. 5, provides a proper real analytic surjection from a manifold of the same dimension onto a closed subanalytic set. Section 5, pp. 30–32, proves the analytic-set case and derives the subanalytic case using Proposition 3.12. Equation (18) uses this theorem, then proves the additional dense-open inverse-image property by selecting the maximal-rank components. This refinement and the later rank bound use properness and complex tangent containment separately. The programme proof is [Dimension-controlled proper uniformization, steps N1–N10](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/subanalytic-sets-and-limiting-tangent-directions.md#dimension-controlled-proper-uniformization). It reduces compact torus presentations to the dimension of the image and glues a locally finite family of compact presentations properly; the lower function-resolution and dimension inputs are identified there.
+**The uniformization input.** Edward Bierstone and Pierre D. Milman, [*Semianalytic and subanalytic sets*, Publications Mathématiques de l’IHÉS 67 (1988), 5–42](https://www.numdam.org/article/PMIHES_1988__67__5_0.pdf#page=2), Theorem 0.1, p. 5, provides a proper real analytic surjection from a manifold of the same dimension onto a closed subanalytic set. Section 5, pp. 30–32, proves the analytic-set case and derives the subanalytic case using Proposition 3.12. Equation (18) uses this theorem, then proves the additional dense-open inverse-image property by selecting the maximal-rank components. This refinement and the later rank bound use properness and complex tangent containment separately. The programme proof is Dimension-controlled proper uniformization, steps N1–N10. It reduces compact torus presentations to the dimension of the image and glues a locally finite family of compact presentations properly; the lower function-resolution and dimension inputs are identified there.
 
-**Complex regularity and removal.** Jean-Pierre Demailly, [*Complex Analytic and Differential Geometry*, 21 June 2012](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf#page=60), Chapter I, Lemma 7.15, p. 60, explains why a smooth submanifold with complex-invariant tangent spaces is complex analytic, using a graph and the Cauchy–Riemann equations. Ya’acov Peterzil and Sergei Starchenko, [*Complex analytic geometry and analytic-geometric categories*, author manuscript](https://math.haifa.ac.il/kobi/analytic.pdf#page=11), Theorem 4.1 and Corollary 4.2, manuscript pp. 10–11, provide the exact final removal condition on every open restriction. The proof reduces to the componentwise small-boundary theorem associated with Shiffman. Our dimension estimate (22) checks the local condition required by that result; it does not assume the residual boundary is already a complex analytic subset.
+**Complex regularity and removal.** Jean-Pierre Demailly, [*Complex Analytic and Differential Geometry*, 21 June 2012](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf#page=60), Chapter I, Lemma 7.15, p. 60, explains why a smooth submanifold with complex-invariant tangent spaces is complex analytic, using a graph and the Cauchy–Riemann equations. Ya’acov Peterzil and Sergei Starchenko, [*Complex analytic geometry and analytic-geometric categories*, author manuscript](https://math.haifa.ac.il/kobi/analytic.pdf#page=11), Theorem 4.1 and Corollary 4.2, manuscript pp. 10–11, provide the exact final removal condition on every open restriction. Their proof reduces to the componentwise small-boundary theorem associated with Shiffman. Our dimension estimate (22) checks the local condition, and the pure-dimensional proof above supplies the removal step used here. It extends bounded holomorphic coefficients across a thin closed set and uses vector-valued sheet equations to recover each entire fibre, including the exceptional fibres. The residual boundary is not assumed complex analytic.
 
-**Teaching scope.** The explicit real-covector calculation, two Euler tests, minimal hull, uniformization refinement and seven solved examples organize the lesson around the maps and hypotheses that the application needs. The analytic removal theorem and the earlier subanalytic and symplectic providers retain their own foundational proof obligations. This source account does not claim full transitive proof closure.
+**Teaching scope.** The explicit real-covector calculation, two Euler tests, minimal hull, uniformization refinement and seven solved examples organize the lesson around the maps and hypotheses that the application needs. The pure-dimensional removal argument is proved here from the stated subanalytic dimension and elementary holomorphic inputs. The earlier subanalytic and symplectic providers identify the remaining foundations of the conicity argument.

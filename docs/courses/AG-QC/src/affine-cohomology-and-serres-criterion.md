@@ -4,7 +4,7 @@
 
 On an affine scheme, a quasi-coherent sheaf is a module viewed locally. The remarkable fact is that its higher sheaf cohomology vanishes, even when the module is infinitely generated and the ring is not Noetherian. Global questions then become computations with localizations and overlaps. Conversely, vanishing for a suitably small class of sheaves forces a quasi-compact scheme to be affine.
 
-We use [Čech cohomology](cech-cohomology.md), especially its acyclic-cover comparison and basis criterion. The existing earlier programme lesson *Quasi-coherent sheaves and concentrated maps*, Theorem 1.2, Proposition 1.3 and Lemma 1.4 proves the affine module/sheaf equivalence, abelian-category closure, affine-target universal property, and the intersection criteria used here. Finite-type approximation is proved in Lemma 4.4 below. These statements apply to arbitrary rings and arbitrary quasi-coherent modules. All cohomology groups below are derived-functor cohomology.
+We use Čech cohomology, especially its acyclic-cover comparison and basis criterion. The existing earlier programme lesson *Quasi-coherent sheaves and concentrated maps*, Theorem 1.2, Proposition 1.3 and Lemma 1.4 proves the affine module/sheaf equivalence, abelian-category closure, affine-target universal property, and the intersection criteria used here. Finite-type approximation is proved in Lemma 4.4 below. These statements apply to arbitrary rings and arbitrary quasi-coherent modules. All cohomology groups below are derived-functor cohomology.
 
 ## 1. Localizations and quasi-coherent modules
 

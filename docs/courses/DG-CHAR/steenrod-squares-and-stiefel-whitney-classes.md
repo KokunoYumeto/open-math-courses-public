@@ -4,7 +4,7 @@
 
 The Thom class records the local generator in every fibre. Cohomology operations measure how that class behaves under squaring, and the Thom isomorphism transfers the answer to the base. This gives all the Stiefel–Whitney classes at once. Their product formula follows from a product formula for the operations themselves.
 
-Our prerequisites are [Thom classes and Euler classes](thom-classes-and-euler-classes.md), especially its full singular-chain, product, coefficient and Thom proofs; [The Gysin sequence and projective splitting](gysin-sequence-and-projective-splitting.md), Sections 3–5; and the compact embedding and classification proofs in [Vector bundles and their constructions](vector-bundles-and-their-constructions.md) and [Grassmannians and classifying maps](grassmannians-and-classifying-maps.md). We construct the operations used here rather than taking their existence or their Cartan identity as an additional prerequisite. All coefficients in this chapter are \(\mathbf F_2\), unless another ring is explicitly displayed.
+Our prerequisites are [Thom classes and Euler classes](thom-classes-and-euler-classes.md), especially its full singular-chain, product, coefficient and Thom proofs; [The Gysin sequence and projective splitting](gysin-sequence-and-projective-splitting.md), Sections 3–5; and the compact embedding and classification proofs in Vector bundles and their constructions and [Grassmannians and classifying maps](grassmannians-and-classifying-maps.md). We construct the operations used here rather than taking their existence or their Cartan identity as an additional prerequisite. All coefficients in this chapter are \(\mathbf F_2\), unless another ring is explicitly displayed.
 
 ## 1. Higher diagonals on singular chains
 

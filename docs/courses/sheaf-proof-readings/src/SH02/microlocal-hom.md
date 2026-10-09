@@ -28,7 +28,7 @@ The following are prerequisite contracts. Their proofs, coefficient ranges and e
 
 | Contract | Required content | Provider and scope |
 |---|---|---|
-| SH02-OPS-SIX | Bounded six operations, proper base change, projection, internal Hom adjunction, smooth product base change, orientation traces and coherent units/counits | [Exceptional operations](../../SH02-exceptional-operations.html) and [Manifold duality](../../SH02-manifold-duality.html); used with their stated finite-dimensional hypotheses |
+| SH02-OPS-SIX | Bounded six operations, proper base change, projection, internal Hom adjunction, smooth product base change, orientation traces and coherent units/counits | [Exceptional operations](../../SH02-exceptional-operations.html) and Manifold duality; used with their stated finite-dimensional hypotheses |
 | SH02-CB-EXTERNAL-HOM, SH02-CB-BIDUALITY, SH02-CB-INTERNAL-HOM | External Hom exchange and Verdier biduality under the precise cohomological constructibility hypotheses | [Cohomological biduality](../../SH02-cohomological-biduality.html); constructibility is required exactly where invoked |
 | SH02-GAM-KERNEL | \(\phi_\gamma^{-1}R\phi_{\gamma *}A\simeq Rq_{1*}(q_2^{-1}A)_{Z_\gamma}\), \(Z_\gamma=\{y-x\in\gamma\}\) | [Cone topology](../../SH02-cone-topology.html); the displayed cone-kernel identification is required |
 | SH02-FF-LINEAR-KERNEL, SH02-FF-MATES, SH02-FF-BASE, SH02-FF-PRODUCT | The four bundle Fourier exchanges and external product, with orientations and coherent adjunction mates | [Fourier functoriality](../../SH02-fourier-functoriality.html); actual maps and orientation normalizations are required |
@@ -162,7 +162,7 @@ For bounded inputs the two graph Hom objects, and hence ordinary microlocal Hom,
 \mathsf M_X(A,B)\in D^b_{\mathbb R_{>0}}(k_{T^*X}).
 \tag{MH0}
 \]
-Here \(\mathsf M_X(A,B)\) denotes \(\mu hom(A,B)\), a notation used below. This assertion has the precise amplitude dependency SH02-MD-BOUNDED-HOM in [Manifold duality](../../SH02-manifold-duality.html), followed by SH02-MIC-DEFINITION in [Microlocalization](../../SH02-microlocalization.html). Both dependencies must hold in the stated coefficient and boundedness ranges.
+Here \(\mathsf M_X(A,B)\) denotes \(\mu hom(A,B)\), a notation used below. This assertion has the precise amplitude dependency SH02-MD-BOUNDED-HOM in Manifold duality, followed by SH02-MIC-DEFINITION in [Microlocalization](../../SH02-microlocalization.html). Both dependencies must hold in the stated coefficient and boundedness ranges.
 
 **Proof relative to those contracts.** Put \(n=\dim X\), \(m=\dim Y\), and \(g=\operatorname{gld}k\). Suppose \(F\in D^{[a,b]}\) and \(G\in D^{[c,d]}\). The smooth projection formula gives \(p^!F=p^{-1}F\otimes\omega_Y\), with bounds \([a-m,b-m]\). On the \((n+m)\)-manifold \(X\times Y\), SH02-MD-BOUNDED-HOM therefore puts
 \[
@@ -760,7 +760,7 @@ To verify the arrow, use the zero-section recovery of each Hom kernel. The graph
 
 ## SH02-MH-KERNEL-COMPOSITION — Integrating an intermediate covector
 
-Let \(K_1,F_1\in D^b(k_{X\times Y})\) and \(K_2,F_2\in D^b(k_{Y\times Z})\). Define convolution as in [Kernel calculus](../../SH02-kernel-calculus.html):
+Let \(K_1,F_1\in D^b(k_{X\times Y})\) and \(K_2,F_2\in D^b(k_{Y\times Z})\). Define convolution as in Kernel calculus:
 \[
 A_1\circ A_2=Rq_{13!}(q_{12}^{-1}A_1\otimes q_{23}^{-1}A_2).
 \]

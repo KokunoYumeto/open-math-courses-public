@@ -159,7 +159,7 @@ Here each sum denotes the corresponding symmetric bilinear tensor. The slices \(
 
 Conversely an ambient geodesic starting at a point of \(L\) with velocity in \(E\) stays tangent to \(E\), because its velocity is parallel and A.2 says transport preserves \(E\). Every compact portion is a tangent path, so B.3 places it in \(L\), and its coordinate expression in plaques is smooth for the leaf topology. Thus it is a geodesic of \(L\). Existence and uniqueness for these geodesics are [Geodesics, normal coordinates and curvature, Theorem A.1](geodesics-normal-coordinates-and-curvature.md#theorem-a-1).
 
-If \(M\) is metrically complete, [Completeness and the Hopf–Rinow theorem, Theorem B.2](completeness-and-the-hopf-rinow-theorem.md#theorem-b-2) makes all its geodesics exist for every real time. The preceding paragraph gives a leaf geodesic for every real time for each initial tangent vector of \(L\). B.3 proved that \(L\) is connected, Hausdorff and second countable, so Hopf–Rinow applies to \(L\) itself and proves completeness of its intrinsic distance. The \(F\)-case is identical with the names of the distributions interchanged. No closedness or embeddedness of a leaf is required. □
+If \(M\) is metrically complete, Completeness and the Hopf–Rinow theorem, Theorem B.2 makes all its geodesics exist for every real time. The preceding paragraph gives a leaf geodesic for every real time for each initial tangent vector of \(L\). B.3 proved that \(L\) is connected, Hausdorff and second countable, so Hopf–Rinow applies to \(L\) itself and proves completeness of its intrinsic distance. The \(F\)-case is identical with the names of the distributions interchanged. No closedness or embeddedness of a leaf is required. □
 
 **Corollary C.3 (mixed curvature and flat transverse connections).** With the convention
 \[
@@ -208,7 +208,7 @@ There is an analogous map \(\Phi_b^F\). They satisfy
 \]
 Furthermore \(\Phi_b^F\) preserves every constant field \(B_E(v)\) and commutes with right multiplication by \(\operatorname{diag}(h,I_s)\), \(h\in O(r)\). The corresponding assertions hold with \(E,F\) interchanged. Endpoint maps depend smoothly on initial frames and on finite-dimensional parameters in the controls when all parameter derivatives are jointly continuous on a common finite time subdivision.
 
-**Proof.** The integral \(\delta(t)=u_0\int_0^t(a(\tau),0)\,d\tau\) is a finite piecewise \(C^1\) curve in the initial tangent space. [Completeness and the Hopf–Rinow theorem, Theorem D.3](completeness-and-the-hopf-rinow-theorem.md#theorem-d-3) constructs its horizontal frame lift on the entire interval for every initial orthonormal frame \(u_0\). Because \(E,F\) are parallel, that lift stays adapted. The uniqueness assertion there identifies its equation with (D.1). This proves global existence and uniqueness for every control under consideration.
+**Proof.** The integral \(\delta(t)=u_0\int_0^t(a(\tau),0)\,d\tau\) is a finite piecewise \(C^1\) curve in the initial tangent space. Completeness and the Hopf–Rinow theorem, Theorem D.3 constructs its horizontal frame lift on the entire interval for every initial orthonormal frame \(u_0\). Because \(E,F\) are parallel, that lift stays adapted. The uniqueness assertion there identifies its equation with (D.1). This proves global existence and uniqueness for every control under consideration.
 
 We record why its endpoint map is smooth even though the control need not be differentiable in time. In a frame chart the equation is \(z'=V(t,z,\lambda)\), where every derivative in \((z,\lambda)\) is jointly continuous. On a compact chart rectangle the integral operator
 \[
@@ -302,7 +302,7 @@ L_E\times L_F\longrightarrow M
 \]
 restricting on each based axis to the leaf inclusion. Its differential respects the two given parallel distributions.
 
-**Proof.** Equip each universal cover with the pullback leaf metric. Each covering map is a local isometry by its definition. The leaves are complete by C.2, and [Completeness and the Hopf–Rinow theorem, Corollary E.4](completeness-and-the-hopf-rinow-theorem.md#corollary-e-4) proves their universal covers complete.
+**Proof.** Equip each universal cover with the pullback leaf metric. Each covering map is a local isometry by its definition. The leaves are complete by C.2, and Completeness and the Hopf–Rinow theorem, Corollary E.4 proves their universal covers complete.
 
 The product of the two covers is connected and is a Hausdorff second-countable manifold: products of the two countable coordinate bases give a countable base, disjoint neighbourhoods in a differing coordinate separate distinct points, and coordinate charts are products. Paths in each factor combine to paths in the product, proving connectedness. It is geodesically complete. Indeed, the coordinate Levi-Civita formula of Riemannian A.1, applied to a block product metric, has no mixed Christoffel symbols and has the coefficients of each individual factor in its own block. The geodesic equation therefore separates into the two geodesic equations, each defined for all real times by Hopf–Rinow B.2. Another application of that theorem makes the product metrically complete. Corollary E.4 applied to D.2 now makes \(\mathcal P\) surjective and a smooth covering.
 
@@ -377,7 +377,7 @@ Completeness was essential for the global product in D.3. The closedness result 
 
 **Lemma F.1 (irreducible orthogonal subgroups).** Let \(V\ne0\) be a finite-dimensional real inner-product space. If a connected immersed Lie subgroup \(H\subseteq\mathrm O(V)\) acts irreducibly on \(V\), then its image is closed. Its given Lie-group structure agrees with the embedded subgroup structure, and it is compact.
 
-**Proof.** The orthogonal group and its skew-adjoint Lie algebra were constructed in [Riemannian connections and convex neighbourhoods, Theorem F.2](riemannian-connections-and-convex-neighbourhoods.md#theorem-f-2). Put \(K=\overline H\), with closure in \(\mathrm O(V)\). It is a subgroup: for sequences \(a_j\to a\), \(b_j\to b\) from \(H\), continuity gives \(a_jb_j^{-1}\to ab^{-1}\). Every point of the closure is such a sequential limit, by taking a point of \(H\) in each ball of radius \(1/j\). Thus \(ab^{-1}\in K\). By [Invariant connections on homogeneous bundles, Theorem A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1), this closed subgroup is embedded. Write
+**Proof.** The orthogonal group and its skew-adjoint Lie algebra were constructed in [Riemannian connections and convex neighbourhoods, Theorem F.2](riemannian-connections-and-convex-neighbourhoods.md#theorem-f-2). Put \(K=\overline H\), with closure in \(\mathrm O(V)\). It is a subgroup: for sequences \(a_j\to a\), \(b_j\to b\) from \(H\), continuity gives \(a_jb_j^{-1}\to ab^{-1}\). Every point of the closure is such a sequential limit, by taking a point of \(H\) in each ball of radius \(1/j\). Thus \(ab^{-1}\in K\). By Invariant connections on homogeneous bundles, Theorem A.1, this closed subgroup is embedded. Write
 \[
 \mathfrak h\subseteq\mathfrak k\subseteq\mathfrak{so}(V)
 \]
@@ -550,7 +550,7 @@ Along a geodesic \(c\), the velocity is parallel, and the transport derivative f
 V(c(s))=P_{0s}\bigl(V(c(0))-s\dot c(0)\bigr).
 \tag{G.3}
 \]
-Here all geodesics are defined for every real \(s\), by [Hopf–Rinow, Theorem B.2](completeness-and-the-hopf-rinow-theorem.md#theorem-b-2). In particular the geodesic from any point \(z\) with initial velocity \(V(z)\), denoted \(c_z\), satisfies \(V(c_z(1))=0\). Choose one such zero \(q\).
+Here all geodesics are defined for every real \(s\), by Hopf–Rinow, Theorem B.2. In particular the geodesic from any point \(z\) with initial velocity \(V(z)\), denoted \(c_z\), satisfies \(V(c_z(1))=0\). Choose one such zero \(q\).
 
 The vector field \(V\) has a flow for every real time. Indeed (G.3) for \(c_z\) says \(V(c_z(s))=(1-s)\dot c_z(s)\). Consequently
 \[
@@ -600,7 +600,7 @@ Conversely, in Euclidean coordinates \(V(x)=-x\) satisfies (G.2), since the Levi
 
 **Corollary G.3 (restricted fixed points).** For complete \(M\), the group \(A_p^0\) has a fixed point if and only if the universal Riemannian cover of \(M\) is Euclidean. In that case \(M\) is locally Euclidean. Conversely, every locally Euclidean Riemannian manifold, complete or incomplete, has trivial restricted normalized affine holonomy.
 
-**Proof.** Take the smooth universal cover with the pullback metric, as in F.2. It is complete when \(M\) is complete, by [Hopf–Rinow, Corollary E.4](completeness-and-the-hopf-rinow-theorem.md#corollary-e-4). Formula (G.1) commutes with a Riemannian covering: its differential intertwines linear transports and path velocities, and hence also their integrals. The loop-lifting argument of F.2 therefore identifies full affine holonomy upstairs with \(A_p^0\) downstairs, by the differential at the chosen lift of \(p\). A fixed point is carried to a fixed point under this linear identification. Theorem G.2 makes the complete cover Euclidean, and its local isometry charts make \(M\) locally Euclidean.
+**Proof.** Take the smooth universal cover with the pullback metric, as in F.2. It is complete when \(M\) is complete, by Hopf–Rinow, Corollary E.4. Formula (G.1) commutes with a Riemannian covering: its differential intertwines linear transports and path velocities, and hence also their integrals. The loop-lifting argument of F.2 therefore identifies full affine holonomy upstairs with \(A_p^0\) downstairs, by the differential at the chosen lift of \(p\). A fixed point is carried to a fixed point under this linear identification. Theorem G.2 makes the complete cover Euclidean, and its local isometry charts make \(M\) locally Euclidean.
 
 For the converse statement, suppose \(M\) is locally Euclidean. Its Levi-Civita curvature is zero in each Euclidean chart, because the connection coefficients there vanish, so curvature is zero globally. Torsion is zero for a Levi-Civita connection. Linear E.3 identifies the curvature of the normalized affine connection in a zero-origin frame as
 \[
@@ -793,7 +793,7 @@ For any linear map commuting with (I.1), a block \(T:V_1\to V_2\) satisfies \(T(
 \[
 u=(x-y)/\sqrt2,\qquad v=(x+y)/\sqrt2
 \]
-turn translation by \((1,1)\) into translation by \((0,\sqrt2)\). Thus \(M\) is the flat cylinder \(\mathbb R\times(\mathbb R/\sqrt2\mathbb Z)\) whose smooth quotient, covering charts and completeness are proved in [Hopf–Rinow, Exercise F.3](completeness-and-the-hopf-rinow-theorem.md#exercise-f-3). The descended coordinate fields are parallel because the covering is a local isometry and the Euclidean coordinate fields are parallel. Hence \(E,F\) are the orthogonal parallel distributions in C.1.
+turn translation by \((1,1)\) into translation by \((0,\sqrt2)\). Thus \(M\) is the flat cylinder \(\mathbb R\times(\mathbb R/\sqrt2\mathbb Z)\) whose smooth quotient, covering charts and completeness are proved in Hopf–Rinow, Exercise F.3. The descended coordinate fields are parallel because the covering is a local isometry and the Euclidean coordinate fields are parallel. Hence \(E,F\) are the orthogonal parallel distributions in C.1.
 
 The based horizontal leaf is
 \[
@@ -831,7 +831,7 @@ The vector-field equation \(x'=-x\) has solution
 \]
 It never reaches zero at finite time and stays in the punctured plane, so the vector field is complete. Uniqueness is Local tools 2.1, and the formula also verifies the flow law directly.
 
-The manifold itself is incomplete, as proved in [Hopf–Rinow, Example F.1](completeness-and-the-hopf-rinow-theorem.md#example-f-1). More specifically, the geodesic \(c_x(s)=x+sV(x)=(1-s)x\) starting at nonzero \(x\) cannot be evaluated at \(s=1\) as a point of the manifold. G.2 used geodesic completeness at exactly this step to obtain a point \(q\) with \(V(q)=0\). Here the limit lies at the removed origin, and the field has no zero on the manifold. Formula (I.3) tends to that missing point as \(t\to+\infty\); an all-time contracting flow alone does not supply the centre required in G.2. □
+The manifold itself is incomplete, as proved in Hopf–Rinow, Example F.1. More specifically, the geodesic \(c_x(s)=x+sV(x)=(1-s)x\) starting at nonzero \(x\) cannot be evaluated at \(s=1\) as a point of the manifold. G.2 used geodesic completeness at exactly this step to obtain a point \(q\) with \(V(q)=0\). Here the limit lies at the removed origin, and the field has no zero on the manifold. Formula (I.3) tends to that missing point as \(t\to+\infty\); an all-time contracting flow alone does not supply the centre required in G.2. □
 
 **Exercise I.4 (eigenspaces and the unique nontrivial factors).** For the de Rham product \(\mathbb R^r\times M_1\times\cdots\times M_k\), classify parallel self-adjoint endomorphism fields and determine whether their eigenspaces can produce a different nontrivial irreducible parallel decomposition.
 
@@ -890,7 +890,7 @@ M\cong V\times B.
 \]
 The manifold \(B\) has no positive-dimensional global Euclidean factor. Every global Euclidean factor of \(M\) has tangent distribution contained in that of \(V\); hence the maximal Euclidean factor distribution and its foliation are unique. Its dimension is \(\dim V\).
 
-**Proof.** The universal covering construction and its deck group, free action, orbit fibres and disjoint-sheet neighborhoods are proved in [Flat connections, Lemma D.1 and Theorems D.2–D.3](flat-connections-and-infinitesimal-holonomy.md#theorem-d-2). The pulled-back metric makes \(q\) a local isometry. Completeness of the cover follows from [Hopf–Rinow, Corollary E.4](completeness-and-the-hopf-rinow-theorem.md#corollary-e-4), so E.3 applies to \(\widetilde M\). Every deck transformation is an isometry because
+**Proof.** The universal covering construction and its deck group, free action, orbit fibres and disjoint-sheet neighborhoods are proved in [Flat connections, Lemma D.1 and Theorems D.2–D.3](flat-connections-and-infinitesimal-holonomy.md#theorem-d-2). The pulled-back metric makes \(q\) a local isometry. Completeness of the cover follows from Hopf–Rinow, Corollary E.4, so E.3 applies to \(\widetilde M\). Every deck transformation is an isometry because
 \(\gamma^*q^*g=(q\circ\gamma)^*g=q^*g\). Thus J.1 applies to each \(\gamma\).
 
 Let \(\pi_V\) denote orthogonal projection onto \(V\). Definition (J.3) gives
@@ -960,7 +960,7 @@ M=\mathbb R^2/\langle(x,y)\mapsto(x+1,y+1)\rangle,
 \]
 compute the subspaces \(W,V\), give its global Euclidean product decomposition, and determine the length of its circle factor.
 
-**Solution.** I.2 and [Hopf–Rinow, Exercise F.3](completeness-and-the-hopf-rinow-theorem.md#exercise-f-3) give the complete smooth quotient and its Euclidean universal covering. Its deck transformations are the translations by \(m(1,1)\), \(m\in\mathbb Z\). Thus
+**Solution.** I.2 and Hopf–Rinow, Exercise F.3 give the complete smooth quotient and its Euclidean universal covering. Its deck transformations are the translations by \(m(1,1)\), \(m\in\mathbb Z\). Thus
 \[
 W=\mathbb R(1,1),\qquad V=\mathbb R(1,-1).
 \]
@@ -3257,7 +3257,7 @@ Let \(H\) be the subgroup generated by \(\exp(tX)\), \(X\in\mathfrak h\), \(t\in
 \(\exp(t_1X_1)\cdots\exp(t_kX_k)\)
 is a sum of conjugates of the \(X_i\)'s, all in \(\mathfrak h\) by the preceding paragraph. All its differential ranks are at most \(\dim\mathfrak h\). Choosing a basis \(X_1,\ldots,X_d\) and differentiating this word at zero gives image exactly \(\mathfrak h\) and rank \(d\). The maximal-rank construction in C.1 thus has that tangent space. Every other connected immersed subgroup with this Lie algebra is generated by the same exponentials, again by F.1, so has the same image; its smooth structure will also be identified below. Adjoint invariance shows \(H\) is normal in \(G\).
 
-Put \(K=\overline H\) inside \(G\). This is a compact normal subgroup. Its embedded Lie-group structure follows from [Invariant connections, Theorem A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1). It is connected: a separation of \(K\) into two nonempty relatively open disjoint sets would meet the dense connected image of \(H\) on both sides, separating that image. Write \(\mathfrak k=\operatorname{Lie}(K)\). Normality gives that \(\mathfrak k\), like \(\mathfrak h\), is invariant under \(\operatorname{Ad}(G)\). Hence
+Put \(K=\overline H\) inside \(G\). This is a compact normal subgroup. Its embedded Lie-group structure follows from Invariant connections, Theorem A.1. It is connected: a separation of \(K\) into two nonempty relatively open disjoint sets would meet the dense connected image of \(H\) on both sides, separating that image. Write \(\mathfrak k=\operatorname{Lie}(K)\). Normality gives that \(\mathfrak k\), like \(\mathfrak h\), is invariant under \(\operatorname{Ad}(G)\). Hence
 \[
 \mathfrak k=\mathfrak h\oplus\mathfrak m,\qquad
 \mathfrak m=\mathfrak k\cap\mathfrak h^\perp
@@ -4000,7 +4000,7 @@ h(Av,Aw)=h(v,A^*Aw).
 \]
 Thus \(A^*A=I\) implies real norm preservation, so \(A\), as an endomorphism of the finite-dimensional real space \(\mathbb F^m\), is injective and hence invertible. Its left inverse \(A^*\) is therefore its inverse, giving \(AA^*=I\) as well. The adjoint identity proves closure under products and inverses. The determinant-one conditions give subgroups by determinant multiplicativity, proved in F.1.
 
-These are closed bounded sets of real matrices. The equations \(A^*A=I\) and the determinant conditions are continuous polynomial equations in real coordinates. Every column has norm one, bounding every real component of every entry. Local tools 0.1 gives compactness. They are closed subgroups of real general linear groups and hence embedded Lie groups by [Invariant connections, Theorem A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1). For the quaternion case, the identification with real matrices is faithful: a right-linear map is determined by its columns, its values on the standard basis. Its image is a closed real linear subspace, alternatively characterized by commuting with right multiplication by \(i\) and \(j\). This justifies applying that closed-subgroup theorem in the same way.
+These are closed bounded sets of real matrices. The equations \(A^*A=I\) and the determinant conditions are continuous polynomial equations in real coordinates. Every column has norm one, bounding every real component of every entry. Local tools 0.1 gives compactness. They are closed subgroups of real general linear groups and hence embedded Lie groups by Invariant connections, Theorem A.1. For the quaternion case, the identification with real matrices is faithful: a right-linear map is determined by its columns, its values on the standard basis. Its image is a closed real linear subspace, alternatively characterized by commuting with right multiplication by \(i\) and \(j\). This justifies applying that closed-subgroup theorem in the same way.
 
 We give explicit paths and transitivity arguments, avoiding an unproved complex spectral theorem. First, the unit spheres in \(\mathbb C\) and \(\mathbb H\) are path connected. The normalized straight segment joins any two nonopposite unit vectors. For an opposite pair, insert a unit vector perpendicular to them and use two such segments. The denominators are nonzero; continuity follows from the Euclidean norm. This is the circle argument of X.2 in real dimensions two and four.
 
@@ -4126,7 +4126,7 @@ The identity acts as the identity, so this is a representation. All maps are smo
 
 If \(\rho(A,q)=I\), then \(A\), as a real operator, is right multiplication by \(q\). But a quaternionic matrix commutes with right multiplication by every scalar. Thus this right-multiplication operator must commute with right multiplication by \(i\) and \(j\). Evaluating these commutation relations on a standard basis vector with entry \(1\) gives \(iq=qi\) and \(jq=qj\). Lemma Y.1 makes \(q\) real. Its norm is one, so \(q=1\) or \(-1\); correspondingly \(A=I_m\) or \(-I_m\). Both pairs do act trivially. This proves (Y.15) from the established scalar algebra.
 
-The domain is compact and path connected by Y.2. Its continuous image is therefore compact, hence closed in the real matrix space, and path connected. A compact subset of a Hausdorff space is closed: for a point outside it, separate that point from each point of the compact set, take finitely many of the latter neighbourhoods, and intersect the corresponding former ones. By [Invariant connections, Theorem A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1), the image is an embedded Lie subgroup. Its orthogonal matrices have positive determinant by connectedness and the value at the identity, so it lies in \(\mathrm{SO}(4m)\).
+The domain is compact and path connected by Y.2. Its continuous image is therefore compact, hence closed in the real matrix space, and path connected. A compact subset of a Hausdorff space is closed: for a point outside it, separate that point from each point of the compact set, take finitely many of the latter neighbourhoods, and intersect the corresponding former ones. By Invariant connections, Theorem A.1, the image is an embedded Lie subgroup. Its orthogonal matrices have positive determinant by connectedness and the value at the identity, so it lies in \(\mathrm{SO}(4m)\).
 
 We justify the smooth quotient assertion too. The two-element kernel \(N\) is a central embedded closed subgroup. [Local tools, Theorem 4.1](local-tools-for-bundles-and-transport.md#4-quotients-by-a-closed-lie-subgroup) gives a Hausdorff second-countable smooth quotient with local sections and quotient dimension equal to the domain dimension, since \(\operatorname{Lie}(N)=0\). Normality gives the quotient its group law. In local sections it is expressed as \(q(s(u)s(v))\), and inversion as \(q(s(u)^{-1})\), where \(q\) is the quotient map; these formulas prove that both operations are smooth.
 
@@ -4391,7 +4391,7 @@ Surjectivity and nondegeneracy imply
 \((Au)\times(Av)=A(u\times v)\).
 Formula (Z.7) now shows that extending \(A\) by the identity on \(\mathbb R1\) preserves multiplication of imaginary elements. Bilinearity then proves preservation of all products. This establishes (Z.10).
 
-The equations preserving \(\varphi\) need only be checked on the finitely many triples of basis vectors; they are polynomial in the real entries of \(A\). Thus (Z.10) is a closed subgroup of the compact group \(\mathrm O(7)\), so is compact. It is an embedded Lie group by [Invariant connections, Theorem A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1). We have not yet assumed its connectedness or its dimension. □
+The equations preserving \(\varphi\) need only be checked on the finitely many triples of basis vectors; they are polynomial in the real entries of \(A\). Thus (Z.10) is a closed subgroup of the compact group \(\mathrm O(7)\), so is compact. It is an embedded Lie group by Invariant connections, Theorem A.1. We have not yet assumed its connectedness or its dimension. □
 
 **Theorem Z.3 (the Clifford algebra and its faithful even action).** There is a \(128\)-dimensional real associative algebra \(\mathrm{Cl}_{0,7}\), generated by a copy of \(V\) with relations
 \[
@@ -4498,7 +4498,7 @@ For any \(h\in H\), choose a lift \(k\) of \(\pi(h)\) of even length at most six
 \]
 under the corresponding operator products. These spaces are compact by Local tools 0.1, so the finite union is compact. Each sphere is path connected by the normalized-segment argument in Y.2; their finite products are path connected by taking paths in each coordinate. Each word image contains \(I\), by choosing successive pairs \(u,-u\). The union is therefore path connected. Its orthogonal matrices have determinant \(1\) by continuity from the identity.
 
-A compact matrix subgroup is closed, so [Invariant connections, Theorem A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1) gives \(H\) its embedded Lie-group structure. The differential of \(\pi\) is injective: if \(X\in\operatorname{Lie}(H)\) satisfies \(d\pi(X)=0\), the exponential identity for smooth Lie homomorphisms in F.1 gives \(\pi(\exp(tX))=I\). The continuous path \(\exp(tX)\) lies in the separated two-point kernel, starts at \(I\), and hence is constant. Differentiating at zero gives \(X=0\).
+A compact matrix subgroup is closed, so Invariant connections, Theorem A.1 gives \(H\) its embedded Lie-group structure. The differential of \(\pi\) is injective: if \(X\in\operatorname{Lie}(H)\) satisfies \(d\pi(X)=0\), the exponential identity for smooth Lie homomorphisms in F.1 gives \(\pi(\exp(tX))=I\). The continuous path \(\exp(tX)\) lies in the separated two-point kernel, starts at \(I\), and hence is constant. Differentiating at zero gives \(X=0\).
 
 For orthogonal unit \(u,v\), the curve
 \[
@@ -4792,7 +4792,7 @@ P(u)P(v)P(u)^{-1}=P(2\langle u,v\rangle u-v).
 \]
 The linear map on the right is the negative of reflection in \(u^\perp\). Even products therefore define the homomorphism \(\pi\) into \(\mathrm{SO}(9)\). It is onto: the basis-fixing reflection algorithm proved in Z.4 works in dimension nine, fixes one further basis vector at each step, and uses at most nine reflections. An element of determinant one uses an even number, hence at most eight. Taking the corresponding even product in (AB.7) gives a lift. The kernel commutes with all \(P_a\) and is scalar orthogonal, so is contained in \(\{\pm1\}\). Both occur, since \((P_0P_1)^2=-1\).
 
-Every element of \(H\) differs by a sign from a lift with at most eight unit factors. The expression for \(-1\) just given uses four factors, so every element is a word of even length at most twelve. Thus \(H\) is a finite union of continuous images of the compact spaces \((S^8)^{2r}\), \(0\le2r\le12\). Each such space is path connected by Y.2, and each word image contains the identity, by taking successive equal factors. Their union is compact and path connected. It is consequently a closed matrix subgroup and an embedded Lie group by [Invariant connections on homogeneous bundles, Theorem A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1). Its orthogonal determinants are one by connectedness.
+Every element of \(H\) differs by a sign from a lift with at most eight unit factors. The expression for \(-1\) just given uses four factors, so every element is a word of even length at most twelve. Thus \(H\) is a finite union of continuous images of the compact spaces \((S^8)^{2r}\), \(0\le2r\le12\). Each such space is path connected by Y.2, and each word image contains the identity, by taking successive equal factors. Their union is compact and path connected. It is consequently a closed matrix subgroup and an embedded Lie group by Invariant connections on homogeneous bundles, Theorem A.1. Its orthogonal determinants are one by connectedness.
 
 The coefficients of \(P(\pi(h)v)\) can be recovered by the trace pairings with \(P_a\), so \(\pi\) is smooth. Its differential is injective: a tangent vector in its kernel exponentiates to the discrete group \(\{\pm1\}\), hence its whole one-parameter subgroup is the identity. For orthogonal unit \(u,v\), the curve
 \[

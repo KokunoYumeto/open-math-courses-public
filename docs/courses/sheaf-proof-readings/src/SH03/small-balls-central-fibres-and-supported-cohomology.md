@@ -691,7 +691,7 @@ F'=F\otimes k_{\overline B_R(x_0)}.
 \tag{19}
 \]
 
-Here is a direct proof that the cutoff preserves weak constructibility. More generally let \(Z\subset X\) be closed and subanalytic, with inclusion \(i\). Choose a locally finite subanalytic cover \((E_a)\) on which all the finitely many cohomology sheaves of \(F\) are locally constant. The sets \(E_a\cap Z\) and \(E_a\setminus Z\) are subanalytic by intersection and difference in the [subanalytic set calculus](subanalytic-sets-and-limiting-tangent-directions.md#the-local-calculus-with-the-precise-properness-hypothesis). They still form a locally finite cover: each is a subset of its original member, and only two new members arise from it.
+Here is a direct proof that the cutoff preserves weak constructibility. More generally let \(Z\subset X\) be closed and subanalytic, with inclusion \(i\). Choose a locally finite subanalytic cover \((E_a)\) on which all the finitely many cohomology sheaves of \(F\) are locally constant. The sets \(E_a\cap Z\) and \(E_a\setminus Z\) are subanalytic by intersection and difference in the subanalytic set calculus. They still form a locally finite cover: each is a subset of its original member, and only two new members arise from it.
 
 The stalks of \(k_Z\) are \(k\) on \(Z\) and zero elsewhere, so this sheaf is flat. Exact restriction and closed direct image give, by the canonical stalkwise identification,
 

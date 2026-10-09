@@ -57,7 +57,7 @@ Let \(G\) be a second-countable locally compact Hausdorff group acting strictly,
 \]
 The algebra and its normal functionals use completed measure classes, while the point maps and probability kernels below use the underlying Borel spaces. A probability space is nonempty. The group acts by normal automorphisms because each point transformation is a nonsingular Borel bijection.
 
-The [measurable-action continuity proof](../../OA-ERGODIC/reader/measurable-actions-and-compact-models.html#2-why-measurable-unitary-representations-are-continuous) applies to this action. In its pushforward convention, \(r_g=d(g_*\mu)/d\mu\), and
+The measurable-action continuity proof applies to this action. In its pushforward convention, \(r_g=d(g_*\mu)/d\mu\), and
 \[
  (U_g\xi)(x)=r_g(x)^{1/2}\xi(g^{-1}x)
  \tag{F2}
@@ -71,7 +71,7 @@ The algebra \(D\) is a von Neumann subalgebra: it is the intersection of the ult
 \]
 The action fixes every element of \(D_0\), so all of its orbits are norm continuous.
 
-The [continuous-core construction](../../OA-ERGODIC/reader/measurable-actions-and-compact-models.html#3-building-a-separable-continuous-function-algebra), Lemma 3.1, gives a separable unital invariant C*-algebra \(B_0\subseteq A\), with norm-continuous orbits and \(B_0''=A\). Enlarge it by the invariant coordinates:
+The continuous-core construction, Lemma 3.1, gives a separable unital invariant C*-algebra \(B_0\subseteq A\), with norm-continuous orbits and \(B_0''=A\). Enlarge it by the invariant coordinates:
 \[
  B=C^*(B_0,D_0).
  \tag{F4}
@@ -109,7 +109,7 @@ Since \(D_0\) is fixed pointwise, restriction in (F5) gives the exact point iden
 
 Use the **original probability state** \(\varphi(f)=\int_Xf\,d\mu\). Its restriction to \(B=C(\Omega)\) has a Radon probability representing measure \(m\) by the [Radon representation proof](OA-FLOW-HR.md#hr-02). It has full support: a nonempty open set supports a nonzero positive continuous function, whose integral is positive by faithfulness of \(\varphi\).
 
-Here is the whole-algebra part of the [compact-model theorem](../../OA-ERGODIC/reader/measurable-actions-and-compact-models.html#4-the-compact-space-and-its-nonsingular-measure), with this specified state. The map
+Here is the whole-algebra part of the compact-model theorem, with this specified state. The map
 \[
  b\in B\subseteq L^2(X,\mu)\longmapsto\widehat b\in L^2(\Omega,m)
  \tag{F9}
@@ -209,7 +209,7 @@ The extension changes nothing on the probability-one original domain.
 
 ## One point map intertwines every group element
 
-We now apply the simultaneous point-realization mechanism of [Theorem 4.4](../../OA-ERGODIC/reader/measurable-actions-and-compact-models.html#4-the-compact-space-and-its-nonsingular-measure). Its ordinary spatial input has just been proved, its source action is the specified strict Borel nonsingular action, its target action is the jointly continuous compact action (F6), and (F11) intertwines their whole normal algebras. The following argument records the conull sets and the exact probability preservation.
+We now apply the simultaneous point-realization mechanism of Theorem 4.4. Its ordinary spatial input has just been proved, its source action is the specified strict Borel nonsingular action, its target action is the jointly continuous compact action (F6), and (F11) intertwines their whole normal algebras. The following argument records the conull sets and the exact probability preservation.
 
 Choose countably many continuous functions \(h_j:\Omega\to[0,1]\) separating its points. Testing (F11) against this family and using (S8) gives, for every fixed \(g\),
 \[
@@ -704,7 +704,7 @@ Put \(H_y=L^2(\Omega,m_y)\) and \(A_y=L^\infty(\Omega,m_y)\), represented by mul
 \]
 The middle equality means every essentially bounded measurable multiplication-operator field, not just the fields coming from a displayed list of continuous functions. The last equality uses the whole invariant factor, which was included when constructing \(p\). The space \(\mathscr H\) is separable because \(W\) is onto and \(L^2(\Omega,m)\) is separable. Each \(H_y\) is separable and nonzero, since \(m_y\) is a probability.
 
-The [nonsingular Koopman construction and continuity proof](../../OA-ERGODIC/reader/measurable-actions-and-compact-models.html#2-why-measurable-unitary-representations-are-continuous), including its separable locally compact extension, supply the strongly continuous representation
+The nonsingular Koopman construction and continuity proof, including its separable locally compact extension, supply the strongly continuous representation
 \[
  (U_g\xi)(\omega)
     =r_g(\omega)^{1/2}\xi(T_{g^{-1}}\omega),
@@ -712,7 +712,7 @@ The [nonsingular Koopman construction and continuity proof](../../OA-ERGODIC/rea
  r_g=\frac{d(T_g)_*m}{dm}.
  \tag{Q2}
 \]
-Here pushforward means \((T_g)_*m(E)=m(T_g^{-1}E)\). The derivative is positive and finite almost everywhere for each fixed \(g\). The [joint derivative construction](../../OA-ERGODIC/reader/measurable-actions-and-compact-models.html#1-a-jointly-measurable-derivative) and vector integration prove strong continuity; no invariant probability state is assumed. The derivative's fixed-pair cocycle identity makes \(U_gU_h=U_{gh}\) an identity of Hilbert-space operators. These operators satisfy
+Here pushforward means \((T_g)_*m(E)=m(T_g^{-1}E)\). The derivative is positive and finite almost everywhere for each fixed \(g\). The joint derivative construction and vector integration prove strong continuity; no invariant probability state is assumed. The derivative's fixed-pair cocycle identity makes \(U_gU_h=U_{gh}\) an identity of Hilbert-space operators. These operators satisfy
 \[
  U_gM_fU_g^*=M_{f\circ T_{g^{-1}}}
  \qquad(f\in L^\infty(\Omega,m)).

@@ -15,7 +15,7 @@ D_XF=R\mathcal Hom(F,\omega_X),\qquad
 D'_XF=R\mathcal Hom(F,k_X).
 $$
 
-The [manifold-duality lesson](../../sheaf-proof-readings/SH02-manifold-duality.html) supplies the dimension bounds `SH02-MD-DIMENSION`, the oriented Euclidean calculation `SH02-MD-EUCLIDEAN`, the submersion formula `SH02-MD-SUBMERSION`, the closed-submanifold formula `SH02-MD-CLOSED`, and trace compatibility `SH02-MD-TRACE`. The sign line $o(E)$ of a real bundle is obtained from its integral orientation line by extension of coefficients; its canonical square pairing identifies $o(E)^{\otimes2}$ with $k$.
+The manifold-duality lesson supplies the dimension bounds `SH02-MD-DIMENSION`, the oriented Euclidean calculation `SH02-MD-EUCLIDEAN`, the submersion formula `SH02-MD-SUBMERSION`, the closed-submanifold formula `SH02-MD-CLOSED`, and trace compatibility `SH02-MD-TRACE`. The sign line $o(E)$ of a real bundle is obtained from its integral orientation line by extension of coefficients; its canonical square pairing identifies $o(E)^{\otimes2}$ with $k$.
 
 The [exceptional-operation lesson](../../sheaf-proof-readings/SH02-exceptional-operations.html) supplies projection, composition, proper-support base change, localization, and the actual dual-sections adjunction in `SH02-EX-DUAL-SECTIONS`. Its support-forgetting map is the natural transformation `SH02-EX-SUPPORT-ERASURE`. The [local-finiteness lesson](../../sheaf-proof-readings/SH02-cohomological-biduality.html) supplies `SH02-CB-SYSTEMS`, `SH02-CB-BIDUALITY`, and `SH02-CB-EXTERNAL-HOM`. The words *cohomologically constructible* below mean that precise local ind/pro representability and perfectness condition; they do not mean that a finite stratification has been supplied.
 

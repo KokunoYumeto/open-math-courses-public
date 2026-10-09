@@ -4,7 +4,7 @@
 
 Multiplication in a group algebra initially looks like a long convolution sum. Its irreducible representations turn that multiplication into independent matrix multiplications. This makes Fourier inversion a statement about finite-dimensional algebras and makes character theory a tool for counting solutions of equations in a group.
 
-We use [Characters and the orthogonality relations](RT-FIN-02.md): matrix-coefficient orthogonality, the decomposition of the regular representation, and the character inner product. All vector spaces in this lesson are finite-dimensional over \(\mathbb C\). Write \(n=|G|\), choose one representative \(\rho_i:G\to\operatorname{GL}(V_i)\) of each irreducible isomorphism class, and put \(d_i=\dim V_i\), \(\chi_i=\operatorname{tr}\rho_i\). References and the exact boundary of the lesson appear at the end.
+We use Characters and the orthogonality relations: matrix-coefficient orthogonality, the decomposition of the regular representation, and the character inner product. All vector spaces in this lesson are finite-dimensional over \(\mathbb C\). Write \(n=|G|\), choose one representative \(\rho_i:G\to\operatorname{GL}(V_i)\) of each irreducible isomorphism class, and put \(d_i=\dim V_i\), \(\chi_i=\operatorname{tr}\rho_i\). References and the exact boundary of the lesson appear at the end.
 
 ## 1. Convolution becomes matrix multiplication
 
@@ -401,7 +401,7 @@ For example the \(2A\) count is \(60(1-1/3-1/3+1/5)=32\), and each 5-cycle count
 
 ## 6. What this lesson uses and what it does not prove
 
-The representation-theoretic prerequisites have the following proof locators. Complete reducibility is Theorem 2.3 and Schur's lemma is Theorem 3.1 in [Representations and complete reducibility](RT-FIN-01.md). Matrix-coefficient orthogonality, character determination and multiplicities, regular multiplicities and the degree-square identity, and character completeness are respectively Theorems 2.1, 3.1, 3.2 and 4.1 in [Characters and the orthogonality relations](RT-FIN-02.md).
+The representation-theoretic prerequisites have the following proof locators. Complete reducibility is Theorem 2.3 and Schur's lemma is Theorem 3.1 in [Representations and complete reducibility](RT-FIN-01.md). Matrix-coefficient orthogonality, character determination and multiplicities, regular multiplicities and the degree-square identity, and character completeness are respectively Theorems 2.1, 3.1, 3.2 and 4.1 in Characters and the orthogonality relations.
 
 Here are the elementary counting and arithmetic tools used in the examples. Their proofs are independent of the representation-theoretic conclusions above.
 

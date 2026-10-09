@@ -4,7 +4,7 @@
 
 A representation of a subgroup describes some of a group's symmetries. Induction extends that information to a representation of the whole group by adding one copy of the original vector space for each coset. Frobenius reciprocity explains exactly how the resulting representation interacts with restriction. Its two morphism-level formulas are useful for different directions of a map.
 
-We work over \(\mathbb C\), with finite groups and finite-dimensional representations. The prerequisite is [Characters and the orthogonality relations](RT-FIN-02.md), particularly Theorem 3.1 for character multiplicities and determination. Complete reducibility and Schur's lemma are Theorems 2.3 and 3.1 in [Representations and complete reducibility](RT-FIN-01.md). All modules are left modules. We use the class-function inner product linear in the first variable.
+We work over \(\mathbb C\), with finite groups and finite-dimensional representations. The prerequisite is Characters and the orthogonality relations, particularly Theorem 3.1 for character multiplicities and determination. Complete reducibility and Schur's lemma are Theorems 2.3 and 3.1 in [Representations and complete reducibility](RT-FIN-01.md). All modules are left modules. We use the class-function inner product linear in the first variable.
 
 ## 1. One copy for each coset
 

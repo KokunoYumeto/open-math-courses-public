@@ -354,7 +354,7 @@ is one exactly at a pivot $(i,j)$ and zero otherwise, with empty boundary rectan
 
 **Solution.** Choose the upper root as positive. Its group is the additive line bundle $\mathbf V(L^{-1})$, and the triangular subgroup is $T\ltimes\mathbf V(L^{-1})$. A pinning would choose a nowhere-vanishing section of $L^{-1}$ and therefore trivialize $L$. Hence this pair has no global pinning, although it has one on every open set trivializing $L$. Its relative big cell is $\mathbf V(L)\times T\times\mathbf V(L^{-1})$.
 
-The [course prerequisite guide](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-RG/prerequisites.html) records the exact supporting statements and which lessons are published or still planned.
+The course prerequisite guide records the exact supporting statements and which lessons are published or still planned.
 
 ## References and prerequisites
 

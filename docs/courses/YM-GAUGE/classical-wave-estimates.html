@@ -1,0 +1,1169 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Wave energy, dispersion and null forms</title><link rel="stylesheet" href="reader.css"></head><body><nav><a href="index.html">Course contents</a><a href="src/YM-F09-wave-estimates.md">Lesson source</a><span class="unlinked">Source and reader download</span></nav><main><h1 id="wave-energy-dispersion-and-null-forms">Wave energy, dispersion
+and null forms</h1>
+<p><a href="classical-fixed-time-estimates.html">Gauss law, heat
+curvature and fixed-time estimates</a> controls the heat extension at
+each physical time. The physical evolution also needs estimates over a
+time interval. This chapter proves the three wave estimates that enter
+that next step.</p>
+<p>Energy controls the derivative field at every time. The fourth-power
+estimate integrates in both space and time and records how a wave
+spreads. A null form is a particular difference of derivative products:
+its Fourier symbol vanishes for parallel spatial frequencies. We
+calculate how that cancellation controls the product for both equal and
+opposite wave-frequency signs.</p>
+<p>The physical coordinate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>,
+speed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">c&gt;0</annotation></semantics></math>,
+every Fourier factor, the original fields and finite heat endpoint stay
+explicit. The exact comparison to a length-valued time coordinate is
+proved in Section 4 and retained as a source comparison.</p>
+<p>The human-source comparison is Sung-Jin Oh, <a href="https://arxiv.org/abs/1210.1558v2"><em>Gauge choice for the
+Yang–Mills equations using the Yang–Mills heat flow and local
+well-posedness in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>H</mi><mn>1</mn></msup><annotation encoding="application/x-tex">H^1</annotation></semantics></math></em>,
+arXiv:1210.1558v2</a>, Section 3.2 and the concrete wave-weight
+definitions in Section 3.3. Oh attributes the null-form estimate to
+Sergiu Klainerman and Matei Machedon, “Space-time estimates for null
+forms and the local existence theorem,” <em>Communications on Pure and
+Applied Mathematics</em> 46 (1993), 1221–1268. The complete proofs below
+are independently written Fourier calculations. Section 5 visibly
+corrects the displayed forcing derivative in the source.</p>
+<aside aria-label="Contents" class="contents"><strong>In this lesson</strong><ol><li><a href="#fourier-convention-domains-and-energy">Fourier convention,
+domains and energy</a></li><li><a href="#the-cone-calculation-for-the-fourth-power-estimate">The cone
+calculation for the fourth-power estimate</a></li><li><a href="#the-spatial-null-form-calculation">The spatial null-form
+calculation</a></li><li><a href="#exact-receiving-wave-norms">Exact receiving wave norms</a></li><li><a href="#a-source-display-that-requires-its-derivative">A source
+display that requires its derivative</a></li><li><a href="#an-exact-smooth-wave-attaining-the-fourth-power-constant">An
+exact smooth wave attaining the fourth-power constant</a></li><li><a href="#exercises-with-complete-solutions">Exercises with complete
+solutions</a></li><li><a href="#the-next-physical-step">The next physical step</a></li></ol></aside><h2 id="fourier-convention-domains-and-energy">1. Fourier convention,
+domains and energy</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">c&gt;0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mn>0</mn></msub><mo>∈</mo><mi>I</mi><mo>=</mo><mo form="prefix" stretchy="false">[</mo><msub><mi>t</mi><mo>−</mo></msub><mo>,</mo><msub><mi>t</mi><mo>+</mo></msub><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">t_0\in I=[t_-,t_+]</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>□</mo><mi>c</mi></msub><mo>=</mo><mi>−</mi><msup><mi>c</mi><mrow><mi>−</mi><mn>2</mn></mrow></msup><msubsup><mi>∂</mi><mi>t</mi><mn>2</mn></msubsup><mo>+</mo><msub><mi mathvariant="normal">Δ</mi><mi>x</mi></msub></mrow><annotation encoding="application/x-tex">\Box_c=-c^{-2}\partial_t^2+\Delta_x</annotation></semantics></math>
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="double-struck">ℝ</mi><mi>t</mi></msub><mo>×</mo><msubsup><mi mathvariant="double-struck">ℝ</mi><mi>x</mi><mn>3</mn></msubsup></mrow><annotation encoding="application/x-tex">\mathbb R_t\times\mathbb R_x^3</annotation></semantics></math>.
+Initially take smooth rapidly decreasing spatial data, and smooth
+forcing with compact time support. The spatial Fourier transform and its
+inverse are</p>
+<div class="equation" id="eq-HW-1"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>f</mi><mo accent="true">̂</mo></mover><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mo>∫</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup></msub><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>x</mi><mo>⋅</mo><mi>ξ</mi></mrow></msup><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>3</mn></mrow></msup><msub><mo>∫</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup></msub><msup><mi>e</mi><mrow><mi>i</mi><mi>x</mi><mo>⋅</mo><mi>ξ</mi></mrow></msup><mover><mi>f</mi><mo accent="true">̂</mo></mover><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>ξ</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\widehat f(\xi)=\int_{\mathbb R^3}e^{-ix\cdot\xi}f(x)\,dx,\qquad
+f(x)=(2\pi)^{-3}\int_{\mathbb R^3}e^{ix\cdot\xi}\widehat f(\xi)\,d\xi.
+\tag{HW.1}
+</annotation></semantics></math></div><span class="eq-number">(HW.1)</span></div>
+<p>The space-time inverse has factor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>4</mn></mrow></msup></mrow><annotation encoding="application/x-tex">(2\pi)^{-4}</annotation></semantics></math>.
+For the homogeneous Sobolev seminorm used below,</p>
+<div class="equation" id="eq-HW-2"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mi>f</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><msup><mover><mi>H</mi><mo accent="true">̇</mo></mover><mi>q</mi></msup><mn>2</mn></msubsup><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>3</mn></mrow></msup><msub><mo>∫</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup></msub><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><msup><mo form="prefix" stretchy="false">|</mo><mrow><mn>2</mn><mi>q</mi></mrow></msup><mo form="prefix" stretchy="false">|</mo><mover><mi>f</mi><mo accent="true">̂</mo></mover><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>ξ</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\|f\|_{\dot H^q}^2=(2\pi)^{-3}
+ \int_{\mathbb R^3}|\xi|^{2q}|\widehat f(\xi)|^2\,d\xi.
+\tag{HW.2}
+</annotation></semantics></math></div><span class="eq-number">(HW.2)</span></div>
+<p>We use this formula on the actual regular fields and their Fourier
+multipliers. Regular spatial data in this chapter belong to every
+inhomogeneous Sobolev space; all stated time derivatives are continuous
+in those spaces on the compact physical-time interval. This specifies
+the field itself, not an equivalence class modulo polynomials.</p>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>□</mo><mi>c</mi></msub><mi>u</mi><mo>=</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">\Box_cu=N</annotation></semantics></math>,
+define the derivative tuple and energy</p>
+<div class="equation" id="eq-HW-3"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>c</mi></msub><mi>u</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>c</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msub><mi>∂</mi><mi>t</mi></msub><mi>u</mi><mo>,</mo><msub><mi>∂</mi><mn>1</mn></msub><mi>u</mi><mo>,</mo><msub><mi>∂</mi><mn>2</mn></msub><mi>u</mi><mo>,</mo><msub><mi>∂</mi><mn>3</mn></msub><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="1.0em"></mspace><msub><mi>E</mi><mi>q</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>;</mo><mi>t</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>3</mn></mrow></msup><mo>∫</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><msup><mo form="prefix" stretchy="false">|</mo><mrow><mn>2</mn><mi>q</mi></mrow></msup><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><msup><mi>c</mi><mrow><mi>−</mi><mn>2</mn></mrow></msup><mo form="prefix" stretchy="false">|</mo><mover><mrow><msub><mi>∂</mi><mi>t</mi></msub><mi>u</mi></mrow><mo accent="true">̂</mo></mover><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo form="prefix" stretchy="false">|</mo><mover><mi>u</mi><mo accent="true">̂</mo></mover><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo><mi>d</mi><mi>ξ</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\partial_cu=(c^{-1}\partial_tu,\partial_1u,\partial_2u,\partial_3u),
+\quad
+E_q(u;t)^2=(2\pi)^{-3}\int |\xi|^{2q}
+ \bigl(c^{-2}|\widehat{\partial_tu}|^2+|\xi|^2|\widehat u|^2\bigr)d\xi.
+\tag{HW.3}
+</annotation></semantics></math></div><span class="eq-number">(HW.3)</span></div>
+<p>The map from the original derivative tuple is the diagonal component
+map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">diag</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>c</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{diag}(c^{-1},1,1,1)</annotation></semantics></math>;
+its inverse is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">diag</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>c</mi><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{diag}(c,1,1,1)</annotation></semantics></math>.
+The physical coordinate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>,
+speed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>,
+and original derivatives are retained. In particular a bound on the
+first component gives a bound on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>t</mi></msub><mi>u</mi></mrow><annotation encoding="application/x-tex">\partial_tu</annotation></semantics></math>
+after multiplication by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>.</p>
+<p>Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mrow><mi>t</mi><mi>t</mi></mrow></msub><mo>−</mo><msup><mi>c</mi><mn>2</mn></msup><mi mathvariant="normal">Δ</mi><mi>u</mi><mo>=</mo><mi>−</mi><msup><mi>c</mi><mn>2</mn></msup><mi>N</mi></mrow><annotation encoding="application/x-tex">u_{tt}-c^2\Delta u=-c^2N</annotation></semantics></math>,
+Fourier differentiation and integration give exactly</p>
+<div class="equation" id="eq-HW-4"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><msub><mi>E</mi><mi>q</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>;</mo><mi>t</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><mi>−</mi><mn>2</mn><mrow><mi mathvariant="normal">Re</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">⟨</mo><mo form="prefix" stretchy="false">|</mo><mi>D</mi><msup><mo form="prefix" stretchy="false">|</mo><mi>q</mi></msup><msub><mi>u</mi><mi>t</mi></msub><mo>,</mo><mo form="prefix" stretchy="false">|</mo><mi>D</mi><msup><mo form="prefix" stretchy="false">|</mo><mi>q</mi></msup><mi>N</mi><mo form="postfix" stretchy="false">⟩</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\frac{d}{dt}E_q(u;t)^2
+ =-2\operatorname{Re}\langle |D|^qu_t,|D|^qN\rangle .
+\tag{HW.4}
+</annotation></semantics></math></div><span class="eq-number">(HW.4)</span></div>
+<p>Cauchy–Schwarz, followed by integration with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msubsup><mi>E</mi><mi>q</mi><mn>2</mn></msubsup><mo>+</mo><msup><mi>ε</mi><mn>2</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">(E_q^2+\varepsilon^2)^{1/2}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mo>↓</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\varepsilon\downarrow0</annotation></semantics></math>,
+proves</p>
+<div class="equation" id="eq-HW-5"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>q</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>;</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>≤</mo><msub><mi>E</mi><mi>q</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>;</mo><msub><mi>t</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mi>c</mi><msubsup><mo>∫</mo><mrow><mrow><mi mathvariant="normal">min</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><msub><mi>t</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow><mrow><mrow><mi mathvariant="normal">max</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><msub><mi>t</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow></msubsup><mo form="postfix" stretchy="false">∥</mo><mi>N</mi><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">∥</mo><msup><mover><mi>H</mi><mo accent="true">̇</mo></mover><mi>q</mi></msup></msub><mspace width="0.167em"></mspace><mi>d</mi><mi>r</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ E_q(u;t)\le E_q(u;t_0)
+   +c\int_{\min(t,t_0)}^{\max(t,t_0)}\|N(r)\|_{\dot H^q}\,dr .
+\tag{HW.5}
+</annotation></semantics></math></div><span class="eq-number">(HW.5)</span></div>
+<p>The exact Duhamel formula is</p>
+<div class="equation" id="eq-HW-6"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow></mrow></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>c</mi><mo form="prefix" stretchy="false">|</mo><mi>D</mi><mo form="prefix" stretchy="false">|</mo><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>−</mo><msub><mi>t</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mi>ϕ</mi><mo>+</mo><mfrac><mrow><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>c</mi><mo form="prefix" stretchy="false">|</mo><mi>D</mi><mo form="prefix" stretchy="false">|</mo><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>−</mo><msub><mi>t</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mrow><mrow><mi>c</mi><mo form="prefix" stretchy="false">|</mo><mi>D</mi><mo form="prefix" stretchy="false">|</mo></mrow></mfrac><mi>ψ</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mi>−</mi><mi>c</mi><msubsup><mo>∫</mo><msub><mi>t</mi><mn>0</mn></msub><mi>t</mi></msubsup><mfrac><mrow><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>c</mi><mo form="prefix" stretchy="false">|</mo><mi>D</mi><mo form="prefix" stretchy="false">|</mo><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>−</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mrow><mrow><mo form="prefix" stretchy="false">|</mo><mi>D</mi><mo form="prefix" stretchy="false">|</mo></mrow></mfrac><mi>N</mi><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>r</mi><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+u(t)={}&amp;\cos(c|D|(t-t_0))\phi
+ +\frac{\sin(c|D|(t-t_0))}{c|D|}\psi\\
+&amp;-c\int_{t_0}^{t}\frac{\sin(c|D|(t-r))}{|D|}N(r)\,dr .
+\end{aligned}\tag{HW.6}
+</annotation></semantics></math></div><span class="eq-number">(HW.6)</span></div>
+<p>The zero-frequency value of the data multiplier is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>−</mo><msub><mi>t</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">t-t_0</annotation></semantics></math>;
+the forcing multiplier has its corresponding continuous value. There is
+no deleted zero mode.</p>
+<h2 id="the-cone-calculation-for-the-fourth-power-estimate">2. The cone
+calculation for the fourth-power estimate</h2>
+<p>For a scalar complex half-wave write</p>
+<div class="equation" id="eq-HW-7"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mi>σ</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>3</mn></mrow></msup><mo>∫</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>x</mi><mo>⋅</mo><mi>ξ</mi><mo>+</mo><mi>i</mi><mi>σ</mi><mi>c</mi><mi>t</mi><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo></mrow></msup><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>ξ</mi><mo>,</mo><mspace width="1.0em"></mspace><mi>σ</mi><mo>∈</mo><mo form="prefix" stretchy="false">{</mo><mi>+</mi><mn>1</mn><mo>,</mo><mi>−</mi><mn>1</mn><mo form="postfix" stretchy="false">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+u_\sigma(t,x)=(2\pi)^{-3}\int
+ e^{ix\cdot\xi+i\sigma ct|\xi|}f(\xi)\,d\xi,\quad \sigma\in\{+1,-1\}.
+\tag{HW.7}
+</annotation></semantics></math></div><span class="eq-number">(HW.7)</span></div>
+<p>Time translation changes only a modulus-one factor in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>.
+Start with smooth
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+supported in a bounded annulus. For the plus sign, the space-time
+Fourier transform of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>u</mi><mo>+</mo><mn>2</mn></msubsup><annotation encoding="application/x-tex">u_+^2</annotation></semantics></math>
+is</p>
+<div class="equation" id="eq-HW-8"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>2</mn></mrow></msup><mo>∫</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>η</mi><mo form="postfix" stretchy="false">)</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo>−</mo><mi>η</mi><mo form="postfix" stretchy="false">)</mo><mi>δ</mi><mo form="prefix" stretchy="false">(</mo><mi>τ</mi><mo>−</mo><mi>c</mi><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">|</mo><mi>η</mi><mo form="prefix" stretchy="false">|</mo><mi>+</mi><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo>−</mo><mi>η</mi><mo form="prefix" stretchy="false">|</mo><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>η</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+(2\pi)^{-2}\int f(\eta)f(\xi-\eta)
+ \delta(\tau-c(|\eta|+|\xi-\eta|))\,d\eta .
+\tag{HW.8}
+</annotation></semantics></math></div><span class="eq-number">(HW.8)</span></div>
+<p>Here the Dirac distribution is defined by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><mi>δ</mi><mo form="prefix" stretchy="false">(</mo><mi>τ</mi><mo>−</mo><mi>b</mi><mo form="postfix" stretchy="false">)</mo><mi>χ</mi><mo form="prefix" stretchy="false">(</mo><mi>τ</mi><mo form="postfix" stretchy="false">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>τ</mi><mo>=</mo><mi>χ</mi><mo form="prefix" stretchy="false">(</mo><mi>b</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\int\delta(\tau-b)\chi(\tau)\,d\tau=\chi(b)</annotation></semantics></math>.
+To verify the coefficient, multiply the two inverse spatial Fourier
+integrals and transform in all four variables. The spatial integral
+gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>3</mn></msup><mi>δ</mi><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo>−</mo><mi>η</mi><mo>−</mo><mi>ζ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2\pi)^3\delta(\xi-\eta-\zeta)</annotation></semantics></math>;
+the time integral gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>π</mi><mi>δ</mi><mo form="prefix" stretchy="false">(</mo><mi>τ</mi><mo>−</mo><mi>c</mi><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo>+</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">2\pi\delta(\tau-c(r+v))</annotation></semantics></math>.
+Their product with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>6</mn></mrow></msup></mrow><annotation encoding="application/x-tex">(2\pi)^{-6}</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">(2\pi)^{-2}</annotation></semantics></math>.
+These identities hold against smooth compactly supported test functions
+by Fourier inversion; the initial bounded frequency supports justify the
+other integrations.</p>
+<p>Put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mo form="prefix" stretchy="false">|</mo><mi>η</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">r=|\eta|</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo>−</mo><mi>η</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">v=|\xi-\eta|</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">R=|\xi|</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mi>τ</mi><mi>/</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">\lambda=\tau/c</annotation></semantics></math>.
+When
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R&gt;0</annotation></semantics></math>,
+let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>φ</mi><annotation encoding="application/x-tex">\varphi</annotation></semantics></math>
+be the azimuthal angle about the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ξ</mi><annotation encoding="application/x-tex">\xi</annotation></semantics></math>-axis.
+Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>v</mi><mn>2</mn></msup><mo>=</mo><msup><mi>R</mi><mn>2</mn></msup><mo>+</mo><msup><mi>r</mi><mn>2</mn></msup><mo>−</mo><mn>2</mn><mi>R</mi><mi>r</mi><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">v^2=R^2+r^2-2Rr\cos\theta</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>d</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mi>θ</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">|</mo><mo>=</mo><mi>v</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>v</mi><mi>/</mi><mo form="prefix" stretchy="false">(</mo><mi>R</mi><mi>r</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">|d(\cos\theta)|=v\,dv/(Rr)</annotation></semantics></math>.
+The full polar measure is</p>
+<div class="equation" id="eq-HW-9"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>η</mi><mo>=</mo><mfrac><mrow><mi>r</mi><mi>v</mi></mrow><mi>R</mi></mfrac><mspace width="0.167em"></mspace><mi>d</mi><mi>r</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>v</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>φ</mi><mo>,</mo><mspace width="1.0em"></mspace><mn>0</mn><mo>≤</mo><mi>φ</mi><mo>&lt;</mo><mn>2</mn><mi>π</mi><mo>,</mo><mspace width="2.0em"></mspace><mo form="prefix" stretchy="false">|</mo><mi>r</mi><mo>−</mo><mi>v</mi><mo form="prefix" stretchy="false">|</mo><mo>≤</mo><mi>R</mi><mo>≤</mo><mi>r</mi><mo>+</mo><mi>v</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+d\eta=\frac{rv}{R}\,dr\,dv\,d\varphi,\quad 0\le\varphi&lt;2\pi,
+\qquad |r-v|\le R\le r+v.
+\tag{HW.9}
+</annotation></semantics></math></div><span class="eq-number">(HW.9)</span></div>
+<p>For radial functions of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>,</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">r,v</annotation></semantics></math>,
+integrating the azimuth gives the factor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">2\pi</annotation></semantics></math>.
+This applies to the kernel below; the Fourier data need not be radial.
+For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi><mo>&gt;</mo><mi>c</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">\tau&gt;cR</annotation></semantics></math>,
+the constraint
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>+</mo><mi>v</mi><mo>=</mo><mi>λ</mi></mrow><annotation encoding="application/x-tex">r+v=\lambda</annotation></semantics></math>
+leaves
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>λ</mi><mo>−</mo><mi>R</mi><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn><mo>≤</mo><mi>r</mi><mo>≤</mo><mo form="prefix" stretchy="false">(</mo><mi>λ</mi><mo>+</mo><mi>R</mi><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">(\lambda-R)/2\le r\le(\lambda+R)/2</annotation></semantics></math>,
+an interval of length
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>.
+Consequently</p>
+<div class="equation" id="eq-HW-10"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><mfrac><mrow><mi>δ</mi><mo form="prefix" stretchy="false">(</mo><mi>τ</mi><mo>−</mo><mi>c</mi><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo>+</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mrow><mrow><mi>r</mi><mi>v</mi></mrow></mfrac><mspace width="0.167em"></mspace><mi>d</mi><mi>η</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mi>π</mi></mrow><mi>c</mi></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\int \frac{\delta(\tau-c(r+v))}{rv}\,d\eta=\frac{2\pi}{c}.
+\tag{HW.10}
+</annotation></semantics></math></div><span class="eq-number">(HW.10)</span></div>
+<p>It is zero outside the forward cone. At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R=0</annotation></semantics></math>
+the same value follows from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>π</mi><msubsup><mo>∫</mo><mn>0</mn><mi>∞</mi></msubsup><mi>δ</mi><mo form="prefix" stretchy="false">(</mo><mi>τ</mi><mo>−</mo><mn>2</mn><mi>c</mi><mi>r</mi><mo form="postfix" stretchy="false">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">4\pi\int_0^\infty\delta(\tau-2cr)\,dr</annotation></semantics></math>.
+For fixed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\xi\ne0</annotation></semantics></math>,
+the full variables
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo>,</mo><mi>v</mi><mo>,</mo><mi>φ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(r,v,\varphi)</annotation></semantics></math>
+convert the time-frequency pushforward into an ordinary density:
+substitute
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><mi>τ</mi><mi>/</mi><mi>c</mi><mo>−</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">v=\tau/c-r</annotation></semantics></math>,
+with Jacobian
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">1/c</annotation></semantics></math>.
+Polar axes and the boundary of the triangle region have zero measure
+before this linear change. They therefore produce no additional singular
+measure. The set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\xi=0</annotation></semantics></math>
+has zero outer spatial-frequency measure. This justifies the density
+formula before applying Plancherel.</p>
+<p>Cauchy–Schwarz on the delta measure, with weight
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mi>v</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">1/(rv)</annotation></semantics></math>,
+and space-time Plancherel now give</p>
+<div class="equation" id="eq-HW-11"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo form="postfix" stretchy="false">∥</mo><msub><mi>u</mi><mo>+</mo></msub><msubsup><mo form="postfix" stretchy="false">∥</mo><msubsup><mi>L</mi><mrow><mi>t</mi><mo>,</mo><mi>x</mi></mrow><mn>4</mn></msubsup><mn>4</mn></msubsup></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>8</mn></mrow></msup><mfrac><mrow><mn>2</mn><mi>π</mi></mrow><mi>c</mi></mfrac><msup><mrow><mo form="prefix" stretchy="true">(</mo><mo>∫</mo><mo form="prefix" stretchy="false">|</mo><mi>η</mi><mo form="prefix" stretchy="false">|</mo><mo form="prefix" stretchy="false">|</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>η</mi><mo form="postfix" stretchy="false">)</mo><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>η</mi><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mi>π</mi><mi>c</mi></mrow></mfrac><mo form="postfix" stretchy="false">∥</mo><msub><mi>u</mi><mo>+</mo></msub><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><msubsup><mo form="postfix" stretchy="false">∥</mo><msup><mover><mi>H</mi><mo accent="true">̇</mo></mover><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mn>4</mn></msubsup><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\|u_+\|_{L^4_{t,x}}^4
+&amp;\le(2\pi)^{-8}\frac{2\pi}{c}
+ \left(\int |\eta||f(\eta)|^2\,d\eta\right)^2\\
+&amp;=\frac1{2\pi c}\|u_+(0)\|_{\dot H^{1/2}}^4 .
+\end{aligned}\tag{HW.11}
+</annotation></semantics></math></div><span class="eq-number">(HW.11)</span></div>
+<p>The minus sign follows by time reflection, without changing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>.
+For actual data in every inhomogeneous Sobolev space, bounded annular
+Fourier cutoffs converge in both
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mover><mi>H</mi><mo accent="true">̇</mo></mover><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><annotation encoding="application/x-tex">\dot H^{1/2}</annotation></semantics></math>.
+The estimate makes the waves Cauchy in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>4</mn></msup><annotation encoding="application/x-tex">L^4</annotation></semantics></math>,
+while unitarity gives convergence locally in time in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>L</mi><mi>x</mi><mn>2</mn></msubsup><annotation encoding="application/x-tex">L^2_x</annotation></semantics></math>.
+The two limits agree as distributions, proving (HW.11) for the original
+datum.</p>
+<p>For the homogeneous solution with data
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>ϕ</mi><mo>,</mo><mi>ψ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\phi,\psi)</annotation></semantics></math>,
+set</p>
+<div class="equation" id="eq-HW-12"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mo>±</mo></msub><mo>=</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mover><mi>ϕ</mi><mo accent="true">̂</mo></mover><mspace width="0.222em"></mspace><mo>±</mo><mfrac><mover><mi>ψ</mi><mo accent="true">̂</mo></mover><mrow><mn>2</mn><mi>i</mi><mi>c</mi><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+f_\pm=\tfrac12\widehat\phi
+ \ \pm\frac{\widehat\psi}{2ic|\xi|}.
+\tag{HW.12}
+</annotation></semantics></math></div><span class="eq-number">(HW.12)</span></div>
+<p>The signs give
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>c</mi><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>f</mi><mo>+</mo></msub><mo>−</mo><msub><mi>f</mi><mo>−</mo></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mover><mi>ψ</mi><mo accent="true">̂</mo></mover></mrow><annotation encoding="application/x-tex">ic|\xi|(f_+-f_-)=\widehat\psi</annotation></semantics></math>.
+For each half-wave, summing the squared
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mover><mi>H</mi><mo accent="true">̇</mo></mover><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><annotation encoding="application/x-tex">\dot H^{1/2}</annotation></semantics></math>
+norms of the four components of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>c</mi></msub><msub><mi>u</mi><mo>±</mo></msub></mrow><annotation encoding="application/x-tex">\partial_cu_\pm</annotation></semantics></math>
+gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo form="postfix" stretchy="false">∥</mo><msub><mi>u</mi><mo>±</mo></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>t</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo><msubsup><mo form="postfix" stretchy="false">∥</mo><msup><mover><mi>H</mi><mo accent="true">̇</mo></mover><mrow><mn>3</mn><mi>/</mi><mn>2</mn></mrow></msup><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">2\|u_\pm(t_0)\|_{\dot H^{3/2}}^2</annotation></semantics></math>.
+Minkowski applied to the sum of component squares, followed by the
+triangle inequality for the two half-waves and the parallelogram
+identity, proves</p>
+<div class="equation" id="eq-HW-13"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><msub><mi>∂</mi><mi>c</mi></msub><mi>u</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msubsup><mi>L</mi><mrow><mi>t</mi><mo>,</mo><mi>x</mi></mrow><mn>4</mn></msubsup><mo form="prefix" stretchy="false">(</mo><msup><mi mathvariant="double-struck">ℝ</mi><mrow><mn>1</mn><mo>+</mo><mn>3</mn></mrow></msup><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo>≤</mo><msqrt><mn>2</mn></msqrt><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><mi>c</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>1</mn><mi>/</mi><mn>4</mn></mrow></msup><msup><mrow><mo form="prefix" stretchy="true">(</mo><mo form="postfix" stretchy="false">∥</mo><mi>ϕ</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><msup><mover><mi>H</mi><mo accent="true">̇</mo></mover><mrow><mn>3</mn><mi>/</mi><mn>2</mn></mrow></msup><mn>2</mn></msubsup><mo>+</mo><msup><mi>c</mi><mrow><mi>−</mi><mn>2</mn></mrow></msup><mo form="postfix" stretchy="false">∥</mo><mi>ψ</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><msup><mover><mi>H</mi><mo accent="true">̇</mo></mover><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mn>2</mn></msubsup><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\|\partial_cu\|_{L^4_{t,x}(\mathbb R^{1+3})}
+\le\sqrt2(2\pi c)^{-1/4}
+\left(\|\phi\|_{\dot H^{3/2}}^2
+       +c^{-2}\|\psi\|_{\dot H^{1/2}}^2\right)^{1/2}.
+\tag{HW.13}
+</annotation></semantics></math></div><span class="eq-number">(HW.13)</span></div>
+<p>Finite-dimensional vector or matrix components obey the same tuple
+bound with their Euclidean or Hilbert–Schmidt norms.</p>
+<p>For regular full-wave data, a half-wave can contain
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><msup><mo form="prefix" stretchy="false">|</mo><mrow><mi>−</mi><mn>1</mn></mrow></msup><mover><mi>ψ</mi><mo accent="true">̂</mo></mover></mrow><annotation encoding="application/x-tex">|\xi|^{-1}\widehat\psi</annotation></semantics></math>
+at low frequency. This defines a tempered distribution: near zero
+Cauchy–Schwarz uses
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∫</mo><mrow><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo><mo>&lt;</mo><mn>1</mn></mrow></msub><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><msup><mo form="prefix" stretchy="false">|</mo><mrow><mi>−</mi><mn>2</mn></mrow></msup><mi>d</mi><mi>ξ</mi><mo>=</mo><mn>4</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">\int_{|\xi|&lt;1}|\xi|^{-2}d\xi=4\pi</annotation></semantics></math>,
+while at large frequency the original regular data provide all required
+weighted bounds. Its derivative tuple has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math>
+data, since each spatial multiplier on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>ψ</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\widehat\psi</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ξ</mi><mi>i</mi></msub><mi>/</mi><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">\xi_i/|\xi|</annotation></semantics></math>,
+bounded in absolute value by one. Annular approximation proves (HW.13)
+for the actual full wave. The original zero-frequency cancellation stays
+in (HW.6).</p>
+<p>For the inhomogeneous solution on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>,
+differentiate HW.6 before introducing the time restriction. The time
+derivative has no endpoint term because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\sin(0)=0</annotation></semantics></math>.
+At each forcing time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>,
+the resulting term is the derivative tuple of a free wave with initial
+velocity
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msup><mi>c</mi><mn>2</mn></msup><mi>N</mi><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">-c^2N(r)</annotation></semantics></math>,
+restricted to times between
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+and the appropriate endpoint of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>.
+Its data energy in HW.13 is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo form="postfix" stretchy="false">∥</mo><mi>N</mi><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">∥</mo><msup><mover><mi>H</mi><mo accent="true">̇</mo></mover><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup></msub></mrow><annotation encoding="application/x-tex">c\|N(r)\|_{\dot H^{1/2}}</annotation></semantics></math>.
+Minkowski therefore proves</p>
+<div class="equation" id="eq-HW-14"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><msub><mi>∂</mi><mi>c</mi></msub><mi>u</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msubsup><mi>L</mi><mrow><mi>t</mi><mo>,</mo><mi>x</mi></mrow><mn>4</mn></msubsup><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo>×</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo>≤</mo><msqrt><mn>2</mn></msqrt><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><mi>c</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>1</mn><mi>/</mi><mn>4</mn></mrow></msup><mrow><mo form="prefix" stretchy="true">[</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mo form="postfix" stretchy="false">∥</mo><mi>ϕ</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><msup><mover><mi>H</mi><mo accent="true">̇</mo></mover><mrow><mn>3</mn><mi>/</mi><mn>2</mn></mrow></msup><mn>2</mn></msubsup><mo>+</mo><msup><mi>c</mi><mrow><mi>−</mi><mn>2</mn></mrow></msup><mo form="postfix" stretchy="false">∥</mo><mi>ψ</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><msup><mover><mi>H</mi><mo accent="true">̇</mo></mover><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mn>2</mn></msubsup><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mo>+</mo><mi>c</mi><mo form="postfix" stretchy="false">∥</mo><mi>N</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msubsup><mi>L</mi><mi>t</mi><mn>1</mn></msubsup><msubsup><mover><mi>H</mi><mo accent="true">̇</mo></mover><mi>x</mi><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msubsup><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo form="postfix" stretchy="true">]</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\|\partial_cu\|_{L^4_{t,x}(I\times\mathbb R^3)}
+\le\sqrt2(2\pi c)^{-1/4}
+\left[
+\left(\|\phi\|_{\dot H^{3/2}}^2
++c^{-2}\|\psi\|_{\dot H^{1/2}}^2\right)^{1/2}
++c\|N\|_{L^1_t\dot H^{1/2}_x(I)}
+\right].
+\tag{HW.14}
+</annotation></semantics></math></div><span class="eq-number">(HW.14)</span></div>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>&lt;</mo><msub><mi>t</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">r&lt;t_0</annotation></semantics></math>
+the orientation of the integral in HW.6 reverses its sign; the same norm
+bound holds. Integrating both time portions uses each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>∈</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">r\in I</annotation></semantics></math>
+once.</p>
+<h2 id="the-spatial-null-form-calculation">3. The spatial null-form
+calculation</h2>
+<p>Keep the original spatial derivatives and their order:</p>
+<div class="equation" id="eq-HW-15"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>∂</mi><mi>i</mi></msub><mi>u</mi><mspace width="0.167em"></mspace><msub><mi>∂</mi><mi>j</mi></msub><mi>v</mi><mo>−</mo><msub><mi>∂</mi><mi>j</mi></msub><mi>u</mi><mspace width="0.167em"></mspace><msub><mi>∂</mi><mi>i</mi></msub><mi>v</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+Q_{ij}(u,v)=\partial_i u\,\partial_j v-\partial_j u\,\partial_i v .
+\tag{HW.15}
+</annotation></semantics></math></div><span class="eq-number">(HW.15)</span></div>
+<p>For matrix-valued fields these are ordered matrix products. Let the
+two inputs have signs
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mo>,</mo><mi>ρ</mi></mrow><annotation encoding="application/x-tex">\sigma,\rho</annotation></semantics></math>
+in HW.7 and Fourier data
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>,</mo><mi>g</mi></mrow><annotation encoding="application/x-tex">f,g</annotation></semantics></math>.
+With
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ζ</mi><mo>=</mo><mi>ξ</mi><mo>−</mo><mi>η</mi></mrow><annotation encoding="application/x-tex">\zeta=\xi-\eta</annotation></semantics></math>,
+the symbol is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msub><mi>m</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">-m_{ij}</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><msub><mi>η</mi><mi>i</mi></msub><msub><mi>ζ</mi><mi>j</mi></msub><mo>−</mo><msub><mi>η</mi><mi>j</mi></msub><msub><mi>ζ</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">m_{ij}=\eta_i\zeta_j-\eta_j\zeta_i</annotation></semantics></math>.
+The Fourier transform has factor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">(2\pi)^{-2}</annotation></semantics></math>
+and delta constraint
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi><mo>=</mo><mi>c</mi><mo form="prefix" stretchy="false">(</mo><mi>σ</mi><mi>r</mi><mo>+</mo><mi>ρ</mi><mi>v</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\tau=c(\sigma r+\rho v)</annotation></semantics></math>.</p>
+<p>The Cauchy–Schwarz kernel needed for the squared bound is</p>
+<div class="equation" id="eq-HW-16"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>J</mi><mrow><mi>σ</mi><mi>ρ</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>τ</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo>∫</mo><mfrac><mrow><mo form="prefix" stretchy="false">|</mo><msub><mi>m</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup></mrow><mrow><msup><mi>r</mi><mn>4</mn></msup><msup><mi>v</mi><mn>2</mn></msup></mrow></mfrac><mi>δ</mi><mo form="prefix" stretchy="false">(</mo><mi>τ</mi><mo>−</mo><mi>c</mi><mo form="prefix" stretchy="false">(</mo><mi>σ</mi><mi>r</mi><mo>+</mo><mi>ρ</mi><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>η</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+J_{\sigma\rho}(\tau,\xi)
+=\int\frac{|m_{ij}|^2}{r^4v^2}
+ \delta(\tau-c(\sigma r+\rho v))\,d\eta .
+\tag{HW.16}
+</annotation></semantics></math></div><span class="eq-number">(HW.16)</span></div>
+<p>We prove
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>J</mi><mrow><mi>σ</mi><mi>ρ</mi></mrow></msub><mo>≤</mo><mn>8</mn><mi>π</mi><mi>/</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">J_{\sigma\rho}\le8\pi/c</annotation></semantics></math>.
+First,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><msub><mi>m</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo>≤</mo><mo form="prefix" stretchy="false">|</mo><mi>η</mi><mo>×</mo><mi>ζ</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">|m_{ij}|^2\le|\eta\times\zeta|^2</annotation></semantics></math>.
+Time reflection permits
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mo>=</mo><mi>+</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">\sigma=+1</annotation></semantics></math>.
+Equation HW.9 retains the azimuthal variable; after bounding the
+component square by the radial cross-product square, its integral
+supplies the full factor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">2\pi</annotation></semantics></math>.</p>
+<p>For equal signs let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>λ</mi><mo>−</mo><mi>R</mi><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">a=(\lambda-R)/2</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>λ</mi><mo>+</mo><mi>R</mi><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">b=(\lambda+R)/2</annotation></semantics></math>.
+On the support
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>a</mi><mo>≤</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">0\le a\le b</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mi>b</mi><mo>−</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">R=b-a</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>∈</mo><mo form="prefix" stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">r\in[a,b]</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>−</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">v=a+b-r</annotation></semantics></math>,
+and the exact area identity is</p>
+<div class="equation" id="eq-HW-17"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>η</mi><mo>×</mo><mi>ζ</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo>=</mo><mn>4</mn><mi>a</mi><mi>b</mi><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo>−</mo><mi>a</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">(</mo><mi>b</mi><mo>−</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo>−</mo><mi>a</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">(</mo><mi>b</mi><mo>−</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>r</mi><mi>v</mi><mo>−</mo><mi>a</mi><mi>b</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+|\eta\times\zeta|^2=4ab(r-a)(b-r),\qquad
+(r-a)(b-r)=rv-ab.
+\tag{HW.17}
+</annotation></semantics></math></div><span class="eq-number">(HW.17)</span></div>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a&gt;0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R&gt;0</annotation></semantics></math>,
+it follows that</p>
+<div class="equation" id="eq-HW-18"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>J</mi><mrow><mi>+</mi><mo>+</mo></mrow></msub><mo>≤</mo><mfrac><mrow><mn>8</mn><mi>π</mi><mi>a</mi><mi>b</mi></mrow><mrow><mi>c</mi><mi>R</mi></mrow></mfrac><msubsup><mo>∫</mo><mi>a</mi><mi>b</mi></msubsup><mfrac><mrow><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo>−</mo><mi>a</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">(</mo><mi>b</mi><mo>−</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo></mrow><mrow><msup><mi>r</mi><mn>3</mn></msup><mi>v</mi></mrow></mfrac><mspace width="0.167em"></mspace><mi>d</mi><mi>r</mi><mo>≤</mo><mfrac><mrow><mn>8</mn><mi>π</mi><mi>a</mi><mi>b</mi></mrow><mrow><mi>c</mi><mi>R</mi></mrow></mfrac><msubsup><mo>∫</mo><mi>a</mi><mi>b</mi></msubsup><msup><mi>r</mi><mrow><mi>−</mi><mn>2</mn></mrow></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>r</mi><mo>=</mo><mfrac><mrow><mn>8</mn><mi>π</mi></mrow><mi>c</mi></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+J_{++}\le\frac{8\pi ab}{cR}\int_a^b
+ \frac{(r-a)(b-r)}{r^3v}\,dr
+\le\frac{8\pi ab}{cR}\int_a^b r^{-2}\,dr
+=\frac{8\pi}{c}.
+\tag{HW.18}
+</annotation></semantics></math></div><span class="eq-number">(HW.18)</span></div>
+<p>Use the almost-everywhere density at exceptional boundary parameters.
+The boundary of the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo>,</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(r,v)</annotation></semantics></math>
+region has zero measure before the linear change from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math>,
+so it adds no singular measure. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R=0</annotation></semantics></math>,
+the null symbol is exactly zero.</p>
+<p>For opposite signs,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>R</mi><mo>&lt;</mo><mi>λ</mi><mo>&lt;</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">-R&lt;\lambda&lt;R</annotation></semantics></math>,
+put</p>
+<div class="equation" id="eq-HW-19"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>R</mi><mo>+</mo><mi>λ</mi><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn><mo>,</mo><mspace width="1.0em"></mspace><mi>b</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>R</mi><mo>−</mo><mi>λ</mi><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn><mo>,</mo><mspace width="1.0em"></mspace><mi>r</mi><mo>=</mo><mi>x</mi><mo>+</mo><mi>a</mi><mo>,</mo><mspace width="1.0em"></mspace><mi>v</mi><mo>=</mo><mi>x</mi><mo>+</mo><mi>b</mi><mo>,</mo><mspace width="1.0em"></mspace><mi>x</mi><mo>≥</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+a=(R+\lambda)/2,\quad b=(R-\lambda)/2,\quad
+r=x+a,\quad v=x+b,\quad x\ge0.
+\tag{HW.19}
+</annotation></semantics></math></div><span class="eq-number">(HW.19)</span></div>
+<p>Now
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">R=a+b</annotation></semantics></math>,
+and exactly</p>
+<div class="equation" id="eq-HW-20"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>η</mi><mo>×</mo><mi>ζ</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo>=</mo><mn>4</mn><mi>a</mi><mi>b</mi><mi>x</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>R</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>x</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>R</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>a</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>b</mi><mo form="postfix" stretchy="false">)</mo><mo>−</mo><mi>a</mi><mi>b</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+|\eta\times\zeta|^2=4abx(x+R),\qquad
+x(x+R)=(x+a)(x+b)-ab.
+\tag{HW.20}
+</annotation></semantics></math></div><span class="eq-number">(HW.20)</span></div>
+<p>Therefore</p>
+<div class="equation" id="eq-HW-21"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>J</mi><mrow><mi>+</mi><mo>−</mo></mrow></msub><mo>≤</mo><mfrac><mrow><mn>8</mn><mi>π</mi><mi>a</mi><mi>b</mi></mrow><mrow><mi>c</mi><mi>R</mi></mrow></mfrac><msubsup><mo>∫</mo><mn>0</mn><mi>∞</mi></msubsup><mfrac><mrow><mi>x</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>R</mi><mo form="postfix" stretchy="false">)</mo></mrow><mrow><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>a</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>3</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>b</mi><mo form="postfix" stretchy="false">)</mo></mrow></mfrac><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>≤</mo><mfrac><mrow><mn>8</mn><mi>π</mi><mi>a</mi><mi>b</mi></mrow><mrow><mi>c</mi><mi>R</mi></mrow></mfrac><msubsup><mo>∫</mo><mn>0</mn><mi>∞</mi></msubsup><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>a</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>2</mn></mrow></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mfrac><mrow><mn>8</mn><mi>π</mi><mi>b</mi></mrow><mrow><mi>c</mi><mi>R</mi></mrow></mfrac><mo>≤</mo><mfrac><mrow><mn>8</mn><mi>π</mi></mrow><mi>c</mi></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+J_{+-}\le\frac{8\pi ab}{cR}\int_0^\infty
+ \frac{x(x+R)}{(x+a)^3(x+b)}\,dx
+\le\frac{8\pi ab}{cR}\int_0^\infty(x+a)^{-2}\,dx
+=\frac{8\pi b}{cR}\le\frac{8\pi}{c}.
+\tag{HW.21}
+</annotation></semantics></math></div><span class="eq-number">(HW.21)</span></div>
+<p>There is no support outside
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>τ</mi><mo form="prefix" stretchy="false">|</mo><mo>≤</mo><mi>c</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">|\tau|\le cR</annotation></semantics></math>.
+Boundaries are treated as in the equal-sign case. Thus all four sign
+choices have the stated uniform bound, with the high derivative always
+on the first factor.</p>
+<p>Space-time Plancherel, Cauchy–Schwarz with HW.16, Tonelli and the
+change of variables
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>η</mi><mo>,</mo><mi>ξ</mi><mo>−</mo><mi>η</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\eta,\xi-\eta)</annotation></semantics></math>
+give</p>
+<div class="equation" id="eq-HW-22"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo form="postfix" stretchy="false">∥</mo><msub><mi>Q</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>u</mi><mi>σ</mi></msub><mo>,</mo><msub><mi>v</mi><mi>ρ</mi></msub><mo form="postfix" stretchy="false">)</mo><msubsup><mo form="postfix" stretchy="false">∥</mo><msubsup><mi>L</mi><mrow><mi>t</mi><mo>,</mo><mi>x</mi></mrow><mn>2</mn></msubsup><mn>2</mn></msubsup></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>8</mn></mrow></msup><mfrac><mrow><mn>8</mn><mi>π</mi></mrow><mi>c</mi></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mo>∫</mo><mo form="prefix" stretchy="false">|</mo><mi>η</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>4</mn></msup><mo form="prefix" stretchy="false">|</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>η</mi><mo form="postfix" stretchy="false">)</mo><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>η</mi><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mo>∫</mo><mo form="prefix" stretchy="false">|</mo><mi>ζ</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo form="prefix" stretchy="false">|</mo><mi>g</mi><mo form="prefix" stretchy="false">(</mo><mi>ζ</mi><mo form="postfix" stretchy="false">)</mo><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>ζ</mi><mo form="postfix" stretchy="true">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mfrac><mn>2</mn><mrow><mi>π</mi><mi>c</mi></mrow></mfrac><mo form="postfix" stretchy="false">∥</mo><msub><mi>u</mi><mi>σ</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>t</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo><msubsup><mo form="postfix" stretchy="false">∥</mo><msup><mover><mi>H</mi><mo accent="true">̇</mo></mover><mn>2</mn></msup><mn>2</mn></msubsup><mo form="postfix" stretchy="false">∥</mo><msub><mi>v</mi><mi>ρ</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>t</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo><msubsup><mo form="postfix" stretchy="false">∥</mo><msup><mover><mi>H</mi><mo accent="true">̇</mo></mover><mn>1</mn></msup><mn>2</mn></msubsup><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\|Q_{ij}(u_\sigma,v_\rho)\|_{L^2_{t,x}}^2
+&amp;\le(2\pi)^{-8}\frac{8\pi}{c}
+ \left(\int|\eta|^4|f(\eta)|^2\,d\eta\right)
+ \left(\int|\zeta|^2|g(\zeta)|^2\,d\zeta\right)\\
+&amp;=\frac2{\pi c}
+ \|u_\sigma(t_0)\|_{\dot H^2}^2
+ \|v_\rho(t_0)\|_{\dot H^1}^2 .
+\end{aligned}\tag{HW.22}
+</annotation></semantics></math></div><span class="eq-number">(HW.22)</span></div>
+<p>For Hilbert–Schmidt matrices use
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mi>A</mi><mi>B</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><mi mathvariant="normal">H</mi><mi mathvariant="normal">S</mi></mrow></msub><mo>≤</mo><mo form="postfix" stretchy="false">∥</mo><mi>A</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><mi mathvariant="normal">H</mi><mi mathvariant="normal">S</mi></mrow></msub><mo form="postfix" stretchy="false">∥</mo><mi>B</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><mi mathvariant="normal">H</mi><mi mathvariant="normal">S</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\|AB\|_{\rm HS}\le\|A\|_{\rm HS}\|B\|_{\rm HS}</annotation></semantics></math>
+inside the same integral; no product order is exchanged.</p>
+<p>For full homogeneous waves the parallelogram identity in HW.12
+yields</p>
+<div class="equation" id="eq-HW-23"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>∑</mo><mrow><mi>σ</mi><mo>=</mo><mi>±</mi></mrow></munder><mo form="postfix" stretchy="false">∥</mo><msub><mi>u</mi><mi>σ</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>t</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">∥</mo><msup><mover><mi>H</mi><mo accent="true">̇</mo></mover><mn>2</mn></msup></msub><mo>≤</mo><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><mo form="postfix" stretchy="false">∥</mo><msub><mi>ϕ</mi><mi>u</mi></msub><msubsup><mo form="postfix" stretchy="false">∥</mo><msup><mover><mi>H</mi><mo accent="true">̇</mo></mover><mn>2</mn></msup><mn>2</mn></msubsup><mo>+</mo><msup><mi>c</mi><mrow><mi>−</mi><mn>2</mn></mrow></msup><mo form="postfix" stretchy="false">∥</mo><msub><mi>ψ</mi><mi>u</mi></msub><msubsup><mo form="postfix" stretchy="false">∥</mo><msup><mover><mi>H</mi><mo accent="true">̇</mo></mover><mn>1</mn></msup><mn>2</mn></msubsup><msup><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\sum_{\sigma=\pm}\|u_\sigma(t_0)\|_{\dot H^2}
+\le\bigl(\|\phi_u\|_{\dot H^2}^2
+       +c^{-2}\|\psi_u\|_{\dot H^1}^2\bigr)^{1/2},
+\tag{HW.23}
+</annotation></semantics></math></div><span class="eq-number">(HW.23)</span></div>
+<p>and the corresponding low-order bound for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>.
+Summing the four sign combinations proves</p>
+<div class="equation" id="eq-HW-24"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><msub><mi>Q</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">∥</mo><msubsup><mi>L</mi><mrow><mi>t</mi><mo>,</mo><mi>x</mi></mrow><mn>2</mn></msubsup></msub><mo>≤</mo><msqrt><mfrac><mn>2</mn><mrow><mi>π</mi><mi>c</mi></mrow></mfrac></msqrt><mspace width="0.167em"></mspace><msub><mi>E</mi><mn>1</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>;</mo><msub><mi>t</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo><msub><mi>E</mi><mn>0</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mo>;</mo><msub><mi>t</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\|Q_{ij}(u,v)\|_{L^2_{t,x}}
+\le\sqrt{\frac2{\pi c}}\,E_1(u;t_0)E_0(v;t_0).
+\tag{HW.24}
+</annotation></semantics></math></div><span class="eq-number">(HW.24)</span></div>
+<p>For the full ordered spatial pair tuple there are six nonzero pairs,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msqrt><mn>6</mn></msqrt><annotation encoding="application/x-tex">\sqrt6</annotation></semantics></math>
+times the right side is a valid bound for its Euclidean tuple norm.</p>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>□</mo><mi>c</mi></msub><mi>u</mi><mo>=</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">\Box_cu=N</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>□</mo><mi>c</mi></msub><mi>v</mi><mo>=</mo><mi>M</mi></mrow><annotation encoding="application/x-tex">\Box_cv=M</annotation></semantics></math>
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>,
+expand both actual Duhamel formulas. Each forcing term is a free wave
+with initial velocity
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msup><mi>c</mi><mn>2</mn></msup><mi>N</mi><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">-c^2N(r)</annotation></semantics></math>
+or
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msup><mi>c</mi><mn>2</mn></msup><mi>M</mi><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">-c^2M(r)</annotation></semantics></math>.
+Its respective energy is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo form="postfix" stretchy="false">∥</mo><mi>N</mi><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">∥</mo><msup><mover><mi>H</mi><mo accent="true">̇</mo></mover><mn>1</mn></msup></msub></mrow><annotation encoding="application/x-tex">c\|N(r)\|_{\dot H^1}</annotation></semantics></math>
+or
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo form="postfix" stretchy="false">∥</mo><mi>M</mi><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">∥</mo><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">c\|M(r)\|_2</annotation></semantics></math>.
+Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Q</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><annotation encoding="application/x-tex">Q_{ij}</annotation></semantics></math>
+differentiates only in space, the time restrictions factor through the
+product without derivative terms. Bilinear Minkowski applied to the
+homogeneous term, the two single integrals, and the double integral
+proves</p>
+<div class="equation" id="eq-HW-25"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo form="postfix" stretchy="false">∥</mo><msub><mi>Q</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msubsup><mi>L</mi><mrow><mi>t</mi><mo>,</mo><mi>x</mi></mrow><mn>2</mn></msubsup><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo>×</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo>≤</mo><msqrt><mfrac><mn>2</mn><mrow><mi>π</mi><mi>c</mi></mrow></mfrac></msqrt><mspace width="0.167em"></mspace></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><msub><mi>E</mi><mn>1</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>;</mo><msub><mi>t</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mi>c</mi><mo form="postfix" stretchy="false">∥</mo><mi>N</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msubsup><mi>L</mi><mi>t</mi><mn>1</mn></msubsup><msubsup><mover><mi>H</mi><mo accent="true">̇</mo></mover><mi>x</mi><mn>1</mn></msubsup><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mrow></mrow><mo>⋅</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><msub><mi>E</mi><mn>0</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mo>;</mo><msub><mi>t</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mi>c</mi><mo form="postfix" stretchy="false">∥</mo><mi>M</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msubsup><mi>L</mi><mi>t</mi><mn>1</mn></msubsup><msubsup><mi>L</mi><mi>x</mi><mn>2</mn></msubsup><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\|Q_{ij}(u,v)\|_{L^2_{t,x}(I\times\mathbb R^3)}
+\le\sqrt{\frac2{\pi c}}\,
+ &amp;\bigl(E_1(u;t_0)+c\|N\|_{L^1_t\dot H^1_x(I)}\bigr)\\
+{}\cdot&amp;
+ \bigl(E_0(v;t_0)+c\|M\|_{L^1_tL^2_x(I)}\bigr).
+\end{aligned}\tag{HW.25}
+</annotation></semantics></math></div><span class="eq-number">(HW.25)</span></div>
+<p>One can first use smooth bounded annular data and forcing, then pass
+to the limit with HW.22–HW.25. In the regular
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>H</mi><mi>∞</mi></msup><annotation encoding="application/x-tex">H^\infty</annotation></semantics></math>
+class needed here, spatial products converge locally as distributions
+and identify the bounded
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math>
+limit with the original null form. Approximation does not remove any
+frequency from the final field.</p>
+<h2 id="exact-receiving-wave-norms">4. Exact receiving wave norms</h2>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k\ge1</annotation></semantics></math>,
+retain the complete original derivative tuple and put</p>
+<div class="equation" id="eq-HW-26"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msubsup><mi mathvariant="sans-serif">𝖲</mi><mi>c</mi><mi>k</mi></msubsup><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><munder><mi mathvariant="normal">sup</mi><mrow><mi>t</mi><mo>∈</mo><mi>I</mi></mrow></munder><msub><mi>E</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>;</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mi>c</mi><mo form="prefix" stretchy="false">|</mo><mi>I</mi><msup><mo form="prefix" stretchy="false">|</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mo form="postfix" stretchy="false">∥</mo><mo form="prefix" stretchy="false">|</mo><mi>D</mi><msup><mo form="prefix" stretchy="false">|</mo><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msup><msub><mo>□</mo><mi>c</mi></msub><mi>u</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msubsup><mi>L</mi><mrow><mi>t</mi><mo>,</mo><mi>x</mi></mrow><mn>2</mn></msubsup><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo>×</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow></msub><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\|u\|_{\mathsf S_c^k(I)}
+&amp;=\sup_{t\in I}E_{k-1}(u;t)
+  +c|I|^{1/2}\||D|^{k-1}\Box_cu\|_{L^2_{t,x}(I\times\mathbb R^3)}.
+\end{aligned}\tag{HW.26}
+</annotation></semantics></math></div><span class="eq-number">(HW.26)</span></div>
+<p>This is a norm on the stated regular class. Homogeneity and the
+triangle inequality follow from the underlying norms. If it is zero,
+then at each time its spatial Fourier contribution gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><msup><mo form="prefix" stretchy="false">|</mo><mi>k</mi></msup><mover><mi>u</mi><mo accent="true">̂</mo></mover><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">|\xi|^k\widehat u(t,\xi)=0</annotation></semantics></math>
+almost everywhere. Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><msubsup><mi>L</mi><mi>x</mi><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">u(t)\in L^2_x</annotation></semantics></math>,
+its transform vanishes almost everywhere, including the fact that the
+single zero-frequency point has no
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math>
+mass. Hence the original field is zero.</p>
+<p>For integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>,
+this is exactly the Euclidean full tuple of all ordered
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k-1</annotation></semantics></math>
+spatial derivatives in each term: the identity</p>
+<div class="equation" id="eq-HW-27"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munderover><mo>∑</mo><mrow><msub><mi>i</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>i</mi><mi>m</mi></msub><mo>=</mo><mn>1</mn></mrow><mn>3</mn></munderover><mo form="prefix" stretchy="false">|</mo><msub><mi>ξ</mi><msub><mi>i</mi><mn>1</mn></msub></msub><mi>⋯</mi><msub><mi>ξ</mi><msub><mi>i</mi><mi>m</mi></msub></msub><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msubsup><mi>ξ</mi><mn>1</mn><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>ξ</mi><mn>2</mn><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>ξ</mi><mn>3</mn><mn>2</mn></msubsup><msup><mo form="postfix" stretchy="false">)</mo><mi>m</mi></msup></mrow><annotation encoding="application/x-tex">
+\sum_{i_1,\ldots,i_m=1}^3
+ |\xi_{i_1}\cdots\xi_{i_m}|^2
+ =(\xi_1^2+\xi_2^2+\xi_3^2)^m
+\tag{HW.27}
+</annotation></semantics></math></div><span class="eq-number">(HW.27)</span></div>
+<p>and Plancherel prove it, with no omitted derivative word. At
+noninteger orders HW.2 specifies the multiplier.</p>
+<p>The source uses a time coordinate of length dimension with speed one.
+The exact comparison map, retained alongside the original physical
+field, is</p>
+<div class="equation" id="eq-HW-28"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="script">𝒫</mi><mi>c</mi></msub><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>x</mi><mn>0</mn></msup><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>u</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>x</mi><mn>0</mn></msup><mi>/</mi><mi>c</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="1.0em"></mspace><mi>J</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>c</mi><mi>t</mi><mo>:</mo><mi>t</mi><mo>∈</mo><mi>I</mi><mo form="postfix" stretchy="false">}</mo><mo>,</mo><mspace width="1.0em"></mspace><msubsup><mi mathvariant="script">𝒫</mi><mi>c</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>v</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>v</mi><mo form="prefix" stretchy="false">(</mo><mi>c</mi><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+(\mathcal P_cu)(x^0,x)=u(x^0/c,x),\quad
+J=\{ct:t\in I\},\quad
+\mathcal P_c^{-1}v(t,x)=v(ct,x).
+\tag{HW.28}
+</annotation></semantics></math></div><span class="eq-number">(HW.28)</span></div>
+<p>The chain rule gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mn>0</mn></msub><msub><mi mathvariant="script">𝒫</mi><mi>c</mi></msub><mi>u</mi><mo>=</mo><msup><mi>c</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msub><mi mathvariant="script">𝒫</mi><mi>c</mi></msub><msub><mi>∂</mi><mi>t</mi></msub><mi>u</mi></mrow><annotation encoding="application/x-tex">\partial_0\mathcal P_cu=c^{-1}\mathcal P_c\partial_tu</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>i</mi></msub><msub><mi mathvariant="script">𝒫</mi><mi>c</mi></msub><mi>u</mi><mo>=</mo><msub><mi mathvariant="script">𝒫</mi><mi>c</mi></msub><msub><mi>∂</mi><mi>i</mi></msub><mi>u</mi></mrow><annotation encoding="application/x-tex">\partial_i\mathcal P_cu=\mathcal P_c\partial_iu</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>−</mi><msubsup><mi>∂</mi><mn>0</mn><mn>2</mn></msubsup><mo>+</mo><mi mathvariant="normal">Δ</mi><mo form="postfix" stretchy="false">)</mo><msub><mi mathvariant="script">𝒫</mi><mi>c</mi></msub><mi>u</mi><mo>=</mo><msub><mi mathvariant="script">𝒫</mi><mi>c</mi></msub><msub><mo>□</mo><mi>c</mi></msub><mi>u</mi></mrow><annotation encoding="application/x-tex">(-\partial_0^2+\Delta)\mathcal P_cu=\mathcal P_c\Box_cu</annotation></semantics></math>.
+Moreover
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><msup><mi>x</mi><mn>0</mn></msup><mo>=</mo><mi>c</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">dx^0=c\,dt</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>J</mi><mo form="prefix" stretchy="false">|</mo><mo>=</mo><mi>c</mi><mo form="prefix" stretchy="false">|</mo><mi>I</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|J|=c|I|</annotation></semantics></math>,
+and therefore</p>
+<div class="equation" id="eq-HW-29"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo form="postfix" stretchy="false">∥</mo><msub><mi>∂</mi><mrow><mn>0</mn><mo>,</mo><mi>x</mi></mrow></msub><msub><mi mathvariant="script">𝒫</mi><mi>c</mi></msub><mi>u</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msubsup><mi>L</mi><msup><mi>x</mi><mn>0</mn></msup><mi>∞</mi></msubsup><msubsup><mi>L</mi><mi>x</mi><mn>2</mn></msubsup><mo form="prefix" stretchy="false">(</mo><mi>J</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><munder><mi mathvariant="normal">sup</mi><mrow><mi>t</mi><mo>∈</mo><mi>I</mi></mrow></munder><msub><mi>E</mi><mn>0</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>;</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo form="prefix" stretchy="false">|</mo><mi>J</mi><msup><mo form="prefix" stretchy="false">|</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mo form="postfix" stretchy="false">∥</mo><msub><mi mathvariant="script">𝒫</mi><mi>c</mi></msub><msub><mo>□</mo><mi>c</mi></msub><mi>u</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msubsup><mi>L</mi><mrow><msup><mi>x</mi><mn>0</mn></msup><mo>,</mo><mi>x</mi></mrow><mn>2</mn></msubsup><mo form="prefix" stretchy="false">(</mo><mi>J</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>c</mi><mo form="prefix" stretchy="false">|</mo><mi>I</mi><msup><mo form="prefix" stretchy="false">|</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mo form="postfix" stretchy="false">∥</mo><msub><mo>□</mo><mi>c</mi></msub><mi>u</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msubsup><mi>L</mi><mrow><mi>t</mi><mo>,</mo><mi>x</mi></mrow><mn>2</mn></msubsup><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\|\partial_{0,x}\mathcal P_cu\|_{L^\infty_{x^0}L^2_x(J)}
+ &amp;=\sup_{t\in I}E_0(u;t),\\
+|J|^{1/2}\|\mathcal P_c\Box_cu\|_{L^2_{x^0,x}(J)}
+ &amp;=c|I|^{1/2}\|\Box_cu\|_{L^2_{t,x}(I)}.
+\end{aligned}\tag{HW.29}
+</annotation></semantics></math></div><span class="eq-number">(HW.29)</span></div>
+<p>Thus HW.26 is exactly the pullback of the source’s displayed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mover><mi>S</mi><mo accent="true">̇</mo></mover><mi>k</mi></msup><annotation encoding="application/x-tex">\dot S^k</annotation></semantics></math>
+formula when full derivative tuples have Euclidean norms. The course
+calculations still concern the original
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">u(t,x)</annotation></semantics></math>;
+both directions of the comparison and every measure factor have been
+proved. For the source’s explicitly stated maximum over output indices,
+apply this identity to each output component and take that same maximum.
+If a full output tuple is desired as well, the identity map between the
+two finite arrays has the proved bounds</p>
+<div class="equation" id="eq-HW-30"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mi mathvariant="normal">max</mi><mrow><mn>1</mn><mo>≤</mo><mi>a</mi><mo>≤</mo><mi>n</mi></mrow></munder><mo form="postfix" stretchy="false">∥</mo><msub><mi>z</mi><mi>a</mi></msub><msub><mo form="postfix" stretchy="false">∥</mo><mi>X</mi></msub><mo>≤</mo><mo form="postfix" stretchy="false">∥</mo><mo form="prefix" stretchy="false">(</mo><mspace width="0.167em"></mspace><msub><mi>z</mi><mi>a</mi></msub><mspace width="0.167em"></mspace><msubsup><mo form="postfix" stretchy="false">)</mo><mrow><mi>a</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><msub><mo form="postfix" stretchy="false">∥</mo><mrow><mi>X</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>ℓ</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo>≤</mo><msqrt><mi>n</mi></msqrt><mspace width="0.167em"></mspace><munder><mi mathvariant="normal">max</mi><mrow><mn>1</mn><mo>≤</mo><mi>a</mi><mo>≤</mo><mi>n</mi></mrow></munder><mo form="postfix" stretchy="false">∥</mo><msub><mi>z</mi><mi>a</mi></msub><msub><mo form="postfix" stretchy="false">∥</mo><mi>X</mi></msub></mrow><annotation encoding="application/x-tex">
+\max_{1\le a\le n}\|z_a\|_X
+\le\|(\,z_a\,)_{a=1}^n\|_{X(\ell^2)}
+\le\sqrt n\,\max_{1\le a\le n}\|z_a\|_X
+\tag{HW.30}
+</annotation></semantics></math></div><span class="eq-number">(HW.30)</span></div>
+<p>for the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>L</mi><mi>∞</mi></msup><msup><mi>L</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">L^\infty L^2</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>4</mn></msup><annotation encoding="application/x-tex">L^4</annotation></semantics></math>
+norms used here. The first inequality is pointwise inclusion; the second
+follows by Minkowski on the squares and the finite sum. For the sum of
+the two terms in HW.26, distinguish the maximum of that sum from the sum
+of two maxima. If their individual component values are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>a</mi></msub><mo>,</mo><msub><mi>B</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">A_a,B_a</annotation></semantics></math>,
+then the full tuple norm is bounded above by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mo>∑</mo><msubsup><mi>A</mi><mi>a</mi><mn>2</mn></msubsup><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mo>+</mo><mo form="prefix" stretchy="false">(</mo><mo>∑</mo><msubsup><mi>B</mi><mi>a</mi><mn>2</mn></msubsup><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">(\sum A_a^2)^{1/2}+(\sum B_a^2)^{1/2}</annotation></semantics></math>.
+Its square is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>∑</mo><mo form="prefix" stretchy="false">(</mo><msubsup><mi>A</mi><mi>a</mi><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>B</mi><mi>a</mi><mn>2</mn></msubsup><mo form="postfix" stretchy="false">)</mo><mo>≤</mo><mn>2</mn><mo>∑</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>a</mi></msub><mo>+</mo><msub><mi>B</mi><mi>a</mi></msub><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">2\sum(A_a^2+B_a^2)\le2\sum(A_a+B_a)^2</annotation></semantics></math>.
+Consequently the exact identity map on output components has comparison
+constants
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msqrt><mrow><mn>2</mn><mi>n</mi></mrow></msqrt><annotation encoding="application/x-tex">\sqrt{2n}</annotation></semantics></math>
+between the maximum of the component
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi mathvariant="sans-serif">𝖲</mi><mi>c</mi><mi>k</mi></msubsup><annotation encoding="application/x-tex">\mathsf S_c^k</annotation></semantics></math>
+norms and the full tuple
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi mathvariant="sans-serif">𝖲</mi><mi>c</mi><mi>k</mi></msubsup><annotation encoding="application/x-tex">\mathsf S_c^k</annotation></semantics></math>
+norm. No interchange of a maximum and a sum is asserted.</p>
+<p>Apply HW.5 at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>=</mo><mi>k</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">q=k-1</annotation></semantics></math>,
+and Cauchy–Schwarz in the original
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">dt</annotation></semantics></math>
+measure. Adding the actual forcing term of HW.26 proves</p>
+<div class="equation" id="eq-HW-31"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msubsup><mi mathvariant="sans-serif">𝖲</mi><mi>c</mi><mi>k</mi></msubsup><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo>≤</mo><msub><mi>E</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>;</mo><msub><mi>t</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mn>2</mn><mi>c</mi><mo form="prefix" stretchy="false">|</mo><mi>I</mi><msup><mo form="prefix" stretchy="false">|</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mo form="postfix" stretchy="false">∥</mo><mo form="prefix" stretchy="false">|</mo><mi>D</mi><msup><mo form="prefix" stretchy="false">|</mo><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msup><msub><mo>□</mo><mi>c</mi></msub><mi>u</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msubsup><mi>L</mi><mrow><mi>t</mi><mo>,</mo><mi>x</mi></mrow><mn>2</mn></msubsup><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\|u\|_{\mathsf S_c^k(I)}
+\le E_{k-1}(u;t_0)
+ +2c|I|^{1/2}\||D|^{k-1}\Box_cu\|_{L^2_{t,x}(I)}.
+\tag{HW.31}
+</annotation></semantics></math></div><span class="eq-number">(HW.31)</span></div>
+<p>No estimate of a high-order wave norm by an undifferentiated forcing
+has been used.</p>
+<p>Hölder in the Fourier integral, on the disjoint union of its four
+derivative components, gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mrow><mi>q</mi><mo>+</mo><mi>θ</mi></mrow></msub><mo>≤</mo><msubsup><mi>E</mi><mi>q</mi><mrow><mn>1</mn><mo>−</mo><mi>θ</mi></mrow></msubsup><msubsup><mi>E</mi><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mi>θ</mi></msubsup></mrow><annotation encoding="application/x-tex">E_{q+\theta}\le E_q^{1-\theta}E_{q+1}^{\theta}</annotation></semantics></math>.
+The same calculation for the forcing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math>
+integral gives the interpolation of its two orders. Supremum in time
+preserves the first inequality. Finally the two-term Hölder inequality
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>a</mi><mrow><mn>1</mn><mo>−</mo><mi>θ</mi></mrow></msup><msup><mi>b</mi><mi>θ</mi></msup><mo>+</mo><msup><mi>d</mi><mrow><mn>1</mn><mo>−</mo><mi>θ</mi></mrow></msup><msup><mi>e</mi><mi>θ</mi></msup><mo>≤</mo><mo form="prefix" stretchy="false">(</mo><mi>a</mi><mo>+</mo><mi>d</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>1</mn><mo>−</mo><mi>θ</mi></mrow></msup><mo form="prefix" stretchy="false">(</mo><mi>b</mi><mo>+</mo><mi>e</mi><msup><mo form="postfix" stretchy="false">)</mo><mi>θ</mi></msup></mrow><annotation encoding="application/x-tex">a^{1-\theta}b^\theta+d^{1-\theta}e^\theta
+\le(a+d)^{1-\theta}(b+e)^\theta</annotation></semantics></math>
+proves</p>
+<div class="equation" id="eq-HW-32"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msubsup><mi mathvariant="sans-serif">𝖲</mi><mi>c</mi><mrow><mi>k</mi><mo>+</mo><mi>θ</mi></mrow></msubsup><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo>≤</mo><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><mrow><msubsup><mi mathvariant="sans-serif">𝖲</mi><mi>c</mi><mi>k</mi></msubsup><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo></mrow><mrow><mn>1</mn><mo>−</mo><mi>θ</mi></mrow></msubsup><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><mrow><msubsup><mi mathvariant="sans-serif">𝖲</mi><mi>c</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msubsup><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo></mrow><mi>θ</mi></msubsup><mo>,</mo><mspace width="2.0em"></mspace><mn>0</mn><mo>&lt;</mo><mi>θ</mi><mo>&lt;</mo><mn>1</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\|u\|_{\mathsf S_c^{k+\theta}(I)}
+\le\|u\|_{\mathsf S_c^k(I)}^{1-\theta}
+     \|u\|_{\mathsf S_c^{k+1}(I)}^\theta,\qquad 0&lt;\theta&lt;1.
+\tag{HW.32}
+</annotation></semantics></math></div><span class="eq-number">(HW.32)</span></div>
+<p>This keeps both forcing and energy contributions.</p>
+<p>Apply HW.14 to the full tuple of all ordered
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k-1</annotation></semantics></math>
+spatial derivatives, using HW.27, and use Cauchy–Schwarz in time.
+Equation HW.26 includes both the resulting initial energy and the
+forcing term. Hence</p>
+<div class="equation" id="eq-HW-33"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><msubsup><mi>∂</mi><mi>x</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow></msubsup><msub><mi>∂</mi><mi>c</mi></msub><mi>u</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msubsup><mi>L</mi><mrow><mi>t</mi><mo>,</mo><mi>x</mi></mrow><mn>4</mn></msubsup><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo>≤</mo><msqrt><mn>2</mn></msqrt><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><mi>c</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>1</mn><mi>/</mi><mn>4</mn></mrow></msup><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msubsup><mi mathvariant="sans-serif">𝖲</mi><mi>c</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msubsup><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\|\partial_x^{(k-1)}\partial_cu\|_{L^4_{t,x}(I)}
+\le\sqrt2(2\pi c)^{-1/4}
+ \|u\|_{\mathsf S_c^{k+1/2}(I)} .
+\tag{HW.33}
+</annotation></semantics></math></div><span class="eq-number">(HW.33)</span></div>
+<p>The same substitution into HW.25 gives</p>
+<div class="equation" id="eq-HW-34"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><msub><mi>Q</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msubsup><mi>L</mi><mrow><mi>t</mi><mo>,</mo><mi>x</mi></mrow><mn>2</mn></msubsup><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo>≤</mo><msqrt><mfrac><mn>2</mn><mrow><mi>π</mi><mi>c</mi></mrow></mfrac></msqrt><mspace width="0.167em"></mspace><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msubsup><mi mathvariant="sans-serif">𝖲</mi><mi>c</mi><mn>2</mn></msubsup><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo form="postfix" stretchy="false">∥</mo><mi>v</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msubsup><mi mathvariant="sans-serif">𝖲</mi><mi>c</mi><mn>1</mn></msubsup><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\|Q_{ij}(u,v)\|_{L^2_{t,x}(I)}
+\le\sqrt{\frac2{\pi c}}\,
+ \|u\|_{\mathsf S_c^2(I)}\|v\|_{\mathsf S_c^1(I)}.
+\tag{HW.34}
+</annotation></semantics></math></div><span class="eq-number">(HW.34)</span></div>
+<p>The energy part of HW.26 itself bounds every original spatial
+component; multiplication by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>
+recovers the original time derivative component.</p>
+<p>At an unchanged positive heat time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>,
+use the source’s concrete displayed wave weight, with its entire factor
+retained:</p>
+<div class="equation" id="eq-HW-35"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>s</mi><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msubsup><mi mathvariant="fraktur">𝔖</mi><mi>c</mi><mi>k</mi></msubsup><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo>;</mo><mi>s</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo>=</mo><msup><mi>s</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn><mo>−</mo><mn>1</mn><mi>/</mi><mn>4</mn></mrow></msup><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>s</mi><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msubsup><mi mathvariant="sans-serif">𝖲</mi><mi>c</mi><mi>k</mi></msubsup><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\|u(s)\|_{\mathfrak S_c^k(I;s)}
+=s^{(k-1)/2-1/4}\|u(s)\|_{\mathsf S_c^k(I)}.
+\tag{HW.35}
+</annotation></semantics></math></div><span class="eq-number">(HW.35)</span></div>
+<p>For an original heat interval
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>S</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">(0,S]</annotation></semantics></math>
+the complete mixed norm is, for finite
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>,</p>
+<div class="equation" id="eq-HW-36"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo form="prefix" stretchy="true">(</mo><msubsup><mo>∫</mo><mn>0</mn><mi>S</mi></msubsup><msup><mrow><mo form="prefix" stretchy="true">[</mo><msup><mi>s</mi><mi>ℓ</mi></msup><msup><mi>s</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn><mo>−</mo><mn>1</mn><mi>/</mi><mn>4</mn></mrow></msup><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>s</mi><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msubsup><mi mathvariant="sans-serif">𝖲</mi><mi>c</mi><mi>k</mi></msubsup><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo form="postfix" stretchy="true">]</mo></mrow><mi>p</mi></msup><mfrac><mrow><mi>d</mi><mi>s</mi></mrow><mi>s</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mn>1</mn><mi>/</mi><mi>p</mi></mrow></msup><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\left(\int_0^S
+ \left[s^\ell s^{(k-1)/2-1/4}
+             \|u(s)\|_{\mathsf S_c^k(I)}\right]^p
+ \frac{ds}{s}\right)^{1/p},
+\tag{HW.36}
+</annotation></semantics></math></div><span class="eq-number">(HW.36)</span></div>
+<p>and is the supremum of the bracketed expression when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">p=\infty</annotation></semantics></math>.
+Both expressions are invertible scalar multiplications at each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">s&gt;0</annotation></semantics></math>,
+not replacements of the field by a rescaled solution. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℓ</mi><mo>=</mo><mn>5</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">\ell=5/4</annotation></semantics></math>,
+the combined coefficient is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>s</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn></mrow></msup><annotation encoding="application/x-tex">s^{(k+1)/2}</annotation></semantics></math>.
+Thus the energy contribution of HW.36 at a fixed physical time is
+precisely the spatial weight already proved in HT.40 and the temporal
+weight in HT.52 with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mi>k</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">m=k-1</annotation></semantics></math>,
+after the explicit temporal factor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>c</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">c^{-1}</annotation></semantics></math>
+in HW.3. The forcing contribution is still
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo form="prefix" stretchy="false">|</mo><mi>I</mi><msup><mo form="prefix" stretchy="false">|</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><msup><mi>s</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn></mrow></msup><mo form="postfix" stretchy="false">∥</mo><msubsup><mi>∂</mi><mi>x</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow></msubsup><msub><mo>□</mo><mi>c</mi></msub><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>s</mi><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">∥</mo><msubsup><mi>L</mi><mrow><mi>t</mi><mo>,</mo><mi>x</mi></mrow><mn>2</mn></msubsup></msub></mrow><annotation encoding="application/x-tex">c|I|^{1/2}s^{(k+1)/2}
+\|\partial_x^{(k-1)}\Box_cu(s)\|_{L^2_{t,x}}</annotation></semantics></math>.
+It remains to estimate that actual Yang–Mills forcing; it has not been
+replaced by a fixed-time bound.</p>
+<h2 id="a-source-display-that-requires-its-derivative">5. A source
+display that requires its derivative</h2>
+<p>The original <a href="https://arxiv.org/src/1210.1558v2">companion
+author source, arXiv:1210.1558v2</a>, line 928, in the proposition
+titled “Energy estimate” in its wave preliminaries, displays a bound for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mover><mi>S</mi><mo accent="true">̇</mo></mover><mi>k</mi></msup><annotation encoding="application/x-tex">\dot S^k</annotation></semantics></math>,
+all integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k\ge1</annotation></semantics></math>,
+whose forcing term is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>T</mi><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mo form="postfix" stretchy="false">∥</mo><mo>□</mo><mi>ψ</mi><msub><mo form="postfix" stretchy="false">∥</mo><msup><mi>L</mi><mn>2</mn></msup></msub></mrow><annotation encoding="application/x-tex">T^{1/2}\|\Box\psi\|_{L^2}</annotation></semantics></math>.
+Its own preceding definition requires
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k-1</annotation></semantics></math>
+spatial derivatives on that forcing. The display is false for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k&gt;1</annotation></semantics></math>
+if read literally with a universal field-independent constant. This is a
+bounded correction to the displayed estimate; it is not a claim that the
+paper’s main theorem fails.</p>
+<p>Here is an exact counterexample to the omitted-derivative display.
+Work first in the source’s original
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">c=1</annotation></semantics></math>
+coordinates, with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>T</mi><mo>,</mo><mi>T</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">I=(-T,T)</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">T&gt;0</annotation></semantics></math>.
+Choose a real nonzero
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>χ</mi><mo>∈</mo><msubsup><mi>C</mi><mi>c</mi><mi>∞</mi></msubsup><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">(</mo><mi>T</mi><mi>/</mi><mn>4</mn><mo>,</mo><mi>T</mi><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\chi\in C_c^\infty((T/4,T/2))</annotation></semantics></math>,
+and a nonzero Schwartz function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>f</mi><mo accent="true">̂</mo></mover><mo>∈</mo><msubsup><mi>C</mi><mi>c</mi><mi>∞</mi></msubsup><mo form="prefix" stretchy="false">(</mo><mi>B</mi><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\widehat f\in C_c^\infty(B(0,1))</annotation></semantics></math>.
+For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>&gt;</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">R&gt;2</annotation></semantics></math>,
+set</p>
+<div class="equation" id="eq-HW-37"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mi>R</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>χ</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>R</mi><msup><mi>x</mi><mn>1</mn></msup></mrow></msup><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>N</mi><mi>R</mi></msub><mo>=</mo><mo>□</mo><msub><mi>ψ</mi><mi>R</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\psi_R(t,x)=\chi(t)e^{iRx^1}f(x),\qquad N_R=\Box\psi_R .
+\tag{HW.37}
+</annotation></semantics></math></div><span class="eq-number">(HW.37)</span></div>
+<p>The initial data at zero vanish. Every spatial Fourier frequency of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>N</mi><mi>R</mi></msub><annotation encoding="application/x-tex">N_R</annotation></semantics></math>
+has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo><mo>≥</mo><mi>R</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|\xi|\ge R-1</annotation></semantics></math>.
+Also
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>R</mi></msub><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">N_R\ne0</annotation></semantics></math>:
+otherwise each Fourier mode of the homogeneous wave equation with zero
+initial data vanishes by its explicitly solved scalar ODE, contradicting
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>χ</mi><mi>f</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\chi f\ne0</annotation></semantics></math>.
+Therefore the definition of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mover><mi>S</mi><mo accent="true">̇</mo></mover><mi>k</mi></msup><annotation encoding="application/x-tex">\dot S^k</annotation></semantics></math>
+and Plancherel imply</p>
+<div class="equation" id="eq-HW-38"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><msub><mi>ψ</mi><mi>R</mi></msub><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msup><mover><mi>S</mi><mo accent="true">̇</mo></mover><mi>k</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo>≥</mo><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>T</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mi>R</mi><mo>−</mo><mn>1</mn><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msup><mo form="postfix" stretchy="false">∥</mo><msub><mi>N</mi><mi>R</mi></msub><msub><mo form="postfix" stretchy="false">∥</mo><msubsup><mi>L</mi><mrow><mi>t</mi><mo>,</mo><mi>x</mi></mrow><mn>2</mn></msubsup></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\|\psi_R\|_{\dot S^k(I)}
+\ge(2T)^{1/2}(R-1)^{k-1}\|N_R\|_{L^2_{t,x}}.
+\tag{HW.38}
+</annotation></semantics></math></div><span class="eq-number">(HW.38)</span></div>
+<p>The displayed source right side with its zero initial data would be
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><msup><mi>T</mi><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mo form="postfix" stretchy="false">∥</mo><msub><mi>N</mi><mi>R</mi></msub><msub><mo form="postfix" stretchy="false">∥</mo><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">CT^{1/2}\|N_R\|_2</annotation></semantics></math>.
+Dividing by this nonzero forcing norm forces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mn>2</mn></msqrt><mo form="prefix" stretchy="false">(</mo><mi>R</mi><mo>−</mo><mn>1</mn><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>≤</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">\sqrt2(R-1)^{k-1}\le C</annotation></semantics></math>,
+impossible as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">R\to\infty</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k&gt;1</annotation></semantics></math>.
+A real scalar example is obtained by adding the complex conjugate of the
+modulated field. Its two disjoint Fourier packets lie near
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>e</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">Re_1</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>R</mi><msub><mi>e</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">-Re_1</annotation></semantics></math>,
+and both have
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><msub><mi>ξ</mi><mn>1</mn></msub><mo form="prefix" stretchy="false">|</mo><mo>≥</mo><mi>R</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|\xi_1|\ge R-1</annotation></semantics></math>.
+If derivative tuples use a maximum, the single component
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>∂</mi><mn>1</mn><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msubsup><annotation encoding="application/x-tex">\partial_1^{k-1}</annotation></semantics></math>
+gives the same lower bound. Thus the example does not depend on choosing
+a Euclidean derivative tuple. For Lie-algebra-valued fields multiply
+that real example by any fixed nonzero Lie-algebra matrix; the same
+estimates and support property hold. Thus complexification is not
+essential.</p>
+<p>The exact correction, including the physical coordinate map, is
+HW.31. On
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>T</mi><mo>,</mo><mi>T</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">I=(-T,T)</annotation></semantics></math>
+its forcing coefficient is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>c</mi><msqrt><mrow><mn>2</mn><mi>T</mi></mrow></msqrt></mrow><annotation encoding="application/x-tex">2c\sqrt{2T}</annotation></semantics></math>
+and its forcing norm has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>D</mi><msup><mo form="prefix" stretchy="false">|</mo><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">|D|^{k-1}</annotation></semantics></math>
+present. The constant is explicit; no missing estimate is assumed. Every
+later use of (HW.31) retains this spatial derivative. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k=1</annotation></semantics></math>,
+the omitted derivative has order zero and the source display is
+compatible with the proved estimate.</p>
+<h2 id="an-exact-smooth-wave-attaining-the-fourth-power-constant">6. An
+exact smooth wave attaining the fourth-power constant</h2>
+<p>Choose a length
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a&gt;0</annotation></semantics></math>,
+a real amplitude
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A\ne0</annotation></semantics></math>,
+and the same physical speed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">c&gt;0</annotation></semantics></math>.
+Take the Fourier datum and its inverse</p>
+<div class="equation" id="eq-HW-39"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>a</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mi>A</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>a</mi><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo></mrow></msup></mrow><mrow><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo></mrow></mfrac><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>h</mi><mi>a</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mfrac><mi>A</mi><mrow><mn>2</mn><msup><mi>π</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>x</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+f_a(\xi)=\frac{A e^{-a|\xi|}}{|\xi|},\qquad
+h_a(x)=\frac{A}{2\pi^2(a^2+|x|^2)} .
+\tag{HW.39}
+</annotation></semantics></math></div><span class="eq-number">(HW.39)</span></div>
+<p>The singular value at the single point zero does not affect any
+integral. The datum is locally integrable and belongs to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>L</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mi>m</mi></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L^2((1+|\xi|^2)^m\,d\xi)</annotation></semantics></math>
+for every nonnegative integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>:
+its radial
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math>
+integrand is bounded near zero and decays exponentially at infinity.
+Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>h</mi><mi>a</mi></msub><annotation encoding="application/x-tex">h_a</annotation></semantics></math>
+belongs to every inhomogeneous Sobolev space.</p>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mo form="prefix" stretchy="false">|</mo><mi>x</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">r=|x|</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>a</mi><mo>−</mo><mi>i</mi><mi>c</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">z=a-ict</annotation></semantics></math>.
+Spherical angular integration in the original three-dimensional Fourier
+inverse gives</p>
+<div class="equation" id="eq-HW-40"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>u</mi><mi>a</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mfrac><mi>A</mi><mrow><mn>2</mn><msup><mi>π</mi><mn>2</mn></msup><mi>r</mi></mrow></mfrac><msubsup><mo>∫</mo><mn>0</mn><mi>∞</mi></msubsup><msup><mi>e</mi><mrow><mi>−</mi><mi>z</mi><mi>ρ</mi></mrow></msup><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mi>ρ</mi><mo form="postfix" stretchy="false">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>ρ</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mfrac><mi>A</mi><mrow><mn>2</mn><msup><mi>π</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><msup><mi>z</mi><mn>2</mn></msup><mo>+</mo><msup><mi>r</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow></mfrac><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo form="prefix" stretchy="false">|</mo><msub><mi>u</mi><mi>a</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">|</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="false">|</mo><mi>A</mi><mo form="prefix" stretchy="false">|</mo></mrow><mrow><mn>2</mn><msup><mi>π</mi><mn>2</mn></msup><msqrt><mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><msup><mi>c</mi><mn>2</mn></msup><msup><mi>t</mi><mn>2</mn></msup><mo>+</mo><msup><mi>r</mi><mn>2</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mn>4</mn><msup><mi>a</mi><mn>2</mn></msup><msup><mi>c</mi><mn>2</mn></msup><msup><mi>t</mi><mn>2</mn></msup></mrow></msqrt></mrow></mfrac><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+u_a(t,r)
+ &amp;=\frac{A}{2\pi^2r}\int_0^\infty e^{-z\rho}\sin(r\rho)\,d\rho\\
+ &amp;=\frac{A}{2\pi^2(z^2+r^2)},\\
+|u_a(t,r)|
+ &amp;=\frac{|A|}{2\pi^2\sqrt{(a^2-c^2t^2+r^2)^2+4a^2c^2t^2}} .
+\end{aligned}\tag{HW.40}
+</annotation></semantics></math></div><span class="eq-number">(HW.40)</span></div>
+<p>To evaluate the integral, subtract
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∫</mo><mn>0</mn><mi>∞</mi></msubsup><msup><mi>e</mi><mrow><mi>−</mi><mo form="prefix" stretchy="false">(</mo><mi>z</mi><mo>+</mo><mi>i</mi><mi>r</mi><mo form="postfix" stretchy="false">)</mo><mi>ρ</mi></mrow></msup><mi>d</mi><mi>ρ</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>z</mi><mo>+</mo><mi>i</mi><mi>r</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\int_0^\infty e^{-(z+ir)\rho}d\rho=(z+ir)^{-1}</annotation></semantics></math>
+from its counterpart with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>i</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">-ir</annotation></semantics></math>,
+then divide by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>i</mi></mrow><annotation encoding="application/x-tex">2i</annotation></semantics></math>.
+Both integrals converge since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Re</mi><mo>⁡</mo></mrow><mi>z</mi><mo>=</mo><mi>a</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\operatorname{Re}z=a&gt;0</annotation></semantics></math>.
+Their difference is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mi>/</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>z</mi><mn>2</mn></msup><mo>+</mo><msup><mi>r</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r/(z^2+r^2)</annotation></semantics></math>.
+At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r=0</annotation></semantics></math>,
+the continuous value is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>/</mi><mo form="prefix" stretchy="false">(</mo><mn>2</mn><msup><mi>π</mi><mn>2</mn></msup><msup><mi>z</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A/(2\pi^2z^2)</annotation></semantics></math>.
+The denominator cannot vanish for real
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>,</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">t,r</annotation></semantics></math>:
+its imaginary part forces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math>,
+where its real part is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>r</mi><mn>2</mn></msup><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a^2+r^2&gt;0</annotation></semantics></math>.
+Fourier differentiation, justified by the exponential tail, proves
+smoothness and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>□</mo><mi>c</mi></msub><msub><mi>u</mi><mi>a</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\Box_cu_a=0</annotation></semantics></math>.
+This is an actual free wave with noncompact initial data.</p>
+<p>The initial norm is exactly</p>
+<div class="equation" id="eq-HW-41"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><msub><mi>h</mi><mi>a</mi></msub><msubsup><mo form="postfix" stretchy="false">∥</mo><msup><mover><mi>H</mi><mo accent="true">̇</mo></mover><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mn>2</mn></msubsup><mo>=</mo><mfrac><mrow><mn>4</mn><mi>π</mi><msup><mi>A</mi><mn>2</mn></msup></mrow><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>3</mn></msup></mrow></mfrac><msubsup><mo>∫</mo><mn>0</mn><mi>∞</mi></msubsup><mi>ρ</mi><msup><mi>e</mi><mrow><mi>−</mi><mn>2</mn><mi>a</mi><mi>ρ</mi></mrow></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>ρ</mi><mo>=</mo><mfrac><msup><mi>A</mi><mn>2</mn></msup><mrow><mn>8</mn><msup><mi>π</mi><mn>2</mn></msup><msup><mi>a</mi><mn>2</mn></msup></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\|h_a\|_{\dot H^{1/2}}^2
+ =\frac{4\pi A^2}{(2\pi)^3}
+       \int_0^\infty \rho e^{-2a\rho}\,d\rho
+ =\frac{A^2}{8\pi^2a^2}.
+\tag{HW.41}
+</annotation></semantics></math></div><span class="eq-number">(HW.41)</span></div>
+<p>On the constraint
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>+</mo><mi>v</mi><mo>=</mo><mi>τ</mi><mi>/</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">r+v=\tau/c</annotation></semantics></math>,
+the product of Fourier data is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>A</mi><mn>2</mn></msup><msup><mi>e</mi><mrow><mi>−</mi><mi>a</mi><mi>τ</mi><mi>/</mi><mi>c</mi></mrow></msup><mi>/</mi><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mi>v</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A^2e^{-a\tau/c}/(rv)</annotation></semantics></math>.
+The Cauchy–Schwarz step in (HW.11) is therefore an equality. The full
+cone calculation gives</p>
+<div class="equation" id="eq-HW-42"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><msubsup><mi>u</mi><mi>a</mi><mn>2</mn></msubsup><mo accent="true">̂</mo></mover><mo form="prefix" stretchy="false">(</mo><mi>τ</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mfrac><msup><mi>A</mi><mn>2</mn></msup><mrow><mn>2</mn><mi>π</mi><mi>c</mi></mrow></mfrac><msup><mi>e</mi><mrow><mi>−</mi><mi>a</mi><mi>τ</mi><mi>/</mi><mi>c</mi></mrow></msup><msub><mn mathvariant="bold">𝟏</mn><mrow><mo form="prefix" stretchy="false">{</mo><mi>τ</mi><mo>&gt;</mo><mi>c</mi><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo><mo form="postfix" stretchy="false">}</mo></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\widehat{u_a^2}(\tau,\xi)
+ =\frac{A^2}{2\pi c}e^{-a\tau/c}
+       \mathbf1_{\{\tau&gt;c|\xi|\}} .
+\tag{HW.42}
+</annotation></semantics></math></div><span class="eq-number">(HW.42)</span></div>
+<p>This is an almost-everywhere density with no additional boundary
+measure, by Section 2. Frequency truncations converge by (HW.11); the
+explicit integrals also converge absolutely in their stated spaces.</p>
+<p>Integrate over the complete spatial-frequency ball of radius
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi><mi>/</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">\tau/c</annotation></semantics></math>,
+whose volume is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>π</mi><mo form="prefix" stretchy="false">(</mo><mi>τ</mi><mi>/</mi><mi>c</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>3</mn></msup><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">4\pi(\tau/c)^3/3</annotation></semantics></math>.
+Plancherel yields</p>
+<div class="equation" id="eq-HW-43"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo form="postfix" stretchy="false">∥</mo><msub><mi>u</mi><mi>a</mi></msub><msubsup><mo form="postfix" stretchy="false">∥</mo><msubsup><mi>L</mi><mrow><mi>t</mi><mo>,</mo><mi>x</mi></mrow><mn>4</mn></msubsup><mn>4</mn></msubsup></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>4</mn></mrow></msup><mfrac><msup><mi>A</mi><mn>4</mn></msup><mrow><mn>4</mn><msup><mi>π</mi><mn>2</mn></msup><msup><mi>c</mi><mn>2</mn></msup></mrow></mfrac><msubsup><mo>∫</mo><mn>0</mn><mi>∞</mi></msubsup><msup><mi>e</mi><mrow><mi>−</mi><mn>2</mn><mi>a</mi><mi>τ</mi><mi>/</mi><mi>c</mi></mrow></msup><mfrac><mrow><mn>4</mn><mi>π</mi><msup><mi>τ</mi><mn>3</mn></msup></mrow><mrow><mn>3</mn><msup><mi>c</mi><mn>3</mn></msup></mrow></mfrac><mspace width="0.167em"></mspace><mi>d</mi><mi>τ</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mfrac><msup><mi>A</mi><mn>4</mn></msup><mrow><mn>128</mn><msup><mi>π</mi><mn>5</mn></msup><mi>c</mi><msup><mi>a</mi><mn>4</mn></msup></mrow></mfrac><mo>=</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mi>π</mi><mi>c</mi></mrow></mfrac><mo form="postfix" stretchy="false">∥</mo><msub><mi>h</mi><mi>a</mi></msub><msubsup><mo form="postfix" stretchy="false">∥</mo><msup><mover><mi>H</mi><mo accent="true">̇</mo></mover><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mn>4</mn></msubsup><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\|u_a\|_{L^4_{t,x}}^4
+ &amp;=(2\pi)^{-4}\frac{A^4}{4\pi^2c^2}
+ \int_0^\infty e^{-2a\tau/c}\frac{4\pi\tau^3}{3c^3}\,d\tau\\
+ &amp;=\frac{A^4}{128\pi^5ca^4}
+ =\frac1{2\pi c}\|h_a\|_{\dot H^{1/2}}^4 .
+\end{aligned}\tag{HW.43}
+</annotation></semantics></math></div><span class="eq-number">(HW.43)</span></div>
+<p>Here
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∫</mo><mn>0</mn><mi>∞</mi></msubsup><msup><mi>τ</mi><mn>3</mn></msup><msup><mi>e</mi><mrow><mi>−</mi><mi>b</mi><mi>τ</mi></mrow></msup><mi>d</mi><mi>τ</mi><mo>=</mo><mn>6</mn><msup><mi>b</mi><mrow><mi>−</mi><mn>4</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\int_0^\infty \tau^3e^{-b\tau}d\tau=6b^{-4}</annotation></semantics></math>:
+integrate by parts three times, then use
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∫</mo><mn>0</mn><mi>∞</mi></msubsup><msup><mi>e</mi><mrow><mi>−</mi><mi>b</mi><mi>τ</mi></mrow></msup><mi>d</mi><mi>τ</mi><mo>=</mo><msup><mi>b</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\int_0^\infty e^{-b\tau}d\tau=b^{-1}</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b&gt;0</annotation></semantics></math>.
+Every boundary term vanishes by its positive power at zero or
+exponential decay at infinity. Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A\ne0</annotation></semantics></math>,</p>
+<div class="equation" id="eq-HW-44"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mo form="postfix" stretchy="false">∥</mo><msub><mi>u</mi><mi>a</mi></msub><msub><mo form="postfix" stretchy="false">∥</mo><msubsup><mi>L</mi><mrow><mi>t</mi><mo>,</mo><mi>x</mi></mrow><mn>4</mn></msubsup></msub></mrow><mrow><mo form="postfix" stretchy="false">∥</mo><msub><mi>h</mi><mi>a</mi></msub><msub><mo form="postfix" stretchy="false">∥</mo><msup><mover><mi>H</mi><mo accent="true">̇</mo></mover><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup></msub></mrow></mfrac><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><mi>c</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>1</mn><mi>/</mi><mn>4</mn></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\frac{\|u_a\|_{L^4_{t,x}}}{\|h_a\|_{\dot H^{1/2}}}
+ =(2\pi c)^{-1/4}.
+\tag{HW.44}
+</annotation></semantics></math></div><span class="eq-number">(HW.44)</span></div>
+<p>A smaller universal half-wave coefficient would fail on this field.
+This proves sharpness for (HW.11); no optimality is asserted for the
+other constants in this chapter.</p>
+<figure>
+<div aria-label="Scrollable mathematical diagram" class="diagram" tabindex="0"><img alt="Exact half-wave profiles and a specified slice of the Fourier transform of its square." src="figures/f09-wave-cone-and-profile.svg"/></div>
+<figcaption aria-hidden="true">Exact half-wave profiles and a specified
+slice of the Fourier transform of its square.</figcaption>
+</figure>
+<p><strong>Figure HW.</strong> The left panel samples (HW.40) at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">a=1</annotation></semantics></math>
+metre,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">A=1</annotation></semantics></math>
+metre and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">c=1</annotation></semantics></math>
+metre per second, for the listed original times. The field has unit
+inverse metre. Its initial datum is noncompact; the radial plotting
+interval is a viewing window. The right panel is the slice
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ξ</mi><mn>2</mn></msub><mo>=</mo><msub><mi>ξ</mi><mn>3</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\xi_2=\xi_3=0</annotation></semantics></math>
+of (HW.42), with spatial frequency in inverse metres and temporal
+frequency in inverse seconds. Its boundary is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi><mo>=</mo><mi>c</mi><mo form="prefix" stretchy="false">|</mo><msub><mi>ξ</mi><mn>1</mn></msub><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">\tau=c|\xi_1|</annotation></semantics></math>,
+a Fourier support statement, not a compact spatial support claim. Colour
+shows the actual Fourier density in metre-seconds. The proof retains the
+full three-dimensional integrals.</p>
+<h2 id="exercises-with-complete-solutions">7. Exercises with complete
+solutions</h2>
+<h3 id="exercise-1.-fourier-factors-and-the-zero-mode">Exercise 1.
+Fourier factors and the zero mode</h3>
+<p>Derive the coefficient in (HW.8) and the zero-frequency value of the
+forcing multiplier in (HW.6).</p>
+<p><strong>Solution.</strong> The two spatial inverse factors, spatial
+transform and temporal transform contribute, respectively,</p>
+<div class="equation" id="eq-HW-45"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>3</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>3</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>3</mn></msup><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>2</mn></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+(2\pi)^{-3}(2\pi)^{-3}(2\pi)^3(2\pi)=(2\pi)^{-2}.
+\tag{HW.45}
+</annotation></semantics></math></div><span class="eq-number">(HW.45)</span></div>
+<p>The spatial delta removes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ζ</mi><annotation encoding="application/x-tex">\zeta</annotation></semantics></math>
+with unit Jacobian. The remaining temporal delta is exactly that of
+(HW.8). The forcing multiplier is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>c</mi><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>c</mi><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>−</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">-c\sin(c|\xi|(t-r))/|\xi|</annotation></semantics></math>.
+Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><mi>y</mi><mi>/</mi><mi>y</mi><mo>→</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\sin y/y\to1</annotation></semantics></math>,
+its value at zero is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msup><mi>c</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>−</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">-c^2(t-r)</annotation></semantics></math>.
+This is precisely the zero-frequency solution kernel of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mrow><mi>t</mi><mi>t</mi></mrow></msub><mo>=</mo><mi>−</mi><msup><mi>c</mi><mn>2</mn></msup><mi>N</mi></mrow><annotation encoding="application/x-tex">u_{tt}=-c^2N</annotation></semantics></math>,
+with zero initial displacement and velocity. No zero mode is lost.</p>
+<h3 id="exercise-2.-keep-the-azimuthal-variable">Exercise 2. Keep the
+azimuthal variable</h3>
+<p>Derive (HW.10) without assuming radial Fourier data.</p>
+<p><strong>Solution.</strong> Align the polar axis with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\xi\ne0</annotation></semantics></math>.
+Differentiating
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>v</mi><mn>2</mn></msup><mo>=</mo><msup><mi>R</mi><mn>2</mn></msup><mo>+</mo><msup><mi>r</mi><mn>2</mn></msup><mo>−</mo><mn>2</mn><mi>R</mi><mi>r</mi><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">v^2=R^2+r^2-2Rr\cos\theta</annotation></semantics></math>
+gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>d</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mi>θ</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">|</mo><mo>=</mo><mi>v</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>v</mi><mi>/</mi><mo form="prefix" stretchy="false">(</mo><mi>R</mi><mi>r</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">|d(\cos\theta)|=v\,dv/(Rr)</annotation></semantics></math>,
+hence the full measure
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mi>v</mi><mi>/</mi><mi>R</mi><mo form="postfix" stretchy="false">)</mo><mi>d</mi><mi>r</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>v</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>φ</mi></mrow><annotation encoding="application/x-tex">(rv/R)dr\,dv\,d\varphi</annotation></semantics></math>.
+The kernel
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mi>v</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">1/(rv)</annotation></semantics></math>,
+not the data, is radial in these variables. Its angular and delta
+integrations give</p>
+<div class="equation" id="eq-HW-46"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mi>R</mi></mfrac><msubsup><mo>∫</mo><mn>0</mn><mrow><mn>2</mn><mi>π</mi></mrow></msubsup><mi>d</mi><mi>φ</mi><msubsup><mo>∫</mo><mrow><mo form="prefix" stretchy="false">(</mo><mi>λ</mi><mo>−</mo><mi>R</mi><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn></mrow><mrow><mo form="prefix" stretchy="false">(</mo><mi>λ</mi><mo>+</mo><mi>R</mi><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn></mrow></msubsup><mfrac><mrow><mi>d</mi><mi>r</mi></mrow><mi>c</mi></mfrac><mo>=</mo><mfrac><mrow><mn>2</mn><mi>π</mi></mrow><mi>c</mi></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mi>λ</mi><mo>=</mo><mi>τ</mi><mi>/</mi><mi>c</mi><mo>&gt;</mo><mi>R</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\frac1R\int_0^{2\pi}d\varphi
+ \int_{(\lambda-R)/2}^{(\lambda+R)/2}\frac{dr}{c}
+ =\frac{2\pi}{c},\qquad \lambda=\tau/c&gt;R .
+\tag{HW.46}
+</annotation></semantics></math></div><span class="eq-number">(HW.46)</span></div>
+<p>The other Cauchy–Schwarz integral still contains the original
+nonradial Fourier data and all their variables. Thus the proof does not
+restrict the input fields to radial ones.</p>
+<h3 id="exercise-3.-opposite-sign-cancellation">Exercise 3.
+Opposite-sign cancellation</h3>
+<p>Prove (HW.20) and the bound (HW.21).</p>
+<p><strong>Solution.</strong> The exact triangle factorization is</p>
+<div class="equation" id="eq-HW-47"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo form="prefix" stretchy="false">|</mo><mi>η</mi><mo>×</mo><mi>ζ</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msup><mi>r</mi><mn>2</mn></msup><msup><mi>v</mi><mn>2</mn></msup><mo>−</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>4</mn></mfrac></mstyle><mo form="prefix" stretchy="false">(</mo><msup><mi>R</mi><mn>2</mn></msup><mo>−</mo><msup><mi>r</mi><mn>2</mn></msup><mo>−</mo><msup><mi>v</mi><mn>2</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>4</mn></mfrac></mstyle><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo>+</mo><mi>v</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>−</mo><msup><mi>R</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>R</mi><mn>2</mn></msup><mo>−</mo><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo>−</mo><mi>v</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>4</mn><mi>a</mi><mi>b</mi><mi>x</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+|\eta\times\zeta|^2
+ &amp;=r^2v^2-\tfrac14(R^2-r^2-v^2)^2\\
+ &amp;=\tfrac14((r+v)^2-R^2)(R^2-(r-v)^2)
+ =4abx(x+a+b),
+\end{aligned}\tag{HW.47}
+</annotation></semantics></math></div><span class="eq-number">(HW.47)</span></div>
+<p>where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mi>x</mi><mo>+</mo><mi>a</mi><mo>,</mo><mi>v</mi><mo>=</mo><mi>x</mi><mo>+</mo><mi>b</mi><mo>,</mo><mi>R</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">r=x+a,v=x+b,R=a+b</annotation></semantics></math>.
+Indeed the last two factors are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>x</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">4x(x+a+b)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>a</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">4ab</annotation></semantics></math>.
+Also</p>
+<div class="equation"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>a</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>b</mi><mo form="postfix" stretchy="false">)</mo><mo>−</mo><mi>a</mi><mi>b</mi><mo>≤</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>a</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>b</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+x(x+a+b)=(x+a)(x+b)-ab\le(x+a)(x+b).
+</annotation></semantics></math></div></div>
+<p>The remaining integral is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∫</mo><mn>0</mn><mi>∞</mi></msubsup><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>a</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>2</mn></mrow></msup><mi>d</mi><mi>x</mi><mo>=</mo><msup><mi>a</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\int_0^\infty(x+a)^{-2}dx=a^{-1}</annotation></semantics></math>,
+by its antiderivative
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>a</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">-(x+a)^{-1}</annotation></semantics></math>.
+Multiplication by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>8</mn><mi>π</mi><mi>a</mi><mi>b</mi><mi>/</mi><mo form="prefix" stretchy="false">(</mo><mi>c</mi><mi>R</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">8\pi ab/(cR)</annotation></semantics></math>
+gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>8</mn><mi>π</mi><mi>b</mi><mi>/</mi><mo form="prefix" stretchy="false">(</mo><mi>c</mi><mi>R</mi><mo form="postfix" stretchy="false">)</mo><mo>≤</mo><mn>8</mn><mi>π</mi><mi>/</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">8\pi b/(cR)\le8\pi/c</annotation></semantics></math>,
+since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>&lt;</mo><mi>R</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">b&lt;R=a+b</annotation></semantics></math>.
+The boundary parameters are covered by the almost-everywhere density
+proved in Section 3; no singular measure is added.</p>
+<h3 id="exercise-4.-the-exact-physical-time-derivative">Exercise 4. The
+exact physical time derivative</h3>
+<p>Find
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>t</mi></msub><msub><mi>u</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">\partial_tu_a</annotation></semantics></math>
+and verify its initial value from the original Fourier datum.</p>
+<p><strong>Solution.</strong> With
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>a</mi><mo>−</mo><mi>i</mi><mi>c</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">z=a-ict</annotation></semantics></math>,
+the chain rule gives</p>
+<div class="equation" id="eq-HW-48"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>t</mi></msub><msub><mi>u</mi><mi>a</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mi>i</mi><mi>A</mi><mi>c</mi><mspace width="0.167em"></mspace><mi>z</mi></mrow><mrow><msup><mi>π</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><msup><mi>z</mi><mn>2</mn></msup><mo>+</mo><msup><mi>r</mi><mn>2</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup></mrow></mfrac><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>∂</mi><mi>t</mi></msub><msub><mi>u</mi><mi>a</mi></msub><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mi>i</mi><mi>A</mi><mi>c</mi><mi>a</mi></mrow><mrow><msup><mi>π</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>r</mi><mn>2</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\partial_tu_a(t,r)=\frac{iAc\,z}{\pi^2(z^2+r^2)^2},
+\qquad
+\partial_tu_a(0,r)=\frac{iAca}{\pi^2(a^2+r^2)^2}.
+\tag{HW.48}
+</annotation></semantics></math></div><span class="eq-number">(HW.48)</span></div>
+<p>The initial velocity transform is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>c</mi><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo><msub><mi>f</mi><mi>a</mi></msub><mo>=</mo><mi>i</mi><mi>c</mi><mi>A</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>a</mi><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo></mrow></msup></mrow><annotation encoding="application/x-tex">ic|\xi|f_a=icA e^{-a|\xi|}</annotation></semantics></math>.
+Differentiating the exact inverse pair in (HW.39) with respect to the
+original length gives</p>
+<div class="equation" id="eq-HW-49"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msub><mi>∂</mi><mi>a</mi></msub><msub><mi>f</mi><mi>a</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>A</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>a</mi><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mo>−</mo><msub><mi>∂</mi><mi>a</mi></msub><msub><mi>h</mi><mi>a</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mi>A</mi><mi>a</mi></mrow><mrow><msup><mi>π</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>x</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+-\partial_af_a(\xi)=A e^{-a|\xi|},\qquad
+-\partial_ah_a(x)=\frac{Aa}{\pi^2(a^2+|x|^2)^2}.
+\tag{HW.49}
+</annotation></semantics></math></div><span class="eq-number">(HW.49)</span></div>
+<p>Multiplication by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">ic</annotation></semantics></math>
+gives the displayed initial velocity. Exponential majorants justify
+differentiation under the Fourier integral. The factor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>
+and original time coordinate remain.</p>
+<h3 id="exercise-5.-the-attained-fourth-power-constant">Exercise 5. The
+attained fourth-power constant</h3>
+<p>Evaluate both sides of (HW.43) from their complete integrals.</p>
+<p><strong>Solution.</strong> The spatial radial coefficient is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>π</mi><mi>/</mi><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>3</mn></msup><mo>=</mo><mn>1</mn><mi>/</mi><mo form="prefix" stretchy="false">(</mo><mn>2</mn><msup><mi>π</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">4\pi/(2\pi)^3=1/(2\pi^2)</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∫</mo><mn>0</mn><mi>∞</mi></msubsup><mi>ρ</mi><msup><mi>e</mi><mrow><mi>−</mi><mn>2</mn><mi>a</mi><mi>ρ</mi></mrow></msup><mi>d</mi><mi>ρ</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>a</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\int_0^\infty\rho e^{-2a\rho}d\rho=(2a)^{-2}</annotation></semantics></math>.
+Hence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><msub><mi>h</mi><mi>a</mi></msub><msubsup><mo form="postfix" stretchy="false">∥</mo><msup><mover><mi>H</mi><mo accent="true">̇</mo></mover><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mn>2</mn></msubsup><mo>=</mo><msup><mi>A</mi><mn>2</mn></msup><mi>/</mi><mo form="prefix" stretchy="false">(</mo><mn>8</mn><msup><mi>π</mi><mn>2</mn></msup><msup><mi>a</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\|h_a\|_{\dot H^{1/2}}^2=A^2/(8\pi^2a^2)</annotation></semantics></math>.
+In space-time retain every factor:</p>
+<div class="equation" id="eq-HW-50"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>4</mn></mrow></msup><mfrac><msup><mi>A</mi><mn>4</mn></msup><mrow><mn>4</mn><msup><mi>π</mi><mn>2</mn></msup><msup><mi>c</mi><mn>2</mn></msup></mrow></mfrac><mfrac><mrow><mn>4</mn><mi>π</mi></mrow><mrow><mn>3</mn><msup><mi>c</mi><mn>3</mn></msup></mrow></mfrac><mfrac><mrow><mn>6</mn><msup><mi>c</mi><mn>4</mn></msup></mrow><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>a</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>4</mn></msup></mrow></mfrac><mo>=</mo><mfrac><msup><mi>A</mi><mn>4</mn></msup><mrow><mn>128</mn><msup><mi>π</mi><mn>5</mn></msup><mi>c</mi><msup><mi>a</mi><mn>4</mn></msup></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+(2\pi)^{-4}\frac{A^4}{4\pi^2c^2}
+ \frac{4\pi}{3c^3}\frac{6c^4}{(2a)^4}
+ =\frac{A^4}{128\pi^5ca^4}.
+\tag{HW.50}
+</annotation></semantics></math></div><span class="eq-number">(HW.50)</span></div>
+<p>The square of the initial norm, multiplied by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>π</mi><mi>c</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">1/(2\pi c)</annotation></semantics></math>,
+has exactly this value. It is positive. Taking fourth roots proves
+(HW.44), and excludes any smaller universal coefficient.</p>
+<h3 id="exercise-6.-the-time-coordinate-and-both-measure-factors">Exercise
+6. The time coordinate and both measure factors</h3>
+<p>Prove (HW.29) and find the fourth-power norm factor under
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="script">𝒫</mi><mi>c</mi></msub><annotation encoding="application/x-tex">\mathcal P_c</annotation></semantics></math>.</p>
+<p><strong>Solution.</strong> At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mn>0</mn></msup><mo>=</mo><mi>c</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">x^0=ct</annotation></semantics></math>,
+the derivative components are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>c</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msub><mi>u</mi><mi>t</mi></msub><mo>,</mo><msub><mi>∂</mi><mn>1</mn></msub><mi>u</mi><mo>,</mo><msub><mi>∂</mi><mn>2</mn></msub><mi>u</mi><mo>,</mo><msub><mi>∂</mi><mn>3</mn></msub><mi>u</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(c^{-1}u_t,\partial_1u,\partial_2u,\partial_3u)</annotation></semantics></math>.
+The bijection between
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>
+preserves their supremum in time, giving the first line of (HW.29). For
+the forcing,</p>
+<div class="equation" id="eq-HW-51"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>J</mi><msup><mo form="prefix" stretchy="false">|</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>c</mi><mo form="prefix" stretchy="false">|</mo><mi>I</mi><mo form="prefix" stretchy="false">|</mo><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mo form="postfix" stretchy="false">∥</mo><msub><mi mathvariant="script">𝒫</mi><mi>c</mi></msub><mi>N</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msup><mi>L</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>J</mi><mo>×</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo>=</mo><msup><mi>c</mi><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mo form="postfix" stretchy="false">∥</mo><mi>N</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msup><mi>L</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo>×</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+|J|^{1/2}=(c|I|)^{1/2},\qquad
+\|\mathcal P_cN\|_{L^2(J\times\mathbb R^3)}
+ =c^{1/2}\|N\|_{L^2(I\times\mathbb R^3)}.
+\tag{HW.51}
+</annotation></semantics></math></div><span class="eq-number">(HW.51)</span></div>
+<p>Their product is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo form="prefix" stretchy="false">|</mo><mi>I</mi><msup><mo form="prefix" stretchy="false">|</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mo form="postfix" stretchy="false">∥</mo><mi>N</mi><msub><mo form="postfix" stretchy="false">∥</mo><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">c|I|^{1/2}\|N\|_2</annotation></semantics></math>.
+Direct integration gives</p>
+<div class="equation" id="eq-HW-52"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><msub><mi mathvariant="script">𝒫</mi><mi>c</mi></msub><mi>u</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><mrow><msup><mi>L</mi><mn>4</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>J</mi><mo>×</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow><mn>4</mn></msubsup><mo>=</mo><mi>c</mi><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><mrow><msup><mi>L</mi><mn>4</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo>×</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow><mn>4</mn></msubsup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\|\mathcal P_cu\|_{L^4(J\times\mathbb R^3)}^4
+ =c\|u\|_{L^4(I\times\mathbb R^3)}^4 .
+\tag{HW.52}
+</annotation></semantics></math></div><span class="eq-number">(HW.52)</span></div>
+<p>Thus the norm factor is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>c</mi><mrow><mn>1</mn><mi>/</mi><mn>4</mn></mrow></msup><annotation encoding="application/x-tex">c^{1/4}</annotation></semantics></math>,
+accounting for the original-coordinate coefficient
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>c</mi><mrow><mi>−</mi><mn>1</mn><mi>/</mi><mn>4</mn></mrow></msup><annotation encoding="application/x-tex">c^{-1/4}</annotation></semantics></math>.
+Equation (HW.51) accounts for both factors in the actual forcing
+norm.</p>
+<h3 id="exercise-7.-the-forcing-derivatives-are-necessary">Exercise 7.
+The forcing derivatives are necessary</h3>
+<p>Give a real example proving the failure of the omitted-derivative
+estimate for every integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k&gt;1</annotation></semantics></math>.</p>
+<p><strong>Solution.</strong> Choose nonzero
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+with smooth Fourier transform supported in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">B(0,1)</annotation></semantics></math>,
+and put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>g</mi><mi>R</mi></msub><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>R</mi><msup><mi>x</mi><mn>1</mn></msup></mrow></msup><mi>f</mi><mo>+</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>R</mi><msup><mi>x</mi><mn>1</mn></msup></mrow></msup><mover><mi>f</mi><mo accent="true">¯</mo></mover></mrow><annotation encoding="application/x-tex">g_R=e^{iRx^1}f+e^{-iRx^1}\overline f</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>&gt;</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">R&gt;2</annotation></semantics></math>.
+The terms are conjugate, so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>g</mi><mi>R</mi></msub><annotation encoding="application/x-tex">g_R</annotation></semantics></math>
+is real; their disjoint Fourier supports show
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>g</mi><mi>R</mi></msub><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">g_R\ne0</annotation></semantics></math>.
+Set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ψ</mi><mi>R</mi></msub><mo>=</mo><mi>χ</mi><msub><mi>g</mi><mi>R</mi></msub></mrow><annotation encoding="application/x-tex">\psi_R=\chi g_R</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>χ</mi><annotation encoding="application/x-tex">\chi</annotation></semantics></math>
+from Section 5. Both initial data vanish. The forcing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>R</mi></msub><mo>=</mo><mo>□</mo><msub><mi>ψ</mi><mi>R</mi></msub></mrow><annotation encoding="application/x-tex">N_R=\Box\psi_R</annotation></semantics></math>
+has the same two Fourier supports and is nonzero by the homogeneous
+zero-data ODE argument. On both supports
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><msub><mi>ξ</mi><mn>1</mn></msub><mo form="prefix" stretchy="false">|</mo><mo>≥</mo><mi>R</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|\xi_1|\ge R-1</annotation></semantics></math>,
+hence</p>
+<div class="equation" id="eq-HW-53"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><msubsup><mi>∂</mi><mn>1</mn><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msubsup><msub><mi>N</mi><mi>R</mi></msub><msub><mo form="postfix" stretchy="false">∥</mo><msubsup><mi>L</mi><mrow><mi>t</mi><mo>,</mo><mi>x</mi></mrow><mn>2</mn></msubsup></msub><mo>≥</mo><mo form="prefix" stretchy="false">(</mo><mi>R</mi><mo>−</mo><mn>1</mn><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msup><mo form="postfix" stretchy="false">∥</mo><msub><mi>N</mi><mi>R</mi></msub><msub><mo form="postfix" stretchy="false">∥</mo><msubsup><mi>L</mi><mrow><mi>t</mi><mo>,</mo><mi>x</mi></mrow><mn>2</mn></msubsup></msub><mo>&gt;</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\|\partial_1^{k-1}N_R\|_{L^2_{t,x}}
+ \ge(R-1)^{k-1}\|N_R\|_{L^2_{t,x}}&gt;0 .
+\tag{HW.53}
+</annotation></semantics></math></div><span class="eq-number">(HW.53)</span></div>
+<p>The original derivative tuple contains this component, whether
+measured by a maximum or a Euclidean norm. The omitted-derivative claim
+would therefore imply
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mn>2</mn></msqrt><mo form="prefix" stretchy="false">(</mo><mi>R</mi><mo>−</mo><mn>1</mn><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>≤</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">\sqrt2(R-1)^{k-1}\le C</annotation></semantics></math>.
+For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k&gt;1</annotation></semantics></math>
+this fails as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">R\to\infty</annotation></semantics></math>.
+Multiplication by a fixed nonzero Lie-algebra matrix gives the same
+counterexample in real Lie-algebra-valued fields; its positive trace
+norm appears on both sides.</p>
+<h3 id="exercise-8.-the-complete-heat-weighted-forcing">Exercise 8. The
+complete heat-weighted forcing</h3>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℓ</mi><mo>=</mo><mn>5</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">\ell=5/4</annotation></semantics></math>
+in (HW.36), retain both wave-norm contributions and relate the temporal
+part to (HT.52).</p>
+<p><strong>Solution.</strong> With
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mi>k</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">m=k-1</annotation></semantics></math>,
+the exact scalar product is</p>
+<div class="equation" id="eq-HW-54"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>s</mi><mrow><mn>5</mn><mi>/</mi><mn>4</mn></mrow></msup><msup><mi>s</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn><mo>−</mo><mn>1</mn><mi>/</mi><mn>4</mn></mrow></msup><mo>=</mo><msup><mi>s</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn></mrow></msup><mo>=</mo><msup><mi>s</mi><mrow><mi>m</mi><mi>/</mi><mn>2</mn><mo>+</mo><mn>1</mn></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+s^{5/4}s^{(k-1)/2-1/4}=s^{(k+1)/2}=s^{m/2+1}.
+\tag{HW.54}
+</annotation></semantics></math></div><span class="eq-number">(HW.54)</span></div>
+<p>The energy tuple therefore contains
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>s</mi><mrow><mi>m</mi><mi>/</mi><mn>2</mn><mo>+</mo><mn>1</mn></mrow></msup><msup><mi>c</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msubsup><mi>∂</mi><mi>x</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo></mrow></msubsup><msub><mi>∂</mi><mi>t</mi></msub><mi>u</mi></mrow><annotation encoding="application/x-tex">s^{m/2+1}c^{-1}\partial_x^{(m)}\partial_tu</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>s</mi><mrow><mi>m</mi><mi>/</mi><mn>2</mn><mo>+</mo><mn>1</mn></mrow></msup><msubsup><mi>∂</mi><mi>x</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo></mrow></msubsup><msub><mi>∇</mi><mi>x</mi></msub><mi>u</mi></mrow><annotation encoding="application/x-tex">s^{m/2+1}\partial_x^{(m)}\nabla_xu</annotation></semantics></math>,
+in their original Euclidean
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>L</mi><mi>x</mi><mn>2</mn></msubsup><annotation encoding="application/x-tex">L^2_x</annotation></semantics></math>
+norm. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>=</mo><msub><mi>G</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">u=G_i</annotation></semantics></math>,
+the temporal term is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>c</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">c^{-1}</annotation></semantics></math>
+times the corresponding norm of (HT.52), while the spatial term is case
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>=</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">q=k</annotation></semantics></math>
+of (HT.40). The separate forcing is</p>
+<div class="equation" id="eq-HW-55"><div class="equation-body" tabindex="0"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo form="prefix" stretchy="false">|</mo><mi>I</mi><msup><mo form="prefix" stretchy="false">|</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><msup><mi>s</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn></mrow></msup><mo form="postfix" stretchy="false">∥</mo><msubsup><mi>∂</mi><mi>x</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow></msubsup><msub><mo>□</mo><mi>c</mi></msub><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>s</mi><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msubsup><mi>L</mi><mrow><mi>t</mi><mo>,</mo><mi>x</mi></mrow><mn>2</mn></msubsup><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo>×</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+c|I|^{1/2}s^{(k+1)/2}
+ \|\partial_x^{(k-1)}\Box_cu(s)\|_{L^2_{t,x}(I\times\mathbb R^3)} .
+\tag{HW.55}
+</annotation></semantics></math></div><span class="eq-number">(HW.55)</span></div>
+<p>For finite
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>,
+raise the sum of the two wave-norm contributions to the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>-th
+power and integrate in the original
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>s</mi><mi>/</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">ds/s</annotation></semantics></math>
+measure. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">p=\infty</annotation></semantics></math>,
+take its supremum over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>s</mi><mo>≤</mo><mi>S</mi></mrow><annotation encoding="application/x-tex">0&lt;s\le S</annotation></semantics></math>.
+The actual forcing remains in either case; a fixed-time bound alone does
+not estimate it.</p>
+<h2 id="the-next-physical-step">8. The next physical step</h2>
+<p>We have proved the wave energy, fourth-power and spatial null-form
+estimates, their exact original-coordinate maps, and the heat-weighted
+forms used by the continuation argument. <a href="classical-tension-null-structure.html">Tension, spatial
+decomposition and the nonlinear wave equation</a> now derives the actual
+tension equation and its all-order heat bounds, the exact Hodge/null
+interaction, and the physical time derivative of the temporal
+connection. The remaining nonlinear interactions, boundary gauge
+estimates and global physical continuation remain part of Lesson 9.</p>
+</main><footer>Geometry and states in Yang–Mills theory · Mathematical content: CC0 1.0.</footer></body></html>

@@ -302,7 +302,7 @@ The displayed defect is exact: \(v_1^2=iI_2\), \(v_2=-I_2\), and \(v_1^2=(-i)v_2
 
 The full proofs are [CN0 the character algebra](#cn0), [CN1 exact normalization and uniqueness](#cn1), [CN2 the topology](#cn2-topology), [CN3 the extension](#cn3), [CT full normal continuity](#ct), [CN4 both kernel inclusions](#cn4), and [CN6 the exact model](#cn6).
 
-The [renderer](../assets/character-normalization-exact-cocycle-kernel/render_character_normalization.py), [exact data](../assets/character-normalization-exact-cocycle-kernel/figure/character-normalization-data.json), [editable SVG](../assets/character-normalization-exact-cocycle-kernel/figure/character-normalization.svg), and [font notice](../assets/character-normalization-exact-cocycle-kernel/figure/FONT-LICENSE.txt) accompany the diagram. The example and all integer phase identities are proved in CN6.
+The [renderer](../assets/character-normalization-exact-cocycle-kernel/render_character_normalization.py), [exact data](../assets/character-normalization-exact-cocycle-kernel/figure/character-normalization-data.json), [editable SVG](../assets/character-normalization-exact-cocycle-kernel/figure/character-normalization.svg), and font notice accompany the diagram. The example and all integer phase identities are proved in CN6.
 
 <a id="l127-historical-setting"></a>
 <a id="oa-flow.l127.historical.setting"></a>
@@ -767,4 +767,4 @@ The mathematical antecedents are Takesaki, *Theory of Operator Algebras II*, The
 
 Character normalization and topological circle splitting both remove the symmetric scalar multiplier. The exact-kernel conclusion has two proofs: the fixed-implementer implication in CN4 and the cocycle-invariance argument in CK. Both use the complete earlier proofs linked in the setting.
 
-Original lesson exposition and diagram: CC0-1.0 to the extent of rights held. Mathematical exposition by Codex (OpenAI), with character-normalization exposition and illustration by GPT-6.1 Sol (OpenAI). DejaVu font components retain their accompanying [font terms](../assets/character-normalization-exact-cocycle-kernel/figure/FONT-LICENSE.txt).
+Original lesson exposition and diagram: CC0-1.0 to the extent of rights held. Mathematical exposition by Codex (OpenAI), with character-normalization exposition and illustration by GPT-6.1 Sol (OpenAI). DejaVu font components retain their accompanying font terms.

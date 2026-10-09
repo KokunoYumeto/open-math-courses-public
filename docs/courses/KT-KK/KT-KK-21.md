@@ -10,7 +10,7 @@ CA=C_0([0,1),A),\qquad
 C_f=\{(a,g)\in A\oplus CB:g(0)=f(a)\}.
 \tag{1.1}
 \]
-We use the [cone deformations](KT-KK-14.html#1-cones-and-two-explicit-deformations) and [separable split-exactness](KT-KK-14.html#13-solutions) proved in *Exact sequences in KK and the universal coefficient theorem*, Lemma 1.1 and Solution 12.1; the quasihomomorphism picture proved in [*Pictures of KK: Fredholm operators, quasihomomorphisms and extensions*, Theorems 4.1 and 4.5](KT-KK-07.html#4-quasihomomorphisms); and the [first](KT-KK-12.html#4-the-first-product-and-its-gaussian), [second](KT-KK-12.html#5-rotating-the-two-position-spaces) and [one-dimensional](KT-KK-12.html#7-the-one-dimensional-extension-cycles) inverse products proved in *Bott periodicity in KK: the Bott and Dirac elements*, Theorems 4.1, 5.2 and 7.3. The free author editions of Blackadar's *K-Theory for Operator Algebras* and Connes's *Noncommutative Geometry* are basic references.
+We use the [cone deformations](KT-KK-14.html#1-cones-and-two-explicit-deformations) and [separable split-exactness](KT-KK-14.html#13-solutions) proved in *Exact sequences in KK and the universal coefficient theorem*, Lemma 1.1 and Solution 12.1; the quasihomomorphism picture proved in *Pictures of KK: Fredholm operators, quasihomomorphisms and extensions*, Theorems 4.1 and 4.5; and the [first](KT-KK-12.html#4-the-first-product-and-its-gaussian), [second](KT-KK-12.html#5-rotating-the-two-position-spaces) and [one-dimensional](KT-KK-12.html#7-the-one-dimensional-extension-cycles) inverse products proved in *Bott periodicity in KK: the Bott and Dirac elements*, Theorems 4.1, 5.2 and 7.3. The free author editions of Blackadar's *K-Theory for Operator Algebras* and Connes's *Noncommutative Geometry* are basic references.
 
 ## 1. Families, quotients and continuous representatives
 
@@ -120,7 +120,7 @@ It is a norm-continuous family of actual unitaries. Functional calculus gives ho
 For injectivity apply the same correction in \(C([0,1],D)\) to an asymptotic homotopy. At a fixed sufficiently large time it gives an ordinary homotopy of unitaries. Its endpoints are close to the two prescribed unitaries; close unitaries are joined by \(U\exp(s\log(U^*V))\), since their ratio has spectrum away from the negative real axis. Hence the prescribed homomorphisms are ordinarily homotopic.
 
 A homomorphism from \(S\) is exactly a unitary \(U\in D^+\) with scalar quotient 1, through this functional calculus. For stable \(D\), their homotopy classes are \(K_1(D)\): finite matrix stabilization does not change the classes. Indeed every compact-matrix element is approximated by a finite corner; polar correction repairs a unitary approximation, and the same finite approximation uniformly over an interval treats its homotopies. The two corner placements are homotopic by the isometry construction in Section 4. This proves (2.2). Finally the positive ordinary suspension isomorphism
-\(K_0(B)\to K_1(SB)\) is proved in [*Pictures of KK*, Lemma 3.1d](KT-KK-07.html#projection-lifts-and-the-exponential-boundary), including nonunital and arbitrary coefficients. Use its increasing interval coordinate. \(\square\)
+\(K_0(B)\to K_1(SB)\) is proved in *Pictures of KK*, Lemma 3.1d, including nonunital and arbitrary coefficients. Use its increasing interval coordinate. \(\square\)
 
 The same elementary repair for an almost projection proves \([[\mathbb C,D]]=[\mathbb C,D]\): replace a self-adjoint almost projection by its spectral projection at \(1/2\). For stable \(D\) this is its projection semigroup. We will not need a general semiprojectivity theorem.
 
@@ -585,7 +585,7 @@ belong to \(J^+\), since their quotient exponent is \(-2\pi ip\), and join \(W_t
 
 We prove Theorem 6.3 using the covariant Puppe sequence. Its proof used only Theorem 6.2 and ordinary-map Bott naturality, so contravariant exactness is not a premise.
 
-Let \(\mathcal T=C^*(V)\) be the unilateral-shift Toeplitz algebra, \(q:\mathcal T\to C(\mathbb T)\) its symbol quotient, \(\chi=\operatorname{ev}_1q\), and \(\mathcal T_0=\ker\chi\). [*Pictures of KK*, Lemma 3.1b](KT-KK-07.html#projection-lifts-and-the-exponential-boundary) proves its symbol algebra and coefficient kernels. In particular,
+Let \(\mathcal T=C^*(V)\) be the unilateral-shift Toeplitz algebra, \(q:\mathcal T\to C(\mathbb T)\) its symbol quotient, \(\chi=\operatorname{ev}_1q\), and \(\mathcal T_0=\ker\chi\). *Pictures of KK*, Lemma 3.1b proves its symbol algebra and coefficient kernels. In particular,
 \[
 0\longrightarrow\mathcal K\longrightarrow\mathcal T_0
 \xrightarrow{q_0}S\longrightarrow0.

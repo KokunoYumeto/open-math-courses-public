@@ -4,7 +4,7 @@
 
 Complexification gives integral characteristic classes of real bundles in degrees divisible by four. We prove their torsion-qualified Whitney formula, compute the classes of projective tangent bundles, and identify the top class with the square of the Euler class. We then compute the universal oriented ring, both modulo two and with two inverted. The deleted-vector comparison needed for the latter computation is proved by an explicit homotopy.
 
-Our convention is \(p_i(\xi)=(-1)^i c_{2i}(\xi\otimes_{\mathbb R}\mathbb C)\). The [Chern chapter](DG-CHAR-09.html) provides the integral classes, their conjugation rule and their full Whitney formula on paracompact Hausdorff bases. The [bundle](DG-CHAR-01.html), [classification](DG-CHAR-03.html), [Thom/Euler](DG-CHAR-06.html), [Gysin/projective](DG-CHAR-08.html) and [Schubert](DG-CHAR-04.html) chapters provide the proved topology, exact sequences, orientations and universal real mod-two ring. We state precisely where paracompactness and coefficient assumptions enter.
+Our convention is \(p_i(\xi)=(-1)^i c_{2i}(\xi\otimes_{\mathbb R}\mathbb C)\). The [Chern chapter](DG-CHAR-09.html) provides the integral classes, their conjugation rule and their full Whitney formula on paracompact Hausdorff bases. The bundle, [classification](DG-CHAR-03.html), [Thom/Euler](DG-CHAR-06.html), [Gysin/projective](DG-CHAR-08.html) and [Schubert](DG-CHAR-04.html) chapters provide the proved topology, exact sequences, orientations and universal real mod-two ring. We state precisely where paracompactness and coefficient assumptions enter.
 
 ## 1. Complexification and the two-torsion terms
 

@@ -12,7 +12,7 @@ Permission to read and cite does not permit reproducing protected expression or 
 - [Order, positivity and distributional limits](src/order-positivity-and-limits.md) · [reader](reader/AN01-U008.html)
 - [Local data and compatible products](src/local-data-and-compatible-products.md) · [reader](reader/AN01-U009.html)
 - [Weak equations and classical functions](src/weak-equations-and-classical-functions.md) · [reader](reader/AN01-U010.html)
-- [Boundary flux and weak identities](src/boundary-flux-and-weak-identities.md) · [reader](reader/AN01-U011.html)
+- Boundary flux and weak identities · reader
 - [Lipschitz graphs and surface measures](src/lipschitz-graphs-and-surface-measures.md) · [reader](reader/AN01-U012.html)
 - [Cauchy kernels and distributional boundary limits](src/cauchy-kernels-and-boundary-limits.md) · [reader](reader/AN01-U013.html)
 - [Gluing holomorphic sides](src/gluing-holomorphic-sides.md) · [reader](reader/AN01-U014.html)
@@ -63,7 +63,7 @@ Permission to read and cite does not permit reproducing protected expression or 
 - [Sharp bounds for compact spectra](src/sharp-bounds-for-compact-spectra.md) · [reader](reader/AN01-U059.html)
 - [Cosine crossings and spectral-gap bounds](src/cosine-crossings-and-spectral-gap-bounds.md) · [reader](reader/AN01-U060.html)
 - [Compact factors and homogeneous equations](src/compact-factors-and-homogeneous-equations.md) · [reader](reader/AN01-U061.html)
-- [Fourier-Laplace slices and boundary poles](src/fourier-laplace-slices-and-boundary-poles.md) · [reader](reader/AN01-U062.html)
+- Fourier-Laplace slices and boundary poles · reader
 - [Gaussian norms and entire uncertainty](src/gaussian-norms-and-entire-uncertainty.md) · [reader](reader/AN01-U063.html)
 - [Quadratic transforms and tempered images](src/quadratic-transforms-and-tempered-images.md) · [reader](reader/AN01-U064.html)
 - [Quadratic phases and curved spectra](src/quadratic-phases-and-curved-spectra.md) · [reader](reader/AN01-U065.html)

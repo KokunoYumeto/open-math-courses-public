@@ -4,7 +4,7 @@
 
 This lesson proves H. Cartan's Theorems A and B for Stein manifolds: on a complex manifold with a smooth strictly plurisubharmonic exhaustion, every coherent analytic sheaf has vanishing cohomology in positive degrees (Theorem B) and is generated at every point by its global sections (Theorem A). The proof follows A. Andreotti and H. Grauert. A sublevel set of the exhaustion is enlarged to a bigger one through finitely many small bumps, each inside a coordinate ball, where the local results of the previous lessons apply. The Mayer–Vietoris sequence shows that cohomology in positive degrees does not change along the way. Since the smallest sublevel sets are empty, all these groups vanish, and an abstract Mittag-Leffler argument passes to the whole manifold. Schwartz's finiteness theorem enters once, to make the relevant groups Hausdorff.
 
-We use [Plurisubharmonic functions and Stein manifolds](plurisubharmonic-functions-and-stein-manifolds.md), [Stein domains in complex space](stein-domains-in-complex-space.md) and [Fréchet spaces of sections and Schwartz's theorem](frechet-spaces-of-sections-and-schwartzs-theorem.md). The Mayer–Vietoris sequence for two open sets is [Stacks, Tag 01EB](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/cohomology.html#cohomology-lemma-mayer-vietoris).
+We use Plurisubharmonic functions and Stein manifolds, [Stein domains in complex space](stein-domains-in-complex-space.md) and [Fréchet spaces of sections and Schwartz's theorem](frechet-spaces-of-sections-and-schwartzs-theorem.md). The Mayer–Vietoris sequence for two open sets is [Stacks, Tag 01EB](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/cohomology.html#cohomology-lemma-mayer-vietoris).
 
 Basic references are [Demailly] and [Andreotti–Grauert 1962].
 
@@ -26,7 +26,7 @@ Now let \(s\in\mathcal S(W')\). Choose relatively compact open sets \(W'_1\subse
 2. \(U_j\) is a Stein open subset of a resolving ball;
 3. \(G_j\cap U_j\) is Stein, and for every compact \(L\subset G_j\cap U_j\) there are a smooth strictly plurisubharmonic exhaustion \(\psi'\) of \(U_j\) and \(b\) with \(L\subset\{\psi'<b\}\) and \(\overline{\{\psi'<b\}}\subset G_j\cap U_j\).
 
-**Proof.** First fix \(c<c'\leq d\) with \(c'-c\leq\varepsilon_0\), where \(\varepsilon_0\) is chosen below. Cover the compact set \(\overline{X_d}\setminus X_c\) by finitely many resolving balls \(A_0,\ldots,A_{s-1}\), with centres \(a_j\) and radii \(r_j\) in their charts, and choose smooth \(\theta_j\geq0\) with compact support in \(A_j\), \(\sum_j\theta_j\leq1\), and \(\sum_j\theta_j=1\) near \(\overline{X_d}\setminus X_c\). By the perturbation lemma [Plurisubharmonic functions and Stein manifolds, Lemma 2.4](plurisubharmonic-functions-and-stein-manifolds.md#2-stein-manifolds) there is \(\varepsilon_0>0\) such that \(\psi-\sum_j\varepsilon_j\theta_j\) is strictly plurisubharmonic whenever \(0\leq\varepsilon_j\leq\varepsilon_0\). Put \(\varepsilon=c'-c\) and
+**Proof.** First fix \(c<c'\leq d\) with \(c'-c\leq\varepsilon_0\), where \(\varepsilon_0\) is chosen below. Cover the compact set \(\overline{X_d}\setminus X_c\) by finitely many resolving balls \(A_0,\ldots,A_{s-1}\), with centres \(a_j\) and radii \(r_j\) in their charts, and choose smooth \(\theta_j\geq0\) with compact support in \(A_j\), \(\sum_j\theta_j\leq1\), and \(\sum_j\theta_j=1\) near \(\overline{X_d}\setminus X_c\). By the perturbation lemma Plurisubharmonic functions and Stein manifolds, Lemma 2.4 there is \(\varepsilon_0>0\) such that \(\psi-\sum_j\varepsilon_j\theta_j\) is strictly plurisubharmonic whenever \(0\leq\varepsilon_j\leq\varepsilon_0\). Put \(\varepsilon=c'-c\) and
 
 \[
 \psi_j=\psi-\varepsilon\sum_{k<j}\theta_k,\qquad G_j=\{\psi_j<c\}\qquad(0\leq j\leq s).
@@ -77,7 +77,7 @@ Let \(\mathcal W=(W_\alpha)\) be a countable basis of the topology of \(X\) cons
 
 **Corollary 4.2.** \(H^k(V,\mathcal S)=0\) for \(k\geq1\) whenever \(V\) is a Stein open subset of a complex manifold and \(\mathcal S\) is coherent on \(V\). This applies to polydiscs, balls and their finite intersections, to the sets \((\mathbf C^*)^a\times\mathbf C^{n-a}\), to the sublevel sets of strictly plurisubharmonic exhaustions, and to closed submanifolds of Stein manifolds and their products.
 
-**Proof.** Theorem 4.1 and the examples of [Plurisubharmonic functions and Stein manifolds, Section 2](plurisubharmonic-functions-and-stein-manifolds.md#2-stein-manifolds). \(\square\)
+**Proof.** Theorem 4.1 and the examples of Plurisubharmonic functions and Stein manifolds, Section 2. \(\square\)
 
 ## 5. Theorem A
 

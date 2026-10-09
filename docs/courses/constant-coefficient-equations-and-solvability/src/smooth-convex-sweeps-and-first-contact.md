@@ -4,7 +4,7 @@
 
 A continuation proof needs a smooth surface at the first place where a singular set is encountered. We construct curved outer approximations of any compact convex set, interpolate them through a strictly nested family, and compute the exact outward gradient of the entry parameter.
 
-Use multivariable differentiation, compact smooth mollifiers, the regular level theorem and the inverse function theorem. [Convex supports and convolution cancellation](../prerequisites/convex-supports-and-convolution-cancellation.html), Theorem 1.1, proves the compact-convex support characterization. The finite-dimensional separation theorem is [Fourier transforms, finite spectra and convex separation](../prerequisites/prerequisite-bridges.html), Theorem 4.1.
+Use multivariable differentiation, compact smooth mollifiers, the regular level theorem and the inverse function theorem. Convex supports and convolution cancellation, Theorem 1.1, proves the compact-convex support characterization. The finite-dimensional separation theorem is [Fourier transforms, finite spectra and convex separation](../prerequisites/prerequisite-bridges.html), Theorem 4.1.
 
 Let \(n\ge1\). A convex body means a nonempty compact convex subset of \(\mathbb R^n\) with nonempty interior. A smooth positively curved body has \(C^\infty\) boundary and positive definite second fundamental form for the outward normal, with the convention that this form is the derivative of the outward normal paired with tangent vectors. In dimension one the boundary is a two-point zero-dimensional manifold; positive definiteness on its zero tangent spaces is vacuous.
 

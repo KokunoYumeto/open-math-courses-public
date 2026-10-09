@@ -43,4 +43,4 @@ The real-variable reading follows Lesson 2 and precedes Lesson 3. The remaining 
 
 ## Sources and licences
 
-Each reading identifies its exact free sources and its licence. The readings are CC0; those that follow Fremlin's arguments cite him, and his unchanged source packages keep their own licence. See [component licences](LICENCES.md). The editable Markdown accompanies every rendered reading.
+Each reading identifies its exact free sources and its licence. The readings are CC0; those that follow Fremlin's arguments cite him, and his unchanged source packages keep their own licence. See component licences. The editable Markdown accompanies every rendered reading.

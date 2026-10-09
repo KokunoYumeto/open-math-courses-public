@@ -1,6 +1,6 @@
 # Reproducing the Section 11B figures
 
-The three scripts independently draw the mathematical objects, exact formulas and typed proof maps in Section 11B. They incorporate no image of a human source page. Their text and original diagrams are dedicated to CC0 1.0. The DejaVu fonts in `fonts/` have their separate licence in [LICENSE_DEJAVU.txt](fonts/LICENSE_DEJAVU.txt); retain that file with the fonts.
+The three scripts independently draw the mathematical objects, exact formulas and typed proof maps in Section 11B. They incorporate no image of a human source page. Their text and original diagrams are dedicated to CC0 1.0. The DejaVu fonts in `fonts/` have their separate licence in LICENSE_DEJAVU.txt; retain that file with the fonts.
 
 Preserve this layout, with the scripts in `reproduction/` and a sibling `figures/` directory. Python 3, Pillow, NumPy and Matplotlib are required. The scripts use the supplied font files directly, without installing fonts or depending on a machine font path. Create the sibling output directory if it is absent, then run:
 

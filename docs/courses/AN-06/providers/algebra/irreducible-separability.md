@@ -108,4 +108,4 @@ Any extension must differentiate $h(a)=0$ to obtain (FS4). Polynomial evaluation
 
 ## Further reading
 
-The Stacks Project authors, with the AI Integrated Stacks Project, [*Fields*, irreducible polynomials and their derivatives, tag 09H0](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/fields.tex#L1167), give the irreducible-polynomial alternatives. The [historical source excerpts and their licence](NOTICE.md) retain their own terms.
+The Stacks Project authors, with the AI Integrated Stacks Project, [*Fields*, irreducible polynomials and their derivatives, tag 09H0](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/fields.tex#L1167), give the irreducible-polynomial alternatives. The historical source excerpts and their licence retain their own terms.

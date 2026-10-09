@@ -78,11 +78,11 @@ Apply the one-coordinate fundamental theorem to the two differences and use Fubi
 
 because \(\partial_vH=i\partial_sH\). In CF11, \(H\) is the entire product of the data transform and the reflected test transform, with the other real coordinates fixed. CF12 controls the integrated vertical sides; only after this finite equality is established is the limit \(R\to\infty\) taken. The strict requirement \(2M>N+n\) makes the horizontal integrals and their tails integrable and makes the integrated side contributions vanish.
 
-The separate lesson [Boundary flux and weak identities](../prerequisites/boundary-flux-and-weak-identities.html) gives the complete Green proof and a complete alternative proof. The calculation above supplies this finite rectangle step, not its general Green, weak-equation or regularity claims. The formal proof retains the declared Fourier inversion, Cauchy, compact parameter integration and identity-principle entries, with their lower provider scope.
+The separate lesson Boundary flux and weak identities gives the complete Green proof and a complete alternative proof. The calculation above supplies this finite rectangle step, not its general Green, weak-equation or regularity claims. The formal proof retains the declared Fourier inversion, Cauchy, compact parameter integration and identity-principle entries, with their lower provider scope.
 
 ## What this lesson supplies to the approximation lessons
 
-[Approximation and global solvability from support geometry](approximation-and-global-support-solvability.md) uses two compact Fourier inputs. CF5.1 supplies its entry (3): annihilation of all exponential-polynomial homogeneous solutions gives the unique compact transpose inverse. CF4.1 supplies an additional proof of its ordinary-hull entry (2). The valid AN-01 [Convex supports and convolution cancellation](../prerequisites/convex-supports-and-convolution-cancellation.html), Corollary 4.3, remains another proof of that hull statement.
+[Approximation and global solvability from support geometry](approximation-and-global-support-solvability.md) uses two compact Fourier inputs. CF5.1 supplies its entry (3): annihilation of all exponential-polynomial homogeneous solutions gives the unique compact transpose inverse. CF4.1 supplies an additional proof of its ordinary-hull entry (2). The valid AN-01 Convex supports and convolution cancellation, Corollary 4.3, remains another proof of that hull statement.
 
 If the compact data lie in an open convex set, their compact convex hull also lies there. The inverse therefore stays inside that set. The approximation lesson still needs its cutoff and mollification receiver before pairing with nonsmooth solutions; this lesson does not permit a direct distributional pairing with an arbitrary nonsmooth function.
 
@@ -278,7 +278,7 @@ If two compact solutions exist, their difference \(w\) has \(QF_w=0\). On the op
 
 Differential operators are local: a test supported away from \(\operatorname{supp}v\) and each of its derivatives pair to zero with \(v\). Thus \(\operatorname{supp}f\subset\operatorname{supp}v\). Combined with \(\operatorname{supp}v\subset\operatorname{ch}\operatorname{supp}f\), this proves (CF20). In particular every compact \(v\) obeys the ordinary hull identity for \(Q(D)v\), including its homogeneous and scalar cases. \(\square\)
 
-This supplies an additive internal proof of the ordinary differential support-hull statement already available in [Convex supports and convolution cancellation](../prerequisites/convex-supports-and-convolution-cancellation.html), Corollary 4.3. That existing argument remains useful; the present proof does not replace it or infer the corresponding singular-support identity.
+This supplies an additive internal proof of the ordinary differential support-hull statement already available in Convex supports and convolution cancellation, Corollary 4.3. That existing argument remains useful; the present proof does not replace it or infer the corresponding singular-support identity.
 
 ### 5. Multiplicities detected by exponential-polynomial solutions
 

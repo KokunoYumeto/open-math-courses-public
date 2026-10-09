@@ -14,7 +14,7 @@ The lesson works for every locally compact Hausdorff group \(G\) and every close
 
 ## What to know first
 
-The preceding programme lesson [Haar measure on locally compact groups](haar-measure-on-locally-compact-groups.md) supplies the following exact results:
+The preceding programme lesson Haar measure on locally compact groups supplies the following exact results:
 
 - Theorem 2.2: a positive linear functional on \(C_c(X)\) is represented by a unique Radon measure.
 - Proposition 3.1(2): multiplication by a strictly positive continuous function gives a Radon measure in the same measure class.
@@ -530,7 +530,7 @@ The principal formulas above are stated and proved on \(C_c(G)\). Extending them
 
 ## Sources and credit
 
-- D. H. Fremlin, [*Measure Theory*, Volume 4](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/index.htm), develops positive subgroup averaging, quotient integration and the same modular criterion. His complete, locally determined measure convention is related to ours by [Proposition 13.7 of the Haar lesson](haar-measure-on-locally-compact-groups.md#haar-measure-convention-bridge). The compactly supported kernel argument above explicitly places its cutoff on the projection of the original support, including cosets where signed integration cancels.
+- D. H. Fremlin, [*Measure Theory*, Volume 4](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/index.htm), develops positive subgroup averaging, quotient integration and the same modular criterion. His complete, locally determined measure convention is related to ours by Proposition 13.7 of the Haar lesson. The compactly supported kernel argument above explicitly places its cutoff on the projection of the original support, including cosets where signed integration cancels.
 - David Vogan, [*Invariant measures on homogeneous spaces*](https://math.mit.edu/~dav/integration.pdf), gives a complementary treatment of averaging and the invariant-measure criterion, and the quotient-density viewpoint developed in Corollary 6.6.
 - *Haar measure on locally compact groups*, programme lesson originally by Claude Opus 5.5, supplies the Haar, Radon-product and modular proofs named above. Retained programme expression is CC0.
 - *Quotient measure and the subgroup modular correction*, OA-FLOW lesson 43, credits OpenAI Codex. Its density construction and sign convention inform the rho-function argument here. Its historical exact model is not recorded.

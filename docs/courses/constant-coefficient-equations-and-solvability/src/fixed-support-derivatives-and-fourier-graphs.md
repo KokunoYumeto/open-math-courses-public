@@ -4,7 +4,7 @@
 
 A fixed cutoff costs only a fixed number of derivatives, even when the derivative being estimated has high order. We first make that fact quantitative. We then move a Fourier inverse through a logarithmic complex graph, deriving its exact boundary flux and the decay that removes it.
 
-[Fourier transforms, finite spectra and convex separation](../prerequisites/prerequisite-bridges.html), Theorems 1.1–2.1 and Section 7, proves the Fourier results with the normalization used here. [Metric and topological foundations](../prerequisites/metric-foundation-bridges.html), Section 13.10, constructs smooth cutoffs. [Boundary flux and weak identities](../prerequisites/boundary-flux-and-weak-identities.html), Theorem 2.1, proves the complex-linear flux formula.
+[Fourier transforms, finite spectra and convex separation](../prerequisites/prerequisite-bridges.html), Theorems 1.1–2.1 and Section 7, proves the Fourier results with the normalization used here. [Metric and topological foundations](../prerequisites/metric-foundation-bridges.html), Section 13.10, constructs smooth cutoffs. Boundary flux and weak identities, Theorem 2.1, proves the complex-linear flux formula.
 
 Keep \(D_j=-i\partial_j\) and
 
@@ -166,7 +166,7 @@ Put \(G_s=F(Z_s)\). The holomorphic chain rule gives
 
 For completeness, let \(q=\nu\cdot\nabla\tau\) and \(L=\sum_l\nu_l(\partial_{z_l}F)(Z_s)\). The left side is \(i\tau L(1+isq)+iqG_s\). On the right, differentiating \(\tau\) gives \(iqG_s\); differentiating \(F\) gives \(i\tau\sum_{j,l}\nu_jF_l(\delta_{lj}+is\nu_l\partial_j\tau)=i\tau L(1+isq)\). Thus the two sides agree directly. The coordinate Cauchy–Riemann equations are exactly what removes anti-holomorphic derivative terms.
 
-Multiply the vector field on the right by a compact smooth cutoff equal to 1 on a neighborhood of \(\overline{B_R}\). Its divergence on the ball and its values on the sphere are unchanged. [Boundary flux and weak identities](../prerequisites/boundary-flux-and-weak-identities.html) Theorem 2.1 applies to this compact C¹ complex vector field and gives its integral as the right-hand sphere flux. The fundamental theorem of calculus in \(s\), followed by integration over the compact ball, proves (10). Fubini is justified by continuity on the compact product. In dimension one this is the signed two-endpoint flux, with normals \(-1\) and \(1\) and counting measure. \(\square\)
+Multiply the vector field on the right by a compact smooth cutoff equal to 1 on a neighborhood of \(\overline{B_R}\). Its divergence on the ball and its values on the sphere are unchanged. Boundary flux and weak identities Theorem 2.1 applies to this compact C¹ complex vector field and gives its integral as the right-hand sphere flux. The fundamental theorem of calculus in \(s\), followed by integration over the compact ball, proves (10). Fubini is justified by continuity on the compact product. In dimension one this is the signed two-endpoint flux, with normals \(-1\) and \(1\) and counting measure. \(\square\)
 
 In differential-form language, \(F(z)\,dz_1\wedge\cdots\wedge dz_n\) is closed: its anti-holomorphic derivatives vanish and each holomorphic derivative wedges with a repeated \(dz_j\). Its pulled-back endpoint coefficient is \(G_sJ_s\). Formula (11) identifies its lateral coefficient explicitly as \(i\tau\nu G_s\). Thus (10) proves the particular Stokes deformation that the logarithmic-inverse lesson actually uses, with its complete boundary coefficient and orientation; no general Stokes theorem on a cylinder with corners is an additional premise.
 

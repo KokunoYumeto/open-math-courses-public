@@ -24,22 +24,22 @@ Local identifier: `SH02-MSD-PREREQUISITES`.
 
 The proofs use the following finite list of statements.
 
-**Stalks.** Module sheaves form an abelian category, exactness is detected on stalks, and a stalk functor is exact. This is [the abelian-sheaf contract](../../sheaf-proof-readings/SH02-open-prerequisites.html#SH02-IMP-ABELIAN), specialized to the constant ring sheaf $k_X$.
+**Stalks.** Module sheaves form an abelian category, exactness is detected on stalks, and a stalk functor is exact. This is the abelian-sheaf contract, specialized to the constant ring sheaf $k_X$.
 
-**Derived tests and acyclic resolutions.** Module sheaves have enough injectives, and bounded-below injective resolutions compute right derived functors of left exact additive functors. These are [the injective-resolution contract](../../sheaf-proof-readings/SH02-open-prerequisites.html#SH02-IMP-INJECTIVE) and [the derived-functor contract](../../sheaf-proof-readings/SH02-open-prerequisites.html#SH02-IMP-DERIVE). Applied to sheaf sections with closed support and then to a stalk, they make (MSD1) a triangulated functor into $D^+(k)$. Its output need not be asserted bounded. We also use the exact acyclic-resolution form: when the right derived functor is defined, a bounded-below complex of objects acyclic for it computes that functor by termwise application. This is [Leray's acyclicity lemma, Tag 015E](https://stacks.math.columbia.edu/tag/015E); the derived-support functors here are defined by the preceding injective construction.
+**Derived tests and acyclic resolutions.** Module sheaves have enough injectives, and bounded-below injective resolutions compute right derived functors of left exact additive functors. These are the injective-resolution contract and the derived-functor contract. Applied to sheaf sections with closed support and then to a stalk, they make (MSD1) a triangulated functor into $D^+(k)$. Its output need not be asserted bounded. We also use the exact acyclic-resolution form: when the right derived functor is defined, a bounded-below complex of objects acyclic for it computes that functor by termwise application. This is [Leray's acyclicity lemma, Tag 015E](https://stacks.math.columbia.edu/tag/015E); the derived-support functors here are defined by the preceding injective construction.
 
 **Localization and open restriction.** For a closed subset $Z\subset V$ with complementary open inclusion $j$, the functorial triangle is
 \[
 R\Gamma_Z K\longrightarrow K\longrightarrow Rj_*j^{-1}K\xrightarrow{+1}.
 \tag{MSD2}
 \]
-This is [the localization contract](../../sheaf-proof-readings/SH02-open-prerequisites.html#SH02-IMP-LOCALIZATION). Exact open restriction and the local stalk identifications give independence of the test domain in (MSD1). We also use [exact extension by zero for an open inclusion](../../sheaf-proof-readings/SH02-open-prerequisites.html#SH02-IMP-OPEN-ZERO), whose adjunction with restriction makes the restriction of an injective sheaf to an open set injective.
+This is the localization contract. Exact open restriction and the local stalk identifications give independence of the test domain in (MSD1). We also use exact extension by zero for an open inclusion, whose adjunction with restriction makes the restriction of an injective sheaf to an open set injective.
 
 **Triangles.** Distinguished triangles have long exact cohomology sequences. A commutative square on the first two objects extends to a morphism of distinguished triangles. A quasi-isomorphism becomes invertible in the derived category. These are the derived-category operations used in the cone argument below; that argument explicitly derives the cone-independence and zero-cone criteria it needs.
 
 **Finite truncations.** For the finite-truncation argument alone, use the shift invariance and triangle bound already established in [the formal microsupport properties](../../sheaf-proof-readings/SH02-microsupport-tests.html#SH02-MST-FORMAL): for a distinguished triangle, the microsupport of any term is contained in the union for the other two terms, and a cohomological shift leaves microsupport unchanged.
 
-**Flabby resolutions.** For the coefficient comparison alone, an injective module sheaf is flabby and a flabby module sheaf has zero higher direct images along any morphism of ringed spaces. These exact statements are [Tag 09SX](https://stacks.math.columbia.edu/tag/09SX) and [Tag 09T0](https://stacks.math.columbia.edu/tag/09T0), collected in [the flabby-sheaf contract](../../sheaf-proof-readings/SH02-open-prerequisites.html#SH02-IMP-FLABBY). The passage from them to sections with support is proved below.
+**Flabby resolutions.** For the coefficient comparison alone, an injective module sheaf is flabby and a flabby module sheaf has zero higher direct images along any morphism of ringed spaces. These exact statements are [Tag 09SX](https://stacks.math.columbia.edu/tag/09SX) and [Tag 09T0](https://stacks.math.columbia.edu/tag/09T0), collected in the flabby-sheaf contract. The passage from them to sections with support is proved below.
 
 The finite calculations in this lesson require no propagation theorem or cone projector. The equivalence between different regularities of test functions belongs to [the separate test-equivalence theorem](../../sheaf-proof-readings/SH02-microsupport-tests.html#SH02-MST-EQUIVALENCE).
 

@@ -204,7 +204,7 @@ is compact and avoids the identity. Every \(x\in[-1,1]\) is fixed by \((2,-x)\in
 
 **Theorem 4.4 (measurable free actions).** For a jointly Borel nonsingular action of a second countable locally compact group on a standard sigma-finite measured space, condition (4.1) is equivalent to trivial stabilizers almost everywhere.
 
-*Proof.* Proposition 4.1 proves one direction. For the other, use the compact continuous model and its simultaneous point realization from [Measurable actions and compact models](measurable-actions-and-compact-models.md), Theorems 4.1 and 4.4. There are invariant conull Borel subsets of the original space and the compact model that are exactly equivariantly isomorphic. Thus corresponding points have identical stabilizers.
+*Proof.* Proposition 4.1 proves one direction. For the other, use the compact continuous model and its simultaneous point realization from Measurable actions and compact models, Theorems 4.1 and 4.4. There are invariant conull Borel subsets of the original space and the compact model that are exactly equivariantly isomorphic. Thus corresponding points have identical stabilizers.
 
 The free points of the compact model form a Borel set. Indeed, for each compact \(C\subset G\setminus\{e\}\), the set \(\{\omega:\text{some }s\in C\text{ fixes }\omega\}\) is closed, as the projection of the compact closed fixed-pair set in \(C\times\Omega\). A countable compact exhaustion of \(G\setminus\{e\}\) makes the nonfree points a countable union of such sets. The free set is invariant, and it is conull in this model under the hypothesis.
 

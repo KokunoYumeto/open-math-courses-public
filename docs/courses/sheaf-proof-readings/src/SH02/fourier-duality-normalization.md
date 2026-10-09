@@ -41,7 +41,7 @@ The sheaf-operation imports used here are the proper-support projection formula,
 \pi^!H\simeq \pi^{-1}H\otimes_k\pi^{-1}O[n]. \tag{FDN2}
 \]
 
-Finite cohomological dimension of the proper direct images of these finite-rank bundle projections supplies their extraordinary inverse images. This is a condition on abelian sheaves in the underlying foundation, not a replacement by a bound for one chosen coefficient object. The projection formula is the one for proper support and has no perfectness requirement on a bounded tensor factor. The [kernel unit](../../SH02-kernel-calculus.html) states these imports and their adjunction maps. Conicity of internal Hom with bounded first input and bounded-below second input is provided by [conic descent](../../SH02-conic-descent.html).
+Finite cohomological dimension of the proper direct images of these finite-rank bundle projections supplies their extraordinary inverse images. This is a condition on abelian sheaves in the underlying foundation, not a replacement by a bound for one chosen coefficient object. The projection formula is the one for proper support and has no perfectness requirement on a bounded tensor factor. The kernel unit states these imports and their adjunction maps. Conicity of internal Hom with bounded first input and bounded-below second input is provided by [conic descent](../../SH02-conic-descent.html).
 
 ### SH02-FDN-PROJECTION-RANGE — Why bounded-below tests are allowed
 

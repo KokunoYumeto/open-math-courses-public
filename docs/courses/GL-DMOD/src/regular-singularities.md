@@ -11014,6 +11014,1378 @@ This proves the global existence used on the exact domains (DL.15). It provides 
 The figure has a full-resolution PNG, SVG, editable plotting source and exact coordinate data.
 
 
+### 5.44. Full homogeneous coefficients and ordinary infinite-order kernels
+
+We construct the common-domain full homogeneous coefficient ring, its complete infinite products and derivative tails, and a canonical linear pole/log kernel map. Supplied strict angular data admit an explicit normalization with all overlap and missing-face primitives. The ordinary diagonal infinite-order subring has a canonical residue product and arbitrary ordinary holomorphic coordinate overlaps.
+
+The full geometric identification for arbitrary projectivized microlocal sections and the mixed pole/log canonical product remain separate assertions, denoted IK.G and IK.M. The strict angular hypothesis is retained throughout. The ordinary calculation supplies neither assertion, and no infinite-order module-derived instantiation is made.
+
+Free human specifications are [Kashiwara–Schapira, Micro-hyperbolic systems, §§1.3 and 3.1](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/Microhyp.pdf), and [Kashiwara–Kawai, Holonomic systems III, III.2, printed pp.883–884](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf). The distinct real-conic symbol problem is treated in the freely accessible [Aoki–Honda–Yamazaki, Foundation of symbol theory for analytic pseudodifferential operators, I](https://www.jstage.jst.go.jp/article/jmath/69/4/69_1715/_pdf), and [Komori, The equivalence of pseudodifferential operators and their symbols via Čech–Dolbeault cohomology](https://content.ems.press/assets/public/full-texts/serials/prims/61/3/14299041/online/10.4171-prims-61-3-3.pdf). No symbol theorem from these references replaces a proof below.
+
+The earlier full resolutions and controlled excision are [§5.34, R.1–R.7](#5-34-full-current-resolutions-and-controlled-proper-image-comparison); the finite relative cube, normalized trace, tensor signs and normal-line calibration are [§5.35, V.1–V.6](#5-35-relative-cones-unshifted-cup-and-the-normalized-trace). Finite-subring calibration uses [§5.41, CP.2](#5-41-canonical-products-for-full-convergent-spatial-symbols) and [§5.39, NL.11–NL.12 and NL.22–NL.27](#5-39-canonical-normal-localization-of-convergent-spatial-symbols). Unrestricted locally \(L^2\) existence on domains with smooth strictly plurisubharmonic exhaustions is proved in [§5.43, DLH.1–DLH.4](#5-43-the-canonical-all-degree-action-and-its-derived-module-structure). We first verify that this analytic hypothesis holds on every ordinary puncture intersection.
+
+#### OC.1. Explicit exhaustions on every ordinary puncture intersection
+
+Let \(M=U\times\prod_{i=1}^N\Delta_{R_i}\), with \(U\) an actual bounded base polydisc. Write all its base and normal coordinates as \(z_j\), centered at zero, with respective radii \(R_j\). A translated coordinate has the same argument after subtracting its center. For \(J\subset\{1,\ldots,N\}\), put
+
+\[
+\begin{gathered}
+M_J=\left\{\begin{gathered}
+(u,w)\in M:\\
+w_i\ne0\text{ for }i\in J
+\end{gathered}\right\}.
+\end{gathered}
+\tag{OC.1}
+\]
+
+The empty subset gives \(M\). On \(M_J\) define
+
+\[
+\begin{gathered}
+\psi_J=\\
+\sum_j\left(\begin{gathered}
+|z_j|^2\\
+-\log(R_j^2-|z_j|^2)
+\end{gathered}\right)\\
++\sum_{i\in J}|w_i|^{-2}.
+\end{gathered}
+\tag{OC.2}
+\]
+
+This is smooth on exactly the stated domain. In one coordinate direct differentiation gives
+
+\[
+\begin{gathered}
+\partial_z\partial_{\bar z}\bigl[-\log(R^2-|z|^2)\bigr]\\
+={R^2\over(R^2-|z|^2)^2}>0,\\
+\partial_w\partial_{\bar w}|w|^{-2}=|w|^{-4}>0.
+\end{gathered}
+\tag{OC.3}
+\]
+
+The \(|z_j|^2\) terms contribute the identity Levi matrix. Thus the complete Levi form is positive definite. Every term is bounded below on the bounded product, and approaching any outer coordinate boundary makes its logarithmic term tend to \(+\infty\). Approaching a puncture \(w_i=0\), \(i\in J\), makes \(|w_i|^{-2}\) tend to \(+\infty\). Consequently each sublevel stays a positive distance from every excluded boundary and puncture. It is closed in a bounded ambient product, hence compact there and contained in \(M_J\). This proves a true smooth strictly plurisubharmonic exhaustion on every finite cover intersection, including the whole product.
+
+#### OC.2. Actual holomorphic cohomology vanishing
+
+Let \(\mathcal L^q\) be the sheaf of forms with locally \(L^2\) coefficients and locally \(L^2\) distributional Dolbeault differential. The differential maps this sheaf into the next term, since its second differential is zero. Multiplication by a smooth function preserves both conditions on compacts by the distributional Leibniz rule. Thus each term is a \(C^\infty\)-module sheaf.
+
+The augmented complex \(0\to\mathcal O\to\mathcal L^0\to\mathcal L^1\to\cdots\) is exact. For local positive-degree closed forms, apply DLH.1–DLH.4 on a small polydisc; OC.2 with an empty puncture set gives its smooth strictly plurisubharmonic exhaustion, with the exact Levi coefficients OC.3. The resulting locally \(L^2\) primitive has differential the given locally \(L^2\) form, so it belongs to \(\mathcal L^{q-1}\). In degree zero, §5.34, R.3's distributional holomorphicity proof identifies the kernel with ordinary holomorphic functions.
+
+Each term is ordinary-section acyclic by §5.34, R.5's complete \(C^\infty\)-module injective-resolution and partition argument. §5.34, R.6's finite double-complex elimination therefore identifies global \(\mathcal L\) cohomology with the actual right-derived holomorphic sections. On \(M_J\), DLH.1–DLH.4 applied to OC.2 provides a global locally \(L^2\) primitive for every positive-degree global closed form. Again that primitive lies in the stated maximal graph sheaf. Hence
+
+\[
+\begin{gathered}
+H^q(M_J,\mathcal O)=0\\
+(q>0),
+ \\
+ H^0(M_J,\mathcal O)=\mathcal O(M_J).
+\end{gathered}
+\tag{OC.4}
+\]
+
+The input top-form coefficient line is holomorphically trivial on the local product. Apply the same proof in that frame; it changes no estimate or differential. The ordinary smooth Dolbeault section complexes on these opens have the same cohomology by §5.34, R.6's exact comparison, so their positive-degree closed sections also have actual smooth primitives. No distributional extension at a puncture and no bound on boundary growth has been used.
+
+#### OC.3. Holomorphic-row reduction of the actual finite support cube
+
+The diagonal is \(\Delta=\{w_1=\cdots=w_N=0\}\), and its complement is covered by \(U_i=\{w_i\ne0\}\). V.15's full cube has, for each subset \(J\), the section column \(\mathcal A^*(M_J)\), with total differential the alternating face restriction plus \((-1)^{|J|}\bar\partial\). R.7 and V.6 identify it with the actual relative supported object, rather than assuming the holomorphic cover is Leray.
+
+OC.4 now proves that the holomorphic column augmentation is a quasi-isomorphism on every one of these finitely many actual opens. Here is the total-complex elimination. In a closed total cochain, begin with its smallest nonzero cube cardinality. Its component in positive Dolbeault degree is vertically closed, because no smaller-cardinality component contributes. Solve its vertical equation on that very \(M_J\), subtract its total boundary with the prescribed vertical sign, and remove it. Only a component of larger cube cardinality can be introduced. There are finitely many subsets and the Dolbeault degree is bounded. Continue until every surviving component has Dolbeault degree zero; its vertical closure makes it holomorphic. This constructs a representative in the holomorphic cube row. For injectivity, apply the same elimination to a boundary primitive whose total boundary has only holomorphic components. Its remaining degree-zero components are holomorphic and provide the boundary in that row. This proves the actual quasi-isomorphism, including boundaries.
+
+It follows that the ordinary degree-\(N\) diagonal class is computed, on these cofinal actual products, by the quotient of holomorphic functions on \(M_{\{1,\ldots,N\}}\) by restrictions from the actual omitted-coordinate faces. The ordered face restriction signs are those of V.15. No row is discarded by a mere fine-sheaf assertion.
+
+#### OC.4. Laurent representative, all pairings and zero detection
+
+On the full coordinate-punctured product, one-variable Cauchy integrals split a holomorphic function into positive and negative Laurent powers. On a smaller common product, the positive projection in a coordinate uses a fixed outer circle and extends holomorphically through that coordinate's zero. Negative projections in distinct coordinates commute by finite compact integration. The identity
+
+\[
+\begin{gathered}
+f-\Pi_{1,-}\cdots\Pi_{N,-}f\\
+=\sum_{i=1}^N\Pi_{1,-}\cdots\Pi_{i-1,-}\Pi_{i,+}f
+\end{gathered}
+\tag{OC.5}
+\]
+
+therefore writes the difference as actual omitted-coordinate face functions. Their alternating deletion signs provide literal Čech primitives. The entire fully negative Laurent subseries converges normally on every punctured compact, by iterated Cauchy estimates on smaller inner circles. The domain is chosen before summing any index.
+
+For any multiindex \(\alpha\in\mathbf N^N\), the compact product-torus pairing with \(w^\alpha\) annihilates every omitted face by the one-coordinate Cauchy theorem and selects the fully negative coefficient of \(w^{-\alpha-\mathbf1}\). Thus if all these pairings vanish, every fully negative coefficient vanishes, and OC.5 gives an actual face boundary. Conversely every face boundary has all pairings zero. This proves separation in this **completely computed ordinary diagonal local cohomology**, for all base parameters on the common product.
+
+Arbitrarily small inner circles give the ordinary every-ε coefficient bounds after dividing the selected coefficient by \(\alpha!\); conversely those bounds give normal convergence of the entire negative subseries. Compact enlargement gives every fixed derivative tail. The canonical meaning and positive scalar of these product-torus pairings are supplied by the full two-support trace construction TC.1–TC.3; the direct Laurent calculation proves their detection without any solution-module faithfulness premise.
+
+Under an ordinary local biholomorphism, the diagonal supported object and the input top-form line transform by their actual pullback. R.1/R.7 and V.4 give the coordinate invariance of this object and its proper trace, including the Jacobian. In the new coordinates OC.1–OC.4 apply on a cofinal local product and detect the transformed class by all its ordinary normal monomial pairings. Thus the transformed class is the class determined by OR.13's actual coefficient pairings, proving the ordinary geometric coordinate correspondence used in OR.4.
+
+This supplement is confined to ordinary coordinate-punctured products and their diagonal local cohomology. It does not produce strict angular data from an arbitrary projectivized microlocal section, prove the mixed pole/log trace, establish support-enlargement injectivity, or infer any matrix-flatness, faithfulness, propagation or wider programme result.
+
+![An explicit strictly plurisubharmonic exhaustion on a punctured disc](assets/puncture-exhaustion.png)
+
+The exact \(N=1\) example of (OC.2), with unit base radii and base coordinates zero, is
+\(\psi(w)=|w|^2-\log(1-|w|^2)+|w|^{-2}\) on \(0<|w|<1\).
+Its Levi coefficient is \(1+(1-|w|^2)^{-2}+|w|^{-4}>0\).
+The left panel shows its divergence at both excluded boundaries; the right shows
+the compact annular sublevels for \(c=4,6,9\). The displayed level radii are
+numerical bisection samples. The general product exhaustion and the cohomology
+proof are OC.1–OC.4. A higher-dimensional slice fixes any additional punctured
+normal coordinates at nonzero constants and shifts the exhaustion by a constant.
+The plotting source,
+exact function and numerical data,
+full PNG and
+editable SVG reproduce the illustration.
+Free human background for the weighted estimate and Hilbert existence method:
+[McNeal–Varolin, *L² estimates for the ∂̄ operator*, §§1.1 and 3.1](https://arxiv.org/abs/1502.08047).
+The complete existence proof is [§5.43, DLH.1–DLH.4](#5-43-the-canonical-all-degree-action-and-its-derived-module-structure).
+
+#### IK.1. Common-domain coefficients and exact projective chart restrictions
+
+Fix base coordinates \(u=(t,x_1,\ldots,x_d)\), \(N=d+1\), and a cotangent chart with \(\tau\ne0\), \(z=\xi/\tau\). After an affine linear base change the central normalized covector is \(z=0\). Let \(U\times Z\) be one product of open polydiscs. A coefficient sequence is a collection \(p_j\in\mathcal O(U\times Z)\), \(j\in\mathbf Z\), with, on each compact \(K\Subset U\times Z\),
+
+\[
+\begin{gathered}
+|p_{-n}|_K\le B_K C_K^n n!,\\
+
+ |p_j|_K\le B_{K,\varepsilon}\frac{\varepsilon^j}{j!}
+ \\
+(j\ge0,\ \varepsilon>0).
+\end{gathered}
+\tag{IK.1}
+\]
+
+The same actual product supports every index. There is no upper index bound. Write \(P_j(u;\tau,\xi)=\tau^j p_j(u,\xi/\tau)\); the sequence \(\sum_jP_j\) is notation for these homogeneous coefficients. Its negative part is not an ordinary Laurent sum.
+
+Fixed finite base or \(z\) derivatives preserve (IK.1) on a smaller product: the iterated Cauchy formula costs \(\nu!\rho^{-\lvert\nu\rvert}\) for a fixed multiorder \(\nu\) and positive coordinate margins \(\rho\). This constant is independent of \(j\). Restrictions are literal restrictions of every holomorphic coefficient. Germ equality means equality on a single smaller product, rather than independently at each degree. Local coefficient sequences glue: each coefficient glues holomorphically, and a compact set is covered by finitely many smaller compact coefficient charts; take their largest negative constant and sum their positive constants for each fixed \(\varepsilon\). Thus the class is a sheaf on the chosen base coordinate domain and its normalized projective charts.
+
+For another homogeneous normalization \(\tau'=L(\tau,\xi)\ne0\), with the base coordinates still fixed, the coefficient is
+
+\[
+ p'_j=(\tau/\tau')^j p_j(u,z). \tag{IK.2}
+\]
+
+On a compact overlap both \(\lvert\tau/\tau'\rvert\) and its inverse are bounded. Multiplying by their \(j\)-th powers replaces \(C\) and rescales the input \(\varepsilon\); the every-\(\varepsilon\) quantifier is preserved. The transition identities are exact because the homogeneous functions \(P_j\) are the same functions. This proves projective covariable chart restrictions in fixed base coordinates. It does not prove nonlinear base-coordinate transformation of the microdifferential symbol or its geometric sheaf identification.
+
+#### IK.2. One factorial majorant for binary and triple contractions
+
+We first prove the numerical estimate used for all infinite contractions. For \((E,D,L>0)\), \(a=E(D+L)<1\), define
+
+\[
+\begin{gathered}
+S_\ell(E,D,L)\\
+=\sum_{\substack{J,M,m\ge0\\J-M-m=\ell}}
+ E^J D^M L^m\frac{M!m!}{J!}.
+\end{gathered}
+\tag{IK.3}
+\]
+
+If \(\ell\ge0\), \(J=M+m+\ell\), and
+
+\[
+\begin{gathered}
+\frac{M!m!}{(M+m+\ell)!}\le\frac1{\ell!},\\
+
+ S_\ell\le \frac{E^\ell}{\ell!(1-ED)(1-EL)}.
+\end{gathered}
+\tag{IK.4}
+\]
+
+The factorial inequality follows because \((M+m+\ell)!/(M!m!\ell!)\) is a positive integer. The last sum is the product of two convergent geometric series.
+
+For \(\ell=-n<0\), put \(q=M+m\ge n\). Since \(M!m!\le q!\),
+
+\[
+\begin{gathered}
+\frac{M!m!}{(q-n)!}\le n!\binom qn,
+ \\
+ \sum_{M+m=q}D^ML^m\le(D+L)^q.
+\end{gathered}
+\]
+
+The second inequality is the binomial expansion with its positive integer coefficients removed. Differentiating the geometric series \(n\) times proves
+
+\[
+ S_{-n}\le n!\frac{(D+L)^n}{(1-a)^{n+1}}. \tag{IK.5}
+\]
+
+All differentiations take place inside its radius of absolute convergence. In particular \(a\le1/2\) gives \(S_{-n}\le2[2(D+L)]^n n!\).
+
+These estimates have literal tails. For \(\ell\ge0\), the part with \(M+m\ge R\) is at most
+
+\[
+ \frac{E^\ell}{\ell!}\frac{a^R}{1-a}. \tag{IK.6}
+\]
+
+For \(\ell=-n\), \(R\ge n\), the corresponding bound is
+
+\[
+\begin{gathered}
+n! E^{-n}\sum_{q\ge R}\binom qn a^q\\
+=E^{-n}a^n\frac{d^n}{da^n}\frac{a^R}{1-a}.
+\end{gathered}
+\tag{IK.7}
+\]
+
+The right side tends to zero as \(R\to\infty\): differentiating the displayed rational expression produces a fixed finite sum of terms bounded by a polynomial in \(R\) times \((a^{R-n})\). A cutoff in any one of \((J,M,m)\), or in any component used to form them, is controlled by these tails, because \(J=M+m+\ell\) at fixed output degree. These are actual numerical tails, not a topology on a formal completion.
+
+Here is the reduction from coefficients to (IK.3). Fix a compact smaller base/projective product. Enlarge it slightly, still inside the common coefficient domain. There are uniform base Cauchy margins \(\rho>0\) and a uniform full-covariable polydisc margin \(\delta>0\) around each point \(((1,z))\). Every point of the latter polydisc has \(\tau\ne0\) and \(\xi/\tau\) in the enlarged projective product. On it \(\lvert\tau\rvert^j\le A^{\lvert j\rvert}\), for one \(A\ge1\). Thus the Cauchy bounds for \(P_j\), including a covariable multiorder \(\alpha\), are
+
+\[
+\begin{gathered}
+|\partial_{(\tau,\xi)}^\alpha P_j|
+\le\alpha!\delta^{-\lvert\alpha\rvert}\\
+\begin{cases}B (AC)^{-j}(-j)!,&j<0,\\
+B_{\varepsilon}(A\varepsilon)^j/j!,&j\ge0.
+\end{cases}
+\end{gathered}
+\tag{IK.8}
+\]
+
+The analogous base Cauchy estimate costs \(\alpha!\rho^{-\lvert\alpha\rvert}\). For finitely many input operators choose common margins, a largest negative constant, and a common positive \(\varepsilon\); their positive prefactors are then finite. The domains and margins are chosen before any index summation.
+
+For a binary contraction of length \(m=\lvert\alpha\rvert\), the factor left after division by \(\alpha!\) is bounded by \(m!(\delta\rho)^{-m}\). There are at most \((N^m)\) multiorders of length \(m\): words of length \(m\) in \(N\) letters map onto them by taking multiplicities. Absorb that count into \((L^m)\).
+
+For a triple contraction, use multiorders \(a,b,c\in\mathbf N^N\), total length \(m=|a|+|b|+|c|\). The derivatives are
+
+\[
+\begin{gathered}
+\frac{1}{a!b!c!}
+(\partial_\zeta^{a+b}P_j)\\
+(\partial_u^a\partial_\zeta^c Q_k)
+(\partial_u^{b+c}R_h),\\
+\zeta=(\tau,\xi).
+\end{gathered}
+\tag{IK.9}
+\]
+
+Cauchy leaves the factorial factor \(((a+b)!(b+c)!/b!)\). Coordinate by coordinate,
+
+\[
+ (a_i+b_i)!(b_i+c_i)!/b_i!\le(a_i+b_i+c_i)!.
+\]
+
+Indeed the \(a_i\) consecutive factors beginning at \((b_i+1)\) are at most the corresponding factors beginning at \((b_i+c_i+1)\). Multiplying and using the multinomial inequality bounds this factor by \(m!\). Counts of the \((3N)\) derivative components cost at most \(((3N)^m)\), again absorbed into \((L^m)\). Mixed base/covariable Cauchy bounds use the same enlarged product; they introduce no new index-dependent domain.
+
+Group the nonnegative homogeneous input indices into total \(J\), and the absolute values of the negative indices into total \(M\). There are at most three inputs. Products of negative factorials are at most \(M!\). For \(r\ge1\) nonnegative indices their factorial product is at least \((J!/r^J)\), by the multinomial expansion. Counting their possible compositions costs at most another \((r^J)\); counting the at most three negative compositions costs at most \((3^M)\). Enlarge \(E\) to \(9A\varepsilon\), \(D\) to \((3AC)\), and \(L\) to include the derivative counts and margins. The finitely many sign choices cost a constant, at most eight times the product of the input prefactors. Each sign-choice sum is bounded by a subseries of (IK.3). If there are no nonnegative inputs, \(J=0\); the same enlarged positive majorant still bounds that finite-degree subseries. Consequently (IK.4)–(IK.7) apply to every binary and every triple contraction.
+
+The input \(\varepsilon\) is arbitrarily small. To obtain a specified output positive bound \(\eta^\ell/\ell!\), choose \(E\le\eta\) and \(E(D+L)\le1/2\). The output prefactor may depend on \(\eta\). For negative output choose one such fixed \(E\), obtaining one factorial constant from (IK.5). This proves the exact quantifiers of (IK.1) for all output coefficients.
+
+#### IK.3. The actual coordinate ring, unit, associativity, and derivative tails
+
+Define the product by the full contraction
+
+\[
+\begin{gathered}
+(P\circ Q)_\ell(u,z)=\\
+\left.\sum_{j+k-|\alpha|=\ell}
+\frac{\begin{gathered}\partial_\zeta^\alpha P_j\,\\
+\partial_u^\alpha Q_k\end{gathered}}{\alpha!}\right|_{\tau=1,\xi=z}.
+\end{gathered}
+\tag{IK.10}
+\]
+
+IK.2 proves absolute normal convergence on every compact of the fixed smaller product, including the infinitely many summands at a fixed \(\ell\). Each summand is holomorphic and homogeneous of degree \(\ell\), so its sum is holomorphic and homogeneous. The output has both exact growth conditions by (IK.4)–(IK.5). IK.6–IK.7 give the actual tails of the grouped full contraction.
+
+Each fixed finite derivative of the tails converges normally as well. Choose, once, a further compact enlargement within the smaller product used for IK.10. Apply (IK.6) or (IK.7) uniformly on that enlargement, and apply the iterated Cauchy integral for the chosen fixed output derivative. Its constant is independent of every summation index and of the cutoff. Thus the differentiated tail is at most that Cauchy constant times the displayed tail. This proves all fixed base and normalized-covariable derivative tails without differentiating a conditionally convergent series.
+
+The unit is the sequence \(P_0=1\), \(P_j=0\) for \(j\ne0\): derivatives of 1 annihilate every nonzero contraction, and the remaining term is the original coefficient. Addition, scalar multiplication, and restrictions are literal, and distributivity follows from absolute convergence. The product is compatible with the fixed-base projective normalizations IK.2 because IK.10 differentiates the same homogeneous functions before making either normalization.
+
+For associativity, expand \((P\circ Q)\circ R\). In the outer covariable derivative \((b+c)\), distribute \(b\) derivatives to \(P\) and \(c\) to \(Q\). The binomial coefficient cancels the outer \(((b+c)!)\), giving exactly IK.9. Expanding \(P\circ(Q\circ R)\) instead distributes its outer base derivative \((a+b)\) between \(Q\) and \(R\), producing the same IK.9, with the same coefficient \((1/(a!b!c!))\). Each term has output degree
+
+\[
+\begin{gathered}
+\ell=j+k+h\\
+-|a|-|b|-|c|.
+\end{gathered}
+\tag{IK.11}
+\]
+
+The triple estimate of IK.2 proves absolute normal convergence of this entire series and all its fixed output derivatives. Tonelli for the absolute scalar majorant therefore justifies both derivative Leibniz expansions and every regrouping. The two products are equal on the single smaller product. This proves associativity as an identity of actual holomorphic coefficient germs, rather than by formal polynomial continuity.
+
+For any finite diagram of coefficient operators take the intersection of their finitely many actual products and the least of the finitely many margins. Apply this argument to each of the finitely many products appearing in its identities. All coefficients, maps, idempotents, and algebraic identities then live on one smaller product. This statement concerns the actual coordinate ring only; it does not manufacture a geometric ring action or a module-derived lift.
+
+#### IK.4. The ordinary zero-section diagonal coefficient calculation
+
+This is a separate, complete calculation of the source's ordinary diagonal local cohomology. Let \(v=u+w\) be a normal diagonal coordinate on \(U\times\Delta^N\), with input frame \(dv_1\wedge\cdots\wedge dv_N\). The local cohomology \(\mathcal H^N_\Delta(\Omega^{(0,N)})\) is computed by the finite coordinate puncture cube, using the exact finite relative-Čech augmentation of the earlier programme §5.35, V.6, with the full resolution proof §5.34, R.1–R.7. Those proofs apply to arbitrary holomorphic coefficients and impose no distribution growth condition. OC.1–OC.3 proves positive holomorphic cohomology vanishing on every actual puncture intersection and the finite elimination reducing the full Dolbeault cube to its holomorphic row. OC.4 proves that all normal monomial pairings detect precisely the actual face boundaries. Thus the holomorphic-row calculation below is justified before any coefficient is extracted.
+
+For a holomorphic top-cube function on \((0<|w_i|<r_i)\), iterated Laurent expansion is normally convergent on smaller product annuli. This can be proved directly: integrate on two nested circles for each coordinate, expand the geometric Cauchy denominators, and estimate each resulting positive/negative geometric series on a smaller annulus. Perform the finitely many coordinate integrations successively; all circles are compact and Cauchy kernels are uniformly bounded there. The terms with a nonnegative power in some \(w_i\) extend across \(w_i=0\); they are precisely boundaries from the cube face omitting that coordinate. The fully negative part is unique, since integrating against every normal monomial annihilates all such faces and selects its Laurent coefficient. The splitting is realized by those actual Cauchy integrals, so it is a splitting of representatives and boundaries, not merely an equality of dimensions.
+
+The resulting unique normal expression is
+
+\[
+\begin{gathered}
+K_0(u,w)=\frac1{(2\pi i)^N}\\
+\sum_{\alpha\in\mathbf N^N}
+a_\alpha(u)\frac{\alpha!}{w^{\alpha+\mathbf1}}.
+\end{gathered}
+\tag{IK.12}
+\]
+
+On any compact base set, the Cauchy coefficient estimate on a normal product circle of arbitrarily small positive radii \(\rho_i\) gives
+
+\[
+ |a_\alpha|\le M_\rho\frac{\prod_i\rho_i^{\alpha_i+1}}{\alpha!}.
+ \tag{IK.13}
+\]
+
+Taking all \(\rho_i\le\varepsilon\) proves the ordinary every-\(\varepsilon\) coefficient condition on the same base domain. Conversely that condition makes IK.12 normally convergent on every coordinate-punctured compact: choose \(\varepsilon<\min_i|w_i|\), and sum the product of \(N\) geometric series. The same argument after compact enlargement supplies every fixed derivative tail. Thus the ordinary diagonal geometric sheaf is exactly the ordinary infinite-order coefficient class, including actual germs.
+
+It acts on every holomorphic germ: on a common input polydisc with margins \(\rho_i\ge\rho>0\), Cauchy gives \( |\partial^\alpha f|\le\alpha!\rho^{-|\alpha|}|f|\). Choose \(\varepsilon<\rho\), and sum \(B_\varepsilon|f|(1-\varepsilon/\rho)^{-N}\). Coefficient germs are separated by these actions: apply them to \(e^{\langle u,\lambda\rangle}\). The quotient of the output by this nowhere-zero function is the entire symbol \(\sum_\alpha a_\alpha(u)\lambda^\alpha\); its Taylor coefficients recover every \(a_\alpha\). This is ordinary operator separation, with no claim concerning arbitrary module sections.
+
+Grouping \(a_\alpha\zeta^\alpha\) by total degree gives a subclass of IK.1 whose intrinsic positive coefficient \(P_j(u;\tau,\xi)\) is a homogeneous polynomial of total covariable degree \(j\ge0\), with no negative coefficients. Its normalized polynomial \(p_j(u,z)=P_j(u;1,z)\) has spatial degree **at most** \(j\), retaining every time-power index \(m=j-|\beta|\ge0\). For example \(P_3=\tau^3+\tau\xi^2\) gives \(p_3=1+z^2\). OR.1–OR.4 retain every \(\alpha=(\alpha_t,\alpha_x)\), and AN.18 includes all \(m+|\beta|=j\). Conversely every such subclass with the IK.1 bounds gives the ordinary class: apply the polynomial Cauchy coefficient estimate on a full unit covariable polydisc after finite homogeneous rescaling; \(j!\ge\alpha!\), and a fixed exponential cost is absorbed by rescaling \(\varepsilon\). In IK.10, covariable differentiation of a polynomial of degree \(j\) vanishes for \(|\alpha|>j\), so no negative output degree occurs. The ring product agrees with the ordinary Leibniz action by the same absolutely convergent Cauchy bounds. This identifies the ordinary ring calculation and its inclusion into the coordinate ring. It does not yet prove that the off-zero geometric \(E^\infty\) sheaf restricts compatibly to that ordinary class across all cotangent neighborhoods; that requires IK.G below.
+
+#### IK.5. Full spatial-index holomorphic pole/log kernels
+
+Choose one slightly larger normalized polydisc \((|z_i|<R_i)\) within the common coefficient domain. Expand
+
+\[
+\begin{gathered}
+p_j(u,z)=\sum_{\beta\in\mathbf N^d}p_{j\beta}(u)z^\beta,
+ \\
+ a_{m\beta}=p_{m+|\beta|,\beta}.
+\end{gathered}
+\tag{IK.14}
+\]
+
+On a fixed compact base set, the spatial Cauchy coefficient estimate is
+
+\[
+\begin{gathered}
+|p_{-a,\beta}|\le B C^a a! R^{-\beta},\\
+
+ |p_{j\beta}|\le B_\varepsilon\varepsilon^j R^{-\beta}/j!,
+ \\
+ R^{-\beta}=\prod_iR_i^{-\beta_i}.
+\end{gathered}
+\tag{IK.15}
+\]
+
+Use \(w=s-t\), \(\zeta_i=y_i-x_i\). Define the cut-plane one-variable functions for integers \(m\ge0\), \(n\ge0\),
+
+\[
+\begin{gathered}
+\Phi_{m+1}(-w)=\frac{m!}{w^{m+1}},\\
+\Phi_{-n}(-w)=-\frac{(-w)^n}{n!}\\
+(\log w+\gamma-H_n),\\
+H_0=0.
+\end{gathered}
+\tag{IK.16}
+\]
+
+Here (log w) is principal, cut on the negative real ray. The constant \(\gamma\) can be defined by the convergent sequence \(H_n-\log n\): its successive differences \(1/(n+1)-\log(1+1/n)\) have absolute value at most \((1/n^2)\), by integrating \((1/(1+x))\) on \(([0,1/n])\); hence the sequence is Cauchy. Only its finite constant and the explicitly displayed normalization are used. Differentiation proves \(\partial_T\Phi_\lambda(T)=\Phi_{\lambda+1}(T)\) for these integer indices, including \(n=0\), directly from \(H_n-H_{n-1}=1/n\). This fixes the source's signs and factorials.
+
+The full kernel series is
+
+\[
+\begin{gathered}
+K_P=\frac1{(2\pi i)^N}\\
+\left\{\begin{gathered}
+\sum_{m\ge0,\beta\ge0}p_{m+|\beta|,\beta}\\
+\frac{m!\beta!}{w^{m+1}\zeta^{\beta+\mathbf1}}\\
+-\sum_{n\ge0,\beta\ge0}p_{|\beta|-n-1,\beta}\\
+\frac{\beta!(-w)^n}{n!\zeta^{\beta+\mathbf1}}\\
+(\log w+\gamma-H_n)
+\end{gathered}\right\}.
+\end{gathered}
+\tag{IK.17}
+\]
+
+Every spatial index is retained. The first sum is \(K_0\), the coefficient of \(-\log w\) in the second is \(G_P\), and its remaining harmonic-number part is \(K_2\). Thus \(K_P=K_0-\log w\,G_P+K_2\). The first sum is holomorphic wherever all coordinate differences are nonzero, on one small base neighborhood. Indeed
+
+\[
+ \frac{m!\beta!}{(m+|\beta|)!}\le1
+\]
+
+by \(\beta!\le|\beta|!\) and the binomial inequality. On a compact coordinate-punctured set choose \(\varepsilon\) smaller than every \((|w|)\) and every \(R_i|\zeta_i|\). The absolute sum, with the harmless common factor \(|w\prod_i\zeta_i|^{-1}\), is bounded by
+
+\[
+\begin{gathered}
+B_\varepsilon(1-\varepsilon/|w|)^{-1}\\
+\prod_i(1-\varepsilon/(R_i|\zeta_i|))^{-1}.
+\end{gathered}
+\tag{IK.18}
+\]
+
+For \(G_P\), split according to its homogeneous input index \(j=|\beta|-n-1\). Let \(b=|\beta|\). On a compact set of the thick complement with \((|w|)\) small and \(|\zeta_i|>A_i|w|\), choose \((A_i>R_i^{-1})\). Choose a positive number \(Y>\max_i(R_i|\zeta_i|)^{-1}\), locally uniformly on that compact, such that \(q=|w|Y<1\). The complete homogeneous-polynomial sum obeys
+
+\[
+\begin{gathered}
+\sum_{|\beta|=b}\prod_i(R_i|\zeta_i|)^{-\beta_i}\\
+\le C_Y Y^b,\\
+C_Y=\\
+\prod_i(1-(R_i|\zeta_i|Y)^{-1})^{-1}.
+\end{gathered}
+\tag{IK.19}
+\]
+
+To prove it, divide by \((Y^b)\) and enlarge the sum from degree \(b\) to every spatial multiindex; the latter is exactly the product of geometric series. Compact strict margins make \(C_Y\) uniformly finite.
+
+If \(j=-a<0\), \(n=a+b-1\), and
+
+\[
+ \frac{a!\beta!}{(a+b-1)!}\le a+b.
+\]
+
+Put \(r=C|w|<1\). The absolute negative-homogeneous part of \(G_P\), apart from \((2\pi)^{-N}\prod_i|\zeta_i|^{-1}\), is at most
+
+\[
+\begin{gathered}
+\frac{BC_Y}{|w|}\\
+\left\{\begin{gathered}
+\frac{r}{(1-r)^2(1-q)}\\
++\frac{rq}{(1-r)(1-q)^2}
+\end{gathered}\right\}.
+\end{gathered}
+\tag{IK.20}
+\]
+
+This follows by summing \(((a+b)r^a q^b)\), \(a\ge1,b\ge0\). At \(w=0\) the displayed removable expression has a finite bound when the spatial differences stay nonzero. More directly each original term is an ordinary nonnegative integer power \((w^n)\); normal convergence on a slightly larger \(w\)-disc proves holomorphic extension there.
+
+If \(j\ge0\), \(b=n+j+1\). Use \(\beta!\le b!\), (IK.19), and set \(x=\varepsilon Y\), choosing the input \(\varepsilon\) so that \((x+q<1)\). Its absolute sum is bounded by
+
+\[
+\begin{gathered}
+B_\varepsilon C_Y Y\\
+\sum_{n,j\ge0}(n+1)\binom{n+j+1}{j}\\
+q^n x^j\\
+=\frac{B_\varepsilon C_Y Y}{(1-x-q)^2}.
+\end{gathered}
+\tag{IK.21}
+\]
+
+The identity first sums \(j\) using the \(((n+1))\)-st derivative of the geometric series, then sums \(((n+1)(q/(1-x))^n)\). Both sums are absolute and positive. This is the mixed positive-homogeneous/negative-normal part absent from a merely negative-homogeneous estimate.
+
+Equations IK.20–IK.21 prove that \(G_P\) is holomorphic on one thick-complement neighborhood, including \(w=0\) where every spatial difference is nonzero. \(H_n\le n\) for \(n\ge1\); inserting its factor differentiates the negative-homogeneous generating series by \(r\partial_r+q\partial_q-1\), since \(n=a+b-1\), and the mixed series by \(q\partial_q\). These are finite derivatives of convergent rational majorants and only increase their denominator powers. Thus \(K_2\) has the same holomorphic domain. Multiplying \(G_P\) by the locally bounded chosen logarithm on a cut-plane compact proves normal convergence of IK.17. All fixed derivative tails follow by compact enlargement and Cauchy, as in IK.3.
+
+For completeness these series have quantitative index tails, not just pointwise convergence. Replace each strict ratio in IK.18–IK.21 by a slightly larger one, keeping \((r'<1)\) and \((q'+x'<1)\). Termwise comparison bounds a tail \(a\ge A\) by ((r/r')^A) times the larger negative majorant, and a tail \(j\ge J\) of IK.21 by ((x/x')^J) times its larger majorant. A spatial-degree tail is controlled by choosing \((Y')\) strictly larger than \(Y\), with the same strict inequalities, and extracting \(((Y/Y')^b)\). A normal-degree tail is controlled by \((q/q')\). Finite powers from \(H_n\) and fixed derivatives are absorbed by these larger majorants or by Cauchy on a larger compact. The finite product of chosen margins is common to the complete coefficient sequence. No coefficient receives its own domain.
+
+The thick complement here has the source III.2 inequality \(>\). This construction makes no assertion about the opposite \(<\) complement used in III.3's special fibration class, or about the distinct \(\widetilde E^\infty,R^\infty,A^\infty\) tensors.
+
+#### IK.6. Literal holomorphic relative-cone classes, branch corrections and finite calibration
+
+Choose one closed thick ordering cone
+
+\[
+\begin{gathered}
+G_A=\left\{\begin{gathered}
+w\in\mathbf R_{\le0},\\
+|\zeta_i|\le A_i(-\Re w)
+\end{gathered}\right\},\\
+A_i>R_i^{-1},
+\end{gathered}
+\tag{IK.22}
+\]
+
+on a sufficiently small convex base neighborhood. This is the initial line-time/spatial-thick support: \(\Im w=0\), so its ordinary real interior is empty. AN.5 below gives the literal enlargement to a full-dimensional pointed cone and explicit proper source margins; no equality of the two support topologies or injectivity of support enlargement is assumed. The ordered complement cover is \(U_0=\{w\notin\mathbf R_{\le0}\}\), \(U_i=\{|\zeta_i|>A_i|w|\}\), \(1\le i\le d\). IK.17 is holomorphic on its top intersection and its two non-pole parts extend holomorphically to the spatial intersection \(U_1\cap\cdots\cap U_d\) after the logarithm is removed. Let \(r_N=(-1)^{N(N-1)/2}\). Use the earlier exact full relative cone and finite cube of programme §5.35, V.1/V.6, with the ungraded input top-form frame. The complement top-cochain representative is
+
+\[
+ (0,-r_NK_P), \tag{IK.23}
+\]
+
+equivalently the ordinary top-cube coefficient \(r_N(-1)^N K_P\). These signs are the exact V.15–V.17 calibration, rather than an action-based identification. The full cone has \(d(a,b)=(\bar\partial a,ra-Db)\), where \(D=d_C+(-1)^r\bar\partial\) on complement Čech degree \(r\).
+
+The \(K_2\) term is a **literal** cone boundary. For \(d\ge1\), put \(c_{1\cdots d}=r_N K_2\) on the spatial face of complement Čech degree \(d-1\), with every other ordered entry zero. Its coefficients are holomorphic, so \(Dc\) is only the Čech differential. On top indices \(0,1,\ldots,d\), the only nonzero summand deletes index 0 and has sign (+1); hence \(d(0,c)=(0,-r_NK_2)\). For \(d=0\), \(K_2\) is holomorphic on the whole normal disc and \(d(-K_2,0)=(0,-K_2)\). Thus no harmonic-number holomorphic term has been silently discarded.
+
+Changing the branch to \(\log w+2\pi i k\) changes \(K_P\) by \(-2\pi i kG_P\). The same construction, with \(K_2\) replaced by that holomorphic difference, is its exact relative-cone primitive. This proves branch independence of the class. Restrictions are literal restrictions of coefficients and cochains. Enlarging \(A_i\) restricts to a smaller complement cover and the same series on the common top intersection; the finite cover refinement/augmentation of V.6 gives the actual restriction map between support cones. Hence this is a canonical linear germ map from the coordinate coefficient class into the directed holomorphic support-class system, with a common thick cone for any finite operator list.
+
+For the finite-order subring, choose \(k\) with \(P=\partial_t^k\circ P_0\), \(P_0\) of order at most zero, on the common actual chart. When \(k=0\), IK.17 modulo the explicit \(K_2\) boundary is precisely the order-zero kernel (§5.41, CP.15): its only nonnegative normal term is \(p_{0,0}/(w\prod_i\zeta_i)\), and \(n=a+|\beta|-1\) in its negative part. The complete earlier proof [§5.41, CP.2](#5-41-canonical-products-for-full-convergent-spatial-symbols) gives the literal canonical class, including the full finite complement homotopy.
+
+Differentiating IK.17 at a fixed finite order is permitted by its derivative tails. The integer identity in IK.16 and the derivatives of the coefficients give \(K_{\partial_t\circ P}=\partial_tK_P\) as a complement-cochain identity. The complete normal-localization proof [§5.39, NL.11–NL.12 and NL.22–NL.27](#5-39-canonical-normal-localization-of-convergent-spatial-symbols) proves the supported principal-log correction and the canonical normal-generator product, including its origin term. Therefore induction on this **finite** \(k\) identifies IK.23 with the finite-order canonical class. This establishes finite-subring calibration with the source branch, all factorials and every normal sign. It does not take a current limit as \(k\to\infty\).
+
+Indeed \(P=\sum_{j\ge0}\partial_t^j/(j!)^2\) gives \(K=e^{1/w}/(2\pi i w)\). The complete local proof IK.9 below proves that its finite partial diagonal currents have no ordinary distribution limit. IK.23 is instead a holomorphic complement cochain with actual compact convergence there; it requires no extension of its essential singularity to an ordinary point-supported distribution.
+
+#### IK.7. Proper geometry supplied independently of the missing infinite product comparison
+
+The cone \(G_A\) is closed, convex and stable under addition: its normal ray parameter \(\sigma=-\Re w\ge0\) adds, and each spatial inequality follows from the triangle inequality. If two cone differences compose between fixed endpoints, the intermediate normal real coordinate is in the closed segment between the endpoints; the spatial intermediate coordinates lie in closed discs bounded by \(A_i\sigma_{\mathrm{total}}\). Thus the intermediate fiber is closed and bounded. On a fixed compact set of endpoints lying in an inner base polydisc, choose once an outer base polydisc containing all these discs with a positive margin. The intermediate fibers are then compact inside the outer source domain. This is the exact proper triple-to-endpoint geometry of the §5.41, CP.3 construction and applies to any finite list of the present coefficient kernels. It depends only on the common cone, not on differential order.
+
+This establishes the geometric properness premise for a future infinite cup/excision/trace comparison. It does **not** prove convergence of its chain representatives across the positive-head singularity or show that IK.23 intertwines that canonical product with IK.10. The existing finite current primitive cannot be summed in the ordinary current topology. A proof of the full holomorphic relative-cone comparison is still required.
+
+#### IK.8. Exact inverse estimates for supplied pole/log normal-form data
+
+This theorem has an explicit input: a pole/log normal-form pair on one common neighborhood. It does not assert that an arbitrary geometric projectivized microfunction already has this form. Put aside the factor \((2\pi i)^{-N}\). Let \(F_0(u,w,\zeta)\) be holomorphic where every coordinate difference is nonzero, with only fully negative Laurent powers in all normal coordinates. Let \(G(u,w,\zeta)\) be holomorphic on one thick complement \(|\zeta_i|>a_i|w|\), including \(w=0\) when every spatial difference is nonzero, and with only fully negative spatial Laurent powers. Terms missing a negative power in some spatial coordinate have the explicit missing-face boundary interpretation of IK.4; here the supplied normal-form data are already so normalized.
+
+Take fixed numbers \(A_i>a_i\). For every sufficiently small \(\rho>0\), the joint cycle
+
+\[
+ |w|=\rho,\qquad |\zeta_i|=A_i\rho \tag{IK.24}
+\]
+
+lies in that same actual thick complement. On a compact base set let \(M_\rho\) be the supremum of \(|G|\) on this compact cycle. The Taylor-in-\(w\), Laurent-in-\(\zeta\) coefficient \(g_{n\beta}\), \(n\ge0,\beta\ge0\), is extracted by its finite iterated Cauchy integral. Its value does not depend on the particular permissible circle radii: deform one circle at a time within the common domain, using the one-variable Cauchy integral on the intervening annulus. Existence of the expansion follows on each fixed spatial product annulus by the same geometric Cauchy-denominator expansion as IK.4, with the \(w\)-disc chosen smaller than \(\min_i|\zeta_i|/a_i\). The pieces agree on overlaps by uniqueness of their coefficients.
+
+Thus
+
+\[
+\begin{gathered}
+|g_{n\beta}|\\
+\le M_\rho\,\rho^{-n}\prod_i(A_i\rho)^{\beta_i+1}\\
+=B_\rho\,\rho^{|\beta|-n}A^\beta,\\
+B_\rho=M_\rho\rho^d\prod_iA_i.
+\end{gathered}
+\tag{IK.25}
+\]
+
+The kernel signs in IK.17 give
+
+\[
+\begin{gathered}
+a_{-n-1,\beta}=(-1)^n\frac{n!}{\beta!}g_{n\beta},
+ \\
+ p_{j\beta}=a_{j-|\beta|,\beta}.
+\end{gathered}
+\tag{IK.26}
+\]
+
+Fix the single normalized covariable neighborhood
+\(\sum_iA_i|z_i|<1\), and a compact subset on which
+\(q=\sum_iA_i|z_i|\le q_*<1\).
+For \(j=-s<0\), \(n=|\beta|+s-1\); the complete spatial sum is bounded by
+
+\[
+\begin{gathered}
+\sum_\beta |p_{-s,\beta}z^\beta|\\
+\le B_\rho\rho^{1-s}\\
+\sum_{b\ge0}\frac{(b+s-1)!}{b!}q^b\\
+=B_\rho\rho^{1-s}(s-1)!\\
+(1-q)^{-s}.
+\end{gathered}
+\tag{IK.27}
+\]
+
+The first equality of spatial summation uses the multinomial formula
+\(\sum_{|\beta|=b}(A|z|)^\beta/\beta!=q^b/b!\).
+The last equality is the \((s-1)\)-st derivative of the geometric series. One fixed \(\rho\) gives the required \(s!\) negative bound with
+\(C=[\rho(1-q_*)]^{-1}\). Every spatial index and every singular base parameter allowed by the supplied holomorphic data is included.
+
+For \(j\ge0\), the log part has \(b=|\beta|\ge j+1\) and \(n=b-j-1\). Its complete spatial sum satisfies
+
+\[
+\begin{gathered}
+\sum_{|\beta|\ge j+1}|p_{j\beta}z^\beta|\\
+\le B_\rho\rho^{j+1}\\
+\sum_{b\ge j+1}\frac{(b-j-1)!}{b!}q^b\\
+\le\frac{B_\rho\rho^{j+1}q^{j+1}}{(j+1)!(1-q)} .
+\end{gathered}
+\tag{IK.28}
+\]
+
+The factorial denominator contains \(j+1\) consecutive positive integers, whose product is at least \((j+1)!\). For any prescribed \(\varepsilon>0\), choose \(\rho\) sufficiently small that \(\rho q_*\le\varepsilon\). Its prefactor \(B_\rho\) can depend on this choice, but the base/covariable neighborhood remains the same. Hence IK.28 has the every-\(\varepsilon\) positive bound. Both IK.27–IK.28 converge normally on all compact subsets of this one neighborhood, so they define holomorphic \(p_j\) there.
+
+The fully negative Laurent coefficients of \(F_0\) give
+\(a_{m\beta}\), \(m\ge0\), by dividing its coefficient of
+\(w^{-m-1}\zeta^{-\beta-\mathbf1}\) by \(m!\beta!\).
+The ordinary diagonal calculation IK.4 gives the every-\(\varepsilon\) ordinary differential coefficient bound. For each homogeneous \(j=m+|\beta|\), their normalized \(p_j\) is a finite polynomial and has IK.1 after rescaling \(\varepsilon\), by the multinomial formula. Adding that pole contribution to the log contribution IK.28 gives the full positive \(p_j\); negative \(p_j\) comes from IK.27.
+
+Conversely the coordinate sequence reconstructed this way recovers every coefficient of the supplied \(F_0,G\). The uniqueness of their actual Cauchy expansions and the normal convergence in IK.5 prove equality of the functions on the common domains. Its canonical harmonic-number \(K_2\) is an explicit cone boundary by IK.6. We have therefore proved a bijection, with explicit common-domain estimates and inverse signs, between the full coefficient class and these **supplied normalized pole/log pairs**, modulo the stated missing-face and normal-holomorphic boundaries. The geometric task IK.G is now specifically the reduction of arbitrary sections of \(\gamma^{-1}\gamma_*C^R_\Delta\) to these normal-form data, with exact angular descent/overlap cochains. That reduction cannot be replaced by assuming HolIII III.2's recalled construction.
+
+As a check retaining a genuinely infinite positive head, let
+\(P=\sum_{j\ge0}\partial_t^j/(j!)^2\) and \(T\) be multiplication by \(t\).
+The only nonzero derivatives of \(t\) have order 0 or 1, so IK.10 gives
+
+\[
+\begin{gathered}
+{}[P,T]=\sum_{r\ge0}\frac{\partial_t^r}{r!(r+1)!},
+ \\
+ K_P=\frac{e^{1/w}}{2\pi i w},
+ \\
+ K_{[P,T]}=\frac{e^{1/w}-1}{2\pi i}.
+\end{gathered}
+\tag{IK.29}
+\]
+
+The input multiplication kernel \(sK_P\) minus the output multiplication kernel \(tK_P\) is \(e^{1/w}/(2\pi i)\). Its difference from \(K_{[P,T]}\) is exactly the entire function \(1/(2\pi i)\), with the literal one-dimensional normal-holomorphic cone boundary of IK.6. This is a full positive-head example of a needed cochain correction, not a general infinite product theorem or a distribution limit.
+
+![Exact full contraction indices, rational tail bounds and proper intermediate geometry](assets/infinite-kernel-geometry.png)
+
+**Figure IK.1.** Left: a finite displayed window of the exact degree-zero index relation \(m=j+k\ge0\); both mixed signs and the unbounded positive head occur. The theorem retains every index outside the window. Center: exact rational samples of IK.6 at \(\ell=0\), and IK.7 at \(\ell=-3\) divided by its prefactor \(6E^{-3}\), for \(E=1/64,D=2,L=4\). Right: the exact one-spatial-coordinate real slice of section IK.7's intermediate fiber between endpoints \((0,0)\) and \((-1,0)\), at \(A=2\). The full proof uses closed complex spatial discs in every coordinate. The drawing does not replace the complex-domain proof or infer any current limit. The plotting source and exact data reproduce the illustration. Human geometric specifications are Micro-hyperbolic systems §3.1 and HolIII III.2.
+
+
+Plotting source, exact data, full PNG, and editable SVG.
+
+#### IK.9. Why the infinite positive head has no ordinary distribution limit
+
+Consider the one-variable actual ordinary infinite-order expression
+
+\[
+ P(\partial_t)=\sum_{j\ge0}\frac{\partial_t^j}{(j!)^2}.        \tag{IK.30}
+\]
+
+It satisfies the positive class (IK.1) and (OR.1): \(1/(\varepsilon^j j!)\le\exp(1/\varepsilon)\), since it is a term of the exponential series. Thus \(1/(j!)^2\le\exp(1/\varepsilon)\varepsilon^j/j!\) for every \(\varepsilon>0\). For a holomorphic germ with Cauchy radius \(\rho\), its action is absolutely bounded by \(\|f\|\exp(1/\rho)\) and hence is a genuine holomorphic-germ operator.
+
+In the Cauchy orientation \(w=s-t\), its positive-head kernel is exactly
+
+\[
+\begin{gathered}
+K(w)=\frac1{2\pi i}\sum_{j\ge0}\frac1{j!w^{j+1}}\\
+=\frac{e^{1/w}}{2\pi i\,w}\\
+(w\ne0).
+\end{gathered}
+\tag{IK.31}
+\]
+
+Indeed \(\partial_t^j(s-t)^{-1}=j!(s-t)^{-j-1}\). The series converges normally on every punctured compact: \(|w|\ge\rho>0\) bounds it by \((2\pi\rho)^{-1}\exp(1/\rho)\). It has an essential singularity at zero. For an input germ \(f\), Cauchy pairing on a sufficiently small circle gives exactly (IK.30), because the coefficient of \(s^{-1}\) in \(e^{1/s}f(s)/s\) is \(\sum_j f^{(j)}(0)/(j!)^2\).
+
+There is no ordinary distribution supported at the origin inducing this germ functional. Here is a local proof of the required finite-jet fact. On a fixed compact neighborhood, continuity of a distribution \(T\) gives an estimate by smooth derivative seminorms through some finite order \(M\). If all derivatives through \(M\) of a test function \(f\) vanish at zero, take \(\chi_r(w)=\chi(w/r)\) with \(\chi=1\) near zero. Support at zero gives \(T(f)=T(\chi_rf)\). Taylor's formula and Leibniz show, for \(|\alpha|\le M\),
+
+\[
+\begin{gathered}
+\sup|\partial^\alpha(\chi_rf)|\\
+=O(r^{M+1-|\alpha|})=O(r).
+\end{gathered}
+\tag{IK.32}
+\]
+
+The support of \(\chi_rf\) lies in the fixed compact for small \(r\). The distribution estimate therefore makes \(T(f)=0\). Subtracting the Taylor polynomial times a fixed cutoff proves that a point-supported distribution depends on finitely many jets. This argument uses the real two-dimensional smooth jets when \(t\) is complex, so it does not assume holomorphic distribution theory.
+
+For \(f(t)=t^m\) near zero and \(m>M\), every smooth jet through \(M\) vanishes, while (IK.30) gives
+
+\[
+\begin{gathered}
+(Pf)(0)\\
+=\frac{m!}{(m!)^2}=\frac1{m!}\ne0.
+\end{gathered}
+\tag{IK.33}
+\]
+
+This is the contradiction. The finite partial operator functionals are supported at zero. If they converged in the ordinary distribution topology, their limit would be supported there (tests away from zero are annihilated), and on every cutoff monomial their evaluations eventually stabilize to (IK.33). The same contradiction applies. Thus the finite diagonal-current partial sums have no distribution limit, even though their holomorphic complement kernels converge normally.
+
+Thus full infinite-order kernels require actual holomorphic relative-Čech classes or analytic functionals. The all-degree relative-kernel action of §5.43 applies **after** a genuine full \(E^\infty\)-to-class-ring map has been established and its cone-open, support and common-collar hypotheses have been verified. An abstract map to derived endomorphisms alone supplies no such geometric comparison.
+
+
+![The full positive head converges on punctured complements but has no finite-jet distribution representative](assets/infinite-order-obstruction.png)
+
+**Figure IK.2.** Exact coefficient and functional data for (IK.30)–(IK.33). Left: \(j!a_j=1/j!\), which gives the holomorphic Cauchy estimate. Center: the exact real sample \(w=1/k\), \(2\le k\le40\), of \(\log_{10}|2\pi K(w)|=(k+\log k)/\log10\), together with finite partial kernels; these are numerical samples on the positive real slice of the punctured complex domain, not a distribution boundary-value assertion. Right: exact rational monomial evaluations of the full operator and the order-three partial operator. For \(m\ge4\) the partial operator vanishes and the full operator does not. The complete proof is IK.9; source normalization is HolIII III.2, printed p.883. The reproducible source and exact data describe the numerical samples; the proof is IK.9.
+
+Plotting source, exact data, full PNG, and editable SVG.
+
+#### AN.1. The exact strict angular input
+
+Write the base variable as \(u=(t,x)\), the normal diagonal difference as \((w,\zeta_1,\ldots,\zeta_d)\), and \(N=d+1\). Fix one base polydisc \(U\), positive \(r,r_i,a_i\), and the actual Reinhardt thick complement
+
+\[
+\begin{gathered}
+T_a=\left\{\begin{gathered}
+0<|w|<r,\\
+a_i|w|<|\zeta_i|<r_i\\
+(1\le i\le d)
+\end{gathered}\right\}.
+\end{gathered}
+\tag{AN.1}
+\]
+
+The universal normal-angle cover of this domain has coordinate \(L\), with \(w=e^L\), \(\Re L<\log r\), and deck transformation \(L\mapsto L+2\pi i\). A strict angular datum is a holomorphic function \(F(u,L,\zeta)\) on that cover and a holomorphic function \(H(u,w,\zeta)\) on
+
+\[
+\begin{gathered}
+T_a^0=\left\{\begin{gathered}
+|w|<r,\\
+a_i|w|<|\zeta_i|<r_i
+\end{gathered}\right\},
+\end{gathered}
+\tag{AN.2}
+\]
+
+such that the literal equality
+
+\[
+\begin{gathered}
+F(u,L+2\pi i,\zeta)-F(u,L,\zeta)\\
+=H(u,e^L,\zeta)
+\end{gathered}
+\tag{AN.3}
+\]
+
+holds on the **same** domain. In particular, the defect extends holomorphically to \(w=0\) wherever the spatial differences are nonzero. An equivalent finite presentation may be used only when it supplies finitely many lifted normal-angle intervals, actual holomorphic representatives on their corresponding thick domains, and literal overlap corrections that each extend holomorphically to the entire **common** domain AN.2. After an actual face-resolved choice of representatives has removed spatial-face discrepancies, these are equalities of functions on the overlaps. Subtract the cumulative extended corrections along the ordered interval chain and glue equal functions; the final correction after one circuit is \(H\). This finite construction therefore requires common-domain extensions of its corrections as part of the input. Overlap germs alone, or equality in a stalkwise cohomology quotient, are not sufficient.
+
+Set
+
+\[
+\begin{gathered}
+G=-\frac{H}{2\pi i},\\
+ F_0=F+LG.
+\end{gathered}
+\tag{AN.4}
+\]
+
+Equation AN.3 makes \(F_0\) deck-invariant, so it is a single-valued holomorphic function on \(U\times T_a\). This is a literal function equality on the cover. It preserves every base parameter and introduces no coefficient-dependent domain.
+
+#### AN.2. Cauchy splitting, actual missing faces, and common domains
+
+Shrink once so that \(r'<r\), \(r_i'<r_i/2\), and \(a_i r'<r_i/4\). The finite shrink depends only on the original domains. In a spatial annulus, split a holomorphic function into its negative and nonnegative Laurent parts. The nonnegative projection in the \(i\)-th variable is given, for a locally fixed \(R_i\) with \(\max(a_i|w|,|\zeta_i|)<R_i<r_i\), by
+
+\[
+\begin{gathered}
+(\Pi_{i,+}f)(\zeta_i)\\
+=\frac{1}{2\pi i}\int_{|\eta_i|=R_i}
+\frac{f(\eta_i)}{\eta_i-\zeta_i}\,d\eta_i,\\
+\Pi_{i,-}=1-\Pi_{i,+}.
+\end{gathered}
+\tag{AN.5}
+\]
+
+For the positive part one may use the fixed contour \(R_i=r_i/2\) on the shrunken domain. It therefore extends holomorphically to \(|\zeta_i|<r_i/2\), including \(\zeta_i=0\), while the other thick-complement inequalities are retained. Contour deformation makes different locally fixed contour choices equal. Derivatives in all remaining complex variables commute with a locally fixed compact contour integral, so the projections are jointly holomorphic. Projections in distinct spatial variables commute by repeated integration over the product of finitely many compact circles.
+
+The negative projection also has a direct expansion by an inner Cauchy circle. The usual geometric denominator expansion shows normal convergence on any smaller annulus; applying it in finitely many variables gives normal convergence on compact subsets of AN.1. To see why no uniform inner radius in \(w\) is required for holomorphicity, cover a compact subset by finitely many small products on each of which the circles can be held fixed. Their values agree on overlaps by one-variable contour deformation. This is a finite compact cover, not a different germ domain for each Laurent index.
+
+Write \(\Pi_-=\Pi_{1,-}\cdots\Pi_{d,-}\). The exact finite telescoping identity is
+
+\[
+\begin{gathered}
+f-\Pi_- f\\
+=\sum_{i=1}^d
+     \Pi_{1,-}\cdots\Pi_{i-1,-}\Pi_{i,+}f.
+\end{gathered}
+\tag{AN.6}
+\]
+
+Each summand extends across the spatial coordinate \(\zeta_i=0\). On a chosen normal-log cut its coefficient is thus defined on the actual Čech face omitting spatial index \(i\). Apply AN.6 to both \(F_0\) and \(G\). The terms arising from \(LG\) are still holomorphic on those faces because the normal-log cut remains among their defining opens. The fully spatial-negative part \(\Pi_-G\) retains its extension to \(w=0\) on AN.2: on a compact neighborhood with fixed nonzero spatial differences, choose the spatial contour radii first and the normal disc small enough that all contour points stay in AN.2. AN.5 then gives a holomorphic function at \(w=0\). These locally defined extensions agree by uniqueness of the negative Laurent coefficients.
+
+Next split \(\Pi_-F_0\) in \(w\). Its nonnegative normal Laurent part \(J\) extends to \(w=0\) on a thick complement, so it is an actual face omitting the normal-cut index. Its fully negative normal part \(K_0\) has fully negative powers in every normal coordinate. It extends to the full coordinate-punctured product
+
+\[
+\begin{gathered}
+0<|w|<r',\\
+ 0<|\zeta_i|<r_i'.
+\end{gathered}
+\tag{AN.7}
+\]
+
+Here is the convergence argument for this extension. Given a compact subset of AN.7, choose circles with \(0<\rho<\min|w|\), \(0<\rho_i<\min|\zeta_i|\), and \(a_i\rho<\rho_i\). They lie in the original thick domain if \(\rho\) is sufficiently small. Iterated Cauchy integrals on that fixed product cycle give, for the coefficient \(c_{m\beta}\) of \(w^{-m-1}\zeta^{-\beta-\mathbf1}\),
+
+\[
+ |c_{m\beta}|\le M_{\rho,\rho_i}
+           \rho^{m+1}\prod_i\rho_i^{\beta_i+1}.
+ \tag{AN.8}
+\]
+
+Divide by the target negative powers and sum the resulting finite product of strictly convergent geometric series. This proves normal convergence of the **entire** fully negative subseries on that compact. The cycle and domain were chosen before summing any index. Fixed derivatives and index tails follow by taking a compact enlargement and applying Cauchy's formula there. The coefficient values from different permissible cycles agree: the radii region \(\rho_i>a_i\rho\) is connected in logarithmic radii, so a deformation through overlapping products of permissible annuli, one coordinate at a time, connects any two cycles. Thus this is one actual holomorphic function, not separately chosen coefficient germs.
+
+Consequently, on each log cut, the original datum has the literal form
+
+\[
+\begin{gathered}
+F=K_0-LG_-+J\\
++\sum_{i=1}^d S_i,\\
+G_-=\Pi_-G,
+\end{gathered}
+\tag{AN.9}
+\]
+
+where \(J\) extends to the normal face and \(S_i\) extends to spatial face \(i\). All terms share the one shrunken base neighborhood; \(K_0\) has AN.7 and \(G_-\) has AN.2, with possibly enlarged constants \(a_i\). No finite spatial-degree cutoff has been made.
+
+#### AN.3. Literal relative-cone primitives and branch gluing
+
+Use ordered complement indices \(0,1,\ldots,d\), with index 0 for the normal-log cut and index \(i\) for the \(i\)-th thick spatial complement. The calibrated top representative is \((0,-r_NF)\), where \(r_N=(-1)^{N(N-1)/2}\). Its full-cone differential is
+
+\[
+\begin{gathered}
+d(a,b)=(\bar\partial a,ra-Db),\\
+D=d_C+(-1)^q\bar\partial\\
+\text{in complement Čech}\\
+\text{ degree }q.
+\end{gathered}
+\tag{AN.10}
+\]
+
+Put \(S_0=J\). For \(d\ge1\), define a degree-\((N-1)\) relative-cone primitive by its holomorphic complement entries
+
+\[
+\begin{gathered}
+c_{0\cdots\widehat i\cdots d}
+     =r_N(-1)^i S_i\\
+(0\le i\le d),
+ \\
+ a=0.
+\end{gathered}
+\tag{AN.11}
+\]
+
+These are complement Čech degree \(N-2\). The sign of deleting index \(i\) in \(d_C\) is \((-1)^i\); its product with AN.11's sign is +1. Therefore
+
+\[
+\begin{gathered}
+d(0,c)\\
+=(0,-r_N(J+\textstyle\sum_iS_i))
+\end{gathered}
+\tag{AN.12}
+\]
+
+as an actual cochain identity. All Dolbeault differentials of the coefficients vanish. There is only one top ordered index set, so no other top entry has been suppressed. When \(d=0\), the holomorphic normal-face term is removed instead by \(d(-J,0)=(0,-J)\). This is the appropriate whole-domain primitive for a one-open complement cover.
+
+Changing the lifted logarithm by \(2\pi i k\) changes \(K_0-LG_-\) by \(-2\pi i kG_-\). That difference extends to the normal face. Formula AN.11 with only \(i=0\) nonzero is its literal primitive; for \(d=0\) use the preceding whole-domain version. These primitives add exactly when the integers \(k\) add. They hence satisfy every triple-overlap identity, rather than only showing pairwise equality of abstract classes. Restrictions, base parameter changes preserving the fixed coordinates, and finite angular refinements are restrictions of these same functions and primitives.
+
+This proves angular normalization and class gluing **for the strict datum AN.1–AN.3**. To conclude IK.G one must still prove that every section of \(\gamma_*C^R_\Delta\) has such a finite common-domain, face-resolved angular presentation, and that zero classes have exactly the displayed holomorphic face primitives. The microlocal support cones appearing in the definition of \(C^R\) do not automatically have ray support. The change from those cones to the cuts and thick spatial faces used here is a substantive support/descent theorem. It remains unproved in this unit.
+
+#### AN.4. Complete coefficient bounds extracted from these data
+
+We derive the complete coefficient estimates directly from the supplied strict data. Temporarily omit the common factor \((2\pi i)^{-N}\). Choose fixed \(A_i>a_i\). For every sufficiently small \(\rho>0\), the joint cycle \(|w|=\rho\), \(|\zeta_i|=A_i\rho\) lies in AN.2. On a compact base set Cauchy extraction from
+
+\[
+\begin{gathered}
+G_-\\
+=
+ \sum_{n\ge0,\beta\ge0}g_{n\beta}(u)
+                  w^n\zeta^{-\beta-\mathbf1}
+\end{gathered}
+\tag{AN.13}
+\]
+
+gives
+
+\[
+\begin{gathered}
+|g_{n\beta}|\le B_\rho\rho^{|\beta|-n}A^\beta,
+ \\
+ B_\rho=M_\rho\rho^d\prod_iA_i.
+\end{gathered}
+\tag{AN.14}
+\]
+
+The expansion exists and is unique on thick domains by AN.2's Cauchy argument. The integer kernel convention is
+
+\[
+\begin{gathered}
+a_{-n-1,\beta}=(-1)^n\frac{n!}{\beta!}g_{n\beta},
+ \\
+ p_{j\beta}=a_{j-|\beta|,\beta}.
+\end{gathered}
+\tag{AN.15}
+\]
+
+Thus \(K_0-LG_-\) has exactly the source pole/log signs. On the single normalized covariable neighborhood \(\sum_iA_i|z_i|<1\), put \(q=\sum_iA_i|z_i|\). The multinomial formula yields, for \(s\ge1\),
+
+\[
+\begin{gathered}
+\sum_\beta|p_{-s,\beta}z^\beta|\\
+\le B_\rho\rho^{1-s}(s-1)!\\
+(1-q)^{-s}.
+\end{gathered}
+\tag{AN.16}
+\]
+
+Indeed \(n=|\beta|+s-1\), and summing at spatial degree \(b\) gives \((b+s-1)!q^b/b!\). The sum is \((s-1)!(1-q)^{-s}\), obtained by differentiating a geometric series \(s-1\) times. One fixed \(\rho\) gives the negative factorial estimate on each compact with \(q\le q_*<1\).
+
+For \(j\ge0\), the log part has \(b\ge j+1\) and \(n=b-j-1\). It satisfies
+
+\[
+\begin{gathered}
+\sum_{|\beta|\ge j+1}|p_{j\beta}z^\beta|\\
+\le \frac{B_\rho\rho^{j+1}q^{j+1}}
+             {(j+1)!(1-q)}.
+\end{gathered}
+\tag{AN.17}
+\]
+
+The ratio \((b-j-1)!/b!\) is at most \(1/(j+1)!\); sum the remaining geometric tail. Given **any** \(\varepsilon>0\), choose \(\rho\) with \(\rho q_*\le\varepsilon\). Only \(B_\rho\) changes; the base and covariable neighborhoods remain fixed. AN.17 gives the required every-\(\varepsilon\) positive estimate.
+
+For the pole coefficients \(c_{m\beta}\) of AN.8, set \(a_{m\beta}=c_{m\beta}/(m!\beta!)\). Taking the same scaled circles gives \(|a_{m\beta}|\le B'_{\rho}\rho^{m+|\beta|}A^\beta/(m!\beta!)\). Grouping \(m+|\beta|=j\) yields
+
+\[
+\begin{gathered}
+\sum_{m+|\beta|=j}|a_{m\beta}z^\beta|\\
+\le B'_{\rho}\frac{[\rho(1+q)]^j}{j!}.
+\end{gathered}
+\tag{AN.18}
+\]
+
+Choose \(\rho(1+q_*)\le\varepsilon\). This proves the full positive pole estimate on that same neighborhood. Every coefficient \(p_j\) is holomorphic there by normal convergence. Every fixed finite base or normalized-covariable derivative satisfies the corresponding bounds and index tails: take one compact enlargement, apply the undifferentiated bounds there, and multiply by the fixed Cauchy derivative constant. No index changes the domain. The estimates preserve all spatial indices and all positive homogeneous contributions to the negative-normal log part.
+
+Reconstruction recovers \(K_0\) and \(G_-\) by their unique Cauchy coefficients. The harmonic-number normalization of the source, \(-(-w)^n(\gamma-H_n)/n!\), adds a holomorphic normal-face function with the same thick domain. The bound \(H_n\le n\) and a slightly larger geometric ratio prove convergence; AN.11 supplies its exact boundary. Hence strict angular data reduce to the supplied pole/log normal form with all signs, actual inverse coefficients and full growth bounds. This remains a conditional reduction from AN.3, not the missing projectivized-sheaf identification.
+
+#### AN.5. Full-dimensional support enlargement and proper source margins
+
+The closed support \(G_A\) in IK.22 has \(\Im w=0\) and ordinary real interior empty. It is an initial line-time/spatial-thick support. It is not the full-dimensional cone required by DL/DLH/DLG, and its quotient/open-set topology is not identified with that of a full-dimensional cone. For every \(\epsilon>0\), support forgetting sends its class into the closed convex full-dimensional cone
+
+\[
+\begin{gathered}
+G_{A,\epsilon}=\\
+\left\{\begin{gathered}
+\Re w\le0,\\
+|\Im w|\le\epsilon(-\Re w),\\
+|\zeta_i|\le A_i(-\Re w)
+\end{gathered}\right\}.
+\end{gathered}
+\tag{AN.19}
+\]
+
+The inclusion is literal. This cone is an intersection of the closed halfspaces \(\Re w\le0\), \(\pm\Im w\le\epsilon(-\Re w)\), and the convex norm epigraphs \(|\zeta_i|\le A_i(-\Re w)\); hence it is closed and convex. It has interior because at \(w=-1,\zeta=0\) all inequalities except the redundant \(\Re w\le0\) are strict, and \(\Re w<0\) is strict too. It is stable under addition by the triangle inequality. It is pointed: belonging to the cone and its negative forces \(\Re w=0\), then every other coordinate is zero. Its complementary support map is the restriction of the full-cone complex from the larger complement \(M\setminus G_A\) to the smaller complement \(M\setminus G_{A,\epsilon}\), with the identity on the total component. This is a chain map by AN.10. A class for \(G_A\) therefore has a canonical support-enlargement image; no injectivity of that map is asserted.
+
+For its proper triple-to-endpoint geometry, write \(\sigma_i=-\Re w_i\ge0\). Their sum is the final \(\sigma\). Thus \(0\le\sigma_i\le\sigma\), \(|\Im w_i|\le\epsilon\sigma\), and \(|\zeta_{i,k}|\le A_k\sigma\). Over a compact endpoint set every intermediate point is in a closed bounded family with these fixed bounds. Here is an explicit source-margin choice. Translate the base center to zero and let the outer coefficient polydisc have normal radius \(R\) and spatial radii \(R_k\). Choose inner endpoint radii \(\delta_t,\delta_k>0\) with
+
+\[
+\begin{gathered}
+\delta_t<\frac{R}{2(1+2\sqrt{1+\epsilon^2})},\\
+
+ \delta_k<R_k/4,\\
+
+ \delta_t<R_k/(8A_k)\\
+\text{for every }k.
+\end{gathered}
+\tag{AN.20}
+\]
+
+Then \(\sigma\le2\delta_t\). Every intermediate normal coordinate has modulus at most \(\delta_t+2\sqrt{1+\epsilon^2}\delta_t<R/2\), and every intermediate spatial coordinate has modulus at most \(\delta_k+2A_k\delta_t<R_k/2\). The entire closed bounded fiber family thus has a positive margin inside the actual outer source. It is compact there, giving the proper support map. For any finite operator list use the largest of finitely many \(A_k\), one positive \(\epsilon\), and this one margin choice. These facts supply support enlargement and properness only. The additional cone-open, round-domain, output-support and common-collar hypotheses of an actual DL/DLG instantiation must still be verified; the ring map and full mixed product are still missing. No derived instantiation is made here.
+
+![The exact line-time support enlargement and bounded intermediate fibers](assets/full-cone-enlargement.png)
+
+**Figure AN.2.** Exact slices of AN.19 with \(\epsilon=1/2\), one spatial variable and \(A=2\). Left: the initial normal ray \(\Im w=0\) lies in the full-dimensional wedge. Center: between endpoints \(w=0\) and \(w=-1\), the intermediate normal difference is \(-\sigma+i\eta\), with \(0\le\sigma\le1\) and \(|\eta|\le\tfrac12\min(\sigma,1-\sigma)\). Right: at spatial endpoint difference zero, the intermediate spatial coordinate is in a **closed complex disc** of radius \(2\min(\sigma,1-\sigma)\); points are exact rational samples with \(\sigma=k/20\). The full properness proof applies in every spatial dimension, inside an outer actual source domain with a positive margin. The support map's injectivity and the derived cone-open/common-collar hypotheses are not inferred. The plotting source and exact data reproduce the illustration.
+
+
+Plotting source, exact data, full PNG, and editable SVG.
+
+#### OR.1. The complete ordinary class and its binary product
+
+Let \(U\subset\mathbf C^N\) be one base polydisc. An ordinary infinite-order operator is
+
+\[
+\begin{gathered}
+A=\sum_{\alpha\in\mathbf N^N}a_\alpha(u)\partial_u^\alpha,
+ \\
+
+ |a_\alpha|_K\le B_{K,\varepsilon}
+                 \frac{\varepsilon^{|\alpha|}}{\alpha!}
+ \\
+\text{for every }\varepsilon>0.
+\end{gathered}
+\tag{OR.1}
+\]
+
+All coefficients are holomorphic on \(U\). Given a second operator \(B\) on the same domain and a fixed smaller coefficient compact, choose a larger compact and coordinate Cauchy margin \(R>0\). On it
+
+\[
+ |\partial_u^\gamma b_\beta|
+ \le \gamma!R^{-|\gamma|}
+      B_{\varepsilon_B}\frac{\varepsilon_B^{|\beta|}}{\beta!}.
+ \tag{OR.2}
+\]
+
+The ordinary Leibniz coefficient at \(\eta\) is the entire infinite sum
+
+\[
+\begin{gathered}
+c_\eta\\
+=
+ \sum_{\substack{\delta+\beta=\eta\\\gamma\ge0}}
+ \binom{\delta+\gamma}{\gamma}
+ a_{\delta+\gamma}\partial_u^\gamma b_\beta.
+\end{gathered}
+\tag{OR.3}
+\]
+
+Here \(\delta=\alpha-\gamma\). The fixed output index does **not** bound \(\gamma\). Its full absolute majorant is
+
+\[
+\begin{gathered}
+|c_\eta|
+\le B_{\varepsilon_A}B_{\varepsilon_B}
+(1-\varepsilon_A/R)^{-N}\\
+\frac{(\varepsilon_A+\varepsilon_B)^{|\eta|}}{\eta!},\\
+\varepsilon_A<R.
+\end{gathered}
+\tag{OR.4}
+\]
+
+To verify it, cancel the three factorials in OR.1–OR.3. The remaining summand is \((\varepsilon_A/R)^{|\gamma|}\varepsilon_A^{|\delta|}\varepsilon_B^{|\beta|}/(\delta!\beta!)\). The \(\gamma\)-sum is the product of \(N\) geometric series, and the finite \(\delta+\beta=\eta\) sum is the coordinatewise binomial expansion divided by \(\eta!\). For any specified output \(\varepsilon\), choose \(\varepsilon_A+\varepsilon_B\le\varepsilon\) and \(\varepsilon_A<R/2\). This proves the exact every-\(\varepsilon\) condition, including every spatial index.
+
+At a fixed \(\eta\), the tail with \(|\gamma|\ge M\) tends to zero geometrically. For example choose \(q=\varepsilon_A/R<q'<1\); it is bounded by \((q/q')^M\) times the same majorant with \(q'\). Every fixed output derivative tail has this bound times a fixed Cauchy constant on a compact enlargement. The domain and margins are fixed before all index summations. OR.3 is therefore an actual holomorphic coefficient product.
+
+The action on a holomorphic germ \(f\), with common Cauchy margin \(\rho\), is normally convergent with bound \(B_\varepsilon|f|(1-\varepsilon/\rho)^{-N}\), for \(\varepsilon<\rho\). Applying that estimate on successive compact enlargements justifies differentiating and regrouping the composition. Its coefficient formula is OR.3. The exponential germs \(e^{\langle u,\lambda\rangle}\) separate operators: the output divided by the exponential is the entire series \(\sum_\alpha a_\alpha(u)\lambda^\alpha\), whose Taylor coefficients recover \(a_\alpha\). Hence operator composition proves unit and associativity for this ordinary class. This is ordinary operator separation, not separation of any extended module's sections.
+
+#### OR.2. The holomorphic diagonal kernel and residue-trace map
+
+Its fully negative diagonal kernel is
+
+\[
+\begin{gathered}
+K_A(u,v)=\frac1{(2\pi i)^N}\\
+\sum_\alpha a_\alpha(u)
+\frac{\alpha!}{(v-u)^{\alpha+\mathbf1}}.
+\end{gathered}
+\tag{OR.5}
+\]
+
+On a compact where each difference is nonzero, choose \(\varepsilon<\min_i|v_i-u_i|\) and sum a product of geometric series. Thus OR.5 is normally convergent on the coordinate-punctured domain, with every fixed derivative and index tail by a compact enlargement. Conversely Laurent coefficient extraction on arbitrarily small normal circles gives OR.1; the fully negative Laurent splitting removes all actual missing-face boundaries. The actual ordinary geometric calculation is OC.1–OC.4 and IK.4.
+
+For the intermediate holomorphic trace put \(a=s-u\), \(b=v-s\), \(c=v-u=a+b\). A holomorphic top cochain \(T(u,a,b)\) of the two diagonal puncture cubes is defined wherever each \(a_i,b_i\) is nonzero. On an output compact with each \(c_i\ne0\), select fixed positive \(\rho_i<\frac13\min|c_i|\), small enough that \(|a_i|=\rho_i\) and \(b_i=c_i-a_i\) remain inside the actual source. Define
+
+\[
+\begin{gathered}
+(\mathcal R T)(u,c)=\\
+\int_{|a_1|=\rho_1}\cdots\\
+\int_{|a_N|=\rho_N}
+T\left(\begin{gathered}u,a,\\c-a\end{gathered}\right)\\
+\,da_1\cdots da_N.
+\end{gathered}
+\tag{OR.6}
+\]
+
+Each circle has positive complex orientation. All integrals are over one compact product torus separated from both singularity lists. Locally fixed circles prove holomorphic dependence. Deforming within \(0<\rho_i<|c_i|\) proves independence of these circles, one coordinate at a time. Local choices therefore agree and give an actual top cochain on the output puncture cube.
+
+There are two kinds of missing source faces. If \(T\) extends across \(a_i=0\), its \(a_i\) integral vanishes by Cauchy's theorem; \(b_i=0\) is outside that circle. If \(T\) extends across \(b_i=0\), deform its \(a_i\) circle through \(a_i=c_i\) to a fixed larger small circle. That crossing is permissible precisely because this source face is holomorphic at \(b_i=0\). Holding the larger circle fixed for \(|c_i|\) smaller than half its radius gives an output function holomorphic at \(c_i=0\). Thus this source boundary maps to the actual output face omitting \(c_i\). There is no argument from convergence in a quotient. For the output face function \(h_i\), its calibrated relative-cone primitive is the entry \(r_N(-1)^{i-1}h_i\) on that face, by the deletion sign, just as AN.11. This explicitly proves compatibility of OR.6 with source boundaries and the finite cube augmentation.
+
+The canonical meaning of OR.6 is proved by the full two-support cube, proper collar and retained relative trace in TC.1–TC.3 below. Every lower source and target complement entry participates in that comparison, with the signs in TC.15. OC.1–OC.4 supplies the actual holomorphic-row reduction and all-monomial class detection used in this ordinary calculation.
+
+All fixed derivatives and limits of these collar calculations commute with their finite compact integrals. This continuity statement concerns holomorphic functions on the specified separated collars; it makes no claim about distribution convergence at the normal origin or about the mixed thick-cone ray endpoints.
+
+#### TC.1. One coordinate: all four source entries
+
+Use variables \((u,a,c)\), with \(s=u+a\), \(v=u+c\), and \(b=c-a=v-s\). The two source supports are \(A=\{a=0\}\) and \(B=\{b=0\}\); their intersection is \(a=c=0\). Write
+
+\[
+\begin{gathered}
+U_A=M\setminus A,\\
+U_B=M\setminus B,\\
+U=U_A\cup U_B\\
+=M\setminus(A\cap B).
+\end{gathered}
+\tag{TC.1}
+\]
+
+On an actual source polydisc, a total-degree-\(q\) two-support cube has four entries
+
+\[
+\begin{gathered}
+(g,h_A,h_B,f)\in\\
+I^q(M)\oplus I^{q-1}(U_A)\\
+\oplus I^{q-1}(U_B)\\
+\oplus I^{q-2}(U_A\cap U_B).
+\end{gathered}
+\tag{TC.2}
+\]
+
+Here \(I\) is the full Dolbeault resolution. In this order its differential is
+
+\[
+\begin{gathered}
+d_K(g,h_A,h_B,f)=\\
+\left(\begin{gathered}
+\delta g,\ r_Ag-\delta h_A,\\
+r_Bg-\delta h_B,\\
+h_B-h_A+\delta f
+\end{gathered}\right).
+\end{gathered}
+\tag{TC.3}
+\]
+
+This is V.15 with the ordered subset \((A,B)\), including the sign on the top deletion. Two one-dimensional ordinary kernels have top-cube entries \(-K_A\) and \(-K_B\). Their unshifted source cup consequently has the top function \(f=K_AK_B\), so its complete degree-two cube is \((0,0,0,f)\). The coefficient \(f\) is defined only on \(U_A\cap U_B\). All holomorphic parameters and every normally convergent coefficient index may be retained in this function.
+
+Choose \(0<\kappa_1<\kappa_2<1\), for example \(\kappa_1=1/8\), \(\kappa_2=1/4\). Let \(\theta\) be a fixed smooth function equal to zero on \(( -\infty,\kappa_1^2]\), equal to one on \([\kappa_2^2,\infty)\), and taking values in \([0,1]\). On \(U\) put
+
+\[
+\begin{gathered}
+\rho_A(a,c)=\\
+\begin{cases}\theta(|a|^2/|c|^2),&\!\!c\ne0,\\
+1,&\!\!c=0,\ a\ne0,
+\end{cases}\\
+\rho_B=1-\rho_A.
+\end{gathered}
+\tag{TC.4}
+\]
+
+This is smooth on the **whole union complement** \(U\). At a point with \(c=0,a\ne0\), a neighborhood has \(|a|>\kappa_2|c|\), so \(\rho_A\) is identically one there. It vanishes near \(A\setminus B\), where \(c\ne0\); \(\rho_B\) vanishes near \(B\setminus A\), because there \(a=c\) and the ratio is 1. Thus these are an actual smooth partition subordinate to \(U_A,U_B\). No value or smooth extension is required at the excluded intersection.
+
+The explicit finite augmentation of the full cube to the single relative cone is
+
+\[
+\begin{gathered}
+\Phi(g,h_A,h_B,f)=\\
+\left(\begin{gathered}
+g,\ \rho_A h_A+\rho_B h_B\\
++\delta\rho_A\wedge f
+\end{gathered}\right).
+\end{gathered}
+\tag{TC.5}
+\]
+
+Each product is extended by zero only where its multiplying cutoff vanishes on a neighborhood. The derivative \(\delta\rho_A\) is supported where both \(a\) and \(b\) are nonzero. Indeed its support for \(c\ne0\) has
+
+\[
+\begin{gathered}
+\kappa_1|c|\le |a|\le\kappa_2|c|,\\
+
+ |b|\ge(1-\kappa_2)|c|.
+\end{gathered}
+\tag{TC.6}
+\]
+
+For \(c=0\) it vanishes everywhere on \(U\). Formula TC.5 is therefore an actual smooth cochain on \(U\), including neighborhoods of either individual support face away from their intersection.
+
+To check its differential, apply \(\delta\) to the second component, using \(\delta\rho_B=-\delta\rho_A\) and \(\delta(\delta\rho_A\wedge f)=-\delta\rho_A\wedge\delta f\). The result is
+
+\[
+\begin{gathered}
+r g-\delta\left(\begin{gathered}
+\rho_Ah_A+\rho_Bh_B\\
++\delta\rho_A\wedge f
+\end{gathered}\right)\\
+=\rho_A(r_Ag-\delta h_A)\\
++\rho_B(r_Bg-\delta h_B)\\
++\delta\rho_A\wedge(h_B-h_A+\delta f).
+\end{gathered}
+\tag{TC.7}
+\]
+
+This is exactly the complement component of \(\Phi d_K\). The total components are both \(\delta g\). Thus TC.5 is a chain map in every degree, with every base-antiholomorphic term retained. The general finite Čech row contraction in V.6 proves that this augmentation is the actual relative-support comparison; TC.7 also verifies it directly for this two-support cube.
+
+For the top holomorphic function it gives
+
+\[
+ \Phi(0,0,0,f)=(0,\delta\rho_A\,f).
+ \tag{TC.8}
+\]
+
+There is no whole-domain \(\rho_A f\) cochain in this equation. Only its derivative times \(f\) occurs on the actual union complement.
+
+#### TC.2. Proper collar, parameter boundary, and retained relative trace
+
+Choose an outer coefficient source with normal radius \(R\), and an inner endpoint domain \(|c|<r\), \(r<R/4\). Choose one smooth source collar \(\eta(a)\), equal to one on \(|a|\le R/3\), supported on \(|a|<R/2\), with all its source points inside the original domain. Shrink \(r\), if needed, so that \(\kappa_2r<R/3\). Then \(b=c-a\) has modulus less than \(3R/4\) on the collar. The source collar is properly supported over the inner endpoint domain; over every compact endpoint set its support is in a fixed compact subset of the actual outer coefficient source. Compact base parameters are handled by the same finite margin choice.
+
+The controlled relative localization is
+
+\[
+\begin{gathered}
+L_\eta(g,h)\\
+=(\eta g+\delta\eta\wedge h,\ \eta h).
+\end{gathered}
+\tag{TC.9}
+\]
+
+Its total first component is extended across the support only on a neighborhood where \(\delta\eta=0\), exactly as in R.7. For TC.8, TC.6 and the choice of collar give
+
+\[
+\begin{gathered}
+\delta\eta\wedge\delta\rho_A f=0,\\
+
+ \eta\delta\rho_A f=\delta\rho_A f.
+\end{gathered}
+\tag{TC.10}
+\]
+
+Thus its localized relative pair is still \((0,\delta\rho_A f)\). The first component is the literal zero whole-domain form. The complement component remains defined on \(U\); it has not been extended at \(a=c=0\). On a compact subset of the output complement \(c\ne0\), TC.6 puts its entire fiber support in a compact annulus separated from both poles and from the outer source boundary. Its relative trace there is consequently an ordinary compact smooth integration. Nothing is asserted about pushing this complement coefficient across \(c=0\).
+
+In source degree 2 the one-dimensional normalized relative trace has the sign
+
+\[
+\begin{gathered}
+\operatorname{Tr}^{\rm rel}(g,h)\\
+=(\operatorname{Tr}_2g,-\operatorname{Tr}_1h).
+\end{gathered}
+\tag{TC.11}
+\]
+
+It is the full-cone version of the \([1]\)-shifted trace; the minus on the complement entry is essential. The ordinary coefficient-frame trace \(\operatorname{Tr}_1\) integrates the fiber \(d\bar a\wedge da\) coefficient with scalar +1, as proved in V.4. Terms in \(\delta\rho_A\) containing only a base-antiholomorphic differential have insufficient real fiber degree and vanish under this trace. They remain part of the source cochain in TC.8–TC.10, so no differential or parameter term has been deleted before tracing.
+
+For fixed \(c\ne0\), use an outer circle \(|a|=\rho\) with \(\kappa_2|c|<\rho<|c|\) and an inner circle of radius less than \(\kappa_1|c|\). On the outer circle \(\rho_A=1\); on the inner circle it is zero. The only singularity inside the outer circle is \(a=0\); the second singularity \(a=c\) lies outside. Stokes on the intervening annulus gives
+
+\[
+\begin{gathered}
+\int \delta\rho_A\,f\wedge da\\
+=\int_{|a|=\rho}f\,da.
+\end{gathered}
+\tag{TC.12}
+\]
+
+The equality uses only compact coefficients on that annulus and its boundary. Combining TC.8–TC.12 gives the actual retained target pair
+
+\[
+ (0,-\textstyle\int_{|a|=\rho} f\,da).
+ \tag{TC.13}
+\]
+
+The parameter-dependent partition is smooth on all of the source union complement, including \(c=0,a\ne0\); the single proper collar is fixed over the whole inner endpoint domain. The final coefficient is holomorphic on the output complement by a locally fixed permissible circle and one-variable Cauchy deformation. This is the complete ordinary two-support cup/excision/relative-trace roof. It requires neither a distribution extension of an essential singularity nor a uniform distribution-order bound.
+
+#### TC.3. Every normal coordinate and every complement entry
+
+For \(N\) coordinates retain the entire ordered \(2N\)-support cube for \(A_i=\{a_i=0\}\), \(B_i=\{c_i-a_i=0\}\). It has one entry on every actual intersection of the corresponding complements. Apply TC.5 in coordinate \(i\) with every remaining cube entry, all other variables, and its ordered holomorphic coefficient frame retained. A cutoff in coordinate \(i\) is TC.4 with \(a_i,c_i\), and its collar is TC.9 with one fixed outer source radius. These maps commute with restriction in every unprocessed coordinate. Equation TC.7 verifies their complete differential, including parameter-antiholomorphic derivatives.
+
+The finite tensor-to-cube sign is V.16,
+
+\[
+ (-1)^{\sum_{i<j}q_i r_j},
+ \tag{TC.14}
+\]
+
+for antiholomorphic degrees \(q_i\) and complement degrees \(r_i\). Therefore one may apply TC.5/TC.9/TC.11 successively without replacing the remaining cube by its top holomorphic coefficient. At intermediate stages all its lower Čech/Dolbeault entries are still present. This is an iteration of actual chain maps and controlled localization roofs; the shift on each trace uses V.14 and TC.11. The final holomorphic residue is a **top coordinate of the target cube**, not a degree-\((N-1)\) Dolbeault complement function.
+
+Here are the exact signs in that final coordinate. Each one-coordinate relative trace contributes the positive connecting class \((0,-\mathcal R_i f)\). Its ordinary one-support cube top coordinate is \(-\mathcal R_i f\), giving \((-1)^N\) for the ordered normal list. Regrouping the \(N\) one-coordinate holomorphic lines into the single ungraded input top-form frame uses V.14/V.17 and contributes
+\(r_N=(-1)^{1+\cdots+(N-1)}\). The between-kernel unshifted cup sign \((-1)^{N^2}\) and the source-degree-\(2N\) trace sign \((-1)^{N^2}\) cancel by V.13. No further double suspension is introduced. Hence the final ordinary top cube coefficient and the corresponding full-cone Čech top coefficient are respectively
+
+\[
+\begin{gathered}
+r_N(-1)^N\mathcal R f,\\
+-r_N\mathcal R f,\\
+\mathcal R f=\\
+\int_{|a_1|=\rho_1}\cdots\\
+\int_{|a_N|=\rho_N}
+f\left(\begin{gathered}u,a,\\c-a\end{gathered}\right)\\
+\,da_1\cdots da_N.
+\end{gathered}
+\tag{TC.15}
+\]
+
+The cone-to-cube multiplier is \((-1)^{N-1}\), so the two coordinates in TC.15 agree exactly. For \(N=1,2,3\), the ordinary top factors are \(-1,-1,+1\); the full-cone top factors are \(-1,+1,+1\). This check detects both the missing connecting sign and the misplaced line suspension in dimension two.
+
+All source collars fit on one common outer polydisc: take \(|c_i|<r_i<R_i/4\), collar support \(|a_i|<R_i/2\), and \(\kappa_2r_i<R_i/3\). A finite operator/matrix list permits taking the smallest of its finitely many positive margins. On every output compact where the traced coordinates are nonzero, all transition products are compact and separated from both source singularity lists. Arbitrary joint holomorphic coefficients and their entire normally convergent index families may be multiplied there. Repeated integration is justified by bounded compact coefficients and Fubini; each fixed derivative commutes with these finite integrations. Where some output coordinate is zero, keep its corresponding target cube face and the other entries until that coordinate is processed. No singular coefficient is extended across that face. This verifies the domains and complete complement roof in every normal dimension.
+
+Missing source faces behave as required: a function extending across \(a_i=0\) has zero residue in that coordinate; a function extending across \(b_i=0\) permits deforming the \(a_i\) circle through \(a_i=c_i\) to a fixed small circle and gives a function extending across \(c_i=0\). Its target missing-face coefficient supplies the literal Čech boundary with the deletion sign of V.15. This statement is about the complete target cube after TC.15; it does not drop the source or target complement terms during the trace.
+
+#### TC.4. Canonical ordinary conclusions and remaining scope
+
+The complete ordinary product estimates OR.1/OR.3 and the ordinary coordinate-change coefficient estimates OR.4 have canonical-class interpretations through TC.1–TC.3 and the actual ordinary cohomology calculation OC.1–OC.4. Specifically, for the complete ordinary all-spatial class, normal convergence on the fixed separated tori gives
+
+\[
+ \mathcal R(K_AK_B)=K_{A\circ B},
+ \tag{TC.16}
+\]
+
+with all fixed-output infinite contractions and every derivative tail controlled by OR.4/OR.11. TC.15 identifies this equality with the full ordinary canonical cup/excision/normalized trace, including every target complement coordinate and every sign. OC.4’s complete finite torus/Laurent separation then gives the ordinary coordinate-class correspondence in OR.4. These are the complete ordinary coefficient formulas and ordinary canonical scope.
+
+Full IK.G still requires the angular projectivized-sheaf identification. Full IK.M still requires the mixed pole/log thick-cone comparison. Ordinary trace and coordinate conclusions do not imply either, and no derived instantiation or later matrix-flatness, faithfulness, reconstruction, propagation, D-type/C1/analytic proper/GL/BB/KL conclusion is asserted here.
+
+#### OR.3. Complete ordinary canonical multiplication
+
+Apply OR.6 to \(T=K_A(u,s)K_B(s,v)\). On the selected torus \(K_B(s,v)\) is holomorphic in \(s\) throughout the inside polydisc: its only coordinate kernel singularities are at \(s_i=v_i\), outside the selected circles. Choose once a slightly larger inside polydisc still separated from those singularities and from the coefficient-domain boundary. OR.1 for \(A\) and Cauchy's derivative estimate for \(K_B\) give an absolute sum bounded by a product of geometric series there. Termwise Cauchy integration is therefore justified and gives
+
+\[
+\begin{gathered}
+\int K_A(u,s)K_B(s,v)\,ds\\
+=\sum_\alpha a_\alpha(u)
+                    \partial_s^\alpha K_B(s,v)|_{s=u}.
+\end{gathered}
+\tag{OR.9}
+\]
+
+For a fixed \(\alpha\), differentiate OR.5 for \(B\) on the common separated domain and apply the finite derivative Leibniz rule. Its term indexed by \(\beta\) and \(\gamma\le\alpha\) is
+
+\[
+\begin{gathered}
+\frac1{(2\pi i)^N}
+\binom\alpha\gamma a_\alpha\partial^\gamma b_\beta\\
+\frac{(\alpha-\gamma+\beta)!}
+{c^{\alpha-\gamma+\beta+\mathbf1}}.
+\end{gathered}
+\tag{OR.10}
+\]
+
+The **entire** sum is absolute. Use OR.4 with \(\varepsilon_A+\varepsilon_B<\min_i|c_i|\), as well as \(\varepsilon_A<R/2\). After grouping \(\eta=\alpha-\gamma+\beta\), the sum is bounded by
+
+\[
+\begin{gathered}
+\frac{B_{\varepsilon_A}B_{\varepsilon_B}}
+{(2\pi)^N\prod_i|c_i|}\\
+(1-\varepsilon_A/R)^{-N}\\
+\prod_i\!\!\bigl(1-(\varepsilon_A+\varepsilon_B)/|c_i|\bigr)^{-1}.
+\end{gathered}
+\tag{OR.11}
+\]
+
+Thus every regrouping in OR.9–OR.10 is justified on the fixed output compact, and OR.3 proves
+
+\[
+\begin{gathered}
+\mathcal R\bigl(K_A(u,s)K_B(s,v)\bigr)\\
+=K_{A\circ B}(u,v).
+\end{gathered}
+\tag{OR.12}
+\]
+
+It is an equality of holomorphic top cochains, in the canonical residue trace calculated in OR.2. The \((2\pi i)^{-N}\) normalization is exact: two kernels supply its square and the \(N\) positive Cauchy residues supply \((2\pi i)^N\). The trace/cup calibration has no further scalar. The diagonal unit is \(\prod_i[2\pi i(v_i-u_i)]^{-1}\), by the same positive Cauchy residue, on both sides.
+
+Triple products may be computed on two nested product tori, with radii chosen once from the finite list of coefficient domains and endpoint separation margins. All coefficients and Cauchy factors are bounded on the resulting compact product of tori, and OR.11's stronger interior margins give absolute convergence of every operator series there. Repeated compact integration hence satisfies Fubini. Alternatively OR.12 and the already proved ordinary associativity in OR.1 give the same result. Neither route passes to ordinary distributions. Every finite ordinary matrix, idempotent, differential, relation and homotopy uses the finite intersection of these domains, so the same ordinary unital class map applies on one neighborhood to all its entries. An infinite-order module-derived instantiation additionally requires the full IK.G/IK.M comparison and the cone-open, support and common-collar hypotheses of §5.43.
+
+#### OR.4. Arbitrary ordinary holomorphic coordinate overlaps
+
+The ordinary statement is also intrinsic under arbitrary local biholomorphic base-coordinate changes; no linearity hypothesis is needed here. Let \(v=\phi(u)\) be a biholomorphism and let \(A\) have OR.1 on \(U\). Work on one smaller relatively compact base domain \(U'\Subset U\). For \(\alpha\ge0\) define
+
+\[
+\begin{gathered}
+a'_\alpha(\phi(u))=\\
+\frac1{\alpha!}\\
+\left[A_{u'}(\phi(u')-\phi(u))^\alpha\right]_{u'=u}.
+\end{gathered}
+\tag{OR.13}
+\]
+
+Here \(u\) is held fixed as a holomorphic parameter while \(A\) differentiates the variable \(u'\). The notation does not differentiate the parameter along with the input variable. The series defining OR.13 is normally convergent on every compact of \(U'\): choose a fixed input tube about that compact with positive margin inside \(U\), use the derivative Cauchy bound for the holomorphic function \((\phi(u')-\phi(u))^\alpha\), and choose the input coefficient \(\varepsilon\) smaller than that margin. Thus \(a'_\alpha\) is holomorphic on the one domain \(\phi(U')\), independent of \(\alpha\).
+
+For every \(\delta>0\), continuity of the finitely many coordinate functions of \(\phi\) on a compact enlargement gives a uniform input radius \(r_\delta>0\) on which
+\(\max_i|\phi_i(u')-\phi_i(u)|<\delta\). OR.1's action bound, with \(\varepsilon<r_\delta/2\), then gives
+
+\[
+ |a'_\alpha|_K\le C_{K,\delta}
+                \frac{\delta^{|\alpha|}}{\alpha!}.
+ \tag{OR.14}
+\]
+
+The radius used to estimate the action may depend on \(\delta\); the common coefficient domain \(\phi(U')\) does not. Hence OR.14 has the exact every-\(\delta\) quantifier. No Faà di Bruno expansion or formal coefficient transformation has been assumed.
+
+Let \(f\) be holomorphic on an actual input neighborhood of \(v=\phi(u)\). Choose a smaller radius \(R>0\) for its Taylor series, then choose the preceding input tube with coordinate variation less than \(\delta<R\). On that tube,
+
+\[
+\begin{gathered}
+f(\phi(u'))=\\
+\sum_\alpha\frac{\partial_v^\alpha f(\phi(u))}{\alpha!}\\
+(\phi(u')-\phi(u))^\alpha
+\end{gathered}
+\tag{OR.15}
+\]
+
+converges normally on a slightly larger tube than the one used for the action. OR.1's sup-norm action estimate permits applying \(A_{u'}\) termwise. Equations OR.13–OR.15 give
+
+\[
+\begin{gathered}
+{}[A(f\circ\phi)](u)\\
+=\sum_\alpha a'_\alpha(\phi(u))\\
+\partial_v^\alpha f(\phi(u)).
+\end{gathered}
+\tag{OR.16}
+\]
+
+The right side is absolutely bounded by
+\(C_{K,\delta}|f|(1-\delta/R)^{-N}\). Therefore the ordinary coordinate-change operator is actual and has the complete ordinary class. Applying the same argument to \(\phi^{-1}\) gives its inverse. The action separation proved in OR.1 makes compositions of coordinate changes agree exactly on triple overlaps and makes the product invariant.
+
+This also gives the ordinary diagonal geometric overlap. In any base coordinates, OC.1–OC.4 and the finite puncture cube/Laurent argument of OR.2 prove that a diagonal local-cohomology class is uniquely determined by its pairings with all holomorphic normal monomials; those pairings are its fully negative Laurent coefficients. The pairing on the compact normal torus is the canonical residue trace just proved in OR.2. Changing coordinates pulls back the input holomorphic top form with its Jacobian and applies the ordinary change of variables on that same compact integration cycle; the earlier V.4 determinant/orientation proof gives its coordinate invariance. Hence the naturally transformed diagonal class has the monomial pairings OR.13 and, by the proved Laurent separation, is precisely the class of the kernel of \(A'\). This use of separation is confined to the completely calculated ordinary diagonal local cohomology. It does not identify the off-zero projectivized microlocal sheaf or establish separation of arbitrary extended-module sections.
+
+![Strict angular defect, exact Čech deletion signs, and nested ordinary residue tori](assets/angular-residue-geometry.png)
+
+**Figure AN/OR.1.** Left: exact four-interval cover of the normal-angle circle, with interval length \(3\pi/4\) and centers \(0,\pi/2,\pi,3\pi/2\); the jump \(H\) is an explicit AN.3 input, not a theorem about arbitrary microfunctions. Center: the actual deletion signs of AN.11 for \(N=3\), where \(r_3=-1\); each product of the Čech deletion sign with the primitive sign is \(r_3\). Right: the one-coordinate complex slice of OR.6 with \(u=0\), \(v=1\), intermediate residue circle radius \(1/4\), and an outer input circle radius \(3/2\). The two kernel singularities are separated on the entire intermediate circle by exact lower bounds \(1/4\) and \(3/4\). The general theorem uses products of these circles in every normal coordinate, actual positive margins in the coefficient domain, and complete infinite index sums. The plotting source and exact rational data reproduce the illustration. Human geometric specifications are the freely accessible sources linked above; proofs are AN.1–AN.4 and OR.1–OR.4.
+
+
+Plotting source, exact data, full PNG, and editable SVG.
+
+#### Mathematical conclusions and remaining scope
+
+| Assertion | Complete local proof or exact earlier premise | Status |
+|---|---|---|
+| Common-domain full coefficient sheaf, every spatial index | IK.1/IK.14–IK.15 | Proved in fixed base coordinates |
+| Full infinite binary/triple contractions and every fixed derivative tail | IK.2–IK.3, especially IK.3–IK.11 | Proved |
+| Unit, associativity, finite common-domain coefficient diagrams | IK.3 | Proved |
+| Fixed-base projective covariable chart overlaps | IK.2 and homogeneous IK.10 | Proved |
+| Ordinary diagonal \(D^\infty\) coefficient/local-cohomology identity | OC.1–OC.4 and IK.4; §5.34 R.1–R.7 and §5.35 V.6 for the exact finite cube | Proved |
+| Full pole/log/holomorphic kernel convergence, including mixed positive-homogeneous negative-normal terms | IK.5 | Proved |
+| Actual holomorphic forward class, branch/harmonic-term boundaries, finite calibration | IK.6; §5.41 CP.2 and §5.39 NL.11–NL.12/NL.22–NL.27 | Proved as a linear map |
+| Common proper triple geometry | IK.7 | Proved |
+| Exact inverse full coefficient extraction from supplied pole/log normal forms | IK.8, especially IK.24-IK.28 | Proved |
+| IK.G: full \(\gamma^{-1}\gamma_*C^R_{\Delta}\) identification with the full coefficient class; nonlinear coordinate transitions and zero-section/off-zero compatibility | Requires an explicit angular/projective descent and reduction to the supplied normal forms whose inverse estimates are proved in IK.8 | Open |
+| IK.M: canonical full holomorphic relative-cone cup/excision/normalized-trace comparison with IK.10 | Requires literal convergent holomorphic correction cochains on a common proper triple product; finite current convergence is unavailable | Open |
+| Whole-ring degree-one/all-degree action, support preservation and finite full-infinite-order derived diagrams | IK.G/IK.M plus §5.43 full relative-kernel action and its cone-open/support/common-collar hypotheses | Conditional; no instantiation |
+| All finite matrix relations, right flatness, proper-ideal detection and unit injectivity | No deduction from the coefficient-ring result | Open |
+| Ordinary/mixed scalar changes, infinite Späth division and balanced reconstruction | Separate analytic proofs required | Open |
+| Propagation, purity, arbitrary-section separation, monodromy stability/full infinite-order D-type linearity | Separate actual module/solution proofs required | Open |
+| Faithful finite D-type embedding, finite poles, intrinsic order/half order, full C1, initial generators, arbitrary proper analytic regularity | Separate complete proofs required | Open |
+| Every remaining BB/KL, GL14/GL16, affine/critical/factorization assertion | Preserved governing full programme scope | Unfinished |
+
+| Assertion | Exact proof | Status |
+|---|---|---|
+| Normalize supplied strict angular universal-cover data, retaining every spatial Laurent index | AN.1–AN.3, actual projections AN.5, primitives AN.11–AN.12 | Proved with AN.3 as explicit input |
+| Recover full homogeneous coefficients on one common product, both factorial and every-\(\varepsilon\) bounds, actual tails | AN.4, AN.14–AN.18 | Proved for those strict data |
+| Complete ordinary all-spatial infinite product and fixed-index infinite contractions | OR.1, OR.3–OR.4 | Proved |
+| Ordinary diagonal holomorphic cup/excision/normalized residue trace and canonical ordinary kernel multiplication | OR.2–OR.3, TC.1–TC.4 and OC.1–OC.4; finite-cube V.6 and compact smooth collar trace V.4–V.5 | Proved |
+| Arbitrary ordinary holomorphic coordinate transitions, actual class correspondence and triple overlaps | OR.4, OR.13–OR.16 and the proved ordinary Laurent pairing separation | Proved |
+| Full IK.G identification of arbitrary \(\gamma^{-1}\gamma_*C^R_\Delta\) sections with the coefficient sheaf | Need cofinal microlocal-support-to-strict-angular-data construction, exact lower overlap primitives, zero-class detection, nonlinear coordinate transitions and zero-section/off-zero compatibility | Open; AN.3 is not supplied automatically |
+| Full IK.M product of arbitrary mixed pole/log thick-cone kernels | Need a literal holomorphic relative-cone trace/correction on a common proper triple product, controlling all ray endpoints and all spatial faces simultaneously | Open; OR.12 is the ordinary diagonal subring only |
+| Whole infinite-order support-preserving degree-one/all-degree action and module-derived finite diagrams | Full IK.G/IK.M and §5.43’s full relative-kernel action/cone-open/support/common-collar hypotheses | Conditional; not instantiated |
+| Finite matrix relations, right flatness, proper-ideal detection/unit injectivity, ordinary and mixed scalar changes | Separate complete analytic matrix-relation, ideal, unit and scalar-change estimates | Open |
+| Infinite Späth division and balanced reconstruction | Separate complete division and reconstruction for every actual singular-support section | Open |
+| Moving-sector propagation, singular-support purity, arbitrary-section separation, special-action/monodromy stability, infinite-order D-type linearity | Separate actual module/solution proofs | Open |
+| Faithful finite D-type embedding, finite poles/intrinsic order/half-order/full C1/initial generators, arbitrary analytic proper regularity, every retained BB/KL/GL14/GL16/affine/critical/factorization assertion | The full original programme dependency chain | Unfinished |
+
+The full infinite-order geometric ring theorem remains unfinished. Supplied strict angular data and the ordinary diagonal subring retain their explicit scope. Full matrix flatness, faithfulness, reconstruction, propagation, analytic proper regularity and every other original mathematical programme assertion remain open.
+
+
 ## 6. What monodromy misses in the irregular world
 
 Consider $\partial_t e=t^{-2}e$. A horizontal coefficient is $e^{1/t}$; its ordinary monodromy is trivial. The trivial connection also has trivial monodromy, but (1.5) proves these meromorphic connections are not isomorphic. For $t=r e^{i\theta}$,

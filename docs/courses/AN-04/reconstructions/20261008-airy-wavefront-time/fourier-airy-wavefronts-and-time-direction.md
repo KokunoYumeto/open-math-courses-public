@@ -4,7 +4,7 @@ The distributional kernel theorem defines the normalized Airy operators on every
 
 Melrose–Taylor, [*Boundary Problems for Wave Equations With Grazing and Gliding Rays*](https://mtaylor.web.unc.edu/wp-content/uploads/sites/16915/2018/04/glide.pdf), Section 6.5, is the primary antecedent for the wavefront analysis. The proof below uses the exact phases, amplitudes and Airy estimates already established in this programme and derives the time sign in our convention. No general symbolic calculus with frequency gain smaller than base loss is assumed.
 
-Independent text, examples and figure: **CC0-1.0**. The [proof map](proof-map.json) identifies exact providers; the required Lebl proofs remain external. Internal P514 closure of this export is not claimed. The complete stable incoming representation, sharp norm estimates and strict-diffraction propagation remain separate course obligations.
+Independent text, examples and figure: **CC0-1.0**. The proof map identifies exact providers; the required Lebl proofs remain external. Internal P514 closure of this export is not claimed. The complete stable incoming representation, sharp norm estimates and strict-diffraction propagation remain separate course obligations.
 
 ## 1. The normalized kernel and the receiving patch
 

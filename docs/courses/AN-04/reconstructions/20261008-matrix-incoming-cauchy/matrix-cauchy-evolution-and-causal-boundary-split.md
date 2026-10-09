@@ -4,7 +4,7 @@ An incoming solution should be constructed from interior Cauchy data. Requiring 
 
 The construction of an interior solution followed by a boundary correction is motivated by Melrose–Taylor, [*Boundary Problems for Wave Equations With Grazing and Gliding Rays*](https://mtaylor.web.unc.edu/wp-content/uploads/sites/16915/2018/04/glide.pdf), Section 7.4. The proofs below retain arbitrary smooth complex matrix lower terms, rough energy slices, the exact time-interface distribution and the weak Robin trace. The scalar Cauchy theorem used in the construction is proved in HC; it is not silently applied to a system.
 
-Independent exposition, examples and illustration: **CC0-1.0**. Exact providers are in the [proof map](proof-map.json), including the explicitly external Lebl foundations. Internal P514 closure of this export is not claimed. The final section states precisely when the Airy comparison applies; it does not presume that all boundary data lie in one glancing cone.
+Independent exposition, examples and illustration: **CC0-1.0**. Exact providers are in the proof map, including the explicitly external Lebl foundations. Internal P514 closure of this export is not claimed. The final section states precisely when the Airy comparison applies; it does not presume that all boundary data lie in one glancing cone.
 
 ## 1. The complete interior matrix equation
 

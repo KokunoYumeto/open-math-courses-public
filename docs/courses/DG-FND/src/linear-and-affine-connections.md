@@ -561,7 +561,7 @@ Along the segment, differentiating \(I-(x(t)-x_0)N\) verifies the equation \(G'=
 
 ## G. Geodesics and a complete latitude calculation
 
-The construction source for the sphere frame is Michor's exact free [author manuscript](https://www.mat.univie.ac.at/~michor/dgbook.pdf), §25.7, native pages 327–328. We compute the connection, development and affine holonomy explicitly. [DG-CHAR-17 V.1 and V.5](../supporting/DG-CHAR-8e0b5f71efec/src/DG-CHAR-17.md) prove the Levi-Civita theorem and the smooth round-sphere model. Conn E.1 proves the circle exponential, its period and differentiation, so the trigonometric notation below has an earlier programme foundation.
+The construction source for the sphere frame is Michor's exact free [author manuscript](https://www.mat.univie.ac.at/~michor/dgbook.pdf), §25.7, native pages 327–328. We compute the connection, development and affine holonomy explicitly. DG-CHAR-17 V.1 and V.5 prove the Levi-Civita theorem and the smooth round-sphere model. Conn E.1 proves the circle exponential, its period and differentiation, so the trigonometric notation below has an earlier programme foundation.
 
 **Theorem G.1 (development and affine parameter).** For a \(C^2\) curve, its normalized development satisfies
 \[

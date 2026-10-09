@@ -8,7 +8,7 @@ Original text: CC0.
 
 ## Exact prerequisites and coordinates
 
-The included [measure and L2 proofs M0–M8](../20261004-free-intrinsic-graph/prerequisites/measure-and-l2.md) give completeness, domination, product integration and simultaneous smooth density. The full [Fourier proofs L1–L3](../20261004-free-intrinsic-graph/prerequisites/fourier-l2.md) give the inversion and Plancherel conventions below, distributional compatibility and measurable multipliers. Real powers and their derivative rule are [P14.2](../20261004-free-stationary-phase/proof-map.html#P14.2-powers). The actual quotient-completeness proof is [H1 in the companion](halfspace-support-and-duality.md); it uses only the Hilbert construction in Section4 below. The trace in Section9 uses that quotient proof after the whole-space Hilbert construction, so the dependency order has no cycle.
+The included [measure and L2 proofs M0–M8](../20261004-free-intrinsic-graph/prerequisites/measure-and-l2.md) give completeness, domination, product integration and simultaneous smooth density. The full [Fourier proofs L1–L3](../20261004-free-intrinsic-graph/prerequisites/fourier-l2.md) give the inversion and Plancherel conventions below, distributional compatibility and measurable multipliers. Real powers and their derivative rule are [P14.2](../20261004-free-stationary-phase/proof-map.html#P14.2-powers). The actual quotient-completeness proof is H1 in the companion; it uses only the Hilbert construction in Section4 below. The trace in Section9 uses that quotient proof after the whole-space Hilbert construction, so the dependency order has no cycle.
 
 This retained text puts the normal coordinate last, \((x',x_n)\), and uses dimension \(n\). The Cauchy receiver writes \((t,x)\), with \(t=x_n\); its spatial dimension is therefore \(n-1\). The literal coordinate permutation preserves Lebesgue measure, the Fourier coefficient, \(R_0\), and all pairings. There is no rescaling. In the isolated discussion of left quantization below, \(\operatorname{Op}(a)u=(2\pi)^{-n}\int e^{ix\cdot\xi}a(x,\xi)\widehat u(\xi)\,d\xi\); no general mixed-symbol boundedness is inferred from the multiplier estimates.
 
@@ -311,7 +311,7 @@ The kernel of \(r^+\) is closed in the whole-space Hilbert space.
 Indeed, convergence in that Hilbert norm implies distributional convergence
 by (MSB21), so vanishing on every test function supported in the open
 half-space persists under the limit. The closed-subspace quotient theorem
-in [the half-space companion, H1](halfspace-support-and-duality.md)
+in the half-space companion, H1
 therefore makes (MSB48) a complete normed restriction space.
 
 If \(r^+W=0\), then \(\gamma_{k,a}W=0\) for \(a>0\).

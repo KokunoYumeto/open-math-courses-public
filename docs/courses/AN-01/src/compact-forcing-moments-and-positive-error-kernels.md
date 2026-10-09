@@ -243,7 +243,7 @@ Over a compact interior part of the cut, the two simple local roots continue smo
                 (\partial_yg)_+=(1-x^2)^{-1/2},
                     \qquad(\partial_yg)_-=-(1-x^2)^{-1/2}.
 \]
-[U011](boundary-flux-and-weak-identities.md), Theorem 2.1 and Corollaries 2.2 and 2.4, supplies Green's formula on the two sides, including the finitely many boundary corners. Their equal zero function traces cancel the terms with derivatives of the test; the difference of the normal derivatives gives exactly the positive density in the statement.
+U011, Theorem 2.1 and Corollaries 2.2 and 2.4, supplies Green's formula on the two sides, including the finitely many boundary corners. Their equal zero function traces cancel the terms with derivatives of the test; the difference of the normal derivatives gives exactly the positive density in the statement.
 
 At \(p=\pm1\), \(S^2=(z-p)(z+p)\) implies \(S=O(|z-p|^{1/2})\), so \(f=p+O(|z-p|^{1/2})\), \(g=O(|z-p|^{1/2})\), and \(|\nabla g|=|S|^{-1}=O(|z-p|^{-1/2})\). The logarithm bound follows from its bounded derivative near modulus one. Excise circles of radius \(\varepsilon\) about the endpoints before applying Green's formula. Their two error bounds are \(C\varepsilon^{3/2}\|\nabla\phi\|_\infty\) and \(C\varepsilon^{1/2}\|\phi\|_\infty\), both tending to zero. The cut density is integrable at the endpoints. Passing to the limit on every test proves the full distribution identity, with no additional endpoint term. Substitution \(x=\cos\theta\) gives total mass \(2\pi\).
 

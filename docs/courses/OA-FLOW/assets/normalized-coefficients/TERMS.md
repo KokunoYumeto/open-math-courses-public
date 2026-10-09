@@ -16,7 +16,7 @@ Panel A shows the exact integer shift and its phase: the arrow from delta_j to d
 
 ## External fonts
 
-The renderer reads **DejaVu Sans** and **DejaVu Sans Bold** from the existing sibling `typeiii-zero-decomposition` asset directory. Their files are not duplicated in this figure directory. Both original font components retain their terms, reproduced in the existing [FONT-LICENSE.txt](../typeiii-zero-decomposition/FONT-LICENSE.txt). The CC0 dedication above does not replace those font terms. SVG glyph outlines remain subject to the applicable font terms. `data.json` identifies both font files by SHA-256.
+The renderer reads **DejaVu Sans** and **DejaVu Sans Bold** from the existing sibling `typeiii-zero-decomposition` asset directory. Their files are not duplicated in this figure directory. Both original font components retain their terms, reproduced in the existing FONT-LICENSE.txt. The CC0 dedication above does not replace those font terms. SVG glyph outlines remain subject to the applicable font terms. `data.json` identifies both font files by SHA-256.
 
 ## Reproduction
 

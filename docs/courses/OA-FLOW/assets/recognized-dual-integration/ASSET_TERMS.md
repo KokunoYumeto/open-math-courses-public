@@ -6,4 +6,4 @@ The diagram was newly constructed from the four-block example proved in OA-FLOW-
 
 Reproduce the PNG, SVG and mathematical data with `python render_haar_integration.py --output OUTPUT_DIRECTORY`. The recorded bytes use Matplotlib 3.10.9 and NumPy 2.4.4. Fixed SVG IDs and omitted date metadata make the outputs reproducible. No TeX, network access, or external image is required. Exact integer and rational identities accompany the finite matrix diagnostics; the arbitrary-group and extended-positive results are proved in the lesson.
 
-Font designs and outlines are excluded from the project CC0 dedication. Complete [DejaVu](LICENSE_DEJAVU.txt), [STIX](LICENSE_STIX.txt), and [Computer Modern/BaKoMa](BAKOMA_SECTION.txt) notices accompany the typography and fallbacks. Runtime libraries retain their own terms; their implementations are not bundled.
+Font designs and outlines are excluded from the project CC0 dedication. Complete DejaVu, STIX, and Computer Modern/BaKoMa notices accompany the typography and fallbacks. Runtime libraries retain their own terms; their implementations are not bundled.

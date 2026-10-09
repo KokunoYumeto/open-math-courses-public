@@ -152,7 +152,7 @@ It is also a normal representation, including for a sigma-finite base. To prove 
 \lambda_\xi(B)=\int_X\sum_{z\in[x]_R}\mathbf1_B(z)|\xi(z,x)|^2\,d\mu(x).
 \tag{3.6}
 \]
-Null saturation gives \(\lambda_\xi\ll\mu\). Theorem 0.1 of [Measurable actions and compact models](measurable-actions-and-compact-models.md) supplies \(k_\xi\in L^1(\mu)_+\), and hence
+Null saturation gives \(\lambda_\xi\ll\mu\). Theorem 0.1 of Measurable actions and compact models supplies \(k_\xi\in L^1(\mu)_+\), and hence
 \(\langle M_f\xi,\xi\rangle=\int f k_\xi\,d\mu\).
 This integral preserves bounded increasing suprema even for nets. Here is the reduction to monotone convergence for sequences. Use an equivalent probability \(p\). For a bounded increasing net \(0\leq f_i\leq C\), let \(a=\sup_i\int f_i\,dp\); choose an increasing sequence of indices \(i_n\) with these integrals tending to \(a\), using directedness. Put \(g=\sup_n f_{i_n}\). For any \(i\), an index dominating \(i\) and \(i_n\) gives \(\int\max(f_i,f_{i_n})\,dp\leq a\). Monotone convergence yields \(\int\max(f_i,g)\,dp\leq a=\int g\,dp\), so \(f_i\leq g\) almost everywhere. Thus \(g\) is the essential supremum of the net. Applying monotone convergence to \(f_{i_n}k_\xi\) proves that the supremum of the net of integrals is \(\int g k_\xi\,d\mu\). This proves normality of \(f\mapsto M_f\).
 

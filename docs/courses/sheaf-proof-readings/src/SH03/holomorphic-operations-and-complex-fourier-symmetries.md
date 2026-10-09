@@ -24,7 +24,7 @@ H\text{ weakly complex constructible}
 
 Such an \(H\) has actual microsupport closed complex analytic, complex-conic and Lagrangian. “Complex-conic” here refers to cotangent-fibre dilation, not to a vector-bundle dilation on the base of a sheaf.
 
-The real operation theorem in [Weak constructibility under sheaf operations](weak-constructibility-under-sheaf-operations.md#coefficients-bounds-and-the-geometric-criterion) supplies boundedness and weak real constructibility for the operations considered below. It also supplies the finite-dimensional exceptional/direct-image and specialization/Fourier amplitude contracts. For arbitrary bounded Hom inputs on a real manifold \(M\), the [bounded-Hom proof](../SH02/manifold-duality.md#sh02-md-bounded-hom--boundedness-for-arbitrary-bounded-inputs) gives the explicit sufficient range
+The real operation theorem in [Weak constructibility under sheaf operations](weak-constructibility-under-sheaf-operations.md#coefficients-bounds-and-the-geometric-criterion) supplies boundedness and weak real constructibility for the operations considered below. It also supplies the finite-dimensional exceptional/direct-image and specialization/Fourier amplitude contracts. For arbitrary bounded Hom inputs on a real manifold \(M\), the bounded-Hom proof gives the explicit sufficient range
 
 \[
 A\in D^{[a,b]},\ B\in D^{[c,d]}

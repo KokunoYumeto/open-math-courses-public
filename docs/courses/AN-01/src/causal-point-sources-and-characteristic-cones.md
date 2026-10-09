@@ -402,7 +402,7 @@ u=8\pi\mathcal R_2,\qquad
 
 We identify the first derivative by direct integration for arbitrary tests, which also provides a separate check of the vertex.
 
-Set \(M(t,r)=\int_{S^2}\phi(t,r\omega)\,d\omega\) for \(r\ge0\). Compact sphere measure permits differentiation under this integral of every order, including right derivatives at zero; \(M(t,0)=4\pi\phi(t,0)\). For \(r>0\), the flux theorem in [Boundary flux and weak identities](boundary-flux-and-weak-identities.md), Theorem 2.1, and polar integration give
+Set \(M(t,r)=\int_{S^2}\phi(t,r\omega)\,d\omega\) for \(r\ge0\). Compact sphere measure permits differentiation under this integral of every order, including right derivatives at zero; \(M(t,0)=4\pi\phi(t,0)\). For \(r>0\), the flux theorem in Boundary flux and weak identities, Theorem 2.1, and polar integration give
 \[
 \int_{|x|\le r}\Delta_x\phi(t,x)\,dx=r^2M_r(t,r).
 \]

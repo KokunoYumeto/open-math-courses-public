@@ -275,7 +275,7 @@ Panel 4 is a schematic of the separate general proof FP5. Its $z$ is a central p
 
 The general cocycle theorem's human-source antecedent is Takesaki, *Theory of Operator Algebras II*, XI.2 Proposition 2.26. Its projection antecedents are Takesaki I, V.1.34/1.39 and V.3.17; the exact programme proofs used here are PC0–7 and L120 HF1–2/LC1–3. The complete local arguments are FP0–FP6 and the second proof below.
 
-Original exposition, diagram, caption and renderer: CC0-1.0 to the extent of rights held. Mathematical display positions are separate from the [exact model data](../assets/finite-free-action-stability/figure/averaging-corner-data.json). The bundled DejaVu font retains its accompanying [license](../assets/finite-free-action-stability/figure/FONT-LICENSE.txt). [Renderer](../assets/finite-free-action-stability/render_averaging_corner.py), [SVG](../assets/finite-free-action-stability/figure/averaging-corner.svg) and [PNG](../assets/finite-free-action-stability/figure/averaging-corner.png).
+Original exposition, diagram, caption and renderer: CC0-1.0 to the extent of rights held. Mathematical display positions are separate from the [exact model data](../assets/finite-free-action-stability/figure/averaging-corner-data.json). The bundled DejaVu font retains its accompanying license. [Renderer](../assets/finite-free-action-stability/render_averaging_corner.py), [SVG](../assets/finite-free-action-stability/figure/averaging-corner.svg) and [PNG](../assets/finite-free-action-stability/figure/averaging-corner.png).
 
 <a id="l129-standard-form-alternative"></a>
 ## A second proof through standard form and nested families

@@ -25,7 +25,7 @@ A null-set indicator maps to zero, proving that \(\rho\) is nonsingular. Apply t
 
 Basic references are [Anantharaman–Popa] and [Takesaki].
 
-Section 5 also uses the modular coordinates in [Relation kernels and modular coordinates](relation-kernels-and-modular-coordinates.md), together with the natural-cone implementation prerequisite stated in Section 5 below. Its topology argument keeps ordinary pointwise positivity separate from the natural cone.
+Section 5 also uses the modular coordinates in Relation kernels and modular coordinates, together with the natural-cone implementation prerequisite stated in Section 5 below. Its topology argument keeps ordinary pointwise positivity separate from the natural cone.
 
 ## 1. A unitary has more information than its motion
 

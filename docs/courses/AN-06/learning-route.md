@@ -80,7 +80,7 @@ The proof route for this question is:
 - [Fourier traces on curved energy surfaces](src/fourier-traces-on-curved-energy-surfaces.md) — Does the shell need curvature, or only a graph?
 - [Mild weights and frequency localization](src/mild-weights-and-frequency-localization.md) — Can localization preserve a weight that is not a power?
 - [Division and radiation at regular energies](src/division-and-radiation-at-regular-energies.md) — Why do the two boundary denominators produce different tails?
-- [Polynomial translations and regular energies](src/polynomial-translations-and-regular-energies.md) — How can one control patches whose centres run to infinity?
+- Polynomial translations and regular energies — How can one control patches whose centres run to infinity?
 - [Global polynomial resolvent estimates](src/global-polynomial-resolvent-estimates.md) — What turns infinitely many regular patches into one resolvent estimate?
 - [Global radiation and flux](src/global-radiation-and-flux.md) — How much of a forced solution is measured by its far-field amplitudes?
 - [Hamilton trajectories under a long-range force](src/hamilton-trajectories-under-a-long-range-force.md) — Can position drift be large while the change of momentum stays small?

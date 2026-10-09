@@ -9,10 +9,10 @@ The analytic-boundary theorem allows every commutative coefficient ring of finit
 
 The exact normalized maps are in these earlier lessons:
 
-- [Product evaluation with a cohomologically constructible factor](providers/SH02-CB.html#SH02-CB-EXTERNAL-HOM)
-- [Exceptional inverse image of internal Hom](providers/SH02-EX.html#SH02-EX-HOM) and [exceptional composition](providers/SH02-EX.html#SH02-EX-COMPOSITION)
+- Product evaluation with a cohomologically constructible factor
+- Exceptional inverse image of internal Hom and exceptional composition
 
-Download the readings, sources and build code · [Reuse terms](LICENSE.txt) · Provenance
+Download the readings, sources and build code · Reuse terms · Provenance
 
 [Further sheaf proof readings](../sheaf-proof-readings/index.html) include the linked constructibility and microlocal prerequisites with editable sources.
 
@@ -130,7 +130,7 @@ The right side is already known to be bounded and complex constructible by (7). 
  \tag{11}
 \]
 
-For clarity, the [bounded-Hom contract](../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-bounded-hom--boundedness-for-arbitrary-bounded-inputs) on a real manifold of dimension at most $2N$ sends inputs in $[a',b']$ and $[c',d']$ to the sufficient range $[c'-b',d'-a'+6N+g+1]$. Apply it to (5)–(6) and $\omega_X\in[-2N,0]$. It gives $D_XE\in[a-g-2N,b+8N+g+1]$. Ordinary direct image is left exact, so (10) further gives the coarse uniform bound $Rj_*F\in[a,b+8N+g+1]$. Sharp local bounds are often much smaller. This numerical estimate exhibits a single global bound; stalkwise boundedness alone would not establish membership in $D^b$.
+For clarity, the bounded-Hom contract on a real manifold of dimension at most $2N$ sends inputs in $[a',b']$ and $[c',d']$ to the sufficient range $[c'-b',d'-a'+6N+g+1]$. Apply it to (5)–(6) and $\omega_X\in[-2N,0]$. It gives $D_XE\in[a-g-2N,b+8N+g+1]$. Ordinary direct image is left exact, so (10) further gives the coarse uniform bound $Rj_*F\in[a,b+8N+g+1]$. Sharp local bounds are often much smaller. This numerical estimate exhibits a single global bound; stalkwise boundedness alone would not establish membership in $D^b$.
 
 No biduality on $X$ was used to prove (11). The only biduality input was (9) on the already constructible object $F$ on $U$. We first verified constructibility of $E$, then of its dual, and only then identified that dual with $Rj_*F$. This order avoids assuming the desired output finiteness inside the proof.
 
@@ -172,7 +172,7 @@ Let $X=\Delta$ be a disc in $\mathbb C$, $S=\{0\}$, and $U=\Delta^*$. Choose a p
 
 The [two-arc circle calculation](../sheaf-proof-readings/src/SH02/conic-descent.md#sh02-con-exercise-monodromy--transport-after-one-period) gives (14) by cutting the circle into two contractible arcs. Their intersection has two contractible components. The two restriction identifications are the identity on one component and $T$ on the other. The Mayer–Vietoris differential on $P\oplus P$ consequently has entries $b-a$ and $b-Ta$, up to choices of oriented overlap generators. Eliminate the identity summand by an invertible change of variables. The remaining mapping fibre has differential $T-\mathrm{id}$, up to an invertible sign change. This works for a whole bounded complex and does not require degree-zero coefficients.
 
-The arcs and their intersections are acyclic for a constant coefficient complex: [interval evaluation](../sheaf-proof-readings/src/SH02/convex-acyclicity.md#sh02-ca-local-system--locally-constant-coefficients-and-evaluation) gives the constant-section unit, and the bounded finite complex can be totalized over these finitely many opens. Equivalently, a circle has one vertex and one oriented edge in its local-coefficient cellular model. [Descent along the radial interval](../sheaf-proof-readings/src/SH02/conic-descent.md#sh02-con-cylinder--descent-across-a-contractible-parameter) identifies punctured-disc sections with these circle sections. These finite computations also prove that (14) is perfect: it is a shifted cone of a map between perfect complexes.
+The arcs and their intersections are acyclic for a constant coefficient complex: interval evaluation gives the constant-section unit, and the bounded finite complex can be totalized over these finitely many opens. Equivalently, a circle has one vertex and one oriented edge in its local-coefficient cellular model. [Descent along the radial interval](../sheaf-proof-readings/src/SH02/conic-descent.md#sh02-con-cylinder--descent-across-a-contractible-parameter) identifies punctured-disc sections with these circle sections. These finite computations also prove that (14) is perfect: it is a shifted cone of a map between perfect complexes.
 
 For a module $M$ in degree zero, (14) is the two-term complex
 
@@ -426,7 +426,7 @@ On an $n$-dimensional component, the manifold normalization is
  \tag{7}
 \]
 
-For the constant sheaf $k_X$, the [coordinate-ball support calculation](../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-euclidean--the-compact-support-generator) gives $A_x(k_X)=k$ and $C_x(k_X)=\operatorname{or}_{X,x}[-n]$. Hence its ordinary local index is $1$, while its costalk index is $(-1)^n$. No global orientation is needed to count the dimension of the orientation line.
+For the constant sheaf $k_X$, the coordinate-ball support calculation gives $A_x(k_X)=k$ and $C_x(k_X)=\operatorname{or}_{X,x}[-n]$. Hence its ordinary local index is $1$, while its costalk index is $(-1)^n$. No global orientation is needed to count the dimension of the orientation line.
 
 ## Global indices require a separate finiteness check
 
@@ -769,7 +769,7 @@ in a sufficiently small interval $B$. For $F_{c}$, the middle term is $k$ and th
 | $\chi(F_{o})(x)$ | $1$ | $0$ | $0$ |
 | $\chi_c(F_{o})(x)$ | $-1$ | $-1$ | $0$ |
 
-For $j:(0,1)\hookrightarrow\mathbb R$, open internal-Hom adjunction gives $D_{\mathbb R}F_{o}\simeq Rj_*\omega_{(0,1)}=Rj_*k_{(0,1)}[1]$. On a small interval about either endpoint, the nonempty intersection with $(0,1)$ is a contractible interval. Its [derived constant sections](../sheaf-proof-readings/src/SH02/convex-acyclicity.md#sh02-ca-constant--constant-coefficients) are $k$ and the restriction maps preserve that constant value. Thus the actual constant-section comparison gives $Rj_*k_{(0,1)}\simeq F_{c}$. This proves $D_{\mathbb R}F_{o}\simeq F_{c}[1]$ as a sheaf complex, with its maps. Constructible biduality and reversal of shifts now give $D_{\mathbb R}F_{c}\simeq F_{o}[1]$. Taking their stalk Euler indices reproduces the two costalk rows, including endpoints, and verifies (6).
+For $j:(0,1)\hookrightarrow\mathbb R$, open internal-Hom adjunction gives $D_{\mathbb R}F_{o}\simeq Rj_*\omega_{(0,1)}=Rj_*k_{(0,1)}[1]$. On a small interval about either endpoint, the nonempty intersection with $(0,1)$ is a contractible interval. Its derived constant sections are $k$ and the restriction maps preserve that constant value. Thus the actual constant-section comparison gives $Rj_*k_{(0,1)}\simeq F_{c}$. This proves $D_{\mathbb R}F_{o}\simeq F_{c}[1]$ as a sheaf complex, with its maps. Constructible biduality and reversal of shifts now give $D_{\mathbb R}F_{c}\simeq F_{o}[1]$. Taking their stalk Euler indices reproduces the two costalk rows, including endpoints, and verifies (6).
 
 For global sections, the closed interval is contractible and compact, giving $R\Gamma(\mathbb R;F_{c})=R\Gamma_c(\mathbb R;F_{c})=k$. Extension by zero identifies compact sections of $F_{o}$ with compact sections on the open interval, giving $R\Gamma_c(\mathbb R;F_{o})=k[-1]$. Its closed support is $[0,1]$, so (9) also gives $R\Gamma(\mathbb R;F_{o})=k[-1]$. Therefore both global indices of $F_{c}$ are $1$ and both global indices of $F_{o}$ are $-1$.
 

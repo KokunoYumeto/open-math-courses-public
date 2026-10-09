@@ -37,7 +37,7 @@ T_XK(U)=\Gamma(U;I).
 \tag{BSR.1}
 \]
 
-The [injective spectral Čech calculation](../modern-proper-support-construction.html#SH02-SXM-8) proves descent for
+The injective spectral Čech calculation proves descent for
 this coefficient complex. It also proves that an injective sheaf \(J\),
 viewed as a heart object, has section values \(J(U)[0]\). The differential
 graded section functors respect composition, differentials and mapping

@@ -2,7 +2,7 @@
 
 The incoming-field theorem carries the full-space solution through a strict glancing tangency. Its ordinary wavefront conclusion allows pure normal covectors, so restriction to the boundary requires another argument. This supplement supplies that argument for both the value and the actual weak normal trace. It does not yet prove that boundary data outside the Airy patch have a harmless response inside that patch.
 
-**Original exposition, proofs, exercises and figure: CC0-1.0.** The source antecedents are the approved Hörmander III treatment of compressed quantization and the exact programme proofs linked below. Those books remain admitted sources. Required Lebl proofs remain external author-edition dependencies: this export does not claim internal P514 closure. See the [proof map](proof-map.json), source credit and [review](proof-review.json).
+**Original exposition, proofs, exercises and figure: CC0-1.0.** The source antecedents are the approved Hörmander III treatment of compressed quantization and the exact programme proofs linked below. Those books remain admitted sources. Required Lebl proofs remain external author-edition dependencies: this export does not claim internal P514 closure. See the proof map, source credit and [review](proof-review.json).
 
 ## 1. The precise trace statement
 

@@ -208,7 +208,7 @@ on \(X\times X\) is constructible by inverse, exceptional inverse and internal H
 \tag{15}
 \]
 
-The identification is \((x,x;\xi,-\xi)\mapsto(x;\xi)\), and the order of inputs is exactly that in (14). The exceptional projection retains its orientation and dimension shift. The [bounded-Hom theorem (M44)](../SH02/manifold-duality.md#sh02-md-bounded-hom--boundedness-for-arbitrary-bounded-inputs), the bounded operations in (12)–(13), and the fixed-rank Fourier cohomological bound give global boundedness; pointwise perfection alone would not supply a uniform degree bound. This proves perfect coefficient stability. Natural duality comparisons must also retain the maps, antipodes and relative orientation factors.
+The identification is \((x,x;\xi,-\xi)\mapsto(x;\xi)\), and the order of inputs is exactly that in (14). The exceptional projection retains its orientation and dimension shift. The bounded-Hom theorem (M44), the bounded operations in (12)–(13), and the fixed-rank Fourier cohomological bound give global boundedness; pointwise perfection alone would not supply a uniform degree bound. This proves perfect coefficient stability. Natural duality comparisons must also retain the maps, antipodes and relative orientation factors.
 
 ## Examples and exercises with solutions
 
