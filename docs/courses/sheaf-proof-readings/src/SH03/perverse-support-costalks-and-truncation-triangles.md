@@ -6,11 +6,11 @@ A perversity assigns a degree to each possible stratum dimension. Ordinary restr
 
 Let \(k\) be a commutative ring of finite global dimension. Let \(X\) be a finite-dimensional real analytic manifold, with the usual Hausdorff and countability hypotheses for the sheaf operations. Write \(n=\dim X\), initially constant on components; the same argument works componentwise with a uniform dimension bound. Our category is the globally bounded category \(D^b_{\mathrm{w}\text{-}\mathbb R\mathrm c}(X;k)\). Weak constructibility permits arbitrary stalk modules. Strong constructibility requires perfect stalk complexes; the strong version of the truncation theorem below additionally assumes that \(k\) is Noetherian.
 
-The fixed-stratification microsupport criterion, dimensional filtration, bounded weak sheaf operations, and flat cellular dualizing model supply the geometric and coefficient prerequisites. The abstract truncation theorem supplies uniqueness, functoriality and the abelian heart once the t-structure axioms have been proved here. Their recorded foundational dependencies retain their own status.
+The [fixed-stratification microsupport criterion](constructibility-from-microsupport-and-perfect-stalks.md), [dimensional filtration](unshared-conormal-directions-and-dimension-filtrations.md), [bounded weak sheaf operations](weak-constructibility-under-sheaf-operations.md), and [flat cellular dualizing model](../../../constructibility-and-oriented-duality/src/the-dualizing-complex-from-oriented-simplices.md) supply the geometric and coefficient prerequisites. The [abstract truncation theorem](truncation-triangles-and-abelian-hearts.md) supplies uniqueness, functoriality and the abelian heart once the t-structure axioms have been proved here. Their recorded foundational dependencies retain their own status.
 
 ## The line-heart extension poses the problem
 
-Begin on the real line with its two open halves and the origin, and choose \(p(s)=-s\). The open-layer heart degree is \(-1\); at the origin the upper stalk bound and the lower costalk bound are both zero. These are the stratum tests proved below. The interval attachment calculation already computes both restrictions without invoking the perverse existence theorem.
+Begin on the real line with its two open halves and the origin, and choose \(p(s)=-s\). The open-layer heart degree is \(-1\); at the origin the upper stalk bound and the lower costalk bound are both zero. These are the stratum tests proved below. The [interval attachment calculation](constructible-gluing-on-an-interval.md#stalks-and-costalks) already computes both restrictions without invoking the perverse existence theorem.
 
 Over a field, consider \(i_*k\), \(j_!k_{I\setminus\{0\}}[1]\), and \(k_I[1]\). Their origin stalks are respectively \(k\), zero, and \(k[1]\). Their origin costalks are respectively \(k\), \(k\oplus k\), and \(k\), all in degree zero. To obtain the latter two, take the fibre of \(0\to k\oplus k\) or of the diagonal \(k\to k\oplus k\), then shift by \([1]\). Both open restrictions of either nonsupported object have degree \(-1\). Thus all three satisfy the two stratum bounds.
 
@@ -30,7 +30,7 @@ The injection is the connecting map of (P1). It cannot split: ordinary restricti
 
 ## Calculate the origin correction before the induction
 
-Keep the same perversity and now use the integral sheaf \(E\) from the fixed interval diagram. Its attachments are \(2q\) and \(q\), where \(q(a,b)=a+2b\), and \(u=(-2,1)\). Its point stalk is \(\mathbb Z^2\). Its exceptional restriction is the actual fibre
+Keep the same perversity and now use the integral sheaf \(E\) from the [fixed interval diagram](constructible-gluing-on-an-interval.md#one-diagram-from-sections-to-a-closed-layer-correction). Its attachments are \(2q\) and \(q\), where \(q(a,b)=a+2b\), and \(u=(-2,1)\). Its point stalk is \(\mathbb Z^2\). Its exceptional restriction is the actual fibre
 \[
  i^!E=[\,\mathbb Z^2\xrightarrow{\ (2q,q)\ }\mathbb Z^2\,]
        \quad\text{in degrees }0,1,
@@ -120,7 +120,7 @@ If \(p\le q\) on those arguments, (4) gives \({}^pD^{\le0}\subset{}^qD^{\le0}\) 
 
 For the upper inclusions use the degree bound and then the support test at zero. For the lower inclusions use that \(i_T^!\), a right derived support/restriction operation, preserves every ordinary lower bound; for the last inclusion take \(T=X\). These arguments also show directly that \(p=0\) gives the ordinary t-structure.
 
-The origin model only tested two smooth pieces and a point. To justify the lower test for every locally closed subanalytic subset, we now use the flat cellular dualizing model. Its finite free cochains retain torsion and arbitrary modules; a field-only duality shortcut would not supply this estimate.
+The origin model only tested two smooth pieces and a point. To justify the lower test for every locally closed subanalytic subset, we now use the [flat cellular dualizing model](../../../constructibility-and-oriented-duality/src/the-dualizing-complex-from-oriented-simplices.md). Its finite free cochains retain torsion and arbitrary modules; a field-only duality shortcut would not supply this estimate.
 
 ## A costalk bound with arbitrary coefficients
 
@@ -178,7 +178,7 @@ and derived internal Hom into \(H\) give
  \tag{9}
 \]
 
-The last object retains the ordinary lower bound \(r\): ordinary derived direct image is left t-exact, as proved for right derived left exact functors in the preceding lesson. Starting with zero, the long exact cohomology sequence inductively gives the same bound for every supported object. At \(T_N=T\) this object is \(H\). The proof is finite even when each layer has infinitely many locally finite components.
+The last object retains the ordinary lower bound \(r\): ordinary derived direct image is left t-exact, as proved for [right derived left exact functors](t-exact-functors-and-adjoints-between-hearts.md#why-a-bounded-below-right-derived-functor-is-left-t-exact) in the preceding lesson. Starting with zero, the long exact cohomology sequence inductively gives the same bound for every supported object. At \(T_N=T\) this object is \(H\). The proof is finite even when each layer has infinitely many locally finite components.
 
 ## Ordinary and exceptional restrictions on strata
 
@@ -202,7 +202,7 @@ Necessity in the second line follows by taking \(T=S_\alpha\) in (4). For suffic
 
 Here and below the finite closed dimensional filtration is provided by the frontier condition: union of the strata of dimension at most \(m\) is closed. Its layers can have arbitrarily many locally finite components.
 
-The stratum criterion has now identified the degree obligations. To perform the closed-layer correction we also need every cone and boundary extension to remain on one adapted stratification; the bounded weak sheaf-operation proof and fixed-stratification criterion supply this next obligation.
+The stratum criterion has now identified the degree obligations. To perform the closed-layer correction we also need every cone and boundary extension to remain on one adapted stratification; the [bounded weak sheaf-operation proof](weak-constructibility-under-sheaf-operations.md) and fixed-stratification criterion supply this next obligation.
 
 ## Keeping the chosen microlocal stratification
 
@@ -312,7 +312,7 @@ All the objects remain adapted to the chosen filtration. The boundary extension 
 
 Descending through \(m=n,\ldots,0\) ends on \(X\). Every operation is globally bounded: open extension and closed pushforward are exact, exceptional restrictions have the finite uniform amplitude of the weak-constructibility theorem, and a finite number of ordinary cuts, shifts and cones preserves a finite interval. There are \(n+1\) stages, regardless of how many components the layers have. Thus the constructed triangle lies in the stated globally bounded category.
 
-For the strong version start with perfect stalks. Exceptional restriction preserves them by the proved perfect-operation theorem. On a locally constant perfect complex, a smart cut has bounded finitely generated cohomology over a Noetherian ring. Finite global dimension then makes that cut perfect, by the coefficient criterion in the fixed-stratification lesson. Extensions by zero and closed pushforward have the original or zero stalks, and finite cones of perfect stalks are perfect. The induction therefore stays strong.
+For the strong version start with perfect stalks. Exceptional restriction preserves them by the [proved perfect-operation theorem](perfect-operations-and-finite-microlocal-coefficients.md). On a locally constant perfect complex, a smart cut has bounded finitely generated cohomology over a Noetherian ring. Finite global dimension then makes that cut perfect, by the coefficient criterion in the fixed-stratification lesson. Extensions by zero and closed pushforward have the original or zero stalks, and finite cones of perfect stalks are perfect. The induction therefore stays strong.
 
 Finally (5) proves boundedness of the t-structure. If \(F\in D^{[u,v]}\) and \(a\le p(s)\le b\), then
 \(F\in{}^pD^{\le v-a}\cap{}^pD^{\ge u-b}\).
@@ -320,13 +320,13 @@ These are finite perverse bounds. This finishes the proof. \(\square\)
 
 The abstract uniqueness theorem now identifies \(A={}^p\tau^{\le0}F\) and \(B={}^p\tau^{\ge1}F\), with their truncation arrows, independently of the choices of cones and filtration. It also gives natural truncation functors and the abelian heart \({}^pD^{\le0}\cap{}^pD^{\ge0}\). Formula (5) places the ordinary cohomology of a heart object inside \([a,b]\).
 
-The induction used finitely many dimensions, not finitely many strata or connected components. Noetherianity enters only the stated strong perfect-stalk truncation assertion.
+The induction used finitely many dimensions, not finitely many strata or connected components. The [infinite-component example](#infinitely-many-components-still-require-one-global-bound) distinguishes a uniform global degree interval from individually bounded stalks; the [infinite-coefficient example](#infinite-coefficients-on-a-smooth-stratum) remains in the weak theorem. Noetherianity enters only the stated strong perfect-stalk truncation assertion.
 
 ## Point cosupport and its dimension threshold
 
 Define the degree-wise point cosupport by
 \(\operatorname{cosupp}^jF=\{x:H^j(i_x^!F)\ne0\}\).
-Choose a stratification with locally constant exceptional restrictions; the fixed microlocal argument in the next section supplies one for our objects. Formula (8) yields
+Choose a stratification with locally constant exceptional restrictions; the fixed microlocal argument above supplies one for our objects. Formula (8) yields
 
 \[
  \operatorname{cosupp}^jF
@@ -464,8 +464,8 @@ Let \(X=\mathbb N\) with its discrete zero-manifold structure. Compare the compl
 
 ## References and the remaining programme
 
-Beilinson, Bernstein and Deligne's [*Faisceaux pervers*](https://publications.ias.edu/sites/default/files/Faisceaux%20pervers.pdf), §1.4.1–1.4.10, printed pp. 43–49, supplies the open/closed categorical gluing framework and its octahedral proof. David Massey's [*Notes on Perverse Sheaves and Vanishing Cycles*, arXiv:math/9908107v13](https://arxiv.org/abs/math/9908107v13), §2 and §5, records the complex support/cosupport conventions and truncation tests for finite constructible coefficients over a regular Noetherian ring of finite Krull dimension. Those notes give these comparison statements without full proofs. Neither source passage is used as a blanket theorem for the arbitrary-rank real cuts here. The singular-subset estimate, finite closed reconstruction, uniform bounds, microlocal membership and transverse orientation calculation are the particular supplied arguments that establish that larger scope. The locally closed subanalytic-space variant still needs its ringed-space and dualizing prerequisites and remains a separate programme target.
+Beilinson, Bernstein and Deligne's [*Faisceaux pervers*](https://publications.ias.edu/sites/default/files/Faisceaux%20pervers.pdf), §1.4.1–1.4.10, printed pp. 43–49, supplies the open/closed categorical gluing framework and its octahedral proof. David Massey's [*Notes on Perverse Sheaves and Vanishing Cycles*, arXiv:math/9908107v13](https://arxiv.org/abs/math/9908107v13), §2, pp. 19–20, and §5, pp. 40–44 (with the coefficient conventions on p. 3), records the complex support/cosupport conventions and truncation tests for finite constructible coefficients over a regular Noetherian ring of finite Krull dimension. Those notes give these comparison statements without full proofs. Neither source passage is used as a blanket theorem for the arbitrary-rank real cuts here. The singular-subset estimate, finite closed reconstruction, uniform bounds, microlocal membership and transverse orientation calculation are the particular supplied arguments that establish that larger scope. The locally closed subanalytic-space variant still needs its ringed-space and dualizing prerequisites and remains a separate programme target.
 
-The exact SH-02 prerequisites are Exceptional operations, EX-HOM, Manifold duality, MD-SUBMERSION, and Characteristic estimates, CHE-005, the bounded noncharacteristic orientation comparison. Their coefficient ranges, maps and lower foundational obligations remain part of the dependency claim. Ordinary derived foundations are reused. Human source material retains its own terms; the CC0 dedication covers the programme's independently expressed text and examples.
+The exact SH-02 prerequisites are [Exceptional operations, EX-HOM](../SH02/exceptional-operations.md#sh02-ex-hom--exceptional-inverse-image-of-internal-hom), [Manifold duality, MD-SUBMERSION](../SH02/manifold-duality.md#sh02-md-submersion--recovering-the-exceptional-inverse-image-locally), and [Characteristic estimates, CHE-005](../SH02/characteristic-estimates.md#sh02-che-005--ordinary-and-exceptional-inverse-image), the bounded noncharacteristic orientation comparison. Their coefficient ranges, maps and lower foundational obligations remain part of the dependency claim. Ordinary derived foundations are reused. Human source material retains its own terms; the CC0 dedication covers the programme's independently expressed text and examples.
 
-Continue with perverse descent and fibre-dimension bounds, then complex middle perversity and exterior products. These written lessons use the truncation constructed here; later differential-system applications remain part of the active programme. The subanalytic-space extension, finer source atomization, lower geometric foundations and independent review also remain open. 
+Continue with [perverse descent and fibre-dimension bounds](perverse-descent-and-fibre-dimension-bounds.md), then [complex middle perversity and exterior products](complex-middle-perversity-and-exterior-products.md). These written lessons use the truncation constructed here; later differential-system applications remain part of the active programme. The subanalytic-space extension, finer source atomization, lower geometric foundations and independent review also remain open. The construction here proves the stated t-structure relative to the explicit prerequisite theorems; it does not certify the entire course or the transitive closure of those prerequisites.

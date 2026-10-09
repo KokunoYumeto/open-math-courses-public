@@ -242,7 +242,7 @@ For a state \(\omega\), use its GNS triple \((H_\omega,\pi_\omega,\Omega_\omega)
 \[
 x\longmapsto x\otimes\Omega_\omega
 \]
-has squared norm \(\omega(\langle x,x\rangle)\). Its image is dense, because cyclicity and balancing turn \(x\otimes\pi_\omega(a)\Omega_\omega\) into \(xa\otimes\Omega_\omega\). It therefore identifies \(E\otimes_{\pi_\omega}H_\omega\) with the state-localized Hilbert space obtained by null quotient and completion in *Adjointable operators*. Under this identification the operator representations agree. A single GNS representation need not be faithful; the equality of norms in (4.1) uses faithfulness, whereas the supremum over all state localizations always recovers the norm.
+has squared norm \(\omega(\langle x,x\rangle)\). Its image is dense, because cyclicity and balancing turn \(x\otimes\pi_\omega(a)\Omega_\omega\) into \(xa\otimes\Omega_\omega\). It therefore identifies \(E\otimes_{\pi_\omega}H_\omega\) with the state-localized Hilbert space obtained by [null quotient and completion](hilbert-c-star-modules.md#2-the-estimate-that-makes-completion-possible) in *Adjointable operators*. Under this identification the operator representations agree. A single GNS representation need not be faithful; the equality of norms in (4.1) uses faithfulness, whereas the supremum over all state localizations always recovers the norm.
 
 For an \(A\)-\(B\) correspondence \(F\) and a representation \(\rho:B\to\mathcal B(H)\), define
 \[
@@ -262,7 +262,7 @@ To verify its norm bound, use the positive matrix \(\rho_n((\langle x_i,x_j\rang
 \Gamma(V\otimes W),\quad s\otimes t\longmapsto
 (x\mapsto s(x)\otimes t(x))
 \]
-preserves inner products by the tensor-product metric on each fibre. It is onto. Indeed take a finite Parseval frame \(s_i\) for \(\Gamma(V)\), supplied by the preceding lesson. For any section \(u\) of \(V\otimes W\), define
+preserves inner products by the tensor-product metric on each fibre. It is onto. Indeed take a finite Parseval frame \(s_i\) for \(\Gamma(V)\), [supplied by the preceding lesson](finite-projective-modules-frames-and-k0.md#5-bundle-and-smooth-examples). For any section \(u\) of \(V\otimes W\), define
 \[
 t_i(x)=(\langle s_i(x),\,\cdot\,\rangle\otimes1)u(x).
 \]
@@ -270,7 +270,7 @@ These are continuous sections of \(W\), and the fibrewise frame identity gives \
 
 ## 5. Exterior tensor products and compact operators
 
-We first establish the spatial norm facts needed for the exterior completion. The representation prerequisite is [Representations and positive functionals: the GNS construction and the Gelfand–Naimark theorem](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.html), Proposition 1.5, Theorems 5.4–5.5 and Theorem 7.2: representations decompose into cyclic parts, positive functionals have their cyclic representations, and every C*-algebra has a faithful representation.
+We first establish the spatial norm facts needed for the exterior completion. The representation prerequisite is [Representations and positive functionals: the GNS construction and the Gelfand–Naimark theorem](../exact/foundations-of-von-neumann-algebras/DD4372862B2D/representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.md#7-the-gelfand-naimark-theorem-and-enveloping-c--algebras), [Proposition 1.5](../exact/foundations-of-von-neumann-algebras/DD4372862B2D/representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.md#1-representations), [Theorems 5.4–5.5](../exact/foundations-of-von-neumann-algebras/DD4372862B2D/representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.md#5-the-gelfand-naimark-segal-construction) and [Theorem 7.2](../exact/foundations-of-von-neumann-algebras/DD4372862B2D/representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.md#7-the-gelfand-naimark-theorem-and-enveloping-c--algebras): representations decompose into cyclic parts, positive functionals have their cyclic representations, and every C*-algebra has a faithful representation.
 
 **Lemma (Hilbert-space tensors and the spatial norm).** For bounded Hilbert-space operators, \(T\otimes S\) extends to the completed Hilbert tensor product, has adjoint \(T^*\otimes S^*\), and has norm \(\|T\|\|S\|\). For C*-algebras \(A,B\), every pair of faithful representations computes the same norm on \(A\odot B\), the minimal spatial tensor norm.
 
@@ -409,11 +409,11 @@ Theorem 5.1 then recovers \(\mathcal K(H_A)\cong\mathbb K\otimes_{\min}A\).
 
 ## What this lesson does not prove
 
-We use the preceding course proofs of Gram positivity, null quotient and completion, adjointable operator order estimates, compact approximate identities and the isometry of injective C*-homomorphisms.
+We use the preceding course proofs of [Gram positivity](hilbert-c-star-modules.md#3-positive-matrices-from-finite-families), null quotient and completion, [adjointable operator order estimates](adjointable-operators.md#3-positivity-seen-by-vectors-and-states), [compact approximate identities](compact-operators-multipliers-and-the-strict-topology.md#1-operators-made-from-vectors) and the [isometry of injective C*-homomorphisms](../exact/foundations-of-von-neumann-algebras/50F1FFA37C83/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.md#OA-FND-CF-12).
 
-The representation prerequisites are the cyclic decomposition, GNS construction and faithful representation theorem in *Representations and positive functionals*, Proposition 1.5, Theorems 5.4–5.5 and Theorem 7.2. The Hilbert-space tensor operator norm and independence of faithful spatial representations are proved in the opening lemma of Section 5. Blackadar II.6.4, II.9.1.3 and I.2.5 provide historical treatments.
+The representation prerequisites are the cyclic decomposition, GNS construction and faithful representation theorem in *Representations and positive functionals*, [Proposition 1.5](../exact/foundations-of-von-neumann-algebras/DD4372862B2D/representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.md#1-representations), [Theorems 5.4–5.5](../exact/foundations-of-von-neumann-algebras/DD4372862B2D/representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.md#5-the-gelfand-naimark-segal-construction) and [Theorem 7.2](../exact/foundations-of-von-neumann-algebras/DD4372862B2D/representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.md#7-the-gelfand-naimark-theorem-and-enveloping-c--algebras). The Hilbert-space tensor operator norm and independence of faithful spatial representations are proved in the opening lemma of Section 5. Blackadar II.6.4, II.9.1.3 and I.2.5 provide historical treatments.
 
-The compact bundle example uses the frame constructed in *Finite projective modules, frames and K₀*. We do not construct geometric groupoid correspondences, prove existence of Kasparov connections, or prove an equivalence of representation categories: the latter requires an imprimitivity bimodule and will be developed later.
+The compact bundle example uses the frame constructed in [*Finite projective modules, frames and K₀*](finite-projective-modules-frames-and-k0.md#5-bundle-and-smooth-examples). We do not construct geometric groupoid correspondences, prove existence of Kasparov connections, or prove an equivalence of representation categories: the latter requires an imprimitivity bimodule and will be developed later.
 
 ## References
 

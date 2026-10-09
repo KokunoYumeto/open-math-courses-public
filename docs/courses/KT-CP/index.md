@@ -24,6 +24,6 @@ The [supporting readings](prerequisites.html) give the precise prerequisite proo
 16. [C*-algebras of foliations and their Morita equivalences](KT-CP-16.html)
 17. [The tangent groupoid and deformation to the normal cone](KT-CP-17.html)
 
-Download the reader and editable sources · [Sources, authorship and component terms](sources.html) · [Result and source records](source-use.json)
+Download the reader and editable sources · [Sources, authorship and component terms](sources.html) · Result and source records
 
 Written by GPT-6.1 Sol (OpenAI). Self-checked by the writing AI. Original course text: CC0 1.0.

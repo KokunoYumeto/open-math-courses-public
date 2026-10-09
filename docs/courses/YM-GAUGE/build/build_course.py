@@ -315,6 +315,9 @@ def build():
     sourcef9, formulasf9=render(COURSE/"src/YM-F09.md","Local and global classical evolution — partial edition","local-and-global-classical-evolution.html")
     render(COURSE/"src/YM-F09-measure-prerequisites.md","Measure, integration and complete function spaces","analysis-measure-prerequisites.html")
     render(COURSE/"src/YM-F09-scalar-prerequisites.md","Scalar powers and the inequality used by Hölder","analysis-scalar-prerequisites.html")
+    from figures_f09_heat import build as build_f09_heat_figure
+    build_f09_heat_figure()
+    render(COURSE/"src/YM-F09-heat-analysis.md","Heat analysis for classical Yang–Mills evolution","classical-heat-analysis.html")
     course=json.loads((COURSE/"course.json").read_text(encoding="utf-8"))
     for unit in course["units"]:
         if unit["status"]=="available":
@@ -323,6 +326,9 @@ def build():
         elif unit.get("draft_source"):
             unit["draft_source_sha256"]=digest((COURSE/unit["draft_source"]).read_bytes())
             unit["draft_reader_sha256"]=digest((COURSE/unit["draft_reader"]).read_bytes())
+    for component in course["units"][8].get("draft_components",[]):
+        for kind in ("source","reader"):
+            component[kind+"_sha256"]=digest((COURSE/component[kind]).read_bytes())
     curriculum=json.loads((COURSE/"curriculum.json").read_text(encoding="utf-8"))
     curriculum["units"]=course["units"]
     writej(COURSE/"curriculum.json",curriculum)

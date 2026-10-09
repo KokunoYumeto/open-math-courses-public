@@ -159,7 +159,7 @@ h=\sum_{j\geq1}2^{-j}\theta_{x_j,x_j}\in\mathcal K(E),
 \qquad e_m=h(h+m^{-1})^{-1}.
 \]
 
-The series converges in norm. Functional calculus gives positive contractions \(e_m\in\mathcal K(E)\). With \(r_m=1-e_m\), the inequality \(h\geq2^{-j}\theta_{x_j,x_j}\) implies
+The series converges in norm. [Functional calculus](../exact/foundations-of-von-neumann-algebras/50F1FFA37C83/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.md#OA-FND-CF-07) gives positive contractions \(e_m\in\mathcal K(E)\). With \(r_m=1-e_m\), the inequality \(h\geq2^{-j}\theta_{x_j,x_j}\) implies
 
 \[
 \|r_mx_j\|^2
@@ -531,9 +531,9 @@ Indeed, a zero image forces \(\pi(da)=\pi(ad)=0\) for all \(a\); faithfulness gi
 
 ## What this lesson does not prove
 
-The norm Cauchy–Schwarz inequality is *Hilbert C*-modules*, Theorem 2.1. Automatic boundedness, the adjointable C*-algebra and its order estimate are *Adjointable operators*, Theorems 2.1–2.2 and Section 3. The complete-graph and bounded-map arguments are the opening lemma of that lesson's Section 2. The double-centralizer C*-algebra and its maximal essential-extension property are proved in the opening lemma of Section 4 here; Exercise 5 extends nondegenerate module representations.
+The norm Cauchy–Schwarz inequality is [*Hilbert C*-modules*, Theorem 2.1](hilbert-c-star-modules.md#2-the-estimate-that-makes-completion-possible). Automatic boundedness, the adjointable C*-algebra and its order estimate are [*Adjointable operators*, Theorems 2.1–2.2](adjointable-operators.md#2-the-algebra-forced-by-an-adjoint) and [Section 3](adjointable-operators.md#3-positivity-seen-by-vectors-and-states). The complete-graph and bounded-map arguments are the opening lemma of that lesson's Section 2. The double-centralizer C*-algebra and its maximal essential-extension property are proved in the opening lemma of Section 4 here; Exercise 5 extends nondegenerate module representations.
 
-Functional calculus, positive contractive approximate identities and isometry of injective C*-homomorphisms are the exact foundational programme results identified in the first Hilbert-module lesson. Blackadar's II.7.3 and the other references below credit the classical multiplier theory. Foliation algebras, general continuous-field theory and crossed products require their own geometric hypotheses and are not used to prove these operator results.
+Functional calculus, [positive contractive approximate identities](../exact/foundations-of-von-neumann-algebras/50F1FFA37C83/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.md#OA-FND-CF-19) and [isometry of injective C*-homomorphisms](../exact/foundations-of-von-neumann-algebras/50F1FFA37C83/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.md#OA-FND-CF-12) are the exact foundational programme results identified in the first Hilbert-module lesson. Blackadar's II.7.3 and the other references below credit the classical multiplier theory. Foliation algebras, general continuous-field theory and crossed products require their own geometric hypotheses and are not used to prove these operator results.
 
 ## References
 

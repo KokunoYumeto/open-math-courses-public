@@ -2,8 +2,10 @@
 
 *Partial authoring edition. Sections 1–11 supply the local construction,
 constraint-preserving approximation, gauge estimates and a complete
-commuting global example. The general finite-energy global argument
-and the exercise set are still being written. This unit is not complete.*
+commuting global example. The linked heat-analysis companion supplies
+complete curvature-smoothing proofs and nine solved exercises.
+The general finite-energy global argument and the main exercise set
+are still being written. This unit is not complete.*
 
 [Lesson 8](../constraints-initial-data-energy.html) identified the data
 that obey Gauss law and proved the energy balance of an existing smooth
@@ -2108,3 +2110,28 @@ This gives a global finite-energy example for arbitrary
 amplitude in a commuting direction. The general
 noncommuting finite-energy global theorem requires
 the further analysis still being written for this unit.
+
+
+## 12. Heat analysis for the global construction
+
+The next analytical component is
+[Heat analysis for classical Yang–Mills evolution](../classical-heat-analysis.html).
+It starts from the same physical connection and curvature and
+introduces a separate heat parameter \(s\), with units of length
+squared. Its thirteen sections supply exact weighted norm maps,
+covariant interpolation, the signed energy identity with spatial
+boundary limits, scalar heat comparison, the weighted Duhamel
+estimate and full ordered commutator formulas.
+
+The companion proves all-order curvature smoothing in
+(H9.38)–(H9.47) and the heat-curvature estimates
+(H9.48)–(H9.50), for an existing regular heat solution,
+using a common explicit threshold \(S^{1/4}\|F(0)\|_{2,c}\).
+Its nine worked exercises include an exact commuting heat
+solution with the full finite-endpoint Fourier integral.
+These are the estimates needed by the construction, rather
+than an assumption that the physical global solution exists.
+
+The remaining steps are the heat-flow existence construction,
+its gauge estimates, and the low-regularity physical evolution
+and global continuation argument. They are still being written.
