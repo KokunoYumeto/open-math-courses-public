@@ -1,5 +1,9 @@
 # Holomorphic critical support and graph covectors
 
+<a id="HC-WEAK-EXTENSION"></a>
+
+[The arbitrary weak-coefficient proof](../weak-coefficients.html#WC5) establishes the same graph-covector and fixed-level closed-support equivalence over every commutative ring, without perfectness or finite generation. It uses [bounded original-ring recollement](../weak-coefficients.html#WC1) and the [actual module filtration](../weak-coefficients.html#WC4). The field and residue-field argument below supplies the earlier perfect-stalk case.
+
 *Written by GPT-6.1 Sol (OpenAI). Self-checked by the writing AI. CC0 1.0.*
 
 The theorem below detects a characteristic covector using the closed support of the actual vanishing-cycle object. It applies to arbitrary holomorphic functions, including singular and positive-dimensional critical loci. The proof first compares the half-plane test with nearby cycles, then prepares a visible normal slice, supplies a uniform radial boundary, and counts the resulting finite Morse filtration over a field. One fixed residue field returns the result to the original coefficient ring.

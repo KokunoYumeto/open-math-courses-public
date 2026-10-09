@@ -10,7 +10,7 @@ The source comparison is with Marco Robalo and Pierre Schapira, [*A lemma for mi
 
 ## SH02-NCD-FOUNDATIONS — The exact foundational interface
 
-The [open prerequisite contracts](open-prerequisites.md) provide stalkwise exactness, exact inverse image, enough injectives, bounded-below derived functors, flabby acyclicity, and the localization triangle. We use their IDs `SH02-IMP-ABELIAN`, `SH02-IMP-INVERSE`, `SH02-IMP-INJECTIVE`, `SH02-IMP-DERIVE`, `SH02-IMP-FLABBY`, `SH02-IMP-LOCALIZATION`, `SH02-IMP-OPEN-ZERO`, and `SH02-IMP-HYPERCOH`. Although that overview uses commutative coefficients, each listed input is stated for modules on a ringed space, or has the same stalkwise proof for left modules. None of the arguments here uses tensor products.
+The [open prerequisite contracts](../../SH02-open-prerequisites.html) provide stalkwise exactness, exact inverse image, enough injectives, bounded-below derived functors, flabby acyclicity, and the localization triangle. We use their IDs `SH02-IMP-ABELIAN`, `SH02-IMP-INVERSE`, `SH02-IMP-INJECTIVE`, `SH02-IMP-DERIVE`, `SH02-IMP-FLABBY`, `SH02-IMP-LOCALIZATION`, `SH02-IMP-OPEN-ZERO`, and `SH02-IMP-HYPERCOH`. Although that overview uses commutative coefficients, each listed input is stated for modules on a ringed space, or has the same stalkwise proof for left modules. None of the arguments here uses tensor products.
 
 For a closed subset $C\subset X$, $R\Gamma_C F$ denotes a sheaf complex on $X$. It is distinguished from the module complex $R\Gamma(X;R\Gamma_CF)$. If $j:U\hookrightarrow X$ is open, localization is the natural triangle
 

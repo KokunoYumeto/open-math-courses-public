@@ -10106,6 +10106,914 @@ Figure 5.42.1 is an exact real slice of (CA.1)/(CA.4) with \(\epsilon =1/4\), \(
 The figure has a full-resolution PNG, SVG, editable plotting source and exact coordinate data.
 
 
+### 5.43. The canonical all-degree action and its derived module structure
+
+The canonical kernel cup and normalized proper trace act in every relative degree. A proved auxiliary concentration theorem then constructs an actual module-derived supported object. Its underlying action is identified with the same canonical cup, controlled excision and shifted trace. Bounded finite-projective contractions transfer to this module model with explicit tensor and internal-Hom signs.
+
+The actual factorial-growth symbol rings, finite common domains, normal automorphism and finite module relations are §§5.19–5.22. The complete smooth/current resolutions, injective comparisons and controlled proper excision are §5.34, R.1–R.7. The ungraded coefficient cup, ordered finite complement cube, tensor suspension and normalized all-degree trace are §5.35, V.1–V.6. The one-normal calibration is §5.36, U.1–U.4. Arbitrary-cochain collar roofs are §5.37, W.1–W.8. Actual full spatial currents and their fixed-normal base bounds and transposed normal derivatives are §5.38, E.1–E.3, especially (E.13). Finite time shifts and their supported primitives are §5.39, NL.1–NL.7. Actual directional input domains and ordinary evaluation are §5.40, PB.1–PB.6; the full canonical product is §5.41, CP.1–CP.6; and the calibrated degree-one action, full supported homotopies and common-domain geometry are §5.42, CA.1–CA.7.
+
+Write \(R=E(G;D)\) for the canonical kernel cohomology ring of the full thick cone and round coefficient domain specified below. Sections 5.39 and 5.41 give an actual symbol-ring map to the filtered canonical kernel-germ ring, including finite positive time orders. They do not assert an isomorphism onto every canonical kernel class. Section 5.42 supplies actual bounds and calibration; its degree-one action is not used to infer the ring map or the derived module structure proved here.
+
+The only global analytic input is proved completely in DLH.1–DLH.4 below, including the alternating coefficient expansion, weighted adjoint calculation, graph-domain approximation and unrestricted-input weight construction. The target local module category and geometric conditions are those of [Micro-hyperbolic systems, §§3.1–3.2.5](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/Microhyp.pdf) and [HolIII, IV.3–IV.4](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf). Every argument used is supplied here or in the indicated earlier proof loci.
+
+#### DL.1. The actual all-degree cup and trace
+
+Put \(N=d+1\), \(u=(t,x)\), \(v=(s,y)\), \(w=s-t\), \(\zeta=y-x\). The coefficient frame \(ds\wedge dy_1\wedge\cdots\wedge dy_d\) is ungraded. With \(\delta=\bar\partial\), the fixed relative convention is
+\[
+\begin{gathered}
+C_Z^q(I)=I^q\oplus k_*I^{q-1},\\
+d(a,b)=(\delta a,ra-\delta b).
+\end{gathered}
+\tag{DL.1}
+\]
+R.3–R.7 prove that the smooth and current resolutions and this relative cone compute the actual holomorphic derived support objects, including proper supports. The input resolution is smooth. Complement cochains remain on their actual open complement.
+
+For a supported current \(K\) of degree \(p\), with support \(A_K\), put \(S=A_K\cap B_{\rm in}\), where \(B_{\rm in}\) is the pulled-back input support. The cup is
+\[
+\begin{gathered}
+m_K(a,b)=(Ka,(-1)^pKb),\\
+d m_K=m_{\delta K}+(-1)^p m_Kd .
+\end{gathered}
+\tag{DL.2}
+\]
+Its complement entry is \(Kb\) on the input complement and zero on the kernel complement. They agree on their overlap and glue on the complement of \(S\). This multiplies a current only by a smooth cochain. The sign is V.16, which moves the input complement symbol past \(p\) antiholomorphic degrees. Direct Leibniz expansion proves the second identity: its second entry is
+\((-1)^{p+1}\delta K\,b+K(ra-\delta b)\), exactly
+\(r(Ka)-\delta((-1)^pKb)\).
+
+A proper collar \(\eta=1\) near \(S\), supported in an actual excision neighbourhood, gives
+\[
+\begin{gathered}
+L_\eta(a,b)=\\
+(\eta a+\delta\eta\,b,\eta b),\\
+E_\eta(a,b)=((1-\eta)b,0),\\
+dL_\eta=L_\eta d,\\
+1-L_\eta=dE_\eta+E_\eta d.
+\end{gathered}
+\tag{DL.3}
+\]
+The terms with \(1-\eta\) or \(\delta\eta\) vanish near \(S\) before extension by zero. Thus unrestricted growth of \(b\) at that boundary is allowed. R.23–R.24 and W.6 give the extension-by-zero excision roof; arbitrary restriction of proper supports is not used.
+
+Let \(I_q\) be ordered raw fibre integration in the anti-first convention. V.10–V.11 prove compact Stokes and its zero boundary case. If \(p(S)\subset Z\), the relative trace is
+\[
+\begin{gathered}
+\operatorname{Tr}_q=(-1)^{N(q-N)}I_q,\\
+Q_N(a,b)=\\
+\left(\begin{gathered}
+\operatorname{Tr}_qa,\\
+(-1)^N\\
+\operatorname{Tr}_{q-1}b|_{p^{-1}(X\setminus Z)}
+\end{gathered}\right),\\
+Q_Nd=(-1)^NdQ_N .
+\end{gathered}
+\tag{DL.4}
+\]
+The trace is zero below degree \(N\). The first identity makes it a map out of the \(N\)-shifted complex; the additional second-component sign makes it a map on the shifted relative cone. Both identities follow by substituting (DL.1), including degree \(N-1\), where compact Stokes makes the vertical boundary integral zero.
+
+For a closed degree-\(N\) kernel,
+\[
+\begin{gathered}
+\mathcal A_T=Q_NL_\eta m_T,\\
+d\mathcal A_T=\mathcal A_Td .
+\end{gathered}
+\tag{DL.5}
+\]
+The two degree-\(N\) signs cancel in every input degree. V.15–V.17 identify \(m_T\) with the canonical unshifted cup in the finite complement cube. Its Čech augmentation is a quasi-isomorphism by the actual partition contraction and terminating row elimination. R.6–R.7 identify its smooth/current and injective proper-support models. W.6 and (DL.4) then give the actual support-to-proper-image and shifted holomorphic trace roof. These maps supply the canonical derived morphism before any cohomological concentration is assumed.
+
+#### DL.2. All-degree homotopies and germs
+
+For a supported \(H\) of degree \(N-1\), \(\mathcal B_H=Q_NL_\eta m_H\) has degree \(-1\). Equations (DL.2)–(DL.4) give
+\[
+\begin{gathered}
+\mathcal A_{T+\delta H}-\mathcal A_T\\
+=d((-1)^N\mathcal B_H)\\
++((-1)^N\mathcal B_H)d .
+\end{gathered}
+\tag{DL.6}
+\]
+Indeed \(d\mathcal B_H+\mathcal B_Hd=(-1)^NQ_NL_\eta m_{\delta H}\). This is a homotopy on arbitrary cochains. For the actual full convergent root-to-annular change, \(H\) is the supported finite-order current CA.23 with its proved tails, not an unbounded derivative sum.
+
+For two collars put \(K_{\eta',\eta}(a,b)=((\eta'-\eta)b,0)\). Then
+\[
+\begin{gathered}
+L_{\eta'}-L_\eta\\
+=dK_{\eta',\eta}+K_{\eta',\eta}d,\\
+\mathcal A_T^{\eta'}-\mathcal A_T^\eta\\
+=d\mathcal H+\mathcal Hd,\\
+\mathcal H=(-1)^NQ_NK_{\eta',\eta}m_T .
+\end{gathered}
+\tag{DL.7}
+\]
+The primitive has proper support in the union of the two collar supports and vanishes near \(S\) before zero extension. An arbitrary input boundary \(de\) maps to \(d\mathcal A_T(e)\); this keeps its complement entry. For a base-dependent cutoff and holomorphic derivative \(D\),
+\[
+\begin{gathered}
+{}[D,L_\eta]=dK_D+K_Dd,\\
+K_D(a,b)=((D\eta)b,0).
+\end{gathered}
+\tag{DL.8}
+\]
+Finite output differentiation otherwise commutes by transposition and proper Stokes. §5.38, E.13 gives the actual fixed-input derivatives, including normal derivatives and their finite-order bounds.
+
+With one collar, the maps commute literally with shrinking output opens on which their supports remain proper. Different collars are compared by (DL.7), and two excision neighbourhoods by R.23–R.24 on their intersection. No arbitrary restriction of a proper source support is asserted. A finite family of actual symbols and identities admits one common coefficient neighbourhood, one largest thick cone and one smaller output neighbourhood, by E.1–E.3 and CA.1–CA.2. Each filtered-germ equation is witnessed at one common later index because it involves finitely many representatives or witnesses. This proves the finite germ compatibility used below.
+
+#### DL.3. Composition in every degree
+
+Consecutive full kernel currents have a legitimate product. An order-zero current is one normal differential of an \(L^1\) primitive, with the same integrable bound for any finite list of fixed-normal base derivatives. Finite positive-order shifts add finitely many transposed normal derivatives. In consecutive normal variables \(a=v-u\), \(b=z-v\), the second primitive has base \(u+a\). Its base derivatives \(\partial_v^\alpha F_Q(v,b)\), evaluated at \(v=u+a\) with \(b\) held fixed, are \(L^1\) in \(b\), uniformly on compact \(u,a\) sets. The product of the two primitive coefficients is \(L^1\) in \((a,b)\), by Fubini and the separate uniform bounds. Transpose the finite normal derivatives; those in \(a\) falling on the second coefficient, with \(u,b\) held fixed, are exactly those base derivatives at fixed \(b\) and retain the bound. This defines the distribution product and its Leibniz rule. Equivalently, the second evaluation leaves a smooth test in the first normal variables, with finitely many controlled seminorms. The two descriptions agree by integration by parts. The same finite expansion of three integrable primitives is independent of association.
+
+The support intersection is proper over compact endpoints: the nonnegative real-time lengths \(l_1,l_2\) add to the endpoint length, and \(|a|\le K_Gl_1\), \(|b|\le K_Gl_2\). This bounds the intermediate coordinates; the intersection is closed inside the chosen larger actual source domain. In the round diamond DL.13, the two strict cone margins at the endpoints persist at every intermediate point by the triangle inequality. Compact endpoint sets have positive uniform margins, so the compact fibre stays inside that source. The same proof works for a finite list.
+
+For an input of degree \(q\), the coefficient cup has
+\[
+\begin{gathered}
+J(c(T,c))=\\
+(-1)^{Nq}J(T)\wedge J(c).
+\end{gathered}
+\tag{DL.9}
+\]
+The first trace sign in degree \(N+q\) is also \((-1)^{Nq}\), so it cancels. On a complement entry, the two additional signs from (DL.2) and (DL.4) are both \((-1)^N\), and cancel. Consecutive trace signs for fibre dimensions \(N,M\) differ from the product trace by \((-1)^{NM}\), exactly V.12. The ordered tensor suspension V.14 contributes that factor when the two shifted coefficient blocks are regrouped; its sign on ordinary degree \(p\) is \((-1)^{Mp}\), whose differential check is proved in V.5. Thus both associations of cup and trace agree in every degree. Raw proper integration is the repeated distributional Fubini calculation above. Common collars are obtained by (DL.7).
+
+The diagonal unit has scalar one in every degree. Raw integration of its anti-first coefficient against a degree-\(q\) input gives \((-1)^{Nq}\) times that input, canceled by the trace sign; the complement signs cancel too. A collar equal to one on the whole small diagonal gives the identity literally; (DL.3) covers another choice.
+
+For an arbitrary canonical kernel class, DLG.1–DLG.5 below constructs the full four-entry cup, its finite complement-cube inverse, the proper collar and all-degree normalized trace. Both kernel complement terms are retained. The explicit eight-entry triple-cube and projection-formula calculation proves multiplication and the diagonal unit. Thus the whole canonical ring \(R=E(G;D)\) acts in every relative degree and gives
+\[
+ R\longrightarrow
+     \operatorname{End}_{D(\mathbf C)}(R\Gamma_Z\mathcal O).
+ \tag{DL.10}
+\]
+This last statement is not yet a module-derived object. The auxiliary construction below supplies that stronger assertion.
+
+#### DLG.1. Full kernel representatives and the intersection cube
+
+The ring in DL.6 is the whole canonical ring \(R=E(G;D)\). A general element of this ring need not be the class of a current supported on the kernel support. The supported-current formulas (DL.2), (DL.5) and (DL.6) are special cases of the following construction. This construction supplies the general case used in (DL.10), DL.6 and DL.7. It leaves the analytic proof DLH.1–DLH.4 unchanged.
+
+Use the full smooth Dolbeault resolution \(I=\mathcal A\), including the output antiholomorphic variables, with the ungraded coefficient lines of R.1. R.3–R.7, specifically (R.19)–(R.20) and their ordinary-section comparison, prove that an arbitrary kernel class of degree \(N\) has a **full relative representative**
+\[
+\begin{gathered}
+k=(a,b)\in C_A^N(\mathcal A),\\
+\delta a=0,\\
+a|_{M\setminus A}=\delta b.
+\end{gathered}
+\tag{DLG.1}
+\]
+Here \(a\) is smooth on the whole kernel domain and \(b\) is smooth only on its actual open complement. This assertion is a consequence of the full-cone quasi-isomorphism, not of surjectivity of supported currents onto supported cohomology. No extension of \(b\) across \(A\) is used. Differences of representatives are boundaries in this same full cone. Pullback to a product by a projection preserves smoothness and commutes with \(\delta\); this follows in coordinates by differentiating the pulled-back coefficients.
+
+On the common product let \(A\) be the pulled-back kernel support, let \(B\) be the pulled-back input support, and put
+\(U_A=M\setminus A\), \(U_B=M\setminus B\),
+\(U=U_A\cup U_B=M\setminus(A\cap B)\).
+The two-support cube of (V.15) is
+\[
+\begin{gathered}
+K^j=I^j(M)\\
+\oplus I^{j-1}(U_A)\\
+\oplus I^{j-1}(U_B)\\
+\oplus I^{j-2}(U_A\cap U_B),\\
+d_K(x,x_A,x_B,z)=\\
+\left(\begin{gathered}
+\delta x,\\
+x|_{U_A}-\delta x_A,\\
+x|_{U_B}-\delta x_B,\\
+x_B-x_A+\delta z
+\end{gathered}\right).
+\end{gathered}
+\tag{DLG.2}
+\]
+In the last entry the restrictions are understood. Let \(k=(a,b)\) have total degree \(p\) and let an arbitrary smooth input cochain \(e=(c,f)\) have total degree \(q\). Their unshifted coefficient cup in this cube is
+\[
+\begin{gathered}
+F(k,e)=\\
+\left(\begin{gathered}
+a\wedge c,\\
+b\wedge c,\\
+(-1)^p a\wedge f,\\
+(-1)^{p-1}b\wedge f
+\end{gathered}\right).
+\end{gathered}
+\tag{DLG.3}
+\]
+The final entry is retained. The four signs follow from (V.16): the input complement symbol crosses respectively \(p\) or \(p-1\) kernel antiholomorphic degrees. Thus
+\[
+\begin{gathered}
+d_KF(k,e)=\\
+F(dk,e)\\
++(-1)^pF(k,de).
+\end{gathered}
+\tag{DLG.4}
+\]
+For completeness, the two singleton entries of the right side are
+\(ac-\delta b\,c+(-1)^p b\,\delta c\) and
+\(ac-(-1)^p\delta a\,f-a\,\delta f\).
+The double entry is
+\((-1)^p af-bc+(-1)^{p-1}\delta b\,f+b\,\delta f\),
+which is exactly \(x_B-x_A+\delta z\) for (DLG.3). The whole-domain entry is ordinary Leibniz. This verifies (DLG.4) for nonclosed cochains too. All products are of smooth forms on the indicated open sets.
+
+#### DLG.2. An explicit cube-to-full-cone inverse
+
+Choose an ordinary smooth partition \(\rho_A+\rho_B=1\) on \(U\) subordinate to \(U_A,U_B\). R.5 constructs such partitions on arbitrary ordinary opens. Each partition support is closed inside its assigned open subset of \(U\), so a term multiplied by that partition, or its derivative, extends by zero in \(U\). This says nothing about extension across \(A\cap B\).
+
+Define
+\[
+\begin{gathered}
+\Phi_\rho(x,x_A,x_B,z)=\\
+\left(\begin{gathered}
+x,\\
+\begin{gathered}
+\rho_Ax_A+\rho_Bx_B\\
++\delta\rho_A\wedge z
+\end{gathered}
+\end{gathered}\right),\\
+\iota(x,y)=\left(\begin{gathered}
+x,y|_{U_A},\\
+y|_{U_B},0
+\end{gathered}\right),\\
+H_\rho(x,x_A,x_B,z)=\\
+(0,-\rho_Bz,\rho_Az,0).
+\end{gathered}
+\tag{DLG.5}
+\]
+The first two maps preserve degree; \(H_\rho\) has degree minus one. Their identities are
+\[
+\begin{gathered}
+d\Phi_\rho=\Phi_\rho d_K,\\
+\Phi_\rho\iota=1,\\
+1-\iota\Phi_\rho=\\
+d_KH_\rho+H_\rho d_K.
+\end{gathered}
+\tag{DLG.6}
+\]
+Indeed, both second components of the first identity equal
+\[
+\begin{gathered}
+x|_U-\rho_A\delta x_A-\rho_B\delta x_B\\
++\delta\rho_A\wedge(x_B-x_A)\\
++\delta\rho_A\wedge\delta z.
+\end{gathered}
+\tag{DLG.7}
+\]
+For the last identity, the singleton components are
+\(\rho_B(x_A-x_B)-\delta\rho_A\,z\) and
+\(\rho_A(x_B-x_A)-\delta\rho_A\,z\);
+the double component is \(z\), and the whole-domain component is zero.
+These are precisely the components of \(1-\iota\Phi_\rho\).
+Thus this is a deformation retraction, with no appeal to a Leray cover or to supported-current representability.
+
+For another partition put \(\theta=\rho'_A-\rho_A\). Then
+\[
+\begin{gathered}
+C_{\rho',\rho}(x,x_A,x_B,z)=\\
+(0,-\theta z),\\
+\Phi_{\rho'}-\Phi_\rho\\
+=dC_{\rho',\rho}+C_{\rho',\rho}d_K.
+\end{gathered}
+\tag{DLG.8}
+\]
+The second component of this identity is
+\(\theta(x_A-x_B)+\delta\theta\wedge z\), by direct expansion. This homotopy retains the double-complement entry. These maps also work for a current-valued cube, because they multiply currents only by smooth functions. The general cup itself will continue to use smooth representatives.
+
+In particular the full intersection-cone cup with a degree-\(p\) kernel is
+\[
+\begin{gathered}
+m_k(e)=(a\wedge c,\beta_k(e)),\\
+\beta_k(e)=\rho_A b\wedge c\\
++(-1)^p\rho_Ba\wedge f\\
++(-1)^{p-1}\delta\rho_A\wedge b\wedge f.
+\end{gathered}
+\tag{DLG.9}
+\]
+It satisfies \(dm_k=m_{dk}+(-1)^p m_kd\). When the kernel is a supported current \((T,0)\), (DLG.3) is the image under \(\iota\) of (DL.2): its input-complement entry glues with zero on \(U_A\). Therefore \(\Phi_\rho\) returns exactly (DL.2), including its sign. Formula (DLG.9) adds the terms needed for all the other canonical kernel classes.
+
+#### DLG.3. A finite-cover comparison with natural homotopies
+
+Composition and iterated supports require more than two complements. Here is a uniform finite construction, including the maps that compare refinements. For a finite ordinary cover \(\mathcal U=(U_i)_{i=1}^n\) of an open \(U\), let \(T\) be its alternating Čech–Dolbeault total complex, with Čech degree \(r\ge0\), horizontal differential \(\Delta\), and vertical differential
+\(v=(-1)^r\delta\). Write \(\iota_U:I(U)\to T\) for restriction to singleton entries. Let \(p\) be zero in positive Čech degree and equal to \(\sum_i\rho_i c_i\) in degree zero. Let
+\[
+\begin{gathered}
+(hc)_{i_0\ldots i_{r-1}}\\
+=\sum_j\rho_j c_{j i_0\ldots i_{r-1}}\\
+\quad(r\ge1),\\
+h=0\quad(r=0).
+\end{gathered}
+\tag{DLG.10}
+\]
+All extensions are within \(U\). Expanding the alternating sum proves
+\(\Delta h+h\Delta=1-\iota_Up\), as in V.6. Antisymmetry gives \(h^2=0\) and \(ph=0\): in either double sum the coefficient \(\rho_i\rho_j\) is symmetric while the Čech entry is antisymmetric. Also \(h\iota_U=0\), \(p\iota_U=1\), \(p\Delta=0\), and
+\(v\iota_U=\iota_U\delta\).
+
+The following inverses are finite sums because \(vh\) lowers Čech degree:
+\[
+\begin{gathered}
+A=(1+vh)^{-1}\\
+=\sum_{j=0}^{n-1}(-vh)^j,\\
+P=pA,\\
+H=hA.
+\end{gathered}
+\tag{DLG.11}
+\]
+For a component in degree \(r\), terms with \(j>r\) are zero. Put \(D=\Delta+v\). Since \(\Delta v+v\Delta=0\) and \(v^2=0\),
+\[
+\begin{gathered}
+D(1+vh)=\\
+(1+vh)\Delta+\iota_U\delta p.
+\end{gathered}
+\tag{DLG.12}
+\]
+To verify this equality, expand its left side as
+\(\Delta+v-v\Delta h\), and substitute
+\(\Delta h=1-\iota_Up-h\Delta\).
+Multiplying by \(A\) gives
+\(AD=\Delta A+\iota_U\delta P\), since \(A\iota_U=\iota_U\).
+Consequently
+\[
+\begin{gathered}
+PD=\delta P,\\
+P\iota_U=1,\\
+DH+HD=1-\iota_UP.
+\end{gathered}
+\tag{DLG.13}
+\]
+For the last equality, use \(H=hA\) and the preceding formula to obtain
+\((\Delta h+h\Delta+vh)A=(1+vh-\iota_Up)A\).
+This proves every identity by finite algebra; no convergence or perturbation theorem is being cited.
+
+Apply \(P\) to the complement coordinate of
+\(\operatorname{Cone}(I(M)\to T)[-1]\), retaining the whole-domain coordinate. The map from this cone to the finite cube is the sign \((-1)^r\) on its Čech-degree-\(r\) complement entry, exactly (V.15). The resulting cube-to-full-cone map has inverse induced by \(\iota_U\), and its homotopy is
+\((x,c)\mapsto(0,-Hc)\) in the cone coordinates. For two opens this is (DLG.5)–(DLG.6), including the derivative term.
+
+More generally let \(R_T:T\to T'\) be a map of these total complexes, let \(f:I(U)\to I(U')\) be a map of the augmented complexes, and suppose
+\(R_T\iota_U=\iota_{U'}f\). Then
+\[
+\begin{gathered}
+P'R_T-fP\\
+=\delta'(P'R_TH)\\
++(P'R_TH)D.
+\end{gathered}
+\tag{DLG.14}
+\]
+Indeed multiply \(1-\iota_UP=DH+HD\) by \(P'R_T\); its left side becomes the stated difference and use the chain identities for \(R_T,P'\). The corresponding full-cone homotopy again has complement coordinate minus \(P'R_THc\), and zero whole-domain coordinate.
+
+For restriction, intersect each member of the cover with the smaller open and let \(R_T\) restrict every entry. For a cover refinement \((V_j)\), choose \(\alpha(j)\) with \(V_j\subset U_{\alpha(j)}\), and restrict the alternating component \(c_{\alpha(j_0)\ldots\alpha(j_r)}\) to \(V_{j_0\ldots j_r}\), with repeated-index entries zero. Alternation and the definition of \(\Delta\) show that this is a chain map and it commutes with the augmentation. Equation (DLG.14) applies. Two partitions, two refinement assignments, and two successive refinement paths consequently give the same map in the derived category: each comparison is homotopic to the same augmented map by (DLG.14). This assertion includes an explicit homotopy, not a choice of an unproved inverse.
+
+For support-forgetting \(T_1\subset T_2\), the full-cone map is
+\((a,b)\mapsto(a,b|_{M\setminus T_2})\). Restrict the old complement cover to \(M\setminus T_2\) and use a common refinement with the desired cover there. Formula (DLG.14) proves compatibility. The same argument applies to the cube for an intersection of supports: restrict all its entries and then refine its finite complement cover. Thus support inclusions and finite iterated support cubes are natural by specified chain homotopies. The maps preserve any fixed common closed support of their sheaf sections; multiplication and zero extension inside \(U\) cannot enlarge it. In particular they preserve a pre-existing proper support. A partition on the ordinary complement may have large derivatives near its excluded boundary; no bound there or extension across that boundary is required.
+
+#### DLG.4. The proper collar and normalized trace for an arbitrary kernel
+
+Suppose \(S=A\cap B\) is closed and proper over the output projection \(p:M\to X\), and \(p(S)\subset Z\) for the output support \(Z\). Choose a proper collar \(\eta=1\) near \(S\) supported in an actual excision neighbourhood \(W\). The collar exists locally without growth assumptions. Over a precompact output open \(V\Subset V'\), properness makes \(S\cap p^{-1}(\overline V)\) compact; finitely many coordinate bumps in \(W\) give a cutoff equal to one near that compact set. Its restriction over \(V\) has proper support. If a global proper collar is needed, take a locally finite subordinate output partition \(\lambda_i\), choose such a compact-source cutoff \(\eta_i\) near \(S\) over \(\operatorname{supp}\lambda_i\), and put \(\eta=\sum_i(p^*\lambda_i)\eta_i\). Every compact output set meets finitely many partition supports, so this collar is proper. Near a point of \(S\) all finitely many relevant \(\eta_i\) equal one; hence \(\eta=1\) there. Its support is contained in \(W\) and closed in the ambient inverse image. This is the ordinary locally finite bump construction of R.5.
+
+Apply the full-cone collar **after** \(\Phi_\rho\):
+\[
+\begin{gathered}
+L_\eta m_k(c,f)=\\
+\left(\begin{gathered}
+\begin{gathered}
+\eta a\wedge c\\
++\delta\eta\wedge\beta_k(c,f)
+\end{gathered},\\
+\eta\beta_k(c,f)
+\end{gathered}\right).
+\end{gathered}
+\tag{DLG.15}
+\]
+The term containing \(\delta\eta\) extends by zero across \(S\) because \(\delta\eta\) is zero on a neighbourhood of \(S\). The second component stays on the complement. No growth bound for either kernel or input complement is needed. Every component has proper sheaf support inside \(\operatorname{supp}\eta\). W.1, (W.3)–(W.6), prove
+\(dL_\eta=L_\eta d\), \(1-L_\eta=dE_\eta+E_\eta d\), with
+\(E_\eta(a,b)=((1-\eta)b,0)\).
+This is the controlled zero-extension roof (R.23)–(R.24).
+
+Let \(Q_N\) be the all-degree relative trace (DL.4), proved in V.4 and W.3. For the closed kernel (DLG.1) the actual operator is
+\[
+\begin{gathered}
+\mathcal A_k=\\
+Q_NL_\eta\Phi_\rho F(k,-),\\
+d\mathcal A_k=\mathcal A_kd.
+\end{gathered}
+\tag{DLG.16}
+\]
+This follows from (DLG.4), (DLG.6) and
+\(Q_Nd=(-1)^NdQ_N\). The two degree-\(N\) signs cancel. At an input of degree \(q\), the source-cone total degree is \(N+q\). Trace on its first component has sign \((-1)^{Nq}\), and on its second component the additional \((-1)^N\) of (DL.4) is present. These formulas also include the zero trace below degree \(N\) and compact-Stokes boundary case. Both kernel and input complement coordinates have entered (DLG.15) before tracing.
+
+R.6–R.7 identify this roof with the derived holomorphic cup, support-to-proper-image map and normalized trace: (DLG.3) is the tensor-to-cube map (V.16), (DLG.6) is the inverse to its full-cone augmentation, and (DLG.15) is the actual controlled excision inverse. The holomorphic coefficient augmentation commutes with the cup. Tensoring its bounded comparison roofs over \(\mathbf C\) preserves quasi-isomorphisms: an exact stalk complex of vector spaces splits by choosing complements to its kernels, its contraction tensored with a bounded complex remains a contraction, and the finite total-degree filtration gives the assertion. This supplies the comparison with the holomorphic/injective models. It does not use any analytic concentration theorem.
+
+If a degree-\(N-1\) full kernel cochain \(h=(a_h,b_h)\) changes the kernel by \(dh\), then
+\[
+\begin{gathered}
+\mathcal A_{k+dh}-\mathcal A_k\\
+=d\mathcal B+\mathcal Bd,\\
+\mathcal B=\\
+(-1)^N\\
+Q_NL_\eta\Phi_\rho F(h,-).
+\end{gathered}
+\tag{DLG.17}
+\]
+Expanding (DLG.4) gives
+\(d(Q_NL_\eta m_h)\) \(+(Q_NL_\eta m_h)d\) \(=(-1)^NQ_NL_\eta m_{dh}\), which proves the formula. It retains \(b_h\), and extends (DL.6).
+
+Changing the partition gives the homotopy
+\((-1)^NQ_NL_\eta C_{\rho',\rho}F(k,-)\) by (DLG.8). Changing the collar gives
+\((-1)^NQ_NK_{\eta',\eta}\Phi_\rho F(k,-)\), where
+\(K_{\eta',\eta}(x,y)=((\eta'-\eta)y,0)\), by (DL.7).
+All their traced terms are proper, in the collar support or the union of the two collar supports. An input boundary is sent to the boundary of \(\mathcal A_k\) applied to its full boundary primitive. Restriction, support forgetting and finite complement refinement use (DLG.14), followed by one common collar and the same trace. R.23–R.24 compare two excision neighbourhoods on their intersection. This proves independence as a derived morphism, with proper homotopies and all complement entries included.
+
+#### DLG.5. Multiplication and the unit of the whole canonical ring
+
+The preceding construction also multiplies two arbitrary canonical kernel classes. On the triple product, pull their full smooth relative cochains back in the consecutive variables. Apply (DLG.3), then the full intersection-cone comparison and a proper collar, and finally trace the intermediate \(N\)-dimensional variable. This gives a full relative cochain of degree \(N\) with support in the endpoint kernel support. When both cochains are smooth, the two output components of this trace are smooth on their respective actual domains: over a compact base neighbourhood the proper support lies in finitely many compact fibre charts, so every finite base derivative passes under the integral. This is exactly the smooth calculation in V.4. Therefore this procedure can be iterated using smooth representatives. Arbitrary distributions with shared singular parameters are never multiplied.
+
+Its properness is the actual round-domain properness, not a support-label assertion. Write consecutive differences as \(g_i\in G\) and their real-time lengths as \(l_i\ge0\). For fixed endpoints their sum is the endpoint difference, so
+\(\sum_i l_i=L\), the endpoint length, and
+\(|g_i|\le K_Gl_i\). All intermediate coordinates are bounded. If the endpoints lie in the round diamond (DL.13), each intermediate point lies in it: adding a member of \(G\) preserves the first open-cone inequality, and subtracting the remaining member of \(G\) preserves the second. More quantitatively, the strict endpoint margins
+\(\epsilon l-|\operatorname{Im}t|\) and
+\(A_jl-|x_j|\) remain at least their initial endpoint margins by the triangle inequality. Compact endpoint families have positive uniform margins. Thus the closed bounded fibre stays in a compact subset of the actual source domain. A closed subset of that compact set is compact (take any sequence, extract a convergent subsequence in the bounded Euclidean box, and use closedness); this proves properness. It also proves properness for a finite list of consecutive kernels.
+
+Associativity of the coefficient cup at the finite cube level is literal. Expand three or more relative factors by (V.16). The resulting coefficient on the open indexed by complement symbols \((r_i)\) has sign
+\((-1)^{\sum_{i<j}q_ir_j}\), independently of association: regrouping splits this sum into its within-block and between-block pairs. Wedge products of smooth forms and the ordered coefficient-line product are associative. Thus both associations give the same multi-support cube before the full-cone comparison.
+
+Inserting a pairwise cube-to-cone inverse before the next cup changes this common cube only by the explicit homotopy (DLG.13): substitute
+\(\iota P=1-DH-HD\) on that pair of factors and tensor \(H\) with the remaining factors, with the ordinary tensor differential signs. For a left factor of degree \(p\), a homotopy in a later factor is multiplied by \((-1)^p\); expansion of the two mixed differential terms gives cancellation. Multiplication by the subsequent cup map preserves that homotopy by (DLG.4). Different finite covers or refinement paths are compared by (DLG.14). Hence the full-cone cup is associative as the specified derived operation, including the higher complement entries.
+
+Here is the projection formula used on the actual complement components. Let \(\alpha\) be a properly supported smooth coefficient of antiholomorphic degree \(h\), with the intermediate holomorphic top block of degree \(N\) ordered first, and let \(\beta\) have antiholomorphic degree \(j\) on the remaining variables. In local fibre coordinates only the component of \(\alpha\) containing all \(N\) fibre antiholomorphic differentials survives integration. Write that component with the fibre antiholomorphic block first, followed by its remaining block of degree \(h-N\). Moving the holomorphic fibre block past the remaining block and then past \(\beta\) gives
+\[
+\begin{gathered}
+I_{h+j}(\alpha\wedge p^*\beta)\\
+=(-1)^{Nj}I_h(\alpha)\wedge\beta,\\
+\operatorname{Tr}_{h+j}(\alpha\wedge p^*\beta)\\
+=\operatorname{Tr}_h(\alpha)\wedge\beta.
+\end{gathered}
+\]
+The second equality follows because
+\(N(h+j-N)+Nj\equiv N(h-N)\pmod2\).
+Fibre components of smaller degree give zero on both sides. Each equality is the same compactly supported coefficient integral with \(\beta\) outside the integral; finite partitions of fibre charts give the equality globally. Derivatives in the remaining variables pass under that compact integral, as proved in V.4. For a factor on the other side, commute the antiholomorphic blocks first with their ordinary wedge sign; the coefficient blocks are then ordered as in (R.25). This gives the precise exterior sign in either order, without a separated-current premise.
+
+The complement opens require an additional domain check. After the finite map \(P\), each term originating in an entry on \(U_{i_0}\cap\cdots\cap U_{i_r}\) has a factor \(\rho_{i_k}\) or a derivative of that factor for every one of its indices: each application of \(h\) supplies the removed index and the final \(p\) supplies the last index. Such a term extends by zero in \(U\), by the subordinate partition supports. It is not integrated as an unweighted cochain across an excluded face. Multiply by the common collar. On an output-complement open \(X\setminus Z\), the whole inverse image is in \(U\), since \(p(S)\subset Z\). Over a compact subset of that output open, the collar gives compact source support disjoint from \(S\). The partition factors therefore give compact support inside each term's actual complement domain. R.24 permits its zero extension there; its integral is the ordinary integral of this extended smooth coefficient. Thus the projection formula applies term by term to every finite complement entry, as well as to the whole-domain entry. The \(\delta\eta\) terms of the collar extend across \(S\) by their vanishing near \(S\) and obey the same calculation. In particular the second relative trace component is obtained by restricting this very calculation to the output complement, with the extra sign \((-1)^N\) of (DL.4).
+
+For two kernels and an input, the common three-support cube has all eight entries. If their complement flags are \(r_1,r_2,r_3\in\{0,1\}\), and their corresponding antiholomorphic degrees are \(q_i=p_i-r_i\), its entry is the wedge of those three selected whole or complement forms, with sign \((-1)^{q_1r_2+q_1r_3+q_2r_3}\). In particular entries containing either kernel complement, the input complement, or any combination of them are present. Apply the finite map of DLG.3 and one final proper collar to this cube. Properness over the final base also gives properness over a base retaining an intermediate variable: a compact subset of the latter base projects to a compact subset of the final base, and its inverse image in the closed source support is a closed subset of the latter compact fibre set. Partial integration and then full integration are therefore defined. For every whole and partition-localized complement coefficient, the two integrations are the identical repeated integral over the same compact source support; Fubini is ordinary repeated integration of smooth compact coefficients. The projection formula just proved identifies the operation of tracing one pair and then cupping the remaining factor with that same three-factor integral. The complement restriction used by the first trace is legitimate because its projected support lies in its chosen intermediate support; its pulled-back output-complement open lies in the source complement. Restrict all cube entries to these actual opens and use (DLG.14) to compare their finite covers. This identifies both associativity roofs, including their intermediate complement entries.
+
+All terms to be integrated can be given one final proper collar on the common multi-support intersection. An intermediate collar can be replaced by that common choice before the final integration: substitute
+\(L_\eta=1-dE_\eta-E_\eta d\) inside the corresponding cup, using (DLG.4), and apply the final collar to the resulting homotopy. The final collar makes each homotopy term proper even when the original complement primitive is not proper. The equality is made on the whole intersection cone, so it also includes the derivative and complement parts of every \(L_\eta\). If an integration has already been made, represent this calculation on the product before that integration. Pulling back a base form, wedging and integrating a proper smooth coefficient commute by the coordinate definition of fibre integration; the signs are the exterior permutations in (R.25). Repeated integration agrees with integration over the ordered product fibre by the ordinary compactly supported coefficient calculation of V.4. This proves the same collar comparison for the sequential integration roof, rather than restricting a proper section to an arbitrary source open.
+
+The precise normalization is unchanged. In input degree \(q\), moving the kernel's holomorphic coefficient block across input antiholomorphic degree contributes \((-1)^{Nq}\), which cancels the first trace sign. Repeated traces of fibre dimensions \(N,M\) have the discrepancy \((-1)^{NM}\) of (V.12); the trace-first versus total tensor suspension of (V.14) contributes exactly that factor. On complement entries the extra cone signs are those already checked in (DLG.4) and (DL.4). This proves associativity of multiplication and the module identity
+\[
+\begin{gathered}
+{}[\mathcal A_k]\,[\mathcal A_l]=[\mathcal A_{k*l}]\\
+\quad\hbox{in every relative}\\
+\hbox{degree}.
+\end{gathered}
+\tag{DLG.18}
+\]
+Here \(k*l\) denotes the canonical unshifted kernel cup followed by its normalized intermediate trace, and the order agrees with consecutive input motion. This proof applies to the whole ring, without symbol-growth bounds or a supported-current representation of \(k,l\).
+
+For the diagonal unit choose its supported current representative, whose positive ordered Cauchy scalar is proved in U.5–U.8 and V.5. This use of a supported representative is specific to the unit. A smooth full input cochain is a legitimate multiplier. The cube collapses to (DL.2), as proved after (DLG.9). Raw integration on a degree-\(q\) first component gives \((-1)^{Nq}\) times that component, canceled by \(\operatorname{Tr}_{N+q}\); the two complement signs cancel as well. A collar equal to one on the diagonal makes the identity literal. Thus the diagonal acts as the identity on every full relative cone. Applying this also to a kernel input gives both convolution units. Smooth/current comparison R.6–R.7 then identifies it with the same unit for arbitrary smooth full kernel representatives.
+
+#### DLG.6. The strict auxiliary module and the all-degree comparison
+
+Retain the exact geometry, exhaustion, concentration and injective module construction of DL.4–DL.6. For \(T=S\) or \(S_*\), put
+\(A=A_G\), \(B=p_2^{-1}T\).
+Over compact outputs in \(\Omega\), kernel-supported inputs lie in \(K+G\), have time at least \(-a\) for \(S_*\), and are bounded by the cone length estimate in DL.14. They stay in \(\Omega\) because \(\Omega+G\subset\Omega\), and in the coefficient domain by (DL.14). This gives the properness needed in DLG.4. The support-to-image condition is equally explicit. If an output is in \(\Omega_0\), every kernel-supported input lies in \(\Omega_0\), since \(\Omega_0\) is \(G\)-open. If the output is in \(\omega\), all such inputs are in \(\omega\). Hence
+\[
+\begin{gathered}
+p_1(A_G\cap p_2^{-1}S)\subset S,\\
+p_1(A_G\cap p_2^{-1}S_*)\subset S_*.
+\end{gathered}
+\tag{DLG.19}
+\]
+On an ordinary open \(V\cap D\) compute (DLG.16), then use the fixed output collar of DL.6, equal to one near \(\overline{S_*}\) and compactly supported in \(D\), to extend by zero to \(V\). The coefficient domain need not be \(G\)-open. This output excision is the full-cone operation of W.1 and R.23, so DLG.4 applies to a general \(b\) as well as to a supported current.
+
+Here is the needed restriction comparison for arbitrary representatives. If \(V'\subset V\) is \(G\)-open, the total cohomological intersection over outputs in \(V'\) lies in the source open where the input is also in \(V'\): a kernel-supported input is in \(x+G\subset V'\). Choose the proper collar inside that source open by DLG.4. Restrict all four cube entries to it, apply the finite-cover comparison and this collar, and extend by zero. With a restricted common partition, the localized entries are literally the restrictions of (DLG.15), extended by zero; the source collar makes the extension legal. Equation (DLG.14) compares another partition, and DLG.4 compares another collar. Proper trace then commutes with output restriction. Thus the derived operation agrees with the operation using the restricted input. This proof does not pretend that a general kernel's whole-domain component \(a\) is supported on \(A_G\); its off-support contributions are removed by the full-cone excision homotopy, with \(b\) retained.
+
+Consequently every \(r\in R\), represented by any (DLG.1), acts on
+\(\mathcal F=H^1_{S_*}(q_{G*}\mathcal O_\Omega)\).
+Boundary and choice independence are DLG.4; multiplication and the unit are DLG.5. They give strict identities of cohomology-sheaf maps. Additivity and scalar linearity follow by using a common partition and collar for finitely many representatives and adding their cochains in (DLG.3). Thus \(\mathcal F\) is a sheaf of left modules over the **whole** ring \(R\). The ring need not act strictly on these chosen full-cone representatives; the strict module action is on \(\mathcal F\). The module injective resolution in DL.6 and the tensor/Hom contractions of DL.8 are therefore valid with this whole ring.
+
+There is also an action-compatible comparison in every degree for the smaller support \(S\). Use the same kernel representative, multi-support cube and collar on the intersections for \(S\subset S_*\). The support-forgetting maps and the restriction to \(\Omega_0\) are compatible by (DLG.14) and (DLG.19). The finite cube for the iterated supports is identified with its full intersection cone by (DLG.11)–(DLG.13); on injectives the corresponding support identity is literally
+\(\Gamma_S\Gamma_{S_*}I=\Gamma_SI\), proved in DL.6. R.6–R.7's augmentation comparison identifies these same maps, since the cube maps commute with the holomorphic augmentations and the controlled extension maps. The resulting derived support operation is therefore the operation of \(r\) on
+\(R\Gamma_S R\Gamma_{S_*}(q_{G*}\mathcal O_\Omega)\), not merely an unrelated action on its cohomology.
+
+The concentration roof in DL.6 identifies
+\(R\Gamma_{S_*}(q_{G*}\mathcal O_\Omega)\) with \(\mathcal F[-1]\).
+After that identification a degree-zero morphism is uniquely the map on the single sheaf \(\mathcal F\): using a nonnegative injective resolution of the target, degree-zero cycles are exactly maps into its degree-zero kernel, and there is no degree-minus-one boundary. Hence this roof intertwines the arbitrary-kernel action with the strict map \(r:\mathcal F\to\mathcal F\). Apply the identical derived support functor \(R\Gamma_S\) to these morphisms and use the literal injective support identity. It follows that the underlying action on the actual module-derived object \(\mathcal Q_R\) of (DL.21) is precisely (DLG.16) on
+\(R\Gamma_S(q_{G*}\mathcal O_\Omega)\), in every degree. This supplies the previously missing general-kernel interface in DL.6, without changing its analytic input.
+
+#### DLG.7. Finite common refinements and the retained scope
+
+For halfspace changes, support inclusions and ordinary excision use DLG.3–DLG.4. The map \(\mathcal F_2\to\mathcal F_1\) of (DL.23) commutes with every \(r\in R\), since it is the map on \(H^1\) of the common natural full-cone roof. Applying \(R\Gamma_S\) identifies both sides with the same injective supported complex, exactly as in DL.6. This proves the required module quasi-isomorphism for arbitrary ring elements.
+
+For a cone change \(G\subset G'\), the input and auxiliary complements must be \(G'\)-open, as in DL.7. Choose the common coefficient domain round for \(G'\), and choose the compact auxiliary-support geometry by (DL.14) using \(K_{G'}\). This domain is round for \(G\) as well. The shared auxiliary \(G'\)-open is also \(G\)-open; its compact truncated support lies in this domain. For the smaller cone the proof needs precisely those two facts: its cofinal basis translates inside the shared open have the concentration of DL.5, and its kernel intersection with the shared compact auxiliary support is proper by DLG.6. Thus the same auxiliary construction applies to both topologies. The envelope \(U+G'\) is used to prove the common compact containment; containment of that wider-cone-open inside a narrower infinite envelope is not presumed. On the ordinary injective model
+\(q_*q_{G*}I=q_{G'*}I\) and support inclusions compose literally. On the smooth relative representatives the kernel-support enlargement restricts \(b\) to the smaller kernel complement. DLG.3 supplies its explicit comparison with any new complement cover; DLG.4 supplies a common proper collar; DLG.5 identifies the ring products and units. Thus the comparison on \(H^1\) is linear for the actual canonical ring homomorphism, and it commutes with the same all-degree operation. Exact additive vector-injective functors, as in the final paragraphs of DL.6, make these strict sheaf maps into module-derived maps. Two successive refinements give the same derived map because each agrees with the same ordinary injective map; (DLG.14) is the cochain comparison to that map.
+
+Only finite diagrams are asserted. In a filtered system a representative, a boundary witness and a finite equation each occur at some index; finitely many such indices have a common later index. On it choose one admissible round domain, covers, collars and output neighbourhood for the finite diagram. Their ring and action identities follow from DLG.4–DLG.6. For symbol-germ entries the maps of NL.1–NL.7 and CP.1–CP.6 supply the actual representatives and common-domain symbol identities; these are maps into the canonical ring. They are not used to assert that every element of a fixed \(E(G;D)\) is a symbol class. The input opens must remain open for the common cone; existence for the directional family is the explicit CA.1 hypothesis. A new action on an inadmissible input open is not inferred.
+
+This amendment proves the missing full-representative cup, finite-cube inverse, proper collar, normalized all-degree trace, whole-ring unit and multiplication, and finite naturality required by DL.6–DL.7. The locally proved analytic concentration DLH.1–DLH.4 is retained byte-for-byte. Infinite-order extension and flatness, extension-faithfulness, propagation, module separation, finite D-type realization, finite-pole recovery, intrinsic order, full C1, arbitrary analytic proper regularity and all broader GL/BB/KL/affine/critical/factorization obligations remain unresolved by this amendment.
+
+![Full relative-cube route for an arbitrary kernel](assets/whole-kernel-cube-route.png)
+
+*Figure DLG.1. This is the exact two-support cochain diagram. Every displayed cube entry is (DLG.3); the map to the full intersection cone, including its derivative term, is (DLG.5). The proper collar is (DLG.15), and the final all-degree trace is (DLG.16). Both complement entries and the double-complement entry are retained. The unit/multiplication and finite-refinement mechanisms are DLG.3 and DLG.5–DLG.7. The complete earlier programme dependencies are §5.34, R.1–R.8, specifically (R.19)–(R.25); §5.35, V.4–V.6, specifically (V.10)–(V.16); §5.37, W.1–W.3, specifically (W.3)–(W.14); and §5.36, U.2, specifically (U.5)–(U.8) for the positive diagonal scalar. The reproducible source and exact formula data retain this diagram.*
+
+
+The figure has a full-resolution PNG, SVG, editable plotting source and exact formula data.
+
+#### DL.4. Cone topology and exact round domains
+
+Fix
+\[
+\begin{gathered}
+G=\left\{\begin{gathered}
+\operatorname{Re}w=-l\le0,\\
+|\operatorname{Im}w|\le\epsilon l,\\
+|\zeta_j|\le A_jl
+\end{gathered}\right\},\\
+\epsilon,A_j>0,\\
+K_G=\\
+(1+\epsilon^2+\sum_jA_j^2)^{1/2}.
+\end{gathered}
+\tag{DL.11}
+\]
+The empty spatial list is allowed. This cone is closed, convex, pointed and has ordinary interior. All its nonzero points have strictly negative real time. Its invariant opens define the \(G\)-topology; \(q_G\) is the identity continuous map from the ordinary topology to it.
+
+At \(x\) the opens
+\[
+\begin{gathered}
+V_{x,a}=x+a e_t\\
++\operatorname{int}G,\qquad a>0,
+\end{gathered}
+\tag{DL.12}
+\]
+are a cofinal \(G\)-neighbourhood basis. They contain \(x\) and are \(G\)-open since \(\operatorname{int}G+G\subset\operatorname{int}G\). If \(B(x,r)\subset W\) and \(W+G\subset W\), then \(B(x,r)+G\subset W\); for \(a<r\), (DL.12) is contained in that set.
+
+A bounded round coefficient domain inside any actual coefficient neighbourhood is
+\[
+\begin{gathered}
+D_R=(R e_t+\operatorname{int}G)\\
+\cap(-R e_t-\operatorname{int}G).
+\end{gathered}
+\tag{DL.13}
+\]
+It contains zero. If \(x,z\in D_R\) and \(v-x,z-v\in G\), the first condition puts \(v\) in the first open cone, and the second puts it in the second. Hence \(D_R\) is round. Its time lies between \(-R,R\) and its transverse norms are at most \(\epsilon R,A_jR\), so it lies in the ball of radius \(K_GR\). Ordinary Euclidean balls are not assumed round for this cone.
+
+Choose a small \(U\subset B(0,r)\), and \(a>r\), such that
+\[
+\begin{gathered}
+\overline{\begin{gathered}(U+G)\cap\\
+\{\operatorname{Re}t\ge-a\}\end{gathered}}\\
+\Subset D.
+\end{gathered}
+\tag{DL.14}
+\]
+To do so, write \(z=u+g\). Its cone length is at most \(a+r\); thus \(|z|\le r+K_G(a+r)\). Small \(r,a\) put this bound in a ball compactly inside \(D\).
+
+#### DL.5. The required global analytic concentration input
+
+Every domain (DL.12), and its intersection with a strict negative-time halfspace, has an explicit smooth strict plurisubharmonic exhaustion. Translate its vertex to zero, put \(l=-\operatorname{Re}t\), \(Y_0=\operatorname{Im}t\), \(Y_j=(\operatorname{Re}x_j,\operatorname{Im}x_j)\), \(a_0=\epsilon,a_j=A_j\), and set
+\[
+\begin{gathered}
+B_j=a_j^2l^2-|Y_j|^2,\\
+\psi(z)=|z|^2-\sum_{j=0}^{d}\log B_j .
+\end{gathered}
+\tag{DL.15}
+\]
+The function \(-\log(L^2-|Y|^2)\) is real convex on \(L>|Y|\). Rotate \(Y\) into its first axis. At a fixed point \((L_*,Y_*)\), the invertible real linear change
+\[
+\begin{gathered}
+(L,Y_1)\mapsto\\
+\left(\begin{gathered}
+L_*L-|Y_*|Y_1,\\
+-|Y_*|L+L_*Y_1
+\end{gathered}\right)\\
+/\sqrt{L_*^2-|Y_*|^2}
+\end{gathered}
+\tag{DL.16}
+\]
+preserves \(L^2-|Y|^2\) and sends that point to \((\sqrt{L_*^2-|Y_*|^2},0)\). Its Hessian there is \(2/(L_*^2-|Y_*|^2)\) times the identity, by two differentiations. Pullback preserves positive definiteness. Scaling \(L=a_jl\) proves that each logarithmic term in (DL.15) has nonnegative real Hessian in all its variables. The Levi form is one quarter the sum of the real Hessian in a direction and its \(i\)-multiple. The term \(|z|^2\) makes the total strictly plurisubharmonic.
+
+This function is an exhaustion: the quadratic dominates logarithms at infinity since \(B_j\le C(1+|z|)^2\); on bounded sets a boundary face forces one \(B_j\) to zero and the others have bounded logarithms. Its sublevels are compact in the domain, and it is bounded below. Intersecting with \(\omega=\{\operatorname{Re}t<c\}\) adds \(-\log(c-\operatorname{Re}t)\), a real convex term, and gives the same properties.
+
+The analytic appendix proves that a domain with such an exhaustion has a locally \(L^2\) primitive for every closed locally \(L^2\) form of positive degree, with no growth assumption. The locally \(L^2\) Dolbeault sheaves form an exact resolution: local existence follows by that proof on balls and degree zero by R.3 distributional holomorphicity. They are ordinary \(C^\infty\)-modules (both coefficients and differential remain locally \(L^2\) under smooth multiplication), and are ordinary-section acyclic by R.5. The R.6 double-complex comparison therefore gives
+\[
+\begin{gathered}
+H^q(V_{x,a},\mathcal O)=\\
+H^q(V_{x,a}\cap\omega,\mathcal O)=0\\
+\quad(q>0).
+\end{gathered}
+\tag{DL.17}
+\]
+No global smoothness of the weak primitive is required.
+
+Push an ordinary injective resolution of \(\mathcal O_\Omega\) under \(q_G\). It remains injective, since \(q_G^{-1}\) is exact and left adjoint to \(q_{G*}\). Its higher stalk cohomology is the filtered colimit of (DL.17) over the cofinal basis (DL.12). Hence
+\[
+\begin{gathered}
+Rq_{G*}\mathcal O_\Omega=q_{G*}\mathcal O_\Omega\\
+\quad\hbox{in degree zero}.
+\end{gathered}
+\tag{DL.18}
+\]
+This is the needed cone-topology assertion, not a consequence of ordinary local Dolbeault exactness alone. The actual smooth/current comparison also passes to this topology. Each ordinary smooth or current term is section-acyclic on every ordinary open by R.5; its positive \(q_G\)-direct images vanish on stalks, and its \(G\)-open section cohomology vanishes as well. For the latter assertion, push its ordinary injective resolution, then take sections on a \(G\)-open: those sections are literally the ordinary section complex on the same open, and the positive direct-image vanishings identify its augmentation. The finite-diagonal injective comparison is R.6. The same argument on the \(G\)-open complement gives the open-direct-image acyclicity of each term. Thus the \(q_G\)-images of the actual smooth/current relative cones represent the cone-topology derived supports, with the same R/V cube maps. This uses ordinary acyclicity, not a smooth partition subordinate to the cone topology.
+
+#### DL.6. The genuine auxiliary module sheaf
+
+Let \(\Omega_0\subset\Omega_1\) be \(G\)-open, with \(S=\Omega_1\setminus\Omega_0\) relatively compact in \(U\) from (DL.14). Intersect both opens with \(U+G\); this leaves \(S\) unchanged and the supported object unchanged by open excision. Put \(\Omega=\Omega_1\subset U+G\),
+\(\omega=\{\operatorname{Re}t<-a\}\), and
+\[
+\begin{gathered}
+S_*=\Omega\setminus\omega,\\
+\mathcal F=H^1_{S_*}(q_{G*}\mathcal O_\Omega).
+\end{gathered}
+\tag{DL.19}
+\]
+Both supports are closed in \(\Omega_G\), \(S\subset S_*\), and (DL.14) puts the closure of \(S_*\) compactly inside the coefficient domain.
+
+The full auxiliary object is concentrated in degree one:
+\[
+\begin{gathered}
+R\Gamma_{S_*}(q_{G*}\mathcal O_\Omega)\\
+\simeq\mathcal F[-1],\\
+\mathcal F_x=\underset{b}{\operatorname{colim}}\,\\
+\mathcal O(V_{x,b}\cap\omega)/\mathcal O(V_{x,b}).
+\end{gathered}
+\tag{DL.20}
+\]
+Indeed both opens in the relative long exact sequence have vanishing positive cohomology by (DL.17). Their holomorphic restriction is injective: \(V_{x,b}\) is connected and its intersection with \(\omega\) is nonempty by downward real-time translation. A holomorphic function zero on a nonempty open in a connected domain is zero by its convergent Taylor series and continuation along overlapping balls. Thus supported cohomology vanishes also in degree zero, and only degree one remains. Filtered colimits prove this on every \(G\)-stalk. This uses no fixed-domain vanishing on arbitrary \(\Omega_i\).
+
+The whole-kernel operation DLG.1–DLG.6, extending the supported-current special case DL.1–DL.3, makes \(\mathcal F\) a genuine sheaf of left \(R=E(G;D)\)-modules. Over a basis domain the kernel intersection with the input support is proper: input points lie in \(x+G\), have real time at least \(-a\), and obey the cone length bound. For a compact output family \(K\subset\Omega\), the bounded relevant portion of \(K+G\) is closed and compact inside \(\Omega\), since \(\Omega+G\subset\Omega\). It is inside the coefficient domain by (DL.14). R/W proper excision therefore supplies the action. Ordinary excision through \(D\) is used here, since the auxiliary support lies inside \(D\); it is not claimed that \(D\) itself is \(G\)-open. On the actual \(q_G\)-relative models, compute the operation over \(V\cap D\), apply an output collar equal to one near \(\overline{S_*}\) and compactly supported in \(D\), and use controlled zero extension to obtain the roof over the full \(V\). That collar restricts to every \(V\), and DLG.4–DLG.6 proves its comparison with the identity, retaining the complete kernel complement. Restriction to a \(G\)-open smaller output is compatible because it is invariant under the input motion by \(G\); (DL.7) compares input collar choices. Multiplication and the unit are identities on the cohomology sheaf by DLG.5, and hence are strict identities of sheaf maps. Outside \(S_*\) the sheaf is zero. The action is consequently defined on all of \(\Omega_G\).
+
+For completeness an actual injective module resolution can be constructed as follows. For a left \(R\)-module \(M\), \(J(M)=\operatorname{Hom}_{\mathbf C}(R,M)\), with \((r\phi)(s)=\phi(sr)\), is injective because
+\(\operatorname{Hom}_R(A,J(M))=\operatorname{Hom}_{\mathbf C}(A,M)\) and vector-space exact sequences split. The natural injection is \(m\mapsto(s\mapsto sm)\). Apply \(J\) to each stalk and take the product of point pushforwards. The exact stalk functor has point pushforward as right adjoint, so those sheaves are injective; products are injective because their Hom is a product of exact vector sequences. The natural injection, iterated on the cokernel, gives a bounded-below resolution \(J_R^\bullet(\mathcal F)\). This works in the cone topology as well.
+
+An injective \(R\)-module sheaf is injective after forgetting to vector sheaves: its left-adjoint induction \(R\otimes_{\mathbf C}-\) is exact on stalks. Thus
+\[
+\begin{gathered}
+\mathcal Q_R=\Gamma_SJ_R^\bullet(\mathcal F)[-1]\\
+\in D(R\text{-Mod}(\Omega_G))
+\end{gathered}
+\tag{DL.21}
+\]
+has underlying complex-derived object \(R\Gamma_S(q_{G*}\mathcal O_\Omega)\). To verify this comparison, a closed support functor \(\Gamma_T=i_*i^!\) preserves injectives: the respective left adjoints of \(i^!\) and \(i_*\) are \(i_*\) and \(i^{-1}\), both exact on stalks. The identity
+\(\Gamma_S\Gamma_{S_*}I=\Gamma_SI\) on injectives is literal, since \(S\subset S_*\). Therefore
+\[
+\begin{gathered}
+R\Gamma_S(\mathcal F)[-1]\\
+\simeq R\Gamma_S R\Gamma_{S_*}\\
+(q_{G*}\mathcal O_\Omega)\\
+=R\Gamma_S(q_{G*}\mathcal O_\Omega).
+\end{gathered}
+\tag{DL.22}
+\]
+
+There is an actual chain roof for the concentration comparison. For
+\(C^\bullet=\Gamma_{S_*}q_{G*}I^\bullet(\mathcal O_\Omega)\), the good truncation has \(C^0\), \(\ker(C^1\to C^2)\), and zero above. Its inclusion into \(C^\bullet\) and its degree-one projection to \(\mathcal F[-1]\) are quasi-isomorphisms by (DL.20). Apply the natural exact injective resolution functors R.5–R.6 to this roof and totalize. Their finite-diagonal elimination gives the injective comparison; R.18a makes a quasi-isomorphism between bounded-below injective complexes a homotopy equivalence. Applying \(\Gamma_S\) preserves those homotopies. This proves the actual roof underlying (DL.22), to which the smooth/current/cube/proper-trace model maps by R.6–R.7. The resolution functors use products of stalk pushforwards and are valid on any topological space; no smooth partition in the cone topology is asserted.
+
+The comparison also identifies the **all-degree canonical operation**, not only the action on an auxiliary degree-one stalk. Fix \(r\in R\) and use its full relative representative and the common kernel cup, finite cube, excision collar and proper trace roof of DLG.1–DLG.6 for the two supports \(S\subset S_*\). The support-to-image condition for \(S\) is explicit: if an output \(x\) lies in the \(G\)-open \(\Omega_0\), every kernel-supported input \(y\in x+G\) lies in \(\Omega_0\); hence \(p_1(A_G\cap p_2^{-1}S)\subset S\). The analogous condition for \(S_*\) follows because \(\omega\) is \(G\)-open. The kernel operation on the auxiliary relative object therefore commutes with restriction to \(\Omega_0\) using that same roof. Its operation on the cone of that restriction is the full relative map DLG.3–DLG.4, with DL.4's trace sign; DL.2 is its supported-current special case. The finite cube with the kernel support, \(S_*\) and \(S\) realizes this iterated cone; V.16 and its augmentation give the same cup as the original support \(S\), since \(S\subset S_*\). On injectives this reduction is the literal identity \(\Gamma_S\Gamma_{S_*}I=\Gamma_SI\). The proper collar remains available after restricting the intersection: use controlled extension by zero on a common neighbourhood of \(A_G\cap p_2^{-1}S_*\), and DL.7 for a smaller chosen collar, rather than assuming arbitrary source restriction preserves properness. Consequently the underlying map of \(R\Gamma_S(r:\mathcal F\to\mathcal F)[-1]\) agrees with DLG.16's original full-relative canonical kernel action on \(R\Gamma_S(q_{G*}\mathcal O_\Omega)\) in every degree. The concentration roof commutes with the auxiliary operation: after shifting, its object is a single sheaf, and a degree-zero morphism between sheaves in the vector-derived category is an ordinary sheaf map. To see the last fact directly, resolve the target in nonnegative injective degrees; a degree-zero map from the source sheaf lands exactly in its degree-zero kernel, and no degree-minus-one homotopy can alter it. Hence the morphism is uniquely the map on \(H^1=\mathcal F\). This proves the action compatibility, rather than merely a vector-derived quasi-isomorphism.
+
+There is a convenient common choice of the actual module complex. The exact vector-sheaf injective functors \(I_{\mathbf C}^r\) of R.5–R.6 are additive and natural in all vector-sheaf maps. A strict \(R\)-action on \(\mathcal F\) therefore gives a strict \(R\)-action on \(I_{\mathbf C}^\bullet(\mathcal F)\), with natural \(R\)-linear augmentation and differential. Each term is \(\Gamma_S\)-acyclic as an \(R\)-module sheaf: use an \(R\)-injective resolution and forget it to a vector-injective resolution; its positive support cohomology vanishes because that term is vector-injective. The bounded-below acyclic-resolution comparison, by finite-diagonal elimination, shows that
+\(\Gamma_S I_{\mathbf C}^\bullet(\mathcal F)[-1]\) is another actual model for (DL.21). This common vector functor makes the strict maps compatible even under a ring homomorphism, since it acts on the underlying module maps without changing the functor when the ring changes.
+
+Taking derived global sections of (DL.21) gives an object of \(D(R\text{-Mod})\). Its underlying global supported cohomology agrees with the ordinary one: \(q_{G*}I^\bullet\) is injective by (DL.18), and its global sections with support \(S=\Omega\setminus\Omega_0\) are literally the ordinary sections of \(I^\bullet\) vanishing on \(\Omega_0\). This proves the ordinary/cone global comparison directly.
+
+#### DL.7. Choice independence and finite actual \(E\)-germs
+
+For two auxiliary halfspaces with ordered levels, \(\omega_1\subset\omega_2\) gives \(S_{*,2}\subset S_{*,1}\) and the canonical support-forgetting map
+\[
+ \mathcal F_2\longrightarrow\mathcal F_1 .
+ \tag{DL.23}
+\]
+It is \(R\)-linear by the naturality of cup, controlled excision and trace. After \(R\Gamma_S\), it is a quasi-isomorphism: both comparisons (DL.22) become the identical \(\Gamma_SI^\bullet\), and this map is the identity there. Module quasi-isomorphisms are detected on vector sheaves. Intersecting auxiliary halfspaces gives a common comparison for any two choices. Functorial module resolutions realize these maps on complexes.
+
+Two neighbourhood choices are compared on their common \(G\)-open neighbourhood of \(S\), then by open excision. The auxiliary restriction and support maps are \(R\)-linear by the same canonical roof. Outside \(S\), the relative complex is a cone of the identity, contracted by \((a,b)\mapsto(b,0)\); extension by zero therefore gives the excision quasi-isomorphism on stalks, and injective comparison gives its derived map. This proves independence in the module-derived category with its specified underlying comparison.
+
+For changing coefficient domains and cones, only actual finite common refinements are claimed. The input opens must remain open for the enlarged cone; an arbitrary \(G\)-open set is not assumed open for every larger cone. The directional \(\Omega_g\) family permits cofinal choices for each finite symbol family by the \(LM<1\) bound of §5.42, CA.1. A finite list of actual symbol entries, products, inverses and zero identities is represented on one actual domain and cone. By §5.41, CP.32/CP.38–CP.44 and NL.25/NL.35/NL.37, their canonical kernel identities hold at one common later index of the filtered kernel-germ colimit. Choosing a smaller round diamond there realizes the whole finite diagram in one constant ring \(R\).
+
+For a common cone refinement \(G\subset G'\), suppose the input opens and halfspace are \(G'\)-open as required. The identity \(q:\Omega_G\to\Omega_{G'}\) is continuous. On the ordinary injective resolution the equality \(q_*q_{G*}I=q_{G'*}I\) is literal, and \(\Gamma_{S_*}\) commutes with that direct image because the complement \(\omega\) is \(G'\)-open. All these direct images preserve injectives. Equation DL.18 for both cones and the auxiliary concentration give
+\(Rq_*\mathcal F_G=\mathcal F_{G'}\), in degree zero; the comparison on \(H^1\) is canonical. The cohomological cup/trace maps and support enlargement commute with it by the common finite cube and proper excision. Applying the common vector-injective functor above to the comparison roofs gives compatible module-derived maps. Successive refinements agree as derived maps because they come from the identical ordinary injective resolution and compose literally there. Halfspace changes are the strict maps DL.23. Together these prove the finite-diagram germ compatibility, rather than merely saying that choices are harmless.
+
+This is the precise finite-diagram meaning of arbitrary full \(E\)-valued contraction transfer. It does not assert that every symbol germ has a representative on one preassigned domain, or an action on an input whose cone-open hypothesis fails. The canonical product and normal-localization proofs in §§5.39 and 5.41 supply the actual finite-order symbol map into the canonical kernel ring for every such finite diagram. DLG.1–DLG.7 proves the action of the whole canonical ring without assuming that this symbol map is surjective. The local derived objects are actual \(E(G;D)\)-module objects in the conventions of [Micro-hyperbolic systems, §3.2.5](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/Microhyp.pdf); a new literal action of every stalk germ on one fixed preassigned coefficient domain is not the statement.
+
+#### DL.8. Actual off-support contractions and their total signs
+
+A bounded exact cochain complex \(P^\bullet\) of finite projectives over a ring has an actual linear contraction. Start at its highest nonzero degree \(b\): exactness makes \(P^{b-1}\to P^b\) surjective, and projectivity splits it. Its kernel is a direct summand of \(P^{b-1}\), hence projective. Descend finitely. The decompositions give
+\[
+\begin{gathered}
+P^i=Z^i\oplus s^iZ^{i+1},\\
+h^i(z+s^iw)=s^{i-1}z,\\
+d_Ph+hd_P=1 .
+\end{gathered}
+\tag{DL.24}
+\]
+For finite free terms these are finite matrices of actual ring germs. Their finitely many identities hold on a common neighbourhood and in one canonical ring \(R\) by the finite symbol-germ map of §5.41 and the whole-kernel refinement proof DLG.7. This transfers an arbitrary full \(E\)-valued contraction, including entries outside a polynomial subring.
+
+Use the actual module complex \(\mathcal Q_R\) from (DL.21). For a right-module \(P\), its tensor total differential and contraction are
+\[
+\begin{gathered}
+d(p\otimes c)=d_Pp\otimes c\\
++(-1)^i p\otimes d_Qc\\
+\quad(p\in P^i),\\
+H=h\otimes1,\\
+dH+Hd=1 .
+\end{gathered}
+\tag{DL.25}
+\]
+The mixed signs are \((-1)^{i-1}+(-1)^i=0\). For a left-module \(P\), the internal Hom formula on degree \(k\) is
+\[
+\begin{gathered}
+d\phi=d_Q\phi-(-1)^k\phi d_P,\\
+H\phi=(-1)^k\phi h,\\
+dH+Hd=1 .
+\end{gathered}
+\tag{DL.26}
+\]
+The terms \(d_Q\phi h\) cancel with signs \((-1)^k+(-1)^{k+1}\); the others give \(\phi(hd_P+d_Ph)=\phi\). All sums are finite in the \(P\) direction even when \(Q\) is unbounded above.
+
+A bounded finite-projective complex computes derived Hom into \(Q\): each \(\operatorname{Hom}(P^i,-)\) preserves exactness, and a finite column elimination proves the total complex of an acyclic target is acyclic. Tensor has the analogous finite filtration proof. For projective summands, restrict these formulas using the corresponding split idempotents of finite free terms. Thus these are actual contractions of the derived models, without any general flatness or extension-faithfulness premise.
+
+#### DL.9. The invalid shortcut and the scope retained
+
+The need for the module lift has an exact elementary illustration. Let \(C^0=C^1=\mathbf C^2\), \(d_C=1\), and let two chain maps have both components
+\[
+\begin{gathered}
+A=\begin{pmatrix}0&1\\0&0\end{pmatrix},\\
+B=\begin{pmatrix}0&0\\1&0\end{pmatrix},\\
+AB-BA=\operatorname{diag}(1,-1).
+\end{gathered}
+\tag{DL.27}
+\]
+The complex is contractible, so its endomorphism ring in \(D(\mathbf C)\) is zero and all ring relations hold there. But substituting these chosen lifts into the commutative Koszul differentials \((-y,x)^T\), \((x,y)\) gives the nonzero composition \(-AB+BA\). A naive total differential does not square to zero. This disproves that inference from derived endomorphisms to a strict total action; it does not claim that replacement is impossible. DL.19–DL.22 construct the needed replacement here.
+
+The statement proved here is the genuine all-degree canonical \(R\)-module-derived supported object for the full thick cone and round/support geometry stated above, with its cup/cube/excision/trace comparison, all signs, analytic concentration and arbitrary finite-projective contraction transfer. §5.41, CP.1–CP.6 and §5.39, NL.1–NL.7 supply its full actual \(E\)-symbol-germ finite realizations.
+
+Infinite-order extension/flatness, extension-faithfulness, propagation, module separation, finite D-type embeddings, finite-pole recovery, intrinsic-order comparison, full C1, and arbitrary analytic proper-image regularity remain unfinished. The broader geometric representation-theoretic, affine, critical and factorization arguments are separate from this result.
+
+![Exact module-lift and contraction mechanism](assets/derived-action-module-lift.png)
+
+*Figure DL.1. The upper-left panel is the exact \(N=1\) complex-time section with \(\epsilon=1/4\), round diamond \(D_{1/2}\), \(\Omega=1/5+\operatorname{int}G\), \(\omega=\{\operatorname{Re}t<-1/10\}\), and \(S=\Omega\cap\{\operatorname{Re}t\ge-1/40\}\). Dashed diamond and green cone edges are excluded boundaries; the hollow green vertex is excluded. The shaded polygons display the closures of \(S_*\) and \(S\); their green edges remain excluded, while their vertical time boundaries are included inside \(\Omega\). These exact domains satisfy \(S\subset S_*\) and \(\overline{S_*}\subset D_{1/2}\) directly; no choice by the sufficient crude ball estimate is depicted. The cup/trace signs are DL.2, DL.4 and DL.9. The genuine auxiliary lift is DL.19–DL.22. The matrices and nonzero Koszul composition are exactly DL.27; the valid Hom contraction is DL.26. The figure source and exact coordinate data reproduce this section. Human comparison: [Micro-hyperbolic systems, §§3.1–3.2.5](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/Microhyp.pdf) and [HolIII, IV.3–IV.4](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf); the complete proof is DL.1–DL.8 and the analytic appendix.*
+
+#### The analytic input for DL.5
+
+The following proof shows that on a domain with a smooth strict plurisubharmonic exhaustion every closed locally \(L^2\) form of positive degree has a locally \(L^2\) \(\bar\partial\) primitive. It supplies the global vanishing needed on the exact cone-topology basis domains. No boundary-growth or boundary-regularity hypothesis is imposed.
+
+#### DLH.1. Hilbert existence
+
+A closed Hilbert subspace has an orthogonal projection: a distance-minimizing sequence is Cauchy by the parallelogram identity applied to its midpoints, completeness gives a minimizer, and variation by real and imaginary multiples shows its residual is orthogonal. A bounded linear functional is represented by inner product with a vector: its closed kernel has one-dimensional orthogonal complement when the functional is nonzero, and scaling any vector in that complement gives the representative and its norm. The zero functional uses zero.
+
+The \(L^2\) spaces here are complete. From a Cauchy sequence select a subsequence with summable successive \(L^2\) distances. The sums of absolute successive differences have bounded \(L^2\) norm by the triangle inequality; monotone convergence shows their pointwise limit is in \(L^2\). The subsequence therefore converges almost everywhere and in \(L^2\), and so does the original sequence. Multiplication by the square root of a positive weight gives weighted completeness.
+
+Let \(T: H_1\dashrightarrow H_2\), \(S: H_2\dashrightarrow H_3\) be densely defined, with \(\ker S\) closed, \(ST=0\), and
+\[
+\begin{gathered}
+\|T^*f\|^2+\|Sf\|^2\ge\|f\|^2\\
+\quad(f\in\operatorname{Dom}T^*\\
+\cap\operatorname{Dom}S).
+\end{gathered}
+\tag{DLH.1}
+\]
+For \(g\in\ker S\), take \(f\in\operatorname{Dom}T^*\) and decompose \(f=f_1+f_2\) orthogonally to \(\ker S\). Since \(\operatorname{im}T\subset\ker S\), \(T^*f_2=0\); hence \(f_1\) is in the same adjoint domain and \(T^*f_1=T^*f\). Applying (DLH.1) to \(f_1\) gives
+\[
+ |\langle g,f\rangle|\le\|g\|\|T^*f\|.
+ \tag{DLH.2}
+\]
+Extend the bounded functional \(T^*f\mapsto\langle f,g\rangle\) to the closure of its image, and by zero to its orthogonal complement. Hilbert representation gives \(u\), \(\|u\|\le\|g\|\), with \(\langle u,T^*f\rangle=\langle g,f\rangle\). On tests this is the required weak equation.
+
+#### DLH.2. Weights and the actual graph domain
+
+Take compact exhaustion sets \(K_\nu\subset\operatorname{int}K_{\nu+1}\) and smooth cutoffs \(\eta_\nu=1\) near \(K_\nu\), supported in \(\operatorname{int}K_{\nu+1}\). Their derivative supports leave every compact; their supremum squared derivative norm is locally bounded. An ordinary locally finite smooth partition gives a smooth majorant \(\psi\) with
+\[
+ |\bar\partial\eta_\nu|^2\le e^\psi .
+ \tag{DLH.3}
+\]
+The majorant is obtained by summing constants bounding the locally bounded function on each relatively compact partition support. This needs local finiteness, not a claim that consecutive closed exhaustion shells are disjoint. Ordinary cutoffs and partitions are the constructions proved in R.5/E.2.
+
+Set \(\varphi_1=\varphi-2\psi\), \(\varphi_2=\varphi-\psi\), \(\varphi_3=\varphi\). Use maximal distributional \(\bar\partial\) from weighted \(L^2\) degree \(q-1\) to \(q\) as \(T\), and degree \(q\) to \(q+1\) as \(S\). Their domains are dense because compact tests are dense by exhaustion and convolution. The kernel of \(S\) is closed since convergence implies distributional convergence on compacts. Also \(ST=0\).
+
+Let the domain have complex dimension \(n\). For a degree-\(q\) form \(f=\sum'_{|J|=q}f_J\,d\bar z_J\), extend the coefficients alternatingly to all ordered indices. Then \(f_{jK}\) is the coefficient of the contraction by the \(j\)-th basis vector, and \(\sum'_K\sum_j|f_{jK}|^2=q\sum'_J|f_J|^2\). For compact smooth \(u\) of degree \(q-1\) and \(f\) of degree \(q\), the actual coefficient calculation is
+\[
+\begin{gathered}
+\langle\bar\partial u,f\rangle_{\varphi_2}\\
+=\sum_K'\sum_j\int\\
+\partial_{\bar z_j}u_K\,\overline{f_{jK}}\,e^{-\varphi_2}\\
+=\sum_K'\int u_K\,\\
+\overline{\begin{gathered}-\sum_j e^{\varphi_1}\\
+\partial_{z_j}(e^{-\varphi_2}f_{jK})\end{gathered}}\\
+\,e^{-\varphi_1}.
+\end{gathered}
+\tag{DLH.4a}
+\]
+The second equality is ordinary compact integration by parts in each coordinate. Thus the adjoint expression is
+\[
+\begin{gathered}
+T^*f=-\sum_K'\sum_j\\
+e^{\varphi_1}\partial_{z_j}(e^{-\varphi_2}f_{jK})\,d\bar z_K\\
+=:\vartheta f .
+\end{gathered}
+\tag{DLH.4}
+\]
+It holds on tests and distributionally on the adjoint domain; the expansion is (DLH.4a).
+
+Compact tests are dense in \(\operatorname{Dom}T^*\cap\operatorname{Dom}S\) for its graph norm. First multiply by \(\eta_\nu\). The \(S\)-error is \(\bar\partial\eta_\nu\wedge f\), with squared norm bounded by \(\int_{\Omega\setminus K_\nu}|f|^2e^{-\varphi_2}\). Testing \(T(\eta_\nu u)\) proves the product remains in the adjoint domain with error
+\(-e^{-\psi}\sum_{K,j}(\partial_{z_j}\eta_\nu)f_{jK}d\bar z_K\).
+Its squared \(\varphi_1\)-norm is at most \(q\) times that same tail integral, since \(\sum_{K,j}|f_{jK}|^2=q|f|^2\). Both errors vanish.
+
+Then mollify the compact form. Weights are equivalent to constants on its fixed compact. For a smooth first-order operator \(a\partial_{x_j}\), its mollification commutator is
+\[
+\begin{gathered}
+\int\left[\begin{gathered}
+\frac{\begin{gathered}a(x)\\-a(x-\varepsilon y)\end{gathered}}{\varepsilon}\partial_j\rho(y)\\
++\partial_ja(x-\varepsilon y)\rho(y)
+\end{gathered}\right]\\
+f(x-\varepsilon y)\,dy .
+\end{gathered}
+\tag{DLH.5}
+\]
+The mean value bound gives a uniform \(L^2\) operator bound using
+\(\int(|y||\partial_j\rho|+|\rho|)\). For smooth compact \(f\) the commutator tends to zero directly; approximate a compact \(L^2\) coefficient by smooth ones to conclude. Zero-order terms follow from ordinary mollification convergence. Applying this to \(\vartheta\) and to constant-coefficient \(\bar\partial\) proves graph density. No identification of an adjoint domain with a formal maximal domain is made.
+
+#### DLH.3. The a priori estimate
+
+Write \(\delta_j=\partial_{z_j}-\varphi_{z_j}\). We derive the complete weighted identity on compact forms. Let \(e_j\) mean exterior multiplication by \(d\bar z_j\), and let \(i_j=e_j^*\) be its contraction for the pointwise Euclidean form inner product. On an increasing basis wedge, \(i_je_k+e_ki_j=\delta_{jk}\): when \(j=k\), exactly one of the two terms returns the wedge, according as the index is present or absent; when \(j\ne k\), their insertion/removal permutations have opposite signs. Put \(A_j=\partial_{\bar z_j}f\). Expanding \(\|\sum_j e_jA_j\|^2\) and substituting this relation gives
+\[
+\begin{gathered}
+|\bar\partial f|^2\\
+=\sum_j|A_j|^2\\
+-\sum_{j,k}\langle i_kA_j,i_jA_k\rangle\\
+=\sum_J'\sum_j|\partial_{\bar z_j}f_J|^2\\
+-\sum_K'\sum_{j,k}\\
+\partial_{\bar z_j}f_{kK}\,\\
+\overline{\partial_{\bar z_k}f_{jK}}.
+\end{gathered}
+\tag{DLH.6a}
+\]
+The formula includes repeated-index cancellations and every cross term. In the weighted inner product, compact integration by parts says that the adjoint of \(\partial_{\bar z_k}\) is \(-\delta_k\). Since \(\delta_k\partial_{\bar z_j}-\partial_{\bar z_j}\delta_k=\varphi_{k\bar j}\), two integrations by parts give, for each \(K,j,k\),
+\[
+\begin{gathered}
+\int \partial_{\bar z_k}f_{jK}\,\\
+\overline{\partial_{\bar z_j}f_{kK}}\,e^{-\varphi}\\
+=-\int f_{jK}\,\\
+\overline{\begin{gathered}\partial_{\bar z_j}(\delta_k f_{kK})\\
++\varphi_{k\bar j}f_{kK}\end{gathered}}\,e^{-\varphi}\\
+=\int \delta_jf_{jK}\,\\
+\overline{\delta_kf_{kK}}\,e^{-\varphi}\\
+-\int\varphi_{j\bar k}f_{jK}\overline{f_{kK}}\,e^{-\varphi}.
+\end{gathered}
+\tag{DLH.6b}
+\]
+Here \(\overline{\varphi_{k\bar j}}=\varphi_{j\bar k}\) because \(\varphi\) is real. The sum of the left side is the cross sum in (DLH.6a), after exchanging the names \(j,k\). Substitution into its integral gives
+\[
+\begin{gathered}
+\sum_K'\int\left|\sum_j\delta_jf_{jK}\right|^2e^{-\varphi}\\
++\int|\bar\partial f|^2e^{-\varphi}\\
+=\sum_J'\sum_j\int\\
+|\partial_{\bar z_j}f_J|^2e^{-\varphi}\\
++\sum_K'\sum_{j,k}\int\\
+\varphi_{j\bar k}f_{jK}\overline{f_{kK}}e^{-\varphi}.
+\end{gathered}
+\tag{DLH.6}
+\]
+The only commutator is
+\(\delta_k\partial_{\bar z_j}-\partial_{\bar z_j}\delta_k
+=\varphi_{k\bar j}\). Equations (DLH.6a)–(DLH.6b) give the alternating expansion and both integrations explicitly.
+
+Since
+\(\vartheta_\varphi f=e^\psi T^*f+\sum_{K,j}\psi_{z_j}f_{jK}d\bar z_K\),
+Cauchy–Schwarz bounds its squared norm by
+\(2\|T^*f\|_{\varphi_1}^2+
+2q\int|\partial\psi|^2|f|^2e^{-\varphi}\).
+The last term of (DLH.6) is at least
+\(q\int\lambda_\varphi|f|^2e^{-\varphi}\). If
+\[
+ \lambda_\varphi\ge2|\partial\psi|^2+2e^\psi,
+ \tag{DLH.7}
+\]
+then \(2\|T^*f\|^2+\|Sf\|^2\ge2q\|f\|_{\varphi_2}^2\), which implies (DLH.1), as \(q\ge1\). Graph density extends this to the actual domains. DLH.1 gives
+\[
+\begin{gathered}
+\bar\partial u=g,\\
+\int|u|^2e^{-\varphi+2\psi}\\
+\le\int|g|^2e^{-\varphi+\psi}.
+\end{gathered}
+\tag{DLH.8}
+\]
+
+#### DLH.4. Weights for unrestricted local data
+
+Let \(\psi_0\) be the smooth strict exhaustion, translated to be nonnegative. On each compact sublevel its minimum Levi eigenvalue \(\mu(t)\) is positive and the maximum \(M(t)\) of \(2|\partial\psi|^2+2e^\psi\) is finite. Choose a smooth increasing convex \(\chi\) whose derivative dominates \(M(t)/\mu(t)\). For example choose increasing constants \(B_k\) dominating the bounds through level \(k+2\), and set
+\(\chi'(t)=B_0+\sum_{k\ge0}(B_{k+1}-B_k)\sigma(t-k)\)
+for a fixed increasing smooth step \(\sigma\), zero below zero and one above one. This is locally finite and nondecreasing. Its additive constant and the constants \(B_k\) can be increased as needed. The Hessian chain rule gives
+\[
+ \lambda_{\chi\circ\psi_0}
+       \ge\chi'(\psi_0)\lambda_{\psi_0},
+ \tag{DLH.9}
+\]
+so \(\varphi=\chi\circ\psi_0\) satisfies (DLH.7).
+
+For locally \(L^2\) input \(g\), write \(M_k\) for the nonnegative right side of the following inequality, and choose the additive constant at least \(M_1\) and \(B_j\ge M_k\) for every \(k\le j+2\). Then
+\[
+\begin{gathered}
+\chi(k-1)\ge\\
+k+\log\left(\begin{gathered}1+\int_{\{\psi_0\le k\}}\\
+|g|^2e^\psi\end{gathered}\right)\\
+\quad(k\ge1).
+\end{gathered}
+\tag{DLH.10}
+\]
+Each integral is finite on that compact. For \(k\ge2\), throughout the unit interval \([k-2,k-1]\), all steps through index \(k-3\) are complete, so \(\chi'\ge B_{k-2}\ge M_k\). Its integral over that interval, with the nonnegative earlier value, proves (DLH.10); the additive constant handles \(k=1\). At every real \(t\in[m,m+1]\), similarly \(\chi'(t)\ge B_m\), which was chosen to dominate the Hessian requirement through level \(m+2\). The construction is therefore explicit and simultaneous. The integral of \(|g|^2e^{-\varphi+\psi}\) over \(k-1\le\psi_0<k\) is at most \(e^{-k}\). Hence the right side of (DLH.8) is finite, while its primitive is locally \(L^2\) because all weights are bounded above and below on compacts.
+
+This proves the global existence used on the exact domains (DL.15). It provides the missing cone-topology concentration input and no broader infinite-order or propagation theorem.
+
+
+The figure has a full-resolution PNG, SVG, editable plotting source and exact coordinate data.
+
+
 ## 6. What monodromy misses in the irregular world
 
 Consider $\partial_t e=t^{-2}e$. A horizontal coefficient is $e^{1/t}$; its ordinary monodromy is trivial. The trivial connection also has trivial monodromy, but (1.5) proves these meromorphic connections are not isomorphic. For $t=r e^{i\theta}$,

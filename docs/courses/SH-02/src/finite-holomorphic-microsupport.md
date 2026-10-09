@@ -1,5 +1,9 @@
 # SH02-FH-UNIT — Directional information under a finite holomorphic map
 
+<a id="SH02-FH-WEAK-EXTENSION"></a>
+
+[The arbitrary weak-coefficient theorem](../weak-coefficients.html#WC0) proves the same finite holomorphic equality for every bounded weakly complex-constructible complex over every commutative ring. Its [direct original-ring proof](../weak-coefficients.html#WC6) includes infinitely generated and nonperfect stalks. The perfect-stalk proofs and scalar-change statements below remain useful at their specified scope.
+
 Self-checked by the writing AI. The finite-map proof below works at the full coefficient-ring and constructibility scope of FH1. It uses an explicit finite conormal-image argument, actual supported tests, the integer Morse filtration and residue-field detection. The analytic, normal-Morse, field-perverse and controlled-Morse inputs are stated in [the geometric prerequisites](#SH02-FH-INPUTS) and developed in the four lessons linked there, relative to their exact external theorem statements. This supplies the primary finite-map argument for `SH02-MO-HOLOMORPHIC-IMPORT` in microsupport operations.
 
 Let $k$ be a commutative ring with identity and finite global dimension. A complex-constructible complex means a bounded complex whose cohomology is locally constant on a locally finite complex analytic stratification and whose stalks are perfect over $k$. Perfection means representability by a bounded complex of finite projective modules. It does not mean that those modules are free, or that their cohomology is a vector space. Complex manifolds have finite dimension and are Hausdorff and countable at infinity.

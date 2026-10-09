@@ -6350,6 +6350,360 @@ For \(B'=\mathbf C\), in contrast, the path space has only the ordinary units \(
 
 Free further reading for the regular-algebra/path argument is [Arinkin, Gaitsgory, Kazhdan, Raskin, Rozenblyum and Varshavsky, *The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), §12.3. The full operator pairing and universal reconstruction used here are (SDG.1)–(SDG.10); the entire coend, derived scalar and path-space comparisons are (SDG.11)–(SDG.16); the three complete solutions are (SDG.17)–(SDG.27).
 
+### 3.76. Tensor powers force finite projective coefficients
+
+We continue over \(\mathbf C\), with every connective commutative DG coefficient algebra \(A\). On a smooth affine curve chart \(U=\operatorname{Spec}R\), put \(R_A=R\otimes_{\mathbf C}A\). The normalized forgetful functor is
+
+\[
+ \begin{gathered}
+ \mathsf u_A:\mathcal D_A(X)\longrightarrow
+                       \operatorname{QCoh}(X_A),\\
+ \mathsf u_A(M)=
+       \bigl(\Omega_X^{-1}\otimes_{\mathcal O_X}M_{\rm right}\bigr)[-1]
+       =M_{\rm left}[-1],\\
+ \mathsf u_A(M\otimes_A^!N)
+       \simeq\mathsf u_A(M)\otimes_{\mathcal O_{X_A}}^L\mathsf u_A(N),
+ \qquad \mathsf u_A(\omega_X\otimes A)=\mathcal O_{X_A}.
+ \end{gathered}
+ \tag{CSD.1}
+\]
+
+These identities follow from the actual density side change and diagonal transfer in §§3.48 and 3.63. In left conventions the !-tensor is ordinary derived structure-sheaf tensor shifted by \([-1]\). The two copies of the normalization in (CSD.1) give its displayed strong tensor comparison; the density and suspension exchanges are precisely the ordered signs of §3.63. Forgetting the operator action is conservative and preserves colimits. In particular it carries a dualizable operator object to a dualizable quasicoherent complex.
+
+Here are the needed local derived-algebra facts, including the finite-projectivity conclusion. A module over a connective DG algebra has a semifree resolution using cells in degrees at most its upper cohomology bound: start with cycles in its highest degree, kill the kernel with cells one degree lower, and continue downward. The cycle equation defines each new differential and guarantees its square is zero. The resulting exhaustive union maps quasi-isomorphically to the module in every fixed degree. Tensor two such resolutions; their generator degrees add. Consequently
+
+\[
+ P\in\operatorname{Mod}_{S}^{\le a},\quad
+ Q\in\operatorname{Mod}_{S}^{\le b}
+ \quad\Longrightarrow\quad
+ P\otimes_S^LQ\in\operatorname{Mod}_{S}^{\le a+b},
+ \qquad H^i(S)=0\ (i>0).
+ \tag{CSD.2}
+\]
+
+Every dualizable \(S\)-module is perfect. Its dual supplies
+\(\operatorname{RHom}_S(P,-)=P^\vee\otimes_S^L-\), which preserves colimits, so \(P\) is compact. The full semifree-cell argument of §5.1 makes it a retract of a finite cell module. Conversely duals of those finite cells and their retracts give perfect duality. In particular a perfect module and its dual have finite upper cohomology bounds, even when \(S\) has arbitrarily negative cohomology.
+
+Let \(S_0=H^0(S)\). The fibre of \(S\to S_0\) is in degrees at most \(-1\). By (CSD.2), for any bounded-above \(P\),
+
+\[
+ P\in\operatorname{Mod}_S^{\le b}
+ \quad\Longrightarrow\quad
+ H^b(P)\xrightarrow{\ \sim\ }
+                     H^b(P\otimes_S^LS_0).
+ \tag{CSD.3}
+\]
+
+Apply the tensor triangle for that fibre: its first term is in degrees at most \(b-1\), which proves the stated isomorphism without a convergence assumption. Thus if \(P\otimes_S^LS_0\) is in degrees at most zero, a bounded-above \(P\) is connective: otherwise choose its largest nonzero cohomology degree and contradict (CSD.3).
+
+We will use the following precise residue criterion:
+
+\[
+ \begin{gathered}
+ P\text{ perfect over }S,\qquad
+ P\otimes_S^L\kappa(\mathfrak p)
+        \text{ concentrated in degree }0
+        \quad(\mathfrak p\in\operatorname{Spec}S_0)\\
+ \Longrightarrow
+ P\text{ is a retract of a finite sum of unshifted copies of }S.
+ \end{gathered}
+ \tag{CSD.4}
+\]
+
+To prove it, first reduce \(P\) to \(S_0\). It remains a retract of a finite cell complex. The earlier lesson Perfect complexes and duals on a ringed space, §2 and Corollary3.3, proves that such an ordinary-ring retract has local bounded finite-projective models. At a local ring make their terms finite free, using its Lemma1.2. Whenever a differential matrix has an entry outside the maximal ideal, that entry is a unit. Row and column changes make it an identity block. The equation \(d^2=0\) kills the adjacent row and column, so this block is a contractible two-term summand and can be removed. There are finitely many terms and entries. After finitely many such cancellations all differentials reduce to zero in the residue field. The residue hypothesis then says that all remaining terms except degree zero have rank zero. Hence the complex is a finite free module in degree zero at this local ring. The finitely many row changes and inverse entries spread after inverting one element outside the prime. Thus \(P\otimes_S^LS_0\) is locally a finite locally free module in degree zero. Its finite ranks have a common bound on the affine spectrum, and its degree-zero module has finitely many generators: choose a finite principal cover, choose bases there, clear denominators and then use powers of the principal elements generating the unit ideal to generate globally. This also applies to its dual.
+
+It follows from (CSD.3) that both \(P\) and \(P^\vee\) are connective, and that \(H^0(P)\) is finitely generated. Lift its finite generators to a map \(S^r\to P\). Its fibre \(K\) is connective, by surjectivity on \(H^0\) and the cohomology exact sequence. The connecting map \(P\to K[1]\) is zero, since
+
+\[
+ \begin{gathered}
+ \operatorname{Hom}_{\operatorname{Mod}_S}(P,K[1])
+       =H^1(P^\vee\otimes_S^LK)=0,\\
+ K\longrightarrow S^r\longrightarrow P\longrightarrow K[1].
+ \end{gathered}
+ \tag{CSD.5}
+\]
+
+The vanishing uses (CSD.2). Exactness of Hom therefore lifts \(1_P\) to a section of \(S^r\to P\), proving (CSD.4) as an actual derived-module retract. It does not assume a strict lift of an idempotent matrix from \(S_0\).
+
+Now let \(z\in\mathcal Z(A)\) and let \(V\) be a finite representation in degree zero. Put \(P=\mathsf u_AE_z(V)|_U\). Representation duality and (CSD.1) make \(P\) perfect. Right \(t\)-exactness, applied to every tensor power of \(V\) and \(V^\vee\), gives
+
+\[
+ P^{\otimes_{R_A}^Ln}\in\operatorname{Mod}_{R_A}^{\le1},
+ \qquad
+ (P^\vee)^{\otimes_{R_A}^Ln}
+                      \in\operatorname{Mod}_{R_A}^{\le1},
+ \qquad n\ge1.
+ \tag{CSD.6}
+\]
+
+The bound is one because the normalized forgetful functor shifts the underlying left module by \([-1]\). Derived scalar extension to a residue field preserves this upper bound by (CSD.2). A perfect complex over a field is its finite cohomology complex plus contractible disks: choose complements to cycles and boundaries in each degree. If its largest nonzero cohomology degree is \(b>0\), the largest degree of its \(n\)-fold tensor is \(nb\), with nonzero coefficient \((H^b)^{\otimes n}\). This contradicts (CSD.6) for large \(n\). Applying the same argument to the dual excludes negative cohomology. Every residue fibre of \(P\) is therefore concentrated in degree zero. Criterion (CSD.4) proves:
+
+\[
+ \mathsf u_AE_z(V)|_U
+       \text{ is finite projective over }R_A.
+ \tag{CSD.7}
+\]
+
+The proof includes arbitrary connective \(A\), all its negative degrees and arbitrary residue fields of \(H^0(R_A)\). It does not require flatness of a scalar change. The actual operator action remains the specified derived connection; forgetting it only establishes its coefficient finiteness.
+
+### 3.77. The full commutative-algebra left adjoint
+
+Write \(s_A(B)=\omega_X\otimes_{\mathbf C}B\). Proper adjunction (GD.7) and its full scalar comparison give
+
+\[
+ p_{A,*}:\mathcal D_A(X)\rightleftarrows
+                         \operatorname{Mod}_A:s_A,
+ \qquad p_{A,*}\dashv s_A.
+ \tag{CSD.8}
+\]
+
+The functor \(s_A\) is continuous and strong symmetric monoidal. Its induced functor on commutative algebra objects has the following explicit left adjoint \(L_A\):
+
+\[
+ L_A(Q)=
+ \left|
+  [n]\longmapsto
+       \operatorname{Sym}_A
+       \bigl(p_{A,*}\,T^{\,n}UQ\bigr)
+ \right|,
+ \qquad
+ T=U\operatorname{Sym}_{\mathcal D_A(X)}.
+ \tag{CSD.9}
+\]
+
+Here \(U\) forgets the commutative algebra structure, not the operator action. We explain the maps and the entire adjunction. The free algebra resolution of \(Q\) has degree \(n\) term \(\operatorname{Sym}_{\mathcal D_A}(T^nUQ)\). Its faces multiply two successive free layers or use the action on \(Q\); its degeneracies insert a free layer. The underlying augmented object has the extra degeneracy given by the free-algebra unit, so its realization is \(Q\). Sifted realizations are preserved by \(U\): the symmetric powers are built from tensor powers and finite-group homotopy coinvariants, each commuting with sifted colimits. This proves the resolution assertion on full underlying objects and maps.
+
+For a free term there is an actual mapping-space equivalence
+
+\[
+ \begin{aligned}
+ \operatorname{Map}_{\operatorname{CAlg}(\mathcal D_A)}
+       (\operatorname{Sym}_{\mathcal D_A}M,s_A(B))
+  &\simeq\operatorname{Map}_{\mathcal D_A}(M,s_A(B))\\
+  &\simeq\operatorname{Map}_{\operatorname{Mod}_A}(p_{A,*}M,B)\\
+  &\simeq\operatorname{Map}_{\operatorname{CAlg}_A}
+                              (\operatorname{Sym}_A p_{A,*}M,B).
+ \end{aligned}
+ \tag{CSD.10}
+\]
+
+A map between two free operator algebras is specified by a map \(M\to T N\). Compose it with \(TN\to T(s_Ap_{A,*}N)\), induced by the adjunction unit. Since \(s_A\) is continuous and strong monoidal, this last target is \(s_A\operatorname{Sym}_A(p_{A,*}N)\). Its adjoint specifies the map between the two free algebras in (CSD.9). These are precisely the maps representing (CSD.10), so they respect compositions, identities and every higher homotopy. This defines the simplicial diagram, including all its coherent relations.
+
+Mapping out of its realization is the total limit of (CSD.10). The operator free-algebra resolution then gives
+
+\[
+ \operatorname{Map}_{\operatorname{CAlg}_A}(L_A(Q),B)
+       \simeq
+ \operatorname{Map}_{\operatorname{CAlg}(\mathcal D_A)}
+                                  (Q,s_A(B)).
+ \tag{CSD.11}
+\]
+
+This holds for every commutative DG \(A\)-algebra \(B\), including nonconnective ones. It constructs \(L_A\) and the whole adjunction on mapping spaces. It does not identify the underlying object of \(L_A(Q)\) with \(p_{A,*}UQ\); the algebra relations require the entire resolution.
+
+We next prove the required connectivity of the construction. The projective curve has an affine cover by two opens with affine intersection. Indeed embed it in projective space. Choose a hyperplane not containing the curve. Its intersection with the integral curve is a finite set. Choose a second hyperplane avoiding that set and not containing the curve; this is possible over the infinite field \(\mathbf C\), since finitely many point conditions are proper linear subspaces. The two complements cover the curve and are closed in the corresponding affine projective-space charts. Their intersection is a principal open in either chart. The full ordered Čech complex consequently has degrees zero and one, so it adds at most one to an upper cohomology bound. Its two-term totalization and the full affine comparison compute arbitrary unbounded quasicoherent complexes by the descent and sorting contraction of §3.40.
+
+If \(\mathsf u_A(M)\) is connective, the actual right Spencer transfer for \(p_{A,*}M\) has columns
+
+\[
+ \mathsf u_A(M)[2]\longrightarrow
+       \bigl(\Omega_X^1\otimes_{\mathcal O_X}\mathsf u_A(M)\bigr)[1].
+ \tag{CSD.12}
+\]
+
+This is the curve de Rham complex shifted by \([2]\). The differential includes the specified connection and the internal differential; the Spencer operator Leibniz rule makes their total differential square zero. The columns have upper bounds \(-2\) and \(-1\). Applying the two-term affine Čech complex gives upper bound zero. Finite column totalizations need no boundedness below. Thus
+
+\[
+ \mathsf u_A(M)\text{ connective}
+       \quad\Longrightarrow\quad
+ p_{A,*}M\text{ connective over }A.
+ \tag{CSD.13}
+\]
+
+The normalized functor \(\mathsf u_A\) is strong monoidal and continuous. If \(\mathsf u_A(UQ)\) is connective, every \(\mathsf u_A(T^nUQ)\) is connective: tensor powers of connective modules are connective by (CSD.2), and their homotopy coinvariants and sums are connective. In characteristic zero one can also use the averaging projection for each finite symmetric group. Equations (CSD.9), (CSD.13) and (CSD.2) now show that every free algebra term of \(L_A(Q)\) is connective. Sifted realization remains connective; its underlying normalized simplicial total complex places simplicial degree \(n\) in cochain degree \(-n\). We have proved
+
+\[
+ \mathsf u_A(UQ)\text{ connective}
+       \quad\Longrightarrow\quad
+ L_A(Q)\text{ connective}.
+ \tag{CSD.14}
+\]
+
+### 3.78. The actual affine diagonal and its unit pushforward
+
+For the actual points \(z,w\in\mathcal Z(A)\), let
+
+\[
+ Q_{z,w}=
+ \operatorname{mult}_{\mathcal D_A}
+              (E_z\otimes E_w)(R_{\mathcal C})
+       \in\operatorname{CAlg}(\mathcal D_A(X)).
+ \tag{CSD.15}
+\]
+
+Use the same target-dual orientation as (SDG.11). The regular algebra \(R_{\mathcal C}\) is the degree-zero regular representation algebra, as constructed in (EP.3) and the earlier tensor/regular-coend proofs. Its matrix coefficients are filtered unions of finite representations: a finite set of regular functions has a coaction involving finitely many coefficient functions; coassociativity makes their finite span a subcomodule, and the counit recovers the original functions. The exterior pair has the same property. Equation (CSD.7), tensor compatibility and filtered colimits show that \(\mathsf u_A(UQ_{z,w})\) is connective.
+
+There is an actual algebra equivalence
+
+\[
+ D_{z,w}\simeq L_A(Q_{z,w}).
+ \tag{CSD.16}
+\]
+
+To prove it, test every commutative DG \(A\)-algebra \(B\), with no connectivity restriction. The scalar extensions \(E_z\otimes_A^LB,E_w\otimes_A^LB\) are still defined continuous tensor functors even if \(B\) is nonconnective. Their full Ran functors are obtained by (SDG.4), which has no \(t\)-exactness requirement. The compact-coend, scalar and tensor-inverse proofs (SDG.11)–(SDG.15) then give
+
+\[
+ \begin{aligned}
+ \operatorname{Map}_{\operatorname{CAlg}_A}(D_{z,w},B)
+ &\simeq
+   \operatorname{Isom}^{\otimes}(E_w\otimes_A^LB,E_z\otimes_A^LB)\\
+ &\simeq
+   \operatorname{Map}_{\operatorname{CAlg}(\mathcal D_A)}
+                                     (Q_{z,w},s_A(B))\\
+ &\simeq
+   \operatorname{Map}_{\operatorname{CAlg}_A}(L_A(Q_{z,w}),B).
+ \end{aligned}
+ \tag{CSD.17}
+\]
+
+The middle equivalence is the target-category version of the same full representation-DG coend argument: duality identifies each coefficient functional with the corresponding transformation component, algebra multiplication imposes tensor compatibility, and the free-algebra bar retains every higher relation. Scalar adjunction carries its target unit to \(s_A(B)\). These are natural inverse maps on entire spaces, as in (SDG.13)–(SDG.15). Algebra Yoneda for all DG targets proves (CSD.16), without assuming connectivity of \(D_{z,w}\) beforehand. Equations (CSD.14)–(CSD.16) therefore prove
+
+\[
+ D_{z,w}\in\operatorname{CAlg}^{\le0}_A.
+ \tag{CSD.18}
+\]
+
+For connective \(B\), equation (SDG.16) identifies its entire represented path functor with the fibre of the diagonal. Hence the actual Cartesian square is
+
+\[
+ \begin{CD}
+ \operatorname{Spec}D_{z,w} @>>> \mathcal Z\\
+ @VVV @VV{\Delta_{\mathcal Z}}V\\
+ \operatorname{Spec}A @>{(z,w)}>> \mathcal Z\times\mathcal Z .
+ \end{CD}
+ \tag{CSD.19}
+\]
+
+It is Cartesian as a square of prestacks, including all higher paths, because its value on every connective derived affine test is exactly the path space (SDG.16). Equation (SDG.12) gives every nonflat derived base-change comparison of this fibre algebra. Thus \(\Delta_{\mathcal Z}\) is representable and affine in the connective derived convention. No finite-type or global compact-generation theorem for \(\mathcal Z\) is required for this conclusion.
+
+We give the quasicoherent pushforward statement explicitly, rather than using a global tensor-product assertion. Assemble
+
+\[
+ \mathcal D_\Delta|_{(A,z,w)}=D_{z,w}
+ \quad\text{in}\quad
+ \operatorname{CAlg}(\operatorname{QCoh}(\mathcal Z\times\mathcal Z)).
+ \tag{CSD.20}
+\]
+
+The affine-point comparisons are (SDG.12), with all higher coherences, so this is a Cartesian quasicoherent algebra. For any representable affine map \(f:Y\to T\) of prestacks with these fibre algebras \(D_A\), there is a full equivalence
+
+\[
+ \operatorname{QCoh}(Y)
+      \simeq
+ \operatorname{Mod}_{\mathcal D_f}(\operatorname{QCoh}(T)).
+ \tag{CSD.21}
+\]
+
+Here is a direct proof from the affine-point definition of quasicoherence. From a quasicoherent object on \(Y\), evaluate it on the actual affine fibre \(\operatorname{Spec}D_A\) over each affine point of \(T\). Retain that \(D_A\)-module and its underlying \(A\)-module. Scalar compatibility on the Cartesian fibre squares makes these a Cartesian \(\mathcal D_f\)-module over \(T\). Conversely, at a point \(\operatorname{Spec}B\to Y\), compose with \(f\) to get a point of \(T\). The chosen lift to \(Y\) supplies the actual algebra map \(D_B\to B\). Assign to it
+
+\[
+ N_B=M_B\otimes_{D_B}^L B .
+ \tag{CSD.22}
+\]
+
+The full derived module bar and the Cartesian algebra comparisons make these assignments compatible with every affine-point map and all higher paths. In the first inverse comparison, the map \(\operatorname{Spec}B\to\operatorname{Spec}D_B\to Y\) and quasicoherent pullback give precisely the original \(N_B\). For the other comparison, evaluate (CSD.22) at the universal fibre \(\operatorname{Spec}D_A\). Its base-point algebra is \(D_A\otimes_A^LD_A\), and its universal lift has algebra map given by multiplication. The required derived cancellation is
+
+\[
+ (M_A\otimes_A^LD_A)
+       \otimes_{D_A\otimes_A^LD_A}^L D_A
+      \simeq M_A .
+ \tag{CSD.23}
+\]
+
+To check it, write the first factor as
+\(M_A\otimes_{D_A}^L(D_A\otimes_A^LD_A)\), with the first \(D_A\) acting on \(M_A\); then apply associative derived tensor and the multiplication map. The augmented free-module bar proves that associativity and this cancellation hold for arbitrary unbounded modules and entire mapping complexes. Both comparisons are canonical and coherent. This proves (CSD.21).
+
+Under (CSD.21), \(f^*\) is the free \(\mathcal D_f\)-module functor and \(f_*\) is its forgetful right adjoint. The free/forgetful module adjunction proves this on all mapping spaces. Forgetting modules preserves colimits, so the right adjoint is continuous. Affine evaluation shows that it has full arbitrary derived base change and the quasicoherent projection formula. Applying this to (CSD.19) gives
+
+\[
+ \begin{gathered}
+ (\Delta_{\mathcal Z})_*\mathcal O_{\mathcal Z}
+            \simeq\mathcal D_\Delta,\\
+ \operatorname{QCoh}(\mathcal Z)
+       \simeq
+ \operatorname{Mod}_{\mathcal D_\Delta}
+           (\operatorname{QCoh}(\mathcal Z\times\mathcal Z)).
+ \end{gathered}
+ \tag{CSD.24}
+\]
+
+Finally let
+\(\pi:\operatorname{QCoh}(\mathcal Z)\otimes
+\operatorname{QCoh}(\mathcal Z)\to
+\operatorname{QCoh}(\mathcal Z\times\mathcal Z)\)
+be the canonical exterior-product functor. Evaluation on each pair \((A,z,w)\), using the actual regular coend, identifies
+
+\[
+ \pi\bigl((\mathsf{Loc}\otimes\mathsf{Loc})(R_{\mathcal R})\bigr)
+       \simeq(\Delta_{\mathcal Z})_*\mathcal O_{\mathcal Z}.
+ \tag{CSD.25}
+\]
+
+All those affine comparisons are the same coend scalar maps, so they give an equivalence of Cartesian algebras, not just their ordinary fibres. This proves the complex affine-diagonal and regular-algebra pushforward assertions. It does not prove that \(\pi\) is an equivalence, or that \(\mathsf{Loc}\) has a continuous fully faithful right adjoint. The global tensor comparison and localization, global enhanced generation, the ordinary projector with its nilpotent image and regularity, the derived tempered assertion and arbitrary characteristic-zero geometric ground-field extension remain required.
+
+![Normalized tensor-power coefficient bounds, the full shifted curve Spencer and two-chart calculation, the entire commutative-algebra left adjoint, and the actual Cartesian affine diagonal and unit pushforward.](figures/connective-spectral-diagonal.svg)
+
+**Figure 3.22.** Panels1–3 show the finite-projectivity and connectivity mechanisms of (CSD.1)–(CSD.18). Panel4 is the actual Cartesian square (CSD.19), with its full quasicoherent module and diagonal-unit pushforward calculation (CSD.20)–(CSD.24). Panel5 distinguishes the proved algebra comparison (CSD.25) from the remaining global categorical equivalence and localization assertions.
+
+### 3.79. Why tensor powers and the full algebra resolution matter
+
+**Exercise 3.BL.** Over \(\mathbf C\), consider the normalized coefficient \(P=\mathbf C[-1]\), with its dual. Explain why the associated shifted operator objects can individually pass the right \(t\)-exact upper-bound test, but cannot be the image of a degree-zero representation under a right \(t\)-exact tensor functor.
+
+**Solution 3.BL.** The normalized operator coefficient is \(M=P[1]=\mathbf C\), and its !-dual is \(P^\vee[1]=\mathbf C[2]\). Both are in cohomological degrees at most zero. However the second tensor power has
+
+\[
+ M\otimes^!M=P^{\otimes2}[1]=\mathbf C[-1],
+ \qquad H^1(\mathbf C[-1])=\mathbf C .
+ \tag{CSD.26}
+\]
+
+It is not connective. A degree-zero representation's second tensor power remains degree zero, so its image would have to be connective. This is the explicit failure. Testing only an object and its dual misses it; the uniform bound for all powers in (CSD.6) excludes it.
+
+**Exercise 3.BM.** Let \(X=\mathbf P^1\). Apply \(L_A\) to the free commutative operator algebra generated by \(s_A(A)=\omega_X\otimes A\). Determine the resulting commutative DG algebra and explain why its negative degrees cannot be truncated away.
+
+**Solution 3.BM.** Equation (CSD.10) gives \(L_A(\operatorname{Sym}_{\mathcal D_A}s_A(A))=\operatorname{Sym}_A(p_{A,*}s_A(A))\). The complete Čech–de Rham calculation (SDG.21)–(SDG.22), with the normalization (CSD.12), gives \(p_{A,*}s_A(A)=A[2]\oplus A\). Hence
+
+\[
+ L_A(\operatorname{Sym}_{\mathcal D_A}s_A(A))
+       \simeq A[x,v],\qquad |x|=0,\quad |v|=-2,
+ \qquad d x=d v=0.
+ \tag{CSD.27}
+\]
+
+The formula denotes the derived free symmetric \(A\)-algebra on those two cells; if \(A\) has a nonzero differential, it also retains that differential on coefficients. Even for \(A=\mathbf C\), every monomial \(v^n\) contributes nonzero degree \(-2n\), so the underlying complex is unbounded below. Testing against \(\mathbf C[\delta]/(\delta^2)\), \(|\delta|=-2\), includes maps with \(v\mapsto q\delta\). Replacing the algebra by its degree-zero ring would remove that parameter. This free algebra is a worked term of (CSD.9); it is not asserted to be the regular pair algebra.
+
+**Exercise 3.BN.** For \(X=\mathbf P^1\), \(\widehat G=\mathbf G_m^r\) and the trivial point \(z\), determine the affine diagonal fibre. For \(B=\mathbf C[\delta]/(\delta^2)\), \(|\delta|=-2\), compute the component group and all positive homotopy groups, including \(r=0\).
+
+**Solution 3.BN.** The Laurent coaction proof of Solution3.BK works with \(r\) exponents: its coefficient weights are \(\mathbf Z^r\). A tensor isomorphism is specified by the \(r\) commuting images of the weight basis; tensor powers and inverse weights determine every other component. In the symmetric endomorphisms of the unit those images commute coherently, with precisely the tensor exchange and unit constraints. Equivalently, repeat the full coend calculation on the \(r\)-fold tensor product of the Laurent representation category; its tensor functors and regular-algebra products separate the \(r\) weight coordinates. The full scalar and enriched bars retain every higher path. Equation (SDG.25) for each coordinate therefore gives
+
+\[
+ \begin{gathered}
+ D_{z,z}\simeq
+  \mathbf C[u_1^{\pm1},\ldots,u_r^{\pm1}]
+       \otimes
+    \operatorname{Sym}_{\mathbf C}(\mathbf C^r[2]),\\
+ \pi_0\operatorname{Path}_{\mathcal Z(B)}(z_B,z_B)
+       \simeq(\mathbf C^\times)^r\times\mathbf C^r,\qquad
+ \pi_2\simeq\mathbf C^r,\qquad
+ \pi_i=0\ (i\ge1,\ i\ne2).
+ \end{gathered}
+ \tag{CSD.28}
+\]
+
+Each unit is \(u_i+q_i\delta\eta\); divide \(q_i\) by \(u_i\) to obtain the additive coordinate, as in (SDG.26). Each endomorphism complex has its sole negative degree \(-2\), which proves the displayed homotopy groups. For \(r=0\), the algebra is \(\mathbf C\) and the entire path space is contractible. This includes the empty product and its unit, rather than silently assuming a positive torus rank.
+
+Free further reading is [Arinkin, Gaitsgory, Kazhdan, Raskin, Rozenblyum and Varshavsky, *The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), §§12.2–12.3, for the commutative-algebra and diagonal framework, and [Lurie, *Derived Algebraic Geometry*](https://www.math.ias.edu/~lurie/papers/DAG.pdf), §2.5, for connective derived modules. The coefficient-projectivity, full algebra adjunction, connective diagonal and affine-module pushforward proofs used here are (CSD.1)–(CSD.25); the complete solutions are (CSD.26)–(CSD.28).
+
 ## 4. Betti, constructible, and tempered categories
 
 Now suppose \(k=\mathbb C\), and choose a coefficient field \(E\) of characteristic zero. The **large Betti** category consists of complexes of \(E\)-sheaves on the analytic stack, with no finite-dimensional stalk requirement. Its automorphic subcategory is

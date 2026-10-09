@@ -1,0 +1,746 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Finite covers and normal circles in projective complements</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L182.html">Previous lesson</a> · <a href="#1-the-two-spaces-and-the-missing-homology-group">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#5-complete-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="finite-covers-and-normal-circles-in-projective-complements">Finite covers and normal circles in projective complements</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A small normal circle around a hyperplane carries homological information about that hyperplane. To show that this information survives in the complement, we need one homology group of the ambient projective complement to vanish. A concrete finite cover provides that vanishing.</p>
+<p>Basic references are Allen Hatcher's <em>Algebraic Topology</em> [H], Arthur Sard's critical-value paper [S], and Atiyah, Bott and Gårding's projective-cycle methods [A]. The complete proof below gives the covering, simplex lifting, chain transfer and homology deduction. The preceding <a href="AN02-L182.html">Rational top forms detect cycles in a hypersurface complement</a> supplies the exact critical-value and semialgebraic finiteness lemmas, as well as the rational period theorem. <a href="AN02-L125.html">Ordinary finite-chain Morse handles</a> supplies the relative sublevel proof. The oriented normal bundle and Thom/excision map are constructed in <a href="AN02-L124.html#tp6-the-included-normal-bundle-argument-and-the-tube-deduction">Projective exhaustion and the finite-chain tube receiver</a>.</p>
+<h2 id="1-the-two-spaces-and-the-missing-homology-group">1. The two spaces and the missing homology group</h2>
+<p>Let <span class="math" data-index="0" data-tex="\(F\)">\(F\)</span> be a nonzero homogeneous polynomial of degree <span class="math" data-index="1" data-tex="\(m\geq1\)">\(m\geq1\)</span> in <span class="math" data-index="2" data-tex="\(d+1\)">\(d+1\)</span> complex variables, <span class="math" data-index="3" data-tex="\(d\geq1\)">\(d\geq1\)</span>. We compare</p>
+<span class="math math-display" id="learner-eq-1" data-index="4" data-tex="\[
+ U=\mathbb P^d\setminus\{F=0\},\qquad
+ X=\{Z\in\mathbb C^{d+1}:F(Z)=1\}.
+ \tag{1}
+\]">\[
+ U=\mathbb P^d\setminus\{F=0\},\qquad
+ X=\{Z\in\mathbb C^{d+1}:F(Z)=1\}.
+ \tag{1}
+\]</span>
+<p>The removed zero set may have singular points or repeated factors. The affine level <span class="math" data-index="5" data-tex="\(X\)">\(X\)</span> is smooth. Euler's identity gives</p>
+<span class="math math-display" id="learner-eq-2" data-index="6" data-tex="\[
+ \sum_{j=0}^d Z_jF_{Z_j}=mF=m\ne0\quad\hbox{on }X,
+ \tag{2}
+\]">\[
+ \sum_{j=0}^d Z_jF_{Z_j}=mF=m\ne0\quad\hbox{on }X,
+ \tag{2}
+\]</span>
+<p>so its differential cannot vanish there. The map</p>
+<span class="math math-display" id="learner-eq-3" data-index="7" data-tex="\[
+ p:X\longrightarrow U,\qquad Z\longmapsto[Z]
+ \tag{3}
+\]">\[
+ p:X\longrightarrow U,\qquad Z\longmapsto[Z]
+ \tag{3}
+\]</span>
+<p>has <span class="math" data-index="8" data-tex="\(m\)">\(m\)</span> points in each fiber: on a projective line the equation is <span class="math" data-index="9" data-tex="\(\lambda^mF(Z)=1\)">\(\lambda^mF(Z)=1\)</span>. Local logarithms of the nonzero value of <span class="math" data-index="10" data-tex="\(F\)">\(F\)</span> give the <span class="math" data-index="11" data-tex="\(m\)">\(m\)</span> distinct holomorphic branches. Thus (3) is an <span class="math" data-index="12" data-tex="\(m\)">\(m\)</span>-sheeted covering, possibly disconnected, with a specified cyclic action by the <span class="math" data-index="13" data-tex="\(m\)">\(m\)</span>-th roots of unity.</p>
+<p>A generic squared distance <span class="math" data-index="14" data-tex="\(\rho_a(Z)=|Z-a|^2\)">\(\rho_a(Z)=|Z-a|^2\)</span> on <span class="math" data-index="15" data-tex="\(X\)">\(X\)</span> is proper, strictly plurisubharmonic and Morse. Its polynomial critical equations have only finitely many solutions. The equal-dimensional critical-value proof gives nondegeneracy, and semialgebraic projection turns discreteness into finiteness. The Morse indices are at most the complex dimension <span class="math" data-index="16" data-tex="\(d\)">\(d\)</span>. The finite-chain handle argument therefore gives</p>
+<span class="math math-display" id="learner-eq-4" data-index="17" data-tex="\[
+ H_j(X;R)=0\quad(j&gt;d)
+ \tag{4}
+\]">\[
+ H_j(X;R)=0\quad(j&gt;d)
+ \tag{4}
+\]</span>
+<p>for any coefficient ring <span class="math" data-index="18" data-tex="\(R\)">\(R\)</span>, and finite-dimensional groups in every degree over a field.</p>
+<p>To descend (4), lift each singular simplex in <span class="math" data-index="19" data-tex="\(U\)">\(U\)</span> in all <span class="math" data-index="20" data-tex="\(m\)">\(m\)</span> possible ways and sum those lifts. This defines the chain transfer</p>
+<span class="math math-display" id="learner-eq-5" data-index="21" data-tex="\[
+ \operatorname{tr}:C_j(U;R)\longrightarrow C_j(X;R),
+ \qquad p_\#\operatorname{tr}=mI.
+ \tag{5}
+\]">\[
+ \operatorname{tr}:C_j(U;R)\longrightarrow C_j(X;R),
+ \qquad p_\#\operatorname{tr}=mI.
+ \tag{5}
+\]</span>
+<p>Restriction of all lifts to a face gives all lifts of that face, each once; hence the transfer commutes with the boundary. Over the rationals we can divide by <span class="math" data-index="22" data-tex="\(m\)">\(m\)</span>, so its homology map is injective and</p>
+<span class="math math-display" id="learner-eq-6" data-index="23" data-tex="\[
+ H_j(U;\mathbb Q)=0\quad(j&gt;d).
+ \tag{6}
+\]">\[
+ H_j(U;\mathbb Q)=0\quad(j&gt;d).
+ \tag{6}
+\]</span>
+<p>The same conclusion holds for any coefficient ring in which <span class="math" data-index="24" data-tex="\(m\)">\(m\)</span> is invertible. For integral coefficients the displayed transfer argument gives only <span class="math" data-index="25" data-tex="\(mH_j(U;\mathbb Z)=0\)">\(mH_j(U;\mathbb Z)=0\)</span> above <span class="math" data-index="26" data-tex="\(d\)">\(d\)</span>. This is a limit of that inference, not an assertion that those particular integral groups must be nonzero.</p>
+<h2 id="2-the-normal-disc-and-its-boundary">2. The normal disc and its boundary</h2>
+<p>For a nonzero linear form <span class="math" data-index="27" data-tex="\(L\)">\(L\)</span>, put</p>
+<span class="math math-display" id="learner-eq-7" data-index="28" data-tex="\[
+ Y=U\cap\{L=0\},\qquad V=U\setminus Y
+                         =\mathbb P^d\setminus\{FL=0\}.
+ \tag{7}
+\]">\[
+ Y=U\cap\{L=0\},\qquad V=U\setminus Y
+                         =\mathbb P^d\setminus\{FL=0\}.
+ \tag{7}
+\]</span>
+<p>The hyperplane section <span class="math" data-index="29" data-tex="\(Y\)">\(Y\)</span> is a closed smooth complex hypersurface of <span class="math" data-index="30" data-tex="\(U\)">\(U\)</span>. It is allowed to be empty. Its real rank-two normal bundle has a canonical complex orientation.</p>
+<p>The exact homological Thom/excision construction gives an isomorphism</p>
+<span class="math math-display" id="learner-eq-8" data-index="31" data-tex="\[
+ \Theta:H_{d-1}(Y;\mathbb Q)
+             \xrightarrow{\ \cong\ }H_{d+1}(U,V;\mathbb Q).
+ \tag{8}
+\]">\[
+ \Theta:H_{d-1}(Y;\mathbb Q)
+             \xrightarrow{\ \cong\ }H_{d+1}(U,V;\mathbb Q).
+ \tag{8}
+\]</span>
+<p>Locally it crosses a base cycle with a positive normal two-disc, disc first. The relative boundary is its positive normal circle, circle first:</p>
+<span class="math math-display" id="learner-eq-9" data-index="32" data-tex="\[
+ \tau=\partial_{U,V}\Theta:
+          H_{d-1}(Y;\mathbb Q)\longrightarrow H_d(V;\mathbb Q).
+ \tag{9}
+\]">\[
+ \tau=\partial_{U,V}\Theta:
+          H_{d-1}(Y;\mathbb Q)\longrightarrow H_d(V;\mathbb Q).
+ \tag{9}
+\]</span>
+<p>The exact sequence of the pair has the segment</p>
+<span class="math math-display" id="learner-eq-10" data-index="33" data-tex="\[
+ H_{d+1}(U;\mathbb Q)\longrightarrow H_{d+1}(U,V;\mathbb Q)
+                          \longrightarrow H_d(V;\mathbb Q).
+ \tag{10}
+\]">\[
+ H_{d+1}(U;\mathbb Q)\longrightarrow H_{d+1}(U,V;\mathbb Q)
+                          \longrightarrow H_d(V;\mathbb Q).
+ \tag{10}
+\]</span>
+<p>The first group vanishes by (6). Therefore the second arrow is injective, and so is the tube (9).</p>
+<p>The cover degree and the local tube coefficient are different quantities. The cover has degree <span class="math" data-index="34" data-tex="\(m\)">\(m\)</span>, used in the homology transfer. A positive normal disc has boundary one positive normal circle. Its local tube coefficient is one, independent of <span class="math" data-index="35" data-tex="\(m\)">\(m\)</span>. Interchanging the normal circle with a base cycle of dimension <span class="math" data-index="36" data-tex="\(d-1\)">\(d-1\)</span> changes the orientation by <span class="math" data-index="37" data-tex="\((-1)^{d-1}\)">\((-1)^{d-1}\)</span>.</p>
+<p>Combining this injection with the preceding rational period theorem gives an exact test. In coordinates <span class="math" data-index="38" data-tex="\(Z_0=L,Z_1,\ldots,Z_d\)">\(Z_0=L,Z_1,\ldots,Z_d\)</span>, let</p>
+<span class="math math-display" id="learner-eq-11" data-index="39" data-tex="\[
+ \omega=\sum_{j=0}^d(-1)^jZ_j\,dZ_0\wedge\cdots
+                   \wedge\widehat{dZ_j}\wedge\cdots\wedge dZ_d.
+ \tag{11}
+\]">\[
+ \omega=\sum_{j=0}^d(-1)^jZ_j\,dZ_0\wedge\cdots
+                   \wedge\widehat{dZ_j}\wedge\cdots\wedge dZ_d.
+ \tag{11}
+\]</span>
+<p>If the tube of <span class="math" data-index="40" data-tex="\(\beta\in H_{d-1}(Y;\mathbb Q)\)">\(\beta\in H_{d-1}(Y;\mathbb Q)\)</span> has zero period against every</p>
+<span class="math math-display" id="learner-eq-12" data-index="41" data-tex="\[
+ \frac{P\omega}{F^kL^s},\qquad k,s\geq1,\qquad
+               \deg P=mk+s-d-1,
+ \tag{12}
+\]">\[
+ \frac{P\omega}{F^kL^s},\qquad k,s\geq1,\qquad
+               \deg P=mk+s-d-1,
+ \tag{12}
+\]</span>
+<p>then <span class="math" data-index="42" data-tex="\(\beta=0\)">\(\beta=0\)</span>. Indeed those forms detect its tube class in <span class="math" data-index="43" data-tex="\(H_d(V;\mathbb Q)\)">\(H_d(V;\mathbb Q)\)</span>, and the tube map is injective. A specified affine cycle must still be compared with this precise projective map; neither the cover nor the period test determines that comparison's sign or multiplicity on its own.</p>
+<h2 id="3-four-worked-examples">3. Four worked examples</h2>
+<h3 id="example-1-a-repeated-factor-and-a-disconnected-cover">Example 1. A repeated factor and a disconnected cover</h3>
+<p>Take <span class="math" data-index="44" data-tex="\(F=Z_0^m\)">\(F=Z_0^m\)</span>. Then <span class="math" data-index="45" data-tex="\(U=\{Z_0\ne0\}\cong\mathbb C^d\)">\(U=\{Z_0\ne0\}\cong\mathbb C^d\)</span>, with coordinates <span class="math" data-index="46" data-tex="\(u_j=Z_j/Z_0\)">\(u_j=Z_j/Z_0\)</span>. Upstairs,</p>
+<span class="math math-display" id="learner-eq-13" data-index="47" data-tex="\[
+ X=\bigcup_{\zeta^m=1}\{Z_0=\zeta\},
+ \tag{13}
+\]">\[
+ X=\bigcup_{\zeta^m=1}\{Z_0=\zeta\},
+ \tag{13}
+\]</span>
+<p>the disjoint union of <span class="math" data-index="48" data-tex="\(m\)">\(m\)</span> affine <span class="math" data-index="49" data-tex="\(d\)">\(d\)</span>-planes. On the component <span class="math" data-index="50" data-tex="\(Z_0=\zeta\)">\(Z_0=\zeta\)</span>, the map sends
+<span class="math" data-index="51" data-tex="\((\zeta,Z_1,\ldots,Z_d)\)">\((\zeta,Z_1,\ldots,Z_d)\)</span> to <span class="math" data-index="52" data-tex="\(u_j=Z_j/\zeta\)">\(u_j=Z_j/\zeta\)</span>.
+For a simplex <span class="math" data-index="53" data-tex="\(\sigma\)">\(\sigma\)</span> with chart coordinates <span class="math" data-index="54" data-tex="\(\sigma_j\)">\(\sigma_j\)</span>, its transfer is</p>
+<span class="math math-display" id="learner-eq-14" data-index="55" data-tex="\[
+ \operatorname{tr}\sigma=
+       \sum_{\zeta^m=1}
+          \bigl(y\longmapsto(\zeta,\zeta\sigma_1(y),\ldots,
+                                             \zeta\sigma_d(y))\bigr).
+ \tag{14}
+\]">\[
+ \operatorname{tr}\sigma=
+       \sum_{\zeta^m=1}
+          \bigl(y\longmapsto(\zeta,\zeta\sigma_1(y),\ldots,
+                                             \zeta\sigma_d(y))\bigr).
+ \tag{14}
+\]</span>
+<p>Each summand projects to exactly <span class="math" data-index="56" data-tex="\(\sigma\)">\(\sigma\)</span>, giving <span class="math" data-index="57" data-tex="\(p_\#\operatorname{tr}\sigma=m\sigma\)">\(p_\#\operatorname{tr}\sigma=m\sigma\)</span> on chains.</p>
+<p>Repeated factors cause no smoothness problem on <span class="math" data-index="58" data-tex="\(F=1\)">\(F=1\)</span>. They can make the cover disconnected. In this example permutations of the <span class="math" data-index="59" data-tex="\(m\)">\(m\)</span> components also give deck transformations, so the specified cyclic root action need not be the entire deck group. Its free transitive action on each fiber is all the transfer calculation requires.</p>
+<h3 id="example-2-a-loop-whose-individual-lifts-are-not-loops">Example 2. A loop whose individual lifts are not loops</h3>
+<p>Take <span class="math" data-index="60" data-tex="\(d=1\)">\(d=1\)</span>, <span class="math" data-index="61" data-tex="\(F=Z_0Z_1\)">\(F=Z_0Z_1\)</span>, <span class="math" data-index="62" data-tex="\(m=2\)">\(m=2\)</span>. The affine level is <span class="math" data-index="63" data-tex="\(zw=1\)">\(zw=1\)</span>, parametrized by <span class="math" data-index="64" data-tex="\(z\in\mathbb C^*\)">\(z\in\mathbb C^*\)</span>, <span class="math" data-index="65" data-tex="\(w=1/z\)">\(w=1/z\)</span>. On <span class="math" data-index="66" data-tex="\(U\)">\(U\)</span>, use the coordinate <span class="math" data-index="67" data-tex="\(u=Z_0/Z_1\)">\(u=Z_0/Z_1\)</span>. Then</p>
+<span class="math math-display" id="learner-eq-15" data-index="68" data-tex="\[
+ p(z)=z^2.
+ \tag{15}
+\]">\[
+ p(z)=z^2.
+ \tag{15}
+\]</span>
+<p>The positively oriented base loop <span class="math" data-index="69" data-tex="\(\gamma(t)=e^{2\pi it}\)">\(\gamma(t)=e^{2\pi it}\)</span>, <span class="math" data-index="70" data-tex="\(0\leq t\leq1\)">\(0\leq t\leq1\)</span>, has two lifts</p>
+<span class="math math-display" id="learner-eq-16" data-index="71" data-tex="\[
+ \widetilde\gamma_+(t)=e^{\pi it},\qquad
+ \widetilde\gamma_-(t)=-e^{\pi it}.
+ \tag{16}
+\]">\[
+ \widetilde\gamma_+(t)=e^{\pi it},\qquad
+ \widetilde\gamma_-(t)=-e^{\pi it}.
+ \tag{16}
+\]</span>
+<p>The first runs from <span class="math" data-index="72" data-tex="\(1\)">\(1\)</span> to <span class="math" data-index="73" data-tex="\(-1\)">\(-1\)</span>, and the second from <span class="math" data-index="74" data-tex="\(-1\)">\(-1\)</span> to <span class="math" data-index="75" data-tex="\(1\)">\(1\)</span>. Neither is individually a cycle, but their boundaries cancel:</p>
+<span class="math math-display" id="learner-eq-17" data-index="76" data-tex="\[
+ \partial(\widetilde\gamma_++\widetilde\gamma_-)
+          =([-1]-[1])+([1]-[-1])=0.
+ \tag{17}
+\]">\[
+ \partial(\widetilde\gamma_++\widetilde\gamma_-)
+          =([-1]-[1])+([1]-[-1])=0.
+ \tag{17}
+\]</span>
+<p>The transfer is the positive full circle upstairs. Projecting it yields <span class="math" data-index="77" data-tex="\(2\gamma\)">\(2\gamma\)</span>, because each parametrized half-circle projects to the same whole base loop.</p>
+<p>The normalized upstairs period is</p>
+<span class="math math-display" id="learner-eq-18" data-index="78" data-tex="\[
+ \int_{\operatorname{tr}\gamma}\frac{dz}{2\pi iz}
+         =\tfrac12+\tfrac12=1.
+ \tag{18}
+\]">\[
+ \int_{\operatorname{tr}\gamma}\frac{dz}{2\pi iz}
+         =\tfrac12+\tfrac12=1.
+ \tag{18}
+\]</span>
+<p>Meanwhile <span class="math" data-index="79" data-tex="\(p^*(du/u)=2\,dz/z\)">\(p^*(du/u)=2\,dz/z\)</span>. Thus the pulled-back base period on the transferred chain is two, in agreement with (5). Confusing (18) with the period of the pulled-back base form would lose the factor two.</p>
+<figure><img class="course-figure" loading="lazy" width="2070" height="1080" src="reproduce/L183/figures/double-cover-loop-transfer.png" alt="A whole loop in the base and its two half-circle lifts, whose endpoints cancel in the transfer." /><figcaption class="native"><a href="reproduce/L183/figures/double-cover-loop-transfer.png">Open full-size PNG</a> · <a href="reproduce/L183/figures/double-cover-loop-transfer.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 1. The base coordinate is <span class="math" data-index="80" data-tex="\(u=e^{2\pi it}\)">\(u=e^{2\pi it}\)</span>, while the two upstairs coordinates are <span class="math" data-index="81" data-tex="\(z=e^{\pi it}\)">\(z=e^{\pi it}\)</span> and <span class="math" data-index="82" data-tex="\(z=-e^{\pi it}\)">\(z=-e^{\pi it}\)</span>, with <span class="math" data-index="83" data-tex="\(w=1/z\)">\(w=1/z\)</span> on <span class="math" data-index="84" data-tex="\(X=\{zw=1\}\)">\(X=\{zw=1\}\)</span>. The diagram shows the base plane and the upstairs <span class="math" data-index="85" data-tex="\(z\)">\(z\)</span>-projection, rather than all four real coordinates of <span class="math" data-index="86" data-tex="\(X\)">\(X\)</span>. Equal parameter labels have the same base image. Arrows use increasing <span class="math" data-index="87" data-tex="\(t\)">\(t\)</span>; the two half-circle endpoints cancel exactly as in (17). The transfer projects to twice the base loop but has the upstairs period (18). Formal Proposition 4.1 fixes both chain identities. Original coordinate diagram, CC0; transfer method context [H].</em></p>
+<h3 id="example-3-a-point-a-normal-disc-and-one-circle">Example 3. A point, a normal disc and one circle</h3>
+<p>Take <span class="math" data-index="88" data-tex="\(d=1\)">\(d=1\)</span>, <span class="math" data-index="89" data-tex="\(F=Z_0^m\)">\(F=Z_0^m\)</span>, <span class="math" data-index="90" data-tex="\(L=Z_1\)">\(L=Z_1\)</span>. In the affine coordinate <span class="math" data-index="91" data-tex="\(v=Z_1/Z_0\)">\(v=Z_1/Z_0\)</span>,</p>
+<span class="math math-display" id="learner-eq-19" data-index="92" data-tex="\[
+ U=\mathbb C,\qquad Y=\{0\},\qquad V=\mathbb C^*.
+ \tag{19}
+\]">\[
+ U=\mathbb C,\qquad Y=\{0\},\qquad V=\mathbb C^*.
+ \tag{19}
+\]</span>
+<p>The positive generator <span class="math" data-index="93" data-tex="\([0]\)">\([0]\)</span> of ordinary <span class="math" data-index="94" data-tex="\(H_0(Y;\mathbb Q)\)">\(H_0(Y;\mathbb Q)\)</span> transfers under the Thom map to the relative class of a positively oriented small disc in <span class="math" data-index="95" data-tex="\(U\)">\(U\)</span>. Its relative boundary is</p>
+<span class="math math-display" id="learner-eq-20" data-index="96" data-tex="\[
+ v=\varepsilon e^{i\theta},\qquad0\leq\theta\leq2\pi,
+ \tag{20}
+\]">\[
+ v=\varepsilon e^{i\theta},\qquad0\leq\theta\leq2\pi,
+ \tag{20}
+\]</span>
+<p>with coefficient one. Its period of <span class="math" data-index="97" data-tex="\(dv/(2\pi iv)\)">\(dv/(2\pi iv)\)</span> is one, proving directly that the tube is nonzero and injective.</p>
+<p>The degree <span class="math" data-index="98" data-tex="\(m\)">\(m\)</span> of the separate affine covering in Example 1 does not appear in this normal boundary. Also, the source here is ordinary <span class="math" data-index="99" data-tex="\(H_0\)">\(H_0\)</span> of a point, not its reduced homology. A two-point affine equator with total coefficient zero is a different degree-zero cycle; its relation to a projective point must be computed in the specific geometric comparison.</p>
+<h3 id="example-4-normal-circle-first-on-an-exact-product">Example 4. Normal circle first on an exact product</h3>
+<p>Take <span class="math" data-index="100" data-tex="\(d=2\)">\(d=2\)</span>, <span class="math" data-index="101" data-tex="\(F=Z_0Z_1\)">\(F=Z_0Z_1\)</span>, <span class="math" data-index="102" data-tex="\(L=Z_2\)">\(L=Z_2\)</span>. In the chart <span class="math" data-index="103" data-tex="\(Z_0=1\)">\(Z_0=1\)</span>, set <span class="math" data-index="104" data-tex="\(a=Z_1/Z_0\)">\(a=Z_1/Z_0\)</span>, <span class="math" data-index="105" data-tex="\(b=Z_2/Z_0\)">\(b=Z_2/Z_0\)</span>. Then</p>
+<span class="math math-display" id="learner-eq-21" data-index="106" data-tex="\[
+ U=\mathbb C^*\times\mathbb C,\quad
+ Y=\mathbb C^*\times\{0\},\quad
+ V=(\mathbb C^*)^2.
+ \tag{21}
+\]">\[
+ U=\mathbb C^*\times\mathbb C,\quad
+ Y=\mathbb C^*\times\{0\},\quad
+ V=(\mathbb C^*)^2.
+ \tag{21}
+\]</span>
+<p>For the positive base loop <span class="math" data-index="107" data-tex="\(a=e^{i\varphi}\)">\(a=e^{i\varphi}\)</span>, its normal-circle-first tube is</p>
+<span class="math math-display" id="learner-eq-22" data-index="108" data-tex="\[
+ T(\theta,\varphi)=(e^{i\varphi},\varepsilon e^{i\theta}),
+       \qquad0\leq\theta,\varphi\leq2\pi,
+ \tag{22}
+\]">\[
+ T(\theta,\varphi)=(e^{i\varphi},\varepsilon e^{i\theta}),
+       \qquad0\leq\theta,\varphi\leq2\pi,
+ \tag{22}
+\]</span>
+<p>oriented by the parameter order <span class="math" data-index="109" data-tex="\((\theta,\varphi)\)">\((\theta,\varphi)\)</span>. It is the boundary of a normal-disc-first relative chain; the base circle is closed, so the product boundary gives it with coefficient one.</p>
+<p>For the normal-first rational form,</p>
+<span class="math math-display" id="learner-eq-23" data-index="110" data-tex="\[
+ T^*\!\left(\frac{db}{b}\wedge\frac{da}{a}\right)
+      =(i\,d\theta)\wedge(i\,d\varphi)
+                      =-\,d\theta\wedge d\varphi,
+ \tag{23}
+\]">\[
+ T^*\!\left(\frac{db}{b}\wedge\frac{da}{a}\right)
+      =(i\,d\theta)\wedge(i\,d\varphi)
+                      =-\,d\theta\wedge d\varphi,
+ \tag{23}
+\]</span>
+<p>and hence</p>
+<span class="math math-display" id="learner-eq-24" data-index="111" data-tex="\[
+ \int_T\frac{db}{b}\wedge\frac{da}{a}
+                  =-4\pi^2=(2\pi i)^2.
+ \tag{24}
+\]">\[
+ \int_T\frac{db}{b}\wedge\frac{da}{a}
+                  =-4\pi^2=(2\pi i)^2.
+ \tag{24}
+\]</span>
+<p>The normalized form <span class="math" data-index="112" data-tex="\((2\pi i)^{-2}(db/b)\wedge(da/a)\)">\((2\pi i)^{-2}(db/b)\wedge(da/a)\)</span> has period one. Reversing the order of the two circle coordinates, or the wedge order alone, changes the sign. Reversing both preserves it.</p>
+<figure><img class="course-figure" loading="lazy" width="1728" height="1224" src="reproduce/L183/figures/normal-first-parameter-square.png" alt="The normal and base angular parameter rectangle, with the normal-first two-form and its exact period." /><figcaption class="native"><a href="reproduce/L183/figures/normal-first-parameter-square.png">Open full-size PNG</a> · <a href="reproduce/L183/figures/normal-first-parameter-square.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 2. The plotted square is the parameter domain of the exact map (22). Opposite edges are identified with the same angular orientation; the map's domain order is <span class="math" data-index="113" data-tex="\((\theta,\varphi)\)">\((\theta,\varphi)\)</span>, normal angle first. The displayed tangent directions and ordered differential <span class="math" data-index="114" data-tex="\(d\theta\wedge d\varphi\)">\(d\theta\wedge d\varphi\)</span> give the orientation. The pullback coefficient is <span class="math" data-index="115" data-tex="\(-1\)">\(-1\)</span>, so integrating over the full square gives (24). This is a parameter diagram of a torus in <span class="math" data-index="116" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>, not a spatial embedding of the ambient four-dimensional space. Formal (29) gives the positive normal boundary coefficient, and Proposition 4.1 keeps that coefficient distinct from the covering degree. Original exact diagram, CC0; normal-tube method context [A].</em></p>
+<h2 id="4-exercises-100-points">4. Exercises, 100 points</h2>
+<ol>
+<li><strong>Homogeneity and smoothness, 10 points.</strong> Derive Euler's identity by monomials. Apply it to <span class="math" data-index="117" data-tex="\(F(Z)=Z_0^2Z_1^2\)">\(F(Z)=Z_0^2Z_1^2\)</span> to prove that <span class="math" data-index="118" data-tex="\(F=1\)">\(F=1\)</span> is smooth, despite the repeated factors. Show that this affine level has two components, while its cover of the projective complement has four points in each fiber.</li>
+<li><strong>Three lifts and one transferred cycle, 12 points.</strong> For <span class="math" data-index="119" data-tex="\(q:\mathbb C^*\to\mathbb C^*\)">\(q:\mathbb C^*\to\mathbb C^*\)</span>, <span class="math" data-index="120" data-tex="\(q(z)=z^3\)">\(q(z)=z^3\)</span>, write all lifts of the positive unit loop. Compute their endpoints, show the sum is a cycle, and compute its period of <span class="math" data-index="121" data-tex="\(dz/(2\pi iz)\)">\(dz/(2\pi iz)\)</span> and of <span class="math" data-index="122" data-tex="\(q^*(du/(2\pi iu))\)">\(q^*(du/(2\pi iu))\)</span>.</li>
+<li><strong>The transfer on a face, 12 points.</strong> Prove that restrictions of all lifts of a singular two-simplex to any selected edge give all lifts of that edge, each exactly once. Use this to verify the signs in the transfer's boundary identity. Explain why selecting just one lift is insufficient for a chain map without additional choices.</li>
+<li><strong>The polynomial normal equations, 14 points.</strong> Write the equations defining the critical pairs of <span class="math" data-index="123" data-tex="\(|Z-a|^2\)">\(|Z-a|^2\)</span> on <span class="math" data-index="124" data-tex="\(F=1\)">\(F=1\)</span>. Derive the tangent Hessian formula and show why a regular value of the normal-parameter map makes it nonsingular. Explain why its domain and target have equal real dimension.</li>
+<li><strong>What division by the degree proves, 12 points.</strong> Suppose <span class="math" data-index="125" data-tex="\(q:E\to B\)">\(q:E\to B\)</span> has degree six and <span class="math" data-index="126" data-tex="\(H_j(E;R)=0\)">\(H_j(E;R)=0\)</span>. Use the transfer to determine what is proved about <span class="math" data-index="127" data-tex="\(H_j(B;R)\)">\(H_j(B;R)\)</span> for <span class="math" data-index="128" data-tex="\(R=\mathbb Q,\mathbb F_5,\mathbb F_2,\mathbb Z\)">\(R=\mathbb Q,\mathbb F_5,\mathbb F_2,\mathbb Z\)</span>. Distinguish absence of an implication from evidence of a nonzero group.</li>
+<li><strong>The normal-first sign, 12 points.</strong> In a trivial normal bundle over a two-dimensional cycle, compute the boundary of <span class="math" data-index="129" data-tex="\(D^2\times c\)">\(D^2\times c\)</span>. What sign appears on moving the normal circle after that cycle? Repeat for a three-dimensional cycle. Explain why the two-disc's order gives a different sign calculation from the circle's order.</li>
+<li><strong>One point and two points, 12 points.</strong> In Example 3 compute ordinary and reduced <span class="math" data-index="130" data-tex="\(H_0(Y;\mathbb Q)\)">\(H_0(Y;\mathbb Q)\)</span>. Compare it with the reduced class <span class="math" data-index="131" data-tex="\([p_+]-[p_-]\)">\([p_+]-[p_-]\)</span> in a two-point space. If both points are mapped to the same projective point, compute the image of that class. Explain why this simple map does not settle a deformed affine equator's geometric comparison.</li>
+<li><strong>From periods to a zero base class, 16 points.</strong> Let <span class="math" data-index="132" data-tex="\(\beta\in H_{d-1}(Y;\mathbb Q)\)">\(\beta\in H_{d-1}(Y;\mathbb Q)\)</span> have tube with zero periods against all forms (12). Give the complete deduction of <span class="math" data-index="133" data-tex="\(\beta=0\)">\(\beta=0\)</span>, citing the exact preceding theorem and the coefficient comparison where needed. For Example 4, compute the normalized period if only the normal-circle orientation is reversed. State the further data needed before applying this receiver to a separately specified affine cycle.</li>
+</ol>
+<h2 id="5-complete-solutions">5. Complete solutions</h2>
+<h3 id="solution-1">Solution 1</h3>
+<p>For a monomial <span class="math" data-index="134" data-tex="\(Z^\alpha\)">\(Z^\alpha\)</span> of total degree <span class="math" data-index="135" data-tex="\(m\)">\(m\)</span>, differentiation gives
+<span class="math" data-index="136" data-tex="\(\sum_jZ_j\partial_{Z_j}Z^\alpha=\sum_j\alpha_jZ^\alpha=mZ^\alpha\)">\(\sum_jZ_j\partial_{Z_j}Z^\alpha=\sum_j\alpha_jZ^\alpha=mZ^\alpha\)</span>.
+Summing over its coefficients gives <span class="math" data-index="137" data-tex="\(\sum_jZ_jF_{Z_j}=mF\)">\(\sum_jZ_jF_{Z_j}=mF\)</span>. On <span class="math" data-index="138" data-tex="\(F=1\)">\(F=1\)</span> the right side is nonzero, so at least one derivative is nonzero. <strong>4 points.</strong></p>
+<p>For <span class="math" data-index="139" data-tex="\(F=Z_0^2Z_1^2\)">\(F=Z_0^2Z_1^2\)</span>, <span class="math" data-index="140" data-tex="\(m=4\)">\(m=4\)</span>; on the level both coordinates are nonzero, and directly <span class="math" data-index="141" data-tex="\(F_{Z_0}=2Z_0Z_1^2\ne0\)">\(F_{Z_0}=2Z_0Z_1^2\ne0\)</span>. The equation is
+<span class="math" data-index="142" data-tex="\((Z_0Z_1)^2=1\)">\((Z_0Z_1)^2=1\)</span>, so the level is the disjoint union of <span class="math" data-index="143" data-tex="\(Z_0Z_1=1\)">\(Z_0Z_1=1\)</span> and <span class="math" data-index="144" data-tex="\(Z_0Z_1=-1\)">\(Z_0Z_1=-1\)</span>, each isomorphic to <span class="math" data-index="145" data-tex="\(\mathbb C^*\)">\(\mathbb C^*\)</span> by its first coordinate. These are the two connected components. <strong>3 points.</strong> In each projective line not meeting the removed divisor, <span class="math" data-index="146" data-tex="\(\lambda^4F(Z)=1\)">\(\lambda^4F(Z)=1\)</span> has four distinct roots. The cover therefore has degree four, with two points in each of the two components over every base point. Component count and sheet count are distinct. <strong>3 points.</strong></p>
+<h3 id="solution-2">Solution 2</h3>
+<p>Let <span class="math" data-index="147" data-tex="\(\zeta=e^{2\pi i/3}\)">\(\zeta=e^{2\pi i/3}\)</span>. The lifts are</p>
+<span class="math math-display" id="learner-eq-25" data-index="148" data-tex="\[
+ \widetilde\gamma_j(t)=\zeta^j e^{2\pi it/3},
+                     \qquad j=0,1,2.
+ \tag{25}
+\]">\[
+ \widetilde\gamma_j(t)=\zeta^j e^{2\pi it/3},
+                     \qquad j=0,1,2.
+ \tag{25}
+\]</span>
+<p>They start at <span class="math" data-index="149" data-tex="\(\zeta^j\)">\(\zeta^j\)</span> and end at <span class="math" data-index="150" data-tex="\(\zeta^{j+1}\)">\(\zeta^{j+1}\)</span>, with indices modulo three. Their boundaries sum to
+<span class="math" data-index="151" data-tex="\(\sum_j([\zeta^{j+1}]-[\zeta^j])=0\)">\(\sum_j([\zeta^{j+1}]-[\zeta^j])=0\)</span>.
+This is a cycle, though none of its three arcs is closed alone. <strong>5 points.</strong></p>
+<p>On every arc, <span class="math" data-index="152" data-tex="\(dz/z=(2\pi i/3)\,dt\)">\(dz/z=(2\pi i/3)\,dt\)</span>, so its normalized period is <span class="math" data-index="153" data-tex="\(1/3\)">\(1/3\)</span>. The sum has period one. <strong>3 points.</strong> The pulled-back normalized base form is</p>
+<span class="math math-display" id="learner-eq-26" data-index="154" data-tex="\[
+ q^*\!\left(\frac{du}{2\pi iu}\right)
+                   =3\,\frac{dz}{2\pi iz}.
+ \tag{26}
+\]">\[
+ q^*\!\left(\frac{du}{2\pi iu}\right)
+                   =3\,\frac{dz}{2\pi iz}.
+ \tag{26}
+\]</span>
+<p>Its transferred period is therefore three. On chains <span class="math" data-index="155" data-tex="\(q_\#\operatorname{tr}\gamma=3\gamma\)">\(q_\#\operatorname{tr}\gamma=3\gamma\)</span>, which has the same base period. <strong>4 points.</strong></p>
+<h3 id="solution-3">Solution 3</h3>
+<p>Fix a point on the selected edge. Evaluation there bijects all lifts of the two-simplex with the covering fiber, by Lemma 3.1. It also bijects all lifts of the edge simplex with that same fiber. Restriction preserves the value at this point. Hence the restriction correspondence is a bijection, and every edge lift appears exactly once. This does not require the originally chosen vertex to lie on that edge. <strong>5 points.</strong></p>
+<p>For ordered vertices <span class="math" data-index="156" data-tex="\(v_0,v_1,v_2\)">\(v_0,v_1,v_2\)</span>, the simplex boundary is
+<span class="math" data-index="157" data-tex="\([v_1,v_2]-[v_0,v_2]+[v_0,v_1]\)">\([v_1,v_2]-[v_0,v_2]+[v_0,v_1]\)</span>.
+Each restricted collection is precisely its edge transfer; the alternating signs are unchanged by lifting. Therefore</p>
+<span class="math math-display" id="learner-eq-27" data-index="158" data-tex="\[
+ \partial\operatorname{tr}\sigma
+   =\operatorname{tr}(\sigma|_{12})
+        -\operatorname{tr}(\sigma|_{02})
+        +\operatorname{tr}(\sigma|_{01})
+   =\operatorname{tr}\partial\sigma.
+ \tag{27}
+\]">\[
+ \partial\operatorname{tr}\sigma
+   =\operatorname{tr}(\sigma|_{12})
+        -\operatorname{tr}(\sigma|_{02})
+        +\operatorname{tr}(\sigma|_{01})
+   =\operatorname{tr}\partial\sigma.
+ \tag{27}
+\]</span>
+<p><strong>4 points.</strong> A single lift depends on a chosen point of a fiber. Independently chosen lifts on faces need not be its restrictions. The once-traversed loop in Example 2 already shows a selected lift can have nonzero boundary although the base chain has zero boundary. Summing all lifts cancels that choice and yields the canonical chain map. <strong>3 points.</strong></p>
+<h3 id="solution-4">Solution 4</h3>
+<p>With <span class="math" data-index="159" data-tex="\(g_1=\operatorname{Re}F-1\)">\(g_1=\operatorname{Re}F-1\)</span>, <span class="math" data-index="160" data-tex="\(g_2=\operatorname{Im}F\)">\(g_2=\operatorname{Im}F\)</span>, the critical pairs satisfy</p>
+<span class="math math-display" id="learner-eq-28" data-index="161" data-tex="\[
+ g_1=g_2=0,\qquad
+ Z-a=\lambda_1\nabla g_1+\lambda_2\nabla g_2.
+ \tag{28}
+\]">\[
+ g_1=g_2=0,\qquad
+ Z-a=\lambda_1\nabla g_1+\lambda_2\nabla g_2.
+ \tag{28}
+\]</span>
+<p>The gradients span the normal space, so this is exactly the vanishing of the tangent derivative of <span class="math" data-index="162" data-tex="\(|Z-a|^2\)">\(|Z-a|^2\)</span>. <strong>3 points.</strong></p>
+<p>For a curve <span class="math" data-index="163" data-tex="\(Z(s)\)">\(Z(s)\)</span> in the level with tangent <span class="math" data-index="164" data-tex="\(v\)">\(v\)</span>, twice differentiating <span class="math" data-index="165" data-tex="\(g_j(Z(s))=0\)">\(g_j(Z(s))=0\)</span> gives
+<span class="math" data-index="166" data-tex="\(\nabla g_j\cdot Z&#x27;&#x27;=-v\cdot\operatorname{Hess}g_jv\)">\(\nabla g_j\cdot Z&#x27;&#x27;=-v\cdot\operatorname{Hess}g_jv\)</span>.
+Consequently the restricted Hessian is</p>
+<span class="math math-display" id="learner-eq-29" data-index="167" data-tex="\[
+ B(v,t)=2v\cdot
+       \left(I-\sum_{j=1}^2\lambda_j\operatorname{Hess}g_j\right)t .
+ \tag{29}
+\]">\[
+ B(v,t)=2v\cdot
+       \left(I-\sum_{j=1}^2\lambda_j\operatorname{Hess}g_j\right)t .
+ \tag{29}
+\]</span>
+<p>The diagonal calculation follows from the second derivative of the distance; polarization gives the displayed bilinear form. <strong>5 points.</strong></p>
+<p>The domain of the normal-parameter map is <span class="math" data-index="168" data-tex="\(X\times\mathbb R^2\)">\(X\times\mathbb R^2\)</span>, of dimension <span class="math" data-index="169" data-tex="\(2d+2\)">\(2d+2\)</span>, the same as the ambient target. Its differential is <span class="math" data-index="170" data-tex="\(Av-\sum_j\mu_j\nabla g_j\)">\(Av-\sum_j\mu_j\nabla g_j\)</span>. Tangent projection is <span class="math" data-index="171" data-tex="\(P_TAv\)">\(P_TAv\)</span>. A tangent kernel vector can be completed by <span class="math" data-index="172" data-tex="\(\mu\)">\(\mu\)</span> to a kernel of the full differential, because its <span class="math" data-index="173" data-tex="\(Av\)">\(Av\)</span> is normal; conversely full invertibility gives tangent invertibility. Regularity of the chosen center therefore makes the tangent Hessian nonsingular. <strong>6 points.</strong></p>
+<h3 id="solution-5">Solution 5</h3>
+<p>The identity on homology is <span class="math" data-index="174" data-tex="\(q_*\operatorname{tr}_*=6I\)">\(q_*\operatorname{tr}_*=6I\)</span>. If the upstairs group in this degree is zero, its transfer is zero, so <span class="math" data-index="175" data-tex="\(6h=0\)">\(6h=0\)</span> for every base class. <strong>3 points.</strong></p>
+<p>Over <span class="math" data-index="176" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, six is invertible, so <span class="math" data-index="177" data-tex="\(h=0\)">\(h=0\)</span>. Over <span class="math" data-index="178" data-tex="\(\mathbb F_5\)">\(\mathbb F_5\)</span>, six equals one, and the same argument gives <span class="math" data-index="179" data-tex="\(h=0\)">\(h=0\)</span>. <strong>3 points.</strong> Over <span class="math" data-index="180" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span>, six equals zero; <span class="math" data-index="181" data-tex="\(6h=0\)">\(6h=0\)</span> imposes no new restriction. Over <span class="math" data-index="182" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, the proved conclusion is annihilation by six, which does not exclude nonzero torsion. <strong>4 points.</strong> These last two deductions do not assert a nonzero group exists. They state the information supplied by this transfer identity alone; a separate geometric argument could prove more. <strong>2 points.</strong></p>
+<h3 id="solution-6">Solution 6</h3>
+<p>For a cycle <span class="math" data-index="183" data-tex="\(c\)">\(c\)</span>, <span class="math" data-index="184" data-tex="\(\partial c=0\)">\(\partial c=0\)</span>, and the product boundary identity gives</p>
+<span class="math math-display" id="learner-eq-30" data-index="185" data-tex="\[
+ \partial(D^2\times c)
+       =(\partial D^2)\times c+(-1)^2D^2\times\partial c
+       =S^1\times c.
+ \tag{30}
+\]">\[
+ \partial(D^2\times c)
+       =(\partial D^2)\times c+(-1)^2D^2\times\partial c
+       =S^1\times c.
+ \tag{30}
+\]</span>
+<p>The positive normal circle is first, with coefficient one. <strong>4 points.</strong> If <span class="math" data-index="186" data-tex="\(\dim c=2\)">\(\dim c=2\)</span>, moving that one-dimensional circle after <span class="math" data-index="187" data-tex="\(c\)">\(c\)</span> changes the orientation by <span class="math" data-index="188" data-tex="\((-1)^{1\cdot2}=+1\)">\((-1)^{1\cdot2}=+1\)</span>. If <span class="math" data-index="189" data-tex="\(\dim c=3\)">\(\dim c=3\)</span>, the sign is <span class="math" data-index="190" data-tex="\((-1)^3=-1\)">\((-1)^3=-1\)</span>. <strong>4 points.</strong> Moving the two-disc instead gives <span class="math" data-index="191" data-tex="\((-1)^{2\dim c}=+1\)">\((-1)^{2\dim c}=+1\)</span> in both cases. The relative disc product can therefore agree with a fiber-last Thom convention while the circle order on its boundary carries a nontrivial sign. The dimensions of the factors, rather than their descriptive names, determine the signs. <strong>4 points.</strong></p>
+<h3 id="solution-7">Solution 7</h3>
+<p>For the one-point space <span class="math" data-index="192" data-tex="\(Y\)">\(Y\)</span>, ordinary <span class="math" data-index="193" data-tex="\(H_0(Y;\mathbb Q)=\mathbb Q\)">\(H_0(Y;\mathbb Q)=\mathbb Q\)</span>, generated by its positive point. The augmentation is the identity, so reduced <span class="math" data-index="194" data-tex="\(H_0(Y;\mathbb Q)=0\)">\(H_0(Y;\mathbb Q)=0\)</span>. The ordinary point nevertheless maps to the nonzero circle in Example 3. <strong>4 points.</strong></p>
+<p>A two-point space has ordinary <span class="math" data-index="195" data-tex="\(H_0=\mathbb Q^2\)">\(H_0=\mathbb Q^2\)</span> and reduced <span class="math" data-index="196" data-tex="\(H_0=\{(a,b):a+b=0\}\cong\mathbb Q\)">\(H_0=\{(a,b):a+b=0\}\cong\mathbb Q\)</span>, generated by <span class="math" data-index="197" data-tex="\([p_+]-[p_-]\)">\([p_+]-[p_-]\)</span>. Mapping both points to the same point sends that generator to <span class="math" data-index="198" data-tex="\([p]-[p]=0\)">\([p]-[p]=0\)</span> in ordinary <span class="math" data-index="199" data-tex="\(H_0(Y)\)">\(H_0(Y)\)</span>. <strong>4 points.</strong> A deformed affine equator may project to different points, may use a specified inherited orientation, and participates in an actual normal-tube comparison. Its relevant projective class is determined by that full map and cycle, not by replacing its domain with an undeformed two-point set whose images were chosen equal. Those maps and orientations must be computed before applying the receiver. <strong>4 points.</strong></p>
+<h3 id="solution-8">Solution 8</h3>
+<p>The exact preceding Corollary 8.1 in <em>Rational top forms detect cycles in a hypersurface complement</em> proves that (12) detects ordinary rational <span class="math" data-index="200" data-tex="\(d\)">\(d\)</span>-cycle homology on <span class="math" data-index="201" data-tex="\(V\)">\(V\)</span>. It includes the singular and repeated divisor cases and the positive pole exponents. Thus the vanished periods give <span class="math" data-index="202" data-tex="\(\tau\beta=0\)">\(\tau\beta=0\)</span> in <span class="math" data-index="203" data-tex="\(H_d(V;\mathbb Q)\)">\(H_d(V;\mathbb Q)\)</span>. One may express the same deduction through complex de Rham detection and then use the faithful map <span class="math" data-index="204" data-tex="\(H_d(V;\mathbb Q)\to H_d(V;\mathbb C)\)">\(H_d(V;\mathbb Q)\to H_d(V;\mathbb C)\)</span>, proved in <em>When zero smooth periods mean that a cycle bounds</em>. <strong>6 points.</strong></p>
+<p>The affine-level Morse argument and the transfer give <span class="math" data-index="205" data-tex="\(H_{d+1}(U;\mathbb Q)=0\)">\(H_{d+1}(U;\mathbb Q)=0\)</span>. The pair sequence therefore makes its relative boundary injective. The exact complex-oriented Thom/excision map is an isomorphism, so its composition with that relative boundary, namely <span class="math" data-index="206" data-tex="\(\tau\)">\(\tau\)</span>, is injective. Hence <span class="math" data-index="207" data-tex="\(\beta=0\)">\(\beta=0\)</span>. <strong>5 points.</strong></p>
+<p>In Example 4, reversing only the normal circle changes the orientation of the tube by <span class="math" data-index="208" data-tex="\(-1\)">\(-1\)</span>. Its normalized period becomes <span class="math" data-index="209" data-tex="\(-1\)">\(-1\)</span>. <strong>2 points.</strong> To apply the conclusion to another affine cycle, one needs the actual projectivization of that cycle, its relation to the normal-tube map, the inherited orientation, any hemisphere multiplicity or scalar, the coefficient convention and any reduced degree-zero interpretation. The projective receiver supplies none of those identifications automatically. <strong>3 points.</strong></p>
+<h2 id="6-what-the-geometric-application-still-needs">6. What the geometric application still needs</h2>
+<p>The projective homology bound and the normal-tube injection have now been proved over the coefficient field used by the rational period theorem. The full proof below also supplies the simplex lifting, including why a lift varies continuously with its endpoint.</p>
+<p>The next geometric application must identify its actual affine equator with the specified projective class and tube. It must retain orientation and multiplicity, especially in the two-point case. A component argument additionally needs the analytic continuation and all-powers conclusions appropriate to that application. The result here supplies the general projective receiver at its exact internal Thom and finite-chain foundations.</p>
+<h2 id="references">References</h2>
+<p>[H] Allen Hatcher, <em>Algebraic Topology</em>, Cambridge University Press (2002), §3.G, “Transfer Homomorphisms”. <a href="https://pi.math.cornell.edu/~hatcher/AT/AT.pdf">Author's freely readable text</a>. The transfer required here is proved in full.</p>
+<p>[S] Arthur Sard, <em>The measure of the critical values of differentiable maps</em>, Bulletin of the American Mathematical Society <strong>48</strong> (1942), 883–890. <a href="https://webhomes.maths.ed.ac.uk/~v1ranick/papers/sard.pdf">Original article</a>. The exact equal-dimensional case has a complete preceding internal proof.</p>
+<p>[A] Michael Atiyah, Raoul Bott and Lars Gårding, <em>Lacunas for hyperbolic differential operators with constant coefficients, II</em>, Acta Mathematica <strong>131</strong> (1973), 145–206. <a href="https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6156-11511_2006_Article_BF02392039.pdf">Primary article</a>. Historical context for the projective tube method; the required homology and transfer arguments are supplied here.</p>
+<p>Original exposition and diagrams are CC0-1.0. The linked historical works retain their own rights and are not reproduced.</p>
+<h2 id="complete-proof">Complete proof</h2>
+<p>Let <span class="math" data-index="210" data-tex="\(F\)">\(F\)</span> be a nonzero homogeneous complex polynomial of degree <span class="math" data-index="211" data-tex="\(m\geq1\)">\(m\geq1\)</span> in <span class="math" data-index="212" data-tex="\(d+1\)">\(d+1\)</span> variables, with <span class="math" data-index="213" data-tex="\(d\geq1\)">\(d\geq1\)</span>. Put</p>
+<span class="math math-display" id="proof-eq-1" data-index="214" data-tex="\[
+ U=\mathbb P^d\setminus\{F=0\}.
+ \tag{1}
+\]">\[
+ U=\mathbb P^d\setminus\{F=0\}.
+ \tag{1}
+\]</span>
+<p>We prove the ordinary rational homology bound <span class="math" data-index="215" data-tex="\(H_j(U;\mathbb Q)=0\)">\(H_j(U;\mathbb Q)=0\)</span> for <span class="math" data-index="216" data-tex="\(j&gt;d\)">\(j&gt;d\)</span>, then apply it to the positive-normal-circle tube of a hyperplane section. Singularities and repeated factors of the removed divisor are permitted.</p>
+<p>The construction is elementary at the level of finite chains. The affine level <span class="math" data-index="217" data-tex="\(F=1\)">\(F=1\)</span> is a smooth closed hypersurface and a finite cyclic cover of <span class="math" data-index="218" data-tex="\(U\)">\(U\)</span>. A proper squared distance on that level has finitely many Morse critical points; a transfer that sums all lifts of a simplex descends the homology bound. The subsequent tube argument uses the exact already written homological Thom and tubular-neighborhood construction.</p>
+<p>Basic references are Allen Hatcher's <em>Algebraic Topology</em> [H] for finite-cover transfer, Arthur Sard's critical-value theorem [S], and Atiyah, Bott and Gårding's projective-cycle arguments [A]. The needed transfer is proved here. The exact internal inputs are <a href="AN02-L182.html#6-why-the-graph-has-finite-dimensional-ordinary-homology">Rational top forms detect cycles in a hypersurface complement, Lemmas 6.1–6.2</a>, for equal-dimensional critical values and finite discrete semialgebraic sets; <a href="AN02-L125.html#mh0-statement-coefficients-and-boundary-cases">Ordinary finite-chain Morse handles</a>, for the actual relative sublevel groups and the passage to finite-chain homology; and <a href="AN02-L124.html#tp6-the-included-normal-bundle-argument-and-the-tube-deduction">Projective exhaustion and the finite-chain tube receiver</a>, for the explicitly oriented homological Thom/excision map. Their stated lower smooth and finite-chain foundations are retained. This argument does not require a general Stein homology theorem or a globally constructed Morse perturbation.</p>
+<h2 id="1-a-smooth-affine-level-with-a-cyclic-covering-map">1. A smooth affine level with a cyclic covering map</h2>
+<p>Define</p>
+<span class="math math-display" id="proof-eq-2" data-index="219" data-tex="\[
+ X=\{Z\in\mathbb C^{d+1}:F(Z)=1\},\qquad
+ p:X\longrightarrow U,\quad Z\longmapsto[Z].
+ \tag{2}
+\]">\[
+ X=\{Z\in\mathbb C^{d+1}:F(Z)=1\},\qquad
+ p:X\longrightarrow U,\quad Z\longmapsto[Z].
+ \tag{2}
+\]</span>
+<p><strong>Proposition 1.1.</strong> The set <span class="math" data-index="220" data-tex="\(X\)">\(X\)</span> is a closed smooth complex manifold of dimension <span class="math" data-index="221" data-tex="\(d\)">\(d\)</span>. The map <span class="math" data-index="222" data-tex="\(p\)">\(p\)</span> is an <span class="math" data-index="223" data-tex="\(m\)">\(m\)</span>-sheeted covering by holomorphic local diffeomorphisms. Multiplication by the <span class="math" data-index="224" data-tex="\(m\)">\(m\)</span>-th roots of unity supplies a free transitive cyclic deck action on every fiber. The covering need not be connected.</p>
+<p><strong>Proof.</strong> Euler's polynomial identity is</p>
+<span class="math math-display" id="proof-eq-3" data-index="225" data-tex="\[
+ \sum_{j=0}^{d} Z_j\frac{\partial F}{\partial Z_j}(Z)=mF(Z).
+ \tag{3}
+\]">\[
+ \sum_{j=0}^{d} Z_j\frac{\partial F}{\partial Z_j}(Z)=mF(Z).
+ \tag{3}
+\]</span>
+<p>It follows by checking each degree-<span class="math" data-index="226" data-tex="\(m\)">\(m\)</span> monomial and summing. On <span class="math" data-index="227" data-tex="\(X\)">\(X\)</span>, the right side is <span class="math" data-index="228" data-tex="\(m\ne0\)">\(m\ne0\)</span>, so the complex differential of <span class="math" data-index="229" data-tex="\(F\)">\(F\)</span> is nonzero. A coordinate partial derivative is therefore nonzero. The inverse function theorem in that coordinate gives a smooth complex hypersurface, of dimension <span class="math" data-index="230" data-tex="\(d\)">\(d\)</span>. Closedness follows from continuity of <span class="math" data-index="231" data-tex="\(F\)">\(F\)</span>, and <span class="math" data-index="232" data-tex="\(0\notin X\)">\(0\notin X\)</span>.</p>
+<p>Given <span class="math" data-index="233" data-tex="\([Z]\in U\)">\([Z]\in U\)</span>, all representatives on its line have the form <span class="math" data-index="234" data-tex="\(\lambda Z\)">\(\lambda Z\)</span>, <span class="math" data-index="235" data-tex="\(\lambda\ne0\)">\(\lambda\ne0\)</span>. They belong to <span class="math" data-index="236" data-tex="\(X\)">\(X\)</span> exactly when</p>
+<span class="math math-display" id="proof-eq-4" data-index="237" data-tex="\[
+ \lambda^mF(Z)=1.
+ \tag{4}
+\]">\[
+ \lambda^mF(Z)=1.
+ \tag{4}
+\]</span>
+<p>This equation has exactly <span class="math" data-index="238" data-tex="\(m\)">\(m\)</span> distinct nonzero complex roots, since <span class="math" data-index="239" data-tex="\(F(Z)\ne0\)">\(F(Z)\ne0\)</span> and its derivative at a root is <span class="math" data-index="240" data-tex="\(m\lambda^{m-1}F(Z)\ne0\)">\(m\lambda^{m-1}F(Z)\ne0\)</span>. Thus each fiber has <span class="math" data-index="241" data-tex="\(m\)">\(m\)</span> points.</p>
+<p>For the local covering description choose a projective chart section <span class="math" data-index="242" data-tex="\(s(y)\)">\(s(y)\)</span> near a point of <span class="math" data-index="243" data-tex="\(U\)">\(U\)</span>. Shrink its domain <span class="math" data-index="244" data-tex="\(B\)">\(B\)</span> so that <span class="math" data-index="245" data-tex="\(F(s(y))\)">\(F(s(y))\)</span> takes its values in a disk not containing zero. On this disk a holomorphic logarithm <span class="math" data-index="246" data-tex="\(\ell\)">\(\ell\)</span> exists. Explicitly, centered at a nonzero value <span class="math" data-index="247" data-tex="\(b\)">\(b\)</span>, take a smaller disk with <span class="math" data-index="248" data-tex="\(|(z-b)/b|&lt;1\)">\(|(z-b)/b|&lt;1\)</span>, choose one logarithm of <span class="math" data-index="249" data-tex="\(b\)">\(b\)</span>, and use the convergent power series for <span class="math" data-index="250" data-tex="\(\log(1+(z-b)/b)\)">\(\log(1+(z-b)/b)\)</span>. It exponentiates to <span class="math" data-index="251" data-tex="\(z\)">\(z\)</span>. Put</p>
+<span class="math math-display" id="proof-eq-5" data-index="252" data-tex="\[
+ t(y)=\exp\bigl(-\ell(F(s(y)))/m\bigr)s(y).
+ \tag{5}
+\]">\[
+ t(y)=\exp\bigl(-\ell(F(s(y)))/m\bigr)s(y).
+ \tag{5}
+\]</span>
+<p>Then <span class="math" data-index="253" data-tex="\(F(t(y))=1\)">\(F(t(y))=1\)</span>. If <span class="math" data-index="254" data-tex="\(\zeta=e^{2\pi i/m}\)">\(\zeta=e^{2\pi i/m}\)</span>, all the local inverse sections of <span class="math" data-index="255" data-tex="\(p\)">\(p\)</span> are</p>
+<span class="math math-display" id="proof-eq-6" data-index="256" data-tex="\[
+ t_j(y)=\zeta^j t(y),\qquad 0\leq j&lt;m.
+ \tag{6}
+\]">\[
+ t_j(y)=\zeta^j t(y),\qquad 0\leq j&lt;m.
+ \tag{6}
+\]</span>
+<p>They are distinct and holomorphic. Every point of <span class="math" data-index="257" data-tex="\(p^{-1}(B)\)">\(p^{-1}(B)\)</span> is in exactly one of their images. In the chart representation <span class="math" data-index="258" data-tex="\(Z=\lambda s(y)\)">\(Z=\lambda s(y)\)</span>, the factor <span class="math" data-index="259" data-tex="\(\lambda\)">\(\lambda\)</span> is a continuous holomorphic coordinate, so these finite disjoint sections are open branches of <span class="math" data-index="260" data-tex="\(p^{-1}(B)\)">\(p^{-1}(B)\)</span>. This proves the evenly covered local description and the local diffeomorphism claim.</p>
+<p>Multiplication by <span class="math" data-index="261" data-tex="\(\zeta^j\)">\(\zeta^j\)</span> preserves <span class="math" data-index="262" data-tex="\(X\)">\(X\)</span> and is a deck transformation. Its action on every fiber is free and transitive, directly by (4). We use this specified cyclic action; it need not exhaust all deck transformations when the covering is disconnected. For example <span class="math" data-index="263" data-tex="\(F(Z)=Z_0^m\)">\(F(Z)=Z_0^m\)</span> gives <span class="math" data-index="264" data-tex="\(m\)">\(m\)</span> separate affine <span class="math" data-index="265" data-tex="\(d\)">\(d\)</span>-planes in <span class="math" data-index="266" data-tex="\(X\)">\(X\)</span>, mapping onto the single affine chart <span class="math" data-index="267" data-tex="\(U\)">\(U\)</span>. <span class="math" data-index="268" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-a-finite-critical-point-squared-distance-on-the-affine-level">2. A finite-critical-point squared distance on the affine level</h2>
+<p><strong>Proposition 2.1.</strong> Some <span class="math" data-index="269" data-tex="\(a\in\mathbb C^{d+1}\)">\(a\in\mathbb C^{d+1}\)</span> makes</p>
+<span class="math math-display" id="proof-eq-7" data-index="270" data-tex="\[
+ \rho_a(Z)=|Z-a|^2\quad(Z\in X)
+ \tag{7}
+\]">\[
+ \rho_a(Z)=|Z-a|^2\quad(Z\in X)
+ \tag{7}
+\]</span>
+<p>a bounded-below proper strictly plurisubharmonic Morse function with finitely many critical points.</p>
+<p><strong>Proof.</strong> Write the ambient affine space as <span class="math" data-index="271" data-tex="\(\mathbb R^N\)">\(\mathbb R^N\)</span>, <span class="math" data-index="272" data-tex="\(N=2d+2\)">\(N=2d+2\)</span>. Put</p>
+<span class="math math-display" id="proof-eq-8" data-index="273" data-tex="\[
+ g_1=\operatorname{Re}F-1,\qquad
+ g_2=\operatorname{Im}F,\qquad n_j=\nabla g_j .
+ \tag{8}
+\]">\[
+ g_1=\operatorname{Re}F-1,\qquad
+ g_2=\operatorname{Im}F,\qquad n_j=\nabla g_j .
+ \tag{8}
+\]</span>
+<p>These are real polynomial data. Their two gradients are independent on <span class="math" data-index="274" data-tex="\(X\)">\(X\)</span>: the nonzero complex differential of <span class="math" data-index="275" data-tex="\(F\)">\(F\)</span>, established in (3), is real-surjective onto <span class="math" data-index="276" data-tex="\(\mathbb C\cong\mathbb R^2\)">\(\mathbb C\cong\mathbb R^2\)</span>. The gradients span the real normal space to <span class="math" data-index="277" data-tex="\(X\)">\(X\)</span>.</p>
+<p>Consider the smooth map</p>
+<span class="math math-display" id="proof-eq-9" data-index="278" data-tex="\[
+ \Phi:X\times\mathbb R^2\longrightarrow\mathbb R^N,\qquad
+ \Phi(Z,\lambda)=Z-\lambda_1n_1(Z)-\lambda_2n_2(Z).
+ \tag{9}
+\]">\[
+ \Phi:X\times\mathbb R^2\longrightarrow\mathbb R^N,\qquad
+ \Phi(Z,\lambda)=Z-\lambda_1n_1(Z)-\lambda_2n_2(Z).
+ \tag{9}
+\]</span>
+<p>Its domain has real dimension <span class="math" data-index="279" data-tex="\(2d+2=N\)">\(2d+2=N\)</span>, the same as its target. The manifold <span class="math" data-index="280" data-tex="\(X\)">\(X\)</span> is a second-countable subspace of Euclidean space. Its implicit-function charts therefore have a countable subcover, and their products with countably many open boxes cover <span class="math" data-index="281" data-tex="\(X\times\mathbb R^2\)">\(X\times\mathbb R^2\)</span> by countably many coordinate domains. To justify the subcover, each chart contains a member of a countable topological basis around any point; for every basis member contained in a chart choose one such chart. Those choices cover the manifold.</p>
+<p>In each coordinate domain, the equal-dimensional critical-value lemma cited above applies to <span class="math" data-index="282" data-tex="\(\Phi\)">\(\Phi\)</span>. The set of its critical values is a countable union of measure-zero sets and hence has measure zero. Choose <span class="math" data-index="283" data-tex="\(a\)">\(a\)</span> outside that union. Then <span class="math" data-index="284" data-tex="\(a\)">\(a\)</span> is a regular value of (9), in every chart and thus intrinsically.</p>
+<p>A critical point of (7) satisfies precisely</p>
+<span class="math math-display" id="proof-eq-10" data-index="285" data-tex="\[
+ Z-a=\lambda_1n_1(Z)+\lambda_2n_2(Z)
+ \tag{10}
+\]">\[
+ Z-a=\lambda_1n_1(Z)+\lambda_2n_2(Z)
+ \tag{10}
+\]</span>
+<p>for a unique pair <span class="math" data-index="286" data-tex="\(\lambda\)">\(\lambda\)</span>. At a solution put</p>
+<span class="math math-display" id="proof-eq-11" data-index="287" data-tex="\[
+ A=I-\lambda_1\operatorname{Hess}g_1
+        -\lambda_2\operatorname{Hess}g_2 .
+ \tag{11}
+\]">\[
+ A=I-\lambda_1\operatorname{Hess}g_1
+        -\lambda_2\operatorname{Hess}g_2 .
+ \tag{11}
+\]</span>
+<p>The restricted real Hessian of <span class="math" data-index="288" data-tex="\(\rho_a\)">\(\rho_a\)</span> is <span class="math" data-index="289" data-tex="\(B(v,t)=2\,v\cdot At\)">\(B(v,t)=2\,v\cdot At\)</span> for <span class="math" data-index="290" data-tex="\(v,t\in T_ZX\)">\(v,t\in T_ZX\)</span>. Indeed, for a curve <span class="math" data-index="291" data-tex="\(Z(s)\)">\(Z(s)\)</span> in <span class="math" data-index="292" data-tex="\(X\)">\(X\)</span> with <span class="math" data-index="293" data-tex="\(Z&#x27;(0)=v\)">\(Z&#x27;(0)=v\)</span>, differentiating <span class="math" data-index="294" data-tex="\(g_j(Z(s))=0\)">\(g_j(Z(s))=0\)</span> twice gives <span class="math" data-index="295" data-tex="\(n_j\cdot Z&#x27;&#x27;(0)=-v\cdot(\operatorname{Hess}g_j)v\)">\(n_j\cdot Z&#x27;&#x27;(0)=-v\cdot(\operatorname{Hess}g_j)v\)</span>. Inserting (10) into the second derivative of <span class="math" data-index="296" data-tex="\(|Z(s)-a|^2\)">\(|Z(s)-a|^2\)</span> gives the asserted diagonal Hessian; polarization gives the bilinear expression.</p>
+<p>The differential of (9) is</p>
+<span class="math math-display" id="proof-eq-12" data-index="297" data-tex="\[
+ D\Phi(v,\mu)=Av-\mu_1n_1-\mu_2n_2 .
+ \tag{12}
+\]">\[
+ D\Phi(v,\mu)=Av-\mu_1n_1-\mu_2n_2 .
+ \tag{12}
+\]</span>
+<p>Its tangent projection is <span class="math" data-index="298" data-tex="\(P_TAv\)">\(P_TAv\)</span>, half the Hessian operator. If this tangent operator is invertible, its output determines <span class="math" data-index="299" data-tex="\(v\)">\(v\)</span>, and the normal output then uniquely determines <span class="math" data-index="300" data-tex="\(\mu\)">\(\mu\)</span>. Conversely a nonzero tangent kernel vector has <span class="math" data-index="301" data-tex="\(Av\)">\(Av\)</span> normal, so a unique <span class="math" data-index="302" data-tex="\(\mu\)">\(\mu\)</span> gives a nonzero kernel vector in (12). Thus (12) is invertible exactly when the restricted Hessian is nonsingular. Regularity of <span class="math" data-index="303" data-tex="\(a\)">\(a\)</span> makes all the critical points Morse.</p>
+<p>The actual solution set for their critical pairs is</p>
+<span class="math math-display" id="proof-eq-13" data-index="304" data-tex="\[
+ S_a=\{(Z,\lambda)\in\mathbb R^{N+2}:
+       g_1(Z)=g_2(Z)=0,\ 
+       Z-a=\lambda_1n_1(Z)+\lambda_2n_2(Z)\}.
+ \tag{13}
+\]">\[
+ S_a=\{(Z,\lambda)\in\mathbb R^{N+2}:
+       g_1(Z)=g_2(Z)=0,\ 
+       Z-a=\lambda_1n_1(Z)+\lambda_2n_2(Z)\}.
+ \tag{13}
+\]</span>
+<p>It is semialgebraic, by its polynomial equations. The inverse function theorem makes each preimage of <span class="math" data-index="305" data-tex="\(a\)">\(a\)</span> in (9) isolated. The embedded coordinates of <span class="math" data-index="306" data-tex="\(X\times\mathbb R^2\)">\(X\times\mathbb R^2\)</span> have the Euclidean subspace topology, so <span class="math" data-index="307" data-tex="\(S_a\)">\(S_a\)</span> is discrete as a subset of <span class="math" data-index="308" data-tex="\(\mathbb R^{N+2}\)">\(\mathbb R^{N+2}\)</span>. The finite-discrete-semialgebraic lemma cited above makes it finite. Hence (7) has finitely many critical points, without a compactness assumption on the critical set.</p>
+<p>Since <span class="math" data-index="309" data-tex="\(X\)">\(X\)</span> is closed, its intersection with a closed ambient ball is compact. This proves properness of (7); it is nonnegative. In any holomorphic local parametrization <span class="math" data-index="310" data-tex="\(Z=Z(y)\)">\(Z=Z(y)\)</span>, its Levi form is</p>
+<span class="math math-display" id="proof-eq-14" data-index="311" data-tex="\[
+ \mathcal L_{\rho_a}(v)
+       =\sum_{j=0}^{d}|dZ_j(v)|^2&gt;0\quad(v\ne0),
+ \tag{14}
+\]">\[
+ \mathcal L_{\rho_a}(v)
+       =\sum_{j=0}^{d}|dZ_j(v)|^2&gt;0\quad(v\ne0),
+ \tag{14}
+\]</span>
+<p>because the parametrization is an immersion. The center <span class="math" data-index="312" data-tex="\(a\)">\(a\)</span> contributes constants and has no effect on this Levi form. Thus the function is strictly plurisubharmonic. No smoothness or square-free assumption on the removed projective divisor was used. <span class="math" data-index="313" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 2.2.</strong> For any coefficient ring <span class="math" data-index="314" data-tex="\(R\)">\(R\)</span>, ordinary finite-chain <span class="math" data-index="315" data-tex="\(H_j(X;R)\)">\(H_j(X;R)\)</span> vanishes for <span class="math" data-index="316" data-tex="\(j&gt;d\)">\(j&gt;d\)</span>. For a field <span class="math" data-index="317" data-tex="\(R\)">\(R\)</span>, all these groups are finite dimensional.</p>
+<p><strong>Proof.</strong> At a critical point of a smooth strictly plurisubharmonic function the real Hessian obeys</p>
+<span class="math math-display" id="proof-eq-15" data-index="318" data-tex="\[
+ B(v,v)+B(Jv,Jv)=4\mathcal L_{\rho_a}(v)&gt;0\quad(v\ne0).
+ \tag{15}
+\]">\[
+ B(v,v)+B(Jv,Jv)=4\mathcal L_{\rho_a}(v)&gt;0\quad(v\ne0).
+ \tag{15}
+\]</span>
+<p>Expansion of the Wirtinger derivatives gives this identity, with the factor four, as proved in the cited finite-chain handle lesson. If a negative subspace <span class="math" data-index="319" data-tex="\(W\)">\(W\)</span> had dimension <span class="math" data-index="320" data-tex="\(r&gt;d\)">\(r&gt;d\)</span>, then <span class="math" data-index="321" data-tex="\(\dim(W\cap JW)\geq2r-2d&gt;0\)">\(\dim(W\cap JW)\geq2r-2d&gt;0\)</span>. For <span class="math" data-index="322" data-tex="\(0\ne v=Jw\in W\cap JW\)">\(0\ne v=Jw\in W\cap JW\)</span>, also <span class="math" data-index="323" data-tex="\(Jv=-w\in W\)">\(Jv=-w\in W\)</span>; both real Hessian terms would be negative, contradicting (15). Every Morse index is therefore at most <span class="math" data-index="324" data-tex="\(d\)">\(d\)</span>.</p>
+<p>The exact handle theorem gives an increasing open sublevel cover, starting empty, whose relative group at each critical step is a finite sum of copies of <span class="math" data-index="325" data-tex="\(R\)">\(R\)</span> in the crossed indices. There are finitely many such points and values by Proposition 2.1. The pair exact sequences show inductively that every sublevel group above degree <span class="math" data-index="326" data-tex="\(d\)">\(d\)</span> is zero. Over a field, the exact segment</p>
+<span class="math math-display" id="proof-eq-16" data-index="327" data-tex="\[
+ H_j(W_{i-1};R)\longrightarrow H_j(W_i;R)
+                         \longrightarrow H_j(W_i,W_{i-1};R)
+ \tag{16}
+\]">\[
+ H_j(W_{i-1};R)\longrightarrow H_j(W_i;R)
+                         \longrightarrow H_j(W_i,W_{i-1};R)
+ \tag{16}
+\]</span>
+<p>also proves finite dimensionality: the first term bounds the kernel dimension, and the finite relative term bounds the image dimension.</p>
+<p>Choose a regular sublevel above all critical values. Later relative groups are zero, so the pair sequences make all later absolute maps isomorphisms. The finite-chain direct-limit statement in the cited theorem applies: a finite cycle or bounding chain has compact image and lies in one of the increasing open stages. Thus the groups of the whole <span class="math" data-index="328" data-tex="\(X\)">\(X\)</span> are those of that single finite stage. This proves vanishing over all <span class="math" data-index="329" data-tex="\(R\)">\(R\)</span> and finite dimensionality over fields. It does not assert a cellular chain complex or forget possible attaching-map cancellations. <span class="math" data-index="330" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-lifting-simplices-without-a-hidden-covering-space-premise">3. Lifting simplices without a hidden covering-space premise</h2>
+<p>We need the covering transfer for arbitrary continuous singular simplices. Its construction requires the following elementary lifting fact.</p>
+<p><strong>Lemma 3.1.</strong> If <span class="math" data-index="331" data-tex="\(q:E\to B\)">\(q:E\to B\)</span> is a finite covering, <span class="math" data-index="332" data-tex="\(\sigma:\Delta^j\to B\)">\(\sigma:\Delta^j\to B\)</span> is continuous, and <span class="math" data-index="333" data-tex="\(v_0\)">\(v_0\)</span> is a vertex of the simplex, then every <span class="math" data-index="334" data-tex="\(e_0\in q^{-1}(\sigma(v_0))\)">\(e_0\in q^{-1}(\sigma(v_0))\)</span> determines a unique continuous lift <span class="math" data-index="335" data-tex="\(\widetilde\sigma:\Delta^j\to E\)">\(\widetilde\sigma:\Delta^j\to E\)</span> with <span class="math" data-index="336" data-tex="\(\widetilde\sigma(v_0)=e_0\)">\(\widetilde\sigma(v_0)=e_0\)</span>. Evaluation at any point of the simplex bijects the set of all lifts with the fiber over that point. If <span class="math" data-index="337" data-tex="\(E,B\)">\(E,B\)</span> are smooth and the covering branches are local diffeomorphisms, a smooth simplex has smooth lifts.</p>
+<p><strong>Proof.</strong> First a continuous path <span class="math" data-index="338" data-tex="\(\gamma:[0,1]\to B\)">\(\gamma:[0,1]\to B\)</span> has a unique lift from a specified initial fiber point. Pull back the evenly covered neighborhoods to an open cover of its compact parameter interval and choose a finite subdivision so the image of each closed segment lies in one such neighborhood. On the first segment choose the inverse branch containing the specified starting point. At the next endpoint choose the unique branch containing that endpoint, and continue. The branches agree at each endpoint and give a continuous lift. Another lift must agree on the first segment by its branch and starting value, and then successively on every segment. Equivalently the agreement set is open and closed along the parameter interval. Thus the path lift is unique.</p>
+<p>For each <span class="math" data-index="339" data-tex="\(y\in\Delta^j\)">\(y\in\Delta^j\)</span>, lift the radial path</p>
+<span class="math math-display" id="proof-eq-17" data-index="340" data-tex="\[
+ \gamma_y(t)=\sigma((1-t)v_0+ty)
+ \tag{17}
+\]">\[
+ \gamma_y(t)=\sigma((1-t)v_0+ty)
+ \tag{17}
+\]</span>
+<p>from <span class="math" data-index="341" data-tex="\(e_0\)">\(e_0\)</span>, and define <span class="math" data-index="342" data-tex="\(\widetilde\sigma(y)\)">\(\widetilde\sigma(y)\)</span> to be its endpoint. This definition always projects to <span class="math" data-index="343" data-tex="\(\sigma(y)\)">\(\sigma(y)\)</span>; for <span class="math" data-index="344" data-tex="\(y=v_0\)">\(y=v_0\)</span> it gives <span class="math" data-index="345" data-tex="\(e_0\)">\(e_0\)</span>.</p>
+<p>We prove its continuity instead of assuming it. Fix <span class="math" data-index="346" data-tex="\(y_*\)">\(y_*\)</span>. Compactness and continuity give a finite partition <span class="math" data-index="347" data-tex="\(0=t_0&lt;\cdots&lt;t_s=1\)">\(0=t_0&lt;\cdots&lt;t_s=1\)</span> such that, on each closed segment, <span class="math" data-index="348" data-tex="\(\gamma_{y_*}\)">\(\gamma_{y_*}\)</span> lies in an evenly covered neighborhood <span class="math" data-index="349" data-tex="\(B_\ell\)">\(B_\ell\)</span>. By first choosing overlapping open parameter segments and a finer subdivision, the closed images can be kept inside those neighborhoods. Uniform continuity of <span class="math" data-index="350" data-tex="\((t,y)\mapsto\sigma((1-t)v_0+ty)\)">\((t,y)\mapsto\sigma((1-t)v_0+ty)\)</span> near this compact path then makes the same segments lie in <span class="math" data-index="351" data-tex="\(B_\ell\)">\(B_\ell\)</span> for all <span class="math" data-index="352" data-tex="\(y\)">\(y\)</span> in some relative neighborhood of <span class="math" data-index="353" data-tex="\(y_*\)">\(y_*\)</span>. On the first segment the fixed initial point selects a branch for all these paths. Its endpoint depends continuously on <span class="math" data-index="354" data-tex="\(y\)">\(y\)</span>. At the next segment, that endpoint stays in the same open branch of <span class="math" data-index="355" data-tex="\(q^{-1}(B_2)\)">\(q^{-1}(B_2)\)</span> after possibly shrinking the neighborhood of <span class="math" data-index="356" data-tex="\(y_*\)">\(y_*\)</span>. Its branch inverse is continuous, so the next endpoint is continuous. Repeat the finite construction through all the segments. The final endpoint <span class="math" data-index="357" data-tex="\(\widetilde\sigma(y)\)">\(\widetilde\sigma(y)\)</span> is continuous near <span class="math" data-index="358" data-tex="\(y_*\)">\(y_*\)</span>. This holds at every point, including the boundary in its relative topology.</p>
+<p>Any continuous lift of <span class="math" data-index="359" data-tex="\(\sigma\)">\(\sigma\)</span> restricts on every radial path to the unique path lift from <span class="math" data-index="360" data-tex="\(e_0\)">\(e_0\)</span>, so it equals the constructed map. More generally, two lifts agreeing at one point agree near it by the local branch inverse. Their agreement and disagreement sets are both open: near two unequal fiber points use their distinct covering branches. Connectedness of <span class="math" data-index="361" data-tex="\(\Delta^j\)">\(\Delta^j\)</span> makes agreement at one point imply equality everywhere.</p>
+<p>Distinct choices of <span class="math" data-index="362" data-tex="\(e_0\)">\(e_0\)</span> therefore give distinct values at every point. Conversely, starting the same radial construction at any selected point of <span class="math" data-index="363" data-tex="\(\Delta^j\)">\(\Delta^j\)</span> gives a lift from any element of its fiber, since the simplex is convex. This proves the evaluation bijection. In particular an <span class="math" data-index="364" data-tex="\(m\)">\(m\)</span>-sheeted covering gives exactly <span class="math" data-index="365" data-tex="\(m\)">\(m\)</span> lifts of every simplex.</p>
+<p>For a smooth simplex, at any point of its domain the continuous lift lies in one branch over an evenly covered neighborhood. On a relative neighborhood it is the composition of <span class="math" data-index="366" data-tex="\(\sigma\)">\(\sigma\)</span> with that smooth local inverse. The smooth extension of <span class="math" data-index="367" data-tex="\(\sigma\)">\(\sigma\)</span> near the compact simplex gives a local smooth extension of this composition even at its boundary; smoothness is local, so the lift is a smooth simplex. No differentiability of the radial path construction at the vertex is required. <span class="math" data-index="368" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-chain-transfer-and-its-coefficient-condition">4. The chain transfer and its coefficient condition</h2>
+<p>For any coefficient ring <span class="math" data-index="369" data-tex="\(R\)">\(R\)</span>, singular chains are the free <span class="math" data-index="370" data-tex="\(R\)">\(R\)</span>-module on continuous singular simplices, each chain being a finite sum. For an <span class="math" data-index="371" data-tex="\(m\)">\(m\)</span>-sheeted covering <span class="math" data-index="372" data-tex="\(q:E\to B\)">\(q:E\to B\)</span> define</p>
+<span class="math math-display" id="proof-eq-18" data-index="373" data-tex="\[
+ \operatorname{tr}_j(\sigma)
+          =\sum_{\widetilde\sigma:\,q\widetilde\sigma=\sigma}
+                                    \widetilde\sigma .
+ \tag{18}
+\]">\[
+ \operatorname{tr}_j(\sigma)
+          =\sum_{\widetilde\sigma:\,q\widetilde\sigma=\sigma}
+                                    \widetilde\sigma .
+ \tag{18}
+\]</span>
+<p>There are exactly <span class="math" data-index="374" data-tex="\(m\)">\(m\)</span> terms by Lemma 3.1. Extend linearly. The term “transfer” here denotes this explicit finite-chain operator.</p>
+<p><strong>Proposition 4.1.</strong> The transfer commutes with the singular boundary and satisfies</p>
+<span class="math math-display" id="proof-eq-19" data-index="375" data-tex="\[
+ q_\#\operatorname{tr}=mI.
+ \tag{19}
+\]">\[
+ q_\#\operatorname{tr}=mI.
+ \tag{19}
+\]</span>
+<p>For the cyclic covering (2), with deck maps <span class="math" data-index="376" data-tex="\(D_\ell(Z)=\zeta^\ell Z\)">\(D_\ell(Z)=\zeta^\ell Z\)</span>, it also satisfies</p>
+<span class="math math-display" id="proof-eq-20" data-index="377" data-tex="\[
+ \operatorname{tr}\,p_\#=\sum_{\ell=0}^{m-1}(D_\ell)_\# .
+ \tag{20}
+\]">\[
+ \operatorname{tr}\,p_\#=\sum_{\ell=0}^{m-1}(D_\ell)_\# .
+ \tag{20}
+\]</span>
+<p>The same identities hold for the induced homology maps and for smooth chains when the covering is smooth.</p>
+<p><strong>Proof.</strong> For each face inclusion <span class="math" data-index="378" data-tex="\(a_i:\Delta^{j-1}\to\Delta^j\)">\(a_i:\Delta^{j-1}\to\Delta^j\)</span>, restrict every lift of <span class="math" data-index="379" data-tex="\(\sigma\)">\(\sigma\)</span> to that face. These restrictions are exactly all the lifts of <span class="math" data-index="380" data-tex="\(\sigma a_i\)">\(\sigma a_i\)</span>, each once. To check it, evaluate at any one face point. The evaluations of the <span class="math" data-index="381" data-tex="\(m\)">\(m\)</span> full lifts biject onto its <span class="math" data-index="382" data-tex="\(m\)">\(m\)</span>-point fiber by Lemma 3.1, and that fiber likewise bijects onto the lifts of the face simplex. Thus</p>
+<span class="math math-display" id="proof-eq-21" data-index="383" data-tex="\[
+ \begin{aligned}
+ \partial\operatorname{tr}_j\sigma
+ &amp;=\sum_{\widetilde\sigma}\sum_{i=0}^j
+                             (-1)^i\widetilde\sigma a_i\\
+ &amp;=\sum_{i=0}^j(-1)^i
+           \operatorname{tr}_{j-1}(\sigma a_i)
+  =\operatorname{tr}_{j-1}\partial\sigma .
+ \end{aligned}
+ \tag{21}
+\]">\[
+ \begin{aligned}
+ \partial\operatorname{tr}_j\sigma
+ &amp;=\sum_{\widetilde\sigma}\sum_{i=0}^j
+                             (-1)^i\widetilde\sigma a_i\\
+ &amp;=\sum_{i=0}^j(-1)^i
+           \operatorname{tr}_{j-1}(\sigma a_i)
+  =\operatorname{tr}_{j-1}\partial\sigma .
+ \end{aligned}
+ \tag{21}
+\]</span>
+<p>For <span class="math" data-index="384" data-tex="\(j=0\)">\(j=0\)</span>, both boundaries are zero. Each lift projects to the original simplex, so (19) is literal equality of chains.</p>
+<p>For (20), take a simplex <span class="math" data-index="385" data-tex="\(\beta\)">\(\beta\)</span> in <span class="math" data-index="386" data-tex="\(X\)">\(X\)</span>. Each <span class="math" data-index="387" data-tex="\(D_\ell\beta\)">\(D_\ell\beta\)</span> lifts <span class="math" data-index="388" data-tex="\(p\beta\)">\(p\beta\)</span>. Their values at a vertex run through the fiber, since the deck action is free and transitive there. By Lemma 3.1 these are all the lifts, giving (20). Smoothness of lifts gives the same argument on smooth chains. Chain maps send cycles to cycles and boundaries to boundaries, so the identities pass to ordinary homology. <span class="math" data-index="389" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.2.</strong> If <span class="math" data-index="390" data-tex="\(m\)">\(m\)</span> is invertible in the coefficient ring <span class="math" data-index="391" data-tex="\(R\)">\(R\)</span>, then</p>
+<span class="math math-display" id="proof-eq-22" data-index="392" data-tex="\[
+ H_j(U;R)=0\quad(j&gt;d).
+ \tag{22}
+\]">\[
+ H_j(U;R)=0\quad(j&gt;d).
+ \tag{22}
+\]</span>
+<p>For a field of characteristic zero or characteristic not dividing <span class="math" data-index="393" data-tex="\(m\)">\(m\)</span>, every <span class="math" data-index="394" data-tex="\(H_j(U;R)\)">\(H_j(U;R)\)</span> is finite dimensional. For integral coefficients the transfer proof establishes the narrower assertion</p>
+<span class="math math-display" id="proof-eq-23" data-index="395" data-tex="\[
+ m\,H_j(U;\mathbb Z)=0\quad(j&gt;d).
+ \tag{23}
+\]">\[
+ m\,H_j(U;\mathbb Z)=0\quad(j&gt;d).
+ \tag{23}
+\]</span>
+<p>It does not infer integral vanishing from division by <span class="math" data-index="396" data-tex="\(m\)">\(m\)</span>.</p>
+<p><strong>Proof.</strong> Apply Proposition 4.1 to (2). On homology,</p>
+<span class="math math-display" id="proof-eq-24" data-index="397" data-tex="\[
+ p_*\operatorname{tr}_*=mI .
+ \tag{24}
+\]">\[
+ p_*\operatorname{tr}_*=mI .
+ \tag{24}
+\]</span>
+<p>When <span class="math" data-index="398" data-tex="\(m\)">\(m\)</span> is invertible, <span class="math" data-index="399" data-tex="\(\operatorname{tr}_*\)">\(\operatorname{tr}_*\)</span> is injective. Corollary 2.2 makes its target zero above <span class="math" data-index="400" data-tex="\(d\)">\(d\)</span>, proving (22). Over a field, its target is finite dimensional in every degree, so its injected source is finite dimensional as well.</p>
+<p>With integral coefficients and <span class="math" data-index="401" data-tex="\(j&gt;d\)">\(j&gt;d\)</span>, the target of the transfer is still zero by Corollary 2.2; (24) therefore gives (23). Multiplication by <span class="math" data-index="402" data-tex="\(m\)">\(m\)</span> can kill a nonzero abelian-group element, so no integral vanishing follows from this calculation alone. This last limitation is about the inference supplied by the transfer, not a claim that a particular complement has nonzero homology in those degrees. <span class="math" data-index="403" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-the-oriented-hyperplane-tube-is-injective-over-the-rationals">5. The oriented hyperplane tube is injective over the rationals</h2>
+<p>Let <span class="math" data-index="404" data-tex="\(L\)">\(L\)</span> be a nonzero linear form, and put</p>
+<span class="math math-display" id="proof-eq-25" data-index="405" data-tex="\[
+ Y=\{L=0\}\cap U,\qquad V=U\setminus Y
+                    =\mathbb P^d\setminus\{FL=0\}.
+ \tag{25}
+\]">\[
+ Y=\{L=0\}\cap U,\qquad V=U\setminus Y
+                    =\mathbb P^d\setminus\{FL=0\}.
+ \tag{25}
+\]</span>
+<p>The hyperplane is smooth in projective space, and <span class="math" data-index="406" data-tex="\(Y\)">\(Y\)</span> is its open part where <span class="math" data-index="407" data-tex="\(F\ne0\)">\(F\ne0\)</span>. Thus <span class="math" data-index="408" data-tex="\(Y\)">\(Y\)</span> is a closed embedded complex hypersurface of <span class="math" data-index="409" data-tex="\(U\)">\(U\)</span>, even when the zero set of <span class="math" data-index="410" data-tex="\(F\)">\(F\)</span> is singular. It can be empty, in which case all the tube claims below have zero source.</p>
+<p>Use the complex orientation of the real rank-two normal bundle of <span class="math" data-index="411" data-tex="\(Y\)">\(Y\)</span> in <span class="math" data-index="412" data-tex="\(U\)">\(U\)</span>. The exact homological Thom/excision construction in the cited projective-exhaustion lesson gives</p>
+<span class="math math-display" id="proof-eq-26" data-index="413" data-tex="\[
+ \Theta:H_{d-1}(Y;\mathbb Q)
+            \xrightarrow{\ \cong\ }H_{d+1}(U,V;\mathbb Q).
+ \tag{26}
+\]">\[
+ \Theta:H_{d-1}(Y;\mathbb Q)
+            \xrightarrow{\ \cong\ }H_{d+1}(U,V;\mathbb Q).
+ \tag{26}
+\]</span>
+<p>It uses ordinary finite chains, oriented normal disc first, and its actual included tubular-neighborhood and Thom proofs. Define the normal-circle-first tube by</p>
+<span class="math math-display" id="proof-eq-27" data-index="414" data-tex="\[
+ \tau=\partial_{U,V}\Theta:
+                   H_{d-1}(Y;\mathbb Q)\longrightarrow H_d(V;\mathbb Q).
+ \tag{27}
+\]">\[
+ \tau=\partial_{U,V}\Theta:
+                   H_{d-1}(Y;\mathbb Q)\longrightarrow H_d(V;\mathbb Q).
+ \tag{27}
+\]</span>
+<p>This definition names a specific map, rather than choosing a possibly differently oriented geometric representative.</p>
+<p><strong>Theorem 5.1.</strong> The map (27) is injective.</p>
+<p><strong>Proof.</strong> Theorem 4.2 applies over <span class="math" data-index="415" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, since <span class="math" data-index="416" data-tex="\(m\geq1\)">\(m\geq1\)</span> is invertible there, and gives <span class="math" data-index="417" data-tex="\(H_{d+1}(U;\mathbb Q)=0\)">\(H_{d+1}(U;\mathbb Q)=0\)</span>. The pair exact sequence contains</p>
+<span class="math math-display" id="proof-eq-28" data-index="418" data-tex="\[
+ H_{d+1}(U;\mathbb Q)\longrightarrow H_{d+1}(U,V;\mathbb Q)
+              \xrightarrow{\partial_{U,V}}H_d(V;\mathbb Q).
+ \tag{28}
+\]">\[
+ H_{d+1}(U;\mathbb Q)\longrightarrow H_{d+1}(U,V;\mathbb Q)
+              \xrightarrow{\partial_{U,V}}H_d(V;\mathbb Q).
+ \tag{28}
+\]</span>
+<p>Its first group is zero, so exactness makes the relative boundary injective. Composing with (26) proves the claim.</p>
+<p>The local orientation and coefficient are fixed by the same map. For a base cycle <span class="math" data-index="419" data-tex="\(b\)">\(b\)</span> of dimension <span class="math" data-index="420" data-tex="\(d-1\)">\(d-1\)</span>, the local relative representative is <span class="math" data-index="421" data-tex="\(D^2\times b\)">\(D^2\times b\)</span>, with the positively oriented complex normal disc first. The product boundary identity is</p>
+<span class="math math-display" id="proof-eq-29" data-index="422" data-tex="\[
+ \partial(D^2\times b)=S^1\times b+
+                                   D^2\times\partial b.
+ \tag{29}
+\]">\[
+ \partial(D^2\times b)=S^1\times b+
+                                   D^2\times\partial b.
+ \tag{29}
+\]</span>
+<p>The second term vanishes for a base cycle; the first is the positive counterclockwise normal circle first, with coefficient one. Moving the normal two-disc after the base changes orientation by <span class="math" data-index="423" data-tex="\((-1)^{2(d-1)}=1\)">\((-1)^{2(d-1)}=1\)</span>, so it agrees with the cited Thom convention. Moving its boundary circle after the base instead changes orientation by <span class="math" data-index="424" data-tex="\((-1)^{d-1}\)">\((-1)^{d-1}\)</span>. The map (27) retains the circle-first convention.</p>
+<p>For a nontrivial normal bundle, (29) describes the local restrictions of the global homological Thom construction. It does not assert one global product chart or multiply its coefficient by the degree of the affine cover. The finite-cover degree entered only to prove the vanishing of the first group in (28). The relative normal boundary itself has coefficient one. <span class="math" data-index="425" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-the-general-rational-period-receiver-now-has-both-inputs">6. The general rational-period receiver now has both inputs</h2>
+<p>The complete rational-top-form theorem is already written in the linked lesson. In coordinates <span class="math" data-index="426" data-tex="\(Z_0=L,Z_1,\ldots,Z_d\)">\(Z_0=L,Z_1,\ldots,Z_d\)</span>, let</p>
+<span class="math math-display" id="proof-eq-30" data-index="427" data-tex="\[
+ \omega=\sum_{j=0}^d(-1)^j Z_j
+      dZ_0\wedge\cdots\wedge\widehat{dZ_j}
+                             \wedge\cdots\wedge dZ_d .
+ \tag{30}
+\]">\[
+ \omega=\sum_{j=0}^d(-1)^j Z_j
+      dZ_0\wedge\cdots\wedge\widehat{dZ_j}
+                             \wedge\cdots\wedge dZ_d .
+ \tag{30}
+\]</span>
+<p><strong>Corollary 6.1.</strong> If <span class="math" data-index="428" data-tex="\(\beta\in H_{d-1}(Y;\mathbb Q)\)">\(\beta\in H_{d-1}(Y;\mathbb Q)\)</span> and its tube (27) has zero periods against every</p>
+<span class="math math-display" id="proof-eq-31" data-index="429" data-tex="\[
+ \frac{P\omega}{F^kL^s},\qquad
+ k,s\geq1,\quad P\ \hbox{homogeneous},\quad
+                          \deg P=mk+s-d-1 ,
+ \tag{31}
+\]">\[
+ \frac{P\omega}{F^kL^s},\qquad
+ k,s\geq1,\quad P\ \hbox{homogeneous},\quad
+                          \deg P=mk+s-d-1 ,
+ \tag{31}
+\]</span>
+<p>then <span class="math" data-index="430" data-tex="\(\beta=0\)">\(\beta=0\)</span>.</p>
+<p><strong>Proof.</strong> The exact preceding Corollary 8.1 of <a href="AN02-L182.html#8-the-projective-homogeneous-family-with-positive-pole-exponents">Rational top forms detect cycles in a hypersurface complement</a> says that (31) detects ordinary rational <span class="math" data-index="431" data-tex="\(d\)">\(d\)</span>-cycle homology on <span class="math" data-index="432" data-tex="\(V\)">\(V\)</span>, including singular and repeated <span class="math" data-index="433" data-tex="\(F\)">\(F\)</span>. Its actual homology/smooth comparison lets us represent the tube by a finite smooth cycle and take those periods. Their vanishing gives <span class="math" data-index="434" data-tex="\(\tau\beta=0\)">\(\tau\beta=0\)</span> in <span class="math" data-index="435" data-tex="\(H_d(V;\mathbb Q)\)">\(H_d(V;\mathbb Q)\)</span>. Theorem 5.1 is injective, so <span class="math" data-index="436" data-tex="\(\beta=0\)">\(\beta=0\)</span>.</p>
+<p>Equivalently the rational forms span the smooth complex top-degree de Rham group; zero periods give complex null homology, and the exact faithful coefficient comparison in the preceding integration lesson gives rational null homology. The two formulations use the same proved rational receiver. No inference about integral torsion is made. <span class="math" data-index="437" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A separately specified affine equatorial cycle must still be identified with its projective class and with the map (27), including any orientation or multiplicity. The projective covering (2), whose degree is <span class="math" data-index="438" data-tex="\(m\)">\(m\)</span>, is distinct from that normal-circle construction and from projectivizing an affine cycle. Corollary 6.1 therefore completes the general projective period receiver, without presuming the remaining affine comparison or a full component-constancy argument.</p>
+<h2 id="references-2">References</h2>
+<p>[H] Allen Hatcher, <em>Algebraic Topology</em>, Cambridge University Press (2002), §3.G, “Transfer Homomorphisms”. <a href="https://pi.math.cornell.edu/~hatcher/AT/AT.pdf">Author's freely readable text</a>. The finite-chain lifting and transfer arguments needed here are proved in §§3–4.</p>
+<p>[S] Arthur Sard, <em>The measure of the critical values of differentiable maps</em>, Bulletin of the American Mathematical Society <strong>48</strong> (1942), 883–890. <a href="https://webhomes.maths.ed.ac.uk/~v1ranick/papers/sard.pdf">Original article</a>. The cited internal lemma gives a complete proof of the equal-dimensional <span class="math" data-index="439" data-tex="\(C^1\)">\(C^1\)</span> case; the countable chart passage is written in Proposition 2.1.</p>
+<p>[A] Michael Atiyah, Raoul Bott and Lars Gårding, <em>Lacunas for hyperbolic differential operators with constant coefficients, II</em>, Acta Mathematica <strong>131</strong> (1973), 145–206. <a href="https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6156-11511_2006_Article_BF02392039.pdf">Primary article</a>. Its projective tube method is historical context. Here the vanishing group is established by the actual finite cyclic cover and the supplied finite-chain Morse argument; the required homological Thom/excision map is the exact linked internal construction.</p>
+<p>Original exposition is CC0-1.0. The linked historical works retain their own rights and are not reproduced. All homology statements use ordinary finite chains; the coefficient hypotheses are stated explicitly.</p>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/finite-covers-and-normal-circles-in-projective-complements.md" download>Download the complete lesson source</a>. Original proof, examples, solutions and figures use CC0 1.0. The font retains its own terms.</p><ul><li><a href="reproduce/L183/projective-cover-and-tube-formal.md" download>projective-cover-and-tube-formal.md</a></li><li><a href="reproduce/L183/projective-cover-and-tube-learner.md" download>projective-cover-and-tube-learner.md</a></li><li><span class="unlinked">projective-cover-check-and-figures.py</span></li><li><a href="reproduce/L183/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L183/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li><li><a href="reproduce/L183/README-reproduce.md" download>README-reproduce.md</a></li><li><a href="reproduce/L183/figures/double-cover-loop-transfer.png" download>figures/double-cover-loop-transfer.png</a></li><li><a href="reproduce/L183/figures/double-cover-loop-transfer.svg" download>figures/double-cover-loop-transfer.svg</a></li><li><a href="reproduce/L183/figures/exact-geometry.json" download>figures/exact-geometry.json</a></li><li><a href="reproduce/L183/figures/normal-first-parameter-square.png" download>figures/normal-first-parameter-square.png</a></li><li><a href="reproduce/L183/figures/normal-first-parameter-square.svg" download>figures/normal-first-parameter-square.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

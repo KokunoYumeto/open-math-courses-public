@@ -15,7 +15,7 @@ The costalk at $x$ is the complex $C_x(F)=R\Gamma_{\{x\}}(X;F)=i_x^!F$. Complexe
 
 ## SH02-CB-IMPORTS — The precise imported contracts
 
-The [exceptional inverse-image lesson](exceptional-operations.md) supplies `SH02-EX-DUAL-SECTIONS`: for $F\in D^b(k_X)$,
+The [exceptional inverse-image lesson](../../SH02-exceptional-operations.html) supplies `SH02-EX-DUAL-SECTIONS`: for $F\in D^b(k_X)$,
 
 $$
 R\Gamma(U;D_XF)\simeq
@@ -38,9 +38,9 @@ R\Gamma(U\times V;
 R\operatorname{Hom}_k(R\Gamma_c(U;F),R\Gamma(V;G)).
 $$
 
-The [manifold-duality lesson](manifold-duality.md) supplies `SH02-MD-SUBMERSION`, `SH02-MD-RELATIVE`, and `SH02-MD-CLOSED`: the orientation line and its shift, the formula $q_Y^!G\simeq q_X^{-1}\omega_X\otimes^Lq_Y^{-1}G$ when $X$ is a topological manifold, and the closed-submanifold costalk formula. These imported contracts are not replaced by a field-coefficient or finite-rank special case here.
+The [manifold-duality lesson](../../SH02-manifold-duality.html) supplies `SH02-MD-SUBMERSION`, `SH02-MD-RELATIVE`, and `SH02-MD-CLOSED`: the orientation line and its shift, the formula $q_Y^!G\simeq q_X^{-1}\omega_X\otimes^Lq_Y^{-1}G$ when $X$ is a topological manifold, and the closed-submanifold costalk formula. These imported contracts are not replaced by a field-coefficient or finite-rank special case here.
 
-For the local geometric models, `SH02-CA-CONSTANT` in the [convex acyclicity lesson](convex-acyclicity.md) proves that ordinary cohomology of a nonempty locally closed convex set with constant coefficients is exactly its coefficient module in degree zero. Compact-support cohomology of a ball is the orientation calculation in the manifold-duality lesson; proper-support base change and the projection formula give its product version.
+For the local geometric models, `SH02-CA-CONSTANT` in the [convex acyclicity lesson](../../SH02-convex-acyclicity.html) proves that ordinary cohomology of a nonempty locally closed convex set with constant coefficients is exactly its coefficient module in degree zero. Compact-support cohomology of a ball is the orientation calculation in the manifold-duality lesson; proper-support base change and the projection formula give its product version.
 
 ### SH02-CB-FOUNDATION-ROUTES — Resolutions and neighborhood comparisons
 
@@ -61,11 +61,11 @@ Finally, *Hom complexes, internal derived Hom and Ext sheaves*, Lemma 1.1 and Th
 
 ### SH02-CB-IMP-PRO-CALCULUS — Formal systems and their morphisms
 
-This prerequisite contract has a limited supporting proof in [formal stabilization](formal-system-bridge.md); broader categorical foundations remain owned by SH-01. For systems indexed by arbitrary small directed posets or their opposites in the locally small categories used here, we require the formal ind/pro Hom formulas, the fully faithful constant-object embedding, and invariance under cofinal reindexing. In an additive category the zero criterion says that a system is formally zero exactly when every stage has a later transition equal to zero. A single pro-morphism, including a pro-isomorphism, and the finite acyclic diagrams used below admit simultaneous level representatives after common cofinal reindexing. A pro-isomorphism so represented need not be a levelwise isomorphism. For module systems, kernels and cokernels of such strict representatives compute the corresponding formal kernels and cokernels; hence a strict pro-isomorphism has pro-zero kernel and cokernel. A functor extends to formal systems, preserving their isomorphisms; a contravariant functor interchanges ind and pro. These are categorical assertions, separate from existence or exactness of ordinary limits. The net and duality arguments below use this contract. The supporting proofs `SH02-FSB-HOM` through `SH02-FSB-FUNCTORS` establish these formal assertions, with strictification restricted to the finite acyclic diagrams actually used. 
+This prerequisite contract has a limited supporting proof in [formal stabilization](../../SH02-formal-system-bridge.html); broader categorical foundations remain owned by SH-01. For systems indexed by arbitrary small directed posets or their opposites in the locally small categories used here, we require the formal ind/pro Hom formulas, the fully faithful constant-object embedding, and invariance under cofinal reindexing. In an additive category the zero criterion says that a system is formally zero exactly when every stage has a later transition equal to zero. A single pro-morphism, including a pro-isomorphism, and the finite acyclic diagrams used below admit simultaneous level representatives after common cofinal reindexing. A pro-isomorphism so represented need not be a levelwise isomorphism. For module systems, kernels and cokernels of such strict representatives compute the corresponding formal kernels and cokernels; hence a strict pro-isomorphism has pro-zero kernel and cokernel. A functor extends to formal systems, preserving their isomorphisms; a contravariant functor interchanges ind and pro. These are categorical assertions, separate from existence or exactness of ordinary limits. The net and duality arguments below use this contract. The supporting proofs `SH02-FSB-HOM` through `SH02-FSB-FUNCTORS` establish these formal assertions, with strictification restricted to the finite acyclic diagrams actually used. 
 
 ### SH02-CB-IMP-DERIVED-COFINALITY — Derived limits of module diagrams
 
-The second contract, proved in `SH02-FSB-COFINALITY` and `SH02-FSB-PRISM` of the [formal stabilization lesson](formal-system-bridge.md), concerns small directed partially ordered sets $I,J$ and an order-preserving map $\phi:J\to I$. Suppose that for every $i\in I$ the upper comma category $J_i=\{j\in J:i\leq\phi(j)\}$ is nonempty and directed. For every inverse system $A:I^{\mathrm{op}}\to\operatorname{Mod}(k)$, the canonical restriction must induce
+The second contract, proved in `SH02-FSB-COFINALITY` and `SH02-FSB-PRISM` of the [formal stabilization lesson](../../SH02-formal-system-bridge.html), concerns small directed partially ordered sets $I,J$ and an order-preserving map $\phi:J\to I$. Suppose that for every $i\in I$ the upper comma category $J_i=\{j\in J:i\leq\phi(j)\}$ is nonempty and directed. For every inverse system $A:I^{\mathrm{op}}\to\operatorname{Mod}(k)$, the canonical restriction must induce
 
 $$
 R\varprojlim_I A\xrightarrow{\sim}R\varprojlim_J\phi^*A.

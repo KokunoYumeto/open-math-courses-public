@@ -1,5 +1,5 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Weights on random operators and formal dimension</title><link rel="stylesheet" href="../assets/reader/reader.css"><script src="../assets/reader/mathjax-config.js"></script><script defer src="../assets/mathjax/tex-svg.js"></script></head><body><main><nav><a href="../index.html">Course contents</a><a href="index.html">Companion readings</a><a href="src/weights-on-random-operators-and-formal-dimension.md" download>Markdown source</a></nav><h1 id="weights-on-random-operators-and-formal-dimension">Weights on random operators and formal dimension</h1>
-<p><em>Public domain (CC0).</em></p>
+<p><em>Mathematical additions by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
 <h2 id="introduction">Introduction</h2>
 <p>On a measure space, a positive function <span class="math" data-tex="\(\rho\)">\(\rho\)</span> turns into a measure <span class="math" data-tex="\(\rho\,d\mu\)">\(\rho\,d\mu\)</span>, and integrating the constant
 function <span class="math" data-tex="\(1\)">\(1\)</span> against it gives a number. This lesson does the same thing on the &quot;space of orbits&quot; of a measured
@@ -259,13 +259,166 @@ operator-valued weight <span class="math" data-tex="\(E\)">\(E\)</span> and fns 
 <span class="math" data-tex="\((D(\varphi_1\circ E):D(\varphi\circ E))_t=(D\varphi_1:D\varphi)_t\)">\((D(\varphi_1\circ E):D(\varphi\circ E))_t=(D\varphi_1:D\varphi)_t\)</span> for fns <span class="math" data-tex="\(\varphi_1\)">\(\varphi_1\)</span>. The composition of a
 normal weight with a normal operator-valued weight is a normal weight. These are proved in the course <em>Modular theory and weights</em>:
 existence and uniqueness in <a href="../../OA-MOD/OA-MOD-OE.html#OA-MOD-OE-01">Compatible modular weights and the full positive cone,
-§§OE-01–OE-06</a>; the restriction of the modular group and the cocycle identity in <a href="../../OA-MOD/OA-MOD-OM.html#OA-MOD-OM-01">Modular
-invariants of operator-valued weights, §OM-01</a>; normality of compositions in <a href="../../OA-MOD/OA-MOD-OVW.html#OA-MOD-OVW-02">Finite
+§§OE-01–OE-06</a>; the restriction of the modular group and the cocycle identity are proved in <a href="#finite-matrices-and-modular-restriction">Finite matrices and modular restriction</a>; normality of compositions in <a href="../../OA-MOD/OA-MOD-OVW.html#OA-MOD-OVW-02">Finite
 calculus and composition of operator-valued weights, §§OVW-02 and OVW-04</a>;
 <span class="math" data-tex="\(E(a^*xa)=a^*E(x)a\)">\(E(a^*xa)=a^*E(x)a\)</span> is part of the definition. For the covariance, <span class="math" data-tex="\(E_t=\sigma^\varphi_{-t}\circ E\circ\sigma^{\varphi\circ
 E}_t\)">\(E_t=\sigma^\varphi_{-t}\circ E\circ\sigma^{\varphi\circ
 E}_t\)</span> is again an fns operator-valued weight, and <span class="math" data-tex="\(\varphi\circ E_t=\varphi\circ E\)">\(\varphi\circ E_t=\varphi\circ E\)</span> because <span class="math" data-tex="\(\varphi\circ\sigma^\varphi_{-t}=\varphi\)">\(\varphi\circ\sigma^\varphi_{-t}=\varphi\)</span>
 and <span class="math" data-tex="\(\varphi\circ E\)">\(\varphi\circ E\)</span> is invariant under its modular group; uniqueness gives <span class="math" data-tex="\(E_t=E\)">\(E_t=E\)</span>. See also, e.g., [Haagerup 1979].</p>
+<h3 id="finite-matrices-and-modular-restriction">Finite matrices and modular restriction</h3>
+<p><strong>Proposition 2.1.</strong> Let <span class="math" data-tex="\(N\subset M\)">\(N\subset M\)</span>, let <span class="math" data-tex="\(T\)">\(T\)</span> be a faithful normal semifinite operator-valued weight onto <span class="math" data-tex="\(N\)">\(N\)</span>, and let <span class="math" data-tex="\(\varphi,\psi\)">\(\varphi,\psi\)</span> be faithful normal semifinite weights on <span class="math" data-tex="\(N\)">\(N\)</span>. Put <span class="math" data-tex="\(\Phi=\widehat\varphi\circ T\)">\(\Phi=\widehat\varphi\circ T\)</span>, <span class="math" data-tex="\(\Psi=\widehat\psi\circ T\)">\(\Psi=\widehat\psi\circ T\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\sigma_t^\Phi(n)=\sigma_t^\varphi(n),\qquad
+[D\Psi:D\Phi]_t=[D\psi:D\varphi]_t\in N
+\quad(n\in N,\ t\in\mathbb R).
+\]">\[
+\sigma_t^\Phi(n)=\sigma_t^\varphi(n),\qquad
+[D\Psi:D\Phi]_t=[D\psi:D\varphi]_t\in N
+\quad(n\in N,\ t\in\mathbb R).
+\]</span>
+<p><strong>Proof.</strong> We prove the finite mixed-domain transfer first, then use two independent right spectral cutoffs to obtain the full analytic graph. This order avoids assuming the modular restriction being proved.</p>
+<h4 id="1-types-and-finite-ideals">1. Types and finite ideals</h4>
+<p>Let <span class="math" data-tex="\(N\subset M\)">\(N\subset M\)</span> be von Neumann algebras and <span class="math" data-tex="\(T:M_+\to\widehat N_+\)">\(T:M_+\to\widehat N_+\)</span> a faithful normal semifinite operator-valued weight. Let <span class="math" data-tex="\(\varphi,\psi\)">\(\varphi,\psi\)</span> be faithful normal semifinite scalar weights on <span class="math" data-tex="\(N\)">\(N\)</span>, with <span class="math" data-tex="\(\Phi=\widehat\varphi\circ T\)">\(\Phi=\widehat\varphi\circ T\)</span>, <span class="math" data-tex="\(\Psi=\widehat\psi\circ T\)">\(\Psi=\widehat\psi\circ T\)</span>. For a scalar weight <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, write <span class="math" data-tex="\(\mathfrak n_\omega=\{x:\omega(x^*x)&lt;\infty\}\)">\(\mathfrak n_\omega=\{x:\omega(x^*x)&lt;\infty\}\)</span>. Write <span class="math" data-tex="\(\mathfrak n_T=\{x:T(x^*x)\in N_+\}\)">\(\mathfrak n_T=\{x:T(x^*x)\in N_+\}\)</span>. The bounded finite-ideal extension of <span class="math" data-tex="\(T\)">\(T\)</span> is <span class="math" data-tex="\(\dot T\)">\(\dot T\)</span>, with its linear polarization and <span class="math" data-tex="\(N\)">\(N\)</span>-bimodularity as in OVW-02.</p>
+<p>Take <span class="math" data-tex="\(y\in\mathfrak n_\Phi\cap\mathfrak n_T\)">\(y\in\mathfrak n_\Phi\cap\mathfrak n_T\)</span> and <span class="math" data-tex="\(z\in\mathfrak n_\Psi\cap\mathfrak n_T\)">\(z\in\mathfrak n_\Psi\cap\mathfrak n_T\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+A=T(y^*y),\qquad B=T(z^*z),\qquad C=\dot T(y^*z).
+\]">\[
+A=T(y^*y),\qquad B=T(z^*z),\qquad C=\dot T(y^*z).
+\]</span>
+<p>Then <span class="math" data-tex="\(A,B\)">\(A,B\)</span> are bounded positive elements of <span class="math" data-tex="\(N\)">\(N\)</span>, <span class="math" data-tex="\(\varphi(A)=\Phi(y^*y)&lt;\infty\)">\(\varphi(A)=\Phi(y^*y)&lt;\infty\)</span>, and <span class="math" data-tex="\(\psi(B)=\Psi(z^*z)&lt;\infty\)">\(\psi(B)=\Psi(z^*z)&lt;\infty\)</span>.</p>
+<h4 id="2-matrix-positivity-follows-from-bimodularity">2. Matrix positivity follows from bimodularity</h4>
+<p>The ideal <span class="math" data-tex="\(\mathfrak n_T\)">\(\mathfrak n_T\)</span> is stable under right multiplication by <span class="math" data-tex="\(N\)">\(N\)</span>, since <span class="math" data-tex="\(T((ya)^*(ya))=a^*Aa\)">\(T((ya)^*(ya))=a^*Aa\)</span> is bounded. For every <span class="math" data-tex="\(a,b\in N\)">\(a,b\in N\)</span>, positivity and the finite-ideal identities give</p>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}a\\b\end{pmatrix}^*
+\begin{pmatrix}A&amp;C\\C^*&amp;B\end{pmatrix}
+\begin{pmatrix}a\\b\end{pmatrix}
+=T((ya+zb)^*(ya+zb))\ge0.
+\]">\[
+\begin{pmatrix}a\\b\end{pmatrix}^*
+\begin{pmatrix}A&amp;C\\C^*&amp;B\end{pmatrix}
+\begin{pmatrix}a\\b\end{pmatrix}
+=T((ya+zb)^*(ya+zb))\ge0.
+\]</span>
+<p>This implies positivity of the full matrix <span class="math" data-tex="\(Q\in M_2(N)\)">\(Q\in M_2(N)\)</span>, rather than merely positivity in scalar tests using one vector. Here is an algebraic verification. If its negative part <span class="math" data-tex="\(Q_-\)">\(Q_-\)</span> were nonzero, take the columns of <span class="math" data-tex="\(Q_-^{1/2}\)">\(Q_-^{1/2}\)</span> as the test columns. Since <span class="math" data-tex="\(Q_-\)">\(Q_-\)</span> is a spectral function of <span class="math" data-tex="\(Q\)">\(Q\)</span>,</p>
+<span class="math math-display" data-tex="\[
+Q_-^{1/2}QQ_-^{1/2}=-Q_-^2.
+\]">\[
+Q_-^{1/2}QQ_-^{1/2}=-Q_-^2.
+\]</span>
+<p>At least one diagonal entry of the nonzero positive matrix <span class="math" data-tex="\(Q_-^2\)">\(Q_-^2\)</span> is nonzero: if all its diagonal entries vanished, every column of <span class="math" data-tex="\(Q_-\)">\(Q_-\)</span> would have zero squared norm and <span class="math" data-tex="\(Q_-=0\)">\(Q_-=0\)</span>. That test column would give a negative nonzero element, a contradiction. Hence <span class="math" data-tex="\(Q\ge0\)">\(Q\ge0\)</span>.</p>
+<h4 id="section-3"><span id="3-oriented-factorization"></span>3. Oriented factorization</h4>
+<p>For <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, matrix positivity and the Schur-complement test give</p>
+<span class="math math-display" data-tex="\[
+C^*(A+\varepsilon)^{-1}C\le B.
+\]">\[
+C^*(A+\varepsilon)^{-1}C\le B.
+\]</span>
+<p>For example, apply the block quadratic form with first component <span class="math" data-tex="\(-(A+\varepsilon)^{-1}C\eta\)">\(-(A+\varepsilon)^{-1}C\eta\)</span> and second component <span class="math" data-tex="\(\eta\)">\(\eta\)</span>; adding <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> to the first diagonal preserves positivity. Thus</p>
+<span class="math math-display" data-tex="\[
+k_\varepsilon=(A+\varepsilon)^{-1/2}C(B+\varepsilon)^{-1/2}
+\]">\[
+k_\varepsilon=(A+\varepsilon)^{-1/2}C(B+\varepsilon)^{-1/2}
+\]</span>
+<p>is a contraction in <span class="math" data-tex="\(N\)">\(N\)</span>. A subnet has an ultraweak limit <span class="math" data-tex="\(k\)">\(k\)</span> in the unit ball. Since square roots converge in norm,</p>
+<span class="math math-display" data-tex="\[
+C=(A+\varepsilon)^{1/2}k_\varepsilon(B+\varepsilon)^{1/2}
+\longrightarrow A^{1/2}kB^{1/2}
+\]">\[
+C=(A+\varepsilon)^{1/2}k_\varepsilon(B+\varepsilon)^{1/2}
+\longrightarrow A^{1/2}kB^{1/2}
+\]</span>
+<p>ultraweakly. Therefore <span class="math" data-tex="\(C=A^{1/2}kB^{1/2}\)">\(C=A^{1/2}kB^{1/2}\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+a_0=k^*A^{1/2},\qquad b_0=B^{1/2}.
+\]">\[
+a_0=k^*A^{1/2},\qquad b_0=B^{1/2}.
+\]</span>
+<p>Then <span class="math" data-tex="\(a_0^*a_0=A^{1/2}kk^*A^{1/2}\le A\)">\(a_0^*a_0=A^{1/2}kk^*A^{1/2}\le A\)</span>, so <span class="math" data-tex="\(a_0\in\mathfrak n_\varphi\)">\(a_0\in\mathfrak n_\varphi\)</span>. Likewise <span class="math" data-tex="\(b_0\in\mathfrak n_\psi\)">\(b_0\in\mathfrak n_\psi\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\boxed{\dot T(y^*z)=a_0^*b_0\in\mathfrak n_\varphi^*\mathfrak n_\psi.}
+\]">\[
+\boxed{\dot T(y^*z)=a_0^*b_0\in\mathfrak n_\varphi^*\mathfrak n_\psi.}
+\]</span>
+<p>This is the required orientation. It does not exchange the two scalar weights or require a trace. It proves one elementary product, stronger than membership merely in the finite linear span.</p>
+<h4 id="section-4"><span id="4-the-finite-scalar-mixed-identity"></span>4. The finite scalar mixed identity</h4>
+<p>Suppose <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> belongs to the relative scalar analytic graph on <span class="math" data-tex="\(N\)">\(N\)</span>, so its proved finite-domain criterion gives</p>
+<span class="math math-display" data-tex="\[
+a\mathfrak n_\varphi^*\subset\mathfrak n_\psi^*,\qquad
+\mathfrak n_\psi b\subset\mathfrak n_\varphi,\qquad
+\psi(aC)=\varphi(Cb)
+\quad(C\in\operatorname{span}\mathfrak n_\varphi^*\mathfrak n_\psi).
+\]">\[
+a\mathfrak n_\varphi^*\subset\mathfrak n_\psi^*,\qquad
+\mathfrak n_\psi b\subset\mathfrak n_\varphi,\qquad
+\psi(aC)=\varphi(Cb)
+\quad(C\in\operatorname{span}\mathfrak n_\varphi^*\mathfrak n_\psi).
+\]</span>
+<p>These are AG.27's exact oriented domains. To obtain the required bounds without an unstated relative multiplier theorem, use its balanced matrix weight <span class="math" data-tex="\(\Omega(X)=\psi(X_{11})+\varphi(X_{22})\)">\(\Omega(X)=\psi(X_{11})+\varphi(X_{22})\)</span>. The pair <span class="math" data-tex="\(aE_{12},bE_{12}\)">\(aE_{12},bE_{12}\)</span> has the complete bounded lower strip proved in AG.28–AG.31. Let <span class="math" data-tex="\(H\)">\(H\)</span> be its value at <span class="math" data-tex="\(-i/2\)">\(-i/2\)</span>. HS.15–HS.16 applied to <span class="math" data-tex="\(aE_{12}\)">\(aE_{12}\)</span>, with positive test <span class="math" data-tex="\(QE_{22}\)">\(QE_{22}\)</span>, gives <span class="math" data-tex="\(\psi(aQa^*)\le\|H\|^2\varphi(Q)\)">\(\psi(aQa^*)\le\|H\|^2\varphi(Q)\)</span>. Reflect the full strip by <span class="math" data-tex="\(F(\overline z-i)^*\)">\(F(\overline z-i)^*\)</span>; its real edge is the modular orbit of <span class="math" data-tex="\(b^*E_{21}\)">\(b^*E_{21}\)</span> and its midpoint is <span class="math" data-tex="\(H^*\)">\(H^*\)</span>. The same half-strip theorem, now tested against <span class="math" data-tex="\(QE_{11}\)">\(QE_{11}\)</span>, gives <span class="math" data-tex="\(\varphi(b^*Qb)\le\|H\|^2\psi(Q)\)">\(\varphi(b^*Qb)\le\|H\|^2\psi(Q)\)</span>. Take <span class="math" data-tex="\(K=L=\max(1,\|H\|)\)">\(K=L=\max(1,\|H\|)\)</span>. Normal evaluation of the increasing bounded spectral truncations, including the truncations of any infinite projection, extends both inequalities to the full extended cone. Thus</p>
+<span class="math math-display" data-tex="\[
+\widehat\psi(aQa^*)\le K^2\widehat\varphi(Q),\qquad
+\widehat\varphi(b^*Qb)\le L^2\widehat\psi(Q).
+\]">\[
+\widehat\psi(aQa^*)\le K^2\widehat\varphi(Q),\qquad
+\widehat\varphi(b^*Qb)\le L^2\widehat\psi(Q).
+\]</span>
+<p>Bimodularity and composition give the corresponding inequalities on <span class="math" data-tex="\(M\)">\(M\)</span>. In particular <span class="math" data-tex="\(ya^*\in\mathfrak n_\Psi\)">\(ya^*\in\mathfrak n_\Psi\)</span> and <span class="math" data-tex="\(zb\in\mathfrak n_\Phi\)">\(zb\in\mathfrak n_\Phi\)</span>. Right <span class="math" data-tex="\(N\)">\(N\)</span>-stability also keeps them in <span class="math" data-tex="\(\mathfrak n_T\)">\(\mathfrak n_T\)</span>.</p>
+<p>Here is the finite-composition identity with its full domains. For <span class="math" data-tex="\(\omega\in\{\varphi,\psi\}\)">\(\omega\in\{\varphi,\psi\}\)</span>, <span class="math" data-tex="\(\Omega=\widehat\omega\circ T\)">\(\Omega=\widehat\omega\circ T\)</span>, and <span class="math" data-tex="\(u,v\in\mathfrak n_T\cap\mathfrak n_\Omega\)">\(u,v\in\mathfrak n_T\cap\mathfrak n_\Omega\)</span>, polarize <span class="math" data-tex="\(u^*v\)">\(u^*v\)</span> into its four positive squares. Each <span class="math" data-tex="\(u+i^kv\)">\(u+i^kv\)</span> remains in both ideals. Its square has bounded <span class="math" data-tex="\(T\)">\(T\)</span>-output and finite <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>-value, so <span class="math" data-tex="\(\Omega(w^*w)=\omega(T(w^*w))\)">\(\Omega(w^*w)=\omega(T(w^*w))\)</span>. Polarization proves both <span class="math" data-tex="\(\dot T(u^*v)\in\mathfrak m_\omega\)">\(\dot T(u^*v)\in\mathfrak m_\omega\)</span> and <span class="math" data-tex="\(\Omega(u^*v)=\omega(\dot T(u^*v))\)">\(\Omega(u^*v)=\omega(\dot T(u^*v))\)</span>. This is not a scalar evaluation on an undefined mixed product. Applying it to <span class="math" data-tex="\(ya^*,z\)">\(ya^*,z\)</span> and <span class="math" data-tex="\(y,zb\)">\(y,zb\)</span>, bimodularity gives</p>
+<span class="math math-display" data-tex="\[
+\Psi(ay^*z)=\psi(a\dot T(y^*z))
+=\varphi(\dot T(y^*z)b)=\Phi(y^*zb).
+\]">\[
+\Psi(ay^*z)=\psi(a\dot T(y^*z))
+=\varphi(\dot T(y^*z)b)=\Phi(y^*zb).
+\]</span>
+<p>Every value is a defined finite complex weight value. The left product is <span class="math" data-tex="\((ya^*)^*z\)">\((ya^*)^*z\)</span> in <span class="math" data-tex="\(\mathfrak n_\Psi^*\mathfrak n_\Psi\)">\(\mathfrak n_\Psi^*\mathfrak n_\Psi\)</span>, and the right product is <span class="math" data-tex="\(y^*(zb)\)">\(y^*(zb)\)</span> in <span class="math" data-tex="\(\mathfrak n_\Phi^*\mathfrak n_\Phi\)">\(\mathfrak n_\Phi^*\mathfrak n_\Phi\)</span>.</p>
+<h4 id="section-5"><span id="5-independent-right-spectral-cuts"></span>5. Independent right spectral cuts</h4>
+<p>Now take arbitrary <span class="math" data-tex="\(y\in\mathfrak n_\Phi\)">\(y\in\mathfrak n_\Phi\)</span>, <span class="math" data-tex="\(z\in\mathfrak n_\Psi\)">\(z\in\mathfrak n_\Psi\)</span>. The extended positives <span class="math" data-tex="\(A=T(y^*y)\)">\(A=T(y^*y)\)</span>, <span class="math" data-tex="\(B=T(z^*z)\)">\(B=T(z^*z)\)</span> may be unbounded. They have no nonzero infinite projections: a nonzero infinite projection would have positive faithful <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>- or <span class="math" data-tex="\(\psi\)">\(\psi\)</span>-value, forcing the corresponding extended evaluation to be infinite. Their finite spectral parts are densely defined positive affiliated operators. Put</p>
+<span class="math math-display" data-tex="\[
+e_n=1_{[0,n]}(A),\qquad f_n=1_{[0,n]}(B),\qquad
+y_n=ye_n,\quad z_n=zf_n.
+\]">\[
+e_n=1_{[0,n]}(A),\qquad f_n=1_{[0,n]}(B),\qquad
+y_n=ye_n,\quad z_n=zf_n.
+\]</span>
+<p>These are two separate <strong>right</strong> cuts. Bimodularity gives <span class="math" data-tex="\(T(y_n^*y_n)=e_nAe_n\le n1\)">\(T(y_n^*y_n)=e_nAe_n\le n1\)</span> and <span class="math" data-tex="\(T(z_n^*z_n)=f_nBf_n\le n1\)">\(T(z_n^*z_n)=f_nBf_n\le n1\)</span>. Because each cutoff is a spectral function of its own positive, <span class="math" data-tex="\(e_nAe_n\le A\)">\(e_nAe_n\le A\)</span>, <span class="math" data-tex="\(f_nBf_n\le B\)">\(f_nBf_n\le B\)</span>. Thus <span class="math" data-tex="\(y_n\in\mathfrak n_\Phi\cap\mathfrak n_T\)">\(y_n\in\mathfrak n_\Phi\cap\mathfrak n_T\)</span>, <span class="math" data-tex="\(z_n\in\mathfrak n_\Psi\cap\mathfrak n_T\)">\(z_n\in\mathfrak n_\Psi\cap\mathfrak n_T\)</span>.</p>
+<p>The scalar tails satisfy</p>
+<span class="math math-display" data-tex="\[
+\|\Lambda_\Phi(y-y_n)\|^2
+=\widehat\varphi(A(1-e_n))\longrightarrow0,\qquad
+\|\Lambda_\Psi(z-z_n)\|^2
+=\widehat\psi(B(1-f_n))\longrightarrow0.
+\]">\[
+\|\Lambda_\Phi(y-y_n)\|^2
+=\widehat\varphi(A(1-e_n))\longrightarrow0,\qquad
+\|\Lambda_\Psi(z-z_n)\|^2
+=\widehat\psi(B(1-f_n))\longrightarrow0.
+\]</span>
+<p>Indeed the bounded spectral truncations increase to the full positive, their scalar evaluations increase to its finite scalar value by normal extended-positive evaluation, and additivity makes each tail the difference. The half-strip inequalities give</p>
+<span class="math math-display" data-tex="\[
+\|\Lambda_\Psi((y-y_n)a^*)\|
+\le K\|\Lambda_\Phi(y-y_n)\|,\qquad
+\|\Lambda_\Phi((z-z_n)b)\|
+\le L\|\Lambda_\Psi(z-z_n)\|.
+\]">\[
+\|\Lambda_\Psi((y-y_n)a^*)\|
+\le K\|\Lambda_\Phi(y-y_n)\|,\qquad
+\|\Lambda_\Phi((z-z_n)b)\|
+\le L\|\Lambda_\Psi(z-z_n)\|.
+\]</span>
+<p>Cauchy–Schwarz in the respective GNS spaces therefore passes the finite identities to</p>
+<span class="math math-display" data-tex="\[
+\Psi((ya^*)^*z)=\Phi(y^*(zb))
+\quad(y\in\mathfrak n_\Phi,\ z\in\mathfrak n_\Psi).
+\]">\[
+\Psi((ya^*)^*z)=\Phi(y^*(zb))
+\quad(y\in\mathfrak n_\Phi,\ z\in\mathfrak n_\Psi).
+\]</span>
+<p>No common cutoff commuting with both extended positives, left cut, or equality on a merely dense unbounded-form test space has been substituted.</p>
+<h4 id="the-real-modular-actions">The real modular actions</h4>
+<p>The transferred ideal inclusions, their bounds, and the last full finite-domain identity are exactly AG.27 on <span class="math" data-tex="\(M\)">\(M\)</span>. They give the analytic-graph inclusion OR.9. The real-action comparison needs its embedded-algebra version, since invariance of <span class="math" data-tex="\(N\)">\(N\)</span> under the <span class="math" data-tex="\(M\)">\(M\)</span>-action is a conclusion.</p>
+<p>Let <span class="math" data-tex="\(\alpha_t\)">\(\alpha_t\)</span> be the mixed group on <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(\beta_t\)">\(\beta_t\)</span> that on <span class="math" data-tex="\(M\)">\(M\)</span>. Both are normal sigma-weakly continuous groups of complex-linear isometries, directly from their modular automorphisms and unitary cocycles, as AG.26 states. Suppose their lower imaginary graphs satisfy <span class="math" data-tex="\(G(\alpha_{-i})\subset G(\beta_{-i})\)">\(G(\alpha_{-i})\subset G(\beta_{-i})\)</span> in <span class="math" data-tex="\(M\oplus M\)">\(M\oplus M\)</span>. Reversing graph pairs gives the corresponding positive-imaginary inclusion. Take <span class="math" data-tex="\(x\)">\(x\)</span> in AG.02's bounded exponential core in <span class="math" data-tex="\(N\)">\(N\)</span>, with entire orbit bound <span class="math" data-tex="\(Ce^{r|\operatorname{Im}z|}\)">\(Ce^{r|\operatorname{Im}z|}\)</span>, and put <span class="math" data-tex="\(y_k=\alpha_{ik}(x)\)">\(y_k=\alpha_{ik}(x)\)</span> for every integer <span class="math" data-tex="\(k\)">\(k\)</span>. These are elements of <span class="math" data-tex="\(N\)">\(N\)</span> and remain in its entire core. Both imaginary graph inclusions give <span class="math" data-tex="\(\beta_i(y_k)=y_{k+1}\)">\(\beta_i(y_k)=y_{k+1}\)</span> and <span class="math" data-tex="\(\beta_{-i}(y_{k+1})=y_k\)">\(\beta_{-i}(y_{k+1})=y_k\)</span> inside <span class="math" data-tex="\(M\)">\(M\)</span>. Integer strip gluing therefore gives an entire <span class="math" data-tex="\(M\)">\(M\)</span>-orbit for <span class="math" data-tex="\(x\)">\(x\)</span> with these same imaginary integer values. On every strip between adjacent integer heights, the real isometries of <span class="math" data-tex="\(\beta\)">\(\beta\)</span> preserve the two edge norms. The scalar three-lines estimate bounds the glued orbit by <span class="math" data-tex="\(Ce^{r|\operatorname{Im}z|}\)">\(Ce^{r|\operatorname{Im}z|}\)</span>.</p>
+<p>For <span class="math" data-tex="\(\omega\in M_*\)">\(\omega\in M_*\)</span>, the scalar entire difference <span class="math" data-tex="\(\omega(\alpha_z(x)-\beta_z(x))\)">\(\omega(\alpha_z(x)-\beta_z(x))\)</span> has AG.03's horizontal growth bound and vanishes at all positive imaginary integers. That proved uniqueness theorem makes it zero. Predual separation gives equality of the real orbits on this core. AG.02 supplies uniformly bounded sigma-weak core approximants to every <span class="math" data-tex="\(n\in N\)">\(n\in N\)</span>; normality of the two fixed real maps passes equality to all of <span class="math" data-tex="\(N\)">\(N\)</span>. Hence <span class="math" data-tex="\(\beta_t(n)=\alpha_t(n)\)">\(\beta_t(n)=\alpha_t(n)\)</span>, establishing invariance rather than presupposing it. No general Kadison-isometry classification is used.</p>
+<p>Setting the two scalar weights equal yields the forward modular restriction. Evaluating the mixed action at <span class="math" data-tex="\(1\)">\(1\)</span> yields its cocycle restriction with numerator <span class="math" data-tex="\(\psi\)">\(\psi\)</span> and reference <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. The scalar inputs used above are <a href="../../OA-MOD/OA-MOD-AG.html#the-relative-generator-and-its-two-mixed-ideals">Analytic generators and finite domains</a>, its relative finite-domain theorem and exponential-core comparison, and <a href="../../OA-MOD/OA-MOD-HS.html#a-strip-endpoint-acts-on-the-whole-finite-left-ideal">Half-strip domination and endpoints</a>. The bounded finite calculus is <a href="../../OA-MOD/OA-MOD-OVW.html#OA-MOD-OVW-02">Finite calculus and composition of operator-valued weights</a>. The proof uses these scalar and finite-calculus results without assuming that the larger modular group preserves the smaller algebra.</p>
 <p><strong>(B2) Cocycles and traces.</strong> Two fns weights with the same cocycle derivative relative to a third one
 are equal. An fns weight with <span class="math" data-tex="\(\sigma^\varphi=\mathrm{id}\)">\(\sigma^\varphi=\mathrm{id}\)</span> is a trace. The support of a normal trace is central, and
 <span class="math" data-tex="\(\varphi(x)=\varphi(exe)\)">\(\varphi(x)=\varphi(exe)\)</span> for a normal weight with support <span class="math" data-tex="\(e\)">\(e\)</span>. The first statement is <a href="../../OA-MOD/OA-MOD-CX.html#OA-MOD-CX-10">Reconstructing a weight from a modular cocycle,
@@ -576,7 +729,7 @@ on <span class="math" data-tex="\(L\)">\(L\)</span>. (i) The GNS space of <span 
 (ii) Call <span class="math" data-tex="\(\zeta\in\mathfrak h\)">\(\zeta\in\mathfrak h\)</span> <em>right bounded</em> if <span class="math" data-tex="\(a\mapsto\lambda(a)\zeta\)">\(a\mapsto\lambda(a)\zeta\)</span> (<span class="math" data-tex="\(a\in\mathcal A\)">\(a\in\mathcal A\)</span>) extends to a
 bounded operator <span class="math" data-tex="\(\pi_r(\zeta)\)">\(\pi_r(\zeta)\)</span> on <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span>. Then <span class="math" data-tex="\(y\zeta=\pi_r(\zeta)\eta_\psi(y)\)">\(y\zeta=\pi_r(\zeta)\eta_\psi(y)\)</span> for every
 <span class="math" data-tex="\(y\in\mathfrak n_\psi\)">\(y\in\mathfrak n_\psi\)</span>.</p>
-<h2 id="section-3"><span id="3-random-operators-of-degree-alpha"></span>3. Random operators of degree <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span></h2>
+<h2 id="3-random-operators-of-degree-alpha">3. Random operators of degree <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span></h2>
 <p>A closed densely defined operator <span class="math" data-tex="\(T\)">\(T\)</span> is determined by the pair of bounded operators <span class="math" data-tex="\((u,(1+T^*T)^{-1})\)">\((u,(1+T^*T)^{-1})\)</span>, where
 <span class="math" data-tex="\(T=u|T|\)">\(T=u|T|\)</span> is the polar decomposition. A family <span class="math" data-tex="\((T_x)_{x\in G^{(0)}}\)">\((T_x)_{x\in G^{(0)}}\)</span> of closed densely defined operators
 <span class="math" data-tex="\(T_x:H_x\to H&#x27;_x\)">\(T_x:H_x\to H&#x27;_x\)</span> between measurable fields is <em>measurable</em> if both bounded families <span class="math" data-tex="\((u_x)\)">\((u_x)\)</span> and
@@ -680,7 +833,7 @@ operators <span class="math" data-tex="\(L_x=\log A_x\oplus0\)">\(L_x=\log A_x\o
 <span class="math" data-tex="\((c\circ\exp)(L_x)\,e_x-(1-e_x)\)">\((c\circ\exp)(L_x)\,e_x-(1-e_x)\)</span> with <span class="math" data-tex="\(c(\lambda)=(\lambda-i)(\lambda+i)^{-1}\)">\(c(\lambda)=(\lambda-i)(\lambda+i)^{-1}\)</span>. The intertwining relation of Lemma 3.2(c) holds for rational <span class="math" data-tex="\(t\)">\(t\)</span>,
 hence for all <span class="math" data-tex="\(t\)">\(t\)</span> by continuity, so <span class="math" data-tex="\(T\)">\(T\)</span> has degree <span class="math" data-tex="\(1\)">\(1\)</span>. Finally <span class="math" data-tex="\(\nu(T)^{it}=S^{it}\)">\(\nu(T)^{it}=S^{it}\)</span> for rational <span class="math" data-tex="\(t\)">\(t\)</span>, hence
 for all <span class="math" data-tex="\(t\)">\(t\)</span>, so <span class="math" data-tex="\(\nu(T)=S\)">\(\nu(T)=S\)</span> by Stone's theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
-<h2 id="section-4"><span id="4-normal-weights-determined-by-a-generating-cone"></span>4. Normal weights determined by a generating cone</h2>
+<h2 id="4-normal-weights-determined-by-a-generating-cone">4. Normal weights determined by a generating cone</h2>
 <p>The weight <span class="math" data-tex="\(\varphi_T\)">\(\varphi_T\)</span> will be defined by its values on the operators <span class="math" data-tex="\(\theta_\nu(\xi,\xi)\)">\(\theta_\nu(\xi,\xi)\)</span>. The following
 general principle shows that such values determine a normal weight.</p>
 <p><strong>Lemma 4.1.</strong> Fix a von Neumann algebra <span class="math" data-tex="\(M\)">\(M\)</span> and a set <span class="math" data-tex="\(\mathcal S\subset M_+\)">\(\mathcal S\subset M_+\)</span> with (i) <span class="math" data-tex="\(x+y\in\mathcal S\)">\(x+y\in\mathcal S\)</span>
@@ -715,7 +868,7 @@ determined by its values on the operators <span class="math" data-tex="\(\theta_
 <p><em>Proof.</em> (i) is clear. (ii): <span class="math" data-tex="\(a\theta_\nu(\xi,\xi)a^*=\theta_\nu(a\xi,a\xi)\)">\(a\theta_\nu(\xi,\xi)a^*=\theta_\nu(a\xi,a\xi)\)</span> with <span class="math" data-tex="\(a\xi\in D(U,\nu)\)">\(a\xi\in D(U,\nu)\)</span> by (1.2) and
 (Q1). (iii): by polarization, <span class="math" data-tex="\(\theta_\nu(\xi,\eta)=\frac14\sum_{k=0}^3i^k\theta_\nu(\xi+i^k\eta,\xi+i^k\eta)\)">\(\theta_\nu(\xi,\eta)=\frac14\sum_{k=0}^3i^k\theta_\nu(\xi+i^k\eta,\xi+i^k\eta)\)</span>, so
 the span of <span class="math" data-tex="\(\mathcal S_\nu\)">\(\mathcal S_\nu\)</span> is <span class="math" data-tex="\(\mathcal J_\nu\)">\(\mathcal J_\nu\)</span>, which is weakly dense by (Q6). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
-<h2 id="section-5"><span id="5-the-weight-of-a-positive-operator-of-degree-one"></span>5. The weight of a positive operator of degree one</h2>
+<h2 id="5-the-weight-of-a-positive-operator-of-degree-one">5. The weight of a positive operator of degree one</h2>
 <p>Throughout this section <span class="math" data-tex="\(H\)">\(H\)</span> is a <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-random Hilbert space and <span class="math" data-tex="\(T\)">\(T\)</span> a positive random operator of degree
 <span class="math" data-tex="\(1\)">\(1\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
 <p><strong>Lemma 5.1.</strong> Let <span class="math" data-tex="\(\nu\in\mathcal E^+\)">\(\nu\in\mathcal E^+\)</span>, <span class="math" data-tex="\(\psi=\psi_\nu\)">\(\psi=\psi_\nu\)</span>, and <span class="math" data-tex="\(\xi\in D(U,\nu)\)">\(\xi\in D(U,\nu)\)</span> with <span class="math" data-tex="\(\int\|\xi_x\|^2
@@ -1865,6 +2018,8 @@ Lemma 11.3(b)). If <span class="math" data-tex="\(\tau(1)&lt;\infty\)">\(\tau(1)
 <span class="math" data-tex="\(e\sim f\)">\(e\sim f\)</span> by (B8), because <span class="math" data-tex="\(x\)">\(x\)</span> is injective on <span class="math" data-tex="\(eH\)">\(eH\)</span> with closed range <span class="math" data-tex="\(fH\)">\(fH\)</span>. So the index vanishes. In Example
 11.7, <span class="math" data-tex="\(H_y=\ell^2(\mathbb N)\)">\(H_y=\ell^2(\mathbb N)\)</span> is infinite-dimensional, so <span class="math" data-tex="\(\operatorname{Tr}_\Lambda(1)=\infty\)">\(\operatorname{Tr}_\Lambda(1)=\infty\)</span>, and the index is
 <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p><strong>Exercise 12.6 (12 points).</strong> For the finite mixed transfer in Proposition 2.1, prove directly that <span class="math" data-tex="\(C=A^{1/2}kB^{1/2}\)">\(C=A^{1/2}kB^{1/2}\)</span> implies <span class="math" data-tex="\(C\in\mathfrak n_\varphi^*\mathfrak n_\psi\)">\(C\in\mathfrak n_\varphi^*\mathfrak n_\psi\)</span>. Then explain why the separate right cuts <span class="math" data-tex="\(y_n=ye_n\)">\(y_n=ye_n\)</span>, <span class="math" data-tex="\(z_n=zf_n\)">\(z_n=zf_n\)</span> converge in the required mixed scalar identity even when neither <span class="math" data-tex="\(e_n\)">\(e_n\)</span> nor <span class="math" data-tex="\(f_n\)">\(f_n\)</span> commutes with <span class="math" data-tex="\(a^*\)">\(a^*\)</span> or <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<p><strong>Solution.</strong> Set <span class="math" data-tex="\(a_0=k^*A^{1/2}\)">\(a_0=k^*A^{1/2}\)</span>, <span class="math" data-tex="\(b_0=B^{1/2}\)">\(b_0=B^{1/2}\)</span>. Contractivity gives <span class="math" data-tex="\(a_0^*a_0\le A\)">\(a_0^*a_0\le A\)</span>, so <span class="math" data-tex="\(\varphi(a_0^*a_0)&lt;\infty\)">\(\varphi(a_0^*a_0)&lt;\infty\)</span>; likewise <span class="math" data-tex="\(\psi(b_0^*b_0)&lt;\infty\)">\(\psi(b_0^*b_0)&lt;\infty\)</span>. Thus <span class="math" data-tex="\(C=a_0^*b_0\)">\(C=a_0^*b_0\)</span> has the stated orientation (4 points). Normal evaluation gives <span class="math" data-tex="\(\Lambda_\Phi(y_n)\to\Lambda_\Phi(y)\)">\(\Lambda_\Phi(y_n)\to\Lambda_\Phi(y)\)</span>, <span class="math" data-tex="\(\Lambda_\Psi(z_n)\to\Lambda_\Psi(z)\)">\(\Lambda_\Psi(z_n)\to\Lambda_\Psi(z)\)</span>. The two transferred half-strip bounds give convergence of <span class="math" data-tex="\(\Lambda_\Psi(y_na^*)\)">\(\Lambda_\Psi(y_na^*)\)</span> and <span class="math" data-tex="\(\Lambda_\Phi(z_nb)\)">\(\Lambda_\Phi(z_nb)\)</span>, without commuting a cutoff through either multiplier (4 points). Apply Cauchy–Schwarz to the identity <span class="math" data-tex="\(\langle\Lambda_\Psi(z_n),\Lambda_\Psi(y_na^*)\rangle=\langle\Lambda_\Phi(z_nb),\Lambda_\Phi(y_n)\rangle\)">\(\langle\Lambda_\Psi(z_n),\Lambda_\Psi(y_na^*)\rangle=\langle\Lambda_\Phi(z_nb),\Lambda_\Phi(y_n)\rangle\)</span>, using the first-slot-linear convention. Both sides converge to their full mixed scalar values. No common finite ideal or common spectral cutoff is required (4 points). Total: 12 points.</p>
 <h2 id="references">References</h2>
 <ul>
 <li>[Arveson 1974] W. Arveson, On groups of automorphisms of operator algebras, J. Functional Analysis 15 (1974),

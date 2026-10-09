@@ -79,7 +79,7 @@ Rf_!\simeq Rp_*j_!.
 \tag{SB.2}
 \]
 
-**Proof.** Let $I$ be injective on $X$. The preceding lemma makes $j_!I$ c-soft on $\overline X$. Each fibre of $p$ is compact Hausdorff, and the restriction of $j_!I$ to that fibre is soft. Its positive cohomology vanishes. The proper-fibre theorem [Stacks, Tag 09V5](https://stacks.math.columbia.edu/tag/09V5), with the constant-ring specialization explained in [our prerequisite contracts](open-prerequisites.md), now gives $R^qp_*(j_!I)=0$ for $q>0$.
+**Proof.** Let $I$ be injective on $X$. The preceding lemma makes $j_!I$ c-soft on $\overline X$. Each fibre of $p$ is compact Hausdorff, and the restriction of $j_!I$ to that fibre is soft. Its positive cohomology vanishes. The proper-fibre theorem [Stacks, Tag 09V5](https://stacks.math.columbia.edu/tag/09V5), with the constant-ring specialization explained in [our prerequisite contracts](../../SH02-open-prerequisites.html), now gives $R^qp_*(j_!I)=0$ for $q>0$.
 
 Take a bounded-below injective resolution of the input. Since $j_!$ is exact and sends each term to a $p_*$-acyclic sheaf, applying $p_*j_!$ computes both sides of (SB.2). The comparison is the identity on this resolution and extends (SB.1). $\square$
 
@@ -235,7 +235,7 @@ where $k_U$ is extended by zero to $X$. The first input belongs to $D^{[0,r]}$, 
 f^!D^{\geq a}\subset D^{\geq a-r}.
 \]
 
-The unique adjoint identification preserving its counit identifies it with the construction in [Exceptional inverse image](exceptional-operations.md). The finite cohomological-dimension hypothesis is retained; preservation of $D^b$ by an arbitrary $f^!$ is not inferred. Similarly, $Rf_!$ sends $D^{[a,b]}$ into $D^{[a,b+r]}$ when such a bound $r$ is available, by its bounded hypercohomology spectral sequence.
+The unique adjoint identification preserving its counit identifies it with the construction in [Exceptional inverse image](../../SH02-exceptional-operations.html). The finite cohomological-dimension hypothesis is retained; preservation of $D^b$ by an arbitrary $f^!$ is not inferred. Similarly, $Rf_!$ sends $D^{[a,b]}$ into $D^{[a,b+r]}$ when such a bound $r$ is available, by its bounded hypercohomology spectral sequence.
 
 ## SH02-SIX-EXERCISES — Two checks on the bridge
 

@@ -27,7 +27,7 @@ E_v=U\times_VT^*V,
 \rho_v(u,\xi)=(u,dv_u^*\xi).
 $$
 
-The proof uses four individually specified constructions from [microlocal Hom](microlocal-hom.md): common invertible-line cancellation SH02-MH-TWISTS; the two inverse comparisons MH19 and MH20 in SH02-MH-PAIR-TRANSPORT; and the ordinary-product comparison MH23 in SH02-MH-HOM-PRODUCT. It does not assume that unit's general fibre-product ordinary-Hom target. The required microlocal external-product and inverse-image operations retain their prerequisites in [microlocalization](microlocalization.md). Proper-support base change, its projection formula, composition and internal exceptional adjunction are the contracts in [exceptional operations](exceptional-operations.md); orientation traces and boundedness are specified in [manifold duality](manifold-duality.md).
+The proof uses four individually specified constructions from [microlocal Hom](../../SH02-microlocal-hom.html): common invertible-line cancellation SH02-MH-TWISTS; the two inverse comparisons MH19 and MH20 in SH02-MH-PAIR-TRANSPORT; and the ordinary-product comparison MH23 in SH02-MH-HOM-PRODUCT. It does not assume that unit's general fibre-product ordinary-Hom target. The required microlocal external-product and inverse-image operations retain their prerequisites in [microlocalization](../../SH02-microlocalization.html). Proper-support base change, its projection formula, composition and internal exceptional adjunction are the contracts in [exceptional operations](../../SH02-exceptional-operations.html); orientation traces and boundedness are specified in [manifold duality](../../SH02-manifold-duality.html).
 
 In the notation above, the two inverse comparisons used here are
 

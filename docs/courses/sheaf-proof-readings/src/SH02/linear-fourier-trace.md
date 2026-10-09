@@ -2,7 +2,7 @@
 
 Original programme text: CC0 1.0 Universal. The foundational comparison is with Schapira's [*An Introduction to Sheaves on Grothendieck Topologies*, 1 August 2026, §§4.5–4.6 and §4.9](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf#page=92): proper-support base change, exceptional adjunction and the right adjoint of a kernel transform. The proof here retains a potentially noninvertible support map and compares explicitly specified Fourier adjunctions. The final source account distinguishes these additional arguments from the cited foundation.
 
-The first proof retains the middle support-forgetting arrow in the halfspace argument when the pairing is degenerate. That arrow need not be invertible. Its two descriptions give a linear support square with the direct kernel comparison defined below. The original FF L3 map differs from this direct map by a relative-rank sign, as proved for every bundle map in [The graded support comparison](fourier-graded-comparison.md). That supplement completes FTC13 by separately specifying the initial line extraction and final braided contraction. For the trace equation FTC14, the enhanced-center calculation here reduces the paired-adjunction defect to a base scalar, and the actual antipode transport determines its parity. [The complete transpose endpoint](fourier-transpose-endpoint.md) compares that direct endpoint with the full R3 rewrite and proves FTC14. Its proof retains the paired defect, exceptional antipode exchange and both line crossings; the scalar alone does not prove the equation.
+The first proof retains the middle support-forgetting arrow in the halfspace argument when the pairing is degenerate. That arrow need not be invertible. Its two descriptions give a linear support square with the direct kernel comparison defined below. The original FF L3 map differs from this direct map by a relative-rank sign, as proved for every bundle map in [The graded support comparison](../../SH02-fourier-graded-comparison.html). That supplement completes FTC13 by separately specifying the initial line extraction and final braided contraction. For the trace equation FTC14, the enhanced-center calculation here reduces the paired-adjunction defect to a base scalar, and the actual antipode transport determines its parity. [The complete transpose endpoint](../../SH02-fourier-transpose-endpoint.html) compares that direct endpoint with the full R3 rewrite and proves FTC14. Its proof retains the paired defect, exceptional antipode exchange and both line crossings; the scalar alone does not prove the equation.
 
 ## SH02-LFT-DOMAINS. The fixed maps and bounds
 
@@ -10,7 +10,7 @@ Let \(B\) be locally compact Hausdorff. Let \(E_i\to B\) be real vector bundles 
 
 The coefficient ring \(k\) is commutative, unital, and of finite global dimension. All coefficient complexes belong to conic \(D^+\), with a global lower cohomological bound. They need not be constructible or have finite stalks. The bundle ranks give finite bounds for the proper-support cohomological dimensions of the bundle maps that occur. Consequently their exceptional inverse images exist on the stated category. A locally constant rank can be handled componentwise only when these bounds remain global.
 
-We use the orientation lines, Koszul symmetries, and Fourier adjunctions fixed in [Fourier functoriality](fourier-functoriality.md). Put \(W_i=O_{E_i}[n_i]\), with positive dual orientation. On the source of \(r\),
+We use the orientation lines, Koszul symmetries, and Fourier adjunctions fixed in [Fourier functoriality](../../SH02-fourier-functoriality.html). Put \(W_i=O_{E_i}[n_i]\), with positive dual orientation. On the source of \(r\),
 \[
 \omega_r=r^!k_{E_1^*}
  \simeq W_{2^*}\otimes W_{1^*}^{-1}.
@@ -838,7 +838,7 @@ nonorientable bundle. The center theorem now gives LFT-P0 on
 every conic object. No field, constructibility, finite-stalk, or
 constant-rank-map assumption occurs. \(\square\)
 
-The adjunctions and input-antipode exchange in this theorem retain their stated maps. The separately specified literal comparison and negative-definite second adjunction are analyzed in [The geometric normalization of Fourier adjunctions](fourier-literal-normalization.md). NDF4–NDF10 compute that literal defect and construct the unique comparison with paired inverse maps. This is a downstream comparison of conventions; the proof of LFT-P0 above does not use it.
+The adjunctions and input-antipode exchange in this theorem retain their stated maps. The separately specified literal comparison and negative-definite second adjunction are analyzed in [The geometric normalization of Fourier adjunctions](../../SH02-fourier-literal-normalization.html). NDF4–NDF10 compute that literal defect and construct the unique comparison with paired inverse maps. This is a downstream comparison of conventions; the proof of LFT-P0 above does not use it.
 
 ## SH02-LFT-EXCEPTIONAL-ANTIPODE. The relative orientation action
 
@@ -1013,7 +1013,7 @@ J_h^{t,c}=(-1)^{n_1-n_2}F_h,\qquad
 J_h^{t,b}=J_h^{\mathrm{dir}}=F_h,
 \tag{LFT34c}
 \]
-where \(F_h\) is the original R3 map precomposed with the specified symmetry \(V_1\sigma_{h^!H,L^{-1}}\). The proof in [The complete transpose endpoint](fourier-transpose-endpoint.md) retains the actual right-line module maps, exceptional antipode exchange and both paired adjunctions.
+where \(F_h\) is the original R3 map precomposed with the specified symmetry \(V_1\sigma_{h^!H,L^{-1}}\). The proof in [The complete transpose endpoint](../../SH02-fourier-transpose-endpoint.html) retains the actual right-line module maps, exceptional antipode exchange and both paired adjunctions.
 
 **Proposition.** The direct support equation for \(r\) gives
 the exact equality
@@ -1215,4 +1215,4 @@ The direct halfspace proof establishes LFT21 with its explicitly defined direct 
 
 The enhanced-center theorem and the actual input-antipode calculation
 still establish the paired scalar LFT-P0 and the difference LFT38.
-The unconditional transpose equation LFT35 uses the direct endpoint LFT34a. SH02-FTE-TRACE proves LFT41 and FTC14 after the complete comparison of the coherent and braided endpoints in LFT34–LFT34c. The precise mate is proved in [Following the microlocal comparison maps](microlocal-endpoint-propagation.md): MEP16 corrects the old unsigned target PA32 to the relative-rank signed uncontracted equation, and MEP20 identifies its contracted form with the required braided endpoint. MEP11 and MEP14 prove downstream propagation into both microlocal squares. The source account distinguishes the declared course maps in FTC13b and FTC14 from the classical kernel framework. The distinct negative-normalization assertion is proved in SH02-NDF-SOURCE-MAPS by the full defect calculation and unique paired-inverse comparison; the precise mate calculation is the separate full Hom-bijection and graded-line proof in SH02-MEP-PRECISE-MATE, not a consequence of that normalization assertion or of endpoint types.
+The unconditional transpose equation LFT35 uses the direct endpoint LFT34a. SH02-FTE-TRACE proves LFT41 and FTC14 after the complete comparison of the coherent and braided endpoints in LFT34–LFT34c. The precise mate is proved in [Following the microlocal comparison maps](../../SH02-microlocal-endpoint-propagation.html): MEP16 corrects the old unsigned target PA32 to the relative-rank signed uncontracted equation, and MEP20 identifies its contracted form with the required braided endpoint. MEP11 and MEP14 prove downstream propagation into both microlocal squares. The source account distinguishes the declared course maps in FTC13b and FTC14 from the classical kernel framework. The distinct negative-normalization assertion is proved in SH02-NDF-SOURCE-MAPS by the full defect calculation and unique paired-inverse comparison; the precise mate calculation is the separate full Hom-bijection and graded-line proof in SH02-MEP-PRECISE-MATE, not a consequence of that normalization assertion or of endpoint types.

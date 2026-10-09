@@ -1,6 +1,6 @@
 # Weights on random operators and formal dimension
 
-*Public domain (CC0).*
+*Mathematical additions by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 ## Introduction
 
@@ -265,12 +265,167 @@ operator-valued weight \(E\) and fns \(\varphi\), \(\sigma^{\varphi\circ E}_t\) 
 \((D(\varphi_1\circ E):D(\varphi\circ E))_t=(D\varphi_1:D\varphi)_t\) for fns \(\varphi_1\). The composition of a
 normal weight with a normal operator-valued weight is a normal weight. These are proved in the course *Modular theory and weights*:
 existence and uniqueness in Compatible modular weights and the full positive cone,
-§§OE-01–OE-06; the restriction of the modular group and the cocycle identity in Modular
-invariants of operator-valued weights, §OM-01; normality of compositions in Finite
+§§OE-01–OE-06; the restriction of the modular group and the cocycle identity are proved in [Finite matrices and modular restriction](#finite-matrices-and-modular-restriction); normality of compositions in Finite
 calculus and composition of operator-valued weights, §§OVW-02 and OVW-04;
 \(E(a^*xa)=a^*E(x)a\) is part of the definition. For the covariance, \(E_t=\sigma^\varphi_{-t}\circ E\circ\sigma^{\varphi\circ
 E}_t\) is again an fns operator-valued weight, and \(\varphi\circ E_t=\varphi\circ E\) because \(\varphi\circ\sigma^\varphi_{-t}=\varphi\)
 and \(\varphi\circ E\) is invariant under its modular group; uniqueness gives \(E_t=E\). See also, e.g., [Haagerup 1979].
+
+### Finite matrices and modular restriction
+
+**Proposition 2.1.** Let \(N\subset M\), let \(T\) be a faithful normal semifinite operator-valued weight onto \(N\), and let \(\varphi,\psi\) be faithful normal semifinite weights on \(N\). Put \(\Phi=\widehat\varphi\circ T\), \(\Psi=\widehat\psi\circ T\). Then
+
+\[
+\sigma_t^\Phi(n)=\sigma_t^\varphi(n),\qquad
+[D\Psi:D\Phi]_t=[D\psi:D\varphi]_t\in N
+\quad(n\in N,\ t\in\mathbb R).
+\]
+
+**Proof.** We prove the finite mixed-domain transfer first, then use two independent right spectral cutoffs to obtain the full analytic graph. This order avoids assuming the modular restriction being proved.
+
+#### 1. Types and finite ideals
+
+Let \(N\subset M\) be von Neumann algebras and \(T:M_+\to\widehat N_+\) a faithful normal semifinite operator-valued weight. Let \(\varphi,\psi\) be faithful normal semifinite scalar weights on \(N\), with \(\Phi=\widehat\varphi\circ T\), \(\Psi=\widehat\psi\circ T\). For a scalar weight \(\omega\), write \(\mathfrak n_\omega=\{x:\omega(x^*x)<\infty\}\). Write \(\mathfrak n_T=\{x:T(x^*x)\in N_+\}\). The bounded finite-ideal extension of \(T\) is \(\dot T\), with its linear polarization and \(N\)-bimodularity as in OVW-02.
+
+Take \(y\in\mathfrak n_\Phi\cap\mathfrak n_T\) and \(z\in\mathfrak n_\Psi\cap\mathfrak n_T\). Put
+
+\[
+A=T(y^*y),\qquad B=T(z^*z),\qquad C=\dot T(y^*z).
+\]
+
+Then \(A,B\) are bounded positive elements of \(N\), \(\varphi(A)=\Phi(y^*y)<\infty\), and \(\psi(B)=\Psi(z^*z)<\infty\).
+
+#### 2. Matrix positivity follows from bimodularity
+
+The ideal \(\mathfrak n_T\) is stable under right multiplication by \(N\), since \(T((ya)^*(ya))=a^*Aa\) is bounded. For every \(a,b\in N\), positivity and the finite-ideal identities give
+
+\[
+\begin{pmatrix}a\\b\end{pmatrix}^*
+\begin{pmatrix}A&C\\C^*&B\end{pmatrix}
+\begin{pmatrix}a\\b\end{pmatrix}
+=T((ya+zb)^*(ya+zb))\ge0.
+\]
+
+This implies positivity of the full matrix \(Q\in M_2(N)\), rather than merely positivity in scalar tests using one vector. Here is an algebraic verification. If its negative part \(Q_-\) were nonzero, take the columns of \(Q_-^{1/2}\) as the test columns. Since \(Q_-\) is a spectral function of \(Q\),
+
+\[
+Q_-^{1/2}QQ_-^{1/2}=-Q_-^2.
+\]
+
+At least one diagonal entry of the nonzero positive matrix \(Q_-^2\) is nonzero: if all its diagonal entries vanished, every column of \(Q_-\) would have zero squared norm and \(Q_-=0\). That test column would give a negative nonzero element, a contradiction. Hence \(Q\ge0\).
+
+#### 3. Oriented factorization
+
+For \(\varepsilon>0\), matrix positivity and the Schur-complement test give
+
+\[
+C^*(A+\varepsilon)^{-1}C\le B.
+\]
+
+For example, apply the block quadratic form with first component \(-(A+\varepsilon)^{-1}C\eta\) and second component \(\eta\); adding \(\varepsilon\) to the first diagonal preserves positivity. Thus
+
+\[
+k_\varepsilon=(A+\varepsilon)^{-1/2}C(B+\varepsilon)^{-1/2}
+\]
+
+is a contraction in \(N\). A subnet has an ultraweak limit \(k\) in the unit ball. Since square roots converge in norm,
+
+\[
+C=(A+\varepsilon)^{1/2}k_\varepsilon(B+\varepsilon)^{1/2}
+\longrightarrow A^{1/2}kB^{1/2}
+\]
+
+ultraweakly. Therefore \(C=A^{1/2}kB^{1/2}\). Set
+
+\[
+a_0=k^*A^{1/2},\qquad b_0=B^{1/2}.
+\]
+
+Then \(a_0^*a_0=A^{1/2}kk^*A^{1/2}\le A\), so \(a_0\in\mathfrak n_\varphi\). Likewise \(b_0\in\mathfrak n_\psi\). Consequently
+
+\[
+\boxed{\dot T(y^*z)=a_0^*b_0\in\mathfrak n_\varphi^*\mathfrak n_\psi.}
+\]
+
+This is the required orientation. It does not exchange the two scalar weights or require a trace. It proves one elementary product, stronger than membership merely in the finite linear span.
+
+#### 4. The finite scalar mixed identity
+
+Suppose \((a,b)\) belongs to the relative scalar analytic graph on \(N\), so its proved finite-domain criterion gives
+
+\[
+a\mathfrak n_\varphi^*\subset\mathfrak n_\psi^*,\qquad
+\mathfrak n_\psi b\subset\mathfrak n_\varphi,\qquad
+\psi(aC)=\varphi(Cb)
+\quad(C\in\operatorname{span}\mathfrak n_\varphi^*\mathfrak n_\psi).
+\]
+
+These are AG.27's exact oriented domains. To obtain the required bounds without an unstated relative multiplier theorem, use its balanced matrix weight \(\Omega(X)=\psi(X_{11})+\varphi(X_{22})\). The pair \(aE_{12},bE_{12}\) has the complete bounded lower strip proved in AG.28–AG.31. Let \(H\) be its value at \(-i/2\). HS.15–HS.16 applied to \(aE_{12}\), with positive test \(QE_{22}\), gives \(\psi(aQa^*)\le\|H\|^2\varphi(Q)\). Reflect the full strip by \(F(\overline z-i)^*\); its real edge is the modular orbit of \(b^*E_{21}\) and its midpoint is \(H^*\). The same half-strip theorem, now tested against \(QE_{11}\), gives \(\varphi(b^*Qb)\le\|H\|^2\psi(Q)\). Take \(K=L=\max(1,\|H\|)\). Normal evaluation of the increasing bounded spectral truncations, including the truncations of any infinite projection, extends both inequalities to the full extended cone. Thus
+
+\[
+\widehat\psi(aQa^*)\le K^2\widehat\varphi(Q),\qquad
+\widehat\varphi(b^*Qb)\le L^2\widehat\psi(Q).
+\]
+
+Bimodularity and composition give the corresponding inequalities on \(M\). In particular \(ya^*\in\mathfrak n_\Psi\) and \(zb\in\mathfrak n_\Phi\). Right \(N\)-stability also keeps them in \(\mathfrak n_T\).
+
+Here is the finite-composition identity with its full domains. For \(\omega\in\{\varphi,\psi\}\), \(\Omega=\widehat\omega\circ T\), and \(u,v\in\mathfrak n_T\cap\mathfrak n_\Omega\), polarize \(u^*v\) into its four positive squares. Each \(u+i^kv\) remains in both ideals. Its square has bounded \(T\)-output and finite \(\Omega\)-value, so \(\Omega(w^*w)=\omega(T(w^*w))\). Polarization proves both \(\dot T(u^*v)\in\mathfrak m_\omega\) and \(\Omega(u^*v)=\omega(\dot T(u^*v))\). This is not a scalar evaluation on an undefined mixed product. Applying it to \(ya^*,z\) and \(y,zb\), bimodularity gives
+
+\[
+\Psi(ay^*z)=\psi(a\dot T(y^*z))
+=\varphi(\dot T(y^*z)b)=\Phi(y^*zb).
+\]
+
+Every value is a defined finite complex weight value. The left product is \((ya^*)^*z\) in \(\mathfrak n_\Psi^*\mathfrak n_\Psi\), and the right product is \(y^*(zb)\) in \(\mathfrak n_\Phi^*\mathfrak n_\Phi\).
+
+#### 5. Independent right spectral cuts
+
+Now take arbitrary \(y\in\mathfrak n_\Phi\), \(z\in\mathfrak n_\Psi\). The extended positives \(A=T(y^*y)\), \(B=T(z^*z)\) may be unbounded. They have no nonzero infinite projections: a nonzero infinite projection would have positive faithful \(\varphi\)- or \(\psi\)-value, forcing the corresponding extended evaluation to be infinite. Their finite spectral parts are densely defined positive affiliated operators. Put
+
+\[
+e_n=1_{[0,n]}(A),\qquad f_n=1_{[0,n]}(B),\qquad
+y_n=ye_n,\quad z_n=zf_n.
+\]
+
+These are two separate **right** cuts. Bimodularity gives \(T(y_n^*y_n)=e_nAe_n\le n1\) and \(T(z_n^*z_n)=f_nBf_n\le n1\). Because each cutoff is a spectral function of its own positive, \(e_nAe_n\le A\), \(f_nBf_n\le B\). Thus \(y_n\in\mathfrak n_\Phi\cap\mathfrak n_T\), \(z_n\in\mathfrak n_\Psi\cap\mathfrak n_T\).
+
+The scalar tails satisfy
+
+\[
+\|\Lambda_\Phi(y-y_n)\|^2
+=\widehat\varphi(A(1-e_n))\longrightarrow0,\qquad
+\|\Lambda_\Psi(z-z_n)\|^2
+=\widehat\psi(B(1-f_n))\longrightarrow0.
+\]
+
+Indeed the bounded spectral truncations increase to the full positive, their scalar evaluations increase to its finite scalar value by normal extended-positive evaluation, and additivity makes each tail the difference. The half-strip inequalities give
+
+\[
+\|\Lambda_\Psi((y-y_n)a^*)\|
+\le K\|\Lambda_\Phi(y-y_n)\|,\qquad
+\|\Lambda_\Phi((z-z_n)b)\|
+\le L\|\Lambda_\Psi(z-z_n)\|.
+\]
+
+Cauchy–Schwarz in the respective GNS spaces therefore passes the finite identities to
+
+\[
+\Psi((ya^*)^*z)=\Phi(y^*(zb))
+\quad(y\in\mathfrak n_\Phi,\ z\in\mathfrak n_\Psi).
+\]
+
+No common cutoff commuting with both extended positives, left cut, or equality on a merely dense unbounded-form test space has been substituted.
+
+#### The real modular actions
+
+The transferred ideal inclusions, their bounds, and the last full finite-domain identity are exactly AG.27 on \(M\). They give the analytic-graph inclusion OR.9. The real-action comparison needs its embedded-algebra version, since invariance of \(N\) under the \(M\)-action is a conclusion.
+
+Let \(\alpha_t\) be the mixed group on \(N\) and \(\beta_t\) that on \(M\). Both are normal sigma-weakly continuous groups of complex-linear isometries, directly from their modular automorphisms and unitary cocycles, as AG.26 states. Suppose their lower imaginary graphs satisfy \(G(\alpha_{-i})\subset G(\beta_{-i})\) in \(M\oplus M\). Reversing graph pairs gives the corresponding positive-imaginary inclusion. Take \(x\) in AG.02's bounded exponential core in \(N\), with entire orbit bound \(Ce^{r|\operatorname{Im}z|}\), and put \(y_k=\alpha_{ik}(x)\) for every integer \(k\). These are elements of \(N\) and remain in its entire core. Both imaginary graph inclusions give \(\beta_i(y_k)=y_{k+1}\) and \(\beta_{-i}(y_{k+1})=y_k\) inside \(M\). Integer strip gluing therefore gives an entire \(M\)-orbit for \(x\) with these same imaginary integer values. On every strip between adjacent integer heights, the real isometries of \(\beta\) preserve the two edge norms. The scalar three-lines estimate bounds the glued orbit by \(Ce^{r|\operatorname{Im}z|}\).
+
+For \(\omega\in M_*\), the scalar entire difference \(\omega(\alpha_z(x)-\beta_z(x))\) has AG.03's horizontal growth bound and vanishes at all positive imaginary integers. That proved uniqueness theorem makes it zero. Predual separation gives equality of the real orbits on this core. AG.02 supplies uniformly bounded sigma-weak core approximants to every \(n\in N\); normality of the two fixed real maps passes equality to all of \(N\). Hence \(\beta_t(n)=\alpha_t(n)\), establishing invariance rather than presupposing it. No general Kadison-isometry classification is used.
+
+Setting the two scalar weights equal yields the forward modular restriction. Evaluating the mixed action at \(1\) yields its cocycle restriction with numerator \(\psi\) and reference \(\varphi\). The scalar inputs used above are Analytic generators and finite domains, its relative finite-domain theorem and exponential-core comparison, and Half-strip domination and endpoints. The bounded finite calculus is Finite calculus and composition of operator-valued weights. The proof uses these scalar and finite-calculus results without assuming that the larger modular group preserves the smaller algebra.
+
 
 **(B2) Cocycles and traces.** Two fns weights with the same cocycle derivative relative to a third one
 are equal. An fns weight with \(\sigma^\varphi=\mathrm{id}\) is a trace. The support of a normal trace is central, and
@@ -1908,6 +2063,10 @@ Lemma 11.3(b)). If \(\tau(1)<\infty\), then \(\operatorname{Ind}_\Lambda(x)=\tau
 \(e\sim f\) by (B8), because \(x\) is injective on \(eH\) with closed range \(fH\). So the index vanishes. In Example
 11.7, \(H_y=\ell^2(\mathbb N)\) is infinite-dimensional, so \(\operatorname{Tr}_\Lambda(1)=\infty\), and the index is
 \(t\).
+
+**Exercise 12.6 (12 points).** For the finite mixed transfer in Proposition 2.1, prove directly that \(C=A^{1/2}kB^{1/2}\) implies \(C\in\mathfrak n_\varphi^*\mathfrak n_\psi\). Then explain why the separate right cuts \(y_n=ye_n\), \(z_n=zf_n\) converge in the required mixed scalar identity even when neither \(e_n\) nor \(f_n\) commutes with \(a^*\) or \(b\).
+
+**Solution.** Set \(a_0=k^*A^{1/2}\), \(b_0=B^{1/2}\). Contractivity gives \(a_0^*a_0\le A\), so \(\varphi(a_0^*a_0)<\infty\); likewise \(\psi(b_0^*b_0)<\infty\). Thus \(C=a_0^*b_0\) has the stated orientation (4 points). Normal evaluation gives \(\Lambda_\Phi(y_n)\to\Lambda_\Phi(y)\), \(\Lambda_\Psi(z_n)\to\Lambda_\Psi(z)\). The two transferred half-strip bounds give convergence of \(\Lambda_\Psi(y_na^*)\) and \(\Lambda_\Phi(z_nb)\), without commuting a cutoff through either multiplier (4 points). Apply Cauchy–Schwarz to the identity \(\langle\Lambda_\Psi(z_n),\Lambda_\Psi(y_na^*)\rangle=\langle\Lambda_\Phi(z_nb),\Lambda_\Phi(y_n)\rangle\), using the first-slot-linear convention. Both sides converge to their full mixed scalar values. No common finite ideal or common spectral cutoff is required (4 points). Total: 12 points.
 
 ## References
 

@@ -1,0 +1,1787 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Intermittent fields and exact periodic product estimates — Incompressible flow</title><link rel="stylesheet" href="reader.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script>
+<script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Incompressible flow</a><a href="src/intermittent-fields-and-periodic-product-estimates.md">Editable lesson</a><span class="unlinked">Sources and authorship</span></nav></header><main id="main"><nav aria-label="Lesson sequence"><a href="NS-FLUID-21.html">Previous lesson</a></nav><article class="lesson"><h1 id="intermittent-fields-and-exact-periodic-product-estimates">Intermittent fields and exact periodic product estimates</h1>
+<p>The waves of <a href="NS-FLUID-21.html">lesson 21</a>
+have an exact average tensor, but their viscous cost grows with
+frequency. This chapter constructs the source's intermittent
+amplitudes: large values on small regions with an exactly fixed
+second norm. It proves their original-period covering map, all
+derivative bounds and the product estimates needed when their
+coefficients vary in space and time.</p>
+<p>The original pressure and projection conventions remain those of
+<a href="NS-FLUID-02.html">lesson 2</a>.
+The labels IB, LD and DC identify the three connected parts of the
+proof. References to RS and BG mean the complete maps and rational
+frames of lesson 21. Every original factor in the kernel and physical
+frequency is retained, including the period, integer covering degree
+and temporal parameter.</p>
+<p>The human source is Tristan Buckmaster and Vlad Vicol,
+<a href="https://arxiv.org/abs/1709.10033v4"><em>Nonuniqueness of weak solutions to the Navier–Stokes equation</em>,
+arXiv:1709.10033v4</a>.
+The original author source was read at lines 474–672 and 1533–1592
+for these kernels and product estimates, and at 776–836 and
+1341–1387 for the temporal correction and its receiving pair.
+The exposition and proofs here are independently written.</p>
+<p>The source's product lemma omits control of the zeroth-order
+amplitude. A constant amplitude gives a counterexample to that
+printed statement. DC13–DC17 retain the missing term; DC18–DC22
+prove a stronger estimate using only three derivative orders in
+three dimensions, for all exponents from one to infinity. This is
+a local source correction and proved strengthening; it does not
+assert failure or completion of the source's whole iteration.
+No novelty or independent review is claimed.</p>
+<p><img src="assets/NS-FLUID-22/original-intermittent-factors-2075E5EC0A2185E4DE3D32051472FF278D23A6FF61FFAAFBDB0D451FC64CF0DD.png" alt="Original kernel sections, the full volume-dependent norm bound and both signed directions." class="course-figure" width="2400" height="900" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-intermittent-factors" data-asset-sha256="2075E5EC0A2185E4DE3D32051472FF278D23A6FF61FFAAFBDB0D451FC64CF0DD"></p>
+<p>The left panel is the exact one-dimensional section <span class="math" data-tex="\(D_r(y,0,0)\)">\(D_r(y,0,0)\)</span>
+of the three-dimensional source kernel, not its spatial average.
+The middle panel plots the proved upper bound IB13 with the actual
+source period <span class="math" data-tex="\(L=2\pi\)">\(L=2\pi\)</span>; it does not plot sampled field norms.
+The last panel displays the pair-invariant signed vector in IB24.
+Proof: IB1–IB6, IB13 and IB24.
+<a href="assets/original-intermittent-factors.py">Reproducible figure source</a>.</p>
+<h2 id="ib1-the-complete-original-finite-sums">IB1. The complete original finite sums</h2>
+<p>Let <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span> be an integer and keep <span class="math" data-tex="\(M=2r+1\)">\(M=2r+1\)</span>.
+The one-dimensional and three-dimensional source kernels are</p>
+<span class="math math-display" data-tex="\[
+d_r(y)=\sum_{j=-r}^r e^{ijy},\qquad
+D_r(y_1,y_2,y_3)
+=M^{-3/2}\sum_{j,k,\ell=-r}^r e^{i(jy_1+ky_2+\ell y_3)}
+=M^{-3/2}d_r(y_1)d_r(y_2)d_r(y_3).
+\tag{IB1}
+\]">\[
+d_r(y)=\sum_{j=-r}^r e^{ijy},\qquad
+D_r(y_1,y_2,y_3)
+=M^{-3/2}\sum_{j,k,\ell=-r}^r e^{i(jy_1+ky_2+\ell y_3)}
+=M^{-3/2}d_r(y_1)d_r(y_2)d_r(y_3).
+\tag{IB1}
+\]</span>
+<p>For <span class="math" data-tex="\(y\notin2\pi\mathbb Z\)">\(y\notin2\pi\mathbb Z\)</span>, multiplying the finite geometric
+sum by <span class="math" data-tex="\(1-e^{iy}\)">\(1-e^{iy}\)</span> and using
+<span class="math" data-tex="\(1-e^{iz}=-2ie^{iz/2}\sin(z/2)\)">\(1-e^{iz}=-2ie^{iz/2}\sin(z/2)\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+d_r(y)=\frac{\sin((r+1/2)y)}{\sin(y/2)},\qquad
+d_r(2\pi m)=M\quad(m\in\mathbb Z).
+\tag{IB2}
+\]">\[
+d_r(y)=\frac{\sin((r+1/2)y)}{\sin(y/2)},\qquad
+d_r(2\pi m)=M\quad(m\in\mathbb Z).
+\tag{IB2}
+\]</span>
+<p>The second formula is the actual finite sum at each removable
+point. Opposite indices prove reality. On <span class="math" data-tex="\([-\pi,\pi]\)">\([-\pi,\pi]\)</span>,
+the triangle inequality and the concavity bound
+<span class="math" data-tex="\(\sin(|y|/2)\geq |y|/\pi\)">\(\sin(|y|/2)\geq |y|/\pi\)</span> give</p>
+<span class="math math-display" data-tex="\[
+|d_r(y)|\leq\min\{M,\pi/|y|\}\quad(y\ne0),\qquad
+|d_r(y)|\geq M\cos(1/2)\quad(|y|\leq M^{-1}).
+\tag{IB3}
+\]">\[
+|d_r(y)|\leq\min\{M,\pi/|y|\}\quad(y\ne0),\qquad
+|d_r(y)|\geq M\cos(1/2)\quad(|y|\leq M^{-1}).
+\tag{IB3}
+\]</span>
+<p>For the lower bound, every real summand <span class="math" data-tex="\(\cos(jy)\)">\(\cos(jy)\)</span> is at least
+<span class="math" data-tex="\(\cos(1/2)\)">\(\cos(1/2)\)</span>, because <span class="math" data-tex="\(|jy|\leq r/M&lt;1/2\)">\(|jy|\leq r/M&lt;1/2\)</span>, and the imaginary
+summands cancel. The upper value <span class="math" data-tex="\(M\)">\(M\)</span> is attained at zero.</p>
+<p>For <span class="math" data-tex="\(1&lt;p&lt;\infty\)">\(1&lt;p&lt;\infty\)</span>, split the upper integral at <span class="math" data-tex="\(\pi/M\)">\(\pi/M\)</span>
+and the lower integral at <span class="math" data-tex="\(M^{-1}\)">\(M^{-1}\)</span>. Direct integration gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+2\cos(1/2)^p M^{p-1}
+&amp;\leq\int_{-\pi}^{\pi}|d_r(y)|^p\,dy\\
+&amp;\leq
+2\pi\left[M^{p-1}+\frac{M^{p-1}-1}{p-1}\right]
+\leq 2\pi\frac{p}{p-1}M^{p-1}.
+\end{aligned}
+\tag{IB4}
+\]">\[
+\begin{aligned}
+2\cos(1/2)^p M^{p-1}
+&amp;\leq\int_{-\pi}^{\pi}|d_r(y)|^p\,dy\\
+&amp;\leq
+2\pi\left[M^{p-1}+\frac{M^{p-1}-1}{p-1}\right]
+\leq 2\pi\frac{p}{p-1}M^{p-1}.
+\end{aligned}
+\tag{IB4}
+\]</span>
+<p>At <span class="math" data-tex="\(p=1\)">\(p=1\)</span>, the same split instead gives</p>
+<span class="math math-display" data-tex="\[
+\int_{-\pi}^{\pi}|d_r(y)|\,dy\leq2\pi(1+\log M).
+\tag{IB5}
+\]">\[
+\int_{-\pi}^{\pi}|d_r(y)|\,dy\leq2\pi(1+\log M).
+\tag{IB5}
+\]</span>
+<p>Orthogonality of the original exponentials gives the exact,
+unweighted integral <span class="math" data-tex="\(\int|d_r|^2=2\pi M\)">\(\int|d_r|^2=2\pi M\)</span>.
+Thus Fubini with the full prefactor in IB1 proves</p>
+<span class="math math-display" data-tex="\[
+\int_{[-\pi,\pi]^3}|D_r|^2\,dy=(2\pi)^3,\qquad
+\|D_r\|_\infty=M^{3/2},\qquad
+\int|D_r|^p\,dy
+=M^{-3p/2}\left(\int_{-\pi}^{\pi}|d_r|^p\,dy\right)^3 .
+\tag{IB6}
+\]">\[
+\int_{[-\pi,\pi]^3}|D_r|^2\,dy=(2\pi)^3,\qquad
+\|D_r\|_\infty=M^{3/2},\qquad
+\int|D_r|^p\,dy
+=M^{-3p/2}\left(\int_{-\pi}^{\pi}|d_r|^p\,dy\right)^3 .
+\tag{IB6}
+\]</span>
+<p>These are the original source kernels and their actual measures.</p>
+<h2 id="ib2-the-integer-map-on-the-original-torus">IB2. The integer map on the original torus</h2>
+<p>Keep the original cube <span class="math" data-tex="\(\mathbb T_L^3\)">\(\mathbb T_L^3\)</span>, <span class="math" data-tex="\(L&gt;0\)">\(L&gt;0\)</span>, a constructed
+BG family, its common integer <span class="math" data-tex="\(N_\Lambda\)">\(N_\Lambda\)</span>, a positive integer
+<span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> divisible by <span class="math" data-tex="\(N_\Lambda\)">\(N_\Lambda\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\varkappa=\frac{2\pi\lambda}{L},\qquad
+m=\lambda\sigma\in\mathbb N,\qquad
+\beta=\frac{2\pi}{L}mN_\Lambda
+=\varkappa\sigma N_\Lambda,\qquad \mu&gt;0.
+\tag{IB7}
+\]">\[
+\varkappa=\frac{2\pi\lambda}{L},\qquad
+m=\lambda\sigma\in\mathbb N,\qquad
+\beta=\frac{2\pi}{L}mN_\Lambda
+=\varkappa\sigma N_\Lambda,\qquad \mu&gt;0.
+\tag{IB7}
+\]</span>
+<p>These requirements and the later smallness condition have actual
+simultaneous choices. With the same <span class="math" data-tex="\(r,N_\Lambda,c_\Lambda\)">\(r,N_\Lambda,c_\Lambda\)</span>, take</p>
+<span class="math math-display" data-tex="\[
+\lambda=N_\Lambda\left\lceil\frac{10r}{c_\Lambda}\right\rceil,
+\qquad \sigma=\lambda^{-1},\qquad
+\mu=\frac{\lambda+\lambda^2}{2}.
+\tag{IB7a}
+\]">\[
+\lambda=N_\Lambda\left\lceil\frac{10r}{c_\Lambda}\right\rceil,
+\qquad \sigma=\lambda^{-1},\qquad
+\mu=\frac{\lambda+\lambda^2}{2}.
+\tag{IB7a}
+\]</span>
+<p>Then <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is the required positive multiple,
+<span class="math" data-tex="\(\sigma r\leq c_\Lambda/(10N_\Lambda)\)">\(\sigma r\leq c_\Lambda/(10N_\Lambda)\)</span>, and
+<span class="math" data-tex="\(\lambda&lt;\mu&lt;\lambda^2\)">\(\lambda&lt;\mu&lt;\lambda^2\)</span>, since <span class="math" data-tex="\(\lambda&gt;1\)">\(\lambda&gt;1\)</span>.
+Thus the source's later temporal interval is available.
+The finite formulas below in fact hold for every <span class="math" data-tex="\(\mu&gt;0\)">\(\mu&gt;0\)</span>.
+Choose one representative from each opposite pair and call that
+set <span class="math" data-tex="\(\Lambda^+\)">\(\Lambda^+\)</span>; let <span class="math" data-tex="\(\Lambda^-=-\Lambda^+\)">\(\Lambda^-=-\Lambda^+\)</span>.
+For a representative <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, keep its original polarization
+<span class="math" data-tex="\(A_\xi\)">\(A_\xi\)</span> and <span class="math" data-tex="\(C_\xi=\xi\times A_\xi\)">\(C_\xi=\xi\times A_\xi\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+O_\xi=
+\begin{pmatrix}\xi^T\\ A_\xi^T\\ C_\xi^T\end{pmatrix},\qquad
+\mathsf M_\xi=mN_\Lambda O_\xi\in\mathbb Z^{3\times3},\\
+\eta_\xi(x,t)=D_r\big(\beta(\xi\cdot x+\mu t),
+\beta A_\xi\cdot x,\beta C_\xi\cdot x\big),
+\qquad \eta_{-\xi}=\eta_\xi .
+\end{gathered}
+\tag{IB8}
+\]">\[
+\begin{gathered}
+O_\xi=
+\begin{pmatrix}\xi^T\\ A_\xi^T\\ C_\xi^T\end{pmatrix},\qquad
+\mathsf M_\xi=mN_\Lambda O_\xi\in\mathbb Z^{3\times3},\\
+\eta_\xi(x,t)=D_r\big(\beta(\xi\cdot x+\mu t),
+\beta A_\xi\cdot x,\beta C_\xi\cdot x\big),
+\qquad \eta_{-\xi}=\eta_\xi .
+\end{gathered}
+\tag{IB8}
+\]</span>
+<p>The rows of <span class="math" data-tex="\(O_\xi\)">\(O_\xi\)</span> are an oriented orthonormal basis because
+<span class="math" data-tex="\(\xi\times A_\xi=C_\xi\)">\(\xi\times A_\xi=C_\xi\)</span>. Therefore
+<span class="math" data-tex="\(\det O_\xi=1\)">\(\det O_\xi=1\)</span>, <span class="math" data-tex="\(\det \mathsf M_\xi=(mN_\Lambda)^3\ne0\)">\(\det \mathsf M_\xi=(mN_\Lambda)^3\ne0\)</span>.
+Each matrix entry is integer by BG16 and BG18.
+The actual angular map is</p>
+<span class="math math-display" data-tex="\[
+F_t:\mathbb T_L^3\longrightarrow(\mathbb R/2\pi\mathbb Z)^3,
+\qquad
+F_t(x)=\mathsf M_\xi\frac{2\pi x}{L}+\beta\mu t\,e_1
+\pmod{2\pi\mathbb Z^3}.
+\tag{IB9}
+\]">\[
+F_t:\mathbb T_L^3\longrightarrow(\mathbb R/2\pi\mathbb Z)^3,
+\qquad
+F_t(x)=\mathsf M_\xi\frac{2\pi x}{L}+\beta\mu t\,e_1
+\pmod{2\pi\mathbb Z^3}.
+\tag{IB9}
+\]</span>
+<p>Its integer matrix makes it well-defined. It is onto: given any
+real representative of a target angle, apply the actual inverse
+matrix <span class="math" data-tex="\(\mathsf M_\xi^{-1}\)">\(\mathsf M_\xi^{-1}\)</span> and multiply by <span class="math" data-tex="\(L/(2\pi)\)">\(L/(2\pi)\)</span>.
+The different preimages are exactly indexed by
+<span class="math" data-tex="\(\mathbb Z^3/\mathsf M_\xi\mathbb Z^3\)">\(\mathbb Z^3/\mathsf M_\xi\mathbb Z^3\)</span>.
+This lattice quotient has <span class="math" data-tex="\(|\det \mathsf M_\xi|\)">\(|\det \mathsf M_\xi|\)</span> elements:
+unit lattice cells, one for each coset, form a fundamental region
+for <span class="math" data-tex="\(\mathsf M_\xi\mathbb Z^3\)">\(\mathsf M_\xi\mathbb Z^3\)</span>, while its parallelepiped has volume
+<span class="math" data-tex="\(|\det \mathsf M_\xi|\)">\(|\det \mathsf M_\xi|\)</span>; both regions tile by the same lattice, hence
+have equal volume. In particular, the map has multiplicity
+<span class="math" data-tex="\((mN_\Lambda)^3\)">\((mN_\Lambda)^3\)</span>, and its local Jacobian is
+<span class="math" data-tex="\(\beta^3\)">\(\beta^3\)</span>. It is generally not a one-to-one rotation of the torus.</p>
+<p>The exact integral relation for every continuous periodic <span class="math" data-tex="\(H\)">\(H\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\frac1{L^3}\int_{\mathbb T_L^3}H(F_t(x))\,dx
+=\frac1{(2\pi)^3}\int_{[-\pi,\pi]^3}H(y)\,dy .
+\tag{IB10}
+\]">\[
+\frac1{L^3}\int_{\mathbb T_L^3}H(F_t(x))\,dx
+=\frac1{(2\pi)^3}\int_{[-\pi,\pi]^3}H(y)\,dy .
+\tag{IB10}
+\]</span>
+<p>Here is a direct proof that also avoids assuming a rational
+rotation separately descends to the torus. For
+<span class="math" data-tex="\(H(y)=e^{ik\cdot y}\)">\(H(y)=e^{ik\cdot y}\)</span>, the left side is zero unless
+<span class="math" data-tex="\(\mathsf M_\xi^Tk=0\)">\(\mathsf M_\xi^Tk=0\)</span>, because it is an original integer Fourier mode
+in <span class="math" data-tex="\(x\)">\(x\)</span>. The matrix is invertible, so only <span class="math" data-tex="\(k=0\)">\(k=0\)</span> survives.
+Both sides agree on every trigonometric polynomial.
+Such polynomials approximate each continuous periodic <span class="math" data-tex="\(H\)">\(H\)</span>
+uniformly: convolve with the product of the three finite kernels</p>
+<span class="math math-display" data-tex="\[
+F_q(z)=\frac1{q+1}\left|\sum_{j=0}^q e^{ijz}\right|^2 .
+\tag{IB11}
+\]">\[
+F_q(z)=\frac1{q+1}\left|\sum_{j=0}^q e^{ijz}\right|^2 .
+\tag{IB11}
+\]</span>
+<p>Each is nonnegative, has integral <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>, and is a finite
+trigonometric polynomial. At distance at least <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>
+from <span class="math" data-tex="\(2\pi\mathbb Z\)">\(2\pi\mathbb Z\)</span>, the geometric sum gives
+<span class="math" data-tex="\(F_q(z)\leq[(q+1)\sin^2(\delta/2)]^{-1}\)">\(F_q(z)\leq[(q+1)\sin^2(\delta/2)]^{-1}\)</span>.
+The mass outside a three-dimensional <span class="math" data-tex="\(\delta\)">\(\delta\)</span> box therefore
+tends to zero, by the union bound and the integrals of the
+other two factors. Inside that box uniform continuity bounds
+the convolution error by the modulus of continuity of <span class="math" data-tex="\(H\)">\(H\)</span>.
+This proves uniform convergence and then IB10 by integration.</p>
+<p>The original kernel has spatial period <span class="math" data-tex="\(L/m\)">\(L/m\)</span> in each coordinate:
+that translation changes its arguments by
+<span class="math" data-tex="\(2\pi N_\Lambda O_\xi e_j\)">\(2\pi N_\Lambda O_\xi e_j\)</span>, an integer multiple of <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>.
+Minimality of this period is not asserted.
+At <span class="math" data-tex="\(L=2\pi\)">\(L=2\pi\)</span>, the source period is <span class="math" data-tex="\(2\pi/(\lambda\sigma)\)">\(2\pi/(\lambda\sigma)\)</span>;
+the source's displayed quotient by <span class="math" data-tex="\(2\pi\lambda\sigma\mathbb Z\)">\(2\pi\lambda\sigma\mathbb Z\)</span>
+reverses that reciprocal.
+The equality of averages in IB10 comes from this integer covering,
+with its full multiplicity and Jacobian. The individual rational
+rotation and dilation need not separately preserve the same torus.</p>
+<h2 id="ib3-original-volume-norm-bounds-and-exact-derivative-integrals">IB3. Original-volume norm bounds and exact derivative integrals</h2>
+<p>Apply IB10 to <span class="math" data-tex="\(H=|D_r|^p\)">\(H=|D_r|^p\)</span>, then use IB4–IB6.
+For <span class="math" data-tex="\(1&lt;p&lt;\infty\)">\(1&lt;p&lt;\infty\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L^{3/p}\pi^{-3/p}\cos(1/2)^3 M^{3/2-3/p}
+&amp;\leq \|\eta_\xi(t)\|_{L^p(\mathbb T_L^3)}\\
+&amp;\leq L^{3/p}
+\left[1+\frac{1-M^{1-p}}{p-1}\right]^{3/p}
+M^{3/2-3/p}\\
+&amp;\leq L^{3/p}\left(\frac p{p-1}\right)^{3/p}
+M^{3/2-3/p}.
+\end{aligned}
+\tag{IB12}
+\]">\[
+\begin{aligned}
+L^{3/p}\pi^{-3/p}\cos(1/2)^3 M^{3/2-3/p}
+&amp;\leq \|\eta_\xi(t)\|_{L^p(\mathbb T_L^3)}\\
+&amp;\leq L^{3/p}
+\left[1+\frac{1-M^{1-p}}{p-1}\right]^{3/p}
+M^{3/2-3/p}\\
+&amp;\leq L^{3/p}\left(\frac p{p-1}\right)^{3/p}
+M^{3/2-3/p}.
+\end{aligned}
+\tag{IB12}
+\]</span>
+<p>The original-volume endpoint statements are</p>
+<span class="math math-display" data-tex="\[
+\|\eta_\xi(t)\|_2^2=L^3,\qquad
+\|\eta_\xi(t)\|_\infty=M^{3/2},\qquad
+\|\eta_\xi(t)\|_1\leq L^3M^{-3/2}(1+\log M)^3 .
+\tag{IB13}
+\]">\[
+\|\eta_\xi(t)\|_2^2=L^3,\qquad
+\|\eta_\xi(t)\|_\infty=M^{3/2},\qquad
+\|\eta_\xi(t)\|_1\leq L^3M^{-3/2}(1+\log M)^3 .
+\tag{IB13}
+\]</span>
+<p>Surjectivity of IB9 proves the exact maximum.
+These assertions hold at every actual time; the translating
+angle does not change the average. For fixed <span class="math" data-tex="\(L\)">\(L\)</span>, the ratio
+of the last upper bound to the exact <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm tends to zero
+as <span class="math" data-tex="\(r\)">\(r\)</span> tends to infinity. For example,
+<span class="math" data-tex="\((1+\log M)^3/M^{3/2}\to0\)">\((1+\log M)^3/M^{3/2}\to0\)</span> by three applications of the
+elementary derivative rule to <span class="math" data-tex="\((1+\log x)^3/x^{3/2}\)">\((1+\log x)^3/x^{3/2}\)</span>.</p>
+<p>The complete expansion is</p>
+<span class="math math-display" data-tex="\[
+\eta_\xi(x,t)=M^{-3/2}
+\sum_{j,k,\ell=-r}^r
+e^{i\beta[(j\xi+kA_\xi+\ell C_\xi)\cdot x+j\mu t]} .
+\tag{IB14}
+\]">\[
+\eta_\xi(x,t)=M^{-3/2}
+\sum_{j,k,\ell=-r}^r
+e^{i\beta[(j\xi+kA_\xi+\ell C_\xi)\cdot x+j\mu t]} .
+\tag{IB14}
+\]</span>
+<p>The original lattice vectors are distinct because the frame
+is a basis. Parseval therefore retains every summand separately.
+For nonnegative integers <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, define <span class="math" data-tex="\(\nabla^a\)">\(\nabla^a\)</span> to contain
+all ordered spatial partial derivatives of length <span class="math" data-tex="\(a\)">\(a\)</span>, with
+their Euclidean square sum. Direct differentiation gives</p>
+<span class="math math-display" data-tex="\[
+\|\nabla^a\partial_t^b\eta_\xi\|_2^2
+=\frac{L^3}{M^3}\beta^{2(a+b)}\mu^{2b}
+\sum_{j,k,\ell=-r}^r
+(j^2+k^2+\ell^2)^a j^{2b}.
+\tag{IB15}
+\]">\[
+\|\nabla^a\partial_t^b\eta_\xi\|_2^2
+=\frac{L^3}{M^3}\beta^{2(a+b)}\mu^{2b}
+\sum_{j,k,\ell=-r}^r
+(j^2+k^2+\ell^2)^a j^{2b}.
+\tag{IB15}
+\]</span>
+<p>For <span class="math" data-tex="\(a=0\)">\(a=0\)</span> or <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, the corresponding zeroth power in this
+finite sum is one, including at the zero index.
+The finite identity
+<span class="math" data-tex="\(\sum_{j=-r}^r j^2=r(r+1)(2r+1)/3\)">\(\sum_{j=-r}^r j^2=r(r+1)(2r+1)/3\)</span> follows by summing
+<span class="math" data-tex="\((j+1)^3-j^3=3j^2+3j+1\)">\((j+1)^3-j^3=3j^2+3j+1\)</span> from <span class="math" data-tex="\(j=0\)">\(j=0\)</span> to <span class="math" data-tex="\(r\)">\(r\)</span>.
+Thus</p>
+<span class="math math-display" data-tex="\[
+\|\nabla\eta_\xi\|_2^2=L^3\beta^2r(r+1),\qquad
+\|(\xi\cdot\nabla)\eta_\xi\|_2^2
+=\frac{L^3\beta^2r(r+1)}3,\qquad
+\|\partial_t\eta_\xi\|_2^2
+=\frac{L^3\beta^2\mu^2r(r+1)}3 .
+\tag{IB16}
+\]">\[
+\|\nabla\eta_\xi\|_2^2=L^3\beta^2r(r+1),\qquad
+\|(\xi\cdot\nabla)\eta_\xi\|_2^2
+=\frac{L^3\beta^2r(r+1)}3,\qquad
+\|\partial_t\eta_\xi\|_2^2
+=\frac{L^3\beta^2\mu^2r(r+1)}3 .
+\tag{IB16}
+\]</span>
+<p>The <span class="math" data-tex="\(A_\xi\)">\(A_\xi\)</span> and <span class="math" data-tex="\(C_\xi\)">\(C_\xi\)</span> directional derivatives have the
+same squared integral as the <span class="math" data-tex="\(\xi\)">\(\xi\)</span> derivative.</p>
+<h2 id="ib4-the-actual-carriers-and-both-signed-directions">IB4. The actual carriers and both signed directions</h2>
+<p>For <span class="math" data-tex="\(\zeta\in\Lambda^+\cup\Lambda^-\)">\(\zeta\in\Lambda^+\cup\Lambda^-\)</span>, retain</p>
+<span class="math math-display" data-tex="\[
+W_\zeta=B_\zeta e^{i\varkappa\zeta\cdot x},\qquad
+\mathbb W_\zeta=\eta_\zeta W_\zeta,\qquad
+\varepsilon_\zeta=
+\begin{cases}1,&amp;\zeta\in\Lambda^+,\\-1,&amp;\zeta\in\Lambda^-.\end{cases}
+\tag{IB17}
+\]">\[
+W_\zeta=B_\zeta e^{i\varkappa\zeta\cdot x},\qquad
+\mathbb W_\zeta=\eta_\zeta W_\zeta,\qquad
+\varepsilon_\zeta=
+\begin{cases}1,&amp;\zeta\in\Lambda^+,\\-1,&amp;\zeta\in\Lambda^-.\end{cases}
+\tag{IB17}
+\]</span>
+<p>The complete product is the source intermittent field; its
+prefactor is the one in IB1. It is not assumed divergence-free.
+Since <span class="math" data-tex="\(|B_\zeta|=1\)">\(|B_\zeta|=1\)</span>, every norm of <span class="math" data-tex="\(\mathbb W_\zeta\)">\(\mathbb W_\zeta\)</span>
+equals the corresponding norm of <span class="math" data-tex="\(\eta_\zeta\)">\(\eta_\zeta\)</span>.
+For <span class="math" data-tex="\(\zeta=\varepsilon\xi\)">\(\zeta=\varepsilon\xi\)</span>, <span class="math" data-tex="\(\xi\in\Lambda^+\)">\(\xi\in\Lambda^+\)</span>, its full
+spatial frequencies are</p>
+<span class="math math-display" data-tex="\[
+\varepsilon\varkappa\xi+
+\beta(j\xi+kA_\xi+\ell C_\xi),\qquad -r\leq j,k,\ell\leq r .
+\tag{IB18}
+\]">\[
+\varepsilon\varkappa\xi+
+\beta(j\xi+kA_\xi+\ell C_\xi),\qquad -r\leq j,k,\ell\leq r .
+\tag{IB18}
+\]</span>
+<p>If the original parameter inequality
+<span class="math" data-tex="\(\sigma r\leq c_\Lambda/(10N_\Lambda)\)">\(\sigma r\leq c_\Lambda/(10N_\Lambda)\)</span> holds, put
+<span class="math" data-tex="\(\delta_r=\sqrt3\,\sigma N_\Lambda r\)">\(\delta_r=\sqrt3\,\sigma N_\Lambda r\)</span>.
+Then every frequency in IB18 has length between
+<span class="math" data-tex="\(\varkappa(1-\delta_r)\)">\(\varkappa(1-\delta_r)\)</span> and <span class="math" data-tex="\(\varkappa(1+\delta_r)\)">\(\varkappa(1+\delta_r)\)</span>,
+with <span class="math" data-tex="\(\delta_r\leq\sqrt3c_\Lambda/10&lt;1/2\)">\(\delta_r\leq\sqrt3c_\Lambda/10&lt;1/2\)</span>.
+For two nonopposite directions their product has carriers at
+<span class="math" data-tex="\(\varkappa(\zeta+\zeta&#x27;)\)">\(\varkappa(\zeta+\zeta&#x27;)\)</span> and perturbation of length at most
+<span class="math" data-tex="\(2\delta_r\varkappa\)">\(2\delta_r\varkappa\)</span>, so its full support lies in</p>
+<span class="math math-display" data-tex="\[
+2(c_\Lambda-\delta_r)\varkappa
+\leq |k_{\rm physical}|
+\leq2(1+\delta_r)\varkappa .
+\tag{IB19}
+\]">\[
+2(c_\Lambda-\delta_r)\varkappa
+\leq |k_{\rm physical}|
+\leq2(1+\delta_r)\varkappa .
+\tag{IB19}
+\]</span>
+<p>This proves, in particular, the source intervals
+<span class="math" data-tex="\([\varkappa/2,2\varkappa]\)">\([\varkappa/2,2\varkappa]\)</span> and
+<span class="math" data-tex="\([c_\Lambda\varkappa,4\varkappa]\)">\([c_\Lambda\varkappa,4\varkappa]\)</span>, retaining the tighter
+actual margins. The argument uses only finite Minkowski sums,
+so no projection cutoff convention is silently assumed.</p>
+<p>Differentiating IB8, and using its definition at the negative
+direction, gives the full signed identity</p>
+<span class="math math-display" data-tex="\[
+\mu^{-1}\partial_t\eta_\zeta
+=\varepsilon_\zeta(\zeta\cdot\nabla)\eta_\zeta .
+\tag{IB20}
+\]">\[
+\mu^{-1}\partial_t\eta_\zeta
+=\varepsilon_\zeta(\zeta\cdot\nabla)\eta_\zeta .
+\tag{IB20}
+\]</span>
+<p>The product rule and the original complex polarization give</p>
+<span class="math math-display" data-tex="\[
+\operatorname{div}\mathbb W_\zeta
+=e^{i\varkappa\zeta\cdot x}B_\zeta\cdot\nabla\eta_\zeta,\qquad
+\operatorname{curl}\mathbb W_\zeta-\varkappa\mathbb W_\zeta
+=e^{i\varkappa\zeta\cdot x}\nabla\eta_\zeta\times B_\zeta .
+\tag{IB21}
+\]">\[
+\operatorname{div}\mathbb W_\zeta
+=e^{i\varkappa\zeta\cdot x}B_\zeta\cdot\nabla\eta_\zeta,\qquad
+\operatorname{curl}\mathbb W_\zeta-\varkappa\mathbb W_\zeta
+=e^{i\varkappa\zeta\cdot x}\nabla\eta_\zeta\times B_\zeta .
+\tag{IB21}
+\]</span>
+<p>As <span class="math" data-tex="\(\eta_\zeta\)">\(\eta_\zeta\)</span> is real, the squared first magnitude is one
+half the sum of the squared derivatives in the two transverse
+directions. The squared second magnitude is the full gradient
+square minus that half sum. Applying IB16 yields the exact defects</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\varkappa^{-1}\operatorname{div}\mathbb W_\zeta\|_2^2
+&amp;=\frac{L^3(\sigma N_\Lambda)^2r(r+1)}3,\\
+\|\varkappa^{-1}\operatorname{curl}\mathbb W_\zeta
+-\mathbb W_\zeta\|_2^2
+&amp;=\frac{2L^3(\sigma N_\Lambda)^2r(r+1)}3 .
+\end{aligned}
+\tag{IB22}
+\]">\[
+\begin{aligned}
+\|\varkappa^{-1}\operatorname{div}\mathbb W_\zeta\|_2^2
+&amp;=\frac{L^3(\sigma N_\Lambda)^2r(r+1)}3,\\
+\|\varkappa^{-1}\operatorname{curl}\mathbb W_\zeta
+-\mathbb W_\zeta\|_2^2
+&amp;=\frac{2L^3(\sigma N_\Lambda)^2r(r+1)}3 .
+\end{aligned}
+\tag{IB22}
+\]</span>
+<p>For every <span class="math" data-tex="\(a,b\geq0\)">\(a,b\geq0\)</span>, the corresponding full derivative identity is</p>
+<span class="math math-display" data-tex="\[
+\|\nabla^a\partial_t^b\mathbb W_{\varepsilon\xi}\|_2^2
+=\frac{L^3}{M^3}(\beta\mu)^{2b}
+\sum_{j,k,\ell=-r}^r j^{2b}
+[(\varepsilon\varkappa+\beta j)^2+\beta^2(k^2+\ell^2)]^a .
+\tag{IB23}
+\]">\[
+\|\nabla^a\partial_t^b\mathbb W_{\varepsilon\xi}\|_2^2
+=\frac{L^3}{M^3}(\beta\mu)^{2b}
+\sum_{j,k,\ell=-r}^r j^{2b}
+[(\varepsilon\varkappa+\beta j)^2+\beta^2(k^2+\ell^2)]^a .
+\tag{IB23}
+\]</span>
+<p>It follows directly from the distinct original frequencies IB18.
+No original <span class="math" data-tex="\(N_\Lambda\)">\(N_\Lambda\)</span>, volume or physical frequency is omitted.</p>
+<h2 id="ib5-the-exact-opposite-pair-and-its-sign">IB5. The exact opposite pair and its sign</h2>
+<p>Opposite coefficients still give a real full field because
+<span class="math" data-tex="\(\eta_{-\zeta}=\eta_\zeta\)">\(\eta_{-\zeta}=\eta_\zeta\)</span> and <span class="math" data-tex="\(B_{-\zeta}=\overline{B_\zeta}\)">\(B_{-\zeta}=\overline{B_\zeta}\)</span>.
+BG23 proves the pointwise tensor and its divergence:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb W_\zeta\otimes\mathbb W_{-\zeta}
++\mathbb W_{-\zeta}\otimes\mathbb W_\zeta
+&amp;=\eta_\zeta^2(I_3-\zeta\otimes\zeta),\\
+\operatorname{div}\big(
+\mathbb W_\zeta\otimes\mathbb W_{-\zeta}
++\mathbb W_{-\zeta}\otimes\mathbb W_\zeta\big)
+&amp;=\nabla\eta_\zeta^2
+-\frac{\varepsilon_\zeta\zeta}{\mu}\partial_t\eta_\zeta^2 .
+\end{aligned}
+\tag{IB24}
+\]">\[
+\begin{aligned}
+\mathbb W_\zeta\otimes\mathbb W_{-\zeta}
++\mathbb W_{-\zeta}\otimes\mathbb W_\zeta
+&amp;=\eta_\zeta^2(I_3-\zeta\otimes\zeta),\\
+\operatorname{div}\big(
+\mathbb W_\zeta\otimes\mathbb W_{-\zeta}
++\mathbb W_{-\zeta}\otimes\mathbb W_\zeta\big)
+&amp;=\nabla\eta_\zeta^2
+-\frac{\varepsilon_\zeta\zeta}{\mu}\partial_t\eta_\zeta^2 .
+\end{aligned}
+\tag{IB24}
+\]</span>
+<p>Indeed the constant tensor on the first line gives
+<span class="math" data-tex="\(\nabla\eta_\zeta^2-\zeta(\zeta\cdot\nabla)\eta_\zeta^2\)">\(\nabla\eta_\zeta^2-\zeta(\zeta\cdot\nabla)\eta_\zeta^2\)</span>;
+IB20 then gives the second line. Replacing <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> by
+<span class="math" data-tex="\(-\zeta\)">\(-\zeta\)</span> leaves both sides unchanged, since
+<span class="math" data-tex="\(\varepsilon_{-\zeta}(-\zeta)=\varepsilon_\zeta\zeta\)">\(\varepsilon_{-\zeta}(-\zeta)=\varepsilon_\zeta\zeta\)</span>.
+The source equation eq:useful:2 has the second line without
+<span class="math" data-tex="\(\varepsilon_\zeta\)">\(\varepsilon_\zeta\)</span>. It is correct for the chosen positive
+representatives, and the formula for the whole opposite-closed
+family is IB24.</p>
+<p>This is not a vacuous sign difference. In the finite expansion
+of <span class="math" data-tex="\(\eta_\xi^2\)">\(\eta_\xi^2\)</span>, the frequency with indices <span class="math" data-tex="\((2r,2r,2r)\)">\((2r,2r,2r)\)</span>
+has exactly one contributing ordered pair of index triples.
+Its coefficient is <span class="math" data-tex="\(M^{-3}e^{i2r\beta\mu t}\)">\(M^{-3}e^{i2r\beta\mu t}\)</span>.
+Its time derivative is nonzero because <span class="math" data-tex="\(r,\beta,\mu&gt;0\)">\(r,\beta,\mu&gt;0\)</span>.
+Thus omitting the sign fails at the negative direction.</p>
+<p>The complete average follows from IB13:</p>
+<span class="math math-display" data-tex="\[
+L^{-3}\int\mathbb W_\zeta\otimes\mathbb W_{-\zeta}\,dx
+=B_\zeta\otimes B_{-\zeta},\qquad
+\sum_{\zeta\in\Lambda_\alpha}
+\gamma_\zeta^{(\alpha)}(R)^2
+L^{-3}\int\mathbb W_\zeta\otimes\mathbb W_{-\zeta}\,dx
+=R .
+\tag{IB25}
+\]">\[
+L^{-3}\int\mathbb W_\zeta\otimes\mathbb W_{-\zeta}\,dx
+=B_\zeta\otimes B_{-\zeta},\qquad
+\sum_{\zeta\in\Lambda_\alpha}
+\gamma_\zeta^{(\alpha)}(R)^2
+L^{-3}\int\mathbb W_\zeta\otimes\mathbb W_{-\zeta}\,dx
+=R .
+\tag{IB25}
+\]</span>
+<p>Grouping the two orientations and using the complete BG15
+identity proves the final equality. Here <span class="math" data-tex="\(R\)">\(R\)</span> is any actual
+matrix in the proved positive domain, including the enlarged
+trace slice of lesson 21 Exercise 2.
+The nonopposite products have no zero frequency by IB19,
+so the full constant-coefficient sum has this same average tensor.</p>
+<h2 id="ld1-a-finite-kernel-that-reproduces-the-original-fourier-modes">LD1. A finite kernel that reproduces the original Fourier modes</h2>
+<p>For a positive integer <span class="math" data-tex="\(m\)">\(m\)</span>, keep the full finite kernel</p>
+<span class="math math-display" data-tex="\[
+T_m(y)=\frac1m\left|\sum_{j=0}^{m-1}e^{ijy}\right|^2
+=\sum_{|j|&lt;m}\left(1-\frac{|j|}{m}\right)e^{ijy},
+\qquad
+\int_{-\pi}^{\pi}T_m(y)\,dy=2\pi,\qquad T_m\geq0 .
+\tag{LD1}
+\]">\[
+T_m(y)=\frac1m\left|\sum_{j=0}^{m-1}e^{ijy}\right|^2
+=\sum_{|j|&lt;m}\left(1-\frac{|j|}{m}\right)e^{ijy},
+\qquad
+\int_{-\pi}^{\pi}T_m(y)\,dy=2\pi,\qquad T_m\geq0 .
+\tag{LD1}
+\]</span>
+<p>Expansion of the square proves the coefficient at <span class="math" data-tex="\(j\)">\(j\)</span>:
+there are exactly <span class="math" data-tex="\(m-|j|\)">\(m-|j|\)</span> ordered index pairs with that
+difference. Integration leaves its constant coefficient one.
+The geometric-sum identity gives</p>
+<span class="math math-display" data-tex="\[
+T_m(y)=\frac{\sin^2(my/2)}{m\sin^2(y/2)}
+\quad(y\notin2\pi\mathbb Z),\qquad
+T_m(2\pi j)=m .
+\tag{LD2}
+\]">\[
+T_m(y)=\frac{\sin^2(my/2)}{m\sin^2(y/2)}
+\quad(y\notin2\pi\mathbb Z),\qquad
+T_m(2\pi j)=m .
+\tag{LD2}
+\]</span>
+<p>No singularity is introduced at a removable point.</p>
+<p>For the actual positive integer <span class="math" data-tex="\(r\)">\(r\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+V_r=2T_{2r}-T_r,\qquad
+\widehat V_r(j)=1\quad(|j|\leq r),\qquad
+\widehat V_r(j)=0\quad(|j|\geq2r).
+\tag{LD3}
+\]">\[
+V_r=2T_{2r}-T_r,\qquad
+\widehat V_r(j)=1\quad(|j|\leq r),\qquad
+\widehat V_r(j)=0\quad(|j|\geq2r).
+\tag{LD3}
+\]</span>
+<p>For <span class="math" data-tex="\(|j|&lt;r\)">\(|j|&lt;r\)</span>, the complete coefficient is
+<span class="math" data-tex="\(2(1-|j|/(2r))-(1-|j|/r)=1\)">\(2(1-|j|/(2r))-(1-|j|/r)=1\)</span>.
+At <span class="math" data-tex="\(|j|=r\)">\(|j|=r\)</span> the second term is zero and the first is one.
+Outside <span class="math" data-tex="\(2r\)">\(2r\)</span>, both are zero. Hence every original polynomial
+<span class="math" data-tex="\(f(y)=\sum_{|j|\leq r}a_je^{ijy}\)">\(f(y)=\sum_{|j|\leq r}a_je^{ijy}\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+f(y)=\frac1{2\pi}\int_{-\pi}^{\pi}V_r(z)f(y-z)\,dz,\qquad
+f^{(a)}(y)=\frac1{2\pi}\int_{-\pi}^{\pi}V_r^{(a)}(z)f(y-z)\,dz
+\quad(a\geq0).
+\tag{LD4}
+\]">\[
+f(y)=\frac1{2\pi}\int_{-\pi}^{\pi}V_r(z)f(y-z)\,dz,\qquad
+f^{(a)}(y)=\frac1{2\pi}\int_{-\pi}^{\pi}V_r^{(a)}(z)f(y-z)\,dz
+\quad(a\geq0).
+\tag{LD4}
+\]</span>
+<p>This follows by multiplying the finite Fourier coefficients.
+It is an exact map on these original modes, with the full
+convolution factor retained.</p>
+<h2 id="ld2-every-derivative-of-the-kernel-with-explicit-constants">LD2. Every derivative of the kernel, with explicit constants</h2>
+<p>On <span class="math" data-tex="\(0&lt;|y|\leq\pi\)">\(0&lt;|y|\leq\pi\)</span>, set <span class="math" data-tex="\(h(y)=\sin(y/2)^{-2}\)">\(h(y)=\sin(y/2)^{-2}\)</span>.
+Define the finite constants</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c_1=\frac12,\qquad
+c_j=\frac{\pi^{j-2}}2\ (j\geq2),\\
+H_0=\pi^2,\qquad
+H_a=\pi^2\sum_{j=1}^a\binom aj c_jH_{a-j}\ (a\geq1),\qquad
+J_a=\sum_{\ell=0}^a\binom a\ell H_{a-\ell}.
+\end{gathered}
+\tag{LD5}
+\]">\[
+\begin{gathered}
+c_1=\frac12,\qquad
+c_j=\frac{\pi^{j-2}}2\ (j\geq2),\\
+H_0=\pi^2,\qquad
+H_a=\pi^2\sum_{j=1}^a\binom aj c_jH_{a-j}\ (a\geq1),\qquad
+J_a=\sum_{\ell=0}^a\binom a\ell H_{a-\ell}.
+\end{gathered}
+\tag{LD5}
+\]</span>
+<p>Every one is a specified positive real number depending only
+on the nonnegative integer order.
+We claim</p>
+<span class="math math-display" data-tex="\[
+|h^{(a)}(y)|\leq H_a|y|^{-2-a}.
+\tag{LD6}
+\]">\[
+|h^{(a)}(y)|\leq H_a|y|^{-2-a}.
+\tag{LD6}
+\]</span>
+<p>For order zero this is the original sine lower bound of IB3.
+To prove the higher orders, set
+<span class="math" data-tex="\(g(y)=\sin^2(y/2)=(1-\cos y)/2\)">\(g(y)=\sin^2(y/2)=(1-\cos y)/2\)</span>, so <span class="math" data-tex="\(gh=1\)">\(gh=1\)</span>.
+The full derivatives satisfy</p>
+<span class="math math-display" data-tex="\[
+|g&#x27;(y)|\leq |y|/2,\qquad
+|g^{(j)}(y)|\leq \frac12
+\leq c_j|y|^{2-j}\quad(j\geq2).
+\tag{LD7}
+\]">\[
+|g&#x27;(y)|\leq |y|/2,\qquad
+|g^{(j)}(y)|\leq \frac12
+\leq c_j|y|^{2-j}\quad(j\geq2).
+\tag{LD7}
+\]</span>
+<p>Differentiate <span class="math" data-tex="\(gh=1\)">\(gh=1\)</span> exactly <span class="math" data-tex="\(a\)">\(a\)</span> times, solve for the
+term with <span class="math" data-tex="\(h^{(a)}\)">\(h^{(a)}\)</span>, and apply induction:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+h^{(a)}
+&amp;=-g^{-1}\sum_{j=1}^a\binom aj g^{(j)}h^{(a-j)},\\
+|h^{(a)}|
+&amp;\leq \pi^2|y|^{-2}
+\sum_{j=1}^a\binom aj
+c_j|y|^{2-j}H_{a-j}|y|^{-2-a+j}
+=H_a|y|^{-2-a}.
+\end{aligned}
+\tag{LD8}
+\]">\[
+\begin{aligned}
+h^{(a)}
+&amp;=-g^{-1}\sum_{j=1}^a\binom aj g^{(j)}h^{(a-j)},\\
+|h^{(a)}|
+&amp;\leq \pi^2|y|^{-2}
+\sum_{j=1}^a\binom aj
+c_j|y|^{2-j}H_{a-j}|y|^{-2-a+j}
+=H_a|y|^{-2-a}.
+\end{aligned}
+\tag{LD8}
+\]</span>
+<p>This proves LD6 for every order without dropping any derivative
+from the reciprocal.</p>
+<p>The numerator <span class="math" data-tex="\(n_m(y)=\sin^2(my/2)\)">\(n_m(y)=\sin^2(my/2)\)</span> has
+<span class="math" data-tex="\(|n_m^{(\ell)}(y)|\leq m^\ell\)">\(|n_m^{(\ell)}(y)|\leq m^\ell\)</span> for all <span class="math" data-tex="\(\ell\geq0\)">\(\ell\geq0\)</span>:
+at order zero it is at most one; at positive order its exact
+trigonometric derivative is at most <span class="math" data-tex="\(m^\ell/2\)">\(m^\ell/2\)</span>.
+Using the larger displayed bound for all orders, Leibniz in LD2
+gives, whenever <span class="math" data-tex="\(|y|\geq m^{-1}\)">\(|y|\geq m^{-1}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|T_m^{(a)}(y)|
+\leq m^{-1}\sum_{\ell=0}^a\binom a\ell
+m^\ell H_{a-\ell}|y|^{-2-a+\ell}
+\leq J_a m^{a-1}|y|^{-2}.
+\tag{LD9}
+\]">\[
+|T_m^{(a)}(y)|
+\leq m^{-1}\sum_{\ell=0}^a\binom a\ell
+m^\ell H_{a-\ell}|y|^{-2-a+\ell}
+\leq J_a m^{a-1}|y|^{-2}.
+\tag{LD9}
+\]</span>
+<p>On the complementary interval the full Fourier formula LD1
+has nonnegative coefficients with sum <span class="math" data-tex="\(m\)">\(m\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+|T_m^{(a)}(y)|
+\leq\sum_{|j|&lt;m}|j|^a\left(1-\frac{|j|}{m}\right)
+\leq m^{a+1}.
+\tag{LD10}
+\]">\[
+|T_m^{(a)}(y)|
+\leq\sum_{|j|&lt;m}|j|^a\left(1-\frac{|j|}{m}\right)
+\leq m^{a+1}.
+\tag{LD10}
+\]</span>
+<p>For <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, the zero-frequency zeroth power is one.
+Since <span class="math" data-tex="\(m^{-1}\leq\pi\)">\(m^{-1}\leq\pi\)</span>, direct integration of both regions yields</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|T_m^{(a)}\|_{L^1(-\pi,\pi)}
+&amp;\leq2m^a+2J_am^{a-1}(m-\pi^{-1})\\
+&amp;\leq2(1+J_a)m^a,\\
+\|V_r^{(a)}\|_1
+&amp;\leq 2(1+J_a)(2^{a+1}+1)r^a .
+\end{aligned}
+\tag{LD11}
+\]">\[
+\begin{aligned}
+\|T_m^{(a)}\|_{L^1(-\pi,\pi)}
+&amp;\leq2m^a+2J_am^{a-1}(m-\pi^{-1})\\
+&amp;\leq2(1+J_a)m^a,\\
+\|V_r^{(a)}\|_1
+&amp;\leq 2(1+J_a)(2^{a+1}+1)r^a .
+\end{aligned}
+\tag{LD11}
+\]</span>
+<p>The last line retains both kernels and their coefficients:
+it is <span class="math" data-tex="\(2\|T_{2r}^{(a)}\|_1+\|T_r^{(a)}\|_1\)">\(2\|T_{2r}^{(a)}\|_1+\|T_r^{(a)}\|_1\)</span>.
+These constants are finite for every order and independent
+of the original frequency parameter.</p>
+<h2 id="ld3-all-l-p-derivatives-of-the-original-three-dimensional-kernel">LD3. All <span class="math" data-tex="\(L^p\)">\(L^p\)</span> derivatives of the original three-dimensional kernel</h2>
+<p>For every <span class="math" data-tex="\(1\leq p\leq\infty\)">\(1\leq p\leq\infty\)</span>, convolution with an integrable
+kernel <span class="math" data-tex="\(K\)">\(K\)</span> on the original <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>-periodic circle obeys</p>
+<span class="math math-display" data-tex="\[
+\left\|\int_{-\pi}^{\pi}K(z)f(\,\cdot-z)\,dz\right\|_p
+\leq\|K\|_1\|f\|_p .
+\tag{LD12}
+\]">\[
+\left\|\int_{-\pi}^{\pi}K(z)f(\,\cdot-z)\,dz\right\|_p
+\leq\|K\|_1\|f\|_p .
+\tag{LD12}
+\]</span>
+<p>If <span class="math" data-tex="\(\|K\|_1=0\)">\(\|K\|_1=0\)</span> this is immediate. Otherwise, for finite
+<span class="math" data-tex="\(p\geq1\)">\(p\geq1\)</span>, the triangle inequality followed by Jensen for
+the probability measure <span class="math" data-tex="\(|K|/\|K\|_1\)">\(|K|/\|K\|_1\)</span> gives the pointwise
+<span class="math" data-tex="\(p\)">\(p\)</span>-th power bound by
+<span class="math" data-tex="\(\|K\|_1^{p-1}\int|K(z)||f(y-z)|^p\,dz\)">\(\|K\|_1^{p-1}\int|K(z)||f(y-z)|^p\,dz\)</span>.
+Integrating and translating the full periodic integral proves
+LD12. At <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span>, use the pointwise supremum in that same
+integral. The argument also covers complex-valued <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+B_0=1,\qquad
+B_a=\frac{(1+J_a)(2^{a+1}+1)}{\pi}\quad(a\geq1).
+\tag{LD13}
+\]">\[
+B_0=1,\qquad
+B_a=\frac{(1+J_a)(2^{a+1}+1)}{\pi}\quad(a\geq1).
+\tag{LD13}
+\]</span>
+<p>LD4 and LD11–LD12 prove for every original polynomial of degree
+at most <span class="math" data-tex="\(r\)">\(r\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|f^{(a)}\|_p\leq B_ar^a\|f\|_p .
+\tag{LD14}
+\]">\[
+\|f^{(a)}\|_p\leq B_ar^a\|f\|_p .
+\tag{LD14}
+\]</span>
+<p>For <span class="math" data-tex="\(a=0\)">\(a=0\)</span> this is the exact identity. For positive order,
+the factor <span class="math" data-tex="\(1/(2\pi)\)">\(1/(2\pi)\)</span> in LD4 gives exactly LD13.</p>
+<p>Retain the full <span class="math" data-tex="\(D_r=M^{-3/2}d_r(y_1)d_r(y_2)d_r(y_3)\)">\(D_r=M^{-3/2}d_r(y_1)d_r(y_2)d_r(y_3)\)</span>
+of IB1. For a multi-index <span class="math" data-tex="\(\alpha=(\alpha_1,\alpha_2,\alpha_3)\)">\(\alpha=(\alpha_1,\alpha_2,\alpha_3)\)</span>,
+Fubini and the independent variable derivatives give</p>
+<span class="math math-display" data-tex="\[
+\|\partial^\alpha D_r\|_{L^p([-\pi,\pi]^3)}
+\leq B_{\alpha_1}B_{\alpha_2}B_{\alpha_3}
+r^{|\alpha|}\|D_r\|_p .
+\tag{LD15}
+\]">\[
+\|\partial^\alpha D_r\|_{L^p([-\pi,\pi]^3)}
+\leq B_{\alpha_1}B_{\alpha_2}B_{\alpha_3}
+r^{|\alpha|}\|D_r\|_p .
+\tag{LD15}
+\]</span>
+<p>At finite <span class="math" data-tex="\(p\)">\(p\)</span>, take the product of the three integrals before
+the <span class="math" data-tex="\(p\)">\(p\)</span>-th root. At <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span>, take the product of their
+suprema. The original prefactor is on both sides throughout.</p>
+<p>For nonnegative integers <span class="math" data-tex="\(N,K\)">\(N,K\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+C_{N,K}=
+\sum_{\substack{\alpha_1,\alpha_2,\alpha_3\geq0\\|\alpha|=N}}
+\sqrt{\frac{N!}{\alpha_1!\alpha_2!\alpha_3!}}\,
+B_{\alpha_1+K}B_{\alpha_2}B_{\alpha_3}.
+\tag{LD16}
+\]">\[
+C_{N,K}=
+\sum_{\substack{\alpha_1,\alpha_2,\alpha_3\geq0\\|\alpha|=N}}
+\sqrt{\frac{N!}{\alpha_1!\alpha_2!\alpha_3!}}\,
+B_{\alpha_1+K}B_{\alpha_2}B_{\alpha_3}.
+\tag{LD16}
+\]</span>
+<p>The ordered derivative tensor of IB15 contains
+<span class="math" data-tex="\(N!/(\alpha_1!\alpha_2!\alpha_3!)\)">\(N!/(\alpha_1!\alpha_2!\alpha_3!)\)</span> copies of
+<span class="math" data-tex="\(\partial^{\alpha+(K,0,0)}D_r\)">\(\partial^{\alpha+(K,0,0)}D_r\)</span>.
+Its pointwise Euclidean norm is bounded by the sum of the
+norms of those multi-index blocks. Applying LD15 and the
+triangle inequality in <span class="math" data-tex="\(L^p\)">\(L^p\)</span>, including its endpoints, gives</p>
+<span class="math math-display" data-tex="\[
+\|\nabla_y^N\partial_{y_1}^KD_r\|_p
+\leq C_{N,K}r^{N+K}\|D_r\|_p .
+\tag{LD17}
+\]">\[
+\|\nabla_y^N\partial_{y_1}^KD_r\|_p
+\leq C_{N,K}r^{N+K}\|D_r\|_p .
+\tag{LD17}
+\]</span>
+<p>Thus all tensor multiplicities are accounted for explicitly.</p>
+<h2 id="ld4-the-actual-original-fields-and-their-complete-leibniz-terms">LD4. The actual original fields and their complete Leibniz terms</h2>
+<p>Use the actual <span class="math" data-tex="\(L,\varkappa,\beta,\mu\)">\(L,\varkappa,\beta,\mu\)</span> and original covering
+of IB7–IB10. Each spatial derivative of <span class="math" data-tex="\(\eta_\zeta\)">\(\eta_\zeta\)</span>
+is <span class="math" data-tex="\(\beta\)">\(\beta\)</span> times the corresponding row transformation
+of a derivative in its original kernel arguments.
+The complete ordered derivative tensor transforms by
+the <span class="math" data-tex="\(N\)">\(N\)</span>-fold tensor product of the orthogonal frame matrix.
+That tensor product is an isometry: expanding its Euclidean
+square norm contracts each pair of matrix factors to an
+identity. Each time derivative contributes
+<span class="math" data-tex="\(\beta\mu\,\partial_{y_1}\)">\(\beta\mu\,\partial_{y_1}\)</span> for the common representative.
+Applying the full covering integral therefore gives the exact
+norm map</p>
+<span class="math math-display" data-tex="\[
+\|\nabla_x^N\partial_t^K\eta_\zeta\|_{L^p(\mathbb T_L^3)}
+=\beta^{N+K}\mu^K
+\left(\frac{L}{2\pi}\right)^{3/p}
+\|\nabla_y^N\partial_{y_1}^KD_r\|_{L^p([-\pi,\pi]^3)} .
+\tag{LD18}
+\]">\[
+\|\nabla_x^N\partial_t^K\eta_\zeta\|_{L^p(\mathbb T_L^3)}
+=\beta^{N+K}\mu^K
+\left(\frac{L}{2\pi}\right)^{3/p}
+\|\nabla_y^N\partial_{y_1}^KD_r\|_{L^p([-\pi,\pi]^3)} .
+\tag{LD18}
+\]</span>
+<p>At <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span>, the volume factor is one and surjectivity
+proves equality of the suprema.</p>
+<p>For concise display of the full proved original bounds define
+the explicit scalar</p>
+<span class="math math-display" data-tex="\[
+\mathcal H_{p,r,L}=
+\begin{cases}
+L^3M^{-3/2}(1+\log M)^3,&amp;p=1,\\
+L^{3/p}\left[1+\dfrac{1-M^{1-p}}{p-1}\right]^{3/p}
+M^{3/2-3/p},&amp;1&lt;p&lt;\infty,\\
+M^{3/2},&amp;p=\infty,
+\end{cases}
+\qquad M=2r+1 .
+\tag{LD19}
+\]">\[
+\mathcal H_{p,r,L}=
+\begin{cases}
+L^3M^{-3/2}(1+\log M)^3,&amp;p=1,\\
+L^{3/p}\left[1+\dfrac{1-M^{1-p}}{p-1}\right]^{3/p}
+M^{3/2-3/p},&amp;1&lt;p&lt;\infty,\\
+M^{3/2},&amp;p=\infty,
+\end{cases}
+\qquad M=2r+1 .
+\tag{LD19}
+\]</span>
+<p>This is exactly the earlier IB12–IB13 upper bound, with all
+volume factors and finite-<span class="math" data-tex="\(r\)">\(r\)</span> contributions displayed.
+Equations LD17–LD18 now prove</p>
+<span class="math math-display" data-tex="\[
+\|\nabla^N\partial_t^K\eta_\zeta\|_p
+\leq C_{N,K}(\beta r)^N(\beta r\mu)^K\mathcal H_{p,r,L}.
+\tag{LD20}
+\]">\[
+\|\nabla^N\partial_t^K\eta_\zeta\|_p
+\leq C_{N,K}(\beta r)^N(\beta r\mu)^K\mathcal H_{p,r,L}.
+\tag{LD20}
+\]</span>
+<p>For the complete field
+<span class="math" data-tex="\(\mathbb W_\zeta=\eta_\zeta B_\zeta e^{i\varkappa\zeta\cdot x}\)">\(\mathbb W_\zeta=\eta_\zeta B_\zeta e^{i\varkappa\zeta\cdot x}\)</span>,
+every original ordered derivative has the exact expansion</p>
+<span class="math math-display" data-tex="\[
+\partial_{i_1}\cdots\partial_{i_N}\partial_t^K\mathbb W_\zeta
+=B_\zeta e^{i\varkappa\zeta\cdot x}
+\sum_{E\subseteq\{1,\ldots,N\}}
+\left(\prod_{\ell\notin E}i\varkappa\zeta_{i_\ell}\right)
+\left(\prod_{\ell\in E}\partial_{i_\ell}\right)
+\partial_t^K\eta_\zeta .
+\tag{LD21}
+\]">\[
+\partial_{i_1}\cdots\partial_{i_N}\partial_t^K\mathbb W_\zeta
+=B_\zeta e^{i\varkappa\zeta\cdot x}
+\sum_{E\subseteq\{1,\ldots,N\}}
+\left(\prod_{\ell\notin E}i\varkappa\zeta_{i_\ell}\right)
+\left(\prod_{\ell\in E}\partial_{i_\ell}\right)
+\partial_t^K\eta_\zeta .
+\tag{LD21}
+\]</span>
+<p>The empty derivative product is the identity; the empty scalar
+product is one. No cross term has been omitted.
+For fixed <span class="math" data-tex="\(|E|=a\)">\(|E|=a\)</span>, its full derivative array is a permutation
+of the tensor product of <span class="math" data-tex="\(a\)">\(a\)</span> amplitude derivatives with
+<span class="math" data-tex="\(N-a\)">\(N-a\)</span> copies of <span class="math" data-tex="\(i\varkappa\zeta\)">\(i\varkappa\zeta\)</span> and the fixed vector
+<span class="math" data-tex="\(B_\zeta\)">\(B_\zeta\)</span>. The Euclidean norm of a tensor product is the
+product of the norms; both <span class="math" data-tex="\(|\zeta|\)">\(|\zeta|\)</span> and <span class="math" data-tex="\(|B_\zeta|\)">\(|B_\zeta|\)</span> are one.
+There are exactly <span class="math" data-tex="\(\binom Na\)">\(\binom Na\)</span> subsets of that size. The
+triangle inequality with LD20 proves</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\nabla^N\partial_t^K\mathbb W_\zeta\|_p
+&amp;\leq\sum_{a=0}^N\binom Na
+\varkappa^{N-a}C_{a,K}
+(\beta r)^{a+K}\mu^K\mathcal H_{p,r,L}\\
+&amp;=\varkappa^N(\beta r\mu)^K\mathcal H_{p,r,L}
+\sum_{a=0}^N\binom Na C_{a,K}(\sigma N_\Lambda r)^a .
+\end{aligned}
+\tag{LD22}
+\]">\[
+\begin{aligned}
+\|\nabla^N\partial_t^K\mathbb W_\zeta\|_p
+&amp;\leq\sum_{a=0}^N\binom Na
+\varkappa^{N-a}C_{a,K}
+(\beta r)^{a+K}\mu^K\mathcal H_{p,r,L}\\
+&amp;=\varkappa^N(\beta r\mu)^K\mathcal H_{p,r,L}
+\sum_{a=0}^N\binom Na C_{a,K}(\sigma N_\Lambda r)^a .
+\end{aligned}
+\tag{LD22}
+\]</span>
+<p>The second line substitutes the actual equality
+<span class="math" data-tex="\(\beta=\varkappa\sigma N_\Lambda\)">\(\beta=\varkappa\sigma N_\Lambda\)</span>; the first line retains
+every contributing derivative order.
+Under the proved original support constraint, its final
+finite sum is at most</p>
+<span class="math math-display" data-tex="\[
+\sum_{a=0}^N\binom Na C_{a,K}(c_\Lambda/10)^a .
+\tag{LD23}
+\]">\[
+\sum_{a=0}^N\binom Na C_{a,K}(c_\Lambda/10)^a .
+\tag{LD23}
+\]</span>
+<p>This recovers the source derivative powers, including the
+full <span class="math" data-tex="\(N_\Lambda\)">\(N_\Lambda\)</span>, physical period and temporal factors,
+with an explicit constant independent of a later iteration.
+The <span class="math" data-tex="\(p=1\)">\(p=1\)</span> case has the full logarithmic factor in LD19.
+For <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, the sharper exact sums IB15 and IB23 remain
+available; this upper bound does not replace those identities.</p>
+<h2 id="dc1-original-cubes-and-the-exact-periodic-mass">DC1. Original cubes and the exact periodic mass</h2>
+<p>Keep dimension <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, original cube period <span class="math" data-tex="\(L&gt;0\)">\(L&gt;0\)</span>,
+a positive integer <span class="math" data-tex="\(m\)">\(m\)</span>, and the actual length and diameter</p>
+<span class="math math-display" data-tex="\[
+h=L/m,\qquad d=\sqrt n\,h,\qquad
+Q_\ell=\prod_{i=1}^n[\ell_i h,(\ell_i+1)h),
+\quad\ell\in\{0,\ldots,m-1\}^n .
+\tag{DC1}
+\]">\[
+h=L/m,\qquad d=\sqrt n\,h,\qquad
+Q_\ell=\prod_{i=1}^n[\ell_i h,(\ell_i+1)h),
+\quad\ell\in\{0,\ldots,m-1\}^n .
+\tag{DC1}
+\]</span>
+<p>Their interiors are disjoint and they cover the original cube,
+apart from their measure-zero faces.
+Let <span class="math" data-tex="\(g\in L^p(\mathbb T_L^n)\)">\(g\in L^p(\mathbb T_L^n)\)</span> have period <span class="math" data-tex="\(h\)">\(h\)</span> in every
+coordinate. Translation by <span class="math" data-tex="\(h\ell\)">\(h\ell\)</span> gives for finite <span class="math" data-tex="\(p\)">\(p\)</span></p>
+<span class="math math-display" data-tex="\[
+\int_{Q_\ell}|g|^p=m^{-n}\|g\|_{L^p(\mathbb T_L^n)}^p .
+\tag{DC2}
+\]">\[
+\int_{Q_\ell}|g|^p=m^{-n}\|g\|_{L^p(\mathbb T_L^n)}^p .
+\tag{DC2}
+\]</span>
+<p>At <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span>, every cell has the same essential supremum.
+These assertions also hold for a vector-valued <span class="math" data-tex="\(g\)">\(g\)</span>, with
+its Euclidean magnitude.</p>
+<p>For any smooth finite-dimensional tensor field <span class="math" data-tex="\(H\)">\(H\)</span> on one
+closed cell, integration of the line segment from <span class="math" data-tex="\(y\)">\(y\)</span> to
+<span class="math" data-tex="\(x\)">\(x\)</span> gives the exact formula</p>
+<span class="math math-display" data-tex="\[
+H(x)-\langle H\rangle_{Q_\ell}
+=h^{-n}\int_{Q_\ell}\int_0^1
+DH(y+t(x-y))[x-y]\,dt\,dy .
+\tag{DC3}
+\]">\[
+H(x)-\langle H\rangle_{Q_\ell}
+=h^{-n}\int_{Q_\ell}\int_0^1
+DH(y+t(x-y))[x-y]\,dt\,dy .
+\tag{DC3}
+\]</span>
+<p>The segment remains in the closed cell. The Hilbert–Schmidt
+norm bounds the contraction by
+<span class="math" data-tex="\(|DH|\,|x-y|\)">\(|DH|\,|x-y|\)</span>, and <span class="math" data-tex="\(|x-y|\leq d\)">\(|x-y|\leq d\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\sup_{Q_\ell}|H|
+\leq|\langle H\rangle_{Q_\ell}|+
+d\sup_{Q_\ell}|DH|.
+\tag{DC4}
+\]">\[
+\sup_{Q_\ell}|H|
+\leq|\langle H\rangle_{Q_\ell}|+
+d\sup_{Q_\ell}|DH|.
+\tag{DC4}
+\]</span>
+<p>For a smooth scalar or vector amplitude <span class="math" data-tex="\(f\)">\(f\)</span>, let <span class="math" data-tex="\(\nabla^j f\)">\(\nabla^j f\)</span>
+be the full ordered derivative tensor, with its Euclidean
+norm. Applying DC4 successively to those actual tensors
+gives, for every positive integer <span class="math" data-tex="\(M\)">\(M\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sup_{Q_\ell}|f|
+\leq\sum_{j=0}^{M-1}d^j
+|\langle\nabla^j f\rangle_{Q_\ell}|
++d^M\sup_{Q_\ell}|\nabla^Mf| .
+\tag{DC5}
+\]">\[
+\sup_{Q_\ell}|f|
+\leq\sum_{j=0}^{M-1}d^j
+|\langle\nabla^j f\rangle_{Q_\ell}|
++d^M\sup_{Q_\ell}|\nabla^Mf| .
+\tag{DC5}
+\]</span>
+<p>This follows by finite substitution, retaining each term;
+it does not require a convergent infinite expansion.
+The full zeroth-order average remains present.</p>
+<h2 id="dc2-a-direct-l-p-product-map">DC2. A direct <span class="math" data-tex="\(L^p\)">\(L^p\)</span> product map</h2>
+<p>For finite <span class="math" data-tex="\(1\leq p&lt;\infty\)">\(1\leq p&lt;\infty\)</span>, multiply DC5 by <span class="math" data-tex="\(|g|\)">\(|g|\)</span>,
+integrate its <span class="math" data-tex="\(p\)">\(p\)</span>-th power over the cells, and use DC2.
+The triangle inequality for the resulting finite
+<span class="math" data-tex="\(\ell^p\)">\(\ell^p\)</span> norm gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|fg\|_p
+&amp;\leq m^{-n/p}\|g\|_p
+\sum_{j=0}^{M-1}d^j
+\left(\sum_\ell
+|\langle\nabla^jf\rangle_{Q_\ell}|^p\right)^{1/p}\\
+&amp;\quad+d^M\|g\|_p\|\nabla^Mf\|_\infty\\
+&amp;\leq\|g\|_p\left[
+L^{-n/p}\sum_{j=0}^{M-1}d^j\|\nabla^jf\|_p
++d^M\|\nabla^Mf\|_\infty\right].
+\end{aligned}
+\tag{DC6}
+\]">\[
+\begin{aligned}
+\|fg\|_p
+&amp;\leq m^{-n/p}\|g\|_p
+\sum_{j=0}^{M-1}d^j
+\left(\sum_\ell
+|\langle\nabla^jf\rangle_{Q_\ell}|^p\right)^{1/p}\\
+&amp;\quad+d^M\|g\|_p\|\nabla^Mf\|_\infty\\
+&amp;\leq\|g\|_p\left[
+L^{-n/p}\sum_{j=0}^{M-1}d^j\|\nabla^jf\|_p
++d^M\|\nabla^Mf\|_\infty\right].
+\end{aligned}
+\tag{DC6}
+\]</span>
+<p>The second inequality is Jensen on each cell:
+the sum of the averaged tensor <span class="math" data-tex="\(p\)">\(p\)</span>-th powers is at most
+<span class="math" data-tex="\(h^{-n}\|\nabla^jf\|_p^p\)">\(h^{-n}\|\nabla^jf\|_p^p\)</span>.
+The exact product <span class="math" data-tex="\(m^{-n/p}h^{-n/p}=L^{-n/p}\)">\(m^{-n/p}h^{-n/p}=L^{-n/p}\)</span>
+retains the original volume.
+For vector <span class="math" data-tex="\(f\)">\(f\)</span> and vector <span class="math" data-tex="\(g\)">\(g\)</span>, interpret <span class="math" data-tex="\(fg\)">\(fg\)</span> as their
+tensor product, whose Euclidean magnitude is <span class="math" data-tex="\(|f||g|\)">\(|f||g|\)</span>;
+the same proof then applies componentwise through that norm.</p>
+<p>At <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span>, DC6 also holds, with every volume exponent
+zero: its <span class="math" data-tex="\(j=0\)">\(j=0\)</span> term is already the exact product
+supremum bound, and all remaining terms are nonnegative.
+No squaring of the amplitude is needed at <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, or at
+any other exponent.</p>
+<h2 id="dc3-an-explicit-original-period-bound-for-the-remainder">DC3. An explicit original-period bound for the remainder</h2>
+<p>For a smooth one-dimensional periodic tensor function <span class="math" data-tex="\(H\)">\(H\)</span>,
+the fundamental theorem of calculus, averaged over <span class="math" data-tex="\(y\)">\(y\)</span>,
+gives at every <span class="math" data-tex="\(x\in[0,L]\)">\(x\in[0,L]\)</span></p>
+<span class="math math-display" data-tex="\[
+H(x)=\frac1L\int_0^L H(s)\,ds+
+\int_0^L b_x(s)H&#x27;(s)\,ds,\qquad
+b_x(s)=\frac{s}{L}-\mathbf1_{\{s&gt;x\}},\qquad |b_x(s)|\leq1 .
+\tag{DC7}
+\]">\[
+H(x)=\frac1L\int_0^L H(s)\,ds+
+\int_0^L b_x(s)H&#x27;(s)\,ds,\qquad
+b_x(s)=\frac{s}{L}-\mathbf1_{\{s&gt;x\}},\qquad |b_x(s)|\leq1 .
+\tag{DC7}
+\]</span>
+<p>To verify the kernel, write
+<span class="math" data-tex="\(H(x)-L^{-1}\int H(y)\,dy=L^{-1}\int\int_y^xH&#x27;(s)\,ds\,dy\)">\(H(x)-L^{-1}\int H(y)\,dy=L^{-1}\int\int_y^xH&#x27;(s)\,ds\,dy\)</span>.
+For <span class="math" data-tex="\(s&lt;x\)">\(s&lt;x\)</span>, the allowed <span class="math" data-tex="\(y\)">\(y\)</span> occupy length <span class="math" data-tex="\(s\)">\(s\)</span>;
+for <span class="math" data-tex="\(s&gt;x\)">\(s&gt;x\)</span>, the integral orientation is negative and the
+allowed <span class="math" data-tex="\(y\)">\(y\)</span> occupy length <span class="math" data-tex="\(L-s\)">\(L-s\)</span>.
+This proves precisely the displayed <span class="math" data-tex="\(b_x\)">\(b_x\)</span>, including its sign.</p>
+<p>Apply DC7 in each of the <span class="math" data-tex="\(n\)">\(n\)</span> original coordinates.
+The operators in different coordinates commute by Fubini.
+Expanding all <span class="math" data-tex="\(2^n\)">\(2^n\)</span> choices gives the full representation</p>
+<span class="math math-display" data-tex="\[
+H(x)=\sum_{\epsilon\in\{0,1\}^n}
+L^{-n+|\epsilon|}
+\int_{[0,L]^n}
+\left(\prod_{i:\epsilon_i=1}b_{x_i}(s_i)\right)
+\partial^\epsilon H(s)\,ds .
+\tag{DC8}
+\]">\[
+H(x)=\sum_{\epsilon\in\{0,1\}^n}
+L^{-n+|\epsilon|}
+\int_{[0,L]^n}
+\left(\prod_{i:\epsilon_i=1}b_{x_i}(s_i)\right)
+\partial^\epsilon H(s)\,ds .
+\tag{DC8}
+\]</span>
+<p>An empty product is one.
+There are no omitted boundary terms: DC7 is an identity on
+the whole closed interval and was applied before integration.
+The factor <span class="math" data-tex="\(L^{-1}\)">\(L^{-1}\)</span> is used exactly once for each
+coordinate in which the derivative choice was not taken.</p>
+<p>The triangle inequality, <span class="math" data-tex="\(|b_x|\leq1\)">\(|b_x|\leq1\)</span>, and Hölder on
+the original volume <span class="math" data-tex="\(L^n\)">\(L^n\)</span> now give, for all
+<span class="math" data-tex="\(1\leq p\leq\infty\)">\(1\leq p\leq\infty\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|H\|_\infty
+\leq\sum_{\epsilon\in\{0,1\}^n}
+L^{|\epsilon|-n/p}\|\partial^\epsilon H\|_p .
+\tag{DC9}
+\]">\[
+\|H\|_\infty
+\leq\sum_{\epsilon\in\{0,1\}^n}
+L^{|\epsilon|-n/p}\|\partial^\epsilon H\|_p .
+\tag{DC9}
+\]</span>
+<p>For <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span>, the integral is bounded by volume times
+the supremum; for <span class="math" data-tex="\(p=1\)">\(p=1\)</span>, no volume factor comes from Hölder.
+This proves the needed embedding directly, with its full
+period dependence and zero-order contribution.</p>
+<p>For <span class="math" data-tex="\(H=\nabla^Mf\)">\(H=\nabla^Mf\)</span>, every component of
+<span class="math" data-tex="\(\partial^\epsilon\nabla^Mf\)">\(\partial^\epsilon\nabla^Mf\)</span> occurs in the full ordered
+tensor <span class="math" data-tex="\(\nabla^{M+|\epsilon|}f\)">\(\nabla^{M+|\epsilon|}f\)</span>.
+Fixing the first <span class="math" data-tex="\(|\epsilon|\)">\(|\epsilon|\)</span> derivative indices gives an
+injective inclusion of arrays; hence its Euclidean norm
+is bounded by that of the full higher tensor.
+Grouping the <span class="math" data-tex="\(\binom ns\)">\(\binom ns\)</span> subsets with size <span class="math" data-tex="\(s\)">\(s\)</span> proves</p>
+<span class="math math-display" data-tex="\[
+\|\nabla^Mf\|_\infty
+\leq\sum_{s=0}^n\binom ns
+L^{s-n/p}\|\nabla^{M+s}f\|_p .
+\tag{DC10}
+\]">\[
+\|\nabla^Mf\|_\infty
+\leq\sum_{s=0}^n\binom ns
+L^{s-n/p}\|\nabla^{M+s}f\|_p .
+\tag{DC10}
+\]</span>
+<h2 id="dc4-the-complete-finite-bound-and-the-source-comparison">DC4. The complete finite bound and the source comparison</h2>
+<p>Substitute DC10 into the unchanged original DC6:</p>
+<span class="math math-display" data-tex="\[
+\boxed{\;
+\|fg\|_p\leq L^{-n/p}\|g\|_p
+\left[
+\sum_{j=0}^{M-1}d^j\|\nabla^jf\|_p
++d^M\sum_{s=0}^n\binom ns
+L^s\|\nabla^{M+s}f\|_p
+\right].\;}
+\tag{DC11}
+\]">\[
+\boxed{\;
+\|fg\|_p\leq L^{-n/p}\|g\|_p
+\left[
+\sum_{j=0}^{M-1}d^j\|\nabla^jf\|_p
++d^M\sum_{s=0}^n\binom ns
+L^s\|\nabla^{M+s}f\|_p
+\right].\;}
+\tag{DC11}
+\]</span>
+<p>This holds for each smooth periodic amplitude <span class="math" data-tex="\(f\)">\(f\)</span>, every
+actual small-period <span class="math" data-tex="\(g\)">\(g\)</span>, all positive integers <span class="math" data-tex="\(M,m\)">\(M,m\)</span>,
+and every <span class="math" data-tex="\(1\leq p\leq\infty\)">\(1\leq p\leq\infty\)</span>.
+In particular, it is already a complete product estimate
+without an assumed frequency hierarchy.</p>
+<p>If the actual finite amplitude costs satisfy
+<span class="math" data-tex="\(\|\nabla^jf\|_p\leq C_f\Lambda^j\)">\(\|\nabla^jf\|_p\leq C_f\Lambda^j\)</span> for
+<span class="math" data-tex="\(0\leq j\leq M+n\)">\(0\leq j\leq M+n\)</span>, put <span class="math" data-tex="\(q=d\Lambda\)">\(q=d\Lambda\)</span>.
+The full right side is then bounded by</p>
+<span class="math math-display" data-tex="\[
+C_fL^{-n/p}\|g\|_p
+\left[\sum_{j=0}^{M-1}q^j+
+q^M(1+L\Lambda)^n\right].
+\tag{DC12}
+\]">\[
+C_fL^{-n/p}\|g\|_p
+\left[\sum_{j=0}^{M-1}q^j+
+q^M(1+L\Lambda)^n\right].
+\tag{DC12}
+\]</span>
+<p>The polynomial in the second term is exactly the binomial
+sum in DC11. For <span class="math" data-tex="\(0\leq q&lt;1\)">\(0\leq q&lt;1\)</span>, the finite geometric sum
+is <span class="math" data-tex="\((1-q^M)/(1-q)\)">\((1-q^M)/(1-q)\)</span>; its infinite upper bound is
+<span class="math" data-tex="\(1/(1-q)\)">\(1/(1-q)\)</span>. Both keep the actual remainder.</p>
+<p>If only the source's positive-order costs are available,
+retain the missing zeroth-order norm explicitly instead:</p>
+<span class="math math-display" data-tex="\[
+\|fg\|_p\leq L^{-n/p}\|g\|_p
+\left[
+\|f\|_p+
+C_f\left\{\sum_{j=1}^{M-1}q^j+
+q^M(1+L\Lambda)^n\right\}
+\right].
+\tag{DC13}
+\]">\[
+\|fg\|_p\leq L^{-n/p}\|g\|_p
+\left[
+\|f\|_p+
+C_f\left\{\sum_{j=1}^{M-1}q^j+
+q^M(1+L\Lambda)^n\right\}
+\right].
+\tag{DC13}
+\]</span>
+<p>The sum is empty when <span class="math" data-tex="\(M=1\)">\(M=1\)</span>.
+This proves the exact repair with the source's existing
+derivative information rather than assuming away the missing
+amplitude.</p>
+<p>For the source choices <span class="math" data-tex="\(n=3\)">\(n=3\)</span>, <span class="math" data-tex="\(L=2\pi\)">\(L=2\pi\)</span>,
+<span class="math" data-tex="\(\Lambda=\lambda\geq1\)">\(\Lambda=\lambda\geq1\)</span>, <span class="math" data-tex="\(m=\kappa\)">\(m=\kappa\)</span>,</p>
+<span class="math math-display" data-tex="\[
+q=\frac{2\pi\sqrt3\,\lambda}{\kappa}\leq\frac13,\qquad
+\lambda^4q^M\leq1 ,
+\tag{DC14}
+\]">\[
+q=\frac{2\pi\sqrt3\,\lambda}{\kappa}\leq\frac13,\qquad
+\lambda^4q^M\leq1 ,
+\tag{DC14}
+\]</span>
+<p>the actual positive-order contribution obeys</p>
+<span class="math math-display" data-tex="\[
+\sum_{j=1}^{M-1}q^j\leq\frac12,\qquad
+q^M(1+2\pi\lambda)^3
+\leq\lambda^{-4}(1+2\pi\lambda)^3
+\leq(1+2\pi)^3 .
+\tag{DC15}
+\]">\[
+\sum_{j=1}^{M-1}q^j\leq\frac12,\qquad
+q^M(1+2\pi\lambda)^3
+\leq\lambda^{-4}(1+2\pi\lambda)^3
+\leq(1+2\pi)^3 .
+\tag{DC15}
+\]</span>
+<p>Thus DC13 gives the complete source-domain bound</p>
+<span class="math math-display" data-tex="\[
+\|fg\|_p\leq(2\pi)^{-3/p}\|g\|_p
+\left[\|f\|_p+
+C_f\left\{\frac12+(1+2\pi)^3\right\}\right].
+\tag{DC16}
+\]">\[
+\|fg\|_p\leq(2\pi)^{-3/p}\|g\|_p
+\left[\|f\|_p+
+C_f\left\{\frac12+(1+2\pi)^3\right\}\right].
+\tag{DC16}
+\]</span>
+<p>If the missing zeroth-order estimate is also given, replace
+<span class="math" data-tex="\(\|f\|_p\)">\(\|f\|_p\)</span> by <span class="math" data-tex="\(C_f\)">\(C_f\)</span>, obtaining the source type of conclusion
+with explicit constant
+<span class="math" data-tex="\((2\pi)^{-3/p}[3/2+(1+2\pi)^3]\)">\((2\pi)^{-3/p}[3/2+(1+2\pi)^3]\)</span>.
+Only derivatives through order <span class="math" data-tex="\(M+3\)">\(M+3\)</span> were used, one fewer
+than the source's stated <span class="math" data-tex="\(M+4\)">\(M+4\)</span>, and the estimate holds
+for the entire interval of <span class="math" data-tex="\(p\)">\(p\)</span>, including infinity.</p>
+<p>The omitted amplitude cannot be inferred from the original
+positive-order assumptions. For example, take
+<span class="math" data-tex="\(\lambda=1\)">\(\lambda=1\)</span>, <span class="math" data-tex="\(M=1\)">\(M=1\)</span>, and any integer
+<span class="math" data-tex="\(\kappa\geq6\pi\sqrt3\)">\(\kappa\geq6\pi\sqrt3\)</span>; then DC14 holds.
+Let <span class="math" data-tex="\(C_f=1\)">\(C_f=1\)</span>, <span class="math" data-tex="\(f(x)=A\)">\(f(x)=A\)</span> with arbitrary <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>, and <span class="math" data-tex="\(g=1\)">\(g=1\)</span>.
+Every positive derivative of <span class="math" data-tex="\(f\)">\(f\)</span> is zero, satisfying all
+stated bounds, while</p>
+<span class="math math-display" data-tex="\[
+\|fg\|_p=A\|g\|_p
+\tag{DC17}
+\]">\[
+\|fg\|_p=A\|g\|_p
+\tag{DC17}
+\]</span>
+<p>has no bound by a universal multiple of <span class="math" data-tex="\(C_f\|g\|_p\)">\(C_f\|g\|_p\)</span>
+as <span class="math" data-tex="\(A\)">\(A\)</span> increases. The complete estimate DC16 keeps
+<span class="math" data-tex="\(\|f\|_p=A(2\pi)^{3/p}\)">\(\|f\|_p=A(2\pi)^{3/p}\)</span> and remains valid.
+This local statement and its repair do not determine the
+validity of an iteration that also controls its actual
+amplitudes; those receiving costs must be checked separately.</p>
+<h2 id="dc5-a-stronger-cellwise-bound-with-only-mixed-first-derivatives">DC5. A stronger cellwise bound with only mixed first derivatives</h2>
+<p>The same exact averaging map gives a stronger finite estimate.
+Keep each original cell, with lower corner <span class="math" data-tex="\(a=h\ell\)">\(a=h\ell\)</span>. On its
+<span class="math" data-tex="\(i\)">\(i\)</span>-th interval replace the kernel of DC7 by</p>
+<span class="math math-display" data-tex="\[
+b_{x_i,a_i,h}(s_i)=\frac{s_i-a_i}{h}-\mathbf1_{\{s_i&gt;x_i\}},
+\qquad |b_{x_i,a_i,h}|\leq1 .
+\tag{DC18}
+\]">\[
+b_{x_i,a_i,h}(s_i)=\frac{s_i-a_i}{h}-\mathbf1_{\{s_i&gt;x_i\}},
+\qquad |b_{x_i,a_i,h}|\leq1 .
+\tag{DC18}
+\]</span>
+<p>The proof of DC7 uses only the fundamental theorem of calculus,
+so it applies on this interval without a periodicity assumption
+on the restricted amplitude. Applying it in every coordinate
+and expanding all choices gives, for <span class="math" data-tex="\(x\)">\(x\)</span> in the closed cell,</p>
+<span class="math math-display" data-tex="\[
+f(x)=\sum_{\epsilon\in\{0,1\}^n}h^{-n+|\epsilon|}
+\int_{Q_\ell}\left(\prod_{i:\epsilon_i=1}
+b_{x_i,a_i,h}(s_i)\right)\partial^\epsilon f(s)\,ds .
+\tag{DC19}
+\]">\[
+f(x)=\sum_{\epsilon\in\{0,1\}^n}h^{-n+|\epsilon|}
+\int_{Q_\ell}\left(\prod_{i:\epsilon_i=1}
+b_{x_i,a_i,h}(s_i)\right)\partial^\epsilon f(s)\,ds .
+\tag{DC19}
+\]</span>
+<p>The empty product is one and all boundary contributions are
+already in the signed kernels. Hölder on the actual cell yields</p>
+<span class="math math-display" data-tex="\[
+\sup_{Q_\ell}|f|
+\leq\sum_{\epsilon\in\{0,1\}^n}
+h^{|\epsilon|-n/p}\|\partial^\epsilon f\|_{L^p(Q_\ell)}.
+\tag{DC20}
+\]">\[
+\sup_{Q_\ell}|f|
+\leq\sum_{\epsilon\in\{0,1\}^n}
+h^{|\epsilon|-n/p}\|\partial^\epsilon f\|_{L^p(Q_\ell)}.
+\tag{DC20}
+\]</span>
+<p>For finite <span class="math" data-tex="\(p\)">\(p\)</span>, multiply this bound by the common cell mass
+of <span class="math" data-tex="\(|g|^p\)">\(|g|^p\)</span>, sum, and take the <span class="math" data-tex="\(p\)">\(p\)</span>-th root. Minkowski on
+the finite cell index set, followed by disjointness, proves</p>
+<span class="math math-display" data-tex="\[
+\boxed{\;
+\|fg\|_p\leq L^{-n/p}\|g\|_p
+\sum_{\epsilon\in\{0,1\}^n}
+h^{|\epsilon|}\|\partial^\epsilon f\|_p
+\leq L^{-n/p}\|g\|_p
+\sum_{s=0}^n\binom ns h^s\|\nabla^sf\|_p .\;}
+\tag{DC21}
+\]">\[
+\boxed{\;
+\|fg\|_p\leq L^{-n/p}\|g\|_p
+\sum_{\epsilon\in\{0,1\}^n}
+h^{|\epsilon|}\|\partial^\epsilon f\|_p
+\leq L^{-n/p}\|g\|_p
+\sum_{s=0}^n\binom ns h^s\|\nabla^sf\|_p .\;}
+\tag{DC21}
+\]</span>
+<p>The volume factor is again exactly
+<span class="math" data-tex="\(m^{-n/p}h^{-n/p}=L^{-n/p}\)">\(m^{-n/p}h^{-n/p}=L^{-n/p}\)</span>. The final inequality includes
+each mixed derivative in the full ordered tensor of its order.
+For <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span>, the zeroth term alone gives the required
+product bound, so both inequalities remain true. The same tensor
+product interpretation as DC6 covers vector amplitudes and factors.</p>
+<p>Thus no derivative order beyond <span class="math" data-tex="\(n\)">\(n\)</span> is needed. No parameter
+hierarchy is required for DC21 itself. In the source's three
+dimensions, positive derivative bounds through order three give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|fg\|_p
+&amp;\leq (2\pi)^{-3/p}\|g\|_p
+\left[\|f\|_p+C_f\{(1+2\pi\lambda/\kappa)^3-1\}\right]\\
+&amp;\leq (2\pi)^{-3/p}\|g\|_p
+\left[\|f\|_p+C_f\{(1+1/(3\sqrt3))^3-1\}\right]
+\quad\text{when }2\pi\sqrt3\lambda/\kappa\leq1/3 .
+\end{aligned}
+\tag{DC22}
+\]">\[
+\begin{aligned}
+\|fg\|_p
+&amp;\leq (2\pi)^{-3/p}\|g\|_p
+\left[\|f\|_p+C_f\{(1+2\pi\lambda/\kappa)^3-1\}\right]\\
+&amp;\leq (2\pi)^{-3/p}\|g\|_p
+\left[\|f\|_p+C_f\{(1+1/(3\sqrt3))^3-1\}\right]
+\quad\text{when }2\pi\sqrt3\lambda/\kappa\leq1/3 .
+\end{aligned}
+\tag{DC22}
+\]</span>
+<p>The additional source condition involving <span class="math" data-tex="\(M\)">\(M\)</span> is unnecessary
+for this estimate. DC11–DC16 remain proved, with all of their
+terms retained; DC21 supplies a shorter-derivative receiver.
+The counterexample DC17 still requires the zeroth-order term.</p>
+<p><img src="assets/NS-FLUID-22/original-periodic-cell-map-007529662AC4FE02DCF4C22CBDD4BD5DAF9068B5538D67592806CF7D872D0137.png" alt="Actual small cells and the signed averaging kernel" class="course-figure" width="2340" height="990" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-periodic-cell-map" data-asset-sha256="007529662AC4FE02DCF4C22CBDD4BD5DAF9068B5538D67592806CF7D872D0137"></p>
+<p>The left panel displays the actual functions <span class="math" data-tex="\(f(x)=2+0.4\sin x\)">\(f(x)=2+0.4\sin x\)</span>
+and <span class="math" data-tex="\(g(x)=1+\cos(4x)\)">\(g(x)=1+\cos(4x)\)</span> on <span class="math" data-tex="\([0,2\pi]\)">\([0,2\pi]\)</span>, with cell length
+<span class="math" data-tex="\(h=\pi/2\)">\(h=\pi/2\)</span>. Every cell has the same integral of <span class="math" data-tex="\(g\)">\(g\)</span>; the
+horizontal segments are the exact cell averages of <span class="math" data-tex="\(f\)">\(f\)</span>.
+These are example amplitudes, not fluid velocities. The right
+panel displays the signed kernel DC7 at <span class="math" data-tex="\(x=L/3\)">\(x=L/3\)</span>, including
+its downward jump of one. DC18–DC21 apply the same identity
+on each original small cell. The plots illustrate the proved
+maps; sampled curves do not establish the estimates.
+<a href="assets/original-periodic-cell-map.py">Reproducible figure source</a>.
+Human comparison: Buckmaster–Vicol, arXiv:1709.10033v4,
+Lemma lem:Lp:independence and Appendix app:Lp:product.</p>
+<h2 id="five-solved-exercises">Five solved exercises</h2>
+<h3 id="exercise-1-compute-the-exact-fourth-norm-and-the-squared-factor">Exercise 1: compute the exact fourth norm and the squared factor</h3>
+<p>Compute the fourth norm of the original field, retaining the
+finite parameter <span class="math" data-tex="\(M=2r+1\)">\(M=2r+1\)</span> and original volume <span class="math" data-tex="\(L^3\)">\(L^3\)</span>.</p>
+<p><strong>Solution.</strong> Every coefficient of <span class="math" data-tex="\(d_r^2\)">\(d_r^2\)</span> counts ordered
+pairs with a fixed sum. Thus</p>
+<span class="math math-display" data-tex="\[
+d_r(y)^2=\sum_{j=-2r}^{2r}(M-|j|)e^{ijy},\qquad
+\int_{-\pi}^{\pi}|d_r|^4
+=2\pi\left[M^2+2\sum_{j=1}^{M-1}j^2\right]
+=2\pi\frac{M(2M^2+1)}3 .
+\tag{EX1}
+\]">\[
+d_r(y)^2=\sum_{j=-2r}^{2r}(M-|j|)e^{ijy},\qquad
+\int_{-\pi}^{\pi}|d_r|^4
+=2\pi\left[M^2+2\sum_{j=1}^{M-1}j^2\right]
+=2\pi\frac{M(2M^2+1)}3 .
+\tag{EX1}
+\]</span>
+<p>The sum formula <span class="math" data-tex="\(\sum_{j=1}^{k}j^2=k(k+1)(2k+1)/6\)">\(\sum_{j=1}^{k}j^2=k(k+1)(2k+1)/6\)</span>
+follows by induction: subtract its value at <span class="math" data-tex="\(k-1\)">\(k-1\)</span> and obtain
+<span class="math" data-tex="\(k^2\)">\(k^2\)</span>, with the value zero at <span class="math" data-tex="\(k=0\)">\(k=0\)</span>. Parseval gives the
+middle equality, with the full original circle measure.
+Taking the three independent integrals and the fourth power
+of <span class="math" data-tex="\(M^{-3/2}\)">\(M^{-3/2}\)</span>, then applying the exact covering IB10, gives</p>
+<span class="math math-display" data-tex="\[
+\|D_r\|_4^4=(2\pi)^3
+\left(\frac{2M^2+1}{3M}\right)^3,\qquad
+\|\eta_\xi\|_4^4=L^3
+\left(\frac{2M^2+1}{3M}\right)^3 .
+\tag{EX2}
+\]">\[
+\|D_r\|_4^4=(2\pi)^3
+\left(\frac{2M^2+1}{3M}\right)^3,\qquad
+\|\eta_\xi\|_4^4=L^3
+\left(\frac{2M^2+1}{3M}\right)^3 .
+\tag{EX2}
+\]</span>
+<p>Consequently the actual squared factor <span class="math" data-tex="\(\theta=\eta_\xi^2\)">\(\theta=\eta_\xi^2\)</span>
+has</p>
+<span class="math math-display" data-tex="\[
+\langle\theta\rangle=1,\qquad
+\|\theta\|_2=L^{3/2}
+\left(\frac{2M^2+1}{3M}\right)^{3/2},\qquad
+\|\theta-1\|_2^2=L^3
+\left[\left(\frac{2M^2+1}{3M}\right)^3-1\right].
+\tag{EX3}
+\]">\[
+\langle\theta\rangle=1,\qquad
+\|\theta\|_2=L^{3/2}
+\left(\frac{2M^2+1}{3M}\right)^{3/2},\qquad
+\|\theta-1\|_2^2=L^3
+\left[\left(\frac{2M^2+1}{3M}\right)^3-1\right].
+\tag{EX3}
+\]</span>
+<p>The last identity expands the complete square and uses
+<span class="math" data-tex="\(\int\theta=L^3\)">\(\int\theta=L^3\)</span>. This is the exact cost received by
+the temporal correction in Exercise 5.</p>
+<h3 id="exercise-2-retain-every-fourth-order-spatial-and-time-contribution">Exercise 2: retain every fourth-order spatial and time contribution</h3>
+<p>Compute the norms of the full ordered second spatial derivative,
+the second time derivative, and the mixed space–time derivative.</p>
+<p><strong>Solution.</strong> Define the exact one-index moments</p>
+<span class="math math-display" data-tex="\[
+s_2=\frac1M\sum_{j=-r}^r j^2=\frac{r(r+1)}3,\qquad
+s_4=\frac1M\sum_{j=-r}^r j^4
+=\frac{r(r+1)(3r^2+3r-1)}{15}.
+\tag{EX4}
+\]">\[
+s_2=\frac1M\sum_{j=-r}^r j^2=\frac{r(r+1)}3,\qquad
+s_4=\frac1M\sum_{j=-r}^r j^4
+=\frac{r(r+1)(3r^2+3r-1)}{15}.
+\tag{EX4}
+\]</span>
+<p>For the fourth power, the polynomial
+<span class="math" data-tex="\(P(k)=k(k+1)(2k+1)(3k^2+3k-1)/30\)">\(P(k)=k(k+1)(2k+1)(3k^2+3k-1)/30\)</span>
+has <span class="math" data-tex="\(P(0)=0\)">\(P(0)=0\)</span> and <span class="math" data-tex="\(P(k)-P(k-1)=k^4\)">\(P(k)-P(k-1)=k^4\)</span>, as expansion
+of the five factors verifies. Hence the positive-index sum is
+<span class="math" data-tex="\(P(r)\)">\(P(r)\)</span>; symmetry and division by <span class="math" data-tex="\(M\)">\(M\)</span> give EX4.
+The same argument with the square-sum polynomial gives <span class="math" data-tex="\(s_2\)">\(s_2\)</span>.</p>
+<p>In the exact finite sum IB15 expand every factor:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(j^2+k^2+\ell^2)^2&amp;=j^4+k^4+\ell^4\\
+&amp;\quad+2j^2k^2+2j^2\ell^2+2k^2\ell^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+(j^2+k^2+\ell^2)^2&amp;=j^4+k^4+\ell^4\\
+&amp;\quad+2j^2k^2+2j^2\ell^2+2k^2\ell^2 .
+\end{aligned}
+\]</span>
+<p>The three indices range independently, so</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\nabla_x^2\eta_\xi\|_2^2
+&amp;=L^3\beta^4(3s_4+6s_2^2),\\
+\|\partial_t^2\eta_\xi\|_2^2
+&amp;=L^3(\beta\mu)^4s_4,\\
+\|\nabla_x\partial_t\eta_\xi\|_2^2
+&amp;=L^3\beta^4\mu^2(s_4+2s_2^2).
+\end{aligned}
+\tag{EX5}
+\]">\[
+\begin{aligned}
+\|\nabla_x^2\eta_\xi\|_2^2
+&amp;=L^3\beta^4(3s_4+6s_2^2),\\
+\|\partial_t^2\eta_\xi\|_2^2
+&amp;=L^3(\beta\mu)^4s_4,\\
+\|\nabla_x\partial_t\eta_\xi\|_2^2
+&amp;=L^3\beta^4\mu^2(s_4+2s_2^2).
+\end{aligned}
+\tag{EX5}
+\]</span>
+<p>The factors six and two retain all mixed-index contributions.
+For example, the last sum is the average of
+<span class="math" data-tex="\((j^2+k^2+\ell^2)j^2\)">\((j^2+k^2+\ell^2)j^2\)</span>, with one fourth-power term
+and two independent square products. Substitution of EX4
+gives every coefficient as an explicit polynomial in the
+original <span class="math" data-tex="\(r\)">\(r\)</span>; neither time frequency nor volume is removed.</p>
+<h3 id="exercise-3-find-an-exact-energy-map-and-its-boundary-resonance">Exercise 3: find an exact energy map and its boundary resonance</h3>
+<p>Show that an amplitude whose Fourier frequencies have magnitude
+strictly below <span class="math" data-tex="\(\beta/2\)">\(\beta/2\)</span> has an exact product-energy identity.
+Test the boundary with an actual periodic amplitude.</p>
+<p><strong>Solution.</strong> The complete square of the original finite kernel
+has the expansion</p>
+<span class="math math-display" data-tex="\[
+\theta(x,t)=M^{-3}
+\sum_{j,k,\ell=-2r}^{2r}
+(M-|j|)(M-|k|)(M-|\ell|)
+e^{i\beta[(j\xi+kA_\xi+\ell C_\xi)\cdot x+j\mu t]}.
+\tag{EX6}
+\]">\[
+\theta(x,t)=M^{-3}
+\sum_{j,k,\ell=-2r}^{2r}
+(M-|j|)(M-|k|)(M-|\ell|)
+e^{i\beta[(j\xi+kA_\xi+\ell C_\xi)\cdot x+j\mu t]}.
+\tag{EX6}
+\]</span>
+<p>It follows by multiplying the three exact one-dimensional sums
+of EX1. Its constant coefficient is one. Orthogonality of the
+frame proves that every nonzero frequency has magnitude at
+least <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, with equality on the six coordinate indices.</p>
+<p>Let <span class="math" data-tex="\(a\)">\(a\)</span> be any real trigonometric polynomial on the original
+torus whose physical frequencies <span class="math" data-tex="\(k\in(2\pi/L)\mathbb Z^3\)">\(k\in(2\pi/L)\mathbb Z^3\)</span>
+satisfy <span class="math" data-tex="\(|k|&lt;\beta/2\)">\(|k|&lt;\beta/2\)</span>. Every frequency of <span class="math" data-tex="\(a^2\)">\(a^2\)</span> is a sum
+of two such frequencies and has magnitude strictly below
+<span class="math" data-tex="\(\beta\)">\(\beta\)</span>. In the integral of <span class="math" data-tex="\(a^2\theta\)">\(a^2\theta\)</span>, a nonzero
+frequency from EX6 therefore cannot cancel any frequency of
+<span class="math" data-tex="\(a^2\)">\(a^2\)</span>. Integration leaves exactly</p>
+<span class="math math-display" data-tex="\[
+\|a\eta_\xi\|_2^2=\int_{\mathbb T_L^3}a^2\theta
+=\int_{\mathbb T_L^3}a^2=\|a\|_2^2 .
+\tag{EX7}
+\]">\[
+\|a\eta_\xi\|_2^2=\int_{\mathbb T_L^3}a^2\theta
+=\int_{\mathbb T_L^3}a^2=\|a\|_2^2 .
+\tag{EX7}
+\]</span>
+<p>This proves an equality, stronger than the product bound for
+this precisely specified class of original amplitudes.</p>
+<p>To test its boundary, choose the integer <span class="math" data-tex="\(m=\lambda\sigma\)">\(m=\lambda\sigma\)</span>
+even. Since <span class="math" data-tex="\(N_\Lambda\xi\in\mathbb Z^3\)">\(N_\Lambda\xi\in\mathbb Z^3\)</span>,
+<span class="math" data-tex="\(a(x)=\cos((\beta/2)\xi\cdot x)\)">\(a(x)=\cos((\beta/2)\xi\cdot x)\)</span> is genuinely periodic
+on <span class="math" data-tex="\(\mathbb T_L^3\)">\(\mathbb T_L^3\)</span>. Such parameters satisfy IB7 by taking
+<span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> a sufficiently large multiple of <span class="math" data-tex="\(N_\Lambda\)">\(N_\Lambda\)</span>
+and <span class="math" data-tex="\(\sigma=m/\lambda\)">\(\sigma=m/\lambda\)</span>, so the example is within the
+original support restrictions. The coefficients at the
+two indices <span class="math" data-tex="\((\pm1,0,0)\)">\((\pm1,0,0)\)</span> in EX6 are
+<span class="math" data-tex="\((M-1)M^{-1}e^{\pm i\beta\mu t}\)">\((M-1)M^{-1}e^{\pm i\beta\mu t}\)</span>. Since
+<span class="math" data-tex="\(a^2=(1+\cos(\beta\xi\cdot x))/2\)">\(a^2=(1+\cos(\beta\xi\cdot x))/2\)</span>, exact integration gives</p>
+<span class="math math-display" data-tex="\[
+\|a\eta_\xi\|_2^2
+=\frac{L^3}{2}\left[1+\frac{M-1}{M}\cos(\beta\mu t)\right],
+\qquad \|a\|_2^2=\frac{L^3}{2}.
+\tag{EX8}
+\]">\[
+\|a\eta_\xi\|_2^2
+=\frac{L^3}{2}\left[1+\frac{M-1}{M}\cos(\beta\mu t)\right],
+\qquad \|a\|_2^2=\frac{L^3}{2}.
+\tag{EX8}
+\]</span>
+<p>The equality EX7 fails at this boundary, for example at
+<span class="math" data-tex="\(t=0\)">\(t=0\)</span>. Thus the strict radius <span class="math" data-tex="\(\beta/2\)">\(\beta/2\)</span> cannot be enlarged
+uniformly over the permitted periods and parameters.</p>
+<h3 id="exercise-4-keep-different-original-periods-and-cell-lengths">Exercise 4: keep different original periods and cell lengths</h3>
+<p>Extend the stronger cell estimate to an original rectangular
+torus without replacing its periods by a common length.</p>
+<p><strong>Solution.</strong> Keep <span class="math" data-tex="\(L_i&gt;0\)">\(L_i&gt;0\)</span>, positive integers <span class="math" data-tex="\(m_i\)">\(m_i\)</span>,
+<span class="math" data-tex="\(h_i=L_i/m_i\)">\(h_i=L_i/m_i\)</span>, volume <span class="math" data-tex="\(V=\prod_i L_i\)">\(V=\prod_i L_i\)</span>, and cell volume
+<span class="math" data-tex="\(v=\prod_i h_i\)">\(v=\prod_i h_i\)</span>. Suppose <span class="math" data-tex="\(g\)">\(g\)</span> has period <span class="math" data-tex="\(h_i\)">\(h_i\)</span> in
+coordinate <span class="math" data-tex="\(i\)">\(i\)</span>. Every one of the <span class="math" data-tex="\(\prod_i m_i\)">\(\prod_i m_i\)</span> cells
+has the same <span class="math" data-tex="\(|g|^p\)">\(|g|^p\)</span> integral, equal to
+<span class="math" data-tex="\((v/V)\|g\|_p^p\)">\((v/V)\|g\|_p^p\)</span>. In coordinate <span class="math" data-tex="\(i\)">\(i\)</span>, DC18 now has its
+own denominator <span class="math" data-tex="\(h_i\)">\(h_i\)</span>. Expanding all coordinate choices
+and applying Hölder on the original cell gives</p>
+<span class="math math-display" data-tex="\[
+\sup_Q|f|\leq v^{-1/p}
+\sum_{\epsilon\in\{0,1\}^n}
+\left(\prod_{i=1}^nh_i^{\epsilon_i}\right)
+\|\partial^\epsilon f\|_{L^p(Q)}.
+\tag{EX9}
+\]">\[
+\sup_Q|f|\leq v^{-1/p}
+\sum_{\epsilon\in\{0,1\}^n}
+\left(\prod_{i=1}^nh_i^{\epsilon_i}\right)
+\|\partial^\epsilon f\|_{L^p(Q)}.
+\tag{EX9}
+\]</span>
+<p>Minkowski on the cell index set and the full mass factor
+<span class="math" data-tex="\((v/V)^{1/p}\)">\((v/V)^{1/p}\)</span> yield</p>
+<span class="math math-display" data-tex="\[
+\|fg\|_p\leq V^{-1/p}\|g\|_p
+\sum_{\epsilon\in\{0,1\}^n}
+\left(\prod_{i=1}^nh_i^{\epsilon_i}\right)
+\|\partial^\epsilon f\|_p .
+\tag{EX10}
+\]">\[
+\|fg\|_p\leq V^{-1/p}\|g\|_p
+\sum_{\epsilon\in\{0,1\}^n}
+\left(\prod_{i=1}^nh_i^{\epsilon_i}\right)
+\|\partial^\epsilon f\|_p .
+\tag{EX10}
+\]</span>
+<p>This includes <span class="math" data-tex="\(p=1\)">\(p=1\)</span>; at <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span> the zeroth term
+already proves the product estimate. Every original period
+and mixed derivative is present, with no replacement by a
+largest or smallest length. The proof also applies to vector
+fields with the tensor product convention of DC6.</p>
+<h3 id="exercise-5-construct-the-temporal-correction-and-its-whole-pair-residual">Exercise 5: construct the temporal correction and its whole pair residual</h3>
+<p>For one positive representative <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, take a smooth real
+amplitude <span class="math" data-tex="\(a(x,t)\)">\(a(x,t)\)</span>, put <span class="math" data-tex="\(A=a^2\)">\(A=a^2\)</span> and <span class="math" data-tex="\(\theta=\eta_\xi^2\)">\(\theta=\eta_\xi^2\)</span>.
+Construct its temporal correction, pressure and exact residual,
+including all amplitude derivatives and constant modes.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(P\)">\(P\)</span> be the original Leray projection from
+lesson 2, and let <span class="math" data-tex="\(P_0v=v-\langle v\rangle\)">\(P_0v=v-\langle v\rangle\)</span>. On the original
+torus these commute. The inverse Laplacian has its zero mode
+set to zero. Define</p>
+<span class="math math-display" data-tex="\[
+K=A\theta(I-\xi\otimes\xi),\qquad
+z=\mu^{-1}PP_0(A\theta\xi),\qquad
+V_1=\partial_t(A\theta\xi),\qquad
+b=\mu^{-1}\partial_tA-\xi\cdot\nabla A .
+\tag{EX11}
+\]">\[
+K=A\theta(I-\xi\otimes\xi),\qquad
+z=\mu^{-1}PP_0(A\theta\xi),\qquad
+V_1=\partial_t(A\theta\xi),\qquad
+b=\mu^{-1}\partial_tA-\xi\cdot\nabla A .
+\tag{EX11}
+\]</span>
+<p>The exact Fourier multipliers of the projections prove
+<span class="math" data-tex="\(\operatorname{div}z=0\)">\(\operatorname{div}z=0\)</span> and <span class="math" data-tex="\(\langle z\rangle=0\)">\(\langle z\rangle=0\)</span>,
+and commute with time differentiation of these smooth fields.
+By the positive-representative transport IB20,
+<span class="math" data-tex="\(\xi\cdot\nabla\theta=\mu^{-1}\partial_t\theta\)">\(\xi\cdot\nabla\theta=\mu^{-1}\partial_t\theta\)</span>.
+Expanding the divergence and time derivative gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{div}K
+&amp;=\nabla(A\theta)-\theta\xi(\xi\cdot\nabla A)
+-\mu^{-1}A\partial_t\theta\,\xi,\\
+\partial_tz&amp;=\mu^{-1}PP_0V_1,\\
+\partial_tz+\operatorname{div}K
+&amp;=\nabla\left[A\theta-\mu^{-1}\Delta^{-1}
+\operatorname{div}V_1\right]
++\theta\xi b-\mu^{-1}\langle V_1\rangle .
+\end{aligned}
+\tag{EX12}
+\]">\[
+\begin{aligned}
+\operatorname{div}K
+&amp;=\nabla(A\theta)-\theta\xi(\xi\cdot\nabla A)
+-\mu^{-1}A\partial_t\theta\,\xi,\\
+\partial_tz&amp;=\mu^{-1}PP_0V_1,\\
+\partial_tz+\operatorname{div}K
+&amp;=\nabla\left[A\theta-\mu^{-1}\Delta^{-1}
+\operatorname{div}V_1\right]
++\theta\xi b-\mu^{-1}\langle V_1\rangle .
+\end{aligned}
+\tag{EX12}
+\]</span>
+<p>Here the exact identity
+<span class="math" data-tex="\(I-PP_0=\nabla\Delta^{-1}\operatorname{div}+\langle\cdot\rangle\)">\(I-PP_0=\nabla\Delta^{-1}\operatorname{div}+\langle\cdot\rangle\)</span>
+accounts for both the pressure part and the constant mode.
+There is no assumed vanishing mean of a product. Instead,
+periodic integration by parts proves</p>
+<span class="math math-display" data-tex="\[
+\langle\theta\xi b\rangle-\mu^{-1}\langle V_1\rangle
+=-\xi\langle\theta\xi\cdot\nabla A
++A\xi\cdot\nabla\theta\rangle
+=-\xi\langle\xi\cdot\nabla(A\theta)\rangle=0 .
+\tag{EX13}
+\]">\[
+\langle\theta\xi b\rangle-\mu^{-1}\langle V_1\rangle
+=-\xi\langle\theta\xi\cdot\nabla A
++A\xi\cdot\nabla\theta\rangle
+=-\xi\langle\xi\cdot\nabla(A\theta)\rangle=0 .
+\tag{EX13}
+\]</span>
+<p>Set the actual pressure and symmetric trace-free stress to</p>
+<span class="math math-display" data-tex="\[
+q=-A\theta+\mu^{-1}\Delta^{-1}\operatorname{div}V_1,
+\qquad S=\mathcal R(\theta\xi b).
+\tag{EX14}
+\]">\[
+q=-A\theta+\mu^{-1}\Delta^{-1}\operatorname{div}V_1,
+\qquad S=\mathcal R(\theta\xi b).
+\tag{EX14}
+\]</span>
+<p>The complete inverse divergence in lesson 21 has
+<span class="math" data-tex="\(\operatorname{div}\mathcal Rv=P_0v\)">\(\operatorname{div}\mathcal Rv=P_0v\)</span>. Equations EX12–EX14
+therefore establish the exact pair equation</p>
+<span class="math math-display" data-tex="\[
+\partial_tz+\operatorname{div}K+\nabla q
+=P_0(\theta\xi b)=\operatorname{div}S .
+\tag{EX15}
+\]">\[
+\partial_tz+\operatorname{div}K+\nabla q
+=P_0(\theta\xi b)=\operatorname{div}S .
+\tag{EX15}
+\]</span>
+<p>In particular, if <span class="math" data-tex="\(A\)">\(A\)</span> is constant, <span class="math" data-tex="\(b=0\)">\(b=0\)</span> and this entire
+pair residual vanishes. The sign of <span class="math" data-tex="\(z\)">\(z\)</span> in EX11 is positive.
+This agrees with Buckmaster–Vicol's temporal corrector
+e:temporal_corrector, original source lines 805–809, whose
+sum is explicitly over positive representatives.</p>
+<p>The stronger product estimate gives concrete receiving bounds.
+Write <span class="math" data-tex="\(h=L/(\lambda\sigma)\)">\(h=L/(\lambda\sigma)\)</span> and
+<span class="math" data-tex="\(E_M=((2M^2+1)/(3M))^{3/2}\)">\(E_M=((2M^2+1)/(3M))^{3/2}\)</span>, keeping its whole expression.
+Orthogonality makes <span class="math" data-tex="\(PP_0\)">\(PP_0\)</span> an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> contraction; the
+sharp original-period inverse bound RS13 is
+<span class="math" data-tex="\(C_L=\sqrt{2(1+(L/(2\pi))^2)}\)">\(C_L=\sqrt{2(1+(L/(2\pi))^2)}\)</span> from <span class="math" data-tex="\(L^2\)">\(L^2\)</span> to <span class="math" data-tex="\(H^1\)">\(H^1\)</span>.
+Using DC21 and EX3 gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|z\|_2
+&amp;\leq\frac{E_M}{\mu}
+\sum_{\epsilon\in\{0,1\}^3}h^{|\epsilon|}
+\|\partial^\epsilon A\|_2,\\
+\|S\|_{H^1}
+&amp;\leq C_LE_M
+\sum_{\epsilon\in\{0,1\}^3}h^{|\epsilon|}
+\|\partial^\epsilon(\mu^{-1}\partial_tA
+-\xi\cdot\nabla A)\|_2 .
+\end{aligned}
+\tag{EX16}
+\]">\[
+\begin{aligned}
+\|z\|_2
+&amp;\leq\frac{E_M}{\mu}
+\sum_{\epsilon\in\{0,1\}^3}h^{|\epsilon|}
+\|\partial^\epsilon A\|_2,\\
+\|S\|_{H^1}
+&amp;\leq C_LE_M
+\sum_{\epsilon\in\{0,1\}^3}h^{|\epsilon|}
+\|\partial^\epsilon(\mu^{-1}\partial_tA
+-\xi\cdot\nabla A)\|_2 .
+\end{aligned}
+\tag{EX16}
+\]</span>
+<p>The factors <span class="math" data-tex="\(L^{-3/2}\)">\(L^{-3/2}\)</span> in DC21 and <span class="math" data-tex="\(L^{3/2}\)">\(L^{3/2}\)</span> in EX3
+cancel exactly, while the physical period remains in <span class="math" data-tex="\(h\)">\(h\)</span>
+and <span class="math" data-tex="\(C_L\)">\(C_L\)</span>. These are bounds for the explicit fields EX11
+and EX14, with their actual amplitude costs.</p>
+<p>Equation EX15 is a complete map for the paired quadratic
+tensor. To turn it into a fluid velocity correction, the
+principal field, its incompressibility correction, the
+original viscosity term, transport by the old velocity and
+all quadratic cross terms must also enter the stress equation.
+Those terms are the next calculation; EX15 alone makes no
+claim of an infinite construction or a new fluid solution.</p>
+<h2 id="what-the-next-correction-must-contain">What the next correction must contain</h2>
+<p>The complete finite kernels, exact fourth norms and temporal pair
+map are now available. Exercise 5 inserts the stronger product
+estimate into its actual velocity and stress bounds, including
+the original mean and pressure. The finite results are proved
+for the periods, indices and fields stated here.</p>
+<p>The next lesson must add the full incompressibility correction,
+transport by the old velocity, the original positive viscosity,
+all cross terms, and the true varying-amplitude oscillation stress.
+The remaining frequency estimates must apply to those actual
+terms before any infinite iteration is concluded. The later
+Albritton–Brué–Colombo, Alpöge–Buckmaster, OpenAI and workbench
+constructions keep their own equations and precise hypotheses.</p>
+</article><nav aria-label="Lesson sequence"><a href="NS-FLUID-21.html">Previous lesson</a></nav></main><footer>Mathematical text: CC0 1.0. Cited works and reader software retain their respective terms.</footer></body></html>

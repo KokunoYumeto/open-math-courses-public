@@ -12,17 +12,17 @@ The following are dependencies, not assertions that a heading elsewhere establis
 
 | Contract | Exact content used |
 |---|---|
-| `SH02-MST-TEST`, `SH02-MST-EQUIVALENCE` in [directional tests](microsupport-tests.md) | The neighborhood-uniform $C^1$ support test; the equivalent compact-cap restriction test; replacement, near a point, by a bounded complex $H$ with $R\phi_{\gamma*}H=0$ for a pointed cone detecting the prescribed covector |
+| `SH02-MST-TEST`, `SH02-MST-EQUIVALENCE` in [directional tests](../../SH02-microsupport-tests.html) | The neighborhood-uniform $C^1$ support test; the equivalent compact-cap restriction test; replacement, near a point, by a bounded complex $H$ with $R\phi_{\gamma*}H=0$ for a pointed cone detecting the prescribed covector |
 | `SH02-MST-PROPAGATION` | Propagation between nested directionally open sets, with compact forward slices and the stated exclusion of interior polar covectors; both section and supported-projector conclusions |
 | `SH02-MST-CUTOFF-FORWARD`, `SH02-MST-CUTOFF-CONVERSE` | For a product $B\times V$, complexes with microsupport in $T^*B\times(V\times\gamma^{\circ a})$ are exactly inverse images from the topology invariant under addition by $\gamma$; cones may have lines |
-| `SH02-GAM-COH-OPEN`, `SH02-GAM-SUPPORT` in [cone topology](cone-topology.md) | Derived continuation from an ordinary convex open set to its directional saturation, and commutation of the directional direct image with directionally locally closed supports |
-| `SH02-SUB-CONE-TOPOLOGY`, `SH02-SUB-BOUND` in [subset microsupport](subset-microsupport.md) | Strict normal geometry and its local cone topology criterion; $\operatorname{SS}(k_\Omega)\subset-N^*(\Omega)$ and $\operatorname{SS}(k_Z)\subset N^*(Z)$ |
-| `SH02-EX-RECTANGLE` in [exceptional operations](exceptional-operations.md) | $R\Gamma(U\times V;R\mathcal Hom(q_V^{-1}G,q_U^!F))\simeq R\operatorname{Hom}_k(R\Gamma_c(V;G),R\Gamma(U;F))$, with its restriction and extension maps |
-| `SH02-MD-SUBMERSION`, `SH02-MD-RELATIVE` in [manifold duality](manifold-duality.md) | The relative orientation complex $\omega_f$ and $f^!F\simeq f^{-1}F\otimes\omega_f$ for submersions, with its canonical comparison |
-| `SH02-MIC-STALKS` and the zero-section/Sato identifications in [microlocalization](microlocalization.md) | Closed-support tests for $\mu_MF$, the identities on its zero section, and the punctured-conormal localization triangle |
-| `SH02-MH-HOM` in [microlocal Hom](microlocal-hom.md) | The definition $\mu hom(G,F)=\mu_\Delta R\mathcal Hom(q_2^{-1}G,q_1^!F)$ under $(x;\xi)\mapsto(x,x;\xi,-\xi)$ |
-| `SH02-CB-EXTERNAL-HOM` in [biduality](cohomological-biduality.md) | The external dual–tensor comparison for a factor with cohomologically constructible local data |
-| Fourier equivalence and its two kernel models in [Fourier–Sato transform](fourier-sato.md) | $T_EF=Rq_!(p^{-1}F\otimes k_{\{\langle x,y\rangle\leq0\}})\simeq Rq_*R\Gamma_{\{\langle x,y\rangle\geq0\}}p^{-1}F$; the inverse equivalence and its orientation normalization |
+| `SH02-GAM-COH-OPEN`, `SH02-GAM-SUPPORT` in [cone topology](../../SH02-cone-topology.html) | Derived continuation from an ordinary convex open set to its directional saturation, and commutation of the directional direct image with directionally locally closed supports |
+| `SH02-SUB-CONE-TOPOLOGY`, `SH02-SUB-BOUND` in [subset microsupport](../../SH02-subset-microsupport.html) | Strict normal geometry and its local cone topology criterion; $\operatorname{SS}(k_\Omega)\subset-N^*(\Omega)$ and $\operatorname{SS}(k_Z)\subset N^*(Z)$ |
+| `SH02-EX-RECTANGLE` in [exceptional operations](../../SH02-exceptional-operations.html) | $R\Gamma(U\times V;R\mathcal Hom(q_V^{-1}G,q_U^!F))\simeq R\operatorname{Hom}_k(R\Gamma_c(V;G),R\Gamma(U;F))$, with its restriction and extension maps |
+| `SH02-MD-SUBMERSION`, `SH02-MD-RELATIVE` in [manifold duality](../../SH02-manifold-duality.html) | The relative orientation complex $\omega_f$ and $f^!F\simeq f^{-1}F\otimes\omega_f$ for submersions, with its canonical comparison |
+| `SH02-MIC-STALKS` and the zero-section/Sato identifications in [microlocalization](../../SH02-microlocalization.html) | Closed-support tests for $\mu_MF$, the identities on its zero section, and the punctured-conormal localization triangle |
+| `SH02-MH-HOM` in [microlocal Hom](../../SH02-microlocal-hom.html) | The definition $\mu hom(G,F)=\mu_\Delta R\mathcal Hom(q_2^{-1}G,q_1^!F)$ under $(x;\xi)\mapsto(x,x;\xi,-\xi)$ |
+| `SH02-CB-EXTERNAL-HOM` in [biduality](../../SH02-cohomological-biduality.html) | The external dual–tensor comparison for a factor with cohomologically constructible local data |
+| Fourier equivalence and its two kernel models in [Fourier–Sato transform](../../SH02-fourier-sato.html) | $T_EF=Rq_!(p^{-1}F\otimes k_{\{\langle x,y\rangle\leq0\}})\simeq Rq_*R\Gamma_{\{\langle x,y\rangle\geq0\}}p^{-1}F$; the inverse equivalence and its orientation normalization |
 
 We also use proper base change, proper-support base change, localization, compact-neighborhood continuity, and the projection formula at their manifold bounded-derived generality. Compact-neighborhood continuity is only applied to compact sets. It is not used as base change across an arbitrary closed set for a nonproper map. The noncharacteristic deformation input uses the intersection of the **closures** of shrinking increments, as in the corrected foundation contract. Local constancy along interval fibres implies local derived descent; that contract includes higher extension data, not just descent of each cohomology sheaf.
 
@@ -974,13 +974,13 @@ There is also cancellation in cohomology. Take $k=\mathbb Q$ and let $L$ be the 
 
 ### SH02-MO-HOLOMORPHIC-IMPORT — A distinct finite complex-analytic phenomenon
 
-The stronger equality for a finite holomorphic map and a complex-constructible sheaf is an external import from the complex-constructible microlocal theory assigned to the later sheaf course. Its exact needed statement is
+[Finite holomorphic maps with arbitrary weak coefficients](../../../SH-02/weak-coefficients.html#WC6) proves the stronger equality over every commutative coefficient ring, for bounded complexes locally constant in cohomology on a locally finite complex analytic stratification. Its statement is
 
 $$
 \operatorname{SS}(Rf_*G)=f_\pi f_d^{-1}\operatorname{SS}(G)
 $$
 
-for finite holomorphic $f$, with $G$ complex constructible in the relevant bounded coefficient category. This is not proved by MO8, and this lesson neither proves nor assumes it under that stronger hypothesis package. The two real examples above do not satisfy that package.
+for finite holomorphic $f$, with $G$ complex constructible in the relevant bounded coefficient category. The [proof over arbitrary weak coefficients](../../../SH-02/weak-coefficients.html#WC6) includes infinitely generated and nonperfect stalks, ramification, and positive-codimension images. It retains the actual vanishing-cycle unit, finite direct-sum stalk maps, and closed-support comparison. The two real examples above do not have the required holomorphic hypotheses.
 
 ## SH02-MO-STRICT-PULL — A disappearing sector with a nonempty estimate
 

@@ -651,7 +651,7 @@ An unsigned reversed composition is not a chain map in general: \(d(ba)=(db)a+(-
 
 The result concerns the selected REC recoveries and the specified MIC19/MH30/MH31 composition. It establishes equality of the named maps by kernel restriction, units, counits, and their mates. It does not establish invertibility of an arbitrary SP external comparison, arbitrary transverse MIC comparison, or arbitrary exceptional external-product map. It does not replace a graph-Hom boundedness contract by a theorem for an unbounded internal Hom, does not add constructibility, and does not reprove the REC or MEP results. The individually stated operation, specialization, Fourier and graph-Hom prerequisites remain separate dependencies.
 
-The specific prerequisite maps used here are REC1–REC20 in [SH02-MIC-ZERO](microlocalization.md#SH02-MIC-ZERO), MIC12–MIC19 in [microlocalization](microlocalization.md), MH21 and MH26–MH32 in [microlocal Hom](microlocal-hom.md), and the stated original R2/R4, FF20, FTE34, MEP5/O13 and specialization maps in their owning units. Each prerequisite retains its own hypotheses and proof obligations.
+The specific prerequisite maps used here are REC1–REC20 in [SH02-MIC-ZERO](microlocalization.md#SH02-MIC-ZERO), MIC12–MIC19 in [microlocalization](../../SH02-microlocalization.html), MH21 and MH26–MH32 in [microlocal Hom](../../SH02-microlocal-hom.html), and the stated original R2/R4, FF20, FTE34, MEP5/O13 and specialization maps in their owning units. Each prerequisite retains its own hypotheses and proof obligations.
 
 For direct navigation to the named inputs, see
 [Fourier product](fourier-functoriality.md#SH02-FF-PRODUCT),

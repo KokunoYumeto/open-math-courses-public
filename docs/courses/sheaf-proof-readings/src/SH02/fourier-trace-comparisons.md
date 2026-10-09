@@ -2,7 +2,7 @@
 
 Original programme text: CC0 1.0 Universal. This unit isolates the maps in the Fourier normalization and microlocalization comparison problems. The base-change results and the categorical normalization construction below are proved relative to their explicit operation imports. The support equation in SH02-FTC-LINEAR is proved in SH02-FGC-SUPPORT, and the trace equation is proved in SH02-FTE-TRACE with its full endpoint comparison.
 
-The published Fourier antecedent used here is Kashiwara–Schapira, *Microlocal Study of Sheaves*, Astérisque 128 (1985), §2.1, especially the linear and base-map statements in Propositions 2.1.5–2.1.6. The supplement proves compatibility of specified support-forgetting and trace maps, which those functoriality statements alone do not identify. Read it with [Fourier kernels](fourier-sato.md), [Fourier functoriality](fourier-functoriality.md), and [the duality supplement](fourier-duality-normalization.md).
+The published Fourier antecedent used here is Kashiwara–Schapira, *Microlocal Study of Sheaves*, Astérisque 128 (1985), §2.1, especially the linear and base-map statements in Propositions 2.1.5–2.1.6. The supplement proves compatibility of specified support-forgetting and trace maps, which those functoriality statements alone do not identify. Read it with [Fourier kernels](../../SH02-fourier-sato.html), [Fourier functoriality](../../SH02-fourier-functoriality.html), and [the duality supplement](../../SH02-fourier-duality-normalization.html).
 
 ## SH02-FTC-DOMAINS. Which maps are fixed
 
@@ -193,7 +193,7 @@ With these separately named operations, FTC13 means precisely
 =T_2(\nu_h)A_h.
 \tag{FTC13b}
 \]
-SH02-FGC-SUPPORT in [The graded support comparison](fourier-graded-comparison.md) proves FTC13b at the full bundle-map range, relative to the declared operation imports. Braided evaluation and inverse coevaluation are distinct contractions on this forward-ordered pair. Replacing only the final contraction by inverse coevaluation leaves the factor \((-1)^{n_2-n_1}\), so it is a different map. FTC13a specifies which contraction is used in the asserted support equation.
+SH02-FGC-SUPPORT in [The graded support comparison](../../SH02-fourier-graded-comparison.html) proves FTC13b at the full bundle-map range, relative to the declared operation imports. Braided evaluation and inverse coevaluation are distinct contractions on this forward-ordered pair. Replacing only the final contraction by inverse coevaluation leaves the factor \((-1)^{n_2-n_1}\), so it is a different map. FTC13a specifies which contraction is used in the asserted support equation.
 
 **Linear trace equation.** The map
 \[
@@ -206,13 +206,13 @@ Rr_!T_2H\xrightarrow{\nu_r}Rr_*T_2H.
 \tag{FTC14}
 \]
 
-These are equalities of maps. FGC23 proves the support equation with exactly FTC13a–FTC13b. FTE6 and FTE32–FTE34 in [The complete transpose endpoint](fourier-transpose-endpoint.md) prove FTC14 with its original R2 and R4 constructions: the coherent endpoint is a relative-rank sign times the right-ordered R3 rewrite, while its separately braided form equals the direct endpoint. The full input-line calculation then gives the trace square. Both proofs include rank-jumping bundle maps and the stated conic bounded-below coefficient range. SH02-MEP-SUPPORT and SH02-MEP-TRACE propagate these exact endpoints to both microlocal squares, and SH02-MEP-MATE-UNTWIST identifies the actual ordinary adjoint mate. The operation imports and fixed orientation-line conventions are retained in each application.
+These are equalities of maps. FGC23 proves the support equation with exactly FTC13a–FTC13b. FTE6 and FTE32–FTE34 in [The complete transpose endpoint](../../SH02-fourier-transpose-endpoint.html) prove FTC14 with its original R2 and R4 constructions: the coherent endpoint is a relative-rank sign times the right-ordered R3 rewrite, while its separately braided form equals the direct endpoint. The full input-line calculation then gives the trace square. Both proofs include rank-jumping bundle maps and the stated conic bounded-below coefficient range. SH02-MEP-SUPPORT and SH02-MEP-TRACE propagate these exact endpoints to both microlocal squares, and SH02-MEP-MATE-UNTWIST identifies the actual ordinary adjoint mate. The operation imports and fixed orientation-line conventions are retained in each application.
 
 ## SH02-FTC-REDUCTION. Pasting the microlocal comparison squares
 
 Consider the normal derivative \(q=bh\) and its covector correspondence
 \(E_Y^*\xleftarrow r C\xrightarrow s E_X^*\)
-from SH02-MIC-CORRESPONDENCE in [microlocalization](microlocalization.md). The map \(s\) is the base lift of \(b\), while \(r={}^th\). Put \(L=\omega_r^{-1}\), with the transitivity identification used there.
+from SH02-MIC-CORRESPONDENCE in [microlocalization](../../SH02-microlocalization.html). The map \(s\) is the base lift of \(b\), while \(r={}^th\). Put \(L=\omega_r^{-1}\), with the transitivity identification used there.
 
 **Reduction theorem.** FTC13 for \(h\), with the same complete orientation endpoint used in the normal-derivative comparison, implies part 1 of SH02-MIC-TRACE-EXCHANGE. FTC14 for \(h\) implies part 2. The additional base-change comparisons required in those implications are FTC6 and SH02-FTC-BASE-TRACE, respectively. SH02-MEP-MATE-UNTWIST proves that the explicit FTC13a endpoint is the actual fourth MIC11 row after the stated tensor–Hom extraction. SH02-MEP-NORMAL-COUNITS and MEP10a–MEP10b fix the normal orientation and both original R2/R4 endpoints. Thus SH02-MEP-SUPPORT and SH02-MEP-TRACE establish both microlocal identities, with the full map prescriptions.
 
@@ -247,7 +247,7 @@ Rr_!(u^{-1}\omega_g\otimes s^{-1}T_{E_X}H)
 \]
 which is part 2 of SH02-MIC-TRACE-EXCHANGE. The order of the two arrows is retained. \(\square\)
 
-The complete endpoint verifications are in [Following the microlocal comparison maps](microlocal-endpoint-propagation.md). They prove both identities with the stated normal orientations and retain the order of the base trace and support-forgetting arrows. The uncontracted right-ordered R4 mate is the relative-rank sign times coherent L3; after its coherent contraction it is exactly the braided endpoint needed here. Thus PA32 requires this relative-rank sign with the original R4 construction.
+The complete endpoint verifications are in [Following the microlocal comparison maps](../../SH02-microlocal-endpoint-propagation.html). They prove both identities with the stated normal orientations and retain the order of the base trace and support-forgetting arrows. The uncontracted right-ordered R4 mate is the relative-rank sign times coherent L3; after its coherent contraction it is exactly the braided endpoint needed here. Thus PA32 requires this relative-rank sign with the original R4 construction.
 
 ## SH02-FTC-NORMALIZED-MATE. A valid normalization construction
 
@@ -287,7 +287,7 @@ Naturality of \(d^{\mathrm{adj}}\) for \(c_F:TF\to UF\) rewrites its right side 
 \]
 Invert this equality to obtain FTC17. Transporting \(V\dashv U\) along \(c,d^{\mathrm{adj}}\) therefore gives \(S\dashv T\) with counit \(\eta^{-1}\). Its triangle identity and the triangle identity for \(T\dashv S\) show that its unit is \(\epsilon^{-1}\); faithfulness of \(S\) cancels \(S\) from that equality. This proves the second assertion. Uniqueness is the mate bijection, not a choice of scalar. \(\square\)
 
-This construction works over all the bases and coefficient rings above whenever the Fourier equivalences and their chosen adjunctions exist. Its relation to the specified literal reversed-halfspace map is computed in [The geometric normalization of Fourier adjunctions](fourier-literal-normalization.md): NDF4–NDF9 prove \(d^{\mathrm{adj}}=\rho d^{\mathrm{lit}}\) when the second orientation comparison is \(\rho\) times positive dual orientation. This later calculation uses the categorical result proved here; it is not a premise of FTC16–FTC18.
+This construction works over all the bases and coefficient rings above whenever the Fourier equivalences and their chosen adjunctions exist. Its relation to the specified literal reversed-halfspace map is computed in [The geometric normalization of Fourier adjunctions](../../SH02-fourier-literal-normalization.html): NDF4–NDF9 prove \(d^{\mathrm{adj}}=\rho d^{\mathrm{lit}}\) when the second orientation comparison is \(\rho\) times positive dual orientation. This later calculation uses the categorical result proved here; it is not a premise of FTC16–FTC18.
 
 ## SH02-FTC-LITERAL-SIGN. A test that distinguishes two normalizations
 

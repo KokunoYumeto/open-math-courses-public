@@ -2,7 +2,9 @@
 
 This course contains 99 readings: 96 teaching chapters and three supporting proof readings. The course and its transitive proof dependencies remain incomplete.
 
-Read the overview or [all chapters](html/index.html). The source archive preserves the current checkpoint106 reader and editable mathematical and figure sources. After extraction, open `courses/OA-SUBFACTORS/public/html/index.html`.
+Read the overview or [all chapters](html/index.html). The source archive preserves the current checkpoint107 reader and editable mathematical and figure sources. After extraction, open `courses/OA-SUBFACTORS/public/html/index.html`.
+
+Current analytic result: Actual Jones projections separate the physical and reflected canonical traces at every nonextremal prefix. The specified finite reflection has a normal extension exactly when the original inclusion is extremal, including arbitrary core centers. Exact modified-cup and finite physical-tower calculations identify the remaining analytic transfer gap. Complete proofs, 11 solved exercises and 3 reproducible diagrams accompany the current reader. The unrestricted full finite partition and original forward generating clauses remain proved; the general nonextremal bicommutant and fixed weighted-model invariant endpoint remain unresolved.
 
 Current completed result: Repeated actual even fusion blocks provide permutation-orbit trace exchanges and an exact whole residual after arbitrarily small physical cuts. This proves the full finite-partition theorem under original representation amenability, retaining every prescribed Jones prefix, the unchanged physical targets, both original trace systems and all three supported expectation rows. The canonical core representation is admitted directly, and the original ergodic-core hypothesis gives finite prefix approximation and separable generation. Eight solved checks and two reproducible diagrams accompany the complete proofs. The general nonextremal bicommutant implication and the separate original weighted-model invariant endpoint remain unresolved.
 

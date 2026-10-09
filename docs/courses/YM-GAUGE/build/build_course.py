@@ -318,6 +318,9 @@ def build():
     from figures_f09_heat import build as build_f09_heat_figure
     build_f09_heat_figure()
     render(COURSE/"src/YM-F09-heat-analysis.md","Heat analysis for classical Yang–Mills evolution","classical-heat-analysis.html")
+    from figures_f09_construction import build as build_f09_construction_figure
+    build_f09_construction_figure()
+    render(COURSE/"src/YM-F09-heat-construction.md","Constructing the Yang–Mills heat flow","classical-heat-construction.html")
     course=json.loads((COURSE/"course.json").read_text(encoding="utf-8"))
     for unit in course["units"]:
         if unit["status"]=="available":

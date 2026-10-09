@@ -1551,100 +1551,122 @@ Each $W_i$ is quasi-compact and open, and $W_m=U_p$. The [restriction rule for d
 
 #### Lemma. Derived gluing across an elementary distinguished square
 
-Let $S$ be a scheme. Let $(U \subset X, V \to X)$ be an elementary distinguished square of algebraic spaces over $S$. Suppose given
+Consider an elementary distinguished square $(U\subset X,j:V\to X)$ of algebraic spaces over a scheme $S$, and put $W=U\times_XV$. Suppose that $A\in D(\mathcal O_U)$ and $B\in D(\mathcal O_V)$ are equipped with an isomorphism $c:A|_W\to B|_W$. They admit a gluing: there are $F\in D(\mathcal O_X)$ and isomorphisms $f:F|_U\to A$, $g:F|_V\to B$ for which
+$$g|_W=c\,f|_W,\qquad c=g|_W\,(f|_W)^{-1}.$$
+If a further object $E\in D(\mathcal O_X)$ has maps $a:A\to E|_U$ and $b:B\to E|_V$ with $a|_W=b|_Wc$, one can choose a morphism $F\to E$ whose two restrictions are $af$ and $bg$.
 
-1.  an object $A$ of $D(\mathcal{O}_U)$,
+**Proof.** Denote the maps from $U,V,W$ to $X$ by $j_U,j_V,j_W$. Using restriction maps $\rho_U,\rho_V$, form the triangle
+$$F\longrightarrow Rj_{U*}A\oplus Rj_{V*}B
+\xrightarrow{\ (Rj_{W*}c)\rho_U-\rho_V\ }
+Rj_{W*}(B|_W)\longrightarrow F[1].$$
+Thus $F$ is a homotopy fibre. The difference, including the minus sign on the second component, imposes the desired overlap relation. Adjunction applied to the first arrow defines $f$ and $g$; the vanishing of its composite with the second arrow gives $g|_W=cf|_W$.
 
-2.  an object $B$ of $D(\mathcal{O}_V)$, and
+By [étale restriction of direct images](#native-spaces-perfect-lemma-restrict-direct-image-open), the middle map after restriction to $U$ becomes
+$$A\oplus R\ell_*(B|_W)\longrightarrow R\ell_*(B|_W),
+\qquad (x,y)\longmapsto c\rho(x)-y,$$
+where $\ell:W\to U$. Its fibre projects isomorphically onto $A$: the automorphism $(x,y)\mapsto(x,y-c\rho(x))$ reduces the map to minus the projection onto the second summand. Consequently $f$ is an isomorphism, as is $g|_W$.
 
-3.  an isomorphism $c : A|_{U \times_X V} \to B|_{U \times_X V}$.
+The second restriction requires a support argument because $V\to X$ need not be an open immersion. Complete $g$ to a triangle
+$$F|_V\xrightarrow{g}B\longrightarrow B'\longrightarrow F|_V[1].$$
+With $T=|X|\setminus|U|$, the object $B'$ is supported on $j_V^{-1}T$. We prove $Rj_{V*}B'=0$ by testing the fibre triangle against objects supported on $T$. For any such object $L$ and any integer $n$, adjunction gives
+$$\operatorname{Hom}_X(L,Rj_{U*}A[n])=0,
+\qquad \operatorname{Hom}_X(L,Rj_{W*}(B|_W)[n])=0.$$
+The triangle therefore identifies $\operatorname{Hom}_X(L,F[n])$ with $\operatorname{Hom}_X(L,Rj_{V*}B[n])$. Meanwhile [the support comparison](#native-spaces-perfect-lemma-pushforward-with-support-in-open) gives $L\simeq j_{V!}(L|_V)$. The two adjunctions identify
+$$\operatorname{Hom}_X(L,F[n])
+\simeq\operatorname{Hom}_V(L|_V,F|_V[n])
+\simeq\operatorname{Hom}_X(L,Rj_{V*}(F|_V)[n]).$$
+Under these identifications the preceding isomorphism is induced by $Rj_{V*}g$. Its cone $K=Rj_{V*}B'$ thus satisfies $\operatorname{Hom}_X(L,K[n])=0$ for every supported $L$ and every $n$. Étale restriction gives $K|_U=0$, so $K$ itself is an allowed test object. Taking $L=K,n=0$ shows that its identity vanishes, hence $K=0$. The same support comparison, now on $V$, gives $B'\simeq(Rj_{V*}B')|_V=0$. This proves that $g$ is an isomorphism. This argument establishes the closed-support step directly, without requiring a particular comparison between arbitrary choices of cones.
 
-Then there exists an object $F$ of $D(\mathcal{O}_X)$ and isomorphisms $f : F|_U \to A$, $g : F|_V \to B$ such that $c = g|_{U \times_X V} \circ f^{-1}|_{U \times_X V}$. Moreover, given
-
-1.  an object $E$ of $D(\mathcal{O}_X)$,
-
-2.  a morphism $a : A \to E|_U$ of $D(\mathcal{O}_U)$,
-
-3.  a morphism $b : B \to E|_V$ of $D(\mathcal{O}_V)$,
-
-such that $$a|_{U \times_X V}  = b|_{U \times_X V} \circ c.$$ Then there exists a morphism $F \to E$ in $D(\mathcal{O}_X)$ whose restriction to $U$ is $a \circ f$ and whose restriction to $V$ is $b \circ g$.
-
-**Proof.** Denote $j_U$, $j_V$, $j_{U \times_X V}$ the corresponding morphisms towards $X$. Choose a distinguished triangle $$F \to Rj_{U, *}A \oplus Rj_{V, *}B \to
-Rj_{U \times_X V, *}(B|_{U \times_X V}) \to F[1]$$ Here the map $Rj_{V, *}B \to Rj_{U \times_X V, *}(B|_{U \times_X V})$ is the obvious one. The map $Rj_{U, *}A \to Rj_{U \times_X V, *}(B|_{U \times_X V})$ is the composition of $Rj_{U, *}A \to Rj_{U \times_X V, *}(A|_{U \times_X V})$ with $Rj_{U \times_X V, *}c$. Restricting to $U$ we obtain $$F|_U \to A \oplus (Rj_{V, *}B)|_U \to
-(Rj_{U \times_X V, *}(B|_{U \times_X V}))|_U \to F|_U[1]$$ Denote $j : U \times_X V \to U$. Compatibility of restriction and total direct image (Lemma [Derived quasi-coherent complexes](#native-spaces-perfect-lemma-restrict-direct-image-open)) shows that both $(Rj_{V, *}B)|_U$ and $(Rj_{U \times_X V, *}(B|_{U \times_X V}))|_U$ are canonically isomorphic to $Rj_*(B|_{U \times_X V})$. Hence the second arrow of the last displayed equation has a section, and we conclude that the morphism $F|_U \to A$ is an isomorphism.
-
-To see that the morphism $F|_V \to B$ is an isomorphism we will use a trick. Namely, choose a distinguished triangle $$F|_V \to B \to B' \to F[1]|_V$$ in $D(\mathcal{O}_V)$. Since $F|_U \to A$ is an isomorphism, and since we have the isomorphism $c : A|_{U \times_X V} \to B|_{U \times_X V}$ the restriction of $F|_V \to B$ is an isomorphism over $U \times_X V$. Thus $B'$ is supported on $j_V^{-1}(T)$ where $T = |X| \setminus |U|$. On the other hand, there is a morphism of distinguished triangles $$\begin{gathered}\begin{matrix}F & Rj_{U, *}F|_U \oplus Rj_{V, *}F|_V & Rj_{U \times_X V, *}F|_{U \times_X V} & F[1] \\ F & Rj_{U, *}A \oplus Rj_{V, *}B & Rj_{U \times_X V, *}(B|_{U \times_X V}) & F[1]\end{matrix} \\[6pt] \begin{aligned}F & \longrightarrow Rj_{U, *}F|_U \oplus Rj_{V, *}F|_V \\ F & \longrightarrow F \\ Rj_{U, *}F|_U \oplus Rj_{V, *}F|_V & \longrightarrow Rj_{U \times_X V, *}F|_{U \times_X V} \\ Rj_{U, *}F|_U \oplus Rj_{V, *}F|_V & \longrightarrow Rj_{U, *}A \oplus Rj_{V, *}B \\ Rj_{U \times_X V, *}F|_{U \times_X V} & \longrightarrow F[1] \\ Rj_{U \times_X V, *}F|_{U \times_X V} & \longrightarrow Rj_{U \times_X V, *}(B|_{U \times_X V}) \\ F[1] & \longrightarrow F[1] \\ F & \longrightarrow Rj_{U, *}A \oplus Rj_{V, *}B \\ Rj_{U, *}A \oplus Rj_{V, *}B & \longrightarrow Rj_{U \times_X V, *}(B|_{U \times_X V}) \\ Rj_{U \times_X V, *}(B|_{U \times_X V}) & \longrightarrow F[1]\end{aligned}\end{gathered}$$ The all of the vertical maps in this diagram are isomorphisms, except for the map $Rj_{V, *}F|_V \to Rj_{V, *}B$, hence that is an isomorphism too (Derived Categories, Lemma [Derived categories](#native-derived-lemma-third-isomorphism-triangle)). This implies that $Rj_{V, *}B' = 0$. Hence $B' = 0$ by Lemma [Direct images and closed support](#native-spaces-perfect-lemma-pushforward-with-support-in-open).
-
-The existence of the morphism $F \to E$ follows from the Mayer-Vietoris sequence for $\operatorname{Hom}$, see Lemma [Derived Hom and Ext](#native-spaces-perfect-lemma-mayer-vietoris-hom). $\square$
+Finally, the [Mayer–Vietoris sequence for morphisms](#native-spaces-perfect-lemma-mayer-vietoris-hom) says that a pair of maps from $F|_U,F|_V$ to $E|_U,E|_V$ lifts whenever their overlap difference is zero. For $(af,bg)$ that difference is zero by $a|_W=b|_Wc$ and $g|_W=cf|_W$. It therefore comes from a map $F\to E$. No uniqueness assertion is needed. $\square$
 
 #### Definition. Bounds for perfect approximation
 
-Let $S$ be a scheme. Let $X$ be an algebraic space over $S$. Consider triples $(T, E, m)$ where
-
-1.  $T \subset |X|$ is a closed subset,
-
-2.  $E$ is an object of $D_\mathrm{QCoh}(\mathcal{O}_X)$, and
-
-3.  $m \in \mathbf{Z}$.
-
-We say *approximation holds for the triple* $(T, E, m)$ if there exists a perfect object $P$ of $D(\mathcal{O}_X)$ supported on $T$ and a map $\alpha : P \to E$ which induces isomorphisms $H^i(P) \to H^i(E)$ for $i > m$ and a surjection $H^m(P) \to H^m(E)$.
+For an algebraic space $X$ over a scheme $S$, let $T$ be closed in $|X|$, let $E\in D_{\mathrm{QCoh}}(\mathcal O_X)$, and choose $m\in\mathbf Z$. An approximation of $(T,E,m)$ consists of a perfect complex $P$ on $X$, with all its cohomology supported on $T$, and a morphism $\alpha:P\to E$ such that
+$$H^i(\alpha)\text{ is an isomorphism for }i>m,
+\qquad H^m(\alpha)\text{ is surjective}.$$
+We say that approximation holds for this triple when such $P$ and $\alpha$ exist.
 
 #### Definition. Perfect approximation with prescribed cohomology
- Let $S$ be a scheme. Let $X$ be an algebraic space over $S$. We say *approximation by perfect complexes holds* on $X$ if for any closed subset $T \subset |X|$ such that the morphism $X \setminus T \to X$ is quasi-compact there exists an integer $r$ such that for every triple $(T, E, m)$ as in Definition [Bounds for perfect approximation](#native-spaces-perfect-definition-approximation-holds) with
 
-1.  $E$ is $(m - r)$-pseudo-coherent, and
-
-2.  $H^i(E)$ is supported on $T$ for $i \geq m - r$
-
-approximation holds.
+An algebraic space $X$ over a scheme $S$ has approximation by perfect complexes if the following uniform statement holds. For each closed $T\subset|X|$ whose complementary open immersion $X\setminus T\to X$ is quasi-compact, one can fix an integer $r$ such that every $m\in\mathbf Z$ and every $E\in D_{\mathrm{QCoh}}(\mathcal O_X)$ satisfying
+$$E\text{ is }(m-r)\text{-pseudo-coherent},
+\qquad\operatorname{Supp}H^i(E)\subset T\quad(i\geq m-r)$$
+admit an approximation of $(T,E,m)$ in the preceding sense. The bound $r$ may depend on $X$ and $T$, but is chosen before $E$ and $m$.
 
 #### Lemma. Direct images and perfect complexes
- Let $S$ be a scheme. Let $(U \subset X, j : V \to X)$ be an elementary distinguished square of algebraic space over $S$. Let $E$ be a perfect object of $D(\mathcal{O}_V)$ supported on $j^{-1}(T)$ where $T = |X| \setminus |U|$. Then $Rj_*E$ is a perfect object of $D(\mathcal{O}_X)$.
 
-**Proof.** Being perfect is local on $X_\mathrm{\acute{e}tale}$. Thus it suffices to check that $Rj_*E$ is perfect when restricted to $U$ and $V$. We have $Rj_*E|_V = E$ by Lemma [Direct images and closed support](#native-spaces-perfect-lemma-pushforward-with-support-in-open) which is perfect. We have $Rj_*E|_U = 0$ because $E|_{V \setminus j^{-1}(T)} = 0$ (use Lemma [Derived quasi-coherent complexes](#native-spaces-perfect-lemma-restrict-direct-image-open)). $\square$
+Let $(U\subset X,j:V\to X)$ be an elementary distinguished square over a scheme $S$, and set $T=|X|\setminus|U|$. For a perfect complex $P$ on $V$ with support contained in $j^{-1}T$, the complex $Rj_*P$ is perfect on $X$.
+
+**Proof.** On $V$ the support comparison identifies $(Rj_*P)|_V$ with $P$. On $U$, étale restriction identifies it with the direct image of $P|_{U\times_XV}=0$. Thus its restrictions to the jointly surjective étale family $\{U\to X,V\to X\}$ are perfect. Perfection is local in the étale topology, so these two checks suffice. $\square$
 
 #### Lemma. Restriction to an open subspace
- Let $S$ be a scheme. Let $(U \subset X, j : V \to X)$ be an elementary distinguished square of algebraic spaces over $S$. Let $T$ be a closed subset of $|X| \setminus |U|$ and let $(T, E, m)$ be a triple as in Definition [Bounds for perfect approximation](#native-spaces-perfect-definition-approximation-holds). If
 
-1.  approximation holds for $(j^{-1}T, E|_V, m)$, and
+In an elementary distinguished square $(U\subset X,j:V\to X)$ of algebraic spaces over a scheme $S$, choose a closed subset $T\subset|X|\setminus|U|$. Let $E\in D_{\mathrm{QCoh}}(\mathcal O_X)$ and $m\in\mathbf Z$. Assume that $(j^{-1}T,E|_V,m)$ has an approximation and that $H^i(E)$ is supported on $T$ for every $i\geq m$. Then $(T,E,m)$ also has an approximation.
 
-2.  the sheaves $H^i(E)$ for $i \geq m$ are supported on $T$,
-
-then approximation holds for $(T, E, m)$.
-
-**Proof.** Let $P \to E|_V$ be an approximation of the triple $(j^{-1}T, E|_V, m)$ over $V$. Then $Rj_*P$ is a perfect object of $D(\mathcal{O}_X)$ by Lemma [Direct images and perfect complexes](#native-spaces-perfect-lemma-pushforward-perfect). On the other hand, $Rj_*P = j_!P$ by Lemma [Direct images and closed support](#native-spaces-perfect-lemma-pushforward-with-support-in-open). We see that $j_!P$ is supported on $T$ for example by ([Sheaves on ringed sites](#context-spaces-perfect-equation-stalk-j-shriek)). Hence we obtain an approximation $Rj_*P = j_!P \to j_!(E|_V) \to E$. $\square$
+**Proof.** Choose an approximating map $P\to E|_V$. The preceding lemma and the support comparison show that
+$$Q=Rj_*P\simeq j_!P$$
+is perfect. The [stalk formula for extension by zero](#uncovered-sites-modules-lemma-extension-by-zero) shows that $Q$ is supported on $T$. Compose with the adjunction counit to obtain
+$$Q\simeq j_!P\longrightarrow j_!(E|_V)\longrightarrow E.$$
+Extension by zero is exact, so the first map is an isomorphism on cohomology in degrees $i>m$ and an epimorphism in degree $m$. In degrees $i\geq m$, the second map on cohomology is the counit $j_!(H^i(E)|_V)\to H^i(E)$; it is an isomorphism because that sheaf is supported on $T$. Their composite has exactly the required bounds. No condition on the lower cohomology of $E$ has been used. $\square$
 
 #### Lemma. Perfect approximation on an affine chart
- Let $S$ be a scheme. Let $X$ be an algebraic space over $S$ which is representable by an affine scheme. Then approximation holds for every triple $(T, E, m)$ as in Definition [Bounds for perfect approximation](#native-spaces-perfect-definition-approximation-holds) such that there exists an integer $r \geq 0$ with
 
-1.  $E$ is $m$-pseudo-coherent,
+Let $X$ be an algebraic space over a scheme $S$ represented by an affine scheme. For a triple $(T,E,m)$ in the [approximation definition](#native-spaces-perfect-definition-approximation-holds), assume that some integer $r\geq0$ satisfies
 
-2.  $H^i(E)$ is supported on $T$ for $i \geq m - r + 1$,
+1. $E$ is $m$-pseudo-coherent;
+2. $\operatorname{Supp}H^i(E)\subset T$ whenever $i\geq m-r+1$;
+3. $X\setminus T$ is covered by $r$ affine opens.
 
-3.  $X \setminus T$ is the union of $r$ affine opens.
+Then $(T,E,m)$ admits a perfect approximation. In particular, approximation by perfect complexes holds on every affine scheme viewed as an algebraic space.
 
-In particular, approximation by perfect complexes holds for affine schemes.
+**Proof.** Let $X_0$ be the representing affine scheme, let $T_0$ correspond to $T$, and let $\epsilon:X_{\mathrm{\acute et}}\to(X_0)_{\mathrm{Zar}}$ be the comparison of sites. The [derived equivalence](#native-spaces-perfect-lemma-derived-quasi-coherent-small-etale-site) writes $E=\epsilon^*E_0$ with $E_0\in D_{\mathrm{QCoh}}(\mathcal O_{X_0})$. By [descent of pseudo-coherence](#native-spaces-perfect-lemma-descend-pseudo-coherent), $E_0$ is $m$-pseudo-coherent. At a geometric point, pullback is tensor product with the faithfully flat strict henselization of the local ring. Consequently a cohomology stalk of $E_0$ vanishes exactly when the corresponding pulled-back stalk does. The support bound and the given affine cover therefore hold for $(T_0,E_0,m)$.
 
-**Proof.** Let $X_0$ be an affine scheme representing $X$. Let $T_0 \subset X_0$ by the closed subset corresponding to $T$. Let $\epsilon : X_\mathrm{\acute{e}tale} \to X_{0, Zar}$ be the morphism ([Derived quasi-coherent complexes](#context-spaces-perfect-equation-epsilon)). We may write $E = \epsilon^*E_0$ for some object $E_0$ of $D_\mathrm{QCoh}(\mathcal{O}_{X_0})$, see Lemma [Étale morphisms and quasi-coherent complexes](#native-spaces-perfect-lemma-derived-quasi-coherent-small-etale-site). Then $E_0$ is $m$-pseudo-coherent, see Lemma [Descent of pseudo-coherent complexes and coherent sheaves](#native-spaces-perfect-lemma-descend-pseudo-coherent). Comparing stalks of cohomology sheaves (see proof of Lemma [Flatness](#native-spaces-perfect-lemma-epsilon-flat)) we see that $H^i(E_0)$ is supported on $T_0$ for $i \geq m - r + 1$. By Derived Categories of Schemes, Lemma [Perfect approximation on an affine chart](#native-perfect-lemma-approximation-affine) there exists an approximation $P_0 \to E_0$ of $(T_0, E_0, m)$. By Lemma [Descent of perfect complexes](#native-spaces-perfect-lemma-descend-perfect) we see that $P = \epsilon^*P_0$ is a perfect object of $D(\mathcal{O}_X)$. Pulling back we obtain an approximation $P = \epsilon^*P_0 \to \epsilon^*E_0 = E$ as desired. $\square$
+The [affine scheme approximation theorem](#native-perfect-lemma-approximation-affine) supplies $P_0\to E_0$ with perfect source supported on $T_0$, an isomorphism above $m$, and an epimorphism at $m$. Exact pullback preserves these cohomology bounds and support, and [perfection under the comparison](#native-spaces-perfect-lemma-descend-perfect) makes $\epsilon^*P_0$ perfect. Hence $\epsilon^*P_0\to E$ is the desired approximation. For fixed $T$, the uniform bound in the affine scheme theorem transfers by the same equivalence, proving the last assertion. $\square$
 
 #### Lemma. Extending perfect approximation across a distinguished square
- Let $S$ be a scheme. Let $(U \subset X, j : V \to X)$ be an elementary distinguished square of algebraic spaces over $S$. Assume $U$ quasi-compact, $V$ affine, and $U \times_X V$ quasi-compact. If approximation by perfect complexes holds on $U$, then approximation by perfect complexes holds on $X$.
 
-**Proof.** Let $T \subset |X|$ be a closed subset with $X \setminus T \to X$ quasi-compact. Let $r_U$ be the integer of Definition [Perfect approximation with prescribed cohomology](#native-spaces-perfect-definition-approximation) adapted to the pair $(U, T \cap |U|)$. Set $T' = T \setminus |U|$. Endow $T'$ with the induced reduced subspace structure. Since $|T'|$ is contained in $|X| \setminus |U|$ we see that $j^{-1}(T') \to T'$ is an isomorphism. Moreover, $V \setminus j^{-1}(T')$ is quasi-compact as it is the fibre product of $U \times_X V$ with $X \setminus T$ over $X$ and we've assumed $U \times_X V$ quasi-compact and $X \setminus T \to X$ quasi-compact. Let $r'$ be the number of affines needed to cover $V \setminus j^{-1}(T')$. We claim that $r = \max(r_U, r')$ works for the pair $(X, T)$.
+Let $(U\subset X,j:V\to X)$ be an elementary distinguished square of algebraic spaces over a scheme $S$. Assume that $U$ is quasi-compact, $V$ is affine, and $W=U\times_XV$ is quasi-compact. If $U$ has approximation by perfect complexes, then so does $X$.
 
-To see this choose a triple $(T, E, m)$ such that $E$ is $(m - r)$-pseudo-coherent and $H^i(E)$ is supported on $T$ for $i \geq m - r$. Let $t$ be the largest integer such that $H^t(E)|_U$ is nonzero. (Such an integer exists as $U$ is quasi-compact and $E|_U$ is $(m - r)$-pseudo-coherent.) We will prove that $E$ can be approximated by induction on $t$.
+**Proof.** Fix a closed subset $T\subset|X|$ whose complementary open immersion is quasi-compact. We must choose a bound depending on this subset before choosing a complex or a degree. On $U$, the complement of $T\cap|U|$ is again quasi-compact over $U$, so choose a bound $r_U$ for this pair and enlarge it to $a=\max(0,r_U)$. Increasing a bound is permissible: it strengthens the pseudo-coherence and support assumptions imposed on a triple.
 
-Base case: $t \leq m - r'$. This means that $H^i(E)$ is supported on $T'$ for $i \geq m - r'$. Hence Lemma [Perfect approximation on an affine chart](#native-spaces-perfect-lemma-approximation-affine) guarantees the existence of an approximation $P \to E|_V$ of $(T', E|_V, m)$ on $V$. Applying Lemma [Restriction to an open subspace](#native-spaces-perfect-lemma-open) we see that $(T', E, m)$ can be approximated. Such an approximation is also an approximation of $(T, E, m)$.
+Set $T'=T\setminus|U|$. This is closed, and its reduced structure is identified with its inverse image in $V$. The needed open complement is
+$$V\setminus j^{-1}T'=(V\setminus j^{-1}T)\cup W.$$
+The first member is quasi-compact by base change of $X\setminus T\to X$, since $V$ is affine; the second is quasi-compact by hypothesis. Choose a cover of this union by $c\geq1$ affine opens. If the union is empty, use the empty affine scheme as a one-member cover. We will use the single bound
+$$r=a+c.$$
 
-Induction step. Choose an approximation $P \to E|_U$ of $(T \cap |U|, E|_U, m)$. This in particular gives a surjection $H^t(P) \to H^t(E|_U)$. In the rest of the proof we will use the equivalence of Lemma [Étale morphisms and quasi-coherent complexes](#native-spaces-perfect-lemma-derived-quasi-coherent-small-etale-site) (and the compatibilities of Remark [Derived quasi-coherent complexes](#native-spaces-perfect-remark-match-total-direct-images)) for the representable algebraic spaces $V$ and $U \times_X V$. We will also use the fact that $(m - r)$-pseudo-coherence, resp. perfectness on the Zariski site and étale site agree, see Lemmas [Descent of pseudo-coherent complexes and coherent sheaves](#native-spaces-perfect-lemma-descend-pseudo-coherent) and [Descent of perfect complexes](#native-spaces-perfect-lemma-descend-perfect). Thus we can use the results of Derived Categories of Schemes, Section [Lifting perfect complexes](#context-perfect-section-lift) for the open immersion $U \times_X V \subset V$. In this way Derived Categories of Schemes, Lemma [Lifting perfect complexes while retaining support](#native-perfect-lemma-lift-perfect-complex-plus-shift-support) implies there exists a perfect object $Q$ in $D(\mathcal{O}_V)$ supported on $j^{-1}(T)$ and an isomorphism $Q|_{U \times_X V} \to (P \oplus P[1])|_{U \times_X V}$. By Derived Categories of Schemes, Lemma [Extending a morphism after finite denominators are cleared](#native-perfect-lemma-lift-map) we can replace $Q$ by $Q \otimes^\mathbf{L} I$ and assume that the map $$Q|_{U \times_X V} \longrightarrow
-(P \oplus P[1])|_{U \times_X V} \longrightarrow
-P|_{U \times_X V} \longrightarrow E|_{U \times_X V}$$ lifts to $Q \to E|_V$. By Lemma [Derived gluing across an elementary distinguished square](#native-spaces-perfect-lemma-glue) we find an morphism $a : R \to E$ of $D(\mathcal{O}_X)$ such that $a|_U$ is isomorphic to $P \oplus P[1] \to E|_U$ and $a|_V$ isomorphic to $Q \to E|_V$. Thus $R$ is perfect and supported on $T$ and the map $H^t(R) \to H^t(E)$ is surjective on restriction to $U$. Choose a distinguished triangle $$R \to E \to E' \to R[1]$$ Then $E'$ is $(m - r)$-pseudo-coherent (Cohomology on Sites, Lemma [Pseudo-coherent complexes and coherent sheaves](#native-sites-cohomology-lemma-cone-pseudo-coherent)), $H^i(E')|_U = 0$ for $i \geq t$, and $H^i(E')$ is supported on $T$ for $i \geq m - r$. By induction we find an approximation $R' \to E'$ of $(T, E', m)$. Fit the composition $R' \to E' \to R[1]$ into a distinguished triangle $R \to R'' \to R' \to R[1]$ and extend the morphisms $R' \to E'$ and $R[1] \to R[1]$ into a morphism of distinguished triangles $$\begin{gathered}\begin{matrix}R & R'' & R' & R[1] \\ R & E & E' & R[1]\end{matrix} \\[6pt] \begin{aligned}R & \longrightarrow R'' \\ R & \longrightarrow R \\ R'' & \longrightarrow E \\ R'' & \longrightarrow R' \\ R' & \longrightarrow E' \\ R' & \longrightarrow R[1] \\ R[1] & \longrightarrow R[1] \\ R & \longrightarrow E \\ E & \longrightarrow E' \\ E' & \longrightarrow R[1]\end{aligned}\end{gathered}$$ using TR3. Then $R''$ is a perfect complex (Cohomology on Sites, Lemma [Perfect complexes](#native-sites-cohomology-lemma-two-out-of-three-perfect)) supported on $T$. An easy diagram chase shows that $R'' \to E$ is the desired approximation. $\square$
+Take $E\in D_{\mathrm{QCoh}}(\mathcal O_X)$ and $m\in\mathbf Z$ satisfying $(m-r)$-pseudo-coherence and $\operatorname{Supp}H^i(E)\subset T$ for $i\geq m-r$. On quasi-compact $U$, the pseudo-coherence condition bounds $E|_U$ above: finitely many local perfect approximations give one upper bound. If $E|_U\ne0$, let $t$ be its highest nonzero cohomology degree. We induct on $\max(0,t-(m-c))$, treating $E|_U=0$ as a base case as well.
+
+**Base case.** Suppose $E|_U=0$ or $t\leq m-c$. Then
+$$\operatorname{Supp}H^i(E)\subset T'\qquad(i\geq m-c+1).$$
+Indeed these degrees exceed $t$ on $U$ and are at least $m-r$. Since $r\geq0$, the object $E$ is also $m$-pseudo-coherent. Apply the preceding affine lemma on $V$, with cover size $c$, to obtain an approximation of $(j^{-1}T',E|_V,m)$. Because $c\geq1$, the displayed support condition includes every $i\geq m$. The [supported transfer lemma](#native-spaces-perfect-lemma-open) therefore extends this approximation to $(T',E,m)$ on $X$. Its perfect source is also supported on $T$.
+
+**Induction step.** Suppose $t>m-c$. The inequality
+$$t-a\geq m-c+1-a=m-r+1\geq m-r$$
+allows us to apply approximation on $U$ at cutoff $t$. Thus choose $P\to E|_U$, with $P$ perfect and supported on $T\cap|U|$, inducing an epimorphism on $H^t$ and isomorphisms above $t$. In particular $H^i(P)=0$ for $i>t$. Choosing the cutoff to be $t$ is essential when $t<m$.
+
+The schemes $V$ and $W$ may be treated on their Zariski sites by the derived equivalence and its [compatibilities with pullback](#native-spaces-perfect-remark-match-total-direct-images); support, pseudo-coherence and perfection agree under that comparison. The [support-preserving lifting lemma](#native-perfect-lemma-lift-perfect-complex-plus-shift-support) gives a perfect $Q$ on $V$, supported on $j^{-1}T$, with
+$$Q|_W\simeq(P\oplus P[1])|_W.$$
+Its hypotheses hold because $W$ is a quasi-compact open in the affine $V$ and $V\setminus j^{-1}T$ is quasi-compact. Compose this isomorphism with projection to $P|_W$ and the map to $E|_W$. The [morphism-lifting lemma](#native-perfect-lemma-lift-map) extends the composite after replacing $Q$ by $Q\otimes^{\mathbf L}I$, where $I$ is perfect and the replacement map is an isomorphism on $W$. Tensoring preserves perfection and cannot enlarge support.
+
+We can now [glue the complexes and their maps](#native-spaces-perfect-lemma-glue), using $P\oplus P[1]\to E|_U$ with zero on the shifted summand and the constructed map $Q\to E|_V$. This produces $R\to E$ with $R$ perfect and supported on $T$, since those properties are étale local. On $U$, its source has no cohomology above $t$ and its map is surjective in degree $t$. In the triangle
+$$R\longrightarrow E\longrightarrow E'\longrightarrow R[1],$$
+the [pseudo-coherent cone criterion](#native-sites-cohomology-lemma-cone-pseudo-coherent) makes $E'$ $(m-r)$-pseudo-coherent. It remains quasi-coherent, its cohomology on $U$ vanishes in degrees $i\geq t$, and its required support bounds persist because $R$ vanishes outside $T$. Thus the induction parameter decreases, or the restriction becomes zero.
+
+Choose by induction an approximation $R'\to E'$ at cutoff $m$. Complete $R'\to E'\to R[1]$ to a triangle and use the morphism-of-triangles axiom after rotation to obtain
+$$\begin{array}{cccccc}
+R&\longrightarrow&R''&\longrightarrow&R'&\longrightarrow R[1]\\
+\Vert&&\downarrow&&\downarrow&\Vert\\
+R&\longrightarrow&E&\longrightarrow&E'&\longrightarrow R[1].
+\end{array}$$
+The two-out-of-three property makes $R''$ perfect, and its support lies in $T$.
+
+Here is the cohomological check of its map to $E$. Work on stalks. For $i\geq m$, lift the image of a class of $H^i(E)$ in $H^i(E')$ to $H^i(R')$. Its connecting image in $H^{i+1}(R)$ is zero, so it lifts to $H^i(R'')$. The difference from the original class comes from $H^i(R)$ and can be corrected, proving surjectivity. For $i>m$, a class in the kernel of $H^i(R'')\to H^i(E)$ maps to zero in $H^i(R')$ because $H^i(R')\to H^i(E')$ is injective. It therefore comes from $H^i(R)$. The corresponding boundary from $H^{i-1}(E')$ lifts from $H^{i-1}(R')$, since $i-1\geq m$, and kills that class. This proves injectivity above $m$. The resulting $R''\to E$ is the required approximation, with the previously fixed uniform bound $r=a+c$. $\square$
 
 #### Theorem. Perfect approximation with prescribed closed support
 
-Let $S$ be a scheme. Let $X$ be a quasi-compact and quasi-separated algebraic space over $S$. Then approximation by perfect complexes holds on $X$.
+Every quasi-compact, quasi-separated algebraic space $X$ over a scheme $S$ has approximation by perfect complexes. Explicitly, each closed $T\subset|X|$ with quasi-compact complementary immersion admits one integer $r$ such that all $(m-r)$-pseudo-coherent $E\in D_{\mathrm{QCoh}}(\mathcal O_X)$ with $H^i(E)$ supported on $T$ for $i\geq m-r$ admit a perfect approximation at cutoff $m$ supported on $T$.
 
-**Proof.** This follows from the induction principle of Lemma [Induction by elementary distinguished squares](#native-spaces-perfect-lemma-induction-principle) and Lemmas [Extending perfect approximation across a distinguished square](#native-spaces-perfect-lemma-induction-step) and [Perfect approximation on an affine chart](#native-spaces-perfect-lemma-approximation-affine). $\square$
+**Proof.** Apply [induction by elementary distinguished squares](#native-spaces-perfect-lemma-induction-principle) to the property that approximation holds on a quasi-compact open subspace. The affine case is the first lemma above. Its gluing condition is precisely the second lemma: the open member and overlap are quasi-compact and the other member is affine. The induction principle therefore proves the property for $X$, with the quantifiers in the [definition](#native-spaces-perfect-definition-approximation). $\square$
 
 #### Theorem. A perfect generator for a quasi-compact algebraic space
 
@@ -7180,9 +7202,10 @@ Let $S$ be a Noetherian scheme. Let $f : X \to S$ be a morphism of schemes which
 **Proof.** It suffices to prove this when $X$ is the spectrum of a Noetherian ring $A$. By Lemma [Pseudo-coherent complexes and coherent sheaves](#native-perfect-lemma-identify-pseudo-coherent-noetherian) we see that $K$ is pseudo-coherent. Then we can use Lemma [Quasi-coherent complexes and derived Hom and Ext](#native-perfect-lemma-quasi-coherence-internal-hom) to translate the problem into the following algebra problem: for $L \in D^+_{\textit{Coh}}(A)$ and $K$ in $D^-_{\textit{Coh}}(A)$, then $R\operatorname{Hom}_A(K, L)$ is in $D^+_{\textit{Coh}}(A)$. Since $L$ is bounded below and $K$ is bounded above there is a convergent spectral sequence $$\operatorname{Ext}^p_A(K, H^q(L)) \Rightarrow \text{Ext}^{p + q}_A(K, L)$$ and there are convergent spectral sequences $$\operatorname{Ext}^i_A(H^{-j}(K), H^q(L)) \Rightarrow \text{Ext}^{i + j}_A(K, H^q(L))$$ See Injectives, Remarks [Derived Hom and Ext](#context-injectives-remark-spectral-sequences-ext) and [Derived Hom and Ext](#context-injectives-remark-spectral-sequences-ext-variant). This finishes the proof as the modules $\operatorname{Ext}^p_A(M, N)$ are finite for finite $A$-modules $M$, $N$ by Algebra, Lemma [Derived Hom, Ext and Noetherian rings (uncovered prerequisite)](#uncovered-algebra-lemma-ext-noetherian). $\square$
 
 #### Theorem. Perfect approximation with prescribed closed support
- Let $X$ be a quasi-compact and quasi-separated scheme. Then approximation by perfect complexes holds on $X$.
 
-**Proof.** This follows from the induction principle of Cohomology of Schemes, Lemma [Induction by elementary distinguished squares (uncovered prerequisite)](#uncovered-coherent-lemma-induction-principle) and Lemmas [Extending perfect approximation across a distinguished square](#native-perfect-lemma-induction-step) and [Perfect approximation on an affine chart](#native-perfect-lemma-approximation-affine). $\square$
+A quasi-compact, quasi-separated scheme $X$ has approximation by perfect complexes in the sense of the [uniform approximation definition](#native-perfect-definition-approximation).
+
+**Proof.** For each quasi-compact open $W\subset X$, consider the assertion that $W$ has this property. It holds for affine $W$ by the [affine approximation lemma](#native-perfect-lemma-approximation-affine). The [open gluing step](#native-perfect-lemma-induction-step) shows that it passes from a quasi-compact open and an affine open to their union, provided their overlap is quasi-compact. Quasi-separatedness of $X$ supplies that condition. The [scheme induction principle](#uncovered-coherent-lemma-induction-principle) now proves the assertion for $X$. Its finite-cover argument includes the empty scheme. $\square$
 
 #### Lemma. The next perfect approximation in a sequential construction
  Let $A$ be a ring. Let $X = \mathbf{P}^n_A$. For every $a \in \mathbf{Z}$ there exists an exact complex $$0 \to \mathcal{O}_X(a) \to \ldots
@@ -7228,20 +7251,33 @@ Then $Rf_*E$ is a perfect object of $D(\mathcal{O}_S)$.
 Rf_*\left(E \otimes_{\mathcal{O}_X}^\mathbf{L} Lf^*\mathcal{F}\right) =
 Rf_*\left(E \otimes_{f^{-1}\mathcal{O}_S}^\mathbf{L} f^{-1}\mathcal{F}\right)$$ by Lemma [Base change for sheaf cohomology](#native-perfect-lemma-cohomology-base-change) and Cohomology, Lemma [Derived categories (uncovered prerequisite)](#uncovered-cohomology-lemma-variant-derived-pullback). By assumption (3) the complex $E \otimes_{f^{-1}\mathcal{O}_S}^\mathbf{L} f^{-1}\mathcal{F}$ has cohomology sheaves in a given finite range, say $[a, b]$. Then $Rf_*$ of it has cohomology in the range $[a, \infty)$ and we win. $\square$
 
-#### Lemma. Extending perfect approximation across a distinguished square
+#### Lemma. Extending perfect approximation over an open union
 
-Let $X$ be a scheme. Let $X = U \cup V$ be an open covering with $U$ quasi-compact, $V$ affine, and $U \cap V$ quasi-compact. If approximation by perfect complexes holds on $U$, then approximation holds on $X$.
+Suppose a scheme is covered by $X=U\cup V$, where $U$ is quasi-compact, $V$ is affine and $W=U\cap V$ is quasi-compact. If approximation by perfect complexes holds on $U$, it holds on $X$.
 
-**Proof.** Let $T \subset X$ be a closed subset with $X \setminus T$ retro-compact in $X$. Let $r_U$ be the integer of Definition [Perfect approximation with prescribed cohomology](#native-perfect-definition-approximation) adapted to the pair $(U, T \cap U)$. Set $T' = T \setminus U$. Note that $T' \subset V$ and that $V \setminus T' = (X \setminus T) \cap U \cap V$ is quasi-compact by our assumption on $T$. Let $r'$ be the number of affines needed to cover $V \setminus T'$. We claim that $r = \max(r_U, r')$ works for the pair $(X, T)$.
+**Proof.** Fix closed $T\subset X$ with retrocompact complement. Choose an approximation bound $r_U$ for $(U,T\cap U)$ and put $a=\max(0,r_U)$. The enlarged bound $a$ still works. Write $T'=T\setminus U$. This is a closed subset of $X$ contained in $V$, and
+$$V\setminus T'=(V\setminus T)\cup(U\cap V).$$
+Both opens on the right are quasi-compact, the first by retrocompactness and the second by hypothesis. Cover their union by $c\geq1$ affine opens, using the empty affine scheme if the union is empty. Set $r=a+c$, once and for all for this $T$.
 
-To see this choose a triple $(T, E, m)$ such that $E$ is $(m - r)$-pseudo-coherent and $H^i(E)$ is supported on $T$ for $i \geq m - r$. Let $t$ be the largest integer such that $H^t(E)|_U$ is nonzero. (Such an integer exists as $U$ is quasi-compact and $E|_U$ is $(m - r)$-pseudo-coherent.) We will prove that $E$ can be approximated by induction on $t$.
+Let $E\in D_{\mathrm{QCoh}}(\mathcal O_X)$ be $(m-r)$-pseudo-coherent, with $H^i(E)$ supported on $T$ for $i\geq m-r$. Quasi-compactness of $U$ gives an upper cohomology bound for $E|_U$. If that restriction is nonzero, denote its highest nonzero degree by $t$. We induct on $\max(0,t-(m-c))$; a zero restriction is handled directly in the base case.
 
-Base case: $t \leq m - r'$. This means that $H^i(E)$ is supported on $T'$ for $i \geq m - r'$. Hence Lemma [Perfect approximation on an affine chart](#native-perfect-lemma-approximation-affine) guarantees the existence of an approximation $P \to E|_V$ of $(T', E|_V, m)$ on $V$. Applying Lemma [Restriction to an open subspace](#native-perfect-lemma-open) we see that $(T', E, m)$ can be approximated. Such an approximation is also an approximation of $(T, E, m)$.
+If $E|_U=0$ or $t\leq m-c$, the cohomology of $E$ is supported on $T'$ in all degrees $i\geq m-c+1$. On the affine $V$, the [affine approximation lemma](#native-perfect-lemma-approximation-affine) consequently applies with cover size $c$ and cutoff $m$: $(m-r)$-pseudo-coherence implies $m$-pseudo-coherence. It gives a perfect approximation supported on $T'$. Since $c\geq1$, all $H^i(E)$ for $i\geq m$ are supported on $T'$. The [open-support transfer lemma](#native-perfect-lemma-open) therefore extends this to an approximation on $X$. Its support is also contained in $T$.
 
-Induction step. Choose an approximation $P \to E|_U$ of $(T \cap U, E|_U, m)$. This in particular gives a surjection $H^t(P) \to H^t(E|_U)$. By Lemma [Lifting perfect complexes while retaining support](#native-perfect-lemma-lift-perfect-complex-plus-shift-support) we can choose a perfect object $Q$ in $D(\mathcal{O}_V)$ supported on $T \cap V$ and an isomorphism $Q|_{U \cap V} \to (P \oplus P[1])|_{U \cap V}$. By Lemma [Extending a morphism after finite denominators are cleared](#native-perfect-lemma-lift-map) we can replace $Q$ by $Q \otimes^\mathbf{L} I$ and assume that the map $$Q|_{U \cap V} \to (P \oplus P[1])|_{U \cap V}
-\longrightarrow P|_{U \cap V}
-\longrightarrow
-E|_{U \cap V}$$ lifts to $Q \to E|_V$. By Cohomology, Lemma [Derived gluing across an elementary distinguished square](#native-cohomology-lemma-glue) we find an morphism $a : R \to E$ of $D(\mathcal{O}_X)$ such that $a|_U$ is isomorphic to $P \oplus P[1] \to E|_U$ and $a|_V$ isomorphic to $Q \to E|_V$. Thus $R$ is perfect and supported on $T$ and the map $H^t(R) \to H^t(E)$ is surjective on restriction to $U$. Choose a distinguished triangle $$R \to E \to E' \to R[1]$$ Then $E'$ is $(m - r)$-pseudo-coherent (Cohomology, Lemma [Pseudo-coherent complexes and coherent sheaves](#native-cohomology-lemma-cone-pseudo-coherent)), $H^i(E')|_U = 0$ for $i \geq t$, and $H^i(E')$ is supported on $T$ for $i \geq m - r$. By induction we find an approximation $R' \to E'$ of $(T, E', m)$. Fit the composition $R' \to E' \to R[1]$ into a distinguished triangle $R \to R'' \to R' \to R[1]$ and extend the morphisms $R' \to E'$ and $R[1] \to R[1]$ into a morphism of distinguished triangles $$\begin{gathered}\begin{matrix}R & R'' & R' & R[1] \\ R & E & E' & R[1]\end{matrix} \\[6pt] \begin{aligned}R & \longrightarrow R'' \\ R & \longrightarrow R \\ R'' & \longrightarrow E \\ R'' & \longrightarrow R' \\ R' & \longrightarrow E' \\ R' & \longrightarrow R[1] \\ R[1] & \longrightarrow R[1] \\ R & \longrightarrow E \\ E & \longrightarrow E' \\ E' & \longrightarrow R[1]\end{aligned}\end{gathered}$$ using TR3. Then $R''$ is a perfect complex (Cohomology, Lemma [Perfect complexes](#native-cohomology-lemma-two-out-of-three-perfect)) supported on $T$. An easy diagram chase shows that $R'' \to E$ is the desired approximation. $\square$
+Now take $t>m-c$. We have $t-a\geq m-r+1$, so the assumptions on $E|_U$ permit approximation at cutoff $t$ with the fixed bound $a$. Choose $P\to E|_U$ accordingly. Then $P$ is perfect, supported on $T\cap U$, has no cohomology above $t$, and surjects onto $H^t(E)|_U$.
+
+Apply the [support-preserving lift](#native-perfect-lemma-lift-perfect-complex-plus-shift-support) to the quasi-compact open $W$ of $V$. It gives a perfect $Q$ on $V$, supported on $T\cap V$, with $Q|_W\simeq(P\oplus P[1])|_W$. The composite from this restriction through $P|_W$ to $E|_W$ extends to $Q\to E|_V$ after replacing $Q$ by $Q\otimes^{\mathbf L}I$, by the [perfect denominator construction](#native-perfect-lemma-lift-map). This replacement is still perfect and supported on $T\cap V$, and is unchanged up to the specified isomorphism on $W$.
+
+Use $P\oplus P[1]\to E|_U$, zero on the shifted summand, as the other local map. The [two-open derived gluing lemma](#native-cohomology-lemma-glue) produces $R\to E$ with these two restrictions. Perfection and support can be checked on $U,V$, so $R$ is perfect and supported on $T$. Its restriction has no cohomology above $t$ and surjects in degree $t$. Consequently, in
+$$R\longrightarrow E\longrightarrow E'\longrightarrow R[1],$$
+the cone $E'$ has vanishing cohomology on $U$ in degrees $i\geq t$. The pseudo-coherent cone criterion preserves the bound $m-r$. Off $T$ the cone is isomorphic to $E$, so it has the same required support bounds. The induction parameter has decreased.
+
+Take an approximation $R'\to E'$ at cutoff $m$. Complete $R'\to E'\to R[1]$ to a triangle and then, by the morphism-of-triangles axiom, obtain
+$$\begin{array}{cccccc}
+R&\longrightarrow&R''&\longrightarrow&R'&\longrightarrow R[1]\\
+\Vert&&\downarrow&&\downarrow&\Vert\\
+R&\longrightarrow&E&\longrightarrow&E'&\longrightarrow R[1].
+\end{array}$$
+The extension $R''$ is perfect and supported on $T$. We verify its cohomological bounds. In degree $i\geq m$, lift the image of a class of $H^i(E)$ from $H^i(E')$ to $H^i(R')$. The connecting map into $H^{i+1}(R)$ vanishes on this lift, so it comes from $H^i(R'')$; correct the remaining difference by a class of $H^i(R)$. This proves surjectivity. In degree $i>m$, a kernel class in $H^i(R'')$ comes from $H^i(R)$ because the map on $H^i(R')$ is injective. Its image in $H^i(R)$ is a boundary from $H^{i-1}(E')$. Surjectivity of $H^{i-1}(R')\to H^{i-1}(E')$, valid even for $i=m+1$, makes that boundary already zero in $H^i(R'')$. This proves injectivity above $m$. These stalkwise arguments establish the approximation with the same bound $r=a+c$ for every admissible $E,m$. $\square$
 
 #### Proposition. Perfect generators for schemes with affine diagonal
  Let $X$ be a quasi-compact scheme with affine diagonal. Then the functor ([Comparison of derived quasi-coherent categories](#context-perfect-equation-compare)) $$D(\mathrm{QCoh}(\mathcal{O}_X))
@@ -7262,18 +7298,15 @@ $$E\text{ is }(m-r)\text{-pseudo-coherent},\qquad
 \operatorname{Supp}H^i(E)\subseteq T\quad(i\geq m-r)$$
 admits an [approximation of $(T,E,m)$](#native-perfect-definition-approximation-holds). Thus the same integer $r$, for this fixed $T$, must work for all such $E$ and $m$.
 
-#### Lemma. Restriction to an open subspace
- Let $X$ be a scheme. Let $U \subset X$ be an open subscheme. Let $(T, E, m)$ be a triple as in Definition [Bounds for perfect approximation](#native-perfect-definition-approximation-holds). If
+#### Lemma. Transferring an approximation from a supporting open
 
-1.  $T \subset U$,
+Let $j:U\hookrightarrow X$ be an open immersion of schemes. Consider a triple $(T,E,m)$ with $T$ closed in $X$ and contained in $U$. Suppose it has an approximation after restriction to $U$ and that $H^i(E)$ is supported on $T$ for every $i\geq m$. Then it has an approximation on $X$.
 
-2.  approximation holds for $(T, E|_U, m)$, and
+**Proof.** Take a perfect approximation $P\to E|_U$ with support in $T$. On $U$, extension by zero $j_!P$ restricts to $P$; on the open $X\setminus T$ it vanishes. These opens cover $X$, so $j_!P$ is perfect and supported on $T$. The natural map $j_!P\to Rj_*P$ is an isomorphism on both opens, by restriction of derived direct image, and hence globally. This recovers both descriptions of the extended perfect complex.
 
-3.  the sheaves $H^i(E)$ for $i \geq m$ are supported on $T$,
-
-then approximation holds for $(T, E, m)$.
-
-**Proof.** Let $j : U \to X$ be the inclusion morphism. If $P \to E|_U$ is an approximation of the triple $(T, E|_U, m)$ over $U$, then $j_!P = Rj_*P \to j_!(E|_U) \to E$ is an approximation of $(T, E, m)$ over $X$. See Cohomology, Lemmas [Direct images and derived sheaf cohomology (uncovered prerequisite)](#uncovered-cohomology-lemma-pushforward-restriction) and [Direct images and perfect complexes (uncovered prerequisite)](#uncovered-cohomology-lemma-pushforward-perfect). $\square$
+Use the composite
+$$Rj_*P\simeq j_!P\longrightarrow j_!(E|_U)\longrightarrow E.$$
+Exactness of $j_!$ carries the approximation bounds through the first arrow. For each $i\geq m$, the last arrow induces $j_!(H^i(E)|_U)\to H^i(E)$, an isomorphism because the sheaf is supported on the closed subset $T\subset U$. The composite is therefore an isomorphism above $m$ and surjective at $m$, as required. $\square$
 
 #### Lemma. The derived localization argument
  Let $X$ be a quasi-compact and quasi-separated scheme. Suppose that for every affine open $U \subset X$ the right derived functor $$\Phi : D(\mathrm{QCoh}(\mathcal{O}_U)) \to D(\mathrm{QCoh}(\mathcal{O}_X))$$ of the left exact functor $j_* : \mathrm{QCoh}(\mathcal{O}_U) \to \mathrm{QCoh}(\mathcal{O}_X)$ fits into a commutative diagram $$\begin{gathered}\begin{matrix}D(\mathrm{QCoh}(\mathcal{O}_U)) & D_\mathrm{QCoh}(\mathcal{O}_U) \\ D(\mathrm{QCoh}(\mathcal{O}_X)) & D_\mathrm{QCoh}(\mathcal{O}_X)\end{matrix} \\[6pt] \begin{aligned}D(\mathrm{QCoh}(\mathcal{O}_U)) & \xrightarrow{\Phi} D(\mathrm{QCoh}(\mathcal{O}_X)) \\ D(\mathrm{QCoh}(\mathcal{O}_U)) & \xrightarrow{i_U} D_\mathrm{QCoh}(\mathcal{O}_U) \\ D_\mathrm{QCoh}(\mathcal{O}_U) & \xrightarrow{Rj_*} D_\mathrm{QCoh}(\mathcal{O}_X) \\ D(\mathrm{QCoh}(\mathcal{O}_X)) & \xrightarrow{i_X} D_\mathrm{QCoh}(\mathcal{O}_X)\end{aligned}\end{gathered}$$ Then the functor ([Comparison of derived quasi-coherent categories](#context-perfect-equation-compare)) $$D(\mathrm{QCoh}(\mathcal{O}_X))
@@ -9929,39 +9962,43 @@ and $H^p(U,\varprojlim_n\mathcal F_n)=0$ for $p>0$ and $U\in\mathcal B$.
 
 **Proof.** Apply the sitewise Milnor sequence just proved to $\mathcal F_n$ viewed as complexes in degree zero. On any $U\in\mathcal B$, their hypercohomology is confined to degree zero, where it is $\mathcal F_n(U)$. The Milnor sequence then says that $R\Gamma(U,R\varprojlim_n\mathcal F_n)$ has only degree-zero cohomology, equal to $\varprojlim_n\mathcal F_n(U)$. Sheafifying on the covering collection identifies the derived limit with the ordinary limit sheaf in degree zero. The very same calculation of sections gives the positive-degree vanishing for that sheaf. $\square$
 
-#### Lemma. Pseudo-coherent complexes and coherent sheaves
+#### Lemma. Pseudo-coherence in a distinguished triangle
 
-Let $(\mathcal{C}, \mathcal{O})$ be a ringed site and $m \in \mathbf{Z}$. Let $(K, L, M, f, g, h)$ be a distinguished triangle in $D(\mathcal{O})$.
+Let $K\to L\to M\to K[1]$ be a distinguished triangle on a ringed site $(\mathcal C,\mathcal O)$, and let $m\in\mathbf Z$. The following implications hold:
 
-1.  If $K$ is $(m + 1)$-pseudo-coherent and $L$ is $m$-pseudo-coherent then $M$ is $m$-pseudo-coherent.
+1. $(m+1)$-pseudo-coherence of $K$ and $m$-pseudo-coherence of $L$ imply $m$-pseudo-coherence of $M$.
+2. If $K$ and $M$ are $m$-pseudo-coherent, so is $L$.
+3. The assumptions of $(m+1)$-pseudo-coherence for $L$ and $m$-pseudo-coherence for $M$ give $(m+1)$-pseudo-coherence for $K$.
 
-2.  If $K$ and $M$ are $m$-pseudo-coherent, then $L$ is $m$-pseudo-coherent.
+**Proof.** For (1), work locally on an arbitrary object of the site. Choose strictly perfect approximations $P\to K$ at cutoff $m+1$ and $Q\to L$ at cutoff $m$, refining to a common cover. Replacing $P$ by its brutal truncation in degrees at least $m+1$ preserves the required isomorphisms and surjection. Thus $P^i=0$ for $i<m+1$.
 
-3.  If $L$ is $(m + 1)$-pseudo-coherent and $M$ is $m$-pseudo-coherent, then $K$ is $(m + 1)$-pseudo-coherent.
+Represent $L$ by a K-injective complex $J$. The maps $Q\to L$ and $P\to K\to L$ have actual chain-map representatives into $J$. The [local lifting lemma](#native-sites-cohomology-lemma-lift-through-quasi-isomorphism), applied to $Q\to J$ and the strictly perfect $P$, gives a chain map $\gamma:P\to Q$ making the square commute up to homotopy after a further cover. Its hypotheses hold with lower degree $m+1$: the map $Q\to J$ is already an isomorphism on cohomology there and in every higher degree. Completing the square to triangles gives
+$$\operatorname{Cone}(\gamma)\longrightarrow M.$$
+Its source is strictly perfect.
 
-**Proof.** Proof of (1). Let $U$ be an object of $\mathcal{C}$. Choose a covering $\{U_i \to U\}$ and maps $\alpha_i : \mathcal{K}_i^\bullet \to K|_{U_i}$ in $D(\mathcal{O}_{U_i})$ with $\mathcal{K}_i^\bullet$ strictly perfect and $H^j(\alpha_i)$ isomorphisms for $j > m + 1$ and surjective for $j = m + 1$. We may replace $\mathcal{K}_i^\bullet$ by $\sigma_{\geq m + 1}\mathcal{K}_i^\bullet$ and hence we may assume that $\mathcal{K}_i^j = 0$ for $j < m + 1$. After refining the covering we may choose maps $\beta_i : \mathcal{L}_i^\bullet \to L|_{U_i}$ in $D(\mathcal{O}_{U_i})$ with $\mathcal{L}_i^\bullet$ strictly perfect such that $H^j(\beta_i)$ is an isomorphism for $j > m$ and surjective for $j = m$. By Lemma [Lifting derived modules on ringed sites](#native-sites-cohomology-lemma-lift-through-quasi-isomorphism) we can, after refining the covering, find maps of complexes $\gamma_i : \mathcal{K}_i^\bullet \to \mathcal{L}_i^\bullet$ such that the diagrams $$\begin{gathered}\begin{matrix}K|_{U_i} & L|_{U_i} \\ \mathcal{K}_i^\bullet & \mathcal{L}_i^\bullet\end{matrix} \\[6pt] \begin{aligned}K|_{U_i} & \longrightarrow L|_{U_i} \\ \mathcal{K}_i^\bullet & \xrightarrow{\alpha_i} K|_{U_i} \\ \mathcal{K}_i^\bullet & \xrightarrow{\gamma_i} \mathcal{L}_i^\bullet \\ \mathcal{L}_i^\bullet & \xrightarrow{\beta_i} L|_{U_i}\end{aligned}\end{gathered}$$ are commutative in $D(\mathcal{O}_{U_i})$ (this requires representing the maps $\alpha_i$, $\beta_i$ and $K|_{U_i} \to L|_{U_i}$ by actual maps of complexes; some details omitted). The cone $C(\gamma_i)^\bullet$ is strictly perfect (Lemma [Derived categories](#native-sites-cohomology-lemma-cone)). The commutativity of the diagram implies that there exists a morphism of distinguished triangles $$(\mathcal{K}_i^\bullet, \mathcal{L}_i^\bullet, C(\gamma_i)^\bullet)
-\longrightarrow
-(K|_{U_i}, L|_{U_i}, M|_{U_i}).$$ It follows from the induced map on long exact cohomology sequences and Homology, Lemmas [The geometric construction (uncovered prerequisite)](#uncovered-homology-lemma-four-lemma) and [The geometric construction (uncovered prerequisite)](#uncovered-homology-lemma-five-lemma) that $C(\gamma_i)^\bullet \to M|_{U_i}$ induces an isomorphism on cohomology in degrees $> m$ and a surjection in degree $m$. Hence $M$ is $m$-pseudo-coherent by Lemma [Pseudo-coherent complexes and coherent sheaves](#native-sites-cohomology-lemma-pseudo-coherent-independent-representative).
+Check the approximation bounds using, for each $i$, the short exact sequence
+$$0\longrightarrow\operatorname{coker}(H^i(P)\to H^i(Q))
+\longrightarrow H^i(\operatorname{Cone}(\gamma))
+\longrightarrow\ker(H^{i+1}(P)\to H^{i+1}(Q))\longrightarrow0,$$
+and the analogous sequence for $K,L,M$. For $i>m$, the maps on the two ends are isomorphisms: at the endpoint $i=m+1$, surjectivity of $H^{m+1}(P)\to H^{m+1}(K)$ is enough to identify the cokernels, while all the maps defining the right-hand kernels are isomorphisms. The middle map is therefore an isomorphism. At $i=m$, the cokernel map is surjective because $H^m(Q)\to H^m(L)$ is. The kernel map is also surjective: lift a kernel element from $H^{m+1}(K)$ to $H^{m+1}(P)$ and use injectivity on $H^{m+1}(Q)\to H^{m+1}(L)$ to see that its lift is in the kernel. This proves surjectivity in degree $m$.
 
-Assertions (2) and (3) follow from (1) by rotating the distinguished triangle. $\square$
+For (2), apply (1) to $M[-1]\to K\to L$: the shift $M[-1]$ is $(m+1)$-pseudo-coherent. For (3), apply (1) to $L\to M\to K[1]$ and shift back. These rotations give precisely the stated endpoints. $\square$
 
-#### Lemma. Perfect complexes
+#### Lemma. Two-out-of-three for perfect complexes
 
-Let $(\mathcal{C}, \mathcal{O})$ be a ringed site. Let $(K, L, M, f, g, h)$ be a distinguished triangle in $D(\mathcal{O})$. If two out of three of $K, L, M$ are perfect then the third is also perfect.
+On a ringed site, if any two objects of a distinguished triangle are perfect, then the remaining object is perfect as well.
 
-**Proof.** First proof: Combine Lemmas [Perfect complexes](#native-sites-cohomology-lemma-perfect), [Pseudo-coherent complexes and coherent sheaves](#native-sites-cohomology-lemma-cone-pseudo-coherent), and [Derived tensor products, Tor amplitude and derived categories](#native-sites-cohomology-lemma-cone-tor-amplitude). Second proof (sketch): Say $K$ and $L$ are perfect. Let $U$ be an object of $\mathcal{C}$. After replacing $U$ by the members of a covering we may assume that $K|_U$ and $L|_U$ are represented by strictly perfect complexes $\mathcal{K}^\bullet$ and $\mathcal{L}^\bullet$. After replacing $U$ by the members of a covering we may assume the map $K|_U \to L|_U$ is given by a map of complexes $\alpha : \mathcal{K}^\bullet \to \mathcal{L}^\bullet$, see Lemma [A local representative for a derived object](#native-sites-cohomology-lemma-local-actual). Then $M|_U$ is isomorphic to the cone of $\alpha$ which is strictly perfect by Lemma [Derived categories](#native-sites-cohomology-lemma-cone). $\square$
+**Proof by finiteness and Tor bounds.** By rotation it suffices to consider $K\to L\to M$ with $K,L$ perfect. They are pseudo-coherent, so the preceding lemma, for every $m$, makes $M$ pseudo-coherent. Locally choose a common finite interval $[a,b]$ for the Tor amplitudes of $K$ and $L$. The tensor cohomology sequence bounds the amplitude of $M$ by $[a-1,b]$. The [criterion combining pseudo-coherence and local finite Tor dimension](#native-sites-cohomology-lemma-perfect) now makes $M$ perfect.
 
-#### Lemma. Perfect complexes
+**Proof by an actual cone.** On a suitable cover, represent $K,L$ by strictly perfect complexes $P,Q$. The [local representation lemma](#native-sites-cohomology-lemma-local-actual) makes their given derived morphism an actual chain map after refining the cover. Its cone, with terms $Q^i\oplus P^{i+1}$, is a bounded complex of finite locally projective modules and represents $M$. Thus $M$ is locally strictly perfect. Rotation handles either of the other missing objects. This completes both proof routes. $\square$
 
-Let $(\mathcal{C}, \mathcal{O})$ be a ringed site. Let $E$ be an object of $D(\mathcal{O})$. The following are equivalent
+#### Lemma. Characterizing perfect complexes by pseudo-coherence and Tor dimension
 
-1.  $E$ is perfect, and
+An object $E\in D(\mathcal O)$ on a ringed site is perfect if and only if it is pseudo-coherent and has finite Tor dimension locally on the site.
 
-2.  $E$ is pseudo-coherent and locally has finite tor dimension.
+**Proof.** A strictly perfect local representative is itself an approximation at every cutoff. Its finitely many terms are flat, so its range of degrees bounds the Tor amplitude there. This proves necessity.
 
-**Proof.** Assume (1). Let $U$ be an object of $\mathcal{C}$. By definition there exists a covering $\{U_i \to U\}$ such that $E|_{U_i}$ is represented by a strictly perfect complex. Thus $E$ is pseudo-coherent (i.e., $m$-pseudo-coherent for all $m$) by Lemma [Pseudo-coherent complexes and coherent sheaves](#native-sites-cohomology-lemma-pseudo-coherent-independent-representative). Moreover, a direct summand of a finite free module is flat, hence $E|_{U_i}$ has finite Tor dimension by Lemma [Derived tensor products and Tor amplitude](#native-sites-cohomology-lemma-tor-amplitude). Thus (2) holds.
-
-Assume (2). Let $U$ be an object of $\mathcal{C}$. After replacing $U$ by the members of a covering we may assume there exist integers $a \leq b$ such that $E|_U$ has tor amplitude in $[a, b]$. Since $E|_U$ is $m$-pseudo-coherent for all $m$ we conclude using Lemma [Perfect complexes](#native-sites-cohomology-lemma-perfect-precise). $\square$
+Conversely, work on a cover where the Tor amplitude lies in a finite interval $[a,b]$. Pseudo-coherence includes $(a-1)$-pseudo-coherence on this cover. The [precise perfectness criterion](#native-sites-cohomology-lemma-perfect-precise) then supplies strictly perfect representatives after a further cover. These local representatives are exactly the definition of perfection. $\square$
 
 #### Lemma. Derived categories
  Let $f : (\operatorname{Sh}(\mathcal{C}), \mathcal{O}) \to (\operatorname{Sh}(\mathcal{C}'), \mathcal{O}')$ be a morphism of ringed topoi. There is a canonical bifunctorial isomorphism $$\mathcal{F}^\bullet
@@ -10081,18 +10118,22 @@ Let $f : (\operatorname{Sh}(\mathcal{C}), \mathcal{O}_\mathcal{C}) \to
 
 **Proof.** This is just the Grothendieck spectral sequence Derived Categories, Lemma [Triangulated categories](#native-derived-lemma-grothendieck-spectral-sequence) coming from the composition of functors $\Gamma(\mathcal{C}, -) = \Gamma(\mathcal{D}, -) \circ f_*$. To see that the assumptions of Derived Categories, Lemma [Triangulated categories](#native-derived-lemma-grothendieck-spectral-sequence) are satisfied, see Lemmas [Direct images and injective resolutions and sheaves on ringed sites](#native-sites-cohomology-lemma-direct-image-injective-sheaf) and [Acyclic resolutions on a ringed site](#native-sites-cohomology-lemma-limp-acyclic). $\square$
 
-#### Lemma. Injective resolutions
+#### Lemma. K-injectivity survives localization
 
-Let $(\mathcal{C}, \mathcal{O})$ be a ringed site. Let $U$ be an object of $\mathcal{C}$. The restriction of a K-injective complex of $\mathcal{O}$-modules to $\mathcal{C}/U$ is a K-injective complex of $\mathcal{O}_U$-modules.
+For a ringed site $(\mathcal C,\mathcal O)$ and an object $U$ of $\mathcal C$, restriction to $\mathcal C/U$ takes K-injective complexes of $\mathcal O$-modules to K-injective complexes of $\mathcal O_U$-modules.
 
-**Proof.** Follows immediately from Derived Categories, Lemma [Injective resolutions (uncovered prerequisite)](#uncovered-derived-lemma-adjoint-preserve-k-injectives) and the fact that the restriction functor has the exact left adjoint $j_!$. See discussion above. $\square$
+**Proof.** Let $I$ be K-injective and $A$ an acyclic complex on $\mathcal C/U$. The [exactness of extension by zero](#uncovered-sites-modules-lemma-extension-by-zero) makes $j_!A$ acyclic. Termwise adjunction, which respects differentials and homotopies, identifies the Hom complexes
+$$\operatorname{Hom}^{\bullet}(A,I|_U)
+\simeq\operatorname{Hom}^{\bullet}(j_!A,I).$$
+The right side is acyclic by K-injectivity. This proves the defining condition for $I|_U$. $\square$
 
-#### Lemma. Derived modules on ringed sites
+#### Lemma. Extension by zero and derived adjunction
 
-Let $(\mathcal{C}, \mathcal{O})$ be a ringed site. Let $U$ be an object of $\mathcal{C}$. Denote $j : (\operatorname{Sh}(\mathcal{C}/U), \mathcal{O}_U) \to (\operatorname{Sh}(\mathcal{C}), \mathcal{O})$ the corresponding localization morphism. The restriction functor $D(\mathcal{O}) \to D(\mathcal{O}_U)$ is a right adjoint to extension by zero $j_! : D(\mathcal{O}_U) \to D(\mathcal{O})$.
+For a localization $j:(\operatorname{Sh}(\mathcal C/U),\mathcal O_U)\to(\operatorname{Sh}(\mathcal C),\mathcal O)$ of a ringed site, extension by zero is left adjoint to restriction also on the unbounded derived categories:
+$$\operatorname{Hom}_{D(\mathcal O)}(j_!E,F)
+\simeq\operatorname{Hom}_{D(\mathcal O_U)}(E,F|_U).$$
 
-**Proof.** We have to show that $$\operatorname{Hom}_{D(\mathcal{O})}(j_!E, F) = \operatorname{Hom}_{D(\mathcal{O}_U)}(E, F|_U)$$ Choose a complex $\mathcal{E}^\bullet$ of $\mathcal{O}_U$-modules representing $E$ and choose a K-injective complex $\mathcal{I}^\bullet$ representing $F$. By Lemma [Injective resolutions](#native-sites-cohomology-lemma-restrict-k-injective-to-open) the complex $\mathcal{I}^\bullet|_U$ is K-injective as well. Hence we see that the formula above becomes $$\operatorname{Hom}_{D(\mathcal{O})}(j_!\mathcal{E}^\bullet, \mathcal{I}^\bullet) =
-\operatorname{Hom}_{D(\mathcal{O}_U)}(\mathcal{E}^\bullet, \mathcal{I}^\bullet|_U)$$ which holds as $|_U$ and $j_!$ are adjoint functors (Modules on Sites, Lemma [The geometric construction (uncovered prerequisite)](#uncovered-sites-modules-lemma-extension-by-zero)) and Derived Categories, Lemma [Injective resolutions (uncovered prerequisite)](#uncovered-derived-lemma-k-injective). $\square$
+**Proof.** Represent $E$ by a complex $A$ and $F$ by a K-injective complex $I$. Because $j_!$ is exact, $j_!A$ represents $j_!E$; the preceding lemma makes $I|_U$ K-injective. Thus the two derived Hom groups are the degree-zero cohomology groups of $\operatorname{Hom}^{\bullet}(j_!A,I)$ and $\operatorname{Hom}^{\bullet}(A,I|_U)$. The ordinary adjunction identifies these complexes naturally, yielding the required derived adjunction with its unit and counit. $\square$
 
 #### Definition. Pseudo-coherent complexes
  Let $(\mathcal{C}, \mathcal{O})$ be a ringed site. Let $\mathcal{E}^\bullet$ be a complex of $\mathcal{O}$-modules. Let $m \in \mathbf{Z}$.
@@ -10121,12 +10162,11 @@ Proof of (2). Pick an object $U$ of $\mathcal{C}$. As in the proof of (1) we may
 
 **Proof.** This follows from Lemma [Perfect complexes](#native-sites-cohomology-lemma-perfect), [Derived tensor products and Tor amplitude (uncovered prerequisite)](#uncovered-sites-cohomology-lemma-tor-amplitude-pullback), and [Pseudo-coherent complexes and coherent sheaves](#native-sites-cohomology-lemma-pseudo-coherent-pullback). $\square$
 
-#### Lemma. Lifting derived modules on ringed sites
+#### Lemma. Locally lifting a map from a strictly perfect complex
 
-Let $(\mathcal{C}, \mathcal{O})$ be a ringed site. Let $U$ be an object of $\mathcal{C}$. Given a solid diagram of complexes of $\mathcal{O}_U$-modules $$\begin{gathered}\begin{matrix}\mathcal{E}^\bullet & \mathcal{F}^\bullet \\ \phantom{X} & \mathcal{G}^\bullet\end{matrix} \\[6pt] \begin{aligned}\mathcal{E}^\bullet & \cdots\!\!\rightarrow \mathcal{G}^\bullet \\ \mathcal{E}^\bullet & \xrightarrow{\alpha} \mathcal{F}^\bullet \\ \mathcal{G}^\bullet & \xrightarrow{f} \mathcal{F}^\bullet\end{aligned}\end{gathered}$$ with $\mathcal{E}^\bullet$ strictly perfect, $\mathcal{E}^j = 0$ for $j < a$ and $H^j(f)$ an isomorphism for $j > a$ and surjective for $j = a$, then there exists a covering $\{U_i \to U\}$ and for each $i$ a dotted arrow over $U_i$ making the diagram commute up to homotopy.
+Let $U$ be an object of a ringed site, and let $\alpha:P\to F$ and $f:G\to F$ be chain maps of $\mathcal O_U$-modules. Suppose $P$ is strictly perfect with $P^i=0$ for $i<a$, and suppose $H^i(f)$ is an isomorphism for $i>a$ and an epimorphism for $i=a$. Then there is a covering of $U$ on which maps $\beta:P\to G$ exist with $f\beta$ homotopic to $\alpha$.
 
-**Proof.** Our assumptions on $f$ imply the cone $C(f)^\bullet$ has vanishing cohomology sheaves in degrees $\geq a$. Hence Lemma [Local algebra (uncovered prerequisite)](#uncovered-sites-cohomology-lemma-local-homotopy) guarantees there is a covering $\{U_i \to U\}$ such that the composition $\mathcal{E}^\bullet \to \mathcal{F}^\bullet \to C(f)^\bullet$ is homotopic to zero over $U_i$. Since $$\mathcal{G}^\bullet \to \mathcal{F}^\bullet \to C(f)^\bullet \to
-\mathcal{G}^\bullet[1]$$ restricts to a distinguished triangle in $K(\mathcal{O}_{U_i})$ we see that we can lift $\alpha|_{U_i}$ up to homotopy to a map $\alpha_i : \mathcal{E}^\bullet|_{U_i} \to \mathcal{G}^\bullet|_{U_i}$ as desired. $\square$
+**Proof.** The cohomology sequence of $G\to F\to\operatorname{Cone}(f)$ gives $H^i(\operatorname{Cone}(f))=0$ for $i\geq a$. Apply the [local null-homotopy lemma](#uncovered-sites-cohomology-lemma-local-homotopy) to $P\to F\to\operatorname{Cone}(f)$. On a cover this composite vanishes in the homotopy category. Exactness of Hom for the cone triangle in that category then lifts the class of $\alpha$ to a class of maps $P\to G$. Choosing a chain-map representative gives the stated $\beta$ and homotopy. $\square$
 
 #### Lemma. Derived categories
  The cone on a morphism of strictly perfect complexes is strictly perfect.
@@ -10149,27 +10189,31 @@ Proof of (2). By the above we see that $\mathcal{F}^\bullet|_U$ is $m$-pseudo-co
 
 Proof of (3). Follows from the definitions and Sites, Definition [Sheaves on ringed sites](#context-sites-definition-site) part (2). $\square$
 
-#### Lemma. Derived tensor products, Tor amplitude and derived categories
+#### Lemma. Tor-amplitude bounds in a triangle
 
-Let $(\mathcal{C}, \mathcal{O})$ be a ringed site. Let $(K, L, M, f, g, h)$ be a distinguished triangle in $D(\mathcal{O})$. Let $a, b \in \mathbf{Z}$.
+For a distinguished triangle $K\to L\to M\to K[1]$ on a ringed site and integers $a,b$, one has:
 
-1.  If $K$ has tor-amplitude in $[a + 1, b + 1]$ and $L$ has tor-amplitude in $[a, b]$ then $M$ has tor-amplitude in $[a, b]$.
+1. If $K$ has Tor amplitude in $[a+1,b+1]$ and $L$ in $[a,b]$, then $M$ has amplitude in $[a,b]$.
+2. If $K$ and $M$ both have amplitude in $[a,b]$, the same is true of $L$.
+3. If $L$ has amplitude in $[a+1,b+1]$ and $M$ in $[a,b]$, then $K$ has amplitude in $[a+1,b+1]$.
 
-2.  If $K$ and $M$ have tor-amplitude in $[a, b]$, then $L$ has tor-amplitude in $[a, b]$.
+**Proof.** Tensor the triangle in the derived sense with an arbitrary module $N$. For (1), the exact segment
+$$H^i(L\otimes^{\mathbf L}N)\longrightarrow H^i(M\otimes^{\mathbf L}N)
+\longrightarrow H^{i+1}(K\otimes^{\mathbf L}N)$$
+has zero outer terms whenever $i\notin[a,b]$. For (2), use the segment with outer terms $H^i(K\otimes^{\mathbf L}N)$ and $H^i(M\otimes^{\mathbf L}N)$. For (3), use
+$$H^{i-1}(M\otimes^{\mathbf L}N)\longrightarrow H^i(K\otimes^{\mathbf L}N)
+\longrightarrow H^i(L\otimes^{\mathbf L}N)$$
+and take $i\notin[a+1,b+1]$. The vanishing holds for every $N$, which proves all three assertions and their degree endpoints. $\square$
 
-3.  If $L$ has tor-amplitude in $[a + 1, b + 1]$ and $M$ has tor-amplitude in $[a, b]$, then $K$ has tor-amplitude in $[a + 1, b + 1]$.
+#### Lemma. Local chain representatives and homotopies
 
-**Proof.** Omitted. Hint: This just follows from the long exact cohomology sequence associated to a distinguished triangle and the fact that $- \otimes_\mathcal{O}^{\mathbf{L}} \mathcal{F}$ preserves distinguished triangles. The easiest one to prove is (2) and the others follow from it by translation. $\square$
+Let $P,F$ be complexes of $\mathcal O_U$-modules on an object $U$ of a ringed site, with $P$ strictly perfect. Every derived morphism $P\to F$ is represented by a chain map after a cover of $U$. If a chain map $P\to F$ is zero in the derived category, it is null-homotopic after such a cover.
 
-#### Lemma. A local representative for a derived object
+**Proof.** Choose a quasi-isomorphism $f:F\to I$ to a K-injective complex. A derived morphism from $P$ to $F$ is represented by a chain map $\beta:P\to I$. The preceding local lifting lemma, with any lower bound for the degrees of $P$, lifts $\beta$ through $f$ up to homotopy after a cover. This proves the first assertion.
 
-Let $(\mathcal{C}, \mathcal{O})$ be a ringed site. Let $U$ be an object of $\mathcal{C}$. Let $\mathcal{E}^\bullet$, $\mathcal{F}^\bullet$ be complexes of $\mathcal{O}_U$-modules with $\mathcal{E}^\bullet$ strictly perfect.
-
-1.  For any element $\alpha \in \operatorname{Hom}_{D(\mathcal{O}_U)}(\mathcal{E}^\bullet, \mathcal{F}^\bullet)$ there exists a covering $\{U_i \to U\}$ such that $\alpha|_{U_i}$ is given by a morphism of complexes $\alpha_i : \mathcal{E}^\bullet|_{U_i} \to \mathcal{F}^\bullet|_{U_i}$.
-
-2.  Given a morphism of complexes $\alpha : \mathcal{E}^\bullet \to \mathcal{F}^\bullet$ whose image in the group $\operatorname{Hom}_{D(\mathcal{O}_U)}(\mathcal{E}^\bullet, \mathcal{F}^\bullet)$ is zero, there exists a covering $\{U_i \to U\}$ such that $\alpha|_{U_i}$ is homotopic to zero.
-
-**Proof.** Proof of (1). By the construction of the derived category we can find a quasi-isomorphism $f : \mathcal{F}^\bullet \to \mathcal{G}^\bullet$ and a map of complexes $\beta : \mathcal{E}^\bullet \to \mathcal{G}^\bullet$ such that $\alpha = f^{-1}\beta$. Thus the result follows from Lemma [Lifting derived modules on ringed sites](#native-sites-cohomology-lemma-lift-through-quasi-isomorphism). We omit the proof of (2). $\square$
+For the second, if $\alpha:P\to F$ has zero derived class, then $f\alpha$ is null-homotopic because $I$ is K-injective. In the homotopy category, the triangle
+$$\operatorname{Cone}(f)[-1]\longrightarrow F\xrightarrow{f}I\longrightarrow\operatorname{Cone}(f)$$
+therefore makes the class of $\alpha$ factor through $\operatorname{Cone}(f)[-1]$. This complex is acyclic. A representative of the factor map is locally null-homotopic by the local null-homotopy lemma, and hence so is $\alpha$. This supplies the omitted second proof. $\square$
 
 #### Lemma. Sheaf cohomology
  Let $(\mathcal{C}, \mathcal{O})$ be a ringed site. Let $\mathcal{F}$ be a sheaf of $\mathcal{O}$-modules. Let $U$ be an object of $\mathcal{C}$. Let $n > 0$ and let $\xi \in H^n(U, \mathcal{F})$. Then there exists a covering $\{U_i \to U\}$ of $\mathcal{C}$ such that $\xi|_{U_i} = 0$ for all $i \in I$.
@@ -10210,14 +10254,23 @@ Assume that (1) holds. We may represent $E$ by a bounded above complex of flat $
 
 Set $\mathcal{E}^\bullet = \tau_{\geq a}\mathcal{K}^\bullet$. Everything is clear except that $\mathcal{E}^a$ is flat which follows immediately from Lemma [Flatness (uncovered prerequisite)](#uncovered-sites-cohomology-lemma-last-one-flat) and the definitions. $\square$
 
-#### Lemma. Perfect complexes
+#### Lemma. A precise perfectness criterion
 
-Let $(\mathcal{C}, \mathcal{O})$ be a ringed site. Let $E$ be an object of $D(\mathcal{O})$. Let $a \leq b$ be integers. If $E$ has tor amplitude in $[a, b]$ and is $(a - 1)$-pseudo-coherent, then $E$ is perfect.
+Let $E\in D(\mathcal O)$ on a ringed site have Tor amplitude in $[a,b]$, where $a\leq b$. If $E$ is $(a-1)$-pseudo-coherent, then it is perfect.
 
-**Proof.** Let $U$ be an object of $\mathcal{C}$. After replacing $U$ by the members of a covering and $\mathcal{C}$ by the localization $\mathcal{C}/U$ we may assume there exists a strictly perfect complex $\mathcal{E}^\bullet$ and a map $\alpha : \mathcal{E}^\bullet \to E$ such that $H^i(\alpha)$ is an isomorphism for $i \geq a$. We may and do replace $\mathcal{E}^\bullet$ by $\sigma_{\geq a - 1}\mathcal{E}^\bullet$. Choose a distinguished triangle $$\mathcal{E}^\bullet \to E \to C \to \mathcal{E}^\bullet[1]$$ From the vanishing of cohomology sheaves of $E$ and $\mathcal{E}^\bullet$ and the assumption on $\alpha$ we obtain $C \cong \mathcal{K}[2 - a]$ with $\mathcal{K} = \operatorname{Ker}(\mathcal{E}^{a - 1} \to \mathcal{E}^a)$. Let $\mathcal{F}$ be an $\mathcal{O}$-module. Applying $- \otimes_\mathcal{O}^\mathbf{L} \mathcal{F}$ the assumption that $E$ has tor amplitude in $[a, b]$ implies $\mathcal{K} \otimes_\mathcal{O} \mathcal{F} \to
-\mathcal{E}^{a - 1} \otimes_\mathcal{O} \mathcal{F}$ has image $\operatorname{Ker}(\mathcal{E}^{a - 1} \otimes_\mathcal{O} \mathcal{F}
-\to \mathcal{E}^a \otimes_\mathcal{O} \mathcal{F})$. It follows that $\text{Tor}_1^\mathcal{O}(\mathcal{E}', \mathcal{F}) = 0$ where $\mathcal{E}' = \operatorname{Coker}(\mathcal{E}^{a - 1} \to \mathcal{E}^a)$. Hence $\mathcal{E}'$ is flat (Lemma [Tor vanishing for a flat module (uncovered prerequisite)](#uncovered-sites-cohomology-lemma-flat-tor-zero)). Thus there exists a covering $\{U_i \to U\}$ such that $\mathcal{E}'|_{U_i}$ is a direct summand of a finite free module by Modules on Sites, Lemma [Finite presentation and flatness (uncovered prerequisite)](#uncovered-sites-modules-lemma-flat-locally-finite-presentation). Thus the complex $$\mathcal{E}'|_{U_i} \to \mathcal{E}^{a + 1}|_{U_i} \to \ldots \to
-\mathcal{E}^b|_{U_i}$$ is quasi-isomorphic to $E|_{U_i}$ and $E$ is perfect. $\square$
+**Proof.** Work on a cover where there is a strictly perfect complex $P$ and a map $P\to E$ inducing cohomology isomorphisms in degrees at least $a$. Brutally truncate $P$ below $a-1$, which preserves these isomorphisms. We may also arrange $P^i=0$ for $i>b$: starting at its highest nonzero degree above $b$, the preceding differential is surjective because its cohomology there vanishes. Locally split that surjection onto the finite locally projective last term and remove the resulting contractible two-term summand. Repeating finitely often removes the upper tail.
+
+Put $K=\ker(P^{a-1}\to P^a)$. In the triangle $P\to E\to C\to P[1]$, the cohomology sequence, including the vanishing of $E$ below $a$, identifies
+$$C\simeq K[2-a].$$
+For any module $N$, tensor this triangle with $N$ in the derived sense. The two degrees $a-2,a-1$ of $E\otimes^{\mathbf L}N$ vanish by the amplitude bound. Consequently the natural map
+$$K\otimes N\longrightarrow P^{a-1}\otimes N$$
+has image exactly $\ker(P^{a-1}\otimes N\to P^a\otimes N)$.
+
+Let $J=\operatorname{im}(P^{a-1}\to P^a)$ and $Q=\operatorname{coker}(P^{a-1}\to P^a)$. Right exactness of tensoring $K\to P^{a-1}\to J\to0$ identifies $J\otimes N$ with the quotient of $P^{a-1}\otimes N$ by that image. The displayed kernel identity therefore makes $J\otimes N\to P^a\otimes N$ injective. The Tor sequence of $0\to J\to P^a\to Q\to0$, with $P^a$ flat, gives $\operatorname{Tor}_1(Q,N)=0$. Since $N$ was arbitrary, $Q$ is flat. It is locally finitely presented from its presentation by the two finite locally projective terms. The [finite-presentation flatness lemma](#uncovered-sites-modules-lemma-flat-locally-finite-presentation) thus makes $Q$ a summand of a finite free module after a cover.
+
+The smart truncation of $P$ in degrees at least $a$ is now represented by
+$$Q\longrightarrow P^{a+1}\longrightarrow\cdots\longrightarrow P^b.$$
+It is strictly perfect on this cover. Applying the same truncation to $P\to E$ gives a quasi-isomorphism from this complex to $E$, because the original map is an isomorphism on cohomology in degrees at least $a$ and $E$ has no lower cohomology. Hence $E$ is perfect. $\square$
 
 #### Lemma. Pullback of tensor products and direct sums
  Let $f : (\operatorname{Sh}(\mathcal{C}), \mathcal{O}) \to (\operatorname{Sh}(\mathcal{D}), \mathcal{O}')$ be a morphism of ringed topoi. There is a canonical bifunctorial isomorphism $$Lf^*(
@@ -10356,90 +10409,124 @@ Let $(U\subset W,f:V\to W)$ be an elementary distinguished square of algebraic s
 
 For (2), open immersions and étale morphisms are preserved by base change. The reduced complement $T'$ of $p^{-1}U$ in $W'$ maps into $T$: functions in the defining radical ideal vanish on its underlying image and therefore vanish on the reduced space $T'$. Consequently the map over $T'$ is the base change of the isomorphism $V\times_WT\to T$. This proves the complement condition. Statement (3) is the special case obtained by changing the base scheme. $\square$
 
-#### Lemma. Derived quasi-coherent complexes
- Let $S$ be a scheme. Let $f : X \to Y$ be a morphism of algebraic spaces over $S$. Given an étale morphism $V \to Y$, set $U = V \times_Y X$ and denote $g : U \to V$ the projection morphism. Then $(Rf_*E)|_V = Rg_*(E|_U)$ for $E$ in $D(\mathcal{O}_X)$.
+#### Lemma. Étale restriction of derived direct images
 
-**Proof.** Represent $E$ by a K-injective complex $\mathcal{I}^\bullet$ of $\mathcal{O}_X$-modules. Then $Rf_*(E) = f_*\mathcal{I}^\bullet$ and $Rg_*(E|_U) = g_*(\mathcal{I}^\bullet|_U)$ by Cohomology on Sites, Lemma [Injective resolutions](#native-sites-cohomology-lemma-restrict-k-injective-to-open). Hence the result follows from Properties of Spaces, Lemma [Base change for étale morphisms and modules](#native-spaces-properties-lemma-pushforward-etale-base-change-modules). $\square$
+Let $f:X\to Y$ be a morphism of algebraic spaces over a scheme $S$. For an étale map $V\to Y$, write $U=X\times_YV$ and $g:U\to V$. Every $E\in D(\mathcal O_X)$ has the natural identification
+$$(Rf_*E)|_V\simeq Rg_*(E|_U).$$
+
+**Proof.** Take a K-injective representative $I$ of $E$. Its restriction $I|_U$ remains K-injective by the [localization lemma](#native-sites-cohomology-lemma-restrict-k-injective-to-open). The two derived images are therefore computed by $(f_*I)|_V$ and $g_*(I|_U)$. These complexes agree term by term: evaluating on an étale object over $V$ gives the same module sections on its fibre product with $X$, which is also its fibre product with $U$ over $V$. This is the [underived étale base-change identification](#native-spaces-properties-lemma-pushforward-etale-base-change-modules). $\square$
 
 #### Lemma. Direct images and closed support
- Let $S$ be a scheme. Let $(U \subset X, j : V \to X)$ be an elementary distinguished square of algebraic spaces over $S$. Set $T = |X| \setminus |U|$.
 
-1.  If $E$ is an object of $D(\mathcal{O}_X)$ supported on $T$, then (a) $E \to Rj_*(E|_V)$ and (b) $j_!(E|_V) \to E$ are isomorphisms.
+Take an elementary distinguished square $(U\subset X,j:V\to X)$ of algebraic spaces over a scheme $S$, with $T=|X|\setminus|U|$ and $W=U\times_XV$. The support condition gives the following isomorphisms in the derived categories.
 
-2.  If $F$ is an object of $D(\mathcal{O}_V)$ supported on $j^{-1}T$, then (a) $F \to (j_!F)|_V$, (b) $(Rj_*F)|_V \to F$, and (c) $j_!F \to Rj_*F$ are isomorphisms.
+**(1)** For $E\in D(\mathcal O_X)$ supported on $T$, both adjunction maps
+$$E\longrightarrow Rj_*(E|_V),\qquad j_!(E|_V)\longrightarrow E$$
+are isomorphisms.
 
-**Proof.** Let $E$ be an object of $D(\mathcal{O}_X)$ whose cohomology sheaves are supported on $T$. Then we see that $E|_U = 0$ and $E|_{U \times_X V} = 0$ as $T$ doesn't meet $U$ and $j^{-1}T$ doesn't meet $U \times_X V$. Thus (1)(a) follows from Lemma [Derived quasi-coherent complexes](#native-spaces-perfect-lemma-exact-sequence-j-star). In exactly the same way (1)(b) follows from Lemma [Derived quasi-coherent complexes](#native-spaces-perfect-lemma-exact-sequence-lower-shriek).
+**(2)** For $F\in D(\mathcal O_V)$ supported on $j^{-1}T$, one has
+$$F\longrightarrow(j_!F)|_V,\qquad (Rj_*F)|_V\longrightarrow F,
+\qquad j_!F\longrightarrow Rj_*F,$$
+all isomorphisms. The first two maps are the unit and counit of the respective adjunctions; the third is their supported comparison.
 
-Let $F$ be an object of $D(\mathcal{O}_V)$ whose cohomology sheaves are supported on $j^{-1}T$. By Lemma [Derived quasi-coherent complexes](#native-spaces-perfect-lemma-restrict-direct-image-open) we have $(Rj_*F)|_U = Rj_{W, *}(F|_W) = 0$ because $F|_W = 0$ by our assumption. Similarly $(j_!F)|_U = j_{W!}(F|_W) = 0$ by Lemma [Derived quasi-coherent complexes](#native-spaces-perfect-lemma-restrict-lower-shriek). Thus $j_!F$ and $Rj_*F$ are supported on $T$ and $(j_!F)|_V$ and $(Rj_*F)|_V$ are supported on $j^{-1}(T)$. To check that the maps (2)(a), (b), (c) are isomorphisms in the derived category, it suffices to check that these map induce isomorphisms on stalks of cohomology sheaves at geometric points of $T$ and $j^{-1}(T)$ by Properties of Spaces, Theorem [Sheaves on ringed sites](#native-spaces-properties-theorem-exactness-stalks). This we may do after replacing $X$ by $V$, $U$ by $U \times_X V$, $V$ by $V \times_X V$ and $F$ by $F|_{V \times_X V}$ (restriction via first projection), see Lemmas [Derived quasi-coherent complexes](#native-spaces-perfect-lemma-restrict-direct-image-open), [Derived quasi-coherent complexes](#native-spaces-perfect-lemma-restrict-lower-shriek), and [Derived quasi-coherent complexes](#native-spaces-perfect-lemma-make-more-elementary-distinguished-squares). Since $V \times_X V \to V$ has a section this reduces (2) to the case that $j : V \to X$ has a section.
+**Proof.** If $E$ is supported on $T$, its restrictions to $U$ and $W$ vanish. The [direct-image triangle](#native-spaces-perfect-lemma-exact-sequence-j-star) then reduces to the first map in (1), and the [extension-by-zero triangle](#native-spaces-perfect-lemma-exact-sequence-lower-shriek) reduces to the second.
 
-Assume $j$ has a section $\sigma : X \to V$. Set $V' = \sigma(X)$. This is an open subspace of $V$. Set $U' = j^{-1}(U)$. This is another open subspace of $V$. Then $(U' \subset V, V' \to V)$ is an elementary distinguished square. Observe that $F|_{U'} = 0$ and $F|_{V' \cap U'} = 0$ because $F$ is supported on $j^{-1}(T)$. Denote $j' : V' \to V$ the open immersion and $j_{V'} : V' \to X$ the composition $V' \to V \to X$ which is the inverse of $\sigma$. Set $F' = \sigma^*F$. The distinguished triangles of Lemmas [Derived quasi-coherent complexes](#native-spaces-perfect-lemma-exact-sequence-lower-shriek) and [Derived quasi-coherent complexes](#native-spaces-perfect-lemma-exact-sequence-j-star) show that $F = j'_!(F|_{V'})$ and $F = Rj'_*(F|_{V'})$. It follows that $j_!F = j_!j'_!(F|_{V'}) = j_{V'!}F = F'$ because $j_{V'} : V' \to X$ is an isomorphism and the inverse of $\sigma$. Similarly, $Rj_*F = Rj_*Rj'_*F = Rj_{V', *}F = F'$. This proves (2)(c). To prove (2)(a) and (2)(b) it suffices to show that $F = F'|_V$. This is clear because both $F$ and $F'|_V$ restrict to zero on $U'$ and $U' \cap V'$ and the same object on $V'$. $\square$
+For (2), $F|_W=0$. Both derived direct image and extension by zero commute with étale restriction, so $(Rj_*F)|_U=(j_!F)|_U=0$. It remains to verify the maps over $T$. This can be done after the étale base change $V\to X$: every geometric point of $T$ lifts to $V$, and the resulting morphism $V\times_XV\to V$ has its diagonal section. The base-change identifications respect the unit and counit. The [stability of distinguished squares](#native-spaces-perfect-lemma-make-more-elementary-distinguished-squares) therefore reduces the verification to the case in which $j$ has a section $\sigma$.
 
-#### Lemma. Derived Hom and Ext
- Let $S$ be a scheme. Let $(U \subset X, V \to X)$ be an elementary distinguished square of algebraic spaces over $S$. For objects $E$, $F$ of $D(\mathcal{O}_X)$ we have a Mayer-Vietoris sequence $$\begin{gathered}\begin{matrix}\phantom{X} & \ldots & \operatorname{Ext}^{-1}(E_{U \times_X V}, F_{U \times_X V}) \\ \operatorname{Hom}(E, F) & \operatorname{Hom}(E_U, F_U) \oplus
-\operatorname{Hom}(E_V, F_V) & \operatorname{Hom}(E_{U \times_X V}, F_{U \times_X V})\end{matrix} \\[6pt] \begin{aligned}\ldots & \longrightarrow \operatorname{Ext}^{-1}(E_{U \times_X V}, F_{U \times_X V}) \\ \operatorname{Ext}^{-1}(E_{U \times_X V}, F_{U \times_X V}) & \longrightarrow \operatorname{Hom}(E, F) \\ \operatorname{Hom}(E, F) & \longrightarrow \operatorname{Hom}(E_U, F_U) \oplus
-\operatorname{Hom}(E_V, F_V) \\ \operatorname{Hom}(E_U, F_U) \oplus
-\operatorname{Hom}(E_V, F_V) & \longrightarrow \operatorname{Hom}(E_{U \times_X V}, F_{U \times_X V})\end{aligned}\end{gathered}$$ where the subscripts denote restrictions to the relevant opens and the $\operatorname{Hom}$'s are taken in the relevant derived categories.
+In that case put $V_0=\sigma(X)$ and $U'=j^{-1}U$. An étale section is an open immersion, and $V_0\cup U'=V$: over $T$, the reduced-complement isomorphism leaves exactly the section point. Let $k:V_0\hookrightarrow V$ and let $F_0=\sigma^*F$. Since $F$ vanishes on $U'$ and on $U'\cap V_0$, the two Mayer–Vietoris triangles for this open cover give
+$$F\simeq k_!(F|_{V_0}),\qquad F\simeq Rk_*(F|_{V_0}).$$
+Now $jk:V_0\to X$ is an isomorphism. Composition of the left adjoints, respectively of the derived right adjoints, gives
+$$j_!F\simeq F_0\simeq Rj_*F.$$
+On $V_0$ the unit and counit become identities. On $U'$ both their source and target vanish. Hence they are isomorphisms on the open cover, proving (2)(a) and (2)(b). The supported comparison in (2)(c) is the map adjoint, under $j^*\dashv Rj_*$, to the inverse of the now verified unit $F\to j^*j_!F$; the same two checks identify it with the displayed isomorphism. This also specifies the maps, rather than only the isomorphism classes of their objects. Returning through the étale base change proves all assertions. In particular, $Rj_*$ detects zero objects with this support. $\square$
 
-**Proof.** Use the distinguished triangle of Lemma [Derived quasi-coherent complexes](#native-spaces-perfect-lemma-exact-sequence-lower-shriek) to obtain a long exact sequence of $\operatorname{Hom}$'s (from Derived Categories, Lemma [Representability of a homological functor](#native-derived-lemma-representable-homological)) and use that $\operatorname{Hom}(j_{U!}E|_U, F) = \operatorname{Hom}(E|_U, F|_U)$ by Cohomology on Sites, Lemma [Derived modules on ringed sites](#native-sites-cohomology-lemma-adjoint-lower-shriek-restrict). $\square$
+#### Lemma. Mayer–Vietoris for derived morphisms
 
-#### Lemma. Étale morphisms and quasi-coherent complexes
+Let $(U\subset X,V\to X)$ be an elementary distinguished square over a scheme $S$, and set $W=U\times_XV$. For $E,F\in D(\mathcal O_X)$, use subscripts to denote restriction and write $\operatorname{Ext}^n(E,F)=\operatorname{Hom}(E,F[n])$ in the relevant derived category. There is a long exact sequence whose degree-zero portion is
+$$\begin{aligned}
+\cdots&\longrightarrow\operatorname{Ext}^{-1}(E_W,F_W)
+\longrightarrow\operatorname{Hom}_X(E,F)\\
+&\longrightarrow\operatorname{Hom}_U(E_U,F_U)\oplus\operatorname{Hom}_V(E_V,F_V)
+\longrightarrow\operatorname{Hom}_W(E_W,F_W).
+\end{aligned}$$
+The last map takes the difference of the two restrictions.
 
-Let $X$ be a scheme. The functor $\epsilon^* : D_\mathrm{QCoh}(\mathcal{O}_X) \to
-D_\mathrm{QCoh}(\mathcal{O}_\mathrm{\acute{e}tale})$ defined above is an equivalence.
+**Proof.** Apply the contravariant cohomological functor $\operatorname{Hom}_X(-,F[n])$ to the extension-by-zero triangle
+$$j_{W!}E_W\longrightarrow j_{U!}E_U\oplus j_{V!}E_V
+\longrightarrow E\longrightarrow j_{W!}E_W[1].$$
+The [derived adjunction](#native-sites-cohomology-lemma-adjoint-lower-shriek-restrict) identifies each term involving $j_{Q!}E_Q$ with $\operatorname{Hom}_Q(E_Q,F_Q[n])$, for $Q=U,V,W$. The signs in the triangle give the difference map. The same argument for every $n\in\mathbf Z$ gives the full sequence, including the negative-degree term displayed above. $\square$
 
-**Proof.** We will prove this by showing the functor $R\epsilon_* : D(\mathcal{O}_\mathrm{\acute{e}tale}) \to D(\mathcal{O}_X)$ induces a quasi-inverse. We will use freely that $\epsilon_*$ is given by restriction to $X_{Zar} \subset X_\mathrm{\acute{e}tale}$ and the description of $\epsilon^* = \text{id}_{small, \mathrm{\acute{e}tale}, Zar}^*$ in Descent, Lemma [Comparison for sheaves on ringed sites](#native-descent-lemma-compare-sites).
+#### Lemma. Comparing quasi-coherent derived categories
 
-For a quasi-coherent $\mathcal{O}_X$-module $\mathcal{F}$ the adjunction map $\mathcal{F} \to \epsilon_*\epsilon^*\mathcal{F}$ is an isomorphism by the fact that $\mathcal{F}^a$ (Descent, Definition [The structure sheaf on the descent site](#native-descent-definition-structure-sheaf)) is a sheaf as proved in Descent, Lemma [Sheaves on ringed sites](#native-descent-lemma-sheaf-condition-holds). Conversely, every quasi-coherent $\mathcal{O}_\mathrm{\acute{e}tale}$-module $\mathcal{H}$ is of the form $\epsilon^*\mathcal{F}$ for some quasi-coherent $\mathcal{O}_X$-module $\mathcal{F}$, see Descent, Proposition [Quasi-coherent complexes and coherent sheaves](#native-descent-proposition-equivalence-quasi-coherent). Then $\mathcal{F} = \epsilon_*\mathcal{H}$ by what we just said and we conclude that the adjunction map $\epsilon^*\epsilon_*\mathcal{H} \to \mathcal{H}$ is an isomorphism for all quasi-coherent $\mathcal{O}_\mathrm{\acute{e}tale}$-modules $\mathcal{H}$.
+For a scheme $X$, let $\epsilon:X_{\mathrm{\acute et}}\to X_{\mathrm{Zar}}$ be the canonical morphism of ringed sites. Pullback gives an equivalence
+$$\epsilon^*:D_{\mathrm{QCoh}}(\mathcal O_X)
+\longrightarrow D_{\mathrm{QCoh}}(\mathcal O_{X_{\mathrm{\acute et}}}),$$
+with quasi-inverse $R\epsilon_*$.
 
-Let $E$ be an object of $D_\mathrm{QCoh}(\mathcal{O}_\mathrm{\acute{e}tale})$ and denote $\mathcal{H}^q = H^q(E)$ its $q$th cohomology sheaf. Let $\mathcal{B}$ be the set of affine objects of $X_\mathrm{\acute{e}tale}$. Then $H^p(U, \mathcal{H}^q) = 0$ for all $p > 0$, all $q \in \mathbf{Z}$, and all $U \in \mathcal{B}$, see Descent, Proposition [Quasi-coherent complexes and sheaf cohomology](#native-descent-proposition-same-cohomology-quasi-coherent) and Cohomology of Schemes, Lemma [Quasi-coherent complexes and sheaf cohomology (uncovered prerequisite)](#uncovered-coherent-lemma-quasi-coherent-affine-cohomology-zero). By Cohomology on Sites, Lemma [Sheaf cohomology](#native-sites-cohomology-lemma-cohomology-over-u-trivial) this means that $$H^q(U, E) = H^0(U, \mathcal{H}^q)$$ for all $U \in \mathcal{B}$. In particular, we find that this holds for affine opens $U \subset X$. It follows that the $q$th cohomology of $R\epsilon_*E$ over $U$ is the value of the sheaf $\epsilon_*\mathcal{H}^q$ over $U$. Applying sheafification we obtain $$H^q(R\epsilon_*E) = \epsilon_*\mathcal{H}^q$$ which in particular shows that $R\epsilon_*$ induces a functor $D_\mathrm{QCoh}(\mathcal{O}_\mathrm{\acute{e}tale}) \to D_\mathrm{QCoh}(\mathcal{O}_X)$. Since $\epsilon^*$ is exact we then obtain $H^q(\epsilon^*R\epsilon_*E) = \epsilon^*\epsilon_*\mathcal{H}^q =
-\mathcal{H}^q$ (by discussion above). Thus the adjunction map $\epsilon^*R\epsilon_*E \to E$ is an isomorphism.
+**Proof.** At the level of quasi-coherent sheaves, the usual associated étale sheaf construction and restriction to Zariski opens are inverse. More explicitly, $M\to\epsilon_*\epsilon^*M$ is the sheaf-condition isomorphism for a quasi-coherent Zariski module, and every quasi-coherent étale module $N$ comes from such an $M$ by [quasi-coherent descent](#native-descent-proposition-equivalence-quasi-coherent). Hence $\epsilon^*\epsilon_*N\to N$ is also an isomorphism.
 
-Conversely, for $F \in D_\mathrm{QCoh}(\mathcal{O}_X)$ the adjunction map $F \to R\epsilon_*\epsilon^*F$ is an isomorphism for the same reason, i.e., because the cohomology sheaves of $R\epsilon_*\epsilon^*F$ are isomorphic to $\epsilon_*H^m(\epsilon^*F) = \epsilon_*\epsilon^*H^m(F) = H^m(F)$. $\square$
+Let $E$ be any object with quasi-coherent cohomology on the étale site; no bound on its degrees is imposed. Quasi-coherent sheaves are acyclic on affine étale objects. The [acyclic-cohomology comparison](#native-sites-cohomology-lemma-cohomology-over-u-trivial) therefore gives
+$$H^q(V,E)=\Gamma(V,H^q(E))$$
+on every such affine $V$. In particular it holds for affine Zariski opens. Since $\epsilon_*$ is restriction to those opens, sheafifying this calculation gives the natural identity
+$$H^q(R\epsilon_*E)=\epsilon_*H^q(E).$$
+Thus $R\epsilon_*E$ has quasi-coherent cohomology. Exactness of $\epsilon^*$ and the sheaf-level counit identify the cohomology of $\epsilon^*R\epsilon_*E\to E$ with an isomorphism in every degree. The counit is therefore an isomorphism in the derived category.
 
-#### Lemma. Descent of pseudo-coherent complexes and coherent sheaves
- Let $X$ be a scheme. Let $E$ be an object of $D(\mathcal{O}_X)$. The following are equivalent
+For $F\in D_{\mathrm{QCoh}}(\mathcal O_X)$ the same calculation, now applied to $\epsilon^*F$, identifies the cohomology of the unit with
+$$H^q(F)\longrightarrow\epsilon_*\epsilon^*H^q(F),$$
+again an isomorphism. Both adjunction maps are isomorphisms, proving the asserted equivalence for the full unbounded categories. $\square$
 
-1.  $E$ is $m$-pseudo-coherent, and
+#### Lemma. Pseudo-coherence under the comparison of sites
 
-2.  $\epsilon^*E$ is $m$-pseudo-coherent on the small étale site of $X$.
+For a scheme $X$, any $E\in D(\mathcal O_X)$ and any integer $m$, the object $E$ is $m$-pseudo-coherent exactly when $\epsilon^*E$ is $m$-pseudo-coherent on $X_{\mathrm{\acute et}}$.
 
-Here $\epsilon$ is as in ([Derived quasi-coherent complexes](#context-spaces-perfect-equation-epsilon)).
+**Proof.** A local strictly perfect approximation pulls back to a strictly perfect approximation with the same degree bounds, since $\epsilon^*$ is exact. This proves one implication.
 
-**Proof.** The implication (1) $\Rightarrow$ (2) is a general fact, see Cohomology on Sites, Lemma [Pseudo-coherent complexes and coherent sheaves](#native-sites-cohomology-lemma-pseudo-coherent-pullback). Assume $\epsilon^*E$ is $m$-pseudo-coherent. We will use without further mention that $\epsilon^*$ is an exact functor and that therefore $$\epsilon^*H^i(E) = H^i(\epsilon^*E).$$ To show that $E$ is $m$-pseudo-coherent we may work locally on $X$, hence we may assume that $X$ is quasi-compact (for example affine). Since $X$ is quasi-compact every étale covering $\{U_i \to X\}$ has a finite refinement. Thus we see that $\epsilon^*E$ is an object of $D^{-}(\mathcal{O}_\mathrm{\acute{e}tale})$, see comments following Cohomology on Sites, Definition [Pseudo-coherent complexes](#native-sites-cohomology-definition-pseudo-coherent). By Lemma [Flatness](#native-spaces-perfect-lemma-epsilon-flat) it follows that $E$ is an object of $D^-(\mathcal{O}_X)$.
+For the converse work Zariski locally, so that $X$ is quasi-compact. A finite refinement of an étale cover carrying perfect approximations gives a common upper bound for the cohomology of $\epsilon^*E$. The [faithfulness and exactness of pullback](#native-spaces-perfect-lemma-epsilon-flat) give the same bound for $E$. If $H^i(E)=0$ for all $i\geq m$, the zero complex is already an $m$-approximation. Otherwise let $n\geq m$ be the highest nonzero degree, and induct on $n-m+1$.
 
-Let $n \in \mathbf{Z}$ be the largest integer such that $H^n(E)$ is nonzero; then $n$ is also the largest integer such that $H^n(\epsilon^*E)$ is nonzero. We will prove the lemma by induction on $n - m$. If $n < m$, then the lemma is clearly true. If $n \geq m$, then $H^n(\epsilon^*E)$ is a finite $\mathcal{O}_\mathrm{\acute{e}tale}$-module, see Cohomology on Sites, Lemma [Finiteness of cohomology groups](#native-sites-cohomology-lemma-finite-cohomology). Hence $H^n(E)$ is a finite $\mathcal{O}_X$-module, see Lemma [Descent of finite algebras](#native-spaces-perfect-lemma-descend-finite-type). After replacing $X$ by the members of an open covering, we may assume there exists a surjection $\mathcal{O}_X^{\oplus t} \to H^n(E)$. We may locally on $X$ lift this to a map of complexes $\alpha : \mathcal{O}_X^{\oplus t}[-n] \to E$ (details omitted). Choose a distinguished triangle $$\mathcal{O}_X^{\oplus t}[-n] \to E \to C \to \mathcal{O}_X^{\oplus t}[-n + 1]$$ Then $C$ has vanishing cohomology in degrees $\geq n$. On the other hand, the complex $\epsilon^*C$ is $m$-pseudo-coherent, see Cohomology on Sites, Lemma [Pseudo-coherent complexes and coherent sheaves](#native-sites-cohomology-lemma-cone-pseudo-coherent). Hence by induction we see that $C$ is $m$-pseudo-coherent. Applying Cohomology on Sites, Lemma [Pseudo-coherent complexes and coherent sheaves](#native-sites-cohomology-lemma-cone-pseudo-coherent) once more we conclude. $\square$
+The top cohomology of the $m$-pseudo-coherent $\epsilon^*E$ is finite type. To see this directly, take a finite perfect approximation and locally split off its acyclic terms above $n$; the degree-$n$ cohomology is then a quotient of a finite module. By [finite-type descent](#native-spaces-perfect-lemma-descend-finite-type), $H^n(E)$ is finite type. Zariski locally choose finitely many generators, and represent $E$ by a complex. The sheaf epimorphism from degree-$n$ cycles to $H^n(E)$ lets us lift those finitely many generators to cycles after refining the open cover. Sending the standard basis to these cycles gives an actual chain map
+$$\mathcal O_X^{\oplus d}[-n]\longrightarrow E.$$
+Let $C$ be its cone. Its cohomology vanishes in degrees at least $n$. The pseudo-coherent triangle criterion, applied after exact pullback, shows that $\epsilon^*C$ is $m$-pseudo-coherent. Induction makes $C$ $m$-pseudo-coherent on the Zariski site. The same triangle criterion, now before pullback, gives this property for $E$, since the finite free source is perfect. The induction includes the case $C=0$. No quasi-coherence of $E$ was assumed. $\square$
 
-#### Lemma. Flatness
- The morphism $\epsilon$ of ([Derived quasi-coherent complexes](#context-spaces-perfect-equation-epsilon)) is a flat morphism of ringed sites. In particular the functor $\epsilon^* : \textit{Mod}(\mathcal{O}_X) \to
-\textit{Mod}(\mathcal{O}_\mathrm{\acute{e}tale})$ is exact. Moreover, if $\epsilon^*\mathcal{F} = 0$, then $\mathcal{F} = 0$.
+#### Lemma. Exactness and faithfulness of étale pullback
 
-**Proof.** The flatness of the morphism $\epsilon$ is Descent, Lemma [Comparison for étale morphisms and flatness](#native-descent-lemma-compare-etale-zariski-flat). Here is another proof. We have to show that $\mathcal{O}_\mathrm{\acute{e}tale}$ is a flat $\epsilon^{-1}\mathcal{O}_X$-module. To do this it suffices to check $\mathcal{O}_{X, x} \to \mathcal{O}_{\mathrm{\acute{e}tale}, \overline{x}}$ is flat for any geometric point $\overline{x}$ of $X$, see Modules on Sites, Lemma [Testing flatness at stalks](#native-sites-modules-lemma-check-flat-stalks), Sites, Lemma [Sheaves on ringed sites (uncovered prerequisite)](#uncovered-sites-lemma-point-morphism-sites), and Étale Cohomology, Remarks [The geometric construction](#context-etale-cohomology-remarks-enough-points). By Étale Cohomology, Lemma [Étale morphisms and local algebra (uncovered prerequisite)](#uncovered-etale-cohomology-lemma-describe-etale-local-ring) we see that $\mathcal{O}_{\mathrm{\acute{e}tale}, \overline{x}}$ is the strict henselization of $\mathcal{O}_{X, x}$. Thus $\mathcal{O}_{X, x} \to \mathcal{O}_{\mathrm{\acute{e}tale}, \overline{x}}$ is faithfully flat by More on Algebra, Lemma Henselian local rings and henselization, Sections 4 and 6, Proposition 6.1.
+The comparison $\epsilon:X_{\mathrm{\acute et}}\to X_{\mathrm{Zar}}$ for a scheme $X$ is flat as a morphism of ringed sites. Its module pullback is exact and detects zero modules.
 
-The exactness of $\epsilon^*$ follows from the flatness of $\epsilon$ by Modules on Sites, Lemma [Exactness of flat pullback](#native-sites-modules-lemma-flat-pullback-exact).
+**First flatness proof.** The inverse-image structure sheaf is the sheafification of the presheaf which assigns to an étale $f:V\to X$ the ring $\mathcal O_X(f(V))$. When both $V$ and its open image are affine, the structure map to $\mathcal O_V(V)$ is an étale, hence flat, ring map. Such objects cover the small étale site. Indeed, near a point choose an affine $V'$ mapping into an affine open $A\subset X$, then choose an affine neighbourhood $B$ of its image point inside the open $f(V')$. The preimage $V'\times_A B$ is affine and has image $B$. The [flatness argument under sheafification](#native-descent-lemma-compare-etale-zariski-flat) therefore proves that $\mathcal O_{X_{\mathrm{\acute et}}}$ is flat over $\epsilon^{-1}\mathcal O_X$.
 
-Let $\mathcal{F}$ be an $\mathcal{O}_X$-module. If $\epsilon^*\mathcal{F} = 0$, then with notation as above $$0 = \epsilon^*\mathcal{F}_{\overline{x}} =
-\mathcal{F}_x \otimes_{\mathcal{O}_{X, x}} \mathcal{O}_{\mathrm{\acute{e}tale}, \overline{x}}$$ (Modules on Sites, Lemma [Stalks of a pullback](#native-sites-modules-lemma-pullback-stalk)) for all geometric points $\overline{x}$. By faithful flatness of $\mathcal{O}_{X, x} \to \mathcal{O}_{\mathrm{\acute{e}tale}, \overline{x}}$ we conclude $\mathcal{F}_x = 0$ for all $x \in X$. $\square$
+**Stalk proof and faithfulness.** At a geometric point $\bar x$ over $x$, the structure-ring map is
+$$\mathcal O_{X,x}\longrightarrow\mathcal O_{X_{\mathrm{\acute et}},\bar x}
+\simeq\mathcal O_{X,x}^{\mathrm{sh}}.$$
+The target is the strict henselization, a faithfully flat local extension. Geometric points detect exactness on the étale site, so these flat stalk maps give another proof of flatness and exactness of $\epsilon^*$. Moreover, for any Zariski module $M$,
+$$(\epsilon^*M)_{\bar x}=M_x\otimes_{\mathcal O_{X,x}}\mathcal O_{X,x}^{\mathrm{sh}}.$$
+If $\epsilon^*M=0$, faithful flatness forces every $M_x$ to vanish. Thus $M=0$. This also shows that cohomological vanishing and support can be checked after this pullback. $\square$
 
-#### Lemma. Descent of perfect complexes
- Let $X$ be a scheme. Let $E$ be an object of $D(\mathcal{O}_X)$. Then $E$ is a perfect object of $D(\mathcal{O}_X)$ if and only if $\epsilon^*E$ is a perfect object of $D(\mathcal{O}_\mathrm{\acute{e}tale})$. Here $\epsilon$ is as in ([Derived quasi-coherent complexes](#context-spaces-perfect-equation-epsilon)).
+#### Lemma. Perfection under the comparison of sites
 
-**Proof.** The easy implication follows from the general result contained in Cohomology on Sites, Lemma [Perfect complexes](#native-sites-cohomology-lemma-perfect-pullback). For the converse, we can use the equivalence of Cohomology on Sites, Lemma [Perfect complexes](#native-sites-cohomology-lemma-perfect) and the corresponding results for pseudo-coherent and complexes of finite tor dimension, namely Lemmas [Descent of pseudo-coherent complexes and coherent sheaves](#native-spaces-perfect-lemma-descend-pseudo-coherent) and [Descent of derived tensor products and Tor amplitude](#native-spaces-perfect-lemma-descend-tor-amplitude). Some details omitted. $\square$
+For any $E\in D(\mathcal O_X)$ on a scheme $X$, perfection of $E$ is equivalent to perfection of $\epsilon^*E$ on the small étale site.
 
-#### Remark. Derived quasi-coherent complexes
+**Proof.** A strictly perfect local representative remains strictly perfect after pullback, giving the forward implication. Conversely, the pseudo-coherence comparison gives that $E$ is $m$-pseudo-coherent for every $m$. To descend local finite Tor dimension, work on an affine Zariski open. Choose finitely many étale neighbourhoods covering it on which $\epsilon^*E$ is strictly perfect. The smallest lower and largest upper degree of these finitely many representatives give one interval $[a,b]$ for its Tor amplitude over this open. The [Tor-amplitude comparison](#native-spaces-perfect-lemma-descend-tor-amplitude) gives the same interval for $E$. Hence $E$ is pseudo-coherent with locally finite Tor dimension. The [perfect-complex criterion](#native-sites-cohomology-lemma-perfect) makes it perfect. This verifies the converse locally and therefore globally, without adding a quasi-coherence hypothesis. $\square$
 
-Let $S$ be a scheme. Let $f : X \to Y$ be a morphism of representable algebraic spaces $X$ and $Y$ over $S$. Let $f_0 : X_0 \to Y_0$ be a morphism of schemes representing $f$ (awkward but temporary notation). Then the diagram 
+#### Remark. Compatibility of the comparisons with derived functors
 
-\[
-\begin{gathered}\begin{matrix}D_\mathrm{QCoh}(\mathcal{O}_{X_0}) & \phantom{X} & \phantom{X} & \phantom{X} & \phantom{X} & \phantom{X} & D_\mathrm{QCoh}(\mathcal{O}_X) \\ D_\mathrm{QCoh}(\mathcal{O}_{Y_0}) & \phantom{X} & \phantom{X} & \phantom{X} & \phantom{X} & \phantom{X} & D_\mathrm{QCoh}(\mathcal{O}_Y)\end{matrix} \\[6pt] \begin{aligned}D_\mathrm{QCoh}(\mathcal{O}_{X_0}) & \overset{\text{Lemma Étale morphisms and quasi-coherent complexes}}{\mathrel{=}} D_\mathrm{QCoh}(\mathcal{O}_X) \\ D_\mathrm{QCoh}(\mathcal{O}_{Y_0}) & \xrightarrow{Lf^*_0} D_\mathrm{QCoh}(\mathcal{O}_{X_0}) \\ D_\mathrm{QCoh}(\mathcal{O}_{Y_0}) & \overset{\text{Lemma Étale morphisms and quasi-coherent complexes}}{\mathrel{=}} D_\mathrm{QCoh}(\mathcal{O}_Y) \\ D_\mathrm{QCoh}(\mathcal{O}_Y) & \xrightarrow{Lf^*} D_\mathrm{QCoh}(\mathcal{O}_X)\end{aligned}\end{gathered}
-\]
+Let $f:X\to Y$ be a morphism of representable algebraic spaces over a scheme $S$, represented by $f_0:X_0\to Y_0$. Denote the étale-to-Zariski comparisons by $\epsilon_X,\epsilon_Y$. On quasi-coherent derived categories the natural isomorphism
+$$\epsilon_X^*Lf_0^*\simeq Lf^*\epsilon_Y^*$$
+identifies the two pullback functors under the preceding equivalences. In diagram form, with the vertical arrows now pointing toward the source of $f$,
+$$\begin{array}{ccc}
+D_{\mathrm{QCoh}}(\mathcal O_{X_0})&\xrightarrow{\ \epsilon_X^*\ }&D_{\mathrm{QCoh}}(\mathcal O_X)\\
+\uparrow{\scriptstyle Lf_0^*}&&\uparrow{\scriptstyle Lf^*}\\
+D_{\mathrm{QCoh}}(\mathcal O_{Y_0})&\xrightarrow{\ \epsilon_Y^*\ }&D_{\mathrm{QCoh}}(\mathcal O_Y).
+\end{array}$$
+If $f$ is quasi-compact and quasi-separated, equivalently if $f_0$ is, direct images also preserve these categories and the corresponding isomorphism is
+$$Rf_*\epsilon_X^*\simeq\epsilon_Y^*Rf_{0*}.$$
 
- (Lemma [Quasi-coherent complexes and coherent sheaves](#native-spaces-perfect-lemma-quasi-coherence-pullback) and Derived Categories of Schemes, Lemma [Quasi-coherent complexes and coherent sheaves](#native-perfect-lemma-quasi-coherence-pullback)) is commutative. This follows as the equivalences $D_\mathrm{QCoh}(\mathcal{O}_{X_0}) \to D_\mathrm{QCoh}(\mathcal{O}_X)$ and $D_\mathrm{QCoh}(\mathcal{O}_{Y_0}) \to D_\mathrm{QCoh}(\mathcal{O}_Y)$ of Lemma [Étale morphisms and quasi-coherent complexes](#native-spaces-perfect-lemma-derived-quasi-coherent-small-etale-site) come from pulling back by the (flat) morphisms of ringed sites $\epsilon : X_\mathrm{\acute{e}tale} \to X_{0, Zar}$ and $\epsilon : Y_\mathrm{\acute{e}tale} \to Y_{0, Zar}$ and the diagram of ringed sites $$\begin{gathered}\begin{matrix}X_{0, Zar} & X_\mathrm{\acute{e}tale} \\ Y_{0, Zar} & Y_\mathrm{\acute{e}tale}\end{matrix} \\[6pt] \begin{aligned}X_{0, Zar} & \xrightarrow{f_0} Y_{0, Zar} \\ X_\mathrm{\acute{e}tale} & \xrightarrow{\epsilon} X_{0, Zar} \\ X_\mathrm{\acute{e}tale} & \xrightarrow{f} Y_\mathrm{\acute{e}tale} \\ Y_\mathrm{\acute{e}tale} & \xrightarrow{\epsilon} Y_{0, Zar}\end{aligned}\end{gathered}$$ is commutative (details omitted). If $f$ is quasi-compact and quasi-separated, equivalently if $f_0$ is quasi-compact and quasi-separated, then we claim 
-
-\[
-\begin{gathered}\begin{matrix}D_\mathrm{QCoh}(\mathcal{O}_{X_0}) & \phantom{X} & \phantom{X} & \phantom{X} & \phantom{X} & \phantom{X} & D_\mathrm{QCoh}(\mathcal{O}_X) \\ D_\mathrm{QCoh}(\mathcal{O}_{Y_0}) & \phantom{X} & \phantom{X} & \phantom{X} & \phantom{X} & \phantom{X} & D_\mathrm{QCoh}(\mathcal{O}_Y)\end{matrix} \\[6pt] \begin{aligned}D_\mathrm{QCoh}(\mathcal{O}_{X_0}) & \xrightarrow{Rf_{0, *}} D_\mathrm{QCoh}(\mathcal{O}_{Y_0}) \\ D_\mathrm{QCoh}(\mathcal{O}_{X_0}) & \overset{\text{Lemma Étale morphisms and quasi-coherent complexes}}{\mathrel{=}} D_\mathrm{QCoh}(\mathcal{O}_X) \\ D_\mathrm{QCoh}(\mathcal{O}_X) & \xrightarrow{Rf_*} D_\mathrm{QCoh}(\mathcal{O}_Y) \\ D_\mathrm{QCoh}(\mathcal{O}_{Y_0}) & \overset{\text{Lemma Étale morphisms and quasi-coherent complexes}}{\mathrel{=}} D_\mathrm{QCoh}(\mathcal{O}_Y)\end{aligned}\end{gathered}
-\]
-
- (Lemma [Quasi-coherent complexes and coherent sheaves](#native-spaces-perfect-lemma-quasi-coherence-direct-image) and Derived Categories of Schemes, Lemma [Quasi-coherent complexes and coherent sheaves](#native-perfect-lemma-quasi-coherence-direct-image)) is commutative as well. This also follows from the commutative diagram of sites displayed above as the proof of Lemma [Étale morphisms and quasi-coherent complexes](#native-spaces-perfect-lemma-derived-quasi-coherent-small-etale-site) shows that the functor $R\epsilon_*$ gives the equivalences $D_\mathrm{QCoh}(\mathcal{O}_X) \to D_\mathrm{QCoh}(\mathcal{O}_{X_0})$ and $D_\mathrm{QCoh}(\mathcal{O}_Y) \to D_\mathrm{QCoh}(\mathcal{O}_{Y_0})$.
+To justify both assertions, the square of ringed sites is
+$$\begin{array}{ccc}
+X_{\mathrm{\acute et}}&\xrightarrow{\ \epsilon_X\ }&(X_0)_{\mathrm{Zar}}\\
+\downarrow{\scriptstyle f}&&\downarrow{\scriptstyle f_0}\\
+Y_{\mathrm{\acute et}}&\xrightarrow{\ \epsilon_Y\ }&(Y_0)_{\mathrm{Zar}}.
+\end{array}$$
+It commutes because both composites pull a Zariski open of $Y_0$ back to its inverse image in $X_0$, viewed étale locally, and the structure-sheaf maps agree on functions. Composition of derived pullbacks, together with flatness of the two $\epsilon$'s, gives the first formula. For the second, the right adjoints to these pullbacks commute as well:
+$$R\epsilon_{Y*}Rf_*\simeq Rf_{0*}R\epsilon_{X*}.$$
+Use the quasi-compact, quasi-separated direct-image theorems for schemes and algebraic spaces to restrict to quasi-coherent cohomology, then use $R\epsilon_*$ as the inverse equivalence. This gives the displayed direct-image formula and, equivalently, the commutative square with vertical arrows $Rf_{0*}$ and $Rf_*$. It also identifies the adjunction maps, as required when transporting restrictions and gluing maps.
 
 #### Lemma. Tensor products and direct sums
  Let $S$ be a scheme. Let $X$ be a quasi-compact and quasi-separated algebraic space over $S$. Let $W$ be a quasi-compact open subspace of $X$. Let $P$ be a perfect object of $D(\mathcal{O}_W)$. Then $P$ is a direct summand of the restriction of a perfect object of $D(\mathcal{O}_X)$.
@@ -10470,35 +10557,24 @@ Let $S$ be a scheme. Let $X$ be an affine algebraic space over $S$. Set $A = \Ga
 
 **Proof.** Let $X_0 = \operatorname{Spec}(A)$ be the affine scheme representing $X$. Recall that there is a morphism of ringed sites $\epsilon : X_\mathrm{\acute{e}tale} \to X_{0, Zar}$ which induces equivalences $$\begin{gathered}\begin{matrix}\mathrm{QCoh}(\mathcal{O}_X) & \mathrm{QCoh}(\mathcal{O}_{X_0})\end{matrix} \\[6pt] \begin{aligned}\mathrm{QCoh}(\mathcal{O}_X) & \xrightarrow{{\epsilon_*}} \mathrm{QCoh}(\mathcal{O}_{X_0}) \\ \mathrm{QCoh}(\mathcal{O}_{X_0}) & \xrightarrow{{\epsilon^*}} \mathrm{QCoh}(\mathcal{O}_X)\end{aligned}\end{gathered}$$ see Lemma [Étale morphisms and quasi-coherent complexes](#native-spaces-perfect-lemma-derived-quasi-coherent-small-etale-site). Hence we see that $Q_X = \epsilon^* \circ Q_{X_0} \circ \epsilon_*$ by uniqueness of adjoint functors. Hence (1) follows from the description of $Q_{X_0}$ in Derived Categories of Schemes, Lemma [Derived tensor products, Tor amplitude and affine neighbourhoods](#native-perfect-lemma-affine-coherator) and the fact that $\Gamma(X_0, \epsilon_*\mathcal{F}) = \Gamma(X, \mathcal{F})$. Part (2) follows from (1) and the fact that the functor from $A$-modules to quasi-coherent $\mathcal{O}_X$-modules is exact. The third assertion now follows from the result for schemes (Derived Categories of Schemes, Lemma [Derived tensor products, Tor amplitude and affine neighbourhoods](#native-perfect-lemma-affine-coherator)) and Lemma [Étale morphisms and quasi-coherent complexes](#native-spaces-perfect-lemma-derived-quasi-coherent-small-etale-site). $\square$
 
-#### Lemma. Derived quasi-coherent complexes
- Let $S$ be a scheme. Let $(U \subset X, V \to X)$ be an elementary distinguished square of algebraic spaces over $S$.
+#### Lemma. Mayer–Vietoris for direct images
 
-1.  For every sheaf of $\mathcal{O}_X$-modules $\mathcal{F}$ we have a short exact sequence $$0 \to \mathcal{F} \to
-    j_{U, *}\mathcal{F}|_U \oplus j_{V, *}\mathcal{F}|_V \to
-    j_{U \times_X V, *}\mathcal{F}|_{U \times_X V} \to 0$$
+For an elementary distinguished square $(U\subset X,V\to X)$ of algebraic spaces over a scheme $S$, put $W=U\times_XV$, and denote its three maps to $X$ by $j_U,j_V,j_W$. A sheaf $M$ of $\mathcal O_X$-modules fits into the exact sequence
+$$0\longrightarrow M\longrightarrow j_{U*}M|_U\oplus j_{V*}M|_V
+\xrightarrow{\ \rho_U-\rho_V\ }j_{W*}M|_W\longrightarrow0.$$
+For every $E\in D(\mathcal O_X)$, the corresponding derived statement is the distinguished triangle
+$$E\longrightarrow Rj_{U*}E|_U\oplus Rj_{V*}E|_V
+\longrightarrow Rj_{W*}E|_W\longrightarrow E[1].$$
 
-2.  For any object $E$ of $D(\mathcal{O}_X)$ we have a distinguished triangle $$E \to 
-    Rj_{U, *}E|_U \oplus Rj_{V, *}E|_V \to
-    Rj_{U \times_X V, *}E|_{U \times_X V} \to
-    E[1]$$ in $D(\mathcal{O}_X)$.
+**Proof.** Apply $\operatorname{Hom}_{\mathcal O_X}(-,M)$ to the [extension-by-zero exact sequence](#native-spaces-perfect-lemma-exact-sequence-lower-shriek) for $\mathcal O_X$. Adjunction gives exactness of
+$$0\longrightarrow M(X)\longrightarrow M(U)\oplus M(V)
+\longrightarrow M(W).$$
+The obstruction to lifting a section of $M(W)$ to the middle term is its connecting class in $\operatorname{Ext}^1_{\mathcal O_X}(\mathcal O_X,M)=H^1(X,M)$. Such a class vanishes on an étale cover: in an injective resolution of $M$, a positive-degree cocycle is locally a boundary because the resolution is exact as a complex of sheaves in that degree. Thus the last arrow is surjective as a sheaf map. To establish the same statements over any étale object $X'\to X$, repeat this argument on the base-changed distinguished square. This proves the asserted sequence of sheaves, not merely exactness on global sections.
 
-**Proof.** Let $W$ be an object of $X_\mathrm{\acute{e}tale}$. We claim the sequence $$0 \to
-\mathcal{F}(W) \to
-\mathcal{F}(W \times_X U) \oplus \mathcal{F}(W \times_X V) \to
-\mathcal{F}(W \times_X U \times_X V)$$ is exact and that an element of the last group can locally on $W$ be lifted to the middle one. By Lemma [Derived quasi-coherent complexes](#native-spaces-perfect-lemma-make-more-elementary-distinguished-squares) the pair $(W \times_X U \subset W, V \times_X W \to W)$ is an elementary distinguished square. Thus we may assume $W = X$ and it suffices to prove the same thing for $$0 \to
-\mathcal{F}(X) \to
-\mathcal{F}(U) \oplus \mathcal{F}(V) \to
-\mathcal{F}(U \times_X V)$$ We have seen that $$0 \to j_{U \times_X V!}\mathcal{O}_{U \times_X V}
-\to j_{U!}\mathcal{O}_U \oplus
-j_{V!}\mathcal{O}_V \to
-\mathcal{O}_X \to 0$$ is a exact sequence of $\mathcal{O}_X$-modules in Lemma [Derived quasi-coherent complexes](#native-spaces-perfect-lemma-exact-sequence-lower-shriek) and applying the left exact functor $\operatorname{Hom}_{\mathcal{O}_X}(- , \mathcal{F})$ gives the sequence above. This also means that the obstruction to lifting $s \in \mathcal{F}(U \times_X V)$ to an element of $\mathcal{F}(U) \oplus \mathcal{F}(V)$ lies in $\operatorname{Ext}^1_{\mathcal{O}_X}(\mathcal{O}_X, \mathcal{F}) =
-H^1(X, \mathcal{F})$. By locality of cohomology (Cohomology on Sites, Lemma [Sheaf cohomology](#native-sites-cohomology-lemma-kill-cohomology-class-on-covering)) this obstruction vanishes étale locally on $X$ and the proof of (1) is complete.
-
-Proof of (2). Choose a K-injective complex $\mathcal{I}^\bullet$ representing $E$ whose terms $\mathcal{I}^n$ are injective objects of $\textit{Mod}(\mathcal{O}_X)$, see Injectives, Theorem [Injective resolutions (uncovered prerequisite)](#uncovered-injectives-theorem-k-injective-embedding-grothendieck). Then $\mathcal{I}^\bullet|U$ is a K-injective complex (Cohomology on Sites, Lemma [Injective resolutions](#native-sites-cohomology-lemma-restrict-k-injective-to-open)). Hence $Rj_{U, *}E|_U$ is represented by $j_{U, *}\mathcal{I}^\bullet|_U$. Similarly for $V$ and $U \times_X V$. Hence the distinguished triangle of the lemma is the distinguished triangle associated (by Derived Categories, Section [Derived tensor products and Tor amplitude](#context-derived-section-canonical-delta-functor) and especially Lemma [Derived tensor products, Tor amplitude and derived categories](#native-derived-lemma-derived-canonical-delta-functor)) to the short exact sequence of complexes $$0 \to
-\mathcal{I}^\bullet \to
-j_{U, *}\mathcal{I}^\bullet|_U \oplus j_{V, *}\mathcal{I}^\bullet|_V \to
-j_{U \times_X V, *}\mathcal{I}^\bullet|_{U \times_X V} \to
-0.$$ This sequence is exact by (1). $\square$
+Represent an arbitrary, possibly unbounded, $E$ by a K-injective complex $I$ with injective terms. Each of $I|_U,I|_V,I|_W$ is K-injective by the localization lemma. Applying the sheaf sequence degreewise therefore gives a short exact sequence of complexes
+$$0\longrightarrow I\longrightarrow j_{U*}I|_U\oplus j_{V*}I|_V
+\longrightarrow j_{W*}I|_W\longrightarrow0.$$
+Its standard triangle computes the three derived images and yields the claimed triangle. The degreewise construction also gives its naturality. $\square$
 
 #### Lemma. Quasi-coherent complexes and coherent sheaves
  Let $S$ be a scheme. Let $X$ be an algebraic space over $S$. Then $D_\mathrm{QCoh}(\mathcal{O}_X)$ has direct sums.
@@ -10788,73 +10864,57 @@ One can realize this limit by a K-injective complex directly. Resolve each bound
 
 Let $f:X\to Y$ be locally of finite type between algebraic spaces over a scheme $S$, and let $T\subseteq|X|$ be closed. We say that $T$ is *proper over $Y$* when its reduced induced closed subspace is proper over $Y$. Equivalently, some closed subspace of $X$ with underlying set $T$ is proper over $Y$; equivalently, every such closed-subspace structure is proper over $Y$. These are the equivalent conditions of the [closed-support properness lemma](#native-spaces-perfect-lemma-closed-proper-over-base).
 
-#### Lemma. Proper morphisms
- Let $S$ be a scheme. Let $f : X \to Y$ be a morphism of algebraic spaces over $S$ which is locally of finite type. Let $T' \subset T \subset |X|$ be closed subsets. If $T$ is proper over $Y$, then the same is true for $T'$.
+#### Lemma. Closed subsets of proper support
 
-**Proof.** Omitted. $\square$
+Let $f:X\to Y$ be locally of finite type between algebraic spaces over a scheme $S$. If $T'\subset T\subset|X|$ are closed and $T$ is proper over $Y$, then $T'$ is proper over $Y$ as well.
 
-#### Lemma. Derived quasi-coherent complexes
- Let $S$ be a scheme. Let $(U \subset X, V \to X)$ be an elementary distinguished square of algebraic spaces over $S$.
+**Proof.** Choose a closed subspace $Z\subset X$ with underlying space $T$ which is proper over $Y$, as allowed by the [definition of proper closed support](#native-spaces-perfect-lemma-closed-proper-over-base). Inside $Z$, the reduced closed subspace with support $T'$ is proper over $Y$: its map to $Z$ is a closed immersion, and proper maps are closed under composition. It is also a closed subspace of $X$. The same definition now proves properness of the subset $T'$. $\square$
 
-1.  For a sheaf of $\mathcal{O}_X$-modules $\mathcal{F}$ we have a short exact sequence $$0 \to j_{U \times_X V!}\mathcal{F}|_{U \times_X V} \to
-    j_{U!}\mathcal{F}|_U \oplus j_{V!}\mathcal{F}|_V \to \mathcal{F} \to 0$$
+#### Lemma. Mayer–Vietoris for extension by zero
 
-2.  For an object $E$ of $D(\mathcal{O}_X)$ we have a distinguished triangle $$j_{U \times_X V!}E|_{U \times_X V} \to
-    j_{U!}E|_U \oplus j_{V!}E|_V \to E \to 
-    j_{U \times_X V!}E|_{U \times_X V}[1]$$ in $D(\mathcal{O}_X)$.
+Let $(U\subset X,V\to X)$ be an elementary distinguished square of algebraic spaces over a scheme $S$, and put $W=U\times_XV$. Write $j_Q:Q\to X$ for $Q=U,V,W$. For an $\mathcal O_X$-module $M$, the counits and their difference give an exact sequence
+$$0\longrightarrow j_{W!}M|_W\longrightarrow j_{U!}M|_U\oplus j_{V!}M|_V
+\longrightarrow M\longrightarrow0.$$
+For any complex $E\in D(\mathcal O_X)$ this gives a distinguished triangle
+$$j_{W!}E|_W\longrightarrow j_{U!}E|_U\oplus j_{V!}E|_V
+\longrightarrow E\longrightarrow j_{W!}E|_W[1].$$
 
-**Proof.** To show the sequence of (1) is exact we may check on stalks at geometric points by Properties of Spaces, Theorem [Sheaves on ringed sites](#native-spaces-properties-theorem-exactness-stalks). Let $\overline{x}$ be a geometric point of $X$. By Equations ([Sheaves on ringed sites](#context-spaces-perfect-equation-stalk-restriction)) and ([Sheaves on ringed sites](#context-spaces-perfect-equation-stalk-j-shriek)) taking stalks at $\overline{x}$ we obtain the sequence $$0 \to
-\bigoplus\nolimits_{(\overline{u}, \overline{v})} \mathcal{F}_{\overline{x}}
-\to
-\bigoplus\nolimits_{\overline{u}} \mathcal{F}_{\overline{x}}
-\oplus
-\bigoplus\nolimits_{\overline{v}} \mathcal{F}_{\overline{x}}
-\to
-\mathcal{F}_{\overline{x}} \to 0$$ This sequence is exact because for every $\overline{x}$ there either is exactly one $\overline{u}$ mapping to $\overline{x}$, or there is no $\overline{u}$ and exactly one $\overline{v}$ mapping to $\overline{x}$.
+**Proof.** We spell out the stalk computation. Restriction preserves the stalk at a geometric point above $\bar x$, while the stalk of $j_{Q!}$ is the direct sum over geometric lifts of $\bar x$ to $Q$. If $\bar x$ lies in $U$, there is one lift to $U$; writing $I$ for its lifts to $V$ and $N=M_{\bar x}$, the sequence is
+$$0\longrightarrow\bigoplus_{i\in I}N
+\xrightarrow{\ z\mapsto(\sum_i z_i,-z)\ }
+N\oplus\bigoplus_{i\in I}N
+\xrightarrow{\ (a,b)\mapsto a+\sum_i b_i\ }N\longrightarrow0.$$
+Every vector has finite support, and these displayed maps immediately identify the kernel with the image. If $\bar x$ is outside $U$, it has no lift to $U$ and exactly one lift to $V$, by the reduced-complement isomorphism. The sequence there reduces to $0\to0\to N\xrightarrow{1}N\to0$. Geometric stalks detect exactness, proving the sheaf assertion.
 
-Proof of (2). We have seen in Cohomology on Sites, Section [Injective resolutions and proper morphisms](#context-sites-cohomology-section-properties-k-injective) that the restriction functors and the extension by zero functors on derived categories are computed by just applying the functor to any complex. Let $\mathcal{E}^\bullet$ be a complex of $\mathcal{O}_X$-modules representing $E$. The distinguished triangle of the lemma is the distinguished triangle associated (by Derived Categories, Section [Derived tensor products and Tor amplitude](#context-derived-section-canonical-delta-functor) and especially Lemma [Derived tensor products, Tor amplitude and derived categories](#native-derived-lemma-derived-canonical-delta-functor)) to the short exact sequence of complexes of $\mathcal{O}_X$-modules $$0 \to j_{U \times_X V!}\mathcal{E}^\bullet|_{U \times_X V} \to
-j_{U!}\mathcal{E}^\bullet|_U \oplus j_{V!}\mathcal{E}^\bullet|_V
-\to \mathcal{E}^\bullet \to 0$$ which is short exact by (1). $\square$
+Both restriction and extension by zero are exact. Apply this sheaf sequence to every term of a complex representing $E$. The resulting short exact sequence of complexes produces the stated triangle; no boundedness restriction is involved. $\square$
 
-#### Lemma. Derived quasi-coherent complexes
- Let $S$ be a scheme. Let $j : U \to X$ be a étale morphism of algebraic spaces over $S$. Given an étale morphism $V \to X$, set $W = V \times_X U$ and denote $j_W : W \to V$ the projection morphism. Then $(j_!E)|_V = j_{W!}(E|_W)$ for $E$ in $D(\mathcal{O}_U)$.
+#### Lemma. Étale restriction of extension by zero
 
-**Proof.** This is true because $(j_!\mathcal{F})|_V = j_{W!}(\mathcal{F}|_W)$ for an $\mathcal{O}_X$-module $\mathcal{F}$ as follows immediately from the construction of the functors $j_!$ and $j_{W!}$, see Modules on Sites, Lemma [The geometric construction (uncovered prerequisite)](#uncovered-sites-modules-lemma-extension-by-zero). $\square$
+Let $j:U\to X$ and $v:V\to X$ be étale morphisms of algebraic spaces over a scheme $S$. Put $W=U\times_XV$ and let $j_W:W\to V$ be the projection. For $E\in D(\mathcal O_U)$ there is a natural isomorphism
+$$(j_!E)|_V\simeq j_{W!}(E|_W).$$
 
-#### Lemma. Descent of finite algebras
- Let $X$ be a scheme. Let $\mathcal{F}$ be an $\mathcal{O}_X$-module. The following are equivalent
+**Proof.** For an $\mathcal O_U$-module $G$, evaluate the presheaf defining extension by zero on an étale object $Z\to V$. Maps $Z\to U$ over $X$ correspond exactly to maps $Z\to W$ over $V$. Under this correspondence the summands of the two presheaves and their restriction maps agree. Sheafification gives $(j_!G)|_V=j_{W!}(G|_W)$. Since all restriction and extension-by-zero functors here are exact, the same termwise identity proves the assertion for arbitrary complexes. $\square$
 
-1.  $\mathcal{F}$ is of finite type as an $\mathcal{O}_X$-module, and
+#### Lemma. Finite-type modules under the comparison of sites
 
-2.  $\epsilon^*\mathcal{F}$ is of finite type as an $\mathcal{O}_\mathrm{\acute{e}tale}$-module on the small étale site of $X$.
+For a scheme $X$ and an arbitrary $\mathcal O_X$-module $M$, the module $M$ is of finite type if and only if $\epsilon^*M$ is of finite type on the small étale site.
 
-Here $\epsilon$ is as in ([Derived quasi-coherent complexes](#context-spaces-perfect-equation-epsilon)).
+**Proof.** Pulling back finitely many local generators proves the forward implication. Conversely, fix $x\in X$ and choose an étale neighbourhood above $x$ where $\epsilon^*M$ has finitely many generating sections. By the description
+$$\epsilon^*M=\epsilon^{-1}M\otimes_{\epsilon^{-1}\mathcal O_X}\mathcal O_{X_{\mathrm{\acute et}}},$$
+these sections can, after a common refinement around a point over $x$, be written as finite sums of pulled-back sections times coefficients in the étale structure sheaf. The construction of $\epsilon^{-1}$ lets us refine once more so that the finitely many sections involved come from sections $t_1,\ldots,t_N$ of $M$ on a Zariski neighbourhood of the image. Replace that neighbourhood by the open image $A$ of the refined étale map $V\to X$; all the sections restrict to $A$.
 
-**Proof.** The implication (1) $\Rightarrow$ (2) is a general fact, see Modules on Sites, Lemma [Local pullback on a ringed site](#native-sites-modules-lemma-local-pullback). Assume (2). By assumption there exists an étale covering $\{f_i : X_i \to X\}$ such that $\epsilon^*\mathcal{F}|_{(X_i)_\mathrm{\acute{e}tale}}$ is generated by finitely many sections. Let $x \in X$. We will show that $\mathcal{F}$ is generated by finitely many sections in a neighbourhood of $x$. Say $x$ is in the image of $X_i \to X$ and denote $X' = X_i$. Let $s_1, \ldots, s_n \in
-\Gamma(X', \epsilon^*\mathcal{F}|_{X'_\mathrm{\acute{e}tale}})$ be generating sections. As $\epsilon^*\mathcal{F} =
-\epsilon^{-1}\mathcal{F} \otimes_{\epsilon^{-1}\mathcal{O}_X}
-\mathcal{O}_\mathrm{\acute{e}tale}$ we can find an étale morphism $X'' \to X'$ such that $x$ is in the image of $X'' \to X$ and such that $s_i|_{X''} = \sum s_{ij} \otimes a_{ij}$ for some sections $s_{ij} \in \epsilon^{-1}\mathcal{F}(X'')$ and $a_{ij} \in \mathcal{O}_\mathrm{\acute{e}tale}(X'')$. Denote $U \subset X$ the image of $X'' \to X$. This is an open subscheme as $f'' : X'' \to X$ is étale (Morphisms, Lemma [Étale morphisms (uncovered prerequisite)](#uncovered-morphisms-lemma-etale-open)). After possibly shrinking $X''$ more we may assume $s_{ij}$ come from elements $t_{ij} \in \mathcal{F}(U)$ as follows from the construction of the inverse image functor $\epsilon^{-1}$. Now we claim that $t_{ij}$ generate $\mathcal{F}|_U$ which finishes the proof of the lemma. Namely, the corresponding map $\mathcal{O}_U^{\oplus N} \to \mathcal{F}|_U$ has the property that its pullback by $f''$ to $X''$ is surjective. Since $f'' : X'' \to U$ is a surjective flat morphism of schemes, this implies that $\mathcal{O}_U^{\oplus N} \to \mathcal{F}|_U$ is surjective by looking at stalks and using that $\mathcal{O}_{U, f''(z)} \to \mathcal{O}_{X'', z}$ is faithfully flat for all $z \in X''$. $\square$
+The map $\mathcal O_A^{\oplus N}\to M|_A$ becomes surjective on the étale neighbourhood $V$. Its cokernel has zero pullback there. Each point of $A$ has a geometric lift to $V$, and the corresponding map from its local ring into the geometric local ring is faithfully flat. The stalk of that cokernel is therefore zero at every point of $A$. Thus the $t_i$ generate $M|_A$. Since $x$ was arbitrary, $M$ is finite type. This argument does not assume that $M$ is quasi-coherent. $\square$
 
-#### Lemma. Descent of derived tensor products and Tor amplitude
- Let $X$ be a scheme. Let $E$ be an object of $D(\mathcal{O}_X)$. Then
+#### Lemma. Tor amplitude under the comparison of sites
 
-1.  $E$ has tor amplitude in $[a, b]$ if and only if $\epsilon^*E$ has tor amplitude in $[a, b]$.
+Let $X$ be a scheme and $E\in D(\mathcal O_X)$. For any interval $[a,b]$, the Tor amplitude of $E$ is contained in $[a,b]$ exactly when the same holds for $\epsilon^*E$. Consequently $E$ has finite Tor dimension exactly when $\epsilon^*E$ does.
 
-2.  $E$ has finite tor dimension if and only if $\epsilon^*E$ has finite tor dimension.
+**Proof.** A complex with Tor amplitude in $[a,b]$ has a flat representative supported in those degrees. Pullback preserves flat modules; applying $\epsilon^*$ term by term therefore preserves this interval. This is also the general [Tor-amplitude pullback lemma](#uncovered-sites-cohomology-lemma-tor-amplitude-pullback).
 
-Here $\epsilon$ is as in ([Derived quasi-coherent complexes](#context-spaces-perfect-equation-epsilon)).
-
-**Proof.** The easy implication follows from Cohomology on Sites, Lemma [Derived tensor products and Tor amplitude (uncovered prerequisite)](#uncovered-sites-cohomology-lemma-tor-amplitude-pullback). For the converse, assume that \(\epsilon^*E\) has tor amplitude in \([a, b]\). Let \(\mathcal{F}\) be an \(\mathcal{O}_X\)-module. As \(\epsilon\) is a flat morphism of ringed sites (Lemma [Flatness](#native-spaces-perfect-lemma-epsilon-flat)) we have 
-
-\[
-\epsilon^*(E \otimes^\mathbf{L}_{\mathcal{O}_X} \mathcal{F})
-=
-\epsilon^*E
-\otimes^\mathbf{L}_{\mathcal{O}_\mathrm{\acute{e}tale}}
-\epsilon^*\mathcal{F}
-\]
-
- Thus the (assumed) vanishing of cohomology sheaves on the right hand side implies the desired vanishing of the cohomology sheaves of \(E \otimes^\mathbf{L}_{\mathcal{O}_X} \mathcal{F}\) via Lemma [Flatness](#native-spaces-perfect-lemma-epsilon-flat). \(\square\)
+For the converse, take any $\mathcal O_X$-module $M$. Flatness of $\epsilon$ and compatibility of derived tensor product with pullback identify
+$$\epsilon^*(E\otimes_{\mathcal O_X}^{\mathbf L}M)
+\simeq\epsilon^*E\otimes_{\mathcal O_{X_{\mathrm{\acute et}}}}^{\mathbf L}\epsilon^*M.$$
+The right side has no cohomology outside $[a,b]$. Exactness and faithfulness of $\epsilon^*$ then force the same vanishing for $E\otimes^{\mathbf L}M$. Since this holds for every $M$, the asserted Tor-amplitude bound follows. Allowing any finite interval proves the finite-dimension assertion. $\square$
 
 #### Lemma. Lifting maps from support-preserving perfect complexes
  Let $S$ be a scheme. Let $X$ be a quasi-compact and quasi-separated algebraic space over $S$. Let $W \subset X$ be a quasi-compact open. Let $T \subset |X|$ be a closed subset such that $X \setminus T \to X$ is a quasi-compact morphism. Let $E$ be an object of $D_\mathrm{QCoh}(\mathcal{O}_X)$. Let $\alpha : P \to E|_W$ be a map where $P$ is a perfect object of $D(\mathcal{O}_W)$ supported on $T \cap W$. Then there exists a map $\beta : R \to E$ where $R$ is a perfect object of $D(\mathcal{O}_X)$ supported on $T$ such that $P$ is a direct summand of $R|_W$ in $D(\mathcal{O}_W)$ compatible $\alpha$ and $\beta|_W$.
@@ -18613,9 +18673,17 @@ Lower native prerequisite: `sites-modules.tex` / `lemma-flat-ses`. No separately
 
 Lower native prerequisite: `sites-cohomology.tex` / `lemma-internal-hom`. No separately included proof or exact verified programme binding is claimed for this supporting reference. Its consumers are `sites-cohomology.tex`.
 
-#### Local algebra
+#### Lemma. Null-homotopies from local cohomological vanishing
 
-Lower native prerequisite: `sites-cohomology.tex` / `lemma-local-homotopy`. No separately included proof or exact verified programme binding is claimed for this supporting reference. Its consumers are `sites-cohomology.tex`.
+Let $P\to F$ be a chain map on an object $U$ of a ringed site, with $P$ strictly perfect. If $F$ is acyclic, the map is null-homotopic on a covering of $U$. More generally the same conclusion holds when, for some integer $a$, one has $P^i=0$ for $i<a$ and $H^i(F)=0$ for all $i\geq a$.
+
+**Proof.** The zero source needs no construction. Otherwise bound its nonzero terms by $a\leq i\leq b$, using its actual lower bound for the acyclic case. Write the given map as $\alpha$. Construct maps $h^i:P^i\to F^{i-1}$ downwards from $b$, allowing finitely many successive refinements of the cover. Set $h^{b+1}=0$. Once $h^{i+1},\ldots,h^b$ have been chosen, the chain-map identities and the equations already proved show that
+$$u^i=\alpha^i-h^{i+1}d_P^i:P^i\longrightarrow F^i$$
+has image in $Z^i(F)$. Since $H^i(F)=0$, the map $F^{i-1}\to Z^i(F)$ is an epimorphism of sheaves. A map from a direct summand of a finite free module lifts through such an epimorphism locally: precompose with a projection from the finite free module, lift its finitely many basis images on a common cover, and restrict along the summand inclusion. Apply this to obtain $h^i$ with $d_F^{i-1}h^i=u^i$.
+
+After the finitely many degrees have been treated, these equations give
+$$\alpha^i=d_F^{i-1}h^i+h^{i+1}d_P^i$$
+in every degree. They are the required homotopy to zero. The successive covers compose to one cover, proving both the acyclic and the stated bounded-vanishing cases. $\square$
 
 #### Derived tensor products and Tor amplitude
 
@@ -18629,9 +18697,23 @@ Lower native prerequisite: `sites-cohomology.tex` / `lemma-local-lift-map`. No s
 
 Lower native prerequisite: `derived.tex` / `lemma-K-injective`. No separately included proof or exact verified programme binding is claimed for this supporting reference. Its consumers are `sites-cohomology.tex`.
 
-#### The geometric construction
+#### Lemma. Constructing extension by zero on a ringed site
 
-Lower native prerequisite: `sites-modules.tex` / `lemma-extension-by-zero`. No separately included proof or exact verified programme binding is claimed for this supporting reference. Its consumers are `sites-cohomology.tex`, `spaces-perfect.tex`.
+For an object $U$ of a ringed site $(\mathcal C,\mathcal O)$, restriction $j_U^*$ on modules has a left adjoint $j_{U!}$. Explicitly, for an $\mathcal O_U$-module $G$, sheafify the presheaf
+$$Z\longmapsto P_G(Z)=\bigoplus_{\varphi:Z\to U}G(Z\xrightarrow{\varphi}U).$$
+This construction gives $j_{U!}G$ and the natural bijection
+$$\operatorname{Hom}_{\mathcal O}(j_{U!}G,M)
+\simeq\operatorname{Hom}_{\mathcal O_U}(G,M|_U).$$
+
+**Proof.** Each summand is an $\mathcal O(Z)$-module, because the localized structure sheaf has precisely that value on $(Z,\varphi)$. For $h:Z'\to Z$, send its section to the restricted section in the summand indexed by $\varphi h$. When several indices coincide, add their contributions. This defines a presheaf of $\mathcal O$-modules.
+
+A map $\alpha:G\to M|_U$ sends the summand indexed by $\varphi$ to $M(Z)$ via $\alpha_{(Z,\varphi)}$. Adding these maps gives $P_G\to M$, which factors uniquely through sheafification. Conversely, given $\beta:j_{U!}G\to M$, send $s\in G(Z,\varphi)$ first into its summand of $P_G(Z)$, then to $(j_{U!}G)(Z)$ and finally along $\beta$ to $M(Z)$. These maps are linear and commute with restriction in $\mathcal C/U$. The first composite recovers $\alpha$ on each $(Z,\varphi)$. The other recovers $\beta$ after precomposition with every summand of $P_G$; the universal property of sheafification then gives equality on $j_{U!}G$. This proves the adjunction in both directions.
+
+Two consequences used in the elementary-square arguments can be verified from the same construction. First, $j_{U!}$ is exact. As a left adjoint it is right exact. An injection $G_1\hookrightarrow G_2$ induces an injection on every summand of $P_{G_1}(Z)\to P_{G_2}(Z)$, hence on the direct sum. Exactness of sheafification preserves this injection, proving left exactness as well.
+
+Second, if $p$ is a point of the site and $u$ its associated fibre functor, then
+$$(j_{U!}G)_p\simeq\bigoplus_{x\in u(U)}G_{q_x},$$
+where $q_x$ is the point of the localized site over $p$ specified by $x$. Indeed, sheafification does not change stalks. Compute the stalk as the filtered colimit, over pointed neighbourhoods $(Z,y)$ of $p$, of $P_G(Z)$. A summand indexed by $\varphi:Z\to U$ has the invariant label $x=u(\varphi)(y)$. Grouping the colimit by this label gives, for each $x$, exactly the neighbourhood colimit defining $G_{q_x}$. Finite support in each direct sum permits this regrouping, so the displayed formula follows. For the étale site of an algebraic space, the labels are precisely the geometric lifts of the chosen point to $U$. These arguments provide the exactness and stalk consequences as well as the full construction formerly recorded only as a prerequisite. $\square$
 
 #### Injective resolutions
 
@@ -20124,4 +20206,4 @@ The [complete GNU Free Documentation License 1.2](../licenses/GFDL-1.2.txt) acco
 
 **Modified course edition.** *Algebraic spaces and stacks — Moduli stacks are algebraic*, October 2026, published by the Open Math Courses project, `KokunoYumeto/open-math-courses`. Adapted and integrated by GPT-6.1 Sol (OpenAI), Codex, Ultra, 5–6 October 2026. The course integrates strong coherent existence, its cohomological and algebraic-space support, polarized proper schemes and all proper flat curve spaces of dimension at most one. It corrects source scope/type errors and supplies the marked return comparisons. Reader display repairs preserve the complete formulas and proofs. Source authorship is retained; no AI copyright holder or human endorsement is asserted. The detailed source loci, exact edition and concrete corrections remain in this chapter. Original eligible expression is additionally dedicated to CC0; the complete inseparable modified chapter retains GFDL 1.2-or-later for component export.
 
-**Independent mathematical expression.** The component record delimits the CC0 1.0 passages and preserves their writing credits. These passages treat inverse systems, module patching, complexes, Koszul and Čech comparisons, coherent sheaves, projective and proper cohomology, and their supporting algebraic arguments. The 9 supporting algebra proofs recorded there reuse the complete independently written treatment in [Artin’s axioms](artin-axioms.md). The retained source expression elsewhere in this chapter keeps the GNU FDL terms stated above.
+**Independent mathematical expression.** The component record delimits the CC0 1.0 passages and preserves their writing credits. These passages treat inverse systems, module patching, complexes, Koszul and Čech comparisons, coherent sheaves, projective and proper cohomology, derived pullback and direct images, étale gluing, supported perfect approximation, and their foundations. The 9 supporting algebra proofs recorded there reuse the complete independently written treatment in [Artin’s axioms](artin-axioms.md). The retained source expression elsewhere in this chapter keeps the GNU FDL terms stated above.

@@ -29,7 +29,7 @@ I_EH&=Rq_*R\Gamma_N(p^!H), &&H\in D^+_{\mathbb R_{>0}}(E;k).
 \end{aligned} \tag{FDN1}
 \]
 
-The first two are the transform and its inverse from [the Fourier kernel unit](fourier-sato.md). The third is the inverse transform with the roles of \(E\) and \(E^*\) exchanged; thus \(I_E=S_{E^*}\) after permuting the coordinates of the product. Both \(T_E\) and \(I_E\) go from \(E\) to \(E^*\). In particular, \(I_E\) in the duality theorem below is not \(S_E\), whose domain is different.
+The first two are the transform and its inverse from [the Fourier kernel unit](../../SH02-fourier-sato.html). The third is the inverse transform with the roles of \(E\) and \(E^*\) exchanged; thus \(I_E=S_{E^*}\) after permuting the coordinates of the product. Both \(T_E\) and \(I_E\) go from \(E\) to \(E^*\). In particular, \(I_E\) in the duality theorem below is not \(S_E\), whose domain is different.
 
 The boundedness symbols are global. We take \(F\in D^b_{\mathbb R_{>0}}(E;k)\) in every duality assertion. Its cohomology may have arbitrary stalk modules, angular variation, and base variation. There is no field, Noetherian, constructibility, finite-generation, or compactness assumption. A dual of such an \(F\) is asserted to belong to \(D^+\), not automatically to \(D^b\).
 
@@ -41,7 +41,7 @@ The sheaf-operation imports used here are the proper-support projection formula,
 \pi^!H\simeq \pi^{-1}H\otimes_k\pi^{-1}O[n]. \tag{FDN2}
 \]
 
-Finite cohomological dimension of the proper direct images of these finite-rank bundle projections supplies their extraordinary inverse images. This is a condition on abelian sheaves in the underlying foundation, not a replacement by a bound for one chosen coefficient object. The projection formula is the one for proper support and has no perfectness requirement on a bounded tensor factor. The [kernel unit](kernel-calculus.md) states these imports and their adjunction maps. Conicity of internal Hom with bounded first input and bounded-below second input is provided by [conic descent](conic-descent.md).
+Finite cohomological dimension of the proper direct images of these finite-rank bundle projections supplies their extraordinary inverse images. This is a condition on abelian sheaves in the underlying foundation, not a replacement by a bound for one chosen coefficient object. The projection formula is the one for proper support and has no perfectness requirement on a bounded tensor factor. The [kernel unit](../../SH02-kernel-calculus.html) states these imports and their adjunction maps. Conicity of internal Hom with bounded first input and bounded-below second input is provided by [conic descent](../../SH02-conic-descent.html).
 
 ### SH02-FDN-PROJECTION-RANGE — Why bounded-below tests are allowed
 
@@ -292,7 +292,7 @@ V_EG=Rp_!((q^!G)_C),
 \tag{FDN17}
 \]
 
-Let \(c:T_E\xrightarrow{\sim}U_E\) be the specific comparison formed from the support-restriction maps and the zero-section proper-support comparison in the Fourier kernel unit. There are two comparisons \(V_E\to S_E\) to distinguish. The literal comparison \(d_{\rm lit}\) has inverse the reversed-halfspace chain NDF2 in [The geometric normalization of Fourier adjunctions](fourier-literal-normalization.md). The adjunction-normalized comparison \(d_{\rm adj}\) is the explicit mate NDF8. Write \(d\) for a stated choice between them in the formulas below; the name alone does not identify the two maps.
+Let \(c:T_E\xrightarrow{\sim}U_E\) be the specific comparison formed from the support-restriction maps and the zero-section proper-support comparison in the Fourier kernel unit. There are two comparisons \(V_E\to S_E\) to distinguish. The literal comparison \(d_{\rm lit}\) has inverse the reversed-halfspace chain NDF2 in [The geometric normalization of Fourier adjunctions](../../SH02-fourier-literal-normalization.html). The adjunction-normalized comparison \(d_{\rm adj}\) is the explicit mate NDF8. Write \(d\) for a stated choice between them in the formulas below; the name alone does not identify the two maps.
 
 The adjunction \(T_E\dashv S_E\) has unit \(\eta\) and counit \(\epsilon\). A second adjunction \(V_E\dashv U_E\) uses a comparison between the orientation traces for the two vector-bundle fibers. For that second adjunction this course fixes the comparison induced locally by a negative-definite symmetric identification \(E\to E^*\). Denote its unit and counit by \(\widetilde\eta\) and \(\widetilde\epsilon\).
 

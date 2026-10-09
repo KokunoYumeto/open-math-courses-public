@@ -1474,9 +1474,9 @@ The Euclidean Young specialization in Section 4 supplies
 its complete receiving proof and matches the linked
 unimodular-group theorem.
 
-The next step in Lesson 9 is to construct the heat flow
-and establish the gauges and physical-time estimates needed
-by the noncommuting global argument. The estimates just proved
-are available for that construction, but no such construction
-or general global conclusion is asserted by this companion alone.
+The actual regular heat flow and caloric gauge, followed by
+the DeTurck construction for one-derivative data, are proved in
+[Constructing the Yang–Mills heat flow](../classical-heat-construction.html).
+The further low-regularity gauge and physical-time estimates needed
+by the general global argument remain subsequent parts of Lesson 9.
 

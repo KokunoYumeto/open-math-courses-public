@@ -2132,6 +2132,24 @@ solution with the full finite-endpoint Fourier integral.
 These are the estimates needed by the construction, rather
 than an assumption that the physical global solution exists.
 
-The remaining steps are the heat-flow existence construction,
-its gauge estimates, and the low-regularity physical evolution
-and global continuation argument. They are still being written.
+The heat-flow constructions are now supplied by the next companion.
+Further weighted gauge estimates, low-regularity physical evolution
+and the general global continuation argument are still being written.
+
+
+## 13. Constructing the auxiliary heat flow
+
+[Constructing the Yang–Mills heat flow](../classical-heat-construction.html)
+gives the actual integral-equation construction in (HC.1)–(HC.19),
+including preservation of every higher derivative on one interval
+and the regular caloric gauge. Equations (HC.20)–(HC.31) then
+construct the DeTurck flow directly for arbitrary \(\dot H^1\)
+data, with uniqueness, an explicit common lifespan and quantitative
+continuous dependence.
+
+The companion includes eight fully solved exercises and the exact
+commuting gauge map (HC.35)–(HC.36). Equations (HC.32)–(HC.34)
+identify an extra-derivative error in two source displays through
+regular stationary solutions. The low-regularity caloric-gauge
+estimates and the general physical-time global argument remain
+the next parts of this unit.

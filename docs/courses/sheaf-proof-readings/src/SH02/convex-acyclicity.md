@@ -286,7 +286,7 @@ for every convex open subset $U\subset X$. More generally the same conclusion ho
 
 *Proof.* Restricting a global extension on $X$ to $C$ proves (C10) for $F|_C$, so apply the locally closed criterion. A convex open $U$ is a permitted $C$. In particular, passing from $X$ to $U$ does not assume $X$ was convex and does not replace the original global extension hypothesis by an unverified local one. $\square$
 
-This last assertion contains the full open-ambient theorem used in the manifold theory. The stronger locally closed conclusion is what allows the same proof to handle $K+\gamma$ when that set is closed and unbounded in the [directional-topology unit](cone-topology.md).
+This last assertion contains the full open-ambient theorem used in the manifold theory. The stronger locally closed conclusion is what allows the same proof to handle $K+\gamma$ when that set is closed and unbounded in the [directional-topology unit](../../SH02-cone-topology.html).
 
 ## Coefficients, a counterexample, and practice
 

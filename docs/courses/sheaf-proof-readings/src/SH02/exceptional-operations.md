@@ -8,7 +8,7 @@ All spaces in this lesson are locally compact Hausdorff. Write a continuous map 
 
 ## SH02-EX-FOUNDATIONS — The topological foundation being used
 
-The following are exact prerequisite contracts for proper-support sheaf theory. They belong to the earlier foundations course. They are stated here so that the construction does not hide its prerequisites inside the phrase “six operations.” The existing [open prerequisite contracts](open-prerequisites.md) supply the abelian and derived-category foundations, but their proper-base-change theorem for proper maps alone does not supply this entire list.
+The following are exact prerequisite contracts for proper-support sheaf theory. They belong to the earlier foundations course. They are stated here so that the construction does not hide its prerequisites inside the phrase “six operations.” The existing [open prerequisite contracts](../../SH02-open-prerequisites.html) supply the abelian and derived-category foundations, but their proper-base-change theorem for proper maps alone does not supply this entire list.
 
 ### SH02-EX-IMP-SOFT — The compact-support resolution contract
 

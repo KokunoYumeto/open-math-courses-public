@@ -1,6 +1,10 @@
 # SH02-PNM-UNIT — Perverse degrees and normal Morse complexes
 
-The finite holomorphic microsupport argument uses perversity only after passing to a field. This lesson identifies the exact two inputs, checks the dimension shifts, and proves the functorial consequences needed there. Bounded perverse recollement on the original locally finite Whitney strata is proved below for arbitrary weak coefficients and finite coefficients. The normal-Morse geometric degree bounds are proved by the original-pair and complex-link arguments linked below, at their stated analytic provider scope. The categorical gluing argument and the comparison of degree tests under refinement are identified below.
+<a id="SH02-PNM-WEAK-EXTENSION"></a>
+
+[Perverse recollement over the original ring](../weak-coefficients.html#WC1) proves the bounded weak construction for every commutative ring, including the uniform degree bounds, original-stratum constancy, and actual truncation arrows. [Normal degrees and visibility](../weak-coefficients.html#WC2) then give t-exact normal functors and the microsupport union formula in that category. The field calculations below are special cases; the separate finite-dimensional assertions retain their original field hypotheses.
+
+The perfect-stalk finite holomorphic argument below uses perversity after passing to a field. This lesson identifies the exact two inputs, checks the dimension shifts, and proves the functorial consequences needed there. Bounded perverse recollement on the original locally finite Whitney strata is proved below for arbitrary weak coefficients and finite coefficients. The normal-Morse geometric degree bounds are proved by the original-pair and complex-link arguments linked below, at their stated analytic provider scope. The categorical gluing argument and the comparison of degree tests under refinement are identified below.
 
 ## SH02-PNM-CONTRACT — Coefficients, ranges and external theorems
 
@@ -590,6 +594,6 @@ On a point stratum $d=0$, all three conventions coincide: ordinary cohomological
 
 PNM3 proves boundedness from ordinary bounds. PNM4–PNM7 fix the normal Morse shift and prove t-exactness and its functorial cohomology comparison relative to the exact listed inputs. PNM8 is the nonvanishing deduction needed to inspect one perverse cohomology object at a time. PNM9 now follows from the full nongeneric proof NG1–NG9 at its exact retained provider floor, with the original connected labels, normal models and complete microsupport quantifiers.
 
-The original coefficient ring in the finite-map theorem can be more general than a field. This lesson applies only after the specified derived extension to a residue field; no perverse truncation over the original ring is introduced. The finite normal-pair and coefficient arguments must still supply the bounded finite-dimensional objects to which this lesson applies.
+The original coefficient ring in the finite-map theorem can be more general than a field. The field argument above applies after the specified derived extension to a residue field. The linked arbitrary weak-coefficient proof constructs perverse truncations over the original ring directly. The finite normal-pair and coefficient arguments must still supply the bounded finite-dimensional objects to which this lesson applies.
 
 In particular, this lesson does not infer a general interchange of tensor product with nearby-cycle limits, or invoke the nonisolated vanishing-cycle route retained as an alternative in the finite-map lesson.

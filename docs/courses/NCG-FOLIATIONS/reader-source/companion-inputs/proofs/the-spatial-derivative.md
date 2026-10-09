@@ -1,6 +1,6 @@
 # The spatial derivative
 
-*Public domain (CC0).*
+*Mathematical additions by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 ## Introduction
 
@@ -106,16 +106,28 @@ If a closed subspace is invariant under all \(S^{it}\), it is invariant under th
 projection \(P\) commutes with them; the restrictions to \(PH\) and \((1-P)H\) are strongly continuous unitary groups,
 hence of the form \(S_1^{it}\) and \(S_2^{it}\), and uniqueness in Stone's theorem gives \(S=S_1\oplus S_2\).
 
-**(B2) Normal weights.** Fix a von Neumann algebra \(A\). (i) Every normal weight on \(A\) is a sum
-\(\sum_i\omega_i\) of positive normal functionals; in particular it is \(\sigma\)-weakly lower semicontinuous. (ii) If
+**(B2) Normal weights.** Fix a von Neumann algebra \(A\).
+
+(i) For every normal weight \(\varphi:A_+\to[0,\infty]\), put
+\[
+\mathcal F_\varphi
+=\{\omega\in A_*^+:\omega(a)\leq\varphi(a)\text{ for every }a\in A_+\}.
+\]
+Then
+\[
+\varphi(a)=\sup_{\omega\in\mathcal F_\varphi}\omega(a)
+\qquad(a\in A_+).
+\tag{B2.1}
+\]
+In particular, \(\varphi\) is \(\sigma\)-weakly lower semicontinuous on \(A_+\). This theorem applies without faithfulness, semifiniteness or any countability hypothesis. The set \(\mathcal F_\varphi\) is not assumed upward directed; the supremum is taken separately at each positive element.
+
+(ii) If
 \(A\) acts on a Hilbert space \(K\), every \(\omega\in A_*^+\) has the form \(\omega=\sum_n\langle\cdot\,\zeta_n,
 \zeta_n\rangle\) with \(\sum_n\|\zeta_n\|^2<\infty\). (iii) A normal weight \(\varphi\) satisfies
 \(\varphi(x)=\varphi(s x s)\) for \(x\in A_+\), \(s=s(\varphi)\); its restriction to \(sAs\) is faithful, and
 semifinite if \(\varphi\) is. (iv) If \(\varphi\) is semifinite, \(\mathfrak n_\varphi\cap\mathfrak n_\varphi^*\) is a
 \(\sigma\)-weakly dense \(*\)-subalgebra, and by the Kaplansky density theorem it contains a net of contractions
-converging \(\sigma\)-strongly\(^*\) to \(1\). (v) Every von Neumann algebra carries an fns weight. Lower
-semicontinuity in (i) is Detecting normal weights by finite observations, §NW-11; for
-the sum decomposition see [Haagerup 1975]. (ii): a normal positive functional is \(\sigma\)-strongly continuous (Compact
+converging \(\sigma\)-strongly\(^*\) to \(1\). (v) Every von Neumann algebra carries an fns weight. The supremum formula and lower semicontinuity in (i) are Detecting normal weights by finite observations, §NW-11. We use the vector-functional decomposition separately for each dominated bounded functional. (ii): a normal positive functional is \(\sigma\)-strongly continuous (Compact
 and trace-class operators, Theorem 9.1(ii)), so The double commutant theorem, Theorem
 10.1 applies. (iii) is Finite domains, null directions, and support corners, §§WS-05 and
 WS-06. (iv): by General weights: finite domains, GNS spaces, and normal
@@ -205,7 +217,7 @@ gives the cocycle of two such weights.
 positive part \(\widehat M_+\) is the set of additive, positively homogeneous, lower semicontinuous maps
 \(M_*^+\to[0,\infty]\); it contains \(M_+\), and \(m_1\le m_2\) means \(m_1(\omega)\le m_2(\omega)\) for all
 \(\omega\). Every normal weight \(\varphi\) on \(M\) extends to a normal additive map \(\widehat M_+\to[0,\infty]\)
-(if \(\varphi=\sum\omega_i\), then \(\varphi(m)=\sum m(\omega_i)\)). The *operator-valued weights* from \(P\) to \(M\) are
+by \(\widehat\varphi(m)=\sup_{\omega\in\mathcal F_\varphi}m(\omega)\), as proved below. The *operator-valued weights* from \(P\) to \(M\) are
 the additive, positively homogeneous maps \(E:P_+\to\widehat M_+\) with \(E(a^*xa)=a^*E(x)a\) for \(a\in M\); such an
 \(E\) is *normal* if \(E(\sup x_i)=\sup E(x_i)\), and faithful and semifinite are defined as for weights. For normal
 \(E\) and a normal weight \(\varphi\) on \(M\), \(\varphi\circ E\) is a normal weight on \(P\). (i) If \(E\) and \(\varphi\) are
@@ -215,9 +227,73 @@ fns, then \(\varphi\circ E\) is fns, \(\sigma^{\varphi\circ E}_t(x)=\sigma^\varp
 there is a unique fns operator-valued weight \(E\) from \(P\) to \(M\) with \(\chi=\varphi\circ E\).
 These are proved in the course *Modular theory and weights*: the extension of normal weights to the extended positive
 part and the composition \(\varphi\circ E\) in Finite calculus and composition of operator-valued weights, §§OVW-02 and
-OVW-04; (i) in Modular invariants of operator-valued weights,
-§OM-01; (ii) in Compatible modular weights and the full positive cone,
+OVW-04; the forward modular and cocycle assertions in (i) are proved in Finite matrices and modular restriction; (ii) in Compatible modular weights and the full positive cone,
 §§OE-01–OE-06. See also [Haagerup 1979].
+
+### Extending a weight to every positive energy
+
+**Extension lemma.** Every normal weight \(\varphi\) on \(M\) has a unique additive, nonnegatively homogeneous extension \(\widehat\varphi:\widehat M_+\to[0,\infty]\) which preserves increasing suprema. It is
+\[
+\widehat\varphi(m)
+=\sup_{\omega\in\mathcal F_\varphi}m(\omega).
+\tag{S.1}
+\]
+The original notation \(\varphi(m)\) may abbreviate this extension. No semifiniteness is required.
+
+**Proof.** CW-02 supplies bounded spectral cutoffs \(m_n\in M_+\), increasing in the full extended-positive sense, with
+\[
+m(\omega)=\sup_n\omega(m_n)
+\qquad(\omega\in M_*^+).
+\tag{S.2}
+\]
+These cutoffs include the infinite part: if \(m\) is represented by a positive affiliated operator \(A\) on \(eH\), with infinite part on \((1-e)H\), one can take
+\[
+m_n=\min(A,n)e+n(1-e).
+\]
+Thus no densely defined operator on the entire ambient Hilbert space is presumed.
+
+For a bounded positive \(a\), (S.1) equals \(\varphi(a)\) by (B2.1). Interchanging two suprema, not summing a family of dominated functionals, gives
+\[
+\widehat\varphi(m)
+=\sup_\omega\sup_n\omega(m_n)
+=\sup_n\varphi(m_n).
+\tag{S.3}
+\]
+If \(m_\alpha\uparrow m\) pointwise on \(M_*^+\), the increasing supremum still belongs to \(\widehat M_+\): finite nonnegative sums commute with the supremum on a directed set, and a supremum of lower-semicontinuous functions is lower semicontinuous. Then
+\[
+\widehat\varphi(m)
+=\sup_\omega\sup_\alpha m_\alpha(\omega)
+=\sup_\alpha\widehat\varphi(m_\alpha).
+\tag{S.4}
+\]
+For \(m,k\in\widehat M_+\), take their separate cutoffs \(m_n,k_n\). Since \(m_n+k_n\uparrow m+k\), (S.4) and agreement on bounded positives give
+\[
+\begin{aligned}
+\widehat\varphi(m+k)
+&=\sup_n\varphi(m_n+k_n)\\
+&=\sup_n\bigl(\varphi(m_n)+\varphi(k_n)\bigr)\\
+&=\widehat\varphi(m)+\widehat\varphi(k).
+\end{aligned}
+\tag{S.5}
+\]
+Both scalar sequences increase. Their common-index supremum equals the sum of their suprema, including infinite values. Nonnegative homogeneity follows from (S.1) or the cutoffs; at scalar zero use \(0\cdot\infty=0\). Any extension with these properties must have value \(\sup_n\varphi(m_n)\) by (S.2), proving uniqueness. The spectral-cutoff construction is also given in Corner weights tested on all positive energies. \(\square\)
+
+If \(E:P_+\to\widehat M_+\) is a normal operator-valued weight, then \(\varphi\circ E\) is a normal scalar weight for every normal \(\varphi\). Indeed its additivity and homogeneity follow from those of \(E\) and (S.5); for a bounded increasing positive net \(x_\alpha\uparrow x\), normality of \(E\) and (S.4) give
+\[
+\widehat\varphi(E(x))
+=\widehat\varphi\!\left(\sup_\alpha E(x_\alpha)\right)
+=\sup_\alpha\widehat\varphi(E(x_\alpha)).
+\tag{S.6}
+\]
+This proves the normal-composition assertion used below. It makes no assertion that this composite is semifinite for arbitrary \(\varphi\) or arbitrary \(E\).
+
+For later use, finite sums of normal weights satisfy
+\[
+\widehat{\varphi_1+\varphi_2}(m)
+=\widehat\varphi_1(m)+\widehat\varphi_2(m),
+\tag{S.7}
+\]
+by applying (S.3) to the cutoffs and interchanging one increasing scalar supremum with a finite nonnegative sum. The sum is normal by the direct monotone-net calculation; it need not be semifinite. Equation (S.7) justifies the existing Theorem 7.1(d) when its separate semifiniteness hypothesis is satisfied.
 
 ## 1. Modules over \(N\) and \(\psi\)-bounded vectors
 
@@ -284,21 +360,52 @@ the unit ball of \(H_\psi\), and \(\langle R^\psi(\xi)^*\omega,\eta_\psi(y)\rang
 
 **Proposition 1.3.** For every \(N\)-module \(H\), \(D(H,\psi)\) is dense in \(H\).
 
-*Proof.* The kernel of the representation \(\pi\) is \(N(1-c)\) for a central projection \(c\), and \(\pi\) restricts
-to an isomorphism of \(Nc\) onto the von Neumann algebra \(\pi(N)\). The restriction of \(\psi\) to \(Nc\) is a
-normal weight; by (B2)(i) and (B2)(ii), applied to \(\pi(N)\) on \(H\), there is a family \((\zeta_j)\) in \(H\) with
-\(\psi(y)=\sum_j\langle y\zeta_j,\zeta_j\rangle\) for \(y\in(Nc)_+\). For \(y\in N\) we have \(y^*y\ge cy^*y\) and
-\(\pi(y^*y)=\pi(cy^*y)\), hence
+**Proof.** The zero Hilbert space is immediate. For the given normal unital representation \(\pi:N\to B(H)\), write
 \[
-\|y\zeta_j\|^2\le\sum_k\langle cy^*y\,\zeta_k,\zeta_k\rangle=\psi(cy^*y)\le\psi(y^*y).
+\ker\pi=N(1-c)
 \]
-So every \(\zeta_j\) is \(\psi\)-bounded. Let \(E\) be the projection onto the closure of \(D(H,\psi)\). By Lemma
-1.2(a) this closure is invariant under the \(*\)-algebra \(\mathcal L_N(H)\), so \(E\in\mathcal L_N(H)'=\pi(N)\), say
-\(E=\pi(e)\) with \(e\le c\) a projection of \(Nc\). Since \(E\zeta_j=\zeta_j\),
+with \(c\) central. The restriction \(\pi:Nc\to\pi(N)\) is a normal \(*\)-isomorphism onto the concrete von Neumann algebra \(\pi(N)\). Transport the restriction of \(\psi\) to \(Nc\) along this isomorphism and call the resulting normal weight \(\widetilde\psi\). Explicitly,
 \[
-\psi(c-e)=\sum_j\langle\pi(c-e)\zeta_j,\zeta_j\rangle=\sum_j\langle(1-E)\zeta_j,\zeta_j\rangle=0.
+\widetilde\psi(\pi(a))=\psi(a)\qquad(a\in(Nc)_+).
 \]
-As \(\psi\) is faithful, \(e=c\) and \(E=\pi(c)=1\). \(\square\)
+It is faithful because \(\psi\) is faithful. The supremum theorem only requires its normality.
+
+For each \(\omega\in\mathcal F_{\widetilde\psi}\), use B2(ii) in the actual representation \(\pi(N)\subset B(H)\):
+\[
+\omega(b)=\sum_{n\geq1}\langle b\zeta_{\omega,n},\zeta_{\omega,n}\rangle,
+\qquad b\in\pi(N)_+.
+\]
+For every \(y\in N\), positivity of the summands and domination give
+\[
+\begin{aligned}
+\|\pi(y)\zeta_{\omega,n}\|^2
+&\leq\omega(\pi(y^*y))\\
+&\leq\widetilde\psi(\pi(y^*y))\\
+&=\psi(cy^*y)\\
+&\leq\psi(y^*y).
+\end{aligned}
+\tag{S.8}
+\]
+Here \(cy^*y\) is positive because \(c\) is central, and \(\pi(cy^*y)=\pi(y^*y)\). In particular, for every \(y\in\mathfrak n_\psi\), (S.8) is finite and says that \(\zeta_{\omega,n}\) is \(\psi\)-bounded with bound at most one. Thus every such vector lies in \(D(H,\psi)\).
+
+Let \(E\) be the orthogonal projection onto \(\overline{D(H,\psi)}\). Lemma 1.2(a) makes this closed subspace invariant under the \(*\)-algebra \(\mathcal L_N(H)=\pi(N)'\), so it reduces that algebra and
+\[
+E\in\mathcal L_N(H)'=\pi(N).
+\]
+Write \(E=\pi(e)\) for the corresponding projection \(e\leq c\) in \(Nc\). Every \(\zeta_{\omega,n}\) is fixed by \(E\), hence
+\[
+\omega(1-E)
+=\sum_n\langle(1-E)\zeta_{\omega,n},\zeta_{\omega,n}\rangle
+=0
+\qquad(\omega\in\mathcal F_{\widetilde\psi}).
+\]
+Applying (B2.1) at \(1-E\) yields
+\[
+\psi(c-e)=\widetilde\psi(1-E)
+=\sup_{\omega\in\mathcal F_{\widetilde\psi}}\omega(1-E)=0.
+\tag{S.9}
+\]
+Faithfulness of \(\psi\) gives \(e=c\), so \(E=\pi(c)=1_H\). Therefore \(D(H,\psi)\) is dense. \(\square\)
 
 **Lemma 1.4.** Let \(H\) be an \(N\)-module.
 
@@ -439,23 +546,49 @@ applies: \(D\) is dense and \(M\)-invariant, and \(\theta(\xi,\xi)\in M_+\). The
 Neumann algebra on \(H\) with commutant \(M\), and every statement below has a mirror image with \((M,\varphi)\) and
 \((N,\psi)\) exchanged.
 
-**Lemma 3.1.** Let \(\varphi\) be a normal weight on \(M\) and put \(q_\varphi(\xi)=\varphi(\theta(\xi,\xi))\) for
-\(\xi\in D\). Then \(q_\varphi\) is a positive form on \(D\), and it is lower semicontinuous. If \(\varphi\) is
-semifinite, its domain is dense in \(H\).
-
-*Proof.* Homogeneity and the parallelogram law follow from Lemma 1.2(d) and the additivity of \(\varphi\). By (B2)(i)
-and (B2)(ii), \(\varphi=\sum_j\langle\cdot\,\zeta_j,\zeta_j\rangle\) for some family \((\zeta_j)\) in \(H\), and by
-(1.2)
+**Lemma 3.1.** Let \(\varphi\) be a normal weight on \(M\) and put
 \[
-q_\varphi(\xi)=\sum_j\sup\{|\langle y\xi,\zeta_j\rangle|^2:\ y\in\mathfrak n_\psi,\ \psi(y^*y)\le1\}.
+q_\varphi(\xi)=\varphi(\theta^\psi(\xi,\xi)),
+\qquad \xi\in D=D(H,\psi).
 \]
-Each supremum of continuous functions of \(\xi\) is lower semicontinuous, and so is a sum of nonnegative lower
-semicontinuous functions.
+Then \(q_\varphi\) is a positive form on \(D\), and it is lower semicontinuous in the sense of Definition 2.1. If \(\varphi\) is semifinite, its finite-energy domain is dense in \(H\).
 
-Let \(\varphi\) be semifinite, \(a\in\mathfrak n_\varphi^*\) and \(\xi\in D\). Then \(a\xi\in D\) and
-\(\theta(a\xi,a\xi)=a\theta(\xi,\xi)a^*\le\|\theta(\xi,\xi)\|aa^*\), so \(q_\varphi(a\xi)<\infty\). By (B2)(iv) there
-are contractions \(a_i\in\mathfrak n_\varphi^*\) with \(a_i\to1\) strongly, so \(a_i\xi\to\xi\); since \(D\) is dense,
-so is \(D_{q_\varphi}\). \(\square\)
+**Proof.** Homogeneity and the parallelogram law follow from Lemma 1.2(d) and the weight axioms, with values in \([0,\infty]\).
+
+For each \(\omega\in\mathcal F_\varphi\), choose the countable actual-representation vector decomposition (B2.2), with vectors \(\zeta_{\omega,n}\in H\). By (B2.1) and Lemma 1.2(c),
+\[
+\begin{aligned}
+q_\varphi(\xi)
+&=\sup_{\omega\in\mathcal F_\varphi}
+  \omega(\theta^\psi(\xi,\xi))\\
+&=\sup_{\omega\in\mathcal F_\varphi}
+  \sum_{n\geq1}
+  \sup_{\substack{y\in\mathfrak n_\psi\\\psi(y^*y)\leq1}}
+  |\langle y\xi,\zeta_{\omega,n}\rangle|^2 .
+\end{aligned}
+\tag{S.10}
+\]
+Every sum in (S.10) is nonnegative. It is the supremum of its finite subsums. For each finite index set \(F\subset\mathbb N\), its finite subsum of suprema is the supremum over independently chosen \(y_n\in\mathfrak n_\psi\), \(\psi(y_n^*y_n)\leq1\), of
+\[
+\xi\longmapsto
+\sum_{n\in F}|\langle y_n\xi,\zeta_{\omega,n}\rangle|^2.
+\tag{S.11}
+\]
+The set of permitted \(y_n\) is nonempty, since it contains zero. The equality between the finite sum and this independent supremum follows by approximating each of the finitely many target values from below; this also covers a target value \(+\infty\).
+
+For fixed \(\omega,F,(y_n)_{n\in F}\), (S.11) is continuous for the Hilbert norm, because every represented \(y_n\) is a bounded operator on \(H\). Thus (S.10) is a supremum of continuous nonnegative functions, and its restriction to \(D\) is lower semicontinuous. Concretely, if \(\xi_k\to\xi\) in \(H\) with \(\xi_k,\xi\in D\), every function (S.11) at \(\xi\) is at most \(\liminf_k q_\varphi(\xi_k)\); taking all the suprema gives
+\[
+q_\varphi(\xi)\leq\liminf_k q_\varphi(\xi_k).
+\]
+This is exactly Definition 2.1. No extension by infinity on \(H\setminus D\), no identification of \(D\) with a closed domain, and no semifiniteness premise were used for this conclusion.
+
+Now assume \(\varphi\) is semifinite. If \(a\in\mathfrak n_\varphi^*\) and \(\xi\in D\), Lemma 1.2(a) gives \(a\xi\in D\), and
+\[
+\theta^\psi(a\xi,a\xi)
+=a\theta^\psi(\xi,\xi)a^*
+\leq\|\theta^\psi(\xi,\xi)\|aa^*.
+\]
+Because \(a^*\in\mathfrak n_\varphi\), \(\varphi(aa^*)<\infty\), and hence \(q_\varphi(a\xi)<\infty\). B2(iv) gives a net of contractions \(a_i\in\mathfrak n_\varphi^*\) with \(a_i\to1\) strongly. Consequently \(a_i\xi\to\xi\) for every \(\xi\in D\). The already proved density of \(D\) in \(H\) makes \(D_{q_\varphi}\) dense in \(H\). \(\square\)
 
 **Definition 3.2.** Let \(\varphi\) be a normal semifinite weight on \(M\). Its *spatial derivative*
 \(d\varphi/d\psi\) with respect to \(\psi\) is the operator \(T\) that Proposition 2.3 attaches to the form
@@ -1034,6 +1167,47 @@ A reference for this section is [Connes 1980a]; for operator-valued weights see 
 The spatial derivative turns a weight \(\varphi\) on \(M\) into the weight \(\operatorname{Tr}_{d\varphi/d\psi}\) on
 \(B(H)\). This passage is itself given by one operator-valued weight from \(B(H)\) to \(M\), determined by \(\psi\).
 
+### Compression and the support projection
+
+**Compression lemma.** Suppose \(\varphi,\varphi_1\) are normal weights on \(M\) and \(e\in M\) is a projection such that
+\[
+\varphi(x)=\varphi_1(exe)\qquad(x\in M_+).
+\tag{S.12}
+\]
+For \(m\in\widehat M_+\), define the ambient extended-positive compression by
+\[
+(eme)(\omega)=m(\omega_e),
+\qquad
+\omega_e(x)=\omega(exe),\quad \omega\in M_*^+.
+\tag{S.13}
+\]
+Then
+\[
+\widehat\varphi(m)=\widehat\varphi_1(eme)
+\qquad(m\in\widehat M_+).
+\tag{S.14}
+\]
+
+**Proof.** The positive linear map \(\omega\mapsto\omega_e\) is norm continuous, with norm at most one. Formula (S.13) therefore defines an additive, nonnegatively homogeneous, norm-lower-semicontinuous element of \(\widehat M_+\). Compression preserves positive addition and increasing suprema pointwise on \(M_*^+\).
+
+If \(m_n\uparrow m\) are the cutoffs from (S.2), then \(em_ne\uparrow eme\) in the extended-positive sense:
+\[
+\sup_n\omega(em_ne)
+=\sup_n\omega_e(m_n)
+=m(\omega_e)
+\qquad(\omega\in M_*^+).
+\]
+The operators \(em_ne\) are bounded positive approximants; they need not be the spectral truncations of the compressed energy. Using (S.4), agreement of the extensions on bounded positives, and (S.12) gives
+\[
+\begin{aligned}
+\widehat\varphi_1(eme)
+&=\sup_n\varphi_1(em_ne)\\
+&=\sup_n\varphi(m_n)\\
+&=\widehat\varphi(m).
+\end{aligned}
+\]
+All equalities are in \([0,\infty]\). No subtraction of infinite values or assumption about density of the compressed finite-energy domain appears. \(\square\)
+
 **Theorem 7.1.** Let \(\psi\) be an fns weight on \(N\). There is exactly one fns operator-valued weight \(\Psi^{-1}\)
 from \(B(H)\) to \(M\) with \(\varphi_0\circ\Psi^{-1}=\operatorname{Tr}_{d\varphi_0/d\psi}\) for some fns weight
 \(\varphi_0\) on \(M\). It has the following properties.
@@ -1067,26 +1241,85 @@ same cocycle relative to \(\varphi_0\circ E\) are equal (B5)(ii), so \(\varphi\c
 E'\), and the uniqueness in (B7)(ii) gives \(E'=E\). We write \(\Psi^{-1}=E\).
 
 *(a) in general.* By Lemma 5.1(c), \(\varphi=\varphi_1(e\,\cdot\,e)\) with \(\varphi_1\) fns, \(e=s(\varphi)\), and
-\(d\varphi/d\psi=T_1e\) with \(T_1=d\varphi_1/d\psi\) commuting with \(e\). By bimodularity, \(\Psi^{-1}(exe)=
-e\Psi^{-1}(x)e\), and writing \(\varphi_1=\sum_i\omega_i\) (B2)(i), \(\varphi(m)=\sum_im(e\omega_ie)=\varphi_1(eme)\) for
-\(m\in\widehat M_+\). Hence, for \(\zeta\in H\),
 \[
-\varphi(\Psi^{-1}(\zeta\zeta^*))=\varphi_1(\Psi^{-1}(e\zeta\zeta^*e))=\langle T_1e\zeta,e\zeta\rangle=\Big\langle
-\frac{d\varphi}{d\psi}\zeta,\zeta\Big\rangle.
+T_1=\frac{d\varphi_1}{d\psi},\qquad
+\frac{d\varphi}{d\psi}=T_1e,
 \]
-Both \(\varphi\circ\Psi^{-1}\) and \(\operatorname{Tr}_{d\varphi/d\psi}\) are normal weights on \(B(H)\), and every
-\(x\in B(H)_+\) is a \(\sigma\)-weakly convergent sum of rank-one operators \(\zeta_k\zeta_k^*\) (for instance
-\(\zeta_k=x^{1/2}\varepsilon_k\) for an orthonormal basis), so they are equal.
+where \(T_1\) commutes with \(e\). Background B7's extension lemma and the compression lemma give
+\[
+\widehat\varphi(m)=\widehat\varphi_1(eme)
+\qquad(m\in\widehat M_+).
+\]
+By bimodularity of \(\Psi^{-1}\),
+\[
+e\Psi^{-1}(x)e=\Psi^{-1}(exe)
+\qquad(x\in B(H)_+).
+\]
+Therefore, for every \(\zeta\in H\), the already proved faithful case of (a) yields
+\[
+\begin{aligned}
+\widehat\varphi(\Psi^{-1}(\zeta\zeta^*))
+&=\widehat\varphi_1(\Psi^{-1}((e\zeta)(e\zeta)^*))\\
+&=\langle T_1e\zeta,e\zeta\rangle\\
+&=\left\langle\frac{d\varphi}{d\psi}\zeta,\zeta\right\rangle.
+\end{aligned}
+\tag{S.15}
+\]
+The final equality includes the exact extended quadratic-form domains: on the reducing decomposition \(H=eH\oplus(1-e)H\), \(T_1e\) is the self-adjoint operator \(T_1|_{eH}\oplus0\). Its form domain is
+\[
+\{\zeta\in H:e\zeta\in D(T_1^{1/2})\},
+\]
+and its form value is \(+\infty\) outside this set. Thus (S.15) neither evaluates \(T_1\) on an inadmissible vector nor replaces a form value by an operator-domain value.
+
+Both \(\widehat\varphi\circ\Psi^{-1}\) and \(\operatorname{Tr}_{d\varphi/d\psi}\) are normal weights on \(B(H)\). For \(x\in B(H)_+\), choose any orthonormal basis \((\varepsilon_i)_{i\in I}\) of \(H\) and put \(\zeta_i=x^{1/2}\varepsilon_i\). For finite \(F\subset I\),
+\[
+x_F=\sum_{i\in F}\zeta_i\zeta_i^*
+=x^{1/2}P_Fx^{1/2}\uparrow x
+\]
+strongly, and hence \(\sigma\)-weakly, with \(0\leq x_F\leq x\). Normality, finite additivity and (S.15) give equality of the two weights at \(x\). This uses the directed net of finite basis subsets, so it requires no separability of \(H\). Hence
+\[
+\widehat\varphi\circ\Psi^{-1}
+=\operatorname{Tr}_{d\varphi/d\psi}.
+\]
 
 (b) Every \(\omega\in M_*^+\) is a normal semifinite weight, and by (a),
 \(\omega(\Psi^{-1}(\xi\xi^*))=\langle(d\omega/d\psi)\xi,\xi\rangle=\omega(\theta(\xi,\xi))\) for \(\xi\in D\). Elements
 of \(\widehat M_+\) are determined by their values on \(M_*^+\).
 
-(c) Let \(\omega\in M_*^+\). The map \(p(\zeta)=\omega(E(\zeta\zeta^*))\) is a positive form on \(H\), and it is lower
-semicontinuous because \(\omega\circ E\) is a normal weight on \(B(H)\), a sum of normal functionals (B2)(i), each
-continuous in \(\zeta\). It equals \(q_\omega\) on \(D\). By Proposition 2.3(b), \(p(\zeta)\le\langle(d\omega/d\psi)
-\zeta,\zeta\rangle=\omega(\Psi^{-1}(\zeta\zeta^*))\), using (a). So \(E(\zeta\zeta^*)\le\Psi^{-1}(\zeta\zeta^*)\) for
-all \(\zeta\), and by normality \(E(x)\le\Psi^{-1}(x)\) for all \(x\in B(H)_+\).
+(c) Let \(\omega\in M_*^+\), and let \(E\) be the normal operator-valued weight in (c). By the extension lemma,
+\[
+\lambda=\widehat\omega\circ E
+\]
+is a normal weight on \(B(H)\). Put
+\[
+p(\zeta)=\lambda(\zeta\zeta^*),\qquad\zeta\in H.
+\]
+The rank-one parallelogram identity and the weight axioms make \(p\) a positive form on \(H\), with values in \([0,\infty]\). Background B2(i) makes \(\lambda\) \(\sigma\)-weakly lower semicontinuous on \(B(H)_+\). The map \(\zeta\mapsto\zeta\zeta^*\) is norm continuous, since
+\[
+\|\zeta\zeta^*-\eta\eta^*\|
+\leq(\|\zeta\|+\|\eta\|)\|\zeta-\eta\|.
+\]
+Norm convergence implies \(\sigma\)-weak convergence, so \(p\) is lower semicontinuous in the Hilbert norm. This conclusion does not require \(\lambda\) to be semifinite.
+
+For \(\xi\in D(H,\psi)\), the hypothesis on \(E\) gives
+\[
+p(\xi)=\omega(\theta^\psi(\xi,\xi))=q_\omega(\xi).
+\]
+The bounded positive functional \(\omega\), regarded as a weight, is normal and semifinite. Thus Lemma 3.1 gives a dense finite-energy domain for \(q_\omega\), and Proposition 2.3(b) applies:
+\[
+p(\zeta)
+\leq\left\langle\frac{d\omega}{d\psi}\zeta,\zeta\right\rangle
+=\widehat\omega(\Psi^{-1}(\zeta\zeta^*))
+\qquad(\zeta\in H).
+\]
+The equality uses (a), and all terms are extended positive values. For a bounded positive functional, \(\widehat\omega(m)=m(\omega)\): from (S.2), \(m(\omega)=\sup_n\omega(m_n)\), which is (S.3) for the weight \(\omega\).
+
+Consequently
+\[
+E(\zeta\zeta^*)\leq\Psi^{-1}(\zeta\zeta^*)
+\qquad(\zeta\in H),
+\]
+because order in \(\widehat M_+\) is pointwise on \(M_*^+\). For a general \(x\in B(H)_+\), use the increasing finite rank-one sums \(x_F\) above, add the inequalities over each finite \(F\), and pass to the increasing supremum by normality of both operator-valued weights. This proves \(E(x)\leq\Psi^{-1}(x)\) on the entire positive cone.
 
 (d) By (a) and the additivity of normal weights on \(\widehat M_+\),
 \[
@@ -1294,6 +1527,10 @@ fns \(\omega_1\) independent of \(j\). Then \(\omega(\Psi_2^{-1}(\zeta\zeta^*))=
 \(\alpha=-\tfrac12\) (and \(u=1\)). By Proposition 5.5, \(\Delta_\psi^{-1}=d\psi'/d\psi\), so
 \(\int\Delta_\psi^{-1}d\psi=\psi'(1)=\psi(J_\psi1J_\psi)=\psi(1)\), using (B4)(i). Corollary 8.3 is trivial here, since
 \(T=T^*\).
+
+**Exercise 6 (12 points).** Let \(\varphi\) be any normal weight on \(M\), and let \(m\in\widehat M_+\) have an infinite spectral projection. Prove that \(\widehat\varphi(m)=\sup_{\omega\le\varphi}m(\omega)\) is additive on the full extended-positive cone, without assuming the dominated functionals are directed. If \(\varphi(x)=\varphi_1(exe)\), prove the compression identity at \(m\). Explain why density of finite-energy vectors needs a separate semifiniteness hypothesis.
+
+**Solution.** Choose the separate bounded spectral truncations \(m_n,k_n\), including \(n\) times each infinite projection. Interchange the two suprema to obtain \(\widehat\varphi(m)=\sup_n\varphi(m_n)\). Since \(m_n+k_n\uparrow m+k\), normal extension and finite additivity give the sum of the two increasing scalar limits, including infinity. No supremum over an undirected family is commuted with a sum (4 points). The compression \((eme)(\omega)=m(\omega(e\,\cdot\,e))\) is the increasing limit of \(em_ne\). Therefore \(\widehat\varphi_1(eme)=\sup_n\varphi_1(em_ne)=\sup_n\varphi(m_n)=\widehat\varphi(m)\), with no dense-form assumption (4 points). An arbitrary normal weight can be infinite on every nonzero positive element; its scalar finite-energy domain need not be dense. The finite-ideal contractions used in Lemma 3.1 require semifiniteness. In contrast, lower semicontinuity of the form follows from the dominated-functional supremum without that hypothesis (4 points). Total: 12 points.
 
 ## References
 

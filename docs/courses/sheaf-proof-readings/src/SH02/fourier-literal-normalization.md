@@ -45,7 +45,7 @@ Let \(\phi:W_x\to W_y\) be an orientation-complex isomorphism. It has the form \
 \tag{NDF3}
 \]
 
-The exact prerequisites are [Fourier kernels](fourier-sato.md), [The linear Fourier comparison](linear-fourier-trace.md), and [Comparing traces after Fourier transformation](fourier-trace-comparisons.md), with the following scoped uses: the actual FS6 comparison; SH02-FS-INVERSION (FS12 and its full proof), which makes both raw adjunctions equivalence adjunctions and hence makes their units and counits invertible; the full conic-topology derived equivalence SH02-LFT-CONIC-TOPOLOGY; the enhanced-center theorem SH02-LFT-CENTER; and the relative-cochain trace calculation FTC20–FTC22 and the following explicit counit and arbitrary-rank paragraphs, including its arbitrary-rank zero-section extension and the cancellation of the actual Thom trace coefficients. These are scoped mathematical prerequisites, with their operation imports retained.
+The exact prerequisites are [Fourier kernels](../../SH02-fourier-sato.html), [The linear Fourier comparison](../../SH02-linear-fourier-trace.html), and [Comparing traces after Fourier transformation](../../SH02-fourier-trace-comparisons.html), with the following scoped uses: the actual FS6 comparison; SH02-FS-INVERSION (FS12 and its full proof), which makes both raw adjunctions equivalence adjunctions and hence makes their units and counits invertible; the full conic-topology derived equivalence SH02-LFT-CONIC-TOPOLOGY; the enhanced-center theorem SH02-LFT-CENTER; and the relative-cochain trace calculation FTC20–FTC22 and the following explicit counit and arbitrary-rank paragraphs, including its arbitrary-rank zero-section extension and the cancellation of the actual Thom trace coefficients. These are scoped mathematical prerequisites, with their operation imports retained.
 
 ## SH02-NDF-DEFECT. Determine the entire natural transformation
 
@@ -139,7 +139,7 @@ NDF4 computes the literal defect before NDF5 corrects it, and NDF6–NDF7 then v
 
 The literal comparison is defined by NDF2. The normalized comparison is defined by NDF8 and identified with \((-1)^n d_{\rm lit}\) for the negative-definite second adjunction. NDF6–NDF7 prove the paired inverse equations on the entire stated category. NDF10 characterizes the unique comparison satisfying those equations with the specified first comparison and second adjunction. Any additional geometric construction must be compared with these actual maps before the characterization applies.
 
-In [Fourier duality](fourier-duality-normalization.md), SH02-FDN-NORMALIZATION, the second comparison must therefore be named. The literal choice gives the parity formulas, while the normalized choice gives exact inverse maps. The named prerequisite results and their precise operation domains remain in force when propagating either convention.
+In [Fourier duality](../../SH02-fourier-duality-normalization.html), SH02-FDN-NORMALIZATION, the second comparison must therefore be named. The literal choice gives the parity formulas, while the normalized choice gives exact inverse maps. The named prerequisite results and their precise operation domains remain in force when propagating either convention.
 
 This theorem does not identify the precise microlocal mate PA32 and does not use the linear trace equation FTC14. To apply it to a later mate, expand that mate's actual unit, counit and orientation factors and substitute the chosen comparison at its exact occurrence. Matching endpoint objects does not specify that composite.
 

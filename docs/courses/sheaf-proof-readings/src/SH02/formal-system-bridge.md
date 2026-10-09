@@ -8,7 +8,7 @@ A neighborhood calculation often becomes constant only after transition maps hav
 
 All indexing sets are small, nonempty directed partially ordered sets. An inverse system in a locally small category $\mathcal C$ is a functor $A:I^{\mathrm{op}}\to\mathcal C$; write $a_{ji}:A_j\to A_i$ for $j\geq i$. A direct system is a functor $I\to\mathcal C$. We use a fixed universe for these sets and a larger universe when forming functor categories. The categories needed below are $\operatorname{Mod}(k)$ and the ordinary derived category $D(k)$, where $k$ is a unital commutative ring. The categorical and inverse-limit results in this lesson do not require finite global dimension.
 
-The formal calculus through SH02-FSB-FUNCTORS supports [SH02-CB-IMP-PRO-CALCULUS](cohomological-biduality.md#SH02-CB-IMP-PRO-CALCULUS). The derived module-diagram calculation in SH02-FSB-COFINALITY and SH02-FSB-PRISM supports [SH02-CB-IMP-DERIVED-COFINALITY](cohomological-biduality.md#SH02-CB-IMP-DERIVED-COFINALITY). Basic categories, complexes, projective or injective resolutions, and the derived functors they define remain prerequisite material. The proofs below identify the resolutions and comparison maps needed here.
+The formal calculus through SH02-FSB-FUNCTORS supports [SH02-CB-IMP-PRO-CALCULUS](../../SH02-cohomological-biduality.html#SH02-CB-IMP-PRO-CALCULUS). The derived module-diagram calculation in SH02-FSB-COFINALITY and SH02-FSB-PRISM supports [SH02-CB-IMP-DERIVED-COFINALITY](../../SH02-cohomological-biduality.html#SH02-CB-IMP-DERIVED-COFINALITY). Basic categories, complexes, projective or injective resolutions, and the derived functors they define remain prerequisite material. The proofs below identify the resolutions and comparison maps needed here.
 
 ## SH02-FSB-HOM — Formal maps and constant objects
 
@@ -148,7 +148,7 @@ $$
 \longrightarrow\operatorname{Pro}(\mathcal E).
 $$
 
-Indeed, a representative $A_i\to B_j$ becomes $T(B_j)\to T(A_i)$, and the Hom formulas have exactly these reversed source and target indices. After the dual-sections adjunction identifies the terms, this explains why $R\operatorname{Hom}_k(-,k)$ converts a represented compact-support pro-system into a represented ordinary-section ind-system. That sheaf-theoretic identification is [SH02-EX-DUAL-SECTIONS](exceptional-operations.md#SH02-EX-DUAL-SECTIONS). The formal argument makes no claim that this functor commutes with an arbitrary ordinary or derived inverse limit.
+Indeed, a representative $A_i\to B_j$ becomes $T(B_j)\to T(A_i)$, and the Hom formulas have exactly these reversed source and target indices. After the dual-sections adjunction identifies the terms, this explains why $R\operatorname{Hom}_k(-,k)$ converts a represented compact-support pro-system into a represented ordinary-section ind-system. That sheaf-theoretic identification is [SH02-EX-DUAL-SECTIONS](../../SH02-exceptional-operations.html#SH02-EX-DUAL-SECTIONS). The formal argument makes no claim that this functor commutes with an arbitrary ordinary or derived inverse limit.
 
 ## SH02-FSB-COFINALITY — A resolution for the derived comparison
 
@@ -311,11 +311,11 @@ For a strict pro-isomorphism $f$, SH02-FSB-INVERSE makes its levelwise kernel an
 
 A constant module system $cM$ has $R\varprojlim_I cM\simeq M$. Its cochain model is Hom from the augmented free nerve chains of $I$ into $M$. Those chains resolve $k$: every finite augmented cycle can be coned to a common upper bound. Since $k$ and all chain modules are projective, the comparison-lifting argument in SH02-FSB-COFINALITY makes this resolution homotopy equivalent to $k$ in degree zero. Applying Hom proves the asserted cohomology in all degrees.
 
-This proves the complete arbitrary-directed step used in [SH02-CB-NET-ACYCLICITY](cohomological-biduality.md#SH02-CB-NET-ACYCLICITY). The finite-predecessor construction there is valid; the resolution and prism above provide its missing explicit categorical support. Surjective transitions are a different condition. For arbitrary directed systems they need not force higher inverse limits to vanish, as shown by [Stacks, Tag 0ANX](https://stacks.math.columbia.edu/tag/0ANX).
+This proves the complete arbitrary-directed step used in [SH02-CB-NET-ACYCLICITY](../../SH02-cohomological-biduality.html#SH02-CB-NET-ACYCLICITY). The finite-predecessor construction there is valid; the resolution and prism above provide its missing explicit categorical support. Surjective transitions are a different condition. For arbitrary directed systems they need not force higher inverse limits to vanish, as shown by [Stacks, Tag 0ANX](https://stacks.math.columbia.edu/tag/0ANX).
 
 ## SH02-FSB-COSTALK — What the sheaf argument needs from this bridge
 
-We now specify how these facts enter [SH02-CB-COSTALK-CONTINUITY](cohomological-biduality.md#SH02-CB-COSTALK-CONTINUITY). Let $X$ be locally compact Hausdorff, let $x\in X$, and let $F\in D^b(k_X)$. For this compatibility argument a common lower bound is enough. Compact neighborhoods $K$ of $x$ are ordered by shrinking. Their intersection is $\{x\}$, and they form a directed set; neither assertion uses a countable basis.
+We now specify how these facts enter [SH02-CB-COSTALK-CONTINUITY](../../SH02-cohomological-biduality.html#SH02-CB-COSTALK-CONTINUITY). Let $X$ be locally compact Hausdorff, let $x\in X$, and let $F\in D^b(k_X)$. For this compatibility argument a common lower bound is enough. Compact neighborhoods $K$ of $x$ are ordered by shrinking. Their intersection is $\{x\}$, and they form a directed set; neither assertion uses a countable basis.
 
 The sheaf foundations used here are exact filtered colimits and stalks, Theorems 2.1 and 3.1, injective resolutions, Theorems 2.3 and 4.1, and the closed-support adjunction and its derived construction. Write $k_K$ for the constant sheaf on the closed set $K$ extended to $X$, and use the restriction map $k_K\to k_L$ when $L\subset K$. These sheaves form a direct system with
 
@@ -396,7 +396,7 @@ For ordinary sections, the germ maps from the same injective resolution give a c
 
 **1. An ordinary zero limit.** Let $A_n=\bigoplus_{m\geq n}k$ with the inclusion transitions, and assume $k\ne0$. Its inverse limit is zero: a compatible element would lie in every tail of the direct sum. Nevertheless no transition map is zero, so SH02-FSB-REPRESENTED shows that the formal pro-object is nonzero. This explains why a calculation of the ordinary limit cannot replace formal stabilization.
 
-**2. Changing coefficients.** Suppose $A\simeq cQ$ in $\operatorname{Pro}(D(k))$ and fix $M\in D(k)$. Determine the formal system obtained by applying $R\operatorname{Hom}_k(-,M)$. The answer is an ind-system represented by $R\operatorname{Hom}_k(Q,M)$, by SH02-FSB-FUNCTORS. This conclusion needs no perfectness hypothesis. Perfectness is needed for a later replacement of this Hom by $Q^\vee\otimes^L M$, and that separate statement is proved in [SH02-CB-PERFECT](cohomological-biduality.md#SH02-CB-PERFECT). No interchange with an ordinary inverse limit occurs in this calculation.
+**2. Changing coefficients.** Suppose $A\simeq cQ$ in $\operatorname{Pro}(D(k))$ and fix $M\in D(k)$. Determine the formal system obtained by applying $R\operatorname{Hom}_k(-,M)$. The answer is an ind-system represented by $R\operatorname{Hom}_k(Q,M)$, by SH02-FSB-FUNCTORS. This conclusion needs no perfectness hypothesis. Perfectness is needed for a later replacement of this Hom by $Q^\vee\otimes^L M$, and that separate statement is proved in [SH02-CB-PERFECT](../../SH02-cohomological-biduality.html#SH02-CB-PERFECT). No interchange with an ordinary inverse limit occurs in this calculation.
 
 ## SH02-FSB-REFERENCES — Scope of the supporting sources
 

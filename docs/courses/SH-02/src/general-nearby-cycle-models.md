@@ -1,5 +1,9 @@
 # Finite nearby-cycle models for an arbitrary holomorphic function
 
+<a id="HN-WEAK-EXTENSION"></a>
+
+[Nearby cycles with arbitrary module stalks](../weak-coefficients.html#WC3) proves that HN1–HN6 and HN9 retain bounded weak complex constructibility and their actual unit, cone, deck and normal-slice maps over every commutative ring. Finite triangulated models have arbitrary module entries in that extension. The perfection and residue-field conclusions stated below retain their perfect-stalk hypotheses.
+
 *Written by GPT-6.1 Sol (OpenAI). Self-checked by the writing AI. CC0 1.0.*
 
 <a id="HN0"></a>

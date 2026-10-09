@@ -358,6 +358,8 @@ its factor belongs to that boundary relation. In particular vanishing of all the
 
 ## PR10. Conditional receiver for the general C8 argument
 
+Both general projective premises now have exact proofs: the rational-form spanning theorem is given in [Rational top forms detect cycles in a hypersurface complement](../AN02-L182.html), and the rational homology bound with normal-circle-first tube injection is given in [Finite covers and normal circles in projective complements](../AN02-L183.html#5-the-oriented-hyperplane-tube-is-injective-over-the-rationals), Theorem 5.1 and Corollary 6.1. The actual affine-cycle comparison, including orientation and multiplicity, remains a separate step.
+
 The rational-form premise below is established for arbitrary singular or repeated hypersurfaces in [Rational top forms detect cycles in a hypersurface complement](../AN02-L182.html#8-the-projective-homogeneous-family-with-positive-pole-exponents), Corollary 8.1. Identifying the actual affine cycle with the oriented projective tube remains a separate geometric step.
 
 For a general real homogeneous \(F\), put \(d=n-1\), \(L(\zeta)=x\zeta\), \(U=\mathbb P^d\setminus\{F=0\}\), \(Y=\{L=0\}\cap U\), and \(V=U\setminus Y\). Suppose two additional statements have actually been justified for those objects:
@@ -759,6 +761,8 @@ its factor belongs to that boundary relation. In particular vanishing of all the
 \(p_*([k^-]+(-1)^d[k^+])=0\) integrally in this arrangement, by PR7. With rational coefficients and the additional AH032-2 logarithmic-period hypotheses, its smooth splitting can then be applied to the signed affine center. A reduced zero-cycle retains its augmentation convention in dimension \(n=2\). The proof does not produce permitted centers at a point failing the C8 hypotheses, determine their class in every component, or promote this conditional identification to a general polynomial.
 
 ## PR10. Conditional receiver for the general C8 argument
+
+Both general projective premises now have exact proofs: the rational-form spanning theorem is given in [Rational top forms detect cycles in a hypersurface complement](../AN02-L182.html), and the rational homology bound with normal-circle-first tube injection is given in [Finite covers and normal circles in projective complements](../AN02-L183.html#5-the-oriented-hyperplane-tube-is-injective-over-the-rationals), Theorem 5.1 and Corollary 6.1. The actual affine-cycle comparison, including orientation and multiplicity, remains a separate step.
 
 The rational-form premise below is established for arbitrary singular or repeated hypersurfaces in [Rational top forms detect cycles in a hypersurface complement](../AN02-L182.html#8-the-projective-homogeneous-family-with-positive-pole-exponents), Corollary 8.1. Identifying the actual affine cycle with the oriented projective tube remains a separate geometric step.
 

@@ -4,7 +4,7 @@ Perverse objects glue because their degree-zero morphisms form a sheaf. A counta
 
 *Original programme exposition by GPT-6.1 Sol (OpenAI), Ultra, October 2026; source comparison and editorial revision by GPT-6 Astra (OpenAI), Ultra, October 2026. Independently expressed programme text is dedicated under CC0. Human sources retain their own terms.*
 
-Use Perverse support, costalks and truncation triangles for the real perverse t-structure, support and cosupport tests, negative internal Hom, and the Hom sheaf. Use T-exact functors and adjoints between hearts for restricted adjoint tests with their separate membership hypotheses, and Constructible costalks and Verdier duality for the actual dual pairings and evaluation.
+Use [Perverse support, costalks and truncation triangles](perverse-support-costalks-and-truncation-triangles.md) for the real perverse t-structure, support and cosupport tests, negative internal Hom, and the Hom sheaf. Use [T-exact functors and adjoints between hearts](t-exact-functors-and-adjoints-between-hearts.md) for restricted adjoint tests with their separate membership hypotheses, and [Constructible costalks and Verdier duality](constructible-costalks-and-verdier-duality.md) for the actual dual pairings and evaluation.
 
 Throughout, \(k\) is commutative of finite global dimension. Manifolds and maps are real analytic, Hausdorff and countable at infinity, with uniform finite dimension bounds. Weak constructibility allows arbitrary modules; \(D^b\) always imposes a single global cohomology interval. The strong perverse heart additionally uses the Noetherian hypothesis of the preceding truncation theorem. Verdier duality between the perverse cuts below is stated over a field on the strong category.
 
@@ -57,7 +57,7 @@ On \(W\), composition of the first and second arrows of (3) is zero, so
  \tag{4}
 \]
 
-These are the desired actual overlap maps. Local identification with \(F_U,F_V\) gives local weak constructibility and perverse membership. The finite cone is globally bounded; the local microsupport criterion gives global weak constructibility. Hence \(F\in\mathcal P_p(X)\). Perfectness of stalks is also local, so the construction realizes strong descent data when the strong heart is defined.
+These are the desired actual overlap maps. Local identification with \(F_U,F_V\) gives local weak constructibility and perverse membership. The finite cone is globally bounded; the [local microsupport criterion](constructibility-from-microsupport-and-perfect-stalks.md) gives global weak constructibility. Hence \(F\in\mathcal P_p(X)\). Perfectness of stalks is also local, so the construction realizes strong descent data when the strong heart is defined.
 
 Inductively this proves effective descent for a finite open cover. Uniqueness and all compatible identifications at each step come from (2), rather than a purported functorial choice of cones.
 
@@ -90,7 +90,7 @@ Adjunction gives chain maps on \(X\), and we take a termwise sheaf colimit:
  \tag{6}
 \]
 
-For these sheaves of modules, colimits commute with stalks and filtered colimits are exact; the precise open foundational proof is [Stacks, Lemma 17.3.2, parts 2–3](https://stacks.math.columbia.edu/tag/01AH), using [Lemma 10.8.8](https://stacks.math.columbia.edu/tag/00DB) for the module homology comparison. Those sources retain their GNU Free Documentation License; only the prerequisite links and their mathematical statements are used here.
+For these sheaves of modules, colimits commute with stalks and filtered colimits are exact, as proved in [Theorem 3.1(2)–(3) of the module-sheaf prerequisite](../../../derived-categories-and-sheaf-operations/src/sheaves-of-modules-and-their-derived-categories.md#3-limits-colimits-stalks-and-sections-of-sums). The corresponding human source is [Stacks, Lemma 17.3.2, parts 2–3](https://stacks.math.columbia.edu/tag/01AH), using [Lemma 10.8.8](https://stacks.math.columbia.edu/tag/00DB) for the module homology comparison. Those sources retain their GNU Free Documentation License; only the prerequisite links and their mathematical statements are used here.
 
 At \(x\in U_m\) the later chain maps are all quasi-isomorphisms on stalks. Exactness of the colimit gives the canonical identifications
 
@@ -107,7 +107,7 @@ Formula (5) and stalkwise detection imply \(H^r(L)=0\) outside the one interval 
 
 For a cover member not in the countable subcover, its prescribed maps to the subcover objects determine isomorphisms on its intersections with all \(U_m\). The cocycle condition makes these agree. Apply the morphism sheaf (2) to glue them on that member. This supplies every original marking and proves effectiveness for the original cover. Uniqueness is already supplied by (2). \(\square\)
 
-The proofs of exact open extension, functorial injective embeddings and injective restriction are Lemma 5.2, Theorem 5.4 and Corollary 5.5 of Sheaves of modules and their derived categories. Its Theorem 6.1 and Lemma 6.2 construct bounded-below injective resolutions and prove that they are K-injective. For the unbounded models used here, Theorem 7.2 and Corollary 7.3 give K-injective resolutions with injective terms and prove their compatibility with open restriction. These statements apply to sheaves of modules over any sheaf of rings; the global boundedness of the glued object is proved separately in (5)–(7).
+The proofs of exact open extension, functorial injective embeddings and injective restriction are [Lemma 5.2, Theorem 5.4 and Corollary 5.5 of Sheaves of modules and their derived categories](../../../derived-categories-and-sheaf-operations/src/sheaves-of-modules-and-their-derived-categories.md#5-enough-injectives-functorially). Its [Theorem 6.1 and Lemma 6.2](../../../derived-categories-and-sheaf-operations/src/sheaves-of-modules-and-their-derived-categories.md#6-right-derived-functors-on-bounded-below-complexes) construct bounded-below injective resolutions and prove that they are K-injective. The models used here are bounded below and may be unbounded above, so Section 6 supplies the resolutions used in (6)–(7). For general unbounded inputs, [Theorem 7.2 and Corollary 7.3](../../../derived-categories-and-sheaf-operations/src/sheaves-of-modules-and-their-derived-categories.md#7-k-injective-resolutions-of-unbounded-complexes) give K-injective resolutions with injective terms and prove their compatibility with open restriction. These statements apply to sheaves of modules over any sheaf of rings; the global boundedness of the glued object is proved separately in (5)–(7).
 
 ## Two ambient support operations
 
@@ -150,7 +150,7 @@ Here is a local proof relative to the stated subanalytic stratification prerequi
 
 On a source piece of dimension \(s\) and rank \(r\), the constant-rank theorem makes its fibre dimension \(s-r\). This fibre lies in an actual fibre of \(f\), hence \(s-r\le d\). Since its image lies in a target piece of dimension at most \(\dim A\), \(r\le\dim A\). Therefore \(s\le\dim A+d\). Taking the supremum of the local piece dimensions proves (10). If \(A\) is empty, both sides use the empty-dimension convention.
 
-This proof retains the analytic stratification, rank-minor and set-operation prerequisites from Subanalytic sets and limiting tangent directions. It does not certify their unfinished lower foundations. When \(Y\ne\varnothing\), the fibre hypothesis forces \(d\ge0\); for empty \(Y\) all assertions below are vacuous.
+This proof retains the analytic stratification, rank-minor and set-operation prerequisites from [Subanalytic sets and limiting tangent directions](subanalytic-sets-and-limiting-tangent-directions.md). It does not certify their unfinished lower foundations. When \(Y\ne\varnothing\), the fibre hypothesis forces \(d\ge0\); for empty \(Y\) all assertions below are vacuous.
 
 ## Inverse images shift the dimension argument
 
@@ -164,7 +164,7 @@ The exact bounds are
 \tag{11}
 \]
 
-The existing analytic weak-operation theorem supplies globally bounded weak membership for both outputs, with their full arbitrary-coefficient contracts.
+The existing [analytic weak-operation theorem](weak-constructibility-under-sheaf-operations.md) supplies globally bounded weak membership for both outputs, with their full arbitrary-coefficient contracts.
 
 For the upper statement, ordinary inverse image is exact and its stalk at \(y\) is the stalk at \(f(y)\). Thus the degree-\(j\) nonzero locus is exactly \(f^{-1}\operatorname{supp}H^jF\). If \(j>p(r-d)\), its source locus has dimension less than \(r-d\). Formula (10) makes its inverse image have dimension less than \(r\), as required.
 
@@ -180,7 +180,7 @@ Put \(q(s)=p(s-d)-d\), so \({}^qD^{\ge0}={}^{p[-d]}D^{\ge-d}\). If \(j<q(r)+r=p(
 
 ## Direct images need actual output membership
 
-For the complex middle perversity, Massey's *Notes on Perverse Sheaves and Vanishing Cycles*, §5, states the corresponding four fibre-dimension bounds with the direct-image constructibility conditions explicit. Here the real perversity translation is obtained from the dimension estimate and the actual adjunctions already established. Thus this step proves a degree inequality for outputs in the stated category; it does not turn a nonproper analytic map into a constructibility theorem. The zero-dimensional-fibre and countable-space examples below test that distinction separately.
+For the complex middle perversity, Massey's *Notes on Perverse Sheaves and Vanishing Cycles*, §5, pp. 44–45, states the corresponding four fibre-dimension bounds with the direct-image constructibility conditions explicit. Here the real perversity translation is obtained from the dimension estimate and the actual adjunctions already established. Thus this step proves a degree inequality for outputs in the stated category; it does not turn a nonproper analytic map into a constructibility theorem. The zero-dimensional-fibre and countable-space examples below test that distinction separately.
 
 Suppose \(G\) is globally bounded weakly constructible on \(Y\). The two statements are
 
@@ -340,8 +340,8 @@ Both outputs satisfy the weak perverse bounds for \(d=0\), but neither is a fini
 
 ## References and the next section
 
-Beilinson, Bernstein and Deligne's [*Faisceaux pervers*](https://publications.ias.edu/sites/default/files/Faisceaux%20pervers.pdf), §1.4.1–1.4.10, printed pp. 43–49, supplies the open/closed gluing framework behind the preceding t-structure. This lesson uses that proved t-structure and its negative-Hom vanishing, then gives the marked overlap cone and the uniformly bounded countable descent construction explicitly. The formal gluing theorem is not a substitute for that infinite-cover construction. David Massey's [*Notes on Perverse Sheaves and Vanishing Cycles*, arXiv:math/9908107v13](https://arxiv.org/abs/math/9908107v13), §5, records the four holomorphic fibre-dimension bounds and their direct-image membership hypotheses for finite complex-constructible coefficients. Its field duality statement retains the finite coefficient condition. The real dimension estimate, translated general perversity, orientation line and arbitrary weak coefficients here have their own proofs and prerequisite conditions above. Massey's reference notes state these dimension bounds without proofs, so their statements serve as a precise comparison rather than as a claimed proof of this larger result.
+Beilinson, Bernstein and Deligne's [*Faisceaux pervers*](https://publications.ias.edu/sites/default/files/Faisceaux%20pervers.pdf), §1.4.1–1.4.10, printed pp. 43–49, supplies the open/closed gluing framework behind the preceding t-structure. This lesson uses that proved t-structure and its negative-Hom vanishing, then gives the marked overlap cone and the uniformly bounded countable descent construction explicitly. The formal gluing theorem is not a substitute for that infinite-cover construction. David Massey's [*Notes on Perverse Sheaves and Vanishing Cycles*, arXiv:math/9908107v13](https://arxiv.org/abs/math/9908107v13), §5, pp. 44–45 (with the coefficient conventions on p. 3 and field duality on p. 20), records the four holomorphic fibre-dimension bounds and their direct-image membership hypotheses for finite complex-constructible coefficients. Its field duality statement retains the finite coefficient condition. The real dimension estimate, translated general perversity, orientation line and arbitrary weak coefficients here have their own proofs and prerequisite conditions above. Massey's reference notes state these dimension bounds without proofs, so their statements serve as a precise comparison rather than as a claimed proof of this larger result.
 
-The general sheaf prerequisites are reused: the current derived programme's proved open extension, enough injectives, injective restriction and K-injectivity interfaces; the exact open same-lower-bound Stacks injective construction already recorded; the exact filtered stalk-colimit proofs linked above; and the SH-02 exceptional composition, adjunction and projection-formula proofs. These providers retain their prerequisite status. The source passages have not been followed through all their own onward references. Human sources retain their terms; the programme dedication applies only to independently expressed exposition.
+The general sheaf prerequisites are reused: the current derived programme's proved open extension, enough injectives, injective restriction and K-injectivity interfaces; the exact open same-lower-bound Stacks injective construction already recorded; the exact filtered stalk-colimit proofs linked above; and the SH-02 [exceptional composition, adjunction and projection-formula proofs](../SH02/exceptional-operations.md). These providers retain their prerequisite status. The source passages have not been followed through all their own onward references. Human sources retain their terms; the programme dedication applies only to independently expressed exposition.
 
 Complex middle perversity, its microlocal consequences and the later holomorphic solution and differential-system applications remain subsequent teaching. This lesson proves the stated descent and degree bounds relative to its precise prerequisites; it makes no full-course or transitive-closure claim.

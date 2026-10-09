@@ -19,8 +19,8 @@ For $f:Y\to X$, write
 
 Here are the precise sheaf-theoretic inputs used later.
 
-1. **Normal geometry.** The deformation to a smooth submanifold and its normal-cone sequence criterion are those of [Normal geometry](normal-geometry.md). In coordinates $(u,z)$ with the submanifold $u=0$, a point $(v,z_0)$ lies in the normal cone of a set $S$ if and only if there are $(u_n,z_n)\in S$ and $r_n\to+\infty$ with $z_n\to z_0$ and $r_nu_n\to v$.
-2. **Microsupport tests and propagation.** The test equivalence and directional propagation in [Detecting directional obstructions](microsupport-tests.md) are used with uniform neighborhoods. In particular, if a family $K_i$ has microsupport disjoint from one fixed product neighborhood $V\times W$ of a nonzero covector, the same small cone and the same compact cap tests can be chosen for every $K_i$. One may also choose the same pair of cone-open sets $O_0\subset O_1$ whose difference contains the testing point in its interior and is contained in $V$, with $Rq_{C*}R\Gamma_{O_1\setminus O_0}K_i=0$. This is the local propagation assertion, not a claim that arbitrary pointwise vanishing is uniform in $i$.
+1. **Normal geometry.** The deformation to a smooth submanifold and its normal-cone sequence criterion are those of [Normal geometry](../../SH02-normal-geometry.html). In coordinates $(u,z)$ with the submanifold $u=0$, a point $(v,z_0)$ lies in the normal cone of a set $S$ if and only if there are $(u_n,z_n)\in S$ and $r_n\to+\infty$ with $z_n\to z_0$ and $r_nu_n\to v$.
+2. **Microsupport tests and propagation.** The test equivalence and directional propagation in [Detecting directional obstructions](../../SH02-microsupport-tests.html) are used with uniform neighborhoods. In particular, if a family $K_i$ has microsupport disjoint from one fixed product neighborhood $V\times W$ of a nonzero covector, the same small cone and the same compact cap tests can be chosen for every $K_i$. One may also choose the same pair of cone-open sets $O_0\subset O_1$ whose difference contains the testing point in its interior and is contained in $V$, with $Rq_{C*}R\Gamma_{O_1\setminus O_0}K_i=0$. This is the local propagation assertion, not a claim that arbitrary pointwise vanishing is uniform in $i$.
 3. **Noncharacteristic boundary estimates.** If $H\in D^b(k_X)$ and $j:O\hookrightarrow X$ is open, then
    \[
    \begin{split}
@@ -33,8 +33,8 @@ Here are the precise sheaf-theoretic inputs used later.
    \end{split}
    \tag{AE.2}
    \]
-   These are the ordinary, noncharacteristic estimates in [SH02-MO-BOUNDARY](microsupport-operations.md#SH02-MO-BOUNDARY). The $+$ here is an ordinary fiberwise sum.
-4. **Proper images and submersions.** Proper direct image on the closed support has the cotangent estimate $\operatorname{SS}(Rf_*H)\subset f_\pi f_d^{-1}\operatorname{SS}(H)$, with $Rf_!=Rf_*$. For a submersion $g$, $\operatorname{SS}(g^{-1}H)=g_dg_\pi^{-1}\operatorname{SS}(H)$ with no global surjectivity requirement. For a closed embedding $i$, $\operatorname{SS}(i_*H)=i_d^{-1}\operatorname{SS}(H)$, viewed in the restricted ambient cotangent bundle. The cotangent estimates are [SH02-MO-PROPER-PUSH](microsupport-operations.md#SH02-MO-PROPER-PUSH) and [SH02-MO-SUBMERSION](microsupport-operations.md#SH02-MO-SUBMERSION). These estimates, the localization triangles, and compatibility of the canonical map $Rf_!\to Rf_*$ with composition are separately typed six-operations imports.
+   These are the ordinary, noncharacteristic estimates in [SH02-MO-BOUNDARY](../../SH02-microsupport-operations.html#SH02-MO-BOUNDARY). The $+$ here is an ordinary fiberwise sum.
+4. **Proper images and submersions.** Proper direct image on the closed support has the cotangent estimate $\operatorname{SS}(Rf_*H)\subset f_\pi f_d^{-1}\operatorname{SS}(H)$, with $Rf_!=Rf_*$. For a submersion $g$, $\operatorname{SS}(g^{-1}H)=g_dg_\pi^{-1}\operatorname{SS}(H)$ with no global surjectivity requirement. For a closed embedding $i$, $\operatorname{SS}(i_*H)=i_d^{-1}\operatorname{SS}(H)$, viewed in the restricted ambient cotangent bundle. The cotangent estimates are [SH02-MO-PROPER-PUSH](../../SH02-microsupport-operations.html#SH02-MO-PROPER-PUSH) and [SH02-MO-SUBMERSION](../../SH02-microsupport-operations.html#SH02-MO-SUBMERSION). These estimates, the localization triangles, and compatibility of the canonical map $Rf_!\to Rf_*$ with composition are separately typed six-operations imports.
 5. **Compact-support resolutions.** Bounded-below complexes on the locally compact spaces used here admit $c$-soft resolutions; $c$-soft sheaves and their restrictions to open subsets are acyclic for compactly supported sections. Open-extension base change identifies the restriction of $j_!H$ to a locally closed subset with extension by zero from the corresponding intersection. The two limit comparisons actually used below are proved in `SH02-AE-LIMITS`. No arbitrary closed-exhaustion continuity is assumed.
 6. **Elementary smooth topology.** Tubular charts, smooth partitions of unity, and a proper smooth embedding of a manifold countable at infinity into a finite-dimensional Euclidean space are topological antecedents. The blowup needed below is also described directly in local coordinates.
 
@@ -621,7 +621,7 @@ and the canonical comparison
  \tag{AE.53}
 \]
 
-is an isomorphism in the localized category $D^b(k_X;\Omega)$. Equivalently its cone has microsupport disjoint from $\Omega$. Only the definition and cone criterion of [the localized category](microlocal-categories.md) are needed; the representability theorems for four localized operations are not prerequisites of this result.
+is an isomorphism in the localized category $D^b(k_X;\Omega)$. Equivalently its cone has microsupport disjoint from $\Omega$. Only the definition and cone criterion of [the localized category](../../SH02-microlocal-categories.html) are needed; the representability theorems for four localized operations are not prerequisites of this result.
 
 <a id="SH02-AE-SMOOTH-TOPOLOGY-PROOF"></a>
 

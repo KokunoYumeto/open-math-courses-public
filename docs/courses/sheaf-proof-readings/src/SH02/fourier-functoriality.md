@@ -10,7 +10,7 @@ Fix a commutative unital ring \(k\) of finite global dimension \(g\). Work with 
 
 A base \(B\) is locally compact Hausdorff. A bundle \(E\to B\) is a real vector bundle of constant finite rank \(n_E\). Statements are local on the base and also apply on components of locally constant rank whenever the resulting functors preserve the asserted global bounds. No finite dimension, manifold structure, compactness, or countability assumption is imposed on \(B\). In particular a theorem below concerning a continuous base map is not restricted to a map of manifolds.
 
-Write \(\mathcal D_E=D^+_{\mathbb R_{>0}}(E;k)\). Conicity means locally constant cohomology along positive scalar orbits, including the fixed zero orbit. We use its proved equivalent, the natural scalar-transport isomorphism on \(E\times\mathbb R_{>0}\), normalized to be the identity at scalar one. See SH02-CON-COMPARISON and SH02-CON-COCYCLE in [Conic descent](conic-descent.md). Pointwise invariance under each fixed dilation, without the parameter-space isomorphism, is not used as a substitute.
+Write \(\mathcal D_E=D^+_{\mathbb R_{>0}}(E;k)\). Conicity means locally constant cohomology along positive scalar orbits, including the fixed zero orbit. We use its proved equivalent, the natural scalar-transport isomorphism on \(E\times\mathbb R_{>0}\), normalized to be the identity at scalar one. See SH02-CON-COMPARISON and SH02-CON-COCYCLE in [Conic descent](../../SH02-conic-descent.html). Pointwise invariance under each fixed dilation, without the parameter-space isomorphism, is not used as a substitute.
 
 All maps are continuous. The symbols \(Rf_!\) and \(Rf_*\) denote different direct images. The former uses sections whose support is proper over the target; none of the arguments replaces it by the latter merely because a fiber is contractible. On locally compact Hausdorff spaces we use proper-support base change, proper-support projection formula, their composition isomorphisms, and \(f^{-1}\dashv Rf_*\).
 
@@ -18,7 +18,7 @@ Whenever \(f^!\) occurs, the proper-support functor \(f_!\) on **sheaves of abel
 
 For a vector-bundle morphism over the identity of \(B\), this dimension condition is automatic. Its nonempty fibers are affine spaces of dimension at most the source rank. Compact-support cohomology of an arbitrary abelian sheaf on \(\mathbb R^d\) vanishes in degrees greater than \(d\). The proper-support stalk formula therefore bounds the cohomological dimension of the bundle map by its source rank, even if its rank jumps with the base point. The same observation applies to its transpose. For a base-change map, its fibers agree with those of the underlying map of bases, so a finite abelian-sheaf dimension bound for that map supplies the required bound. Alternatively one can impose the bound directly on each exceptional map that occurs.
 
-The foundational imports are SH02-IMP-INVERSE, SH02-IMP-ADJUNCTION, SH02-IMP-TENSOR and the localization imports in [Open prerequisites](open-prerequisites.md). We use the dimension-bounded projection-formula and exceptional-adjunction contracts SH02-KER-IMP-BCPF and SH02-KER-IMP-DUAL in [Kernel calculus](kernel-calculus.md) only within their specified map bounds. Their full base-space hypotheses are not an exact import for the more general ambient spaces here. The following separately typed dependencies therefore remain open at the generality required in this lesson:
+The foundational imports are SH02-IMP-INVERSE, SH02-IMP-ADJUNCTION, SH02-IMP-TENSOR and the localization imports in [Open prerequisites](../../SH02-open-prerequisites.html). We use the dimension-bounded projection-formula and exceptional-adjunction contracts SH02-KER-IMP-BCPF and SH02-KER-IMP-DUAL in [Kernel calculus](../../SH02-kernel-calculus.html) only within their specified map bounds. Their full base-space hypotheses are not an exact import for the more general ambient spaces here. The following separately typed dependencies therefore remain open at the generality required in this lesson:
 
 ### SH02-FF-IMP-BC-LCH — Proper-support base-change contract
 
@@ -36,7 +36,7 @@ The bounded-factor proper-support projection formula over locally compact Hausdo
 
 Exceptional adjunction and its transitivity for maps of locally compact Hausdorff spaces whose proper-support functors have finite cohomological dimension on abelian sheaves; the vector-bundle projection formula for its relative orientation object.
 
-The finite-dimensional affine-fiber cohomology bound and the interval-cohomology import SH02-IMPORT-INTERVAL from [Conic descent](conic-descent.md) are also explicit dependencies. These contracts specify what must be proved or matched; the narrower kernel-calculus setting does not close them.
+The finite-dimensional affine-fiber cohomology bound and the interval-cohomology import SH02-IMPORT-INTERVAL from [Conic descent](../../SH02-conic-descent.html) are also explicit dependencies. These contracts specify what must be proved or matched; the kernel-calculus setting with finite c-soft dimensions does not close them.
 
 Conic preservation by the four operations is SH02-CON-FUNCTORS. Its proofs for inverse image and both direct images use scalar transport and product-interval base change; those proofs do not use the dimension assumption reserved for exceptional inverse image. Hence they apply also when the underlying base map has no finite dimension bound. In particular no general nonproper base-change theorem for \(Rf_*\) is being inserted.
 
@@ -105,7 +105,7 @@ V_EF&=a_{E^*}^{-1}(T_EF)\otimes\pi_E^{-1}W_E
 \]
 where \(a\) is the antipodal involution. Both go from \(\mathcal D_E\) to \(\mathcal D_{E^*}\). Thus \(V_E\) and \(T_E\) have the same direction, but are not each other's inverses.
 
-The Fourier equivalence in [Fourier kernels](fourier-sato.md), SH02-FS-INVERSION, identifies \(V_E\) with the inverse, and right adjoint, of \(T_{E^*}\); likewise \(V_{E^*}\) is the inverse and right adjoint of \(T_E\). We use the adjunction obtained from the kernel tensor–Hom adjunction in SH02-FS-SETUP. Once a right adjoint is identified with FF2, its unit and counit are transported along that specified identification. All mates below use that adjunction.
+The Fourier equivalence in [Fourier kernels](../../SH02-fourier-sato.html), SH02-FS-INVERSION, identifies \(V_E\) with the inverse, and right adjoint, of \(T_{E^*}\); likewise \(V_{E^*}\) is the inverse and right adjoint of \(T_E\). We use the adjunction obtained from the kernel tensor–Hom adjunction in SH02-FS-SETUP. Once a right adjoint is identified with FF2, its unit and counit are transported along that specified identification. All mates below use that adjunction.
 
 The separately prescribed negatively normalized halfspace adjunction is treated in *The geometric normalization of Fourier adjunctions*, SH02-NDF-SOURCE-MAPS; SH02-FS-NORM-OPEN is its historical cross-reference. That theorem proves the paired inverse identities for its specified comparisons. The present identities use the positive dual orientation, the antipode in FF2, the tensor symmetry, and the raw kernel adjunction just fixed. They do not acquire a different adjunction from that later normalization result.
 
@@ -241,7 +241,7 @@ Then L3 is the natural map
 (1\otimes\operatorname{coev}_{W_1}).
 \tag{FF11b}
 \]
-Tensoring by the invertible line \(W_1\) is an equivalence, and FF11b is exactly its inverse on the displayed map. In particular the initial insertion in FF11b is coevaluation. A later cancellation of the output relative line is a separate map and must specify its order. [The graded support comparison](fourier-graded-comparison.md), SH02-FGC-EXTRACTION, proves that this L3 is \((-1)^{n_2-n_1}\) times the direct LFT17 kernel comparison. SH02-FGC-SUPPORT states the complete support equation with the final braided evaluation explicitly written. This paragraph completes the earlier suppressed line operation; it does not identify a separately implicit antecedent map without a correspondence check.
+Tensoring by the invertible line \(W_1\) is an equivalence, and FF11b is exactly its inverse on the displayed map. In particular the initial insertion in FF11b is coevaluation. A later cancellation of the output relative line is a separate map and must specify its order. [The graded support comparison](../../SH02-fourier-graded-comparison.html), SH02-FGC-EXTRACTION, proves that this L3 is \((-1)^{n_2-n_1}\) times the direct LFT17 kernel comparison. SH02-FGC-SUPPORT states the complete support equation with the final braided evaluation explicitly written. This paragraph completes the earlier suppressed line operation; it does not identify a separately implicit antecedent map without a correspondence check.
 
 Likewise L1, with the antipode and then the line \(W_1\) applied, gives
 \[
