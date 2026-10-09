@@ -6704,6 +6704,302 @@ Each unit is \(u_i+q_i\delta\eta\); divide \(q_i\) by \(u_i\) to obtain the addi
 
 Free further reading is [Arinkin, Gaitsgory, Kazhdan, Raskin, Rozenblyum and Varshavsky, *The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), §§12.2–12.3, for the commutative-algebra and diagonal framework, and [Lurie, *Derived Algebraic Geometry*](https://www.math.ias.edu/~lurie/papers/DAG.pdf), §2.5, for connective derived modules. The coefficient-projectivity, full algebra adjunction, connective diagonal and affine-module pushforward proofs used here are (CSD.1)–(CSD.25); the complete solutions are (CSD.26)–(CSD.28).
 
+### 3.80. Reconstructing the entire derived torsor and its connection
+
+Let \(H=\widehat G\), let \(A\) be any connective commutative DG \(\mathbf C\)-algebra, and let \(z\in\mathcal Z(A)\). Normalize its coefficient as in (CSD.1):
+
+\[
+ \mathcal V_z(V)=\mathsf u_AE_z(V)
+       \in\operatorname{QCoh}(X_A).
+ \tag{TBF.1}
+\]
+
+For each finite representation \(V\), (CSD.7) makes \(\mathcal V_z(V)\) locally a finite projective module over the full derived coordinate algebra. It retains the operator connection after the density side change. On the normalized left-module category, the product connection is the operator Leibniz rule. Thus a normalized commutative operator algebra is an ordinary commutative DG structure-sheaf algebra with that connection; the equivalence keeps all its derived multiplication maps and homotopies.
+
+We reconstruct the torsor, including the derived bases and paths. Work first on an affine chart with coordinate algebra \(S=\mathcal O(U)\otimes A\). Write \(O=\mathbf C[H]\), with its left translation representation and commuting right regular coaction. Set
+
+\[
+ T=\mathcal V_z(O)|_U\in\operatorname{CAlg}_S,\qquad
+ \mathcal P_z|_{U_A}=\operatorname{Spec}_S T.
+ \tag{TBF.2}
+\]
+
+The regular representation is the filtered union of finite subrepresentations. A finite set of its elements lies in one such subrepresentation: expand its coactions using linearly independent coefficient functions; coassociativity shows that their finite span is stable, and the counit recovers the original elements. The exact invariant projection (HN.18) of The moduli stack of bundles, §4.5, splits its constant representation. Applying \(\mathcal V_z\) therefore makes \(T\) a filtered colimit of finite projective \(S\)-modules, with \(S\) a retract of \(T\).
+
+Put \(S_0=H^0(S)\), \(T_0=H^0(T)\). For a finite projective derived module the cohomology is obtained by applying its degree-zero idempotent to a finite power of \(H^i(S)\). Filtered colimits preserve cohomology and tensor. Consequently
+
+\[
+ \begin{gathered}
+ T_0\text{ is faithfully flat over }S_0,\qquad
+ H^i(T)=H^i(S)\otimes_{S_0}T_0,\\
+ H^i(M\otimes_S^LT)=H^i(M)\otimes_{S_0}T_0
+          \quad(M\in\operatorname{Mod}_S).
+ \end{gathered}
+ \tag{TBF.3}
+\]
+
+Flatness follows because \(T_0\) is a filtered colimit of finite projectives. Faithfulness follows from the module retraction \(S_0\to T_0\to S_0\): a nonzero module cannot become zero after tensoring with a flat module containing \(S_0\) as a summand. The last identity is first the same idempotent calculation for each finite projective summand, then its filtered colimit. In particular tensoring with \(T\) is conservative on all unbounded complexes, not just connective ones.
+
+The group change of variables
+\((g,h)\mapsto(g,g^{-1}h)\) identifies the diagonal left-translation action on \(H\times H\) with the action on its first factor. Its inverse is \((g,k)\mapsto(g,gk)\). These are actual equivariant algebraic maps, with their multiplication and unit identities. Applying \(\mathcal V_z\) gives
+
+\[
+ T\otimes_S^LT
+        \simeq T\otimes_{\mathbf C}O,
+ \qquad
+ \mathcal P_z\times_{U_A}\mathcal P_z\simeq \mathcal P_z\times H.
+ \tag{TBF.4}
+\]
+
+The right coaction is the one inherited from \(O\); thus the second equivalence is the actual right torsor identity. Equations (TBF.3)–(TBF.4) say that \(\mathcal P_z\) is an affine derived fpqc \(H\)-torsor. They retain the negative cohomology of its base. Its classical reduction is an ordinary \(H\)-torsor; that ordinary torsor's finite-presentation and smoothness properties follow by faithfully flat descent from \(H\), using the all-ring finite-presentation and torsor descent of the earlier bundle lesson, §§7.5–7.6.
+
+For a finite representation \(V\), multiplication by the matrix \(\rho_V(g)^{-1}\) gives the equivariant change of variables
+\(O\otimes V\to O\otimes V_{\rm triv}\), with inverse multiplication by \(\rho_V(g)\). Applying \(\mathcal V_z\) produces the actual tensor trivialization
+
+\[
+ T\otimes_S^L\mathcal V_z(V)
+        \simeq T\otimes_{\mathbf C}V .
+ \tag{TBF.5}
+\]
+
+Its tensor, dual, permutation and representation-map comparisons come from these same matrix identities. Its right descent coaction is precisely the given \(H\)-representation. Faithfully flat descent therefore recovers
+
+\[
+ \mathcal V_z(V)\simeq \mathcal P_z\times^H V.
+ \tag{TBF.6}
+\]
+
+Here and below the associated module includes its full derived descent data.
+
+For completeness, this descent is valid for arbitrary unbounded modules and all maps. After an additional tensor with the faithfully flat algebra, the augmented Amitsur complex has the contraction inserting its unit in the first factor. For a module bounded below, the cohomology and Amitsur double complex has only finitely many terms in each total degree; ordinary faithfully flat exactness in every row proves the augmentation is an equivalence. For an arbitrary module, write it as the inverse limit of its lower good truncations. This limit recovers the module: in each fixed cohomology degree the inverse system is eventually constant, so the possible first derived-limit term vanishes. Formula (TBF.3) shows that flat scalar extension commutes with these truncations and their limit, degree by degree. Total limits commute with this inverse limit. Applying the bounded-below comparison to every truncation thus proves the unbounded comparison. The same argument for mapping complexes proves full faithfulness; tensor products and algebra structures descend by their full free-module and free-algebra bars. This proves the descent used in (TBF.6) with every higher compatibility.
+
+The algebra \(T\) also retains its connection. On a coordinate chart its tangent operator satisfies
+\(\partial(tt')=(\partial t)t'+t(\partial t')\), commutes with the internal differential, and annihilates the unit. The right \(H\)-coaction is horizontal because it came from a representation-map coaction. The torsor identities (TBF.4)–(TBF.5) are horizontal too. On a curve the exterior square of the relative one-form module is zero, so curvature is zero; the full operator relations already encode this integrability and its coherent derived maps. The construction glues over the original operator descent on \(X_A\).
+
+Conversely an affine derived \(H\)-torsor on \(X_A\) with this horizontal operator algebra gives the associated finite projective coefficient modules and their flat connections by (TBF.5) and full descent. Dual associated modules and their evaluation and coevaluation descend on the same full Amitsur diagram. Their two triangles descend as well, so the associated modules are dualizable and hence perfect on an affine chart. After faithfully flat reduction each residue fibre is an ordinary vector space in degree zero; criterion (CSD.4) makes the associated module finite projective over the full DG chart. Finite representations are semisimple by the complete reducibility proof in the earlier bundle lesson, §4.5. Their associated-module functor therefore preserves finite exact sequences and extends continuously to the full derived representation category by the representable module bar. Tensor compatibility extends on that same bar. Normalizing its operator modules back by \([1]\) gives a right \(t\)-exact \(E\): a connective representation complex is built by colimits from nonnegative shifts of degree-zero representations, whose normalized coefficient modules are connective. Its corresponding operator modules are those coefficients shifted by \([1]\). This gives
+
+\[
+ \mathcal Z(A)\simeq
+ \{\text{derived }H\text{-torsors on }X_A
+                  \text{ with flat operator connection}\}^{\simeq}.
+ \tag{TBF.7}
+\]
+
+The two inverse comparisons are the actual universal trivialization (TBF.5) and its fpqc descent. A tensor isomorphism induces the right-equivariant horizontal algebra map on \(T\); conversely such a torsor isomorphism induces the associated-module tensor isomorphism. These assignments are inverse on mapping spaces by the full descent comparison, hence on every higher path. The equivalence is compatible with arbitrary connective derived scalar changes by the original coefficient comparison and the derived tensor in (TBF.2). It is an equivalence of full infinity-groupoids, not merely a classical Tannakian statement.
+
+### 3.81. A uniform bound for every flat bundle
+
+We need a bounded bundle locus rather than the unrestricted bundle stack. First a regular connection on a line bundle \(L\) on a smooth projective curve over an algebraically closed characteristic-zero field forces \(\deg L=0\). Here is the algebraic residue argument, including the global residue input.
+
+For a rational differential on such a curve,
+
+\[
+ \sum_{p\in X}\operatorname{Res}_p(\alpha)=0.
+ \tag{TBF.8}
+\]
+
+To prove it, choose a nonconstant rational function \(t\). Its function-field extension is finite and separable. It gives a finite morphism \(f:X\to\mathbf P^1\). One can check finiteness directly: after multiplying a field basis by polynomial denominators, make its elements integral over \(k[t]\). The integral closure is contained in the trace-dual lattice of this basis. To check nonsingularity of the separable trace pairing, extend scalars to an algebraic closure and successively split the separable minimal polynomials of a finite set of field generators. The field algebra becomes a finite product of copies of that closure. Trace is the sum of its coordinates, so its multiplication pairing is the diagonal dot product. It is nonsingular there and therefore over the original field by the determinant test. Thus that dual lattice is a finite \(k[t]\)-module; its submodule is finite by Noetherianity. Do the same over \(k[t^{-1}]\) and glue the two normalizations. Their normal curve is the original \(X\): a local DVR has a unique centre on a proper curve by the valuative criterion, and these centres give inverse morphisms between the two normal proper curves with that common function field. The inverse composites agree on their generic points and hence everywhere by separatedness.
+
+Write \(\alpha=a\,dt\), and take the rational differential
+\(\operatorname{Tr}_{k(X)/k(t)}(a)\,dt\) on \(\mathbf P^1\). At a point of the target with uniformizer \(u\), the finite completed source algebra is the product of the completed local rings above it. This follows by lifting the finitely many orthogonal idempotents in the complete finite semilocal algebra; equivalently use the Chinese remainder decompositions modulo each power of \(u\) and pass to their compatible inverse limit. At one source point choose a parameter \(v\) with \(u=v^e\). It exists because initially \(u=v_0^e b(v_0)\), with \(b\) a unit, and its formal \(e\)-th root is obtained coefficient by coefficient; \(e\) is invertible in characteristic zero. In that factor, for a Laurent differential \(\sum_n a_n v^n\,dv\),
+
+\[
+ \operatorname{Tr}(v^m)=
+ \begin{cases}e\,u^{m/e},&e\mid m,\\0,&e\nmid m,\end{cases}
+ \qquad
+ \operatorname{Res}_{u=0}\operatorname{Tr}(\alpha)
+            =\operatorname{Res}_{v=0}(\alpha).
+ \tag{TBF.9}
+\]
+
+The trace formula is the sum over the \(e\) substitutions \(v\mapsto\zeta v\). Using
+\(dv=v^{1-e}du/e\), only the term \(n=-1\) contributes to the residue on either side. Residue is independent of the chosen source uniformizer: under a change between two source uniformizers v and w, every \(v^n\,dv\) except \(dv/v\) is an exact Laurent differential and has zero residue after substitution; \(dv/v\) becomes \(dw/w\) plus a regular logarithmic derivative of a unit. Summing over the source factors gives the local trace–residue identity. Finally partial fractions prove that a rational differential on \(\mathbf P^1\) has total residue zero: each finite simple-pole coefficient occurs with its negative at infinity, while polynomial terms and higher poles contribute none. Apply that identity to the trace differential to prove (TBF.8).
+
+Choose a nonzero rational section \(s\) of \(L\), and write \(\nabla s=s\otimes\alpha\). In a regular local frame \(e\), put \(s=h e\) and \(\nabla e=e\otimes\beta\), with \(\beta\) regular. The connection Leibniz rule gives
+
+\[
+ \alpha=dh/h+\beta,\qquad
+ \operatorname{Res}_p(\alpha)=\operatorname{ord}_p(h),\qquad
+ \deg L=\sum_p\operatorname{ord}_p(h)=0 .
+ \tag{TBF.10}
+\]
+
+The middle identity follows by writing \(h=v^m b(v)\), with \(b\) a unit. The last equality is (TBF.8), together with the divisor-degree definition of the earlier bundle lesson, §3.1. Since integers inject into the field in characteristic zero, the resulting integer degree is zero.
+
+A connection on a rank-\(n\) bundle \(E\) induces the determinant connection by the tensor Leibniz rule; locally its one-form is the trace of the connection matrix. Thus
+
+\[
+ \deg E=0,\qquad
+ \deg F=0\quad\text{for every horizontal subbundle }F\subset E.
+ \tag{TBF.11}
+\]
+
+The second assertion applies the same determinant construction to its induced regular connection.
+
+Let the Harder–Narasimhan slopes be
+\(\lambda_1>\cdots>\lambda_\ell\), with positive ranks \(r_i\). Their existence, uniqueness and slope Hom vanishing are proved in the earlier bundle lesson, §N3.1 and (HN.1); the filtration proof there is explicitly used for all genera in §4.1. At a proper filtration prefix \(F_j\), the second fundamental form is structure-sheaf linear:
+
+\[
+ F_j\longrightarrow(E/F_j)\otimes\Omega_X^1 .
+ \tag{TBF.12}
+\]
+
+The derivative of a scalar times a section lies in \(F_j\) and therefore disappears in the quotient. If
+\(\lambda_j-\lambda_{j+1}>2g-2\), (HN.1) makes this form zero, so \(F_j\) is horizontal. But the mean slope of any proper prefix of a strictly decreasing degree-zero filtration is positive: its mean exceeds the complementary mean, and their weighted mean is zero. This contradicts (TBF.11). Put \(c=\max(0,2g-2)\). We have proved
+
+\[
+ \lambda_j-\lambda_{j+1}\le c\quad(j<\ell),\qquad
+ -\frac{(n-1)c}{2}\le\lambda_\ell
+         \le\lambda_1\le\frac{(n-1)c}{2}.
+ \tag{TBF.13}
+\]
+
+Here is the exact bound. Since
+\(\lambda_1-\lambda_i\le(i-1)c\) and \(\sum r_i\lambda_i=0\),
+\[
+ \lambda_1\le\frac c n\sum_{i=1}^{\ell}r_i(i-1)
+  \le \frac c n(\ell-1)(n-\ell/2)
+  \le \frac{(n-1)c}{2}.
+ \tag{TBF.14}
+\]
+
+The middle maximum assigns every rank beyond the mandatory one in each term to the last term. The difference between \(n(n-1)/2\) and that maximum is
+\((n-\ell)(n-\ell+1)/2\), which is nonnegative. Dualizing gives the lower bound. If \(g\le1\), any strictly positive gap would contradict the first argument, so \(E\) is semistable of degree zero. These statements hold over every algebraically closed characteristic-zero extension field.
+
+### 3.82. Full derived spectral coefficients have bounded projective frame modules
+
+Choose a faithful closed representation \(\rho:H\hookrightarrow GL_n\), with \(n\ge1\), and choose \(x\in X(\mathbf C)\). For the bundle \(\mathcal P_z\times^H\mathbf C^n\), put
+
+\[
+ B_n=(n-1)\max(g-1,0),\qquad
+ m=B_n+2g,\qquad
+ b=n(m+1-g)>0 .
+ \tag{TBF.15}
+\]
+
+Every geometric fibre is a regular flat bundle by (TBF.7), and has minimum slope at least \(-B_n\) by (TBF.13). Thus
+\(\mu_{\min}(E(mx-y))\ge m-1-B_n>2g-2\)
+for every geometric point \(y\). Duality and (HN.1), as in the earlier bundle lesson §4.1, give \(H^1(E(mx-y))=0\). The exact evaluation sequence gives generation of \(E(mx)\), and \(H^1(E(mx))=0\). Riemann–Roch gives the rank \(b\) in (TBF.15). This proves the uniform ordinary fibre statements; we now retain the full derived coefficients.
+
+Let \(\mathcal F_m=\mathcal D_X\otimes_{\mathcal O_X}\mathcal O_X(-mx)\), in left conventions. It is a compact coherent operator module by §3.45. Its operator dual is compact by proper coherent duality. Define the actual compact Ran object
+
+\[
+ T_m=\operatorname{ins}_{\mathrm{id}_{\{1\}}}
+            \bigl(\rho\otimes\mathbb D_X\mathcal F_m[-1]\bigr).
+ \tag{TBF.16}
+\]
+
+Full operator pairing (KG.1), and the induced-module adjunction from the left regular operator module, give
+
+\[
+ \begin{aligned}
+ F_z(T_m)
+   &\simeq
+     \operatorname{RHom}_{\mathcal D_A}
+                    (\mathcal F_m\otimes A,E_z(\rho))[-1]\\
+   &\simeq
+     R\Gamma(X_A,\mathcal V_z(\rho)(mx)).
+ \end{aligned}
+ \tag{TBF.17}
+\]
+
+In the last equality the left module of \(E_z(\rho)\) is
+\(\mathcal V_z(\rho)[1]\); this cancels the preceding \([-1]\). The induced-module adjunction sends an operator-linear map from \(\mathcal D_X\otimes\mathcal O(-mx)\) to its restriction on the generator \(\mathcal O(-mx)\), and extends such a map by the actual operator action. Its free operator resolution and full mapping complex give the same identity for all unbounded inputs. Thus (TBF.17) is an identity of the actual global derived module, with its coherent scalar maps.
+
+Since \(T_m\) is compact and dualizable in the full Ran category, (SPC.10) makes this \(A\)-module perfect. Its every residue-field fibre has only degree-zero cohomology, of dimension \(b\), by the uniform fibre calculation and full nonflat coefficient base change (SPC.9). Criterion (CSD.4) therefore proves
+
+\[
+ W_z=R\Gamma(X_A,\mathcal V_z(\rho)(mx))
+       \text{ is finite projective of rank }b\text{ over }A .
+ \tag{TBF.18}
+\]
+
+This proves finite projectivity over the full DG base, rather than discarding it in favour of \(H^0(A)\).
+
+The actual evaluation map
+\(W_z\otimes_A\mathcal O_{X_A}\to \mathcal V_z(\rho)(mx)\)
+has finite projective kernel. Indeed its source and target are locally finite projective by (CSD.7) and (TBF.18). Its homotopy fibre is perfect. On every residue field of a curve chart the evaluation is an ordinary surjection, by generation just proved and the actual scalar comparison (TBF.17). Its fibre is consequently concentrated in degree zero there. Apply (CSD.4) on that chart. We obtain the full derived sequence
+
+\[
+ K_z\longrightarrow W_z\otimes_A\mathcal O_{X_A}
+       \longrightarrow \mathcal V_z(\rho)(mx),
+ \quad
+ K_z\text{ finite projective of rank }b-n.
+ \tag{TBF.19}
+\]
+
+A frame of \(W_z\) is a derived \(GL_b\)-torsor. On a locus where \(H^0(W_z)\) is free, lift a basis to \(A^b\to W_z\). Its perfect cone has zero residue fibres, so (CSD.4) makes it the zero module; alternatively the derived splitting proof (CSD.5) and the residue rank kill its complementary summand. It is an equivalence. Such principal opens cover the base; all their frame transformations and higher maps are retained. Pulling back to this frame torsor turns (TBF.19) into a full derived quotient with \(b\) fixed generators.
+
+For the classical reduction, these frames all belong to one finite-type ordinary atlas. Let \(V=V_{n,0,m}\) denote the open framed Quot scheme formed from \(\mathcal O_X(-mx)^b\), using any fixed very ample line to measure the Hilbert polynomial of rank n and degree zero. The construction of the earlier bundle lesson, §1.2, applies to this fixed source bundle: the point twist fixes the section-frame size, while the very ample line only measures the Quot polynomial. The preceding generation and cohomology rank put every reduced fibre in this one atlas. Let
+
+\[
+ Q=V\times_{\operatorname{Bun}_{GL_n}}\operatorname{Bun}_H .
+ \tag{TBF.20}
+\]
+
+The earlier bundle lesson, §4.9, proves \(GL_n/H\) affine of finite presentation and constructs finite polynomial coordinates for its sections. Its §4.11 then proves that the pullback in (TBF.20) is an affine finite-presentation scheme over \(V\). Hence \(Q\) is finite type; it is smooth over the bounded bundle open as a frame-torsor atlas. The construction works over every ordinary coefficient ring, including nonreduced ones, and retains the specified extension to the framed \(GL_n\)-bundle. Its image is the open where the associated bundle has degree zero, generation at \(m\) and vanishing of \(H^1\) at \(m\). Every classical spectral torsor lies in that image, in every component and genus. This supplies a single bounded ordinary bundle atlas and the actual full-DG frame modules above it.
+
+This has not yet proved that the full connection functor over \(Q\) is represented by a derived affine scheme, nor the required global quasicoherent compact generation and tensor comparison. Those derived connection-atlas and global-category assertions still require proofs. The ordinary bundle atlas alone is not their substitute. The actual full frame construction (TBF.16)–(TBF.19) is the derived coefficient input for that next step.
+
+![The full derived Hopf torsor reconstruction, degree-zero residue and HN-gap argument, exact necessary slope polygons, and actual compact Ran object giving the full derived projective frame module.](figures/spectral-torsors-bounded-frames.svg)
+
+**Figure 3.23.** Panel1 gives the torsor identities of (TBF.1)–(TBF.7), including the dual coordinate for the line-frame torsor. Panel2 draws the exact two rank-three genus-two HN polygons from Solution3.BP; the dashed polygon is excluded, while the solid polygon only passes a necessary test. Panel3 gives the full derived frame and evaluation calculation (TBF.15)–(TBF.19). Panel4 records the bounded ordinary atlas (TBF.20) and the derived/global assertions still requiring proofs.
+
+### 3.83. Torsor coordinates, a failed slope gap and the frame rank
+
+**Exercise 3.BO.** Let \(H=\mathbf G_m\) and \(S=A\otimes\mathcal O(U)\), where \(A\) is arbitrary connective. Let \(L\) be the finite projective rank-one coefficient of the weight-one representation. Compute the reconstructed torsor algebra and the universal trivialization, including negative weights.
+
+**Solution 3.BO.** Laurent weight decomposition gives
+
+\[
+ T=\bigoplus_{j\in\mathbf Z}L^{\otimes(-j)},
+ \qquad
+ L^{\otimes(-j)}=(L^\vee)^{\otimes j}\quad(j\ge0).
+ \tag{TBF.21}
+\]
+
+Its multiplication uses the actual tensor and inverse-line evaluations. For left translation on the regular functions, \(t^j\) has representation weight \(-j\), explaining the dual sign in (TBF.21). A local frame \(\ell\) identifies the algebra with \(S[t,t^{-1}]\), with \(t\) corresponding to the dual frame \(\ell^\vee\); a frame change \(\ell'=a\ell\) sends \(t'=a^{-1}t\). This is the line's actual frame torsor algebra, with its descent transition. The two-copy torsor change of variables is \(t_1,t_2\mapsto t_1,t_1^{-1}t_2\), with inverse \(t_2=t_1(t_1^{-1}t_2)\). The weight-\(j\) trivialization sends \(\ell^j\) to \(t^{-j}\), and its inverse sends \(1\) to \(t^j\ell^j\). These formulas hold in the full DG algebra and all integer weights; they do not replace \(A\) by its degree-zero ring.
+
+**Exercise 3.BP.** For rank \(3\) and genus \(2\), test the decreasing rank-one slope triples \((3,0,-3)\) and \((2,0,-2)\) against the flat-bundle bound. What does the test prove about existence of connections?
+
+**Solution 3.BP.** Here \(c=2\), \(B_3=2\), and degree zero says that the three slopes sum to zero. The first triple has a gap \(3>2\); the corresponding HN prefix would be horizontal by (TBF.12), yet have positive degree, contradicting (TBF.11). It cannot have a regular connection. The second triple has both gaps equal to \(2\), satisfies the exact extremal bound and passes this necessary test:
+
+\[
+ (3,0,-3)\text{ is excluded},\qquad
+ (2,0,-2)\text{ satisfies }
+       \lambda_1\le2,\quad\lambda_3\ge-2 .
+ \tag{TBF.22}
+\]
+
+Passing the bound does not prove existence of a bundle or connection with the specified filtration. No such existence assertion was used in the proof.
+
+**Exercise 3.BQ.** Compute \(m,b\) in (TBF.15) for \(n=3\) in genera \(0,1,2\). Explain why the full derived frame rank remains that number over \(A=\mathbf C[\delta]/(\delta^2)\), \(|\delta|=-2\).
+
+**Solution 3.BQ.** The exact values are
+
+\[
+ \begin{array}{c|ccc}
+ g&0&1&2\\ \hline
+ B_3&0&0&2\\
+ m&0&2&6\\
+ b&3&6&15
+ \end{array}
+ \tag{TBF.23}
+\]
+
+The inequalities used above are \(m-1-B_3>2g-2\): respectively \(-1>-2\), \(1>0\), and \(3>2\). Thus the global generation and \(H^1\)-vanishing tests hold in all three cases. Criterion (CSD.4) and (TBF.18) make the frame module locally \(A^b\), including its negative coefficient degrees. On such a frame its cohomology is
+
+\[
+ H^0(W_z)=\mathbf C^b,\qquad
+ H^{-2}(W_z)=\mathbf C^b,\qquad
+ H^i(W_z)=0\quad(i\ne0,-2).
+ \tag{TBF.24}
+\]
+
+In particular the frame module has finite projective rank \(b\) over \(A\), but is not a degree-zero vector space. Replacing it by \(H^0(W_z)\) would discard the nonzero negative degree and the full derived scalar comparisons.
+
+Free further reading is [Arinkin and Gaitsgory, *Singular support of coherent sheaves, and the geometric Langlands conjecture*](https://arxiv.org/abs/1201.6343), §10.3, for the boundedness question, and [Gaitsgory, *Outline of the proof of the geometric Langlands conjecture for GL(2)*](https://arxiv.org/abs/1302.2506), §4.3, for spectral localization. The full derived torsor reconstruction is (TBF.1)–(TBF.7), the uniform connection slope argument is (TBF.8)–(TBF.14), and the full derived bounded frame calculation is (TBF.15)–(TBF.20). The three complete solutions are (TBF.21)–(TBF.24).
+
 ## 4. Betti, constructible, and tempered categories
 
 Now suppose \(k=\mathbb C\), and choose a coefficient field \(E\) of characteristic zero. The **large Betti** category consists of complexes of \(E\)-sheaves on the analytic stack, with no finite-dimensional stalk requirement. Its automorphic subcategory is

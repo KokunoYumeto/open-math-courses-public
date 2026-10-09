@@ -2,7 +2,9 @@
 
 This course contains 99 readings: 96 teaching chapters and three supporting proof readings. The course and its transitive proof dependencies remain incomplete.
 
-Read the overview or [all chapters](html/index.html). The source archive preserves the current checkpoint107 reader and editable mathematical and figure sources. After extraction, open `courses/OA-SUBFACTORS/public/html/index.html`.
+Read the overview or [all chapters](html/index.html). The source archive preserves the current checkpoint108 reader and editable mathematical and figure sources. After extraction, open `courses/OA-SUBFACTORS/public/html/index.html`.
+
+Current physical result: The actual natural-reflected modified-cup error has an exact orthogonal density bias at every finite depth, even when its lower physical norm tends to zero. The weighted-spin tower has an exact whole-stage physical Haar spectrum, ordinary-cup decay and a finite noncommuting-expectation witness, retaining every prescribed prefix. Complete proofs, 6 solved exercises and 2 reproducible diagrams accompany the current reader. The original general nonextremal bicommutant theorem, distinct represented/opposite reconstruction and fixed weighted-model invariant endpoint remain unresolved.
 
 Current analytic result: Actual Jones projections separate the physical and reflected canonical traces at every nonextremal prefix. The specified finite reflection has a normal extension exactly when the original inclusion is extremal, including arbitrary core centers. Exact modified-cup and finite physical-tower calculations identify the remaining analytic transfer gap. Complete proofs, 11 solved exercises and 3 reproducible diagrams accompany the current reader. The unrestricted full finite partition and original forward generating clauses remain proved; the general nonextremal bicommutant and fixed weighted-model invariant endpoint remain unresolved.
 

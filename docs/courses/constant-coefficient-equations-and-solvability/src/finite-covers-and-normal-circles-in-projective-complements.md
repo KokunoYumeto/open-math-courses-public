@@ -592,6 +592,8 @@ For a nontrivial normal bundle, (29) describes the local restrictions of the glo
 
 ## 6. The general rational-period receiver now has both inputs
 
+The separate affine comparison is supplied in [Equatorial cycles and the projective period test](../AN02-L184.html#complete-proof): the actual signed contour projects to twice the normal tube of the projected canonical center. The affine circle-average/logarithm argument receives its vanished projective class back to rational affine null homology. Its component conclusion retains the precise planned analytic prerequisites in the full accompanying contour proof.
+
 The complete rational-top-form theorem is already written in the linked lesson. In coordinates \(Z_0=L,Z_1,\ldots,Z_d\), let
 \[
  \omega=\sum_{j=0}^d(-1)^j Z_j

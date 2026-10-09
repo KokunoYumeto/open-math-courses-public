@@ -31,9 +31,9 @@ preserve all higher regularity on one common interval and
 construct its actual caloric gauge. The following sections
 give a DeTurck solution for arbitrary \(\dot H^1\) data,
 with quantitative uniqueness and continuous dependence.
-The heat estimates and gauge bounds needed to transfer that
-last result to low-regularity caloric gauge are developed
-subsequently in the course.
+The heat estimates and gauge bounds transferring that last result
+to the caloric solution map are proved in the
+[following companion](../classical-caloric-gauge.html).
 
 ## 1. Spaces and the full multilinear equation
 
@@ -1083,11 +1083,11 @@ identity of the two DeTurck constructions on overlapping
 intervals is proved by uniqueness, not inferred from
 their similar formulas.
 
-The next analytical tasks are the further weighted
-smoothing estimates and the low-regularity caloric gauge,
-followed by the physical-time estimates in the general
-global-existence argument. Their conclusions are not
-assumptions in the constructions already proved here.
+The weighted smoothing estimates and the low-regularity caloric
+gauge are now proved in [Heat smoothing and the caloric gauge](../classical-caloric-gauge.html),
+including the common lifespan of regular approximations and the
+actual gauge limit. The physical-time estimates in the general
+global-existence argument remain subsequent parts of Lesson 9.
 The source reading behind this chapter covers the exact
 DeTurck equation and local statements in Oh's companion
 Section 5, including author TeX lines 1744–1936, and the

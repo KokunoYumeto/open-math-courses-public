@@ -2133,8 +2133,9 @@ These are the estimates needed by the construction, rather
 than an assumption that the physical global solution exists.
 
 The heat-flow constructions are now supplied by the next companion.
-Further weighted gauge estimates, low-regularity physical evolution
-and the general global continuation argument are still being written.
+The weighted gauge construction is supplied by the following companion.
+Low-regularity physical evolution and the general global continuation
+argument are still being written.
 
 
 ## 13. Constructing the auxiliary heat flow
@@ -2150,6 +2151,37 @@ continuous dependence.
 The companion includes eight fully solved exercises and the exact
 commuting gauge map (HC.35)–(HC.36). Equations (HC.32)–(HC.34)
 identify an extra-derivative error in two source displays through
-regular stationary solutions. The low-regularity caloric-gauge
-estimates and the general physical-time global argument remain
-the next parts of this unit.
+regular stationary solutions. The low-regularity caloric-gauge construction is now supplied below.
+The general physical-time global argument remains in progress.
+
+
+## 14. Passing to the caloric gauge with one derivative
+
+[Heat smoothing and the caloric gauge](../classical-caloric-gauge.html)
+proves the common regular lifespan, weighted smoothing and the actual
+gauge limit in (HG.1)–(HG.37). The caloric solution map extends
+continuously from regular data to \(\dot H^1\), with every constant
+and limiting product retained. Equations (HG.38)–(HG.40) prove
+regular caloric uniqueness by the curvature energy identity.
+
+The companion includes eight solved exercises and the exact anchor
+comparison and finite-endpoint Gaussian calculation (HG.41)–(HG.44).
+These auxiliary spatial heat constructions now supply the next
+physical-time and global-evolution calculations. Lesson 9 remains
+incomplete until those arguments and its main exercise set are supplied.
+
+
+## 15. Global auxiliary heat flow and the original time component
+
+[Global heat flow and the time component](../classical-dynamic-heat.html)
+proves global regular spatial heat existence using the original
+magnetic energy, then constructs the time component and its smooth
+physical-parameter dependence. The complete arguments are
+(HD.1)–(HD.26). Equations (HD.27)–(HD.29) construct the actual
+caloric-temporal gauge and identify its endpoint representative.
+
+The companion includes eight solved exercises and the exact
+dynamic Gaussian calculation (HD.31)–(HD.35), retaining its
+curvature, Gauss expression and physical energy factors.
+The estimates for physical-time evolution and the general
+physical global argument remain in progress.

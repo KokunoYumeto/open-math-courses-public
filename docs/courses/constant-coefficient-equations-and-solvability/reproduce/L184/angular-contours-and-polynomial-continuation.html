@@ -1,0 +1,1430 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Angular contours and polynomial continuation</title><link rel="stylesheet" href="../../course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "../../assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Reading navigation"><a href="../../AN02-L184.html">Equatorial cycles and the projective period test</a> · <a href="#8-the-two-oriented-contour-formulas">Oriented contours</a> · <a href="#one-bounding-cycle-gives-homogeneous-polynomials-on-the-whole-component">Polynomial continuation</a> · <a href="#the-lower-order-expansion-has-a-global-exponential-bound">Entire bound</a></nav><h1 id="angular-contours-and-polynomial-continuation">Angular contours and polynomial continuation</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Homogeneous polynomial equations connect three kinds of geometry: tangent cones in frequency space, complex contours that avoid the characteristic divisor, and affine cycles that control polynomial values of the causal inverse. This reading supplies the full authored analytic route from the tangent model to both oriented contour formulas and the all-powers polynomial continuation argument. It also proves the global exponential bound for the lower-order series and includes all the original solved exercises.</p>
+<p>Basic references are Atiyah, Bott and Gårding [A, B] for the hyperbolic contour and lacuna methods. The proof is supplied below at the explicit preceding inputs stated next. In particular the remaining analytic-wavefront and angular-Fourier foundation statements are marked as planned prerequisites; they are not asserted to follow from the already written distributional boundary theorem.</p>
+<h2 id="mathematical-prerequisites">Mathematical prerequisites</h2>
+<p><strong>Hyperbolicity and strength.</strong> <a href="../../AN02-L038.html">Hyperbolicity and lower order terms</a> gives all directions in the principal hyperbolicity cone, the full component-strength comparison and the shifted derivative estimate. <a href="../../AN02-L039.html">Multiple characteristics and allowed lower order terms</a> gives multivariable derivative vanishing at each principal-line multiplicity, including the principal part itself.</p>
+<p><strong>Regular-inverse wavefronts.</strong> <a href="../../AN02-L019.html">Wavefronts of regular kernels</a>, Theorem 1.1, extracts a regular inverse of each normalized high-frequency localization, with its support in the corresponding ordinary wavefront fiber. The statement concerns every regular fundamental solution and does not assume global temperedness. <a href="../../AN02-L018.html">Symbols at infinity</a> supplies the normalized derivative-vector compactness model.</p>
+<p><strong>Causal inverses.</strong> <a href="../../AN02-L040.html">Causal fundamental solutions and lower order expansions</a> constructs the regular causal inverse, proves uniqueness in the full distributional halfspace class, and gives the causal lower-order expansion and its support cone. The scalar and Fourier conventions of that proof are retained.</p>
+<p><strong>Elementary complex analysis.</strong> <a href="../../src/cauchy-bounds-and-root-counts.md">Cauchy bounds, root counts and analytic extensions</a> supplies the one-variable Cauchy, Rouché, Hurwitz and compact-contour statements. Polynomial Taylor expansion, finite root counts and compactness are used below with their exact task-specific bounds. The complete preceding <a href="../../AN02-L118.html">Tangent cones that permit an imaginary push</a> gives the local cone persistence, positive-polar closed graph and uniform power denominator bound, including the full-sphere extension of an equatorial field. That polynomial input is proved; it is not a remaining general microhyperbolicity premise.</p>
+<p><strong>Distributional boundaries, with a separate planned analytic input.</strong> The full cone limit and uniform finite-test estimate are proved in <a href="../../prerequisites/holomorphic-boundaries-in-convex-cones.html">Holomorphic boundaries in convex cones</a>, Theorem 2.1 and its explicit finite-test formula. The present analytic singularity argument additionally needs these precise planned prerequisites in the course <em>Distributions, kernels and analytic singularities</em>: a holomorphic function in a tube with a uniform local polynomial radial-growth bound has boundary analytic wavefront contained in the positive polar of the approach cone; analytic-coefficient differential operators decrease analytic wavefront; and ordinary wavefront is contained in analytic wavefront. No proof of those three assertions is inferred from boundary existence alone.</p>
+<p><strong>Planned angular Fourier and wavefront operations.</strong> The same preceding distribution course is the exact provider for the all-integer parity-sensitive angular Fourier identity with its sphere-density normalization, one-dimensional finite parts and homogeneous-extension convention. Its required identity is stated explicitly at the start of the angular distribution section below. Further required statements are the smooth and analytic wavefront bounds for transverse pullback, tensor products, products without opposing covectors, submanifold restriction and proper-support projection integration; continuity in distributions with a fixed closed ordinary wavefront bound; analytic regularity for the homogeneous Euler operator; and homogeneous Fourier-wavefront interchange away from both origins. The argument below verifies all the receiving covectors, supports and signs. These general foundation statements retain an honest planned status, and do not make the entire prerequisite course or this course proof-closed.</p>
+<p>The polynomial, contour, residue, compact-cycle and analytic-identity arguments themselves are fully written below. Rational finite-cycle comparison and the separate global component argument are supplied in the accompanying equatorial-cycle chapter. No integral torsion conclusion is inferred from a complex period.</p>
+<h2 id="1-a-tangent-polynomial-and-the-full-limiting-operator">1. A tangent polynomial and the full limiting operator</h2>
+<p>Fix <span class="math" data-index="0" data-tex="\(\zeta\in\mathbb R^n\setminus\{0\}\)">\(\zeta\in\mathbb R^n\setminus\{0\}\)</span>. Define the multivariable vanishing order</p>
+<span class="math math-display" id="eq-1" data-index="1" data-tex="\[
+\mu=\min\{|\alpha|:\partial^\alpha F(\zeta)\ne0\},
+\qquad
+H_\zeta(\eta)=
+\sum_{|\alpha|=\mu}
+\frac{\partial^\alpha F(\zeta)}{\alpha!}\eta^\alpha.
+\tag{1}
+\]">\[
+\mu=\min\{|\alpha|:\partial^\alpha F(\zeta)\ne0\},
+\qquad
+H_\zeta(\eta)=
+\sum_{|\alpha|=\mu}
+\frac{\partial^\alpha F(\zeta)}{\alpha!}\eta^\alpha.
+\tag{1}
+\]</span>
+<p>Thus <span class="math" data-index="2" data-tex="\(0\le\mu\le m\)">\(0\le\mu\le m\)</span>, and <span class="math" data-index="3" data-tex="\(H_\zeta\)">\(H_\zeta\)</span> is a nonzero homogeneous polynomial of degree <span class="math" data-index="4" data-tex="\(\mu\)">\(\mu\)</span>.</p>
+<p>The multiplicity at zero of <span class="math" data-index="5" data-tex="\(t\mapsto F(\zeta+tN)\)">\(t\mapsto F(\zeta+tN)\)</span> is exactly <span class="math" data-index="6" data-tex="\(\mu\)">\(\mu\)</span>. If <span class="math" data-index="7" data-tex="\(F(\zeta)\ne0\)">\(F(\zeta)\ne0\)</span>, both orders are zero. Otherwise <span class="math" data-index="8" data-tex="\(\zeta\)">\(\zeta\)</span> is not proportional to <span class="math" data-index="9" data-tex="\(N\)">\(N\)</span>, since <span class="math" data-index="10" data-tex="\(F(N)\ne0\)">\(F(N)\ne0\)</span>. Let the line multiplicity be <span class="math" data-index="11" data-tex="\(\nu\)">\(\nu\)</span>. The multivariable Taylor order implies that all directional derivatives of orders below <span class="math" data-index="12" data-tex="\(\mu\)">\(\mu\)</span> vanish, so <span class="math" data-index="13" data-tex="\(\nu\ge\mu\)">\(\nu\ge\mu\)</span>. the hyperbolicity and strength input's multiple-characteristic result with <span class="math" data-index="14" data-tex="\(j=0\)">\(j=0\)</span> makes every multivariable derivative of order below <span class="math" data-index="15" data-tex="\(\nu\)">\(\nu\)</span> vanish; hence <span class="math" data-index="16" data-tex="\(\mu\ge\nu\)">\(\mu\ge\nu\)</span>. Equality follows, and</p>
+<span class="math math-display" id="eq-2" data-index="17" data-tex="\[
+H_\zeta(N)=\partial_N^\mu F(\zeta)/\mu!\ne0.
+\tag{2}
+\]">\[
+H_\zeta(N)=\partial_N^\mu F(\zeta)/\mu!\ne0.
+\tag{2}
+\]</span>
+<p>For real <span class="math" data-index="18" data-tex="\(\eta\)">\(\eta\)</span>, the polynomials</p>
+<span class="math math-display" id="eq-3" data-index="19" data-tex="\[
+\varepsilon^{-\mu}
+F\bigl(\zeta+\varepsilon(\eta+zN)\bigr)
+\longrightarrow H_\zeta(\eta+zN)
+\quad(\varepsilon\downarrow0)
+\tag{3}
+\]">\[
+\varepsilon^{-\mu}
+F\bigl(\zeta+\varepsilon(\eta+zN)\bigr)
+\longrightarrow H_\zeta(\eta+zN)
+\quad(\varepsilon\downarrow0)
+\tag{3}
+\]</span>
+<p>converge in coefficients and locally uniformly in <span class="math" data-index="20" data-tex="\(z\in\mathbb C\)">\(z\in\mathbb C\)</span>. Every polynomial before the limit has only real zeros in <span class="math" data-index="21" data-tex="\(z\)">\(z\)</span>. The limit has degree <span class="math" data-index="22" data-tex="\(\mu\)">\(\mu\)</span> and nonzero leading coefficient (2). If it had a nonreal zero, a small disk around that zero disjoint from the real axis, with a zero-free boundary, would have a zero of the approximating polynomial by Rouché's theorem. This is impossible. Thus <span class="math" data-index="23" data-tex="\(H_\zeta\)">\(H_\zeta\)</span> is homogeneous hyperbolic in <span class="math" data-index="24" data-tex="\(N\)">\(N\)</span>.</p>
+<p>The same argument applies to every <span class="math" data-index="25" data-tex="\(\theta\in\Gamma\)">\(\theta\in\Gamma\)</span>. the hyperbolicity and strength input first makes <span class="math" data-index="26" data-tex="\(F\)">\(F\)</span> hyperbolic in <span class="math" data-index="27" data-tex="\(\theta\)">\(\theta\)</span>. Its line multiplicity at <span class="math" data-index="28" data-tex="\(\zeta\)">\(\zeta\)</span>, compared to the multivariable order exactly as above, is again <span class="math" data-index="29" data-tex="\(\mu\)">\(\mu\)</span>, and <span class="math" data-index="30" data-tex="\(H_\zeta(\theta)\ne0\)">\(H_\zeta(\theta)\ne0\)</span>. The connected cone <span class="math" data-index="31" data-tex="\(\Gamma\)">\(\Gamma\)</span> is therefore contained in the component of <span class="math" data-index="32" data-tex="\(\{H_\zeta\ne0\}\)">\(\{H_\zeta\ne0\}\)</span> containing <span class="math" data-index="33" data-tex="\(N\)">\(N\)</span>:</p>
+<span class="math math-display" id="eq-4" data-index="34" data-tex="\[
+\Gamma\subset\Gamma(H_\zeta,N),
+\qquad
+C_\zeta:=\Gamma(H_\zeta,N)^*\subset C.
+\tag{4}
+\]">\[
+\Gamma\subset\Gamma(H_\zeta,N),
+\qquad
+C_\zeta:=\Gamma(H_\zeta,N)^*\subset C.
+\tag{4}
+\]</span>
+<p>For <span class="math" data-index="35" data-tex="\(\mu=0\)">\(\mu=0\)</span>, use the scalar convention <span class="math" data-index="36" data-tex="\(\Gamma(H_\zeta,N)=\mathbb R^n\)">\(\Gamma(H_\zeta,N)=\mathbb R^n\)</span> and <span class="math" data-index="37" data-tex="\(C_\zeta=\{0\}\)">\(C_\zeta=\{0\}\)</span>.</p>
+<p>The limiting operator must retain the lower order components of <span class="math" data-index="38" data-tex="\(P\)">\(P\)</span>. Set</p>
+<span class="math math-display" id="eq-5" data-index="39" data-tex="\[
+L_\zeta(\eta)=
+\sum_{j=0}^m\
+\sum_{\substack{|\alpha|=\mu+j-m\\|\alpha|\ge0}}
+\frac{\partial^\alpha P_j(\zeta)}{\alpha!}\eta^\alpha.
+\tag{5}
+\]">\[
+L_\zeta(\eta)=
+\sum_{j=0}^m\
+\sum_{\substack{|\alpha|=\mu+j-m\\|\alpha|\ge0}}
+\frac{\partial^\alpha P_j(\zeta)}{\alpha!}\eta^\alpha.
+\tag{5}
+\]</span>
+<p>An inner sum with negative requested order is empty. Its <span class="math" data-index="40" data-tex="\(j=m\)">\(j=m\)</span> term is <span class="math" data-index="41" data-tex="\(H_\zeta\)">\(H_\zeta\)</span>; every other term has degree less than <span class="math" data-index="42" data-tex="\(\mu\)">\(\mu\)</span>. We claim</p>
+<span class="math math-display" id="eq-6" data-index="43" data-tex="\[
+\varepsilon^{m-\mu}P(\zeta/\varepsilon+\eta)
+\longrightarrow L_\zeta(\eta)
+\quad\text{in coefficients}.
+\tag{6}
+\]">\[
+\varepsilon^{m-\mu}P(\zeta/\varepsilon+\eta)
+\longrightarrow L_\zeta(\eta)
+\quad\text{in coefficients}.
+\tag{6}
+\]</span>
+<p>Indeed homogeneity and the finite Taylor formula give for the component of degree <span class="math" data-index="44" data-tex="\(j\)">\(j\)</span></p>
+<span class="math math-display" id="eq-7" data-index="45" data-tex="\[
+\varepsilon^{m-\mu}P_j(\zeta/\varepsilon+\eta)
+=\sum_\alpha
+\varepsilon^{m-\mu-j+|\alpha|}
+\frac{\partial^\alpha P_j(\zeta)}{\alpha!}\eta^\alpha.
+\tag{7}
+\]">\[
+\varepsilon^{m-\mu}P_j(\zeta/\varepsilon+\eta)
+=\sum_\alpha
+\varepsilon^{m-\mu-j+|\alpha|}
+\frac{\partial^\alpha P_j(\zeta)}{\alpha!}\eta^\alpha.
+\tag{7}
+\]</span>
+<p>the hyperbolicity and strength input's multiple-characteristic result, now with degree <span class="math" data-index="46" data-tex="\(j=m-d\)">\(j=m-d\)</span>, says
+<span class="math" data-index="47" data-tex="\(\partial^\alpha P_j(\zeta)=0\)">\(\partial^\alpha P_j(\zeta)=0\)</span> whenever
+<span class="math" data-index="48" data-tex="\(|\alpha|&lt;\mu+j-m\)">\(|\alpha|&lt;\mu+j-m\)</span>. At a noncharacteristic <span class="math" data-index="49" data-tex="\(\zeta\)">\(\zeta\)</span>, the latter bound is nonpositive and needs no vanishing assertion. Thus all coefficients of negative powers of <span class="math" data-index="50" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> in (7) are zero; exponent zero gives exactly (5), and positive exponents tend to zero. This proves (6), including the endpoint degree-zero terms.</p>
+<p>The derivative-vector norm is homogeneous under scalar multiplication and continuous in the coefficients. Consequently</p>
+<span class="math math-display" id="eq-8" data-index="51" data-tex="\[
+\varepsilon^{m-\mu}S_P(\zeta/\varepsilon)
+\longrightarrow S_{L_\zeta}(0)&gt;0,
+\qquad
+\frac{P(\zeta/\varepsilon+\eta)}{S_P(\zeta/\varepsilon)}
+\longrightarrow
+Q_\zeta(\eta):=\frac{L_\zeta(\eta)}{S_{L_\zeta}(0)}.
+\tag{8}
+\]">\[
+\varepsilon^{m-\mu}S_P(\zeta/\varepsilon)
+\longrightarrow S_{L_\zeta}(0)&gt;0,
+\qquad
+\frac{P(\zeta/\varepsilon+\eta)}{S_P(\zeta/\varepsilon)}
+\longrightarrow
+Q_\zeta(\eta):=\frac{L_\zeta(\eta)}{S_{L_\zeta}(0)}.
+\tag{8}
+\]</span>
+<p>Therefore <span class="math" data-index="52" data-tex="\(Q_\zeta\)">\(Q_\zeta\)</span> is an exact normalized high-frequency localization in direction <span class="math" data-index="53" data-tex="\(\zeta\)">\(\zeta\)</span>. The full limit is <span class="math" data-index="54" data-tex="\(L_\zeta\)">\(L_\zeta\)</span>, rather than just <span class="math" data-index="55" data-tex="\(H_\zeta\)">\(H_\zeta\)</span>. When <span class="math" data-index="56" data-tex="\(\mu=0\)">\(\mu=0\)</span>, (5) reduces to the nonzero constant <span class="math" data-index="57" data-tex="\(F(\zeta)\)">\(F(\zeta)\)</span>.</p>
+<h2 id="2-the-cone-forced-in-each-wavefront-fiber">2. The cone forced in each wavefront fiber</h2>
+<p>For the causal inverse <span class="math" data-index="58" data-tex="\(E\)">\(E\)</span>, define</p>
+<span class="math math-display" id="eq-9" data-index="59" data-tex="\[
+D_\zeta=\{x:(x,\zeta)\in\operatorname{WF}(E)\}.
+\tag{9}
+\]">\[
+D_\zeta=\{x:(x,\zeta)\in\operatorname{WF}(E)\}.
+\tag{9}
+\]</span>
+<p>Then the closed convex cone generated by <span class="math" data-index="60" data-tex="\(D_\zeta\)">\(D_\zeta\)</span> contains <span class="math" data-index="61" data-tex="\(C_\zeta\)">\(C_\zeta\)</span>. Here “generated” includes closure and all nonnegative finite linear combinations; no assertion that the fiber itself fills that cone is made.</p>
+<p>Apply the regular-inverse wavefront input to (8). It gives a regular fundamental solution <span class="math" data-index="62" data-tex="\(G_\zeta\)">\(G_\zeta\)</span> of <span class="math" data-index="63" data-tex="\(Q_\zeta(D)\)">\(Q_\zeta(D)\)</span>, with</p>
+<span class="math math-display" id="eq-10" data-index="64" data-tex="\[
+\operatorname{supp}G_\zeta\subset D_\zeta.
+\tag{10}
+\]">\[
+\operatorname{supp}G_\zeta\subset D_\zeta.
+\tag{10}
+\]</span>
+<p>Let</p>
+<span class="math math-display" id="eq-11" data-index="65" data-tex="\[
+E_\zeta=G_\zeta/S_{L_\zeta}(0).
+\tag{11}
+\]">\[
+E_\zeta=G_\zeta/S_{L_\zeta}(0).
+\tag{11}
+\]</span>
+<p>Since <span class="math" data-index="66" data-tex="\(Q_\zeta(D)G_\zeta=\delta_0\)">\(Q_\zeta(D)G_\zeta=\delta_0\)</span>, formula (11) gives
+<span class="math" data-index="67" data-tex="\(L_\zeta(D)E_\zeta=\delta_0\)">\(L_\zeta(D)E_\zeta=\delta_0\)</span>. Its support is unchanged.</p>
+<p>One also has <span class="math" data-index="68" data-tex="\(D_\zeta\subset\operatorname{supp}E\subset C\)">\(D_\zeta\subset\operatorname{supp}E\subset C\)</span>. To justify the first inclusion, a distribution vanishing on an open neighborhood has a zero localized Fourier transform there in every direction, by the defining wavefront test. The cone <span class="math" data-index="69" data-tex="\(C\)">\(C\)</span> has the quantitative strict-normal bound proved in the causal-inverse lesson:</p>
+<span class="math math-display" id="eq-12" data-index="70" data-tex="\[
+N\cdot x\ge b|x|\qquad(x\in C)
+\tag{12}
+\]">\[
+N\cdot x\ge b|x|\qquad(x\in C)
+\tag{12}
+\]</span>
+<p>for some <span class="math" data-index="71" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>. Thus <span class="math" data-index="72" data-tex="\(E_\zeta\)">\(E_\zeta\)</span> is supported in a closed cone strictly positive in normal <span class="math" data-index="73" data-tex="\(N\)">\(N\)</span> away from zero.</p>
+<p>If <span class="math" data-index="74" data-tex="\(\mu\ge1\)">\(\mu\ge1\)</span>, the causal inverse input's cone converse makes <span class="math" data-index="75" data-tex="\(L_\zeta\)">\(L_\zeta\)</span> hyperbolic in <span class="math" data-index="76" data-tex="\(N\)">\(N\)</span>. Its principal part is <span class="math" data-index="77" data-tex="\(H_\zeta\)">\(H_\zeta\)</span>. The canonical causal inverse of <span class="math" data-index="78" data-tex="\(L_\zeta\)">\(L_\zeta\)</span> has support in <span class="math" data-index="79" data-tex="\(C_\zeta\subset C\subset H_N\)">\(C_\zeta\subset C\subset H_N\)</span>; <span class="math" data-index="80" data-tex="\(E_\zeta\)">\(E_\zeta\)</span> is also supported in <span class="math" data-index="81" data-tex="\(H_N\)">\(H_N\)</span>. the causal inverse input's arbitrary-distribution halfspace uniqueness identifies the two inverses. The minimal closed convex cone containing <span class="math" data-index="82" data-tex="\(\operatorname{supp}E_\zeta\)">\(\operatorname{supp}E_\zeta\)</span> is therefore exactly <span class="math" data-index="83" data-tex="\(C_\zeta\)">\(C_\zeta\)</span>. By (10), that cone is contained in the closed convex cone generated by <span class="math" data-index="84" data-tex="\(D_\zeta\)">\(D_\zeta\)</span>, as claimed.</p>
+<p>If <span class="math" data-index="85" data-tex="\(\mu=0\)">\(\mu=0\)</span>, <span class="math" data-index="86" data-tex="\(L_\zeta=F(\zeta)\ne0\)">\(L_\zeta=F(\zeta)\ne0\)</span> is scalar. Its only fundamental solution is <span class="math" data-index="87" data-tex="\(F(\zeta)^{-1}\delta_0\)">\(F(\zeta)^{-1}\delta_0\)</span>. Hence <span class="math" data-index="88" data-tex="\(0\in D_\zeta\)">\(0\in D_\zeta\)</span>, and <span class="math" data-index="89" data-tex="\(C_\zeta=\{0\}\)">\(C_\zeta=\{0\}\)</span> is again contained in the generated cone. This handles noncharacteristic frequencies without imposing a positive tangent degree. In fact, for every <span class="math" data-index="90" data-tex="\(\zeta\)">\(\zeta\)</span>, the equation <span class="math" data-index="91" data-tex="\(L_\zeta(D)E_\zeta=\delta_0\)">\(L_\zeta(D)E_\zeta=\delta_0\)</span> forces <span class="math" data-index="92" data-tex="\(0\in\operatorname{supp}E_\zeta\)">\(0\in\operatorname{supp}E_\zeta\)</span>, since differentiation cannot enlarge support. Thus the origin lies in every <span class="math" data-index="93" data-tex="\(D_\zeta\)">\(D_\zeta\)</span>.</p>
+<p>The proof uses regularity of the actual causal inverse, the universal extraction theorem, the full limiting operator, and arbitrary-growth uniqueness. The canonical upper bound for a different averaging inverse in the regular-kernel wavefront lesson is not substituted for any of these steps.</p>
+<h2 id="3-a-uniform-conic-zero-free-region">3. A uniform conic zero-free region</h2>
+<p>Fix <span class="math" data-index="94" data-tex="\(\zeta_0\ne0\)">\(\zeta_0\ne0\)</span>. Let <span class="math" data-index="95" data-tex="\(\Gamma_1\)">\(\Gamma_1\)</span> be an open convex cone containing <span class="math" data-index="96" data-tex="\(N\)">\(N\)</span>, with</p>
+<span class="math math-display" id="eq-13" data-index="97" data-tex="\[
+\overline{\Gamma_1}\setminus\{0\}
+\subset\Gamma(H_{\zeta_0},N).
+\tag{13}
+\]">\[
+\overline{\Gamma_1}\setminus\{0\}
+\subset\Gamma(H_{\zeta_0},N).
+\tag{13}
+\]</span>
+<p>There are a real barrier <span class="math" data-index="98" data-tex="\(\tau&#x27;_0\)">\(\tau&#x27;_0\)</span>, a conic neighborhood <span class="math" data-index="99" data-tex="\(W\)">\(W\)</span> of <span class="math" data-index="100" data-tex="\(\zeta_0\)">\(\zeta_0\)</span>, constants <span class="math" data-index="101" data-tex="\(\gamma&gt;0\)">\(\gamma&gt;0\)</span> and <span class="math" data-index="102" data-tex="\(R&lt;\infty\)">\(R&lt;\infty\)</span>, such that</p>
+<span class="math math-display" id="eq-14" data-index="103" data-tex="\[
+\begin{gathered}
+|P(\xi+i\tau N+i q)|\ge\gamma,\\
+\xi\in W,\quad|\xi|\ge R,\quad
+\tau&lt;\tau&#x27;_0,\quad
+q\in-\Gamma_1,\quad |q|\le\gamma|\xi|,
+\quad|\tau|\le\gamma|\xi|.
+\end{gathered}
+\tag{14}
+\]">\[
+\begin{gathered}
+|P(\xi+i\tau N+i q)|\ge\gamma,\\
+\xi\in W,\quad|\xi|\ge R,\quad
+\tau&lt;\tau&#x27;_0,\quad
+q\in-\Gamma_1,\quad |q|\le\gamma|\xi|,
+\quad|\tau|\le\gamma|\xi|.
+\end{gathered}
+\tag{14}
+\]</span>
+<p>The same conclusion includes <span class="math" data-index="104" data-tex="\(q=0\)">\(q=0\)</span>, by the argument below. The single <span class="math" data-index="105" data-tex="\(\gamma\)">\(\gamma\)</span> is used for both perturbation bounds and the denominator lower bound.</p>
+<p>First suppose <span class="math" data-index="106" data-tex="\(\mu=\deg H_{\zeta_0}\ge1\)">\(\mu=\deg H_{\zeta_0}\ge1\)</span>. Choose a full-polynomial barrier <span class="math" data-index="107" data-tex="\(\tau_0&lt;0\)">\(\tau_0&lt;0\)</span>, reducing an available barrier if necessary. Homogenize:</p>
+<span class="math math-display" id="eq-15" data-index="108" data-tex="\[
+p(w,s)=s^mP(w/s)
+=\sum_{j=0}^m s^{m-j}P_j(w).
+\tag{15}
+\]">\[
+p(w,s)=s^mP(w/s)
+=\sum_{j=0}^m s^{m-j}P_j(w).
+\tag{15}
+\]</span>
+<p>For real <span class="math" data-index="109" data-tex="\(w\)">\(w\)</span>, <span class="math" data-index="110" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, and <span class="math" data-index="111" data-tex="\(t&lt;\tau_0s\)">\(t&lt;\tau_0s\)</span>, one has <span class="math" data-index="112" data-tex="\(p(w+itN,s)\ne0\)">\(p(w+itN,s)\ne0\)</span>. For <span class="math" data-index="113" data-tex="\(s=0\)">\(s=0\)</span> and <span class="math" data-index="114" data-tex="\(t&lt;0\)">\(t&lt;0\)</span>, this follows instead from homogeneous hyperbolicity of <span class="math" data-index="115" data-tex="\(F\)">\(F\)</span>.</p>
+<p>The compact set</p>
+<span class="math math-display" id="eq-16" data-index="116" data-tex="\[
+K=\overline{\Gamma_1}\cap S^{n-1}
+\tag{16}
+\]">\[
+K=\overline{\Gamma_1}\cap S^{n-1}
+\tag{16}
+\]</span>
+<p>lies inside <span class="math" data-index="117" data-tex="\(\Gamma(H_{\zeta_0},N)\)">\(\Gamma(H_{\zeta_0},N)\)</span>. Its leading values satisfy
+<span class="math" data-index="118" data-tex="\(\inf_{\theta\in K}|H_{\zeta_0}(\theta)|&gt;0\)">\(\inf_{\theta\in K}|H_{\zeta_0}(\theta)|&gt;0\)</span>. Uniform Taylor expansion gives</p>
+<span class="math math-display" id="eq-17" data-index="119" data-tex="\[
+p(\zeta_0+iz\theta,0)
+=(iz)^\mu H_{\zeta_0}(\theta)+O(|z|^{\mu+1}),
+\quad\theta\in K.
+\tag{17}
+\]">\[
+p(\zeta_0+iz\theta,0)
+=(iz)^\mu H_{\zeta_0}(\theta)+O(|z|^{\mu+1}),
+\quad\theta\in K.
+\tag{17}
+\]</span>
+<p>All constants are uniform on <span class="math" data-index="120" data-tex="\(K\)">\(K\)</span>. Choose <span class="math" data-index="121" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> so small that the zero at <span class="math" data-index="122" data-tex="\(z=0\)">\(z=0\)</span> has exactly multiplicity <span class="math" data-index="123" data-tex="\(\mu\)">\(\mu\)</span>, with no other zero on <span class="math" data-index="124" data-tex="\(|z|\le2r\)">\(|z|\le2r\)</span>, uniformly in <span class="math" data-index="125" data-tex="\(\theta\)">\(\theta\)</span>. One obtains this directly by dividing (17) by <span class="math" data-index="126" data-tex="\(z^\mu\)">\(z^\mu\)</span> and keeping its uniformly nonzero leading value.</p>
+<p>For real <span class="math" data-index="127" data-tex="\(w\)">\(w\)</span> close to <span class="math" data-index="128" data-tex="\(\zeta_0\)">\(\zeta_0\)</span>, small real <span class="math" data-index="129" data-tex="\(t\)">\(t\)</span>, and small <span class="math" data-index="130" data-tex="\(s\ge0\)">\(s\ge0\)</span>, Rouché's theorem now gives exactly <span class="math" data-index="131" data-tex="\(\mu\)">\(\mu\)</span> zeros of</p>
+<span class="math math-display" id="eq-18" data-index="132" data-tex="\[
+z\longmapsto p(w+itN+iz\theta,s)
+\tag{18}
+\]">\[
+z\longmapsto p(w+itN+iz\theta,s)
+\tag{18}
+\]</span>
+<p>inside <span class="math" data-index="133" data-tex="\(|z|&lt;r\)">\(|z|&lt;r\)</span>, counting multiplicity; after reducing the parameter neighborhood, all those zeros lie in <span class="math" data-index="134" data-tex="\(|z|&lt;r/4\)">\(|z|&lt;r/4\)</span>. There is a uniform positive lower bound for the absolute value of (18) on <span class="math" data-index="135" data-tex="\(|z|=r\)">\(|z|=r\)</span>. This uniform form follows from compactness of <span class="math" data-index="136" data-tex="\(K\)">\(K\)</span>, uniform polynomial coefficient continuity, and the two circles in the preceding zero-free disk.</p>
+<p>For</p>
+<span class="math math-display" id="eq-19" data-index="137" data-tex="\[
+s\ge0,\qquad t&lt;\tau_0s,
+\tag{19}
+\]">\[
+s\ge0,\qquad t&lt;\tau_0s,
+\tag{19}
+\]</span>
+<p>none of the zeros in that disk is on the imaginary axis. Indeed, if <span class="math" data-index="138" data-tex="\(z=i v\)">\(z=i v\)</span>, <span class="math" data-index="139" data-tex="\(v\in\mathbb R\)">\(v\in\mathbb R\)</span>, then <span class="math" data-index="140" data-tex="\(iz\theta=-v\theta\)">\(iz\theta=-v\theta\)</span> is real, and the full or principal barrier following (15) applies. Their real parts are all positive. To verify the sign, deform the parameters within (19) to <span class="math" data-index="141" data-tex="\(s=0\)">\(s=0\)</span>, <span class="math" data-index="142" data-tex="\(w=\zeta_0\)">\(w=\zeta_0\)</span>, and <span class="math" data-index="143" data-tex="\(\theta=N/|N|\)">\(\theta=N/|N|\)</span>. The small real parameter domain in (19) is connected, and <span class="math" data-index="144" data-tex="\(K\)">\(K\)</span> is connected by normalized convex combinations with <span class="math" data-index="145" data-tex="\(N/|N|\)">\(N/|N|\)</span>. No root crosses the imaginary axis or the disk boundary during this deformation. At the final parameters, homogeneous hyperbolicity gives</p>
+<span class="math math-display" id="eq-20" data-index="146" data-tex="\[
+\operatorname{Re}z=-t|N|&gt;0
+\tag{20}
+\]">\[
+\operatorname{Re}z=-t|N|&gt;0
+\tag{20}
+\]</span>
+<p>for every root of <span class="math" data-index="147" data-tex="\(F(\zeta_0+i(t+z/|N|)N)\)">\(F(\zeta_0+i(t+z/|N|)N)\)</span>. This proves the sign for all the <span class="math" data-index="148" data-tex="\(\mu\)">\(\mu\)</span> small roots of (18).</p>
+<p>Denote these roots by <span class="math" data-index="149" data-tex="\(z_1,\ldots,z_\mu\)">\(z_1,\ldots,z_\mu\)</span>, repeated by multiplicity, and divide (18) by their product. The resulting holomorphic quotient has no zero on <span class="math" data-index="150" data-tex="\(|z|\le r\)">\(|z|\le r\)</span>. On <span class="math" data-index="151" data-tex="\(|z|=r\)">\(|z|=r\)</span>, its modulus has a positive uniform lower bound, because (18) has such a bound and each <span class="math" data-index="152" data-tex="\(|z-z_\nu|\le5r/4\)">\(|z-z_\nu|\le5r/4\)</span>. The maximum principle applied to the reciprocal extends the same lower bound to the disk. For real <span class="math" data-index="153" data-tex="\(-r/2\le a\le0\)">\(-r/2\le a\le0\)</span>, (20) gives <span class="math" data-index="154" data-tex="\(|a-z_\nu|\ge|a|\)">\(|a-z_\nu|\ge|a|\)</span>. Thus, with one <span class="math" data-index="155" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>,</p>
+<span class="math math-display" id="eq-21" data-index="156" data-tex="\[
+|p(w+itN+ia\theta,s)|\ge c|a|^\mu
+\tag{21}
+\]">\[
+|p(w+itN+ia\theta,s)|\ge c|a|^\mu
+\tag{21}
+\]</span>
+<p>for all the stated nearby parameters satisfying (19).</p>
+<p>Write <span class="math" data-index="157" data-tex="\(s=|\zeta_0|/|\xi|\)">\(s=|\zeta_0|/|\xi|\)</span>, <span class="math" data-index="158" data-tex="\(w=s\xi\)">\(w=s\xi\)</span>, <span class="math" data-index="159" data-tex="\(t=s\tau\)">\(t=s\tau\)</span>, and <span class="math" data-index="160" data-tex="\(a=s\sigma\)">\(a=s\sigma\)</span>. Choose a conic neighborhood <span class="math" data-index="161" data-tex="\(W\)">\(W\)</span> so that <span class="math" data-index="162" data-tex="\(w\)">\(w\)</span> is in the preceding neighborhood of <span class="math" data-index="163" data-tex="\(\zeta_0\)">\(\zeta_0\)</span>. Formula (15) and (21) give constants <span class="math" data-index="164" data-tex="\(c_1,A,B,R_1&gt;0\)">\(c_1,A,B,R_1&gt;0\)</span> such that</p>
+<span class="math math-display" id="eq-22" data-index="165" data-tex="\[
+\begin{gathered}
+|P(\xi+i\tau N+i q)|
+\ge c_1|q|^\mu|\xi|^{m-\mu},\\
+\xi\in W,\quad|\xi|\ge R_1,\quad\tau&lt;\tau_0,\\
+q\in-\overline{\Gamma_1},\quad |q|\le A|\xi|,
+\quad|\tau|\le B|\xi|.
+\end{gathered}
+\tag{22}
+\]">\[
+\begin{gathered}
+|P(\xi+i\tau N+i q)|
+\ge c_1|q|^\mu|\xi|^{m-\mu},\\
+\xi\in W,\quad|\xi|\ge R_1,\quad\tau&lt;\tau_0,\\
+q\in-\overline{\Gamma_1},\quad |q|\le A|\xi|,
+\quad|\tau|\le B|\xi|.
+\end{gathered}
+\tag{22}
+\]</span>
+<p>Here <span class="math" data-index="166" data-tex="\(q=\sigma\theta\)">\(q=\sigma\theta\)</span>, <span class="math" data-index="167" data-tex="\(\sigma\le0\)">\(\sigma\le0\)</span>, <span class="math" data-index="168" data-tex="\(\theta\in K\)">\(\theta\in K\)</span>. The constants <span class="math" data-index="169" data-tex="\(A,B\)">\(A,B\)</span> are chosen to keep <span class="math" data-index="170" data-tex="\(a,t,s\)">\(a,t,s\)</span> in the bounded parameter region. If <span class="math" data-index="171" data-tex="\(q=0\)">\(q=0\)</span>, the inequality (22) is trivial, but the next step gives a positive bound there too.</p>
+<p>Since <span class="math" data-index="172" data-tex="\(N\in\Gamma_1\)">\(N\in\Gamma_1\)</span> and <span class="math" data-index="173" data-tex="\(\Gamma(H_{\zeta_0},N)\)">\(\Gamma(H_{\zeta_0},N)\)</span> is an open convex hyperbolicity cone of positive degree, <span class="math" data-index="174" data-tex="\(-N\)">\(-N\)</span> cannot lie in that latter cone: its convexity would otherwise include zero. By (13),</p>
+<span class="math math-display" id="eq-23" data-index="175" data-tex="\[
+d:=\operatorname{dist}(N,-\overline{\Gamma_1})&gt;0.
+\tag{23}
+\]">\[
+d:=\operatorname{dist}(N,-\overline{\Gamma_1})&gt;0.
+\tag{23}
+\]</span>
+<p>For <span class="math" data-index="176" data-tex="\(q\in-\Gamma_1\)">\(q\in-\Gamma_1\)</span> or <span class="math" data-index="177" data-tex="\(q=0\)">\(q=0\)</span>, one has <span class="math" data-index="178" data-tex="\(q-N\in-\Gamma_1\)">\(q-N\in-\Gamma_1\)</span> and <span class="math" data-index="179" data-tex="\(|q-N|\ge d\)">\(|q-N|\ge d\)</span>. Rewrite the same complex frequency as</p>
+<span class="math math-display" id="eq-24" data-index="180" data-tex="\[
+\xi+i\tau N+iq
+=\xi+i(\tau+1)N+i(q-N).
+\tag{24}
+\]">\[
+\xi+i\tau N+iq
+=\xi+i(\tau+1)N+i(q-N).
+\tag{24}
+\]</span>
+<p>Take <span class="math" data-index="181" data-tex="\(\tau&#x27;_0=\tau_0-1\)">\(\tau&#x27;_0=\tau_0-1\)</span>. Choose <span class="math" data-index="182" data-tex="\(\gamma\)">\(\gamma\)</span> initially smaller than <span class="math" data-index="183" data-tex="\(A/2\)">\(A/2\)</span> and <span class="math" data-index="184" data-tex="\(B/2\)">\(B/2\)</span>, and increase <span class="math" data-index="185" data-tex="\(R\)">\(R\)</span> so that the constants <span class="math" data-index="186" data-tex="\(|N|\)">\(|N|\)</span> and <span class="math" data-index="187" data-tex="\(1\)">\(1\)</span> in the modified size bounds fit in the remaining halves of <span class="math" data-index="188" data-tex="\(A|\xi|\)">\(A|\xi|\)</span> and <span class="math" data-index="189" data-tex="\(B|\xi|\)">\(B|\xi|\)</span>. Then (22), applied to (24), gives</p>
+<span class="math math-display" id="eq-25" data-index="190" data-tex="\[
+|P(\xi+i\tau N+iq)|
+\ge c_1d^\mu|\xi|^{m-\mu}.
+\tag{25}
+\]">\[
+|P(\xi+i\tau N+iq)|
+\ge c_1d^\mu|\xi|^{m-\mu}.
+\tag{25}
+\]</span>
+<p>Since <span class="math" data-index="191" data-tex="\(m-\mu\ge0\)">\(m-\mu\ge0\)</span>, for <span class="math" data-index="192" data-tex="\(R\ge1\)">\(R\ge1\)</span> we can decrease <span class="math" data-index="193" data-tex="\(\gamma\)">\(\gamma\)</span> once more to obtain (14). This proves a fixed positive lower bound, rather than only absence of zeros.</p>
+<p>If <span class="math" data-index="194" data-tex="\(\mu=0\)">\(\mu=0\)</span>, <span class="math" data-index="195" data-tex="\(F(\zeta_0)\ne0\)">\(F(\zeta_0)\ne0\)</span>. Compactness and continuity instead give a uniform nonzero principal value in a small complex neighborhood of the normalized real direction <span class="math" data-index="196" data-tex="\(\zeta_0/|\zeta_0|\)">\(\zeta_0/|\zeta_0|\)</span>. For <span class="math" data-index="197" data-tex="\(\xi\)">\(\xi\)</span> in a sufficiently narrow real cone and
+<span class="math" data-index="198" data-tex="\(|q|,|\tau|\le\gamma|\xi|\)">\(|q|,|\tau|\le\gamma|\xi|\)</span>, the normalized point</p>
+<span class="math math-display" id="eq-26" data-index="199" data-tex="\[
+\xi/|\xi|+i(\tau/|\xi|)N+i q/|\xi|
+\tag{26}
+\]">\[
+\xi/|\xi|+i(\tau/|\xi|)N+i q/|\xi|
+\tag{26}
+\]</span>
+<p>lies in that complex neighborhood when <span class="math" data-index="200" data-tex="\(\gamma\)">\(\gamma\)</span> is small. Thus the principal contribution has absolute value at least <span class="math" data-index="201" data-tex="\(c|\xi|^m\)">\(c|\xi|^m\)</span>. The sum of the lower order contributions has absolute value at most <span class="math" data-index="202" data-tex="\(C|\xi|^{m-1}\)">\(C|\xi|^{m-1}\)</span>, uniformly over these normalized points. Increase <span class="math" data-index="203" data-tex="\(R\)">\(R\)</span> to absorb it and decrease <span class="math" data-index="204" data-tex="\(\gamma\)">\(\gamma\)</span> below the resulting positive bound. This proves (14) in the noncharacteristic case, even without a sign restriction on <span class="math" data-index="205" data-tex="\(q\)">\(q\)</span>. It also avoids any appeal to (23) for a degree-zero tangent cone.</p>
+<h2 id="4-the-analytic-upper-wavefront-cone">4. The analytic upper wavefront cone</h2>
+<p>For the same actual causal inverse <span class="math" data-index="206" data-tex="\(E\)">\(E\)</span>,</p>
+<span class="math math-display" id="eq-30" data-index="207" data-tex="\[
+\operatorname{WF}_A(E)
+\subset\{(x,\zeta):\zeta\ne0,\ x\in C_\zeta\}.
+\tag{30}
+\]">\[
+\operatorname{WF}_A(E)
+\subset\{(x,\zeta):\zeta\ne0,\ x\in C_\zeta\}.
+\tag{30}
+\]</span>
+<p>Thus the upper bound applies to analytic singularities, while the lower wavefront-cone section supplies the ordinary wavefront lower bound. the lower wavefront-cone section and <span class="math" data-index="208" data-tex="\(\operatorname{WF}\subset\operatorname{WF}_A\)">\(\operatorname{WF}\subset\operatorname{WF}_A\)</span> give every nonzero covector at the origin for both notions.</p>
+<p>Fix <span class="math" data-index="209" data-tex="\(\zeta_0\ne0\)">\(\zeta_0\ne0\)</span> and <span class="math" data-index="210" data-tex="\(x_0\notin C_{\zeta_0}\)">\(x_0\notin C_{\zeta_0}\)</span>. By the polar definition there is <span class="math" data-index="211" data-tex="\(v\in\Gamma(H_{\zeta_0},N)\)">\(v\in\Gamma(H_{\zeta_0},N)\)</span> with <span class="math" data-index="212" data-tex="\(x_0\cdot v&lt;0\)">\(x_0\cdot v&lt;0\)</span>. At positive tangent degree, choose an open convex cone <span class="math" data-index="213" data-tex="\(\Gamma_1\)">\(\Gamma_1\)</span> containing <span class="math" data-index="214" data-tex="\(N,v\)">\(N,v\)</span>, whose nonzero closure lies in that tangent cone. Take the conic hull of sufficiently small balls about <span class="math" data-index="215" data-tex="\(N,v\)">\(N,v\)</span>: their normalized convex combinations form a compact set in the tangent cone and miss zero, since a positive-degree open convex cone cannot contain opposite vectors. Small balls retain the angular margin. At degree zero take <span class="math" data-index="216" data-tex="\(\Gamma_1=\mathbb R^n\)">\(\Gamma_1=\mathbb R^n\)</span>, using the uniform zero-free-region section's degree-zero argument.</p>
+<p>Apply the uniform zero-free-region section to <span class="math" data-index="217" data-tex="\(\Gamma_1\)">\(\Gamma_1\)</span>. Choose a negative <span class="math" data-index="218" data-tex="\(\tau&lt;\tau&#x27;_0\)">\(\tau&lt;\tau&#x27;_0\)</span>, also below the causal inverse input's global full-polynomial barrier. Choose</p>
+<span class="math math-display" id="eq-31" data-index="219" data-tex="\[
+\theta=-\varepsilon v,\quad
+0&lt;|\theta|&lt;\min(\gamma/2,1/4),\quad
+x_0\cdot\theta&gt;0.
+\tag{31}
+\]">\[
+\theta=-\varepsilon v,\quad
+0&lt;|\theta|&lt;\min(\gamma/2,1/4),\quad
+x_0\cdot\theta&gt;0.
+\tag{31}
+\]</span>
+<p>Here <span class="math" data-index="220" data-tex="\(\gamma,W,R\)">\(\gamma,W,R\)</span> are from (14). The halfspace <span class="math" data-index="221" data-tex="\(X_\theta=\{x:x\cdot\theta&gt;0\}\)">\(X_\theta=\{x:x\cdot\theta&gt;0\}\)</span> contains <span class="math" data-index="222" data-tex="\(x_0\)">\(x_0\)</span>. Every real base below is relatively compact in this halfspace, so <span class="math" data-index="223" data-tex="\(x\cdot\theta\ge c_X&gt;0\)">\(x\cdot\theta\ge c_X&gt;0\)</span>.</p>
+<p>For <span class="math" data-index="224" data-tex="\(a&gt;|\tau N|^2+1\)">\(a&gt;|\tau N|^2+1\)</span>, put</p>
+<span class="math math-display" id="eq-32" data-index="225" data-tex="\[
+Q(z)=(a+z\cdot z)^n.
+\tag{32}
+\]">\[
+Q(z)=(a+z\cdot z)^n.
+\tag{32}
+\]</span>
+<p>The dot product is complex bilinear. On <span class="math" data-index="226" data-tex="\(z=\xi+i\tau N\)">\(z=\xi+i\tau N\)</span>, the real part of <span class="math" data-index="227" data-tex="\(a+z\cdot z\)">\(a+z\cdot z\)</span> is at least <span class="math" data-index="228" data-tex="\(1+|\xi|^2\)">\(1+|\xi|^2\)</span>. The global root barrier bounds <span class="math" data-index="229" data-tex="\(|P(\xi+i\tau N)|\)">\(|P(\xi+i\tau N)|\)</span> below by a positive constant. Hence</p>
+<span class="math math-display" id="eq-33" data-index="230" data-tex="\[
+E_1(x)=(2\pi)^{-n}
+\int_{\mathbb R^n}
+\frac{e^{ix\cdot(\xi+i\tau N)}}{Q(\xi+i\tau N)P(\xi+i\tau N)}
+\,d\xi
+\tag{33}
+\]">\[
+E_1(x)=(2\pi)^{-n}
+\int_{\mathbb R^n}
+\frac{e^{ix\cdot(\xi+i\tau N)}}{Q(\xi+i\tau N)P(\xi+i\tau N)}
+\,d\xi
+\tag{33}
+\]</span>
+<p>converges absolutely, locally uniformly in real <span class="math" data-index="231" data-tex="\(x\)">\(x\)</span>, with integrand <span class="math" data-index="232" data-tex="\(O((1+|\xi|)^{-2n})\)">\(O((1+|\xi|)^{-2n})\)</span>. Acting distributionally by <span class="math" data-index="233" data-tex="\((a-\Delta)^n\)">\((a-\Delta)^n\)</span>, first pairing with a compact test whose Fourier–Laplace transform decreases rapidly, cancels <span class="math" data-index="234" data-tex="\(Q\)">\(Q\)</span>. the causal inverse input's construction of the actual causal inverse gives</p>
+<span class="math math-display" id="eq-34" data-index="235" data-tex="\[
+E=(a-\Delta)^nE_1.
+\tag{34}
+\]">\[
+E=(a-\Delta)^nE_1.
+\tag{34}
+\]</span>
+<p>There is no global temperedness assertion for <span class="math" data-index="236" data-tex="\(E\)">\(E\)</span>.</p>
+<p>Choose a smooth degree-zero <span class="math" data-index="237" data-tex="\(\chi\)">\(\chi\)</span> on <span class="math" data-index="238" data-tex="\(\mathbb R^n\setminus0\)">\(\mathbb R^n\setminus0\)</span>, <span class="math" data-index="239" data-tex="\(0\le\chi\le1\)">\(0\le\chi\le1\)</span>, equal to one near <span class="math" data-index="240" data-tex="\(\mathbb R_+\zeta_0\)">\(\mathbb R_+\zeta_0\)</span>, with angular support compactly inside <span class="math" data-index="241" data-tex="\(W\)">\(W\)</span>. Increase <span class="math" data-index="242" data-tex="\(R_0\ge R\)">\(R_0\ge R\)</span> so that for <span class="math" data-index="243" data-tex="\(r=|\xi|\ge R_0\)">\(r=|\xi|\ge R_0\)</span>, <span class="math" data-index="244" data-tex="\(|\tau|\)">\(|\tau|\)</span> satisfies (14) and <span class="math" data-index="245" data-tex="\(|\tau N|+|\theta|r\le r/2\)">\(|\tau N|+|\theta|r\le r/2\)</span>. For <span class="math" data-index="246" data-tex="\(T&gt;R_0\)">\(T&gt;R_0\)</span> deform the exterior contour by</p>
+<span class="math math-display" id="eq-35" data-index="247" data-tex="\[
+G_T(\xi)=
+\xi+i\tau N+i\chi(\xi)\min(r,T)\theta,
+\qquad r\ge R_0.
+\tag{35}
+\]">\[
+G_T(\xi)=
+\xi+i\tau N+i\chi(\xi)\min(r,T)\theta,
+\qquad r\ge R_0.
+\tag{35}
+\]</span>
+<p>The homotopy replaces <span class="math" data-index="248" data-tex="\(\theta\)">\(\theta\)</span> by <span class="math" data-index="249" data-tex="\(s\theta\)">\(s\theta\)</span>, <span class="math" data-index="250" data-tex="\(0\le s\le1\)">\(0\le s\le1\)</span>. Where <span class="math" data-index="251" data-tex="\(\chi&gt;0\)">\(\chi&gt;0\)</span>, the extra imaginary vector lies in <span class="math" data-index="252" data-tex="\(-\Gamma_1\)">\(-\Gamma_1\)</span>, has norm at most <span class="math" data-index="253" data-tex="\(\gamma r\)">\(\gamma r\)</span>, and the uniform zero-free-region section gives <span class="math" data-index="254" data-tex="\(|P|\ge\gamma\)">\(|P|\ge\gamma\)</span>, including <span class="math" data-index="255" data-tex="\(s=0\)">\(s=0\)</span>. Where <span class="math" data-index="256" data-tex="\(\chi=0\)">\(\chi=0\)</span>, use the global base-contour bound. Every intermediate contour also satisfies</p>
+<span class="math math-display" id="eq-36" data-index="257" data-tex="\[
+\operatorname{Re}(a+z\cdot z)
+=a+r^2-|\operatorname{Im}z|^2\ge3r^2/4.
+\tag{36}
+\]">\[
+\operatorname{Re}(a+z\cdot z)
+=a+r^2-|\operatorname{Im}z|^2\ge3r^2/4.
+\tag{36}
+\]</span>
+<p>Thus <span class="math" data-index="258" data-tex="\(Q\)">\(Q\)</span> is zero-free and <span class="math" data-index="259" data-tex="\(|Q|\ge c r^{2n}\)">\(|Q|\ge c r^{2n}\)</span>, uniformly in <span class="math" data-index="260" data-tex="\(T,s\)">\(T,s\)</span>.</p>
+<p>Write <span class="math" data-index="261" data-tex="\(b_T=\chi\min(r,T)\)">\(b_T=\chi\min(r,T)\)</span>. Its gradient is uniformly bounded, since <span class="math" data-index="262" data-tex="\(\nabla\chi=O(r^{-1})\)">\(\nabla\chi=O(r^{-1})\)</span>, <span class="math" data-index="263" data-tex="\(\min(r,T)\le r\)">\(\min(r,T)\le r\)</span>, and the radial factor is Lipschitz with derivative at most one. The volume-form Jacobian is</p>
+<span class="math math-display" id="eq-37" data-index="264" data-tex="\[
+J_T=\det(I+i\theta\otimes\nabla b_T)
+=1+i\,\nabla b_T\cdot\theta,\qquad |J_T|\le C.
+\tag{37}
+\]">\[
+J_T=\det(I+i\theta\otimes\nabla b_T)
+=1+i\,\nabla b_T\cdot\theta,\qquad |J_T|\le C.
+\tag{37}
+\]</span>
+<p>Divide at the kink <span class="math" data-index="265" data-tex="\(r=T\)">\(r=T\)</span>, apply Stokes on both smooth pieces, and cancel the common boundary. Alternatively use smooth monotone radial approximants with the same bounds and dominated convergence.</p>
+<p>The holomorphic <span class="math" data-index="266" data-tex="\(n\)">\(n\)</span>-form in (33) is closed away from denominator zeros. Apply Stokes to the homotopy on <span class="math" data-index="267" data-tex="\(R_0\le r\le M\)">\(R_0\le r\le M\)</span>. On a compact real base in <span class="math" data-index="268" data-tex="\(X_\theta\)">\(X_\theta\)</span>,</p>
+<span class="math math-display" id="eq-38" data-index="269" data-tex="\[
+|e^{ix\cdot z}|
+=e^{-\tau x\cdot N-sb_T(\xi)x\cdot\theta}\le C_X.
+\tag{38}
+\]">\[
+|e^{ix\cdot z}|
+=e^{-\tau x\cdot N-sb_T(\xi)x\cdot\theta}\le C_X.
+\tag{38}
+\]</span>
+<p>The outer lateral surface has pullback volume at most <span class="math" data-index="270" data-tex="\(CM^n\)">\(CM^n\)</span>, including the homotopy direction, and rational factor <span class="math" data-index="271" data-tex="\(O(M^{-2n})\)">\(O(M^{-2n})\)</span>. Its integral is <span class="math" data-index="272" data-tex="\(O_X(M^{-n})\to0\)">\(O_X(M^{-n})\to0\)</span>. The interior <span class="math" data-index="273" data-tex="\(r&lt;R_0\)">\(r&lt;R_0\)</span> and compact connector at <span class="math" data-index="274" data-tex="\(r=R_0\)">\(r=R_0\)</span> give an entire function <span class="math" data-index="275" data-tex="\(B_\theta(x)\)">\(B_\theta(x)\)</span>, since their contours and zero-free denominators are compact and fixed.</p>
+<p>As <span class="math" data-index="276" data-tex="\(T\to\infty\)">\(T\to\infty\)</span>, exterior integrands with Jacobians are bounded by <span class="math" data-index="277" data-tex="\(C_Xr^{-2n}\)">\(C_Xr^{-2n}\)</span>, integrable for every <span class="math" data-index="278" data-tex="\(n\ge1\)">\(n\ge1\)</span>. At each fixed exterior frequency, they eventually stabilize to the graph and Jacobian</p>
+<span class="math math-display" id="eq-39" data-index="279" data-tex="\[
+G(\xi)=\xi+i\tau N+i\chi(\xi)r\theta,\qquad
+J=1+i\,\nabla(\chi r)\cdot\theta.
+\tag{39}
+\]">\[
+G(\xi)=\xi+i\tau N+i\chi(\xi)r\theta,\qquad
+J=1+i\,\nabla(\chi r)\cdot\theta.
+\tag{39}
+\]</span>
+<p>Dominated convergence gives the actual equality</p>
+<span class="math math-display" id="eq-40" data-index="280" data-tex="\[
+E_1(x)=B_\theta(x)
++(2\pi)^{-n}
+\int_{r\ge R_0}
+\frac{e^{ix\cdot G(\xi)}J(\xi)}
+{Q(G(\xi))P(G(\xi))}\,d\xi,\quad x\in X_\theta.
+\tag{40}
+\]">\[
+E_1(x)=B_\theta(x)
++(2\pi)^{-n}
+\int_{r\ge R_0}
+\frac{e^{ix\cdot G(\xi)}J(\xi)}
+{Q(G(\xi))P(G(\xi))}\,d\xi,\quad x\in X_\theta.
+\tag{40}
+\]</span>
+<p>Choose a degree-zero cutoff <span class="math" data-index="281" data-tex="\(\rho\)">\(\rho\)</span>, equal to one in a smaller conic neighborhood of <span class="math" data-index="282" data-tex="\(\zeta_0\)">\(\zeta_0\)</span>, with angular support in <span class="math" data-index="283" data-tex="\(\{\chi=1\}\)">\(\{\chi=1\}\)</span>. The integral part <span class="math" data-index="284" data-tex="\(A_\theta\)">\(A_\theta\)</span> with factor <span class="math" data-index="285" data-tex="\(\rho\)">\(\rho\)</span> is analytic on <span class="math" data-index="286" data-tex="\(X_\theta\)">\(X_\theta\)</span>. On its support, <span class="math" data-index="287" data-tex="\(\operatorname{Im}G=\tau N+r\theta\)">\(\operatorname{Im}G=\tau N+r\theta\)</span>. For <span class="math" data-index="288" data-tex="\(z=x+iy\)">\(z=x+iy\)</span> close to a compact real base,</p>
+<span class="math math-display" id="eq-41" data-index="289" data-tex="\[
+|e^{iz\cdot G(\xi)}|
+\le C_X\exp(-c_Xr+|y|r).
+\tag{41}
+\]">\[
+|e^{iz\cdot G(\xi)}|
+\le C_X\exp(-c_Xr+|y|r).
+\tag{41}
+\]</span>
+<p>For <span class="math" data-index="290" data-tex="\(|y|&lt;c_X/2\)">\(|y|&lt;c_X/2\)</span> this provides an integrable exponential majorant for every derivative. Uniform convergence on complex compact subsets proves holomorphy.</p>
+<p>Cover the compact angular support of <span class="math" data-index="291" data-tex="\(1-\rho\)">\(1-\rho\)</span> by finitely many sets <span class="math" data-index="292" data-tex="\(V_j\)">\(V_j\)</span>, with a smooth partition <span class="math" data-index="293" data-tex="\(\sum_j\psi_j=1\)">\(\sum_j\psi_j=1\)</span> there. Choose open convex cones <span class="math" data-index="294" data-tex="\(Y_j\)">\(Y_j\)</span> and <span class="math" data-index="295" data-tex="\(d_j&gt;0\)">\(d_j&gt;0\)</span> such that, with <span class="math" data-index="296" data-tex="\(\omega_0=\zeta_0/|\zeta_0|\)">\(\omega_0=\zeta_0/|\zeta_0|\)</span>,</p>
+<span class="math math-display" id="eq-42" data-index="297" data-tex="\[
+y\cdot\omega\ge d_j|y|
+\quad(\omega\in V_j,\ y\in Y_j),\qquad
+y_j\cdot\omega_0&lt;0\quad\text{for some }y_j\in Y_j.
+\tag{42}
+\]">\[
+y\cdot\omega\ge d_j|y|
+\quad(\omega\in V_j,\ y\in Y_j),\qquad
+y_j\cdot\omega_0&lt;0\quad\text{for some }y_j\in Y_j.
+\tag{42}
+\]</span>
+<p>For a unit <span class="math" data-index="298" data-tex="\(\omega\ne\omega_0\)">\(\omega\ne\omega_0\)</span>, take <span class="math" data-index="299" data-tex="\(y_j=\omega-\omega_0\)">\(y_j=\omega-\omega_0\)</span>. Its dot products with <span class="math" data-index="300" data-tex="\(\omega,\omega_0\)">\(\omega,\omega_0\)</span> are respectively <span class="math" data-index="301" data-tex="\(1-\omega_0\cdot\omega&gt;0\)">\(1-\omega_0\cdot\omega&gt;0\)</span> and <span class="math" data-index="302" data-tex="\(\omega_0\cdot\omega-1&lt;0\)">\(\omega_0\cdot\omega-1&lt;0\)</span>. Narrow neighborhoods preserve both signs. The support stays a positive angle away from <span class="math" data-index="303" data-tex="\(\omega_0\)">\(\omega_0\)</span>, so compactness supplies the finite cover and positive constants.</p>
+<p>Let <span class="math" data-index="304" data-tex="\(R_j(z)\)">\(R_j(z)\)</span> be the exterior integral with factor <span class="math" data-index="305" data-tex="\((1-\rho)\psi_j\)">\((1-\rho)\psi_j\)</span>. For a compact real base, <span class="math" data-index="306" data-tex="\(y\in Y_j\)">\(y\in Y_j\)</span>, and small <span class="math" data-index="307" data-tex="\(|y|\)">\(|y|\)</span>,</p>
+<span class="math math-display" id="eq-43" data-index="308" data-tex="\[
+|e^{i(x+iy)\cdot G(\xi)}|
+\le C_X\exp(-c_X\chi(\xi)r-d_j|y|r).
+\tag{43}
+\]">\[
+|e^{i(x+iy)\cdot G(\xi)}|
+\le C_X\exp(-c_X\chi(\xi)r-d_j|y|r).
+\tag{43}
+\]</span>
+<p>It is holomorphic in this tube, with derivatives justified for positive <span class="math" data-index="309" data-tex="\(|y|\)">\(|y|\)</span> by exponential decay. The rational factor and Jacobian retain the integrable bound <span class="math" data-index="310" data-tex="\(Cr^{-2n}\)">\(Cr^{-2n}\)</span>; thus <span class="math" data-index="311" data-tex="\(R_j\)">\(R_j\)</span> is uniformly bounded as <span class="math" data-index="312" data-tex="\(y\to0\)">\(y\to0\)</span> in <span class="math" data-index="313" data-tex="\(Y_j\)">\(Y_j\)</span>. Dominated convergence gives its continuous, hence distributional, boundary value with the exact real integral. These are the boundary and analytic-wavefront input's complete hypotheses, with growth exponent zero. Therefore</p>
+<span class="math math-display" id="eq-44" data-index="314" data-tex="\[
+\operatorname{WF}_A(R_j)
+\subset X_\theta\times(Y_j^*\setminus\{0\}).
+\tag{44}
+\]">\[
+\operatorname{WF}_A(R_j)
+\subset X_\theta\times(Y_j^*\setminus\{0\}).
+\tag{44}
+\]</span>
+<p>The second inequality in (42) excludes <span class="math" data-index="315" data-tex="\(\zeta_0\)">\(\zeta_0\)</span> from <span class="math" data-index="316" data-tex="\(Y_j^*\)">\(Y_j^*\)</span>. Since <span class="math" data-index="317" data-tex="\(B_\theta+A_\theta\)">\(B_\theta+A_\theta\)</span> is analytic and <span class="math" data-index="318" data-tex="\(E_1=B_\theta+A_\theta+\sum_jR_j\)">\(E_1=B_\theta+A_\theta+\sum_jR_j\)</span> is a finite sum, <span class="math" data-index="319" data-tex="\((x,\zeta_0)\notin\operatorname{WF}_A(E_1)\)">\((x,\zeta_0)\notin\operatorname{WF}_A(E_1)\)</span> for every <span class="math" data-index="320" data-tex="\(x\in X_\theta\)">\(x\in X_\theta\)</span>. Differential decrease in the boundary and analytic-wavefront input and (34) give the same exclusion for <span class="math" data-index="321" data-tex="\(E\)">\(E\)</span>, in particular at <span class="math" data-index="322" data-tex="\(x_0\)">\(x_0\)</span>.</p>
+<p>Every point outside <span class="math" data-index="323" data-tex="\(C_{\zeta_0}\)">\(C_{\zeta_0}\)</span> admits a separating <span class="math" data-index="324" data-tex="\(v\)">\(v\)</span>, and every nonzero <span class="math" data-index="325" data-tex="\(\zeta_0\)">\(\zeta_0\)</span>, including degree zero, has been allowed. This proves (30). The proof retains the compact entire connector, uniform integrable graph bound, holomorphic interior part and finitely many separated tube boundary values. Smooth Fourier decay alone is not used as an analytic-wavefront criterion.</p>
+<h2 id="5-making-the-angular-fourier-formula-a-distributional-formula">5. Making the angular Fourier formula a distributional formula</h2>
+<p>Let <span class="math" data-index="326" data-tex="\(k\in\mathbb Z\)">\(k\in\mathbb Z\)</span>, and let <span class="math" data-index="327" data-tex="\(u\in\mathcal S&#x27;(\mathbb R^n)\)">\(u\in\mathcal S&#x27;(\mathbb R^n)\)</span> be homogeneous of degree <span class="math" data-index="328" data-tex="\(-n-k\)">\(-n-k\)</span> and have parity opposite to <span class="math" data-index="329" data-tex="\(k\)">\(k\)</span>:</p>
+<span class="math math-display" id="eq-47" data-index="330" data-tex="\[
+u(-x)=(-1)^{k+1}u(x).
+\tag{47}
+\]">\[
+u(-x)=(-1)^{k+1}u(x).
+\tag{47}
+\]</span>
+<p>Define the real one-dimensional distributions</p>
+<span class="math math-display" id="eq-48" data-index="331" data-tex="\[
+\sigma_k(t)=
+\begin{cases}
+\dfrac{\operatorname{sgn}(t)t^k}{2k!},&amp;k\ge0,\\[4pt]
+\delta^{(-k-1)}(t),&amp;k&lt;0.
+\end{cases}
+\tag{48}
+\]">\[
+\sigma_k(t)=
+\begin{cases}
+\dfrac{\operatorname{sgn}(t)t^k}{2k!},&amp;k\ge0,\\[4pt]
+\delta^{(-k-1)}(t),&amp;k&lt;0.
+\end{cases}
+\tag{48}
+\]</span>
+<p>The angular identity supplied by the angular Fourier and wavefront-operation inputs's homogeneous Fourier bridge is</p>
+<span class="math math-display" id="eq-49" data-index="332" data-tex="\[
+\widehat u(\xi)=
+\pi i^{-1-k}
+\int_{S^{n-1}}u(x)\sigma_k(x\cdot\xi)\,dS(x).
+\tag{49}
+\]">\[
+\widehat u(\xi)=
+\pi i^{-1-k}
+\int_{S^{n-1}}u(x)\sigma_k(x\cdot\xi)\,dS(x).
+\tag{49}
+\]</span>
+<p>The right-hand side means a canonical product, sphere restriction, and compact-fiber projection. It is not a pointwise multiplication of arbitrary distributions.</p>
+<p>Euler's identity for <span class="math" data-index="333" data-tex="\(u\)">\(u\)</span> is
+<span class="math" data-index="334" data-tex="\((x\cdot\partial_x+n+k)u=0\)">\((x\cdot\partial_x+n+k)u=0\)</span>. The analytic Euler operator has principal symbol proportional to <span class="math" data-index="335" data-tex="\(x\cdot\eta\)">\(x\cdot\eta\)</span>. The stated planned noncharacteristic interface gives, for <span class="math" data-index="336" data-tex="\(\mathcal W=\operatorname{WF}\)">\(\mathcal W=\operatorname{WF}\)</span> or <span class="math" data-index="337" data-tex="\(\operatorname{WF}_A\)">\(\operatorname{WF}_A\)</span>, and hence also for any intermediate <span class="math" data-index="338" data-tex="\(WF_L\)">\(WF_L\)</span>,</p>
+<span class="math math-display" id="eq-50" data-index="339" data-tex="\[
+(x,\eta)\in\mathcal W(u)\quad\Longrightarrow\quad
+x\cdot\eta=0.
+\tag{50}
+\]">\[
+(x,\eta)\in\mathcal W(u)\quad\Longrightarrow\quad
+x\cdot\eta=0.
+\tag{50}
+\]</span>
+<p>Reflection (47), the pullback rule, and multiplication by its nonzero scalar also give</p>
+<span class="math math-display" id="eq-51" data-index="340" data-tex="\[
+(x,\eta)\in\mathcal W(u)
+\quad\Longleftrightarrow\quad
+(-x,-\eta)\in\mathcal W(u).
+\tag{51}
+\]">\[
+(x,\eta)\in\mathcal W(u)
+\quad\Longleftrightarrow\quad
+(-x,-\eta)\in\mathcal W(u).
+\tag{51}
+\]</span>
+<p>Positive dilations of <span class="math" data-index="341" data-tex="\(x\)">\(x\)</span> leave its covector ray unchanged in these wavefront sets, because <span class="math" data-index="342" data-tex="\(u\)">\(u\)</span> is homogeneous and the dilation pullback changes the covector by a positive scalar.</p>
+<p>On <span class="math" data-index="343" data-tex="\((\mathbb R^n\setminus0)\times\mathbb R^n\)">\((\mathbb R^n\setminus0)\times\mathbb R^n\)</span>, let <span class="math" data-index="344" data-tex="\(f(x,\xi)=x\cdot\xi\)">\(f(x,\xi)=x\cdot\xi\)</span>. Its differential and transpose are</p>
+<span class="math math-display" id="eq-52" data-index="345" data-tex="\[
+df(x,\xi)(v,w)=v\cdot\xi+x\cdot w,\qquad
+{}^tdf(x,\xi)t=(t\xi,tx).
+\tag{52}
+\]">\[
+df(x,\xi)(v,w)=v\cdot\xi+x\cdot w,\qquad
+{}^tdf(x,\xi)t=(t\xi,tx).
+\tag{52}
+\]</span>
+<p>This is a submersion, since <span class="math" data-index="346" data-tex="\(x\ne0\)">\(x\ne0\)</span>. The only singular base point of <span class="math" data-index="347" data-tex="\(\sigma_k\)">\(\sigma_k\)</span> is zero. For <span class="math" data-index="348" data-tex="\(k&lt;0\)">\(k&lt;0\)</span> the delta derivative has both nonzero frequency rays there. For <span class="math" data-index="349" data-tex="\(k\ge0\)">\(k\ge0\)</span>, its <span class="math" data-index="350" data-tex="\(k\)">\(k\)</span>-th derivative is a nonzero multiple of <span class="math" data-index="351" data-tex="\(\operatorname{sgn}t\)">\(\operatorname{sgn}t\)</span>, its next derivative a nonzero multiple of <span class="math" data-index="352" data-tex="\(\delta_0\)">\(\delta_0\)</span>; smoothness away from zero and differential decrease therefore give the same two rays. Since the ordinary set is already both rays and the analytic set can contain no other base point, all the indicated wavefront notions have exactly that one-dimensional set. The submersion pullback, in local coordinates with <span class="math" data-index="353" data-tex="\(f\)">\(f\)</span> as one coordinate, yields</p>
+<span class="math math-display" id="eq-53" data-index="354" data-tex="\[
+\mathcal W(\sigma_k(x\cdot\xi))
+=\{(x,\xi;t\xi,tx):x\cdot\xi=0,\ t\ne0\}.
+\tag{53}
+\]">\[
+\mathcal W(\sigma_k(x\cdot\xi))
+=\{(x,\xi;t\xi,tx):x\cdot\xi=0,\ t\ne0\}.
+\tag{53}
+\]</span>
+<p>The equality, rather than just inclusion, follows in those coordinates from <span class="math" data-index="355" data-tex="\(\sigma_k\)">\(\sigma_k\)</span> tensored with the constant distribution in the remaining variables.</p>
+<p>The tensor-product rule gives</p>
+<span class="math math-display" id="eq-54" data-index="356" data-tex="\[
+\mathcal W(u(x)\otimes1)
+=\{(x,\xi;\eta,0):(x,\eta)\in\mathcal W(u)\}.
+\tag{54}
+\]">\[
+\mathcal W(u(x)\otimes1)
+=\{(x,\xi;\eta,0):(x,\eta)\in\mathcal W(u)\}.
+\tag{54}
+\]</span>
+<p>A nonzero covector in (53) has second component <span class="math" data-index="357" data-tex="\(tx\ne0\)">\(tx\ne0\)</span>, whereas every covector in (54) has second component zero. Opposing covectors from these two sets cannot sum to zero. Thus the distribution product</p>
+<span class="math math-display" id="eq-55" data-index="358" data-tex="\[
+A(x,\xi)=u(x)\sigma_k(x\cdot\xi)
+\tag{55}
+\]">\[
+A(x,\xi)=u(x)\sigma_k(x\cdot\xi)
+\tag{55}
+\]</span>
+<p>is canonically defined throughout <span class="math" data-index="359" data-tex="\(x\ne0\)">\(x\ne0\)</span>. The product rule retains all three contributions:</p>
+<span class="math math-display" id="eq-56" data-index="360" data-tex="\[
+\begin{split}
+\mathcal W(A)\subset{}&amp;
+\{(x,\xi;\eta+t\xi,tx):
+x\cdot\xi=0,\ t\ne0,\ (x,\eta)\in\mathcal W(u)\}\\
+&amp;{}\cup\mathcal W(u\otimes1)
+\cup\mathcal W(\sigma_k(x\cdot\xi)).
+\end{split}
+\tag{56}
+\]">\[
+\begin{split}
+\mathcal W(A)\subset{}&amp;
+\{(x,\xi;\eta+t\xi,tx):
+x\cdot\xi=0,\ t\ne0,\ (x,\eta)\in\mathcal W(u)\}\\
+&amp;{}\cup\mathcal W(u\otimes1)
+\cup\mathcal W(\sigma_k(x\cdot\xi)).
+\end{split}
+\tag{56}
+\]</span>
+<p>Support restrictions could narrow the last two sets, but are unnecessary for this valid upper bound.</p>
+<p>Every first covector <span class="math" data-index="361" data-tex="\(\lambda\)">\(\lambda\)</span> in (56) satisfies <span class="math" data-index="362" data-tex="\(x\cdot\lambda=0\)">\(x\cdot\lambda=0\)</span>, using (50) and <span class="math" data-index="363" data-tex="\(x\cdot\xi=0\)">\(x\cdot\xi=0\)</span>. The conormal of the sphere restriction</p>
+<span class="math math-display" data-index="364" data-tex="\[
+j:S^{n-1}\times\mathbb R^n\longrightarrow
+(\mathbb R^n\setminus0)\times\mathbb R^n
+\]">\[
+j:S^{n-1}\times\mathbb R^n\longrightarrow
+(\mathbb R^n\setminus0)\times\mathbb R^n
+\]</span>
+<p>consists of <span class="math" data-index="365" data-tex="\((x,\xi;a x,0)\)">\((x,\xi;a x,0)\)</span>, <span class="math" data-index="366" data-tex="\(a\ne0\)">\(a\ne0\)</span>. It cannot intersect (56), since <span class="math" data-index="367" data-tex="\(x\cdot(ax)=a\ne0\)">\(x\cdot(ax)=a\ne0\)</span>. Therefore <span class="math" data-index="368" data-tex="\(j^*A\)">\(j^*A\)</span> exists, with the exact operation-continuity contract in the angular Fourier and wavefront-operation inputs. Projection
+<span class="math" data-index="369" data-tex="\(\pi:S^{n-1}\times\mathbb R^n\to\mathbb R^n\)">\(\pi:S^{n-1}\times\mathbb R^n\to\mathbb R^n\)</span> is proper on its support: the inverse image of a compact frequency set lies in the compact product with the sphere. Hence <span class="math" data-index="370" data-tex="\(\pi_*j^*A\)">\(\pi_*j^*A\)</span>, with the standard sphere density <span class="math" data-index="371" data-tex="\(dS\)">\(dS\)</span>, is a well-defined distribution. This proves that (49) is a genuine distributional expression. Pairing it with a test in <span class="math" data-index="372" data-tex="\(\xi\)">\(\xi\)</span> agrees with the test-pairing identity in the angular Fourier and wavefront-operation inputs, so it equals <span class="math" data-index="373" data-tex="\(\widehat u\)">\(\widehat u\)</span>, with the constant in (49) unchanged.</p>
+<p>The proper projection rule permits a nonzero output covector <span class="math" data-index="374" data-tex="\(y\)">\(y\)</span> only if a covector in (56) restricts to zero in the sphere variable. Such a first covector is proportional to <span class="math" data-index="375" data-tex="\(x\)">\(x\)</span>; orthogonality (50) forces it to be zero. The tensor-only term then has output covector zero, which is excluded. For <span class="math" data-index="376" data-tex="\(\xi\ne0\)">\(\xi\ne0\)</span>, the <span class="math" data-index="377" data-tex="\(\sigma_k\)">\(\sigma_k\)</span>-only term would require <span class="math" data-index="378" data-tex="\(t\xi=0\)">\(t\xi=0\)</span>, also impossible. The mixed term requires</p>
+<span class="math math-display" id="eq-57" data-index="379" data-tex="\[
+\eta=-t\xi,\qquad y=tx,\qquad t\ne0.
+\tag{57}
+\]">\[
+\eta=-t\xi,\qquad y=tx,\qquad t\ne0.
+\tag{57}
+\]</span>
+<p>Consequently</p>
+<span class="math math-display" id="eq-58" data-index="380" data-tex="\[
+\mathcal W(\widehat u)
+\subset
+\{(\xi,tx):\xi\ne0,\ t\ne0,\ (x,-t\xi)\in\mathcal W(u)\}
+\cup\{(0,y):y\ne0\}.
+\tag{58}
+\]">\[
+\mathcal W(\widehat u)
+\subset
+\{(\xi,tx):\xi\ne0,\ t\ne0,\ (x,-t\xi)\in\mathcal W(u)\}
+\cup\{(0,y):y\ne0\}.
+\tag{58}
+\]</span>
+<p>Equations (51), positive homogeneity in the base point, and positive conicity in covectors turn its first set into</p>
+<span class="math math-display" id="eq-59" data-index="381" data-tex="\[
+\{(\xi,y):\xi\ne0,\ y\ne0,\ (-y,\xi)\in\mathcal W(u)\}.
+\tag{59}
+\]">\[
+\{(\xi,y):\xi\ne0,\ y\ne0,\ (-y,\xi)\in\mathcal W(u)\}.
+\tag{59}
+\]</span>
+<p>For example, if <span class="math" data-index="382" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, reflect <span class="math" data-index="383" data-tex="\((x,-\xi)\)">\((x,-\xi)\)</span> to <span class="math" data-index="384" data-tex="\((-x,\xi)\)">\((-x,\xi)\)</span>, then dilate the base by <span class="math" data-index="385" data-tex="\(t\)">\(t\)</span>; if <span class="math" data-index="386" data-tex="\(t&lt;0\)">\(t&lt;0\)</span>, dilate <span class="math" data-index="387" data-tex="\((x,\xi)\)">\((x,\xi)\)</span> by <span class="math" data-index="388" data-tex="\(-t\)">\(-t\)</span>. This verifies the signs in (59). the angular Fourier and wavefront-operation inputs's homogeneous Fourier interchange supplies the reverse implication away from both origins.</p>
+<p>Fix <span class="math" data-index="389" data-tex="\(\xi_0\ne0\)">\(\xi_0\ne0\)</span>. To restrict <span class="math" data-index="390" data-tex="\(A\)">\(A\)</span> directly to <span class="math" data-index="391" data-tex="\(S^{n-1}\times\{\xi_0\}\)">\(S^{n-1}\times\{\xi_0\}\)</span>, its ambient conormal is <span class="math" data-index="392" data-tex="\((a x,\nu)\)">\((a x,\nu)\)</span>, where <span class="math" data-index="393" data-tex="\(\nu\)">\(\nu\)</span> is arbitrary and a nonzero pair is required. Orthogonality again forces <span class="math" data-index="394" data-tex="\(a=0\)">\(a=0\)</span>. A tensor-only covector cannot then be nonzero. A <span class="math" data-index="395" data-tex="\(\sigma_k\)">\(\sigma_k\)</span>-only covector would have <span class="math" data-index="396" data-tex="\(t\xi_0=0\)">\(t\xi_0=0\)</span>, impossible. In the mixed case the only obstruction is</p>
+<span class="math math-display" id="eq-60" data-index="397" data-tex="\[
+(x,-t\xi_0)\in\mathcal W(u)
+\quad\text{for some }|x|=1,\ t\ne0.
+\tag{60}
+\]">\[
+(x,-t\xi_0)\in\mathcal W(u)
+\quad\text{for some }|x|=1,\ t\ne0.
+\tag{60}
+\]</span>
+<p>Reflection and conicity show that this is equivalent to <span class="math" data-index="398" data-tex="\((x,\xi_0)\in\mathcal W(u)\)">\((x,\xi_0)\in\mathcal W(u)\)</span> for some <span class="math" data-index="399" data-tex="\(x\ne0\)">\(x\ne0\)</span>. Thus (49) has a canonical pointwise value whenever</p>
+<span class="math math-display" id="eq-61" data-index="400" data-tex="\[
+(x,\xi_0)\notin\mathcal W(u)\quad\text{for every }x\ne0.
+\tag{61}
+\]">\[
+(x,\xi_0)\notin\mathcal W(u)\quad\text{for every }x\ne0.
+\tag{61}
+\]</span>
+<p>The homogeneous Fourier interchange and the base projection of each wavefront notion identify this domain exactly with the complement of the corresponding singular support of <span class="math" data-index="401" data-tex="\(\widehat u\)">\(\widehat u\)</span>, away from zero. On an open neighborhood satisfying (61), the sphere distribution and its projection vary in the required regularity class, so the pointwise value agrees with the smooth, analytic or <span class="math" data-index="402" data-tex="\(C^L\)">\(C^L\)</span> representative there. This retains the analytic and all declared derivative-sequence variants; it does not interpret <span class="math" data-index="403" data-tex="\(L\)">\(L\)</span> as a Sobolev order.</p>
+<p>In dimension one the sphere is the two-point manifold <span class="math" data-index="404" data-tex="\(S^0\)">\(S^0\)</span>, with counting surface measure, and all compact-fiber and conormal calculations above still apply. Later equatorial cycle formulas require separate attention to dimension; no empty-sphere convention is silently inserted into (49).</p>
+<h2 id="6-the-angular-representation-of-homogeneous-causal-kernels">6. The angular representation of homogeneous causal kernels</h2>
+<p>For this section let <span class="math" data-index="405" data-tex="\(F\)">\(F\)</span> itself be homogeneous, of degree <span class="math" data-index="406" data-tex="\(m\ge1\)">\(m\ge1\)</span>, hyperbolic in <span class="math" data-index="407" data-tex="\(N\)">\(N\)</span>. Let <span class="math" data-index="408" data-tex="\(E_F\)">\(E_F\)</span> be its positive-side causal inverse, and put</p>
+<span class="math math-display" id="eq-62" data-index="409" data-tex="\[
+E_\alpha=D^\alpha E_F,\qquad
+q=m-n-|\alpha|,\qquad
+W_F=\bigcup_{\xi\ne0}\Gamma(H_\xi,N)^*.
+\tag{62}
+\]">\[
+E_\alpha=D^\alpha E_F,\qquad
+q=m-n-|\alpha|,\qquad
+W_F=\bigcup_{\xi\ne0}\Gamma(H_\xi,N)^*.
+\tag{62}
+\]</span>
+<p>The set <span class="math" data-index="410" data-tex="\(W_F\)">\(W_F\)</span> contains zero and lies in <span class="math" data-index="411" data-tex="\(C=\Gamma(F,N)^*\)">\(C=\Gamma(F,N)^*\)</span>, by the tangent-polynomial section. It is a closed cone. To prove closure, positive rescaling of <span class="math" data-index="412" data-tex="\(\xi\)">\(\xi\)</span> multiplies its tangent polynomial by a nonzero scalar, so its component and polar are unchanged. For a convergent sequence <span class="math" data-index="413" data-tex="\(x_j\in W_F\)">\(x_j\in W_F\)</span>, choose witnessing frequencies of unit length. A subsequence converges to a nonzero unit <span class="math" data-index="414" data-tex="\(\xi\)">\(\xi\)</span>; the proved polynomial tangent-cone input's closed graph then puts the limit <span class="math" data-index="415" data-tex="\(x\)">\(x\)</span> in <span class="math" data-index="416" data-tex="\(\Gamma(H_\xi,N)^*\)">\(\Gamma(H_\xi,N)^*\)</span>. Conicity follows from each polar being a cone. No assertion that <span class="math" data-index="417" data-tex="\(W_F\)">\(W_F\)</span> is convex is needed.</p>
+<p>the causal inverse input gives the tempered homogeneous boundary value</p>
+<span class="math math-display" id="eq-63" data-index="418" data-tex="\[
+\widehat E_\alpha(\xi)
+=\frac{\xi^\alpha}{F(\xi-i0N)},
+\qquad
+\deg\widehat E_\alpha=|\alpha|-m=-n-q.
+\tag{63}
+\]">\[
+\widehat E_\alpha(\xi)
+=\frac{\xi^\alpha}{F(\xi-i0N)},
+\qquad
+\deg\widehat E_\alpha=|\alpha|-m=-n-q.
+\tag{63}
+\]</span>
+<p>Define the parity-selected jump</p>
+<span class="math math-display" id="eq-64" data-index="419" data-tex="\[
+\begin{split}
+u_\alpha(\xi)
+&amp;=\widehat E_\alpha(\xi)
+-(-1)^q\widehat E_\alpha(-\xi)\\
+&amp;=\xi^\alpha
+\left(\frac1{F(\xi-i0N)}
+-\frac{(-1)^n}{F(\xi+i0N)}\right).
+\end{split}
+\tag{64}
+\]">\[
+\begin{split}
+u_\alpha(\xi)
+&amp;=\widehat E_\alpha(\xi)
+-(-1)^q\widehat E_\alpha(-\xi)\\
+&amp;=\xi^\alpha
+\left(\frac1{F(\xi-i0N)}
+-\frac{(-1)^n}{F(\xi+i0N)}\right).
+\end{split}
+\tag{64}
+\]</span>
+<p>For the second equality, homogeneity gives
+<span class="math" data-index="420" data-tex="\(\widehat E_\alpha(-\xi)=(-1)^{|\alpha|-m}
+\xi^\alpha/F(\xi+i0N)\)">\(\widehat E_\alpha(-\xi)=(-1)^{|\alpha|-m}
+\xi^\alpha/F(\xi+i0N)\)</span>, and
+<span class="math" data-index="421" data-tex="\(q+|\alpha|-m=-n\)">\(q+|\alpha|-m=-n\)</span>. Thus <span class="math" data-index="422" data-tex="\(u_\alpha\)">\(u_\alpha\)</span> has degree <span class="math" data-index="423" data-tex="\(-n-q\)">\(-n-q\)</span> and parity <span class="math" data-index="424" data-tex="\((-1)^{q+1}\)">\((-1)^{q+1}\)</span>, exactly the two hypotheses of the angular distribution section with <span class="math" data-index="425" data-tex="\(k=q\)">\(k=q\)</span>. Its Fourier transform is</p>
+<span class="math math-display" id="eq-65" data-index="426" data-tex="\[
+\widehat u_\alpha(x)
+=(2\pi)^n\bigl(E_\alpha(-x)-(-1)^qE_\alpha(x)\bigr),
+\tag{65}
+\]">\[
+\widehat u_\alpha(x)
+=(2\pi)^n\bigl(E_\alpha(-x)-(-1)^qE_\alpha(x)\bigr),
+\tag{65}
+\]</span>
+<p>by the squared-Fourier identity with reflection and the fixed unnormalized convention.</p>
+<p>Apply (49) at argument <span class="math" data-index="427" data-tex="\(-x\)">\(-x\)</span>. Equations (64)–(65) give, as a distribution identity in <span class="math" data-index="428" data-tex="\(x\)">\(x\)</span>,</p>
+<span class="math math-display" id="eq-66" data-index="429" data-tex="\[
+\begin{split}
+E_\alpha(x)-(-1)^qE_\alpha(-x)
+={}&amp;(2\pi)^{-n}\pi i^{-1-q}
+\int_{S^{n-1}}\sigma_q(-x\cdot\xi)\,\xi^\alpha\\
+&amp;\quad\cdot
+\left(\frac1{F(\xi-i0N)}
+-\frac{(-1)^n}{F(\xi+i0N)}\right)dS(\xi).
+\end{split}
+\tag{66}
+\]">\[
+\begin{split}
+E_\alpha(x)-(-1)^qE_\alpha(-x)
+={}&amp;(2\pi)^{-n}\pi i^{-1-q}
+\int_{S^{n-1}}\sigma_q(-x\cdot\xi)\,\xi^\alpha\\
+&amp;\quad\cdot
+\left(\frac1{F(\xi-i0N)}
+-\frac{(-1)^n}{F(\xi+i0N)}\right)dS(\xi).
+\end{split}
+\tag{66}
+\]</span>
+<p>All products and sphere integrations carry the angular distribution section's verified hypotheses. In particular no value of a singular rational function on the real characteristic set is chosen arbitrarily.</p>
+<p>The analytic wavefront set of the jump obeys</p>
+<span class="math math-display" id="eq-67" data-index="430" data-tex="\[
+(\xi,y)\in\operatorname{WF}_A(u_\alpha),\quad
+\xi\ne0
+\quad\Longrightarrow\quad
+y\in C_\xi\cup(-C_\xi).
+\tag{67}
+\]">\[
+(\xi,y)\in\operatorname{WF}_A(u_\alpha),\quad
+\xi\ne0
+\quad\Longrightarrow\quad
+y\in C_\xi\cup(-C_\xi).
+\tag{67}
+\]</span>
+<p>Indeed differential decrease gives
+<span class="math" data-index="431" data-tex="\(\operatorname{WF}_A(E_\alpha)\subset
+\{(x,\xi):x\in C_\xi\}\)">\(\operatorname{WF}_A(E_\alpha)\subset
+\{(x,\xi):x\in C_\xi\}\)</span> from the analytic upper-cone section. The homogeneous Fourier interchange in the angular Fourier and wavefront-operation inputs then gives
+<span class="math" data-index="432" data-tex="\(\operatorname{WF}_A(\widehat E_\alpha)\subset
+\{(\xi,y):-y\in C_\xi\}\)">\(\operatorname{WF}_A(\widehat E_\alpha)\subset
+\{(\xi,y):-y\in C_\xi\}\)</span> away from both origins. Reflection of (63) supplies the other sign in (64). For homogeneous <span class="math" data-index="433" data-tex="\(F\)">\(F\)</span>, its Taylor expansion at <span class="math" data-index="434" data-tex="\(-\xi\)">\(-\xi\)</span> has the same vanishing order as at <span class="math" data-index="435" data-tex="\(\xi\)">\(\xi\)</span> and</p>
+<span class="math math-display" id="eq-68" data-index="436" data-tex="\[
+H_{-\xi}(h)=(-1)^{m-\deg H_\xi}H_\xi(h).
+\tag{68}
+\]">\[
+H_{-\xi}(h)=(-1)^{m-\deg H_\xi}H_\xi(h).
+\tag{68}
+\]</span>
+<p>The nonzero sets and components containing <span class="math" data-index="437" data-tex="\(N\)">\(N\)</span> agree, so <span class="math" data-index="438" data-tex="\(C_{-\xi}=C_\xi\)">\(C_{-\xi}=C_\xi\)</span>. These facts prove (67); a covector <span class="math" data-index="439" data-tex="\(y=0\)">\(y=0\)</span> is excluded throughout.</p>
+<p>If <span class="math" data-index="440" data-tex="\(x\notin W_F\cup(-W_F)\)">\(x\notin W_F\cup(-W_F)\)</span>, (67) excludes every obstruction to the pointwise sphere formula in the angular distribution section, and (66) is valid as an analytic identity near <span class="math" data-index="441" data-tex="\(x\)">\(x\)</span>. Its left-hand side has analytic singular support contained in <span class="math" data-index="442" data-tex="\(W_F\cup(-W_F)\)">\(W_F\cup(-W_F)\)</span> away from zero. Also <span class="math" data-index="443" data-tex="\(E_\alpha(-x)\)">\(E_\alpha(-x)\)</span> vanishes outside <span class="math" data-index="444" data-tex="\(-C\)">\(-C\)</span>, since differentiation preserves the support of <span class="math" data-index="445" data-tex="\(E_F\)">\(E_F\)</span>. Therefore for</p>
+<span class="math math-display" id="eq-69" data-index="446" data-tex="\[
+x\notin W_F\cup(-C)
+\tag{69}
+\]">\[
+x\notin W_F\cup(-C)
+\tag{69}
+\]</span>
+<p>the right-hand side of (66) equals <span class="math" data-index="447" data-tex="\(D^\alpha E_F(x)\)">\(D^\alpha E_F(x)\)</span> pointwise and analytically. This region is contained in the complement of <span class="math" data-index="448" data-tex="\(W_F\cup(-W_F)\)">\(W_F\cup(-W_F)\)</span>, because <span class="math" data-index="449" data-tex="\(W_F\subset C\)">\(W_F\subset C\)</span>. the analytic upper-cone section separately shows that <span class="math" data-index="450" data-tex="\(E_\alpha\)">\(E_\alpha\)</span> itself is analytic outside <span class="math" data-index="451" data-tex="\(W_F\)">\(W_F\)</span>. The difference's symmetric singular bound and the individual kernel's sharper bound are distinguished.</p>
+<p>When <span class="math" data-index="452" data-tex="\(n\)">\(n\)</span> is even, the parenthesis in (64) vanishes on every real open set where <span class="math" data-index="453" data-tex="\(F\ne0\)">\(F\ne0\)</span>; both boundary values there equal the same smooth <span class="math" data-index="454" data-tex="\(1/F\)">\(1/F\)</span>. Thus its support lies in <span class="math" data-index="455" data-tex="\(\{F=0\}\)">\(\{F=0\}\)</span>. If <span class="math" data-index="456" data-tex="\(F\)">\(F\)</span> has real coefficients and is of real principal type, its characteristic gradient is nonzero for <span class="math" data-index="457" data-tex="\(\xi\ne0\)">\(\xi\ne0\)</span>, and</p>
+<span class="math math-display" id="eq-70" data-index="458" data-tex="\[
+\frac1{F(\xi-i0N)}-\frac1{F(\xi+i0N)}
+=2\pi i\,
+\operatorname{sgn}(\partial_NF(\xi))\,\delta(F(\xi))
+\quad(\xi\ne0).
+\tag{70}
+\]">\[
+\frac1{F(\xi-i0N)}-\frac1{F(\xi+i0N)}
+=2\pi i\,
+\operatorname{sgn}(\partial_NF(\xi))\,\delta(F(\xi))
+\quad(\xi\ne0).
+\tag{70}
+\]</span>
+<p>The nonzero directional derivative follows from the hyperbolicity and strength input's simple-root criterion. In a coordinate with <span class="math" data-index="459" data-tex="\(F\)">\(F\)</span> as one variable, the imaginary sign is that of <span class="math" data-index="460" data-tex="\(\partial_NF\)">\(\partial_NF\)</span>; the one-dimensional boundary jump <span class="math" data-index="461" data-tex="\(1/(s-i0)-1/(s+i0)=2\pi i\delta(s)\)">\(1/(s-i0)-1/(s+i0)=2\pi i\delta(s)\)</span> gives (70), with its exact sign. This is a smooth density on the characteristic hypersurface in the distributional coarea sense.</p>
+<p>For <span class="math" data-index="462" data-tex="\(q&lt;0\)">\(q&lt;0\)</span>, (48) localizes the angular expression to the intersection</p>
+<span class="math math-display" id="eq-71" data-index="463" data-tex="\[
+\{\xi\in S^{n-1}:F(\xi)=0,\ x\cdot\xi=0\}.
+\tag{71}
+\]">\[
+\{\xi\in S^{n-1}:F(\xi)=0,\ x\cdot\xi=0\}.
+\tag{71}
+\]</span>
+<p>For <span class="math" data-index="464" data-tex="\(x\)">\(x\)</span> in (69) and real principal type, this intersection is transverse. On <span class="math" data-index="465" data-tex="\(F=0\)">\(F=0\)</span>, Euler's identity makes <span class="math" data-index="466" data-tex="\(\nabla F\)">\(\nabla F\)</span> tangent to the sphere. On <span class="math" data-index="467" data-tex="\(x\cdot\xi=0\)">\(x\cdot\xi=0\)</span>, <span class="math" data-index="468" data-tex="\(x\)">\(x\)</span> is tangent too. Dependence of these two tangent normals would make <span class="math" data-index="469" data-tex="\(x\)">\(x\)</span> proportional to <span class="math" data-index="470" data-tex="\(\nabla F(\xi)\)">\(\nabla F(\xi)\)</span>; the tangent polar of this simple characteristic is the appropriate ray on that line, so <span class="math" data-index="471" data-tex="\(x\)">\(x\)</span> would be in <span class="math" data-index="472" data-tex="\(W_F\cup(-W_F)\)">\(W_F\cup(-W_F)\)</span>, a contradiction. At <span class="math" data-index="473" data-tex="\(q=-1\)">\(q=-1\)</span>, the two delta factors give the ordinary coarea integral over (71), with the signs and factor in (66),(70). At <span class="math" data-index="474" data-tex="\(q&lt;-1\)">\(q&lt;-1\)</span>, the derivative <span class="math" data-index="475" data-tex="\(\delta^{(-q-1)}\)">\(\delta^{(-q-1)}\)</span> gives the corresponding transverse normal derivatives of that density; these derivatives are retained. This states precisely the characteristic-surface version of the angular formula and the extent to which its value is localized at the equator.</p>
+<h2 id="7-a-transverse-analytic-deformation-and-its-boundary-value">7. A transverse analytic deformation and its boundary value</h2>
+<p>Fix <span class="math" data-index="476" data-tex="\(x\notin W_F\cup(-W_F)\)">\(x\notin W_F\cup(-W_F)\)</span>. For every <span class="math" data-index="477" data-tex="\(\xi\ne0\)">\(\xi\ne0\)</span>, the linear form <span class="math" data-index="478" data-tex="\(v\mapsto x\cdot v\)">\(v\mapsto x\cdot v\)</span> takes both signs on <span class="math" data-index="479" data-tex="\(\Gamma(H_\xi,N)\)">\(\Gamma(H_\xi,N)\)</span>. Otherwise one of <span class="math" data-index="480" data-tex="\(x,-x\)">\(x,-x\)</span> would belong to its polar. Choose two cone vectors with opposite signs and take their positive convex combination with zero <span class="math" data-index="481" data-tex="\(x\)">\(x\)</span>-pairing. This supplies a vector in the cone and in <span class="math" data-index="482" data-tex="\(x^\perp\)">\(x^\perp\)</span>. At a degree-zero tangent point the cone is all of <span class="math" data-index="483" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, and zero is allowed; at positive tangent degree the selected vector cannot be zero.</p>
+<p>the proved polynomial tangent-cone input's local cone stability keeps a selected vector valid in a neighborhood of its direction. Equation (68) permits the same choice near the opposite direction. A finite even partition of unity on the sphere combines these choices, by convexity of each component, into a smooth even degree-zero field. It has the properties</p>
+<span class="math math-display" id="eq-72" data-index="484" data-tex="\[
+x\cdot\Theta(\xi)=0,\qquad
+\Theta(t\xi)=\Theta(\xi)\ (t\ne0),\qquad
+\Theta(\xi)\in\Gamma(H_\xi,N).
+\tag{72}
+\]">\[
+x\cdot\Theta(\xi)=0,\qquad
+\Theta(t\xi)=\Theta(\xi)\ (t\ne0),\qquad
+\Theta(\xi)\in\Gamma(H_\xi,N).
+\tag{72}
+\]</span>
+<p>It can be made real analytic without losing these properties. Extend it smoothly and evenly to a bounded annulus, multiply by an even radial compact cutoff equal to one near the unit sphere, and convolve with a narrow Gaussian. This gives an even real analytic vector field uniformly close to the original on the sphere. The identity <span class="math" data-index="485" data-tex="\(x\cdot\Theta=0\)">\(x\cdot\Theta=0\)</span> is linear and is preserved exactly by extension and convolution. Restriction to the sphere followed by <span class="math" data-index="486" data-tex="\(\xi\mapsto\xi/|\xi|\)">\(\xi\mapsto\xi/|\xi|\)</span> restores degree zero and remains real analytic away from zero. There is a uniform permitted approximation error: each original sphere value has a ball inside its tangent cone, this ball remains valid in a neighborhood by the proved polynomial tangent-cone input, and a finite subcover gives a positive minimum radius. Thus sufficiently close approximation retains the strict cone membership in (72).</p>
+<p>For sufficiently small <span class="math" data-index="487" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, the two sphere deformations</p>
+<span class="math math-display" id="eq-73" data-index="488" data-tex="\[
+c_\varepsilon^\pm(\xi)=\xi\pm i\varepsilon\Theta(\xi),
+\qquad |\xi|=1
+\tag{73}
+\]">\[
+c_\varepsilon^\pm(\xi)=\xi\pm i\varepsilon\Theta(\xi),
+\qquad |\xi|=1
+\tag{73}
+\]</span>
+<p>avoid <span class="math" data-index="489" data-tex="\(F=0\)">\(F=0\)</span>. the proved polynomial tangent-cone input gives this uniformly on the compact sphere, with a bound <span class="math" data-index="490" data-tex="\(c\varepsilon^M\)">\(c\varepsilon^M\)</span> for some finite <span class="math" data-index="491" data-tex="\(M\)">\(M\)</span>. At noncharacteristic points use the ordinary nonzero neighborhood instead. The two signs have the same zero-exclusion property: <span class="math" data-index="492" data-tex="\(F\)">\(F\)</span> is real after the hyperbolicity and strength input's scalar normalization, and conjugation interchanges them.</p>
+<p>We need the exact variable-direction boundary value, including the topology required to multiply and restrict it. In a neighborhood of a characteristic <span class="math" data-index="493" data-tex="\(\xi_*\)">\(\xi_*\)</span>, choose a smaller pointed cone <span class="math" data-index="494" data-tex="\(G\)">\(G\)</span> with closure in <span class="math" data-index="495" data-tex="\(\Gamma(H_{\xi_*},N)\)">\(\Gamma(H_{\xi_*},N)\)</span>, containing <span class="math" data-index="496" data-tex="\(N\)">\(N\)</span>, the neighboring values of <span class="math" data-index="497" data-tex="\(\Theta\)">\(\Theta\)</span>, and any finite further interior directions needed to test a wavefront exclusion. Narrow it in angle so that it has a uniformly positive linear functional on its nonzero unit section. the proved polynomial tangent-cone input supplies a zero-free tube with power bound. Write <span class="math" data-index="498" data-tex="\(f(z)=1/F(z)\)">\(f(z)=1/F(z)\)</span> there, and</p>
+<span class="math math-display" id="eq-74" data-index="499" data-tex="\[
+f_\varepsilon(z)=f(z-i\varepsilon\Theta(z))
+\tag{74}
+\]">\[
+f_\varepsilon(z)=f(z-i\varepsilon\Theta(z))
+\tag{74}
+\]</span>
+<p>using the local holomorphic extension of the real analytic field. For <span class="math" data-index="500" data-tex="\(z=w-iy\)">\(z=w-iy\)</span>, <span class="math" data-index="501" data-tex="\(y\in G\)">\(y\in G\)</span>, and small <span class="math" data-index="502" data-tex="\(|y|,\varepsilon\)">\(|y|,\varepsilon\)</span>, the new imaginary magnitude is <span class="math" data-index="503" data-tex="\(y+\varepsilon\operatorname{Re}\Theta(z)\)">\(y+\varepsilon\operatorname{Re}\Theta(z)\)</span>. It remains in a compact smaller cone and has norm at least <span class="math" data-index="504" data-tex="\(c(|y|+\varepsilon)\)">\(c(|y|+\varepsilon)\)</span>. The positive functional proves the latter assertion; the small complex-extension perturbation and the cone's angular margin preserve it. The real displacement <span class="math" data-index="505" data-tex="\(\varepsilon\operatorname{Im}\Theta(z)=O(\varepsilon|y|)\)">\(\varepsilon\operatorname{Im}\Theta(z)=O(\varepsilon|y|)\)</span> remains in the local real base. Thus</p>
+<span class="math math-display" id="eq-75" data-index="506" data-tex="\[
+|f_\varepsilon(w-iy)|
+\le C(|y|+\varepsilon)^{-M}
+\le C&#x27;|y|^{-M}
+\tag{75}
+\]">\[
+|f_\varepsilon(w-iy)|
+\le C(|y|+\varepsilon)^{-M}
+\le C&#x27;|y|^{-M}
+\tag{75}
+\]</span>
+<p>uniformly in <span class="math" data-index="507" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. On complex compact subsets with <span class="math" data-index="508" data-tex="\(y\ne0\)">\(y\ne0\)</span>, <span class="math" data-index="509" data-tex="\(f_\varepsilon\to f\)">\(f_\varepsilon\to f\)</span> holomorphically.</p>
+<p>Apply the finite-test boundary formula(2.8) in the boundary and analytic-wavefront input's actual the holomorphic-boundary lesson proof to this uniformly bounded family, with imaginary direction <span class="math" data-index="510" data-tex="\(-Y\)">\(-Y\)</span>, <span class="math" data-index="511" data-tex="\(Y\in G\)">\(Y\in G\)</span>. Its remainder contains <span class="math" data-index="512" data-tex="\(t^M f_\varepsilon(w-itY)\)">\(t^M f_\varepsilon(w-itY)\)</span>, bounded independently of <span class="math" data-index="513" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. At each <span class="math" data-index="514" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> it converges to <span class="math" data-index="515" data-tex="\(t^Mf(w-itY)\)">\(t^Mf(w-itY)\)</span>; dominated convergence therefore makes the boundary values converge in distributions. The boundary value of <span class="math" data-index="516" data-tex="\(f_\varepsilon\)">\(f_\varepsilon\)</span> on the real base is the actual analytic function <span class="math" data-index="517" data-tex="\(1/F(w-i\varepsilon\Theta(w))\)">\(1/F(w-i\varepsilon\Theta(w))\)</span>. The limit agrees with <span class="math" data-index="518" data-tex="\(1/F(w-i0N)\)">\(1/F(w-i0N)\)</span>, since <span class="math" data-index="519" data-tex="\(N\in G\)">\(N\in G\)</span> and the full-cone boundary limit in that written proof is independent of the approach inside the cone.</p>
+<p>For precision, the convergence also holds in the fixed-wavefront topology needed by the angular Fourier and wavefront-operation inputs. For a compact smooth cutoff <span class="math" data-index="520" data-tex="\(\phi\)">\(\phi\)</span> and a closed test-frequency cone outside the negative polar of <span class="math" data-index="521" data-tex="\(G\)">\(G\)</span>, choose <span class="math" data-index="522" data-tex="\(Y\in-G\)">\(Y\in-G\)</span> with <span class="math" data-index="523" data-tex="\(Y\cdot\eta\le-c|\eta|\)">\(Y\cdot\eta\le-c|\eta|\)</span> on a smaller test cone. Apply the same almost analytic formula to the compact test <span class="math" data-index="524" data-tex="\(\phi(w)e^{-iw\cdot\eta}\)">\(\phi(w)e^{-iw\cdot\eta}\)</span>, keeping the exponential holomorphic and extending only <span class="math" data-index="525" data-tex="\(\phi\)">\(\phi\)</span> to order <span class="math" data-index="526" data-tex="\(\ell\)">\(\ell\)</span>. The top face has exponential decay; the remainder is bounded by</p>
+<span class="math math-display" id="eq-76" data-index="527" data-tex="\[
+C_\ell\int_0^1
+t^{\ell-M}e^{-ct|\eta|}\,dt
+\le C&#x27;_\ell(1+|\eta|)^{-\ell+M-1},
+\qquad \ell\ge M.
+\tag{76}
+\]">\[
+C_\ell\int_0^1
+t^{\ell-M}e^{-ct|\eta|}\,dt
+\le C&#x27;_\ell(1+|\eta|)^{-\ell+M-1},
+\qquad \ell\ge M.
+\tag{76}
+\]</span>
+<p>All constants are uniform in <span class="math" data-index="528" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Since <span class="math" data-index="529" data-tex="\(\ell\)">\(\ell\)</span> is arbitrary, this is uniform rapid Fourier decay on that test cone. Distributional convergence gives uniform convergence on bounded frequency sets; use a higher-order bound (76) on the tail to obtain convergence in every weighted rapid-decay seminorm. If a tested covector lies outside <span class="math" data-index="530" data-tex="\(-C_\xi\)">\(-C_\xi\)</span>, its separating cone vector can be added to the compact smaller cone <span class="math" data-index="531" data-tex="\(G\)">\(G\)</span>. A finite local cover then gives precisely the closed graph bound <span class="math" data-index="532" data-tex="\(\{(\xi,\eta):\eta\in-C_\xi,\eta\ne0\}\)">\(\{(\xi,\eta):\eta\in-C_\xi,\eta\ne0\}\)</span>. At noncharacteristic points ordinary holomorphic convergence gives smooth convergence directly. Conjugation gives the corresponding positive-boundary statement. This proves the variable analytic deformation limit, rather than assuming that a variable direction may be inserted into a distributional limit.</p>
+<p>Let</p>
+<span class="math math-display" id="eq-77" data-index="533" data-tex="\[
+\omega(\zeta)=
+\sum_{j=1}^n(-1)^{j-1}\zeta_j\,
+d\zeta_1\wedge\cdots\wedge\widehat{d\zeta_j}
+\wedge\cdots\wedge d\zeta_n
+\tag{77}
+\]">\[
+\omega(\zeta)=
+\sum_{j=1}^n(-1)^{j-1}\zeta_j\,
+d\zeta_1\wedge\cdots\wedge\widehat{d\zeta_j}
+\wedge\cdots\wedge d\zeta_n
+\tag{77}
+\]</span>
+<p>be the Kronecker form. On the real unit sphere it is the usual oriented surface form. The sphere restriction is transverse to the homogeneous boundary wavefront set by (50). At fixed <span class="math" data-index="534" data-tex="\(x\notin W_F\cup(-W_F)\)">\(x\notin W_F\cup(-W_F)\)</span>, the multiplier <span class="math" data-index="535" data-tex="\(\sigma_q(-x\cdot\xi)\)">\(\sigma_q(-x\cdot\xi)\)</span> has no opposing covector with either rational boundary value, by (67). The convergence just proved, the angular Fourier and wavefront-operation inputs's continuous restriction and product, and the smooth convergence of the pulled-back numerator and form therefore permit both deformed sphere integrals to converge to (66). Their arguments satisfy <span class="math" data-index="536" data-tex="\(x\cdot c_\varepsilon^\pm(\xi)=x\cdot\xi\)">\(x\cdot c_\varepsilon^\pm(\xi)=x\cdot\xi\)</span>, so the one-dimensional distribution in this operation retains its real argument exactly. These observations justify using <span class="math" data-index="537" data-tex="\(\omega\)">\(\omega\)</span> on the deformed contours, including when <span class="math" data-index="538" data-tex="\(q&lt;0\)">\(q&lt;0\)</span> and the factor is a delta derivative.</p>
+<h2 id="8-the-two-oriented-contour-formulas">8. The two oriented contour formulas</h2>
+<p>Assume <span class="math" data-index="539" data-tex="\(n\ge2\)">\(n\ge2\)</span>, and fix <span class="math" data-index="540" data-tex="\(x\)">\(x\)</span> in (69), with <span class="math" data-index="541" data-tex="\(\Theta\)">\(\Theta\)</span> as in the transverse deformation section. All orientations below start from the standard outward orientation of <span class="math" data-index="542" data-tex="\(S^{n-1}\)">\(S^{n-1}\)</span>. Let</p>
+<span class="math math-display" id="eq-78" data-index="543" data-tex="\[
+\alpha_+=c_\varepsilon^-(S^{n-1})
++(-1)^{n-1}c_\varepsilon^+(S^{n-1}).
+\tag{78}
+\]">\[
+\alpha_+=c_\varepsilon^-(S^{n-1})
++(-1)^{n-1}c_\varepsilon^+(S^{n-1}).
+\tag{78}
+\]</span>
+<p>This is a formal oriented sum of cycles. For <span class="math" data-index="544" data-tex="\(q\ge0\)">\(q\ge0\)</span>, the formula is</p>
+<span class="math math-display" id="eq-79" data-index="545" data-tex="\[
+D^\alpha E_F(x)=
+\frac{(2\pi)^{1-n}i}{4q!}
+\int_{\alpha_+}
+(ix\cdot\zeta)^q\operatorname{sgn}(x\cdot\zeta)
+\frac{\zeta^\alpha}{F(\zeta)}\,\omega(\zeta).
+\tag{79}
+\]">\[
+D^\alpha E_F(x)=
+\frac{(2\pi)^{1-n}i}{4q!}
+\int_{\alpha_+}
+(ix\cdot\zeta)^q\operatorname{sgn}(x\cdot\zeta)
+\frac{\zeta^\alpha}{F(\zeta)}\,\omega(\zeta).
+\tag{79}
+\]</span>
+<p>The sign is well defined because <span class="math" data-index="546" data-tex="\(x\cdot\zeta=x\cdot\xi\)">\(x\cdot\zeta=x\cdot\xi\)</span> is real on the cycles; its value on the equator does not affect the hemisphere-chain integral.</p>
+<p>To prove (79), substitute
+<span class="math" data-index="547" data-tex="\(\sigma_q(-x\cdot\xi)=(-1)^{q+1}
+\operatorname{sgn}(x\cdot\xi)(x\cdot\xi)^q/(2q!)\)">\(\sigma_q(-x\cdot\xi)=(-1)^{q+1}
+\operatorname{sgn}(x\cdot\xi)(x\cdot\xi)^q/(2q!)\)</span>
+into the transverse deformation section's deformation limit of (66). The negative-boundary contour has weight one and the positive-boundary contour weight <span class="math" data-index="548" data-tex="\(-(-1)^n=(-1)^{n-1}\)">\(-(-1)^n=(-1)^{n-1}\)</span>. Its scalar is
+<span class="math" data-index="549" data-tex="\((2\pi)^{-n}\pi i^{-1-q}(-1)^{q+1}/(2q!)
+=(2\pi)^{1-n}i^{q+1}/(4q!)\)">\((2\pi)^{-n}\pi i^{-1-q}(-1)^{q+1}/(2q!)
+=(2\pi)^{1-n}i^{q+1}/(4q!)\)</span>.
+This is exactly the constant and the factor <span class="math" data-index="550" data-tex="\((ix\cdot\zeta)^q\)">\((ix\cdot\zeta)^q\)</span> in (79).</p>
+<p>The resulting integral is independent of sufficiently small positive <span class="math" data-index="551" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. If <span class="math" data-index="552" data-tex="\(R=\sum\zeta_j\partial_{\zeta_j}\)">\(R=\sum\zeta_j\partial_{\zeta_j}\)</span> and <span class="math" data-index="553" data-tex="\(\Omega=d\zeta_1\wedge\cdots\wedge d\zeta_n\)">\(\Omega=d\zeta_1\wedge\cdots\wedge d\zeta_n\)</span>, then <span class="math" data-index="554" data-tex="\(\omega=\iota_R\Omega\)">\(\omega=\iota_R\Omega\)</span>. The scalar
+<span class="math" data-index="555" data-tex="\((x\cdot\zeta)^q\zeta^\alpha/F(\zeta)\)">\((x\cdot\zeta)^q\zeta^\alpha/F(\zeta)\)</span> has degree <span class="math" data-index="556" data-tex="\(-n\)">\(-n\)</span>. Hence</p>
+<span class="math math-display" id="eq-80" data-index="557" data-tex="\[
+d\bigl((x\cdot\zeta)^q\zeta^\alpha
+F(\zeta)^{-1}\omega(\zeta)\bigr)=0
+\quad(F(\zeta)\ne0).
+\tag{80}
+\]">\[
+d\bigl((x\cdot\zeta)^q\zeta^\alpha
+F(\zeta)^{-1}\omega(\zeta)\bigr)=0
+\quad(F(\zeta)\ne0).
+\tag{80}
+\]</span>
+<p>This follows directly from
+<span class="math" data-index="558" data-tex="\(d(h\,\iota_R\Omega)=(Rh+nh)\Omega\)">\(d(h\,\iota_R\Omega)=(Rh+nh)\Omega\)</span>.
+Apply Stokes separately on the two hemispheres <span class="math" data-index="559" data-tex="\(x\cdot\xi&gt;0\)">\(x\cdot\xi&gt;0\)</span> and <span class="math" data-index="560" data-tex="\(x\cdot\xi&lt;0\)">\(x\cdot\xi&lt;0\)</span>, during the zero-free homotopy between two small deformation parameters. The connecting equatorial part lies in <span class="math" data-index="561" data-tex="\(H_x=\{\zeta:x\cdot\zeta=0\}\)">\(H_x=\{\zeta:x\cdot\zeta=0\}\)</span>. The pullback of <span class="math" data-index="562" data-tex="\(\omega\)">\(\omega\)</span> to this complex hyperplane is zero: the radial vector is tangent to it, and <span class="math" data-index="563" data-tex="\(n\)">\(n\)</span> vectors in its <span class="math" data-index="564" data-tex="\((n-1)\)">\((n-1)\)</span>-dimensional tangent space give zero under <span class="math" data-index="565" data-tex="\(\Omega\)">\(\Omega\)</span>. Thus even at <span class="math" data-index="566" data-tex="\(q=0\)">\(q=0\)</span> this connecting part contributes zero. The limit supplied by the transverse deformation section equals each of the constant integrals, proving (79).</p>
+<p>Multiplying a hemisphere chain's orientation by <span class="math" data-index="567" data-tex="\(\operatorname{sgn}(x\cdot\xi)\)">\(\operatorname{sgn}(x\cdot\xi)\)</span> removes the sign factor. Denote the resulting chain from (78) by <span class="math" data-index="568" data-tex="\(\widetilde\alpha_+\)">\(\widetilde\alpha_+\)</span>. Put <span class="math" data-index="569" data-tex="\(K_x=S^{n-1}\cap x^\perp\)">\(K_x=S^{n-1}\cap x^\perp\)</span>, oriented as the boundary of the negative hemisphere <span class="math" data-index="570" data-tex="\(\{x\cdot\xi&lt;0\}\)">\(\{x\cdot\xi&lt;0\}\)</span>, and let <span class="math" data-index="571" data-tex="\(K^\pm=c_\varepsilon^\pm(K_x)\)">\(K^\pm=c_\varepsilon^\pm(K_x)\)</span>. The positive hemisphere has boundary <span class="math" data-index="572" data-tex="\(-K_x\)">\(-K_x\)</span>, so</p>
+<span class="math math-display" id="eq-81" data-index="573" data-tex="\[
+\partial\widetilde\alpha_+
+=-2\bigl(K^-+(-1)^{n-1}K^+\bigr).
+\tag{81}
+\]">\[
+\partial\widetilde\alpha_+
+=-2\bigl(K^-+(-1)^{n-1}K^+\bigr).
+\tag{81}
+\]</span>
+<p>This is the exact boundary relation. Its boundary is a cycle in <span class="math" data-index="574" data-tex="\(H_x\)">\(H_x\)</span>; the full hemisphere chain is not said to lie in that hyperplane.</p>
+<p>For <span class="math" data-index="575" data-tex="\(q&lt;0\)">\(q&lt;0\)</span>, put <span class="math" data-index="576" data-tex="\(k=-q-1\)">\(k=-q-1\)</span>, and choose a small positively oriented complex circle <span class="math" data-index="577" data-tex="\(|z|=\delta\)">\(|z|=\delta\)</span>. Define</p>
+<span class="math math-display" id="eq-82" data-index="578" data-tex="\[
+\begin{split}
+\alpha_-={}&amp;
+\{zx+\xi-i\varepsilon\Theta(\xi):
+|z|=\delta,\ \xi\in K_x\}\\
+&amp;{}+(-1)^{n-1}
+\{zx+\xi+i\varepsilon\Theta(\xi):
+|z|=\delta,\ \xi\in K_x\}.
+\end{split}
+\tag{82}
+\]">\[
+\begin{split}
+\alpha_-={}&amp;
+\{zx+\xi-i\varepsilon\Theta(\xi):
+|z|=\delta,\ \xi\in K_x\}\\
+&amp;{}+(-1)^{n-1}
+\{zx+\xi+i\varepsilon\Theta(\xi):
+|z|=\delta,\ \xi\in K_x\}.
+\end{split}
+\tag{82}
+\]</span>
+<p>Each product cycle uses circle orientation first, then <span class="math" data-index="579" data-tex="\(K_x\)">\(K_x\)</span>'s boundary orientation. For a fixed sufficiently small <span class="math" data-index="580" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, compactness of <span class="math" data-index="581" data-tex="\(K^\pm\)">\(K^\pm\)</span> gives <span class="math" data-index="582" data-tex="\(\delta_\varepsilon&gt;0\)">\(\delta_\varepsilon&gt;0\)</span> so that these cycles avoid <span class="math" data-index="583" data-tex="\(F=0\)">\(F=0\)</span> whenever <span class="math" data-index="584" data-tex="\(0&lt;\delta&lt;\delta_\varepsilon\)">\(0&lt;\delta&lt;\delta_\varepsilon\)</span>. They also avoid <span class="math" data-index="585" data-tex="\(x\cdot\zeta=0\)">\(x\cdot\zeta=0\)</span>, because <span class="math" data-index="586" data-tex="\(x\cdot\zeta=z|x|^2\)">\(x\cdot\zeta=z|x|^2\)</span>. The second formula is</p>
+<span class="math math-display" id="eq-83" data-index="587" data-tex="\[
+D^\alpha E_F(x)=
+\frac{(2\pi)^{-n}(-1)^{q+1}(-q-1)!}{2}
+\int_{\alpha_-}
+(ix\cdot\zeta)^q
+\frac{\zeta^\alpha}{F(\zeta)}\,\omega(\zeta).
+\tag{83}
+\]">\[
+D^\alpha E_F(x)=
+\frac{(2\pi)^{-n}(-1)^{q+1}(-q-1)!}{2}
+\int_{\alpha_-}
+(ix\cdot\zeta)^q
+\frac{\zeta^\alpha}{F(\zeta)}\,\omega(\zeta).
+\tag{83}
+\]</span>
+<p>Here is the residue calculation, including its orientation. Rotate by an orientation-preserving orthogonal map to <span class="math" data-index="588" data-tex="\(x=re_1\)">\(x=re_1\)</span>, <span class="math" data-index="589" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, and use the local cylinder <span class="math" data-index="590" data-tex="\(\xi=(t,y)\)">\(\xi=(t,y)\)</span>, <span class="math" data-index="591" data-tex="\(|y|=1\)">\(|y|=1\)</span>, around the equator. Radial projection of this cylinder to the sphere preserves the angular integral of a homogeneous degree-<span class="math" data-index="592" data-tex="\(-n\)">\(-n\)</span> density. The delta factor is supported at <span class="math" data-index="593" data-tex="\(t=0\)">\(t=0\)</span>, so a cylinder neighborhood suffices. Put <span class="math" data-index="594" data-tex="\(s(t)=\sqrt{1+t^2}\)">\(s(t)=\sqrt{1+t^2}\)</span> and choose the sphere field locally by <span class="math" data-index="595" data-tex="\(\Theta((t,y)/s(t))=\Theta(0,y)/s(t)\)">\(\Theta((t,y)/s(t))=\Theta(0,y)/s(t)\)</span>. Radially multiplying its deformed sphere by <span class="math" data-index="596" data-tex="\(s(t)\)">\(s(t)\)</span> then gives exactly <span class="math" data-index="597" data-tex="\((t,y)-i\varepsilon\Theta(0,y)\)">\((t,y)-i\varepsilon\Theta(0,y)\)</span>, with constant imaginary displacement in the <span class="math" data-index="598" data-tex="\(t\)">\(t\)</span> direction. The full scalar times Kronecker form in (66) has degree zero as an angular density, so this radial change introduces no extra factor. the proved polynomial tangent-cone input keeps the new sphere field allowed for small <span class="math" data-index="599" data-tex="\(t\)">\(t\)</span>. It is real analytic on a neighborhood of the equator, which is all that the transverse deformation section's boundary-limit proof needs for this delta-supported integral. A smooth even cutoff can extend it elsewhere; no global analytic cutoff is asserted or needed. Its equatorial values, and hence the tube cycles (82), are unchanged.</p>
+<p>Write <span class="math" data-index="600" data-tex="\(\omega&#x27;\)">\(\omega&#x27;\)</span> for the Kronecker form in the last <span class="math" data-index="601" data-tex="\(n-1\)">\(n-1\)</span> variables and <span class="math" data-index="602" data-tex="\(b(\zeta)=\zeta^\alpha/F(\zeta)\)">\(b(\zeta)=\zeta^\alpha/F(\zeta)\)</span>. Since
+<span class="math" data-index="603" data-tex="\(\sigma_q(-rt)=(-r)^{-k}r^{-1}\delta^{(k)}(t)\)">\(\sigma_q(-rt)=(-r)^{-k}r^{-1}\delta^{(k)}(t)\)</span>,
+the two signs of differentiation cancel. The deformed angular expression is therefore</p>
+<span class="math math-display" id="eq-84" data-index="604" data-tex="\[
+J_\varepsilon=
+(2\pi)^{-n}\pi i^k r^{-k-1}
+\left(\int_{S^{n-2}}\partial_t^k b(0,y-i\varepsilon\Theta(y))\omega&#x27;
+-(-1)^n\int_{S^{n-2}}\partial_t^k b(0,y+i\varepsilon\Theta(y))\omega&#x27;\right).
+\tag{84}
+\]">\[
+J_\varepsilon=
+(2\pi)^{-n}\pi i^k r^{-k-1}
+\left(\int_{S^{n-2}}\partial_t^k b(0,y-i\varepsilon\Theta(y))\omega&#x27;
+-(-1)^n\int_{S^{n-2}}\partial_t^k b(0,y+i\varepsilon\Theta(y))\omega&#x27;\right).
+\tag{84}
+\]</span>
+<p>Its limit as <span class="math" data-index="605" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span> is <span class="math" data-index="606" data-tex="\(D^\alpha E_F(x)\)">\(D^\alpha E_F(x)\)</span>, by the transverse deformation section applied locally near the equator.
+Both spheres in this display have their standard orientation. At <span class="math" data-index="607" data-tex="\(t=0\)">\(t=0\)</span>, the full Kronecker form on the cylinder is <span class="math" data-index="608" data-tex="\(-dt\wedge\omega&#x27;\)">\(-dt\wedge\omega&#x27;\)</span>. The boundary orientation of the negative hemisphere is therefore minus the standard orientation of this <span class="math" data-index="609" data-tex="\(S^{n-2}\)">\(S^{n-2}\)</span>. On the tube <span class="math" data-index="610" data-tex="\(\zeta=zx+\beta\)">\(\zeta=zx+\beta\)</span>, <span class="math" data-index="611" data-tex="\(\beta\in K^\pm\)">\(\beta\in K^\pm\)</span>, one has
+<span class="math" data-index="612" data-tex="\(\omega=-r\,dz\wedge\omega&#x27;(\beta)\)">\(\omega=-r\,dz\wedge\omega&#x27;(\beta)\)</span> and <span class="math" data-index="613" data-tex="\(ix\cdot\zeta=ir^2z\)">\(ix\cdot\zeta=ir^2z\)</span>.
+Cauchy's residue formula gives
+<span class="math" data-index="614" data-tex="\(\oint z^{-k-1}b(rz,\beta)\,dz
+=2\pi i\,r^k\partial_t^kb(0,\beta)/k!\)">\(\oint z^{-k-1}b(rz,\beta)\,dz
+=2\pi i\,r^k\partial_t^kb(0,\beta)/k!\)</span>.
+The two minus signs from the form and the equatorial orientation cancel. Thus each tube integral is
+<span class="math" data-index="615" data-tex="\(2\pi i^{-k}r^{-k-1}/k!\)">\(2\pi i^{-k}r^{-k-1}/k!\)</span> times its corresponding standard-sphere derivative integral. Substituting in (84) expresses <span class="math" data-index="616" data-tex="\(J_\varepsilon\)">\(J_\varepsilon\)</span> as the right side of (83), since <span class="math" data-index="617" data-tex="\(q+1=-k\)">\(q+1=-k\)</span>. The closed-form period argument in the next paragraph makes that expression independent of sufficiently small positive <span class="math" data-index="618" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Its the transverse deformation section limit is the actual kernel derivative, proving (83) at each such <span class="math" data-index="619" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, rather than identifying a finite deformation with its boundary limit prematurely.</p>
+<p>The integrand in (83) is closed by the same degree calculation as (80), on <span class="math" data-index="620" data-tex="\(\{F\ne0,\ x\cdot\zeta\ne0\}\)">\(\{F\ne0,\ x\cdot\zeta\ne0\}\)</span>. Its period is unchanged by small changes of the circle radius and by allowed equatorial deformations; compare parameter intervals using a common sufficiently small circle. Equation (81) says that the centers of the tube cycles in (82) are exactly <span class="math" data-index="621" data-tex="\(-\tfrac12\partial\widetilde\alpha_+\)">\(-\tfrac12\partial\widetilde\alpha_+\)</span>, including multiplicities. This proves both formulas and their relation, with no unrecorded orientation sign.</p>
+<p>For <span class="math" data-index="622" data-tex="\(n=1\)">\(n=1\)</span>, the negative-<span class="math" data-index="623" data-tex="\(q\)">\(q\)</span> equatorial cycle is replaced by the direct scalar calculation. Write <span class="math" data-index="624" data-tex="\(F(\xi)=a\xi^m\)">\(F(\xi)=a\xi^m\)</span>, with the positive direction oriented by <span class="math" data-index="625" data-tex="\(N=1\)">\(N=1\)</span>. Then <span class="math" data-index="626" data-tex="\(E_F(t)=a^{-1}i^m H(t)t^{m-1}/(m-1)!\)">\(E_F(t)=a^{-1}i^m H(t)t^{m-1}/(m-1)!\)</span>. On <span class="math" data-index="627" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, <span class="math" data-index="628" data-tex="\(D^\alpha E_F\)">\(D^\alpha E_F\)</span> is a polynomial derivative, and is zero when <span class="math" data-index="629" data-tex="\(\alpha\ge m\)">\(\alpha\ge m\)</span>, exactly the <span class="math" data-index="630" data-tex="\(q&lt;0\)">\(q&lt;0\)</span> case. The <span class="math" data-index="631" data-tex="\(q\ge0\)">\(q\ge0\)</span> formula uses the two-point oriented <span class="math" data-index="632" data-tex="\(S^0\)">\(S^0\)</span> interpretation of (78)–(79). No <span class="math" data-index="633" data-tex="\(S^{-1}\)">\(S^{-1}\)</span> is used to supply a purported residue integral.</p>
+<h2 id="9-from-a-bounding-cycle-to-a-polynomial-lacuna-and-an-entire-kernel">9. From a bounding cycle to a polynomial lacuna and an entire kernel</h2>
+<p>Assume first <span class="math" data-index="634" data-tex="\(n\ge2\)">\(n\ge2\)</span>. For <span class="math" data-index="635" data-tex="\(x\notin W_F\cup(-C)\)">\(x\notin W_F\cup(-C)\)</span>, put</p>
+<span class="math math-display" id="eq-85" data-index="636" data-tex="\[
+M_x=\{\zeta\in\mathbb C^n:x\cdot\zeta=0,\ F(\zeta)\ne0\}.
+\tag{85}
+\]">\[
+M_x=\{\zeta\in\mathbb C^n:x\cdot\zeta=0,\ F(\zeta)\ne0\}.
+\tag{85}
+\]</span>
+<p>The condition needed below is that <span class="math" data-index="637" data-tex="\(K^-\)">\(K^-\)</span> from the oriented contour section bounds a finite piecewise smooth singular chain <span class="math" data-index="638" data-tex="\(T\)">\(T\)</span> in <span class="math" data-index="639" data-tex="\(M_x\)">\(M_x\)</span>. Fix the coefficient ring when stating null homology; the proof works over <span class="math" data-index="640" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, <span class="math" data-index="641" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, or <span class="math" data-index="642" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. In particular, integral null homology implies the real or complex version. Stokes on such chains is the ordinary simplex Stokes theorem, extended linearly. No conclusion about integral torsion follows from the vanishing of periods.</p>
+<h3 id="the-cycle-does-not-depend-on-its-allowed-deformation">The cycle does not depend on its allowed deformation</h3>
+<p>For a fixed <span class="math" data-index="643" data-tex="\(x\)">\(x\)</span>, take two allowed equatorial fields and interpolate them convexly. Each value stays in the open convex cone <span class="math" data-index="644" data-tex="\(\Gamma(H_\xi,N)\)">\(\Gamma(H_\xi,N)\)</span>, has zero <span class="math" data-index="645" data-tex="\(x\)">\(x\)</span>-pairing, and retains evenness. the proved polynomial tangent-cone input and compactness of the sphere times the interpolation interval give one small positive upper bound for the deformation parameter under which all resulting cycles avoid <span class="math" data-index="646" data-tex="\(F=0\)">\(F=0\)</span>. The resulting cylinder in <span class="math" data-index="647" data-tex="\(M_x\)">\(M_x\)</span> has boundary equal to the difference of the two cycles. Changing between two sufficiently small positive parameters gives another such cylinder. Thus the homology class of <span class="math" data-index="648" data-tex="\(K^-\)">\(K^-\)</span>, and whether it bounds <span class="math" data-index="649" data-tex="\(T\)">\(T\)</span>, are independent of the allowed field and small parameter. Real analytic representatives can be used throughout; the interpolation of two such representatives is real analytic.</p>
+<p>The bounding-chain property persists near a point where it holds. Let <span class="math" data-index="650" data-tex="\(x_0\)">\(x_0\)</span> be such a point and choose orientation-preserving orthogonal maps <span class="math" data-index="651" data-tex="\(L_x\)">\(L_x\)</span>, continuous for <span class="math" data-index="652" data-tex="\(x\)">\(x\)</span> near <span class="math" data-index="653" data-tex="\(x_0\)">\(x_0\)</span>, taking <span class="math" data-index="654" data-tex="\(x_0/|x_0|\)">\(x_0/|x_0|\)</span> to <span class="math" data-index="655" data-tex="\(x/|x|\)">\(x/|x|\)</span>, with <span class="math" data-index="656" data-tex="\(L_{x_0}=I\)">\(L_{x_0}=I\)</span>. One explicit local choice is the rotation in the plane spanned by these two unit vectors, with identity on its orthogonal complement; its limit at coincident vectors is the identity. It takes <span class="math" data-index="657" data-tex="\(H_{x_0}\)">\(H_{x_0}\)</span> to <span class="math" data-index="658" data-tex="\(H_x\)">\(H_x\)</span> and the oriented <span class="math" data-index="659" data-tex="\(K_{x_0}\)">\(K_{x_0}\)</span> to <span class="math" data-index="660" data-tex="\(K_x\)">\(K_x\)</span>.</p>
+<p>Transport the field by <span class="math" data-index="661" data-tex="\(\Theta_x(\xi)=L_x\Theta_0(L_x^{-1}\xi)\)">\(\Theta_x(\xi)=L_x\Theta_0(L_x^{-1}\xi)\)</span>. Compact local cone stability in the proved polynomial tangent-cone input makes it allowed for all <span class="math" data-index="662" data-tex="\(x\)">\(x\)</span> in a sufficiently small neighborhood. The chain <span class="math" data-index="663" data-tex="\(T\)">\(T\)</span> is compact and <span class="math" data-index="664" data-tex="\(F\)">\(F\)</span> has a positive minimum modulus on its support, so <span class="math" data-index="665" data-tex="\(F(L_x\zeta)\ne0\)">\(F(L_x\zeta)\ne0\)</span> on that support when <span class="math" data-index="666" data-tex="\(x\)">\(x\)</span> is close enough to <span class="math" data-index="667" data-tex="\(x_0\)">\(x_0\)</span>. Consequently <span class="math" data-index="668" data-tex="\(L_xT\)">\(L_xT\)</span> bounds the transported allowed cycle in <span class="math" data-index="669" data-tex="\(M_x\)">\(M_x\)</span>. Choice independence identifies it with any of the allowed cycles at that <span class="math" data-index="670" data-tex="\(x\)">\(x\)</span>. This proves local persistence.</p>
+<p>This argument proves openness of the set of points satisfying the condition. It does not, by itself, prove that its complement is open or that null homology is constant on an entire component: a compact bounding chain was available only at the starting point. The separate global topological implication is proved in <a href="../../AN02-L184.html#complete-proof">Equatorial cycles and the projective period test</a>. The component-wide mathematical consequence below has its own analytic proof and does not assume that implication.</p>
+<h3 id="one-bounding-cycle-gives-homogeneous-polynomials-on-the-whole-component">One bounding cycle gives homogeneous polynomials on the whole component</h3>
+<p>Let <span class="math" data-index="671" data-tex="\(V\)">\(V\)</span> be the connected component of <span class="math" data-index="672" data-tex="\(\mathbb R^n\setminus(W_F\cup(-C))\)">\(\mathbb R^n\setminus(W_F\cup(-C))\)</span> containing <span class="math" data-index="673" data-tex="\(x_0\)">\(x_0\)</span>. For every integer <span class="math" data-index="674" data-tex="\(k\ge1\)">\(k\ge1\)</span>, let <span class="math" data-index="675" data-tex="\(E_k\)">\(E_k\)</span> be the causal inverse of <span class="math" data-index="676" data-tex="\(F(D)^k\)">\(F(D)^k\)</span>, with support in <span class="math" data-index="677" data-tex="\(C\)">\(C\)</span>. The hyperbolicity component of <span class="math" data-index="678" data-tex="\(F^k\)">\(F^k\)</span> is the same as that of <span class="math" data-index="679" data-tex="\(F\)">\(F\)</span>, since their nonzero sets are the same. At a direction <span class="math" data-index="680" data-tex="\(\xi\)">\(\xi\)</span>, the tangent polynomial is <span class="math" data-index="681" data-tex="\(H_\xi^k\)">\(H_\xi^k\)</span>. Its nonzero component and polar are also unchanged. Therefore <span class="math" data-index="682" data-tex="\(W_{F^k}=W_F\)">\(W_{F^k}=W_F\)</span>. The cycle and its bounding chain can be chosen independently of <span class="math" data-index="683" data-tex="\(k\)">\(k\)</span>. the analytic upper-cone section gives analyticity of <span class="math" data-index="684" data-tex="\(E_k\)">\(E_k\)</span> outside <span class="math" data-index="685" data-tex="\(W_F\)">\(W_F\)</span>; the homogeneous representation section gives homogeneity of degree</p>
+<span class="math math-display" id="eq-86" data-index="686" data-tex="\[
+d_k=mk-n.
+\tag{86}
+\]">\[
+d_k=mk-n.
+\tag{86}
+\]</span>
+<p>For each <span class="math" data-index="687" data-tex="\(x\)">\(x\)</span> in the neighborhood where a bounding chain exists, conjugation gives a chain bounding <span class="math" data-index="688" data-tex="\(K^+\)">\(K^+\)</span> as well. This uses the real scalar normalization of <span class="math" data-index="689" data-tex="\(F\)">\(F\)</span> from the hyperbolicity and strength input; its zero set is invariant under conjugation. Choose a small common circle <span class="math" data-index="690" data-tex="\(|z|=\delta\)">\(|z|=\delta\)</span> such that <span class="math" data-index="691" data-tex="\(F(zx+\zeta)\ne0\)">\(F(zx+\zeta)\ne0\)</span> for every <span class="math" data-index="692" data-tex="\(\zeta\)">\(\zeta\)</span> on these two compact chains. On their products with the circle, <span class="math" data-index="693" data-tex="\(x\cdot(zx+\zeta)=z|x|^2\ne0\)">\(x\cdot(zx+\zeta)=z|x|^2\ne0\)</span>.</p>
+<p>If <span class="math" data-index="694" data-tex="\(|\alpha|&gt;d_k\)">\(|\alpha|&gt;d_k\)</span>, the integrand in (83), with <span class="math" data-index="695" data-tex="\(F\)">\(F\)</span> replaced by <span class="math" data-index="696" data-tex="\(F^k\)">\(F^k\)</span>, is a closed <span class="math" data-index="697" data-tex="\((n-1)\)">\((n-1)\)</span>-form on this product region. The circle-first product orientation satisfies
+<span class="math" data-index="698" data-tex="\(\partial(S^1\times T)=-S^1\times\partial T\)">\(\partial(S^1\times T)=-S^1\times\partial T\)</span>.
+Stokes therefore makes each of the two tube periods zero. Formula (83) yields</p>
+<span class="math math-display" id="eq-87" data-index="699" data-tex="\[
+D^\alpha E_k(x)=0\qquad(|\alpha|&gt;d_k)
+\tag{87}
+\]">\[
+D^\alpha E_k(x)=0\qquad(|\alpha|&gt;d_k)
+\tag{87}
+\]</span>
+<p>on a nonempty open neighborhood of <span class="math" data-index="700" data-tex="\(x_0\)">\(x_0\)</span>.</p>
+<p>Each derivative in (87) is analytic on all of <span class="math" data-index="701" data-tex="\(V\)">\(V\)</span>. The real analytic identity principle extends its zero value to <span class="math" data-index="702" data-tex="\(V\)">\(V\)</span>. For completeness, the set where an analytic function and all its derivatives vanish is closed by continuity and open by its convergent Taylor series; starting from a nonempty open zero set, connectedness makes it all of <span class="math" data-index="703" data-tex="\(V\)">\(V\)</span>.</p>
+<p>If <span class="math" data-index="704" data-tex="\(d_k&lt;0\)">\(d_k&lt;0\)</span>, (87) already includes <span class="math" data-index="705" data-tex="\(\alpha=0\)">\(\alpha=0\)</span>, so <span class="math" data-index="706" data-tex="\(E_k=0\)">\(E_k=0\)</span> on <span class="math" data-index="707" data-tex="\(V\)">\(V\)</span>. If <span class="math" data-index="708" data-tex="\(d_k\ge0\)">\(d_k\ge0\)</span>, all ordinary partial derivatives of order <span class="math" data-index="709" data-tex="\(d_k+1\)">\(d_k+1\)</span> vanish there, since <span class="math" data-index="710" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>. A Taylor expansion on a ball in <span class="math" data-index="711" data-tex="\(V\)">\(V\)</span> consequently truncates at degree <span class="math" data-index="712" data-tex="\(d_k\)">\(d_k\)</span>. It gives a polynomial <span class="math" data-index="713" data-tex="\(Q_k\)">\(Q_k\)</span> on that ball. The same analytic identity principle gives</p>
+<span class="math math-display" id="eq-88" data-index="714" data-tex="\[
+E_k|_V=Q_k|_V,\qquad \deg Q_k\le d_k.
+\tag{88}
+\]">\[
+E_k|_V=Q_k|_V,\qquad \deg Q_k\le d_k.
+\tag{88}
+\]</span>
+<p>The sets <span class="math" data-index="715" data-tex="\(W_F\)">\(W_F\)</span> and <span class="math" data-index="716" data-tex="\(C\)">\(C\)</span> are cones. For each positive <span class="math" data-index="717" data-tex="\(\lambda\)">\(\lambda\)</span>, the path <span class="math" data-index="718" data-tex="\(s\mapsto((1-s)+s\lambda)x\)">\(s\mapsto((1-s)+s\lambda)x\)</span> stays in their complement, so <span class="math" data-index="719" data-tex="\(\lambda V=V\)">\(\lambda V=V\)</span>. Homogeneity gives <span class="math" data-index="720" data-tex="\(Q_k(\lambda x)=\lambda^{d_k}Q_k(x)\)">\(Q_k(\lambda x)=\lambda^{d_k}Q_k(x)\)</span> on this open set, hence as a polynomial identity. Differentiating in <span class="math" data-index="721" data-tex="\(\lambda\)">\(\lambda\)</span> at one shows <span class="math" data-index="722" data-tex="\((\sum x_j\partial_j-d_k)Q_k=0\)">\((\sum x_j\partial_j-d_k)Q_k=0\)</span>; comparison of monomials removes every degree other than <span class="math" data-index="723" data-tex="\(d_k\)">\(d_k\)</span>. Thus <span class="math" data-index="724" data-tex="\(Q_k\)">\(Q_k\)</span> is homogeneous of degree <span class="math" data-index="725" data-tex="\(mk-n\)">\(mk-n\)</span>, or is the zero polynomial. When that degree is negative, only the zero case is meant.</p>
+<p>We have proved the full component-wide polynomial conclusion from the existence of a bounding cycle at one point, without assuming component constancy of null homology.</p>
+<h3 id="the-lower-order-expansion-has-a-global-exponential-bound">The lower order expansion has a global exponential bound</h3>
+<p>Let <span class="math" data-index="726" data-tex="\(P\)">\(P\)</span> be any hyperbolic polynomial with principal part <span class="math" data-index="727" data-tex="\(F\)">\(F\)</span>, and put</p>
+<span class="math math-display" id="eq-89" data-index="728" data-tex="\[
+R=F-P,\qquad \deg R\le m-1.
+\tag{89}
+\]">\[
+R=F-P,\qquad \deg R\le m-1.
+\tag{89}
+\]</span>
+<p>the causal inverse input supplies the distributionally convergent causal expansion</p>
+<span class="math math-display" id="eq-90" data-index="729" data-tex="\[
+E_P=\sum_{j=0}^{\infty}R(D)^j E_{j+1}.
+\tag{90}
+\]">\[
+E_P=\sum_{j=0}^{\infty}R(D)^j E_{j+1}.
+\tag{90}
+\]</span>
+<p>We now prove normal convergence of the corresponding polynomial series on all of <span class="math" data-index="730" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>, not merely convergence on <span class="math" data-index="731" data-tex="\(V\)">\(V\)</span>.</p>
+<p>Fix a single <span class="math" data-index="732" data-tex="\(x_*\in V\)">\(x_*\in V\)</span>, an allowed field, and a sufficiently small deformation parameter for the cycles <span class="math" data-index="733" data-tex="\(\alpha_+\)">\(\alpha_+\)</span> in the oriented contour section. They are fixed compact cycles, independent of <span class="math" data-index="734" data-tex="\(k\)">\(k\)</span>, on which</p>
+<span class="math math-display" id="eq-91" data-index="735" data-tex="\[
+|F(\zeta)|\ge c&gt;0,\qquad
+\max_\ell|\zeta_\ell|\le M.
+\tag{91}
+\]">\[
+|F(\zeta)|\ge c&gt;0,\qquad
+\max_\ell|\zeta_\ell|\le M.
+\tag{91}
+\]</span>
+<p>Apply (79) with <span class="math" data-index="736" data-tex="\(q=0\)">\(q=0\)</span> to <span class="math" data-index="737" data-tex="\(F^k\)">\(F^k\)</span> and <span class="math" data-index="738" data-tex="\(|\alpha|=d_k\ge0\)">\(|\alpha|=d_k\ge0\)</span>. The cycle coefficient, sign factor, and pulled-back Kronecker form have a finite total variation independent of <span class="math" data-index="739" data-tex="\(k,\alpha\)">\(k,\alpha\)</span>. Also
+<span class="math" data-index="740" data-tex="\(|\zeta^\alpha|\le\max(1,M)^{mk}\)">\(|\zeta^\alpha|\le\max(1,M)^{mk}\)</span>.
+It follows that some <span class="math" data-index="741" data-tex="\(A,B\ge1\)">\(A,B\ge1\)</span>, depending only on these fixed cycles and <span class="math" data-index="742" data-tex="\(F\)">\(F\)</span>, satisfy</p>
+<span class="math math-display" id="eq-92" data-index="743" data-tex="\[
+|D^\alpha Q_k|\le A B^k
+\qquad(|\alpha|=mk-n\ge0).
+\tag{92}
+\]">\[
+|D^\alpha Q_k|\le A B^k
+\qquad(|\alpha|=mk-n\ge0).
+\tag{92}
+\]</span>
+<p>These highest derivatives are constants, so their value at <span class="math" data-index="744" data-tex="\(x_*\)">\(x_*\)</span> bounds them everywhere. Absolute values of <span class="math" data-index="745" data-tex="\(D^\alpha Q_k\)">\(D^\alpha Q_k\)</span> and <span class="math" data-index="746" data-tex="\(\partial^\alpha Q_k\)">\(\partial^\alpha Q_k\)</span> agree. Negative-degree <span class="math" data-index="747" data-tex="\(Q_k=0\)">\(Q_k=0\)</span> need no estimate.</p>
+<p>Write <span class="math" data-index="748" data-tex="\(R(\xi)=\sum_\beta r_\beta\xi^\beta\)">\(R(\xi)=\sum_\beta r_\beta\xi^\beta\)</span> and let <span class="math" data-index="749" data-tex="\(K=\sum_\beta|r_\beta|\)">\(K=\sum_\beta|r_\beta|\)</span>. The sum of the absolute values of the coefficients of <span class="math" data-index="750" data-tex="\(R^j\)">\(R^j\)</span> is at most <span class="math" data-index="751" data-tex="\(K^j\)">\(K^j\)</span>, by the finite convolution formula for polynomial multiplication. Set</p>
+<span class="math math-display" id="eq-93" data-index="752" data-tex="\[
+T_j(z)=R(D)^jQ_{j+1}(z)
+=\sum_\alpha c_{j,\alpha}\frac{z^\alpha}{\alpha!}.
+\tag{93}
+\]">\[
+T_j(z)=R(D)^jQ_{j+1}(z)
+=\sum_\alpha c_{j,\alpha}\frac{z^\alpha}{\alpha!}.
+\tag{93}
+\]</span>
+<p>Because <span class="math" data-index="753" data-tex="\(Q_{j+1}\)">\(Q_{j+1}\)</span> is homogeneous, the coefficient <span class="math" data-index="754" data-tex="\(c_{j,\alpha}=\partial^\alpha T_j(0)\)">\(c_{j,\alpha}=\partial^\alpha T_j(0)\)</span> contains only terms for which
+<span class="math" data-index="755" data-tex="\(|\alpha|+|\beta|=m(j+1)-n\)">\(|\alpha|+|\beta|=m(j+1)-n\)</span>.
+Every derivative of <span class="math" data-index="756" data-tex="\(R^j\)">\(R^j\)</span> has order <span class="math" data-index="757" data-tex="\(0\le|\beta|\le j(m-1)\)">\(0\le|\beta|\le j(m-1)\)</span>. Therefore a nonzero coefficient requires</p>
+<span class="math math-display" id="eq-94" data-index="758" data-tex="\[
+m+j-n\le|\alpha|\le m(j+1)-n,
+\qquad
+|c_{j,\alpha}|\le A B^{j+1}K^j.
+\tag{94}
+\]">\[
+m+j-n\le|\alpha|\le m(j+1)-n,
+\qquad
+|c_{j,\alpha}|\le A B^{j+1}K^j.
+\tag{94}
+\]</span>
+<p>The powers of <span class="math" data-index="759" data-tex="\(-i\)">\(-i\)</span> from <span class="math" data-index="760" data-tex="\(D^\beta\)">\(D^\beta\)</span> have modulus one. If <span class="math" data-index="761" data-tex="\(K=0\)">\(K=0\)</span>, all terms with <span class="math" data-index="762" data-tex="\(j\ge1\)">\(j\ge1\)</span> vanish, and the same bound is interpreted with <span class="math" data-index="763" data-tex="\(K^0=1\)">\(K^0=1\)</span>.</p>
+<p>Put <span class="math" data-index="764" data-tex="\(C_2=\max(1,BK)\)">\(C_2=\max(1,BK)\)</span> and <span class="math" data-index="765" data-tex="\(C=AB\)">\(C=AB\)</span>. For a fixed <span class="math" data-index="766" data-tex="\(a=|\alpha|\)">\(a=|\alpha|\)</span>, the possible indices in (94) are finite:</p>
+<span class="math math-display" id="eq-95" data-index="767" data-tex="\[
+\max\!\left(0,\left\lceil\frac{a+n}{m}\right\rceil-1\right)
+\le j\le a+n-m.
+\tag{95}
+\]">\[
+\max\!\left(0,\left\lceil\frac{a+n}{m}\right\rceil-1\right)
+\le j\le a+n-m.
+\tag{95}
+\]</span>
+<p>An empty interval contributes zero. There are at most <span class="math" data-index="768" data-tex="\(a+n+1\)">\(a+n+1\)</span> indices, and each satisfies <span class="math" data-index="769" data-tex="\(j\le a+n\)">\(j\le a+n\)</span>. Hence</p>
+<span class="math math-display" id="eq-96" data-index="770" data-tex="\[
+\sum_j|c_{j,\alpha}|
+\le C C_2^{a+n}(a+n+1)
+\le A_1 A_0^a,
+\quad
+A_1=C C_2^n(n+1),\quad A_0=2C_2.
+\tag{96}
+\]">\[
+\sum_j|c_{j,\alpha}|
+\le C C_2^{a+n}(a+n+1)
+\le A_1 A_0^a,
+\quad
+A_1=C C_2^n(n+1),\quad A_0=2C_2.
+\tag{96}
+\]</span>
+<p>The last step uses <span class="math" data-index="771" data-tex="\(a+n+1\le(n+1)(a+1)\)">\(a+n+1\le(n+1)(a+1)\)</span> and <span class="math" data-index="772" data-tex="\(a+1\le2^a\)">\(a+1\le2^a\)</span> for integers <span class="math" data-index="773" data-tex="\(a\ge0\)">\(a\ge0\)</span>. Thus</p>
+<span class="math math-display" id="eq-97" data-index="774" data-tex="\[
+\begin{split}
+\sum_{j,\alpha}|c_{j,\alpha}|\frac{|z^\alpha|}{\alpha!}
+&amp;\le A_1\sum_{\alpha\in\mathbb N^n}
+\frac{A_0^{|\alpha|}|z^\alpha|}{\alpha!}\\
+&amp;=A_1\exp\!\left(A_0\sum_{\ell=1}^n|z_\ell|\right).
+\end{split}
+\tag{97}
+\]">\[
+\begin{split}
+\sum_{j,\alpha}|c_{j,\alpha}|\frac{|z^\alpha|}{\alpha!}
+&amp;\le A_1\sum_{\alpha\in\mathbb N^n}
+\frac{A_0^{|\alpha|}|z^\alpha|}{\alpha!}\\
+&amp;=A_1\exp\!\left(A_0\sum_{\ell=1}^n|z_\ell|\right).
+\end{split}
+\tag{97}
+\]</span>
+<p>On a compact complex set the same majorant, with its coordinate radii, is finite. Its tails prove normal convergence, including legitimate interchange of the two sums. The resulting function</p>
+<span class="math math-display" id="eq-98" data-index="775" data-tex="\[
+U_P(z)=\sum_{j=0}^{\infty}T_j(z)
+\tag{98}
+\]">\[
+U_P(z)=\sum_{j=0}^{\infty}T_j(z)
+\tag{98}
+\]</span>
+<p>is entire and satisfies the exponential-type bound in (97), or the Euclidean bound <span class="math" data-index="776" data-tex="\(A_1e^{A_0\sqrt n\,|z|}\)">\(A_1e^{A_0\sqrt n\,|z|}\)</span>. Cauchy estimates on slightly larger compact sets give locally uniform convergence of every differentiated series. On <span class="math" data-index="777" data-tex="\(V\)">\(V\)</span>, its partial sums are precisely the restrictions of those in (90). Their distributional limit is both <span class="math" data-index="778" data-tex="\(U_P|_V\)">\(U_P|_V\)</span> and <span class="math" data-index="779" data-tex="\(E_P|_V\)">\(E_P|_V\)</span>. Therefore</p>
+<span class="math math-display" id="eq-99" data-index="780" data-tex="\[
+E_P|_V=U_P|_V.
+\tag{99}
+\]">\[
+E_P|_V=U_P|_V.
+\tag{99}
+\]</span>
+<p>For any positive integer <span class="math" data-index="781" data-tex="\(\ell\)">\(\ell\)</span>, <span class="math" data-index="782" data-tex="\(P^\ell\)">\(P^\ell\)</span> is hyperbolic with principal part <span class="math" data-index="783" data-tex="\(F^\ell\)">\(F^\ell\)</span>. The causal inverse of every principal power <span class="math" data-index="784" data-tex="\((F^\ell)^k=F^{\ell k}\)">\((F^\ell)^k=F^{\ell k}\)</span> is one of the polynomials already obtained in (88). Applying the same proof with degree <span class="math" data-index="785" data-tex="\(m\ell\)">\(m\ell\)</span> proves that the causal inverse of <span class="math" data-index="786" data-tex="\(P(D)^\ell\)">\(P(D)^\ell\)</span> also agrees on <span class="math" data-index="787" data-tex="\(V\)">\(V\)</span> with an entire function of exponential type. The constants can depend on <span class="math" data-index="788" data-tex="\(\ell\)">\(\ell\)</span>; no uniform bound over all powers is asserted.</p>
+<p>There is a useful weaker premise. For the entire-function conclusion, it suffices that every <span class="math" data-index="789" data-tex="\(E_k|_V\)">\(E_k|_V\)</span> already agree with a homogeneous polynomial of degree <span class="math" data-index="790" data-tex="\(mk-n\)">\(mk-n\)</span>. The cycle null-homology condition is needed only to obtain those polynomials. Estimate (92) then follows from the already proved cycle formula, so (89)–(99) apply unchanged. This retains the full relaxed premise, rather than treating null homology as necessary for analyticity.</p>
+<p>For <span class="math" data-index="791" data-tex="\(n=1\)">\(n=1\)</span>, orient the positive normal by <span class="math" data-index="792" data-tex="\(N=1\)">\(N=1\)</span>. Write <span class="math" data-index="793" data-tex="\(F(\xi)=a\xi^m\)">\(F(\xi)=a\xi^m\)</span>. Its causal power kernels on <span class="math" data-index="794" data-tex="\(V=(0,\infty)\)">\(V=(0,\infty)\)</span> are</p>
+<span class="math math-display" id="eq-100" data-index="795" data-tex="\[
+E_k(t)=a^{-k}i^{mk}\frac{t^{mk-1}}{(mk-1)!}.
+\tag{100}
+\]">\[
+E_k(t)=a^{-k}i^{mk}\frac{t^{mk-1}}{(mk-1)!}.
+\tag{100}
+\]</span>
+<p>They are homogeneous polynomials there and their top derivative has modulus <span class="math" data-index="796" data-tex="\(|a|^{-k}\)">\(|a|^{-k}\)</span>. The coefficient proof above consequently applies directly. It requires no negative-dimensional equatorial cycle.</p>
+<h3 id="an-even-dimensional-wave-cone-has-a-polynomial-lacuna">An even-dimensional wave cone has a polynomial lacuna</h3>
+<p>Let the total space-time dimension be <span class="math" data-index="797" data-tex="\(n=2a\ge2\)">\(n=2a\ge2\)</span>, and let</p>
+<span class="math math-display" id="eq-101" data-index="798" data-tex="\[
+F(\tau,\eta)=\tau^2-|\eta|^2,\qquad N=(1,0,\ldots,0).
+\tag{101}
+\]">\[
+F(\tau,\eta)=\tau^2-|\eta|^2,\qquad N=(1,0,\ldots,0).
+\tag{101}
+\]</span>
+<p>The characteristic tangent polar is a positive null ray, as computed in Exercise 4. Its union <span class="math" data-index="799" data-tex="\(W_F\)">\(W_F\)</span> is the future null-cone boundary, including the origin. The interior
+<span class="math" data-index="800" data-tex="\(V=\{(t,y):t&gt;|y|\}\)">\(V=\{(t,y):t&gt;|y|\}\)</span>
+is therefore a component of the complement of <span class="math" data-index="801" data-tex="\(W_F\cup(-C)\)">\(W_F\cup(-C)\)</span>.</p>
+<p>At <span class="math" data-index="802" data-tex="\(x_0=e_1\)">\(x_0=e_1\)</span>, an allowed real analytic degree-zero field is</p>
+<span class="math math-display" id="eq-102" data-index="803" data-tex="\[
+\Theta(\tau,\eta)=
+\left(0,-\frac{\tau\eta}{\tau^2+|\eta|^2}\right).
+\tag{102}
+\]">\[
+\Theta(\tau,\eta)=
+\left(0,-\frac{\tau\eta}{\tau^2+|\eta|^2}\right).
+\tag{102}
+\]</span>
+<p>It is even and orthogonal to <span class="math" data-index="804" data-tex="\(x_0\)">\(x_0\)</span>. At a characteristic point,
+<span class="math" data-index="805" data-tex="\(H_\xi(v)=2(\tau v_t-\eta\cdot v_y)\)">\(H_\xi(v)=2(\tau v_t-\eta\cdot v_y)\)</span>;
+membership in the component containing <span class="math" data-index="806" data-tex="\(N\)">\(N\)</span> is the inequality
+<span class="math" data-index="807" data-tex="\(H_\xi(v)/H_\xi(N)&gt;0\)">\(H_\xi(v)/H_\xi(N)&gt;0\)</span>.
+For (102) that quotient is <span class="math" data-index="808" data-tex="\(|\eta|^2/|\xi|^2&gt;0\)">\(|\eta|^2/|\xi|^2&gt;0\)</span>. At noncharacteristic points the tangent cone is all of <span class="math" data-index="809" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, so no constraint is lost where the field is zero.</p>
+<p>On the equator <span class="math" data-index="810" data-tex="\(\tau=0\)">\(\tau=0\)</span>, the field vanishes. Thus <span class="math" data-index="811" data-tex="\(K^-\)">\(K^-\)</span> is the real unit sphere in the complex spatial hyperplane, with the equatorial boundary orientation, and <span class="math" data-index="812" data-tex="\(F=-\sum\zeta_j^2=-1\)">\(F=-\sum\zeta_j^2=-1\)</span> there. Consider the cylinder</p>
+<span class="math math-display" id="eq-103" data-index="813" data-tex="\[
+A:[0,\pi]\times K^-\longrightarrow M_{x_0},
+\qquad A(s,y)=e^{is}y.
+\tag{103}
+\]">\[
+A:[0,\pi]\times K^-\longrightarrow M_{x_0},
+\qquad A(s,y)=e^{is}y.
+\tag{103}
+\]</span>
+<p>It remains in <span class="math" data-index="814" data-tex="\(M_{x_0}\)">\(M_{x_0}\)</span>, since <span class="math" data-index="815" data-tex="\(F(e^{is}y)=-e^{2is}\ne0\)">\(F(e^{is}y)=-e^{2is}\ne0\)</span>. The antipodal map on the oriented sphere <span class="math" data-index="816" data-tex="\(S^{n-2}\)">\(S^{n-2}\)</span> has degree <span class="math" data-index="817" data-tex="\((-1)^{n-1}=-1\)">\((-1)^{n-1}=-1\)</span>. Use an antipodally invariant triangulation, for example a radial projection of the boundary triangulation of the cross-polytope, so that the endpoint fundamental chains have that same orientation relation. Its cylinder boundary is therefore
+<span class="math" data-index="818" data-tex="\(\partial A=-K^--K^-=-2K^-\)">\(\partial A=-K^--K^-=-2K^-\)</span>.
+Consequently <span class="math" data-index="819" data-tex="\(-A/2\)">\(-A/2\)</span> is a real or complex bounding chain for <span class="math" data-index="820" data-tex="\(K^-\)">\(K^-\)</span>. This proves the real-coefficient condition at <span class="math" data-index="821" data-tex="\(x_0\)">\(x_0\)</span>, including the oriented <span class="math" data-index="822" data-tex="\(S^0\)">\(S^0\)</span> case <span class="math" data-index="823" data-tex="\(n=2\)">\(n=2\)</span>. It proves that twice the cycle is integrally null homologous; it does not assert that the single cycle has zero integral homology class.</p>
+<p>Equations (86)–(88) now prove that every causal wave power <span class="math" data-index="824" data-tex="\(E_k|_V\)">\(E_k|_V\)</span> is a homogeneous polynomial of degree <span class="math" data-index="825" data-tex="\(2k-n\)">\(2k-n\)</span>, and is zero for <span class="math" data-index="826" data-tex="\(k&lt;a\)">\(k&lt;a\)</span>. In particular the wave kernel itself vanishes in the future interior for even total dimension <span class="math" data-index="827" data-tex="\(n\ge4\)">\(n\ge4\)</span>. In total dimension two it has degree zero and is a nonzero constant there, with the <span class="math" data-index="828" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span> normalization <span class="math" data-index="829" data-tex="\(-1/2\)">\(-1/2\)</span>. A polynomial lacuna need not be a region of zero kernel. Every hyperbolic <span class="math" data-index="830" data-tex="\(P\)">\(P\)</span> with this wave principal part, and every positive power of <span class="math" data-index="831" data-tex="\(P\)">\(P\)</span>, has the entire exponential-type continuation on <span class="math" data-index="832" data-tex="\(V\)">\(V\)</span> proved above.</p>
+<p>As a check on the dimensions and signs, causal uniqueness makes each <span class="math" data-index="833" data-tex="\(E_k\)">\(E_k\)</span> invariant under proper, time-orientation-preserving Lorentz transformations: <span class="math" data-index="834" data-tex="\(F\)">\(F\)</span>, <span class="math" data-index="835" data-tex="\(\delta_0\)">\(\delta_0\)</span>, and the future support cone are all preserved. Spatial rotations and the elementary boost with velocity <span class="math" data-index="836" data-tex="\(|y|/t&lt;1\)">\(|y|/t&lt;1\)</span> take each point of <span class="math" data-index="837" data-tex="\(V\)">\(V\)</span> to <span class="math" data-index="838" data-tex="\((\sqrt{t^2-|y|^2},0)\)">\((\sqrt{t^2-|y|^2},0)\)</span>. Analyticity and homogeneity therefore give
+<span class="math" data-index="839" data-tex="\(E_k=A_k(t^2-|y|^2)^{k-a}\)">\(E_k=A_k(t^2-|y|^2)^{k-a}\)</span>
+inside <span class="math" data-index="840" data-tex="\(V\)">\(V\)</span>. Direct differentiation, with <span class="math" data-index="841" data-tex="\(s=t^2-|y|^2\)">\(s=t^2-|y|^2\)</span>, gives</p>
+<span class="math math-display" id="eq-104" data-index="842" data-tex="\[
+\Box s^p=4p(p+a-1)s^{p-1},
+\qquad
+-4(k-a)(k-1)A_k=A_{k-1}\quad(k\ge2).
+\tag{104}
+\]">\[
+\Box s^p=4p(p+a-1)s^{p-1},
+\qquad
+-4(k-a)(k-1)A_k=A_{k-1}\quad(k\ge2).
+\tag{104}
+\]</span>
+<p>Here <span class="math" data-index="843" data-tex="\(F(D)=-\Box\)">\(F(D)=-\Box\)</span>, which accounts for the minus sign. The zero polynomials for <span class="math" data-index="844" data-tex="\(k&lt;a\)">\(k&lt;a\)</span> and the nonnegative integer powers for <span class="math" data-index="845" data-tex="\(k\ge a\)">\(k\ge a\)</span> agree with this recurrence. The argument uses total dimension <span class="math" data-index="846" data-tex="\(n\)">\(n\)</span>, not spatial dimension <span class="math" data-index="847" data-tex="\(n-1\)">\(n-1\)</span>, in its parity statement.</p>
+<h2 id="original-exercises-with-complete-solutions">Original exercises with complete solutions</h2>
+<p><strong>Exercise1 (intermediate: a full tangent model with complex lower terms).</strong> In two frequency variables put <span class="math" data-index="848" data-tex="\(F(\tau,\eta)=(\tau^2-\eta^2)^2\)">\(F(\tau,\eta)=(\tau^2-\eta^2)^2\)</span>, <span class="math" data-index="849" data-tex="\(N=(1,0)\)">\(N=(1,0)\)</span>, and</p>
+<span class="math math-display" id="eq-27" data-index="850" data-tex="\[
+P(\tau,\eta)=F(\tau,\eta)
++a\tau(\tau^2-\eta^2)
++b\tau^2+c\tau\eta+d\eta^2+e\tau+f\eta+g,
+\tag{27}
+\]">\[
+P(\tau,\eta)=F(\tau,\eta)
++a\tau(\tau^2-\eta^2)
++b\tau^2+c\tau\eta+d\eta^2+e\tau+f\eta+g,
+\tag{27}
+\]</span>
+<p>where all seven coefficients are complex. Find the tangent degree, principal tangent polynomial and full localization at <span class="math" data-index="851" data-tex="\(\zeta=(1,1)\)">\(\zeta=(1,1)\)</span>, and explain why discarding every lower order term would be incorrect.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-index="852" data-tex="\(A(\tau,\eta)=\tau^2-\eta^2\)">\(A(\tau,\eta)=\tau^2-\eta^2\)</span>. Its first derivatives and nonzero second derivatives give <span class="math" data-index="853" data-tex="\(S_A(\xi)\ge c(1+|\xi|)\)">\(S_A(\xi)\ge c(1+|\xi|)\)</span>; hence <span class="math" data-index="854" data-tex="\(\tau\prec A\)">\(\tau\prec A\)</span>. Product comparison gives <span class="math" data-index="855" data-tex="\(S_{A^2}\)">\(S_{A^2}\)</span> comparable to <span class="math" data-index="856" data-tex="\(S_A^2\)">\(S_A^2\)</span>, so <span class="math" data-index="857" data-tex="\(a\tau A\prec A^2\)">\(a\tau A\prec A^2\)</span>, and every quadratic or smaller polynomial is weaker than <span class="math" data-index="858" data-tex="\(A^2\)">\(A^2\)</span>. The eight-criteria theorem of the hyperbolicity lesson therefore makes <span class="math" data-index="859" data-tex="\(P\)">\(P\)</span> hyperbolic in <span class="math" data-index="860" data-tex="\(N\)">\(N\)</span>. With <span class="math" data-index="861" data-tex="\(h=(h_\tau,h_\eta)\)">\(h=(h_\tau,h_\eta)\)</span>,</p>
+<span class="math math-display" data-index="862" data-tex="\[
+(\tau^2-\eta^2)\bigm|_{(\tau,\eta)=\zeta+\varepsilon h}
+=2\varepsilon(h_\tau-h_\eta)
++\varepsilon^2(h_\tau^2-h_\eta^2).
+\]">\[
+(\tau^2-\eta^2)\bigm|_{(\tau,\eta)=\zeta+\varepsilon h}
+=2\varepsilon(h_\tau-h_\eta)
++\varepsilon^2(h_\tau^2-h_\eta^2).
+\]</span>
+<p>Thus <span class="math" data-index="863" data-tex="\(\mu=2\)">\(\mu=2\)</span> and <span class="math" data-index="864" data-tex="\(H_\zeta(h)=4(h_\tau-h_\eta)^2\)">\(H_\zeta(h)=4(h_\tau-h_\eta)^2\)</span>. Directly in (6), the squared principal term tends to <span class="math" data-index="865" data-tex="\(4(h_\tau-h_\eta)^2\)">\(4(h_\tau-h_\eta)^2\)</span>, the cubic to <span class="math" data-index="866" data-tex="\(2a(h_\tau-h_\eta)\)">\(2a(h_\tau-h_\eta)\)</span>, and the quadratic to <span class="math" data-index="867" data-tex="\(b+c+d\)">\(b+c+d\)</span>. The linear and constant terms tend to zero. Therefore</p>
+<span class="math math-display" id="eq-28" data-index="868" data-tex="\[
+L_\zeta(h)
+=4(h_\tau-h_\eta)^2
++2a(h_\tau-h_\eta)+(b+c+d).
+\tag{28}
+\]">\[
+L_\zeta(h)
+=4(h_\tau-h_\eta)^2
++2a(h_\tau-h_\eta)+(b+c+d).
+\tag{28}
+\]</span>
+<p>Its hyperbolicity cone in direction <span class="math" data-index="869" data-tex="\(N\)">\(N\)</span> is <span class="math" data-index="870" data-tex="\(h_\tau-h_\eta&gt;0\)">\(h_\tau-h_\eta&gt;0\)</span>; the principal square has two components and this is the one containing <span class="math" data-index="871" data-tex="\(N\)">\(N\)</span>. Its polar is the ray</p>
+<span class="math math-display" id="eq-29" data-index="872" data-tex="\[
+C_\zeta=\{s(1,-1):s\ge0\}.
+\tag{29}
+\]">\[
+C_\zeta=\{s(1,-1):s\ge0\}.
+\tag{29}
+\]</span>
+<p>Formula (28) exhibits both a surviving first-order term and a surviving constant term. The wavefront extraction is applied to <span class="math" data-index="873" data-tex="\(L_\zeta/S_{L_\zeta}(0)\)">\(L_\zeta/S_{L_\zeta}(0)\)</span>, not merely to the principal square. The cone theorem still uses its principal part.</p>
+<p><strong>Exercise2 (introductory: a noncharacteristic frequency).</strong> Suppose <span class="math" data-index="874" data-tex="\(F(\zeta)\ne0\)">\(F(\zeta)\ne0\)</span>. Compute <span class="math" data-index="875" data-tex="\(L_\zeta\)">\(L_\zeta\)</span>, its normalized localization, and the inverse obtained in the lower wavefront-cone section. What does this force in <span class="math" data-index="876" data-tex="\(\operatorname{WF}(E)\)">\(\operatorname{WF}(E)\)</span>?</p>
+<p><strong>Solution.</strong> Here <span class="math" data-index="877" data-tex="\(\mu=0\)">\(\mu=0\)</span>, and only <span class="math" data-index="878" data-tex="\(j=m,\alpha=0\)">\(j=m,\alpha=0\)</span> occurs in (5). Thus <span class="math" data-index="879" data-tex="\(L_\zeta=F(\zeta)\ne0\)">\(L_\zeta=F(\zeta)\ne0\)</span>, <span class="math" data-index="880" data-tex="\(Q_\zeta=F(\zeta)/|F(\zeta)|\)">\(Q_\zeta=F(\zeta)/|F(\zeta)|\)</span>, since the derivative-vector norm of a constant is its modulus. Its unique inverse is <span class="math" data-index="881" data-tex="\(G_\zeta=|F(\zeta)|F(\zeta)^{-1}\delta_0\)">\(G_\zeta=|F(\zeta)|F(\zeta)^{-1}\delta_0\)</span>. Dividing by <span class="math" data-index="882" data-tex="\(S_{L_\zeta}(0)=|F(\zeta)|\)">\(S_{L_\zeta}(0)=|F(\zeta)|\)</span> gives <span class="math" data-index="883" data-tex="\(E_\zeta=F(\zeta)^{-1}\delta_0\)">\(E_\zeta=F(\zeta)^{-1}\delta_0\)</span>. Its support is the origin; (10) forces <span class="math" data-index="884" data-tex="\((0,\zeta)\in\operatorname{WF}(E)\)">\((0,\zeta)\in\operatorname{WF}(E)\)</span>. The tangent polar is <span class="math" data-index="885" data-tex="\(\{0\}\)">\(\{0\}\)</span>, so the lower cone assertion remains meaningful at degree zero.</p>
+<p><strong>Exercise3 (intermediate: why the fixed extra normal shift is needed).</strong> Explain why the factor <span class="math" data-index="886" data-tex="\(|q|^\mu\)">\(|q|^\mu\)</span> in (22) alone does not prove (14) when <span class="math" data-index="887" data-tex="\(\mu&gt;0\)">\(\mu&gt;0\)</span>. Show explicitly how (24) resolves this for <span class="math" data-index="888" data-tex="\(q=0\)">\(q=0\)</span>, without allowing an unbounded extra perturbation.</p>
+<p><strong>Solution.</strong> At <span class="math" data-index="889" data-tex="\(q=0\)">\(q=0\)</span>, (22) gives only a zero lower bound. With <span class="math" data-index="890" data-tex="\(\tau&lt;\tau_0-1\)">\(\tau&lt;\tau_0-1\)</span>,</p>
+<span class="math math-display" data-index="891" data-tex="\[
+\xi+i\tau N
+=\xi+i(\tau+1)N+i(-N).
+\]">\[
+\xi+i\tau N
+=\xi+i(\tau+1)N+i(-N).
+\]</span>
+<p>The vector <span class="math" data-index="892" data-tex="\(-N\)">\(-N\)</span> lies in <span class="math" data-index="893" data-tex="\(-\Gamma_1\)">\(-\Gamma_1\)</span>, has fixed nonzero length, and the modified normal parameter is below <span class="math" data-index="894" data-tex="\(\tau_0\)">\(\tau_0\)</span>. For large <span class="math" data-index="895" data-tex="\(|\xi|\)">\(|\xi|\)</span>, its fixed length and the extra <span class="math" data-index="896" data-tex="\(1\)">\(1\)</span> satisfy the same bounds in (22), provided the original size constants have been reduced first. Hence the denominator is bounded below by <span class="math" data-index="897" data-tex="\(c_1|N|^\mu|\xi|^{m-\mu}\)">\(c_1|N|^\mu|\xi|^{m-\mu}\)</span>. This is uniformly positive for <span class="math" data-index="898" data-tex="\(|\xi|\ge1\)">\(|\xi|\ge1\)</span>, since <span class="math" data-index="899" data-tex="\(m\ge\mu\)">\(m\ge\mu\)</span>. For general <span class="math" data-index="900" data-tex="\(q\)">\(q\)</span> in the negative cone, (23) replaces <span class="math" data-index="901" data-tex="\(|N|\)">\(|N|\)</span> by a single uniform positive distance.</p>
+<p><strong>Exercise4 (advanced: an exact wavefront fiber for the wave operator).</strong> Let <span class="math" data-index="902" data-tex="\(n=d+1\ge2\)">\(n=d+1\ge2\)</span>, <span class="math" data-index="903" data-tex="\(F(\tau,\eta)=\tau^2-|\eta|^2\)">\(F(\tau,\eta)=\tau^2-|\eta|^2\)</span>, <span class="math" data-index="904" data-tex="\(N=(1,0)\)">\(N=(1,0)\)</span>, and let <span class="math" data-index="905" data-tex="\(E_F\)">\(E_F\)</span> be the positive-time causal inverse. Use the tangent-polynomial section–the analytic upper-cone section and homogeneity to determine both its ordinary and analytic wavefront sets, including every noncharacteristic frequency at the origin. Explain why this argument does not assert that every general tangent polar is itself a wavefront fiber.</p>
+<p><strong>Solution.</strong> If <span class="math" data-index="906" data-tex="\(F(\zeta)\ne0\)">\(F(\zeta)\ne0\)</span>, the tangent degree is zero and the upper bound restricts its fiber to the origin; the lower wavefront-cone section includes that origin. If <span class="math" data-index="907" data-tex="\(\zeta=(\tau,\eta)\ne0\)">\(\zeta=(\tau,\eta)\ne0\)</span> is characteristic, then <span class="math" data-index="908" data-tex="\(\tau\ne0\)">\(\tau\ne0\)</span> and</p>
+<span class="math math-display" data-index="909" data-tex="\[
+H_\zeta(h)=2\tau h_\tau-2\eta\cdot h_\eta.
+\]">\[
+H_\zeta(h)=2\tau h_\tau-2\eta\cdot h_\eta.
+\]</span>
+<p>Its component containing <span class="math" data-index="910" data-tex="\(N\)">\(N\)</span> is
+<span class="math" data-index="911" data-tex="\(\{h:\operatorname{sgn}(\tau)(\tau h_\tau-\eta\cdot h_\eta)&gt;0\}\)">\(\{h:\operatorname{sgn}(\tau)(\tau h_\tau-\eta\cdot h_\eta)&gt;0\}\)</span>. The polar is</p>
+<span class="math math-display" id="eq-45" data-index="912" data-tex="\[
+C_\zeta=
+\{s(|\tau|,-\operatorname{sgn}(\tau)\eta):s\ge0\}.
+\tag{45}
+\]">\[
+C_\zeta=
+\{s(|\tau|,-\operatorname{sgn}(\tau)\eta):s\ge0\}.
+\tag{45}
+\]</span>
+<p>Thus both wavefront fibers lie in this positive-time null ray, and the lower wavefront-cone section says that the closed convex cone generated by the ordinary fiber contains the whole ray. This forces at least one nonzero point on it: a subset of <span class="math" data-index="913" data-tex="\(\{0\}\)">\(\{0\}\)</span> generates no nonzero vector.</p>
+<p>The causal inverse of the homogeneous polynomial has degree <span class="math" data-index="914" data-tex="\(2-n\)">\(2-n\)</span>, by the causal inverse input and uniqueness. Its ordinary wavefront fiber is invariant under every positive dilation of the base point. To check this directly in the Fourier definition, dilate a cutoff centered at <span class="math" data-index="915" data-tex="\(x\)">\(x\)</span> to one centered at <span class="math" data-index="916" data-tex="\(\lambda x\)">\(\lambda x\)</span>. Changing variables in its distributional Fourier pairing multiplies the transform by a fixed scalar and replaces frequency by <span class="math" data-index="917" data-tex="\(\lambda\)">\(\lambda\)</span> or <span class="math" data-index="918" data-tex="\(\lambda^{-1}\)">\(\lambda^{-1}\)</span> times frequency. Conic rapid decay is unchanged. Homogeneity identifies the two localized distributions up to that nonzero scalar, so exclusion at one point is equivalent to exclusion at its positive dilation. Since the fiber has a nonzero point on (45), it contains every positive point on that ray. the lower wavefront-cone section also includes zero.</p>
+<p>The ordinary fiber therefore equals <span class="math" data-index="919" data-tex="\(C_\zeta\)">\(C_\zeta\)</span>; inclusion of the ordinary wavefront set in the analytic one and the analytic upper-cone section's analytic upper bound show equality for the analytic fiber too. Consequently</p>
+<span class="math math-display" id="eq-46" data-index="920" data-tex="\[
+\begin{split}
+\operatorname{WF}(E_F)=\operatorname{WF}_A(E_F)
+={}&amp;\{(0,\zeta):\zeta\ne0\}\\
+&amp;{}\cup
+\{(s(|\tau|,-\operatorname{sgn}(\tau)\eta),(\tau,\eta)):
+s&gt;0,\ \tau^2=|\eta|^2,\ (\tau,\eta)\ne0\}.
+\end{split}
+\tag{46}
+\]">\[
+\begin{split}
+\operatorname{WF}(E_F)=\operatorname{WF}_A(E_F)
+={}&amp;\{(0,\zeta):\zeta\ne0\}\\
+&amp;{}\cup
+\{(s(|\tau|,-\operatorname{sgn}(\tau)\eta),(\tau,\eta)):
+s&gt;0,\ \tau^2=|\eta|^2,\ (\tau,\eta)\ne0\}.
+\end{split}
+\tag{46}
+\]</span>
+<p>The proof uses a one-dimensional tangent polar and base-point dilation invariance. A general closed convex cone can be generated by a proper subset of itself, and a full polynomial with lower terms need not give homogeneous base-point fibers. Thus the general conclusion in the lower wavefront-cone section is kept at its stated strength.</p>
+<p><strong>Exercise 5 (intermediate: the contour phase in one dimension).</strong> Take <span class="math" data-index="921" data-tex="\(F(\xi)=a\xi^m\)">\(F(\xi)=a\xi^m\)</span>, <span class="math" data-index="922" data-tex="\(a\ne0\)">\(a\ne0\)</span>, <span class="math" data-index="923" data-tex="\(N=1\)">\(N=1\)</span>, <span class="math" data-index="924" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>, and <span class="math" data-index="925" data-tex="\(0\le\alpha&lt;m\)">\(0\le\alpha&lt;m\)</span>. Verify (79) using the outward-oriented two-point sphere <span class="math" data-index="926" data-tex="\(S^0\)">\(S^0\)</span>. Include the weights of both points, the factor <span class="math" data-index="927" data-tex="\(\omega(\zeta)=\zeta\)">\(\omega(\zeta)=\zeta\)</span>, and the fact that the two cycles in (78) coincide.</p>
+<p><strong>Solution.</strong> Every nonzero real frequency is noncharacteristic, so <span class="math" data-index="928" data-tex="\(\Theta=0\)">\(\Theta=0\)</span> is allowed. The outward endpoint weights are <span class="math" data-index="929" data-tex="\(+1\)">\(+1\)</span> at <span class="math" data-index="930" data-tex="\(1\)">\(1\)</span> and <span class="math" data-index="931" data-tex="\(-1\)">\(-1\)</span> at <span class="math" data-index="932" data-tex="\(-1\)">\(-1\)</span>. Put <span class="math" data-index="933" data-tex="\(q=m-1-\alpha\)">\(q=m-1-\alpha\)</span>. At <span class="math" data-index="934" data-tex="\(\zeta=1\)">\(\zeta=1\)</span> the integrand, including its orientation weight, is <span class="math" data-index="935" data-tex="\(i^qx^q/a\)">\(i^qx^q/a\)</span>. At <span class="math" data-index="936" data-tex="\(\zeta=-1\)">\(\zeta=-1\)</span> its sign relative to that value is
+<span class="math" data-index="937" data-tex="\((-1)^{q+\alpha-m+3}=1\)">\((-1)^{q+\alpha-m+3}=1\)</span>:
+one minus comes from the sign function, one from <span class="math" data-index="938" data-tex="\(\omega\)">\(\omega\)</span>, and one from the endpoint orientation. Thus one sphere contributes <span class="math" data-index="939" data-tex="\(2i^qx^q/a\)">\(2i^qx^q/a\)</span>. Since <span class="math" data-index="940" data-tex="\((-1)^{n-1}=1\)">\((-1)^{n-1}=1\)</span> when <span class="math" data-index="941" data-tex="\(n=1\)">\(n=1\)</span>, the cycle <span class="math" data-index="942" data-tex="\(\alpha_+\)">\(\alpha_+\)</span> is twice that sphere. Multiplication by <span class="math" data-index="943" data-tex="\(i/(4q!)\)">\(i/(4q!)\)</span> gives</p>
+<span class="math math-display" id="eq-105" data-index="944" data-tex="\[
+D^\alpha E_F(x)=a^{-1}i^{m-\alpha}\frac{x^{m-1-\alpha}}{(m-1-\alpha)!},
+\tag{105}
+\]">\[
+D^\alpha E_F(x)=a^{-1}i^{m-\alpha}\frac{x^{m-1-\alpha}}{(m-1-\alpha)!},
+\tag{105}
+\]</span>
+<p>which is the direct derivative of the causal kernel in the oriented contour section. Dropping any one of the three negative-point signs would spoil this check.</p>
+<p><strong>Exercise 6 (basic: a lower order term produces a whole exponential).</strong> In dimension one let <span class="math" data-index="945" data-tex="\(P(\xi)=\xi-b\)">\(P(\xi)=\xi-b\)</span>, <span class="math" data-index="946" data-tex="\(b\in\mathbb C\)">\(b\in\mathbb C\)</span>, with normal <span class="math" data-index="947" data-tex="\(N=1\)">\(N=1\)</span>. Evaluate the principal-power expansion (90) on <span class="math" data-index="948" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, identify its entire continuation, and verify <span class="math" data-index="949" data-tex="\(P(D)E_P=\delta_0\)">\(P(D)E_P=\delta_0\)</span>.</p>
+<p><strong>Solution.</strong> Here <span class="math" data-index="950" data-tex="\(F(\xi)=\xi\)">\(F(\xi)=\xi\)</span>, <span class="math" data-index="951" data-tex="\(R=b\)">\(R=b\)</span>, and (100) gives <span class="math" data-index="952" data-tex="\(E_{j+1}(t)=i^{j+1}t^j/j!\)">\(E_{j+1}(t)=i^{j+1}t^j/j!\)</span> on <span class="math" data-index="953" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. Therefore</p>
+<span class="math math-display" id="eq-106" data-index="954" data-tex="\[
+U_P(z)=\sum_{j=0}^{\infty}b^j i^{j+1}\frac{z^j}{j!}
+=i e^{ibz},\qquad |U_P(z)|\le e^{|b||z|}.
+\tag{106}
+\]">\[
+U_P(z)=\sum_{j=0}^{\infty}b^j i^{j+1}\frac{z^j}{j!}
+=i e^{ibz},\qquad |U_P(z)|\le e^{|b||z|}.
+\tag{106}
+\]</span>
+<p>The causal distribution is <span class="math" data-index="955" data-tex="\(E_P=iH(t)e^{ibt}\)">\(E_P=iH(t)e^{ibt}\)</span>. Since
+<span class="math" data-index="956" data-tex="\(\partial_t(H e^{ibt})=\delta_0+ibH e^{ibt}\)">\(\partial_t(H e^{ibt})=\delta_0+ibH e^{ibt}\)</span>,
+application of <span class="math" data-index="957" data-tex="\(-i\partial_t-b\)">\(-i\partial_t-b\)</span> gives <span class="math" data-index="958" data-tex="\(\delta_0\)">\(\delta_0\)</span>; the two terms containing <span class="math" data-index="959" data-tex="\(b\)">\(b\)</span> cancel. Causal uniqueness identifies it with the fundamental solution. The exponential need not be a polynomial, even though all the principal power kernels are polynomials on the positive half-line.</p>
+<p><strong>Exercise 7 (intermediate: which expansion terms can contribute?).</strong> In (93) take <span class="math" data-index="960" data-tex="\(m=3\)">\(m=3\)</span>, <span class="math" data-index="961" data-tex="\(n=4\)">\(n=4\)</span>, and a coefficient with <span class="math" data-index="962" data-tex="\(|\alpha|=2\)">\(|\alpha|=2\)</span>. Determine every possible index <span class="math" data-index="963" data-tex="\(j\)">\(j\)</span>, and explain why the coefficient estimate uses a finite geometric sum even though (90) has infinitely many terms.</p>
+<p><strong>Solution.</strong> Formula (95) gives
+<span class="math" data-index="964" data-tex="\(\max(0,\lceil(2+4)/3\rceil-1)=1\)">\(\max(0,\lceil(2+4)/3\rceil-1)=1\)</span>
+as the lower limit, and <span class="math" data-index="965" data-tex="\(2+4-3=3\)">\(2+4-3=3\)</span> as the upper limit. Only <span class="math" data-index="966" data-tex="\(j=1,2,3\)">\(j=1,2,3\)</span> can contribute. Indeed <span class="math" data-index="967" data-tex="\(Q_{j+1}\)">\(Q_{j+1}\)</span> has degree <span class="math" data-index="968" data-tex="\(3j-1\)">\(3j-1\)</span>, and <span class="math" data-index="969" data-tex="\(R^j\)">\(R^j\)</span> has differential order at most <span class="math" data-index="970" data-tex="\(2j\)">\(2j\)</span>, so its resulting monomial degrees lie between <span class="math" data-index="971" data-tex="\(j-1\)">\(j-1\)</span> and <span class="math" data-index="972" data-tex="\(3j-1\)">\(3j-1\)</span>. Degree two is in this interval exactly for these indices. A particular polynomial <span class="math" data-index="973" data-tex="\(R\)">\(R\)</span> can make some of those coefficients zero; the estimate permits every term the order bound allows. The contribution is at most <span class="math" data-index="974" data-tex="\(C(C_2+C_2^2+C_2^3)\)">\(C(C_2+C_2^2+C_2^3)\)</span>. More generally, each fixed multiindex has a finite interval (95), whose length and largest power grow at most linearly in <span class="math" data-index="975" data-tex="\(|\alpha|\)">\(|\alpha|\)</span>. Estimate (96) absorbs that finite geometric sum into an exponential in <span class="math" data-index="976" data-tex="\(|\alpha|\)">\(|\alpha|\)</span>; division by <span class="math" data-index="977" data-tex="\(\alpha!\)">\(\alpha!\)</span> then produces the entire-function majorant (97).</p>
+<p><strong>Exercise 8 (advanced: the two-dimensional wave kernel and the factor two in homology).</strong> For <span class="math" data-index="978" data-tex="\(F(\tau,\eta)=\tau^2-\eta^2\)">\(F(\tau,\eta)=\tau^2-\eta^2\)</span>, verify the constant value of the causal kernel inside the future cone. Explain exactly what the rotation cylinder (103) proves about integral and real homology.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-index="979" data-tex="\(u=t+y\)">\(u=t+y\)</span>, <span class="math" data-index="980" data-tex="\(v=t-y\)">\(v=t-y\)</span>. Then <span class="math" data-index="981" data-tex="\(\Box=4\partial_u\partial_v\)">\(\Box=4\partial_u\partial_v\)</span> and
+<span class="math" data-index="982" data-tex="\(\delta_0(u)\delta_0(v)=\tfrac12\delta_0(t,y)\)">\(\delta_0(u)\delta_0(v)=\tfrac12\delta_0(t,y)\)</span>, since the coordinate Jacobian has absolute value two. Consequently</p>
+<span class="math math-display" id="eq-107" data-index="983" data-tex="\[
+E_F(t,y)=-\tfrac12 H(u)H(v),\qquad
+F(D)E_F=-\Box E_F=\delta_0(t,y).
+\tag{107}
+\]">\[
+E_F(t,y)=-\tfrac12 H(u)H(v),\qquad
+F(D)E_F=-\Box E_F=\delta_0(t,y).
+\tag{107}
+\]</span>
+<p>Its support is the closed future cone, so causal uniqueness applies. On its interior the value is <span class="math" data-index="984" data-tex="\(-1/2\)">\(-1/2\)</span>, which is a degree-zero polynomial and is nonzero. The equator is an oriented <span class="math" data-index="985" data-tex="\(S^0\)">\(S^0\)</span>, a difference of two points; the antipodal map reverses this fundamental cycle. Hence the cylinder has integral boundary <span class="math" data-index="986" data-tex="\(-2K^-\)">\(-2K^-\)</span>. It proves integral null homology of <span class="math" data-index="987" data-tex="\(2K^-\)">\(2K^-\)</span>. Multiplying the chain by <span class="math" data-index="988" data-tex="\(-1/2\)">\(-1/2\)</span> proves real or complex null homology of <span class="math" data-index="989" data-tex="\(K^-\)">\(K^-\)</span>, but is not an integral chain. Neither vanishing kernel derivatives nor the zero values of all relevant periods justify deleting that distinction.</p>
+<h2 id="references">References</h2>
+<p>[A] Michael Atiyah, Raoul Bott and Lars Gårding, <em>Lacunas for hyperbolic differential operators with constant coefficients, I</em>, Acta Mathematica <strong>124</strong> (1970), 109–189. <a href="https://www.its.caltech.edu/~matilde/HypPDEAtiyahBottGarding.pdf">Primary article</a>.</p>
+<p>[B] Michael Atiyah, Raoul Bott and Lars Gårding, <em>Lacunas for hyperbolic differential operators with constant coefficients, II</em>, Acta Mathematica <strong>131</strong> (1973), 145–206. <a href="https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6156-11511_2006_Article_BF02392039.pdf">Primary article</a>.</p>
+<p>These works credit the classical contour and lacuna methods. The complete authored receiving arguments above use the stated exact internal results and retain the explicitly planned general analytic prerequisites. Original prose and solved exercises are CC0-1.0; the linked historical works retain their own rights and are not reproduced.</p>
+<footer><p><a href="angular-contours-and-polynomial-continuation.md" download>Download the complete reading source</a> · <a href="LICENSE.txt">Original text: CC0 1.0</a> · <a href="../../assets/mathjax/LICENSE">MathJax terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

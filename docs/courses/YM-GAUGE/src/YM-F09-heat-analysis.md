@@ -1477,6 +1477,8 @@ unimodular-group theorem.
 The actual regular heat flow and caloric gauge, followed by
 the DeTurck construction for one-derivative data, are proved in
 [Constructing the Yang–Mills heat flow](../classical-heat-construction.html).
-The further low-regularity gauge and physical-time estimates needed
-by the general global argument remain subsequent parts of Lesson 9.
+The further low-regularity gauge is constructed in
+[Heat smoothing and the caloric gauge](../classical-caloric-gauge.html).
+The physical-time estimates needed by the general global argument
+remain subsequent parts of Lesson 9.
 

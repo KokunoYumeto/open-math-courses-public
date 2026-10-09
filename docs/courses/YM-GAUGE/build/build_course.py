@@ -321,6 +321,12 @@ def build():
     from figures_f09_construction import build as build_f09_construction_figure
     build_f09_construction_figure()
     render(COURSE/"src/YM-F09-heat-construction.md","Constructing the Yang–Mills heat flow","classical-heat-construction.html")
+    from figures_f09_caloric import build as build_f09_caloric_figure
+    build_f09_caloric_figure()
+    render(COURSE/"src/YM-F09-caloric-gauge.md","Heat smoothing and the caloric gauge","classical-caloric-gauge.html")
+    from figures_f09_dynamic import build as build_f09_dynamic_figure
+    build_f09_dynamic_figure()
+    render(COURSE/"src/YM-F09-dynamic-heat.md","Global heat flow and the time component","classical-dynamic-heat.html")
     course=json.loads((COURSE/"course.json").read_text(encoding="utf-8"))
     for unit in course["units"]:
         if unit["status"]=="available":
