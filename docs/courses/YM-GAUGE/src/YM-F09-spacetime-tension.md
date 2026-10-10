@@ -994,3 +994,23 @@ tends to the nonzero constant \(S^{-\gamma_q}/(-\gamma_q)\),
 so its squared heat integral again diverges.
 These exact endpoint behaviors justify both strict inequalities
 in \(\beta>\max(\gamma_q,0)\).
+
+
+## Further reading: electric smoothing with fewer wave inputs
+
+[Electric-curvature smoothing](../classical-electric-smoothing.html),
+ES.25–ES.29, gives complete alternative inputs for ST.12 and ST.22–ST.32.
+Every finite electric derivative is bounded from the lowest electric
+input, retaining the potential bracket, the original factor
+\(12c^{-2}\), and all heat exponents. The estimates above remain valid;
+the linked proof gives the stronger dependence needed in the finite
+wave argument.
+
+
+## Further reading: every tension term in the wave equation
+
+[The complete tension forcing](../classical-tension-forcing.html),
+TW.1–TW.30, uses electric smoothing to evaluate all tension constants
+from the lowest electric inputs. It also proves the exact spatial-label
+operator estimates for the full wave forcing, including the covariant
+derivative and nested commutator terms.

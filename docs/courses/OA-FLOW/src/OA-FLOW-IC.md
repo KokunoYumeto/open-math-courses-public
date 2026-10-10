@@ -556,7 +556,7 @@ These are identities in the full normal algebras for every \(a\). Together with 
 
 The first panel separates the two partitions in (IC7): the band widths carry no trace or probability information, and the final band represents all further return indices. The second panel is a finite window of two locally finite hit sets, with pairs \(0\mapsto1\) and \(4\mapsto7\). It has \(a=1\), \(a'=3\), \(R_1=4\), \(R_2=6\), so (IC46) reads \(6=4-1+3\). The coincident-hit row uses displacement zero. These are orbit samples, not finite-orbit models of a type III zero flow.
 
-The last panel uses \(s=9\). The upper point map in (IC51) sends \((9,x)\) to \((8,Wx)\). The two deck maps send these to \((5,x')\) and \((2,Wx')\); the lower point map subtracts \(a'=3\), again giving \(2\). Its fiber identity is exactly (IC59). The shear aligns heights only when extracting the constant coefficient map in (IC56); no false whole-deck conjugacy by \(D\) is drawn. [Reproduction source](../assets/induced-corners/render.py), [exact data and checks](../assets/induced-corners/data.json) and [asset terms](../assets/induced-corners/TERMS.md) accompany the figure.
+The last panel uses \(s=9\). The upper point map in (IC51) sends \((9,x)\) to \((8,Wx)\). The two deck maps send these to \((5,x')\) and \((2,Wx')\); the lower point map subtracts \(a'=3\), again giving \(2\). Its fiber identity is exactly (IC59). The shear aligns heights only when extracting the constant coefficient map in (IC56); no false whole-deck conjugacy by \(D\) is drawn. [Reproduction source](../assets/induced-corners/render.py), [exact data and checks](../assets/induced-corners/data.json) and asset terms accompany the figure.
 
 <a id="ic-diagnostics"></a>
 ## 12. Eight checks on the hypotheses and signs

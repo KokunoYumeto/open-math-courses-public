@@ -12,6 +12,6 @@ The script uses the Agg backend and built-in math text. It writes two PNG/SVG pa
 
 [Figure 2 SVG](figures/truncated-logs-and-hartogs.svg) and [PNG](figures/truncated-logs-and-hartogs.png) plot the truncated logarithms, the exact integral error and the compact suprema for two different compact sets. Profiles use positive radii; minus-infinite and finite point values at zero are stated separately. The error graph evaluates the proved closed formula.
 
-Original proofs, exposition, examples, solutions, diagrams and code use CC0 1.0. The SVGs preserve editable text. The DejaVu font retains the terms in [DejaVu-font-license.txt](DejaVu-font-license.txt).
+Original proofs, exposition, examples, solutions, diagrams and code use CC0 1.0. The SVGs preserve editable text. The DejaVu font retains the terms in DejaVu-font-license.txt.
 
 Classical source credit: Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, Theorem 4.1.9; first edition 1983, second edition 1990, reprint 2003.

@@ -139,14 +139,23 @@ Hölder, PW.5 and the extended HW.33 prove
 \[
 \begin{aligned}
 \mathcal W_c^1(N'(s))\le{}&
-2b(U_0s^{-1/4}W_2+U_1s^{-3/4}W_1)+24U_0^2s^{-1/2}W_1\\
+b(U_0s^{-1/4}W_2+U_1s^{-3/4}W_1)+12U_0^2s^{-1/2}W_1\\
 &+2bc|I|^{1/2}d_c^2W_{3/2}W_{5/2}
  +24c|I|^{1/2}U_0d_c^2s^{-1/4}W_{3/2}^2 .
 \end{aligned}\tag{PW.6}
 \]
 
 
-Its first line includes both the energy and forcing norms.
+Its first line includes both the energy and forcing norms. For each
+single-wave placement, write the corresponding full norm as
+\(W=e+\lambda f\), with \(\lambda=c|I|^{1/2}\). The same
+coefficient \(K\) multiplies its energy and forcing terms, giving
+\(Ke+\lambda Kf=KW\). Apply this identity to each of PW.5's
+single-derivative and single-Box pairs. It gives \(b,b,12\)
+for the three displayed terms. The second-derivative cross terms
+are separate products and retain the coefficients \(2b,24\).
+The full polarized calculation is
+[PD.5–PD.7](../classical-potential-difference.html#eq-PD-7).
 The last line retains all differentiated cross terms.
 Every W on the right is evaluated at the same original s.
 
@@ -201,9 +210,9 @@ Cauchy–Schwarz on these exact factors proves
 \[
 \begin{aligned}
 \int_0^S\mathcal W_c^1(N'(r))dr\le\mathcal J:={}&
-2b(\sqrt2U_0S^{1/4}\overline P_2+
+b(\sqrt2U_0S^{1/4}\overline P_2+
                    2U_1S^{1/8}\overline P_{1,\delta})\\
-&+\frac{48}{\sqrt3}U_0^2S^{3/8}\overline P_{1,\delta}\\
+&+\frac{24}{\sqrt3}U_0^2S^{3/8}\overline P_{1,\delta}\\
 &+2bc|I|^{1/2}d_c^2\overline P_{3/2}\overline P_{5/2}
  +24c|I|^{1/2}U_0d_c^2S^{1/4}\overline P_{3/2}^2 .
 \end{aligned}\tag{PW.9}
@@ -522,3 +531,47 @@ Multiplying by the original coefficient unit and fixed matrix
 retains both outputs. At \(\xi=0\), the generator itself is zero,
 so the evolution is the identity. For \(L^2\) fields that single
 frequency has measure zero; no polynomial field is inserted.
+
+
+## Further reading: the finite system of wave estimates
+
+[The spatial and temporal interactions](../classical-wave-interactions.html)
+uses the complete potential bounds above. [The finite wave argument](../classical-finite-wave-bound.html),
+FC.1–FC.22, then proves a common positive interval for every finite wave
+order and evaluates the physical derivative bounds. Every original
+endpoint and forcing contribution in PW.8–PW.14 remains in that argument.
+
+
+## 6. Exact comparison with the earlier bound
+
+The earlier course edition
+used \(2b,2b,24\) for the three single-wave terms of PW.6.
+Those upper bounds remain valid. Pairing the energy and forcing
+terms as proved above gives the stronger current values \(b,b,12\),
+without changing any field, norm, coordinate or cross-wave term.
+
+At exactly the same original inputs, denote the earlier PW.9 expression
+by \(\mathcal J_{\rm old}\) and the current one by
+\(\mathcal J_{\rm new}=\mathcal J\). Their exact difference is
+
+\[
+\begin{aligned}
+\Delta\mathcal J
+&=\mathcal J_{\rm old}-\mathcal J_{\rm new}\\
+&=b\left(\sqrt2U_0S^{1/4}\overline P_2
+       +2U_1S^{1/8}\overline P_{1,\delta}\right)
+ +\frac{24}{\sqrt3}U_0^2S^{3/8}\overline P_{1,\delta}\ge0.
+\end{aligned}\tag{PW.23}
+\]
+
+Subtracting the two complete expressions proves the equality:
+the two cross-wave products cancel with their original coefficients.
+All remaining factors are nonnegative. Consequently PW.12's potential
+bound and PW.13's divergence-free bound each decrease by exactly
+\(2\Delta\mathcal J\), when evaluated at the same inputs.
+This comparison concerns their upper bounds; it does not change
+the actual norms of the fields.
+
+The complete propagation through the finite-wave and physical-gauge
+estimates is proved in
+[FC.23–FC.25](../classical-finite-wave-bound.html#eq-FC-23).

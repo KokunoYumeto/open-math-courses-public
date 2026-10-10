@@ -2317,7 +2317,178 @@ and displays the exact defect produced by reversing the sign.
 The last exercise constructs the time ODE with integrable
 anti-Hermitian coefficients.
 
-These three chapters retain the actual differentiated wave forcing
-and endpoint norms. The finite family of physical wave estimates
-still needs its final closure and spatial gauge estimates; the
-general continuation proof and main unit exercises remain required.
+The next three chapters evaluate endpoint wave inputs, gain electric
+derivatives and construct the physical temporal gauge. Their complete
+receiving proofs follow the links below.
+
+
+## 24. Endpoint wave bounds and the exact curl metric
+
+[Endpoint wave bounds](../classical-endpoint-wave.html), EW.1–EW.21,
+computes the complete endpoint forcing and its finite time integrals.
+The vector curl and full ordered antisymmetric tensor are related by
+an exact inverse map, including their different norm factors. Every
+finite endpoint wave order follows from the established heat bounds.
+Three local source-display corrections are shown through direct
+calculations. A Fourier-symbol diagram and eight solved exercises
+support the proof.
+
+## 25. Every finite electric derivative from the lowest input
+
+[Electric-curvature smoothing](../classical-electric-smoothing.html),
+ES.1–ES.29, retains the full covariant heat operator and every ordinary
+derivative placement. A finite sequence of heat intervals gains one
+derivative at a time, with explicit constants. The resulting estimates
+replace the higher electric inputs in the tension bounds using only
+the lowest electric quantity. The physical speed and heat weights
+remain explicit. Eight exercises have complete solutions.
+
+## 26. Return to physical temporal gauge
+
+[Physical temporal gauge](../classical-physical-gauge.html), GO.1–GO.39,
+constructs the anchored gauge on either side of the physical-time
+anchor. It proves its full spatial gradient, Hessian, inverse and
+logarithmic-derivative bounds. The connection and curvature maps,
+the distinct heat boundaries, and every physical-time conversion
+factor are computed explicitly. The initial spatial representative
+is preserved. A complete flat example and eight solved exercises
+show the transformation directly.
+
+The following four chapters assemble the finite physical wave estimates.
+They supply a complete a priori argument on the current regular interval.
+
+
+## 27. Every spatial and temporal wave interaction
+
+[Spatial and temporal wave interactions](../classical-wave-interactions.html),
+PI.1–PI.12 and UA.1–UA.11, decomposes the original spatial coefficient
+and estimates each differentiated product. The temporal estimates retain
+both heat endpoints, the physical speed and every matrix order. Exact
+weighted kernels, a worked example and eight solved exercises show why
+the original logarithmic term has a finite receiving bound.
+
+## 28. Spatial heat smoothing controls differentiated coefficients
+
+[Spatial heat smoothing](../classical-spatial-smoothing.html),
+HS.1–HS.31 including HS.29a, bounds every finite spatial order from
+the lowest heat integral. It proves the heat supremum, integrates back
+to the actual endpoint potential, and estimates every remaining spatial
+wave interaction. The scalar trace example and eight solved exercises
+retain the full heat interval and its endpoint terms.
+
+## 29. The complete tension contribution
+
+[Tension forcing](../classical-tension-forcing.html), TW.1–TW.30,
+evaluates every tension coefficient from the lowest electric inputs.
+The full spatial tensor operator gives the constants in the first-order
+and nested terms. The proof includes every derivative placement, the
+low-order formulas needed next, a matrix example and eight full solutions.
+
+## 30. A finite bound on an explicit physical interval
+
+[The finite wave argument](../classical-finite-wave-bound.html),
+FC.1–FC.22, combines every preceding wave-forcing contribution. It
+constructs a finite numerical function of six actual norms, specifies
+a positive physical interval and proves the strict radius improvement
+there. The same interval controls each finite derivative order, with its
+own explicit constant. The exact gauge map then gives the physical
+spatial-gradient and electric bounds. A scalar example and eight solved
+exercises show each step of the argument.
+
+These are a priori estimates on the existing regular solution. The
+remaining main argument must prove nonlinear solution differences,
+regular continuation and the energy-data limit. The main unit exercise
+set also remains to be written. Unit 9 is still in progress.
+
+
+## 31. Electric differences and the original datum
+
+[Electric curvature differences](../classical-electric-difference.html),
+ED.1–ED.30 including ED.25a–ED.25b, subtracts the actual electric
+heat equations and derives two estimates. The covariant energy proof
+retains a differentiated term as a divergence; the signed heat-datum
+proof preserves cancellation. An exact Gaussian example and eight
+solved exercises show their consequences and limitations.
+
+## 32. Spatial differences and the retained heat endpoint
+
+[Spatial heat-curvature differences](../classical-spatial-difference.html),
+LG.1–LG.32, supplies the corresponding spatial input. The proof keeps
+the fractional wave order, all nested matrix products, the actual heat
+endpoint and the original backward kernels. It also evaluates the
+curl-free coefficient difference. The exact kernels and eight solved
+exercises explain why each endpoint and heat norm is needed.
+
+## 33. Differences at the temporal boundary
+
+[Temporal-boundary differences](../classical-temporal-difference.html),
+TD.1–TD.27, compares the two full covariant equations and proves
+all four temporal norms required by the gauge map. One energy estimate
+avoids the differentiated connection difference; the ordinary forcing
+and Hessian estimate retain its actual contribution. A heat-history
+example and eight solved exercises derive the boundary terms explicitly.
+
+## 34. Comparing the physical gauges
+
+[Physical gauge differences](../classical-gauge-difference.html),
+GD.1–GD.21, computes the exact difference between the two anchored
+gauge matrices, their inverse maps and both spatial derivatives.
+Its linear estimates carry the preceding temporal bounds into the
+original physical connection and curvature. An exact unitary example,
+diagram and eight full exercise solutions accompany the proof.
+
+These four chapters compare actual fields and their heat and gauge
+evolutions. Their inputs are stated norms on the physical interval.
+The remaining argument must bound those norms by data at one physical
+time, prove regular continuation and construct the energy-data limit.
+The main unit exercises also remain to be written. Unit 9 is in progress.
+
+
+## 35. The potential and its complete wave difference
+
+[Potential-wave differences](../classical-potential-difference.html)
+proves PD.1–PD.33, including PD.21a and PD.31a. It keeps both complete
+matrix-product expansions, all wave forcing, heat endpoints and
+electric and tension terms. Three proved divergence-free bounds feed
+the exact null-product comparison. Eight solved exercises accompany
+the proof. The paired product rule also sharpens the earlier PW and
+FC bounds, with the full comparison in PW.23 and FC.23–FC.25.
+
+## 36. Strong endpoints and the actual restart
+
+[Strong endpoints and restarting](../classical-regular-restart.html)
+proves RI.1–RI.37, including RI.18a and RI.19a. It constructs
+the same-gauge affine restart, preserves all derivatives and constraints,
+and proves the physical, gauge and positive-heat endpoint maps.
+The mixed multiplier calculation shows how the physical Hessian
+integral reaches this restart. The exact translation map identifies
+the nonlinear difference estimate needed next. Eight solved exercises
+explain the spaces, constants and endpoint argument.
+
+The complete initial-data estimate, its uniform translation consequence,
+the energy-data limit and the main unit exercises remain in progress.
+These analytic components do not yet complete Unit 9.
+
+
+## 37. Stability for a regular physical pair
+
+[Regular-solution stability and signed electric data](../classical-wave-stability.html)
+proves WS.1–WS.40. The Gauss identity closes the physical difference
+energy without adding a derivative of the electric difference. The
+finite-heat spectral calculation retains both electric projections;
+the anchored gauge calculation supplies the actual datum required by
+ED.25b. Eight full exercise solutions cover the cancellation, constants,
+kernel, gauge order, feedback and exact regularity class. The coefficient
+still uses the displayed individual regular norms.
+
+## 38. Heat comparisons with the original endpoint
+
+[Comparing heat extensions](../classical-fixed-heat-comparison.html)
+proves FI.1–FI.42. It supplies the potential and curvature differences
+from actual physical-curve differences. The intervening heat energy
+and transition gauge preserve the full interval and its generally
+nonidentity anchor. Eight full exercise solutions retain the affine
+derivative terms, original Sobolev weights and complete curvature tuple.
+
+The two chapters supply exact inputs for the remaining uniform
+physical-time difference calculation. Unit 9 remains in progress.

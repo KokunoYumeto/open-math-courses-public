@@ -544,11 +544,103 @@ The class itself exists also when \(M\) is noncompact, as needed here. For even 
 \]
 It commutes with the base action, and \((F^2-1)a=-a(\pi(v))/(1+|v|^2)\) is a compact module endomorphism: this continuous endomorphism vanishes at infinity, by a compact base cutoff followed by a bounded-radius fibre cutoff. Locally finite trivializations approximate it by finite sums of rank-one endomorphisms. The remaining Kasparov defects are zero. Thus this is an actual Thom cycle on the noncompact base. For odd rank the same Clifford construction, with one graded \(\mathrm{Cl}_1\) factor, gives the odd class. Its restriction to a compact base has exactly the specified prerequisite's normalization. Applying the functor \(KK\to E\) and composing with (17.33) defines the oriented class without requiring \(f\) to be proper.
 
+### Homotopy invariance of the deformation construction
+
+Write \(A=C_0(M)\), \(B=C_0(N)\), and denote the oriented composite supplied above by
+\[
+\begin{gathered}
+ \mathfrak d(f,S_f)=c(\tau_{V_f,S_f})\otimes\theta_f
+                    \otimes\delta_f\otimes[\mathrm{corner}]^{-1}
+       \in E^{r}(A,B),\\ r=\dim M+\dim N.
+\end{gathered}
+ \tag{17C.1}
+\]
+Here \(c\) is the specified product-preserving functor from KK to E, and the degree is read modulo two. This notation does not identify the class with the separate graph construction.
+
+**Proposition 17.10 (full oriented homotopy invariance).** Let \(f_s:M\to N\), \(0\leq s\leq1\), be a smooth homotopy. Suppose one full Spin\(^{c}\) module on
+\(\mathcal V=\operatorname{pr}_M^*T^*M\oplus H^*TN\), over \(M\times I\), restricts to the prescribed endpoint modules; here \(I=[0,1]\) and \(H(x,s)=f_s(x)\). Then
+\[
+ \mathfrak d(f_0,S_0)=\mathfrak d(f_1,S_1)\quad\hbox{in }E^r(A,B).
+ \tag{17C.2}
+\]
+Neither the manifolds, the maps, nor the homotopy are required to be compact or proper. The rank of \(df_s\) may vary. The conclusion also holds for a continuous oriented homotopy between smooth endpoint maps.
+
+**Proof.** If \(M\) is empty, both classes are the unique element with zero source. Otherwise fix one positive density on \(M\), so that the Hilbert space \(L^2M\) and a rank-one corner are independent of \(s\). We keep the homotopy parameter \(s\), the linear deformation parameter \(\varepsilon\), and the normal-deformation parameter \(t\) distinct.
+
+**The two family extensions.** Form the groupoid \(\mathcal J\) over \(H^*TN\) whose arrows over \((x,s)\) have the translation law (17A.4), with \(df_x\) replaced by \(d_xf_s\). Let \(J=C^*(\mathcal J)\), \(V=C_0(\mathcal V)\), and \(B_I=C_0(N\times I)=C(I,B)\). Scaling \(d_xf_s\) by \(\varepsilon\) gives a section algebra \(L\). Taking the normal deformation (17A.5) simultaneously for all \(s\) gives a section algebra \(D\). They fit into
+\[
+\begin{aligned}
+0&\longrightarrow C_0((0,1]_{\varepsilon})\otimes J
+  \longrightarrow L\xrightarrow{a_0}V\longrightarrow0,\\
+0&\longrightarrow C_0((0,1]_{t})\otimes B_I\otimes\mathcal K(L^2M)
+  \longrightarrow D\xrightarrow{b_0}J\longrightarrow0.
+\end{aligned}
+\tag{17C.3}
+\]
+The positive-endpoint maps are \(a_1:L\to J\) and
+\(b_1:D\to B_I\otimes\mathcal K\). In the first extension the scale isomorphism is exactly \(v\mapsto\varepsilon v\), with Haar factor \(\varepsilon^{-m}\); it does not change \(s\). In the second, the positive pair algebra is independent of both \(f_s\) and \(s\), with Haar factor \(t^{-m}\).
+
+Here are the needed parameter details. In bundle charts the linear-family regular kernel is (17A.3) with \(L=d_xf_s\). Its entries are continuous on every compact set in \((x,s,\eta,v,w,\varepsilon)\). Compact input vectors and output cutoffs therefore give the same lower norm estimate, also when \(s\) varies. Central fibre detection over \((x,s)\), vector-group amenability and full invariant-ideal exactness give the upper bound and the quotient, exactly as in (17A.3)--(17A.4). This uses no constant-rank splitting.
+
+For the second family, the charts are (17A.6) with \(F(X)\) replaced by \(F_s(X)\) and with \(s\) retained. The divided difference in (17A.7) becomes
+\[
+ \frac{F_s(X)+t\eta-F_s(X-tV)}{t}
+   =\eta+\int_0^1D_XF_s(X-utV)V\,du.
+ \tag{17C.4}
+\]
+This is smooth up to \(t=0\), including at the endpoints of \(I\) in boundary charts. The source and range maps remain submersions because the \(s\)-coordinate is unchanged. The density calculation and rescaled regular vectors in (17A.9) apply with \(s\) as another compact parameter. Uniform convergence on the compact sets used there gives lower semicontinuity; full quotient exactness gives upper semicontinuity. At positive parameter use the pair-algebra calculation. Compact chart partitions and completion give both family extensions (17C.3) and their continuous fields. For compact \(K\subset M\), the image \(H(K\times I)\) is compact, so all the coordinate and density estimates needed for that support have uniform bounds. No assertion about the image or inverse image of an arbitrary noncompact set is used. Separability follows from the countable charts as before.
+
+**Endpoint restriction and cancellation.** Restricting to any \(s=u\) is restriction to a closed invariant subgroupoid. The full invariant-ideal exactness from Lesson 14 identifies its quotient with the already constructed single-map algebra. Write these restriction maps as \(q_V^u,q_J^u,q_L^u,q_D^u\), and \(q_B^u:B_I\to B\). A subscript \(u\) on \(a_i,b_i\) denotes the single-map endpoint map. The following squares show their types and commute as actual algebra homomorphisms:
+\[
+\begin{gathered}
+\begin{array}{ccccc}
+ V&\xleftarrow{a_0}&L&\xrightarrow{a_1}&J\\
+ {\scriptstyle q_V^u}\downarrow&&{\scriptstyle q_L^u}\downarrow&&{\scriptstyle q_J^u}\downarrow\\
+ C_0(V_{f_u})&\xleftarrow{a_{0,u}}&L_u&\xrightarrow{a_{1,u}}&C^*(J_{f_u}),
+\end{array}
+\\[1em]
+\begin{array}{ccccc}
+ J&\xleftarrow{b_0}&D&\xrightarrow{b_1}&B_I\otimes\mathcal K\\
+ {\scriptstyle q_J^u}\downarrow&&{\scriptstyle q_D^u}\downarrow&&{\scriptstyle q_B^u\otimes1}\downarrow\\
+ C^*(J_{f_u})&\xleftarrow{b_{0,u}}&D_u&\xrightarrow{b_{1,u}}&B\otimes\mathcal K.
+\end{array}
+\end{gathered}
+\tag{17C.5}
+\]
+For example, these identities hold on compact convolution kernels by evaluation of their parameters, and hence on their completions. Every leftward map in (17C.5) is invertible in E by (17C.3) and the deformation lemma. Consequently, putting
+\(\theta_I=[a_0]^{-1}\otimes[a_1]\) and
+\(\delta_I=[b_0]^{-1}\otimes[b_1]\), associativity and multiplication by those inverses give
+\[
+\begin{aligned}
+ \theta_I\otimes[q_J^u]&=[q_V^u]\otimes\theta_{f_u},\\
+ \delta_I\otimes[q_B^u\otimes1]&=[q_J^u]\otimes\delta_{f_u}.
+\end{aligned}
+\tag{17C.6}
+\]
+For the first equality, use \([a_1]\otimes[q_J^u]=[q_L^u]\otimes[a_{1,u}]\) and
+\([q_L^u]\otimes[a_{0,u}]=[a_0]\otimes[q_V^u]\); cancel \([a_0]\) and \([a_{0,u}]\). The second equality is the identical calculation with \(b\). We never invert \(q_J^u\) or assume that the algebras \(C^*(J_{f_s})\) are isomorphic as \(s\) varies. Proposition 17.9 identifies these family classes with their actual asymptotic families as well.
+
+**The full spinor and the final homotopy.** The common spinor module supplies a KK class \(T_I\in KK^r(A,V)\): on its sections vanishing at infinity, let \(a\in A\) act by \(a(x)\), and use the Clifford multiplier (17A.10). Its localized square defect is
+\(-a(x)/(1+|v|^2)\). It vanishes uniformly at infinity on \(\mathcal V\): first cut off \(x\) in a compact set, then cut off the fibre radius, while \(s\) remains in the compact interval. Finite chart rank-one approximation proves compactness exactly as above. In odd degree retain the same original right Clifford factor. This construction preserves the entire spinor bundle, including its scalar transition functions, not just its determinant or fibre dimension. Endpoint tensoring restricts this very module and multiplier, so
+\(c(T_I)\otimes[q_V^u]=c(\tau_{V_{f_u},S_u})\).
+
+Let \(k_I:B_I\to B_I\otimes\mathcal K\) be the fixed rank-one corner. Its inverse exists by the supplied stability theorem, and its restriction commutes with \(q_B^u\). Thus
+\[
+ \Xi=c(T_I)\otimes\theta_I\otimes\delta_I\otimes[k_I]^{-1}
+       \in E^r(A,B_I)
+ \tag{17C.7}
+\]
+has \(\Xi\otimes[q_B^u]=\mathfrak d(f_u,S_u)\), by (17C.6). Evaluation at zero and one on \(B_I\) are homotopic homomorphisms: the homotopy sends \(h\in C(I,B)\) to the function \(u\mapsto h(u)\). E-theory homotopy invariance and associativity now give (17C.2). This is equality of bivariant classes, not merely equality of their maps on K-groups. Multiplying both endpoints by the same fixed integer-degree convention sign also preserves it.
+
+For a continuous oriented homotopy with smooth endpoints, use the relative smoothing construction in [KT-KK-16, the proof of Theorem 8.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-KK/KT-KK-16.html#8-homotopies-and-the-projection-formula). Its variable-radius tube retraction and locally finite convolution give a smooth map \(G:M\times I\to N\) relative to the endpoints, without imposing properness. Choose the allowed approximation error also below the continuous positive radius of a normal neighbourhood of the diagonal in \(N\times N\). Then the short geodesic from \(H(x,s)\) to \(G(x,s)\) is uniquely specified and depends continuously on \((x,s)\). Parallel transport for a metric connection gives an isometry \(P_{x,s}:T_{H(x,s)}N\to T_{G(x,s)}N\), equal to the identity at the endpoints. Together with the identity on \(T_x^*M\), this is an isometry \(\Phi\) from the original continuous bundle to the smooth bundle \(\operatorname{pr}_M^*T^*M\oplus G^*TN\). Transport the Clifford action by \(c_G(w)=c_H(\Phi^{-1}w)\) on the same spinor bundle. This retains its scalar transition functions and prescribed endpoint modules. The cited equivariant projection smoothing and polar comparison now give an isomorphic smooth full Clifford module relative to the endpoint collars. Thus the smooth argument applies to \(G\) with exactly the original endpoint data. Only the written map-and-module smoothing construction is used here, not that theorem's graph-cycle proof or any deformation-to-graph comparison. This proves the continuous assertion. \(\square\)
+
+The classical homotopy assertion appears in Connes, Chapter II, Section 6, Theorem 7(\(\alpha\)). The argument here supplies the two parameter extensions, typed restriction squares and full bivariant cancellation for this lesson's construction. It does not supply the identity-map, composition or geometric-comparison proofs by citation.
+
 **Remaining geometric comparison.** The separately constructed manifold wrong-way class has its factorization formula in [KT-KK-16, Theorem 7.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-KK/KT-KK-16.html#7-embeddings-projections-and-arbitrary-maps) and its homotopy and projection formulas in [Theorems 8.1–8.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-KK/KT-KK-16.html#8-homotopies-and-the-projection-formula). It is not enough to name that class to identify the deformation composite just constructed. The equality with the Thom composite of (17.33), for every smooth K-oriented map with the stated noncompact and nonproper scope, still requires a deformation-to-graph comparison. [Section 11 of that lesson](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-KK/KT-KK-16.html#11-deformations-and-correspondences) and [KT-KK-22, Section 5](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-KK/KT-KK-22.html#5-embeddings-and-normal-deformation) explicitly leave this comparison unproved; neither is a full proof provider for it.
 
 The normalization is part of that obligation. Put \(d_f=\dim N-\dim M\). The manifold lesson distinguishes its outward graph class from its native right-Clifford class by \(f!=\varepsilon_{d_f}f!_{\rm out}\), with \(\varepsilon_d=(-1)^{d(d-1)/2}\), including negative \(d\); see [Section 1, equation (1.5)](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-KK/KT-KK-16.html#1-orientations-diagonal-cancellation-and-integer-signs). Here the Thom cycle is the outward rank-\(r\) cycle (17A.10), with (17A.10a). A comparison must transport the full spinor orientation, the ordered Clifford factors, the Fourier sign (17.17) and the pair-algebra Morita corner. Since \(r-d_f=2m\), matching the two degrees modulo two alone does not fix their integer normalizations. We do not assert either unadjusted equality before that comparison is proved.
 
-The original obligations—agreement with the oriented manifold transfer, factorization independence, homotopy invariance, composition and projection formulas for this deformation construction—remain in scope. The general geometric comparison is open, not a missing E-theory foundation and not discharged by a point or Euclidean index calculation. The groupoids, both parameter extensions, the noncompact Thom cycle and their E-theory composite remain supplied above. None uses the unproved comparison as its own input.
+The original obligations remain in scope. Proposition 17.10 now proves oriented homotopy invariance directly for the full noncompact, nonproper deformation construction, including continuous oriented homotopies between smooth maps. Agreement with the oriented manifold transfer, its exact normalization, the identity-map calculation, factorization independence, composition and projection formulas remain open for this construction. They are not discharged by a point or Euclidean index calculation. The groupoids, both parameter extensions, the noncompact Thom cycle and their E-theory composite remain supplied above. None uses the unproved geometric comparison as its own input.
 
 ## Exercises with solutions
 
@@ -622,7 +714,7 @@ The oscillator and its compactified symbol are written prerequisites. Equality w
 
 We use smooth-manifold foundations, including the inverse function theorem, densities, metrics and partitions of unity; ordinary Fourier analysis and the locally compact Stone–Weierstrass theorem; and homotopy invariance, rank normalization and stability in K-theory. The positive natural six-term cycle is The six-term exact sequence and the exponential map, Theorem 2.1. The bundle-triple model is Topological K-theory of spaces, pairs and vector bundles, §2, Theorem 2.1, and its algebraic excision map is The six-term exact sequence and the exponential map, Theorem 6.1. For a cotangent symbol on compact \(M\), embed the bundles into finite trivial bundles over \(M\) and pull their projections back to \(T^*M\). Polar normalization of the symbol outside a compact disk gives a bounded partial isometry there; a radial cutoff extends it to a bounded matrix on the total space. Its initial and final projections agree with the bundle projections modulo \(C_0(T^*M)\). The exact relative-triple excision theorem, applied to \(C_0(T^*M)\subset C_b(T^*M)\), therefore defines its K-class. Homotopies invertible outside one common compact set give relative-triple homotopies. This proves the compact-support use here without requiring those pulled-back bundles to extend over cotangent infinity. The full groupoid construction, invariant-ideal exactness, pair algebra and group-bundle norm detection are from Lesson 14. Vector-space amenability and Fourier C*-duality are from Lessons 4 and 6.
 
-The classical elliptic comparison (17.29) is proved above, using the written Euclidean and geometric symbol calculus and elliptic order-change theorems specified there. Its uniform parameter estimates and graph-projection class are included. Exercise 4 reuses the harmonic oscillator theorem and the sphere Bott-symbol computation, with their exact locators in *The Bott operator, suspension, and reduction of the index to Euclidean space*. The two differential-index deformations and their extensions are constructed above. Their E-classes and their identification with the actual asymptotic families use the supplied E-theory proofs and Proposition 17.9. The noncompact Thom cycle is supplied here with the outward normalization (17A.10a). The full oriented deformation-to-manifold comparison remains unproved; its consequences for this deformation construction are retained as explicit obligations, not borrowed from the separate graph construction.
+The classical elliptic comparison (17.29) is proved above, using the written Euclidean and geometric symbol calculus and elliptic order-change theorems specified there. Its uniform parameter estimates and graph-projection class are included. Exercise 4 reuses the harmonic oscillator theorem and the sphere Bott-symbol computation, with their exact locators in *The Bott operator, suspension, and reduction of the index to Euclidean space*. The two differential-index deformations and their extensions are constructed above. Their E-classes and their identification with the actual asymptotic families use the supplied E-theory proofs and Proposition 17.9. The noncompact Thom cycle is supplied here with the outward normalization (17A.10a). Proposition 17.10 supplies the full oriented homotopy invariance by a common bivariant class over the parameter interval. The full oriented deformation-to-manifold comparison, identity normalization, composition, factorization and projection formulas remain unproved for this construction; those obligations are not borrowed from the separate graph construction.
 
 The rescaled smooth groupoid, Haar system, full and reduced fiber identifications, continuous field, exact contractible-ideal extension, K-theoretic deformation map, locality and the four applications above have been proved within these prerequisites.
 

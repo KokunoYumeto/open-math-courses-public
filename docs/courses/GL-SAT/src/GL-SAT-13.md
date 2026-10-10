@@ -745,9 +745,210 @@ Resolve \(k_B\) by \(Q=B[f]\), \(|f|=-2\), \(df=\epsilon\). Its positive pairs c
 
 The two generator mapping-complex arguments give \(\operatorname{thick}_A(k)\simeq\operatorname{Perf}(B)\) and \(\operatorname{thick}_B(k)\simeq\operatorname{Perf}(A)\). The second takes \(k_B\) to \(A\), while the free \(B\)-module goes to a different object. These equivalences specify their generated subcategories. In all \(B\)-modules, the same \(k_B\) fails compactness by the product-versus-sum calculation (7.1). It is compact in its own Ind-completion (7.2). There is also a direct failure of the first functor on all \(A\)-modules: the nonzero module \(A[c^{-1}]\) is sent to zero by \(R\operatorname{Hom}_A(k,-)\). Its Hom complex from \(P\) has differential multiplication by \(c\), now an isomorphism, and is contractible. Thus that functor is not faithful on all modules. Passing to larger categories without specifying the completion would invalidate the assertion.
 
+## Appendix A. Arithmetic Ext purity and the formal generator category
+
+This appendix proves the purity and formality steps for the actual spherical generators. It does not identify their full graded Ext category with the dual Lie-algebra model; that further comparison is needed for (8.1). We work over \(\overline{\mathbf F}_q\), with finite \(E/\mathbf Q_\ell\), \(\ell\nmid q\), and a chosen \(a\in E\) with \(a^2=q\). The coefficient \(E(1/2)\) has geometric Frobenius \(a^{-1}\). Write \(A_\lambda=I_\lambda(d_\lambda/2)\) for the normalized geometric IC with its specified split Weil structure.
+
+The finite rational coefficient operations and trace orientations are proved in Semi-infinite orbits and weight functors, Appendices O–Q, with the supported section comparisons in The Satake category, Lemmas A.1.1.1–A.1.2.1. The split Tate stalk and costalk operators are proved in Consequences and examples, Theorem C.3.1.1. The free [Equivariant Satake category and Kostant–Whittaker reduction, §§6.5–6.6](https://arxiv.org/abs/0707.3799v4) supplies the formality context; the algebraic and geometric arguments used below are proved here.
+
+### A.1. Arithmetic classifying-space cohomology
+
+We use actual finite free-frame models in every prescribed degree range. Their algebraic construction is the one in Equivariant perverse sheaves and perverse sheaves on stacks, Propositions B.6–B.8. Here is the constant-adic acyclicity calculation needed to use the same frames in this characteristic.
+
+For \(V_{N,r}\) consisting of \(r\) independent columns in \(k^N\), successive column-forgetting maps have, on minor charts, fibre
+\(\mathbf A^{r-1}\times(\mathbf A^{N-r+1}\setminus0)\).
+Relative zero-section localization and the supported vector trace give
+\[
+ H^j(\mathbf A^d\setminus0,E)=
+ \begin{cases}E,&j=0,\\ E(-d),&j=2d-1,\\0,&\text{otherwise}.\end{cases}
+\tag{A.1.1}
+\]
+Indeed the zero section has supported coefficient \(E(-d)[-2d]\), obtained by composing the \(d\) coordinate section comparisons. The ordinary coefficient of affine space is \(E\), by the relative affine-line calculation iterated \(d\) times. The localization triangle then gives exactly (A.1.1). Its maps are the zero-section class and the trace, so are Frobenius compatible. This calculation is relative on the trivializing charts. For a pulled-back admissible coefficient complex the same localization triangle tensors with that complex, by the actual section comparisons and proper projection maps of Lesson 5 Q; it gives the same unit range. The units for successive column projections are therefore isomorphisms through degree \(2(N-r)\); their cones start above that range, and left t-exact ordinary direct image preserves that bound under composition. This proves the needed stable-range comparison. It does not compare arbitrary sheaves merely by their pointwise fibres.
+
+All quotient and flag maps below are algebraic maps on these free frames. Quotients are obtained by the finite homogeneous-space and torsor charts in the cited construction; only its topological acyclicity calculation has been replaced by (A.1.1). Increasing \(N\) increases the proved coefficient range. Equivalently their mapping and cohomology comparisons can be computed on the whole action nerve; the frame units identify those comparisons in each fixed range.
+
+**Theorem A.1.1.1.** If \(L/\mathbf F_q\) is split connected reductive, then \(H^{2j+1}(BL,E)=0\), every \(H^{2j}(BL,E)\) is finite dimensional, and its actual Frobenius is \(q^j\operatorname{id}\). The same holds for a split group \(H=U\rtimes L\) whose \(U\) has the affine ordered coordinates of a split unipotent group.
+
+**Proof.** For a split torus \(T\), use the product of the \(r\) projective-space frame models. The split affine cells of each projective space and their oriented cycle classes give
+\[
+ H^{2j}(BT,E)=E(-j)^{b_j},\qquad
+ H^{2j+1}(BT,E)=0.
+\tag{A.1.2}
+\]
+This is the actual scalar operator, by Lesson 12 C.1.1.1, rather than an inference from a trace. For \(U\), every level \(U^s\) of the group nerve is an affine space. Its ordinary constant cohomology is \(E\) in degree zero. The augmented nerve of these constant complexes contracts by the degeneracy maps: insertion of the identity gives the contracting homotopy in positive simplicial degrees. Consequently \(R\Gamma(BU,E)=E\). The same relative calculation on torsor charts identifies the unit \(E\to R(BH\to BL)_*E\), so \(BH\) has the same groups and operators as \(BL\).
+
+Take a split Borel \(B\subset L\). The map \(V/B\to V/L\) of a sufficiently large common frame is smooth proper with fibre \(L/B\), of dimension \(m\). There is an ample \(L\)-linearized flag line, as proved in AG-RG-03 Lemma 5.1. Let \(\eta\) be its descended Kummer first Chern class. Structural trace and projection give
+\[
+ \pi_*(\eta^m\cup\pi^*x)=s x,\qquad
+ s=\int_{L/B}c_1(\mathcal L)^m\in\mathbf Q_{>0}.
+\tag{A.1.3}
+\]
+We justify that scalar in the adic setting. A positive power \(\mathcal L^d\) gives a projective embedding. Choose \(m\) hyperplanes meeting its smooth image transversally in finitely many reduced points after a finite separable field extension. Such hyperplanes exist: the incidence of a point and a hyperplane containing its projective tangent space has dimension smaller than the hyperplane parameter space; proper projection makes its bad image closed. Apply this argument successively to the smooth intersections. The final intersection is nonempty and finite, by the projective dimension theorem used in the flag construction. The divisor section comparisons identify the product of their Kummer classes with the supported class of those points. Each rational point has trace one. Thus the top trace is their positive number divided by \(d^m\). The supported products and trace commute with that field extension; this is the displayed nonzero rational scalar already over the original field.
+
+Smooth proper base change identifies the same fibre scalar on every geometric fibre of the finite frame. Hence \(\pi_*(\eta^m)\) is \(s\) times its unit section. Projection proves (A.1.3). Its classes lie in \(H^{2m}(-,E(m))\), and trace is correspondingly twisted, so this left inverse commutes with Frobenius. Since \(s\ne0\) in the characteristic-zero coefficient field, flag pullback is injective. The successive affine root coordinates of \(B/T\) identify \(H^*(BB,E)=H^*(BT,E)\), using the same ordinary affine-line unit. In each stable range we have therefore obtained
+\[
+ H^*(BL,E)\hookrightarrow H^*(BT,E).
+\tag{A.1.4}
+\]
+The right side is finite dimensional in each degree, zero in odd degree, and has exactly the scalar in (A.1.2). Its Frobenius-stable subspace has that same scalar. This proves the theorem, including the unipotent extension case. ∎
+
+### A.2. Pure equivariant Ext from actual restrictions
+
+**Theorem A.2.1.1.** For any two normalized spherical IC generators, every finite-dimensional group
+\[
+ \operatorname{Ext}^n_{L^+G}(A_\lambda,A_\mu)
+\tag{A.2.1}
+\]
+has Frobenius with sole eigenvalue \(a^n\). A Jordan part is allowed in this assertion. The proof applies to all original split connected reductive groups, using their actual sufficiently large jet action.
+
+**Proof.** Fix a finite closed union containing both supports, and a sufficiently large jet level. Its orbit stabilizers are connected and have split reductive Levi quotient with split unipotent radical: the constant parabolic and the remaining root and torus coefficients are the actual stabilizer coordinates of Lessons 4 §2 and 6 §§1–2. The classifying-space groups of every stabilizer consequently have the actual scalar \(a^p\) in degree \(p\), by A.1.
+
+On an orbit \(S\) of dimension \(d\), put \(K=i_S^*A_\lambda\), \(L=i_S^!A_\mu\). The ordinary cohomology fibres of \(K\) in degree \(u\) and \(L\) in degree \(v\) have actual scalar operators \(a^u,a^v\), by Lesson 12 C.3.1.1 and its dual costalk comparison. For the exceptional restriction this includes the stratum normalization: the point's additional exceptional pullback contributes \([-2d](-d)\), so dividing its scalar by \(q^d=a^{2d}\) gives precisely \(a^v\) on the orbit fibre. Equivariance transports these fibres over the whole orbit; connected stabilizers leave their cohomology systems constant, by Lesson 6 B.1.
+
+The action-nerve mapping complex on this orbit has its ordinary hypercohomology spectral sequence. At a point, complexes of finite-dimensional vector spaces split into their cohomology and contractible pairs. Thus its degree-\(t\) fibre Hom is
+\[
+ \bigoplus_u\operatorname{Hom}_E(H^uK,H^{u+t}L)
+\tag{A.2.2}
+\]
+with sole scalar \(a^t\). No splitting of the full equivariant objects is being asserted. The cohomology local systems of this fibre Hom are constant on the classifying space of the connected stabilizer. The nerve spectral sequence consequently has terms \(H^p(BH,E)\) tensored with (A.2.2). Each term of total degree \(n=p+t\) has scalar \(a^n\).
+
+A differential has total degree one and commutes with Frobenius. It is zero, since its source and target have distinct sole eigenvalues \(a^n,a^{n+1}\). More explicitly, an intertwiner between finite generalized eigenspaces with distinct eigenvalues is zero: apply the relatively prime annihilating polynomials and their Bézout identity. The orbit Ext groups thus have a finite filtration whose degree-\(n\) quotients all have eigenvalue \(a^n\). They are finite dimensional. The bounded fibre degree range and the finiteness of \(H^p(BH)\) give the required convergence.
+
+Finally order the finitely many orbits so that the successive unions are closed. Source localization triangles give a finite filtration of the global mapping complex with terms
+\(R\operatorname{Hom}_S(i_S^*A_\lambda,i_S^!A_\mu)\).
+All triangles and maps are the actual equivariant coefficient maps and commute with Frobenius. Its spectral sequence has the same degree and eigenvalue property, so again every differential is zero. A finite extension of generalized \(a^n\)-eigenspaces is still a generalized \(a^n\)-eigenspace: a product of their annihilating polynomials annihilates the extension. This proves (A.2.1). It does not turn such an extension into a split scalar Frobenius module. ∎
+
+### A.3. Minimal models and a nonresonant automorphism
+
+We spell out the algebra used to pass from these groups to mapping complexes. A minimal \(A_\infty\) category has graded Hom spaces and operations \(m_r\) of degree \(2-r\), with \(m_1=0\). Suspend the Hom spaces by an operator \(s\) of degree \(-1\). On their tensor coalgebra of composable words, these operations are the components of a degree-one coderivation \(b\), with \(b^2=0\). All signs below are the tensor Koszul signs. A coalgebra map is determined by its components on single-output words. It is invertible whenever its first component is invertible, by induction on word length.
+
+**Lemma A.3.1.1.** A differential graded category over a field has a minimal \(A_\infty\) model on its cohomology Hom spaces, with its ordinary binary composition. A quasi-equivalence or an equivalence of enhanced objects induces an \(A_\infty\) equivalence of these models.
+
+**Proof.** On each Hom complex choose representatives for cohomology, complements to boundaries in cycles, and complements to cycles. This gives maps \(i,p,h\) with
+\[
+ pi=1,\qquad dh+hd=1-ip,\qquad
+ h^2=hi=ph=0.
+\tag{A.3.1}
+\]
+On words the tensor maps \(I,P\) give a contraction for the tensor differential \(d_0\). Its homotopy is the signed sum
+\[
+ H_r=\sum_{j=1}^r(ip)^{\otimes(j-1)}
+                 \otimes h\otimes1^{\otimes(r-j)}.
+\tag{A.3.2}
+\]
+Expanding \(d_0H_r+H_rd_0\) telescopes to \(1-(ip)^{\otimes r}\). The same side conditions give \(H^2=HI=PH=0\). Its coproduct identity is
+\(\Delta H=(H\otimes1+IP\otimes H)\Delta\), verified by dividing the sum at each cut of a word.
+
+Let \(\delta\) be the coderivation for the original binary product. It lowers word length by one. Define
+\[
+ I_\infty=(1+H\delta)^{-1}I,\qquad
+ P_\infty=P(1+\delta H)^{-1},\qquad
+ b_H=P\delta(1+H\delta)^{-1}I.
+\tag{A.3.3}
+\]
+The inverses here are finite geometric sums on every fixed word, not analytic limits. The recursion \(I_\infty=I-H\delta I_\infty\), its counterpart for \(P_\infty\), and (A.3.1) give
+\((d_0+\delta)I_\infty=I_\infty b_H\),
+\(P_\infty(d_0+\delta)=b_HP_\infty\),
+and \(P_\infty I_\infty=1\).
+To check these identities, substitute the recursions, use \(d_0H+Hd_0=1-IP\), and collect terms containing \((d_0+\delta)^2=0\). At word length \(r\) the leftover terms have smaller word length and vanish inductively, starting with \(r=1\). The same coproduct identity for \(H\), applied to those recursions and to the coderivation identity for \(\delta\), proves that \(I_\infty,P_\infty\) are coalgebra maps and \(b_H\) is a coderivation. Applying \(P_\infty\) and \(I_\infty\) to the square-zero identity gives \(b_H^2=0\). Its first component is zero and its second is \(p\,m_2(i\otimes i)\), the cohomology product.
+
+For a dg functor \(f\), the map \(P_\infty f I_\infty\) is an \(A_\infty\) functor with first component \(H(f)\). If that component is invertible, the word-length recursion constructs its coalgebra inverse, which also commutes with the coderivations. Changing the choices uses the same construction on the identity of the original category, so gives an equivalence between the models. Closed homotopy equivalences of enhanced objects give the same conclusion after adjoining those objects to one dg category. Units are preserved on cohomology; equivalently the construction can be normalized at identity arguments using the side conditions in (A.3.1). This is sufficient for the unital finite-cone and retract envelopes. ∎
+
+**Theorem A.3.1.2.** Let \(\mathcal C\) be a minimal \(A_\infty\) category with degreewise finite-dimensional Hom spaces. Suppose it has an \(A_\infty\) automorphism \(F\) fixing its objects, such that the first component on every degree-\(n\) Hom space has sole eigenvalue \(a^n\), where \(a\) is not a root of unity. Then an \(A_\infty\) change of coordinates with first component the identity sends \(\mathcal C\) to its ordinary graded cohomology category, with all \(m_r=0\) for \(r>2\). Jordan parts of \(F_1\) are permitted.
+
+**Proof.** First linearize \(F\). Suppose its components from arity two through arity \(r-1\) have already been removed. Conjugate by a coalgebra change of coordinates whose only new component is \(g_r\), of unsuspended degree \(1-r\). At arity \(r\) its new component is
+\[
+ F_r+g_rF_1^{\otimes r}-F_1g_r.
+\tag{A.3.4}
+\]
+For a tuple of input degrees \(n_1,\ldots,n_r\), the output of \(g_r\) has degree \(\sum n_i+1-r\). The operator on that finite-dimensional Hom block
+\[
+ g\longmapsto gF_1^{\otimes r}-F_1g
+\tag{A.3.5}
+\]
+is invertible. Indeed its two commuting multiplication operators have respective sole eigenvalues \(a^{\sum n_i}\) and \(a^{\sum n_i+1-r}\); their difference is nonzero for \(r>1\). Subtract those scalars to obtain commuting nilpotent operators. Their difference is nilpotent, by its binomial expansion. The inverse of the nonzero scalar plus that nilpotent operator is a finite geometric polynomial. Solve (A.3.5) uniquely to make (A.3.4) zero.
+
+There are possibly infinitely many degree tuples, but a graded multilinear cochain is their product of finite Hom blocks. The inverse just described is applied componentwise. It requires no uniform bound on the Jordan sizes. Iterating in \(r\) gives a change of coordinates: every component on a fixed word has stabilized after finitely many steps. The new automorphism has only \(F_1\).
+
+It commutes with the transformed coderivation. For \(r>2\), the transformed \(m_r\) has output degree \(\sum n_i+2-r\). Thus the equation
+\[
+ F_1m_r=m_rF_1^{\otimes r}
+\tag{A.3.6}
+\]
+intertwines generalized eigenspaces with distinct sole eigenvalues \(a^{\sum n_i+2-r}\) and \(a^{\sum n_i}\). The same invertibility calculation forces \(m_r=0\). The binary product is unchanged by a coordinate change with linear term the identity, and its two eigenvalues agree. This proves the assertion. The construction did not assume a weight decomposition on the original cochain spaces, or semisimplicity of their Frobenius action. ∎
+
+### A.4. The actual arithmetic generator envelope
+
+Let \(\mathcal E_G\) be the graded category with objects \(A_\lambda\) and actual morphisms \(\operatorname{Ext}^*_{L^+G}(A_\lambda,A_\mu)\), with their genuine Yoneda composition and zero differential. Let \(\operatorname{Perf}(\mathcal E_G)\) denote the idempotent-complete finite-cone envelope of its represented modules.
+
+**Theorem A.4.1.1.** The geometric bounded finite-support spherical derived category, with the actual rational-adic coefficient enhancement, is equivalent to \(\operatorname{Perf}(\mathcal E_G)\). It is the category of its actual graded Ext generators; no dual Lie-algebra identification or monoidal upgrade is asserted by this theorem.
+
+**Proof.** On finite jet and free-frame diagrams take the compatible coefficient resolutions used in the rational-adic enhancements of Lesson 5 P–Q and Lesson 12 N. Their Hom complexes and composition give the enhanced generator category. At each coefficient level the underlying injective-resolution existence and comparison are proved in Sheaves of modules and their derived categories, Theorem 6.1 and Lemmas 6.2–6.3. Compatible cartesian action-nerve diagrams retain the equivariant data. Increasing the frame compares these complexes in each required degree range by the pulled-coefficient unit calculation of A.1; none of the action levels is discarded. Increasing a sufficient jet level has the same property: its kernel is split unipotent with \(R\Gamma(BU,E)=E\), so the corresponding nerve unit identifies mapping complexes. The finite model thus defines the same generator enhancement at every sufficient level.
+
+Arithmetic Frobenius pullback is an exact equivalence of these coefficient sites, and hence gives a dg functor on the resolution enhancement. Each chosen Weil structure identifies its generator with its pullback by a closed enhanced homotopy equivalence. Adjoin the pullback representatives when necessary, apply A.3.1.1, and identify them with the original labels. This gives an \(A_\infty\) automorphism of the minimal generator category whose first component is precisely the actual Frobenius on Ext. By A.2 its sole eigenvalue in degree \(n\) is \(a^n\), and \(a\) is not a root of unity. A.3.1.2 therefore makes this category equivalent to \(\mathcal E_G\).
+
+For completeness, the generators and their finite envelope really give the bounded category. Bounded perverse truncations express any bounded finite-support object by finitely many cones of its perverse cohomology objects. The geometric spherical heart is semisimple with simples \(A_\lambda\), proved in Lessons 6 B.1 and 11 C–D. Each perverse cohomology object is a finite sum of those simples. Retracts remain bounded and finite supported, as their ordinary and perverse cohomology are retracts of the corresponding finite objects.
+
+Enhanced Yoneda is fully faithful on the generators: evaluation of a represented module at its representing object gives its mapping complex, with exactly the original composition. Its comparison extends in the first argument and then the second through shifts and finite cones, because Hom from or into a cone is the corresponding mapping cone. It extends through retracts by taking the images of their commuting projectors. Its essential image is therefore exactly the finite-cone and retract envelope of the represented modules. A quasi-equivalence of the generator categories gives the same comparisons on every such construction, again in both variables. Applying the preceding formality equivalence proves the theorem.
+
+The remaining step toward (8.1) is an actual composition-preserving identification of \(\mathcal E_G\) with the free dual-group polynomial generators. Compatibility with convolution and change to complex coefficients also need their own enhanced comparisons. This theorem supplies neither merely from a list of Ext dimensions. ∎
+
+![Orbit restriction scalars give actual Ext purity; enhanced Frobenius gives the formal generator category without discarding Jordan parts](assets/arithmetic-ext-to-formal-generators.png)
+
+Theorems A.1.1.1–A.2.1.1 and A.3.1.2–A.4.1.1 give every group, map, degree and nonresonance condition displayed. The last box is the actual graded Ext category; its further dual Lie-algebra identification is a separate requirement. Editable SVG source.
+
+### A.5. Why a one-sided weight inequality is insufficient
+
+**Proposition A.5.1.1.** The condition \(H^n_j(D)=0\) for \(j<n\) on a bigraded dg algebra does not in general give a dg morphism, even after inverting quasi-isomorphisms, from its diagonal cohomology algebra into \(D\) inducing the inclusion of that diagonal.
+
+**Proof.** Over a characteristic-zero field let
+\[
+ D=\bigwedge(a,b,c),\quad |a|=|b|=|c|=1,\quad
+ da=db=0,\quad dc=ab,
+ \qquad w(a)=w(b)=1,\quad w(c)=2.
+\tag{A.5.1}
+\]
+The differential preserves inner weight. A direct basis calculation gives
+\[
+ H^0=k,\quad H^1=k[a]\oplus k[b],\quad
+ H^2=k[ac]\oplus k[bc],\quad H^3=k[abc],
+\tag{A.5.2}
+\]
+of weights \(0,1,3,4\) respectively. Thus every weight is at least its cohomological degree. Its diagonal algebra is \(k\oplus k[a]\oplus k[b]\), with all positive products zero.
+
+In \(D\), the triple Massey product \(\langle[a],[a],[b]\rangle\) has the unique value \([ac]\), up to the chosen overall sign convention, and is nonzero. Indeed \(a^2=0\), \(ab=dc\), so a defining pair of primitives is \(0,c\). Its resulting cycle is \(ac\). The possible indeterminacy is \(aH^1+H^1b=0\), since all those products are either zero or the boundary \(ab\). No boundary has an \(ac\) component. In the diagonal algebra the same triple product has only value zero.
+
+We recall the exact invariance needed here. A dg map sends cycles and defining primitives to a defining system, hence sends its value into the target product. A quasi-isomorphism also preserves the entire product: lift the three cycle classes; whenever a required product is exact, lift its primitive after correcting its differential by a boundary, using the isomorphisms on cohomology. The difference between two such corrections is a cycle and changes the value by precisely the displayed indeterminacy. Applying the same argument in the reverse direction proves equality of the product sets. Along any zigzag representing a map in the localization, zero in a defined product therefore propagates through forward dg maps and inverse quasi-isomorphisms. A morphism inducing the diagonal inclusion would send the zero triple value to the nonzero singleton \([ac]\), a contradiction.
+
+In contrast, if all cohomology is on the diagonal, the familiar truncation proof is valid. Define
+\(U^n_j=D^n_j\) for \(n<j\), \(U^j_j=\ker(d:D^j_j\to D^{j+1}_j)\), and \(U^n_j=0\) for \(n>j\).
+This is a subalgebra: equality in the product degree bound forces both factors to be closed diagonal elements. Its map to diagonal cohomology is multiplicative. Full diagonal purity makes both the inclusion and that projection quasi-isomorphisms, weight by weight. In (A.5.1) the projection kills the nonzero classes \(ac,bc,abc\), so is not a quasi-isomorphism. This identifies exactly the missing hypothesis. ∎
+
+![The explicit exterior algebra satisfies the one-sided weight bound but has a nonzero Massey product and off-diagonal cohomology](assets/one-sided-weight-massey-obstruction.png)
+
+Proposition A.5.1.1 and Exercises A.6.1–A.6.3 compute the full differential, cohomology, weight obstruction and enhanced-automorphism condition. A degree bound on cohomology alone does not create the required chain comparison. Editable SVG source.
+
+### A.6. Exercises
+
+**Exercise A.6.1 (medium).** In the algebra (A.5.1), compute every differential on its eight exterior basis elements. Verify both the one-sided weight inequality and its failure to imply diagonal formality.
+
+**Solution.** On \(1,a,b\) the differential is zero; on \(c\) it is \(ab\). The product rule gives \(d(ab)=0\), \(d(ac)=-aab=0\), \(d(bc)=-bab=0\), and \(d(abc)=ab\,ab=0\). Thus the only nonzero differential is \(c\mapsto ab\). The classes and weights are exactly (A.5.2); every weight is at least the degree, while \(ac,bc,abc\) are off the diagonal. The triple product from A.5 is nonzero and cannot be imported from the square-zero diagonal algebra. This calculation tests a chain-level obstruction rather than a parity count.
+
+**Exercise A.6.2 (medium).** For an arity-\(r\) coordinate change \(g_r\) and an arity-\(r\) operation \(m_r\), compute the two nonresonance exponents. Allow nontrivial Jordan blocks and give the inverse used in the first equation.
+
+**Solution.** The output degrees are \(\sum n_i+1-r\) and \(\sum n_i+2-r\). Their Frobenius eigenvalue ratios to the input product are therefore \(a^{1-r}\) and \(a^{2-r}\). The first is different from one for every \(r>1\), and the second for every \(r>2\). On a fixed finite Hom block (A.3.5) is \(sI+N\), where \(s=a^{\sum n_i}-a^{\sum n_i+1-r}\ne0\) and \(N\) is nilpotent, after identifying the commuting input and output multiplications. Its inverse is \(s^{-1}\sum_{j=0}^{M-1}(-N/s)^j\) for any \(M\) with \(N^M=0\). The same argument forces the higher operation to vanish. No diagonalization of the Jordan blocks was used.
+
+**Exercise A.6.3 (advanced).** Let \(H=k1\oplus kx\oplus ky\), with \(|x|=1,|y|=2\), all products of positive-degree elements zero, and \(m_3(x,x,x)=y\) as the only higher operation on such arguments. Verify this defines a minimal strictly unital \(A_\infty\) algebra. Show that the graded automorphism \(F_1(x)=ax,F_1(y)=a^2y\), with \(a\ne0,1\), cannot lift to an \(A_\infty\) automorphism.
+
+**Solution.** In the reduced bar coalgebra the suspended positive generators have degrees zero and one. Its only nonzero coderivation component replaces three consecutive \(sx\)'s by \(sy\). Two overlapping replacements give zero because a replacement inserts \(sy\); two disjoint replacements cancel in the square, since the coderivation has odd degree. Hence \(b^2=0\). Extending the ordinary unit with all higher operations containing it zero gives the unital identities: a unit in a binary vertex removes that vertex, and the two adjacent removals have opposite Koszul signs. On positive inputs the binary products are zero, so there are no remaining mixed binary terms. This proves the stated identities.
+
+For an automorphism's arity-three equation on \(x,x,x\), the terms involving \(F_2\) and binary products are zero: \(F_2(x,x)\) has degree one, hence is a multiple of \(x\), whose product with \(x\) is zero. Thus the equation is \(a^2y=a^3y\), impossible for \(a\ne0,1\). A graded cohomology automorphism alone is therefore insufficient for formality. The enhanced Frobenius lift in A.4 is an essential input.
+
+This appendix leaves the dual Lie-algebra Ext computation, its convolution compatibility, and the renormalized, singular-support and factorization enhancements as actual further proof requirements.
+
 ## 11. Scope and free reading
 
-The proved statements are the unit self-Ext formula (2.3), the general invariant-polynomial classifying-space ring in §3, the torus symmetric tensor model over every characteristic-zero field in §5, the two Koszul endomorphism calculations and generated-category equivalences in §6, and the compactness distinction in §7. The five exercises use those proofs. The general bounded, renormalized, singular-support and factorization theorems in §8 are stated here; their general proofs remain unfinished.
+The proved statements are the unit self-Ext formula (2.3), the general invariant-polynomial classifying-space ring in §3, the torus symmetric tensor model over every characteristic-zero field in §5, the two Koszul endomorphism calculations and generated-category equivalences in §6, and the compactness distinction in §7. The five exercises use those proofs. Appendix A proves arithmetic stabilizer cohomology, actual equivariant Ext purity, minimal-model transfer, nonresonant Frobenius formality and the actual spherical generator envelope; it also proves the one-sided-weight counterexample. The full dual Lie-algebra Ext identification, its enhanced convolution compatibility, the coefficient comparison to the complex setting, and the renormalized, singular-support and factorization theorems of §8 still require proofs.
 
 Free further reading:
 

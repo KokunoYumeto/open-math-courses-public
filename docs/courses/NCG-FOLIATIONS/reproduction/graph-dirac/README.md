@@ -10,4 +10,4 @@ The complete generator uses the bundled exact DejaVu and STIX typefaces, creates
 
 The 289 finite Pauli-matrix blocks check the illustrated squares and grading for -8 ≤ m,n ≤ 8. They support the diagram; Section 11C supplies the all-mode proof, the general coefficient argument, the exact domains, the scalar defects, the index-zero conclusion and the determinant-line obstruction. The diagram uses fixed formulas and schematics, with no spectral sampling or tree truncation as proof evidence.
 
-Original programme text, source and diagram expression use CC0 1.0. The actual fonts and external numerical/rendering dependencies have separately scoped terms in [COMPONENT-TERMS.md](COMPONENT-TERMS.md).
+Original programme text, source and diagram expression use CC0 1.0. The actual fonts and external numerical/rendering dependencies have separately scoped terms in COMPONENT-TERMS.md.

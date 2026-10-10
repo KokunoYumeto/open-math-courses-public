@@ -1,0 +1,48 @@
+from pathlib import Path
+import argparse,json
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+from matplotlib.patches import FancyBboxPatch
+plt.rcParams.update({'font.family':'DejaVu Sans','font.size':10,'svg.hashsalt':'full-matrix-flatness-I17-v1','axes.spines.top':False,'axes.spines.right':False})
+parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path);args=parser.parse_args()
+root=Path(__file__).resolve().parent;out=args.output or root/'figures';out.mkdir(parents=True,exist_ok=True)
+fig=plt.figure(figsize=(16,8.8),facecolor='white');grid=fig.add_gridspec(1,3,width_ratios=[1.1,1.06,1.05],left=.045,right=.985,top=.83,bottom=.27,wspace=.25)
+fig.suptitle('Actual infinite relations: one order loss K controls every contraction',fontsize=17,x=.51,y=.965)
+fig.text(.5,.905,'Full positive head • factorial negative tail • one common coefficient domain • every spatial index',ha='center',fontsize=11,color='#334155')
+ax=fig.add_subplot(grid[0]);ax.set_xlim(0,10);ax.set_ylim(0,10)
+ax.fill([0,0,10],[0,10,10],color='#dbeafe');ax.fill([0,10,10],[0,0,10],color='#fef3c7')
+ax.plot([0,10],[0,10],color='#475569',lw=1.5);ax.set_xticks(range(0,11,2));ax.set_yticks(range(0,11,2));ax.grid(alpha=.2)
+ax.set_xlabel(r'Total loss $K=Q+L$');ax.set_ylabel(r'Negative output $-n$ ($n\geq1$)')
+ax.set_title(r'Input degree $m=K-n$',pad=18,fontsize=12)
+ax.text(1.2,8.6,r'$K<n:\ m<0$',fontsize=12,color='#1e40af')
+ax.text(1.2,7.8,'Finite negative-input part',fontsize=10,color='#1e40af')
+ax.text(1.2,7.1,r'$M\,n!\,C_1^K D^{n-K}$',fontsize=12,color='#1e40af')
+ax.text(5.5,2.8,r'$K\geq n:\ m\geq0$',fontsize=12,color='#92400e')
+ax.text(5.5,2.05,'Infinite positive-input tail',fontsize=10,color='#92400e')
+ax.text(4.55,1.3,r'$M_\varepsilon n!(3C_1)^n(9C_1\varepsilon)^m$',fontsize=10,color='#92400e')
+ax.annotate(r'$K=n$',(6.5,6.5),(7.0,7.9),arrowprops={'arrowstyle':'->','color':'#475569'},color='#334155')
+ax.text(0,-2.15,r'Positive output $j$: input $m=j+K$',fontsize=10)
+ax.text(0,-2.95,r'$M_\varepsilon\,\varepsilon^j/j!\ \sum_K(4C_1\varepsilon)^K$',fontsize=11)
+def box(ax,xy,wh,text,color='#eff6ff',fontsize=10):
+ patch=FancyBboxPatch(xy,*wh,boxstyle='round,pad=.02,rounding_size=.02',fc=color,ec='#94a3b8',lw=1)
+ ax.add_patch(patch);ax.text(xy[0]+wh[0]/2,xy[1]+wh[1]/2,text,ha='center',va='center',fontsize=fontsize,linespacing=1.65)
+mid=fig.add_subplot(grid[1]);mid.set_xlim(0,1);mid.set_ylim(0,1);mid.axis('off');mid.set_title('Bounded coefficient division + zero detection',pad=18,fontsize=11)
+box(mid,(.025,.73),(.95,.23),'Principal analytic splitting\n'+r'$hT_0=1,\quad p=1-T_0h,\quad kW_0=p$',fontsize=10)
+box(mid,(.025,.42),(.95,.24),'Actual relation division\n'+r'$c=\sum_{a\geq0}(-hE)^a hb$'+'\n'+r'$s=b-cR,\quad hs=0,\quad sW=0$',color='#f0fdf4',fontsize=10)
+box(mid,(.025,.11),(.95,.23),'Zero remainder, including positive infinity\n'+r'$s=-kW_-s\ \Longrightarrow\ s=0$'+'\n'+r'$b=b(1-J_1G)+cRG$',color='#fff7ed',fontsize=10)
+for y1,y2 in [(.72,.665),(.41,.355)]:
+ mid.annotate('',(.5,y2),(.5,y1),arrowprops={'arrowstyle':'->','lw':1.5,'color':'#475569'})
+mid.text(.5,-.10,'Actual rows multiply on the right.\nProof: MFA.1–MFA.4, MFB.1–MFB.5, MF.2–MF.5.',ha='center',va='top',fontsize=10,color='#334155')
+right=fig.add_subplot(grid[2]);right.set_xlim(0,1);right.set_ylim(0,1);right.axis('off');right.set_title('Two-variable exact calibration',pad=18,fontsize=12)
+box(right,(.015,.72),(.97,.24),r'$C=\sum_{j\geq0}\tau^j/(j!)^2+\sum_{n\geq1}n!\tau^{-n}$'+'\nEvery epsilon for the positive head;\none factorial constant for the negative tail.',fontsize=9.5)
+box(right,(.015,.42),(.97,.24),r'$R=(-y,x),\quad D=(x,y)^{\mathsf{t}}$'+'\n'+r'$b=C\circ R=(-yC,\ xC+\partial_\tau C)$'+'\n'+r'$RD=0,\qquad bD=0$',color='#f0fdf4',fontsize=10)
+box(right,(.015,.105),(.97,.25),r'$b_1\circ x=-xyC-y\partial_\tau C$'+'\n'+r'$b_2\circ y=xyC+y\partial_\tau C$'+'\nThe derivative terms cancel exactly.',color='#fff7ed',fontsize=10)
+right.text(.5,-.10,'The negative series is a symbolic tail.\nNo ordinary Laurent or distribution limit.\nExact actual ring identity: MF.10–MF.11.',ha='center',va='top',fontsize=10,color='#334155')
+fig.text(.045,.022,'Exact mechanisms and bounds, not finite-cutoff evidence. Free human target: Micro-hyperbolic systems §8 p.43; complete proof MFA/MFB/MF.',fontsize=9,color='#475569')
+fig.savefig(out/'infinite-matrix-flatness-loss-and-relations.png',dpi=150,metadata={'Software':'Matplotlib; reproducible local proof illustration'})
+fig.savefig(out/'infinite-matrix-flatness-loss-and-relations.svg',metadata={'Date':None,'Creator':'Reproducible local proof illustration'})
+plt.close(fig)
+data={'proof_locators':['MFA.1–MFA.4','MFB.6–MFB.11','MF.6–MF.11'],'axes':{'horizontal':'K=Q+L','vertical':'n (negative output -n)','display_window':[0,10,0,10],'negative_output_condition':'n>=1','exact_boundary':'K=n','negative_input':'m=K-n<0','positive_input':'m=K-n>=0'},'negative_input_bound':'M*n!*C1^K*D^(n-K)','positive_input_bound':'M_epsilon*n!*(3*C1)^n*(9*C1*epsilon)^(K-n)','positive_output_bound':'M_epsilon*epsilon^j/j!*sum_K(4*C1*epsilon)^K','constants':'C1 is the proved finite-data/common-margin constant; convergence chooses epsilon with 9*C1*epsilon<1/2; no numerical value is asserted.','calibration':{'base':['x','y'],'covariables':['tau','xi'],'C_positive_j':'1/(j!)^2','C_negative_minus_n':'n!','R':['-y','x'],'D_column':['x','y'],'b':['-y*C','x*C+partial_tau(C)'],'b1_times_x':'-x*y*C-y*partial_tau(C)','b2_times_y':'x*y*C+y*partial_tau(C)'},'schematic_panel':'Operator splitting and exact finite matrix identities; no topology or scale represented.'}
+(out/'infinite-matrix-flatness-loss-and-relations-data.json').write_text(json.dumps(data,indent=2)+'\n',encoding='utf-8')
+print(json.dumps({'outputs':3,'directory':str(out)}))

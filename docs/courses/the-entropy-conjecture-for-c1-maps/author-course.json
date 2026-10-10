@@ -1,0 +1,38 @@
+{
+  "schema": "claude-bridge-course/v1",
+  "id": "the-entropy-conjecture-for-c1-maps",
+  "title": "The entropy conjecture for C¹ maps",
+  "author": "Claude Opus 5.5 (Anthropic)",
+  "written": "2026-10-10",
+  "status": "Self-checked by the writing AI",
+  "licence": "CC0-1.0",
+  "description": "OpenAI's theorem (2026) that Shub's entropy conjecture fails for continuously differentiable maps: a noninvertible C^1 self-map of a compact manifold of dimension 2q+3 >= 7 has topological entropy zero while its action on second real homology has the eigenvalue 2. The first lesson defines topological entropy by separated sets, proves that pointwise attraction to a compact invariant set of zero entropy forces zero entropy, and proves that radial register maps have zero entropy. The second builds the map: a clock on a circle, a main sphere coordinate that squares, and register spheres that receive predicted phases weighted by L^(1-m); it proves that the map is C^1. The third proves that every orbit tends to the set where the clock stops at 50 or to the set where the main coordinate is infinite and the registers vanish. The fourth proves zero entropy and shows that the class of a sphere is an eigenvector with eigenvalue 2, because squaring has degree two on the Riemann sphere.",
+  "prerequisites": [
+    "core courses Real Analysis I and II (C10, C20): Lebl, Basic Analysis I-II, Definition 7.4.7, Theorems 6.2.10, 7.5.6, 7.5.11, 8.3.7, Proposition 8.4.6",
+    "core course Algebraic Topology (D60): Fomberg, Algebraic Topology, Proposition 1.9, Theorems 1.13 and 1.23, Definition 1.27, Remark 1.35",
+    "Local tools for bundles and transport (DG-FND), Theorem 3.1 (cutoff functions)",
+    "Orientations and fundamental classes (poincare-duality-on-manifolds), Section 1, Proposition 3.2, Lemma 3.4, Corollary 3.5, Theorem 4.1, Corollary 5.1"
+  ],
+  "lessons": [
+    "topological-entropy-and-attraction",
+    "a-clock-with-registers",
+    "every-orbit-is-attracted",
+    "zero-entropy-and-the-eigenvalue-two"
+  ],
+  "checks": {
+    "paid_citations": 0,
+    "exact_checks": "Python (scratch entropy_c1_sim.py, output entropy_c1_sim.out, 10 Oct 2026, 0 problems), with q = 2, L = 10 and concrete smooth cutoffs; main coordinate and registers carry exact phases (rationals mod 1 with odd denominator) and register coefficients carry arbitrary exponents (mpmath), so phase alignment is checked exactly and weights L^(1-m) with m in the hundreds do not underflow. Checked: the clock barrier lemma (i)-(iii) on a grid of 200,001 points; the readout cover (3.1); the round-metric bound of Exercise 7.5 of the second lesson; f(0,z,0,0) = (1,z^2,0,0) (Lemma 2.1 of the fourth lesson) on 200 points; on 2,438 complete passages of 400 orbits (240 random, 160 started with the clock in [0,1) and |z| within 2^-46 of 1): Lemma 3.1 (registers zero at the first preparation step, 1 to 4 preparation steps, one with alpha = 1, |z| > 1/2 at preparation), Lemma 4.1 (at most one predicted hit per channel), Lemma 4.2 (|v| <= 1/2 at readout and the register equals formula (4.3) to 1e-12), Lemma 5.1 (no misaligned readout among 92 loaded readouts, |z'| >= |z|^2 from the first preparation step, some |z| > 1); attraction of all 400 orbits after 1,200 or 700 steps; one orbit had a readout 585 steps after preparation; Exercise 7.2 of the third lesson (exit times 363, 3965, 39967, 399970, 4000056 for delta = 10^-2, ..., 10^-6).",
+    "lint": "ec_lint.py, ec_bs_scan.py and im_linecheck.py (scratch): headings, provenance line, balanced TeX delimiters per line, every sibling link and anchor resolved, no backslash artefacts or control characters; flagged labels are references to other lessons, the core-course text and the orientation lesson.",
+    "source_reading": "OpenAI preprint 'A C^1 counterexample to the entropy conjecture' (25 Sep 2026), TeX read in full (main, construction, orbits, entropy, homology; library copy openai-math-20261006); every step rederived. Lean: comparator statement (lean/ComparatorChallenges/C1EntropyCounterexample.lean), scope document lean/docs/151.md, and the solution's manifold (three registers) and readout windows (centres 76, 76.5, 77) read; no sorry in the solution directory. Differences: the eigenvalue is proved with the explicit eigenvector i_*[Sigma] from f(0,z,0) = (1,z^2,0) (no finite dimensionality of H_2(M;R) is needed); deg(z^2) = 2 is proved with real coefficients from the complex orientation and the local degree of the orientation lesson; the attraction proof treats simultaneous readouts and the case z = infinity explicitly; non-surjectivity is added; the cover condition (3.1) needs at least two windows, so q >= 2 and dim M >= 7 (the preprint's list of choices allows q >= 1, which (3.1) excludes; its theorem asserts only that some q works, and the Lean proof uses q = 3). Fomberg's notes (exact free edition, PDF sha256 148aba71473e3201993e562c5e5d0f05f1a0417f4bcbd4593bead5ab236e43cd) read for the cited statements."
+  },
+  "open_obligations": [
+    "Finite dimensionality of H_k(M;R) for a compact manifold M. Stated in Section 2 of the first lesson to identify rho(f_*) with the spectral radius on total homology; not used in any proof (the course only uses that a real eigenvector with eigenvalue 2 gives rho(f_*) >= 2). Intended home: a lesson on the finiteness of the homology of compact manifolds in the Poincare duality course.",
+    "Context only, not used in any proof: Manning's theorem (first homology), Misiurewicz-Przytycki (degree), Yomdin (C^infinity maps), Saghin-Xia and Liao-Viana-Yang (classes of C^1 diffeomorphisms), named in Section 2 of the first lesson and Remark 5.3 of the fourth; the variational principle in Remark 3.2 of the first lesson; the diffeomorphism of M with S^1 x (S^2)^(q+1) in Section 5 of the fourth lesson."
+  ],
+  "free_sources": [
+    "OpenAI, A C^1 counterexample to the entropy conjecture (OpenAI Math Release preprint, 25 Sep 2026), with its Lean formalization (scope document lean/docs/151.md)",
+    "J. Lebl, Basic Analysis I-II, version 6.3 (core courses Real Analysis I and II)",
+    "Y. Fomberg, Algebraic Topology, lecture notes on lectures by N. Lazarovich, Spring 2025 (core course Algebraic Topology)",
+    "M. Gromov, Entropy, homology and semialgebraic geometry, Seminaire Bourbaki expose 663 (1986), Numdam"
+  ]
+}

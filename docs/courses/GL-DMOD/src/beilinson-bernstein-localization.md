@@ -3529,7 +3529,7 @@ that same stated ring. The ring calculation itself holds at all
 complex parameters. This does not prove an abelian equivalence at
 parameters outside the stated regular antidominant range.
 
-Sections 5A.11–5A.12 prove the principal and regular dominant actual-character exact category O dictionaries for every semisimple group and central quotient, including genuine inverse tensor translations. Generalized blocks, weights outside the actual character lattice, other regular complex, singular and parabolic dictionaries, Schubert IC construction and parity/purity, the geometric graded Hecke realization and KL-polynomial identification, and every affine, critical-level, Hecke and factorization continuation retain their full obligations. This classical global-ring proof does not
+Sections 5A.11–5A.12 prove the principal and regular dominant actual-character exact category O dictionaries for every semisimple group and central quotient, including genuine inverse tensor translations. Sections 5A.13–5A.14 prove finite central thickenings and the complete ordinary generalized-center dictionary at every dominant actual character, including genuine torsor duality and inverse tensor translations. Weights outside the actual character lattice, other regular complex, singular and parabolic dictionaries, Schubert IC construction and parity/purity, the geometric graded Hecke realization and KL-polynomial identification, and every affine, critical-level, Hecke and factorization continuation retain their full obligations. This classical global-ring proof does not
 certify them or narrow their scope.
 
 Free human comparison sources, used for conventions and checking
@@ -5191,6 +5191,1071 @@ The figure has a full-resolution PNG, editable SVG, plotting source and exact ra
 The figure has a full-resolution PNG, editable SVG, plotting source and exact rational data.
 
 
+<a id="5a-13-generalized-foundation"></a>
+
+### 5A.13. Finite central thickenings at a favorable regular actual character
+
+We construct the finite operator thickenings at a favorable regular actual character, identify their full global rings, and prove the finite-level quasi-coherent and coherent localization equivalences. We also prove the finite-exponent and actual-weight prerequisites for ordinary generalized category \(O\). The strong-equivariant and genuine monodromic dictionary, formal density dual and tensor translations follow in [§5A.14](#5a-14-generalized-dictionary).
+
+<a id="nf-proof-0"></a>
+
+#### NF.0. Parameters, rings and module sides
+
+Fix every connected complex semisimple affine group \(G\), including every central quotient, and every Borel–torus pair \(B,T\). Let \(X=G/B, U=U(g), Z=Z(U)\), and let \(\lambda\) belong to the actual character lattice \(X(T)\), with \(\lambda (h_{i})\ge 0\). Put
+
+<a id="nf-1"></a>
+
+\[
+\begin{gathered}
+\gamma=\lambda+\rho,\qquad \tau=-\gamma,\\
+\mathfrak m=\ker\chi_\tau\subset Z.
+\end{gathered}
+\tag{NF.1}
+\]
+
+All modules are left modules. The polynomial parameter algebra is \(A=C[h^{*}]\), with coordinate \(\Lambda\) and maximal ideal \(n_{\lambda}\) of evaluation at \(\lambda\). The actual universal sheaf is the previously constructed \(D_{A}\) of [T.1](#t-1-universal-complex-twists-from-actual-principal-charts)–[T.4](#t-4-the-center-is-a-scalar-actual-differential-operator)/[GR.6](#gr-6-the-universal-tdo-and-its-explicit-presentation), not a newly presumed deformation of \(D_{\lambda}\). On principal charts its transition and moment maps are
+
+<a id="nf-2"></a>
+
+\[
+\begin{gathered}
+\mathscr D_A|_{U_i}=\mathscr D_{U_i}\otimes A,\\
+f\mapsto f,\\
+P_i\mapsto P_j-\Lambda(\beta_{ij}(P)),\\
+u_A(\xi)|_{U_i}=V_\xi-\Lambda(a_{\xi,i}),\\
+u_A(z)=q_z(-\Lambda-\rho).
+\end{gathered}
+\tag{NF.2}
+\]
+
+The central embedding \(\psi :Z\to A\) in the last line identifies \(Z\) with \(A^{W\star }\), where \(w\star \Lambda =w(\Lambda +\rho )- \rho\). [GR.8](#gr-8-cohomology-of-the-universal-sheaf)–[GR.11](#gr-11-specialization-at-an-arbitrary-complex-parameter) prove
+
+<a id="nf-3"></a>
+
+\[
+\begin{gathered}
+H^{q>0}(X,\mathscr D_A)=0,\\
+\mathcal B:=\Gamma(X,\mathscr D_A)\\
+=U\otimes_Z A,\\
+A\text{ is free of rank }|W|\text{ over }Z.
+\end{gathered}
+\tag{NF.3}
+\]
+
+These are whole-ring identities with their actual moment map, not identities only of invariant subalgebras. No assertion that \(U\) is flat or free over \(Z\) is an input here.
+
+<a id="nf-proof-1"></a>
+
+#### NF.1. The regular formal branch, including each finite exponent
+
+For every \(N\ge 1\) the actual homomorphism \(\psi\) induces a compatible isomorphism of local Artin algebras
+
+<a id="nf-4"></a>
+
+\[
+Z/\mathfrak m^N\ \xrightarrow{\sim}\ R_{\lambda,N}:=A/\mathfrak n_\lambda^N.
+\tag{NF.4}
+\]
+
+Proof. The point \(\gamma\) is inside the positive real root chamber. The chamber-freeness proof [E.1](#e-1-a-complete-elementary-chamber-lemma) shows its stabilizer in \(W\) is trivial. Thus the \(W\star\)-orbit of \(\lambda\) consists of \(|W|\) distinct points \(\lambda _{w}=w\gamma - \rho\). Let \(n_{w}\) be their maximal ideals in A. Every element of m vanishes at every point \(\lambda _{w}\), so \(mA\subset \cap _{w} n_{w}\). Distinct point ideals are pairwise comaximal: a linear coordinate that differs at the two points gives, after rescaling, a polynomial with values zero and one. The elementary Chinese remainder map gives a surjection
+
+<a id="nf-5"></a>
+
+\[
+\begin{gathered}
+A/\mathfrak mA\ \longrightarrow\\
+\prod_{w\in W}A/\mathfrak n_w\\
+=\mathbf C^{|W|}.
+\end{gathered}
+\tag{NF.5}
+\]
+
+Its source also has dimension \(|W|\) by the freeness in ([NF.3](#nf-3)). The map is an isomorphism, hence \(mA=\cap _{w} n_{w}=\prod _{w} n_{w}\). Taking Nth powers gives \(m^{N} A=\prod _{w} n_{w}^{N}\). The powers remain pairwise comaximal: if \(a+b=1\) with \(a\in n_{v},b\in n_{w}\), expand \((a+b)^{2N- 1}\); each monomial belongs to \(n_{v}^{N}\) or \(n_{w}^{N}\). Another Chinese remainder map consequently gives
+
+<a id="nf-6"></a>
+
+\[
+A/\mathfrak m^NA\ \xrightarrow{\sim}\ \prod_{w\in W}A/\mathfrak n_w^N.
+\tag{NF.6}
+\]
+
+For completeness, invariants of the left quotient are exactly \(Z/m^{N}\). Averaging \(r(a)=|W|^{-1}\sum _{w} w\star a\) is a \(Z\)-linear projection \(A\to Z\). Therefore \((m^{N} A)\cap Z=m^{N}\): applying r to a finite expression \(\sum  f_{i} a_{i}\) with \(f_{i}\in m^{N}\) gives \(\sum  f_{i} r(a_{i})\in m^{N}\). If a quotient class is invariant, averaging any lift gives an invariant lift because its averaged difference belongs to the invariant ideal \(m^{N}\) A. Thus the quotient's invariants equal \(Z/m^{N}\).
+
+The action on the factors in ([NF.6](#nf-6)) is simply transitive. An invariant tuple is uniquely determined by its component at \(\lambda\): each other component is its transport by the unique group element carrying \(\lambda\) to that point, and these transported components form an invariant tuple. Projection of invariant tuples onto the \(\lambda\) component is therefore an isomorphism. Composing it with ([NF.6](#nf-6)) proves precisely ([NF.4](#nf-4)). Restriction modulo lower powers commutes with all maps; their inverse systems give the actual completion isomorphism \(\widehat{Z}_{m}\cong \widehat{A}_{n_{\lambda}}\). This proves the branch relation without importing an étale-localization or deformation theorem. □
+
+The free stabilizer is essential. In rank one, with \(\lambda\)-coordinate \(\Lambda\), the Casimir polynomial is \(c=\Lambda (\Lambda +2)\). At the singular point \(\Lambda =- 1, c+1=(\Lambda +1)^{2}\); the map \(Z/(c+1)^{2}\to A/(\Lambda +1)^{2}\) sends \(c+1\) to zero and is not an isomorphism. No singular generalized-block conclusion follows from ([NF.4](#nf-4)).
+
+<a id="nf-proof-2"></a>
+
+#### NF.2. Actual finite operator sheaves
+
+Define
+
+<a id="nf-7"></a>
+
+\[
+\begin{gathered}
+\mathscr D_{\lambda,N}:=\mathscr D_A\otimes_A R_{\lambda,N},\\
+\mathscr D_{\lambda,N}|_{U_i}\\
+=\mathscr D_{U_i}\otimes R_{\lambda,N},\\
+P_i\mapsto P_j-(\lambda+\varepsilon)(\beta_{ij}(P)),\\
+\varepsilon=\Lambda-\lambda\pmod{\mathfrak n_\lambda^N}.
+\end{gathered}
+\tag{NF.7}
+\]
+
+These are actual sheaves of algebras: tensoring the already proved algebra maps ([NF.2](#nf-2)) preserves products, inverses and triple-overlap identities. Equivalently, the closed \(\beta\) identity preserves vector-field brackets over any commutative coefficient algebra, including \(R_{\lambda ,N}\). The principal-coordinate monomials remain a free \(R_{\lambda ,N}\)-basis. The augmentation ideal \(I=n_{\lambda}/n_{\lambda}^{N}\) is central, \(I^{N}=0\), and \(D_{\lambda ,N}/I D_{\lambda ,N}=D_{\lambda}\). The \(G\)-action of [GR.6](#gr-6-the-universal-tdo-and-its-explicit-presentation) has trivial action on A and therefore descends to each finite quotient, compatibly with \(u_{A}\) and the quotient maps for \(N+1\to N\). The moment action on the center is the full polynomial \(q_{z}(- \lambda - \varepsilon - \rho )\), not only its residue \(q_{z}(\tau )\).
+
+With parameter coefficients in degree zero and operator order as the filtration, the local associated graded is \(O(T^{*}U_{i})\otimes R_{\lambda ,N}\). It is Noetherian on every affine chart: \(R_{\lambda ,N}\) is finite dimensional, the chart coordinate algebra is polynomial, and the elementary Hilbert basis theorem applies to its finite commutative algebra extension. GL01 Theorem5.1's terminating degree-reduction proof then proves that these local operator rings are left and right Noetherian. Consequently finite operator generation is local coherence for this sheaf. This statement does not identify \(D_{\lambda ,N}\) with operators on a single line bundle; only its \(N=1\) residue is that fixed twist. □
+
+<a id="nf-proof-3"></a>
+
+#### NF.3. Base change through nilpotent parameter modules
+
+For every finite-dimensional A-module \(V\) supported at \(\lambda\), the natural map is an isomorphism and the higher groups vanish:
+
+<a id="nf-8"></a>
+
+\[
+\begin{gathered}
+\mathcal B\otimes_A V\ \xrightarrow{\sim}\\
+\Gamma(X,\mathscr D_A\otimes_A V),\\
+H^{q>0}(X,\mathscr D_A\otimes_A V)=0.
+\end{gathered}
+\tag{NF.8}
+\]
+
+Proof. First we prove \(\operatorname{Tor}_{j}^{A}(\mathcal B,C_{\lambda})=0\) for all j>0, rather than assuming flatness. The explicit translated-coordinate Koszul complex \(K_{\lambda}\) of [GR.11](#gr-11-specialization-at-an-arbitrary-complex-parameter) is a finite free resolution of \(C_{\lambda}\). The same monomial contraction proves exactness in every negative degree. Locally \(D_{A}\) is A-free, so \(D_{A}\otimes K_{\lambda}\) resolves \(D_{\lambda}\). Take the finite affine Čech double complex of this resolution. Its terms in the resolution direction are finite sums of \(D_{A}\), acyclic by ([NF.3](#nf-3)), so computing Čech cohomology first leaves \(\mathcal B\otimes K_{\lambda}\). Computing the resolution direction first leaves the Čech complex of \(D_{\lambda}\). Its cohomology in negative degrees is zero because the sheaf \(D_{\lambda}\) is in degree zero. The bounded double complex identifies these two computations. Hence \(H^{- j}(\mathcal B\otimes K_{\lambda})=0\) for j>0, which is the stated Tor vanishing. In degree zero its augmentation is the exact global comparison \(\mathcal B\otimes C_{\lambda}\to \Gamma D_{\lambda}\) already proved in [GR.11](#gr-11-specialization-at-an-arbitrary-complex-parameter).
+
+We justify support-to-nilpotence explicitly before using such a filtration. Let \(V\) be finite dimensional of dimension d>0, with support contained in the single point \(\lambda\). Write \(T_{i}\) for the commuting actions of the coordinate functions \(\Lambda _{i}\). If some \(T_{i}\) had an eigenvalue \(a\ne \lambda _{i}\), its nonzero a-eigenspace would be stable under every \(T_{j}\). Successively restrict to an eigenspace of each remaining commuting operator; each step is nonzero and stable under the others. This produces a common eigenvector with joint character \(\nu\) and \(\nu _{i}=a\). Its A-span is the submodule \(C_{\nu}\). Localization at the maximal ideal \(n_{\nu}\) preserves that injection (the fraction criterion clears any annihilating denominator), and \((C_{\nu})_{n_{\nu}}=C_{\nu}\ne 0\). Hence \(\nu\) lies in the support of \(V\), a contradiction. Thus each \(T_{i}\) has only the eigenvalue \(\lambda _{i}\). Triangularize that individual operator by an eigenvector and induction on its quotient space; the resulting diagonal consists entirely of \(\lambda _{i}\), so \((T_{i}- \lambda _{i})^{d}=0\). The coordinate deviations commute. Every monomial of total degree \(1+r(d- 1)\), where r is the number of coordinates, contains a dth power of one deviation and therefore acts as zero. Consequently \(n_{\lambda}^{1+r(d- 1)}V=0\). If \(r=0\) the ideal is zero, and \(V=0\) needs no filtration.
+
+It follows that a finite module supported at \(\lambda\) has a finite composition series with factors \(C_{\lambda}\). One explicit construction filters by powers of \(n_{\lambda}\); each successive quotient is a finite vector space on which A acts by evaluation at \(\lambda\), and any complete vector-space flag refines it to the required series. Induct on its length, using a short exact sequence \(0\to V' \to V\to C_{\lambda}\to 0\). A-freeness of \(D_{A}\) makes the sheaf tensor sequence exact. The earlier induction and pointwise acyclicity give acyclicity of its middle sheaf and an exact sequence of global sections. The Tor vanishing just proved makes \(0\to \mathcal B\otimes V' \to \mathcal B\otimes V\to \mathcal B\otimes C_{\lambda}\to 0\) exact as well. The natural comparison diagram has isomorphisms on its ends; lifting a quotient element and subtracting an element of the kernel proves surjectivity in the middle, and the same diagram proves injectivity. This is ([NF.8](#nf-8)). No statement about flatness on arbitrary A-modules was used. □
+
+Applying ([NF.8](#nf-8)) to \(V=R_{\lambda ,N}\), and then ([NF.4](#nf-4)), proves the actual algebra identity
+
+<a id="nf-9"></a>
+
+\[
+\begin{gathered}
+\Gamma(X,\mathscr D_{\lambda,N})\\
+\simeq(U\otimes_Z A)\otimes_A R_{\lambda,N}\\
+\simeq U\otimes_Z(Z/\mathfrak m^N)\\
+\simeq U/U\mathfrak m^N=:U_{\chi,N}.
+\end{gathered}
+\tag{NF.9}
+\]
+
+The map is the moment/parameter map, and multiplication is preserved by its construction. Compatibility for decreasing \(N\) follows from the same maps, not from a dimension comparison.
+
+<a id="nf-proof-4"></a>
+
+#### NF.4. Finite-level quasi-coherent BB equivalence
+
+For every \(N\ge 1\),
+
+<a id="nf-10"></a>
+
+\[
+\begin{gathered}
+\operatorname{Loc}_{\lambda,N}=\\
+\mathscr D_{\lambda,N}\otimes_{U_{\chi,N}}(-)\\
+\quad\dashv\quad\Gamma_{\lambda,N}
+\end{gathered}
+\tag{NF.10}
+\]
+
+are mutually inverse exact equivalences between all \(U_{\chi ,N}\)-modules and \(O_{X}\)-quasi-coherent \(D_{\lambda ,N}\)-modules. They restrict to finitely generated and coherent modules.
+
+Proof. Let \(F\) be such a quasi-coherent sheaf. Its finite central-ideal filtration \(I^{a}F\) has quotients killed by \(I\), hence quasi-coherent \(D_{\lambda}\)-modules. The parameter \(\tau\) in ([NF.1](#nf-1)) is regular antidominant. Therefore [S.3](#s-3-full-cohomology-and-detection-with-every-coefficient-scope)–[S.4](#s-4-the-precise-formal-localization-consequence-and-open-boundary) proves higher-cohomology vanishing and detection by global sections for each quotient. The long exact cohomology sequences, starting at the last nonzero quotient, prove \(H^{q>0}(F)=0\). Applied also to every subobject and quotient, this proves exactness of \(\Gamma\) on the whole \(D_{\lambda ,N}\) category. If \(\Gamma F=0\), exactness makes the sections of every filtration quotient zero; pointwise detection makes each quotient zero, hence \(F=0\). This proves detection at level \(N\).
+
+Global sections commute with direct sums of the relevant quasi-coherent sheaves. Indeed, on the finite affine cover and its affine intersections, the finite Čech complexes compute these sections; each term commutes with direct sums, and finite kernels and cokernels do so over \(C\). Given a free presentation \(U_{\chi ,N}^{(J)}\to U_{\chi ,N}^{(K)}\to M\to 0\), right exactness of tensoring gives the corresponding cokernel presentation of \(\operatorname{Loc} M\). Exactness of \(\Gamma\), the direct-sum assertion and ([NF.9](#nf-9)) identify its global presentation with the original one. Its actual unit \(M\to \Gamma \operatorname{Loc} M\) is an isomorphism.
+
+The counit is multiplication \(c_{F}:P\otimes m\mapsto Pm\). Its sections are an isomorphism by the unit and the adjunction triangle. Exactness of \(\Gamma\) and detection make its kernel and cokernel zero, so the counit is an isomorphism. The two functors are therefore inverse equivalences and consequently exact. These are explicit unit/counit arguments, not a claim that an equivalence automatically lifts across a nilpotent ideal.
+
+Finite generation of \(M\) gives finite local operator generators of \(\operatorname{Loc} M\), which are coherent by [NF.2](#nf-proof-2). Conversely, suppose \(F\) is coherent. Under its counit it is the union of images of the localizations of the finitely generated submodules of \(\Gamma F\). On a finite affine chart cover, each finite set of local generators is contained in one of these images: each element in \(D_{\lambda ,N}\otimes \Gamma F\) is a finite sum. Finitely many charts therefore give one finitely generated submodule \(M'\) whose localization surjects onto \(F\). Applying exact \(\Gamma\) proves \(M' \to \Gamma F\) surjective. Thus \(\Gamma F\) is finitely generated. □
+
+The equivalences are compatible with the full embeddings of modules killed by \(m^{N}\) into those killed by \(m^{N+1}\): the analogous sheaf embedding uses the quotient \(D_{\lambda ,N+1}\to D_{\lambda ,N}\). For an object killed by \(m^N\), ([NF.4](#nf-4)) makes the corresponding \(I^{N}\) action zero, so balanced tensoring at level \(N+1\) factors through level \(N\). The multiplication/evaluation maps agree. Thus every object with a uniform nilpotence exponent has a localization independent of a larger chosen exponent. The notation \(\widehat{D}_{\lambda}=\operatorname{lim}_{N} D_{\lambda ,N}\) is permitted only with this discrete finite-exponent module category here; arbitrary complete modules and unbounded formal limits are not included in this proof.
+
+<a id="nf-proof-5"></a>
+
+#### NF.5. Ordinary generalized category O has a finite exponent
+
+Let \(O_{\chi}^{gen}\) consist of finitely generated \(U\)-modules with semisimple h-weight decomposition, locally finite \(n_{+}\) action, and generalized central character \(\chi =\chi _{\tau}\). The last condition can be stated as: every vector is killed by a power of the ideal m. Then every object \(M\) has finite-dimensional weight spaces, finite length, actual weights in \(- \lambda +Q\), and
+
+<a id="nf-11"></a>
+
+\[
+\mathfrak m^{\ell(M)}M=0.
+\tag{NF.11}
+\]
+
+Proof. Choose finitely many weight-vector generators. The finite \(n_{+}\)-span of each generator is h-stable: commuting h through a positive-root monomial multiplies it by its weight. The sum is therefore a finite b-stable space \(E\). PBW gives a quotient \(U(n_{-})\otimes E\to M\). Its weights lie in a finite union of cones \(\nu - Q_{+}\), and its weight spaces are finite: fixing the target weight bounds each nonnegative root-monomial exponent since every positive root has positive integer simple-root height.
+
+PBW and GL01's filtered Noetherian proof make \(U\) Noetherian. Each submodule is therefore finitely generated. Cartan interpolation on the finitely many weights appearing in any one vector shows that every h-stable subspace is the direct sum of its intersections with weight spaces; subquotient weight decompositions are exact and semisimple, with the same finite-dimensional bound and upper cones. Local \(n_{+}\)-finiteness also passes to them.
+
+Every nonzero subquotient has a highest vector. In one nonempty \(Q\)-coset use integer simple-root height relative to one representative. Its upper cones bound this height above, so its nonempty set of heights has a maximum. Positive-root operators raise that height, and hence kill any vector of a maximal weight \(\nu\). The Verma universal map sends its highest generator to such a vector. [H.2](#2-the-scalar-polynomial-is-proved-before-orbit-separation) makes the center act on that vector exactly by \(\chi _{\nu +\rho }\). Generalized m-nilpotence forces \(\chi _{\nu +\rho }=\chi\): if \(z\in m\) acted there by a nonzero scalar, no power of m could kill it. [HC.5](#hc-5-equality-of-characters-at-arbitrary-complex-parameters) therefore puts \(\nu\) in the finite set \(S_{\tau}=W\tau - \rho\).
+
+The finite nonnegative integer measure \(a(V)=\sum _{\nu \in S_{\tau}}\operatorname{dim} V_{\nu}\) is positive on every nonzero subquotient and additive on short exact sequences. Every strict inclusion of submodules increases it, so chains have length at most \(a(M)\). Choose a maximal proper submodule by Noetherianity; repeat on that submodule. The bound terminates the process, proving finite length. Every simple factor is generated by a highest vector and is the unique simple Verma head at some \(\nu \in S_{\tau}\), hence has exact central character. If \(0=M_{0}\subset \cdots \subset M_{\ell}=M\) is a composition series, \(mM_{j}\subset M_{j- 1}\); multiplying \(\ell\) times proves ([NF.11](#nf-11)).
+
+[RA.2](#ra-2-the-ordinary-exact-category-full-pbw-bounds-and-actual-weights)'s root-lattice calculation gives \(S_{\tau}\subset - \lambda +Q\subset X(T)\). All weights of a highest-generated simple factor differ from its highest weight by negative roots. Exactness of weight spaces along the composition series thus puts every weight of \(M\) in that actual lattice coset. No generalized Cartan action was allowed or deduced: h remains semisimple throughout this argument. □
+
+If one initially defines generalized central character by separate local nilpotence of \(z- \chi (z)\), the same ideal-power definition follows without a hidden uniformity assumption. Here \(Z\) is Noetherian by an explicit averaging argument: for an ideal \(J\subset Z\), the ideal JA in the polynomial ring A is finitely generated, and its generators use only finitely many elements \(f_{i}\) of \(J\). Thus \(JA=\sum _{i} A f_{i}\). Averaging an expression for an invariant element shows \(J=(JA)\cap Z=\sum _{i} Z f_{i}\). In particular m has finitely many generators \(z_{i}- \chi (z_{i})\). For a fixed vector choose exponents \(k_{i}\) that kill it for those commuting generators. Every monomial of total degree \(1+\sum _{i}(k_{i}- 1)\) contains a killing power, so that power of m kills the vector. Finitely many \(U\)-generators then give one uniform exponent, because the ideal is central. Equation ([NF.11](#nf-11)) supplies the intrinsic composition-length bound.
+
+The rank-one module with vectors \(w_{m},z_{m}\) in the [§5](#5-two-orbits-and-two-highest-weight-simples) has \(Cw_{m}=0\) and \(Cz_{m}=4w_{m+1}\). It lies in \(O_{\chi}^{gen}\) and is localized by [NF.4](#nf-proof-4) at \(N=2\). Under the regular branch \(\lambda =0, c=\Lambda (\Lambda +2)\), so modulo \(\varepsilon ^{2}\) the parameter acts as \(\varepsilon =c/2: \varepsilon z_{m}=2w_{m+1}\ne 0\). Its localization cannot factor through \(D_{0}\), since the unit of [NF.4](#nf-proof-4) retains its nonzero c-action. This concrete object must survive the subsequent strong-equivariant/monodromic dictionary.
+
+#### Finite-exponent scope and the following dictionary
+
+[NF.1](#nf-proof-1)–[NF.5](#nf-proof-5) prove the finite formal branch, actual operator thickenings with the full center action, their whole global rings, compatible quasi-coherent/coherent localization and the ordinary generalized category-\(O\) finite-exponent prerequisite.
+
+Actual \(B\) integration, the strong-equivariant restriction, weak-right-\(T\) monodromic torsor realization, genuine regularity, full cell/extension and density-dual identifications, and the finite tensor-projector comparison are proved in [§5A.14](#5a-14-generalized-dictionary). The finite-level equivalence ([NF.10](#nf-10)) alone does not imply them. These results concern dominant actual \(\lambda\) and the associated favorable regular parameters, in every rank and actual central quotient. We leave weights outside the actual lattice, other regular complex parameter dictionaries and unfavorable hearts, singular generalized ramification and quotients, all parabolic and partial-flag variants, full linkage, projective-cover and highest-weight assertions, IC/Hecke/parity/purity/KL, and the wider matrix right-flatness, faithfulness, reconstruction, propagation, separation, \(D\)-type, monodromy, C1, half-order, initial-generator, arbitrary analytic proper, GL14/GL16, affine, critical and factorization assertions to their separate proofs.
+
+#### Reproducible finite-branch and nilpotent-action illustrations
+
+![Regular central branch and singular same-exponent failure](assets/generalized-foundation-regular-branch.png)
+
+The upper map is the exact type-\(A_{1}  N=2\) specialization of [NF.1](#nf-proof-1) at \(\lambda =0: c=2\varepsilon\) and \(\varepsilon =c/2\) in the indicated quotient rings. The other point \(\Lambda =- 2\) is a separate regular formal branch. The lower map at \(\lambda =- 1\) kills the nonzero central nilpotent \(c+1\), so it shows precisely why the same-exponent formal-branch argument does not handle singular generalized characters. These are algebra maps, not embeddings of a flag variety. Editable SVG, exact data, plotting source. Proof locator: [NF.1](#nf-proof-1); free formal-neighborhood comparison: [Ben-Zvi–Nadler, Remark1.2(4)](https://arxiv.org/html/1209.0188v2).
+
+Full-resolution PNG
+
+![A semisimple Cartan weight space with nonzero nilpotent central action](assets/generalized-foundation-nilpotent-module.png)
+
+The displayed two-dimensional space is one weight space in the complete [§5](#5-two-orbits-and-two-highest-weight-simples) example, with basis \(w_{1} ,z_{0}\). The Cartan acts as \(- 2\) times the identity, while \(C z_{0} =4w_{1}\) and \(\varepsilon  z_{0} =2w_{1}\). It is not a \(U\)-submodule; only the Cartan and central operators are displayed there. [NF.5](#nf-proof-5) proves the arbitrary-rank finite-exponent statement and retains this nonzero nilpotent action. The diagram distinguishes generalized center from a nonsemisimple Cartan action and from the single exact \(D_{0}\) quotient. Editable SVG, exact data, plotting source. Free formal-monodromy comparison: [Ben-Zvi–Nadler, Remark1.2(4)](https://arxiv.org/html/1209.0188v2).
+
+Full-resolution PNG
+
+
+<a id="5a-14-generalized-dictionary"></a>
+
+### 5A.14. The full ordinary generalized-center dictionary at dominant actual regular parameters
+
+Every connected complex semisimple affine group, central quotient, Borel–torus pair and dominant actual \(\lambda\) is included. The ordinary Cartan is semisimple throughout, while the center can act by nonzero nilpotents of any finite exponent. The finite branch, operator tower and whole global rings are proved in [§5A.13](#5a-13-generalized-foundation).
+
+The complete proof has three parts:
+
+1. [ND.0](#nd-proof-0)–[ND.7](#nd-proof-7): actual \(B\) integration, exact strong localization, every underlying operator subobject and finite Yoneda diagram, the actual Cartan torsor, invariant operator ring, \(E+\operatorname{dr}\) defect and both inverse descent maps, finite conormal supports and genuine regular holonomicity on \(Y\).
+2. [NU.1](#nu-proof-1)–[NU.6](#nu-proof-6): absolute holonomic \(D_{Y}\) dual, rational/strong equivariance, ambient parameter codimension and determinant factors, opposite parameter \(- \Lambda - 2\rho\), actual density line \(L(- 2\lambda - 2\rho )\), reflected deviations \(- \varepsilon ^{t}\), exact biduality, complete opposite restricted dual and full standard/costandard/simple/canonical-image maps. No Gorenstein property of \(R\) is assumed.
+3. [NT.1](#nt-proof-1)–[NT.7](#nt-proof-7): genuine formal line equivalence, actual inverse BB/line evaluation maps, arbitrary-dominant bundle maps, full polynomial central action on generalized flag factors, finite intrinsic projectors and both tensor comparisons retaining all nilpotents, extension compatibility and all decisive calibrations.
+
+The full theorem supplied by these arguments is the exact inverse equivalence
+
+<a id="nc-1"></a>
+
+\[
+\begin{gathered}
+O_{\chi_{-\lambda-\rho}}^{gen}\simeq C_\lambda^{gen}\simeq\\
+H_{\lambda}^{B\text{-strong},T\text{-weak},gen}(G/N_+).
+\end{gathered}
+\tag{NC.1}
+\]
+
+The algebraic category has finite \(U\)-generation, semisimple Cartan weights, local \(n_{+}\)-finiteness and locally nilpotent central ideal. The geometric categories are coherent finite-exponent objects with the exact strong/weak actions defined in [ND.0](#nd-proof-0)/[ND.5](#nd-proof-5). Their actual maps are tensor localization, global sections, torsor lift and invariant descent, with the displayed unit/counit and [ND.11](#nd-11) evaluations. Every object has a uniform finite level, all natural maps commute with increasing levels, and every finite extension equivalence diagram lies at some larger level. Arbitrary complete formal modules or generalized Cartan weight modules are outside the stipulated theorem.
+
+The genuine geometric formal dual is \(\operatorname{Desc} \operatorname{Tw}_{2\lambda} \mathbb D_{Y} \operatorname{Lift}\). It is exact, natural and bidual, with \(\varepsilon\) acting by negative transpose and the complete actual density correction proved in [NU.3](#nu-proof-3). The separate ordinary restricted antipode dual goes to the opposite generalized central category. The proof does not identify global sections of the geometric dual with that ordinary dual. The cell objects, all full PBW section formulas and their canonical-image normalization are the exact embedded RA objects; all nilpotent extensions are retained.
+
+The generalized principal-to-\(\lambda\) and reverse tensor translations are
+
+<a id="nc-2"></a>
+
+\[
+\begin{gathered}
+\operatorname{pr}_{\chi_{-\lambda-\rho}}(M\otimes F_{-w_0\lambda}),\\
+\operatorname{pr}_{\chi_{-\rho}}(N\otimes F_\lambda).
+\end{gathered}
+\tag{NC.2}
+\]
+
+They are identified with the actual geometric line/BB functors by the explicit selected endpoint maps. Their inverses and triangles are the full evaluation composites [NT.4](#nt-4). Selected multiplicity-one flag factors retain the whole formal center \(q_{z}(\tau +\nu )\); they are not replaced by scalar residue factors. The finite dN projector bound, intrinsic generalized ideal description and its compatibility with all maps are proved in [NT.4](#nt-proof-4).
+
+
+**Actual integration, strong localization and torsor descent.**
+
+We prove actual \(B\) integration, strong localization, every underlying operator subobject and finite Yoneda diagram, followed by the actual Cartan torsor realization and genuine regular holonomicity. The finite formal branch and operator tower are [NF.0–NF.5](#nf-proof-0). No formal completion of the object category, nonsemisimple Cartan replacement, scalar-center replacement or Gorenstein parameter assumption is made.
+
+<a id="nd-proof-0"></a>
+
+#### ND.0. Full categories, sides and earlier premises
+
+For every connected complex semisimple affine \(G\), every actual central quotient and Borel–torus pair \(B,T\), let \(X=G/B\) and \(N_{+}=\operatorname{rad}_{u}(B)\). Fix a dominant actual \(\lambda \in X(T)\). Put \(\gamma =\lambda +\rho , \tau =- \gamma , U=U(g), Z=Z(U)\), and \(m=\operatorname{ker}\chi _{\tau}\). Every module is left. Let \(O_{\chi}^{gen}\) be finitely generated \(U\)-modules with semisimple h-weight decomposition, local \(U(n_{+})\)-finiteness and locally nilpotent m-action. [NF.5](#nf-proof-5) proves finite-dimensional weight spaces, finite length, actual weights in \(- \lambda +Q\) and a uniform exponent \(m^{\ell}M=0\).
+
+The actual universal ring sheaf \(D_{A}\) uses \(A=C[h^{*}]\), parameter \(\Lambda\) and center map \(\psi (z)=q_{z}(- \Lambda - \rho )\). Set \(R_{\lambda ,N}=A/n_{\lambda}^{N}\) and \(D_{\lambda ,N}=D_{A}\otimes _{A} R_{\lambda ,N}\). [NF.1](#nf-proof-1)–[NF.4](#nf-proof-4) gives its whole global ring \(U_{\chi ,N}=U/U m^{N}\), all-QC/coherent BB equivalence with its actual unit \(m\mapsto 1\otimes m\) and counit \(P\otimes s\mapsto Ps\), and compatibility under increasing \(N\). No \(U\)-over-\(Z\) flatness is assumed.
+
+Underlying operator subobjects are taken in the usual \(O\)-quasi-coherent operator category; this includes every coherent operator subobject. On the finite affine covers used here, local operator Noetherianity makes subobjects of coherent ambient modules coherent. No assertion about arbitrary non-quasi-coherent subsheaves is needed for this dictionary.
+
+Let \(C_{\lambda}^{gen}\) be coherent modules over one finite \(D_{\lambda ,N}\), regarded through the compatible quotient tower as discrete finite-exponent modules over \(\widehat{D}_{\lambda}\), with strong rational left \(B\)-linearization. Strong means \(d\rho _{B}(\xi )=u_{A}(\xi )\) for \(\xi \in b\), using the actual moment map \(V_{\xi}- \Lambda (a_{\xi ,i})\). The whole nilpotent polynomial \(q_{z}(- \lambda - \varepsilon - \rho )\) acts, not its residue. A finite level is an abelian category, but its embedding into the full generalized category need not be extension-closed.
+
+Earlier complete inputs are [R.16](#r-16-actual-root-groups-coroot-maps-and-the-exact-lattice-boundary), [G.1](#g-1-unipotent-coordinates-and-an-actual-algebraic-big-cell), [G.8](#g-4-closed-orbit-quotient-charts-and-projectivity), [T.1](#t-1-universal-complex-twists-from-actual-principal-charts)–[T.2](#t-2-the-actual-global-lie-action-including-its-sign), [GR.6](#gr-6-the-universal-tdo-and-its-explicit-presentation), [RA.2](#ra-2-the-ordinary-exact-category-full-pbw-bounds-and-actual-weights)–[RA.6](#ra-6-exhaustive-simples-exact-labels-and-regularity) and [O.2](#o-2-actual-algebraic-b-integration-including-central-quotients)/[O.4](#o-4-actual-cells-affine-inclusions-and-their-chart-bases), together with the geometric KA/HM/GF/HD proofs. The regularity argument below uses the composition-factor definition and actual trivial-cell presentations; it requires no additional general four-map regularity theorem.
+
+We will use rational torus decomposition in its elementary form. In actual torus coordinates a rational coaction on a vector has a finite expansion \(\sum t^{\kappa}\otimes v_{\kappa}\). Coassociativity and \(\Delta (t^{\kappa})=t^{\kappa}\otimes t^{\kappa}\) force the coaction of each coefficient \(v_{\kappa}\) to be \(t^{\kappa}\otimes v_{\kappa}\); the counit makes the sum of these coefficients the original vector. Independence of Laurent monomials proves the direct weight decomposition. In any equivariant exact sequence the weight-zero component of a lift of an invariant quotient vector is an invariant lift. Thus invariants are exact. This proof also works on every invariant affine torsor chart and for arbitrarily large rational modules; no torus diagonalizability assumption for the operator defect is involved.
+
+<a id="nd-proof-1"></a>
+
+#### ND.1. Integrate every generalized object on the actual B
+
+Choose finitely many weight-vector generators of \(M\). For each such vector, its \(U(n_{+})\)-span is finite-dimensional and h-stable because every ordered positive-root monomial has a definite weight. Their sum \(E\) is finite-dimensional and b-stable. Applying the same construction to any additional finite set shows that \(M\) is the union of finite-dimensional b-stable subspaces. This uses local \(n_{+}\)-finiteness, not semisimplicity of the center.
+
+On one such finite \(E\), define \(T\) through its actual weight characters, which [NF.5](#nf-proof-5) places in \(X(T)\). Every root operator raises weight by a positive root. Since \(E\) has finitely many weights, sufficiently long products of positive-root operators vanish by integer simple-root height. Thus the actual polynomial exponential/logarithm coordinates of the unipotent group \(N_{+}\) from [G.1](#g-1-unipotent-coordinates-and-an-actual-algebraic-big-cell) give
+
+<a id="nd-1"></a>
+
+\[
+\begin{gathered}
+\rho_E(\exp X)=\exp r_E(X),\\
+X\in\mathfrak n_+.
+\end{gathered}
+\tag{ND.1}
+\]
+
+Both exponentials terminate. The exact [O.2](#o-2-actual-algebraic-b-integration-including-central-quotients) group-law calculation applies to this finite b-representation: for \(Z(s)=\operatorname{log}(\operatorname{exp}X \operatorname{exp}(sY))\), its polynomial logarithmic derivative identity is preserved by \(r_{E}\). The two finite polynomial matrices \(\operatorname{exp} r_{E}(Z(s))\) and \(\operatorname{exp} r_{E}(X) \operatorname{exp}(sr_{E}(Y))\) have the same initial value and first-order equation, so recursive coefficient equality makes them equal. These are the actual [G.1](#g-1-unipotent-coordinates-and-an-actual-algebraic-big-cell) group coordinates, including every central quotient. For \(t\in T\), its actual weights give \(\rho _{E}(t)r_{E}(e_{\alpha})\rho _{E}(t)^{-1}=\alpha (t)r_{E}(e_{\alpha})\). Consequently \(B=T\ltimes N_{+}\) acts rationally on \(E\) with the given differential.
+
+Inclusions, subspaces and \(U\)-linear maps preserve the actual weight characters and these finite exponentials. The actions therefore agree on intersections of finite b-spans and glue to a locally finite rational action on \(M\). It is unique: actual character differentiation is injective, and each root-group polynomial representation is determined by its differential; the root groups generate \(N_{+}\). This proves unique actual \(B\) integration for every object and every underlying \(U\)-submodule. Subquotients retain the same properties by [NF.5](#nf-proof-5). No simply connected substitute is needed.
+
+<a id="nd-proof-2"></a>
+
+#### ND.2. Strong localization, rational sections and every underlying subobject
+
+For \(M\) killed by \(m^{N}\), give \(D_{\lambda ,N}\otimes _{U_{\chi ,N}}M\) the diagonal action
+
+<a id="nd-2"></a>
+
+\[
+\begin{gathered}
+b(P\otimes v)=\\
+\operatorname{Ad}_b(P)\otimes\rho_M(b)v.
+\end{gathered}
+\tag{ND.2}
+\]
+
+[GR.6](#gr-6-the-universal-tdo-and-its-explicit-presentation) gives the actual algebraic \(G\)-action on the operator sheaf, with trivial action on parameters. The adjoint \(U\)-action and the moment map agree, and the center is fixed by actual conjugation. Thus [ND.2](#nd-2) respects balancing and the central quotient, preserves the quotient cocycle and is rational. Differentiation gives
+
+<a id="nd-3"></a>
+
+\[
+\begin{gathered}
+{}[u_A(\xi),P]\otimes v+P\otimes\xi v\\
+=u_A(\xi)P\otimes v.
+\end{gathered}
+\tag{ND.3}
+\]
+
+The equality uses \(P u_{A}(\xi )\otimes v=P\otimes \xi v\). It retains \(\Lambda =\lambda +\varepsilon\) completely and proves strong equivariance.
+
+Conversely a rational \(B\)-linearization of a quasi-coherent sheaf gives a rational coaction on its global sections. A finite affine Čech cover computes \(\Gamma\) on the separated flag; flat tensor with \(O(B)\) commutes with its degree-zero kernel. Pulling the linearization through that kernel gives \(\Gamma F\to O(B)\otimes \Gamma F\) with counit and coassociativity. Each vector has a finite coaction expansion. Taking independent coefficient functions and applying coassociativity shows its vector coefficients span a finite subcomodule containing it. The torus weight decomposition is semisimple, and its finite \(B\)-span proves local \(n_{+}\)-finiteness. Strongness identifies the differential with the actual \(U\)-action; coherent \(F\) has finitely generated sections by [NF.4](#nf-proof-4), with generalized character by its finite parameter exponent. It belongs to the stipulated ordinary \(O_{\chi}^{gen}\).
+
+Every \(U\)-linear morphism preserves [ND.1](#nd-proof-1), so all algebraic morphisms are \(B\)-equivariant. The unit and counit of [NF.4](#nf-proof-4) are \(B\)-equivariant by their displayed formulas. They yield mutually inverse exact equivalences
+
+<a id="nd-4"></a>
+
+\[
+ \operatorname{Loc}^{gen}_\lambda:
+ O_\chi^{gen}\simeq C_\lambda^{gen}:
+ \Gamma^{gen}_\lambda.
+ \tag{ND.4}
+\]
+
+For an underlying quasi-coherent \(D_{\lambda ,N}\)-submodule \(F' \subset F\), exact [NF.4](#nf-proof-4) identifies \(\Gamma F'\) with a \(U\)-submodule of \(M=\Gamma F\). \(U\) is Noetherian, so it is finitely generated; [NF.5](#nf-proof-5) and [ND.1](#nd-proof-1) integrate it. Its localization is the given inclusion by the actual counit. Thus it is coherent and strong with the restricted action. The integrated action agrees with the original inclusion by uniqueness. Every underlying subobject and quotient is retained, rather than only preselected equivariant ones. In particular simple objects are simple underlying finite-parameter operator modules.
+
+<a id="nd-proof-3"></a>
+
+#### ND.3. Every finite Yoneda diagram and its exponent
+
+For a finite list of objects, take the maximum of their uniform central exponents. The compatible [NF.4](#nf-proof-4) tensor/unit/counit maps identify their images at this common level and at every larger level. For \(0\to M' \to M\to M'' \to 0\) with exponents a,b on the ends, \(m^{b} M\subset M'\), hence \(m^{a+b}M=0\). The ordinary Cartan and \(n_{+}\)-conditions are those of the stipulated middle object; strong rational \(B\) on the geometric side supplies precisely them under [ND.4](#nd-4).
+
+An n-fold Yoneda extension has finitely many middle objects and arrows, so one larger exponent includes its entire diagram. Equivalence of two such diagrams is generated by a finite zigzag of diagram morphisms; each zigzag has finitely many objects, so another finite maximum includes it as well. Thus
+
+<a id="nd-5"></a>
+
+\[
+\begin{gathered}
+\operatorname{Ext}_{O_\chi^{gen}}^{n}(M,L)\\
+=\underset{N}{\operatorname{colim}}\operatorname{Ext}_{O_{\chi,N}}^{n}(M,L),
+\end{gathered}
+\tag{ND.5}
+\]
+
+and the corresponding strong coherent geometric statement holds. Here \(O_{\chi ,N}\) is the abelian subcategory with \(m^{N}=0\) and the same semisimple-Cartan/\(n_{+}\)-conditions. The colimit is over levels containing \(M,L\). Surjectivity follows from the finite extension diagram; injectivity follows from the finite zigzag just described. Addition, pushout/pullback and Yoneda splicing have finite diagrams, so the equality respects their operations. Each finite-level equivalence retains its actual diagrams by the exact functors and natural unit/counit, proving [ND.5](#nd-5) on both sides and the compatibility of all extension classes. A fixed \(N=1 \operatorname{Ext}\) group is not asserted to contain nilpotent extensions requiring larger levels.
+
+<a id="nd-proof-4"></a>
+
+#### ND.4. Construct the actual Cartan torsor, including central quotients
+
+Use the actual algebraic principal charts \(s_{i}:U_{i}\to G\) of [G.8](#g-4-closed-orbit-quotient-charts-and-projectivity), with \(s_{j}=s_{i} b_{ij}\) and \(t_{ij}=\operatorname{pr}_{T}(b_{ij})\). The actual \(B=T\ltimes N_{+}\) makes \(\operatorname{pr}_{T}\) a homomorphism; \(t_{ik}=t_{ij} t_{jk}\). Glue \(U_{i}\times T\) by
+
+<a id="nd-6"></a>
+
+\[
+ t_i=t_{ij}t_j.
+ \tag{ND.6}
+\]
+
+These are inverse algebraic transition maps with the triple cocycle. They construct a principal right-\(T\) torsor \(p:Y\to X\), affine over each \(U_{i}\). It is the actual \(G/N_{+}\): locally \(G|_{U_i}=U_i\times B\), and \(B/N_{+}=T\) by its actual polynomial factorization. The map \((x,t)\mapsto s_{i}(x)tN_{+}\) identifies this local quotient. On overlaps \(b_{ij} t_{j}N_{+}=t_{ij} t_{j}N_{+}\) because \(T\) normalizes \(N_{+}\). Hence the maps agree by [ND.6](#nd-6). Their fibers are exactly right-\(N_{+}\) cosets and their local quotient maps are \(U_{i}\times B\to U_{i}\times T\). This proves the geometric quotient, its structure sheaf and left \(G\)/right \(T\) actions without presuming a simply connected cover or an unconstructed quotient.
+
+The variety is smooth of dimension \(n+r, n=\operatorname{dim}X,r=\operatorname{dim}T\). It is separated: away from the base diagonal, separated \(X\) gives a closed diagonal condition; above it the local torsor trivializations reduce to the closed diagonal of affine \(T\). It has a finite affine cover \(U_{i}\times T\). In particular the affine-intersection and finite Čech arguments used here are valid on \(Y\).
+
+Choose an actual lattice basis \(\eta _{a}\) of \(X(T)\), with dual \(h_{a}\). In local torus coordinates write \(E_{h}=t\partial _{h}\). The PBW presentation for differential operators on \(U_{i}\times T\) follows by localizing the ordinary coordinate Weyl presentation at the torus coordinates. In right-normal order it has finite sums of \(t^{\chi} P(E,\partial _{x})\), with \(\chi \in X(T)\). The right action on functions is \(r_{t} f(y)=f(yt^{-1})\), so \(t^{\chi}\) has right weight \(- \chi\) and \(E_{h}\) has weight zero. Invariants are exactly
+
+<a id="nd-7"></a>
+
+\[
+\begin{gathered}
+(p_*D_Y)^T|_{U_i}=\\
+D_{U_i}\otimes C[E_h:h\in\mathfrak h].
+\end{gathered}
+\tag{ND.7}
+\]
+
+The chain rule for [ND.6](#nd-6), differentiating at fixed \(t_{i}\), gives \(P_{i}=P_{j}- \beta _{ij}(P)E\); all \(E_{h}\) agree. This is exactly the full universal cocycle, including brackets, products and restrictions. Therefore
+
+<a id="nd-8"></a>
+
+\[
+\begin{gathered}
+(p_*D_Y)^T\simeq D_A,\\
+E_h\leftrightarrow\Lambda(h).
+\end{gathered}
+\tag{ND.8}
+\]
+
+The left \(G\) moment on \(Y\) is \(V_{\xi}- a_{\xi ,i} E\), by the same differentiated principal factorization as [T.2](#t-2-the-actual-global-lie-action-including-its-sign). Thus it restricts to \(u_{A}=V_{\xi}- \Lambda (a_{\xi ,i})\) with its original minus sign. The finite parameter direction is an actual invariant vertical operator, not an invented formal line connection.
+
+<a id="nd-proof-5"></a>
+
+#### ND.5. Weak right-T monodromy and both inverse descent maps
+
+For a rational weak right-\(T\)-equivariant left \(D_{Y}\)-module \(H\), differentiation of operator-compatible equivariance gives
+
+<a id="nd-9"></a>
+
+\[
+\begin{gathered}
+d r(h)(Pv)=[-E_h,P]v\\
++P\,d r(h)v.
+\end{gathered}
+\tag{ND.9}
+\]
+
+Consequently \(M_{h}=E_{h}+d r(h)\) is \(D_{Y}\)-linear. The \(M_{h}\) commute: right \(T\) is abelian and preserves every \(E_{k}\), so \([\operatorname{dr}(h),E_{k}]=0\). They also commute with its rational \(T\) action. Generalized monodromy \(\lambda\) means the ideal generated by \(M_{h}- \lambda (h)\) has a uniform finite exponent. The torus linearization itself remains rational and semisimple.
+
+For a \(D_{A}\)-module \(F\) on Ui, define its lift \(H_{i}=O_{T}\otimes F\). Horizontal \(P\) acts by Leibniz on coefficients and by its local \(D_{U}\) action on \(F\); vertical operators act by
+
+<a id="nd-10"></a>
+
+\[
+\begin{gathered}
+E_h(f\otimes v)=E_h(f)\otimes v\\
++f\otimes\Lambda(h)v.
+\end{gathered}
+\tag{ND.10}
+\]
+
+Give it the rational right action on the \(O_{T}\) factor. Commutation \([E_{h},P]=0\) holds because \(\Lambda\) is central; the ordinary horizontal brackets and \([E_{h},f]=E_{h}(f)\) give all remaining product rules. The operator transition \(P_{i}=P_{j}- \beta E\) is precisely the minus-\(\Lambda\) transition on invariant coefficients. Function changes and the given \(F\) transitions therefore glue \(H_{i}\) to a genuine \(D_{Y}\)-module. On its invariant coefficients \(\operatorname{dr}=0\) and \(M_{h}=\Lambda (h)\). A finite \(I\) exponent is exactly the stated generalized monodromy exponent.
+
+Conversely let \(F=(p_{*}H)^{T}\). On \(U_{i}\times T\), rational torus weights give a finite weight decomposition for each section. Multiplication by invertible \(t^{\chi}\) shifts right weight by \(- \chi\). The actual evaluation map and inverse are
+
+<a id="nd-11"></a>
+
+\[
+\begin{gathered}
+O_T\otimes H^T\longrightarrow H,\\
+f\otimes v\longmapsto fv,\\
+\sum_\kappa v_\kappa\longmapsto\\
+\sum_\kappa t^{-\kappa}\otimes t^\kappa v_\kappa.
+\end{gathered}
+\tag{ND.11}
+\]
+
+Here \(v_{\kappa}\) has weak right weight \(\kappa\); every sum is finite. The inverse is independent of decomposition because torus weights are a direct sum, and of lattice basis because \(t^{\kappa}\) is the actual character. Direct substitution proves the two evaluations are identities. The invariant algebra [ND.8](#nd-8) acts on \(F\), and \(E_{h}\) on these coefficients is \(M_{h}\), so [ND.10](#nd-10) reconstructs precisely the original operator action. These maps agree on overlaps by [ND.6](#nd-6) and the invariant-operator transition. They are natural for all maps and retain the entire nilpotent ideal.
+
+The equivalence is exact: induction is a tensor with \(O_{T}\) over \(C\), and rational torus invariants are exact by their direct weight decomposition. Coherence is retained in both directions. Finite \(D_{A}\) generators induce finite \(D_{Y}\) generators. Conversely choose finite \(D_{Y}\) generators on \(U_{i}\times T\), replace each by its finitely many torus components, and multiply each component by its inverse character to make it invariant. These finitely many invariant vectors still generate \(H\). In an expression for an invariant section, the torus-weight-zero projection of each operator coefficient in the right-normal PBW presentation lies in \(D_{U}\otimes A\), so they generate \(F\) over \(D_{A}\). No averaging integral or formal weight series occurs.
+
+Lift a left \(B\)-linearization by the actual \(G\)-action on \(Y\) and pullback of the coefficient transitions. Locally the derivative on \(f\otimes v\) is \((V_{\xi}- a_{\xi ,i} E)(f)\otimes v+f\otimes u_{A}(\xi )v\), exactly the left moment \(V_{\xi}- a_{\xi ,i} E\) on \(H\) using [ND.10](#nd-10). Thus strongness holds, not only weak equivariance. Conversely invariant coefficients inherit the rational left \(B\) action, which commutes with right \(T\), and that same calculation gives \(u_{A}\). The [ND.11](#nd-11) evaluations commute with both actions. This proves the genuine strong-left-\(B\)/weak-right-\(T\) monodromic realization of [ND.4](#nd-4) with both inverse descent maps.
+
+<a id="nd-proof-6"></a>
+
+#### ND.6. Every underlying \(D_Y\) subobject and finite conormal supports
+
+Let \(H\) be a lifted finite-exponent object and \(K\subset H\) an underlying \(D_{Y}\)-submodule. Work on invariant affine \(U_{i}\times T\). For a section v of \(K\), its \(H\) torus decomposition has finitely many weak weights \(\kappa\). On its \(\kappa\) component,
+
+<a id="nd-12"></a>
+
+\[
+\begin{gathered}
+E_h=\lambda(h)-\kappa(h)\\
++\text{a nilpotent operator},
+\end{gathered}
+\tag{ND.12}
+\]
+
+with the original uniform exponent \(N\). Choose h separating these finitely many characters. Polynomial CRT projectors in \(E_{h}\), modulo \((t- \lambda (h)+\kappa (h))^{N}\), recover exactly each component of v. \(K\) is stable under \(E_{h}\), so every component lies in \(K\). Thus \(K\) is stable under the rational right-\(T\) action; its coaction factors through \(K\) on these affine pieces. The inherited weak action and \(M_{h}\) restriction have the same uniform exponent. By [ND.11](#nd-11) it descends to a \(D_{A}\)-submodule \(F'\). [ND.2](#nd-proof-2) proves that \(F'\) is coherent and strongly \(B\)-equivariant, with the given inclusion. Lifting recovers \(K\) and that inclusion. Hence every underlying \(D_{Y}\) subobject and quotient is in the monodromic strong category. Its finite length equals the corresponding ordinary \(O\) length. In particular the simple lifts are simple as genuine \(D_{Y}\)-modules.
+
+On the base, finite \(I\)-filtration quotients are exact-character strong \(D_{\lambda}\) modules. [RA.3](#ra-3-actual-integration-and-the-coherent-strong-localization-equivalence) supplies good \(B\)-stable filtrations and conormal support on the finite \(B\)-cell stratification. Compatible good filtrations for a finite extension, obtained by finite local generators and intersection/quotient filtrations as in GF, give characteristic support equal to the union of its factors. Thus every \(F\) has support in the finite union of base cell conormals.
+
+In the lift choose the finite \(R\)-span of local invariant generators before the good operator filtration. \(E_{h}\) sends this span into itself by [ND.10](#nd-10) and the finite parameter exponent; on the corresponding good filtration its vertical order-one symbol acts as zero. The horizontal characteristic support is the pullback of the preceding finite base support. Therefore
+
+<a id="nd-13"></a>
+
+\[
+ \operatorname{Ch}(H)\subset
+   \overline{\bigcup_{w\in W}T^*_{p^{-1}C_w}Y}.
+ \tag{ND.13}
+\]
+
+Each \(p^{-1}C_{w}\cong C_{w}\times T\) is smooth of dimension \(\operatorname{dim}C_{w}+r\), and each conormal has dimension dimY. GF's whole-dimension Bernstein bound on smooth \(Y\) gives the matching lower bound for a nonzero coherent module, proving true holonomicity. The left \(B\)-orbit over \(C_{w}\) is precisely \(p^{-1}C_{w}\): its stabilizer torus acts transitively on the fiber by the actual Weyl conjugate \(T\)-isomorphism, while its remaining stabilizer is the connected unipotent root subgroup. Thus [ND.13](#nd-13) is also the finite actual \(B\)-orbit conormal statement on \(Y\).
+
+<a id="nd-proof-7"></a>
+
+#### ND.7. True regularity on Y and finite simple factors
+
+Every simple \(F\) is killed by \(I\). Indeed IF is a submodule; simplicity and \(I^{N}=0\) exclude \(IF=F\), so \(IF=0\). The exact RA dictionary therefore gives exactly the simples \(I_{w}^{\lambda}\). Their lifts are simple underlying \(D_{Y}\)-modules by [ND.6](#nd-proof-6). On \(S_{w}=p^{-1}C_{w}\), their rank-one connection is the lifted line cell object. In the actual principal chart the frame \(e_{i}\) of \(L(- \lambda )\) satisfies \(e_{j}=t_{ij}^{-\lambda }e_{i}\), while \(t_{i}=t_{ij} t_{j}\). Thus
+
+<a id="nd-14"></a>
+
+\[
+ t_i^{-\lambda}e_i=t_j^{-\lambda}e_j
+ \tag{ND.14}
+\]
+
+is a global horizontal gauge on the torsor: [ND.10](#nd-10) gives \(E_{h}(t_{i}^{-\lambda }e_{i})=0\), and the horizontal transition cancels in the same way. Its existence uses the actual \(\lambda\)-character. It identifies the underlying lifted cell connection with the trivial rank-one connection on \(C_{w}\times T\), retaining its prescribed weak-\(T\) linearization.
+
+The trivial connection on affine space times an actual torus is simple. In a derivative-stable nonzero ideal, repeated affine derivatives yield a nonzero Laurent polynomial in torus coordinates. Its finitely many Laurent characters are separated by polynomial Euler projectors; one invertible Laurent monomial then lies in the ideal, hence one does. It is regular: the trivial lattice on \((P^{1} )^{\operatorname{dim}C_{w}+r}\) is logarithmic with zero residues at every coordinate boundary, and its pullback to any smooth algebraic curve remains trivial including compactification points.
+
+The immersion \(S_{w}\to Y\) is affine by the same closed-in-an-affine-chart factorization as [RA.5](#ra-5-the-entire-root-chart-calculation-and-the-cell-objects), now in \(V_{w}\times T\); affine-open intersections are affine by separated \(Y\). HM's exact simple/minimal-extension theorem makes the lifted \(I_{w}^{\lambda}\) precisely the simple minimal extension of this regular trivial connection: it is simple, has that nonzero dense restriction, and has no boundary subobject or quotient. This is an actual regular simple presentation in the composition-factor definition. [ND.6](#nd-proof-6) supplies a finite composition series for every \(H\), with exactly these simple factors. Hence every \(H\) is regular holonomic on the genuine \(Y\). The earlier regularity definition's Serre argument proves the same for all underlying subobjects, quotients and finite extensions. No general smooth-pullback, tensor or four-map regularity theorem for singular objects has been presumed.
+
+#### Boundary of this component
+
+[ND.1](#nd-proof-1)–[ND.7](#nd-proof-7) proves actual integration, strong localization and the genuine torsor/descent/regularity construction. The full object/canonical-image and genuine holonomic formal duality follow in [NU.1](#nu-proof-1)–[NU.6](#nu-proof-6); generalized nilpotent tensor translations follow in [NT.1](#nt-proof-1)–[NT.7](#nt-proof-7). These results concern dominant actual \(\lambda\) and the associated favorable regular parameters, in every rank and actual central quotient. We leave weights outside the actual lattice, other regular complex parameter dictionaries and unfavorable hearts, singular generalized ramification and quotients, all parabolic and partial-flag variants, full linkage, projective-cover and highest-weight assertions, IC/Hecke/parity/purity/KL, and the wider matrix right-flatness, faithfulness, reconstruction, propagation, separation, \(D\)-type, monodromy, C1, half-order, initial-generator, arbitrary analytic proper, GL14/GL16, affine, critical and factorization assertions to their separate proofs.
+
+**Genuine holonomic duality, formal reflection and the full cell dictionary.**
+
+We use the genuine \(D_{Y}\) dual of [ND.0](#nd-proof-0)–[ND.7](#nd-proof-7), the finite-exponent foundation [NF.0](#nf-proof-0)–[NF.5](#nf-proof-5) and the complete earlier RA/GF/HD/KA/HM arguments. Every parameter object remains finite-exponent. In particular no Hom over the finite Artin algebra \(R_{\lambda ,N}\) is presumed to be a duality.
+
+<a id="nu-proof-1"></a>
+
+#### NU.1. Why the finite parameter algebra cannot be the dualizing object
+
+In rank two at exponent two, take \(R=C[x,y]/(x,y)^{2}\). Its basis is 1,x,y. Its socle, annihilated by (x,y), is \(Cx\oplus Cy\). Thus \(\operatorname{Hom}_{R}(C,R)\) has dimension two although \(C\) is simple and any exact contravariant self-equivalence must send it to a simple object. Naive \(\operatorname{Hom}_{R}(- ,R)\) cannot be the claimed duality. Neither operator coherence nor nilpotence repairs this defect.
+
+The same obstruction holds for every \(r>1,N>1\): in \(C[\varepsilon _{1},\ldots ,\varepsilon _{r}]/(\varepsilon )^{N}\) the socle is exactly its homogeneous degree-\((N- 1)\) subspace. Lower nonzero homogeneous components have a nonzero product by some \(\varepsilon _{i}\), because that product has degree below \(N\) in a polynomial domain. The socle therefore has dimension \(\operatorname{binomial}(r+N- 2,r- 1)>1\), so \(\operatorname{Hom}_{R}(C,R)\) again has that nonsimple dimension. The proof below avoids this assumption in every rank and exponent; \(r=0\) uses the unit determinant line and ordinary dual, and \(r=1\) also uses the same genuine construction.
+
+We instead use
+
+<a id="nu-1"></a>
+
+\[
+\begin{gathered}
+\mathbb D_YH=\omega_Y^{-1}\otimes\\
+R\mathcal Hom_{D_Y}(H,D_Y)[n+r],\\
+n=\dim X,\quad r=\dim T.
+\end{gathered}
+\tag{NU.1}
+\]
+
+The exact earlier HD Theorem3.1/Corollary3.2 proves Ext concentration, coherence, exact holonomic duality and canonical evaluation biduality on every smooth variety. [ND.7](#nd-proof-7) gives genuine regular holonomicity on \(Y\), so those complete proofs apply here. This is an absolute holonomic dual on \(Y\) of dimension \(n+r\), with its canonical density. It is not a relative \(\operatorname{Hom}_{R}\) or an assertion about the Gorenstein property of a finite quotient.
+
+<a id="nu-proof-2"></a>
+
+#### NU.2. Rational equivariance and the exact monodromy reflection
+
+The intrinsic finite local \(D_{Y}\) resolutions of HD Lemma3.0 show that internal Hom and its cohomology commute with flat algebraic-family pullback. Thus the rational left \(B\) and weak right \(T\) linearizations induce their usual contragredient semilinear action on [NU.1](#nu-1); the identity and multiplication cocycles follow by applying Hom to the original cocycles. Locally, for a semilinear differentiated action a and operator derivation \(\operatorname{ad}(V)\), the Hom action is \([V,\phi (v)]- \phi (a v)\). This is the chain-level formula, and two resolution lifts with the same augmentation differ by a null-homotopy obtained by successive lifting through the exact free resolution, as in the exact [RA.4](#ra-4-actual-twisted-transfer-density-and-fixed-twist-duality) calculation.
+
+For strong left \(B, a v=Vv\). The Hom expression becomes \(- \phi (v)V\). Side change with the inverse canonical density uses transpose \(- V- \operatorname{div}(V)\), with precisely the derivative of that density; it gives the strong left moment on the dual. Its volume-change identity glues under coordinate changes. This repeats [RA.19](#ra-5-the-entire-root-chart-calculation-and-the-cell-objects) on the actual smooth \(Y\) and uses no semisimplicity of any central parameter.
+
+For weak right \(T\), take the invariant torus volume dlog \(t_{1}\)∧⋯∧dlog \(t_{r}\) and a local base volume. Its right \(T\)-weight and \(\operatorname{div}(E_{h})\) are zero. The right differentiated derivation is \(\operatorname{ad}(- E_{h})\). By [ND.9](#nd-9), \(M_{h}=E_{h}+\operatorname{dr}(h)\) is \(D_{Y}\)-linear. On the right Hom complex,
+
+<a id="nu-2"></a>
+
+\[
+\begin{gathered}
+d r(h)\phi(v)\\
+=[-E_h,\phi(v)]-\phi(d r(h)v)\\
+=\phi(v)E_h-\phi(M_hv).
+\end{gathered}
+\tag{NU.2}
+\]
+
+The equality uses \(\phi (E_{h}v)=E_{h}\phi (v)\). Side change makes the left \(E_{h}\)-action equal to minus right multiplication by \(E_{h}\), with no vertical divergence term. Hence the dual defect is
+
+<a id="nu-3"></a>
+
+\[
+ M_h^{\mathbb D}\phi=-\phi\circ M_h.
+ \tag{NU.3}
+\]
+
+This is literal negative transpose, for every h and every nilpotent product, not just a residue character. One can make it exact on a resolution without a chosen equivariant finite free model: on an invariant chart use \(B_{0}=D_{U}\otimes A\), resolve the finite \(B_{0}\)-module by free \(B_{0}\)-modules, and induce to \(D_{Y}\). The maps are invariant, and the defect is the \(D_{Y}\)-linear chain map induced by central \(\Lambda (h)\). Formula [NU.2](#nu-2) then holds degree by degree. Resolution comparison with the finite HD model gives the same intrinsic map. Thus the computation includes all nilpotent directions coherently.
+
+Define \(\operatorname{Tw}_{a}\) for an actual character \(a\in X(T)\) by multiplying the weak right \(T\) linearization by \(t^{a}\); it leaves the underlying \(D_{Y}\)-module and strong left \(B\) action unchanged and adds a(h) to dr(h). Operator compatibility and both group cocycles follow because this is a scalar actual character, commuting with both actions. It is exact and invertible. The desired normalized geometric dual is
+
+<a id="nu-4"></a>
+
+\[
+\begin{gathered}
+\mathbb D^{gen}_\lambda F=\\
+\operatorname{Desc}\,\operatorname{Tw}_{2\lambda}\\
+\mathbb D_Y\operatorname{Lift}(F).
+\end{gathered}
+\tag{NU.4}
+\]
+
+By [NU.3](#nu-3) its descended parameter is \(2\lambda - \Lambda ^{t}\). Thus \(\varepsilon ^{\mathrm{dual}}=- \varepsilon ^{t}\) and the residue remains \(\lambda\). If every degree-\(N\) product of the original commuting deviations kills \(F\), the corresponding product kills its dual: transposition reverses the product, and commutation makes that reversal immaterial. It has the same finite exponent \(N\). All rational torus weights remain actual and semisimple. [ND.5](#nd-proof-5) therefore descends [NU.4](#nu-4) to a coherent strong object of \(C_{\lambda}^{gen}\) at the same finite level.
+
+The absolute holonomic dual is exact. [ND.5](#nd-proof-5)'s lift/descent and Tw are exact as well. Contragradient actions give \(\mathbb D_{Y} \operatorname{Tw}_{a}\cong \operatorname{Tw}_{- a}\mathbb D_{Y}\); the character evaluations and HD evaluation yield
+
+<a id="nu-5"></a>
+
+\[
+ (\mathbb D^{gen}_\lambda)^2F\simeq F.
+ \tag{NU.5}
+\]
+
+These are natural operator/\(B/T\)-linear maps; on a local resolution they are the usual signed double-Hom evaluation and the mutually inverse character factors. They commute with restriction and every finite parameter quotient. Hence [NU.4](#nu-4) is a genuine exact contravariant equivalence, including all finite extension diagrams. This is established by absolute holonomic biduality and descent, rather than an assumption that \(R\) is self-dual.
+
+<a id="nu-proof-3"></a>
+
+#### NU.3. Complete invariant dualizing calculation and the density shift
+
+We give the local algebra calculation that makes the formal-density convention explicit. Fix \(F\) in the strong coherent category \(C_{\lambda}^{gen}\) of [ND.0](#nd-proof-0). On \(U_{i}\times T\) let \(B_{0}=D_{U}\otimes A\). The right-normal PBW presentation gives \(D_{Y}=\oplus _{\chi \in X(T)}t^{\chi} B_{0}\) as a free right \(B_{0}\)-module. Thus \(D_{Y}\otimes _{B_{0}}F\) is exactly \(O_{T}\otimes F\) and induction is exact.
+
+\(B_{0}\) is Noetherian: its total-order symbol ring, with parameter variables in degree one, is the polynomial ring \(O_{U}[\xi ,\Lambda ]\), and the exact filtered Noetherian degree reduction applies. Resolve a finite \(B_{0}\)-module by finite free modules in each degree, continuing as long as necessary; Noetherianity keeps each syzygy finite. Induction gives a free \(D_{Y}\)-resolution. The Hom terms are finite free right \(D_{Y}\)-modules, with rational torus action. At each degree their invariants identify exactly with \(\operatorname{Hom}_{B_{0}}(P_{k},B_{0})\), because the weight-zero operator coefficient is \(B_{0}\). Rational torus invariants are exact by direct weight decomposition, and each cohomology degree uses only adjacent terms of this complex. No infinite product or completed coefficient sum occurs. Consequently
+
+<a id="nu-6"></a>
+
+\[
+\begin{gathered}
+\bigl(\mathcal Ext^j_{D_Y}(\operatorname{Lift}F,D_Y)\bigr)^T\\
+=\mathcal Ext^j_{B_0}(F,B_0).
+\end{gathered}
+\tag{NU.6}
+\]
+
+This identification is natural and agrees with the finite HD resolution: successive lifting constructs resolution comparison maps; two such maps with zero augmentation are homotopic by the same successive lifting. All these comparisons preserve invariants. For the stipulated \(F\), [ND.6](#nd-proof-6) has proved that its lift is holonomic, so HD concentration proves that the right side is concentrated in degree \(n+r\), and its density side change is coherent. No concentration claim for arbitrary nonholonomic finite \(B_{0}\)-modules is made. No finite projective resolution over the nilpotent quotient is needed.
+
+The exact relative cotangent sequence of the torsor gives
+
+<a id="nu-7"></a>
+
+\[
+ \omega_Y=p^*\omega_X\otimes\det\mathfrak h^*.
+ \tag{NU.7}
+\]
+
+It follows directly in principal charts from the base top form wedged with dlog \(t_{1}\)∧⋯∧dlog \(t_{r}\); the dlog transition adds horizontal terms, which vanish in the top wedge. The constant determinant factors are retained. Taking invariants of [NU.1](#nu-1) therefore gives \(\omega _{X}^{-1}\otimes \operatorname{det} h\otimes \operatorname{Ext}_{B_{0}}^{n+r}(F,B_{0})\), with its actual right-to-left action. This is the complete ambient dualizing calculation behind [NU.4](#nu-4).
+
+The canonical line on \(X\) is the actual \(L(2\rho )\). At \(B\), its fiber is the determinant of cotangent(g/b), whose weights are all positive roots, summing to \(2\rho\); the unipotent determinant is one. The \(G\)-homogeneous identification transports that fiber to every point, giving \(L(2\rho )\) with the actual principal transitions. [R.16](#r-16-actual-root-groups-coroot-maps-and-the-exact-lattice-boundary) proves \(2\rho \in Q\subset X(T)\), so no half-character bundle is used.
+
+For an actual integral parameter \(\Lambda\) the adjoint pairing between a line \(L(- \Lambda )\) and its density dual \(\omega _{X}\otimes L(\Lambda )\) gives the anti-isomorphism of operator rings with opposite parameter \(- \Lambda - 2\rho\). In a volume frame it sends \(P\) to \(- P- \operatorname{div}(P)\) and fixes functions; integration by parts or direct Leibniz verifies products and reversed brackets. The two line/volume transitions make the pairing intrinsic. Its coefficients are polynomial in \(\Lambda\), and actual lattice points are polynomially dense as in [T.1](#t-1-universal-complex-twists-from-actual-principal-charts). Thus the same identity holds for the universal family and every finite quotient:
+
+<a id="nu-8"></a>
+
+\[
+\begin{gathered}
+D_A^{op}\quad\\
+\text{has geometric parameter}\\
+\quad-\Lambda-2\rho.
+\end{gathered}
+\tag{NU.8}
+\]
+
+The first density factor \(\omega _{X}^{-1}=L(- 2\rho )\) in [NU.7](#nu-7) changes that bare opposite parameter to \(- \Lambda\). The subsequent \(\operatorname{Tw}_{2\lambda }\), under torsor descent, is the actual integral line shift \(L(- 2\lambda )\) and changes it to \(2\lambda - \Lambda\). Combined, the bare opposite Ext object is tensored with the actual line
+
+<a id="nu-9"></a>
+
+\[
+\begin{gathered}
+L(-2\lambda-2\rho),\\
+(-\Lambda-2\rho)+(2\lambda+2\rho)\\
+=2\lambda-\Lambda.
+\end{gathered}
+\tag{NU.9}
+\]
+
+This is exactly the formal density correction and parameter reflection \(\varepsilon \mapsto - \varepsilon\). It includes the semilinear module/base-change map: a polynomial \(f(\varepsilon )\) acts on the dual through negative transpose \(f(- \varepsilon )^{t}\), as prescribed by [NU.3](#nu-3). It is compatible with each \(R_{\lambda ,N}\) quotient because the reflection preserves its maximal-ideal power. There is no silent identification of a module with its \(\operatorname{Hom}_{R}\) dual.
+
+For \(I=0\), compare this construction with the exact RA dual. Locally \(F\) is a \(D_{U}\)-module with A acting by evaluation at \(\lambda\). Tensor a finite \(D_{U}\)-resolution from HD with the translated A-coordinate Koszul resolution. It is a \(B_{0}\)-resolution of \(F\). Its dual A-Koszul complex has only degree-r cohomology \(C_{\lambda}\otimes \operatorname{det} h^{*}\): dual monomial contraction or reversal of the ordinary Koszul basis proves this. The factor det h in [NU.7](#nu-7) cancels it canonically, and the shift \(n+r\) becomes the ordinary shift n. The remaining operator dual and actual line \(L(- 2\lambda - 2\rho )\) are precisely \(T_{\lambda} \mathbb D_{X}^{0} S_{\lambda}\) of [RA.18](#ra-4-actual-twisted-transfer-density-and-fixed-twist-duality), with the same side-change densities, evaluation and adjunction maps. Thus [NU.4](#nu-4) recovers the full exact-character duality, not just its simple labels. The extra parameter codimension r was essential to this conclusion.
+
+The graded signs in this reduction are explicit. Order base resolution variables before parameter variables, and use total differential \(d_{Q}\otimes 1+(- 1)^{|q|}1\otimes d_{K}\). The Hom-tensor identification sends \((\alpha \otimes \beta )(q\otimes k)\) to \((- 1)^{|\beta ||q|}\alpha (q)\beta (k)\). At the surviving degrees \(|q|=- n,|\beta |=r\) this contributes \((- 1)^{nr}\). After projecting the parameter Hom complex to \(C_{\lambda}[- r]\otimes \operatorname{det} h^{*}\), the tensor-shift map \(a\otimes 1[- r]\mapsto (- 1)^{r|a|}a[- r]\) is a chain map: its two differentials differ by \((- 1)^{r}\). At \(|a|=n\) it contributes the same \((- 1)^{nr}\). Their product is one. The ordered determinant evaluation in [NU.7](#nu-7) therefore returns exactly the ordinary RA Hom representative and density normalization. This also handles \(r=0\) or \(n=0\). The bidual and character cancellations in [NU.5](#nu-5) use these same chain maps, so no unspecified sign remains in the \(N=1\) comparison.
+
+<a id="nu-proof-4"></a>
+
+#### NU.4. Regularity and a non-Gorenstein calibration of the genuine dual
+
+[ND.7](#nd-proof-7) presents every simple lift as the simple minimal extension of a trivial connection on \(S_{w}=C_{w}\times T\). Its underlying \(D_{Y}\)-dual is the same minimal extension: the tangent Spencer and normal Koszul Hom pairing of [RA.8](#ra-8-density-correct-self-dual-simples-and-the-full-standard-isomorphism)/HD/KA applies in all \(n+r\) smooth coordinates and retains the canonical/conormal determinant factors. It dualizes the trivial cell connection to itself, reverses no-boundary conditions and preserves simplicity. HM uniqueness identifies the result. \(\operatorname{Tw}_{2\lambda }\) restores the weak monodromy \(\lambda\) and the exact RA line convention by [NU.9](#nu-9). The resulting simple is \(I_{w}^{\lambda}\) again. A finite composition series is reversed by the exact [NU.4](#nu-4) functor. Therefore every dual is regular holonomic on \(Y\) by the same genuine regular simple presentations. One may also use the regular-holonomic duality, Theorem5.7; no general four-map theorem is needed.
+
+The rank-two local diagnostic \(R=C[x,y]/(x,y)^{2}\) makes the correct dual visible. In the torus connection \(O_{T}\otimes R\), take \(\Lambda =\lambda +(x,y)\) acting by multiplication. The genuine holonomic \(D_{T}\) dual, after \(\operatorname{Tw}_{2\lambda }\), is \(O_{T}\otimes R^{*}\) with deviations \(- x^{t},- y^{t}\); the Spencer Hom calculation for finite-rank connections is the exact HD Proposition5.1. In basis \(1^{*},x^{*},y^{*}, x\) sends \(x^{*}\) to \(- 1^{*}\) and y sends \(y^{*}\) to \(- 1^{*}\), all other images zero. Its socle has dimension one, whereas \(R\)'s socle has dimension two. The central nilpotents survive; the bidual returns \(R\) with the original actions. This is a local dualizing calibration, not an assertion that this free \(R\) diagnostic is a global strong-\(B\) object on the flag. It demonstrates exactly why \(\operatorname{Hom}_{R}\) cannot replace [NU.1](#nu-1)–[NU.9](#nu-9).
+
+<a id="nu-proof-5"></a>
+
+#### NU.5. Restricted ordinary antipode dual between opposite generalized categories
+
+For finite weight spaces define \(d_{S} M=\oplus _{\nu} M_{\nu}^{*}\) with \((u\phi )(v)=\phi (S(u)v), S(\xi )=- \xi\). The weight \(\nu\) dual has weight \(- \nu\). [T.3](#t-3-opposite-pbw-and-the-antipode-identity) proves \(q_{S(z)}(\eta )=q_{z}(- \eta )\), so \(S\) sends \(m_{\chi _{\tau}}^{N}\) exactly to \(m_{\chi _{- \tau }}^{N}\). Thus this is a dual between the plus generalized category at \(\chi _{- \gamma }\) and the minus generalized category at \(\chi _{\gamma}\), with the opposite \(n_{-}\)-finiteness convention.
+
+For completeness, the opposite [NF.5](#nf-proof-5) proof uses finite \(b_{-}\)-spans, PBW lower cones \(\kappa +Q_{+}\), finite weight spaces and integer height minima. A lowest vector has opposite Verma central character \(\chi _{w_{0}^{-1}\kappa +\rho }\); generalized ideal nilpotence and [HC.5](#hc-5-equality-of-characters-at-arbitrary-complex-parameters) put \(\kappa\) in the finite set \(W\gamma +\rho\). Its weight-dimension sum bounds strict chains exactly as [NF.5](#nf-proof-5), proving finite length and actual weights in \(\lambda +Q\). The ordinary restricted dual negates upper cones into lower cones and has local \(n_{-}\)-finiteness by bounded heights. Annihilator/double-annihilator on each finite weight space reverses actual \(U\)-submodules by \(S\). Hence length passes to the dual even before finite generation; its simple factors have lowest vectors and are cyclic, and lifting generators along the finite composition series proves finite generation. The reverse argument is identical with upper cones. Evaluation and \(S^{2} =1\) give the natural bidual, while finite weightwise vector-space duality proves exactness. All ideal exponents are retained by the preceding antipode calculation.
+
+This ordinary \(d_{S}\) is not identified with \(\Gamma\mathbb D^{gen}_{\lambda}\). It has a different opposite category and negates weights; [NU.4](#nu-4) instead uses the actual density/line normalization and formal reflection to remain in the fixed geometric plus category. In nonsymmetric root systems \(\chi _{\gamma}\) and \(\chi _{- \gamma }\) can differ. No equality of these characters, or an untransported ordinary-antipode/global-geometric duality, is assumed.
+
+<a id="nu-proof-6"></a>
+
+#### NU.6. Full standard, costandard, simple and canonical-image maps
+
+Embed the exact RA cell objects through \(\widehat{D}_{\lambda}\to D_{\lambda}\):
+
+<a id="nu-10"></a>
+
+\[
+\begin{gathered}
+\Delta_w^\lambda=j_{w,!}^L E_w^\lambda,\\
+\nabla_w^\lambda=j_{w,+}^L E_w^\lambda,\\
+I_w^\lambda=\operatorname{im}(\Delta_w^\lambda\to\nabla_w^\lambda),\\
+L=L(-\lambda).
+\end{gathered}
+\tag{NU.10}
+\]
+
+All their parameter deviations are zero. Their morphisms in the generalized category are exactly their original \(D_{\lambda}\) morphisms, by the quotient action and the full finite-level embeddings of [NF.4](#nf-proof-4). [ND.2](#nd-proof-2) retains every underlying subobject. Every simple generalized object has \(I=0\), by the nilpotence/simplicity argument in [ND.7](#nd-proof-7); hence [NU.10](#nu-10) exhausts all simple labels. No new simple appears in a nilpotent direction.
+
+The complete [RA.5](#ra-5-the-entire-root-chart-calculation-and-the-cell-objects)–[RA.9](#ra-9-the-canonical-extension-map-and-its-actual-image) proofs apply literally to these embedded objects. They use the actual root chart, the full global basis \(e_{w} z^{a}\partial _{t}^{b}\delta _{w}\), the fiber \(- w\lambda\), normal determinant density, exact simple/socle/head classification and the actual unit/counit. Consequently, with \(\mu _{w}=- w(\lambda +\rho )- \rho\),
+
+<a id="nu-11"></a>
+
+\[
+\begin{gathered}
+\Gamma^{gen}_\lambda\Delta_w^\lambda=M^+(\mu_w),\\
+\Gamma^{gen}_\lambda\nabla_w^\lambda\\
+=d_S M^-(w\gamma+\rho),\\
+\Gamma^{gen}_\lambda I_w^\lambda=L^+(\mu_w).
+\end{gathered}
+\tag{NU.11}
+\]
+
+These are the complete modules and PBW dimensions, not just top weights. The natural sheaf identifications use the same BB unit/counit. The canonical map in [NU.10](#nu-10) is still the transported immersion map restricting to the identity on its cell; its image is the same simple minimal extension. Its global map is the unique nonzero normalized highest-to-socle map up to the original cell normalization, with image \(L^{+}(\mu _{w})\), as proved in [RA.9](#ra-9-the-canonical-extension-map-and-its-actual-image). [NU.4](#nu-4) reduces to [RA.18](#ra-4-actual-twisted-transfer-density-and-fixed-twist-duality) on \(I=0\), so it interchanges \(\Delta\) and ∇ and fixes the simple objects with the original canonical extension normalization. All finite generalized extensions of these objects and their Yoneda diagrams are retained by [ND.3](#nd-proof-3). Full projective-cover, linkage or highest-weight-category claims are not prerequisites or conclusions here.
+
+#### Boundary of this component
+
+[NU.1](#nu-1)–[NU.11](#nu-11) supplies formal duality and the full object/canonical-image dictionary, including every central nilpotent and the ambient dualizing shift. It does not use \(\operatorname{Hom}_{R}\) duality or require a Gorenstein finite parameter quotient. Generalized tensor translations and the decisive calibrations follow in [NT.1](#nt-proof-1)–[NT.7](#nt-proof-7).
+
+**Genuine generalized tensor translations and their inverse maps.**
+
+We prove generalized finite rational tensor translations and both inverse evaluation maps. The integration/torsor and genuine-duality constructions are [ND.0](#nd-proof-0)–[ND.7](#nd-proof-7) and [NU.1](#nu-proof-1)–[NU.6](#nu-proof-6). [NF.0](#nf-proof-0)–[NF.5](#nf-proof-5) supplies compatible finite-level BB with the full global rings. The earlier parameter, endpoint, bundle and root arguments are [RA.10](#ra-10-actual-inverse-translations-and-their-natural-maps), [T.5](#t-5-integral-tensor-shifts-and-the-actual-factor-characters), [E.4](#e-4-both-actual-translation-endpoints)–[E.5](#e-4-both-actual-translation-endpoints) and [H.5](#5-the-required-finite-dimensional-highest-weight-modules)–[H.6](#5-the-required-finite-dimensional-highest-weight-modules). No scalar action on a selected generalized factor is presumed.
+
+<a id="nt-proof-1"></a>
+
+#### NT.1. The actual finite formal line equivalence
+
+Use one polynomial deviation algebra \(C[\varepsilon ]\) on \(h^{*}\) with finite quotient \(R_{N}=C[\varepsilon ]/(\varepsilon )^{N}\). Identify the principal branch \(\Lambda _{0}=\varepsilon\) and target branch \(\Lambda _{\lambda}=\lambda +\varepsilon\) by those actual coordinate maps. This is a finite base identification, not an equality of central-character maps. The principal center acts through \(q_{z}(- \rho - \varepsilon )\), and the target through \(q_{z}(- \lambda - \rho - \varepsilon )\).
+
+Let \(L=L(- \lambda )\), with actual line frames \(e_{j}=t_{ij}^{-\lambda }e_{i}\). The two functors are
+
+<a id="nt-1"></a>
+
+\[
+\begin{gathered}
+\mathcal T_\lambda F=L\otimes F,\\
+\mathcal S_\lambda H=L^{-1}\otimes H.
+\end{gathered}
+\tag{NT.1}
+\]
+
+The universal local operator rule changes \(P_{i}\mapsto P_{j}- \varepsilon \beta _{ij}(P)\) to \(P_{i}\mapsto P_{j}- (\lambda +\varepsilon )\beta _{ij}(P)\), because conjugating coefficient frames by the actual line multiplier adds exactly \(- \lambda \beta\). This is [T.5](#t-5-integral-tensor-shifts-and-the-actual-factor-characters)'s finite polynomial identity, now over \(R_{N}\). Products, brackets, restrictions and triple cocycles are retained, including all nilpotents. The deviation \(\varepsilon\) acts on the coefficient factor unchanged. The evaluation maps
+
+<a id="nt-2"></a>
+
+\[
+\begin{gathered}
+e_i^\vee\otimes(e_i\otimes v)\longmapsto v,\\
+e_i\otimes(e_i^\vee\otimes w)\longmapsto w
+\end{gathered}
+\tag{NT.2}
+\]
+
+and their inverse insertions glue, are balanced for the actual operators and preserve \(\varepsilon\). Their triple evaluations give the two inverse-functor identities. The line is actual on every allowed central quotient because \(\lambda \in X(T)\).
+
+The strong left \(B\) action has its original scalar \(- \lambda (a_{\xi ,i})\) on the line, so the tensor action is exactly \(V_{\xi}- (\lambda +\varepsilon )(a_{\xi ,i})\). Both functors preserve strong rational \(B\), finite exponents, coherence and all maps. Under [ND.5](#nd-proof-5)'s torsor realization they are precisely \(\operatorname{Tw}_{\lambda}\) and \(\operatorname{Tw}_{- \lambda }\) of the weak right \(T\) linearization: the frame \(t_{i}^{-\lambda }e_{i}\) gauges the line lift horizontally, and its weak right character is \(\lambda\). Thus they retain genuine regular holonomicity, rather than invoking tensor regularity for an unspecified singular \(D\)-module operation.
+
+<a id="nt-proof-2"></a>
+
+#### NT.2. Geometric translations with actual inverse BB evaluation
+
+For the principal generalized block \(\chi _{0}=\chi _{- \rho }\), define
+
+<a id="nt-3"></a>
+
+\[
+\begin{gathered}
+\mathcal F_\lambda=\Gamma_\lambda^{gen}\mathcal T_\lambda\operatorname{Loc}_0^{gen},\\
+\mathcal G_\lambda=\Gamma_0^{gen}\mathcal S_\lambda\operatorname{Loc}_\lambda^{gen}.
+\end{gathered}
+\tag{NT.3}
+\]
+
+These are exact and preserve the same exponent \(N\) under the finite branch identifications. On \(M\) in the principal block put \(A_{M}=\operatorname{Loc}_{0} M\); on \(H\) in the target put \(B_{H}=\operatorname{Loc}_{\lambda} H\). Their actual inverse maps are
+
+<a id="nt-4"></a>
+
+\[
+\begin{gathered}
+\mathcal G_\lambda\mathcal F_\lambda M\\
+\xrightarrow{\Gamma_0\mathcal S_\lambda\epsilon_{\lambda,\mathcal T_\lambda A_M}}\\
+\Gamma_0\mathcal S_\lambda\mathcal T_\lambda A_M\\
+\xrightarrow{\Gamma_0 c}\Gamma_0 A_M\\
+\xrightarrow{\eta_{0,M}^{-1}} M,\\
+\mathcal F_\lambda\mathcal G_\lambda H\\
+\xrightarrow{\Gamma_\lambda\mathcal T_\lambda\epsilon_{0,\mathcal S_\lambda B_H}}\\
+\Gamma_\lambda\mathcal T_\lambda\mathcal S_\lambda B_H\\
+\xrightarrow{\Gamma_\lambda d}\Gamma_\lambda B_H\\
+\xrightarrow{\eta_{\lambda,H}^{-1}} H.
+\end{gathered}
+\tag{NT.4}
+\]
+
+Here \(\eta ,\varepsilon\) are the actual finite-level [NF.4](#nf-proof-4) unit/counit and c,d are [NT.2](#nt-2) evaluation. Every arrow is operator-linear, strongly \(B\)-equivariant and a natural isomorphism. Their inverse arrows reverse this order. The equivalence triangles hold on \(P\otimes s\) and \(1\otimes v\): application of \(P\) and cancellation of the inserted \(e_{i},e_{i}^{\vee}\) factors give the same value in either composite. These sections generate the localized modules. All maps commute with larger-level embeddings, hence define a genuine inverse equivalence on the whole finite-exponent categories. It is not inferred from simple labels or a central-residue comparison.
+
+<a id="nt-proof-3"></a>
+
+#### NT.3. Arbitrary-dominant actual bundle maps with nilpotent coefficients
+
+Let \(F=F_{\lambda}\) and \(F' =F_{- w_{0}\lambda }\). [H.5](#5-the-required-finite-dimensional-highest-weight-modules)–[H.6](#5-the-required-finite-dimensional-highest-weight-modules) constructs their finite highest modules and finite \(B\)-stable flags; [G.4](#g-2-integration-without-a-simply-connected-assumption) integrates them to the actual \(G\) because their weights are actual. The principal-chart proof of [RA.10](#ra-10-actual-inverse-translations-and-their-natural-maps) gives fixed bundle maps
+
+<a id="nt-5"></a>
+
+\[
+\begin{gathered}
+i_\lambda:O_X\hookrightarrow L\otimes F,\\
+p_\lambda:O_X\otimes F'\\
+\twoheadrightarrow L.
+\end{gathered}
+\tag{NT.5}
+\]
+
+At \(x=gB\) these are \([g,1]_{- \lambda }\otimes g v_{\lambda}\) and \(v\mapsto [g,q(g^{-1}v)]_{- \lambda }\), where \(q:F' \to C_{- \lambda }\) is the lowest endpoint quotient. Their two character factors cancel under \(g\mapsto gb\), so the maps are actual global regular maps. In principal charts they are fixed one-dimensional endpoint inclusions/quotients inside finite vector spaces; extend the endpoint vector or covector to a basis to get local ordinary splittings. Therefore their cokernel/kernel is locally free, and tensoring with arbitrary coefficient sheaves, including nilpotent nonflat ones, preserves exactness. This is the complete arbitrary-dominant proof, without a strict-positivity, ampleness or multiple-of-\(2\rho\) restriction.
+
+For a universal finite-parameter module \(K\) and finite rational \(F_{*}\) give \(K\otimes _{C} F_{*}\) diagonal \(U\)-action \(\xi (v\otimes f)=u_{K}(\xi )v\otimes f+v\otimes r_{F_{*}}(\xi )f\). Its homogeneous finite \(B\)-flag is the associated flag of subbundles in the trivial bundle, and its quotients are actual \(L(\nu )\). The principal coefficient matrix \(R_{i}=r_{F_{*}}(s_{i})\) satisfies [T.5](#t-5-integral-tensor-shifts-and-the-actual-factor-characters)'s differentiated identity \(V_{\xi}R_i+r(\xi)R_i=R_i r(b'_{\xi,i})\). Thus its flag is \(U\)-stable, and on the \(\nu\) quotient the moment is \(V_{\xi}- (\Lambda - \nu )(a_{\xi ,i})\). Its **entire** central action is
+
+<a id="nt-6"></a>
+
+\[
+ z\longmapsto q_z(-\Lambda+\nu-\rho),
+ \tag{NT.6}
+\]
+
+not just its value at \(\varepsilon =0\). This follows either by that actual moment calculation and the polynomial [T.4](#t-4-the-center-is-a-scalar-actual-differential-operator) center identity, or by its universal parameter version. The actual bundle endpoint maps in [NT.5](#nt-5) intertwine these full endpoint moments. The finite deviation algebra acts on the coefficient factor and commutes with the diagonal \(U\)-action and each bundle flag.
+
+If a quotient has residue character \(\chi _{j}\) and \(\varepsilon ^{N}=0\), every \(z- \chi _{j}(z)\) acts there by a polynomial in \(\varepsilon\) with zero constant term. Hence \(m_{\chi _{j}}^{N}\) annihilates it. Each selected factor can have nonzero nilpotent central action; multiplicity one of its weight does not turn this polynomial into a scalar.
+
+<a id="nt-proof-4"></a>
+
+#### NT.4. Intrinsic finite projectors with a uniform generalized exponent
+
+Consider a finite flag of length d with the [NT.6](#nt-6) residue characters \(\chi _{j}\) and parameter exponent \(N\). Choose a central z taking distinct values \(a_{\chi}\) on the finitely many distinct characters. [HC.5](#hc-5-equality-of-characters-at-arbitrary-complex-parameters) provides a separator for each pair; a generic linear combination of this finite list avoids every equality, since finitely many proper linear hyperplanes cannot fill the coefficient space. On each flag quotient \((z- a_{j})^{N}=0\). Multiplying the d commuting operators in flag order sends each layer to the preceding layer and then to zero. Therefore the actual whole sheaf is annihilated by a polynomial dividing
+
+<a id="nt-7"></a>
+
+\[
+\begin{gathered}
+Q(z)=0,\\
+Q(t)=\prod_\chi(t-a_\chi)^{dN}.
+\end{gathered}
+\tag{NT.7}
+\]
+
+Polynomial CRT gives \(p_{\chi}(t)\) congruent to one modulo its factor and zero modulo every other factor. Division of these finite polynomials shows that their classes are orthogonal idempotents summing to one. Evaluating at z gives actual sheaf endomorphisms \(e_{\chi}=p_{\chi}(z)\), complex-linear and \(U\)-linear, with finite direct-sum images. They commute with the coefficient deviation algebra and with rational \(B\) because the center is fixed by the actual group action. None is presumed \(O_{X}\)-linear.
+
+Applying these exact idempotent projections to the finite flag keeps exactly the layers with character \(\chi\). On such a layer \(m_{\chi}^{N}=0\), so \(m_{\chi}^{dN}=0\) on the entire selected summand. On every other layer \(z- a_{\chi}\) has a finite geometric-series inverse: it is a nonzero scalar plus a nilpotent operator. Exact flag induction or the same CRT decomposition makes it invertible on the remaining summands. Thus the selected summand is precisely the subsheaf of elements locally killed by a power of \(m_{\chi}\). It is intrinsic and independent of \(z, p_{\chi}\) and the chosen common annihilating polynomial. Any \(U\)-linear map respects these subsheaves; choose a common finite separator and exponent for a finite diagram to see the same naturality directly.
+
+If \(\chi\) occurs in just one layer, its projected flag is zero before that layer and constant after it. The selected whole object is canonically isomorphic, by its actual flag inclusion or quotient, to that **whole generalized endpoint layer**. Its center still acts by [NT.6](#nt-6), with every \(\varepsilon\) term. Exactness of the projection does not impose scalar central action on this factor.
+
+<a id="nt-proof-5"></a>
+
+#### NT.5. Both endpoint comparisons, including the nilpotents
+
+For \(A_{M}=\operatorname{Loc}_{0} M\), its formal parameter is \(\tau _{0}(\varepsilon )=- \rho - \varepsilon\). Tensor the actual quotient \(p_{\lambda}\) to get
+
+<a id="nt-8"></a>
+
+\[
+ p_{A_M}:A_M\otimes F'\twoheadrightarrow\mathcal T_\lambda A_M.
+ \tag{NT.8}
+\]
+
+Its residue flag characters are \(\chi _{- \rho +\nu ' }\). The endpoint \(\nu ' =- \lambda\) gives \(\chi _{- \lambda - \rho }\). [E.5](#e-4-both-actual-translation-endpoints)/[E.20](#e-4-both-actual-translation-endpoints) applies to the original regular antidominant residue \(- \rho\) and proves this residue character occurs only at that lowest weight; [H.5](#5-the-required-finite-dimensional-highest-weight-modules)–[H.6](#5-the-required-finite-dimensional-highest-weight-modules) proves its multiplicity one. The finite projector argument [NT.4](#nt-proof-4) then gives the actual natural isomorphism
+
+<a id="nt-9"></a>
+
+\[
+\begin{gathered}
+(A_M\otimes F')^{[\chi_{-\lambda-\rho}]}\\
+\xrightarrow{\ p^{sel}\ }\mathcal T_\lambda A_M.
+\end{gathered}
+\tag{NT.9}
+\]
+
+The selected endpoint retains \(q_{z}(- \lambda - \rho - \varepsilon )\), exactly the target nilpotent branch. Its actual \(D_{\lambda ,N}\) structure is transported through [NT.9](#nt-9); no operator structure on the entire tensor, or inherited \(O\)-module structure on its complex-linear selected image, is presumed. Its inverse is the inverse of the projected endpoint factor map, constructed by the same finite flag and idempotent, with no choice of a simple label.
+
+For \(B_{H}=\operatorname{Loc}_{\lambda} H\) tensor the highest inclusion in [NT.5](#nt-5) to get
+
+<a id="nt-10"></a>
+
+\[
+ k_{B_H}:\mathcal S_\lambda B_H\hookrightarrow B_H\otimes F.
+ \tag{NT.10}
+\]
+
+The residue flag characters are \(\chi _{- \lambda - \rho +\nu }\). [E.4](#e-4-both-actual-translation-endpoints)/\(E\).18 uses the antidominant parameter \(- \rho\) and dominant \(\lambda\) to prove \(\chi _{- \rho }\) occurs only at \(\nu =\lambda\), with multiplicity one. Hence
+
+<a id="nt-11"></a>
+
+\[
+ \mathcal S_\lambda B_H
+       \xrightarrow{\ k^{sel}\ }(B_H\otimes F)^{[\chi_{-\rho}]}.
+ \tag{NT.11}
+\]
+
+Its full endpoint action is \(q_{z}(- \rho - \varepsilon )\), so it retains the entire principal finite branch. Its inverse transports the actual \(D_{0,N}\) structure to the selected image. Both comparisons preserve rational \(B\), coefficient \(\varepsilon\) and all maps. Although the whole tensor projector bound was dN, these selected endpoint isomorphisms show the endpoint has the original exponent \(N\) through the earlier regular branch isomorphism [NF.1](#nf-proof-1). No nilpotent direction has been collapsed to \(N=1\).
+
+<a id="nt-proof-6"></a>
+
+#### NT.6. Actual algebraic tensor translations and inverse evaluations
+
+The full finite tensor retains the ordinary \(O\) conditions before choosing a block. For finite \(U\)-generation, the free first-factor and diagonal actions on \(U\otimes F_{*}\) are isomorphic by \(u\otimes v\mapsto \sum u_{(1)}\otimes u_{(2)}v\), with inverse \(\sum u_{(1)}\otimes S(u_{(2)})v\). The coproduct/antipode identities making these composites the identity follow first on primitive Lie generators and then by multiplicativity; every sum on a fixed enveloping element is finite. Hence the diagonal \(U\otimes F_{*}\) is generated by a finite basis of \(1\otimes F_{*}\), and tensoring a finite free presentation onto \(M\) proves finite generation of \(M\otimes F_{*}\). Its Cartan weights are the direct sums of weights of \(M\) and \(F_{*}\), with finite-dimensional weight spaces. The tensor of finite b-spans gives local \(n_{+}\)-finiteness. The finite character flag and [NT.4](#nt-proof-4) provide the generalized ideal exponents of its selected blocks. Thus the algebraic projectors below are the usual ordinary generalized-block projectors on actual \(O\) modules.
+
+Global sections of a finite direct-sum decomposition by \(e_{\chi}\) have the same \(e_{\chi}\) image: sections preserve a finite direct sum, and the polynomial of global \(U\)-operators is precisely the section of the sheaf polynomial. Likewise \(\Gamma (K\otimes _{C} F_{*})=\Gamma K\otimes _{C} F_{*}\) since \(F_{*}\) is finite-dimensional. Consequently [NT.9](#nt-9)/[NT.11](#nt-11) and the actual BB units give
+
+<a id="nt-12"></a>
+
+\[
+\begin{gathered}
+\mathcal F_\lambda M\simeq\\
+\operatorname{pr}_{\chi_{-\lambda-\rho}}(M\otimes F_{-w_0\lambda}),\\
+\mathcal G_\lambda H\simeq\\
+\operatorname{pr}_{\chi_{-\rho}}(H\otimes F_\lambda).
+\end{gathered}
+\tag{NT.12}
+\]
+
+For the first identification apply \(\eta _{0,M}\otimes 1\), restrict to its intrinsic projector image, then apply \(\Gamma p^{sel}\). For the second apply \(\eta _{\lambda ,H}\otimes 1\) then \(\Gamma(k^{sel})^{-1}\). These are explicit natural \(U\)-linear and \(B\)-equivariant maps. Their inverse tensor-translation evaluations are exactly the composites [NT.4](#nt-4) under these identifications. The unit/counit and line evaluations prove the two triangle identities, retaining every central \(\varepsilon\) polynomial. Thus the usual generalized-block finite rational tensor translations are genuine mutually inverse exact equivalences, with their actual evaluation maps, at every finite exponent and in the full finite-exponent categories.
+
+All finite morphism/extension diagrams use a common maximum exponent and a common finite separator if needed. [ND.3](#nd-proof-3) proves the same compatibility for every Yoneda degree. The functors retain underlying subobjects, actual Cartan semisimplicity and the generalized rather than exact central ideal action. The geometric line maps also preserve the exact embedded standard/costandard/simple objects and their canonical maps by [NU.10](#nu-10)–[NU.11](#nu-11) and the same exact [RA.17](#ra-4-actual-twisted-transfer-density-and-fixed-twist-duality) transfer evaluation. Their generalized extensions are transported by the actual exact functors, not reconstructed from simple characters.
+
+<a id="nt-proof-7"></a>
+
+#### NT.7. Decisive calibrations and the retained boundary
+
+At \(N=1\) all maps, cocycles, projectors and evaluations reduce to the exact [RA.1](#ra-1-actual-line-morita-maps-strong-action-and-inverse-evaluations)–[RA.11](#ra-11-exact-calibrations-and-the-theorem-s-boundary) dictionary, with its full PBW objects and densities. At \(\lambda =0\) the line is canonically trivial, \(F_{\lambda}\) is the trivial one-dimensional actual representation, its tensor flag has one layer and the projector is the identity. [NT.4](#nt-4) therefore gives the identity translation maps, including the full \(\varepsilon\)-action at every \(N\).
+
+For actual \(A_{1}  \lambda =0,N=2\), the full branch has \(c=\Lambda (\Lambda +2)=2\varepsilon\) modulo \(\varepsilon ^{2}\). The earlier complete module \(w_{m},z_{m}\) has \(Cw_{m}=0\) and \(Cz_{m}=4w_{m+1}\); it has semisimple h and nonzero central nilpotence. [NF.4](#nf-proof-4) unit preserves that action, and \(\varepsilon z_{m}=2w_{m+1}\) remains nonzero in its localization. The \(\lambda =0\) translation is its literal identity. The torsor realization retains that monodromy defect; its rational right \(T\) linearization acts on Laurent coefficient weights, not by a nonsemisimple algebraic torus representation. A local logarithmic vertical model has monodromy \(\operatorname{exp}(- 2\pi i\varepsilon )\), with the nonzero nilpotent term retained.
+
+The genuine geometric density dual reflects \(\varepsilon\) by negative transpose as [NU.3](#nu-3)/[NU.9](#nu-9) proves. The ordinary restricted antipode dual has its separately proved opposite central ideal action in [NU.5](#nu-proof-5). Their two nilpotent central actions need not coincide, even when the residue characters coincide in \(A_{1}\). No identity \(\Gamma D=d_{S}\Gamma\) is inserted in this calibration.
+
+For a nonsymmetric \(A_{2}\) actual highest weight \(\lambda =(1,2)\) of the simply connected group, \(\gamma =(2,3)\). Its diagonal Cartan coordinates are \((7/3,1/3,- 8/3)\), so its six Weyl points are distinct and the opposite orbit is different. The object labels \(\mu _{w}=- w\gamma - \rho\), actual fiber \(- w\lambda\) and opposite restricted-dual labels \(w\gamma +\rho\) remain distinct as prescribed. This is one allowed actual-group calibration, not an assertion that this weight is actual for the adjoint quotient. For adjoint \(A_{1}\) only even Lie weights are actual: \(\lambda =1\) is excluded, while \(\lambda =0,2\) and their finite nilpotent branches are included. [R.16](#r-16-actual-root-groups-coroot-maps-and-the-exact-lattice-boundary) and the full proof above retain this obstruction for every central quotient.
+
+At the singular \(A_{1}\) point \(\Lambda =- 1, c+1=(\Lambda +1)^{2}\) and the same-exponent \(N=2\) branch map kills its source nilpotent. None of [NF.1](#nf-proof-1) or [NT.3](#nt-3)–[NT.12](#nt-12) is extended to that ramified singular case. The rank-two \(R=C[x,y]/(x,y)^{2}\) diagnostic of [NU.1](#nu-proof-1)/[NU.4](#nu-proof-4) additionally checks that the dualizing construction uses the genuine holonomic dual and not \(\operatorname{Hom}_{R}\).
+
+These are calibrations of the full all-rank proofs, not their premises. The free convention comparisons are [Ben-Zvi–Nadler](https://arxiv.org/html/1209.0188v2#S1.Thmthm2), [Etingof, Lecture29 §29.2](https://ocw.mit.edu/courses/18-757-representations-of-lie-groups-fall-2023/mit18_757_f23_lec29.pdf), and [Miličić](https://www.math.utah.edu/~milicic/Eprints/book.pdf). These results concern dominant actual \(\lambda\) and the associated favorable regular parameters, in every rank and actual central quotient. We leave weights outside the actual lattice, other regular complex parameter dictionaries and unfavorable hearts, singular generalized ramification and quotients, all parabolic and partial-flag variants, full linkage, projective-cover and highest-weight assertions, IC/Hecke/parity/purity/KL, and the wider matrix right-flatness, faithfulness, reconstruction, propagation, separation, \(D\)-type, monodromy, C1, half-order, initial-generator, arbitrary analytic proper, GL14/GL16, affine, critical and factorization assertions to their separate proofs.
+
+#### Complete earlier premises and exact illustrations
+
+The earlier complete proofs used below are linked in the proof inventory following the illustrations. Together with [NF.0](#nf-proof-0)–[NF.5](#nf-proof-5) and the full ND/NU/NT arguments, they supply every premise.
+
+Every Noetherian step uses GL01 Theorem5.1, including its complete generator-lifting and terminating degree-reduction proof.
+
+The reproducible illustrations explain the actual torsor operator transition and descent, the non-Gorenstein dualizing obstruction and negative-transpose construction, and a finite generalized-projector calibration with its surviving nilpotent endpoint. Each caption identifies its chart, matrices, domains, map directions and proof loci. They are precisely stated slices of the all-rank proof.
+
+![Actual chart operators and inverse torsor descent](assets/generalized-dictionary-torsor.png)
+
+**Figure ND.1.** Exact chart model \(q\ne 0, t_{i}=q^{2} t_{j}\). Differentiating at fixed \(t_{i}\) gives \(P_{i}=P_{j}- (2/q)E\) and invariant coefficients replace \(E\) by the full \(\Lambda =\lambda +\varepsilon\). The two evaluation maps [ND.11](#nd-11) use finite actual torus weights; right differentiation on functions is \(- E\), and the defect on lifted invariant coefficients is \(\Lambda\). This is one transition model, not a global chart presentation for every \(G\). Proof [ND.6](#nd-6)–[ND.11](#nd-11). Exact data, SVG, plotting source; free convention comparison: [Etingof, Lecture29 §29.2](https://ocw.mit.edu/courses/18-757-representations-of-lie-groups-fall-2023/mit18_757_f23_lec29.pdf).
+
+Full-resolution PNG
+
+![Non-Gorenstein finite parameter ring and genuine reflected dual](assets/generalized-dictionary-duality.png)
+
+**Figure NU.1.** Exact rank-two exponent-two local diagnostic \(R=C[x,y]/(x,y)^{2}\). Multiplication sends 1 to x,y, so its socle has dimension two; negative-transpose dual deviations send \(x^{*},y^{*}\) to \(- 1^{*}\), so the true dual socle has dimension one. The full rank-three dual retains both nilpotents. The right panel includes the ambient shift \(n+r\), bare opposite parameter \(- \Lambda - 2\rho\), density line \(L(- 2\lambda - 2\rho )\) and reflected final parameter. This is a local torus-connection/parameter diagnostic, with no global strong-\(B\) free-\(R\) object asserted. Proof [NU.1](#nu-proof-1)–[NU.9](#nu-9). Exact data, SVG, source. The ambient Ext/Spencer and determinant calculations are exact earlier HD proofs and local [NU.3](#nu-proof-3); the free formal-neighborhood comparison is [Ben-Zvi–Nadler, Remark1.2(4)](https://arxiv.org/html/1209.0188v2#S1.Thmthm2).
+
+Full-resolution PNG
+
+![Finite generalized projector with its nonzero nilpotent endpoint](assets/generalized-dictionary-projector.png)
+
+**Figure NT.1.** Exact six-dimensional \(C[z,\varepsilon ]\)-module calibration with three two-dimensional flag quotients, \(\varepsilon ^{2} =0\), residue characters 1,1,0 and diagonal z blocks \(1+3\varepsilon ,1+4\varepsilon ,2\varepsilon\). Identity upper off-diagonal blocks give the stated flag. The CRT projector for \(Q(z)=z^{6} (z- 1)^{6}\) has rank two and its last-block quotient q has inverse \(i=e_{0}\) times insertion: \(qi=1,iq=e_{0},zi=i(2\varepsilon ),\varepsilon _{W}i=i\varepsilon\), with \(\varepsilon _{W}\) the block-diagonal whole parameter deviation. The selected z and \(\varepsilon\) remain nonzero. This is a finite algebra/flag calibration, not the tensor flag of a specified group. The actual all-rank geometric tensor proof is [NT.3](#nt-proof-3)–[NT.6](#nt-proof-6). Data, SVG, source. The complete local CRT/endpoint proof is [NT.4](#nt-proof-4); free generalized-neighborhood comparison: [Ben-Zvi–Nadler](https://arxiv.org/html/1209.0188v2#S1.Thmthm2).
+
+Full-resolution PNG
+
+#### Complete proof components and precise boundary
+
+| Assertion | Complete proof |
+|---|---|
+| Finite formal branch, operator tower, whole global rings and all-QC equivalence | [NF.0](#nf-proof-0)–[NF.4](#nf-proof-4), including support-to-uniform-nilpotence and negative Tor without \(U\)-over-\(Z\) flatness |
+| Generalized ordinary \(O\), actual \(B\) integration and underlying submodules | [NF.5](#nf-proof-5); [ND.1](#nd-proof-1) actual root/torus operations for every central quotient |
+| Strong natural localization, all subobjects and finite Yoneda diagrams | [ND.2](#nd-proof-2)–[ND.3](#nd-proof-3), actual unit/counit and common finite-exponent diagram/zigzag proof |
+| Actual \(G/N_{+}\) torsor, invariant \(D_{A}, E+\operatorname{dr}\) monodromy, both inverse descents, regularity and conormal supports | [ND.4](#nd-proof-4)–[ND.7](#nd-proof-7) |
+| Full objects/canonical image, genuine formal density duality and opposite ordinary dual | [NU.1](#nu-proof-1)–[NU.6](#nu-proof-6); ambient Ext degree \(n+r\), vertical determinant cancellation, actual density line and reflected parameter |
+| Genuine generalized tensor projectors/translations with inverse maps | [NT.1](#nt-proof-1)–[NT.6](#nt-proof-6); all polynomial nilpotents, unique endpoint, full natural BB/line evaluations |
+| Exact recovery and calibrations | [NT.7](#nt-proof-7); \(N=1, \lambda =0\), nilpotent \(A_{1}\), nonsymmetric \(A_{2}\), adjoint lattice, singular same-exponent failure and non-Gorenstein diagnostic |
+
+This proves the stated finite-exponent generalized dictionary and its natural maps within the declared actual-character scope.
+
+These results concern dominant actual \(\lambda\) and the associated favorable regular parameters, in every rank and actual central quotient. We leave weights outside the actual lattice, other regular complex parameter dictionaries and unfavorable hearts, singular generalized ramification and quotients, all parabolic and partial-flag variants, full linkage, projective-cover and highest-weight assertions, IC/Hecke/parity/purity/KL, and the wider matrix right-flatness, faithfulness, reconstruction, propagation, separation, \(D\)-type, monodromy, C1, half-order, initial-generator, arbitrary analytic proper, GL14/GL16, affine, critical and factorization assertions to their separate proofs.
+
+Free human convention comparisons are [Ben-Zvi–Nadler, Remark1.2(4)](https://arxiv.org/html/1209.0188v2#S1.Thmthm2), [Etingof, Lecture29 §29.2](https://ocw.mit.edu/courses/18-757-representations-of-lie-groups-fall-2023/mit18_757_f23_lec29.pdf), and [Miličić’s author draft](https://www.math.utah.edu/~milicic/Eprints/book.pdf). The proof above fixes its own actual-group signs and density conventions.
+
+
+#### Complete earlier proof inventory
+
+| Earlier complete proof | Use here |
+|---|---|
+| [1. PBW from the actual three-letter ambiguity](#1-pbw-from-the-actual-three-letter-ambiguity) | ordered PBW, finite root cones and associated graded U. |
+| [2. The scalar polynomial is proved before orbit separation](#2-the-scalar-polynomial-is-proved-before-orbit-separation) | actual Verma central polynomial, with the highest-weight shift. |
+| [A. Finite-character projection on arbitrary sheaves](#a-finite-character-projection-on-arbitrary-sheaves) | G.6 only: finite intrinsic central projectors; exact multiplicity-one factors must not be confused with nilpotent factors. |
+| [D. Equivalence, exactness, and the singular quotient](#d-equivalence-exactness-and-the-singular-quotient) | actual balanced tensor/free-presentation unit and multiplication counit. |
+| [R.13 — Reduced roots and one-dimensional root spaces](#r-13-reduced-roots-and-one-dimensional-root-spaces) | actual root subgroups and coroots. |
+| [R.16 — Actual root groups, coroot maps and the exact lattice boundary](#r-16-actual-root-groups-coroot-maps-and-the-exact-lattice-boundary) | Q subset actual X(T) subset P, W lattice action and actual longest representative. |
+| [HC.4 — Symmetrization and the complete central-polynomial isomorphism](#hc-4-symmetrization-and-the-complete-central-polynomial-isomorphism) | complete HC isomorphism into shifted invariant polynomials. |
+| [HC.5 — Equality of characters at arbitrary complex parameters](#hc-5-equality-of-characters-at-arbitrary-complex-parameters) | equality of central scalar characters equals Weyl orbit equality. |
+| [T.1 — Universal complex twists from actual principal charts](#t-1-universal-complex-twists-from-actual-principal-charts) | actual principal-chart universal cocycle and line signs. |
+| [T.2 — The actual global Lie action, including its sign](#t-2-the-actual-global-lie-action-including-its-sign) | actual moment action and its base-point minus sign. |
+| [T.3 — Opposite PBW and the antipode identity](#t-3-opposite-pbw-and-the-antipode-identity) | opposite PBW and ordinary antipode; opposite generalized ideals must be retained. |
+| [T.4 — The center is a scalar actual differential operator](#t-4-the-center-is-a-scalar-actual-differential-operator) | full polynomial central action, not a label. |
+| [T.5 — Integral tensor shifts and the actual factor characters](#t-5-integral-tensor-shifts-and-the-actual-factor-characters) | actual integral line shifts and full tensor-factor action. |
+| [E.1. A complete elementary chamber lemma](#e-1-a-complete-elementary-chamber-lemma) | chamber freeness proving the regular point has no Weyl stabilizer. |
+| [E.4. Both actual translation endpoints](#e-4-both-actual-translation-endpoints) | both highest and lowest endpoint theorems, with their different regularity hypotheses. |
+| [S.3 — Full cohomology and detection, with every coefficient scope](#s-3-full-cohomology-and-detection-with-every-coefficient-scope) | all-QC cohomology and detection at the favorable residue parameter. |
+| [S.4 — The precise formal localization consequence and open boundary](#s-4-the-precise-formal-localization-consequence-and-open-boundary) | precise regular-antidominant abelian equivalence. |
+| [GR.6. The universal TDO and its explicit presentation](#gr-6-the-universal-tdo-and-its-explicit-presentation) | actual universal operator algebra, central A, A-freeness, actual G-action. |
+| [GR.8. Cohomology of the universal sheaf](#gr-8-cohomology-of-the-universal-sheaf) | universal acyclicity and bounded finite double-complex calculation. |
+| [GR.9. The actual invariant subalgebra is exactly the parameter algebra](#gr-9-the-actual-invariant-subalgebra-is-exactly-the-parameter-algebra) | full polynomial central embedding and invariant A, not sufficient alone for the global ring. |
+| [GR.10. Identification of the whole universal global ring](#gr-10-identification-of-the-whole-universal-global-ring) | whole universal ring \(U\otimes_Z A\) and A-free-Z rank \(\lvert W\rvert\). |
+| [GR.11. Specialization at an arbitrary complex parameter](#gr-11-specialization-at-an-arbitrary-complex-parameter) | explicit translated-variable Koszul specialization; retain negative degrees to prove the new point Tor lemma. |
+| [O.2. Actual algebraic B integration, including central quotients](#o-2-actual-algebraic-b-integration-including-central-quotients) | actual rational B integration, including central quotients. |
+| [RA.2. The ordinary exact category: full PBW bounds and actual weights](#ra-2-the-ordinary-exact-category-full-pbw-bounds-and-actual-weights) | finite PBW weight bounds, length measure, simple Verma heads and actual weight coset. |
+| [RA.3. Actual integration and the coherent strong localization equivalence](#ra-3-actual-integration-and-the-coherent-strong-localization-equivalence) | exact strong B localization and all underlying subobjects. |
+| [RA.4. Actual twisted transfer, density and fixed-twist duality](#ra-4-actual-twisted-transfer-density-and-fixed-twist-duality) | transfer/density and fixed exact-twist duality; no formal reflection is silently supplied. |
+| [RA.5. The entire root-chart calculation and the cell objects](#ra-5-the-entire-root-chart-calculation-and-the-cell-objects) | full chart/PBW basis and -w lambda fibre. |
+| [RA.6. Exhaustive simples, exact labels and regularity](#ra-6-exhaustive-simples-exact-labels-and-regularity) | exhaustive geometric simples and their regularity. |
+| [RA.7. Restricted ordinary duality between the two opposite characters](#ra-7-restricted-ordinary-duality-between-the-two-opposite-characters) | ordinary-antipode dual between the two opposite central categories. |
+| [RA.8. Density-correct self-dual simples and the full standard isomorphism](#ra-8-density-correct-self-dual-simples-and-the-full-standard-isomorphism) | full standard-Verma proof, not only a highest-weight calculation. |
+| [RA.9. The canonical extension map and its actual image](#ra-9-the-canonical-extension-map-and-its-actual-image) | actual canonical extension map and image. |
+| [RA.10. Actual inverse translations and their natural maps](#ra-10-actual-inverse-translations-and-their-natural-maps) | arbitrary-dominant maps, natural inverse line/BB maps and exact tensor-projector comparison. |
+| [RA.11. Exact calibrations and the theorem's boundary](#ra-11-exact-calibrations-and-the-theorem-s-boundary) | A1/A2 and actual-lattice calibrations, and the retained full boundary. |
+| GL01 Theorem5.1: generator lifting and terminating filtered Noetherian proof | complete terminating filtered Noetherian argument; complete proof. |
+| 1. Three ways to recognize a Noetherian module | finitely generated Noetherian submodules and maximal proper submodule existence. |
+| 2. Polynomial rings and finite geometric descriptions | polynomial Hilbert basis and finite algebra/quotient/localization Noetherianity. |
+| 2. The affine contraction | arbitrary quasi-coherent affine acyclicity, explicit standard-cover contraction. |
+| 3. Affine covers and affine morphisms | finite affine cover/intersection comparison. |
+| 3. Comparing overlaps with derived cohomology | bounded filtered-double-complex comparison and exact acyclic covers. |
+| 2. The quotient category | strong versus weak equivariance conventions. |
+| [5. The required finite-dimensional highest-weight modules](#5-the-required-finite-dimensional-highest-weight-modules) | actual finite highest modules, full B flag and extremal multiplicity |
+| [G.1. Unipotent coordinates](#g-1-unipotent-coordinates-and-an-actual-algebraic-big-cell) | actual unipotent group law and B factorization |
+| [G.2. Integration](#g-2-integration-without-a-simply-connected-assumption) | actual integration for every central quotient |
+| [G.3. Root](#g-3-root-mathrm-sl-_2-maps-normalizers-and-finite-bruhat-decomposition) | actual root normalizers and Bruhat cells |
+| [G.4. Closed orbit](#g-4-closed-orbit-quotient-charts-and-projectivity) | actual principal charts, quotient and projectivity |
+| [G.5. Dominance](#g-5-dominance-ampleness-and-exact-extremal-bundle-maps) | actual arbitrary-dominant endpoint bundle maps |
+| [O.4](#o-4-actual-cells-affine-inclusions-and-their-chart-bases) | actual cell charts/affine immersion/full transfer basis |
+| 1. | good filtration generators and extension filtrations |
+| 2. | intrinsic characteristic supports |
+| GF §7.1: independent whole-dimension Bernstein proof | complete independent whole-dimension Bernstein bound |
+| 3. | complete finite resolution, filtered Ext, concentration and biduality |
+| 5. | complete finite-connection dual/Spencer calculation |
+| 4. | actual canonical extension and no-boundary uniqueness |
+| 5. | actual simple minimal-extension classification |
+| Connections and the regular-holonomic definition | complete composition-factor definition, connection regularity and Serre proof |
+
+
 ## 6. What survives in the affine setting
 
 There are two different comparisons to keep apart.
@@ -5227,9 +6292,9 @@ Substitution of the actual coefficients in Section 1 also verifies every twisted
 
 ## What this lesson does not prove
 
-The quasi-coherent coherent-subsheaf approximation and the Serre generation/vanishing used here have exact earlier AG-QC proof locators in Section 5A.1. The projective-line line-bundle calculation remains the two-chart computation in Section 2. Section 5A.2 now proves general PBW and the Verma construction and central-polynomial calculation from explicitly specified triangular root data. The general semisimple root/group foundations are proved in Sections 5A.3a–5A.6; the category $\mathcal O$ principal exact-character dictionary is proved in Section 5A.11. Section 5A.12 proves the favorable regular exact-character dictionary and inverse translations for every dominant actual character. Generalized blocks, weights outside the actual character lattice, other regular complex, singular and parabolic dictionaries remain required; their planned prerequisite course is not an earlier proof provider. The restricted-dual example actually used in Section 5 is checked there on its complete basis.
+The quasi-coherent coherent-subsheaf approximation and the Serre generation/vanishing used here have exact earlier AG-QC proof locators in Section 5A.1. The projective-line line-bundle calculation remains the two-chart computation in Section 2. Section 5A.2 now proves general PBW and the Verma construction and central-polynomial calculation from explicitly specified triangular root data. The general semisimple root/group foundations are proved in Sections 5A.3a–5A.6; the category $\mathcal O$ principal exact-character dictionary is proved in Section 5A.11. Section 5A.12 proves the favorable regular exact-character dictionary and inverse translations for every dominant actual character. Sections 5A.13–5A.14 prove the ordinary generalized-center dictionary for dominant actual characters with semisimple Cartan and a discrete finite central exponent. Weights outside the actual character lattice, other regular complex, singular and parabolic dictionaries remain required; their planned prerequisite course is not an earlier proof provider. The restricted-dual example actually used in Section 5 is checked there on its complete basis.
 
-Sections 5A.1–5A.10 prove the full general flag-variety theorem (4.2)–(4.3), including the actual central-quotient ring. The full KL formula (5.7) remains required. Section 5A proves the general root/group, center and translation steps with full complex-parameter and quasi-coherent scope, proves the global ring at every complex parameter, proves the principal exact-character category O dictionary in Section 5A.11 and the regular dominant actual-character dictionary with inverse translations in Section 5A.12, and retains the Schubert IC, graded Hecke, broader category O and IC/RH obligations explicitly. A free citation is not a proof of any of those hypotheses. The projective-line D-affinity, equivalence, Verma dictionary and singular kernel remain proved in Sections 1–5. The infinite-dimensional constructions, affine flag theorem, critical Grassmannian equivalence, and localization/Hecke constructions retain their exact scope in Section 6; the finite-dimensional leaves certify none of those further constructions.
+Sections 5A.1–5A.10 prove the full general flag-variety theorem (4.2)–(4.3), including the actual central-quotient ring. The full KL formula (5.7) remains required. Section 5A proves the general root/group, center and translation steps with full complex-parameter and quasi-coherent scope, proves the global ring at every complex parameter, proves the principal exact-character category O dictionary in Section 5A.11, the regular dominant actual-character exact dictionary with inverse translations in Section 5A.12, and the finite central foundation and full ordinary generalized-center dictionary at dominant actual characters in Sections 5A.13–5A.14, and retains the Schubert IC, graded Hecke, broader category O and IC/RH obligations explicitly. A free citation is not a proof of any of those hypotheses. The projective-line D-affinity, equivalence, Verma dictionary and singular kernel remain proved in Sections 1–5. The infinite-dimensional constructions, affine flag theorem, critical Grassmannian equivalence, and localization/Hecke constructions retain their exact scope in Section 6; the finite-dimensional leaves certify none of those further constructions.
 
 ## References
 

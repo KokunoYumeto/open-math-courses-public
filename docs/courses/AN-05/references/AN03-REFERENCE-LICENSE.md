@@ -12,4 +12,4 @@ The recorded programme author is the AN-03 course-writing task; the recorded mod
 
 These references provide the named Fourier, local elliptic and smooth-coordinate inputs used by the final two AN-05 lessons. Linked parent chapters and illustrations are included only where separately supplied.
 
-The unmodified FSF [COPYING](an03-notices/COPYING) document is historical license information retained under its own copying terms; the programme chapters themselves use CC0. Cited human books, scans, OCR and source transcriptions are not included.
+The unmodified FSF COPYING document is historical license information retained under its own copying terms; the programme chapters themselves use CC0. Cited human books, scans, OCR and source transcriptions are not included.

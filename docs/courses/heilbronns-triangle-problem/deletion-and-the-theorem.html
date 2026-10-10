@@ -1,0 +1,114 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Deletion and the theorem</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents</a><a href="determinant-zero.html">Previous lesson</a><a href="src/deletion-and-the-theorem.md">Editable source</a></nav><main><article><h1 id="deletion-and-the-theorem">Deletion and the theorem</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The previous lessons bound the probability that two samples have the same projected point (Lemma 1.1 of <a href="sampling-integer-columns.html">Sampling integer columns</a>) and that three samples form a bad triple, with distinct projections and a determinant of absolute value at most <span class="math" data-tex="\(\tau\)">\(\tau\)</span> (Corollary 3.2 there). This lesson takes about <span class="math" data-tex="\(2n\)">\(2n\)</span> samples with <span class="math" data-tex="\(n\approx r\sqrt{N^3/\tau}\)">\(n\approx r\sqrt{N^3/\tau}\)</span>, deletes one sample from every bad pair or triple, and keeps <span class="math" data-tex="\(n\)">\(n\)</span> points whose triangles all have area at least <span class="math" data-tex="\(\tau/(16N^3)\)">\(\tau/(16N^3)\)</span>. Comparing <span class="math" data-tex="\(n\)">\(n\)</span> with this area gives <span class="math" data-tex="\(n^2\Delta\geq r^2/64\)">\(n^2\Delta\geq r^2/64\)</span>; since every parameter is a fixed power of the prime <span class="math" data-tex="\(r\)">\(r\)</span> up to constants, <span class="math" data-tex="\(r^2\)">\(r^2\)</span> is a fixed power of <span class="math" data-tex="\(n\)">\(n\)</span>. A prime in an interval then passes from these special <span class="math" data-tex="\(n\)">\(n\)</span> to every large <span class="math" data-tex="\(n\)">\(n\)</span>. This proves Theorem 1.3 of <a href="small-triangles-and-the-plan.html">Small triangles and the plan</a>.</p>
+<h2 id="1-deleting-the-bad-events">1. Deleting the bad events</h2>
+<p>Keep the parameters of the previous lessons, with <span class="math" data-tex="\(d=41\)">\(d=41\)</span> and <span class="math" data-tex="\(k=T^2+1\geq2\)">\(k=T^2+1\geq2\)</span>. Since <span class="math" data-tex="\(B\)">\(B\)</span> is an odd prime and <span class="math" data-tex="\(k\geq2\)">\(k\geq2\)</span>, <span class="math" data-tex="\(B^{k-1}\geq3\)">\(B^{k-1}\geq3\)</span>; so <span class="math" data-tex="\(\tau\geq1\)">\(\tau\geq1\)</span> and
+<span class="math math-display" data-tex="\[
+\frac{B^{k-1}}3\leq\tau\leq\frac{B^{k-1}}2 .\tag{1.1}
+\]">\[
+\frac{B^{k-1}}3\leq\tau\leq\frac{B^{k-1}}2 .\tag{1.1}
+\]</span>
+Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a_r=r\sqrt{N^3/\tau},\\
+n_r=\lfloor a_r\rfloor .
+\end{gathered}\tag{1.2}
+\]">\[
+\begin{gathered}
+a_r=r\sqrt{N^3/\tau},\\
+n_r=\lfloor a_r\rfloor .
+\end{gathered}\tag{1.2}
+\]</span>
+Take <span class="math" data-tex="\(2n_r\)">\(2n_r\)</span> samples with the shared choices and conditional draws of the sixth lesson. Let <span class="math" data-tex="\(Z\)">\(Z\)</span> be the number of unordered pairs of samples with equal projected points plus the number of unordered bad triples.</p>
+<p><strong>Lemma 1.1.</strong> <span class="math" data-tex="\(\mathbb EZ=o(n_r)\)">\(\mathbb EZ=o(n_r)\)</span> as <span class="math" data-tex="\(r\to\infty\)">\(r\to\infty\)</span>.</p>
+<p><em>Proof.</em> There are at most <span class="math" data-tex="\(2n_r^2\)">\(2n_r^2\)</span> pairs and <span class="math" data-tex="\(\frac43n_r^3\)">\(\frac43n_r^3\)</span> triples, so by linearity of expectation (no independence between the events is needed) and the two bounds of the sixth lesson,
+<span class="math math-display" data-tex="\[
+\frac{\mathbb EZ}{n_r}\leq C\,n_r\frac{(hq)^6}{N^3}+C\,n_r^2\bigl(\log(2N)\bigr)^2\frac h{N^3r^d}.
+\]">\[
+\frac{\mathbb EZ}{n_r}\leq C\,n_r\frac{(hq)^6}{N^3}+C\,n_r^2\bigl(\log(2N)\bigr)^2\frac h{N^3r^d}.
+\]</span>
+For the first term, <span class="math" data-tex="\(n_r\leq rN^{3/2}\tau^{-1/2}\)">\(n_r\leq rN^{3/2}\tau^{-1/2}\)</span> and <span class="math" data-tex="\(N=(hq)^{10}\)">\(N=(hq)^{10}\)</span> give <span class="math" data-tex="\(n_r(hq)^6N^{-3}\leq r(hq)^{-9}\to0\)">\(n_r(hq)^6N^{-3}\leq r(hq)^{-9}\to0\)</span>, as <span class="math" data-tex="\(r\leq h\)">\(r\leq h\)</span>. For the second, <span class="math" data-tex="\(n_r^2\leq r^2N^3/\tau\)">\(n_r^2\leq r^2N^3/\tau\)</span> gives the bound <span class="math" data-tex="\((\log(2N))^2\frac h\tau r^{2-d}\)">\((\log(2N))^2\frac h\tau r^{2-d}\)</span>. By (1.1), <span class="math" data-tex="\(h/\tau\leq3B\leq600k^2r^{30}\)">\(h/\tau\leq3B\leq600k^2r^{30}\)</span>. Also <span class="math" data-tex="\(\log(2N)\leq C_k\log r\)">\(\log(2N)\leq C_k\log r\)</span>, since <span class="math" data-tex="\(N=(hq)^{10}\)">\(N=(hq)^{10}\)</span>, <span class="math" data-tex="\(q\leq2h^{100}\)">\(q\leq2h^{100}\)</span> and <span class="math" data-tex="\(h=B^k\leq(200k^2r^{30})^k\)">\(h=B^k\leq(200k^2r^{30})^k\)</span>. With <span class="math" data-tex="\(d=41\)">\(d=41\)</span> the second term is at most <span class="math" data-tex="\(C_k(\log r)^2r^{32-41}\to0\)">\(C_k(\log r)^2r^{32-41}\to0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>So for all large <span class="math" data-tex="\(r\)">\(r\)</span> some outcome of the random construction has <span class="math" data-tex="\(Z&lt;n_r\)">\(Z&lt;n_r\)</span>. Fix such an outcome. For every pair of samples with equal projections and every bad triple, <em>mark</em> one of its samples; at most <span class="math" data-tex="\(Z&lt;n_r\)">\(Z&lt;n_r\)</span> samples are marked, so at least <span class="math" data-tex="\(n_r\)">\(n_r\)</span> unmarked samples remain. Keep <span class="math" data-tex="\(n_r\)">\(n_r\)</span> of them and let <span class="math" data-tex="\(P_r\subseteq[0,1)^2\)">\(P_r\subseteq[0,1)^2\)</span> be the set of their projections.</p>
+<p><strong>Lemma 1.2.</strong> <span class="math" data-tex="\(|P_r|=n_r\)">\(|P_r|=n_r\)</span> and
+<span class="math math-display" data-tex="\[
+\Delta(P_r)\geq\frac\tau{16N^3}.
+\]">\[
+\Delta(P_r)\geq\frac\tau{16N^3}.
+\]</span></p>
+<p><em>Proof.</em> Two kept samples have different projections, since otherwise one of them would be marked; so <span class="math" data-tex="\(|P_r|=n_r\)">\(|P_r|=n_r\)</span>. Three kept samples have pairwise distinct projections and do not form a bad triple, so their matrix <span class="math" data-tex="\(A\)">\(A\)</span> has <span class="math" data-tex="\(|\det A|&gt;\tau\)">\(|\det A|&gt;\tau\)</span>. By the area formula (Lemma 2.1 of the first lesson) and <span class="math" data-tex="\(N\leq A_{3j}&lt;2N\)">\(N\leq A_{3j}&lt;2N\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{Area}=\frac{|\det A|}{2A_{31}A_{32}A_{33}}&gt;\frac\tau{2(2N)^3}.\qquad\square
+\]">\[
+\operatorname{Area}=\frac{|\det A|}{2A_{31}A_{32}A_{33}}&gt;\frac\tau{2(2N)^3}.\qquad\square
+\]</span>
+In particular no three points of <span class="math" data-tex="\(P_r\)">\(P_r\)</span> are collinear.</p>
+<p>Since <span class="math" data-tex="\(N\geq h^{10}\)">\(N\geq h^{10}\)</span> and <span class="math" data-tex="\(\tau&lt;h\)">\(\tau&lt;h\)</span>, <span class="math" data-tex="\(a_r&gt;rh^{29/2}\to\infty\)">\(a_r&gt;rh^{29/2}\to\infty\)</span>, so <span class="math" data-tex="\(n_r\geq a_r/2\)">\(n_r\geq a_r/2\)</span> for large <span class="math" data-tex="\(r\)">\(r\)</span>. With Lemma 1.2,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+n_r^2\Delta(P_r)&amp;\geq\frac{a_r^2}4\cdot\frac\tau{16N^3}\\
+&amp;=\frac{r^2}{64}.
+\end{aligned}\tag{1.3}
+\]">\[
+\begin{aligned}
+n_r^2\Delta(P_r)&amp;\geq\frac{a_r^2}4\cdot\frac\tau{16N^3}\\
+&amp;=\frac{r^2}{64}.
+\end{aligned}\tag{1.3}
+\]</span></p>
+<h2 id="2-the-exponent">2. The exponent</h2>
+<p><strong>Lemma 2.1 (size of <span class="math" data-tex="\(n_r\)">\(n_r\)</span>).</strong> Put <span class="math" data-tex="\(\beta=1515k-\frac{k-1}2=\frac{3029k+1}2\)">\(\beta=1515k-\frac{k-1}2=\frac{3029k+1}2\)</span> and <span class="math" data-tex="\(\alpha=1+30\beta=45435k+16\)">\(\alpha=1+30\beta=45435k+16\)</span>. There are constants <span class="math" data-tex="\(A_k,D_k&gt;0\)">\(A_k,D_k&gt;0\)</span> such that, for all large primes <span class="math" data-tex="\(r\)">\(r\)</span>,
+<span class="math math-display" data-tex="\[
+A_kr^\alpha\leq n_r\leq D_kr^\alpha .\tag{2.1}
+\]">\[
+A_kr^\alpha\leq n_r\leq D_kr^\alpha .\tag{2.1}
+\]</span></p>
+<p><em>Proof.</em> <span class="math" data-tex="\(N^{3/2}=(hq)^{15}\)">\(N^{3/2}=(hq)^{15}\)</span> with <span class="math" data-tex="\(h^{100}&lt;q\leq2h^{100}\)">\(h^{100}&lt;q\leq2h^{100}\)</span>, so <span class="math" data-tex="\(h^{1515}&lt;N^{3/2}\leq2^{15}h^{1515}=2^{15}B^{1515k}\)">\(h^{1515}&lt;N^{3/2}\leq2^{15}h^{1515}=2^{15}B^{1515k}\)</span>; and by (1.1), <span class="math" data-tex="\(\sqrt2\,B^{-(k-1)/2}\leq\tau^{-1/2}\leq\sqrt3\,B^{-(k-1)/2}\)">\(\sqrt2\,B^{-(k-1)/2}\leq\tau^{-1/2}\leq\sqrt3\,B^{-(k-1)/2}\)</span>. Hence <span class="math" data-tex="\(\sqrt2\,rB^\beta&lt;a_r\leq2^{15}\sqrt3\,rB^\beta\)">\(\sqrt2\,rB^\beta&lt;a_r\leq2^{15}\sqrt3\,rB^\beta\)</span>. Since <span class="math" data-tex="\(100k^2r^{30}&lt;B\leq200k^2r^{30}\)">\(100k^2r^{30}&lt;B\leq200k^2r^{30}\)</span>, <span class="math" data-tex="\(B^\beta\)">\(B^\beta\)</span> lies between two constant multiples of <span class="math" data-tex="\(r^{30\beta}\)">\(r^{30\beta}\)</span>. With <span class="math" data-tex="\(a_r/2\leq n_r\leq a_r\)">\(a_r/2\leq n_r\leq a_r\)</span> this gives (2.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Put
+<span class="math math-display" data-tex="\[
+\eta=\frac2\alpha=\frac2{45435k+16}.\tag{2.2}
+\]">\[
+\eta=\frac2\alpha=\frac2{45435k+16}.\tag{2.2}
+\]</span>
+By (2.1), <span class="math" data-tex="\(r^\alpha\geq n_r/D_k\)">\(r^\alpha\geq n_r/D_k\)</span>, so <span class="math" data-tex="\(r^2=(r^\alpha)^\eta\geq D_k^{-\eta}n_r^\eta\)">\(r^2=(r^\alpha)^\eta\geq D_k^{-\eta}n_r^\eta\)</span>, and (1.3) becomes
+<span class="math math-display" data-tex="\[
+\Delta(P_r)\geq c_*\,n_r^{-2+\eta}\tag{2.3}
+\]">\[
+\Delta(P_r)\geq c_*\,n_r^{-2+\eta}\tag{2.3}
+\]</span>
+with <span class="math" data-tex="\(c_*=1/(64D_k^\eta)\)">\(c_*=1/(64D_k^\eta)\)</span>.
+With <span class="math" data-tex="\(d=41\)">\(d=41\)</span>, <span class="math" data-tex="\(M=\binom{163}{41}\approx10^{38.8}\)">\(M=\binom{163}{41}\approx10^{38.8}\)</span>, <span class="math" data-tex="\(T=\binom M3\approx10^{115.6}\)">\(T=\binom M3\approx10^{115.6}\)</span> and <span class="math" data-tex="\(k=T^2+1\approx10^{231.1}\)">\(k=T^2+1\approx10^{231.1}\)</span>; so <span class="math" data-tex="\(\eta\approx10^{-235.5}\)">\(\eta\approx10^{-235.5}\)</span>. It is explicit and positive, and no attempt was made to make it large.</p>
+<h2 id="3-every-large-number-of-points">3. Every large number of points</h2>
+<p><em>Proof of Theorem 1.3 of the first lesson.</em> Let <span class="math" data-tex="\(n\)">\(n\)</span> be large and put <span class="math" data-tex="\(m=\lceil(n/A_k)^{1/\alpha}\rceil\)">\(m=\lceil(n/A_k)^{1/\alpha}\rceil\)</span>. By Lemma 4.3 of the first lesson there is a prime <span class="math" data-tex="\(r\)">\(r\)</span> with <span class="math" data-tex="\(m&lt;r\leq2m\)">\(m&lt;r\leq2m\)</span>; for large <span class="math" data-tex="\(n\)">\(n\)</span> it is large enough for all the constructions above. Since <span class="math" data-tex="\((n/A_k)^{1/\alpha}\geq1\)">\((n/A_k)^{1/\alpha}\geq1\)</span>, <span class="math" data-tex="\(m\leq2(n/A_k)^{1/\alpha}\)">\(m\leq2(n/A_k)^{1/\alpha}\)</span>, and (2.1) gives
+<span class="math math-display" data-tex="\[
+n\leq A_km^\alpha\leq A_kr^\alpha\leq n_r\leq D_kr^\alpha\leq D_k(2m)^\alpha\leq\frac{4^\alpha D_k}{A_k}\,n .
+\]">\[
+n\leq A_km^\alpha\leq A_kr^\alpha\leq n_r\leq D_kr^\alpha\leq D_k(2m)^\alpha\leq\frac{4^\alpha D_k}{A_k}\,n .
+\]</span>
+So <span class="math" data-tex="\(n\leq n_r\leq C_kn\)">\(n\leq n_r\leq C_kn\)</span> with <span class="math" data-tex="\(C_k=\max\{1,4^\alpha D_k/A_k\}\)">\(C_k=\max\{1,4^\alpha D_k/A_k\}\)</span>; this uses only the two-sided bounds, not any monotonicity of <span class="math" data-tex="\(n_r\)">\(n_r\)</span>. Keep any <span class="math" data-tex="\(n\)">\(n\)</span> points of <span class="math" data-tex="\(P_r\)">\(P_r\)</span>: deleting points cannot decrease the smallest triangle area. Since <span class="math" data-tex="\(-2+\eta&lt;0\)">\(-2+\eta&lt;0\)</span>, (2.3) gives
+<span class="math math-display" data-tex="\[
+\Delta(n)\geq c_*n_r^{-2+\eta}\geq c_*C_k^{-2+\eta}n^{-2+\eta}.
+\]">\[
+\Delta(n)\geq c_*n_r^{-2+\eta}\geq c_*C_k^{-2+\eta}n^{-2+\eta}.
+\]</span>
+Take <span class="math" data-tex="\(c_1=c_*C_k^{-2+\eta}\)">\(c_1=c_*C_k^{-2+\eta}\)</span>. All constants depend only on <span class="math" data-tex="\(k\)">\(k\)</span>, which is fixed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Remark 3.1 (the deletion argument).</strong> Komlós, Pintz and Szemerédi needed a hypergraph independence lemma to delete the small triangles of a random set. Here the expected number of bad events is already <span class="math" data-tex="\(o(n)\)">\(o(n)\)</span>, and the elementary alteration (delete one point of each) suffices; the gain comes entirely from the arithmetic distribution of the sampled points.</p>
+<p><strong>Remark 3.2 (formal verification).</strong> OpenAI's release contains a Lean formalization. According to its scope document, it constructs an unbounded sequence of sizes <span class="math" data-tex="\(n\)">\(n\)</span> and point sets for which every triangle has area at least <span class="math" data-tex="\(n^{-2+\eta}\)">\(n^{-2+\eta}\)</span> for one fixed <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, which already refutes the bound (1.1) of the first lesson for every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. The formal statement concerns an unbounded sequence of sizes, like the sizes <span class="math" data-tex="\(n_r\)">\(n_r\)</span> here. The statement for every large <span class="math" data-tex="\(n\)">\(n\)</span> (Section 3) is proved in the paper and in this course, but it is not part of the linked formal statement.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1.</strong> Show that <span class="math" data-tex="\(\lfloor x/2\rfloor\geq x/3\)">\(\lfloor x/2\rfloor\geq x/3\)</span> for every integer <span class="math" data-tex="\(x\geq3\)">\(x\geq3\)</span>, as used in (1.1).</p>
+<p><strong>4.2.</strong> Why does the argument need an outcome with <span class="math" data-tex="\(Z&lt;n_r\)">\(Z&lt;n_r\)</span>, rather than only <span class="math" data-tex="\(\mathbb EZ\)">\(\mathbb EZ\)</span> small? What would go wrong with <span class="math" data-tex="\(n_r\)">\(n_r\)</span> samples instead of <span class="math" data-tex="\(2n_r\)">\(2n_r\)</span>?</p>
+<p><strong>4.3.</strong> Check the computation of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> from <span class="math" data-tex="\(\beta\)">\(\beta\)</span>: <span class="math" data-tex="\(1+30\cdot\frac{3029k+1}2=45435k+16\)">\(1+30\cdot\frac{3029k+1}2=45435k+16\)</span>.</p>
+<p><strong>4.4.</strong> Show that deleting points from a set <span class="math" data-tex="\(P\)">\(P\)</span> with at least three points cannot decrease <span class="math" data-tex="\(\Delta(P)\)">\(\Delta(P)\)</span>.</p>
+<p><strong>4.5.</strong> Suppose the label field had <span class="math" data-tex="\(r^d\)">\(r^d\)</span> elements with <span class="math" data-tex="\(d=31\)">\(d=31\)</span> instead of <span class="math" data-tex="\(41\)">\(41\)</span>. Which step of the proof fails?</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> For even <span class="math" data-tex="\(x\)">\(x\)</span>, <span class="math" data-tex="\(\lfloor x/2\rfloor=x/2\geq x/3\)">\(\lfloor x/2\rfloor=x/2\geq x/3\)</span>. For odd <span class="math" data-tex="\(x\geq3\)">\(x\geq3\)</span>, <span class="math" data-tex="\(\lfloor x/2\rfloor=(x-1)/2\geq x/3\)">\(\lfloor x/2\rfloor=(x-1)/2\geq x/3\)</span> because <span class="math" data-tex="\(3(x-1)\geq2x\)">\(3(x-1)\geq2x\)</span>, that is <span class="math" data-tex="\(x\geq3\)">\(x\geq3\)</span>.</p>
+<p><strong>4.2.</strong> A small expectation only says that <em>some</em> outcome has few bad events (if every outcome had <span class="math" data-tex="\(Z\geq n_r\)">\(Z\geq n_r\)</span>, the expectation would be at least <span class="math" data-tex="\(n_r\)">\(n_r\)</span>). The construction needs one concrete point set. With <span class="math" data-tex="\(n_r\)">\(n_r\)</span> samples, deleting up to <span class="math" data-tex="\(Z\)">\(Z\)</span> of them would leave fewer than <span class="math" data-tex="\(n_r\)">\(n_r\)</span> points; doubling the number of samples changes <span class="math" data-tex="\(\mathbb EZ/n_r\)">\(\mathbb EZ/n_r\)</span> only by a constant factor.</p>
+<p><strong>4.3.</strong> <span class="math" data-tex="\(30\cdot\frac{3029k+1}2=15(3029k+1)\)">\(30\cdot\frac{3029k+1}2=15(3029k+1)\)</span>, which is <span class="math" data-tex="\(45435k+15\)">\(45435k+15\)</span>; add <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>4.4.</strong> <span class="math" data-tex="\(\Delta(P)\)">\(\Delta(P)\)</span> is a minimum over the triples of <span class="math" data-tex="\(P\)">\(P\)</span>; a subset has fewer triples, and a minimum over a subset of a set of numbers is at least the minimum over the whole set.</p>
+<p><strong>4.5.</strong> The second term in Lemma 1.1 is <span class="math" data-tex="\(C_k(\log r)^2r^{2-d}\cdot h/\tau\)">\(C_k(\log r)^2r^{2-d}\cdot h/\tau\)</span> with <span class="math" data-tex="\(h/\tau\)">\(h/\tau\)</span> of order <span class="math" data-tex="\(r^{30}\)">\(r^{30}\)</span>; it tends to zero only if <span class="math" data-tex="\(d&gt;32\)">\(d&gt;32\)</span>. With <span class="math" data-tex="\(d=31\)">\(d=31\)</span> the expected number of bad triples would not be <span class="math" data-tex="\(o(n_r)\)">\(o(n_r)\)</span>. The exponent <span class="math" data-tex="\(30\)">\(30\)</span> comes from <span class="math" data-tex="\(B\approx L^3=r^{30}\)">\(B\approx L^3=r^{30}\)</span>; <span class="math" data-tex="\(d=41\)">\(d=41\)</span> leaves a margin of <span class="math" data-tex="\(r^{-9}\)">\(r^{-9}\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-H] OpenAI, <em>A power improvement in the Heilbronn triangle lower bound</em>, OpenAI Math Release preprint, 25 September 2026, Section 8. https://github.com/openai/math/tree/main/preprints/A-power-improvement-in-the-Heilbronn-triangle-lower-bound-September-25-2026</li>
+<li>[OpenAI-Lean] OpenAI Math Release, <em>A power improvement in the Heilbronn triangle lower bound</em>, scope of the Lean formalization. https://github.com/openai/math/blob/main/lean/docs/191.md</li>
+<li>J. Komlós, J. Pintz and E. Szemerédi (1982) are named for credit for the earlier logarithmic improvement; the course does not use their results.</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

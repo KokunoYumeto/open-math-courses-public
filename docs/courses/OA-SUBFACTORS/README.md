@@ -30,7 +30,7 @@ The common-center variance and controlled-tunnel readings add four complete solu
 
 The reflected-tower reading now records the mathematical source route for its finite commutant and skipped-level comparison, preserving every proof and all seven solved exercises.
 
-See sources and proof status, [the license](LICENSE.md) and [third-party notices](THIRD-PARTY.txt). Original exposition is CC0 1.0. Referenced human books and external lesson bodies are not included.
+See sources and proof status, [the license](LICENSE.md) and third-party notices. Original exposition is CC0 1.0. Referenced human books and external lesson bodies are not included.
 
 These readings supply explicit proofs and precise links to their construction providers. Takesaki III provides the compared path and tower exposition; the lesson proofs retain the corrected scalar endpoint, support conditions and trace normalizations. The course is incomplete and separately identified proof and source obligations remain.
 

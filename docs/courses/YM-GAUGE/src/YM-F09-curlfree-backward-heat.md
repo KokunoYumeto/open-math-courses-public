@@ -838,3 +838,9 @@ then uses the actual wave equation to close a physical-time
 continuation bound. The wave norms in CF.22 retain their
 forcing terms throughout that next step. The main Lesson 9
 exercise set also remains required before the unit is complete.
+
+
+## Further reading: comparing two connections
+
+[Spatial heat-curvature differences](../classical-spatial-difference.html),
+LG.1–LG.32, applies the same backward operators to the actual field difference and retains both its endpoint and fractional wave norm.

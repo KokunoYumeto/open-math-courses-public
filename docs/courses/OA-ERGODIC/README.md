@@ -38,4 +38,4 @@ The current edition has 24,197 formulas rendered without KaTeX errors. Checks co
 
 Source access, reuse rights and comparative expression reviews are distinct from mathematical checking. The current review has not checked every source-access route or completed the comparison of wording and distinctive selection and arrangement against every source. Historical research citations remain for attribution. A free reading link, changed wording or a CC0 notice does not establish permission to adapt third-party expression.
 
-Original expression is dedicated to the public domain under CC0 1.0. The cited literature retains its own rights. KaTeX retains its [MIT notice](reader/assets/KaTeX-LICENSE.txt). See [LICENSE.md](LICENSE.md).
+Original expression is dedicated to the public domain under CC0 1.0. The cited literature retains its own rights. KaTeX retains its MIT notice. See LICENSE.md.

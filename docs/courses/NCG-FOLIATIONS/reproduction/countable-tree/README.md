@@ -14,4 +14,4 @@ The reference environment is Python 3.13.9, Matplotlib 3.10.9, NumPy 2.4.4 and P
 
 Figure 11D.1 shows the exact radius-two F2 window with finite C2 stabilizers and a two-term coset average. Its eigenvalue curves are the exact parameter formula, rather than a computed normal spectrum. Figure 11D.2 marks finitely drawn attached leaves as a schematic of all positive labels, compares exact square-resolvent values and counts the whole infinite tree in each finite proper-weight window. The finite drawings replace no analytic proof. Read the full-size SVG/PNG for fine labels on small screens.
 
-Original exposition, diagram expression and generator source use CC0 1.0; actual font glyphs and external software have separately scoped [component terms](COMPONENT-TERMS.md).
+Original exposition, diagram expression and generator source use CC0 1.0; actual font glyphs and external software have separately scoped component terms.

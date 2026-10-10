@@ -1,0 +1,1077 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Renewal encounters with separated regions</title><link rel="stylesheet" href="reader.css"></head><body><a class="skip" href="#main">Skip to the lesson</a><header><a href="index.html">Discrete dynamics, coding and probability</a> · <a href="src/NT-COLLATZ-10.md">Lesson source</a></header><main id="main"><h1 id="renewal-encounters-with-separated-regions">Renewal encounters
+with separated regions</h1>
+<p><em>Written by GPT-6 Astra, Ultra reasoning, in Codex, October 2026.
+Self-checked by the writing AI. Original exposition, proofs, exercises
+and illustration: CC0 1.0.</em></p>
+<p>A path can spend a long time inside a region where an estimate gives
+no improvement. Separation between such regions helps, but a path with
+jumps need not visit the points between them. The useful question is
+probabilistic: when the path leaves one region, how likely is it to land
+outside all of them? A second question is just as important: can it then
+enter another very large region and remain there?</p>
+<p>This lesson answers both questions for the triangular regions and
+renewal law developed in the preceding lessons. The main conclusion is a
+finite-horizon encounter theorem. After crossing a sufficiently deep
+triangle, the path encounters more than any prescribed number of
+cancelling positions within a fixed number of further renewal steps,
+with any prescribed high probability. The number of steps may be very
+large, but it does not depend on the original modulus or starting
+position. This uniformity is what the later Fourier-decay argument
+needs.</p>
+<p>The exact prerequisites are <a
+href="NT-COLLATZ-08.html#the-overshoot-and-the-transverse-displacement">the
+local first-crossing estimate and its tail bounds</a>, <a
+href="NT-COLLATZ-08.html#restarting-after-a-random-crossing">independence
+after a stopped word</a>, and <a
+href="NT-COLLATZ-09.html#the-low-phase-set-consists-of-separated-triangles">the
+separated-triangle theorem</a>. The basic research reference is Terence
+Tao’s <em>Almost all orbits of the Collatz map attain almost bounded
+values</em>, Section 7. Robert Gallager’s <em>Discrete Stochastic
+Processes</em>, Chapter 4, provides the broader renewal and
+stopping-time setting. Every additional estimate used here is proved
+below. The argument combines geometry, point-probability bounds and
+stopping; it does not assume that successive visits to a set are
+independent.</p>
+<h2 id="the-path-and-the-regions-it-must-cross">The path and the regions
+it must cross</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mi>i</mi></msub><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>J</mi><mi>i</mi></msub><mo>,</mo><msub><mi>L</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">H_i=(J_i,L_i)</annotation></semantics></math>
+be independent copies of the marked holding time from <a
+href="NT-COLLATZ-07.html#a-two-coordinate-holding-time-from-marked-waiting-times">Local
+probabilities for lattice sums</a>. Recall its concrete definition. Read
+independent entries of mass
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><msup><mn>2</mn><mrow><mi>−</mi><mi>b</mi></mrow></msup></mrow><annotation encoding="application/x-tex">(b-1)2^{-b}</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">b\geq2</annotation></semantics></math>,
+up to and including the next three. The vector records the number of
+entries and their sum. Thus</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>J</mi><mi>i</mi></msub><mo>≥</mo><mn>1</mn><mo>,</mo><mspace width="1.0em"></mspace><msub><mi>L</mi><mi>i</mi></msub><mo>≥</mo><mn>2</mn><msub><mi>J</mi><mi>i</mi></msub><mo>+</mo><mn>1</mn><mo>,</mo><mspace width="1.0em"></mspace><mi mathvariant="double-struck">𝔼</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>J</mi><mi>i</mi></msub><mo>,</mo><msub><mi>L</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>4</mn><mo>,</mo><mn>16</mn><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="1.0em"></mspace><mi>γ</mi><mo>=</mo><mfrac><mn>1</mn><mn>4</mn></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+J_i\geq1,\quad L_i\geq2J_i+1,\quad
+\mathbb E(J_i,L_i)=(4,16),\quad \gamma=\frac14.
+</annotation></semantics></math></span></p>
+<p>For some fixed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\eta&gt;0</annotation></semantics></math>,
+this law has a finite moment
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>M</mi><mi>η</mi></msub><mo>=</mo><mi mathvariant="double-struck">𝔼</mi><msup><mi>e</mi><mrow><mi>η</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>J</mi><mi>i</mi></msub><mo>+</mo><msub><mi>L</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow></msup></mrow><annotation encoding="application/x-tex">M_\eta=\mathbb E e^{\eta(J_i+L_i)}</annotation></semantics></math>.
+One available choice is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>=</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>33</mn><mi>/</mi><mn>32</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\eta=\log(33/32)</annotation></semantics></math>;
+its moment is evaluated in the cited holding-time proof.</p>
+<p>Write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>X</mi><mi>k</mi></msub><mo>,</mo><msub><mi>Y</mi><mi>k</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>k</mi></msubsup><msub><mi>H</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">(X_k,Y_k)=\sum_{i=1}^kH_i</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>X</mi><mn>0</mn></msub><mo>,</mo><msub><mi>Y</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(X_0,Y_0)=(0,0)</annotation></semantics></math>.
+For an integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">s\geq0</annotation></semantics></math>,
+let</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>τ</mi><mi>s</mi></msub><mo>=</mo><mrow><mi mathvariant="normal">min</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">{</mo><mi>k</mi><mo>≥</mo><mn>1</mn><mo>:</mo><msub><mi>Y</mi><mi>k</mi></msub><mo>&gt;</mo><mi>s</mi><mo stretchy="false" form="postfix">}</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>O</mi><mi>s</mi></msub><mo>=</mo><msub><mi>Y</mi><msub><mi>τ</mi><mi>s</mi></msub></msub><mo>−</mo><mi>s</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\tau_s=\min\{k\geq1:Y_k&gt;s\},\qquad O_s=Y_{\tau_s}-s.
+</annotation></semantics></math></span></p>
+<p>In particular
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>τ</mi><mi>s</mi></msub><mo>≤</mo><mi>s</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\tau_s\leq s+1</annotation></semantics></math>.
+Put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>h</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mi mathvariant="normal">min</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msup><mi>u</mi><mn>2</mn></msup><mi>/</mi><mi>h</mi><mo>,</mo><mo stretchy="false" form="prefix">|</mo><mi>u</mi><mo stretchy="false" form="prefix">|</mo><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f_h(u)=\min(u^2/h,|u|)</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">h\geq1</annotation></semantics></math>.
+The preceding first-crossing theorem and its corollary give fixed
+positive constants such that</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℙ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>X</mi><msub><mi>τ</mi><mi>s</mi></msub></msub><mo>=</mo><mi>x</mi><mo>,</mo><msub><mi>O</mi><mi>s</mi></msub><mo>=</mo><mi>r</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mfrac><mrow><msub><mi>C</mi><mn>0</mn></msub><msup><mi>e</mi><mrow><mi>−</mi><msub><mi>η</mi><mn>0</mn></msub><mi>r</mi></mrow></msup></mrow><msqrt><mrow><mn>1</mn><mo>+</mo><mi>s</mi></mrow></msqrt></mfrac><msup><mi>e</mi><mrow><mi>−</mi><msub><mi>c</mi><mn>0</mn></msub><msub><mi>f</mi><mrow><mn>1</mn><mo>+</mo><mi>s</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>−</mo><mi>γ</mi><mi>s</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mi>r</mi><mo>≥</mo><mn>1</mn><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\mathbb P(X_{\tau_s}=x,O_s=r)
+\leq\frac{C_0e^{-\eta_0r}}{\sqrt{1+s}}
+e^{-c_0 f_{1+s}(x-\gamma s)},\qquad r\geq1,
+\tag{1}
+</annotation></semantics></math><span class="equation-number">(1)</span></span></span></p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi mathvariant="double-struck">ℙ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>O</mi><mi>s</mi></msub><mo>&gt;</mo><mi>v</mi><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><msub><mi>C</mi><mn>1</mn></msub><msup><mi>e</mi><mrow><mi>−</mi><msub><mi>η</mi><mn>0</mn></msub><mi>v</mi></mrow></msup><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi mathvariant="double-struck">ℙ</mi><mo stretchy="false" form="prefix">(</mo><mo stretchy="false" form="prefix">|</mo><msub><mi>X</mi><msub><mi>τ</mi><mi>s</mi></msub></msub><mo>−</mo><mi>γ</mi><mi>s</mi><mo stretchy="false" form="prefix">|</mo><mo>&gt;</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><msub><mi>C</mi><mn>1</mn></msub><msup><mi>e</mi><mrow><mi>−</mi><msub><mi>c</mi><mn>1</mn></msub><msub><mi>f</mi><mrow><mn>1</mn><mo>+</mo><mi>s</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\mathbb P(O_s&gt;v)&amp;\leq C_1e^{-\eta_0v},\\
+\mathbb P(|X_{\tau_s}-\gamma s|&gt;u)&amp;\leq C_1e^{-c_1f_{1+s}(u)}.
+\end{aligned}
+\tag{2}
+</annotation></semantics></math><span class="equation-number">(2)</span></span></span></p>
+<p>Enlarging constants covers real
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>,</mo><mi>u</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">v,u\geq0</annotation></semantics></math>.
+Summing (1) over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+gives the corresponding horizontal point bound. These are exact upper
+estimates, not a uniform or Gaussian law for the exit.</p>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>9</mn></mrow><annotation encoding="application/x-tex">a=\log9</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">b=\log2</annotation></semantics></math>,
+and fix an integer strip width
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">M\geq1</annotation></semantics></math>.
+Consider a family of disjoint lattice triangles</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>∈</mo><msup><mi mathvariant="double-struck">ℤ</mi><mn>2</mn></msup><mo>:</mo><mi>x</mi><mo>≥</mo><msub><mi>u</mi><mi mathvariant="normal">Δ</mi></msub><mo>,</mo><mspace width="0.222em"></mspace><mi>y</mi><mo>≤</mo><msub><mi>t</mi><mi mathvariant="normal">Δ</mi></msub><mo>,</mo><mi>a</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>−</mo><msub><mi>u</mi><mi mathvariant="normal">Δ</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>b</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>t</mi><mi mathvariant="normal">Δ</mi></msub><mo>−</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><msub><mi>S</mi><mi mathvariant="normal">Δ</mi></msub><mo stretchy="false" form="postfix">}</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\Delta=\{(x,y)\in\mathbb Z^2:x\geq u_\Delta,\ y\leq t_\Delta,
+a(x-u_\Delta)+b(t_\Delta-y)\leq S_\Delta\},
+\tag{3}
+</annotation></semantics></math><span class="equation-number">(3)</span></span></span></p>
+<p>where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mi mathvariant="normal">Δ</mi></msub><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">u_\Delta\geq1</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mi mathvariant="normal">Δ</mi></msub><annotation encoding="application/x-tex">t_\Delta</annotation></semantics></math>
+are integers, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi mathvariant="normal">Δ</mi></msub><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">S_\Delta\geq0</annotation></semantics></math>.
+Assume that their lattice sets are separated by Euclidean distance
+greater than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>,
+and that their real right vertices satisfy</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mi mathvariant="normal">Δ</mi></msub><mo>+</mo><msub><mi>S</mi><mi mathvariant="normal">Δ</mi></msub><mi>/</mi><mi>a</mi><mo>≤</mo><mi>M</mi><mo>−</mo><mi>R</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+u_\Delta+S_\Delta/a\leq M-R.
+\tag{4}
+</annotation></semantics></math><span class="equation-number">(4)</span></span></span></p>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+be their union and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mo stretchy="false" form="prefix">{</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>M</mi><mo stretchy="false" form="postfix">}</mo><mo>×</mo><mi mathvariant="double-struck">ℤ</mi><mo stretchy="false" form="postfix">)</mo><mo>\</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">W=(\{1,\ldots,M\}\times\mathbb Z)\setminus B</annotation></semantics></math>.
+Points in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>W</mi><annotation encoding="application/x-tex">W</annotation></semantics></math>
+will be called cancelling. Outside the strip, both indicators
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mn mathvariant="bold">𝟏</mn><mi>B</mi></msub><annotation encoding="application/x-tex">\mathbf1_B</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mn mathvariant="bold">𝟏</mn><mi>W</mi></msub><annotation encoding="application/x-tex">\mathbf1_W</annotation></semantics></math>
+are zero. This convention keeps departure from the strip distinct from
+cancellation.</p>
+<p>The preceding phase theorem supplies (3)–(4), with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>=</mo><mo stretchy="false" form="prefix">⌊</mo><mi>n</mi><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">⌋</mo></mrow><annotation encoding="application/x-tex">M=\lfloor n/2\rfloor</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mi>/</mi><mi>ε</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>10</mn></mrow><annotation encoding="application/x-tex">R=\log(1/\varepsilon)/10</annotation></semantics></math>.
+To check the half-integer endpoint, put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mn>0</mn></msub><mo>=</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mi>/</mi><mi>ε</mi><mo stretchy="false" form="postfix">)</mo><mo>≥</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">L_0=\log(1/\varepsilon)\geq10</annotation></semantics></math>.
+Equation (19) there bounds the real right vertex by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>/</mi><mn>2</mn><mo>+</mo><mn>1</mn><mo>−</mo><msub><mi>L</mi><mn>0</mn></msub><mi>/</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>9</mn></mrow><annotation encoding="application/x-tex">n/2+1-L_0/\log9</annotation></semantics></math>.
+This is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⌊</mo><mi>n</mi><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">⌋</mo><mo>−</mo><msub><mi>L</mi><mn>0</mn></msub><mi>/</mi><mn>10</mn></mrow><annotation encoding="application/x-tex">\lfloor n/2\rfloor-L_0/10</annotation></semantics></math>,
+because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>/</mi><mn>2</mn><mo>−</mo><mo stretchy="false" form="prefix">⌊</mo><mi>n</mi><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">⌋</mo><mo>+</mo><mn>1</mn><mo>≤</mo><mn>3</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">n/2-\lfloor n/2\rfloor+1\leq3/2</annotation></semantics></math>,
+whereas
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mn>0</mn></msub><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mi>/</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>9</mn><mo>−</mo><mn>1</mn><mi>/</mi><mn>10</mn><mo stretchy="false" form="postfix">)</mo><mo>&gt;</mo><mn>7</mn><msub><mi>L</mi><mn>0</mn></msub><mi>/</mi><mn>30</mn><mo>&gt;</mo><mn>3</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">L_0(1/\log9-1/10)&gt;7L_0/30&gt;3/2</annotation></semantics></math>.
+Here we first work with the geometric properties themselves. Constants
+denoted
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>,</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">C,c</annotation></semantics></math>
+below may be enlarged or decreased between estimates; they depend only
+on the fixed holding law, the constants in (1)–(2), and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a,b</annotation></semantics></math>,
+unless further dependence is stated.</p>
+<h2 id="a-cancelling-landing-above-a-triangle">A cancelling landing
+above a triangle</h2>
+<p>The mean path direction has slope four, greater than the triangle
+diagonal’s slope
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>/</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">a/b</annotation></semantics></math>.
+Equivalently,</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>=</mo><mi>b</mi><mi>/</mi><mi>a</mi><mo>−</mo><mi>γ</mi><mo>&gt;</mo><mn>0</mn><mo>,</mo></mrow><annotation encoding="application/x-tex">
+d=b/a-\gamma&gt;0,
+</annotation></semantics></math></span></p>
+<p>because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9</mn><mo>&lt;</mo><mn>16</mn></mrow><annotation encoding="application/x-tex">9&lt;16</annotation></semantics></math>.
+This strict difference supplies a margin at a horizontal crossing.</p>
+<p><strong>Proposition 1 (A uniform chance of cancellation).</strong>
+There is a fixed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>R</mi><mn>0</mn></msub><annotation encoding="application/x-tex">R_0</annotation></semantics></math>
+such that, if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>&gt;</mo><msub><mi>R</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">R&gt;R_0</annotation></semantics></math>,
+every starting point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>,</mo><mi>l</mi><mo stretchy="false" form="postfix">)</mo><mo>∈</mo><mi mathvariant="normal">Δ</mi></mrow><annotation encoding="application/x-tex">z=(j,l)\in\Delta</annotation></semantics></math>
+satisfies</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℙ</mi><mo minsize="120%" maxsize="120%" stretchy="true" form="prefix">(</mo><mi>z</mi><mo>+</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>X</mi><msub><mi>τ</mi><mi>s</mi></msub></msub><mo>,</mo><msub><mi>Y</mi><msub><mi>τ</mi><mi>s</mi></msub></msub><mo stretchy="false" form="postfix">)</mo><mo>∈</mo><mi>W</mi><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">)</mo><mo>≥</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mi>s</mi><mo>=</mo><msub><mi>t</mi><mi mathvariant="normal">Δ</mi></msub><mo>−</mo><mi>l</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\mathbb P\bigl(z+(X_{\tau_s},Y_{\tau_s})\in W\bigr)\geq\frac12,
+\qquad s=t_\Delta-l.
+\tag{5}
+</annotation></semantics></math><span class="equation-number">(5)</span></span></span></p>
+<p>The stopping time crosses the top height, not necessarily the first
+boundary of the triangle that the path leaves.</p>
+<p><strong>Proof.</strong> Choose integers
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>,</mo><mi>V</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">K,V\geq1</annotation></semantics></math>
+so that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mn>1</mn></msub><msup><mi>e</mi><mrow><mi>−</mi><msub><mi>c</mi><mn>1</mn></msub><mi>K</mi></mrow></msup><mo>≤</mo><mn>1</mn><mi>/</mi><mn>8</mn></mrow><annotation encoding="application/x-tex">C_1e^{-c_1K}\leq1/8</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mn>1</mn></msub><msup><mi>e</mi><mrow><mi>−</mi><msub><mi>η</mi><mn>0</mn></msub><mi>V</mi></mrow></msup><mo>≤</mo><mn>1</mn><mi>/</mi><mn>8</mn></mrow><annotation encoding="application/x-tex">C_1e^{-\eta_0V}\leq1/8</annotation></semantics></math>.
+For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">h\geq1</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>h</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>K</mi><msqrt><mi>h</mi></msqrt><mo stretchy="false" form="postfix">)</mo><mo>≥</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">f_h(K\sqrt h)\geq K</annotation></semantics></math>,
+so (2) shows that the event</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>X</mi><msub><mi>τ</mi><mi>s</mi></msub></msub><mo>−</mo><mi>γ</mi><mi>s</mi><mo stretchy="false" form="postfix">|</mo><mo>≤</mo><mi>K</mi><msqrt><mrow><mn>1</mn><mo>+</mo><mi>s</mi></mrow></msqrt><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>O</mi><mi>s</mi></msub><mo>≤</mo><mi>V</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\lvert X_{\tau_s}-\gamma s\rvert\leq K\sqrt{1+s},\qquad O_s\leq V.
+\tag{6}
+</annotation></semantics></math><span class="equation-number">(6)</span></span></span></p>
+<p>has probability at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">3/4</annotation></semantics></math>.
+The starting point satisfies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>≤</mo><msub><mi>u</mi><mi mathvariant="normal">Δ</mi></msub><mo>+</mo><msub><mi>S</mi><mi mathvariant="normal">Δ</mi></msub><mi>/</mi><mi>a</mi><mo>−</mo><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mi>/</mi><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">j\leq u_\Delta+S_\Delta/a-(b/a)s</annotation></semantics></math>.
+On (6), its new horizontal coordinate is consequently at most</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mi mathvariant="normal">Δ</mi></msub><mo>+</mo><msub><mi>S</mi><mi mathvariant="normal">Δ</mi></msub><mi>/</mi><mi>a</mi><mo>−</mo><mi>d</mi><mi>s</mi><mo>+</mo><mi>K</mi><msqrt><mrow><mn>1</mn><mo>+</mo><mi>s</mi></mrow></msqrt><mo>≤</mo><msub><mi>u</mi><mi mathvariant="normal">Δ</mi></msub><mo>+</mo><msub><mi>S</mi><mi mathvariant="normal">Δ</mi></msub><mi>/</mi><mi>a</mi><mo>+</mo><mi>d</mi><mo>+</mo><msup><mi>K</mi><mn>2</mn></msup><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>4</mn><mi>d</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+u_\Delta+S_\Delta/a-ds+K\sqrt{1+s}
+\leq u_\Delta+S_\Delta/a+d+K^2/(4d).
+</annotation></semantics></math></span></p>
+<p>The final inequality follows by completing the square in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msqrt><mrow><mn>1</mn><mo>+</mo><mi>s</mi></mrow></msqrt><annotation encoding="application/x-tex">\sqrt{1+s}</annotation></semantics></math>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>d</mi><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>K</mi><msqrt><mrow><mn>1</mn><mo>+</mo><mi>s</mi></mrow></msqrt><mo>≤</mo><msup><mi>K</mi><mn>2</mn></msup><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>4</mn><mi>d</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">-d(s+1)+K\sqrt{1+s}\leq K^2/(4d)</annotation></semantics></math>.
+The new horizontal coordinate is at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>u</mi><mi mathvariant="normal">Δ</mi></msub><annotation encoding="application/x-tex">u_\Delta</annotation></semantics></math>,
+since all
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>J</mi><mi>i</mi></msub><annotation encoding="application/x-tex">J_i</annotation></semantics></math>
+are positive. The integer points in the top row of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Δ</mi><annotation encoding="application/x-tex">\Delta</annotation></semantics></math>
+are exactly those between
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>u</mi><mi mathvariant="normal">Δ</mi></msub><annotation encoding="application/x-tex">u_\Delta</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⌊</mo><msub><mi>u</mi><mi mathvariant="normal">Δ</mi></msub><mo>+</mo><msub><mi>S</mi><mi mathvariant="normal">Δ</mi></msub><mi>/</mi><mi>a</mi><mo stretchy="false" form="postfix">⌋</mo></mrow><annotation encoding="application/x-tex">\lfloor u_\Delta+S_\Delta/a\rfloor</annotation></semantics></math>.
+The exit is thus within horizontal distance
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>=</mo><mi>d</mi><mo>+</mo><msup><mi>K</mi><mn>2</mn></msup><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>4</mn><mi>d</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">D=d+K^2/(4d)+1</annotation></semantics></math>
+of this row, and within vertical distance
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>.</p>
+<p>Take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mn>0</mn></msub><mo>=</mo><mi>D</mi><mo>+</mo><mi>V</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">R_0=D+V+1</annotation></semantics></math>.
+Conditions (4) and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>&gt;</mo><msub><mi>R</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">R&gt;R_0</annotation></semantics></math>
+put the exit’s horizontal coordinate inside the original strip. Its
+vertical coordinate is strictly greater than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mi mathvariant="normal">Δ</mi></msub><annotation encoding="application/x-tex">t_\Delta</annotation></semantics></math>,
+so it is not in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Δ</mi><annotation encoding="application/x-tex">\Delta</annotation></semantics></math>;
+its distance from a lattice point of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Δ</mi><annotation encoding="application/x-tex">\Delta</annotation></semantics></math>
+is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>+</mo><mi>V</mi><mo>&lt;</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">D+V&lt;R</annotation></semantics></math>.
+Separation excludes every other triangle. It belongs to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>W</mi><annotation encoding="application/x-tex">W</annotation></semantics></math>.
+Event (6) proves (5), with room to spare. ∎</p>
+<p>The proof also covers
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">s=0</annotation></semantics></math>
+and small triangles. It neither assumes that the path exits through the
+top before crossing a slanted side, nor treats the last increment as an
+independent unselected sample.</p>
+<h2 id="counting-successive-triangle-encounters">Counting successive
+triangle encounters</h2>
+<p>Fix a starting point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+with positive integer horizontal coordinate, and write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Z</mi><mi>k</mi></msub><mo>=</mo><mi>z</mi><mo>+</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>X</mi><mi>k</mi></msub><mo>,</mo><msub><mi>Y</mi><mi>k</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">Z_k=z+(X_k,Y_k)</annotation></semantics></math>.
+We now specify which encounters are counted. Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>T</mi><mn>1</mn></msub><annotation encoding="application/x-tex">T_1</annotation></semantics></math>
+be the first
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k\geq0</annotation></semantics></math>
+such that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Z</mi><mi>k</mi></msub><mo>∈</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">Z_k\in B</annotation></semantics></math>,
+if one exists. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Z</mi><msub><mi>T</mi><mi>i</mi></msub></msub><mo>∈</mo><msub><mi mathvariant="normal">Δ</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">Z_{T_i}\in\Delta_i</annotation></semantics></math>,
+let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>i</mi></msub><annotation encoding="application/x-tex">E_i</annotation></semantics></math>
+be the first later time whose vertical coordinate exceeds
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><msub><mi mathvariant="normal">Δ</mi><mi>i</mi></msub></msub><annotation encoding="application/x-tex">t_{\Delta_i}</annotation></semantics></math>.
+Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>T</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><annotation encoding="application/x-tex">T_{i+1}</annotation></semantics></math>
+be the first time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≥</mo><msub><mi>E</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">k\geq E_i</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Z</mi><mi>k</mi></msub><mo>∈</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">Z_k\in B</annotation></semantics></math>,
+if it exists. Stop this construction when no such time exists, and call
+the number of encounters
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">𝒩</mi><annotation encoding="application/x-tex">\mathcal N</annotation></semantics></math>.</p>
+<p>The strict height test matters: crossing a slanted side alone does
+not start the next encounter. The triangles counted are distinct,
+because after passing above a previous top the increasing vertical
+coordinate can never return to that triangle. Also
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">𝒩</mi><annotation encoding="application/x-tex">\mathcal N</annotation></semantics></math>
+is finite: every increment increases the horizontal coordinate by at
+least one, so only finitely many positions can lie in the strip.</p>
+<p>On
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mi mathvariant="script">𝒩</mi><mo>≥</mo><mi>N</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{\mathcal N\geq N\}</annotation></semantics></math>,
+define</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>N</mi></msub><mo>=</mo><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mrow><msub><mi>T</mi><mi>N</mi></msub><mo>−</mo><mn>1</mn></mrow></munderover><msub><mn mathvariant="bold">𝟏</mn><mi>W</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>Z</mi><mi>k</mi></msub><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+C_N=\sum_{k=0}^{T_N-1}\mathbf1_W(Z_k).
+\tag{7}
+</annotation></semantics></math><span class="equation-number">(7)</span></span></span></p>
+<p>The terminal position is black, so including it would give the same
+count. An empty sum, when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mn>1</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">T_1=0</annotation></semantics></math>,
+is zero.</p>
+<p><strong>Proposition 2 (Many encounters with few cancellations are
+unlikely).</strong> Assume
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>&gt;</mo><msub><mi>R</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">R&gt;R_0</annotation></semantics></math>.
+For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>w</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0&lt;w&lt;1</annotation></semantics></math>,
+put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mi>w</mi></msub><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>+</mo><mi>w</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">q_w=(1+w)/2</annotation></semantics></math>.
+Then, for every integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">N\geq1</annotation></semantics></math>,</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mi>N</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mo>:=</mo><mi mathvariant="double-struck">𝔼</mi><mo minsize="120%" maxsize="120%" stretchy="true" form="prefix">[</mo><msub><mn mathvariant="bold">𝟏</mn><mrow><mo stretchy="false" form="prefix">{</mo><mi mathvariant="script">𝒩</mi><mo>≥</mo><mi>N</mi><mo stretchy="false" form="postfix">}</mo></mrow></msub><msup><mi>w</mi><msub><mi>C</mi><mi>N</mi></msub></msup><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">]</mo><mo>≤</mo><msup><mi>w</mi><mrow><msub><mn mathvariant="bold">𝟏</mn><mi>W</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><msubsup><mi>q</mi><mi>w</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msubsup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+G_N(z):=\mathbb E\bigl[\mathbf1_{\{\mathcal N\geq N\}}w^{C_N}\bigr]
+\leq w^{\mathbf1_W(z)}q_w^{N-1}.
+\tag{8}
+</annotation></semantics></math><span class="equation-number">(8)</span></span></span></p>
+<p>The integrand is defined as zero when the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>-th
+encounter does not exist. Consequently, for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">K\geq0</annotation></semantics></math>,</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℙ</mi><mo stretchy="false" form="prefix">(</mo><mi mathvariant="script">𝒩</mi><mo>≥</mo><mi>N</mi><mo>,</mo><mspace width="0.222em"></mspace><msub><mi>C</mi><mi>N</mi></msub><mo>≤</mo><mi>K</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><msup><mi>w</mi><mrow><mi>−</mi><mi>K</mi></mrow></msup><msubsup><mi>q</mi><mi>w</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msubsup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\mathbb P(\mathcal N\geq N,\ C_N\leq K)
+\leq w^{-K}q_w^{N-1}.
+\tag{9}
+</annotation></semantics></math><span class="equation-number">(9)</span></span></span></p>
+<p><strong>Proof.</strong> The case
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">N=1</annotation></semantics></math>
+follows directly. If the starting point is white and an encounter
+occurs, time zero is counted before it. Otherwise the asserted factor is
+one.</p>
+<p>For the induction step, first expose the path up to its first
+entrance
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>T</mi><mn>1</mn></msub><annotation encoding="application/x-tex">T_1</annotation></semantics></math>,
+when that entrance exists, and then up to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mn>1</mn></msub><annotation encoding="application/x-tex">E_1</annotation></semantics></math>.
+These are stopping rules determined by the increments already read. The
+unused increments have their original product law, independently of the
+stopped word: prescribe a stopped prefix and a future finite word,
+multiply their probabilities, then sum over stopped prefixes. This is
+exactly the proof of (14) in the preceding renewal lesson, with the
+stopping rule changed. On the event of an entrance all these times are
+bounded by constants depending on the strip width: entrances occur by
+time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>,
+and a triangle’s vertical depth is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mi>/</mi><mi>b</mi><mo stretchy="false" form="postfix">)</mo><mi>M</mi></mrow><annotation encoding="application/x-tex">(a/b)M</annotation></semantics></math>
+by (4). Thus no limiting stopping theorem is required.</p>
+<p>Starting anew at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Z</mi><msub><mi>E</mi><mn>1</mn></msub></msub><annotation encoding="application/x-tex">Z_{E_1}</annotation></semantics></math>,
+the first new entrance may be time zero. There are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">N-1</annotation></semantics></math>
+further counted triangles exactly when this restarted construction has
+that many encounters. The count splits without repeating
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mn>1</mn></msub><annotation encoding="application/x-tex">E_1</annotation></semantics></math>:
+the initial part uses
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>&lt;</mo><msub><mi>E</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">k&lt;E_1</annotation></semantics></math>;
+the restarted count includes its own time zero if that position is
+white. Therefore</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mi>N</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi mathvariant="double-struck">𝔼</mi><mrow><mo stretchy="true" form="prefix">[</mo><msub><mn mathvariant="bold">𝟏</mn><mrow><mo stretchy="false" form="prefix">{</mo><msub><mi>T</mi><mn>1</mn></msub><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> exists</mtext></mrow><mo stretchy="false" form="postfix">}</mo></mrow></msub><msup><mi>w</mi><mrow><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mrow><msub><mi>E</mi><mn>1</mn></msub><mo>−</mo><mn>1</mn></mrow></munderover><msub><mn mathvariant="bold">𝟏</mn><mi>W</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>Z</mi><mi>k</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow></msup><msub><mi>G</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>Z</mi><msub><mi>E</mi><mn>1</mn></msub></msub><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">]</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+G_N(z)=\mathbb E\left[\mathbf1_{\{T_1\text{ exists}\}}
+w^{\sum_{k=0}^{E_1-1}\mathbf1_W(Z_k)}
+G_{N-1}(Z_{E_1})\right].
+\tag{10}
+</annotation></semantics></math><span class="equation-number">(10)</span></span></span></p>
+<p>The induction hypothesis bounds the last factor by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>w</mi><mrow><msub><mn mathvariant="bold">𝟏</mn><mi>W</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>Z</mi><msub><mi>E</mi><mn>1</mn></msub></msub><mo stretchy="false" form="postfix">)</mo></mrow></msup><msubsup><mi>q</mi><mi>w</mi><mrow><mi>N</mi><mo>−</mo><mn>2</mn></mrow></msubsup></mrow><annotation encoding="application/x-tex">w^{\mathbf1_W(Z_{E_1})}q_w^{N-2}</annotation></semantics></math>.
+The initial factor is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>w</mi><mrow><msub><mn mathvariant="bold">𝟏</mn><mi>W</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><annotation encoding="application/x-tex">w^{\mathbf1_W(z)}</annotation></semantics></math>.
+Conditional on the stopped entrance, Proposition 1 gives probability at
+least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/2</annotation></semantics></math>
+that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Z</mi><msub><mi>E</mi><mn>1</mn></msub></msub><mo>∈</mo><mi>W</mi></mrow><annotation encoding="application/x-tex">Z_{E_1}\in W</annotation></semantics></math>.
+Hence its conditional expected weight is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>−</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>w</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>2</mn><mo>=</mo><msub><mi>q</mi><mi>w</mi></msub></mrow><annotation encoding="application/x-tex">1-(1-w)/2=q_w</annotation></semantics></math>.
+Substitution in (10) proves (8). Finally, on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>N</mi></msub><mo>≤</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">C_N\leq K</annotation></semantics></math>,
+one has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>w</mi><msub><mi>C</mi><mi>N</mi></msub></msup><mo>≥</mo><msup><mi>w</mi><mi>K</mi></msup></mrow><annotation encoding="application/x-tex">w^{C_N}\geq w^K</annotation></semantics></math>;
+this proves (9). ∎</p>
+<p>The same proof replaces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>q</mi><mi>w</mi></msub><annotation encoding="application/x-tex">q_w</annotation></semantics></math>
+by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>−</mo><msub><mi>p</mi><mn>0</mn></msub><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>w</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">1-p_0(1-w)</annotation></semantics></math>
+whenever a different uniform exit probability
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>0</mn></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">p_0&gt;0</annotation></semantics></math>
+is available. No independence of the successive exit indicators was
+used. A uniform conditional probability, applied after the correct
+stopping time, is enough.</p>
+<h2
+id="a-probability-law-cannot-concentrate-near-widely-separated-sites">A
+probability law cannot concentrate near widely separated sites</h2>
+<p>Before considering a second large triangle, we need a one-dimensional
+estimate. It explains how the point-probability factor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>+</mo><mi>s</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">(1+s)^{-1/2}</annotation></semantics></math>
+is used; a deviation bound alone would not suffice.</p>
+<p><strong>Lemma 3 (Separated sites under a local bound).</strong>
+Suppose a mass function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>μ</mi><annotation encoding="application/x-tex">\mu</annotation></semantics></math>
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℤ</mi><annotation encoding="application/x-tex">\mathbb Z</annotation></semantics></math>,
+possibly of total mass less than one, satisfies</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mi>C</mi><msup><mi>h</mi><mrow><mi>−</mi><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><msup><mi>e</mi><mrow><mi>−</mi><mi>c</mi><msub><mi>f</mi><mi>h</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>−</mo><mi>v</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mi>h</mi><mo>≥</mo><mn>1</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\mu(x)\leq C h^{-1/2}e^{-c f_h(x-v)},\qquad h\geq1.
+\tag{11}
+</annotation></semantics></math><span class="equation-number">(11)</span></span></span></p>
+<p>Let integer sites
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>u</mi><mi>i</mi></msub><annotation encoding="application/x-tex">u_i</annotation></semantics></math>
+have pairwise distance at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>κ</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">\kappa r</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>κ</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\kappa&gt;0</annotation></semantics></math>
+is fixed and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>r</mi><mo>≤</mo><msqrt><mi>h</mi></msqrt></mrow><annotation encoding="application/x-tex">1\leq r\leq\sqrt h</annotation></semantics></math>.
+For fixed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">D\geq1</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>H</mi><mo>≤</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">1\leq H\leq r</annotation></semantics></math>,</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>∑</mo><mrow><mi>x</mi><mo>:</mo><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo>−</mo><msub><mi>u</mi><mi>i</mi></msub><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mi>D</mi><mi>H</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> for some </mtext><mspace width="0.333em"></mspace></mrow><mi>i</mi></mrow></munder><mi>μ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><msup><mi>C</mi><mo>′</mo></msup><mi>H</mi><mi>/</mi><mi>r</mi><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\sum_{x:\,|x-u_i|\leq DH\text{ for some }i}\mu(x)
+\leq C&#39; H/r,
+\tag{12}
+</annotation></semantics></math><span class="equation-number">(12)</span></span></span></p>
+<p>where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mo>′</mo></msup><annotation encoding="application/x-tex">C&#39;</annotation></semantics></math>
+depends only on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>,</mo><mi>c</mi><mo>,</mo><mi>κ</mi><mo>,</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">C,c,\kappa,D</annotation></semantics></math>.</p>
+<p><strong>Proof.</strong> For all real
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x,y</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>h</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mn>2</mn><msub><mi>f</mi><mi>h</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mn>2</mn><msub><mi>f</mi><mi>h</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f_h(x+y)\leq2f_h(x)+2f_h(y)</annotation></semantics></math>.
+If both absolute values are below
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>,
+use
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>+</mo><mi>y</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>≤</mo><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><msup><mi>y</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">(x+y)^2\leq2x^2+2y^2</annotation></semantics></math>.
+Otherwise twice the larger absolute value bounds
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">|x+y|</annotation></semantics></math>,
+and that larger value equals its own
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mi>h</mi></msub><annotation encoding="application/x-tex">f_h</annotation></semantics></math>.
+This proves the inequality in both cases. It follows that</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>−</mi><mi>c</mi><msub><mi>f</mi><mi>h</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>−</mo><mi>v</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>≤</mo><msup><mi>e</mi><mrow><mi>c</mi><msup><mi>D</mi><mn>2</mn></msup></mrow></msup><msup><mi>e</mi><mrow><mi>−</mi><mo stretchy="false" form="prefix">(</mo><mi>c</mi><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">)</mo><msub><mi>f</mi><mi>h</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>u</mi><mi>i</mi></msub><mo>−</mo><mi>v</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">when </mtext><mspace width="0.333em"></mspace></mrow><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo>−</mo><msub><mi>u</mi><mi>i</mi></msub><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mi>D</mi><msqrt><mi>h</mi></msqrt><mi>.</mi></mrow><annotation encoding="application/x-tex">
+e^{-c f_h(x-v)}
+\leq e^{cD^2}e^{-(c/2)f_h(u_i-v)}
+\quad\text{when }|x-u_i|\leq D\sqrt h.
+\tag{13}
+</annotation></semantics></math><span class="equation-number">(13)</span></span></span></p>
+<p>Each interval in (12) has at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>D</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">(2D+1)H</annotation></semantics></math>
+integer points. It remains to bound the sum of the weights at the sites
+by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>C</mi><mo>″</mo></msup><msqrt><mi>h</mi></msqrt><mi>/</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">C&#39;&#39;\sqrt h/r</annotation></semantics></math>.
+For bounded
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>,
+this follows from the integer-grid sum in <a
+href="NT-COLLATZ-08.html#summing-a-local-estimate-over-renewal-times">the
+renewal summation lemma</a>, since distinct integer sites form a subset
+of that grid. For larger
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>,
+take disjoint intervals of radius
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>κ</mi><mi>r</mi><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">\kappa r/3</annotation></semantics></math>
+about the sites. Each contains at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>κ</mi></msub><mi>r</mi></mrow><annotation encoding="application/x-tex">c_\kappa r</annotation></semantics></math>
+integers. On each such interval, (13), with a changed constant and half
+the exponent, compares the site’s weight with the weight at every
+integer in the interval. Average this inequality over those integers and
+sum over the disjoint intervals. The same grid-sum lemma bounds the
+total by a constant times
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msqrt><mi>h</mi></msqrt><annotation encoding="application/x-tex">\sqrt h</annotation></semantics></math>.
+Division by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+proves the required site bound, and then (11) proves (12). ∎</p>
+<p>The estimate survives a short independent displacement. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>
+is independent of a variable with mass bounded as in (11), then its
+convolution restricted to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>U</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mi>D</mi><msqrt><mi>h</mi></msqrt></mrow><annotation encoding="application/x-tex">|U|\leq D\sqrt h</annotation></semantics></math>
+has another bound of the form (11), with new constants. Indeed,</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>∑</mo><mrow><mo stretchy="false" form="prefix">|</mo><mi>u</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mi>D</mi><msqrt><mi>h</mi></msqrt></mrow></munder><mi mathvariant="double-struck">ℙ</mi><mo stretchy="false" form="prefix">(</mo><mi>U</mi><mo>=</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo><mi>μ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>−</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mi>C</mi><msup><mi>e</mi><mrow><mi>c</mi><msup><mi>D</mi><mn>2</mn></msup></mrow></msup><msup><mi>h</mi><mrow><mi>−</mi><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><msup><mi>e</mi><mrow><mi>−</mi><mo stretchy="false" form="prefix">(</mo><mi>c</mi><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">)</mo><msub><mi>f</mi><mi>h</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>−</mo><mi>v</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup></mrow><annotation encoding="application/x-tex">
+\sum_{|u|\leq D\sqrt h}\mathbb P(U=u)\mu(x-u)
+\leq C e^{cD^2}h^{-1/2}e^{-(c/2)f_h(x-v)}
+\tag{14}
+</annotation></semantics></math><span class="equation-number">(14)</span></span></span></p>
+<p>by (13). The restricted law need not have mass one, and nothing is
+divided by the probability of the restriction. This will handle
+increments taken <em>after</em> a first crossing.</p>
+<h2 id="a-second-large-triangle-is-hard-to-hit-after-a-deep-crossing">A
+second large triangle is hard to hit after a deep crossing</h2>
+<p>Start at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>,</mo><mi>l</mi><mo stretchy="false" form="postfix">)</mo><mo>∈</mo><mi mathvariant="normal">Δ</mi></mrow><annotation encoding="application/x-tex">z=(j,l)\in\Delta</annotation></semantics></math>,
+and put</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><msub><mi>t</mi><mi mathvariant="normal">Δ</mi></msub><mo>,</mo><mspace width="1.0em"></mspace><mi>s</mi><mo>=</mo><mi>t</mi><mo>−</mo><mi>l</mi><mo>,</mo><mspace width="1.0em"></mspace><mi>m</mi><mo>=</mo><mi>M</mi><mo>−</mo><mi>j</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+t=t_\Delta,\quad s=t-l,\quad m=M-j.
+</annotation></semantics></math></span></p>
+<p>From (3)–(4),
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>≤</mo><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mi>/</mi><mi>b</mi><mo stretchy="false" form="postfix">)</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">s\leq(a/b)m</annotation></semantics></math>.
+We consider the deep regime
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>&gt;</mo><mi>m</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>m</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">s&gt;m/(\log m)^2</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+sufficiently large.</p>
+<p><strong>Theorem 4 (Large triangle encounter estimate).</strong> There
+are fixed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mn>0</mn></msub><mo>,</mo><msub><mi>m</mi><mn>0</mn></msub><mo>,</mo><mi>C</mi><mo>,</mo><mi>c</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A_0,m_0,C,c&gt;0</annotation></semantics></math>
+such that for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>≥</mo><msub><mi>A</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">A\geq A_0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">p\geq0</annotation></semantics></math>
+an integer,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>≥</mo><msub><mi>m</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">m\geq m_0</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>r</mi><mo>≤</mo><msup><mi>m</mi><mrow><mn>2</mn><mi>/</mi><mn>5</mn></mrow></msup></mrow><annotation encoding="application/x-tex">1\leq r\leq m^{2/5}</annotation></semantics></math>,</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℙ</mi><mo minsize="120%" maxsize="120%" stretchy="true" form="prefix">(</mo><mi>z</mi><mo>+</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>X</mi><mrow><msub><mi>τ</mi><mi>s</mi></msub><mo>+</mo><mi>p</mi></mrow></msub><mo>,</mo><msub><mi>Y</mi><mrow><msub><mi>τ</mi><mi>s</mi></msub><mo>+</mo><mi>p</mi></mrow></msub><mo stretchy="false" form="postfix">)</mo><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> lies in a triangle of size at least </mtext><mspace width="0.333em"></mspace></mrow><mi>r</mi><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">)</mo><mo>≤</mo><mi>C</mi><mfrac><mrow><msup><mi>A</mi><mn>2</mn></msup><mo stretchy="false" form="prefix">(</mo><mi>p</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><mi>r</mi></mfrac><mo>+</mo><mi>C</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>c</mi><msup><mi>A</mi><mn>2</mn></msup><mo stretchy="false" form="prefix">(</mo><mi>p</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\mathbb P\bigl(z+(X_{\tau_s+p},Y_{\tau_s+p})
+\text{ lies in a triangle of size at least }r\bigr)
+\leq C\frac{A^2(p+1)}r+Ce^{-cA^2(p+1)}.
+\tag{15}
+</annotation></semantics></math><span class="equation-number">(15)</span></span></span></p>
+<p>All constants are uniform in the triangle family, the strip width and
+the starting point.</p>
+<p><em>Reference:</em> Tao, Section 7, the lemma on large triangles
+encountered after a lengthy crossing. The proof below keeps the
+post-crossing convolution and the lattice rounding explicit.</p>
+<p><strong>Proof.</strong> Put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>=</mo><msup><mi>A</mi><mn>2</mn></msup><mo stretchy="false" form="prefix">(</mo><mi>p</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">H=A^2(p+1)</annotation></semantics></math>.
+Choose a fixed large constant
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>C</mi><mo>*</mo></msub><annotation encoding="application/x-tex">C_*</annotation></semantics></math>.
+If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>&lt;</mo><msub><mi>C</mi><mo>*</mo></msub><mi>H</mi></mrow><annotation encoding="application/x-tex">r&lt;C_*H</annotation></semantics></math>,
+enlarging
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>
+makes the first term on the right at least one, so there is nothing to
+prove. Henceforth</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>≤</mo><mi>r</mi><mi>/</mi><msub><mi>C</mi><mo>*</mo></msub><mo>,</mo><mspace width="2.0em"></mspace><mi>p</mi><mo>≤</mo><mi>H</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>r</mi><mo>≤</mo><msup><mi>m</mi><mrow><mn>2</mn><mi>/</mi><mn>5</mn></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+H\leq r/C_*,\qquad p\leq H,\qquad r\leq m^{2/5}.
+\tag{16}
+</annotation></semantics></math><span class="equation-number">(16)</span></span></span></p>
+<p>All
+sufficiently-large-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+choices in this proof can be made uniformly under (16). For example,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mrow><mn>2</mn><mi>/</mi><mn>5</mn></mrow></msup><mi>/</mi><msqrt><mrow><mi>m</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>m</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow></msqrt><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">m^{2/5}/\sqrt{m/(\log m)^2}\to0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mrow><mn>3</mn><mi>/</mi><mn>5</mn></mrow></msup><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>m</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">m^{3/5}/(m/(\log m)^2)\to0</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>−</mi><mi>c</mi><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>m</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><msup><mo stretchy="false" form="postfix">)</mo><mrow><mn>1</mn><mi>/</mi><mn>5</mn></mrow></msup></mrow></msup><msup><mi>m</mi><mrow><mn>2</mn><mi>/</mi><mn>5</mn></mrow></msup><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">e^{-c(m/(\log m)^2)^{1/5}}m^{2/5}\to0</annotation></semantics></math>.
+Each follows by taking logarithms and using that a positive power of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+eventually exceeds every fixed power of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">\log m</annotation></semantics></math>.</p>
+<p><strong>Exclude large displacements.</strong> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>U</mi><mo>,</mo><mi>V</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(U,V)</annotation></semantics></math>
+be the sum of the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+unused increments after
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>τ</mi><mi>s</mi></msub><annotation encoding="application/x-tex">\tau_s</annotation></semantics></math>.
+It is independent of the stopped prefix and has its ordinary
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>-step
+law. The exponential moment gives</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℙ</mi><mo stretchy="false" form="prefix">(</mo><mi>V</mi><mo>&gt;</mo><mi>H</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>η</mi><mi>H</mi></mrow></msup><msubsup><mi>M</mi><mi>η</mi><mi>p</mi></msubsup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\mathbb P(V&gt;H)\leq e^{-\eta H}M_\eta^p.
+</annotation></semantics></math></span></p>
+<p>Choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mn>0</mn></msub><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">A_0\geq1</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>A</mi><mn>0</mn><mn>2</mn></msubsup><mo>≥</mo><mn>2</mn><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><msub><mi>M</mi><mi>η</mi></msub><mi>/</mi><mi>η</mi></mrow><annotation encoding="application/x-tex">A_0^2\geq2\log M_\eta/\eta</annotation></semantics></math>.
+Then this is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>−</mi><mi>η</mi><mi>H</mi><mi>/</mi><mn>2</mn></mrow></msup><annotation encoding="application/x-tex">e^{-\eta H/2}</annotation></semantics></math>.
+Together with (2), this bounds the probability that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>O</mi><mi>s</mi></msub><mo>+</mo><mi>V</mi><mo>&gt;</mo><mn>2</mn><mi>H</mi></mrow><annotation encoding="application/x-tex">O_s+V&gt;2H</annotation></semantics></math>
+by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>c</mi><mi>H</mi></mrow></msup></mrow><annotation encoding="application/x-tex">Ce^{-cH}</annotation></semantics></math>.</p>
+<p>Also (2) gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℙ</mi><mo stretchy="false" form="prefix">(</mo><mo stretchy="false" form="prefix">|</mo><msub><mi>X</mi><msub><mi>τ</mi><mi>s</mi></msub></msub><mo>−</mo><mi>γ</mi><mi>s</mi><mo stretchy="false" form="prefix">|</mo><mo>&gt;</mo><msup><mi>s</mi><mrow><mn>3</mn><mi>/</mi><mn>5</mn></mrow></msup><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mi>C</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>c</mi><msup><mi>s</mi><mrow><mn>1</mn><mi>/</mi><mn>5</mn></mrow></msup></mrow></msup></mrow><annotation encoding="application/x-tex">\mathbb P(|X_{\tau_s}-\gamma s|&gt;s^{3/5})\leq Ce^{-cs^{1/5}}</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">s\geq1</annotation></semantics></math>.
+The exponential moment gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℙ</mi><mo stretchy="false" form="prefix">(</mo><mi>U</mi><mo>&gt;</mo><msup><mi>s</mi><mrow><mn>3</mn><mi>/</mi><mn>5</mn></mrow></msup><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>η</mi><msup><mi>s</mi><mrow><mn>3</mn><mi>/</mi><mn>5</mn></mrow></msup></mrow></msup><msubsup><mi>M</mi><mi>η</mi><mi>p</mi></msubsup><mo>≤</mo><mi>C</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>c</mi><msup><mi>s</mi><mrow><mn>3</mn><mi>/</mi><mn>5</mn></mrow></msup></mrow></msup></mrow><annotation encoding="application/x-tex">\mathbb P(U&gt;s^{3/5})\leq e^{-\eta s^{3/5}}M_\eta^p\leq Ce^{-cs^{3/5}}</annotation></semantics></math>,
+since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>≤</mo><msup><mi>m</mi><mrow><mn>2</mn><mi>/</mi><mn>5</mn></mrow></msup></mrow><annotation encoding="application/x-tex">p\leq m^{2/5}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>&gt;</mo><mi>m</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>m</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">s&gt;m/(\log m)^2</annotation></semantics></math>.
+Increase
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mn>0</mn></msub><annotation encoding="application/x-tex">m_0</annotation></semantics></math>
+so these two horizontal errors total at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>/</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">C/r</annotation></semantics></math>.
+Except on an event of probability at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>H</mi><mi>/</mi><mi>r</mi><mo>+</mo><mi>C</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>c</mi><mi>H</mi></mrow></msup></mrow><annotation encoding="application/x-tex">CH/r+Ce^{-cH}</annotation></semantics></math>,
+the final point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>z</mi><mo>+</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>X</mi><mrow><msub><mi>τ</mi><mi>s</mi></msub><mo>+</mo><mi>p</mi></mrow></msub><mo>,</mo><msub><mi>Y</mi><mrow><msub><mi>τ</mi><mi>s</mi></msub><mo>+</mo><mi>p</mi></mrow></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(x,y)=z+(X_{\tau_s+p},Y_{\tau_s+p})</annotation></semantics></math>
+therefore satisfies</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>&lt;</mo><mi>y</mi><mo>≤</mo><mi>t</mi><mo>+</mo><mn>2</mn><mi>H</mi><mo>,</mo><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo>−</mo><mi>j</mi><mo>−</mo><mi>γ</mi><mi>s</mi><mo stretchy="false" form="postfix">|</mo><mo>≤</mo><mn>2</mn><msup><mi>s</mi><mrow><mn>3</mn><mi>/</mi><mn>5</mn></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+t&lt;y\leq t+2H,\qquad \lvert x-j-\gamma s\rvert\leq2s^{3/5}.
+\tag{17}
+</annotation></semantics></math><span class="equation-number">(17)</span></span></span></p>
+<p><strong>Locate the lower tip of any triangle hit.</strong> Suppose a
+point satisfying (17) lies in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="normal">Δ</mi><mo>′</mo></msup><annotation encoding="application/x-tex">\Delta&#39;</annotation></semantics></math>,
+of size
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>S</mi><mo>′</mo></msup><mo>≥</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">S&#39;\geq r</annotation></semantics></math>,
+left coordinate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>u</mi><mo>′</mo></msup><annotation encoding="application/x-tex">u&#39;</annotation></semantics></math>,
+and top
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>t</mi><mo>′</mo></msup><annotation encoding="application/x-tex">t&#39;</annotation></semantics></math>.
+Define its real lower-tip height
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>v</mi><mo>′</mo></msup><mo>=</mo><msup><mi>t</mi><mo>′</mo></msup><mo>−</mo><msup><mi>S</mi><mo>′</mo></msup><mi>/</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">v&#39;=t&#39;-S&#39;/b</annotation></semantics></math>.
+Equation (3) becomes</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>x</mi><mo>−</mo><msup><mi>u</mi><mo>′</mo></msup><mo>≤</mo><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mi>/</mi><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo>−</mo><msup><mi>v</mi><mo>′</mo></msup><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+0\leq x-u&#39;\leq(b/a)(y-v&#39;).
+\tag{18}
+</annotation></semantics></math><span class="equation-number">(18)</span></span></span></p>
+<p>We claim
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>v</mi><mo>′</mo></msup><mo>&gt;</mo><mi>t</mi><mo>−</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">v&#39;&gt;t-10</annotation></semantics></math>.
+Otherwise the row at height
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="normal">Δ</mi><mo>′</mo></msup><annotation encoding="application/x-tex">\Delta&#39;</annotation></semantics></math>
+contains every integer between
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>u</mi><mo>′</mo></msup><annotation encoding="application/x-tex">u&#39;</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>u</mi><mo>′</mo></msup><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mi>/</mi><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo>−</mo><msup><mi>v</mi><mo>′</mo></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">u&#39;+(b/a)(t-v&#39;)</annotation></semantics></math>,
+an interval of length at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn><mi>b</mi><mi>/</mi><mi>a</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">10b/a&gt;1</annotation></semantics></math>.
+By (17)–(18), there is an integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>x</mi><mo>′</mo></msup><annotation encoding="application/x-tex">x&#39;</annotation></semantics></math>
+in that row with</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>x</mi><mo>−</mo><msup><mi>x</mi><mo>′</mo></msup><mo>≤</mo><mn>2</mn><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mi>/</mi><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mi>H</mi><mo>+</mo><mn>1</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+0\leq x-x&#39;\leq2(b/a)H+1.
+</annotation></semantics></math></span></p>
+<p>For instance take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mo>′</mo></msup><mo>=</mo><mrow><mi mathvariant="normal">min</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">{</mo><mi>x</mi><mo>,</mo><mo stretchy="false" form="prefix">⌊</mo><msup><mi>u</mi><mo>′</mo></msup><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mi>/</mi><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo>−</mo><msup><mi>v</mi><mo>′</mo></msup><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">⌋</mo><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">x&#39;=\min\{x,\lfloor u&#39;+(b/a)(t-v&#39;)\rfloor\}</annotation></semantics></math>.
+The top row of the original triangle contains this point as well. Indeed
+its left endpoint is no larger than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>,
+and its right endpoint before rounding is at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mi>/</mi><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">j+(b/a)s</annotation></semantics></math>.
+Formula (17) centres
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>x</mi><mo>′</mo></msup><annotation encoding="application/x-tex">x&#39;</annotation></semantics></math>
+at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>+</mo><mi>γ</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">j+\gamma s</annotation></semantics></math>,
+with error at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><msup><mi>s</mi><mrow><mn>3</mn><mi>/</mi><mn>5</mn></mrow></msup><mo>+</mo><mn>2</mn><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mi>/</mi><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mi>H</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2s^{3/5}+2(b/a)H+1</annotation></semantics></math>.
+Increase
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mn>0</mn></msub><annotation encoding="application/x-tex">m_0</annotation></semantics></math>
+so this error is smaller than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mrow><mi mathvariant="normal">min</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">{</mo><mi>γ</mi><mo>,</mo><mi>b</mi><mi>/</mi><mi>a</mi><mo>−</mo><mi>γ</mi><mo stretchy="false" form="postfix">}</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">\tfrac12\min\{\gamma,b/a-\gamma\}s</annotation></semantics></math>.
+This is possible uniformly by (16) and the deep-regime inequality. Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msup><mi>x</mi><mo>′</mo></msup><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(x&#39;,t)</annotation></semantics></math>
+belongs to both triangles. They must be the same, contradicting
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>&gt;</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">y&gt;t</annotation></semantics></math>.
+The claim follows.</p>
+<p>Conversely
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>v</mi><mo>′</mo></msup><mo>≤</mo><mi>y</mi><mo>≤</mo><mi>t</mi><mo>+</mo><mn>2</mn><mi>H</mi></mrow><annotation encoding="application/x-tex">v&#39;\leq y\leq t+2H</annotation></semantics></math>
+by (18). We have proved</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>−</mo><mn>10</mn><mo>&lt;</mo><msup><mi>v</mi><mo>′</mo></msup><mo>≤</mo><mi>t</mi><mo>+</mo><mn>2</mn><mi>H</mi><mo>,</mo><mspace width="2.0em"></mspace><mn>0</mn><mo>≤</mo><mi>x</mi><mo>−</mo><msup><mi>u</mi><mo>′</mo></msup><mo>≤</mo><msub><mi>C</mi><mn>2</mn></msub><mi>H</mi><mo>,</mo></mrow><annotation encoding="application/x-tex">
+t-10&lt;v&#39;\leq t+2H,\qquad 0\leq x-u&#39;\leq C_2H,
+\tag{19}
+</annotation></semantics></math><span class="equation-number">(19)</span></span></span></p>
+<p>for a fixed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>C</mi><mn>2</mn></msub><annotation encoding="application/x-tex">C_2</annotation></semantics></math>,
+since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">H\geq1</annotation></semantics></math>.
+Thus a possible large triangle is met near its left column.</p>
+<p><strong>Separate those left columns.</strong> Consider all triangles
+of size at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+whose lower tips obey (19). At the common integer height
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mo>*</mo></msub><mo>=</mo><mi>t</mi><mo>+</mo><mo stretchy="false" form="prefix">⌊</mo><mi>r</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>b</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">⌋</mo></mrow><annotation encoding="application/x-tex">t_* = t+\lfloor r/(2b)\rfloor</annotation></semantics></math>,
+each has a horizontal row of length at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>4</mn><mi>a</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">r/(4a)</annotation></semantics></math>.
+To verify this, its height above the lower tip is at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>b</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mn>1</mn><mo>−</mo><mn>2</mn><mi>H</mi></mrow><annotation encoding="application/x-tex">r/(2b)-1-2H</annotation></semantics></math>,
+which is at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>4</mn><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">r/(4b)</annotation></semantics></math>
+when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>C</mi><mo>*</mo></msub><annotation encoding="application/x-tex">C_*</annotation></semantics></math>
+is sufficiently large. Also
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mo>*</mo></msub><mo>≤</mo><msup><mi>t</mi><mo>′</mo></msup></mrow><annotation encoding="application/x-tex">t_*\leq t&#39;</annotation></semantics></math>,
+since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>t</mi><mo>′</mo></msup><mo>≥</mo><mi>t</mi><mo>−</mo><mn>10</mn><mo>+</mo><mi>r</mi><mi>/</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">t&#39;\geq t-10+r/b</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>≥</mo><msub><mi>C</mi><mo>*</mo></msub><mi>H</mi><mo>≥</mo><msub><mi>C</mi><mo>*</mo></msub></mrow><annotation encoding="application/x-tex">r\geq C_*H\geq C_*</annotation></semantics></math>.
+These inequalities only require a fixed choice of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>C</mi><mo>*</mo></msub><annotation encoding="application/x-tex">C_*</annotation></semantics></math>.</p>
+<p>Disjoint lattice triangles have disjoint integer rows. If two left
+columns satisfy
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>u</mi><mo>′</mo></msup><mo>&lt;</mo><msup><mi>u</mi><mo>″</mo></msup></mrow><annotation encoding="application/x-tex">u&#39;&lt;u&#39;&#39;</annotation></semantics></math>,
+then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>u</mi><mo>″</mo></msup><mo>&gt;</mo><msup><mi>u</mi><mo>′</mo></msup><mo>+</mo><mo stretchy="false" form="prefix">⌊</mo><mi>r</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>4</mn><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">⌋</mo></mrow><annotation encoding="application/x-tex">u&#39;&#39;&gt;u&#39;+\lfloor r/(4a)\rfloor</annotation></semantics></math>.
+After increasing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>C</mi><mo>*</mo></msub><annotation encoding="application/x-tex">C_*</annotation></semantics></math>
+once more, their distance is at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>8</mn><mi>a</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">r/(8a)</annotation></semantics></math>.
+There are only finitely many such triangles, because these disjoint rows
+lie in the finite horizontal strip.</p>
+<p><strong>Apply the point bound after the extra increments.</strong> On
+(17), the positive overshoot and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>J</mi><mi>i</mi></msub><mo>≤</mo><msub><mi>L</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">J_i\leq L_i</annotation></semantics></math>
+imply
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>≤</mo><mi>V</mi><mo>≤</mo><mn>2</mn><mi>H</mi></mrow><annotation encoding="application/x-tex">U\leq V\leq2H</annotation></semantics></math>.
+Sum (1) over its overshoot coordinate to obtain the horizontal bound
+(11) for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>X</mi><msub><mi>τ</mi><mi>s</mi></msub></msub><annotation encoding="application/x-tex">X_{\tau_s}</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>=</mo><mn>1</mn><mo>+</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">h=1+s</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><mi>γ</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">v=\gamma s</annotation></semantics></math>.
+The independent displacement law restricted to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>≤</mo><mn>2</mn><mi>H</mi></mrow><annotation encoding="application/x-tex">U\leq2H</annotation></semantics></math>
+can be convolved with it without dividing by any event probability.
+Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>H</mi><mo>≤</mo><msqrt><mrow><mn>1</mn><mo>+</mo><mi>s</mi></mrow></msqrt></mrow><annotation encoding="application/x-tex">2H\leq\sqrt{1+s}</annotation></semantics></math>
+for sufficiently large
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>,
+(14) yields another bound of the same form for this subprobability
+distribution. Translating by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+centres it at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>+</mo><mi>γ</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">j+\gamma s</annotation></semantics></math>.</p>
+<p>By (19) the successful positions lie within
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mn>2</mn></msub><mi>H</mi></mrow><annotation encoding="application/x-tex">C_2H</annotation></semantics></math>
+of the separated left columns. Also
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>≤</mo><msqrt><mrow><mn>1</mn><mo>+</mo><mi>s</mi></mrow></msqrt></mrow><annotation encoding="application/x-tex">r\leq\sqrt{1+s}</annotation></semantics></math>
+for large
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>.
+Lemma 3 therefore bounds their probability by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>H</mi><mi>/</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">CH/r</annotation></semantics></math>.
+Adding the excluded-event bound proves (15). All choices of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>C</mi><mo>*</mo></msub><annotation encoding="application/x-tex">C_*</annotation></semantics></math>
+were fixed geometric choices; the subsequent
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mn>0</mn></msub><annotation encoding="application/x-tex">m_0</annotation></semantics></math>
+depends only on them and the fixed probability estimates, not on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>,</mo><mi>p</mi><mo>,</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">A,p,r</annotation></semantics></math>.
+∎</p>
+<div class="figure-scroll"><p><img src="figures/encounter-packing.svg"
+alt="Two triangular lattice regions at a common height, with disjoint integer rows forcing their left columns to be separated." /></p></div>
+<p><em>The geometric step in the proof uses a common horizontal row.
+Each sufficiently large triangle contributes a long interval of integer
+points there. Since these intervals cannot share a lattice point, their
+left columns are separated. The picture uses slope two for legibility;
+the proof uses the exact slope
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>/</mi><mi>b</mi><mo>=</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>9</mn><mi>/</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">a/b=\log9/\log2</annotation></semantics></math>,
+with the row lengths calculated above. It illustrates the packing
+argument, not a particular phase set or a sampled random
+trajectory.</em></p>
+<p>The proof uses two different kinds of control. Tail estimates keep
+the exit near the original top and keep the extra displacement short.
+The local bound then makes landing near a sparse collection of left
+columns unlikely. A tail bound without a point bound would not establish
+the last step.</p>
+<h2 id="many-cancelling-visits-within-a-fixed-further-horizon">Many
+cancelling visits within a fixed further horizon</h2>
+<p>We now combine the two encounter estimates. Here the number of
+requested visits and the tolerated error are chosen first. The required
+horizon and the minimum starting depth are chosen afterward.</p>
+<p><strong>Theorem 5 (Finite-horizon encounter theorem).</strong> Assume
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>&gt;</mo><msub><mi>R</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">R&gt;R_0</annotation></semantics></math>.
+For every integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">K\geq0</annotation></semantics></math>
+and real
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>δ</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0&lt;\delta&lt;1</annotation></semantics></math>,
+there are integers
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">P\geq1</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mn>1</mn></msub><annotation encoding="application/x-tex">m_1</annotation></semantics></math>
+such that, for any starting point in a triangle with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mi>M</mi><mo>−</mo><mi>j</mi><mo>≥</mo><msub><mi>m</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">m=M-j\geq m_1</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><msub><mi>t</mi><mi mathvariant="normal">Δ</mi></msub><mo>−</mo><mi>l</mi><mo>&gt;</mo><mi>m</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>m</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">s=t_\Delta-l&gt;m/(\log m)^2</annotation></semantics></math>,</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℙ</mi><mrow><mo stretchy="true" form="prefix">(</mo><munderover><mo>∑</mo><mrow><mi>p</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>P</mi><mo>−</mo><mn>1</mn></mrow></munderover><msub><mn mathvariant="bold">𝟏</mn><mi>W</mi></msub><mo minsize="120%" maxsize="120%" stretchy="true" form="prefix">(</mo><mi>z</mi><mo>+</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>X</mi><mrow><msub><mi>τ</mi><mi>s</mi></msub><mo>+</mo><mi>p</mi></mrow></msub><mo>,</mo><msub><mi>Y</mi><mrow><msub><mi>τ</mi><mi>s</mi></msub><mo>+</mo><mi>p</mi></mrow></msub><mo stretchy="false" form="postfix">)</mo><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">)</mo><mo>≤</mo><mi>K</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≤</mo><mi>δ</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\mathbb P\left(\sum_{p=0}^{P-1}
+\mathbf1_W\bigl(z+(X_{\tau_s+p},Y_{\tau_s+p})\bigr)\leq K\right)
+\leq\delta.
+\tag{20}
+</annotation></semantics></math><span class="equation-number">(20)</span></span></span></p>
+<p>The constants are independent of the modulus, strip width, triangle
+family and starting point. They may depend on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>,</mo><mi>δ</mi></mrow><annotation encoding="application/x-tex">K,\delta</annotation></semantics></math>
+and the fixed holding law.</p>
+<p><strong>Proof.</strong> We choose parameters in an order that leaves
+three separate error allowances of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">\delta/3</annotation></semantics></math>.</p>
+<p>First choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>≥</mo><msub><mi>A</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">A\geq A_0</annotation></semantics></math>
+so that</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mfrac><msup><mi>e</mi><mrow><mi>−</mi><mi>c</mi><msup><mi>A</mi><mn>2</mn></msup></mrow></msup><mrow><mn>1</mn><mo>−</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>c</mi><msup><mi>A</mi><mn>2</mn></msup></mrow></msup></mrow></mfrac><mo>≤</mo><mi>δ</mi><mi>/</mi><mn>6</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+C\frac{e^{-cA^2}}{1-e^{-cA^2}}\leq\delta/6.
+</annotation></semantics></math></span></p>
+<p>Next choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">L\geq1</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>C</mi><msup><mi>A</mi><mn>2</mn></msup><mi>/</mi><mi>L</mi><mo>≤</mo><mi>δ</mi><mi>/</mi><mn>6</mn></mrow><annotation encoding="application/x-tex">2CA^2/L\leq\delta/6</annotation></semantics></math>,
+using the constants in (15). Set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mi>p</mi></msub><mo>=</mo><mi>L</mi><mo stretchy="false" form="prefix">(</mo><mi>p</mi><mo>+</mo><mn>1</mn><msup><mo stretchy="false" form="postfix">)</mo><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">r_p=L(p+1)^3</annotation></semantics></math>.
+For any fixed horizon
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>,
+once
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+is large enough that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mrow><mi>P</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>≤</mo><msup><mi>m</mi><mrow><mn>2</mn><mi>/</mi><mn>5</mn></mrow></msup></mrow><annotation encoding="application/x-tex">r_{P-1}\leq m^{2/5}</annotation></semantics></math>,
+Theorem 4 and the union bound give</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi mathvariant="double-struck">ℙ</mi><mo minsize="120%" maxsize="120%" stretchy="true" form="prefix">(</mo><mo>∃</mo><mi>p</mi><mo>&lt;</mo><mi>P</mi><mo>:</mo><mspace width="0.222em"></mspace><msub><mi>Z</mi><mrow><msub><mi>τ</mi><mi>s</mi></msub><mo>+</mo><mi>p</mi></mrow></msub><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> lies in a triangle of size </mtext><mspace width="0.333em"></mspace></mrow><mo>≥</mo><msub><mi>r</mi><mi>p</mi></msub><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><munderover><mo>∑</mo><mrow><mi>p</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>P</mi><mo>−</mo><mn>1</mn></mrow></munderover><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>C</mi><msup><mi>A</mi><mn>2</mn></msup></mrow><mrow><mi>L</mi><mo stretchy="false" form="prefix">(</mo><mi>p</mi><mo>+</mo><mn>1</mn><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mi>C</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>c</mi><msup><mi>A</mi><mn>2</mn></msup><mo stretchy="false" form="prefix">(</mo><mi>p</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><mi>δ</mi><mi>/</mi><mn>3</mn><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\mathbb P\bigl(\exists p&lt;P:\ Z_{\tau_s+p}
+\text{ lies in a triangle of size }\geq r_p\bigr)
+&amp;\leq \sum_{p=0}^{P-1}\left(\frac{CA^2}{L(p+1)^2}+Ce^{-cA^2(p+1)}\right)\\
+&amp;\leq\delta/3.
+\end{aligned}
+\tag{21}
+</annotation></semantics></math><span class="equation-number">(21)</span></span></span></p>
+<p>Here
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∑</mo><mrow><mi>q</mi><mo>≥</mo><mn>1</mn></mrow></msub><msup><mi>q</mi><mrow><mi>−</mi><mn>2</mn></mrow></msup><mo>≤</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\sum_{q\geq1}q^{-2}\leq2</annotation></semantics></math>,
+by comparison of the terms after the first with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∫</mo><mn>1</mn><mi>∞</mi></msubsup><msup><mi>x</mi><mrow><mi>−</mi><mn>2</mn></mrow></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\int_1^\infty x^{-2}\,dx</annotation></semantics></math>.</p>
+<p>Choose an integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">N\geq1</annotation></semantics></math>
+such that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>K</mi></msup><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mi>/</mi><mn>4</mn><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>≤</mo><mi>δ</mi><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">2^K(3/4)^{N-1}\leq\delta/3</annotation></semantics></math>.
+Proposition 2 with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">w=1/2</annotation></semantics></math>,
+applied to the path restarted at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Z</mi><msub><mi>τ</mi><mi>s</mi></msub></msub><annotation encoding="application/x-tex">Z_{\tau_s}</annotation></semantics></math>,
+gives this bound on the probability of visiting
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+counted triangles while accumulating at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+white visits before the last entrance. Conditioning on the stopped word
+does not change that bound, because it is uniform in the new starting
+position and the unused increments retain their law.</p>
+<p>Define integers recursively by</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mn>1</mn></msub><mo>=</mo><mi>K</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>D</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>D</mi><mi>i</mi></msub><mo>+</mo><mrow><mo stretchy="true" form="prefix">⌈</mo><mi>L</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>D</mi><mi>i</mi></msub><mo>+</mo><mn>1</mn><msup><mo stretchy="false" form="postfix">)</mo><mn>3</mn></msup><mi>/</mi><mi>b</mi><mo stretchy="true" form="postfix">⌉</mo></mrow><mo>+</mo><mi>K</mi><mo>+</mo><mn>1</mn><mo>,</mo><mspace width="2.0em"></mspace><mi>P</mi><mo>=</mo><msub><mi>D</mi><mi>N</mi></msub><mo>+</mo><mn>1</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+D_1=K,\qquad
+D_{i+1}=D_i+\left\lceil L(D_i+1)^3/b\right\rceil+K+1,
+\qquad P=D_N+1.
+\tag{22}
+</annotation></semantics></math><span class="equation-number">(22)</span></span></span></p>
+<p>These are finite numbers determined before choosing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mn>1</mn></msub><annotation encoding="application/x-tex">m_1</annotation></semantics></math>.</p>
+<p>We also need the restarted path to remain in the strip through these
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>
+positions. Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>+</mo><mi>γ</mi><mi>a</mi><mi>/</mi><mi>b</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>2</mn><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\rho=(1+\gamma a/b)/2&lt;1</annotation></semantics></math>.
+From
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>≤</mo><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mi>/</mi><mi>b</mi><mo stretchy="false" form="postfix">)</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">s\leq(a/b)m</annotation></semantics></math>,
+(2) bounds
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℙ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>X</mi><msub><mi>τ</mi><mi>s</mi></msub></msub><mo>&gt;</mo><mi>ρ</mi><mi>m</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathbb P(X_{\tau_s}&gt;\rho m)</annotation></semantics></math>
+by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>c</mi><mi>m</mi></mrow></msup></mrow><annotation encoding="application/x-tex">Ce^{-cm}</annotation></semantics></math>:
+its distance from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">\gamma s</annotation></semantics></math>
+is at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>ρ</mi><mo>−</mo><mi>γ</mi><mi>a</mi><mi>/</mi><mi>b</mi><mo stretchy="false" form="postfix">)</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">(\rho-\gamma a/b)m</annotation></semantics></math>,
+while
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>+</mo><mi>s</mi><mo>≤</mo><mn>1</mn><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mi>/</mi><mi>b</mi><mo stretchy="false" form="postfix">)</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">1+s\leq1+(a/b)m</annotation></semantics></math>,
+so the exponent in (2) is at least a fixed positive multiple of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>.
+The next
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>
+horizontal increments have probability at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>−</mi><mi>η</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>ρ</mi><mo stretchy="false" form="postfix">)</mo><mi>m</mi></mrow></msup><msubsup><mi>M</mi><mi>η</mi><mi>P</mi></msubsup></mrow><annotation encoding="application/x-tex">e^{-\eta(1-\rho)m}M_\eta^P</annotation></semantics></math>
+of summing to more than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>ρ</mi><mo stretchy="false" form="postfix">)</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">(1-\rho)m</annotation></semantics></math>.
+For the now fixed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>,
+choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mn>1</mn></msub><annotation encoding="application/x-tex">m_1</annotation></semantics></math>
+large enough that the sum of these two errors is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">\delta/3</annotation></semantics></math>.
+Outside this event, monotonicity of the horizontal coordinate keeps
+every position through
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Z</mi><mrow><msub><mi>τ</mi><mi>s</mi></msub><mo>+</mo><mi>P</mi></mrow></msub><annotation encoding="application/x-tex">Z_{\tau_s+P}</annotation></semantics></math>
+in the strip. Also enlarge
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mn>1</mn></msub><annotation encoding="application/x-tex">m_1</annotation></semantics></math>
+to meet Theorem 4 and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><msup><mi>P</mi><mn>3</mn></msup><mo>≤</mo><msup><mi>m</mi><mrow><mn>2</mn><mi>/</mi><mn>5</mn></mrow></msup></mrow><annotation encoding="application/x-tex">L P^3\leq m^{2/5}</annotation></semantics></math>.</p>
+<p>It remains a deterministic implication. Suppose none of the
+large-triangle events in (21) occurs, the first
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>
+restarted positions stay in the strip, and at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+of them are white. The first black position occurs by time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><msub><mi>D</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">K=D_1</annotation></semantics></math>.
+If the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>-th
+counted entrance occurs at time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>≤</mo><msub><mi>D</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">p\leq D_i</annotation></semantics></math>,
+its triangle has size less than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo stretchy="false" form="prefix">(</mo><mi>p</mi><mo>+</mo><mn>1</mn><msup><mo stretchy="false" form="postfix">)</mo><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">L(p+1)^3</annotation></semantics></math>.
+The vertical distance from that point to its top is at most that size
+divided by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>.
+Since every vertical increment is at least one, the path crosses above
+this top within
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⌈</mo><mi>L</mi><mo stretchy="false" form="prefix">(</mo><mi>p</mi><mo>+</mo><mn>1</mn><msup><mo stretchy="false" form="postfix">)</mo><mn>3</mn></msup><mi>/</mi><mi>b</mi><mo stretchy="false" form="postfix">⌉</mo><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\lceil L(p+1)^3/b\rceil+1</annotation></semantics></math>
+further steps. Among the next
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">K+1</annotation></semantics></math>
+positions, at least one is black, because the entire horizon contains at
+most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+white positions. This produces the next counted entrance by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>D</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><annotation encoding="application/x-tex">D_{i+1}</annotation></semantics></math>.</p>
+<p>Induction gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+encounters by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>N</mi></msub><mo>=</mo><mi>P</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">D_N=P-1</annotation></semantics></math>,
+with at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+white visits before the last entrance. Its probability is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">\delta/3</annotation></semantics></math>
+by the choice of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>.
+Adding the large-triangle and strip-departure errors proves (20). The
+endpoint
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">P-1</annotation></semantics></math>
+is included in the horizon; no visit at time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>
+is needed for this implication. ∎</p>
+<p>For the arithmetic phase triangles, choose once and for all
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mo>≤</mo><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">[</mo><mi>−</mi><mn>10</mn><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">{</mo><mn>1</mn><mo>,</mo><msub><mi>R</mi><mn>0</mn></msub><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">}</mo><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">\varepsilon\leq\exp[-10\max\{1,R_0+1\}]</annotation></semantics></math>.
+Then the preceding triangle theorem gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>&gt;</mo><msub><mi>R</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">R&gt;R_0</annotation></semantics></math>,
+so all conclusions apply uniformly in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+and the unit frequency
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ξ</mi><annotation encoding="application/x-tex">\xi</annotation></semantics></math>.
+No choice of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ε</mi><annotation encoding="application/x-tex">\varepsilon</annotation></semantics></math>
+depending on a sampled path is involved.</p>
+<p>One useful consequence of (20) is immediate. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\lambda&gt;0</annotation></semantics></math>,
+the expected weight after the crossing obeys</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">𝔼</mi><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">[</mo><mi>−</mi><mi>λ</mi><munderover><mo>∑</mo><mrow><mi>p</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>P</mi><mo>−</mo><mn>1</mn></mrow></munderover><msub><mn mathvariant="bold">𝟏</mn><mi>W</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>Z</mi><mrow><msub><mi>τ</mi><mi>s</mi></msub><mo>+</mo><mi>p</mi></mrow></msub><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">]</mo></mrow><mo>≤</mo><mi>δ</mi><mo>+</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>λ</mi><mi>K</mi></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\mathbb E\exp\left[-\lambda\sum_{p=0}^{P-1}\mathbf1_W(Z_{\tau_s+p})\right]
+\leq\delta+e^{-\lambda K}.
+\tag{23}
+</annotation></semantics></math><span class="equation-number">(23)</span></span></span></p>
+<p>Split according to whether the count is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>.
+This is the quantity required by the conditional Fourier bound, with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><msup><mi>ε</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">\lambda=\varepsilon^3</annotation></semantics></math>.
+To turn it into a uniform decay rate in the remaining strip width, one
+must also account for the width consumed before and during the crossing.
+That weighted comparison is the next step; (23) retains the entire
+probability statement that it uses.</p>
+<h2 id="exercises">Exercises</h2>
+<h3 id="the-exit-position-belongs-to-only-one-factor">1. The exit
+position belongs to only one factor</h3>
+<p>Suppose a path starts at a black entrance at time zero, crosses that
+triangle’s top at time three, and has colours black, black, white,
+white, black at times zero through four. Its next counted entrance is
+time four. For a weight
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>,
+calculate the factor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>w</mi><msub><mi>C</mi><mn>2</mn></msub></msup><annotation encoding="application/x-tex">w^{C_2}</annotation></semantics></math>,
+split it at the exit time as in (10), and explain why counting the exit
+in both pieces is wrong.</p>
+<p><strong>Solution.</strong> The white visits before the second
+entrance are times two and three, so the factor is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>w</mi><mn>2</mn></msup><annotation encoding="application/x-tex">w^2</annotation></semantics></math>.
+The part strictly before the exit counts only time two, contributing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>.
+The restarted path begins with the white position at time three and
+reaches black at its time one, contributing another
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>.
+Multiplication gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>w</mi><mn>2</mn></msup><annotation encoding="application/x-tex">w^2</annotation></semantics></math>.
+Including time three in the initial part as well would give
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>w</mi><mn>3</mn></msup><annotation encoding="application/x-tex">w^3</annotation></semantics></math>,
+not the original path weight. This is why the initial sum in (10) ends
+at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mn>1</mn></msub><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">E_1-1</annotation></semantics></math>.</p>
+<h3 id="a-conditional-chance-is-enough">2. A conditional chance is
+enough</h3>
+<p>Assume the exit probability in Proposition 1 is only known to be at
+least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>0</mn></msub><mo>=</mo><mn>1</mn><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">p_0=1/3</annotation></semantics></math>.
+For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">w=1/2</annotation></semantics></math>,
+derive the analogue of (9), and give a value of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+ensuring that the probability of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+encounters with at most four white visits is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>100</mn></mrow><annotation encoding="application/x-tex">1/100</annotation></semantics></math>.</p>
+<p><strong>Solution.</strong> The contraction factor is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>=</mo><mn>1</mn><mo>−</mo><msub><mi>p</mi><mn>0</mn></msub><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>w</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>5</mn><mi>/</mi><mn>6</mn></mrow><annotation encoding="application/x-tex">q=1-p_0(1-w)=5/6</annotation></semantics></math>.
+The induction in Proposition 2 gives a bound
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>16</mn><mo stretchy="false" form="prefix">(</mo><mn>5</mn><mi>/</mi><mn>6</mn><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">16(5/6)^{N-1}</annotation></semantics></math>.
+One valid explicit choice is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mn>1</mn><mo>+</mo><mo stretchy="false" form="prefix">⌈</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>1600</mn><mi>/</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>6</mn><mi>/</mi><mn>5</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">⌉</mo></mrow><annotation encoding="application/x-tex">N=1+\lceil\log1600/\log(6/5)\rceil</annotation></semantics></math>,
+which is 42. No independent Bernoulli representation is required; the
+lower conditional probability at each stopped entrance is the hypothesis
+actually used.</p>
+<h3 id="why-the-spacing-cannot-exceed-the-distribution-scale">3. Why the
+spacing cannot exceed the distribution scale</h3>
+<p>Let a variable be uniform on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mi>−</mi><mi>q</mi><mo>,</mo><mi>…</mi><mo>,</mo><mi>q</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{-q,\ldots,q\}</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">q\geq1</annotation></semantics></math>.
+Take sites
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mi mathvariant="double-struck">ℤ</mi></mrow><annotation encoding="application/x-tex">r\mathbb Z</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>&gt;</mo><mn>2</mn><mi>q</mi></mrow><annotation encoding="application/x-tex">r&gt;2q</annotation></semantics></math>,
+and look only at distance zero from them. Compute the probability and
+show why a bound
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>/</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">C/r</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>
+independent of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>,</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">r,q</annotation></semantics></math>,
+cannot hold in this range. Relate this to Lemma 3.</p>
+<p><strong>Solution.</strong> Only the site zero lies in the support, so
+the probability is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>q</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">1/(2q+1)</annotation></semantics></math>,
+independently of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>&gt;</mo><mn>2</mn><mi>q</mi></mrow><annotation encoding="application/x-tex">r&gt;2q</annotation></semantics></math>.
+Letting
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+tend to infinity with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>
+fixed contradicts such a bound. This law satisfies (11) with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mi>q</mi><mo>+</mo><mn>1</mn><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">h=(q+1)^2</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">v=0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">c=1</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mi>e</mi></mrow><annotation encoding="application/x-tex">C=e</annotation></semantics></math>:
+on its support
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>h</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">f_h(x)\leq1</annotation></semantics></math>,
+so the right side is at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mi>q</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mo>≥</mo><mn>1</mn><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>q</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">1/(q+1)\geq1/(2q+1)</annotation></semantics></math>;
+off the support the bound is automatic. The restriction
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>≤</mo><msqrt><mi>h</mi></msqrt></mrow><annotation encoding="application/x-tex">r\leq\sqrt h</annotation></semantics></math>
+supplies enough nearby integer positions to average each site’s weight.
+Without it, a separate error of order
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>h</mi><mrow><mi>−</mi><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><annotation encoding="application/x-tex">h^{-1/2}</annotation></semantics></math>
+can be necessary.</p>
+<h3 id="a-finite-horizon-from-a-bound-on-residence-time">4. A finite
+horizon from a bound on residence time</h3>
+<p>Consider an abstract coloured path that stays in its strip. Suppose
+at most one of its first
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>
+positions is white. Suppose further that an entrance at time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+crosses above its triangle by time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mi>p</mi><mo>+</mo><mn>1</mn><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">p+(p+1)^2</annotation></semantics></math>.
+Use the encounter rule of Proposition 2 to find a horizon that forces
+three counted entrances. This exercise assumes the stated residence
+bound and asks only for the deterministic implication.</p>
+<p><strong>Solution.</strong> The first entrance occurs by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mn>1</mn></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">D_1=1</annotation></semantics></math>.
+After an entrance at time at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>D</mi><mi>i</mi></msub><annotation encoding="application/x-tex">D_i</annotation></semantics></math>,
+the top is crossed by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>i</mi></msub><mo>+</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>D</mi><mi>i</mi></msub><mo>+</mo><mn>1</mn><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">D_i+(D_i+1)^2</annotation></semantics></math>.
+Of the position at that crossing and the next position, at least one is
+black, since there is at most one white visit in the whole horizon.
+Hence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>D</mi><mi>i</mi></msub><mo>+</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>D</mi><mi>i</mi></msub><mo>+</mo><mn>1</mn><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">D_{i+1}=D_i+(D_i+1)^2+1</annotation></semantics></math>
+suffices. It gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mn>2</mn></msub><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">D_2=6</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mn>3</mn></msub><mo>=</mo><mn>56</mn></mrow><annotation encoding="application/x-tex">D_3=56</annotation></semantics></math>.
+Taking
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mn>57</mn></mrow><annotation encoding="application/x-tex">P=57</annotation></semantics></math>
+includes time 56 and forces three entrances. Replacing this by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mn>56</mn></mrow><annotation encoding="application/x-tex">P=56</annotation></semantics></math>
+would not include the endpoint that the argument guarantees. The bound
+is not asserted to be optimal.</p>
+<h2 id="what-carries-forward">What carries forward</h2>
+<p>The local exit law supplies a positive chance of cancellation above
+any separated triangle. Stopped-word independence lets that chance be
+used repeatedly without assuming independent visits. The large-triangle
+estimate adds a different mechanism: disjoint long rows force sparse
+left columns, and the local probability bound makes those columns hard
+to hit. A deterministic residence argument then turns these two
+estimates into a finite horizon with many cancelling visits.</p>
+<p>The next Fourier step compares these gains with the remaining
+horizontal distance. It must treat shallow and deep starting points
+differently, but its deep-crossing input is now the complete theorem
+(20), with the strip-departure event and all three probability
+allowances included. These are general lessons about renewal paths,
+sparse targets and multiplicative weights, with the Collatz phase
+geometry providing their specific arithmetic application.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Terence Tao, <em>Almost all orbits of the Collatz map attain almost
+bounded values</em>, <a
+href="https://arxiv.org/abs/1909.03562v7">arXiv:1909.03562v7</a>,
+Section 7: first-crossing locations, the positive probability of a white
+exit, the repeated-triangle estimate, the large-triangle encounter
+estimate, and the final finite-horizon argument. The renewal-process
+formulation is credited there to Marek Biskup. The propositions above
+supply independently expressed proofs of the encounter mechanism, not a
+separate claim to a new Collatz theorem.</li>
+<li>Robert G. Gallager, <em>Discrete Stochastic Processes</em>, <a
+href="https://ocw.mit.edu/courses/6-262-discrete-stochastic-processes-spring-2011/931ffa0940899c27f34b71ad64fd2bb0_MIT6_262S11_chap04.pdf">MIT
+OpenCourseWare, Chapter 4: Renewal Processes</a>, Section 4.1 and
+Definition 4.5.1. The earlier renewal lesson proves the stopped-word and
+first-crossing facts used here.</li>
+</ul>
+<nav aria-label="Lesson sequence"><p><a href="NT-COLLATZ-09.html">Previous: Conditional cancellation and arithmetic phase geometry</a><br><a href="NT-COLLATZ-11.html">Next: Weighted renewal estimates and Fourier decay</a></p></nav></main><footer>Original mathematical exposition and illustrations: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>. References retain their own authorship and terms.</footer></body></html>

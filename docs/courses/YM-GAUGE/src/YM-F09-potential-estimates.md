@@ -817,3 +817,12 @@ The complete fixed-time heat-curvature estimates are now proved in
 The wave estimates that determine a uniform physical lifespan,
 and the final physical continuation argument, are subsequent
 parts of Lesson 9.
+
+
+## Further reading: evaluate the endpoint wave input
+
+[Endpoint wave bounds](../classical-endpoint-wave.html), EW.8–EW.18,
+uses the polynomials proved here to evaluate every finite endpoint
+wave norm. Its div–curl identity retains the full ordered tensor and
+the original vector norm. All time integrals are taken over the
+original physical interval, including unequal distances from the anchor.

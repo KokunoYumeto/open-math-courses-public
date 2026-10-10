@@ -4,4 +4,4 @@ The independently written AN-03 programme text in these three readings is dedica
 
 External works are cited as mathematical antecedents and comparison readings. Their books, scans, OCR and source transcriptions are not included here and retain their own rights. Software and fonts retain their separate notices.
 
-[Authorship](TITLE_PAGE.md) and history identify the programme origins. The unmodified FSF document [COPYING](COPYING) is retained only as historical license information under that document's own verbatim-copying permission. It does not govern these AI-written chapters.
+[Authorship](TITLE_PAGE.md) and history identify the programme origins. The unmodified FSF document COPYING is retained only as historical license information under that document's own verbatim-copying permission. It does not govern these AI-written chapters.

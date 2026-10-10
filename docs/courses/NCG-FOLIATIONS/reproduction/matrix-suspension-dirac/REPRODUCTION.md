@@ -6,7 +6,7 @@ Section 11BI, MGS.1–MGS.16 and solved Exercises 282–283 give the complete in
 Run python draw_matrix_suspension_dirac.py --output-dir generated with Python and Pillow.
 The default resources are the already included ../labelled-geometric-kernel folder.
 The PNG was produced with Python 3.13.9 and Pillow 12.2.
-The shared DejaVu font and the embedded SVG font retain the exact [font notice](../labelled-geometric-kernel/FONT-NOTICE.txt).
+The shared DejaVu font and the embedded SVG font retain the exact font notice.
 Python and Pillow retain their Python notice and Pillow notice.
 These technical component terms are not replaced by the original mathematical dedication.
 

@@ -1,0 +1,37 @@
+{
+  "schema": "claude-bridge-course/v1",
+  "id": "configuration-gaps-in-bin-packing",
+  "title": "Configuration gaps in bin packing",
+  "author": "Claude Opus 5.5 (Anthropic)",
+  "written": "2026-10-10",
+  "status": "Self-checked by the writing AI",
+  "licence": "CC0-1.0",
+  "description": "OpenAI's theorems (2026) that the configuration linear program of bin packing can be smaller than the optimum by any additive constant, so the modified integer round-up conjecture of Scheithauer and Terno is false, and that packing within any fixed additive number of bins above the optimum is NP-hard. The first lesson sets up the two configuration programs, the counting bound for items above 1/6, the results, and two counting identities for half-open intervals. The second proves the competing-trees lemma: two trees with shared depth quotas that can each be hit d times on every path, but not both once. The third places cells, test intervals and job positions on the real line and lists the items with roles and coordinates; the fourth encodes patterns, labels and coordinates in rational sizes near 1/5. The fifth packs the instance into B bins from a vertex cover and gives a fractional packing of value B for the complete graph on four vertices. The sixth extracts a vertex cover of size at most k + rho n from any packing into B + c bins, proves the unbounded gap, and derives the hardness from Hastad's satisfiability gap.",
+  "prerequisites": [
+    "none beyond finite sets, rational arithmetic and graphs; the hardness section defines the complexity notions it uses"
+  ],
+  "lessons": [
+    "bin-packing-and-the-configuration-program",
+    "two-competing-trees",
+    "coordinates-cells-and-items",
+    "sizes-that-enforce-the-patterns",
+    "packings-from-covers-and-a-fractional-packing",
+    "extracting-a-vertex-cover"
+  ],
+  "checks": {
+    "paid_citations": 0,
+    "exact_checks": "Python (scratch bp_checks.py, output bp_checks.out, 10 Oct 2026, 0 problems), exact rational arithmetic. (A) All 6,188 multisets of five subclasses: the ten count totals lie in the stated ranges, and the primary score vanishes exactly for the four table patterns. (B) The competing trees for d = 1 and d = 2 (1,629,083 vertices, L = 13, 699,050 leaves, P = 1,027): colour counts equal the quotas at every depth, every complete path has 2d - 1 coloured vertices, the separate markings satisfy (1.1), the obstruction path exists against random and greedy quota-respecting markings, and random pairs of markings with shared quotas miss a path in one tree. (C) Toy instances with the trees for d = 1 and small R (all other formulas unchanged, so the large constants of the soundness proof are not exercised): role counts, sum of primary and secondary scores zero, sizes in (1/6, 1), coordinate order and cell gaps; the packing from a vertex cover for K4 (k = 3) and for a triangle with a pendant edge (k = 2) uses exactly B = 68 bins, every item once, every bin fitting; the fractional packing for K4 with k = 2 covers each of the 340 items with weight exactly 1, has objective B, and every column fits.",
+    "lint": "bp_lint.py, bp_bs_scan.py and im_linecheck.py (scratch): headings, provenance line, balanced TeX delimiters per line, every sibling link and anchor resolved, no backslash artefacts or control characters.",
+    "source_reading": "OpenAI preprint 'Additive hardness and unbounded configuration gaps in bin packing' (24 Sep 2026), TeX read in full (introduction, trees, instance, completeness, soundness, consequences; library copy openai-math-20261006); every step rederived. Lean scope document lean/docs/118.md read. Differences: the course splits the instance into two lessons and proves the matching-by-sorting step (Lemma 5.2 of the first lesson) and the counting bound explicitly; the fractional proof states only the pool nonemptiness it needs; Hastad's theorem is stated as an unnumbered imported theorem. Rothvoss (arXiv:1301.4010) and Hoberg-Rothvoss (arXiv:1503.08796) arXiv records checked; Williamson-Shmoys electronic edition on the authors' site reachable."
+  },
+  "open_obligations": [
+    "Hastad's satisfiability gap (J. Hastad, Some optimal inapproximability results, J. ACM 48 (2001), Theorem 6.5, with epsilon = 1/16): it is NP-hard to distinguish satisfiable exact-3-literal CNF formulas from those in which every assignment satisfies at most a 15/16 fraction of the clauses. Imported in Section 5 of the sixth lesson; Theorem 5.2 and Corollary 5.3 there (Theorem 3.2 and Corollary 3.3 of the first lesson) depend on it. Theorem 3.1 (the unbounded configuration gap) does not. Intended home: a course on probabilistically checkable proofs and hardness of approximation.",
+    "Context only, not used in any proof: Marcotte's counterexamples to integer round-up, the Karmarkar-Karp, Rothvoss and Hoberg-Rothvoss rounding bounds (Section 2 of the first lesson), Chalermsook-Chuzhoy (second lesson), Anthonisse and Jansen-Pirotton-Tutas (fourth lesson)."
+  ],
+  "free_sources": [
+    "OpenAI, Additive hardness and unbounded configuration gaps in bin packing (OpenAI Math Release preprint, 24 Sep 2026), with its Lean formalization (scope document lean/docs/118.md)",
+    "D. P. Williamson and D. B. Shmoys, The Design of Approximation Algorithms (electronic edition on the authors' site)",
+    "T. Rothvoss, Approximating bin packing within O(log OPT log log OPT) bins, arXiv:1301.4010",
+    "R. Hoberg and T. Rothvoss, A logarithmic additive integrality gap for bin packing, arXiv:1503.08796"
+  ]
+}

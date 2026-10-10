@@ -21,8 +21,8 @@ The selected measure component includes the full angular inverse and its endpoin
 - [prerequisites/prerequisites/U011-free-foundations/notices/TITLE_PAGE.md](../prerequisites/U011-free-foundations/notices/TITLE_PAGE.md) — 698 bytes; SHA256 `CD73C6A6ACF7913C65BF21119D40CF4B0990667DEBE9CAAB3D42A9032EE4DE93`.
 - [prerequisites/prerequisites/U011-free-foundations/notices/RIGHTS.md](../prerequisites/U011-free-foundations/notices/RIGHTS.md) — 1907 bytes; SHA256 `7ECD7328ECEFDEB21222C4933C66DD1B09DEFFD7A5CDD0D3656A3180A1FF12B5`.
 - [prerequisites/prerequisites/U011-free-foundations/notices/HISTORY.md](../prerequisites/U011-free-foundations/notices/HISTORY.md) — 787 bytes; SHA256 `18BD10E91023FA07DA1AD5D829B2E61844A8FFBC999104DE7E8C2A57E6D327BF`.
-- [prerequisites/prerequisites/U011-free-foundations/notices/COPYING](../prerequisites/U011-free-foundations/notices/COPYING) — 20801 bytes; SHA256 `2AADEE1635EAB0C9E08A90EF7579A5D64AE4B52BA33475945A4F0DD4CA24ACD1`.
-- [prerequisites/prerequisites/U011-free-foundations/notices/MathJax-LICENSE.txt](../prerequisites/U011-free-foundations/notices/MathJax-LICENSE.txt) — 11358 bytes; SHA256 `CFC7749B96F63BD31C3C42B5C471BF756814053E847C10F3EB003417BC523D30`.
+- prerequisites/prerequisites/U011-free-foundations/notices/COPYING — 20801 bytes; SHA256 `2AADEE1635EAB0C9E08A90EF7579A5D64AE4B52BA33475945A4F0DD4CA24ACD1`.
+- prerequisites/prerequisites/U011-free-foundations/notices/MathJax-LICENSE.txt — 11358 bytes; SHA256 `CFC7749B96F63BD31C3C42B5C471BF756814053E847C10F3EB003417BC523D30`.
 
 ## Preserve the source context
 

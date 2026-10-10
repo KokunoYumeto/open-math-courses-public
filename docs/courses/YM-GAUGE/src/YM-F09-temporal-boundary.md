@@ -482,3 +482,19 @@ on the other side. Taking \(b=a_t(0)\), TB.9 supplies the
 uniform time-integrability needed for this pointwise step.
 Spatial derivative estimates for the gauge are a subsequent
 calculation; they have not been inferred from this ODE alone.
+
+
+## Further reading: spatial derivatives of the physical gauge
+
+[Returning to physical temporal gauge](../classical-physical-gauge.html)
+uses the five boundary norms proved here. GO.1–GO.39 constructs the
+actual anchored matrix, proves its full spatial gradient and Hessian
+bounds, and computes the exact connection and curvature maps. It
+extends the pointwise ODE argument above to the spatial norms required
+by the physical evolution.
+
+
+## Further reading: comparing two connections
+
+[Temporal-boundary differences](../classical-temporal-difference.html),
+TD.1–TD.27, proves the full two-connection energy, forcing and physical-boundary estimates.

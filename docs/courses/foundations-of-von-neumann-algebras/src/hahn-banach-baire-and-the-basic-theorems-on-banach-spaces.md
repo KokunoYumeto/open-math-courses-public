@@ -1,6 +1,6 @@
 # Hahn–Banach, Baire and the basic theorems on Banach spaces
 
-*Originally written and self-checked by Claude Opus 5.5 (Anthropic), October 2026. GPT-6.1 Sol (OpenAI), at the Ultra setting, read and self-checked the full lesson and all six solutions, supplied the well-ordering and infinite-product proof and corrected the non-Hausdorff example, October 2026. Public domain (CC0).*
+*Originally written and self-checked by Claude Opus 5.5 (Anthropic), October 2026. GPT-6.1 Sol (OpenAI), at the Ultra setting, read and self-checked the full lesson and all six solutions, supplied the well-ordering and infinite-product proof and corrected the non-Hausdorff example, October 2026. GPT-6 Astra (OpenAI), at the Ultra setting, supplied and self-checked Theorem 3.2 and Corollary 3.3, October 2026. Public domain (CC0).*
 
 The lessons of this course use a small number of theorems about normed spaces again and again. This lesson proves them.
 
@@ -127,6 +127,66 @@ Inductively, \(B(x_n,r_n)\cap U_{n+1}\) is nonempty and open. Choose \(x_{n+1}\)
 For \(m>n\), \(x_m\in B(x_n,r_n)\) and \(r_n<2^{1-n}\), so \((x_n)\) is Cauchy. Let \(x\) be its limit. For each \(n\), the closed ball \(\overline B(x_n,r_n)\) contains \(x_m\) for all \(m\ge n\), hence contains \(x\). So \(x\in W\cap\bigcap_nU_n\).
 
 For the second form: the complement of a closed set with empty interior is a dense open set. If \(X=\bigcup_nF_n\) with each \(F_n\) closed with empty interior, then the dense open sets \(X\setminus F_n\) have empty intersection. This contradicts the first form, since \(X\ne\varnothing\). \(\square\)
+
+### Locally compact Hausdorff spaces and weak compactness
+
+A space is *Hausdorff* if distinct points have disjoint open neighbourhoods. It is *compact* if every open cover has a finite subcover, and *locally compact* here means that every point has a compact neighbourhood: a compact set containing an open set about that point. These definitions do not require a metric. A set is *nowhere dense* if its closure has empty interior. A *Baire space* is one in which every countable intersection of dense open sets is dense.
+
+**Theorem 3.2** (locally compact Hausdorff Baire theorem). Every locally compact Hausdorff space is a Baire space. In particular, every compact Hausdorff space is a Baire space, without any metrizability, separability or countable-base assumption. No nonempty open subset can be contained in a countable union of nowhere dense subsets. Consequently, in any countable closed cover of a nonempty such space, at least one member has nonempty interior.
+
+**Proof.** We first prove the compact-neighbourhood shrinking fact needed in place of shrinking metric balls.
+
+*Compact sets are closed in a Hausdorff space.* Let \(C\subseteq X\) be compact and \(y\notin C\). For each \(c\in C\), choose disjoint open sets \(A_c\ni c\) and \(B_c\ni y\). Finitely many \(A_c\) cover \(C\). The intersection of the corresponding \(B_c\) is an open neighbourhood of \(y\) disjoint from \(C\). Thus \(X\setminus C\) is open. A closed subset of a compact space is compact: adjoin its open complement to any open cover and take a finite subcover.
+
+*Shrinking inside an arbitrary open neighbourhood.* Suppose \(x\in O\subseteq X\), with \(O\) open. Choose a compact neighbourhood \(K\) of \(x\), so \(x\in\operatorname{int}_X K\). The set \(K\setminus O\) is closed in \(K\), hence compact. For every \(y\in K\setminus O\), choose disjoint open sets \(A_y\ni x\) and \(B_y\ni y\). Choose \(y_1,\ldots,y_m\) whose \(B_{y_i}\) cover \(K\setminus O\), and put
+\[
+V=\operatorname{int}_X K\cap O\cap\bigcap_{i=1}^m A_{y_i}.
+\]
+An empty intersection is \(X\). Thus \(V\) is open and contains \(x\). Since \(K\) is closed and \(V\) is disjoint from every open \(B_{y_i}\),
+\[
+\overline V^{\,X}
+\subseteq K\setminus\bigcup_{i=1}^m B_{y_i}
+\subseteq O.
+\]
+Moreover \(\overline V^{\,X}\) is a closed subset of \(K\), hence compact. This proves the shrinking fact, including the case \(K\setminus O=\varnothing\).
+
+Now let \((U_n)_{n\geq1}\) be dense open subsets of \(X\), and let \(W\) be any nonempty open subset. Choose a point in \(W\cap U_1\) and apply the shrinking fact to obtain a nonempty open \(V_1\) with compact closure \(C_1\subseteq W\cap U_1\). Having chosen \(V_n\), density and openness make \(V_n\cap U_{n+1}\) nonempty and open. Apply the same fact there to obtain nonempty open \(V_{n+1}\) with compact closure \(C_{n+1}\) and
+\[
+\varnothing\ne C_{n+1}\subseteq V_n\cap U_{n+1}
+\subseteq C_n.
+\]
+All \(C_n\) are closed subsets of the compact set \(C_1\). Their intersection is nonempty: otherwise their complements relative to \(C_1\) would give an open cover with a finite subcover, making a finite intersection of the \(C_n\) empty. Nestedness makes each such finite intersection one of the nonempty \(C_n\), a contradiction. Every point of \(\bigcap_n C_n\) belongs to \(W\cap\bigcap_n U_n\). Since \(W\) was arbitrary, \(\bigcap_n U_n\) is dense. For empty \(X\), density is vacuous.
+
+If \(N_n\) are nowhere dense, the sets \(X\setminus\overline{N_n}\) are dense and open. Their intersection meets every nonempty open \(W\), so \(W\) cannot be contained in \(\bigcup_n N_n\). In a countable closed cover, if all members had empty interior, they would all be nowhere dense, contradicting this assertion with \(W=X\ne\varnothing\). Finally a compact Hausdorff space is locally compact by taking \(K=X\) at each point. \(\square\)
+
+**Corollary 3.3** (small norm diameter in a weakly compact set). Let \(E\) be a separable real or complex normed space, let \(L\subseteq E\) be nonempty and compact for the weak topology \(\sigma(E,E^*)\), and let \(\varepsilon>0\). Then \(L\) has a nonempty relatively weakly open subset \(G\) of norm diameter less than \(\varepsilon\). Neither completeness of \(E\) nor convexity of \(L\) is assumed.
+
+**Proof.** The weak topology is the least topology making every bounded linear functional \(\varphi:E\to\mathbb K\) continuous. By [Corollary 2.3(2)](#OA-FND-HB-02), these functionals separate points: for \(x\ne y\), choose \(\varphi\) with \(\varphi(x)\ne\varphi(y)\). Inverse images of disjoint scalar neighbourhoods separate \(x\) and \(y\) in the weak topology. Thus \(L\) is compact Hausdorff and Theorem 3.2 applies to it.
+
+Choose a countable norm-dense set \(\{z_1,z_2,\ldots\}\subseteq E\), repeating points if necessary. Put \(r=\varepsilon/3\) and
+\[
+F_n=L\cap\{x\in E:\|x-z_n\|\leq r\}.
+\]
+The norm formula of Corollary 2.3(2) gives the exact equality
+\[
+\begin{gathered}
+\{x:\|x-z_n\|\leq r\}
+\\
+=\bigcap_{\substack{\varphi\in E^*\\\|\varphi\|\leq1}}
+\{x:|\varphi(x)-\varphi(z_n)|\leq r\}.
+\end{gathered}
+\]
+Each set on the right is weakly closed by continuity of \(\varphi\), so \(F_n\) is closed in \(L\). Norm density gives \(L=\bigcup_n F_n\). The closed-cover conclusion of Theorem 3.2 supplies \(N\) with nonempty relative interior \(G=\operatorname{int}_L F_N\). For \(x,y\in G\),
+\[
+\begin{gathered}
+\|x-y\|\leq\|x-z_N\|+\|y-z_N\|
+\\
+\leq2r=2\varepsilon/3<\varepsilon.
+\end{gathered}
+\]
+The same uniform bound gives \(\operatorname{diam}_{\|\cdot\|}G\leq2\varepsilon/3\). The topology used for the interior is the relative weak topology throughout; a norm-open ball was not treated as weakly open. \(\square\)
+
+The separability assumption in Corollary 3.3 supplies the countable closed cover. It is not an assumption in Theorem 3.2. This distinction matters when Baire's theorem is applied to a weakly compact closure of extreme points: the compact topology and the metric used to measure diameter need not be the same.
 
 ## 4. Uniform boundedness
 

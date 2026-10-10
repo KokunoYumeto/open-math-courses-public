@@ -18,7 +18,7 @@ Continue with [lesson 6: Integral monodromy and the fundamental group](CG-S6-06.
 
 [Lesson 11](CG-S6-11.html) proves the exact octonion and Nijenhuis calculations, the smooth integrability theorem, and the almost-complex sphere restriction. Six solved exercises and three complete characteristic-class prerequisite chapters are included.
 
-[Lesson 10](CG-S6-10.html) proves the exact non-normal-fibre correction, proper test family, full-fibre duality and base change, and global nonvanishing for every line-bundle twist. It includes three complete analytical companion chapters and six solved exercises. The [working lesson 7](CG-S6-07.html) makes its integral-topology dependency available; that chapter is explicitly unfinished. Its integral duality, exact affine descent, CW, Hurewicz, path-fibre, cancellation, stable-framing, framed Whitney-disk and supported Whitney-move proofs are included as companions.
+[Lesson 10](CG-S6-10.html) proves the exact non-normal-fibre correction, proper test family, full-fibre duality and base change, and global nonvanishing for every line-bundle twist. It includes three complete analytical companion chapters and six solved exercises. The [working lesson 7](CG-S6-07.html) makes its integral-topology dependency available; that chapter is explicitly unfinished. Its integral duality, exact affine descent, CW, Hurewicz, path-fibre, cancellation, stable-framing, framed Whitney-disk, supported Whitney-move and original handle-decomposition, index-arrangement, Morse-trajectory, extreme-index removal and cancelling-pair creation proofs are included as companions.
 
 The [series map](series.json) retains the full remaining assignment. Lessons 1–6 and 8–11 are available. The analytic lessons 8–9 can be read while the exact topology providers for lesson 7 are completed. The remaining foundational and smooth-recognition proofs remain assigned within lesson 7. Source reading and proof acceptance have separate records.
 
@@ -47,12 +47,17 @@ The [series map](series.json) retains the full remaining assignment. Lessons 1�
 - [Path fibres and integral homotopy equivalences](path-fibres-and-integral-homotopy-equivalences.html)
 - [Belt complements and the framed Whitney disk](belt-sphere-complements-and-the-whitney-disk.html)
 - [The supported Whitney move and its original framings](whitney-move-with-controlled-support.html)
+- [Relative Morse functions and the original handles](relative-morse-functions-and-original-handles.html)
+- [Rearranging the original framed handles](rearranging-the-original-framed-handles.html)
+- [Morse trajectories and supported critical-value lowering](morse-trajectories-and-critical-value-lowering.html)
+- [Removing the original zero and top handles](removing-the-original-zero-and-top-handles.html)
+- [Creating an original cancelling handle pair](creating-an-original-cancelling-handle-pair.html)
 - Source identities and attribution
 - Complete current source and offline reader
 
 New mathematical exposition and diagrams are dedicated under CC0-1.0. Bundled rendering software and fonts retain their own notices in `assets/mathjax/`. Current authoring provenance: GPT-6 Astra (OpenAI), Codex, Ultra, 9 October 2026. Independent review is not claimed.
 
-Run `python rebuild_course.py` with SymPy, NumPy and Matplotlib installed and Pandoc on PATH to reproduce all twenty-two exact checkers, regenerate the diagrams and readers and rebuild the complete offline download. For individual operations, run the checkers above or `python rebuild_reader.py`. Each SVG figure is its editable source. Open `index.html` in the extracted archive to read offline; all equation-rendering assets and fonts are included.
+Run `python rebuild_course.py` with SymPy, NumPy and Matplotlib installed and Pandoc on PATH to reproduce all twenty-seven exact checkers, regenerate the diagrams and readers and rebuild the complete offline download. For individual operations, run the checkers above or `python rebuild_reader.py`. Each SVG figure is its editable source. Open `index.html` in the extracted archive to read offline; all equation-rendering assets and fonts are included.
 
 Linked prerequisite courses are separate providers. The fourth lesson includes its reproducible drawing program in `checks/draw_period_quotient.py`.
 

@@ -1,0 +1,172 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A determinant obstruction from field norms</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents</a><a href="counting-lattice-matrices.html">Previous lesson</a><a href="residue-matrices-and-their-orbits.html">Next lesson</a><a href="src/a-determinant-obstruction-from-field-norms.md">Editable source</a></nav><main><article><h1 id="a-determinant-obstruction-from-field-norms">A determinant obstruction from field norms</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Erdős's parabola (first lesson) uses three points <span class="math" data-tex="\((1,x,x^2)\)">\((1,x,x^2)\)</span> over <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span>: distinct labels give a nonzero Vandermonde determinant. This lesson builds random integer columns, modulo a large prime power <span class="math" data-tex="\(h=B^k\)">\(h=B^k\)</span>, that carry the same information in a hidden form. Every column has a random label <span class="math" data-tex="\(\xi\)">\(\xi\)</span> in a finite field <span class="math" data-tex="\(K\)">\(K\)</span>. If the three labels of three columns are distinct, the determinant of the columns modulo <span class="math" data-tex="\(h\)">\(h\)</span> is far from zero: it has no representative in <span class="math" data-tex="\([-\tau,\tau]\)">\([-\tau,\tau]\)</span> with <span class="math" data-tex="\(\tau\approx B^{k-1}/2\)">\(\tau\approx B^{k-1}/2\)</span>. The construction takes the norm of the Vandermonde determinant, writes the resulting polynomial over <span class="math" data-tex="\(\mathbb F_r\)">\(\mathbb F_r\)</span> as a sum of determinants of monomials, and places each summand at a designated digit of a base-<span class="math" data-tex="\(B\)">\(B\)</span> expansion, so that one digit of the determinant equals the norm.</p>
+<p>We use from the core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C40">Abstract Algebra II</a> (Judson, <em>Abstract Algebra: Theory and Applications</em>): splitting fields exist (<a href="https://judsonbooks.org/aata-files/aata-html/fields-section-splitting-fields.html">Theorem 21.2.3</a>); in characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\((a+b)^{p^n}=a^{p^n}+b^{p^n}\)">\((a+b)^{p^n}=a^{p^n}+b^{p^n}\)</span> (<a href="https://judsonbooks.org/aata-files/aata-html/finite-section-field.html">Lemma 22.1.3</a>); and for every prime <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span> there is a field with <span class="math" data-tex="\(p^n\)">\(p^n\)</span> elements, the splitting field of <span class="math" data-tex="\(x^{p^n}-x\)">\(x^{p^n}-x\)</span> over <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span> (<a href="https://judsonbooks.org/aata-files/aata-html/finite-section-field.html">Theorem 22.1.6</a>). From <a href="small-triangles-and-the-plan.html">Small triangles and the plan</a> we use primes in intervals (Lemma 4.3).</p>
+<h2 id="1-finite-fields-and-norms">1. Finite fields and norms</h2>
+<p>Let <span class="math" data-tex="\(r\)">\(r\)</span> be an odd prime, <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span> odd, and <span class="math" data-tex="\(K\)">\(K\)</span> a field with <span class="math" data-tex="\(r^d\)">\(r^d\)</span> elements (Judson, Theorem 22.1.6). It contains the prime field <span class="math" data-tex="\(\mathbb F_r\)">\(\mathbb F_r\)</span>, and is a vector space of dimension <span class="math" data-tex="\(d\)">\(d\)</span> over it. Every <span class="math" data-tex="\(t\in K\)">\(t\in K\)</span> satisfies <span class="math" data-tex="\(t^{r^d}=t\)">\(t^{r^d}=t\)</span> (the nonzero elements form a group of order <span class="math" data-tex="\(r^d-1\)">\(r^d-1\)</span>).</p>
+<p>The <em>Frobenius map</em> <span class="math" data-tex="\(\sigma(t)=t^r\)">\(\sigma(t)=t^r\)</span> is a ring homomorphism of <span class="math" data-tex="\(K\)">\(K\)</span> (Judson, Lemma 22.1.3), injective because <span class="math" data-tex="\(K\)">\(K\)</span> is a field, hence bijective; and <span class="math" data-tex="\(\sigma^d=\mathrm{id}\)">\(\sigma^d=\mathrm{id}\)</span>. Its fixed points are the roots of <span class="math" data-tex="\(X^r-X\)">\(X^r-X\)</span>, at most <span class="math" data-tex="\(r\)">\(r\)</span> of them; the <span class="math" data-tex="\(r\)">\(r\)</span> elements of <span class="math" data-tex="\(\mathbb F_r\)">\(\mathbb F_r\)</span> are fixed (Fermat's little theorem), so the fixed field of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is exactly <span class="math" data-tex="\(\mathbb F_r\)">\(\mathbb F_r\)</span>.</p>
+<p>The <em>norm</em> of <span class="math" data-tex="\(t\in K\)">\(t\in K\)</span> is <span class="math" data-tex="\(\operatorname{Nm}(t)=\prod_{j=0}^{d-1}\sigma^j(t)\)">\(\operatorname{Nm}(t)=\prod_{j=0}^{d-1}\sigma^j(t)\)</span>. Since <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> permutes the factors cyclically, <span class="math" data-tex="\(\sigma(\operatorname{Nm}t)=\operatorname{Nm}t\)">\(\sigma(\operatorname{Nm}t)=\operatorname{Nm}t\)</span>, so <span class="math" data-tex="\(\operatorname{Nm}t\in\mathbb F_r\)">\(\operatorname{Nm}t\in\mathbb F_r\)</span>. It is multiplicative, and <span class="math" data-tex="\(\operatorname{Nm}t\neq0\)">\(\operatorname{Nm}t\neq0\)</span> for <span class="math" data-tex="\(t\neq0\)">\(t\neq0\)</span>.</p>
+<h2 id="2-the-norm-polynomial">2. The norm polynomial</h2>
+<p>Fix an <span class="math" data-tex="\(\mathbb F_r\)">\(\mathbb F_r\)</span>-basis <span class="math" data-tex="\(\beta_1,\ldots,\beta_d\)">\(\beta_1,\ldots,\beta_d\)</span> of <span class="math" data-tex="\(K\)">\(K\)</span>. A <em>group</em> of variables is an array <span class="math" data-tex="\(X=(X_{i\nu})_{1\leq i\leq3,\,1\leq\nu\leq d}\)">\(X=(X_{i\nu})_{1\leq i\leq3,\,1\leq\nu\leq d}\)</span> of <span class="math" data-tex="\(3d\)">\(3d\)</span> variables; put
+<span class="math math-display" data-tex="\[
+Z(X)=\Bigl(\sum_\nu\beta_\nu X_{1\nu},\ \sum_\nu\beta_\nu X_{2\nu},\ \sum_\nu\beta_\nu X_{3\nu}\Bigr)^{\mathsf T}.
+\]">\[
+Z(X)=\Bigl(\sum_\nu\beta_\nu X_{1\nu},\ \sum_\nu\beta_\nu X_{2\nu},\ \sum_\nu\beta_\nu X_{3\nu}\Bigr)^{\mathsf T}.
+\]</span>
+For three disjoint groups <span class="math" data-tex="\(X^{(1)},X^{(2)},X^{(3)}\)">\(X^{(1)},X^{(2)},X^{(3)}\)</span> let <span class="math" data-tex="\(\mathcal D=\det\bigl(Z(X^{(1)}),Z(X^{(2)}),Z(X^{(3)})\bigr)\)">\(\mathcal D=\det\bigl(Z(X^{(1)}),Z(X^{(2)}),Z(X^{(3)})\bigr)\)</span>, a polynomial with coefficients in <span class="math" data-tex="\(K\)">\(K\)</span>, of degree one in each group. Let <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> act on polynomials by applying <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> to the coefficients, and put
+<span class="math math-display" data-tex="\[
+\mathcal N=\prod_{j=0}^{d-1}\sigma^j(\mathcal D).\tag{2.1}
+\]">\[
+\mathcal N=\prod_{j=0}^{d-1}\sigma^j(\mathcal D).\tag{2.1}
+\]</span></p>
+<p><strong>Lemma 2.1.</strong> (a) <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> has coefficients in <span class="math" data-tex="\(\mathbb F_r\)">\(\mathbb F_r\)</span> and is homogeneous of degree <span class="math" data-tex="\(d\)">\(d\)</span> in each group.</p>
+<p>(b) For <span class="math" data-tex="\(U^{(1)},U^{(2)},U^{(3)}\in\mathbb F_r^{3d}\)">\(U^{(1)},U^{(2)},U^{(3)}\in\mathbb F_r^{3d}\)</span>, the value <span class="math" data-tex="\(\mathcal N(U^{(1)},U^{(2)},U^{(3)})\)">\(\mathcal N(U^{(1)},U^{(2)},U^{(3)})\)</span> is the norm of <span class="math" data-tex="\(\det\bigl(Z(U^{(1)}),Z(U^{(2)}),Z(U^{(3)})\bigr)\)">\(\det\bigl(Z(U^{(1)}),Z(U^{(2)}),Z(U^{(3)})\bigr)\)</span>.</p>
+<p>(c) <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> is <em>alternating</em>: exchanging two groups changes its sign.</p>
+<p><em>Proof.</em> (a) Applying <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> permutes the factors of (2.1) cyclically, so <span class="math" data-tex="\(\sigma(\mathcal N)=\mathcal N\)">\(\sigma(\mathcal N)=\mathcal N\)</span> and the coefficients are fixed by <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. Each factor has degree one in each group. (b) Evaluating at values in <span class="math" data-tex="\(\mathbb F_r\)">\(\mathbb F_r\)</span>, which <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> fixes, commutes with <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>: <span class="math" data-tex="\(\sigma^j(\mathcal D)(U)=\sigma^j(\mathcal D(U))\)">\(\sigma^j(\mathcal D)(U)=\sigma^j(\mathcal D(U))\)</span>. (c) Exchanging two groups changes the sign of <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, hence of each of the <span class="math" data-tex="\(d\)">\(d\)</span> factors; <span class="math" data-tex="\(d\)">\(d\)</span> is odd. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(m_1,\ldots,m_M\)">\(m_1,\ldots,m_M\)</span> be the monomials of degree <span class="math" data-tex="\(d\)">\(d\)</span> in <span class="math" data-tex="\(3d\)">\(3d\)</span> variables, <span class="math" data-tex="\(M=\binom{4d-1}d\)">\(M=\binom{4d-1}d\)</span>, and <span class="math" data-tex="\(T=\binom M3\)">\(T=\binom M3\)</span>.</p>
+<p><strong>Lemma 2.2 (a sum of determinants).</strong> There are polynomials <span class="math" data-tex="\(f_{ia}\in\mathbb F_r[X]\)">\(f_{ia}\in\mathbb F_r[X]\)</span>, for <span class="math" data-tex="\(1\leq i\leq3\)">\(1\leq i\leq3\)</span> and <span class="math" data-tex="\(0\leq a&lt;T\)">\(0\leq a&lt;T\)</span>, each a monomial of degree <span class="math" data-tex="\(d\)">\(d\)</span> times a scalar (the scalar being <span class="math" data-tex="\(1\)">\(1\)</span> for <span class="math" data-tex="\(i=2,3\)">\(i=2,3\)</span>), such that, with <span class="math" data-tex="\(1\leq i,j\leq3\)">\(1\leq i,j\leq3\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathcal N(X^{(1)},X^{(2)},X^{(3)})\\
+&amp;=\sum_{a=0}^{T-1}\det\bigl(f_{ia}(X^{(j)})\bigr)_{i,j}.
+\end{aligned}\tag{2.2}
+\]">\[
+\begin{aligned}
+&amp;\mathcal N(X^{(1)},X^{(2)},X^{(3)})\\
+&amp;=\sum_{a=0}^{T-1}\det\bigl(f_{ia}(X^{(j)})\bigr)_{i,j}.
+\end{aligned}\tag{2.2}
+\]</span></p>
+<p><em>Proof.</em> Write <span class="math" data-tex="\(m_{pqs}=m_p(X^{(1)})\,m_q(X^{(2)})\,m_s(X^{(3)})\)">\(m_{pqs}=m_p(X^{(1)})\,m_q(X^{(2)})\,m_s(X^{(3)})\)</span>. By Lemma 2.1(a), <span class="math" data-tex="\(\mathcal N=\sum_{p,q,s}c(p,q,s)\,m_{pqs}\)">\(\mathcal N=\sum_{p,q,s}c(p,q,s)\,m_{pqs}\)</span> with <span class="math" data-tex="\(c(p,q,s)\in\mathbb F_r\)">\(c(p,q,s)\in\mathbb F_r\)</span>. Exchanging the first two groups and comparing coefficients, Lemma 2.1(c) gives <span class="math" data-tex="\(c(q,p,s)=-c(p,q,s)\)">\(c(q,p,s)=-c(p,q,s)\)</span>, and likewise for the other transpositions. If two of <span class="math" data-tex="\(p,q,s\)">\(p,q,s\)</span> coincide, the coefficient equals its own negative and vanishes, since <span class="math" data-tex="\(r\)">\(r\)</span> is odd. For <span class="math" data-tex="\(p&lt;q&lt;s\)">\(p&lt;q&lt;s\)</span> put <span class="math" data-tex="\(c_{pqs}=c(p,q,s)\)">\(c_{pqs}=c(p,q,s)\)</span>; the coefficients of the six orderings of <span class="math" data-tex="\(\{p,q,s\}\)">\(\{p,q,s\}\)</span> are <span class="math" data-tex="\(c_{pqs}\)">\(c_{pqs}\)</span> times the signs of the permutations, so these six terms add up to
+<span class="math math-display" data-tex="\[
+c_{pqs}\det\begin{pmatrix}m_p(X^{(1)})&amp;m_p(X^{(2)})&amp;m_p(X^{(3)})\\m_q(X^{(1)})&amp;m_q(X^{(2)})&amp;m_q(X^{(3)})\\m_s(X^{(1)})&amp;m_s(X^{(2)})&amp;m_s(X^{(3)})\end{pmatrix}.
+\]">\[
+c_{pqs}\det\begin{pmatrix}m_p(X^{(1)})&amp;m_p(X^{(2)})&amp;m_p(X^{(3)})\\m_q(X^{(1)})&amp;m_q(X^{(2)})&amp;m_q(X^{(3)})\\m_s(X^{(1)})&amp;m_s(X^{(2)})&amp;m_s(X^{(3)})\end{pmatrix}.
+\]</span>
+Number the <span class="math" data-tex="\(T\)">\(T\)</span> triples <span class="math" data-tex="\(p&lt;q&lt;s\)">\(p&lt;q&lt;s\)</span> by <span class="math" data-tex="\(a\)">\(a\)</span> and put <span class="math" data-tex="\((f_{1a},f_{2a},f_{3a})=(c_{pqs}m_p,m_q,m_s)\)">\((f_{1a},f_{2a},f_{3a})=(c_{pqs}m_p,m_q,m_s)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Labels.</em> For <span class="math" data-tex="\(\xi\in K\)">\(\xi\in K\)</span> let <span class="math" data-tex="\(z(\xi)=(1,\xi,\xi^2)^{\mathsf T}\)">\(z(\xi)=(1,\xi,\xi^2)^{\mathsf T}\)</span> and let <span class="math" data-tex="\(X(\xi)\in\mathbb F_r^{3d}\)">\(X(\xi)\in\mathbb F_r^{3d}\)</span> be the coordinates of its three entries in the basis <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, so that <span class="math" data-tex="\(Z(X(\xi))=z(\xi)\)">\(Z(X(\xi))=z(\xi)\)</span>. By Lemma 2.1(b) and the Vandermonde determinant, if <span class="math" data-tex="\(\xi_1,\xi_2,\xi_3\)">\(\xi_1,\xi_2,\xi_3\)</span> are distinct, then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathcal N\bigl(X(\xi_1),X(\xi_2),X(\xi_3)\bigr)\\
+&amp;=\operatorname{Nm}\prod_{i&lt;j}(\xi_j-\xi_i)\neq0.
+\end{aligned}\tag{2.3}
+\]">\[
+\begin{aligned}
+&amp;\mathcal N\bigl(X(\xi_1),X(\xi_2),X(\xi_3)\bigr)\\
+&amp;=\operatorname{Nm}\prod_{i&lt;j}(\xi_j-\xi_i)\neq0.
+\end{aligned}\tag{2.3}
+\]</span>
+The basis and the polynomials <span class="math" data-tex="\(f_{ia}\)">\(f_{ia}\)</span> depend on <span class="math" data-tex="\(r\)">\(r\)</span>; the numbers <span class="math" data-tex="\(d,M,T\)">\(d,M,T\)</span> do not.</p>
+<h2 id="3-digits">3. Digits</h2>
+<p>From now on fix
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+d=41,\quad M=\binom{4d-1}d,\\
+T=\binom M3,\quad k=T^2+1,\\
+L=r^{10},
+\end{gathered}\tag{3.1}
+\]">\[
+\begin{gathered}
+d=41,\quad M=\binom{4d-1}d,\\
+T=\binom M3,\quad k=T^2+1,\\
+L=r^{10},
+\end{gathered}\tag{3.1}
+\]</span>
+and, for every sufficiently large odd prime <span class="math" data-tex="\(r\)">\(r\)</span>, a prime <span class="math" data-tex="\(B\)">\(B\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+100k^2L^3&lt;B\leq200k^2L^3,\\
+h=B^k,\quad\tau=\Bigl\lfloor\frac{B^{k-1}}2\Bigr\rfloor,\\
+R_h=\mathbb Z/h\mathbb Z,
+\end{gathered}\tag{3.2}
+\]">\[
+\begin{gathered}
+100k^2L^3&lt;B\leq200k^2L^3,\\
+h=B^k,\quad\tau=\Bigl\lfloor\frac{B^{k-1}}2\Bigr\rfloor,\\
+R_h=\mathbb Z/h\mathbb Z,
+\end{gathered}\tag{3.2}
+\]</span>
+which exists by Lemma 4.3 of the first lesson. For <span class="math" data-tex="\(0\leq a&lt;T\)">\(0\leq a&lt;T\)</span> designate the <em>positions</em> <span class="math" data-tex="\(i_a\)">\(i_a\)</span> in row <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\(j_a\)">\(j_a\)</span> in row <span class="math" data-tex="\(2\)">\(2\)</span> and <span class="math" data-tex="\(\ell_a\)">\(\ell_a\)</span> in row <span class="math" data-tex="\(3\)">\(3\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+i_a&amp;=a,\\
+j_a&amp;=Ta,\\
+\ell_a&amp;=T^2-(T+1)a.
+\end{aligned}\tag{3.3}
+\]">\[
+\begin{aligned}
+i_a&amp;=a,\\
+j_a&amp;=Ta,\\
+\ell_a&amp;=T^2-(T+1)a.
+\end{aligned}\tag{3.3}
+\]</span>
+They lie in <span class="math" data-tex="\(\{0,\ldots,k-1\}\)">\(\{0,\ldots,k-1\}\)</span> (namely in <span class="math" data-tex="\([0,T-1]\)">\([0,T-1]\)</span>, <span class="math" data-tex="\([0,T^2-T]\)">\([0,T^2-T]\)</span> and <span class="math" data-tex="\([1,T^2]\)">\([1,T^2]\)</span>), and are distinct within each row.</p>
+<p><strong>Lemma 3.1 (matching positions).</strong> <span class="math" data-tex="\(i_a+j_{a&#x27;}+\ell_{a&#x27;&#x27;}=k-1\)">\(i_a+j_{a&#x27;}+\ell_{a&#x27;&#x27;}=k-1\)</span> if and only if <span class="math" data-tex="\(a=a&#x27;=a&#x27;&#x27;\)">\(a=a&#x27;=a&#x27;&#x27;\)</span>.</p>
+<p><em>Proof.</em> The equation is <span class="math" data-tex="\(a+Ta&#x27;=(T+1)a&#x27;&#x27;\)">\(a+Ta&#x27;=(T+1)a&#x27;&#x27;\)</span>. Modulo <span class="math" data-tex="\(T\)">\(T\)</span> it gives <span class="math" data-tex="\(a\equiv a&#x27;&#x27;\)">\(a\equiv a&#x27;&#x27;\)</span>, so <span class="math" data-tex="\(a=a&#x27;&#x27;\)">\(a=a&#x27;&#x27;\)</span> since both lie in <span class="math" data-tex="\([0,T)\)">\([0,T)\)</span>; then <span class="math" data-tex="\(Ta&#x27;=Ta&#x27;&#x27;\)">\(Ta&#x27;=Ta&#x27;&#x27;\)</span>. Conversely <span class="math" data-tex="\(a+Ta+T^2-(T+1)a=T^2=k-1\)">\(a+Ta+T^2-(T+1)a=T^2=k-1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>The random column.</strong> Choose a label <span class="math" data-tex="\(\xi\)">\(\xi\)</span> uniformly in <span class="math" data-tex="\(K\)">\(K\)</span>. For every row <span class="math" data-tex="\(1\leq i\leq3\)">\(1\leq i\leq3\)</span> and position <span class="math" data-tex="\(0\leq v&lt;k\)">\(0\leq v&lt;k\)</span> choose a <em>digit</em> <span class="math" data-tex="\(c_{iv}\in\{1,\ldots,L\}\)">\(c_{iv}\in\{1,\ldots,L\}\)</span> with a prescribed residue modulo <span class="math" data-tex="\(r\)">\(r\)</span>: <span class="math" data-tex="\(f_{1a}(X(\xi))\)">\(f_{1a}(X(\xi))\)</span> at <span class="math" data-tex="\((1,i_a)\)">\((1,i_a)\)</span>, <span class="math" data-tex="\(f_{2a}(X(\xi))\)">\(f_{2a}(X(\xi))\)</span> at <span class="math" data-tex="\((2,j_a)\)">\((2,j_a)\)</span>, <span class="math" data-tex="\(f_{3a}(X(\xi))\)">\(f_{3a}(X(\xi))\)</span> at <span class="math" data-tex="\((3,\ell_a)\)">\((3,\ell_a)\)</span>, and <span class="math" data-tex="\(0\)">\(0\)</span> at all other positions. Given <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, the <span class="math" data-tex="\(3k\)">\(3k\)</span> digits are independent and uniform among the <span class="math" data-tex="\(L/r=r^9\)">\(L/r=r^9\)</span> numbers in <span class="math" data-tex="\(\{1,\ldots,L\}\)">\(\{1,\ldots,L\}\)</span> with the prescribed residue. The column is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c=(c_1,c_2,c_3)^{\mathsf T}\in R_h^3,\\
+c_i=\sum_{v=0}^{k-1}c_{iv}B^v\bmod h .
+\end{gathered}\tag{3.4}
+\]">\[
+\begin{gathered}
+c=(c_1,c_2,c_3)^{\mathsf T}\in R_h^3,\\
+c_i=\sum_{v=0}^{k-1}c_{iv}B^v\bmod h .
+\end{gathered}\tag{3.4}
+\]</span>
+Since <span class="math" data-tex="\(1\leq c_{i0}\leq L&lt;B\)">\(1\leq c_{i0}\leq L&lt;B\)</span>, every entry of <span class="math" data-tex="\(c\)">\(c\)</span> is a unit of <span class="math" data-tex="\(R_h\)">\(R_h\)</span>. Different columns use independent labels and independent digits, even if their labels coincide.</p>
+<p><strong>Lemma 3.2 (determinant obstruction).</strong> Let <span class="math" data-tex="\(C\)">\(C\)</span> be the matrix of three columns built by (3.4), with labels <span class="math" data-tex="\(\xi_1,\xi_2,\xi_3\)">\(\xi_1,\xi_2,\xi_3\)</span>. If the labels are distinct, then <span class="math" data-tex="\(\det C\in R_h\)">\(\det C\in R_h\)</span> has no integer representative in <span class="math" data-tex="\([-\tau,\tau]\)">\([-\tau,\tau]\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(c^{(j)}_{iv}\)">\(c^{(j)}_{iv}\)</span> be the digit of column <span class="math" data-tex="\(j\)">\(j\)</span> at row <span class="math" data-tex="\(i\)">\(i\)</span> and position <span class="math" data-tex="\(v\)">\(v\)</span>, and consider the integer polynomial
+<span class="math math-display" data-tex="\[
+F(Y)=\det\Bigl(\sum_{v=0}^{k-1}c^{(j)}_{iv}Y^v\Bigr)_{1\leq i,j\leq3}=\sum_{u=0}^{3(k-1)}\gamma_uY^u .
+\]">\[
+F(Y)=\det\Bigl(\sum_{v=0}^{k-1}c^{(j)}_{iv}Y^v\Bigr)_{1\leq i,j\leq3}=\sum_{u=0}^{3(k-1)}\gamma_uY^u .
+\]</span>
+<em>Size of the coefficients.</em> In the expansion over the six permutations, the coefficient of <span class="math" data-tex="\(Y^u\)">\(Y^u\)</span> collects, for each permutation, products of three digits whose positions add up to <span class="math" data-tex="\(u\)">\(u\)</span>; two positions determine the third, so
+<span class="math math-display" data-tex="\[
+|\gamma_u|\leq6k^2L^3 .\tag{3.5}
+\]">\[
+|\gamma_u|\leq6k^2L^3 .\tag{3.5}
+\]</span>
+<em>The coefficient of <span class="math" data-tex="\(Y^{k-1}\)">\(Y^{k-1}\)</span>.</em> Expanding the determinant by multilinearity in the rows, <span class="math" data-tex="\(\gamma_{k-1}\)">\(\gamma_{k-1}\)</span> is the sum, over positions <span class="math" data-tex="\(v_1+v_2+v_3=k-1\)">\(v_1+v_2+v_3=k-1\)</span>, of the determinants whose <span class="math" data-tex="\(i\)">\(i\)</span>-th row is the vector of digits of the three columns at row <span class="math" data-tex="\(i\)">\(i\)</span> and position <span class="math" data-tex="\(v_i\)">\(v_i\)</span>. Modulo <span class="math" data-tex="\(r\)">\(r\)</span>, a row taken at a non-designated position vanishes, and by Lemma 3.1 the remaining positions are <span class="math" data-tex="\((i_a,j_a,\ell_a)\)">\((i_a,j_a,\ell_a)\)</span>, <span class="math" data-tex="\(0\leq a&lt;T\)">\(0\leq a&lt;T\)</span>. So, by the prescribed residues and (2.2), (2.3),
+<span class="math math-display" data-tex="\[
+\gamma_{k-1}\equiv\sum_a\det\bigl(f_{ia}(X(\xi_j))\bigr)_{i,j}=\mathcal N\bigl(X(\xi_1),X(\xi_2),X(\xi_3)\bigr)\not\equiv0\pmod r ,
+\]">\[
+\gamma_{k-1}\equiv\sum_a\det\bigl(f_{ia}(X(\xi_j))\bigr)_{i,j}=\mathcal N\bigl(X(\xi_1),X(\xi_2),X(\xi_3)\bigr)\not\equiv0\pmod r ,
+\]</span>
+and in particular <span class="math" data-tex="\(|\gamma_{k-1}|\geq1\)">\(|\gamma_{k-1}|\geq1\)</span>.</p>
+<p><em>The determinant.</em> The integer <span class="math" data-tex="\(S=\sum_{u=0}^{k-1}\gamma_uB^u\)">\(S=\sum_{u=0}^{k-1}\gamma_uB^u\)</span> represents <span class="math" data-tex="\(\det C\)">\(\det C\)</span> modulo <span class="math" data-tex="\(h\)">\(h\)</span>: <span class="math" data-tex="\(\det C\)">\(\det C\)</span> is <span class="math" data-tex="\(F(B)\)">\(F(B)\)</span> modulo <span class="math" data-tex="\(h\)">\(h\)</span>, and the terms with <span class="math" data-tex="\(u\geq k\)">\(u\geq k\)</span> are divisible by <span class="math" data-tex="\(B^k=h\)">\(B^k=h\)</span>. Since <span class="math" data-tex="\(B-1\geq100k^2L^3\)">\(B-1\geq100k^2L^3\)</span>, (3.5) gives
+<span class="math math-display" data-tex="\[
+|S|\leq6k^2L^3\frac{B^k-1}{B-1}\leq\frac3{50}(h-1)&lt;\frac h2,\qquad\Bigl|\sum_{u=0}^{k-2}\gamma_uB^u\Bigr|\leq\frac3{50}(B^{k-1}-1),
+\]">\[
+|S|\leq6k^2L^3\frac{B^k-1}{B-1}\leq\frac3{50}(h-1)&lt;\frac h2,\qquad\Bigl|\sum_{u=0}^{k-2}\gamma_uB^u\Bigr|\leq\frac3{50}(B^{k-1}-1),
+\]</span>
+and therefore
+<span class="math math-display" data-tex="\[
+|S|\geq B^{k-1}-\frac3{50}(B^{k-1}-1)=\frac{47B^{k-1}+3}{50}&gt;\tau .
+\]">\[
+|S|\geq B^{k-1}-\frac3{50}(B^{k-1}-1)=\frac{47B^{k-1}+3}{50}&gt;\tau .
+\]</span>
+Every other representative <span class="math" data-tex="\(S+mh\)">\(S+mh\)</span>, <span class="math" data-tex="\(m\neq0\)">\(m\neq0\)</span>, has absolute value at least <span class="math" data-tex="\(h-|S|&gt;h/2&gt;\tau\)">\(h-|S|&gt;h/2&gt;\tau\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.3.</strong> If <span class="math" data-tex="\(G\in\mathrm{SL}_3(R_h)\)">\(G\in\mathrm{SL}_3(R_h)\)</span> and an integer matrix <span class="math" data-tex="\(A\)">\(A\)</span> satisfies <span class="math" data-tex="\(A\bmod h=GC\)">\(A\bmod h=GC\)</span> and <span class="math" data-tex="\(|\det A|\leq\tau\)">\(|\det A|\leq\tau\)</span>, then two of the labels of <span class="math" data-tex="\(C\)">\(C\)</span> coincide. For three independent uniform labels this has probability at most <span class="math" data-tex="\(3r^{-d}\)">\(3r^{-d}\)</span>.</p>
+<p><em>Proof.</em> <span class="math" data-tex="\(\det(GC)=\det C\)">\(\det(GC)=\det C\)</span> in <span class="math" data-tex="\(R_h\)">\(R_h\)</span>, and <span class="math" data-tex="\(\det A\)">\(\det A\)</span> represents it. Each of the three pairs of labels coincides with probability <span class="math" data-tex="\(r^{-d}\)">\(r^{-d}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>So a small determinant needs a coincidence of labels. The rest of the course shows that, given a coincidence, a small determinant is still unlikely enough, and that the sampled columns are spread out enough for the lattice counts of the second lesson.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1.</strong> For <span class="math" data-tex="\(r=3\)">\(r=3\)</span> and <span class="math" data-tex="\(d=1\)">\(d=1\)</span> (so <span class="math" data-tex="\(K=\mathbb F_3\)">\(K=\mathbb F_3\)</span>, <span class="math" data-tex="\(\operatorname{Nm}=\mathrm{id}\)">\(\operatorname{Nm}=\mathrm{id}\)</span>), write <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> for the basis <span class="math" data-tex="\(\beta_1=1\)">\(\beta_1=1\)</span> and check Lemma 2.2: how many terms does (2.2) need?</p>
+<p><strong>4.2.</strong> Why must <span class="math" data-tex="\(r\)">\(r\)</span> be odd in the proof of Lemma 2.2, and why must <span class="math" data-tex="\(d\)">\(d\)</span> be odd in Lemma 2.1(c)?</p>
+<p><strong>4.3.</strong> For <span class="math" data-tex="\(T=3\)">\(T=3\)</span>, list the positions (3.3) and check Lemma 3.1 directly.</p>
+<p><strong>4.4.</strong> Show that without the requirement <span class="math" data-tex="\(c_{iv}\geq1\)">\(c_{iv}\geq1\)</span> the entries of <span class="math" data-tex="\(c\)">\(c\)</span> need not be units of <span class="math" data-tex="\(R_h\)">\(R_h\)</span>, and point out where the proof of Lemma 3.2 would still work and where later lessons need units.</p>
+<p><strong>4.5.</strong> Show that if two columns of <span class="math" data-tex="\(C\)">\(C\)</span> are equal, then <span class="math" data-tex="\(\det C=0\)">\(\det C=0\)</span> in <span class="math" data-tex="\(R_h\)">\(R_h\)</span>. Why does the construction draw new digits for every column, even for columns with the same label?</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> With <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, <span class="math" data-tex="\(Z(X)=(X_{11},X_{21},X_{31})\)">\(Z(X)=(X_{11},X_{21},X_{31})\)</span> and <span class="math" data-tex="\(\mathcal N=\mathcal D\)">\(\mathcal N=\mathcal D\)</span> is the determinant of the <span class="math" data-tex="\(3\times3\)">\(3\times3\)</span> matrix of variables. The monomials of degree one are the three variables (<span class="math" data-tex="\(M=3\)">\(M=3\)</span>, <span class="math" data-tex="\(T=1\)">\(T=1\)</span>), and (2.2) has the single term <span class="math" data-tex="\(a=0\)">\(a=0\)</span> with <span class="math" data-tex="\((f_{10},f_{20},f_{30})=(X_{11},X_{21},X_{31})\)">\((f_{10},f_{20},f_{30})=(X_{11},X_{21},X_{31})\)</span>: <span class="math" data-tex="\(\mathcal N=\det(X^{(j)}_{i1})\)">\(\mathcal N=\det(X^{(j)}_{i1})\)</span>.</p>
+<p><strong>4.2.</strong> Coefficients with a repeated monomial satisfy <span class="math" data-tex="\(c=-c\)">\(c=-c\)</span>, which forces <span class="math" data-tex="\(c=0\)">\(c=0\)</span> only when <span class="math" data-tex="\(2\)">\(2\)</span> is invertible. If <span class="math" data-tex="\(d\)">\(d\)</span> were even, exchanging two groups would multiply <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> by <span class="math" data-tex="\((-1)^d=1\)">\((-1)^d=1\)</span>, and <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> would be symmetric, not alternating.</p>
+<p><strong>4.3.</strong> <span class="math" data-tex="\(i_a=0,1,2\)">\(i_a=0,1,2\)</span>, <span class="math" data-tex="\(j_a=0,3,6\)">\(j_a=0,3,6\)</span>, <span class="math" data-tex="\(\ell_a=9,5,1\)">\(\ell_a=9,5,1\)</span>, and <span class="math" data-tex="\(k-1=9\)">\(k-1=9\)</span>. The sums <span class="math" data-tex="\(i_a+j_a+\ell_a\)">\(i_a+j_a+\ell_a\)</span> are <span class="math" data-tex="\(9,9,9\)">\(9,9,9\)</span>. For <span class="math" data-tex="\(a&#x27;\neq a\)">\(a&#x27;\neq a\)</span> or <span class="math" data-tex="\(a&#x27;&#x27;\neq a\)">\(a&#x27;&#x27;\neq a\)</span>: e.g. <span class="math" data-tex="\(i_0+j_1+\ell_2=0+3+1=4\neq9\)">\(i_0+j_1+\ell_2=0+3+1=4\neq9\)</span>; in general <span class="math" data-tex="\(a+3a&#x27;=4a&#x27;&#x27;\)">\(a+3a&#x27;=4a&#x27;&#x27;\)</span> forces <span class="math" data-tex="\(a=a&#x27;&#x27;\)">\(a=a&#x27;&#x27;\)</span> modulo <span class="math" data-tex="\(3\)">\(3\)</span>.</p>
+<p><strong>4.4.</strong> A column whose digits at position <span class="math" data-tex="\(0\)">\(0\)</span> are all divisible by <span class="math" data-tex="\(B\)">\(B\)</span> would have entries divisible by <span class="math" data-tex="\(B\)">\(B\)</span>. Lemma 3.2 uses only the digit bounds and residues; the unit property is used in the fourth lesson, where a unit entry starts the diagonal form of a residue matrix.</p>
+<p><strong>4.5.</strong> A matrix with two equal columns has determinant zero over any commutative ring, and <span class="math" data-tex="\(0\in[-\tau,\tau]\)">\(0\in[-\tau,\tau]\)</span>. With the same label, two columns get the same prescribed residues, but independent digits make them equal only with probability <span class="math" data-tex="\((r/L)^{3k}\)">\((r/L)^{3k}\)</span>; the fourth lesson uses exactly this independence to show that a repeated label rarely makes the residue matrix very singular.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-H] OpenAI, <em>A power improvement in the Heilbronn triangle lower bound</em>, OpenAI Math Release preprint, 25 September 2026, Section 3. https://github.com/openai/math/tree/main/preprints/A-power-improvement-in-the-Heilbronn-triangle-lower-bound-September-25-2026</li>
+<li>[Judson] T. W. Judson, <em>Abstract Algebra: Theory and Applications</em>, online edition; the text of the core courses Abstract Algebra I and II. https://judsonbooks.org/aata-files/aata-html/</li>
+<li>R. Salem and D. C. Spencer (1942) and F. A. Behrend (1946) controlled carries in large bases in their constructions of progression-free sets; R. Lidl and H. Niederreiter's book on finite fields is a reference for the background. They are named for credit; the course does not use their results.</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

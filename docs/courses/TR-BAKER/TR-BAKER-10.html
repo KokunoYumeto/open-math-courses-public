@@ -12604,7 +12604,697 @@ the minimum weighted product. The factor <span class="math" data-tex="\(1/2100\)
 Theorem 10.154 applies to an independent list of length one.</p>
 <p><img src="figures/yu-dependent-application.png" alt="A weighted basis transfer and universal circuit coefficient bounds" class="course-figure" width="2100" height="1050" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="yu-dependent-application" data-asset-sha256="5974D53899FA6C1AD18A32836FE8ADBB8A19B2383F3AE92EAA795EB4F6E1B322"></p>
 <p><em>Figure 10.42. Left: exact prime-valuation vectors of the rational list <span class="math" data-tex="\((2,3,4)\)">\((2,3,4)\)</span> give the greedy basis <span class="math" data-tex="\((2,3)\)">\((2,3)\)</span>; the circuit <span class="math" data-tex="\(4\cdot2^{-2}=1\)">\(4\cdot2^{-2}=1\)</span> transfers exponents <span class="math" data-tex="\((1,1,2)\)">\((1,1,2)\)</span> to <span class="math" data-tex="\((5,1)\)">\((5,1)\)</span>. Its actual value is 96, of valuation one at five. This B=3 example uses the local-height branch. Right: proved upper bounds for the normalized circuit coefficient cost in the large-coefficient branch, for all original fields, ranks and circuit sizes. Lemma 10.155 treats terminal removal, internal removal with the largest-height base selected, and internal removal with that base unselected. Each lies below one. Theorem 10.156 then performs the rank-preserving induction, including torsion. Solution 63 checks the coefficient, height-floor and scalar-rank cancellations. <a href="figure_sources/yu_dependent_application_profile.py">Figure program</a>, <a href="figure_sources/yu_dependent_application_enclosures.py">exact universal envelopes</a>. Human-source context: Section 8 of <a href="https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6782-11511_2013_Article_106.pdf">Yu's freely accessible paper</a>.</em></p>
-<h2 id="50-exercises-with-solutions"><span id="7-exercises-with-solutions"></span><span id="8-exercises-with-solutions"></span><span id="9-exercises-with-solutions"></span><span id="10-exercises-with-solutions"></span><span id="11-exercises-with-solutions"></span><span id="12-exercises-with-solutions"></span><span id="13-exercises-with-solutions"></span><span id="14-exercises-with-solutions"></span><span id="15-exercises-with-solutions"></span><span id="16-exercises-with-solutions"></span><span id="17-exercises-with-solutions"></span><span id="18-exercises-with-solutions"></span><span id="19-exercises-with-solutions"></span><span id="20-exercises-with-solutions"></span><span id="21-exercises-with-solutions"></span><span id="22-exercises-with-solutions"></span><span id="23-exercises-with-solutions"></span><span id="24-exercises-with-solutions"></span><span id="25-exercises-with-solutions"></span><span id="26-exercises-with-solutions"></span><span id="27-exercises-with-solutions"></span><span id="28-exercises-with-solutions"></span><span id="29-exercises-with-solutions"></span><span id="30-exercises-with-solutions"></span><span id="31-exercises-with-solutions"></span><span id="32-exercises-with-solutions"></span><span id="33-exercises-with-solutions"></span><span id="34-exercises-with-solutions"></span><span id="35-exercises-with-solutions"></span><span id="36-exercises-with-solutions"></span><span id="37-exercises-with-solutions"></span><span id="38-exercises-with-solutions"></span><span id="39-exercises-with-solutions"></span><span id="40-exercises-with-solutions"></span><span id="41-exercises-with-solutions"></span><span id="42-exercises-with-solutions"></span><span id="43-exercises-with-solutions"></span><span id="44-exercises-with-solutions"></span><span id="45-exercises-with-solutions"></span><span id="46-exercises-with-solutions"></span><span id="47-exercises-with-solutions"></span><span id="48-exercises-with-solutions"></span><span id="49-exercises-with-solutions"></span>50. Exercises with solutions</h2>
+<h2 id="50-the-sharper-bound-for-a-dependent-list-of-rank-one">50. The sharper bound for a dependent list of rank one</h2>
+<p>Retain the units, sorted indexed list, greedy basis, heights and constants
+of Section 49. Suppose its multiplicative rank is one. Write
+<span class="math" data-tex="\(i_0\)">\(i_0\)</span> for the selected index, <span class="math" data-tex="\(\beta=a_{i_0}\)">\(\beta=a_{i_0}\)</span> for its first
+non-torsion base, and
+<span class="math" data-tex="\(g=|\langle\overline\beta\rangle|\)">\(g=|\langle\overline\beta\rangle|\)</span>. Its residue index is the
+original one, <span class="math" data-tex="\(\delta_\beta=(p^f-1)/g\)">\(\delta_\beta=(p^f-1)/g\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+R=\prod_{i\ne i_0}\frac{H_n(a_i)}{L_n}\ge1,
+\qquad U=\frac{t}{d}\mathcal T_n.
+\tag{10.490}
+\]">\[
+R=\prod_{i\ne i_0}\frac{H_n(a_i)}{L_n}\ge1,
+\qquad U=\frac{t}{d}\mathcal T_n.
+\tag{10.490}
+\]</span>
+<p>The product is over indices other than the selected index of
+<span class="math" data-tex="\(\beta\)">\(\beta\)</span>, including roots of unity and repetitions. A direct
+reduction to one base will also handle coefficients that are too small
+for the large-coefficient branch of Theorem 10.156.</p>
+<h3 id="two-uniform-budgets">Two uniform budgets</h3>
+<p>For <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span> define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F_n&amp;=\frac c\rho\frac{w_K}{q^u}\mathfrak a^n\mathrm e^{n-1}
+\frac{(n+1)^{n+2}}{n!}
+\left(\frac{n}{\varkappa(n+5)}\right)^{n-1},\\
+E_n&amp;=\frac{4n!\varkappa^{n-1}(n+5)^{n-1}}
+{c\mathfrak a^n n^n(n+1)^{n+2}},\\
+\alpha_n&amp;=\left(\frac1{2100}-\frac1{40000}\right)F_n.
+\end{aligned}
+\tag{10.491}
+\]">\[
+\begin{aligned}
+F_n&amp;=\frac c\rho\frac{w_K}{q^u}\mathfrak a^n\mathrm e^{n-1}
+\frac{(n+1)^{n+2}}{n!}
+\left(\frac{n}{\varkappa(n+5)}\right)^{n-1},\\
+E_n&amp;=\frac{4n!\varkappa^{n-1}(n+5)^{n-1}}
+{c\mathfrak a^n n^n(n+1)^{n+2}},\\
+\alpha_n&amp;=\left(\frac1{2100}-\frac1{40000}\right)F_n.
+\end{aligned}
+\tag{10.491}
+\]</span>
+<p><strong>Lemma 10.157 (rank-one scalar budgets).</strong> These quantities satisfy</p>
+<span class="math math-display" data-tex="\[
+U\ge F_nA_nHR,
+\qquad \frac{2eg h(\beta)}U&lt;\frac1{40000},
+\qquad F_{n+1}&gt;3F_n.
+\tag{10.492}
+\]">\[
+U\ge F_nA_nHR,
+\qquad \frac{2eg h(\beta)}U&lt;\frac1{40000},
+\qquad F_{n+1}&gt;3F_n.
+\tag{10.492}
+\]</span>
+<p>At <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, the following bounds hold. In the last column the
+field degree and <span class="math" data-tex="\(\ell_d\)">\(\ell_d\)</span> are already included.</p>
+<table>
+<thead>
+<tr>
+<th>Field case</th>
+<th>Lower bound for <span class="math" data-tex="\(\alpha_2\)">\(\alpha_2\)</span></th>
+<th>Upper bound for <span class="math" data-tex="\(E_2/(d\ell_d)\)">\(E_2/(d\ell_d)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I.1</td>
+<td><span class="math" data-tex="\(9/4\)">\(9/4\)</span></td>
+<td><span class="math" data-tex="\(1/118314\)">\(1/118314\)</span></td>
+</tr>
+<tr>
+<td>I.2</td>
+<td><span class="math" data-tex="\(9/4\)">\(9/4\)</span></td>
+<td><span class="math" data-tex="\(1/40068\)">\(1/40068\)</span></td>
+</tr>
+<tr>
+<td>II</td>
+<td><span class="math" data-tex="\(4/3\)">\(4/3\)</span></td>
+<td><span class="math" data-tex="\(1/63630\)">\(1/63630\)</span></td>
+</tr>
+<tr>
+<td>III.1</td>
+<td><span class="math" data-tex="\(9/4\)">\(9/4\)</span></td>
+<td><span class="math" data-tex="\(1/113022\)">\(1/113022\)</span></td>
+</tr>
+<tr>
+<td>III.2</td>
+<td><span class="math" data-tex="\(9/4\)">\(9/4\)</span></td>
+<td><span class="math" data-tex="\(1/56385\)">\(1/56385\)</span></td>
+</tr>
+<tr>
+<td>IV</td>
+<td><span class="math" data-tex="\(9/4\)">\(9/4\)</span></td>
+<td><span class="math" data-tex="\(1/337680\)">\(1/337680\)</span></td>
+</tr>
+<tr>
+<td>V</td>
+<td><span class="math" data-tex="\(19/10\)">\(19/10\)</span></td>
+<td><span class="math" data-tex="\(119/5639868\)">\(119/5639868\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Every lower bound is strict, and every last entry is less than
+<span class="math" data-tex="\(1/40000\)">\(1/40000\)</span>. For <span class="math" data-tex="\(n\ge3\)">\(n\ge3\)</span>, <span class="math" data-tex="\(\alpha_n&gt;4n/3\)">\(\alpha_n&gt;4n/3\)</span>.</p>
+<p><strong>Proof.</strong> The singleton case of (10.55) gives
+<span class="math" data-tex="\(h(\beta)\ge w_K/(\rho\mathrm e d^2\ell_d)\)">\(h(\beta)\ge w_K/(\rho\mathrm e d^2\ell_d)\)</span>.
+Insert this and <span class="math" data-tex="\(\Omega_n=h(\beta)L_n^{n-1}R\)">\(\Omega_n=h(\beta)L_n^{n-1}R\)</span> into
+<span class="math" data-tex="\(U\)">\(U\)</span>, using the second entry of the maximum in <span class="math" data-tex="\(C_n\)">\(C_n\)</span> and
+<span class="math" data-tex="\(X_n\ge n\)">\(X_n\ge n\)</span>. All degree and height-floor powers cancel to give
+the first inequality.</p>
+<p>For the second inequality use the first entry instead. The original
+residue order gives <span class="math" data-tex="\(p^f/\delta_\beta&gt;g\)">\(p^f/\delta_\beta&gt;g\)</span>, while
+<span class="math" data-tex="\(L_n\ge t/[\varkappa(n+5)d]\)">\(L_n\ge t/[\varkappa(n+5)d]\)</span>. Exact division yields</p>
+<span class="math math-display" data-tex="\[
+\frac{2eg h(\beta)}U
+&lt;\frac{2e q^u n!\varkappa^{n-1}(n+5)^{n-1}t^2}
+{c\mathfrak a^n n^n(n+1)^{n+2}d^2\ell_dRA_nH}
+\le\frac{E_n}{d\ell_dR}.
+\tag{10.493}
+\]">\[
+\frac{2eg h(\beta)}U
+&lt;\frac{2e q^u n!\varkappa^{n-1}(n+5)^{n-1}t^2}
+{c\mathfrak a^n n^n(n+1)^{n+2}d^2\ell_dRA_nH}
+\le\frac{E_n}{d\ell_dR}.
+\tag{10.493}
+\]</span>
+<p>The last step uses <span class="math" data-tex="\(eq^u\le2d\)">\(eq^u\le2d\)</span> from Lemma 10.73, and
+<span class="math" data-tex="\(t^2\le A_nH\)">\(t^2\le A_nH\)</span>. At two,
+<span class="math" data-tex="\(E_2=14\varkappa/(81c\mathfrak a^2)\)">\(E_2=14\varkappa/(81c\mathfrak a^2)\)</span>.
+In I.1, II, III.1, IV and V use <span class="math" data-tex="\(d\ge2\)">\(d\ge2\)</span>; in the other two
+cases use <span class="math" data-tex="\(d=1\)">\(d=1\)</span>. Also <span class="math" data-tex="\(\ell_d\ge1\)">\(\ell_d\ge1\)</span>.
+Direct substitution of the seven case constants gives the last column.
+In III, <span class="math" data-tex="\(\mathfrak a^2/\varkappa\ge49/9\)">\(\mathfrak a^2/\varkappa\ge49/9\)</span>, including every
+prime in that case.</p>
+<p>For the middle column, use
+<span class="math" data-tex="\(\mathrm e&gt;27/10\)">\(\mathrm e&gt;27/10\)</span>, obtained by summing its positive exponential
+series through degree five. At odd primes <span class="math" data-tex="\(w_K/q^u\ge1\)">\(w_K/q^u\ge1\)</span>.
+At two, <span class="math" data-tex="\(-1\)">\(-1\)</span> together with the q-primary roots has order
+<span class="math" data-tex="\(2q^u\)">\(2q^u\)</span>, so <span class="math" data-tex="\(w_K/q^u\ge2\)">\(w_K/q^u\ge2\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+F_2&gt;\frac c\rho\frac{w_K}{q^u}
+\frac{\mathfrak a^2}{\varkappa}\frac{2187}{70}.
+\tag{10.494}
+\]">\[
+F_2&gt;\frac c\rho\frac{w_K}{q^u}
+\frac{\mathfrak a^2}{\varkappa}\frac{2187}{70}.
+\tag{10.494}
+\]</span>
+<p>Use <span class="math" data-tex="\(\rho=17\)">\(\rho=17\)</span> in degree one and <span class="math" data-tex="\(\rho=58\)">\(\rho=58\)</span> otherwise.
+Substitution gives the stated strict rational bounds on <span class="math" data-tex="\(\alpha_2\)">\(\alpha_2\)</span>.
+The <a href="figure_sources/yu_rank_one_refinement_enclosures.py">exact scalar calculations</a>
+include each difference as a positive fraction.</p>
+<p>The ratio of consecutive <span class="math" data-tex="\(F_n\)">\(F_n\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\frac{F_{n+1}}{F_n}=
+\frac{\mathfrak a\mathrm e}{\varkappa}
+\left(1+\frac1{n+1}\right)^{n+3}
+\frac{n+1}{n+6}
+\left(\frac{(n+1)(n+5)}{n(n+6)}\right)^{n-1}.
+\tag{10.495}
+\]">\[
+\frac{F_{n+1}}{F_n}=
+\frac{\mathfrak a\mathrm e}{\varkappa}
+\left(1+\frac1{n+1}\right)^{n+3}
+\frac{n+1}{n+6}
+\left(\frac{(n+1)(n+5)}{n(n+6)}\right)^{n-1}.
+\tag{10.495}
+\]</span>
+<p>We have <span class="math" data-tex="\(\mathfrak a\mathrm e/\varkappa&gt;104/51\)">\(\mathfrak a\mathrm e/\varkappa&gt;104/51\)</span>.
+For <span class="math" data-tex="\(n=2,3,4,5\)">\(n=2,3,4,5\)</span>, the rational product after this factor is,
+respectively,</p>
+<span class="math math-display" data-tex="\[
+\frac{56}{27},\quad\frac{15625}{6561},\quad
+\frac{1594323}{625000},\quad\frac{11529602}{4348377}.
+\tag{10.496}
+\]">\[
+\frac{56}{27},\quad\frac{15625}{6561},\quad
+\frac{1594323}{625000},\quad\frac{11529602}{4348377}.
+\tag{10.496}
+\]</span>
+<p>Multiplying each by <span class="math" data-tex="\(104/51\)">\(104/51\)</span> gives a number greater than three.
+For all <span class="math" data-tex="\(n\ge6\)">\(n\ge6\)</span>, the first power in the ratio is greater than
+<span class="math" data-tex="\(\mathrm e\)">\(\mathrm e\)</span>, by <span class="math" data-tex="\(\ln(1+x)&gt;x/(1+x)\)">\(\ln(1+x)&gt;x/(1+x)\)</span>. The last power is
+greater than one and <span class="math" data-tex="\((n+1)/(n+6)\ge7/12\)">\((n+1)/(n+6)\ge7/12\)</span>. The ratio is
+therefore greater than <span class="math" data-tex="\((104/51)(8/3)(7/12)=1456/459&gt;3\)">\((104/51)(8/3)(7/12)=1456/459&gt;3\)</span>.
+This proves the claim at every rank.</p>
+<p>Direct cancellation also gives
+<span class="math" data-tex="\(E_{n+1}/E_n=\mathrm e nF_n/[(n+1)F_{n+1}]&lt;11/12\)">\(E_{n+1}/E_n=\mathrm e nF_n/[(n+1)F_{n+1}]&lt;11/12\)</span>.
+Consequently the last column bounds every <span class="math" data-tex="\(E_n/(d\ell_dR)\)">\(E_n/(d\ell_dR)\)</span>.
+Finally <span class="math" data-tex="\(\alpha_2&gt;4/3\)">\(\alpha_2&gt;4/3\)</span> in every row, so
+<span class="math" data-tex="\(\alpha_n&gt;4\cdot3^{n-3}\ge4n/3\)">\(\alpha_n&gt;4\cdot3^{n-3}\ge4n/3\)</span> for <span class="math" data-tex="\(n\ge3\)">\(n\ge3\)</span>.
+The latter inequality follows by induction, starting at three.
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="simultaneous-reduction-to-the-selected-base">Simultaneous reduction to the selected base</h3>
+<p><strong>Theorem 10.158 (the rank-one application refinement).</strong> Under the
+hypotheses of Theorem 10.156, if the list has rank one, then</p>
+<span class="math math-display" data-tex="\[
+\operatorname{ord}_{\mathfrak p}(\Xi-1)
+&lt;\frac1{2100}C_n(\beta)\Omega_n\max\{\ln B,t\}.
+\tag{10.497}
+\]">\[
+\operatorname{ord}_{\mathfrak p}(\Xi-1)
+&lt;\frac1{2100}C_n(\beta)\Omega_n\max\{\ln B,t\}.
+\tag{10.497}
+\]</span>
+<p><strong>Proof.</strong> At <span class="math" data-tex="\(n=1\)">\(n=1\)</span> this is Theorem 10.154. Let <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>.
+Put</p>
+<span class="math math-display" data-tex="\[
+D_n=\rho\mathrm e d^2\ell_dL_n,
+\qquad D_0=\max\{1,D_n\}.
+\tag{10.498}
+\]">\[
+D_n=\rho\mathrm e d^2\ell_dL_n,
+\qquad D_0=\max\{1,D_n\}.
+\tag{10.498}
+\]</span>
+<p>For each non-torsion base at an index <span class="math" data-tex="\(i\ne i_0\)">\(i\ne i_0\)</span>, Theorem 10.20
+applied to the dependent pair <span class="math" data-tex="\((\beta,a_i)\)">\((\beta,a_i)\)</span> supplies an exact
+relation
+<span class="math" data-tex="\(\beta^{u_i}a_i^{k_i}=1\)">\(\beta^{u_i}a_i^{k_i}=1\)</span>, with <span class="math" data-tex="\(k_i\)">\(k_i\)</span> a positive integer and
+<span class="math" data-tex="\(k_i\le\rho\mathrm e d^2\ell_dh(a_i)\)">\(k_i\le\rho\mathrm e d^2\ell_dh(a_i)\)</span>.
+Here <span class="math" data-tex="\(h(\beta)\le h(a_i)\)">\(h(\beta)\le h(a_i)\)</span>, so the smaller height in that
+theorem is <span class="math" data-tex="\(h(\beta)\)">\(h(\beta)\)</span>. Taking heights in the relation gives
+<span class="math" data-tex="\(|u_i|/k_i=h(a_i)/h(\beta)\)">\(|u_i|/k_i=h(a_i)/h(\beta)\)</span>.</p>
+<p>Let m be the number of these non-torsion complementary indices.
+If the original list has no torsion bases, put
+<span class="math" data-tex="\(P=\prod k_i\)">\(P=\prod k_i\)</span>. Otherwise put <span class="math" data-tex="\(P=w_K\prod k_i\)">\(P=w_K\prod k_i\)</span>.
+Every torsion base then disappears, and the relations give</p>
+<span class="math math-display" data-tex="\[
+\Xi^P=\beta^M,
+\qquad M\in\mathbb Z,
+\qquad |M|\le nBP\frac{h(a_n)}{h(\beta)}.
+\tag{10.499}
+\]">\[
+\Xi^P=\beta^M,
+\qquad M\in\mathbb Z,
+\qquad |M|\le nBP\frac{h(a_n)}{h(\beta)}.
+\tag{10.499}
+\]</span>
+<p>This is an identity in K, with no change in the residue index.
+If the power is one, <span class="math" data-tex="\(\Xi\)">\(\Xi\)</span> is torsion. Theorem 10.21 and
+<span class="math" data-tex="\(\mathcal T_n&gt;2100(d/t)\ln2\)">\(\mathcal T_n&gt;2100(d/t)\ln2\)</span> from Lemma 10.155 give the
+required bound. Hence assume M is nonzero.</p>
+<p>Each <span class="math" data-tex="\(k_i\le D_0H_n(a_i)/L_n\)">\(k_i\le D_0H_n(a_i)/L_n\)</span>, so the product of these
+coefficients is at most <span class="math" data-tex="\(D_0^mR\)">\(D_0^mR\)</span>. If there is a non-torsion
+complementary base, the largest height occurs among the complementary
+indices, or equals the selected height. The singleton height bound
+then gives</p>
+<span class="math math-display" data-tex="\[
+\frac{h(a_n)}{h(\beta)}
+\le\max\{1,D_n/w_K\}R.
+\tag{10.500}
+\]">\[
+\frac{h(a_n)}{h(\beta)}
+\le\max\{1,D_n/w_K\}R.
+\tag{10.500}
+\]</span>
+<p>When there is no such base, this ratio is one. Since
+<span class="math" data-tex="\(\ln B\le H\)">\(\ln B\le H\)</span>, the resulting bounds for <span class="math" data-tex="\(\ln(2|M|)\)">\(\ln(2|M|)\)</span> are</p>
+<span class="math math-display" data-tex="\[
+\begin{cases}
+Z_0+2\ln R,&amp;\text{no torsion bases},\\
+Z_1+2\ln R,&amp;\text{torsion and a non-torsion complement},\\
+H+\ln(2w_K),&amp;\text{only torsion in the complement},
+\end{cases}
+\tag{10.501}
+\]">\[
+\begin{cases}
+Z_0+2\ln R,&amp;\text{no torsion bases},\\
+Z_1+2\ln R,&amp;\text{torsion and a non-torsion complement},\\
+H+\ln(2w_K),&amp;\text{only torsion in the complement},
+\end{cases}
+\tag{10.501}
+\]</span>
+<p>where</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Z_0&amp;=H+\ln(2n)+(n-1)\ln D_0+\ln\max\{1,D_n/w_K\},\\
+Z_1&amp;=H+\ln(2n)+(n-2)\ln D_0+\ln\max\{w_K,D_n\}.
+\end{aligned}
+\tag{10.502}
+\]">\[
+\begin{aligned}
+Z_0&amp;=H+\ln(2n)+(n-1)\ln D_0+\ln\max\{1,D_n/w_K\},\\
+Z_1&amp;=H+\ln(2n)+(n-2)\ln D_0+\ln\max\{w_K,D_n\}.
+\end{aligned}
+\tag{10.502}
+\]</span>
+<p>We show that all three are less than <span class="math" data-tex="\(\alpha_nA_nHR\)">\(\alpha_nA_nHR\)</span>.
+The empty-list height bound in Lemma 10.155 gives
+<span class="math" data-tex="\(w_K\le\rho d\ell_d\)">\(w_K\le\rho d\ell_d\)</span>. Since <span class="math" data-tex="\(D_0\ge D_n\)">\(D_0\ge D_n\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\frac{w_K}{D_0}\le\frac{\varkappa(n+5)}{\mathrm eX_n}&lt;45.
+\tag{10.503}
+\]">\[
+\frac{w_K}{D_0}\le\frac{\varkappa(n+5)}{\mathrm eX_n}&lt;45.
+\tag{10.503}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(\varkappa\le34\)">\(\varkappa\le34\)</span>, <span class="math" data-tex="\(X_n\ge n\)">\(X_n\ge n\)</span>,
+<span class="math" data-tex="\((n+5)/n\le7/2\)">\((n+5)/n\le7/2\)</span> and <span class="math" data-tex="\(\mathrm e&gt;8/3\)">\(\mathrm e&gt;8/3\)</span>.
+Every displayed alternative is thus at most <span class="math" data-tex="\(Z_n+2\ln R\)">\(Z_n+2\ln R\)</span>, where</p>
+<span class="math math-display" data-tex="\[
+Z_n=H+\ln(2n)+n\ln D_0+\ln45.
+\tag{10.504}
+\]">\[
+Z_n=H+\ln(2n)+n\ln D_0+\ln45.
+\tag{10.504}
+\]</span>
+<p>For <span class="math" data-tex="\(n\ge3\)">\(n\ge3\)</span>, use <span class="math" data-tex="\(X_n\le nH\)">\(X_n\le nH\)</span>, <span class="math" data-tex="\(H&gt;1\)">\(H&gt;1\)</span>, and
+<span class="math" data-tex="\(\rho\mathrm e/\varkappa&lt;18\)">\(\rho\mathrm e/\varkappa&lt;18\)</span>. Concavity of the logarithm at
+eight gives
+<span class="math" data-tex="\(\ln\ell_d\le(\ln d)/8+11/10\)">\(\ln\ell_d\le(\ln d)/8+11/10\)</span>: if <span class="math" data-tex="\(d\ge3\)">\(d\ge3\)</span> use
+<span class="math" data-tex="\(\ln x\le x/8+\ln8-1\)">\(\ln x\le x/8+\ln8-1\)</span>, and if <span class="math" data-tex="\(d=1,2\)">\(d=1,2\)</span> the left side
+is zero. Also <span class="math" data-tex="\(\ln H\le H-1\)">\(\ln H\le H-1\)</span>, <span class="math" data-tex="\(\ln18&lt;3\)">\(\ln18&lt;3\)</span> and
+<span class="math" data-tex="\(\ln45&lt;4\)">\(\ln45&lt;4\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+Z_n&lt;(n+1)H+\frac{31n}{10}+\ln(2n)+4
++\frac{9n}{8}\ln d.
+\tag{10.505}
+\]">\[
+Z_n&lt;(n+1)H+\frac{31n}{10}+\ln(2n)+4
++\frac{9n}{8}\ln d.
+\tag{10.505}
+\]</span>
+<p>By Lemma 10.157, <span class="math" data-tex="\(\alpha_n&gt;4n/3\)">\(\alpha_n&gt;4n/3\)</span>; since <span class="math" data-tex="\(H&gt;1\)">\(H&gt;1\)</span>, its
+coefficient of <span class="math" data-tex="\(\ln d\)">\(\ln d\)</span> is greater than <span class="math" data-tex="\(9n/8\)">\(9n/8\)</span>.
+For the remaining terms use <span class="math" data-tex="\(A_n\ge4+\ln(n+1)+\ln d\)">\(A_n\ge4+\ln(n+1)+\ln d\)</span>,
+<span class="math" data-tex="\(\ln(n+1)\ge\ln4&gt;4/3\)">\(\ln(n+1)\ge\ln4&gt;4/3\)</span>, and <span class="math" data-tex="\(\ln(2n)&lt;n\)">\(\ln(2n)&lt;n\)</span>.
+At H=1 their comparison reduces to</p>
+<span class="math math-display" data-tex="\[
+\frac{64n}{9}&gt;\frac{51n}{10}+5\qquad(n\ge3).
+\tag{10.506}
+\]">\[
+\frac{64n}{9}&gt;\frac{51n}{10}+5\qquad(n\ge3).
+\tag{10.506}
+\]</span>
+<p>The difference is <span class="math" data-tex="\(181n/90-5&gt;0\)">\(181n/90-5&gt;0\)</span>. Increasing H only increases
+the difference, because <span class="math" data-tex="\(\alpha_n[4+\ln(n+1)]&gt;n+1\)">\(\alpha_n[4+\ln(n+1)]&gt;n+1\)</span>.
+Thus <span class="math" data-tex="\(Z_n&lt;\alpha_nA_nH\)">\(Z_n&lt;\alpha_nA_nH\)</span> throughout this infinite range.</p>
+<p>At <span class="math" data-tex="\(n=2\)">\(n=2\)</span> there are just two possibilities. If the complementary
+base is non-torsion, the first alternative is at most
+<span class="math" data-tex="\(H+\ln4+2\ln D_0+2\ln R\)">\(H+\ln4+2\ln D_0+2\ln R\)</span>.
+Here <span class="math" data-tex="\(D_0\le s d\ell_dH\)">\(D_0\le s d\ell_dH\)</span>, where
+<span class="math" data-tex="\(s=\max\{1,2\rho\mathrm e/(7\varkappa)\}\)">\(s=\max\{1,2\rho\mathrm e/(7\varkappa)\}\)</span>.
+In II, <span class="math" data-tex="\(s&lt;319/126&lt;\mathrm e\)">\(s&lt;319/126&lt;\mathrm e\)</span>; in every case
+<span class="math" data-tex="\(s&lt;319/63&lt;\exp(5/3)\)">\(s&lt;319/63&lt;\exp(5/3)\)</span>.
+The logarithmic tangent at sixteen gives
+<span class="math" data-tex="\(\ln\ell_d\le(\ln d)/16+9/5\)">\(\ln\ell_d\le(\ln d)/16+9/5\)</span>.
+Using <span class="math" data-tex="\(\ln4&lt;7/5\)">\(\ln4&lt;7/5\)</span> and <span class="math" data-tex="\(\ln H\le H-1\)">\(\ln H\le H-1\)</span> bounds its part
+independent of R by</p>
+<span class="math math-display" data-tex="\[
+\begin{cases}
+3H+5+(17/8)\ln d,&amp;\mathrm{II},\\
+3H+19/3+(17/8)\ln d,&amp;\text{all other cases}.
+\end{cases}
+\tag{10.507}
+\]">\[
+\begin{cases}
+3H+5+(17/8)\ln d,&amp;\mathrm{II},\\
+3H+19/3+(17/8)\ln d,&amp;\text{all other cases}.
+\end{cases}
+\tag{10.507}
+\]</span>
+<p>In II, <span class="math" data-tex="\(H\ge\ln5&gt;8/5\)">\(H\ge\ln5&gt;8/5\)</span> and <span class="math" data-tex="\(\alpha_2&gt;4/3\)">\(\alpha_2&gt;4/3\)</span>.
+In V, <span class="math" data-tex="\(f\ge2\)">\(f\ge2\)</span>, hence <span class="math" data-tex="\(H\ge2\ln2&gt;4/3\)">\(H\ge2\ln2&gt;4/3\)</span>, and
+<span class="math" data-tex="\(\alpha_2&gt;19/10\)">\(\alpha_2&gt;19/10\)</span>. In all remaining cases
+<span class="math" data-tex="\(H&gt;1\)">\(H&gt;1\)</span> and <span class="math" data-tex="\(\alpha_2&gt;9/4\)">\(\alpha_2&gt;9/4\)</span>.
+These give <span class="math" data-tex="\(\alpha_2H&gt;17/8\)">\(\alpha_2H&gt;17/8\)</span>.
+Since <span class="math" data-tex="\(4+\ln3&gt;5\)">\(4+\ln3&gt;5\)</span>, the constant comparisons in II and the
+other cases follow from
+<span class="math" data-tex="\((20/3-3)(8/5)&gt;5\)">\((20/3-3)(8/5)&gt;5\)</span> and <span class="math" data-tex="\(19/2-3&gt;19/3\)">\(19/2-3&gt;19/3\)</span>, respectively.
+Thus this alternative is less than <span class="math" data-tex="\(\alpha_2A_2H+2\ln R\)">\(\alpha_2A_2H+2\ln R\)</span>.</p>
+<p>If the complement is torsion, its bound is
+<span class="math" data-tex="\(H+\ln(2w_K)\)">\(H+\ln(2w_K)\)</span>. The same tangent, with <span class="math" data-tex="\(\ln\rho&lt;5\)">\(\ln\rho&lt;5\)</span>,
+gives at most <span class="math" data-tex="\(H+15/2+(17/16)\ln d\)">\(H+15/2+(17/16)\ln d\)</span>.
+The coefficient comparison already established is stronger than needed.
+For the constant part, in II use
+<span class="math" data-tex="\((20/3-1)(8/5)&gt;15/2\)">\((20/3-1)(8/5)&gt;15/2\)</span>, and otherwise use
+<span class="math" data-tex="\(19/2-1&gt;15/2\)">\(19/2-1&gt;15/2\)</span>. This proves the comparison in the second
+possibility too. All numerical logarithm comparisons used here follow
+from the positive series in Solution 64; they require no approximation
+to be accepted as an equality.</p>
+<p>In every case the bound before the <span class="math" data-tex="\(2\ln R\)">\(2\ln R\)</span> term is less than
+<span class="math" data-tex="\(\alpha_nA_nH\)">\(\alpha_nA_nH\)</span>, which is greater than two.
+The inequality <span class="math" data-tex="\(\ln R\le R-1\)">\(\ln R\le R-1\)</span>, for <span class="math" data-tex="\(R\ge1\)">\(R\ge1\)</span>, therefore
+proves</p>
+<span class="math math-display" data-tex="\[
+\ln(2|M|)&lt;\alpha_nA_nHR
+\le\left(\frac1{2100}-\frac1{40000}\right)U.
+\tag{10.508}
+\]">\[
+\ln(2|M|)&lt;\alpha_nA_nHR
+\le\left(\frac1{2100}-\frac1{40000}\right)U.
+\tag{10.508}
+\]</span>
+<p>Apply Theorem 10.21 to <span class="math" data-tex="\(\beta^M\)">\(\beta^M\)</span>, using its actual residue
+order g. Factoring the P-th power difference gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{ord}_{\mathfrak p}(\Xi-1)
+&amp;\le\operatorname{ord}_{\mathfrak p}(\beta^M-1)\\
+&amp;\le\frac d t\left(\ln(2|M|)+2eg h(\beta)\right)
+&lt;\frac{\mathcal T_n}{2100},
+\end{aligned}
+\tag{10.509}
+\]">\[
+\begin{aligned}
+\operatorname{ord}_{\mathfrak p}(\Xi-1)
+&amp;\le\operatorname{ord}_{\mathfrak p}(\beta^M-1)\\
+&amp;\le\frac d t\left(\ln(2|M|)+2eg h(\beta)\right)
+&lt;\frac{\mathcal T_n}{2100},
+\end{aligned}
+\tag{10.509}
+\]</span>
+<p>by the two budgets. This includes every size of B and every torsion
+pattern. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example, at five in <span class="math" data-tex="\(K=\mathbb Q\)">\(K=\mathbb Q\)</span>, the indexed list
+<span class="math" data-tex="\((4,16)\)">\((4,16)\)</span> has rank one and selected base four, with original
+residue order two and <span class="math" data-tex="\(\delta_\beta=2\)">\(\delta_\beta=2\)</span>.
+Its floor is <span class="math" data-tex="\(L_2=1/42\)">\(L_2=1/42\)</span>, and
+<span class="math" data-tex="\(\Omega_2=(\ln4)(\ln16)\)">\(\Omega_2=(\ln4)(\ln16)\)</span>. For coefficients
+<span class="math" data-tex="\((0,5^k)\)">\((0,5^k)\)</span>, <span class="math" data-tex="\(k\ge0\)">\(k\ge0\)</span>, choose <span class="math" data-tex="\(B=\max\{3,5^k\}\)">\(B=\max\{3,5^k\}\)</span>.
+The exact relation <span class="math" data-tex="\(16\cdot4^{-2}=1\)">\(16\cdot4^{-2}=1\)</span> permits P=1 and gives
+<span class="math" data-tex="\(\Xi=4^{2\cdot5^k}\)">\(\Xi=4^{2\cdot5^k}\)</span>. Lemma 9.5 proves
+<span class="math" data-tex="\(v_5(\Xi-1)=1+k\)">\(v_5(\Xi-1)=1+k\)</span>. The bound of Theorem 10.158 uses the
+length-two constant and this weighted product, while keeping the raw
+residue order of four. It does not replace it by the order of a
+saturated base.</p>
+<p>The rank-one factor is also asserted in Theorem 1 of
+<a href="https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6782-11511_2013_Article_106.pdf">Yu's freely accessible paper</a>.
+The proof above uses the exact integer relations and the proved
+one-base power bound for the whole list; it therefore also covers the
+small-coefficient case directly.</p>
+<p><img src="figures/yu-rank-one-refinement.png" alt="One-base reduction and the two strict rank-one budgets" class="course-figure" width="1950" height="975" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="yu-rank-one-refinement" data-asset-sha256="02D486DFACB05886AC7A365587C12BDFBA97E592F6CE94F6008E0529F2775303"></p>
+<p><em>Figure 10.43. Left: the dependent indexed list <span class="math" data-tex="\((4,16)\)">\((4,16)\)</span> at five,
+with coefficients <span class="math" data-tex="\((0,5^k)\)">\((0,5^k)\)</span>, reduces exactly to
+<span class="math" data-tex="\(4^{2\cdot5^k}\)">\(4^{2\cdot5^k}\)</span>; the plotted valuations <span class="math" data-tex="\(1+k\)">\(1+k\)</span> are exact
+values, proved by the deep-unit power law. Right: the normalized
+logarithmic exponent cost is strictly below
+<span class="math" data-tex="\(1/2100-1/40000\)">\(1/2100-1/40000\)</span>, and the original-residue height cost is strictly
+below <span class="math" data-tex="\(1/40000\)">\(1/40000\)</span>. These are universal proved envelopes for every
+rank-one list of length at least two, every field case and every
+coefficient size, whose sum is <span class="math" data-tex="\(1/2100\)">\(1/2100\)</span>. Lemma 10.157 proves the
+scalar budgets and Theorem 10.158 proves the full reduction, including
+torsion. <a href="figure_sources/yu_rank_one_refinement_profile.py">Figure program</a>,
+<a href="figure_sources/yu_rank_one_refinement_enclosures.py">exact scalar calculations</a>.
+Human-source context: Theorem 1 and Section 8 of
+<a href="https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6782-11511_2013_Article_106.pdf">Yu's freely accessible paper</a>.</em></p>
+<h2 id="51-an-effective-p-adic-distance-between-integral-s-units">51. An effective p-adic distance between integral S-units</h2>
+<p>Let S be a finite set of rational primes. An integral S-unit here is a
+nonzero integer whose prime factors all belong to S; either sign is
+allowed. Let x and y be distinct integral S-units, set
+<span class="math" data-tex="\(M=\max\{|x|,|y|\}\)">\(M=\max\{|x|,|y|\}\)</span>, and let p be any rational prime. Put</p>
+<span class="math math-display" data-tex="\[
+g_0=\gcd(|x|,|y|),\qquad x_0=x/g_0,\qquad y_0=y/g_0,
+\qquad S_p=S\setminus\{p\}.
+\tag{10.510}
+\]">\[
+g_0=\gcd(|x|,|y|),\qquad x_0=x/g_0,\qquad y_0=y/g_0,
+\qquad S_p=S\setminus\{p\}.
+\tag{10.510}
+\]</span>
+<p>The common factor must be retained. For example,
+<span class="math" data-tex="\(x=3^N25,y=3^N7\)">\(x=3^N25,y=3^N7\)</span> have difference <span class="math" data-tex="\(3^N18\)">\(3^N18\)</span>, of valuation
+<span class="math" data-tex="\(N+2\)">\(N+2\)</span> at three. Their coprime parts have fixed distance of
+valuation two, however large N is.</p>
+<p>Write <span class="math" data-tex="\(S_p=\{q_1&lt;\cdots&lt;q_n\}\)">\(S_p=\{q_1&lt;\cdots&lt;q_n\}\)</span>. For <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> the
+following explicit constants will bound the distance of the coprime
+parts. Use the field</p>
+<span class="math math-display" data-tex="\[
+K_p=\begin{cases}\mathbb Q,&amp;p&gt;2,\\
+\mathbb Q(\zeta_3),&amp;p=2,\end{cases}
+\qquad
+(d,e,f,q^u)=\begin{cases}(1,1,1,2),&amp;p&gt;2,\\
+(2,1,2,3),&amp;p=2.
+\end{cases}
+\tag{10.511}
+\]">\[
+K_p=\begin{cases}\mathbb Q,&amp;p&gt;2,\\
+\mathbb Q(\zeta_3),&amp;p=2,\end{cases}
+\qquad
+(d,e,f,q^u)=\begin{cases}(1,1,1,2),&amp;p&gt;2,\\
+(2,1,2,3),&amp;p=2.
+\end{cases}
+\tag{10.511}
+\]</span>
+<p>Here <span class="math" data-tex="\(\zeta_3\)">\(\zeta_3\)</span> is a primitive cube root of unity, and q is the
+auxiliary prime of the earlier logarithm estimates, distinct from the
+listed primes <span class="math" data-tex="\(q_i\)">\(q_i\)</span>. Put <span class="math" data-tex="\(t=f\ln p\)">\(t=f\ln p\)</span>.
+The rational prime bases are independent, so set
+<span class="math" data-tex="\(\boldsymbol\beta=(q_1,\ldots,q_n)\)">\(\boldsymbol\beta=(q_1,\ldots,q_n)\)</span>. Use their saturated
+residue index when <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, and the raw index at <span class="math" data-tex="\(n=1\)">\(n=1\)</span>.</p>
+<p>These indices are entirely explicit. At odd p and <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, let
+<span class="math" data-tex="\(G\)">\(G\)</span> be the subgroup of <span class="math" data-tex="\(\mathbb F_p^*\)">\(\mathbb F_p^*\)</span> generated by
+<span class="math" data-tex="\(-1,q_1,\ldots,q_n\)">\(-1,q_1,\ldots,q_n\)</span>; then <span class="math" data-tex="\(\delta_\beta=(p-1)/|G|\)">\(\delta_\beta=(p-1)/|G|\)</span>.
+At odd p and <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, use
+<span class="math" data-tex="\(\delta_\beta=(p-1)/\operatorname{ord}_p(q_1)\)">\(\delta_\beta=(p-1)/\operatorname{ord}_p(q_1)\)</span>.
+At two, the indices are one for <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span> and three for
+<span class="math" data-tex="\(n=1\)">\(n=1\)</span>. All these finite orders can be found by enumerating a
+finite multiplicative group.</p>
+<p>Let <span class="math" data-tex="\(\epsilon=\operatorname{sgn}(x_0/y_0)\)">\(\epsilon=\operatorname{sgn}(x_0/y_0)\)</span>, and define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+m&amp;=\begin{cases}n,&amp;\epsilon=1,\\n+1,&amp;\epsilon=-1,\end{cases}\\
+\Omega_\epsilon&amp;=\begin{cases}
+\displaystyle\prod_{i=1}^n\ln q_i,&amp;\epsilon=1,\\
+\displaystyle L_m\prod_{i=1}^n\ln q_i,&amp;\epsilon=-1,
+\end{cases}\\
+\eta_n&amp;=\begin{cases}1/2100,&amp;n=1,\\1,&amp;n\ge2,\end{cases}\\
+K_{S,p}^{\epsilon}&amp;=\eta_n C_m(\boldsymbol\beta)\Omega_\epsilon,\\
+B_M&amp;=\max\{3,\ln M/\ln2\},\qquad
+H_{S,p}(M)=\max\{\ln B_M,t\}.
+\end{aligned}
+\tag{10.512}
+\]">\[
+\begin{aligned}
+m&amp;=\begin{cases}n,&amp;\epsilon=1,\\n+1,&amp;\epsilon=-1,\end{cases}\\
+\Omega_\epsilon&amp;=\begin{cases}
+\displaystyle\prod_{i=1}^n\ln q_i,&amp;\epsilon=1,\\
+\displaystyle L_m\prod_{i=1}^n\ln q_i,&amp;\epsilon=-1,
+\end{cases}\\
+\eta_n&amp;=\begin{cases}1/2100,&amp;n=1,\\1,&amp;n\ge2,\end{cases}\\
+K_{S,p}^{\epsilon}&amp;=\eta_n C_m(\boldsymbol\beta)\Omega_\epsilon,\\
+B_M&amp;=\max\{3,\ln M/\ln2\},\qquad
+H_{S,p}(M)=\max\{\ln B_M,t\}.
+\end{aligned}
+\tag{10.512}
+\]</span>
+<p>The <span class="math" data-tex="\(L_m\)">\(L_m\)</span>, <span class="math" data-tex="\(C_m\)">\(C_m\)</span>, <span class="math" data-tex="\(\varkappa\)">\(\varkappa\)</span> and case constants are
+those of Section 49, computed in the specified field <span class="math" data-tex="\(K_p\)">\(K_p\)</span>.
+Thus <span class="math" data-tex="\(C_m\)">\(C_m\)</span> uses the original list length m and the index of its
+n-element basis. The constant depends on S, p and the sign, but not
+on the exponents occurring in x and y.</p>
+<p><strong>Theorem 10.159 (integral S-unit distance).</strong> If <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+v_p(x-y)&lt;v_p(g_0)+K_{S,p}^{\epsilon}H_{S,p}(M).
+\tag{10.513}
+\]">\[
+v_p(x-y)&lt;v_p(g_0)+K_{S,p}^{\epsilon}H_{S,p}(M).
+\tag{10.513}
+\]</span>
+<p>If <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, the exact excess <span class="math" data-tex="\(v_p(x-y)-v_p(g_0)\)">\(v_p(x-y)-v_p(g_0)\)</span> is zero
+unless <span class="math" data-tex="\(x_0=-y_0=\pm1\)">\(x_0=-y_0=\pm1\)</span>, in which case it is <span class="math" data-tex="\(v_p(2)\)">\(v_p(2)\)</span>.</p>
+<p><strong>Proof.</strong> Coprimality of <span class="math" data-tex="\(|x_0|\)">\(|x_0|\)</span> and <span class="math" data-tex="\(|y_0|\)">\(|y_0|\)</span> implies
+that at most one is divisible by p. If one is divisible by p, their
+difference is a p-adic unit, so <span class="math" data-tex="\(v_p(x-y)=v_p(g_0)\)">\(v_p(x-y)=v_p(g_0)\)</span>.
+For <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> the constant is positive, proving the strict
+inequality in this case. At <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, all prime factors of the
+coprime parts must be p. If neither part is divisible by p, their
+absolute values are both one; distinctness gives the stated opposite
+sign case. This proves the entire <span class="math" data-tex="\(n=0\)">\(n=0\)</span> assertion.</p>
+<p>Now assume <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> and both coprime parts are p-adic units.
+Their ratio is</p>
+<span class="math math-display" data-tex="\[
+\Xi=\frac{x_0}{y_0}=\epsilon\prod_{i=1}^n q_i^{b_i}\ne1,
+\qquad b_i\in\mathbb Z,\qquad
+|b_i|\le\frac{\ln M}{\ln q_i}\le\frac{\ln M}{\ln2}.
+\tag{10.514}
+\]">\[
+\Xi=\frac{x_0}{y_0}=\epsilon\prod_{i=1}^n q_i^{b_i}\ne1,
+\qquad b_i\in\mathbb Z,\qquad
+|b_i|\le\frac{\ln M}{\ln q_i}\le\frac{\ln M}{\ln2}.
+\tag{10.514}
+\]</span>
+<p>Indeed the nonnegative exponents in each of <span class="math" data-tex="\(|x_0|,|y_0|\)">\(|x_0|,|y_0|\)</span>
+are at most <span class="math" data-tex="\(\ln M/\ln q_i\)">\(\ln M/\ln q_i\)</span>, and their difference has
+absolute value at most their maximum. Rational prime valuations show
+that the listed bases are independent, even modulo roots of unity:
+a positive rational number that is a root of unity is one, and each
+prime valuation then makes its exponent zero. Their heights are
+<span class="math" data-tex="\(h(q_i)=\ln q_i\)">\(h(q_i)=\ln q_i\)</span>.</p>
+<p>We verify the field and index data. At odd p these are the rational
+field data. Its q-primary saturation of prime bases has no additional
+exponents: if a rational q-power root of their product exists, prime
+valuations make all the indicated exponents integral. Root choices
+only introduce the already available sign. Consequently the saturated
+residue group is precisely G. The raw singleton index follows from
+its actual residue order, as in (10.272).</p>
+<p>At two the polynomial <span class="math" data-tex="\(X^2+X+1\)">\(X^2+X+1\)</span> has no rational root, so
+<span class="math" data-tex="\([K_p:\mathbb Q]=2\)">\([K_p:\mathbb Q]=2\)</span>. Its reduction is irreducible over
+<span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span>, since it vanishes at neither zero nor one.
+Thus the residue degree is at least two. The degree inequality
+<span class="math" data-tex="\(ef\le d=2\)">\(ef\le d=2\)</span> gives <span class="math" data-tex="\(e=1,f=2\)">\(e=1,f=2\)</span>. Its root reduces to an
+element of order three in <span class="math" data-tex="\(\mathbb F_4^*\)">\(\mathbb F_4^*\)</span>, so including the
+q-primary torsion generator makes every saturated residue group at
+rank at least two equal to that whole group, irrespective of a
+choice of saturated basis. Every odd rational prime reduces to one,
+so a singleton's raw order is one and its index is three.
+The field contains <span class="math" data-tex="\(\zeta_3\)">\(\zeta_3\)</span>, and cannot contain
+<span class="math" data-tex="\(\zeta_9\)">\(\zeta_9\)</span>, whose degree six is proved by the cyclotomic
+argument of Lesson 9. Hence <span class="math" data-tex="\(q^u=3\)">\(q^u=3\)</span>. These also verify the
+two-adic field hypothesis required by Theorems 10.154 and 10.156.</p>
+<p>If <span class="math" data-tex="\(\epsilon=1\)">\(\epsilon=1\)</span>, apply Theorem 10.154 to the n independent
+prime bases and bound <span class="math" data-tex="\(B=B_M\)">\(B=B_M\)</span>. Its weighted product is
+<span class="math" data-tex="\(\prod_i\ln q_i\)">\(\prod_i\ln q_i\)</span>. The factor <span class="math" data-tex="\(\eta_1=1/2100\)">\(\eta_1=1/2100\)</span> is
+included by that theorem's singleton conclusion.</p>
+<p>If <span class="math" data-tex="\(\epsilon=-1\)">\(\epsilon=-1\)</span>, use the indexed list
+<span class="math" data-tex="\((-1,q_1,\ldots,q_n)\)">\((-1,q_1,\ldots,q_n)\)</span>, whose length is m=n+1 and rank is n.
+Its first base has height zero, so the greedy basis is exactly
+<span class="math" data-tex="\(\boldsymbol\beta\)">\(\boldsymbol\beta\)</span>, and its weighted product is
+<span class="math" data-tex="\(L_m\prod_i\ln q_i\)">\(L_m\prod_i\ln q_i\)</span>. The coefficient of the sign base is
+one, which is also bounded by <span class="math" data-tex="\(B_M\)">\(B_M\)</span>. Apply Theorem 10.156,
+and apply its sharpened rank-one form, Theorem 10.158, when n=1.
+Neither argument changes the selected basis's residue index.</p>
+<p>The fields used here both have ramification index e=1. Restricting
+their normalized prime-ideal valuation to the rational numbers is
+therefore exactly <span class="math" data-tex="\(v_p\)">\(v_p\)</span>. Since <span class="math" data-tex="\(y_0\)">\(y_0\)</span> is a p-adic unit,</p>
+<span class="math math-display" data-tex="\[
+v_p(x-y)-v_p(g_0)=v_p(x_0-y_0)
+=v_p(\Xi-1)&lt;K_{S,p}^{\epsilon}H_{S,p}(M).
+\tag{10.515}
+\]">\[
+v_p(x-y)-v_p(g_0)=v_p(x_0-y_0)
+=v_p(\Xi-1)&lt;K_{S,p}^{\epsilon}H_{S,p}(M).
+\tag{10.515}
+\]</span>
+<p>This proves the claimed effective bound in every case. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 10.160 (distance after removing the common factor).</strong> With
+<span class="math" data-tex="\(|z|_p=p^{-v_p(z)}\)">\(|z|_p=p^{-v_p(z)}\)</span> and <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\frac{|x-y|_p}{|g_0|_p}
+&gt;\min\left\{p^{-K_{S,p}^{\epsilon}t},
+B_M^{-K_{S,p}^{\epsilon}\ln p}\right\}.
+\tag{10.516}
+\]">\[
+\frac{|x-y|_p}{|g_0|_p}
+&gt;\min\left\{p^{-K_{S,p}^{\epsilon}t},
+B_M^{-K_{S,p}^{\epsilon}\ln p}\right\}.
+\tag{10.516}
+\]</span>
+<p><strong>Proof.</strong> Exponentiate the strict valuation inequality of Theorem
+10.159. The negative exponential of the maximum of two real numbers
+is the minimum of their negative exponentials. This gives exactly
+the two terms displayed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For fixed S and p, this lower bound is a fixed negative power of
+<span class="math" data-tex="\(\ln M\)">\(\ln M\)</span> once <span class="math" data-tex="\(\ln B_M\ge t\)">\(\ln B_M\ge t\)</span>. The normalization by the
+common factor is necessary; the family at the start of the section
+proves that directly.</p>
+<p>For the positive example <span class="math" data-tex="\(S=\{3,5,7\},p=3\)">\(S=\{3,5,7\},p=3\)</span>, the prime bases
+are five and seven. Together with minus one their residues generate
+<span class="math" data-tex="\(\mathbb F_3^*\)">\(\mathbb F_3^*\)</span>, so <span class="math" data-tex="\(\delta_\beta=1\)">\(\delta_\beta=1\)</span>.
+The data are <span class="math" data-tex="\(d=e=f=1,q^u=2,c=636,\mathfrak a=14\)">\(d=e=f=1,q^u=2,c=636,\mathfrak a=14\)</span>,
+<span class="math" data-tex="\(t=\ln3\)">\(t=\ln3\)</span>, <span class="math" data-tex="\(\Omega=(\ln5)(\ln7)\)">\(\Omega=(\ln5)(\ln7)\)</span>, and
+<span class="math" data-tex="\(A_2=4+\ln3\)">\(A_2=4+\ln3\)</span>. Thus the completely specified constant is</p>
+<span class="math math-display" data-tex="\[
+K_{S,3}^{+}=
+\frac{636\cdot14^2\cdot81}{\ln3}
+\max\left\{\frac3{(\ln3)^3},\frac{\mathrm e^2}4\right\}
+(4+\ln3)(\ln5)(\ln7).
+\tag{10.517}
+\]">\[
+K_{S,3}^{+}=
+\frac{636\cdot14^2\cdot81}{\ln3}
+\max\left\{\frac3{(\ln3)^3},\frac{\mathrm e^2}4\right\}
+(4+\ln3)(\ln5)(\ln7).
+\tag{10.517}
+\]</span>
+<p>For <span class="math" data-tex="\(x=3^N25,y=3^N7\)">\(x=3^N25,y=3^N7\)</span>, the coprime ratio is <span class="math" data-tex="\(25/7\)">\(25/7\)</span>,
+with prime exponents <span class="math" data-tex="\((2,-1)\)">\((2,-1)\)</span>. Its difference from one is
+<span class="math" data-tex="\(18/7\)">\(18/7\)</span>, of exact valuation two. The original difference has
+valuation N+2. The theorem bounds the excess two by a constant
+times <span class="math" data-tex="\(H_{S,3}(3^N25)\)">\(H_{S,3}(3^N25)\)</span>, while retaining the exact contribution N
+of the common factor.</p>
+<p>For a signed example take <span class="math" data-tex="\(x=25,y=-7,p=2\)">\(x=25,y=-7,p=2\)</span> and
+<span class="math" data-tex="\(S=\{5,7\}\)">\(S=\{5,7\}\)</span>. The ratio is <span class="math" data-tex="\(-25/7\)">\(-25/7\)</span>, represented by
+the list <span class="math" data-tex="\((-1,5,7)\)">\((-1,5,7)\)</span> with coefficients <span class="math" data-tex="\((1,2,-1)\)">\((1,2,-1)\)</span>.
+Here <span class="math" data-tex="\(d=2,e=1,f=2,q^u=3,\delta_\beta=1\)">\(d=2,e=1,f=2,q^u=3,\delta_\beta=1\)</span>,
+<span class="math" data-tex="\(\varkappa=34,m=3\)">\(\varkappa=34,m=3\)</span>, and <span class="math" data-tex="\(L_3=3/544\)">\(L_3=3/544\)</span>.
+The weighted product is <span class="math" data-tex="\((3/544)(\ln5)(\ln7)\)">\((3/544)(\ln5)(\ln7)\)</span>, and the
+exact difference <span class="math" data-tex="\(25+7=32\)">\(25+7=32\)</span> has valuation five at two. The sign
+requires the dependent-list theorem rather than being silently
+discarded from the exponent vector.</p>
+<p>The logarithmic-form input is the complete programme proof in
+Theorems 10.154, 10.156 and 10.158. Its scholarly context is Theorem 1
+of <a href="https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6782-11511_2013_Article_106.pdf">Yu's freely accessible paper</a>.</p>
+<p><img src="figures/integral-s-unit-distance.png" alt="The common-factor term and the signed local-unit alternative" class="course-figure" width="1875" height="900" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="integral-s-unit-distance" data-asset-sha256="8D222B75E0936FE7D06163B337F255A3C5243F361E70FFC239E96DB8E3E9A0A8"></p>
+<p><em>Figure 10.44. Left: for <span class="math" data-tex="\(x=3^N25,y=3^N7\)">\(x=3^N25,y=3^N7\)</span>, the exact
+valuation is N+2. Its two components are the common-factor valuation N
+and the fixed coprime distance of valuation two. The bars show exact
+integer values, while Theorem 10.159 bounds the second component in
+general. Right: a coprime nonunit case has zero excess valuation;
+the unit case is reduced to <span class="math" data-tex="\(\epsilon\prod q_i^{b_i}\)">\(\epsilon\prod q_i^{b_i}\)</span>.
+The example <span class="math" data-tex="\(25-(-7)=32\)">\(25-(-7)=32\)</span> at two requires the sign base minus one,
+the field <span class="math" data-tex="\(\mathbb Q(\zeta_3)\)">\(\mathbb Q(\zeta_3)\)</span>, and the length-three weighted
+height floor <span class="math" data-tex="\(3/544\)">\(3/544\)</span>. Theorem 10.159 proves the full sign and
+field conditions, Corollary 10.160 gives the normalized distance, and
+Solution 65 checks both examples. <a href="figure_sources/integral_s_unit_distance.py">Reproducible exact calculation and
+figure</a>.
+Human-source context: Theorem 1 of <a href="https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6782-11511_2013_Article_106.pdf">Yu's freely accessible paper</a>.</em></p>
+<h2 id="52-exercises-with-solutions"><span id="7-exercises-with-solutions"></span><span id="8-exercises-with-solutions"></span><span id="9-exercises-with-solutions"></span><span id="10-exercises-with-solutions"></span><span id="11-exercises-with-solutions"></span><span id="12-exercises-with-solutions"></span><span id="13-exercises-with-solutions"></span><span id="14-exercises-with-solutions"></span><span id="15-exercises-with-solutions"></span><span id="16-exercises-with-solutions"></span><span id="17-exercises-with-solutions"></span><span id="18-exercises-with-solutions"></span><span id="19-exercises-with-solutions"></span><span id="20-exercises-with-solutions"></span><span id="21-exercises-with-solutions"></span><span id="22-exercises-with-solutions"></span><span id="23-exercises-with-solutions"></span><span id="24-exercises-with-solutions"></span><span id="25-exercises-with-solutions"></span><span id="26-exercises-with-solutions"></span><span id="27-exercises-with-solutions"></span><span id="28-exercises-with-solutions"></span><span id="29-exercises-with-solutions"></span><span id="30-exercises-with-solutions"></span><span id="31-exercises-with-solutions"></span><span id="32-exercises-with-solutions"></span><span id="33-exercises-with-solutions"></span><span id="34-exercises-with-solutions"></span><span id="35-exercises-with-solutions"></span><span id="36-exercises-with-solutions"></span><span id="37-exercises-with-solutions"></span><span id="38-exercises-with-solutions"></span><span id="39-exercises-with-solutions"></span><span id="40-exercises-with-solutions"></span><span id="41-exercises-with-solutions"></span><span id="42-exercises-with-solutions"></span><span id="43-exercises-with-solutions"></span><span id="44-exercises-with-solutions"></span><span id="45-exercises-with-solutions"></span><span id="46-exercises-with-solutions"></span><span id="47-exercises-with-solutions"></span><span id="48-exercises-with-solutions"></span><span id="49-exercises-with-solutions"></span><span id="50-exercises-with-solutions"></span><span id="51-exercises-with-solutions"></span>52. Exercises with solutions</h2>
 <ol>
 <li>
 <p><strong>Easy.</strong> Explain exactly how nonunit bases can be reduced to unit bases. Give an example showing that the conclusion of Theorem 10.8 cannot be extended unchanged to nonunits.</p>
@@ -12817,6 +13507,25 @@ enclosure of every rank at least32. Why would a fixed value of
 </li>
 <li>
 <p><strong>Hard: eliminating a dependent base with its weights.</strong> (a) For <span class="math" data-tex="\((2,3,4)\subset\mathbb Q^*\)">\((2,3,4)\subset\mathbb Q^*\)</span> at five, compute the greedy basis, <span class="math" data-tex="\(L_3,L_2\)">\(L_3,L_2\)</span>, the two modified height products and the residue index. Transfer coefficients <span class="math" data-tex="\((1,1,2)\)">\((1,1,2)\)</span> through the exact circuit, and compute the valuation. Identify its coefficient-height branch. (b) In the general proof of Lemma 10.155 derive the normalized circuit envelope, first for terminal removal and then for both internal cases. Include the empty-list height bound and every degree power. (c) Derive the polynomial lower bound for <span class="math" data-tex="\(\ln(J_n/(n+5))\)">\(\ln(J_n/(n+5))\)</span>, and explain how the fourteen rational endpoints combine with it. Verify the final absorption inequality of Theorem 10.156. (d) Explain why removing either the first discarded base or an initial root of unity preserves both the greedy basis and its residue index; state the direct bound when the original list has rank zero.</p>
+</li>
+<li>
+<p><strong>Hard.</strong> For the indexed list <span class="math" data-tex="\((4,16)\)">\((4,16)\)</span> at five, with coefficients
+<span class="math" data-tex="\((0,5^k)\)">\((0,5^k)\)</span>, compute the greedy rank-one basis, its original residue
+index, the length-two floor and weighted product. Give an exact
+one-base reduction and valuation. Then prove the cancellations in
+Lemma 10.157, explain why the maximum in the definition of s in the
+length-two scalar comparison is necessary, and verify the complete
+infinite-rank estimate in Theorem 10.158. State where a torsion
+complement changes the exponent budget.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> For <span class="math" data-tex="\(S=\{3,5,7\},p=3\)">\(S=\{3,5,7\},p=3\)</span>, compute the common
+factor, coprime exponents and exact valuation of
+<span class="math" data-tex="\(3^N25-3^N7\)">\(3^N25-3^N7\)</span>. Verify the residue index and constant displayed
+in Theorem 10.159, and show why a bound without the common-factor
+term would be false. For <span class="math" data-tex="\(x=25,y=-7,p=2\)">\(x=25,y=-7,p=2\)</span>, verify the field data,
+sign coefficient, length-three floor and weighted product. Finally
+prove the exact <span class="math" data-tex="\(n=0\)">\(n=0\)</span> clause and derive Corollary 10.160.</p>
 </li>
 </ol>
 <p><strong>Solution 1.</strong> Put <span class="math" data-tex="\(q_i=v(\alpha_i)\)">\(q_i=v(\alpha_i)\)</span>. If <span class="math" data-tex="\(b_1q_1\ne b_2q_2\)">\(b_1q_1\ne b_2q_2\)</span>, the ultrametric inequality gives the exact valuation <span class="math" data-tex="\(\min(b_1q_1,b_2q_2)\)">\(\min(b_1q_1,b_2q_2)\)</span>, so no cancellation estimate is needed. If they are equal, choose <span class="math" data-tex="\(\pi=p^{1/e}\)">\(\pi=p^{1/e}\)</span> in an algebraic extension and set <span class="math" data-tex="\(\epsilon_i=\alpha_i\pi^{-e q_i}\)">\(\epsilon_i=\alpha_i\pi^{-e q_i}\)</span>. The exponents <span class="math" data-tex="\(e q_i\)">\(e q_i\)</span> are integers, the <span class="math" data-tex="\(\epsilon_i\)">\(\epsilon_i\)</span> are units, and</p>
@@ -14432,6 +15141,97 @@ C_1^*=\frac{4\cdot636\cdot14\,\mathrm e(4+\ln2)}{\ln3}.
 <p>(b) Write j=r-v+1, s=n-r-1. The circuit bound and height-product bound give the exact envelope for <span class="math" data-tex="\(K/\Omega_n\)">\(K/\Omega_n\)</span> displayed in the proof. At x=n, normalize by <span class="math" data-tex="\(B dH_n(a_x)/8\)">\(B dH_n(a_x)/8\)</span>. The two appearances of <span class="math" data-tex="\(h(a_x)/H_n(a_x)\)">\(h(a_x)/H_n(a_x)\)</span> are at most one. Insert <span class="math" data-tex="\(L_n^{-s}\)">\(L_n^{-s}\)</span>, the second entry of the maximum in <span class="math" data-tex="\(C_n\)">\(C_n\)</span>, and <span class="math" data-tex="\(B&gt;\mathcal W_n\ln B\)">\(B&gt;\mathcal W_n\ln B\)</span>. The degree identity <span class="math" data-tex="\(r+3+s=n+2\)">\(r+3+s=n+2\)</span> cancels all powers of d. The remaining rank expression is the terminal normalized envelope. If the largest-height base is selected and x&lt;n, cancel its height and use the bound at length j-1; the envelope gains <span class="math" data-tex="\(1/\mathrm e\)">\(1/\mathrm e\)</span>. At j=1 that height product is empty, and the root count of Theorem 10.17 supplies its bound. If the largest-height base is unselected, cancel its modified height, use s-1 floors, and gain <span class="math" data-tex="\(1/(\mathfrak a\mathrm e)\)">\(1/(\mathfrak a\mathrm e)\)</span>. In all cases the exponential base is less than <span class="math" data-tex="\((1+5/n)/2\)">\((1+5/n)/2\)</span>, its power is at most n-2, and the result is strictly below <span class="math" data-tex="\(107648/132237&lt;1\)">\(107648/132237&lt;1\)</span>.</p>
 <p>(c) At n at least sixteen put y=1/n. The lower quadratic bounds for <span class="math" data-tex="\(\ln(1+y)\)">\(\ln(1+y)\)</span>, <span class="math" data-tex="\(-\ln(1-y)\)">\(-\ln(1-y)\)</span>, <span class="math" data-tex="\(\ln(1+4y)\)">\(\ln(1+4y)\)</span>, and the upper cubic bound for <span class="math" data-tex="\(\ln(1+5y)\)">\(\ln(1+5y)\)</span>, after multiplication by their positive coefficients, sum to <span class="math" data-tex="\(1+(5/2)y-(119/3)y^2+(125/3)y^3\)">\(1+(5/2)y-(119/3)y^2+(125/3)y^3\)</span>. Since <span class="math" data-tex="\(5/2-119/(3\cdot16)=1/48\)">\(5/2-119/(3\cdot16)=1/48\)</span>, this exceeds <span class="math" data-tex="\(1+y/48\)">\(1+y/48\)</span>. The fourteen exact checks at 2–15 give <span class="math" data-tex="\(J_n/(n+5)&gt;11/4&gt;\mathrm e\)">\(J_n/(n+5)&gt;11/4&gt;\mathrm e\)</span>, completing every integer n. For the final absorption, <span class="math" data-tex="\(\mathfrak a/\varkappa\ge13/17\)">\(\mathfrak a/\varkappa\ge13/17\)</span>, <span class="math" data-tex="\(\mathrm e&gt;8/3\)">\(\mathrm e&gt;8/3\)</span>, <span class="math" data-tex="\(\varkappa\ge9\)">\(\varkappa\ge9\)</span> and n+5 at least seven give <span class="math" data-tex="\(104/51-1/672&gt;2\)">\(104/51-1/672&gt;2\)</span>. This is the inequality after subtracting the full additive coefficient-growth term <span class="math" data-tex="\(z/(4\mathrm e X_n)\)">\(z/(4\mathrm e X_n)\)</span>; it is the required parameter comparison, not a test at one rank.</p>
 <p>(d) The first discarded base is in the span of earlier retained bases, so removing it changes no later span or greedy rank choice. An initial root has zero rank and is discarded for the same reason. The ordered retained bases therefore remain identical, even as the complementary height floor changes; their actual residue index is unchanged. If a power of <span class="math" data-tex="\(\Xi\ne1\)">\(\Xi\ne1\)</span> becomes one, the torsion part of Theorem 10.21 bounds its valuation by <span class="math" data-tex="\((d/t)\ln2\)">\((d/t)\ln2\)</span>. The same direct bound applies when the full original list has rank zero.</p>
+<p><strong>Solution 64.</strong> Prime valuations show the list has rank one and first
+non-torsion base four. Its residue has order two at five, so the raw
+index is <span class="math" data-tex="\((5-1)/2=2\)">\((5-1)/2=2\)</span>. Here <span class="math" data-tex="\(\varkappa=12\)">\(\varkappa=12\)</span>,
+<span class="math" data-tex="\(X_2=2\)">\(X_2=2\)</span>, <span class="math" data-tex="\(L_2=1/42\)">\(L_2=1/42\)</span>, and both heights exceed the floor.
+Thus <span class="math" data-tex="\(\Omega_2=(\ln4)(\ln16)\)">\(\Omega_2=(\ln4)(\ln16)\)</span>. The relation
+<span class="math" data-tex="\(16\cdot4^{-2}=1\)">\(16\cdot4^{-2}=1\)</span> gives P=1 and
+<span class="math" data-tex="\(M=2\cdot5^k\)">\(M=2\cdot5^k\)</span>. Since <span class="math" data-tex="\(v_5(16-1)=1\)">\(v_5(16-1)=1\)</span>, Lemma 9.5 gives
+<span class="math" data-tex="\(v_5(16^{5^k}-1)=1+k\)">\(v_5(16^{5^k}-1)=1+k\)</span>.</p>
+<p>For <span class="math" data-tex="\(U\)">\(U\)</span>, the powers of d cancel as
+<span class="math" data-tex="\(d^{n+2}d^{-2}d^{-(n-1)}d^{-1}=1\)">\(d^{n+2}d^{-2}d^{-(n-1)}d^{-1}=1\)</span>. The first factor is in
+<span class="math" data-tex="\(C_n\)">\(C_n\)</span>, the second is the singleton height bound, the third is
+the complementary floors, and the fourth comes from <span class="math" data-tex="\(U=t\mathcal
+T_n/d\)">\(U=t\mathcal
+T_n/d\)</span>. The factor <span class="math" data-tex="\(\ell_d\)">\(\ell_d\)</span> cancels between the constant and
+height bound. The second maximum entry and the height bound leave
+<span class="math" data-tex="\(\mathrm e^{n-1}\)">\(\mathrm e^{n-1}\)</span>, while the root factor becomes <span class="math" data-tex="\(w_K/q^u\)">\(w_K/q^u\)</span>.
+This gives <span class="math" data-tex="\(F_nA_nHR\)">\(F_nA_nHR\)</span>. For the residue-height contribution,
+the first maximum entry contributes a strict factor g, and
+<span class="math" data-tex="\(t^2\le A_nH\)">\(t^2\le A_nH\)</span>, <span class="math" data-tex="\(eq^u\le2d\)">\(eq^u\le2d\)</span> give exactly
+<span class="math" data-tex="\(E_n/(d\ell_dR)\)">\(E_n/(d\ell_dR)\)</span>.</p>
+<p>At two, <span class="math" data-tex="\(E_2=14\varkappa/(81c\mathfrak a^2)\)">\(E_2=14\varkappa/(81c\mathfrak a^2)\)</span>.
+The seven last-column bounds use the actual degree restrictions;
+for example I.2 gives <span class="math" data-tex="\(1/40068&lt;1/40000\)">\(1/40068&lt;1/40000\)</span>, and
+II gives <span class="math" data-tex="\(1/63630&lt;1/40000\)">\(1/63630&lt;1/40000\)</span>. All factors of the original residue
+order were retained. At every <span class="math" data-tex="\(n\ge6\)">\(n\ge6\)</span>, the other power exceeds
+one, the logarithmic power exceeds <span class="math" data-tex="\(\mathrm e\)">\(\mathrm e\)</span>, and
+<span class="math" data-tex="\((n+1)/(n+6)\ge7/12\)">\((n+1)/(n+6)\ge7/12\)</span>, giving <span class="math" data-tex="\(1456/459&gt;3\)">\(1456/459&gt;3\)</span>.
+This proves the claim for infinitely many ranks, rather than
+extrapolating the four finite checks.</p>
+<p>The maximum in s is needed because <span class="math" data-tex="\(D_0\ge1\)">\(D_0\ge1\)</span>. In I.2 the
+unmodified coefficient <span class="math" data-tex="\(2\rho\mathrm e/(7\varkappa)=17\mathrm
+e/63\)">\(2\rho\mathrm e/(7\varkappa)=17\mathrm
+e/63\)</span> is less than one, so it cannot by itself give the asserted
+bound on <span class="math" data-tex="\(D_0\)">\(D_0\)</span>. Taking its maximum with one keeps the logarithmic
+comparison valid in every case.</p>
+<p>For the logarithmic comparisons, the positive exponential series
+through degree five is <span class="math" data-tex="\(163/60&gt;27/10\)">\(163/60&gt;27/10\)</span>. To upper-bound a positive
+exponential at x, sum through degree 32 and bound the tail by its
+first term divided by <span class="math" data-tex="\(1-x/34\)">\(1-x/34\)</span>. Lower bounds need only the
+positive partial sum. The <a href="figure_sources/yu_rank_one_refinement_enclosures.py">exact calculation</a>
+checks <span class="math" data-tex="\(\exp(8/5)&lt;5\)">\(\exp(8/5)&lt;5\)</span>, <span class="math" data-tex="\(\exp(7/10)&gt;2\)">\(\exp(7/10)&gt;2\)</span>,
+<span class="math" data-tex="\(\exp3&gt;18\)">\(\exp3&gt;18\)</span>, <span class="math" data-tex="\(\exp4&gt;45\)">\(\exp4&gt;45\)</span>, <span class="math" data-tex="\(\exp(21/10)&gt;8\)">\(\exp(21/10)&gt;8\)</span>,
+<span class="math" data-tex="\(\exp(14/5)&gt;16\)">\(\exp(14/5)&gt;16\)</span>, <span class="math" data-tex="\(\exp(5/3)&gt;319/63\)">\(\exp(5/3)&gt;319/63\)</span>, and
+<span class="math" data-tex="\(\exp5&gt;58\)">\(\exp5&gt;58\)</span>, with strictly positive rational differences.
+This supplies all numerical logarithmic comparisons used in the proof.</p>
+<p>In the infinite range <span class="math" data-tex="\(n\ge3\)">\(n\ge3\)</span>, the coefficient of <span class="math" data-tex="\(\ln d\)">\(\ln d\)</span>
+in <span class="math" data-tex="\(\alpha_nA_nH\)">\(\alpha_nA_nH\)</span> is larger than <span class="math" data-tex="\(9n/8\)">\(9n/8\)</span>. The remaining
+comparison at H=1 has difference at least
+<span class="math" data-tex="\(181n/90-5\ge31/30&gt;0\)">\(181n/90-5\ge31/30&gt;0\)</span>; its derivative with respect to H is
+positive. Hence it holds for every H at least one. Finally,
+<span class="math" data-tex="\(\ln R\le R-1\)">\(\ln R\le R-1\)</span> and <span class="math" data-tex="\(\alpha_nA_nH&gt;2\)">\(\alpha_nA_nH&gt;2\)</span> absorb the full
+product of modified heights. With no torsion bases, P is just the
+product of the exact relation coefficients. A torsion complement
+adds <span class="math" data-tex="\(w_K\)">\(w_K\)</span>, but removes at least one non-torsion coefficient
+factor. Its orders all divide <span class="math" data-tex="\(w_K\)">\(w_K\)</span>, so the resulting power
+eliminates every torsion base simultaneously. The torsion case
+<span class="math" data-tex="\(\Xi^P=1\)">\(\Xi^P=1\)</span> is handled by Theorem 10.21 and Lemma 10.155.</p>
+<p><strong>Solution 65.</strong> Coprimality of 25 and seven gives
+<span class="math" data-tex="\(g_0=3^N\)">\(g_0=3^N\)</span>; the coprime exponents at five and seven are
+<span class="math" data-tex="\((2,-1)\)">\((2,-1)\)</span>. Their difference is 18, so the valuations are two for
+the coprime parts and N+2 for the original integers. At three the
+residue of five is minus one and seven is one; the group including
+minus one has order two, so its index is one. For m=n=2 the
+rank factor in <span class="math" data-tex="\(C_2\)">\(C_2\)</span> is
+<span class="math" data-tex="\(2^2\cdot3^4/(2!\cdot2)=81\)">\(2^2\cdot3^4/(2!\cdot2)=81\)</span>, and the remaining field
+factors are exactly those in the displayed constant. The common
+factor cannot be omitted: N+2 grows linearly in N, whereas the
+remaining height parameter grows only like <span class="math" data-tex="\(\ln N\)">\(\ln N\)</span>.
+For example <span class="math" data-tex="\(\ln N/N\to0\)">\(\ln N/N\to0\)</span> follows by integrating
+<span class="math" data-tex="\(1/x\le1/\sqrt x\)">\(1/x\le1/\sqrt x\)</span> for <span class="math" data-tex="\(x\ge1\)">\(x\ge1\)</span>.</p>
+<p>At two, the residue polynomial <span class="math" data-tex="\(X^2+X+1\)">\(X^2+X+1\)</span> is irreducible over
+<span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span>, so degree two forces <span class="math" data-tex="\(e=1,f=2\)">\(e=1,f=2\)</span>.
+The primitive cube root's residue generates all three units in the
+residue field. Thus the rank-two saturated index is one, even though
+both rational odd prime bases reduce to one. The sign base has
+coefficient one, the others have coefficients two and minus one, and
+the list length is three. Since <span class="math" data-tex="\(2\ln2&lt;3\)">\(2\ln2&lt;3\)</span>,
+<span class="math" data-tex="\(L_3=3/[34(3+5)2]=3/544\)">\(L_3=3/[34(3+5)2]=3/544\)</span>. The sign has height zero, so its
+modified height is this floor. Multiplication by <span class="math" data-tex="\(\ln5\ln7\)">\(\ln5\ln7\)</span>
+gives the weighted product. The actual difference is 32, of valuation
+five.</p>
+<p>If n=0, the coprime magnitudes are powers of p. If one has positive
+p-valuation, the other has zero valuation, so their signed difference
+is a unit. If both have zero valuation, both magnitudes are one;
+distinctness makes their signs opposite and their difference is
+<span class="math" data-tex="\(\pm2\)">\(\pm2\)</span>. This proves the stated exact alternatives, including
+the two-adic torsion case.
+Finally apply the decreasing function <span class="math" data-tex="\(z\mapsto p^{-z}\)">\(z\mapsto p^{-z}\)</span> to
+the strict excess-valuation bound. Its value at
+<span class="math" data-tex="\(K\max\{\ln B_M,t\}\)">\(K\max\{\ln B_M,t\}\)</span> is
+<span class="math" data-tex="\(\min\{B_M^{-K\ln p},p^{-Kt}\}\)">\(\min\{B_M^{-K\ln p},p^{-Kt}\}\)</span>, proving the corollary.</p>
 <h2 id="references">References</h2>
 <ul>
 <li>

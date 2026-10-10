@@ -1,0 +1,45 @@
+{
+  "schema": "claude-bridge-course/v1",
+  "id": "heilbronns-triangle-problem",
+  "title": "Heilbronn's triangle problem",
+  "author": "Claude Opus 5.5 (Anthropic)",
+  "written": "2026-10-10",
+  "status": "Self-checked by the writing AI",
+  "licence": "CC0-1.0",
+  "description": "OpenAI's theorem (2026) that n points can be placed in the unit square so that every triangle has area at least a constant times n^(-2+eta), for an explicit eta > 0; so the smallest triangle cannot be bounded by n^(-2+epsilon) for every epsilon > 0. The first lesson states the problem and proves Erdős's parabola bound, the area formula for projected integer columns and Bertrand's postulate. The second counts integer matrices with rows in a lattice, bounded rows and a fixed nonzero determinant. The third builds random residue columns modulo B^k whose determinant has no small representative when their labels in a finite field are distinct: the norm of a Vandermonde determinant, written as a sum of determinants of monomials, is placed at matching base-B digits. The fourth puts residue matrices in diagonal form, bounds their orbits under the special linear group and the expected smaller divisor. The fifth builds a random cap at an auxiliary prime and bounds the inclusion weights. The sixth lifts both constructions to integer columns, proves an exact lifting identity and bounds the probability of a small nonzero determinant; the seventh treats determinant zero. The eighth deletes the bad events and proves the theorem for every large n.",
+  "prerequisites": [
+    "Real Analysis II (core course): the extreme value theorem on compact metric spaces",
+    "Abstract Algebra I and II (core courses): the orbit-stabilizer theorem, splitting fields, the Frobenius map and finite fields",
+    "Measure and Integration (core course): Lebesgue measure of boxes, translation invariance and the linear change of variables",
+    "Thom classes and Euler classes (DG-CHAR-06), Lemma 5.1: subgroups of free abelian groups of finite rank are free"
+  ],
+  "lessons": [
+    "small-triangles-and-the-plan",
+    "counting-lattice-matrices",
+    "a-determinant-obstruction-from-field-norms",
+    "residue-matrices-and-their-orbits",
+    "a-cap-at-an-auxiliary-prime",
+    "sampling-integer-columns",
+    "determinant-zero",
+    "deletion-and-the-theorem"
+  ],
+  "checks": {
+    "paid_citations": 0,
+    "exact_checks": "Python (scratch hb_checks.py, output hb_checks.out, 10 Oct 2026, 0 problems, 0 skipped), exact integer and rational arithmetic. Lesson 1: a prime in (n, 2n] for all n <= 100000; the parabola point sets for the primes 3..31 have no three collinear points; the area formula on 2000 random triples. Lesson 2: index equals |det| through the triangular column form, with a brute-force class count for |det| <= 15 (80 lattices); exact successive lengths (LLL reduction and enumeration) satisfy det <= product <= 3^(3/2) det and the index of the successive-minimum sublattice is at most 5 (80 lattices); det(Lambda cap y^perp) = I|y|/g with an explicit kernel basis (300 pairs); the plane-lattice point bounds of Lemma 3.1 (150 lattices, 900 balls). Lesson 3: matching positions for T <= 40; in F_27 the norms lie in F_3, are multiplicative and vanish only at 0, the Frobenius fixes exactly F_3, Nm det alternates, and (2.3) holds for all 17,550 ordered triples of distinct labels; a model of the construction with r = 3, d = 1, k = 2 and B = 82356452837859601 in (400 L^3, 800 L^3]: the coefficient bound (3.5), S represents det C, gamma_(k-1) is not divisible by r and |S| >= (47 B^(k-1) + 3)/50 > tau for all 1,827 triples with distinct labels. Lesson 4: the diagonal data from minors and row span, E Z^3 in Lambda_C, the orbit bound (2.1) and constancy of determinant and row span on orbits, for 41 matrices over Z/4, Z/3, Z/5 and Z/9 (all (h, b, e) types up to (9, 2, 2)); the digit estimate (3.1) by exact enumeration of 262,144 digit matrices for r = 2, L = 4, B = 17, k = 2 and four residue patterns. Lesson 5: Gamma has no three collinear points and some translate meets {0..w-1}^3 in at least w^3/q points, for q = 3..13 and every w. Lesson 7: g(x) | E, g^3/I <= h^2 and a basis of Lambda_x with cross product (I/g)x, nonzero modulo q = 11 (600 pairs). Lesson 8: alpha = 1 + 30 beta = 45435k + 16 exactly; log10 M = 38.78, log10 T = 115.57, log10 k = 231.14, log10 eta = -235.50.",
+    "lint": "hb_lint.py, hb_bs_scan.py and im_linecheck.py (scratch): headings, provenance line, balanced TeX delimiters per line, every sibling link and anchor resolved, no backslash artefacts or control characters.",
+    "source_reading": "OpenAI preprint 'A power improvement in the Heilbronn triangle lower bound' (25 Sep 2026), TeX read in full (sections 01-introduction to 09-prime-interval and references; library copy openai-math-20261006); every step rederived. Lean scope document lean/docs/191.md read. Differences: the course adds proofs of facts the preprint quotes or uses implicitly (Erdős's parabola bound, attainment of the supremum, index equals covolume through Lebesgue measure), states the field-norm lemmas for every odd d before fixing d = 41, divides the argument into eight lessons, and adds exercises with full solutions, including the small cases d = 1 and T = 3. Cohen-Pohoata-Zakharov (arXiv:2305.18253, arXiv:2409.07658) and Henk (arXiv:math/0204158) arXiv records match the preprint's bibliography."
+  },
+  "open_obligations": [
+    "None in the proof of Theorem 1.3: every step is proved in the eight lessons, in the core courses named in the prerequisites, or in Lemma 5.1 of DG-CHAR-06.",
+    "Scope of the formal verification (not a proof obligation): OpenAI's Lean formalization concerns an unbounded sequence of sizes; the statement for every large n is proved in the paper and in Section 3 of the eighth lesson, not in the linked formal statement.",
+    "Context only, not used in any proof: the upper bounds of Roth, Schmidt, Komlós-Pintz-Szemerédi and Cohen-Pohoata-Zakharov, Zakharov's survey, Minkowski's second theorem (Henk), Barlotti's caps, Smith's normal form, and the large-base constructions of Salem-Spencer and Behrend."
+  ],
+  "free_sources": [
+    "OpenAI, A power improvement in the Heilbronn triangle lower bound (OpenAI Math Release preprint, 25 Sep 2026), with its Lean formalization (scope document lean/docs/191.md)",
+    "A. Cohen, C. Pohoata and D. Zakharov, A new upper bound for the Heilbronn triangle problem, arXiv:2305.18253; Lower bounds for incidences, arXiv:2409.07658",
+    "M. Henk, Successive minima and lattice points, arXiv:math/0204158",
+    "T. W. Judson, Abstract Algebra: Theory and Applications (online edition, judsonbooks.org)",
+    "D. H. Fremlin, Measure Theory, volumes 1 and 2 (author's site)",
+    "J. Lebl, Basic Analysis (author's site, jirka.org)"
+  ]
+}

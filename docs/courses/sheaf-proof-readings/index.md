@@ -92,4 +92,4 @@ Constructibility, sheaf operations and microlocal geometry. Each reading include
 
 Begin with [constructible gluing on an interval](SH03-constructible-gluing-on-an-interval.html), then [constructible sheaves on a triangulation](SH03-constructible-sheaves-on-a-triangulation.html), followed by [perverse support and truncation triangles](SH03-perverse-support-costalks-and-truncation-triangles.html).
 
-Edition and source records · [Source notices](SOURCE_NOTICES.txt)
+Edition and source records · Source notices

@@ -93,6 +93,24 @@ def render(source_path, title, output):
                 x["c"][1] = re.sub(r"\{\\rm\s+([^{}]*)\}", lambda m: r"{\mathrm{" + m[1] + "}}", x["c"][1])
                 x["c"][1] = re.sub(r"\{\\cal\s+([^{}]*)\}", lambda m: r"{\mathcal{" + m[1] + "}}", x["c"][1])
                 x["c"][1] = x["c"][1].replace(r"\hbox", r"\text")
+                # Preserve the original TeX annotation while rendering the operator-norm label.
+                x["c"][1] = x["c"][1].replace(r"\rm op", r"\mathrm{op}")
+                # These authoring sources wrap a single aligned row across
+                # text lines. Keep their original annotations; join whitespace
+                # only in the MathML converter input.
+                if SOURCE.name in ("YM-F09-potential-difference.md", "YM-F09-regular-restart.md", "YM-F09-wave-stability.md", "YM-F09-fixed-heat-comparison.md"):
+                    x["c"][1] = " ".join(x["c"][1].splitlines())
+                    x["c"][1] = x["c"][1].replace(r"\rm df", r"\mathrm{df}")
+                    x["c"][1] = re.sub(r"\\hspace\{[0-9.]+mm\}", r"\\quad ", x["c"][1])
+                # Equivalent fraction syntax for MathML; the annotation stays verbatim.
+                for numerator, denominator in [
+                    (r"3\sqrt3", r"2^{4/3}\pi^{1/3}"),
+                    (r"S^{\beta_k}", r"\sqrt{2\beta_k}"),
+                    ("1", r"\beta_k"), ("1", r"\sqrt{2\beta_k}"),
+                    ("l+1/2-1", "2"), ("q-l+3/2+1", "2"), ("q", "2")]:
+                    x["c"][1] = x["c"][1].replace(
+                        "{"+numerator+r"\over"+denominator+"}",
+                        r"\frac{"+numerator+"}{"+denominator+"}")
             elif x.get("t") == "Link":
                 if x["c"][-1][0].startswith("../") and not x["c"][-1][0].startswith("../figures/"):
                     x["c"][-1][0] = x["c"][-1][0][3:]
@@ -347,6 +365,41 @@ def build():
     render(COURSE/"src/YM-F09-potential-wave.md","Potential wave bounds from the complete heat equation","classical-potential-wave.html")
     render(COURSE/"src/YM-F09-spacetime-tension.md","Space-time tension at every spatial order","classical-spacetime-tension.html")
     render(COURSE/"src/YM-F09-temporal-boundary.md","Temporal boundary estimates and the endpoint identity","classical-temporal-boundary.html")
+    from figures_f09_endpoint_gauge import build as build_f09_endpoint_gauge
+    build_f09_endpoint_gauge()
+    render(COURSE/"src/YM-F09-endpoint-wave.md","Endpoint wave bounds and the div\u2013curl identity","classical-endpoint-wave.html")
+    render(COURSE/"src/YM-F09-electric-smoothing.md","Electric-curvature smoothing through every finite order","classical-electric-smoothing.html")
+    render(COURSE/"src/YM-F09-physical-gauge.md","Returning to physical temporal gauge","classical-physical-gauge.html")
+    from figures_f09_finite_argument import build as build_f09_finite_argument
+    build_f09_finite_argument()
+    from figures_f09_finite_closure import build as build_f09_finite_closure
+    build_f09_finite_closure()
+    render(COURSE/"src/YM-F09-wave-interactions.md","Spatial and temporal wave interactions","classical-wave-interactions.html")
+    render(COURSE/"src/YM-F09-spatial-smoothing.md","Spatial heat smoothing and the wave coefficients","classical-spatial-smoothing.html")
+    render(COURSE/"src/YM-F09-tension-forcing.md","The complete tension forcing","classical-tension-forcing.html")
+    render(COURSE/"src/YM-F09-finite-wave-bound.md","The finite wave bound on an explicit physical interval","classical-finite-wave-bound.html")
+    from figures_f09_differences import build as build_f09_differences
+    build_f09_differences()
+    from figures_f09_spatial_difference import build as build_f09_spatial_difference
+    build_f09_spatial_difference()
+    from figures_f09_gauge_difference import build as build_f09_gauge_difference
+    build_f09_gauge_difference()
+    render(COURSE/"src/YM-F09-electric-difference.md","Electric curvature differences and the original heat datum","classical-electric-difference.html")
+    render(COURSE/"src/YM-F09-spatial-difference.md","Spatial heat-curvature differences and backward integration","classical-spatial-difference.html")
+    render(COURSE/"src/YM-F09-temporal-difference.md","Differences at the temporal heat boundary","classical-temporal-difference.html")
+    render(COURSE/"src/YM-F09-gauge-difference.md","Differences through the physical temporal gauge","classical-gauge-difference.html")
+    from figures_f09_potential_difference import build as build_f09_potential_difference
+    build_f09_potential_difference()
+    render(COURSE/"src/YM-F09-potential-difference.md","Potential-wave differences and the full physical connection","classical-potential-difference.html")
+    from figures_f09_regular_restart import build as build_f09_regular_restart
+    build_f09_regular_restart()
+    render(COURSE/"src/YM-F09-regular-restart.md","Strong endpoints and restarting the classical evolution","classical-regular-restart.html")
+    from figures_f09_wave_stability import build as build_f09_wave_stability
+    build_f09_wave_stability()
+    render(COURSE/"src/YM-F09-wave-stability.md","Regular-solution stability and signed electric data","classical-wave-stability.html")
+    from figures_f09_fixed_heat_comparison import build as build_f09_fixed_heat_comparison
+    build_f09_fixed_heat_comparison()
+    render(COURSE/"src/YM-F09-fixed-heat-comparison.md","Comparing heat extensions on the prescribed interval","classical-fixed-heat-comparison.html")
     course=json.loads((COURSE/"course.json").read_text(encoding="utf-8"))
     for unit in course["units"]:
         if unit["status"]=="available":
@@ -373,7 +426,7 @@ def build():
         ("HIGHER_CARRIER_AND_EVOLUTION.md","HC14–HC20: initial acceleration, Gauss-preserving correction and exact residual")]:
         provenance["readings"].append({"lesson":"YM-02","url":proof+file,"locators":loc})
     provenance["proof_scope"]="YM-01 and YM-02 give complete specialized proofs, with YM-01's exact algebra and rank results used by YM-02. The later classical evolution and quantum continuum programme are not conclusions of these two lessons."
-    provenance["edition_date"]="2026-10-09"
+    provenance["edition_date"]="2026-10-10"
     provenance["readings"]=[x for x in provenance["readings"] if x.get("lesson")!="YM-03"]
     base="https://github.com/KokunoYumeto/yang-mills-interacting-workbench/blob/f2f7adf7ab7d08963333f2595237f91f20b53f66/yang-mills/continuations/20260930-s6-ns-moment-map-bridge/"
     provenance["readings"].extend([
@@ -420,7 +473,7 @@ def build():
     for unit in course["units"]:
         if unit["stage"] not in stages: stages.append(unit["stage"])
     sequence="".join("<li><strong>"+html.escape(stage)+"</strong>: "+html.escape("; ".join(u["title"] for u in course["units"] if u["stage"]==stage))+".</li>" for stage in stages)
-    intro="<p>Begin with fields, electromagnetism and symmetry. Build the geometry and classical dynamics, then the quantum foundations needed to understand Yang–Mills theory and its literature.</p><p>The course has eighteen units, with mathematical preparation introduced in stages. The first eight full lessons are available; ten units remain to be written. Sources are selected for their relevance, reliability and teaching value. No research project determines the course’s answer or receives a reserved place.</p><h2>Start reading</h2><p><a href=\"fields-coordinates-quantities.html\">1. Fields, coordinates and physical quantities</a> — scalar and vector fields, units, derivatives, coordinate changes, initial data, an exactly solved transport equation, and eight exercises with full solutions.</p><p><a href=\"electromagnetism-gauge-freedom.html\">2. Electromagnetism and gauge freedom</a> — fields and sources, Maxwell equations, potentials, local and global gauge questions, waves, energy flux, and eight exercises with full solutions.</p><p><a href=\"symmetry-through-matrices.html\">3. Symmetry through matrices</a> — complex phases, matrix arithmetic, unitary actions, changing frames, electromagnetic covariance, global gauge classes, and eight exercises with full solutions.</p><p><a href=\"lie-groups-and-lie-algebras.html\">4. Lie groups and Lie algebras</a> — convergent matrix series, local coordinates, tangent generators, SU(2) and SU(3), rotation coverings, invariant inner products, and eight exercises with full solutions.</p><p><a href=\"covariant-derivatives-and-curvature.html\">5. Covariant derivatives and curvature</a> — local frames, complete curvature formulas, differential forms, Bianchi, electromagnetic conventions, nonabelian examples, and eight exercises with full solutions.</p><p><a href=\"bundles-transport-holonomy.html\">6. Bundles, parallel transport and holonomy</a> — overlapping frames, exact transport, Wilson loops, curvature variations, the Hopf bundle, and eight exercises with full solutions.</p><p><a href=\"action-and-field-equations.html\">7. The Yang–Mills action and field equations</a> — metrics, full variations and boundary terms, Maxwell comparison, scalar matter and current, and eight exercises with full solutions.</p><p><a href=\"constraints-initial-data-energy.html\">8. Constraints, initial data and energy</a> — Gauss constraint, actual temporal gauge, full stress and energy derivations, matter exchange, boundary flux, and eight exercises with full solutions.</p><p><a href=\"local-and-global-classical-evolution.html\">9. Local and global classical evolution — partial edition</a> — the local construction, heat extension, wave, tension and temporal boundary estimates are written. The final general continuation bound and main exercises remain unfinished.</p><h2>The route through the subject</h2><ol>"+sequence+"</ol><p><a href=\"curriculum.html\">Read the lesson plan and learning outcomes</a> · <a href=\"preparation.html\">Preparation</a> · <a href=\"literature-map.json\">Initial literature map</a></p><p>The foundations-first sequence is being written. <a href=\"retained-materials.html\">Four earlier standalone treatments</a> remain accessible; their inclusion in this sequence has not been decided.</p>"
+    intro="<p>Begin with fields, electromagnetism and symmetry. Build the geometry and classical dynamics, then the quantum foundations needed to understand Yang–Mills theory and its literature.</p><p>The course has eighteen units, with mathematical preparation introduced in stages. The first eight full lessons are available; ten units remain to be written. Sources are selected for their relevance, reliability and teaching value. No research project determines the course’s answer or receives a reserved place.</p><h2>Start reading</h2><p><a href=\"fields-coordinates-quantities.html\">1. Fields, coordinates and physical quantities</a> — scalar and vector fields, units, derivatives, coordinate changes, initial data, an exactly solved transport equation, and eight exercises with full solutions.</p><p><a href=\"electromagnetism-gauge-freedom.html\">2. Electromagnetism and gauge freedom</a> — fields and sources, Maxwell equations, potentials, local and global gauge questions, waves, energy flux, and eight exercises with full solutions.</p><p><a href=\"symmetry-through-matrices.html\">3. Symmetry through matrices</a> — complex phases, matrix arithmetic, unitary actions, changing frames, electromagnetic covariance, global gauge classes, and eight exercises with full solutions.</p><p><a href=\"lie-groups-and-lie-algebras.html\">4. Lie groups and Lie algebras</a> — convergent matrix series, local coordinates, tangent generators, SU(2) and SU(3), rotation coverings, invariant inner products, and eight exercises with full solutions.</p><p><a href=\"covariant-derivatives-and-curvature.html\">5. Covariant derivatives and curvature</a> — local frames, complete curvature formulas, differential forms, Bianchi, electromagnetic conventions, nonabelian examples, and eight exercises with full solutions.</p><p><a href=\"bundles-transport-holonomy.html\">6. Bundles, parallel transport and holonomy</a> — overlapping frames, exact transport, Wilson loops, curvature variations, the Hopf bundle, and eight exercises with full solutions.</p><p><a href=\"action-and-field-equations.html\">7. The Yang–Mills action and field equations</a> — metrics, full variations and boundary terms, Maxwell comparison, scalar matter and current, and eight exercises with full solutions.</p><p><a href=\"constraints-initial-data-energy.html\">8. Constraints, initial data and energy</a> — Gauss constraint, actual temporal gauge, full stress and energy derivations, matter exchange, boundary flux, and eight exercises with full solutions.</p><p><a href=\"local-and-global-classical-evolution.html\">9. Local and global classical evolution — partial edition</a> — the local construction, heat extension, finite wave bounds and heat, temporal-boundary and physical gauge difference estimates are written. Potential-wave comparison and the strong affine restart are now written. Uniform initial-data stability, its translation consequence, the energy-data limit and main exercises remain unfinished.</p><h2>The route through the subject</h2><ol>"+sequence+"</ol><p><a href=\"curriculum.html\">Read the lesson plan and learning outcomes</a> · <a href=\"preparation.html\">Preparation</a> · <a href=\"literature-map.json\">Initial literature map</a></p><p>The foundations-first sequence is being written. <a href=\"retained-materials.html\">Four earlier standalone treatments</a> remain accessible; their inclusion in this sequence has not been decided.</p>"
     (COURSE/"index.html").write_text(short_page(course["title"],intro),encoding="utf-8",newline="\n")
     prep="<p>Start with basic algebra, elementary calculus and matrix arithmetic. The first lessons review fields, coordinates, derivatives, physical quantities and electromagnetism. Matrix groups and their Lie algebras follow, before connections and bundles.</p><p>Geometry, Fourier and Sobolev analysis, Hilbert spaces and quantum mechanics enter through staged prerequisite components. Their exact provider statements and proofs must match the receiving lesson. No workbench construction is an entry prerequisite.</p><p>The <a href=\"curriculum.html\">full plan</a> gives learning outcomes and the subject sequence. The first eight lessons are complete; the other ten units are planned. Begin with <a href=\"fields-coordinates-quantities.html\">fields, coordinates and physical quantities</a>. Lesson 3 supplies the matrix and complex-number preparation and reuses the complete RT-LIE commutator argument with exact attribution. Lesson 4 constructs the local matrix-group charts and Lie-algebra maps, with exact comparisons to Etingof and the compact-group course. Lesson 5 supplies the required local exterior calculus and connection formulas, with exact DG-FND comparisons. Lesson 6 supplies complete bundle, transport and holonomy constructions with exact geometry-source comparisons. Lesson 7 proves the metric and variational prerequisites for the action, its field equations, boundary terms and scalar matter coupling. Lesson 8 derives the initial-data constraints, constructs temporal gauge, and proves stress-energy, local flux and total energy identities. Later analysis and representation-theory providers will be matched as needed.</p><p>The <a href=\"retained-materials.html\">earlier standalone texts</a> keep their own dependencies and original lesson numbers. Those numbers record their editions, not the new course order.</p>"
     (COURSE/"preparation.html").write_text(short_page("Preparation",prep),encoding="utf-8",newline="\n")

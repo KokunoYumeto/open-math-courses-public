@@ -1,0 +1,969 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Conditional cancellation and arithmetic phase geometry</title><link rel="stylesheet" href="reader.css"></head><body><a class="skip" href="#main">Skip to the lesson</a><header><a href="index.html">Discrete dynamics, coding and probability</a> · <a href="src/NT-COLLATZ-09.md">Lesson source</a></header><main id="main"><h1
+id="conditional-cancellation-and-arithmetic-phase-geometry">Conditional
+cancellation and arithmetic phase geometry</h1>
+<p><em>Written by GPT-6 Astra, Ultra reasoning, in Codex, October 2026.
+Self-checked by the writing AI. Original exposition, proofs, exercises
+and illustration: CC0 1.0.</em></p>
+<p>An average of complex numbers of modulus one can be small because
+their directions disagree. Taking absolute values before averaging
+destroys precisely that information. A useful alternative is to average
+a small part of the randomness first, keeping the rest fixed. Sometimes
+this small conditional average can be calculated exactly. The remaining
+question then becomes a problem about how often a random path reaches
+positions where the calculation gives a definite loss.</p>
+<p>We develop this method for random affine sums on a finite cyclic
+group. Pairing two waiting times produces an exact cosine factor. The
+positions where this factor is close to one form separated triangular
+sets of lattice points. We prove that arithmetic geometry in full,
+including the boundary and separation estimates. It explains why the
+renewal paths from the preceding lessons are relevant to a Fourier
+coefficient rather than merely an unrelated probability model.</p>
+<p>The prerequisites are complex exponentials, finite cyclic groups,
+conditional probabilities on countable sets, and elementary logarithms.
+<a
+href="NT-COLLATZ-05.html#why-random-affine-sums-lead-to-this-estimate">Quotient
+distributions and Fourier mixing</a> introduces the affine sum and
+explains which Fourier estimates matter for mixing. <a
+href="NT-COLLATZ-08.html#marked-geometric-blocks-as-a-renewal-path">Renewal
+paths and first-crossing locations</a> proves the independence of the
+marked blocks used at the end. Basic references are Keith Conrad’s
+<em>Characters of finite abelian groups</em>, Section 4, and Terence
+Tao’s <em>Almost all orbits of the Collatz map attain almost bounded
+values</em>, Section 7. The pairing and triangle mechanism here is
+Tao’s; the exposition and all arguments needed below are supplied
+independently.</p>
+<h2
+id="characters-on-fractions-with-powers-of-two-as-denominators">Characters
+on fractions with powers of two as denominators</h2>
+<p>Fix an integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">n\geq2</annotation></semantics></math>,
+put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><msup><mn>3</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">Q=3^n</annotation></semantics></math>,
+and choose an integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ξ</mi><annotation encoding="application/x-tex">\xi</annotation></semantics></math>
+not divisible by three. Let</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>=</mo><mi mathvariant="double-struck">ℤ</mi><mo stretchy="false" form="prefix">[</mo><mn>1</mn><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>a</mi><mi>/</mi><msup><mn>2</mn><mi>k</mi></msup><mo>:</mo><mi>a</mi><mo>∈</mo><mi mathvariant="double-struck">ℤ</mi><mo>,</mo><mspace width="0.222em"></mspace><mi>k</mi><mo>≥</mo><mn>0</mn><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+D=\mathbb Z[1/2]=\{a/2^k:a\in\mathbb Z,\ k\geq0\}.
+</annotation></semantics></math></span></p>
+<p>The integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mi>Q</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">u=(Q+1)/2</annotation></semantics></math>
+satisfies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>u</mi><mo>≡</mo><mn>1</mn><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mspace width="0.222em"></mspace><mi>Q</mi><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">2u\equiv1\pmod Q</annotation></semantics></math>.
+Thus</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>:</mo><mi>D</mi><mo>→</mo><mi mathvariant="double-struck">ℤ</mi><mi>/</mi><mi>Q</mi><mi mathvariant="double-struck">ℤ</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>ρ</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mi>/</mi><msup><mn>2</mn><mi>k</mi></msup><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>a</mi><msup><mi>u</mi><mi>k</mi></msup><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mspace width="0.222em"></mspace><mi>Q</mi><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+\rho:D\longrightarrow\mathbb Z/Q\mathbb Z,
+\qquad \rho(a/2^k)=au^k\pmod{Q}
+\tag{1}
+</annotation></semantics></math><span class="equation-number">(1)</span></span></span></p>
+<p>is well defined. Indeed, equality of two fractions gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><msup><mn>2</mn><mi>h</mi></msup><mo>=</mo><mi>b</mi><msup><mn>2</mn><mi>k</mi></msup></mrow><annotation encoding="application/x-tex">a2^h=b2^k</annotation></semantics></math>;
+multiplication by the inverse of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mrow><mi>k</mi><mo>+</mo><mi>h</mi></mrow></msup><annotation encoding="application/x-tex">2^{k+h}</annotation></semantics></math>
+modulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Q</mi><annotation encoding="application/x-tex">Q</annotation></semantics></math>
+gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><msup><mi>u</mi><mi>k</mi></msup><mo>=</mo><mi>b</mi><msup><mi>u</mi><mi>h</mi></msup></mrow><annotation encoding="application/x-tex">au^k=bu^h</annotation></semantics></math>.
+Using a common denominator proves that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ρ</mi><annotation encoding="application/x-tex">\rho</annotation></semantics></math>
+preserves addition and multiplication. It is onto because it includes
+the reduction of every integer. Its kernel is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">QD</annotation></semantics></math>:
+since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>
+is a unit,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><msup><mi>u</mi><mi>k</mi></msup><mo>=</mo><mn>0</mn><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mspace width="0.222em"></mspace><mi>Q</mi><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">au^k=0\pmod Q</annotation></semantics></math>
+holds exactly when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>∣</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">Q\mid a</annotation></semantics></math>.
+Two fractions have the same image exactly when their difference lies in
+this kernel.</p>
+<p>Define the additive character</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>χ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mo minsize="120%" maxsize="120%" stretchy="true" form="prefix">(</mo><mo>−</mo><mn>2</mn><mi>π</mi><mi>i</mi><mi>ξ</mi><mi>ρ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi>Q</mi><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>x</mi><mo>∈</mo><mi>D</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\chi(x)=\exp\bigl(-2\pi i\xi\rho(x)/Q\bigr),\qquad x\in D.
+\tag{2}
+</annotation></semantics></math><span class="equation-number">(2)</span></span></span></p>
+<p>Changing the representative of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\rho(x)</annotation></semantics></math>
+does not change this expression. Addition in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+becomes multiplication of character values. Because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ξ</mi><annotation encoding="application/x-tex">\xi</annotation></semantics></math>
+is a unit modulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Q</mi><annotation encoding="application/x-tex">Q</annotation></semantics></math>,
+the kernel of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>χ</mi><annotation encoding="application/x-tex">\chi</annotation></semantics></math>
+is again
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">QD</annotation></semantics></math>;
+its image consists of all
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Q</mi><annotation encoding="application/x-tex">Q</annotation></semantics></math>-th
+roots of unity. This identifies exactly what the character forgets. It
+does not replace a rational number by its usual real fractional
+part.</p>
+<p>For example, modulo nine the image of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/2</annotation></semantics></math>
+is five, not the real number
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/2</annotation></semantics></math>.
+For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\xi=1</annotation></semantics></math>,
+its character is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>−</mi><mn>2</mn><mi>π</mi><mi>i</mi><mn>5</mn><mi>/</mi><mn>9</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\exp(-2\pi i5/9)</annotation></semantics></math>.
+Negative powers of two below always have the meaning (1) when used in a
+residue or character.</p>
+<h2 id="pairing-waiting-times-before-taking-absolute-values">Pairing
+waiting times before taking absolute values</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>A</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">A_1,\ldots,A_n</annotation></semantics></math>
+be independent positive integers with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℙ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>A</mi><mi>i</mi></msub><mo>=</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mn>2</mn><mrow><mi>−</mi><mi>a</mi></mrow></msup></mrow><annotation encoding="application/x-tex">\mathbb P(A_i=a)=2^{-a}</annotation></semantics></math>.
+Write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>i</mi></msub><mo>=</mo><msub><mi>A</mi><mn>1</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>A</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">S_i=A_1+\cdots+A_i</annotation></semantics></math>,
+and consider</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mi>n</mi></msub><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msup><mn>3</mn><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msup><msup><mn>2</mn><mrow><mi>−</mi><msub><mi>S</mi><mi>i</mi></msub></mrow></msup><mo>∈</mo><mi>D</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>F</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>ξ</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi mathvariant="double-struck">𝔼</mi><mi>χ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>X</mi><mi>n</mi></msub><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+X_n=\sum_{i=1}^n3^{i-1}2^{-S_i}\in D,
+\qquad F_n(\xi)=\mathbb E\chi(X_n).
+\tag{3}
+</annotation></semantics></math><span class="equation-number">(3)</span></span></span></p>
+<p>The law of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>X</mi><mi>n</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\rho(X_n)</annotation></semantics></math>
+is the independent-word offset model of the Fourier lesson. There the
+deterministic orbit expansion has its exponents in the opposite order.
+Reversing a
+length-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+word is a bijection, its own inverse, and preserves its probability
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mrow><mi>−</mi><msub><mi>S</mi><mi>n</mi></msub></mrow></msup><annotation encoding="application/x-tex">2^{-S_n}</annotation></semantics></math>.
+This proves equality of the two <em>random</em> offset laws. It is not a
+claim that a particular integer orbit has independent exponents.</p>
+<p>Put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mo stretchy="false" form="prefix">⌊</mo><mi>n</mi><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">⌋</mo></mrow><annotation encoding="application/x-tex">m=\lfloor n/2\rfloor</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mi>j</mi></msub><mo>=</mo><msub><mi>A</mi><mrow><mn>2</mn><mi>j</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>+</mo><msub><mi>A</mi><mrow><mn>2</mn><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">B_j=A_{2j-1}+A_{2j}</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>j</mi></msub><mo>=</mo><msub><mi>B</mi><mn>1</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>B</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">T_j=B_1+\cdots+B_j</annotation></semantics></math>.
+The variables
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mi>j</mi></msub><annotation encoding="application/x-tex">B_j</annotation></semantics></math>
+are independent, with</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi mathvariant="double-struck">ℙ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>B</mi><mi>j</mi></msub><mo>=</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><msup><mn>2</mn><mrow><mi>−</mi><mi>b</mi></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mi>b</mi><mo>≥</mo><mn>2</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+q(b)=\mathbb P(B_j=b)=(b-1)2^{-b},\qquad b\geq2.
+\tag{4}
+</annotation></semantics></math><span class="equation-number">(4)</span></span></span></p>
+<p>There are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">b-1</annotation></semantics></math>
+positive pairs with sum
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>,
+and each has probability
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mrow><mi>−</mi><mi>b</mi></mrow></msup><annotation encoding="application/x-tex">2^{-b}</annotation></semantics></math>.
+Consequently, given
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mi>j</mi></msub><mo>=</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">B_j=b</annotation></semantics></math>,
+the variable
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mrow><mn>2</mn><mi>j</mi></mrow></msub><annotation encoding="application/x-tex">A_{2j}</annotation></semantics></math>
+is uniform on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>b</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{1,\ldots,b-1\}</annotation></semantics></math>.
+Given <em>all</em> the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mi>j</mi></msub><annotation encoding="application/x-tex">B_j</annotation></semantics></math>,
+these within-pair choices remain independent: the probability of
+specified choices divided by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∏</mo><mi>j</mi></msub><mi>q</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>b</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\prod_jq(b_j)</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∏</mo><mi>j</mi></msub><mn>1</mn><mi>/</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>b</mi><mi>j</mi></msub><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\prod_j1/(b_j-1)</annotation></semantics></math>.
+If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+is odd,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>n</mi></msub><annotation encoding="application/x-tex">A_n</annotation></semantics></math>
+is independent of all these choices and sums.</p>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">x\in D</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">b\geq2</annotation></semantics></math>,
+define</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mi>b</mi><mo>−</mo><mn>1</mn></mrow></mfrac><munderover><mo>∑</mo><mrow><mi>r</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>b</mi><mo>−</mo><mn>1</mn></mrow></munderover><mi>χ</mi><mo minsize="120%" maxsize="120%" stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="prefix">(</mo><msup><mn>2</mn><mi>r</mi></msup><mo>+</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munder><mo>∑</mo><mrow><mi>a</mi><mo>≥</mo><mn>1</mn></mrow></munder><msup><mn>2</mn><mrow><mi>−</mi><mi>a</mi></mrow></msup><mi>χ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><msup><mn>2</mn><mrow><mi>−</mi><mi>a</mi></mrow></msup><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+f(x,b)=\frac1{b-1}\sum_{r=1}^{b-1}\chi\bigl(x(2^r+3)\bigr),
+\qquad g(x)=\sum_{a\geq1}2^{-a}\chi(x2^{-a}).
+\tag{5}
+</annotation></semantics></math><span class="equation-number">(5)</span></span></span></p>
+<p>Both have modulus at most one. The series for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>
+is absolutely convergent. Pairing the terms in (3) gives the exact
+rational identity</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mi>n</mi></msub><mo>=</mo><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>m</mi></munderover><msup><mn>3</mn><mrow><mn>2</mn><mi>j</mi><mo>−</mo><mn>2</mn></mrow></msup><msup><mn>2</mn><mrow><mi>−</mi><msub><mi>T</mi><mi>j</mi></msub></mrow></msup><mo stretchy="false" form="prefix">(</mo><msup><mn>2</mn><msub><mi>A</mi><mrow><mn>2</mn><mi>j</mi></mrow></msub></msup><mo>+</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>n</mi><mo>=</mo><mn>2</mn><mi>m</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><msup><mn>3</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><msup><mn>2</mn><mrow><mi>−</mi><msub><mi>T</mi><mi>m</mi></msub><mo>−</mo><msub><mi>A</mi><mi>n</mi></msub></mrow></msup><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>n</mi><mo>=</mo><mn>2</mn><mi>m</mi><mo>+</mo><mn>1</mn><mi>.</mi></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">
+X_n=\sum_{j=1}^m3^{2j-2}2^{-T_j}(2^{A_{2j}}+3)
++\begin{cases}
+0,&amp;n=2m,\\
+3^{n-1}2^{-T_m-A_n},&amp;n=2m+1.
+\end{cases}
+\tag{6}
+</annotation></semantics></math><span class="equation-number">(6)</span></span></span></p>
+<p>For each pair, factor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>3</mn><mrow><mn>2</mn><mi>j</mi><mo>−</mo><mn>2</mn></mrow></msup><msup><mn>2</mn><mrow><mi>−</mi><msub><mi>T</mi><mi>j</mi></msub></mrow></msup></mrow><annotation encoding="application/x-tex">3^{2j-2}2^{-T_j}</annotation></semantics></math>
+out of its two summands; the first then contributes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><msub><mi>A</mi><mrow><mn>2</mn><mi>j</mi></mrow></msub></msup><annotation encoding="application/x-tex">2^{A_{2j}}</annotation></semantics></math>,
+and the second contributes three. This proves (6) without changing
+coordinates or discarding an endpoint.</p>
+<p><strong>Proposition 1 (Conditional product).</strong> Set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>j</mi></msub><mo>=</mo><msup><mn>3</mn><mrow><mn>2</mn><mi>j</mi><mo>−</mo><mn>2</mn></mrow></msup><msup><mn>2</mn><mrow><mi>−</mi><msub><mi>T</mi><mi>j</mi></msub></mrow></msup></mrow><annotation encoding="application/x-tex">x_j=3^{2j-2}2^{-T_j}</annotation></semantics></math>.
+Then</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>ξ</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi mathvariant="double-struck">𝔼</mi><munderover><mo>∏</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>m</mi></munderover><mi>f</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>x</mi><mi>j</mi></msub><mo>,</mo><msub><mi>B</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>n</mi><mo>=</mo><mn>2</mn><mi>m</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi mathvariant="double-struck">𝔼</mi><mrow><mo stretchy="true" form="prefix">[</mo><munderover><mo>∏</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>m</mi></munderover><mi>f</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>x</mi><mi>j</mi></msub><mo>,</mo><msub><mi>B</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>g</mi><mo stretchy="false" form="prefix">(</mo><msup><mn>3</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><msup><mn>2</mn><mrow><mi>−</mi><msub><mi>T</mi><mi>m</mi></msub></mrow></msup><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">]</mo></mrow><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>n</mi><mo>=</mo><mn>2</mn><mi>m</mi><mo>+</mo><mn>1</mn><mi>.</mi></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">
+F_n(\xi)=
+\begin{cases}
+\mathbb E\displaystyle\prod_{j=1}^m f(x_j,B_j),&amp;n=2m,\\
+\mathbb E\left[\displaystyle\prod_{j=1}^m f(x_j,B_j)
+\,g(3^{n-1}2^{-T_m})\right],&amp;n=2m+1.
+\end{cases}
+\tag{7}
+</annotation></semantics></math><span class="equation-number">(7)</span></span></span></p>
+<p>In particular,</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>F</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>ξ</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mi mathvariant="double-struck">𝔼</mi><munderover><mo>∏</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>m</mi></munderover><mo stretchy="false" form="prefix">|</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>x</mi><mi>j</mi></msub><mo>,</mo><msub><mi>B</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+|F_n(\xi)|\leq\mathbb E\prod_{j=1}^m|f(x_j,B_j)|.
+\tag{8}
+</annotation></semantics></math><span class="equation-number">(8)</span></span></span></p>
+<p><strong>Proof.</strong> Condition on the vector of sums
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>B</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>B</mi><mi>m</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(B_1,\ldots,B_m)</annotation></semantics></math>.
+Formula (6) and the character identity turn the exponential of a sum
+into a product. The conditional independence proved above factors its
+average into the factors (5). In the odd case the final variable gives
+the indicated
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>,
+which is still <em>inside</em> the outer expectation: its argument
+depends on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>T</mi><mi>m</mi></msub><annotation encoding="application/x-tex">T_m</annotation></semantics></math>.
+Taking the outer expectation proves (7). The triangle inequality and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>g</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|g|\leq1</annotation></semantics></math>
+prove (8). All regroupings are of absolutely summable terms, since the
+absolute values are bounded by the underlying probability masses. ∎</p>
+<p>The order of operations matters. Replacing every original character
+in (3) by its modulus would give only
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>F</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>ξ</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|F_n(\xi)|\leq1</annotation></semantics></math>.
+The conditional average retains disagreement between the directions
+arising from different splits of the same sum.</p>
+<h2 id="a-phase-that-measures-the-cancellation">A phase that measures
+the cancellation</h2>
+<p>For every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>,</mo><mi>l</mi><mo stretchy="false" form="postfix">)</mo><mo>∈</mo><mo stretchy="false" form="prefix">{</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>m</mi><mo stretchy="false" form="postfix">}</mo><mo>×</mo><mi mathvariant="double-struck">ℤ</mi></mrow><annotation encoding="application/x-tex">(j,l)\in\{1,\ldots,m\}\times\mathbb Z</annotation></semantics></math>,
+let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>,</mo><mi>l</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\theta(j,l)</annotation></semantics></math>
+be the unique number in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>−</mi><mn>1</mn><mi>/</mi><mn>2</mn><mo>,</mo><mn>1</mn><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">(-1/2,1/2]</annotation></semantics></math>
+congruent modulo one to</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>ξ</mi><mspace width="0.167em"></mspace><mi>ρ</mi><mo stretchy="false" form="prefix">(</mo><msup><mn>3</mn><mrow><mn>2</mn><mi>j</mi><mo>−</mo><mn>2</mn></mrow></msup><msup><mn>2</mn><mrow><mn>1</mn><mo>−</mo><mi>l</mi></mrow></msup><mo stretchy="false" form="postfix">)</mo></mrow><mi>Q</mi></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\frac{\xi\,\rho(3^{2j-2}2^{1-l})}{Q}.
+\tag{9}
+</annotation></semantics></math><span class="equation-number">(9)</span></span></span></p>
+<p>Here congruence modulo one means equality after adding an integer.
+Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>χ</mi><mo stretchy="false" form="prefix">(</mo><msup><mn>3</mn><mrow><mn>2</mn><mi>j</mi><mo>−</mo><mn>2</mn></mrow></msup><msup><mn>2</mn><mrow><mn>1</mn><mo>−</mo><mi>l</mi></mrow></msup><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>−</mi><mn>2</mn><mi>π</mi><mi>i</mi><mi>θ</mi><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>,</mo><mi>l</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\chi(3^{2j-2}2^{1-l})=\exp(-2\pi i\theta(j,l))</annotation></semantics></math>.
+The coordinate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+records a pair number;
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>l</mi><annotation encoding="application/x-tex">l</annotation></semantics></math>
+will record the total waiting time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>T</mi><mi>j</mi></msub><annotation encoding="application/x-tex">T_j</annotation></semantics></math>.
+The sign and the factor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mrow><mn>1</mn><mo>−</mo><mi>l</mi></mrow></msup><annotation encoding="application/x-tex">2^{1-l}</annotation></semantics></math>
+are part of the definition.</p>
+<p>When
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">b=3</annotation></semantics></math>,
+the two splits are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,2)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(2,1)</annotation></semantics></math>,
+so</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><mi>χ</mi><mo stretchy="false" form="prefix">(</mo><mn>5</mn><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>χ</mi><mo stretchy="false" form="prefix">(</mo><mn>7</mn><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><mn>2</mn></mfrac><mo>=</mo><mfrac><mrow><mi>χ</mi><mo stretchy="false" form="prefix">(</mo><mn>5</mn><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><mn>2</mn></mfrac><mo minsize="120%" maxsize="120%" stretchy="true" form="prefix">(</mo><mn>1</mn><mo>+</mo><mi>χ</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+f(x,3)=\frac{\chi(5x)+\chi(7x)}2
+=\frac{\chi(5x)}2\bigl(1+\chi(2x)\bigr).
+</annotation></semantics></math></span></p>
+<p>The elementary identity
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mn>1</mn><mo>+</mo><msup><mi>e</mi><mrow><mi>−</mi><mn>2</mn><mi>π</mi><mi>i</mi><mi>t</mi></mrow></msup><mo stretchy="false" form="prefix">|</mo><mi>/</mi><mn>2</mn><mo>=</mo><mo stretchy="false" form="prefix">|</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>π</mi><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">|1+e^{-2\pi it}|/2=|\cos(\pi t)|</annotation></semantics></math>
+now gives</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><msup><mn>3</mn><mrow><mn>2</mn><mi>j</mi><mo>−</mo><mn>2</mn></mrow></msup><msup><mn>2</mn><mrow><mi>−</mi><mi>l</mi></mrow></msup><mo>,</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mo>=</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>π</mi><mi>θ</mi><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>,</mo><mi>l</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+|f(3^{2j-2}2^{-l},3)|=\cos(\pi\theta(j,l)).
+\tag{10}
+</annotation></semantics></math><span class="equation-number">(10)</span></span></span></p>
+<p>The cosine is nonnegative on the specified interval. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>t</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">|t|\leq1/2</annotation></semantics></math>,
+concavity of sine on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mi>π</mi><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[0,\pi/2]</annotation></semantics></math>
+gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>π</mi><mo stretchy="false" form="prefix">|</mo><mi>t</mi><mo stretchy="false" form="prefix">|</mo><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mo>≥</mo><mo stretchy="false" form="prefix">|</mo><mi>t</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">\sin(\pi|t|/2)\geq|t|</annotation></semantics></math>.
+For completeness, the concavity follows from the nonpositive second
+derivative, and the chord joining the two endpoints has value
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>u</mi><mi>/</mi><mi>π</mi></mrow><annotation encoding="application/x-tex">2u/\pi</annotation></semantics></math>
+at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>.
+Therefore</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>π</mi><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn><mo>−</mo><mn>2</mn><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mo stretchy="false" form="prefix">(</mo><mi>π</mi><mi>t</mi><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mn>1</mn><mo>−</mo><mn>2</mn><msup><mi>t</mi><mn>2</mn></msup><mo>≤</mo><msup><mi>e</mi><mrow><mi>−</mi><mn>2</mn><msup><mi>t</mi><mn>2</mn></msup></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\cos(\pi t)=1-2\sin^2(\pi t/2)
+\leq1-2t^2\leq e^{-2t^2}.
+\tag{11}
+</annotation></semantics></math><span class="equation-number">(11)</span></span></span></p>
+<p>Fix
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>ε</mi><mo>≤</mo><msup><mi>e</mi><mrow><mi>−</mi><mn>10</mn></mrow></msup></mrow><annotation encoding="application/x-tex">0&lt;\varepsilon\leq e^{-10}</annotation></semantics></math>.
+Call a lattice position <strong>low-phase</strong> when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>θ</mi><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>,</mo><mi>l</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mi>ε</mi></mrow><annotation encoding="application/x-tex">|\theta(j,l)|\leq\varepsilon</annotation></semantics></math>,
+and <strong>cancelling</strong> otherwise. These are the black and white
+sets, respectively, in Tao’s terminology. Define</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>m</mi></msub><mo>=</mo><mi>#</mi><mo stretchy="false" form="prefix">{</mo><mi>j</mi><mo>≤</mo><mi>m</mi><mo>:</mo><msub><mi>B</mi><mi>j</mi></msub><mo>=</mo><mn>3</mn><mo>,</mo><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">|</mo><mi>θ</mi><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>,</mo><msub><mi>T</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mo>&gt;</mo><mi>ε</mi><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+N_m=\#\{j\leq m:B_j=3,\ |\theta(j,T_j)|&gt;\varepsilon\}.
+</annotation></semantics></math></span></p>
+<p><strong>Corollary 2 (An occupation bound for the Fourier
+coefficient).</strong></p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>F</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>ξ</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mi mathvariant="double-struck">𝔼</mi><msup><mi>e</mi><mrow><mi>−</mi><mn>2</mn><msup><mi>ε</mi><mn>2</mn></msup><msub><mi>N</mi><mi>m</mi></msub></mrow></msup><mo>≤</mo><mi mathvariant="double-struck">𝔼</mi><msup><mi>e</mi><mrow><mi>−</mi><msup><mi>ε</mi><mn>3</mn></msup><msub><mi>N</mi><mi>m</mi></msub></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+|F_n(\xi)|\leq\mathbb E e^{-2\varepsilon^2N_m}
+\leq\mathbb E e^{-\varepsilon^3N_m}.
+\tag{12}
+</annotation></semantics></math><span class="equation-number">(12)</span></span></span></p>
+<p><strong>Proof.</strong> At each counted position, (10)–(11) bound its
+factor in (8) by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>−</mi><mn>2</mn><msup><mi>ε</mi><mn>2</mn></msup></mrow></msup><annotation encoding="application/x-tex">e^{-2\varepsilon^2}</annotation></semantics></math>.
+All other factors are at most one. Multiply these bounds for each
+realised vector of sums and then average. Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><msup><mi>ε</mi><mn>2</mn></msup><mo>≥</mo><msup><mi>ε</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">2\varepsilon^2\geq\varepsilon^3</annotation></semantics></math>,
+the second inequality follows. ∎</p>
+<p>This is an upper bound, not an equality: cancellation between
+different vectors of pair sums may reduce the original coefficient
+further. The nonnegative expectation is useful because it records how
+rarely the path can avoid many definite losses. A large mean of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>N</mi><mi>m</mi></msub><annotation encoding="application/x-tex">N_m</annotation></semantics></math>
+alone does not bound this expectation; Exercise 4 explains why.</p>
+<h2
+id="small-phases-can-be-lifted-from-the-circle-to-the-real-line">Small
+phases can be lifted from the circle to the real line</h2>
+<p>The arithmetic in (9) implies</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>+</mo><mn>1</mn><mo>,</mo><mi>l</mi><mo stretchy="false" form="postfix">)</mo><mo>≡</mo><mn>9</mn><mi>θ</mi><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>,</mo><mi>l</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>θ</mi><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>,</mo><mi>l</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mo>≡</mo><mn>2</mn><mi>θ</mi><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>,</mo><mi>l</mi><mo stretchy="false" form="postfix">)</mo><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mspace width="0.222em"></mspace><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\theta(j+1,l)\equiv9\theta(j,l),\qquad
+\theta(j,l-1)\equiv2\theta(j,l)\pmod{1}.
+\tag{13}
+</annotation></semantics></math><span class="equation-number">(13)</span></span></span></p>
+<p>These are congruences, not unconditional real equalities. When the
+indicated real multiple has absolute value less than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/2</annotation></semantics></math>,
+it is already the centred representative and equality does hold. For
+nonnegative integers
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a,b</annotation></semantics></math>,
+whenever the positions lie in the strip,</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>+</mo><mi>a</mi><mo>,</mo><mi>l</mi><mo>−</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo><mo>≡</mo><msup><mn>9</mn><mi>a</mi></msup><msup><mn>2</mn><mi>b</mi></msup><mi>θ</mi><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>,</mo><mi>l</mi><mo stretchy="false" form="postfix">)</mo><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mspace width="0.222em"></mspace><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\theta(j+a,l-b)\equiv9^a2^b\theta(j,l)\pmod{1}.
+\tag{14}
+</annotation></semantics></math><span class="equation-number">(14)</span></span></span></p>
+<p>There is also a uniform lower bound at each column. The phase at
+column
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+has reduced denominator
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>3</mn><mrow><mi>n</mi><mo>−</mo><mn>2</mn><mi>j</mi><mo>+</mo><mn>2</mn></mrow></msup><annotation encoding="application/x-tex">3^{n-2j+2}</annotation></semantics></math>:
+its numerator is a product of units modulo that power of three. Hence it
+is nonzero, and</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>θ</mi><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>,</mo><mi>l</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mo>≥</mo><msup><mn>3</mn><mrow><mi>−</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mi>j</mi><mo>+</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+|\theta(j,l)|\geq3^{-(n-2j+2)}.
+\tag{15}
+</annotation></semantics></math><span class="equation-number">(15)</span></span></span></p>
+<p>In particular a low-phase point satisfies</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>≤</mo><mfrac><mi>n</mi><mn>2</mn></mfrac><mo>+</mo><mn>1</mn><mo>−</mo><mfrac><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mi>/</mi><mi>ε</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mn>2</mn><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>3</mn></mrow></mfrac><mo>≤</mo><mfrac><mi>n</mi><mn>2</mn></mfrac><mo>−</mo><mfrac><mn>1</mn><mn>10</mn></mfrac><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mi>/</mi><mi>ε</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+j\leq\frac n2+1-\frac{\log(1/\varepsilon)}{2\log3}
+\leq\frac n2-\frac1{10}\log(1/\varepsilon).
+\tag{16}
+</annotation></semantics></math><span class="equation-number">(16)</span></span></span></p>
+<p>For the last inequality, put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mi>/</mi><mi>ε</mi><mo stretchy="false" form="postfix">)</mo><mo>≥</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">L=\log(1/\varepsilon)\geq10</annotation></semantics></math>.
+Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>3</mn><mo>&lt;</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\log3&lt;2</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>3</mn><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mn>1</mn><mi>/</mi><mn>10</mn><mo stretchy="false" form="postfix">)</mo><mo>&gt;</mo><mn>3</mn><mi>L</mi><mi>/</mi><mn>20</mn><mo>≥</mo><mn>3</mn><mi>/</mi><mn>2</mn><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">L(1/(2\log3)-1/10)&gt;3L/20\geq3/2&gt;1</annotation></semantics></math>.
+There is thus an entire terminal strip of cancelling positions,
+uniformly in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ξ</mi><annotation encoding="application/x-tex">\xi</annotation></semantics></math>.</p>
+<p>To control the other boundaries, call a point <strong>small</strong>
+when its phase has absolute value at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>=</mo><mn>1</mn><mi>/</mi><mn>100</mn></mrow><annotation encoding="application/x-tex">h=1/100</annotation></semantics></math>.
+Every low-phase point is small. We need three elementary rules.</p>
+<p><strong>Lemma 3 (Local lifting rules).</strong> Provided all stated
+positions are in the strip:</p>
+<ol type="1">
+<li>A small point whose right or lower neighbour is low-phase is itself
+low-phase.</li>
+<li>If the right and lower neighbours of a point are small, that point
+is small.</li>
+<li>If the left and lower neighbours of a point are small, that point is
+small.</li>
+</ol>
+<p><strong>Proof.</strong> Write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>=</mo><mi>θ</mi><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>,</mo><mi>l</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">u=\theta(j,l)</annotation></semantics></math>.
+For rule 1,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>u</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">|u|\leq h</annotation></semantics></math>
+makes both
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9</mn><mi>u</mi></mrow><annotation encoding="application/x-tex">9u</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>u</mi></mrow><annotation encoding="application/x-tex">2u</annotation></semantics></math>
+lie strictly between
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">-1/2</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/2</annotation></semantics></math>.
+The corresponding equation in (13) is real equality. A low-phase
+neighbour therefore gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>u</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mi>ε</mi><mi>/</mi><mn>9</mn></mrow><annotation encoding="application/x-tex">|u|\leq\varepsilon/9</annotation></semantics></math>
+or
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\varepsilon/2</annotation></semantics></math>.</p>
+<p>For rule 2, write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><mi>θ</mi><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>+</mo><mn>1</mn><mo>,</mo><mi>l</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">v=\theta(j+1,l)</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mi>θ</mi><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>,</mo><mi>l</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">w=\theta(j,l-1)</annotation></semantics></math>.
+Equations (13) give
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>≡</mo><mi>v</mi><mo>−</mo><mn>4</mn><mi>w</mi><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mspace width="0.222em"></mspace><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">u\equiv v-4w\pmod1</annotation></semantics></math>.
+Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>v</mi><mo>−</mo><mn>4</mn><mi>w</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mn>5</mn><mi>h</mi><mo>&lt;</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">|v-4w|\leq5h&lt;1/2</annotation></semantics></math>,
+this is real equality, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>u</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mn>5</mn><mi>h</mi></mrow><annotation encoding="application/x-tex">|u|\leq5h</annotation></semantics></math>.
+Now
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mn>2</mn><mi>u</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mn>10</mn><mi>h</mi><mo>&lt;</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">|2u|\leq10h&lt;1/2</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>2</mn><mi>u</mi></mrow><annotation encoding="application/x-tex">w=2u</annotation></semantics></math>,
+giving
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>u</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mi>h</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">|u|\leq h/2</annotation></semantics></math>.</p>
+<p>For rule 3, the small left neighbour gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>u</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mn>9</mn><mi>h</mi></mrow><annotation encoding="application/x-tex">|u|\leq9h</annotation></semantics></math>,
+with real equality in the multiplication by nine. Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mn>2</mn><mi>u</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mn>18</mn><mi>h</mi><mo>&lt;</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">|2u|\leq18h&lt;1/2</annotation></semantics></math>,
+the small lower neighbour is again exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>u</mi></mrow><annotation encoding="application/x-tex">2u</annotation></semantics></math>;
+thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>u</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mi>h</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">|u|\leq h/2</annotation></semantics></math>.
+∎</p>
+<p>These rules justify propagation of <em>smallness</em>, not just an
+informal picture of nearby angles. Multiplication on the circle can
+otherwise return a large phase to a small one. That possibility is
+exactly why a separation proof is needed.</p>
+<h2 id="the-low-phase-set-consists-of-separated-triangles">The low-phase
+set consists of separated triangles</h2>
+<p>For an integer corner
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>j</mi><mn>0</mn></msub><mo>,</mo><msub><mi>l</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(j_0,l_0)</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>j</mi><mn>0</mn></msub><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">j_0\geq1</annotation></semantics></math>,
+and a real size
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">s\geq0</annotation></semantics></math>,
+define a finite set of lattice points</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi mathvariant="normal">Δ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>j</mi><mn>0</mn></msub><mo>,</mo><msub><mi>l</mi><mn>0</mn></msub><mo>,</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>,</mo><mi>l</mi><mo stretchy="false" form="postfix">)</mo><mo>∈</mo><msup><mi mathvariant="double-struck">ℤ</mi><mn>2</mn></msup><mo>:</mo><mspace width="0.278em"></mspace></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mi>j</mi><mo>≥</mo><msub><mi>j</mi><mn>0</mn></msub><mo>,</mo><mspace width="0.222em"></mspace><mi>l</mi><mo>≤</mo><msub><mi>l</mi><mn>0</mn></msub><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>−</mo><msub><mi>j</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>9</mn><mo>+</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>l</mi><mn>0</mn></msub><mo>−</mo><mi>l</mi><mo stretchy="false" form="postfix">)</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>2</mn><mo>≤</mo><mi>s</mi><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\Delta(j_0,l_0,s)=\{(j,l)\in\mathbb Z^2:\;&amp;j\geq j_0,\ l\leq l_0,\\
+&amp;(j-j_0)\log9+(l_0-l)\log2\leq s\}.
+\end{aligned}
+\tag{17}
+</annotation></semantics></math><span class="equation-number">(17)</span></span></span></p>
+<p>Only integer points belong to this set; the triangle in the plane is
+a useful outline. Its diagonal has upward slope
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>9</mn><mi>/</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">\log9/\log2</annotation></semantics></math>.
+Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>10</mn></mfrac></mstyle><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mi>/</mi><mi>ε</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">R=\tfrac1{10}\log(1/\varepsilon)</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">R\geq1</annotation></semantics></math>.</p>
+<p><strong>Theorem 4 (Arithmetic separation).</strong> The low-phase set
+in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>m</mi><mo stretchy="false" form="postfix">}</mo><mo>×</mo><mi mathvariant="double-struck">ℤ</mi></mrow><annotation encoding="application/x-tex">\{1,\ldots,m\}\times\mathbb Z</annotation></semantics></math>
+is a disjoint union of sets (17). Each is contained in the strip (16).
+Any low-phase point outside one of these triangles has Euclidean
+distance greater than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>
+from it. In particular, distinct triangles are separated by distance at
+least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>.</p>
+<p><em>Reference:</em> Tao, Section 7, the structure lemma for the black
+set. We give explicit smallness choices and prove the boundary
+propagation below.</p>
+<p><strong>Proof.</strong> We first construct a corner, then prove a
+buffer around its triangle, and finally verify that different starting
+points give a partition.</p>
+<p><strong>Constructing the corner.</strong> Start at a low-phase point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>,</mo><mi>l</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(j,l)</annotation></semantics></math>.
+Move upward through consecutive low-phase points in that column,
+stopping at the last one, say
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>,</mo><msub><mi>l</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(j,l_0)</annotation></semantics></math>.
+Such a last point exists. Otherwise (13), with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>ε</mi><mo>&lt;</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">2\varepsilon&lt;1/2</annotation></semantics></math>,
+would imply
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>,</mo><mi>l</mi><mo>+</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mn>2</mn><mrow><mi>−</mi><mi>k</mi></mrow></msup><mi>θ</mi><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>,</mo><mi>l</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\theta(j,l+k)=2^{-k}\theta(j,l)</annotation></semantics></math>
+for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k\geq0</annotation></semantics></math>,
+contradicting the positive lower bound (15).</p>
+<p>Next move left through consecutive low-phase points in row
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>l</mi><mn>0</mn></msub><annotation encoding="application/x-tex">l_0</annotation></semantics></math>,
+stopping at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>j</mi><mn>0</mn></msub><mo>,</mo><msub><mi>l</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(j_0,l_0)</annotation></semantics></math>.
+This stops at column one or immediately to the right of a point that is
+not low-phase. Set</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mn>0</mn></msub><mo>=</mo><mi>θ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>j</mi><mn>0</mn></msub><mo>,</mo><msub><mi>l</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>s</mi><mo>=</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mfrac><mi>ε</mi><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>t</mi><mn>0</mn></msub><mo stretchy="false" form="prefix">|</mo></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+t_0=\theta(j_0,l_0),\qquad
+s=\log\frac{\varepsilon}{|t_0|}.
+\tag{18}
+</annotation></semantics></math><span class="equation-number">(18)</span></span></span></p>
+<p>The number
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mn>0</mn></msub><annotation encoding="application/x-tex">t_0</annotation></semantics></math>
+is nonzero by (15), and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">s\geq0</annotation></semantics></math>.
+Along the traversed horizontal and vertical segments, (13) gives real
+equalities, since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9</mn><mi>ε</mi><mo>&lt;</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">9\varepsilon&lt;1/2</annotation></semantics></math>.
+Therefore
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>,</mo><mi>l</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mn>9</mn><mrow><mi>j</mi><mo>−</mo><msub><mi>j</mi><mn>0</mn></msub></mrow></msup><msup><mn>2</mn><mrow><msub><mi>l</mi><mn>0</mn></msub><mo>−</mo><mi>l</mi></mrow></msup><msub><mi>t</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\theta(j,l)=9^{j-j_0}2^{l_0-l}t_0</annotation></semantics></math>.
+Its absolute value is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ε</mi><annotation encoding="application/x-tex">\varepsilon</annotation></semantics></math>,
+so the starting point belongs to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mo>=</mo><mi mathvariant="normal">Δ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>j</mi><mn>0</mn></msub><mo>,</mo><msub><mi>l</mi><mn>0</mn></msub><mo>,</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\Delta=\Delta(j_0,l_0,s)</annotation></semantics></math>.</p>
+<p>Every point of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Δ</mi><annotation encoding="application/x-tex">\Delta</annotation></semantics></math>
+is low-phase. Indeed, the multiple of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mn>0</mn></msub><annotation encoding="application/x-tex">t_0</annotation></semantics></math>
+in (14) then has absolute value at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ε</mi><annotation encoding="application/x-tex">\varepsilon</annotation></semantics></math>,
+so there is no reduction across
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/2</annotation></semantics></math>.
+To check that the whole defined triangle is inside the original strip,
+(15) at the corner gives</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>j</mi><mn>0</mn></msub><mo>+</mo><mfrac><mi>s</mi><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>9</mn></mrow></mfrac><mo>≤</mo><mfrac><mi>n</mi><mn>2</mn></mfrac><mo>+</mo><mn>1</mn><mo>−</mo><mfrac><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mi>/</mi><mi>ε</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mn>2</mn><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>3</mn></mrow></mfrac><mo>≤</mo><mfrac><mi>n</mi><mn>2</mn></mfrac><mo>−</mo><mi>R</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+j_0+\frac{s}{\log9}
+\leq\frac n2+1-\frac{\log(1/\varepsilon)}{2\log3}
+\leq\frac n2-R.
+\tag{19}
+</annotation></semantics></math><span class="equation-number">(19)</span></span></span></p>
+<p>The horizontal extent of (17) is no larger than the left-hand side.
+Thus the phase identities used on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Δ</mi><annotation encoding="application/x-tex">\Delta</annotation></semantics></math>
+have their required domains.</p>
+<p><strong>Two boundary barriers.</strong> The point immediately above
+the corner,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>j</mi><mn>0</mn></msub><mo>,</mo><msub><mi>l</mi><mn>0</mn></msub><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(j_0,l_0+1)</annotation></semantics></math>,
+is not even small. Suppose it were small. The row below it, from column
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>j</mi><mn>0</mn></msub><annotation encoding="application/x-tex">j_0</annotation></semantics></math>
+to column
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>,
+is low-phase by construction. Repeated use of rule 3 propagates
+smallness along the row above to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>,</mo><msub><mi>l</mi><mn>0</mn></msub><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(j,l_0+1)</annotation></semantics></math>.
+Rule 1, using its low-phase lower neighbour
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>,</mo><msub><mi>l</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(j,l_0)</annotation></semantics></math>,
+would make this point low-phase, contrary to the stopping choice of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>l</mi><mn>0</mn></msub><annotation encoding="application/x-tex">l_0</annotation></semantics></math>.
+If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>j</mi><mn>0</mn></msub><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">j_0&gt;1</annotation></semantics></math>,
+the point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>j</mi><mn>0</mn></msub><mo>−</mo><mn>1</mn><mo>,</mo><msub><mi>l</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(j_0-1,l_0)</annotation></semantics></math>
+is likewise not small: rule 1 and its low-phase right neighbour would
+contradict the choice of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>j</mi><mn>0</mn></msub><annotation encoding="application/x-tex">j_0</annotation></semantics></math>.</p>
+<p><strong>The buffer.</strong> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>p</mi><mo>,</mo><mi>q</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(p,q)</annotation></semantics></math>
+be a point in the original strip, outside
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Δ</mi><annotation encoding="application/x-tex">\Delta</annotation></semantics></math>,
+at Euclidean distance at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>
+from some point of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Δ</mi><annotation encoding="application/x-tex">\Delta</annotation></semantics></math>.
+Coordinate differences between these two points are at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>.
+We will prove that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>p</mi><mo>,</mo><mi>q</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(p,q)</annotation></semantics></math>
+cannot be low-phase. The common numerical bound used in all cases is</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mspace width="0.167em"></mspace><msup><mn>18</mn><mi>R</mi></msup><mo>=</mo><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">[</mo><mi>−</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mfrac><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>18</mn></mrow><mn>10</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mi mathvariant="normal">log</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mi>/</mi><mi>ε</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">]</mo></mrow><mo>≤</mo><mn>18</mn><msup><mi>e</mi><mrow><mi>−</mi><mn>10</mn></mrow></msup><mo>&lt;</mo><mi>h</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\varepsilon\,18^R
+=\exp\left[-\left(1-\frac{\log18}{10}\right)\log(1/\varepsilon)\right]
+\leq18e^{-10}&lt;h.
+\tag{20}
+</annotation></semantics></math><span class="equation-number">(20)</span></span></span></p>
+<p>If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>≥</mo><msub><mi>j</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">p\geq j_0</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>≤</mo><msub><mi>l</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">q\leq l_0</annotation></semantics></math>,
+being outside the triangle and near it gives</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>&lt;</mo><mo stretchy="false" form="prefix">(</mo><mi>p</mi><mo>−</mo><msub><mi>j</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>9</mn><mo>+</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>l</mi><mn>0</mn></msub><mo>−</mo><mi>q</mi><mo stretchy="false" form="postfix">)</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>2</mn><mo>≤</mo><mi>s</mi><mo>+</mo><mi>R</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>18</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+s&lt;(p-j_0)\log9+(l_0-q)\log2
+\leq s+R\log18.
+</annotation></semantics></math></span></p>
+<p>The real multiple
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>9</mn><mrow><mi>p</mi><mo>−</mo><msub><mi>j</mi><mn>0</mn></msub></mrow></msup><msup><mn>2</mn><mrow><msub><mi>l</mi><mn>0</mn></msub><mo>−</mo><mi>q</mi></mrow></msup><msub><mi>t</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">9^{p-j_0}2^{l_0-q}t_0</annotation></semantics></math>
+has absolute value strictly greater than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ε</mi><annotation encoding="application/x-tex">\varepsilon</annotation></semantics></math>,
+but at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><msup><mn>18</mn><mi>R</mi></msup><mo>&lt;</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">\varepsilon18^R&lt;h</annotation></semantics></math>.
+It is already the centred phase at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>p</mi><mo>,</mo><mi>q</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(p,q)</annotation></semantics></math>.
+This point is not low-phase.</p>
+<p>Suppose instead that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>≥</mo><msub><mi>j</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">p\geq j_0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>&gt;</mo><msub><mi>l</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">q&gt;l_0</annotation></semantics></math>,
+and that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>p</mi><mo>,</mo><mi>q</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(p,q)</annotation></semantics></math>
+were low-phase. Proximity implies</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>−</mo><msub><mi>l</mi><mn>0</mn></msub><mo>≤</mo><mi>R</mi><mo>,</mo><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>p</mi><mo>−</mo><msub><mi>j</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>9</mn><mo>≤</mo><mi>s</mi><mo>+</mo><mi>R</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>9</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+q-l_0\leq R,\qquad
+(p-j_0)\log9\leq s+R\log9.
+</annotation></semantics></math></span></p>
+<p>Multiplication by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mrow><mi>q</mi><mo>−</mo><msub><mi>l</mi><mn>0</mn></msub><mo>−</mo><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">2^{q-l_0-1}</annotation></semantics></math>
+makes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>p</mi><mo>,</mo><msub><mi>l</mi><mn>0</mn></msub><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(p,l_0+1)</annotation></semantics></math>
+small, by (20). Every point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>r</mi><mo>,</mo><msub><mi>l</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(r,l_0)</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>j</mi><mn>0</mn></msub><mo>≤</mo><mi>r</mi><mo>≤</mo><mi>p</mi></mrow><annotation encoding="application/x-tex">j_0\leq r\leq p</annotation></semantics></math>,
+is also small: its phase has absolute value at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>s</mi></mrow></msup><msup><mn>9</mn><mrow><mi>r</mi><mo>−</mo><msub><mi>j</mi><mn>0</mn></msub></mrow></msup><mo>≤</mo><mi>ε</mi><msup><mn>9</mn><mi>R</mi></msup><mo>&lt;</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">\varepsilon e^{-s}9^{r-j_0}\leq\varepsilon9^R&lt;h</annotation></semantics></math>,
+with no wrap on the circle. Starting at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>p</mi><mo>,</mo><msub><mi>l</mi><mn>0</mn></msub><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(p,l_0+1)</annotation></semantics></math>,
+apply rule 2 successively to the left, using this lower row. It makes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>j</mi><mn>0</mn></msub><mo>,</mo><msub><mi>l</mi><mn>0</mn></msub><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(j_0,l_0+1)</annotation></semantics></math>
+small, contradicting the upper boundary barrier.</p>
+<p>It remains to consider
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>&lt;</mo><msub><mi>j</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">p&lt;j_0</annotation></semantics></math>.
+Then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>j</mi><mn>0</mn></msub><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">j_0&gt;1</annotation></semantics></math>,
+and proximity gives</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>j</mi><mn>0</mn></msub><mo>−</mo><mi>p</mi><mo>≤</mo><mi>R</mi><mo>,</mo><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">(</mo><msub><mi>l</mi><mn>0</mn></msub><mo>−</mo><mi>q</mi><mo stretchy="false" form="postfix">)</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>2</mn><mo>≤</mo><mi>s</mi><mo>+</mo><mi>R</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>2</mn><mo>,</mo><mspace width="2.0em"></mspace><mi>q</mi><mo>−</mo><msub><mi>l</mi><mn>0</mn></msub><mo>≤</mo><mi>R</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+j_0-p\leq R,\qquad
+(l_0-q)\log2\leq s+R\log2,
+\qquad q-l_0\leq R.
+</annotation></semantics></math></span></p>
+<p>If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>p</mi><mo>,</mo><mi>q</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(p,q)</annotation></semantics></math>
+were low-phase, multiplying its phase by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>9</mn><mrow><msub><mi>j</mi><mn>0</mn></msub><mo>−</mo><mn>1</mn><mo>−</mo><mi>p</mi></mrow></msup><annotation encoding="application/x-tex">9^{j_0-1-p}</annotation></semantics></math>
+would make
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>j</mi><mn>0</mn></msub><mo>−</mo><mn>1</mn><mo>,</mo><mi>q</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(j_0-1,q)</annotation></semantics></math>
+small. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>≥</mo><msub><mi>l</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">q\geq l_0</annotation></semantics></math>,
+multiplication by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mrow><mi>q</mi><mo>−</mo><msub><mi>l</mi><mn>0</mn></msub></mrow></msup><annotation encoding="application/x-tex">2^{q-l_0}</annotation></semantics></math>
+would also make
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>j</mi><mn>0</mn></msub><mo>−</mo><mn>1</mn><mo>,</mo><msub><mi>l</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(j_0-1,l_0)</annotation></semantics></math>
+small, since the total factor is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>18</mn><mi>R</mi></msup><annotation encoding="application/x-tex">18^R</annotation></semantics></math>.
+This contradicts the left boundary barrier.</p>
+<p>If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>&lt;</mo><msub><mi>l</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">q&lt;l_0</annotation></semantics></math>,
+each point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>j</mi><mn>0</mn></msub><mo>,</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(j_0,u)</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>+</mo><mn>1</mn><mo>≤</mo><mi>u</mi><mo>≤</mo><msub><mi>l</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">q+1\leq u\leq l_0</annotation></semantics></math>
+is small, because its phase has absolute value at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>s</mi></mrow></msup><msup><mn>2</mn><mrow><msub><mi>l</mi><mn>0</mn></msub><mo>−</mo><mi>u</mi></mrow></msup><mo>≤</mo><mi>ε</mi><msup><mn>2</mn><mi>R</mi></msup><mo>&lt;</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">\varepsilon e^{-s}2^{l_0-u}\leq\varepsilon2^R&lt;h</annotation></semantics></math>.
+Starting from the small point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>j</mi><mn>0</mn></msub><mo>−</mo><mn>1</mn><mo>,</mo><mi>q</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(j_0-1,q)</annotation></semantics></math>,
+rule 2 now propagates smallness upward in column
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>j</mi><mn>0</mn></msub><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">j_0-1</annotation></semantics></math>,
+using this right column. It again reaches the forbidden point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>j</mi><mn>0</mn></msub><mo>−</mo><mn>1</mn><mo>,</mo><msub><mi>l</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(j_0-1,l_0)</annotation></semantics></math>.
+This exhausts all positions outside the triangle and proves the buffer
+assertion.</p>
+<p><strong>Partition and uniqueness.</strong> Every low-phase point was
+shown to lie in its constructed triangle. Conversely, start at any point
+of that triangle. Moving upward inside it reaches row
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>l</mi><mn>0</mn></msub><annotation encoding="application/x-tex">l_0</annotation></semantics></math>,
+and moving left in that row reaches column
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>j</mi><mn>0</mn></msub><annotation encoding="application/x-tex">j_0</annotation></semantics></math>.
+The next upward point is outside the triangle at distance one; the next
+left point, if in the strip, has the same property. The buffer and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">R\geq1</annotation></semantics></math>
+make both non-low-phase. Thus the corner procedure returns exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>j</mi><mn>0</mn></msub><mo>,</mo><msub><mi>l</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(j_0,l_0)</annotation></semantics></math>
+from every point of this triangle. Two constructed triangles that
+intersect must therefore have the same corner and, by (18), the same
+size. They coincide. Distinct ones are disjoint, and the buffer
+separates all their points as claimed. ∎</p>
+<div class="figure-scroll"><p><img src="figures/phase-triangle.svg"
+alt="Exact low-phase lattice points in an arithmetic triangle, with an admissible marked renewal path leaving the triangle." /></p></div>
+<p><em>Here
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>14</mn></mrow><annotation encoding="application/x-tex">n=14</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\xi=1</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mo>=</mo><mn>1</mn><mi>/</mi><mn>32768</mn></mrow><annotation encoding="application/x-tex">\varepsilon=1/32768</annotation></semantics></math>.
+The corner is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,1)</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mn>0</mn></msub><mo>=</mo><mn>1</mn><mi>/</mi><mn>4782969</mn></mrow><annotation encoding="application/x-tex">t_0=1/4782969</annotation></semantics></math>.
+The filled points satisfy the exact integer inequality
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>32768</mn><mspace width="0.167em"></mspace><msup><mn>9</mn><mrow><mi>j</mi><mo>−</mo><mn>1</mn></mrow></msup><msup><mn>2</mn><mrow><mn>1</mn><mo>−</mo><mi>l</mi></mrow></msup><mo>≤</mo><mn>4782969</mn></mrow><annotation encoding="application/x-tex">32768\,9^{j-1}2^{1-l}\leq4782969</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">j\geq1</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">l\leq1</annotation></semantics></math>.
+The dashed outline is the real triangle; its interior is not itself a
+set of additional states. The displayed path has increments
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,3)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo>,</mo><mn>5</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(2,5)</annotation></semantics></math>,
+both supported by the marked holding-time law. It is one possible path,
+not a typical trajectory or a proof of an encounter frequency.</em></p>
+<p>There are two distinct conclusions here. Formula (16) gives a
+terminal region with no low phases. The buffer controls travel between
+low-phase triangles earlier in the strip. Neither says that all earlier
+positions cancel, and neither treats a random jump as a continuous path
+through every intervening lattice point.</p>
+<h2 id="from-pair-indices-to-a-renewal-occupation-count">From pair
+indices to a renewal occupation count</h2>
+<p>Continue the independent sequence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mn>1</mn></msub><mo>,</mo><msub><mi>B</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">B_1,B_2,\ldots</annotation></semantics></math>
+with law (4), marking each occurrence of three. The probability of a
+mark is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">q(3)=1/4</annotation></semantics></math>.
+With probability one there are arbitrarily many marks: for each fixed
+index
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>,
+the probability of no mark among the next
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+entries is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mi>/</mi><mn>4</mn><msup><mo stretchy="false" form="postfix">)</mo><mi>r</mi></msup></mrow><annotation encoding="application/x-tex">(3/4)^r</annotation></semantics></math>,
+which tends to zero; the union of these zero-probability events over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+still has probability zero.</p>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>J</mi><mi>r</mi></msub><mo>,</mo><msub><mi>L</mi><mi>r</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(J_r,L_r)</annotation></semantics></math>
+be the number of entries and the sum of entries in the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>-th
+block ending at a mark. Set</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>U</mi><mi>r</mi></msub><mo>,</mo><msub><mi>V</mi><mi>r</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>r</mi></munderover><mo stretchy="false" form="prefix">(</mo><msub><mi>J</mi><mi>i</mi></msub><mo>,</mo><msub><mi>L</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+(U_r,V_r)=\sum_{i=1}^r(J_i,L_i).
+</annotation></semantics></math></span></p>
+<p>Cutting an entry word immediately after each mark is inverse to
+concatenating its marked blocks. The <a
+href="NT-COLLATZ-08.html#marked-geometric-blocks-as-a-renewal-path">marked-block
+argument in the preceding lesson</a> proves that these vectors are
+independent copies of the holding-time law, including all fibres of the
+map from words to vectors. The marked positions are exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>U</mi><mi>r</mi></msub><mo>,</mo><msub><mi>V</mi><mi>r</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(U_r,V_r)</annotation></semantics></math>.
+Therefore, with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>W</mi><annotation encoding="application/x-tex">W</annotation></semantics></math>
+denoting the cancelling positions,</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>m</mi></msub><mo>=</mo><munder><mo>∑</mo><mrow><mi>r</mi><mo>≥</mo><mn>1</mn></mrow></munder><msub><mn mathvariant="bold">𝟏</mn><mrow><mo stretchy="false" form="prefix">{</mo><msub><mi>U</mi><mi>r</mi></msub><mo>≤</mo><mi>m</mi><mo stretchy="false" form="postfix">}</mo></mrow></msub><msub><mn mathvariant="bold">𝟏</mn><mi>W</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>U</mi><mi>r</mi></msub><mo>,</mo><msub><mi>V</mi><mi>r</mi></msub><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+N_m=\sum_{r\geq1}\mathbf1_{\{U_r\leq m\}}
+\mathbf1_W(U_r,V_r).
+\tag{21}
+</annotation></semantics></math><span class="equation-number">(21)</span></span></span></p>
+<p>The sum has at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+nonzero terms, because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>J</mi><mi>r</mi></msub><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">J_r\geq1</annotation></semantics></math>.
+This is an exact change of the count’s clock, not a new assumption about
+independent visits to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>W</mi><annotation encoding="application/x-tex">W</annotation></semantics></math>.
+The visits are generally dependent.</p>
+<p><a
+href="NT-COLLATZ-07.html#a-two-coordinate-holding-time-from-marked-waiting-times">Local
+probabilities for lattice sums, Proposition 6</a> proves
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">𝔼</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>J</mi><mi>r</mi></msub><mo>,</mo><msub><mi>L</mi><mi>r</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>4</mn><mo>,</mo><mn>16</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathbb E(J_r,L_r)=(4,16)</annotation></semantics></math>.
+Its mean direction thus has slope four, whereas the triangle diagonal
+has slope
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>9</mn><mi>/</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>2</mn><mo>&lt;</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">\log9/\log2&lt;4</annotation></semantics></math>,
+since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9</mn><mo>&lt;</mo><mn>16</mn></mrow><annotation encoding="application/x-tex">9&lt;16</annotation></semantics></math>.
+The <a
+href="NT-COLLATZ-08.html#the-overshoot-and-the-transverse-displacement">first-crossing
+estimate</a> controls where a path passes a horizontal boundary.
+Together with Theorem 4, these are the ingredients for estimating losses
+after leaving low-phase regions. The slope comparison explains the
+geometry, but is not by itself an estimate on the random occupation
+count.</p>
+<p>More precisely, for any
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\lambda&gt;0</annotation></semantics></math>
+and integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">K\geq0</annotation></semantics></math>,
+splitting according to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>m</mi></msub><mo>≤</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">N_m\leq K</annotation></semantics></math>
+gives</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">𝔼</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>λ</mi><msub><mi>N</mi><mi>m</mi></msub></mrow></msup><mo>≤</mo><mi mathvariant="double-struck">ℙ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>N</mi><mi>m</mi></msub><mo>≤</mo><mi>K</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>λ</mi><mi>K</mi></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\mathbb E e^{-\lambda N_m}
+\leq\mathbb P(N_m\leq K)+e^{-\lambda K}.
+\tag{22}
+</annotation></semantics></math><span class="equation-number">(22)</span></span></span></p>
+<p>Thus a Fourier-decay proof needs control of paths with <em>few</em>
+cancelling encounters. Tao’s remaining renewal argument supplies
+quantitative control of this kind. Its repeated-encounter estimates are
+the next mathematical step, not a consequence of the number of triangles
+or the mean slope alone. Equations (12) and (21) specify exactly the
+nonnegative quantity that those estimates must bound.</p>
+<h2 id="exercises">Exercises</h2>
+<h3 id="a-character-on-dyadic-fractions">1. A character on dyadic
+fractions</h3>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><mn>27</mn></mrow><annotation encoding="application/x-tex">Q=27</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\xi=2</annotation></semantics></math>,
+compute
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mi>/</mi><mn>4</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\rho(1/4)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo stretchy="false" form="prefix">(</mo><mn>7</mn><mi>/</mi><mn>8</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\rho(7/8)</annotation></semantics></math>.
+Decide whether the two character values agree. Describe the full fibre
+of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ρ</mi><annotation encoding="application/x-tex">\rho</annotation></semantics></math>
+containing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">1/4</annotation></semantics></math>.</p>
+<p><strong>Solution.</strong> The inverse of two is fourteen. The
+inverse of four is seven, and the inverse of eight is seventeen. Hence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mi>/</mi><mn>4</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">\rho(1/4)=7</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo stretchy="false" form="prefix">(</mo><mn>7</mn><mi>/</mi><mn>8</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>7</mn><mo>⋅</mo><mn>17</mn><mo>=</mo><mn>11</mn><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mspace width="0.222em"></mspace><mn>27</mn><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\rho(7/8)=7\cdot17=11\pmod{27}</annotation></semantics></math>.
+The characters are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>−</mi><mn>2</mn><mi>π</mi><mi>i</mi><mn>14</mn><mi>/</mi><mn>27</mn></mrow></msup><annotation encoding="application/x-tex">e^{-2\pi i14/27}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>−</mi><mn>2</mn><mi>π</mi><mi>i</mi><mn>22</mn><mi>/</mi><mn>27</mn></mrow></msup><annotation encoding="application/x-tex">e^{-2\pi i22/27}</annotation></semantics></math>,
+which are distinct. The fibre is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>4</mn><mo>+</mo><mn>27</mn><mi>D</mi></mrow><annotation encoding="application/x-tex">1/4+27D</annotation></semantics></math>,
+by the kernel calculation following (1). This is a coset of an additive
+subgroup of dyadic rationals, not a real interval.</p>
+<h3 id="one-pair-and-its-exact-conditional-average">2. One pair and its
+exact conditional average</h3>
+<p>Take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">n=2</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\xi=1</annotation></semantics></math>,
+and condition on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mn>1</mn></msub><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">B_1=3</annotation></semantics></math>.
+Find the two residues of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>X</mi><mn>2</mn></msub><annotation encoding="application/x-tex">X_2</annotation></semantics></math>
+modulo nine and their probabilities. Compute the modulus of this
+conditional character average and compare it with (10).</p>
+<p><strong>Solution.</strong> Formula (6) gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mn>2</mn></msub><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msup><mn>2</mn><msub><mi>A</mi><mn>2</mn></msub></msup><mo>+</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>8</mn></mrow><annotation encoding="application/x-tex">X_2=(2^{A_2}+3)/8</annotation></semantics></math>.
+The inverse of eight modulo nine is eight. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mn>2</mn></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">A_2=1</annotation></semantics></math>
+the residue is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mo>⋅</mo><mn>8</mn><mo>=</mo><mn>4</mn><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mspace width="0.222em"></mspace><mn>9</mn><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">5\cdot8=4\pmod9</annotation></semantics></math>;
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mn>2</mn></msub><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">A_2=2</annotation></semantics></math>
+it is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>7</mn><mo>⋅</mo><mn>8</mn><mo>=</mo><mn>2</mn><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mspace width="0.222em"></mspace><mn>9</mn><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">7\cdot8=2\pmod9</annotation></semantics></math>.
+Each conditional probability is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/2</annotation></semantics></math>.
+The character average is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msup><mi>e</mi><mrow><mi>−</mi><mn>2</mn><mi>π</mi><mi>i</mi><mn>4</mn><mi>/</mi><mn>9</mn></mrow></msup><mo>+</mo><msup><mi>e</mi><mrow><mi>−</mi><mn>2</mn><mi>π</mi><mi>i</mi><mn>2</mn><mi>/</mi><mn>9</mn></mrow></msup><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">(e^{-2\pi i4/9}+e^{-2\pi i2/9})/2</annotation></semantics></math>,
+of modulus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>π</mi><mi>/</mi><mn>9</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\cos(2\pi/9)</annotation></semantics></math>.
+On the other hand,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\theta(1,3)</annotation></semantics></math>
+is the centred residue fraction of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mrow><mi>−</mi><mn>2</mn></mrow></msup><annotation encoding="application/x-tex">2^{-2}</annotation></semantics></math>,
+namely
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>2</mn><mi>/</mi><mn>9</mn></mrow><annotation encoding="application/x-tex">-2/9</annotation></semantics></math>,
+since the inverse of four modulo nine is seven. Equation (10) gives the
+same value. The event being conditioned on has probability
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">1/4</annotation></semantics></math>;
+its contribution to the <em>unconditional</em> average includes that
+factor.</p>
+<h3 id="all-lattice-points-of-a-concrete-triangle">3. All lattice points
+of a concrete triangle</h3>
+<p>For the figure’s parameters, prove that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,1)</annotation></semantics></math>
+is a corner and list every point in its triangle. Show that the
+displayed path first leaves it at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>4</mn><mo>,</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(4,2)</annotation></semantics></math>.</p>
+<p><strong>Solution.</strong> At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,1)</annotation></semantics></math>
+the phase is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>Q</mi></mrow><annotation encoding="application/x-tex">1/Q</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><mn>4782969</mn></mrow><annotation encoding="application/x-tex">Q=4782969</annotation></semantics></math>,
+which is less than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>32768</mn></mrow><annotation encoding="application/x-tex">1/32768</annotation></semantics></math>.
+At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,2)</annotation></semantics></math>,
+the residue fraction is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>Q</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>Q</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(Q+1)/(2Q)</annotation></semantics></math>;
+its centred representative is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mo stretchy="false" form="prefix">(</mo><mi>Q</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>Q</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">-(Q-1)/(2Q)</annotation></semantics></math>,
+so it is not low-phase. The column is already the left boundary. The
+corner and size therefore are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,1)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>Q</mi><mi>/</mi><mn>32768</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">s=\log(Q/32768)</annotation></semantics></math>.
+Here
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>128</mn><mo>&lt;</mo><mi>Q</mi><mi>/</mi><mn>32768</mn><mo>&lt;</mo><mn>256</mn></mrow><annotation encoding="application/x-tex">128&lt;Q/32768&lt;256</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>16</mn><mo>&lt;</mo><mi>Q</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>9</mn><mo>⋅</mo><mn>32768</mn><mo stretchy="false" form="postfix">)</mo><mo>&lt;</mo><mn>32</mn></mrow><annotation encoding="application/x-tex">16&lt;Q/(9\cdot32768)&lt;32</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>&lt;</mo><mi>Q</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>81</mn><mo>⋅</mo><mn>32768</mn><mo stretchy="false" form="postfix">)</mo><mo>&lt;</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">1&lt;Q/(81\cdot32768)&lt;2</annotation></semantics></math>.
+Consequently the points are</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mi>l</mi><mo stretchy="false" form="postfix">)</mo><mo>:</mo><mi>−</mi><mn>6</mn><mo>≤</mo><mi>l</mi><mo>≤</mo><mn>1</mn><mo stretchy="false" form="postfix">}</mo><mspace width="0.222em"></mspace><mo>∪</mo><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">{</mo><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>l</mi><mo stretchy="false" form="postfix">)</mo><mo>:</mo><mi>−</mi><mn>3</mn><mo>≤</mo><mi>l</mi><mo>≤</mo><mn>1</mn><mo stretchy="false" form="postfix">}</mo><mspace width="0.222em"></mspace><mo>∪</mo><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">{</mo><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\{(1,l):-6\leq l\leq1\}
+\ \cup\ \{(2,l):-3\leq l\leq1\}
+\ \cup\ \{(3,1)\}.
+</annotation></semantics></math></span></p>
+<p>There are fourteen. No column
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>≥</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">j\geq4</annotation></semantics></math>
+contributes, because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>729</mn><mo>&gt;</mo><mi>Q</mi><mi>/</mi><mn>32768</mn></mrow><annotation encoding="application/x-tex">729&gt;Q/32768</annotation></semantics></math>.
+The path starts at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mi>−</mi><mn>6</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,-6)</annotation></semantics></math>,
+moves by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,3)</annotation></semantics></math>
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>−</mi><mn>3</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(2,-3)</annotation></semantics></math>,
+then by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo>,</mo><mn>5</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(2,5)</annotation></semantics></math>
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>4</mn><mo>,</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(4,2)</annotation></semantics></math>.
+Its first two positions belong to the list and its third does not. The
+third phase is also cancelling: reducing the inverse of two modulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>3</mn><mn>8</mn></msup><annotation encoding="application/x-tex">3^8</annotation></semantics></math>
+gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo stretchy="false" form="prefix">(</mo><mn>4</mn><mo>,</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><mo stretchy="false" form="prefix">(</mo><msup><mn>3</mn><mn>8</mn></msup><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo>⋅</mo><msup><mn>3</mn><mn>8</mn></msup><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><mn>3280</mn><mi>/</mi><mn>6561</mn></mrow><annotation encoding="application/x-tex">\theta(4,2)=-(3^8-1)/(2\cdot3^8)=-3280/6561</annotation></semantics></math>,
+whose absolute value exceeds
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>32768</mn></mrow><annotation encoding="application/x-tex">1/32768</annotation></semantics></math>.
+Thus this exit produces an actual cancelling position, not just
+departure from a chosen drawing.</p>
+<h3 id="why-an-expected-number-of-visits-is-insufficient">4. Why an
+expected number of visits is insufficient</h3>
+<p>Construct nonnegative integer random variables
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Z</mi><mi>m</mi></msub><annotation encoding="application/x-tex">Z_m</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">𝔼</mi><msub><mi>Z</mi><mi>m</mi></msub><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">\mathbb EZ_m\to\infty</annotation></semantics></math>,
+but
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">𝔼</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>λ</mi><msub><mi>Z</mi><mi>m</mi></msub></mrow></msup><mo>↛</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\mathbb E e^{-\lambda Z_m}\not\to0</annotation></semantics></math>
+for every fixed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\lambda&gt;0</annotation></semantics></math>.
+For comparison, show that independent Bernoulli visits with common
+success probability
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">p&gt;0</annotation></semantics></math>
+give an exponentially decaying expectation.</p>
+<p><strong>Solution.</strong> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Z</mi><mi>m</mi></msub><annotation encoding="application/x-tex">Z_m</annotation></semantics></math>
+equal zero and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>m</mi></mrow><annotation encoding="application/x-tex">2m</annotation></semantics></math>,
+each with probability
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/2</annotation></semantics></math>.
+Its mean is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>,
+but
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">𝔼</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>λ</mi><msub><mi>Z</mi><mi>m</mi></msub></mrow></msup><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>+</mo><msup><mi>e</mi><mrow><mi>−</mi><mn>2</mn><mi>λ</mi><mi>m</mi></mrow></msup><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>2</mn><mo>→</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\mathbb E e^{-\lambda Z_m}=(1+e^{-2\lambda m})/2\to1/2</annotation></semantics></math>.
+If instead
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Z</mi><mi>m</mi></msub><mo>=</mo><msub><mi>I</mi><mn>1</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>I</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">Z_m=I_1+\cdots+I_m</annotation></semantics></math>,
+with independent Bernoulli variables of parameter
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>,
+then independence gives</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">𝔼</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>λ</mi><msub><mi>Z</mi><mi>m</mi></msub></mrow></msup><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>p</mi><mo>+</mo><mi>p</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>λ</mi></mrow></msup><msup><mo stretchy="false" form="postfix">)</mo><mi>m</mi></msup><mo>≤</mo><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">[</mo><mi>−</mi><mi>m</mi><mi>p</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>λ</mi></mrow></msup><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">]</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\mathbb E e^{-\lambda Z_m}
+=(1-p+pe^{-\lambda})^m
+\leq\exp[-mp(1-e^{-\lambda})].
+</annotation></semantics></math></span></p>
+<p>The last inequality is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>−</mo><mi>x</mi><mo>≤</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>x</mi></mrow></msup></mrow><annotation encoding="application/x-tex">1-x\leq e^{-x}</annotation></semantics></math>.
+The renewal indicators in (21) do not have this independence, so the
+comparison identifies a useful mechanism but does not prove the required
+estimate for them.</p>
+<h2 id="what-carries-forward">What carries forward</h2>
+<p>Conditional cancellation converts a complex average into a
+nonnegative occupation estimate while retaining a precisely defined
+phase. Arithmetic lifting then shows that the exceptional positions have
+a rigid geometry: finite triangular pieces, a definite buffer between
+pieces, and a terminal strip free of them. The marked-block map
+identifies the count with visits of the same two-coordinate renewal
+process whose first-crossing law was already proved.</p>
+<p>This places the argument at the intersection of harmonic analysis,
+conditional probability and renewal theory. The next task is
+quantitative: combine exit-location bounds and triangle separation to
+control paths with too few cancelling visits, and then combine Fourier
+decay with the arithmetic separation of prefixes in the mixing estimate.
+The exact reductions here explain both what those estimates accomplish
+and why a finite orbit calculation cannot replace them.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Terence Tao, <em>Almost all orbits of the Collatz map attain almost
+bounded values</em>, <a
+href="https://arxiv.org/abs/1909.03562v7">arXiv:1909.03562v7</a>,
+Section 7, the paired conditional average, cancellation lemma, structure
+lemma for the black set, and holding-time formulation. The
+renewal-process suggestion is credited there to Marek Biskup. Theorem 4
+supplies the arithmetic structure result; the later repeated-encounter
+estimate is a separate theorem.</li>
+<li>Keith Conrad, <em>Characters of finite abelian groups (short
+version)</em>, <a
+href="https://kconrad.math.uconn.edu/blurbs/grouptheory/charthyshort.pdf">author-hosted
+notes</a>, Section 4. The preceding Fourier lesson proves the transform
+identities used to interpret (3); equations (1)–(2) give the dyadic
+character directly.</li>
+</ul>
+<nav aria-label="Lesson sequence"><p><a href="NT-COLLATZ-08.html">Previous: Renewal paths and first-crossing locations</a><br><a href="NT-COLLATZ-10.html">Next: Renewal encounters with separated regions</a></p></nav></main><footer>Original mathematical exposition and illustrations: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>. References retain their own authorship and terms.</footer></body></html>

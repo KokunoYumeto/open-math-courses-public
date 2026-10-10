@@ -6,7 +6,7 @@ Read the complete current learner and formal argument. Every worked example and 
 
 The current thirteen-file packet retains all complete mathematical proof, formula and exercise bodies, coordinates and geometry. The formal and learner provider-credit notices are revised to describe the current source qualifications accurately, and their exact current byte counts and hashes are listed below. The full thirteen-file original alternative is unchanged. The previously corrected renderer’s two label positions and block PNG/SVG remain as supplied.
 
-- [DejaVu-font-license.txt](../reproduce/L125/DejaVu-font-license.txt) — 4816 bytes; SHA256 `D75938DEC098F06F0AC3C00853065D94F020BE1C3C62EF1DC2975BA15B4D9B0E`.
+- DejaVu-font-license.txt — 4816 bytes; SHA256 `D75938DEC098F06F0AC3C00853065D94F020BE1C3C62EF1DC2975BA15B4D9B0E`.
 - [figures/block-and-stopping-flow.png](../reproduce/L125/figures/block-and-stopping-flow.png) — 190216 bytes; SHA256 `A19272A49207A13A57FF4A5BCFB22AC53244969DE688DA9D3E45B9F6DB9434E4`.
 - [figures/block-and-stopping-flow.svg](../reproduce/L125/figures/block-and-stopping-flow.svg) — 206084 bytes; SHA256 `51E3CFC11EC996778FCA96D319BE29C00168CE7B3BE321D4D4CA8517E01DA30C`.
 - [figures/cylinder-sublevels-and-open-stages.png](../reproduce/L125/figures/cylinder-sublevels-and-open-stages.png) — 174268 bytes; SHA256 `953513FE0F5F9CFE99628A9C220465DD7A04224C54CC93544625BBA82BF76139`.
@@ -19,7 +19,7 @@ The current thirteen-file packet retains all complete mathematical proof, formul
 - [morse-finite-chain-handles-formal.md](../reproduce/L125/morse-finite-chain-handles-formal.md) — 35642 bytes; SHA256 `EBD10CB578E9E30B5A92BBA7353A9007AFA4019483C7BE259183BC5DD42EB1A6`.
 - [morse-finite-chain-handles-learner.md](../reproduce/L125/morse-finite-chain-handles-learner.md) — 56934 bytes; SHA256 `FD3379CF6C8FA0E27B1A7DE0A9E421DF2D9C70AC6EE947E9DB6A64C6C89731DD`.
 - [README-reproduce.md](../reproduce/L125/README-reproduce.md) — 1567 bytes; SHA256 `5EBCCC68DF2554B664A761333585E2D3117659D484EE716855DB0DA68D7E953D`.
-- [original-alternative/DejaVu-font-license.txt](../reproduce/L125/original-alternative/DejaVu-font-license.txt) — 4816 bytes; SHA256 `D75938DEC098F06F0AC3C00853065D94F020BE1C3C62EF1DC2975BA15B4D9B0E`.
+- original-alternative/DejaVu-font-license.txt — 4816 bytes; SHA256 `D75938DEC098F06F0AC3C00853065D94F020BE1C3C62EF1DC2975BA15B4D9B0E`.
 - [original-alternative/figures/block-and-stopping-flow.png](../reproduce/L125/original-alternative/figures/block-and-stopping-flow.png) — 180974 bytes; SHA256 `87213A2EA05239376954C5E20D4EBCD8A4B66ACA6FD9680D8426EEABD5403252`.
 - [original-alternative/figures/block-and-stopping-flow.svg](../reproduce/L125/original-alternative/figures/block-and-stopping-flow.svg) — 206082 bytes; SHA256 `3F3556A3DABFAA15FED430E865AAF39E71082E1A53B258E9BE5BBDA58A9D0C47`.
 - [original-alternative/figures/cylinder-sublevels-and-open-stages.png](../reproduce/L125/original-alternative/figures/cylinder-sublevels-and-open-stages.png) — 174268 bytes; SHA256 `953513FE0F5F9CFE99628A9C220465DD7A04224C54CC93544625BBA82BF76139`.

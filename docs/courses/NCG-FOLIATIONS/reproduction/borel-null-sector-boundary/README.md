@@ -6,7 +6,7 @@ Install the external versions in [requirements.txt](requirements.txt), then run 
 
     python draw_boundary.py
 
-The portable generator uses only the two exact unmodified DejaVu fonts in fonts/, guards their hashes and records both actual loads. It writes ../../figures/borel-null-sector-composition.png, its SVG, ../../figures/borel-finite-radon-boundary.png, its SVG, and [figure-bindings.json](figure-bindings.json). Both SVGs contain glyph outlines and embed the complete [font notice](FONT-NOTICE.txt).
+The portable generator uses only the two exact unmodified DejaVu fonts in fonts/, guards their hashes and records both actual loads. It writes ../../figures/borel-null-sector-composition.png, its SVG, ../../figures/borel-finite-radon-boundary.png, its SVG, and [figure-bindings.json](figure-bindings.json). Both SVGs contain glyph outlines and embed the complete font notice.
 
 The first diagram shows two genuine globally nonproper weak leaf maps whose restrictions to the full conull good sectors are proper. The full image agrees on every countable target presentation: m finite labels give m, an empty presentation gives zero and infinitely many labels give infinity. Boxes specify sectors, not charts or a standard Borel model of the irrational quotient.
 
@@ -14,4 +14,4 @@ The second diagram shows the same compact disjoint union of foliated tori with f
 
 Reference reproduction uses Python 3.13.9, Matplotlib 3.10.9, NumPy 2.4.4 and Pillow 12.2.0. The two isolated reference runs have identical figure bytes and mathematical reports in that environment. Another environment may produce different bytes. A Python runtime and external software are not included.
 
-The independent proof and explanatory diagram expression are CC0 1.0. The exact fonts, glyphs and external software retain their own full terms in [COMPONENT-TERMS.md](COMPONENT-TERMS.md), [COMPONENTS.json](COMPONENTS.json), [FONT-NOTICE.txt](FONT-NOTICE.txt) and notices/. No source-paper image, transcription or expression is included. The historical Borel-map interface, holonomy isotropy and nontrivial modules remain outside this measure-dependent principal/module-one result.
+The independent proof and explanatory diagram expression are CC0 1.0. The exact fonts, glyphs and external software retain their own full terms in [COMPONENT-TERMS.md](COMPONENT-TERMS.md), [COMPONENTS.json](COMPONENTS.json), FONT-NOTICE.txt and notices/. No source-paper image, transcription or expression is included. The historical Borel-map interface, holonomy isotropy and nontrivial modules remain outside this measure-dependent principal/module-one result.
