@@ -6,7 +6,7 @@ Independently authored CC0 lesson; self-checked by the writing AI.
 
 Integrating a logarithmic derivative gives a determinant. Different paths to the same invertible differ by a loop, and the trace of that loop is a K-theory period. For an extension, a path to an ideal unitary becomes a loop in the quotient; its period detects the exponential boundary. A twisted endpoint condition leads instead to a real-valued homomorphism on a mapping torus.
 
-Throughout, \(\tau\) is a bounded positive trace, with the unnormalized matrix extensions and pairing \(\tau_*\) proved in Lesson 13, Theorem 1.1. We use stable invertibles and polar decomposition from Lesson 6, the positive Bott map \(\beta_A:K_0(A)\to K_1(SA)\) from [Lesson 10, Theorem 4.1](KT-OPK-10.md#4-the-boundary-proves-periodicity-and-fixes-its-sign), and the positive exponential boundary and exact sequence from [Lesson 11, Theorems 1.1 and 2.1](KT-OPK-11.md). No computation here requires the later mapping-torus or crossed-product K-theory theorems.
+Throughout, \(\tau\) is a bounded positive trace, with the unnormalized matrix extensions and pairing \(\tau_*\) proved in [Lesson 13, Theorem 1.1](KT-OPK-13.md#1-a-bounded-trace-measures-a-k-class). We use stable invertibles and polar decomposition from Lesson 6, the positive Bott map \(\beta_A:K_0(A)\to K_1(SA)\) from [Lesson 10, Theorem 4.1](KT-OPK-10.md#4-the-boundary-proves-periodicity-and-fixes-its-sign), and the positive exponential boundary and exact sequence from [Lesson 11, Theorems 1.1 and 2.1](KT-OPK-11.md). No computation here requires the later mapping-torus or crossed-product K-theory theorems.
 
 ## 1. The logarithmic integral and its periods
 
@@ -470,7 +470,7 @@ The norm closure in the universal trace quotient is essential to the step \(T(Y)
 
 ### A determinant kernel that is not norm closed
 
-A determinant kernel can also fail to be norm closed. Use the CAR algebra computed in [Lesson5, Proposition5.1](KT-OPK-05.md#5-normalized-ranks-in-uhf-limits) and Lesson13, Exercise13.4.
+A determinant kernel can also fail to be norm closed. Use the CAR algebra computed in [Lesson5, Proposition5.1](KT-OPK-05.md#5-normalized-ranks-in-uhf-limits) and [Lesson13, Exercise13.4](KT-OPK-13.md#7-exercises-with-complete-solutions).
 
 **Example 2.9 (CAR scalar phases).** For the CAR algebra \(C=\varinjlim M_{2^r}\), the kernel of the universal determinant, equivalently the determinant for its normalized trace, is not norm closed, even among scalar unitaries. It contains a dense subgroup of the scalar circle, each of whose elements is a single unitary commutator.
 
