@@ -1,1 +1,207 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Connections, curvature and holonomy</title></head><body><main><h1>Connections, curvature and holonomy</h1><p>No lessons are currently available for this course.</p><p><span class="unlinked">Open Mathematics Courses</span></p></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Fundamental classes from finite chart gluing</title>
+<link rel="stylesheet" href="../../assets/site.css">
+<script>
+window.MathJax = {
+  tex: {inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], processEscapes: true},
+  options: {ignoreHtmlClass: 'no-math', processHtmlClass: 'math', enableMenu: false},
+  startup: {pageReady: () => MathJax.startup.defaultPageReady().then(() => {
+    document.documentElement.setAttribute('data-typeset', 'complete');
+  })}
+};
+</script>
+<script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script>
+</head>
+<body><main><nav aria-label="Chapter contents"><ul><li><a href="#part-a">A. What a chain determines near a point</a></li><li><a href="#part-b">B. Detection and existence on a compact support</a></li><li><a href="#part-c">C. Closed manifolds</a></li><li><a href="#further-reading">Further reading</a></li></ul></nav><article class="lesson"><h1 id="fundamental-classes-from-finite-chart-gluing">Fundamental classes from finite chart gluing</h1>
+<p><em>Written and self-checked by GPT-6 Astra (OpenAI), at Ultra, October 2026. New exposition dedicated to the public domain under CC0.</em></p>
+<p>A fundamental class is characterized by what it does near each point. This chapter constructs the class with coefficients in <span class="math" data-tex="\(\mathbb F_2=\mathbb Z/2\mathbb Z\)">\(\mathbb F_2=\mathbb Z/2\mathbb Z\)</span> by combining finitely many coordinate neighbourhoods around a compact set. The construction uses singular chains and does not require a triangulation, a cell decomposition or a smooth structure.</p>
+<p>Let <span class="math" data-tex="\(M\)">\(M\)</span> be a Hausdorff topological manifold of dimension <span class="math" data-tex="\(d\geq0\)">\(d\geq0\)</span>, without boundary. Thus each point has an open neighbourhood homeomorphic to an open subset of <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>. Second countability is permitted but is not needed for the compact-set arguments here. All homology in this chapter has coefficients in <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span>. We write
+<span class="math math-display" data-tex="\[
+H_q(M\mid K)=H_q(M,M\setminus K;\mathbb F_2).
+\tag{A.1}
+\]">\[
+H_q(M\mid K)=H_q(M,M\setminus K;\mathbb F_2).
+\tag{A.1}
+\]</span>
+For <span class="math" data-tex="\(L\subset K\)">\(L\subset K\)</span>, inclusion of the complementary subspaces gives a <strong>restriction</strong>
+<span class="math math-display" data-tex="\[
+r_{K,L}:H_q(M\mid K)\longrightarrow H_q(M\mid L).
+\tag{A.2}
+\]">\[
+r_{K,L}:H_q(M\mid K)\longrightarrow H_q(M\mid L).
+\tag{A.2}
+\]</span>
+These maps are induced by the identity on the numerator singular-chain complex; hence <span class="math" data-tex="\(r_{L,J}r_{K,L}=r_{K,J}\)">\(r_{L,J}r_{K,L}=r_{K,J}\)</span> whenever <span class="math" data-tex="\(J\subset L\subset K\)">\(J\subset L\subset K\)</span>. For <span class="math" data-tex="\(K=\varnothing\)">\(K=\varnothing\)</span> the relative complex is zero.</p>
+<p>The required chain theory is proved in the earlier Thom chapter: <a href="DG-CHAR-06.html#lemma-k-1">DG-CHAR-06 K.1</a> gives the boundary and prism identities; <a href="DG-CHAR-06.html#lemma-e-1">DG-CHAR-06 E.1</a> gives the exact sequence of complexes; <a href="DG-CHAR-06.html#theorem-e-2">DG-CHAR-06 E.2</a> proves excision; <a href="DG-CHAR-06.html#lemma-e-4">DG-CHAR-06 E.4</a> proves the exact sequence for two supports; and <a href="DG-CHAR-06.html#lemma-e-5">DG-CHAR-06 E.5</a> computes sphere and punctured-space homology with arbitrary coefficients. We use their ordinary singular-chain versions, which apply to topological spaces. The elementary compactness and norm facts used below are proved in <a href="../../local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.0</a> and <a href="../../local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.1</a>.</p>
+<h2 id="part-a">A. What a chain determines near a point</h2>
+<p id="lemma-a-1"><strong>Lemma A.1 (local groups and convex supports).</strong> At every <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>,
+<span class="math math-display" data-tex="\[
+H_q(M\mid\{x\})\cong
+\begin{cases}
+\mathbb F_2,&amp;q=d,\\
+0,&amp;q\ne d.
+\end{cases}
+\tag{A.3}
+\]">\[
+H_q(M\mid\{x\})\cong
+\begin{cases}
+\mathbb F_2,&amp;q=d,\\
+0,&amp;q\ne d.
+\end{cases}
+\tag{A.3}
+\]</span>
+Write <span class="math" data-tex="\(\mu_x\)">\(\mu_x\)</span> for the unique nonzero element in degree <span class="math" data-tex="\(d\)">\(d\)</span>. If <span class="math" data-tex="\(P\subset\mathbb R^d\)">\(P\subset\mathbb R^d\)</span> is nonempty, compact and convex, restriction to any <span class="math" data-tex="\(x\in P\)">\(x\in P\)</span> gives an isomorphism
+<span class="math math-display" data-tex="\[
+H_q(\mathbb R^d\mid P)\longrightarrow H_q(\mathbb R^d\mid\{x\}).
+\tag{A.4}
+\]">\[
+H_q(\mathbb R^d\mid P)\longrightarrow H_q(\mathbb R^d\mid\{x\}).
+\tag{A.4}
+\]</span>
+Consequently <span class="math" data-tex="\(P\)">\(P\)</span> has a unique class <span class="math" data-tex="\(\mu_P\)">\(\mu_P\)</span> with nonzero restriction at every one of its points. The same assertion holds for the inverse image of <span class="math" data-tex="\(P\)">\(P\)</span> in a manifold chart containing it.</p>
+<p><strong>Proof.</strong> Compact subsets of a Hausdorff space are closed by <a href="../../local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.1</a>. If a compact <span class="math" data-tex="\(K\)">\(K\)</span> lies in an open chart <span class="math" data-tex="\(U\subset M\)">\(U\subset M\)</span>, excision gives
+<span class="math math-display" data-tex="\[
+H_q(U,U\setminus K)\ \cong\ H_q(M,M\setminus K).
+\tag{A.5}
+\]">\[
+H_q(U,U\setminus K)\ \cong\ H_q(M,M\setminus K).
+\tag{A.5}
+\]</span>
+Indeed, excise the closed set <span class="math" data-tex="\(M\setminus U\)">\(M\setminus U\)</span>, which is contained in the open set <span class="math" data-tex="\(M\setminus K\)">\(M\setminus K\)</span>. The chart homeomorphism identifies the left-hand pair with the corresponding pair in its open image <span class="math" data-tex="\(V\subset\mathbb R^d\)">\(V\subset\mathbb R^d\)</span>. Excising <span class="math" data-tex="\(\mathbb R^d\setminus V\)">\(\mathbb R^d\setminus V\)</span> from the Euclidean pair gives the further identification
+<span class="math math-display" data-tex="\[
+H_q(V,V\setminus K')\ \cong\
+H_q(\mathbb R^d,\mathbb R^d\setminus K'),
+\tag{A.6}
+\]">\[
+H_q(V,V\setminus K')\ \cong\
+H_q(\mathbb R^d,\mathbb R^d\setminus K'),
+\tag{A.6}
+\]</span>
+where <span class="math" data-tex="\(K'\)">\(K'\)</span> is the compact chart image. Both identifications commute with restrictions to compact subsets, because they arise from inclusions of pairs and a homeomorphism.</p>
+<p>For <span class="math" data-tex="\(K=\{x\}\)">\(K=\{x\}\)</span>, the Euclidean group in (A.6) is computed in <a href="DG-CHAR-06.html#lemma-e-5">DG-CHAR-06 E.5</a>. In positive dimension its reduced pair sequence identifies it with the reduced homology of a punctured Euclidean space, shifted by one degree. Radial deformation retracts that space onto <span class="math" data-tex="\(S^{d-1}\)">\(S^{d-1}\)</span>, whose groups are computed there. In degree zero the relative group is zero because the complement is nonempty and maps onto the connected ambient space's degree-zero group. In dimension zero the pair is one point relative to the empty set. Its degree-zero homology is <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span>, and its higher groups vanish. This proves (A.3). Since a one-dimensional <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span>-vector space has a single nonzero element, <span class="math" data-tex="\(\mu_x\)">\(\mu_x\)</span> does not require an orientation choice or a preferred chart.</p>
+<p>For (A.4), translate <span class="math" data-tex="\(x\)">\(x\)</span> to the origin and choose <span class="math" data-tex="\(R&gt;\sup_{p\in P}|p|\)">\(R&gt;\sup_{p\in P}|p|\)</span>. On either complement use
+<span class="math math-display" data-tex="\[
+H(v,t)=\left(1-t+\frac{tR}{|v|}\right)v,\qquad 0\leq t\leq1.
+\tag{A.7}
+\]">\[
+H(v,t)=\left(1-t+\frac{tR}{|v|}\right)v,\qquad 0\leq t\leq1.
+\tag{A.7}
+\]</span>
+It fixes the sphere of radius <span class="math" data-tex="\(R\)">\(R\)</span> and retracts the complement of the origin onto that sphere. It also preserves the complement of <span class="math" data-tex="\(P\)">\(P\)</span>. If <span class="math" data-tex="\(v\notin P\)">\(v\notin P\)</span> and <span class="math" data-tex="\(|v|\leq R\)">\(|v|\leq R\)</span>, the homotopy moves outward on its ray. Were <span class="math" data-tex="\(\lambda v\in P\)">\(\lambda v\in P\)</span> for <span class="math" data-tex="\(\lambda\geq1\)">\(\lambda\geq1\)</span>, convexity and <span class="math" data-tex="\(0\in P\)">\(0\in P\)</span> would imply
+<span class="math" data-tex="\(v=\lambda^{-1}(\lambda v)+(1-\lambda^{-1})0\in P\)">\(v=\lambda^{-1}(\lambda v)+(1-\lambda^{-1})0\in P\)</span>, a contradiction. If <span class="math" data-tex="\(|v|&gt;R\)">\(|v|&gt;R\)</span>, the homotopy has norm at least <span class="math" data-tex="\(R\)">\(R\)</span> throughout and misses <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p>Thus inclusion of these two complements is a homotopy equivalence through their common sphere. Homotopy invariance and the natural pair sequence, <a href="DG-CHAR-06.html#lemma-k-1">DG-CHAR-06 K.1</a> and <a href="DG-CHAR-06.html#lemma-e-1">DG-CHAR-06 E.1</a>, show that (A.4) is an isomorphism in every positive degree; the zero-degree relative groups both vanish for <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>. For <span class="math" data-tex="\(d=0\)">\(d=0\)</span> there is just the one-point pair. This is also the explicit convex-support proof in <a href="DG-CHAR-06.html#corollary-e-6">DG-CHAR-06 E.6</a>.</p>
+<p>The group in degree <span class="math" data-tex="\(d\)">\(d\)</span> in (A.4) is <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span>. Its unique nonzero class maps to a nonzero class at every point because each map (A.4) is an isomorphism. This gives <span class="math" data-tex="\(\mu_P\)">\(\mu_P\)</span>. Equations (A.5) and (A.6) transfer the assertion to chart supports. □</p>
+<p id="lemma-a-2"><strong>Lemma A.2 (local comparison of values).</strong> Let <span class="math" data-tex="\(K\subset M\)">\(K\subset M\)</span> be compact and let <span class="math" data-tex="\(\alpha\in H_d(M\mid K)\)">\(\alpha\in H_d(M\mid K)\)</span>. For <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span>, write
+<span class="math math-display" data-tex="\[
+r_{K,\{x\}}\alpha=c_\alpha(x)\mu_x,\qquad c_\alpha(x)\in\mathbb F_2.
+\tag{A.8}
+\]">\[
+r_{K,\{x\}}\alpha=c_\alpha(x)\mu_x,\qquad c_\alpha(x)\in\mathbb F_2.
+\tag{A.8}
+\]</span>
+The function <span class="math" data-tex="\(c_\alpha:K\to\mathbb F_2\)">\(c_\alpha:K\to\mathbb F_2\)</span>, where the target is discrete, is locally constant.</p>
+<p><strong>Proof.</strong> Represent <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> by a finite singular chain <span class="math" data-tex="\(z\)">\(z\)</span> whose boundary lies in <span class="math" data-tex="\(C_{d-1}(M\setminus K;\mathbb F_2)\)">\(C_{d-1}(M\setminus K;\mathbb F_2)\)</span>. After cancellation of equal simplices, let <span class="math" data-tex="\(C\)">\(C\)</span> be the union of the images of the simplices in <span class="math" data-tex="\(\partial z\)">\(\partial z\)</span>. This set is compact, since each simplex is compact, and it is disjoint from <span class="math" data-tex="\(K\)">\(K\)</span>. It is therefore closed in <span class="math" data-tex="\(M\)">\(M\)</span>. For a given <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span>, take a chart and a closed coordinate ball <span class="math" data-tex="\(B\)">\(B\)</span> around <span class="math" data-tex="\(x\)">\(x\)</span>, with <span class="math" data-tex="\(x\)">\(x\)</span> in its interior, such that <span class="math" data-tex="\(B\)">\(B\)</span> lies in the chart and avoids <span class="math" data-tex="\(C\)">\(C\)</span>. Such a ball exists because the complement of <span class="math" data-tex="\(C\)">\(C\)</span> is an open neighbourhood of <span class="math" data-tex="\(x\)">\(x\)</span>. In dimension zero use the one-point chart.</p>
+<p>The same chain <span class="math" data-tex="\(z\)">\(z\)</span> is a relative cycle for <span class="math" data-tex="\(M\mid B\)">\(M\mid B\)</span>. By A.1 its class there is either zero or <span class="math" data-tex="\(\mu_B\)">\(\mu_B\)</span>, and its restrictions are respectively zero at every point of <span class="math" data-tex="\(B\)">\(B\)</span> or <span class="math" data-tex="\(\mu_y\)">\(\mu_y\)</span> at every <span class="math" data-tex="\(y\in B\)">\(y\in B\)</span>. For <span class="math" data-tex="\(y\in K\cap B\)">\(y\in K\cap B\)</span>, this restriction is also the point restriction of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, since both use the same chain <span class="math" data-tex="\(z\)">\(z\)</span>. Thus <span class="math" data-tex="\(c_\alpha\)">\(c_\alpha\)</span> is constant on <span class="math" data-tex="\(K\cap\operatorname{int}B\)">\(K\cap\operatorname{int}B\)</span>, proving local constancy.</p>
+<p>The class of <span class="math" data-tex="\(z\)">\(z\)</span> relative to points outside <span class="math" data-tex="\(K\)">\(K\)</span> need not be independent of the chosen representative of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. The assertion only compares the well-defined restrictions on <span class="math" data-tex="\(K\)">\(K\)</span>; no extension outside <span class="math" data-tex="\(K\)">\(K\)</span> is part of its conclusion. □</p>
+<h2 id="part-b">B. Detection and existence on a compact support</h2>
+<p id="theorem-b-1"><strong>Theorem B.1 (point restrictions detect the top group).</strong> For every compact <span class="math" data-tex="\(K\subset M\)">\(K\subset M\)</span>,
+<span class="math math-display" data-tex="\[
+H_q(M\mid K)=0\quad(q&gt;d),
+\qquad
+H_d(M\mid K)\longrightarrow
+\prod_{x\in K}H_d(M\mid\{x\})
+\ \text{is injective}.
+\tag{B.1}
+\]">\[
+H_q(M\mid K)=0\quad(q&gt;d),
+\qquad
+H_d(M\mid K)\longrightarrow
+\prod_{x\in K}H_d(M\mid\{x\})
+\ \text{is injective}.
+\tag{B.1}
+\]</span></p>
+<p><strong>Proof.</strong> We prove both statements together. The two-support sequence <a href="DG-CHAR-06.html#lemma-e-4">DG-CHAR-06 E.4</a>, for compact and hence closed <span class="math" data-tex="\(A,B\subset M\)">\(A,B\subset M\)</span>, has the form
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\cdots&amp;\longrightarrow H_{q+1}(M\mid A\cap B)
+\longrightarrow H_q(M\mid A\cup B)
+\\
+&amp;\longrightarrow H_q(M\mid A)\oplus H_q(M\mid B)
+\\
+&amp;\longrightarrow H_q(M\mid A\cap B)\longrightarrow\cdots.
+\end{aligned}
+\tag{B.2}
+\]">\[
+\begin{aligned}
+\cdots&amp;\longrightarrow H_{q+1}(M\mid A\cap B)
+\longrightarrow H_q(M\mid A\cup B)
+\\
+&amp;\longrightarrow H_q(M\mid A)\oplus H_q(M\mid B)
+\\
+&amp;\longrightarrow H_q(M\mid A\cap B)\longrightarrow\cdots.
+\end{aligned}
+\tag{B.2}
+\]</span>
+Its middle map consists of the two restrictions, and the next map is their difference, equal to their sum over <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span>. The earlier proof obtains this exact sequence from quotient singular-chain complexes and the small-chain equivalence for the open complements; it is valid for these topological spaces.</p>
+<p>Suppose the two conclusions hold on <span class="math" data-tex="\(A,B,A\cap B\)">\(A,B,A\cap B\)</span>. If <span class="math" data-tex="\(q&gt;d\)">\(q&gt;d\)</span>, the group of the union in (B.2) has zero group on either side, so it vanishes. In degree <span class="math" data-tex="\(d\)">\(d\)</span>, the preceding intersection group is zero, so restriction to the two pieces is injective. A class whose restrictions at all points of the union vanish restricts to zero on each piece by their detection property, and hence is zero. Therefore both conclusions pass to <span class="math" data-tex="\(A\cup B\)">\(A\cup B\)</span>.</p>
+<p>Begin in <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>. Empty supports have zero relative groups. For nonempty compact convex supports, A.1 proves both conclusions. They follow for every finite union of compact convex sets by induction on the number of sets: the intersection of the last set with the preceding union is a union of at most one fewer compact convex sets, so the same induction covers that intersection.</p>
+<p>Now let <span class="math" data-tex="\(K\subset\mathbb R^d\)">\(K\subset\mathbb R^d\)</span> be arbitrary compact and nonempty. If <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, it is the one-point set and has already been treated. Otherwise, represent any relative class <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> by a finite chain <span class="math" data-tex="\(z\)">\(z\)</span>, and let <span class="math" data-tex="\(C\)">\(C\)</span> be the compact support of its boundary as in A.2. If <span class="math" data-tex="\(C\ne\varnothing\)">\(C\ne\varnothing\)</span>, its distance from <span class="math" data-tex="\(K\)">\(K\)</span> is positive. For an elementary verification, if the infimum were zero, choose <span class="math" data-tex="\(c_j\in C,k_j\in K\)">\(c_j\in C,k_j\in K\)</span> with <span class="math" data-tex="\(|c_j-k_j|&lt;1/j\)">\(|c_j-k_j|&lt;1/j\)</span>. Compactness supplies successive subsequences with <span class="math" data-tex="\(c_j\to c\in C\)">\(c_j\to c\in C\)</span> and <span class="math" data-tex="\(k_j\to k\in K\)">\(k_j\to k\in K\)</span>; then <span class="math" data-tex="\(c=k\)">\(c=k\)</span>, contrary to disjointness. The compactness and subsequence facts are <a href="../../local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.1</a>.</p>
+<p>Choose closed balls centred at points of <span class="math" data-tex="\(K\)">\(K\)</span>, small enough to avoid <span class="math" data-tex="\(C\)">\(C\)</span>, whose interiors cover <span class="math" data-tex="\(K\)">\(K\)</span>; retain finitely many by compactness. If <span class="math" data-tex="\(C\)">\(C\)</span> is empty there is no avoidance restriction. Their union <span class="math" data-tex="\(P\)">\(P\)</span> is a finite union of compact convex sets, contains <span class="math" data-tex="\(K\)">\(K\)</span>, and avoids <span class="math" data-tex="\(C\)">\(C\)</span>. The same chain <span class="math" data-tex="\(z\)">\(z\)</span> gives a class <span class="math" data-tex="\(\beta\in H_q(\mathbb R^d\mid P)\)">\(\beta\in H_q(\mathbb R^d\mid P)\)</span> with <span class="math" data-tex="\(r_{P,K}\beta=\alpha\)">\(r_{P,K}\beta=\alpha\)</span>.</p>
+<p>For <span class="math" data-tex="\(q&gt;d\)">\(q&gt;d\)</span>, the proved vanishing on <span class="math" data-tex="\(P\)">\(P\)</span> gives <span class="math" data-tex="\(\beta=0\)">\(\beta=0\)</span>, hence <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span>. In degree <span class="math" data-tex="\(d\)">\(d\)</span>, assume every point restriction of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is zero. For each chosen ball <span class="math" data-tex="\(B\)">\(B\)</span>, its centre <span class="math" data-tex="\(x\)">\(x\)</span> belongs to <span class="math" data-tex="\(K\)">\(K\)</span>. The restriction of <span class="math" data-tex="\(\beta\)">\(\beta\)</span> to <span class="math" data-tex="\(B\)">\(B\)</span> restricts to zero at <span class="math" data-tex="\(x\)">\(x\)</span>, so A.1 makes it zero on <span class="math" data-tex="\(B\)">\(B\)</span>. Consequently <span class="math" data-tex="\(\beta\)">\(\beta\)</span> restricts to zero at every point of the union <span class="math" data-tex="\(P\)">\(P\)</span>, and finite-union detection gives <span class="math" data-tex="\(\beta=0\)">\(\beta=0\)</span>. Again <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span>. This proves both statements for all compact Euclidean supports.</p>
+<p>For a compact support in one chart of <span class="math" data-tex="\(M\)">\(M\)</span>, transfer this result using the excision identifications (A.5) and (A.6), which commute with point restrictions.</p>
+<p>Finally take a general compact <span class="math" data-tex="\(K\subset M\)">\(K\subset M\)</span>. Around each point of <span class="math" data-tex="\(K\)">\(K\)</span> choose an open coordinate ball <span class="math" data-tex="\(V\)">\(V\)</span> whose closed ball lies within the chart. That closed ball is compact in <span class="math" data-tex="\(M\)">\(M\)</span>, being the continuous image of a compact Euclidean ball, and closed because <span class="math" data-tex="\(M\)">\(M\)</span> is Hausdorff. It is the closure of <span class="math" data-tex="\(V\)">\(V\)</span> in <span class="math" data-tex="\(M\)">\(M\)</span>: it is closed, contains <span class="math" data-tex="\(V\)">\(V\)</span>, and every point of its boundary is a limit of points of <span class="math" data-tex="\(V\)">\(V\)</span> in the chart. Choose finitely many of the opens <span class="math" data-tex="\(V_1,\ldots,V_m\)">\(V_1,\ldots,V_m\)</span> covering <span class="math" data-tex="\(K\)">\(K\)</span> and put <span class="math" data-tex="\(K_j=K\cap\overline V_j\)">\(K_j=K\cap\overline V_j\)</span>.</p>
+<p>These compact sets cover <span class="math" data-tex="\(K\)">\(K\)</span>, each lies in one chart, and their finite intersections remain compact. Induct on the number of such chart-contained pieces. The intersection
+<span class="math math-display" data-tex="\[
+(K_1\cup\cdots\cup K_{m-1})\cap K_m
+=\bigcup_{j&lt;m}(K_j\cap K_m)
+\]">\[
+(K_1\cup\cdots\cup K_{m-1})\cap K_m
+=\bigcup_{j&lt;m}(K_j\cap K_m)
+\]</span>
+has at most <span class="math" data-tex="\(m-1\)">\(m-1\)</span> chart-contained compact pieces. Thus the induction hypothesis applies to it as well as to the preceding union and the last piece. The union argument from (B.2) completes the proof. Only finitely many charts around each compact support were used. □</p>
+<p id="theorem-b-2"><strong>Theorem B.2 (the canonical compact-support class).</strong> Each compact <span class="math" data-tex="\(K\subset M\)">\(K\subset M\)</span> has a unique class
+<span class="math math-display" data-tex="\[
+\mu_K\in H_d(M\mid K)
+\quad\text{such that}\quad
+r_{K,\{x\}}\mu_K=\mu_x\quad(x\in K).
+\tag{B.3}
+\]">\[
+\mu_K\in H_d(M\mid K)
+\quad\text{such that}\quad
+r_{K,\{x\}}\mu_K=\mu_x\quad(x\in K).
+\tag{B.3}
+\]</span>
+For compact <span class="math" data-tex="\(L\subset K\)">\(L\subset K\)</span>, these classes satisfy <span class="math" data-tex="\(r_{K,L}\mu_K=\mu_L\)">\(r_{K,L}\mu_K=\mu_L\)</span>.</p>
+<p><strong>Proof.</strong> Uniqueness follows from B.1, by subtracting two classes with the prescribed point restrictions. Set <span class="math" data-tex="\(\mu_\varnothing=0\)">\(\mu_\varnothing=0\)</span>.</p>
+<p>For nonempty compact <span class="math" data-tex="\(K\subset\mathbb R^d\)">\(K\subset\mathbb R^d\)</span>, take a closed ball <span class="math" data-tex="\(P\)">\(P\)</span> containing it. A.1 supplies <span class="math" data-tex="\(\mu_P\)">\(\mu_P\)</span>, whose image in <span class="math" data-tex="\(H_d(\mathbb R^d\mid K)\)">\(H_d(\mathbb R^d\mid K)\)</span> has all the required point restrictions, by composition of restrictions. In dimension zero take <span class="math" data-tex="\(P=\mathbb R^0\)">\(P=\mathbb R^0\)</span>. For <span class="math" data-tex="\(K\)">\(K\)</span> lying in a chart with image <span class="math" data-tex="\(V\subset\mathbb R^d\)">\(V\subset\mathbb R^d\)</span>, perform this construction in all of <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span> and then use the inverse of the excision isomorphism (A.6). The large ball is not required to lie in <span class="math" data-tex="\(V\)">\(V\)</span>; only <span class="math" data-tex="\(K\)">\(K\)</span> must do so. Equation (A.5) then gives the class on <span class="math" data-tex="\(M\)">\(M\)</span>. The maps to point groups are isomorphisms, hence preserve their unique nonzero elements.</p>
+<p>For general <span class="math" data-tex="\(K\)">\(K\)</span>, use the finite chart-contained pieces in B.1. Suppose classes have been constructed on <span class="math" data-tex="\(A=K_1\cup\cdots\cup K_{j-1}\)">\(A=K_1\cup\cdots\cup K_{j-1}\)</span> and <span class="math" data-tex="\(B=K_j\)">\(B=K_j\)</span>. Their restrictions to <span class="math" data-tex="\(A\cap B\)">\(A\cap B\)</span> have the same point values. B.1's detection on that compact intersection therefore makes these two restrictions equal. Exactness of (B.2) gives a class on <span class="math" data-tex="\(A\cup B\)">\(A\cup B\)</span> with the specified restrictions to <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span>. It has the required values at every point of the union. Induction gives <span class="math" data-tex="\(\mu_K\)">\(\mu_K\)</span>, and uniqueness makes the construction independent of the chosen charts, balls and gluing lifts.</p>
+<p>Finally <span class="math" data-tex="\(r_{K,L}\mu_K\)">\(r_{K,L}\mu_K\)</span> has the prescribed values at every point of <span class="math" data-tex="\(L\)">\(L\)</span>. Uniqueness on <span class="math" data-tex="\(L\)">\(L\)</span> identifies it with <span class="math" data-tex="\(\mu_L\)">\(\mu_L\)</span>, proving compatibility. □</p>
+<h2 id="part-c">C. Closed manifolds</h2>
+<p id="corollary-c-1"><strong>Corollary C.1 (the mod-two fundamental class).</strong> If <span class="math" data-tex="\(M\)">\(M\)</span> is compact and without boundary, it has a unique class
+<span class="math math-display" data-tex="\[
+[M]_2\in H_d(M;\mathbb F_2)
+\]">\[
+[M]_2\in H_d(M;\mathbb F_2)
+\]</span>
+whose image at every point is <span class="math" data-tex="\(\mu_x\)">\(\mu_x\)</span>, and <span class="math" data-tex="\(H_q(M;\mathbb F_2)=0\)">\(H_q(M;\mathbb F_2)=0\)</span> for <span class="math" data-tex="\(q&gt;d\)">\(q&gt;d\)</span>. If <span class="math" data-tex="\(M\)">\(M\)</span> has <span class="math" data-tex="\(c\)">\(c\)</span> connected components, then
+<span class="math math-display" data-tex="\[
+H_d(M;\mathbb F_2)\cong\mathbb F_2^{\,c},
+\tag{C.1}
+\]">\[
+H_d(M;\mathbb F_2)\cong\mathbb F_2^{\,c},
+\tag{C.1}
+\]</span>
+with the component fundamental classes as a basis and <span class="math" data-tex="\([M]_2\)">\([M]_2\)</span> their sum. This includes <span class="math" data-tex="\(c=0\)">\(c=0\)</span> for the empty manifold.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(K=M\)">\(K=M\)</span> in B.1 and B.2. Its complement is empty, so the relative groups are the absolute groups. This gives the existence, uniqueness and vanishing assertions.</p>
+<p>For a connected nonempty <span class="math" data-tex="\(M\)">\(M\)</span>, A.2 says that the local coefficient of any <span class="math" data-tex="\(\alpha\in H_d(M;\mathbb F_2)\)">\(\alpha\in H_d(M;\mathbb F_2)\)</span> is locally constant on <span class="math" data-tex="\(M\)">\(M\)</span>. A locally constant map to <span class="math" data-tex="\(\{0,1\}\)">\(\{0,1\}\)</span> on a connected space is constant: its two inverse images are disjoint open sets covering the space, and if both were nonempty they would disconnect it. If the coefficient is zero, B.1 gives <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span>; if it is one, B.2 gives <span class="math" data-tex="\(\alpha=[M]_2\)">\(\alpha=[M]_2\)</span>. Thus this group is precisely <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span>, and restriction to any point is an isomorphism.</p>
+<p>Every point has a connected open coordinate-ball neighbourhood. Each connected component of <span class="math" data-tex="\(M\)">\(M\)</span> is therefore open: it contains such a neighbourhood of each of its points. The components are also closed, because their complements are unions of the other open components. Compactness of <span class="math" data-tex="\(M\)">\(M\)</span> now implies that there are finitely many components, and each is compact.</p>
+<p>A singular simplex has connected image, since its domain is convex and hence path connected. It therefore lies in one component. The singular-chain complex of <span class="math" data-tex="\(M\)">\(M\)</span> consequently splits as the direct sum of the complexes of these finitely many components, with boundary respecting the summands. Kernels and images of this componentwise boundary split in the same way, so homology does too. Applying the connected case to each component gives (C.1). The sum of its component classes has the required value at each point, so it is <span class="math" data-tex="\([M]_2\)">\([M]_2\)</span> by uniqueness. A compact zero-manifold is a finite discrete set; here the same construction is exactly the sum of its point classes. The empty singular-chain complex gives the stated empty case. □</p>
+<h2 id="further-reading">Further reading</h2>
+<p>Allen Hatcher, <a href="https://pi.math.cornell.edu/~hatcher/AT/ATch3.pdf"><em>Algebraic Topology</em>, author-hosted Chapter 3</a>, Section 3.3, especially Lemma 3.27 and Theorem 3.26 on pages 236–238. The local-homology and compact-gluing arguments above use this freely accessible author version together with the exact programme chain proofs linked in the text. No external theorem is used as a substitute for those proofs.</p>
+</article><footer><p><a href="src/DG-CHAR-02.md">Chapter source</a> · <a href="../../index.html">Course contents</a></p><p>New exposition: CC0 1.0.</p><p><span class="unlinked">MathJax licence</span> · <span class="unlinked">Font notices</span></p></footer></main></body></html>

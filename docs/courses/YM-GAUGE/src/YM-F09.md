@@ -2492,3 +2492,29 @@ derivative terms, original Sobolev weights and complete curvature tuple.
 
 The two chapters supply exact inputs for the remaining uniform
 physical-time difference calculation. Unit 9 remains in progress.
+
+
+## 39. Temporal differences and the electric field
+
+[Temporal differences, electric data and boundary increments](../classical-uniform-difference.html)
+proves UD.1–UD.35, including the original-anchor calculation UD.4a.
+The temporal heat bounds have degree one in actual field differences.
+The chapter supplies the complete finite backward-wave proof used by
+the electric estimate, evaluates the signed electric datum, and proves
+the boundary time increments by integrating the heat equation before
+taking norms. Eight full exercise solutions cover the kernel, scalar
+constants, exact product order and the retained lower endpoint.
+
+## 40. The full spatial tension difference
+
+[Spatial tension differences and their wave estimates](../classical-spatial-tension-difference.html)
+proves TDI.1–TDI.35. Its paired electric smoothing feeds the zero-data
+spatial tension equation, full derivative recurrence, six wave bounds
+and the signed heat-boundary operation. Every temporal and gauge term
+is retained. Eight full exercise solutions derive the Bianchi difference,
+covariant flux, exact tensor constants and weighted energy identity.
+
+Together these two chapters provide the complete temporal and spatial
+tension comparison operations. The full initial-data estimate must also
+control the remaining paired wave terms and reconstruct the original
+physical gauge. Unit 9 remains in progress.

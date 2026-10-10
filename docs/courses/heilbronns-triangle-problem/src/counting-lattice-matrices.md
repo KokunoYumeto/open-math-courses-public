@@ -28,7 +28,11 @@ Let \(L\) have rank \(s\). Choose \(v_1,\ldots,v_s\in L\) successively, \(v_i\) 
 
 For the other inequality let \(Q=\{a:|a_i|<\lambda_i/\sqrt s\text{ for all }i\}\). A nonzero \(x\in L\cap Q\) has a last nonzero coordinate \(a_j\); then \(x\) lies outside the span of \(v_1,\ldots,v_{j-1}\), and \(|x|^2<\sum_{i\leq j}\lambda_i^2/s\leq\lambda_j^2\), contradicting the choice of \(v_j\). So \(L\cap Q=\{0\}\). Since \(Q\) is convex and symmetric, \(\frac12Q-\frac12Q=Q\), and the translates \(\frac12Q+x\), \(x\in L\), are pairwise disjoint. Let \(F=\{\sum t_ib_i:0\leq t_i<1\}\) for a basis \(b_i\) of \(L\); the sets \(F+x\), \(x\in L\), partition the span. Hence, by countable additivity and translation invariance,
 \[
-\mu(\tfrac12Q)=\sum_{x\in L}\mu\bigl(\tfrac12Q\cap(F+x)\bigr)=\sum_{x\in L}\mu\bigl((\tfrac12Q-x)\cap F\bigr)\leq\mu(F)=\det L,
+\begin{aligned}
+\mu(\tfrac12Q)&=\sum_{x\in L}\mu\bigl(\tfrac12Q\cap(F+x)\bigr)\\
+&=\sum_{x\in L}\mu\bigl((\tfrac12Q-x)\cap F\bigr)\\
+&\leq\mu(F)=\det L,
+\end{aligned}
 \]
 the sets \((\frac12Q-x)\cap F\) being disjoint subsets of \(F\), and \(\mu(F)=\det L\) by 263A applied to the unit cube. Since \(\mu(\frac12Q)=\prod_i\lambda_i/\sqrt s=s^{-s/2}\prod_i\lambda_i\), the inequality follows. The last statement is Lemma 1.1(b) with \(m=\det L_0/\det L\leq\prod\lambda_i/\det L\leq s^{s/2}\). \(\square\)
 
@@ -67,7 +71,10 @@ C\,(R_1R_2R_3)^2\bigl(\log(2R_1)\bigr)^2 .
 
 *Case \(\mu_2>R_3\).* Then every admissible \(u_3\) lies on the line of a shortest vector of \(L_y\), and there are at most \(1+2R_3/\mu_1\leq3R_3/\mu_1\) of them (Lemma 3.1(b), with \(\mu_1\leq R_3\)). Sort the normals by the powers of two \(U,Z\geq1\) with \(U\leq\mu_1<2U\) and \(Z\leq\mu_2<2Z\); then \(U\leq R_3\), \(Z\leq R_2\) and \(\frac12UZ\leq|y|<4UZ\). We claim that at most \(C_1U^4Z^2\) normals \(y\) have given \(U,Z\). Let \(z\) be a shortest nonzero vector of \(L_y\); it is primitive in \(\mathbb Z^3\) (dividing it by a common factor would give a shorter vector of \(L_y\)) and \(U\leq|z|<2U\), so there are at most \(125\cdot8U^3\) choices of \(z\). For fixed \(z\), the normal \(y\) lies in \(L_z=\mathbb Z^3\cap z^\perp\), of determinant \(|z|\), and \(|y|<4UZ\). The successive lengths \(\nu_1\leq\nu_2\) of \(L_z\) satisfy \(\nu_1\geq1\) (nonzero integer vectors) and \(\nu_1\nu_2\leq2|z|\), so \(\nu_2\leq2|z|<4U\leq4UZ\), and Lemma 3.1(a) gives at most \(36(4UZ)^2/|z|\leq576UZ^2\) choices of \(y\). This proves the claim. The triples with normals of given \(U,Z\) therefore number at most
 \[
-C_1U^4Z^2\cdot\frac{36R_1^2}{UZ/2}\cdot\frac{36R_2^2}{UZ/2}\cdot\frac{3R_3}U=C_2R_1^2R_2^2R_3U\leq C_2(R_1R_2R_3)^2,
+\begin{aligned}
+&C_1U^4Z^2\cdot\frac{36R_1^2}{UZ/2}\cdot\frac{36R_2^2}{UZ/2}\cdot\frac{3R_3}U\\
+&\quad=C_2R_1^2R_2^2R_3U\leq C_2(R_1R_2R_3)^2,
+\end{aligned}
 \]
 and there are at most \((1+\log_2R_3)(1+\log_2R_2)\) pairs \((U,Z)\).
 

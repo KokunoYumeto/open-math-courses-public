@@ -6,7 +6,7 @@ A partial Fourier–Laplace transform parallel to a boundary leaves a polynomial
 
 Read [Hyperbolicity and lower order terms](hyperbolicity-and-lower-order-terms.md), [Multiple characteristics and allowed lower order terms](multiple-characteristics-and-allowed-lower-order-terms.md), [Cauchy bounds, root counts and analytic extensions](cauchy-bounds-and-root-counts.md), [Rescaled symbols and stable strength](rescaled-symbols-and-stable-strength.md). [Fourier transforms, finite spectra and convex separation](../prerequisites/prerequisite-bridges.html) supplies the Schwartz Fourier transform; [Polynomial and contour interfaces for stable boundary models](../prerequisites/stable-prerequisite-bridges.html) supplies finite algebra and matrices; Boundary flux and weak identities supplies the complex Green identity.
 
-Two prerequisites remain planned in [Distributions, kernels and analytic singularities](../prerequisites/planned-foundation-proofs.html): a homogeneous real-root hyperbolic polynomial has an open convex component cone, every direction in that cone is hyperbolic and its imaginary tube is zero-free; a holomorphic germ of \(z\)-axis order \(d\), whose local zeros for a real parameter \(r\) satisfy \(\operatorname{Im}z\le C|r|\), has total Taylor order at least \(d\). Their full contracts are stated in [Hyperbolicity and lower order terms](hyperbolicity-and-lower-order-terms.md). Uses of those two entries are conditional on their planned proofs.
+The homogeneous real-root hyperbolic polynomial component is an open convex cone, every direction in it is hyperbolic, and its imaginary tube is zero-free; [Real roots and their convex component](../AN02-L192.html#4-pass-to-multiple-roots-and-obtain-convexity), Theorem 4.1, gives the full proof. The remaining analytic-order prerequisite is planned in [Distributions, kernels and analytic singularities](../prerequisites/planned-foundation-proofs.html): a holomorphic germ of \(z\)-axis order \(d\), whose local zeros for a real parameter \(r\) satisfy \(\operatorname{Im}z\le C|r|\), has total Taylor order at least \(d\). Their full contracts are stated in [Hyperbolicity and lower order terms](hyperbolicity-and-lower-order-terms.md). Only the analytic-order uses remain conditional on the planned proof.
 
 Basic references are Grubb's *Distributions and Operators* ([author's lecture notes](https://web.math.ku.dk/~grubb/distribution.htm)), Melrose's *Differential Analysis* and Hörmander's treatment of constant-coefficient equations. The linked prerequisite lessons supply the proofs used below.
 
@@ -28,7 +28,7 @@ Assume \(P\) is hyperbolic in \(N\): \(F(N)\ne0\), and for some real \(\tau_0\),
  \tag{2}
 \]
 The homogeneous principal polynomial is hyperbolic in \(N\). Its cone
-\(\Gamma=\Gamma(F,N)\) is the open convex component containing \(N\), relative to the planned homogeneous-cone theorem. The transport argument gives the full zero-free tube
+\(\Gamma=\Gamma(F,N)\) is the open convex component containing \(N\), using the available homogeneous-cone theorem. The transport argument gives the full zero-free tube
 \[
 \begin{gathered}
 \mathcal T=\{\zeta\in\mathbb C^n:

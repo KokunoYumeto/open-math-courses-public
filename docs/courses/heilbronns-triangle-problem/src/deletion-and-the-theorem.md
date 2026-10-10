@@ -23,7 +23,10 @@ Take \(2n_r\) samples with the shared choices and conditional draws of the sixth
 
 *Proof.* There are at most \(2n_r^2\) pairs and \(\frac43n_r^3\) triples, so by linearity of expectation (no independence between the events is needed) and the two bounds of the sixth lesson,
 \[
-\frac{\mathbb EZ}{n_r}\leq C\,n_r\frac{(hq)^6}{N^3}+C\,n_r^2\bigl(\log(2N)\bigr)^2\frac h{N^3r^d}.
+\begin{aligned}
+\frac{\mathbb EZ}{n_r}&\leq C\,n_r\frac{(hq)^6}{N^3}\\
+&\quad+C\,n_r^2\bigl(\log(2N)\bigr)^2\frac h{N^3r^d}.
+\end{aligned}
 \]
 For the first term, \(n_r\leq rN^{3/2}\tau^{-1/2}\) and \(N=(hq)^{10}\) give \(n_r(hq)^6N^{-3}\leq r(hq)^{-9}\to0\), as \(r\leq h\). For the second, \(n_r^2\leq r^2N^3/\tau\) gives the bound \((\log(2N))^2\frac h\tau r^{2-d}\). By (1.1), \(h/\tau\leq3B\leq600k^2r^{30}\). Also \(\log(2N)\leq C_k\log r\), since \(N=(hq)^{10}\), \(q\leq2h^{100}\) and \(h=B^k\leq(200k^2r^{30})^k\). With \(d=41\) the second term is at most \(C_k(\log r)^2r^{32-41}\to0\). \(\square\)
 
@@ -72,7 +75,10 @@ With \(d=41\), \(M=\binom{163}{41}\approx10^{38.8}\), \(T=\binom M3\approx10^{11
 
 *Proof of Theorem 1.3 of the first lesson.* Let \(n\) be large and put \(m=\lceil(n/A_k)^{1/\alpha}\rceil\). By Lemma 4.3 of the first lesson there is a prime \(r\) with \(m<r\leq2m\); for large \(n\) it is large enough for all the constructions above. Since \((n/A_k)^{1/\alpha}\geq1\), \(m\leq2(n/A_k)^{1/\alpha}\), and (2.1) gives
 \[
-n\leq A_km^\alpha\leq A_kr^\alpha\leq n_r\leq D_kr^\alpha\leq D_k(2m)^\alpha\leq\frac{4^\alpha D_k}{A_k}\,n .
+\begin{aligned}
+n&\leq A_km^\alpha\leq A_kr^\alpha\leq n_r\\
+&\leq D_kr^\alpha\leq D_k(2m)^\alpha\leq\frac{4^\alpha D_k}{A_k}\,n .
+\end{aligned}
 \]
 So \(n\leq n_r\leq C_kn\) with \(C_k=\max\{1,4^\alpha D_k/A_k\}\); this uses only the two-sided bounds, not any monotonicity of \(n_r\). Keep any \(n\) points of \(P_r\): deleting points cannot decrease the smallest triangle area. Since \(-2+\eta<0\), (2.3) gives
 \[

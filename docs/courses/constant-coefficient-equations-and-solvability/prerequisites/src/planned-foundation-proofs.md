@@ -4,23 +4,19 @@ This page records precisely stated prerequisites and their individual proof stat
 
 ## Local distributional Holmgren uniqueness
 
-Contract identifier: `generic-noncharacteristic-Holmgren`. Proof status: planned.
+Contract identifier: `generic-noncharacteristic-Holmgren`. Proof status: available.
 
-One prerequisite remains planned in Distributions, kernels and analytic singularities: a distribution solving an analytic-coefficient equation and vanishing on one side of a noncharacteristic \(C^1\) surface vanishes near that surface. The uses of this Holmgren theorem are conditional on that planned proof.
+A distribution solving an analytic-coefficient equation and vanishing on one side of a noncharacteristic \(C^1\) surface vanishes near that surface. [Analytic coefficients and one-sided uniqueness](../../AN02-L191.html#3-a-continuously-differentiable-surface-needs-no-analytic-flattening), Theorem 3.2, supplies the complete proof for every scalar order and for square systems with invertible highest normal coefficient.
 
-Statement retained from [Analytic root barriers and supported solvability](../../src/analytic-root-barriers-and-supported-solvability.md), source lines 9–9.
-
-The two prerequisites in [Incoming normal roots at a flat boundary](../../src/incoming-normal-roots-at-a-flat-boundary.md) remain planned prerequisites: the homogeneous hyperbolic cone theorem and the analytic zero-strip Taylor-order theorem. One further planned theorem is used here: local Holmgren uniqueness for a distribution solving an analytic-coefficient equation and vanishing on one side of a noncharacteristic \(C^1\) surface. The two continuation arguments below are proved from precisely this local theorem. No general convex continuation theorem or arbitrary-growth Cauchy uniqueness theorem is imported.
-
-Statement retained from [Boundary determinants annihilate causal solutions](../../src/boundary-determinants-annihilate-causal-solutions.md), source lines 90–90.
+The proof first reduces every finite order to the available first-order distributional theorem, then handles a \(C^1\) surface by an interior analytic-paraboloid contact. It assumes no regularity, trace or growth bound for the solution. The other cone, order and microlocal prerequisites retain their separate statuses.
 
 ## Homogeneous hyperbolic component cone and zero-free tube
 
-Contract identifier: `homogeneous-hyperbolic-cone`. Proof status: planned.
+The proof is available in [Real roots and their convex component](../../AN02-L192.html#4-pass-to-multiple-roots-and-obtain-convexity), Theorem 4.1.
 
-- **Homogeneous cone entry.** For a positive-degree homogeneous \(F\), if \(F(N)\ne0\) and \(F(\xi+zN)\) has only real roots for every real \(\xi\), the component \(\Gamma(F,N)\) of \(N\) in \(\{F\ne0\}\subset\mathbb R^n\) is an open convex cone. Every \(\theta\in\Gamma\) is a hyperbolic direction, \(F/F(N)\) has real coefficients, and the roots of \(F(x+z\theta)\) are strictly negative exactly when \(x\in\Gamma\). Also \(F(x+iy)\ne0\) for real \(x\), \(y\in\Gamma\).
+**Theorem.** For a positive-degree homogeneous \(F\), if \(F(N)\ne0\) and \(F(\xi+zN)\) has only real roots for every real \(\xi\), the component \(\Gamma(F,N)\) of \(N\) in \(\{F\ne0\}\subset\mathbb R^n\) is an open convex cone. Every \(\theta\in\Gamma\) is a hyperbolic direction, \(F/F(N)\) has real coefficients, and the roots of \(F(x+z\theta)\) are strictly negative exactly when \(x\in\Gamma\). Also \(F(x+iy)\ne0\) for real \(x\), \(y\in\Gamma\).
 
-Statement retained from [Hyperbolicity and lower order terms](../../src/hyperbolicity-and-lower-order-terms.md), source lines 9–9.
+The proof includes multiple roots and complex coefficients. The zero-free tube uses imaginary vectors inside the open component; no zero-free boundary assertion is made. Nonzero constant polynomials are treated separately. The analytic Taylor-order theorem retains its planned status.
 
 ## One-sided analytic zero-strip total Taylor order
 

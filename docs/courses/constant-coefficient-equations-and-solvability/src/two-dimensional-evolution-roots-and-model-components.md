@@ -2,17 +2,17 @@
 
 *Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
 
-In two variables the characteristic roots can be followed all the way around infinity. Their leading phases and the first lower powers determine whether a fixed complex ball can always find an upper root value. We prove the finite-cover expansion, the complete root criterion, and the dominated comparison with polynomial model operators. The sufficient solvability and component statements use the root-barrier equivalence and its planned Holmgren theorem.
+In two variables the characteristic roots can be followed all the way around infinity. Their leading phases and the first lower powers determine whether a fixed complex ball can always find an upper root value. We prove the finite-cover expansion, the complete root criterion, and the dominated comparison with polynomial model operators. The sufficient solvability and component statements use the root-barrier equivalence and its available Holmgren theorem.
 
 Read [Analytic root barriers and supported solvability](analytic-root-barriers-and-supported-solvability.md), [Evolution operators in a component of equal strength](evolution-operators-in-a-component-of-equal-strength.md), [Rescaled symbols and stable strength](rescaled-symbols-and-stable-strength.md), [Primitive factors and moving polynomial roots](primitive-factors-and-moving-roots.md). [Fourier transforms, finite spectra and convex separation](../prerequisites/prerequisite-bridges.html) supplies the Schwartz Fourier transform; [Polynomial and contour interfaces for stable boundary models](../prerequisites/stable-prerequisite-bridges.html) supplies finite algebra and matrices; Boundary flux and weak identities supplies the complex Green identity.
 
-One prerequisite remains planned in [Distributions, kernels and analytic singularities](../prerequisites/planned-foundation-proofs.html): a distribution solving an analytic-coefficient equation and vanishing on one side of a noncharacteristic \(C^1\) surface vanishes near that surface. The sufficient solvability and component uses here are conditional on that planned Holmgren proof.
+The local distributional Holmgren theorem is proved in [Analytic coefficients and one-sided uniqueness](../AN02-L191.html#3-a-continuously-differentiable-surface-needs-no-analytic-flattening), Theorem 3.2: a distribution solving an analytic-coefficient equation and vanishing on one side of a noncharacteristic \(C^1\) surface vanishes near that surface. The uses of the Holmgren theorem draw on that complete proof.
 
 Basic references are Grubb's *Distributions and Operators* ([author's lecture notes](https://web.math.ku.dk/~grubb/distribution.htm)), Melrose's *Differential Analysis* and Hörmander's treatment of constant-coefficient equations. The linked prerequisite lessons supply the proofs used below.
 
 ## Conventions and the complete statement
 
-Use \(D=-i\partial\), tangential frequency \(z\), normal frequency \(s\), and \(H=\{t\ge0\}\). An evolution polynomial is a nonzero \(P\in\mathbb C[z,s]\) satisfying the five equivalent conditions of [Analytic root barriers and supported solvability](analytic-root-barriers-and-supported-solvability.md)/[Supported fundamental solutions and test estimates](supported-fundamental-solutions-and-test-estimates.md)/[Global supported solvability on countably many scales](global-supported-solvability-on-countably-many-scales.md), with the planned Holmgren theorem in the sufficient direction. Set
+Use \(D=-i\partial\), tangential frequency \(z\), normal frequency \(s\), and \(H=\{t\ge0\}\). An evolution polynomial is a nonzero \(P\in\mathbb C[z,s]\) satisfying the five equivalent conditions of [Analytic root barriers and supported solvability](analytic-root-barriers-and-supported-solvability.md)/[Supported fundamental solutions and test estimates](supported-fundamental-solutions-and-test-estimates.md)/[Global supported solvability on countably many scales](global-supported-solvability-on-countably-many-scales.md), with the available Holmgren theorem in the sufficient direction. Set
 \[
 \begin{gathered}
 S_P(\xi,T)=
@@ -207,7 +207,7 @@ For the remaining centers \(|c|\le C_0\), set \(b_c=c+\operatorname{sign}_0(c)(R
 \end{gathered}
 \tag{16}
 \]
-The leading coefficient is nonzero on this compact real annulus. The elementary polynomial root bound therefore bounds every normal root there in absolute value by one constant \(M_0\). Evaluation at \(b_c\) gives height at least \(-M_0\), for every analytic root on the original ball. A common radius and height have been established for all real centers. [Analytic root barriers and supported solvability](analytic-root-barriers-and-supported-solvability.md)'s full-frequency/tangential adapter and the root-barrier equivalence prove supported solvability, with the planned Holmgren use in the sufficient direction.
+The leading coefficient is nonzero on this compact real annulus. The elementary polynomial root bound therefore bounds every normal root there in absolute value by one constant \(M_0\). Evaluation at \(b_c\) gives height at least \(-M_0\), for every analytic root on the original ball. A common radius and height have been established for all real centers. [Analytic root barriers and supported solvability](analytic-root-barriers-and-supported-solvability.md)'s full-frequency/tangential adapter and the root-barrier equivalence prove supported solvability, with the available Holmgren use in the sufficient direction.
 
 ## The polynomial model and the large-window comparison
 

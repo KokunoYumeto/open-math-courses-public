@@ -12362,8 +12362,8 @@ Plotting source, exact data, full PNG, and editable SVG.
 | IK.G: full \(\gamma^{-1}\gamma_*C^R_{\Delta}\) identification with the full coefficient class; nonlinear coordinate transitions and zero-section/off-zero compatibility | Complete cofinal-support, angular-witness, zero-detection, nonlinear and ordinary compatibility proof: [§5.45, IG.1–IG.5 and IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product) **Status:** Proved in §5.45 |
 | IK.M: canonical full holomorphic relative-cone cup/excision/normalized-trace comparison with IK.10 | Complete bounded-normalization, full cup/excision/trace and final-support primitive proof: [§5.45, IG.1–IG.5 and IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product) **Status:** Proved in §5.45 |
 | Whole-ring degree-one/all-degree action, support preservation and finite full-infinite-order derived diagrams | Complete actual finite-diagram realization and module-derived action: [§5.46, ID.1–ID.6](#5-46-finite-infinite-order-diagrams-on-actual-derived-support-modules); exact final-cone, cone-open, round-domain, restricted action-source and common-collar hypotheses retained **Status:** Proved under ID.1–ID.4 hypotheses |
-| All finite matrix relations, right flatness, proper-ideal detection and unit injectivity | Matrix proof: [Section 5.47](#5-47-arbitrary-finite-matrices-and-right-flatness-of-the-full-infinite-order-ring). Ideal/unit and other scalar changes remain open **Status:** Matrix proved; rest open |
-| Ordinary/mixed scalar changes, infinite Späth division and balanced reconstruction | Separate analytic proofs required **Status:** Open |
+| All finite matrix relations, right flatness, proper-ideal detection and unit injectivity | Matrix proof: [Section 5.47](#5-47-arbitrary-finite-matrices-and-right-flatness-of-the-full-infinite-order-ring). Ideal/unit/faithful-extension proof: [Section 5.48](#5-48-proper-ideals-and-faithful-extension-to-the-full-infinite-order-ring). Other scalar changes remain open. **Status:** Matrix and ideal/unit/faithful extension proved; other scalar changes open |
+| Ordinary/mixed scalar changes, infinite Späth division and balanced reconstruction | The genuine microlocal/ordinary extension is proved in §§5.47–5.48. Other ordinary/mixed scalar changes, infinite Späth division and balanced reconstruction require separate analytic proofs. **Status:** Other scalar changes and reconstruction open |
 | Propagation, purity, arbitrary-section separation, monodromy stability/full infinite-order D-type linearity | Separate actual module/solution proofs required **Status:** Open |
 | Faithful finite D-type embedding, finite poles, intrinsic order/half order, full C1, initial generators, arbitrary proper analytic regularity | Separate complete proofs required **Status:** Open |
 | Every remaining BB/KL, GL14/GL16, affine/critical/factorization assertion | Preserved governing full programme scope **Status:** Unfinished |
@@ -12378,12 +12378,12 @@ Plotting source, exact data, full PNG, and editable SVG.
 | Full IK.G identification of arbitrary \(\gamma^{-1}\gamma_*C^R_\Delta\) sections with the coefficient sheaf | Complete cofinal-support, angular-witness, zero-detection, nonlinear and ordinary compatibility proof: [§5.45, IG.1–IG.5 and IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product) **Status:** Proved in §5.45 |
 | Full IK.M product of arbitrary mixed pole/log thick-cone kernels | Complete bounded-normalization, full cup/excision/trace and final-support primitive proof: [§5.45, IG.1–IG.5 and IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product) **Status:** Proved in §5.45 |
 | Whole infinite-order support-preserving degree-one/all-degree action and module-derived finite diagrams | Complete actual finite-diagram realization and module-derived action: [§5.46, ID.1–ID.6](#5-46-finite-infinite-order-diagrams-on-actual-derived-support-modules); exact final-cone, cone-open, round-domain, restricted action-source and common-collar hypotheses retained **Status:** Proved under ID.1–ID.4 hypotheses |
-| Finite matrix relations, right flatness, proper-ideal detection/unit injectivity, ordinary and mixed scalar changes | Matrix proof: [Section 5.47](#5-47-arbitrary-finite-matrices-and-right-flatness-of-the-full-infinite-order-ring). Ideal/unit and other scalar changes remain open **Status:** Matrix proved; rest open |
+| Finite matrix relations, right flatness, proper-ideal detection/unit injectivity, ordinary and mixed scalar changes | Full geometric and genuine ordinary matrix/right-flatness proof: [Section 5.47](#5-47-arbitrary-finite-matrices-and-right-flatness-of-the-full-infinite-order-ring). Proper-ideal/unit/faithful-extension proof: [Section 5.48](#5-48-proper-ideals-and-faithful-extension-to-the-full-infinite-order-ring). Other ordinary/mixed scalar changes remain open. **Status:** Full geometric/ordinary extension proved; other scalar changes open |
 | Infinite Späth division and balanced reconstruction | Separate complete division and reconstruction for every actual singular-support section **Status:** Open |
 | Moving-sector propagation, singular-support purity, arbitrary-section separation, special-action/monodromy stability, infinite-order D-type linearity | Separate actual module/solution proofs **Status:** Open |
 | Faithful finite D-type embedding, finite poles/intrinsic order/half-order/full C1/initial generators, arbitrary analytic proper regularity, every retained BB/KL/GL14/GL16/affine/critical/factorization assertion | The full original programme dependency chain **Status:** Unfinished |
 
-The full infinite-order geometric ring theorem is proved in [§5.45, IG.1–IG.5 and IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product). Supplied strict angular data and the ordinary diagonal subring retain their explicit scope. Section 5.47 proves the arbitrary finite-matrix relation criterion and right flatness of the full infinite-order microlocal ring over the finite-order ring for all algebraic left modules, including the genuine ordinary zero-section version. Faithfulness, other scalar changes, reconstruction, propagation, analytic proper regularity and every other unresolved original mathematical programme assertion remain open.
+The full infinite-order geometric ring theorem is proved in [§5.45, IG.1–IG.5 and IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product). Supplied strict angular data and the ordinary diagonal subring retain their explicit scope. Section 5.47 proves the arbitrary finite-matrix relation criterion and right flatness of the full infinite-order microlocal ring over the finite-order ring for all algebraic left modules, including the genuine ordinary zero-section version. Section 5.48 proves proper-ideal detection and arbitrary-module unit injectivity and faithful exact extension for the full geometric and genuine ordinary zero-section rings. Other scalar changes, reconstruction, propagation, analytic proper regularity and every other unresolved original mathematical programme assertion remain open.
 
 
 ### 5.45. The full geometric infinite-order kernel ring and its canonical product
@@ -12630,7 +12630,7 @@ Editable SVG · Exact data · Figure source
 | Ordinary zero-section and actual off-zero restriction compatibility | IG.16, the complete ordinary Laurent calculation, and [§5.44, OC.1–OC.4 and TC.1–TC.4](#oc-1-explicit-exhaustions-on-every-ordinary-puncture-intersection) |
 | Full canonical mixed pole/log proper cup/excision/trace and ring compatibility | IM.1–IM.6 below |
 | Full infinite-order support-preserving degree-one/all-degree and derived diagrams | Actual finite full-infinite diagrams and all-degree strict module-derived action are proved in [§5.46, ID.1–ID.6](#5-46-finite-infinite-order-diagrams-on-actual-derived-support-modules), with every geometric and common-domain premise checked |
-| Every matrix relation/flatness/faithfulness, ordinary/mixed scalar change, Späth/reconstruction, propagation/purity/separation, special/monodromy/D-type, finite poles/order/half-order/C1/initial generator/arbitrary analytic proper, BB/KL/GL14/GL16/affine/critical/factorization and sourcing/proof obligation | Separate proofs required; the full remaining scope is stated after IM.6 |
+| Every matrix relation/flatness/faithfulness, ordinary/mixed scalar change, Späth/reconstruction, propagation/purity/separation, special/monodromy/D-type, finite poles/order/half-order/C1/initial generator/arbitrary analytic proper, BB/KL/GL14/GL16/affine/critical/factorization and sourcing/proof obligation | Matrix relations/right flatness are proved in §5.47 and proper-ideal detection/unit injectivity/faithful exact extension in §5.48; the other listed obligations retain their separate scope after IM.6 |
 
 The geometric identification is multiplicative by IM.1–IM.6 below. A particular module-derived application still requires the exact cone-open, round-domain, support-to-output and common-collar hypotheses of §5.43; no such application is inferred here.
 
@@ -13025,14 +13025,14 @@ The right panel displays IM.16 on the standard support \(T'_i\), with the actual
 Editable SVG · Exact data · Figure source
 
 
-This proves the full coefficient/geometric-kernel ring, its canonical mixed product, unit, associativity, nonlinear coordinate compatibility and ordinary zero-section restriction. A particular all-degree module-derived application still requires the exact cone-open, round-domain, common-collar and output-support hypotheses of §5.43. Section 5.47 proves the full arbitrary finite-matrix relation theorem and right flatness for all algebraic left modules, including the genuine ordinary zero-section restriction. Extension faithfulness and unit injectivity, other ordinary and mixed scalar changes, infinite Späth division and whole-germ reconstruction remain to be proved. Moving-sector propagation, purity, arbitrary-section separation, special action and monodromy stability, full infinite-order D-type linearity and faithful D-type embedding remain separate. Finite poles, intrinsic and half order, full C1 and characteristic cutoff, initial generators and arbitrary analytic proper regularity also remain required. Generalized and nonactual central characters, other regular complex characters, singular and parabolic blocks, full IC/Hecke/KL, GL14/GL16, stack/ind/restricted local systems, affine/critical/factorization and every other unresolved mathematical assertion retain their full scope.
+This proves the full coefficient/geometric-kernel ring, its canonical mixed product, unit, associativity, nonlinear coordinate compatibility and ordinary zero-section restriction. A particular all-degree module-derived application still requires the exact cone-open, round-domain, common-collar and output-support hypotheses of §5.43. Section 5.47 proves the full arbitrary finite-matrix relation theorem and right flatness for all algebraic left modules, including the genuine ordinary zero-section restriction. Section 5.48 proves extension faithfulness and unit injectivity for every algebraic left module and sheaf in the full geometric and genuine ordinary zero-section rings. Other ordinary and mixed scalar changes, infinite Späth division and whole-germ reconstruction remain to be proved. Moving-sector propagation, purity, arbitrary-section separation, special action and monodromy stability, full infinite-order D-type linearity and faithful D-type embedding remain separate. Finite poles, intrinsic and half order, full C1 and characteristic cutoff, initial generators and arbitrary analytic proper regularity also remain required. Generalized and nonactual central characters, other regular complex characters, singular and parabolic blocks, full IC/Hecke/KL, GL14/GL16, stack/ind/restricted local systems, affine/critical/factorization and every other unresolved mathematical assertion retain their full scope.
 
 
 ### 5.46. Finite infinite-order diagrams on actual derived support modules
 
 We realize any specified finite full-symbol diagram, including its product, zero, idempotent, differential, map and contraction identities, in one canonical ring on one newly chosen actual domain. Under the checked final-cone and support hypotheses, that ring acts on a strict module-derived support object in every degree. Supplied bounded finite-projective contractions transfer by the explicit tensor and Hom formulas below.
 
-The complete geometric ring and mixed product are [§5.45, IG.1–IG.5 and IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product). The entire earlier [§5.43, DL.1–DL.9, DLG.1–DLG.7 and DLH.1–DLH.4](#5-43-the-canonical-all-degree-action-and-its-derived-module-structure) supplies the full relative-kernel action, analytic concentration and genuine module-derived construction; the [§5.44 coefficient and trace proofs](#5-44-full-homogeneous-coefficients-and-ordinary-infinite-order-kernels) retain every homogeneous/spatial index and exact sign. A finite diagram uses one common domain; the whole symbol stalk need not be represented on a preassigned domain. Arbitrary-module flatness and faithfulness require further proofs.
+The complete geometric ring and mixed product are [§5.45, IG.1–IG.5 and IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product). The entire earlier [§5.43, DL.1–DL.9, DLG.1–DLG.7 and DLH.1–DLH.4](#5-43-the-canonical-all-degree-action-and-its-derived-module-structure) supplies the full relative-kernel action, analytic concentration and genuine module-derived construction; the [§5.44 coefficient and trace proofs](#5-44-full-homogeneous-coefficients-and-ordinary-infinite-order-kernels) retain every homogeneous/spatial index and exact sign. A finite diagram uses one common domain; the whole symbol stalk need not be represented on a preassigned domain. The all-module right-flatness proof is Section 5.47; proper-ideal detection, arbitrary-module unit injectivity and faithful exact extension are proved in Section 5.48. Other scalar changes require separate proofs.
 
 The freely accessible human target is [Micro-hyperbolic systems, Corollary3.2.5](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/Microhyp.pdf). Every mathematical premise is proved here or in the complete earlier lesson proofs linked above.
 
@@ -13206,7 +13206,7 @@ H\phi=(-1)^k\phi h,\\ dH+Hd=1.
 
 Expanding gives cancellation of \(d_Q\phi h\) with signs \((-1)^k+(-1)^{k+1}\), leaving \(\phi(hd_P+d_Ph)=\phi\). Restrict these formulas through the split idempotents. All sums in the projective direction are finite even if the support resolution is unbounded above. The exact finite-column filtration of DL.8 proves that these projective tensor/Hom complexes compute the corresponding derived models. The contraction therefore transfers in the actual module-derived category with all degree, idempotent and map identities intact.
 
-This proves finite full-infinite-order instantiation under the checked geometric hypotheses. Section 5.47, MF.1–MF.8 proves the general matrix relation criterion and right flatness, including the ordinary zero-section version. Proper-ideal detection, arbitrary-module unit injectivity, other ordinary/mixed scalar-change flatness, infinite Späth division/reconstruction, propagation/purity/separation, D-type/C1/half-order/initial generators, analytic proper regularity and every other unresolved programme obligation require their own complete proofs.
+This proves finite full-infinite-order instantiation under the checked geometric hypotheses. [Section 5.47](#5-47-arbitrary-finite-matrices-and-right-flatness-of-the-full-infinite-order-ring) proves the full finite-matrix relation criterion and genuine microlocal/ordinary all-module right flatness; [Section 5.48](#5-48-proper-ideals-and-faithful-extension-to-the-full-infinite-order-ring) proves proper-ideal detection, arbitrary-module unit injectivity and faithful exact extension. Other ordinary/mixed scalar changes, infinite Späth division/reconstruction, propagation/purity/separation, D-type/C1/half-order/initial generators, analytic proper regularity and every other unresolved programme obligation require their own complete proofs.
 
 ![One actual round-domain margin and the strict module-derived mechanism](assets/full-infinite-derived-instantiation.png)
 
@@ -13608,6 +13608,547 @@ Editable SVG, exact data, and reproducible plotting source.
 **Figure MF.2.** Exact real slice of the coefficient radius family \(R_u(r)=r^{3/2}\), \(R_z(r)=r\), suitable for the illustrative principal relation \((-z,u)\). The normalized sample radii are \(r/r_0=1,7/8,3/4,5/8,1/2\), corresponding to \(L=4\) equal scalar margins \(r_0/8\). The full domains are complex polydiscs; this is not a geometric support cone. For the general matrix the finite coefficient heads determine its own weights \(v_a\), and the derivative-margin lower bound uses their fixed minima on the same compact radius interval. Bounded coefficient divisions consume no radius margin, including when inserted between derivatives. MFB.4 reserves one additional fixed interval for the whole zero-remainder iteration. Proof: MFA.1–MFA.3 and MFB.2/MFB.4. Coordinates and the distinction between this explicit sample and the arbitrary-matrix proof are retained in the source and data.
 
 Editable SVG, exact data, and reproducible plotting source.
+
+
+
+### 5.48. Proper ideals and faithful extension to the full infinite-order ring
+
+We prove that every proper finite-order left ideal remains proper in the full geometric infinite-order ring, including the genuine ordinary zero section. Combined with the right-flatness theorem of [§5.47, proof sections MF.1–MF.7](#5-47-arbitrary-finite-matrices-and-right-flatness-of-the-full-infinite-order-ring), this gives unit injectivity and faithful exact, conservative scalar extension for every algebraic left module and every sheaf of left modules. The precise tensor-cohomology and support consequences are included below.
+
+The complete analytic coefficient and convergence arguments are given here as proof sections FEA.1–FEA.4 and FEB.1–FEB.5 before FEP.1–FEP.10. Earlier actual finite division and strictness are [§5.21](#5-21-actual-simultaneous-division-and-finite-stalk-relations) and [§5.24.2](#5-24-2-an-additional-consequence-of-the-actual-division). The full coefficient and kernel bounds are [§5.44, proof sections IK.1–IK.5](#5-44-full-homogeneous-coefficients-and-ordinary-infinite-order-kernels), and the source-defined ring, mixed product, coordinate maps and final-support witnesses are [§5.45, proof sections IG.1–IG.5 and IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product). Other scalar changes, reconstruction, propagation and the broader programme require separate proofs.
+
+The complete coefficient argument below is used for proper-ideal detection without invoking right flatness. Every coefficient operator is bounded complex linear on the stated common domain. The later unit-injectivity consequences use the right-flatness theorem of [§5.47, proof section MF.7](#5-47-arbitrary-finite-matrices-and-right-flatness-of-the-full-infinite-order-ring).
+
+**Analytic coefficient division with uniform radii.**
+
+This is a local proof used by the matrix argument. All coefficient operators below are complex linear. They need not be linear over the coefficient ring or over an operator ring. That distinction is essential for a nonprojective relation module.
+
+#### FEA.1. Norms, initial exponents and finite heads
+
+Let \(w=(w_1,\ldots,w_q)\) be finitely many complex variables centered at the point. For polyradius \(R\), put
+\[
+\begin{gathered}
+|f|_R=\sum_\alpha |f_\alpha|R^\alpha,\\
+|v|_{R,c}=\sum_i c_i|v_i|_R.
+\end{gathered}
+\tag{FEA.1}
+\]
+The first norm is finite on every strictly smaller polydisc than a polydisc of holomorphy: the iterated Cauchy bound gives \( |f|_R\le M\prod_a(1-R_a/S_a)^{-1}\) for \(R<S\). Coefficient convolution proves submultiplicativity. These coefficient spaces are weighted \(\ell^1\) Banach spaces. A restriction to any set of Taylor exponents has norm at most one.
+
+For a submodule \(I\subset\mathcal O_{w,0}^{b}\), order a nonzero vector's Taylor exponents by total degree, then lexicographic order, then component. Its initial exponent is translated by multiplication by a Taylor monomial. Thus its initial diagram is upward closed in each component of \(\mathbf N^q\). An upward closed subset has finitely many minimal elements: every infinite sequence in \(\mathbf N^q\) has an earlier term componentwise at most a later term. Induct on \(q\), taking a subsequence with constant or increasing first coordinate, and then apply induction to the remaining coordinates. An infinite set of incomparable minima is impossible. Each exponent dominates a minimum, by minimizing in the finite box below it.
+
+Choose finitely many actual \(g_i\in I\) realizing the minima \((\alpha_i,j_i)\), with leading coefficient one. Their initial orthants cover the diagram. Choose positive rational weights \(v_a\) close enough to one that every different Taylor exponent in each \(g_i\) has weight strictly larger than its head. Here is the finite justification. If \(L=\max_i|\alpha_i|\), a small hierarchical perturbation \(v_a=1+\delta^a\) realizes lexicographic comparison among exponents of degree at most \(L\). Make it smaller still so \((L+1)\min v_a>L\max v_a\). All higher total degrees then have larger weight than every head. At the same exponent, other nonzero components occur only after \(j_i\). Put \(c_j=\kappa^j\) and choose \(\kappa>0\) so that the weighted sum of those finitely many same-exponent coefficients is less than \(c_{j_i}/16\).
+
+Set \(R_a(r)=r^{v_a}\). For small enough \(r_0>0\), all divisors are holomorphic on a larger polydisc, and, simultaneously for every \(r\in[r_0/2,r_0]\),
+\[
+\begin{gathered}
+\max_i\frac{|g_i-w^{\alpha_i}e_{j_i}|_{R(r),c}}{c_{j_i}R(r)^{\alpha_i}}\\
+<\theta<\tfrac12.
+\end{gathered}
+\tag{FEA.2}
+\]
+Indeed every different exponent has a positive weight gap. Its divided radius contribution decreases as \(r\) decreases. Dominate their sum by the absolute Taylor series at one fixed larger radius and apply dominated convergence as \(r_0\to0\). The already fixed same-exponent component tolerance supplies the remaining bound. This argument controls the entire analytic series, not a finite Taylor approximation.
+
+#### FEA.2. A literal bounded splitting
+
+Order the heads, assign each exponent in their orthants to the first containing head, and write \(\Delta_i\) for those disjoint assigned sets and \(\Delta_0\) for their complement. Let \(V_i\) be the coefficient-support space obtained by taking component \(j_i\), restricting to \(\Delta_i\), and dividing by \(w^{\alpha_i}\). Give \(V=\bigoplus_iV_i\) the norm
+\[
+ |a|_V=\sum_i c_{j_i}R^{\alpha_i}|a_i|_R.              \tag{FEA.3}
+\]
+Let \(d\) be the restriction-and-division operator, \(T_h a=\sum_i a_iw^{\alpha_i}e_{j_i}\), and \(T_ga=\sum_i a_ig_i\). Disjoint supports give \( |df|_V\le |f|_{R,c}\), \(dT_h=1_V\), and \(\ker d\) is exactly the coefficient-support space \(\Delta_0\). Submultiplicativity and equation \(FEA.2\) give \(\|d(T_g-T_h)\|\le\theta\). Hence
+\[
+\begin{gathered}
+h=\\
+(1+d(T_g-T_h))^{-1}d,\\
+p=1-T_gh.
+\end{gathered}
+\tag{FEA.4}
+\]
+The inverse is its absolutely convergent Neumann series on the stated Banach spaces. The identities \(hT_g|_V=1_V\), \(hp=0\), and \(dp=0\) follow by multiplying equation \(FEA.4\); in particular \(p^2=p\). The input, every quotient, and the remainder have one common actual polydisc.
+
+For \(f\in I\), its remainder \(pf=f-\sum_i(hf)_ig_i\) belongs to \(I\): this uses a finite sum of actual holomorphic coefficient multiples, and does not require closure of \(I\). If nonzero, its initial exponent belongs to the diagram of \(I\), whereas all its exponents lie in \(\Delta_0\). This contradiction gives \(pf=0\). Thus \(\operatorname{im}T_g=I\), \(\ker p=I\), and these finitely many heads generate \(I\). This also proves the analytic coefficient Noetherianity used here.
+
+Viewed in ordinary vector coefficient norms, \(h,p,T_g\) are bounded uniformly for all \(r\in[r_0/2,r_0]\). The head division constants are bounded by the fixed minima \(R(r_0/2)^{-\alpha_i}\); the inverse norm is at most \((1-\theta)^{-1}\); and the finite divisor norms are bounded on the largest radius. They are the same operators at every radius. The coefficient Neumann identities and uniqueness of the support-normalized quotient prove this assertion, independently of the numerical norm used to establish convergence.
+
+#### FEA.3. The image operator and zero detection
+
+Suppose a holomorphic matrix \(W_0:\mathcal O^r\to\mathcal O^s\) has coefficient kernel \(\mu\). Apply proof sections FEA.1–FEA.2 to \(\mu\), obtaining \(T_g,h,p\). Apply them also to \(\operatorname{im}W_0\). Each of that image's finitely many standard divisors is a finite holomorphic combination of the rows of \(W_0\). Compose its quotient map with those finite combinations to obtain a bounded coefficient operator \(s:\mathcal O^s\to\mathcal O^r\), with \(W_0s f=f\) for \(f\in\operatorname{im}W_0\). Put \(k=ps\). Then
+\[
+                     kW_0=p.                        \tag{FEA.5}
+\]
+For \(v-sW_0v\in\mu=\ker p\), applying \(p\) proves equation \(FEA.5\). All three coefficient operators \(h,p,k\) are bounded on the same radius interval, after taking one smaller \(r_0\) for their finite data. This is a coefficient splitting of the image and its relations. No splitting over \(\mathcal O\), \(A\), or \(B\) has been asserted.
+
+#### FEA.4. Homogeneous polynomial coefficients at the zero section
+
+For ordinary operators, use base variables \(u\) and polynomial covariables \(\rho\), retaining the integer shifts of each free basis vector. Every component of a homogeneous vector has one prescribed covariable degree. The initial diagram is upward closed under base Taylor and covariable polynomial monomials; the same Dickson proof supplies finitely many homogeneous standard divisors. The radius argument above applies to their Taylor series in \(u\) and their finite polynomials in \(\rho\).
+
+The standard divisors can be chosen homogeneous: take the homogeneous summand containing a selected initial monomial of a vector in the graded submodule. It has the same head, since extracting that summand only removes monomials. When a homogeneous image divisor is expressed in the rows of a graded matrix, project each coefficient to the homogeneous degree appropriate for that row; the homogeneous part of the equality remains the whole divisor. Thus the finite image combinations used in proof section FEA.3 preserve the shifts too.
+
+Every support projection, head division and full-divisor multiplication preserves total covariable degree with the indicated free-basis shifts. The Neumann series in equation \(FEA.4\) therefore stays in that graded component. For a fixed component degree, only finitely many covariable exponents can occur, so its limit is a polynomial in \(\rho\) whose base coefficients are holomorphic on the common domain. Quotients with negative prescribed polynomial degree are zero. The same norm bounds hold uniformly in the total degree: their proof uses fixed head monomials, fixed divisor norms, and the same \(\ell^1\) radius norms, with fixed component radius factors to accommodate the finite shifts. For arbitrary holomorphic base input, one repeats the radius choice on its intersection with the finite divisor domain. This proves the precise polynomial-preserving version needed at the zero section.
+
+Every mathematical result in this coefficient argument has been proved above. The complete earlier [§5.21.1–§5.21.4](#5-21-actual-simultaneous-division-and-finite-stalk-relations) gives the corresponding actual finite-order operator division, used in proof sections FEP.2–FEP.3 below.
+
+The complete coefficient argument below is used for proper-ideal detection without invoking right flatness. Every coefficient operator is bounded complex linear on the stated common domain. The later unit-injectivity consequences use the right-flatness theorem of [§5.47, proof section MF.7](#5-47-arbitrary-finite-matrices-and-right-flatness-of-the-full-infinite-order-ring).
+
+**Full infinite-order order-lowering estimate.**
+
+This appendix proves convergence of the series used for arbitrary matrix relations. It includes every normalized spatial derivative, arbitrary many correction steps, the unbounded positive head, the factorial negative tail, and a single domain chosen before the summation indices.
+
+#### FEB.1. Operators and one domain
+
+In a cotangent chart \(\tau\ne0\), write \(F_j=\tau^jp_j(u,z)\), \(z=\xi/\tau\). The actual class has one holomorphic coefficient product, with, on each compact,
+\[
+\begin{gathered}
+|p_j|\le M_\varepsilon\varepsilon^j/j!\\
+(j\ge0, \varepsilon>0),\\
+|p_{-n}|\le MD^nn! (n\ge1).
+\end{gathered}
+\tag{FEB.1}
+\]
+We use the absolute Taylor norms of equation \(FEA.1\) on one family \(R(r)\), \(r\in[r_0/2,r_0]\). A Cauchy estimate on a fixed enlargement converts the input compact bounds to these norms with constants independent of \(j\). Coefficient operators \(h,p,k\), or a finite composition of these, have uniform norm \(H\) on that interval by proof sections FEA.2–FEA.3. Every right-hand actual matrix is order zero, with coefficients \(Q_{-q}\) satisfying \( |Q_{-q}|\le AC^q q!\) on a fixed enlargement, including \(q=0\). The finite list has one such bound and domain.
+
+The right Leibniz term acting on a left coefficient has indices
+\[
+\begin{gathered}
+\alpha\in\mathbf N^N,\quad q\ge0,\\
+K=q+|\alpha|,\\
+\frac1{\alpha!}(\partial_\rho^\alpha F_j)(\partial_u^\alpha Q_{-q}).
+\end{gathered}
+\tag{FEB.2}
+\]
+It lowers homogeneous degree by \(K\). Subtracting its principal ordinary multiplication removes precisely \(q=0,\alpha=0\); every remaining term lowers degree by at least one. The coefficient operators from FEA.1–FEA.4 preserve degree. A word of correction terms interspersed with such coefficient operators therefore has total loss \(K\ge\) its number of correction terms. All matrix and component sums are finite.
+
+Choose the same fixed outer margin for the right factors throughout. Its Cauchy estimate costs \(\alpha!\delta^{-|\alpha|}\); the factorial in equation \(FEB.2\) cancels it. If a total-order version is used, \(|\alpha|!/\alpha!\le N^{|\alpha|}\), so the difference is absorbed in an exponential constant. Across a word with tail indices \(q_i\), let \(Q=\sum_iq_i\) and \(L=\sum_i|\alpha_i|\), thus \(K=Q+L\). Their tail factorial product is at most \(Q!\).
+
+#### FEB.2. Derivatives interspersed with coefficient divisions
+
+At normalized \(\tau=1\), one covariable differentiation is exactly
+\[
+\begin{gathered}
+\partial_{\xi_a}F_j=\tau^{j-1}\partial_{z_a}p_j,\\
+\partial_\tau F_j=\tau^{j-1}(j-E_z)p_j,\\
+E_z=\sum_a z_a\partial_{z_a}.
+\end{gathered}
+\tag{FEB.3}
+\]
+These equations retain every spatial index. They also specify all signs. At an intermediate step starting from input degree \(m\), the current degree has absolute value at most \(|m|+K\). A coefficient operator preserves that degree, although it need not commute with \(E_z\) or differentiation.
+
+To bound a word, insert intermediate radii decreasing from \(r_0\) to \(r_0/2\), allocating equal scalar radius loss \(r_0/(2L)\) to each of its \(L\) derivatives; when \(L=0\) no derivative margin is consumed. All \(R_a(r)=r^{v_a}\) have a fixed positive lower derivative on this compact interval, so each coordinate margin is at least \(c/L\), with fixed \(c>0\). Cauchy's formula, the bounded normalized \(z_a\), and equation \(FEB.3\) bound each one-derivative step by
+\[
+\begin{gathered}
+C_0(|m|+K+L)\\
+\le 2C_0(|m|+K)\quad\\
+(K>0).
+\end{gathered}
+\tag{FEB.4}
+\]
+The \(H\) bound for every inserted coefficient operator holds at its own intermediate radius. Thus no commutation of a division operator with a derivative has been used, and no new radius is lost for a division operator. The count of those operators is bounded by a fixed multiple of the number of correction factors, hence by a fixed multiple of \(K\).
+
+For \(M=|m|\ge0\), \(K=Q+L>0\),
+\[
+\begin{gathered}
+(M+K)^LQ!\\
+\le e^K\frac{(M+K)!}{M!}.
+\end{gathered}
+\tag{FEB.5}
+\]
+To prove it, \(Q!\le(M+K)^Q\). Also
+\(\prod_{a=1}^K(M+a)/(M+K)\ge K!/K^K\ge e^{-K}\): each factor increases with \(M\), and the last inequality follows from
+\(\sum_{a=1}^K\log a\ge\int_1^K\log t\,dt=K\log K-K+1\).
+Equations \(FEB.4\)–\(FEB.5\), submultiplicativity and the right-factor Cauchy estimates bound each word, before coefficient summation, by an exponential constant times that one factorial ratio.
+
+There are at most exponentially many words of total loss \(K\). Ordered compositions of a positive integer \(K\) number \(2^{K-1}\); their subdivisions into \(q_i\) and the \(N\) derivative components number at most \((N+2)^{2K}\), a deliberately loose bound obtained by placing separators among \(K\) units and coloring the units. Finite matrix entries and coefficient-operator choices cost another exponential factor. Absorb all these constants, all fixed input bounds, and \(H\) into \(C_1\ge1\). The sum of the absolute norms of **all** terms of loss \(K\), for any one of the Neumann or iterated correction expressions below, is bounded by
+\[
+                  C_1^K\frac{(|m|+K)!}{|m|!}|p_m|_{R(r_0)}.
+                                                               \tag{FEB.6}
+\]
+The case \(K=0\) is the single bounded coefficient operation and is covered by a fixed prefactor. This argument also applies to truncated words uniformly in the truncation; the bound includes each contraction and every tail coefficient rather than replacing them by a formal product.
+
+#### FEB.3. Positive output, negative output and explicit tails
+
+For positive output \(j\ge0\), input degree is \(m=j+K\ge0\). The integer inequality
+\[
+\begin{gathered}
+\frac{(j+2K)!j!}{(j+K)!^2}\le\binom{2K}{K}\\
+\le4^K
+\end{gathered}
+\tag{FEB.7}
+\]
+follows by writing the first ratio as \(\prod_{a=1}^K(j+K+a)/(j+a)\), whose factors decrease with \(j\), and then using the binomial expansion. From equation \(FEB.1\) and equation \(FEB.6\),
+\[
+\begin{gathered}
+|\text{output}_j|\le\\
+C_2M_\varepsilon\frac{\varepsilon^j}{j!}\\
+\sum_{K\ge0}(4C_1\varepsilon)^K.
+\end{gathered}
+\tag{FEB.8}
+\]
+Given any desired \(\eta>0\), choose \(0<\varepsilon\le\eta\) with \(9C_1\varepsilon<1/2\). The coefficient domain and \(C_1\) do not depend on this choice. This proves the positive estimate for **every** \(\eta\). Terms with \(K\ge R\) are bounded by the right side of equation \(FEB.8\) times \((4C_1\varepsilon)^R\), with the geometric denominator retained.
+
+For negative output \(-n\), the input is \(m=K-n\). When \(K<n\), equation \(FEB.6\) gives
+\[
+\begin{gathered}
+C_1^K\frac{n!}{(n-K)!}\\
+M D^{n-K}(n-K)!\\
+=M n!C_1^KD^{n-K}.
+\end{gathered}
+\tag{FEB.9}
+\]
+This part is finite; its sum is at most \(Mn!(D+C_1)^n\), since the binomial coefficients dominate the corresponding \(n\) summands. For \(K\ge n\), write \(m=K-n\ge0\). The multinomial expansion proves
+\((n+2m)!/(n!m!m!)\le3^{n+2m}\). Consequently the full positive-input part is bounded by
+\[
+\begin{gathered}
+C_2M_\varepsilon n!(3C_1)^n\\
+\sum_{m\ge0}(9C_1\varepsilon)^m.
+\end{gathered}
+\tag{FEB.10}
+\]
+Choose one fixed \(\varepsilon<1/(18C_1)\). Equations \(FEB.9\)–\(FEB.10\) prove one factorial negative constant for every \(n\), on the same domain. The tail \(K\ge R>n\) in equation \(FEB.10\) is bounded by the displayed prefactor times
+\((9C_1\varepsilon)^{R-n}/(1-9C_1\varepsilon)\).
+
+These bounds prove absolute normal convergence of the whole expressions, including infinitely many terms at a fixed output degree. They justify rearrangement, finite matrix sums and multiplication identities by the triangle inequality and absolute scalar convergence. On a fixed further inner product, the Cauchy formula applies to each chosen finite output derivative. Its constant is independent of all cutoffs and degrees. Applying it to the displayed tails proves normal convergence of every fixed base and normalized-spatial derivative. All spatial Taylor exponents remain in the norm; none is truncated or bounded in advance.
+
+#### FEB.4. Actual inverses and vanishing iteration
+
+Let \(L\) be one of the above order-lowering correction operators. Define
+\[
+\begin{gathered}
+(1+L)^{-1}f=\\
+\sum_{a\ge0}(-L)^a f.
+\end{gathered}
+\tag{FEB.11}
+\]
+Equations \(FEB.6\)–\(FEB.10\) prove that this expression is an actual coefficient sequence in the complete class, on one domain. Reserve an intermediate radius, for example \(3r_0/4\): the same proof first gives normal convergence there. Apply one further correction on the inner radius \(r_0/2\). The Cauchy formula permits differentiation of the convergent series, and the direct word bound in equation (FEB.6), with the additional correction included, permits its reordering there. The finite geometric identity gives left and right inverses, because its remainder \(L^{a+1}f\) has total loss at least \(a+1\) and tends to zero coefficientwise with the explicit tails above. This is a limit of normally convergent holomorphic coefficient functions. It is not an ordinary supported-distribution limit, a formal completion, or a limit in a cohomology quotient.
+
+In particular, if an actual sequence satisfies \(s=-Ls\), then \(s=(-L)^a s\) for every finite \(a\). If \(s\) is the output of a previous division, select one new, fixed smaller outer radius inside its holomorphic domain and the same coefficient-divisor domain. Proof section FEA.2 makes the identical coefficient operators bounded on its radius interval; the support-normalized analytic operator is unchanged. This is a single additional shrinking made before any iteration index, not shrinking at each iteration. For positive output use equation \(FEB.8\) with \(K\ge a\). For fixed negative output \(-n\), take \(a>n\) and use equation \(FEB.10\) with \(m\ge a-n\). Both tend to zero, so every actual coefficient of \(s\) vanishes on the same inner product. Hence \(s=0\). This is the zero-remainder detection needed for full matrix relations with no highest positive homogeneous coefficient.
+
+#### FEB.5. Ordinary zero-section version
+
+In the ordinary polynomial coefficient spaces of proof section FEA.4, the covariable derivative in equation \(FEB.2\) is an ordinary derivative of a homogeneous polynomial. Its Cauchy bound on the same radius interval is at most \(C_0L\) per derivative; including it in equation \(FEB.4\) gives the same bound. Every finite-order right matrix has only finitely many tail offsets \(q\) relative to its principal shifted degree. A homogeneous space of negative polynomial degree is zero. All intermediate coefficient operations preserve the prescribed shifted polynomial degrees by proof section FEA.4, and the finite ordinary Leibniz product preserves the corresponding graded spaces.
+
+Thus equations \(FEB.6\)–\(FEB.8\) apply with finite free-basis shifts. A fixed shift changes the positive factorial bound by a fixed polynomial in the degree; this is absorbed by choosing the input \(\varepsilon\) smaller than the requested output value, since \(j^a\theta^j\) is bounded for every fixed \(a\) and \(0<\theta<1\). The finitely many degrees below the shifts satisfy the same convergent tail bounds individually. Every output component remains a homogeneous polynomial of its actual nonnegative degree. This proves equation \(FEB.11\) and zero detection in the genuine ordinary \(D^\infty\) class at the zero section; it does not substitute an ordinary ring for the microlocal argument FEB.1–FEB.4.
+
+**Full proper-ideal detection and faithful right scalar extension.**
+
+The proper-left-ideal proof in sections FEP.1–FEP.6 uses convergent coefficient quotients without assuming flatness. The complete right-flatness theorem in [§5.47, proof sections MF.1–MF.7](#5-47-arbitrary-finite-matrices-and-right-flatness-of-the-full-infinite-order-ring) is used in FEP.8–FEP.9 to prove unit injectivity and faithful exact extension for all algebraic left modules and sheaves.
+
+The source-defined geometric ring and its full coefficient/product identification are proved in [§5.45, IG.1–IG.5 and IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product). The complete coefficient and convergence proofs FEA/FEB are supplied above, without using matrix flatness for proper-ideal detection. The earlier actual finite operator division and strictness proofs are [§5.21](#5-21-actual-simultaneous-division-and-finite-stalk-relations) and [§5.24.2](#5-24-2-an-additional-consequence-of-the-actual-division).
+
+Free human context is Kashiwara–Schapira, [Micro-hyperbolic systems](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/Microhyp.pdf), §1.3 printed/PDF p.6 and the complete §8, printed/PDF pp.42–46, including its flatness recall on p.43. Page 6 specifies the complex-projectivized ring, input-form twist and ordinary zero-section restrictions; page 43 recalls flatness before the noncharacteristic theorem. Neither page supplies the proper-ideal argument or unit injectivity used here. No recalled external symbol, flatness, separation or reconstruction theorem is imported.
+
+#### FEP.1. Exact target, sides and two coefficient regimes
+
+Let \(X\) be any complex manifold of finite dimension, with the genuine source-defined rings in the proved geometric construction. At any cotangent stalk write \(A=\mathcal E_p\), \(B=\mathcal E^\infty_p\), with its proved unital geometric ring map. Modules are left \(A\)-modules and \(B\) is a right \(A\)-module. For every proper left ideal \(I\subset A\), the ideal extension is the algebraic left \(B\)-ideal
+\[
+\begin{gathered}
+BI=\left\{\begin{gathered}
+\sum_{\nu=1}^l b_\nu a_\nu:\\
+l<\infty,\\
+b_\nu\in B,\\
+a_\nu\in I
+\end{gathered}\right\}.\\
+\text{We prove }1\notin BI,\\
+B/BI\ne0.
+\end{gathered}
+\tag{FEP.1}
+\]
+The product is the full actual operator product. No closure of this ideal and no completed tensor product is used.
+
+Off the zero section choose \(\tau\ne0\), normalized \(z=\xi/\tau\), base variables \(u\), and translate the normalized point to \(w=(u,z)=0\) by the exact finite coordinate change. Every symbol has coefficients on one holomorphic product, with
+\[
+\begin{gathered}
+P=\sum_{j\in\mathbf Z}\tau^jp_j(u,z),\\
+|p_{-n}|_K\le MC^nn!,\\
+|p_j|_K\le M_\varepsilon\varepsilon^j/j!\\
+(j\ge0,\ \varepsilon>0).
+\end{gathered}
+\tag{FEP.2}
+\]
+Every compact \(K\) has its constants, and the domain is independent of \(j,\varepsilon\). This is the complete geometric ring proved in [§5.45](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product), including all spatial Taylor indices and the entire mixed pole/log product. At the zero section \(A=D_u\), \(B=D^\infty_u\), and \(P_j(u,\rho)\) is a homogeneous polynomial of degree \(j\ge0\) with the corresponding every-epsilon bound. A normalized \(p_j(u,z)\) then has degree at most \(j\), not necessarily degree exactly \(j\).
+
+The ring \(B\) is nonzero: its unit has coefficient \(1\) at degree \(0\), all other coefficients zero, and the proved geometric identification detects this actual nonzero coefficient sequence. If \(I=0\), equation (FEP.1) follows immediately. In ambient dimension \(0\), \(A=B=\mathbf C\) at a point and this is the only proper ideal. We henceforth treat a nonzero proper ideal in positive dimension.
+
+#### FEP.2. Strict finite presentation of an arbitrary proper microlocal ideal
+
+Let \(A_0\) be the actual order-zero factorial ring, \(h=\tau^{-1}\), and \(I_0=I\cap A_0\). The complete earlier [§5.21](#5-21-actual-simultaneous-division-and-finite-stalk-relations) and [§5.24.1–§5.24.2](#5-24-2-an-additional-consequence-of-the-actual-division) prove actual standard generation and strictness for every \(A_0\)-submodule, by its common-domain Banach division and support-normalized Neumann series. This is a complete earlier proof premise, not a completion-flatness claim.
+
+The initial diagram of \(I_0\) is saturated at homogeneous index \(0\). Indeed if an element has first index \(n\ge0\), left multiplication by \(\tau^n\) normalizes it to actual order zero, still in \(I\). The exact equation (5.21i) in [§5.21.2](#5-21-2-initial-exponents-and-the-finite-diagram) has only finitely many base derivatives and preserves the factorial class on one common smaller domain. Its principal Taylor head is unchanged. Thus an initial exponent \((n,\alpha)\) dominates the realized exponent \((0,\alpha)\), and every minimal exponent has \(n=0\).
+
+Select the finite actual standard rows \(W_i\in I_0\) realizing these minima. All are order zero, and their principal holomorphic functions \(g_i\) realize the whole initial diagram of the coefficient ideal
+\[
+\begin{gathered}
+\mu=\left\{\begin{gathered}
+\text{principal}\\
+\text{ coefficient of}\\
+\text{ an order-zero}\\
+\text{ element of }I_0
+\end{gathered}\right\}\\
+\subset\mathcal O_{w,0}.
+\end{gathered}
+\tag{FEP.3}
+\]
+This set is an ideal: addition and principal multiplication by a holomorphic order-zero coefficient are ordinary coefficient operations. Its diagram is the index \(0\) slice of the diagram of \(I_0\). Proof sections FEA.1–FEA.2 give its literal bounded analytic standard division. The complete strict finite division proof gives
+\[
+\begin{gathered}
+F\in I_0\cap H^aA_0\quad\Longrightarrow\\
+F=\sum_i q_iW_i,\\
+q_i\in H^aA_0.
+\end{gathered}
+\tag{FEP.4}
+\]
+An arbitrary element of \(I\) has a finite upper order bound; multiplying on the left by a sufficiently large power of \(h\) puts it in \(I_0\). The fixed shift and actual normal automorphism preserve the class. Equation (FEP.4) then implies \(I=AW\), with \(W\) the finite column of its rows. Therefore \(BI=BW\) as algebraic ideals. The equality uses only finite actual expressions, and their common domains are intersected once for each finite witness.
+
+Every \(g_i\) vanishes at \(w=0\). If \(g_i(0)\ne0\), the complete actual elliptic inversion proof [§5.20.3](#5-20-3-actual-elliptic-inverses-and-the-stalk-radical) gives an inverse for \(W_i\) in \(A_0\) on a common domain; since \(W_i\in I\), left multiplying by that inverse would give \(1\in I\). This contradicts properness. Consequently
+\[
+                       \mu\subset\mathfrak m_{w,0}.   \tag{FEP.5}
+\]
+In particular every coefficient standard head of \(\mu\) has strictly positive Taylor degree.
+
+#### FEP.3. Coefficient splittings and actual relation lifts
+
+All coefficient operators below are bounded complex linear. Juxtaposition of these operators means composition; actual row multiplication remains explicitly \(bW\) or \(cR\). In particular none of the splittings is assumed \(A\)-linear or \(B\)-linear.
+
+Let \(T_0b=bW_0=\sum_i b_ig_i\) be ordinary principal multiplication. Apply the complete analytic division in proof sections FEA.1–FEA.2 to the \(g_i\), with the assigned disjoint head orthants. It supplies the quotient-support space \(V\subset\mathcal O^l\), division operator \(\mathsf d\), and remainder projection \(\mathsf p\), on one radius interval:
+\[
+\begin{gathered}
+\mathsf d T_0|_V=1,\\
+T_0\mathsf d=1-\mathsf p,\\
+\mathsf d\mathsf p=0,\\
+\ker\mathsf p=\mu,\qquad\mathsf p^2=\mathsf p.
+\end{gathered}
+\tag{FEP.6}
+\]
+Their norms are uniform at every intermediate radius. Since the constant monomial is in none of the positive-degree head orthants of equation (FEP.5), the literal support restriction in proof section FEA.2 gives
+\[
+                  \mathsf d1=0,\qquad\mathsf p1=1.    \tag{FEP.7}
+\]
+These identities concern the whole analytic coefficient functions, not their values at one point alone.
+
+Set \(\mathsf v=\mathsf d T_0\) on the source. Then \(\mathsf v^2=\mathsf v\), \(\operatorname{im}\mathsf v=V\), and \(\ker\mathsf v=\ker T_0=:\mu_s\). To check the kernel equality, \(T_0b\in\mu\), so \((1-\mathsf p)T_0b=T_0b\), whence \(T_0\mathsf v b=T_0b\). Its vanishing is equivalent to \(\mathsf v b=0\). Thus \(1-\mathsf v\) maps onto \(\mu_s\).
+
+Every principal relation \(r\in\mu_s\) has an actual order-zero relation lift. Regard its holomorphic vector as an actual order-zero symbol. Then \(rW\) has index at least \(1\). It belongs to \(I_0\), so equation (FEP.4) expresses it as \(aW\) with \(a\) of index at least \(1\). The row \(r-a\) is an actual relation of principal vector \(r\). Choose the finitely many analytic standard divisors of \(\mu_s\) from proof section FEA.1 and lift them in this way. They give a finite actual matrix \(R\) with
+\[
+\begin{gathered}
+RW=0,\\
+\operatorname{im}R_0=\mu_s.
+\end{gathered}
+\tag{FEP.8}
+\]
+All its negative tails are actual factorial tails on one domain. No scalar-extension flatness has entered this lifting.
+
+Proof section FEA.2 applied to \(R_0\) supplies a bounded coefficient quotient \(\mathsf d_R\), with values in its quotient-support space \(V_R\), such that
+\[
+ R_0\mathsf d_R f=f\ (f\in\mu_s),\qquad
+ \mathsf d_R R_0|_{V_R}=1.
+\]
+Here \(R_0\) denotes the map \(c\mapsto cR_0\). Define
+\[
+\begin{gathered}
+\mathsf q=\mathsf d_R(1-\mathsf v).\\
+R_0\mathsf q=1-\mathsf v,\\
+\mathsf q R_0|_{V_R}=1,\\
+\ker\mathsf q=V.
+\end{gathered}
+\tag{FEP.9}
+\]
+The first equality follows since \(1-\mathsf v\) has image \(\mu_s\). The second uses \(\mathsf vR_0=0\). For the third, \(\mathsf q b=0\) implies \((1-\mathsf v)b=R_0\mathsf q b=0\); conversely it vanishes on \(V\). Thus the source splitting is chosen to use precisely the image-quotient complement \(V\). An unrelated coefficient complement would not prove the following annihilation identity.
+
+#### FEP.4. Actual infinite quotient and exact annihilation of the ideal
+
+Let \(T b=bW\) be actual multiplication, \(E=T-T_0\), \(T_Rc=cR\), and \(E_R=T_R-R_0\). Both \(E,E_R\) lower homogeneous order by at least \(1\). They consist of the complete right-symbol tails and contractions, not finite-order truncations.
+
+The complete convergence proof in sections FEB.1–FEB.5 proves that any word of these corrections interspersed with the bounded coefficient operators of equations (FEP.6)–(FEP.9), with total loss \(K\) and input degree \(m\), has its complete absolute sum bounded on one inner coefficient product by
+\[
+                 C_1^K\frac{(|m|+K)!}{|m|!}|f_m|.     \tag{FEP.10}
+\]
+The constant depends on the finite operators and fixed margins, not \(K,m\). For positive output \(j\), this is bounded by a prefactor times \(\varepsilon^j/j!\sum_K(4C_1\varepsilon)^K\), using the input degree \(m=j+K\). For negative output \(-n\), its \(K<n\) part is bounded by \(Mn!\sum_{K<n}C_1^KD^{n-K}\); its \(K\ge n\) part is bounded by \(M_\varepsilon n!(3C_1)^n\sum_{m\ge0}(9C_1\varepsilon)^m\).
+These are the full bounds in equations (FEB.8)–(FEB.10). One can choose epsilon arbitrarily small on the same domain. Thus every inverse below is its actual absolutely normally convergent Neumann series, with every positive-epsilon bound, one factorial negative bound, every spatial index and all fixed derivative tails. Proof section FEB.4 reserves an intermediate radius for composition and one additional fixed interval if needed, before any iteration index. For all the finitely many composites written in this section, one may reserve in advance twelve scalar-radius subintervals between \(r_0\) and \(r_0/2\). All coefficient operators are uniformly bounded on that whole interval; each derivative word uses the fixed margin of its assigned subinterval. Taking the largest of their finite constants gives the same equation (FEP.10) form. This accounts for source inversion, its actual product, target inversion and the finite identity comparisons on one final common product. There is no shrinking at each iteration or at each homogeneous degree.
+
+Define the target operator
+\[
+                    \mathcal P=\mathsf p(1+E\mathsf d)^{-1}.
+                                                               \tag{FEP.11}
+\]
+Since \(\mathsf d\mathsf p=0\), the series fixes the image of \(\mathsf p\), so \(\mathcal P\mathsf p=\mathsf p\). It also satisfies \(\mathcal P(1+E\mathsf d)=\mathsf p\). From \(T_0\mathsf d=1-\mathsf p\) we obtain the literal identity
+\[
+\begin{gathered}
+\mathcal P T\mathsf d\\
+=\mathcal P(1-\mathsf p)+\mathcal P E\mathsf d\\
+=\mathcal P-\mathsf p+\mathsf p-\mathcal P=0.
+\end{gathered}
+\tag{FEP.12}
+\]
+Every reordering is justified by equation (FEP.10), including all contractions and every principal relation coefficient.
+
+Equation (FEP.12) alone annihilates multiplication on \(V\), not on the entire free source. To handle an arbitrary actual \(b\in B^l\), use the lifted relations:
+\[
+\begin{gathered}
+c=(1+\mathsf q E_R)^{-1}\mathsf q b,\\
+v=b-T_Rc.
+\end{gathered}
+\tag{FEP.13}
+\]
+The series converges in the full actual class by equation (FEP.10). Its quotient values remain in \(V_R\). Equation (FEP.9) gives \(\mathsf qv=\mathsf qb-(1+\mathsf qE_R)c=0\), hence \(v=\mathsf vv\in V\), coefficientwise on the same domain. The actual equation \(RW=0\) and associativity give \(Tb=Tv\). Put \(f=T_0v\); then \(v=\mathsf df\). Therefore equation (FEP.12) proves
+\[
+\begin{gathered}
+\mathcal P Tb=0\\
+\text{for every }b\in B^l.
+\end{gathered}
+\tag{FEP.14}
+\]
+This is the full complement/source correction. It uses actual relation lifts and a bounded coefficient source splitting, rather than an assumed module contraction or flatness.
+
+For completeness this operator gives a full complex-linear quotient normal form. For any \(f\in B\), put \(a=(1+\mathsf dE)^{-1}\mathsf df\), \(s=f-Ta\). Its equation gives \(\mathsf ds=0\), so \(s=\mathsf ps\). The complete word series identity
+\[
+ (1+E\mathsf d)^{-1}=1-E(1+\mathsf dE)^{-1}\mathsf d
+\]
+is proved by expanding both absolutely convergent sides, or by the finite geometric identity and the tails in proof section FEB.4. Applying \(\mathsf p\) yields \(\mathcal Pf=s\), because \(\mathsf d(f-Ea)=a\). Thus \(\ker\mathcal P=BW\) by equation (FEP.14) and \(f=Ta+\mathcal Pf\), and \(\operatorname{im}\mathcal P=\mathsf pB\), with \(\mathcal P^2=\mathcal P\). The quotient \(B/BW\) is thereby identified with \(\mathsf pB\) as complex vector spaces of actual germs. No \(B\)-linear splitting, canonical coordinate-independent projection, or special fibration/Späth reconstruction is asserted.
+
+#### FEP.5. Proper-ideal detection without flatness
+
+By equation (FEP.7), \(E\mathsf d1=0\). Therefore equation (FEP.11) is literally
+\[
+                             \mathcal P1=1.          \tag{FEP.15}
+\]
+If \(1\in BI=BW\), it would be a finite expression \(Tb=1\) in the actual ring on a common coefficient neighborhood. Applying equation (FEP.14) would give \(\mathcal P1=0\), contrary to equation (FEP.15) and the nonzero geometric unit. Hence \(1\notin BI\) and \(B/BI\ne0\) for every proper microlocal left ideal \(I\). All actual germs involved in a proposed finite witness have their coefficient domains intersected once; the complete series are then formed on one smaller product. A cohomological closure or coefficientwise domains cannot alter this contradiction.
+
+#### FEP.6. The genuine ordinary zero section
+
+At a zero-section point repeat the argument in the graded polynomial coefficient spaces of proof sections FEA.4 and FEB.5. Here are its exact finite premises. The principal ring of \(D_u\), with its nonnegative order filtration, is \(\mathcal O_u[\rho]\). For the graded ideal \(\operatorname{gr}I\), proof section FEA.4 supplies finitely many homogeneous coefficient standard divisors \(g_i\). Choose actual \(W_i\in I\) with those principal symbols. Subtracting their finite principal combinations lowers ordinary order by at least \(1\), so finite descending order reduction terminates and proves \(I=DW\) and strictness. For a homogeneous principal relation, its finite actual initial lift has image of smaller order; strictness removes that image with smaller source order. This gives exact ordinary relation lifts. Proof section FEA.4 supplies the finite homogeneous standard relation list.
+
+Retain the free source shifts \(m_i=\operatorname{ord}W_i\), and relation shifts \(r_\nu=\max_i(\operatorname{ord}R_{\nu i}+m_i)\), omitting zero entries. In total degree \(j\), the source component has polynomial covariable degree \(j-m_i\), the relation quotient has degree \(j-r_\nu\), and the principal relation component has degree \(r_\nu-m_i\). Negative polynomial degrees mean zero spaces. Every coefficient quotient, projection and relation correction in equations (FEP.6)–(FEP.13) respects those shifts; their bounds are uniform in total degree. Every finite ordinary Leibniz correction lowers total degree. Proof section FEB.5 therefore proves the complete positive every-epsilon convergence and all derivative tails, with one common base domain; no negative ordinary covariable degree is introduced.
+
+Properness again excludes a constant Taylor head. A homogeneous \(g_i\) of positive covariable degree vanishes at \(\rho=0\). If it has degree \(0\) and nonzero value at the base point, its actual \(W_i\) is multiplication by a nonvanishing holomorphic function, hence invertible in \(D_u\) by its literal holomorphic reciprocal. That would put \(1\) in \(I\). Thus the graded principal ideal is contained in the maximal Taylor ideal at \((u,\rho)=(u_0,0)\). Its support division gives \(\mathsf d1=0\), \(\mathsf p1=1\), now in total degree \(0\). The identical actual equations (FEP.11)–(FEP.15) prove \(1\notin D^\infty I\).
+
+Each output stays a homogeneous polynomial of its actual covariable degree and has every positive-epsilon bound on a fixed covariable ball. Homogeneity extends the bound to every other fixed covariable compact by a fixed exponential rescaling absorbed in epsilon slack; the base domain is unchanged. This proves the full ordinary proper-ideal criterion with the unbounded positive head. The ordinary argument has been supplied in addition to the complete nonzero-chart microlocal proof; neither is substituted for the other.
+
+#### FEP.7. Canonical algebraic tensor quotient and proved right flatness
+
+For any left ideal \(I\), ordinary algebraic tensor has inverse maps
+\[
+\begin{gathered}
+B\otimes_A(A/I)\\
+\longrightarrow B/BI,\\
+b\otimes(a+I)\\
+\longmapsto ba+BI,\\
+B/BI\\
+\longrightarrow B\otimes_A(A/I),\\
+b+BI\\
+\longmapsto b\otimes(1+I).
+\end{gathered}
+\tag{FEP.16}
+\]
+Balancing proves the first well defined; \(bj\otimes1=b\otimes j=0\) for \(j\in I\) proves the second. Their compositions are identities. Neither map uses flatness or completion.
+
+From this point use the complete theorem of [§5.47, proof sections MF.1–MF.7](#5-47-arbitrary-finite-matrices-and-right-flatness-of-the-full-infinite-order-ring): \(B\) is right \(A\)-flat for all algebraic left modules at every nonzero cotangent stalk and at the genuine ordinary zero section. Proper-ideal detection in FEP.1–FEP.6 was proved independently of flatness; FEP.8–FEP.9 now use that exact earlier right-flatness proof for the unit and faithful-extension consequences.
+
+#### FEP.8. Unit injectivity for arbitrary left modules
+
+Let \(M\) be any algebraic left \(A\)-module, with no finiteness assumption, and \(0\ne m\in M\). Its left annihilator \(I=\{a:am=0\}\) is proper, and \(A/I\to M\), \(a+I\mapsto am\), is an injection onto its cyclic submodule. By the proved right-flatness theorem, tensor keeps that injection. In equation (FEP.16) the element \(1\otimes(1+I)\) is the nonzero class \(1\) by the proper-ideal theorem. Its image in \(B\otimes_AM\) is \(1\otimes m\), so
+\[
+\begin{gathered}
+M\longrightarrow B\otimes_AM,\\
+m\longmapsto1\otimes m\\
+\text{ is injective}\\
+\text{ for every }M.
+\end{gathered}
+\tag{FEP.17}
+\]
+The map is \(A\)-linear after restriction of scalars, since \(a\otimes m=1\otimes am\). This proves the unit theorem with the entire arbitrary-module quantifier. It also proves \(B\otimes_AM=0\Rightarrow M=0\). No claim about a solution object, degree-one operator faithfulness, separation by sectorial solutions, or the infinite reconstruction theorem is used.
+
+The functor is faithful on morphisms. If \(f:M\to N\) has \(B\otimes f=0\), then for every \(m\), \(1\otimes f(m)=0\); unit injectivity for \(N\) gives \(f(m)=0\), hence \(f=0\). Algebraic tensor is right exact: for \(L\subset M\), the inverse generator-and-balancing maps give \((B\otimes_AM)/\operatorname{im}(B\otimes_AL)=B\otimes_A(M/L)\), exactly as in equation (FEP.16), with \(m+L\) in place of \(a+I\). A surjection is surjective after tensor since each simple tensor lifts. Right flatness supplies injectivity and thus exactness. If extension of a map is an isomorphism, its extended kernel and cokernel vanish, so object detection makes both zero and the original map is an isomorphism. Thus the functor is faithful, exact and conservative for all algebraic left modules. Fullness, extension-group injectivity and effective descent are not conclusions of this argument.
+
+Conversely, unit injectivity for every module implies equation (FEP.1) by applying it to the nonzero class \(1\) in \(A/I\) and using equation (FEP.16). Under flatness, detection of nonzero objects alone also implies \(B/BI\ne0\) for every proper ideal, since \(A/I\ne0\). Thus the proper-ideal test, unit injectivity and faithful scalar-extension criterion have the exact stated relation; no weaker operator-action faithfulness is substituted.
+
+#### FEP.9. Sheaves, finite common domains and precise remaining boundary
+
+For sheaves of left \(\mathcal E\)-modules, the algebraic sheaf tensor has stalk \(B\otimes_AM_p\), and the unit's stalk is equation (FEP.17). Here is the elementary stalk calculation. Each stalk tensor has finitely many section entries, which can be represented on one common neighborhood; each claimed equality is a finite sum of additivity and balancing relations, whose section entries and identities can again be represented on one common smaller neighborhood. These operations give mutually inverse maps between the stalk of the tensor presheaf and the tensor of stalks. Sheafification does not change stalks, since a germ of locally compatible representatives is represented near its point by one of them. An injective stalk at every point means that the sheaf kernel is zero: a section with zero germ everywhere vanishes on a neighborhood of each point, and hence vanishes by the sheaf gluing axiom. The same argument for kernels and locally lifted cokernel germs tests exactness and isomorphisms. Consequently the unit theorem, object detection, exactness and faithful/conservative scalar-extension functor hold for arbitrary sheaves of left modules as well. At the zero section these are the actual \(D^\infty/D\) statements just proved, using the complete ordinary right-flatness proof in [§5.47, proof sections MF.6–MF.7](#5-47-arbitrary-finite-matrices-and-right-flatness-of-the-full-infinite-order-ring).
+
+There is a tensor-theoretic corollary for complexes. In each degree, tensor the two exact sequences defining cycles, boundaries and their quotient cohomology. Exactness gives \(H^j(B\otimes_AC^\bullet)=B\otimes_AH^j(C^\bullet)\). Object detection therefore reflects acyclicity, and applied to the cone of a chain map reflects quasi-isomorphisms. This argument is degreewise and uses no bounded-projective contraction. It does not construct the separately commissioned canonical module-derived geometric action or imply a full embedding on higher Ext groups.
+
+For sheaf support defined by nonzero stalks, \(\operatorname{Supp}(\mathcal E^\infty\otimes_{\mathcal E}M)=\operatorname{Supp}M\): a zero input stalk has zero tensor, and a nonzero input stalk is detected by the unit theorem. The same statement uses \(D^\infty/D\) at the ordinary zero section. This is a statement about actual sheaf supports; the later coherence, characteristic-cycle and geometric purity obligations remain separate.
+
+Each proposed finite ideal witness or finite diagram uses only finitely many actual ring elements, finite ideal/relation lifts, coefficient operators and ring identities. Intersect their coefficient products once and select common radii, all base/covariable margins, the largest finite right-tail constants, and epsilon small enough for all constants in equation (FEP.10). The domain is independent of every homogeneous, spatial, contraction and iteration index. This is enough for each cyclic element of an arbitrary module; no one universal neighborhood is asserted for infinitely many unrelated module germs.
+
+The coefficient outputs are actual geometric ring sections by the geometric identification IG/IM in [§5.45](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product). In this kernel paragraph write \(\omega=s-t\), \(\zeta_i=y_i-x_i\); the proved kernel normal variable \(w\) is here \(\omega\), distinguished from the earlier coefficient Taylor vector \(w=(u,z)\). Explicitly, choose Taylor covariable radii \(R_i\) inside the final common coefficient domain, one largest negative constant \(C_-\ge1\), slopes \(A_i>2/R_i\), and a common endpoint domain \(|\omega|<1/(4C_-)\). On the thick complement \(|\zeta_i|>A_i|\omega|\), choose local \(Y>\max_i(R_i|\zeta_i|)^{-1}\) with \(|\omega|Y<3/4\) and then epsilon with \(\varepsilon Y<1/8\). The full mixed kernel majorants in equations (IK.18)–(IK.21) have \(r<1/4\), \(q<3/4\), \(q+x<7/8\); at \(\omega=0\) use their proved removable extension. A finite compact cover supplies the joint epsilon. This retains every spatial index and the positive-homogeneous/negative-normal mixed terms.
+
+Choose phase-cone spatial slopes \(B_i>A_i\). Use the proved finite phase grid \(h<2\lambda\), \(2\lambda+h<\pi\), separate phase/neighbor pointed cones, and the one-time bridge \(\lambda<\lambda'<(\pi-h)/2\), \(B'_i>B_i/\cos(\lambda+h/2)\). Forget support literally to the larger standard \(T'\), use its actual cube and exhaustions, and map any resulting boundary forward to a final convex \(G'\) containing \(T'\). Reserve its overlap width and common proper compact collar and a smaller admissible covariable product. The larger Taylor radii used in the kernel bounds remain a holomorphic coefficient enlargement. All complement terms and full-cone Čech/ordinary conversion signs are the proved ones, including ordinary top entry \(r_N(-1)^N f\) and the \(N=1\) exception. No support-forgetting injectivity or ordinary supported-distribution limit is inferred.
+
+The auxiliary coefficient quotient \(\mathcal P\) depends on coordinates and standard heads. Its existence proves an intrinsic nonvanishing statement: proved nonlinear coordinate ring maps transport the finite ideal identity and unit to every overlap. No canonical coordinate-independent module projection is needed. Ordinary compatibility is supplied directly in FEP.6.
+
+The precise proved scope is proper-left-ideal detection in the full geometric \(E^\infty/E\) and ordinary \(D^\infty/D\) stalks, with all-domain/growth/support controls. Unit injectivity and faithful exact extension for arbitrary algebraic modules and sheaves follow using the complete earlier right-flatness theorem identified in FEP.7. The other scalar changes, \(E^R\), the special fibration class, coordinate-commuting \(A^\infty\), mixed \(E^\infty/D^\infty\) flatness, infinite Späth division/balanced reconstruction, propagation, purity, singular-inclusive separation, D-type/C1, half-order/contact transport, initial analytic generator, arbitrary analytic proper regularity and the original GL/BB/KL scope require separate proofs. No such theorem is implied by this coefficient quotient.
+
+#### FEP.10. A decisive joint-domain calibration
+
+Take one base coordinate \(x\) and its covariable \(\tau\), at \(x=0,\tau\ne0\), with any remaining base/covariable parameters passive. For a nonzero finite-order \(b\), the principal coefficient of \(b\circ x\) is the nonzero product of its leading coefficient with \(x\). Hence its order is the order of \(b\), and \(Ax\) has a strict principal image \((x)\). In the principal division, \(\mathsf d\) deletes the constant Taylor term and divides by \(x\), while \(\mathsf p\) takes the constant coefficient in \(x\). The actual right product is
+\[
+\begin{gathered}
+b\circ x=xb+\partial_\tau b,\\
+\mathcal P\\
+=\mathsf p\sum_{a\ge0}(-\partial_\tau\mathsf d)^a,\\
+\mathcal P1=1,\\
+\mathcal P(b\circ x)=0.
+\end{gathered}
+\tag{FEP.18}
+\]
+For this calibration \(\partial_\tau\) and the Taylor division in \(x\) commute. That special commutation is not assumed in the general proof. The finite upper-bounded/negative-tail version of the same normally convergent quotient annihilates \(Ax\) and fixes \(1\), proving this finite ideal proper directly, without using flatness or assuming the target. The same formula then applies to the full \(B\) class by the complete convergence proof FEB.1–FEB.5.
+
+The exact calibration retains arbitrary normal and spatial powers:
+\[
+\begin{gathered}
+\mathcal P(x^a\tau^m\xi^\beta)\\
+=(-1)^a m^{\underline a}\tau^{m-a}\xi^\beta,\\
+a\ge0,\ m\in\mathbf Z,\ \beta\in\mathbf N^d.
+\end{gathered}
+\tag{FEP.22}
+\]
+Only Taylor degree \(a\) contributes to the projection series, so this follows by the ordinary finite derivative formula. The identity
+\(m^{\underline{a+1}}=m(m-1)^{\underline a}\) then proves cancellation for
+\((x^a\tau^m\xi^\beta)\circ x=x^{a+1}\tau^m\xi^\beta+
+m x^a\tau^{m-1}\xi^\beta\), for every integer \(m\), including negative \(m\). Its homogeneous input degree is \(m+|\beta|\), so this includes negative-normal powers with positive homogeneous degree. At the ordinary zero section the polynomial calibration uses \(m\ge0\). The full local FEB.1–FEB.5 estimates, rather than coefficientwise formal continuation of this calibration, control arbitrary infinite sums over all these indices.
+
+The tempting entire expression
+\[
+\begin{gathered}
+\widetilde b(x,\tau)=\frac{1-e^{-x\tau}}x\\
+=\sum_{j\ge1}(-1)^{j+1}\frac{x^{j-1}\tau^j}{j!},\\
+\widetilde b\circ x=1
+\end{gathered}
+\tag{FEP.19}
+\]
+is holomorphic at \(x=0\) by its displayed power series. The differential identity follows directly from \(x\widetilde b=1-e^{-x\tau}\), \(\partial_\tau\widetilde b=e^{-x\tau}\). It is not in the actual class: on any fixed base compact \(|x|\le r_x\), \(r_x>0\), its degree-\(j\) norm is \(r_x^{j-1}/j!\), and the every-epsilon inequality would require
+\[
+\begin{gathered}
+r_x^{-1}(r_x/\varepsilon)^j\le M_\varepsilon\\
+(j\ge1).
+\end{gathered}
+\tag{FEP.20}
+\]
+For \(0<\varepsilon<r_x\), the left side is unbounded. Restricting to \(x=0\) alone gives the finite expression \(\tau\), but does not give a section on any common neighborhood. The failure is exactly the uniform joint domain and every-epsilon quantifier.
+
+Its finite truncation \(b_L\) obeys
+\[
+\begin{gathered}
+b_L\circ x=1+r_L,\\
+r_L=(-1)^{L+1}\frac{x^L\tau^L}{L!},\\
+\mathcal P r_L=-1.
+\end{gathered}
+\tag{FEP.21}
+\]
+The first equality follows by cancellation of successive positive powers. The last follows from the exact finite quotient formula: only Taylor degree \(a=L\) contributes, with \((-1)^L\partial_\tau^L[(-1)^{L+1}\tau^L/L!]=-1\).
+At \(x=1/2,\tau=1\) the ordinary entire-function residual magnitude \(2^{-L}/L!\) tends to zero. Its required positive-symbol weighted norm on \(|x|\le1/2\) with \(\varepsilon=1/4\) is exactly \(2^L\), and its quotient value remains \(-1\). Hence that pointwise limit cannot be used to put \(1\) in the algebraic ideal \(Bx\). The general proof uses the actual tails in equation (FEP.10), which do tend to zero in every fixed requested epsilon estimate after choosing a smaller input epsilon.
+
+Strict generation before taking the coefficient quotient is essential. At the ordinary zero section, \(Dx+D\partial_x=D\), because the exact finite right products give
+\[
+          \tau\circ x-x\circ\tau=1.                  \tag{FEP.23}
+\]
+Although the original two principal symbols generate the proper commutative ideal \((x,\tau)\), the graded ideal of the actual left image contains \(1\). The principal source relation \((-\tau,x)\) of that original presentation has actual image \(-1\), so it is not an actual relation. Our FEP.2/FEP.6 construction first uses the strict standard generators of the whole actual ideal, and FEP.3 lifts principal relations only after that step. It therefore never mistakes this improper ideal for a proper one.
+
+![Actual ideal detection and the excluded exponential candidate](assets/infinite-faithful-extension-joint-domain.png)
+
+**Figure FEP.1.** The left panel shows the exact analytic source correction, target quotient and unit test in equations (FEP.6)–(FEP.15), with actual row products and complex-linear coefficient operators distinguished. The right panel displays exact samples \(L=1,\ldots,20\), \(r_x=1/2,\varepsilon=1/4,x=1/2,\tau=1\): required weighted residual \(2^L\), entire-function residual \(2^{-L}/L!\), and \(\mathcal Pr_L=-1\). Their general identities, not these finite samples, are equations (FEP.20)–(FEP.21). The illustration records the complete joint-domain obstruction and does not claim convergence in the actual ring from ordinary entire-function values. Reproducible coordinates, sources and data are retained; free human geometric context is Micro-hyperbolic systems §1.3/§8, with the local proof sections FEP.1–FEP.10 and FEA/FEB above.
+
+Editable SVG, exact data, and reproducible source.
 
 
 

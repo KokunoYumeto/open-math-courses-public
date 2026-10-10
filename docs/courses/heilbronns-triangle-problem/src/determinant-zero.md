@@ -39,9 +39,12 @@ A triple counted in (2.2) contains two independent vectors of length at most \(4
 \sum_{\substack{x\ \text{primitive}\\ R\leq|x|<2R}}g(x)^3\leq C\,R^3I .
 \]
 
-*Proof.* By Lemma 2.1, \(g(x)=B^{a(x)}\) with \(0\leq a(x)\leq e\). For \(0\leq j\leq e\), \(B^j\mid g(x)\) means \(x\cdot v\equiv0\pmod{B^j}\) for all \(v\in\Lambda\). The lattice \(\Lambda\) is the integer row span of an integer lift \(\tilde C\) of \(C\) plus \(h\mathbb Z^3\), and \(B^j\mid h\); so the condition is \(Cx\equiv0\pmod{B^j}\). Writing \(C=P\operatorname{diag}(1,D,E)Q\) and \(y=Qx\) (a bijection of \((\mathbb Z/B^j)^3\)), the condition becomes \(y_1\equiv0\), \(Dy_2\equiv0\), \(Ey_3\equiv0\pmod{B^j}\); the third is automatic since \(j\leq e\). So a fraction \(B^{-j-\max(j-b,0)}\) of the residue classes modulo \(B^j\) satisfies it. Each class contains at most \((4R/B^j+1)^3\leq125(R/B^j)^3\) integer vectors of length less than \(2R\), since \(R\geq h\geq B^j\). Bounding \(g(x)^3=B^{3a(x)}\leq\sum_{j=0}^{a(x)}B^{3j}\) and dropping primitivity,
+*Proof.* By Lemma 2.1, \(g(x)=B^{a(x)}\) with \(0\leq a(x)\leq e\). For \(0\leq j\leq e\), \(B^j\mid g(x)\) means \(x\cdot v\equiv0\pmod{B^j}\) for all \(v\in\Lambda\). The lattice \(\Lambda\) is the integer row span of an integer lift \(\tilde C\) of \(C\) plus \(h\mathbb Z^3\), and \(B^j\mid h\); so the condition is \(Cx\equiv0\pmod{B^j}\). Writing \(C=P\operatorname{diag}(1,D,E)Q\) and \(y=Qx\) (a bijection of \((\mathbb Z/B^j)^3\)), the condition becomes \(y_1\equiv0\), \(Dy_2\equiv0\), \(Ey_3\equiv0\pmod{B^j}\); the third is automatic since \(j\leq e\). So a fraction \(B^{-j-\max(j-b,0)}\) of the residue classes modulo \(B^j\) satisfies it. Each class contains at most \((4R/B^j+1)^3\leq125(R/B^j)^3\) integer vectors of length less than \(2R\), since \(R\geq h\geq B^j\). Bound \(g(x)^3=B^{3a(x)}\leq\sum_{j=0}^{a(x)}B^{3j}\) and drop primitivity. For each \(j\), the vectors \(x\) with \(B^j\mid g(x)\) and \(|x|<2R\) lie in \(B^{3j}B^{-j-\max(j-b,0)}\) residue classes, with at most \(125(R/B^j)^3\) vectors in each; so there are at most \(125R^3B^{-j-\max(j-b,0)}\) of them. Hence
 \[
-\sum_xg(x)^3\leq\sum_{j=0}^eB^{3j}\cdot B^{3j}B^{-j-\max(j-b,0)}\cdot125\frac{R^3}{B^{3j}}=125R^3\sum_{j=0}^eB^{2j-\max(j-b,0)} .
+\begin{aligned}
+\sum_xg(x)^3&\leq125R^3\sum_{j=0}^eB^{3j}B^{-j-\max(j-b,0)}\\
+&=125R^3\sum_{j=0}^eB^{2j-\max(j-b,0)} .
+\end{aligned}
 \]
 The exponent \(2j-\max(j-b,0)\) increases strictly with \(j\) and equals \(b+e\) at \(j=e\); since \(B\geq2\), the sum is at most \(2B^{b+e}=2I\). \(\square\)
 
@@ -65,7 +68,10 @@ C\,\frac{N^6}{I^3R^3}\sum_{\substack{x\ \text{primitive}\\ R\leq|x|<2R}}g(x)^3\l
 
 *Two equal columns modulo \(q\), with an extra equation.* Fix a pair \(i<j\) of equal columns (summing over the three pairs costs a factor three), and let \(\delta=\mathbf e_i-\mathbf e_j\). Suppose \(\bar x\notin\mathbb F_q\delta\). The functional \(v\mapsto v\cdot\delta\) is not zero on \(\Pi_x\) (the vectors orthogonal to all of \(\Pi_x\) are the multiples of \(\bar x\)), and \(\Lambda_x\) reduces onto \(\Pi_x\); so \(\Gamma=\{v\in\Lambda_x:v_i\equiv v_j\pmod q\}\) has index \(q\) in \(\Lambda_x\), and every row of \(A\) lies in \(\Gamma\) because columns \(i\) and \(j\) agree modulo \(q\). A shell has at most \(CR^3\) vectors \(x\). With \(m=q\) in (3.1), \(g(x)^3\leq Ih^2\), and the general weight bound \(W(A)\leq C(q^3/s)^2\), the shell contributes at most
 \[
-C\,\frac{N^6}{I^2}\,h^2q^{-3}\Bigl(\frac{q^3}s\Bigr)^2\leq C\,\frac{N^6}{I^2}\,\frac{h^{26}}q\leq C\,\frac{N^6}{I^2},
+\begin{aligned}
+C\,\frac{N^6}{I^2}\,h^2q^{-3}\Bigl(\frac{q^3}s\Bigr)^2&\leq C\,\frac{N^6}{I^2}\,\frac{h^{26}}q\\
+&\leq C\,\frac{N^6}{I^2},
+\end{aligned}
 \]
 whatever the rank of \(A\bmod q\).
 
@@ -73,11 +79,17 @@ whatever the rank of \(A\bmod q\).
 
 If \(A\bmod q\) has rank at least two, then \(W(A)\leq Cq^3/s\), and with \(m=1\) and \(g(x)^3\leq Ih^2\) the shell contributes at most
 \[
-C\,\frac{R^3}{q^2}\cdot\frac{N^6h^2}{I^2R^3}\cdot\frac{q^3}s\leq C\,\frac{N^6}{I^2}\,\frac{h^{14}}q\leq C\,\frac{N^6}{I^2}.
+\begin{aligned}
+C\,\frac{R^3}{q^2}\cdot\frac{N^6h^2}{I^2R^3}\cdot\frac{q^3}s&\leq C\,\frac{N^6}{I^2}\,\frac{h^{14}}q\\
+&\leq C\,\frac{N^6}{I^2}.
+\end{aligned}
 \]
 If \(A\bmod q\) has rank at most one, all rows reduce into one line \(\ell\) through \(0\) in \(\Pi_x\) (there are \(q+1\) of them; the zero row space is included). For each line, \(\{v\in\Lambda_x:v\bmod q\in\ell\}\) has index \(q\) in \(\Lambda_x\), because \(\Lambda_x\) reduces onto \(\Pi_x\). By (2.2), summed over the lines, there are at most \(C(q+1)N^6/(qJ_x)^3\leq CN^6/(q^2J_x^3)\) matrices for each \(x\), and with \(W(A)\leq C(q^3/s)^2\) the shell contributes at most
 \[
-C\,\frac{R^3}{q^2}\cdot\frac{N^6h^2}{q^2I^2R^3}\cdot\Bigl(\frac{q^3}s\Bigr)^2\leq C\,\frac{N^6}{I^2}\,\frac{h^{26}}{q^2}\leq C\,\frac{N^6}{I^2}.
+\begin{aligned}
+&C\,\frac{R^3}{q^2}\cdot\frac{N^6h^2}{q^2I^2R^3}\cdot\Bigl(\frac{q^3}s\Bigr)^2\\
+&\quad\leq C\,\frac{N^6}{I^2}\,\frac{h^{26}}{q^2}\leq C\,\frac{N^6}{I^2}.
+\end{aligned}
 \]
 Summing over the at most \(C\log(2N)\) shells proves the proposition. \(\square\)
 

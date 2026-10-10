@@ -18,7 +18,7 @@ The *norm* of \(t\in K\) is \(\operatorname{Nm}(t)=\prod_{j=0}^{d-1}\sigma^j(t)\
 
 Fix an \(\mathbb F_r\)-basis \(\beta_1,\ldots,\beta_d\) of \(K\). A *group* of variables is an array \(X=(X_{i\nu})_{1\leq i\leq3,\,1\leq\nu\leq d}\) of \(3d\) variables; put
 \[
-Z(X)=\Bigl(\sum_\nu\beta_\nu X_{1\nu},\ \sum_\nu\beta_\nu X_{2\nu},\ \sum_\nu\beta_\nu X_{3\nu}\Bigr)^{\mathsf T}.
+Z(X)=\begin{pmatrix}\sum_\nu\beta_\nu X_{1\nu}\\ \sum_\nu\beta_\nu X_{2\nu}\\ \sum_\nu\beta_\nu X_{3\nu}\end{pmatrix}.
 \]
 For three disjoint groups \(X^{(1)},X^{(2)},X^{(3)}\) let \(\mathcal D=\det\bigl(Z(X^{(1)}),Z(X^{(2)}),Z(X^{(3)})\bigr)\), a polynomial with coefficients in \(K\), of degree one in each group. Let \(\sigma\) act on polynomials by applying \(\sigma\) to the coefficients, and put
 \[
@@ -43,9 +43,9 @@ Let \(m_1,\ldots,m_M\) be the monomials of degree \(d\) in \(3d\) variables, \(M
 \end{aligned}\tag{2.2}
 \]
 
-*Proof.* Write \(m_{pqs}=m_p(X^{(1)})\,m_q(X^{(2)})\,m_s(X^{(3)})\). By Lemma 2.1(a), \(\mathcal N=\sum_{p,q,s}c(p,q,s)\,m_{pqs}\) with \(c(p,q,s)\in\mathbb F_r\). Exchanging the first two groups and comparing coefficients, Lemma 2.1(c) gives \(c(q,p,s)=-c(p,q,s)\), and likewise for the other transpositions. If two of \(p,q,s\) coincide, the coefficient equals its own negative and vanishes, since \(r\) is odd. For \(p<q<s\) put \(c_{pqs}=c(p,q,s)\); the coefficients of the six orderings of \(\{p,q,s\}\) are \(c_{pqs}\) times the signs of the permutations, so these six terms add up to
+*Proof.* Write \(m_{pqs}=m_p(X^{(1)})\,m_q(X^{(2)})\,m_s(X^{(3)})\). By Lemma 2.1(a), \(\mathcal N=\sum_{p,q,s}c(p,q,s)\,m_{pqs}\) with \(c(p,q,s)\in\mathbb F_r\). Exchanging the first two groups and comparing coefficients, Lemma 2.1(c) gives \(c(q,p,s)=-c(p,q,s)\), and likewise for the other transpositions. If two of \(p,q,s\) coincide, the coefficient equals its own negative and vanishes, since \(r\) is odd. For \(p<q<s\) put \(c_{pqs}=c(p,q,s)\); the coefficients of the six orderings of \(\{p,q,s\}\) are \(c_{pqs}\) times the signs of the permutations, so these six terms add up to, with \(m^{(j)}_p=m_p(X^{(j)})\),
 \[
-c_{pqs}\det\begin{pmatrix}m_p(X^{(1)})&m_p(X^{(2)})&m_p(X^{(3)})\\m_q(X^{(1)})&m_q(X^{(2)})&m_q(X^{(3)})\\m_s(X^{(1)})&m_s(X^{(2)})&m_s(X^{(3)})\end{pmatrix}.
+c_{pqs}\det\begin{pmatrix}m^{(1)}_p&m^{(2)}_p&m^{(3)}_p\\ m^{(1)}_q&m^{(2)}_q&m^{(3)}_q\\ m^{(1)}_s&m^{(2)}_s&m^{(3)}_s\end{pmatrix}.
 \]
 Number the \(T\) triples \(p<q<s\) by \(a\) and put \((f_{1a},f_{2a},f_{3a})=(c_{pqs}m_p,m_q,m_s)\). \(\square\)
 
@@ -103,7 +103,10 @@ Since \(1\leq c_{i0}\leq L<B\), every entry of \(c\) is a unit of \(R_h\). Diffe
 
 *Proof.* Let \(c^{(j)}_{iv}\) be the digit of column \(j\) at row \(i\) and position \(v\), and consider the integer polynomial
 \[
-F(Y)=\det\Bigl(\sum_{v=0}^{k-1}c^{(j)}_{iv}Y^v\Bigr)_{1\leq i,j\leq3}=\sum_{u=0}^{3(k-1)}\gamma_uY^u .
+\begin{aligned}
+F(Y)&=\det\Bigl(\sum_{v=0}^{k-1}c^{(j)}_{iv}Y^v\Bigr)_{i,j\leq3}\\
+&=\sum_{u=0}^{3(k-1)}\gamma_uY^u .
+\end{aligned}
 \]
 *Size of the coefficients.* In the expansion over the six permutations, the coefficient of \(Y^u\) collects, for each permutation, products of three digits whose positions add up to \(u\); two positions determine the third, so
 \[
@@ -111,17 +114,27 @@ F(Y)=\det\Bigl(\sum_{v=0}^{k-1}c^{(j)}_{iv}Y^v\Bigr)_{1\leq i,j\leq3}=\sum_{u=0}
 \]
 *The coefficient of \(Y^{k-1}\).* Expanding the determinant by multilinearity in the rows, \(\gamma_{k-1}\) is the sum, over positions \(v_1+v_2+v_3=k-1\), of the determinants whose \(i\)-th row is the vector of digits of the three columns at row \(i\) and position \(v_i\). Modulo \(r\), a row taken at a non-designated position vanishes, and by Lemma 3.1 the remaining positions are \((i_a,j_a,\ell_a)\), \(0\leq a<T\). So, by the prescribed residues and (2.2), (2.3),
 \[
-\gamma_{k-1}\equiv\sum_a\det\bigl(f_{ia}(X(\xi_j))\bigr)_{i,j}=\mathcal N\bigl(X(\xi_1),X(\xi_2),X(\xi_3)\bigr)\not\equiv0\pmod r ,
+\begin{aligned}
+\gamma_{k-1}&\equiv\sum_a\det\bigl(f_{ia}(X(\xi_j))\bigr)_{i,j}\\
+&=\mathcal N\bigl(X(\xi_1),X(\xi_2),X(\xi_3)\bigr)\\
+&\not\equiv0\pmod r ,
+\end{aligned}
 \]
 and in particular \(|\gamma_{k-1}|\geq1\).
 
 *The determinant.* The integer \(S=\sum_{u=0}^{k-1}\gamma_uB^u\) represents \(\det C\) modulo \(h\): \(\det C\) is \(F(B)\) modulo \(h\), and the terms with \(u\geq k\) are divisible by \(B^k=h\). Since \(B-1\geq100k^2L^3\), (3.5) gives
 \[
-|S|\leq6k^2L^3\frac{B^k-1}{B-1}\leq\frac3{50}(h-1)<\frac h2,\qquad\Bigl|\sum_{u=0}^{k-2}\gamma_uB^u\Bigr|\leq\frac3{50}(B^{k-1}-1),
+\begin{gathered}
+|S|\leq6k^2L^3\frac{B^k-1}{B-1}\leq\frac3{50}(h-1)<\frac h2,\\
+\Bigl|\sum_{u=0}^{k-2}\gamma_uB^u\Bigr|\leq\frac3{50}(B^{k-1}-1),
+\end{gathered}
 \]
 and therefore
 \[
-|S|\geq B^{k-1}-\frac3{50}(B^{k-1}-1)=\frac{47B^{k-1}+3}{50}>\tau .
+\begin{aligned}
+|S|&\geq B^{k-1}-\frac3{50}(B^{k-1}-1)\\
+&=\frac{47B^{k-1}+3}{50}>\tau .
+\end{aligned}
 \]
 Every other representative \(S+mh\), \(m\neq0\), has absolute value at least \(h-|S|>h/2>\tau\). \(\square\)
 

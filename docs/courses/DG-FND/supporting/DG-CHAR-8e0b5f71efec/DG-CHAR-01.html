@@ -1,1 +1,329 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Connections, curvature and holonomy</title></head><body><main><h1>Connections, curvature and holonomy</h1><p>No lessons are currently available for this course.</p><p><span class="unlinked">Open Mathematics Courses</span></p></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Vector bundles and their constructions</title>
+<link rel="stylesheet" href="../../assets/site.css">
+<script>
+window.MathJax = {
+  tex: {inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], processEscapes: true},
+  options: {ignoreHtmlClass: 'no-math', processHtmlClass: 'math', enableMenu: false},
+  startup: {pageReady: () => MathJax.startup.defaultPageReady().then(() => {
+    document.documentElement.setAttribute('data-typeset', 'complete');
+  })}
+};
+</script>
+<script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script>
+</head>
+<body><main><nav aria-label="Chapter contents"><ul><li><a href="#part-a">A. Coordinates, maps and frames</a></li><li><a href="#part-b">B. Pullbacks and fibrewise algebra</a></li><li><a href="#part-c">C. Constant rank, metrics and stabilization</a></li><li><a href="#part-d">D. Smooth bundles in geometry</a></li><li><a href="#part-e">E. Exercises with solutions</a></li><li><a href="#further-reading">Further reading</a></li></ul></nav><article class="lesson"><h1 id="vector-bundles-and-their-constructions">Vector bundles and their constructions</h1>
+<p><em>Written and self-checked by GPT-6 Astra (OpenAI), at Ultra, October 2026. New exposition dedicated to the public domain under CC0.</em></p>
+<p>A bundle gives linear coordinates over small open sets. This chapter explains how those coordinates fit together, how a continuous family of linear maps determines subbundles, and how a metric turns an inclusion into a direct-sum decomposition. The same constructions produce the normal bundle of an immersion and a finite-dimensional ambient bundle over a compact base.</p>
+<p>Throughout, <span class="math" data-tex="\(\mathbb F\)">\(\mathbb F\)</span> is <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> or <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. The base <span class="math" data-tex="\(X\)">\(X\)</span> is an arbitrary topological space until an additional hypothesis is stated. Write <span class="math" data-tex="\(\varepsilon_X^r=X\times\mathbb F^r\)">\(\varepsilon_X^r=X\times\mathbb F^r\)</span>. A rank-<span class="math" data-tex="\(r\)">\(r\)</span> <strong>vector bundle</strong> is a continuous map <span class="math" data-tex="\(p:E\to X\)">\(p:E\to X\)</span>, with a vector-space structure on each fibre <span class="math" data-tex="\(E_x=p^{-1}(x)\)">\(E_x=p^{-1}(x)\)</span>, admitting an open cover and homeomorphisms
+<span class="math math-display" data-tex="\[
+\phi_\alpha:p^{-1}(U_\alpha)\longrightarrow U_\alpha\times\mathbb F^r
+\]">\[
+\phi_\alpha:p^{-1}(U_\alpha)\longrightarrow U_\alpha\times\mathbb F^r
+\]</span>
+over <span class="math" data-tex="\(U_\alpha\)">\(U_\alpha\)</span> whose restrictions to fibres are linear isomorphisms. Ranks may instead be locally constant: all assertions below apply on the open subsets of a fixed rank. No connectedness of those subsets is needed.</p>
+<p>The real scalar, norm, finite-basis and calculus results used below are proved in <a href="../../local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.0</a>, <a href="../../local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.1</a>, <a href="../../local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.2</a>, <a href="../../local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.3</a> and <a href="../../local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.4</a>. The complex basis-exchange argument is identical: replacing a spanning-list vector by one having a nonzero coefficient in that position requires only division by that coefficient. Thus <span class="math" data-tex="\(r\)">\(r\)</span> independent vectors in <span class="math" data-tex="\(\mathbb C^r\)">\(\mathbb C^r\)</span> also form a basis. Complex matrix inversion can be treated as real matrix inversion on real and imaginary parts: the inverse commutes with multiplication by <span class="math" data-tex="\(i\)">\(i\)</span> because the original map does. This observation transfers the local inversion and smooth inversion results of <a href="../../local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.4</a> to complex matrices.</p>
+<h2 id="part-a">A. Coordinates, maps and frames</h2>
+<p id="lemma-a-1"><strong>Lemma A.1 (cocycles and inversion).</strong> Bundle charts have continuous transition matrices <span class="math" data-tex="\(g_{\beta\alpha}:U_\alpha\cap U_\beta\to GL_r(\mathbb F)\)">\(g_{\beta\alpha}:U_\alpha\cap U_\beta\to GL_r(\mathbb F)\)</span> satisfying
+<span class="math math-display" data-tex="\[
+\phi_\beta\phi_\alpha^{-1}(x,v)=(x,g_{\beta\alpha}(x)v),
+\qquad g_{\gamma\beta}g_{\beta\alpha}=g_{\gamma\alpha}.
+\tag{A.1}
+\]">\[
+\phi_\beta\phi_\alpha^{-1}(x,v)=(x,g_{\beta\alpha}(x)v),
+\qquad g_{\gamma\beta}g_{\beta\alpha}=g_{\gamma\alpha}.
+\tag{A.1}
+\]</span>
+Conversely, continuous invertible matrices on an open cover satisfying (A.1), with <span class="math" data-tex="\(g_{\alpha\alpha}=I\)">\(g_{\alpha\alpha}=I\)</span>, define a bundle. A continuous fibrewise linear isomorphism between bundles over the identity of a base has a continuous inverse. For smooth matrices and charts these assertions hold smoothly.</p>
+<p><strong>Proof.</strong> Evaluate the fibre part of <span class="math" data-tex="\(\phi_\beta\phi_\alpha^{-1}\)">\(\phi_\beta\phi_\alpha^{-1}\)</span> at each standard basis vector. Its <span class="math" data-tex="\(r\)">\(r\)</span> resulting columns are continuous, giving <span class="math" data-tex="\(g_{\beta\alpha}\)">\(g_{\beta\alpha}\)</span>; the chart composition identity gives (A.1). In particular <span class="math" data-tex="\(g_{\alpha\beta}=g_{\beta\alpha}^{-1}\)">\(g_{\alpha\beta}=g_{\beta\alpha}^{-1}\)</span>. Conversely, on the disjoint union of the <span class="math" data-tex="\(U_\alpha\times\mathbb F^r\)">\(U_\alpha\times\mathbb F^r\)</span>, identify
+<span class="math math-display" data-tex="\[
+(x,v)_\alpha\sim(x,g_{\beta\alpha}(x)v)_\beta.
+\]">\[
+(x,v)_\alpha\sim(x,g_{\beta\alpha}(x)v)_\beta.
+\]</span>
+Identity, inverse and composition in (A.1) prove that this is an equivalence relation. Give the quotient <span class="math" data-tex="\(E\)">\(E\)</span> its quotient topology. The quotient map is open. Indeed the saturation of an open subset of one chart has open intersection with each other chart, since the transition map on the open overlap is a homeomorphism. Its inverse is the transition map in the opposite direction. Taking unions proves the claim for an arbitrary open subset of the disjoint union.</p>
+<p>The map <span class="math" data-tex="\(U_\alpha\times\mathbb F^r\to E\)">\(U_\alpha\times\mathbb F^r\to E\)</span> is injective and open onto its image; that image is exactly <span class="math" data-tex="\(p^{-1}(U_\alpha)\)">\(p^{-1}(U_\alpha)\)</span>, which is open. It is therefore a homeomorphism to this image. The projection <span class="math" data-tex="\(p\)">\(p\)</span> is continuous because its composite with the quotient map is the continuous projection in every summand. Transporting the vector operations through a chart is independent of that chart by the linear transitions. This proves the bundle assertion, even when <span class="math" data-tex="\(X\)">\(X\)</span> is not Hausdorff.</p>
+<p>Let <span class="math" data-tex="\(T:E\to F\)">\(T:E\to F\)</span> cover the identity and be linear and invertible in every fibre. On a common trivializing open set it has the form <span class="math" data-tex="\((x,v)\mapsto(x,A(x)v)\)">\((x,v)\mapsto(x,A(x)v)\)</span>, with continuous matrix entries by evaluation on basis vectors. Inversion is continuous on <span class="math" data-tex="\(GL_r(\mathbb F)\)">\(GL_r(\mathbb F)\)</span> by the local inverse-matrix argument specified above. Thus <span class="math" data-tex="\((x,w)\mapsto(x,A(x)^{-1}w)\)">\((x,w)\mapsto(x,A(x)^{-1}w)\)</span> is continuous in each pair of charts. These local inverses agree because they are the inverse of the same fibre map. This proves the assertion globally.</p>
+<p>For smooth bundles, the same gluing maps are smooth diffeomorphisms on overlaps. Matrix inversion is smooth by <a href="../../local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.4</a> (or its derivative formula there), so the last argument is smooth as well. When a Hausdorff second-countable smooth base is specified, the total space is Hausdorff: different base points are separated below, and points over one base point are separated in a chart. A countable trivializing subcover exists: for each member of a countable basis contained in a trivializing open, select one such open; every point belongs to a selected open. Product bases in these countably many charts give second countability of the total space. Thus the smooth gluing has the usual manifold topology. □</p>
+<p>A <strong>bundle map over <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span></strong> is a continuous map <span class="math" data-tex="\(T:E\to F\)">\(T:E\to F\)</span> with <span class="math" data-tex="\(p_FT=fp_E\)">\(p_FT=fp_E\)</span>, linear in each fibre. Unless the base map is the identity, “invertible in each fibre” does not assert that <span class="math" data-tex="\(T\)">\(T\)</span> is a homeomorphism of total spaces. Part B identifies precisely the bundle to which it gives an isomorphism.</p>
+<p id="theorem-a-2"><strong>Theorem A.2 (sections and the frame criterion).</strong> A rank-<span class="math" data-tex="\(r\)">\(r\)</span> bundle is isomorphic to <span class="math" data-tex="\(\varepsilon_X^r\)">\(\varepsilon_X^r\)</span> if and only if it has <span class="math" data-tex="\(r\)">\(r\)</span> continuous sections that form a basis in every fibre.</p>
+<p><strong>Proof.</strong> A section is a continuous <span class="math" data-tex="\(s:X\to E\)">\(s:X\to E\)</span> with <span class="math" data-tex="\(ps=\operatorname{id}_X\)">\(ps=\operatorname{id}_X\)</span>. In charts the zero section is <span class="math" data-tex="\(x\mapsto(x,0)\)">\(x\mapsto(x,0)\)</span>, fibrewise addition is ordinary addition, and scalar multiplication is ordinary multiplication; these descriptions prove continuity of all three operations. They also prove that, for sections <span class="math" data-tex="\(s_1,\ldots,s_r\)">\(s_1,\ldots,s_r\)</span>, the map
+<span class="math math-display" data-tex="\[
+A:X\times\mathbb F^r\longrightarrow E,\qquad
+A(x,(a_j))=\sum_{j=1}^r a_js_j(x)
+\tag{A.2}
+\]">\[
+A:X\times\mathbb F^r\longrightarrow E,\qquad
+A(x,(a_j))=\sum_{j=1}^r a_js_j(x)
+\tag{A.2}
+\]</span>
+is continuous. If the sections are a basis, it is a fibrewise isomorphism, hence a bundle isomorphism by A.1. Conversely, the images of the constant coordinate sections under a trivialization inverse are the required sections. For rank zero both bundles are the zero bundle and the empty frame works. In particular, a line bundle is trivial precisely when it has a nowhere-zero section. □</p>
+<p id="proposition-a-3"><strong>Proposition A.3 (the tautological real line and the Möbius seam).</strong> The tautological real line on <span class="math" data-tex="\(\mathbb {RP}^n\)">\(\mathbb {RP}^n\)</span> is nontrivial for <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> it is the bundle
+<span class="math math-display" data-tex="\[
+([0,\pi]\times\mathbb R)/((0,t)\sim(\pi,-t))
+\tag{A.3}
+\]">\[
+([0,\pi]\times\mathbb R)/((0,t)\sim(\pi,-t))
+\tag{A.3}
+\]</span>
+over the circle obtained by identifying the two endpoints of <span class="math" data-tex="\([0,\pi]\)">\([0,\pi]\)</span>.</p>
+<p><strong>Proof.</strong> <a href="DG-CHAR-08.html#lemma-r-1">DG-CHAR-08 R.1</a> constructs the projective quotient topology and its coordinate charts. The total space here is the subspace of <span class="math" data-tex="\(\mathbb {RP}^n\times\mathbb R^{n+1}\)">\(\mathbb {RP}^n\times\mathbb R^{n+1}\)</span> consisting of <span class="math" data-tex="\((\ell,v)\)">\((\ell,v)\)</span> with <span class="math" data-tex="\(v\in\ell\)">\(v\in\ell\)</span>. On the open set where coordinate <span class="math" data-tex="\(j\)">\(j\)</span> of a representing vector is nonzero, let <span class="math" data-tex="\(w_j(\ell)\)">\(w_j(\ell)\)</span> be its unique representative with coordinate <span class="math" data-tex="\(j\)">\(j\)</span> equal to one. The map <span class="math" data-tex="\((\ell,t)\mapsto(\ell,tw_j(\ell))\)">\((\ell,t)\mapsto(\ell,tw_j(\ell))\)</span> is a bundle chart inverse; its inverse takes the <span class="math" data-tex="\(j\)">\(j\)</span>-th coordinate of <span class="math" data-tex="\(v\)">\(v\)</span>. Both are continuous by those projective charts.</p>
+<p>Suppose <span class="math" data-tex="\(s\)">\(s\)</span> were a nowhere-zero section. On the unit sphere write
+<span class="math math-display" data-tex="\[
+s([x])=t(x)x,\qquad t(x)=\langle s([x]),x\rangle.
+\]">\[
+s([x])=t(x)x,\qquad t(x)=\langle s([x]),x\rangle.
+\]</span>
+This is a continuous real function, and <span class="math" data-tex="\(t(-x)=-t(x)\)">\(t(-x)=-t(x)\)</span>. There is an explicit path from <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(-x\)">\(-x\)</span> in <span class="math" data-tex="\(S^n\)">\(S^n\)</span>. Choose a vector not in <span class="math" data-tex="\(\mathbb Rx\)">\(\mathbb Rx\)</span>, subtract its projection onto <span class="math" data-tex="\(x\)">\(x\)</span>, and normalize to a unit <span class="math" data-tex="\(w\perp x\)">\(w\perp x\)</span>. Such a vector exists because <span class="math" data-tex="\(n+1\geq2\)">\(n+1\geq2\)</span>. Normalize the segments <span class="math" data-tex="\((1-u)x+uw\)">\((1-u)x+uw\)</span> and <span class="math" data-tex="\((1-u)w-u x\)">\((1-u)w-u x\)</span>, for <span class="math" data-tex="\(0\leq u\leq1\)">\(0\leq u\leq1\)</span>, and concatenate them. Their norms never vanish, by orthogonality. Along this path the intermediate value theorem, <a href="../../local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.0</a>, gives a zero of <span class="math" data-tex="\(t\)">\(t\)</span>, a contradiction. Apply A.2.</p>
+<p>For the last assertion put <span class="math" data-tex="\(e_\theta=(\cos\theta,\sin\theta)\)">\(e_\theta=(\cos\theta,\sin\theta)\)</span>, with cosine and sine the real and imaginary parts of the circle exponential. The circle parametrization, its period and the identity <span class="math" data-tex="\(e_{\theta+\pi}=-e_\theta\)">\(e_{\theta+\pi}=-e_\theta\)</span> are proved in <a href="../../connections-and-parallel-transport.html#lemma-e-1">Connections and parallel transport E.1</a>. Hence <span class="math" data-tex="\(\theta\mapsto[e_\theta]\)">\(\theta\mapsto[e_\theta]\)</span> is a continuous bijection from the endpoint quotient of <span class="math" data-tex="\([0,\pi]\)">\([0,\pi]\)</span> to <span class="math" data-tex="\(\mathbb {RP}^1\)">\(\mathbb {RP}^1\)</span>. It is a homeomorphism: the source is compact and the target Hausdorff, so images of closed subsets are compact and closed, as proved in <a href="../../local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.1</a>. The map
+<span class="math math-display" data-tex="\[
+(\theta,t)\longmapsto([e_\theta],t e_\theta)
+\tag{A.4}
+\]">\[
+(\theta,t)\longmapsto([e_\theta],t e_\theta)
+\tag{A.4}
+\]</span>
+respects exactly the identifications in (A.3). It induces a continuous fibrewise linear bijection to the tautological line. Here is a direct local check of its inverse at the seam, so no compactness of the total space is presumed. On a small interval <span class="math" data-tex="\(-\delta&lt;u&lt;\delta\)">\(-\delta&lt;u&lt;\delta\)</span>, represent the base line by <span class="math" data-tex="\(e_u\)">\(e_u\)</span>. For <span class="math" data-tex="\(u\geq0\)">\(u\geq0\)</span> the corresponding quotient coordinates are <span class="math" data-tex="\((u,t)\)">\((u,t)\)</span>; for <span class="math" data-tex="\(u\leq0\)">\(u\leq0\)</span> they are <span class="math" data-tex="\((\pi+u,-t)\)">\((\pi+u,-t)\)</span>. These formulas agree at <span class="math" data-tex="\(u=0\)">\(u=0\)</span> in the quotient, and on the two closed half-intervals they are continuous. The finite closed-set pasting rule follows by taking preimages of closed sets, so they give a continuous map on the whole interval times <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Its inverse recovers the base coordinate <span class="math" data-tex="\(u\)">\(u\)</span> and the coefficient along <span class="math" data-tex="\(e_u\)">\(e_u\)</span>. Away from the seam the usual angle interval does the same. Thus (A.4) is locally an isomorphism and globally a bundle isomorphism. □</p>
+<h2 id="part-b">B. Pullbacks and fibrewise algebra</h2>
+<p id="theorem-b-1"><strong>Theorem B.1 (pullback and its universal description).</strong> If <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> is continuous and <span class="math" data-tex="\(p:F\to Y\)">\(p:F\to Y\)</span> is a bundle, then
+<span class="math math-display" data-tex="\[
+f^*F=\{(x,v)\in X\times F:f(x)=p(v)\}\longrightarrow X
+\tag{B.1}
+\]">\[
+f^*F=\{(x,v)\in X\times F:f(x)=p(v)\}\longrightarrow X
+\tag{B.1}
+\]</span>
+is a bundle in its subspace topology. A bundle map <span class="math" data-tex="\(T:E\to F\)">\(T:E\to F\)</span> over <span class="math" data-tex="\(f\)">\(f\)</span> that is an isomorphism in every fibre identifies <span class="math" data-tex="\(E\)">\(E\)</span> with <span class="math" data-tex="\(f^*F\)">\(f^*F\)</span>. Pullback respects identity maps, composition and restriction.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(\phi:p^{-1}(U)\to U\times\mathbb F^r\)">\(\phi:p^{-1}(U)\to U\times\mathbb F^r\)</span> is a chart with fibre coordinate <span class="math" data-tex="\(\phi_2\)">\(\phi_2\)</span>, the pullback chart is
+<span class="math math-display" data-tex="\[
+(x,v)\longmapsto(x,\phi_2(v))
+\quad\hbox{on } f^{-1}(U),
+\]">\[
+(x,v)\longmapsto(x,\phi_2(v))
+\quad\hbox{on } f^{-1}(U),
+\]</span>
+with inverse <span class="math" data-tex="\((x,a)\mapsto(x,\phi^{-1}(f(x),a))\)">\((x,a)\mapsto(x,\phi^{-1}(f(x),a))\)</span>. Both are continuous in the indicated subspaces. They establish local triviality without any separation assumption on <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>.</p>
+<p>For the claimed identification use <span class="math" data-tex="\(v\mapsto(p_E(v),T(v))\)">\(v\mapsto(p_E(v),T(v))\)</span>. This is continuous into the product and has image in (B.1), so it is continuous into the subspace. It is a fibrewise isomorphism over <span class="math" data-tex="\(X\)">\(X\)</span>; A.1 supplies its inverse. More generally, this formula gives the unique map into the pullback compatible with both projections, because both its coordinates are prescribed.</p>
+<p>For <span class="math" data-tex="\(g:Z\to X\)">\(g:Z\to X\)</span>, the mutually inverse maps
+<span class="math math-display" data-tex="\[
+(z,(g(z),v))\longleftrightarrow(z,v)
+\]">\[
+(z,(g(z),v))\longleftrightarrow(z,v)
+\]</span>
+identify <span class="math" data-tex="\(g^*(f^*F)\)">\(g^*(f^*F)\)</span> with <span class="math" data-tex="\((f\circ g)^*F\)">\((f\circ g)^*F\)</span>; their continuity follows from the product coordinates. Likewise <span class="math" data-tex="\((x,v)\mapsto v\)">\((x,v)\mapsto v\)</span> identifies <span class="math" data-tex="\(\operatorname{id}_X^*E\)">\(\operatorname{id}_X^*E\)</span> with <span class="math" data-tex="\(E\)">\(E\)</span>. For an inclusion <span class="math" data-tex="\(A\subset X\)">\(A\subset X\)</span>, the same map identifies the pullback with <span class="math" data-tex="\(p^{-1}(A)\)">\(p^{-1}(A)\)</span>, with their subspace topologies and restricted charts. A constant map <span class="math" data-tex="\(f(x)=y\)">\(f(x)=y\)</span> gives <span class="math" data-tex="\(X\times F_y\)">\(X\times F_y\)</span>, a trivial bundle after any basis of <span class="math" data-tex="\(F_y\)">\(F_y\)</span> is chosen. □</p>
+<p id="theorem-b-2"><strong>Theorem B.2 (algebraic constructions).</strong> Direct sum, tensor product, dual, Hom, conjugation over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, exterior powers and determinant define vector bundles. Their topologies are independent of the chosen trivializations. They commute naturally with pullback. The same holds for any finite-dimensional construction on vector spaces and isomorphisms whose induced matrix maps are continuous and preserve composition and identity.</p>
+<p><strong>Proof.</strong> First give explicit finite-dimensional models, including the facts that ensure continuity. On <span class="math" data-tex="\(\mathbb F^r\oplus\mathbb F^s\)">\(\mathbb F^r\oplus\mathbb F^s\)</span> use concatenated coordinates. Model the tensor product by a vector space with basis <span class="math" data-tex="\(e_i\otimes f_j\)">\(e_i\otimes f_j\)</span>; put <span class="math" data-tex="\(v\otimes w=\sum_{ij}v_iw_j(e_i\otimes f_j)\)">\(v\otimes w=\sum_{ij}v_iw_j(e_i\otimes f_j)\)</span>. Every bilinear map has a unique linear extension from this model because its values on those basis tensors determine it. This proves the tensor product's universal property. The matrix of <span class="math" data-tex="\(A\otimes B\)">\(A\otimes B\)</span> has entries <span class="math" data-tex="\(A_{ki}B_{\ell j}\)">\(A_{ki}B_{\ell j}\)</span>, and applying maps to pure tensors proves
+<span class="math math-display" data-tex="\[
+(A'\otimes B')(A\otimes B)=(A'A)\otimes(B'B).
+\]">\[
+(A'\otimes B')(A\otimes B)=(A'A)\otimes(B'B).
+\]</span>
+The dual has the coordinate functionals as a basis; a change <span class="math" data-tex="\(v\mapsto Av\)">\(v\mapsto Av\)</span> changes dual coordinates by <span class="math" data-tex="\(A^{-\mathsf T}\)">\(A^{-\mathsf T}\)</span>. A linear map with matrix <span class="math" data-tex="\(M\)">\(M\)</span> from the first space to the second changes to <span class="math" data-tex="\(BMA^{-1}\)">\(BMA^{-1}\)</span>. The conjugate space <span class="math" data-tex="\(\overline V\)">\(\overline V\)</span> has the same additive group, with <span class="math" data-tex="\(\lambda\cdot_{\overline V}v=\overline\lambda v\)">\(\lambda\cdot_{\overline V}v=\overline\lambda v\)</span>; conjugating the coordinates makes its transition matrix <span class="math" data-tex="\(\overline A\)">\(\overline A\)</span>.</p>
+<p>For <span class="math" data-tex="\(0\leq k\leq r\)">\(0\leq k\leq r\)</span>, model <span class="math" data-tex="\(\Lambda^k\mathbb F^r\)">\(\Lambda^k\mathbb F^r\)</span> with basis <span class="math" data-tex="\(e_{i_1}\wedge\cdots\wedge e_{i_k}\)">\(e_{i_1}\wedge\cdots\wedge e_{i_k}\)</span>, <span class="math" data-tex="\(i_1&lt;\cdots&lt;i_k\)">\(i_1&lt;\cdots&lt;i_k\)</span>. Define <span class="math" data-tex="\(v_1\wedge\cdots\wedge v_k\)">\(v_1\wedge\cdots\wedge v_k\)</span> by giving its coordinate on this basis as the corresponding <span class="math" data-tex="\(k\)">\(k\)</span>-row determinant of <span class="math" data-tex="\([v_1\ \cdots\ v_k]\)">\([v_1\ \cdots\ v_k]\)</span>. These coordinates are alternating and multilinear. Conversely, expand any alternating multilinear map on basis vectors: repeated indices vanish, and rearranging distinct indices supplies the permutation sign, so this model has the required universal property. The determinant argument <a href="DG-CHAR-06.html#lemma-l-1">DG-CHAR-06 L.1</a> works over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> as well: the permutation expansion, multilinearity and basis exchange are unchanged, and <span class="math" data-tex="\(2\ne0\)">\(2\ne0\)</span>. A linear map <span class="math" data-tex="\(A\)">\(A\)</span> consequently induces <span class="math" data-tex="\(\Lambda^k A\)">\(\Lambda^k A\)</span> by applying <span class="math" data-tex="\(A\)">\(A\)</span> to each factor. Applying two maps to pure wedges, which span the model, proves the composition rule. Its matrix entries are minors of <span class="math" data-tex="\(A\)">\(A\)</span>, hence polynomials. Set <span class="math" data-tex="\(\Lambda^0 V=\mathbb F\)">\(\Lambda^0 V=\mathbb F\)</span>, and set <span class="math" data-tex="\(\Lambda^k V=0\)">\(\Lambda^k V=0\)</span> for <span class="math" data-tex="\(k&gt;r\)">\(k&gt;r\)</span>. The determinant line is <span class="math" data-tex="\(\det V=\Lambda^rV\)">\(\det V=\Lambda^rV\)</span>; its transition is multiplication by <span class="math" data-tex="\(\det A\)">\(\det A\)</span>, including rank zero.</p>
+<p>Choose common trivializing open sets for the input bundles by intersecting their covers. On each overlap their transition matrices <span class="math" data-tex="\(A,B\)">\(A,B\)</span> therefore induce
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c}
+\text{construction}&amp;\text{transition}\\ \hline
+E\oplus F&amp;\operatorname{diag}(A,B)\\
+E\otimes F&amp;A\otimes B\\
+E^*&amp;A^{-\mathsf T}\\
+\operatorname{Hom}(E,F)&amp;M\mapsto BMA^{-1}\\
+\overline E&amp;\overline A\\
+\Lambda^kE&amp;\Lambda^kA\\
+\det E&amp;\det A .
+\end{array}
+\tag{B.2}
+\]">\[
+\begin{array}{c|c}
+\text{construction}&amp;\text{transition}\\ \hline
+E\oplus F&amp;\operatorname{diag}(A,B)\\
+E\otimes F&amp;A\otimes B\\
+E^*&amp;A^{-\mathsf T}\\
+\operatorname{Hom}(E,F)&amp;M\mapsto BMA^{-1}\\
+\overline E&amp;\overline A\\
+\Lambda^kE&amp;\Lambda^kA\\
+\det E&amp;\det A .
+\end{array}
+\tag{B.2}
+\]</span>
+They are continuous and invertible, with inverse obtained from <span class="math" data-tex="\(A^{-1},B^{-1}\)">\(A^{-1},B^{-1}\)</span>, and the composition identities prove the cocycle condition. A.1 constructs the bundles. The same argument applies to a construction in the final sentence of the theorem; “continuous” there means continuity of the induced map on the matrix spaces in any fixed bases of its finite-dimensional outputs.</p>
+<p>Equivalently, take the disjoint union of the intrinsic fibrewise constructions and use these model coordinates as charts. If a different frame is used, the coordinate change is the same continuous induced matrix map. Thus either family of charts defines the same topology; passage to intersections proves this for different open covers. For the direct sum this topology is also the subspace topology on <span class="math" data-tex="\(E\times_X F\)">\(E\times_X F\)</span>, since both give the same local product coordinates.</p>
+<p>For completeness, the usual tensor isomorphisms really are continuous bundle maps. On pure tensors the maps are <span class="math" data-tex="\(v\otimes w\mapsto w\otimes v\)">\(v\otimes w\mapsto w\otimes v\)</span>, <span class="math" data-tex="\((u\otimes v)\otimes w\mapsto u\otimes(v\otimes w)\)">\((u\otimes v)\otimes w\mapsto u\otimes(v\otimes w)\)</span>, <span class="math" data-tex="\(a\otimes v\mapsto av\)">\(a\otimes v\mapsto av\)</span>, and <span class="math" data-tex="\(u\otimes(v,w)\mapsto(u\otimes v,u\otimes w)\)">\(u\otimes(v,w)\mapsto(u\otimes v,u\otimes w)\)</span>. Their explicit inverses use the opposite rearrangements; their matrices in the model bases are constant. The coordinate-functional map <span class="math" data-tex="\(E^*\otimes F\to\operatorname{Hom}(E,F)\)">\(E^*\otimes F\to\operatorname{Hom}(E,F)\)</span> sends <span class="math" data-tex="\(\lambda\otimes w\)">\(\lambda\otimes w\)</span> to <span class="math" data-tex="\(v\mapsto\lambda(v)w\)">\(v\mapsto\lambda(v)w\)</span>; basis tensors go to the matrix units, so it too is an isomorphism. These maps agree under all frame changes by their formulas and are continuous.</p>
+<p>Finally, over <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span>, both the pullback of a construction and the construction of pullbacks have exactly the same model applied to <span class="math" data-tex="\(E_{f(x)},F_{f(x)}\)">\(E_{f(x)},F_{f(x)}\)</span>. This identification is the identity in the pulled-back local coordinates; it is therefore a continuous isomorphism. Smoothness of all these statements follows from the same polynomial and smooth-inverse formulas when the inputs are smooth. □</p>
+<p id="theorem-b-3"><strong>Theorem B.3 (partitions with controlled support).</strong> A paracompact Hausdorff space is regular and normal, admits continuous separating functions for disjoint closed sets, and has a continuous partition of unity subordinate to every open cover. For a finite cover <span class="math" data-tex="\(U_1,\ldots,U_m\)">\(U_1,\ldots,U_m\)</span>, the partition can be taken as <span class="math" data-tex="\(m\)">\(m\)</span> functions <span class="math" data-tex="\(\rho_j\)">\(\rho_j\)</span>, with
+<span class="math math-display" data-tex="\[
+0\leq\rho_j\leq1,\qquad
+\sum_{j=1}^m\rho_j=1,\qquad
+\operatorname{supp}\rho_j\subset U_j.
+\tag{B.3}
+\]">\[
+0\leq\rho_j\leq1,\qquad
+\sum_{j=1}^m\rho_j=1,\qquad
+\operatorname{supp}\rho_j\subset U_j.
+\tag{B.3}
+\]</span></p>
+<p><strong>Proof.</strong> Here paracompact means that each open cover has a locally finite open refinement, and support means closure of the nonzero set. <a href="DG-CHAR-08.html#lemma-q-1">DG-CHAR-08 Q.1</a> proves regularity, normality and refinements whose closures are subordinate, starting from precisely this definition. <a href="DG-CHAR-08.html#lemma-q-2">DG-CHAR-08 Q.2</a> proves the continuous separating-function theorem by nested dyadic opens, including the sublevel and superlevel continuity checks. In particular, for closed <span class="math" data-tex="\(A\subset O\)">\(A\subset O\)</span> open, apply that theorem to <span class="math" data-tex="\(A,X\setminus O\)">\(A,X\setminus O\)</span> and subtract its function from one to obtain a function equal to one on <span class="math" data-tex="\(A\)">\(A\)</span> and zero off <span class="math" data-tex="\(O\)">\(O\)</span>. <a href="DG-CHAR-08.html#theorem-q-3">DG-CHAR-08 Q.3</a> then proves the locally finite subordinate-partition theorem from those two results. These earlier proofs apply to arbitrary paracompact Hausdorff spaces and arbitrary, possibly uncountable, covers.</p>
+<p>To obtain the last assertion, take that locally finite partition <span class="math" data-tex="\((\lambda_\alpha)\)">\((\lambda_\alpha)\)</span>, assign each support to one <span class="math" data-tex="\(U_j\)">\(U_j\)</span>, and set <span class="math" data-tex="\(\rho_j=\sum_{\alpha\text{ assigned to }j}\lambda_\alpha\)">\(\rho_j=\sum_{\alpha\text{ assigned to }j}\lambda_\alpha\)</span>. Each sum is locally finite and hence continuous, and the sum of all <span class="math" data-tex="\(\rho_j\)">\(\rho_j\)</span> is one. The union of the supports in any one group is closed: near any point only finitely many supports occur, so a point outside their union has a neighbourhood disjoint from the whole union. This union is contained in <span class="math" data-tex="\(U_j\)">\(U_j\)</span> and contains the nonzero set of <span class="math" data-tex="\(\rho_j\)">\(\rho_j\)</span>, so it contains its closure. That proves the support inclusion in (B.3). Finally, compact Hausdorff spaces are paracompact because a finite subcover is a locally finite refinement of any open cover. All these conclusions therefore apply to compact Hausdorff bases. □</p>
+<h2 id="part-c">C. Constant rank, metrics and stabilization</h2>
+<p>A <strong>subbundle</strong> <span class="math" data-tex="\(S\subset E\)">\(S\subset E\)</span> has the subspace topology, vector subspaces as fibres, and its restricted projection is a vector bundle. A constant dimension alone will be used only together with the continuous local frames or matrices supplied below.</p>
+<p id="lemma-c-1"><strong>Lemma C.1 (image and kernel at constant rank).</strong> Let <span class="math" data-tex="\(T:E\to F\)">\(T:E\to F\)</span> be a continuous bundle map over <span class="math" data-tex="\(X\)">\(X\)</span>, of constant rank <span class="math" data-tex="\(k\)">\(k\)</span> locally on <span class="math" data-tex="\(X\)">\(X\)</span>. Then its image and kernel, with their subspace topologies, are subbundles. Their ranks are <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(\operatorname{rank}E-k\)">\(\operatorname{rank}E-k\)</span>. The corresponding statement holds smoothly.</p>
+<p><strong>Proof.</strong> Work in charts with an <span class="math" data-tex="\(s\)">\(s\)</span>-by-<span class="math" data-tex="\(r\)">\(r\)</span> matrix <span class="math" data-tex="\(A(x)\)">\(A(x)\)</span>, and fix <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. If <span class="math" data-tex="\(k=0\)">\(k=0\)</span>, <span class="math" data-tex="\(A\)">\(A\)</span> is identically zero near <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, and both assertions are immediate. If <span class="math" data-tex="\(k&gt;0\)">\(k&gt;0\)</span>, choose a nonzero <span class="math" data-tex="\(k\)">\(k\)</span>-by-<span class="math" data-tex="\(k\)">\(k\)</span> minor at <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. Such a minor exists as follows. Select <span class="math" data-tex="\(k\)">\(k\)</span> independent columns spanning the image. On their <span class="math" data-tex="\(k\)">\(k\)</span>-dimensional span the coordinate functionals span the dual, since a vector on which all coordinates vanish is zero; successive basis exchange selects <span class="math" data-tex="\(k\)">\(k\)</span> independent such restrictions. The associated square coordinate matrix is invertible. This gives the required minor. Its determinant is continuous and nonzero on a smaller neighbourhood. Permuting rows and columns by fixed permutations, write there
+<span class="math math-display" data-tex="\[
+A=\begin{pmatrix}B&amp;C\\D&amp;G\end{pmatrix},\qquad B\in GL_k(\mathbb F).
+\tag{C.1}
+\]">\[
+A=\begin{pmatrix}B&amp;C\\D&amp;G\end{pmatrix},\qquad B\in GL_k(\mathbb F).
+\tag{C.1}
+\]</span>
+Every remaining column is a linear combination of the first <span class="math" data-tex="\(k\)">\(k\)</span> columns, because the rank is <span class="math" data-tex="\(k\)">\(k\)</span>. Comparing its first <span class="math" data-tex="\(k\)">\(k\)</span> entries determines that combination as <span class="math" data-tex="\(B^{-1}\)">\(B^{-1}\)</span> times those entries. Hence
+<span class="math math-display" data-tex="\[
+G=DB^{-1}C.
+\tag{C.2}
+\]">\[
+G=DB^{-1}C.
+\tag{C.2}
+\]</span>
+The image is the graph <span class="math" data-tex="\(y\mapsto DB^{-1}y\)">\(y\mapsto DB^{-1}y\)</span>, <span class="math" data-tex="\(y\in\mathbb F^k\)">\(y\in\mathbb F^k\)</span>, inside the target chart. Projection onto its first <span class="math" data-tex="\(k\)">\(k\)</span> coordinates is a continuous inverse to this parametrization, so this is a subbundle chart in the subspace topology. The kernel is the graph
+<span class="math math-display" data-tex="\[
+z\longmapsto(-B^{-1}Cz,z),\qquad z\in\mathbb F^{r-k},
+\tag{C.3}
+\]">\[
+z\longmapsto(-B^{-1}Cz,z),\qquad z\in\mathbb F^{r-k},
+\tag{C.3}
+\]</span>
+with inverse projection onto the last <span class="math" data-tex="\(r-k\)">\(r-k\)</span> coordinates. Formula (C.2) checks that these vectors annihilate both block rows, and the first block row forces exactly (C.3). Thus this also is a subbundle chart. The formulas include the full-rank edge cases, with the corresponding zero-dimensional factors omitted. They are smooth if the input matrix is smooth, proving that assertion.</p>
+<p>The rank assumption is necessary. Multiplication by <span class="math" data-tex="\(x\)">\(x\)</span> as an endomorphism of the trivial real line over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> has image of dimension zero at <span class="math" data-tex="\(0\)">\(0\)</span> and one elsewhere; its kernel has the opposite dimensions. Neither is a vector bundle near <span class="math" data-tex="\(0\)">\(0\)</span>, because dimensions in a bundle chart are locally constant. □</p>
+<p id="theorem-c-2"><strong>Theorem C.2 (metrics, projections and splitting).</strong> Every finite-rank real or complex bundle on a paracompact Hausdorff base has a continuous positive definite metric. Given any such metric and any subbundle <span class="math" data-tex="\(S\subset E\)">\(S\subset E\)</span>, its orthogonal complement is a subbundle and
+<span class="math math-display" data-tex="\[
+S\oplus S^\perp\longrightarrow E,\qquad (v,w)\longmapsto v+w
+\tag{C.4}
+\]">\[
+S\oplus S^\perp\longrightarrow E,\qquad (v,w)\longmapsto v+w
+\tag{C.4}
+\]</span>
+is an isomorphism. Every fibrewise exact sequence of bundles
+<span class="math math-display" data-tex="\[
+0\longrightarrow S\overset{i}{\longrightarrow}E
+\overset{q}{\longrightarrow}Q\longrightarrow0
+\tag{C.5}
+\]">\[
+0\longrightarrow S\overset{i}{\longrightarrow}E
+\overset{q}{\longrightarrow}Q\longrightarrow0
+\tag{C.5}
+\]</span>
+on that base splits.</p>
+<p><strong>Proof.</strong> Pull back the standard coordinate inner product through each trivialization to get local metrics <span class="math" data-tex="\(h_\alpha\)">\(h_\alpha\)</span>. Take B.3's locally finite partition <span class="math" data-tex="\(\lambda_\alpha\)">\(\lambda_\alpha\)</span> subordinate to these trivializations, allowing repeated use of a chart. Define
+<span class="math math-display" data-tex="\[
+h_x(v,w)=\sum_\alpha\lambda_\alpha(x)h_{\alpha,x}(v,w).
+\tag{C.6}
+\]">\[
+h_x(v,w)=\sum_\alpha\lambda_\alpha(x)h_{\alpha,x}(v,w).
+\tag{C.6}
+\]</span>
+Each summand extends by zero off its chart. At a base point outside that chart, the closed support of its coefficient is absent on a neighbourhood, which proves continuity of the extension even if the local metric grows near the chart boundary. The sum is locally finite and therefore continuous in every bundle chart. It is symmetric bilinear in the real case and Hermitian, conjugate-linear in the first variable, in the complex case. For <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>, some <span class="math" data-tex="\(\lambda_\alpha(x)&gt;0\)">\(\lambda_\alpha(x)&gt;0\)</span>, and every contributing <span class="math" data-tex="\(h_\alpha(v,v)&gt;0\)">\(h_\alpha(v,v)&gt;0\)</span>. Hence <span class="math" data-tex="\(h(v,v)&gt;0\)">\(h(v,v)&gt;0\)</span>.</p>
+<p>Write a local frame of <span class="math" data-tex="\(S\)">\(S\)</span>, expressed in coordinates of <span class="math" data-tex="\(E\)">\(E\)</span>, as the columns of an <span class="math" data-tex="\(r\)">\(r\)</span>-by-<span class="math" data-tex="\(k\)">\(k\)</span> matrix <span class="math" data-tex="\(T\)">\(T\)</span>. Write <span class="math" data-tex="\(h(v,w)=v^*Hw\)">\(h(v,w)=v^*Hw\)</span>, where star denotes transpose or conjugate transpose. The matrix <span class="math" data-tex="\(T^*HT\)">\(T^*HT\)</span> is invertible: a nonzero <span class="math" data-tex="\(a\)">\(a\)</span> has <span class="math" data-tex="\(Ta\ne0\)">\(Ta\ne0\)</span>, so <span class="math" data-tex="\(a^*T^*HTa&gt;0\)">\(a^*T^*HTa&gt;0\)</span>, and a square matrix with zero kernel is invertible by basis exchange. The orthogonal projection onto <span class="math" data-tex="\(S\)">\(S\)</span> is
+<span class="math math-display" data-tex="\[
+P=T(T^*HT)^{-1}T^*H.
+\tag{C.7}
+\]">\[
+P=T(T^*HT)^{-1}T^*H.
+\tag{C.7}
+\]</span>
+Indeed multiplication gives <span class="math" data-tex="\(PT=T\)">\(PT=T\)</span>, <span class="math" data-tex="\(P^2=P\)">\(P^2=P\)</span>, and <span class="math" data-tex="\(T^*H(v-Pv)=0\)">\(T^*H(v-Pv)=0\)</span>. These equations prove that <span class="math" data-tex="\(Pv\in S\)">\(Pv\in S\)</span> and <span class="math" data-tex="\(v-Pv\in S^\perp\)">\(v-Pv\in S^\perp\)</span>. Their intersection is zero, since a vector perpendicular to itself has zero squared length. They also prove uniqueness of the orthogonal decomposition, so the formulas agree in different frames. In ranks <span class="math" data-tex="\(k=0,r\)">\(k=0,r\)</span>, take <span class="math" data-tex="\(P=0,I\)">\(P=0,I\)</span>, respectively.</p>
+<p>The kernel of <span class="math" data-tex="\(P\)">\(P\)</span> is <span class="math" data-tex="\(S^\perp\)">\(S^\perp\)</span>, and <span class="math" data-tex="\(P\)">\(P\)</span> is continuous of rank <span class="math" data-tex="\(k\)">\(k\)</span>. C.1 gives its subbundle charts. Equivalently, at <span class="math" data-tex="\(x_0\)">\(x_0\)</span> choose constant ambient vectors <span class="math" data-tex="\(z_1,\ldots,z_{r-k}\)">\(z_1,\ldots,z_{r-k}\)</span> completing the frame of <span class="math" data-tex="\(S_{x_0}\)">\(S_{x_0}\)</span>; then the vectors <span class="math" data-tex="\((I-P(x))z_j\)">\((I-P(x))z_j\)</span>, together with that frame, form an invertible matrix near <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. They give a local frame of the complement. The inverse of (C.4) is <span class="math" data-tex="\(v\mapsto(Pv,(I-P)v)\)">\(v\mapsto(Pv,(I-P)v)\)</span>, continuous in charts.</p>
+<p>In (C.5), C.1 and A.1 identify <span class="math" data-tex="\(S\)">\(S\)</span> with the image of <span class="math" data-tex="\(i\)">\(i\)</span>, a subbundle of <span class="math" data-tex="\(E\)">\(E\)</span>. Choose the metric just constructed on <span class="math" data-tex="\(E\)">\(E\)</span>. The restriction <span class="math" data-tex="\(q|_{S^\perp}\)">\(q|_{S^\perp}\)</span> has zero kernel and is onto: if <span class="math" data-tex="\(q(v)=u\)">\(q(v)=u\)</span>, replace <span class="math" data-tex="\(v\)">\(v\)</span> by its orthogonal-complement component, which has the same image. It is therefore an isomorphism by A.1. Its inverse followed by inclusion gives a right inverse of <span class="math" data-tex="\(q\)">\(q\)</span>, and identifies <span class="math" data-tex="\(E\)">\(E\)</span> with <span class="math" data-tex="\(S\oplus Q\)">\(S\oplus Q\)</span>. This choice depends on the metric; exactness alone has not selected a distinguished splitting. □</p>
+<p id="theorem-c-3"><strong>Theorem C.3 (a finite ambient bundle).</strong> A rank-<span class="math" data-tex="\(r\)">\(r\)</span> bundle over a compact Hausdorff space embeds as a subbundle of <span class="math" data-tex="\(\varepsilon_X^N\)">\(\varepsilon_X^N\)</span> for some finite <span class="math" data-tex="\(N\)">\(N\)</span>, and there is a bundle <span class="math" data-tex="\(F\)">\(F\)</span> with <span class="math" data-tex="\(E\oplus F\cong\varepsilon_X^N\)">\(E\oplus F\cong\varepsilon_X^N\)</span>.</p>
+<p><strong>Proof.</strong> Choose a finite trivializing cover <span class="math" data-tex="\(U_1,\ldots,U_m\)">\(U_1,\ldots,U_m\)</span> by compactness and a partition <span class="math" data-tex="\(\rho_1,\ldots,\rho_m\)">\(\rho_1,\ldots,\rho_m\)</span> as in B.3. If <span class="math" data-tex="\(a_j(v)\)">\(a_j(v)\)</span> is the fibre coordinate in chart <span class="math" data-tex="\(j\)">\(j\)</span>, define
+<span class="math math-display" data-tex="\[
+J:E\longrightarrow X\times(\mathbb F^r)^m,\qquad
+J(v)=\bigl(p(v),(\rho_j(p(v))a_j(v))_{j=1}^m\bigr),
+\tag{C.8}
+\]">\[
+J:E\longrightarrow X\times(\mathbb F^r)^m,\qquad
+J(v)=\bigl(p(v),(\rho_j(p(v))a_j(v))_{j=1}^m\bigr),
+\tag{C.8}
+\]</span>
+where the <span class="math" data-tex="\(j\)">\(j\)</span>-th component is zero off <span class="math" data-tex="\(U_j\)">\(U_j\)</span>. The support argument in C.2 proves that each component is continuous. At any <span class="math" data-tex="\(x\)">\(x\)</span>, some <span class="math" data-tex="\(\rho_j(x)&gt;0\)">\(\rho_j(x)&gt;0\)</span>; the corresponding coordinate is an invertible scalar multiple of a chart coordinate. Thus <span class="math" data-tex="\(J_x\)">\(J_x\)</span> is injective.</p>
+<p>C.1 makes its image a subbundle of rank <span class="math" data-tex="\(r\)">\(r\)</span>. The induced map <span class="math" data-tex="\(E\to\operatorname{im}J\)">\(E\to\operatorname{im}J\)</span> is continuous in the subspace topology, fibrewise invertible and hence an isomorphism by A.1. Inclusion of that image into the ambient bundle makes <span class="math" data-tex="\(J\)">\(J\)</span> an embedding of total spaces. Give the ambient bundle its usual metric and set <span class="math" data-tex="\(F=(\operatorname{im}J)^\perp\)">\(F=(\operatorname{im}J)^\perp\)</span>. C.2 supplies the isomorphism with <span class="math" data-tex="\(\varepsilon_X^{mr}\)">\(\varepsilon_X^{mr}\)</span>. This is a finite stabilization, with no uniform choice of the integer <span class="math" data-tex="\(m\)">\(m\)</span> asserted across different bases or bundles.</p>
+<p>For a locally constant rank on a compact base, the rank takes only finitely many values: its open constant-value subsets cover the base and admit a finite subcover. The same construction on these finitely many open-and-closed subsets, padding ambient coordinates by zeros to a common finite <span class="math" data-tex="\(N\)">\(N\)</span>, gives the corresponding statement without a global constant-rank assumption. □</p>
+<h2 id="part-d">D. Smooth bundles in geometry</h2>
+<p id="theorem-d-1"><strong>Theorem D.1 (tangents, normals and products).</strong> On a Hausdorff second-countable smooth manifold, smooth vector bundles admit smooth positive definite metrics. If <span class="math" data-tex="\(f:M\to N\)">\(f:M\to N\)</span> is a smooth immersion, then
+<span class="math math-display" data-tex="\[
+f^*TN\cong TM\oplus\nu_f
+\tag{D.1}
+\]">\[
+f^*TN\cong TM\oplus\nu_f
+\tag{D.1}
+\]</span>
+for a smooth normal bundle <span class="math" data-tex="\(\nu_f\)">\(\nu_f\)</span>, after identifying <span class="math" data-tex="\(TM\)">\(TM\)</span> with its image under <span class="math" data-tex="\(df\)">\(df\)</span>. Also
+<span class="math math-display" data-tex="\[
+T(M\times N)\cong \pi_M^*TM\oplus\pi_N^*TN.
+\tag{D.2}
+\]">\[
+T(M\times N)\cong \pi_M^*TM\oplus\pi_N^*TN.
+\tag{D.2}
+\]</span></p>
+<p><strong>Proof.</strong> <a href="../../local-tools-for-bundles-and-transport.html#3-smooth-weights-with-controlled-support">Local tools 3.1</a> proves smooth partitions of unity on these manifolds; its proof includes the compact-exhaustion and locally finite atlas constructions and the flat smooth cutoff in <a href="../../local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.5</a>. Apply that partition theorem to bundle trivializations. The sum (C.6) is now locally a finite sum of smooth forms, and its extensions by zero are smooth because their coefficients vanish on a neighbourhood of every point outside their supporting chart. This gives the metric; (C.7) and C.1 give smooth complements.</p>
+<p>To specify the tangent bundle construction, a tangent vector at <span class="math" data-tex="\(x\)">\(x\)</span> is a velocity of a smooth curve through <span class="math" data-tex="\(x\)">\(x\)</span>, where two curves agree if their coordinate derivatives agree in one chart. The chain rule, <a href="../../local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.3</a>, makes this an equivalence independent of that chart. Every coordinate vector is realized by the inverse-chart image of a short straight line. Thus velocities form a vector space with a basis of coordinate velocities. On overlapping charts their coordinate change is the derivative of the coordinate change, an invertible smooth Jacobian. The chain rule supplies (A.1), so A.1 glues these coordinates into <span class="math" data-tex="\(TM\)">\(TM\)</span>. For <span class="math" data-tex="\(f\)">\(f\)</span>, the same chain rule shows that <span class="math" data-tex="\(df_x\)">\(df_x\)</span> acts on a velocity by the coordinate derivative matrix of <span class="math" data-tex="\(f\)">\(f\)</span>. It therefore defines a smooth map <span class="math" data-tex="\(TM\to f^*TN\)">\(TM\to f^*TN\)</span> over the identity.</p>
+<p>An immersion means that these matrices are injective at every point. C.1 gives their image as a subbundle; A.1 identifies it with <span class="math" data-tex="\(TM\)">\(TM\)</span>. Equip <span class="math" data-tex="\(f^*TN\)">\(f^*TN\)</span> with a smooth metric, for example the pullback of one on <span class="math" data-tex="\(TN\)">\(TN\)</span>, and use its orthogonal complement as <span class="math" data-tex="\(\nu_f\)">\(\nu_f\)</span>. The smooth version of C.2 proves (D.1). If <span class="math" data-tex="\(f\)">\(f\)</span> is an embedding, this is the usual splitting of the ambient tangent bundle restricted to the embedded submanifold; the proof needs only immersion.</p>
+<p>For a product chart, a curve has velocity <span class="math" data-tex="\((v,w)\)">\((v,w)\)</span> exactly when its two component curves have velocities <span class="math" data-tex="\(v,w\)">\(v,w\)</span>. The maps <span class="math" data-tex="\(d\pi_M,d\pi_N\)">\(d\pi_M,d\pi_N\)</span> consequently give a fibrewise isomorphism in (D.2); its inverse in product coordinates concatenates the two velocity lists. Both maps are smooth and agree on chart overlaps by the chain rule. □</p>
+<p id="example-d-2"><strong>Example D.2 (spheres and stable triviality).</strong> For <span class="math" data-tex="\(S^n\subset\mathbb R^{n+1}\)">\(S^n\subset\mathbb R^{n+1}\)</span>,
+<span class="math math-display" data-tex="\[
+TS^n=\{(x,v):|x|=1,\ \langle x,v\rangle=0\},
+\qquad TS^n\oplus\varepsilon_{S^n}^1\cong\varepsilon_{S^n}^{n+1}.
+\tag{D.3}
+\]">\[
+TS^n=\{(x,v):|x|=1,\ \langle x,v\rangle=0\},
+\qquad TS^n\oplus\varepsilon_{S^n}^1\cong\varepsilon_{S^n}^{n+1}.
+\tag{D.3}
+\]</span>
+Odd-dimensional spheres have a smooth nowhere-zero tangent field. Stable triviality does not imply triviality.</p>
+<p><strong>Proof.</strong> The smooth sphere charts are constructed in <a href="DG-CHAR-06.html#lemma-e-5">DG-CHAR-06 E.5</a>. A curve on the sphere has <span class="math" data-tex="\(\langle x,v\rangle=0\)">\(\langle x,v\rangle=0\)</span> by differentiating its squared norm. Conversely, for <span class="math" data-tex="\(v\perp x\)">\(v\perp x\)</span>, the curve <span class="math" data-tex="\((x+tv)/|x+tv|\)">\((x+tv)/|x+tv|\)</span> has velocity <span class="math" data-tex="\(v\)">\(v\)</span> at zero. This identifies its tangent fibre with <span class="math" data-tex="\(x^\perp\)">\(x^\perp\)</span>. The identification is smooth in sphere charts and has a smooth inverse on the bundle image by C.1 and A.1. Its normal line has the global unit section <span class="math" data-tex="\(x\mapsto x\)">\(x\mapsto x\)</span>. The stabilization and its inverse are explicitly
+<span class="math math-display" data-tex="\[
+(x,v,t)\longmapsto(x,v+tx),\qquad
+(x,w)\longmapsto
+\bigl(x,w-\langle w,x\rangle x,\langle w,x\rangle\bigr).
+\tag{D.4}
+\]">\[
+(x,v,t)\longmapsto(x,v+tx),\qquad
+(x,w)\longmapsto
+\bigl(x,w-\langle w,x\rangle x,\langle w,x\rangle\bigr).
+\tag{D.4}
+\]</span>
+Both formulas are smooth and direct substitution proves that they are inverses.</p>
+<p>If <span class="math" data-tex="\(n=2m-1\)">\(n=2m-1\)</span>, put <span class="math" data-tex="\(J(a,b)=(-b,a)\)">\(J(a,b)=(-b,a)\)</span> on each of the <span class="math" data-tex="\(m\)">\(m\)</span> ambient coordinate planes. Then <span class="math" data-tex="\(\langle x,Jx\rangle=0\)">\(\langle x,Jx\rangle=0\)</span> and <span class="math" data-tex="\(|Jx|=|x|=1\)">\(|Jx|=|x|=1\)</span>. Thus <span class="math" data-tex="\(x\mapsto Jx\)">\(x\mapsto Jx\)</span> is a smooth nowhere-zero tangent field. For <span class="math" data-tex="\(S^1\)">\(S^1\)</span> this single vector is a frame and A.2 trivializes <span class="math" data-tex="\(TS^1\)">\(TS^1\)</span>. For higher odd dimensions it establishes a single section, without asserting a full frame.</p>
+<p>In contrast, <a href="DG-CHAR-06.html#corollary-n-5">DG-CHAR-06 N.5</a> proves <span class="math" data-tex="\(e(TS^2)=2a\ne0\)">\(e(TS^2)=2a\ne0\)</span> and proves that <span class="math" data-tex="\(S^2\)">\(S^2\)</span> has no continuous nowhere-zero tangent field. A.2 therefore shows that <span class="math" data-tex="\(TS^2\)">\(TS^2\)</span> is not trivial, while (D.4) makes it stably trivial. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, the tangent bundle has zero-dimensional fibres and (D.4) still holds on the two-point sphere. □</p>
+<h2 id="part-e">E. Exercises with solutions</h2>
+<p id="exercise-e-1"><strong>Exercise E.1 (the tensor square of the Möbius line).</strong> Construct a nowhere-zero section of <span class="math" data-tex="\(L\otimes L\)">\(L\otimes L\)</span> for the Möbius line <span class="math" data-tex="\(L\)">\(L\)</span>. Determine whether it supplies a trivialization of <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p><strong>Proof.</strong> In A.3's interval coordinates put <span class="math" data-tex="\(e_\theta=(\cos\theta,\sin\theta)\)">\(e_\theta=(\cos\theta,\sin\theta)\)</span>. The tensor <span class="math" data-tex="\(e_\theta\otimes e_\theta\)">\(e_\theta\otimes e_\theta\)</span> is unchanged at the seam, since both factors change sign. The tensor transition is the product of the two signs by B.2. Thus this formula descends to a continuous section of <span class="math" data-tex="\(L\otimes L\)">\(L\otimes L\)</span>, and it is nonzero everywhere in a local tensor basis. A.2 trivializes the tensor square. It does not trivialize <span class="math" data-tex="\(L\)">\(L\)</span>: A.3 proves the latter is nontrivial. □</p>
+<p id="exercise-e-2"><strong>Exercise E.2 (independent sections).</strong> Let <span class="math" data-tex="\(s_1,\ldots,s_k\)">\(s_1,\ldots,s_k\)</span> be pointwise independent sections of a metric bundle <span class="math" data-tex="\(E\)">\(E\)</span>. Construct its trivial rank-<span class="math" data-tex="\(k\)">\(k\)</span> summand and the orthogonal projection onto it.</p>
+<p><strong>Proof.</strong> Formula (A.2), with <span class="math" data-tex="\(k\)">\(k\)</span> columns, defines an injective bundle map <span class="math" data-tex="\(T:\varepsilon_X^k\to E\)">\(T:\varepsilon_X^k\to E\)</span>. It has constant rank; C.1 gives its image as a subbundle, and A.1 identifies the image with <span class="math" data-tex="\(\varepsilon_X^k\)">\(\varepsilon_X^k\)</span>. In any frame of <span class="math" data-tex="\(E\)">\(E\)</span>, let <span class="math" data-tex="\(H\)">\(H\)</span> be its metric matrix and let <span class="math" data-tex="\(T\)">\(T\)</span> also denote the matrix of these sections. Formula (C.7),
+<span class="math math-display" data-tex="\[
+P=T(T^*HT)^{-1}T^*H,
+\]">\[
+P=T(T^*HT)^{-1}T^*H,
+\]</span>
+is the desired continuous projection. Its intrinsic characterization as the orthogonal projection proves agreement on overlaps. C.2 gives <span class="math" data-tex="\(E\cong\varepsilon_X^k\oplus(\operatorname{im}T)^\perp\)">\(E\cong\varepsilon_X^k\oplus(\operatorname{im}T)^\perp\)</span>. This conclusion uses the given metric and needs no paracompactness assumption. □</p>
+<p id="exercise-e-3"><strong>Exercise E.3 (metric and dual).</strong> Specify the identification with the dual supplied by a real or Hermitian metric.</p>
+<p><strong>Proof.</strong> Send <span class="math" data-tex="\(v\)">\(v\)</span> to the functional <span class="math" data-tex="\(w\mapsto h(v,w)\)">\(w\mapsto h(v,w)\)</span>. Over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> this is linear in both variables, and over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> it is linear in <span class="math" data-tex="\(w\)">\(w\)</span> and conjugate-linear in <span class="math" data-tex="\(v\)">\(v\)</span>. A vector in its kernel has <span class="math" data-tex="\(h(v,v)=0\)">\(h(v,v)=0\)</span>, so <span class="math" data-tex="\(v=0\)">\(v=0\)</span>. Equal finite dimensions give surjectivity. Its coordinate matrix is continuous because <span class="math" data-tex="\(H\)">\(H\)</span> is continuous. It is therefore an isomorphism <span class="math" data-tex="\(E\cong E^*\)">\(E\cong E^*\)</span> over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, and an isomorphism <span class="math" data-tex="\(\overline E\cong E^*\)">\(\overline E\cong E^*\)</span> over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>: scalar multiplication by <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> in <span class="math" data-tex="\(\overline E\)">\(\overline E\)</span> is multiplication by <span class="math" data-tex="\(\overline\lambda\)">\(\overline\lambda\)</span> in <span class="math" data-tex="\(E\)">\(E\)</span>, so the two conjugations cancel. A.1 proves continuity of both inverses. The complex statement does not identify <span class="math" data-tex="\(E\)">\(E\)</span> itself linearly with its dual. □</p>
+<p id="exercise-e-4"><strong>Exercise E.4 (finite generators).</strong> On a compact Hausdorff base, produce finitely many global sections spanning every fibre and deduce stabilization by a surjection.</p>
+<p><strong>Proof.</strong> Choose the finite cover and partition of C.3, and a frame <span class="math" data-tex="\(e_{j1},\ldots,e_{jr}\)">\(e_{j1},\ldots,e_{jr}\)</span> on each <span class="math" data-tex="\(U_j\)">\(U_j\)</span>. Extend <span class="math" data-tex="\(s_{ja}=\rho_je_{ja}\)">\(s_{ja}=\rho_je_{ja}\)</span> by zero outside <span class="math" data-tex="\(U_j\)">\(U_j\)</span>. The closed support condition proves continuity, as in C.2. At any <span class="math" data-tex="\(x\)">\(x\)</span>, some <span class="math" data-tex="\(\rho_j(x)&gt;0\)">\(\rho_j(x)&gt;0\)</span>, so the <span class="math" data-tex="\(r\)">\(r\)</span> sections with that <span class="math" data-tex="\(j\)">\(j\)</span> form a basis of <span class="math" data-tex="\(E_x\)">\(E_x\)</span>. All <span class="math" data-tex="\(mr\)">\(mr\)</span> sections therefore define a surjective bundle map <span class="math" data-tex="\(A:\varepsilon_X^{mr}\to E\)">\(A:\varepsilon_X^{mr}\to E\)</span>. C.1 makes <span class="math" data-tex="\(K=\ker A\)">\(K=\ker A\)</span> a subbundle. With the standard metric on the source, <span class="math" data-tex="\(A|_{K^\perp}\)">\(A|_{K^\perp}\)</span> is injective, and it is onto because removing a vector's component in <span class="math" data-tex="\(K\)">\(K\)</span> does not change its image. A.1 identifies <span class="math" data-tex="\(K^\perp\)">\(K^\perp\)</span> with <span class="math" data-tex="\(E\)">\(E\)</span>, and C.2 gives <span class="math" data-tex="\(\varepsilon_X^{mr}\cong K\oplus E\)">\(\varepsilon_X^{mr}\cong K\oplus E\)</span>. Thus the same finite stabilization can be obtained from spanning sections rather than an embedding. □</p>
+<p id="exercise-e-5"><strong>Exercise E.5 (nearby projections).</strong> Let <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> be orthogonal projections of the same rank on <span class="math" data-tex="\(\mathbb F^N\)">\(\mathbb F^N\)</span>, with operator norm <span class="math" data-tex="\(\|P-Q\|&lt;1\)">\(\|P-Q\|&lt;1\)</span>. Prove that <span class="math" data-tex="\(Q:\operatorname{im}P\to\operatorname{im}Q\)">\(Q:\operatorname{im}P\to\operatorname{im}Q\)</span> is an isomorphism, and give the continuous-bundle version.</p>
+<p><strong>Proof.</strong> The operator norm is the supremum of <span class="math" data-tex="\(|Av|\)">\(|Av|\)</span> over unit vectors; hence <span class="math" data-tex="\(|Av|\leq\|A\||v|\)">\(|Av|\leq\|A\||v|\)</span>, by scaling, including <span class="math" data-tex="\(v=0\)">\(v=0\)</span>. If <span class="math" data-tex="\(v=Pv\)">\(v=Pv\)</span> and <span class="math" data-tex="\(Qv=0\)">\(Qv=0\)</span>, then
+<span class="math math-display" data-tex="\[
+|v|=|(P-Q)v|\leq\|P-Q\|\,|v|.
+\]">\[
+|v|=|(P-Q)v|\leq\|P-Q\|\,|v|.
+\]</span>
+Since <span class="math" data-tex="\(1-\|P-Q\|&gt;0\)">\(1-\|P-Q\|&gt;0\)</span>, this forces <span class="math" data-tex="\(v=0\)">\(v=0\)</span>. Thus the indicated map is injective. Its source and target have the same finite dimension, so it is onto.</p>
+<p>For continuous orthogonal-projection fields on <span class="math" data-tex="\(X\times\mathbb F^N\)">\(X\times\mathbb F^N\)</span>, their ranks are locally constant: the trace is continuous and is the rank. To justify the latter identity, decompose the vector space into image and kernel of an idempotent; in a basis formed from those subspaces its matrix is <span class="math" data-tex="\(\operatorname{diag}(I_k,0)\)">\(\operatorname{diag}(I_k,0)\)</span>. Trace is invariant under change of basis, since direct finite index summation gives <span class="math" data-tex="\(\operatorname{tr}(AB)=\operatorname{tr}(BA)\)">\(\operatorname{tr}(AB)=\operatorname{tr}(BA)\)</span>. Thus the trace is the integer <span class="math" data-tex="\(k\)">\(k\)</span>, and a continuous integer-valued function is locally constant by an interval of radius less than <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. C.1 now makes both images subbundles. If their ranks agree pointwise and <span class="math" data-tex="\(\|P(x)-Q(x)\|&lt;1\)">\(\|P(x)-Q(x)\|&lt;1\)</span> at every <span class="math" data-tex="\(x\)">\(x\)</span>, restriction of <span class="math" data-tex="\(Q\)">\(Q\)</span> is a continuous fibrewise isomorphism; A.1 gives a continuous inverse. No uniform gap below one over the whole base is required.</p>
+<p>Sharpness is visible on <span class="math" data-tex="\(\mathbb F^2\)">\(\mathbb F^2\)</span>: let <span class="math" data-tex="\(P=\operatorname{diag}(1,0)\)">\(P=\operatorname{diag}(1,0)\)</span> and <span class="math" data-tex="\(Q=\operatorname{diag}(0,1)\)">\(Q=\operatorname{diag}(0,1)\)</span>. Then <span class="math" data-tex="\(P-Q=\operatorname{diag}(1,-1)\)">\(P-Q=\operatorname{diag}(1,-1)\)</span> preserves the norm, so its operator norm is one, while <span class="math" data-tex="\(Q|_{\operatorname{im}P}=0\)">\(Q|_{\operatorname{im}P}=0\)</span>. □</p>
+<h2 id="further-reading">Further reading</h2>
+<p>Allen Hatcher, <a href="https://pi.math.cornell.edu/~hatcher/VBKT/VB.pdf"><em>Vector Bundles and K-Theory</em>, version 2.2, November 2017</a>, Chapter 1, especially pages 6–15 for bundle coordinates, sections, sums, metrics and tensor constructions, and pages 18–19 for pullbacks. This is the freely accessible author version. The proofs used in this chapter are given above or in the exact earlier programme results linked in the text.</p>
+</article><footer><p><a href="src/DG-CHAR-01.md">Chapter source</a> · <a href="../../index.html">Course contents</a></p><p>New exposition: CC0 1.0.</p><p><span class="unlinked">MathJax licence</span> · <span class="unlinked">Font notices</span></p></footer></main></body></html>

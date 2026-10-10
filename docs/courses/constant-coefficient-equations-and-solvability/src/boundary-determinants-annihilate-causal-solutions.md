@@ -6,7 +6,7 @@ A square boundary matrix determines a causal convolution operator on the boundar
 
 Read [Incoming normal roots at a flat boundary](incoming-normal-roots-at-a-flat-boundary.md), [Boundary data for a decaying half-line equation](boundary-data-for-a-decaying-half-line-equation.md), [Boundary determinants as causal Fourier kernels](boundary-determinants-as-causal-fourier-kernels.md). [Fourier transforms, finite spectra and convex separation](../prerequisites/prerequisite-bridges.html) supplies the Schwartz Fourier transform; [Metric and topological foundations](../prerequisites/metric-foundation-bridges.html) supplies compact extrema and cutoffs; [Convolution as addition of supports](../prerequisites/convolution-as-addition-of-supports.html) supplies proper convolution.
 
-The hyperbolic-cone and analytic zero-order prerequisites remain planned in [Distributions, kernels and analytic singularities](../prerequisites/planned-foundation-proofs.html); their precise statements are given in [Hyperbolicity and lower order terms](hyperbolicity-and-lower-order-terms.md). Local Holmgren uniqueness also remains planned: a distribution solving an analytic-coefficient equation and vanishing on one side of a noncharacteristic surface vanishes near that surface. The uses of these prerequisites are conditional on their planned proofs.
+The hyperbolic-cone theorem is proved in [Real roots and their convex component](../AN02-L192.html#4-pass-to-multiple-roots-and-obtain-convexity), Theorem 4.1. The analytic zero-order prerequisite remains planned in [Distributions, kernels and analytic singularities](../prerequisites/planned-foundation-proofs.html); its precise statement is given in [Hyperbolicity and lower order terms](hyperbolicity-and-lower-order-terms.md). Local Holmgren uniqueness is proved in [Analytic coefficients and one-sided uniqueness](../AN02-L191.html#3-a-continuously-differentiable-surface-needs-no-analytic-flattening), Theorem 3.2: a distribution solving an analytic-coefficient equation and vanishing on one side of a noncharacteristic surface vanishes near that surface. The other prerequisite uses remain conditional on their planned proofs.
 
 Basic references are Grubb's *Distributions and Operators* ([author's lecture notes](https://web.math.ku.dk/~grubb/distribution.htm)), Melrose's *Differential Analysis* and Hörmander's treatment of constant-coefficient equations. The written prerequisite lessons supply the auxiliary proofs used below.
 
@@ -64,7 +64,7 @@ Let there be exactly \(h\) polynomial boundary symbols \(B_1,\ldots,B_h\). Let \
 \]
 The last inclusion follows directly by testing \((0,\eta')\in\Gamma\). The transform of \(\mathcal L\) is \(L^\partial\), independent of normal frequency. At \(h=0\), the empty determinant is one and \(L_0=\delta_0(x')\). If the determinant is identically zero, \(L_0=0\); the asserted annihilation is then meaningful but automatic.
 
-**Theorem, relative to the stated Holmgren prerequisite.** Suppose \(u\in C^\infty(H')\), with every right derivative continuous up to \(a=0\), and
+**Theorem, using the available Holmgren theorem.** Suppose \(u\in C^\infty(H')\), with every right derivative continuous up to \(a=0\), and
 \[
 \begin{gathered}
 P(D)u=0\\
@@ -87,7 +87,7 @@ There is no growth restriction on \(u\) at spatial infinity. Smoothness on the c
 
 [Incoming normal roots at a flat boundary](incoming-normal-roots-at-a-flat-boundary.md) supplies the factorization and its polynomial coefficient estimates. [Boundary data for a decaying half-line equation](boundary-data-for-a-decaying-half-line-equation.md) supplies the nondegenerate residue pairing and polynomial adjugate identities. [Boundary determinants as causal Fourier kernels](boundary-determinants-as-causal-fourier-kernels.md) supplies descent and the complete flat-tube inverse, including support and smooth-parameter statements. The Fourier, finite-matrix and compact-cutoff lessons, and the tensor and proper-convolution lessons, are the auxiliary bases.
 
-The two prerequisites in [Incoming normal roots at a flat boundary](incoming-normal-roots-at-a-flat-boundary.md) remain planned prerequisites: the homogeneous hyperbolic cone theorem and the analytic zero-strip Taylor-order theorem. One further planned theorem is used here: local Holmgren uniqueness for a distribution solving an analytic-coefficient equation and vanishing on one side of a noncharacteristic \(C^1\) surface. The two continuation arguments below are proved from precisely this local theorem. No general convex continuation theorem or arbitrary-growth Cauchy uniqueness theorem is imported.
+The homogeneous hyperbolic cone theorem used in [Incoming normal roots at a flat boundary](incoming-normal-roots-at-a-flat-boundary.md) is proved in [Real roots and their convex component](../AN02-L192.html#4-pass-to-multiple-roots-and-obtain-convexity), Theorem 4.1. Its analytic zero-strip Taylor-order prerequisite remains planned. One further available theorem is used here: local Holmgren uniqueness for a distribution solving an analytic-coefficient equation and vanishing on one side of a noncharacteristic \(C^1\) surface. The two continuation arguments below are proved from precisely this local theorem, supplied by [Analytic coefficients and one-sided uniqueness](../AN02-L191.html#3-a-continuously-differentiable-surface-needs-no-analytic-flattening), Theorem 3.2. No general convex continuation theorem or arbitrary-growth Cauchy uniqueness theorem is imported.
 
 ## A positive-time wedge from a quadratic barrier
 
@@ -136,7 +136,7 @@ Its normal belongs to \(\Gamma\), so \(P_m(dF(y_*))\ne0\). The level surface is 
 \]
 This gives a sufficient positive slope. It does not claim the optimal slope determined by the first positive principal root.
 
-We also need full-space causal uniqueness. If a distribution \(W\) on \(\mathbb R^n\) solves \(P(D)W=0\) and has support in \(t\ge0\), then \(W=0\), relative to the same planned local Holmgren theorem. To prove this, take a support point \(x_0\), and minimize
+We also need full-space causal uniqueness. If a distribution \(W\) on \(\mathbb R^n\) solves \(P(D)W=0\) and has support in \(t\ge0\), then \(W=0\), relative to the same available local Holmgren theorem. To prove this, take a support point \(x_0\), and minimize
 \[
 \begin{gathered}
 G(y)=t+\epsilon|y_s-x_{0,s}|^2

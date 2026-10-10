@@ -1,0 +1,1217 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The original ring kernel and its unstable spectral space — Incompressible flow</title><link rel="stylesheet" href="reader.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Incompressible flow</a><a href="src/the-original-ring-kernel-and-its-unstable-spectral-space.md">Editable lesson</a><span class="unlinked">Sources and authorship</span></nav></header><main id="main"><nav aria-label="Lesson sequence"><a href="NS-FLUID-31.html">Previous lesson</a></nav><article class="lesson"><h1 id="the-original-ring-kernel-and-its-unstable-spectral-space">The original ring kernel and its unstable spectral space</h1>
+<p><a href="NS-FLUID-31.html">Lesson 31</a>
+constructed a compact planar vortex with an actual unstable eigenmode and
+proved its full weighted Euler generator. This lesson constructs the
+three-dimensional ring receiver and transfers that spectral space to an
+actual ring, keeping the original physical coordinates, signs and volume.</p>
+<p>The first part derives the full Newton and Biot–Savart kernels, including
+the axis behavior and curvature terms. An exact angular integral gives a
+bound uniform in the ring radius. We prove convergence to the planar
+receiver in operator norm, keeping both the corrected velocity and
+vorticity. This also strengthens the bound for the stretching operator.</p>
+<p>The second part constructs the full transport group with its Jacobian
+factor and proves its precise domain. The contour comparison then gives
+an actual growing three-dimensional mode, its pressure and the original
+force holding its background stationary. The last exercise strengthens
+the comparison to preserve the entire enclosed algebraic multiplicity.</p>
+<p>The human source is Dallas Albritton, Elia Brué and Maria Colombo,
+<a href="https://arxiv.org/abs/2112.03116v1"><em>Non-uniqueness of Leray solutions of the forced Navier–Stokes equations</em>,
+arXiv:2112.03116v1</a>, original main.tex
+991–1632. Its printed axis boundary condition and transport-flow formula
+receive explicit corrections below, each with its full replacement map.
+The unstable planar input has already been constructed in lessons 29–31;
+no assumed unstable ring substitutes for the transfer proved here.</p>
+<p>Keep the actual original radius <span class="math" data-tex="\(R\)">\(R\)</span>, stream function <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span>,
+background vorticity <span class="math" data-tex="\(g_R\)">\(g_R\)</span>, weight <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span>, eigenvalue
+<span class="math" data-tex="\(\lambda_R\)">\(\lambda_R\)</span> and eigenmode from lesson 31. Its equations CP1–CP32,
+WG1–WG23 and EX14–EX18 give the complete incoming proofs.
+The ring radius <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is a new physical parameter; the original time,
+amplitude and viscosity are retained throughout all receiving maps.</p>
+<p>Five solved exercises give the exact physical-volume isometry, retained
+curvature kernel, full background-gradient correction, original Euler
+and viscous forces, and complete algebraic spectral count. This lesson
+proves the Euler spectral transfer. The following viscous and nonlinear
+steps remain to be constructed. Author self-check only; no independent
+review or novelty claim is asserted.</p>
+<h2 id="rk1-keep-the-physical-three-dimensional-objects">RK1. Keep the physical three-dimensional objects</h2>
+<p>Fix the actual radius <span class="math" data-tex="\(R\geq4\)">\(R\geq4\)</span>, the original compact radial stream function <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span>, and the actual ring radius <span class="math" data-tex="\(\ell\geq2R\)">\(\ell\geq2R\)</span>. Write</p>
+<span class="math math-display" data-tex="\[
+s=\ell+r&gt;0,\qquad X=(s\cos\theta,s\sin\theta,z),\qquad
+dX=s\,dr\,d\theta\,dz,\qquad D_\ell=\{(r,z):r&gt;-\ell\}.
+\tag{RK1}
+\]">\[
+s=\ell+r&gt;0,\qquad X=(s\cos\theta,s\sin\theta,z),\qquad
+dX=s\,dr\,d\theta\,dz,\qquad D_\ell=\{(r,z):r&gt;-\ell\}.
+\tag{RK1}
+\]</span>
+<p>Use exactly the weight <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span> of WG1: it equals one on <span class="math" data-tex="\(B_R\)">\(B_R\)</span>, is at least one everywhere, and equals <span class="math" data-tex="\((1+r^2+z^2)^{50}\)">\((1+r^2+z^2)^{50}\)</span> outside <span class="math" data-tex="\(B_{2R}\)">\(B_{2R}\)</span>. Put <span class="math" data-tex="\(H=L^2(\varpi\,dr\,dz)\)">\(H=L^2(\varpi\,dr\,dz)\)</span> and <span class="math" data-tex="\(H_\ell=L^2(D_\ell,\varpi\,dr\,dz)\)">\(H_\ell=L^2(D_\ell,\varpi\,dr\,dz)\)</span>. Restriction is <span class="math" data-tex="\(P_\ell:H\to H_\ell\)">\(P_\ell:H\to H_\ell\)</span>; zero extension is <span class="math" data-tex="\(E_\ell:H_\ell\to H\)">\(E_\ell:H_\ell\to H\)</span>. Their norms are one and <span class="math" data-tex="\(P_\ell E_\ell=I\)">\(P_\ell E_\ell=I\)</span>, whereas <span class="math" data-tex="\(E_\ell P_\ell\)">\(E_\ell P_\ell\)</span> is multiplication by <span class="math" data-tex="\(1_{D_\ell}\)">\(1_{D_\ell}\)</span>. These are different maps with the stated domains.</p>
+<p>For <span class="math" data-tex="\(\omega\in H_\ell\)">\(\omega\in H_\ell\)</span>, the physical vorticity is</p>
+<span class="math math-display" data-tex="\[
+\Omega(X)=-\omega(r,z)e_\theta,\qquad e_\theta=(-\sin\theta,\cos\theta,0).
+\tag{RK2}
+\]">\[
+\Omega(X)=-\omega(r,z)e_\theta,\qquad e_\theta=(-\sin\theta,\cos\theta,0).
+\tag{RK2}
+\]</span>
+<p>In particular the source scalar is minus the physical swirl component. Define</p>
+<span class="math math-display" data-tex="\[
+A_\ell=\sup_{D_\ell}\frac{\ell+r}{\varpi(r,z)},\qquad
+J_{\ell,2}=\int_{D_\ell}\frac{(\ell+r)^2}{\varpi(r,z)}\,dr\,dz.
+\]">\[
+A_\ell=\sup_{D_\ell}\frac{\ell+r}{\varpi(r,z)},\qquad
+J_{\ell,2}=\int_{D_\ell}\frac{(\ell+r)^2}{\varpi(r,z)}\,dr\,dz.
+\]</span>
+<p>Both are finite: <span class="math" data-tex="\(\ell+r\leq\ell+|(r,z)|\)">\(\ell+r\leq\ell+|(r,z)|\)</span>, and the weight has the stated power outside a finite disk. Exact cylindrical integration and Cauchy–Schwarz give</p>
+<span class="math math-display" data-tex="\[
+\|\Omega\|_{L^2(\mathbb R^3)}^2
+=2\pi\int_{D_\ell}(\ell+r)|\omega|^2\,dr\,dz
+\leq2\pi A_\ell\|\omega\|_{H_\ell}^2,
+\quad
+\|\Omega\|_1\leq2\pi J_{\ell,2}^{1/2}\|\omega\|_{H_\ell}.
+\tag{RK3}
+\]">\[
+\|\Omega\|_{L^2(\mathbb R^3)}^2
+=2\pi\int_{D_\ell}(\ell+r)|\omega|^2\,dr\,dz
+\leq2\pi A_\ell\|\omega\|_{H_\ell}^2,
+\quad
+\|\Omega\|_1\leq2\pi J_{\ell,2}^{1/2}\|\omega\|_{H_\ell}.
+\tag{RK3}
+\]</span>
+<p>Distributional divergence vanishes even when the scalar has no trace on the axis. Indeed its pairing with the gradient of a compact smooth test function is
+<span class="math" data-tex="\(-\int\omega(r,z)\partial_\theta\phi(X)\,dr\,d\theta\,dz=0\)">\(-\int\omega(r,z)\partial_\theta\phi(X)\,dr\,d\theta\,dz=0\)</span>, by integration over the complete circle. Absolute integrability follows from RK3. No axis boundary term is discarded.</p>
+<h2 id="rk2-construct-the-actual-newton-and-velocity-maps">RK2. Construct the actual Newton and velocity maps</h2>
+<p>Retain the original Newton multiplier and the whole physical kernel:</p>
+<span class="math math-display" data-tex="\[
+\mathcal A(X)=\frac1{4\pi}\int_{\mathbb R^3}\frac{\Omega(Y)}{|X-Y|}\,dY,
+\qquad
+u(X)=\frac1{4\pi}\int_{\mathbb R^3}
+\frac{\Omega(Y)\mathbin{\times}(X-Y)}{|X-Y|^3}\,dY.
+\tag{RK4}
+\]">\[
+\mathcal A(X)=\frac1{4\pi}\int_{\mathbb R^3}\frac{\Omega(Y)}{|X-Y|}\,dY,
+\qquad
+u(X)=\frac1{4\pi}\int_{\mathbb R^3}
+\frac{\Omega(Y)\mathbin{\times}(X-Y)}{|X-Y|^3}\,dY.
+\tag{RK4}
+\]</span>
+<p>The first integral is absolutely convergent: on a unit ball use Cauchy–Schwarz and <span class="math" data-tex="\(\int_{|Z|&lt;1}|Z|^{-2}dZ=4\pi\)">\(\int_{|Z|&lt;1}|Z|^{-2}dZ=4\pi\)</span>; outside it use <span class="math" data-tex="\(\|\Omega\|_1\)">\(\|\Omega\|_1\)</span>. Its distributional curl is the second kernel. The latter is first defined for smooth compact inputs and then by the local estimates proved below, or equivalently by its Fourier multiplier. These definitions agree by approximation.</p>
+<p>With <span class="math" data-tex="\(\widehat f(\xi)=\int e^{-iX\cdot\xi}f(X)dX\)">\(\widehat f(\xi)=\int e^{-iX\cdot\xi}f(X)dX\)</span> and inverse multiplier <span class="math" data-tex="\((2\pi)^{-3}\)">\((2\pi)^{-3}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\widehat u(\xi)=\frac{i\xi\times\widehat\Omega(\xi)}{|\xi|^2},\qquad
+\operatorname{div}u=0,\qquad\operatorname{curl}u=\Omega,
+\qquad\|\nabla u\|_2^2=\|\Omega\|_2^2.
+\tag{RK5}
+\]">\[
+\widehat u(\xi)=\frac{i\xi\times\widehat\Omega(\xi)}{|\xi|^2},\qquad
+\operatorname{div}u=0,\qquad\operatorname{curl}u=\Omega,
+\qquad\|\nabla u\|_2^2=\|\Omega\|_2^2.
+\tag{RK5}
+\]</span>
+<p>Here <span class="math" data-tex="\(\xi\cdot\widehat\Omega=0\)">\(\xi\cdot\widehat\Omega=0\)</span> by RK2, so
+<span class="math" data-tex="\(|\xi\times\widehat\Omega|^2=|\xi|^2|\widehat\Omega|^2\)">\(|\xi\times\widehat\Omega|^2=|\xi|^2|\widehat\Omega|^2\)</span>; applying Plancherel with its full factor proves the last identity and the curl formula. Also <span class="math" data-tex="\(u\in L^2\)">\(u\in L^2\)</span>: on <span class="math" data-tex="\(|\xi|\leq1\)">\(|\xi|\leq1\)</span>, its squared multiplier is bounded by <span class="math" data-tex="\(\|\Omega\|_1^2|\xi|^{-2}\)">\(\|\Omega\|_1^2|\xi|^{-2}\)</span>, whose integral is <span class="math" data-tex="\(4\pi\|\Omega\|_1^2\)">\(4\pi\|\Omega\|_1^2\)</span>; on the complement use <span class="math" data-tex="\(\|\Omega\|_2\)">\(\|\Omega\|_2\)</span>. This fixes the physical receiver uniquely among <span class="math" data-tex="\(L^2\)">\(L^2\)</span> velocities having the stated curl and divergence. The Fourier transform of their difference is annihilated by both cross and dot products with <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, hence vanishes almost everywhere. There is no arbitrary constant velocity in this class.</p>
+<p>Smooth scalars compactly supported inside <span class="math" data-tex="\(D_\ell\)">\(D_\ell\)</span> are dense in <span class="math" data-tex="\(H_\ell\)">\(H_\ell\)</span>: first truncate to compact subsets away from the axis and infinity, then mollify where the weight is smooth and bounded above and below. RK3 makes the resulting physical vorticities converge in both <span class="math" data-tex="\(L^1\)">\(L^1\)</span> and <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Thus all these identities pass to every <span class="math" data-tex="\(\omega\in H_\ell\)">\(\omega\in H_\ell\)</span>.</p>
+<p>Rotational symmetry and the odd sine integrals give <span class="math" data-tex="\(\mathcal A=\psi e_\theta\)">\(\mathcal A=\psi e_\theta\)</span> and no azimuthal velocity. For <span class="math" data-tex="\(x=(r,z)\)">\(x=(r,z)\)</span>, <span class="math" data-tex="\(y=(r&#x27;,z&#x27;)\)">\(y=(r&#x27;,z&#x27;)\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+s&#x27;=\ell+r&#x27;,\quad d^2=(r-r&#x27;)^2+(z-z&#x27;)^2,\quad
+D(\vartheta)^2=d^2+2ss&#x27;(1-\cos\vartheta).
+\]">\[
+s&#x27;=\ell+r&#x27;,\quad d^2=(r-r&#x27;)^2+(z-z&#x27;)^2,\quad
+D(\vartheta)^2=d^2+2ss&#x27;(1-\cos\vartheta).
+\]</span>
+<p>The full potential and both velocity components at the original meridian are</p>
+<span class="math math-display" data-tex="\[
+\psi(r,z)=-\frac1{4\pi}\int_{D_\ell}s&#x27;\omega(r&#x27;,z&#x27;)
+\int_0^{2\pi}\frac{\cos\vartheta}{D(\vartheta)}\,d\vartheta\,dr&#x27;\,dz&#x27;,
+\tag{RK6}
+\]">\[
+\psi(r,z)=-\frac1{4\pi}\int_{D_\ell}s&#x27;\omega(r&#x27;,z&#x27;)
+\int_0^{2\pi}\frac{\cos\vartheta}{D(\vartheta)}\,d\vartheta\,dr&#x27;\,dz&#x27;,
+\tag{RK6}
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}u^r\\u^z\end{pmatrix}(x)
+=\int_{D_\ell}K_\ell(x,y)\omega(y)\,dy,
+\quad
+K_\ell(x,y)=\frac{s&#x27;}{4\pi}\int_0^{2\pi}
+\frac{\begin{pmatrix}-(z-z&#x27;)\cos\vartheta\\ s\cos\vartheta-s&#x27;\end{pmatrix}}
+{D(\vartheta)^3}\,d\vartheta.
+\tag{RK7}
+\]">\[
+\begin{pmatrix}u^r\\u^z\end{pmatrix}(x)
+=\int_{D_\ell}K_\ell(x,y)\omega(y)\,dy,
+\quad
+K_\ell(x,y)=\frac{s&#x27;}{4\pi}\int_0^{2\pi}
+\frac{\begin{pmatrix}-(z-z&#x27;)\cos\vartheta\\ s\cos\vartheta-s&#x27;\end{pmatrix}}
+{D(\vartheta)^3}\,d\vartheta.
+\tag{RK7}
+\]</span>
+<p>For verification, at <span class="math" data-tex="\(X=(s,0,z)\)">\(X=(s,0,z)\)</span>, <span class="math" data-tex="\(Y=(s&#x27;\cos\vartheta,s&#x27;\sin\vartheta,z&#x27;)\)">\(Y=(s&#x27;\cos\vartheta,s&#x27;\sin\vartheta,z&#x27;)\)</span>, the vorticity is <span class="math" data-tex="\((\omega\sin\vartheta,-\omega\cos\vartheta,0)\)">\((\omega\sin\vartheta,-\omega\cos\vartheta,0)\)</span>. Its cross product with <span class="math" data-tex="\(X-Y\)">\(X-Y\)</span> has first and third components <span class="math" data-tex="\(-\omega(z-z&#x27;)\cos\vartheta\)">\(-\omega(z-z&#x27;)\cos\vartheta\)</span> and <span class="math" data-tex="\(\omega(s\cos\vartheta-s&#x27;)\)">\(\omega(s\cos\vartheta-s&#x27;)\)</span>; its second component integrates to zero. Thus both signs and the factor <span class="math" data-tex="\(s&#x27;\)">\(s&#x27;\)</span> in RK7 come from RK4, not a two-dimensional replacement.</p>
+<p>Differentiating the physical vector potential gives</p>
+<span class="math math-display" data-tex="\[
+u^r=-\psi_z,\qquad u^z=\psi_r+\frac{\psi}{s},\qquad
+\left(\partial_r^2+\frac1s\partial_r-\frac1{s^2}+\partial_z^2\right)\psi=\omega.
+\tag{RK8}
+\]">\[
+u^r=-\psi_z,\qquad u^z=\psi_r+\frac{\psi}{s},\qquad
+\left(\partial_r^2+\frac1s\partial_r-\frac1{s^2}+\partial_z^2\right)\psi=\omega.
+\tag{RK8}
+\]</span>
+<p>The equation follows from <span class="math" data-tex="\(-\Delta\mathcal A=\Omega\)">\(-\Delta\mathcal A=\Omega\)</span>, including the angular derivative of <span class="math" data-tex="\(e_\theta\)">\(e_\theta\)</span>. The physical divergence is <span class="math" data-tex="\((\partial_r+s^{-1})u^r+\partial_zu^z=0\)">\((\partial_r+s^{-1})u^r+\partial_zu^z=0\)</span>; its physical curl is <span class="math" data-tex="\(-\omega e_\theta\)">\(-\omega e_\theta\)</span>, retaining both curvature terms in RK8.</p>
+<h2 id="rk3-prove-the-axis-condition-and-the-source-correction">RK3. Prove the axis condition and the source correction</h2>
+<p>For a smooth physical potential of the form <span class="math" data-tex="\(\psi(s,z)e_\theta\)">\(\psi(s,z)e_\theta\)</span>, smoothness at <span class="math" data-tex="\(s=0\)">\(s=0\)</span> means locally</p>
+<span class="math math-display" data-tex="\[
+\psi(s,z)=s\,a(s^2,z),\qquad a\text{ smooth}.
+\tag{RK9}
+\]">\[
+\psi(s,z)=s\,a(s^2,z),\qquad a\text{ smooth}.
+\tag{RK9}
+\]</span>
+<p>Here is the exact smoothness argument. On the line <span class="math" data-tex="\((X_1,X_2)=(s,0)\)">\((X_1,X_2)=(s,0)\)</span>, the second component of the potential is a smooth odd function of signed <span class="math" data-tex="\(s\)">\(s\)</span>, by rotation through <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Division by <span class="math" data-tex="\(s\)">\(s\)</span> is smooth by the integral identity <span class="math" data-tex="\(F(s)/s=\int_0^1F&#x27;(ts)dt\)">\(F(s)/s=\int_0^1F&#x27;(ts)dt\)</span>, and the quotient is even. An even smooth function is smooth in <span class="math" data-tex="\(s^2\)">\(s^2\)</span> on the closed half-line: Taylor's formula to arbitrary even order writes it as a polynomial in <span class="math" data-tex="\(s^2\)">\(s^2\)</span> with a remainder whose derivatives have the required orders at zero. Rotation then recovers the potential as <span class="math" data-tex="\(a(X_1^2+X_2^2,z)(-X_2,X_1,0)\)">\(a(X_1^2+X_2^2,z)(-X_2,X_1,0)\)</span>. Conversely this Cartesian formula is smooth and has precisely the asserted meridian component. In particular <span class="math" data-tex="\(\psi(0,z)=0\)">\(\psi(0,z)=0\)</span>, while <span class="math" data-tex="\(\partial_s\psi(0,z)=a(0,z)\)">\(\partial_s\psi(0,z)=a(0,z)\)</span> need not vanish. For nonsmooth inputs the receiver is defined by RK4–RK8 and the density argument, not by imposing a pointwise trace that may not exist.</p>
+<p>An actual compact counterexample to the printed normal-derivative condition is obtained by taking any <span class="math" data-tex="\(\chi\in C_c^\infty(\mathbb R)\)">\(\chi\in C_c^\infty(\mathbb R)\)</span> equal to one near zero, putting <span class="math" data-tex="\(q=s^2+z^2\)">\(q=s^2+z^2\)</span>, and defining</p>
+<span class="math math-display" data-tex="\[
+\psi=s\chi(q),\qquad
+u^r=-2sz\chi&#x27;(q),\qquad
+u^z=2\chi(q)+2s^2\chi&#x27;(q),\qquad
+\omega=10s\chi&#x27;(q)+4sq\chi&#x27;&#x27;(q).
+\tag{RK10}
+\]">\[
+\psi=s\chi(q),\qquad
+u^r=-2sz\chi&#x27;(q),\qquad
+u^z=2\chi(q)+2s^2\chi&#x27;(q),\qquad
+\omega=10s\chi&#x27;(q)+4sq\chi&#x27;&#x27;(q).
+\tag{RK10}
+\]</span>
+<p>The Cartesian potential <span class="math" data-tex="\((-X_2\chi(q),X_1\chi(q),0)\)">\((-X_2\chi(q),X_1\chi(q),0)\)</span>, velocity and vorticity are smooth and compactly supported. Direct differentiation gives every term in RK10 and <span class="math" data-tex="\(\Delta(\psi e_\theta)=\omega e_\theta\)">\(\Delta(\psi e_\theta)=\omega e_\theta\)</span>. This compact potential is exactly RK4: its difference from that Newton potential is a harmonic vector distribution tending to zero at infinity, hence zero. To justify the last implication, the difference is a smooth harmonic function, its values equal averages over arbitrarily large spheres, and the decaying bound forces those averages to zero. Yet <span class="math" data-tex="\(\partial_s\psi(0,z)=\chi(z^2)\)">\(\partial_s\psi(0,z)=\chi(z^2)\)</span>, equal to one near <span class="math" data-tex="\(z=0\)">\(z=0\)</span>. The outward normal at the half-plane boundary is <span class="math" data-tex="\(-\partial_s\)">\(-\partial_s\)</span>, so its normal derivative is nonzero as well. Thus source lines 1040 and 1449 exclude genuine smooth physical inputs when read literally. RK9 and the full Newton receiver supply the exact replacement, without changing the source sign convention or differential expression.</p>
+<h2 id="rk4-prove-a-uniform-kernel-bound-in-the-original-coordinates">RK4. Prove a uniform kernel bound in the original coordinates</h2>
+<p>For <span class="math" data-tex="\(s,s&#x27;&gt;0\)">\(s,s&#x27;&gt;0\)</span> and <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>, the meridian numerator <span class="math" data-tex="\(N\)">\(N\)</span> of RK7 satisfies</p>
+<span class="math math-display" data-tex="\[
+D(\vartheta)^2-|N(\vartheta)|^2
+=(s^2+(z-z&#x27;)^2)\sin^2\vartheta\geq0.
+\]">\[
+D(\vartheta)^2-|N(\vartheta)|^2
+=(s^2+(z-z&#x27;)^2)\sin^2\vartheta\geq0.
+\]</span>
+<p>Consequently <span class="math" data-tex="\(|K_\ell(x,y)|\leq(s&#x27;/(4\pi))\int_0^{2\pi}D(\vartheta)^{-2}d\vartheta\)">\(|K_\ell(x,y)|\leq(s&#x27;/(4\pi))\int_0^{2\pi}D(\vartheta)^{-2}d\vartheta\)</span>. The angular integral is exact:</p>
+<span class="math math-display" data-tex="\[
+\int_0^{2\pi}\frac{d\vartheta}{d^2+2ss&#x27;(1-\cos\vartheta)}
+=\frac{2\pi}{d\sqrt{d^2+4ss&#x27;}}.
+\tag{RK11}
+\]">\[
+\int_0^{2\pi}\frac{d\vartheta}{d^2+2ss&#x27;(1-\cos\vartheta)}
+=\frac{2\pi}{d\sqrt{d^2+4ss&#x27;}}.
+\tag{RK11}
+\]</span>
+<p>To prove it, split the circle at <span class="math" data-tex="\(\pi\)">\(\pi\)</span> and use <span class="math" data-tex="\(t=\tan(\vartheta/2)\)">\(t=\tan(\vartheta/2)\)</span>. The combined real-line integral is
+<span class="math" data-tex="\(2\int_{-\infty}^{\infty}[d^2+(d^2+4ss&#x27;)t^2]^{-1}dt\)">\(2\int_{-\infty}^{\infty}[d^2+(d^2+4ss&#x27;)t^2]^{-1}dt\)</span>; the antiderivative is the corresponding arctangent, giving RK11 with its full factor. Since
+<span class="math" data-tex="\(d^2+4ss&#x27;=(s+s&#x27;)^2+(z-z&#x27;)^2\geq(s&#x27;)^2\)">\(d^2+4ss&#x27;=(s+s&#x27;)^2+(z-z&#x27;)^2\geq(s&#x27;)^2\)</span>, it follows that</p>
+<span class="math math-display" data-tex="\[
+|K_\ell(x,y)|\leq\frac{s&#x27;}{2d\sqrt{d^2+4ss&#x27;}}\leq\frac1{2d}.
+\tag{RK12}
+\]">\[
+|K_\ell(x,y)|\leq\frac{s&#x27;}{2d\sqrt{d^2+4ss&#x27;}}\leq\frac1{2d}.
+\tag{RK12}
+\]</span>
+<p>This bound holds on the entire meridian half-plane, uniformly in the original ring radius. It retains the full physical kernel before estimating it. It does not assert a global two-dimensional energy norm for the physical velocity.</p>
+<p>Let <span class="math" data-tex="\(J_\varpi=\int_{\mathbb R^2}\varpi^{-1}\)">\(J_\varpi=\int_{\mathbb R^2}\varpi^{-1}\)</span>, finite by WG2. For every physical cutoff length <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span>, split the dominating kernel at <span class="math" data-tex="\(|x-y|=h\)">\(|x-y|=h\)</span>. Its inner <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm is <span class="math" data-tex="\(\pi h\)">\(\pi h\)</span>; its outer supremum is <span class="math" data-tex="\(1/(2h)\)">\(1/(2h)\)</span>. Young's inequality, the area <span class="math" data-tex="\(|B_R|=\pi R^2\)">\(|B_R|=\pi R^2\)</span>, and Cauchy–Schwarz therefore give</p>
+<span class="math math-display" data-tex="\[
+\|\mathrm{BS}_\ell\omega\|_{L^2(B_R)}
+\leq\pi h\|E_\ell\omega\|_2+
+\frac{\sqrt\pi R}{2h}\|E_\ell\omega\|_1
+\leq C_{R,h}\|\omega\|_{H_\ell},
+\quad
+C_{R,h}=\pi h+\frac{\sqrt\pi R}{2h}J_\varpi^{1/2}.
+\tag{RK13}
+\]">\[
+\|\mathrm{BS}_\ell\omega\|_{L^2(B_R)}
+\leq\pi h\|E_\ell\omega\|_2+
+\frac{\sqrt\pi R}{2h}\|E_\ell\omega\|_1
+\leq C_{R,h}\|\omega\|_{H_\ell},
+\quad
+C_{R,h}=\pi h+\frac{\sqrt\pi R}{2h}J_\varpi^{1/2}.
+\tag{RK13}
+\]</span>
+<p>No zero-circulation assumption is imposed. Young's step follows directly by integrating translations of the input against the nonnegative inner kernel and applying the triangle inequality in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Thus it applies equally to vector components and complex inputs.</p>
+<h2 id="rk5-compare-the-full-kernels-quantitatively">RK5. Compare the full kernels quantitatively</h2>
+<p>The planar receiver has kernel
+<span class="math" data-tex="\(K_\infty(x,y)=(-(z-z&#x27;),r-r&#x27;)/(2\pi d^2)\)">\(K_\infty(x,y)=(-(z-z&#x27;),r-r&#x27;)/(2\pi d^2)\)</span>, by WG3. Keep both terms of the ring kernel by putting <span class="math" data-tex="\(a=\sqrt{ss&#x27;}\)">\(a=\sqrt{ss&#x27;}\)</span>, <span class="math" data-tex="\(c=\sqrt{s&#x27;/s}\)">\(c=\sqrt{s&#x27;/s}\)</span> and</p>
+<span class="math math-display" data-tex="\[
+J_0(a,d)=\int_0^{2a}\frac{dv}{(d^2+v^2)^{3/2}\sqrt{1-v^2/(4a^2)}},\qquad
+J_2(a,d)=\int_0^{2a}\frac{v^2\,dv}{(d^2+v^2)^{3/2}\sqrt{1-v^2/(4a^2)}}.
+\]">\[
+J_0(a,d)=\int_0^{2a}\frac{dv}{(d^2+v^2)^{3/2}\sqrt{1-v^2/(4a^2)}},\qquad
+J_2(a,d)=\int_0^{2a}\frac{v^2\,dv}{(d^2+v^2)^{3/2}\sqrt{1-v^2/(4a^2)}}.
+\]</span>
+<p>The substitution <span class="math" data-tex="\(v=2a\sin(\vartheta/2)\)">\(v=2a\sin(\vartheta/2)\)</span>, with both halves of the circle included, gives exactly</p>
+<span class="math math-display" data-tex="\[
+K_\ell^r=-\frac{c(z-z&#x27;)}{2\pi}J_0+
+\frac{c(z-z&#x27;)}{4\pi a^2}J_2,
+\qquad
+K_\ell^z=\frac{c(r-r&#x27;)}{2\pi}J_0-\frac{1}{4\pi a}J_2.
+\tag{RK14}
+\]">\[
+K_\ell^r=-\frac{c(z-z&#x27;)}{2\pi}J_0+
+\frac{c(z-z&#x27;)}{4\pi a^2}J_2,
+\qquad
+K_\ell^z=\frac{c(r-r&#x27;)}{2\pi}J_0-\frac{1}{4\pi a}J_2.
+\tag{RK14}
+\]</span>
+<p>In particular the second vertical term is not discarded as a change of stream constant. It is the physical curvature contribution.</p>
+<p>We have the explicit bounds</p>
+<span class="math math-display" data-tex="\[
+\left|J_0(a,d)-\frac1{d^2}\right|
+\leq\frac{\frac14\operatorname{arsinh}(a/d)+\pi+\frac12}{a^2},
+\qquad
+0\leq J_2(a,d)\leq\frac2{\sqrt3}\operatorname{arsinh}(a/d)+\pi.
+\tag{RK15}
+\]">\[
+\left|J_0(a,d)-\frac1{d^2}\right|
+\leq\frac{\frac14\operatorname{arsinh}(a/d)+\pi+\frac12}{a^2},
+\qquad
+0\leq J_2(a,d)\leq\frac2{\sqrt3}\operatorname{arsinh}(a/d)+\pi.
+\tag{RK15}
+\]</span>
+<p>For their proof, on <span class="math" data-tex="\(0\leq v\leq a\)">\(0\leq v\leq a\)</span> use
+<span class="math" data-tex="\((1-v^2/(4a^2))^{-1/2}\leq2/\sqrt3\)">\((1-v^2/(4a^2))^{-1/2}\leq2/\sqrt3\)</span> and
+<span class="math" data-tex="\((1-v^2/(4a^2))^{-1/2}-1\leq v^2/(4a^2)\)">\((1-v^2/(4a^2))^{-1/2}-1\leq v^2/(4a^2)\)</span>. The second inequality follows on writing its left side as <span class="math" data-tex="\(u/[\sqrt{1-u}(1+\sqrt{1-u})]\)">\(u/[\sqrt{1-u}(1+\sqrt{1-u})]\)</span> with <span class="math" data-tex="\(0\leq u\leq1/4\)">\(0\leq u\leq1/4\)</span>; the denominator is at least one. Also
+<span class="math" data-tex="\(v^2(d^2+v^2)^{-3/2}\leq(d^2+v^2)^{-1/2}\)">\(v^2(d^2+v^2)^{-3/2}\leq(d^2+v^2)^{-1/2}\)</span>, whose integral is <span class="math" data-tex="\(\operatorname{arsinh}(a/d)\)">\(\operatorname{arsinh}(a/d)\)</span>. On <span class="math" data-tex="\([a,2a]\)">\([a,2a]\)</span>, bound the integrands of <span class="math" data-tex="\(J_0\)">\(J_0\)</span> and <span class="math" data-tex="\(J_2\)">\(J_2\)</span> respectively by <span class="math" data-tex="\(a^{-3}\)">\(a^{-3}\)</span> and <span class="math" data-tex="\(a^{-1}\)">\(a^{-1}\)</span> times the square-root factor. That factor has integral <span class="math" data-tex="\(2\pi a/3\leq\pi a\)">\(2\pi a/3\leq\pi a\)</span> over this interval. Finally the omitted tail of <span class="math" data-tex="\(\int_0^\infty(d^2+v^2)^{-3/2}dv=d^{-2}\)">\(\int_0^\infty(d^2+v^2)^{-3/2}dv=d^{-2}\)</span> is bounded by <span class="math" data-tex="\(\int_a^\infty v^{-3}dv=1/(2a^2)\)">\(\int_a^\infty v^{-3}dv=1/(2a^2)\)</span>. These three regions prove RK15.</p>
+<p>Fix <span class="math" data-tex="\(A\geq2R\)">\(A\geq2R\)</span>, <span class="math" data-tex="\(\ell\geq2A\)">\(\ell\geq2A\)</span>, and <span class="math" data-tex="\(0&lt;\delta\leq A+R\)">\(0&lt;\delta\leq A+R\)</span>. For <span class="math" data-tex="\(x\in B_R\)">\(x\in B_R\)</span>, <span class="math" data-tex="\(y\in B_A\)">\(y\in B_A\)</span>, <span class="math" data-tex="\(d\geq\delta\)">\(d\geq\delta\)</span>, set
+<span class="math" data-tex="\(b=\ell-A\)">\(b=\ell-A\)</span>, <span class="math" data-tex="\(D_A=A+R\)">\(D_A=A+R\)</span>, and <span class="math" data-tex="\(H_{\ell,A,\delta}=\operatorname{arsinh}((\ell+A)/\delta)\)">\(H_{\ell,A,\delta}=\operatorname{arsinh}((\ell+A)/\delta)\)</span>. Then <span class="math" data-tex="\(a\in[b,\ell+A]\)">\(a\in[b,\ell+A]\)</span>, <span class="math" data-tex="\(c\leq\sqrt3\)">\(c\leq\sqrt3\)</span>, and
+<span class="math" data-tex="\(|c-1|\leq|r-r&#x27;|/(2b)\)">\(|c-1|\leq|r-r&#x27;|/(2b)\)</span>. RK14–RK15 prove</p>
+<span class="math math-display" data-tex="\[
+|K_\ell(x,y)-K_\infty(x,y)|\leq F_{\ell,A,\delta},
+\tag{RK16}
+\]">\[
+|K_\ell(x,y)-K_\infty(x,y)|\leq F_{\ell,A,\delta},
+\tag{RK16}
+\]</span>
+<p>where every contribution is retained in</p>
+<span class="math math-display" data-tex="\[
+F_{\ell,A,\delta}=
+\frac1{4\pi b}
++\frac{\sqrt3 D_A}{2\pi b^2}\left(\frac14H_{\ell,A,\delta}+\pi+\frac12\right)
++\left(\frac{\sqrt3D_A}{4\pi b^2}+\frac1{4\pi b}\right)
+\left(\frac2{\sqrt3}H_{\ell,A,\delta}+\pi\right).
+\tag{RK17}
+\]">\[
+F_{\ell,A,\delta}=
+\frac1{4\pi b}
++\frac{\sqrt3 D_A}{2\pi b^2}\left(\frac14H_{\ell,A,\delta}+\pi+\frac12\right)
++\left(\frac{\sqrt3D_A}{4\pi b^2}+\frac1{4\pi b}\right)
+\left(\frac2{\sqrt3}H_{\ell,A,\delta}+\pi\right).
+\tag{RK17}
+\]</span>
+<p>Indeed the coefficient error contributes <span class="math" data-tex="\(|c-1|/(2\pi d)\leq1/(4\pi b)\)">\(|c-1|/(2\pi d)\leq1/(4\pi b)\)</span>; the <span class="math" data-tex="\(J_0\)">\(J_0\)</span> error contributes the second summand; the two <span class="math" data-tex="\(J_2\)">\(J_2\)</span> errors contribute the last two coefficients. For fixed <span class="math" data-tex="\(A,\delta\)">\(A,\delta\)</span>, the whole bound tends to zero as <span class="math" data-tex="\(\ell\to\infty\)">\(\ell\to\infty\)</span>.</p>
+<p>The near diagonal is controlled without a pointwise convergence assertion there: RK12 and the exact planar magnitude give the dominating kernel <span class="math" data-tex="\((\pi+1)/(2\pi|x-y|)\)">\((\pi+1)/(2\pi|x-y|)\)</span>, whose integral on the <span class="math" data-tex="\(\delta\)">\(\delta\)</span>-disk is <span class="math" data-tex="\((\pi+1)\delta\)">\((\pi+1)\delta\)</span>. For the remaining compact region, Cauchy–Schwarz in <span class="math" data-tex="\(B_A\)">\(B_A\)</span>, followed by integration in <span class="math" data-tex="\(B_R\)">\(B_R\)</span>, gives operator norm at most <span class="math" data-tex="\(\pi RA F_{\ell,A,\delta}\)">\(\pi RA F_{\ell,A,\delta}\)</span>.</p>
+<p>For the exterior input <span class="math" data-tex="\(f1_{|y|&gt;A}\)">\(f1_{|y|&gt;A}\)</span>, the exact source weight gives</p>
+<span class="math math-display" data-tex="\[
+\|f1_{|y|&gt;A}\|_2\leq(1+A^2)^{-25}\|f\|_H,
+\qquad
+\|f1_{|y|&gt;A}\|_1\leq\sqrt{\frac\pi{49}}(1+A^2)^{-49/2}\|f\|_H.
+\tag{RK18}
+\]">\[
+\|f1_{|y|&gt;A}\|_2\leq(1+A^2)^{-25}\|f\|_H,
+\qquad
+\|f1_{|y|&gt;A}\|_1\leq\sqrt{\frac\pi{49}}(1+A^2)^{-49/2}\|f\|_H.
+\tag{RK18}
+\]</span>
+<p>The last reciprocal integral is <span class="math" data-tex="\(2\pi\int_A^\infty\rho(1+\rho^2)^{-50}d\rho=\pi(1+A^2)^{-49}/49\)">\(2\pi\int_A^\infty\rho(1+\rho^2)^{-50}d\rho=\pi(1+A^2)^{-49}/49\)</span>. Applying RK13 and its planar counterpart to the respective restricted tails proves the complete bound</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\|\mathrm{BS}_\ell P_\ell-\mathrm{BS}_{2d}\|_{H\to L^2(B_R)}
+\leq{}&amp;(\pi+1)\delta+\pi RA F_{\ell,A,\delta}\\
+&amp;+(\pi+1)h(1+A^2)^{-25}
++\frac{(\pi+1)R}{2\sqrt\pi h}\sqrt{\frac\pi{49}}(1+A^2)^{-49/2}.
+\end{split}
+\tag{RK19}
+\]">\[
+\begin{split}
+\|\mathrm{BS}_\ell P_\ell-\mathrm{BS}_{2d}\|_{H\to L^2(B_R)}
+\leq{}&amp;(\pi+1)\delta+\pi RA F_{\ell,A,\delta}\\
+&amp;+(\pi+1)h(1+A^2)^{-25}
++\frac{(\pi+1)R}{2\sqrt\pi h}\sqrt{\frac\pi{49}}(1+A^2)^{-49/2}.
+\end{split}
+\tag{RK19}
+\]</span>
+<p>Here <span class="math" data-tex="\(B_A\subset D_\ell\)">\(B_A\subset D_\ell\)</span>, while both original exterior contributions are included in the last line; no extension across the physical axis has been equated to an original physical input. Given any positive tolerance, first fix <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span>, choose <span class="math" data-tex="\(A\geq2R\)">\(A\geq2R\)</span> to make the last line small, then choose <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> to make its first summand small, and finally choose <span class="math" data-tex="\(\ell\geq2A\)">\(\ell\geq2A\)</span> using RK17. This proves genuine operator-norm convergence with explicit finite bounds.</p>
+<h2 id="rk6-receive-the-corrected-background-and-compact-coupling">RK6. Receive the corrected background and compact coupling</h2>
+<p>The actual corrected background from EX14–EX18 is</p>
+<span class="math math-display" data-tex="\[
+\bar U_\ell=(-\Psi_z,\Psi_r+\Psi/s),\qquad
+\bar\omega_\ell=g_R+\Psi_r/s-\Psi/s^2,
+\quad
+\operatorname{div}_{2d}\bar U_\ell=\Psi_z/s=-\bar U_\ell^r/s.
+\tag{RK20}
+\]">\[
+\bar U_\ell=(-\Psi_z,\Psi_r+\Psi/s),\qquad
+\bar\omega_\ell=g_R+\Psi_r/s-\Psi/s^2,
+\quad
+\operatorname{div}_{2d}\bar U_\ell=\Psi_z/s=-\bar U_\ell^r/s.
+\tag{RK20}
+\]</span>
+<p>All are supported in <span class="math" data-tex="\(B_R\)">\(B_R\)</span>. Keep the full generator decomposition of the source, with its original signs:</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+M_\ell f&amp;=-\bar U_\ell\cdot\nabla f-\tfrac12(\operatorname{div}_{2d}\bar U_\ell)f,\\
+K_\ell^{\rm op}f&amp;=-\mathrm{BS}_\ell[f]\cdot\nabla\bar\omega_\ell,\\
+S_\ell f&amp;=s^{-1}\mathrm{BS}_\ell[f]^r\bar\omega_\ell
++s^{-1}\bar U_\ell^r f+\tfrac12(\operatorname{div}_{2d}\bar U_\ell)f.
+\end{split}
+\tag{RK21}
+\]">\[
+\begin{split}
+M_\ell f&amp;=-\bar U_\ell\cdot\nabla f-\tfrac12(\operatorname{div}_{2d}\bar U_\ell)f,\\
+K_\ell^{\rm op}f&amp;=-\mathrm{BS}_\ell[f]\cdot\nabla\bar\omega_\ell,\\
+S_\ell f&amp;=s^{-1}\mathrm{BS}_\ell[f]^r\bar\omega_\ell
++s^{-1}\bar U_\ell^r f+\tfrac12(\operatorname{div}_{2d}\bar U_\ell)f.
+\end{split}
+\tag{RK21}
+\]</span>
+<p>The superscript distinguishes the coupling operator from the two-variable kernel. The sum is exactly the negative linearized vorticity expression in source line 1035. The domain remains the distributional transport domain; a complete proof of its generator properties is a subsequent step.</p>
+<p>For fixed <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, the receiver is locally compact from <span class="math" data-tex="\(H_\ell\)">\(H_\ell\)</span> into <span class="math" data-tex="\(L^2(B_R)\)">\(L^2(B_R)\)</span>. RK13 bounds the velocity locally. RK5 and cylindrical integration bound its meridional derivatives on <span class="math" data-tex="\(B_{R+1}\)">\(B_{R+1}\)</span> by</p>
+<span class="math math-display" data-tex="\[
+\int_{B_{R+1}}|\nabla_{r,z}(u^r,u^z)|^2\,dr\,dz
+\leq\frac{\|\nabla u\|_{L^2(\mathbb R^3)}^2}{2\pi(\ell-R-1)}
+\leq\frac{A_\ell}{\ell-R-1}\|\omega\|_{H_\ell}^2.
+\tag{RK22}
+\]">\[
+\int_{B_{R+1}}|\nabla_{r,z}(u^r,u^z)|^2\,dr\,dz
+\leq\frac{\|\nabla u\|_{L^2(\mathbb R^3)}^2}{2\pi(\ell-R-1)}
+\leq\frac{A_\ell}{\ell-R-1}\|\omega\|_{H_\ell}^2.
+\tag{RK22}
+\]</span>
+<p>The denominator is positive since <span class="math" data-tex="\(\ell\geq2R\)">\(\ell\geq2R\)</span> and <span class="math" data-tex="\(R\geq4\)">\(R\geq4\)</span>. The full Cartesian gradient includes these meridional terms and additional nonnegative angular terms, so none is assigned a false sign. Multiplying by a smooth cutoff equal to one on <span class="math" data-tex="\(B_R\)">\(B_R\)</span>, supported in <span class="math" data-tex="\(B_{R+1}\)">\(B_{R+1}\)</span>, gives bounded <span class="math" data-tex="\(H^1\)">\(H^1\)</span> functions on a fixed square. Periodize them on a larger square; the complete Fourier sum has tail bounded by the inverse squared frequency cutoff times the gradient norm, and every finite Fourier projection has finite-dimensional bounded image. A diagonal subsequence therefore converges strongly in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. This is the explicit compactness argument of WG9 with the actual RK22 constant. Multiplication by <span class="math" data-tex="\(\nabla\bar\omega_\ell\)">\(\nabla\bar\omega_\ell\)</span> proves compactness of <span class="math" data-tex="\(K_\ell^{\rm op}\)">\(K_\ell^{\rm op}\)</span>.</p>
+<p>Write <span class="math" data-tex="\(\varepsilon_\ell\)">\(\varepsilon_\ell\)</span> for the RK19 bound and <span class="math" data-tex="\(C^{(2)}_{R,h}=h+R J_\varpi^{1/2}/(2\sqrt\pi h)\)">\(C^{(2)}_{R,h}=h+R J_\varpi^{1/2}/(2\sqrt\pi h)\)</span>, the planar local bound from WG3. The exact difference is</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+E_\ell K_\ell^{\rm op}P_\ell-K_\infty^{\rm op}
+={}&amp;-\big(\mathrm{BS}_\ell P_\ell-\mathrm{BS}_{2d}\big)\cdot\nabla\bar\omega_\ell\\
+&amp;-\mathrm{BS}_{2d}\cdot\nabla(\bar\omega_\ell-g_R),
+\end{split}
+\]">\[
+\begin{split}
+E_\ell K_\ell^{\rm op}P_\ell-K_\infty^{\rm op}
+={}&amp;-\big(\mathrm{BS}_\ell P_\ell-\mathrm{BS}_{2d}\big)\cdot\nabla\bar\omega_\ell\\
+&amp;-\mathrm{BS}_{2d}\cdot\nabla(\bar\omega_\ell-g_R),
+\end{split}
+\]</span>
+<p>where both outputs are supported in <span class="math" data-tex="\(B_R\)">\(B_R\)</span>, so <span class="math" data-tex="\(E_\ell\)">\(E_\ell\)</span> makes no alteration there. Thus</p>
+<span class="math math-display" data-tex="\[
+\|E_\ell K_\ell^{\rm op}P_\ell-K_\infty^{\rm op}\|
+\leq\varepsilon_\ell\|\nabla\bar\omega_\ell\|_\infty
++C^{(2)}_{R,h}\|\nabla(\Psi_r/s-\Psi/s^2)\|_\infty\longrightarrow0.
+\tag{RK23}
+\]">\[
+\|E_\ell K_\ell^{\rm op}P_\ell-K_\infty^{\rm op}\|
+\leq\varepsilon_\ell\|\nabla\bar\omega_\ell\|_\infty
++C^{(2)}_{R,h}\|\nabla(\Psi_r/s-\Psi/s^2)\|_\infty\longrightarrow0.
+\tag{RK23}
+\]</span>
+<p>Convergence of the second term follows by differentiating both original correction terms; every derivative of <span class="math" data-tex="\(s^{-j}\)">\(s^{-j}\)</span> retains its factor <span class="math" data-tex="\(-j s^{-j-1}\)">\(-j s^{-j-1}\)</span>, and <span class="math" data-tex="\(s\geq\ell-R\)">\(s\geq\ell-R\)</span> on the fixed support. This supplies the background-gradient contribution in addition to the two velocity maps compared in the source.</p>
+<p>Finally, retain all three terms of <span class="math" data-tex="\(S_\ell\)">\(S_\ell\)</span> in RK21. Equation RK20 proves their exact coefficient identity
+<span class="math" data-tex="\(s^{-1}\bar U_\ell^r+\tfrac12\operatorname{div}_{2d}\bar U_\ell=\bar U_\ell^r/(2s)\)">\(s^{-1}\bar U_\ell^r+\tfrac12\operatorname{div}_{2d}\bar U_\ell=\bar U_\ell^r/(2s)\)</span>. Therefore the original three-term operator satisfies</p>
+<span class="math math-display" data-tex="\[
+\|S_\ell\|_{H_\ell\to H_\ell}
+\leq\frac{\|\bar\omega_\ell\|_\infty C_{R,h}+\tfrac12\|\bar U_\ell^r\|_\infty}{\ell-R},
+\qquad
+\|\bar\omega_\ell\|_\infty\leq\|g_R\|_\infty+
+\frac{\|\Psi_r\|_\infty}{\ell-R}+\frac{\|\Psi\|_\infty}{(\ell-R)^2}.
+\tag{RK24}
+\]">\[
+\|S_\ell\|_{H_\ell\to H_\ell}
+\leq\frac{\|\bar\omega_\ell\|_\infty C_{R,h}+\tfrac12\|\bar U_\ell^r\|_\infty}{\ell-R},
+\qquad
+\|\bar\omega_\ell\|_\infty\leq\|g_R\|_\infty+
+\frac{\|\Psi_r\|_\infty}{\ell-R}+\frac{\|\Psi\|_\infty}{(\ell-R)^2}.
+\tag{RK24}
+\]</span>
+<p>All constants on the right are explicitly defined and bounded independently of <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. This proves an <span class="math" data-tex="\(O((\ell-R)^{-1})\)">\(O((\ell-R)^{-1})\)</span> estimate for this actual compact background, strengthening the source's sufficient <span class="math" data-tex="\(O(\ell^{-1/3})\)">\(O(\ell^{-1/3})\)</span> estimate. It follows from the full original kernel and physical volume; no change of time, amplitude, viscosity or coordinates is used. The kernel comparison and both compact and small terms are now ready for the exact transport-group and contour calculation. They alone do not assert a ring eigenvalue.</p>
+<h2 id="rt1-construct-the-exact-complete-flow">RT1. Construct the exact complete flow</h2>
+<p>Keep the actual radius <span class="math" data-tex="\(R\geq4\)">\(R\geq4\)</span>, stream function <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span>, weight <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span>, and ring radius <span class="math" data-tex="\(\ell\geq2R\)">\(\ell\geq2R\)</span>. Define on the whole original meridian plane</p>
+<span class="math math-display" data-tex="\[
+V_\ell(r,z)=\left(-\Psi_z,\Psi_r+\frac{\Psi}{\ell+r}\right)
+\quad\hbox{on }B_R,\qquad V_\ell=0\quad\hbox{off }B_R,
+\qquad V_\infty=(-\Psi_z,\Psi_r).
+\tag{RT1}
+\]">\[
+V_\ell(r,z)=\left(-\Psi_z,\Psi_r+\frac{\Psi}{\ell+r}\right)
+\quad\hbox{on }B_R,\qquad V_\ell=0\quad\hbox{off }B_R,
+\qquad V_\infty=(-\Psi_z,\Psi_r).
+\tag{RT1}
+\]</span>
+<p>Every derivative matches zero at the boundary, because the original <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> is smooth and compactly supported there and <span class="math" data-tex="\(\ell+r\geq\ell-R&gt;0\)">\(\ell+r\geq\ell-R&gt;0\)</span>. Thus the extensions are smooth, bounded and globally Lipschitz, with bounded derivatives of all orders. No value of the quotient near the physical axis is used in this extension. Picard iteration gives a unique flow <span class="math" data-tex="\(\Phi_t^\ell\)">\(\Phi_t^\ell\)</span> for every real time: bounded velocity prevents finite escape, and the derivative equation <span class="math" data-tex="\(\partial_tD\Phi_t^\ell=(DV_\ell)(\Phi_t^\ell)D\Phi_t^\ell\)">\(\partial_tD\Phi_t^\ell=(DV_\ell)(\Phi_t^\ell)D\Phi_t^\ell\)</span> gives a smooth diffeomorphism with inverse <span class="math" data-tex="\(\Phi_{-t}^\ell\)">\(\Phi_{-t}^\ell\)</span>. Points outside <span class="math" data-tex="\(B_R\)">\(B_R\)</span> are fixed. A point inside cannot cross its boundary in finite time: uniqueness backward from a boundary point, whose complete trajectory is fixed, rules out such a crossing. Hence <span class="math" data-tex="\(B_R\)">\(B_R\)</span> and its complement are invariant.</p>
+<p>The actual two-dimensional divergence and Jacobian are</p>
+<span class="math math-display" data-tex="\[
+d_\ell=\operatorname{div}_{2d}V_\ell=\frac{\Psi_z}{\ell+r}=-\frac{V_\ell^r}{\ell+r},\qquad
+J_t^\ell(x)=\det D\Phi_t^\ell(x)
+=\exp\left(\int_0^t d_\ell(\Phi_\tau^\ell(x))\,d\tau\right).
+\tag{RT2}
+\]">\[
+d_\ell=\operatorname{div}_{2d}V_\ell=\frac{\Psi_z}{\ell+r}=-\frac{V_\ell^r}{\ell+r},\qquad
+J_t^\ell(x)=\det D\Phi_t^\ell(x)
+=\exp\left(\int_0^t d_\ell(\Phi_\tau^\ell(x))\,d\tau\right).
+\tag{RT2}
+\]</span>
+<p>The determinant formula follows by differentiating the determinant in the matrix ODE, initially at the identity and thereafter by invertibility. Along a trajectory in <span class="math" data-tex="\(B_R\)">\(B_R\)</span>, <span class="math" data-tex="\(s_t=\ell+(\Phi_t^\ell(x))_r\)">\(s_t=\ell+(\Phi_t^\ell(x))_r\)</span> satisfies <span class="math" data-tex="\(\partial_t\log s_t=V_\ell^r/s_t=-d_\ell\)">\(\partial_t\log s_t=V_\ell^r/s_t=-d_\ell\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+J_t^\ell(x)=\frac{\ell+r}{\ell+(\Phi_t^\ell(x))_r},\qquad
+\frac{\ell-R}{\ell+R}\leq J_t^\ell(x)\leq\frac{\ell+R}{\ell-R}
+\quad(x\in B_R).
+\tag{RT3}
+\]">\[
+J_t^\ell(x)=\frac{\ell+r}{\ell+(\Phi_t^\ell(x))_r},\qquad
+\frac{\ell-R}{\ell+R}\leq J_t^\ell(x)\leq\frac{\ell+R}{\ell-R}
+\quad(x\in B_R).
+\tag{RT3}
+\]</span>
+<p>Outside <span class="math" data-tex="\(B_R\)">\(B_R\)</span>, the exact Jacobian is one, including at points where <span class="math" data-tex="\(\ell+r\)">\(\ell+r\)</span> is zero or negative; the quotient in RT3 is asserted only on the indicated invariant disk. For the planar flow <span class="math" data-tex="\(\Phi_t^\infty\)">\(\Phi_t^\infty\)</span>, <span class="math" data-tex="\(d_\infty=0\)">\(d_\infty=0\)</span> and <span class="math" data-tex="\(J_t^\infty=1\)">\(J_t^\infty=1\)</span>.</p>
+<h2 id="rt2-prove-the-full-transport-group-and-its-precise-domain">RT2. Prove the full transport group and its precise domain</h2>
+<p>On <span class="math" data-tex="\(H=L^2(\varpi\,dr\,dz)\)">\(H=L^2(\varpi\,dr\,dz)\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+T_\ell(t)f(x)=\sqrt{J_{-t}^\ell(x)}\,f(\Phi_{-t}^\ell(x)).
+\tag{RT4}
+\]">\[
+T_\ell(t)f(x)=\sqrt{J_{-t}^\ell(x)}\,f(\Phi_{-t}^\ell(x)).
+\tag{RT4}
+\]</span>
+<p>The positive square root is fixed. The original weight is constant one on the moving disk and all other points are fixed, so <span class="math" data-tex="\(\varpi(\Phi_t^\ell x)=\varpi(x)\)">\(\varpi(\Phi_t^\ell x)=\varpi(x)\)</span>. Changing variables <span class="math" data-tex="\(y=\Phi_{-t}^\ell x\)">\(y=\Phi_{-t}^\ell x\)</span>, with its entire Jacobian, gives
+<span class="math" data-tex="\(\|T_\ell(t)f\|_H^2=\int |f(y)|^2\varpi(y)dy\)">\(\|T_\ell(t)f\|_H^2=\int |f(y)|^2\varpi(y)dy\)</span>. The flow composition and determinant chain rule prove <span class="math" data-tex="\(T_\ell(t+u)=T_\ell(t)T_\ell(u)\)">\(T_\ell(t+u)=T_\ell(t)T_\ell(u)\)</span> and <span class="math" data-tex="\(T_\ell(0)=I\)">\(T_\ell(0)=I\)</span>. Uniform continuity on compact sets proves strong continuity for compact smooth inputs. Their density in <span class="math" data-tex="\(H\)">\(H\)</span>, obtained by truncation and local mollification, and the exact norm one extend it to all inputs.</p>
+<p>Differentiation on compact smooth functions gives the original half-density operator</p>
+<span class="math math-display" data-tex="\[
+M_\ell f=-V_\ell\cdot\nabla f-\frac12d_\ell f,
+\qquad
+\mathcal D_\ell=\{f\in H:V_\ell\cdot\nabla f\in L^2(B_R)\text{ in distributions}\}.
+\tag{RT5}
+\]">\[
+M_\ell f=-V_\ell\cdot\nabla f-\frac12d_\ell f,
+\qquad
+\mathcal D_\ell=\{f\in H:V_\ell\cdot\nabla f\in L^2(B_R)\text{ in distributions}\}.
+\tag{RT5}
+\]</span>
+<p>This is precisely the generator domain, not only a convenient core. First suppose the difference quotient of RT4 converges to <span class="math" data-tex="\(g\)">\(g\)</span> in <span class="math" data-tex="\(H\)">\(H\)</span>. Pair it with a compact smooth test function and differentiate the dual pullback. Integration by parts, using <span class="math" data-tex="\(V_\ell\cdot\nabla\varpi=0\)">\(V_\ell\cdot\nabla\varpi=0\)</span>, identifies <span class="math" data-tex="\(g=-V_\ell\cdot\nabla f-d_\ell f/2\)">\(g=-V_\ell\cdot\nabla f-d_\ell f/2\)</span> as a distribution. Since the bounded coefficient <span class="math" data-tex="\(d_\ell\)">\(d_\ell\)</span> is supported in <span class="math" data-tex="\(B_R\)">\(B_R\)</span>, this puts <span class="math" data-tex="\(f\)">\(f\)</span> in exactly <span class="math" data-tex="\(\mathcal D_\ell\)">\(\mathcal D_\ell\)</span>.</p>
+<p>Conversely take <span class="math" data-tex="\(f\in\mathcal D_\ell\)">\(f\in\mathcal D_\ell\)</span> and set <span class="math" data-tex="\(g\)">\(g\)</span> equal to the right side of RT5. It belongs to <span class="math" data-tex="\(H\)">\(H\)</span>. For a compact smooth test <span class="math" data-tex="\(h\)">\(h\)</span>, the function <span class="math" data-tex="\(T_\ell(-t)h\)">\(T_\ell(-t)h\)</span> is again compact and smooth. Differentiating the pairing <span class="math" data-tex="\(\langle T_\ell(t)f,h\rangle=\langle f,T_\ell(-t)h\rangle\)">\(\langle T_\ell(t)f,h\rangle=\langle f,T_\ell(-t)h\rangle\)</span> and using the distributional formula gives <span class="math" data-tex="\(\langle T_\ell(t)g,h\rangle\)">\(\langle T_\ell(t)g,h\rangle\)</span>. Integration in time and density of these tests prove the actual Bochner identity</p>
+<span class="math math-display" data-tex="\[
+T_\ell(t)f-f=\int_0^tT_\ell(\tau)g\,d\tau.
+\tag{RT6}
+\]">\[
+T_\ell(t)f-f=\int_0^tT_\ell(\tau)g\,d\tau.
+\tag{RT6}
+\]</span>
+<p>Its quotient tends to <span class="math" data-tex="\(g\)">\(g\)</span> by strong continuity. This proves the reverse domain inclusion. It also proves closure: if <span class="math" data-tex="\(f_n\to f\)">\(f_n\to f\)</span> and <span class="math" data-tex="\(M_\ell f_n\to g\)">\(M_\ell f_n\to g\)</span> in <span class="math" data-tex="\(H\)">\(H\)</span>, the distributional formula passes to the limit, so <span class="math" data-tex="\(f\in\mathcal D_\ell\)">\(f\in\mathcal D_\ell\)</span> and <span class="math" data-tex="\(M_\ell f=g\)">\(M_\ell f=g\)</span>. Compact smooth functions belong to the domain and are dense, so it is densely defined.</p>
+<p>The exact resolvents are</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+R_\ell^0(\lambda)f&amp;=\int_0^\infty e^{-\lambda t}T_\ell(t)f\,dt&amp;&amp; (\operatorname{Re}\lambda&gt;0),\\
+R_\ell^0(\lambda)f&amp;=-\int_{-\infty}^0e^{-\lambda t}T_\ell(t)f\,dt&amp;&amp; (\operatorname{Re}\lambda&lt;0),\\
+\|R_\ell^0(\lambda)\|&amp;\leq|\operatorname{Re}\lambda|^{-1}.&amp;&amp;
+\end{split}
+\tag{RT7}
+\]">\[
+\begin{split}
+R_\ell^0(\lambda)f&amp;=\int_0^\infty e^{-\lambda t}T_\ell(t)f\,dt&amp;&amp; (\operatorname{Re}\lambda&gt;0),\\
+R_\ell^0(\lambda)f&amp;=-\int_{-\infty}^0e^{-\lambda t}T_\ell(t)f\,dt&amp;&amp; (\operatorname{Re}\lambda&lt;0),\\
+\|R_\ell^0(\lambda)\|&amp;\leq|\operatorname{Re}\lambda|^{-1}.&amp;&amp;
+\end{split}
+\tag{RT7}
+\]</span>
+<p>Absolute Bochner convergence follows from unitarity. Differentiating after a time translation in RT4 shows that the integral belongs to the difference-quotient domain and satisfies <span class="math" data-tex="\((\lambda-M_\ell)R_\ell^0f=f\)">\((\lambda-M_\ell)R_\ell^0f=f\)</span>. For domain inputs, integrate the derivative of <span class="math" data-tex="\(e^{-\lambda t}T_\ell(t)f\)">\(e^{-\lambda t}T_\ell(t)f\)</span>, using RT6 and the exponentially vanishing endpoint, to obtain the other inverse identity. Thus RT7 is a two-sided inverse on the exact domain.</p>
+<p>The operator is skew-adjoint. Differentiating the preserved inner product proves skew symmetry on its generator domain. If <span class="math" data-tex="\(h\in D(M_\ell^*)\)">\(h\in D(M_\ell^*)\)</span>, testing its defining identity against compact smooth functions identifies <span class="math" data-tex="\(-M_\ell^*h\)">\(-M_\ell^*h\)</span> with the distributional expression in RT5; hence <span class="math" data-tex="\(h\in\mathcal D_\ell\)">\(h\in\mathcal D_\ell\)</span> by the domain equivalence just proved. Skew symmetry supplies the converse inclusion and <span class="math" data-tex="\(M_\ell^*=-M_\ell\)">\(M_\ell^*=-M_\ell\)</span>. The same argument with <span class="math" data-tex="\(V_\infty\)">\(V_\infty\)</span>, <span class="math" data-tex="\(d_\infty=0\)">\(d_\infty=0\)</span>, constructs the planar transport <span class="math" data-tex="\(M_\infty\)">\(M_\infty\)</span>.</p>
+<p>The source formula at main.tex1248–1249 requires both the backward flow and the square-root Jacobian in RT4 for its declared negative half-density operator. In particular the unweighted pullback alone does not generate the operator at source1066 when <span class="math" data-tex="\(d_\ell\ne0\)">\(d_\ell\ne0\)</span>. The exact calculation above repairs that map. The displayed difference at source1253 also repeats the same transport operator; its receiving difference here is <span class="math" data-tex="\(R_\ell^0-R_\infty^0\)">\(R_\ell^0-R_\infty^0\)</span>.</p>
+<h2 id="rt3-keep-restriction-extension-and-the-zero-exterior-block">RT3. Keep restriction, extension and the zero exterior block</h2>
+<p>Let <span class="math" data-tex="\(Q_\ell=E_\ell P_\ell\)">\(Q_\ell=E_\ell P_\ell\)</span>, the orthogonal projection in <span class="math" data-tex="\(H\)">\(H\)</span> onto functions supported in <span class="math" data-tex="\(D_\ell\)">\(D_\ell\)</span>. The flow is fixed near and beyond the physical axis, so it commutes with <span class="math" data-tex="\(Q_\ell\)">\(Q_\ell\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal D_\ell=(I-Q_\ell)H\ \oplus\ E_\ell D(M_\ell^{\rm phys}),
+\\
+M_\ell=0\ \oplus\ M_\ell^{\rm phys},
+\\
+D(M_\ell^{\rm phys})=\{f\in H_\ell:V_\ell\cdot\nabla f\in L^2(B_R)\}.
+\end{gathered}
+\tag{RT8}
+\]">\[
+\begin{gathered}
+\mathcal D_\ell=(I-Q_\ell)H\ \oplus\ E_\ell D(M_\ell^{\rm phys}),
+\\
+M_\ell=0\ \oplus\ M_\ell^{\rm phys},
+\\
+D(M_\ell^{\rm phys})=\{f\in H_\ell:V_\ell\cdot\nabla f\in L^2(B_R)\}.
+\end{gathered}
+\tag{RT8}
+\]</span>
+<p>There is no axis distribution in this formula: <span class="math" data-tex="\(V_\ell\)">\(V_\ell\)</span> vanishes on an open neighborhood of the boundary of <span class="math" data-tex="\(D_\ell\)">\(D_\ell\)</span>. Define the full common-space generator</p>
+<span class="math math-display" data-tex="\[
+L_\ell=M_\ell+E_\ell K_\ell^{\rm op}P_\ell+E_\ell S_\ell P_\ell
+\quad\hbox{on }\mathcal D_\ell,
+\qquad
+L_\infty=M_\infty+K_\infty^{\rm op}.
+\tag{RT9}
+\]">\[
+L_\ell=M_\ell+E_\ell K_\ell^{\rm op}P_\ell+E_\ell S_\ell P_\ell
+\quad\hbox{on }\mathcal D_\ell,
+\qquad
+L_\infty=M_\infty+K_\infty^{\rm op}.
+\tag{RT9}
+\]</span>
+<p>Every bounded extra output is supported in <span class="math" data-tex="\(B_R\subset D_\ell\)">\(B_R\subset D_\ell\)</span>. Thus its exact block form is <span class="math" data-tex="\(L_\ell=0\oplus L_\ell^{\rm phys}\)">\(L_\ell=0\oplus L_\ell^{\rm phys}\)</span>. For <span class="math" data-tex="\(\lambda\ne0\)">\(\lambda\ne0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(\lambda-L_\ell)^{-1}
+=\lambda^{-1}(I-Q_\ell)+E_\ell(\lambda-L_\ell^{\rm phys})^{-1}P_\ell
+\tag{RT10}
+\]">\[
+(\lambda-L_\ell)^{-1}
+=\lambda^{-1}(I-Q_\ell)+E_\ell(\lambda-L_\ell^{\rm phys})^{-1}P_\ell
+\tag{RT10}
+\]</span>
+<p>whenever either inverse exists, and it exists on one side if and only if it exists on the other. This follows by multiplication on both blocks, keeping their domains from RT8. The boundedness of one inverse implies that of its compressed block and conversely the displayed direct sum is bounded. Therefore the spectra agree away from zero, and eigenvectors and all generalized eigenvectors for nonzero eigenvalues correspond by <span class="math" data-tex="\(E_\ell,P_\ell\)">\(E_\ell,P_\ell\)</span>. Indeed the exterior block of <span class="math" data-tex="\((L_\ell-\lambda)^k f=0\)">\((L_\ell-\lambda)^k f=0\)</span> is <span class="math" data-tex="\((-\lambda)^k(I-Q_\ell)f=0\)">\((-\lambda)^k(I-Q_\ell)f=0\)</span>, forcing that component to vanish.</p>
+<h2 id="rt4-prove-strong-resolvent-convergence-with-all-factors">RT4. Prove strong resolvent convergence with all factors</h2>
+<p>Put <span class="math" data-tex="\(L_V=\|DV_\infty\|_\infty\)">\(L_V=\|DV_\infty\|_\infty\)</span> and <span class="math" data-tex="\(\delta_\ell=\|\Psi\|_\infty/(\ell-R)\)">\(\delta_\ell=\|\Psi\|_\infty/(\ell-R)\)</span>. Comparing the two integral flow equations and applying the integral Grönwall estimate yields</p>
+<span class="math math-display" data-tex="\[
+\sup_x|\Phi_t^\ell(x)-\Phi_t^\infty(x)|
+\leq\delta_\ell |t|e^{L_V|t|}.
+\tag{RT11}
+\]">\[
+\sup_x|\Phi_t^\ell(x)-\Phi_t^\infty(x)|
+\leq\delta_\ell |t|e^{L_V|t|}.
+\tag{RT11}
+\]</span>
+<p>The estimate follows directly by iterating <span class="math" data-tex="\(e(t)\leq\delta_\ell|t|+L_V\int_0^{|t|}e(\tau)d\tau\)">\(e(t)\leq\delta_\ell|t|+L_V\int_0^{|t|}e(\tau)d\tau\)</span>; the exponential series bounds every iterate, including <span class="math" data-tex="\(L_V=0\)">\(L_V=0\)</span>. For <span class="math" data-tex="\(x\in B_R\)">\(x\in B_R\)</span>, RT3 also gives
+<span class="math" data-tex="\(\sqrt{J_{-t}^\ell}\leq\sqrt3\)">\(\sqrt{J_{-t}^\ell}\leq\sqrt3\)</span> and</p>
+<span class="math math-display" data-tex="\[
+|\sqrt{J_{-t}^\ell(x)}-1|
+=\frac{|r-(\Phi_{-t}^\ell(x))_r|}
+{\sqrt{\ell+(\Phi_{-t}^\ell(x))_r}\,[\sqrt{\ell+r}+\sqrt{\ell+(\Phi_{-t}^\ell(x))_r}]}
+\leq\frac R{\ell-R}.
+\tag{RT12}
+\]">\[
+|\sqrt{J_{-t}^\ell(x)}-1|
+=\frac{|r-(\Phi_{-t}^\ell(x))_r|}
+{\sqrt{\ell+(\Phi_{-t}^\ell(x))_r}\,[\sqrt{\ell+r}+\sqrt{\ell+(\Phi_{-t}^\ell(x))_r}]}
+\leq\frac R{\ell-R}.
+\tag{RT12}
+\]</span>
+<p>Both flow differences vanish outside the disk, where the Jacobians equal one. For compact smooth <span class="math" data-tex="\(f\)">\(f\)</span>, <span class="math" data-tex="\(|t|\leq T\)">\(|t|\leq T\)</span>, the triangle inequality therefore proves</p>
+<span class="math math-display" data-tex="\[
+\|(T_\ell(t)-T_\infty(t))f\|_H
+\leq\sqrt\pi R\left[
+\sqrt3\|\nabla f\|_\infty\delta_\ell T e^{L_VT}
++\frac R{\ell-R}\|f\|_\infty\right].
+\tag{RT13}
+\]">\[
+\|(T_\ell(t)-T_\infty(t))f\|_H
+\leq\sqrt\pi R\left[
+\sqrt3\|\nabla f\|_\infty\delta_\ell T e^{L_VT}
++\frac R{\ell-R}\|f\|_\infty\right].
+\tag{RT13}
+\]</span>
+<p>For any <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, splitting the resolvent integral at the actual time <span class="math" data-tex="\(T&gt;0\)">\(T&gt;0\)</span>, and using the norm two bound for the difference on its remaining tail, gives uniformly on <span class="math" data-tex="\(\operatorname{Re}\lambda\geq a\)">\(\operatorname{Re}\lambda\geq a\)</span></p>
+<span class="math math-display" data-tex="\[
+\|(R_\ell^0(\lambda)-R_\infty^0(\lambda))f\|_H
+\leq W_{\ell,T,a}(f),
+\tag{RT14}
+\]">\[
+\|(R_\ell^0(\lambda)-R_\infty^0(\lambda))f\|_H
+\leq W_{\ell,T,a}(f),
+\tag{RT14}
+\]</span>
+<p>where</p>
+<span class="math math-display" data-tex="\[
+W_{\ell,T,a}(f)=\frac{1-e^{-aT}}a\sqrt\pi R
+\left[\sqrt3\|\nabla f\|_\infty\delta_\ell T e^{L_VT}
++\frac R{\ell-R}\|f\|_\infty\right]
++\frac{2e^{-aT}}a\|f\|_H.
+\tag{RT15}
+\]">\[
+W_{\ell,T,a}(f)=\frac{1-e^{-aT}}a\sqrt\pi R
+\left[\sqrt3\|\nabla f\|_\infty\delta_\ell T e^{L_VT}
++\frac R{\ell-R}\|f\|_\infty\right]
++\frac{2e^{-aT}}a\|f\|_H.
+\tag{RT15}
+\]</span>
+<p>For any positive tolerance choose <span class="math" data-tex="\(T\)">\(T\)</span> first and then <span class="math" data-tex="\(\ell\)">\(\ell\)</span> to make this bound small. Density of compact smooth functions and the uniform bound <span class="math" data-tex="\(2/a\)">\(2/a\)</span> extend strong convergence, uniformly on that entire half-plane, to every fixed <span class="math" data-tex="\(f\in H\)">\(f\in H\)</span>. This is strong convergence, not an unsupported operator-norm convergence of the two transport resolvents.</p>
+<p>The compact coupling supplies the needed norm convergence. Set <span class="math" data-tex="\(K=K_\infty^{\rm op}\)">\(K=K_\infty^{\rm op}\)</span>. Given <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, compactness gives a finite <span class="math" data-tex="\(\eta/2\)">\(\eta/2\)</span>-net of <span class="math" data-tex="\(K\)">\(K\)</span>'s unit-ball image. Approximate its centers by compact smooth functions within <span class="math" data-tex="\(\eta/2\)">\(\eta/2\)</span>, and let <span class="math" data-tex="\(G\)">\(G\)</span> be their finite span. Orthogonal projection onto <span class="math" data-tex="\(G\)">\(G\)</span> therefore satisfies <span class="math" data-tex="\(\|K-\Pi_GK\|\leq\eta\)">\(\|K-\Pi_GK\|\leq\eta\)</span>. Choose an orthonormal basis <span class="math" data-tex="\(g_1,\ldots,g_m\)">\(g_1,\ldots,g_m\)</span> of <span class="math" data-tex="\(G\)">\(G\)</span>; each is still compact and smooth. Write
+<span class="math" data-tex="\(F=\Pi_GK=\sum_{j=1}^m g_j\alpha_j\)">\(F=\Pi_GK=\sum_{j=1}^m g_j\alpha_j\)</span>, with bounded functionals <span class="math" data-tex="\(\alpha_j(f)=\langle Kf,g_j\rangle\)">\(\alpha_j(f)=\langle Kf,g_j\rangle\)</span>. This is an auxiliary finite-rank approximation of the same original operator; it does not rescale the original eigenmode or physical background. Then</p>
+<span class="math math-display" data-tex="\[
+\sup_{\operatorname{Re}\lambda\geq a}
+\|(R_\ell^0-R_\infty^0)(\lambda)K\|
+\leq\frac{2\eta}a+\sum_{j=1}^m\|\alpha_j\|W_{\ell,T,a}(g_j)
+=:\Delta_\ell.
+\tag{RT16}
+\]">\[
+\sup_{\operatorname{Re}\lambda\geq a}
+\|(R_\ell^0-R_\infty^0)(\lambda)K\|
+\leq\frac{2\eta}a+\sum_{j=1}^m\|\alpha_j\|W_{\ell,T,a}(g_j)
+=:\Delta_\ell.
+\tag{RT16}
+\]</span>
+<p>Choosing <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, then <span class="math" data-tex="\(T\)">\(T\)</span>, then <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, makes <span class="math" data-tex="\(\Delta_\ell\)">\(\Delta_\ell\)</span> arbitrarily small. All functionals, finite-dimensional ranges and residual norms in this argument have explicit domains and norms.</p>
+<h2 id="rt5-preserve-domains-in-both-perturbation-factorizations">RT5. Preserve domains in both perturbation factorizations</h2>
+<p>Take the actual unstable eigenvalue <span class="math" data-tex="\(\lambda_\infty=\lambda_R\)">\(\lambda_\infty=\lambda_R\)</span> of lesson31 and its actual smooth compact eigenvorticity <span class="math" data-tex="\(f_*\ne0\)">\(f_*\ne0\)</span>, without altering its amplitude. Put <span class="math" data-tex="\(N=\|f_*\|_H&gt;0\)">\(N=\|f_*\|_H&gt;0\)</span>. For any prescribed <span class="math" data-tex="\(0&lt;\varepsilon&lt;\operatorname{Re}\lambda_\infty\)">\(0&lt;\varepsilon&lt;\operatorname{Re}\lambda_\infty\)</span>, the proved isolation in WG18–WG22 allows a circle</p>
+<span class="math math-display" data-tex="\[
+\Gamma=\{\lambda:|\lambda-\lambda_\infty|=\rho\},\quad
+0&lt;\rho&lt;\min\{\varepsilon,\operatorname{Re}\lambda_\infty/2\},\quad
+a=\operatorname{Re}\lambda_\infty-\rho&gt;0,
+\tag{RT17}
+\]">\[
+\Gamma=\{\lambda:|\lambda-\lambda_\infty|=\rho\},\quad
+0&lt;\rho&lt;\min\{\varepsilon,\operatorname{Re}\lambda_\infty/2\},\quad
+a=\operatorname{Re}\lambda_\infty-\rho&gt;0,
+\tag{RT17}
+\]</span>
+<p>whose closed disk contains no other spectrum of <span class="math" data-tex="\(L_\infty\)">\(L_\infty\)</span>. Its contour resolvent norm <span class="math" data-tex="\(L_*\)">\(L_*\)</span> is finite by continuity and compactness. Put <span class="math" data-tex="\(H_*=1+L_*\|K\|\)">\(H_*=1+L_*\|K\|\)</span>. On <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>,</p>
+<span class="math math-display" data-tex="\[
+D_\infty=I-R_\infty^0K,\qquad
+D_\infty^{-1}=I+(\lambda-L_\infty)^{-1}K,\qquad
+\|D_\infty^{-1}\|\leq H_*.
+\tag{RT18}
+\]">\[
+D_\infty=I-R_\infty^0K,\qquad
+D_\infty^{-1}=I+(\lambda-L_\infty)^{-1}K,\qquad
+\|D_\infty^{-1}\|\leq H_*.
+\tag{RT18}
+\]</span>
+<p>Multiplication of the two expressions verifies the inverse using the resolvent equation. Whenever <span class="math" data-tex="\(H_*\Delta_\ell&lt;1/2\)">\(H_*\Delta_\ell&lt;1/2\)</span>, Neumann inversion of
+<span class="math" data-tex="\(D_\ell=D_\infty-(R_\ell^0-R_\infty^0)K\)">\(D_\ell=D_\infty-(R_\ell^0-R_\infty^0)K\)</span> gives
+<span class="math" data-tex="\(\|D_\ell^{-1}\|\leq2H_*\)">\(\|D_\ell^{-1}\|\leq2H_*\)</span>. This factor and its inverse preserve the precise unbounded domain <span class="math" data-tex="\(\mathcal D_\ell\)">\(\mathcal D_\ell\)</span>: <span class="math" data-tex="\(R_\ell^0K\)">\(R_\ell^0K\)</span> maps all of <span class="math" data-tex="\(H\)">\(H\)</span> into that domain, and <span class="math" data-tex="\(x=D_\ell^{-1}y\)">\(x=D_\ell^{-1}y\)</span> satisfies <span class="math" data-tex="\(x=y+R_\ell^0Kx\)">\(x=y+R_\ell^0Kx\)</span>. Thus if <span class="math" data-tex="\(y\)">\(y\)</span> is in the domain so is <span class="math" data-tex="\(x\)">\(x\)</span>, and the forward statement is immediate. Consequently</p>
+<span class="math math-display" data-tex="\[
+A_\ell=M_\ell+K,\qquad
+R_{A_\ell}(\lambda)=D_\ell^{-1}R_\ell^0(\lambda),\qquad
+\|R_{A_\ell}(\lambda)\|\leq B_*:=\frac{2H_*}{a}
+\tag{RT19}
+\]">\[
+A_\ell=M_\ell+K,\qquad
+R_{A_\ell}(\lambda)=D_\ell^{-1}R_\ell^0(\lambda),\qquad
+\|R_{A_\ell}(\lambda)\|\leq B_*:=\frac{2H_*}{a}
+\tag{RT19}
+\]</span>
+<p>is an actual two-sided inverse on <span class="math" data-tex="\(\mathcal D_\ell\)">\(\mathcal D_\ell\)</span>. These operators are closed because the coupling is bounded and <span class="math" data-tex="\(M_\ell\)">\(M_\ell\)</span> is closed.</p>
+<p>The inverse difference identity, with its order retained, is
+<span class="math" data-tex="\(D_\ell^{-1}-D_\infty^{-1}=D_\ell^{-1}(R_\ell^0-R_\infty^0)K D_\infty^{-1}\)">\(D_\ell^{-1}-D_\infty^{-1}=D_\ell^{-1}(R_\ell^0-R_\infty^0)K D_\infty^{-1}\)</span>. It gives for the actual <span class="math" data-tex="\(f_*\)">\(f_*\)</span></p>
+<span class="math math-display" data-tex="\[
+\sup_{\lambda\in\Gamma}\|(R_{A_\ell}(\lambda)-R_{L_\infty}(\lambda))f_*\|
+\leq2H_*W_{\ell,T,a}(f_*)+\frac{2H_*^2\Delta_\ell}{a}N.
+\tag{RT20}
+\]">\[
+\sup_{\lambda\in\Gamma}\|(R_{A_\ell}(\lambda)-R_{L_\infty}(\lambda))f_*\|
+\leq2H_*W_{\ell,T,a}(f_*)+\frac{2H_*^2\Delta_\ell}{a}N.
+\tag{RT20}
+\]</span>
+<p>Now keep the complete receiving difference from RK23–RK24:</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+D_\ell^{\rm rem}&amp;=E_\ell K_\ell^{\rm op}P_\ell-K+E_\ell S_\ell P_\ell,\\
+d_\ell^{\rm rem}&amp;=\varepsilon_\ell\|\nabla\bar\omega_\ell\|_\infty
++C^{(2)}_{R,h}\|\nabla(\Psi_r/s-\Psi/s^2)\|_\infty\\
+&amp;\quad+\frac{\|\bar\omega_\ell\|_\infty C_{R,h}+\frac12\|V_\ell^r\|_\infty}{\ell-R},
+\qquad\|D_\ell^{\rm rem}\|\leq d_\ell^{\rm rem}\longrightarrow0.
+\end{split}
+\tag{RT21}
+\]">\[
+\begin{split}
+D_\ell^{\rm rem}&amp;=E_\ell K_\ell^{\rm op}P_\ell-K+E_\ell S_\ell P_\ell,\\
+d_\ell^{\rm rem}&amp;=\varepsilon_\ell\|\nabla\bar\omega_\ell\|_\infty
++C^{(2)}_{R,h}\|\nabla(\Psi_r/s-\Psi/s^2)\|_\infty\\
+&amp;\quad+\frac{\|\bar\omega_\ell\|_\infty C_{R,h}+\frac12\|V_\ell^r\|_\infty}{\ell-R},
+\qquad\|D_\ell^{\rm rem}\|\leq d_\ell^{\rm rem}\longrightarrow0.
+\end{split}
+\tag{RT21}
+\]</span>
+<p>Here <span class="math" data-tex="\(\varepsilon_\ell\)">\(\varepsilon_\ell\)</span> is the full two-parameter cutoff bound RK19, chosen to tend to zero by its stated order of choices; <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span> is kept fixed. The notation <span class="math" data-tex="\(d_\ell^{\rm rem}\)">\(d_\ell^{\rm rem}\)</span> is different from the physical divergence <span class="math" data-tex="\(d_\ell\)">\(d_\ell\)</span> in RT2. If <span class="math" data-tex="\(B_*d_\ell^{\rm rem}&lt;1/2\)">\(B_*d_\ell^{\rm rem}&lt;1/2\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\lambda-L_\ell&amp;=(\lambda-A_\ell)(I-R_{A_\ell}D_\ell^{\rm rem}),\\
+R_{L_\ell}&amp;=(I-R_{A_\ell}D_\ell^{\rm rem})^{-1}R_{A_\ell},\\
+\|R_{L_\ell}\|&amp;\leq2B_*,\qquad
+\|R_{L_\ell}-R_{A_\ell}\|\leq2B_*^2d_\ell^{\rm rem}.
+\end{split}
+\tag{RT22}
+\]">\[
+\begin{split}
+\lambda-L_\ell&amp;=(\lambda-A_\ell)(I-R_{A_\ell}D_\ell^{\rm rem}),\\
+R_{L_\ell}&amp;=(I-R_{A_\ell}D_\ell^{\rm rem})^{-1}R_{A_\ell},\\
+\|R_{L_\ell}\|&amp;\leq2B_*,\qquad
+\|R_{L_\ell}-R_{A_\ell}\|\leq2B_*^2d_\ell^{\rm rem}.
+\end{split}
+\tag{RT22}
+\]</span>
+<p>This inverse also preserves the domain by <span class="math" data-tex="\(x=y+R_{A_\ell}D_\ell^{\rm rem}x\)">\(x=y+R_{A_\ell}D_\ell^{\rm rem}x\)</span>. No multiplication of formal unbounded expressions is used without that domain statement.</p>
+<h2 id="rt6-prove-that-a-nonzero-contour-produces-an-actual-eigenvalue">RT6. Prove that a nonzero contour produces an actual eigenvalue</h2>
+<p>First the required spectral type is established. Let <span class="math" data-tex="\(\sigma_\ell=\|E_\ell S_\ell P_\ell\|\)">\(\sigma_\ell=\|E_\ell S_\ell P_\ell\|\)</span>, which tends to zero by RK24, and <span class="math" data-tex="\(N_\ell=M_\ell+E_\ell S_\ell P_\ell\)">\(N_\ell=M_\ell+E_\ell S_\ell P_\ell\)</span> on <span class="math" data-tex="\(\mathcal D_\ell\)">\(\mathcal D_\ell\)</span>. For <span class="math" data-tex="\(\operatorname{Re}\lambda&gt;\sigma_\ell\)">\(\operatorname{Re}\lambda&gt;\sigma_\ell\)</span>, factoring relative to <span class="math" data-tex="\(M_\ell\)">\(M_\ell\)</span> gives an inverse of norm at most <span class="math" data-tex="\((\operatorname{Re}\lambda-\sigma_\ell)^{-1}\)">\((\operatorname{Re}\lambda-\sigma_\ell)^{-1}\)</span>. Its holomorphy follows from the convergent local resolvent series. The remaining coupling <span class="math" data-tex="\(C_\ell=E_\ell K_\ell^{\rm op}P_\ell\)">\(C_\ell=E_\ell K_\ell^{\rm op}P_\ell\)</span> is compact by RK22. Thus</p>
+<span class="math math-display" data-tex="\[
+\lambda-L_\ell=(\lambda-N_\ell)(I-R_{N_\ell}(\lambda)C_\ell).
+\tag{RT23}
+\]">\[
+\lambda-L_\ell=(\lambda-N_\ell)(I-R_{N_\ell}(\lambda)C_\ell).
+\tag{RT23}
+\]</span>
+<p>For completeness, the compact analytic argument is the full finite-dimensional calculation, applied to the present actual maps. Near any <span class="math" data-tex="\(\lambda_0\)">\(\lambda_0\)</span> in this half-plane, approximate <span class="math" data-tex="\(B(\lambda)=R_{N_\ell}(\lambda)C_\ell\)">\(B(\lambda)=R_{N_\ell}(\lambda)C_\ell\)</span> by a fixed finite-rank <span class="math" data-tex="\(JL\)">\(JL\)</span> so that <span class="math" data-tex="\(E(\lambda)=B(\lambda)-JL\)">\(E(\lambda)=B(\lambda)-JL\)</span> has norm below one half throughout a neighborhood. Define <span class="math" data-tex="\(V=(I-E)^{-1}J\)">\(V=(I-E)^{-1}J\)</span> and the finite matrix <span class="math" data-tex="\(F=I-LV\)">\(F=I-LV\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+I-B=(I-E)(I-VL),\qquad
+(I-VL)^{-1}=I+VF^{-1}L.
+\tag{RT24}
+\]">\[
+I-B=(I-E)(I-VL),\qquad
+(I-VL)^{-1}=I+VF^{-1}L.
+\tag{RT24}
+\]</span>
+<p>These identities follow by multiplication; the determinant inverse gives a meromorphic inverse whenever <span class="math" data-tex="\(\det F\)">\(\det F\)</span> is not identically zero. Moreover <span class="math" data-tex="\(x\mapsto Lx\)">\(x\mapsto Lx\)</span> and <span class="math" data-tex="\(c\mapsto Vc\)">\(c\mapsto Vc\)</span> are inverse maps of the kernels: if <span class="math" data-tex="\((I-VL)x=0\)">\((I-VL)x=0\)</span>, then <span class="math" data-tex="\(x=VLx\)">\(x=VLx\)</span>, and if <span class="math" data-tex="\(Fc=0\)">\(Fc=0\)</span>, then <span class="math" data-tex="\(LVc=c\)">\(LVc=c\)</span>. The inverse of <span class="math" data-tex="\(I-E\)">\(I-E\)</span> in the first factor does not change this kernel. Hence determinant zeros are actual eigenvectors, not merely a range obstruction.</p>
+<p>There is an invertible point at every sufficiently large positive real <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, since <span class="math" data-tex="\(\|B(\lambda)\|\leq\|C_\ell\|/(\operatorname{Re}\lambda-\sigma_\ell)&lt;1\)">\(\|B(\lambda)\|\leq\|C_\ell\|/(\operatorname{Re}\lambda-\sigma_\ell)&lt;1\)</span>. To extend meromorphic invertibility to the whole connected half-plane, consider the set of points possessing a neighborhood with such a meromorphic inverse. It is nonempty and open. At any point of its closure use RT24 on a small connected disk. That disk intersects an already meromorphic neighborhood and contains an invertible point there, since poles are isolated. Its finite determinant is therefore not identically zero. RT24 extends the meromorphic inverse through the disk. The set is closed, hence is the whole half-plane. Consequently every spectral point there is isolated and is an eigenvalue.</p>
+<p>Each has finite algebraic multiplicity as well. Around one such point choose a small contour within the half-plane. The difference
+<span class="math" data-tex="\(R_{L_\ell}-R_{N_\ell}=R_{L_\ell}C_\ell R_{N_\ell}\)">\(R_{L_\ell}-R_{N_\ell}=R_{L_\ell}C_\ell R_{N_\ell}\)</span> is compact. The contour integral of <span class="math" data-tex="\(R_{N_\ell}\)">\(R_{N_\ell}\)</span> is zero. Thus the spectral contour integral is compact. The resolvent identity
+<span class="math" data-tex="\(R(\lambda)R(\mu)=[R(\mu)-R(\lambda)]/(\lambda-\mu)\)">\(R(\lambda)R(\mu)=[R(\mu)-R(\lambda)]/(\lambda-\mu)\)</span>, integrated on two nested contours, proves that this integral is a projection: the inner-pole term contributes one copy and the other contributes zero. Its range is finite-dimensional, because an infinite orthonormal sequence in the range would contradict compactness. Integrating <span class="math" data-tex="\(L_\ell R(\lambda)=\lambda R(\lambda)-I\)">\(L_\ell R(\lambda)=\lambda R(\lambda)-I\)</span> in the graph norm shows its range lies in the domain and is invariant. Every eigenvalue of the finite-dimensional restriction must be the enclosed point, since the contour acts on any eigenvector by its winding number. Cayley–Hamilton then makes the shifted restriction nilpotent. Conversely the exact finite resolvent expansion
+<span class="math" data-tex="\(R(\lambda)f=\sum_{j=0}^{k-1}(L_\ell-\lambda_0)^jf/(\lambda-\lambda_0)^{j+1}\)">\(R(\lambda)f=\sum_{j=0}^{k-1}(L_\ell-\lambda_0)^jf/(\lambda-\lambda_0)^{j+1}\)</span> on any generalized eigenvector telescopes after multiplication by <span class="math" data-tex="\(\lambda-L_\ell\)">\(\lambda-L_\ell\)</span>; integration fixes that vector. This proves that the finite range is exactly the entire generalized eigenspace.</p>
+<p>Choose <span class="math" data-tex="\(\ell\)">\(\ell\)</span> sufficiently large that <span class="math" data-tex="\(\sigma_\ell&lt;a/2\)">\(\sigma_\ell&lt;a/2\)</span>, both strict Neumann inequalities above hold, and</p>
+<span class="math math-display" data-tex="\[
+\rho\left[
+2B_*^2d_\ell^{\rm rem}N+2H_*W_{\ell,T,a}(f_*)
++\frac{2H_*^2\Delta_\ell}{a}N\right]&lt;\frac N2.
+\tag{RT25}
+\]">\[
+\rho\left[
+2B_*^2d_\ell^{\rm rem}N+2H_*W_{\ell,T,a}(f_*)
++\frac{2H_*^2\Delta_\ell}{a}N\right]&lt;\frac N2.
+\tag{RT25}
+\]</span>
+<p>Such an actual finite radius exists: choose the finite-rank tolerance <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, then the time cutoff <span class="math" data-tex="\(T\)">\(T\)</span>, then the kernel tail and diagonal cutoffs from RK19, and finally <span class="math" data-tex="\(\ell\)">\(\ell\)</span> so that all retained bounds are below the fixed positive tolerances. Each displayed bound remains valid for every larger <span class="math" data-tex="\(\ell\)">\(\ell\)</span>; alternatively their eventual convergence gives a common finite lower threshold. The actual eigenmode amplitude <span class="math" data-tex="\(N\)">\(N\)</span> has not been replaced by one.</p>
+<p>Define <span class="math" data-tex="\(\mathcal P_\ell=(2\pi i)^{-1}\int_\Gamma R_{L_\ell}(\lambda)d\lambda\)">\(\mathcal P_\ell=(2\pi i)^{-1}\int_\Gamma R_{L_\ell}(\lambda)d\lambda\)</span>, with positive orientation. Since <span class="math" data-tex="\(R_{L_\infty}(\lambda)f_*=(\lambda-\lambda_\infty)^{-1}f_*\)">\(R_{L_\infty}(\lambda)f_*=(\lambda-\lambda_\infty)^{-1}f_*\)</span>, its planar counterpart satisfies <span class="math" data-tex="\(\mathcal P_\infty f_*=f_*\)">\(\mathcal P_\infty f_*=f_*\)</span>. RT20 and RT22, including the circle length <span class="math" data-tex="\(2\pi\rho\)">\(2\pi\rho\)</span>, imply</p>
+<span class="math math-display" data-tex="\[
+\|\mathcal P_\ell f_*-f_*\|_H&lt;\frac N2,
+\qquad \mathcal P_\ell f_*\ne0.
+\tag{RT26}
+\]">\[
+\|\mathcal P_\ell f_*-f_*\|_H&lt;\frac N2,
+\qquad \mathcal P_\ell f_*\ne0.
+\tag{RT26}
+\]</span>
+<p>If the circle's interior contained no spectrum, the resolvent would be holomorphic throughout it and its contour integral would be zero, contradicting RT26. Hence it contains a spectral point <span class="math" data-tex="\(\lambda_\ell\)">\(\lambda_\ell\)</span>. Its real part is at least <span class="math" data-tex="\(a&gt;\sigma_\ell\)">\(a&gt;\sigma_\ell\)</span>, so the just-proved finite-dimensional reduction makes it an actual eigenvalue of finite algebraic multiplicity. RT10 transfers it to the physical half-plane operator and its actual eigenvector <span class="math" data-tex="\(\omega_\ell\ne0\)">\(\omega_\ell\ne0\)</span>. In the original, unchanged time variable,</p>
+<span class="math math-display" data-tex="\[
+|\lambda_\ell-\lambda_\infty|&lt;\rho&lt;\varepsilon,
+\qquad\operatorname{Re}\lambda_\ell&gt;\operatorname{Re}\lambda_\infty-\varepsilon&gt;0,
+\qquad L_\ell^{\rm phys}\omega_\ell=\lambda_\ell\omega_\ell.
+\tag{RT27}
+\]">\[
+|\lambda_\ell-\lambda_\infty|&lt;\rho&lt;\varepsilon,
+\qquad\operatorname{Re}\lambda_\ell&gt;\operatorname{Re}\lambda_\infty-\varepsilon&gt;0,
+\qquad L_\ell^{\rm phys}\omega_\ell=\lambda_\ell\omega_\ell.
+\tag{RT27}
+\]</span>
+<p>This proves the full actual ring spectral transfer from the already constructed planar unstable vortex, with no assumed unstable ring profile. Exercise5 proves the stronger operator-norm convergence of these contour projections, including the required adjoint transport estimate and compact-left product. The entire enclosed algebraic multiplicity is therefore retained for every sufficiently large original ring radius, even when the eigenvalues split.</p>
+<h2 id="rt7-receive-the-physical-three-dimensional-mode-exactly">RT7. Receive the physical three-dimensional mode exactly</h2>
+<p>All coefficients and outputs in the physical generator vanish off <span class="math" data-tex="\(B_R\)">\(B_R\)</span>. The eigenvalue equation and <span class="math" data-tex="\(\lambda_\ell\ne0\)">\(\lambda_\ell\ne0\)</span> therefore force <span class="math" data-tex="\(\omega_\ell=0\)">\(\omega_\ell=0\)</span> there. The actual physical mode</p>
+<span class="math math-display" data-tex="\[
+\Omega_\ell(X)=-\omega_\ell(r,z)e_\theta,\qquad
+u_\ell=\mathrm{BS}_{3d}[\Omega_\ell],\qquad
+\|\Omega_\ell\|_2^2=2\pi\int_{B_R}(\ell+r)|\omega_\ell|^2\,dr\,dz
+\tag{RT28}
+\]">\[
+\Omega_\ell(X)=-\omega_\ell(r,z)e_\theta,\qquad
+u_\ell=\mathrm{BS}_{3d}[\Omega_\ell],\qquad
+\|\Omega_\ell\|_2^2=2\pi\int_{B_R}(\ell+r)|\omega_\ell|^2\,dr\,dz
+\tag{RT28}
+\]</span>
+<p>has compact toroidal vorticity, <span class="math" data-tex="\(\Omega_\ell\in L^1\cap L^2\)">\(\Omega_\ell\in L^1\cap L^2\)</span>, and <span class="math" data-tex="\(u_\ell\in H^1(\mathbb R^3)\)">\(u_\ell\in H^1(\mathbb R^3)\)</span> by RK3–RK5. It is nonzero because its curl is the nonzero <span class="math" data-tex="\(\Omega_\ell\)">\(\Omega_\ell\)</span>. No compact support is asserted for its velocity and no smoothness beyond the proved class is inserted.</p>
+<p>Let <span class="math" data-tex="\(\bar u_\ell(X)=V_\ell^r(r,z)e_r+V_\ell^z(r,z)e_z\)">\(\bar u_\ell(X)=V_\ell^r(r,z)e_r+V_\ell^z(r,z)e_z\)</span> be the actual smooth compact divergence-free three-dimensional background. It is an actual stationary forced Euler solution with its original meridian pressure retained. Namely take the radial pressure <span class="math" data-tex="\(p_R\)">\(p_R\)</span> of CP14, including its given additive constant and derivative <span class="math" data-tex="\(p_R&#x27;(\rho)=\rho\zeta_R(\rho)^2\)">\(p_R&#x27;(\rho)=\rho\zeta_R(\rho)^2\)</span>, and set <span class="math" data-tex="\(\bar p_\ell(X)=p_R(\sqrt{r^2+z^2})\)">\(\bar p_\ell(X)=p_R(\sqrt{r^2+z^2})\)</span>. It is constant near the physical axis and outside the supporting torus, so is smooth as a function of the Cartesian point. Define</p>
+<span class="math math-display" data-tex="\[
+\bar f_\ell=\bar u_\ell\cdot\nabla\bar u_\ell+\nabla\bar p_\ell.
+\tag{RT28a}
+\]">\[
+\bar f_\ell=\bar u_\ell\cdot\nabla\bar u_\ell+\nabla\bar p_\ell.
+\tag{RT28a}
+\]</span>
+<p>This is a smooth compact force, with all components and its comparison to the original planar steady equation calculated in Exercise 4 below. It makes the background exactly stationary with the retained pressure; it is not an assertion that this corrected ring is an unforced steady Euler solution. The force is held fixed in the linearization, so its variation is zero. For the original scalar convention, the physical linearized vorticity equation is exactly</p>
+<span class="math math-display" data-tex="\[
+\partial_t\omega=-V_\ell\cdot\nabla\omega
+-u\cdot\nabla\bar\omega_\ell
++\frac{V_\ell^r}{s}\omega+\frac{u^r}{s}\bar\omega_\ell.
+\tag{RT29}
+\]">\[
+\partial_t\omega=-V_\ell\cdot\nabla\omega
+-u\cdot\nabla\bar\omega_\ell
++\frac{V_\ell^r}{s}\omega+\frac{u^r}{s}\bar\omega_\ell.
+\tag{RT29}
+\]</span>
+<p>To verify every curvature sign, for any axisymmetric no-swirl velocity <span class="math" data-tex="\(w=w^re_r+w^ze_z\)">\(w=w^re_r+w^ze_z\)</span> and azimuthal field <span class="math" data-tex="\(b e_\theta\)">\(b e_\theta\)</span>, direct angular differentiation gives
+<span class="math" data-tex="\((b e_\theta\cdot\nabla)w=b w^r e_\theta/s\)">\((b e_\theta\cdot\nabla)w=b w^r e_\theta/s\)</span>, while <span class="math" data-tex="\((w\cdot\nabla)(b e_\theta)=(w\cdot\nabla b)e_\theta\)">\((w\cdot\nabla)(b e_\theta)=(w\cdot\nabla b)e_\theta\)</span>. Substitute <span class="math" data-tex="\(b=-\omega\)">\(b=-\omega\)</span> and <span class="math" data-tex="\(\bar b=-\bar\omega_\ell\)">\(\bar b=-\bar\omega_\ell\)</span> into the full linearized curl equation
+<span class="math" data-tex="\(\partial_t\Omega+\bar u\cdot\nabla\Omega+u\cdot\nabla\bar\Omega=\bar\Omega\cdot\nabla u+\Omega\cdot\nabla\bar u\)">\(\partial_t\Omega+\bar u\cdot\nabla\Omega+u\cdot\nabla\bar\Omega=\bar\Omega\cdot\nabla u+\Omega\cdot\nabla\bar u\)</span>. Multiplication by <span class="math" data-tex="\(-1\)">\(-1\)</span> produces RT29 and precisely RK21. Thus <span class="math" data-tex="\(e^{\lambda_\ell t}\Omega_\ell\)">\(e^{\lambda_\ell t}\Omega_\ell\)</span> solves the physical linearized curl equation in distributions.</p>
+<p>The full velocity residual
+<span class="math" data-tex="\(F=\lambda_\ell u_\ell+\bar u_\ell\cdot\nabla u_\ell+u_\ell\cdot\nabla\bar u_\ell\)">\(F=\lambda_\ell u_\ell+\bar u_\ell\cdot\nabla u_\ell+u_\ell\cdot\nabla\bar u_\ell\)</span> belongs to <span class="math" data-tex="\(L^2\)">\(L^2\)</span> and has zero curl by RT29 and the actual curl identities. Define its pressure gradient by</p>
+<span class="math math-display" data-tex="\[
+\widehat\pi(\xi)=\frac{i\xi\cdot\widehat F(\xi)}{|\xi|^2}\quad(\xi\ne0),
+\qquad \nabla\pi=-F,
+\qquad\lambda_\ell u_\ell+\bar u_\ell\cdot\nabla u_\ell+u_\ell\cdot\nabla\bar u_\ell+\nabla\pi=0.
+\tag{RT30}
+\]">\[
+\widehat\pi(\xi)=\frac{i\xi\cdot\widehat F(\xi)}{|\xi|^2}\quad(\xi\ne0),
+\qquad \nabla\pi=-F,
+\qquad\lambda_\ell u_\ell+\bar u_\ell\cdot\nabla u_\ell+u_\ell\cdot\nabla\bar u_\ell+\nabla\pi=0.
+\tag{RT30}
+\]</span>
+<p>The Fourier expression defines a tempered distribution: near zero, Cauchy–Schwarz and the integrability of <span class="math" data-tex="\(|\xi|^{-2}\)">\(|\xi|^{-2}\)</span> in three dimensions make it locally integrable; at infinity it is tempered by its weighted <span class="math" data-tex="\(L^2\)">\(L^2\)</span> bound. Since <span class="math" data-tex="\(\xi\times\widehat F=0\)">\(\xi\times\widehat F=0\)</span>, its gradient multiplier equals <span class="math" data-tex="\(-\widehat F\)">\(-\widehat F\)</span> almost everywhere. This proves the asserted pressure and permits the original arbitrary spatial constant; no force or pressure term is omitted. The complex mode has exact norm <span class="math" data-tex="\(\|e^{\lambda_\ell t}\Omega_\ell\|_2^2=e^{2\operatorname{Re}\lambda_\ell t}\|\Omega_\ell\|_2^2\)">\(\|e^{\lambda_\ell t}\Omega_\ell\|_2^2=e^{2\operatorname{Re}\lambda_\ell t}\|\Omega_\ell\|_2^2\)</span>. Its real and imaginary parts each solve the real linearized equation, with the exact identity</p>
+<span class="math math-display" data-tex="\[
+\|\operatorname{Re}(e^{\lambda_\ell t}\Omega_\ell)\|_2^2+
+\|\operatorname{Im}(e^{\lambda_\ell t}\Omega_\ell)\|_2^2
+=e^{2\operatorname{Re}\lambda_\ell t}\|\Omega_\ell\|_2^2.
+\tag{RT31}
+\]">\[
+\|\operatorname{Re}(e^{\lambda_\ell t}\Omega_\ell)\|_2^2+
+\|\operatorname{Im}(e^{\lambda_\ell t}\Omega_\ell)\|_2^2
+=e^{2\operatorname{Re}\lambda_\ell t}\|\Omega_\ell\|_2^2.
+\tag{RT31}
+\]</span>
+<p>No unjustified factor of one half is assigned to either real component of this general ring mode. The proved compact smooth background, positive-real-part eigenvalue, full physical mode, pressure and exact growth identity now provide the inputs for the source's Euler-to-viscous spectral transfer. That next construction must retain its original amplitude prefactor, diffusion, dilation, domains and force before a Navier–Stokes or nonlinear claim is made.</p>
+<h2 id="two-pictures-of-the-original-kernel-and-volume-map">Two pictures of the original kernel and volume map</h2>
+<p><img src="assets/NS-FLUID-32/original-ring-kernel-FB445FEDFFD8936251DB3D9D92D4B01A192D1DF64EBE6EEA6B6B7FB5AF7DE6C0.png" alt="The original ring kernel with every curvature contribution" class="course-figure" width="2210" height="935" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-ring-kernel" data-asset-sha256="FB445FEDFFD8936251DB3D9D92D4B01A192D1DF64EBE6EEA6B6B7FB5AF7DE6C0"></p>
+<p>RK6–RK19 and Exercise 2 retain the complete angular kernel. Here the
+original points have <span class="math" data-tex="\(r=r&#x27;=0\)">\(r=r&#x27;=0\)</span> and <span class="math" data-tex="\(z-z&#x27;=d=1\)">\(z-z&#x27;=d=1\)</span>, while the ring radius
+runs from <span class="math" data-tex="\(4\)">\(4\)</span> to <span class="math" data-tex="\(256\)">\(256\)</span>. Solid curves are numerical quadrature samples
+of the exact RK14 integrals, with their recorded errors; dashed curves
+are the proved bounds in EX5 or the exact planar limit. The vertical
+curvature term is nonzero at every finite radius. These are kernel
+samples, not computed vortex eigenvalues. The
+<a href="assets/original-ring-kernel-and-volume.py">reproducible source</a> and
+<a href="assets/original-ring-kernel-samples.json">sample values</a> are included.</p>
+<p><img src="assets/NS-FLUID-32/original-ring-volume-map-C78F9286E02B277C6624FD9C32EC0C51A40E8542FDE4E423E946314AB40488EA.png" alt="The exact physical-volume isometry and transport group" class="course-figure" width="2210" height="1054" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-ring-volume-map" data-asset-sha256="C78F9286E02B277C6624FD9C32EC0C51A40E8542FDE4E423E946314AB40488EA"></p>
+<p>RT1–RT7 and Exercise 1 prove every map in this diagram. The physical
+measure is <span class="math" data-tex="\(2\pi s\varpi\,dr\,dz\)">\(2\pi s\varpi\,dr\,dz\)</span>, with <span class="math" data-tex="\(s=\ell+r&gt;0\)">\(s=\ell+r&gt;0\)</span>.
+The isometry multiplies by <span class="math" data-tex="\(\sqrt{2\pi s}\)">\(\sqrt{2\pi s}\)</span>. Conjugating the physical
+pullback supplies precisely the square-root Jacobian factor; the full
+generator domains correspond as well. The same
+<a href="assets/original-ring-kernel-and-volume.py">figure source</a> creates
+this diagram. Human comparison for both figures: Albritton–Brué–Colombo,
+original main.tex1033–1043, 1066 and 1240–1257, with the corrections proved
+in this lesson.</p>
+<h2 id="five-solved-exercises">Five solved exercises</h2>
+<h3 id="exercise-1-prove-the-exact-map-between-physical-transport-and-the-half-density-group">Exercise 1. Prove the exact map between physical transport and the half-density group</h3>
+<p>Let <span class="math" data-tex="\(s=\ell+r\)">\(s=\ell+r\)</span>, and retain the physical scalar Hilbert space
+<span class="math" data-tex="\(H_\ell^{\rm vol}=L^2(D_\ell,2\pi s\varpi\,dr\,dz)\)">\(H_\ell^{\rm vol}=L^2(D_\ell,2\pi s\varpi\,dr\,dz)\)</span>.
+Construct an isometry to <span class="math" data-tex="\(H_\ell\)">\(H_\ell\)</span>, calculate the conjugated transport generator, and recover the whole factor in RT4.</p>
+<p><strong>Solution.</strong> The actual maps and their norms are</p>
+<span class="math math-display" data-tex="\[
+\mathcal I_\ell f=\sqrt{2\pi s}\,f,
+\qquad\mathcal I_\ell^{-1}g=(2\pi s)^{-1/2}g,
+\qquad\|\mathcal I_\ell f\|_{H_\ell}^2
+=2\pi\int_{D_\ell}s\varpi|f|^2=\|f\|_{H_\ell^{\rm vol}}^2.
+\tag{EX1}
+\]">\[
+\mathcal I_\ell f=\sqrt{2\pi s}\,f,
+\qquad\mathcal I_\ell^{-1}g=(2\pi s)^{-1/2}g,
+\qquad\|\mathcal I_\ell f\|_{H_\ell}^2
+=2\pi\int_{D_\ell}s\varpi|f|^2=\|f\|_{H_\ell^{\rm vol}}^2.
+\tag{EX1}
+\]</span>
+<p>They are defined on their entire stated spaces even though their multipliers need not be bounded on a different, unweighted space. The flow preserves <span class="math" data-tex="\(s\,dr\,dz\)">\(s\,dr\,dz\)</span> by RT3 and preserves <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span>, so the physical transport group is <span class="math" data-tex="\(S_\ell(t)f=f\circ\Phi_{-t}^\ell\)">\(S_\ell(t)f=f\circ\Phi_{-t}^\ell\)</span>, unitary on <span class="math" data-tex="\(H_\ell^{\rm vol}\)">\(H_\ell^{\rm vol}\)</span>. Direct multiplication gives</p>
+<span class="math math-display" data-tex="\[
+\mathcal I_\ell S_\ell(t)\mathcal I_\ell^{-1}g
+=\sqrt{\frac{s}{s(\Phi_{-t}^\ell x)}}\,g(\Phi_{-t}^\ell x)
+=T_\ell(t)g.
+\tag{EX2}
+\]">\[
+\mathcal I_\ell S_\ell(t)\mathcal I_\ell^{-1}g
+=\sqrt{\frac{s}{s(\Phi_{-t}^\ell x)}}\,g(\Phi_{-t}^\ell x)
+=T_\ell(t)g.
+\tag{EX2}
+\]</span>
+<p>For a compact smooth function supported away from the axis, compute the full derivative before combining terms:</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\mathcal I_\ell(-V_\ell\cdot\nabla)\mathcal I_\ell^{-1}g
+&amp;=-V_\ell\cdot\nabla g+\frac{V_\ell^r}{2s}g\\
+&amp;=-V_\ell\cdot\nabla g-\frac12d_\ell g=M_\ell^{\rm phys}g.
+\end{split}
+\tag{EX3}
+\]">\[
+\begin{split}
+\mathcal I_\ell(-V_\ell\cdot\nabla)\mathcal I_\ell^{-1}g
+&amp;=-V_\ell\cdot\nabla g+\frac{V_\ell^r}{2s}g\\
+&amp;=-V_\ell\cdot\nabla g-\frac12d_\ell g=M_\ell^{\rm phys}g.
+\end{split}
+\tag{EX3}
+\]</span>
+<p>This is the precise morphism between the physical-volume transport and the half-density presentation. The equality of the full generator domains follows directly from EX2 and the definition by convergent difference quotients: an isometry takes such a quotient to the conjugate quotient and preserves its convergence. Thus it is not limited to the test functions used for the displayed differentiation. In particular both the physical Jacobian and the factor <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> remain in the map. The original vorticity generator additionally contains its two stretching contributions and the velocity coupling in RK21; EX3 does not discard them.</p>
+<h3 id="exercise-2-retain-the-curvature-term-in-the-exact-angular-kernel">Exercise 2. Retain the curvature term in the exact angular kernel</h3>
+<p>For two points with the same original meridian coordinate <span class="math" data-tex="\(r=r&#x27;=0\)">\(r=r&#x27;=0\)</span>, but <span class="math" data-tex="\(z-z&#x27;=d&gt;0\)">\(z-z&#x27;=d&gt;0\)</span>, compute both components of <span class="math" data-tex="\(K_\ell\)">\(K_\ell\)</span>. Prove that the vertical component is nonzero for every finite <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, and derive their limits as <span class="math" data-tex="\(\ell\to\infty\)">\(\ell\to\infty\)</span>. What lower bound does this impose on a constant in a uniform estimate <span class="math" data-tex="\(|K_\ell(x,y)|\leq C/|x-y|\)">\(|K_\ell(x,y)|\leq C/|x-y|\)</span>?</p>
+<p><strong>Solution.</strong> Here <span class="math" data-tex="\(s=s&#x27;=a=\ell\)">\(s=s&#x27;=a=\ell\)</span> and <span class="math" data-tex="\(c=1\)">\(c=1\)</span>. Equation RK14, including both angular integrals, gives</p>
+<span class="math math-display" data-tex="\[
+K_\ell^r=-\frac d{2\pi}J_0(\ell,d)+\frac d{4\pi\ell^2}J_2(\ell,d),
+\qquad K_\ell^z=-\frac1{4\pi\ell}J_2(\ell,d).
+\tag{EX4}
+\]">\[
+K_\ell^r=-\frac d{2\pi}J_0(\ell,d)+\frac d{4\pi\ell^2}J_2(\ell,d),
+\qquad K_\ell^z=-\frac1{4\pi\ell}J_2(\ell,d).
+\tag{EX4}
+\]</span>
+<p>The integrand defining <span class="math" data-tex="\(J_2\)">\(J_2\)</span> is strictly positive for <span class="math" data-tex="\(0&lt;v&lt;2\ell\)">\(0&lt;v&lt;2\ell\)</span>, so its integral is positive and <span class="math" data-tex="\(K_\ell^z&lt;0\)">\(K_\ell^z&lt;0\)</span>. This is a genuine curvature velocity contribution for a scalar input at the chosen meridian position. Its full original integral remains present even though it tends to zero in the large-ring comparison.</p>
+<p>Using RK15 gives the explicit bounds</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\left|K_\ell^r+\frac1{2\pi d}\right|
+&amp;\leq\frac d{2\pi\ell^2}
+\left(\frac14\operatorname{arsinh}(\ell/d)+\pi+\frac12\right)
++\frac d{4\pi\ell^2}
+\left(\frac2{\sqrt3}\operatorname{arsinh}(\ell/d)+\pi\right),\\
+0&lt;-K_\ell^z&amp;\leq\frac1{4\pi\ell}
+\left(\frac2{\sqrt3}\operatorname{arsinh}(\ell/d)+\pi\right).
+\end{split}
+\tag{EX5}
+\]">\[
+\begin{split}
+\left|K_\ell^r+\frac1{2\pi d}\right|
+&amp;\leq\frac d{2\pi\ell^2}
+\left(\frac14\operatorname{arsinh}(\ell/d)+\pi+\frac12\right)
++\frac d{4\pi\ell^2}
+\left(\frac2{\sqrt3}\operatorname{arsinh}(\ell/d)+\pi\right),\\
+0&lt;-K_\ell^z&amp;\leq\frac1{4\pi\ell}
+\left(\frac2{\sqrt3}\operatorname{arsinh}(\ell/d)+\pi\right).
+\end{split}
+\tag{EX5}
+\]</span>
+<p>For fixed <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>, both right sides tend to zero, since <span class="math" data-tex="\(\operatorname{arsinh}t=\log(t+\sqrt{1+t^2})\)">\(\operatorname{arsinh}t=\log(t+\sqrt{1+t^2})\)</span>. Thus the full ring kernel tends to <span class="math" data-tex="\((-1/(2\pi d),0)\)">\((-1/(2\pi d),0)\)</span> at these original points. Any uniform constant <span class="math" data-tex="\(C\)">\(C\)</span> in the question must satisfy <span class="math" data-tex="\(C\geq1/(2\pi)\)">\(C\geq1/(2\pi)\)</span>, by multiplying by <span class="math" data-tex="\(d\)">\(d\)</span> and taking that limit. The proved universal value <span class="math" data-tex="\(C=1/2\)">\(C=1/2\)</span> from RK12 lies above this necessary lower bound; no claim of its optimality is made.</p>
+<h3 id="exercise-3-bound-the-entire-corrected-background-gradient-term">Exercise 3. Bound the entire corrected background-gradient term</h3>
+<p>Prove an explicit uniform bound for the gradient correction used in RK23 and RT21, with all contributions from <span class="math" data-tex="\(\Psi_r/s-\Psi/s^2\)">\(\Psi_r/s-\Psi/s^2\)</span> retained.</p>
+<p><strong>Solution.</strong> Differentiate each summand in its original coordinates:</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\partial_r(\bar\omega_\ell-g_R)
+&amp;=\frac{\Psi_{rr}}s-\frac{2\Psi_r}{s^2}+\frac{2\Psi}{s^3},\\
+\partial_z(\bar\omega_\ell-g_R)
+&amp;=\frac{\Psi_{rz}}s-\frac{\Psi_z}{s^2}.
+\end{split}
+\tag{EX6}
+\]">\[
+\begin{split}
+\partial_r(\bar\omega_\ell-g_R)
+&amp;=\frac{\Psi_{rr}}s-\frac{2\Psi_r}{s^2}+\frac{2\Psi}{s^3},\\
+\partial_z(\bar\omega_\ell-g_R)
+&amp;=\frac{\Psi_{rz}}s-\frac{\Psi_z}{s^2}.
+\end{split}
+\tag{EX6}
+\]</span>
+<p>Equivalently, the exact vector is <span class="math" data-tex="\(s^{-1}(\Psi_{rr},\Psi_{rz})-s^{-2}(2\Psi_r,\Psi_z)+s^{-3}(2\Psi,0)\)">\(s^{-1}(\Psi_{rr},\Psi_{rz})-s^{-2}(2\Psi_r,\Psi_z)+s^{-3}(2\Psi,0)\)</span>. Its support is <span class="math" data-tex="\(B_R\)">\(B_R\)</span>, and <span class="math" data-tex="\(s\geq\ell-R\)">\(s\geq\ell-R\)</span> there. The triangle inequality gives</p>
+<span class="math math-display" data-tex="\[
+\|\nabla(\bar\omega_\ell-g_R)\|_\infty
+\leq\frac{\|\nabla\Psi_r\|_\infty}{\ell-R}
++\frac{\|(2\Psi_r,\Psi_z)\|_\infty}{(\ell-R)^2}
++\frac{2\|\Psi\|_\infty}{(\ell-R)^3}
+=:G_\ell.
+\tag{EX7}
+\]">\[
+\|\nabla(\bar\omega_\ell-g_R)\|_\infty
+\leq\frac{\|\nabla\Psi_r\|_\infty}{\ell-R}
++\frac{\|(2\Psi_r,\Psi_z)\|_\infty}{(\ell-R)^2}
++\frac{2\|\Psi\|_\infty}{(\ell-R)^3}
+=:G_\ell.
+\tag{EX7}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\|\nabla\bar\omega_\ell\|_\infty\leq\|\nabla g_R\|_\infty+G_\ell\)">\(\|\nabla\bar\omega_\ell\|_\infty\leq\|\nabla g_R\|_\infty+G_\ell\)</span>. Substitution in the exact two-term coupling difference proves</p>
+<span class="math math-display" data-tex="\[
+\|E_\ell K_\ell^{\rm op}P_\ell-K_\infty^{\rm op}\|
+\leq\varepsilon_\ell(\|\nabla g_R\|_\infty+G_\ell)
++C^{(2)}_{R,h}G_\ell.
+\tag{EX8}
+\]">\[
+\|E_\ell K_\ell^{\rm op}P_\ell-K_\infty^{\rm op}\|
+\leq\varepsilon_\ell(\|\nabla g_R\|_\infty+G_\ell)
++C^{(2)}_{R,h}G_\ell.
+\tag{EX8}
+\]</span>
+<p>Every derivative, sign and original curvature power has first appeared in EX6; the norm estimate follows from those complete terms. This supplies a directly usable finite bound in RT21. Convergence of the two velocity receivers alone would omit the last term of EX8.</p>
+<h3 id="exercise-4-compute-the-force-that-holds-the-actual-corrected-ring-stationary">Exercise 4. Compute the force that holds the actual corrected ring stationary</h3>
+<p>Retain the original planar steady pressure <span class="math" data-tex="\(p_R\)">\(p_R\)</span> and all constants in it. Compute the full three-dimensional stationary Euler force for the corrected ring, then compute the additional force needed at any fixed original viscosity <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>. Finally retain a positive amplitude prefactor <span class="math" data-tex="\(\beta\)">\(\beta\)</span> without changing time or coordinates.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(U=(-\Psi_z,\Psi_r)\)">\(U=(-\Psi_z,\Psi_r)\)</span>, <span class="math" data-tex="\(v=(0,\Psi/s)\)">\(v=(0,\Psi/s)\)</span>, so <span class="math" data-tex="\(V_\ell=U+v\)">\(V_\ell=U+v\)</span>. The exact planar steady identity is <span class="math" data-tex="\(U\cdot\nabla U+\nabla p_R=0\)">\(U\cdot\nabla U+\nabla p_R=0\)</span>. The no-swirl three-dimensional convective components equal the meridional directional derivatives; there is no azimuthal centrifugal term because that velocity component is identically zero. Consequently the complete force before evaluating any cancellation is</p>
+<span class="math math-display" data-tex="\[
+\bar f_\ell^{E}=U\cdot\nabla v+v\cdot\nabla U+v\cdot\nabla v.
+\tag{EX9}
+\]">\[
+\bar f_\ell^{E}=U\cdot\nabla v+v\cdot\nabla U+v\cdot\nabla v.
+\tag{EX9}
+\]</span>
+<p>Its radial component is <span class="math" data-tex="\(-\Psi\Psi_{zz}/s\)">\(-\Psi\Psi_{zz}/s\)</span>. Its vertical component, with all four differentiations displayed, is</p>
+<span class="math math-display" data-tex="\[
+-\Psi_z\left(\frac{\Psi_r}s-\frac{\Psi}{s^2}\right)
++\frac{\Psi_r\Psi_z}s+\frac{\Psi\Psi_{rz}}s+\frac{\Psi\Psi_z}{s^2}
+=\frac{\Psi\Psi_{rz}}s+\frac{2\Psi\Psi_z}{s^2}.
+\tag{EX10}
+\]">\[
+-\Psi_z\left(\frac{\Psi_r}s-\frac{\Psi}{s^2}\right)
++\frac{\Psi_r\Psi_z}s+\frac{\Psi\Psi_{rz}}s+\frac{\Psi\Psi_z}{s^2}
+=\frac{\Psi\Psi_{rz}}s+\frac{2\Psi\Psi_z}{s^2}.
+\tag{EX10}
+\]</span>
+<p>Both expressions are smooth and supported in the same meridian disk. In Cartesian space they yield a smooth compact toroidal force; the whole ring stays away from the axis. For example the exact displayed components imply</p>
+<span class="math math-display" data-tex="\[
+\|\bar f_\ell^E\|_\infty
+\leq\frac{\|\Psi\|_\infty\|(-\Psi_{zz},\Psi_{rz})\|_\infty}{\ell-R}
++\frac{2\|\Psi\|_\infty\|\Psi_z\|_\infty}{(\ell-R)^2}.
+\tag{EX11}
+\]">\[
+\|\bar f_\ell^E\|_\infty
+\leq\frac{\|\Psi\|_\infty\|(-\Psi_{zz},\Psi_{rz})\|_\infty}{\ell-R}
++\frac{2\|\Psi\|_\infty\|\Psi_z\|_\infty}{(\ell-R)^2}.
+\tag{EX11}
+\]</span>
+<p>For the original Navier–Stokes equation
+<span class="math" data-tex="\(\partial_tu+u\cdot\nabla u+\nabla p=\nu\Delta u+f\)">\(\partial_tu+u\cdot\nabla u+\nabla p=\nu\Delta u+f\)</span>, the full force is</p>
+<span class="math math-display" data-tex="\[
+\bar f_\ell^\nu=\bar f_\ell^E-\nu\Delta_{3d}\bar u_\ell.
+\tag{EX12}
+\]">\[
+\bar f_\ell^\nu=\bar f_\ell^E-\nu\Delta_{3d}\bar u_\ell.
+\tag{EX12}
+\]</span>
+<p>Writing <span class="math" data-tex="\(g_R=\Psi_{rr}+\Psi_{zz}\)">\(g_R=\Psi_{rr}+\Psi_{zz}\)</span>, the full cylindrical vector Laplacian has components</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+(\Delta_{3d}\bar u_\ell)^r
+&amp;=(\partial_r^2+s^{-1}\partial_r+\partial_z^2-s^{-2})(-\Psi_z)
+=-(g_R)_z-\frac{\Psi_{rz}}s+\frac{\Psi_z}{s^2},\\
+(\Delta_{3d}\bar u_\ell)^z
+&amp;=(\partial_r^2+s^{-1}\partial_r+\partial_z^2)(\Psi_r+\Psi/s)
+=(g_R)_r+\frac{\Psi_{rr}+g_R}s-\frac{\Psi_r}{s^2}+\frac{\Psi}{s^3}.
+\end{split}
+\tag{EX13}
+\]">\[
+\begin{split}
+(\Delta_{3d}\bar u_\ell)^r
+&amp;=(\partial_r^2+s^{-1}\partial_r+\partial_z^2-s^{-2})(-\Psi_z)
+=-(g_R)_z-\frac{\Psi_{rz}}s+\frac{\Psi_z}{s^2},\\
+(\Delta_{3d}\bar u_\ell)^z
+&amp;=(\partial_r^2+s^{-1}\partial_r+\partial_z^2)(\Psi_r+\Psi/s)
+=(g_R)_r+\frac{\Psi_{rr}+g_R}s-\frac{\Psi_r}{s^2}+\frac{\Psi}{s^3}.
+\end{split}
+\tag{EX13}
+\]</span>
+<p>Thus the complete original-viscosity force is</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+(\bar f_\ell^\nu)^r
+&amp;=-\frac{\Psi\Psi_{zz}}s+\nu(g_R)_z+\nu\frac{\Psi_{rz}}s-\nu\frac{\Psi_z}{s^2},\\
+(\bar f_\ell^\nu)^z
+&amp;=\frac{\Psi\Psi_{rz}}s+\frac{2\Psi\Psi_z}{s^2}
+-\nu(g_R)_r-\nu\frac{\Psi_{rr}+g_R}s
++\nu\frac{\Psi_r}{s^2}-\nu\frac{\Psi}{s^3}.
+\end{split}
+\tag{EX14}
+\]">\[
+\begin{split}
+(\bar f_\ell^\nu)^r
+&amp;=-\frac{\Psi\Psi_{zz}}s+\nu(g_R)_z+\nu\frac{\Psi_{rz}}s-\nu\frac{\Psi_z}{s^2},\\
+(\bar f_\ell^\nu)^z
+&amp;=\frac{\Psi\Psi_{rz}}s+\frac{2\Psi\Psi_z}{s^2}
+-\nu(g_R)_r-\nu\frac{\Psi_{rr}+g_R}s
++\nu\frac{\Psi_r}{s^2}-\nu\frac{\Psi}{s^3}.
+\end{split}
+\tag{EX14}
+\]</span>
+<p>The leading diffusion contributions <span class="math" data-tex="\(\nu(g_R)_z\)">\(\nu(g_R)_z\)</span> and <span class="math" data-tex="\(-\nu(g_R)_r\)">\(-\nu(g_R)_r\)</span> survive the large-ring comparison. They cannot be hidden inside the small Euler force. Both the Euler and viscous force identities keep <span class="math" data-tex="\(\bar p_\ell=p_R(\sqrt{r^2+z^2})\)">\(\bar p_\ell=p_R(\sqrt{r^2+z^2})\)</span>, including its original additive constant.</p>
+<p>For <span class="math" data-tex="\(\bar u_{\ell,\beta}=\beta\bar u_\ell\)">\(\bar u_{\ell,\beta}=\beta\bar u_\ell\)</span>, choose the complete background pressure <span class="math" data-tex="\(\bar p_{\ell,\beta}=\beta^2\bar p_\ell\)">\(\bar p_{\ell,\beta}=\beta^2\bar p_\ell\)</span>. Direct substitution, with the original <span class="math" data-tex="\(\nu\)">\(\nu\)</span> unchanged, gives</p>
+<span class="math math-display" data-tex="\[
+\bar f_{\ell,\beta}^{\nu}
+=\beta^2\bar f_\ell^E-\nu\beta\Delta_{3d}\bar u_\ell.
+\tag{EX15}
+\]">\[
+\bar f_{\ell,\beta}^{\nu}
+=\beta^2\bar f_\ell^E-\nu\beta\Delta_{3d}\bar u_\ell.
+\tag{EX15}
+\]</span>
+<p>The Euler linearized generator scales by <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, hence its actual eigenvalue by <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, while the physical eigenvector may be kept fixed and its perturbation pressure scales by <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. The viscous term keeps <span class="math" data-tex="\(\nu\Delta\)">\(\nu\Delta\)</span>, so this Euler identity alone does not prove viscous spectral persistence. This exact comparison identifies the next calculation rather than assuming that missing result.</p>
+<h3 id="exercise-5-preserve-the-whole-algebraic-spectral-count-not-only-one-mode">Exercise 5. Preserve the whole algebraic spectral count, not only one mode</h3>
+<p>Show that the contour projections in RT26 converge in operator norm and eventually have equal finite rank. Retain the original circle and all its enclosed algebraic multiplicity. Explain which extra estimate is needed beyond strong resolvent convergence.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(\operatorname{Re}\lambda\geq a\)">\(\operatorname{Re}\lambda\geq a\)</span>, the adjoint of the transport resolvent has the exact integral</p>
+<span class="math math-display" data-tex="\[
+(R_\ell^0(\lambda))^*f
+=\int_0^\infty e^{-\overline\lambda t}T_\ell(-t)f\,dt.
+\tag{EX16}
+\]">\[
+(R_\ell^0(\lambda))^*f
+=\int_0^\infty e^{-\overline\lambda t}T_\ell(-t)f\,dt.
+\tag{EX16}
+\]</span>
+<p>The same RT13 estimate holds at negative times, and the groups remain unitary. Splitting this integral at <span class="math" data-tex="\(T\)">\(T\)</span> therefore proves the same strong estimate RT14–RT15 for the adjoint difference. By the finite-rank construction of RT16 applied to <span class="math" data-tex="\(K^*\)">\(K^*\)</span>, there is an explicit bound tending to zero,</p>
+<span class="math math-display" data-tex="\[
+\sup_{\operatorname{Re}\lambda\geq a}
+\|K(R_\ell^0-R_\infty^0)(\lambda)\|
+=\sup_{\operatorname{Re}\lambda\geq a}
+\|(R_\ell^0-R_\infty^0)(\lambda)^*K^*\|
+\leq\widetilde\Delta_\ell\longrightarrow0.
+\tag{EX17}
+\]">\[
+\sup_{\operatorname{Re}\lambda\geq a}
+\|K(R_\ell^0-R_\infty^0)(\lambda)\|
+=\sup_{\operatorname{Re}\lambda\geq a}
+\|(R_\ell^0-R_\infty^0)(\lambda)^*K^*\|
+\leq\widetilde\Delta_\ell\longrightarrow0.
+\tag{EX17}
+\]</span>
+<p>Explicitly, if <span class="math" data-tex="\(K^*=\sum_{j=1}^{\widetilde m}\widetilde g_j\widetilde\alpha_j+E\)">\(K^*=\sum_{j=1}^{\widetilde m}\widetilde g_j\widetilde\alpha_j+E\)</span> with <span class="math" data-tex="\(\|E\|\leq\widetilde\eta\)">\(\|E\|\leq\widetilde\eta\)</span> and compact smooth <span class="math" data-tex="\(\widetilde g_j\)">\(\widetilde g_j\)</span>, then
+<span class="math" data-tex="\(\widetilde\Delta_\ell=2\widetilde\eta/a+\sum_j\|\widetilde\alpha_j\|W_{\ell,\widetilde T,a}(\widetilde g_j)\)">\(\widetilde\Delta_\ell=2\widetilde\eta/a+\sum_j\|\widetilde\alpha_j\|W_{\ell,\widetilde T,a}(\widetilde g_j)\)</span>. Choose <span class="math" data-tex="\(\widetilde\eta\)">\(\widetilde\eta\)</span>, then <span class="math" data-tex="\(\widetilde T\)">\(\widetilde T\)</span>, then <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, exactly as before. This is the additional compact-left estimate; compactness with strong convergence on the wrong side would not prove it.</p>
+<p>For the reference resolvent retain the exact correction</p>
+<span class="math math-display" data-tex="\[
+R_{A_\ell}-R_\ell^0
+=D_\ell^{-1}R_\ell^0K R_\ell^0.
+\tag{EX18}
+\]">\[
+R_{A_\ell}-R_\ell^0
+=D_\ell^{-1}R_\ell^0K R_\ell^0.
+\tag{EX18}
+\]</span>
+<p>The three-factor difference inside this expression is exactly
+<span class="math" data-tex="\((R_\ell^0-R_\infty^0)K R_\ell^0+R_\infty^0K(R_\ell^0-R_\infty^0)\)">\((R_\ell^0-R_\infty^0)K R_\ell^0+R_\infty^0K(R_\ell^0-R_\infty^0)\)</span>. Its norm is at most <span class="math" data-tex="\((\Delta_\ell+\widetilde\Delta_\ell)/a\)">\((\Delta_\ell+\widetilde\Delta_\ell)/a\)</span>. Also RT18–RT20 give
+<span class="math" data-tex="\(\|D_\ell^{-1}-D_\infty^{-1}\|\leq2H_*^2\Delta_\ell\)">\(\|D_\ell^{-1}-D_\infty^{-1}\|\leq2H_*^2\Delta_\ell\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\|(R_{A_\ell}-R_\ell^0)-(R_{L_\infty}-R_\infty^0)\|
+\leq\frac{2H_*}{a}(\Delta_\ell+\widetilde\Delta_\ell)
++\frac{2H_*^2\|K\|}{a^2}\Delta_\ell
+\quad(\lambda\in\Gamma).
+\tag{EX19}
+\]">\[
+\|(R_{A_\ell}-R_\ell^0)-(R_{L_\infty}-R_\infty^0)\|
+\leq\frac{2H_*}{a}(\Delta_\ell+\widetilde\Delta_\ell)
++\frac{2H_*^2\|K\|}{a^2}\Delta_\ell
+\quad(\lambda\in\Gamma).
+\tag{EX19}
+\]</span>
+<p>Each transport resolvent is holomorphic throughout the original circle's disk because its real part is positive. Their contour integrals are zero. Combining EX19 with the full remaining perturbation bound RT22 proves</p>
+<span class="math math-display" data-tex="\[
+\|\mathcal P_\ell-\mathcal P_\infty\|
+\leq\rho\left[
+2B_*^2d_\ell^{\rm rem}
++\frac{2H_*}{a}(\Delta_\ell+\widetilde\Delta_\ell)
++\frac{2H_*^2\|K\|}{a^2}\Delta_\ell\right]
+\longrightarrow0.
+\tag{EX20}
+\]">\[
+\|\mathcal P_\ell-\mathcal P_\infty\|
+\leq\rho\left[
+2B_*^2d_\ell^{\rm rem}
++\frac{2H_*}{a}(\Delta_\ell+\widetilde\Delta_\ell)
++\frac{2H_*^2\|K\|}{a^2}\Delta_\ell\right]
+\longrightarrow0.
+\tag{EX20}
+\]</span>
+<p>This preserves the full nonorthogonal projection and its original contour constants; it does not replace it by an orthogonal spectral projection. Both projections have finite rank by the complete compact-contour argument RT6, which also applies if the circle encloses several isolated eigenvalues: the base resolvent is holomorphic throughout the disk, the correction is compact, and the same nested-contour identity proves idempotence.</p>
+<p>Choose <span class="math" data-tex="\(\ell\)">\(\ell\)</span> large enough that the right side of EX20 is less than one. If <span class="math" data-tex="\(v\in\operatorname{ran}\mathcal P_\infty\)">\(v\in\operatorname{ran}\mathcal P_\infty\)</span> and <span class="math" data-tex="\(\mathcal P_\ell v=0\)">\(\mathcal P_\ell v=0\)</span>, then
+<span class="math" data-tex="\(\|v\|=\|(\mathcal P_\infty-\mathcal P_\ell)v\|&lt;\|v\|\)">\(\|v\|=\|(\mathcal P_\infty-\mathcal P_\ell)v\|&lt;\|v\|\)</span> unless <span class="math" data-tex="\(v=0\)">\(v=0\)</span>. Thus <span class="math" data-tex="\(\mathcal P_\ell\)">\(\mathcal P_\ell\)</span> injects that finite-dimensional range into <span class="math" data-tex="\(\operatorname{ran}\mathcal P_\ell\)">\(\operatorname{ran}\mathcal P_\ell\)</span>. Interchanging the two projections proves the reverse dimension inequality. Hence</p>
+<span class="math math-display" data-tex="\[
+\dim\operatorname{ran}\mathcal P_\ell
+=\dim\operatorname{ran}\mathcal P_\infty.
+\tag{EX21}
+\]">\[
+\dim\operatorname{ran}\mathcal P_\ell
+=\dim\operatorname{ran}\mathcal P_\infty.
+\tag{EX21}
+\]</span>
+<p>The finite-dimensional restriction of each full generator to its contour range has exactly the enclosed eigenvalues. For each such point, the finite generalized eigenspace is the whole corresponding full generalized eigenspace by the telescoping resolvent argument of RT6. The primary decomposition of a finite matrix, obtained by the relatively prime factors of its characteristic polynomial and their Bézout identity, splits the contour range into these generalized eigenspaces. Thus EX21 is equality of the entire enclosed algebraic spectral count, allowing eigenvalue splitting and nontrivial Jordan blocks. It strengthens RT27 without claiming individual eigenvalues stay simple or that their numerical values are known.</p>
+<p>Strong convergence alone would not suffice for this conclusion: on a Hilbert space with an orthonormal sequence <span class="math" data-tex="\(e_0,e_1,\ldots\)">\(e_0,e_1,\ldots\)</span>, the projections onto <span class="math" data-tex="\(\operatorname{span}\{e_0,e_n\}\)">\(\operatorname{span}\{e_0,e_n\}\)</span> converge strongly to the projection onto <span class="math" data-tex="\(\operatorname{span}\{e_0\}\)">\(\operatorname{span}\{e_0\}\)</span>, since the <span class="math" data-tex="\(n\)">\(n\)</span>-th coefficient of every square-summable sequence tends to zero, while their ranks remain two. The exact compact-left estimate EX17 and the full contour computation EX18–EX20 supply the missing operation here.</p>
+<h2 id="continue-to-the-original-viscous-spectral-transfer">Continue to the original viscous spectral transfer</h2>
+<p>The actual compact planar instability now has a complete three-dimensional
+ring receiver. Its growing spectral space survives with its whole enclosed
+algebraic count. The pressure, physical-volume map, axis condition and
+stationary background force are all explicit. The eigenvorticity is compact
+and square-integrable; the velocity has the proved full physical Sobolev
+regularity. No stronger eigenmode regularity has been assumed.</p>
+<p>The next calculation must retain the source amplitude prefactor, original
+viscosity and self-similar dilation, and prove the full viscous domain and
+spectral transfer before constructing the nonlinear forced Leray solutions.
+The later smooth-forcing, Alpöge–Buckmaster, OpenAI and workbench lessons
+remain part of the assigned series.</p>
+</article><nav aria-label="Lesson sequence"><a href="NS-FLUID-31.html">Previous lesson</a></nav></main><footer>Mathematical text: CC0 1.0. Cited works and reader software retain their respective terms.</footer></body></html>

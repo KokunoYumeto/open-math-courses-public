@@ -6,7 +6,7 @@ The sublinear imaginary-root growth is absorbed by small-Gevrey Fourier decay. W
 
 Read [Principal roots and uniform time kernels](principal-roots-and-time-kernels.md), [Small Gevrey classes and compact Fourier decay](small-gevrey-and-compact-fourier-decay.md), [Compact Cauchy data and local coherence](compact-cauchy-data-and-local-coherence.md).
 
-One prerequisite remains planned in [Distributions, kernels and analytic singularities](../prerequisites/planned-foundation-proofs.html): a distribution solving an analytic-coefficient equation and vanishing on one side of a noncharacteristic \(C^1\) surface vanishes near that surface. The uses of this Holmgren theorem below are conditional on that planned proof.
+The local distributional Holmgren theorem is proved in [Analytic coefficients and one-sided uniqueness](../AN02-L191.html#3-a-continuously-differentiable-surface-needs-no-analytic-flattening), Theorem 3.2: a distribution solving an analytic-coefficient equation and vanishing on one side of a noncharacteristic \(C^1\) surface vanishes near that surface. The uses of the Holmgren theorem draw on that complete proof.
 
 Basic references are Grubb's *Distributions and Operators* ([author's lecture notes](https://web.math.ku.dk/~grubb/distribution.htm)), Melrose's *Differential Analysis* and Hörmander's *The Analysis of Linear Partial Differential Operators*. The proofs below use the linked prerequisite lessons and the stated planned results.
 
@@ -28,7 +28,7 @@ P(D)u=f,\\
 \end{gathered}
 \tag{2}
 \]
-For \(m=1\), the upper endpoint means infinity. The solution is unique among global \(C^m\) solutions, relative to the declared Holmgren input, and no growth condition is imposed.
+For \(m=1\), the upper endpoint means infinity. The solution is unique among global \(C^m\) solutions, using the available Holmgren theorem, and no growth condition is imposed.
 
 Choose orthogonal coordinates \((y,t)\) with \(t=x\cdot N/|N|\). Then \(\langle D,N\rangle=|N|D_t\), so the prescribed \(D_t\)-data are \(g_k=|N|^{-k}\phi_k\). Hyperbolicity is invariant under this positive normal rescaling. Affine closure of the small class preserves the prescribed order. Write
 \[
@@ -166,7 +166,7 @@ The kernel coefficient \(K^{j-1-r}\) is included in the \(L^{\ell-r}\) choice in
 
 ## A sufficient finite-speed cone
 
-**Lemma 3, relative to Holmgren.** There is \(L>0\), depending only on the principal part, with the following property. Let \(T>0\) and let \(w\in C^m\) solve \(P(D)w=0\) on a neighborhood of the closed backward cone
+**Lemma 3, using the available Holmgren theorem.** There is \(L>0\), depending only on the principal part, with the following property. Let \(T>0\) and let \(w\in C^m\) solve \(P(D)w=0\) on a neighborhood of the closed backward cone
 \[
 \begin{gathered}
 \mathcal K=\{(y,t):0\le t\le T,\\
@@ -193,7 +193,7 @@ It has time derivative 1 and \(|\nabla_yh_e|<1/L\), so every level surface is no
 
 Extend \(w\) by zero to \(t<0\) locally along the entire enlarged base ball. The zero-trace calculation ([equation 3 in Compact Cauchy data and local coherence](compact-cauchy-data-and-local-coherence.md)) makes this distribution solve the homogeneous equation across the plane wherever that extension is used. Consider the open region with \(|y-y_0|<LT'\), \(t>-\rho\), \(t<T'\), and \(h_e<T'\), for a sufficiently small fixed \(\rho>0\). For positive times it lies in the enlarged cone; for negative times the extension is zero. The equation holds there, including along its plane section.
 
-Suppose the apex belongs to the support of this distribution. Its value of \(h_e\) is \(T+e/L<T'\). The support intersected with the sublevel \(h_e\le T+e/L\) is nonempty and compact inside this open region: support is absent at negative times, and the sublevel bounds \(t\) and the spatial radius strictly below the region's upper and lateral boundaries. Thus \(h_e\) has a minimum at a support point \(p\). In a neighborhood of \(p\), the distribution is zero on the side \(h_e<h_e(p)\). The level surface through \(p\) is \(C^\infty\) and noncharacteristic. The exact planned distributional Holmgren theorem makes the distribution zero near \(p\), contradicting its membership in the support. The apex is not in the support, proving local vanishing.
+Suppose the apex belongs to the support of this distribution. Its value of \(h_e\) is \(T+e/L<T'\). The support intersected with the sublevel \(h_e\le T+e/L\) is nonempty and compact inside this open region: support is absent at negative times, and the sublevel bounds \(t\) and the spatial radius strictly below the region's upper and lateral boundaries. Thus \(h_e\) has a minimum at a support point \(p\). In a neighborhood of \(p\), the distribution is zero on the side \(h_e<h_e(p)\). The level surface through \(p\) is \(C^\infty\) and noncharacteristic. The exact available distributional Holmgren theorem makes the distribution zero near \(p\), contradicting its membership in the support. The apex is not in the support, proving local vanishing.
 
 For the reversed-time problem replace \(t\) by \(-t\). Its principal roots have the same modulus bound, its leading coefficient remains nonzero, and the initial zero jets acquire only signs. The same proof applies with the same \(L\). \(\square\)
 

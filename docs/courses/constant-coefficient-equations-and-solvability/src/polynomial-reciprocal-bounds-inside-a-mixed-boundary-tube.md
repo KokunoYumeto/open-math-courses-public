@@ -6,7 +6,7 @@ Zero-freeness gives a reciprocal at each frequency. The boundary-kernel construc
 
 Read [Extending a boundary time strip to its propagation cone](extending-a-boundary-time-strip-to-its-propagation-cone.md), [Symbols at infinity](symbols-at-infinity.md). [Fourier transforms, finite spectra and convex separation](../prerequisites/prerequisite-bridges.html) supplies the Fourier convention and Gaussian formula; [Metric and topological foundations](../prerequisites/metric-foundation-bridges.html) supplies scalar calculus and cutoffs. [Polynomial and contour interfaces for stable boundary models](../prerequisites/stable-prerequisite-bridges.html) supplies finite scalar and polynomial algebra. 
 
-The general hyperbolic-cone and analytic zero-order theorems remain planned prerequisites, with precise statements in [Incoming normal roots at a flat boundary](incoming-normal-roots-at-a-flat-boundary.md). Their uses below are conditional on those proofs.
+The general hyperbolic-cone theorem is proved in [Real roots and their convex component](../AN02-L192.html#4-pass-to-multiple-roots-and-obtain-convexity), Theorem 4.1. The analytic zero-order theorem remains a planned prerequisite, with its precise statement in [Incoming normal roots at a flat boundary](incoming-normal-roots-at-a-flat-boundary.md). Only its uses remain conditional on that proof.
 
 Basic references are Grubb's *Distributions and Operators* ([author's lecture notes](https://web.math.ku.dk/~grubb/distribution.htm)), Melrose's *Differential Analysis* and Hörmander's treatment of constant-coefficient equations. The linked lessons supply the prerequisite proofs used below.
 
@@ -34,7 +34,7 @@ The buffer of one unit matters. Since \(N'\in\Sigma\), we have
 
 ## Finite polynomial descriptions of the selected objects
 
-We need the actual selected determinant, not merely a polynomial relation with all its algebraic branches. First the interior cone is semialgebraic. Divide the homogeneous principal polynomial by \(P_m(N)\) so its time-leading coefficient is one. The planned homogeneous-cone theorem states that its coefficients are real and that a real vector \(v\) belongs to \(\Gamma(P_m,N)\) exactly when all the roots of its time-line polynomial are real and strictly negative. Consequently
+We need the actual selected determinant, not merely a polynomial relation with all its algebraic branches. First the interior cone is semialgebraic. Divide the homogeneous principal polynomial by \(P_m(N)\) so its time-leading coefficient is one. The available homogeneous-cone theorem states that its coefficients are real and that a real vector \(v\) belongs to \(\Gamma(P_m,N)\) exactly when all the roots of its time-line polynomial are real and strictly negative. Consequently
 \[
 \begin{gathered}
 v\in\Gamma
@@ -47,7 +47,7 @@ v\in\Gamma
 \end{gathered}
 \tag{2}
 \]
-The coefficient identities are finitely many real polynomial equations. Repeated roots are permitted. [Symbols at infinity](symbols-at-infinity.md) projection makes \(\Gamma\) semialgebraic, and makes its real image \(\Omega=\pi\Gamma\) semialgebraic too. This uses the planned cone theorem at its stated scope; that theorem remains a planned prerequisite.
+The coefficient identities are finitely many real polynomial equations. Repeated roots are permitted. [Symbols at infinity](symbols-at-infinity.md) projection makes \(\Gamma\) semialgebraic, and makes its real image \(\Omega=\pi\Gamma\) semialgebraic too. This uses the available cone theorem at its stated scope, with the full proof in [Real roots and their convex component](../AN02-L192.html#4-pass-to-multiple-roots-and-obtain-convexity), Theorem 4.1.
 
 We next describe the graph of L on its original projected tube
 \(\mathcal T_{\tau_0}=\{\zeta':\operatorname{Im}\zeta'\in\tau_0N'-\Omega\}\).

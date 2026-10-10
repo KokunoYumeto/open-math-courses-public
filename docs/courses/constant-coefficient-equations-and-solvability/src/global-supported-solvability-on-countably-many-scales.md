@@ -6,7 +6,7 @@ The local theorem gives supported solutions with compact data. The approximation
 
 Read [Local supported solutions with the exact symbol gain](local-supported-solutions-with-exact-symbol-gain.md), [Supported smooth approximation](supported-smooth-approximation.md), [Local regularity, sharp embeddings, and compactness](local-regularity-and-compactness.md). [Fourier transforms, finite spectra and convex separation](../prerequisites/prerequisite-bridges.html) supplies Schwartz Fourier inversion; [Metric and topological foundations](../prerequisites/metric-foundation-bridges.html) supplies finite coordinates, scalar calculus and compact cutoffs; [Banach estimates, quotient spaces and compact parameter arguments](../prerequisites/banach-foundation-bridges.html) supplies the norm, extension and integration estimates. [Tensor products and smooth parameters](../prerequisites/tensor-products-and-parameters.html) and [Convolution as addition of supports](../prerequisites/convolution-as-addition-of-supports.html) supply parameter pairings and compact convolution.
 
-One prerequisite remains planned in [Distributions, kernels and analytic singularities](../prerequisites/planned-foundation-proofs.html): a distribution solving an analytic-coefficient equation and vanishing on one side of a noncharacteristic \(C^1\) surface vanishes near that surface. The uses of this Holmgren theorem are conditional on that planned proof.
+The local distributional Holmgren theorem is proved in [Analytic coefficients and one-sided uniqueness](../AN02-L191.html#3-a-continuously-differentiable-surface-needs-no-analytic-flattening), Theorem 3.2: a distribution solving an analytic-coefficient equation and vanishing on one side of a noncharacteristic \(C^1\) surface vanishes near that surface. The uses of the Holmgren theorem draw on that complete proof.
 
 Basic references are Grubb's *Distributions and Operators* ([author's lecture notes](https://web.math.ku.dk/~grubb/distribution.htm)), Melrose's *Differential Analysis* and Hörmander's *The Analysis of Linear Partial Differential Operators*. The proofs use the linked prerequisite lessons and any stated planned theorem.
 
@@ -24,7 +24,7 @@ Let \(P\ne0\) satisfy the analytic-root condition([equation 1 in Local supported
 \]
 These spaces have all their compact-cutoff seminorms.
 
-**Theorem, relative to the declared Holmgren theorem.** If \(f\in\mathcal F\) and \(\operatorname{supp}f\subset H\), then there is \(u\in\mathcal G\) with
+**Theorem, using the available Holmgren theorem.** If \(f\in\mathcal F\) and \(\operatorname{supp}f\subset H\), then there is \(u\in\mathcal G\) with
 \[
                P(D)u=f\text{ on }\mathbb R^n,\qquad
                             \operatorname{supp}u\subset H.
@@ -72,7 +72,7 @@ This permits \(p_m(N)=0\). The coefficient of \(N^j\) must be strictly positive.
 
 **Lemma.** Let \(\mu\in\mathcal E'(\mathbb R^n)\), and suppose \(P(-D)\mu=0\) in
 \(W_j(a)=\{t>0,\ y\cdot N^j>a\}\).
-Then \(\mu=0\) in \(W_j(a)\), relative to the declared local Holmgren theorem.
+Then \(\mu=0\) in \(W_j(a)\), using the available local Holmgren theorem.
 
 **Proof.** If a support point \(y_0\) lies there, write \(\ell(y)=y\cdot N^j\), and take \(T\ge1\) above every positive time coordinate in the compact support. Choose \(\delta>0\) so small that
 \[
@@ -243,7 +243,7 @@ This solution has finite order. Choose any integer \(a\) with \(2a>r+n/2\). For 
 \]
 The second norm is finite with this uniform derivative order because the decay exponent \(2a-r\) exceeds \(n/2\); its fixed-support bound is the compact volume times the indicated derivative bound. Thus \(2a\) is a global finite order, even though \(C_K\) may vary. The solution retains support in \(H\).
 
-In particular apply this result to \(\delta_0\), which has order zero and support in \(H\). It produces a global finite-order fundamental distribution supported in \(H\). Consequently this proof establishes the sufficient implications from the root condition to the weighted local solvability, finite-order solvability and supported fundamental-solution clauses of [the five-way theorem](analytic-root-barriers-and-supported-solvability.md), relative to the one planned Holmgren theorem. It does not establish the reverse necessary root implication.
+In particular apply this result to \(\delta_0\), which has order zero and support in \(H\). It produces a global finite-order fundamental distribution supported in \(H\). Consequently this proof establishes the sufficient implications from the root condition to the weighted local solvability, finite-order solvability and supported fundamental-solution clauses of [the five-way theorem](analytic-root-barriers-and-supported-solvability.md), using the available Holmgren theorem. It does not establish the reverse necessary root implication.
 
 ## Exercises with complete solutions
 

@@ -6,7 +6,7 @@ Compact Cauchy data allow a cutoff only where the solution is already zero. Slab
 
 Read [Uniqueness in a slab with bounded support](bounded-support-slab-uniqueness.md), [Cauchy data, regularity and spacelike initial surfaces](cauchy-data-regularity-and-spacelike-initial-surfaces.md).
 
-One prerequisite remains planned in [Distributions, kernels and analytic singularities](../prerequisites/planned-foundation-proofs.html): a distribution solving an analytic-coefficient equation and vanishing on one side of a noncharacteristic \(C^1\) surface vanishes near that surface. The uses of this Holmgren theorem below are conditional on that planned proof.
+The local distributional Holmgren theorem is proved in [Analytic coefficients and one-sided uniqueness](../AN02-L191.html#3-a-continuously-differentiable-surface-needs-no-analytic-flattening), Theorem 3.2: a distribution solving an analytic-coefficient equation and vanishing on one side of a noncharacteristic \(C^1\) surface vanishes near that surface. The uses of the Holmgren theorem draw on that complete proof.
 
 Basic references are Grubb's *Distributions and Operators* ([author's lecture notes](https://web.math.ku.dk/~grubb/distribution.htm)), Melrose's *Differential Analysis* and Hörmander's *The Analysis of Linear Partial Differential Operators*. The proofs below use the linked prerequisite lessons and the stated planned results.
 
@@ -32,7 +32,7 @@ Such coordinates follow from any real complementary frequency basis with last co
 \end{gathered}
 \tag{2}
 \]
-on an open part of the plane. Then \(u=0\) in a one-sided neighborhood of each point of that part, relative to the stated Holmgren theorem. The analogous assertion holds for \(t\le0\), and for a two-sided \(C^m\) solution.
+on an open part of the plane. Then \(u=0\) in a one-sided neighborhood of each point of that part, using the available Holmgren theorem. The analogous assertion holds for \(t\le0\), and for a two-sided \(C^m\) solution.
 
 **Proof.** Locally extend the function by zero to \(t<0\), calling the resulting distribution \(u_+\). Repeated one-dimensional integration by parts gives
 \[
@@ -48,7 +48,7 @@ D_t^\ell u_+
 \]
 The sum is empty for \(\ell=0\); \(\delta^{(a)}\) means an ordinary distributional derivative. To verify it, the first derivative is \(D_tu_+=(D_tu)_+-iu(y,0)\delta\). Apply this first-derivative identity to the interior derivative in each inductive step and differentiate the existing boundary terms with \(D_t=-i\partial_t\). A new \(a=0\) term appears and the old \(a\)-terms move to \(a+1\) with exactly one additional \(-i\). This proves (3) for all \(\ell\le m\).
 
-Every trace in its sum is zero by (2). Tangential application of \(A_\ell(D_y)\) introduces no new boundary term and leaves a zero trace zero. It is legitimate at the stated regularity: the operator has order at most \(m-\ell\), while the trace has \(m-(\ell-1-a)\) continuous tangential derivatives. Thus \(P(D)u_+=(P(D)u)_+=0\). This distribution vanishes on the negative side of the noncharacteristic plane. The exact planned Holmgren theorem makes it vanish near that plane; restriction to the positive side proves the assertion.
+Every trace in its sum is zero by (2). Tangential application of \(A_\ell(D_y)\) introduces no new boundary term and leaves a zero trace zero. It is legitimate at the stated regularity: the operator has order at most \(m-\ell\), while the trace has \(m-(\ell-1-a)\) continuous tangential derivatives. Thus \(P(D)u_+=(P(D)u)_+=0\). This distribution vanishes on the negative side of the noncharacteristic plane. The exact available Holmgren theorem makes it vanish near that plane; restriction to the positive side proves the assertion.
 
 Replacing \(t\) by \(-t\) proves the negative-side version: the new principal value is \((-1)^mP_m(N)\ne0\), and the zero trace condition is unchanged. For a two-sided solution apply both versions. Their local neighborhoods intersect in a full neighborhood of the plane point, on which the original solution is zero. \(\square\)
 

@@ -13,7 +13,7 @@ We also use polynomial factorization and Vieta, Rouché's theorem, the maximum p
 
 Write \(P=\sum_{j=0}^mP_j\), with \(P_j\) homogeneous of degree \(j\), and retain arbitrary complex coefficients. For nonzero real \(N\), hyperbolicity means \(P_m(N)\ne0\) and \(P(\xi+i\tau N)\ne0\) for every real \(\xi\) and every real \(\tau<\tau_0\), for one fixed \(\tau_0\). No assumption of real lower order coefficients is introduced.
 
-[Cauchy bounds, root counts and analytic extensions](cauchy-bounds-and-root-counts.md), Sections 1–2, proves the Cauchy estimates, maximum modulus and persistent root counts. The homogeneous cone theorem and analytic zero-strip order theorem specified below are planned prerequisites of [Distributions, kernels and analytic singularities](../prerequisites/planned-foundation-proofs.html).
+[Cauchy bounds, root counts and analytic extensions](cauchy-bounds-and-root-counts.md), Sections 1–2, proves the Cauchy estimates, maximum modulus and persistent root counts. The homogeneous cone theorem is proved in [Real roots and their convex component](../AN02-L192.html#4-pass-to-multiple-roots-and-obtain-convexity), Theorem 4.1. The analytic zero-strip order theorem remains a planned prerequisite of [Distributions, kernels and analytic singularities](../prerequisites/planned-foundation-proofs.html).
 
 ## A barrier in both directions
 

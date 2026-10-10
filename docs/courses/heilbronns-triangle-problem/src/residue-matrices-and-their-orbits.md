@@ -54,7 +54,10 @@ For \(G\) uniform in \(\mathrm{SL}_3(R_h)\), the matrix \(GC\) is uniform on \(\
 \]
 *Counting.* The determinant is a homomorphism of \(\mathcal G\) onto \(R_h^\times\) (\(\det\operatorname{diag}(1,1,u)=u\)) with kernel \(\mathcal S=\mathrm{SL}_3(R_h)\); on \(\mathcal H\) it has image \(\det\mathcal H\) and kernel \(\mathcal H\cap\mathcal S\). By the orbit–stabilizer theorem for \(\mathcal G\) and for \(\mathcal S\),
 \[
-|\mathcal O_C|=\frac{|\mathcal S|}{|\mathcal H\cap\mathcal S|}=\frac{|\mathcal G|/|R_h^\times|}{|\mathcal H|/|\det\mathcal H|}=\frac{|\mathcal G|}{|\mathcal H|}\cdot\frac{|\det\mathcal H|}{|R_h^\times|}\geq\frac{|\mathcal G|}{D^3E^3}\cdot\frac Eh .
+\begin{aligned}
+|\mathcal O_C|&=\frac{|\mathcal S|}{|\mathcal H\cap\mathcal S|}=\frac{|\mathcal G|/|R_h^\times|}{|\mathcal H|/|\det\mathcal H|}\\
+&=\frac{|\mathcal G|}{|\mathcal H|}\cdot\frac{|\det\mathcal H|}{|R_h^\times|}\geq\frac{|\mathcal G|}{D^3E^3}\cdot\frac Eh .
+\end{aligned}
 \]
 A matrix over \(R_h\) is invertible exactly when its reduction modulo \(B\) is (its determinant is a unit exactly when it is not divisible by \(B\)), and each matrix over \(\mathbb F_B\) has \(B^{9(k-1)}\) preimages. Since \(|\mathrm{GL}_3(\mathbb F_B)|\) is \((B^3-1)(B^3-B)(B^3-B^2)\) and \(B\geq2\),
 \[
@@ -76,9 +79,9 @@ This proves (2.1).
 \]
 and if \(\theta<1\), then \(\mathbb E[D]\leq1+\sum_{j=1}^k\theta^j\leq1/(1-\theta)\).
 
-*Proof.* Every entry of \(C\) is a unit, since its lowest digit lies in \([1,L]\subseteq[1,B-1]\); so Lemma 1.1 applies. Condition, in addition, on the first column of \(C\) and on \(C_{12},C_{13}\). If \(b\geq j\), the minors \(C_{11}C_{iv}-C_{i1}C_{1v}\) vanish modulo \(B^j\) (Lemma 1.1(a)), that is
+*Proof.* Every entry of \(C\) is a unit, since its lowest digit lies in \([1,L]\subseteq[1,B-1]\); so Lemma 1.1 applies. Condition, in addition, on the first column of \(C\) and on \(C_{12},C_{13}\). If \(b\geq j\), the minors \(C_{11}C_{iv}-C_{i1}C_{1v}\) vanish modulo \(B^j\) (Lemma 1.1(a)), that is, for \(i,v\in\{2,3\}\),
 \[
-C_{iv}\equiv C_{i1}C_{11}^{-1}C_{1v}\pmod{B^j}\qquad(i,v\in\{2,3\}).
+C_{iv}\equiv C_{i1}C_{11}^{-1}C_{1v}\pmod{B^j}.
 \]
 The right sides are fixed by the conditioning. Since every digit lies in \([0,B-1]\), the residue of \(C_{iv}\) modulo \(B^j\) determines its digits \(d_{ivu}\), \(u<j\); each of these \(j\) independent digits takes a prescribed value with probability at most \(r/L\). The four entries \(C_{22},C_{23},C_{32},C_{33}\) use disjoint independent digits, so the probability of all four congruences is at most \((r/L)^{4j}\); averaging over the conditioning gives (3.1). Finally
 \[

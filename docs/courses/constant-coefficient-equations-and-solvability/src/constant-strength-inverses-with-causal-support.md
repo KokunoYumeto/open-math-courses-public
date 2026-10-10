@@ -6,7 +6,7 @@ Freezing coefficients gives a local inverse, but an arbitrary frozen inverse can
 
 Read [Freezing coefficients without losing strength](freezing-coefficients-and-constant-strength.md), [Measuring regularity with weighted Fourier spaces](weighted-fourier-spaces.md), [Rescaled symbols and stable strength](rescaled-symbols-and-stable-strength.md), [Causal fundamental solutions and lower order expansions](causal-fundamental-solutions-and-lower-order-expansions.md), [Local supported solutions with the exact symbol gain](local-supported-solutions-with-exact-symbol-gain.md), [Analytic root barriers and supported solvability](analytic-root-barriers-and-supported-solvability.md).
 
-The hyperbolic branch assumes the two analytic zero-order and homogeneous hyperbolic-cone theorems stated in the causal-kernel prerequisite. The support theorem's evolution branch uses only the necessary root-barrier implication. Its final component-stability remark separately assumes noncharacteristic Holmgren. These dependencies retain their stated scope.
+The hyperbolic branch assumes the two analytic zero-order and homogeneous hyperbolic-cone theorems stated in the causal-kernel prerequisite. The support theorem's evolution branch uses only the necessary root-barrier implication. Its final component-stability remark uses the available noncharacteristic Holmgren theorem in [Analytic coefficients and one-sided uniqueness](../AN02-L191.html#3-a-continuously-differentiable-surface-needs-no-analytic-flattening), Theorem 3.2. These dependencies retain their stated scope.
 
 ## The two support geometries and the full local theorem
 
@@ -222,7 +222,7 @@ The second identity follows by setting \(s=0\) for every real \(v\), then equali
 
 The lower-order hyperbolicity theorem says \(P\) has equal strength to \(F_m\). Hence \(Q\) has equal strength to \(G\). Applying its same-direction characterization with principal part \(G\), which is hyperbolic by(SC16), proves that \(Q\) too is hyperbolic with direction \(N\). All the frozen cones in this constant-strength family are therefore the same \(C\). This argument imports exactly the homogeneous hyperbolic-root contract already declared by the lower-order theorem. It makes no nonlinear coordinate-invariance assertion.
 
-For evolution symbols, smoothness makes \(x\mapsto A(x,\cdot)\) continuous in the finite-dimensional weaker-symbol space. On a connected coefficient region its image is connected. The already written component-stability theorem then shows that all frozen symbols are evolution symbols in the same half-space if one is. This last contextual consequence retains the component theorem's own planned sufficient-direction Holmgren input; it is not used in the construction or support proof of Theorem 1.
+For evolution symbols, smoothness makes \(x\mapsto A(x,\cdot)\) continuous in the finite-dimensional weaker-symbol space. On a connected coefficient region its image is connected. The already written component-stability theorem then shows that all frozen symbols are evolution symbols in the same half-space if one is. This last contextual consequence retains the component theorem's own available sufficient-direction Holmgren input; it is not used in the construction or support proof of Theorem 1.
 
 ## Exercises with complete solutions
 

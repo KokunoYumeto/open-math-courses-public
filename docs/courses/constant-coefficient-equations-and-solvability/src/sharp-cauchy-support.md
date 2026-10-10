@@ -6,7 +6,7 @@ A compact initial set cannot produce a nonzero solution whose unbounded support 
 
 Read [Uniqueness in a slab with bounded support](bounded-support-slab-uniqueness.md), [Compact Cauchy data and local coherence](compact-cauchy-data-and-local-coherence.md), [Small Gevrey solutions of the full Cauchy problem](small-gevrey-cauchy-solutions.md).
 
-One prerequisite remains planned in [Distributions, kernels and analytic singularities](../prerequisites/planned-foundation-proofs.html): a distribution solving an analytic-coefficient equation and vanishing on one side of a noncharacteristic \(C^1\) surface vanishes near that surface. The uses of this Holmgren theorem below are conditional on that planned proof.
+The local distributional Holmgren theorem is proved in [Analytic coefficients and one-sided uniqueness](../AN02-L191.html#3-a-continuously-differentiable-surface-needs-no-analytic-flattening), Theorem 3.2: a distribution solving an analytic-coefficient equation and vanishing on one side of a noncharacteristic \(C^1\) surface vanishes near that surface. The uses of the Holmgren theorem draw on that complete proof.
 
 Basic references are Grubb's *Distributions and Operators* ([author's lecture notes](https://web.math.ku.dk/~grubb/distribution.htm)), Melrose's *Differential Analysis* and Hörmander's *The Analysis of Linear Partial Differential Operators*. The proofs below use the linked prerequisite lessons and the stated planned results.
 
@@ -48,7 +48,7 @@ Here \(C^m(H)\) means that the derivatives in the interior through total order \
  \operatorname{supp}_H u\subset (y+C)\cup B,
  \tag{4}
 \]
-then \(u=0\) throughout \(H\), relative to the planned Holmgren theorem.
+then \(u=0\) throughout \(H\), using the available Holmgren theorem.
 
 Support in (4) is relative to \(H\). Replacing \(B\) by a sufficiently large closed ball intersected with \(H\) preserves the hypothesis, so its closure causes no boundedness issue.
 

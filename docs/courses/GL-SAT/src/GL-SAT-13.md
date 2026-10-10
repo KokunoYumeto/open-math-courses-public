@@ -946,9 +946,270 @@ For an automorphism's arity-three equation on \(x,x,x\), the terms involving \(F
 
 This appendix leaves the dual Lie-algebra Ext computation, its convolution compatibility, and the renormalized, singular-support and factorization enhancements as actual further proof requirements.
 
+## Appendix B. The polynomial generators and their full Kostant restriction
+
+Let \(R\) be the prescribed split connected reductive coefficient group over a characteristic-zero field \(E\), with its actual torus, character lattice and centre. Eventually \(R=\widehat G\); none of the constructions below replaces it by its adjoint quotient. We prove the algebraic generator comparison needed for (8.1). The remaining geometric comparison must identify these modules and their composition with actual equivariant cohomology.
+
+Write \(\mathfrak r=\operatorname{Lie}R\), \(T\subset B\), \(\mathfrak t=\operatorname{Lie}T\), \(r=\dim T\), and \(N=|\Phi^+|\). Choose a nondegenerate invariant form to identify \(\mathfrak r\) with \(\mathfrak r^*\); the derivative formulation below also describes the resulting action directly on the coadjoint space. Every linear coordinate of \(A=E[\mathfrak r^*]=\operatorname{Sym}(\mathfrak r)\) has degree two. Nilpotent means nilpotent in a faithful algebraic module; the toral centre's Jordan component is semisimple and its nilpotent component is zero. Geometric orbit arguments may be checked after algebraic closure. The polynomial maps and the smooth descent diagrams constructed below are defined over \(E\), and their verified identities descend faithfully flatly to it.
+
+The root and torus groups and their full schemes are proved in Root groups and the rank-one subgroups, §§2–5. We use Complete reducibility, Theorems 4.1 and 5.1, [Representations of \(sl_2\)](../RT-LIE/RT-LIE-05.html), and Chevalley restriction, Theorem 3.1, with the coefficient descent of §3 above. The classical highest-weight and character statements are also available from Identifying the dual group, Theorem B.4.1.1. The free [Equivariant Satake category and Kostant–Whittaker reduction, §§2.6 and 4.1](https://arxiv.org/abs/0707.3799v4) gives the restriction problem; we prove its polynomial, regular-locus and morphism assertions here.
+
+### B.1. Polynomial invariants and the sum of their degrees
+
+**Lemma B.1.1.1.** The algebra \(E[\mathfrak t]^W\) is polynomial on \(r\) homogeneous generators of degrees \(d_1,\ldots,d_r>0\), and
+\[
+ \sum_i(d_i-1)=N.
+\tag{B.1.1}
+\]
+
+**Proof.** First take the semisimple part and its auxiliary simply connected torus \(T_{\rm sc}\), whose character lattice is the full weight lattice. This auxiliary torus is only used to prove a statement about the linear Weyl action. It does not replace \(R\) in any representation or centralizer comparison.
+
+The invariant Laurent algebra \(E[T_{\rm sc}]^W\) is polynomial in the fundamental characters \(\chi_{\omega_i}\). Indeed its orbit sums have one basis element for each dominant weight. The product \(\prod_i\chi_{\omega_i}^{n_i}\) has highest weight \(\sum_i n_i\omega_i\) with coefficient one and only lower weights. Induction on the positive root height expresses every orbit sum as a polynomial in these characters. The induction terminates: a strictly lower dominant weight has strictly smaller nonnegative height. Algebraic independence follows by taking a maximal dominant weight among the finitely many monomials in a proposed relation; its coefficient cannot be supplied by a lower monomial. These are exactly the finite highest-weight and tensor arguments already proved in Lesson 11.
+
+Complete the torus quotient at the image of the identity. Its invariant algebra completes to a formal power-series ring in \(\chi_{\omega_i}-\dim V_{\omega_i}\). Its fibre over that point has only the identity as a geometric point: a finite-group invariant separates two distinct finite orbits, by prescribing values on their finite point sets and averaging. The Laurent algebra is finite over its invariants, because each coordinate and its inverse satisfy their monic orbit polynomials. Thus completing at that invariant ideal is the same as completing the torus algebra at the identity; the two ideals have cofinal powers.
+
+Invariants commute with this completion. To verify this, let \(I\) be an ideal of the invariant algebra. The averaging projector is linear over that algebra, so \(I^nE[T_{\rm sc}]\cap E[T_{\rm sc}]^W=I^n\). It also lifts an invariant class modulo \(I^n\) by averaging any lift. Taking the inverse limit proves the claim.
+
+Formal logarithms of a character basis identify the completed torus with the formal vector space \(\mathfrak t_{\rm sc}\), equivariantly for \(W\): the characteristic-zero series \(\log(q_i)\) has inverse \(\exp(z_i)\), and logarithms turn multiplication of characters into addition. Hence \(E[[\mathfrak t_{\rm sc}]]^W\) is a regular power-series algebra on \(r_{\rm ss}\) variables.
+
+For clarity this implies polynomiality of the graded invariant algebra, rather than merely a formal statement. Let \(C=E[\mathfrak t_{\rm sc}]^W\), with positive ideal \(\mathfrak m\). It is finitely generated: the coefficients of the orbit polynomials of a linear coordinate basis generate a Noetherian algebra over which the polynomial ring is finite; its invariant submodule is therefore finite over that algebra. The degree filtration and the \(\mathfrak m\)-adic filtration are cofinal, since the degrees of a finite homogeneous generating set are positive and bounded. Its completion is consequently the invariant formal series just calculated. Thus \(\dim_E\mathfrak m/\mathfrak m^2=r_{\rm ss}\). Choose a homogeneous basis and representatives \(f_i\). Induction on degree generates \(C\) from them: a positive homogeneous element modulo their linear span is in \(\mathfrak m^2\), whose factors have smaller positive degrees. The \(f_i\) are algebraically independent, because the fraction field of \(C\) has transcendence degree \(r_{\rm ss}\), by the finite integral extension to the polynomial ring. A relation among \(r_{\rm ss}\) generators would lower that transcendence degree. Adjoining the centre's linear coordinates proves polynomiality for all \(R\).
+
+Finally averaging the trace of \(W\) on symmetric powers gives
+\[
+ \prod_i(1-t^{d_i})^{-1}
+       =\frac1{|W|}\sum_{w\in W}\det(1-tw)^{-1}.
+\tag{B.1.2}
+\]
+This identity follows by diagonalizing each finite-order \(w\) and multiplying its geometric series; it is an identity of formal power series. Put \(u=1-t\). On the left the first two Laurent coefficients are
+\((\prod d_i)^{-1}u^{-r}(1+\frac12\sum(d_i-1)u+\cdots)\).
+On the right the identity contributes \(|W|^{-1}u^{-r}\), and each reflection contributes \((2|W|)^{-1}u^{1-r}\). All other elements contribute lower pole orders. There are precisely \(N\) reflections: the root hyperplanes are the chamber walls and all their translates; a reflection's generic fixed point must lie on one of them, since a point off them has trivial chamber stabilizer. There is one reflection per positive root. Comparing these two coefficients proves \(\prod d_i=|W|\) and (B.1.1). For a torus \(W=1\), all degrees are one and the same assertion is immediate. ∎
+
+### B.2. A polynomial Kostant slice with its positive grading
+
+Choose pinned root vectors \(e_i,f_i\) with \([e_i,f_i]=\alpha_i^\vee\). Let
+\[
+ h=2\rho^\vee=\sum_i c_i\alpha_i^\vee,\qquad
+ e=\sum_i e_i,\qquad f=\sum_i c_i f_i.
+\tag{B.2.1}
+\]
+The \(c_i\) are positive integers, because \(2\rho^\vee\) is the sum of the positive coroots. The actual cocharacter \(2\rho^\vee\) belongs to the original coroot lattice.
+
+**Theorem B.2.1.1.** The affine slice \(\Sigma=e+\mathfrak r^f\) is mapped isomorphically by the adjoint quotient
+\[
+ \chi:\mathfrak r^*\longrightarrow
+       \mathfrak b=\operatorname{Spec}E[\mathfrak r^*]^R.
+\tag{B.2.2}
+\]
+This is a polynomial isomorphism with a polynomial inverse on every parameter algebra. Under the slice action
+\[
+ t\cdot x=t^2\operatorname{Ad}_{h(t^{-1})}x,
+\tag{B.2.3}
+\]
+its coordinate weights are \(2d_i\). Every slice point is regular.
+
+**Proof.** The simple-root relations give \([e,f]=h,[h,e]=2e,[h,f]=-2f\). On the adjoint module, complete reducibility gives \(sl_2\) summands of highest weights \(2m_i\): all \(h\)-weights are even root heights. Each summand has one weight-zero line, and \(\mathfrak r_0=\mathfrak t\). There are therefore \(r\) summands, allowing \(m_i=0\) on the centre. Since \(\dim\mathfrak r=2N+r\),
+\[
+ \sum_i m_i=N.
+\tag{B.2.4}
+\]
+The lowest lines form \(\mathfrak r^f\), with slice weights \(2(m_i+1)>0\).
+
+We check an invertible differential at \(x_*=e+f\). The principal triple acts through an actual \(SL_2\) homomorphism into \(R\): in a faithful module its rank-one representation integrates by the polynomial highest-weight formulas, Theorem 2.1 and Proposition 2.2, and the two root-group images are the polynomial exponentials of \(e\) and \(f\), contained in the original positive and negative unipotent groups. These root groups generate \(SL_2\). Its determinant-one matrix \(\left(\begin{smallmatrix}1&-1/2\\1&1/2\end{smallmatrix}\right)\) conjugates the diagonal generator to \(e+f\). Hence \(x_*\) is conjugate to \(h\) and is regular semisimple.
+
+The kernel of \(d\chi\) at a regular semisimple point is its orbit tangent space. Indeed the differential of \(R\times\mathfrak t_{\rm reg}\to\mathfrak r\) is \([\mathfrak r,x]+\mathfrak t=\mathfrak r\), and the finite Weyl quotient is étale off its reflecting hyperplanes. Here are the required checks. If \(w\) fixes a regular vector over any characteristic-zero field, its rational fixed subspace has no root identically zero, since that vector witnesses this. A rational real point of that subspace can therefore be chosen outside every root hyperplane. Its chamber stabilizer is trivial, so \(w=1\). Now prescribe any first jet at a regular geometric point \(x\), multiplied by \(|W|\), and prescribe zero first jets at all other orbit points. The squared maximal ideals of these distinct points are comaximal, so the Chinese remainder theorem gives a polynomial with these jets. Averaging it gives an invariant with the chosen differential at \(x\). Thus the quotient differential is surjective, and it is an isomorphism since both smooth spaces have dimension \(r\), by B.1. Maps between smooth schemes, Lemma 3.A proves étaleness. This establishes the quotient differential assertion used here.
+
+The space \(\mathfrak r^f\) is transverse to that orbit at \(x_*\). Use the invariant form. The orthogonal complement of the orbit tangent is \(\mathfrak r^{x_*}\). In an \(sl_2\) summand \(\operatorname{Sym}^{2m}\), its weight-zero line after the rotation sending \(h\) to \(e+f\) has nonzero highest coefficient: rotating \(X^mY^m\) gives a nonzero multiple of \((Y^2-X^2)^m\). It therefore pairs nondegenerately with the lowest line. On each multiplicity space the invariant pairing is nondegenerate, and the same nonzero scalar multiplies it. This proves the transversality, including the central summands. Thus \(d(\chi|_\Sigma)\) is invertible at \(x_*\).
+
+Choose the homogeneous generators from B.1 and Chevalley restriction. The restricted polynomial \(p_i|_\Sigma\) has slice weight \(2d_i\), because the quotient is invariant under conjugation and \(p_i\) has ordinary polynomial degree \(d_i\). Its Jacobian determinant has weight
+\(2\sum_i d_i-2\sum_i(m_i+1)=0\), by (B.1.1) and (B.2.4). All slice variable weights are positive. Hence this determinant is a constant, nonzero by the preceding differential calculation.
+
+At the slice origin \(e\) its linear part is an invertible graded map. Consequently the two multisets \(d_i\) and \(m_i+1\) agree. This gives a polynomial inverse without an unproved general assertion about constant Jacobians. Order the common positive weights. In a block of weight \(d\), the quotient coordinates are an invertible linear combination of the variables of weight \(d\), plus polynomials in variables of strictly smaller weights. A nonlinear monomial of total weight \(d\) can only contain such smaller weights. Solve these finite blocks in order. This constructs the inverse polynomial, also on nonreduced parameter algebras.
+
+Finally every element has centralizer dimension at least \(r\): regular semisimple elements form a dense open, and the corresponding rank bound on \(\operatorname{ad}x\) is the vanishing of polynomial minors. Choose an \(h\)-homogeneous complement to \(\ker\operatorname{ad}e\). For \(x=e+v\in\Sigma\), the highest nonzero \(h\)-weight of a vector in that complement has nonzero image under \(\operatorname{ad}e\), with weight two higher. All \([v,-]\) terms have at most its original weight. They cannot cancel that term. Thus \(\operatorname{ad}x\) has rank at least \(\dim\mathfrak r-r\), and the opposite inequality just proved makes it equal. The regular minor is invertible locally on the whole slice, so the centralizer Lie kernel is a vector bundle there. ∎
+
+### B.3. Regular fibres and the full centralizer scheme
+
+**Lemma B.3.1.1.** Every nilpotent element of a reductive Lie algebra in characteristic zero belongs to the nilpotent radical of a Borel. The nilpotent locus is irreducible of dimension \(\dim\mathfrak r-r\), and its regular elements form one orbit.
+
+**Proof.** Jordan decomposition and its preservation in faithful modules for the semisimple summand are proved in The Killing form and Cartan's criteria, Theorem 6.2 and Complete reducibility, Theorem 5.1. The central torus acts diagonally in an algebraic module; its component is semisimple and commutes with those Jordan parts. This gives the stated reductive version. For a nilpotent \(n\), its finite polynomial exponential is an actual additive subgroup of \(R\). One can check containment schematically: the right-invariant derivation associated with \(n\) preserves the Hopf ideal of the closed group \(R\); every Taylor coefficient of a defining equation on \(\exp(tn)\) is therefore zero. The exponential is polynomial because the represented \(n\) is nilpotent.
+
+This additive group has a fixed point on the projective flag variety \(R/B\), constructed in The flag scheme and the Weyl group, Theorem 1.1. Here is the needed fixed-point argument. A nonconstant additive orbit map from \(\mathbf A^1\) into a projective variety is represented by polynomial homogeneous coordinates after trivializing its pulled-back line on \(E[t]\). Homogenizing to their largest degree extends it to \(\mathbf P^1\), with a defined value at infinity. Translation equivariance holds on the dense affine line and therefore on the entire projective line by separatedness. Infinity is fixed by every translation, so its image is fixed. A constant orbit already provides a fixed point. Thus \(n\) lies in a conjugate Borel Lie algebra. In a faithful weight-triangular module its torus part would give diagonal eigenvalues. Nilpotence makes all of them zero, and the faithful torus weights span its Lie dual. Hence that part is zero.
+
+It follows that the proper incidence map \(R\times^B\mathfrak n\to\mathfrak r\) covers the nilpotent locus. Its source is an irreducible vector bundle of dimension \(2N=\dim\mathfrak r-r\), so its image is irreducible and has dimension at most that number. Supporting field geometry, Theorem G.3.4 and Theorem G.4.2 proves smoothness of each characteristic-zero finite-type stabilizer and local closedness of its orbits. The principal \(e\) therefore has group centralizer dimension \(r\), by the \(sl_2\) Lie calculation of B.2, so its orbit has exactly that dimension. The bound is an equality. Any regular nilpotent orbit has the same dimension and is open in the irreducible nilpotent locus, so must be the same orbit. For the openness assertion, a constructible orbit contains a nonempty open of its closure; translating that open covers the orbit and makes the whole orbit open in its closure. Two distinct full-dimensional orbits would give disjoint nonempty opens of the same irreducible variety. ∎
+
+**Theorem B.3.1.2.** Each regular quotient fibre has exactly one geometric orbit. The map
+\[
+ p:R\times\Sigma\longrightarrow\mathfrak r_{\rm reg},
+           \qquad(g,\sigma)\longmapsto\operatorname{Ad}_g\sigma
+\tag{B.3.1}
+\]
+is smooth surjective. The closed group scheme
+\[
+ J=\{(\sigma,g)\in\Sigma\times R:
+                              \operatorname{Ad}_g\sigma=\sigma\}
+\tag{B.3.2}
+\]
+is smooth over \(\Sigma\), has relative dimension \(r\), and is commutative. Its fibres need not be connected. It includes the full original \(Z(R)\).
+
+**Proof.** Write a geometric element \(x=s+n\) in Jordan form, with commuting semisimple and nilpotent parts. The semisimple part lies in a torus. This can also be seen directly in a faithful module: in a diagonal basis the formal exponential of \(s\) has character exponents. Distinct exponential series are linearly independent by their derivative Vandermonde matrix. Its algebraic closure is therefore the torus defined by the integral character relations whose derivative on \(s\) is zero; the same Hopf-ideal Taylor argument places that torus in \(R\). Maximal-torus conjugacy is proved in Tori, maximal tori and their conjugacy.
+
+Let \(D\) be the torus just obtained. Its character relation lattice is exactly the integral characters whose derivative at \(s\) is zero; this lattice is saturated, since the characteristic is zero. In a faithful diagonal module two weights restrict to the same character of \(D\) exactly when their eigenvalues on \(s\) agree. Commuting with \(s\) means preserving precisely these equal-eigenvalue blocks, while commuting with the universal \(D\)-action means preserving exactly its character blocks. The two matrix conditions are therefore identical over every parameter algebra. Intersecting with the original closed group gives the scheme equality \(C_R(s)=C_R(D)\). Centralizers of subtori, Theorem 2.2 proves that this is a smooth connected reductive group. Choose an integral cocharacter of \(D\) outside the finitely many hyperplanes for roots nontrivial on \(D\); an integral point exists because its cocharacter lattice spans the rational vector space. Its zero roots are exactly those with \(\alpha(s)=0\). Weyl conjugation makes this cocharacter dominant. The positive/negative cocharacter limits and the Levi construction of The flag scheme and the Weyl group, §1 identify the centralizer as the corresponding root Levi \(L\). In particular its rank is the original \(r\), and its roots are precisely \(\alpha(s)=0\). This proves the full centralizer assertion without dropping any component or infinitesimal equation.
+
+The centralizer of \(x\) is \(C_L(n)\), since a commuting operator preserves the polynomial Jordan parts. Thus \(x\) is regular exactly when \(n\) is regular in that Levi. B.3.1.1 applies to the Levi. Invariant polynomials have the same values on \(s+n\) and \(s\): put \(n\) in a Levi Borel radical and contract it to zero with its positive coroot cocharacter, fixing \(s\). Chevalley restriction and finite-orbit separation for \(W\) determine the semisimple conjugacy class from these values. The single regular nilpotent orbit of its Levi determines the remaining regular orbit. This proves uniqueness of a regular orbit in a quotient fibre.
+
+B.2 gives a slice point for every quotient value, and every slice point is regular. The map (B.3.1) is consequently geometrically surjective. At a slice point, \(d\chi|_{\mathfrak r^f}\) is an isomorphism, so \(d\chi\) has rank \(r\). Invariance places the orbit tangent in its kernel; both have dimension \(\dim\mathfrak r-r\), so they are equal. Conjugation gives the same equality at every regular point. The orbit and slice tangents therefore make the differential of (B.3.1) surjective everywhere. The differential criterion of Lemma 3.A cited in B.2 gives actual smooth surjectivity, of relative dimension \(r\).
+
+Base changing this map along the slice gives \(J\). This is the full scheme centralizer, because equality of two quotient values forces their slice coordinates to be equal by the polynomial inverse of B.2, even over nonreduced rings. More explicitly the actual descent relation is
+\[
+ (R\times\Sigma)\times_{\mathfrak r_{\rm reg}}(R\times\Sigma)
+       \simeq R\times J,
+\tag{B.3.3}
+\]
+with right multiplication by the centralizer on the first factor. Thus \(J\) is smooth over \(\Sigma\). Its generic fibre is a torus. The two multiplication maps on \(J\times_\Sigma J\) agree there and hence everywhere: its affine coordinate algebra is flat over the integral slice, so is torsion free and injects into its generic localization. Every coordinate difference therefore vanishes already on the whole source. This proves commutativity as a scheme identity. Central elements satisfy (B.3.2). No special fibre has been replaced by its identity component. ∎
+
+### B.4. The extension across the missing locus
+
+**Proposition B.4.1.1.** The nonregular complement in \(\mathfrak r\) has codimension at least two. Restriction of polynomial functions to the regular locus is an isomorphism, and the same is true for maps between free bundles.
+
+**Proof.** Use the finitely many root Levi types for semisimple centralizers. If a type \(L\) has semisimple rank \(s\), its semisimple centralizer parameters have dimension \(r-s\). Its nilpotent locus has dimension \(\dim L-r\), by B.3.1.1. The corresponding Jordan stratum is covered by
+\(R\times^L(Z(\mathfrak l)_{\rm reg}\times\mathcal N_L)\),
+of dimension at most \(\dim R-s\). If \(s\ge2\), this already gives codimension at least two. If \(s=0\), all elements are regular. If \(s=1\), its derived Lie algebra is \(sl_2\), whose nonzero nilpotents have centralizer dimension one and whose only nonregular nilpotent is zero. The bad stratum in this case has dimension at most
+\(\dim R-(r+2)+(r-1)=\dim R-3\).
+The finite union of these bounds proves the assertion. This dimension argument concerns geometric Jordan strata; the regular scheme and its centralizers are the full smooth schemes of B.3.
+
+Let a regular function on this open locus be \(u/v\) in reduced form in the polynomial fraction field. If an irreducible factor divided \(v\), its height-one generic point would be in the regular locus, since the missing set has codimension at least two. Regularity there would force cancellation of that factor, a contradiction. Thus \(v\) is a unit and the function is polynomial. Uniqueness follows from density. Apply this coefficientwise to maps between finite free bundles. ∎
+
+### B.5. Exact Kostant restriction and full free-module morphisms
+
+Let \(p_1,\ldots,p_r\) be the chosen invariants. Their differentials on the coadjoint space give sections \(\zeta_i\) of the stabilizer Lie bundle. Equivalently they are gradients under the invariant form. The differentials have rank \(r\) on the slice, and invariance makes their values commute with the slice element. Hence they form the entire \(\operatorname{Lie}J\) bundle. B.3 makes this an abelian bundle. Put
+\[
+ \mathcal B=\operatorname{Sym}_{E[\Sigma]}(\operatorname{Lie}J)
+       =E[p_1,\ldots,p_r,z_1,\ldots,z_r],
+ \qquad |p_i|=2d_i,\quad |z_i|=2d_i-2.
+\tag{B.5.1}
+\]
+The tangent-bundle underlying algebra is thus supplied with the displayed deformation grading. In the Hom notation below the superscript records the degree of a homogeneous module map between these coherent graded objects.
+
+**Theorem B.5.1.1.** For an \(R\)-equivariant coherent sheaf \(F\) on \(\mathfrak r^*\), restriction to \(\Sigma\), with the stabilizer Lie action, gives an exact functor \(\kappa(F)\) to coherent \(\mathcal B\)-modules. On the free generators \(A\otimes V\) it gives
+\[
+ M(V)=E[\Sigma]\otimes V,\qquad
+ z_i\cdot v=\rho_V(\zeta_i)v.
+\tag{B.5.2}
+\]
+It is fully faithful on these generators, including all homogeneous morphism degrees:
+\[
+ \operatorname{Hom}^*_{A,R}(A\otimes V,A\otimes W)
+       \xrightarrow{\sim}
+ \operatorname{Hom}^*_{\mathcal B}(M(V),M(W)).
+\tag{B.5.3}
+\]
+The comparison preserves actual composition and the prescribed full group.
+
+**Proof.** Pullback to \(R\times\Sigma\) along the smooth surjection \(p\) is exact. Equivariance identifies it with the pullback of \(F|_\Sigma\) along the faithfully flat projection to the slice. Consequently restriction to the slice is exact on equivariant coherent sheaves, even though an arbitrary closed restriction is not flat. The residual action of \(J\) gives its Lie action, hence the module over its symmetric algebra. It is coherent: it is already finite over the Noetherian base \(E[\Sigma]\). This proves exactness and (B.5.2).
+
+A \(\mathcal B\)-linear map between the displayed modules is a polynomial family \(\phi_\Sigma\) commuting with \(\operatorname{Lie}J\). On the geometric generic fibre \(J\) is a torus. Commuting with its Lie action implies commuting with its full torus action: rational torus modules split into actual characters, and distinct characters have distinct derivatives in characteristic zero. This retains characters differing on finite centres as well.
+
+It follows that \(\phi_\Sigma\) commutes with the full \(J\) everywhere. The required coordinate equalities hold on the generic fibre of the smooth flat group scheme \(J\); its torsion-free coordinate algebra makes them hold as scheme equations on the whole \(J\). Define the family on \(R\times\Sigma\) by
+\(\rho_W(g)\phi_\Sigma(\sigma)\rho_V(g)^{-1}\).
+Full \(J\)-equivariance makes it compatible with the actual relation (B.3.3). Faithfully flat descent gives an \(R\)-equivariant free-bundle map on \(\mathfrak r_{\rm reg}\). B.4 extends its coefficients uniquely to polynomials on all of \(\mathfrak r\). Equivariance extends too, because its two matrix formulas agree on the dense \(R\times\mathfrak r_{\rm reg}\). Restriction reverses this procedure, proving (B.5.3). All steps are functorial matrix equalities, so preserve composition.
+
+For the grading, give a vector in \(V\) its principal \(h\)-weight, in addition to any specified external grading. The gradient identity under (B.2.3) is
+\[
+ \zeta_i(t\cdot\sigma)
+   =t^{\,2(d_i-1)}\operatorname{Ad}_{h(t^{-1})}\zeta_i(\sigma).
+\tag{B.5.4}
+\]
+Its root component of \(h\)-weight \(b\) has coefficient degree \(2(d_i-1)-b\), while its action raises a vector's principal degree by \(b\). Thus its total operator degree is exactly \(2d_i-2\), as in (B.5.1). An equivariant homogeneous polynomial map of degree \(k\) similarly satisfies
+\(\phi(t\cdot\sigma)=t^k\rho_W(h(t^{-1}))\phi(\sigma)\rho_V(h(t))\).
+The coefficient and principal-degree changes cancel to give degree \(k\). Conversely decompose the unique polynomial extension into its finitely many homogeneous parts. Their restriction preserves these degrees; faithfulness forces every part of a different degree to be zero. This proves the graded comparison, not just the ungraded Hom equality.
+
+There is also the coefficient tensor comparison
+\[
+ M(V)\otimes_{E[\Sigma]}M(W)\simeq M(V\otimes W),
+\tag{B.5.5}
+\]
+where \(z_i\) acts primitively as \(z_i\otimes1+1\otimes z_i\). This follows directly from the differential of the representation tensor product. Its associativity and unit are those of that tensor product. A derived convolution or symmetry comparison requires its own enhancement and the conventions of Lesson 8; (B.5.5) is the stated coefficient-level comparison. ∎
+
+![The actual polynomial Kostant slice gives smooth full-centralizer descent and unique polynomial extension of all free-generator morphisms](assets/kostant-slice-descent.png)
+
+Lemmas and Theorems B.1.1.1–B.5.1.1 prove the slice inverse, smooth maps, full scheme relation, codimension bound, grading and composition shown. The invariant-ring argument and positive-weight inverse provide actual polynomial maps over every parameter algebra. Editable SVG source.
+
+### B.6. Rank one: full operators, morphisms and centre
+
+**Proposition B.6.1.1.** For \(R=SL_2\) use the trace form \(B(X,Y)=\operatorname{tr}(XY)\), the invariant \(p(X)=\frac12\operatorname{tr}(X^2)\), and
+\[
+ X(c)=\begin{pmatrix}0&1\\c&0\end{pmatrix},\qquad
+ E[\Sigma]=E[c],\qquad \mathcal B=E[c,z],\quad |c|=4,\ |z|=2.
+\tag{B.6.1}
+\]
+The unit, standard and adjoint generators have respectively \(z\)-actions \(0,X(c),T=\operatorname{ad}X(c)\). For the adjoint basis \((e,h,f)\) of degrees \(2,0,-2\),
+\[
+ T=\begin{pmatrix}0&-2&0\\-c&0&1\\0&2c&0\end{pmatrix},
+ \qquad T^3=4cT.
+\tag{B.6.2}
+\]
+The two unit-adjoint Hom modules are freely generated over \(E[c]\) in degree two by
+\[
+ i=(1,0,c)^{\mathsf t},\qquad \ell=(c,0,1).
+\tag{B.6.3}
+\]
+Their actual compositions are
+\[
+ \ell i=2c,\qquad i\ell=2cI-\tfrac12T^2,\qquad Ti=\ell T=0.
+\tag{B.6.4}
+\]
+The adjoint endomorphism algebra is \(E[c,T]/(T^3-4cT)\), and the standard one is \(E[c,X]/(X^2-cI)\).
+
+**Proof.** The chosen invariant's gradient under the trace form is \(X\), so these are exactly the operators in (B.5.2). Applying the brackets to \(e,h,f\) gives the three columns of (B.6.2); multiplying gives its relation. The vector \(f\) is cyclic over \(E[c]\): the columns \(f,Tf,T^2f\) have determinant \(2\). Thus a commuting endomorphism is uniquely a polynomial of degree at most two in \(T\), determined by its value on that cyclic vector. There are no denominators or extra endomorphisms at \(c=0\). For the standard module the vector \(v_-\) is cyclic with columns \(v_-,Xv_-\) of determinant \(-1\), proving its endomorphism algebra.
+
+Solving \(Ti=0\) and \(\ell T=0\) gives (B.6.3) as the entire free Hom modules. Their grades follow from the displayed basis degrees and \(|c|=4\). Direct multiplication gives (B.6.4), with the stated trace normalization. These are the full compositions supplied by B.5, not their dimensions.
+
+The full universal centralizer is
+\[
+ J=\operatorname{Spec}E[c,u,v]/(u^2-cv^2-1),
+ \qquad g=\begin{pmatrix}u&v\\cv&u\end{pmatrix}.
+\tag{B.6.5}
+\]
+Every commuting matrix has this form, by the same cyclic-vector calculation, and the equation is its actual determinant-one condition. At \(c=0\) it is \(\mu_2\times\mathbf G_a\), with additive coordinate \(v/u\). This fibre has two components and retains the original centre.
+
+Globally there is no nonzero map from the unit to the standard Kostant module: \(X(c)\) has zero kernel over the domain \(E[c]\). At \(c=0\) its Lie-action kernel is one dimensional, but the central element \(-I\) acts on that line by \(-1\), so there is still no map from the unit commuting with the full centralizer group. Fibrewise Lie commutation alone would lose precisely this condition; the generic-to-flat-group argument in B.5 does not. The unit–adjoint block descends to \(PGL_2\); the standard generator in this example belongs to the stated \(SL_2\). ∎
+
+![The SL2 Kostant generators have explicit composition constants and retain the full finite centre on the nilpotent fibre](assets/sl2-kostant-compositions.png)
+
+Proposition B.6.1.1 and Exercises B.7.2–B.7.3 compute the exact operators, cyclic bases, products, scheme equations and nilpotent coefficients. The full centralizer condition distinguishes fibrewise Lie commutation from the global morphism theorem. Editable SVG source.
+
+### B.7. Exercises
+
+**Exercise B.7.1 (medium).** Verify the positive-weight inverse argument on \(F(u,v)=(u,v+u^2)\), with weights \(2,4\). Evaluate it on \(E[\epsilon]/(\epsilon^3)\), with \(u=\epsilon,v=\epsilon^2\), retaining every coefficient.
+
+**Solution.** The two target coordinates have weights \(2,4\); its linear blocks are both the identity and its only nonlinear term uses the smaller weight. The inverse is \((u,w)\mapsto(u,w-u^2)\). At the specified parameter \(F(\epsilon,\epsilon^2)=(\epsilon,2\epsilon^2)\), and the inverse recovers \(\epsilon^2\). Passing to its point would erase that quadratic coefficient. The argument uses the positive-weight triangular blocks proved in B.2, not a general claim that any constant-Jacobian polynomial map is invertible.
+
+**Exercise B.7.2 (advanced).** For \(SL_3\), take \(e=E_{12}+E_{23}\), \(f=2(E_{21}+E_{32})\), and slice \(X=e+uf+vf^2\). Compute its quotient coordinates, the centralizer Lie basis, and the full centre of the nilpotent group fibre.
+
+**Solution.** The matrix is
+\[
+ X=\begin{pmatrix}0&1&0\\2u&0&1\\4v&2u&0\end{pmatrix}.
+\tag{B.7.1}
+\]
+Multiplication gives \(\frac12\operatorname{tr}X^2=4u\) and \(\frac13\operatorname{tr}X^3=\det X=4v\). Its quotient inverse is \(u=p_2/4,v=p_3/4\), with degrees four and six. The columns \(e_3,Xe_3,X^2e_3\) have determinant \(-1\), on every parameter algebra. Hence every commuting matrix is \(aI+bX+dX^2\). Its trace-zero part has basis \(X\) and \(X^2-\frac{8u}{3}I\), of operator degrees two and four, respectively. These are the gradients of the two chosen invariants under the trace form.
+
+At \(u=v=0\), \(X^3=0\) and \(\det(aI+bX+dX^2)=a^3\). The group equation is therefore \(a^3=1\). Its centre factor is the whole \(\mu_3\); after dividing by \(a\), logarithm coordinates \(b/a\) and \(d/a-b^2/(2a^2)\) give the two additive factors. Thus the full regular nilpotent centralizer is \(\mu_3\times\mathbf G_a^2\), with three geometric components in characteristic zero. B.3 never assumed this fibre connected.
+
+**Exercise B.7.3 (advanced).** At \(c=\epsilon\in E[\epsilon]/(\epsilon^2)\), verify that
+\[
+ \begin{pmatrix}1+\epsilon/2&1\\
+                 \epsilon&1+\epsilon/2\end{pmatrix}
+\tag{B.7.2}
+\]
+is an actual \(SL_2\) centralizer point. Explain the difference between the nilpotent fibre's Lie-action Hom and the global free-module Hom.
+
+**Solution.** It has the form (B.6.5) with \(u=1+\epsilon/2,v=1\), and \(u^2-\epsilon v^2=1\) exactly. Multiplying with \(X(\epsilon)\) on either side gives the same matrix; its infinitesimal coefficient is retained by the scheme equation. At \(c=0\), the standard module has a nonzero vector killed by \(z=X(0)\), so its Lie-action Hom from the unit has dimension one. Its \(-I\) action makes the full group Hom zero. Over \(E[c]\) the determinant of \(X(c)\) is the nonzero polynomial \(-c\), so its kernel and the global free-module Hom are zero. Formation of that kernel does not commute with this specialization. There is no contradiction with the global fully faithful restriction theorem.
+
+These proofs construct the full algebraic polynomial generators and their faithful restriction, with their precise grading and composition. Identifying these restriction modules with geometric equivariant cohomology, and proving geometric full faithfulness and enhanced convolution compatibility, remain the next steps toward the derived equivalence.
+
 ## 11. Scope and free reading
 
-The proved statements are the unit self-Ext formula (2.3), the general invariant-polynomial classifying-space ring in §3, the torus symmetric tensor model over every characteristic-zero field in §5, the two Koszul endomorphism calculations and generated-category equivalences in §6, and the compactness distinction in §7. The five exercises use those proofs. Appendix A proves arithmetic stabilizer cohomology, actual equivariant Ext purity, minimal-model transfer, nonresonant Frobenius formality and the actual spherical generator envelope; it also proves the one-sided-weight counterexample. The full dual Lie-algebra Ext identification, its enhanced convolution compatibility, the coefficient comparison to the complex setting, and the renormalized, singular-support and factorization theorems of §8 still require proofs.
+The proved statements are the unit self-Ext formula (2.3), the general invariant-polynomial classifying-space ring in §3, the torus symmetric tensor model over every characteristic-zero field in §5, the two Koszul endomorphism calculations and generated-category equivalences in §6, and the compactness distinction in §7. The five exercises use those proofs. Appendix A proves arithmetic stabilizer cohomology, actual equivariant Ext purity, minimal-model transfer, nonresonant Frobenius formality and the actual spherical generator envelope; it also proves the one-sided-weight counterexample. Appendix B proves the polynomial Kostant slice, the full smooth universal centralizer, extension across the nonregular locus, exact equivariant coherent restriction and a composition-preserving graded comparison on every free dual polynomial generator. Its rank-one and rank-two examples retain finite centres and nilpotent parameter algebras. Identifying these modules and morphisms with geometric equivariant cohomology and Ext, proving enhanced convolution and complex coefficient comparisons, and proving the renormalized, singular-support and factorization theorems of §8 remain necessary.
 
 Free further reading:
 

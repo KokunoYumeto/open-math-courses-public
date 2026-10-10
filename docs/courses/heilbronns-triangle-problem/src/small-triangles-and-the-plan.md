@@ -14,10 +14,7 @@ For points \(p,q,r\in\mathbb R^2\) put
 \[
 \operatorname{Area}(pqr)=\tfrac12|\det(q-p,r-p)|,
 \]
-the area of the triangle they span (zero if they are collinear). For a finite set \(P\subseteq[0,1]^2\) with at least three points let
-\[
-\Delta(P)=\min\{\operatorname{Area}(pqr):\{p,q,r\}\subseteq P\text{ three distinct points}\},\qquad\Delta(n)=\sup\{\Delta(P):P\subseteq[0,1]^2,\ |P|=n\}.
-\]
+the area of the triangle they span (zero if they are collinear). For a finite set \(P\subseteq[0,1]^2\) with at least three points let \(\Delta(P)\) be the smallest area of a triangle whose vertices are three distinct points of \(P\), and for \(n\geq3\) let \(\Delta(n)\) be the supremum of \(\Delta(P)\) over all sets \(P\subseteq[0,1]^2\) of \(n\) points.
 
 **Lemma 1.1.** For \(n\geq3\) the supremum \(\Delta(n)\) is attained and positive.
 
@@ -25,9 +22,9 @@ the area of the triangle they span (zero if they are collinear). For a finite se
 
 The problem was posed by Heilbronn; Roth proved the first upper bound \(o(1/n)\) in 1951, and later work of Schmidt, Roth, Komlós, Pintz and Szemerédi, and Cohen, Pohoata and Zakharov reduced it to \(n^{-7/6+o(1)}\). On the lower side, the classical bound is of order \(n^{-2}\):
 
-**Proposition 1.2 (Erdős's parabola).** For every prime \(p\), the \(p\) points
+**Proposition 1.2 (Erdős's parabola).** For every prime \(p\), the \(p\) points of \([0,1)^2\)
 \[
-P_p=\Bigl\{\Bigl(\frac xp,\frac{\{x^2\}_p}p\Bigr):0\leq x<p\Bigr\}\subseteq[0,1)^2,
+P_p=\Bigl\{\Bigl(\frac xp,\frac{\{x^2\}_p}p\Bigr):0\leq x<p\Bigr\},
 \]
 where \(\{x^2\}_p\) is the remainder of \(x^2\) modulo \(p\), satisfy \(\Delta(P_p)\geq\frac1{2p^2}\).
 
@@ -92,7 +89,10 @@ The parameters are chosen among primes in intervals \((n,2n]\). We prove the nee
 
 Suppose there is no prime in \((n,2n]\). Then the primes \(p\leq\sqrt{2n}\), at most \(\sqrt{2n}\) of them, contribute at most \((2n)^{\sqrt{2n}}\), and the other prime factors of \(\binom{2n}n\) are distinct primes at most \(2n/3\). With Lemma 4.1,
 \[
-\frac{4^n}{2n+1}\leq\binom{2n}n\leq(2n)^{\sqrt{2n}}\,\Theta(2n/3)<(2n)^{\sqrt{2n}}\,4^{2n/3},
+\begin{aligned}
+\frac{4^n}{2n+1}\leq\binom{2n}n&\leq(2n)^{\sqrt{2n}}\,\Theta(2n/3)\\
+&<(2n)^{\sqrt{2n}}\,4^{2n/3},
+\end{aligned}
 \]
 that is, \(\frac n3\log4<\sqrt{2n}\log(2n)+\log(2n+1)\). This fails for all large \(n\), since the left side grows linearly and the right side like \(\sqrt n\log n\). \(\square\)
 

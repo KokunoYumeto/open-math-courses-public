@@ -52,7 +52,10 @@ is impossible if \(x_1+x_2+x_3\neq0\), and, if \(x_1+x_2+x_3=0\), it is impossib
 
 *Proof.* (a) Since \(3Hw\leq3q/(1000H)<q/2\), the residues \(t\) with \(\|t\|_q\leq3Hw\) number exactly \(6Hw+1\). For each \(1\leq m\leq3H<q\), multiplication by \(m\) is a bijection of \(\mathbb F_q\), so a uniform \(a\) violates the condition for \(m\) with probability \((6Hw+1)/q\). By the union bound,
 \[
-\Pr(a\notin\mathcal A)\leq\frac{3H(6Hw+1)}q\leq\frac{18}{1000}+\frac3{2000H}<\frac12 .
+\begin{aligned}
+\Pr(a\notin\mathcal A)&\leq\frac{3H(6Hw+1)}q\\
+&\leq\frac{18}{1000}+\frac3{2000H}<\frac12 .
+\end{aligned}
 \]
 (b) Invertible affine maps preserve cardinality and lines. If \(a+v=0\) with \(v\in S\), then \(\|a_1\|_q=\|v_1\|_q\leq w-1\leq3Hw\), contradicting the condition with \(m=1\); so \(0\notin a+S\), and \(0\notin V\).
 
@@ -67,16 +70,18 @@ W(A)=\Bigl(\frac{q^3}s\Bigr)^3\rho(A).\tag{3.1}
 The normalization makes \(W\) about one for generic columns.
 
 **Proposition 3.1 (weights).** There is an absolute constant \(C\) such that:
-\[
-W(A)\leq C\ \text{if the columns of }A\bmod q\text{ are affinely independent};\qquad W(A)\leq C\,\frac{q^3}s\ \text{if }\operatorname{rank}(A\bmod q)\geq2;\qquad W(A)\leq C\Bigl(\frac{q^3}s\Bigr)^2\ \text{always}.
-\]
+
+- \(W(A)\leq C\) if the columns of \(A\bmod q\) are affinely independent;
+- \(W(A)\leq C\,q^3/s\) if \(\operatorname{rank}(A\bmod q)\geq2\);
+- \(W(A)\leq C\,(q^3/s)^2\) always.
+
 If \(W(A)>0\), no column of \(A\bmod q\) is zero, and the columns are affinely independent or two of them are equal. If the columns are affinely independent and \(W(A)>0\), there is no \(x\in\mathbb Z^3\setminus\{0\}\) with \(|x|\leq H\) and \(Ax\equiv0\pmod q\).
 
 *Proof.* *Removing the restriction on \(a\).* If \(a\) is uniform in all of \(\mathbb F_q^3\), then, given \(G_q\), \(G_qa\) is uniform, so \(v\mapsto G_qv+G_qa\) is a uniform element of the affine group. Conditioning on the event \(a\in\mathcal A\), of probability at least \(\frac12\) (Lemma 2.1(a)), at most doubles the probability of any event.
 
 *Affinely independent columns.* For a uniform affine map \(g\) the inverse image of a fixed affinely independent ordered triple is uniform among the \(q^3(q^3-1)(q^3-q)\) such triples; the triple lies in \(g(S)\) exactly when its inverse image lies in \(S^3\), which contains at most \(s^3\) of them. So
 \[
-W(A)\leq2\,\frac{q^9}{s^3}\cdot\frac{s^3}{q^3(q^3-1)(q^3-q)}\leq C .
+W(A)\leq\frac{2q^9}{q^3(q^3-1)(q^3-q)}\leq C .
 \]
 *Rank at least two.* Fix any allowed \(a\) and put \(S_a=a+S\). If two of the target columns are linearly independent, their inverse image under a uniform \(G_q\) is uniform among the \((q^3-1)(q^3-q)\) ordered independent pairs, of which at most \(s^2\) lie in \(S_a^2\); requiring the third column too only lowers the probability. So \(W(A)\leq\frac{q^9}{s^3}\cdot\frac{s^2}{(q^3-1)(q^3-q)}\leq C\frac{q^3}s\) for each allowed \(a\), and hence after averaging over \(a\).
 

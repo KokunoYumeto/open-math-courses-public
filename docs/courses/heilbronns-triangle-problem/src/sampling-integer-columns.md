@@ -8,7 +8,11 @@ This lesson combines the two residue constructions, [A determinant obstruction f
 
 Keep the parameters of the previous lessons: the prime \(r\), \(d=41\), \(K=\mathbb F_{r^d}\), \(k\), \(L=r^{10}\), the prime \(B\), \(h=B^k\), \(\tau=\lfloor B^{k-1}/2\rfloor\); the prime \(q\) with \(h^{100}<q\leq2h^{100}\), \(H=h^2\), the cap \(S\) with \(s=|S|\). Since \(q>h\geq B\), \(q\) and \(h\) are coprime. Put
 \[
-N=(hq)^{10},\qquad\mathcal B=\bigl([0,N)^2\times[N,2N)\bigr)\cap\mathbb Z^3,\qquad\pi(u)=\Bigl(\frac{u_1}{u_3},\frac{u_2}{u_3}\Bigr)\in[0,1)^2 .
+\begin{gathered}
+N=(hq)^{10},\\
+\mathcal B=\bigl([0,N)^2\times[N,2N)\bigr)\cap\mathbb Z^3,\\
+\pi(u)=\Bigl(\frac{u_1}{u_3},\frac{u_2}{u_3}\Bigr)\in[0,1)^2 .
+\end{gathered}
 \]
 
 *Shared choices.* Choose \(G_h\) uniformly in \(\mathrm{SL}_3(\mathbb Z/h\mathbb Z)\), and, independently, \((a,G_q)\) as in the previous lesson, which determines \(V\).
@@ -62,14 +66,18 @@ Call a triple of samples *bad* if its three projected points are pairwise distin
 
 *Case \(t=0\).* Proposition 1.1 of the next lesson gives the stronger bound \(C_3\log(2N)N^6/I^2\) for the sum of \(W(A)\) over all integer matrices with columns in \(\mathcal B\), rows in \(\Lambda\), determinant zero and pairwise distinct projected columns; \(\mathcal A_0\) is a subset. \(\square\)
 
-**Corollary 3.2 (probability of a bad triple).** For three samples,
+**Corollary 3.2 (probability of a bad triple).** For three samples, the probability that they form a bad triple is at most
 \[
-\Pr(\text{the triple is bad})\leq C\,\bigl(\log(2N)\bigr)^2\frac h{N^3r^d}.
+C\,\bigl(\log(2N)\bigr)^2\frac h{N^3r^d}.
 \]
 
 *Proof.* Condition on the labels and on \(C\). If the labels are distinct, the conditional probability is zero. Otherwise only one value \(t\) is possible, and (2.1), Proposition 3.1 and the orbit bound \(|\mathcal O|\geq\frac{21}{64}h^8/(D^3E^2)\) give
 \[
-\Pr(\text{bad}\mid C,\text{labels})\leq\frac{h^9}{N^9}\cdot\frac{64D^3E^2}{21h^8}\cdot C\bigl(\log(2N)\bigr)^2\frac{N^6}{D^2E^2}=C'\bigl(\log(2N)\bigr)^2\frac{hD}{N^3}.
+\begin{aligned}
+&\Pr(\text{bad}\mid C,\text{labels})\\
+&\quad\leq\frac{h^9}{N^9}\cdot\frac{64D^3E^2}{21h^8}\cdot C\bigl(\log(2N)\bigr)^2\\
+&\qquad\cdot\frac{N^6}{D^2E^2}=C'\bigl(\log(2N)\bigr)^2\frac{hD}{N^3}.
+\end{aligned}
 \]
 Let \(F\) be the event that two labels coincide. Averaging, \(\Pr(\text{bad})\leq C'(\log(2N))^2\frac h{N^3}\mathbb E[D\mathbf 1_F]\), and \(\mathbb E[D\mathbf 1_F]\leq6r^{-d}\) by Corollary 3.2 of the fourth lesson, which holds for every fixed triple of labels, repeated or not. \(\square\)
 
