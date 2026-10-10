@@ -115,7 +115,7 @@ To justify gluing, integral closure commutes with localization in base elements.
 
 Relative Spec gives a canonical factorization \(X\to S'\to S\), whose second arrow is integral. This construction is called normalization of \(S\) in \(X\). It need not produce a normal scheme: for \(X=S\) and the identity map it gives \(S'=S\), whatever \(S\) is.
 
-**Theorem 4.1 (relative integral completion).** Let \(U\subset X\) be the quasi-finite locus of \(f\). Then \(V=h(U)\) is open in \(S'\), and
+**Theorem 4.1 (relative integral completion).** Assume in addition that \(f:X\to S\) is finite type and separated, and write \(h:X\to S'\) for the canonical map. Let \(U\subset X\) be the quasi-finite locus of \(f\). Then \(V=h(U)\) is open in \(S'\), and
 
 \[
 h^{-1}(V)=U,
@@ -135,6 +135,8 @@ The full closure condition matters. For \(X=\operatorname{Spec}k\amalg\operatorn
 
 The open immersion \(U\to V\) need not be quasi-compact when only a portion of \(X\) is quasi-finite. The quasi-compactness conclusion above uses \(U=X\). If \(X\) is empty, its section algebra and integral algebra are zero, \(S'\) is empty, and every assertion still holds.
 
+
+The affine version also follows directly from Theorem 1.1: union the opens \(D_C(g)\). Their inverse images are the corresponding isomorphic opens in \(X\). Conversely a point in this inverse image is quasi-finite, since its local fibre is a localization of a fibre of the integral morphism, whose primes have no strict inclusions. The finite-type fibre criterion therefore makes the point quasi-finite. This is [Stacks, Tag 03GT](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-theorem-main-theorem).
 
 ### Finite subalgebras of an integral quasi-coherent algebra
 

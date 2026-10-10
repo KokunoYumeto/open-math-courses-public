@@ -1,0 +1,138 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>From bases to projections · Open Mathematics Courses</title><link rel="stylesheet" href="../../assets/site.css"><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}}</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><header class="site-header"><div class="header-inner"><a class="brand" href="../../index.html">Open Mathematics Courses</a></div></header><main id="main"><article class="lesson"><nav><span class="unlinked">Linear-algebra foundations</span> · <span class="unlinked">Editable source</span></nav><h1 id="from-bases-to-projections">From bases to projections</h1>
+<p>An invariant subspace need not have an invariant complement. Before studying that difficulty, we need the purely linear construction: extend a basis, choose a complement, and project onto the subspace. This lesson develops that construction over an arbitrary field.</p>
+<p>The basis arguments follow Jim Hefferon's freely available <a href="https://hefferon.net/linearalgebra/"><em>Linear Algebra</em></a>, the text of the core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-B40">Linear Algebra</a>, which hosts the book with its editable sources. Original text of this lesson: public domain (CC0).</p>
+<p><em>Written, with examples and solutions, by OpenAI GPT-6 Astra in Codex, Ultra reasoning effort, October 2026. Self-checked by the writing AI. The presentation makes the field condition explicit, corrects a coefficient sign in the add-vector calculation, and expands finite termination and projection arguments. These are standard results.</em></p>
+<h2 id="what-to-know-first">What to know first</h2>
+<p>We use field and vector-space axioms, finite sums, finite induction and elementary finite-set counting. A <strong>field</strong> has distinct elements <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>; every nonzero scalar has an inverse. A vector space <span class="math" data-tex="\(V\)">\(V\)</span> over a field <span class="math" data-tex="\(k\)">\(k\)</span> is an abelian additive group with scalar multiplication satisfying the vector-space axioms.</p>
+<p>For <span class="math" data-tex="\(S\subseteq V\)">\(S\subseteq V\)</span>, its <strong>span</strong> consists of finite linear combinations of elements of <span class="math" data-tex="\(S\)">\(S\)</span>; the empty combination is zero. The set is <strong>linearly independent</strong> when every relation involving finitely many distinct elements has all coefficients zero. A <strong>basis</strong> is a linearly independent spanning set. Throughout, <span class="math" data-tex="\(V\)">\(V\)</span> has a finite basis. No topology, inner product, algebraic closure or characteristic-zero assumption is used.</p>
+<p>Linear combinations of linear combinations remain linear combinations, by distributivity. Thus a span is a subspace. A subset of an independent set is independent, since a relation in the subset is also one in the larger set. Finally, coordinates in a basis are unique: subtracting two expressions gives a relation in the basis and therefore zero differences between all coefficients. We will use these elementary consequences explicitly.</p>
+<h2 id="adding-one-independent-vector">Adding one independent vector</h2>
+<p><strong>Lemma.</strong> If <span class="math" data-tex="\(S\)">\(S\)</span> is independent and <span class="math" data-tex="\(v\notin S\)">\(v\notin S\)</span>, then <span class="math" data-tex="\(S\cup\{v\}\)">\(S\cup\{v\}\)</span> is independent exactly when <span class="math" data-tex="\(v\notin\operatorname{span}(S)\)">\(v\notin\operatorname{span}(S)\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(v=\sum_{i=1}^r a_i s_i\)">\(v=\sum_{i=1}^r a_i s_i\)</span>, combine repeated terms so the <span class="math" data-tex="\(s_i\)">\(s_i\)</span> are distinct. The equation</p>
+<span class="math math-display" data-tex="\[
+\sum_{i=1}^r a_i s_i-v=0
+\]">\[
+\sum_{i=1}^r a_i s_i-v=0
+\]</span>
+<p>is a nontrivial relation on distinct elements of <span class="math" data-tex="\(S\cup\{v\}\)">\(S\cup\{v\}\)</span>: the coefficient of <span class="math" data-tex="\(v\)">\(v\)</span> is <span class="math" data-tex="\(-1\ne0\)">\(-1\ne0\)</span>. Conversely, any nontrivial relation on that union must involve <span class="math" data-tex="\(v\)">\(v\)</span>, because <span class="math" data-tex="\(S\)">\(S\)</span> is independent. Write it as</p>
+<span class="math math-display" data-tex="\[
+\sum_{i=1}^r a_i s_i+bv=0.
+\]">\[
+\sum_{i=1}^r a_i s_i+bv=0.
+\]</span>
+<p>If <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, independence of <span class="math" data-tex="\(S\)">\(S\)</span> forces all other coefficients to vanish, a contradiction. Consequently <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+v=-\sum_{i=1}^r b^{-1}a_i s_i\in\operatorname{span}(S).
+\]">\[
+v=-\sum_{i=1}^r b^{-1}a_i s_i\in\operatorname{span}(S).
+\]</span>
+<p>This proves both implications. It also covers <span class="math" data-tex="\(S=\varnothing\)">\(S=\varnothing\)</span>: the only dependent singleton is <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The minus sign matters in the equality, even though changing every coefficient's sign does not change membership in a span.</p>
+<h2 id="exchanging-a-basis-vector">Exchanging a basis vector</h2>
+<p><strong>Lemma.</strong> Let <span class="math" data-tex="\(B=(b_1,\ldots,b_n)\)">\(B=(b_1,\ldots,b_n)\)</span> be a basis, and write <span class="math" data-tex="\(v=\sum_{j=1}^n c_jb_j\)">\(v=\sum_{j=1}^n c_jb_j\)</span>. If <span class="math" data-tex="\(c_i\ne0\)">\(c_i\ne0\)</span>, replacing <span class="math" data-tex="\(b_i\)">\(b_i\)</span> by <span class="math" data-tex="\(v\)">\(v\)</span> gives another basis.</p>
+<p><strong>Proof.</strong> Suppose</p>
+<span class="math math-display" data-tex="\[
+d_i v+\sum_{j\ne i}d_jb_j=0.
+\]">\[
+d_i v+\sum_{j\ne i}d_jb_j=0.
+\]</span>
+<p>Substitution expresses zero in the original basis. Its <span class="math" data-tex="\(b_i\)">\(b_i\)</span>-coefficient is <span class="math" data-tex="\(d_ic_i\)">\(d_ic_i\)</span>, so <span class="math" data-tex="\(d_i=0\)">\(d_i=0\)</span>. The other coefficients are then <span class="math" data-tex="\(d_j=0\)">\(d_j=0\)</span>. Thus the replacement family is independent. Moreover,</p>
+<span class="math math-display" data-tex="\[
+b_i=c_i^{-1}v-\sum_{j\ne i}c_i^{-1}c_jb_j.
+\]">\[
+b_i=c_i^{-1}v-\sum_{j\ne i}c_i^{-1}c_jb_j.
+\]</span>
+<p>Every old basis vector therefore belongs to the span of the replacement family. That family spans <span class="math" data-tex="\(V\)">\(V\)</span>, and hence is a basis. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="why-finite-dimension-bounds-independence">Why finite dimension bounds independence</h2>
+<p><strong>Theorem.</strong> If <span class="math" data-tex="\(V\)">\(V\)</span> has a basis with <span class="math" data-tex="\(n\)">\(n\)</span> elements, every independent subset of <span class="math" data-tex="\(V\)">\(V\)</span> has at most <span class="math" data-tex="\(n\)">\(n\)</span> elements. Consequently all bases of <span class="math" data-tex="\(V\)">\(V\)</span> have the same size.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, then <span class="math" data-tex="\(V=\{0\}\)">\(V=\{0\}\)</span>, whose only independent subset is empty. Suppose <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span> and, towards a contradiction, that an independent set contains distinct vectors <span class="math" data-tex="\(s_1,\ldots,s_{n+1}\)">\(s_1,\ldots,s_{n+1}\)</span>.</p>
+<p>Start with the given basis <span class="math" data-tex="\(B_0\)">\(B_0\)</span>. Inductively suppose that <span class="math" data-tex="\(B_r\)">\(B_r\)</span> is a basis containing <span class="math" data-tex="\(s_1,\ldots,s_r\)">\(s_1,\ldots,s_r\)</span> and <span class="math" data-tex="\(n-r\)">\(n-r\)</span> of the original basis vectors, where <span class="math" data-tex="\(0\le r&lt;n\)">\(0\le r&lt;n\)</span>. Express <span class="math" data-tex="\(s_{r+1}\)">\(s_{r+1}\)</span> in <span class="math" data-tex="\(B_r\)">\(B_r\)</span>. Some coefficient of one of the remaining original vectors must be nonzero: otherwise <span class="math" data-tex="\(s_{r+1}\)">\(s_{r+1}\)</span> would be in the span of <span class="math" data-tex="\(s_1,\ldots,s_r\)">\(s_1,\ldots,s_r\)</span>, contradicting independence. The exchange lemma replaces such an original vector by <span class="math" data-tex="\(s_{r+1}\)">\(s_{r+1}\)</span>. This constructs <span class="math" data-tex="\(B_{r+1}\)">\(B_{r+1}\)</span>.</p>
+<p>After <span class="math" data-tex="\(n\)">\(n\)</span> exchanges, <span class="math" data-tex="\((s_1,\ldots,s_n)\)">\((s_1,\ldots,s_n)\)</span> is a basis. It spans <span class="math" data-tex="\(s_{n+1}\)">\(s_{n+1}\)</span>, again contradicting independence. Thus there cannot be <span class="math" data-tex="\(n+1\)">\(n+1\)</span> distinct elements in an independent set. This proves the bound without presupposing that the set spans or is already finite.</p>
+<p>If another basis has <span class="math" data-tex="\(m\)">\(m\)</span> elements, the bound gives <span class="math" data-tex="\(m\le n\)">\(m\le n\)</span>. Applying the same argument with that basis gives <span class="math" data-tex="\(n\le m\)">\(n\le m\)</span>. Hence <span class="math" data-tex="\(m=n\)">\(m=n\)</span>; their common value is <span class="math" data-tex="\(\dim_k V\)">\(\dim_k V\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The bound applies to every independent set, not just to one that is already known to span.</p>
+<h2 id="extending-a-basis-and-choosing-a-complement">Extending a basis and choosing a complement</h2>
+<p><strong>Theorem.</strong> Every independent subset of <span class="math" data-tex="\(V\)">\(V\)</span> extends to a basis of <span class="math" data-tex="\(V\)">\(V\)</span>. Every subspace <span class="math" data-tex="\(U\subseteq V\)">\(U\subseteq V\)</span> has a finite basis, which extends to one of <span class="math" data-tex="\(V\)">\(V\)</span>.</p>
+<p><strong>Proof.</strong> An independent set <span class="math" data-tex="\(S\)">\(S\)</span> has at most <span class="math" data-tex="\(n=\dim_k V\)">\(n=\dim_k V\)</span> elements. If it does not span <span class="math" data-tex="\(V\)">\(V\)</span>, choose a vector outside its span. The first lemma says that adjoining it preserves independence. Repeat whenever the span is still not <span class="math" data-tex="\(V\)">\(V\)</span>. Each step increases the finite cardinality by one. The preceding theorem makes more than <span class="math" data-tex="\(n-|S|\)">\(n-|S|\)</span> additions impossible, so the process must reach a basis.</p>
+<p>For a subspace <span class="math" data-tex="\(U\)">\(U\)</span>, start with the empty set and choose each new vector in <span class="math" data-tex="\(U\)">\(U\)</span> outside the current span. These sets are independent in <span class="math" data-tex="\(V\)">\(V\)</span>, so the same bound forces termination in a spanning independent set of <span class="math" data-tex="\(U\)">\(U\)</span>. Extend this basis to one of <span class="math" data-tex="\(V\)">\(V\)</span> by the first part. Only finitely many choices are needed. If <span class="math" data-tex="\(U=0\)">\(U=0\)</span>, its basis is empty; if <span class="math" data-tex="\(U=V\)">\(U=V\)</span>, there are no extra basis vectors. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary.</strong> Every subspace of <span class="math" data-tex="\(V\)">\(V\)</span> is the image of a linear projection. More precisely, there are linear maps <span class="math" data-tex="\(i:U\to V\)">\(i:U\to V\)</span> and <span class="math" data-tex="\(p:V\to U\)">\(p:V\to U\)</span> with <span class="math" data-tex="\(i\)">\(i\)</span> the inclusion and <span class="math" data-tex="\(pi=1_U\)">\(pi=1_U\)</span>. The endomorphism <span class="math" data-tex="\(p_0=ip\)">\(p_0=ip\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+p_0^2=p_0,\qquad\operatorname{im}p_0=U,
+\qquad V=U\oplus\ker p_0.
+\]">\[
+p_0^2=p_0,\qquad\operatorname{im}p_0=U,
+\qquad V=U\oplus\ker p_0.
+\]</span>
+<p><strong>Proof.</strong> Choose a basis <span class="math" data-tex="\((u_1,\ldots,u_r)\)">\((u_1,\ldots,u_r)\)</span> of <span class="math" data-tex="\(U\)">\(U\)</span> and extend it to
+<span class="math" data-tex="\((u_1,\ldots,u_r,w_1,\ldots,w_{n-r})\)">\((u_1,\ldots,u_r,w_1,\ldots,w_{n-r})\)</span> of <span class="math" data-tex="\(V\)">\(V\)</span>. Unique coordinates define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+v&amp;=\sum_{i=1}^r a_i u_i+\sum_{j=1}^{n-r}b_jw_j,\\
+p(v)&amp;=\sum_{i=1}^r a_i u_i.
+\end{aligned}
+\]">\[
+\begin{aligned}
+v&amp;=\sum_{i=1}^r a_i u_i+\sum_{j=1}^{n-r}b_jw_j,\\
+p(v)&amp;=\sum_{i=1}^r a_i u_i.
+\end{aligned}
+\]</span>
+<p>Coordinates of a sum are the sums of the coordinates, and coordinates of a scalar multiple are the scalar multiples of the coordinates, again by uniqueness. Therefore <span class="math" data-tex="\(p\)">\(p\)</span> is linear. It fixes <span class="math" data-tex="\(U\)">\(U\)</span>, which gives <span class="math" data-tex="\(pi=1_U\)">\(pi=1_U\)</span>, <span class="math" data-tex="\(p_0^2=p_0\)">\(p_0^2=p_0\)</span>, and <span class="math" data-tex="\(\operatorname{im}p_0=U\)">\(\operatorname{im}p_0=U\)</span>. Its kernel is the span of the <span class="math" data-tex="\(w_j\)">\(w_j\)</span>. For every <span class="math" data-tex="\(v\)">\(v\)</span>,</p>
+<span class="math math-display" data-tex="\[
+v=p_0v+(v-p_0v),\qquad p_0(v-p_0v)=0.
+\]">\[
+v=p_0v+(v-p_0v),\qquad p_0(v-p_0v)=0.
+\]</span>
+<p>If <span class="math" data-tex="\(u\in U\cap\ker p_0\)">\(u\in U\cap\ker p_0\)</span>, then <span class="math" data-tex="\(u=p_0u=0\)">\(u=p_0u=0\)</span>. This proves the direct sum. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is generally no distinguished choice of <span class="math" data-tex="\(p_0\)">\(p_0\)</span>. In the displayed adapted basis its matrix is <span class="math" data-tex="\(\operatorname{diag}(I_r,0)\)">\(\operatorname{diag}(I_r,0)\)</span>. A different complement can give a different projection onto the same subspace.</p>
+<h2 id="the-exact-step-used-in-representation-theory">The exact step used in representation theory</h2>
+<p>In <a href="../../courses/RT-FIN/representations-and-complete-reducibility.html#theorem-2-3">Representations and complete reducibility</a>, Theorem 2.3 begins by extending a basis of an invariant subspace <span class="math" data-tex="\(U\)">\(U\)</span>, then defining a projection <span class="math" data-tex="\(p_0\)">\(p_0\)</span>. The preceding corollary supplies exactly this construction, over every field in that theorem, including finite fields. Exercise 5 applies the same construction to its isotypic subspace <span class="math" data-tex="\(S\)">\(S\)</span>. No inner product or orthogonal projection is needed for either initial construction.</p>
+<p>The representation-theoretic averaging has an additional condition: <span class="math" data-tex="\(|G|\)">\(|G|\)</span> must be invertible in <span class="math" data-tex="\(k\)">\(k\)</span>. If <span class="math" data-tex="\(U\)">\(U\)</span> is invariant, put</p>
+<span class="math math-display" data-tex="\[
+P=\frac{1}{|G|}\sum_{g\in G}\rho(g)p_0\rho(g^{-1}).
+\]">\[
+P=\frac{1}{|G|}\sum_{g\in G}\rho(g)p_0\rho(g^{-1}).
+\]</span>
+<p>Here each summand maps into <span class="math" data-tex="\(U\)">\(U\)</span> and acts as the identity on <span class="math" data-tex="\(U\)">\(U\)</span>. Hence <span class="math" data-tex="\(P(V)\subseteq U\)">\(P(V)\subseteq U\)</span> and <span class="math" data-tex="\(P|_U=1_U\)">\(P|_U=1_U\)</span>. Conjugation by <span class="math" data-tex="\(\rho(h)\)">\(\rho(h)\)</span> permutes the summands by <span class="math" data-tex="\(g\mapsto hg\)">\(g\mapsto hg\)</span>, so <span class="math" data-tex="\(P\)">\(P\)</span> commutes with the group action. Also <span class="math" data-tex="\(P^2=P\)">\(P^2=P\)</span>, because <span class="math" data-tex="\(P\)">\(P\)</span> fixes its image. The decomposition <span class="math" data-tex="\(v=Pv+(v-Pv)\)">\(v=Pv+(v-Pv)\)</span> gives the invariant complement <span class="math" data-tex="\(\ker P\)">\(\ker P\)</span>. The requirement that <span class="math" data-tex="\(|G|\)">\(|G|\)</span> be invertible belongs here, not to basis extension.</p>
+<h2 id="worked-example-and-exercises">Worked example and exercises</h2>
+<p><strong>Example.</strong> In <span class="math" data-tex="\(k^2\)">\(k^2\)</span>, take <span class="math" data-tex="\(U=k(1,0)\)">\(U=k(1,0)\)</span>. For every <span class="math" data-tex="\(a\in k\)">\(a\in k\)</span>, the vector <span class="math" data-tex="\((a,1)\)">\((a,1)\)</span> is a complement basis vector, and the resulting projection is</p>
+<span class="math math-display" data-tex="\[
+p_a(x,y)=(x-ay,0),\qquad
+[p_a]=\begin{pmatrix}1&amp;-a\\0&amp;0\end{pmatrix}.
+\]">\[
+p_a(x,y)=(x-ay,0),\qquad
+[p_a]=\begin{pmatrix}1&amp;-a\\0&amp;0\end{pmatrix}.
+\]</span>
+<p>Its kernel is <span class="math" data-tex="\(k(a,1)\)">\(k(a,1)\)</span>. Direct substitution gives <span class="math" data-tex="\(p_a^2=p_a\)">\(p_a^2=p_a\)</span>. These distinct projections show why choosing a subspace does not canonically choose a complement.</p>
+<p><strong>Exercise 1.</strong> Over a field, extend <span class="math" data-tex="\(u=(1,1,0)\)">\(u=(1,1,0)\)</span>, <span class="math" data-tex="\(v=(0,1,1)\)">\(v=(0,1,1)\)</span> to a basis of <span class="math" data-tex="\(k^3\)">\(k^3\)</span>, and write a projection onto their span.</p>
+<p><strong>Solution.</strong> A relation <span class="math" data-tex="\(au+bv=0\)">\(au+bv=0\)</span> gives <span class="math" data-tex="\(a=0\)">\(a=0\)</span> in the first coordinate and <span class="math" data-tex="\(b=0\)">\(b=0\)</span> in the third. The vector <span class="math" data-tex="\(e_2=(0,1,0)\)">\(e_2=(0,1,0)\)</span> is outside their span: the same two coordinates would force both coefficients to vanish. Thus <span class="math" data-tex="\((u,v,e_2)\)">\((u,v,e_2)\)</span> is a basis. In fact</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(x,y,z)&amp;=xu+zv+(y-x-z)e_2,\\
+p_0(x,y,z)&amp;=(x,x+z,z).
+\end{aligned}
+\]">\[
+\begin{aligned}
+(x,y,z)&amp;=xu+zv+(y-x-z)e_2,\\
+p_0(x,y,z)&amp;=(x,x+z,z).
+\end{aligned}
+\]</span>
+<p>This formula is valid in every characteristic. It fixes <span class="math" data-tex="\(u,v\)">\(u,v\)</span>, kills <span class="math" data-tex="\(e_2\)">\(e_2\)</span>, and satisfies <span class="math" data-tex="\(p_0^2=p_0\)">\(p_0^2=p_0\)</span>.</p>
+<p><strong>Exercise 2.</strong> Why does basis extension not by itself prove that every invariant subspace has an invariant complement in characteristic <span class="math" data-tex="\(p\)">\(p\)</span>?</p>
+<p><strong>Solution.</strong> Over a field of characteristic <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span>, let a generator of <span class="math" data-tex="\(C_p\)">\(C_p\)</span> act on <span class="math" data-tex="\(k^2\)">\(k^2\)</span> by</p>
+<span class="math math-display" data-tex="\[
+A=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}=I+N.
+\]">\[
+A=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}=I+N.
+\]</span>
+<p>Since <span class="math" data-tex="\(N^2=0\)">\(N^2=0\)</span>, induction gives <span class="math" data-tex="\((I+N)^m=I+mN\)">\((I+N)^m=I+mN\)</span>, and thus <span class="math" data-tex="\(A^p=I\)">\(A^p=I\)</span>. The line <span class="math" data-tex="\(U=ke_1\)">\(U=ke_1\)</span> is invariant. Any complementary line has a generator <span class="math" data-tex="\(w=(a,1)\)">\(w=(a,1)\)</span>. If it were invariant, <span class="math" data-tex="\(Aw=(a+1,1)\)">\(Aw=(a+1,1)\)</span> would equal <span class="math" data-tex="\(cw\)">\(cw\)</span>. The second coordinate forces <span class="math" data-tex="\(c=1\)">\(c=1\)</span>, while the first then forces <span class="math" data-tex="\(1=0\)">\(1=0\)</span>, impossible. Ordinary linear complements exist; invariant ones do not in this example. Averaging cannot repair them because the scalar <span class="math" data-tex="\(|C_p|=p\)">\(|C_p|=p\)</span> is zero in <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p><strong>Exercise 3.</strong> Which part of the proof prevents it from asserting basis extension for arbitrary infinite-dimensional spaces?</p>
+<p><strong>Solution.</strong> The finite bound on the size of an independent set makes the process of adding vectors terminate. With no finite spanning basis, this argument supplies no such bound and therefore no termination claim. An infinite-dimensional theorem needs a different argument and any additional set-theoretic assumptions must be stated. Nothing in this bridge claims that theorem.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>Jim Hefferon, <em>Linear Algebra</em>, programme source edition: <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/readers/hefferon-linear-algebra/sources/vs2.tex">linear independence</a>.</li>
+<li>Jim Hefferon, <em>Linear Algebra</em>, programme source edition: <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/readers/hefferon-linear-algebra/sources/vs3.tex">bases, exchange and dimension</a>.</li>
+</ul>
+<h2 id="continue-learning">Continue learning</h2>
+<p>The <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/readers/hefferon-foundations/">programme's foundation reader</a> supplies the broader treatment. The selected source proofs included with this lesson preserve the exact source locations.</p>
+<p>The field-general formulation is justified by the displayed algebraic proofs, including the condition <span class="math" data-tex="\(0\ne1\)">\(0\ne1\)</span>. For the additional structure provided by a real or complex inner product, continue with <span class="unlinked">Orthonormal bases and orthogonal projections</span>.</p>
+<p>The text of this page is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>. Separately linked lessons retain their own authorship and terms.</p>
+</article></main></body></html>

@@ -11,7 +11,7 @@ This lesson proves the facts about weak topologies that the operator-algebra les
 - the Krein–Milman theorem and Milman's converse;
 - the Eberlein–Šmulian theorem, which says that weak compactness of a subset of a Banach space can be tested with sequences.
 
-It builds on the lesson Hahn–Banach, Baire and the basic theorems on Banach spaces, cited below as *the previous lesson*.
+It builds on the lesson [Hahn–Banach, Baire and the basic theorems on Banach spaces](hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.md), cited below as *the previous lesson*.
 
 ## Conventions
 

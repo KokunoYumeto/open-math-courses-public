@@ -41,7 +41,7 @@ The measure prerequisites are proved in [Measure and Hilbert space tools for Haa
 
 ### Cardinality and elementary topology
 
-Choice is understood throughout, as in Section 1 of the Hahn–Banach lesson. Its Theorem 8.2 and Proposition 8.3 give the cardinal facts used here: \(|X|<|\mathcal P(X)|=2^{|X|}\), \((\kappa^\lambda)^\mu=\kappa^{\lambda\cdot\mu}\), and \((2^{\aleph_0})^{\aleph_0}=2^{\aleph_0}\). The pairing of countable indices is independent of whether they start at zero or one.
+Choice is understood throughout, as in [Section 1 of the Hahn–Banach lesson](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#oa-fnd-hb-01). Its [Theorem 8.2 and Proposition 8.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#oa-fnd-hb-08) give the cardinal facts used here: \(|X|<|\mathcal P(X)|=2^{|X|}\), \((\kappa^\lambda)^\mu=\kappa^{\lambda\cdot\mu}\), and \((2^{\aleph_0})^{\aleph_0}=2^{\aleph_0}\). The pairing of countable indices is independent of whether they start at zero or one.
 
 Translations and inversion in a topological group are homeomorphisms, by Proposition 7.1(1) of the Haar lesson. Two disjoint compact sets in a Hausdorff space have disjoint open neighbourhoods; its Theorem 2.4 proof, part (3), gives the finite-cover argument. We will also use the following metric fact.
 
@@ -686,7 +686,7 @@ For a Polish group and a closed subgroup, the quotient must first be shown Polis
 
 A Borel section answers a measurable question. For a closed subgroup we can say more: the quotient topology itself is Polish. A surjective continuous homomorphism between Polish groups also carries open sets to open sets. These two assertions have different proofs. Category gives the open mapping theorem; completeness of an open image gives the quotient theorem.
 
-We use the Baire category theorem from Hahn–Banach, Baire and the basic theorems on Banach spaces. A set is *nowhere dense* if its closure has empty interior, and *meagre* if it is a countable union of nowhere dense sets. It is *comeagre in an open set* if its complement there is meagre. A set has the *Baire property* if its symmetric difference with an open set is meagre. Translations, inversion and other homeomorphisms preserve these notions.
+We use the Baire category theorem from [Hahn–Banach, Baire and the basic theorems on Banach spaces](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#oa-fnd-hb-03). A set is *nowhere dense* if its closure has empty interior, and *meagre* if it is a countable union of nowhere dense sets. It is *comeagre in an open set* if its complement there is meagre. A set has the *Baire property* if its symmetric difference with an open set is meagre. Translations, inversion and other homeomorphisms preserve these notions.
 
  Invariant metrization is the Birkhoff–Kakutani theorem; the game criterion for completeness is due to Choquet. We prove the forms needed here.
 

@@ -4,7 +4,7 @@ Four mathematical readings with editable sources and native MathML:
 
 - [Analytic finiteness and preparation](analytic-finiteness-for-preparation.html): convergent division and finiteness, analytic units and coordinate changes, the full two-coordinate reduction and dimension induction, global analytic cells, complement and convergent Puiseux expansions with parameters.
 - [Weierstrass preparation and division](weierstrass-preparation-and-division.html): preparation, division with constants independent of the dividend, Noetherianity and four solved exercises.
-- Curve selection and Łojasiewicz inequalities: value-level gradient bounds, residual inequalities, two-sided analytic curves, a separate radial estimate and definable choice, with six complete exercise solutions.
+- [Curve selection and Łojasiewicz inequalities](curve-selection-and-lojasiewicz.html): value-level gradient bounds, residual inequalities, two-sided analytic curves, a separate radial estimate and definable choice, with six complete exercise solutions.
 - [Exercises on preparation](preparation-exercises.html): why a bounded function can require an inverse power, and how even substitutions interact with parameter-dependent poles. Both have complete solutions.
 
 The preparation proof specifies the classical projective product definition of global subanalytic sets. Its dimension induction is closed; parameterized series retain analytic coefficients, positive variable radii and the even cleared exponents needed for a two-sided analytic substitution. The curve reading uses these proved inputs.
@@ -13,7 +13,7 @@ The analytic finiteness reading is original CC0 text citing Guillaume Valette's 
 
 These readings are a selection from Constructible and perverse sheaves. Self-checked by the writing AI.
 
-Attribution and reuse terms · Provenance · Editable sources
+[Attribution and reuse terms](LICENSE.txt) · Provenance · Editable sources
 
 Rebuild with Python 3 and Pandoc: run python build/build_reader.py in this directory. Wide formulas scroll within the page on small screens.
 

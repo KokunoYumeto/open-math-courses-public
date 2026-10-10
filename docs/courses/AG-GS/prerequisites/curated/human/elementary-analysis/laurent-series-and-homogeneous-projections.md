@@ -8,7 +8,7 @@ A Laurent series distinguishes two kinds of behaviour: powers that extend throug
 
 Read [Cauchy's theorem for cycles and its consequences](../../courses/foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html): Lemma 0.1 proves integration and interchange on compact rectangles; Lemma 1.1 computes the index of a circle; Theorem 4.2 proves the cycle formula and integral theorem. Lemma 3.1 and Corollary 3.5 justify differentiated power series and locally uniform holomorphic limits. Only the scalar assertions are used here, not the later Banach-space extension.
 
-For several variables, Holomorphic functions of several variables, Theorems 1.2 and 2.1 supplies the iterated disc formula and local power-series interpretation. Neither prerequisite uses projective cohomology.
+For several variables, [Holomorphic functions of several variables, Theorems 1.2 and 2.1](../../courses/complex-analytic-spaces-and-coherent-sheaves/holomorphic-functions-of-several-variables.html#1-polydiscs-and-the-definition-of-holomorphy) supplies the iterated disc formula and local power-series interpretation. Neither prerequisite uses projective cohomology.
 
 We say that a series of functions is **normally convergent** on an open set if, for every compact subset \(K\), the sum of the suprema of the absolute values of its terms on \(K\) is finite. This implies absolute uniform convergence, permits arbitrary regrouping and permits termwise integration along compact piecewise smooth paths.
 

@@ -19,7 +19,7 @@ In particular, [Blackadar, I.8.3.1–3] uses \(\operatorname{index}(T)=\dim\ker 
 
 **Lemma 0.1 (Baire).** If a nonempty complete metric space is a countable union of closed sets, at least one of them has nonempty interior.
 
-**Proof.** Use Theorem 3.1 of Hahn–Banach, Baire and the basic theorems on Banach spaces, whose proof shows that every countable intersection of dense open subsets of a nonempty complete metric space is dense. If all the closed sets in the stated cover had empty interior, their complements would be dense open sets. The intersection of those complements would be both dense and empty, since the closed sets cover the space. A dense subset of a nonempty space cannot be empty. This contradiction proves the assertion. \(\square\)
+**Proof.** Use Theorem 3.1 of [Hahn–Banach, Baire and the basic theorems on Banach spaces](../../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#oa-fnd-hb-03), whose proof shows that every countable intersection of dense open subsets of a nonempty complete metric space is dense. If all the closed sets in the stated cover had empty interior, their complements would be dense open sets. The intersection of those complements would be both dense and empty, since the closed sets cover the space. A dense subset of a nonempty space cannot be empty. This contradiction proves the assertion. \(\square\)
 
 **Lemma 0.2 (Bounded inverse).** A bounded linear bijection \(T:X\to Y\) between Banach spaces has a bounded inverse.
 

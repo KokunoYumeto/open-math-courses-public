@@ -4,7 +4,7 @@
 
 To show that a \(\bar\partial\)-closed form is \(\bar\partial\)-exact on a whole domain, not only near each point, one needs a global method. L. Hörmander's method treats \(\bar\partial\) as a closed unbounded operator between weighted \(L^2\) spaces. An integration by parts shows that the weight \(e^{-\varphi}\) contributes the complex Hessian of \(\varphi\) to an a priori inequality; when \(\varphi\) is sufficiently strictly plurisubharmonic, the inequality gives existence of solutions with estimates, by the Riesz representation theorem. This lesson proves the resulting existence theorem on every open set of \(\mathbf C^n\) that has a smooth strictly plurisubharmonic exhaustion. The next lesson draws the consequences for holomorphic functions and coherent sheaves.
 
-We use Plurisubharmonic functions and Stein manifolds. From analysis we use Lebesgue integration, the space \(L^2\) and its completeness, convolution with mollifiers, and distributions on open subsets of \(\mathbf R^{2n}\), as in the core course [Measure and Integration](https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10), and the Riesz representation theorem for Hilbert spaces [Hilbert spaces and compact operators](course:foundations-of-von-neumann-algebras/hilbert-spaces-and-compact-operators).
+We use [Plurisubharmonic functions and Stein manifolds](plurisubharmonic-functions-and-stein-manifolds.md). From analysis we use Lebesgue integration, the space \(L^2\) and its completeness, convolution with mollifiers, and distributions on open subsets of \(\mathbf R^{2n}\), as in the core course [Measure and Integration](https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10), and the Riesz representation theorem for Hilbert spaces [Hilbert spaces and compact operators](course:foundations-of-von-neumann-algebras/hilbert-spaces-and-compact-operators).
 
 Basic references are [Demailly] and [Hörmander 1965].
 
@@ -27,7 +27,7 @@ Then for every \(g\in\ker S\) there is \(u\in H_1\) with \(\|u\|^2\leq C^{-1}\|g
 |\langle g,f\rangle|=|\langle g,f_1\rangle|\leq\|g\|\,\|f_1\|\leq C^{-1/2}\|g\|\,\|T^*f_1\|=C^{-1/2}\|g\|\,\|T^*f\| .
 \]
 
-So \(T^*f\mapsto\langle f,g\rangle\) is a well-defined conjugate-linear functional on \(\operatorname{Im}T^*\) of norm at most \(C^{-1/2}\|g\|\). Extend it by continuity to the closure and by zero on the orthogonal complement; the Riesz representation theorem gives \(u\) with \(\langle T^*f,u\rangle=\langle f,g\rangle\) and \(\|u\|\leq C^{-1/2}\|g\|\). Conjugating gives the claim. \(\square\)
+With inner products linear in the first slot, \(T^*f\mapsto\langle f,g\rangle\) is a well-defined linear functional on \(\operatorname{Im}T^*\) of norm at most \(C^{-1/2}\|g\|\). Extend it by continuity to the closure and by zero on the orthogonal complement; the Riesz representation theorem gives \(u\) with \(\langle T^*f,u\rangle=\langle f,g\rangle\) and \(\|u\|\leq C^{-1/2}\|g\|\). Conjugating gives the claim. \(\square\)
 
 ## 2. Weighted spaces and the operator \(\bar\partial\)
 
@@ -165,7 +165,7 @@ by (5.1). Hence \(\|T^*f\|^2_{\varphi_1}+\|Sf\|^2_{\varphi_3}\geq\|f\|^2_{\varph
 
 (2) In (1), choose \(\chi\) so that in addition \(\chi(\nu-1)\geq\nu-1+\log\bigl(1+\int_{\{\psi_0\leq\nu\}}|g|^2e^{\psi}\,d\lambda\bigr)\) for every integer \(\nu\), which is a countable family of lower bounds on an increasing function. On the compact shell \(\{\nu-1\leq\psi_0<\nu\}\) we have \(e^{-\chi\circ\psi_0}\leq e^{-\chi(\nu-1)}\), so the integral of \(|g|^2e^{\psi-\varphi}\) over the shell is at most \(e^{-(\nu-1)}\), and \(g\in L^2(\varphi-\psi)\). Theorem 5.1 gives \(u\in L^2(\varphi-2\psi)\), which has locally square integrable coefficients. \(\square\)
 
-*Reference:* [Hörmander 1965] introduced the method and the three weights (3.2); the presentation of Section 1 follows [Demailly].
+*Reference:* For the weighted L² method, see [Hörmander 1965], §§1.1–1.2 and 2.1–2.2; the presentation of Section 1 follows [Demailly]. The three weights (3.2) are used here for the compact-support density argument.
 
 ## 6. Exercises
 
@@ -179,7 +179,7 @@ by (5.1). Hence \(\|T^*f\|^2_{\varphi_1}+\|Sf\|^2_{\varphi_3}\geq\|f\|^2_{\varph
 
 **Exercise 6.3.** Show that a weight is needed: there is a smooth compactly supported function \(g\) on \(\mathbf C\) for which \(\partial u/\partial\bar z=g\) has no solution \(u\in L^2(\mathbf C)\).
 
-*Solution.* Let \(g\geq0\) be smooth with support in \(\{|z|<1\}\) and \(\int g\,d\lambda=1\), and suppose \(u\in L^2(\mathbf C)\) solves the equation. With \(v=-\frac1\pi\int g(\zeta)(\zeta-z)^{-1}d\lambda(\zeta)\), which is smooth with \(\partial v/\partial\bar z=g\) by The Dolbeault complex, Lemma 2.1, \(u-v\) satisfies \(\partial(u-v)/\partial\bar z=0\) in the sense of distributions, so it is holomorphic (next lesson, Lemma 1.2), and \(u\) is smooth. On \(\{|z|>1\}\), \(u\) is holomorphic with a Laurent expansion \(\sum_ka_kz^k\). By orthogonality of the powers on circles, \(\int_{|z|>1}|u|^2d\lambda=\sum_k|a_k|^2\int_{|z|>1}|z|^{2k}d\lambda\), and the integrals are infinite for \(k\geq-1\); so \(a_{-1}=0\). But by Green's formula, for \(R>1\), \(\int_{|z|=R}u\,dz=\int_{|z|<R}\frac{\partial u}{\partial\bar z}\,d\bar z\wedge dz=2i\int g\,d\lambda=2i\), so \(a_{-1}=\frac1{2\pi i}\int_{|z|=R}u\,dz=\frac1\pi\neq0\), a contradiction.
+*Solution.* Let \(g\geq0\) be smooth with support in \(\{|z|<1\}\) and \(\int g\,d\lambda=1\), and suppose \(u\in L^2(\mathbf C)\) solves the equation. With \(v=-\frac1\pi\int g(\zeta)(\zeta-z)^{-1}d\lambda(\zeta)\), which is smooth with \(\partial v/\partial\bar z=g\) by [The Dolbeault complex, Lemma 2.1](the-dolbeault-complex.md#2-the-dolbeault-grothendieck-lemma), \(u-v\) satisfies \(\partial(u-v)/\partial\bar z=0\) in the sense of distributions, so it is holomorphic (next lesson, Lemma 1.2), and \(u\) is smooth. On \(\{|z|>1\}\), \(u\) is holomorphic with a Laurent expansion \(\sum_ka_kz^k\). By orthogonality of the powers on circles, \(\int_{|z|>1}|u|^2d\lambda=\sum_k|a_k|^2\int_{|z|>1}|z|^{2k}d\lambda\), and the integrals are infinite for \(k\geq-1\); so \(a_{-1}=0\). But by Green's formula, for \(R>1\), \(\int_{|z|=R}u\,dz=\int_{|z|<R}\frac{\partial u}{\partial\bar z}\,d\bar z\wedge dz=2i\int g\,d\lambda=2i\), so \(a_{-1}=\frac1{2\pi i}\int_{|z|=R}u\,dz=\frac1\pi\neq0\), a contradiction.
 
 ## References
 

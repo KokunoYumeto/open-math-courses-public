@@ -720,9 +720,9 @@ The following lessons prove the prerequisite results used here. The analytic and
 | Local orientations, dimension and integration | The integral Euclidean generator, its coordinate-sign action and natural module-coefficient comparison |
 | [Weierstrass preparation and division](../../analytic-finiteness-and-preparation/weierstrass-preparation-and-division.html) | Convergent preparation and division, analytic Noetherianity and finite scalar polynomial splitting |
 | [Cauchy's theorem for cycles and its consequences](../../foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html) | Scalar integration, Goursat, Cauchy, Taylor, Morera and the identity theorem |
-| Holomorphic functions of several variables | Bounded removal and the connected analytic complement used in IHA1 |
-| Cartan coherence and complex spaces | Coherent ideals, local quotients and their finite presentations |
-| Analytic germs, local parametrization and the Nullstellensatz | Reduced analytic ideals and the analytic Nullstellensatz |
+| [Holomorphic functions of several variables](../../complex-analytic-spaces-and-coherent-sheaves/holomorphic-functions-of-several-variables.html) | Bounded removal and the connected analytic complement used in IHA1 |
+| [Cartan coherence and complex spaces](../../complex-analytic-spaces-and-coherent-sheaves/cartans-coherence-theorem-and-complex-spaces.html) | Coherent ideals, local quotients and their finite presentations |
+| [Analytic germs, local parametrization and the Nullstellensatz](../../complex-analytic-spaces-and-coherent-sheaves/analytic-germs-local-parametrization-and-the-nullstellensatz.html) | Reduced analytic ideals and the analytic Nullstellensatz |
 | [Noetherian and Artinian rings](../../AG-CA/noetherian-and-artinian-rings.html) | Finite modules, Hilbert basis, length, Artin–Rees and its induced filtration |
 | [Graded modules and Hilbert–Samuel functions](../../AG-CA/graded-modules-and-hilbert-samuel-functions.html) | Hilbert–Serre and Hilbert–Samuel polynomials and their leading coefficients |
 

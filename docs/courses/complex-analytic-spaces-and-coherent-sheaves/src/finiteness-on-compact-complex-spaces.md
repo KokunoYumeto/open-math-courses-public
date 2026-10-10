@@ -4,7 +4,7 @@
 
 On a compact complex space, the cohomology of every coherent analytic sheaf is finite-dimensional in every degree. This theorem of H. Cartan and J.-P. Serre is the analytic counterpart of the finiteness of coherent cohomology on proper schemes, and it is the input that makes Serre's comparison of algebraic and analytic geometry work for arbitrary coherent analytic sheaves. The proof compares two finite coverings by small Stein pieces, one inside the other: both compute the cohomology, and the comparison map is compact, so Schwartz's theorem gives finiteness. The only new point is that finite intersections of the pieces, which may be embedded in different charts, are again acyclic; this follows from Theorem B applied on products of balls. The last section lists where the analytic results of this course are used in the proof of the comparison theorems.
 
-We use Cartan's coherence theorem and complex spaces, [Fréchet spaces of sections and Schwartz's theorem](frechet-spaces-of-sections-and-schwartzs-theorem.md) and [Theorems A and B on Stein manifolds](theorems-a-and-b-on-stein-manifolds.md). Čech cohomology of a covering with acyclic finite intersections computes sheaf cohomology [Stacks, Tag 01ET](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/cohomology.html#cohomology-lemma-cech-spectral-sequence-application).
+We use [Cartan's coherence theorem and complex spaces](cartans-coherence-theorem-and-complex-spaces.md), [Fréchet spaces of sections and Schwartz's theorem](frechet-spaces-of-sections-and-schwartzs-theorem.md) and [Theorems A and B on Stein manifolds](theorems-a-and-b-on-stein-manifolds.md). Čech cohomology of a covering with acyclic finite intersections computes sheaf cohomology [Stacks, Tag 01ET](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/cohomology.html#cohomology-lemma-cech-spectral-sequence-application).
 
 Basic references are [Cartan–Serre 1953], [Demailly] and [Serre 1956].
 
@@ -18,7 +18,7 @@ Let \(X\) be a complex space. A **Stein piece** of \(X\) is an open set \(U\subs
 
 *Local structure.* Let \(x\in U\). The components of \(e_2,\ldots,e_k\) are holomorphic functions on \(U\) near \(x\); through the embedding \(e_1\) they are, near \(e_1(x)\), restrictions of holomorphic functions \(h\) on an open set of \(V_1\), because a local model's structure sheaf is a quotient of the ambient one. Near \(e(x)\), the image of \(U\) is therefore the graph \(\{(y,h(y))\}\) of \(h\) over the local model \(e_1(U)\subset V_1\), which is the local model in \(V_1\times\mathbf C^{N_2+\cdots+N_k}\) defined by the ideal of \(e_1(U_1)\) together with the equations \(w-h(y)\); projection to \(V_1\) identifies it with \(e_1(U)\) as complex spaces. So \(e\) is an isomorphism of \(U\) onto a closed complex subspace of \(V_1\times\cdots\times V_k\), whose ideal sheaf, defined locally in this way, is coherent.
 
-*Vanishing.* The product of Stein manifolds is Stein Plurisubharmonic functions and Stein manifolds, Proposition 2.2. By Cartan's coherence theorem and complex spaces, Theorem 3.2(3), \(e_*\mathcal S\) is coherent and \(H^j(U,\mathcal S)=H^j(V_1\times\cdots\times V_k,e_*\mathcal S)\), which vanishes for \(j\geq1\) by [Theorems A and B on Stein manifolds, Theorem 4.1](theorems-a-and-b-on-stein-manifolds.md#4-theorem-b). \(\square\)
+*Vanishing.* The product of Stein manifolds is Stein [Plurisubharmonic functions and Stein manifolds, Proposition 2.2](plurisubharmonic-functions-and-stein-manifolds.md#2-stein-manifolds). By [Cartan's coherence theorem and complex spaces, Theorem 3.2(3)](cartans-coherence-theorem-and-complex-spaces.md#3-complex-spaces), \(e_*\mathcal S\) is coherent and \(H^j(U,\mathcal S)=H^j(V_1\times\cdots\times V_k,e_*\mathcal S)\), which vanishes for \(j\geq1\) by [Theorems A and B on Stein manifolds, Theorem 4.1](theorems-a-and-b-on-stein-manifolds.md#4-theorem-b). \(\square\)
 
 **Corollary 1.2.** Every covering of a complex space by Stein pieces is a Leray covering for every coherent sheaf: its Čech complex computes the sheaf cohomology. In particular, if \(X\) is covered by \(m\) Stein pieces, then \(H^q(X,\mathcal S)=0\) for every coherent \(\mathcal S\) and every \(q\geq m\).
 
@@ -47,11 +47,11 @@ The proof of Serre's comparison theorems and Chow's theorem in [Complex analytic
 | Result | Where it is proved |
 |---|---|
 | Weierstrass preparation and division; \(\mathcal O_n\) Noetherian with completion the formal power series ring | [Complex analytic spaces and analytification, Section 2](course:AG-QC/complex-analytic-spaces-and-analytification#2-local-analytic-algebra) |
-| \(\mathcal O_n\) is a unique factorization domain | The local ring of holomorphic germs, Theorem 3.1 |
+| \(\mathcal O_n\) is a unique factorization domain | [The local ring of holomorphic germs, Theorem 3.1](the-local-ring-of-holomorphic-germs.md#3-unique-factorization) |
 | Oka's coherence theorem | [Coherent sheaves and Oka's coherence theorem, Theorem 2.1](coherent-sheaves-and-okas-theorem.md#2-oka-s-coherence-theorem) |
-| The local analytic Nullstellensatz | Analytic germs, local parametrization and the Nullstellensatz, Theorem 5.1 |
-| Finite projections of irreducible germs; local dimension equals the Krull dimension of the local ring | Analytic germs, Theorems 4.1 and 5.4 |
-| Cartan's coherence of vanishing ideals of analytic subsets, including singular ones | Cartan's coherence theorem and complex spaces, Theorem 1.1 |
+| The local analytic Nullstellensatz | [Analytic germs, local parametrization and the Nullstellensatz, Theorem 5.1](analytic-germs-local-parametrization-and-the-nullstellensatz.md#5-the-nullstellensatz-and-dimension) |
+| Finite projections of irreducible germs; local dimension equals the Krull dimension of the local ring | [Analytic germs, Theorems 4.1 and 5.4](analytic-germs-local-parametrization-and-the-nullstellensatz.md#4-the-local-parametrization-theorem) |
+| Cartan's coherence of vanishing ideals of analytic subsets, including singular ones | [Cartan's coherence theorem and complex spaces, Theorem 1.1](cartans-coherence-theorem-and-complex-spaces.md#1-the-ideal-sheaf-of-an-analytic-set) |
 | Vanishing of coherent cohomology in positive degrees on complex manifolds with a smooth strictly plurisubharmonic exhaustion | [Theorems A and B on Stein manifolds, Theorem 4.1](theorems-a-and-b-on-stein-manifolds.md#4-theorem-b) |
 | Finite-dimensionality of coherent cohomology on compact complex analytic spaces | Theorem 2.1 above |
 

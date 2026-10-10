@@ -2,9 +2,13 @@
 
 This course contains 99 readings: 96 teaching chapters and three supporting proof readings. The course and its transitive proof dependencies remain incomplete.
 
-Read the overview or [all chapters](html/index.html). The source archive preserves the current checkpoint110 reader and editable mathematical and figure sources. After extraction, open `courses/OA-SUBFACTORS/public/html/index.html`.
+Read the overview or [all chapters](html/index.html). The source archive preserves the current checkpoint111 reader and editable mathematical and figure sources. After extraction, open `courses/OA-SUBFACTORS/public/html/index.html`.
 
 Current physical result: The actual natural-reflected modified-cup error has an exact orthogonal density bias at every finite depth, even when its lower physical norm tends to zero. The weighted-spin tower has an exact whole-stage physical Haar spectrum, ordinary-cup decay and a finite noncommuting-expectation witness, retaining every prescribed prefix. Complete proofs, 6 solved exercises and 2 reproducible diagrams accompany the current reader. The original general nonextremal bicommutant theorem, distinct represented/opposite reconstruction and fixed weighted-model invariant endpoint remain unresolved.
+
+Current original-model support and count bounds: Every prescribed finite lamp pattern has a positive, explicit mass bound in both original phase laws, proved by an actual marked prefix and height escape. Exact weighted word counts provide certified normal approximation errors for each fixed finite word list and tolerance. The reciprocal weighted GNS operators explain why the unweighted spectral shortcut fails. Two solved applications and two reproducible diagrams accompany the proofs. These results retain the original parameter, full group coordinates and physical traces; the full derivative-support endpoint and the general nonextremal bicommutant remain unresolved.
+
+Read the complete finite support and count proofs.
 
 Current trace foundations: The center-valued trace determines every finite scalar trace, including its normality and projection comparison. Normal functionals on the represented centers have actual integrable densities with exact domination bounds. Trace-preserving expectations extend to those densities through predual restriction. Two solved applications explain distinct central trace weights and restriction to a diagonal algebra. The complete trace and integration proofs are linked from the relevant lessons; the general nonextremal bicommutant, fixed weighted-model endpoint and reconstruction questions remain open.
 

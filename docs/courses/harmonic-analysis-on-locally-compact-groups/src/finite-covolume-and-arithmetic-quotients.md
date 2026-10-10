@@ -6,7 +6,7 @@ A quotient measure can exist and still have infinite total mass. A **lattice** i
 
 ## What to know first
 
-The preceding [quotient lesson](quotient-measures-and-weils-integration-formula.md), Theorem 3.1, proves the modular criterion and the normalized Weil formula. Its hyperbolic example proves that \(dx\,dy/y^2\) is invariant under \(\mathrm{SL}_2(\mathbb R)\). Haar measure on locally compact groups, Theorems 2.2, 5.1, 10.1 and 11.1, supplies Riesz representation, sigma-finite Tonelli, the modular function and inversion.
+The preceding [quotient lesson](quotient-measures-and-weils-integration-formula.md), Theorem 3.1, proves the modular criterion and the normalized Weil formula. Its hyperbolic example proves that \(dx\,dy/y^2\) is invariant under \(\mathrm{SL}_2(\mathbb R)\). [Haar measure on locally compact groups](haar-measure-on-locally-compact-groups.md), Theorems 2.2, 5.1, 10.1 and 11.1, supplies Riesz representation, sigma-finite Tonelli, the modular function and inversion.
 
 For the last two examples, read these exact programme proofs:
 
@@ -253,7 +253,7 @@ Transport counting measure times Haar probability through (5.1). It is Haar on \
 
 ### Heisenberg lattice volume
 
-**Example 5.2.** In the Heisenberg group \(N\) of Example 12.3 of the Haar lesson, the subgroup
+**Example 5.2.** In the Heisenberg group \(N\) of [Example 12.3 of the Haar lesson](haar-measure-on-locally-compact-groups.md#heisenberg-haar-volume), the subgroup
 \(\Gamma=\{(m,n,k):m,n,k\in\mathbb Z\}\)
 is a uniform lattice. For Lebesgue Haar measure and counting measure on \(\Gamma\), its covolume is one.
 

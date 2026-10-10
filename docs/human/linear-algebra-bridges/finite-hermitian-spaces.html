@@ -1,0 +1,170 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Orthonormal bases and orthogonal projections · Open Mathematics Courses</title><link rel="stylesheet" href="../../assets/site.css"><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}}</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><header class="site-header"><div class="header-inner"><a class="brand" href="../../index.html">Open Mathematics Courses</a></div></header><main id="main"><article class="lesson"><nav><span class="unlinked">Linear-algebra foundations</span> · <span class="unlinked">Editable source</span></nav><h1 id="orthonormal-bases-and-orthogonal-projections">Orthonormal bases and orthogonal projections</h1>
+<p>An inner product makes a particular complement available: the orthogonal complement. We construct orthonormal bases and orthogonal projections directly, then apply them to <a href="../../courses/RT-FIN/representations-and-complete-reducibility.html#proposition-2-1">finite-group representations</a>. No functional analysis is needed for the finite-dimensional results.</p>
+<p><em>Proofs, explanations, examples, solutions and programme integration produced by OpenAI Codex — GPT-6 Astra, Ultra effort, October 2026. Self-checked by the writing AI. These are standard results, not discoveries.</em></p>
+<h2 id="prerequisites-and-sources">Prerequisites and sources</h2>
+<p>We use real and complex arithmetic, complex conjugation, positive square roots of positive real numbers, finite induction, vector-space axioms and finite sums. The programme's earlier lesson <span class="unlinked">From bases to projections</span> proves that every subspace of a finite-dimensional vector space has a finite basis and that a basis extends to the whole space. No completeness, limit of vectors, choice of an infinite basis, or projection theorem is assumed in the proofs of Theorems 1–2. Exercise 3 is an optional comparison using square-summable sequences and convergence of geometric series.</p>
+<p>John M. Erdman's <em>Functional Analysis and Operator Algebras: An Introduction</em>, version 4 October 2015, Chapter 1, states Gram–Schmidt orthonormalization and the orthogonal-decomposition corollary (source label <code>0001514</code>). The English and Indonesian source passages are part of <a href="https://kokunoyumeto.github.io/functional-analysis-erdman-id/">the programme's Erdman edition</a>. Those particular passages contain statements without proofs. This bridge supplies the elementary proofs and connects them to their use in representation theory. It uses Erdman's convention, linear in the first variable. The <a href="https://web.pdx.edu/~erdman/FAOA/functional_analysis_operator_algebras_pdf.pdf">author's source edition</a> and the programme edition retain his authorship; he has not reviewed or endorsed this bridge.</p>
+<p>Original text: public domain (CC0). The linked basis-extension lesson is CC0 as well; its text is not copied into this lesson.</p>
+<h2 id="inner-products-and-orthogonality">Inner products and orthogonality</h2>
+<p>Let <span class="math" data-tex="\(\mathbb F\)">\(\mathbb F\)</span> be <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> or <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. An <strong>inner product</strong> on an <span class="math" data-tex="\(\mathbb F\)">\(\mathbb F\)</span>-vector space <span class="math" data-tex="\(V\)">\(V\)</span> is a map <span class="math" data-tex="\(\langle\ ,\ \rangle:V\times V\to\mathbb F\)">\(\langle\ ,\ \rangle:V\times V\to\mathbb F\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\langle ax+by,z\rangle=a\langle x,z\rangle+b\langle y,z\rangle,
+\qquad \langle y,x\rangle=\overline{\langle x,y\rangle},
+\]">\[
+\langle ax+by,z\rangle=a\langle x,z\rangle+b\langle y,z\rangle,
+\qquad \langle y,x\rangle=\overline{\langle x,y\rangle},
+\]</span>
+<p>and <span class="math" data-tex="\(\langle x,x\rangle\)">\(\langle x,x\rangle\)</span> is a positive real number for every nonzero <span class="math" data-tex="\(x\)">\(x\)</span>. Here <span class="math" data-tex="\(a,b\in\mathbb F\)">\(a,b\in\mathbb F\)</span>; conjugation does nothing over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. The two identities imply</p>
+<span class="math math-display" data-tex="\[
+\langle x,ay+bz\rangle=\overline a\langle x,y\rangle+\overline b\langle x,z\rangle.
+\]">\[
+\langle x,ay+bz\rangle=\overline a\langle x,y\rangle+\overline b\langle x,z\rangle.
+\]</span>
+<p>They also give <span class="math" data-tex="\(\langle0,x\rangle=\langle x,0\rangle=0\)">\(\langle0,x\rangle=\langle x,0\rangle=0\)</span>. Put <span class="math" data-tex="\(\|x\|=\sqrt{\langle x,x\rangle}\)">\(\|x\|=\sqrt{\langle x,x\rangle}\)</span>. In particular <span class="math" data-tex="\(\|ax\|=|a|\|x\|\)">\(\|ax\|=|a|\|x\|\)</span>, and <span class="math" data-tex="\(\|x\|=0\)">\(\|x\|=0\)</span> exactly when <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. We will need only these facts and direct expansions, not the triangle inequality.</p>
+<p>Vectors are <strong>orthogonal</strong> when their inner product is zero. For a subspace <span class="math" data-tex="\(U\)">\(U\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+U^\perp=\{v\in V:\langle v,u\rangle=0\text{ for every }u\in U\}.
+\]">\[
+U^\perp=\{v\in V:\langle v,u\rangle=0\text{ for every }u\in U\}.
+\]</span>
+<p>Linearity in the first variable makes <span class="math" data-tex="\(U^\perp\)">\(U^\perp\)</span> a subspace. Conjugate symmetry makes orthogonality symmetric. A family <span class="math" data-tex="\((e_j)\)">\((e_j)\)</span> is <strong>orthonormal</strong> when <span class="math" data-tex="\(\langle e_i,e_j\rangle\)">\(\langle e_i,e_j\rangle\)</span> is one for <span class="math" data-tex="\(i=j\)">\(i=j\)</span> and zero otherwise. For a finite linear combination, taking its inner product with <span class="math" data-tex="\(e_i\)">\(e_i\)</span> recovers its coefficient. Thus every orthonormal family is linearly independent.</p>
+<h2 id="gram-schmidt-with-the-coefficients-in-the-correct-order">Gram–Schmidt with the coefficients in the correct order</h2>
+<p><strong>Theorem 1.</strong> Let <span class="math" data-tex="\(v_1,v_2,\ldots\)">\(v_1,v_2,\ldots\)</span> be a linearly independent finite or countably infinite sequence in a real or complex inner-product space. There is an orthonormal sequence of the same length such that, for every available positive integer <span class="math" data-tex="\(j\)">\(j\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{span}(e_1,\ldots,e_j)=\operatorname{span}(v_1,\ldots,v_j).
+\]">\[
+\operatorname{span}(e_1,\ldots,e_j)=\operatorname{span}(v_1,\ldots,v_j).
+\]</span>
+<p>No completeness or finite dimension of the ambient space is needed for this statement. For an empty sequence, take the empty sequence.</p>
+<p><strong>Proof.</strong> Suppose the vectors through <span class="math" data-tex="\(e_{j-1}\)">\(e_{j-1}\)</span> have been constructed, with the asserted span equality. Set</p>
+<span class="math math-display" data-tex="\[
+w_j=v_j-\sum_{i=1}^{j-1}\langle v_j,e_i\rangle e_i.
+\]">\[
+w_j=v_j-\sum_{i=1}^{j-1}\langle v_j,e_i\rangle e_i.
+\]</span>
+<p>For <span class="math" data-tex="\(k&lt;j\)">\(k&lt;j\)</span>, linearity and orthonormality give</p>
+<span class="math math-display" data-tex="\[
+\langle w_j,e_k\rangle
+=\langle v_j,e_k\rangle-\sum_{i=1}^{j-1}\langle v_j,e_i\rangle\langle e_i,e_k\rangle=0.
+\]">\[
+\langle w_j,e_k\rangle
+=\langle v_j,e_k\rangle-\sum_{i=1}^{j-1}\langle v_j,e_i\rangle\langle e_i,e_k\rangle=0.
+\]</span>
+<p>If <span class="math" data-tex="\(w_j=0\)">\(w_j=0\)</span>, then <span class="math" data-tex="\(v_j\)">\(v_j\)</span> belongs to the span of the previous <span class="math" data-tex="\(e_i\)">\(e_i\)</span>, hence of the previous <span class="math" data-tex="\(v_i\)">\(v_i\)</span>. This contradicts independence. Therefore <span class="math" data-tex="\(\|w_j\|&gt;0\)">\(\|w_j\|&gt;0\)</span>, and we may define</p>
+<span class="math math-display" data-tex="\[
+e_j=\frac{w_j}{\|w_j\|}.
+\]">\[
+e_j=\frac{w_j}{\|w_j\|}.
+\]</span>
+<p>This vector has inner product one with itself and zero with each previous vector. It belongs to the span of <span class="math" data-tex="\(v_1,\ldots,v_j\)">\(v_1,\ldots,v_j\)</span>. Conversely,</p>
+<span class="math math-display" data-tex="\[
+v_j=\|w_j\|e_j+\sum_{i=1}^{j-1}\langle v_j,e_i\rangle e_i
+\]">\[
+v_j=\|w_j\|e_j+\sum_{i=1}^{j-1}\langle v_j,e_i\rangle e_i
+\]</span>
+<p>belongs to the span of <span class="math" data-tex="\(e_1,\ldots,e_j\)">\(e_1,\ldots,e_j\)</span>. Together with the induction hypothesis this proves both inclusions of spans. At <span class="math" data-tex="\(j=1\)">\(j=1\)</span> the sums are empty, so the same argument starts the induction. In the countably infinite case this construction defines each term by a finite calculation; it makes no assertion about convergence of infinite linear combinations. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 1.</strong> Every finite-dimensional real or complex inner-product space has an orthonormal basis, and so does every subspace of it.</p>
+<p><strong>Proof.</strong> Apply Theorem 1 to a finite basis, using the earlier basis-extension lesson for a subspace's finite basis. Span equality gives a spanning orthonormal family. In dimension zero the empty family is the required basis. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="orthogonal-projection-and-decomposition">Orthogonal projection and decomposition</h2>
+<p><strong>Theorem 2.</strong> Let <span class="math" data-tex="\(U\)">\(U\)</span> be a finite-dimensional subspace of any real or complex inner-product space <span class="math" data-tex="\(V\)">\(V\)</span>. Then every <span class="math" data-tex="\(v\in V\)">\(v\in V\)</span> has a unique expression</p>
+<span class="math math-display" data-tex="\[
+v=u+w,\qquad u\in U,\quad w\in U^\perp.
+\]">\[
+v=u+w,\qquad u\in U,\quad w\in U^\perp.
+\]</span>
+<p>Thus <span class="math" data-tex="\(V=U\oplus U^\perp\)">\(V=U\oplus U^\perp\)</span>. In particular this holds for every subspace of a finite-dimensional <span class="math" data-tex="\(V\)">\(V\)</span>. If <span class="math" data-tex="\((e_1,\ldots,e_m)\)">\((e_1,\ldots,e_m)\)</span> is any orthonormal basis of <span class="math" data-tex="\(U\)">\(U\)</span>, the orthogonal projection is</p>
+<span class="math math-display" data-tex="\[
+Pv=\sum_{i=1}^m\langle v,e_i\rangle e_i.
+\]">\[
+Pv=\sum_{i=1}^m\langle v,e_i\rangle e_i.
+\]</span>
+<p>The map is independent of the chosen orthonormal basis. It is linear, satisfies <span class="math" data-tex="\(P^2=P\)">\(P^2=P\)</span>, has image <span class="math" data-tex="\(U\)">\(U\)</span> and kernel <span class="math" data-tex="\(U^\perp\)">\(U^\perp\)</span>, and obeys</p>
+<span class="math math-display" data-tex="\[
+\langle Px,y\rangle=\langle x,Py\rangle,
+\qquad \|Pv\|^2+\|v-Pv\|^2=\|v\|^2.
+\]">\[
+\langle Px,y\rangle=\langle x,Py\rangle,
+\qquad \|Pv\|^2+\|v-Pv\|^2=\|v\|^2.
+\]</span>
+<p><strong>Proof.</strong> The restriction of the inner product to <span class="math" data-tex="\(U\)">\(U\)</span> is positive definite, so Corollary 1 supplies its orthonormal basis. The formula plainly takes values in <span class="math" data-tex="\(U\)">\(U\)</span>. For every <span class="math" data-tex="\(k\)">\(k\)</span>, expansion gives</p>
+<span class="math math-display" data-tex="\[
+\langle v-Pv,e_k\rangle
+=\langle v,e_k\rangle-\sum_i\langle v,e_i\rangle\langle e_i,e_k\rangle=0.
+\]">\[
+\langle v-Pv,e_k\rangle
+=\langle v,e_k\rangle-\sum_i\langle v,e_i\rangle\langle e_i,e_k\rangle=0.
+\]</span>
+<p>Conjugate-linearity in the second variable then gives <span class="math" data-tex="\(v-Pv\in U^\perp\)">\(v-Pv\in U^\perp\)</span>. If <span class="math" data-tex="\(z\in U\cap U^\perp\)">\(z\in U\cap U^\perp\)</span>, taking its inner product with itself gives <span class="math" data-tex="\(z=0\)">\(z=0\)</span>. Subtracting two decompositions therefore proves uniqueness. This also proves independence from the basis, since every basis formula produces a decomposition with the same two specified subspaces.</p>
+<p>Linearity of <span class="math" data-tex="\(P\)">\(P\)</span> follows from linearity of each coefficient in <span class="math" data-tex="\(v\)">\(v\)</span>. For <span class="math" data-tex="\(u\in U\)">\(u\in U\)</span>, the unique decomposition is <span class="math" data-tex="\(u=u+0\)">\(u=u+0\)</span>, so <span class="math" data-tex="\(Pu=u\)">\(Pu=u\)</span>. Consequently the image is exactly <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(P^2=P\)">\(P^2=P\)</span>. Its formula vanishes on <span class="math" data-tex="\(U^\perp\)">\(U^\perp\)</span>; conversely <span class="math" data-tex="\(Pv=0\)">\(Pv=0\)</span> in the decomposition implies <span class="math" data-tex="\(v\in U^\perp\)">\(v\in U^\perp\)</span>. This identifies its kernel.</p>
+<p>Orthogonality gives</p>
+<span class="math math-display" data-tex="\[
+\langle Px,y\rangle=\langle Px,Py\rangle=\langle x,Py\rangle.
+\]">\[
+\langle Px,y\rangle=\langle Px,Py\rangle=\langle x,Py\rangle.
+\]</span>
+<p>Expanding the inner product of <span class="math" data-tex="\(v=Pv+(v-Pv)\)">\(v=Pv+(v-Pv)\)</span> with itself makes the two cross terms zero and proves the squared-length identity. It gives <span class="math" data-tex="\(\|Pv\|\le\|v\|\)">\(\|Pv\|\le\|v\|\)</span> as well. No norm-completeness assertion was used. If <span class="math" data-tex="\(U=0\)">\(U=0\)</span>, the empty sum gives <span class="math" data-tex="\(P=0\)">\(P=0\)</span>; if <span class="math" data-tex="\(U=V\)">\(U=V\)</span>, then <span class="math" data-tex="\(P=1_V\)">\(P=1_V\)</span>. These statements include <span class="math" data-tex="\(V=0\)">\(V=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 2 (nearest vector).</strong> For every <span class="math" data-tex="\(v\in V\)">\(v\in V\)</span>, <span class="math" data-tex="\(Pv\)">\(Pv\)</span> is the unique vector of <span class="math" data-tex="\(U\)">\(U\)</span> minimizing distance to <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(u\in U\)">\(u\in U\)</span>, the vectors <span class="math" data-tex="\(v-Pv\)">\(v-Pv\)</span> and <span class="math" data-tex="\(Pv-u\)">\(Pv-u\)</span> are orthogonal. Expanding their squared length gives</p>
+<span class="math math-display" data-tex="\[
+\|v-u\|^2=\|v-Pv\|^2+\|Pv-u\|^2.
+\]">\[
+\|v-u\|^2=\|v-Pv\|^2+\|Pv-u\|^2.
+\]</span>
+<p>The last summand is nonnegative and vanishes exactly for <span class="math" data-tex="\(u=Pv\)">\(u=Pv\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="the-two-uses-in-representation-theory">The two uses in representation theory</h2>
+<p>Let a finite group act linearly on a finite-dimensional complex vector space. Choose any basis and define an initial inner product by <span class="math" data-tex="\((x,y)_0=\sum_j x_j\overline{y_j}\)">\((x,y)_0=\sum_j x_j\overline{y_j}\)</span> in its unique coordinates. It is linear first, Hermitian, and positive definite because a nonzero vector has a nonzero coordinate. The representation-theory lesson constructs the invariant average</p>
+<span class="math math-display" data-tex="\[
+\langle x,y\rangle_G=\frac1{|G|}\sum_{g\in G}(gx,gy)_0.
+\]">\[
+\langle x,y\rangle_G=\frac1{|G|}\sum_{g\in G}(gx,gy)_0.
+\]</span>
+<p>Each group element acts invertibly, so every term on the diagonal is positive when <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>. Right multiplication permutes the group elements, which proves invariance. Corollary 1 supplies the orthonormal basis used at the end of Proposition 2.1. If <span class="math" data-tex="\(M\)">\(M\)</span> is the matrix of a group element in that basis, invariance gives <span class="math" data-tex="\(M^*M=I\)">\(M^*M=I\)</span>: the inner products of its columns are those of the original basis vectors, with complex conjugation on the second argument (equivalently their conjugates give the usual matrix entries of <span class="math" data-tex="\(M^*M\)">\(M^*M\)</span>).</p>
+<p>For an invariant subspace <span class="math" data-tex="\(U\)">\(U\)</span>, a vector <span class="math" data-tex="\(v\in U^\perp\)">\(v\in U^\perp\)</span>, an element <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>, and <span class="math" data-tex="\(u\in U\)">\(u\in U\)</span>, invariance gives</p>
+<span class="math math-display" data-tex="\[
+\langle gv,u\rangle_G=\langle v,g^{-1}u\rangle_G=0,
+\]">\[
+\langle gv,u\rangle_G=\langle v,g^{-1}u\rangle_G=0,
+\]</span>
+<p>since <span class="math" data-tex="\(g^{-1}u\in U\)">\(g^{-1}u\in U\)</span>. Thus <span class="math" data-tex="\(U^\perp\)">\(U^\perp\)</span> is invariant. Theorem 2 now supplies the decomposition used immediately after Proposition 2.1. The orthogonal projection also commutes with the action: applying <span class="math" data-tex="\(g\)">\(g\)</span> to both parts of the unique decomposition preserves their subspaces, so <span class="math" data-tex="\(P(gv)=gPv\)">\(P(gv)=gPv\)</span>.</p>
+<p>Averaging over a general field has its own characteristic condition. The earlier basis/projection lesson supplies its purely algebraic starting projection; an inner product is not needed for that construction.</p>
+<h2 id="a-complex-example">A complex example</h2>
+<p>In <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span> use <span class="math" data-tex="\(\langle x,y\rangle=x_1\overline{y_1}+x_2\overline{y_2}\)">\(\langle x,y\rangle=x_1\overline{y_1}+x_2\overline{y_2}\)</span>. Starting with <span class="math" data-tex="\(v_1=(1,i)\)">\(v_1=(1,i)\)</span>, <span class="math" data-tex="\(v_2=(0,1)\)">\(v_2=(0,1)\)</span>, Theorem 1 gives</p>
+<span class="math math-display" data-tex="\[
+e_1=\frac{(1,i)}{\sqrt2},\quad
+\langle v_2,e_1\rangle=-\frac{i}{\sqrt2},\quad
+w_2=(i/2,1/2),\quad e_2=\frac{(i,1)}{\sqrt2}.
+\]">\[
+e_1=\frac{(1,i)}{\sqrt2},\quad
+\langle v_2,e_1\rangle=-\frac{i}{\sqrt2},\quad
+w_2=(i/2,1/2),\quad e_2=\frac{(i,1)}{\sqrt2}.
+\]</span>
+<p>The two vectors have squared length one and <span class="math" data-tex="\(\langle e_1,e_2\rangle=(-i+i)/2=0\)">\(\langle e_1,e_2\rangle=(-i+i)/2=0\)</span>. For <span class="math" data-tex="\(U=\mathbb C(1,i)\)">\(U=\mathbb C(1,i)\)</span>, Theorem 2 gives</p>
+<span class="math math-display" data-tex="\[
+P=\frac12\begin{pmatrix}1&amp;-i\\i&amp;1\end{pmatrix}.
+\]">\[
+P=\frac12\begin{pmatrix}1&amp;-i\\i&amp;1\end{pmatrix}.
+\]</span>
+<p>For example <span class="math" data-tex="\(P(0,1)=(-i/2,1/2)\)">\(P(0,1)=(-i/2,1/2)\)</span> and <span class="math" data-tex="\((0,1)-P(0,1)=(i/2,1/2)\)">\((0,1)-P(0,1)=(i/2,1/2)\)</span>. Reversing the arguments in the coefficient would not give this decomposition. In complex spaces, the coefficient order is substantive.</p>
+<h2 id="exercises-with-solutions">Exercises with solutions</h2>
+<p><strong>Exercise 1.</strong> Explain why a positive semidefinite form is not enough for Gram–Schmidt as stated.</p>
+<p><strong>Solution.</strong> On the one-dimensional space <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, the zero form is positive semidefinite. The singleton <span class="math" data-tex="\((1)\)">\((1)\)</span> is linearly independent but its squared length is zero, so it cannot be normalized to length one. The proof needs positive definiteness precisely when it divides by <span class="math" data-tex="\(\|w_j\|\)">\(\|w_j\|\)</span>.</p>
+<p><strong>Exercise 2.</strong> For the complex matrix <span class="math" data-tex="\(P\)">\(P\)</span> above, verify directly that <span class="math" data-tex="\(P^2=P=P^*\)">\(P^2=P=P^*\)</span>, find its image and kernel, and decompose <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span>.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(A=2P\)">\(A=2P\)</span>. Multiplication gives</p>
+<span class="math math-display" data-tex="\[
+A^2=\begin{pmatrix}2&amp;-2i\\2i&amp;2\end{pmatrix}=2A,
+\qquad A^*=A.
+\]">\[
+A^2=\begin{pmatrix}2&amp;-2i\\2i&amp;2\end{pmatrix}=2A,
+\qquad A^*=A.
+\]</span>
+<p>Thus <span class="math" data-tex="\(P^2=P=P^*\)">\(P^2=P=P^*\)</span>. Its image is spanned by <span class="math" data-tex="\((1,i)\)">\((1,i)\)</span>, since its first column is half that vector and its second is <span class="math" data-tex="\(-i\)">\(-i\)</span> times the first. Its kernel is the line <span class="math" data-tex="\(x-iy=0\)">\(x-iy=0\)</span>, spanned by <span class="math" data-tex="\((i,1)\)">\((i,1)\)</span>. Finally</p>
+<span class="math math-display" data-tex="\[
+(1,0)=(1/2,i/2)+(1/2,-i/2)
+\]">\[
+(1,0)=(1/2,i/2)+(1/2,-i/2)
+\]</span>
+<p>has its first term in the image and its second in the kernel. Their inner product is zero.</p>
+<p><strong>Exercise 3.</strong> Why does Theorem 2 keep the assumption that <span class="math" data-tex="\(U\)">\(U\)</span> is finite-dimensional, even when the ambient space is allowed to be infinite-dimensional?</p>
+<p><strong>Solution.</strong> In the usual sequence space <span class="math" data-tex="\(\ell^2(\mathbb N)\)">\(\ell^2(\mathbb N)\)</span>, let <span class="math" data-tex="\(U\)">\(U\)</span> consist of sequences with only finitely many nonzero entries. If <span class="math" data-tex="\(x\in U^\perp\)">\(x\in U^\perp\)</span>, taking inner products with each coordinate vector gives <span class="math" data-tex="\(x_n=0\)">\(x_n=0\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>, so <span class="math" data-tex="\(U^\perp=0\)">\(U^\perp=0\)</span>. But the sequence <span class="math" data-tex="\((2^{-n})_{n\ge1}\)">\((2^{-n})_{n\ge1}\)</span> belongs to <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span>, because <span class="math" data-tex="\(\sum_{n\ge1}4^{-n}=1/3\)">\(\sum_{n\ge1}4^{-n}=1/3\)</span>, and does not belong to <span class="math" data-tex="\(U\)">\(U\)</span>. Therefore <span class="math" data-tex="\(\ell^2\ne U\oplus U^\perp\)">\(\ell^2\ne U\oplus U^\perp\)</span>. This does not contradict the later projection theorem for <strong>closed</strong> subspaces of a Hilbert space; this <span class="math" data-tex="\(U\)">\(U\)</span> is not closed, since its truncations converge to that same sequence.</p>
+<p>For the broader result, see <a href="../../courses/foundations-of-von-neumann-algebras/hilbert-spaces-and-compact-operators.html#OA-FND-HS-02">Hilbert spaces and compact operators, Theorems 2.1–2.2</a>. That proof uses completeness and closedness to obtain a nearest vector; the elementary proof here does not replace or narrow it.</p>
+</article></main></body></html>

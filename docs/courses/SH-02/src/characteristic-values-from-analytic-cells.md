@@ -241,7 +241,7 @@ The [figure source](../figures/draw_characteristic_values.py) draws the actual s
 
 ## CV7. Prerequisite proofs and applications
 
-CV1 and CV2 prove regular-piece density, limiting-tangent vanishing and singular pullback. [Analytic finiteness for preparation](../../analytic-finiteness-and-preparation/analytic-finiteness-for-preparation.html) proves the preparation, finite cell, bounded-chart and strict-frontier results, and its one-variable Puiseux argument. Curve selection and Łojasiewicz inequalities proves finite definable choice and analytic arc selection. The bounded coordinates in CV2 use those one-variable series after one common substitution.
+CV1 and CV2 prove regular-piece density, limiting-tangent vanishing and singular pullback. [Analytic finiteness for preparation](../../analytic-finiteness-and-preparation/analytic-finiteness-for-preparation.html) proves the preparation, finite cell, bounded-chart and strict-frontier results, and its one-variable Puiseux argument. [Curve selection and Łojasiewicz inequalities](../../analytic-finiteness-and-preparation/curve-selection-and-lojasiewicz.html) proves finite definable choice and analytic arc selection. The bounded coordinates in CV2 use those one-variable series after one common substitution.
 
 No sheaf coefficients, boundedness, field hypothesis or constructibility condition is part of E14. This theorem supplies characteristic-value avoidance; it does not prove the unrestricted nonisolated holomorphic critical-support equivalence FH14 or the full nonisolated finite vanishing-cycle model FH13. Those distinct retained statements require their actual sheaf-theoretic and analytic arguments.
 

@@ -25,7 +25,7 @@ The spectral radius formula connects the norm estimates on powers to the spectru
 ## Results used from other lessons
 
 The lesson uses results proved in these earlier lessons:
-- Hahn–Banach, Baire and the basic theorems on Banach spaces, cited as *the Hahn–Banach lesson*;
+- [Hahn–Banach, Baire and the basic theorems on Banach spaces](hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.md), cited as *the Hahn–Banach lesson*;
 - [Weak topologies: Tychonoff, Banach–Alaoglu, Mazur, bipolars, Krein–Milman and Eberlein–Šmulian](weak-topologies-tychonoff-banach-alaoglu-mazur-bipolars-krein-milman-and-eberlein-smulian.md), cited as *the lesson on weak topologies*;
 - [Hilbert spaces and compact operators](hilbert-spaces-and-compact-operators.md), cited as *the Hilbert-space lesson*;
 - [Cauchy's theorem for cycles and its consequences](cauchy-s-theorem-for-cycles-and-its-consequences.md), cited as *the lesson on Cauchy's theorem*;
